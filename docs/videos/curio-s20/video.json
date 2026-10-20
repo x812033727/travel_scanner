@@ -29,7 +29,7 @@
   "loops": [
     {
       "setup": "ml103",
-      "payoff": "ml526",
+      "payoff": "ml531",
       "what": "那面只剩四根鐵掛鉤的空牆，什麼時候再掛上畫"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "setup": "ml108",
-      "payoff": "ml413",
+      "payoff": "ml414",
       "what": "警察為什麼、什麼時候找上畢卡索"
     },
     {
@@ -54,13 +54,18 @@
     },
     {
       "setup": "ml110",
-      "payoff": "ml534",
+      "payoff": "ml540",
       "what": "警察真的問過畢卡索嗎"
     },
     {
       "setup": "ml208",
       "payoff": "ml209",
       "what": "畫到底是什麼時候不見的"
+    },
+    {
+      "setup": "ml215",
+      "payoff": "ml527",
+      "what": "那扇少了門把的門，是誰動的"
     },
     {
       "setup": "ml218",
@@ -73,18 +78,18 @@
       "what": "那個巴黎的畫家朋友是誰"
     },
     {
-      "setup": "ml416",
-      "payoff": "ml417",
+      "setup": "ml417",
+      "payoff": "ml418",
       "what": "法官問畢卡索的是不是蒙娜麗莎"
     },
     {
-      "setup": "ml419",
-      "payoff": "ml420",
+      "setup": "ml420",
+      "payoff": "ml421",
       "what": "「我從沒見過這個人」出自哪裡"
     },
     {
-      "setup": "ml421",
-      "payoff": "ml422",
+      "setup": "ml422",
+      "payoff": "ml423",
       "what": "在場的阿波利奈爾怎麼寫"
     },
     {
@@ -103,8 +108,13 @@
       "what": "他真的會帶著畫走進那家店嗎"
     },
     {
-      "setup": "ml531",
-      "payoff": "ml532",
+      "setup": "ml524",
+      "payoff": "ml525",
+      "what": "他是怎麼把畫帶出去的"
+    },
+    {
+      "setup": "ml537",
+      "payoff": "ml538",
       "what": "他「為了義大利」的理由算不算數"
     }
   ],
@@ -131,7 +141,7 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "警察問過\n**畢卡索？**",
+      "headline": "問過\n**畢卡索？**",
       "tag": "歷史懸案",
       "sub": "1911 年羅浮宮的一面空牆",
       "shot": "hooks"
@@ -216,7 +226,7 @@
       "chapter": "一九一一年八月二十二日，一位畫家走進方形沙龍",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a painter in his fifties with a neat grey beard and a soft black beret, in a paint-flecked grey smock in a tall museum gallery hung with old paintings on an overcast morning, setting up a wooden easel and looking toward the camera, soft window light",
+        "prompt": "Medium shot of a painter in his fifties with a neat silver beard and a soft black beret, in a paint-flecked linen smock in a tall museum gallery hung with old paintings on an overcast morning, setting up a wooden easel and looking at the viewer, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -232,7 +242,7 @@
       "id": "hooks",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a painter in his fifties with a neat grey beard and a soft black beret, in a paint-flecked grey smock beside a bare stretch of wall with four short metal hooks in two pairs, holding a paintbrush in mid-air and staring at us with his mouth open, soft daylight",
+        "prompt": "Medium close-up of a painter in his fifties with a neat silver beard and a soft black beret, in a paint-flecked linen smock beside a bare stretch of wall with four short metal hooks in two pairs, holding a paintbrush in mid-air and staring at us with his mouth open, soft daylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -267,7 +277,7 @@
       "id": "tease-door",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a doorman policeman in his thirties with a curled black moustache, in a short dark cape and a round kepi standing at a tall museum doorway on a grey afternoon, raising one palm politely and smiling at the viewer, gentle overcast light",
+        "prompt": "Medium shot of a doorman policeman of about forty with a curled black moustache, in a short dark cape and a round kepi standing at a tall museum doorway on an overcast afternoon, raising one palm politely and smiling toward the camera, gentle overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -288,7 +298,7 @@
       "id": "tease-statue",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket standing in a plain newspaper office on an overcast afternoon, holding a small stone statuette against his chest with a sly grin toward the camera, soft daylight",
+        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket standing in a plain editorial office on a mild day, holding a small stone statuette against his chest with a sly grin out at us, soft daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -304,7 +314,7 @@
       "id": "tease-picasso",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing in the doorway of a cluttered studio on a dull morning, gripping the door frame and looking out at us with wide startled eyes, mild light",
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing in the doorway of a cluttered studio on a dull morning, gripping the door frame and looking at the onlooker with wide startled eyes, mild light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -336,7 +346,7 @@
       "id": "the-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and tilting their head at the onlooker, mild light from an open doorway",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and tilting their head straight out at us, mild light from an open doorway",
         "camera": "pan left",
         "visual": "still"
       },
@@ -353,7 +363,7 @@
       "chapter": "八月二十二日下午，羅浮宮提早關門",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap beside a bare stretch of wall with four short metal hooks in two pairs in a quiet gallery on an overcast morning, shrugging calmly toward the camera, soft light from a skylight",
+        "prompt": "Medium shot of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap beside a bare stretch of wall with four short metal hooks in two pairs in a quiet gallery early on a cloudy day, shrugging calmly toward the lens, soft light from a skylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -372,7 +382,7 @@
       "id": "photographer",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a photographer in his thirties with round spectacles and a bowler hat, in a tweed jacket in a museum gallery carrying a wooden box camera on a tripod over his shoulder, stopping short with a puzzled face at us, pale diffuse light",
+        "prompt": "Medium close-up of a young photographer with round spectacles and a bowler hat, in a tweed jacket in a museum gallery carrying a wooden box camera on a tripod over his shoulder, stopping short with a puzzled face at the viewer, pale diffuse light",
         "camera": "drift",
         "visual": "still"
       },
@@ -388,7 +398,7 @@
       "id": "prefect",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a police chief in his sixties with a white pointed beard, in a black frock coat and a tall silk hat striding through a tall museum hall on a mild day, holding up one gloved hand to halt everyone, stern face at the viewer, soft window light",
+        "prompt": "Medium shot of a police chief in his sixties with a white pointed beard, in a black frock coat and a tall silk hat striding through a tall museum hall on a quiet cloudy day, holding up one gloved hand to halt everyone, stern face at us, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -418,7 +428,7 @@
       "id": "leave",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lady visitor in her thirties with a wide feathered hat, in a long dove-grey coat on the wide stone steps outside a grand museum on a grey afternoon, buttoning her gloves with a puzzled look back out at us, gentle overcast light",
+        "prompt": "Medium shot of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat on the wide stone steps outside a grand museum on a dull afternoon, buttoning her gloves with a puzzled look back out at us, soft diffuse light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -433,7 +443,7 @@
       "id": "pipe",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a doorman policeman in his thirties with a curled black moustache, in a short dark cape and a round kepi at a tall museum doorway on a quiet cloudy day, tapping a nearby water pipe with one finger and giving a straight-faced nod at the onlooker, gentle overcast light",
+        "prompt": "Medium close-up of a doorman policeman of about forty with a curled black moustache, in a short dark cape and a round kepi at a tall museum doorway on a still, cloudy morning, tapping a nearby water pipe with one finger and giving a straight-faced nod at the onlooker, gentle overcast light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -449,7 +459,7 @@
       "id": "when",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table with chin in hand, a small desk calendar beside them, looking up thoughtfully toward the camera, soft daylight",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table with chin in hand, a small desk calendar beside them, looking up thoughtfully straight out at us, soft daylight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -465,7 +475,7 @@
       "id": "monday",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cleaning woman in her forties with a grey headscarf and a long apron, mopping the parquet floor of an empty-looking grand gallery on a quiet cloudy morning, glancing up at us, mild light from an open doorway",
+        "prompt": "Medium shot of a cleaning woman in her forties with a faded blue headscarf and a long apron, mopping the parquet floor of an empty-looking grand gallery on a quiet cloudy morning, glancing up toward the lens, mild light from an open doorway",
         "camera": "push in",
         "visual": "still"
       },
@@ -484,7 +494,7 @@
       "id": "magistrate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at a heavy desk in a wood-panelled office on a dull afternoon, holding a pocket watch up and frowning at it at the viewer, soft light from a skylight",
+        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at a heavy desk in a wood-panelled office on an overcast day, holding a pocket watch up and frowning at it at the viewer, soft light from a skylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -499,7 +509,7 @@
       "id": "leclerc",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a decorator in his forties with a ginger moustache, in white overalls and a paint-spotted flat cap in a museum gallery on a mild morning, pointing off to one side with a paintbrush and grinning toward the camera, soft daylight",
+        "prompt": "Medium close-up of a decorator in his forties with a ginger moustache, in white overalls and a paint-spotted flat cap in a museum gallery on a mild morning, pointing off to one side with a paintbrush and grinning at us, soft daylight",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -530,7 +540,7 @@
       "id": "plumber",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a plumber in his fifties with grey mutton-chop whiskers, in a leather apron over a striped shirt at a half-open side door on a grey morning, holding up a wrench and staring at the bare spindle where a door knob should be, then out at us, mild light",
+        "prompt": "Medium close-up of a plumber in his fifties with sandy mutton-chop whiskers, in a leather apron over a striped shirt at a half-open side door on a misty morning, holding up a wrench and staring at the bare spindle where a door knob should be, then toward the camera, mild light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -538,7 +548,18 @@
         {
           "id": "ml214",
           "text": "七點二十分左右，一個水電工發現，通往中庭的一扇門開著，"
-        },
+        }
+      ]
+    },
+    {
+      "id": "knob",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plumber in his fifties with sandy mutton-chop whiskers, in a leather apron over a striped shirt holding a single brass door knob in his open palm and frowning at it out at us, soft light from a skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ml215",
           "text": "門鎖有人動過，一個門把不見了。",
@@ -550,14 +571,14 @@
       "id": "masons",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young mason in his twenties, clean-shaven, in a dusty grey work shirt and a cloth cap beside a bare stretch of wall with four short metal hooks in two pairs on an overcast morning, scratching his head under his cap with a blank look at the onlooker, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young mason in his twenties, clean-shaven, in a dusty canvas work shirt and a cloth cap beside a bare stretch of wall with four short metal hooks in two pairs on a hazy forenoon, scratching his head under his cap with a blank look at the onlooker, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml216",
-          "text": "結果八點十五分，工頭的兩個手下再經過，牆上已經空了。",
+          "text": "結果，八點十五分，工頭的兩個手下再經過，牆上已經空了。",
           "emotion": "轉"
         }
       ]
@@ -566,8 +587,8 @@
       "id": "shrug",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young mason in his twenties, clean-shaven, in a dusty grey work shirt and a cloth cap leaning on a long-handled trowel and shrugging with a carefree smile toward the camera, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a young mason in his twenties, clean-shaven, in a dusty canvas work shirt and a cloth cap leaning on a long-handled trowel and shrugging with a carefree smile straight out at us, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -582,8 +603,8 @@
       "id": "paris-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat on a Paris street corner on a grey afternoon, lowering his walking cane and raising his eyebrows at us, gentle overcast light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat on a Paris street corner on an overcast afternoon, lowering his walking cane and raising his eyebrows toward the lens, pale even light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -599,8 +620,8 @@
       "chapter": "八月二十九日，羅浮宮重新開門",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat on a stone bridge on a still, cloudy morning, pointing back over his shoulder at a pair of distant cathedral towers and laughing at the viewer, pale diffuse light",
-        "camera": "push in",
+        "prompt": "Medium shot of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat on a stone bridge on a mild day, pointing back over his shoulder at a pair of distant cathedral towers and laughing at the viewer, pale diffuse light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -615,8 +636,8 @@
       "id": "editor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a newspaper editor in his forties with slicked-back hair and sleeve garters, in a buttoned waistcoat at a cluttered desk in a newspaper office on a dull afternoon, slapping a blank sheet of paper onto the desk with a dramatic grin toward the camera, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium shot of a press editor in his forties with slicked-back hair and sleeve garters, in a buttoned waistcoat at a cluttered desk in an editorial office on a dull afternoon, slapping a blank sheet of paper onto the desk with a dramatic grin at us, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -645,8 +666,8 @@
       "id": "reopen",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lady visitor in her thirties with a wide feathered hat, in a long dove-grey coat hurrying through a tall museum doorway on an overcast morning, holding her hat on with one hand, eager face out at us, mild light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat hurrying through a tall museum doorway on a quiet still day, holding her hat on with one hand, eager face toward the camera, mild light from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -660,15 +681,26 @@
       "id": "stare",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lady visitor in her thirties with a wide feathered hat, in a long dove-grey coat standing beside a bare stretch of wall with four short metal hooks in two pairs, peering at it through a small pair of opera glasses and then at the onlooker with a fascinated face, soft light from a skylight",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat standing beside a bare stretch of wall with four short metal hooks in two pairs, peering at it through a small pair of opera glasses and then out at us with a fascinated face, soft light from a skylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml305",
           "text": "盯著牆上那個空位，議論這件竊案；"
-        },
+        }
+      ]
+    },
+    {
+      "id": "gape",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat beside a bare stretch of wall with four short metal hooks in two pairs on an overcast morning, leaning on his cane and gazing at it with his mouth slightly open, then at the onlooker, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ml306",
           "text": "據後來的書，跑來對著開頭那四根掛鉤發呆的人，比平常還多。"
@@ -679,8 +711,8 @@
       "id": "thief-back",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket in a plain newspaper office on an overcast day, setting a small stone statuette down on a desk and tipping his straw boater toward the camera, soft light from a skylight",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket in a plain editorial office on a quiet cloudy day, setting a small stone statuette down on a desk and tipping his straw boater straight out at us, soft light from a skylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -710,8 +742,8 @@
       "id": "confess",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket leaning on a café counter on a dull afternoon, rubbing his thumb and fingers together as if counting coins, a cheeky look at us, gentle overcast light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket leaning on a café counter on a dull afternoon, rubbing his thumb and fingers together as if counting coins, a cheeky look toward the lens, gentle overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -725,8 +757,8 @@
       "id": "billiards",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket at a billiard table in a smoky-looking parlour on an overcast afternoon, leaning on a cue with empty trouser pockets pulled out and a rueful grin at the viewer, soft lamp light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket at a billiard table in a smoky-looking parlour on a dull afternoon, leaning on a cue with empty trouser pockets pulled out and a rueful grin at the viewer, soft lamp light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -741,8 +773,8 @@
       "id": "who-friend",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding up a small stone statuette and raising one eyebrow toward the camera, soft window light",
-        "camera": "push in",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding up a small stone statuette and raising one eyebrow at us, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -758,8 +790,8 @@
       "chapter": "一九一一年九月七日，一位詩人被捕",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in a cluttered studio on a mild day, standing beside a covered easel with arms folded, a guarded look out at us, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in a cluttered studio on a still, cloudy morning, standing beside a covered easel with arms folded, a guarded look toward the camera, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -773,8 +805,8 @@
       "id": "no-name",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive desk turning over a folded old newspaper with its printed side face down, shaking their head at the onlooker, mild light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive desk closing the lid of a tall cardboard archive box, shaking their head out at us, mild light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -788,8 +820,8 @@
       "id": "pieret-poet",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket lounging in an armchair in a book-lined flat on a dull afternoon, hands behind his head, an easy grin toward the camera, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket lounging in an armchair in a book-lined flat on a dull afternoon, hands behind his head, an easy grin at the onlooker, soft lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -822,18 +854,29 @@
       "id": "suitcase",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket sitting on a battered leather suitcase in his studio, elbows on knees and a worn-out, worried face at us, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit in a lamp-lit studio, lifting a battered leather suitcase by its handle with a nervous look straight out at us, soft lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml406",
           "text": "據畢卡索當時的女友回憶，他和阿波利奈爾半夜提著皮箱，"
-        },
+        }
+      ]
+    },
+    {
+      "id": "suitcase-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket sitting on a battered leather suitcase in his studio, elbows on knees and a worn-out, sheepish face toward the lens, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ml407",
-          "text": "想把雕像丟進塞納河；結果凌晨兩點，又提著皮箱回來了。",
+          "text": "想把雕像丟進塞納河；結果，凌晨兩點，又提著皮箱回來了。",
           "emotion": "轉，好笑"
         }
       ]
@@ -842,8 +885,8 @@
       "id": "handover",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout poet in his early thirties with a round clean-shaven face and short dark hair, in a brown three-piece suit at a newspaper office counter on a cloudy morning, sliding a small flat parcel wrapped in grey cloth and tied with string across the counter with a nervous smile at the viewer, mild light from an open doorway",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit at an editorial office counter on a cloudy morning, sliding a small flat parcel wrapped in plain linen cloth and tied with string across the counter with a nervous smile at the viewer, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -873,8 +916,8 @@
       "id": "poet-cell",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stout poet in his early thirties with a round clean-shaven face and short dark hair, in a brown three-piece suit sitting on a narrow cot beside a small high window in a whitewashed room on an overcast day, hands clasped, a worried look toward the camera, soft daylight from the small window",
-        "camera": "pan left",
+        "prompt": "Medium shot of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit sitting on a narrow cot beside a small high window in a whitewashed room on an overcast day, hands clasped, a worried look at us, soft daylight from the small window",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -886,11 +929,11 @@
       ]
     },
     {
-      "id": "poet-letter",
+      "id": "poet-wrote",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout poet in his early thirties with a round clean-shaven face and short dark hair, in a brown three-piece suit at a small desk on a mild day, writing with a pen, the page turned away from us, glancing up out at us with a wry look, soft light from a skylight",
-        "camera": "push in",
+        "prompt": "Medium close-up of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit at a small desk on a mild day, writing with a pen, the page turned away from us, glancing up toward the camera with a wry look, soft light from a skylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -901,16 +944,32 @@
       ]
     },
     {
-      "id": "knock",
-      "template": "shot",
+      "id": "sante",
+      "template": "big",
       "data": {
-        "prompt": "Medium shot of a woman in her late twenties with auburn hair in a loose bun, in a long plum-coloured dress in a studio doorway on a grey early morning, holding a shawl around her shoulders and looking back at the onlooker with alarm, pale diffuse light",
-        "camera": "drift",
-        "visual": "still"
+        "text": "「Je suis le quinze de la Onzième」",
+        "kicker": "Guillaume Apollinaire〈A la Santé〉，《Alcools》1913",
+        "sub": "我是第十一監區的十五號"
       },
       "lines": [
         {
           "id": "ml412",
+          "text": "他被關進桑特監獄，在牢裡寫下：我是第十一監區的十五號。",
+          "emotion": "輕，像念詩"
+        }
+      ]
+    },
+    {
+      "id": "knock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her late twenties with auburn hair in a loose bun, in a long plum-coloured dress in a studio doorway on a pale early morning, holding a shawl around her shoulders and looking back out at us with alarm, pale diffuse light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml413",
           "text": "還記得開頭，警察找上了畢卡索嗎？",
           "emotion": "問句"
         }
@@ -920,17 +979,28 @@
       "id": "summons",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket by a studio window on a grey early morning, fumbling with the buttons of his jacket, eyes wide toward the camera, gentle overcast light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket by a studio window on a pale early morning, fumbling with the buttons of his jacket, eyes wide at the onlooker, gentle overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml413",
-          "text": "就是隔天：據傳記，九月八日早上七點，他被帶去見預審法官。"
-        },
-        {
           "id": "ml414",
+          "text": "就是隔天：據傳記，九月八日早上七點，他被帶去見預審法官。"
+        }
+      ]
+    },
+    {
+      "id": "tremble",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a woman in her late twenties with auburn hair in a loose bun, in a long plum-coloured dress in a studio on a pale early morning, holding out a folded jacket with a worried, tender look straight out at us, gentle overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml415",
           "text": "他的女友說，他抖得厲害，連衣服都要她幫忙穿。"
         }
       ]
@@ -939,13 +1009,13 @@
       "id": "confront",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing in a wood-panelled magistrate's office on an overcast morning, twisting his cap in both hands and glancing sideways at us, soft window light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing in a wood-panelled magistrate's office early on a cloudy day, twisting his cap in both hands and glancing sideways toward the lens, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml415",
+          "id": "ml416",
           "text": "在法官面前，他跟戴著手銬的阿波利奈爾對質。"
         }
       ]
@@ -955,12 +1025,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit behind his desk on a cloudy morning, leaning forward with steepled fingers and a searching look at the viewer, soft daylight",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml416",
+          "id": "ml417",
           "text": "法官問他的，是蒙娜麗莎嗎？",
           "emotion": "問句"
         }
@@ -970,13 +1040,13 @@
       "id": "stone-heads",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at his desk on a mild morning, resting one hand beside two small weathered ancient stone heads and raising his eyebrows toward the camera, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium close-up of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at his desk on a mild morning, resting one hand beside two small weathered ancient stone heads and raising his eyebrows at us, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml417",
+          "id": "ml418",
           "text": "不是。問的是他買的那兩尊石雕頭像，可能的罪名，是收受贓物。",
           "emotion": "清楚，篤定"
         }
@@ -986,13 +1056,13 @@
       "id": "home",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket walking out of a stone courthouse doorway onto a grey street on a quiet cloudy day, letting out a long breath out at us, gentle overcast light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket walking out of a stone courthouse doorway onto a cobbled street on an overcast day, letting out a long breath toward the camera, soft diffuse light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml418",
+          "id": "ml419",
           "text": "問完，他就回家了，只被告知暫時不要離開巴黎。"
         }
       ]
@@ -1001,13 +1071,13 @@
       "id": "rumour",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in his studio on a dull afternoon, raising both palms and shaking his head at the onlooker, soft lamp light",
-        "camera": "push in",
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in his studio on a dull afternoon, raising both palms and shaking his head out at us, soft lamp light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml419",
+          "id": "ml420",
           "text": "後來流傳，畢卡索在法官面前說：我從沒見過這個人。"
         }
       ]
@@ -1022,7 +1092,7 @@
       },
       "lines": [
         {
-          "id": "ml420",
+          "id": "ml421",
           "text": "這句話，最早只追得到一九五九年一篇報紙的轉述。"
         }
       ]
@@ -1031,13 +1101,13 @@
       "id": "poet-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout poet in his early thirties with a round clean-shaven face and short dark hair, in a brown three-piece suit at his desk on a dull afternoon, holding a folded letter against his chest, the writing hidden, a thoughtful look toward the camera, mild light from an open doorway",
-        "camera": "drift",
+        "prompt": "Medium close-up of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit at his desk on an overcast afternoon, holding a closed notebook against his chest, a thoughtful look at the onlooker, mild light from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml421",
+          "id": "ml422",
           "text": "那當時就在場的阿波利奈爾，怎麼寫？",
           "emotion": "問句"
         }
@@ -1053,24 +1123,8 @@
       },
       "lines": [
         {
-          "id": "ml422",
-          "text": "他一九一五年的信裡只說：對方否認知道這件事。"
-        }
-      ]
-    },
-    {
-      "id": "sante",
-      "template": "big",
-      "data": {
-        "text": "「Je suis le quinze de la Onzième」",
-        "kicker": "Guillaume Apollinaire〈A la Santé〉，《Alcools》1913",
-        "sub": "我是第十一監區的十五號"
-      },
-      "lines": [
-        {
           "id": "ml423",
-          "text": "他自己被關在桑特監獄，寫下：我是第十一監區的十五號。",
-          "emotion": "輕，像念詩"
+          "text": "他一九一五年的信裡只說：對方否認知道這件事。"
         }
       ]
     },
@@ -1078,8 +1132,8 @@
       "id": "released",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stout poet in his early thirties with a round clean-shaven face and short dark hair, in a brown three-piece suit stepping out of a heavy wooden prison gate onto a grey street on a still, cloudy morning, putting on his hat with a relieved smile at us, gentle overcast light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit stepping out of a heavy wooden prison gate onto a cobbled street on a mild day, putting on his hat with a relieved smile straight out at us, mild light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1093,8 +1147,8 @@
       "id": "where-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and frowning at it at the viewer, soft light from a skylight",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and frowning at it toward the lens, soft light from a skylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1110,8 +1164,8 @@
       "chapter": "一九一三年十一月，佛羅倫斯一位古董商收到一封信",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock in a cramped attic room on an overcast day, sitting on the edge of an iron bed beside a plain white wooden trunk, glancing nervously toward the camera, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a cramped attic room on a quiet cloudy day, sitting on the edge of an iron bed beside a plain white wooden trunk, glancing nervously at the viewer, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1125,8 +1179,8 @@
       "id": "glazier",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock in a museum gallery on a mild morning, fitting a clear pane of glass into a small picture frame with careful hands, looking up out at us, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a museum gallery on a mild morning, fitting a clear pane of glass into a small picture frame with careful hands, looking up at us, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1140,8 +1194,8 @@
       "id": "questioned",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at his desk on an overcast afternoon, holding a pen over a closed folder and looking up at the onlooker with a mild frown, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at his desk on a dull afternoon, holding a pen over a closed folder and looking up toward the camera with a mild frown, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1155,8 +1209,8 @@
       "id": "late",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock on a grey street corner on a dull morning, pulling a pocket watch from his smock and wincing toward the camera, gentle overcast light",
-        "camera": "push in",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock on a cobbled street corner on a dull morning, pulling a pocket watch from his smock and wincing out at us, pale even light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1174,8 +1228,8 @@
       "id": "print-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a desk on a mild day, holding a clear pane of glass by its edges and peering at it, then at us, mild light",
-        "camera": "drift",
+        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a desk on a still, cloudy morning, holding a clear pane of glass by its edges and peering at it, then at the onlooker, pale diffuse light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1205,8 +1259,8 @@
       "id": "why-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table tapping a pencil against their chin, a puzzled look at the viewer, mild light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table tapping a pencil against their chin, a puzzled look straight out at us, mild light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1221,15 +1275,26 @@
       "id": "cabinet",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat beside tall wooden filing drawers in a records office on a quiet cloudy day, pulling out one long drawer of index cards with a weary sigh toward the camera, soft light from a skylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat beside tall wooden filing drawers in a records office on an overcast day, pulling out one long drawer of index cards with a weary sigh toward the lens, soft light from a skylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml509",
           "text": "據後來的研究，當年的卡片是照身體尺寸歸檔，不是照指紋；"
-        },
+        }
+      ]
+    },
+    {
+      "id": "too-few",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a desk piled high with index-card boxes on a dull afternoon, spreading his hands helplessly at the viewer, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ml510",
           "text": "貝蒂榮自己也說，人手太少，沒辦法另外去翻。"
@@ -1240,8 +1305,8 @@
       "id": "trunk",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock kneeling beside a plain white wooden trunk in his attic room on a dull afternoon, lifting a loose false bottom board and glancing out at us, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock kneeling beside a plain white wooden trunk in his attic room on a dull afternoon, lifting a loose false bottom board and glancing at us, soft lamp light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1255,8 +1320,8 @@
       "id": "london",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock standing in an elegant gallery showroom on a dull afternoon, holding his cap in both hands and looking crestfallen at the onlooker, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock standing in an elegant gallery showroom on an overcast afternoon, holding his cap in both hands and looking crestfallen toward the camera, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1275,8 +1340,8 @@
       "id": "advert",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock at a café table on a grey afternoon, lowering a folded newspaper with its print turned away from us, a sudden idea on his face toward the camera, pale diffuse light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock at a café table on a mild day, setting down a small coffee cup, a sudden idea dawning on his face out at us, gentle overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1310,8 +1375,8 @@
       "id": "will-he",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an antique dealer in his forties with silver hair combed back and a neat goatee, in a tweed suit and a bow tie in a dim-panelled antique shop on a still, cloudy morning, holding an unopened envelope with its blank back toward us and narrowing his eyes at us, soft daylight",
-        "camera": "push in",
+        "prompt": "Medium close-up of an antique dealer in his forties with silver hair combed back and a neat goatee, in a tweed suit and a bow tie in a dim-panelled antique shop on a quiet cloudy day, leaning on his shop counter with folded hands and narrowing his eyes at the onlooker, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1326,8 +1391,8 @@
       "id": "arrive",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock in a plain hotel room on a mild afternoon, setting a white wooden trunk down at the foot of a bed and straightening up at the viewer, mild light from an open doorway",
-        "camera": "drift",
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a plain hotel room on a mild afternoon, setting a white wooden trunk down at the foot of a bed and straightening up straight out at us, mild light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1341,8 +1406,8 @@
       "id": "poggi",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a museum director in his forties with round tortoiseshell glasses and a short brown beard, in a charcoal suit standing in an antique shop on an overcast day, adjusting his glasses with a calm, watchful look toward the camera, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a museum director in his forties with round tortoiseshell glasses and a short brown beard, in a charcoal suit standing in an antique shop on a dull afternoon, adjusting his glasses with a calm, watchful look toward the lens, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1356,8 +1421,8 @@
       "id": "light",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a museum director in his forties with round tortoiseshell glasses and a short brown beard, in a charcoal suit in a plain hotel room on an overcast afternoon, holding a small flat parcel wrapped in grey cloth and tied with string under one arm and gesturing toward the window as if the light were poor, polite smile out at us, gentle overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a museum director in his forties with round tortoiseshell glasses and a short brown beard, in a charcoal suit in a plain hotel room on a still, cloudy morning, holding a small flat parcel wrapped in plain linen cloth and tied with string under one arm and gesturing toward the window as if the light were poor, polite smile at the viewer, mild light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1371,14 +1436,14 @@
       "id": "waiting",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock sitting on a hotel bed on a grey afternoon, turning his flat cap round and round in his hands, an anxious look at the onlooker, soft light from a skylight",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock sitting on a hotel bed on an overcast day, turning his flat cap round and round in his hands, an anxious look at us, soft light from a skylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml521",
-          "text": "十二月十二日下午，他還在等傑里回話，就被警察帶走了。",
+          "text": "沒想到，十二月十二日下午，他還在等傑里回話，就被警察帶走了。",
           "emotion": "沉"
         }
       ]
@@ -1387,8 +1452,8 @@
       "id": "confess-solo",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock seated on a wooden chair in a plain police office on a mild day, hand on his heart, a proud stubborn face toward the camera, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock seated on a wooden chair in a plain police office on an overcast afternoon, hand on his heart, a proud stubborn face toward the camera, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1403,16 +1468,92 @@
       ]
     },
     {
-      "id": "match",
+      "id": "how-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a lamp-lit desk holding a small fingerprint card beside a pane of glass and nodding at us, soft lamp light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table turning an empty gilt picture frame over in both hands, a curious look out at us, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ml524",
+          "text": "那他是怎麼把畫帶出去的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "own-account",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock at a plain side entrance of a grand museum on a still, cloudy day, slipping in through a half-open door and glancing back at the onlooker, gentle overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml525",
+          "text": "他說，那天七點多，他從工人的入口進館，把畫從牆上拿下來，"
+        }
+      ]
+    },
+    {
+      "id": "stairs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock on a narrow back staircase, folding his white work smock around a small flat parcel wrapped in plain linen cloth and tied with string and glancing up straight out at us, soft light from a skylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml526",
+          "text": "在樓梯間拆掉畫框，用工作服把畫包著。"
+        }
+      ]
+    },
+    {
+      "id": "knob-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock holding up a brass door knob between two fingers with a sheepish grin toward the lens, pale diffuse light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml527",
+          "text": "前面那扇少了門把的門，也對上了：門把是他拆的，一個不知情的工人，還幫他開了門。"
+        }
+      ]
+    },
+    {
+      "id": "smaller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a museum gallery on a hazy forenoon, holding his hands a short distance apart as if measuring something small, a matter-of-fact look at the viewer, mild light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml528",
+          "text": "他還承認，那天早上在方形沙龍看了一圈，挑它，只因為它比別的畫小。"
+        }
+      ]
+    },
+    {
+      "id": "match",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a lamp-lit desk holding a small fingerprint card beside a pane of glass and nodding at us, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml529",
           "text": "拿他舊案的指紋一比，跟畫框和玻璃上的，一模一樣。",
           "emotion": "篤定"
         }
@@ -1422,13 +1563,13 @@
       "id": "uffizi",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lady visitor in her thirties with a wide feathered hat, in a long dove-grey coat in a long gallery corridor on a mild afternoon, standing on tiptoe in a queue and craning her neck at the viewer with excitement, soft light from a skylight",
-        "camera": "push in",
+        "prompt": "Medium shot of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat in a long gallery corridor on a mild afternoon, standing on tiptoe in a queue and craning her neck toward the camera with excitement, soft light from a skylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml525",
+          "id": "ml530",
           "text": "畫在烏菲茲展了五天，頭一天，就有三萬人擠進來看。"
         }
       ]
@@ -1437,14 +1578,18 @@
       "id": "rehang",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a museum attendant in her fifties with grey hair in a bun, in a long dark dress and white cotton gloves in a museum gallery on an overcast morning, lifting a small flat parcel wrapped in grey cloth and tied with string toward a bare stretch of wall with four short metal hooks in two pairs, a careful smile toward the camera, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium shot of a museum attendant in her fifties with silver hair in a bun, in a long dark dress and white cotton gloves in a museum gallery on a quiet still day, lifting a small flat parcel wrapped in plain linen cloth and tied with string toward a bare stretch of wall with four short metal hooks in two pairs, a careful smile out at us, soft light from a skylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml526",
-          "text": "還記得開頭那面空牆嗎？一九一四年一月四日，它重新掛了回去；"
+          "id": "ml531",
+          "text": "還記得開頭那面空牆嗎？"
+        },
+        {
+          "id": "ml532",
+          "text": "一九一四年一月四日，它重新掛了回去；"
         }
       ]
     },
@@ -1452,13 +1597,13 @@
       "id": "sixty",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap standing in a quiet gallery on a still, cloudy morning, hands clasped behind his back and smiling out at us, mild light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap standing in a quiet gallery on a still, cloudy morning, hands clasped behind his back and smiling at the onlooker, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml527",
+          "id": "ml533",
           "text": "那天早上，在館裡等它的，不到六十個人。"
         }
       ]
@@ -1467,13 +1612,13 @@
       "id": "verdict1",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a judge in his sixties with a bald head and a white beard, in a black robe with a white collar at a high wooden bench in a courtroom on a quiet cloudy day, holding a closed folder and looking gravely at the onlooker, soft light from a skylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of a judge in his sixties with a bald head and a white beard, in a black robe with a white collar at a high wooden bench in a courtroom on a mild day, holding a closed folder and looking gravely straight out at us, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml528",
+          "id": "ml534",
           "text": "同年六月，佛羅倫斯的法院，判佩魯賈一年又十五天。"
         }
       ]
@@ -1482,17 +1627,17 @@
       "id": "italy",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a grey flat cap, in a white work smock standing in a courtroom on a dull afternoon, hand pressed to his heart and chin raised toward the camera, mild light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock standing in a courtroom on a dull afternoon, hand pressed to his heart and chin raised toward the lens, gentle overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml529",
+          "id": "ml535",
           "text": "他說是為了義大利；"
         },
         {
-          "id": "ml530",
+          "id": "ml536",
           "text": "可是法院拿出他寫給父親的信：信裡說，一筆財富就要來了。"
         }
       ]
@@ -1501,13 +1646,13 @@
       "id": "motive-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a judge in his sixties with a bald head and a white beard, in a black robe with a white collar on the bench on a dull afternoon, peering over a pair of reading glasses at us, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a judge in his sixties with a bald head and a white beard, in a black robe with a white collar on the bench on a quiet cloudy day, peering over a pair of reading glasses at the viewer, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml531",
+          "id": "ml537",
           "text": "那他的理由，到底算不算數？",
           "emotion": "問句"
         }
@@ -1523,11 +1668,11 @@
       },
       "lines": [
         {
-          "id": "ml532",
+          "id": "ml538",
           "text": "七月底的二審說：就算他只是想讓畫掛在義大利，也一樣是偷；"
         },
         {
-          "id": "ml533",
+          "id": "ml539",
           "text": "刑期減成七個月又八天，羈押的時間，早就抵完了。"
         }
       ]
@@ -1542,7 +1687,7 @@
       },
       "lines": [
         {
-          "id": "ml534",
+          "id": "ml540",
           "text": "還記得那個早上七點的畢卡索嗎？我們找不到他被起訴的紀錄；這份檔案，存檔。",
           "emotion": "篤定，收尾乾脆"
         }
@@ -1560,12 +1705,12 @@
       },
       "lines": [
         {
-          "id": "ml535",
+          "id": "ml541",
           "text": "你第一次聽到畢卡索跟蒙娜麗莎扯在一起，是在哪裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "ml536",
+          "id": "ml542",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
