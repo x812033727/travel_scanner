@@ -1,0 +1,36 @@
+# S56｜1871 芝加哥大火：河水為何沒攔住火？固定來源與題材界線
+
+2026-10-20 UTC。這是**作者題材研究**，尚待另一位工作者獨立覆核。原擬的 1904 聖路易奧運馬拉松已有 [來源存取 HOLD 票](../../../tasks/open/2026-10-20-curio-s49-1904-st-louis-marathon.md)，官方報告與其他站點在本環境遇代理 `CONNECT 403`；本集不採那些未讀材料。搜尋既有 `curio-s*` 企劃、任務與主線後，S56 芝加哥大火的「河流與供水」故事未見重複；S50 講的是 **1666 倫敦大火**，不可混用。
+
+| 代號 | 可重開固定來源 | 證據性質及邊界 |
+| --- | --- | --- |
+| F | Thomas D. Foster，[《A Letter from the Fire》，`66472-0.txt` 固定 Git commit](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt)，文字 SHA-256 `59d5d0740ecf20583374d499ab3aff481c000d45d20685b548490b90fc3062ee`，Git blob `565a1a465fb84a2c9035ea82d312ae80b70b52e8` | 信文標明 **1871-10-31** 寫給父母，印本 1923 年才發行。1923 年編者在 [L161–171](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L161-L171) 說原信不知去向、留下的是家人抄本。能作當事人近時觀察，但**不是**目前可見的 1871 原稿；信中非親眼所見的傷亡、處刑、全城統計不當成核實事實。L111–135 的奶牛與燈具故事屬 1923 **編者引述後來的傳聞**，不是 Foster 1871 親見，整集不採。 |
+| L | Frank J. Loesch，[《Personal Experiences During the Chicago Fire 1871》，`66433-0.txt` 固定 Git commit](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt)，文字 SHA-256 `d1e6575eb2af0a36a99aacfc9c94817f38e460db81746cd4cc95199e18d1f011`，Git blob `3370a705ac376a115010a8480e3874ab10a6cb5b` | **1925 年**印的親歷回憶，與事件相隔 54 年；作者自稱住在 North Dearborn、任 Western Union 記帳員 [L75–83](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L75-L83)。可供獨立視角與材質、逃生、失水的**回憶**；精確時刻、人數、自然機制與動機須註明記憶性質，不能當 1871 官方調查。 |
+
+本機暫存於 `/tmp/s56-chicago-foster/66472-0.txt`、`/tmp/s56-chicago-loesch/66433-0.txt`，容器回收會消失；上述提交、Git blob、SHA-256 才是交接點。兩書 Gutenberg 電子轉錄由印本製成，行號是電子檔的行號，非原書頁碼。
+
+## 可說的窄主張
+
+| ID | 影片可說的事 | 固定行號與界線 |
+| --- | --- | --- |
+| P01 | Loesch 回憶，10 月 7 日深夜另有西側火災，延至木材場，但當晚無風，沒有越過 Chicago River 的 South Branch；隔日大家仍談其火險。 | [L134–146](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L134-L146)；F 也記前夜兩處火災與西側木場 [F220–256](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L220-L256)。勿把前夜已停的火說成隔晚同一火頭或確定起因。 |
+| P02 | Loesch 記長旱、木造住屋、木板路／人行道及其含焦油鋪面；這些使可燃材料不只在建築內。 | [L85–117](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L85-L117)。三個月無雨是作者記憶，不推成逐日氣象紀錄；卡通街道只示意，不畫精確 1871 地圖。 |
+| P03 | 10 月 8 日星期日晚又起火；F 在旅館聽警鐘、見西南方紅光，10:15 出門；L 也記強烈西南風與火鈴。 | [F266–295](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L266-L295)、[L156–168](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L156-L168)。10:15 是 F 自述時刻，不能作官方精確起火時刻。 |
+| P04 | F 親述燃燒木塊被風帶到街道、木屋頂與人頭上；一座距主火約 300 碼的教堂屋頂後來起火，他說消防隊因此分兵。 | [F293–325](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L293-L325)。這是 F 見到的**局部飛火及分兵**，不直接等同整座城市每處的蔓延機制；可畫無字屋頂、飛火。 |
+| P05 | F 從西側過河到南側，眼見主火隔約 80 碼水面，隨後在自己這岸約 400 碼外發現**新的火點**；他寫主火後來也越河與新火點連成一片。 | [F349–370](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L349-L370)。可說他認出河對岸也起火；**不能**聲稱他看見某一塊火屑飛完整個 80 碼，或畫火焰像液體穿過河水。L 回憶抵達附近時火也已過 South Branch [L162–170](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L162-L170)。 |
+| P06 | F 以為磚石、石灰岩商業區和石造市政廳能擋火，卻見那些建築也起火；他回旅館收行李。 | [F376–414](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L376-L414)、L 的法院鐘與石材回憶 [L245–269](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L245-L269)。不把 F／L 的「石材融化」形容按字面播成石頭化為液體，不說石頭像木材可燃；建築內裝及屋頂也可能有可燃物，本兩書不足做完整工程因果判定。 |
+| P07 | F 記住客搬行李、找車，價錢迅速升高，最後搭小車離開時旅館起火；這是單一旅客的逃生視角。 | [F388–438](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L388-L438)。可用行李與空白車牌畫面；不把車價當全城官方市價。 |
+| P08 | F 在約凌晨 3 點發現剛經過的往 North Side 橋也起火，認為北側不安全，改往西側；L 記後來北側已著火、自己住處周圍木塊飛落。 | [F440–470](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L440-L470)、[L322–354](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L322-L354)。L 沒說親眼看見火跳過 Chicago River 主河道的**瞬間**；分清 Foster 過南支、後來北側又著火的不同段。 |
+| P09 | L 記北側街上的焦油覆木路面與建築在一陣風火中一同著火；這是他站在住處附近的回憶，顯示街道也供火延燒。 | [L378–404](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L378-L404)。勿將他形容的「像爆炸」畫成實有炸藥爆破。 |
+| P10 | F 寫周一清晨水廠已被燒、北側無水；L 回憶 Chicago Avenue 抽水站在清晨毀壞，周一北側消防受缺水限制。 | [F465–471](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L465-L471)、[L547–557](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L547-L557)。水廠毀壞與局部缺水有兩份敘述；L 說「幾台消防車就能止火」是他事後判斷，不能拍成已證實的反事實。 |
+| P11 | L 記一群北側難民用犁溝、拆籬笆、井水浸布作最後防線；星期二凌晨約 1:30 大雨到來，他認為避難處安全了。 | [L578–613](https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt#L578-L613)。只說該處與 L 的判斷，不把全城所有火焰的熄滅分鐘定在 1:30。 |
+| P12 | F 書的 1923 前言承認未知原信下落；該前言同時記錄牛踢燈傳說和 1921 年報人轉述的另一種掉燈說法。因此本片只答**火如何越過幾個原以為安全的界線**，不宣稱已找到 10 月 8 日最初點火者。 | [F111–135](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L111-L135)、[F161–171](https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt#L161-L171)。1923 前言不是當年調查；不能把「兩婦人擠牛奶掉燈」當推翻另一傳說的定案。 |
+
+## 給後續作者的限制
+
+1. 主線跟著 Foster 從前夜火災、星期日晚出旅館、南支河邊的新火點、磚石街區、再次逃橋走到北側；Loesch 作**另一位目擊者在北側**的對照與後段缺水／大雨，不要把兩人經歷融合成一人，也不要在同一鏡假裝兩人見面。
+2. 章與鏡要明說「Foster 十月寄給家人的信、1923 依抄本出版」或「Loesch 五十多年後回憶」，不能把電子書畫成 1871 真信照片、1925 回憶寫成即時報導。任何明確引用由工具字卡排字，MiniMax 插圖只畫無字信紙／河岸／旅館／橋／抽水站的概念示意。
+3. 避開奶牛、燈、縱火者、確切傷亡或全城損失、有人因偷竊被處決等傳聞與數字。F 的第一人稱也有聽說，逐句仍要分親見、推測、聽聞；L 的回憶精確時間也只以「他回憶」說。
+4. 雨不是「唯一滅火原因」的工程結論；本題能回答的是燃料、飛火、錯判安全界線、抽水站失效如何在**兩個人所走過的地點**接成一場逃生故事。
+
+**下一關：**另一位工作者須獨立重開兩份固定文本、算全文 SHA-256、逐項核 P01–P12 和 7 章／8–15 分鐘可行性。這份作者研究不代表劇本、畫面或媒體已可開工。
