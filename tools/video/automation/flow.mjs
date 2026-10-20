@@ -30,7 +30,7 @@ import { stanceProblems } from "../core/lint.mjs";
 import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -4099,7 +4099,7 @@ export class Automation {
     const { doc, translations } = project;
     if (!doc.thumbnail) return;
     const drawn = readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {};
-    const owed = LOCALES.filter((locale) => {
+    const owed = TARGET_LOCALES.filter((locale) => {
       const hash = localizedThumbnailHash(doc, translations[locale]);
       return hash && (drawn[locale]?.hash !== hash || !existsSync(path.join(workdir, drawn[locale].file)));
     });

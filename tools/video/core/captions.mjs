@@ -15,12 +15,20 @@
 import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 
 // Starting values from common subtitle guidelines (characters per line, lines per cue, reading
-// speed in characters per second). The captions ticket tunes the non-Chinese ones.
+// speed in characters per second). The captions ticket tunes the non-Chinese ones. es, pt, id
+// and vi (2026-10-20) take the common 42 characters and 17 a second. Thai writes no space
+// between words: `segmenter` names the Intl.Segmenter locale that finds where its words break,
+// and its width leaves out the vowel and tone marks written above or below a letter (measure).
 export const LOCALE_RULES = {
   "zh-TW": { maxChars: 16, maxLines: 2, maxCps: 9, words: false },
   ja: { maxChars: 16, maxLines: 2, maxCps: 8, words: false },
   ko: { maxChars: 18, maxLines: 2, maxCps: 12, words: true },
   en: { maxChars: 42, maxLines: 2, maxCps: 20, words: true },
+  es: { maxChars: 42, maxLines: 2, maxCps: 17, words: true },
+  pt: { maxChars: 42, maxLines: 2, maxCps: 17, words: true },
+  id: { maxChars: 42, maxLines: 2, maxCps: 17, words: true },
+  vi: { maxChars: 42, maxLines: 2, maxCps: 17, words: true },
+  th: { maxChars: 35, maxLines: 2, maxCps: 15, words: true, segmenter: "th" },
 };
 // A cue shorter than this flashes past; neighbouring pieces are merged instead.
 export const MIN_CUE_MS = 900;
@@ -47,29 +55,46 @@ const SYMBOL_UNIT = "%|％|×|°C|℃|°";
 const CJK_UNIT = "分鐘|小時|公里|公尺|公分|公斤|公克|毫秒|美元|美金|台幣|日圓|日元|韓元|人民幣|歐元|英鎊|時間|か月|ヶ月|カ月|年|月|日|週|天|秒|分|元|円|萬|万|億|兆|倍|次|回|個|位|名|人|台|支|款|種|項|頁|行|字|張|條|顆|部|集|季|層|級|歲|度|塊|成|折|筆|組|份|批|場|句|段|篇|章|節|步|幀|格|件|本|枚|點|点|號|つ";
 const LATIN_UNIT = "[kKMGTPE]?[bB]|[kKMGT]?Hz|[kKMG]?bps|fps|ms|μs|ns|s|sec|secs|min|mins|h|hr|hrs|km|m|cm|mm|nm|kg|g|mg|lb|lbs|oz|mi|ft|W|kW|MW|Wh|kWh|mAh|px|dpi|ppi|pt|k|K|M|USD|EUR|GBP|JPY|KRW|TWD|NTD|CNY|RMB|HKD|million|billion|trillion|thousand|percent|points?|seconds?|minutes?|hours?|days?|weeks?|months?|years?|tokens?|times|fold|x";
 const HANGUL_UNIT = "분|초|시간|일|주|개월|년|원|달러|만|억|배|번|개|명|대|건|회|등|위|점|자|줄|장|퍼센트";
+// The unit words of es, pt, id, vi and th that follow a number after a space (a Thai one also without).
+const OTHER_UNIT = "minutos?|segundos?|horas?|días?|dias?|semanas?|meses|mês|años?|anos?|veces|vezes|millones|millón|milhões|milhão|mil|bilhões|bilhão|personas|pessoas|menit|detik|jam|hari|minggu|bulan|tahun|kali|juta|miliar|triliun|ribu|orang|persen|phút|giây|giờ|ngày|tuần|tháng|năm|lần|triệu|tỷ|nghìn|người|นาที|วินาที|ชั่วโมง|วัน|สัปดาห์|เดือน|ปี|ครั้ง|เท่า|คน|บาท|ดอลลาร์|ล้าน|พัน|หมื่น|แสน|เปอร์เซ็นต์";
 const NUMBER_UNIT = `${CURRENCY}?${DIGITS}(?:\\s?(?:${SYMBOL_UNIT}|${CJK_UNIT})|\\s(?:${LATIN_UNIT}))(?![A-Za-z0-9])`;
 // A currency sign stays with its number even without a unit ("US$0.135").
 const PRICED = `${CURRENCY}${DIGITS}(?![A-Za-z0-9])`;
 const CJK_TOKEN = new RegExp(`${NUMBER_UNIT}|${PRICED}|${LATIN_RUN}|\\s+|.`, "gsu");
 // Word-based locales split at spaces; a number and the unit word after it are joined again.
 const NUMBER_WORD = new RegExp(`^[(\\[「『"']?${CURRENCY}?${DIGITS}$`, "u");
-const UNIT_WORD = new RegExp(`^(?:${SYMBOL_UNIT}|${LATIN_UNIT}|${CJK_UNIT}|${HANGUL_UNIT})[,.;:!?)\\]」』"']*$`, "u");
+const UNIT_WORD = new RegExp(`^(?:${SYMBOL_UNIT}|${LATIN_UNIT}|${CJK_UNIT}|${HANGUL_UNIT}|${OTHER_UNIT})[,.;:!?)\\]」』"']*$`, "u");
 
-/** Display width in the locale's units: CJK locales count half-width characters as half. */
+// A mark that combines with the letter before it and takes no width of its own: Thai's vowel and
+// tone marks above and below (U+0E31, U+0E34–0E3A, U+0E47–0E4E), and the diacritics of a
+// Vietnamese letter written in decomposed form.
+const COMBINING = /\p{M}/u;
+
+/**
+ * Display width in the locale's units: CJK locales count half-width characters as half, the
+ * word-based ones count characters, but never a combining mark.
+ */
 export function measure(text, rules) {
-  if (rules.words) return [...text].length;
+  if (rules.words) {
+    let width = 0;
+    for (const char of text) if (!COMBINING.test(char)) width += 1;
+    return width;
+  }
   let width = 0;
   for (const char of text) width += WIDE.test(char) ? 1 : 0.5;
   return width;
 }
 
-// "300", " ", "GB" become "300 GB": a number and its unit word are one token.
+// "300", " ", "GB" become "300 GB": a number and its unit word are one token. A Thai number
+// may meet its unit with no space ("300บาท"), which the segmenter gives as two words.
 function joinUnits(parts) {
   const joined = [];
   for (const token of parts) {
     const at = joined.length;
     if (at >= 2 && UNIT_WORD.test(token) && !joined[at - 1].trim() && NUMBER_WORD.test(joined[at - 2])) {
       joined.splice(at - 2, 2, joined[at - 2] + joined[at - 1] + token);
+    } else if (at >= 1 && token.trim() && UNIT_WORD.test(token) && NUMBER_WORD.test(joined[at - 1])) {
+      joined[at - 1] += token;
     } else {
       joined.push(token);
     }
@@ -77,7 +102,21 @@ function joinUnits(parts) {
   return joined;
 }
 
+const segmenters = new Map();
+/** A Thai text's words and the spaces between its phrases, as Intl.Segmenter finds them. */
+function segmentWords(text, locale) {
+  if (!segmenters.has(locale)) segmenters.set(locale, new Intl.Segmenter(locale, { granularity: "word" }));
+  const words = [];
+  for (const { segment } of segmenters.get(locale).segment(text)) {
+    // Spaces in a row are one token, as text.split(/(\s+)/) gives them for the other locales.
+    if (!segment.trim() && words.length && !words.at(-1).trim()) words[words.length - 1] += segment;
+    else words.push(segment);
+  }
+  return words;
+}
+
 function rawTokens(text, rules) {
+  if (rules.segmenter) return joinUnits(segmentWords(text, rules.segmenter));
   return rules.words ? joinUnits(text.split(/(\s+)/).filter(Boolean)) : (text.match(CJK_TOKEN) ?? []);
 }
 
@@ -157,6 +196,8 @@ export function splitText(text, rules, canFit = fits) {
   // the pieces become clearly lopsided, and a comma wins over mid-clause the same way.
   const midClause = (cap * cap) / 4;
   const cutCost = (text) => (ENDS_SENTENCE.test(text) ? 0 : ENDS_CLAUSE.test(text) ? midClause / 2 : midClause);
+  // Thai ends a phrase or a sentence with a space rather than punctuation: a cut there is a clause end.
+  const phraseEnd = (to) => Boolean(rules.segmenter) && to < parts.length && !parts[to].trim();
   // best[to] = the cheapest way to cut parts[0..to): fewest cues first, then the most even.
   const best = [{ count: 0, cost: 0, from: -1 }];
   for (let to = 1; to <= parts.length; to++) {
@@ -168,7 +209,7 @@ export function splitText(text, rules, canFit = fits) {
       if (!canFit(text, rules)) break;
       const size = measure(text, rules);
       const count = best[from].count + 1;
-      const cost = best[from].cost + size * size + (to < parts.length ? cutCost(text) : 0);
+      const cost = best[from].cost + size * size + (to < parts.length ? Math.min(cutCost(text), phraseEnd(to) ? midClause / 2 : midClause) : 0);
       const current = best[to];
       if (!current || count < current.count || (count === current.count && cost < current.cost)) best[to] = { count, cost, from };
     }
@@ -216,7 +257,10 @@ export function wrapCue(text, rules) {
     if (!boundaries.has(index + 1)) continue;
     const [char, next] = [chars[index], chars[index + 1]];
     let penalty = 0;
-    if (rules.words) {
+    if (rules.segmenter) {
+      // Thai breaks between any two words, best where a space already parts them.
+      penalty = /\s/.test(char) || /\s/.test(next) ? 0 : 2;
+    } else if (rules.words) {
       if (!/\s/.test(char) && !/\s/.test(next)) continue;
     } else {
       penalty = /[，、；：,;:？！]/.test(char) ? 0 : 3;

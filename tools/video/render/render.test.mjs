@@ -499,6 +499,15 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   const slideFontsOnly = localizedThumbnails(plan, () => bundledCoverage());
   assert.deepEqual(slideFontsOnly.drawable.map((own) => own.locale), ["en"]);
   assert.match(slideFontsOnly.gaps.ko, /no bundled font has .*U\+D14C/);
+  // Thai (2026-10-20) is set in Noto Sans Thai; Vietnamese, like the other Latin four, in the slide font.
+  const five = renderPlan(doc, "t", null, { keyframes, translations: { ...translations, th: merged({ ...words("ทำไม"), headline: "ทำไม**โมเดล**นี้" }), vi: merged({ ...words("Vì sao"), headline: "Vì sao **mô hình** này" }) } });
+  const own = Object.fromEntries(five.thumbnail.locales.map((each) => [each.locale, each]));
+  assert.deepEqual(Object.keys(own), ["en", "ko", "vi", "th"]);
+  assert.match(own.th.html, /<html lang="th">.*fonts\/noto-sans-thai\/index\.css/);
+  assert.doesNotMatch(own.vi.html, /noto-sans-thai|noto-sans-kr|noto-sans-jp/);
+  assert.deepEqual(coverageProblems(five, bundledCoverage()), []);
+  assert.deepEqual(localizedThumbnails(five).drawable.map((each) => each.locale), ["en", "ko", "vi", "th"]);
+  assert.deepEqual(Object.keys(five.thumbnail.gaps), ["ja"], "es, pt and id, untranslated, note no gap");
   // Without translations the plan is as it was.
   assert.equal(renderPlan(doc, "t", null, { keyframes }).thumbnail.locales, undefined);
   assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes })), { drawable: [], drawn: {}, gaps: {} });

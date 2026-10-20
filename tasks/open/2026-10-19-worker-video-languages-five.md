@@ -1,14 +1,14 @@
 ---
 id: 2026-10-19-worker-video-languages-five
 title: Video worker makes es, pt, id, vi, th captions, titles and dubs
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-worker-languages-phase1
+claimed_at: 2026-10-20T00:01:42Z
 created_at: 2026-10-19T23:53:40Z
 completed_at:
-branch:
+branch: claude/worker-video-languages-five
 depends_on: []
 scope:
   - tools/video/core
@@ -20,6 +20,30 @@ scope:
   - tools/video/shorts
   - tools/video/review/language-contract.mjs
   - tools/video/production/retention.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/compilation.mjs
+  - tools/video/automation/automation.test.mjs
+  - tools/video/automation/compilation.test.mjs
+  - tools/video/automation/compilation-spoilers.test.mjs
+  - tools/video/compile
+  - tools/video/import
+  - tools/video/package
+  - tools/video/qa
+  - tools/video/render
+  - tools/video/review/sync.mjs
+  - tools/video/review/renewal.mjs
+  - tools/video/review/renewal-handoff.mjs
+  - .agents/skills/youtube-video/references/prompts
+  - ops/video/package.json
+  - apps/api/app/video_youtube
+  - apps/api/migrations/versions/0136_video_languages_eight.py
+  - apps/api/tests/test_migration_0136_video_languages_eight.py
+  - apps/api/tests/test_video_languages_imported.py
+  - apps/api/tests/test_video_youtube.py
+  - apps/api/app/video_reviews/admin_api.py
+  - apps/web/components/admin-video-reviews.tsx
+  - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/models.py
   - apps/api/app/video_reviews/schemas.py
@@ -167,17 +191,17 @@ real limits are three quotas.
 ## Plan (after the owner says yes)
 
 Phase 1: **captions and titles** (no TTS spend).
-- [ ] `schema.mjs`: split `NARRATION_LOCALES` (four) from `TARGET_LOCALES` (eight). Every
+- [x] `schema.mjs`: split `NARRATION_LOCALES` (four) from `TARGET_LOCALES` (eight). Every
       importer in the table moves to the one it means.
-- [ ] Translator, caption-reviewer, shorten and reword texts: a register and a line length per
+- [x] Translator, caption-reviewer, shorten and reword texts: a register and a line length per
       locale.
-- [ ] The script check in `i18n-merge` (ported from `dub-lines.mjs`).
-- [ ] Captions: rules for the five, plus Thai word segmentation and a width that skips combining
+- [x] The script check in `i18n-merge` (ported from `dub-lines.mjs`).
+- [x] Captions: rules for the five, plus Thai word segmentation and a width that skips combining
       marks. Test them with a real Thai line and a vi line with stacked diacritics.
-- [ ] Metadata labels and caption words, compilation episode labels, the Thai thumbnail font.
-- [ ] API: the five become worker locales for the chosen categories; the settings tab gets the
+- [x] Metadata labels and caption words, compilation episode labels, the Thai thumbnail font.
+- [x] API: the five become worker locales for the chosen categories; the settings tab gets the
       rows and the `max_length`; tests in `apps/api/tests/test_video_languages_worker.py`.
-- [ ] Uploader language names, LANGUAGES.md, the duration receipt increment.
+- [x] Uploader language names, LANGUAGES.md, the duration receipt increment.
 - [ ] Pilot: one finished video with captions and titles in all five. Spot-check the th and vi
       captions with a native speaker (or a second model's review) before the panel offers them
       widely.
@@ -228,3 +252,46 @@ After the deploy:
     never pre-ticked. This changes the 2026-09-27 default for en/ja/ko (pre-ticks only; nothing
     is made until the owner saves a video's panel). Every saved panel then costs translation
     calls for eight locales, about +10 calls a video over today's three.
+- 2026-10-20 (claude-opus-5.5-worker-languages-phase1), phase 1 built on branch
+  `claude/worker-video-languages-five` (from the plan branch, PR #1608 not merged yet). Claimed
+  with `--force`: every overlapping claim was over 24 hours old, and the 2026-10-19
+  eight-languages one has its code merged (#1593). The scope grew to the files the split
+  touches (package, qa, render, review, compile, import, flow, the prompt references, the
+  contract fixtures); they are listed above.
+  - **Three lists, not two.** `NARRATION_LOCALES` (four: narration and dubs), `TARGET_LOCALES`
+    (nine: translations, captions, titles, language thumbnails) and `DEFAULT_LOCALES` (the
+    four). The third keeps a video with no language choice (a pre-panel package, a hand run,
+    the examples) and **compilations** on the four. Without it every old package failed its
+    captions check for five missing files, and a compilation's QA wanted es…th captions from
+    every episode. So compilations do not make the five yet; the episode labels are in place
+    for when they do. `i18n-sheet` without `--locale` still translates into the four; with
+    `--locale` it takes any of the nine.
+  - **Thai line length is about 60, not 40.** The fitted 種田娶妻 dubs used 2.47 Thai characters
+    per zh-TW character against English's 3.07. With English at 80, Thai would be about 64,
+    and 40 would force heavy cutting. Thai is counted without its combining marks.
+  - **The script check covers only the five.** On en, ja and ko it would have broken the test
+    fixtures, which fill ja sheets with English placeholders, for no gain. Scanning all 12,108
+    committed translated lines with the full table found 4 hits. All were real slips: an English
+    curio title ending on 「奇聞檔案局」, and a Korean line that dropped its words.
+  - The language-thumbnail gap notes and `render`'s output list the five only once a video has
+    their translation, so existing renders stay byte-identical.
+  - API: every video's panel offers the eight. A five-language dub on a pipeline video is a 422
+    `video_locales_dub_imported_only`, and the panel greys those boxes out. Migration 0136 writes
+    the eight into `caption_locales` and `drama_caption_locales`. Story videos decide their
+    languages from `drama_caption_locales`, so new brand stories get eight titles and captions.
+  - **Deploy order:** the worker image must ship with the API, or no later than it. Otherwise the
+    panel and the story decision tick languages an old worker cannot make, and the cells stay
+    "working".
+  - Uploader: Studio names for the five are not yet checked against a real dropdown. The
+    manifest file cap went from 12 to 20, which covers 9 captions, 8 dubs, the final cut and
+    the thumbnail.
+  - Duration receipt: 22-file increment by `claude-pr-review-worker-languages-five`, PASS.
+  - Checks (Windows): tools 2572 tests. The only failures are the 5 that also fail on a clean
+    checkout of the base (backup ×2, whisper second opinion, adult-English, elementary). The
+    duration-receipt test now passes. docs-videos 236/236. API: targeted files pass; the full
+    run fails only 27 anime-policy/planning tests on Windows `charmap`, which pass with
+    PYTHONUTF8=1. The 0136 SQL runs only in CI (no local Postgres). Web: lint, i18n, typecheck,
+    4186/4186.
+  - **Pilot: not done; it is the owner's next step after the deploy.** Choose es, pt, id, vi and
+    th titles and captions on one finished video. Then have a native speaker or a second model
+    read the th and vi captions before the panel is used widely.

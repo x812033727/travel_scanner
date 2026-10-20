@@ -45,7 +45,7 @@ def tag_language(code: object) -> str:
     key = language_key(code) if isinstance(code, str) and code.strip() else "zh-tw"
     if key.startswith("zh"):
         return "zh-TW"
-    # The worker's three and an imported video's five (es-419 and pt-BR read as es and pt).
+    # The eight a video may add (es-419 and pt-BR read as es and pt).
     for language in DUB_LOCALES:
         if key == language or key.startswith(f"{language}-"):
             return language

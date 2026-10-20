@@ -9,7 +9,7 @@ import { compilationHash } from "../core/compilation.mjs";
 import { approvedEpisodes, compilationSourceHashes, lintProject, loadProject } from "../core/state.mjs";
 import { dramaFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { DEFAULT_LOCALES } from "../core/schema.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { compilationSandbox, EPISODES, renderCards, SERIES, TITLES } from "../compile/fixture.mjs";
@@ -22,7 +22,7 @@ const TOKEN = `mkv_${"c".repeat(43)}`;
 const SITE = "https://site.test";
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const shaFile = (file) => sha(readFileSync(file));
-const OTHER_LOCALES = LOCALES.filter((locale) => locale !== "zh-TW");
+const OTHER_LOCALES = DEFAULT_LOCALES.filter((locale) => locale !== "zh-TW");
 
 test("the description budget leaves room for the chapter lines, and the planner's fields are held to YouTube's limits", () => {
   assert.equal(descriptionBudget(40), 5000 - 400 - 40 * 64);

@@ -22,7 +22,7 @@ import { parseArgs } from "node:util";
 import { cuePieces } from "../core/captions.mjs";
 import { entriesUsed } from "../core/lexicon.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, eachLine, narrationLocale, TARGET_LOCALES, textHash } from "../core/schema.mjs";
 import { readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
@@ -30,9 +30,10 @@ import { speechHash } from "../core/timeline.mjs";
 import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes, thumbnailSource, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
 
-export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
-/** The locales one video is translated into: every caption locale but the one it is narrated in. */
-export const targetLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
+/** The locales a hand run without --locale translates one video into: the default ones but its narration's. */
+export const targetLocales = (doc) => DEFAULT_LOCALES.filter((locale) => locale !== narrationLocale(doc));
+/** The locales --locale may name (the worker names the ones the owner chose): every caption locale but the narration's. */
+export const translatableLocales = (doc) => TARGET_LOCALES.filter((locale) => locale !== narrationLocale(doc));
 // What a sheet can hold; a dub reads the captions' lines, so it never needs a part of its own.
 export const SHEET_PARTS = ["metadata", "captions"];
 
@@ -47,6 +48,43 @@ const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (
 const CONTEXT_NOTE = " `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.";
 
 const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? sheet.parts : SHEET_PARTS);
+
+// The script each locale is written in, ported from the 種田娶妻打天下 dub check
+// (docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/local/dub-lines.mjs SCRIPT): a
+// translation may carry no other locale's script ("bad"), and one whose source says something in
+// words of its own must carry its own ("need"). Without the check a th sheet answered in English,
+// or an es one left in Chinese, would merge and go up as the locale's captions. Product and model
+// names stay in Latin letters everywhere, so Latin letters are never "bad". It covers the five
+// locales the worker took on in 2026-10-20; en, ja and ko merge as before.
+const KANA = /[\u3040-\u30ff]/u;
+const HAN = /[\u3400-\u9fff\uf900-\ufaff]/u;
+const HANGUL = /[\uac00-\ud7af\u1100-\u11ff\u3130-\u318f]/u;
+const THAI = /[\u0e00-\u0e7f]/u;
+const anyOf = (...patterns) => (text) => patterns.some((pattern) => pattern.test(text));
+const LATIN_SCRIPT = { bad: anyOf(KANA, HAN, HANGUL, THAI), need: null, name: "Latin letters" };
+export const LOCALE_SCRIPTS = {
+  es: LATIN_SCRIPT,
+  pt: LATIN_SCRIPT,
+  id: LATIN_SCRIPT,
+  vi: LATIN_SCRIPT,
+  th: { bad: anyOf(KANA, HAN, HANGUL), need: THAI, name: "Thai script" },
+};
+
+/**
+ * Why `text`, a translation of `source` into `locale`, is in the wrong script, or null. A word of
+ * the source that the translation carries as it is (a product name, a number) says nothing of the
+ * locale; a source with words beyond those must come back in the locale's own script. `bad` only
+ * is checked for tags, which may be names alone.
+ */
+export function scriptProblem(locale, text, source = "", { need = true } = {}) {
+  const rule = LOCALE_SCRIPTS[locale];
+  if (!rule || typeof text !== "string" || !text.trim()) return null;
+  if (rule.bad(text)) return `written with another language's script; ${locale} is written in ${rule.name}`;
+  if (!need || !rule.need || rule.need.test(text)) return null;
+  const words = String(source).match(/[\p{L}\p{N}]+/gu) ?? [];
+  const own = words.filter((word) => /\p{L}/u.test(word) && !text.includes(word));
+  return own.length ? `not written in ${rule.name}, as ${locale} is` : null;
+}
 
 /**
  * The context a translation works against, carried by the worksheet (buildSheet) and sent by the
@@ -169,6 +207,12 @@ function mergeLines(doc, sheet, before, problems) {
       if (before.lines?.[line.id]) lines[line.id] = before.lines[line.id];
       continue;
     }
+    const script = scriptProblem(sheet.locale, text, line.text);
+    if (script) {
+      problems.push(`${line.id}: ${script}`);
+      if (before.lines?.[line.id]) lines[line.id] = before.lines[line.id];
+      continue;
+    }
     lines[line.id] = { source_hash: textHash(line.text), text };
   }
   return lines;
@@ -200,10 +244,11 @@ export function mergeSheet(doc, sheet, previous) {
   const title = String(sheet.title?.text ?? "").trim();
   const description = String(sheet.description?.text ?? "").trim();
   const tags = Array.isArray(sheet.tags?.text) ? sheet.tags.text.map((tag) => String(tag).trim()).filter(Boolean) : [];
+  const locale = sheet.locale;
   const fields = {
-    title: { value: title, empty: !title, invalid: title.length > TITLE_MAX_CHARS || /[<>]/.test(title) ? `at most ${TITLE_MAX_CHARS} characters and no angle brackets` : null },
-    description: { value: description, empty: !description, invalid: /[<>]/.test(description) ? "no angle brackets" : null },
-    tags: { value: tags, empty: !tags.length && doc.youtube.tags.length > 0, invalid: null },
+    title: { value: title, empty: !title, invalid: title.length > TITLE_MAX_CHARS || /[<>]/.test(title) ? `at most ${TITLE_MAX_CHARS} characters and no angle brackets` : scriptProblem(locale, title, doc.youtube.title) },
+    description: { value: description, empty: !description, invalid: /[<>]/.test(description) ? "no angle brackets" : scriptProblem(locale, description, doc.youtube.description) },
+    tags: { value: tags, empty: !tags.length && doc.youtube.tags.length > 0, invalid: scriptProblem(locale, tags.join(" "), "", { need: false }) },
   };
   const values = {};
   const recorded = { chapters: {} };
@@ -225,7 +270,7 @@ export function mergeSheet(doc, sheet, previous) {
   for (const scene of chapterScenes(doc)) {
     const entry = bySceneId.get(scene.id);
     const text = String(entry?.text ?? "").trim();
-    const problem = !text ? "not translated" : entry.source !== scene.chapter ? `the ${narration} chapter title changed after the sheet was made; make a new sheet` : null;
+    const problem = !text ? "not translated" : entry.source !== scene.chapter ? `the ${narration} chapter title changed after the sheet was made; make a new sheet` : scriptProblem(locale, text, scene.chapter);
     if (!problem) {
       chapters[scene.id] = text;
       recorded.chapters[scene.id] = hashes.chapters[scene.id];
@@ -241,7 +286,7 @@ export function mergeSheet(doc, sheet, previous) {
   // The thumbnail's words are optional, so what keeps them out is a note, not a problem: the
   // locale keeps its previous words and hash (or none), and the worker's merge still succeeds.
   const notes = [];
-  const thumbnail = mergeThumbnail(doc, sheet.thumbnail, notes);
+  const thumbnail = mergeThumbnail(doc, sheet.thumbnail, notes, locale);
   if (thumbnail) {
     values.thumbnail = thumbnail;
     recorded.thumbnail = thumbnailSourceHash(doc);
@@ -256,7 +301,7 @@ export function mergeSheet(doc, sheet, previous) {
 }
 
 /** The thumbnail words a sheet carries, trimmed, or null with the reason in `notes`. */
-function mergeThumbnail(doc, entry, notes) {
+function mergeThumbnail(doc, entry, notes, locale) {
   const source = thumbnailSource(doc);
   if (!source) return null;
   const text = entry?.text && typeof entry.text === "object" ? entry.text : {};
@@ -266,6 +311,7 @@ function mergeThumbnail(doc, entry, notes) {
   else if (empty.length) notes.push(`thumbnail: ${empty.join(", ")} not translated; this locale keeps the video's own thumbnail`);
   else if (!sameSource(entry.source, source)) notes.push(`thumbnail: the ${narrationLocale(doc)} thumbnail changed after the sheet was made; make a new sheet`);
   else if (Object.values(words).some((word) => /[<>]/.test(word))) notes.push("thumbnail: no angle brackets");
+  else if (scriptProblem(locale, Object.values(words).join(" "), "", { need: false })) notes.push(`thumbnail: ${scriptProblem(locale, Object.values(words).join(" "), "", { need: false })}; this locale keeps the video's own thumbnail`);
   else return words;
   return null;
 }
@@ -291,8 +337,8 @@ export async function run(command, args, ctx) {
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const { doc } = project;
   // The locales to translate into depend on the narration language, so they are checked once the video is read.
-  const targets = targetLocales(doc);
-  const locales = values.locales ?? targets;
+  const targets = translatableLocales(doc);
+  const locales = values.locales ?? targetLocales(doc);
   for (const locale of locales) if (!targets.includes(locale)) throw new UsageError(`--locale must be among ${targets.join(", ")}`);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   if (command === "i18n-sheet") {

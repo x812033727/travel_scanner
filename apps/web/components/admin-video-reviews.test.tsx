@@ -543,6 +543,47 @@ describe("AdminVideoReviews", () => {
     } });
   });
 
+  it("offers a pipeline video eight languages, titles and captions in all of them, and dubs only in en, ja and ko", async () => {
+    const puts: Array<{ url: string; body: unknown }> = [];
+    let locales: Record<string, unknown> = {};
+    const eight = ["en", "ja", "ko", "es", "pt", "id", "vi", "th"];
+    const pipeline = { ...summary, locale_options: eight };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body)) as { locales: Record<string, unknown> };
+        puts.push({ url, body });
+        locales = body.locales;
+        return Promise.resolve(Response.json({ ...pipeline, locales, reviews: [] }));
+      }
+      if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: eight, drama: { drama_caption_locales: eight } }));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([pipeline]));
+      return Promise.resolve(Response.json({
+        ...pipeline, ready_to_upload: false, locales, locales_decided_at: null, languages: {},
+        reviews: [{ ...final, status: "approved", decided_at: "2026-10-20T04:00:00Z" }],
+      }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
+    expect(panel.querySelectorAll("tbody tr")).toHaveLength(8);
+    for (const name of ["西班牙文（拉丁美洲）", "葡萄牙文（巴西）", "印尼文", "越南文", "泰文"]) {
+      expect(box(`${name} 標題與說明`).disabled, name).toBe(false);
+      expect(box(`${name} CC 字幕`).disabled, name).toBe(false);
+      expect(box(`${name} 配音`).disabled, name).toBe(true);
+      expect(box(`${name} 配音`).closest("label")?.getAttribute("title")).toContain("只有匯入的影片能選");
+    }
+    expect(box("日文 配音").disabled).toBe(false);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "照預設勾選" }));
+    await waitFor(() => expect(box("泰文 CC 字幕").checked).toBe(true));
+    fireEvent.click(within(panel).getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const both = { metadata: true, captions: true, dub: false };
+    expect(puts[0].body).toEqual({ locales: Object.fromEntries(eight.map((locale) => [locale, both])) });
+  });
+
   it("does not infer a story's final approval from early locale choices or an older cut", () => {
     const storySummary = { ...summary, category: "story" as const, locales_decided_at: "2026-10-16T04:00:00Z", ready_to_upload: false };
     expect(finalApproved(storySummary)).toBe(false);

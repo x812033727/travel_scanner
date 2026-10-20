@@ -42,7 +42,7 @@ import { pinyin } from "pinyin-pro";
 import { isKnownTerm } from "../core/lexicon.mjs";
 import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, NARRATION_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { speechLexicon } from "../dubs/plan.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
@@ -65,12 +65,12 @@ export const DEFAULT_THRESHOLD = 0.5;
 export const GIVE_UP_AFTER = 3;
 const TRANSCRIBE_RATE = 16_000;
 // The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md).
-export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+export const DUB_LOCALES = NARRATION_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const CHINESE = new Set([NARRATION_LOCALE]);
 
 /** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
 export function parseDubLocale(value, narration = NARRATION_LOCALE) {
-  const dubs = LOCALES.filter((locale) => locale !== narration);
+  const dubs = NARRATION_LOCALES.filter((locale) => locale !== narration);
   if (!dubs.includes(value)) {
     throw new UsageError(`--locale must be one of ${dubs.join(", ")}: a dubbed track; the narration is checked without --locale`);
   }

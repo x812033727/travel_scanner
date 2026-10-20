@@ -9,7 +9,7 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } 
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
+import { DEFAULT_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { ARTIFACTS, dubArtifacts, dubSpeechCurrent, lintProject, loadProject, recordStage } from "./state.mjs";
 import { checkChapters, speechHash } from "./timeline.mjs";
 
@@ -35,7 +35,7 @@ export function readLanguages(workdir) {
   const record = readJson(path.join(workdir, LANGUAGES_FILE), null);
   if (!record || typeof record !== "object" || !record.locales || typeof record.locales !== "object") return null;
   const locales = {};
-  for (const locale of LOCALES) {
+  for (const locale of TARGET_LOCALES) {
     const choice = record.locales[locale];
     if (!choice || typeof choice !== "object" || locale === NARRATION_LOCALE) continue;
     // A dub is read from the captions' translation, so choosing it chooses them (the site does the same).
@@ -53,10 +53,10 @@ export function writeLanguages(workdir, { locales, decided_at = null, synced_at 
   return record;
 }
 
-/** The locales with `part` ticked, in the page's order; null without a choice (every locale, as before). */
+/** The locales with `part` ticked, in the page's order; null without a choice (the default locales, as before). */
 export function chosenLocales(languages, part) {
   if (!languages) return null;
-  return LOCALES.filter((locale) => languages.locales[locale]?.[part]);
+  return TARGET_LOCALES.filter((locale) => languages.locales[locale]?.[part]);
 }
 
 /**
@@ -66,10 +66,13 @@ export function chosenLocales(languages, part) {
  */
 export const alwaysLocales = (narration = NARRATION_LOCALE) => [...new Set([narration, NARRATION_LOCALE])];
 
-/** The caption locales a video is made in: its narration and zh-TW, then the chosen ones; every locale without a choice. */
+/**
+ * The caption locales a video is made in: its narration and zh-TW, then the chosen ones; without a
+ * choice the four a video was made in before es, pt, id, vi and th joined (DEFAULT_LOCALES).
+ */
 export function captionLocalesOf(languages, narration = NARRATION_LOCALE) {
   const chosen = chosenLocales(languages, "captions");
-  return chosen ? [...new Set([...alwaysLocales(narration), ...chosen])] : [...LOCALES];
+  return chosen ? [...new Set([...alwaysLocales(narration), ...chosen])] : [...DEFAULT_LOCALES];
 }
 
 /** The title and description locales asked for: its narration and zh-TW, then the chosen ones; null without a choice (every translated locale). */
@@ -90,7 +93,7 @@ export function localeTexts(doc, translations) {
   const texts = { [narration]: {} };
   const skipped = {};
   for (const { line } of eachLine(doc)) texts[narration][line.id] = line.text;
-  for (const locale of LOCALES.filter((each) => each !== narration)) {
+  for (const locale of TARGET_LOCALES.filter((each) => each !== narration)) {
     const translation = translations[locale];
     if (!translation) continue;
     texts[locale] = {};
@@ -229,7 +232,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation (or how they are pronounced), or does not match the branding; these cues follow the narration, run dub again`);
     manifest.locales[locale] = { cues: cues.length, problems, timing: timed ? "dub" : "narration" };
   }
-  for (const locale of LOCALES) {
+  for (const locale of TARGET_LOCALES) {
     if (manifest.locales[locale]) continue;
     for (const kind of ["srt", "vtt"]) rmSync(path.join(workdir, "captions", `${locale}.${kind}`), { force: true });
   }
