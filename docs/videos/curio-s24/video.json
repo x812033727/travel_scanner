@@ -63,6 +63,16 @@
       "what": "他要怎麼證明摻了銀"
     },
     {
+      "setup": "ar232",
+      "payoff": "ar233",
+      "what": "維特魯威從哪裡聽來的"
+    },
+    {
+      "setup": "ar231",
+      "payoff": "ar208",
+      "what": "金冠的問題出在哪裡"
+    },
+    {
       "setup": "ar228",
       "payoff": "ar216",
       "what": "他是光著身子跑過大街嗎"
@@ -257,7 +267,7 @@
       "id": "basin-edge",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on the stone rim of a full bath basin in a quiet bathhouse, gripping the edge with both hands and looking down at the still water, the robe covering him to his ankles, soft lamp light",
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on the stone rim of a full bath basin in a quiet bathhouse, gripping the edge with both hands and looking down at the still water, the robe covering him to his ankles, soft grey daylight",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -411,7 +421,7 @@
       "chapter": "西元前一世紀後期，一位羅馬建築師寫到第九書",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak standing beside a shelf of rolled scrolls tied with cords in a Roman study on a still, cloudy morning, resting one hand on the shelf and looking toward the camera, soft lamp light",
+        "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak standing beside a shelf of rolled scrolls tied with cords in a Roman study on a still, cloudy morning, resting one hand on the shelf and looking toward the camera, soft grey daylight",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -438,11 +448,31 @@
       ]
     },
     {
+      "id": "vitr-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak shrugging with both palms up beside his writing table, a puzzled little smile, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar232",
+          "text": "這個故事，他是從哪裡聽來的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ar233",
+          "text": "書裡一個字也沒說。"
+        }
+      ]
+    },
+    {
       "id": "hiero-vow",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar standing in a marble temple hall on a mild afternoon, raising one hand in a solemn vow beside a small stone altar, soft light from high windows",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -461,7 +491,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a golden wreath made of thin gold leaves resting on a dark blue cloth on a stone table in a quiet temple, the only shapes are the wreath, the cloth and the table, mild light from an open doorway",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -476,7 +506,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar standing at a table in a palace storeroom on a mild day, watching small gold bars piled on one pan of a large bronze balance with a satisfied look, soft light from a skylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -491,13 +521,18 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron in a palace hall on a quiet cloudy day, holding out a golden leaf wreath on a blue cushion with both hands and a polite, nervous smile, soft window light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ar207",
           "text": "交件的時候，重量分毫不差。"
+        },
+        {
+          "id": "ar231",
+          "text": "那問題出在哪裡？",
+          "emotion": "問句"
         }
       ]
     },
@@ -505,8 +540,8 @@
       "id": "accused",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar sitting in a high-backed chair in a palace hall on an overcast afternoon, leaning forward with narrowed, suspicious eyes, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar sitting in a high-backed chair in a palace hall on an overcast afternoon, leaning forward with narrowed, suspicious eyes, soft grey daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -522,7 +557,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar holding the golden leaf wreath carefully in both hands and frowning at it, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -537,7 +572,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing in a palace hall on a still, cloudy morning, receiving the golden leaf wreath on a blue cushion with a puzzled look out at us, mild light from an open doorway",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -552,7 +587,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, walking along a stone colonnade toward a bathhouse on an overcast day, head down and lost in thought, soft light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -567,7 +602,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, beside a bath basin, his eyes lighting up with sudden understanding and one finger raised, soft light from a skylight",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -583,7 +618,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, hopping up beside a bath basin in a bathhouse with both arms raised in joy, the robe covering him from neck to ankles, soft window light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -632,7 +667,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, hurrying along a narrow stone lane between plain houses on a mild afternoon, holding the robe closed at his chest with one hand and calling out happily toward the camera, soft light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -651,8 +686,8 @@
       "id": "later-added",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at a reading desk in an archive on a mild day, holding up a closed picture book with a blank cover and raising one eyebrow at us, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at a reading desk in an archive on a mild day, holding up a closed picture book with a blank cover and raising one eyebrow at us, soft grey daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -667,7 +702,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a quiet cloudy day, holding up a plain short tunic on a hanger and tilting his head thoughtfully at the viewer, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -682,7 +717,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing dripping beside a bath basin, clutching the robe closed with both hands and laughing toward the camera, mild light from an open doorway",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -697,7 +732,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing at a stone workbench on an overcast afternoon, holding a gold block in one hand and a silver block in the other and comparing them, soft light from a skylight",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -717,7 +752,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, lowering a silver block into a large bronze vessel filled to the brim with water, with careful concentration, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -732,7 +767,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, holding up a small bronze jug beside the bronze vessel and grinning triumphantly out at us, soft lamp light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -746,8 +781,8 @@
       "id": "smith-fate",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron standing in a palace corridor on a still, cloudy morning, clutching his apron and swallowing nervously, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron standing in a palace corridor on a still, cloudy morning, clutching his apron and swallowing nervously, soft grey daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -762,7 +797,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak sitting at his writing table in the study on an overcast day, resting his chin on his hand with a knowing smile toward the camera, mild light from an open doorway",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -778,7 +813,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak standing by his writing table and tapping a closed scroll against his palm with an indignant frown, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -793,7 +828,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Roman runner in a long-sleeved white tunic standing on a stone podium in a stadium on a mild afternoon, lifting a palm branch with a proud grin at us, soft light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -808,7 +843,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak counting on his fingers with a thoughtful look, a stack of tied scrolls beside him, soft light from a skylight",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -823,7 +858,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, sitting at a table piled with closed scrolls in a stone study on a mild day, looking up at the camera with raised eyebrows, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -839,8 +874,8 @@
       "chapter": "西元前三世紀，阿基米德寫下《浮體論》",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest standing between tall archive shelves on a quiet cloudy day, pulling out a thick old book with a plain cover and blowing dust off it, soft lamp light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest standing between tall archive shelves on a quiet cloudy day, pulling out a thick old book with a plain cover and blowing dust off it, soft grey daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -855,7 +890,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, sitting in a stone study on an overcast afternoon, tying a cord around a rolled scroll with a gentle smile at the viewer, mild light from an open doorway",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -870,7 +905,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, kneeling beside a wide shallow basin of water in a stone courtyard on a still, cloudy morning, watching a small wooden block float on the surface, soft light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -905,7 +940,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, at a stone table on an overcast day, holding up a small balance with a stone hanging from one arm into a bowl of water, studying it closely, soft light from a skylight",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -920,7 +955,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of water spilling over the stone rim of a bath basin onto wet tiles, a small glass jug standing on the tiles, the only shapes are the basin, the jug and the water, soft overcast light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -935,7 +970,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest at a reading desk on a mild afternoon, laying three closed old books side by side and looking toward the camera with curiosity, soft window light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -950,8 +985,8 @@
       "id": "plutarch",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe sitting at a writing desk in a quiet Greek house on a mild day, writing on a sheet turned away from us with a faint amused smile, soft lamp light",
-        "camera": "push in",
+        "prompt": "Medium shot of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe sitting at a writing desk in a quiet Greek house on a mild day, writing on a sheet turned away from us with a faint amused smile, soft grey daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -966,13 +1001,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin and staring at water spilling over the rim with a dawning smile, mild light from an open doorway",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ar310",
-          "text": "他寫：據說，阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠；"
+          "text": "他寫：阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠；"
         }
       ]
     },
@@ -981,7 +1016,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, striding out of a bathhouse doorway with both fists raised, shouting with joy, the robe closed up to his neck, soft overcast light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -992,11 +1027,26 @@
       ]
     },
     {
+      "id": "plut-hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe at his desk raising one finger with a wry smile, a closed scroll tied with cord beside him, soft light from a skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar322",
+          "text": "這段前面，普魯塔克自己加了「據說」：到他那時候，這已經是大家在傳的故事。"
+        }
+      ]
+    },
+    {
       "id": "plut-shrug",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe at his desk holding up empty hands in a shrug with a small smile out at us, soft lamp light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1011,7 +1061,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, walking calmly along a quiet stone street on a quiet cloudy day, one hand raised as he calls out happily, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1026,7 +1076,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk tapping a pencil against a closed book and tilting his head toward the camera, soft light from a skylight",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1042,7 +1092,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a late-Roman scribe in a hooded slate-blue cloak sitting at a desk by a narrow window in a late-Roman stone room on an overcast afternoon, writing with a quill on a sheet turned away from us, soft window light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1056,8 +1106,8 @@
       "id": "poem-smith",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron at a workbench in a small workshop on a still, cloudy morning, slipping a small silver bar into a pile of gold with a guilty sideways glance at us, soft lamp light",
-        "camera": "push in",
+        "prompt": "Medium shot of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron at a workbench in a small workshop on a still, cloudy morning, slipping a small silver bar into a pile of gold with a guilty sideways glance at us, soft grey daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1072,7 +1122,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a late-Roman scribe in a hooded slate-blue cloak pausing with his quill raised and shaking his head slightly, soft lamp light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1091,7 +1141,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing at a stone table on an overcast day, setting a gold bar on one pan and a silver bar on the other pan of a bronze balance until the pans hang level, mild light from an open doorway",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1106,7 +1156,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, watching one pan of a bronze balance dip lower into a wide basin of water with wide, delighted eyes, soft light from a skylight",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1121,7 +1171,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a mild afternoon, holding a small glass jug in one hand and a small toy balance in the other with a puzzled look at the viewer, soft window light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1137,8 +1187,8 @@
       "chapter": "一五八六年，一個年輕人寫了一篇短文",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, sitting at a desk in a cool, plain study on a mild day in 1586, frowning at a sheet turned away from us, soft lamp light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, sitting at a desk in a cool, plain study on a mild day in 1586, frowning at a sheet turned away from us, soft grey daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1153,7 +1203,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, leaning back in his chair with his arms crossed and a sceptical half-smile toward the camera, mild light from an open doorway",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1168,7 +1218,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, writing fast with a quill on a sheet turned away from us at a desk in a cool, plain study, soft lamp light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1203,7 +1253,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, tapping his quill against his chin with narrowed eyes, soft light from a skylight",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1219,7 +1269,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a town crier in a long-sleeved brown tunic standing in a small stone square on a quiet cloudy day, cupping one hand by his mouth and shouting the news out at us, soft light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1238,7 +1288,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sly ancient writer with a curly black beard in a long-sleeved grey robe sitting at a desk on an overcast afternoon, adding a line to a sheet turned away from us with a mischievous grin, soft window light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1252,29 +1302,14 @@
       "id": "best-line",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a still, cloudy morning, pointing up with one finger and smiling delightedly toward the camera, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a still, cloudy morning, pointing up with one finger and smiling delightedly toward the camera, soft grey daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ar409",
-          "text": "我們覺得，這是整份檔案裡最妙的一句："
-        }
-      ]
-    },
-    {
-      "id": "best-line-2",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, at his desk on an overcast day, holding a sheet face down and giving the camera a knowing sideways look, mild light from an open doorway",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ar410",
-          "text": "四百多年前，就有人懷疑，量水這一段是寫的人自己補的。"
+          "text": "我們覺得，這是整份檔案裡最妙的一句。"
         }
       ]
     },
@@ -1283,7 +1318,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, at his desk raising one hand in a cautious gesture at us, soft lamp light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1297,8 +1332,8 @@
       "id": "what-instead",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, leaning forward over his desk with a curious, eager look at the viewer, soft light from a skylight",
-        "camera": "push in",
+        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, leaning forward over his desk with a curious, eager look at the viewer, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1313,8 +1348,8 @@
       "id": "balance",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, in a cool, plain workroom on a mild afternoon, holding up a long thin balance beam with two small pans and smiling proudly toward the camera, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, in a cool, plain workroom on an overcast day, holding up a long thin balance beam with two small pans and smiling proudly toward the camera, soft light from a skylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1330,7 +1365,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, resting one hand on a closed old book on his desk and nodding out at us with conviction, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1345,7 +1380,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, lowering a small metal weight on a thread into a glass of water and watching it intently, soft lamp light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1356,56 +1391,11 @@
       ]
     },
     {
-      "id": "wires",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, winding a fine brass wire around the arm of a small balance beam at his desk, a coil of steel wire beside it, soft lamp light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ar416",
-          "text": "他還自己做了一把：秤桿上繞著鋼弦和黃銅絲，用針尖劃過去，聽著、摸著數圈數。"
-        }
-      ]
-    },
-    {
-      "id": "friends-only",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, in a cool, plain study on a mild day, holding out a small folded letter sealed with wax toward the camera with a modest smile, mild light from an open doorway",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ar417",
-          "text": "這篇短文，他只給朋友看，生前沒有印；"
-        }
-      ]
-    },
-    {
-      "id": "printed-1644",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a printer in a dark apron and rolled-up sleeves in a cool, plain printing room on a quiet cloudy day, lifting a freshly printed sheet with its blank side toward us, soft light from a skylight",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ar418",
-          "text": "一直到一六四四年，他過世兩年後，才第一次印出來。"
-        }
-      ]
-    },
-    {
       "id": "how-much",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk holding a clear glass jug of water up to eye level and squinting at the waterline, soft light from a skylight",
-        "camera": "push in",
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk holding a clear glass jug of water up to eye level and squinting at the waterline, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1421,8 +1411,8 @@
       "chapter": "二〇〇六年，一位數學家談起那池水",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest sitting at a desk on an overcast afternoon, setting a golden toy wreath beside a round glass container of water with a careful look, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest sitting at a desk on a mild afternoon, setting a golden toy wreath beside a round glass container of water with a careful look, soft grey daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1436,8 +1426,8 @@
       "id": "container",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest measuring the round mouth of a glass container full of water with a pair of brass calipers and squinting at it, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest measuring the round mouth of a glass container full of water with a pair of brass calipers and squinting at it, mild light from an open doorway",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1452,7 +1442,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest lowering a small gold block into the round glass container while watching the waterline closely, soft lamp light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1482,8 +1472,8 @@
       "id": "balance-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest setting a small toy balance beside the glass container on the desk and looking at us with a hopeful look, mild light from an open doorway",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest setting a small toy balance beside the glass container on the desk and looking toward the camera with a hopeful look, soft light from a skylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1514,8 +1504,8 @@
       "id": "sciam-2006",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest reading a thin magazine with a blank cover at the desk on a still, cloudy morning, nodding slowly at the viewer, soft light from a skylight",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest reading a thin magazine with a blank cover at the desk on a mild day, nodding slowly at us, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1533,8 +1523,8 @@
       "id": "bath-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin with his arms folded and a cheeky grin toward the camera, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin with his arms folded and a cheeky grin at the viewer, soft grey daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1549,8 +1539,8 @@
       "id": "some-truth",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, holding a small bronze jug and smiling thoughtfully out at us in a stone study, soft lamp light",
-        "camera": "push in",
+        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, holding a small bronze jug and smiling thoughtfully toward the camera in a stone study, soft lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1564,8 +1554,8 @@
       "id": "buoyancy-moment",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, kneeling beside a basin of water in a stone courtyard on an overcast day, pressing a wooden block under the surface and feeling it push back with a delighted look, soft light",
-        "camera": "drift",
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, kneeling beside a basin of water in a stone courtyard on a quiet cloudy day, pressing a wooden block under the surface and feeling it push back with a delighted look, soft light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1579,8 +1569,8 @@
       "id": "not-bathtub",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on a wooden stool beside an empty bath basin, shrugging with a sheepish smile toward the camera, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on a wooden stool beside an empty bath basin, shrugging with a sheepish smile out at us, soft lamp light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1594,8 +1584,8 @@
       "id": "final-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, peeking out from a bathhouse doorway with a mischievous smile at us, soft overcast light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, peeking out from a bathhouse doorway with a mischievous smile toward the camera, soft overcast light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1619,7 +1609,7 @@
       "lines": [
         {
           "id": "ar514",
-          "text": "光著身子跑回家這一幕，只有一份將近兩百年後的紀錄；",
+          "text": "光著身子跑回家這一幕，只有開頭那位羅馬建築師，留下一份紀錄；",
           "emotion": "篤定"
         },
         {

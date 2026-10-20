@@ -3,7 +3,7 @@
 每一句帶事實的旁白對到 [`../history-curiosity/topic-checks/S24.md`](../history-curiosity/topic-checks/S24.md) 的一列（〔#n〕）。
 來源代號見 S24.md〈用了哪些來源〉（VIT-LAT 維特魯威拉丁原文、VIT-MORGAN 與 VIT-GWILT 英譯、EB1911、SMITH〈Nudus〉、HEATH 阿基米德著作 1897、PLUT-NP 普魯塔克《Non posse》、
 CARMEN《度量衡之歌》Hultsch 本、GAL-FAV 伽利略《小天平》Favaro 本、RORRES、SCIAM、WP 維基百科，二手）；第 41–44 列是寫稿前依覆核補進表裡的（普魯塔克希臘原文 1094C、Hultsch Prolegomena §118 等）。
-查核日期一律 2026-10-20；網址在 `video.json` 的 `sources`。沒列出的句子是問句、轉場、回呼或鉤子（ar106、ar107、ar114、ar218、ar223、ar227、ar228、ar308、ar314、ar321、
+查核日期一律 2026-10-20；網址在 `video.json` 的 `sources`。沒列出的句子是問句、轉場、回呼或鉤子（ar106、ar107、ar114、ar218、ar231、ar223、ar227、ar228、ar308、ar314、ar321、
 ar406、ar412、ar419、ar505、ar513、ar516、ar517、ar518），不帶新事實。
 
 | 行 | 旁白（節錄） | 列 | 出處 | 狀態 |
@@ -18,6 +18,7 @@ ar406、ar412、ar419、ar505、ar513、ar516、ar517、ar518），不帶新事�
 | ar112 ar113 | 阿基米德之後約一千八百年，一個二十出頭的年輕人讀到量水的方法，寫了一篇短文，開頭就下了重話 | #16 #31 #32 | 算術（前 212 年到 1586 年約 1,800 年）；GAL-FAV p. 215 | 覆核：「二十出頭」不說「22 歲」；「讀到這個量水的方法」不說讀了維特魯威（預告，ar402–ar405 揭曉） |
 | ar201 | 光著身子這件事，目前找得到最早的文字，在開頭那位羅馬建築師的書裡 | #1 #7 | VIT-LAT praef. 9–10；SCIAM「The oldest authority for the naked-Archimedes eureka story is Vitruvius」 | 確認；「目前找得到最早」，不說「第一個講的人」 |
 | ar202 | 他叫維特魯威；這套《建築十書》獻給奧古斯都，寫在西元前一世紀後期 | #13 #14 | I praef. 1–2「imperator Caesar」；EB1911「is dedicated to Augustus」；WP「between 30 and 20 BC」（二手） | 確切年份 DISPUTED，照第 14 列只說「西元前一世紀後期」 |
+| ar232 ar233 | 這個故事，他是從哪裡聽來的？書裡一個字也沒說 | #1 | 第 1 列備註「維特魯威自己沒說故事從哪裡聽來」 | 確認（盲評第 1 輪後補的問句，填 0:55–2:19 的空檔） |
 | ar203 ar204 | 故事在第九書的開頭：敘拉古的希倫國王剛掌王權，立誓把一頂金冠獻進神廟 | #3 | praef. 9「Hiero Syracusis auctus regia potestate … auream coronam votivam diis inmortalibus in quodam fano constituisset ponendam」 | 確認；不給希倫的年份（#19） |
 | ar205 | 說是金冠，其實是一圈金葉子做的花環 | #5 | 「coronam votivam」；RORRES「would have been in the form of a wreath」 | 原文字義＋現代詮釋，照第 5 列與〈給撰稿的提醒〉的說法 |
 | ar206 ar207 | 國王按重量，把金子交給工匠；交件的時候，重量分毫不差 | #3 | praef. 9「aurum ad sacoma adpendit redemptori … ad sacoma pondus coronae visus est praestitisse」；Morgan「corresponded precisely」 | 確認 |
@@ -42,8 +43,9 @@ ar406、ar412、ar419、ar505、ar513、ar516、ar517、ar518），不帶新事�
 | ar306 | 這就是今天說的浮力；他講的，是在水裡秤重 | #21 #22 | 第 21 列備註；WP「upthrust」 | 確認 |
 | ar307 | 開頭那池漫出來的水，比的卻是體積，不是這本書裡的道理 | #22 | RORRES「it does not make use of Archimedes' Law of Buoyancy」；WP「This relation is not what is known as Archimedes' principle」 | 確認；不說「在浴缸裡發現了阿基米德原理」 |
 | ar309 | 開頭那個再晚一百多年的版本，出自希臘作家普魯塔克（回收 ar111） | #24 #41 | PLUT-NP；WP「a century later」（二手） | 確認（年代差是二手） |
-| ar310 | 據說，阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠 | #41 | 1094C「λουόμενος ὥς φασιν ἐκ τῆς ὑπερχύσεως ἐννοήσας τὴν τοῦ στεφάνου μέτρησιν」 | 依覆核新增的列；不用英譯加的希倫、金子比例、bathing-stool |
+| ar310 | 阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠 | #41 | 1094C「λουόμενος … ἐκ τῆς ὑπερχύσεως ἐννοήσας τὴν τοῦ στεφάνου μέτρησιν」 | 依覆核新增的列；不用英譯加的希倫、金子比例、bathing-stool |
 | ar311 | 像被什麼附了身，跳出來大喊「我找到了」，一路喊著，走了 | #41 | 1094C「οἷον ἔκ τινος κατοχῆς ἢ ἐπιπνοίας ἐξήλατο βοῶν "εὕρηκα," καὶ τοῦτο πολλάκις φθεγγόμενος ἐβάδιζεν」 | 覆核：「一路喊著走了」，不說「喊完才走」 |
+| ar322 | 這段前面，普魯塔克自己加了「據說」：到他那時候，這已經是大家在傳的故事 | #24 #41 | 1094C「ὥς φασιν」；Baxter 英譯「as the story goes of him」；第 24 列備註「可見那時這已是流傳的故事」 | 確認（「大家在傳」是第 24 列備註的推論） |
 | ar312 ar313 | 少的那一樣，就是光著身子：衣服的事，普魯塔克一個字也沒提；也沒說他往家裡去；他用的字是「走」，不是「跑」（回收 ar111） | #24 #41 | 1094C 沒有 γυμνός、沒有回家；ἐβάδιζεν | 覆核：說「沒提衣服」，不說「證明他沒有光著身子」 |
 | ar315 | 羅馬帝國晚期，一首不知道作者的拉丁詩，講的顯然是同一個故事 | #28 #29 #42 | CARMEN vv. 125–134；Hultsch Prolegomena §118「rem in medio relinquo」 | 年代 DISPUTED，照覆核不給世紀 |
 | ar316 | 西西里的國王、獻給神的金冠、偷摻了銀的工匠，都在 | #28 #44 | 「regem namque ferunt Siculum quam voverat olim caelicolum regi ex auro statuisse coronam … argenti tantundem opifex immiscuit auro」 | 確認 |
@@ -54,16 +56,14 @@ ar406、ar412、ar419、ar505、ar513、ar516、ar517、ar518），不帶新事�
 | ar403 | 他寫了一篇短文，後人叫它《小天平》 | #31 | Favaro「senza titolo」；RORRES「entitled La Bilancetta」 | 確認（手稿本身沒有標題） |
 | ar404 ar405 | 照有些人寫的，把王冠放進水裡，看水漲多少來分辨金和銀，這種說法，老實講，很粗糙，離精確差得遠（回收 ar113） | #32 | p. 215「come da alcuni è scritto … dalle differenze del far più o meno ricrescere o traboccare l'aqqua … par cosa, per così dirla, molto grossa e lontana dall'esquisitezza」 | 確認；中譯照第 32 列；伽利略沒點名維特魯威 |
 | ar407 ar420 ar408 | 他猜：阿基米德用水揭穿偷金子的事傳開了；那個時代有位作家把它寫了下來，為了在聽來的那一點消息上多補一些，就自己加上了量水的做法 | #33 | pp. 215–216「spargendosi la fama … da qualche scrittore di quei tempi lasciata memoria … per aggiugner qualche cosa a quel poco che per fama avea inteso」 | 伽利略的推測；覆核：是「那個時代」的作家，不是維特魯威 |
-| ar409 ar410 | 我們覺得，這是整份檔案裡最妙的一句：四百多年前，就有人懷疑量水這一段是寫的人自己補的 | #33 | 第 33 列備註「這是整集最好的一句」；1586 到 2026 年 | 意見，標「我們覺得」 |
+| ar409 | 我們覺得，這是整份檔案裡最妙的一句 | #33 | 第 33 列備註「這是整集最好的一句」 | 意見，標「我們覺得」；不再重講 ar408（盲評第 1 輪） |
 | ar411 | 這是他的猜測，不是證據；他懷疑的也只有方法，不是那場澡 | #33 | 第 33 列備註「他也沒有懷疑浴缸或裸奔，只懷疑方法」 | 確認 |
 | ar413 | 天平。跟剛剛那首詩一樣，在水裡秤 | #34 #28 | 「Il modo è co 'l mezo di una bilancia」；第 28 列備註「這正是伽利略後來猜的方法」 | 確認 |
 | ar414 ar415 | 還記得那本《浮體論》嗎？伽利略說，這才是阿基米德會用的辦法，因為它靠的正是那本書裡證明過的道理 | #34 #21 | 「il qual modo crederò io esser l'istesso che usasse Archimede」；第 34 列備註 | 確認（回呼 ar303） |
-| ar416 | 他還自己做了一把：秤桿上繞著鋼弦和黃銅絲，用針尖劃過去，聽著、摸著數圈數 | #34 | 「filo di corda di acciaio」「filo di ottone」；「piglisi uno stiletto acutissimo … parte mediante l'udito, parte mediante il ritrovar la mano」 | 覆核：鋼弦加黃銅絲，不說「銅線」 |
-| ar417 ar418 | 這篇短文，他只給朋友看，生前沒有印；一直到一六四四年，他過世兩年後，才第一次印出來 | #31 | Favaro「non fu data alle stampe vivente l'Autore … mostrata … agli amici」「due anni dopo la morte dell'Autore」（註：Palermo 1644） | 確認 |
 | ar501 ar502 | 數學家羅瑞斯替它算過：假設花環重一公斤，三成的金子被換成了銀，容器的口直徑二十公分 | #37 | RORRES「Hiero's wreath weighed 1000 grams … circular opening of diameter 20 centimeters … replaced 30% (300 grams)」 | 確認；明說是「假設」 |
 | ar503 ar504 | 把花環和一樣重的金塊各放進去，水面的高度只差零點四一公釐，連半公釐都不到 | #37 | RORRES「0.206 minus 0.165 centimeters, or 0.41 millimeters」 | 確認 |
 | ar506 | 兩邊會差十三公克；他說，阿基米德那個時代的秤，很容易就秤得出來 | #37 | RORRES「an imbalance of 13.0 grams. Scales from Archimedes' time could easily detect such an imbalance」 | 確認 |
 | ar507 ar508 | 二〇〇六年，他對《科學美國人》說：量水的方法理論上行得通；可是真的動手做，現實就會擋路 | #37 | SCIAM（datePublished 2006-12-08）引 Rorres「The volumetric method works in theory … the real world gets in the way」 | 確認 |
 | ar509 | 方法大概行不通 | #38 | 第 38 列備註「最有名的那個方法，大概行不通」 | 確認（接問句） |
 | ar510 ar511 ar512 | 羅瑞斯說故事可能有幾分真：阿基米德確實量過東西的體積；可是那個「我找到了」的時刻，也許是因為他發現了浮力，而不是坐在浴缸裡、再光著身子跑過大街 | #38 | SCIAM「"There may be some truth to it," … "Archimedes did measure the volume of things but the eureka moment was maybe due to his original discovery [concerning buoyance], not to sitting in the bathtub and then running through the streets of Syracuse naked."」 | 學者看法，掛在羅瑞斯名下 |
-| ar514 ar515 | 光著身子跑回家這一幕，只有一份將近兩百年後的紀錄；它到底有沒有發生，沒有任何證據能回答（回收 ar114） | #1 #7 #18 #24 #28 #38 #41 | 覆核〈撰稿不能說〉與結檔建議 | 覆核第 1 點：說「這一幕」只有一份紀錄，不說「整個故事只有一份」；結檔句只講這一次 |
+| ar514 ar515 | 光著身子跑回家這一幕，只有開頭那位羅馬建築師，留下一份紀錄；它到底有沒有發生，沒有任何證據能回答（回收 ar114） | #1 #7 #18 #24 #28 #38 #41 | 覆核〈撰稿不能說〉與結檔建議 | 覆核第 1 點：說「這一幕」只有一份紀錄，不說「整個故事只有一份」；「將近兩百年」只在 ar108 講，結檔句用「開頭那位」點名回呼（盲評第 1 輪）；結檔句只講這一次 |
