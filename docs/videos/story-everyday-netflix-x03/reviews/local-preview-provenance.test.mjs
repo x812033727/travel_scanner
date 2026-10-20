@@ -12,7 +12,6 @@ const text = (file) => readFileSync(file, "utf8");
 const writeJson = (file, value) => writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
 const OLD = "a".repeat(64);
 const AUDIO = "b".repeat(64);
-const CURRENT = "f".repeat(64);
 const SPEECH = "1".repeat(16);
 const SERIES = "c".repeat(64);
 const EVENT = "d".repeat(64);
@@ -22,6 +21,7 @@ const files = {
   original: ["source-review-release.md", "blind-a-release.md", "blind-b-release.md"],
   revised: ["source-review-audio-revision.md", "blind-a-audio-revision.md", "blind-b-audio-revision.md"],
   visual: ["source-review-visual-revision.md", "visual-prompt-review.md"],
+  style: ["source-review-style-amendment.md", "visual-prompt-style-amendment.md"],
 };
 const roles = ["source", "narrative_a", "narrative_b"];
 
@@ -34,7 +34,7 @@ function fixture(t) {
   mkdirSync(reviews);
   mkdirSync(sidecars, { recursive: true });
   const evidence = (set, sha) => files[set].map((name, index) => {
-    const role = set === "visual" ? ["source", "visual"][index] : roles[index];
+    const role = set === "visual" || set === "style" ? ["source", "visual"][index] : roles[index];
     const bytes = `PASS: independent ${role} review of ${sha}\n`;
     writeFileSync(path.join(reviews, name), bytes);
     return { role, file: `reviews/${name}`, sha256: digest(bytes) };
@@ -74,10 +74,14 @@ function fixture(t) {
   };
   const revisionFile = path.join(reviews, "audio-revision-review.json");
   writeJson(revisionFile, revision);
-  const currentDoc = { slug: SLUG, voice: { name: "synthetic" }, scenes: CHANGED_VISUAL_SCENE_IDS.map((id) => ({
+  const beforeStyle = { slug: SLUG, look: { preset: "cute-mystery" }, voice: { name: "synthetic" }, scenes: CHANGED_VISUAL_SCENE_IDS.map((id) => ({
     id, template: "shot", data: { prompt: `object-only shot for ${id}`, camera: "static" },
     lines: [{ id: id.slice(6), text: `spoken words for ${id}` }],
   })) };
+  const visualSha = digest(`${JSON.stringify(beforeStyle, null, 2)}\n`);
+  const currentDoc = structuredClone(beforeStyle);
+  currentDoc.look.style = "objects have no faces or mascot features";
+  const currentSha = digest(`${JSON.stringify(currentDoc, null, 2)}\n`);
   const visual = {
     schema_version: 1,
     kind: "story_visual_prompt_revision_review",
@@ -85,33 +89,52 @@ function fixture(t) {
     decision: "reviewed_visual_prompt_revision_pass",
     scope: "visual_prompts_only",
     previous_video_json_sha256: AUDIO,
-    video_json_sha256: CURRENT,
+    video_json_sha256: visualSha,
     audio_revision_review_sha256: digest(text(revisionFile)),
     speech_hash: SPEECH,
-    displayed_narration_sha256: displayedNarrationSha256(currentDoc),
-    non_prompt_document_sha256: nonPromptDocumentSha256(currentDoc),
+    displayed_narration_sha256: displayedNarrationSha256(beforeStyle),
+    non_prompt_document_sha256: nonPromptDocumentSha256(beforeStyle),
     changed_visual_scene_ids: [...CHANGED_VISUAL_SCENE_IDS],
-    evidence: evidence("visual", CURRENT),
+    evidence: evidence("visual", visualSha),
   };
   const visualFile = path.join(reviews, "visual-prompt-revision.json");
   writeJson(visualFile, visual);
-  return { projectDir, reviews, bootstrap, bootstrapFile, sidecarFile, revision, revisionFile, currentDoc, visual, visualFile,
-    verify: () => verifyPreviewReviewLineage({ projectDir, currentVideoSha: CURRENT, seriesSha: SERIES, currentDoc, currentSpeechHash: SPEECH }) };
+  const style = {
+    schema_version: 1,
+    kind: "story_visual_style_amendment_review",
+    slug: SLUG,
+    decision: "reviewed_visual_style_amendment_pass",
+    scope: "look_style_only",
+    previous_video_json_sha256: visualSha,
+    video_json_sha256: currentSha,
+    previous_visual_review_sha256: digest(text(visualFile)),
+    changed_json_pointers: ["/look/style"],
+    speech_hash: SPEECH,
+    displayed_narration_sha256: displayedNarrationSha256(currentDoc),
+    non_prompt_document_sha256: nonPromptDocumentSha256(currentDoc),
+    evidence: evidence("style", currentSha),
+  };
+  const styleFile = path.join(reviews, "visual-style-amendment.json");
+  writeJson(styleFile, style);
+  return { projectDir, reviews, bootstrap, bootstrapFile, sidecarFile, revision, revisionFile, currentDoc, visual, visualFile, style, styleFile, visualSha, currentSha,
+    verify: () => verifyPreviewReviewLineage({ projectDir, currentVideoSha: currentSha, seriesSha: SERIES, currentDoc, currentSpeechHash: SPEECH }) };
 }
 
-test("accepts an immutable bootstrap, an audio revision, then a visual-only revision", (t) => {
+test("accepts an immutable bootstrap, audio and visual revisions, then a style-only amendment", (t) => {
   const f = fixture(t);
   const lineage = f.verify();
   assert.equal(lineage.historical_bootstrap.video_json_sha256, OLD);
   assert.equal(lineage.audio_revision.video_json_sha256, AUDIO);
-  assert.equal(lineage.visual_revision.video_json_sha256, CURRENT);
+  assert.equal(lineage.visual_revision.video_json_sha256, f.visualSha);
+  assert.equal(lineage.visual_style_amendment.video_json_sha256, f.currentSha);
   assert.deepEqual(lineage.audio_revision.changed_line_ids, CHANGED_AUDIO_LINE_IDS);
   assert.deepEqual(lineage.visual_revision.changed_visual_scene_ids, CHANGED_VISUAL_SCENE_IDS);
+  assert.deepEqual(lineage.visual_style_amendment.changed_json_pointers, ["/look/style"]);
 });
 
 test("rejects current visual script or prior audio evidence drift", (t) => {
   const f = fixture(t);
-  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: "9".repeat(64), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /current visual-revision script SHA drift/);
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: "9".repeat(64), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /current script is not canonical JSON or has drifted/);
   writeFileSync(path.join(f.reviews, files.revised[0]), `PASS but changed ${AUDIO}\n`);
   assert.throws(f.verify, /review evidence SHA drift/);
 });
@@ -164,26 +187,53 @@ test("rejects visual receipts disconnected from the audio receipt or speech time
   assert.throws(f.verify, /changed the measured speech hash/);
 });
 
-test("rejects non-prompt or displayed narration drift and a changed visual-scene set", (t) => {
+test("rejects changes beyond look.style and a changed historical visual-scene set", (t) => {
   const f = fixture(t);
   f.currentDoc.scenes[0].data.camera = "tracking";
-  assert.throws(f.verify, /changed non-prompt content/);
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: digest(`${JSON.stringify(f.currentDoc, null, 2)}\n`), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /style-free script does not reconstruct/);
   f.currentDoc.scenes[0].data.camera = "static";
   f.currentDoc.scenes[0].lines[0].text = "different displayed text";
-  assert.throws(f.verify, /displayed narration drift/);
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: digest(`${JSON.stringify(f.currentDoc, null, 2)}\n`), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /style-free script does not reconstruct/);
   f.currentDoc.scenes[0].lines[0].text = `spoken words for ${CHANGED_VISUAL_SCENE_IDS[0]}`;
   f.visual.changed_visual_scene_ids.pop();
   writeJson(f.visualFile, f.visual);
   assert.throws(f.verify, /changed-scene list/);
 });
 
-test("permits only shot prompt values to change under the current visual receipt", (t) => {
+test("rejects changes to shot prompts after the visual receipt is frozen", (t) => {
   const f = fixture(t);
   f.currentDoc.scenes[0].data.prompt = "revised object-only prompt";
-  assert.doesNotThrow(f.verify);
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: digest(`${JSON.stringify(f.currentDoc, null, 2)}\n`), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /style-free script does not reconstruct/);
+  f.currentDoc.scenes[0].data.prompt = `object-only shot for ${CHANGED_VISUAL_SCENE_IDS[0]}`;
   const visualFile = path.join(f.reviews, files.visual[1]);
   writeFileSync(visualFile, `PASS: but no bound script SHA\n`);
   f.visual.evidence[1].sha256 = digest(text(visualFile));
   writeJson(f.visualFile, f.visual);
   assert.throws(f.verify, /does not mention its script SHA/);
+});
+
+test("rejects style receipt and style evidence drift independently", (t) => {
+  const f = fixture(t);
+  f.style.previous_visual_review_sha256 = "9".repeat(64);
+  writeJson(f.styleFile, f.style);
+  assert.throws(f.verify, /references a different visual receipt/);
+  f.style.previous_visual_review_sha256 = digest(text(f.visualFile));
+  f.style.changed_json_pointers = ["/look/style", "/scenes/0/data/prompt"];
+  writeJson(f.styleFile, f.style);
+  assert.throws(f.verify, /changed-field list/);
+  f.style.changed_json_pointers = ["/look/style"];
+  writeJson(f.styleFile, f.style);
+  const file = path.join(f.reviews, files.style[0]);
+  writeFileSync(file, "PASS but no current script hash\n");
+  f.style.evidence[0].sha256 = digest(text(file));
+  writeJson(f.styleFile, f.style);
+  assert.throws(f.verify, /does not mention its script SHA/);
+});
+
+test("the only accepted style edit is an added look.style field", (t) => {
+  const f = fixture(t);
+  f.currentDoc.look.style = "a different style";
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: digest(`${JSON.stringify(f.currentDoc, null, 2)}\n`), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /current style-amendment script SHA drift/);
+  delete f.currentDoc.look.style;
+  assert.throws(() => verifyPreviewReviewLineage({ projectDir: f.projectDir, currentVideoSha: digest(`${JSON.stringify(f.currentDoc, null, 2)}\n`), seriesSha: SERIES, currentDoc: f.currentDoc, currentSpeechHash: SPEECH }), /style amendment is missing look.style/);
 });

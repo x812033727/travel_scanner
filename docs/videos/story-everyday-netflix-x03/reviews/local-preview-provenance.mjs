@@ -33,7 +33,12 @@ const VISUAL_EVIDENCE = {
   source: "reviews/source-review-visual-revision.md",
   visual: "reviews/visual-prompt-review.md",
 };
+const STYLE_EVIDENCE = {
+  source: "reviews/source-review-style-amendment.md",
+  visual: "reviews/visual-prompt-style-amendment.md",
+};
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const canonicalVideoSha256 = (doc) => sha256(`${JSON.stringify(doc, null, 2)}\n`);
 const readJsonBytes = (file) => {
   const bytes = readFileSync(file);
   return { value: JSON.parse(bytes.toString("utf8")), sha256: sha256(bytes) };
@@ -73,12 +78,16 @@ function verifyEvidence({ projectDir, entries, expected, roles = ROLES, boundVid
   });
 }
 
-/** Read-only checks for immutable genesis, reviewed audio edits, then reviewed visual edits. */
+/** Read-only checks for immutable genesis, reviewed audio, visual prompts, then visual style. */
 export function verifyPreviewReviewLineage({ projectDir, currentVideoSha, seriesSha, currentDoc, currentSpeechHash }) {
   assert.match(currentVideoSha, /^[a-f0-9]{64}$/);
   assert.match(seriesSha, /^[a-f0-9]{64}$/);
   assert.match(currentSpeechHash, /^[a-f0-9]{16}$/);
   assert.equal(currentDoc.slug, "story-everyday-netflix-x03");
+  assert.equal(canonicalVideoSha256(currentDoc), currentVideoSha, "current script is not canonical JSON or has drifted");
+  assert.ok(typeof currentDoc.look?.style === "string" && currentDoc.look.style.trim(), "style amendment is missing look.style");
+  const beforeStyle = structuredClone(currentDoc);
+  delete beforeStyle.look.style;
   const originalReceiptFile = path.join(projectDir, "reviews", "lexicon-bootstrap.json");
   const original = readJsonBytes(originalReceiptFile);
   const bootstrap = original.value;
@@ -125,18 +134,34 @@ export function verifyPreviewReviewLineage({ projectDir, currentVideoSha, series
   assert.equal(visual.decision, "reviewed_visual_prompt_revision_pass");
   assert.equal(visual.scope, "visual_prompts_only");
   assert.equal(visual.previous_video_json_sha256, review.video_json_sha256, "visual revision is not based on the reviewed audio script");
-  assert.equal(visual.video_json_sha256, currentVideoSha, "current visual-revision script SHA drift");
+  assert.equal(visual.video_json_sha256, canonicalVideoSha256(beforeStyle), "style-free script does not reconstruct the reviewed visual script");
   assert.equal(visual.audio_revision_review_sha256, revised.sha256, "visual revision references a different audio receipt");
-  // The previous complete script was not saved. The measured TTS timeline is an
-  // independent witness for spoken words/voice/pauses; the two current digests
-  // bind displayed text and every non-prompt field to this review going forward.
+  // The style-free current script reconstructs the previous complete video.json
+  // byte-for-byte, so the style addition is the only change since that review.
   assert.equal(visual.speech_hash, currentSpeechHash, "visual revision changed the measured speech hash");
-  assert.equal(visual.displayed_narration_sha256, displayedNarrationSha256(currentDoc), "visual revision displayed narration drift");
-  assert.equal(visual.non_prompt_document_sha256, nonPromptDocumentSha256(currentDoc), "visual revision changed non-prompt content");
+  assert.equal(visual.displayed_narration_sha256, displayedNarrationSha256(beforeStyle), "visual revision displayed narration drift");
+  assert.equal(visual.non_prompt_document_sha256, nonPromptDocumentSha256(beforeStyle), "visual revision changed non-prompt content");
   assert.deepEqual(visual.changed_visual_scene_ids, CHANGED_VISUAL_SCENE_IDS, "visual revision changed-scene list");
   const shotIds = new Set(currentDoc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id));
   for (const id of CHANGED_VISUAL_SCENE_IDS) assert.ok(shotIds.has(id), "visual revision names a missing shot: " + id);
-  const visualEvidence = verifyEvidence({ projectDir, entries: visual.evidence, expected: VISUAL_EVIDENCE, roles: ["source", "visual"], boundVideoSha: currentVideoSha });
+  const visualEvidence = verifyEvidence({ projectDir, entries: visual.evidence, expected: VISUAL_EVIDENCE, roles: ["source", "visual"], boundVideoSha: visual.video_json_sha256 });
+
+  const styleReceiptFile = path.join(projectDir, "reviews", "visual-style-amendment.json");
+  const styleReceipt = readJsonBytes(styleReceiptFile);
+  const style = styleReceipt.value;
+  assert.equal(style.schema_version, 1);
+  assert.equal(style.kind, "story_visual_style_amendment_review");
+  assert.equal(style.slug, bootstrap.slug);
+  assert.equal(style.decision, "reviewed_visual_style_amendment_pass");
+  assert.equal(style.scope, "look_style_only");
+  assert.equal(style.previous_video_json_sha256, visual.video_json_sha256, "style amendment is not based on the reviewed visual script");
+  assert.equal(style.video_json_sha256, currentVideoSha, "current style-amendment script SHA drift");
+  assert.equal(style.previous_visual_review_sha256, visualReceipt.sha256, "style amendment references a different visual receipt");
+  assert.deepEqual(style.changed_json_pointers, ["/look/style"], "style amendment changed-field list");
+  assert.equal(style.speech_hash, currentSpeechHash, "style amendment changed the measured speech hash");
+  assert.equal(style.displayed_narration_sha256, displayedNarrationSha256(currentDoc), "style amendment displayed narration drift");
+  assert.equal(style.non_prompt_document_sha256, nonPromptDocumentSha256(currentDoc), "style amendment non-prompt digest drift");
+  const styleEvidence = verifyEvidence({ projectDir, entries: style.evidence, expected: STYLE_EVIDENCE, roles: ["source", "visual"], boundVideoSha: currentVideoSha });
 
   return {
     historical_bootstrap: {
@@ -162,6 +187,18 @@ export function verifyPreviewReviewLineage({ projectDir, currentVideoSha, series
       changed_visual_scene_ids: visual.changed_visual_scene_ids,
       evidence: visualEvidence,
       scope: visual.scope,
+    },
+    visual_style_amendment: {
+      video_json_sha256: style.video_json_sha256,
+      review_receipt_sha256: styleReceipt.sha256,
+      previous_video_json_sha256: style.previous_video_json_sha256,
+      previous_visual_review_sha256: style.previous_visual_review_sha256,
+      changed_json_pointers: style.changed_json_pointers,
+      speech_hash: style.speech_hash,
+      displayed_narration_sha256: style.displayed_narration_sha256,
+      non_prompt_document_sha256: style.non_prompt_document_sha256,
+      evidence: styleEvidence,
+      scope: style.scope,
     },
   };
 }
