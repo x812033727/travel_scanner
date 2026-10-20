@@ -63,11 +63,12 @@ async function main() {
   const scriptSha = await sha256File(docFile);
   const seriesFile = path.join(project.dir, "series.json");
   const seriesSha = await sha256File(seriesFile);
-  const reviewLineage = verifyPreviewReviewLineage({ projectDir: project.dir, currentVideoSha: scriptSha, seriesSha });
   const timelineFile = within(workdir, "timeline.json");
   const timeline = read(timelineFile);
   assert.equal(timeline.fps, FPS, "timeline must use 30 fps");
-  assert.equal(timeline.speech_hash, speechHash(doc, lexicon), "speech hash drift");
+  const currentSpeechHash = speechHash(doc, lexicon);
+  assert.equal(timeline.speech_hash, currentSpeechHash, "speech hash drift");
+  const reviewLineage = verifyPreviewReviewLineage({ projectDir: project.dir, currentVideoSha: scriptSha, seriesSha, currentDoc: doc, currentSpeechHash });
   assert.deepEqual(audioEvidenceProblems(timeline, workdir), [], "TTS evidence drift");
   const introAt = timeline.chapters[1].start_frame;
   assert.ok(Number.isSafeInteger(introAt) && introAt > 0 && introAt < timeline.total_frames);
