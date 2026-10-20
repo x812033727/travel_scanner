@@ -13,6 +13,7 @@ depends_on:
   - 2026-10-20-curio-s28-one-sourced-short-script
 scope:
   - docs/videos/curio-s28/shorts.json
+  - docs/videos/curio-s28/short-verify-1.md
   - docs/videos/curio-s28/short-verify-2.md
 ---
 
@@ -35,7 +36,7 @@ separate a locally complete cut from any site/YouTube gate still pending.
 
 ## Steps
 
-- [ ] Wait for S34 producer to release the voice/ASR call window.
+- [x] Wait for S34 producer to release the voice/ASR call window.
 - [ ] Run `from-episode` server build against S28's existing keyframes, then
       `check-audio`; repair only flagged phrases if needed.
 - [ ] Bind an independent factual `verify.json` to the resolved script, run
@@ -44,7 +45,7 @@ separate a locally complete cut from any site/YouTube gate still pending.
 ## How to verify
 
 `VIDEO_WORKDIR=/workspace/.video-work node tools/video/shorts/cli.mjs from-episode --slug curio-s28 --check`;
-`node tools/video/shorts/cli.mjs from-episode --slug curio-s28 --workdir /workspace/.video-work --speech server`;
+`node tools/video/shorts/cli.mjs from-episode --slug curio-s28 --workdir /workspace/.video-work/shorts --speech server`;
 `node tools/video/shorts/cli.mjs check-audio --dir <build>`;
 `node tools/video/shorts/cli.mjs qa --dir <build> --verify <verify.json>`;
 `node tools/video/shorts/cli.mjs package --dir <build>`.
@@ -55,3 +56,8 @@ Preflight `short-verify-1.md` and script commit `d60b3c03` pass one-Short
 validation, sourced claims, and five unique keyframe hashes. The long film
 has no YouTube video ID at this point, so a package may rightly fail the
 full-film-link item; keep that explicit until a real ID is linked.
+`VIDEO_WORKDIR=/workspace/.video-work` resolves the source episode, while
+`--workdir /workspace/.video-work/shorts` keeps the build and shared speech
+cache with the other completed Shorts.
+
+2026-10-20：S34 製作者已釋出語音時窗；S28 修鏡版 first build 30.10 秒／8 句，初檢兩句辨音被標，只定點重錄 2 句後第二版 30.233 秒，仍是同兩句被標。直式六幕與首尾抽格通過；沒有把 6/8 核音說成全過。只改 #4 與 #7 兩句更自然同義文字，現行 `shorts.json` SHA `586e971e165583f43185794ac504c31d7a6ea1aaa1ac532dd6acce0380b2a753`，來源與 5 張影格重新檢查通過；詳 `short-verify-2.md`。語音／ASR 時窗已交 S05 Short，等其明確放行才重建新版。舊兩支成片的 `verify.json`／核音不沿用。
