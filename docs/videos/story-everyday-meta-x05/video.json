@@ -154,8 +154,8 @@
     },
     {
       "setup": "m050605",
-      "payoff": "m050609",
-      "what": "RL 分部虧損能否歸到單一產品"
+      "payoff": "m050608",
+      "what": "FY2025 RL 哪幾項成本費用推深分部虧損"
     },
     {
       "setup": "m050610",
@@ -166,6 +166,11 @@
       "setup": "m050613",
       "payoff": "m050614",
       "what": "FY2025 兩個部門放回同一張表的精確合計"
+    },
+    {
+      "setup": "m050609",
+      "payoff": "m050610",
+      "what": "未上市產品的研發投資可能何時實現"
     }
   ],
   "youtube": {
@@ -926,6 +931,23 @@
     },
     {
       "id": "x05-b04-s01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a quiet wooden market counter. One older tray of plain ivory ad tiles is visible; a second tray is entirely hidden under a smooth opaque cloth, with a hand paused above its edge. Solid-color walls and smooth unmarked objects.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050401",
+          "text": "二〇二三年，廣告送達數再增百分之二十八。",
+          "emotion": "說書語氣，自然有起伏"
+        }
+      ],
+      "chapter": "二〇二三年，廣告量價再次分岔"
+    },
+    {
+      "id": "x05-b04-s02",
       "template": "stats",
       "data": {
         "title": "FY2023｜廣告送達數",
@@ -940,23 +962,6 @@
           }
         ],
         "source": "Meta FY2023 Form 10-K，Revenue / Advertising"
-      },
-      "lines": [
-        {
-          "id": "m050401",
-          "text": "二〇二三年，廣告送達數再增百分之二十八。",
-          "emotion": "說書語氣，自然有起伏"
-        }
-      ],
-      "chapter": "二〇二三年，廣告送達再增，RL 那欄仍蓋著"
-    },
-    {
-      "id": "x05-b04-s02",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium view inside a public transit car. Anonymous silhouettes hold handsets seen only from behind while more plain ad-placement tiles appear in the foreground; the people remain featureless and unidentifiable.",
-        "camera": "push in",
-        "visual": "still"
       },
       "lines": [
         {
@@ -1251,10 +1256,8 @@
       "lines": [
         {
           "id": "m050411",
-          "text": "FoA 正項回升，RL 負項卻加深；公司合計還會停在低谷嗎？",
-          "emotion": "問句上揚，停半拍",
-          "say": "艾夫歐欸 正項回升，阿爾艾爾 負項卻加深；公司合計還會停在低谷嗎？",
-          "say_for": "1b4ac0cf7acf"
+          "text": "把兩欄相加，公司合計還會停在低谷嗎？",
+          "emotion": "問句上揚，停半拍"
         }
       ]
     },
@@ -1292,6 +1295,23 @@
     },
     {
       "id": "x05-b05-s01",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two nearly equal pale green ceramic stacks on a blank wooden table. A tiny spacer bead between their bases is entirely hidden beneath a thick smooth opaque cup. Neither stack carries numerals or marks.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050501",
+          "text": "兩份年報的精確合計，只差二百萬美元。",
+          "emotion": "說書語氣，自然有起伏"
+        }
+      ],
+      "chapter": "相似的端點藏著二〇二二年的低谷"
+    },
+    {
+      "id": "x05-b05-s02",
       "template": "stats",
       "data": {
         "title": "公司營業利益｜兩個端點",
@@ -1310,23 +1330,6 @@
           }
         ],
         "source": "Meta FY2021／FY2023 Form 10-K，Segment profitability"
-      },
-      "lines": [
-        {
-          "id": "m050501",
-          "text": "兩份年報的精確合計，只差二百萬美元。",
-          "emotion": "說書語氣，自然有起伏"
-        }
-      ],
-      "chapter": "相似的端點藏著二〇二二年的低谷"
-    },
-    {
-      "id": "x05-b05-s02",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium view of two equal-length rows of physical pieces on a neutral mat. Mint pieces arrive at one end as rust weights arrive at the other; their nearly matched movements oppose one another.",
-        "camera": "pan right",
-        "visual": "still"
       },
       "lines": [
         {
@@ -1390,6 +1393,24 @@
     },
     {
       "id": "x05-b05-s06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of two comparison stations. A tall sage-green later stack stands visible while a neighboring terracotta difference bowl stays fully hidden beneath a thick opaque cover. Smooth objects with no paper or markings.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050507",
+          "text": "RL 虧損也加深，幅度卻只有約三十一億；兩者不再貼著走。",
+          "emotion": "說書語氣，自然有起伏",
+          "say": "阿爾艾爾 虧損也加深，幅度卻只有約三十一億；兩者不再貼著走。",
+          "say_for": "6044a9a0d58a"
+        }
+      ]
+    },
+    {
+      "id": "x05-b05-s07",
       "template": "stats",
       "data": {
         "title": "FY2023→FY2025｜兩個分部的端點差",
@@ -1404,24 +1425,6 @@
           }
         ],
         "source": "Meta FY2023／FY2025 Form 10-K，Segment profitability"
-      },
-      "lines": [
-        {
-          "id": "m050507",
-          "text": "RL 虧損也加深，幅度卻只有約三十一億；兩者不再貼著走。",
-          "emotion": "說書語氣，自然有起伏",
-          "say": "阿爾艾爾 虧損也加深，幅度卻只有約三十一億；兩者不再貼著走。",
-          "say_for": "6044a9a0d58a"
-        }
-      ]
-    },
-    {
-      "id": "x05-b05-s07",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead view of two opaque year boxes separated by a visible empty space on the shelf. There is deliberately no connecting ribbon or path across the missing middle box.",
-        "camera": "push in",
-        "visual": "still"
       },
       "lines": [
         {
@@ -1564,7 +1567,7 @@
       "id": "x05-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of a prototype bench. More plain eyeglass frames sit in the later open box, while fewer generic headset shells sit in a later box. Earlier boxes stand behind for directional comparison; both product-result drawers remain locked.",
+        "prompt": "Medium view of a prototype bench. Plain eyeglass frames and generic headset shells sit in separate earlier and later boxes, but every later box is closed by a snug opaque lid. Two small product-result drawers remain locked. All surfaces are smooth and unmarked.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1577,13 +1580,13 @@
           "say_for": "e96c36c9ba29"
         }
       ],
-      "chapter": "二〇二五年，兩類裝置走向相反"
+      "chapter": "二〇二五年，眼鏡與 Quest 銷售分岔"
     },
     {
       "id": "x05-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of one large terracotta-colored research revenue bowl receiving plain eyeglass, headset, software and content tokens together. Four smaller individual bowls remain closed and empty of figures.",
+        "prompt": "Overhead view of a research bench after the lids have been opened. The later box holds more plain eyeglass frames than its earlier neighbor, while a later box of generic headset shells holds fewer. Both types feed one large terracotta-colored research revenue bowl alongside smooth software discs and plain content sleeves; no individual result bowls are open.",
         "camera": "static",
         "visual": "still"
       },
@@ -1624,14 +1627,14 @@
       "id": "x05-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a research workroom. Several blue expense urns stand between the single shared brick-colored result urn and generic eyeglass and headset props. Nothing connects an expense urn to one specific device.",
+        "prompt": "Wide view of a research workroom. Three closed blue expense urns stand before one shared brick-colored result urn; what is inside each cost urn cannot yet be seen. The room holds only smooth plain objects and no documents.",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "m050605",
-          "text": "年報指出成本費用提高；它能把增加的虧損指給某一款裝置嗎？",
+          "text": "年報指出成本費用提高；到底是哪幾項費用推深虧損？",
           "emotion": "問句上揚，停半拍"
         }
       ]
@@ -1647,10 +1650,10 @@
       "lines": [
         {
           "id": "m050606",
-          "text": "先是 RL 的人事費增加。這是一個分部費用，不是眼鏡的單獨損益。",
+          "text": "先是 RL 的人事費增加，推高整個分部的成本費用。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "先是 阿爾艾爾 的人事費增加。這是一個分部費用，不是眼鏡的單獨損益。",
-          "say_for": "f4d9d79df109"
+          "say": "先是 阿爾艾爾 的人事費增加，推高整個分部的成本費用。",
+          "say_for": "edc0cbb477a1"
         }
       ]
     },
@@ -1665,10 +1668,8 @@
       "lines": [
         {
           "id": "m050607",
-          "text": "採購合約不能取消，年報估計了 RL 庫存承諾的損失；也沒有綁在某款裝置上。",
-          "emotion": "說書語氣，自然有起伏",
-          "say": "採購合約不能取消，年報估計了 阿爾艾爾 庫存承諾的損失；也沒有綁在某款裝置上。",
-          "say_for": "d17114f537dd"
+          "text": "另有無法取消的庫存採購承諾，相關損失也拉高費用。",
+          "emotion": "說書語氣，自然有起伏"
         }
       ]
     },
@@ -1694,17 +1695,15 @@
       "id": "x05-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a cabinet with compartments for plain eyeglass frames and a generic headset shell. Both individual compartments are shut; only one shared brick-colored result cup is open in front.",
+        "prompt": "Wide view through a research-room doorway. In the foreground, three cost urns rest on a plain workbench. Beyond the doorway, several unfinished smooth prototypes sit beneath opaque covers at increasing distances. The surfaces are blank.",
         "camera": "static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "m050609",
-          "text": "原因是分部表只列 RL 整欄的收入與營業虧損，沒有眼鏡或 Quest 各自的營業損益。",
-          "emotion": "說書語氣，自然有起伏",
-          "say": "原因是分部表只列 阿爾艾爾 整欄的收入與營業虧損，沒有眼鏡或 奎斯特 各自的營業損益。",
-          "say_for": "043c5fd2800b"
+          "text": "當年的費用已入帳；未上市產品的研發投資，何時才可能實現？",
+          "emotion": "說書語氣，自然有起伏"
         }
       ]
     },
@@ -1781,6 +1780,24 @@
     },
     {
       "id": "x05-b06-s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide overhead view of a worktable. A tall sage-green stack and a shorter terracotta weight face each other. A third company-result compartment between them is still closed, while a hand reaches toward its latch; the combined result is invisible.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050614",
+          "text": "所以答案是：兩欄相加，Meta 同年仍有約八百三十三億美元營業利益。",
+          "emotion": "說書語氣，自然有起伏",
+          "say": "所以答案是：兩欄相加，美塔 同年仍有約八百三十三億美元營業利益。",
+          "say_for": "5509a7e38447"
+        }
+      ]
+    },
+    {
+      "id": "x05-b06-s14",
       "template": "stats",
       "data": {
         "title": "FY2025｜同年同口徑的答案",
@@ -1799,24 +1816,6 @@
           }
         ],
         "source": "Meta FY2025 Form 10-K，Segment profitability"
-      },
-      "lines": [
-        {
-          "id": "m050614",
-          "text": "所以答案是：兩欄相加，Meta 同年仍有約八百三十三億美元營業利益。",
-          "emotion": "說書語氣，自然有起伏",
-          "say": "所以答案是：兩欄相加，美塔 同年仍有約八百三十三億美元營業利益。",
-          "say_for": "5509a7e38447"
-        }
-      ]
-    },
-    {
-      "id": "x05-b06-s14",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot of an ordinary home table. Plain eyeglass frames and a generic headset shell stand beside sealed blank boxes; one shared brick-colored research box sits farther back.",
-        "camera": "static",
-        "visual": "still"
       },
       "lines": [
         {
