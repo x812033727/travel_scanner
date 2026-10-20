@@ -19,7 +19,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "Skill 滿一年了還在重貼規則？12 個字叫出月結報表，背後一個資料夾",
-    "description": "同一句 12 個字的要求、同一個只有一份 CSV 的資料夾，「什麼都不給」「規則貼進對話」「寫成 Skill」各跑三次，再把 description 改成一句廢話跑三次：Skill 跟貼規則到底差在哪，Claude 有沒有用它怎麼看，沒被用到先查什麼。\n給每個月都有一件固定格式的事要交給 Claude 的人：月報、週報、貼文改寫、客訴回覆。會打指令的人與不會的人都看得懂，資料夾的寫法上傳到 Claude 應用程式也一樣。\n\n想照著做：練習資料夾、兩個版本的 Skill、三份要求、跑的腳本、每一次的結果與逐筆紀錄都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/skills-one-year-monthly-report/demo （逐筆紀錄是同一個資料夾的 runlog.txt）\n\n你會學到：\n・一個 Skill 資料夾的三個檔：SKILL.md（開頭三行加五條規則）、scripts/sum.mjs（26 行的算數腳本）、template.md（報表的四個區段）\n・計分（各 3 次）：什麼都不給 0／6（連檔案都沒有寫）、貼規則 6／6、Skill 6／6；打的字 12 對 346；開場多帶的 token ＋53 對 ＋296\n・貼規則與什麼都不給的六次全是手算（四次先想寫 Python 跑、沒被預先核准）；Skill 的三次跑的都是資料夾裡的腳本\n・不用問 Claude：串流裡第一筆工具呼叫就是 Skill，輸入是 {\"skill\": \"monthly-report\", \"args\": \"九月\"}\n・description 改成「專案維護用的說明。」照樣三次被呼叫、三次 6／6：名字對上了，所以被呼叫不是描述寫對的證據\n・claude plugin validate：引號沒關的那一份報錯、結束碼 1，並說執行時會載入成空的 metadata；欄位名打錯的只警告、結束碼 0，加 --strict 才是 1\n\n照著打的時候\n・先把 demo 複製到任何 git 儲存庫以外的地方。run.sh 每次從 seed 重建資料夾，再把 skills/good（或 skills/vague）複製到 .claude/skills/，把 prompts 裡的那一份當要求送進不開畫面的 claude -p。\n・旗標：--model sonnet --permission-mode default --tools \"Read,Glob,Grep,Edit,Write,Bash,Skill\" --allowedTools \"Read,Glob,Grep,Edit,Write,Bash(node *),Bash(mkdir *),Bash(cat *),Bash(ls *)\" --output-format stream-json --verbose --no-session-persistence --setting-sources project --strict-mcp-config --max-turns 40 --max-budget-usd 1。node 在預先核准的清單裡、python3 不在，所以 Skill 帶的腳本跑得了、模型自己寫的 Python 跑不了；Skill 可以用 allowed-tools 替自己的腳本預先核准（片中引用官方頁，這支沒有寫）。\n・專案的 .claude/settings.json 關掉內建與帳號同步的 Skill；三個內建外掛的 Skill 關不掉，每一臂都一樣。\n・每跑一次都用掉你的額度；這十三次每次回報約 0.02 到 0.07 美元。\n\n怎麼跑的\n・Linux 容器、Claude Code 2.1.304、Node v22.22.0，2026-10-20。十三次 session 都是 --model sonnet、不開畫面；主線三臂各 3 次、描述含糊 3 次、斜線 1 次。\n・沒有觀察的：任何互動式的畫面（/skills、/context、/skill-doctor、斜線選單、Claude 應用程式的 Customize 頁）；其他模型與作業系統；Claude 應用程式或 Codex 實際載入同一個資料夾（只引用官方頁的位置與欄位規則）；allowed-tools 預先核准的效果；手算會不會算錯（這次六次都對）。\n・試跑那一輪把腳本和範本放在專案資料夾裡，什麼都不給的那一次自己找到它們、做到五步；正式那一輪才把它們搬進 Skill 資料夾（runlog-pilot.txt）。",
+    "description": "同一句 12 個字的要求、同一個只有一份 CSV 的資料夾，「什麼都不給」「規則貼進對話」「寫成 Skill」各跑三次，再把 description 改成一句廢話跑三次：Skill 跟貼規則到底差在哪，Claude 有沒有用它怎麼看，沒被用到先查什麼。\n給每個月都有一件固定格式的事要交給 Claude 的人：月報、週報、貼文改寫、客訴回覆。會打指令的人與不會的人都看得懂，資料夾的寫法上傳到 Claude 應用程式也一樣。\n\n想照著做：練習資料夾、兩個版本的 Skill、三份要求、跑的腳本、每一次的結果與逐筆紀錄都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/skills-one-year-monthly-report/demo （逐筆紀錄是同一個資料夾的 runlog.txt）\n\n你會學到：\n・一個 Skill 資料夾的三個檔：SKILL.md（開頭四行加五條規則）、scripts/sum.mjs（26 行的算數腳本）、template.md（報表的四個區段）\n・計分（各 3 次）：什麼都不給 0／6（連檔案都沒有寫）、貼規則 6／6、Skill 6／6；打的字 12 對 346；開場多帶的 token ＋53 對 ＋296\n・貼規則與什麼都不給的六次全是手算（四次先想寫 Python 跑、沒被預先核准）；Skill 的三次跑的都是資料夾裡的腳本\n・不用問 Claude：串流裡第一筆工具呼叫就是 Skill，輸入是 {\"skill\": \"monthly-report\", \"args\": \"九月\"}\n・description 改成「專案維護用的說明。」照樣三次被呼叫、三次 6／6：名字很可能就對上了，所以被呼叫不是描述寫對的證據\n・claude plugin validate：引號沒關的那一份報錯、結束碼 1，並說執行時會載入成空的 metadata；欄位名打錯的只警告、結束碼 0，加 --strict 才是 1\n\n照著打的時候\n・先把 demo 複製到任何 git 儲存庫以外的地方。run.sh 每次從 seed 重建資料夾，再把 skills/good（或 skills/vague）複製到 .claude/skills/，把 prompts 裡的那一份當要求送進不開畫面的 claude -p。\n・旗標：--model sonnet --permission-mode default --tools \"Read,Glob,Grep,Edit,Write,Bash,Skill\" --allowedTools \"Read,Glob,Grep,Edit,Write,Bash(node *),Bash(mkdir *),Bash(cat *),Bash(ls *)\" --output-format stream-json --verbose --no-session-persistence --setting-sources project --strict-mcp-config --max-turns 40 --max-budget-usd 1。node 在預先核准的清單裡、python3 不在，所以 Skill 帶的腳本跑得了、模型自己寫的 Python 跑不了；Skill 可以用 allowed-tools 替自己的腳本預先核准（片中引用官方頁，這支沒有寫）。\n・專案的 .claude/settings.json 關掉內建與帳號同步的 Skill；三個內建外掛的 Skill 關不掉，每一臂都一樣。\n・每跑一次都用掉你的額度；這十三次每次回報約 0.02 到 0.07 美元。\n\n怎麼跑的\n・Linux 容器、Claude Code 2.1.304、Node v22.22.0，2026-10-20。十三次 session 都是 --model sonnet、不開畫面；主線三臂各 3 次、描述含糊 3 次、斜線 1 次。\n・沒有觀察的：任何互動式的畫面（/skills、/context、/skill-doctor、斜線選單、Claude 應用程式的 Customize 頁）；其他模型與作業系統；Claude 應用程式或 Codex 實際載入同一個資料夾（只引用官方頁的位置與欄位規則）；allowed-tools 預先核准的效果；手算會不會算錯（這次六次都對）。\n・試跑那一輪把腳本和範本放在專案資料夾裡，什麼都不給的那一次自己找到它們、做到五步；正式那一輪才把它們搬進 Skill 資料夾（runlog-pilot.txt）。",
     "tags": [
       "Claude Skill",
       "Agent Skills",
@@ -115,7 +115,7 @@
         },
         {
           "id": "g8y7",
-          "text": "它跑了一支腳本，寫出四個區段的報表，最後一行是總營收八萬五千兩百九十元。"
+          "text": "它跑了一支腳本，寫出四個區段的報表，回覆的最後一行是總營收八萬五千兩百九十元。"
         },
         {
           "id": "vy8u",
@@ -138,7 +138,7 @@
           {
             "side": "left",
             "name": "Claude",
-            "text": "報表已寫到 reports/2026-09.md，總營收 85,290 元"
+            "text": "報表已寫到 reports/2026-09.md,總營收 85,290 元。"
           }
         ]
       },
@@ -214,7 +214,7 @@
       "lines": [
         {
           "id": "6nfy",
-          "text": "什麼都不給的三次，一個報表檔都沒有寫。",
+          "text": "什麼都不給的三次，一個報表的檔案都沒有寫。",
           "reveal": 1,
           "emotion": "揭曉，短句"
         },
@@ -232,6 +232,33 @@
           "text": "寫成 Skill 的三次，一樣六個全中，而且三次都是它自己呼叫的。",
           "reveal": 1,
           "emotion": "「自己」加重"
+        }
+      ]
+    },
+    {
+      "id": "bare-reply",
+      "template": "quote",
+      "data": {
+        "kicker": "什麼都不給的那一次，它的回覆開頭",
+        "quote": "我沒辦法執行 Python 腳本,所以直接用資料手算。",
+        "source": "實際跑過 2026-10-20｜Claude Code 2.1.304｜b2 的回覆"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "t5zt",
+          "text": "什麼都不給的三次，它每次都想自己寫一支 Python 腳本。"
+        },
+        {
+          "id": "88sm",
+          "text": "腳本沒有被預先核准，它就改成手算，這次都算對了。",
+          "emotion": "平實"
+        },
+        {
+          "id": "4a2t",
+          "text": "回來的表多了占比這些沒人要求的欄，每次長得也不一樣。"
         }
       ]
     },
@@ -266,46 +293,19 @@
       ],
       "lines": [
         {
-          "id": "t5zt",
+          "id": "z6rq",
           "text": "差別是兩個數字：每個月打的字，和開場多帶的 token。",
           "reveal": 2
         },
         {
-          "id": "88sm",
+          "id": "3894",
           "text": "開場多帶的 token，Skill 是五十三個，貼規則是兩百九十六個。",
           "reveal": 2,
           "emotion": "數字一個一個講"
-        }
-      ]
-    },
-    {
-      "id": "bare-reply",
-      "template": "quote",
-      "data": {
-        "kicker": "什麼都不給的那一次，它的回覆開頭",
-        "quote": "我沒辦法執行 Python 腳本，所以直接用資料手算。",
-        "source": "實際跑過 2026-10-20｜Claude Code 2.1.304｜b2 的回覆"
-      },
-      "claims": [
-        "c5"
-      ],
-      "lines": [
-        {
-          "id": "4a2t",
-          "text": "什麼都不給的三次，它每次都想自己寫一支 Python 腳本。"
-        },
-        {
-          "id": "z6rq",
-          "text": "腳本沒有被預先核准，它就改成手算，這次都算對了。",
-          "emotion": "平實"
-        },
-        {
-          "id": "3894",
-          "text": "回來的表多了占比和退貨率，沒有人要求，每次長得也不一樣。"
         },
         {
           "id": "punu",
-          "text": "規則貼進去也全中，那 Skill 到底贏在哪？",
+          "text": "那 Skill 到底贏在哪？",
           "emotion": "問句上揚，收住"
         }
       ]
@@ -379,7 +379,7 @@
       "lines": [
         {
           "id": "96bi",
-          "text": "這支腳本讀那十二筆，算總營收、品項小計、退貨、大筆交易。",
+          "text": "它印出來的就是這一串數字，模型只負責填進範本。",
           "reveal": 1
         },
         {
@@ -404,7 +404,7 @@
       "lines": [
         {
           "id": "6fge",
-          "text": "二〇二五年十月十六號公開那一天，用途就寫在公告裡：帶著程式碼走。",
+          "text": "二〇二五年十月十六號公開那一天，用途就講明了：帶著程式碼走。",
           "reveal": 1
         },
         {
@@ -416,7 +416,7 @@
     },
     {
       "id": "tree",
-      "chapter": "打開資料夾：一萬元的門檻寫在腳本裡，不靠模型記",
+      "chapter": "一萬元的門檻寫在腳本裡，不靠模型記",
       "template": "terminal",
       "data": {
         "title": "Skill 資料夾裡的三個檔",
@@ -457,7 +457,7 @@
       "lines": [
         {
           "id": "z22u",
-          "text": "開頭三行夾在兩條橫線裡：一個名稱，一句描述。"
+          "text": "開頭四行：兩條橫線，中間夾著一個名稱、一句描述。"
         },
         {
           "id": "2ikd",
@@ -745,16 +745,11 @@
       "lines": [
         {
           "id": "rb7e",
-          "text": "這支放在專案裡，月報跟著店的資料夾走。",
-          "reveal": 1
+          "text": "這個 Skill 放在專案裡，月報跟著店的資料夾走，同事拉下來就有。",
+          "reveal": 2
         },
         {
           "id": "w36q",
-          "text": "外掛裡的那一份，哪裡啟用外掛，哪裡就有。",
-          "reveal": 1
-        },
-        {
-          "id": "zz8n",
           "text": "寫好了，我怎麼知道它這一次真的用了？",
           "emotion": "問句上揚，收住"
         }
@@ -775,25 +770,25 @@
       ],
       "lines": [
         {
-          "id": "9jq2",
+          "id": "zz8n",
           "text": "它回我說照規則做了，這不算證據。",
           "emotion": "平實"
         },
         {
-          "id": "aph7",
+          "id": "9jq2",
           "text": "我看紀錄：串流裡第一筆工具呼叫就是 Skill，點名了這個資料夾。"
         },
         {
-          "id": "pqjp",
+          "id": "aph7",
           "text": "連「九月」兩個字都當參數帶了進去，三次都一樣。",
           "emotion": "「三次都一樣」放慢"
         },
         {
-          "id": "22ig",
+          "id": "pqjp",
           "text": "用斜線直接叫的那一次剛好相反：紀錄裡沒有這筆呼叫。"
         },
         {
-          "id": "y8m8",
+          "id": "22ig",
           "text": "正文直接展開進對話，第一個請求多帶了五百一十五個 token。"
         }
       ]
@@ -814,7 +809,7 @@
           },
           {
             "title": "磁碟",
-            "detail": "報表檔在、最後一行對"
+            "detail": "報表的檔案在、最後一行對"
           }
         ],
         "source": "第 2 步是官方 skills 頁的做法；這次沒有開畫面"
@@ -825,18 +820,18 @@
       ],
       "lines": [
         {
-          "id": "rwfp",
+          "id": "y8m8",
           "text": "不開畫面的時候，看串流。",
           "reveal": 1
         },
         {
-          "id": "rxv7",
+          "id": "rwfp",
           "text": "開著畫面的時候，用清單指令看它在不在。",
           "reveal": 1
         },
         {
-          "id": "8wbc",
-          "text": "最後看磁碟：報表檔在不在，最後一行對不對。",
+          "id": "rxv7",
+          "text": "最後看磁碟：報表的檔案在不在，最後一行對不對。",
           "reveal": 1
         }
       ]
@@ -854,13 +849,13 @@
       ],
       "lines": [
         {
-          "id": "qgki",
+          "id": "8wbc",
           "text": "被呼叫，只代表它找到了；做對沒有，要看檔案。",
           "reveal": 1,
           "emotion": "「找到了」停半拍"
         },
         {
-          "id": "ffwe",
+          "id": "qgki",
           "text": "那如果我把描述那一行寫壞呢？",
           "emotion": "問句上揚，收住"
         }
@@ -884,7 +879,7 @@
       ],
       "lines": [
         {
-          "id": "ft26",
+          "id": "ffwe",
           "text": "我把描述換成一句專案維護用的說明，正文一個字不動。",
           "emotion": "壓低"
         }
@@ -928,7 +923,7 @@
       ],
       "lines": [
         {
-          "id": "b3pe",
+          "id": "ft26",
           "text": "三次，它三次都來接，三次都全中。",
           "reveal": 3,
           "emotion": "揭曉，短句"
@@ -939,7 +934,7 @@
       "id": "name-big",
       "template": "big",
       "data": {
-        "kicker": "monthly-report 對上了「業績整理」",
+        "kicker": "我的判讀：monthly-report 對上了「業績整理」",
         "text": "名字就對上了",
         "sub": "被呼叫，不是描述寫對的證據"
       },
@@ -949,21 +944,18 @@
       ],
       "lines": [
         {
-          "id": "f5j3",
-          "text": "救它的是名字：monthly-report，對上了業績整理這句話。"
+          "id": "b3pe",
+          "text": "我的判讀是名字救了它：monthly-report，對上了業績整理這句話。",
+          "emotion": "「我的判讀」標成意見"
         },
         {
-          "id": "kszc",
+          "id": "f5j3",
           "text": "所以被呼叫，不能當成描述寫對的證據。",
           "emotion": "「不能」加重"
         },
         {
-          "id": "v39w",
+          "id": "kszc",
           "text": "剛剛那一行描述還是照正道寫，放進你真的會講的詞。"
-        },
-        {
-          "id": "hzy5",
-          "text": "描述有上限，連同補充的觸發句一共一千五百三十六個字元，超過會被截掉。"
         }
       ]
     },
@@ -984,12 +976,12 @@
       ],
       "lines": [
         {
-          "id": "tu2a",
+          "id": "v39w",
           "text": "換另一種錯：描述的引號沒關。驗證指令直接報錯。",
           "reveal": 1
         },
         {
-          "id": "fu5c",
+          "id": "hzy5",
           "text": "它還講了後果：執行時這個 Skill 會載入成空的開頭，描述整個掉了。",
           "emotion": "放慢"
         }
@@ -999,7 +991,7 @@
       "id": "validate-b",
       "template": "terminal",
       "data": {
-        "title": "欄位名打錯一個字母的那一份（輸出節錄）",
+        "title": "欄位名多打一個字母的那一份（輸出節錄）",
         "command": "claude plugin validate .claude/skills",
         "output": [
           "‼ Found 1 warning:\n\n  > description: No description in frontmatter. A description helps users and\nClaude understand when to use this skill.\n\n√ Validation passed with warnings"
@@ -1012,8 +1004,8 @@
       ],
       "lines": [
         {
-          "id": "fuhi",
-          "text": "欄位名打錯一個字母，它只警告，結束碼還是零；加嚴格模式才擋。",
+          "id": "tu2a",
+          "text": "欄位名多打一個字母，它只警告，結束碼還是零；加嚴格模式才擋。",
           "reveal": 1
         }
       ]
@@ -1037,17 +1029,17 @@
       ],
       "lines": [
         {
-          "id": "46jf",
+          "id": "fu5c",
           "text": "沒被呼叫，先查描述有沒有你會說的詞，再問它有哪些 Skill 可用。",
           "reveal": 2
         },
         {
-          "id": "phnv",
+          "id": "fuhi",
           "text": "換個說法再試，或者用斜線直接叫它。",
           "reveal": 2
         },
         {
-          "id": "hfdt",
+          "id": "46jf",
           "text": "最後跑驗證指令，開頭壞掉它會直接說。",
           "reveal": 1
         }
@@ -1059,39 +1051,39 @@
       "data": {
         "title": "反過來：不要它自己接手",
         "language": "yaml",
-        "code": "---\nname: deploy\ndescription: Deploy the application to production\ndisable-model-invocation: true\n---\n\n{ \"skillOverrides\": { \"deploy\": \"off\" } }",
+        "code": "---\nname: deploy\ndescription: Deploy the application to production\ndisable-model-invocation: true\n---\n\n{ \"skillOverrides\": { \"deploy\": \"user-invocable-only\" } }",
         "highlight": [
           4,
           7
         ],
-        "caption": "上面是 SKILL.md 的開頭，下面是設定檔的一行；官方 skills 頁的例子｜引用"
+        "caption": "上面是官方 skills 頁的 deploy 例子；下面照它的 skillOverrides 表寫的一行｜引用"
       },
       "claims": [
         "c22"
       ],
       "lines": [
         {
+          "id": "phnv",
+          "text": "反過來，用太多的時候，開頭加一行關掉模型自己呼叫。"
+        },
+        {
+          "id": "hfdt",
+          "text": "加了那一行，它就只能由你用斜線叫。"
+        },
+        {
           "id": "d9yd",
-          "text": "反過來，用太多的時候有兩個開關。"
+          "text": "不想改檔案，在設定裡把它設成只有你能叫，也一樣。"
         },
         {
           "id": "vdej",
-          "text": "開頭加一行關掉模型自己呼叫，它就只能由你用斜線叫。"
-        },
-        {
-          "id": "x59t",
-          "text": "不想改檔案，在設定裡把它關掉也行。"
-        },
-        {
-          "id": "z5x4",
-          "text": "寫好的資料夾，怎麼帶走？",
+          "text": "寫好的資料夾，怎麼留下來、怎麼帶走？",
           "emotion": "問句上揚，收住"
         }
       ]
     },
     {
       "id": "keep",
-      "chapter": "同一個資料夾，放進應用程式和 Codex 照樣用",
+      "chapter": "同一種 SKILL.md，應用程式和 Codex 也收",
       "template": "steps",
       "data": {
         "title": "留下來、帶走",
@@ -1121,23 +1113,27 @@
       ],
       "lines": [
         {
-          "id": "y2n8",
+          "id": "x59t",
           "text": "留下來很簡單：資料夾進版控，刪掉就是移除。",
           "reveal": 2
         },
         {
+          "id": "z5x4",
+          "text": "開頭這幾個欄位，上傳到 Claude 應用程式也收，一共只收六個。",
+          "reveal": 1
+        },
+        {
+          "id": "y2n8",
+          "text": "這份 SKILL.md 只用了兩個，剛好都在裡面。"
+        },
+        {
           "id": "s58i",
-          "text": "同一個資料夾上傳到 Claude 應用程式也能用，開頭只收六個欄位。",
+          "text": "Codex 讀的是同一種 SKILL.md，放在它的資料夾就找得到。",
           "reveal": 1
         },
         {
           "id": "cjc4",
-          "text": "這支只用了兩個，剛好都在裡面。"
-        },
-        {
-          "id": "6iq3",
-          "text": "放進 Codex 讀的那個資料夾，同一份檔就能用。",
-          "reveal": 1
+          "text": "正文裡寫死的腳本路徑，搬過去要跟著改。"
         }
       ]
     },
@@ -1164,25 +1160,25 @@
             "detail": "清單裡打開它"
           }
         ],
-        "source": "Claude 說明中心 Using skills in Claude｜2026-10-20｜引用"
+        "source": "Claude 說明中心；沙箱一句出自站內文章｜引用"
       },
       "claims": [
         "c23"
       ],
       "lines": [
         {
-          "id": "cdti",
+          "id": "6iq3",
           "text": "不會打指令的人走另一條路：整個資料夾壓成一個 ZIP。",
           "reveal": 2
         },
         {
-          "id": "7f4p",
-          "text": "在自訂裡的技能那一頁上傳，清單裡打開，就能在對話裡用。",
+          "id": "cdti",
+          "text": "在自訂裡的技能那一頁上傳，清單裡打開，它就會進清單。",
           "reveal": 2,
           "emotion": "平實"
         },
         {
-          "id": "7sjg",
+          "id": "7f4p",
           "text": "腳本在那邊會跑在它的沙箱裡，不碰你的電腦。"
         }
       ]
@@ -1201,18 +1197,18 @@
       ],
       "lines": [
         {
-          "id": "wbqb",
+          "id": "7sjg",
           "text": "還記得那些被擋下的 Python 嗎？",
           "emotion": "問句上揚"
         },
         {
-          "id": "fa8n",
+          "id": "wbqb",
           "text": "Skill 的開頭可以替自己的腳本預先核准，跑的時候不用再問。",
           "reveal": 1
         },
         {
-          "id": "jzdz",
-          "text": "這支沒有寫這一行；腳本跑得了，是因為那次的核准清單本來就有它。",
+          "id": "fa8n",
+          "text": "這份 SKILL.md 沒有寫這一行；腳本跑得了，是因為那次的核准清單本來就有它。",
           "emotion": "平實"
         }
       ]
@@ -1243,17 +1239,17 @@
       ],
       "lines": [
         {
-          "id": "si22",
-          "text": "練習只有三步：你自己的規則，放進正文。",
+          "id": "jzdz",
+          "text": "你自己的規則，放進正文。",
           "reveal": 1
         },
         {
-          "id": "yhpv",
+          "id": "si22",
           "text": "開頭補名稱和描述，跑一次驗證。",
           "reveal": 1
         },
         {
-          "id": "nac2",
+          "id": "yhpv",
           "text": "用一句不提名字的話叫它，紀錄裡要有那一筆呼叫。",
           "reveal": 1
         }
@@ -1261,14 +1257,14 @@
     },
     {
       "id": "closing",
-      "chapter": "一句描述，Claude 就自己接手",
+      "chapter": "你自己的規則，紀錄裡出現那一筆呼叫",
       "template": "outro",
       "data": {
-        "title": "一句描述，\nClaude 就自己接手",
+        "title": "你自己的規則，\n**紀錄裡出現那一筆呼叫**",
         "cta": "你每個月重貼的那一段是什麼？留言告訴我",
         "lines": [
           "什麼都不給 0／6、貼規則 6／6、Skill 6／6，各 3 次",
-          "描述寫成廢話照樣被呼叫：名字對上了",
+          "描述寫成廢話照樣被呼叫：靠的應該是名字",
           "腳本跟著資料夾走，規則貼不出腳本"
         ]
       },
@@ -1277,18 +1273,18 @@
       ],
       "lines": [
         {
-          "id": "ydxv",
-          "text": "同一句十二個字，三次，報表三次都寫出來了，接手的是那個資料夾。",
+          "id": "nac2",
+          "text": "紀錄裡有那一筆呼叫，你的那一段就跟九月這份一樣：三次都是它自己接手。",
           "emotion": "放穩，一句講完"
         },
         {
-          "id": "qjcw",
+          "id": "ydxv",
           "text": "你每個月重貼的那一段是什麼？留言告訴我。",
           "emotion": "問句上揚"
         },
         {
-          "id": "f5dk",
-          "text": "每一支都這樣跑給你看，訂閱就不會漏掉。"
+          "id": "qjcw",
+          "text": "這裡每一個數字都是跑出來的，訂閱就不會漏掉。"
         }
       ]
     }
@@ -1301,16 +1297,16 @@
     },
     {
       "setup": "e3p7",
-      "payoff": "b3pe",
+      "payoff": "ft26",
       "what": "描述改成廢話還會不會被呼叫"
     },
     {
       "setup": "6b5i",
-      "payoff": "tu2a",
+      "payoff": "v39w",
       "what": "引號沒關的那一份驗證怎麼說"
     },
     {
-      "setup": "3894",
+      "setup": "4a2t",
       "payoff": "scej",
       "what": "Skill 比貼規則多做到的事"
     },
@@ -1320,18 +1316,18 @@
       "what": "資料夾裡有什麼"
     },
     {
-      "setup": "zz8n",
-      "payoff": "aph7",
+      "setup": "w36q",
+      "payoff": "9jq2",
       "what": "怎麼知道它真的用了"
     },
     {
-      "setup": "ffwe",
-      "payoff": "b3pe",
+      "setup": "qgki",
+      "payoff": "ft26",
       "what": "描述寫壞會怎樣"
     },
     {
-      "setup": "z5x4",
-      "payoff": "y2n8",
+      "setup": "vdej",
+      "payoff": "x59t",
       "what": "資料夾怎麼帶走"
     }
   ]

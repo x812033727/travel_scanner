@@ -28,7 +28,7 @@
 
 ## 主張
 
-c1｜開場：九月的紀錄 12 筆；12 個字的要求「九月的業績幫我整理一下。」；Claude 的第一個動作是呼叫 monthly-report 這個 Skill（串流第一筆 tool_use 是 `{"name":"Skill","input":{"skill":"monthly-report","args":"九月"}}`）；跑了腳本；報表四個區段；回覆最後一行「報表已寫到 reports/2026-09.md，總營收 85,290 元」（s1 的原句是半形逗號、沒有句號；`ask` 卡用全形逗號是卡片的寫法，計分規則把兩種都算對，RUN 開頭寫明）｜RUN §s1（prompt、transcript 第 1 筆、result、report）；DEMO/seed/data/2026-09.csv（12 列）；DEMO/prompts/vague.txt（12 字）｜2026-10-20｜open、ask
+c1｜開場：九月的紀錄 12 筆；12 個字的要求「九月的業績幫我整理一下。」；Claude 的第一個動作是呼叫 monthly-report 這個 Skill（串流第一筆 tool_use 是 `{"name":"Skill","input":{"skill":"monthly-report","args":"九月"}}`）；跑了腳本；報表四個區段；回覆最後一行「報表已寫到 reports/2026-09.md，總營收 85,290 元」（s1 的原句是半形逗號加句號，`ask` 卡照抄；s2、s3 沒有句號，p1、v1、x1 是全形逗號；計分規則把兩種都算對，RUN 開頭寫明）｜RUN §s1（prompt、transcript 第 1 筆、result、report）；DEMO/seed/data/2026-09.csv（12 列）；DEMO/prompts/vague.txt（12 字）｜2026-10-20｜open、ask
 
 c2｜「去年這個時候每個月貼 346 個字的規則」：346 是 DEMO/prompts/paste.txt 去掉換行的字元數（13 行）；「去年」指 Skill 公開前（2025-10-16，c7）。這一句是站主的做法，不是量到的事｜DEMO/prompts/paste.txt；BRIEF 站主觀點｜2026-10-20｜open
 
@@ -38,7 +38,7 @@ c4｜打的字 12 對 346；第一個請求的 token：什麼都不給 8,108、S
 
 c5｜什麼都不給的三次都想跑 Python（b1–b3 各一筆 `Bash` 的 python3 指令、都在 permission_denials）、改手算、回覆自己排的表（占比、退貨率；三次版面不同）、總營收 85,290；貼規則的三次全是手算，p2 想跑 Python 被擋兩次，p1、p3 讀 CSV 直接算；「六次都是手算、其中四次先想寫 Python」；費用每次 0.024–0.068 美元、最貴是 p2 的 0.068。`bare-reply` 卡引 b2 回覆的第一句「我沒辦法執行 Python 腳本,所以直接用資料手算。」（原句半形逗號，卡片用全形）｜RUN §b1–b3、§p1–p3（transcript 與 result 的 permission_denials、total_cost_usd）｜2026-10-20｜bare-reply、how
 
-c6｜Skill 的三次都跑 `node .claude/skills/monthly-report/scripts/sum.mjs data/2026-09.csv`（s1–s3 各一筆 Bash，指令含這一段）；`run-script` 卡的輸出是 s1 那一筆工具結果的前 8 行；85,290 是腳本印的 total｜RUN §s1 第 2 筆 TOOL 與 RESULT；DEMO/skills/good/monthly-report/scripts/sum.mjs｜2026-10-20｜how、run-script
+c6｜Skill 的三次都跑 `node .claude/skills/monthly-report/scripts/sum.mjs data/2026-09.csv`（s1–s3 各一筆 Bash，指令含這一段）；`run-script` 卡的輸出是 s1 那一筆複合指令裡 node 那一段的工具結果前 7 行（卡片的指令只放 node 那一段；v1 是單獨跑的）；85,290 是腳本印的 total｜RUN §s1 第 2 筆 TOOL 與 RESULT；DEMO/skills/good/monthly-report/scripts/sum.mjs｜2026-10-20｜how、run-script
 
 c7｜Agent Skills 2025-10-16 公開；公告原句 "Skills can include executable code for tasks where traditional programming is more reliable than token generation."；2025-12-18 加註開放標準｜https://www.anthropic.com/news/skills｜2026-10-20｜exec-quote
 
@@ -62,7 +62,7 @@ c16｜原句 "Seeing a skill trigger tells you Claude found it, not that it did 
 
 c17｜站內文章有技能、專案、個人指令、MCP 的比較表｜apps/api/app/guides/content/claude-skills-explained.json（zh-TW，表「專案 Projects／個人指令與自訂樣式／MCP 連接器」）｜2026-10-20｜cta
 
-c18｜描述換成「專案維護用的說明。」、正文不動（DEMO/skills/vague/monthly-report/SKILL.md 與 good 版只差第 3 行）；v1–v3 都被呼叫（第一筆 Skill，args 九月）、都跑腳本、6／6；「名字就對上了」是從結果推的解釋（名稱 monthly-report 在清單上，描述沒有任何觸發詞），旁白說「救它的是名字」是站主的判讀｜RUN §v1–v3；DEMO/skills/vague/monthly-report/SKILL.md｜2026-10-20｜vague-head、vague-score、name-big
+c18｜描述換成「專案維護用的說明。」、正文不動（DEMO/skills/vague/monthly-report/SKILL.md 與 good 版只差第 3 行）；v1–v3 都被呼叫（第一筆 Skill；v1、v3 帶 args 九月，v2 沒有 args）、都跑腳本、6／6；「名字就對上了」是從結果推的解釋（名稱 monthly-report 在清單上，描述沒有任何觸發詞），旁白說「救它的是名字」是站主的判讀｜RUN §v1–v3；DEMO/skills/vague/monthly-report/SKILL.md｜2026-10-20｜vague-head、vague-score、name-big
 
 c19｜描述寫做什麼與什麼時候用、放觀眾會講的詞；描述與 when_to_use 合計上限 1,536 字元、超過被截｜https://code.claude.com/docs/en/skills（Frontmatter reference 的 description 與 when_to_use 列：truncated at 1,536 characters；Troubleshooting：Check the description includes keywords users would naturally say）；https://support.claude.com/en/articles/12512180-using-skills-in-claude（Be specific）｜2026-10-20｜name-big
 
@@ -70,7 +70,7 @@ c20｜validate：引號沒關的那一份 `× Found 1 error:`、`frontmatter: YA
 
 c21｜沒觸發的查法：描述有沒有使用者會說的詞；問 What skills are available?；換說法；用 `/skill-name` 直接叫；frontmatter 壞掉用 validate 找｜https://code.claude.com/docs/en/skills（Troubleshooting：Skill not triggering 的 1–5 與最後一段）｜2026-10-20｜fix-order
 
-c22｜兩種關法：`disable-model-invocation: true`（Claude 不能自己叫，只能 `/name`）；`skillOverrides` 設 `"off"`；卡片上的 deploy 例子是官方頁的｜https://code.claude.com/docs/en/skills（Control who invokes a skill 的 deploy 例子；Override skill visibility from settings 的 JSON 例子）｜2026-10-20｜switch-off
+c22｜兩種關法：`disable-model-invocation: true`（Claude 不能自己叫，只能 `/name`，deploy 例子是官方頁的）；`skillOverrides` 設 `"user-invocable-only"`（官方表：Listed to Claude 是 Hidden、`/` 選單 Yes；那一行是照表寫的，不是官方例子原文）｜https://code.claude.com/docs/en/skills（Control who invokes a skill 的 deploy 例子；Override skill visibility from settings 的 JSON 例子）｜2026-10-20｜switch-off
 
 c23｜進版控（Project 列：Commit it so your team gets it too）；刪掉資料夾就是移除；上傳到 claude.ai 只收 `name`、`description`、`license`、`compatibility`、`metadata`、`allowed-tools` 六個欄位；網頁版的步驟：Settings > Capabilities 開 Code execution and file creation（Free、Pro、Max）→ 整個資料夾壓成 ZIP → Customize > Skills → + → Upload a skill → 清單裡開關；上傳後的腳本跑在 Anthropic 的沙箱裡（站內文章：API 與應用程式的技能跑在沙箱，Claude Code 的跟你電腦上的程式一樣）；這支沒有實際上傳，卡片標引用｜https://code.claude.com/docs/en/skills（Remove a skill；Using skill frontmatter outside Claude Code）；https://support.claude.com/en/articles/12512180-using-skills-in-claude（Skills section not visible：Ensure code execution is enabled）｜2026-10-20｜keep
 
@@ -85,6 +85,10 @@ c25｜`allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/render.sh *)` 是官方�
 - 企劃的 cta 在第 7 章；稿子放第 5 章中段（主例之後、片子中段，盲評要求不切斷章末的鉤子）。
 - 盲評第一輪退了四題（目錄句、重述、章名寫功能、cta 切斷鉤子），都改了：第 4、7、8 章改名、片尾不再重唸數字、cta 移位。
 - 參考片第 6 章講網頁版上傳 ZIP，這支補成第 7 章的一張步驟卡（引用說明中心）。
+
+## 第 1 輪查核之後改了什麼
+
+必改三項都改了：開頭「四行」；「名字救了它」標成我的判讀（旁白、kicker、片尾卡、說明欄）；第 7 章改成「同一種 SKILL.md，應用程式和 Codex 也收」，並補一句寫死的路徑搬過去要改。建議改了：回覆的最後一行、半形逗號照抄、退貨率那句、「這支」三處、「報表檔」兩處、skillOverrides 改成 user-invocable-only 並註明不是原文、多打一個字母、片尾第一句、沙箱句的出處、「寫在公告裡」。沒改：`uq9w` 已在盲評那一輪改成回呼句。
 
 ## 我懷疑但沒動的事
 

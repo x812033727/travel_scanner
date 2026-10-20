@@ -67,7 +67,7 @@
 4. 貼規則那一邊的規則不提腳本（觀眾手上沒有腳本）；Skill 那一邊的規則指向自己資料夾裡的腳本與範本。兩邊其餘的規則逐字一樣（標題、四個區段、千分位、固定的最後一行）。
 5. 每一次 session 之前資料夾從同一份種子重建；各臂只差 `.claude/skills/` 有沒有東西、要求句是哪一份。同一個模型（sonnet）、同一組旗標、每次都是新的 session，三臂輪流跑（s1 p1 b1 v1 s2 p2 b2 v2 s3 p3 b3 v3），最後一次斜線（x1）。
 6. 這台機器的 `~/.claude/skills/synced/` 有站主帳號同步下來的 Skill，專案設定用 `syncClaudeAiSkills: false` 與 `disableBundledSkills: true` 關掉；關不掉的三個內建外掛的 Skill（design、doctor、plugin-authoring）每一臂都在清單上，各臂一樣，紀錄裡寫明。
-7. 旗標：`--permission-mode default`、`--tools "Read,Glob,Grep,Edit,Write,Bash,Skill"`、`--allowedTools "Read,Glob,Grep,Edit,Write,Bash(node *),Bash(mkdir *),Bash(cat *),Bash(ls *)"`、`--setting-sources project`、`--strict-mcp-config`、`--no-session-persistence`、`--max-turns 40`、`--max-budget-usd 1`。`node` 在預先核准的清單裡、`python3` 不在，所以 Skill 帶的 node 腳本跑得了、模型自己寫的 Python 跑不了——這是這支要講清楚的事：Skill 可以用 `allowed-tools` 替自己的腳本預先核准（官方頁的 `${CLAUDE_SKILL_DIR}` 寫法，引用），這次沒有寫。每一臂的 heredoc 寫檔（`cat > … <<'EOF'`）都被權限解析器擋下、改用 Write 工具，十二次都一樣，不影響結果，紀錄裡有。
+7. 旗標：`--permission-mode default`、`--tools "Read,Glob,Grep,Edit,Write,Bash,Skill"`、`--allowedTools "Read,Glob,Grep,Edit,Write,Bash(node *),Bash(mkdir *),Bash(cat *),Bash(ls *)"`、`--setting-sources project`、`--strict-mcp-config`、`--no-session-persistence`、`--max-turns 40`、`--max-budget-usd 1`。`node` 在預先核准的清單裡、`python3` 不在，所以 Skill 帶的 node 腳本跑得了、模型自己寫的 Python 跑不了——這是這支要講清楚的事：Skill 可以用 `allowed-tools` 替自己的腳本預先核准（官方頁的 `${CLAUDE_SKILL_DIR}` 寫法，引用），這次沒有寫。試過 heredoc 寫檔（`cat > … <<'EOF'`）的八次都被權限解析器擋下、改用 Write 工具，不影響結果，紀錄裡有。
 
 ### 計分規則（跑之前講定，s1 之後只放寬了最後一行的標點）
 
@@ -85,9 +85,9 @@ I（被叫到）：串流裡有一筆 assistant 的工具呼叫，名稱是 `Ski
 | --- | --- | --- | --- | --- | --- |
 | M1 validate 與檔案清單 | 四種 `.claude/skills`（寫好的、含糊的、引號沒關的、`descriptions:` 打錯的） | `find .claude/skills -type f \| sort`；`claude plugin validate .claude/skills`，各加 `--strict` 再跑一次 | 寫好的與含糊的通過；引號沒關的報錯 | 寫好的與含糊的 `√ Validation passed`、結束碼 0（`--strict` 也 0）；引號沒關的 `× Found 1 error`、`YAML frontmatter failed to parse`、「At runtime this skill loads with empty metadata」、結束碼 1；欄位名打錯的 `‼ Found 1 warning`、`No description in frontmatter`、結束碼 0，`--strict` 是 1 | `demo/validate/validate.log` |
 | S 有 Skill s1–s3 | `prompts/vague.txt`（12 字） | 不開畫面的 session，3 次 | 清單裡有 `monthly-report`；有 Skill 呼叫；五個區段；最後一行固定句 | 3 次都：第一筆呼叫是 `Skill {"skill":"monthly-report","args":"九月"}`；跑了 `sum.mjs`；6／6；第一個請求 8,161 token；6 輪；0.035 美元 | runlog.txt §s1–s3 |
-| P 貼規則 p1–p3 | `prompts/paste.txt`（335 字） | 同上，3 次 | 五個區段會對；算數對不對不知道 | 3 次都 6／6；沒有 Skill 呼叫；三次的數字全是手算（p2 想跑 Python 被擋兩次才手算，p1、p3 讀了 CSV 直接算）；總營收三次都 85,290；第一個請求 8,404 token；4–7 輪；0.035–0.068 美元 | runlog.txt §p1–p3 |
+| P 貼規則 p1–p3 | `prompts/paste.txt`（346 字） | 同上，3 次 | 五個區段會對；算數對不對不知道 | 3 次都 6／6；沒有 Skill 呼叫；三次的數字全是手算（p2 想跑 Python 被擋兩次才手算，p1、p3 讀了 CSV 直接算）；總營收三次都 85,290；第一個請求 8,404 token；4–7 輪；0.035–0.068 美元 | runlog.txt §p1–p3 |
 | B 什麼都不給 b1–b3 | `prompts/vague.txt` | 同上，3 次 | 不知道會不會寫檔 | 3 次都沒有寫任何檔案（0／6），在對話裡回一份自己排的表（淨營收 85,290、占比、退貨率）；三次都想跑 Python 被擋、改手算；第一個請求 8,108 token；4 輪；0.024–0.026 美元 | runlog.txt §b1–b3 |
-| V description 含糊 v1–v3 | `prompts/vague.txt`，Skill 的 description 是「專案維護用的說明。」 | 同上，3 次 | 不知道會不會被叫到 | 3 次都被叫到（第一筆呼叫同樣是 `Skill {"skill":"monthly-report","args":"九月"}`）、跑了腳本、6／6；第一個請求 8,126 token；6–8 輪；0.028–0.036 美元 | runlog.txt §v1–v3 |
+| V description 含糊 v1–v3 | `prompts/vague.txt`，Skill 的 description 是「專案維護用的說明。」 | 同上，3 次 | 不知道會不會被叫到 | 3 次都被叫到（第一筆呼叫同樣是 `Skill`，v1、v3 帶 `"args":"九月"`，v2 沒有 args）、跑了腳本、6／6；第一個請求 8,126 token；6–8 輪；0.028–0.036 美元 | runlog.txt §v1–v3 |
 | X 斜線 x1 | `prompts/slash.txt`（`/monthly-report 2026-09`） | 同上，1 次 | 沒有 Skill 工具呼叫（直接展開）；五個區段 | 沒有 Skill 工具呼叫（正文直接展開進對話）；第一筆就是跑 `sum.mjs`；6／6；第一個請求 8,623 token（正文跟著進去了）；4 輪；0.032 美元 | runlog.txt §x1 |
 
 第一個請求的 token 差（相對什麼都不給的 8,108）：Skill ＋53、含糊 ＋18、貼規則 ＋296、斜線 ＋515。同一臂三次之間的差是 0。
@@ -119,9 +119,9 @@ I（被叫到）：串流裡有一筆 assistant 的工具呼叫，名稱是 `Ski
 開場（≤60 秒，`title`）：「10 月 1 日，小店的九月紀錄 12 筆，我打了 12 個字：九月的業績幫我整理一下。Claude 第一件事是呼叫一個叫 monthly-report 的 Skill，跑了一支腳本，寫出四個區段的報表，最後一行：總營收 85,290 元。去年這個時候我每個月要貼 346 個字的規則。」丟三個時刻：同一句話什麼都不給會得到什麼；我把 description 改成「專案維護用的說明」再跑三次；一個引號沒關的 SKILL.md 丟給 validate。問題：「Skill 到底是什麼，怎麼寫一個讓 Claude 自己接手的？」
 
 1. 開場（50 秒）：`title`；`code` 要求句與回覆最後一行。
-2. 三種做法各三次：什麼都不給 0／6、貼規則 6／6、Skill 6／6（90 秒）：`chapter`；`table` 計分（三臂六欄）；`stats` 12 字對 335 字、＋67 對 ＋285 token；`quote` b1 回覆的第一句（跑過）。收尾：「貼規則也全中，那 Skill 贏在哪？」
+2. 三種做法各三次：什麼都不給 0／6、貼規則 6／6、Skill 6／6（90 秒）：`chapter`；`table` 計分（三臂六欄）；`stats` 12 字對 346 字、＋53 對 ＋296 token；`quote` b1 回覆的第一句（跑過）。收尾：「貼規則也全中，那 Skill 贏在哪？」
 3. 贏在帶得走的東西：腳本與範本（80 秒）：`compare` 貼規則那邊「想寫 Python → 被擋 → 手算」對 Skill 那邊「跑 sum.mjs」；`terminal` s1 跑腳本那一筆的指令與輸出前幾行；`quote` 官方公告「Skills can include executable code」。收尾：「所以那個資料夾裡到底有什麼？」
-4. 資料夾裡的三個檔：SKILL.md、template.md、sum.mjs（150 秒）：`code` SKILL.md 全文（12 行，兩張卡：開頭三行、五條規則）；`code` template.md；`code` sum.mjs 節錄（第 2、3、9、13、14、15 行；說明文字寫是 15 行裡的哪幾行）；`steps` 三層載入（官方頁）；`screencast` skills 頁「Choose where skills load」；`table` 位置（個人、專案、外掛、Codex 的 `.agents/skills`）。收尾：「那我怎麼知道它這一次真的用了？」
+4. 資料夾裡的三個檔：SKILL.md、template.md、sum.mjs（150 秒）：`code` SKILL.md 全文（17 行，兩張卡：開頭四行、五條規則）；`code` template.md；`code` sum.mjs 節錄（第 2、3、9、13、14、15 行；說明文字寫是 15 行裡的哪幾行）；`steps` 三層載入（官方頁）；`screencast` skills 頁「Choose where skills load」；`table` 位置（個人、專案、外掛、Codex 的 `.agents/skills`）。收尾：「那我怎麼知道它這一次真的用了？」
 5. 不用問它：串流裡那一筆呼叫（70 秒）：`code` 串流那一筆 `{"skill":"monthly-report","args":"九月"}`；`steps` 查法（串流的 Skill 呼叫 → 互動式用 /skills（引用） → 磁碟上的檔案）；`quote` 官方「Seeing a skill trigger tells you Claude found it, not that it did what you intended」。收尾：「那如果我把 description 寫壞呢？」
 6. description 寫成廢話照樣被叫到；validate 抓得到的是另一種錯（120 秒）：`code` 含糊版的開頭三行；`table` v1–v3 計分；`big` 「名字就對上了」；`terminal` validate 四種（兩張）；`bullets` 沒被用到時照順序查（官方 troubleshooting）；`code` `disable-model-invocation: true` 與 `skillOverrides` 的寫法（引用）。收尾：「寫好的資料夾怎麼帶走？」
 7. 留下來、帶走、你自己的那一段（90 秒）：`steps` 進版控、刪資料夾就是移除、上傳到應用程式只收六個欄位、Codex 讀 `.agents/skills`（引用）；`steps` 不會打指令的人：壓 ZIP、Settings › Capabilities、Customize › Skills 上傳（說明中心，引用）；`chat` 練習：把你每個月貼的那一段貼進正文；`quote` 官方 `allowed-tools` 預先核准腳本（引用，對照第 3 章被擋的 Python）。
