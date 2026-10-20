@@ -47,7 +47,7 @@
   "loops": [
     {
       "setup": "cal004",
-      "payoff": "cal034",
+      "payoff": "cal060",
       "what": "休班如何切斷無線電求救"
     },
     {
@@ -63,7 +63,7 @@
     {
       "setup": "cal008",
       "payoff": "cal135",
-      "what": "史東版本中，白火箭回報後等新消息、沒有起航指示"
+      "what": "史東版本中，有新消息派實習生再報，沒有起航指示"
     },
     {
       "setup": "cal024",
@@ -123,7 +123,7 @@
     {
       "setup": "cal134",
       "payoff": "cal135",
-      "what": "白火箭通報船長後，指示仍待消息、沒有起航"
+      "what": "白火箭通報後，史東稱要派實習生再報，沒接獲起航指示"
     }
   ],
   "scenes": [
@@ -627,22 +627,6 @@
       ]
     },
     {
-      "id": "cal032",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in the wireless cabin of a 1912 ship late at night, one radio operator sets headphones beside a shaded lamp, dim cabin light",
-        "camera": "drift left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal032",
-          "text": "夜裡，他摘下耳機，這一班到此結束。",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
       "id": "cal033",
       "template": "shot",
       "data": {
@@ -654,22 +638,6 @@
         {
           "id": "cal033",
           "text": "船上沒有第二名無線電員接班；求救電文來時，誰會聽？",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
-      "id": "cal034",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in the wireless cabin of a 1912 ship late at night, a lone mariner passes a silent wireless cabin doorway at night, faint cabin light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal034",
-          "text": "後來鐵達尼號的求救電文，這間房沒有聽見。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -975,7 +943,7 @@
       "lines": [
         {
           "id": "cal053",
-          "text": "幾分鐘後，又報出撞到冰山和船的位置。",
+          "text": "幾分鐘後，他們又補發船的位置。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -991,7 +959,7 @@
       "lines": [
         {
           "id": "cal054",
-          "text": "報文還催附近船立刻來，船已撞上冰山。",
+          "text": "報文還催附近的船立刻來援。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1080,30 +1048,14 @@
       "id": "cal060",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a blank signal slip, mild window light",
+        "prompt": "Wide shot at a 1912 evidence table by day, one anonymous clerk places a blank signal slip, mild window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cal060",
-          "text": "沒有。先前留下的值班空缺，讓它錯過求救電文。",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
-      "id": "cal061",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot on the bridge of a 1912 cargo steamship at night, a lone watch sailor checks the dark horizon through binoculars, dim bridge light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal061",
-          "text": "加州人號的船橋仍有人值班，可以看見海面。",
+          "text": "沒有。還記得十一點半摘下的耳機嗎？求救電文來時，這裡沒人接收。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1819,14 +1771,14 @@
       "id": "cal106",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a later maritime evidence desk by day, one anonymous clerk opens a plain nautical chart beside two unmarked ship models, soft window light",
+        "prompt": "Medium shot at a later maritime evidence table by day, one anonymous clerk opens a plain nautical chart beside two unmarked ship models, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cal106",
-          "text": "加州人號此時才出發，夜裡那艘船早已不見；船名還能怎麼查？",
+          "text": "夜裡那艘船早已不見；船名還能怎麼查？",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1859,23 +1811,7 @@
       "lines": [
         {
           "id": "cal108",
-          "text": "調查先對上遠船停住的時刻。",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
-      "id": "cal109",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a 1912 public hearing table by day, a lone historian turns a plain clock face on an inquiry table, gentle grey skylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal109",
-          "text": "那正是鐵達尼號撞冰山的時候。",
+          "text": "遠船停住時，鐵達尼號正撞上冰山。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1891,7 +1827,7 @@
       "lines": [
         {
           "id": "cal110",
-          "text": "再對上鐵達尼號連續放火箭的時段。",
+          "text": "鐵達尼號放火箭後，加州人號也在同一時段看見白光。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1907,7 +1843,7 @@
       "lines": [
         {
           "id": "cal111",
-          "text": "調查再把兩船所見的白火箭數量對上。",
+          "text": "報告認為，兩邊記下的火箭數量也對得上。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -1923,23 +1859,7 @@
       "lines": [
         {
           "id": "cal112",
-          "text": "最後，夜船燈影消失；三個時間點指向誰？",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
-      "id": "cal113",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at a 1912 public hearing table by day, one inquiry historian moves a plain time marker beside a chart, gentle grey skylight",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal113",
-          "text": "它與沉船時段也相近。",
+          "text": "遠船消失，又貼近沉船時刻；這會是同一艘嗎？",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -2071,7 +1991,7 @@
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ],
-      "chapter": "距離沒定值，救援機會也無法回算"
+      "chapter": "調查對照船位與目測距離"
     },
     {
       "id": "cal122",
@@ -2276,7 +2196,7 @@
       "lines": [
         {
           "id": "cal134",
-          "text": "卡帕西亞號已接上人；加州人號的求救鏈，究竟在哪一步斷開？",
+          "text": "還記得史東通報火箭嗎？他說船長還交代了什麼？",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -2292,7 +2212,7 @@
       "lines": [
         {
           "id": "cal135",
-          "text": "史東說，船長要他繼續打摩斯，有新消息再派實習生來；當下沒有起航指示。",
+          "text": "史東說，船長讓他有新消息就派實習生來報；當下沒有起航指示。",
           "emotion": "自然歷史說書；證詞與判斷略放慢"
         }
       ]
@@ -2314,35 +2234,19 @@
       ]
     },
     {
-      "id": "cal137",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at a 1912 harbor research library by day, one inquiry historian leaves a rescue count box blank, gentle grey skylight",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cal137",
-          "text": "至於本來能救到誰，當夜沒有留下答案。",
-          "emotion": "自然歷史說書；證詞與判斷略放慢"
-        }
-      ]
-    },
-    {
       "id": "outro",
       "template": "outro",
       "data": {
         "title": "未結",
         "cta": "訂閱奇聞檔案局",
         "lines": [
-          "看見火箭，仍未出航"
+          "能救多少人，無法回算"
         ]
       },
       "lines": [
         {
           "id": "cal999a",
-          "text": "英國調查認定求救火箭已被看見；當夜，加州人號沒有出航。",
+          "text": "若當夜出航，究竟能救多少人，史料無法回答。",
           "emotion": "清楚收束"
         },
         {
