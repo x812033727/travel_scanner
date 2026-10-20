@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-uber-mobility-delivery-x19
 title: Produce Uber mobility to delivery reversal X19 preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-uber-x19
-claimed_at: 2026-10-20T22:39:59Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:39:56Z
 completed_at:
 branch: codex/brand-story-uber-x19
