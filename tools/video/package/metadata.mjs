@@ -2,9 +2,26 @@
 // and audience, the body, the Mokaair article, chapters, sources, picture credits, the series
 // hashtag; core/metadata.mjs composeDescription) and tags, each checked against YouTube's limits.
 import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
+import { isCurio } from "../core/curio.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags, withCaptionTag } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
-import { chapterList, formatClock } from "../core/timeline.mjs";
+import { chapterList, formatClock, FPS } from "../core/timeline.mjs";
+
+const CURIO_CHANNEL_URL = "https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q";
+// Include only outro media verified to have a clear card canvas from frame 150 (+5 s).
+// The v4 inspection is recorded in tasks/done/2026-10-12-correct-v4-youtube-end-screen-timing.md.
+const VERIFIED_END_SCREEN_OUTROS = new Set([
+  "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396", // approved v4
+  "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee", // Curio candidate, checked at +5 s
+]);
+const END_SCREEN_OUTRO_FRAMES = 21 * FPS;
+const END_SCREEN_VISIBLE_FRAMES = 16 * FPS;
+const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
+
+function curioDescriptionBody(body, doc, locale) {
+  if (locale !== "zh-TW" || !isCurio(doc) || String(body).includes(CURIO_CHANNEL_URL)) return body;
+  return `${String(body).trim()}\n\n🔗 更多奇聞檔案局影片：${CURIO_CHANNEL_URL}`;
+}
 
 /** Current names on the measured timeline: title-only edits need not re-encode a cardless cut. */
 export function compilationChapterTitles(doc) {
@@ -46,7 +63,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
   for (const locale of locales) {
     const translation = locale === narration ? null : translations[locale];
     const title = withCaptionTag(translation ? translation.title : doc.youtube.title, locale);
-    const body = translation ? translation.description : doc.youtube.description;
+    const body = curioDescriptionBody(translation ? translation.description : doc.youtube.description, doc, locale);
     const articleLocale = pack?.locales?.[locale] ? locale : narration;
     const fields = {
       body,
@@ -179,6 +196,26 @@ export function compilationSection(metadata, { episodes = 0, size_bytes: sizeByt
 - 各集已經各自上架；合集不重跑字幕與旁白，字幕是各集字幕依時間接起來的。`;
 }
 
+/** Studio must add clickable elements after the private upload. A verified outro's CTA
+ * fades into the clear canvas at +5 seconds, leaving the final 16 seconds for its three cards. */
+function endScreenSection(metadata, { format, branding, outroSha256, finalFrames } = {}, number) {
+  if (!LONG_FORMATS.has(format) || branding?.outro_frames !== END_SCREEN_OUTRO_FRAMES
+    || !VERIFIED_END_SCREEN_OUTROS.has(outroSha256) || !branding?.hash
+    || metadata.branding_hash !== branding.hash || !Number.isSafeInteger(finalFrames)
+    || finalFrames !== branding.intro_frames + branding.body_frames + branding.outro_frames) return "";
+  const timecode = (frames) => `${formatClock(frames / FPS)}:${String(frames % FPS).padStart(2, "0")}`;
+  const startFrame = finalFrames - END_SCREEN_VISIBLE_FRAMES;
+  return `## ${number}. 可點片尾（私人上傳後在 Studio 設定）
+
+\`final.mp4\` 已有片頭動畫及 21 秒片尾，但片尾的外框不是連結。可點的影片卡和訂閱鈕必須在 YouTube Studio「片尾」設定；YouTube Data API 也不能代設。
+
+1. 私人上傳完成後，開啟這支影片的 Studio「片尾」→「從影片匯入」，選範本影片 \`oxEtlA8GWas\`。
+2. 把「最符合觀眾喜好」影片、訂閱、和「最新上傳」影片三個元素的開始時間都設為**成片長度減 16 秒**（30 fps 畫格時碼 ${timecode(startFrame)}），結束時間設在片尾（${timecode(finalFrames)}）。這版片尾到第 5 秒才完成圖示淡出，最後 16 秒的卡框已清楚。
+3. 儲存後在這支私人影片的播放頁確認三個元素都出現、與外框對齊，且兩張影片卡和訂閱鈕都可點。
+
+`;
+}
+
 /**
  * UPLOAD.md: only the operating steps in YouTube Studio. The checks that used to be a list here
  * (facts, links, thumbnail legibility, the owner's viewpoint, the disclosure) are the automatic
@@ -186,11 +223,13 @@ export function compilationSection(metadata, { episodes = 0, size_bytes: sizeByt
  * in metadata.json and this page only says how to tick it. The dub tracks (docs/videos/DUBS.md)
  * keep their own section: which file goes where in Studio's 「語言」.
  */
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, thumbnails = {}, skippedThumbnails = {}, variants = [], compilation = null }) {
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, thumbnails = {}, skippedThumbnails = {}, variants = [], compilation = null, endScreen = null }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
   // Each language's own thumbnail gets a section of its own when there is one or a note about one.
   const languageThumbnails = thumbnail ? localizedThumbnailSteps(thumbnails, skippedThumbnails) : "";
   const thumbnailSection = languageThumbnails ? `## 4. 各語言的縮圖\n\n${languageThumbnails}\n\n` : "";
+  const nextSection = thumbnailSection ? 5 : 4;
+  const clickableSection = endScreen ? endScreenSection(metadata, endScreen, nextSection) : "";
   const synthetic = typeof disclosure?.synthetic === "boolean" ? disclosure.synthetic : typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : drama;
   const reason = disclosure?.reason ?? metadata.disclosure_reason ?? (drama ? "AI-generated shots and voices" : "slides read by a synthesized narration");
   return `# 上傳步驟：${metadata.title}
@@ -217,7 +256,7 @@ ${captionLines}
 
 ${dubSteps(dubs, skippedDubs)}
 
-${thumbnailSection}## ${thumbnailSection ? 5 : 4}. 上傳之後
+${thumbnailSection}${clickableSection}## ${nextSection + (clickableSection ? 1 : 0)}. 上傳之後
 
 回到 /admin/videos 這支影片的「可以上架」卡片貼上 YouTube 網址，並選上架時間；影片 ID 會寫進 \`video.json\`，影片就算完成。不要自己按公開：公開由站主選的時間決定。
 `;

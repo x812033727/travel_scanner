@@ -127,7 +127,8 @@ export async function run(command, args, ctx) {
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
   const applied = appliedBranding(checks);
   const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-  const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === bodyTimeline?.total_frames
+  const selectedBranding = readBranding(workdir);
+  const brandingMatches = brandingCurrent(checks, selectedBranding) && (!applied || (applied.body_frames === bodyTimeline?.total_frames
     && checks.metrics?.frames === applied.intro_frames + applied.body_frames + applied.outro_frames
     && (compilation ? checks.compilation_hash === bodyTimeline?.compilation_hash : checks.speech_hash === bodyTimeline?.speech_hash)));
   const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
@@ -273,7 +274,7 @@ export async function run(command, args, ctx) {
     disclosure_reason: disclosure.reason,
   };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata: record, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs, thumbnails: localized.files, skippedThumbnails: localized.skipped, variants, compilation: compiled ? { episodes: compiled.episodes.length, size_bytes: compiled.size_bytes } : null }));
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata: record, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs, thumbnails: localized.files, skippedThumbnails: localized.skipped, variants, compilation: compiled ? { episodes: compiled.episodes.length, size_bytes: compiled.size_bytes } : null, endScreen: { format: doc.format, branding: applied, outroSha256: selectedBranding?.outro?.sha256, finalFrames: checks.metrics?.frames } }));
   recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale), ...(compiled ? { compilation: true, final: finalHow, size_bytes: compiled.size_bytes } : {}) }, ctx.now());
   const ownThumbnails = Object.keys(localized.files);
   ctx.stdout.write(`upload package: ${upload}\n  final.mp4${compiled ? ` (${finalHow}, ${(compiled.size_bytes / 1024 ** 3).toFixed(2)} GB, ${compiled.episodes.length} episodes)` : ""}, ${thumbnail ? "thumbnail.jpg, " : ""}${variants.length ? `${variants.join(", ")} (Test & compare), ` : ""}${ownThumbnails.length ? `${ownThumbnails.length} language thumbnails (${ownThumbnails.join(", ")}), ` : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
