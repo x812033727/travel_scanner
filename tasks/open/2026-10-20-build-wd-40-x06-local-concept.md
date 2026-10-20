@@ -120,3 +120,13 @@ second pilot. The current gate SHA and per-image reasons are in
 approval, official branding assets or Studio end-screen setup exists. Next:
 three representative untested visual families in a bounded isolated pilot,
 then stop and inspect before considering the remaining 68 frames.
+
+The third isolated pilot tested route symbolism (`x06-b03-s09`), household
+carpet care (`x06-b04-s14b`), and a finance-size comparison (`x06-b05-s01`).
+Each passed the model judge on take 2 and full-size human inspection under the
+series illustration rule, with no legible text, logo, source contradiction or
+style drift. Six image and six judge calls added US$0.0810, below the
+US$0.1215 pilot ceiling. The current 10/78 selected frames include the exact
+prior seven takes unchanged. Main ledger: US$0.4590, 34 image/34 judge calls,
+zero reservations. Main STOP remains; any further drawing must use bounded
+shot allowlists in an isolated work volume and recheck live quota/budget first.
