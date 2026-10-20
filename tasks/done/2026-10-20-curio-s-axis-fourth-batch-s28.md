@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-curio-s-axis-fourth-batch-s28
 title: "Curio S axis fourth batch: S28 Sima Guang and the vat, S10 the enemy is at Honno-ji, S25 Newton's apple"
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-history-stories
 claimed_at: 2026-10-20T02:12:53Z
 created_at: 2026-10-20T02:12:32Z
-completed_at:
+completed_at: 2026-10-20T20:27:50Z
 branch:
 depends_on: []
 scope:
@@ -31,14 +31,14 @@ Stukeley 的《牛頓爵士生平回憶》手稿與 Conduitt 筆記在英國皇�
 
 ## Definition of done
 
-- [ ] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
-- [ ] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
-- [ ] 旁白、配樂、插圖做完並 `review-push` 給站主。
+- [x] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
+- [x] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
+- [x] 旁白、配樂、插圖做完並 `review-push` 給站主。
 
 ## Steps
 
-- [ ] 查核先做（研究代理＋獨立覆核代理），再寫稿。
-- [ ] 每完成一段就開 PR（站主：額度用完前記得開 PR）。
+- [x] 查核先做（研究代理＋獨立覆核代理），再寫稿。
+- [x] 每完成一段就開 PR（站主：額度用完前記得開 PR）。
 
 ## How to verify
 

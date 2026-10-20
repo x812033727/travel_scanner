@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-curio-s-axis-sixth-batch-s02
 title: "Curio S axis sixth batch: S02 the borrowed arrows, S13 Sanada Yukimura, S27 horned Viking helmets"
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-history-stories
 claimed_at: 2026-10-20T06:03:17Z
 created_at: 2026-10-20T06:00:00Z
-completed_at:
+completed_at: 2026-10-20T20:27:51Z
 branch:
 depends_on: []
 scope:
@@ -31,14 +31,14 @@ Gjermundbu 頭盔與 1876 年拜魯特首演服裝設計的資料在博物館與
 
 ## Definition of done
 
-- [ ] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
-- [ ] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
-- [ ] 旁白、配樂、插圖做完並 `review-push` 給站主。
+- [x] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
+- [x] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
+- [x] 旁白、配樂、插圖做完並 `review-push` 給站主。
 
 ## Steps
 
-- [ ] 查核先做（研究代理＋獨立覆核代理），再寫稿。
-- [ ] 每完成一段就開 PR（站主：額度用完前記得開 PR）。
+- [x] 查核先做（研究代理＋獨立覆核代理），再寫稿。
+- [x] 每完成一段就開 PR（站主：額度用完前記得開 PR）。
 
 ## How to verify
 
