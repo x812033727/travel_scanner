@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-krispy-kreme-mcdonalds-brand-x18
 title: Prepare Krispy Kreme McDonald’s brand-story X18
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-review
-claimed_at: 2026-10-20T23:34:32Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:40:36Z
 completed_at:
 branch: codex/brand-story-krispy-kreme-x18
@@ -41,7 +41,8 @@ The new twenty-film brand-story series needs a reviewable X18 about the Krispy K
 - [x] Obtain an independent SEC audit and two first-blind reviews on the exact v3 SHA; the source facts passed but Q7/Q8 shared narrative questions failed.
 - [x] Revise v3 narrative blockers and S7 targeted-ingest caveat into a frozen author v4 package.
 - [x] Obtain an independent SEC audit and one truly first-blind editorial review on the exact v4 SHA; the factual HOLD makes a second narrative ballot unnecessary for this version.
-- [ ] Repair v4 date and editorial findings into v5, then obtain a new exact-SHA SEC audit and two fresh first-blind reviews.
+- [x] Repair v4 date and editorial findings into a frozen v5 author package.
+- [ ] Obtain a new exact-SHA SEC audit and two fresh first-blind reviews on v5.
 
 ## How to verify
 
@@ -77,3 +78,5 @@ v3 independent [SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/rev
 v4 author handoff: [response](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/author-response-v4.md) fixes shared Q7 by asking how new restaurants join the existing daily-delivery network rather than how many trays move each day, and changes the stated payoff to the public network plan. The early cost question now pays at the recorded U.S. start-up costs; the longer per-store economics question pays at the June joint announcement. It removes the repeated Kentucky pilot-continuation line, yearly-guidance aside, four other repeated setup lines, and the November→October rewind. S7 Q3 exit footnote >40k is marked for `whole: true` plus `2,400`/`2400` targeted extraction, or `reviewer_only` if not retrievable. Frozen v4 `video.json` SHA-256 `618ace68bc93f5bf2193d46107440ee83c43feb48ef7bd8e58c0e81772e593a2`; `shorts.json` SHA-256 `f5fb28a75542631a4ca59417fbf444556a2b7f45b4724a9cbcb1654c730aaef2`. Opening 191 written chars, substantive body 2,563 written/2,499 lint-spoken units (~8:20 at 300/min on paper); 112 lines, 14 loops, 101 stills, six native cards. Shorts 198/190 chars, eight beats each and 16 distinct reused shots. Author compose/lint 0/0, both Short CLI source/schema validators, episode Shorts check, docs-video tests 236/236, task check exit 0 and diff check passed. **No v4 independent fact or narrative PASS exists yet.** True TTS, official media, US$25 price/ledger, MP4 and real YouTube links remain separate gates.
 
 v4 independent [SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/script-source-audit-v4-independent.md) re-fetched all S1–S8 bytes/SHA and returned **HOLD** on one date: `x180619` and the visual plan call S7 a September company statement, but S7 is the **November 6** release covering the quarter ended September 28. Replace with「第三季財報公布時」and synchronize the derived files. One strictly first-blind [reader A](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-a-v4-independent.md) scored 7.4/10 and marked formal Q7/Q8/Q13 No: the existing-network question still lacks an operational payoff in its own terms; `x180319` and `x180409` repeat prior store counts without named callbacks; the long Q3 global-POA tail pulls away from the already answered daily-delivery economics. Both Shorts stood alone for that reader. Since facts HOLD, no second v4 ballot was commissioned and no merged narrative PASS is claimed. V5 must repair these points, re-freeze, then receive a new source audit and two fresh blind votes. The S7 footnote still requires targeted full-page `2,400` extraction or `reviewer_only` at formal import. No paid media, MP4, platform links or PR exists for X18.
+
+v5 author handoff: [response](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/author-response-v5.md) corrects S7's announcement timing in narration and visual plan to third-quarter results **published November 6**. Questions now match disclosed payoffs: daily replenishment and the hoped-for route-density/capacity benefit, not an unpublished connection procedure; `x180319` and `x180409` avoid restating the two store counts. Main-film Q2→Q3 global point totals move to standalone Short 2 and sourced metadata, so the final chapter follows the tray's July exit, initial lingering costs and later cost removal; the Short retains both global totals and distinct footnote. Short 1's headline now says McDonald's view **met expectations**. Frozen v5 `video.json` SHA-256 `4785bb87e82286a90b93a935a8f93c3c45c99a6fcd2787480e32849c342869e0`, `shorts.json` SHA-256 `7cc3f1ccd7256de4d6eede39fa0fffdedfd13010ddb03bf4a961665e70996403`. Opening 191 written chars; substantive body 2,490 written / 2,433 lint-spoken units (~8:41 @280 or ~8:07 @300 on paper); 109 lines, 16 loops, 100 stills, four cards, two eight-beat Shorts of 198/190 written chars. Author compose/lint 0/0, both Short CLI source/schema validators, episode Shorts check, docs-video tests 236/236, task check exit 0 and diff check passed. **No v5 independent fact or dual-blind narrative PASS exists yet.** True TTS runtime, official media, US$25 price/ledger, MP4 and real YouTube links remain separate gates.

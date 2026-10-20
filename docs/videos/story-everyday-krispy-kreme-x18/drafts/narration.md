@@ -16,12 +16,12 @@ x180109 | editorial | 那盤每天送達的甜甜圈，究竟卡在哪筆帳？ 
 x180201 | S1 | 這盤先進列克星敦、路易維爾一帶的麥當勞櫃台。 | small Kentucky map on clean table
 x180202 | S1 | 開頭的一百六十個點，是對方的餐廳，不是新蓋的甜甜圈店。 | generic fast food counters clustered on simple map
 x180203 | S1 | 試點店在宣布全國推展後，仍會繼續供應。 | small group of storefronts on simple map
-x180204 | S1 | 現有的每日新鮮配送，要怎麼接到別人的門市？ | sealed plain doughnut trays beside a kitchen door
-x180205 | S1 | 櫃台拿到原味糖霜、彩針巧克力與奶油夾心三款，不用現場做麵糰。 | three plain doughnuts on one unmarked tray
+x180204 | S1 | 合作櫃台不用現做甜甜圈；這三款要多久重新送一次？ | sealed plain doughnut trays beside a kitchen door
+x180205 | S1 | 櫃台拿到的是原味糖霜、彩針巧克力與奶油夾心三款。 | three plain doughnuts on one unmarked tray
 x180206 | S1 | 顧客能單買，也能拿一盒六入；同一批貨，進了另一家的菜單。 | one plain tray and an unmarked six-slot box
 x180207 | S1 | 從早餐開始賣，當日供應售完為止；餐盤要每天重新送到。 | breakfast clock beside a nearly empty tray
 x180208 | S1 | 麥當勞當時把它看成早餐的新選擇，也期待顧客在全天其他時段購買。 | an unmarked morning counter and an afternoon counter
-x180209 | editorial | 這批試點以外，新櫃台要怎麼接上原本每天送貨的網？ | plain breakfast trays multiply across an empty map
+x180209 | editorial | 新櫃台若接進既有配送網，公司預期會換到什麼好處？ | plain breakfast trays multiply across an empty map
 x180210 | S1 | 三月二十六日，兩家公司宣布分階段推向全國。 | unsigned announcement paper unfolds
 x180211 | S1 | 起跑放在那年下半年，依不同市場逐區展開。 | calendar blocks fill one region at a time
 x180212 | S1 | 公告預期，到二〇二六年底進入全國參與門市。 | unfinished map with distant blank regions
@@ -57,7 +57,7 @@ x180315 | editorial | 餐盤從肯塔基的小群櫃台，進到更長的早餐�
 x180316 | S3 | 季報把合作櫃台算進銷售點；那張全球圖還包括誰？ | many storefront dots spread on blank map
 x180317 | S3 | 年末全球銷售點合計一萬七千五百五十七個。 | blank global map with native-count placeholder
 x180318 | editorial | 這張全球圖也有其他通路，不能全讀作合作店。 | different generic storefront silhouettes on map
-x180319 | S3 | 報表註腳還特別標出，裡面含那超過一千九百家。 | blank footnote block beside mixed storefront silhouettes
+x180319 | S3 | 報表註腳也明列，剛才那批合作店算在全球總數裡。 | blank footnote block beside mixed storefront silhouettes
 x180320 | editorial | 地圖能算送到多少家，仍算不出每店需求能否攤平每日配送；後一本帳會由誰揭開？ | store grid beside separate unopened cost book
 x180322 | editorial | 這時餐盤還往外走，時間表也還指向更遠的區域。 | plain tray beside route continuing to blank region
 x180323 | editorial | 走到翌年春天，地圖更滿了，為何筆卻停下來？ | growing map with calendar page curling
@@ -71,7 +71,7 @@ x180405 | S4 | 這次重估，是和麥當勞一起做的。 | two blank calenda
 x180406 | S4 | 公司說，要找對參與各方都可獲利的模式。 | two separate open ledgers face one tray
 x180407 | editorial | 餐盤還能上架，下一批新櫃台卻先留白；差在哪？ | lit old counters beside dark new counter slots
 x180408 | S4 | 公司當時預期，第二季不再增加合作餐廳。 | next-quarter calendar with empty boxes
-x180409 | editorial | 五月按住的是接下來新增門市的預期；已有的兩千四百多家，仍是當時的合作路線。 | existing counters remain lit while new slots dark
+x180409 | editorial | 五月按住的是新增門市的預期；原有合作櫃台當時仍持續供應。 | existing counters remain lit while new slots dark
 x180410 | S4 | 它同時表示，仍相信長期全國擴張有機會。 | unfinished nationwide map left on wall
 x180415 | editorial | 還記得那張二〇二六年底的全國圖嗎？五月沒有給它新的開線時間。 | distant calendar recedes behind an unsigned map
 x180416 | S4 | 公告沒有給出兩家公司已找到可獲利模式的結論。 | two still-open blank accounting books
@@ -94,7 +94,7 @@ x180512 | S5 | 它說，已服務的這批餐廳有好的顧客體驗。 | rows 
 x180513 | S5 | 還記得那本沒揭開的帳嗎？Krispy Kreme 說，每店需求撐不起每天配送的成本。 | plain daily-delivery tray and unit-cost bars beside blank demand marks
 x180514 | S5 | 公司說努力調整過，還是沒有成功，模式對自己不可持續。 | ledger remains unbalanced beside tray
 x180515 | editorial | 麥當勞的達標，和供貨者能否撐住，原來不是同一個答案。 | one tray between two distinct blank ledgers
-x180516 | editorial | 公告沒列逐店損益；季報會把這本帳打開嗎？ | sealed store-level ledger beside active counters
+x180516 | editorial | 對麥當勞來說，這盤在早餐生意裡到底有多大？ | sealed store-level ledger beside active counters
 x180517 | S5 | 麥當勞還說，這項合作只占它早餐業務很小的一部分。 | small plain tray beside much wider unmarked breakfast counter
 x180518 | S5 | 它仍把早餐視為核心，只是這份甜甜圈合作要收場。 | wide anonymous breakfast counter beyond the small tray
 x180519 | editorial | 對一方是菜單一角，對另一方卻是要負擔的配送模式。 | small counter inset beside much larger delivery map
@@ -104,23 +104,20 @@ x180520 | editorial | 終止日還在前面，六月最後一張季末地圖會�
 x180601 | S6 | 六月二十九日，第二季結帳；終止公告已發出，合作尚未到生效日。 | calendar page near doughnut ledger
 x180602 | editorial | 那天若替餐盤拍張地圖，櫃台的燈還亮著。 | lit anonymous counters beneath a quarter-end marker
 x180603 | S6 | 所以季末圖仍含這批合作店。 | blank map with fewer highlighted counters than national plan
-x180604 | S6 | 全球銷售點共一萬八千一百一十三個。 | global map with native number placeholder
-x180605 | editorial | 這個總數還有其他通路；它不是麥當勞門市數。 | distinct storefront types encircle one plain tray
+x180605 | S6 | 那張全球銷售點表還有其他通路，並不是這條合作路線的逐店損益表。 | distinct storefront types encircle one plain tray
 x180606 | S6 | 第二季報告也把麥當勞合作成本，列為公司調整後利潤率承壓的原因之一。 | delivery cost folder beside quarter-end report
 x180607 | S6 | 同一指標還受交易量下降影響，不能把所有變動只算這項合作。 | two separate unmarked expense folders
-x180608 | editorial | 六月季末這張圖收起來後，哪張新圖才看得見退出？ | quarter-end folder closes as calendar turns forward
+x180608 | editorial | 這張季末圖收起來，還差哪一天，這條路線才真正停下？ | quarter-end folder closes as calendar turns forward
 x180610 | S5 | 七月二日，雙方宣布的終止正式生效。 | delivery route ends at closed generic counter
 x180611 | editorial | 送往麥當勞櫃台的那條合作線，到此從路線圖上撤下。 | single route fades from anonymous breakfast map
 x180612 | S6 | Krispy Kreme 說，會移除這項合作的相關成本。 | hands lift an unmarked cost folder from route table
 x180613 | S6 | 公司說，要把每日配送轉向高銷量、能獲利的零售點；那還不是逐店利潤證明。 | plain tray turns toward a different unmarked retail route
 x180614 | editorial | 不是甜甜圈不再配送，而是這份合作不再是它的目的地。 | one generic cart changes direction away from breakfast counter
 x180615 | S7 | 第三季一開始，帳上甚至仍有退場後滯留的合作成本。 | lingering blank expense page near empty route
-x180616 | editorial | 路線先停，成本才慢慢從帳本退去；那張新地圖呢？ | closed route chart beside an opening later-quarter folder
-x180617 | S7 | 九月二十八日，全球銷售點是一萬四千八百五十一。 | native later-quarter count card placeholder
-x180618 | S7 | 公司在第三季註腳確認，這季退出約兩千四百個麥當勞合作點。 | new quarter-end map with fewer dots
-x180619 | S7 | 九月公司說，合作成本已移除；但新配送網的逐店利潤有公布嗎？ | a plain delivery cart follows a different retail route
-x180620 | editorial | 但兩季全球總點數的差，還混著其他通路的開與關。 | two total-map ledgers kept apart
-x180621 | editorial | 還記得六月那本沒打開的逐店帳嗎？這兩張只記點數的地圖，仍沒有那一欄。 | two mixed-channel maps beside closed unit ledger
+x180616 | editorial | 路線先停，成本卻還在帳上；公司何時才說它退了場？ | closed route chart beside an opening later-quarter folder
+x180618 | S7 | 第三季財報註腳確認，這季退出約兩千四百個麥當勞合作點。 | new quarter-end map with fewer dots
+x180619 | S7 | 到第三季財報公布時，公司才說已移除相關成本。 | a plain delivery cart follows a different retail route
+x180620 | editorial | 全球銷售點不能當逐店帳；看回餐盤，它已不再走麥當勞那條線。 | two total-map ledgers kept apart
 x180622 | editorial | 最後看回早餐櫃台：示意餐盤曾有路可走，那條合作路已收起。 | unmarked breakfast counter and folded route map, no tray remains
 
 ## outro: 最後三句

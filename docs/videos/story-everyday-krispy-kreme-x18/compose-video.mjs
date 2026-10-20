@@ -55,8 +55,6 @@ const cardRules = new Map([
   ["x180313", { title: "已實現的合作進度", stats: [{ value: "> 1,900 家", label: "截至 2024-12-29，每日配送的 McDonald’s 門市" }], source: "S3｜2024 Q4" }],
   ["x180401", { title: "三月末進度", stats: [{ value: "> 2,400 家", label: "截至 2025-03-30；五月公告同時重估部署" }], source: "S4｜2025 Q1" }],
   ["x180502", { title: "雙方共同終止", stats: [{ value: "2025-07-02", label: "合作終止生效；六月二十三日公告" }], source: "S5｜2025-06-23" }],
-  ["x180604", { title: "Q2 全球銷售點", stats: [{ value: "18,113", label: "2025-06-29 季末；仍含約 2,400 合作店" }], source: "S6｜2025 Q2" }],
-  ["x180617", { title: "Q3 全球銷售點", stats: [{ value: "14,851", label: "2025-09-28；其他通路也變動，不可直接相減" }], source: "S7｜2025 Q3" }],
 ]);
 for (const id of cardRules.keys()) if (!allRows.some(row => row.id === id)) throw new Error(`Missing card anchor: ${id}`);
 const shortCues = [
@@ -129,7 +127,8 @@ const loops = [
   { setup: "x180106", payoff: "x180403", what: "春天重估部署時程" },
   { setup: "x180107", payoff: "x180501", what: "六月的另一份公告" },
   { setup: "x180109", payoff: "x180513", what: "每天送達與單店需求的問題" },
-  { setup: "x180209", payoff: "x180217", what: "新合作門市如何接到現有每日配送網" },
+  { setup: "x180204", payoff: "x180207", what: "合作櫃台多久補進新鮮甜甜圈" },
+  { setup: "x180209", payoff: "x180218", what: "新合作門市接入既有配送網的預期效益" },
   { setup: "x180216", payoff: "x180308", what: "擴張準備費用落在哪本帳" },
   { setup: "x180224", payoff: "x180301", what: "第一條全國路線在哪座城市" },
   { setup: "x180311", payoff: "x180313", what: "近兩千店預測是否達成" },
@@ -137,8 +136,9 @@ const loops = [
   { setup: "x180407", payoff: "x180408", what: "新櫃台留白的近期安排" },
   { setup: "x180422", payoff: "x180501", what: "六月合作的去向" },
   { setup: "x180505", payoff: "x180513", what: "到了兩千四百家為何停止" },
+  { setup: "x180516", payoff: "x180517", what: "合作占麥當勞早餐業務的比例" },
   { setup: "x180520", payoff: "x180603", what: "六月季末仍如何計入合作店" },
-  { setup: "x180616", payoff: "x180617", what: "退出後的全球銷售點" },
+  { setup: "x180616", payoff: "x180619", what: "終止後相關成本何時移除" },
 ];
 const order = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.setup) < order.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);

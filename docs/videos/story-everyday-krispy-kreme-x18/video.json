@@ -53,9 +53,14 @@
       "what": "每天送達與單店需求的問題"
     },
     {
+      "setup": "x180204",
+      "payoff": "x180207",
+      "what": "合作櫃台多久補進新鮮甜甜圈"
+    },
+    {
       "setup": "x180209",
-      "payoff": "x180217",
-      "what": "新合作門市如何接到現有每日配送網"
+      "payoff": "x180218",
+      "what": "新合作門市接入既有配送網的預期效益"
     },
     {
       "setup": "x180216",
@@ -93,14 +98,19 @@
       "what": "到了兩千四百家為何停止"
     },
     {
+      "setup": "x180516",
+      "payoff": "x180517",
+      "what": "合作占麥當勞早餐業務的比例"
+    },
+    {
       "setup": "x180520",
       "payoff": "x180603",
       "what": "六月季末仍如何計入合作店"
     },
     {
       "setup": "x180616",
-      "payoff": "x180617",
-      "what": "退出後的全球銷售點"
+      "payoff": "x180619",
+      "what": "終止後相關成本何時移除"
     }
   ],
   "youtube": {
@@ -374,7 +384,7 @@
       "lines": [
         {
           "id": "x180204",
-          "text": "現有的每日新鮮配送，要怎麼接到別人的門市？",
+          "text": "合作櫃台不用現做甜甜圈；這三款要多久重新送一次？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -391,7 +401,7 @@
       "lines": [
         {
           "id": "x180205",
-          "text": "櫃台拿到原味糖霜、彩針巧克力與奶油夾心三款，不用現場做麵糰。",
+          "text": "櫃台拿到的是原味糖霜、彩針巧克力與奶油夾心三款。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -459,7 +469,7 @@
       "lines": [
         {
           "id": "x180209",
-          "text": "這批試點以外，新櫃台要怎麼接上原本每天送貨的網？",
+          "text": "新櫃台若接進既有配送網，公司預期會換到什麼好處？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -1056,7 +1066,7 @@
       "lines": [
         {
           "id": "x180319",
-          "text": "報表註腳還特別標出，裡面含那超過一千九百家。",
+          "text": "報表註腳也明列，剛才那批合作店算在全球總數裡。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1256,7 +1266,7 @@
       "lines": [
         {
           "id": "x180409",
-          "text": "五月按住的是接下來新增門市的預期；已有的兩千四百多家，仍是當時的合作路線。",
+          "text": "五月按住的是新增門市的預期；原有合作櫃台當時仍持續供應。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1617,7 +1627,7 @@
       "lines": [
         {
           "id": "x180516",
-          "text": "公告沒列逐店損益；季報會把這本帳打開嗎？",
+          "text": "對麥當勞來說，這盤在早餐生意裡到底有多大？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -1745,29 +1755,6 @@
     },
     {
       "id": "x18-b06-s04",
-      "template": "stats",
-      "data": {
-        "title": "Q2 全球銷售點",
-        "stats": [
-          {
-            "value": "18,113",
-            "label": "2025-06-29 季末；仍含約 2,400 合作店"
-          }
-        ],
-        "source": "S6｜2025 Q2",
-        "visual_note": "Exact dates and figures typeset in postproduction over neutral doughnut-and-route shapes."
-      },
-      "lines": [
-        {
-          "id": "x180604",
-          "text": "全球銷售點共一萬八千一百一十三個。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b06-s05",
       "template": "shot",
       "data": {
         "prompt": "Close-up, soft pull out at an anonymous food-service interior; distinct storefront types encircle one plain tray; diffuse daylight. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
@@ -1777,14 +1764,14 @@
       "lines": [
         {
           "id": "x180605",
-          "text": "這個總數還有其他通路；它不是麥當勞門市數。",
+          "text": "那張全球銷售點表還有其他通路，並不是這條合作路線的逐店損益表。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
       ]
     },
     {
-      "id": "x18-b06-s06",
+      "id": "x18-b06-s05",
       "template": "shot",
       "data": {
         "prompt": "Wide shot, pan left at a delivery staging area; delivery cost folder beside quarter-end report; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
@@ -1801,7 +1788,7 @@
       ]
     },
     {
-      "id": "x18-b06-s07",
+      "id": "x18-b06-s06",
       "template": "shot",
       "data": {
         "prompt": "Overhead shot, pan right at a plain records room; two separate unmarked expense folders; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
@@ -1818,7 +1805,7 @@
       ]
     },
     {
-      "id": "x18-b06-s08",
+      "id": "x18-b06-s07",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up, still at a plain records room; quarter-end folder closes as calendar turns forward; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
@@ -1828,14 +1815,14 @@
       "lines": [
         {
           "id": "x180608",
-          "text": "六月季末這張圖收起來後，哪張新圖才看得見退出？",
+          "text": "這張季末圖收起來，還差哪一天，這條路線才真正停下？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
       ]
     },
     {
-      "id": "x18-b06-s09",
+      "id": "x18-b06-s08",
       "template": "shot",
       "data": {
         "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; delivery route ends at closed generic counter; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
@@ -1852,7 +1839,7 @@
       ]
     },
     {
-      "id": "x18-b06-s10",
+      "id": "x18-b06-s09",
       "template": "shot",
       "data": {
         "prompt": "Medium shot, gentle push in at an anonymous food-service interior; single route fades from anonymous breakfast map; soft morning window light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
@@ -1869,7 +1856,7 @@
       ]
     },
     {
-      "id": "x18-b06-s11",
+      "id": "x18-b06-s10",
       "template": "shot",
       "data": {
         "prompt": "Close-up, soft pull out at a delivery staging area; hands lift an unmarked cost folder from route table; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
@@ -1888,7 +1875,7 @@
       ]
     },
     {
-      "id": "x18-b06-s12",
+      "id": "x18-b06-s11",
       "template": "shot",
       "data": {
         "prompt": "Wide shot, pan left at a delivery staging area; plain tray turns toward a different unmarked retail route; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
@@ -1905,7 +1892,7 @@
       ]
     },
     {
-      "id": "x18-b06-s13",
+      "id": "x18-b06-s12",
       "template": "shot",
       "data": {
         "prompt": "Overhead shot, pan right at an anonymous food-service interior; one generic cart changes direction away from breakfast counter; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
@@ -1922,7 +1909,7 @@
       ]
     },
     {
-      "id": "x18-b06-s14",
+      "id": "x18-b06-s13",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up, still at a delivery staging area; lingering blank expense page near empty route; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
@@ -1939,7 +1926,7 @@
       ]
     },
     {
-      "id": "x18-b06-s15",
+      "id": "x18-b06-s14",
       "template": "shot",
       "data": {
         "prompt": "Low-angle shot, tilt up at a delivery staging area; closed route chart beside an opening later-quarter folder; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
@@ -1949,37 +1936,14 @@
       "lines": [
         {
           "id": "x180616",
-          "text": "路線先停，成本才慢慢從帳本退去；那張新地圖呢？",
+          "text": "路線先停，成本卻還在帳上；公司何時才說它退了場？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
       ]
     },
     {
-      "id": "x18-b06-s16",
-      "template": "stats",
-      "data": {
-        "title": "Q3 全球銷售點",
-        "stats": [
-          {
-            "value": "14,851",
-            "label": "2025-09-28；其他通路也變動，不可直接相減"
-          }
-        ],
-        "source": "S7｜2025 Q3",
-        "visual_note": "Exact dates and figures typeset in postproduction over neutral doughnut-and-route shapes."
-      },
-      "lines": [
-        {
-          "id": "x180617",
-          "text": "九月二十八日，全球銷售點是一萬四千八百五十一。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b06-s17",
+      "id": "x18-b06-s15",
       "template": "shot",
       "data": {
         "prompt": "Medium shot, gentle push in at a plain records room; new quarter-end map with fewer dots; soft morning window light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
@@ -1989,14 +1953,14 @@
       "lines": [
         {
           "id": "x180618",
-          "text": "公司在第三季註腳確認，這季退出約兩千四百個麥當勞合作點。",
+          "text": "第三季財報註腳確認，這季退出約兩千四百個麥當勞合作點。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
       ]
     },
     {
-      "id": "x18-b06-s18",
+      "id": "x18-b06-s16",
       "template": "shot",
       "data": {
         "prompt": "Close-up, soft pull out at a plain production and loading room; a plain delivery cart follows a different retail route; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
@@ -2006,14 +1970,14 @@
       "lines": [
         {
           "id": "x180619",
-          "text": "九月公司說，合作成本已移除；但新配送網的逐店利潤有公布嗎？",
+          "text": "到第三季財報公布時，公司才說已移除相關成本。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句停半拍"
+          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
       ]
     },
     {
-      "id": "x18-b06-s19",
+      "id": "x18-b06-s17",
       "template": "shot",
       "data": {
         "prompt": "Wide shot, pan left at a plain records room; two total-map ledgers kept apart; warm overcast light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
@@ -2023,35 +1987,18 @@
       "lines": [
         {
           "id": "x180620",
-          "text": "但兩季全球總點數的差，還混著其他通路的開與關。",
+          "text": "全球銷售點不能當逐店帳；看回餐盤，它已不再走麥當勞那條線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
       ]
     },
     {
-      "id": "x18-b06-s20",
+      "id": "x18-b06-s18",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a plain records room; two mixed-channel maps beside closed unit ledger; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; unmarked breakfast counter and folded route map, no tray remains; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
         "camera": "Overhead shot, pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180621",
-          "text": "還記得六月那本沒打開的逐店帳嗎？這兩張只記點數的地圖，仍沒有那一欄。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b06-s21",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; unmarked breakfast counter and folded route map, no tray remains; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [

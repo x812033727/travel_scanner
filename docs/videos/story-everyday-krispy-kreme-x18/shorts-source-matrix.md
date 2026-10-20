@@ -1,6 +1,6 @@
 # X18 Krispy Kreme｜Shorts 逐句作者來源矩陣
 
-`shorts.json` SHA-256：`f5fb28a75542631a4ca59417fbf444556a2b7f45b4724a9cbcb1654c730aaef2`；`video.json` SHA-256：`618ace68bc93f5bf2193d46107440ee83c43feb48ef7bd8e58c0e81772e593a2`。作者標記，不是獨立審核 PASS。
+`shorts.json` SHA-256：`7cc3f1ccd7256de4d6eede39fa0fffdedfd13010ddb03bf4a961665e70996403`；`video.json` SHA-256：`4785bb87e82286a90b93a935a8f93c3c45c99a6fcd2787480e32849c342869e0`。作者標記，不是獨立審核 PASS。
 
 | 代碼 | SEC 原件 | HTTP／原始 bytes | SHA-256 |
 | --- | --- | ---: | --- |
