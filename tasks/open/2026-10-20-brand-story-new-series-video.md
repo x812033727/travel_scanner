@@ -1,7 +1,7 @@
 ---
 id: 2026-10-20-brand-story-new-series-video
 title: 新增品牌故事系列與首集影片
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: codex-gpt6-new-brand-video
