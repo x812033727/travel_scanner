@@ -18,12 +18,12 @@ for (const line of raw.split(/\r?\n/)) {
 }
 if (groups[0].length !== 9 || groups[1].length !== 7) throw new Error("Expected independent 9/7-beat Shorts scripts");
 const shots = [
-  ["x130101", "x130103", "x130203", "x130205", "x130104", "x130302", "x130207", "x130206", "x130304"],
-  ["x130611", "x130610", "x130603", "x130605", "x130608", "x130609", "x130615"],
+  ["x130101", "x130103", "x130202", "x130203", "x130104", "x130214", "x130210", "x130204", "x130215"],
+  ["x130611", "x130610", "x130603", "x130605", "x130608", "x130614", "x130615"],
 ];
 const headlines = [
   ["兩天兩筆", "為何兩種？", "創作工具", "節目製作", "€308m 對價", "非純現金", "當時的期待", "兩端供給", "回本另算"],
-  ["廣告欄 −€21m", "真省多少？", "合格影片", "部分市場", "成本換欄", "其餘留廣告", "不能全算省下"],
+  ["廣告欄 −€21m", "真省多少？", "合格影片", "Premium 會員", "成本換欄", "拆分未知", "不能全算省下"],
 ];
 const beats = [
   ["hook", "turn", "proof", "proof", "proof", "proof", "proof", "payoff", "payoff"],
@@ -59,7 +59,7 @@ const shorts = groups.map((lines, index) => ({
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v5", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
+const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v6", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
 const sources = ["# X13 Spotify｜Shorts 作者來源索引", "", `\`shorts.json\` SHA-256：\`${sha}\`。作者標記，待獨立來源審查。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |"];
 for (const [i, lines] of groups.entries()) {
   mdLines.push("", `## Short ${i + 1}`, "");
@@ -71,7 +71,7 @@ for (const [i, lines] of groups.entries()) {
 writeFileSync(path.join(dir, "shorts-script.md"), mdLines.join("\n") + "\n");
 writeFileSync(path.join(dir, "shorts-source-matrix.md"), sources.join("\n") + "\n");
 const plan = [
-  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v5",
+  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v6",
   "",
   "這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。長片來源插畫要求中央 608px 焦點，但輸出仍須逐鏡驗真圖；來源數字卡在直式畫面重新由程式排字。",
   "",
