@@ -44,7 +44,7 @@
     },
     {
       "setup": "snow006",
-      "payoff": "snow041",
+      "payoff": "snow040",
       "what": "堂區理事會如何處置可疑的泵"
     },
     {
@@ -74,8 +74,13 @@
     },
     {
       "setup": "snow039",
-      "payoff": "snow041",
+      "payoff": "snow040",
       "what": "理事會當晚的回應"
+    },
+    {
+      "setup": "snow044",
+      "payoff": "snow046",
+      "what": "1855 年才完成的死者圖是否曾在 1854 年理事會桌上"
     },
     {
       "setup": "snow048",
@@ -86,6 +91,11 @@
       "setup": "snow050",
       "payoff": "snow053",
       "what": "濟貧院為何和近鄰街屋不同"
+    },
+    {
+      "setup": "snow054",
+      "payoff": "snow055",
+      "what": "緊鄰街泵的酒廠工人是否也有重症"
     },
     {
       "setup": "snow060",
@@ -162,7 +172,7 @@
       "id": "snow001",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a London street at dusk, a middle-aged physician in a plain dark coat raises a clear drinking glass beside a hand pump, soft grey light",
+        "prompt": "Close shot on a narrow cobbled London lane in 1854, Georgian brick houses behind a tall cast-iron street hand pump with a curved spout and long side lever; a middle-aged physician in a plain dark frock coat holds one transparent glass of colorless water at eye level beside the pump, soft grey evening light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -282,7 +292,7 @@
       "lines": [
         {
           "id": "snow008",
-          "text": "這杯清水前幾天，布羅德街附近已零星有人生病。",
+          "text": "把手還沒拆。史諾檢查那杯清水前，布羅德街附近已零星有人生病。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ],
@@ -395,7 +405,7 @@
       "lines": [
         {
           "id": "snow015",
-          "text": "人一散去，他還能問到誰喝過什麼水嗎？",
+          "text": "人一散去，他還能查出誰喝了哪裡的水嗎？",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -700,7 +710,7 @@
       "lines": [
         {
           "id": "snow034",
-      "text": "那杯水，除了從泵口直飲，還能從哪裡來？",
+      "text": "那杯水，除了直接從街上的水泵喝，還能從哪裡來？",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -796,7 +806,7 @@
       "lines": [
         {
           "id": "snow040",
-          "text": "史諾向理事說明訪查結果，卻沒有留下會議逐字對話。",
+          "text": "理事們聽了史諾的訪查；隔天，街上水泵的把手被拆下。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ],
@@ -813,7 +823,7 @@
       "lines": [
         {
           "id": "snow041",
-          "text": "能核對的是他寫下的結果：第二天，水泵把手拆了。",
+          "text": "史諾說這是他陳述後的行動，卻沒記下會議逐字對話。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -861,7 +871,7 @@
       "lines": [
         {
           "id": "snow044",
-          "text": "因為理事會聽的，是當時他找到的人和住址。",
+          "text": "理事會聽的是史諾當時的訪查；那張著名死者圖當晚在桌上嗎？",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -1006,7 +1016,7 @@
       "lines": [
         {
           "id": "snow053",
-          "text": "院內另有井和供水，也沒人去街泵取水；這會是差別嗎？",
+          "text": "院裡有井和公司供水，院內的人沒去布羅德街取水；死者較少，或許與水源有關。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -1022,7 +1032,7 @@
       "lines": [
         {
           "id": "snow054",
-          "text": "再往布羅德街走，酒廠也緊挨著那口街泵。",
+          "text": "再往布羅德街走，酒廠緊挨著那口水泵；工人得了重症嗎？",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -1086,7 +1096,7 @@
       "lines": [
         {
           "id": "snow058",
-          "text": "可同一條街另一間廠房，水桶卻從街泵裝滿。",
+          "text": "可同一條街另一間廠房，兩桶給人喝的水卻來自街上的水泵。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -1150,7 +1160,7 @@
       "lines": [
         {
           "id": "snow062",
-          "text": "那七人平時都喝街泵水；兩名住廠卻不喝的人只有腹瀉。",
+          "text": "那七人平時都喝街上那口水泵的水；兩名住廠卻不喝的人只有腹瀉。",
           "emotion": "自然說書，避免把推論說成證實"
         }
       ]
@@ -1224,7 +1234,7 @@
       "id": "snow067",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a road leaving Soho, a cart driver steadies a corked bottle in a small crate, overcast morning light",
+        "prompt": "Wide shot on a cobbled London lane in 1854, rows of Georgian brick houses along both sides; one brown horse in a leather harness pulls a small two-wheeled wooden cart, and its driver steadies one corked clear glass water bottle standing upright in a wooden crate on the cart, soft overcast morning light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1577,7 +1587,7 @@
       "id": "snow089",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot above an opened well, an adult parish worker inspects the intact brickwork, soft grey light",
+        "prompt": "Medium shot in a mid-nineteenth-century London yard, an opened circular brick well has a raised rim; an adult parish worker in plain work clothes stands with both feet on stone paving outside the well rim, leaning over to inspect the exposed intact inner brickwork, soft grey daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1666,7 +1676,7 @@
       "lines": [
         {
           "id": "snow999a",
-          "text": "還記得那杯看似乾淨的水？查它去過哪裡，才讀得懂這場疫病。",
+          "text": "還記得開頭那根把手嗎？病亡者的發病數早已下降；日期表仍判不出拆除後的保護效果。",
           "emotion": "收束放慢"
         },
         {
