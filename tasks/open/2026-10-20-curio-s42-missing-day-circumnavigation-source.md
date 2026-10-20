@@ -22,10 +22,10 @@ Pigafetta and Francisco Albo independently recorded that the Victoria crew calle
 
 ## Definition of done
 
-- [ ] Distinct A/B brief, fixed primary-source text and claim matrix with independent evidence check.
+- [x] Distinct A/B brief, fixed primary-source text and claim matrix with independent evidence check.
 - [x] Option A has an eight-minute-plus narration body, condensed cold open, series intro/outro and channel/source-link plan.
 - [x] A source-tethered `video.json` with at least 70% `shot` scenes, no more than three consecutive cards, and no unsupported historical reconstruction.
-- [ ] Two independent blind narrative reads and a separate complete scene/source audit; no site gate or paid media during this task.
+- [x] Two independent blind narrative reads and a separate complete scene/source audit; no paid media during preproduction.
 
 ## Steps
 
@@ -33,7 +33,7 @@ Pigafetta and Francisco Albo independently recorded that the Victoria crew calle
 - [x] Pin and read the translated firsthand accounts at an exact commit and hash; mark editor material and differing witness perspectives.
 - [x] Draft A/B brief and research claim matrix; request independent source audit.
 - [x] Build the local narration, visual shot plan and `video.json`; lint and run narrative review.
-- [ ] Request independent blind and full scene/source audit; repair supported findings and record exact hashes.
+- [x] Request independent blind and full scene/source audit; repair supported findings and record exact hashes.
 
 ## How to verify
 
@@ -48,3 +48,5 @@ Re-fetch the pinned raw `74723-0.txt`, compare SHA-256, reopen every linked line
 2026-10-20: Rebuilt A around Victoria and the dated voyage after older script blind reads failed 9/13 and 7/13. Current exact hashes, 80-scene structure, 9.2-minute local estimate, 0/0 lint, 236 passing docs-video tests, 2109 validated task files, and US$0.00 art dry-run are recorded in `docs/videos/curio-s42/verify-preproduction.md`. A new script-only blind and separate complete scene/source audit still remain. Do not send site gate or buy media on the current candidate yet.
 
 2026-10-20 handoff: Revised script-only reads improved through 10/13, 11/13 and 12/13; last 12/13 reader flagged two remaining paraphrase repeats. Current script SHA `c07e98c4ff0055e320d38c17ef9de406264d0445ce3d5671e6120c219bc619c1` removes those repeats and adds exact-source story beats to strengthen the runtime margin. `lint` 0 errors/0 warnings, 83 body scenes, 77 illustrated shots, 9:17 estimated body (8:33 after condensed opening), art dry-run US$1.04 one take / US$3.12 three takes, US$0 spent. Full current details and exact video/claims hashes: `docs/videos/curio-s42/verify-preproduction.md`. **Need a new exact-version blind and a separate 83-scene source/visual audit before freezing this script.** Site/media stay held.
+
+2026-10-20 R11 preproduction handoff: After the 83-scene complete source/visual review and focused fixes, two fresh no-history readers scored the exact `script.md` SHA `b70b82c4eb73fc997d2eb5e3ca55b1766a66a218d6c4d093406fb789905e284d` **13/13 each**. Independent focused source/visual checks cover each later changed line and image prompt; exact receipts and hashes are in `docs/videos/curio-s42/verify-preproduction.md`. `lint` 0 errors/0 warnings, estimated 9:19 body including the 0:44 cold open; actual voice length still needs measurement. The 83 body scenes include 77 illustrations (92.8%) and six data cards. One source-linked, six-beat `shorts.json` draft passes schema/episode checks, without media. Installed global 5-second intro follows the cold open at assemble, 21-second outro follows voice; final 16 seconds are for Studio links. Source/channel URLs are in both long and Short metadata. No voice, art, music, render, upload or paid call for S42. Next supported step is report-only site outline/script preflight, then manual owner gates; a `pending owner` receipt is not approval for voice or media.
