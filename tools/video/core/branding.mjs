@@ -256,8 +256,12 @@ export function presentationTimeline(timeline, branding) {
 export function shiftBrandingCues(cues, branding, direction = 1) {
   if (!branding) return cues;
   const offset = frameToMs(branding.intro_frames);
-  const atMs = frameToMs(introAtFrame(branding));
-  const moved = (cue) => (direction > 0 ? cue.start_ms >= atMs : cue.start_ms >= atMs + (atMs > 0 ? offset : 0));
+  // Caption timestamps are rounded to whole milliseconds before reaching this helper. Compare
+  // against that same rounded boundary, including on the reverse path, or the first cue after an
+  // intro at a non-whole-millisecond frame can be mistaken for a cue before it.
+  const atMs = Math.round(frameToMs(introAtFrame(branding)));
+  const shiftedAtMs = Math.round(atMs + offset);
+  const moved = (cue) => (direction > 0 ? cue.start_ms >= atMs : cue.start_ms >= shiftedAtMs);
   return cues.map((cue) => {
     const by = moved(cue) ? offset * direction : 0;
     return { ...cue, start_ms: Math.round(cue.start_ms + by), end_ms: Math.round(cue.end_ms + by) };

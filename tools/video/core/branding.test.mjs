@@ -283,3 +283,18 @@ test("the intro after chapter 1 moves only what follows it: lines, scenes, windo
   assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 1000, end_frame: 1201 }, { id: "b", start_frame: 1000, end_frame: 1200 }], 1200), ["a"]);
   assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 0, end_frame: 5 }], 0), []);
 });
+
+test("a cue rounded to a fractional-frame intro boundary moves forward and back", () => {
+  // Frame 1357 is 45,233.333 ms. Caption generation has already rounded the chapter-2 cue to
+  // 45,233 ms, so comparing it against the unrounded frame time would leave it over the intro.
+  const cues = [
+    { start_ms: 45000, end_ms: 45232, text: "第一章" },
+    { start_ms: 45233, end_ms: 49283, text: "第二章" },
+  ];
+  for (const [introFrames, secondStart] of [[150, 50233], [151, 50266]]) {
+    const applied = { intro_frames: introFrames, intro_at_frame: 1357 };
+    const shown = shiftBrandingCues(cues, applied);
+    assert.deepEqual(shown.map((cue) => cue.start_ms), [45000, secondStart]);
+    assert.deepEqual(shiftBrandingCues(shown, applied, -1), cues);
+  }
+});
