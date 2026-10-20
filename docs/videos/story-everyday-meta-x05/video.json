@@ -84,8 +84,8 @@
     },
     {
       "setup": "m050314",
-      "payoff": "m050412",
-      "what": "FY2022 公司營業利益低谷與隔年能否守住"
+      "payoff": "m050401",
+      "what": "FY2022 公司營業利益低谷後，隔年廣告送達數是否再增"
     },
     {
       "setup": "m050304",
@@ -149,8 +149,8 @@
     },
     {
       "setup": "m050513",
-      "payoff": "m050609",
-      "what": "RL 產品收入類別與單品損益能否混算"
+      "payoff": "m050601",
+      "what": "銷售方向不足以推算眼鏡或 Quest 的單品損益"
     },
     {
       "setup": "m050605",
@@ -240,7 +240,7 @@
           "say_for": "bda5ff362805"
         }
       ],
-      "chapter": "四張帳頁，先把答案蓋住"
+      "chapter": "二〇二五年，RL 營業虧損近一百九十二億"
     },
     {
       "id": "x05-b01-s02",
@@ -919,7 +919,7 @@
       "lines": [
         {
           "id": "m050314",
-          "text": "兩欄合計，公司營業利益只剩約二百八十九億；下一年還能守住嗎？",
+          "text": "兩欄合計，公司營業利益只剩約二百八十九億；隔年的廣告送達數還會再增加嗎？",
           "emotion": "問句上揚，停半拍"
         }
       ]
@@ -933,6 +933,10 @@
           {
             "value": "+28%",
             "label": "相較 FY2022"
+          },
+          {
+            "value": "未揭曉",
+            "label": "FY2023 全公司營業利益"
           }
         ],
         "source": "Meta FY2023 Form 10-K，Revenue / Advertising"
@@ -940,11 +944,11 @@
       "lines": [
         {
           "id": "m050401",
-          "text": "二〇二三年，廣告送達數又增加，這一次增幅達百分之二十八。",
+          "text": "二〇二三年，廣告送達數再增百分之二十八。",
           "emotion": "說書語氣，自然有起伏"
         }
       ],
-      "chapter": "二〇二三年，廣告回升而 RL 虧損加深"
+      "chapter": "二〇二三年，廣告送達再增，RL 那欄仍蓋著"
     },
     {
       "id": "x05-b04-s02",
@@ -1186,10 +1190,10 @@
       "lines": [
         {
           "id": "m050408",
-          "text": "比前一年更深；公司指出人事費提高，RL 收入也下滑。",
+          "text": "公司指出兩個原因：人事費增加，以及 RL 收入減少。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "比前一年更深；公司指出人事費提高，阿爾艾爾 收入也下滑。",
-          "say_for": "b9735c15fe60"
+          "say": "公司指出兩個原因：人事費增加，以及 阿爾艾爾 收入減少。",
+          "say_for": "09e7268ffc98"
         }
       ]
     },
@@ -1560,17 +1564,17 @@
       "id": "x05-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of a prototype bench. More plain eyeglass frames sit in the later open box, while fewer generic headset shells sit in a later box. Earlier boxes stand behind for directional comparison only.",
+        "prompt": "Medium view of a prototype bench. More plain eyeglass frames sit in the later open box, while fewer generic headset shells sit in a later box. Earlier boxes stand behind for directional comparison; both product-result drawers remain locked.",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "m050601",
-          "text": "二〇二五年對二〇二四年，AI 眼鏡銷售增加，Meta Quest 銷售減少。",
+          "text": "算不出單品損益；比前一年，AI 眼鏡銷售增加，Meta Quest 減少。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "二〇二五年對二〇二四年，人工智慧 眼鏡銷售增加，美塔奎斯特 銷售減少。",
-          "say_for": "6cee24ab1feb"
+          "say": "算不出單品損益；比前一年，人工智慧 眼鏡銷售增加，美塔奎斯特 減少。",
+          "say_for": "e96c36c9ba29"
         }
       ],
       "chapter": "二〇二五年，兩類裝置走向相反"
@@ -1697,10 +1701,10 @@
       "lines": [
         {
           "id": "m050609",
-          "text": "可分部表只列整欄，沒有眼鏡或 Quest 各自的單品帳。",
+          "text": "原因是分部表只列 RL 整欄的收入與營業虧損，沒有眼鏡或 Quest 各自的營業損益。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "可分部表只列整欄，沒有眼鏡或 奎斯特 各自的單品帳。",
-          "say_for": "de358d76daa6"
+          "say": "原因是分部表只列 阿爾艾爾 整欄的收入與營業虧損，沒有眼鏡或 奎斯特 各自的營業損益。",
+          "say_for": "043c5fd2800b"
         }
       ]
     },

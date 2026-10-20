@@ -42,7 +42,7 @@ async function main() {
   const { doc, lexicon, dir } = project;
   assert.deepEqual(lintProject(project).errors, [], "current project lint");
   const scriptSha = await sha256File(path.join(dir, "video.json"));
-  for (const receipt of ["source-review-v11-blindfix.md", "blind-o-v11.md", "blind-p-v11.md"]) {
+  for (const receipt of ["source-review-v12-transitions.md", "blind-o-v12.md", "blind-p-v12.md"]) {
     assert.ok(readFileSync(path.join(dir, "reviews", receipt), "utf8").includes(scriptSha), `review receipt is not bound to current video.json: ${receipt}`);
   }
   const timelineFile = inside(workdir, "timeline.json");
