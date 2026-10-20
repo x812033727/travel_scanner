@@ -34,12 +34,14 @@ scope:
 - [x] R5 完成來源安全的 110 句劇本、110/110 逐句來源對照、13/13 獨立盲讀與 0／0 lint；本機劇本關卡是委託製作許可，並非站主親自讀稿。
 - [x] R5 旁白 110 句已合成，重錄兩輪後仍有 12 句被 Jev 標記；本機 Whisper 模型下載遭代理伺服器 HTTP 403，沒有第二轉錄。
 - [x] R6 只改寫 12 個被標句及相同的 claims，重產精確劇本；字數／數字檢查與 lint 過關，未重新配音。
-- [ ] 把 R6 精確劇本雜湊交新的來源隔離讀者盲讀 13 題，並對新句與固定來源做獨立覆核；通過後才更新本機劇本關卡。
-- [ ] R6 針對 12 句 TTS、check-audio 零旗標、實測正文至少 8 分鐘，再處理整集插圖上限與後續媒體。
+- [x] R6 精確劇本交新讀者盲讀，13/13 通過；獨立來源及畫面覆核指出 `et027` 時序與片尾卡片歸屬兩項待修，原收據封存。
+- [x] R7 僅修 `et027` 時序與片尾卡片歸屬，重產精確劇本、逐句 claims；lint 與改寫限制再過。
+- [ ] 把 R7 精確劇本雜湊交新的來源隔離讀者盲讀 13 題，再做來源及卡片獨立覆核；通過後才更新本機劇本關卡。
+- [ ] R7 針對 12 句 TTS、check-audio 零旗標、實測正文至少 8 分鐘，再處理整集插圖上限與後續媒體。
 
 ## How to verify
 
-史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R6 `script.md` SHA-256 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。改寫與檢查見 `audio-rewrite-round1.md`；實測新版本正文及音訊仍待完成。
+史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R7 `script.md` SHA-256 `9067354cd8409e3202d0562f12006374a05f297c6d95c645d220d2c8bed2d6df`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。兩階段改寫、R6 退回與 R7 修正見 `audio-rewrite-round1.md`、`source-visual-round6.md`、`audio-r7-source-repair.md`；實測 R7 正文及音訊仍待完成。
 
 ## Notes
 
@@ -48,4 +50,5 @@ scope:
 - 2026-10-19：`brief.md` 用較安全的題目「抗議書喊出『二十年』，艾菲爾怎麼回答？」；原抗議書只說未來二十年會看見鐵塔陰影，**沒有寫只准站二十年**。艾菲爾的經營權說法明標當事人說法，1913 年無線電明標後來用途，均不補造 1909 年拆除命令。
 - 2026-10-19：已按兩份固定當代報紙轉錄寫成 101 句、90 張 still／1 片尾、估 8.47 分鐘的 `video.json`／`script.md`，`claims.md` 逐句 101/101 連回原文行；lint 0 errors／0 warnings。現稿精確 `script.md` SHA-256 `319a09ace6f2face0fc40ebeda8c93cfe7b60deef241a747fd6b0ab3bbb1a339`，獨立盲讀未進行，劇本與媒體均未核准。這一版沒有說 1909 年曾下拆塔令、契約全文絕無拆除條款，或無線電單獨阻止拆除。
 - S05 仍在語音與成片製作；S19 只做無付費前期。根集要求避開目前 MiniMax 限流，付費製作時段由根集另行協調。
-- 2026-10-20：此票從先前 `codex-s05` 認領轉交 `codex-gpt6-s19-audio`，僅改 `docs/videos/curio-s19` 及本票。R5 的 `verify-5.md` 記下 110 句、實際正文 510.2 秒、兩輪重錄後 12 句旗標與配樂成果；其本機 script approval 綁舊 SHA，不能套到 R6。R6 以 [audio-rewrite-round1.md](../../docs/videos/curio-s19/audio-rewrite-round1.md) 列出十二句原文／轉寫／改寫，現稿 SHA 為 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`；`rewriteProblems` 0 違規、lint 0／0，TTS dry-run 僅 12 句約 274 字元待合成。本輪尚未送新 TTS 或 MiniMax；先等獨立盲讀與史料覆核。
+- 2026-10-20：此票從先前 `codex-s05` 認領轉交 `codex-gpt6-s19-audio`，僅改 `docs/videos/curio-s19` 及本票。R5 的 `verify-5.md` 記下 110 句、實際正文 510.2 秒、兩輪重錄後 12 句旗標與配樂成果；其本機 script approval 綁舊 SHA，不能套到 R6。R6 以 [audio-rewrite-round1.md](../../docs/videos/curio-s19/audio-rewrite-round1.md) 列出十二句原文／轉寫／改寫，當時 R6 稿 SHA 為 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`；`rewriteProblems` 0 違規、lint 0／0，TTS dry-run 僅 12 句約 274 字元待合成。本輪尚未送新 TTS 或 MiniMax；先等獨立盲讀與史料覆核。
+- 2026-10-20：R6 獨立盲讀 13/13，來源／視覺覆核 110/110 對照及 100/100 插圖提示詞通過，但 `et027` 的「刊出後」暗示未證的出版先後；片尾卡片把艾菲爾自述二十年經營權當成直接事實。兩份原收據保存在 `blind-seal-round6.md`、`source-visual-round6.md`。R7 修成「面對這封抗議信…」及「艾菲爾說：他有二十年經營權…」；[修正收據](../../docs/videos/curio-s19/audio-r7-source-repair.md) 列出舊／新完整 SHA、來源邊界和估算片長。R7 待全新盲讀／來源覆核，尚未 TTS 或畫圖。

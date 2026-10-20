@@ -32,7 +32,7 @@
 | `et024` | 除了塔影，他們最後還要留下什麼？ | [R94–104](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L94) |
 | `et025` | 信的末尾，連建築師加尼耶都列在署名中。 | [R106–112](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L106) |
 | `et026` | 他們說，即使警告落空，仍要讓抗議留在紙上。 | [R101–104](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L101) |
-| `et027` | 這封抗議信刊出後，艾菲爾先回應了什麼？ | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
+| `et027` | 面對這封抗議信，艾菲爾先回應了什麼？ | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
 | `et028` | 開頭那名記者來自《時報》，他問艾菲爾對抗議的看法。 | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
 | `et029` | 艾菲爾先對加尼耶的署名感到驚訝。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
 | `et030` | 他說，建築師加尼耶也在塔的委員會，會裡做過的事都曾得到他的同意。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
