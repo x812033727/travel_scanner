@@ -11,3 +11,5 @@
 帳簿仍 US$3.3875／硬上限 US$3.44，剩餘 US$0.0525；`cl001,cl062,cl070` 各一次圖＋評審約 US$0.0135，三次約 US$0.0405，僅容一次同價定點重試。開畫前要先讓新版劇本與旁白過站台人工閘門，然後用新 WAV 複核所有卡片時長，再只指定三景送圖；任何評審不過且餘額不足，不得加費或把舊圖標成通過。正式分鏡、成片、字幕與 Short 尚未完成。
 
 覆核證據：[R15 官方 13 題盲讀](verify-r15-blind.md)、[R15 史料／畫面問題](verify-r15-source-visual.md)、[R16 三處定點修復](verify-r16-focused.md)。R16 獨立定點覆核已判 **史料與靜態結構 PASS**；圖像、語音時長及站台核准仍待完成。媒體帳簿與舊 manifest 尚未改，SHA-256 分別為 `f09452434a9430af39c11a86a416c471b3fae28f2cbac8064e41260db13f9180` 與 `531295a9c1d20f7b5c8d54103fa59bb9c408bfc41ea0ce66f6714f2d631d32a2`。
+
+**08:56 UTC 閘門紀錄：**官方 `narrative --slug curio-s40 --answers` 對本版劇本與 13 題逐行引用的盲讀答案記錄 **13/13 PASS**（先前缺方括號行號的答案格式失敗紀錄已由正確第二輪取代；不代表劇本盲讀失敗）。`review-push --gate script --report-only` 回報成功，隨後手動 `review-push --gate script` 已提交本版劇本至 `/admin/videos`，回覆 **pending；站主須在頁面決定，再執行 review-pull**。這支是手工製作影片，工具明示每個 gate 由站主決定。在站台劇本核准前，保留舊音檔、不執行 TTS 或付費畫圖。
