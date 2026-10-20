@@ -6,8 +6,8 @@ export const chapters = [
   {
     title: "二〇一八年，收款重新出現在開發清單",
     rows: [
-      ["一張網路購物結帳頁，買家按下付款，賣家等著收錢。", [], "in a cozy home, one anonymous shopper sits before a unmarked computer screen while a small parcel waits on a table, warm evening light"],
-      ["二〇一八年春天，eBay 把付款中介能力列進產品開發重點。", ["B13"], "in a quiet technology office, one anonymous developer studies a unmarked checkout flow sketch beside a ordinary parcel, soft morning light"],
+      ["想像二〇一八年春天的一筆 eBay 訂單：買家按下付款，賣家等著收錢。", [], "in a cozy home in spring daylight, one anonymous shopper sits before an unmarked computer screen while a small parcel waits on a table, with a separate anonymous seller at another desk, no company logo or readable interface"],
+      ["就在那個春天，eBay 把付款中介能力列進產品開發重點。", ["B13"], "in a quiet technology office, one anonymous developer studies a unmarked checkout flow sketch beside a ordinary parcel, soft morning light"],
       ["但三年前，它才把 PayPal 分拆成另一家上市公司。", ["B09"], "at a plain meeting table, one anonymous worker separates two unmarked folders, soft daylight"],
       ["它當年買下這家支付公司，正是為了讓網站上的交易更順。", ["B01", "B02"], "at a home worktable, one anonymous seller waits beside a boxed parcel and a unmarked payment slip, nostalgic daylight"],
       ["分拆生效那天，買家還要付款，賣家還在等著收錢。", ["B09", "B10"], "at a generic checkout desk, one anonymous shopper faces an unreadable screen while a separate seller waits at another plain terminal, no connecting route shown, soft worktable light"],
@@ -61,8 +61,8 @@ export const chapters = [
   {
     title: "二〇一五年，股權分派當天",
     rows: [
-      ["二〇一五年，股權分派和付款協議在同一天落地。", ["B09", "B10"], "at a plain accounting table, one anonymous clerk arranges two stacks of wordless share papers, morning light"],
-      ["原本握有 eBay 股票的人，每一股收到一股 PayPal 股票。", ["B09"], "close view of an anonymous hand placing one wordless certificate beside another, diffuse daylight"],
+      ["開頭那份營運協議，隨著股權分派成了兩家獨立公司的付款契約。", ["B09", "B10"], "at a plain accounting table, one anonymous clerk arranges two stacks of wordless share papers beside two separate unmarked contract folders, morning light"],
+      ["二〇一五年七月，eBay 股東每持一股，就收到一股 PayPal 股票。", ["B09"], "close view of an anonymous hand placing one wordless certificate beside another, diffuse daylight"],
       ["二〇一五年七月十七日，股權分派真的完成。", ["B09"], card("PayPal 完成分拆", "2015.07.17", "每股 eBay 配一股 PayPal", "eBay FY2015 Q3 Form 10-Q")],
       ["PayPal 獨立上市，eBay 是不是拿到了一筆出售現金？", ["B09"], "outside two separate anonymous office buildings with no signs, workers walk along a shared sidewalk, daylight"],
       ["eBay 沒有因為這次分拆，收到一筆賣掉 PayPal 的現金。", ["B09"], "at an accounting worktable, one anonymous analyst moves two wordless share stacks apart, leaving a cash drawer untouched, soft light"],

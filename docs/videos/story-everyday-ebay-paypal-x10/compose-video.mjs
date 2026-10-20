@@ -116,7 +116,7 @@ const matrix = [
   "本表由 `drafts/story.mjs` 生成；B 編號及邊界見 [source-matrix.md](source-matrix.md)。獨立審查完成後，審查收據會綁定本版 SHA。", "",
   `- \`video.json\` SHA-256：\`${sha256}\``, "",
   "| 句 ID | 旁白 | Treatment 主張 |", "| --- | --- | --- |",
-  ...original.map(row => `| \`${row.id}\` | ${escape(row.value)} | ${row.claimRefs.length ? row.claimRefs.join("、") : "編輯問句／CTA"} |`), "",
+  ...original.map(row => `| \`${row.id}\` | ${escape(row.value)} | ${row.claimRefs.length ? row.claimRefs.join("、") : "編輯情境／問句／CTA"} |`), "",
 ].join("\n");
 writeFileSync(path.join(dir, "line-source-matrix.md"), matrix);
 const script = ["# X10 eBay／PayPal｜繁中逐句稿", "", `稿件綁定 \`video.json\` SHA-256 \`${sha256}\`。尚無 TTS 實測；站主片頭片尾不計入實質正文。`, "", ...chapters.flatMap((chapter, ci) => [

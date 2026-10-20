@@ -47,8 +47,8 @@ const shorts = [
     description: "2015-07-17 eBay 把 PayPal 股份分配給原股東，每一股 eBay 股票收到一股 PayPal 股票；這不是 eBay 現金出售 PayPal。兩家公司同時以營運協議延續支付合作，初始期限五年。完整背景請看長片。資料：eBay FY2015 Q3 Form 10-Q、PayPal 2015 Form 10 information statement、2015 Operating Agreement。畫面為無標誌概念示意。",
     scenes: [
       scene("hook", "x10-b04-s04", "分拆＝現金出售？", ["x100404"]),
-      scene("setup", "x10-b04-s01", "分拆當天有兩件事", ["x100401"]),
-      scene("turn", "x10-b04-s02", "原股東每股獲配一股", ["x100402"]),
+      scene("setup", "x10-b04-s02", "2015 股東獲配股票", ["x100402"]),
+      scene("turn", "x10-b04-s06", "股權與結帳分兩路", ["x100406"]),
       scene("proof", "x10-b04-s05", "eBay 沒收到出售現金", ["x100405"]),
       scene("payoff", "x10-b04-s13", "分拆股權，支付仍合作", ["x100413"]),
       scene("loop", "x10-b04-s07", "營運協議繼續合作", ["x100407"]),
