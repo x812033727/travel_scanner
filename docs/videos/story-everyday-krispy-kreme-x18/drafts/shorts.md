@@ -13,11 +13,11 @@ x18s107 | S5 | 但 Krispy Kreme 說，成本始終對不上單店需求。 | uni
 x18s108 | S5,editorial | 雙方二〇二五年七月二日終止合作；試點熱度，不會自動變成大規模利潤。 | delivery route ends at closed generic counter
 
 ## Short 2: 合作已宣布結束，財報為何還算進門市？
-x18s201 | S5,S6 | Krispy Kreme 與麥當勞合作要結束，財報為何還算進兩千四百家店？ | calendar page near doughnut ledger
+x18s201 | S5,S6 | 每天送甜甜圈到麥當勞，喊停後財報怎還算兩千四百家？ | calendar page near doughnut ledger
 x18s202 | S6 | 第二季的結帳日，是二〇二五年六月二十九日。 | calendar marks late June before early July
 x18s203 | S6 | 當天全球一萬八千一百一十三個銷售點，仍含這批門市。 | many generic storefront dots under month-end bracket
 x18s204 | S5 | 合作七月二日才正式終止，比季末晚三天。 | plain doughnut racks behind closing route
-x18s205 | S7 | 到第三季，全球銷售點是一萬四千八百五十一個。 | two separate quarter-end ledger pages
+x18s205 | S7 | 到第三季，全球銷售點是一萬四千八百五十一個。 | new quarter-end map with fewer dots
 x18s206 | S6,S7,editorial | 但兩季差額不等於麥當勞退出數，其他點位也在變。 | two total-map ledgers kept apart
 x18s207 | S7 | 公司把移除合作成本，列為調整後 EBITDA 利潤率改善的原因之一。 | cost ledger and sales ledger remain apart
 x18s208 | S7,editorial | 但第三季仍淨損二千零一十萬美元；省下一種成本，不等於整家公司賺錢。 | profit ledger page still shows empty space

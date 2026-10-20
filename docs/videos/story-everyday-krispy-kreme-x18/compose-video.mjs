@@ -57,9 +57,6 @@ const cardRules = new Map([
   ["x180502", { title: "雙方共同終止", stats: [{ value: "2025-07-02", label: "合作終止生效；六月二十三日公告" }], source: "S5｜2025-06-23" }],
   ["x180604", { title: "Q2 全球銷售點", stats: [{ value: "18,113", label: "2025-06-29 季末；仍含約 2,400 合作店" }], source: "S6｜2025 Q2" }],
   ["x180613", { title: "Q3 全球銷售點", stats: [{ value: "14,851", label: "2025-09-28；其他通路也變動，不可直接相減" }], source: "S7｜2025 Q3" }],
-  ["x180618", { title: "Q2 Adjusted EBITDA 利潤率", stats: [{ value: "12.5% → 5.3%", label: "2024 Q2 → 2025 Q2；多因素影響" }], source: "S6｜2025 Q2" }],
-  ["x180621", { title: "Q2 公司總營收", stats: [{ value: "−13.5%", label: "同比；主要含 Insomnia Cookies 股權處分後的缺口" }], source: "S6｜2025 Q2" }],
-  ["x180626", { title: "Q2 GAAP 淨損的組成", stats: [{ value: "US$406.9m", label: "非現金減損；總淨損 US$441.1m" }], source: "S6｜2025 Q2" }],
   ["x180628", { title: "Q3 Adjusted EBITDA 利潤率", stats: [{ value: "9.1% → 10.8%", label: "2024 Q3 → 2025 Q3；多因素、仍有 GAAP 淨損" }], source: "S7｜2025 Q3" }],
   ["x180637", { title: "FY2025 GAAP 淨損", stats: [{ value: "US$523.8m", label: "2025 全年；不是合作單一虧損" }], source: "S8｜FY2025" }],
 ]);
@@ -71,8 +68,9 @@ const shortCues = [
   "unit-cost bars beside blank demand marks", "delivery route ends at closed generic counter",
   "calendar page near doughnut ledger", "calendar marks late June before early July",
   "many generic storefront dots under month-end bracket", "plain doughnut racks behind closing route",
-  "two separate quarter-end ledger pages", "two total-map ledgers kept apart",
-  "cost ledger and sales ledger remain apart", "profit ledger page still shows empty space",
+  "new quarter-end map with fewer dots", "two total-map ledgers kept apart",
+  "cost ledger and sales ledger remain apart",
+  "profit ledger page still shows empty space",
 ];
 for (const cue of shortCues) if (allRows.filter(row => row.cue.includes(cue)).length !== 1) throw new Error(`Missing or duplicate Shorts cue: ${cue}`);
 const shortAnchors = new Set(allRows.filter(row => shortCues.some(cue => row.cue.includes(cue))).map(row => row.id));
@@ -124,17 +122,16 @@ const loops = [
   { setup: "x180105", payoff: "x180301", what: "十月地圖先到芝加哥" },
   { setup: "x180106", payoff: "x180403", what: "春天重估部署時程" },
   { setup: "x180107", payoff: "x180501", what: "六月的另一份公告" },
-  { setup: "x180108", payoff: "x180514", what: "需求好卻成本不可持續" },
   { setup: "x180109", payoff: "x180513", what: "每天送達與單店需求的問題" },
   { setup: "x180220", payoff: "x180513", what: "每個新增店點能否負擔成本" },
   { setup: "x180306", payoff: "x180308", what: "近兩千店預測是否達成" },
   { setup: "x180315", payoff: "x180405", what: "密集路線的可獲利模式" },
-  { setup: "x180318", payoff: "x180403", what: "公司對擴張時程的動作" },
   { setup: "x180421", payoff: "x180501", what: "六月合作的去向" },
+  { setup: "x180515", payoff: "x180620", what: "季報是否寫出合作成本壓力" },
   { setup: "x180520", payoff: "x180601", what: "季報日期比終止早" },
   { setup: "x180522", payoff: "x180601", what: "季末地圖拍攝日期" },
-  { setup: "x180617", payoff: "x180628", what: "退出後調整後利潤率" },
-  { setup: "x180630", payoff: "x180631", what: "調整後指標與 GAAP 淨利不同" },
+  { setup: "x180610", payoff: "x180613", what: "退出後的全球銷售點" },
+  { setup: "x180617", payoff: "x180631", what: "退出後公司仍未轉盈" },
 ];
 const order = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.setup) < order.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
@@ -142,7 +139,7 @@ if (shotCount < 75 || shotCount > 125) throw new Error(`Illustration count outsi
 const description = [
   "Krispy Kreme 與麥當勞的肯塔基試點，被兩家公司形容為需求超出預期。2024 年公布的全國計畫隨後走到逾 2,400 家麥當勞，卻在 2025 年提前終止。這支品牌故事追著一盤每天配送的甜甜圈，從試點、分區鋪貨、暫緩部署到兩家公司各自的經濟考量，問需求好為何仍無法支撐合作。",
   "",
-  "2026 年底全國供應是原計畫，不是已完成；2025 Q2 全球銷售點截至 6/29，仍含 7/2 才退出的約 2,400 門市。Q2 營收跌幅和淨損另有 Insomnia Cookies 股權處分及非現金減損等因素，不能全算在這項合作。插畫為匿名概念場景，精確數字由後製字卡顯示。資料查核：2026-10-20。",
+  "2026 年底全國供應是原計畫，不是已完成；2025 Q2 全球銷售點截至 6/29，仍含 7/2 才退出的約 2,400 門市。Q2 營收跌幅和淨損另有 Insomnia Cookies 股權處分及非現金減損等因素，不能全算在這項合作。Q3 調整後 EBITDA 利潤率改善有多項因素，當季 GAAP 及 FY2025 全年 GAAP 仍為公司整體淨損。插畫為匿名概念場景，開場店員是明示的示意動作，精確數字由後製字卡顯示。資料查核：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.flatMap(source => [source.title, source.url]),
@@ -162,7 +159,7 @@ const video = {
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const videoSha = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 18, chapter: 1, planned_episodes: 20, title: "Krispy Kreme：試點說賣得好，為何撤出麥當勞？", logline: "肯塔基 160 店被說需求好，分區鋪貨到逾 2,400 店後卻共同終止；追問每天配送的單店需求與成本如何失衡。", names: ["Krispy Kreme", "McDonald’s", "Insomnia Cookies"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 18, chapter: 1, planned_episodes: 20, title: "Krispy Kreme：試點說賣得好，為何撤出麥當勞？", logline: "一盤每天配送的甜甜圈，從肯塔基試點走到逾 2,400 家合作店後共同終止；追問好需求與單店成本為何分岔。", names: ["Krispy Kreme", "McDonald’s", "Insomnia Cookies"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 writeFileSync(path.join(dir, "script.md"), ["# X18 Krispy Kreme × McDonald’s｜台灣繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。本版開場 ${openingChars} 字、正文 ${bodyChars} 字（紙面 @300 字／分約 ${(bodyChars / 300).toFixed(1)} 分），未經真實 TTS、獨立來源審核或盲評。第一章後接官方 5 秒片頭；最後三句後接官方 21 秒 v4 片尾。`, "", ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.narration}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.narration}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X18 Krispy Kreme × McDonald’s｜逐句作者來源矩陣", "", `\`video.json\` SHA-256：\`${videoSha}\`。作者標記，**不是獨立查核 PASS**；原件、位元組、SHA 和禁區見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.narration.replaceAll("|", "\\|")} | ${row.refs.length ? row.refs.join("、") : "敘事提問／依相鄰來源推理／CTA"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, scenes: scenes.length, shots: shotCount, cards: cardRules.size, lines: allRows.length, opening_chars: openingChars, substantive_body_chars: bodyChars, loops: loops.length }, null, 2));

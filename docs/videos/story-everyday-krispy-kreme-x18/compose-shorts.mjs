@@ -68,7 +68,7 @@ const specs = [
   },
   {
     titles: ["合作已終止，財報怎麼還算進 2,400 家麥當勞？", "差三天的季末：店數與獲利怎麼讀？"],
-    headlines: ["店數還含麥當勞？", "Q2 截至 6/29", "全球 18,113 點", "7/2 才終止", "Q3 14,851 點", "差額不能全扣", "改善因素之一", "仍淨損 US$20.1m"],
+    headlines: ["店數還含麥當勞？", "Q2 截至 6/29", "全球 18,113 點", "7/2 才終止", "Q3 全球點位", "差額不能全扣", "改善因素之一", "仍淨損 US$20.1m"],
     description: "Krispy Kreme 的 2025 年第二季在 6 月 29 日結束，全球 18,113 個銷售點當時仍含約 2,400 家麥當勞；合作 7 月 2 日才正式終止。第三季全球銷售點為 14,851，兩季差額不可全當成麥當勞店數變化。公司把移除合作成本列為調整後 EBITDA 利潤率改善的多項因素之一，但第三季 GAAP 淨損仍為 US$20.1m。概念插畫與文字卡不是現場紀錄；正式長片網址待實際上傳後回填。",
     refs: ["S5", "S6", "S7"],
   },
@@ -96,7 +96,10 @@ const shorts = rows.map((short, si) => ({
     const scene = matches[0];
     if (used.has(scene.id)) throw new Error(`${row.id}: main-film shot ${scene.id} already reused in a Short`);
     used.add(scene.id);
-    return { beat: beats[ri], shot: scene.id, headline: specs[si].headlines[ri], narration: [row.narration] };
+    return {
+      beat: beats[ri], shot: scene.id, headline: specs[si].headlines[ri], narration: [row.narration],
+      ...(si === 1 && ri === 4 ? { big: "14,851", note: "2025-09-28｜全球銷售點；所有通路" } : {}),
+    };
   }),
 }));
 for (const short of shorts) {
@@ -128,9 +131,9 @@ writeFileSync(path.join(dir, "shorts-portrait-plan.md"), [
   "# X18 Krispy Kreme｜兩支 Shorts 的逐拍 9:16 規劃", "",
   `離線前製，綁定主片 \`${videoSha}\` 與 Shorts \`${shortsSha}\`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。`, "",
   "每拍從一張不同的主片 1920×1080 插畫 `shot` 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點落在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。所有品牌名、年份與數字均以後製原生字卡排版，不請 image-01 畫字。", "",
-  "直式文字安全區：畫布 1080×1920；headline x=78–902、下緣 y≤1380；字幕 x=80–900、y=1430–1595；底部操作區保留。產出後於 360px 寬手機逐拍看字卡、字幕與甜甜圈／帳頁焦點，測兩支均為 25–55 秒。Shorts 不套長片片頭片尾，也不預填虛構 watch URL。", "",
-  "| Short／拍 | 重用主片 shot | 608×1080 左上角 | 直式焦點 | 原生 headline |", "| --- | --- | --- | --- | --- |",
-  ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=${crops[si][ri]}, y=0\` | ${rows[si][ri].focus} | ${scene.headline} |`)),
+  "直式文字安全區：畫布 1080×1920；headline x=78–902、下緣 y≤1380；字幕 x=80–900、y=1430–1595；底部操作區保留。Short 2 第五拍重用 Q3 地圖 `shot`，14,851 由 Short 原生 `big` 疊字、日期與全球通路分母由 `note` 疊字，不重用主片 `stats` 卡。產出後於 360px 寬手機逐拍看字卡、字幕與甜甜圈／帳頁焦點，測兩支均為 25–55 秒。Shorts 不套長片片頭片尾，也不預填虛構 watch URL。", "",
+  "| Short／拍 | 重用主片 shot | 608×1080 左上角 | 直式焦點 | 原生 headline／big／note |", "| --- | --- | --- | --- | --- |",
+  ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=${crops[si][ri]}, y=0\` | ${rows[si][ri].focus} | ${[scene.headline, scene.big, scene.note].filter(Boolean).join("／")} |`)),
   "", "焦點與主片 shot prompt 在編譯時逐字核對，正式裁切在真實插畫生成後才驗。", "",
 ].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, shorts_sha256: shortsSha, shorts: shorts.map(short => ({ slug: short.slug, beats: short.scenes.length, chars: short.scenes.flatMap(scene => scene.narration).join("").length })) }, null, 2));
