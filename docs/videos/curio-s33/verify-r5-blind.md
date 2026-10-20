@@ -1,0 +1,21 @@
+# Curio S33: second blind narrative read
+
+Scope: `script.md` only, plus the 13 question texts returned by `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s33 --json`. This is a narrative judgment, not a source or factual audit. The script SHA-256 before and after the read was `c371a345d78b5ecf8a5aedea435fd07d758ca27c6f6cee904775eff933c10105`.
+
+| ID | Answer | Script evidence and reason |
+| --- | --- | --- |
+| `scene_first` | **Yes** | Lines 9–21 place a petition before Sejong in 1444: “一封奏疏呈到世宗面前” (9), name 崔萬理 (13), then show the praise and reversal (17, 21). |
+| `no_spoiler` | **No** | The opening says “等國王讀完，還有人會被帶往義禁府” (33). This discloses the detention that the later confrontation reaches at line 277, even though the opening withholds the names and reasons. |
+| `one_line` | **Yes** | After the preview, “往前一年” (39) goes to the origin; the order on 二月十六日 (67) leads to the memorial (89), the king’s answer (209), release (287), and the book two years later (303). The return from the preview adds detail instead of replaying a whole scene. |
+| `no_toc` | **Yes** | The transitions pose in-story questions, such as “新字已造出，開場那道王命會交給誰？” (63) and “但一本書寫成……接下來誰來解說？” (331). The latter’s “接下來” asks who acts next after the book is made; it does not announce a viewing plan or enumerate upcoming sections. |
+| `chapters_link` | **Yes** | The early-story reset names “新字的起點” (39) after the opening’s new-letter conflict (17, 29). Later joins are direct: “崔萬理……阻止……哪一步？” (83) → the memorial opens (89); the disputed confession (149) → its proposed new-letter rationale (155); what the king answers (203) → old 吏讀 (209); whether detainees lose office (281) → release (287) and the one dismissal (291). |
+| `open_loops` | **Yes** | Questions or held turns recur at lines 29, 33, 63, 83, 109, 137, 149, 163, 187, 203, 253, 273, 281, 311, 331, 355, and 367. The longest gap in the CLI timing among these is about 65 seconds, from “國王會先回答哪一道難題？” (203; 04:46) to “真的只是在討論字該怎麼拼嗎？” (253; 05:51). |
+| `payoffs` | **No** | “如果供詞只差一個字，讀不懂的人會不會受冤？” (149) receives “一個字看錯，可能委屈一個人” (159), which restates the premise. The section then answers a different question, whether legibility can stop coerced confession (163–175). Also “把整場爭論壓到這一句” (179) promises a specific sentence after the conclusion already given at 175, but line 183 supplies only an interpretive caveat, with no new sentence. |
+| `no_recap` | **No** | “如果供詞只差一個字，讀不懂的人會不會受冤？” (149) and “一個字看錯，可能委屈一個人” (159) repeat the same one-character injustice idea in adjacent beats. Line 159 does not identify itself as a deliberate return or add a new fact. |
+| `chapters_are_events` | **Yes** | All six titles describe an act or development: the memorial (5), creation before opposition (35), 崔萬理’s diplomatic argument (85), the criminal-case argument (151), Sejong reading and responding (205), and release plus completion of the book (283). |
+| `outro_no_next` | **Yes** | The outro asks what a contemporary official would ask Sejong (388) and invites a subscription (389). It names no next video, episode, or file. |
+| `opening_hooks` | **No** | After the first scene’s praise and reversal (9–21), there are two clear suspended questions: why the script reaches criminal confessions (29) and why the exchange reaches detention (33). Line 25 reports a completed order received by unnamed scholars; it neither asks what happens to that order nor pauses an action before its result. Even treating the order as setup, it leaves only two clear qualifying later moments. |
+| `one_thread` | **Yes** | The same concrete difficulty—what the new letters change, and why ministers oppose their use—runs from “一套新字，為何會碰到審案？” (29) through the memorial’s reasons (89–199), Sejong’s response (209–277), and the exam order tied back to the ministers’ worry (359–379). |
+| `no_detour` | **Yes** | The criminal-case passage is explicitly part of the memorial’s objection (151–199). The later publication and exam material returns to that objection: “回看那封奏疏，反對者其中一個擔心，就是官吏只靠新字往上走” (375). No paragraph becomes a separate product, score, or quotation list. |
+
+Result: **9 Yes, 4 No**. The No judgments are for `no_spoiler`, `payoffs`, `no_recap`, and `opening_hooks`.
