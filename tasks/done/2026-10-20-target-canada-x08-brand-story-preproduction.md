@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-target-canada-x08-brand-story-preproduction
 title: Target Canada X08 brand-story preproduction package
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-x08
 claimed_at: 2026-10-20T17:21:41Z
 created_at: 2026-10-20T17:21:37Z
-completed_at:
+completed_at: 2026-10-20T18:00:27Z
 branch: codex/brand-story-target-x08
 depends_on: []
 scope:
