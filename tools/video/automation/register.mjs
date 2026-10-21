@@ -257,6 +257,149 @@ Teaching route (plain slides; writing only):
   adding scenes or claiming a result. Leave "pause_after_ms" out; the tool still sets the beats.
 `.trim();
 
+// How a tutorial flows and hooks, and how it keeps from sounding machine-made. On 2026-10-21 the
+// owner set two popular tutorials as the target (a Codex beginner guide at 479,000 views and a
+// Skill explainer that drew 58,000 views in six days on a 3,570-subscriber channel) and asked for
+// their flow, their hooks and their teaching value as rules. Both read against the story panel
+// above failed 10 and 8 of its 12 required questions while reading as one smooth lesson each;
+// what they do instead is below (the zh-TW study and rules: docs/videos/reference-study-20261021,
+// .agents/skills/youtube-video/references/teaching-flow.md). Sent to the planner, the writer and
+// the listener of a slides video after TEACHING_RULES; it governs the teaching route only.
+export const TEACHING_FLOW_RULES = `
+Teaching flow (tutorials only: a slides video whose subject the viewer operates; the illustrated
+route keeps its condensation and story rules):
+- The opening is five sentences in this order, 40 to 60 seconds in all, the product named within
+  20 seconds: (1, optional) why now, with its date; (2) a person asking the naive question in the
+  viewer's own words (「這不就是桌面版的 ChatGPT 嗎？」「出來滿一年了，還有人不會嗎？」), a person
+  the owner's stance or the run log really has, else 「你」, never an invented experience of the
+  owner's; (3) the answer as three to five verbs whose products the viewer can see (讀檔案、改檔案、
+  做表格、做簡報), not a definition; (4) one sentence of stakes that makes the rest unskippable
+  (「正因為它碰得到你的檔案，你得先學會怎麼駕馭它」); (5) ONE promise sentence naming what the
+  viewer will have at the end, at most four things and a count or a deliverable (「四個基本功：
+  專案、權限、上下文、AGENTS.md」「最後教你自己加一本」). A promise names what the viewer gets; a
+  table of contents says how many parts the video has (「分三段」「第一…第二…最後」「先講 A 再講 B」)
+  and stays banned. The things the promise names are not repeats when the body reaches them. The
+  person of sentence 2 comes back in the close.
+- Every new concept (a feature, a setting, a file, a term) is told with the same five pieces, in
+  any order, none missing: what it is in one plain sentence, the term arriving after it and
+  disarmed with 「聽起來很專業，其實就是…」 (at most three such sentences a video, one a chapter);
+  what it looks like inside the running example, down to the menu name, the file name and the
+  rule's own words; what most people do or what I do, with a number; one rule for choosing
+  (「先保守起手，被問煩了再切」); one beginner's mistake from the run log or an official page.
+  Natural-language content the viewer will type, such as the rules in a CLAUDE.md or AGENTS.md or
+  a Skill's description and steps, is read out in full; commands, paths and URLs are not read,
+  only what they do.
+- The tutorial's main hooks are two, besides the story family's forward, escalation, withheld and
+  turn: the voiced objection, where the narration says the question the viewer is about to ask and
+  answers it at once (「你第一次看到可能會想，怎麼又要寫一個 markdown」「到這裡你可能會有個疑惑：
+  那它跟 Memory 差在哪？」「看到這邊可能覺得很難，其實沒有」), three to six a video; and the
+  contrast with what the viewer does today (「ChatGPT 你得先把檔案丟上去，它改完你還要自己下載」),
+  at most one per concept. One hook of any kind at least every 60 to 90 seconds. In "loops" a voiced
+  objection's setup is the question and its payoff the answer, usually in the same chapter; each
+  thing the promise names is a loop whose payoff is the first sentence that delivers it.
+- A chapter's first sentence carries the running example's state or the viewer's next question
+  (「名單整理完、活動頁也做好了，我會讓它先總結目前的狀態」「這四個基本功都搞定了，現在來看它
+  實際能把這場講座做出什麼」「好，那到底要怎麼用？」). The test: strip 「接下來」「現在」「好」 and
+  what remains must state a state of the example or a question; a sentence that is then empty
+  (「接下來我們來看第二點」「首先我們來說說它是什麼」) is a label and is rewritten. 「好，」「所以，」
+  「那，」 open a sentence the way a person talks, three to six times a video, and are not labels.
+  Once, at the opening of the decisive chapter, the stakes sentence is called back
+  (「我前面說過，一個能碰你電腦的東西，你得先學會駕馭它」).
+- The narrator is present as 「我」 in three to five sentences, each carrying a number or an
+  admitted uncertainty, and each traceable to one of three sources only: this video's run log
+  (「我試的時候，第一次就被問了四次要不要同意」「我跑了三次，三次都是 3 對 3」, numbers as logged),
+  the owner's stance and standing instructions (「以我的用法」), or what neither the official page
+  nor the log settles, said as unsettled (「免費版有沒有我沒查到，先別當作有」; at least one, at
+  most three a video). A 「我」 sentence with none of the three is cut; no invented experience, no
+  「很多人跟我說」. One or two jokes a video about an experience the audience shares (「最終版、真的
+  最終版、這次絕對最終版」「還沒開始做事就先累死了，對吧？」), one sentence each, drawn from the
+  viewer's life and never from the owner's.
+- Comparisons are one of two kinds, never mixed: one mapping carried through the whole video,
+  every part of it matched to a mechanism and the point where it stops matching said (a Skill as
+  an instruction booklet: the cover is the name and description, the pages the steps, the
+  appendix the reference files, the shelf the skills page, opening it the load); or local
+  similes of one sentence each that leave at once and never return (特斯拉只拿來聽廣播、打 boss
+  前存檔、請助理一次丟十份文件), at most five a video, never two for one mechanism. A simile
+  spread into a scene of two or more sentences is what sounds machine-made and is cut. A scene
+  sentence that is itself the mechanism (「書櫃上幾十本說明書，每本從頭讀完，還沒開始做事就先
+  累死了」 for progressive loading) does not count against the two scene sentences.
+- Shape of an 8-to-12-minute tutorial: the opening chapter; three to five concept chapters of 60
+  to 120 seconds; a hands-on chapter that walks the running example in its own order, each step
+  with one sentence the viewer can say and one reason (「跟它講目的：不要只說幫我整理名單，說幫我
+  整理一份等一下要寄確認信的名單」「叫它留處理日誌，因為你得知道它做了什麼才有辦法驗收」); an
+  advanced chapter; a closing idea may come last (「它也是你的家教」). A concentrated list of
+  uses is allowed when each item is at most three sentences, all inside the one mapping, and the
+  main example takes over after it. One sentence answering 「我的工具能不能用」 with the tools that
+  support the subject is allowed; a list of scores, quotes or who said what is not. The risk
+  paragraph comes AFTER the steps, once, with its one check; trust before any step that grants
+  access stays where the teaching route puts it. The last content chapter may be an ordered action
+  list, 「你現在先做這三件」, at most three items, each an action; that is content, not a recap,
+  while a summary that retells the body's facts is a recap and stays cut. The outro keeps its three
+  sentences; its comment question asks the viewer's own situation (「你平常是還在網頁版問問題，
+  還是已經讓它動手？」), never a quiz.
+- Measurement is evidence, not content (the owner's review of the first tutorial made under
+  these rules, 2026-10-21: 「很無聊，沒什麼內容」; three blind readers had called the same
+  stretches 「像在念量測報表」). The content-value rules require a run behind every outcome; the
+  narration must not tell the making of that evidence. Every chapter teaches at least two moves
+  the viewer can repeat (the sentence to say, the button, the line to write, the mode to pick),
+  each followed by what happens next, told as one run's fact. Sentences of the family 「我跑了
+  三次」「三次都是 3 對 3」「十項過了八項」「被擋下四個指令」「跟沒有一樣」 number at most three in
+  a video, placed only where the result changes what the viewer decides; the rest moves to the
+  card's source field and the description. How a thing was scored, counted or compared never
+  enters the narration. At most two numbers are read aloud per chapter, each followed by what it
+  means to the viewer; the rest stay on cards. One run's result is used once, as the one fact
+  the viewer decides on, not split into three sentences; a control arm (no CLAUDE.md, pasted
+  text, nothing at all) is spoken only where the conclusion would differ, and only as that
+  conclusion. Evidence still backs every outcome, on the card: its source names the run (date,
+  version, id) and the description links the run log; the RUN/CITED label lives on the card.
+  A chapter opens on the viewer's work (「名單來了，先別急著叫它整理」), never on the experiment
+  (「這一次我們跑了三種模式」), and closes on what the viewer meets next, not on the next run.
+  A tutorial made this way runs 12 to 14 minutes.
+- The listener answers eleven more yes-or-no questions and reports every "yes" for a writer
+  revision: a sentence that tells the measuring (how many runs, how many checks passed, the
+  control arm, how it was scored) instead of a move the viewer makes;
+  ten consecutive sentences of about the same length; no 「我」 sentence with a number
+  and none admitting an uncertainty; a simile spread into a scene; a chapter opener empty once
+  「接下來／現在／好」 is stripped; every chapter the same shape with none opening on a viewer's
+  question or a failure; a source or the video's own making spoken; every number from an official
+  page and none from the video's own runs; no shared-experience joke; 「還記得」 more than five
+  times or in a row; a sentence that restates the one before it in other words.
+- Two kinds of tutorial (owner, 2026-10-21, after two 13-minute tutorials made under the rules
+  above were found dull and hard to follow): the short one teaches ONE concept (one file, one
+  mode, one feature) in 6 to 8 minutes with one everyday comparison carried through the whole
+  video, says the title's sentence within the first 15 seconds, names its chapters with the
+  viewer's questions (「一本說明書長怎樣？」「那到底要怎麼用？」) and ends on a one-sentence
+  answer plus a comment question; the long overview (15 to 18 minutes, four basics and one
+  worked example) is made only after a short one has been published and watched. Default to
+  the short kind.
+- Topic first, outline second: before the outline, search YouTube for the same subject (two
+  Traditional Chinese keyword sets) and put the top ten into the brief as a table of title,
+  length, view count, channel subscribers and upload age. Three or more results over 300,000
+  views that are 18 to 45 minutes with a presenter on camera and full desktop recording mean
+  the overview is taken: cut the subject to one concept instead. Borrow the cut and the length
+  of the small channel that scored high, never its content. One search intent per video.
+  Title words the popular ones use: 保姆級、零基礎、非工程師也能上手、不用寫程式、N 分鐘學完、
+  N 種用法、一次講清、還有人不會嗎？ (one set per title, one question mark at most); a timing
+  hook must be real (an anniversary from the official announcement's date, a version from the
+  official changelog, "these weeks" from a dated news item on the site).
+- Pictures, for every tutorial: each state shows ONE thing (a number, an icon with a word, one
+  command line, one rule of a file, one screenshot); a table has at most three rows and two
+  columns; a \`code\` card holds only what the viewer copies, never a log; \`bullets\` reveal one
+  item per state. Every state carries one key sentence (\`data.keys\`, one per state, at most
+  24 characters: the narration's current sentence condensed, drawn on the bottom band for
+  people scrolling with the sound off; CC subtitles are still not burned in). Commands and
+  prompts are typed for real in a \`terminal\` scene (\`data.typing: "human"\`, 12 characters a
+  second, output 3 lines a second), never shown on a \`code\` card, and the narration of that
+  state must outlast the typing; command and output are copied from the run log. At least
+  half of the states hold something that is not text: a built-in icon (\`icon\`), a terminal, an
+  official-page screencast, or a big numeral (\`big\` with \`numeral\`); each part of the concept
+  gets its own icon. A new state every 5 to 8 seconds, never longer than 15. Run codes, file
+  hashes and source stamps (「（p1）」「實跑 2026-10-21｜2.1.295」) never appear in card text or
+  narration: they go in the card's \`source\` field or the description. A short tutorial uses
+  the paper theme (\`theme: "paper"\`); the thumbnail's big words (at most six) add what the
+  title did not say, over a real official page captured by a \`screencast\` scene.
+`.trim();
+
 // What a slides video has to be worth to its viewer, whichever route it takes. The owner's review
 // of 2026-10-09 set it: a reference tutorial covered our whole nine-minute video in fifteen
 // seconds and spent the rest teaching, while a quarter of our sentences named where a fact came

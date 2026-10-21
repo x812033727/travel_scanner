@@ -98,10 +98,14 @@ export const SCENE_ID = SLUG;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const RATE = /^[+-]\d{1,2}%$/;
 
+// The slide looks a video may ask for (docs/videos/PAPER.md); templates.mjs THEMES draws them.
+export const THEMES = ["paper"];
 const TOP_KEYS = new Set([
   "schema_version",
   "slug",
   "format",
+  // The paper look for a slides video's cards: cream ground, ink text, one red accent.
+  "theme",
   // The language the voice reads and the captions translate from; zh-TW when absent.
   "narration_locale",
   "source_guide",
@@ -337,6 +341,7 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
+  if (doc.theme !== undefined && !THEMES.includes(doc.theme)) errors.push({ path: "theme", message: `must be ${THEMES.map((theme) => `"${theme}"`).join(" or ")} (docs/videos/PAPER.md), or left out for the dark theme` });
   if (doc.narration_locale !== undefined && !NARRATION_LOCALES.includes(doc.narration_locale)) {
     errors.push({ path: "narration_locale", message: `must be one of ${NARRATION_LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
   }

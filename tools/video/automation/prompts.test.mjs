@@ -674,3 +674,19 @@ test("the four explainer instruction texts are byte for byte what they were", ()
     assert.equal(sha256(instructionsFor(stage, "drama", "", variant)), digest, `${key} as composed`);
   }
 });
+
+// The tutorial flow rules (register.mjs TEACHING_FLOW_RULES, 2026-10-21): the three slides
+// stages that write read them after the teaching route; the verifier and the translator do not.
+import { TEACHING_FLOW_RULES as FLOW } from "./register.mjs";
+
+test("the slides planner, writer and listener read the tutorial flow rules after the teaching route", () => {
+  assert.match(FLOW, /ONE promise sentence naming what the\s+viewer will have at the end/);
+  assert.match(FLOW, /the voiced objection/);
+  assert.match(FLOW, /three to five sentences, each carrying a number or an\s+admitted uncertainty/);
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(FLOW), `${stage} gets the tutorial flow rules`);
+    assert.ok(prompt.indexOf(TEACHING_RULES) < prompt.indexOf(FLOW), `${stage} reads them after the teaching route`);
+  }
+  for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(FLOW), false, `${stage} reads no flow rules`);
+});

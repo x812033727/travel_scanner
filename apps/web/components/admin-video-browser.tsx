@@ -1,13 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FilterPills } from "@/components/admin-filter-pills";
 import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } from "@/components/admin-ui";
 import {
   control, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
-import { AdminVideoStorySeries, STORY_SERIES_SLUG, StorySeriesPage, type StorySeries } from "@/components/admin-video-stories";
+import { STORY_SERIES_SLUG } from "@/components/admin-video-stories";
 import { syncRunning } from "@/components/admin-video-youtube";
 import { Button } from "@/components/community/ui";
 import { updateAdminQuery, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -71,52 +71,6 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
   </tr>;
 }
 
-/** Only a kind=story series can open in the Videos tab's brand-story workspace. */
-function StoryWorkspace({ slug, onBack, onOpenVideo }: { slug: string; onBack: () => void; onOpenVideo: (slug: string) => void }) {
-  const t = useTranslations("admin.videoSeries");
-  const tv = useTranslations("admin.videoReviews");
-  const knownStory = useRef("");
-  const workspace = useRef<HTMLDivElement>(null);
-  const [reload, setReload] = useState(0);
-  const [loaded, setLoaded] = useState<{ slug: string; series: StorySeries | null; error: string }>();
-  useEffect(() => {
-    // The Videos page has other sections above its catalog; land on the opened story on a deep link.
-    workspace.current?.scrollIntoView?.({ block: "start" });
-  }, [slug]);
-  useEffect(() => {
-    let controller = new AbortController();
-    const load = () => {
-      controller.abort();
-      controller = new AbortController();
-      const { signal } = controller;
-      const beats = knownStory.current === slug ? "?beats=summary" : "";
-      api<StorySeries>(`/admin/video-automation/series/${slug}${beats}`, { signal }).then((series) => {
-        if (signal.aborted) return;
-        if (series.kind !== "story") {
-          // A stale or hand-edited link to a drama belongs in the drama workspace.
-          updateAdminQuery({ tab: "drama", series: slug, story_series: "", category: "", story: "", story_category: "", story_state: "" });
-          return;
-        }
-        knownStory.current = slug;
-        setLoaded({ slug, series, error: "" });
-      }).catch((problem: unknown) => {
-        if (!signal.aborted) setLoaded((current) => ({ slug, series: current?.slug === slug ? current.series : null, error: problem instanceof Error ? problem.message : "" }));
-      });
-    };
-    load();
-    const timer = window.setInterval(load, REFRESH_MS);
-    return () => { window.clearInterval(timer); controller.abort(); };
-  }, [slug, reload]);
-  const current = loaded?.slug === slug ? loaded : undefined;
-  return <div ref={workspace}>
-    {!current
-      ? <section className="mt-6 grid gap-4"><div><Button secondary onClick={onBack}>{t("back")}</Button></div><p role="status" className="text-sm text-[var(--muted)]">{tv("browserLoading")}</p></section>
-      : !current.series
-        ? <section className="mt-6 grid gap-4"><div><Button secondary onClick={onBack}>{t("back")}</Button></div><AdminErrorState title={t("loadError")} detail={current.error} retry={() => setReload((value) => value + 1)} retryLabel={t("retry")} /></section>
-        : <StorySeriesPage series={current.series} error={current.error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={() => setReload((value) => value + 1)} />}
-  </div>;
-}
-
 /**
  * The catalog of every long video under the two groups that wait for the owner (the category section
  * of docs/videos/HANDS-OFF.md): one line a video, narrowed by a category, a state and a search, a page at a time. The
@@ -128,7 +82,8 @@ function StoryWorkspace({ slug, onBack, onOpenVideo }: { slug: string; onBack: (
 export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) => void; revision?: number }) {
   const t = useTranslations("admin.videoReviews");
   const [category] = useAdminQueryValue("category", "", isCategoryFilter);
-  const [storySeries, setStorySeries] = useAdminQueryValue("story_series", "", (value) => STORY_SERIES_SLUG.test(value));
+  // A bookmark from when the brand-story series opened here: they live under Drama now.
+  const [storySeries] = useAdminQueryValue("story_series", "", (value) => STORY_SERIES_SLUG.test(value));
   const [state] = useAdminQueryValue("state", "", isBrowseState);
   const [query] = useAdminQueryValue("q");
   const [pageValue] = useAdminQueryValue("page", "1", isPageNumber);
@@ -149,10 +104,9 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
   const [draft, setDraft] = useState({ seen: query, text: query });
   const text = draft.seen === query ? draft.text : query;
 
-  // A bookmarked story page always carries its category; changing category clears the page in one step.
   useEffect(() => {
-    if (storySeries && category !== "story") updateAdminQuery({ category: "story", page: "" });
-  }, [category, storySeries]);
+    if (storySeries) updateAdminQuery({ tab: "drama", series: storySeries, story_series: "", category: "", page: "" });
+  }, [storySeries]);
 
   useEffect(() => {
     if (storySeries) return;
@@ -177,8 +131,7 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [suffix, reload, revision, storySeries]);
 
-  // The series page is a dedicated view, like it was under Drama. Back restores the video catalog.
-  if (storySeries) return <StoryWorkspace slug={storySeries} onBack={() => updateAdminQuery({ story_series: "", story: "", story_category: "", story_state: "" })} onOpenVideo={onOpen} />;
+  if (storySeries) return null;
   const categoryCounts = countsOf(data?.facets.category);
   const stateCounts = countsOf(data?.facets.state);
   return <section aria-label={t("browserTitle")} className="grid gap-3">
@@ -188,14 +141,12 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
       allLabel={t("categoryAll")}
       allCount={sumOf(data?.facets.category)}
       options={[
-        // A story series can exist before its first video, so its workspace must stay reachable at zero.
-        ...VIDEO_CATEGORIES.map((code) => ({ code, label: t(`categories.${code}`), count: code === "story" && categoryCounts[code] === 0 ? undefined : categoryCounts[code] })),
+        ...VIDEO_CATEGORIES.map((code) => ({ code, label: t(`categories.${code}`), count: categoryCounts[code] })),
         { code: "none", label: t("uncategorized"), count: categoryCounts.none },
       ]}
       value={category}
-      onChange={(code) => updateAdminQuery({ category: code, page: "", story_series: "", story: "", story_category: "", story_state: "" })}
+      onChange={(code) => updateAdminQuery({ category: code, page: "" })}
     />
-    {category === "story" && <AdminVideoStorySeries onOpenSeries={setStorySeries} />}
     <AdminFilterBar>
       <FilterPills
         label={t("stateFilter")}

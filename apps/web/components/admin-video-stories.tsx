@@ -707,13 +707,12 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
 }
 
 /**
- * The story series under the Videos tab's story category: each one with its limits and why no
- * story starts, opened on its own page; and the import, which also creates a series from its file.
+ * The story series under the Drama tab, beside the explainer requests: each one with its limits and
+ * why no story starts, opened on its own page; and the import, which also creates a series from its
+ * file. The Videos tab's 品牌故事 category lists only the videos, as 觀念解說 does (the owner,
+ * 2026-10-21).
  */
 export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
-  const [tab] = useAdminQueryValue("tab", "reviews", (value) => value === "reviews" || value === "drama");
-  // Drama still imports this component for old bookmarks. Keep its list and import in Videos.
-  if (tab !== "reviews") return null;
   return <StorySeriesList onOpenSeries={onOpenSeries} />;
 }
 
@@ -762,19 +761,6 @@ function StorySeriesList({ onOpenSeries }: { onOpenSeries: (slug: string) => voi
  * every story with its plan, and the import again (it updates only the stories not started yet).
  */
 export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
-  const [tab] = useAdminQueryValue("tab", "reviews", (value) => value === "reviews" || value === "drama");
-  useEffect(() => {
-    if (tab !== "drama" || series.kind !== "story") return;
-    // Old Drama bookmarks keep their selected story but open it in Videos.
-    const target = new URL(window.location.href);
-    if (target.searchParams.get("tab") !== "drama") return;
-    target.searchParams.set("tab", "reviews");
-    target.searchParams.set("category", "story");
-    target.searchParams.set("story_series", series.slug);
-    target.searchParams.delete("series");
-    adminNavigate(target, true);
-  }, [series.kind, series.slug, tab]);
-  if (tab === "drama") return null;
   return <StorySeriesDetail series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={onChanged} />;
 }
 
