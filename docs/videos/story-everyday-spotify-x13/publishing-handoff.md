@@ -1,8 +1,8 @@
 # X13 Spotify｜審核與上架交接
 
-**v13 目前只有離線前製，待此版獨立來源與兩位真正新讀者盲評。** [v12 來源審核](reviews/script-source-audit-v12-independent.md)對前版完整 SEC 原件事實 PASS；兩位新讀者 [A](reviews/blind-a-v12-independent.md) 和 [B](reviews/blind-b-v12-independent.md) 都對 Q8 答 NO，分別指出 `x130413` 重念關閉／可用的成對結果，及 `x130303` 重念 `x130210` 已講過的音樂廣告口徑。v13 修稿後，前版事實票和盲讀票不能沿用。JSON、稿件與直式規格不是 MP4、Shorts 成片、真字幕、媒體 QA 或 YouTube 發布證明；真實 ID／URL 上傳後才回填。
+**v13 已完成離線前製事實與敘事審核，正式媒體仍待製作。** [本版來源票](reviews/script-source-audit-v13-independent.md)通過九份 SEC 原件的事實界線；兩名全新[盲讀 A](reviews/blind-a-v13-independent.md)／[B](reviews/blind-b-v13-independent.md)依官方雙讀者合併規則通過必答題，分歧及 advisory 記在[合併票](reviews/narrative-v13-adjudication.md)。JSON、稿件與直式規格不是 MP4、Shorts 成片、真字幕、媒體 QA 或 YouTube 發布證明；真實 ID／URL 上傳後才回填，正式後續由任務 `2026-10-21-spotify-x13-media-links` 追蹤。
 
-作者於 2026-10-21 重新下載 S1–S9 和兩份背景年報；SEC 每份現行 HTML 回應均比 v11 收據多 9 bytes，[v12 獨立審核](reviews/script-source-audit-v12-independent.md)確認為頁尾安全 script URL 輪替，[來源矩陣](source-matrix.md)保留當日 bytes／SHA。v13 正式獨立審核仍須重新抓取並核對本版內容，不能沿用 v12 事實票。
+作者於 2026-10-21 重新下載 S1–S9 和兩份背景年報；SEC 每份現行 HTML 回應均比 v11 收據多 9 bytes。[v13 獨立審核](reviews/script-source-audit-v13-independent.md)再次重抓九份必要原件，確認 10/21 raw bytes／SHA 與矩陣收據相同，並逐項查核本版內容；舊日差異是頁尾安全 script URL 輪替。[來源矩陣](source-matrix.md)保留當日 bytes／SHA，正式工人仍須處理前 40k 文字預覽之外的段落。
 
 1. 由非作者代理獨立 HTTP 重讀[九份 SEC 原件](source-matrix.md)，驗 bytes／SHA、逐句、數字卡、縮圖意義、兩支 Shorts 和上架文案。S1 €308m 是 Anchor／Gimlet 合計**對價**非全現金；S2 的 +€22m 收入與 +€42m **總成本**同為整條 Ad-Supported 業務同比，+€12m 播客內容與 +€20m 版稅只是其中不同成本分項；S3 €30m 僅部分播客內容資產；S9 若干節目關閉屬 2023 Q2、逾十萬可用影片播客屬 **2023-07-25 公告當時**，不同集合且不能畫成被關節目影片化。S5 2024 Q2 分類毛利率不等於播客獨立獲利；免費播客線上／離線供給、售出的播客廣告曝光及既有發行者付款須與新影片方案分清。S7 的新體驗是提供給 Premium 會員而非新入會者，€21m 是 2025 Q2 廣告欄播客成本同比下降、不是純節省。S7 的觀看時間是相關付款的成本認列因素，並非每次播放固定單價。S6／S8 留矩陣備查、不口播／不排數字卡。S2／S5／S7 的原文相關段落可落在工人約 40k 字預覽之外；正式攝取須有可回核的定向原文或 reviewer_only 註記，不以作者矩陣代替讀到原件。
 2. 兩位未參與寫稿且不看本企劃／前評的人，各自只讀同版 `video.json`、`shorts.json` 與敘事規則，先判口播主線、30–45 秒鉤子、30–60 秒開場、至少三個後續未解時刻、結尾新答案、正文八分鐘與兩支 Short 獨立性，再看 9:16 紙面計畫。兩份評語綁同版 SHA。任何 JSON 字句或鏡頭變更都重置收據。

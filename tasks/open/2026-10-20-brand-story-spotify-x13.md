@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
-title: Brand story Spotify X13
-status: open
+title: Prepare Spotify X13 brand-story packet
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-root-pr
+claimed_at: 2026-10-21T01:00:44Z
 created_at: 2026-10-20T20:01:30Z
 completed_at:
 branch: codex/brand-story-spotify-x13
@@ -15,7 +15,7 @@ scope:
   - tasks/open/2026-10-20-brand-story-spotify-x13.md
 ---
 
-# Brand story Spotify X13
+# Prepare Spotify X13 brand-story packet
 
 ## Why
 
@@ -23,9 +23,9 @@ The owner asks to continue making missing-brand films, with a new PR then the ne
 
 ## Definition of done
 
-- [ ] A source-verified main film with measured substantive body ≥8:00, approximately 10-minute target, 30–45-second hooks, two standalone 25–55s Shorts, official 5s/21s bookends, Traditional Chinese optional CC, and reviewable source/script/visual evidence.
-- [ ] Paid media and retries stay within the owner-authorized US$25 episode cap; actual upload links are filled only after a real upload.
-- [ ] Draft PR only after independent source audit and two fresh blind reviews of the frozen script and Shorts.
+- [x] A reproducible, source-verified six-chapter zh-TW preproduction packet has a substantive paper body above eight minutes at 300 spoken units/minute, tight hooks, two standalone paper Shorts, official 5s/21s placement, optional Traditional Chinese CC plan and reviewable source/script/visual evidence.
+- [x] The whole-episode US$25 quote and production handoff explicitly defer actual spend, measured media runtime and platform URLs until real production; those remaining outcomes are tracked in `2026-10-21-spotify-x13-media-links`.
+- [x] An independent exact-SHA source audit and two genuinely fresh blind reviews of the frozen script and Shorts pass the repository's merged panel rule, ready for a truthful preproduction draft PR.
 
 ## Steps
 
@@ -40,8 +40,8 @@ The owner asks to continue making missing-brand films, with a new PR then the ne
 - [x] Revise to v11 and re-freeze the offline author packet after the v10 shared Q7/Q8/Q13 HOLD.
 - [x] Obtain new independent source and two genuinely blind story ballots on v11; shared narrative Q8/Q13 failures require another revision.
 - [x] Revise to v12 and obtain new exact-SHA source and two genuinely blind story ballots; source passed, both readers found Q8 repetition.
-- [ ] Repair both v12 Q8 repetitions in v13, then obtain a new exact-SHA source audit and two new blind ballots before PR.
-- [ ] Produce and QA film and Shorts with official branding/audio/CC within budget as available; submit a truthful draft PR for the approved offline packet, then continue the next missing brand.
+- [x] Repair both v12 Q8 repetitions in v13, then obtain a new exact-SHA source audit and two new blind ballots before PR.
+- [x] Separate formal film/Shorts production, measured audio, official animations, cost and true uploads into `2026-10-21-spotify-x13-media-links`; submit this reviewed offline packet as a draft PR.
 
 ## How to verify
 
@@ -92,3 +92,5 @@ Task-board coordination: v9 root used `claim --force` only because the Spotify t
 **V12 author checkpoint, 2026-10-21:** revised the v11 Q8/Q13/Q12 defects while preserving six chapters and a paper body over eight minutes. The 2024 whole-business margin bridge is three bounded lines; S5 free podcast listening, sold podcast ad impressions and existing publisher payments now carry the continuing-podcast thread into S7's 2025 creator and Premium-member actions. Removed the repeated 2020 classification and payout eligibility; Short 2 says the euro unit aloud. The v12 [author response](../../docs/videos/story-everyday-spotify-x13/reviews/author-response-v12.md) and [README](../../docs/videos/story-everyday-spotify-x13/README.md) record changes, counts, hashes and offline checks. Five core frozen SHA-256 values: video `3535eaf115165d1ea3acfce1d583a947e0f28add5796f3a60e72f26753b009d8`; Shorts `7fe87423bed274677ce10d4699b8fd343d6a4760afe50240eb069b2ab2674579`; source matrix `2431601fef57ad59774f620028933b261d0e2e775af933cf4c34a15f815433d0`; narration `ea8cdd4176e9a0ad73fcc4119068c7b40f562e418b06706ed25e5b29c03128b9`; visual plan `6914f69dd52f4aad53cb13dc5c3bb94e6f0b4bcca7cd143a8afae21002b71578`. On 2026-10-21, author re-fetched all S1–S9 and two background annual SEC originals; each current HTML response is 9 bytes longer than the v11 receipt, so the source matrix was refreshed to current bytes/SHA without carrying forward any v11 approval. This is **author-side offline work only**, not a new independent PASS. Next gate: independent v12 SEC source audit and two genuinely fresh first readers of the same frozen JSONs. No paid media, measured narration runtime, official bumper files, finished media, upload or PR.
 
 **V12 independent outcome, 2026-10-21:** [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v12-independent.md) independently re-fetched S1–S9 at the refreshed raw hashes and passed factual limits, retaining the formal worker's beyond-40k targeted-read requirement. Two fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v12-independent.md) and [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v12-independent.md) both failed mandatory Q8, though at different uncued repeats: A flags the closed-shows / available-video pairing at `x130413` after `x130405`/`407`/`412`, while B flags the music-advertising segment fact at `x130303` after `x130210`. All other mandatory questions pass in both ballots, and both Shorts stand alone. V12 therefore remains **HOLD** for narrative; no PR, paid media or upload. V13 needs both repetitions removed, a new freeze and genuinely new independent audit/two readers.
+
+**V13 independent outcome, 2026-10-21:** [author response](../../docs/videos/story-everyday-spotify-x13/reviews/author-response-v13.md) removes the two v12 repetition blockers and freezes video `1e17d3e2b3fba5f7376986b952c4345224da68d771820799c75fc179a53ac2d9` plus unchanged Shorts `7fe87423bed274677ce10d4699b8fd343d6a4760afe50240eb069b2ab2674579`. The independent [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v13-independent.md) re-fetched S1–S9 and passed all frozen facts, preserving targeted-ingestion caveats. Fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v13-independent.md) answered 12/12 required YES; fresh [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v13-independent.md) answered 10/12 YES, with Q8/Q13 dissent. No required question has two NOs, so the repository's `mergePanelVerdicts` yields **PASS**; both readers mark Q9 chapter titles NO but it is advisory, and both Shorts stand alone. The [adjudication](../../docs/videos/story-everyday-spotify-x13/reviews/narrative-v13-adjudication.md) records dissent rather than silently discarding it. Offline lint 0/0, both Short validators, 236 docs-video tests, task check and diff check pass on the author freeze. This **only completes preproduction**: no actual TTS timing, official media, paid calls, MP4, upload or real links exist. Follow-up task `2026-10-21-spotify-x13-media-links` owns those formal production outcomes. Keep the PR draft with `no-auto-merge` until reviewed.
