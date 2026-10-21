@@ -468,7 +468,7 @@ test("a tutorial reads the panel in its own wording, same ids and required flags
   const tutorial = panelQuestions({ ...fixture(), category: "tutorial" });
   assert.deepEqual(tutorial.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
   assert.deepEqual(tutorial.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
-  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 11, "outro_no_next and one_line keep the story wording");
+  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 12, "outro_no_next keeps the story wording");
   assert.match(tutorial.find((question) => question.id === "no_toc").question, /承諾句/);
   assert.match(tutorial.find((question) => question.id === "chapters_link").question, /「好，」「所以，」開頭/);
   assert.match(tutorial.find((question) => question.id === "open_loops").question, /你可能會想/);
