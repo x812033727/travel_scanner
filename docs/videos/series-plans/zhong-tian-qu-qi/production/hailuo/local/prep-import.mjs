@@ -3,7 +3,7 @@
 // also gets its other languages for `import --languages`: description.<l>.txt (title line, blank
 // line, description, from .youtube.json's localizations), <l>.srt and dub.<l>.m4a.
 //   node prep-import.mjs <n|first-last> ...
-import { existsSync, linkSync, mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
+import { existsSync, linkSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 const R = fileURLToPath(new URL("../../../../../../../", import.meta.url)).replace(/[\/]$/, "");
 const V = process.env.VIDEO_WORKDIR ?? `${process.env.HOME ?? process.env.USERPROFILE}/mokaair-work/videos`;
@@ -30,6 +30,10 @@ ${t.description}
     meta = { slug: `zhong-tian-qu-qi-e${pad(a)}`, title: `種田娶妻打天下 第${a}集 | CC字幕`, description: v.youtube.description, category: "drama", note: `種田娶妻打天下 第${a}集（3D 國漫版，海螺手工製作）` };
   }
   mkdirSync(dir, { recursive: true });
+  // A compilation's other languages all come from here, so a rerun starts from none: a caption or dub
+  // left from the previous cut would otherwise ride along with `import --languages`. An episode's
+  // folder keeps them, dub.sh puts them there.
+  if (b) for (const f of readdirSync(dir)) if (/^(description\.[\w-]+\.txt|dub\.[\w-]+\.m4a|(?!zh-TW\.)[\w-]+\.srt)$/.test(f)) rmSync(`${dir}/${f}`);
   link(mp4, `${dir}/final.mp4`);
   copyFileSync(srt, `${dir}/zh-TW.srt`);
   copyFileSync(THUMB, `${dir}/thumbnail.png`);
