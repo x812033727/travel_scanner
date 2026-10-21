@@ -770,11 +770,12 @@ class VideoDramaSeries(Base):
     compilation_finished_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
-    # The brand-story columns (docs/videos/STORY.md; migration 0111). How many episodes may start
-    # on one Asia/Taipei calendar day (NULL: no daily limit); the image model this series' media
-    # jobs use (NULL: the settings tab's); and the look every story of the series shares,
-    # {"style", "negative", "motion"?}, which a story series keeps here because it has no
-    # setting book. The other kinds leave the daily count and the look NULL.
+    # The brand-story columns (docs/videos/STORY.md; migration 0111). ``episodes_per_day`` is no
+    # longer read: a brand story has no daily count since 2026-10-21, and the column waits for a
+    # migration to drop it. The image model this series' media jobs use (NULL: the settings
+    # tab's); and the look every story of the series shares, {"style", "negative", "motion"?},
+    # which a story series keeps here because it has no setting book. The other kinds leave the
+    # look NULL.
     episodes_per_day: Mapped[int | None] = mapped_column(Integer, nullable=True)
     image_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
     look: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)

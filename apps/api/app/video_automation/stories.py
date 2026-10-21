@@ -43,7 +43,7 @@ from app.video_automation.models import (
     VideoDramaEpisode,
     VideoDramaSeries,
 )
-from app.video_automation.schemas import STORY_MAX_PER_DAY, SeriesIn
+from app.video_automation.schemas import SeriesIn
 from app.video_automation.series import add_series, is_redo_of
 
 # --- the backlog checker's rules (tools/video/story-plans/plan.mjs) ----------------------------
@@ -487,9 +487,6 @@ def series_problems(series: Any) -> list[str]:
             )
     elif not _is_int(minutes) or not low <= minutes <= high:
         problems.append(f"series.target_minutes must be {low} to {high}")
-    per_day = series.get("episodes_per_day")
-    if not _is_int(per_day) or not 1 <= per_day <= STORY_MAX_PER_DAY:
-        problems.append(f"series.episodes_per_day must be 1 to {STORY_MAX_PER_DAY}")
     if not _is_text(series.get("image_model")):
         problems.append("series.image_model is missing")
     style = _get(look, "style")
@@ -773,11 +770,8 @@ def plan_rows(
     return plans, problems, notes
 
 
-def _series_fields(series: dict[str, Any], episodes_per_day: int | None) -> dict[str, Any]:
-    fields = {key: value for key, value in series.items() if key in SeriesIn.model_fields}
-    if episodes_per_day is not None:
-        fields["episodes_per_day"] = episodes_per_day
-    return fields
+def _series_fields(series: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in series.items() if key in SeriesIn.model_fields}
 
 
 def _validation_problems(error: ValidationError) -> list[str]:
@@ -796,7 +790,6 @@ COMPARED = (
     "note",
     "target_minutes",
     "planned_episodes",
-    "episodes_per_day",
     "image_model",
     "look",
     "style_preset",
@@ -852,16 +845,15 @@ async def import_story_rows(
     series_slug: str,
     apply: bool = False,
     limit: int | None = None,
-    episodes_per_day: int | None = None,
     actor: User | None = None,
 ) -> StoryImportReport:
     """Check a compiled stories.json and import its stories into the story series named.
 
     Nothing is written unless ``apply`` and no problem was found. When the series does not
-    exist, ``apply`` creates it from the file's series object (kind ``story``, active), with
-    ``episodes_per_day`` in place of the file's when given; an existing series row is never
-    changed (the owner may have edited it), and the fields that differ are reported. ``limit``
-    imports only the first stories in production order; a later run without it adds the rest.
+    exist, ``apply`` creates it from the file's series object (kind ``story``, active); an
+    existing series row is never changed (the owner may have edited it), and the fields that
+    differ are reported. ``limit`` imports only the first stories in production order; a later
+    run without it adds the rest.
     A run that writes leaves one audit record: who ran it (``actor``; none from the host
     command), the stories created, updated and left alone, and the ``limit`` it ran with.
     """
@@ -878,8 +870,6 @@ async def import_story_rows(
     )
     if limit is not None and limit < 1:
         report.problems.append("--limit must be 1 or more")
-    if episodes_per_day is not None and not 1 <= episodes_per_day <= STORY_MAX_PER_DAY:
-        report.problems.append(f"--episodes-per-day must be 1 to {STORY_MAX_PER_DAY}")
     if report.problems:
         return report
 
@@ -894,7 +884,7 @@ async def import_story_rows(
     if series is None:
         report.series_created = True
         try:
-            new_series = SeriesIn.model_validate(_series_fields(check.series, episodes_per_day))
+            new_series = SeriesIn.model_validate(_series_fields(check.series))
         except ValidationError as error:
             report.problems.extend(_validation_problems(error))
     else:
@@ -905,11 +895,6 @@ async def import_story_rows(
             )
             return report
         report.series_differs = series_differences(series, check.series)
-        if episodes_per_day is not None:
-            report.notes.append(
-                "--episodes-per-day applies only when the import creates the series; "
-                "change the daily count on /admin/videos"
-            )
         rows = list(
             (
                 await session.scalars(

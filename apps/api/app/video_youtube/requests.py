@@ -89,6 +89,26 @@ _COMBINED_TAIL = re.compile(
     r"|ซับไทย)\s*$",
     re.IGNORECASE,
 )
+# What a brand story's title says before its captions tag, per language (the owner's rule of
+# 2026-10-20, 「…？｜品牌故事｜CC字幕」). The worker adds it when it composes the package
+# (tools/video/core/metadata.mjs STORY_TAGS, the same table); the site adds it again on the way
+# out, once, for the packages made before the rule and for a title the owner retyped on the card.
+STORY_TAGS = {
+    "zh-TW": "｜品牌故事",
+    "en": "｜Brand Story",
+    "ja": "｜ブランドストーリー",
+    "ko": "｜브랜드 스토리",
+    "es": "｜Historia de marca",
+    "pt": "｜História de marca",
+    "id": "｜Kisah Merek",
+    "vi": "｜Câu chuyện thương hiệu",
+    "th": "｜เรื่องราวแบรนด์",
+}
+_STORY_TAIL = re.compile(
+    r"\s*[|｜]\s*(?:品牌故事|Brand\s*Story|ブランドストーリー|브랜드\s*스토리|Historia\s*de\s*marca"
+    r"|História\s*de\s*marca|Kisah\s*Merek|Câu\s*chuyện\s*thương\s*hiệu|เรื่องราวแบรนด์)\s*$",
+    re.IGNORECASE,
+)
 
 
 def as_dict(value: object) -> dict[str, Any]:
@@ -96,8 +116,23 @@ def as_dict(value: object) -> dict[str, Any]:
     return cast(dict[str, Any], value) if isinstance(value, dict) else {}
 
 
-def captioned(title: str, language: str) -> str:
-    """``title`` ending with its language's captions tag, once.
+def _story_titled(title: str, language: str) -> str:
+    """A brand story's ``title`` ending with its language's story tag, once, ready for the
+    captions tag: a captions or story tag already there, in any language or spacing, is taken off
+    first. The tag is left off when, with it, even the short captions tag would not fit."""
+    bare = title.rstrip()
+    while True:
+        stripped = _STORY_TAIL.sub("", _TAG_TAIL.sub("", bare))
+        if stripped == bare:
+            break
+        bare = stripped
+    tagged = f"{bare}{STORY_TAGS.get(language, STORY_TAGS['en'])}"
+    return tagged if len(tagged) + len(SHORT_CAPTION_TAG) <= TITLE_MAX_CHARS else bare
+
+
+def captioned(title: str, language: str, *, story: bool = False) -> str:
+    """``title`` ending with its language's captions tag, once; a brand story's (``story``) with
+    its story tag before it (「…｜品牌故事｜CC字幕」).
 
     A tag already there, in any language or spacing, is replaced by this language's. When the
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
@@ -112,6 +147,8 @@ def captioned(title: str, language: str) -> str:
         and len(bare) <= TITLE_MAX_CHARS
     ):
         return bare
+    if story:
+        bare = _story_titled(bare, language)
     while True:
         stripped = _TAG_TAIL.sub("", bare)
         if stripped == bare:
@@ -177,9 +214,10 @@ def narration_language(metadata: dict[str, Any]) -> str:
     return value
 
 
-def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
+def localizations(metadata: dict[str, Any], *, story: bool = False) -> dict[str, dict[str, str]]:
     """The package's other locales, {locale: {title, description}}; the narration language is
     the snippet itself, so its own copy is left out (a zh-TW copy stays for English narration).
+    A brand story's (``story``) titles carry its story tag as well (``captioned``).
     """
     own = narration_language(metadata)
     found = metadata.get("localizations")
@@ -192,13 +230,15 @@ def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
             result[youtube_language(str(locale))] = {
-                "title": captioned(title, str(locale)),
+                "title": captioned(title, str(locale), story=story),
                 "description": description,
             }
     return result
 
 
-def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[str, Any]:
+def insert_body(
+    metadata: dict[str, Any], title: str, description: str, *, story: bool = False
+) -> dict[str, Any]:
     """The videos.insert resource: private, with no publish time yet.
 
     The details step right after the upload sends the whole of it again with the time and the
@@ -214,7 +254,7 @@ def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[
         status["containsSyntheticMedia"] = synthetic
     return {
         "snippet": {
-            "title": captioned(title, language),
+            "title": captioned(title, language, story=story),
             "description": description,
             "tags": _tags(metadata),
             "categoryId": _category(metadata),
@@ -233,6 +273,7 @@ def update_body(
     description: str,
     visibility: str,
     publish_at: datetime | None,
+    story: bool = False,
 ) -> dict[str, Any]:
     """The videos.update body: what the video has now, with the package and the owner's choice.
 
@@ -246,7 +287,7 @@ def update_body(
     status_now = as_dict(current.get("status"))
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
     snippet.update(
-        title=captioned(title, language),
+        title=captioned(title, language, story=story),
         description=description,
         tags=_tags(metadata),
         categoryId=_category(metadata, snippet_now.get("categoryId")),
@@ -271,7 +312,7 @@ def update_body(
     merged: dict[str, Any] = copy.deepcopy(existing) if isinstance(existing, dict) else {}
     # A copy of the default language would go stale beside the snippet it duplicates.
     merged.pop(language, None)
-    merged.update(localizations(metadata))
+    merged.update(localizations(metadata, story=story))
     return {"id": current.get("id"), "snippet": snippet, "status": status, "localizations": merged}
 
 

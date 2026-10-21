@@ -254,10 +254,11 @@ async def assets(
     return result
 
 
-def _captioned_entry(entry: Any, locale: str) -> Any:
-    """A localization with its language's captions tag on the title; anything else as it is."""
+def _captioned_entry(entry: Any, locale: str, *, story: bool = False) -> Any:
+    """A localization with its language's captions tag on the title, a brand story's with its
+    story tag before it; anything else as it is."""
     if isinstance(entry, dict) and isinstance(entry.get("title"), str):
-        return {**entry, "title": captioned(entry["title"], locale)}
+        return {**entry, "title": captioned(entry["title"], locale, story=story)}
     return entry
 
 
@@ -304,8 +305,9 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         payload.description if payload.description is not None else m.get("description", "")
     )
     narration = m.get("default_language", "zh-TW")
-    # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once.
-    title = captioned(title, narration)
+    # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once; a
+    # brand story's with its story tag before it (requests.STORY_TAGS).
+    title = captioned(title, narration, story=pack.story)
     problem = text_problem(title, description)
     if problem:
         raise Refused(422, "vps_text_invalid", problem)
@@ -326,7 +328,7 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         "made_for_kids": m["made_for_kids"],
         "contains_synthetic_media": m["contains_synthetic_media"],
         "localizations": {
-            locale: _captioned_entry(entry, locale)
+            locale: _captioned_entry(entry, locale, story=pack.story)
             for locale, entry in localizations.items()
             if locale != narration
         },
