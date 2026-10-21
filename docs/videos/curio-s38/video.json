@@ -1,0 +1,1930 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s38",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，說故事時清楚區分日記親見、聽來的消息與編輯推論。",
+    "performance": "順著佩皮斯五天撤物與守屋的動作前進；起司是情節線索，所查五日條目未記結局就留白。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "pf003",
+      "payoff": "pf066",
+      "what": "挖坑時火逼到哪裡"
+    },
+    {
+      "setup": "pf004",
+      "payoff": "pf090",
+      "what": "佩皮斯房屋的結果"
+    },
+    {
+      "setup": "pf005",
+      "payoff": "pf110",
+      "what": "起司去向有無記載"
+    },
+    {
+      "setup": "pf022",
+      "payoff": "pf081",
+      "what": "如何擋火"
+    },
+    {
+      "setup": "pf039",
+      "payoff": "pf040",
+      "what": "飯後河上火勢"
+    },
+    {
+      "setup": "pf051",
+      "payoff": "pf053",
+      "what": "先送哪些財物"
+    },
+    {
+      "setup": "pf057",
+      "payoff": "pf060",
+      "what": "誰的貨能上船"
+    },
+    {
+      "setup": "pf064",
+      "payoff": "pf067",
+      "what": "難搬的酒"
+    },
+    {
+      "setup": "pf077",
+      "payoff": "pf080",
+      "what": "未收到回音時是否仍有人拆屋"
+    },
+    {
+      "setup": "pf082",
+      "payoff": "pf092",
+      "what": "巷口能否守住"
+    },
+    {
+      "setup": "pf074",
+      "payoff": "pf091",
+      "what": "辦公室能否躲過火"
+    },
+    {
+      "setup": "pf102",
+      "payoff": "pf103",
+      "what": "城中是否再起火"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "倫敦大火時，他為何把起司埋進土裡？｜奇聞檔案局",
+    "description": "1666 年倫敦大火最初幾天，Samuel Pepys 從睡回去、向國王傳話，到穿睡袍搬財物、把酒與起司放進院子裡的坑。本集沿著他 9 月 2–6 日的日記走；起火地點是他聽來的，起司重量、價錢與後來有否挖回，這幾日條目未交代。畫面為卡通插圖，不是歷史現場影像。資料核對於 2026-10-19。",
+    "tags": [
+      "倫敦大火",
+      "Samuel Pepys",
+      "佩皮斯",
+      "起司",
+      "1666",
+      "日記",
+      "倫敦歷史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "起司埋地下？",
+      "tag": "1666 倫敦大火",
+      "sub": "日記究竟寫了什麼",
+      "shot": "pf002"
+    }
+  },
+  "sources": [
+    {
+      "title": "Samuel Pepys, Diary, 1666-09-02 to 1666-09-06",
+      "url": "https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65784-L66175",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "pf001",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot of two adult English men in 1660s wool doublets, knee breeches and linen cuffs digging an open pit in loose soil of a walled English garden. Their full-size adult torsos and hands grip two complete wooden-handled iron spades; faces are outside the frame. Evening in 1666, distant brick garden wall.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf001",
+          "text": "一六六六年九月四日傍晚，倫敦一座院子裡，佩皮斯正在和潘爵士挖當天的第二個土坑。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月四日晚，佩皮斯把起司放進第二個土坑"
+    },
+    {
+      "id": "pf002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of grown English hands in 1660s linen cuffs lowering one compact intact round wheel of hard aged Parmesan into an open earth pit in an English garden in 1666. The cheese shows only a continuous uncut golden-brown exterior rind; its interior is entirely hidden. Sealed wine vessels are already beside it in the pit. Crumbly soil walls and evening light, faces outside frame, no writing.",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf002",
+          "text": "兩人把酒放進去；他又把自己那塊起司也放進坑裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf003",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot of two adult English men in 1660s wool doublets, knee breeches and linen cuffs digging an open pit in loose soil of a walled English garden. Their full-size adult torsos and hands grip two complete wooden-handled iron spades; faces are outside the frame. Evening in 1666, distant brick garden wall.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf003",
+          "text": "火追到什麼程度，才讓他選擇院子裡的泥土？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf004",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide establishing view from a walled London garden in 1666, one adult English householder in his thirties with mature facial features and a plain knee-length coat appears head to toe as a small figure on the left, pointing over the wall toward a distant orange fire glow beyond narrow gabled rooftops; an intact brick house stands beside the garden under a soft overcast sky",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf004",
+          "text": "火最後有沒有燒到他的房子？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot at a plain oak table, one middle-aged English man with a short beard and a 1660s linen neckband reads an open page whose visible surface is blank, his other hand resting on the empty tabletop, soft candlelight against a brick wall",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf005",
+          "text": "而他事後寫下的日記，有沒有交代那塊起司的下落？",
+          "emotion": "自然說故事",
+          "pause_after_ms": 1600
+        }
+      ]
+    },
+    {
+      "id": "pf006",
+      "template": "big",
+      "data": {
+        "text": "1666．09．02",
+        "kicker": "女僕珍妮",
+        "sub": "凌晨，倫敦城裡有火"
+      },
+      "lines": [
+        {
+          "id": "pf006",
+          "text": "先回到兩天前。九月二日凌晨，女僕珍妮發現城裡有火。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日凌晨，佩皮斯看過火又睡回去"
+    },
+    {
+      "id": "pf007",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我穿上睡袍，走到她的窗邊」",
+        "sub": "1666．09．02，佩皮斯日記"
+      },
+      "lines": [
+        {
+          "id": "pf007",
+          "text": "她叫醒佩皮斯。他套上睡袍，走到窗邊。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a householder judging distant red glow beyond dark rooftops from an upper window, predawn light. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf008",
+          "text": "他覺得火在馬克巷後面，離住處還遠。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a clerk settling back under a plain blanket as distant glow stays beyond a window, predawn light. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf009",
+          "text": "於是他真的回到床上，又睡了一覺。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a writer leaning from a window to inspect distant smoke, early grey daylight. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf010",
+          "text": "早上再看，他甚至覺得那團火比剛才小；城裡真的平安了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a maid anxiously telling a diarist news in a modest London room, soft morning light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf011",
+          "text": "珍妮卻帶來一個消息：她聽說三百多間房燒了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a secretary listening to a maid inside a modest London room, soft morning light. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf012",
+          "text": "珍妮這個消息也是聽來的；佩皮斯得自己去看。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a city householder on a tower platform watching burning houses near a stone bridge, overcast morning light. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf013",
+          "text": "他登上塔樓的高處，終於看見橋邊房屋著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried diarist on a Tower platform looking toward fire at the London Bridge end, grey daylight. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf014",
+          "text": "橋上的火，讓他掛念那裡一戶熟人的家。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a writer gripping a tower rail while watching smoke rise from a city street, overcast light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf015",
+          "text": "剛才的遠處紅光，現在有了街道和人家；他們要往哪裡退？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a tower officer speaking to a diarist beside an unlettered city map, grey daylight. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf016",
+          "text": "塔樓官員說，火從布丁巷一名國王烘焙師的屋子起。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a thoughtful diarist looking out from a Tower window toward distant smoke, grey daylight. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf017",
+          "text": "佩皮斯聽到這個說法；他沒有目擊起火那一刻。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a householder seated in a small boat watching a family load crates onto a flat cargo boat, cloudy daylight. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf018",
+          "text": "他搭船沿河看，人們正把家當搬上平底貨船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried clerk in a riverboat viewing a burned house near city Bridge, cloudy daylight. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf019",
+          "text": "到了船上，他才看見那位熟人的房子已經燒了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London resident tipping a household bundle into the Thames, soft daylight. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf020",
+          "text": "還有人把搬不及的東西直接丟進河裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a riverside resident hurrying toward a boat with smoke behind a house, cloudy daylight. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf021",
+          "text": "佩皮斯見有些住戶等火貼近門口，才往船上跑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf022",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a secretary in a riverboat watching wind-driven smoke cross city rooftops, cloudy daylight. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf022",
+          "text": "風又把火往城裡推；誰能讓它停下來？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London householder hurrying toward a plain Whitehall palace entrance, midday light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf023",
+          "text": "佩皮斯沒有繼續待在船上，而是趕往懷特霍爾。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日，佩皮斯向國王提拆屋"
+    },
+    {
+      "id": "pf024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a clerk speaking earnestly before an English ruler in a plain seventeenth-century chamber, soft light. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf024",
+          "text": "他在國王與約克公爵面前，報告自己從河上所見。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a writer pointing to a gap between simple house blocks on a blank tabletop plan, lamplight. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf025",
+          "text": "他說要拆掉火前面的屋子，才可能擋住火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a seated ruler speaking firmly to a London diarist in a plain chamber, mild indoor light. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf026",
+          "text": "國王要他轉告市長，拆屋不要猶豫。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a seventeenth-century duke gesturing toward a blank city plan inside a hall, mild light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf027",
+          "text": "約克公爵還說，需要士兵時可以支援。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a weary city mayor leaning beside a narrow city street while a householder approaches, grey daylight. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf028",
+          "text": "等他找到市長，對方已疲憊得像撐不住，還能帶人拆屋嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an exhausted mayor speaking to a clerk near drifting smoke, muted daylight. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf029",
+          "text": "日記記下市長的抱怨：人不服從，火又追得太快。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a weary city mayor resting against a plain doorway, grey daylight. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf030",
+          "text": "市長說自己熬了一夜，得先找地方休息。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a weary mayor leaving a city street as a diarist watches, grey daylight. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf031",
+          "text": "市長說不需要更多士兵，轉身就離開了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a London resident setting one household chest inside a crowded church, muted daylight. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf032",
+          "text": "教堂裡也塞滿居民搬去暫放的家當。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot one London resident carrying a bundle past a loaded horse cart, overcast daylight. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf033",
+          "text": "沿街有人背著包，車上也堆滿要搬的家當。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a clerk observing sealed barrels near a city riverside warehouse, soft grey daylight. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf034",
+          "text": "佩皮斯特別記下，泰晤士街有焦油，倉庫還有油、酒；自家的酒呢？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London writer welcoming one guest at a modest dining room door, soft midday light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf035",
+          "text": "可到了中午，他仍回家招待原先約好的客人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried diarist sitting before a plentiful dinner spread while smoke shows through a window, soft midday light. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf036",
+          "text": "那頓飯依然豐盛，只是大家都惦記著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a concerned woman speaking at a dining-room doorway, muted midday light. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf037",
+          "text": "席間，巴特利爾太太來問兩位親人的下落；佩皮斯記下他們的房子已燒。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf038",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London porter loading a household crate into a horse cart on a crowded city street, grey afternoon light. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf038",
+          "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a clerk looking from a smoky city street toward the Thames, soft afternoon light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf039",
+          "text": "他接著上船，再看那道火線推到了哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a riverboat: one diarist watches fire spreading along the river upstream and downstream around a stone bridge, smoky afternoon light. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf040",
+          "text": "他再從船上看，橋的上游、下游，火都燒得更遠了。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日夜，火光逼佩皮斯裝箱"
+    },
+    {
+      "id": "pf041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a London diarist looking across cargo boats carrying household crates on the Thames, afternoon light. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf041",
+          "text": "河面擠滿搬運家當的小船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf042",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a riverside resident steadying a small virginal keyboard instrument inside a low cargo boat, cloudy daylight. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf042",
+          "text": "佩皮斯還看到，不少船裡連家用的小型鍵盤琴也載著。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf043",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a householder shielding his face from drifting sparks on a riverboat, dusk light. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf043",
+          "text": "迎風靠近時，飛來的火星讓他難以久留。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf044",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a riverside resident watching sparks pass above separate rooftops, muted dusk light. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf044",
+          "text": "那些火星甚至讓相隔好幾間的房屋接連著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer watching a distant arc of fire above the London riverbank, dusk light. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf045",
+          "text": "黃昏從對岸看，火光像一道拉長的弧。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf046",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a tearful diarist looking across the river at distant firelight, muted dusk light. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf046",
+          "text": "他寫，這幅景象讓自己哭了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a fire-displaced guest arriving with a few household bundles at a seventeenth-century London home at night, candlelight. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf047",
+          "text": "回家時，房子已燒毀的熟人湯姆帶著僅存的東西來投宿。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf048",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a householder packing his own belongings into a plain wooden chest in a seventeenth-century room, candlelight. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf048",
+          "text": "火勢消息不斷傳來，他們只得打包自家的東西；先搬到哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot household goods being carried into a small walled garden by moonlight in seventeenth-century London. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf049",
+          "text": "借著月光，家當先搬進花園；但花園能放下所有東西嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a tired guest and householder lowering an iron chest into a plain cellar at night, candlelight. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf050",
+          "text": "湯姆幫忙把金錢和鐵箱搬入地窖；整夜忙亂，他也沒睡好。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a diarist comparing a locked chest and a plain wooden box by a garden door, lamplight. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf051",
+          "text": "如果天亮還要搬，他先送走哪一批財物？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a city secretary meeting a horse cart outside his home before dawn, cool grey light. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf052",
+          "text": "九月三日天未亮，鄰居替他送來一輛車。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月三日，佩皮斯穿睡袍送走財物"
+    },
+    {
+      "id": "pf053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult male householder in a 1660s dressing gown riding a cart beside a closed chest, predawn light. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf053",
+          "text": "佩皮斯穿著睡袍，親自押送金錢與銀器。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a clerk carrying a closed chest into a suburban London doorway, morning light. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf054",
+          "text": "他把財物送到貝德納爾綠地一位朋友家。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf055",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer standing among household crates in a crowded receiving room, soft morning light. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf055",
+          "text": "那座房子也塞滿其他人送來的物品。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London diarist carrying a household bundle out of a home toward a river landing, grey daylight. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf056",
+          "text": "回家後，他和妻子繼續搬走剩下的東西。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a London secretary inspecting a low flat cargo boat at a Thames landing, cloudy daylight. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf057",
+          "text": "有人替他找來一艘搬貨用的平底船；他還讓誰的東西上船？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a porter carrying a wooden crate across a crowded city hill, overcast light. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf058",
+          "text": "箱子被扛過塔丘，送往碼頭。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a clerk holding a box blocked before a crowded narrow city postern, overcast light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf059",
+          "text": "人多到連穿過小門都很困難。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mother placing a small bundle on a flat cargo boat beside the Thames, soft light. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf060",
+          "text": "一位帶孩子的鄰居，也把少量東西放上他的船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a diarist carrying a small wooden crate toward a Thames cargo boat, soft daylight. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf061",
+          "text": "佩皮斯自己也扛過一些物品，沒有只坐著指揮。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a tired secretary spreading a simple quilt on an office floor, lamplight. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf062",
+          "text": "到夜裡，夫妻倆只能在辦公室鋪被暫睡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a householder eating a plain cold meal beside packed boxes, soft lamplight. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf063",
+          "text": "廚具不在手邊，兩人吃的是前一天的剩菜。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a clerk looking toward large wine vessels beside a packed garden path, soft night light. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf064",
+          "text": "車、船和花園都用上了；還有什麼難以搬走？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London writer carrying a last wooden box toward a flat river cargo boat, overcast morning light. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf065",
+          "text": "九月四日一早，能搬的還在往船上送；院裡卻有酒沒有搬走。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月四日，兩個土坑先後挖開"
+    },
+    {
+      "id": "pf066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a diarist watching smoke approach houses along a narrow London street, muted afternoon light. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf066",
+          "text": "到了下午，塔街的火已逼近幾戶房子。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an older city official studying wine vessels in a walled garden, soft afternoon light. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf067",
+          "text": "鄰居巴頓爵士的酒太難搬走，便想了另一個辦法。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an older official lowering a wine vessel into a garden pit, afternoon light. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf068",
+          "text": "巴頓在院子挖第一個坑，把酒放了進去。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a clerk placing tied blank office papers beside a wine vessel in a garden pit, soft light. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf069",
+          "text": "佩皮斯趁機，把辦公文件也放進這個土坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a worried writer looking over tied blank office papers beside a first garden pit, soft afternoon light. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf070",
+          "text": "這才是第一個坑；剛才問的佩皮斯自己的酒呢？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf071",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot of two adult English men in 1660s wool doublets, knee breeches and linen cuffs digging a second open pit in loose soil of a walled English garden, apart from the earlier pit. Full-size adult torsos and hands grip complete wooden-handled iron spades; faces outside the frame. Wine vessels nearby, evening in 1666.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf071",
+          "text": "到了傍晚，他與潘爵士為自己的酒另挖第二個坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of grown English hands in 1660s linen cuffs lowering one compact intact round wheel of hard aged Parmesan into the second open earth pit in an English garden in 1666. The cheese shows only a continuous uncut golden-brown exterior rind; its interior is entirely hidden. Sealed wine vessels are already beside it in this pit. Crumbly soil walls and evening light, faces outside frame, no writing.",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf072",
+          "text": "兩人把酒放進去；他把開場那塊起司也放進同一個坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an adult diary reader studying an unlettered page beside an empty patch of desk, soft desk light. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf073",
+          "text": "這一天的日記，沒有說起司有多大、有多貴。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried clerk watching his still-standing office from a garden path, evening light. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf074",
+          "text": "起司暫時藏好了，辦公室卻能躲過這場火嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a city official leaving a walled garden toward a dark London street, smoky early night light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf075",
+          "text": "到了夜裡，潘爵士去安排船廠工人，準備明早趕來救辦公室。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London diarist holding a quill just above an entirely blank, unmarked letter sheet at an office desk, lamplight. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf076",
+          "text": "佩皮斯同時寫信給考文垂爵士，請求准許拆屋。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a worried diary writer looking toward a closed office doorway beside an empty desk, lamplight. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf077",
+          "text": "但他沒有等到答覆；街上會有人先動手嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London householder eating a plain mutton supper beside packed boxes, night light. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf078",
+          "text": "他與妻子、客人吃羊肩肉，桌上連餐巾都沒有。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a city householder stepping from a supper table to watch a fiery sky from a garden, night light. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf079",
+          "text": "吃晚飯時，他還不時走進花園，抬頭看燃燒的天空。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer watching a distant Tower Street house being deliberately blasted apart to make a gap before the nearby fire, drifting smoke and night light. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf080",
+          "text": "夜裡，他看見塔街有人炸開火前面的屋子。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a diarist observing an open gap between houses and fire from a safe street corner, night light. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf081",
+          "text": "他記下，炸屋的地方，火在那一帶停住了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a worried secretary watching smoke beyond his narrow lane, muted night light. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf082",
+          "text": "但他自己那條巷子，隔天能不能守住？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried woman waking a resting householder in a seventeenth-century office, predawn light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf083",
+          "text": "九月五日凌晨約兩點，妻子又把他叫醒。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月五日，火追到佩皮斯的巷口"
+    },
+    {
+      "id": "pf084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a clerk looking toward smoke beside a church at the foot of his lane, predawn light. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf084",
+          "text": "巷口教堂附近，傳來新一輪火警。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried London diarist aboard a small Thames boat with his wife beside him, moonlit predawn. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf085",
+          "text": "這一次，他立刻帶著妻子和金錢，乘船沿河往下游走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf086",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a diarist in a riverboat watching a broad glow above London rooftops, moonlit predawn. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf086",
+          "text": "月光下回望，倫敦幾乎像整片都在燃燒；他還會回去嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf087",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a secretary locking a plain chest inside a suburban room, soft morning light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf087",
+          "text": "他把金錢鎖在朋友家，叮囑妻子與同行者輪流看守。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf088",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a householder seated in a small boat heading back toward a smoky city waterfront, morning light. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf088",
+          "text": "然後他自己又乘船返回。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a clerk in a small boat viewing a cargo vessel attended by one ordinary watcher at Deptford, morning light. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf089",
+          "text": "返程經過德普特福德，他已看見自己的貨物在船上有人看守。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a relieved writer approaching his intact home beside a smoky street, grey daylight. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf090",
+          "text": "他原以為房子已燒，卻看見它還站著。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a diarist placing one hand on an intact office door, soft grey light. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf091",
+          "text": "辦公室也沒有燒；他走近了才敢確認。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a diarist studying a scorched church entrance near an intact lane, grey daylight. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf092",
+          "text": "巷口教堂的鐘面與門廊卻受了火，火才在那裡停下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a workman clearing fallen timber to make a gap ahead of distant flames, daylight. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf093",
+          "text": "日記把這條街的轉機，歸於炸屋和趕來的工人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a clerk looking up toward a nearby church tower from a smoky street, grey daylight. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf094",
+          "text": "他走向巷口教堂，塔上會看見怎樣的倫敦？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf095",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer looking across burned London streets from a church tower, soft grey daylight. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf095",
+          "text": "他登上教堂塔樓，眼前是大片毀壞。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a wary diarist descending a church stairway with distant smoke outside, soft daylight. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf096",
+          "text": "遠處仍在燒，他不敢在塔上久留。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a walking diarist stepping past glowing street coals, muted daylight. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf097",
+          "text": "餘燼燙著腳，他們穿過街道繼續往前走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf098",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot one displaced London resident guarding household bundles in the foreground, a densely crowded Moorfields of other families and goods behind, grey daylight. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf098",
+          "text": "路上，摩爾菲爾德擠滿守著家當的逃難者。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf099",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a diarist holding a small warped piece of old window glass, soft daylight. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf099",
+          "text": "佩皮斯還拾起一塊被熱烤得彎曲的玻璃。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a writer instructing one watchman beside a plain office doorway, night light. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf100",
+          "text": "夜裡回到辦公室，他安排工人守夜。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an exhausted diarist sleeping on a simple office quilt, muted night light. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf101",
+          "text": "直到午夜他才躺下，終於睡得安穩一些。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf102",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a sleeping secretary beside an office window facing dark London rooftops, predawn light. Britain in the 1660s: mature householders wear wool cloaks, breeches or aprons; handmade wood or stone structures if present, no school uniforms",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf102",
+          "text": "天亮以後，城裡的火真的平息了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a householder noticing smoke from a fresh street fire in daylight. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf103",
+          "text": "九月六日早上，城裡另一處又起了火。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月六日，佩皮斯帶人救火並卸下貨物"
+    },
+    {
+      "id": "pf104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London diarist helping put out a small city street fire, one workman assisting behind him as the flames subside, morning light. A seventeenth-century British setting: people have adult faces and linen cuffs, knee-length trousers or long coats; no Asian court costume or modern fixtures",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf104",
+          "text": "佩皮斯與工人趕去，很快便把火撲滅。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer looking over a damaged London riverbank from a boat, overcast daylight. Southern England in 1666: working people in plain cloaks, bonnets or bodices; brick or carved wood only on walls or roofs, not contemporary street furniture",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf105",
+          "text": "河岸的房屋和教堂，已經大片消失。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a diarist viewing cargo crates aboard a flat boat attended by one ordinary watcher at Deptford, daylight. Stuart-era city scene: participants look older than children, in dark cloth coats or ankle-length gowns; masonry where construction is shown, no factory-made objects",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf106",
+          "text": "前一天船上有人看守，可他還沒把貨物卸上岸。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a secretary directing one porter to unload a wooden chest at a Deptford landing, soft daylight. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf107",
+          "text": "到德普特福德，他把那些貨物卸到卡特雷特爵士那裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf108",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a relieved householder inspecting an unbroken household chest by a river landing, daylight. Southern Britain in 1666: inhabitants are grown women and men in aprons, coifs, cloaks or waistcoats; seventeenth-century plaster or brick only on housefronts, not modern equipment",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf108",
+          "text": "卸貨後，他說自己沒看到缺少或損壞的東西。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf109",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an unlettered diary page on a plain desk, soft neutral light. Year 1666 in England: any pictured human looks grown and wears linen collars, wool doublets or full gowns; brick or oak in any visible structure, never peaked military caps",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf109",
+          "text": "九月六日的日記裡，他寫：我們的恐懼過了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a reader pausing over an unlettered diary page beside an empty patch of desk, soft light. Stuart Britain, 1666: participants have mature expressions, knee breeches, cloaks or modest skirts; hand-built timber wherever architecture appears, not classrooms",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf110",
+          "text": "那塊起司後來有沒有挖出？這幾日的條目沒有交代。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot one seventeenth-century householder looking into an empty pit inside a walled garden, soft evening light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf111",
+          "text": "你若在那座院子裡，會把什麼放進第二個坑？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf112",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "一份日記，五天裡的火與選擇"
+        ]
+      },
+      "lines": [
+        {
+          "id": "pf112",
+          "text": "想聽更多從原始記錄走出的故事，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
