@@ -76,4 +76,12 @@ rather than wait for the original workdirs (option 2), and approved an imagery a
     under docs/videos/history-curiosity/remake-20261020/<slug>/i18n until those scripts reach main.
   - Container Chromium is older than Playwright 1.64 wants: symlink /opt/pw-browsers headless_shell into a
     PLAYWRIGHT_BROWSERS_PATH as chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell.
+- 2026-10-21: S07 handed back to Codex (owner). Codex kept producing S07 in parallel: its audio (10-20 22:57) superseded
+  this remake's, and the owner approved Codex's two S07 storyboards. This remake sends no more S07 reviews; its S07
+  translations (same script) stay under remake-20261020/curio-s07 for Codex to reuse. About US$2 of S07 imagery here is unused.
+- 2026-10-21: monthly site budgets ran out mid-run (judge calls 20000, music 60 tracks); the owner raised them.
+  S06 failed the QA policy check twice (sponsored 0.34, 0.40) on its spoken outro 「想讓熟悉的歷史場景回到原文，訂閱奇聞檔案局。」;
+  replaced with the S01 wording and re-recorded that one line. Thai/Vietnamese/Japanese descriptions overflowed the
+  5000-byte composed limit in S09 S11 S14 S18; `lint` prints every overflow ("bytes once composed") before the cut.
+  Finals approved: S01 S09 S14. Dubs in progress for those three.
 
