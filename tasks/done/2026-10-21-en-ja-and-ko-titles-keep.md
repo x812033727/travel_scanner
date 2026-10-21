@@ -1,13 +1,13 @@
 ---
 id: 2026-10-21-en-ja-and-ko-titles-keep
 title: en, ja and ko titles keep a combined dub and captions segment instead of a second tag
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5.5-caption-tail
 claimed_at: 2026-10-21T11:03:44Z
 created_at: 2026-10-21T07:10:00Z
-completed_at:
+completed_at: 2026-10-21T11:31:01Z
 branch: claude/caption-tag-combined-tail
 depends_on: []
 scope:
@@ -33,7 +33,7 @@ The Japanese one also joins with a full-width 「＋」, which the combined patt
 - [x] `captioned` keeps a combined segment in every language, and reads 「＋」 as well as 「+」.
 - [x] Tests: en, ja and ko combined titles unchanged; plain titles tagged as before; a brand
       story's tag goes before the combined segment in en too.
-- [ ] ruff, mypy, pytest; PR; deploy; read the compilation's titles back through the code on the host.
+- [x] ruff, mypy, pytest; PR #1649; deployed 2b66a0ba9 2026-10-21 11:28–11:30Z (verify 12/12 with api-combined-tail-every-language); read the compilation's titles back through the code on the host.
 
 ## Notes
 
