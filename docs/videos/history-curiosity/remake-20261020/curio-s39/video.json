@@ -39,8 +39,8 @@
     },
     {
       "setup": "cs005",
-    "payoff": "cs046",
-    "what": "另一位 Brutus 會站在哪裡"
+      "payoff": "cs046",
+      "what": "另一位 Brutus 會站在哪裡"
     },
     {
       "setup": "cs006",
@@ -49,7 +49,7 @@
     },
     {
       "setup": "cs016",
-    "payoff": "cs023",
+      "payoff": "cs023",
       "what": "哪個 Brutus 帶 Caesar 出門"
     },
     {
@@ -697,7 +697,7 @@
       "id": "cs035",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a petitioner grasping the edge of a toga beside a plain chair, tense daylight",
+        "prompt": "Medium shot of a desperate bearded Roman senator in a white toga in a marble hall in daylight, reaching out and clutching at someone's sleeve just out of frame, soft overcast light",
         "camera": "pull back",
         "visual": "still"
       },
@@ -970,7 +970,7 @@
       "id": "cs052",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an ancient scholar lifting a second completely blank rolled scroll from a desk, lamplight",
+        "prompt": "Medium shot of a thoughtful old Roman scholar in a plain tunic at a wooden desk in the evening, holding up one rolled scroll and raising a finger, soft lamp light",
         "camera": "drift right",
         "visual": "still"
       },
@@ -1130,7 +1130,7 @@
       "id": "cs062",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a reader stacking two completely blank rolled ancient scrolls together, diffused daylight",
+        "prompt": "Medium shot of a curious reader in a cardigan at a desk in the afternoon, holding two rolled scrolls together in both hands and smiling knowingly, soft window light",
         "camera": "drift left",
         "visual": "still"
       },
@@ -1529,6 +1529,23 @@
       ]
     },
     {
+      "id": "cs998",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful actor in a simple white toga costume standing alone on a plain wooden stage in the evening, holding a blank script to his chest and looking out at the empty seats, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cs999a",
+          "text": "歷史有時留不下清楚的遺言，戲劇卻能留下一句人人記得的話。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "未結"
+    },
+    {
       "id": "cs999",
       "template": "outro",
       "data": {
@@ -1537,11 +1554,6 @@
         "cta": "訂閱奇聞檔案局"
       },
       "lines": [
-        {
-          "id": "cs999a",
-          "text": "歷史有時留不下清楚的遺言，戲劇卻能留下一句人人記得的話。",
-          "emotion": "自然說故事"
-        },
         {
           "id": "cs999b",
           "text": "你第一次聽到這句話，是在課本、電影，還是戲劇裡？",
@@ -1552,8 +1564,7 @@
           "text": "想繼續從原文找歷史名場面的來源，歡迎訂閱奇聞檔案局。",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "未結"
+      ]
     }
   ]
 }
