@@ -36,6 +36,10 @@ def test_a_story_title_carries_its_story_tag_before_the_captions_tag_once() -> N
         requests.captioned(dubbed, "pt", story=True), "pt", story=True
     ) == "Por que as rodas demoraram｜História de marca｜Dublado + Legendado"
     assert requests.captioned(dubbed, "pt") == dubbed
+    # The same in English, since 2026-10-21.
+    assert requests.captioned("Why wheels took so long | Dub + CC", "en", story=True) == (
+        "Why wheels took so long｜Brand Story | Dub + CC"
+    )
     long_dubbed = "a" * (requests.TITLE_MAX_CHARS - len("｜Dub + Sub Indo")) + "｜Dub + Sub Indo"
     assert requests.captioned(long_dubbed, "id", story=True) == long_dubbed
     # The other videos' titles do not change.
