@@ -90,6 +90,8 @@ c64｜它讀得到、也改得到資料夾裡的一切；刪檔在自動接受�
 c65｜檢查：做完對一次處理日誌和 輸出/，日誌說動了幾筆、檔案就該差幾筆；p1 自己的回覆也建議開 CSV 看筆數｜頻道的做法（企劃站主觀點第 3 點，提案）；runlog R4 reply｜2026-10-21｜check
 c66｜片尾：不寫程式也能用，先管住它再放手（四個基本功、一份規矩、一個 Skill）｜本片 c7、c22、c36、c54｜2026-10-21｜closing
 c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔，它讀都不用問你（查核 2 補：原句「連私人的檔它也讀得到」與「最常踩的坑」沒有依據，改寫成官方頁的範圍規則；沒有實跑）｜https://code.claude.com/docs/en/permission-modes（這句在 dontAsk 一節，但講的是 Manual 的規則：「Claude still runs actions that need no approval in Manual mode, such as file reads inside your working directories」；查核 3 補同頁模式表 `default`｜「Reads only」一列）、https://code.claude.com/docs/en/security（「Claude Code asks you before its file tools read or write outside the folder where it was started and its subfolders」）｜2026-10-21｜folder-trap
+c68｜在提示框打 `@` 加檔名，把那一份檔案拉進對話（修訂 5 新增；旁白念成「小老鼠符號」）｜https://code.claude.com/docs/en/desktop-quickstart（「Type `@filename` in the prompt box to pull a specific file into the conversation.」）；https://code.claude.com/docs/en/desktop#add-files-and-context-to-prompts（「@mention files: type `@` followed by a filename」）。片中沒有在桌面版介面上實際打過 `@`；ctx-at 的那一句是用法示意，不是跑過的要求｜2026-10-21｜folder-at、ctx-at
+c69｜在提示框打 `/` 列出能叫的內建指令與 Skill（修訂 5 新增）｜https://code.claude.com/docs/en/desktop-quickstart（「Type `/` or click **+** → **Slash commands** to browse built-in commands, custom skills, and plugin skills.」）；desktop 頁同義｜2026-10-21｜folder-at
 
 ## 與企劃不同的地方
 
@@ -112,6 +114,16 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - **修訂 3（2026-10-21，盲評第 3 輪 10／13 之後）**：ziec 不再重講大綱的結果，改成往前走的一句（現在要它交出名單和確認信草稿），仍是 mgyy 的 payoff。實戰章掃過一次：3jad 不再重講 11/01 的期限（第一章 7gct 講過），改說過敏的兩位是誰；其餘句子各帶新的要求、數字或失敗，沒動。CLAUDE.md 八條：第三、四條併成 hrrt 一句，第五、六條併成 uqir 一句（9ne2、9upa 刪掉），卡片全文 12 行不變。估計 19.2 → 19.1 分鐘。
 
 - **修訂 4（2026-10-21，盲評第 4 輪 10／13 之後）**：list-steps 的 dgp2、z2ah、7zrx 併成 dgp2 一句（只講這一次的新東西：一次讀完兩個檔、寫出三個檔），z2ah、7zrx 刪掉，卡片四步不變、reveal 改成 3＋1。f34t 加「照它接手的名單」，說清楚進度裡的 4 位是 s1 那份名單的數，跟 p1 的 3 人不矛盾。CLAUDE.md 的 8／8／9 沒動。估計 19.1 → 18.9 分鐘。
+
+- **修訂 5（2026-10-21，站主看完 19:26 的成片：「課程好像很無聊，而且好像沒什麼內容」，選「砍量測、改教動作」；依 teaching-flow.md §九）**：旁白從「講實驗」改成「教動作」：每一章至少兩個觀眾照做的動作（要說的那一句、要選的模式、要寫的那一行、要打的指令），每個動作後面接一次執行的一個事實。量測的句子只留三句：dqu9（g1 只列檔名、沒打開檔就寫規矩，接 646h 的「看修改時間最新的」）、qx6k「規矩只寫一句「名單要整理乾淨」，跟沒寫一樣」與它的結論 mg2d（v1 對 n1）。跑了幾次、分數、被擋幾次、哪一次選哪個檔、n1／v1／s1／pl1／m1 的對照，全部搬到卡片來源欄與說明欄。每次執行的結果只用一次：c2（貼上文字）→ 第一章；n1 → 第一章（原本在專案資料夾那一章的 3i6w）；pl1 → perm-plan；a1 → a1-quote；pr1 → ctx-miss（我叫它寫進度）；p1 → list-stats 一句；pr2 → 確認信（原本上下文那一章「新的對話找不到進度」那段刪掉）；k2 → skill-pick；k1 → skill-online；d1 → daily-res；t1 → tutor-explain。新教的兩個動作 `@` 與 `/` 只引官方頁（c68、c69）。估計長度 18.9 → 13.8 分鐘、190 → 131 句、99 → 79 個場景。target_minutes 改成 12–14。說明欄重寫：「你會學到」改成動作，加上「這支影片的數字來自 18 次實跑」與 runlog.txt 的連結，量測的結果（8／8／9、三個模式各一次、手動 6 個被拒、k1／k2 六項全過）移到「怎麼跑的」。
+
+  **刪掉的場景**：folder-reads、perm-runs、perm-accept、miss-where、miss-search、ctx-progress、ctx-auto（併進 ctx-what）、md-context、md-checks、md-runs、md-changed、md-rule、md-g1、list-steps、letter-blank、skill-head、skill-when（併進 skill-desc）、skill-plain、skill-s1c（併進 skill-s1b）、skill-run、skill-dept、sched-quote、c2-list（vw3n 併進 p95r）。**新場景**：folder-at（@ 與 /）、perm-go（perm-rule 的第三步）、ctx-compact（壓縮指令後面接一句）、ctx-at（用 @ 指名 輸出/進度.md）、skill-online（k1 挑出想改線上的那一位）。排程那一章併進 Skill 那一章（只剩 hz2s、pmzn、ev6t、fyda 四句）。
+
+  **不再出現在旁白的主張**（卡片也拿掉的標「整條」）：c14 整條（pr1 打開 11 個檔，kgnr）；c20 的「九個檔」只剩卡片上不唸數字（r8fw 只說一個檔案都沒動）；c21 整條（m1 6 個被拒，只在說明欄）；c22 不再唸「兩份搬進封存、一份改名」的數，只說改名、搬進封存都直接做（ktbf）；c25 整條（自動接受編輯被擋 4／3／3／3）；c26 只剩 risk 卡的出處；c31 整條（進度.md 第 16–24 行）；c32 只剩 pr1 放進 輸出/ 那一半（dmw2），pr2 第一次讀不到、搜整個資料夾那一半整條；c36 整條（8／8／9、十項檢查）；c37 只剩「跟沒寫一樣」與 v1 錯的兩項（qx6k、mg2d）；c38 整條（十二行改變的三件、部門沒過）；c40 整條（md-g1 對照卡，回呼改成 htzr「還記得開頭它自己寫的那一條嗎」，依據 c3、c34）；c43 已在修訂 2 刪；c46 整條（p1 的步驟、被擋 4 次、回覆建議看筆數）；c47 的數字只在卡片上，旁白只說素食和過敏人數算好了；c48 的「地址、取消方式留空」整條（letter-blank）；c54 整條（k1、k2 六項全過、18 個 Email）；c55 的部門那一半整條（skill-dept），想改線上那一半留在 w8ig；c58 的「最短間隔」整條（卡片也拿掉那一列）；c59 整條（九點排的可能十一點才跑）；c61 的兩個新報名姓名只在卡片上；c63 的「建議的第六步全文」整條（tutor-quote 修訂前已無）、提醒那一半改寫成動作（9u9t）。名字：旁白裡的人名只剩 gf7y 的「兩個不同的王志明」（報名表的狀況，不是出席者名單），其餘用角色（想改線上參加的那一位）。
+
+  **每條留下的主張現在撐哪幾句**：c1 open（uva6）；c2 verbs（j47g、8rt7）；c3 g1-rule（dqu9、646h）、md-r4（htzr）；c4 g1-old（dr6i）；c5 signup-form（pxwh、gf7y）；c6 paste-vs-folder（p95r、t4kn）；c7 list-stats（bbu5：三個檔案、原檔沒動）；c8、c9 which-tool（3sdm、y9bk、4fh3）；c10 folder-shot、folder-steps（jpvj、3z8j、hqqr、zfpy、yfn4）；c11 folder-plan（8a3d）；c12 paste-vs-folder（zs3t、5xbh：n1 只說八個字也讀了活動說明，名單存成 `報名名單_整理後.csv`、`報名表.csv` 雜湊不變，runlog R3）；c13 folder-scope（eifj，卡片第 2 項）；c15 folder-small（8bck）；c16 versions-ask（q2v6）；c17 perm-table（said、3nzx、ema8）；c18 perm-default（gd2z）；c19 perm-unknown（u22y）；c20、c23 perm-plan（r8fw）；c22、c44 a1-quote（ktbf）；c27 perm-rule、perm-go（55xh、zsq5）；c28 ctx-what（um5h）；c29 ctx-tools、ctx-compact（u4ry、uu9z、62gk、id4n）；c30 ctx-steps（urtk）；c32 ctx-miss（dmw2）；c33 md-why（3ghe）；c34 md-all、md-r1–r5、md-edit（8wjx、83z3、hrrt、uqir、qy7z、htzr、d5e5、zg6v）；c35、c37 md-vague（qx6k、mg2d）；c39 md-much（yv7p、4f33）；c41 md-check（csgn）；c42 m3-table（uy62、8bv6、icfx、v4ec）；c45 list-say、list-ask、list-ask-log（2n7n、wssz、6mi9、x6xg）；c47 list-stats（bbu5 的素食與過敏人數）；c48 letter（fzm9）；c49 letter-slip（ijrk、bf6z）；c50 skill-what、skill-choose（7b7i、ce5d）；c51 skill-desc、skill-s1–s3b（jkeu、saer、c3st、yf8t、ra5q、mc6k、6pwj）；c53 skill-ask、skill-pick（955c、743t、xxz6）；c55 skill-online（w8ig）；c58 sched（hz2s）；c60 daily（pmzn）；c61 daily-res、name-rule（ev6t、fyda）；c62 tutor-ask（eazv）；c63 tutor-explain、tutor-caveat（y9ec、9u9t）；c64 risk（xx3t、f59b、8v78）；c65 check（4g7t、7ktj）；c66 closing；c67 folder-trap（snrs）；c68 folder-at、ctx-at（epgq、kwtd）；c69 folder-at（imr2）。
+
+  **「我」的句子**：三句，dqu9（g1）、u22y（桌面版預設模式查不到）、dmw2（pr1 把進度放進 輸出/）；kgnr、enuy、cevy 刪掉。**唸出來的數字**每章最多兩個：第一章二十四列、十一月一號；CLAUDE.md 那章十二行、兩百行；實戰章七號、十四號；Skill 章六筆；其餘章不唸數字。
 
 ## 我懷疑但沒動的事
 
@@ -147,3 +159,4 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - [x] 修訂 3：ziec 改成往前的一句、3jad 換成新的事實、八條規矩併成六句唸；lint 0 錯誤 0 警告，估 19.1 分鐘、192 句、156 個卡片狀態
 - [x] 盲評第 4 輪（10／13）
 - [x] 修訂 4：list-steps 併成一句、f34t 註明是接手那份名單的數；lint 0 錯誤 0 警告，估 18.9 分鐘、190 句、154 個卡片狀態
+- [x] 修訂 5（站主：「很無聊、沒什麼內容」→ 砍量測、改教動作）：量測句只留三句、每章兩個以上動作、新增 @ 與 /（c68、c69）、排程併進 Skill 章；lint 0 錯誤 0 警告，估 13.8 分鐘、131 句、79 個場景
