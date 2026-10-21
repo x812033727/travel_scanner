@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
 title: Prepare Spotify X13 brand-story packet
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-root-pr
 claimed_at: 2026-10-21T01:00:44Z
 created_at: 2026-10-20T20:01:30Z
-completed_at:
+completed_at: 2026-10-21T01:02:04Z
 branch: codex/brand-story-spotify-x13
 depends_on: []
 scope:
