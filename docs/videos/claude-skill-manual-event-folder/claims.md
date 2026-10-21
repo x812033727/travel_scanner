@@ -36,7 +36,7 @@ c29｜同樣的一句要求跑三次，這次含糊的也翻開了 3 次；都�
 c30｜含糊封面開場只省 61 token（CV first= 34,223–34,228 對 CS 34,285–34,287）；寫清楚的兩句三次也都翻開，檢查也都過｜實跑：Unexpected 1；總表｜2026-10-21｜vague
 c31｜它決定翻不翻、翻哪一本，看的是封面的介紹（比喻對不上的第二處：不是你挑書）｜https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（description … Claude uses this to determine when to invoke your skill）；https://support.claude.com/en/articles/12512176-what-are-skills（Claude determines which skills are relevant）｜2026-10-21｜why-cover、pick-stop
 c32｜Claude 沒用你的 Skill 時，要查介紹有沒有寫清楚什麼時候用（引用原文一句上卡）｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Troubleshooting › Claude isn't using a skill）｜2026-10-21｜why-cover
-c33｜壞例「Helps with PDFs.」；好例寫做什麼（抽文字與表格、填表、合併）＋什麼時候用（處理 PDF、提到 PDF 或表單）（卡片是中譯）｜https://agentskills.io/specification（description field 的 Good／Poor example）｜2026-10-21｜good-bad
+c33｜壞例「Helps with PDFs.」；好例寫做什麼（抽文字與表格、填表、合併）＋什麼時候用（處理 PDF、提到 PDF 或表單）（卡片是中譯）｜https://agentskills.io/specification（description field 的 Good／Poor example）｜2026-10-21｜good-bad（修訂 1：卡片仍是規格頁的 PDF 好壞例；旁白改用這支自己的兩個封面當好壞例，出處是 c11、c28）
 c34｜Claude Code 自己的格式檢查 `claude plugin validate`：兩句封面、含糊封面、沒有 name 的三本都 `✔ Validation passed`｜實跑：M3｜2026-10-21｜validate
 c35｜內文第 9–20 行照原檔上卡，七步逐條照唸｜實跑：demo/booklets/book-lean/signup-check/SKILL.md｜2026-10-21｜body-1 至 body-7
 c36｜第一批的寄信名單裡有兩個王志明：chihming.wang（業務部）與 cm.wang（研發部）｜實跑：demo/start/輸出/確認信名單.csv 第 3、6 行；selftest C2｜2026-10-21｜body-2、two-wangs
@@ -51,7 +51,7 @@ c44｜每次貼七步（CPa、CPb）、七步寫在 CLAUDE.md（CMa、CMb）、�
 c45｜CN1 是看第一批的輸出檔和日誌推出平常的做法｜實跑：demo/CN1/reply.md 第一段｜2026-10-21｜four-ways
 c46｜差別：貼上那一邊每次 309 字（706 位元組的檔案去掉結尾換行；查核 1 由 310 改）對 33 字（90 位元組，查核 1 由 34 改）、得自己留著；CLAUDE.md 問什麼都帶 462；只有說明書能整個資料夾帶去 Claude 網頁版（引用）｜實跑：M1 `wc -c`、node 字數（paste.txt 310、skill-auto.txt 34，都含檔尾一個換行；打的字是 309、33）；LM−L0；引用：https://support.claude.com/en/articles/12512180-use-skills-in-claude（Upload a ZIP file containing your skill folder）｜2026-10-21｜four-ways、differences
 c47｜觀眾加的第 8 步（兩行）照原檔上卡；全檔 22 行，6f8319939f194993｜實跑：demo/booklets/book-mine/signup-check/SKILL.md；M1｜2026-10-21｜step8、step8-b
-c48｜加了第 8 步，W1a、W1b 兩次都多一份 輸出/待回覆.csv，只有一列：黃雅婷、改成線上參加可以嗎？；只有 W1a 多一欄「狀態」寫「待回覆（未回答）」，W1b 只有三欄（卡片是 W1a 那份的原文；查核 1 把旁白 ykf3 改成「第一次還多一欄狀態」）｜實跑：W1a、W1b mine.mjs M1–M5 PASS；demo/W1a/輸出/待回覆.csv｜2026-10-21｜step8-result
+c48｜加了第 8 步，W1a、W1b 兩次都多一份 輸出/待回覆.csv，只有一列：黃雅婷、改成線上參加可以嗎？；只有 W1a 多一欄「狀態」寫「待回覆（未回答）」，W1b 只有三欄（卡片是 W1a 那份的原文；查核 1 把旁白 ykf3 改成「第一次還多一欄狀態」）｜實跑：W1a、W1b mine.mjs M1–M5 PASS；demo/W1a/輸出/待回覆.csv｜2026-10-21｜step8-result（2026-10-21 拆成兩個狀態：表格加一列 W1b 的原文，W1b 的檔沒有「狀態」欄，卡片寫「（沒有這一欄）」；證據 demo/W1b/輸出/待回覆.csv）
 c49｜她在寄信名單裡只出現一次｜實跑：mine.mjs M4 PASS（W1a、W1b）｜2026-10-21｜step8-result
 c50｜叫它自己寫一本的那一句要求（拆成六段上卡，全文在說明欄）｜實跑：demo/prompts/write-skill.txt；runlog G1 ## prompt｜2026-10-21｜g1-ask
 c51｜結果沒寫成：寫進 .claude/skills/signup-check/SKILL.md 被擋下（「Claude requested permissions to write to … but you haven't granted it yet.」），回覆要你允許；資料夾裡沒有 SKILL.md｜實跑：runlog G1 tool_error、reply、cover-check `FAIL SKILL.md exists`｜2026-10-21｜g1-result
@@ -75,8 +75,8 @@ c68｜免費版能不能上傳：support〈Use skills in Claude〉列 Free、Pro
 c69｜網頁版開著的技能，會單向同步到同一個帳號登入的 Claude Code（需要 v2.1.273 以上）；開 session 時同步，之後約每 10 分鐘查一次｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Use skills in Claude Code：「The sync is one-way」「about every 10 minutes」「needs Claude Code v2.1.273 or later」）；https://code.claude.com/docs/en/skills（Skills synced from claude.ai：下載、從不上傳，v2.1.273）。overview 的「Custom Skills do not sync across surfaces」與這兩頁不一致，verify-2 判定以兩頁一致的說法為準，overview 只拿來支持 c70｜2026-10-21｜sync
 c70｜資料夾裡這一本不會自己跑上網頁版，要另外上傳（Claude Code 的技能在檔案系統裡，跟 claude.ai 分開）｜https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（Custom Skills do not sync across surfaces … Claude Code Skills are filesystem-based and separate from both claude.ai and API）｜2026-10-21｜sync
 c71｜格式是公開標準；支援工具清單有 46 個（查核 1 由 45 改：clients.mjs 的正規式要求 instructionsUrl，漏數了沒有這欄的 Piebald；2026-10-21 重抓的頁與撰稿時的原檔都是 46 筆 name），Gemini CLI、Cursor、GitHub Copilot 都在上面｜https://agentskills.io/clients（撰稿日以 `_tools/clients.mjs pages/clients.html` 數出 `clients: 45`；原檔 grep 有 Gemini CLI、Cursor、GitHub Copilot）；https://support.claude.com/en/articles/12512176-what-are-skills（Agent Skills open standard）｜2026-10-21｜clients
-c72｜ChatGPT 桌面版側邊欄有 Skills，ChatGPT 打 @ 選一本；Codex 打 $ 或 /skills；單獨的 skill 在 ChatGPT 桌面版、Codex CLI 與 IDE 擴充，網頁版只透過外掛帶進來（沒有安裝、沒有測試）｜https://learn.chatgpt.com/docs/build-skills｜2026-10-21｜chatgpt
-c73｜ChatGPT 與 Codex 也會照 description 自己挑（implicit invocation）｜https://learn.chatgpt.com/docs/build-skills（Implicit invocation … when your task matches the skill description）｜2026-10-21｜chatgpt
+c72｜ChatGPT 桌面版側邊欄有 Skills，ChatGPT 打 @ 選一本；Codex 打 $ 或 /skills；單獨的 skill 在 ChatGPT 桌面版、Codex CLI 與 IDE 擴充，網頁版只透過外掛帶進來（沒有安裝、沒有測試）｜https://learn.chatgpt.com/docs/build-skills｜2026-10-21｜clients（修訂 1：旁白只說 ChatGPT 和 Codex 在清單上，細節在說明欄）
+c73｜ChatGPT 與 Codex 也會照 description 自己挑（implicit invocation）｜https://learn.chatgpt.com/docs/build-skills（Implicit invocation … when your task matches the skill description）｜2026-10-21｜（修訂 1：chatgpt 場景刪除，旁白不再講；未上畫面）
 c74｜說明書的資料夾可以夾小程式，AI 會去執行（比喻對不上的第三處）｜https://agentskills.io/specification（scripts/: Contains executable code that agents can run）；https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（Add scripts）｜2026-10-21｜risk
 c75｜只裝自己寫的或信得過來源的；同事給的也先讀過每一個檔再開｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Only install skills only from trusted sources … including one shared by a colleague—review it before enabling）；https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（Use Skills only from trusted sources）｜2026-10-21｜risk
 c77｜寫上位置對只寫檔名：2／2 對 0／2（同一本只差這一行的 W1）、對企劃內只寫檔名的 3／8；W2 只跑兩次（卡片標「之後加跑的兩次」）｜實跑：runlog Unexpected 2b、W1 對 W2 的 NOTE｜2026-10-21｜appendix-fixed
@@ -116,8 +116,17 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 - 選項 A 的 stats「46 個工具」：撰稿日數成 45，查核 1 照頁面上 46 筆改成 46。
 - 片長估 15.7 分鐘，超過 target_minutes [9, 12] 的上限。
 
+### 修訂 1（2026-10-21，盲評 8／13 之後）
+
+- no_spoiler：開場的兩個結果停在數字前。2u43 改成「寄信名單補上了新人」，74qp 改成「它點名的那頁附件，它回你：找不到。」；十六變十八第一次說在 5bjj（新 loop 2u43 → 5bjj），八次裡五次第一次說在 fag8／ug7s。開場的 stats 卡數字不動。
+- no_recap／one_line：四百六十二只留 xyia，gwue 改成回呼「前面那筆常駐的量」；「八次讀到三次」只留 fag8，rw2t 改成 W1 的 0／2；六十九只留在卡片上（za92、vee6 改寫）；掃過全片，兩個字以上的數字都只說一次。
+- one_thread：好壞封面的旁白改用 signup-check 的兩句對 checklist 的「檢查用的步驟。」（rvj7、sry6）；卡片仍是規格頁的 PDF 例子，當引用的出處。
+- no_detour：ChatGPT、Codex 那一章併進上傳章：clients 場景拿掉章名，只留兩句（標準與四十六個工具；ChatGPT 和 Codex 也在清單上）；chatgpt 場景刪除（is8w、tvg4、28ea、u9ih），細節移到說明欄；dnqy 移到風險章第一句。
+- 02:44–03:29 的節奏：旁白只說三個 token 數（七十七、四百二十二、四百六十二），三萬三千八百、七十五、每本七十、規格的一百只留在卡片上（a4xv、za92「幾乎沒差」、5msh、ksu8）；h69p 只說二十八。「我」仍是五句。
+
 ## 我懷疑但沒動的事
 
+- step8-result 已拆成兩個狀態（各約 7–8 秒）；最長的狀態是 body-6、clients 的 13.3 秒，加 7% 約 14.2 秒，在 15 秒內。
 - 寫上位置的修正只跑了 2 次（W2a、W2b），而且兩次都用 Bash cat 讀，不是 Read；樣本小，卡片標了「之後加跑的兩次」。
 - 怎麼把資料夾壓成 ZIP（Windows 右鍵「壓縮成 ZIP 檔」、Mac「壓縮」）沒有上卡：紀錄只有 zip.mjs，官方頁沒寫作業系統的做法。觀眾若真的要照做，這一步缺一張卡。
 - 「Settings › Capabilities」與「Customize › Skills」是支援文章的英文名；網頁版實際介面沒看過。
@@ -129,6 +138,6 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 
 ## 進度
 
-- 全部 67 個場景已寫完（open … closing；2026-10-21 加跑 W2 之後加了 appendix-fix、appendix-fixed、appendix-cmd），loops 22 條，video.json 由 `<work>/_tools/writer/build-video.mjs` 從 `scenes.mjs`、`top.mjs`、`loops.json` 產生。
+- 修訂 1 之後 66 個場景、11 章（ChatGPT／Codex 那一章併進上傳章，chatgpt 場景刪除），loops 23 條。從查核與聽稿那幾輪起，video.json 直接改（`<work>/_tools/writer/revise1.mjs`），build-video.mjs 不再是來源。
 - lint：0 錯誤、0 警告（發音字典的新詞已由協調者併入）。
-- 估計 15.7 分鐘、174 句、3,510 口語單位；最長的卡片狀態估 13.1 秒。
+- 估計 15.6 分鐘、170 句、3,491 口語單位；最長的卡片狀態估 13.3 秒（body-6、clients）。
