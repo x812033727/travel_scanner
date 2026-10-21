@@ -2,7 +2,7 @@
 
 撰稿 2026-10-21。每一行：編號｜主張（旁白或畫面上的說法）｜依據（官方頁網址，或 `runlog.txt` 的項目與 `demo/` 的檔）｜查證日｜用到的場景。
 
-執行紀錄的共同條件（每一條「實跑」都適用，不再逐行重寫）：`runlog.txt`，Windows 11 Home 10.0.26200、Git Bash、Claude Code 2.1.295、`--model sonnet`（init 回報 claude-sonnet-5-5），不開畫面的 session（`claude -p`，經 `<work>/_tools/session.sh`），每次從同一份種子資料夾重建（k1、k2、pr1、pr2、pr3、d1、t1 這 7 次從前一次跑完的快照開始；查核 1 補，說明欄同步改），時間 2026-10-20T23:50Z–2026-10-21T00:14Z（台北 2026-10-21）。官方頁在撰稿日 UTC 2026-10-21 00:29 重抓一次（`<work>/_tools/writer/pages/`，12 頁全部 HTTP 200），下面引的句子都在重抓的版本裡。
+執行紀錄的共同條件（每一條「實跑」都適用，不再逐行重寫）：`runlog.txt`，Windows 11 Home 10.0.26200、Git Bash、Claude Code 2.1.295、`--model sonnet`（init 回報 claude-sonnet-5-5），不開畫面的 session（`claude -p`，經 `<work>/_tools/session.sh`），算進來的 18 次裡，11 次從同一份種子資料夾重建，k1、k2、pr1、pr2、pr3、d1、t1 這 7 次從前一次跑完的快照開始（查核 1 補；查核 2 把說明欄「每次都從同一份…重建，接續的 7 次…」前後矛盾的寫法改成 11＋7），時間 2026-10-20T23:50Z–2026-10-21T00:14Z（台北 2026-10-21）。官方頁在撰稿日 UTC 2026-10-21 00:29 重抓一次（`<work>/_tools/writer/pages/`，12 頁全部 HTTP 200），下面引的句子都在重抓的版本裡。
 
 ## 輸入、動作、預期、實際、證據（依企劃的示範紀錄）
 
@@ -27,7 +27,7 @@ c1｜開場的練習資料夾：一場虛構講座的報名表、三份「最終
 c2｜它會打開資料夾、讀報名表和活動說明、幫檔案改名並搬進封存、寫出名單和確認信草稿｜runlog R4 p1（Bash 列資料夾並讀兩個檔、寫三個檔）、R10 a1（改名、搬進 封存/）、R14 pr2（`輸出/確認信草稿.md`）｜2026-10-21｜verbs
 c3｜「我請它替這個資料夾寫規矩，它只列了檔名，一個檔都沒打開」；它寫的第 3 條原文「簡報大綱有多個「最終版」時，以檔案修改時間最新的為準」｜runlog R5 g1：唯一的工具呼叫是 `Bash ls -la`，接著 Write CLAUDE.md；`demo/g1/CLAUDE.md` 第 5 行｜2026-10-21｜g1-rule
 c4｜這個資料夾裡修改時間最新的那一份（這次絕對最終版），內容是舊的｜runlog M3：`ls -lt` 最上面是 `講座簡報大綱_這次絕對最終版.md`（2026-10-20 08:45 台北），grep 顯示它寫 14:00–16:00、講者待確認｜2026-10-21｜g1-old
-c5｜報名表 24 列；缺 Email 3 列；兩個不同的王志明；陳怡君填兩次；張書豪報名後取消；一筆「測試」｜`demo/seed/講座籌備/報名表.csv`（缺 Email：林佳蓉第一筆、劉思妤、曾詩涵）｜2026-10-21｜signup-form
+c5｜報名表 24 列；缺 Email 3 列；兩個不同的王志明；陳怡君填兩次；張書豪報名後取消；一筆「測試」（查核 2：旁白 f86u 原寫「每一份報名表裡，都有一筆叫「測試」」，此時片中只介紹了一份，第二批那筆叫「測試二」，改成「裡面混了一筆叫「測試」的資料」）｜`demo/seed/講座籌備/報名表.csv`（缺 Email：林佳蓉第一筆、劉思妤、曾詩涵）｜2026-10-21｜signup-form
 c6｜只貼上文字（同一模型、不給工具、不是網頁版）也排出 16 個能寄的人；交出的是文字、0 個檔，最後提議「需要的話，我可以把第一部分存成 CSV」；沒提 11/01；卡片引用的句子「24 筆填表紀錄合併成 21 個人，其中 16 人可以直接寄信。」｜runlog R2 c2；`demo/c2/reply.md`；runner：grep "11/01" 沒有｜2026-10-21｜c2-list、paste-vs-folder
 c7｜打開資料夾的那一次，三個檔寫進 輸出/、原始報名表雜湊不變、日誌寫到 11/01 前要給場地的人數｜runlog R4 p1：created 三個 輸出/ 檔，C1 PASS（835aff4efdfd433b），`demo/p1/輸出/處理日誌.md`「要跟場地說的數字（11/01 前）」｜2026-10-21｜paste-vs-folder
 c8｜桌面版的 Chat 分頁碰不到檔案；Code 分頁才是 Claude Code｜https://code.claude.com/docs/en/desktop-quickstart（「Chat: General conversation with no file access」「Code: … with direct access to your local files」）｜2026-10-21｜which-tool
@@ -36,16 +36,16 @@ c10｜第一個 session：Code 分頁，提示框下面那一排先選環境 Loc
 c11｜Code 分頁內建 Claude Code，不用另外安裝（Node.js 或 CLI）；需要 Pro、Max、Team 或 Enterprise 方案｜https://code.claude.com/docs/en/desktop-quickstart｜2026-10-21｜folder-plan
 c12｜只說「幫我整理報名名單」八個字，它也自己打開了活動說明｜runlog R3 n1：`tool_use Read 活動說明.md`；回覆寫到「11/01 前要給場地」｜2026-10-21｜folder-scope
 c13｜自動接受編輯時，不問就能改的是工作資料夾裡面的檔｜https://code.claude.com/docs/en/permission-modes（「auto-approval applies only to paths inside your working directory or additionalDirectories」）｜2026-10-21｜folder-scope
-c14｜「我叫它寫一份進度的時候，它打開了資料夾裡十一個檔，連兩張圖也是」｜runlog R13 pr1：一次 Glob 之後 11 個 Read，含 `活動海報_草稿.png`、`場地平面圖.png`。查核 1：資料夾當時有 15 個檔，沒讀的是 `報名表.csv`、`輸出/寄信名單.csv`（`CLAUDE.md` 自動載入），所以拿掉「全」；runner NOTE 的「all the text files」不對｜2026-10-21｜folder-reads
+c14｜「我叫它寫一份進度的時候，它打開了資料夾裡十一個檔，連兩張圖也是」｜runlog R13 pr1：一次 Glob 之後 11 個 Read，含 `活動海報_草稿.png`、`場地平面圖.png`。查核 1（查核 2 更正檔數）：資料夾當時有 14 個檔，沒讀的是 `報名表.csv`、`輸出/寄信名單.csv`（`CLAUDE.md` 自動載入），所以拿掉「全」；runner NOTE 的「all the text files」不對｜2026-10-21｜folder-reads
 c15｜官方建議：先從一個你很熟的小專案開始｜https://code.claude.com/docs/en/desktop-quickstart（「Start with a small project you know well.」）｜2026-10-21｜folder-small
 c16｜三個模式都用同一句要求（versions.txt 全文）｜`demo/prompts/versions.txt`；runlog R8–R10b｜2026-10-21｜versions-ask
-c17｜桌面版五個模式：Manual 改檔、跑指令前都先問；Accept edits 改檔和 mkdir、touch、mv 這類指令直接做、其他指令先問；Plan 只讀、只提計畫；Auto 不例行詢問、背景分類器把關、有開放才出現；Bypass permissions 幾乎不問、只用在隔離的容器或 VM｜https://code.claude.com/docs/en/desktop#choose-a-permission-mode（模式表）｜2026-10-21｜perm-table
+c17｜桌面版五個模式：Manual 改檔、跑指令前都先問；Accept edits 改檔和 mkdir、touch、mv 這類指令直接做、其他指令先問；Plan 讀檔、跑查看用的指令、只提計畫（查核 2：原寫「只讀」，desktop 模式表原文「reads files and runs commands to explore」，permission-modes「runs shell commands to explore」）；Auto 不例行詢問、背景分類器把關、有開放才出現；Bypass permissions 幾乎不問、只用在隔離的容器或 VM｜https://code.claude.com/docs/en/desktop#choose-a-permission-mode（模式表）｜2026-10-21｜perm-table
 c18｜模式選單在提示框下面那一排，做到一半也能換；選過的模式依資料夾記住，Plan 只算這一次｜https://code.claude.com/docs/en/desktop（「You can change the permission mode during the session」「remembered per folder … except Plan」）；permission-modes Desktop 分頁同義｜2026-10-21｜perm-default
 c19｜「桌面版一打開是哪一個，我在官方頁沒找到寫明」｜https://code.claude.com/docs/en/permission-modes#which-mode-a-session-starts-in：內建預設表只涵蓋終端機與 VS Code，桌面版那一段只寫怎麼設 `defaultMode`、選過的會記住，沒寫第一次開的模式｜2026-10-21｜perm-default
 c20｜規劃模式那一次，資料夾九個檔一個都沒變，交出計畫、選真的最終版｜runlog R8 pl1：folder before/after 九個檔雜湊、檔名、修改時間全同；回覆的計畫｜2026-10-21｜perm-runs
 c21｜手動模式那一次，6 個動作要人同意、全被擋下（不開畫面的 session 直接拒絕；查核 1 把旁白的「停在等人同意」改成「全被擋下」，那是桌面版才會有的畫面），一個檔都沒動｜runlog R9 m1：`permission_denials=6`，folder after 不變，init `permissionMode=default`｜2026-10-21｜perm-runs
 c22｜自動接受編輯那一次，兩份搬進 封存/（檔名前加修改日期），一份改名，改名的是真的最終版｜runlog R10 a1：VERDICT RIGHT；`demo/a1/files-after.txt`｜2026-10-21｜perm-runs
-c23｜計畫開頭先提醒「要注意：最新修改時間的那份，內容其實是舊的。」，對照活動說明選了真的最終版｜runlog R8 pl1 reply（原文）；`demo/pl1/reply.md`｜2026-10-21｜perm-plan
+c23｜計畫裡的第一個提醒「要注意：最新修改時間的那份，內容其實是舊的。」（查核 2：回覆第一段是「我還沒動任何檔案，計畫已寫好…」，提醒在第二段，所以旁白與 kicker 的「開頭」改成「第一個提醒」），對照活動說明選了真的最終版｜runlog R8 pl1 reply（原文）；`demo/pl1/reply.md`｜2026-10-21｜perm-plan
 c24｜這份計畫存在使用者資料夾的 .claude/plans/ 裡，講座籌備的九個檔前後雜湊都一樣｜runlog R8：`tool_use Write <home>\.claude\plans\2026-11-14-md-indexed-pinwheel.md`；`demo/pl1/plan-file.md`｜2026-10-21｜plan-file
 c25｜自動接受編輯也會擋指令：p1 被擋 4 個、s1、a1、a2 各 3 個（跑程式、PowerShell、多段 Bash）；整理名單的兩次（p1、s1）最後改用寫檔工具（Write）做完｜runlog R4、R6、R10、R10b 的 `permission_denials`；a1、a2 的 Bash `mkdir && mv` 有通過（不是用 Write 搬的，旁白只說名單那兩次）｜2026-10-21｜perm-accept
 c26｜自動接受編輯不問就做的不只改檔：mkdir、touch、rm、rmdir、mv、cp、sed（刪檔也算）｜https://code.claude.com/docs/en/permission-modes（「auto-approves common filesystem Bash commands: mkdir, touch, rm, rmdir, mv, cp, and sed」）｜2026-10-21｜accept-scope、risk
@@ -78,17 +78,18 @@ c52｜description 讓 Claude 判斷什麼時候自動載入這個 Skill｜https:
 c53｜k1 打斜線叫、k2 只說照平常的方式；兩次 init 的技能清單都有 signup-check；k2 的第一個工具呼叫是 Skill `{"skill":"signup-check","args":"報名表_第二批.csv"}`｜runlog R11、R12 init 與 stream；`demo/prompts/skill-slash.txt`、`skill-auto.txt`｜2026-10-21｜skill-ask、skill-pick
 c54｜兩次 B1–B6 全過；寄信名單 18 個 Email｜runlog R11、R12 `second batch`（batch2.mjs）｜2026-10-21｜skill-run
 c55｜SKILL.md 沒寫的黃雅婷改線上也被提出來；部門只統一了新加的兩筆，回覆原文「第一批名單裡還有 mkt、研發、R&D 這類寫法沒統一,我只統一了這次新增的兩筆。」｜runlog R11 B6 PASS、reply；`demo/k1/reply.md`｜2026-10-21｜skill-run、skill-dept
-c56｜接上之前先確認信得過；會抓外部內容的伺服器有提示注入風險（第 1、2 項是頻道建議）｜https://code.claude.com/docs/en/mcp（「Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk」）｜2026-10-21｜trust
+c56｜接上之前先確認信得過；會抓外部內容的伺服器有提示注入風險（第 1、2 項是頻道建議；查核 2 把旁白 u29s、cxbq 標成「我會建議」。這兩條不在企劃站主觀點四點裡，待站主確認）｜https://code.claude.com/docs/en/mcp（「Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk」）｜2026-10-21｜trust
 c57｜連接器就是有圖形設定流程的 MCP 伺服器；提示框旁的 ＋ → Add connectors 打開目錄；Settings > Connectors 管理或拔掉；連上後能讀行事曆、發訊息｜https://code.claude.com/docs/en/desktop#connect-external-tools｜2026-10-21｜connect、connect-steps、trust
 c58｜三種排程：雲端不用開電腦、讀不到本機檔、最短 1 小時；桌面版要開電腦、讀得到檔、最短 1 分鐘；/loop 要開著對話、最短 1 分鐘｜https://code.claude.com/docs/en/desktop-scheduled-tasks（Compare scheduling options 表）｜2026-10-21｜sched
 c59｜「A task scheduled for 9am might run at 11pm if your computer was asleep all day.」｜https://code.claude.com/docs/en/desktop-scheduled-tasks#missed-runs｜2026-10-21｜sched-quote
 c60｜排程要跑的那一句（daily.txt 全文）｜`demo/prompts/daily.txt`｜2026-10-21｜daily、daily-out
 c61｜直接跑一次：列出簡郁庭、邱品妍兩個新報名，宋柏均（沒 Email）另外註記；找不到 確認信名單.csv，改用 寄信名單.csv；因為 s1 把名單存成了 寄信名單.csv。查核 1：d1 自己找到替代檔、照樣做完，所以 name-rule 的「每天的檢查就接不起來」改成「它只能自己找替代的檔」｜runlog R15 d1 reply、`demo/d1/輸出/每日報名摘要.md`；R6 s1 created `輸出/寄信名單.csv`｜2026-10-21｜daily-res、name-rule
 c62｜在規劃模式問（tutor.txt 全文），它只回答、不動任何檔｜runlog R16 t1：mode plan，一個 Read，雜湊前後一樣｜2026-10-21｜tutor-ask
-c63｜它逐段解釋（引用句「讀現有名單，是為了知道誰已經在上面了。」）；建議加成第 5 步之後的新第 6 步（引用全句）；提醒它沒打開報名表、不知道要求寫在哪一欄｜`demo/t1/reply.md`；runlog R16 NOTE｜2026-10-21｜tutor-explain、tutor-quote、tutor-caveat
-c64｜它讀得到、也改得到資料夾裡的一切；刪檔在自動接受編輯的範圍裡（其餘兩項是頻道建議）｜permission-modes（同 c26）；c14 的實跑（pr1 讀了 11 個檔）｜2026-10-21｜risk
+c63｜它逐段解釋（引用句「讀現有名單，是為了知道誰已經在上面了。」）；建議加成第 5 步之後的新第 6 步（引用全句），並把原本的第 6 步改寫成第 7 步（加上「以及想改線上的有幾位」）；查核 2：旁白 y9ec 原寫「再給一句」，改成「再寫好新的一步，連順延的那一步也改好」；提醒它沒打開報名表、不知道要求寫在哪一欄｜`demo/t1/reply.md`；runlog R16 NOTE｜2026-10-21｜tutor-explain、tutor-quote、tutor-caveat
+c64｜它讀得到、也改得到資料夾裡的一切；刪檔在自動接受編輯的範圍裡（其餘兩項是頻道建議；查核 2 把旁白 f59b、8v78 標成「我會建議」。「原始檔先另外留一份」「收不回的自己按」不在企劃站主觀點四點裡，待站主確認）｜permission-modes（同 c26）；c14 的實跑（pr1 讀了 11 個檔）｜2026-10-21｜risk
 c65｜檢查：做完對一次處理日誌和 輸出/，日誌說動了幾筆、檔案就該差幾筆；p1 自己的回覆也建議開 CSV 看筆數｜頻道的做法（企劃站主觀點第 3 點，提案）；runlog R4 reply｜2026-10-21｜check
 c66｜片尾：不寫程式也能用，先管住它再放手（四個基本功、一份規矩、一個 Skill）｜本片 c7、c22、c36、c54｜2026-10-21｜closing
+c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔，它讀都不用問你（查核 2 補：原句「連私人的檔它也讀得到」與「最常踩的坑」沒有依據，改寫成官方頁的範圍規則；沒有實跑）｜https://code.claude.com/docs/en/permission-modes（Manual mode：「Claude still runs actions that need no approval in Manual mode, such as file reads inside your working directories」）、https://code.claude.com/docs/en/security（「Claude Code asks you before its file tools read or write outside the folder where it was started and its subfolders」）｜2026-10-21｜folder-trap
 
 ## 與企劃不同的地方
 
@@ -129,4 +130,5 @@ c66｜片尾：不寫程式也能用，先管住它再放手（四個基本功�
 - [x] lint 0 錯誤 0 警告（估 21.5 分鐘、220 句）
 - [x] claims.md c1–c66
 - [x] 查核第 1 輪（verify-1.md：7 處事實修正，要第 2 輪）
-- [ ] 查核第 2 輪（另一個代理）
+- [x] 查核第 2 輪（另一個代理；verify-2.md：6 處事實修正（含說明欄 1 處）、4 句觀點標示；超過 3 處，照規則要再一輪）
+- [ ] 查核第 3 輪（重查 verify-2 的 6 處修正，或由協調者決定）
