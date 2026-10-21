@@ -1,6 +1,6 @@
 # Skill 就是一本說明書：封面、內文、附件，自己寫一本「報名表檢查」，再放進 Claude
 
-企劃日 2026-10-21（台北時間；官方頁在 UTC 2026-10-20 18:06–18:14 抓的，原檔存在 `<work>/_tools/pages/`）。這份企劃寫在任何會呼叫模型的 session 之前：說明書、練習資料夾的追加檔、讀串流的腳本、封面檢查、打包腳本，企劃已經用不呼叫模型的指令跑過（見「示範或實算」的 M 項）；會呼叫模型的 session 一次都還沒跑。大綱裡寫到 session 結果的句子與數字都是預期，等「要先實作」做完照執行紀錄改；跑不出來的成果那時拿掉。`<work>` 是 repo 外的影片工作區 `C:/Users/x8120/mokaair-work/videos/claude-skill-manual-event-folder`，`T=<work>/_tools`。
+企劃日 2026-10-21（台北時間；官方頁在 UTC 2026-10-20 18:06–18:14 抓的，原檔存在 `<work>/_tools/pages/`）。這份企劃寫在任何會呼叫模型的 session 之前：說明書、練習資料夾的追加檔、讀串流的腳本、封面檢查、打包腳本，企劃已經用不呼叫模型的指令跑過（見「示範或實算」的 M 項）；會呼叫模型的 session 一次都還沒跑。大綱裡寫到 session 結果的句子與數字都是預期，等「要先實作」做完照執行紀錄改；跑不出來的成果那時拿掉。`<work>` 是 repo 外的影片工作區 `<work>`，`T=<work>/_tools`。
 
 ## 觀眾
 
@@ -147,7 +147,7 @@ description: >-
 
 ### 要先實作
 
-協調者照順序做，每一項的指令、輸出、日期、版本寫進 `docs/videos/claude-skill-manual-event-folder/runlog.txt`。所有指令在 Git Bash 執行；`T=C:/Users/x8120/mokaair-work/videos/claude-skill-manual-event-folder/_tools`。每一個會呼叫模型的 session 都經 `runs.sh <id>`，它呼叫沿用、一字未改的 `session.sh`，固定帶這些旗標：`env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 600 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --no-session-persistence --permission-mode <模式> --output-format stream-json --verbose`，要求從 `prompts/` 的檔案經 stdin 送進去，工作目錄是 `<work>/run/lab/講座籌備`（每次從種子重建，再疊上那一組的 extras）。`session.sh` 寫下前後雜湊、串流摘要（`inspect.mjs`）、`score.mjs`、`versions.mjs`、`batch2.mjs`，並把資料夾留在 `<work>/run/snap/<id>/`；`runs.sh` 再把 `skillview.mjs`（書櫃、請求大小、翻開了哪一本、那則訊息多長、讀了哪一頁附件）與 `mine.mjs`／`cover-check.mjs` 的結果接在同一份 `<work>/run/logs/<id>.session.log` 後面。同一個 id 跑過就拒絕，不覆蓋；`--dry` 用 `dry-<id>` 的名字，不擋正式的那一次。
+協調者照順序做，每一項的指令、輸出、日期、版本寫進 `docs/videos/claude-skill-manual-event-folder/runlog.txt`。所有指令在 Git Bash 執行；`T=<work>/_tools`。每一個會呼叫模型的 session 都經 `runs.sh <id>`，它呼叫沿用、一字未改的 `session.sh`，固定帶這些旗標：`env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 600 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --no-session-persistence --permission-mode <模式> --output-format stream-json --verbose`，要求從 `prompts/` 的檔案經 stdin 送進去，工作目錄是 `<work>/run/lab/講座籌備`（每次從種子重建，再疊上那一組的 extras）。`session.sh` 寫下前後雜湊、串流摘要（`inspect.mjs`）、`score.mjs`、`versions.mjs`、`batch2.mjs`，並把資料夾留在 `<work>/run/snap/<id>/`；`runs.sh` 再把 `skillview.mjs`（書櫃、請求大小、翻開了哪一本、那則訊息多長、讀了哪一頁附件）與 `mine.mjs`／`cover-check.mjs` 的結果接在同一份 `<work>/run/logs/<id>.session.log` 後面。同一個 id 跑過就拒絕，不覆蓋；`--dry` 用 `dry-<id>` 的名字，不擋正式的那一次。
 
 **M0 版本**
 ```
