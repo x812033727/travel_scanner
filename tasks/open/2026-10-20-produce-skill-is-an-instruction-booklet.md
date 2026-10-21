@@ -34,7 +34,8 @@ Slug `claude-skill-manual-event-folder`.
 - [x] Script, two fact-check rounds (4, 2 corrections), listener pass, two revisions after the
       blind panel plus two small fixes; lint clean; `category: "tutorial"`.
 - [x] Narration synthesized; audio check rounds: 37, 7, 1 flagged lines reworded.
-- [ ] final.mp4, captions, QA, review-push final (chained after the fourth audio check).
+- [x] final.mp4 (13:12 after the §九 rewrite: 134 lines, 11 chapters), captions, QA 10 of 11,
+      review-push final; fact-check round 3 (3 corrections), panel 12 of 13.
 - [ ] Owner approvals on /admin/videos (outline, narration, final), then package and publish gate.
 - [ ] On YouTube (the owner uploads).
 

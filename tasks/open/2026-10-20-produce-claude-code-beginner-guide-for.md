@@ -33,8 +33,10 @@ from real headless runs on an invented event folder. Slug `claude-code-beginner-
 - [x] Script (`video.json`, `claims.md`), three fact-check rounds (7, 6, 0 corrections), listener
       pass, four revisions after the blind panel (tutorial wording), lint clean, `category: "tutorial"`.
 - [x] Narration synthesized and cleared by the audio check (4 rounds; 26 + 7 + 3 lines reworded).
-- [x] Frames, thumbnail, final.mp4 (19:26), zh-TW captions; QA 10 of 11 (the 11th is the owner's
-      narration approval).
+- [x] Frames, thumbnail, final.mp4, zh-TW captions; QA 10 of 11 (the 11th is the owner's
+      narration approval). After the owner called the 19:26 cut 「無聊、沒內容」 the narration was
+      rewritten to teach moves (teaching-flow §九): 13:20, 128 lines, 10 chapters, one move or more
+      per chapter named by the blind reader; fact-check round 4 (3 corrections), audio check clean.
 - [ ] Owner approvals on /admin/videos: outline, narration, final cut, then upload package and
       publish gate (hand-pushed video: the owner decides at every gate).
 - [ ] On YouTube (the owner uploads; `UPLOAD.md` after `package`).
