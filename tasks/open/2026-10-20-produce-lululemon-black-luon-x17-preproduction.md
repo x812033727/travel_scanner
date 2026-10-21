@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-produce-lululemon-black-luon-x17-preproduction
 title: Produce Lululemon black Luon X17 preproduction package
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root-source-audit
-claimed_at: 2026-10-20T23:41:52Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:21:12Z
 completed_at:
 branch: codex/brand-story-lululemon-x17
