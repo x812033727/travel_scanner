@@ -27,8 +27,8 @@ language's title and description for the 6-10 range in `youtube-locales/<locale>
 ## Checklist
 
 - [x] `compilation["6-10"]` in all eight youtube-locales files, on the 1-5 pattern.
-- [ ] Build: `DUBS=en,ja,ko,es,pt,id,vi,th node compile-dh.mjs 6 10 e006-010.mp4`.
-- [ ] Check the cut, the nine CC files, the eight tracks' length, the links.
+- [x] Build: `DUBS=en,ja,ko,es,pt,id,vi,th node compile-dh.mjs 6 10 e006-010.mp4`.
+- [x] Check the cut, the nine CC files, the eight tracks' length, the links.
 - [ ] `prep-import.mjs 6-10`, `import`, `import --languages`; after the owner approves the cut, `import --publish`.
 
 ## Notes
