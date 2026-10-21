@@ -1,10 +1,10 @@
-# X17 Lululemon｜逐句母稿 v7
+# X17 Lululemon｜逐句母稿 v8
 
 每列 `ID | SEC 代碼或 editorial | 台灣繁中旁白 | 無品牌示意畫面焦點`。`editorial` 是由前述事實推出的問題或轉場，不替真實工廠、員工、客人編台詞。黑色運動褲是**同一件示意物件**，不是可辨識的真實商品。
 
 ## b01: 那條褲子，怎麼從衣架上消失（濃縮開場）
 x170101 | S1 | 二〇一三年三月，店裡一排衣架突然少了黑色運動褲。 | empty rack with plain black pants gap
-x170102 | S1 | Lululemon 撤下部分黑色 Luon 褲。 | worker lifts plain black pants from rack
+x170102 | S1 | 空位原本掛著 Lululemon 的部分黑色 Luon 褲。 | selected plain black pants beside empty hanger
 x170103 | S1 | 公司那時還在追查，問題到底出在哪裡。 | fabric swatch beside blank test tile
 x170104 | S2,S3 | 公司有布料檢驗，成衣卻被撤下；四月重查舊標準時，漏看了哪一關？ | folded plain black pants under soft light
 x170105 | S5 | 六月，公司公布黑褲回店的進度；空衣架究竟等了多久？ | empty rack beside a closed delivery door
@@ -27,10 +27,10 @@ x170211 | editorial | 這張布料清單，真的測盡了影響成衣的變數�
 x170212 | S2,S3 | 公司沒有自己的製衣廠；檢驗方法若要改，還得教給製造夥伴。 | delayed fabric roll before empty sewing bench
 x170214 | S3 | Luon 的規格與檢驗程序，早在二〇〇六年設下。 | old blank test card beside swatch
 x170215 | editorial | 從供布到縫製，紙上的規格要走過不同合作方，店裡才看得到那條褲子。 | pattern paper beside black fabric
-x170216 | editorial | 布樣檢驗與成衣透度隔著製衣關口；同一份布料結果無法直接描述穿上的樣子。 | anonymous inspector places black pants beside swatch
+x170216 | S1 | 公司向投資人強調，產品品質是與其他品牌區隔的要件；衣架上的成衣將考驗這句話。 | anonymous shopper studies finished plain black pants on a rack
 x170217 | editorial | 當這套規格走到新一批貨上，店裡會發現什麼意外？ | inspector lifts blank test card
 x170218 | editorial | 想像一位顧客把示意黑褲帶進更衣間，在光下抬起褲腿。 | anonymous shopper holds plain black pants in an unmarked fitting-room doorway
-x170219 | editorial | 她看到的是做好的褲子，沒有布樣檢驗單能替這一刻說話。 | folded garment and swatch lie apart beside an anonymous fitting-room mirror
+x170219 | editorial | 她手裡只有一件褲子；要找出該撤下哪批，還得知道這批貨從哪天開始在店裡賣。 | anonymous shopper holds one plain black pair beside a full unmarked rack
 x170220 | S2 | 二月三日，上一財年已關帳；三月的這批黑褲會走進新一季的紀錄。 | closed blank calendar beside pants
 x170223 | S4 | 到了二〇一三年三月，一批黑色 Luon 商品出現在門市。 | covered box of plain black pants by rack
 x170224 | editorial | 那批貨，究竟哪一天開始出現在衣架上？ | hand touches unopened black pants box
@@ -40,7 +40,7 @@ x170301 | S4 | 公司說，涉事批次自三月一日起可在店內買到。 |
 x170302 | editorial | 那不是所有黑褲，更不是店裡的所有衣物。 | one selected pair beside full rack
 x170303 | S4 | 三月中，公司發現某些女款黑 Luon 不符規格。 | inspector holds selected plain black pants
 x170304 | editorial | 店裡之外，還有哪些銷售地方要撤下受影響的商品？ | one pair before row of plain boxes
-x170305 | S1 | 三月十八日，公司宣布撤下部分黑色 Luon 褲。 | hand removes selected pants from hanger
+x170305 | S1 | 回到開場那排空衣架：三月十八日，公司宣布撤下部分黑色 Luon 褲。 | hand removes selected pants from hanger
 x170306 | S4 | 展示間與電商的受影響商品，也跟著撤下。 | pants pass three unmarked shelves
 x170307 | S4 | 公司說拿走了自己相信受影響的商品。 | worker places selected pairs into plain box
 x170308 | editorial | 店裡先拿走了；倉庫和路上的貨，也在受影響範圍嗎？ | closed box beside blank checklist
@@ -105,9 +105,8 @@ x170514 | S5 | 金額是三點四五八億美元。 | black pants beside typeset
 x170515 | S5 | 第一季末已有二百一十八家店；黑褲只是其中一個商品種類。 | pants passes shop, parcel, mature store tokens
 x170516 | S4 | 公司說，既有商品線與新商品，主要帶動了可比門市的銷售增長。 | plain parcel tiles rise beside black pants
 x170517 | editorial | 受影響的黑褲離架，其他商品仍穿過收銀台；總營收因此可以繼續長。 | full assorted rack beside one empty slot
-x170518 | S4,S5 | 網站通路營收仍增四成；轉換率與客單價卻下降，這條通路靠什麼成長？ | one black pair beside many garment silhouettes
-x170519 | S4 | 季報給出答案：進站流量增加是主要原因；撤貨則壓縮商品選擇。 | revenue book turns to cost page; a web traffic path appears beside an empty garment slot
-x170520 | S4,S5 | 毛利額仍比上年同季高，毛利率卻從百分之五十五降到四十九點四。 | cost page beside two plain gauge positions
+x170518 | S4 | 同一季，公司毛利額比上年多一千三百五十萬美元；毛利率也跟著上升了嗎？ | gross profit tokens rise beside one boxed black pair
+x170520 | S4,S5 | 沒有。毛利率從百分之五十五降到四十九點四。 | cost page beside two plain gauge positions
 x170521 | editorial | 毛利額是總共留下多少，毛利率是每賣一元留下多少；兩個方向可以不同。 | smaller profit token beside full rack
 x170522 | editorial | 公司整體多賣貨、成本也多了；毛利率的降幅能全算在這箱黑褲上嗎？ | full rack and boxed pants beside one ledger
 x170523 | S4 | 季報說，存貨準備增加影響毛利率；其中包含撤下黑褲那筆，卻不只那一筆。 | profit ledger stays closed beside pants box

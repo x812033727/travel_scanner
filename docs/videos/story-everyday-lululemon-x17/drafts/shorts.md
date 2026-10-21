@@ -13,11 +13,11 @@ x17s107 | S3 | 公司改測拉開布時的反應、重量與允許偏差，也�
 x17s108 | editorial | 看布樣之外，最後還得看做好的那條褲子。 | black pants box faces empty rack
 
 ## Short 2: 撤貨後營收還增，錢去哪了？
-x17s201 | S5 | 黑褲下架，公司營收為何還能增加？ | hand removes selected pants from hanger
+x17s201 | S1,S5 | 二〇一三年，Lululemon 黑褲下架，營收為何還增？ | hand removes selected pants from hanger
 x17s202 | S1 | 三月預估，全年將少賣五千七到六千七百萬美元。 | gap in rack and closed delivery door
 x17s203 | editorial | 那是當時的預測，不是最後量到的損失。 | empty shelf faces blank web product tile
 x17s204 | S4 | 店裡與網站，在第一季最後七週都缺這批貨。 | ledger opens beside boxed black pants
 x17s205 | S4 | 公司實際記下一千七百五十萬美元存貨準備。 | forecast envelope and booked cost chip apart
 x17s206 | editorial | 這筆是成本，不能和預估少賣混成一筆。 | fresh black pants placed on rack
-x17s207 | S4,S5 | 第一季全公司營收增兩成一，其他商品也在賣。 | full rack partly hides ledger
-x17s208 | S4 | 所以總收入能增，黑褲的存貨準備卻仍列成本。 | revenue book turns to cost page
+x17s207 | S4,S5 | 公司說，既有與新品帶動可比門市增長；全公司營收也增兩成一。 | full rack partly hides ledger
+x17s208 | S4 | 總收入能增，黑褲存貨準備仍列銷貨成本。 | hand moves blank token into cost column
