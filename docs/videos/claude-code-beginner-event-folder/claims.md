@@ -89,7 +89,7 @@ c63｜它逐段解釋（引用句「讀現有名單，是為了知道誰已經�
 c64｜它讀得到、也改得到資料夾裡的一切；刪檔在自動接受編輯的範圍裡（其餘兩項是頻道建議；查核 2 把旁白 f59b、8v78 標成「我會建議」。「原始檔先另外留一份」「收不回的自己按」不在企劃站主觀點四點裡，待站主確認）｜permission-modes（同 c26）；c14 的實跑（pr1 讀了 11 個檔）｜2026-10-21｜risk
 c65｜檢查：做完對一次處理日誌和 輸出/，日誌說動了幾筆、檔案就該差幾筆；p1 自己的回覆也建議開 CSV 看筆數｜頻道的做法（企劃站主觀點第 3 點，提案）；runlog R4 reply｜2026-10-21｜check
 c66｜片尾：不寫程式也能用，先管住它再放手（四個基本功、一份規矩、一個 Skill）｜本片 c7、c22、c36、c54｜2026-10-21｜closing
-c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔，它讀都不用問你（查核 2 補：原句「連私人的檔它也讀得到」與「最常踩的坑」沒有依據，改寫成官方頁的範圍規則；沒有實跑）｜https://code.claude.com/docs/en/permission-modes（Manual mode：「Claude still runs actions that need no approval in Manual mode, such as file reads inside your working directories」）、https://code.claude.com/docs/en/security（「Claude Code asks you before its file tools read or write outside the folder where it was started and its subfolders」）｜2026-10-21｜folder-trap
+c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔，它讀都不用問你（查核 2 補：原句「連私人的檔它也讀得到」與「最常踩的坑」沒有依據，改寫成官方頁的範圍規則；沒有實跑）｜https://code.claude.com/docs/en/permission-modes（這句在 dontAsk 一節，但講的是 Manual 的規則：「Claude still runs actions that need no approval in Manual mode, such as file reads inside your working directories」；查核 3 補同頁模式表 `default`｜「Reads only」一列）、https://code.claude.com/docs/en/security（「Claude Code asks you before its file tools read or write outside the folder where it was started and its subfolders」）｜2026-10-21｜folder-trap
 
 ## 與企劃不同的地方
 
@@ -131,4 +131,4 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - [x] claims.md c1–c66
 - [x] 查核第 1 輪（verify-1.md：7 處事實修正，要第 2 輪）
 - [x] 查核第 2 輪（另一個代理；verify-2.md：6 處事實修正（含說明欄 1 處）、4 句觀點標示；超過 3 處，照規則要再一輪）
-- [ ] 查核第 3 輪（重查 verify-2 的 6 處修正，或由協調者決定）
+- [x] 查核第 3 輪（又一個代理；verify-3.md：重查 verify-2 的 6 處修正與 c14，0 處事實修正，c67 只補依據）
