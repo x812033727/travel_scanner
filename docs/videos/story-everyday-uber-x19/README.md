@@ -1,6 +1,6 @@
 # X19｜Uber 外送交易額反超載客：離線前製交接
 
-**狀態：v7 凍結作者候選稿，待同一 SHA 的新獨立 SEC 來源審核與兩位全新敘事盲讀。** v6 的[獨立來源票](reviews/script-source-audit-v6-independent.md)只對舊 SHA 判事實 PASS；[盲讀 A](reviews/blind-a-v6-independent.md)與[盲讀 B](reviews/blind-b-v6-independent.md)共同否決 Q8：`x190421` 重說了第三季收購仍未交割。本版刪掉重複的前半句，保留另一套 App 尚未接入的進展；舊票不沿用。這是品牌故事額外系列第 19 支的可重建離線稿，尚未正式生成、配音、合成、上傳或開 PR。2020 年第二季外送平台交易額反超載客，故事沿同一支**匿名示意派單手機**走過第一季 App 調整、四月司機跨接、五月市場退出與餐廳進站、六月兩欄交叉、七月 Postmates 簽約、十二月交割、次年整合與後來載客交易額再次較大。對比的是 Gross Bookings 美元金額，**不是**交易件數、Uber 營收或利潤。
+**狀態：v7 事實通過、敘事 HOLD。** [v7 獨立 SEC 查核](reviews/script-source-audit-v7-independent.md)重新抓取十份原件並通過事實界線；兩名新首讀者 [A](reviews/blind-a-v7-independent.md)／[B](reviews/blind-b-v7-independent.md)都對必答 Q8／Q13 判 No，B 另對 Q7 判 No。反覆講部門與公司帳的差別、App／雜貨／台灣旁枝和司機問題未獲實際結果，是下一版需要修的地方；改稿須重凍結並再做來源與雙盲審核。本包沒有實際配音、官方動畫素材、已生成插畫、MP4、上傳或真實影片網址。
 
 [六章 Treatment](treatment.md)、[brief](brief.md)、[110 句母稿](drafts/narration.md)、[主片可讀稿](script.md) 對位 [主片 JSON](video.json)。十份 Uber 向 SEC 提交的工人可讀原件、2026-10-20 原始 bytes／SHA 和動態 script tag 的後續比對界線見 [source-matrix.md](source-matrix.md)；[逐句來源](line-source-matrix.md) 是作者標記，尚不是 v7 獨立審核 PASS。兩支**不同題目**的 8 拍 [Shorts JSON](shorts.json)、[短片稿](shorts-script.md)、[短片來源](shorts-source-matrix.md)、[9:16 裁切方案](shorts-portrait-plan.md) 同包。[逐鏡方案](visual-plan.md)、[全片 US$25 試算](production-quote.md) 與 [正式製作／動畫／連結交接](publishing-handoff.md) 說明後續門檻；沒有宣稱本機持有官方素材。
 
