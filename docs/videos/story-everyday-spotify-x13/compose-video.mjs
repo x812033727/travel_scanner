@@ -183,7 +183,7 @@ const cues = [
     "a closed cash drawer waits beside a blank play button",
     "a free listener taps play while a blank ad placement waits for a buyer",
     "an anonymous advertiser places a coin at the unmarked ad slot",
-    "music and spoken-audio symbols occupy separate spaces in one broad green service lane",
+    "an unbranded second player pauses at a generic member payment doorway",
     "a member puts a monthly coin beside an orange listening screen",
     "two listeners press play on different service screens, green and orange",
     "a producer replaces a plain microphone windscreen while cost tokens accumulate off to one side",
@@ -196,7 +196,7 @@ const cues = [
     "the broad green service line dips below its neutral mark",
     "an audio-cost tile moves into the green advertising service lane",
     "music and audio tiles share one broad advertising lane without show names",
-    "a listener presses play as a broad cost pile rises outside the device",
+    "a free listener taps play while another anonymous audio tile follows the first",
     "many blank play lights appear faster than advertising coins",
     "a broad green report page opens with income on one side and total service cost on the other",
     "a prior-quarter green account has a small positive gap between income and cost",
@@ -219,7 +219,7 @@ const cues = [
   ],
   [
     "the broad content-portfolio shelf opens, holding many unrelated unnamed assets",
-    "the researcher unfolds a public portfolio notice without a show-by-show list",
+    "a public portfolio notice has an empty show list and one covered asset-number cell",
     "part of a generic content-asset stack is removed from a larger shelf",
     "the remaining asset shelf stays partly occupied after a partial removal",
     "several blank audio slots close without names or show-cover art",
@@ -229,10 +229,10 @@ const cues = [
     "an outside viewer compares the two distinct catalog shelves without linking any title",
     "a broad green service margin lane falls below neutral",
     "content-asset, contract and staffing folders enter one broad reorganization tray",
-    "a broad advertising category card is set apart from all individual show tiles",
-    "different anonymous listeners still hold headphones near generic devices",
-    "an unrelated video creator faces a fresh unmarked camera frame",
-    "a broad negative-margin sheet lies beside a future empty slot",
+    "a reorganization cost card sits beside a still-closed next-year podcast catalog",
+    "a listener separates two sets of anonymous program tiles and reaches for a blank later catalog",
+    "an unopened next-year free-service catalog faces a plain podcast play button",
+    "an anonymous ad buyer and podcast publisher approach opposite sides of a platform counter",
     "a new quarter card approaches the old broad green service line"
   ],
   [
@@ -268,7 +268,7 @@ const cues = [
     "a new video-experience cost token waits between green and orange service lanes",
     "the member presses play as two colored cost lanes remain unopened",
     "the green advertising lane reveals a smaller podcast-cost area",
-    "an outside reader holds the lighter green service card without claiming total savings",
+    "a member opens the orange service-cost page while the green one remains beside it",
     "an orange member lane receives only the relevant new video-experience cost token",
     "the green lane keeps the unrelated remaining podcast-cost tokens",
     "a transfer amount cell remains blank between green and orange lanes",
@@ -300,9 +300,9 @@ const cueOverrides = new Map(Object.entries({
   "x130615": "an analyst removes an unsupported all-service savings sticker from a smaller green account",
   "x130201": "the same clearly fictional creator recording light from the opening faces a plain upload doorway, centered on the next action",
   "x130403": "the covered public content-change record from the opening is uncovered beside a limited anonymous asset stack, not an entire catalog",
-  "x130412": "podcast advertising receipts and broad restructuring costs rest in separate trays with no netting animation",
-  "x130413": "an illustrative listener sets a generic closed-audio notice next to a distinct open-video catalog card, without identifying a show",
-  "x130415": "an anonymous video catalog faces a still-covered future service report",
+  "x130412": "a broad reorganization cost card sits beside a still-closed next-year podcast catalog, with no program name",
+  "x130413": "an illustrative listener separates anonymous closed-audio tiles and distinct video catalog tiles before reaching for a blank next-year catalog",
+  "x130415": "an anonymous ad buyer and podcast publisher approach opposite sides of a plain platform counter without a completed trade",
   "x130517": "a fictional creator adds an unbranded camera beside a microphone for another recording",
   "x130601": "the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show"
 }));
@@ -382,6 +382,6 @@ const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 季報仍記錄免費播客收聽、發行者付款與播客廣告銷售，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v12", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v13", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));

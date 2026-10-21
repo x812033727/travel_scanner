@@ -1,28 +1,28 @@
 # X13｜Spotify 關掉節目，真的放棄播客了嗎？
 
-**v12 離線前製作者稿，仍待此版獨立 SEC 逐句審核與兩名真正新讀者盲評；未批准付費媒體或開 PR。** [v11 來源審核](reviews/script-source-audit-v11-independent.md)對前版完整 SEC 原件事實給 PASS，但正式工人定向攝取仍待驗。[v11 盲讀 A](reviews/blind-a-v11-independent.md) 和 [B](reviews/blind-b-v11-independent.md) 共同對必答 Q8 重複事實、Q13 2024 財務支線離題答 NO；A 另對 Q12 播客決策線答 NO，合併敘事 HOLD。v12 刪去 2020 分類和付款資格的重念，將 2024 非播客財務橋壓到三句，改用仍可收聽、賣出廣告曝光和既有發行者合作，接向 2025 新影片方案。前版票均不能沿用。
+**v13 離線前製作者稿，待此版獨立 SEC 逐句審核與兩名全新首讀者盲評；未批准付費媒體或開 PR。** [v12 來源審核](reviews/script-source-audit-v12-independent.md)對前版完整 SEC 原件事實給 PASS，但兩名 [v12 讀者 A](reviews/blind-a-v12-independent.md) 和 [B](reviews/blind-b-v12-independent.md) 都對必答 Q8 答 NO：A 指 `x130413` 重念節目關閉／影片仍可用的成對結果，B 指 `x130303` 重念 `x130210` 的音樂廣告分類。v13 改掉兩處，並掃除其他未點名的重述；逐句差異見[作者回覆](reviews/author-response-v13.md)。前版來源與盲評票均綁舊稿，不能轉用。
 
-2026-10-21 作者重新下載 S1–S9 和兩份背景年報，各份 SEC 回應均比前一天的原始位元組多 9 bytes；[來源矩陣](source-matrix.md)記錄本次實際回應的大小與 SHA-256。這次更新不能代替另一代理對同版原件內容及每句主張的獨立審核。
+本集是 `brand-stories-everyday-reversals-extra` 第 13 支。六章追同一道問題：2019 年 Spotify 買進 Anchor 創作／發行工具與 Gimlet 節目製作能力；2020 Q1 整個 Ad-Supported 業務成本增額超過收入增額；2023 Q2 沖銷部分播客內容資產、關閉若干節目；2024 的免費播客目錄、播客廣告曝光與發行者付款仍在運作；2025 為合格影片播客創作者推出 Partner Program，相關 Premium 新觀看體驗的成本部分改列會員服務。這些時間點不構成「2020 成本直接造成 2023 關閉」的來源證明，也不能把 2023 被關節目畫成 2025 新影片。兩案是否回本、逐檔節目去向、播客獨立損益及 2025 廣告欄成本下降中真節省的比例都未公開到可下結論的程度。
 
-本集屬 20 支新品牌故事 `brand-stories-everyday-reversals-extra` 的第 13 支。主線從 2019 年 Anchor 創作／發行工具與 Gimlet 節目製作能力的兩筆收購出發，看 2020 Q1 整個 Ad-Supported 業務成本跑贏收入、2023 Q2 部分內容資產 €30m 沖銷與若干節目關閉；S9 的 **2023-07-25 公告**另載，當時平台可用影片播客逾十萬、同季播客廣告收入同比增逾三成，這些是不同內容或業務範圍的觀測，不代表關掉的節目改成影片。2024 Q2 整條廣告業務毛利率回到正 13%，但更直接的播客線索是免費服務仍提供線上／離線播客、播客廣告曝光售出增加、廣告網路仍支付發行者；它們也無法交代已關節目去向。2025 Partner Program 為合格影片播客創作者引入按觀看表現給付，部分市場的 Premium 會員得到沒有動態插播的新影片體驗。能證明的是**縮掉部分內容與開出新合作方式並存，並非全面放棄播客**，不能從年代相接推成單一決策因果、逐檔回歸或播客獨立獲利。兩案是否回本缺逐案損益，僅留在來源界線。匿名聽眾、創作者、播放器與無字卡均為不同時刻示意，不是假扮真節目或真員工。
+2026-10-21 作者下載 S1–S9 與兩份背景年報，SEC 原始 HTML 比 10 月 20 日舊回應各多 9 bytes；[v12 獨立來源審核](reviews/script-source-audit-v12-independent.md)重新取得同日原件並確認多出的部分是頁尾安全 script URL 輪替。[來源矩陣](source-matrix.md)保留實際原件 URL、bytes、SHA 與工人約 40k 文字預覽可能截不到的段落位置。v13 的新旁白與畫面仍要由另一代理對完整原件重審。
 
-主片可讀母稿在 [drafts/narration.md](drafts/narration.md)，SEC 原件 URL／位元組／雜湊及口徑在 [source-matrix.md](source-matrix.md)，六章路線在 [treatment.md](treatment.md)，畫面限制在 [visual-plan.md](visual-plan.md)。`compose-video.mjs` 編成 `video.json`、逐句稿、作者來源索引與 `series.json`。兩支獨立 Shorts 在 [drafts/shorts.md](drafts/shorts.md)；`compose-shorts.mjs` 編成 `shorts.json`、逐句稿、作者來源索引與 [9:16 逐拍計畫](shorts-portrait-plan.md)，並直接跑 `episodeShortsProblems(shorts, video)`。每次更動母稿或編譯器都須重新產生 JSON，並重做綁新 SHA 的來源與盲讀審查。
+可讀母稿在 [drafts/narration.md](drafts/narration.md)，六章設計在 [treatment.md](treatment.md)，畫面口徑在 [visual-plan.md](visual-plan.md)。`compose-video.mjs` 離線編成 `video.json`、`script.md`、`line-source-matrix.md` 和 `series.json`。兩支各自成題的 Shorts 母稿在 [drafts/shorts.md](drafts/shorts.md)；`compose-shorts.mjs` 編成 `shorts.json`、`shorts-script.md`、`shorts-source-matrix.md` 與[原生直式逐拍計畫](shorts-portrait-plan.md)。v13 主片的 scene 提示已改，Shorts 台詞和 `shorts.json` 位元組未變；新的直式計畫仍須重審有效 shot 與手機構圖。
 
-v12 主片 109 句（含最後三句）、濃縮開場 233 稿文字元、實質正文 2,495 稿文字元；96 張待生成插畫、9 張後製數字卡。正文按 300 字元／分鐘約 8:19，lint 口播單位 2,455 約 8:11、全片估時約 11.1 分鐘；都不是錄音測量。正式 TTS 須實測正文 ≥8:00、成片約 10 分鐘。第一章後插正式 5 秒片頭，恰三句結尾後接官方 21 秒 v4 片尾。兩支 Shorts 分別 9／7 拍，仍須真音檔驗各 25–55 秒、原生 9:16 畫面與 360px 手機可讀性；Short 2 口播明念「歐元」。繁中 CC 可關閉，不燒在畫面上。MiniMax `image-01` 加 `look: {"preset":"cute-mystery"}`；AI 圖不畫商標、真節目封面、真人或可讀字，品牌名／數字由後製排版。整集付費含 Shorts、評審及稅費硬上限 US$25，見[估算](production-quote.md)。
+主片紙本 109 句，濃縮開場 233 字元、實質正文 2,472 字元，按 300 字元／分鐘約 8:14；lint 口播單位 2,436，約 8:07，估計全片 11.0 分鐘。這些都不是錄音測量，正式 TTS 必須驗正文 ≥8:00。六章有 96 張待生成匿名插畫與 9 張後製數字卡。第一章後接官方 5 秒片頭，恰三句尾聲後接官方 21 秒 v4 片尾。兩支 Shorts 分別 9／7 拍，真 TTS 各須量 25–55 秒。繁中 CC 可關閉，不燒畫面；MiniMax `image-01` 用 `look: {"preset":"cute-mystery"}`，AI 圖無商標、真節目封面、真人或可讀字，品牌、日期與數字由後製排字。全套付費硬上限 US$25，見[估算](production-quote.md)。
 
-**v12 作者凍結待審雜湊（SHA-256）：**
+**v13 作者凍結 SHA-256：**
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| `source-matrix.md` | `2431601fef57ad59774f620028933b261d0e2e775af933cf4c34a15f815433d0` |
-| `treatment.md` | `4b32bdd7e1a47f146df1ccc3e60cc28f6ed1768ec649e6c4bd82d42db1206662` |
-| `drafts/narration.md` | `ea8cdd4176e9a0ad73fcc4119068c7b40f562e418b06706ed25e5b29c03128b9` |
-| `drafts/shorts.md` | `559007c4a6b45fa54e45f02deb100de24a72f4c2c534d827fb3279f61c68bec4` |
-| `visual-plan.md` | `6914f69dd52f4aad53cb13dc5c3bb94e6f0b4bcca7cd143a8afae21002b71578` |
-| `video.json` | `3535eaf115165d1ea3acfce1d583a947e0f28add5796f3a60e72f26753b009d8` |
+| `source-matrix.md` | `3332f6fc3671fa9ac9be675f6076d4c795c90a42bd0aaf81716613d7da6d94f3` |
+| `treatment.md` | `b5b76a7fb01d3ccb79eed12bf75c59d6d3bb908a59b2bb3216559e42d5a48749` |
+| `drafts/narration.md` | `f1445943fba144e583d1712252a9401fd705b532dd58bcfe49b3fd9e94bfa82a` |
+| `drafts/shorts.md` | `b15015c060bab0934faba940ff221a62bfb30066718e2527003e8d673269129a` |
+| `visual-plan.md` | `a3a2622213d4bf41d097cf50acb79f0e96700c3cb20f95c3abdad0e44d382d16` |
+| `video.json` | `1e17d3e2b3fba5f7376986b952c4345224da68d771820799c75fc179a53ac2d9` |
 | `shorts.json` | `7fe87423bed274677ce10d4699b8fd343d6a4760afe50240eb069b2ab2674579` |
-| `shorts-portrait-plan.md` | `799736322511feb04ba5e118f671e53c93609eb4b44f43de1ef7bd59610e8808` |
+| `shorts-portrait-plan.md` | `e6c8883dcf2efe920b3ad10e7d10f369f03463d529bd29576f26118ad0f12639` |
 
-本機編譯 lint 為 0 錯誤／0 警告；`episodeShortsProblems(shorts, video)` 為空，兩支 Shorts 個別 schema／來源 SHA 驗證通過；docs-video 測試 236／236，任務看板檢查 exit 0（仍有既有警告）。以上是作者稿與結構檢查，不能代替此版獨立來源、敘事、配音或成片 PASS。
+離線主片 lint：0 錯誤／0 警告；`episodeShortsProblems=[]`，兩支 Shorts 各自 schema 驗證為空；`npm run test:docs-videos` 236／236，`npm run check:tasks` exit 0（既有其他任務警告）。這些是作者與結構檢查，不能代替 v13 獨立來源、敘事、配音或成片 PASS。
 
-[上架交接](publishing-handoff.md) 列未做工作及正式動畫 SHA。此雲端沒有官方動畫檔、未付費製作、沒有 MP4、真 CC 或 YouTube 發布收據；來源連結是真 SEC URL，影片／Shorts／播放清單網址只在實際上傳後回填。
+[上架交接](publishing-handoff.md)列正式工人攝取、片頭片尾、TTS、圖片、CC、Shorts 與站主驗收。這台雲端沒有官方動畫檔，也沒有製作 MP4、真 CC、手機 QA 或 YouTube 發布收據。影片、Shorts、播放清單的真 URL 只在實際上傳後回填。

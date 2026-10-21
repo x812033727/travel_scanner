@@ -1,4 +1,4 @@
-# X13 Spotify｜兩支獨立 Shorts 逐句稿 v12
+# X13 Spotify｜兩支獨立 Shorts 逐句稿 v13
 
 `shorts.json` SHA-256：`7fe87423bed274677ce10d4699b8fd343d6a4760afe50240eb069b2ab2674579`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。
 

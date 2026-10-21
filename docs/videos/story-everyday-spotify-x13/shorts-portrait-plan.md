@@ -1,4 +1,4 @@
-# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v12
+# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v13
 
 這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。每拍 `shot` 均須是長片真正的 `shot` 影格；兩張長片 `stats` 不送入 Shorts 影格管線。數字由 Shorts `big` 欄位在 1080×1920 直式卡原生排字，場景底圖另取有效的匿名插畫。編譯器直接呼叫 `episodeShortsProblems(shorts, video)` 防止再引用 `stats`。
 
@@ -12,7 +12,7 @@
 | 1/2 | `x13-b04-s05` | Close-up, pull out along a content-catalog aisle, several generic unmarked audio slots close in the central frame, with no show name or cover art | 656 | 若干節目關閉 |
 | 1/3 | `x13-b04-s06` | Wide shot, gentle pan left along a content-catalog aisle, a public notice with no readable lettering faces anonymous closed audio slots, all in the central crop | 656 | 全面退場？ |
 | 1/4 | `x13-b04-s08` | Medium close-up, pan right along a content-catalog aisle, closed audio slots and open video catalog tiles stack vertically, never implying they are the same program | 656 | 影片供給仍在 |
-| 1/5 | `x13-b04-s13` | Overhead shot, tilt down along a content-catalog aisle, an illustrative listener sets a generic closed-audio notice next to a distinct open-video catalog card, without identifying a show | 656 | 不同內容 |
+| 1/5 | `x13-b04-s13` | Overhead shot, tilt down along a content-catalog aisle, an illustrative listener separates anonymous closed-audio tiles and distinct video catalog tiles before reaching for a blank next-year catalog | 656 | 不同內容 |
 | 1/6 | `x13-b06-s01` | Low-angle shot, lift gently inside a quiet video studio facing a living area, the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show | 656 | 新方案啟動 |
 | 1/7 | `x13-b06-s03` | Close-up, pull out inside a quiet video studio facing a living area, an eligible anonymous video creator receives an unmarked view-based payment token in the center | 656 | 合格創作者 |
 | 1/8 | `x13-b06-s06` | Medium close-up, pan right inside a quiet video studio facing a living area, a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered | 656 | 會員觀看 |

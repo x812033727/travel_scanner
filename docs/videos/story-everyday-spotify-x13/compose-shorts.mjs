@@ -72,7 +72,7 @@ if (productionProblems.length) throw new Error(`Episode Shorts production check 
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v12", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
+const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v13", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
 const sources = ["# X13 Spotify｜Shorts 作者來源索引", "", `\`shorts.json\` SHA-256：\`${sha}\`。作者標記，待獨立來源審查。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |"];
 for (const [i, lines] of groups.entries()) {
   mdLines.push("", `## Short ${i + 1}`, "");
@@ -84,7 +84,7 @@ for (const [i, lines] of groups.entries()) {
 writeFileSync(path.join(dir, "shorts-script.md"), mdLines.join("\n") + "\n");
 writeFileSync(path.join(dir, "shorts-source-matrix.md"), sources.join("\n") + "\n");
 const plan = [
-  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v12",
+  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v13",
   "",
   "這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。每拍 `shot` 均須是長片真正的 `shot` 影格；兩張長片 `stats` 不送入 Shorts 影格管線。數字由 Shorts `big` 欄位在 1080×1920 直式卡原生排字，場景底圖另取有效的匿名插畫。編譯器直接呼叫 `episodeShortsProblems(shorts, video)` 防止再引用 `stats`。",
   "",
