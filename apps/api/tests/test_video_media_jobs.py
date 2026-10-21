@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import copy
 import hashlib
 import json
+import os
+from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -16,14 +19,21 @@ from uuid import uuid4
 import fakeredis
 import httpx
 import pytest
+import pytest_asyncio
+import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import Settings
+from app.db import engine as postgres_engine
+from app.models import VideoToolToken
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
-from app.video_budget.service import Reservation
+from app.video_budget.models import VideoPilotBudget
+from app.video_budget.service import A01_ADMISSION_SLUG, Reservation, assert_a01_admission_open
+from app.video_media import cutover_intake, meter
 from app.video_media import jobs as service
-from app.video_media import meter
 from app.video_media.catalog import find_model
+from app.video_media.dispatch_fence import PINNED_JOB_ID, expected_manifest, fence_path
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
 from app.video_media.models import VideoMediaJob
 from app.video_media.providers import Download, MediaRequest, MediaUpstreamError, Polled, Submitted
@@ -192,11 +202,27 @@ def _context(
     http: httpx.AsyncClient | None = None,
     **changes: Any,
 ) -> MediaContext:
+    marker_dir = tmp_path / cutover_intake.INTAKE_DIR
+    marker_dir.mkdir(mode=0o755, exist_ok=True)
+    (marker_dir / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "BOOTSTRAP_ALLOW",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": None,
+                "target_sha": None,
+                "nonce_sha256": None,
+            }
+        )
+    )
     ctx = MediaContext(
         session=FakeSession(),  # type: ignore[arg-type]
         redis=fakeredis.aioredis.FakeRedis(),
         store=MediaStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000),
-        runtime=Settings(hotspot_guide_gemini_api_key="g", minimax_api_key="m"),
+        runtime=Settings(
+            hotspot_guide_gemini_api_key="g", minimax_api_key="m", video_work_dir=str(tmp_path)
+        ),
         media=MediaSettings(video_media_dir=str(tmp_path), video_media_keep_days=3),
         row=row or _row(),
         token_id=uuid4(),
@@ -206,11 +232,326 @@ def _context(
     return ctx
 
 
+def _pause_intake(root: Path) -> None:
+    folder = root / cutover_intake.INTAKE_DIR
+    (folder / cutover_intake.ARMED).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+            }
+        )
+    )
+    (folder / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "PAUSED_ALL",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "nonce_sha256": None,
+            }
+        )
+    )
+
+
+async def _allow_a01_intake(root: Path, redis: Any) -> None:
+    nonce = b"durable-suncatcher-hold"
+    await redis.set(cutover_intake.NONCE_KEY, nonce)
+    folder = root / cutover_intake.INTAKE_DIR
+    (folder / cutover_intake.ARMED).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+            }
+        )
+    )
+    (folder / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "ALLOW_A01_ONLY",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "nonce_sha256": hashlib.sha256(nonce).hexdigest(),
+            }
+        )
+    )
+
+
+@pytest.fixture(autouse=True)
+def local_marker_owner(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    if os.name == "posix":
+        monkeypatch.setattr(cutover_intake, "ROOT_UID", tmp_path.stat().st_uid)
+
+
 @pytest.fixture
 def fake_provider(monkeypatch: pytest.MonkeyPatch) -> FakeProvider:
     provider = FakeProvider()
     monkeypatch.setattr(service, "provider_for", lambda runtime, vendor, kind: provider)
     return provider
+
+
+@pytest.mark.asyncio
+async def test_allow_a01_closing_during_pilot_reserve_stops_submit_without_uncertain_charge(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    await _allow_a01_intake(tmp_path, ctx.redis)
+    released = AsyncMock()
+    uncertain = AsyncMock()
+    monkeypatch.setattr(service, "release", released)
+    monkeypatch.setattr(service, "mark_uncertain", uncertain)
+
+    async def reserve_then_pause(
+        _session: Any, *, slug: str, operation_id: str, max_usd: Decimal, **_rest: Any
+    ) -> Reservation:
+        _pause_intake(tmp_path)
+        return Reservation(slug, operation_id, max_usd, "reserved", True, True, 1)
+
+    monkeypatch.setattr(service, "reserve", reserve_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image(slug="story-rolling-suitcase-v2"))
+    assert (refused.value.status, refused.value.code) == (423, "video_media_cutover_paused")
+    assert fake_provider.requests == []
+    queued = ctx.session.added[0]  # type: ignore[attr-defined]
+    assert queued.status == "queued" and "pilot_budget_operation_id" not in queued.request
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1, "queued job keeps its monthly slot"
+    assert released.await_args.kwargs["reason"] == "paid intake paused before vendor dispatch"
+    uncertain.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_bootstrap_closing_while_lock_is_acquired_stops_queued_submit(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    original_set = ctx.redis.set
+
+    async def set_then_pause(key: Any, *args: Any, **kwargs: Any) -> Any:
+        result = await original_set(key, *args, **kwargs)
+        if str(key).startswith("video-media:lock:"):
+            _pause_intake(tmp_path)
+        return result
+
+    monkeypatch.setattr(ctx.redis, "set", set_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image())
+    assert refused.value.code == "video_media_cutover_paused"
+    assert fake_provider.requests == []
+    assert ctx.session.added[0].status == "queued"  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1
+
+
+@pytest.mark.asyncio
+async def test_submitted_poll_rechecks_after_lock_wait(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = VideoMediaJob(
+        id=uuid4(), slug="v", kind="image", purpose="keyframe", provider="minimax",
+        model="image-01", request={}, request_hash="h", status="submitted", attempts=1,
+        polls=0, seconds=0, usd_estimate=Decimal("0.0035"), vendor_ref="task-1",
+    )
+    fake_provider.polls = [Polled("running")]
+    original_set = ctx.redis.set
+
+    async def set_then_pause(key: Any, *args: Any, **kwargs: Any) -> Any:
+        result = await original_set(key, *args, **kwargs)
+        if str(key).startswith("video-media:lock:"):
+            _pause_intake(tmp_path)
+        return result
+
+    monkeypatch.setattr(ctx.redis, "set", set_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert refused.value.code == "video_media_cutover_paused"
+    assert fake_provider.polls == [Polled("running")]
+    assert job.status == "submitted" and job.vendor_ref == "task-1"
+
+
+@pytest.mark.asyncio
+async def test_completed_vendor_poll_cannot_start_download_after_pause(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = VideoMediaJob(
+        id=uuid4(), slug="v", kind="image", purpose="keyframe", provider="minimax",
+        model="image-01", request={}, request_hash="h", status="submitted", attempts=1,
+        polls=0, seconds=0, usd_estimate=Decimal("0.0035"), vendor_ref="task-1",
+    )
+
+    async def poll_then_pause(_ref: str, _client: httpx.AsyncClient) -> Polled:
+        _pause_intake(tmp_path)
+        return Polled("done", download=Download("https://example.com/p.png"))
+
+    monkeypatch.setattr(fake_provider, "poll", poll_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert refused.value.code == "video_media_cutover_paused"
+    assert job.status == "submitted" and job.vendor_ref == "task-1"
+    assert job.file_sha256 is None
+
+
+@pytest.mark.asyncio
+async def test_accepted_image_url_survives_pause_and_resumes_without_second_paid_submit(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
+    slug = "story-rolling-suitcase-v2"
+    payload = _image(slug=slug)
+    url = "https://example.com/accepted-image.png"
+    asked: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        asked.append(request)
+        return httpx.Response(200, content=PNG, headers={"Content-Type": "image/png"})
+
+    async def accepted_then_pause(request: MediaRequest, _client: httpx.AsyncClient) -> Submitted:
+        fake_provider.requests.append(request)
+        _pause_intake(tmp_path)
+        return Submitted(download=Download(url, content_type_hint="image/png"))
+
+    monkeypatch.setattr(fake_provider, "submit", accepted_then_pause)
+    reserve_mock = AsyncMock(
+        side_effect=lambda _session, **kwargs: Reservation(
+            slug,
+            kwargs["operation_id"],
+            kwargs["max_usd"],
+            "reserved",
+            True,
+            True,
+            1,
+        )
+    )
+    release_mock = AsyncMock()
+    uncertain_mock = AsyncMock()
+    settle_mock = AsyncMock()
+    monkeypatch.setattr(service, "reserve", reserve_mock)
+    monkeypatch.setattr(service, "release", release_mock)
+    monkeypatch.setattr(service, "mark_uncertain", uncertain_mock)
+    monkeypatch.setattr(service, "settle", settle_mock)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(
+            tmp_path,
+            fake_provider,
+            http=http,
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        with pytest.raises(MediaJobFailed) as paused:
+            await submit_job(ctx, "image", payload)
+        assert paused.value.code == "video_media_cutover_paused"
+        job = ctx.session.added[0]  # type: ignore[attr-defined]
+        assert job.status == "submitted" and job.submitted_at is not None
+        assert job.request[service.ACCEPTED_DOWNLOAD_KEY]["url"] == url
+        assert len(fake_provider.requests) == 1 and asked == []
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        release_mock.assert_not_awaited()
+        uncertain_mock.assert_not_awaited()
+        settle_mock.assert_not_awaited()
+
+        await _allow_a01_intake(tmp_path, ctx.redis)
+        ctx.session.found = job  # type: ignore[attr-defined]
+        resumed, created = await submit_job(ctx, "image", payload)
+        assert resumed is job and not created and job.status == "ready"
+        assert job.file_sha256 == hashlib.sha256(PNG).hexdigest()
+        assert service.ACCEPTED_DOWNLOAD_KEY not in job.request
+        assert len(fake_provider.requests) == 1 and len(asked) == 1
+        assert asked[0].method == "GET" and str(asked[0].url) == url
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        reserve_mock.assert_awaited_once()
+        settle_mock.assert_awaited_once()
+        release_mock.assert_not_awaited()
+        uncertain_mock.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_minimax_music_accepted_url_stays_submitted_under_pause(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(music_provider="minimax", music_model="music-3.0"),
+    )
+    payload = MusicJobIn.model_validate({"slug": "v", "prompt": "solo guqin", "seconds": 60})
+    url = "https://example.com/accepted-music.mp3"
+
+    async def accepted_then_pause(request: MediaRequest, _client: httpx.AsyncClient) -> Submitted:
+        fake_provider.requests.append(request)
+        _pause_intake(tmp_path)
+        return Submitted(download=Download(url, content_type_hint="audio/mpeg"))
+
+    monkeypatch.setattr(fake_provider, "submit", accepted_then_pause)
+    with pytest.raises(MediaJobFailed) as paused:
+        await submit_job(ctx, "music", payload)
+    assert paused.value.code == "video_media_cutover_paused"
+    job = ctx.session.added[0]  # type: ignore[attr-defined]
+    assert job.status == "submitted"
+    assert job.request[service.ACCEPTED_DOWNLOAD_KEY]["url"] == url
+    assert job.usd_estimate > 0 and await meter.used(ctx.redis, meter.MUSIC) == 1
+    assert len(fake_provider.requests) == 1
+    ctx.session.found = job  # type: ignore[attr-defined]
+    with pytest.raises(MediaJobFailed) as still_paused:
+        await submit_job(ctx, "music", payload)
+    assert still_paused.value.code == "video_media_cutover_paused"
+    assert len(fake_provider.requests) == 1
+    # A later reviewed release may reopen non-A01 intake; this unit test isolates
+    # the already-accepted recovery path because the current marker has no ALLOW_ALL.
+    monkeypatch.setattr(service, "refuse_unapproved_paid_intake", AsyncMock())
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.method == "GET" and str(request.url) == url
+        return httpx.Response(200, content=MP3, headers={"Content-Type": "audio/mpeg"})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx.http = http
+        resumed, created = await submit_job(ctx, "music", payload)
+    assert resumed is job and not created and job.status == "ready"
+    assert job.file_sha256 == hashlib.sha256(MP3).hexdigest()
+    assert service.ACCEPTED_DOWNLOAD_KEY not in job.request
+    assert await meter.used(ctx.redis, meter.MUSIC) == 1
+    assert len(fake_provider.requests) == 1
+
+
+@pytest.mark.asyncio
+async def test_failed_accepted_download_cannot_rebuy_the_same_request(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    url = "https://example.com/expired-image.png"
+    fake_provider.submit_result = Submitted(download=Download(url))
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == url
+        return httpx.Response(503)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(tmp_path, fake_provider, http=http)
+        payload = _image()
+        job, created = await submit_job(ctx, "image", payload)
+        assert created and job.status == "failed"
+        assert service.ACCEPTED_DOWNLOAD_KEY in job.request
+        assert job.usd_estimate > 0 and await meter.used(ctx.redis, meter.IMAGES) == 1
+        ctx.session.found = job  # type: ignore[attr-defined]
+        with pytest.raises(MediaJobFailed) as refused:
+            await submit_job(ctx, "image", payload)
+        assert (refused.value.status, refused.value.code) == (
+            409,
+            "video_media_outcome_uncertain",
+        )
+        assert len(fake_provider.requests) == 1
 
 
 def _sheet(store: MediaStore, data: bytes = PNG) -> str:
@@ -224,6 +565,903 @@ def _image(**extra: Any) -> ImageJobIn:
     return ImageJobIn.model_validate(
         {"slug": "v", "purpose": "keyframe", "prompt": "a ridge at dawn", **extra}
     )
+
+
+@pytest_asyncio.fixture
+async def a01_media_sessions(
+    tmp_path: Path,
+) -> AsyncIterator[async_sessionmaker[AsyncSession]]:
+    database = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'a01-media.sqlite'}")
+    async with database.begin() as connection:
+        await connection.run_sync(
+            lambda sync: VideoPilotBudget.metadata.create_all(
+                sync,
+                tables=[
+                    VideoToolToken.__table__,
+                    VideoPilotBudget.__table__,
+                    VideoMediaJob.__table__,
+                ],
+            )
+        )
+        await connection.execute(
+            sa.insert(VideoPilotBudget).values(
+                slug=A01_ADMISSION_SLUG, limit_usd=Decimal("25")
+            )
+        )
+    yield async_sessionmaker(database, expire_on_commit=False)
+    await database.dispose()
+
+
+@pytest.mark.parametrize("status", ["queued", "ready"])
+@pytest.mark.asyncio
+async def test_a01_existing_receipt_is_read_under_account_lock(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, status: str
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    admission = AsyncMock()
+    monkeypatch.setattr(service, "assert_a01_admission_open", admission)
+    fenced = MagicMock()
+    monkeypatch.setattr(service, "_refuse_fenced_dispatch", fenced)
+    advance = AsyncMock()
+    monkeypatch.setattr(service, "advance_job", advance)
+    receipt = VideoMediaJob(
+        id=uuid4(),
+        slug=A01_ADMISSION_SLUG,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="a" * 64,
+        status=status,
+        attempts=1,
+        polls=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    ctx = _context(
+        tmp_path,
+        FakeProvider(),
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    lookups = 0
+
+    async def lookup_row(_statement: Any) -> VideoMediaJob | None:
+        nonlocal lookups
+        lookups += 1
+        if lookups == 2:
+            assert admission.await_count == 1, "the A01 account lock must precede the job lock"
+        else:
+            assert admission.await_count == 0, "ready probe must not take the account lock"
+        return receipt
+
+    lookup = AsyncMock(side_effect=lookup_row)
+    monkeypatch.setattr(ctx.session, "scalar", lookup)
+    found, created = await submit_job(ctx, "image", _image(slug=A01_ADMISSION_SLUG))
+    assert found is receipt and not created
+    assert lookup.await_count == (1 if status == "ready" else 2)
+    assert admission.await_count == (0 if status == "ready" else 1)
+    fenced.assert_called_once_with(ctx, receipt)
+    assert ctx.session.added == []  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    advance.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_a01_locked_accepted_download_receipt_cannot_rebuy(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    admission = AsyncMock()
+    monkeypatch.setattr(service, "assert_a01_admission_open", admission)
+    monthly_reserve = AsyncMock()
+    monkeypatch.setattr(meter, "reserve", monthly_reserve)
+    advance = AsyncMock()
+    monkeypatch.setattr(service, "advance_job", advance)
+    provider = FakeProvider()
+    receipt = VideoMediaJob(
+        id=uuid4(),
+        slug=A01_ADMISSION_SLUG,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={
+            service.ACCEPTED_DOWNLOAD_KEY: {
+                "url": "https://example.com/already-paid.png",
+                "needs_key": False,
+                "content_type_hint": "image/png",
+            }
+        },
+        request_hash="b" * 64,
+        status="failed",
+        attempts=1,
+        polls=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    ctx = _context(
+        tmp_path,
+        provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    lookups = 0
+
+    async def lookup_row(_statement: Any) -> VideoMediaJob:
+        nonlocal lookups
+        lookups += 1
+        assert admission.await_count == (1 if lookups == 2 else 0)
+        return receipt
+
+    lookup = AsyncMock(side_effect=lookup_row)
+    monkeypatch.setattr(ctx.session, "scalar", lookup)
+
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image(slug=A01_ADMISSION_SLUG))
+    assert (refused.value.status, refused.value.code) == (409, "video_media_outcome_uncertain")
+    assert lookup.await_count == 2 and admission.await_count == 1
+    monthly_reserve.assert_not_awaited()
+    advance.assert_not_awaited()
+    assert ctx.session.added == [] and ctx.session.commits == 0  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    assert provider.requests == []
+
+
+@pytest.mark.asyncio
+async def test_a01_cutover_pause_while_account_lock_waits_refuses_new_queue(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    provider = FakeProvider()
+    ctx = _context(
+        tmp_path,
+        provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+
+    async def pause_during_account_lock(_session: Any, *, slug: str) -> None:
+        assert slug == A01_ADMISSION_SLUG
+        _pause_intake(tmp_path)
+
+    monkeypatch.setattr(service, "assert_a01_admission_open", pause_during_account_lock)
+    monthly_reserve = AsyncMock()
+    monkeypatch.setattr(meter, "reserve", monthly_reserve)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image(slug=A01_ADMISSION_SLUG))
+    assert (refused.value.status, refused.value.code) == (423, "video_media_cutover_paused")
+    monthly_reserve.assert_not_awaited()
+    assert ctx.session.added == [] and ctx.session.commits == 0  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    assert provider.requests == []
+
+
+@pytest.mark.asyncio
+async def test_a01_media_queue_can_commit_on_0133_without_token_column(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        job, created = await submit_job(
+            ctx, "image", _image(slug=A01_ADMISSION_SLUG)
+        )
+        assert created and job.status == "queued"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        advance.assert_awaited_once()
+        connection = await session.connection()
+        assert not await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in sa.inspect(sync).get_columns("video_pilot_budgets")}
+        )
+    async with a01_media_sessions() as session:
+        stored = await session.get(VideoMediaJob, job.id)
+        assert stored is not None and stored.status == "queued"
+
+
+@pytest.mark.asyncio
+async def test_held_a01_media_queue_blocks_post_retry_and_poll_but_reads_terminal_result(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    original_advance = service.advance_job
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    payload = _image(slug=A01_ADMISSION_SLUG)
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        queued, created = await submit_job(ctx, "image", payload)
+        assert created and queued.status == "queued"
+    advance.reset_mock()
+    async with a01_media_sessions() as session:
+        await session.execute(
+            sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.execute(
+            sa.text(
+                "UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"
+            ),
+            {"token": str(uuid4()), "slug": A01_ADMISSION_SLUG},
+        )
+        await session.commit()
+
+    for blocked_payload in (payload, _image(slug=A01_ADMISSION_SLUG, seed=17)):
+        async with a01_media_sessions() as session:
+            ctx = _context(
+                tmp_path,
+                FakeProvider(),
+                row=_row(image_provider="minimax", image_model="image-01"),
+            )
+            ctx.session = session
+            with pytest.raises(MediaJobFailed) as refused:
+                await submit_job(ctx, "image", blocked_payload)
+            assert (refused.value.status, refused.value.code) == (
+                409,
+                "video_budget_admission_held",
+            )
+            assert await meter.used(ctx.redis, meter.IMAGES) == 0
+            assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+            advance.assert_not_awaited()
+
+    monkeypatch.setattr(service, "advance_job", original_advance)
+    monkeypatch.setattr(
+        service,
+        "provider_for",
+        lambda *_args: (_ for _ in ()).throw(AssertionError("provider must not be opened")),
+    )
+    async with a01_media_sessions() as session:
+        queued_row = await session.get(VideoMediaJob, queued.id)
+        assert queued_row is not None and queued_row.status == "queued"
+        ctx = _context(tmp_path, FakeProvider())
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await original_advance(ctx, queued_row)
+        assert refused.value.code == "video_budget_admission_held"
+        assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+
+    async with a01_media_sessions() as session:
+        submitted = await session.get(VideoMediaJob, queued.id)
+        assert submitted is not None
+        submitted.status = "submitted"
+        submitted.vendor_ref = "already-sent"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        submitted = await session.get(VideoMediaJob, queued.id)
+        assert submitted is not None
+        ctx = _context(tmp_path, FakeProvider())
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await original_advance(ctx, submitted)
+        assert refused.value.code == "video_budget_admission_held"
+        assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+
+    async with a01_media_sessions() as session:
+        failed = await session.get(VideoMediaJob, queued.id)
+        assert failed is not None
+        failed.status = "failed"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await submit_job(ctx, "image", payload)
+        assert refused.value.code == "video_budget_admission_held"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    async with a01_media_sessions() as session:
+        terminal = await session.get(VideoMediaJob, queued.id)
+        assert terminal is not None and terminal.status == "failed" and terminal.attempts == 1
+        terminal.status = "ready"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        terminal = await session.get(VideoMediaJob, queued.id)
+        assert terminal is not None
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        assert await original_advance(ctx, terminal) is terminal
+        same, created = await submit_job(ctx, "image", payload)
+        assert same.id == terminal.id and not created and same.status == "ready"
+
+
+@pytest.mark.parametrize("other_slug", ["unrelated-film", "story-conveyor-belt-sushi-v2"])
+@pytest.mark.asyncio
+async def test_a01_hold_does_not_block_an_unrelated_media_queue(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+    other_slug: str,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    async with a01_media_sessions() as session:
+        await session.execute(
+            sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.execute(
+            sa.text("UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"),
+            {"token": str(uuid4()), "slug": A01_ADMISSION_SLUG},
+        )
+        await session.commit()
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        job, created = await submit_job(ctx, "image", _image(slug=other_slug))
+        assert created and job.status == "queued"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        advance.assert_awaited_once()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio
+async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Whichever transaction takes the A01 row first determines the safe outcome."""
+    await postgres_engine.dispose(close=False)
+    sessions = async_sessionmaker(postgres_engine, expire_on_commit=False)
+    slug = A01_ADMISSION_SLUG
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "advance_job", AsyncMock(side_effect=lambda _ctx, job: job))
+    row = _row(image_provider="minimax", image_model="image-01")
+    payload = _image(slug=slug, prompt=f"a01-media-admission-race-{uuid4()}")
+    duplicate_payload = _image(slug=slug, prompt=f"a01-media-duplicate-race-{uuid4()}")
+    model = find_model("minimax", "image", "image-01")
+    assert model is not None
+    digest = service.request_hash(
+        {
+            "kind": "image",
+            "vendor": "minimax",
+            "model": model.id,
+            **service._request_fields(payload, row, model),
+        }
+    )
+    duplicate_digest = service.request_hash(
+        {
+            "kind": "image",
+            "vendor": "minimax",
+            "model": model.id,
+            **service._request_fields(duplicate_payload, row, model),
+        }
+    )
+    async with postgres_engine.begin() as connection:
+        had_column = await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in sa.inspect(sync).get_columns("video_pilot_budgets")}
+        )
+        if not had_column:
+            await connection.execute(
+                sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token UUID")
+            )
+        previous = (
+            await connection.execute(
+                sa.text("SELECT admission_token FROM video_pilot_budgets WHERE slug=:slug"),
+                {"slug": slug},
+            )
+        ).first()
+        if previous is None:
+            await connection.execute(
+                sa.text("INSERT INTO video_pilot_budgets (slug, limit_usd) VALUES (:slug, 25)"),
+                {"slug": slug},
+            )
+        else:
+            await connection.execute(
+                sa.text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": slug},
+            )
+
+    gate_entered = asyncio.Event()
+    real_gate = assert_a01_admission_open
+
+    async def witnessed_gate(session: AsyncSession, *, slug: str) -> None:
+        gate_entered.set()
+        await real_gate(session, slug=slug)
+
+    monkeypatch.setattr(service, "assert_a01_admission_open", witnessed_gate)
+    token_written = asyncio.Event()
+    finish_token = asyncio.Event()
+    finish_submit = asyncio.Event()
+    reached_meter = asyncio.Event()
+    arm_task: asyncio.Task[None] | None = None
+    denied_task: asyncio.Task[Any] | None = None
+    inserted_task: asyncio.Task[Any] | None = None
+    token_task: asyncio.Task[bool] | None = None
+    duplicate_first_task: asyncio.Task[Any] | None = None
+    duplicate_second_task: asyncio.Task[Any] | None = None
+    finish_duplicate = asyncio.Event()
+    try:
+        async def arm_first() -> None:
+            async with sessions() as session:
+                await session.scalar(
+                    sa.select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == slug)
+                    .with_for_update()
+                )
+                await session.execute(
+                    sa.text(
+                        "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                        "WHERE slug=:slug"
+                    ),
+                    {"token": str(uuid4()), "slug": slug},
+                )
+                token_written.set()
+                await finish_token.wait()
+                await session.commit()
+
+        async def submit(body: ImageJobIn = payload) -> tuple[VideoMediaJob, bool]:
+            async with sessions() as session:
+                ctx = _context(tmp_path, FakeProvider(), row=row)
+                ctx.session = session
+                ctx.token_id = None
+                return await submit_job(ctx, "image", body)
+
+        arm_task = asyncio.create_task(arm_first())
+        await asyncio.wait_for(token_written.wait(), timeout=10)
+        denied_task = asyncio.create_task(submit())
+        await asyncio.wait_for(gate_entered.wait(), timeout=10)
+        await asyncio.sleep(0.05)
+        assert not denied_task.done(), "media submit must wait for the account-row lock"
+        finish_token.set()
+        await asyncio.wait_for(arm_task, timeout=10)
+        with pytest.raises(MediaJobFailed) as denied:
+            await asyncio.wait_for(denied_task, timeout=10)
+        assert denied.value.code == "video_budget_admission_held"
+        async with sessions() as session:
+            assert await session.scalar(
+                sa.select(VideoMediaJob.id).where(
+                    VideoMediaJob.slug == slug, VideoMediaJob.request_hash == digest
+                )
+            ) is None
+
+        async with postgres_engine.begin() as connection:
+            await connection.execute(
+                sa.text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": slug},
+            )
+
+        async def paused_meter(*_args: Any, **_kwargs: Any) -> bool:
+            reached_meter.set()
+            await finish_submit.wait()
+            return True
+
+        monkeypatch.setattr(meter, "reserve", paused_meter)
+        inserted_task = asyncio.create_task(submit())
+        await asyncio.wait_for(reached_meter.wait(), timeout=10)
+
+        async def token_attempt() -> bool:
+            async with sessions() as session:
+                await session.scalar(
+                    sa.select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == slug)
+                    .with_for_update()
+                )
+                queued = await session.scalar(
+                    sa.select(VideoMediaJob.id).where(
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash == digest,
+                        VideoMediaJob.status == "queued",
+                    )
+                )
+                if queued is not None:
+                    await session.rollback()
+                    return False
+                await session.execute(
+                    sa.text(
+                        "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                        "WHERE slug=:slug"
+                    ),
+                    {"token": str(uuid4()), "slug": slug},
+                )
+                await session.commit()
+                return True
+
+        token_task = asyncio.create_task(token_attempt())
+        await asyncio.sleep(0.05)
+        assert not token_task.done(), "token acquire must wait for queued media commit"
+        finish_submit.set()
+        queued, created = await asyncio.wait_for(inserted_task, timeout=10)
+        assert created and queued.status == "queued"
+        assert await asyncio.wait_for(token_task, timeout=10) is False
+
+        # Both duplicate POSTs initially miss a distinct request hash. The first
+        # pauses after locking the budget row; the second waits, then must reselect
+        # the first receipt instead of reserving another monthly unit or inserting.
+        duplicate_meter_entered = asyncio.Event()
+        duplicate_gate_entered = asyncio.Event()
+        meter_calls = 0
+
+        async def counted_meter(*_args: Any, **_kwargs: Any) -> bool:
+            nonlocal meter_calls
+            meter_calls += 1
+            duplicate_meter_entered.set()
+            await finish_duplicate.wait()
+            return True
+
+        async def duplicate_gate(session: AsyncSession, *, slug: str) -> None:
+            duplicate_gate_entered.set()
+            await real_gate(session, slug=slug)
+
+        monkeypatch.setattr(meter, "reserve", counted_meter)
+        duplicate_first_task = asyncio.create_task(submit(duplicate_payload))
+        await asyncio.wait_for(duplicate_meter_entered.wait(), timeout=10)
+        monkeypatch.setattr(service, "assert_a01_admission_open", duplicate_gate)
+        duplicate_second_task = asyncio.create_task(submit(duplicate_payload))
+        await asyncio.wait_for(duplicate_gate_entered.wait(), timeout=10)
+        await asyncio.sleep(0.05)
+        assert not duplicate_second_task.done(), "duplicate must wait on the account row"
+        finish_duplicate.set()
+        first_job, first_created = await asyncio.wait_for(duplicate_first_task, timeout=10)
+        second_job, second_created = await asyncio.wait_for(duplicate_second_task, timeout=10)
+        assert first_created and not second_created
+        assert first_job.id == second_job.id and first_job.status == "queued"
+        assert meter_calls == 1, "only the first identical POST reserves a monthly unit"
+        async with sessions() as session:
+            assert len(
+                (
+                    await session.scalars(
+                        sa.select(VideoMediaJob.id).where(
+                            VideoMediaJob.slug == slug,
+                            VideoMediaJob.request_hash == duplicate_digest,
+                        )
+                    )
+                ).all()
+            ) == 1
+    finally:
+        finish_token.set()
+        finish_submit.set()
+        finish_duplicate.set()
+        for task in (
+            arm_task,
+            denied_task,
+            inserted_task,
+            token_task,
+            duplicate_first_task,
+            duplicate_second_task,
+        ):
+            if task is not None and not task.done():
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+        try:
+            async with postgres_engine.begin() as connection:
+                await connection.execute(
+                    sa.delete(VideoMediaJob).where(
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash.in_((digest, duplicate_digest)),
+                    )
+                )
+                if previous is None:
+                    await connection.execute(
+                        sa.text("DELETE FROM video_pilot_budgets WHERE slug=:slug"),
+                        {"slug": slug},
+                    )
+                else:
+                    await connection.execute(
+                        sa.text(
+                            "UPDATE video_pilot_budgets "
+                            "SET admission_token=CAST(:token AS uuid) WHERE slug=:slug"
+                        ),
+                        {
+                            "slug": slug,
+                            "token": str(previous[0]) if previous[0] is not None else None,
+                        },
+                    )
+                if not had_column:
+                    await connection.execute(
+                        sa.text("ALTER TABLE video_pilot_budgets DROP COLUMN admission_token")
+                    )
+        finally:
+            await postgres_engine.dispose()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio
+async def test_a01_existing_and_missing_posts_never_lock_job_before_budget_on_postgresql(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Opposing existing/missing POSTs must wait for the budget before any job row lock."""
+    await postgres_engine.dispose(close=False)
+    sessions = async_sessionmaker(postgres_engine, expire_on_commit=False)
+    slug = A01_ADMISSION_SLUG
+    row = _row(image_provider="minimax", image_model="image-01")
+    model = find_model("minimax", "image", "image-01")
+    assert model is not None
+    existing_payload = _image(slug=slug, prompt=f"a01-existing-lock-order-{uuid4()}")
+    missing_payload = _image(slug=slug, prompt=f"a01-missing-lock-order-{uuid4()}")
+
+    def request(body: ImageJobIn) -> tuple[dict[str, Any], str]:
+        fields = service._request_fields(body, row, model)
+        return fields, service.request_hash(
+            {"kind": "image", "vendor": "minimax", "model": model.id, **fields}
+        )
+
+    existing_fields, existing_digest = request(existing_payload)
+    _, missing_digest = request(missing_payload)
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "advance_job", AsyncMock(side_effect=lambda _ctx, job: job))
+    async with postgres_engine.begin() as connection:
+        had_column = await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in sa.inspect(sync).get_columns("video_pilot_budgets")}
+        )
+        if not had_column:
+            await connection.execute(
+                sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token UUID")
+            )
+        previous = (
+            await connection.execute(
+                sa.text("SELECT admission_token FROM video_pilot_budgets WHERE slug=:slug"),
+                {"slug": slug},
+            )
+        ).first()
+        if previous is None:
+            await connection.execute(
+                sa.text("INSERT INTO video_pilot_budgets (slug, limit_usd) VALUES (:slug, 25)"),
+                {"slug": slug},
+            )
+        else:
+            await connection.execute(
+                sa.text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": slug},
+            )
+        await connection.execute(
+            sa.insert(VideoMediaJob).values(
+                id=uuid4(),
+                slug=slug,
+                kind="image",
+                purpose="keyframe",
+                provider="minimax",
+                model=model.id,
+                request=existing_fields,
+                request_hash=existing_digest,
+                status="queued",
+                attempts=1,
+                polls=0,
+                usd_estimate=Decimal("0.0035"),
+            )
+        )
+
+    real_gate = assert_a01_admission_open
+    both_at_gate = asyncio.Event()
+    gate_calls = 0
+
+    async def witnessed_gate(session: AsyncSession, *, slug: str) -> None:
+        nonlocal gate_calls
+        gate_calls += 1
+        if gate_calls == 2:
+            both_at_gate.set()
+        await real_gate(session, slug=slug)
+
+    monkeypatch.setattr(service, "assert_a01_admission_open", witnessed_gate)
+    budget_locked = asyncio.Event()
+    release_budget = asyncio.Event()
+    holder: asyncio.Task[None] | None = None
+    existing_task: asyncio.Task[Any] | None = None
+    missing_task: asyncio.Task[Any] | None = None
+    try:
+        async def hold_budget() -> None:
+            async with sessions() as session:
+                await session.scalar(
+                    sa.select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == slug)
+                    .with_for_update()
+                )
+                budget_locked.set()
+                await release_budget.wait()
+                await session.commit()
+
+        async def submit(body: ImageJobIn, label: str) -> tuple[VideoMediaJob, bool]:
+            async with sessions() as session:
+                root = tmp_path / label
+                root.mkdir(exist_ok=True)
+                ctx = _context(root, FakeProvider(), row=row)
+                ctx.session = session
+                ctx.token_id = None
+                return await submit_job(ctx, "image", body)
+
+        holder = asyncio.create_task(hold_budget())
+        await asyncio.wait_for(budget_locked.wait(), timeout=10)
+        existing_task = asyncio.create_task(submit(existing_payload, "existing"))
+        missing_task = asyncio.create_task(submit(missing_payload, "missing"))
+        await asyncio.wait_for(both_at_gate.wait(), timeout=10)
+        await asyncio.sleep(0.05)
+        assert not existing_task.done() and not missing_task.done()
+        # On the old path the existing POST already held this row and waited for
+        # budget, while the missing POST would later take budget then this row.
+        async with sessions() as probe:
+            locked = await asyncio.wait_for(
+                probe.scalar(
+                    sa.select(VideoMediaJob)
+                    .where(
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash == existing_digest,
+                    )
+                    .with_for_update(nowait=True)
+                ),
+                timeout=10,
+            )
+            assert locked is not None
+            await probe.rollback()
+        release_budget.set()
+        await asyncio.wait_for(holder, timeout=10)
+        same, same_created = await asyncio.wait_for(existing_task, timeout=10)
+        fresh, fresh_created = await asyncio.wait_for(missing_task, timeout=10)
+        assert same.request_hash == existing_digest and not same_created
+        assert fresh.request_hash == missing_digest and fresh_created
+    finally:
+        release_budget.set()
+        for task in (holder, existing_task, missing_task):
+            if task is not None and not task.done():
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+        try:
+            async with postgres_engine.begin() as connection:
+                await connection.execute(
+                    sa.delete(VideoMediaJob).where(
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash.in_((existing_digest, missing_digest)),
+                    )
+                )
+                if previous is None:
+                    await connection.execute(
+                        sa.text("DELETE FROM video_pilot_budgets WHERE slug=:slug"), {"slug": slug}
+                    )
+                else:
+                    await connection.execute(
+                        sa.text(
+                            "UPDATE video_pilot_budgets "
+                            "SET admission_token=CAST(:token AS uuid) WHERE slug=:slug"
+                        ),
+                        {
+                            "slug": slug,
+                            "token": str(previous[0]) if previous[0] is not None else None,
+                        },
+                    )
+                if not had_column:
+                    await connection.execute(
+                        sa.text("ALTER TABLE video_pilot_budgets DROP COLUMN admission_token")
+                    )
+        finally:
+            await postgres_engine.dispose()
+
+
+def _pinned_queued_job() -> VideoMediaJob:
+    return VideoMediaJob(
+        id=PINNED_JOB_ID,
+        slug="google-project-suncatcher-prototype-what-it-tests",
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="52b39c04a45f39b4101bcd7e401c31cd0e6083f3c8390b729afd2a83569379e6",
+        status="queued",
+        attempts=1,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+
+
+def _install_pinned_fence(root: Path, job: VideoMediaJob) -> None:
+    path = fence_path(root)
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(expected_manifest(job), sort_keys=True) + "\n", encoding="utf-8")
+
+
+@pytest.mark.asyncio
+async def test_exact_queued_job_is_fenced_before_get_or_repeated_post_mutates_it(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    job = _pinned_queued_job()
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    ctx.runtime = Settings(minimax_api_key="m", video_work_dir=str(tmp_path))
+    ctx.session.found = job  # type: ignore[attr-defined]
+    _install_pinned_fence(tmp_path, job)
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    for _ in range(2):
+        with pytest.raises(MediaJobFailed) as refused:
+            await advance_job(ctx, job)
+        assert (refused.value.status, refused.value.code) == (423, "video_media_dispatch_fenced")
+        with pytest.raises(MediaJobFailed) as repeated:
+            await submit_job(
+                ctx,
+                "image",
+                _image(slug=job.slug, prompt="a reflective panel above earth"),
+            )
+        assert repeated.value.code == "video_media_dispatch_fenced"
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
+    assert fake_provider.requests == []
+    assert await ctx.redis.exists(f"video-media:lock:{job.id}") == 0
+
+
+@pytest.mark.asyncio
+async def test_pinned_job_missing_marker_fails_closed_but_other_job_still_dispatches(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    ctx.runtime = Settings(minimax_api_key="m", video_work_dir=str(tmp_path))
+    job = _pinned_queued_job()
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert (refused.value.status, refused.value.code) == (
+        503,
+        "video_media_dispatch_fence_invalid",
+    )
+    assert job.status == "queued" and ctx.session.commits == 0  # type: ignore[attr-defined]
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    other, created = await submit_job(ctx, "image", _image(prompt="another film"))
+    assert created and other.id != PINNED_JOB_ID and other.status == "ready"
+    assert len(fake_provider.requests) == 1
+
+
+@pytest.mark.asyncio
+async def test_b25_direct_generation_and_poll_refuse_before_any_state_or_vendor_change(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = _pinned_queued_job()
+    job.id = uuid4()
+    job.slug = service.B25_CUTOVER_SLUG
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    for _ in range(2):
+        with pytest.raises(MediaJobFailed) as polled:
+            await advance_job(ctx, job)
+        assert (polled.value.status, polled.value.code) == (
+            423,
+            "video_media_b25_cutover_paused",
+        )
+        with pytest.raises(MediaJobFailed) as submitted:
+            await submit_job(ctx, "image", _image(slug=job.slug))
+        assert (submitted.value.status, submitted.value.code) == (
+            423,
+            "video_media_b25_cutover_paused",
+        )
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    assert ctx.session.commits == 0 and ctx.session.added == []  # type: ignore[attr-defined]
+    assert fake_provider.requests == []
+    assert await ctx.redis.exists(f"video-media:lock:{job.id}") == 0
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
 
 
 @pytest.mark.asyncio
@@ -257,6 +1495,7 @@ async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
 async def test_pilot_media_uncertain_failure_keeps_charge_and_blocks_same_request_retry(
     tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
     slug = "story-rolling-suitcase-v2"
     ctx = _context(
         tmp_path,
@@ -337,6 +1576,7 @@ async def test_pilot_clip_is_refused_before_a_paid_call(
 async def test_pilot_vendor_busy_answer_keeps_the_budget_hold(
     tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
     ctx = _context(
         tmp_path,
         fake_provider,
@@ -809,7 +2049,9 @@ async def test_a_series_model_whose_vendor_has_no_key_is_refused_before_anything
 ) -> None:
     monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value="image-01"))
     ctx = _context(tmp_path, FakeProvider(), row=_row(image_model="gemini-3-pro-image"))
-    ctx.runtime = Settings(hotspot_guide_gemini_api_key="g", minimax_api_key="")
+    ctx.runtime = Settings(
+        hotspot_guide_gemini_api_key="g", minimax_api_key="", video_work_dir=str(tmp_path)
+    )
     with pytest.raises(MediaJobFailed) as refused:
         await submit_job(ctx, "image", _image())
     assert (refused.value.status, refused.value.code) == (503, "video_media_not_configured")

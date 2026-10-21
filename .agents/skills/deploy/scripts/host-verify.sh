@@ -201,8 +201,9 @@ verdict containers-rebuilt-this-deploy "$rb_ok" "rebuilt_after_context_commit=$r
 section alembic-head
 # The expected head is the api image's own. `alembic current` cannot resolve a newer database
 # revision from a rollback image, so ask the same read-only guard used by Compose migrate. It
-# verifies all nine account limits and required schema before reporting the exact reviewed
-# 0133-on-0132 exception. Every other mismatch still fails this check.
+# verifies the reviewed budget schema and additive A01 admission column before
+# reporting either exact exception: 0133 DB on the 0132 image, or 0134 DB on
+# the precompatible 0133 image. Every other mismatch still fails this check.
 out=$($COMPOSE exec -T api alembic heads 2>&1)
 heads=$(echo "$out" | grep -E '^[0-9]{4,}_[^ ]* .*\(head\)' | tr -d '\r' || true)
 if [ -n "$heads" ]; then echo "heads: $heads"; else echo "no head line; raw output:"; echo "$out" | tail -5; fi
@@ -218,8 +219,12 @@ expected=$(echo "$status_line" | sed -n 's/^SCHEMA_STATUS state=[^ ]* current=[^
 ok=0
 if [ "$head_n" -eq 1 ] && [ "$guard_rc" -eq 0 ] && [ "$expected" = "$alembic_head" ]; then
   if [ "$schema_state" = exact ] && [ "$current" = "$alembic_head" ]; then ok=1; fi
-  if [ "$schema_state" = rollback-compatible ] && [ "$alembic_head" = 0132_video_pilot_budget ] \
-     && [ "$current" = 0133_story_followon_budget ]; then ok=1; fi
+  if [ "$schema_state" = rollback-compatible ]; then
+    if [ "$alembic_head" = 0132_video_pilot_budget ] \
+       && [ "$current" = 0133_story_followon_budget ]; then ok=1; fi
+    if [ "$alembic_head" = 0133_story_followon_budget ] \
+       && [ "$current" = 0134_a01_admission_fence ]; then ok=1; fi
+  fi
 fi
 verdict alembic-head "$ok" "heads=$head_n guard_rc=$guard_rc state=${schema_state:-missing} current=${current:-unknown} image_head=${alembic_head:-unknown}"
 

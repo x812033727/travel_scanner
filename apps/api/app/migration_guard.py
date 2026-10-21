@@ -1,9 +1,10 @@
-"""Run normal migrations, except for one reviewed application rollback state.
+"""Run normal migrations, except for reviewed application rollback states.
 
-The 0132 application can serve the additive 0133 story-budget schema, but its
-Alembic directory cannot resolve that newer revision. Compose recreates `migrate`
-before starting the API on rollback, so the exception must live in that command.
-This module never stamps or downgrades a database.
+The 0132 application can serve the additive 0133 story-budget schema, and the
+0133 application can serve the additive 0134 A01 admission column. Neither
+image's Alembic directory can resolve its successor. Compose recreates
+`migrate` before starting the API on rollback, so the exceptions must live in
+that command. This module never stamps or downgrades a database.
 """
 
 from __future__ import annotations
@@ -29,6 +30,7 @@ from app.video_budget.models import PILOT_LIMITS_USD, VideoPilotBudget
 
 ROLLBACK_IMAGE_HEAD = "0132_video_pilot_budget"
 REVIEWED_FUTURE_REVISION = "0133_story_followon_budget"
+REVIEWED_ADMISSION_REVISION = "0134_a01_admission_fence"
 State = Literal["exact", "upgrade", "rollback-compatible"]
 
 
@@ -51,7 +53,10 @@ def classify_revisions(
     current = revisions[0] if revisions else None
     if current == expected:
         return MigrationState(current, expected, "exact")
-    if expected == ROLLBACK_IMAGE_HEAD and current == REVIEWED_FUTURE_REVISION:
+    if (expected, current) in {
+        (ROLLBACK_IMAGE_HEAD, REVIEWED_FUTURE_REVISION),
+        (REVIEWED_FUTURE_REVISION, REVIEWED_ADMISSION_REVISION),
+    }:
         return MigrationState(current, expected, "rollback-compatible")
     if current is None or current in known_revisions:
         return MigrationState(current, expected, "upgrade")
@@ -202,6 +207,32 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
         raise MigrationGuardError("reviewed 0133 operation slug index is missing")
 
 
+async def _verify_reviewed_0134(connection: AsyncConnection) -> None:
+    """Require the additive UUID fence on top of the reviewed 0133 ledger."""
+    await _verify_reviewed_0133(connection)
+    result = await connection.execute(
+        text(
+            "SELECT att.atttypid = 'uuid'::regtype, NOT att.attnotnull, "
+            "NOT att.atthasdef, att.attgenerated = ''::\"char\", "
+            "att.attidentity = ''::\"char\" "
+            "FROM pg_attribute AS att "
+            "WHERE att.attrelid = 'video_pilot_budgets'::regclass "
+            "AND att.attname = 'admission_token' AND NOT att.attisdropped"
+        )
+    )
+    if list(result.all()) != [(True, True, True, True, True)]:
+        raise MigrationGuardError("reviewed 0134 admission column is missing or changed")
+    held = await connection.execute(
+        text(
+            "SELECT admission_token FROM video_pilot_budgets "
+            "WHERE slug = 'story-rolling-suitcase-v2'"
+        )
+    )
+    tokens = held.all()
+    if len(tokens) != 1 or tokens[0][0] is not None:
+        raise MigrationGuardError("reviewed 0134 A01 admission token is held or missing")
+
+
 async def read_state() -> MigrationState:
     expected = expected_schema_revision()
     known = {revision.revision for revision in migration_revisions()}
@@ -210,7 +241,10 @@ async def read_state() -> MigrationState:
         async with engine.connect() as connection:
             state = classify_revisions(await _revisions(connection), expected, known)
             if state.state == "rollback-compatible":
-                await _verify_reviewed_0133(connection)
+                if state.current == REVIEWED_ADMISSION_REVISION:
+                    await _verify_reviewed_0134(connection)
+                else:
+                    await _verify_reviewed_0133(connection)
             return state
     finally:
         await engine.dispose()

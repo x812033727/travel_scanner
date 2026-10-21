@@ -15,7 +15,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import ROUND_CEILING, Decimal, InvalidOperation
 
-from sqlalchemy import select
+from sqlalchemy import Connection, inspect, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.problems import AppError
@@ -35,6 +35,7 @@ ACTIVE_STATUSES = frozenset(("reserved", "uncertain"))
 OPERATOR_NO_CHARGE_PREFIX = "operator-no-charge evidence="
 B18_V2_SLUG = "story-conveyor-belt-sushi-v2"
 B18_V2_LIMIT_USD = FOLLOWON_LIMIT_USD
+A01_ADMISSION_SLUG = "story-rolling-suitcase-v2"
 
 
 class BudgetError(AppError):
@@ -97,13 +98,54 @@ def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
     account = await session.scalar(
-        select(VideoPilotBudget).where(VideoPilotBudget.slug == slug).with_for_update()
+        select(VideoPilotBudget)
+        .where(VideoPilotBudget.slug == slug)
+        .with_for_update()
+        .execution_options(populate_existing=True)
     )
     if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
     if not _account_limit_is_valid(slug, account.limit_usd):
         raise BudgetError(503, "video_budget_invalid_account", "試作影片的費用帳戶上限不符")
     return account
+
+
+def _has_admission_column(connection: Connection) -> bool:
+    """Probe the current transaction's schema; this image runs on 0133 or 0134."""
+    return "admission_token" in {
+        column["name"] for column in inspect(connection).get_columns("video_pilot_budgets")
+    }
+
+
+async def _admission_held_locked(session: AsyncSession, account: VideoPilotBudget) -> bool:
+    """Read the optional 0134 token while holding this account row FOR UPDATE.
+
+    The 0133 model intentionally does not map the new column. On a 0133 database
+    the probe returns False; on 0134, the raw token read uses the very same
+    session and transaction. Do not cache column presence across a deploy.
+    """
+    if account.slug != A01_ADMISSION_SLUG:
+        return False
+    connection = await session.connection()
+    if not await connection.run_sync(_has_admission_column):
+        return False
+    token = await session.scalar(
+        text("SELECT admission_token FROM video_pilot_budgets WHERE slug=:slug"),
+        {"slug": account.slug},
+    )
+    return token is not None
+
+
+async def assert_a01_admission_open(session: AsyncSession, *, slug: str) -> None:
+    """Join the durable text-stage dispatch transaction before its marker.
+
+    The caller commits its dispatch marker under this same budget-row lock.
+    """
+    if slug != A01_ADMISSION_SLUG:
+        return
+    account = await _locked_account(session, slug)
+    if await _admission_held_locked(session, account):
+        raise BudgetError(409, "video_budget_admission_held", "A01 來源匯入期間不會派送寫稿工作")
 
 
 async def _operation(
@@ -172,6 +214,10 @@ async def reserve(
 
     try:
         account = await _locked_account(session, slug)
+        if await _admission_held_locked(session, account):
+            raise BudgetError(
+                409, "video_budget_admission_held", "A01 來源匯入期間不會預留付費操作"
+            )
         existing = await session.scalar(
             select(VideoPilotBudgetOperation).where(
                 VideoPilotBudgetOperation.slug == slug,

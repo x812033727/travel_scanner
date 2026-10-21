@@ -20,7 +20,7 @@ from httpx import ASGITransport, AsyncClient
 from redis import Redis
 from redis.exceptions import RedisError
 from rq import Queue
-from sqlalchemy import Table, delete, event, select
+from sqlalchemy import Table, delete, event, inspect, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import Settings
@@ -32,6 +32,8 @@ from app.video_automation import settings as automation_settings
 from app.video_automation.errors import StageFailed
 from app.video_automation.models import VideoAiRun, VideoAutomationSettings, VideoStageJob, utcnow
 from app.video_automation.schemas import StageJobIn, StageRunOut, UsageView
+from app.video_budget.models import PILOT_LIMIT_USD, VideoPilotBudget
+from app.video_budget.service import A01_ADMISSION_SLUG
 from app.video_speech.admin_api import video_tool
 
 EXACT = '\n{"title":"同一份撰稿", "segments": []}\n'
@@ -63,6 +65,7 @@ async def store(tmp_path, monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[Any]
             VideoProject.__table__,
             VideoAiRun.__table__,
             VideoStageJob.__table__,
+            VideoPilotBudget.__table__,
         ):
             await connection.run_sync(cast(Table, table).create)
     factory = async_sessionmaker(local, expire_on_commit=False)
@@ -100,6 +103,12 @@ async def credential(store: Any) -> VideoToolToken:
         return token
 
 
+async def a01_account(store: Any) -> None:
+    async with store() as session:
+        session.add(VideoPilotBudget(slug=A01_ADMISSION_SLUG, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+
+
 @pytest.mark.asyncio
 async def test_disconnected_submit_recovers_same_receipt_without_quota_or_model_checks(
     store: Any, monkeypatch: pytest.MonkeyPatch
@@ -135,6 +144,105 @@ async def test_disconnected_submit_recovers_same_receipt_without_quota_or_model_
     async with store() as session:
         completed = await run_jobs.submit_job(session, body, token.id)
     assert completed.status == "succeeded" and completed.result and completed.result.text == EXACT
+
+
+@pytest.mark.asyncio
+async def test_a01_submit_on_0133_schema_creates_queued_receipt(store: Any) -> None:
+    await a01_account(store)
+    token = await credential(store)
+    async with store() as session:
+        receipt = await run_jobs.submit_job(
+            session, request(slug=A01_ADMISSION_SLUG), token.id
+        )
+        rows = list(await session.scalars(select(VideoStageJob)))
+    assert receipt.status == "queued" and len(rows) == 1
+    assert rows[0].id == receipt.id
+
+
+@pytest.mark.asyncio
+async def test_a01_held_token_blocks_new_queue_and_idempotent_requeue(
+    store: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    await a01_account(store)
+    token = await credential(store)
+    original = request(slug=A01_ADMISSION_SLUG)
+    async with store() as session:
+        await session.execute(
+            text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.commit()
+        receipt = await run_jobs.submit_job(session, original, token.id)
+        await session.execute(
+            text("UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"),
+            {"slug": A01_ADMISSION_SLUG, "token": str(uuid4())},
+        )
+        await session.commit()
+
+    scheduled: list[UUID] = []
+    monkeypatch.setattr(
+        run_jobs,
+        "_schedule",
+        lambda job_id, *, queued: scheduled.append(job_id),
+    )
+    async with store() as session:
+        with pytest.raises(StageFailed) as denied:
+            await run_jobs.submit_job(
+                session, request(slug=A01_ADMISSION_SLUG), token.id
+            )
+    assert denied.value.code == "video_budget_admission_held"
+    async with store() as session:
+        duplicate = await run_jobs.submit_job(session, original, token.id)
+        polled = await run_jobs.poll_job(session, receipt.id, token.id, receipt.input_hash)
+        rows = list(await session.scalars(select(VideoStageJob)))
+    assert duplicate.id == polled.id == receipt.id
+    assert duplicate.status == polled.status == "queued"
+    assert len(rows) == 1 and scheduled == []
+
+    # An unrelated video retains its normal queue path while A01 is fenced.
+    async with store() as session:
+        other = await run_jobs.submit_job(session, request(slug="another-video"), token.id)
+    assert other.status == "queued" and scheduled == [other.id]
+
+    async with store() as session:
+        await session.execute(
+            text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+            {"slug": A01_ADMISSION_SLUG},
+        )
+        await session.commit()
+    async with store() as session:
+        resumed = await run_jobs.submit_job(session, original, token.id)
+    assert resumed.id == receipt.id and scheduled == [other.id, receipt.id]
+
+
+@pytest.mark.asyncio
+async def test_startup_skips_a01_queued_receipt_during_admission_hold(
+    store: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    await a01_account(store)
+    token = await credential(store)
+    async with store() as session:
+        await session.execute(
+            text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.commit()
+        a01 = await run_jobs.submit_job(session, request(slug=A01_ADMISSION_SLUG), token.id)
+        other = await run_jobs.submit_job(session, request(slug="another-video"), token.id)
+        await session.execute(
+            text("UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"),
+            {"slug": A01_ADMISSION_SLUG, "token": str(uuid4())},
+        )
+        await session.commit()
+    scheduled: list[UUID] = []
+    monkeypatch.setattr(
+        run_jobs,
+        "_schedule",
+        lambda job_id, *, queued: scheduled.append(job_id),
+    )
+    cleanup = AsyncMock()
+    monkeypatch.setattr(run_jobs, "engine", SimpleNamespace(dispose=cleanup))
+    assert await run_jobs.recover_pending() == 1
+    assert scheduled == [other.id] and a01.id not in scheduled
+    cleanup.assert_awaited_once()
 
 
 @pytest.mark.asyncio
@@ -664,6 +772,186 @@ async def test_concurrent_submits_share_one_receipt_on_postgresql(
             await session.execute(delete(VideoStageJob).where(VideoStageJob.token_id == token.id))
             await session.execute(delete(VideoToolToken).where(VideoToolToken.id == token.id))
             await session.commit()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a01_queue_admission_serializes_both_lock_orders_on_postgresql(
+    monkeypatch: pytest.MonkeyPatch, postgres_engine: None
+) -> None:
+    del postgres_engine
+    async with engine.begin() as connection:
+        column_exists = await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in inspect(sync).get_columns("video_pilot_budgets")}
+        )
+        if not column_exists:
+            await connection.execute(
+                text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token UUID")
+            )
+        previous = (
+            await connection.execute(
+                text("SELECT admission_token FROM video_pilot_budgets WHERE slug=:slug"),
+                {"slug": A01_ADMISSION_SLUG},
+            )
+        ).first()
+        if previous is None:
+            await connection.execute(
+                text("INSERT INTO video_pilot_budgets (slug, limit_usd) VALUES (:slug, 25)"),
+                {"slug": A01_ADMISSION_SLUG},
+            )
+        else:
+            await connection.execute(
+                text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": A01_ADMISSION_SLUG},
+            )
+
+    token = await credential(SessionFactory)
+    monkeypatch.setattr(run_jobs, "_schedule", lambda *_args, **_kwargs: "queued")
+    monkeypatch.setattr(run_jobs, "enforce_named_rate_limit", AsyncMock())
+    monkeypatch.setattr(run_jobs, "load_runtime_settings", AsyncMock(return_value=Settings()))
+    monkeypatch.setattr(
+        automation_settings,
+        "settings_row",
+        AsyncMock(return_value=VideoAutomationSettings(enabled=True)),
+    )
+    monkeypatch.setattr(automation_settings, "remember_prompt", AsyncMock())
+    monkeypatch.setattr(
+        run_jobs,
+        "prepare_stage",
+        AsyncMock(return_value=("anthropic", "writer-v1", usage(), False)),
+    )
+    reached_gate = asyncio.Event()
+    real_gate = run_jobs._queue_admission_open
+
+    async def witnessed_gate(session: AsyncSession, slug: str) -> bool:
+        reached_gate.set()
+        return await real_gate(session, slug)
+
+    monkeypatch.setattr(run_jobs, "_queue_admission_open", witnessed_gate)
+    token_written, finish_token = asyncio.Event(), asyncio.Event()
+
+    async def arm_first() -> None:
+        async with SessionFactory() as session:
+            await session.scalar(
+                select(VideoPilotBudget)
+                .where(VideoPilotBudget.slug == A01_ADMISSION_SLUG)
+                .with_for_update()
+            )
+            await session.execute(
+                text(
+                    "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                    "WHERE slug=:slug"
+                ),
+                {"slug": A01_ADMISSION_SLUG, "token": str(uuid4())},
+            )
+            token_written.set()
+            await finish_token.wait()
+            await session.commit()
+
+    async def submit(body: StageJobIn) -> Any:
+        async with SessionFactory() as session:
+            return await run_jobs.submit_job(session, body, token.id)
+
+    first = request(slug=A01_ADMISSION_SLUG)
+    arm_task: asyncio.Task[None] | None = None
+    denied_task: asyncio.Task[Any] | None = None
+    inserted_task: asyncio.Task[Any] | None = None
+    attempt: asyncio.Task[bool] | None = None
+    finish_submit = asyncio.Event()
+    try:
+        arm_task = asyncio.create_task(arm_first())
+        await asyncio.wait_for(token_written.wait(), timeout=5)
+        denied_task = asyncio.create_task(submit(first))
+        await asyncio.wait_for(reached_gate.wait(), timeout=5)
+        await asyncio.sleep(0.05)
+        assert not denied_task.done(), "submission must wait on the held A01 row"
+        finish_token.set()
+        await asyncio.wait_for(arm_task, timeout=5)
+        with pytest.raises(StageFailed) as denied:
+            await asyncio.wait_for(denied_task, timeout=5)
+        assert denied.value.code == "video_budget_admission_held"
+        async with SessionFactory() as session:
+            assert await session.scalar(
+                select(VideoStageJob.id).where(
+                    VideoStageJob.token_id == token.id,
+                    VideoStageJob.request_key == first.request_key,
+                )
+            ) is None
+
+        async with engine.begin() as connection:
+            await connection.execute(
+                text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": A01_ADMISSION_SLUG},
+            )
+        # In the reverse order, an in-flight queued insert retains the same row
+        # lock until commit. A token attempt can then observe and refuse that row.
+        reached_prompt = asyncio.Event()
+
+        async def paused_prompt(*_args: object, **_kwargs: object) -> None:
+            reached_prompt.set()
+            await finish_submit.wait()
+
+        monkeypatch.setattr(automation_settings, "remember_prompt", paused_prompt)
+        second = request(slug=A01_ADMISSION_SLUG)
+        inserted_task = asyncio.create_task(submit(second))
+        await asyncio.wait_for(reached_prompt.wait(), timeout=5)
+
+        async def token_attempt() -> bool:
+            async with SessionFactory() as session:
+                await session.scalar(
+                    select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == A01_ADMISSION_SLUG)
+                    .with_for_update()
+                )
+                queued = await session.scalar(
+                    select(VideoStageJob.id).where(
+                        VideoStageJob.token_id == token.id,
+                        VideoStageJob.request_key == second.request_key,
+                        VideoStageJob.status == "queued",
+                    )
+                )
+                return queued is None
+
+        attempt = asyncio.create_task(token_attempt())
+        await asyncio.sleep(0.05)
+        assert not attempt.done(), "token attempt must wait for queued commit"
+        finish_submit.set()
+        inserted = await asyncio.wait_for(inserted_task, timeout=5)
+        assert inserted.status == "queued"
+        assert await asyncio.wait_for(attempt, timeout=5) is False
+    finally:
+        finish_token.set()
+        finish_submit.set()
+        for task in (arm_task, denied_task, inserted_task, attempt):
+            if task is not None and not task.done():
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+        async with SessionFactory() as session:
+            await session.execute(delete(VideoStageJob).where(VideoStageJob.token_id == token.id))
+            await session.execute(delete(VideoToolToken).where(VideoToolToken.id == token.id))
+            await session.commit()
+        async with engine.begin() as connection:
+            if previous is None:
+                await connection.execute(
+                    text("DELETE FROM video_pilot_budgets WHERE slug=:slug"),
+                    {"slug": A01_ADMISSION_SLUG},
+                )
+            else:
+                await connection.execute(
+                    text(
+                        "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                        "WHERE slug=:slug"
+                    ),
+                    {
+                        "slug": A01_ADMISSION_SLUG,
+                        "token": str(previous[0]) if previous[0] is not None else None,
+                    },
+                )
+            if not column_exists:
+                await connection.execute(
+                    text("ALTER TABLE video_pilot_budgets DROP COLUMN admission_token")
+                )
 
 
 def test_hash_is_order_independent_and_includes_entire_source() -> None:

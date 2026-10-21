@@ -53,10 +53,9 @@ def schema_is_current(current_revision: str | None) -> bool:
     expected = expected_schema_revision()
     if current_revision == expected:
         return True
-    # This 0132 release is the rollback target for the reviewed, additive 0133
-    # story-budget migration. Production migrates before switching application
-    # containers and does not downgrade the database when rolling them back.
-    return (
-        expected == "0132_video_pilot_budget"
-        and current_revision == "0133_story_followon_budget"
-    )
+    # Each reviewed successor is additive. Production migrates before switching
+    # application containers and leaves the database ahead on application rollback.
+    return (expected, current_revision) in {
+        ("0132_video_pilot_budget", "0133_story_followon_budget"),
+        ("0133_story_followon_budget", "0134_a01_admission_fence"),
+    }
