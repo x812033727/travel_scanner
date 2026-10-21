@@ -26,6 +26,18 @@ def test_a_story_title_carries_its_story_tag_before_the_captions_tag_once() -> N
     assert requests.captioned("Wheels | Brand Story | CC字幕", "zh-TW", story=True) == (
         "Wheels｜品牌故事｜CC字幕"
     )
+    # A title in one of the five that ends with a combined dub and subtitle segment keeps it,
+    # and the story tag goes just before it, once.
+    dubbed = "Por que as rodas demoraram｜Dublado + Legendado"
+    assert requests.captioned(dubbed, "pt", story=True) == (
+        "Por que as rodas demoraram｜História de marca｜Dublado + Legendado"
+    )
+    assert requests.captioned(
+        requests.captioned(dubbed, "pt", story=True), "pt", story=True
+    ) == "Por que as rodas demoraram｜História de marca｜Dublado + Legendado"
+    assert requests.captioned(dubbed, "pt") == dubbed
+    long_dubbed = "a" * (requests.TITLE_MAX_CHARS - len("｜Dub + Sub Indo")) + "｜Dub + Sub Indo"
+    assert requests.captioned(long_dubbed, "id", story=True) == long_dubbed
     # The other videos' titles do not change.
     assert requests.captioned("輪子行李箱", "zh-TW") == "輪子行李箱｜CC字幕"
     # Every language a video may have names its own tag.

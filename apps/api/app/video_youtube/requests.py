@@ -137,16 +137,22 @@ def captioned(title: str, language: str, *, story: bool = False) -> str:
     A tag already there, in any language or spacing, is replaced by this language's. When the
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
     not fit, the full tag stays so the length check says by how much the title is over. A title in
-    es, pt, id, vi or th that already ends with a combined segment ("Dub + Sub Indo") is left as
-    it is.
+    es, pt, id, vi or th that already ends with a combined segment ("Dub + Sub Indo") keeps it; a
+    brand story's takes its story tag just before that segment, when the title still fits.
     """
     bare = title.rstrip()
-    if (
-        language in ADDED_LOCALES
-        and _COMBINED_TAIL.search(bare)
-        and len(bare) <= TITLE_MAX_CHARS
-    ):
-        return bare
+    combined = _COMBINED_TAIL.search(bare) if language in ADDED_LOCALES else None
+    if combined and len(bare) <= TITLE_MAX_CHARS:
+        if not story:
+            return bare
+        head, tail = bare[: combined.start()], bare[combined.start() :]
+        while True:
+            stripped = _STORY_TAIL.sub("", head)
+            if stripped == head:
+                break
+            head = stripped
+        tagged = f"{head.rstrip()}{STORY_TAGS.get(language, STORY_TAGS['en'])}{tail}"
+        return tagged if len(tagged) <= TITLE_MAX_CHARS else bare
     if story:
         bare = _story_titled(bare, language)
     while True:
