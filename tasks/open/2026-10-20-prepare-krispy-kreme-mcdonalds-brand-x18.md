@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-krispy-kreme-mcdonalds-brand-x18
 title: Prepare Krispy Kreme McDonald’s brand-story X18
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-krispy-v7-author
-claimed_at: 2026-10-21T00:42:21Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:40:36Z
 completed_at:
 branch: codex/brand-story-krispy-kreme-x18
