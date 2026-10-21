@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-produce-lululemon-black-luon-x17-preproduction
 title: Produce Lululemon black Luon X17 preproduction package
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-root-source-audit
+claimed_at: 2026-10-20T23:41:52Z
 created_at: 2026-10-20T22:21:12Z
 completed_at:
 branch: codex/brand-story-lululemon-x17
@@ -39,7 +39,8 @@ The approved X17 topic needs a source-bound preproduction package before indepen
 - [x] Revise to v6, rebuild all derived files and freeze exact SHA with author checks.
 - [x] Obtain new same-SHA source and dual-blind review on v6; the common repetition finding holds the narrative.
 - [x] Revise to v7, rebuild derived files and freeze exact SHA with author checks.
-- [ ] Obtain new same-SHA source and dual-blind narrative passes before a reviewable PR.
+- [x] Obtain new same-SHA source audit and two fresh blind ballots on v7; fact PASS, shared narrative Q8/Q13 HOLD.
+- [ ] Revise the shared v7 narrative failures in v8, re-freeze and obtain a new source PASS and two fresh blind ballots before a reviewable PR.
 
 ## How to verify
 
@@ -70,3 +71,5 @@ V6 [author response](../../docs/videos/story-everyday-lululemon-x17/reviews/v6-a
 V6 independent [SEC audit](../../docs/videos/story-everyday-lululemon-x17/reviews/script-source-audit-v6-independent.md) re-fetched all six necessary originals with identical bytes/SHA and passed the frozen lines, cards, Shorts and publishing scope. New [blind A](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-a-v6-independent.md) and [blind B](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-b-v6-independent.md) each scored 7/10 and both marked mandatory Q8 **No**: A cites adjacent `x170518–519` repeating website conversion and order-value falls; B cites `x170526` repeating the estimate-vs-actual caveat and `x170630` replaying April findings despite the opening callback. B also marked Q13 No for `x170422–423` staffing-report detour; A otherwise passed required questions. Both Shorts stand alone on paper. Thus v6 narrative is **HOLD**; v7 should remove those three repeated passages and fold/drop the staffing lines while preserving the product/test/accounting spine. Then freeze, re-audit and use two genuinely new first-blind readers. No paid media, official animations, finished film, upload, real links or PR exists for X17.
 
 V7 [author response](../../docs/videos/story-everyday-lululemon-x17/reviews/v7-author-response.md) removes the shared Q8 repetitions and B's Q13 staffing detour, sharpens the opening fabric-versus-finished-garment question, and makes the fitting-room illustration explicitly hypothetical. The frozen SHA-256 values are `video.json` `206ac3e85da49521a7b09a5bc6b8ba3bb4a4de92d5f74e2ebef7c03011ba7983`, `shorts.json` `8ce8f5995b08e94ed9e864ada67233af1fd1b1aaf2311e82974ad339c5961915`, source matrix `96f92bfd151b6d201fddf60a3f5579b8de68250cf80d9651c1d7fc7e0fb1bb3a`, narration `26fcf907de7f2a95686d675cb3fc974e450b83fac416cb04f72b2891302003e2`, and visual plan `b1d4836ca314e4086d4c015cab72804f780d3dadb74245452e4e0d3929019230`. Author compiler yields 115 lines, 100 still shots, eight cards, 17 declared loops, an 185-visible-character condensed opening and 2,478 Han/digit substantive body. Main lint has 0 errors/0 warnings, both separate Short schema/source checks and episode links pass, docs-video tests pass 236/236, task-board check exits 0 with unrelated older warnings, and `git diff --check` is clean. These are author-side checks only; independent SEC and two fresh blind ballots must evaluate these exact v7 files. Actual TTS duration, official 5/21-second bookends, rendered MP4, final clickable links and costs remain unmeasured; no paid media, upload, push or PR has occurred for X17.
+
+V7 [independent SEC audit](../../docs/videos/story-everyday-lululemon-x17/reviews/script-source-audit-v7-independent.md) re-downloaded S1–S5/S6a with matching raw bytes/SHA and passed the frozen v7 lines, cards, Shorts and publishing limits. Two genuinely new first readers [A](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-a-v7-final-independent.md) / [B](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-b-v7-final-independent.md) each scored 7/10 and **both answered required Q8/Q13 No**, so the same-hash narrative is **HOLD**. A cites `x170305` repeating the opening withdrawal without a named callback, B cites `x170219` repeating `x170216`'s sample-versus-garment conclusion three lines later; both identify `x170518–519`'s website-traffic question after the company revenue contrast is already answered as a detached channel-metrics detour. Both Shorts stand alone on paper, with advice to make Short 2's context/payoff more explicit. V8 should repair these specific locations without padding or losing the body-length paper floor, rebuild derived files and repeat independent review. No measured TTS, paid media, official bookends, MP4, true platform links or PR exists for X17.
