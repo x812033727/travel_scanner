@@ -1,6 +1,6 @@
 # X17｜Lululemon 黑 Luon 褲撤貨：離線前製交接
 
-**狀態：v9 已完成作者修訂，待新 SHA 的獨立 SEC 查核與兩位全新敘事盲讀。** 這是品牌故事額外系列第 17 支的可重建工作包，尚未生成、配音或發布。主線跟著**同一條無標誌示意黑褲**，從布樣測試、三月撤貨、四月多因素調查到季度存貨帳，再問隔年公告能否結算它的少賣額。[v8 獨立來源審核](reviews/script-source-audit-v8-independent.md)通過舊 SHA 的事實，但兩位新[盲讀 A](reviews/blind-a-v8-independent.md)／[盲讀 B](reviews/blind-b-v8-independent.md)都因重述退件，A 另指出年度比較離題與 Short 2 範圍不明；[v9 作者修訂索引](reviews/v9-author-response.md)記錄定點修正。舊票都不核准新 SHA。
+**狀態：v9 事實通過、敘事 HOLD。** [v9 獨立 SEC 查核](reviews/script-source-audit-v9-independent.md)核對六份原件和部分黑色 Luon 褲的精確範圍；兩位新首讀者 [A](reviews/blind-a-v9-independent.md)／[B](reviews/blind-b-v9-independent.md)都對必答 Q8 判 No，指出布料／版型解釋和少賣後果各有未標記的重述。須再修稿、凍結新 SHA 並重做來源與雙盲票。這是品牌故事額外系列第 17 支的可重建工作包，尚未生成、配音或發布。主線跟著**同一條無標誌示意黑褲**，從布樣測試、三月撤貨、四月多因素調查到季度存貨帳，再問隔年公告能否結算它的少賣額。[v9 作者修訂索引](reviews/v9-author-response.md)記錄本輪已完成的定點修正。
 
 六章 [Treatment](treatment.md)、[編輯 brief](brief.md)、[逐句母稿](drafts/narration.md)、[主片可讀稿](script.md) 對位 [主片 schema](video.json)。[`source-matrix.md`](source-matrix.md) 收六份**成片可讀** SEC 原始公告／申報的 URL、原始 bytes、SHA-256 和口徑；S7a 與兩份長 10-K 僅作深入審稿補充。逐句作者標記在 [`line-source-matrix.md`](line-source-matrix.md)。兩支不同主題、各 8 拍的 [Shorts schema](shorts.json)、[可讀稿](shorts-script.md)、[來源矩陣](shorts-source-matrix.md) 與 [9:16 裁切計畫](shorts-portrait-plan.md) 同包。完整 16:9 逐鏡設計在 `video.json` 及 [`visual-plan.md`](visual-plan.md)；[US$25 全項試算](production-quote.md) 與 [正式機／連結交接](publishing-handoff.md) 不構成付費或上架授權。
 
