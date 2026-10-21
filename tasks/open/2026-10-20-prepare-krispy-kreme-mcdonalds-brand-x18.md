@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-krispy-kreme-mcdonalds-brand-x18
 title: Prepare Krispy Kreme McDonald’s brand-story X18
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-krispy-v7-author
+claimed_at: 2026-10-21T00:42:21Z
 created_at: 2026-10-20T22:40:36Z
 completed_at:
 branch: codex/brand-story-krispy-kreme-x18
@@ -45,7 +45,8 @@ The new twenty-film brand-story series needs a reviewable X18 about the Krispy K
 - [x] Obtain a new exact-SHA SEC audit and two fresh first-blind reviews on v5; factual PASS, shared narrative Q4/Q7/Q8/Q13 HOLD.
 - [x] Revise the shared v5 narrative failures in v6 and re-freeze a new author candidate.
 - [x] Obtain a fresh exact-SHA v6 fact audit and two new blind votes; source passed, but both readers held Q8/Q13.
-- [ ] Repair the shared v6 Q8/Q13 failures in a frozen v7 and obtain another exact-SHA source audit and two genuinely new blind votes before PR.
+- [x] Repair the shared v6 Q8/Q13 failures in a frozen v7 author package.
+- [ ] Obtain another exact-SHA source audit and two genuinely new blind votes before PR.
 
 ## How to verify
 
@@ -89,3 +90,5 @@ v5 [independent SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/rev
 v6 author handoff: [response](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/author-response-v6.md) fixes the pilot-versus-announcement order, removes the flavor list and chapter-summary bridge, asks whether the global point total consists only of cooperation restaurants and immediately names other channels, and replaces the late repeated denominator warning with November's new retail-route direction. S2's LA/DC logistics pilots, October 9 whole-network carrier RFP, and partial offsets to U.S. start-up costs plus S4's broader U.S. outsourced-logistics preparation add sourced operational movement; neither network change proves the McDonald's unit economics. Frozen v6 `video.json` SHA-256 `ef6ab596f39945a59181f489bc28721eee6d16fb84d715aa7cfa9b51a31433b8`; `shorts.json` SHA-256 `b99a3ab894146a288b06fc9d24644d42b2b755d6e4ddd1eadcfe1341d610ad6d`. Opening 191 written chars, body 2,533 written / 2,475 lint-spoken units (~8:50 @280, ~8:15 @300 on paper); 105 lines, 16 loops, 97 stills, four native cards, two independent eight-beat Shorts of 198/190 chars. Author compose/lint 0/0, both individual Short schema/source validations, episode Shorts check, docs-video tests 236/236, task check exit 0 and diff check passed. On 2026-10-21 SEC spot-checks S1/S2/S4/S7 raw responses changed by +9 bytes each in the injected trailing script versus 10/20 snapshots; fresh fact audit must record new response hashes and verify document body, not blindly require old raw SHA. **No v6 independent fact or dual-blind narrative PASS exists.** True TTS runtime, official media, US$25 price/ledger, MP4 and real YouTube links remain separate gates.
 
 v6 [independent SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/script-source-audit-v6-independent.md) re-fetched all eight raw originals, documented their +9-byte rotating SEC script URLs and verified that normalizing only that tag reconstructs the 10/20 snapshots byte for byte; factual claims passed on the exact v6 hashes. Two genuinely fresh [blind A](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-a-v6-independent.md) and [blind B](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-b-v6-independent.md) both marked mandatory **Q8 and Q13 NO**: `x180407` restates `x180406`'s still-seeking-profitability point without a new event, and `x180316–319` opens a global all-channel point-of-access count aside that does not advance the daily-delivery unit-cost thread. Both Shorts stand alone on paper; other required narrative questions passed. Thus v6 narrative is **HOLD**. v7 should remove the repeated prompt and move the global total to supporting material/Short 2, replacing lost runtime with source-backed actions on the tray's route; it needs another exact-SHA audit and two new first readers. No actual media or YouTube link exists for X18.
+
+v7 author handoff: [response](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/author-response-v7.md) removes `x180407`'s repeated profit-model clause and the four-line main-film 17,557 global point-count aside. The S3-supported replacement asks where 2024 Q4 US$33.9m capital expenditure mainly went, then answers: the **overall U.S. DFD hub-and-spoke network**, not McDonald's per-store cost. The main story's unresolved per-store ledger remains open to the June company explanation. Short 2 keeps its global totals because its standalone question is the quarter-end denominator; all 16 Short shot bindings remain distinct. Frozen v7 `video.json` SHA-256 `b62883b6acc5d486c7a329e8458f03b0e070b04b51f547f1fb410abafeb2100f`; `shorts.json` `53423ea2bed98681476de0cff436ff1543c3ac9a98a479c1baff410cc84acfd9`. Opening 191 written chars, substantive body 2,474 written / 2,419 lint-spoken units (~8:04 @300/min on paper); 103 lines, 17 loops, 95 stills, four native cards, two eight-beat Shorts of 198/190 chars. Author compose/lint 0/0, two individual Short source/schema validators, episode Shorts check, docs-video tests 236/236, task check exit 0 and diff check passed. **No v7 independent fact or dual-blind narrative PASS exists.** Actual TTS duration, official media, current US$25 price/ledger, MP4 and real YouTube links remain separate gates. Release this task after the author commit so the next reviewers can claim their own scopes.

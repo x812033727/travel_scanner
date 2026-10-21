@@ -1,6 +1,6 @@
 # X18 Krispy Kreme｜兩支 Shorts 的逐拍 9:16 規劃
 
-離線前製，綁定主片 `ef6ab596f39945a59181f489bc28721eee6d16fb84d715aa7cfa9b51a31433b8` 與 Shorts `b99a3ab894146a288b06fc9d24644d42b2b755d6e4ddd1eadcfe1341d610ad6d`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
+離線前製，綁定主片 `b62883b6acc5d486c7a329e8458f03b0e070b04b51f547f1fb410abafeb2100f` 與 Shorts `53423ea2bed98681476de0cff436ff1543c3ac9a98a479c1baff410cc84acfd9`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
 
 每拍從一張不同的主片 1920×1080 插畫 `shot` 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點落在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。所有品牌名、年份與數字均以後製原生字卡排版，不請 image-01 畫字。
 
@@ -10,9 +10,9 @@
 | --- | --- | --- | --- | --- |
 | 1／1 | `x18-b01-s01` | `x=656, y=0` | plain doughnut tray beside unmarked breakfast counter | 試點超預期？ |
 | 1／2 | `x18-b02-s03` | `x=640, y=0` | small group of storefronts on simple map | 肯塔基 160 家 |
-| 1／3 | `x18-b03-s16` | `x=672, y=0` | many storefront dots spread on blank map | 計畫 2026 全國 |
+| 1／3 | `x18-b02-s13` | `x=672, y=0` | many storefront dots spread on blank map | 計畫 2026 全國 |
 | 1／4 | `x18-b02-s04` | `x=660, y=0` | sealed plain doughnut trays beside a kitchen door | 每天送三款 |
-| 1／5 | `x18-b03-s22` | `x=635, y=0` | growing map with calendar page curling | 約 2,400 家 |
+| 1／5 | `x18-b03-s20` | `x=635, y=0` | growing map with calendar page curling | 約 2,400 家 |
 | 1／6 | `x18-b05-s05` | `x=656, y=0` | two unsigned business ledgers side by side | 麥當勞說符合期待 |
 | 1／7 | `x18-b05-s11` | `x=680, y=0` | unit-cost bars beside blank demand marks | 成本對不上需求 |
 | 1／8 | `x18-b06-s07` | `x=650, y=0` | delivery route ends at closed generic counter | 2025/7/2 終止 |
@@ -21,7 +21,7 @@
 | 2／3 | `x18-b06-s03` | `x=656, y=0` | blank map with mixed retail and highlighted breakfast counters | 全球 18,113 點／18,113／2025-06-29｜全球銷售點；仍含約 2,400 合作店 |
 | 2／4 | `x18-b06-s08` | `x=645, y=0` | single route fades from anonymous breakfast map | 7/2 才終止 |
 | 2／5 | `x18-b06-s13` | `x=670, y=0` | closed route chart beside an opening later-quarter folder | Q3 全球點位／14,851／2025-09-28｜全球銷售點；所有通路 |
-| 2／6 | `x18-b03-s18` | `x=656, y=0` | different generic storefront silhouettes on map | 差額不能全扣 |
+| 2／6 | `x18-b06-s16` | `x=656, y=0` | different generic storefront silhouettes on map | 差額不能全扣 |
 | 2／7 | `x18-b06-s14` | `x=685, y=0` | new quarter-end map with fewer dots | 註腳記退出 |
 | 2／8 | `x18-b06-s17` | `x=640, y=0` | unmarked breakfast counter and folded route map, no tray remains | 看統計日 |
 

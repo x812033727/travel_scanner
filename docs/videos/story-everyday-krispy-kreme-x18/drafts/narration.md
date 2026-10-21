@@ -25,7 +25,7 @@ x180210 | S1 | 三月二十六日，兩家公司宣布分階段推向全國。 |
 x180211 | S1 | 起跑放在那年下半年，依不同市場逐區展開。 | calendar blocks fill one region at a time
 x180212 | S1 | 公告預期，到二〇二六年底進入全國參與門市。 | unfinished map with distant blank regions
 x180213 | S1 | 宣布之後，原本的肯塔基試點店仍會繼續供應；新增城市才是另一段路。 | one lit cluster beside distant empty storefront outlines
-x180214 | S1 | 公司還預期，合作能讓自己的全球銷售點不只翻倍；這是遠景，不是三月的實績。 | expanding blank points on abstract map
+x180214 | S1 | 公司還預期，合作能讓自己的全球銷售點不只翻倍；這是遠景，不是三月的實績。 | many storefront dots spread on blank map, all penciled as a future plan
 x180215 | S1 | Krispy Kreme 執行長說，消費者常問何時能在自己城鎮買到。 | distant plain counter beyond an empty local street
 x180216 | editorial | 跨到下一座城，設備、人手和車線都要跟上；這些準備又會落在哪本帳？ | production room and remote counter separated by route
 x180217 | S1 | Krispy Kreme 原有每日新鮮配送通路，想把新門市接上去。 | anonymous production racks feeding several plain routes
@@ -38,7 +38,7 @@ x180224 | editorial | 計畫可以拉得很長，第一個實際開線的城市�
 ## b03: 新城市開線，年末逾一千九百家
 x180301 | S2 | 開頭那條十月新線，落在芝加哥。 | unmarked city map receives first route
 x180302 | S2 | 洛杉磯、華府的第三方物流試點後，十月九日公司向全國與區域承運商徵案。 | blank carrier proposals beside a broader route map
-x180303 | S2 | 徵案涵蓋超市、便利店和快餐店；這不是麥當勞專用的車隊。 | three different anonymous retail route shapes
+x180303 | S2 | 徵的是每天送新鮮甜甜圈到超市、便利店和快餐店的車線，不是麥當勞專用。 | three different anonymous retail route shapes
 x180304 | S2 | 到十一月季報，公司回頭確認：芝加哥十月已經開線。 | one solid route and two dotted prospective routes
 x180305 | S2 | 同份公告說，俄亥俄與印第安納要在下週接入；那時仍是安排，不是已達門市。 | route pencil points toward two neighboring regions
 x180306 | editorial | 地圖一頭畫已送達的櫃台，另一頭畫預計接入的門市；兩端不能算成同一筆。 | dated but blank report lies over map
@@ -51,11 +51,9 @@ x180312 | S3 | 從十月芝加哥開線到十二月二十九日，年末日曆�
 x180313 | S1,S3 | 每日配送已進入超過一千九百家麥當勞；還記得最初試點嗎？這已超過十倍。 | rows of plain breakfast counters lit in sequence
 x180314 | S3 | 這批門市已經每天接收配送；和先前那張「年底近兩千家」預測，時間不同，不能混成一筆。 | real route crosses an earlier pale pencil sketch
 x180315 | editorial | 餐盤從肯塔基的小群櫃台，移到每天要照路線補貨的一長排早餐線上。 | plain tray moves along a longer route
-x180316 | S3 | 季報另有一張全球銷售點地圖；能把它全當作麥當勞合作店嗎？ | many storefront dots spread on blank map
-x180317 | S3 | 年末全球銷售點合計一萬七千五百五十七個。 | blank global map with native-count placeholder
-x180318 | editorial | 這張全球圖也有其他通路，不能全讀作合作店。 | different generic storefront silhouettes on map
-x180319 | S3 | 報表註腳也明列，剛才那批合作店算在全球總數裡。 | blank footnote block beside mixed storefront silhouettes
-x180320 | editorial | 地圖能算送到多少家，仍算不出每店需求能否攤平每日配送；後一本帳會由誰揭開？ | store grid beside separate unopened cost book
+x180316 | S3 | 第四季，公司投下三千三百九十萬美元資本支出；錢主要流向哪裡？ | an anonymous production hub feeds a widening delivery route
+x180317 | S3 | 公司說，主要投向美國每日配送網的樞紐與支線。 | plain production racks and unmarked loading carts beside a closed cost folder
+x180320 | editorial | 從店數到整體車線投資，開頭那本帳仍沒揭開：每店需求撐得起每日配送嗎？ | store grid beside separate unopened cost book
 x180322 | editorial | 這時餐盤還往外走，時間表也還指向更遠的區域。 | plain tray beside route continuing to blank region
 x180323 | editorial | 走到翌年春天，地圖更滿了，為何筆卻停下來？ | growing map with calendar page curling
 
@@ -66,9 +64,9 @@ x180403 | S4 | 五月八日，公司把部署時程拿來重估。 | folded roll
 x180404 | S4 | 同份公告還說，美國整體物流準備在第二季初委外；這項全網安排不證明合作已算平。 | a broad delivery map beside blank carrier schedule
 x180405 | S4 | 這不是供貨者單方面把地圖摺起來；五月公告說，是和麥當勞一起重估部署時程。 | two blank calendars beside shared map
 x180406 | S4 | 公司說，雙方還在找對參與各方都可獲利的模式；當時沒有說已經算平。 | two separate open ledgers face one tray
-x180407 | editorial | 雙方還在找可獲利的做法；五月眼前先按住的具體動作是什麼？ | lit old counters beside dark new counter slots
+x180407 | editorial | 那張部署時程表，眼前先停下哪一步？ | lit old counters beside dark new counter slots
 x180408 | S4 | 公司當時預期，第二季不再增加合作餐廳。 | next-quarter calendar with empty boxes
-x180409 | editorial | 但這還不是終止：五月按住的是新增門市的預期；原有合作櫃台仍持續供應。 | existing counters remain lit while new slots dark
+x180409 | editorial | 但當時並未宣布終止；原有合作櫃台仍持續供應。 | existing counters remain lit while new slots dark
 x180410 | S4 | 它同時表示，仍相信長期全國擴張有機會。 | unfinished nationwide map left on wall
 x180415 | editorial | 還記得那張二〇二六年底的全國圖嗎？五月沒有給它新的開線時間。 | distant calendar recedes behind an unsigned map
 x180416 | S4 | 五月文件還沒攤開每店需求與配送成本；可獲利模式究竟差在哪，仍沒有答案。 | two still-open blank accounting books
@@ -113,7 +111,7 @@ x180615 | S7 | 第三季一開始，帳上甚至仍有退場後滯留的合作�
 x180616 | editorial | 路線先停，成本卻還在帳上；公司何時才說它退了場？ | closed route chart beside an opening later-quarter folder
 x180618 | S7 | 第三季財報註腳確認，這季退出約兩千四百個麥當勞合作點。 | new quarter-end map with fewer dots
 x180619 | S7 | 到第三季財報公布時，公司才說已移除相關成本。 | a plain delivery cart follows a different retail route
-x180620 | S7 | 十一月公司仍說，美國每日新鮮配送朝可獲利的零售點擴張；這不是麥當勞合作復活。 | an anonymous new retail route beside folded breakfast line
+x180620 | S7 | 十一月公司仍說，美國每日新鮮配送朝可獲利的零售點擴張；這不是麥當勞合作復活。 | different generic storefront silhouettes on map, with a new retail route beside the folded breakfast line
 x180622 | editorial | 最後看回早餐櫃台：示意餐盤曾有路可走，那條合作路已收起。 | unmarked breakfast counter and folded route map, no tray remains
 
 ## outro: 最後三句

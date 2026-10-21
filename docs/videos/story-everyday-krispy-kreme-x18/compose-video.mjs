@@ -132,6 +132,7 @@ const loops = [
   { setup: "x180216", payoff: "x180308", what: "擴張準備費用落在哪本帳" },
   { setup: "x180224", payoff: "x180301", what: "第一條全國路線在哪座城市" },
   { setup: "x180311", payoff: "x180313", what: "近兩千店預測是否達成" },
+  { setup: "x180316", payoff: "x180317", what: "第四季資本主要投往哪張配送網" },
   { setup: "x180320", payoff: "x180513", what: "每店需求與每日配送的帳" },
   { setup: "x180407", payoff: "x180408", what: "重估時眼前先按住的新增動作" },
   { setup: "x180422", payoff: "x180501", what: "六月合作的去向" },
