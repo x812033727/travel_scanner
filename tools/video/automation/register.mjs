@@ -337,8 +337,28 @@ route keeps its condensation and story rules):
   while a summary that retells the body's facts is a recap and stays cut. The outro keeps its three
   sentences; its comment question asks the viewer's own situation (「你平常是還在網頁版問問題，
   還是已經讓它動手？」), never a quiz.
-- The listener answers ten more yes-or-no questions and reports every "yes" for a writer
-  revision: ten consecutive sentences of about the same length; no 「我」 sentence with a number
+- Measurement is evidence, not content (the owner's review of the first tutorial made under
+  these rules, 2026-10-21: 「很無聊，沒什麼內容」; three blind readers had called the same
+  stretches 「像在念量測報表」). The content-value rules require a run behind every outcome; the
+  narration must not tell the making of that evidence. Every chapter teaches at least two moves
+  the viewer can repeat (the sentence to say, the button, the line to write, the mode to pick),
+  each followed by what happens next, told as one run's fact. Sentences of the family 「我跑了
+  三次」「三次都是 3 對 3」「十項過了八項」「被擋下四個指令」「跟沒有一樣」 number at most three in
+  a video, placed only where the result changes what the viewer decides; the rest moves to the
+  card's source field and the description. How a thing was scored, counted or compared never
+  enters the narration. At most two numbers are read aloud per chapter, each followed by what it
+  means to the viewer; the rest stay on cards. One run's result is used once, as the one fact
+  the viewer decides on, not split into three sentences; a control arm (no CLAUDE.md, pasted
+  text, nothing at all) is spoken only where the conclusion would differ, and only as that
+  conclusion. Evidence still backs every outcome, on the card: its source names the run (date,
+  version, id) and the description links the run log; the RUN/CITED label lives on the card.
+  A chapter opens on the viewer's work (「名單來了，先別急著叫它整理」), never on the experiment
+  (「這一次我們跑了三種模式」), and closes on what the viewer meets next, not on the next run.
+  A tutorial made this way runs 12 to 14 minutes.
+- The listener answers eleven more yes-or-no questions and reports every "yes" for a writer
+  revision: a sentence that tells the measuring (how many runs, how many checks passed, the
+  control arm, how it was scored) instead of a move the viewer makes;
+  ten consecutive sentences of about the same length; no 「我」 sentence with a number
   and none admitting an uncertainty; a simile spread into a scene; a chapter opener empty once
   「接下來／現在／好」 is stripped; every chapter the same shape with none opening on a viewer's
   question or a failure; a source or the video's own making spoken; every number from an official
