@@ -1,6 +1,6 @@
 ---
 id: 2026-10-21-episodes-11-15-compilation-intro-outro
-title: 種田娶妻打天下 episodes 11-15 compilation: intro, outro, eight languages, imported
+title: 種田娶妻打天下 compilations 11-30 with the channel mark, episodes 25-30 in eight languages, 1-10 re-made
 status: in-progress
 priority: P2
 area: docs
@@ -25,9 +25,11 @@ CC files on its own timeline and links in every description, imported to /admin/
 ## Checklist
 
 - [x] `compilation["11-15"]` in all eight youtube-locales files, on the 1-5 pattern.
-- [ ] Build: `DUBS=en,ja,ko,es,pt,id,vi,th node compile-dh.mjs 11 15 e011-015.mp4`.
-- [ ] Check the cut, the nine CC files, the eight tracks' length, the links.
-- [ ] `prep-import.mjs 11-15` and `import`; `--languages` once the owner ticks the panel; `--publish` once the cut is approved.
+- [x] Build 11-15 and 16-20; check the cut, the nine CC files, the eight tracks' length, the links; import.
+- [x] Owner 2026-10-21: 16-20, 21-25, 26-30 too; episodes 25-30 get their eight languages first (eight agents, one per language, four at a time): dub.<l>.json, glossary additions, import-folder descriptions; es/pt/id/vi/th episode titles in youtube-locales.
+- [x] Owner 2026-10-21: compilations carry the channel mark (compile-dh.mjs); 1-5 and 6-10, already on YouTube (JdeViV2WyCc, nC_-tNKWd9E), re-made as new videos `-v2` (a YouTube video's file cannot be replaced) and imported.
+- [ ] Build, check and import 21-25 and 26-30.
+- [ ] `--languages` once the owner ticks each new entry's panel; `--publish` once each cut is approved.
 
 ## Notes
 
