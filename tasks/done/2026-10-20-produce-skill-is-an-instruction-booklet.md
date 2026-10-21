@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-produce-skill-is-an-instruction-booklet
 title: Produce Skill is an instruction booklet: write one for the event folder, for non-technical users
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-10-20T19:05:00Z
 created_at: 2026-10-20T19:04:30Z
-completed_at:
+completed_at: 2026-10-21T13:49:22Z
 branch: claude/ai-video-production-520ea2
 depends_on: []
 scope:
@@ -65,3 +65,12 @@ node tools/video/cli.mjs qa --slug claude-skill-manual-event-folder
   two short lines (`Skill\n**是說明書**`) to pass the 24 px rule.
 - The web app's upload steps, plans and sync are CITED only (no login here); the zh-TW help page
   names the menu 「自定義 > 技能」.
+
+## Outcome (2026-10-21, owner review)
+
+Same decision as the beginner guide: the owner found the pair dull, hard to follow and visually
+weak; this 13:12 cut is **not uploaded** and stays as material (the 29 runs, the signup-check
+booklet, the appendix-location and fat-booklet measurements) for a later short "one concept"
+version. Findings and rules: `docs/videos/reference-study-20261021/README.md` §第二輪,
+`teaching-flow.md` §十–§十二. The site project `claude-skill-manual-event-folder` should be marked
+stopped in `/admin/videos` (owner action).

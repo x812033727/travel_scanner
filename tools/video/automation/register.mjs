@@ -364,6 +364,40 @@ route keeps its condensation and story rules):
   question or a failure; a source or the video's own making spoken; every number from an official
   page and none from the video's own runs; no shared-experience joke; 「還記得」 more than five
   times or in a row; a sentence that restates the one before it in other words.
+- Two kinds of tutorial (owner, 2026-10-21, after two 13-minute tutorials made under the rules
+  above were found dull and hard to follow): the short one teaches ONE concept (one file, one
+  mode, one feature) in 6 to 8 minutes with one everyday comparison carried through the whole
+  video, says the title's sentence within the first 15 seconds, names its chapters with the
+  viewer's questions (「一本說明書長怎樣？」「那到底要怎麼用？」) and ends on a one-sentence
+  answer plus a comment question; the long overview (15 to 18 minutes, four basics and one
+  worked example) is made only after a short one has been published and watched. Default to
+  the short kind.
+- Topic first, outline second: before the outline, search YouTube for the same subject (two
+  Traditional Chinese keyword sets) and put the top ten into the brief as a table of title,
+  length, view count, channel subscribers and upload age. Three or more results over 300,000
+  views that are 18 to 45 minutes with a presenter on camera and full desktop recording mean
+  the overview is taken: cut the subject to one concept instead. Borrow the cut and the length
+  of the small channel that scored high, never its content. One search intent per video.
+  Title words the popular ones use: 保姆級、零基礎、非工程師也能上手、不用寫程式、N 分鐘學完、
+  N 種用法、一次講清、還有人不會嗎？ (one set per title, one question mark at most); a timing
+  hook must be real (an anniversary from the official announcement's date, a version from the
+  official changelog, "these weeks" from a dated news item on the site).
+- Pictures, for every tutorial: each state shows ONE thing (a number, an icon with a word, one
+  command line, one rule of a file, one screenshot); a table has at most three rows and two
+  columns; a \`code\` card holds only what the viewer copies, never a log; \`bullets\` reveal one
+  item per state. Every state carries one key sentence (\`data.keys\`, one per state, at most
+  24 characters: the narration's current sentence condensed, drawn on the bottom band for
+  people scrolling with the sound off; CC subtitles are still not burned in). Commands and
+  prompts are typed for real in a \`terminal\` scene (\`data.typing: "human"\`, 12 characters a
+  second, output 3 lines a second), never shown on a \`code\` card, and the narration of that
+  state must outlast the typing; command and output are copied from the run log. At least
+  half of the states hold something that is not text: a built-in icon (\`icon\`), a terminal, an
+  official-page screencast, or a big numeral (\`big\` with \`numeral\`); each part of the concept
+  gets its own icon. A new state every 5 to 8 seconds, never longer than 15. Run codes, file
+  hashes and source stamps (「（p1）」「實跑 2026-10-21｜2.1.295」) never appear in card text or
+  narration: they go in the card's \`source\` field or the description. A short tutorial uses
+  the paper theme (\`theme: "paper"\`); the thumbnail's big words (at most six) add what the
+  title did not say, over a real official page captured by a \`screencast\` scene.
 `.trim();
 
 // What a slides video has to be worth to its viewer, whichever route it takes. The owner's review

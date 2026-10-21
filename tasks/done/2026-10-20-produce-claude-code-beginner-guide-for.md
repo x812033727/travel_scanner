@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-produce-claude-code-beginner-guide-for
 title: Produce Claude Code beginner guide for non-technical users: four basics and a real event folder
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-10-20T17:40:44Z
 created_at: 2026-10-20T17:40:24Z
-completed_at:
+completed_at: 2026-10-21T13:49:18Z
 branch: claude/ai-video-production-520ea2
 depends_on: []
 scope:
@@ -69,3 +69,15 @@ node tools/video/cli.mjs qa --slug claude-code-beginner-event-folder
 - Audio check lesson: 確認信名單 is heard as 確認姓名單 every time; 要寄信的那份名單 passes.
   Attendee names in narration (宋柏均, 劉思妤, 王志明) are misheard; the cards keep the names and
   the narration says the role instead.
+
+## Outcome (2026-10-21, owner review)
+
+The owner watched the 13:20 cut and the Skill pair and said the content was still dull and hard to
+follow, possibly the topic, and the pictures weak; the target is the two reference videos' view
+counts. Decided: this video is **not uploaded**. It stays as material (the event folder, the 18
+`claude -p` runs, g1's self-written CLAUDE.md with the wrong rule 3, the n1/v1/s1 comparison) for
+the short "one concept" tutorials that replace it, starting with 「CLAUDE.md 就是員工守則」.
+Second-round findings (topic crowded by 400k+ presenter videos, every chapter narrating run-log
+detail, 102 states all text cards) are in `docs/videos/reference-study-20261021/README.md`
+§第二輪 and the rules in `teaching-flow.md` §十–§十二. The site project `claude-code-beginner-event-folder`
+should be marked stopped in `/admin/videos` (owner action).
