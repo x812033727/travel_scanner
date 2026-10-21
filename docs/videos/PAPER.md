@@ -28,7 +28,7 @@
 | `theme: "paper"` | 頂層 | 整支套紙底。沒寫＝深色主題，輸出位元組與以前完全一樣 |
 | `keys: ["…", "…"]` | 場景 `data` | 關鍵句帶：**每個渲染狀態一句**（一景一個狀態＋第一句以外每個 `reveal` 一個；第一句的 `reveal` 併進第一個狀態），每句 ≤ 24 個可見字（`**` 不算）、不能換行 |
 | `key: "…"` | 場景 `data` | 只有一個狀態的場景寫這個；跟 `keys` 不能並存 |
-| `numeral: "1"` | `big` 的 `data` | 一到兩位數，畫成「01 ＋ 詞」：數字 420px 用重點色，`text` 在右邊 150px；`kicker`、`sub` 照舊 |
+| `numeral: "1"` | `big` 的 `data` | 一到三位數（「200」也行），畫成「01 ＋ 詞」：數字 420px 用重點色（一位數補零成兩位），`text` 在右邊 150px；`kicker`、`sub` 照舊 |
 | `icon: "folder"` | `big.data`、`steps[].`、`compare.left/right.`、`bullets.items[]`（寫成 `{ "text", "icon" }`） | 十六個名字之一：`folder`、`file`、`document`、`checklist`、`terminal`、`clock`、`person`、`warning`、`book`、`gear`、`search`、`chat`、`globe`、`lock`、`lightning`、`arrow`。`bullets` 的圖示取代序號圓圈；`steps` 畫在 STEP 字下；`compare` 畫在標題前；`big` 畫在詞上方。純字串的 `items` 照舊有效，可逐條出現的數量不變 |
 | `typing: "human"` | `terminal` 的 `data` | 指令每秒 12 字、輸出每秒 3 行真的打出來（沒寫＝原本 0.6 秒內打完）。`render` 先算這個狀態的打字秒數，比旁白估的時長少 0.5 秒以上才放行，否則報「the narration cannot carry the typing」：多講幾句、把輸出拆成更多 `reveal`，或縮短指令 |
 

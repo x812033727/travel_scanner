@@ -621,8 +621,13 @@ test("the big card's numeral draws 01 in the accent colour beside the word, with
   assert.ok(!plain.includes("numeral"));
   big.data.numeral = 12;
   assert.match(slideHtml(big, state()), /<div class="numeral">12<\/div>/, "a number is fine too");
-  big.data.numeral = "123";
-  assert.deepEqual(sceneProblems(big), ["numeral must be one or two digits"]);
+  big.data.numeral = "200";
+  assert.deepEqual(sceneProblems(big), [], "three digits: a line limit, a count");
+  assert.match(slideHtml(big, state()), /<div class="numeral">200<\/div>/);
+  big.data.numeral = "1234";
+  assert.deepEqual(sceneProblems(big), ["numeral must be one to three digits"]);
+  big.data.numeral = "x1";
+  assert.deepEqual(sceneProblems(big), ["numeral must be one to three digits"]);
 });
 
 test("the paper fixture uses every new field and is valid for its templates", () => {
