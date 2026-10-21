@@ -20,7 +20,7 @@ from app.db import get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
-from app.video_budget.models import FOLLOWON_SLUGS
+from app.video_budget.models import FOLLOWON_SLUGS, NEW_BRAND_STORY_SLUGS
 from app.video_budget.service import BudgetError, BudgetSummary, Reservation
 from app.video_media import admin_api, meter
 from app.video_media.jobs import MediaContext
@@ -192,7 +192,7 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "story-conveyor-belt-sushi",
         "story-rolling-suitcase-v2",
         "story-conveyor-belt-sushi-v2",
-    }
+    } | NEW_BRAND_STORY_SLUGS
     assert body["pilot_budgets"]["story-rolling-suitcase"] == {
         "limit_usd": "25.000000",
         "reserved_usd": "1.500000",
@@ -256,10 +256,48 @@ async def test_status_shows_followon_budgets_after_all_five_accounts_exist(
         response = await client.get("/api/v1/video/media/status")
     assert response.status_code == 200, response.text
     budgets = response.json()["pilot_budgets"]
-    assert len(budgets) == 9
+    assert len(budgets) == 14
     assert {slug: budgets[slug]["limit_usd"] for slug in FOLLOWON_SLUGS} == {
         slug: "5" for slug in FOLLOWON_SLUGS
     }
+    assert {slug: budgets[slug]["limit_usd"] for slug in NEW_BRAND_STORY_SLUGS} == {
+        slug: "25.000000" for slug in NEW_BRAND_STORY_SLUGS
+    }
+
+
+@pytest.mark.asyncio
+async def test_status_keeps_pre_0137_schema_readable_while_new_paid_routes_hold(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    previous_summary = vars(admin_api)["summary"]
+
+    async def pending_summary(session: Any, slug: str) -> BudgetSummary:
+        if slug in NEW_BRAND_STORY_SLUGS:
+            raise BudgetError(503, "video_budget_missing_account", "not seeded yet")
+        if slug in FOLLOWON_SLUGS:
+            return BudgetSummary(
+                slug=slug,
+                limit_usd=Decimal("5"),
+                reserved_usd=Decimal("0"),
+                settled_usd=Decimal("0"),
+                remaining_usd=Decimal("5"),
+                uncertain_operations=0,
+                settled_operations=0,
+                released_operations=0,
+                overrun_operations=0,
+                total_over_limit=False,
+                over_limit_usd=Decimal("0"),
+            )
+        return await previous_summary(session, slug)
+
+    monkeypatch.setattr(admin_api, "summary", pending_summary)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token(), schema_revision="0136_video_languages_eight")),
+        base_url="http://t",
+    ) as client:
+        response = await client.get("/api/v1/video/media/status")
+    assert response.status_code == 200
+    assert set(response.json()["pilot_budgets"]).isdisjoint(NEW_BRAND_STORY_SLUGS)
 
 
 @pytest.mark.asyncio
@@ -281,6 +319,11 @@ async def test_status_shows_followon_budgets_after_all_five_accounts_exist(
             "video_budget_missing_account",
             "0133_story_followon_budget",
         ),
+        (
+            "story-new-20261020-muji-no-brand",
+            "video_budget_missing_account",
+            "0137_brand_story_batch_budget",
+        ),
     ],
 )
 async def test_status_never_hides_missing_legacy_or_invalid_followon_account(
@@ -295,6 +338,20 @@ async def test_status_never_hides_missing_legacy_or_invalid_followon_account(
     async def broken_summary(session: Any, checked_slug: str) -> BudgetSummary:
         if checked_slug == slug:
             raise BudgetError(503, code, "account not ready")
+        if checked_slug in FOLLOWON_SLUGS and schema_revision != "0132_video_pilot_budget":
+            return BudgetSummary(
+                slug=checked_slug,
+                limit_usd=Decimal("5"),
+                reserved_usd=Decimal("0"),
+                settled_usd=Decimal("0"),
+                remaining_usd=Decimal("5"),
+                uncertain_operations=0,
+                settled_operations=0,
+                released_operations=0,
+                overrun_operations=0,
+                total_over_limit=False,
+                over_limit_usd=Decimal("0"),
+            )
         return await previous_summary(session, checked_slug)
 
     monkeypatch.setattr(admin_api, "summary", broken_summary)

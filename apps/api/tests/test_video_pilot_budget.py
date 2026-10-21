@@ -27,6 +27,7 @@ from app.video_budget import recovery, service
 from app.video_budget.models import (
     FOLLOWON_LIMIT_USD,
     FOLLOWON_SLUGS,
+    NEW_BRAND_STORY_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
@@ -150,7 +151,11 @@ async def test_cross_stage_reservations_hold_exactly_at_boundary(
 async def test_v2_remakes_have_independent_accounts_and_legacy_slugs_stay_protected(
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
-    assert PILOT_SLUGS == {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG} | FOLLOWON_SLUGS
+    assert PILOT_SLUGS == (
+        {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG}
+        | FOLLOWON_SLUGS
+        | NEW_BRAND_STORY_SLUGS
+    )
     for slug in (SLUG, OTHER_SLUG, V2_SLUG):
         hold = await _reserve(sessions, "full-film", "25", slug=slug)
         assert hold is not None and hold.dispatch_allowed
@@ -354,6 +359,77 @@ async def test_followon_accounts_fail_closed_until_each_usd_5_row_exists(
             Decimal("4.5"),
             Decimal("0.5"),
         )
+
+
+@pytest.mark.asyncio
+async def test_new_brand_stories_require_separate_usd_25_accounts_for_paid_stages(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    assert NEW_BRAND_STORY_SLUGS == {
+        "story-new-20261020-muji-no-brand",
+        "story-new-20261020-ikea-flatpack",
+        "story-new-20261020-garmin-after-smartphones",
+        "story-new-20261020-uniqlo-everyday-clothes",
+        "story-new-20261020-giant-own-name",
+    }
+    for slug in NEW_BRAND_STORY_SLUGS:
+        assert PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
+        with pytest.raises(AppError) as missing:
+            await _reserve(sessions, "first", "1", slug=slug)
+        assert missing.value.code == "video_budget_missing_account"
+
+    async with sessions() as session:
+        session.add_all(
+            VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD)
+            for slug in NEW_BRAND_STORY_SLUGS
+        )
+        await session.commit()
+    for slug in NEW_BRAND_STORY_SLUGS:
+        for operation, category, price in (
+            ("image", "image", "10"),
+            ("speech", "speech", "10"),
+            ("judge", "judge", "5"),
+        ):
+            hold = await _reserve(sessions, operation, price, slug=slug, category=category)
+            assert hold is not None and hold.dispatch_allowed
+        with pytest.raises(AppError) as exhausted:
+            await _reserve(sessions, "overflow", "0.000001", slug=slug)
+        assert exhausted.value.code == "video_budget_exhausted"
+        view = await _summary(sessions, slug)
+        assert view is not None and (view.limit_usd, view.remaining_usd) == (
+            PILOT_LIMIT_USD,
+            Decimal("0"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_future_brand_story_slug_fails_closed_until_usd_25_account_exists(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    slug = "story-new-20261020-future-unseeded"
+    assert slug not in PILOT_SLUGS and service.is_pilot(slug)
+    with pytest.raises(AppError) as missing:
+        await _reserve(sessions, "model", "1", slug=slug, category="text")
+    assert missing.value.code == "video_budget_missing_account"
+
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=slug, limit_usd=Decimal("5")))
+        await session.commit()
+    with pytest.raises(AppError) as wrong:
+        await _reserve(sessions, "model", "1", slug=slug, category="text")
+    assert wrong.value.code == "video_budget_invalid_account"
+
+    async with sessions() as session:
+        await session.execute(
+            sa.update(VideoPilotBudget)
+            .where(VideoPilotBudget.slug == slug)
+            .values(limit_usd=PILOT_LIMIT_USD)
+        )
+        await session.commit()
+    accepted = await _reserve(sessions, "model", "1", slug=slug, category="text")
+    assert accepted is not None and accepted.dispatch_allowed
+    view = await _summary(sessions, slug)
+    assert view is not None and view.limit_usd == PILOT_LIMIT_USD
 
 
 @pytest.mark.asyncio

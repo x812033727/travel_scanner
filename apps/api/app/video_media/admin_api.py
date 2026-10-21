@@ -28,7 +28,7 @@ from app.video_automation.settings import (
     slides_image_choice,
     slides_values,
 )
-from app.video_budget.models import FOLLOWON_SLUGS, PILOT_SLUGS
+from app.video_budget.models import FOLLOWON_SLUGS, NEW_BRAND_STORY_SLUGS, PILOT_SLUGS
 from app.video_budget.service import (
     BudgetError,
     is_pilot,
@@ -213,19 +213,32 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
 
     slides = slides_values(row)
     pilot_budgets: dict[str, PilotBudgetView] = {}
-    before_followon_accounts: bool | None = None
+    schema_revision: str | None = None
     for slug in sorted(PILOT_SLUGS):
         try:
             account = await summary(session, slug)
         except BudgetError as error:
-            # The five follow-on accounts are seeded only by 0133. Keep 0132
-            # status readable while their paid paths already fail closed. A
-            # missing row after migration is a broken ledger, not an omission.
-            if slug in FOLLOWON_SLUGS and error.code == "video_budget_missing_account":
-                if before_followon_accounts is None:
-                    revision = await session.scalar(text("SELECT version_num FROM alembic_version"))
-                    before_followon_accounts = revision == "0132_video_pilot_budget"
-                if before_followon_accounts:
+            # New slugs are registered before their account-seeding migration.
+            # Older schema revisions may omit them from this read-only status,
+            # while their paid routes still fail closed. A missing account at
+            # or after its migration is a broken ledger and must surface.
+            if error.code == "video_budget_missing_account" and slug in (
+                FOLLOWON_SLUGS | NEW_BRAND_STORY_SLUGS
+            ):
+                if schema_revision is None:
+                    schema_revision = await session.scalar(
+                        text("SELECT version_num FROM alembic_version")
+                    )
+                before_followon = (
+                    slug in FOLLOWON_SLUGS and schema_revision == "0132_video_pilot_budget"
+                )
+                before_brand = slug in NEW_BRAND_STORY_SLUGS and schema_revision in {
+                    "0132_video_pilot_budget",
+                    "0133_story_followon_budget",
+                    "0135_video_backup",
+                    "0136_video_languages_eight",
+                }
+                if before_followon or before_brand:
                     continue
             raise
         if account is None:

@@ -27,7 +27,11 @@ from sqlalchemy.engine import URL, make_url
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.config import get_settings
-from app.video_budget.models import PILOT_LIMITS_USD, VideoPilotBudgetOperation
+from app.video_budget.models import (
+    NEW_BRAND_STORY_SLUGS,
+    PILOT_LIMITS_USD,
+    VideoPilotBudgetOperation,
+)
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires a local PostgreSQL service"
@@ -319,7 +323,12 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
         str(row[0]): Decimal(str(row[1]))
         for row in asyncio.run(_fetch(url, "SELECT slug, limit_usd FROM video_pilot_budgets"))
     }
-    assert limits == PILOT_LIMITS_USD
+    # This rollback exercise stops at 0133; the October batch is seeded by 0137.
+    assert limits == {
+        slug: limit
+        for slug, limit in PILOT_LIMITS_USD.items()
+        if slug not in NEW_BRAND_STORY_SLUGS
+    }
     budget_checks = asyncio.run(
         _fetch(
             url,

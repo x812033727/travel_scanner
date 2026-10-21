@@ -1162,6 +1162,10 @@ test("all budgeted story chapters always use saved jobs for writing and checks",
     "story-five-lego-legoland", "story-five-costco-hot-dog",
     "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
     "story-five-pringles-vat-case",
+    "story-new-20261020-muji-no-brand", "story-new-20261020-ikea-flatpack",
+    "story-new-20261020-garmin-after-smartphones",
+    "story-new-20261020-uniqlo-everyday-clothes", "story-new-20261020-giant-own-name",
+    "story-new-20261020-future-unseeded",
   ]) {
     for (const stage of ["writer", "verifier", "listener"]) {
       const box = sandbox(), routes = [];

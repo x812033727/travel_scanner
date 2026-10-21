@@ -21,6 +21,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.problems import AppError
 from app.video_budget.models import (
     FOLLOWON_LIMIT_USD,
+    NEW_BRAND_STORY_PREFIX,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
@@ -68,7 +69,13 @@ class BudgetSummary:
 
 
 def is_pilot(slug: str | None) -> bool:
-    return slug in PILOT_SLUGS
+    return slug in PILOT_SLUGS or bool(slug and slug.startswith(NEW_BRAND_STORY_PREFIX))
+
+
+def _limit_for(slug: str) -> Decimal | None:
+    if slug.startswith(NEW_BRAND_STORY_PREFIX):
+        return PILOT_LIMIT_USD
+    return PILOT_LIMITS_USD.get(slug)
 
 
 def _amount(value: Decimal | None, *, allow_zero: bool, code: str) -> Decimal:
@@ -92,7 +99,7 @@ def _label(value: str, *, name: str, length: int) -> str:
 def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
     if slug == B18_V2_SLUG:
         return limit_usd in (PILOT_LIMIT_USD, B18_V2_LIMIT_USD)
-    return limit_usd == PILOT_LIMITS_USD.get(slug)
+    return limit_usd == _limit_for(slug)
 
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
@@ -354,7 +361,8 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     reserved, settled, uncertain, settled_count, released, overruns = await _totals(session, slug)
     # Show the intended ceiling even before 0133 lowers B18's persisted row.
     # This is a read-only transitional state; reserve stays held at USD 25.
-    effective_limit = PILOT_LIMITS_USD[slug]
+    effective_limit = _limit_for(slug)
+    assert effective_limit is not None  # is_pilot() accepted the slug above.
     remaining = effective_limit - reserved - settled
     return BudgetSummary(
         slug=slug,

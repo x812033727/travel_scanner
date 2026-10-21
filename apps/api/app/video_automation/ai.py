@@ -44,7 +44,9 @@ from app.video_automation.usage import (
     slug_has_draft,
     usage_view,
 )
-from app.video_budget.service import is_pilot
+from app.video_budget.models import NEW_BRAND_STORY_PREFIX
+from app.video_budget.service import BudgetError, is_pilot
+from app.video_budget.service import summary as budget_summary
 from app.video_shorts.models import VideoShortsSettings
 
 __all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
@@ -181,6 +183,14 @@ async def prepare_stage(
     shorts: VideoShortsSettings | None = None,
     choice: tuple[str, str] | None = None,
 ) -> tuple[str, str, UsageView, bool]:
+    # An unseeded future episode of this hands-off series must stop before even
+    # a subscription stage dispatches. The media/speech/Jev routes also reserve
+    # against this account before contacting their respective vendors.
+    if request.slug.startswith(NEW_BRAND_STORY_PREFIX):
+        try:
+            await budget_summary(session, request.slug)
+        except BudgetError as error:
+            raise StageFailed(error.status, error.code, error.detail) from error
     if request.format == "shorts" and shorts is None:
         shorts = await _shorts_row(session)
     if choice is not None:

@@ -41,14 +41,26 @@ FOLLOWON_SLUGS = frozenset(
         "story-five-pringles-vat-case",
     )
 )
-# Register follow-on stories before their accounts exist, so a rollback cannot silently
-# send one of their paid calls without a durable per-film reservation.
+NEW_BRAND_STORY_SLUGS = frozenset(
+    (
+        "story-new-20261020-muji-no-brand",
+        "story-new-20261020-ikea-flatpack",
+        "story-new-20261020-garmin-after-smartphones",
+        "story-new-20261020-uniqlo-everyday-clothes",
+        "story-new-20261020-giant-own-name",
+    )
+)
+NEW_BRAND_STORY_PREFIX = "story-new-20261020-"
+# Register guarded stories before their accounts exist, so a missing row cannot silently
+# send one of their paid calls without a durable per-film reservation. Future episodes
+# with NEW_BRAND_STORY_PREFIX are also guarded before they receive an account.
 PILOT_LIMITS_USD = {
     "story-rolling-suitcase": PILOT_LIMIT_USD,
     "story-conveyor-belt-sushi": PILOT_LIMIT_USD,
     "story-rolling-suitcase-v2": PILOT_LIMIT_USD,
     "story-conveyor-belt-sushi-v2": FOLLOWON_LIMIT_USD,
     **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
+    **{slug: PILOT_LIMIT_USD for slug in NEW_BRAND_STORY_SLUGS},
 }
 PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")

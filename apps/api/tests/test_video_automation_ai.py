@@ -33,6 +33,7 @@ from app.video_automation.models import (
     VideoStageJob,
 )
 from app.video_automation.schemas import StageRunIn, UsageView
+from app.video_budget.service import BudgetError
 from app.video_shorts.models import VideoShortsSettings
 from app.video_speech import admin_api as speech_api
 
@@ -300,6 +301,29 @@ async def test_pilot_text_calls_require_a_durable_subscription_job_before_any_mo
     with pytest.raises(ai.StageFailed) as nondurable:
         await ai.run_stage(_session(), AGENT, plan_row, pilot, None)
     assert nondurable.value.code == "video_pilot_durable_required"
+    assert stage["provider"].calls == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "slug",
+    ["story-new-20261020-muji-no-brand", "story-new-20261020-future-unseeded"],
+)
+async def test_new_brand_story_text_waits_for_usd_25_account_before_model_dispatch(
+    stage: dict[str, Any], monkeypatch: pytest.MonkeyPatch, slug: str
+) -> None:
+    account = AsyncMock(
+        side_effect=BudgetError(503, "video_budget_missing_account", "account not ready")
+    )
+    monkeypatch.setattr(ai, "budget_summary", account)
+    row = VideoAutomationSettings(
+        stage_models={"writer": {"provider": "claude_code", "model": "claude-opus-5-5"}},
+        enabled=True,
+    )
+    with pytest.raises(ai.StageFailed) as held:
+        await ai.prepare_stage(_session(), AGENT, row, _request("writer", slug))
+    assert held.value.code == "video_budget_missing_account"
+    account.assert_awaited_once()
     assert stage["provider"].calls == []
 
 

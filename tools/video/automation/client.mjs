@@ -347,7 +347,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
-    const pilotStory = PILOT_STORY_SLUGS.has(slug);
+    const pilotStory = PILOT_STORY_SLUGS.has(slug) || (typeof slug === "string" && slug.startsWith("story-new-20261020-"));
     // Pilots use the durable receipt for every stage, even bounded story chapters.
     // Other anime acts and story chapters keep their existing transport.
     if (!pilotStory && (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant))) return request("POST", "automation/run", body, { paid: true });
