@@ -32,7 +32,7 @@ import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { pinWatermark, selectWatermarkForRender, watermarkRecord } from "../core/watermark.mjs";
 import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
-import { openRenderer, RendererError } from "./browser.mjs";
+import { maxTransitionFrames, openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
 import { TARGET_LOCALES } from "../core/schema.mjs";
@@ -49,6 +49,32 @@ const CACHE_FILE = path.join("frames", "cache.json");
 
 function print(out, label, problems) {
   for (const problem of problems) out.write(`${label} ${problem.path}: ${problem.message}\n`);
+}
+
+/**
+ * The transition frames a cached state plays, in order: a list of files, where a frame identical
+ * to the one before it names that file again (a terminal typed at a human pace holds each key
+ * for two or three frames, so its 360 frames are far fewer PNGs; assemble's layoutScenes plays a
+ * file as often as it is listed), or, from a cache written before 2026-10-21, a count of files
+ * named in order.
+ */
+export const transitionFiles = (key, entry) => (Array.isArray(entry.transition) ? entry.transition : Array.from({ length: entry.transition }, (_, index) => transitionFile(key, index)));
+
+/** Write a state's transition frames, skipping one that repeats the frame before it; returns the files to play. */
+function writeTransition(workdir, key, frames) {
+  const files = [];
+  let previous = null;
+  frames.forEach((frame, index) => {
+    if (previous && Buffer.from(frame).equals(Buffer.from(previous.bytes))) {
+      files.push(previous.file);
+      return;
+    }
+    const file = transitionFile(key, index);
+    writeFileSync(path.join(workdir, file), frame);
+    previous = { bytes: frame, file };
+    files.push(file);
+  });
+  return files;
 }
 
 const glyphList = (missing) => missing.map((char) => `"${char}" U+${char.codePointAt(0).toString(16).toUpperCase()}`).join(", ");
@@ -368,16 +394,15 @@ export async function run(command, args, ctx) {
       }
       for (const state of scene.states) {
         const known = cache[state.key];
-        const files = known ? [stillFile(state.key), ...Array.from({ length: known.transition }, (_, index) => transitionFile(state.key, index))] : [];
+        const files = known ? [stillFile(state.key), ...transitionFiles(state.key, known)] : [];
         if (known && files.every((file) => existsSync(path.join(workdir, file)))) {
           reused += 1;
           continue;
         }
-        const shot = await renderer.capture(state.key, state.html, { transition: true });
+        const shot = await renderer.capture(state.key, state.html, { transition: true, maxFrames: maxTransitionFrames(scene.template) });
         for (const problem of shot.problems) layout.push({ path: `${scene.id} state ${scene.states.indexOf(state)}`, message: problem });
         writeFileSync(path.join(workdir, stillFile(state.key)), shot.still);
-        shot.frames.forEach((frame, index) => writeFileSync(path.join(workdir, transitionFile(state.key, index)), frame));
-        cache[state.key] = { transition: shot.frames.length, problems: shot.problems };
+        cache[state.key] = { transition: writeTransition(workdir, state.key, shot.frames), problems: shot.problems };
         drawn += 1;
       }
       atomicWrite(cacheFile, `${JSON.stringify(cache)}\n`);
@@ -455,7 +480,7 @@ export async function run(command, args, ctx) {
       states: scene.states.map((state) => ({
         reveal: state.reveal,
         still: stillFile(state.key),
-        transition: Array.from({ length: cache[state.key].transition }, (_, index) => transitionFile(state.key, index)),
+        transition: transitionFiles(state.key, cache[state.key]),
       })),
       // Whether the card's own frames carry the channel mark; a shot never does.
       ...(scene.marked === undefined ? {} : { marked: scene.marked }),
