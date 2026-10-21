@@ -238,18 +238,10 @@ def _next(
     episodes: list[VideoDramaEpisode],
     settings: VideoAutomationSettings | None = None,
     *,
-    now: datetime = WHEN,
     started_this_month: int = 0,
-    awaiting_upload: int = 0,
 ) -> service.NextJob | None:
     return service.next_job_for(
-        series,
-        [],
-        episodes,
-        settings or _settings(),
-        started_this_month=started_this_month,
-        now=now,
-        awaiting_upload=awaiting_upload,
+        series, [], episodes, settings or _settings(), started_this_month=started_this_month
     )
 
 
@@ -258,17 +250,10 @@ def _quota(
     episodes: list[VideoDramaEpisode],
     settings: VideoAutomationSettings | None = None,
     *,
-    now: datetime = WHEN,
     started_this_month: int = 0,
-    awaiting_upload: int = 0,
 ) -> Any:
     return service.story_quota(
-        series,
-        episodes,
-        settings or _settings(),
-        now=now,
-        started_this_month=started_this_month,
-        awaiting_upload=awaiting_upload,
+        series, episodes, settings or _settings(), started_this_month=started_this_month
     )
 
 
@@ -278,7 +263,10 @@ def _quota(
 def test_a_story_series_is_hands_off_stills_never_compiled_and_may_run_longer() -> None:
     fields = {k: v for k, v in SERIES_FILE.items() if k in SeriesIn.model_fields}
     story = SeriesIn.model_validate(fields)
-    assert (story.kind, story.target_minutes, story.episodes_per_day) == ("story", 13, 2)
+    assert (story.kind, story.target_minutes) == ("story", 13)
+    # A brand story is a video category, not a schedule: there is no daily count to set.
+    with pytest.raises(ValidationError, match="episodes_per_day"):
+        SeriesIn.model_validate({**fields, "episodes_per_day": 2})
     assert story.look is not None and story.look.motion == "slow steady camera move"
     for wrong in ({"hands_off": False}, {"visual_tier": "clips"}, {"compilation": True}):
         with pytest.raises(ValidationError, match="hands_off"):
@@ -292,14 +280,12 @@ def test_a_story_series_is_hands_off_stills_never_compiled_and_may_run_longer() 
     with pytest.raises(ValidationError):
         SeriesIn.model_validate({**fields, "look": {**LOOK, "style": "x" * 601}})
 
-    # The other kinds keep their 8 minutes, and have neither a daily count nor a look.
+    # The other kinds keep their 8 minutes, and have no look.
     classic = {"slug": "xianxia", "title": "問劍", "premise": "兩個少年"}
     assert SeriesIn.model_validate({**classic, "target_minutes": 8}).target_minutes == 8
     for kind in ("series", "one-off"):
         with pytest.raises(ValidationError, match="at most 8 minutes"):
             SeriesIn.model_validate({**classic, "kind": kind, "target_minutes": 9})
-        with pytest.raises(ValidationError, match="only a story series"):
-            SeriesIn.model_validate({**classic, "kind": kind, "episodes_per_day": 2})
         with pytest.raises(ValidationError, match="only a story series"):
             SeriesIn.model_validate({**classic, "kind": kind, "look": LOOK})
     assert SeriesIn.model_validate({**classic, "image_model": "image-01"}).image_model == (
@@ -309,16 +295,16 @@ def test_a_story_series_is_hands_off_stills_never_compiled_and_may_run_longer() 
     assert SeriesPatch(target_minutes=20).target_minutes == 20
     with pytest.raises(ValidationError):
         SeriesPatch(target_minutes=21)
-    with pytest.raises(ValidationError):
-        SeriesPatch(episodes_per_day=13)
+    with pytest.raises(ValidationError, match="episodes_per_day"):
+        SeriesPatch.model_validate({"episodes_per_day": 1})
     classic_row = _series(kind="series", hands_off=False, visual_tier="clips", look=None)
     too_long = service.patch_problem(classic_row, {"target_minutes": 9})
     assert too_long is not None and too_long.code == "video_series_too_long"
-    story_only = service.patch_problem(classic_row, {"episodes_per_day": 1})
+    story_only = service.patch_problem(classic_row, {"look": LOOK})
     assert story_only is not None and story_only.code == "video_series_story_only"
     assert service.patch_problem(classic_row, {"target_minutes": 8, "image_model": "x"}) is None
     story_row = _series()
-    assert service.patch_problem(story_row, {"target_minutes": 20, "episodes_per_day": 1}) is None
+    assert service.patch_problem(story_row, {"target_minutes": 20}) is None
     for fixed in ({"hands_off": False}, {"visual_tier": "hybrid"}, {"compilation": True}):
         refused = service.patch_problem(story_row, fixed)
         assert refused is not None and refused.code == "video_series_story_fixed"
@@ -350,30 +336,22 @@ def test_the_next_story_starts_without_documents_or_waiting_for_the_one_before()
     assert summary.look == LOOK and summary.target_minutes == 13 and summary.quota is None
 
 
-def test_the_days_count_turns_over_at_midnight_in_taipei() -> None:
-    """15:59:59Z is still that day in Taipei; 16:00:00Z is the next one."""
+def test_a_story_has_no_daily_count() -> None:
+    """A brand story is a video category like the explainer, not a schedule (the owner,
+    2026-10-21): stories started today do not hold the next, whatever an older row's
+    ``episodes_per_day`` column still says."""
     late = datetime(2026, 10, 1, 15, 59, 59, tzinfo=UTC)
-    midnight = datetime(2026, 10, 1, 16, 0, 0, tzinfo=UTC)
-    assert service.taipei_day(late).isoformat() == "2026-10-01"
-    assert service.taipei_day(midnight).isoformat() == "2026-10-02"
-    assert service.taipei_day(late.replace(tzinfo=None)).isoformat() == "2026-10-01"
-
     series = _series(episodes_per_day=1)
-    started_late = [_episode(1, "done", late), _episode(2)]
-    assert _next(series, started_late, now=late) is None
-    quota = _quota(series, started_late, now=late)
-    assert (quota.hold, quota.started_today, quota.day.isoformat()) == ("per_day", 1, "2026-10-01")
-    assert "每日上限 1 支" in quota.hold_detail
-    job = _next(series, started_late, now=midnight)
-    assert job is not None and job.episode_number == 2, "a new day in Taipei"
-    assert _quota(series, started_late, now=midnight).started_today == 0
-
-    started_at_midnight = [_episode(1, "done", midnight), _episode(2)]
-    next_evening = datetime(2026, 10, 2, 15, 59, 59, tzinfo=UTC)
-    assert _next(series, started_at_midnight, now=next_evening) is None, "the same Taipei day"
-    assert _next(series, started_at_midnight, now=next_evening + timedelta(seconds=1)) is not None
-    assert _next(_series(episodes_per_day=2), started_late, now=late) is not None
-    assert _next(_series(episodes_per_day=None), started_late, now=late) is not None
+    started_today = [_episode(1, "done", late), _episode(2, "done", late), _episode(3)]
+    job = _next(series, started_today)
+    assert job is not None and job.episode_number == 3
+    quota = _quota(series, started_today)
+    assert (quota.hold, quota.ready) == (None, 1)
+    assert not hasattr(quota, "started_today") and not hasattr(quota, "episodes_per_day")
+    # The owner's calendar day still dates a story's messages.
+    assert service.taipei_day(late).isoformat() == "2026-10-01"
+    assert service.taipei_day(late + timedelta(seconds=1)).isoformat() == "2026-10-02"
+    assert service.taipei_day(late.replace(tzinfo=None)).isoformat() == "2026-10-01"
 
 
 def test_the_other_limits_hold_a_story_and_say_why() -> None:
@@ -386,18 +364,6 @@ def test_the_other_limits_hold_a_story_and_say_why() -> None:
     assert _next(series, ready, started_this_month=30) is None
     assert _quota(series, ready, started_this_month=30).hold == "per_month"
 
-    assert service.STORY_UPLOAD_BUFFER == 6
-    assert _next(series, ready, awaiting_upload=6) is None
-    buffered = _quota(series, ready, awaiting_upload=6)
-    assert (buffered.hold, buffered.awaiting_upload, buffered.upload_buffer) == (
-        "upload_buffer",
-        6,
-        6,
-    )
-    assert "YouTube" in buffered.hold_detail
-    job = _next(series, ready, awaiting_upload=5)
-    assert job is not None and job.episode_number == 1
-
     assert _next(series, [_episode(1, "done")]) is None
     assert _quota(series, [_episode(1, "done")]).hold == "none_ready"
     assert _next(_series(status="paused"), ready) is None
@@ -407,8 +373,7 @@ def test_the_other_limits_hold_a_story_and_say_why() -> None:
 
 
 def test_series_of_the_other_kinds_behave_exactly_as_before() -> None:
-    """The story rules never reach a long series or a one-off: the same rows give the same job
-    with or without the new arguments, however many stories wait for upload."""
+    """The story rules never reach a long series or a one-off."""
     now = datetime(2026, 10, 1, 15, 0, tzinfo=UTC)
     classic = _series(kind="series", hands_off=False, visual_tier="clips", look=None)
     classic.image_model = None
@@ -430,12 +395,6 @@ def test_series_of_the_other_kinds_behave_exactly_as_before() -> None:
         [_episode(1, "started", now), _episode(2), _episode(3)],
         [_episode(1, "ready"), _episode(2), _episode(3)],
     ]
-    for episodes in cases:
-        before = service.next_job_for(classic, docs, episodes, _settings(), started_this_month=0)
-        after = service.next_job_for(
-            classic, docs, episodes, _settings(), started_this_month=0, now=now, awaiting_upload=99
-        )
-        assert before == after
     job = service.next_job_for(classic, docs, cases[0], _settings(), started_this_month=0)
     assert job is not None and job.episode_number == 2
     assert (
@@ -447,12 +406,7 @@ def test_series_of_the_other_kinds_behave_exactly_as_before() -> None:
     )
     assert job is not None and job.kind == "bible"
     summary = service.summary_view(classic, docs, cases[0])
-    assert (summary.chapters, summary.episodes_per_day, summary.look, summary.quota) == (
-        10,
-        None,
-        None,
-        None,
-    )
+    assert (summary.chapters, summary.look, summary.quota) == (10, None, None)
 
 
 # --- the backlog's rules --------------------------------------------------------------------------
@@ -592,7 +546,7 @@ def test_the_file_is_checked_as_a_whole() -> None:
     assert "but --series is 'other'" in problems(_file(), "other")
     assert 'series.kind must be "story"' in problems(_file(kind="series"))
     assert "series.target_minutes must be 12 to 15" in problems(_file(target_minutes=16))
-    assert "series.episodes_per_day must be 1 to 12" in problems(_file(episodes_per_day=0))
+    assert not any("per_day" in problem for problem in problems(_file(episodes_per_day=0)))
     assert "series.look needs a style" in problems(_file(look={"style": "x"}))
     assert "series.compilation must be false" in problems(_file(compilation=True))
     assert "stories must list at least one story" in problems(_file([]))
@@ -692,10 +646,12 @@ async def test_the_import_creates_the_series_and_its_stories_and_changes_nothing
     assert (dry.written, dry.series_created, dry.series_exists) == (False, True, False)
     assert dry.as_dict()["create"] == 3 and dry.as_dict()["refuse"] == 0
     assert "series.youtube_category_id is not kept by the server" in dry.notes
+    # An older file's daily count is read past: a brand story has none.
+    assert "series.episodes_per_day is not kept by the server" in dry.notes
     assert await _count(db, VideoDramaSeries) == 0, "a dry run writes nothing"
 
-    # The pilot: two stories, one a day.
-    pilot = await _import(db, _file(), apply=True, limit=2, episodes_per_day=1)
+    # The pilot: two stories.
+    pilot = await _import(db, _file(), apply=True, limit=2)
     assert pilot.written and pilot.create == ["A01", "B01"] and pilot.stories == 3
     async with db() as session:
         series = await session.scalar(select(VideoDramaSeries))
@@ -708,7 +664,7 @@ async def test_the_import_creates_the_series_and_its_stories_and_changes_nothing
         )
         assert (series.target_minutes, series.episodes_per_day, series.image_model) == (
             13,
-            1,
+            None,
             "gemini-3.1-flash-image",
         )
         assert series.look == LOOK and series.compilation is False
@@ -741,7 +697,7 @@ async def test_the_import_creates_the_series_and_its_stories_and_changes_nothing
     assert first.beats["must_verify"][3]["reviewer_only"] is True
     audits = await _count(db, AdminAuditLog)
 
-    again = await _import(db, _file(), apply=True, limit=2, episodes_per_day=1)
+    again = await _import(db, _file(), apply=True, limit=2)
     assert (again.written, again.create, again.update, again.unchanged) == (
         False,
         [],
@@ -754,8 +710,7 @@ async def test_the_import_creates_the_series_and_its_stories_and_changes_nothing
     ]
     assert await _count(db, AdminAuditLog) == audits, "the second run changes nothing"
     # The series row stays as the owner has it; the file's other values are only reported.
-    assert again.series_differs == {"episodes_per_day": {"file": 2, "series": 1}}
-    assert any("--episodes-per-day applies only" in note for note in again.notes)
+    assert again.series_differs == {}
 
     rest = await _import(db, _file(), apply=True)
     assert (rest.create, rest.unchanged, rest.written) == (["C01"], ["A01", "B01"], True)
@@ -780,9 +735,8 @@ async def test_a_bad_story_refuses_the_whole_file_and_nothing_is_written(
     bad_model = await _import(db, _file(image_model="gemini-9-imaginary"), apply=True)
     assert any("image model" in problem for problem in bad_model.problems)
     assert await _count(db, VideoDramaSeries) == 0
-    for limit, per_day in ((0, None), (None, 13)):
-        refused = await _import(db, _file(), apply=True, limit=limit, episodes_per_day=per_day)
-        assert refused.problems and not refused.written
+    refused = await _import(db, _file(), apply=True, limit=0)
+    assert refused.problems and not refused.written
 
 
 async def test_a_story_is_updated_until_it_starts_and_left_alone_after(
@@ -880,10 +834,10 @@ async def test_a_slug_another_series_or_video_has_is_a_problem(
     assert not report.written and report.refused == ["C01"]
 
 
-async def test_the_worker_gets_the_whole_story_and_the_day_holds_the_next(
+async def test_the_worker_gets_the_whole_story_and_only_the_drama_limits_hold_the_next(
     db: async_sessionmaker[AsyncSession],
 ) -> None:
-    await _import(db, _file(), apply=True, episodes_per_day=1)
+    await _import(db, _file(), apply=True)
     async with db() as session:
         token = VideoToolToken(name="story-test", token_hash=uuid4().hex, token_prefix="mkv_s")
         session.add(token)
@@ -900,7 +854,7 @@ async def test_the_worker_gets_the_whole_story_and_the_day_holds_the_next(
             13,
             "gemini-3.1-flash-image",
         )
-        assert job.series.look == LOOK and job.series.episodes_per_day == 1
+        assert job.series.look == LOOK
         assert job.context.chapter is None and job.context.chapter_number is None
         assert job.context.episode is not None and job.context.episode.beats == job.episode.beats
         # The other stories are listed by title and state only, not with their whole plans.
@@ -914,18 +868,21 @@ async def test_the_worker_gets_the_whole_story_and_the_day_holds_the_next(
         )
         assert started.episode.status == "started" and started.request.target_minutes == 13
         assert "Why did an old idea wait so long to sell?" in started.request.premise
-        # One a day: the next waits for tomorrow in Taipei.
+        # One in the making fills a series_max_in_flight of 1; there is no daily count.
+        settings.series_max_in_flight = 1
+        await session.commit()
         assert (await service.next_job(session, settings)).job is None
         view = await service.series_view(session, "stories-test")
         assert view.quota is not None
-        assert (view.quota.hold, view.quota.started_today, view.quota.in_flight) == (
-            "per_day",
-            1,
-            1,
-        )
+        assert (view.quota.hold, view.quota.in_flight) == ("in_flight", 1)
         listed = await service.list_series(session, kind="story")
         assert [item.slug for item in listed] == ["stories-test"]
-        assert listed[0].quota is not None and listed[0].quota.hold == "per_day"
+        assert listed[0].quota is not None and listed[0].quota.hold == "in_flight"
+        # With room for two, the second starts the same Taipei day.
+        settings.series_max_in_flight = 2
+        await session.commit()
+        job = (await service.next_job(session, settings)).job
+        assert job is not None and job.episode is not None and job.episode.number == 2
 
         with pytest.raises(service.SeriesRefused, match="backlog import") as doc:
             await service.submit_doc(
@@ -939,18 +896,18 @@ async def test_the_worker_gets_the_whole_story_and_the_day_holds_the_next(
         assert action.value.code == "video_series_story_no_action"
 
 
-async def test_six_stories_cleared_for_upload_without_a_youtube_id_hold_the_next(
+async def test_stories_cleared_for_upload_but_not_uploaded_do_not_hold_the_next(
     db: async_sessionmaker[AsyncSession],
 ) -> None:
     eight = [_story(number, f"A{number:02d}", f"story-invented-{number}") for number in range(1, 9)]
-    await _import(db, _file(eight, planned_episodes=8), apply=True, episodes_per_day=12)
+    await _import(db, _file(eight, planned_episodes=8), apply=True)
     async with db() as session:
         rows = list(
             await session.scalars(select(VideoDramaEpisode).order_by(VideoDramaEpisode.number))
         )
         projects = []
         for row in rows[:6]:
-            # Long ago, so neither the day's count nor the month's is what holds the next one.
+            # Long ago, so the month's count does not hold the next one either.
             row.status = "done"
             row.started_at = datetime(2026, 1, 5, tzinfo=UTC)
             project = VideoProject(
@@ -974,30 +931,10 @@ async def test_six_stories_cleared_for_upload_without_a_youtube_id_hold_the_next
             )
         await session.commit()
         settings = await settings_service.settings_row(session)
-        assert (await service.next_job(session, settings)).job is None
-        view = await service.series_view(session, "stories-test")
-        assert view.quota is not None
-        assert (view.quota.hold, view.quota.awaiting_upload) == ("upload_buffer", 6)
-
-        # The owner uploads one: its YouTube id is recorded, and the next story may start.
-        projects[0].youtube_video_id = "dQw4w9WgXcQ"
-        await session.commit()
         job = (await service.next_job(session, settings)).job
         assert job is not None and job.episode is not None and job.episode.number == 7
-        # A dropped video will never be uploaded, so it does not count either.
-        projects[0].youtube_video_id = None
-        projects[1].dropped_at = WHEN
-        await session.commit()
-        assert (await service.next_job(session, settings)).job is not None
-        # A confirmation that was sent back is not a clearance.
-        projects[1].dropped_at = None
-        review = await session.scalar(
-            select(VideoReview).where(VideoReview.project_id == projects[2].id)
-        )
-        assert review is not None
-        review.status = "rejected"
-        await session.commit()
-        assert (await service.next_job(session, settings)).job is not None
+        view = await service.series_view(session, "stories-test")
+        assert view.quota is not None and view.quota.hold is None
 
 
 # --- the month's drafts --------------------------------------------------------------------------
@@ -1126,8 +1063,6 @@ def test_the_command_reads_the_file_from_standard_input_and_fails_on_a_problem(
             "--apply",
             "--limit",
             "2",
-            "--episodes-per-day",
-            "1",
         ],
     )
     cli.main()
@@ -1137,7 +1072,6 @@ def test_the_command_reads_the_file_from_standard_input_and_fails_on_a_problem(
         "series": "stories-test",
         "apply": True,
         "limit": 2,
-        "episodes_per_day": 1,
     }
     assert json.loads(capsys.readouterr().out)["create"] == 3
 
@@ -1154,12 +1088,12 @@ async def test_a_file_that_is_not_json_is_refused_before_the_database() -> None:
     assert report["written"] is False and report["create"] == 0
 
 
-@pytest.mark.parametrize("hold", ["not_active", "per_day", "in_flight", "per_month"])
+@pytest.mark.parametrize("hold", ["not_active", "in_flight", "per_month"])
 async def test_story_start_rechecks_hold_after_job_was_advertised(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch, hold: str
 ) -> None:
     monkeypatch.setattr(service, "_now", lambda: WHEN)
-    await _import(db, _file(), apply=True, episodes_per_day=2)
+    await _import(db, _file(), apply=True)
     async with db() as session:
         token = VideoToolToken(name="story-claim", token_hash=uuid4().hex, token_prefix="mkv_s")
         session.add(token)
@@ -1181,8 +1115,6 @@ async def test_story_start_rechecks_hold_after_job_was_advertised(
         settings = await settings_service.settings_row(session)
         if hold == "not_active":
             series.status = "paused"
-        elif hold == "per_day":
-            series.episodes_per_day = 1
         elif hold == "in_flight":
             first = await session.scalar(
                 select(VideoDramaEpisode).where(VideoDramaEpisode.number == 1)
@@ -1211,7 +1143,7 @@ async def test_story_start_preserves_allowed_start_and_same_episode_retry_guard(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setattr(service, "_now", lambda: WHEN)
-    await _import(db, _file(), apply=True, episodes_per_day=1)
+    await _import(db, _file(), apply=True)
     async with db() as session:
         token = VideoToolToken(name="story-claim", token_hash=uuid4().hex, token_prefix="mkv_s")
         session.add(token)
