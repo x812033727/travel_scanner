@@ -1,13 +1,13 @@
 ---
 id: 2026-10-19-imported-video-languages-eight
 title: Imported videos may add es, pt, id, vi, th besides en, ja, ko
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5.5-eight-languages
 claimed_at: 2026-10-19T11:17:04Z
 created_at: 2026-10-19T11:16:44Z
-completed_at:
+completed_at: 2026-10-21T06:19:32Z
 branch: claude/epic-mestorf-3bbb2c
 depends_on: []
 scope:

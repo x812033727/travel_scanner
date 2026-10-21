@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "slug": "paper-look",
+  "format": "slides",
+  "theme": "paper",
+  "target_minutes": [0.5, 5],
+  "voice": { "provider": "azure", "name": "zh-TW-HsiaoChenNeural" },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "紙底版型範例：守則只寫一次",
+    "description": "這支只用來看紙底版型：米白底、墨黑字、一個紅色強調，每張底下一句關鍵句，大數字卡、圖示與真的一個字一個字打出來的終端機。終端機的輸出都是 2026-10-01 真的執行的結果。",
+    "tags": ["版型展示", "Claude Code"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "tag": "Claude Code 入門", "headline": "**8 行**\n就夠了", "sub": "每次重講的那段，寫進一個檔" } },
+  "sources": [{ "title": "Claude Code 說明文件", "url": "https://docs.claude.com/en/docs/claude-code/overview", "checked_on": "2026-10-01" }],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "守則只寫一次",
+      "template": "title",
+      "data": { "tag": "Claude Code 入門", "title": "每次重講的那段，**寫進守則**", "subtitle": "一個資料夾、一個檔，它每次進門先看", "key": "每次重講的那段，寫進守則" },
+      "lines": [
+        { "id": "pl01", "text": "你是不是每開一次新對話，都把同一段規矩重講一遍？" },
+        { "id": "pl02", "text": "這支影片用一個比喻把它搞懂：守則只寫一次，之後它自己看。" }
+      ]
+    },
+    {
+      "id": "part-one",
+      "chapter": "它長什麼樣",
+      "template": "chapter",
+      "data": { "title": "它長什麼樣", "subtitle": "一個資料夾、一個檔、記事本打得開", "key": "一個資料夾裡的一個檔" },
+      "lines": [{ "id": "pl03", "text": "先看它長什麼樣：一個資料夾裡的一個檔，記事本就打得開。" }]
+    },
+    {
+      "id": "rule-one",
+      "template": "big",
+      "data": { "kicker": "守則第一條", "numeral": "1", "text": "每次都要講的", "sub": "寫進守則，不用再講第二次", "key": "每次都要講的，寫進去" },
+      "lines": [{ "id": "pl04", "text": "第一條最簡單：每次都要講的那一句，寫進去，從此不用再講。" }]
+    },
+    {
+      "id": "three-things",
+      "template": "bullets",
+      "data": {
+        "title": "守則裡放三種東西",
+        "items": [{ "text": "這個資料夾是做什麼的", "icon": "folder" }, { "text": "做完要檢查哪幾件事", "icon": "checklist" }, { "text": "哪些檔案不准動", "icon": "lock" }],
+        "keys": ["資料夾是做什麼的", "做完要檢查什麼", "哪些檔案不准動"]
+      },
+      "lines": [
+        { "id": "pl05", "text": "守則裡放三種東西。第一，這個資料夾是做什麼的。", "reveal": 1 },
+        { "id": "pl06", "text": "第二，做完一件事要檢查哪幾件事。", "reveal": 1 },
+        { "id": "pl07", "text": "第三，哪些檔案不准動，動了就是出事。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "how-to-write",
+      "chapter": "怎麼寫",
+      "template": "steps",
+      "data": {
+        "title": "三步寫出第一份守則",
+        "steps": [
+          { "title": "開一個檔", "detail": "資料夾裡新增 CLAUDE.md", "icon": "document" },
+          { "title": "寫八行", "detail": "每行一條，寫理由", "icon": "terminal" },
+          { "title": "開新對話試", "detail": "同一句話，看它照不照做", "icon": "chat" }
+        ],
+        "keys": ["開一個檔", "一行一條，寫理由", "開新對話試一次"]
+      },
+      "lines": [
+        { "id": "pl08", "text": "怎麼寫？三步。第一步，在資料夾裡開一個檔。", "reveal": 1 },
+        { "id": "pl09", "text": "第二步，寫八行就好，每行一條，後面接一句為什麼。", "reveal": 1 },
+        { "id": "pl10", "text": "第三步，開一個新對話，講同一句話，看它照不照做。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "rules-vs-manual",
+      "template": "compare",
+      "data": {
+        "title": "守則和操作手冊不一樣",
+        "left": { "heading": "守則", "points": ["貼在門口", "每次進門先看", "八行以內"], "icon": "book" },
+        "right": { "heading": "操作手冊", "points": ["放在抽屜", "做那件事才翻", "可以很長"], "icon": "lightning" },
+        "verdict": "每次都要講的放守則，用到才翻的做手冊",
+        "keys": ["守則：每次進門先看", "手冊：用到才翻"]
+      },
+      "lines": [
+        { "id": "pl11", "text": "守則和操作手冊不一樣。守則貼在門口，每次進門先看一眼，所以要短。", "reveal": 1 },
+        { "id": "pl12", "text": "操作手冊放在抽屜，做那件事的時候才翻，所以可以很長。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "version",
+      "template": "terminal",
+      "data": { "title": "先確認它裝好了", "command": "claude --version", "output": ["2.1.285 (Claude Code)"], "ran_on": "2026-10-01", "tool_version": "2.1.285 (Claude Code)", "typing": "human", "keys": ["一行指令，慢慢打", "看到版本號就裝好了"] },
+      "lines": [
+        { "id": "pl13", "text": "動手之前先確認它裝好了。打開終端機，把查版本這一行慢慢打進去，不用急。" },
+        { "id": "pl14", "text": "按下去，它印出的版本號就在這裡，看到數字就代表裝好了。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "help",
+      "template": "terminal",
+      "data": {
+        "title": "說明的前四行",
+        "command": "claude --help | head -n 4",
+        "output": ["Usage: claude [options] [command] [prompt]", "\nClaude Code - starts an interactive session by default, use -p/--print for\nnon-interactive output"],
+        "ran_on": "2026-10-01",
+        "tool_version": "2.1.285 (Claude Code)",
+        "typing": "human",
+        "keys": ["看說明的前四行", "第一行是用法", "預設開一個對話"]
+      },
+      "lines": [
+        { "id": "pl15", "text": "再看一眼說明的前四行，這一行一樣慢慢打，看清楚每一個字。" },
+        { "id": "pl16", "text": "第一行是用法，後面可以接選項、子指令，或直接接一句話。", "reveal": 1 },
+        { "id": "pl17", "text": "接著它說，預設會開一個對話；只想要一次回答，就加上後面那個選項。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "ask-once",
+      "template": "chat",
+      "data": {
+        "title": "有守則之後",
+        "messages": [{ "side": "right", "name": "你", "text": "把名單整理乾淨" }, { "side": "left", "name": "它", "text": "照守則：去重、補全、存成新檔，原檔不動" }],
+        "keys": ["你只要說一句", "它照守則做"]
+      },
+      "lines": [
+        { "id": "pl18", "text": "有守則之後，你只要說一句：把名單整理乾淨。", "reveal": 1 },
+        { "id": "pl19", "text": "它會照守則做：去重、補全、存成新檔，原檔不動。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "how-long",
+      "template": "table",
+      "data": {
+        "title": "寫多長才剛好",
+        "columns": ["寫法", "它照不照做"],
+        "rows": [["一句「名單要整理乾淨」", "跟沒寫一樣"], ["八行，每行一條", "每次照做"], ["兩百行什麼都寫", "常常漏掉"]],
+        "highlight": 1,
+        "key": "越具體越短，越照做"
+      },
+      "lines": [
+        { "id": "pl20", "text": "那寫越多越好嗎？不是。只寫一句「名單要整理乾淨」，跟沒寫一樣。" },
+        { "id": "pl21", "text": "八行、每行一條，它每次照做；兩百行什麼都寫，反而常常漏掉。" }
+      ]
+    },
+    {
+      "id": "closing",
+      "chapter": "留言告訴我",
+      "template": "outro",
+      "data": { "title": "每次都要講的，寫進守則", "cta": "範本在說明欄", "lines": ["用到才翻的，做成手冊", "原始檔先備份"], "key": "你現在每次重講的那段是什麼？" },
+      "lines": [
+        { "id": "pl22", "text": "一句話收尾：每次都要講的寫進守則，用到才翻的做成手冊。" },
+        { "id": "pl23", "text": "你現在每次重講的那一段是什麼？留言告訴我，記得訂閱。" }
+      ]
+    }
+  ]
+}

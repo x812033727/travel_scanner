@@ -9,6 +9,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { ASSET_ROOTS, ORIGIN, SIZE } from "../templates/templates.mjs";
+import { TERMINAL_MAX_TRANSITION_FRAMES } from "../templates/terminal/terminal.mjs";
 import { FONT_PACKAGES, fontDir, SLIDE_FAMILY } from "./fonts.mjs";
 import { THEME_FILE } from "./plan.mjs";
 
@@ -18,6 +19,12 @@ export const FPS = 30;
 export class RendererError extends Error {}
 // The longest entrance the renderer captures frame by frame; the theme's stay well under it.
 export const MAX_TRANSITION_FRAMES = 18;
+/**
+ * The frames a scene's entrance may run: the theme's 18, or a terminal's 360 so a command typed
+ * at a human pace (terminal.mjs `typing: "human"`) is kept key by key. A terminal without it ends
+ * within the 18 anyway, so its frames are what they were.
+ */
+export const maxTransitionFrames = (template) => (template === "terminal" ? TERMINAL_MAX_TRANSITION_FRAMES : MAX_TRANSITION_FRAMES);
 
 // A frame key promises the same picture every time it is drawn. With the GPU and the compositor
 // thread, it did not hold: two runs on one machine drew 55 or 56 of 68 stills and a third to
@@ -224,16 +231,17 @@ export async function openRenderer({ root, workdir, channel }) {
   return {
     /**
      * Draw one state. With `transition`, also every 1/30 s of its entrance animations, frame 0
-     * being the moment before anything has moved. With `omitBackground`, a page that paints no
-     * background comes out transparent (a subtitle strip). Returns PNG buffers and layout problems.
+     * being the moment before anything has moved, up to `maxFrames` of them (maxTransitionFrames).
+     * With `omitBackground`, a page that paints no background comes out transparent (a subtitle
+     * strip). Returns PNG buffers and layout problems.
      */
-    async capture(key, html, { size = SIZE, transition = false, type = "png", quality, omitBackground = false } = {}) {
+    async capture(key, html, { size = SIZE, transition = false, maxFrames = MAX_TRANSITION_FRAMES, type = "png", quality, omitBackground = false } = {}) {
       const refusedBefore = refused.length;
       const { family, unloadable } = await load(key, html, size);
       const end = await page.evaluate(pauseAnimations);
       const frames = [];
       if (transition && end > 0) {
-        const count = Math.min(Math.ceil(end / (1000 / FPS)), MAX_TRANSITION_FRAMES);
+        const count = Math.min(Math.ceil(end / (1000 / FPS)), maxFrames);
         for (let index = 0; index < count; index++) {
           await page.evaluate(seekAnimations, (index * 1000) / FPS);
           frames.push(await page.screenshot({ type, quality, omitBackground }));

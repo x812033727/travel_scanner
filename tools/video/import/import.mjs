@@ -16,7 +16,11 @@
 // worker would (docs/videos/LANGUAGES.md): description.<l>.txt (title, a blank line, the
 // description), <l>.srt and dub.<l>.m4a|mp3|wav, for the parts the owner ticked on the panel,
 // for en, ja, ko and the five only an imported video may add (es, pt, id, vi, th).
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+//
+// `--publish` then sends the upload package, once the owner approved the cut: the same files with
+// final.mp4 itself and a metadata.json, so the site can send the video to YouTube. meta.json may
+// add tags, category_id, made_for_kids and contains_synthetic_media (with disclosure_reason).
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
@@ -278,6 +282,7 @@ export async function importLanguages({ from, workdir, env = process.env, home, 
   const site = client ?? siteClient({ env, home });
   const known = await site.project(meta.slug);
   if (!known || !(known.checklist ?? []).some((item) => item.key === IMPORTED)) throw new UsageError(`${meta.slug} was not imported by this command; import its cut first`);
+  if (publishSent(known)) throw new UsageError(`${meta.slug}: an upload package was already sent; a languages batch after it would not match it (docs/videos/COMPILATIONS.md)`);
   const current = (known.reviews ?? []).find((review) => review.gate === "final" && !review.subject);
   const sha256 = await sha256File(final);
   if (!current || current.content_sha256 !== sha256 || !["pending", "approved"].includes(current.status)) {
@@ -336,4 +341,164 @@ export async function importLanguages({ from, workdir, env = process.env, home, 
   });
   log(`${meta.slug}: languages batch ${review.status} (${Object.keys(locales).join(", ")})`);
   return { slug: meta.slug, status: review.status, locales, unticked, missing };
+}
+
+// The site reads a publish review's own files for a language when the languages batch came before
+// it (apps/api/app/video_youtube/language_package.py compose); a batch sent after it must carry a
+// source manifest and metadata this command does not make, and the package would be refused.
+const publishSent = (known) => (known?.reviews ?? []).some((review) => review.gate === "publish" && ["pending", "approved"].includes(review.status));
+// YouTube's limits for what the package sets besides the text: tags, and a thumbnail of 2 MB.
+const TAGS_MAX = 10;
+const TAGS_CHARS = 500;
+const THUMBNAIL_MAX_BYTES = 2 * 1024 * 1024;
+// A drama's shots and music are generated: disclosed, as the pipeline does (qa/checks.mjs disclosureDecision).
+const DRAMA_DISCLOSURE = "a drama: AI-generated shots and music are always disclosed";
+
+/**
+ * What meta.json says for the upload package besides the title and description: tags, YouTube's
+ * category id, the made-for-kids and synthetic-media answers. A drama is disclosed unless it says
+ * otherwise; any other video has to say. Returns the fields, or a list of problems.
+ */
+export function publishFields(raw, meta) {
+  const problems = [];
+  const tags = raw?.tags ?? [];
+  if (!Array.isArray(tags) || tags.some((tag) => !text(tag)) || tags.length > TAGS_MAX || tags.join(",").length > TAGS_CHARS) problems.push(`tags: at most ${TAGS_MAX} words, ${TAGS_CHARS} characters together`);
+  if (raw?.category_id !== undefined && !/^\d+$/.test(String(raw.category_id))) problems.push("category_id is YouTube's number, 24 for entertainment");
+  if (raw?.made_for_kids !== undefined && typeof raw.made_for_kids !== "boolean") problems.push("made_for_kids: true or false");
+  let synthetic = raw?.contains_synthetic_media;
+  let reason = typeof raw?.disclosure_reason === "string" ? raw.disclosure_reason : "";
+  if (synthetic === undefined && meta.category === "drama") [synthetic, reason] = [true, reason || DRAMA_DISCLOSURE];
+  if (typeof synthetic !== "boolean") problems.push("contains_synthetic_media: true or false, YouTube asks whether realistic people, events or places were generated");
+  return {
+    problems,
+    fields: {
+      tags: Array.isArray(tags) ? tags.map((tag) => String(tag).trim()) : [],
+      ...(raw?.category_id !== undefined ? { category_id: String(raw.category_id) } : {}),
+      made_for_kids: raw?.made_for_kids === true,
+      contains_synthetic_media: synthetic === true,
+      disclosure_reason: reason,
+    },
+  };
+}
+
+/** A description.<l>.txt as the package's localization: { title, description }. */
+const localization = (bytes) => {
+  const [title, ...rest] = bytes.toString("utf8").replace(/\r\n/g, "\n").split("\n");
+  return { title: title.trim(), description: rest.join("\n").trim() };
+};
+
+/**
+ * Send a directory's upload package (`import --publish`), the publish gate the pipeline's
+ * `package` and `review-push --gate publish` make: once the owner approves it, the video's card
+ * reaches 「可以上架」 and 「送到 YouTube」 sends it like any other (docs/videos/COMPILATIONS.md).
+ * The site's newest final cut must be the directory's final.mp4 and approved, and the package
+ * carries the language parts the owner ticked from the same files `--languages` sends: a title
+ * and description is required, captions and dubs the folder lacks are said as skipped. Send it
+ * after the languages batch, never before. Hand-pushed: it waits for the owner.
+ * Returns { slug, status, locales, skipped }.
+ */
+export async function importPublish({ from, workdir, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
+  const final = path.join(from, "final.mp4");
+  const metaFile = path.join(from, "meta.json");
+  for (const file of [final, metaFile]) if (!existsSync(file)) throw new UsageError(`${from} has no ${path.basename(file)}`);
+  const raw = JSON.parse(readFileSync(metaFile, "utf8"));
+  const meta = readMeta(raw);
+  const thumbnail = THUMBNAILS.map((name) => path.join(from, name)).find((file) => existsSync(file));
+  const problems = [];
+  if (!thumbnail) problems.push(`no ${THUMBNAILS.join(" or ")}`);
+  else if (statSync(thumbnail).size > THUMBNAIL_MAX_BYTES) problems.push(`${path.basename(thumbnail)} is ${statSync(thumbnail).size} bytes, YouTube takes ${THUMBNAIL_MAX_BYTES}`);
+  const { problems: fieldProblems, fields } = publishFields(raw, meta);
+  problems.push(...fieldProblems.map((problem) => `meta.json ${problem}`));
+  if (problems.length) throw new UsageError(`${meta.slug}: the upload package cannot be made:\n  ${problems.join("\n  ")}`);
+
+  const site = client ?? siteClient({ env, home });
+  const known = await site.project(meta.slug);
+  if (!known || !(known.checklist ?? []).some((item) => item.key === IMPORTED)) throw new UsageError(`${meta.slug} was not imported by this command; import its cut first`);
+  const current = (known.reviews ?? []).find((review) => review.gate === "final" && !review.subject);
+  const sha256 = await sha256File(final);
+  if (!current || current.content_sha256 !== sha256 || current.status !== "approved") {
+    throw new UsageError(`${meta.slug}: the upload package needs this directory's final.mp4 approved as the site's newest final cut${current ? ` (the site has ${current.content_sha256.slice(0, 12)}…, ${current.status})` : ""}`);
+  }
+  const batch = (known.reviews ?? []).find((review) => review.gate === "languages" && !review.subject && ["pending", "approved"].includes(review.status));
+  if (batch?.status === "pending") log(`${meta.slug}: its languages batch still waits for the owner; the package carries the same files`);
+
+  const chosen = known.locales ?? {};
+  const found = languageFiles(from);
+  const localizations = {};
+  const skipped = { captions: {}, dub: {} };
+  const send = [];
+  const seconds = Number(current.payload?.duration_seconds) || 0;
+  for (const locale of IMPORT_LOCALES) {
+    const ticked = chosen[locale] ?? {};
+    const files = found[locale] ?? {};
+    if (ticked.metadata) {
+      const problem = files.metadata ? languageFileProblem("metadata", readFileSync(files.metadata.file)) : `no description.${locale}.txt`;
+      if (problem) problems.push(`${locale} title and description: ${problem}`);
+      else localizations[locale] = localization(readFileSync(files.metadata.file));
+    }
+    if (ticked.captions) {
+      const problem = files.captions ? languageFileProblem("captions", readFileSync(files.captions.file)) : null;
+      if (problem) problems.push(`${locale}.srt: ${problem}`);
+      else if (files.captions) send.push(files.captions);
+      else skipped.captions[locale] = `${from} has no ${locale}.srt`;
+    }
+    if (ticked.dub) {
+      if (!files.dub) skipped.dub[locale] = `${from} has no dub.${locale} track`;
+      else {
+        const length = await probe(files.dub.file, env);
+        if (seconds && Math.abs(length - seconds) > DUB_TOLERANCE) problems.push(`${path.basename(files.dub.file)}: lasts ${length.toFixed(2)} s, the cut ${seconds.toFixed(2)} s`);
+        else send.push(files.dub);
+      }
+    }
+  }
+  if (problems.length) throw new UsageError(`${meta.slug}: the upload package cannot be made:\n  ${problems.join("\n  ")}`);
+
+  const metadata = {
+    title: meta.titles[0],
+    description: meta.description,
+    ...fields,
+    default_language: NARRATION_LOCALE,
+    final_sha256: sha256,
+    chapters: meta.chapters,
+    localizations,
+    // The site checks the package against the panel as it is now (language_package.py compose).
+    ...(known.locales_decided_at || Object.keys(chosen).length ? { language_choice: chosen } : {}),
+    ...(Object.keys(skipped.captions).length ? { skipped_caption_locales: skipped.captions } : {}),
+    ...(Object.keys(skipped.dub).length ? { skipped_dub_locales: skipped.dub } : {}),
+  };
+  const file = path.join(resolveWorkdir({ flag: workdir, env, slug: meta.slug, home }), "review", `publish-import-${sha256.slice(0, 16)}.json`);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, `${JSON.stringify(metadata, null, 2)}\n`);
+
+  const captions = existsSync(path.join(from, CAPTIONS));
+  const items = [
+    { id: "files", ok: true, detail: `final.mp4, ${path.basename(thumbnail)}${captions ? `, ${CAPTIONS}` : ""} and ${send.length} language file(s)` },
+    { id: "descriptions", ok: true, detail: `zh-TW${Object.keys(localizations).length ? ` and ${Object.keys(localizations).join(", ")}` : ""}` },
+    { id: "captions", ok: true, detail: `${captions ? "zh-TW" : "no zh-TW captions"}${send.some((each) => each.role.startsWith("captions_")) ? ` and ${send.filter((each) => each.role.startsWith("captions_")).map((each) => each.role.slice(9)).join(", ")}` : ""}`, ...(Object.keys(skipped.captions).length ? { warnings: Object.entries(skipped.captions).map(([locale, why]) => `${locale}: ${why}`) } : {}) },
+    { id: "disclosure", ok: true, detail: `${fields.contains_synthetic_media ? "tick altered or synthetic content" : "no disclosure needed"}${fields.disclosure_reason ? `: ${fields.disclosure_reason}` : ""}` },
+  ];
+  const sent = [{ ...(await upload(site, meta.slug, file, "metadata")), content_type: "application/json" }];
+  sent.push(await upload(site, meta.slug, final, "final"));
+  sent.push(await upload(site, meta.slug, thumbnail, "thumbnail"));
+  if (captions) sent.push(await upload(site, meta.slug, path.join(from, CAPTIONS), "captions_zh-TW"));
+  for (const item of send) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
+  const review = await site.submit(meta.slug, {
+    gate: "publish",
+    content_sha256: sent[0].sha256,
+    summary: `上傳包 ${items.length} 項齊全（匯入）：請確認可以上架`,
+    payload: {
+      package: { ok: true, final_sha256: sha256, items },
+      minutes: seconds ? Math.round((seconds / 60) * 10) / 10 : null,
+      chapters: meta.chapters.length,
+      locales: [NARRATION_LOCALE, ...Object.keys(localizations)],
+      zh: { title: metadata.title, description: metadata.description, tags: metadata.tags },
+      disclosure: { synthetic: fields.contains_synthetic_media, reason: fields.disclosure_reason },
+      checklist: [],
+      imported: true,
+      hand_pushed: true,
+    },
+    files: sent,
+  });
+  log(`${meta.slug}: upload package ${review.status} (zh-TW${Object.keys(localizations).length ? `, ${Object.keys(localizations).join(", ")}` : ""})`);
+  return { slug: meta.slug, status: review.status, locales: Object.keys(localizations), skipped };
 }
