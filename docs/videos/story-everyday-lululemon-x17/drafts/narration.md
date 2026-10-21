@@ -1,11 +1,10 @@
-# X17 Lululemon｜逐句母稿 v8
+# X17 Lululemon｜逐句母稿 v9
 
 每列 `ID | SEC 代碼或 editorial | 台灣繁中旁白 | 無品牌示意畫面焦點`。`editorial` 是由前述事實推出的問題或轉場，不替真實工廠、員工、客人編台詞。黑色運動褲是**同一件示意物件**，不是可辨識的真實商品。
 
 ## b01: 那條褲子，怎麼從衣架上消失（濃縮開場）
 x170101 | S1 | 二〇一三年三月，店裡一排衣架突然少了黑色運動褲。 | empty rack with plain black pants gap
 x170102 | S1 | 空位原本掛著 Lululemon 的部分黑色 Luon 褲。 | selected plain black pants beside empty hanger
-x170103 | S1 | 公司那時還在追查，問題到底出在哪裡。 | fabric swatch beside blank test tile
 x170104 | S2,S3 | 公司有布料檢驗，成衣卻被撤下；四月重查舊標準時，漏看了哪一關？ | folded plain black pants under soft light
 x170105 | S5 | 六月，公司公布黑褲回店的進度；空衣架究竟等了多久？ | empty rack beside a closed delivery door
 x170106 | S4 | 六月的第一季報告，會把那批貨寫進哪一欄？ | black pants beside unopened ledger
@@ -115,15 +114,12 @@ x170525 | S4 | 季報把收入拆成門市、直達消費者和其他通路，�
 x170526 | S5 | 全公司營業利益還年減一成；報告沒有說，這全由黑褲造成。 | a whole-company operating result card beside a single unmarked black pair
 x170527 | editorial | 那整個財年結束後，這條褲子的真正收入影響能算出來嗎？ | annual ledger closes under hanging pants
 
-## b06: 隔年財報公布，黑褲已回店
-x170601 | S5,S6a | 隔年三月，二〇一三財年成績公布；黑褲早已回到衣架。 | annual calendar beside restored rack
+## b06: 隔年報表公布，黑褲少賣額仍是空白
+x170601 | S6a | 隔年三月，二〇一三財年的成績公告公布了。 | annual calendar beside closed ledger
 x170602 | editorial | 翻開年度表，缺貨那季和回補後的月份被合成一個營收數字。 | black pants beside full annual ledger
-x170603 | S6a | 公司全年營收十五點九一億美元，仍增百分之十六。 | wide rack and typeset annual card
-x170604 | S6a | 沒有。公告列的是全公司收入，沒有另列這批褲子全年究竟少賣多少。 | one black pair apart from many generic garments
-x170605 | S6a | 上年有五十三週，這年五十二週；兩年的比較窗口也不同。 | 53rd blank calendar tile set aside
-x170609 | editorial | 那已入帳的那箱貨，能解釋整個年度的毛利變化嗎？ | parcel token joins mature store tokens
-x170610 | S6a | 全年毛利率從上年的百分之五十五點七，降到五十二點八。 | annual margin tiles step down beside pants
-x170611 | S6a | 也不能。全年毛利率混合各項商品與成本，公告沒有拆出黑褲的完整份額。 | mixed plain cost chips around black pants box
+x170603 | S6a | 表上的營收是全公司各種商品的合計，不是這條褲子的收銀紀錄。 | one black pair beside many generic garments
+x170604 | S6a | 沒有。公告沒有另列這批褲子全年究竟少賣多少。 | one black pair apart from many generic garments
+x170605 | S1,S6a | 還記得三月那張全年預估？少賣的最後實數，不能從這個合計數倒推。 | forecast envelope beside annual ledger
 
 ## outro: 最後三句
 x170630 | S1,S3 | 回到開場的空衣架：公司先撤下成衣，再修檢驗；布樣的合格可能性，不能直接當作褲子上身的保證。 | black pants between swatch and blank ledger

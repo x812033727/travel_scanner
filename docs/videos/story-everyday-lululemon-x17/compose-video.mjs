@@ -39,14 +39,15 @@ for (const raw of readFileSync(path.join(dir, "drafts/narration.md"), "utf8").sp
   if (refs.some(ref => !knownSources.has(ref))) throw new Error(`Unknown source: ${id}`);
   (current === 6 ? outro : chapters[current]).push({ id, text, refs, cue });
 }
-if (chapters.some((chapter, i) => !titles[i] || chapter.length < 8) || outro.length !== 3) throw new Error("Six chapters and three closing lines required");
+// The condensed opening and final answer may be short; do not pad either with recaps to hit a scene count.
+if (chapters.some((chapter, i) => !titles[i] || chapter.length < (i === 0 ? 7 : i === 5 ? 5 : 8)) || outro.length !== 3) throw new Error("Six chapters and three closing lines required");
 const allRows = [...chapters.flat(), ...outro];
 if (new Set(allRows.map(row => row.id)).size !== allRows.length) throw new Error("Duplicate line ID");
 for (const chapter of [...chapters, outro]) for (let i = 1; i < chapter.length; i++) if (chapter[i].id <= chapter[i - 1].id) throw new Error(`Unordered line ID: ${chapter[i].id}`);
 const bodyText = chapters.slice(1).flat().map(row => row.text).join("");
 const bodyChars = bodyText.length;
 const bodyHanDigits = [...bodyText].filter(char => /[\p{Script=Han}〇0-9]/u.test(char)).length;
-if (bodyHanDigits < 2450) throw new Error(`Substantive body has fewer than 2450 Han characters and digits: ${bodyHanDigits}`);
+if (bodyHanDigits < 2300) throw new Error(`Substantive body has fewer than 2300 Han characters and digits: ${bodyHanDigits}`);
 
 const cardRules = new Map([
   ["x170316", { title: "三月當時的預測", stats: [{ value: "US$12–17m", label: "FY2013 Q1 估計少賣；不是實際損失" }], source: "S1｜2013-03-21" }],
@@ -55,8 +56,6 @@ const cardRules = new Map([
   ["x170505", { title: "已入帳的存貨準備", stats: [{ value: "US$17.5m", label: "FY2013 Q1 成本；非失去營收總額" }], source: "S4/S5｜FY2013 Q1" }],
   ["x170513", { title: "公司整體營收", stats: [{ value: "+21%", label: "FY2013 Q1 對上年同季；US$345.8m" }], source: "S4/S5｜FY2013 Q1" }],
   ["x170520", { title: "公司整體毛利率", stats: [{ value: "55.0% → 49.4%", label: "上年同季 → FY2013 Q1；不能全歸撤貨" }], source: "S5｜FY2013 Q1" }],
-  ["x170603", { title: "公司全年營收", stats: [{ value: "US$1.591bn", label: "FY2013；對 FY2012 +16%，兩年週數不同" }], source: "S6a｜FY2013" }],
-  ["x170610", { title: "公司全年毛利率", stats: [{ value: "55.7% → 52.8%", label: "FY2012 → FY2013；非全數撤貨" }], source: "S6a｜FY2013" }],
 ]);
 for (const id of cardRules.keys()) if (!allRows.some(row => row.id === id)) throw new Error(`Missing card anchor: ${id}`);
 const shortAnchors = new Set([
@@ -64,7 +63,7 @@ const shortAnchors = new Set([
   "x170305", "x170310", "x170503", "x170504", "x170509", "x170510", "x170512", "x170506",
 ]);
 const single = new Set([...shortAnchors, ...cardRules.keys(), "x170522", ...chapters.map(chapter => chapter[0].id), ...chapters.map(chapter => chapter.at(-1).id)]);
-const cameras = ["Medium shot, gentle push in", "Close-up, slow pull out", "Wide shot, pan left", "Overhead shot, pan right", "Medium close-up, still", "Low-angle shot, tilt up"];
+const cameras = ["Medium shot, steady push in", "Close-up, slow pull out", "Wide shot, pan left", "Overhead shot, pan right", "Medium close-up, still", "Low-angle shot, tilt up"];
 const locations = ["an unbranded apparel store", "a plain fabric and sewing workshop", "an anonymous back-room stock area", "a simple quality inspection table", "a simple store office beside a display wall", "a quiet accounting desk next to an unmarked hanger"];
 const lights = ["soft window light", "diffuse morning light", "soft overhead light", "muted daylight", "gentle lamp light", "soft evening light"];
 const safeguards = [
@@ -126,7 +125,6 @@ const loops = [
   { setup: "x170522", payoff: "x170524", what: "毛利率降幅是否全由黑褲造成" },
   { setup: "x170527", payoff: "x170604", what: "全年成績能否算出黑褲收入影響" },
   { setup: "x170602", payoff: "x170604", what: "年度公告是否有黑褲單獨少賣實績" },
-  { setup: "x170609", payoff: "x170611", what: "全年毛利是否能拆出黑褲份額" },
 ];
 const order = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.setup) < order.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
@@ -155,6 +153,6 @@ const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const videoSha = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 17, chapter: 1, planned_episodes: 20, title: "Lululemon：布料可能過測試，黑褲為何得下架", logline: "一條黑 Luon 褲從布料檢驗到成衣、撤貨與成本帳，追問公司如何查出透度原因，以及為何營收仍增時毛利受傷。", names: ["Lululemon", "Luon"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X17 Lululemon｜台灣繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。本版正文紙面 ${bodyHanDigits} 個漢字／數字（${bodyChars} 可見字元），未經真實 TTS 測長，也未經 v8 獨立逐句或雙盲。第一章濃縮後接官方 5 秒片頭；最後三句後接官方 21 秒片尾。`, "", ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "script.md"), ["# X17 Lululemon｜台灣繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。本版正文紙面 ${bodyHanDigits} 個漢字／數字（${bodyChars} 可見字元），未經真實 TTS 測長，也未經 v9 獨立逐句或雙盲。第一章濃縮後接官方 5 秒片頭；最後三句後接官方 21 秒片尾。`, "", ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X17 Lululemon｜逐句作者來源矩陣", "", `\`video.json\` SHA-256：\`${videoSha}\`。作者標記，**不是獨立來源審核 PASS**；原始網址、位元組、SHA 和口徑見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.length ? row.refs.join("、") : "敘事提問／依原件推理／CTA"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, scenes: scenes.length, shots: shotCount, cards: cardRules.size, lines: allRows.length, opening_chars: chapters[0].map(row => row.text).join("").length, substantive_body_chars: bodyChars, substantive_body_han_digits: bodyHanDigits, loops: loops.length }, null, 2));

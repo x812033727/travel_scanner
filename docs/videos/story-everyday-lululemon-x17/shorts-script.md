@@ -1,6 +1,6 @@
 # X17 Lululemon｜兩支獨立 Shorts 逐句稿
 
-主片 SHA-256：`f68d439d8c3b4f44ba9b4e14c0709dc10adc960a4276c06f2882b21b280e9527`；Shorts SHA-256：`3d30db31161a9712a1fe97b8d89375f045a670de9a55045c30e70a1a3454056e`。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒官方書擋。
+主片 SHA-256：`b610b0568254fd09bc51eaafb13b50317bcbce74ae3f1b7b5c838694d9d0477e`；Shorts SHA-256：`c97fa18053edfee6318f74f75d6f69af5c18cf1a1350eeca11d540da21932770`。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒官方書擋。
 
 ## Short 1｜Lululemon：布可能達標，褲子為何太透？
 
@@ -15,9 +15,9 @@
 
 原始資料：[Lululemon S1 SEC 原件](https://www.sec.gov/Archives/edgar/data/1397187/000119312513118207/d505115dex991.htm)、[Lululemon S3 SEC 原件](https://www.sec.gov/Archives/edgar/data/1397187/000119312513140668/d516336dex991.htm)
 
-## Short 2｜Lululemon 撤下黑褲，營收怎麼還增兩成一？
+## Short 2｜Lululemon 撤下部分黑色 Luon 褲，營收怎麼還增兩成一？
 
-- `x17s201` 二〇一三年，Lululemon 黑褲下架，營收為何還增？（`x17-b03-s05`）
+- `x17s201` 二〇一三年，Lululemon 的部分黑色 Luon 褲下架，營收為何還增？（`x17-b03-s05`）
 - `x17s202` 三月預估，全年將少賣五千七到六千七百萬美元。（`x17-b03-s09`）
 - `x17s203` 那是當時的預測，不是最後量到的損失。（`x17-b05-s03`）
 - `x17s204` 店裡與網站，在第一季最後七週都缺這批貨。（`x17-b05-s04`）

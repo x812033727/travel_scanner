@@ -13,7 +13,7 @@ x17s107 | S3 | 公司改測拉開布時的反應、重量與允許偏差，也�
 x17s108 | editorial | 看布樣之外，最後還得看做好的那條褲子。 | black pants box faces empty rack
 
 ## Short 2: 撤貨後營收還增，錢去哪了？
-x17s201 | S1,S5 | 二〇一三年，Lululemon 黑褲下架，營收為何還增？ | hand removes selected pants from hanger
+x17s201 | S1,S5 | 二〇一三年，Lululemon 的部分黑色 Luon 褲下架，營收為何還增？ | hand removes selected pants from hanger
 x17s202 | S1 | 三月預估，全年將少賣五千七到六千七百萬美元。 | gap in rack and closed delivery door
 x17s203 | editorial | 那是當時的預測，不是最後量到的損失。 | empty shelf faces blank web product tile
 x17s204 | S4 | 店裡與網站，在第一季最後七週都缺這批貨。 | ledger opens beside boxed black pants
