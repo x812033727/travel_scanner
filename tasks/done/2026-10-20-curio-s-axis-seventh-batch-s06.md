@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-curio-s-axis-seventh-batch-s06
 title: "Curio S axis seventh batch: S06 bone scraping, S12 Sekigahara's warning shot, S20 the stolen Mona Lisa"
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-history-stories
 claimed_at: 2026-10-20T08:12:51Z
 created_at: 2026-10-20T08:15:00Z
-completed_at:
+completed_at: 2026-10-21T02:19:35Z
 branch:
 depends_on: []
 scope:
@@ -33,7 +33,7 @@ S12「關原之戰，家康真的開槍逼小早川倒戈？」（日本）、S2
 
 - [x] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
 - [x] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
-- [ ] 旁白、配樂、插圖做完並 `review-push` 給站主。
+- [x] 旁白、配樂、插圖做完並 `review-push` 給站主。
 
 ## Steps
 
@@ -45,3 +45,8 @@ S12「關原之戰，家康真的開槍逼小早川倒戈？」（日本）、S2
 - 三題查核（研究＋獨立覆核）、三集稿子（盲評全過、lint 0／0）、旁白、插圖都做完，旁白與分鏡已 `review-push`。
 - 剩下：S20 沒有配樂（S06、S12 有）。本月 music 預算（60 tracks）用完，`music --slug` 回「本月的music預算不夠」。
   站主在 `/admin/videos` 設定分頁調高預算，或下個月，再對這幾集跑 `node tools/video/cli.mjs music --slug curio-<id>`，然後重送 `review-push --gate audio`。
+
+## 收尾（2026-10-21）
+
+- 站主調高 judge 與 music 預算後補齊：缺配樂的集數已跑 `music` 並重送 `review-push --gate audio`；第九批三集的插圖畫完（S07 77 張、S15 78 張、S19 68 張；S19 有三句提示詞因背景太寫實、時鐘有數字而改寫），分鏡已送審。
+- 第九批每集花費：S07 US$1.25、S15 US$1.35、S19 US$1.34。
