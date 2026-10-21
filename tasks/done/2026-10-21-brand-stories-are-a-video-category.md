@@ -74,3 +74,7 @@ without the story tag.
   (`sync.Package.story`), for both the API upload and the VPS Studio uploader. A title already
   on YouTube takes it the next time the site sends that video's details; the channel-wide
   `video-youtube-caption-titles` retitle still adds only the captions tag.
+- A story the VPS uploader finished under the old title rule can send its details again: the
+  job id of a `story` video takes `:story-titles-1` (vps.STORY_TITLE_RULE), and the status
+  view's `titles_outdated` shows 「重送標題說明到 VPS」; the new job carries the known video id,
+  so the MP4 is not uploaded again.
