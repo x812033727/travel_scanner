@@ -81,6 +81,7 @@ c74｜說明書的資料夾可以夾小程式，AI 會去執行（比喻對不�
 c75｜只裝自己寫的或信得過來源的；同事給的也先讀過每一個檔再開｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Only install skills only from trusted sources … including one shared by a colleague—review it before enabling）；https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（Use Skills only from trusted sources）｜2026-10-21｜risk
 c77｜寫上位置對只寫檔名：2／2 對 0／2（同一本只差這一行的 W1）、對企劃內只寫檔名的 3／8；W2 只跑兩次（卡片標「之後加跑的兩次」）｜實跑：runlog Unexpected 2b、W1 對 W2 的 NOTE｜2026-10-21｜appendix-fixed
 c78｜W2a、W2b 第一個 Bash 指令裡讀附件的那一段：`cat .claude/skills/signup-check/部門對照.md`；兩次都把兩個新人的部門統一成業務部、行銷部｜實跑：runlog W2a 第 3841 行、W2b 第 3985 行的 tool_use Bash（節錄）；demo/W2a/reply.md「業務」→業務部、「Marketing」→行銷部｜2026-10-21｜appendix-cmd
+c79｜別人寫的那一本先打開來讀：G1 想寫的 SKILL.md 上傳前檢查判 ready to upload，但內文 71 行（你那本 12 行，所以「長好幾倍」），部門對照整段寫在內文裡；看不懂的那一頁就不裝（頻道做法）｜實跑：runlog G1 第二條 NOTE（cover-check 對 runner/g1-attempt：description 102、body 71 行、VERDICT ready to upload）；demo/G1/attempted-SKILL.md 第 28 行；M2（12 行）｜2026-10-21｜risk-g1
 c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處｜2026-10-21｜closing
 
 站主觀點（標成「這個頻道的做法／門檻」，不是站主自己的經歷）：「交代到第三次就寫成說明書」（three）、「看不懂的那一頁就不裝」（risk）；第 2、3 點落在 cover-rule、appendix-choose 的選擇規則，那兩處另有 c11、c61 的出處。
@@ -124,6 +125,15 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 - no_detour：ChatGPT、Codex 那一章併進上傳章：clients 場景拿掉章名，只留兩句（標準與四十六個工具；ChatGPT 和 Codex 也在清單上）；chatgpt 場景刪除（is8w、tvg4、28ea、u9ih），細節移到說明欄；dnqy 移到風險章第一句。
 - 02:44–03:29 的節奏：旁白只說三個 token 數（七十七、四百二十二、四百六十二），三萬三千八百、七十五、每本七十、規格的一百只留在卡片上（a4xv、za92「幾乎沒差」、5msh、ksu8）；h69p 只說二十八。「我」仍是五句。
 
+### 修訂 2（2026-10-21，盲評第二輪 9／13 之後）
+
+- no_spoiler：74qp 改成停住的問句「可是它點名的那頁附件，它找得到嗎？」，「找不到」第一次出現在附件章（ug7s）；2wav 回呼改成「開頭問的那頁附件」；loop 74qp → 2wav 保留。開場 stats 卡的「5／8 它說找不到」沒動（卡片事實不改）。
+- one_line：rvj7 改成回呼「壞的，就是剛剛那句。」，好例由 sry6 講。
+- no_recap：結尾答案句 2x29 改成「一本說明書，平常只有封面在對話裡，翻開才算。」
+- one_thread：風險章改用 G1 想寫的那一本當「別人寫的那一本」：新場景 risk-g1（bullets，章名移到這裡；dnqy、新句 kxdt、9hed），原 risk 場景的規則與「看不懂的那一頁就不裝」照留（c79）。
+- 節奏：第 2 章旁白只說七十七、四百六十二兩個 token 數；5msh 改「差不多就是六個封面」，mrna 改「本來就有二十幾本」，h69p 不說二十八；pusc、ugm9 拿掉「比喻在這裡要小心／又對不上了」，比喻停止對應的地方各用一句平鋪的事實講。
+- 之後 cards 的 kicker「比喻對不上的地方」沒改（畫面文字）。
+
 ## 我懷疑但沒動的事
 
 - step8-result 已拆成兩個狀態（各約 7–8 秒）；最長的狀態是 body-6、clients 的 13.3 秒，加 7% 約 14.2 秒，在 15 秒內。
@@ -138,6 +148,6 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 
 ## 進度
 
-- 修訂 1 之後 66 個場景、11 章（ChatGPT／Codex 那一章併進上傳章，chatgpt 場景刪除），loops 23 條。從查核與聽稿那幾輪起，video.json 直接改（`<work>/_tools/writer/revise1.mjs`），build-video.mjs 不再是來源。
+- 修訂 2 之後 67 個場景、11 章，loops 23 條（dnqy 的回收改成 kxdt）。video.json 直接改（revise1.mjs、revise2.mjs）。
 - lint：0 錯誤、0 警告（發音字典的新詞已由協調者併入）。
-- 估計 15.6 分鐘、170 句、3,491 口語單位；最長的卡片狀態估 13.3 秒（body-6、clients）。
+- 估計 15.7 分鐘、172 句、3,505 口語單位；最長的卡片狀態估 13.3 秒（body-6、clients）。
