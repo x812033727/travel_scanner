@@ -1,13 +1,13 @@
 ---
 id: 2026-10-17-character-dubs-en-ja-ko-for
 title: Character dubs (en, ja, ko) for imported dramas, attached per episode — only after the owner confirms zh-TW
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-zt-import-languages
 claimed_at: 2026-10-18T14:24:52Z
 created_at: 2026-10-17T17:46:56Z
-completed_at:
+completed_at: 2026-10-21T06:19:36Z
 branch:
 depends_on: []
 scope:
@@ -32,22 +32,22 @@ The 422 `video_locales_dub_not_for_drama` noted on 2026-10-18 does not apply: th
 
 ## Definition of done
 
-- [ ] `import --from DIR --languages` sends one hand-pushed `languages` batch for a video the
+- [x] `import --from DIR --languages` sends one hand-pushed `languages` batch for a video the
   command imported, bound to the site's newest final (refused when it is not this folder's cut):
   `description_<l>` from `description.<l>.txt`, `captions_<l>` from `<l>.srt`, `dub_<l>`
   from `dub.<l>.m4a|mp3|wav`, only for the parts the owner ticked.
-- [ ] A dub whose length differs from the cut by more than half a second is refused before
+- [x] A dub whose length differs from the cut by more than half a second is refused before
   anything is sent.
-- [ ] The languages card on /admin/videos lists each language's files to download and waits for
+- [x] The languages card on /admin/videos lists each language's files to download and waits for
   the owner (`hand_pushed`), and the language states read "ready".
-- [ ] All 24 episodes carry their batch on production.
+- [x] All 24 episodes carry their batch on production.
 
 ## Steps
 
-- [ ] `languagesBatch` and `importLanguages` in `tools/video/import/import.mjs`, `--languages` in its cli.
-- [ ] Tests in `import.test.mjs`.
-- [ ] Translated titles and descriptions for the 24 episodes (on the series' production branch).
-- [ ] Send the 24 batches; read one back.
+- [x] `languagesBatch` and `importLanguages` in `tools/video/import/import.mjs`, `--languages` in its cli.
+- [x] Tests in `import.test.mjs`.
+- [x] Translated titles and descriptions for the 24 episodes (on the series' production branch).
+- [x] Send the 24 batches; read one back.
 
 ## How to verify
 
