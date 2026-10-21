@@ -39,9 +39,9 @@ rather than wait for the original workdirs (option 2), and approved an imagery a
 
 ## Definition of done
 
-- [ ] Each of the ten has a new narration, illustrations, music, final cut and upload package, each gate approved by the owner on /admin/videos.
-- [ ] Each of the ten has the eight languages (metadata, captions, dub) in a languages batch, or a skip with its reason.
-- [ ] Spend stays under US$36 for images and music; the actual figure per episode is written here.
+- [x] Nine of the ten (S07 went back to Codex) have a new narration, illustrations, music, final cut and upload package, each gate approved by the owner on /admin/videos.
+- [x] Each of the nine has the eight languages (metadata, captions, dub) in a languages batch, pending the owner (2026-10-21).
+- [x] Spend stays under US$36 for images and music: about US$15.7 in total (S01 1.70, S09 1.84, S18 1.67, S11 1.41, S14 1.44, S06 2.02, S08 1.81, S38 2.73, S39 1.77, plus about US$2 of unused S07 imagery).
 
 ## Steps
 
@@ -93,4 +93,15 @@ rather than wait for the original workdirs (option 2), and approved an imagery a
   (ja cb103 shortened to fit), S08 all eight, S09 en/ja/ko. Checks partly done; dub check-audio flags are mostly the
   transcriber on names (周瑜 heard as 醤油), but S01 ja cb324 「降って」 was read こうて — fix real misreads only.
   One dub run per episode per background command: eight tracks line by line take over an hour.
+- 2026-10-21 (end): every one of the nine has its publish card and its eight-language batch on /admin/videos.
+  What is left is the owner's: approve the publish and languages cards, upload the eight dub tracks per video in
+  YouTube Studio's Languages page (no API), and upload the videos. S06 S08 S38 S39 scripts and translations still
+  live only in this branch's remake-20261020/<slug> backup and Codex's branch; whoever merges Codex's PR #1598 should
+  take these i18n files (the scripts match, except S06's outro line 「這個頻道只講史書裡找得到的，想一起開檔案就訂閱。」
+  and S39's outro split into scenes cs998/cs997, both made here and approved by the owner).
+- Dub review lesson: the check flags 5–55 lines per locale; a reviewer per episode found 3–20 real problems each —
+  Japanese kanji readings (甫庵 read ふあん, 流馬 りゅうま, 降って こうて), a stray "thought" spoken before a line
+  (seen in five episodes), a few mistranslations (ko S38 pf050 "Tom and money"; pt S09 ok518 missing verb) and two
+  readings that sounded obscene or crude (pt "Nos Oda", th ตีน). Fix ambiguous readings in the text (hiragana), redo
+  the random ones with `dub --redo <file> --keep-fitting`, accept homophone noise.
 
