@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { estimateTimeline } from "../core/timeline.mjs";
+import { ICON_NAMES, icon } from "./icons.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -17,7 +19,7 @@ test("every showcase scene is valid for its template", () => {
 test("template data problems name the field", () => {
   const bullets = scene("three-questions");
   bullets.data.items = [];
-  assert.deepEqual(sceneProblems(bullets), ["items must be 1 to 6 strings"]);
+  assert.deepEqual(sceneProblems(bullets), ["items must be 1 to 6 strings (or { text, icon } to draw an icon in place of the number)"]);
   const table = scene("numbers");
   table.data.rows[1] = ["只有兩格", "x"];
   assert.deepEqual(sceneProblems(table), ["rows must be 1 to 8 arrays as long as columns", "highlight must be a row index"]);
@@ -500,4 +502,140 @@ test("sharing the credit capsule with the photo card left the screenshot's CSS b
     /<style>:root\{--width:1920px;--height:1080px\}\.t-screenshot \.credit\{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;background:rgba\(8,24,25,\.62\);color:rgba\(255,255,255,\.88\);font-size:22px;line-height:1\.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\}<\/style>/,
     "the screenshot's credit CSS, byte for byte",
   );
+});
+
+// The paper look (docs/videos/PAPER.md, 2026-10-21): the key band, icons, the numeral card and
+// the theme, each in the page only when a card asks for it.
+const paper = JSON.parse(readFileSync(new URL("./fixtures/paper/video.json", import.meta.url), "utf8"));
+const tutorial = JSON.parse(readFileSync(new URL("./terminal/fixtures/claude-code/video.json", import.meta.url), "utf8"));
+const head = (html) => /<style>([^<]*)<\/style>/.exec(html)[1];
+const PLAIN_HEAD = ":root{--width:1920px;--height:1080px}";
+
+test("stateCount mirrors the timeline: one state a scene, plus one per reveal after the first line", () => {
+  for (const doc of [showcase, paper, tutorial]) {
+    const timeline = estimateTimeline(doc);
+    doc.scenes.forEach((each, index) => assert.equal(stateCount(each), timeline.scenes[index].states.length, `${doc.slug} ${each.id}`));
+  }
+  assert.equal(stateCount({ lines: [{ reveal: 2 }, { reveal: 1 }, {}] }), 2);
+  assert.equal(stateCount({ lines: [{}] }), 1);
+});
+
+test("the key band takes one line a state of at most 24 characters, or key for a single state, and is drawn only when set", () => {
+  assert.equal(KEY_MAX_CHARS, 24);
+  const bullets = scene("three-questions");
+  bullets.data.keys = ["第一題", "第二題"];
+  assert.deepEqual(sceneProblems(bullets), ["keys has 2 lines but the scene has 3 states (one plus one per reveal after the first line)"]);
+  bullets.data.keys = ["第一題", "第二題", "第三題"];
+  assert.deepEqual(sceneProblems(bullets), []);
+  assert.equal(sceneKey(bullets, 1), "第二題");
+  assert.equal(sceneKey(bullets, 3), undefined);
+  bullets.data.key = "一句";
+  assert.match(sceneProblems(bullets)[0], /^key and keys cannot both be set/);
+  delete bullets.data.keys;
+  assert.match(sceneProblems(bullets)[0], /^key is for a scene with one state; this one has 3/);
+  delete bullets.data.key;
+  bullets.data.keys = ["第一題", "第二題", `太長的一句：${"字".repeat(20)}`];
+  assert.match(sceneProblems(bullets)[0], /^keys must list one line a state, each at most 24 characters/);
+  const big = scene("keyword");
+  assert.deepEqual(keyProblems(big), [], "no band, no problem");
+  big.data.key = "字".repeat(25);
+  assert.deepEqual(sceneProblems(big), ["key must be one line of at most 24 characters"]);
+  big.data.key = "**排行榜**不是你每天的工作";
+  assert.deepEqual(sceneProblems(big), [], "emphasis marks do not count");
+  assert.equal(sceneKey(big, 0), big.data.key);
+  assert.equal(sceneKey(big, 1), undefined);
+  const plain = slideHtml(big, state());
+  const banded = slideHtml(big, state({ key: big.data.key }));
+  assert.match(banded, /<\/div><div class="key-band enter" style="--i:0"><span class="fit"><em>排行榜<\/em>不是你每天的工作<\/span><\/div><main class="content t-big">/);
+  assert.equal(head(banded), PLAIN_HEAD + KEY_BAND_CSS, "the band's CSS rides with the band");
+  assert.match(KEY_BAND_CSS, /^:root\{--safe-bottom:274px\}\.key-band\{position:absolute;left:var\(--safe-x\);right:var\(--safe-x\);top:826px;height:84px;/);
+  assert.equal(head(plain), PLAIN_HEAD);
+  assert.doesNotMatch(plain, /key-band/);
+  assert.equal(banded.replace(/<div class="key-band enter"[^]*?<\/div><main/, "<main").replace(KEY_BAND_CSS, ""), plain, "nothing else of the page changes");
+});
+
+test("the paper theme is in the page only for a state that carries it; thumbnails and every showcase page are what they were", () => {
+  assert.deepEqual(THEMES, ["paper"]);
+  assert.equal(themeCss(undefined), "");
+  assert.equal(themeCss("neon"), "");
+  assert.equal(themeCss("paper"), PAPER_CSS);
+  assert.match(PAPER_CSS, /^:root\{--ground:#f6efe3;--ground-2:#fbf6ec;--panel:#fffaf1;[^}]*--paper:#1f2a44;[^}]*--orange:#d8452f;/);
+  for (const each of showcase.scenes) {
+    const plain = slideHtml(each, state());
+    const themed = slideHtml(each, state({ theme: "paper" }));
+    assert.ok(!plain.includes("--ground:#f6efe3"), each.id);
+    assert.ok(head(themed).endsWith(PAPER_CSS), `${each.id}: the theme comes last, so it overrides the template's own CSS`);
+    assert.equal(themed.replace(PAPER_CSS, ""), plain, `${each.id}: the theme changes the head alone`);
+  }
+  assert.ok(!thumbnailHtml(showcase.thumbnail).includes(PAPER_CSS), "the thumbnail keeps the channel's dark look");
+});
+
+test("icons: sixteen line drawings in the text colour, drawn in place of a number, in a step, beside a heading or over a word, with their CSS only then", () => {
+  assert.deepEqual(ICON_NAMES, ["folder", "file", "document", "checklist", "terminal", "clock", "person", "warning", "book", "gear", "search", "chat", "globe", "lock", "lightning", "arrow"]);
+  for (const name of ICON_NAMES) {
+    const markup = icon(name);
+    assert.match(markup, /^<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">.+<\/svg>$/, name);
+    assert.equal(visibleText(markup).trim(), "", `${name} carries no text for the font check`);
+  }
+  assert.throws(() => icon("rocket"), /unknown icon rocket/);
+  const bullets = scene("three-questions");
+  bullets.data.items[0] = { text: bullets.data.items[0], icon: "folder" };
+  assert.deepEqual(sceneProblems(bullets), [], "a mix of strings and { text, icon } items; the capacity is the same");
+  const html = slideHtml(bullets, state({ reveal: 3, totalReveals: 3 }));
+  assert.match(html, /<li class="enter" style="--i:0"><span class="n ic"><svg class="icon"/);
+  assert.match(html, /<span class="n">2<\/span>/, "an item without an icon keeps its number");
+  assert.ok(head(html).startsWith(`${PLAIN_HEAD}.icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;flex:none}`));
+  bullets.data.items[0].icon = "rocket";
+  assert.deepEqual(sceneProblems(bullets), [`an item's icon must be one of ${ICON_NAMES.join(", ")}`]);
+  const steps = scene("cascade");
+  steps.data.steps[1].icon = "gear";
+  assert.deepEqual(sceneProblems(steps), []);
+  assert.match(slideHtml(steps, state()), /<div class="num">STEP 2<\/div><div class="ic"><svg class="icon"/);
+  steps.data.steps[1].icon = "";
+  assert.match(sceneProblems(steps)[0], /^a step's icon must be one of/);
+  const compare = scene("flagship-vs-small");
+  compare.data.left.icon = "book";
+  assert.deepEqual(sceneProblems(compare), []);
+  assert.match(slideHtml(compare, state()), /<h3><svg class="icon"[^>]*>.*?<\/svg>旗艦模型<\/h3>/);
+  assert.match(slideHtml(compare, state()), /<h3>小模型<\/h3>/);
+  compare.data.right.icon = "no";
+  assert.match(sceneProblems(compare)[0], /^right\.icon must be one of/);
+  const big = scene("keyword");
+  big.data.icon = "lightning";
+  assert.deepEqual(sceneProblems(big), []);
+  assert.match(slideHtml(big, state()), /<div class="ic enter" style="--i:0"><svg class="icon"/);
+  assert.ok(head(slideHtml(big, state())).includes(".t-big .ic{"));
+  big.data.icon = "Lightning";
+  assert.deepEqual(sceneProblems(big), [`icon must be one of ${ICON_NAMES.join(", ")}`]);
+  for (const each of showcase.scenes) assert.ok(!slideHtml(each, state()).includes(".icon{"), `${each.id} draws no icon and carries no icon CSS`);
+});
+
+test("the big card's numeral draws 01 in the accent colour beside the word, with its CSS only then", () => {
+  const big = scene("keyword");
+  const plain = slideHtml(big, state());
+  big.data.numeral = "1";
+  assert.deepEqual(sceneProblems(big), []);
+  const html = slideHtml(big, state());
+  assert.match(html, /<div class="numeral-row enter" style="--i:1"><div class="numeral">01<\/div><div class="word fit enter" style="--i:1">MMLU-Pro<\/div><\/div>/);
+  assert.ok(head(html).includes(".t-big .numeral{font-size:420px;font-weight:900;line-height:.9;color:var(--orange);"));
+  assert.ok(!plain.includes("numeral"));
+  big.data.numeral = 12;
+  assert.match(slideHtml(big, state()), /<div class="numeral">12<\/div>/, "a number is fine too");
+  big.data.numeral = "123";
+  assert.deepEqual(sceneProblems(big), ["numeral must be one or two digits"]);
+});
+
+test("the paper fixture uses every new field and is valid for its templates", () => {
+  assert.equal(paper.theme, "paper");
+  for (const each of paper.scenes) {
+    assert.deepEqual(sceneProblems(each), [], each.id);
+    assert.ok(each.data.key !== undefined || each.data.keys !== undefined, `${each.id} carries a key line`);
+  }
+  const by = (template) => paper.scenes.filter((each) => each.template === template);
+  assert.equal(by("big")[0].data.numeral, "1");
+  assert.ok(by("bullets")[0].data.items.every((item) => item.icon));
+  assert.ok(by("steps")[0].data.steps.every((step) => step.icon));
+  assert.ok(by("compare")[0].data.left.icon && by("compare")[0].data.right.icon);
+  assert.ok(by("terminal").length >= 2 && by("terminal").every((each) => each.data.typing === "human"));
+  assert.deepEqual(thumbnailProblems(paper.thumbnail), []);
 });

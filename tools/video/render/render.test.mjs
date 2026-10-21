@@ -19,7 +19,8 @@ import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
 import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailSubject, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
-import { thumbnailRotation } from "../templates/templates.mjs";
+import { stateCount, thumbnailRotation } from "../templates/templates.mjs";
+import { screencastHtml } from "../screencast/scene.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -953,4 +954,50 @@ test("render decides the channel mark once: a first drawing names and pins it, a
   assert.equal(await main(["render", "--slug", broken.slug], context(broken)), EXIT.lint, out);
   assert.equal(existsSync(pinOf(broken)), false);
   assert.equal(existsSync(path.join(broken.workdir, "frames", "manifest.json")), false);
+});
+
+// The paper look (docs/videos/PAPER.md, 2026-10-21).
+test("a video's theme moves every slide key and no thumbnail key; a key band moves its own scene's keys only", () => {
+  const base = renderPlan(showcase, "theme-a");
+  const themed = renderPlan({ ...showcase, theme: "paper" }, "theme-a");
+  base.scenes.forEach((scene, index) => {
+    scene.states.forEach((state, stateIndex) => {
+      const own = themed.scenes[index].states[stateIndex];
+      assert.notEqual(own.key, state.key, `${scene.id} ${stateIndex}`);
+      assert.ok(own.html.includes("--ground:#f6efe3"), `${scene.id} ${stateIndex} is drawn on paper`);
+    });
+  });
+  assert.equal(themed.thumbnail.key, base.thumbnail.key, "the thumbnail keeps the channel's dark look");
+  assert.deepEqual(themed.thumbnail.variants.map((variant) => variant.key), base.thumbnail.variants.map((variant) => variant.key));
+  const keyed = structuredClone(showcase);
+  keyed.scenes.find((scene) => scene.id === "three-questions").data.keys = ["第一題", "第二題", "第三題"];
+  const banded = renderPlan(keyed, "theme-a");
+  banded.scenes.forEach((scene, index) => {
+    scene.states.forEach((state, stateIndex) => {
+      assert.equal(state.key === base.scenes[index].states[stateIndex].key, scene.id !== "three-questions", `${scene.id} ${stateIndex}`);
+    });
+  });
+  const bullets = banded.scenes.find((scene) => scene.id === "three-questions");
+  assert.match(bullets.states[1].html, /<div class="key-band enter" style="--i:0"><span class="fit">第二題<\/span><\/div>/);
+  assert.ok(bullets.states[1].text.includes("第二題"), "the band's words are checked for glyphs like the card's");
+  assert.ok(!bullets.states[1].html.includes("第一題"), "each state shows its own line");
+});
+
+test("a screencast state draws the key band and the theme as a slide does, and its key lines are checked like a slide's", () => {
+  const tutorial = JSON.parse(readFileSync(new URL("../screencast/fixtures/tutorial/video.json", import.meta.url), "utf8"));
+  const scene = structuredClone(tutorial.scenes.find((each) => each.template === "screencast"));
+  const plan = { capture: 0, file: "screencast/x/0.png", sha256: "", cursor: null, highlight: null, press: false, zoom: null };
+  const plain = screencastHtml(scene, plan, { first: true, chapter: "章", chapterNumber: 1, chapterCount: 2 });
+  const dressed = screencastHtml(scene, plan, { first: true, chapter: "章", chapterNumber: 1, chapterCount: 2, key: "先點攻略區", theme: "paper" });
+  assert.doesNotMatch(plain, /key-band|--ground:#f6efe3/);
+  assert.match(dressed, /<\/div><div class="key-band enter" style="--i:0"><span class="fit">先點攻略區<\/span><\/div><main class="content t-screencast">/);
+  assert.ok(/<style>[^<]*--safe-bottom:274px[^<]*--ground:#f6efe3[^<]*<\/style>/.test(dressed), "the band's CSS, then the theme's, after the scene's own");
+  const states = stateCount(scene);
+  const doc = structuredClone(tutorial);
+  const own = doc.scenes.find((each) => each.template === "screencast");
+  own.data.keys = Array.from({ length: states + 1 }, () => "一句");
+  const problems = renderProblems(doc);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0].path, /\(find-guides\)\.data$/);
+  assert.match(problems[0].message, new RegExp(`^keys has ${states + 1} lines but the scene has ${states} states`));
 });
