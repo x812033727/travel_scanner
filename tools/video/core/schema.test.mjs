@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { compilationDocument } from "./compilation.mjs";
 import { fixture } from "./fixtures/load.mjs";
-import { eachLine, spokenText, textHash, validateVideo, VIDEO_CATEGORIES } from "./schema.mjs";
+import { eachLine, spokenText, textHash, THEMES, validateVideo, VIDEO_CATEGORIES } from "./schema.mjs";
 import { localizationPlan } from "../production/retention.mjs";
 
 const paths = (errors) => errors.map((error) => error.path);
@@ -135,4 +135,15 @@ test("a compilation is valid without a voice, shots, a cast or a look, and a str
   assert.ok(validateVideo(slides).map((error) => error.path).includes("format"));
   const fresh = fixture();
   assert.deepEqual(validateVideo(fresh), [], "a slides video is untouched");
+});
+
+test("theme is the paper look or nothing (docs/videos/PAPER.md)", () => {
+  const doc = fixture();
+  doc.theme = "paper";
+  assert.deepEqual(validateVideo(doc), []);
+  doc.theme = "neon";
+  const errors = validateVideo(doc);
+  assert.deepEqual(errors.map((error) => error.path), ["theme"]);
+  assert.match(errors[0].message, /^must be "paper" \(docs\/videos\/PAPER\.md\), or left out for the dark theme$/);
+  assert.deepEqual(THEMES, ["paper"]);
 });

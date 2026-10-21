@@ -197,6 +197,8 @@ export function visualHash(doc) {
   const hash = createHash("sha256");
   const thumbnail = doc.thumbnail?.data && Object.hasOwn(doc.thumbnail.data, "brand") ? { ...doc.thumbnail, data: Object.fromEntries(Object.entries(doc.thumbnail.data).filter(([key]) => key !== "brand")) } : doc.thumbnail;
   hash.update(JSON.stringify(thumbnail ?? null));
+  // The paper look (docs/videos/PAPER.md) redraws every card; a video without a theme hashes as it always did.
+  if (doc.theme) hash.update(JSON.stringify(["theme", doc.theme]));
   for (const scene of doc.scenes) {
     hash.update(JSON.stringify([scene.id, scene.template, scene.chapter ?? null, scene.data, scene.lines.map((line) => [line.id, line.reveal ?? 0])]));
     // Only selected variants change the picture. The base face sheet and speech stay current.
