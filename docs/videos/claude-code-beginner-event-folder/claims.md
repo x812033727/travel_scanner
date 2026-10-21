@@ -53,7 +53,7 @@ c27｜先切到 Plan 送出、讀計畫，看過再切到 Accept edits 叫它照
 c28｜上下文快滿時，它會自動把對話壓成摘要再繼續｜https://code.claude.com/docs/en/desktop（「When context fills up, Claude automatically summarizes the conversation and continues working.」）；costs 頁的 auto-compaction｜2026-10-21｜ctx-what、ctx-auto
 c29｜模型選擇器旁的用量圈看這次用了多少；/compact 現在壓成摘要、可以加一句要保留什麼；/clear 開全新的對話、專案記憶還在｜https://code.claude.com/docs/en/desktop（usage ring、`/compact`）、https://code.claude.com/docs/en/commands（`/compact [instructions]`；「/clear starts fresh on a new task while keeping project memory」）、https://code.claude.com/docs/en/costs（custom compaction instructions）｜2026-10-21｜ctx-tools
 c30｜寫進度、開新對話、先讀進度再草擬確認信｜runlog R13 pr1（created 輸出/進度.md）、R14 pr2（從 pr1 的快照，`continue.txt`）｜2026-10-21｜ctx-steps
-c31｜進度裡還沒做的一段（第 16–24 行）：餐點人數還沒給場地、四個人要補資料｜`demo/pr1/輸出/進度.md` 第 16–24 行（全檔 37 行）｜2026-10-21｜ctx-progress
+c31｜進度裡還沒做的一段（第 16–24 行）：餐點人數還沒給場地、四個人要補資料｜`demo/pr1/輸出/進度.md` 第 16–24 行（全檔 37 行）｜2026-10-21｜ctx-progress（修訂 4：f34t 加「照它接手的名單」：pr1 從 s1 的快照開始，s1 的 輸出/要補資料.csv 是 4 筆（含林佳蓉沒有 Email 的那一筆，runlog R6 NOTE），所以進度寫 4 位；p1 的要補資料是 3 人）
 c32｜進度檔沒在最上層：pr1 依 CLAUDE.md 第 2 條放進 輸出/；新的對話先讀最上層的 進度.md 失敗，再搜整個資料夾，才讀到 輸出/進度.md｜runlog R13 reply（引用句）；R14 pr2：`Read 進度.md` → tool_error「File does not exist」→ `Glob **/*` → `Read 輸出\進度.md`｜2026-10-21｜miss-where、ctx-miss、miss-search
 c33｜CLAUDE.md 每次 session 開始都會被讀；它是脈絡，不是強制的設定｜https://code.claude.com/docs/en/memory（「Claude reads them at the start of every session.」「Claude treats them as context, not enforced configuration.」）｜2026-10-21｜md-why、md-context
 c34｜觀眾要寫的 CLAUDE.md 全文 12 行（八條規矩逐條唸）｜`demo/extras/claude-md-specific/CLAUDE.md`，sha256 前 16 碼 8e865483370aa2d4（runlog M1）｜2026-10-21｜md-all、md-r1–md-r5
@@ -68,7 +68,7 @@ c42｜照修改時間排：這次絕對最終版 10/20（16:00、待確認）、
 c43｜要它整理大綱的四次（pl1、m1、a1、a2）都打開讀過，都照內容選真的最終版；寫規矩的 g1 一個檔都沒讀。查核 1：pr1 也讀了三份大綱（並在進度裡以真的最終版為準），所以「打開大綱讀過的那四次」改成「整理大綱的那四次都打開讀過」｜runlog R8、R9、R10、R10b；「Unexpected results」第 1 條｜2026-10-21｜m3-who（修訂 1：m3-who 移到 CLAUDE.md 那一章 md-g1 之後；只剩 qey9 一句）（修訂 2：m3-who 場景刪掉；四次照內容選的事實只在 gucw 說一次）
 c44｜a1 回覆第一句「整理完了，但我選的不是修改時間最新的那份。」；有 CLAUDE.md 的 a2 也選對，並寫了 輸出/處理日誌.md｜runlog R10 reply；R10b created 輸出/處理日誌.md、VERDICT RIGHT｜2026-10-21｜a1-quote（修訂 1：a1-quote 移到權限那一章 perm-runs 之後；a2 那句 fgmk 移到 md-g1）（修訂 2：fgmk 刪掉，a2 的結果不再出現在旁白）
 c45｜只說動作（vague.txt）對講目的（purpose.txt 全文）｜`demo/prompts/vague.txt`、`demo/prompts/purpose.txt`｜2026-10-21｜list-say、list-ask、list-ask-log
-c46｜p1 依序：一個 Bash 列資料夾並讀活動說明和報名表；想跑 Python 整理被擋 4 次；改用 Write 寫三個檔；回覆說沒跑程式、手動核對，建議開 CSV 看筆數｜runlog R4 stream summary 與 reply｜2026-10-21｜list-steps
+c46｜p1 依序：一個 Bash 列資料夾並讀活動說明和報名表；想跑 Python 整理被擋 4 次；改用 Write 寫三個檔；回覆說沒跑程式、手動核對，建議開 CSV 看筆數｜runlog R4 stream summary 與 reply｜2026-10-21｜list-steps（修訂 4：旁白只剩 dgp2「一次讀完活動說明和報名表，就把三個檔寫了出來」與 2i58；被擋 4 次只在卡片上，旁白在權限那一章講過）
 c47｜日誌的數字：可寄 16、要補資料 3、素食 4（劉思妤若來 5，建議先報 5）、海鮮過敏 2，寫在「要跟場地說的數字（11/01 前）」那一段｜`demo/p1/輸出/處理日誌.md`｜2026-10-21｜list-stats（修訂 3：3jad 改說海鮮過敏的兩位是黃雅婷、周家豪，依據同一份日誌「過敏：2 位，皆海鮮過敏（黃雅婷、周家豪）」）
 c48｜確認信草稿的活動資訊（第 15–21 行）：日期、時間 14:00–16:30、地點對得上活動說明；詳細地址、取消方式留成【請補上】｜`demo/pr2/輸出/確認信草稿.md`；runlog R14 runner 逐項對照｜2026-10-21｜letter、letter-blank
 c49｜草稿寫「活動前一天（11/12）會再寄一封行前提醒。」，講座是 11/14，12 號是前兩天｜`demo/pr2/輸出/確認信草稿.md` 第 34 行；runlog R14 NOTE｜2026-10-21｜letter-slip
@@ -111,6 +111,8 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 
 - **修訂 3（2026-10-21，盲評第 3 輪 10／13 之後）**：ziec 不再重講大綱的結果，改成往前走的一句（現在要它交出名單和確認信草稿），仍是 mgyy 的 payoff。實戰章掃過一次：3jad 不再重講 11/01 的期限（第一章 7gct 講過），改說過敏的兩位是誰；其餘句子各帶新的要求、數字或失敗，沒動。CLAUDE.md 八條：第三、四條併成 hrrt 一句，第五、六條併成 uqir 一句（9ne2、9upa 刪掉），卡片全文 12 行不變。估計 19.2 → 19.1 分鐘。
 
+- **修訂 4（2026-10-21，盲評第 4 輪 10／13 之後）**：list-steps 的 dgp2、z2ah、7zrx 併成 dgp2 一句（只講這一次的新東西：一次讀完兩個檔、寫出三個檔），z2ah、7zrx 刪掉，卡片四步不變、reveal 改成 3＋1。f34t 加「照它接手的名單」，說清楚進度裡的 4 位是 s1 那份名單的數，跟 p1 的 3 人不矛盾。CLAUDE.md 的 8／8／9 沒動。估計 19.1 → 18.9 分鐘。
+
 ## 我懷疑但沒動的事
 
 - **長度**：21.5 分鐘明顯超過 12–16 的目標。最容易整段拿掉、不影響四件成果的是「連接器和排程」那一章（約 2 分鐘，全是引用加一次 d1）和「上下文」那一章的用量圈與指令表；要不要拿掉請協調者或站主決定。
@@ -143,3 +145,5 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - [x] 修訂 2：連接器整段拿掉、CLAUDE.md 章只留一句回呼、三個重複事實各講一次、模式表旁白只講三個並把不確定的那句接在表後；lint 0 錯誤 0 警告，估 19.2 分鐘、194 句、156 個卡片狀態（每個 ≤ 13.6 秒）
 - [x] 盲評第 3 輪（10／13；兩題是題目措辭，已由面板修正）
 - [x] 修訂 3：ziec 改成往前的一句、3jad 換成新的事實、八條規矩併成六句唸；lint 0 錯誤 0 警告，估 19.1 分鐘、192 句、156 個卡片狀態
+- [x] 盲評第 4 輪（10／13）
+- [x] 修訂 4：list-steps 併成一句、f34t 註明是接手那份名單的數；lint 0 錯誤 0 警告，估 18.9 分鐘、190 句、154 個卡片狀態
