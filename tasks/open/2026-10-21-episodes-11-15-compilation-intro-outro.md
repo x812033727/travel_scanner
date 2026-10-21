@@ -28,7 +28,7 @@ CC files on its own timeline and links in every description, imported to /admin/
 - [x] Build 11-15 and 16-20; check the cut, the nine CC files, the eight tracks' length, the links; import.
 - [x] Owner 2026-10-21: 16-20, 21-25, 26-30 too; episodes 25-30 get their eight languages first (eight agents, one per language, four at a time): dub.<l>.json, glossary additions, import-folder descriptions; es/pt/id/vi/th episode titles in youtube-locales.
 - [x] Owner 2026-10-21: compilations carry the channel mark (compile-dh.mjs); 1-5 and 6-10, already on YouTube (JdeViV2WyCc, nC_-tNKWd9E), re-made as new videos `-v2` (a YouTube video's file cannot be replaced) and imported.
-- [ ] Build, check and import 21-25 and 26-30.
+- [x] Build, check and import 21-25 and 26-30.
 - [ ] `--languages` once the owner ticks each new entry's panel; `--publish` once each cut is approved.
 
 ## Notes
