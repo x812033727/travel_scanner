@@ -1,4 +1,4 @@
-# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v11
+# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v12
 
 這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。每拍 `shot` 均須是長片真正的 `shot` 影格；兩張長片 `stats` 不送入 Shorts 影格管線。數字由 Shorts `big` 欄位在 1080×1920 直式卡原生排字，場景底圖另取有效的匿名插畫。編譯器直接呼叫 `episodeShortsProblems(shorts, video)` 防止再引用 `stats`。
 
@@ -12,17 +12,17 @@
 | 1/2 | `x13-b04-s05` | Close-up, pull out along a content-catalog aisle, several generic unmarked audio slots close in the central frame, with no show name or cover art | 656 | 若干節目關閉 |
 | 1/3 | `x13-b04-s06` | Wide shot, gentle pan left along a content-catalog aisle, a public notice with no readable lettering faces anonymous closed audio slots, all in the central crop | 656 | 全面退場？ |
 | 1/4 | `x13-b04-s08` | Medium close-up, pan right along a content-catalog aisle, closed audio slots and open video catalog tiles stack vertically, never implying they are the same program | 656 | 影片供給仍在 |
-| 1/5 | `x13-b04-s09` | Low-angle shot, lift gently along a content-catalog aisle, two separate catalog shelves, one with some closed audio slots and one with available video tiles, stay centered | 656 | 不同內容 |
-| 1/6 | `x13-b06-s01` | Medium shot, push in inside a quiet video studio facing a living area, the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show | 656 | 新方案啟動 |
-| 1/7 | `x13-b06-s03` | Wide shot, gentle pan left inside a quiet video studio facing a living area, an eligible anonymous video creator receives an unmarked view-based payment token in the center | 656 | 合格創作者 |
-| 1/8 | `x13-b06-s05` | Medium close-up, pan right inside a quiet video studio facing a living area, a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered | 656 | 會員觀看 |
-| 1/9 | `x13-b06-s19` | Medium shot, push in inside a quiet video studio facing a living area, a new anonymous creator records video while a different member presses play, both inside a central vertical composition | 656 | 並未全面退出 |
-| 2/1 | `x13-b06-s11` | Medium close-up, pan right inside a quiet video studio facing a living area, a lighter green advertising podcast-cost card sits over an unopened orange member card in the central frame | 656 | 廣告欄播客成本／**−€21m** |
-| 2/2 | `x13-b06-s07` | Medium shot, push in inside a quiet video studio facing a living area, an unassigned new video cost token waits between vertically stacked green and orange service lanes | 656 | 真省多少？ |
-| 2/3 | `x13-b06-s03` | Wide shot, gentle pan left inside a quiet video studio facing a living area, an eligible anonymous video creator receives an unmarked view-based payment token in the center | 656 | 合格影片 |
-| 2/4 | `x13-b06-s05` | Medium close-up, pan right inside a quiet video studio facing a living area, a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered | 656 | Premium 會員 |
-| 2/5 | `x13-b06-s12` | Low-angle shot, lift gently inside a quiet video studio facing a living area, only a limited new video experience cost token moves into the orange member lane, both lanes vertically stacked | 656 | 成本換欄 |
-| 2/6 | `x13-b06-s14` | Close-up, pull out inside a quiet video studio facing a living area, a blank unknown-transfer cell rests between vertically stacked green and orange cost lanes | 656 | 拆分未知 |
-| 2/7 | `x13-b06-s15` | Wide shot, gentle pan left inside a quiet video studio facing a living area, an analyst removes an unsupported all-service savings sticker from a smaller green account | 656 | 不能全算省下 |
+| 1/5 | `x13-b04-s13` | Overhead shot, tilt down along a content-catalog aisle, an illustrative listener sets a generic closed-audio notice next to a distinct open-video catalog card, without identifying a show | 656 | 不同內容 |
+| 1/6 | `x13-b06-s01` | Low-angle shot, lift gently inside a quiet video studio facing a living area, the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show | 656 | 新方案啟動 |
+| 1/7 | `x13-b06-s03` | Close-up, pull out inside a quiet video studio facing a living area, an eligible anonymous video creator receives an unmarked view-based payment token in the center | 656 | 合格創作者 |
+| 1/8 | `x13-b06-s06` | Medium close-up, pan right inside a quiet video studio facing a living area, a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered | 656 | 會員觀看 |
+| 1/9 | `x13-b06-s18` | Medium close-up, pan right inside a quiet video studio facing a living area, a new anonymous creator records video while a different member presses play, both inside a central vertical composition | 656 | 並未全面退出 |
+| 2/1 | `x13-b06-s11` | Overhead shot, tilt down inside a quiet video studio facing a living area, a lighter green advertising podcast-cost card sits over an unopened orange member card in the central frame | 656 | 廣告欄播客成本／**−€21m** |
+| 2/2 | `x13-b06-s08` | Medium shot, push in inside a quiet video studio facing a living area, an unassigned new video cost token waits between vertically stacked green and orange service lanes | 656 | 真省多少？ |
+| 2/3 | `x13-b06-s03` | Close-up, pull out inside a quiet video studio facing a living area, an eligible anonymous video creator receives an unmarked view-based payment token in the center | 656 | 合格影片 |
+| 2/4 | `x13-b06-s06` | Medium close-up, pan right inside a quiet video studio facing a living area, a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered | 656 | Premium 會員 |
+| 2/5 | `x13-b06-s12` | Medium close-up, pan right inside a quiet video studio facing a living area, only a limited new video experience cost token moves into the orange member lane, both lanes vertically stacked | 656 | 成本換欄 |
+| 2/6 | `x13-b06-s14` | Medium shot, push in inside a quiet video studio facing a living area, a blank unknown-transfer cell rests between vertically stacked green and orange cost lanes | 656 | 拆分未知 |
+| 2/7 | `x13-b06-s15` | Close-up, pull out inside a quiet video studio facing a living area, an analyst removes an unsupported all-service savings sticker from a smaller green account | 656 | 不能全算省下 |
 
 Short 1 的九拍從部分內容縮編追到新影片合作，Short 2 的七拍解釋費用分類和不能全算節省。兩支各需正式 TTS 實測 25–55 秒、重新排版文字／CC、核 9:16 真圖與音樂授權；不得以這份紙面規格冒稱成片。

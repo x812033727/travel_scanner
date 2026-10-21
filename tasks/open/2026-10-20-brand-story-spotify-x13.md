@@ -1,18 +1,17 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
 title: Brand story Spotify X13
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-review
-claimed_at: 2026-10-20T23:37:39Z
+owner:
+claimed_at:
 created_at: 2026-10-20T20:01:30Z
 completed_at:
 branch: codex/brand-story-spotify-x13
 depends_on: []
 scope:
   - docs/videos/story-everyday-spotify-x13
-  - docs/videos/lexicon.json
   - tasks/open/2026-10-20-brand-story-spotify-x13.md
 ---
 
@@ -88,3 +87,5 @@ Task-board coordination: v9 root used `claim --force` only because the Spotify t
 **V11 author checkpoint, 2026-10-20:** [response](../../docs/videos/story-everyday-spotify-x13/reviews/author-response-v11.md) records the exact v10 repair: explicit callbacks at `x130403`/`x130601`/`x130605`, no repeated €308m or +€42m spoken figures, no S6 full-company annual-result narration/card, and a more concrete illustrative recording/player action between chapters. S6/S8 remain source-matrix background only; Shorts scripts are unchanged and still map to valid main `shot` scenes. Frozen `video.json` SHA-256 `5d38f42b8c8de9af92d4c944fc2d56bb2bcebd822fdf2c81d11199e691aa4614`, `shorts.json` `cfc0e99620da3884f459283b0a2e68a97d6801b8b9b3b9b7c8bbf35e93be9f30`; companion SHA values in episode README. Compiler: 112 lines, 99 shots, nine cards, 233 opening / 2,537 substantive written characters, lint 2,503 spoken units (~8:20 at 300/min). Offline lint 0/0; `episodeShortsProblems=[]`; both Shorts CLI validations PASS; docs-video tests 236/236; tasks check exit 0 with unrelated pre-existing warnings; `git diff --check` clean. **Still HOLD:** another agent's fresh-original source audit and two *new* first-blind narrative votes on exactly v11; later formal worker targeted source ingestion, measured TTS body >=8:00, media/audio/CC QA, official animation files and platform link receipts. No paid media, finished film, upload or PR exists for X13.
 
 **V11 independent outcome:** [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v11-independent.md) independently re-fetched S1–S9 with exact raw bytes/SHA and passed the frozen main, cards and Shorts facts, retaining the formal worker's >40k targeted-uptake requirement. Two truly fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v11-independent.md) / [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v11-independent.md) each scored 6/10 and both answered mandatory Q8/Q13 **No**. `x130608` repeats the 2020 Ad-Supported classification without a named callback; B also flags `x130622` revoicing creator-payment eligibility. The long 2024 Ad-Supported/Premium margin passage explicitly cannot reveal whether a podcast program continued, and its music-ad/Premium asides interrupt the partial-retreat → new-video-program question. A also answered Q12 No because this passage loses the continuous podcast decision thread; B passed Q12. Both Shorts stand alone, though Short 2 should say its euro unit aloud. Thus v11 narrative is **HOLD**. V12 should reduce the 2024 non-podcast financial bridge to two or three bounded sentences, move promptly to documented 2025 creator/listener actions, remove unmarked fact repeats, preserve a substantive >=8-minute paper body using sourced story movement rather than more account recaps, and re-freeze for new source/two new blind votes. No paid media, official bumper assets, finished film, upload, true links or PR exists for X13.
+
+**V12 author checkpoint, 2026-10-21:** revised the v11 Q8/Q13/Q12 defects while preserving six chapters and a paper body over eight minutes. The 2024 whole-business margin bridge is three bounded lines; S5 free podcast listening, sold podcast ad impressions and existing publisher payments now carry the continuing-podcast thread into S7's 2025 creator and Premium-member actions. Removed the repeated 2020 classification and payout eligibility; Short 2 says the euro unit aloud. The v12 [author response](../../docs/videos/story-everyday-spotify-x13/reviews/author-response-v12.md) and [README](../../docs/videos/story-everyday-spotify-x13/README.md) record changes, counts, hashes and offline checks. Five core frozen SHA-256 values: video `3535eaf115165d1ea3acfce1d583a947e0f28add5796f3a60e72f26753b009d8`; Shorts `7fe87423bed274677ce10d4699b8fd343d6a4760afe50240eb069b2ab2674579`; source matrix `2431601fef57ad59774f620028933b261d0e2e775af933cf4c34a15f815433d0`; narration `ea8cdd4176e9a0ad73fcc4119068c7b40f562e418b06706ed25e5b29c03128b9`; visual plan `6914f69dd52f4aad53cb13dc5c3bb94e6f0b4bcca7cd143a8afae21002b71578`. On 2026-10-21, author re-fetched all S1–S9 and two background annual SEC originals; each current HTML response is 9 bytes longer than the v11 receipt, so the source matrix was refreshed to current bytes/SHA without carrying forward any v11 approval. This is **author-side offline work only**, not a new independent PASS. Next gate: independent v12 SEC source audit and two genuinely fresh first readers of the same frozen JSONs. No paid media, measured narration runtime, official bumper files, finished media, upload or PR.

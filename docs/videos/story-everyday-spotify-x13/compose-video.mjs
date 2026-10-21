@@ -13,7 +13,7 @@ const sources = [
   ["S5", "Spotify 2024 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992024000009/spot-20240630x6xk.htm"],
   ["S7", "Spotify 2025 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992025000012/spot-20250630x6xk.htm"],
   ["S9", "Spotify 2023-07-25 Q2 earnings exhibit", "https://www.sec.gov/Archives/edgar/data/1639920/000114036123035965/brhc20056303_ex99-1.htm"],
-].map(([code, title, url]) => ({ code, title, url, checked_on: "2026-10-20" }));
+].map(([code, title, url]) => ({ code, title, url, checked_on: "2026-10-21" }));
 
 const sourceRefs = note => {
   const refs = new Set([...note.matchAll(/S([1-9])\s*[–-]\s*S([1-9])/g)].flatMap(([, first, last]) => Array.from({ length: Number(last) - Number(first) + 1 }, (_, i) => `S${Number(first) + i}`)));
@@ -237,36 +237,35 @@ const cues = [
   ],
   [
     "the whole green service margin line crosses into positive space",
-    "last-year negative card and current positive card sit in one category frame",
-    "an old reorganization packet is put away beside a current-quarter clean desk",
-    "a generic production workbench uses a smaller staffing and materials pile",
-    "an outgoing-cost pile shrinks beside an unopened stream of incoming advertising tokens",
-    "advertising coins arrive from several unbranded buyers",
-    "music-shaped ad tiles bring the largest incoming pile to the green service lane",
-    "podcast and self-service ad tiles enter one jointly marked conceptual tray without labels",
-    "three distinct factors surround the rising green category line",
-    "a free listener compares a still-open player with a broad category result, without pretending a closed show returned",
-    "a warm orange member-service lane rises beside, but not inside, the green lane",
-    "an unmarked player can switch between two service entry points while the account ledgers remain separate",
-    "anonymous monthly fee and free-play tokens stay outside a blank show-by-show result cell",
-    "a broad margin line stops before an anonymous empty show slot, without re-creating that show",
-    "an unnamed creator studies an unmarked empty compensation tray before making a new recording",
-    "the quarterly report closes while a separate future product window remains unopened",
-    "an unmarked video tile waits beside a simple upload button on a fictional listener screen",
-    "a fresh video tile sits apart from several unrelated closed audio slots",
-    "an unrelated unnamed creator fixes a simple camera above a plain microphone",
-    "the creator raises a blank video tile toward an unmarked upload slot",
+    "last year's reorganization packet and this year's smaller podcast workbench sit beside the broad service result",
+    "a broad margin line stops before an anonymous closed-show slot without re-creating that show",
+    "a free listener opens a generic podcast catalog online beside an offline download symbol without words",
+    "an anonymous free listener takes an unmarked podcast tile from an online player to a plain offline device",
+    "unnamed podcast ad placements receive new anonymous buyer tokens",
+    "podcast and self-service advertising receipts share an unsplit conceptual tray",
+    "sold ad tiles have no program names that can refill an old closed-show slot",
+    "a podcast publisher's unmarked audio tile meets an anonymous ad-network sales counter",
+    "a publisher's audio tile and an advertiser's coin cross separate ends of a plain platform counter",
+    "a publisher payment token rests in the broad cost tray without claiming any show's profit",
+    "the clearly illustrative creator's completed audio tile sits beside a still-empty video slot",
+    "a fictional creator weighs a plain camera against an unanswered view-payment slot",
+    "a current-quarter page closes before a later blank creator-program envelope opens",
+    "a Premium member approaches a blank video player with an unanswered midstream ad slot",
+    "the creator mounts a camera beside an unbranded microphone for a distinct new video recording",
+    "closed older audio tiles and a different creator's blank video tile occupy separate shelves",
+    "a newly recorded video tile pauses beside an empty view-payment tray and unmarked upload button",
+    "a creator waits by the upload button while an unrelated member approaches the video player",
     "an unopened creator-program envelope arrives beside the new video tile"
   ],
   [
     "a fresh creator-program doorway opens near a plain camera",
     "four unlabeled market tiles surround a newly opened partnership door",
     "an eligible unnamed video creator receives a generic view-based compensation token",
+    "an unmarked video time strip and other eligibility tokens sit beside the creator's payout tray",
     "the different new creator uploads an unmarked video frame",
     "an anonymous member watches a blank video tile without a midstream break symbol",
-    "the creator and member appear on separate sides of a service hallway",
+    "nine more unmarked market tiles extend the creator-program doorway",
     "a new video-experience cost token waits between green and orange service lanes",
-    "the old green lane contains all generic podcast content-cost tiles",
     "the member presses play as two colored cost lanes remain unopened",
     "the green advertising lane reveals a smaller podcast-cost area",
     "an outside reader holds the lighter green service card without claiming total savings",
@@ -274,13 +273,11 @@ const cues = [
     "the green lane keeps the unrelated remaining podcast-cost tokens",
     "a transfer amount cell remains blank between green and orange lanes",
     "the analyst leaves the overall podcast-savings label blank",
-    "two differently colored service lanes still both contain anonymous audio tiles",
     "a creator camera and audio microphone remain distinct instead of merging all shows",
     "the program door admits eligible new video creators but leaves other anonymous formats outside",
     "a new unnamed creator records video while a separate member watches",
-    "one old purchase envelope is put aside from a still-active playback screen",
-    "earlier closed audio slots and a newer creator-program door occupy distinct shelves",
-    "a listener touches a new blank video play icon on an ordinary device",
+    "an unmarked creator-program launch expense enters the Premium service cost explanation",
+    "an illustrative listener sees a larger anonymous video-podcast catalog without show identity labels",
     "partly closed old content shelf faces a clearly open new creator-program door"
   ]
 ];
@@ -290,11 +287,10 @@ const cueOverrides = new Map(Object.entries({
   "x130406": "a public notice with no readable lettering faces anonymous closed audio slots, all in the central crop",
   "x130404": "a partly removed generic content stack and a larger remaining stack sit side by side in the central crop",
   "x130408": "closed audio slots and open video catalog tiles stack vertically, never implying they are the same program",
-  "x130409": "two separate catalog shelves, one with some closed audio slots and one with available video tiles, stay centered",
+  "x130409": "a podcast advertising receipt grows beside separate closed audio slots, without implying a revived show",
   "x130601": "a fresh video creator program doorway opens beside a plain camera and microphone in the center",
   "x130603": "an eligible anonymous video creator receives an unmarked view-based payment token in the center",
   "x130605": "a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered",
-  "x130616": "green advertising and orange member ledgers stack vertically, each holding anonymous podcast cost tiles",
   "x130619": "a new anonymous creator records video while a different member presses play, both inside a central vertical composition",
   "x130611": "a lighter green advertising podcast-cost card sits over an unopened orange member card in the central frame",
   "x130607": "an unassigned new video cost token waits between vertically stacked green and orange service lanes",
@@ -304,8 +300,10 @@ const cueOverrides = new Map(Object.entries({
   "x130615": "an analyst removes an unsupported all-service savings sticker from a smaller green account",
   "x130201": "the same clearly fictional creator recording light from the opening faces a plain upload doorway, centered on the next action",
   "x130403": "the covered public content-change record from the opening is uncovered beside a limited anonymous asset stack, not an entire catalog",
+  "x130412": "podcast advertising receipts and broad restructuring costs rest in separate trays with no netting animation",
   "x130413": "an illustrative listener sets a generic closed-audio notice next to a distinct open-video catalog card, without identifying a show",
-  "x130517": "a generic video tile pauses immediately before an unmarked upload button beside the illustrative player",
+  "x130415": "an anonymous video catalog faces a still-covered future service report",
+  "x130517": "a fictional creator adds an unbranded camera beside a microphone for another recording",
   "x130601": "the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show"
 }));
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, gentle pan left", "Overhead shot, tilt down", "Medium close-up, pan right", "Low-angle shot, lift gently"];
@@ -319,7 +317,7 @@ const promptTails = [
   "Unmarked props, fictional adults and no protected visual works. Leave an open background for typeset copy.",
 ];
 const portraitTail = " Place hands and focal props in the central 608-pixel corridor of the 1920x1080 image for 9:16 reframing.";
-const shortSourceLines = new Set(["x130401", "x130404", "x130405", "x130406", "x130408", "x130409", "x130601", "x130603", "x130605", "x130616", "x130619", "x130607", "x130611", "x130612", "x130613", "x130614", "x130615"]);
+const shortSourceLines = new Set(["x130401", "x130404", "x130405", "x130406", "x130408", "x130413", "x130601", "x130603", "x130605", "x130619", "x130607", "x130611", "x130612", "x130613", "x130614", "x130615"]);
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語自然說書，問題落地稍停" : "台灣國語自然說書，年份與分母清楚" });
 const scenes = [];
 for (const [ci, rows] of chapters.entries()) {
@@ -350,8 +348,8 @@ const loops = [
   ["x130324", "x130401", "2023 重整的是內容組合的一部分"],
   ["x130406", "x130407", "若干節目關閉後，公告仍列出大量可用影片播客"],
   ["x130416", "x130501", "2024 整個廣告業務毛利轉正"],
-  ["x130515", "x130603", "合格影片創作者可按觀看表現取得給付"],
-  ["x130520", "x130603", "停在上傳前的創作者後來有了合格影片觀看報酬入口"],
+  ["x130513", "x130603", "匿名影片創作者後來有了依觀看表現取得給付的入口"],
+  ["x130515", "x130605", "部分市場會員觀看這類影片沒有動態插播廣告"],
   ["x130521", "x130601", "2025 為合格影片創作者開新方案"],
   ["x130607", "x130612", "新影片會員觀看體驗相關成本列入 Premium"],
   ["x130611", "x130614", "廣告欄下降無法拆出搬移與真正節省"],
@@ -361,9 +359,9 @@ const position = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(position.has(loop.setup) && position.has(loop.payoff) && position.get(loop.setup) < position.get(loop.payoff))) throw new Error(`Broken loop: ${JSON.stringify(loop)}`);
 
 const description = [
-  "2019 年，Spotify 連續兩天收購 Anchor 與 Gimlet，分別取得播客創作／發布工具及節目製作能力；兩案收購對價合計 €308m，含股份獎酬。2023 年部分播客內容資產被沖銷、若干節目關閉。這代表 Spotify 全面放棄播客嗎？本集沿 SEC 原件看 2020 的廣告成本壓力、2023 的內容重整、2024 的分類回升與 2025 的影片播客合作方案。",
+  "2019 年，Spotify 連續兩天收購 Anchor 與 Gimlet，分別取得播客創作／發布工具及節目製作能力；兩案收購對價合計 €308m，含股份獎酬。2023 年部分播客內容資產被沖銷、若干節目關閉。這代表 Spotify 全面放棄播客嗎？本集沿 SEC 原件看 2020 的廣告成本壓力、2023 的內容重整、2024 仍可收聽及透過廣告變現的播客，與 2025 的影片播客合作方案。",
   "",
-  "2023 Q2 的 €30m 僅是部分播客內容資產沖銷；2023-07-25 公告當時平台可用影片播客超過十萬，不是同季末數，也無法對上被關節目的身分。2024 Q2 的 +13% 是整條 Ad-Supported 業務毛利率，不是播客獨立獲利。2025 對合格影片播客創作者推出依觀看表現給付的 Partner Program；提供給 Premium 會員的新觀看體驗相關成本部分改列 Premium，其餘播客成本仍在 Ad-Supported。廣告欄 2025 Q2 播客成本同比少 €21m，不能全算真正節省。兩案是否回本無逐案公開收支可判。畫面是匿名概念插畫，數字由後製排字。查核日期：2026-10-20。",
+  "2023 Q2 的 €30m 僅是部分播客內容資產沖銷；2023-07-25 公告當時平台可用影片播客超過十萬，不是同季末數，也無法對上被關節目的身分。2023 Q2 播客廣告同比成長，也不能對回已關節目。2024 Q2 的 +13% 是整條 Ad-Supported 業務毛利率，不是播客獨立獲利；同季報告仍描述免費播客收聽、發行者廣告付款與播客廣告曝光增長。2025 對合格影片播客創作者推出依觀看表現給付的 Partner Program；提供給 Premium 會員的新觀看體驗相關成本部分改列 Premium，其餘播客成本仍在 Ad-Supported。廣告欄 2025 Q2 播客成本同比少 €21m，不能全算真正節省。兩案是否回本無逐案公開收支可判。畫面是匿名概念插畫，數字由後製排字。查核日期：2026-10-21。",
   "",
   "SEC 原始資料：",
   ...sources.map(source => `${source.title}\n${source.url}`),
@@ -383,7 +381,7 @@ const video = {
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 廣告業務毛利率回升，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v11", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 季報仍記錄免費播客收聽、發行者付款與播客廣告銷售，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v12", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));
