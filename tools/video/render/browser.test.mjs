@@ -4,7 +4,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { ORIGIN, slideHtml } from "../templates/templates.mjs";
-import { FPS, LAUNCH_ARGS, MAX_TRANSITION_FRAMES, openRenderer, pauseAnimations, seekAnimations } from "./browser.mjs";
+import { FPS, LAUNCH_ARGS, MAX_TRANSITION_FRAMES, maxTransitionFrames, openRenderer, pauseAnimations, seekAnimations } from "./browser.mjs";
 
 // This exercises the actual layout engine. Opt in on a host with Chromium installed:
 // VIDEO_RENDER_BROWSER_TESTS=1 VIDEO_BROWSER_CHANNEL=msedge node --test tools/video/render/browser.test.mjs
@@ -29,6 +29,10 @@ test("the page functions that freeze an entrance are shared with the Shorts rend
   for (const fn of [pauseAnimations, seekAnimations]) assert.ok(!/\b(?:FPS|ORIGIN|SIZE|import|require)\b/.test(String(fn)), "nothing of the module");
   assert.equal(FPS, 30);
   assert.equal(MAX_TRANSITION_FRAMES, 18);
+  // A terminal typed at a human pace (terminal.mjs) may run 12 s; every other card keeps the 18.
+  assert.equal(maxTransitionFrames("terminal"), 360);
+  assert.equal(maxTransitionFrames("bullets"), 18);
+  assert.equal(maxTransitionFrames(undefined), 18);
   assert.deepEqual(LAUNCH_ARGS, ["--disable-gpu", "--disable-threaded-animation"]);
 });
 
@@ -106,6 +110,14 @@ test("settled layout passes an entering diagram while genuine failures still fai
       const captured = await renderer.capture("aa05", html);
       assert.ok(captured.problems.some((problem) => /image did not load:/.test(problem)), captured.problems.join("\n"));
       assert.ok(captured.problems.some((problem) => /refused a request/.test(problem)), captured.problems.join("\n"));
+    });
+
+    await t.test("maxFrames bounds the transition: 18 by default, more only when asked", async () => {
+      // A two-second entrance: 60 frames at 30 fps.
+      const html = content(diagram, '<div style="animation:rise 2000ms linear both">slow</div>');
+      assert.equal((await renderer.capture("aa07", html, { transition: true })).frames.length, MAX_TRANSITION_FRAMES);
+      assert.equal((await renderer.capture("aa08", html, { transition: true, maxFrames: maxTransitionFrames("terminal") })).frames.length, 60);
+      assert.equal((await renderer.capture("aa09", html, { transition: true, maxFrames: 5 })).frames.length, 5);
     });
 
     await t.test("an unloadable font face is still reported", async () => {
