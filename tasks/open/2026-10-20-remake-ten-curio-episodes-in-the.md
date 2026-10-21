@@ -84,4 +84,13 @@ rather than wait for the original workdirs (option 2), and approved an imagery a
   replaced with the S01 wording and re-recorded that one line. Thai/Vietnamese/Japanese descriptions overflowed the
   5000-byte composed limit in S09 S11 S14 S18; `lint` prints every overflow ("bytes once composed") before the cut.
   Finals approved: S01 S09 S14. Dubs in progress for those three.
+- 2026-10-21 05:40 UTC: finals approved for all nine (S01 S06 S08 S09 S11 S14 S18 S38 S39); eight languages ticked on
+  the site for all nine. Imagery + music spent about US$15.5 of the US$36 cap. S39's outro card carried three lines
+  (22.3 s, pace limit 15 s): lines moved to two new shots cs998/cs997; the chapter key moved to cs998 in every i18n
+  file (re-run i18n-sheet + i18n-merge to rehash). The owner's site click on S39's 05:28 audio/storyboard did not
+  register; recorded locally with `approve --note` on the owner's word in chat.
+- Dubs: Gemini's daily speech quota ran out at about 04:30 UTC (resets 07:00 UTC). Done: S01 all eight tracks
+  (ja cb103 shortened to fit), S08 all eight, S09 en/ja/ko. Checks partly done; dub check-audio flags are mostly the
+  transcriber on names (周瑜 heard as 醤油), but S01 ja cb324 「降って」 was read こうて — fix real misreads only.
+  One dub run per episode per background command: eight tracks line by line take over an hour.
 
