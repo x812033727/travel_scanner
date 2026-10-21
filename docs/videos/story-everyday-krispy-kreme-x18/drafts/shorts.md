@@ -15,9 +15,9 @@ x18s108 | S5,editorial | 雙方二〇二五年七月二日終止合作；試點�
 ## Short 2: 合作已宣布結束，財報為何還算進門市？
 x18s201 | S5,S6 | 每天送甜甜圈到麥當勞，宣布喊停後財報怎還算兩千四百家？ | calendar page near doughnut ledger
 x18s202 | S6 | 第二季的結帳日，是二〇二五年六月二十九日。 | lit anonymous counters beneath a quarter-end marker
-x18s203 | S6 | 當天全球一萬八千一百一十三個銷售點，仍含這批門市。 | distinct storefront types encircle one plain tray
+x18s203 | S6 | 當天全球一萬八千一百一十三個銷售點，仍含這批門市。 | blank map with mixed retail and highlighted breakfast counters
 x18s204 | S5 | 合作七月二日才正式終止，比季末晚三天。 | single route fades from anonymous breakfast map
 x18s205 | S7 | 到第三季，全球銷售點是一萬四千八百五十一個。 | closed route chart beside an opening later-quarter folder
-x18s206 | S6,S7,editorial | 但兩季差額不等於麥當勞退出數，其他點位也在變。 | two total-map ledgers kept apart
+x18s206 | S6,S7,editorial | 但兩季差額不等於麥當勞退出數，其他點位也在變。 | different generic storefront silhouettes on map
 x18s207 | S7 | 季報註腳另記，這季退出約兩千四百家合作店。 | new quarter-end map with fewer dots
 x18s208 | S6,S7,editorial | 六月的盤子還在合作地圖裡，九月已撤出；先看統計日，矛盾就消失了。 | unmarked breakfast counter and folded route map, no tray remains
