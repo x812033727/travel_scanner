@@ -1,0 +1,2518 @@
+{
+  "schema_version": 1,
+  "slug": "claude-skill-manual-event-folder",
+  "format": "slides",
+  "category": "tutorial",
+  "target_minutes": [
+    9,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像陪朋友把一本說明書從空白寫出來：穩、清楚、不炫技。唸封面和七個步驟時一條一條、咬字清楚；每個數字前停半拍；替觀眾問出口的疑問上揚，答案接得乾脆；講到附件找不到、寫入被擋下的地方壓低放慢；比喻對不上的那幾句放輕。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Skill 怎麼寫？不寫程式，自己寫一本 SKILL.md 說明書",
+    "description": "Claude 的 Skill 就是一本說明書：AI 平常只看封面，要用才翻開。這支從空白寫出一本「報名表檢查」，量給你看封面、內文、附件各占多少。\n給已經在用 ChatGPT 或 Claude、不寫程式，但同一套步驟老是要重新交代一遍的上班族、活動企劃和小店老闆。\n\n你會學到：\n・SKILL.md 的封面：名字的規矩、兩句介紹（做什麼＋什麼時候用）\n・書櫃上只看封面：放一本、放六本、把七步寫進 CLAUDE.md，開場各多帶多少 token\n・封面寫得含糊會怎樣：這次含糊的也翻開了 3 次，為什麼還是要寫清楚\n・內文七個步驟逐條寫，再加一行你自己的第八步（待回覆清單）\n・每次貼七步、寫在 CLAUDE.md、寫成說明書、什麼都不交代：四種方式的結果與差別\n・附件放旁邊還是貼進內文：翻開之後每個請求多帶多少；附件為什麼 8 次裡有 5 次找不到\n・壓成 ZIP、上傳到 Claude 網頁版；ChatGPT 與 Codex 怎麼用同一種格式；裝別人的說明書之前的檢查\n\n影片裡的 SKILL.md（20 行）與加上第八步的版本（22 行）都完整出現在畫面上；練習資料夾是虛構的：人名、Email（example.com）都不是真的。\n\n怎麼跑的\n・2026-10-21，Windows 11、Claude Code 2.1.295、模型 sonnet，用不開畫面的 session（claude -p）跑了 27 次，每次都從同一份練習資料夾重建；權限模式：問時間的 10 次是手動模式，其餘是自動接受編輯。\n・token 數是每次第一個（或翻開說明書前後）請求的輸入量，含快取；費用沒有拿來比。\n・第二批的六項檢查是跑之前寫好的計分腳本，從檔案判定、不讀回覆。每種情況跑 1 到 3 次，換模型、換要求、換資料，結果都可能不同。\n・叫 Claude 寫一本 Skill 的那一次（G1），寫進 .claude 資料夾被擋下，沒有寫成檔；畫面上比的是它想寫的內容。\n・附件「寫明位置」的改法，是照 Agent Skills 規格頁的寫法建議，這次沒有重跑。\n・網頁版的上傳步驟、方案、同步只引用官方說明頁（沒有登入網頁版、沒有實際上傳）；ChatGPT 與 Codex 只引用官方頁，沒有安裝、沒有測試。\n\nG1 的完整要求：幫我在這個資料夾寫一個 Skill，放在 .claude/skills/signup-check/SKILL.md：以後每次有新的報名表進來，就照這個資料夾的方式檢查，可以寄確認信的加進 輸出/確認信名單.csv，缺資料的加進 輸出/要補資料.csv，並寫處理日誌。只寫這個檔，不要做其他事。",
+    "tags": [
+      "Claude Skill",
+      "SKILL.md",
+      "Claude Skill 教學",
+      "Agent Skills",
+      "Skill 怎麼寫",
+      "Claude 自訂技能",
+      "Skill 沒有觸發",
+      "Claude Code",
+      "CLAUDE.md",
+      "ChatGPT Skill"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Skill 教學",
+      "headline": "Skill＝\n一本說明書",
+      "sub": "封面・內文・附件，自己寫一本",
+      "capture": "upload-cast"
+    }
+  },
+  "sources": [
+    {
+      "title": "Use skills in Claude｜Claude Help Center",
+      "url": "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "How to create custom skills｜Claude Help Center",
+      "url": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "What are skills?｜Claude Help Center",
+      "url": "https://support.claude.com/en/articles/12512176-what-are-skills",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "使用 Claude 中的技能（繁體中文說明頁）｜Claude Help Center",
+      "url": "https://support.claude.com/zh-TW/articles/12512180",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Agent Skills overview｜Claude Docs",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Extend Claude with skills｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/skills",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Specification｜Agent Skills",
+      "url": "https://agentskills.io/specification",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Client Showcase｜Agent Skills",
+      "url": "https://agentskills.io/clients",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Build skills｜ChatGPT and Codex docs",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "checked_on": "2026-10-21"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "loops": [
+    {
+      "setup": "zmxa",
+      "payoff": "2x29",
+      "what": "Skill 是不是只是把提示存起來"
+    },
+    {
+      "setup": "ttmt",
+      "payoff": "mxw5",
+      "what": "承諾的第一個部位：封面"
+    },
+    {
+      "setup": "ttmt",
+      "payoff": "ja5m",
+      "what": "承諾的第二個部位：內文"
+    },
+    {
+      "setup": "ttmt",
+      "payoff": "vee6",
+      "what": "承諾的第三個部位：附件"
+    },
+    {
+      "setup": "ttmt",
+      "payoff": "mfnp",
+      "what": "打包帶進 Claude 網頁版"
+    },
+    {
+      "setup": "74qp",
+      "payoff": "2wav",
+      "what": "點名的附件為什麼八次裡五次找不到"
+    },
+    {
+      "setup": "vbmg",
+      "payoff": "bvat",
+      "what": "MD 是不是新格式"
+    },
+    {
+      "setup": "4dns",
+      "payoff": "9qbz",
+      "what": "它每次都要讀完所有說明書嗎"
+    },
+    {
+      "setup": "62as",
+      "payoff": "m7dd",
+      "what": "為什麼不全塞給它"
+    },
+    {
+      "setup": "k3he",
+      "payoff": "zazw",
+      "what": "跟 CLAUDE.md、專案指示差在哪"
+    },
+    {
+      "setup": "vwgj",
+      "payoff": "t84f",
+      "what": "另外五本寫來做什麼"
+    },
+    {
+      "setup": "5dhu",
+      "payoff": "ccaw",
+      "what": "它怎麼知道翻哪一本"
+    },
+    {
+      "setup": "ijyk",
+      "payoff": "t8d7",
+      "what": "封面還要不要寫清楚"
+    },
+    {
+      "setup": "cqi6",
+      "payoff": "kcrx",
+      "what": "內文七步怎麼寫"
+    },
+    {
+      "setup": "ixyb",
+      "payoff": "vydh",
+      "what": "第五步那頁附件會出什麼事"
+    },
+    {
+      "setup": "4cdu",
+      "payoff": "wvcw",
+      "what": "每次貼七步不也一樣"
+    },
+    {
+      "setup": "26r9",
+      "payoff": "7khj",
+      "what": "附件為什麼不寫進內文"
+    },
+    {
+      "setup": "pe8f",
+      "payoff": "6acm",
+      "what": "怎麼帶進網頁版"
+    },
+    {
+      "setup": "fre4",
+      "payoff": "h9za",
+      "what": "網頁版跟 Claude Code 是不是同一本"
+    },
+    {
+      "setup": "iwaw",
+      "payoff": "is8w",
+      "what": "ChatGPT 看不看得懂"
+    },
+    {
+      "setup": "dnqy",
+      "payoff": "tng2",
+      "what": "別人寫的能不能直接用"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "Claude Skill 是什麼？就是一本說明書",
+      "template": "title",
+      "data": {
+        "tag": "Claude Skill 教學",
+        "title": "Skill 就是\n一本**說明書**",
+        "subtitle": "從空白寫一本：封面、內文、附件"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "zmxa",
+          "text": "Skill，不就是把一段提示存起來，下次再貼嗎？",
+          "emotion": "輕鬆，像朋友隨口一問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "uses",
+      "template": "bullets",
+      "data": {
+        "title": "寫一次，每次照做",
+        "items": [
+          "檢查新的報名表",
+          "整理會議紀錄",
+          "寫行前提醒信"
+        ],
+        "source": "講座籌備資料夾書櫃上的說明書（練習檔）"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "pvf2",
+          "text": "它更像一本說明書，寫一次就好。",
+          "emotion": "接得乾脆"
+        },
+        {
+          "id": "qa6s",
+          "text": "之後 AI 照著它檢查報名表、整理會議紀錄、寫行前提醒信。",
+          "reveal": 3,
+          "emotion": "一個一個數，輕快"
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "template": "stats",
+      "data": {
+        "title": "講座資料夾的第二批報名表",
+        "stats": [
+          {
+            "value": "3／3",
+            "label": "只說一句，就翻開這一本"
+          },
+          {
+            "value": "16 → 18",
+            "label": "寄信名單"
+          },
+          {
+            "value": "5／8",
+            "label": "點名的附件：它說找不到"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜CS、CV、W1"
+      },
+      "claims": [
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "mv44",
+          "text": "一本報名表檢查寫好，只說一句照平常的方式，三次它都翻開這一本。",
+          "reveal": 1
+        },
+        {
+          "id": "2u43",
+          "text": "寄信名單從十六人變十八人，缺 Email 的那位另外列出。",
+          "reveal": 1,
+          "emotion": "「十八」放慢"
+        },
+        {
+          "id": "74qp",
+          "text": "可是它點名的那頁附件，八次裡有五次，它回你：找不到。",
+          "reveal": 1,
+          "emotion": "壓低，「找不到」一字一字"
+        }
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "big",
+      "data": {
+        "kicker": "寫錯一個地方",
+        "text": "它不會停下來\n**照自己的猜法做完**"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "3a7t",
+          "text": "它不會停下來，只在回覆最後提一句，照自己的猜法做完。",
+          "emotion": "放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "template": "big",
+      "data": {
+        "text": "**封面**・**內文**・**附件**",
+        "sub": "親手寫出 signup-check，打包帶進 Claude"
+      },
+      "lines": [
+        {
+          "id": "ttmt",
+          "text": "封面、內文、附件寫對，你就能親手寫出這一本，打包帶進 Claude。",
+          "emotion": "收穩，給承諾"
+        }
+      ]
+    },
+    {
+      "id": "folder",
+      "chapter": "SKILL.md 怎麼寫：封面的名字和介紹",
+      "template": "steps",
+      "data": {
+        "title": "一本說明書＝一個資料夾",
+        "steps": [
+          {
+            "title": "講座籌備/",
+            "detail": "講座的練習資料夾"
+          },
+          {
+            "title": ".claude/skills/",
+            "detail": "書櫃：一本一個資料夾"
+          },
+          {
+            "title": "signup-check/",
+            "detail": "資料夾名就是書名"
+          },
+          {
+            "title": "SKILL.md",
+            "detail": "封面＋內文"
+          },
+          {
+            "title": "部門對照.md、確認信範本.md",
+            "detail": "附件"
+          }
+        ],
+        "source": "練習檔 book-lean｜make-booklets.mjs 2026-10-21"
+      },
+      "claims": [
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "y2w4",
+          "text": "上一支裡，第二批報名表交給一本叫 signup-check 的 Skill 檢查。"
+        },
+        {
+          "id": "k2c2",
+          "text": "這一次，把那一本從空白寫出來。",
+          "emotion": "往前推，有精神"
+        },
+        {
+          "id": "cs8y",
+          "text": "一本說明書，就是講座籌備裡的一個資料夾，",
+          "reveal": 1
+        },
+        {
+          "id": "xify",
+          "text": "放在一個隱藏的設定資料夾底下，這一格就是書櫃。",
+          "reveal": 1
+        },
+        {
+          "id": "8e2x",
+          "text": "資料夾的名字就是書名：signup-check。",
+          "reveal": 1
+        },
+        {
+          "id": "nwx7",
+          "text": "裡面的 SKILL.md 是封面加內文，旁邊兩個檔是附件。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "md-ask",
+      "template": "big",
+      "data": {
+        "kicker": "SKILL.md 的 MD",
+        "text": "又要學一種\n**新格式**？",
+        "sub": "純文字檔，記事本就存得了"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "vbmg",
+          "text": "你可能會問：MD 這兩個字，是不是又要學一種新格式？",
+          "emotion": "替觀眾問出口，問句上揚"
+        },
+        {
+          "id": "bvat",
+          "text": "不用。它就是純文字檔，有規矩的只有最上面幾行。",
+          "emotion": "笑著答，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "cover-name",
+      "template": "code",
+      "data": {
+        "code": "---\nname: signup-check\ndescription: >-\n  檢查講座的新報名表：可以寄確認信的加進名單，\n  缺資料的另外列出，並寫處理日誌。有新的報名表\n  進來、或有人說「檢查報名」時用。\n---",
+        "highlight": [
+          2
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–7 行（全檔 20 行）"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "mxw5",
+          "text": "兩條橫線中間就是封面，只放兩樣：名字和介紹。"
+        },
+        {
+          "id": "2rx6",
+          "text": "亮起來的這一行是名字：signup-check。"
+        }
+      ]
+    },
+    {
+      "id": "cover-desc",
+      "template": "code",
+      "data": {
+        "code": "---\nname: signup-check\ndescription: >-\n  檢查講座的新報名表：可以寄確認信的加進名單，\n  缺資料的另外列出，並寫處理日誌。有新的報名表\n  進來、或有人說「檢查報名」時用。\n---",
+        "highlight": [
+          3,
+          4,
+          5
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–7 行（全檔 20 行）"
+      },
+      "claims": [
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "fzhb",
+          "text": "介紹是：檢查講座的新報名表，可以寄確認信的加進名單，",
+          "emotion": "照唸，一句一句清楚"
+        },
+        {
+          "id": "9j2b",
+          "text": "缺資料的另外列出，並寫處理日誌。"
+        }
+      ]
+    },
+    {
+      "id": "cover-when",
+      "template": "code",
+      "data": {
+        "code": "---\nname: signup-check\ndescription: >-\n  檢查講座的新報名表：可以寄確認信的加進名單，\n  缺資料的另外列出，並寫處理日誌。有新的報名表\n  進來、或有人說「檢查報名」時用。\n---",
+        "highlight": [
+          5,
+          6
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–7 行（全檔 20 行）"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "4tea",
+          "text": "有新的報名表進來、或有人說「檢查報名」時用。",
+          "emotion": "照唸，句尾放輕"
+        },
+        {
+          "id": "fxfg",
+          "text": "前半句說它做什麼，這半句說什麼時候拿出來。"
+        }
+      ]
+    },
+    {
+      "id": "name-rule",
+      "template": "bullets",
+      "data": {
+        "title": "名字的規矩",
+        "items": [
+          "只能小寫英文、數字、連字號",
+          "要跟資料夾同名",
+          "介紹寫中文沒關係"
+        ],
+        "source": "agentskills.io 規格頁 name 欄位｜2026-10-21"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "hwqf",
+          "text": "名字只能用小寫英文、數字和連字號，",
+          "reveal": 1
+        },
+        {
+          "id": "fsk8",
+          "text": "還要跟資料夾同名；介紹寫中文沒關係。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "no-name",
+      "template": "compare",
+      "data": {
+        "title": "少了名字那一行",
+        "left": {
+          "heading": "少了 name 的那一本",
+          "points": [
+            "沒有 name 那一行",
+            "Claude Code 拿資料夾名代替",
+            "檢查：fix before upload"
+          ]
+        },
+        "right": {
+          "heading": "這一本",
+          "points": [
+            "name: signup-check",
+            "跟資料夾同名",
+            "檢查：ready to upload"
+          ]
+        },
+        "source": "實跑 cover-check.mjs 2026-10-21｜左：前一支的檔"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "dwb5",
+          "text": "新手常踩的坑：封面少了名字這一行。",
+          "reveal": 1,
+          "emotion": "壓低，提醒"
+        },
+        {
+          "id": "abdn",
+          "text": "在 Claude Code 照樣能用，它拿資料夾名代替。"
+        },
+        {
+          "id": "7ei2",
+          "text": "可是網頁版上傳要名字和介紹都有，上傳前檢查就判它要先修。",
+          "reveal": 1
+        },
+        {
+          "id": "4dns",
+          "text": "書櫃上一堆說明書，它每次都要全部讀一遍嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "time-ask",
+      "chapter": "Skill 會拖慢 AI 嗎？平常只看封面",
+      "template": "chat",
+      "data": {
+        "title": "先問一句無關的",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "活動說明.md 寫的講座幾點結束？只回答時間，不要改任何檔案。"
+          },
+          {
+            "side": "left",
+            "name": "L1a 的回覆",
+            "text": "16:30"
+          }
+        ]
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "j3v7",
+          "text": "signup-check 上了書櫃，先問它一句無關的：講座幾點結束。",
+          "reveal": 1
+        },
+        {
+          "id": "m24j",
+          "text": "它只回四點半，說明書一本都沒翻。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "shelf-ask",
+      "template": "big",
+      "data": {
+        "kicker": "書櫃上有六本",
+        "text": "為什麼不把說明書\n**全塞給它**？"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "62as",
+          "text": "你可能會想：為什麼不把說明書一次全塞給它？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "9qbz",
+          "text": "因為它平常只看封面，內文一頁都不讀。",
+          "emotion": "乾脆，「只看封面」加重"
+        }
+      ]
+    },
+    {
+      "id": "size-table",
+      "template": "table",
+      "data": {
+        "title": "問「幾點結束」：開場第一個請求",
+        "columns": [
+          "書櫃上有什麼",
+          "兩次的 token",
+          "比空的多"
+        ],
+        "rows": [
+          [
+            "一本都沒放",
+            "33,861／33,866",
+            "—"
+          ],
+          [
+            "一本 20 行說明書",
+            "33,940／33,941",
+            "+77"
+          ],
+          [
+            "一本 69 行說明書",
+            "33,940／33,938",
+            "+75.5"
+          ],
+          [
+            "六本說明書",
+            "34,286／34,286",
+            "+422.5"
+          ],
+          [
+            "七步寫在 CLAUDE.md",
+            "34,328／34,323",
+            "+462"
+          ]
+        ],
+        "highlight": 2,
+        "source": "實跑 2026-10-21｜2.1.295｜L0、L1、LF、L6、LM 各兩次"
+      },
+      "claims": [
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "a4xv",
+          "text": "一本說明書都沒放時，開場第一個請求大約三萬三千八百多個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "m7dd",
+          "text": "我放一本二十行的說明書上去，開場只多七十七個。",
+          "reveal": 1,
+          "emotion": "「七十七」前停半拍"
+        },
+        {
+          "id": "za92",
+          "text": "換成六十九行的長版本，還是多七十五個上下，一樣大。",
+          "reveal": 1,
+          "emotion": "「一樣大」亮起來"
+        },
+        {
+          "id": "5msh",
+          "text": "放到六本，多四百二十二個，一本約七十個。",
+          "reveal": 1
+        },
+        {
+          "id": "xyia",
+          "text": "同樣七步改寫在 CLAUDE.md，不管問什麼，都多帶四百六十二個。",
+          "reveal": 1,
+          "emotion": "放慢，數字清楚"
+        }
+      ]
+    },
+    {
+      "id": "progressive",
+      "template": "quote",
+      "data": {
+        "kicker": "漸進式載入",
+        "quote": "Metadata (~100 tokens): The name and description fields are loaded at startup for all skills",
+        "translation": "名字和介紹：每本約一百個 token，一開場就全部載入。",
+        "source": "agentskills.io 規格頁 Progressive disclosure"
+      },
+      "claims": [
+        "c21",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "ntyi",
+          "text": "這叫漸進式載入，聽起來很專業，其實就是平常只看封面、要用才翻開。",
+          "emotion": "「其實」亮起來"
+        },
+        {
+          "id": "ksu8",
+          "text": "估計是一本約一百個 token，跟這台機器量到的差不多。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "shelf-stop",
+      "template": "big",
+      "data": {
+        "kicker": "比喻對不上的地方",
+        "text": "每一次來回\n**每本封面都送進去**"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "pusc",
+          "text": "比喻在這裡要小心：真的書櫃，你走過去才看封面；",
+          "emotion": "放輕"
+        },
+        {
+          "id": "w9ma",
+          "text": "這裡是每一次來回，每一本的封面都跟著送進去。"
+        }
+      ]
+    },
+    {
+      "id": "shelf-count",
+      "template": "stats",
+      "data": {
+        "title": "書櫃從來不是空的",
+        "stats": [
+          {
+            "value": "22",
+            "label": "一本都沒放"
+          },
+          {
+            "value": "23",
+            "label": "放上 signup-check"
+          },
+          {
+            "value": "28",
+            "label": "再放五本"
+          }
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜L0、L1、L6 開場的技能清單"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "mrna",
+          "text": "書櫃也從來不是空的：一本都沒放，這台機器就列了二十二本。",
+          "reveal": 1,
+          "emotion": "帶點意外"
+        },
+        {
+          "id": "h69p",
+          "text": "放上 signup-check 變二十三，再放五本變二十八。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "claude-md",
+      "template": "compare",
+      "data": {
+        "title": "CLAUDE.md、專案指示、說明書",
+        "left": {
+          "heading": "CLAUDE.md／專案指示",
+          "points": [
+            "每一次請求都整段帶著",
+            "七步寫進去：+462 token",
+            "網頁版專案：一直載入（引用）"
+          ]
+        },
+        "right": {
+          "heading": "說明書",
+          "points": [
+            "平常只帶封面",
+            "封面：+77 token",
+            "要用才翻開內文"
+          ]
+        },
+        "source": "實跑 L1、LM 2026-10-21｜專案：What are skills?"
+      },
+      "claims": [
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "k3he",
+          "text": "那你已經有 CLAUDE.md、有網頁版專案的指示了呢？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "zazw",
+          "text": "CLAUDE.md 和專案指示，每一次都整段帶著；",
+          "reveal": 1
+        },
+        {
+          "id": "rhkw",
+          "text": "說明書平常只帶封面，要用才翻開內文。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "md-rule",
+      "template": "big",
+      "data": {
+        "kicker": "怎麼選",
+        "text": "每次都要守的 → CLAUDE.md\n偶爾才做的整套 → **說明書**"
+      },
+      "lines": [
+        {
+          "id": "46eu",
+          "text": "所以每次都要守的規矩放 CLAUDE.md，偶爾才做的整套步驟寫成說明書。",
+          "emotion": "放慢，像在給規則"
+        },
+        {
+          "id": "vwgj",
+          "text": "那書櫃上另外五本，是寫來做什麼的？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "uses-table",
+      "chapter": "Skill 能做什麼：書櫃上的五本說明書",
+      "template": "table",
+      "data": {
+        "title": "講座籌備的書櫃",
+        "columns": [
+          "說明書",
+          "什麼時候用",
+          "每次都要交代的"
+        ],
+        "rows": [
+          [
+            "speaker-intro",
+            "要開場介紹講者",
+            "每位 150 字內"
+          ],
+          [
+            "meeting-notes",
+            "丟會議筆記來時",
+            "只留決議、待辦、下次開會"
+          ],
+          [
+            "expense-receipts",
+            "說報帳、丟收據來",
+            "看不清楚的標待確認"
+          ],
+          [
+            "poster-copy",
+            "要宣傳、寫文案",
+            "主標 15 字、貼文 120 字內"
+          ],
+          [
+            "reminder-mail",
+            "11/12 要寄提醒信",
+            "通用草稿、不寄出"
+          ]
+        ],
+        "source": "練習檔 shelf5 的封面與內文｜2026-10-21"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "xf3d",
+          "text": "講座籌備的書櫃上，除了報名檢查還有五本，各是一件常要交代的事。"
+        },
+        {
+          "id": "t84f",
+          "text": "講者介紹：每位一百五十字內，先講現在做什麼，再講講題。",
+          "reveal": 1
+        },
+        {
+          "id": "7fkf",
+          "text": "會議紀錄：只留決議、待辦、下次開會，沒講負責人的標未指定。",
+          "reveal": 1
+        },
+        {
+          "id": "6tp8",
+          "text": "報帳明細：一張收據一列，看不清的金額標待確認。",
+          "reveal": 1
+        },
+        {
+          "id": "59di",
+          "text": "活動文案：主標十五字內，貼文一百二十字內。",
+          "reveal": 1,
+          "emotion": "清單加快"
+        },
+        {
+          "id": "6z42",
+          "text": "行前提醒信：只寫通用草稿，不寫姓名，也不寄出去。",
+          "reveal": 1
+        },
+        {
+          "id": "5dhu",
+          "text": "可是六本擺在一起，它怎麼知道該翻哪一本？",
+          "emotion": "停半拍，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "vague",
+      "chapter": "Skill 沒有被用？封面這樣寫",
+      "template": "compare",
+      "data": {
+        "title": "同一本，換一個封面",
+        "left": {
+          "heading": "checklist",
+          "points": [
+            "介紹只有：檢查用的步驟。",
+            "三次翻開：3 次",
+            "沒翻成行前提醒那本",
+            "開場少 61 個 token"
+          ]
+        },
+        "right": {
+          "heading": "signup-check",
+          "points": [
+            "做什麼＋什麼時候用",
+            "三次翻開：3 次",
+            "六項檢查：三次都過"
+          ]
+        },
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜CVa–c、CSa–c"
+      },
+      "claims": [
+        "c28",
+        "c29",
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "czys",
+          "text": "同一本，封面換成一句「檢查用的步驟」，名字改成 checklist，"
+        },
+        {
+          "id": "u5xg",
+          "text": "內文一字不動，旁邊還擺著最像它的行前提醒信。"
+        },
+        {
+          "id": "ccaw",
+          "text": "我拿同樣的一句要求跑了三次：這次含糊的也翻開了三次。",
+          "reveal": 1,
+          "emotion": "停半拍，「也翻開了」亮起來"
+        },
+        {
+          "id": "7wge",
+          "text": "都翻對了，沒翻成行前提醒；開場只省六十一個 token。"
+        },
+        {
+          "id": "4dag",
+          "text": "寫清楚的兩句，三次也都翻開。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "why-cover",
+      "template": "quote",
+      "data": {
+        "kicker": "Claude 沒有用你的 Skill 時",
+        "quote": "Check that the skill's description field clearly explains when it should be used.",
+        "translation": "檢查介紹有沒有清楚寫出：什麼時候該用它。",
+        "source": "support〈Use skills in Claude〉疑難排解"
+      },
+      "claims": [
+        "c31",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "ijyk",
+          "text": "那封面還要寫清楚嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t8d7",
+          "text": "要，它決定翻不翻，只看封面。",
+          "emotion": "答得肯定"
+        },
+        {
+          "id": "xh5i",
+          "text": "它不用你的說明書時，要查的就是介紹有沒有寫清楚什麼時候用。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "good-bad",
+      "template": "compare",
+      "data": {
+        "title": "壞封面、好封面",
+        "left": {
+          "heading": "壞例",
+          "points": [
+            "幫忙處理 PDF。"
+          ]
+        },
+        "right": {
+          "heading": "好例",
+          "points": [
+            "抽出 PDF 的文字和表格",
+            "填 PDF 表單、合併檔案",
+            "處理 PDF、提到表單時用"
+          ]
+        },
+        "source": "agentskills.io 規格頁 description 欄位（中譯）"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "rvj7",
+          "text": "壞的封面長這樣：幫忙處理 PDF，就沒了。",
+          "reveal": 1,
+          "emotion": "帶點好笑"
+        },
+        {
+          "id": "sry6",
+          "text": "好的寫兩件事：抽文字表格、填表合併；處理 PDF 或提到表單時用。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cover-rule",
+      "template": "big",
+      "data": {
+        "kicker": "封面兩句",
+        "text": "一句**做什麼**\n一句**什麼時候用**",
+        "sub": "用你平常真的會說的那句話"
+      },
+      "lines": [
+        {
+          "id": "mz6w",
+          "text": "所以封面兩句：做什麼、什麼時候用，用你平常真的會說的話。",
+          "emotion": "放慢，給規則"
+        },
+        {
+          "id": "ap8f",
+          "text": "像「有新的報名表進來」，就是你會開口的那一句。"
+        }
+      ]
+    },
+    {
+      "id": "validate",
+      "template": "table",
+      "data": {
+        "title": "格式檢查：三本都過",
+        "columns": [
+          "說明書",
+          "claude plugin validate"
+        ],
+        "rows": [
+          [
+            "signup-check：兩句封面",
+            "✔ Validation passed"
+          ],
+          [
+            "checklist：含糊的封面",
+            "✔ Validation passed"
+          ],
+          [
+            "沒有 name 的那本",
+            "✔ Validation passed"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜M3"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "my5e",
+          "text": "還有一個坑：Claude Code 自己的格式檢查，三本都過，含糊的也過。",
+          "reveal": 3,
+          "emotion": "壓低，提醒"
+        },
+        {
+          "id": "xw8z",
+          "text": "通過只代表格式對，封面寫得好不好，它不管。"
+        }
+      ]
+    },
+    {
+      "id": "pick-stop",
+      "template": "big",
+      "data": {
+        "kicker": "比喻對不上的地方",
+        "text": "不是你挑書\n**它看封面自己挑**"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "66p2",
+          "text": "真的說明書，是你自己挑來翻；",
+          "emotion": "放輕"
+        },
+        {
+          "id": "adxs",
+          "text": "這裡是它只看封面，自己決定翻不翻、翻哪一本。"
+        },
+        {
+          "id": "cqi6",
+          "text": "封面寫好了，內文那七步怎麼寫？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "body-1",
+      "chapter": "自己寫一本 Skill：報名表檢查的七個步驟",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀新的報名表、活動說明.md 和 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同是兩個人。\n   已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。",
+        "highlight": [
+          3
+        ],
+        "caption": "SKILL.md｜第 9–14 行（全檔 20 行；第 8 行是空行）"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "ja5m",
+          "text": "好，把每次都要交代的七件事，一條一條寫進內文。",
+          "emotion": "往前推"
+        },
+        {
+          "id": "kcrx",
+          "text": "第一步：讀新的報名表、活動說明，和已經有的確認信名單。",
+          "emotion": "照唸，一條一條"
+        }
+      ]
+    },
+    {
+      "id": "body-2",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀新的報名表、活動說明.md 和 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同是兩個人。\n   已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "SKILL.md｜第 9–14 行（全檔 20 行；第 8 行是空行）"
+      },
+      "claims": [
+        "c35",
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "hmuf",
+          "text": "第二步：同一個 Email 只留最後一次；同名但 Email 不同，是兩個人。"
+        },
+        {
+          "id": "pbtx",
+          "text": "已經在名單上的 Email，不重複加。"
+        }
+      ]
+    },
+    {
+      "id": "two-wangs",
+      "template": "table",
+      "data": {
+        "title": "第一批的寄信名單裡",
+        "columns": [
+          "姓名",
+          "Email",
+          "部門"
+        ],
+        "rows": [
+          [
+            "王志明",
+            "chihming.wang@example.com",
+            "業務部"
+          ],
+          [
+            "王志明",
+            "cm.wang@example.com",
+            "研發部"
+          ]
+        ],
+        "source": "練習檔 round1 的 輸出/確認信名單.csv"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "j945",
+          "text": "因為第一批就有兩個王志明，一個業務部、一個研發部。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "body-3",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀新的報名表、活動說明.md 和 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同是兩個人。\n   已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。",
+        "highlight": [
+          6
+        ],
+        "caption": "SKILL.md｜第 9–14 行（全檔 20 行；第 8 行是空行）"
+      },
+      "claims": [
+        "c35",
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "pgwr",
+          "text": "第三步：備註寫取消的人和測試資料，不放進寄信名單。"
+        },
+        {
+          "id": "ipd6",
+          "text": "每一份報名表裡，都有一筆叫「測試」；這一批叫測試二。",
+          "emotion": "帶笑，一句就走"
+        }
+      ]
+    },
+    {
+      "id": "body-4",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。",
+        "highlight": [
+          1
+        ],
+        "caption": "SKILL.md｜第 15–20 行（全檔 20 行）"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "fcnq",
+          "text": "第四步：沒有 Email、或格式不對的，加進要補資料。"
+        }
+      ]
+    },
+    {
+      "id": "body-5",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": "SKILL.md｜第 15–20 行（全檔 20 行）"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "r9ms",
+          "text": "第五步：其餘的加進確認信名單；部門寫法對不上時，照部門對照統一。"
+        },
+        {
+          "id": "ixyb",
+          "text": "這一步點名了一頁附件，先記住它，等一下會出事。",
+          "emotion": "壓低，留一個鉤子"
+        }
+      ]
+    },
+    {
+      "id": "body-6",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "SKILL.md｜第 15–20 行（全檔 20 行）"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "izcy",
+          "text": "第六步：素食、過敏、其他忌口各幾位，連同做了什麼，寫進處理日誌。"
+        },
+        {
+          "id": "u8r7",
+          "text": "寫日誌，是因為你得知道它做了什麼，才能驗收。"
+        }
+      ]
+    },
+    {
+      "id": "body-7",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。",
+        "highlight": [
+          6
+        ],
+        "caption": "SKILL.md｜第 15–20 行（全檔 20 行）"
+      },
+      "claims": [
+        "c35",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "2agp",
+          "text": "第七步：要寫確認信的時候，才照確認信範本寫。"
+        },
+        {
+          "id": "tr6z",
+          "text": "這個「才」字，讓它知道今天不用寫信。",
+          "emotion": "「才」字加重"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "chat",
+      "data": {
+        "title": "只說這一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "第二批報名表來了（報名表_第二批.csv），照平常的方式檢查一下。"
+          },
+          {
+            "side": "left",
+            "name": "CSa 的回覆",
+            "text": "第二批 6 筆已檢查完。2 人加進寄信名單，1 人列入要補資料，其餘 3 筆沒有動。"
+          }
+        ]
+      },
+      "claims": [
+        "c39",
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "82bv",
+          "text": "寫好放上書櫃，只說一句：第二批來了，照平常的方式檢查一下。",
+          "reveal": 1
+        },
+        {
+          "id": "5dba",
+          "text": "它第一個動作，就是自己翻開 signup-check。",
+          "emotion": "亮起來"
+        },
+        {
+          "id": "qk3i",
+          "text": "回覆第一句：六筆檢查完，兩人加進名單，一人列進要補資料。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "run-steps",
+      "template": "steps",
+      "data": {
+        "title": "這一次，它依序做了什麼",
+        "steps": [
+          {
+            "title": "翻開 signup-check",
+            "detail": "第一個動作"
+          },
+          {
+            "title": "讀報名表和名單",
+            "detail": "三個指令被擋下"
+          },
+          {
+            "title": "找部門對照",
+            "detail": "最上層沒有，說明書資料夾裡才讀到"
+          },
+          {
+            "title": "改寫三個輸出檔",
+            "detail": "名單 18 人，宋柏均進要補資料"
+          },
+          {
+            "title": "回覆：黃雅婷要人回",
+            "detail": "活動說明沒有線上參加"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜CSa 的工具呼叫"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "ycuu",
+          "text": "它先翻開說明書，再讀報名表；中間三個指令被擋下。",
+          "reveal": 2
+        },
+        {
+          "id": "77b6",
+          "text": "部門對照先在最上層找不到，才到說明書的資料夾裡讀到。",
+          "reveal": 1
+        },
+        {
+          "id": "gqz8",
+          "text": "接著改三個輸出檔：兩個新人進名單，宋柏均進要補資料。",
+          "reveal": 1
+        },
+        {
+          "id": "nkzn",
+          "text": "最後提醒你：黃雅婷問能不能改線上，要有人回她。",
+          "reveal": 1,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "run-stats",
+      "template": "stats",
+      "data": {
+        "title": "三次都一樣",
+        "stats": [
+          {
+            "value": "3／3",
+            "label": "翻開 signup-check"
+          },
+          {
+            "value": "16 → 18",
+            "label": "寄信名單"
+          },
+          {
+            "value": "3 → 4",
+            "label": "要補資料"
+          },
+          {
+            "value": "6／6",
+            "label": "第二批六項檢查"
+          }
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜CSa、CSb、CSc｜batch2.mjs"
+      },
+      "claims": [
+        "c42",
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "5bjj",
+          "text": "開頭那個十六變十八，就是這三次；要補資料也從三變四。",
+          "reveal": 3
+        },
+        {
+          "id": "a8na",
+          "text": "事先寫好的六項檢查三次都全過，原始報名表一個字沒改。",
+          "reveal": 1,
+          "emotion": "「全過」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "four-ways",
+      "template": "table",
+      "data": {
+        "title": "四種交代方式，同一批報名表",
+        "columns": [
+          "交代方式",
+          "你要打的字",
+          "平常也帶著",
+          "六項檢查"
+        ],
+        "rows": [
+          [
+            "每次貼七步",
+            "310 字",
+            "不會",
+            "6／6"
+          ],
+          [
+            "七步寫在 CLAUDE.md",
+            "34 字",
+            "+462 token",
+            "6／6"
+          ],
+          [
+            "寫成說明書",
+            "34 字",
+            "+77 token",
+            "6／6"
+          ],
+          [
+            "什麼都不交代",
+            "34 字",
+            "—",
+            "6／6"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜CP、CM、CS、CN1｜帶著：L 組"
+      },
+      "claims": [
+        "c44",
+        "c45",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "4cdu",
+          "text": "到這裡你可能有個疑惑：每次把七步貼進去，不也一樣？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "wvcw",
+          "text": "一樣。貼七步、寫在 CLAUDE.md、寫成說明書，三種交代方式結果一樣。",
+          "reveal": 3,
+          "emotion": "老實，乾脆"
+        },
+        {
+          "id": "wmqu",
+          "text": "連什麼都不交代也全過：這一批它不靠說明書也猜得到。",
+          "reveal": 1,
+          "emotion": "放慢，一字一字"
+        },
+        {
+          "id": "t5dc",
+          "text": "它看第一批的名單和日誌，自己推出平常的做法。"
+        }
+      ]
+    },
+    {
+      "id": "differences",
+      "template": "bullets",
+      "data": {
+        "title": "差別在別處",
+        "items": [
+          "貼上：每次打 310 字",
+          "CLAUDE.md：問什麼都帶 462",
+          "說明書：整個資料夾帶得走（引用）"
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜CP、L 組｜帶得走：support 說明頁"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "ynwc",
+          "text": "差別在別處：貼上的那一邊，你每次要打三百一十個字，還得自己留著。",
+          "reveal": 1
+        },
+        {
+          "id": "gwue",
+          "text": "CLAUDE.md 那邊，問什麼都帶著前面那四百六十二個。",
+          "reveal": 1
+        },
+        {
+          "id": "vnha",
+          "text": "而且只有說明書，能整個資料夾帶去 Claude 網頁版。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "step8",
+      "chapter": "改一行：加上你自己的第八步",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。\n8. 備註裡想改線上參加的，另外列進 輸出/待回覆.csv，\n   寫下他問了什麼；不要自己回答。",
+        "highlight": [
+          7
+        ],
+        "caption": "加上第 8 步的 SKILL.md｜第 15–22 行（全檔 22 行）"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "xk46",
+          "text": "那換你改一行，寫進只有你這場活動才有的情況：",
+          "emotion": "往前推"
+        },
+        {
+          "id": "r3tb",
+          "text": "第八步，備註裡想改線上參加的，另外列進待回覆，",
+          "emotion": "照唸，清楚"
+        }
+      ]
+    },
+    {
+      "id": "step8-b",
+      "template": "code",
+      "data": {
+        "code": "4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv；部門寫法對不上時，\n   照 部門對照.md 統一。\n6. 素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。\n7. 要寫確認信的時候，才照 確認信範本.md 寫。\n8. 備註裡想改線上參加的，另外列進 輸出/待回覆.csv，\n   寫下他問了什麼；不要自己回答。",
+        "highlight": [
+          8
+        ],
+        "caption": "加上第 8 步的 SKILL.md｜第 15–22 行（全檔 22 行）"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "piu5",
+          "text": "寫下他問了什麼；不要自己回答。",
+          "emotion": "「不要自己回答」放慢"
+        },
+        {
+          "id": "gnqk",
+          "text": "因為黃雅婷問的不是報名，是一件要有人決定的事。"
+        }
+      ]
+    },
+    {
+      "id": "step8-result",
+      "template": "table",
+      "data": {
+        "title": "多出來的 待回覆.csv",
+        "columns": [
+          "姓名",
+          "Email",
+          "問了什麼",
+          "狀態"
+        ],
+        "rows": [
+          [
+            "黃雅婷",
+            "yating.huang@example.com",
+            "改成線上參加可以嗎？",
+            "待回覆（未回答）"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜W1a 的 輸出/待回覆.csv"
+      },
+      "claims": [
+        "c48",
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "2q52",
+          "text": "跑兩次，兩次都多一份待回覆，只有一列：黃雅婷，改線上可以嗎。",
+          "reveal": 1
+        },
+        {
+          "id": "ykf3",
+          "text": "狀態寫待回覆、未回答；寄信名單裡她也只出現一次。",
+          "emotion": "穩，肯定"
+        }
+      ]
+    },
+    {
+      "id": "g1-ask",
+      "template": "table",
+      "data": {
+        "title": "叫它自己寫一本：那一句要求",
+        "columns": [
+          "部分",
+          "原文"
+        ],
+        "rows": [
+          [
+            "寫什麼",
+            "幫我在這個資料夾寫一個 Skill，"
+          ],
+          [
+            "放哪裡",
+            "放在 .claude/skills/signup-check/SKILL.md："
+          ],
+          [
+            "什麼時候",
+            "以後每次有新的報名表進來，就照這個資料夾的方式檢查，"
+          ],
+          [
+            "寄信名單",
+            "可以寄確認信的加進 輸出/確認信名單.csv，"
+          ],
+          [
+            "要補資料",
+            "缺資料的加進 輸出/要補資料.csv，並寫處理日誌。"
+          ],
+          [
+            "限制",
+            "只寫這個檔，不要做其他事。"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜G1 的要求，全文在說明欄"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "j4wr",
+          "text": "不想對著空白，也可以叫它先寫一本，這是那句要求，拆成六段。",
+          "reveal": 6
+        }
+      ]
+    },
+    {
+      "id": "g1-result",
+      "template": "compare",
+      "data": {
+        "title": "它想寫的、你寫的",
+        "left": {
+          "heading": "它想寫的（G1）",
+          "points": [
+            "寫進 .claude 被擋下",
+            "介紹 102 字",
+            "內文 71 行",
+            "部門對照寫進內文"
+          ]
+        },
+        "right": {
+          "heading": "你寫的",
+          "points": [
+            "你自己存檔",
+            "介紹 60 字",
+            "內文 12 行",
+            "部門對照放成附件"
+          ]
+        },
+        "source": "實跑 2026-10-21｜2.1.295｜G1、cover-check.mjs"
+      },
+      "claims": [
+        "c51",
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "5jsg",
+          "text": "結果沒寫成：寫進隱藏的設定資料夾時被擋下，要你同意。",
+          "reveal": 1,
+          "emotion": "壓低"
+        },
+        {
+          "id": "qsq2",
+          "text": "它想寫的那本，內文七十一行，部門對照直接寫進內文。"
+        },
+        {
+          "id": "az9d",
+          "text": "你的那本，內文十二行，部門對照放成附件。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "draft",
+      "template": "big",
+      "data": {
+        "kicker": "叫它寫",
+        "text": "當**草稿**\n你點頭，再刪短"
+      },
+      "lines": [
+        {
+          "id": "qnfq",
+          "text": "叫它寫可以當草稿；你點頭讓它寫，再照自己的規矩刪短。"
+        },
+        {
+          "id": "26r9",
+          "text": "部門對照、確認信範本，為什麼不乾脆寫進內文？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "fat",
+      "chapter": "Skill 附件放哪裡：翻開之後不會闔上",
+      "template": "compare",
+      "data": {
+        "title": "附件放旁邊，還是貼進內文",
+        "left": {
+          "heading": "20 行＋兩頁附件",
+          "points": [
+            "翻開前：+77",
+            "翻開那一步：+436～+487",
+            "後面 6～9 個請求都帶著",
+            "確認信範本：三次都沒碰"
+          ]
+        },
+        "right": {
+          "heading": "附件貼進內文：69 行",
+          "points": [
+            "翻開前：+75.5",
+            "翻開那一步：+1,288",
+            "後面 7～8 個請求都帶著",
+            "六項檢查：三次都過"
+          ]
+        },
+        "source": "實跑 2026-10-21｜2.1.295｜L1、LF、CSa–c、CFa–c"
+      },
+      "claims": [
+        "c53",
+        "c54",
+        "c55",
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "vee6",
+          "text": "同一本說明書，另做一個長版本：兩頁附件全貼進內文，共六十九行。"
+        },
+        {
+          "id": "dwrx",
+          "text": "翻開前一樣大，前面量過了；翻開那一步，短的那本多四百多個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "5j4b",
+          "text": "它三次都沒碰確認信範本：用不到的那頁，不會被讀。",
+          "emotion": "亮起來"
+        },
+        {
+          "id": "7khj",
+          "text": "長的那本，我量到一翻開就多一千兩百八十八個，將近三倍。",
+          "reveal": 1,
+          "emotion": "數字放慢，「三倍」加重"
+        },
+        {
+          "id": "mq68",
+          "text": "而且後面七、八個請求，每一個都帶著它。",
+          "emotion": "壓低，放慢"
+        }
+      ]
+    },
+    {
+      "id": "stays",
+      "template": "big",
+      "data": {
+        "kicker": "比喻對不上的地方",
+        "text": "翻開之後\n**整本留在對話裡**"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "ugm9",
+          "text": "比喻在這裡又對不上了：說明書看完會闔上，這裡翻開後整本留在對話裡。",
+          "emotion": "放輕"
+        },
+        {
+          "id": "wve8",
+          "text": "你改了說明書，進行中的那段對話也不會重讀。"
+        }
+      ]
+    },
+    {
+      "id": "appendix-miss",
+      "template": "stats",
+      "data": {
+        "title": "部門對照，它找得到嗎",
+        "stats": [
+          {
+            "value": "3／8",
+            "label": "讀到"
+          },
+          {
+            "value": "5／8",
+            "label": "回說不存在、找不到"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜CS、CV、W1 共八次"
+      },
+      "claims": [
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "vydh",
+          "text": "還記得第五步點名的部門對照嗎？",
+          "emotion": "壓低，拉回來"
+        },
+        {
+          "id": "fag8",
+          "text": "需要它的八次，只有三次讀到。",
+          "reveal": 1
+        },
+        {
+          "id": "ug7s",
+          "text": "另外五次，它回你：部門對照不存在，或找不到。",
+          "reveal": 1,
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "appendix-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "CVa 的回覆，原文",
+        "quote": "部門對照.md 不存在。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜CVa"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "2wav",
+          "text": "開頭說的寫錯一個地方，就在這裡：第五步只寫了檔名，沒寫它在哪裡。",
+          "emotion": "揭曉，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "appendix-why",
+      "template": "steps",
+      "data": {
+        "title": "找不到的那五次",
+        "steps": [
+          {
+            "title": "照第五步找部門對照",
+            "detail": "只寫檔名，沒寫位置"
+          },
+          {
+            "title": "從資料夾最上層列檔",
+            "detail": "隱藏的設定資料夾不在清單裡"
+          },
+          {
+            "title": "回覆：找不到",
+            "detail": "請你給正式的對照表"
+          },
+          {
+            "title": "照第一批名單統一部門",
+            "detail": "部門那一項檢查照樣過"
+          }
+        ],
+        "source": "實跑 2026-10-21｜2.1.295｜CSc、CVa、CVb、W1a、W1b"
+      },
+      "claims": [
+        "c59"
+      ],
+      "lines": [
+        {
+          "id": "nyvk",
+          "text": "它從講座資料夾最上層列檔，隱藏的設定資料夾不在清單裡。",
+          "reveal": 2
+        },
+        {
+          "id": "4m2k",
+          "text": "找不到，就照第一批名單的寫法統一部門，回覆最後請你給對照表。",
+          "reveal": 2
+        },
+        {
+          "id": "fph5",
+          "text": "結果還是對的，因為第一批名單已經統一好了。"
+        }
+      ]
+    },
+    {
+      "id": "appendix-rule",
+      "template": "bullets",
+      "data": {
+        "title": "附件怎麼點名",
+        "items": [
+          "寫它在說明書資料夾裡",
+          "寫什麼時候才看它",
+          "上傳前確認點名的檔都在"
+        ],
+        "source": "引用：規格 File references、建立技能｜改法未重跑"
+      },
+      "claims": [
+        "c60",
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "t4s7",
+          "text": "所以點名附件要連位置寫：照這本說明書資料夾裡的部門對照統一。",
+          "reveal": 1,
+          "emotion": "放慢，給做法"
+        },
+        {
+          "id": "xnu6",
+          "text": "再寫什麼時候才看它，像第七步的「要寫確認信的時候」。",
+          "reveal": 1
+        },
+        {
+          "id": "evc6",
+          "text": "上傳前，確認點名的檔都在它說的位置。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "appendix-choose",
+      "template": "compare",
+      "data": {
+        "title": "進內文，還是放附件",
+        "left": {
+          "heading": "進內文",
+          "points": [
+            "每一次都要照做的步驟"
+          ]
+        },
+        "right": {
+          "heading": "放附件",
+          "points": [
+            "偶爾才用的範本",
+            "對照表"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "ra5x",
+          "text": "怎麼選：每次都要照做的進內文，偶爾才用的範本、對照表放附件。",
+          "reveal": 2,
+          "emotion": "穩，給規則"
+        },
+        {
+          "id": "pe8f",
+          "text": "寫好了，怎麼把它帶進 Claude 網頁版？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "zip",
+      "chapter": "Skill 怎麼上傳到 Claude 網頁版",
+      "template": "compare",
+      "data": {
+        "title": "壓縮檔：資料夾要在最上層",
+        "left": {
+          "heading": "對的：signup-check.zip",
+          "points": [
+            "signup-check/SKILL.md",
+            "signup-check/確認信範本.md",
+            "signup-check/部門對照.md"
+          ]
+        },
+        "right": {
+          "heading": "錯的：檔案散在最上層",
+          "points": [
+            "SKILL.md",
+            "確認信範本.md",
+            "部門對照.md"
+          ]
+        },
+        "source": "實跑 zip.mjs 2026-10-21｜錯的結構：support 建立技能"
+      },
+      "claims": [
+        "c62",
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "eie2",
+          "text": "signup-check 在資料夾裡跑得動了，現在帶去 Claude 網頁版。"
+        },
+        {
+          "id": "mfnp",
+          "text": "先壓縮整個 signup-check 資料夾，不是裡面那三個檔。"
+        },
+        {
+          "id": "ff3u",
+          "text": "壓對了，每個檔前面都是 signup-check 這一層；",
+          "reveal": 1
+        },
+        {
+          "id": "ukxt",
+          "text": "壓錯的，三個檔散在最上層，網頁版不收這種結構。",
+          "reveal": 1,
+          "emotion": "壓低，提醒"
+        }
+      ]
+    },
+    {
+      "id": "upload-steps",
+      "template": "steps",
+      "data": {
+        "title": "上傳到 Claude 網頁版",
+        "steps": [
+          {
+            "title": "Settings › Capabilities",
+            "detail": "打開 Code execution and file creation"
+          },
+          {
+            "title": "Customize › Skills",
+            "detail": "網頁版的書櫃"
+          },
+          {
+            "title": "按「+」→「+ Create skill」"
+          },
+          {
+            "title": "「Upload a skill」",
+            "detail": "選 signup-check.zip"
+          },
+          {
+            "title": "出現在清單裡",
+            "detail": "一本一本開或關"
+          }
+        ],
+        "source": "引用：support〈Use skills in Claude〉｜2026-10-21"
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "6acm",
+          "text": "先到 Settings 的 Capabilities，打開程式碼執行和檔案建立；",
+          "reveal": 1
+        },
+        {
+          "id": "bp98",
+          "text": "再到 Customize 的 Skills，這一頁就是網頁版的書櫃。",
+          "reveal": 1
+        },
+        {
+          "id": "mvjv",
+          "text": "按加號、Create skill，再按 Upload a skill，選那個壓縮檔。",
+          "reveal": 2,
+          "emotion": "一步一步，清楚"
+        },
+        {
+          "id": "2w6g",
+          "text": "上傳好，它會出現在清單裡，可以開或關。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "upload-cast",
+      "template": "screencast",
+      "data": {
+        "title": "上傳步驟在這一段",
+        "caption": "Claude 說明中心｜Use skills in Claude｜Add and use custom skills｜2026-10-21 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://support.claude.com/en/articles/12512180-use-skills-in-claude#h_a4222fa77b"
+          },
+          {
+            "action": "wait",
+            "selector": "#h_a4222fa77b"
+          },
+          {
+            "action": "capture",
+            "focus": "#h_a4222fa77b"
+          }
+        ]
+      },
+      "claims": [
+        "c64",
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "s56q",
+          "text": "中文介面上這些選單叫什麼，我只查到機器翻譯的說明頁，你看一眼「自訂」底下。",
+          "emotion": "老實，放輕"
+        }
+      ]
+    },
+    {
+      "id": "upload-errors",
+      "template": "bullets",
+      "data": {
+        "title": "上傳失敗，先查這四個",
+        "items": [
+          "壓縮檔太大",
+          "資料夾名跟 name 不同",
+          "少了 SKILL.md",
+          "名字或介紹有不合規的字"
+        ],
+        "source": "support〈Use skills in Claude〉Upload errors"
+      },
+      "claims": [
+        "c66",
+        "c67"
+      ],
+      "lines": [
+        {
+          "id": "kzme",
+          "text": "上傳失敗常見四個原因：壓縮檔太大、資料夾名跟名字不同、",
+          "reveal": 2
+        },
+        {
+          "id": "h7br",
+          "text": "少了 SKILL.md，或名字、介紹有不合規的字。",
+          "reveal": 2
+        },
+        {
+          "id": "6g25",
+          "text": "網頁版的介紹限兩百字，比規格嚴；signup-check 的是六十字。",
+          "emotion": "數字清楚"
+        }
+      ]
+    },
+    {
+      "id": "plans",
+      "template": "table",
+      "data": {
+        "title": "哪些方案能上傳自己寫的",
+        "columns": [
+          "說明頁",
+          "寫的方案"
+        ],
+        "rows": [
+          [
+            "Use skills in Claude",
+            "Free、Pro、Max、Team、Enterprise"
+          ],
+          [
+            "Agent Skills overview",
+            "Pro、Max、Team、Enterprise"
+          ]
+        ],
+        "source": "兩頁都在 2026-10-21 開過"
+      },
+      "claims": [
+        "c68"
+      ],
+      "lines": [
+        {
+          "id": "ed4m",
+          "text": "免費版能不能上傳自己寫的，兩份說明頁寫的不一樣，我沒辦法替你確定。",
+          "reveal": 2,
+          "emotion": "老實，不閃躲"
+        }
+      ]
+    },
+    {
+      "id": "sync",
+      "template": "compare",
+      "data": {
+        "title": "網頁版和 Claude Code 同一本？",
+        "left": {
+          "heading": "網頁版開著的技能",
+          "points": [
+            "同帳號登入的 Claude Code",
+            "要 2.1.273 以上",
+            "單向同步過去",
+            "開新對話時、約每十分鐘"
+          ]
+        },
+        "right": {
+          "heading": "資料夾裡這一本",
+          "points": [
+            "只在講座資料夾",
+            "不會自己跑上網頁版",
+            "網頁版要另外上傳"
+          ]
+        },
+        "source": "引用：support〈Use skills in Claude〉、Skills overview"
+      },
+      "claims": [
+        "c69",
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "fre4",
+          "text": "那網頁版跟 Claude Code，用的是同一本嗎？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "h9za",
+          "text": "網頁版開著的技能，會單向同步到同帳號登入的 Claude Code，",
+          "reveal": 1
+        },
+        {
+          "id": "b996",
+          "text": "開新對話時同步，之後約每十分鐘查一次。"
+        },
+        {
+          "id": "hjj4",
+          "text": "資料夾裡這一本，不會自己跑上網頁版，要另外上傳。",
+          "reveal": 1
+        },
+        {
+          "id": "iwaw",
+          "text": "那 ChatGPT 看得懂這一本嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "clients",
+      "chapter": "ChatGPT、Codex 也能用同一本 Skill 嗎",
+      "template": "stats",
+      "data": {
+        "title": "同一種格式",
+        "stats": [
+          {
+            "value": "45",
+            "label": "清單上支援這個格式的工具"
+          }
+        ],
+        "source": "agentskills.io/clients｜2026-10-21 數的"
+      },
+      "claims": [
+        "c71"
+      ],
+      "lines": [
+        {
+          "id": "6qmf",
+          "text": "這個資料夾的格式是公開的標準，清單上支援它的工具有四十五個，",
+          "reveal": 1
+        },
+        {
+          "id": "sapp",
+          "text": "Gemini CLI、Cursor、GitHub Copilot 都在上面。"
+        }
+      ]
+    },
+    {
+      "id": "chatgpt",
+      "template": "bullets",
+      "data": {
+        "title": "ChatGPT 和 Codex 怎麼叫它",
+        "items": [
+          "桌面版 ChatGPT：側邊欄 Skills",
+          "ChatGPT：打 @ 選一本",
+          "Codex：打 $ 或 /skills",
+          "網頁版 ChatGPT：透過外掛",
+          "也會照介紹自己挑"
+        ],
+        "source": "learn.chatgpt.com〈Build skills〉｜2026-10-21"
+      },
+      "claims": [
+        "c72",
+        "c73"
+      ],
+      "lines": [
+        {
+          "id": "is8w",
+          "text": "ChatGPT 桌面版的側邊欄有 Skills，打小老鼠符號就能選一本；",
+          "reveal": 2
+        },
+        {
+          "id": "tvg4",
+          "text": "Codex 打錢字號叫它。",
+          "reveal": 1
+        },
+        {
+          "id": "28ea",
+          "text": "網頁版 ChatGPT 單獨一本不行，要透過外掛帶進來。",
+          "reveal": 1
+        },
+        {
+          "id": "u9ih",
+          "text": "它們也照介紹自己挑書，所以那兩句封面到哪裡都用得上。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        },
+        {
+          "id": "dnqy",
+          "text": "那別人寫好的說明書，能直接拿來用嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "chapter": "別人給的 Skill 能裝嗎：先打開每一個檔",
+      "template": "bullets",
+      "data": {
+        "title": "裝別人的說明書之前",
+        "items": [
+          "資料夾可以夾小程式",
+          "只裝自己寫的、信得過的",
+          "每一個檔都打開看過"
+        ],
+        "source": "support〈Use skills in Claude〉、overview Security"
+      },
+      "claims": [
+        "c74",
+        "c75"
+      ],
+      "lines": [
+        {
+          "id": "tng2",
+          "text": "說明書跟真的書最不一樣的地方：資料夾能夾小程式，AI 會執行它。",
+          "reveal": 1,
+          "emotion": "放慢，認真"
+        },
+        {
+          "id": "2etb",
+          "text": "所以只裝自己寫的、或信得過的來源；同事給的也先看。",
+          "reveal": 1
+        },
+        {
+          "id": "fnmw",
+          "text": "檢查只有一個：數一下資料夾裡有幾個檔，每個都打開看過。",
+          "reveal": 1
+        },
+        {
+          "id": "bhpi",
+          "text": "這個頻道的做法是：看不懂的那一頁，就不裝。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "three",
+      "chapter": "寫第一本 Skill：你現在先做這三件",
+      "template": "steps",
+      "data": {
+        "title": "你現在先做這三件",
+        "steps": [
+          {
+            "title": "挑一件交代到第三次的事",
+            "detail": "寫兩句封面：做什麼、什麼時候用"
+          },
+          {
+            "title": "內文只寫每次都要做的",
+            "detail": "範本放旁邊，寫明它在哪裡"
+          },
+          {
+            "title": "同樣的一句要求跑三次",
+            "detail": "數它翻開幾次、附件讀到沒有"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "b5c9",
+          "text": "第一，挑一件交代到第三次的事，這是這個頻道的門檻，寫兩句封面。",
+          "reveal": 1
+        },
+        {
+          "id": "asej",
+          "text": "第二，內文只寫每次都要做的，範本放旁邊，寫明它在哪個資料夾。",
+          "reveal": 1
+        },
+        {
+          "id": "vqz5",
+          "text": "第三，同樣的一句要求跑三次，數它翻開幾次、附件讀到沒有。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "Skill 是一本說明書：\n**平常只看封面**",
+        "cta": "你最常重複交代 AI 的是哪件事？留言告訴我",
+        "lines": [
+          "封面寫給 AI 看，內文只寫每次都要的",
+          "附件放旁邊，寫明它在哪裡"
+        ]
+      },
+      "claims": [
+        "c76"
+      ],
+      "lines": [
+        {
+          "id": "2x29",
+          "text": "不只存起來：它平常只看封面，要用才翻開。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "48s3",
+          "text": "你最常重複交代 AI 什麼事？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "vdq4",
+          "text": "想看更多實測教學，就訂閱吧。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}
