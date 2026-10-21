@@ -18,7 +18,8 @@ for (const arg of process.argv.slice(2)) {
     const C = `${V}/zhong-tian-qu-qi-compilations/e${pad(a)}-${pad(b)}`;
     const yt = JSON.parse(readFileSync(`${C}.youtube.json`, "utf8"));
     dir = `${OUT}/zhong-tian-qu-qi-e${pad(a)}-${pad(b)}`; mp4 = `${C}.mp4`; srt = `${C}.zh-TW.srt`;
-    meta = { slug: `zhong-tian-qu-qi-e${pad(a)}-${pad(b)}`, title: yt.title, description: yt.description, category: "drama", note: `種田娶妻打天下 第${a}–${b}集合集（3D 國漫版，海螺手工製作）` };
+    // tags and category_id go into the upload package (`import --publish`).
+    meta = { slug: `zhong-tian-qu-qi-e${pad(a)}-${pad(b)}`, title: yt.title, description: yt.description, category: "drama", note: `種田娶妻打天下 第${a}–${b}集合集（3D 國漫版，海螺手工製作）`, tags: yt.tags, category_id: yt.category_id };
     langs = Object.entries(yt.localizations ?? {}).map(([l, t]) => ({ l, text: `${t.title}
 
 ${t.description}
