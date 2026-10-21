@@ -39,12 +39,12 @@ pictures are synthesized terminals plus official-page captures; the first short 
 
 ## Steps
 
-- [ ] Brief with three outline options (reusing the event-folder runs as RUN evidence).
-- [ ] Any 「要先實作」 runs made and logged before the outline is chosen.
-- [ ] Script under §十–§十二 with `keys`, `icon`, `numeral`, `typing`, `theme: "paper"`.
-- [ ] Two fact-check rounds, listener review, blind panel.
-- [ ] tts, check-audio, render (needs the paper-look renderer PR), assemble, captions, qa.
-- [ ] review-push with --manual-review at every gate; languages.json with empty locales.
+- [x] Brief with three outline options (reusing the event-folder runs as RUN evidence); Jev picked A (0.89 / 0.96).
+- [x] 「要先實作」 runs N0–N2 made and logged (runlog.txt, demo/N1, demo/N2) before the outline was chosen.
+- [x] Script under §十–§十二 with `keys`, `icon`, `numeral`, `typing`, `theme: "paper"` (sidecar paper.json folded in once #1651's schema landed locally).
+- [x] Fact check round 1 (58 claims, 0 fact changes; round 2 not required), listener pass (44 items applied), blind panel six readers 8→11→12→11→12→12.
+- [x] tts 8:04, check-audio 0 flagged after two rewording rounds, render 61 states (paper look), assemble, captions zh-TW, qa.
+- [ ] review-push: outline and audio submitted (pending the owner); final with --manual-review; languages.json written with empty locales.
 
 ## How to verify
 
