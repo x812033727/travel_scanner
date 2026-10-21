@@ -57,12 +57,12 @@ c50｜叫它自己寫一本的那一句要求（拆成六段上卡，全文在�
 c51｜結果沒寫成：寫進 .claude/skills/signup-check/SKILL.md 被擋下（「Claude requested permissions to write to … but you haven't granted it yet.」），回覆要你允許；資料夾裡沒有 SKILL.md｜實跑：runlog G1 tool_error、reply、cover-check `FAIL SKILL.md exists`｜2026-10-21｜g1-result
 c52｜它想寫的那本：介紹 102 字、內文 71 行、部門對照直接寫進內文（沒有附件），cover-check `ready to upload`；你的那本：介紹 60 字、內文 12 行、部門對照放成附件｜實跑：runlog G1 第二條 NOTE；demo/G1/attempted-SKILL.md 第 28 行；M2｜2026-10-21｜g1-result
 c53｜翻開前，20 行與 69 行兩本開場一樣大（+77 對 +75.5）｜實跑：成果 4 (a)｜2026-10-21｜fat
-c54｜翻開那一步：20 行那本 +487、+436、+436；69 行那本三次都 +1,288，約 2.8 倍（平均差 835）｜實跑：總表 growth；成果 4 (b)；Unexpected 3｜2026-10-21｜fat
+c54｜翻開那一步：20 行那本 +487、+436、+436；69 行那本三次都 +1,288，約 2.8 倍（平均差 835）；旁白 7khj 說「將近三倍」（逐次 2.64–2.95 倍；查核 3 由「好幾倍」改）｜實跑：總表 growth；成果 4 (b)；Unexpected 3｜2026-10-21｜fat
 c55｜翻開後一直帶著：20 行那本之後 9、9、6 個請求，69 行那本 7、7、8 個；比喻對不上：翻開後整本留在對話裡；改了說明書，進行中的對話不會重讀（後者引用）｜實跑：總表 carry；https://code.claude.com/docs/en/skills（Skill content lifecycle: enters the conversation as a single message and stays there … does not re-read the skill file on later turns）｜2026-10-21｜fat、stays
 c56｜20 行那本三次檢查都沒碰 確認信範本.md｜實跑：成果 4 (c)（no CS session touched 確認信範本.md by any tool）｜2026-10-21｜fat
 c57｜部門對照：只寫檔名的 8 次裡 3 次讀到（CSa、CSb 用 Bash cat；CVc 用 Read），5 次沒讀到；跟 W2 同一本、只差第 17 行的 W1a、W1b 是 0／2｜實跑：總表最後一欄；Unexpected 2、2b｜2026-10-21｜appendix-miss、appendix-fixed
 c58｜CVa 回覆原文一句：「部門對照.md 不存在。」｜實跑：demo/CVa/reply.md「需要你確認 1.」｜2026-10-21｜appendix-quote
-c59｜原因：第 5 步只寫檔名沒寫位置；session 先從資料夾最上層找（`ls -R .` 看不到 .claude）；找不到就照第一批名單統一部門、回覆最後請你給對照表；結果仍對是因為第一批名單已統一（C9 PASS）｜實跑：Unexpected 2；CSa 的 Bash 指令序列；CSc、CVa、CVb、W1a、W1b 的 reply｜2026-10-21｜appendix-quote、appendix-why
+c59｜原因：第 5 步只寫檔名沒寫位置；session 先從資料夾最上層找（`ls -R .` 看不到 .claude）；找不到就照第一批名單統一部門、在回覆裡問你有沒有正式的對照表（五份回覆都有「如果你有正式的對照表」；CSc、W1b 是「我可以再核對一次」，不是要你給；查核 3 由「回覆最後請你給對照表」改，4m2k 與 appendix-why 卡同改）；結果仍對是因為第一批名單已統一（C9 PASS）｜實跑：Unexpected 2；CSa 的 Bash 指令序列；CSc、CVa、CVb、W1a、W1b 的 reply｜2026-10-21｜appendix-quote、appendix-why
 c60｜改一行就讀到：W2 用的 SKILL.md（book-loc，3d129d4036c107cf）是加了第 8 步的那一本只改第 17 行：「   照 部門對照.md 統一。」→「   照 .claude/skills/signup-check/部門對照.md 統一。」，其他行不變（卡片放第 15–18 行原文）；寫上位置之後 W2a、W2b 兩次都在第一個 Bash 指令讀到部門對照（2／2），都翻開 signup-check、沒翻別本，B1–B6 6／6、mine M1–M5 5／5，growth +500、之後 6／7 個請求帶著，確認信範本沒碰｜實跑：runlog.txt「Item W2 (added) W2-setup」的 diff 與雜湊、W2a、W2b 段落、Unexpected 2b、總表 W2a／W2b 兩列；demo/booklets/book-loc、demo/W2a、demo/W2b｜2026-10-21｜appendix-fix、appendix-fixed、appendix-rule
 c61｜怎麼選：每次都要照做的進內文，偶爾才用的範本、對照表放附件｜https://agentskills.io/specification（Move detailed reference material to separate files）；https://code.claude.com/docs/en/skills（every line is a recurring token cost）；實跑旁證 c54–c56｜2026-10-21｜appendix-choose
 c62｜壓縮：對的 signup-check.zip 三筆都在 signup-check/ 底下（2,271 位元組）；錯的三個檔散在最上層（2,193 位元組）｜實跑：M4；demo/pack/*.txt｜2026-10-21｜zip
@@ -159,6 +159,14 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 - c55、c56 附件放旁邊用不到就不讀、翻開後留在對話、改了不重讀；c58、c59、c6 找不到的原因與它自己猜；c60、c77、c78 改一行寫上位置、第一個指令就讀進來；c61 怎麼選。
 - c62–c70 壓縮與上傳、選單名的不確定、上傳失敗四件事與兩百字、方案的不確定、同步；c71、c72 四十六個工具與 ChatGPT、Codex 在清單上。
 - c52、c79 風險章打開 G1 那一本；c74、c75 資料夾可夾程式、只裝信得過的；c76 結尾。
+
+### 查核 3（2026-10-21，修訂 3 之後，另一個代理）
+
+- 4m2k「只在回覆最後請你給對照表」→「只在回覆裡問你有沒有正式的對照表」：CVa 是「需要你確認」第 1 點、CVb 在中段，不在最後；CSc、W1b 只說「我可以再核對一次」。appendix-why 卡第三步的 detail 同改。
+- wvcw「平常也不佔位子」→「平常只帶封面」：同一張 four-ways 卡寫說明書平常帶著 +77 token（c17）。
+- 7khj「重上好幾倍」→「重上將近三倍」：+1,288 對 +436～+487（c54）。
+- t8d7 加「以這個頻道來說」：「同事、三個月後的你看得懂」是理由不是量到的事實；它和 brief 站主觀點 2「封面是寫給 AI 看的，不是寫給我自己看的」方向不同，留給站主決定。
+- 官方頁 2026-10-21 重抓（HTTP 200）：Use skills in Claude（上傳步驟、選單名、四個上傳失敗原因、方案 Free 起、同步 v2.1.273／開 session 時與約每 10 分鐘／單向）、How to create custom skills（description 200 字元、ZIP 的根是資料夾）、zh-TW 頁（「自定義 > 技能」）、Agent Skills overview（Pro 起）、Claude Code skills 頁、規格頁（1024）、clients（46 個名字，含沒有 instructionsUrl 的 Piebald；clients.mjs 印 45 是因為它只數有 instructionsUrl 的）。
 
 ## 我懷疑但沒動的事
 
