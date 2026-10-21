@@ -1,6 +1,6 @@
 # X19 Uber｜Shorts 逐句作者來源矩陣
 
-shorts.json SHA-256：b6b0212372d776c96572450baa8e9c4350499c72923d088ad0bd6833e8681d95；video.json SHA-256：c6c442fdf02e65a86be1eaf7115a91a8962a1231a394956e9fca61187110768b。作者標記，不是獨立審核 PASS。
+shorts.json SHA-256：b6b0212372d776c96572450baa8e9c4350499c72923d088ad0bd6833e8681d95；video.json SHA-256：a3149c4904182bf473a7d452c3e5a80de790402c4b240e10da4b2610e1dfbaf8。作者標記，不是獨立審核 PASS。
 
 | Short／拍 | 句 ID | 旁白 | 作者來源 |
 | --- | --- | --- | --- |

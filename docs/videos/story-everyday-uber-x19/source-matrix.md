@@ -1,6 +1,6 @@
 # X19 Uber｜SEC 原件與口徑邊界
 
-2026-10-20 逐份 HTTP GET 讀取 Uber 自行提交 SEC 的 HTML 附件。位元組與 SHA-256 對下載原件計算，不是文字轉檔的雜湊。下列每份均小於 3 MiB，主片要用的事實均位於抽出文字的前約 16,000 字內；作者查核尚待另一位審稿者對定稿獨立重做。
+下表保留 2026-10-20 逐份 HTTP GET 的 Uber SEC HTML 原件快照；位元組與 SHA-256 是**當日原始回應**，不是文字轉檔或當前網頁的雜湊。2026-10-21 的 [v5 獨立查核](reviews/script-source-audit-v5-independent.md)重新 GET 十份後發現每份 raw response 多九個 bytes，僅頁尾 SEC 動態 script tag 的路徑不同；只固定替換該唯一 tag 後，新舊全文逐 byte 相同。不能把 10/20 raw SHA 冒稱 10/21 raw SHA，也不能把 v5 查核轉用成 v6 獨立 PASS。下列每份均小於 3 MiB，主片要用的事實均位於抽出文字的前約 16,000 字內；v6 定稿仍待另一位審稿者重查。
 
 | 代碼 | SEC 原件 | HTTP bytes | 原始 bytes SHA-256 | 成片可支持的範圍 |
 | --- | --- | ---: | --- | --- |
@@ -11,7 +11,7 @@
 | S4 | [2020 Q3 財報公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000162828020015770/uberq320earningspressr.htm) | 512,044 | `fe864c5d4a2776e3346ca9b17334e03b41f35ebcb4bd3f382fe5f555640d933e` | Q3 Mobility／Delivery 訂單額 US$5.905bn／US$8.550bn；Mobility 對 Q2 恢復約 94%，但仍同比 −53%（按報告幣別）；Delivery 同比 +134%，在 Postmates 完成交割之前仍較大。Delivery 調整後 EBITDA −US$183m、Mobility +US$245m。活躍合作餐廳同比增加逾 70%，公司新推出店家自家網站接單、交由 Uber Eats 配送的選項。雜貨配送 Gross Bookings 的**九月年化速度**超過 US$1bn；**到 2020-11-05 財報公布時**，雜貨配送已進入十多個國家，包含台灣。兩者不是同一時點，也不是九月實際營收。iOS 版 Uber App 當時陸續把 Eats 服務入口放在叫車旁。上述動作與交易額同時發生，不能量化其個別貢獻。 |
 | S5 | [2020-12-01 完成 Postmates 收購公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000155278120000580/e20585_ex99-1.htm) | 8,683 | `11f3911af6a22458d48c478cb704d53369c524d454a557f7308e232111788ab4` | 全股票交易完成，美國業務開始整合；公告當時說兩個消費者 App 繼續分開運作，但背後商家與配送網會結合。只能說整合開始，不能說已在 2020 年 12 月完成或造成之前的訂單額反超。 |
 | S5a | [2020-12-01 完成交割 8-K 封面／附註](https://www.sec.gov/Archives/edgar/data/1543151/000155278120000580/e20585_uber-8k.htm) | 33,735 | `4b58ef2b356ae9c39f2fd2cac21a39a6c02ead8a0b1e5e378a4753dd236f2170` | Date of Report 明列 2020-12-01，內文寫當日發布完成收購公告；供逐句口播「十二月一日」作工人可讀日期原件。 |
-| S6 | [2021 Q2 財報公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000154315121000035/uberq221earningspressrelea.htm) | 499,870 | `79a8914e82146c35228fa643b152219ff263b7e942e7725e9513c5ecd039d975` | Mobility／Delivery 訂單額 US$8.6bn／US$12.9bn；Mobility 同比大幅回升，但外送仍高。公司說 Postmates App 大致整合、近 500 萬消費者、16 萬配送員、逾 2.5 萬商家轉移；這是公司聲明，不能等同完成每個用戶遷移。Delivery 調整後 EBITDA −US$161m，仍為負。活躍商家逾 75 萬；美國活躍餐廳逾六成提供自取。美國雜貨、便利品、酒類等非餐廳配送的**六月 Gross Bookings**較 2020 年 12 月近三倍；這是新配送類別的月度比較，不是全部 Delivery 同比或收購效果。公司稱同時用 Mobility 和 Delivery 的消費者貢獻全平台近半 Gross Bookings；此非收購單獨效果。 |
+| S6 | [2021 Q2 財報公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000154315121000035/uberq221earningspressrelea.htm) | 499,870 | `79a8914e82146c35228fa643b152219ff263b7e942e7725e9513c5ecd039d975` | Mobility／Delivery 訂單額 US$8.6bn／US$12.9bn；Mobility 同比大幅回升，但外送仍高。公司說 Postmates App 大致整合、近 500 萬消費者、16 萬配送員、逾 2.5 萬商家轉移；這是公司聲明，不能等同完成每個用戶遷移。Delivery 調整後 EBITDA −US$161m，仍為負；與 S2 的 2020 Q2 −US$232m 相減，虧損收窄 US$71m。這是整個 Delivery 部門數字，公告沒有拆出 Postmates 單獨造成的盈虧。 |
 | S7 | [2021 Q4／全年財報公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000154315122000004/uberq421earningspressrelea.htm) | 520,384 | `afba881d480d8d8ab8a3974c1887cf87d471f5cfc489f24c1dfa2ba5f20b3f06` | Q4 Mobility／Delivery 訂單額 US$11.340bn／US$13.444bn，報告幣別同比 +67%／+34%；Delivery 調整後 EBITDA +US$25m，是**單季部門非 GAAP 指標**，不能推定全年或公司 GAAP 都已由外送盈利。 |
 | S8 | [2022 Q4／全年財報公告，8-K exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1543151/000154315123000004/uberq422earningspressrelea.htm) | 583,069 | `0deb0103252070de3283d03b1f76659794d9f6de824984bdce70c76467321579` | Q4 Mobility 訂單額 US$14.894bn，Delivery US$14.315bn；報告幣別同比 +31%／+6%，兩者都成長，這一季載客再次高過外送。**同一季度的 Segment Adjusted EBITDA**，Mobility +US$1.012bn，Delivery +US$241m，分別為十點一二億與二點四一億美元，均為正數；這不等於全公司 GAAP 正式淨利。不可宣稱這是重新超越的第一個季度，除非另查 Q1–Q3。 |
 
@@ -22,5 +22,6 @@
 - 2020 Q2 季報把 Rides／Eats 改名 Mobility／Delivery；2019 對照值已按報告相同欄位呈現。不要寫成兩個全新的業務。
 - 疫情與居家令是 Uber 同期描述的需求背景；訂單額分岔不能證明單一政策、司機轉派或 Postmates 收購各自貢獻多少。Postmates 七月簽約、十二月完成，均晚於六月季度。
 - Segment Adjusted EBITDA 是公司定義的非 GAAP 部門尺度；Delivery 訂單額領先時仍可能在這個尺度虧損。GAAP 公司淨利又可能含股權重估。片中需每次點出尺度及季度，不把營運結果寫成收購效果。
+- `x190505` 只說 12 月交割時消費者仍待遷入另一個入口，S5 的雙 App 分開運行與 S6 次年的實際遷移數支持這個順序；不問或暗示 Postmates 改變了虧損。`x190515` 的 US$71m 是同季部門虧損差額（232−161），而非收購、司機改派或其他單一措施的效果；`x190516` 明說無法從部門合計帳算出 Postmates 的單獨貢獻。
 - 開場路邊司機停車接餐袋是匿名概念示意，並非來源記載的特定人物或某趟真實派單；它只引入 S1 已記載的司機端轉接功能與四月跨接統計。2022 Q4 兩部門指標同為正，也只能說那一季的部門非 GAAP 尺度，不推成全年或公司正式淨利。
 - 只用概念插畫呈現匿名司機、無標誌車、餐袋、手機與空白報表；不重建某個真實司機的一天，也不畫 Uber、Eats、Postmates 標誌、真人長相、可讀畫面或特定 App 介面。精確數字由後製排字。
