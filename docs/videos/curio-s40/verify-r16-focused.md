@@ -1,0 +1,23 @@
+# S40 R16 focused read-only recheck
+
+Frozen TEMP checked: `/tmp/s40-r16-proposal/video.json` SHA-256 `5c257d3af557ef4918a448a06bc285351c020dbe873911793887c7a82133dc98`; script SHA-256 `a7071cd5f52211d142ce832f20930beb27f53e3b6bc7fff3b3c2e3c30ea2b373`; claims SHA-256 `9139f0aa62994334dafcc0b44e64e80373db2f06f114855e5b028f009c4f9254`. `screenplay(video.json) === script.md` returned `true`. I made no provider, site, repository, or media edits/calls.
+
+Direct JSON comparison with frozen R15 found **only three changes**: `cl001.data.prompt`, `cl004.data.sub` on the merged cl004+005 card, and `thumbnail.data.shot` (`cl001` → `cl058`). Narration, 84 ordered IDs cl001–cl084, all 75 scene IDs/line grouping, seven chapter entries, 23 loop pairs, look, voice settings, and claims are unchanged. The blind narrative panel result therefore remains 13/13 YES.
+
+## Source — PASS
+
+The new cl001 prompt asks for a mature adult countryman of full adult stature carrying figs toward an adult Roman guard outside an Alexandrian limestone monument. Plutarch's pinned *Antony* passage describes a “country fellow” bringing a small basket of figs to the guards at Cleopatra's monument. Depicting an adult man is a reasonable reading and directly counters the previous toddler-like still. `30 BCE` and late Republican Roman dress fit the event's period. The prompt's weathered face and comparable height to the sentinel are **illustrative model directions**, not independently attested physical measurements; neither has been added to narration or claims. The earlier unsupported “closed door” instruction is gone. The ancient text says she shuts the doors later, after sending the letter, so leaving the entrance state unspecified is safer.
+
+The revised cl004+005 sub, `羅馬統帥派人回頭；陵墓的門仍緊閉`, is supported by Plutarch's sequence: Caesar sends messengers back after opening the letter, and they subsequently open the doors. It does not assert the death method. The cl058 thumbnail image is a symbolic juxtaposition of a fig basket and tied scroll, not a claim to show an original artifact or death scene.
+
+## Structure — PASS for frozen text and layout; fresh timing still required
+
+The R15 early on-card reveal is gone: cl004's visible sub now stays with the sent messenger and closed door; the triumphal snake image first appears when cl005 is spoken. The merged card's kicker says only “後來圖像” and does not disclose the image or answer. No other changed card exists in R16. The first chapter and requested merges are unchanged.
+
+The exact `curioProblems(video.json)` result is `[]`. BODY SCENES remain **52 shot / 74 total = 70.27%**, and the longest card run remains **2**. All R15 measured/character-ratio-estimated card spans remain at or below 15 seconds; the tightest measured unchanged card is cl055+056 at **14.87 s**. Seven changed narration lines (cl002, cl006, cl009, cl040, cl042, cl045, cl066) still require new WAVs and a rebuilt timeline before final timing approval. No actual new audio was measured here.
+
+## Visual — BLOCK pending artwork and native review
+
+`thumbnail.data.shot = cl058` points to an existing selected, hash-matching, judged image (`keyframes/cl058-1.jpg`) that I inspected at native resolution in R15: figs and a tied scroll, with no false child carrier or conclusive snake scene. This thumbnail pointer itself is **PASS** as a no-cost fix. The new cl001 prompt is clearer about an adult than R15 and contains repeated high-priority adult cues: “mature adult rural man”, “weathered adult facial features”, “full adult stature”, “as tall as the adult Roman sentinel”, and “both adult faces clearly visible”. For MiniMax image-01's strict `<1500` character request limit, the scene prompt is **498** characters, resolved look style **401**, composed request **925**, prompt budget **1072**; `cutChars=0`, so every adult cue reaches the model. This improves the chance of a correct redraw but cannot guarantee one.
+
+Changing cl001's prompt invalidates its former selected image/key; a newly generated cl001 still must pass the judge and native human visual review. The unchanged cl062 selected still remains source-inaccurate (East Asian robe/hidden forearm), and cl070 remains `needs_review: true` (letterbox bars; other take is East Asian-costumed). These two also need successful replacements and native approval. Thus **source and static structure are ready to apply from R16; visual production is still blocked on cl001, cl062, and cl070, plus seven fresh WAV durations**. No new provider cost was incurred by this recheck; the remaining image and speech work would incur provider spend.

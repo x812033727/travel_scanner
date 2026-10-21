@@ -1,0 +1,1531 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s05",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，像跟朋友翻一頁史書。引號原文放慢；切換陳壽正文、裴注引文與裴本人評語時，用語氣標明來源。",
+    "performance": "開頭讀奏章時平實；徐庶出主意時帶一點盼望；《魏略》逆向出現時留下停頓；裴的判斷不要唸成自己目擊。末段追問異說的消息來源，已知與未知都說清楚。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "eg005",
+      "payoff": "eg069",
+      "what": "裴為何覺得兩種初遇可怪"
+    },
+    {
+      "setup": "eg006",
+      "payoff": "eg046",
+      "what": "魏略牛尾飾物如何打開談話"
+    },
+    {
+      "setup": "eg007",
+      "payoff": "eg008",
+      "what": "新野來勸劉備出門的訪客是誰"
+    },
+    {
+      "setup": "eg014",
+      "payoff": "eg016",
+      "what": "徐庶勸說後劉備是否親往"
+    },
+    {
+      "setup": "eg043",
+      "payoff": "eg046",
+      "what": "魏略異說如何打開談話"
+    },
+    {
+      "setup": "eg143",
+      "payoff": "eg134",
+      "what": "草廬與樊城兩場初遇能否排出有據的先後"
+    },
+    {
+      "setup": "eg078",
+      "payoff": "eg080",
+      "what": "魏略與九州春秋是否有獨立傳話線"
+    },
+    {
+      "setup": "eg115",
+      "payoff": "eg057",
+      "what": "《魏略》的陌生來客為何最後被待為上客"
+    },
+    {
+      "setup": "eg058",
+      "payoff": "eg061",
+      "what": "裴用哪篇文字判定初遇方向"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "三顧茅廬，為何史書還寫諸葛亮自己上門？｜奇聞檔案局",
+    "description": "〈出師表〉說劉備「三顧臣於草廬」；陳壽《三國志》正文也寫劉備三往才見諸葛亮。同卷裴松之註卻引《魏略》，寫諸葛亮主動北行往樊城見劉備。這集跟著徐庶的推薦、兩場截然不同的談話和裴的原文反駁，查兩條初遇路線為何同時留在史書裡。\n\n裴採信諸葛亮的自述，認為《魏略》的初遇方向不合；保存下來的文字並未交代《魏略》異說從誰傳來，因此不能重建分歧形成的過程。畫面是 AI 生成卡通插畫，非人物相貌或史實現場重建。\n\n主要來源：陳壽《三國志》卷三十五〈諸葛亮傳〉正文、裴松之註引《魏略》與《九州春秋》、〈出師表〉及陳壽〈諸葛亮集序〉；固定版本和逐句對照見本集 research.md、claims.md。資料截至 2026-10-19。",
+    "tags": [
+      "三顧茅廬",
+      "諸葛亮",
+      "劉備",
+      "出師表",
+      "魏略",
+      "九州春秋",
+      "裴松之",
+      "三國志",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "誰先\n**上門**？",
+      "tag": "歷史名場面",
+      "sub": "同一次相遇，兩個方向",
+      "shot": "visit-040"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》卷35〈諸葛亮傳〉、〈出師表〉及裴注（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "visit-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a timber study, one middle-aged adult Shu Han minister with bound topknot and plain cross-collar robe setting an ink brush beside a fully rolled unlettered silk memorial, low wooden desk and soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg001",
+          "text": "二二七年，諸葛亮在北伐前寫下〈出師表〉。",
+          "emotion": "口語向前，轉折前留一拍"
+        },
+        {
+          "id": "eg100",
+          "text": "這份奏章不是寫給劉備，而是寫給他的兒子劉禪。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ],
+      "chapter": "227年，出師表寫下三顧"
+    },
+    {
+      "id": "visit-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a timber court study, one middle-aged adult Shu Han minister with bound topknot and plain cross-collar robe unrolling an unlettered silk memorial on a low wooden desk, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg002",
+          "text": "他向年輕的後主回想，自己怎樣遇見已去世的劉備。"
+        }
+      ]
+    },
+    {
+      "id": "visit-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a timber court study, one middle-aged adult Shu Han minister with bound topknot and plain cross-collar robe resting a finger beside a rolled unlettered silk memorial, ink brush laid aside, pale afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg003",
+          "text": "其中一句是：「三顧臣於草廬之中」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        },
+        {
+          "id": "eg101",
+          "text": "他用這段往事解釋，自己為何答應替劉備奔走。"
+        }
+      ]
+    },
+    {
+      "id": "visit-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a narrow bare-earth footpath, one older robed visitor approaching a small thatched cottage, the doorway ahead, gentle morning light, with a high hair knot and layered hemp gown",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg004",
+          "text": "照這句話，是劉備走到諸葛亮的門前。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-005",
+      "template": "big",
+      "data": {
+        "kicker": "裴松之注",
+        "text": "**可怪**",
+        "sub": "他抄錄另一說，卻在末尾提出質疑"
+      },
+      "lines": [
+        {
+          "id": "eg005",
+          "text": "裴松之抄下一段相遇故事，末尾卻寫「可怪」；哪一句讓他驚訝？"
+        }
+      ]
+    },
+    {
+      "id": "visit-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Han era timber meeting hall with woven mats, one middle aged commander winding a loose bundle of dark yak-tail fibers between his fingers, soft window light, with a narrow cloth headband and layered cross-front robe",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg006",
+          "text": "聚會散去，劉備還結著牛尾飾物；諸葛亮會說什麼？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a late-Han timber garrison at Xinye, one mature travelling scholar gripping a rolled blank scroll, pale morning light, with a plain headwrap and wide-sleeved linen tunic",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg007",
+          "text": "新野，一位訪客正要勸劉備出門；他是誰？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a plain unmarked late-Han Xinye timber garrison gate, one adult visiting scholar in a beige cloth headwrap, mustard outer garment with a blue-green inner fold carrying a tied cloth travel bundle, pale morning natural light, bare earth and blank wooden posts",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg008",
+          "text": "翻開《三國志》正文，劉備駐在新野時，徐庶來見他。"
+        }
+      ],
+      "chapter": "陳壽寫徐庶勸劉備出門"
+    },
+    {
+      "id": "visit-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a late-Han timber Xinye meeting hall with woven mats, one mature visiting scholar bowing as he recommends someone, soft overcast daylight, with a plain headwrap and wide-sleeved linen tunic",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg009",
+          "text": "陳壽說，劉備很看重這位訪客。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        },
+        {
+          "id": "eg102",
+          "text": "當時諸葛亮躬耕於荊州，常拿管仲和樂毅自比。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a late-Han timber Xinye meeting hall with woven floor mats, one mature scholar in a plain headwrap and wide-sleeved linen tunic raising one hand as he recommends someone beyond the frame, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg010",
+          "text": "徐庶提起另一個人；劉備聽見名字後，第一個反應是什麼？",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a late-Han timber Xinye meeting hall with woven floor mats, one mature scholar in a plain headwrap and wide-sleeved linen tunic gesturing toward the open doorway, a low wooden table nearby, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg011",
+          "text": "這人是諸葛孔明；徐庶稱他為「臥龍」。"
+        },
+        {
+          "id": "eg103",
+          "text": "陳壽也說，徐庶是少數認為他真有才能的朋友。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a low wooden table in a late-Han Xinye meeting hall, one older commander with grey temples, narrow ochre headband and beige outer linen with a blue-green inner fold pointing with an open hand toward an empty reed guest mat, plain tabletop, warm window natural light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg012",
+          "text": "劉備第一個反應，是叫徐庶把人帶來。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a late-Han timber garrison courtyard, one mature scholar pointing down the narrow bare-earth footpath, soft overcast daylight, with a plain headwrap and wide-sleeved linen tunic",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg013",
+          "text": "徐庶卻說：「此人可就見，不可屈致也。」",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-013a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a wooden Xinye meeting hall with reed mats, one older commander looking toward a bare-earth footpath after hearing advice, soft morning light, with a narrow cloth headband and layered cross-front robe",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg135",
+          "text": "「不可屈致」是不宜強把諸葛亮召到劉備營中。"
+        }
+      ]
+    },
+    {
+      "id": "visit-013b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a late-Han Xinye garrison gate, one mature travelling scholar gestures toward a narrow bare-earth cottage footpath, pale morning light, with a plain headwrap and wide-sleeved linen tunic",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg173",
+          "text": "徐庶還說「將軍宜枉駕顧之」，明指劉備要屈尊去拜訪。"
+        }
+      ]
+    },
+    {
+      "id": "visit-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden garrison doorway, one commander hesitating before a forked bare-earth footpath, overcast daylight, with a high hair knot and layered hemp gown",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg014",
+          "text": "這一步正是分岔：劉備會自己去嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a narrow bare-earth footpath, one older robed traveller walking toward a distant thatched cottage, a walking staff in hand, pale afternoon light, with a narrow cloth headband and layered cross-front robe",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg015",
+          "text": "陳壽接著寫：「由是先主遂詣亮」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-015a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a bare-earth path ending at a modest thatched cottage, one older Han-era commander with grey temples, narrow ochre cloth headband and beige outer linen with a blue-green inner fold walking toward the plain wooden doorway, soft overcast natural light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg136",
+          "text": "「先主」是劉備，「詣亮」是去諸葛亮那裡；行動者寫得很清楚。"
+        }
+      ]
+    },
+    {
+      "id": "visit-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a thatched cottage, one older visitor approaching its plain wooden doorway, one hand raised in greeting, gentle morning light, with a narrow cloth headband and wrapped cross-front robe",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg016",
+          "text": "他一共去了三次，這才見到人。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a narrow bare-earth footpath, one lone traveller looking along an empty bend, a small cottage beyond, soft overcast daylight, with a high hair knot and layered hemp gown",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg018",
+          "text": "陳壽對三趟拜訪沒有逐趟記日子和路線，見面一成，筆墨便轉進兩人的私談。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-020",
+      "template": "big",
+      "data": {
+        "kicker": "《三國志》正文",
+        "text": "**因屏人曰**",
+        "sub": "劉備請旁人退下，轉入私談"
+      },
+      "lines": [
+        {
+          "id": "eg020",
+          "text": "劉備請旁人退開，問漢室衰敗後該往哪裡走。"
+        },
+        {
+          "id": "eg104",
+          "text": "在陳壽筆下，劉備問的是「計將安出」。"
+        }
+      ]
+    },
+    {
+      "id": "visit-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a low table, one worried commander studying an unlettered silk route sketch, shadows from a window, soft overcast daylight, with a high hair knot and layered hemp gown",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg021",
+          "text": "劉備也說出自己的短處；他缺的是什麼？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a cottage, one older commander lifting his gaze from an unlettered silk route sketch, a determined expression, mild window light, with a narrow cloth headband and wrapped cross-front robe",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg022",
+          "text": "他承認力量與謀略有限，志向卻沒放下。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest Han era cottage, one older commander pausing before giving his reply, hands resting beside a blank scroll, soft indoor lamplight, with a high hair knot and layered hemp gown",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg024",
+          "text": "諸葛亮的答話還有很長一段。陳壽寫到最後，劉備對這位訪客說了什麼？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest late-Han cottage with plain timber posts and plaster walls, packed-earth floor and one loose reed mat, one grey-templed older commander with narrow ochre headband and beige cross-collar linen giving a small relieved nod beside a bare low wooden table, one simple clay oil lamp in the corner, warm mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg031",
+          "text": "劉備答「善」，此後與諸葛亮「情好日密」。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-031a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet garrison hall, one armored retainer frowns toward an empty seat, soft indoor light, with a bound topknot and simple lamellar vest over a woven tunic",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg144",
+          "text": "兩人親近起來，關羽、張飛卻不高興；陳壽特別記下他們的反應。"
+        }
+      ]
+    },
+    {
+      "id": "visit-031b",
+      "template": "big",
+      "data": {
+        "kicker": "《三國志》正文",
+        "text": "**魚之有水**",
+        "sub": "劉備用這句比喻他與諸葛亮的關係"
+      },
+      "lines": [
+        {
+          "id": "eg145",
+          "text": "劉備回答他們：「孤之有孔明，猶魚之有水也。」"
+        }
+      ]
+    },
+    {
+      "id": "visit-031c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet late-Han garrison courtyard, one adult bearded retainer wearing a simple lamellar vest over a woven tunic standing silently beside a timber post, mouth closed, hands lowered and relaxed after hearing the commander, mild evening light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg146",
+          "text": "關羽、張飛這才不再爭。可同卷裴注的另一場初遇，誰先上門？"
+        }
+      ]
+    },
+    {
+      "id": "visit-035",
+      "template": "big",
+      "data": {
+        "kicker": "裴松之注引《魏略》",
+        "text": "**亮乃北行見備**",
+        "sub": "《魏略》寫諸葛亮先到劉備處"
+      },
+      "lines": [
+        {
+          "id": "eg035",
+          "text": "裴注引《魏略》：這場初遇，是諸葛亮先去見劉備。"
+        }
+      ],
+      "chapter": "裴註引魏略寫另一個訪客"
+    },
+    {
+      "id": "visit-035a",
+      "template": "big",
+      "data": {
+        "kicker": "史料層次",
+        "text": "**正文與引文**",
+        "sub": "陳壽正文不變；裴注保留《魏略》異說"
+      },
+      "lines": [
+        {
+          "id": "eg137",
+          "text": "這不是陳壽正文忽然改口，而是裴松之保留的另一部書的引文。"
+        }
+      ]
+    },
+    {
+      "id": "visit-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a narrow bare-earth footpath, one adult robed traveller in his late twenties walking north with a tied cloth bundle, hills behind, gentle morning light, with pinned-up locks and a wrapped linen garment",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg036",
+          "text": "《魏略》這段引文沒有徐庶勸劉備出門；諸葛亮北行到了哪座城？",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-037",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a wooden fortress gate, one adult scholar in his late twenties looking up at the entrance, soft overcast daylight, with pinned-up locks and a wrapped linen garment",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg037",
+          "text": "書裡開頭先說，劉備屯在樊城。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain late-Han timber study with bare plaster walls, one late-twenties scholar with high black topknot and plain blue-green Han garment moving one of exactly two simple unmarked wooden troop counters across an otherwise completely bare low wooden table toward the other, mild natural light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg038",
+          "text": "書中說曹操剛平定河北，下一步可能威脅荊州。"
+        }
+      ]
+    },
+    {
+      "id": "visit-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain late-Han timber study with bare walls, one adult scholar in his late twenties with a high black topknot and plain blue-green Han garment studying two small wooden route counters on an unlettered silk sketch, worried expression, low wooden table otherwise empty, pale natural light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg039",
+          "text": "諸葛亮覺得劉表反應太慢，恐怕招架不住。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        },
+        {
+          "id": "eg109",
+          "text": "《魏略》用這場危機，解釋他為何北行。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a timber garrison hall with woven mats, one adult traveller in his late twenties reaching for the wooden door, a tied cloth bundle at his side, gentle morning light, with pinned-up locks and a wrapped linen garment",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg040",
+          "text": "諸葛亮到了劉備面前，起初被當成什麼人？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a plain late-Han Fancheng timber gathering hall with plaster walls, exposed beams and a packed-earth floor, one loose reed guest mat beside a low wooden table, one adult scholar in his late twenties with a high black topknot and plain blue-green Han garment standing by the mat, overcast natural light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg041",
+          "text": "《魏略》先說「備與亮非舊」；兩人原來不熟。"
+        }
+      ]
+    },
+    {
+      "id": "visit-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a timber Fancheng meeting hall, one older commander glancing at an unused guest mat across a low table, mild window light, with a narrow cloth headband and wrapped cross-front robe",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg042",
+          "text": "又因他年少，只把他當普通讀書人接待。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a plain late-Han Fancheng gathering hall with plaster walls, exposed timber beams and packed-earth floor, one loose reed mat by a low wooden table, one adult scholar in his late twenties with high black topknot and plain blue-green Han garment remaining after other guests leave, sunlight from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg043",
+          "text": "《魏略》給了一個奇怪入口：兩人怎麼談上？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain late-Han Fancheng timber gathering hall with plaster walls, exposed wood posts and packed-earth floor, one loose reed guest mat beside a low table, one adult scholar in his late twenties with high black topknot and plain blue-green Han garment remaining alone as other guests have gone, warm afternoon sunlight from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg044",
+          "text": "還記得開場那場聚會？《魏略》說賓客散了，諸葛亮卻留下。"
+        }
+      ]
+    },
+    {
+      "id": "visit-045a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an almost empty timber Fancheng hall, one adult robed visitor in his late twenties waits beside a vacant guest mat, muted afternoon light, with pinned-up locks and a wrapped linen garment",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg167",
+          "text": "《魏略》還說「備亦不問其所欲言」：留下的客人沒有先被問話。"
+        }
+      ]
+    },
+    {
+      "id": "visit-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a low table, one older commander twisting a loose bundle of dark yak-tail fibers in his hands, soft overcast daylight, with a high hair knot and layered hemp gown",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg045",
+          "text": "恰巧有人剛送來犛牛尾，劉備反而自己動手編飾物。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain late-Han Fancheng timber hall with plaster walls, one adult scholar in his late twenties with high black topknot and plain blue-green Han garment asking a question while pointing gently toward loose dark yak-tail fibers spread on a low wooden table, soft afternoon natural light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg046",
+          "text": "諸葛亮便問：將軍還有遠志，只忙這件事嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-046a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a nearly empty late-Han Fancheng timber hall with plain plaster background, one older commander with grey temples, narrow ochre headband and beige outer linen with a blue-green inner fold lifting both empty hands away from loose dark yak-tail fibers already lying on the far side of a low wooden table, mild window natural light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg119",
+          "text": "劉備聽出話裡有分量，立刻丟開手中的牛尾飾物。"
+        }
+      ]
+    },
+    {
+      "id": "visit-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a timber Fancheng gathering hall, one middle-aged commander with a high hair knot and layered hemp gown speaking wearily beside a low wooden table, both hands empty and loose dark yak-tail fibers resting at its far edge, soft afternoon window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg047",
+          "text": "劉備回答，自己只是藉此排解憂心。"
+        },
+        {
+          "id": "eg110",
+          "text": "這件手邊小事，成了談軍事危機的引子。"
+        }
+      ]
+    },
+    {
+      "id": "visit-048a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain late-Han Fancheng timber and plaster hall with bare packed-earth floor and one loose reed mat, exactly one adult adviser in his late twenties with a mature face and high black topknot, plain blue-green Han garment, laying two plain wooden army tokens on a low table, mild natural light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg115",
+          "text": "還記得《魏略》說兩人原來不熟？這場初見怎麼走到上客待遇？"
+        }
+      ]
+    },
+    {
+      "id": "visit-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain late-Han Fancheng timber hall, exactly one older adult commander with grey temples, a short moustache and beard, narrow ochre cloth headband and beige outer linen with a blue-green inner fold moving two unequal plain wooden counters apart on a blank silk route sketch at a low table, mild natural light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg050",
+          "text": "他先問劉表能不能比曹操，劉備答：比不上。"
+        }
+      ]
+    },
+    {
+      "id": "visit-051a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at Fancheng barracks gate, one warlord surveying a sparse row of empty training poles, pale morning light, with a high hair knot and layered hemp gown",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg120",
+          "text": "再問劉備自己，劉備也比不上，手上兵不過數千人。"
+        }
+      ]
+    },
+    {
+      "id": "visit-052c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in timber Fancheng hall, one worried warlord leaning forward to ask for counsel, soft window light, with a narrow cloth headband and wrapped cross-front robe",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg123",
+          "text": "劉備也愁這件事，當面問：該怎麼辦？"
+        }
+      ]
+    },
+    {
+      "id": "visit-052a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest late-Han timber and plaster Fancheng hall: one adult late-twenties Zhuge Liang in a continuous plain blue-green cross-collar cloth robe with uninterrupted plain chest fabric, high black topknot, gesturing beside four separate long narrow completely clean uninscribed natural bamboo slats on a bare low wooden table; packed-earth floor, one loose reed mat, warm daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg121",
+          "text": "諸葛亮指出荊州人不少，缺的是在冊的人。"
+        }
+      ]
+    },
+    {
+      "id": "visit-054a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain late-Han Fancheng timber and plaster hall with packed-earth floor and an open doorway, exactly one adult adviser in his late twenties with mature face and high black topknot wearing a plain blue-green Han garment, extending his open palm toward an unseen listener beyond the frame, empty low table and one loose reed mat, mild natural light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg124",
+          "text": "他建議劉備告訴劉表，讓游戶自行申報，以補人手。"
+        }
+      ]
+    },
+    {
+      "id": "visit-055a",
+      "template": "big",
+      "data": {
+        "kicker": "裴注引《魏略》",
+        "text": "**備從其計，故衆遂彊**",
+        "sub": "只記劉備採計後人馬增強，未另寫劉表下令"
+      },
+      "lines": [
+        {
+          "id": "eg116",
+          "text": "《魏略》沒另記劉表是否下令，只說劉備採計後，人馬變強。"
+        }
+      ]
+    },
+    {
+      "id": "visit-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a timber Fancheng meeting hall, one older commander lifting his gaze toward an empty guest mat, gentle morning light, with a high hair knot and layered hemp gown",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg056",
+          "text": "劉備由此知道諸葛亮有英略。"
+        }
+      ]
+    },
+    {
+      "id": "visit-057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain late-Han Fancheng timber and plaster hall with bare packed-earth floor, one adult commander in his mid-forties with grey temples, narrow ochre cloth headband and short dark-grey beard carefully placing a single loose woven reed guest mat beside a low timber table, mild natural light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg057",
+          "text": "把這位起初被輕看的訪客，當成上客來接待。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-057a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from over the shoulder of exactly one mature adult fifth-century annotator with cloth headwrap and short dark beard on a plain timber archive balcony, contemplating two separate horizontal rolled entirely blank silk source scrolls laid apart on a low wooden table beneath a single woven bamboo blind, grey overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg143",
+          "text": "兩場都寫成關係開始的時刻；有沒有史料能排出哪場先發生？"
+        }
+      ]
+    },
+    {
+      "id": "visit-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a narrow bare-earth footpath approaching a thatched cottage, one older visitor looking toward its plain wooden doorway, misty morning light, with a high hair knot and layered hemp gown",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg063",
+          "text": "還記得劉備說「魚之有水」？先把草廬排在樊城之前，會遇上什麼字眼？",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "兩種會面順序接不上"
+    },
+    {
+      "id": "visit-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight medium shot in a plain late-Han Fancheng timber and plaster hall, bare packed-earth floor, one grey-templed commander in his mid-forties with narrow ochre headband and short dark-grey beard gazing toward one very thin flexible reed-woven guest mat lying flat and slightly rippled on earth near an open doorway; bare low wooden table, clean full-bleed unmarked frame, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg065",
+          "text": "《魏略》在樊城說兩人原本不熟；草廬之後的親近該怎麼解釋？"
+        }
+      ]
+    },
+    {
+      "id": "visit-065a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium wide shot from behind one late-twenties Zhuge-like scholar in plain blue-green cross-collar cloth and high black topknot, walking away from camera on bare-earth road through a modest rectangular Fancheng opening between two plain rammed-earth wall faces; straight unadorned lintel of bare wood above the gap, uninterrupted natural wood grain across it, simple open sky, full-bleed clean illustration",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg131",
+          "text": "若把樊城排在草廬前，另一句難題來自徐庶。"
+        }
+      ]
+    },
+    {
+      "id": "visit-065c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a bare-earth Xinye approach beside a late-Han garrison, one mature travelling scholar carries a blank rolled scroll toward the gate, pale overcast daylight, with a plain headwrap and wide-sleeved linen tunic",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg133",
+          "text": "徐庶仍問劉備「將軍豈願見之乎」；若亮已是上客，還要這樣介紹嗎？"
+        }
+      ]
+    },
+    {
+      "id": "visit-065e",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at desk level in a plain fifth-century Chinese timber and plaster workroom, one mature cloth-headwrapped Pei-like annotator seated at a bare low wooden table, each hand resting lightly on one of two distinct small tightly tied entirely blank horizontal silk source scroll rolls lying far apart on tabletop, simple plaster wall, open doorway and wooden scroll rack with only horizontal rolled bundles, mild daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg176",
+          "text": "正文沒說三訪是樊城後的再會，《魏略》也沒說北行前已在草廬相識。"
+        }
+      ]
+    },
+    {
+      "id": "visit-065d",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain fifth-century Chinese annotator's timber and plaster workroom, one mature adult historian in a simple cloth headwrap laying two separate tied entirely blank silk scrolls side by side with a clear gap on a bare low wooden table, wooden shelves behind holding only horizontal rolled scroll bundles, mild overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg134",
+          "text": "兩種拼法仍只是設想：現存這兩段沒有給能確定前後的日期。"
+        }
+      ]
+    },
+    {
+      "id": "visit-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a fifth-century archive doorway, one annotator carries a thin unmarked memorial toward an open unlettered scroll, clear morning light, with a plain headwrap and long fine-woven tunic",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg058",
+          "text": "如果排路線不能定案，裴在註裡實際拿什麼文字作判準？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-061",
+      "template": "big",
+      "data": {
+        "text": "誰先上門？",
+        "kicker": "裴松之核對初遇",
+        "sub": "《魏略》／《九州春秋》／〈出師表〉"
+      },
+      "lines": [
+        {
+          "id": "eg061",
+          "text": "裴先補《九州春秋》同說，再以「臣松之以為」引出〈出師表〉。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "裴引用出師表判誰先上門"
+    },
+    {
+      "id": "visit-061a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium waist-up shot at desk level in a fifth-century Chinese timber and plaster workroom, one mature bearded Pei-like annotator in a plain cloth headwrap holding one small closed tightly tied entirely blank quotation-source silk roll in his left hand, one visibly larger closed tightly tied entirely blank commentary roll resting apart on an otherwise bare low timber desk, plain plaster wall and wooden rack of horizontal rolled bundles behind, warm daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg130",
+          "text": "「臣松之以為」把前面的引書與他本人的判斷分開。"
+        }
+      ]
+    },
+    {
+      "id": "visit-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a fifth-century court portico, one historian unrolls a blank memorial on a stone bench, warm morning light, with a plain headwrap and long fine-woven tunic",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg066",
+          "text": "裴沒有列兩地行程，他直接抓住奏章裡的拜訪方向。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-066a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet Han era farmstead, one adult robed farmer in his late twenties walks beside a cultivated plot, soft morning light, with pinned-up locks and a wrapped linen garment",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg158",
+          "text": "整篇〈出師表〉先寫「臣本布衣，躬耕於南陽」，說話者把自己放在鄉間。"
+        }
+      ]
+    },
+    {
+      "id": "visit-066b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a thatched cottage, one adult robed farmer in his late twenties closes a plain wooden gate, pale daylight, with pinned-up locks and a wrapped linen garment",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg159",
+          "text": "他又說「不求聞達於諸侯」；這些自述還不能指出誰走到誰家。"
+        }
+      ]
+    },
+    {
+      "id": "visit-067",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Han court courtyard, one middle-aged minister holds a sealed memorial before the audience hall, overcast sky, with hair pinned high and a plain Shu Han court gown",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg067",
+          "text": "諸葛亮自己說，從應允效力到寫表已過「二十有一年」；裴看中了回憶裡哪一句？",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-069",
+      "template": "big",
+      "data": {
+        "text": "三顧臣於草廬之中",
+        "kicker": "諸葛亮〈出師表〉",
+        "sub": "裴松之據此反駁《魏略》"
+      },
+      "lines": [
+        {
+          "id": "eg069",
+          "text": "還記得開場裴寫「可怪」？他抓的是〈出師表〉「三顧臣於草廬之中」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-069a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a simple 227 Shu Han timber court portico, one middle-aged adult male minister with black topknot tied by a red strip, small black moustache and pointed goatee, blue-green Han garment resting one hand beside a small rolled entirely blank silk court memorial scroll on a low wooden stand, plain plaster wall behind and cool dawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg127",
+          "text": "裴松之還引用「先帝不以臣卑鄙，猥自枉屈」；誰在這句裡屈尊？"
+        }
+      ]
+    },
+    {
+      "id": "visit-069b",
+      "template": "big",
+      "data": {
+        "kicker": "〈出師表〉用字",
+        "text": "**卑鄙／枉屈**",
+        "sub": "身分低微／屈尊；先交代兩人身分高低"
+      },
+      "lines": [
+        {
+          "id": "eg128",
+          "text": "「卑鄙」在這段古文指身分低微，「枉屈」是屈尊；兩詞先交代兩人身分高低。"
+        }
+      ]
+    },
+    {
+      "id": "visit-069d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest late-Han thatched cottage with plain plaster-and-wood walls, exactly one adult commander in his mid-forties with grey temples, narrow ochre headband and beige outer linen with a blue-green inner fold pointing down at a small unlettered silk route sketch made of one winding line and laid flat on a bare low wooden table, mild indoor lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg160",
+          "text": "裴松之的引文接著是「諮臣以當世之事」；還記得正文那場私下談話嗎？問事也接在三顧後。"
+        }
+      ]
+    },
+    {
+      "id": "visit-069e",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Shu Han court corridor, one middle-aged adult minister with bound topknot and plain cross-collar robe carrying a rolled unlettered silk memorial toward a timber audience hall, gentle morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg162",
+          "text": "〈出師表〉接著說「由是感激，遂許先帝以驅馳」；答應效力在問事之後。"
+        }
+      ]
+    },
+    {
+      "id": "visit-069c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple thatched cottage, one adult robed strategist in his late twenties faces the empty doorway, soft overcast daylight, with pinned-up locks and a wrapped linen garment",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg138",
+          "text": "「先帝」是劉備，「臣」是諸葛亮；這句「顧」的行動者因此是誰？"
+        }
+      ]
+    },
+    {
+      "id": "visit-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain fifth-century Chinese annotator's plaster-and-wood passage, exactly one mature adult historian with full dark beard and simple blue-green cloth headwrap turning from one unrolled entirely blank silk memorial on a low wooden stand toward a separate small tied blank chronicle scroll in his other hand, warm clay-lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg070",
+          "text": "裴松之寫道：「則非亮先詣備，明矣。」在他看來，上門的是劉備。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from over the shoulder of exactly one mature adult fifth-century annotator with cloth headwrap and short dark beard on a plain timber archive balcony, contemplating two separate horizontal rolled entirely blank silk source scrolls laid apart on a low wooden table beneath a single woven bamboo blind, grey overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg071",
+          "text": "裴也承認，聞見不同，說法可能各有出入。"
+        }
+      ]
+    },
+    {
+      "id": "visit-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at desk level of one mature fifth-century Pei-like annotator in a plain timber-and-plaster workroom, one compact narrow tightly tied entirely blank quoted-chronicle silk roll and one separate larger tightly tied entirely blank court-memorial silk roll resting far apart on an otherwise bare low wooden table, one clay oil lamp, uninterrupted plain plaster wall, warm light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg072",
+          "text": "但這回背離太遠，他寫「乖背至是，亦良為可怪」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a modest fifth-century Chinese timber archive gate, exactly one mature adult annotator with simple cloth headwrap and short dark beard holding one tied entirely blank rolled silk chronicle while looking toward a distant bare-earth path fading into afternoon haze, plain wooden posts and pale light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg074",
+          "text": "裴松之已作出判斷；《魏略》那條異說，最初是誰傳出來的？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on fifth-century archive stairs, one historian scans the unmarked edge of an old scroll, soft daylight, with a plain headwrap and long fine-woven tunic",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg075",
+          "text": "《魏略》這段樊城相遇沒有寫最初根據誰的敘述。"
+        }
+      ],
+      "chapter": "裴留下異說，傳話人卻未現身"
+    },
+    {
+      "id": "visit-075a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a fifth-century archive doorway, one historian inspects the blank end of an old source scroll, cool daylight, with a plain headwrap and long fine-woven tunic",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg163",
+          "text": "引文前雖標「魏略曰」，能指出的只是裴引用了哪本書。"
+        }
+      ]
+    },
+    {
+      "id": "visit-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a fifth-century archive shelf, one historian taking a second rolled chronicle from a wooden compartment, pale morning light, with a plain headwrap and long fine-woven tunic",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg076",
+          "text": "裴在判斷前提過《九州春秋》，它留下了完整原話嗎？"
+        }
+      ]
+    },
+    {
+      "id": "visit-077",
+      "template": "big",
+      "data": {
+        "kicker": "裴松之注",
+        "text": "**所言亦如之**",
+        "sub": "裴在此只轉述一句，未抄錄《九州春秋》完整會面段"
+      },
+      "lines": [
+        {
+          "id": "eg077",
+          "text": "裴只寫：「所言亦如之」。"
+        }
+      ]
+    },
+    {
+      "id": "visit-077a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a modest fifth-century Chinese timber-and-plaster archive aisle, one mature annotator in a plain cloth headwrap holding one narrow tightly tied entirely blank silk mention scroll beside a separate larger closed entirely blank source roll on a low wooden scroll shelf, only rolled bundles in background, cool overcast window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg141",
+          "text": "這裡沒有《九州春秋》的完整會面段落，連它和《魏略》細節有多相同也無法逐句核對。"
+        }
+      ]
+    },
+    {
+      "id": "visit-078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a fifth-century archive courtyard, one historian stands beside two loose source cords with hidden ends, diffuse daylight, with a plain headwrap and long fine-woven tunic",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg078",
+          "text": "這是否代表兩本書各有獨立的傳話線？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modest fifth-century Chinese timber archive window, one mature annotator in a plain cloth headwrap holding two separate loose unlettered source cords, each cord's far end hidden behind a different part of a low wooden scroll shelf, overcast window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg080",
+          "text": "註沒有記下兩書各自怎樣得知故事，無法判定。"
+        }
+      ]
+    },
+    {
+      "id": "visit-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a covered fifth-century archive walkway, one historian takes a second unmarked scroll from a tied cloth bundle, soft afternoon light, with a plain headwrap and long fine-woven tunic",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg081",
+          "text": "剛才提到諸葛亮先上門的兩個書名；陳壽還在哪篇文字寫過三顧？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide establishing shot inside a modest Western Jin timber-and-plaster study, exactly one middle-aged male historian with mature face, short dark beard and bound black topknot placing one completely blank rolled silk text beside a separate tied blank scroll bundle on a low wooden desk, shelves holding only horizontal rolled scrolls, overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg082",
+          "text": "〈諸葛亮集序〉也寫：「乃三顧亮於草廬之中」。"
+        }
+      ]
+    },
+    {
+      "id": "visit-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a covered Western Jin archive walkway, one middle-aged historian with bound topknot and plain cross-collar robe carrying two identical unmarked scroll bundles, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg083",
+          "text": "但這篇集序仍由陳壽寫，不能把它和傳記算成兩個獨立講述者。"
+        }
+      ]
+    },
+    {
+      "id": "visit-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along an ancient court passage, one middle-aged minister carrying an unmarked memorial toward the audience hall, soft warm light, with hair pinned high and a plain Shu Han court gown",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg085",
+          "text": "回到開場的〈出師表〉，另一位能具名的作者是諸葛亮本人。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "兩種初遇同列一卷；異說源頭仍待查"
+        ]
+      },
+      "lines": [
+        {
+          "id": "eg097",
+          "text": "這個拜訪的故事，你會先查哪一本書？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "eg098",
+          "text": "喜歡一起翻史書的註腳，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1625 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s04",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講一則有原文可對的歷史疑案。周瑜、孫權、裴松之和各書名咬字清楚；提問處留半拍。",
+    "performance": "開頭懸念平穩，南郡戰事有節奏；讀小說時聲音稍輕，結尾清楚分辨史書與文學，不替古人診病。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "s04003",
+      "payoff": "s04029",
+      "what": "南郡交鋒付出的代價"
+    },
+    {
+      "setup": "s04035",
+      "payoff": "s04071",
+      "what": "南郡箭傷有沒有被寫成病因"
+    },
+    {
+      "setup": "s04002",
+      "payoff": "s04050",
+      "what": "孫權是否同意取蜀計畫"
+    },
+    {
+      "setup": "s04002",
+      "payoff": "s04069",
+      "what": "周瑜最後能走到哪裡"
+    },
+    {
+      "setup": "s04005",
+      "payoff": "s04076",
+      "what": "周瑜留下的軍隊交給誰"
+    },
+    {
+      "setup": "s04070",
+      "payoff": "s04076",
+      "what": "孫權是否採納薦魯肅的上疏"
+    },
+    {
+      "setup": "s04004",
+      "payoff": "s04082",
+      "what": "小說裡諸葛亮信件寫了什麼"
+    },
+    {
+      "setup": "s04006",
+      "payoff": "s04091",
+      "what": "史書與小說如何分別寫周瑜死因"
+    },
+    {
+      "setup": "s04017",
+      "payoff": "s04018",
+      "what": "孫權將抗曹之兵交給誰"
+    },
+    {
+      "setup": "s04011",
+      "payoff": "s04018",
+      "what": "孫權會否跟著劉琮投降"
+    },
+    {
+      "setup": "s04037",
+      "payoff": "s04038",
+      "what": "周瑜還要面對誰"
+    },
+    {
+      "setup": "s04042",
+      "payoff": "s04043",
+      "what": "周瑜下一個進軍方向"
+    },
+    {
+      "setup": "s04052",
+      "payoff": "s04053",
+      "what": "攔下西征計畫的原因"
+    },
+    {
+      "setup": "s04050",
+      "payoff": "s04051",
+      "what": "獲准後周瑜如何上路"
+    },
+    {
+      "setup": "s04067",
+      "payoff": "s04068",
+      "what": "兩版臨終文字能否確定病名"
+    },
+    {
+      "setup": "s04080",
+      "payoff": "s04081",
+      "what": "小說裡誰想阻止周瑜西行"
+    },
+    {
+      "setup": "s04081",
+      "payoff": "s04082",
+      "what": "小說裡諸葛亮信件的警告"
+    },
+    {
+      "setup": "s04083",
+      "payoff": "s04084",
+      "what": "小說信提醒江東要防備誰"
+    },
+    {
+      "setup": "s04089",
+      "payoff": "s04090",
+      "what": "史書有沒有既生瑜的長嘆"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "周瑜真的是被諸葛亮氣死的嗎？史書寫下另一段最後旅程｜奇聞檔案局",
+    "description": "《三國演義》用「孔明三氣周公瑾」和「既生瑜，何生亮」寫出難忘的死亡場面。《三國志》〈周瑜傳〉記載的最後一程，卻是孫權同意取蜀計畫、周瑜回江陵準備、途中巴丘病卒。〈魯肅傳〉與裴注《江表傳》保存病困時推薦魯肅的兩種文字，並沒有給出病名，也沒有證據把舊箭傷或怒氣判成死因。\n\n本集把 210 年前後的戰事與臨終記錄，和小說第 51、54–57 回分開看。可愛插圖是 AI 生成的敘事示意，不是人物容貌、傷勢或古戰場實景重建。資料查核：2026-10-19。",
+    "tags": [
+      "周瑜",
+      "諸葛亮",
+      "三氣周瑜",
+      "既生瑜何生亮",
+      "三國志",
+      "三國演義",
+      "赤壁",
+      "巴丘",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**氣死的**？",
+      "tag": "三國名場面",
+      "sub": "周瑜最後一程",
+      "shot": "last-line-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》卷五十四〈周瑜傳〉與〈魯肅傳〉",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/054.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國志》卷五十四另一套轉錄",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E4%B8%89%E5%9B%BD%E5%BF%97.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《資治通鑑》建安十五年（210）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》第 51、54–57 回",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E9%9B%86%E8%97%8F/%E6%BC%94%E4%B9%89/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "pack-for-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beneath the roof of a timber Eastern Han command hall, a southern river commander wearing a plain linen headwrap and dark gown unrolling a plain western route map on a low wooden table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04001",
+          "text": "建安十五年，周瑜向孫權展開一份向西進兵的計畫。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "周瑜向孫權提出西行計畫"
+    },
+    {
+      "id": "approval",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a timber command hall with bamboo screens in morning light, one Jiangdong river officer with a silk headwrap and a layered long Chinese tunic resting a hand on the map, plain route map close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04002",
+          "text": "這趟西行能得到孫權同意嗎？周瑜能走到哪裡？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "old-wound-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at army tent in pale diffuse window light, one southern general in a plain robe looking toward a distant camp, plain banner at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04003",
+          "text": "曹仁當時還守在江陵；周瑜與他交鋒，會付出什麼代價？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-letter-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at novel war tent in mild light, one robed strategist folding a blank letter, without writing folded paper as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04004",
+          "text": "更晚的小說，卻讓諸葛亮的一封信追上他。"
+        }
+      ]
+    },
+    {
+      "id": "succession-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on an earthen road toward Baqiu in soft morning light, one Han courier with hair bound in cloth and a plain cross-collar robe holding a sealed unlettered folio, plain paper off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04005",
+          "text": "路上還有一封上疏要送給孫權；軍隊後來交給誰？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "last-line-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in diffuse window light, one history reader separating two blank books, two without lettering volumes under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04006",
+          "text": "同一段最後旅程，史書與小說怎麼寫？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "same-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an earthen Liyang river landing in late Han China, one young southern river commander in a cross-collar cloth tunic with a silk headwrap looking toward a moored wooden boat",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04007",
+          "text": "送出西行計畫的周瑜，早在孫策將東渡時，就帶兵到歷陽迎他。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "孫策去世後，周瑜改輔孫權"
+    },
+    {
+      "id": "sunce-dies",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a timber mourning hall of late Han China, one river officer wearing a plain fabric headwrap and a layered cross-collar gown setting down an undyed mourning cloth on a low wooden table",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04008",
+          "text": "孫策去世，周瑜帶兵回吳赴喪。"
+        }
+      ]
+    },
+    {
+      "id": "serve-sunquan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a timber Eastern Han Jiangdong hall, one young Jiangdong ruler with a black silk headwrap and plain cross-collar robe listening to counsel across a low wooden table, woven mat beneath",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04009",
+          "text": "他留任中護軍，與張昭一起輔佐接手江東的孫權。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "cao-south",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at northern camp in flat clear morning, one northern warlord looking downriver, riverbank beyond as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04010",
+          "text": "建安十三年，曹操的軍隊沿江逼近。"
+        }
+      ]
+    },
+    {
+      "id": "jingzhou-navy",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at Jingzhou riverside in overcast soft afternoon light, one northern warlord inspecting moored war vessels, river fleet off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04011",
+          "text": "劉琮已降，荊州水軍也落到曹操手裡；孫權會跟著降嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "debate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beneath the timber roof of a late Han council hall, one young Jiangdong ruler in a plain cross-collar court gown and black silk headwrap holding a blank petition above a low wooden table",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04012",
+          "text": "孫權營中有人主張迎降，也有人要迎戰。"
+        }
+      ]
+    },
+    {
+      "id": "why-surrender",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot within a timber council hall with woven mats in sunlit daytime, one Chinese court adviser with a bound topknot and a wide-sleeved dark robe pointing at a river on an unlettered map, unlettered parchment river map on a low wooden table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04013",
+          "text": "主降的人說，長江天險已不能替江東獨擋曹軍。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-argues",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot beneath the timber roof of a late Han council hall, a southern river commander in a dark wrapped tunic and cloth headwrap pointing at an unlettered river sketch on a low wooden table",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04014",
+          "text": "周瑜主張打：北方軍隊改乘舟船，真能在江上打持久戰嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "water-sickness",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot inside a timber council hall with woven mats in soft diffuse window light, one late Han southern general with hair bound high and a wide-sleeved cloth gown counting concerns on his fingers, plain route map at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04015",
+          "text": "他還指出北軍遠來，不習水土，疾病也是風險。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "request-thirty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a timber council hall with woven mats in clear morning, a southern river commander in late Han dress wearing a plain silk headwrap, dark cloth robe and lamellar vest placing a wooden counter at a river crossing, unlettered parchment map on a low wooden table",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04016",
+          "text": "周瑜於是請孫權給三萬精兵，進駐夏口迎敵。"
+        }
+      ]
+    },
+    {
+      "id": "cao-threat-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at command hall in soft soft morning light, one Jiangdong ruler studying a unlettered river map, plain map off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04017",
+          "text": "孫權會把迎戰的兵交給誰？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "given-command",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at council hall in diffuse window light, one Jiangdong ruler handing over a plain command token, wooden token under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04018",
+          "text": "孫權最後把抗曹的兵交給周瑜與程普。"
+        }
+      ],
+      "chapter": "孫權命周瑜迎曹，曹仁仍守江陵"
+    },
+    {
+      "id": "cao-withdraws",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at shore road in overcast sunlit daytime, one northern warlord turning away from a river camp, empty riverbank at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04019",
+          "text": "赤壁之後曹操北去，卻留下曹仁守江陵。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "beside-jiangling",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at Jiangling wall in soft afternoon light, one northern garrison chief watching the far bank, walled town behind close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04020",
+          "text": "周瑜與程普隔著大江與曹仁對峙，雙方尚未交鋒。"
+        }
+      ]
+    },
+    {
+      "id": "city-grain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at ancient Jiangling granary, one Han garrison chief with a bound topknot and lamellar armor inspecting closed wooden plank storehouse doors with thick crossbeams",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04021",
+          "text": "裴注《吳錄》還說，曹仁守著江陵城內的許多糧食。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jiangling-not-over",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a low wooden camp table beneath canvas in clear morning, one late Han Jiangdong commander with a high topknot, dark cloth tunic and lamellar vest unrolling a blank route map, river crossing sketch as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04022",
+          "text": "對峙還沒結束；周瑜先派誰到夷陵？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ning-ahead",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a timber Yiling outpost with wooden palisades in cloudy soft afternoon light, one Han vanguard soldier wearing a plain cloth headwrap and a lamellar vest holding a guard post, wooden palisade off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04023",
+          "text": "周瑜先派甘寧到夷陵，曹仁派兵去圍。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "rescue-request",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot beneath the roof of a canvas war tent with wooden poles in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved linen robe reading a blank dispatch, folded blank paper beside the figure",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04024",
+          "text": "甘寧求救，周瑜得立刻決定怎樣救。"
+        }
+      ]
+    },
+    {
+      "id": "leave-ling",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot beneath a late Han canvas war tent, one Jiangdong commander with a high topknot and lamellar vest placing a wooden counter behind the river line on an unlettered parchment map at a low table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04025",
+          "text": "他照呂蒙的建議，留凌統守住後方。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "ride-to-ning",
+      "template": "big",
+      "data": {
+        "kicker": "《三國志》〈周瑜傳〉",
+        "text": "**救甘寧**",
+        "sub": "周瑜與呂蒙率兵前往被圍之地"
+      },
+      "lines": [
+        {
+          "id": "s04026",
+          "text": "自己與呂蒙帶兵向甘寧被圍的地方去。"
+        }
+      ]
+    },
+    {
+      "id": "ning-freed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a simple unlettered timber palisade beside the Yiling river, one Eastern Han vanguard soldier with bound topknot and plain lamellar vest walking through the open post entrance, rough wooden posts without signboard, natural morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04027",
+          "text": "甘寧的圍解了，周瑜渡江屯在北岸。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "arrow-awaits",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at open field in flat clear morning, one Jiangdong commander riding along the front line, plain battle banner as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04028",
+          "text": "雙方約好決戰，周瑜親自騎馬接近陣前。"
+        }
+      ]
+    },
+    {
+      "id": "right-rib",
+      "template": "big",
+      "data": {
+        "kicker": "《三國志》〈周瑜傳〉",
+        "text": "**右脅中箭**",
+        "sub": "南郡陣前，一支流箭射中周瑜"
+      },
+      "lines": [
+        {
+          "id": "s04029",
+          "text": "就在陣前，一支流箭射中周瑜的右脅。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "中了箭，他還巡營"
+    },
+    {
+      "id": "severe-wound",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot beneath a canvas war tent in late Han China, a southern river commander in a plain wrapped tunic resting on a low camp cot with a hand beside his covered right ribs and a subdued expression",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04030",
+          "text": "《三國志》說傷勢很重，他先回營休息。"
+        }
+      ]
+    },
+    {
+      "id": "cao-ren-hears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a third-century canvas garrison command tent beside Jiangling, one armored adult commander with a bound topknot opening a folded blank dispatch brought by an off-frame messenger, rough earth wall visible through the tent opening in daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04031",
+          "text": "曹仁聽說周瑜還沒起身，便帶兵列陣。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-rises",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at army tent in pale soft afternoon light, one robed river officer standing up from a camp cot, folded cloak close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04032",
+          "text": "但本傳說他自己起來了。"
+        }
+      ]
+    },
+    {
+      "id": "walks-camp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at camp lane in daytime light, one late Han southern general with a high topknot and a wide-sleeved cloth gown walking past a row of tents, cloth camp banners at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04033",
+          "text": "周瑜走遍軍營，激勵將士。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "enemy-recedes",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at Jiangling road in overcast clear morning, one Han garrison chief with cloth headwrap and layered lamellar armor leaving the field, walled town behind as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04034",
+          "text": "曹仁最後退走，孫權拜周瑜為偏將軍、領南郡太守。"
+        }
+      ]
+    },
+    {
+      "id": "arrow-gone-from-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study table in soft afternoon light, one history reader resting a finger beside a undecorated margin, open stitched book off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04035",
+          "text": "箭傷後，他還會上路；病中的文字會再提這支箭嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "still-governing",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a timber Jiangling office with lattice windows in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved silk robe studying a river route, blank route map under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04036",
+          "text": "戰後的周瑜仍駐在江陵，繼續替孫權出主意。"
+        }
+      ]
+    },
+    {
+      "id": "future-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a timber Jiangling office with lattice windows in soft sunlit daytime, a southern river commander in late Han dress with a silk headwrap, dark cloth tunic and lamellar vest looking beyond a plain regional map, unlettered map at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04037",
+          "text": "江陵之外，還有另一位剛領荊州的人；周瑜會怎樣處理他？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "liu-takes-jingzhou",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot within a timber Gong'an office with lattice windows in soft afternoon light, one visiting Han commander wearing a plain cloth headwrap and a layered Chinese robe examining a blank regional map, plain map close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04038",
+          "text": "那人是劉備；他此時以左將軍的身分領荊州牧。"
+        }
+      ],
+      "chapter": "周瑜先請留劉備，再請取蜀"
+    },
+    {
+      "id": "liu-arrives",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at Jiangdong landing in diffuse window light, one visiting Han commander with tied topknot and a layered Chinese cross-collar gown arriving at a river landing, moored boat at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04039",
+          "text": "他到孫權那裡見面，周瑜隨後遞上奏疏。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "liu-visits",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot inside a timber command hall with bamboo screens in clear morning, a southern river commander in Eastern Han dress wearing a linen headwrap, dark cloth robe and lamellar vest lifting a plain petition, blank paper as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04040",
+          "text": "周瑜建議把劉備留在吳地，別讓他回去領兵。"
+        }
+      ]
+    },
+    {
+      "id": "quan-declines",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a timber command hall with bamboo screens in soft morning light, one young Jiangdong ruler with tied topknot and a long silk court robe setting down the petition, plain paper off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04041",
+          "text": "孫權顧慮曹操仍在北方，又怕劉備難以控制，沒有採納周瑜的留人建議。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "not-anger",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beneath the roof of a timber command hall with bamboo screens in pale diffuse window light, one late Han southern general wearing a plain cloth headwrap and a wide-sleeved cloth gown rolling up a blank proposal, blank scroll under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04042",
+          "text": "周瑜隨後又呈上一份進軍建議；這次要打哪裡？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-audience",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a timber command hall with bamboo screens in daytime light, one late Han Jiangdong commander with a high topknot, dark cloth robe and lamellar vest unfolding a western map, undecorated route sketch at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04043",
+          "text": "周瑜再見孫權，這次請求向西取益州。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "west-opening",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at western valley in soft afternoon light, one frontier governor in late Han China with a silk headwrap and a long fabric tunic looking toward distant hills, blank border post close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04044",
+          "text": "當時益州的劉璋，還要面對張魯的壓力。"
+        }
+      ]
+    },
+    {
+      "id": "cao-busy",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at a low wooden council table with bamboo screens in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved cloth robe tapping the northern edge of a map, plain route map at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04045",
+          "text": "他認為曹操新敗，一時難與江東再戰。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "ask-sunyu",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a low wooden council table with bamboo screens in afternoon light, a southern river commander in late Han dress wearing a plain headwrap, dark wrapped Han-style tunic and lamellar vest placing a token west of the river, wooden token as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04046",
+          "text": "他請求與奮威將軍孫瑜一道西進。"
+        }
+      ]
+    },
+    {
+      "id": "take-shu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a third-century wooden council table, one adult Jiangdong officer with bound topknot in a plain cross-collar woven robe sliding one small round wooden counter westward across a blank hand-drawn route map, bamboo screen in daylight, no other people or objects",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04047",
+          "text": "先取蜀，再對付張魯。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "hold-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a low wooden council table with bamboo screens in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved silk long coat setting down a second counter, plain map under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04048",
+          "text": "他想讓這位將軍留守攻下的新地。"
+        }
+      ]
+    },
+    {
+      "id": "turn-north",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at a low wooden council table with bamboo screens in sunlit daytime, a southern river commander in late Han dress wearing a plain cloth headwrap, dark cloth gown and lamellar vest tracing a northward route, unlettered map at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04049",
+          "text": "自己再與孫權圖襄陽，往北壓迫曹操。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "yes-to-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot inside a timber command hall with bamboo screens in soft afternoon light, one young Jiangdong ruler with tied topknot and a long silk court robe approving with a lowered palm, plain map close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04050",
+          "text": "孫權說可以；還記得開頭那趟西行嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "return-jiangling",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at Jiangling hall in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved cloth tunic closing a travel chest, plain folded cloak at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04051",
+          "text": "周瑜回江陵整備行裝，隨後踏上西行之路。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "what-stopped",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at wooded road in fading clear morning, one late Han Jiangdong commander with a silk headwrap, dark linen robe and lamellar vest pausing by a roadside camp, plain travel case as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04052",
+          "text": "上路之後，究竟什麼攔住他？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "illness-appears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study table in soft morning light, one history reader opening a bound history, unlettered page off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04053",
+          "text": "〈魯肅傳〉說周瑜病困，而他此時已在路上。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "周瑜在路上病倒，薦魯肅"
+    },
+    {
+      "id": "letter-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot within a canvas travel tent with wooden poles in diffuse window light, one late Han southern general with hair bound high and a wide-sleeved wrapped Han-style tunic opening a blank folio, plain paper under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04054",
+          "text": "病中奏疏的開頭，周瑜說天下仍在用兵，這件事讓他日夜掛心。"
+        }
+      ]
+    },
+    {
+      "id": "prepare-future",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot inside a timber command hall with bamboo screens in soft sunlit daytime, one young Jiangdong ruler wearing a plain cloth headwrap and a long silk court robe resting a hand beside a folded petition, plain paper at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04055",
+          "text": "他請孫權先為將來可能的危險作準備，才能安穩下來。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "unfinished-frontier",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a canvas travel tent with wooden poles in soft afternoon light, one Jiangdong river officer with a bound topknot and a layered long Chinese robe drafting a plain petition, blank paper close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04056",
+          "text": "他的上疏先提到曹操仍是敵人，邊境尚未安定。"
+        }
+      ]
+    },
+    {
+      "id": "liubei-nearby",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beneath the roof of a canvas travel tent with wooden poles in soft diffuse window light, one late Han southern general with hair bound high and a wide-sleeved fabric gown marking a nearby town on a plain map, unlettered map at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04057",
+          "text": "劉備又近在公安，兩邊的防線靠得很近。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "people-unsettled",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a third-century canvas command tent, one adult southern river commander with bound topknot and plain lamellar vest touching one small wooden counter to a blank riverbank map on a bare table, canvas wall and wooden pole behind, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04058",
+          "text": "這一帶的百姓還沒歸附，需要有人接手安撫。"
+        }
+      ]
+    },
+    {
+      "id": "replacement",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot inside a canvas travel tent with wooden poles in soft afternoon light, one Jiangdong river officer with tied hair and a layered long Chinese tunic sealing a plain petition, undecorated paper off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04059",
+          "text": "他上疏請孫權讓魯肅接下自己的職位。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "lusu-history",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot within a timber command hall with bamboo screens in diffuse window light, one young Jiangdong ruler with tied topknot and a long silk court robe receiving an adviser, plain hall mat under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04060",
+          "text": "魯肅並非突然冒出來；周瑜早年就薦過他。這次看中哪項本領？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "lusu-merit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a canvas travel tent with wooden poles in soft morning light, one late Han Jiangdong commander wearing a plain cloth headwrap, dark wrapped Han-style tunic and lamellar vest sealing the petition, unlettered paper at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04061",
+          "text": "他認為魯肅有智略，可以接下這份責任。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "last-words",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a canvas travel tent with wooden poles in fading soft afternoon light, one Jiangdong river officer with tied hair and a layered long Chinese robe looking down at a folded petition, blank paper close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04062",
+          "text": "上疏最後，他甚至提到自己死去的那一天。"
+        }
+      ]
+    },
+    {
+      "id": "another-wording",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study table in window light, one history reader lifting a second undecorated folio, undecorated paper leaf at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04063",
+          "text": "裴注卻引《江表傳》另載一封信；它多寫了什麼？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "sudden-illness",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Eastern Han canvas travel tent, one adult southern river commander with bound topknot and plain wrapped woven tunic lying weakly on a straw camp cot under a simple linen cover, pale face and closed eyes in subdued morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04064",
+          "text": "那一版寫他路上突患急病，治療後也沒好轉。"
+        }
+      ]
+    },
+    {
+      "id": "life-length",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a third-century canvas travel tent, one adult Jiangdong officer with bound topknot and plain cross-collar woven robe resting his hand on one folded blank paper letter on a low wooden table, canvas walls fill all four image edges, soft morning daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04065",
+          "text": "那封信接著說，人生有死，壽命長短不是他要惋惜的事。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "regret-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a late-Han canvas travel tent, one ill adult southern general with bound topknot and wide-sleeved hemp gown reclining on a straw camp cot, looking sadly toward an unlettered rolled western route map on a low wooden table, muted daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04066",
+          "text": "他真正遺憾的，是取蜀與襄陽的大計沒能實現。"
+        }
+      ]
+    },
+    {
+      "id": "pei-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at study table in soft sunlit daytime, one history reader turning one plain folio over, undecorated paper at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04067",
+          "text": "裴松之說兩信意思相近、文句不同；能從裡面查到病名嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "no-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study table in soft afternoon light, one history reader leaving a blank margin untouched, open bound book close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04068",
+          "text": "無論讀哪一版，都沒寫出這場病的病名。"
+        }
+      ]
+    },
+    {
+      "id": "baqiu-death",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study table in pale diffuse window light, one history reader closing the history gently, closed stitched book at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04069",
+          "text": "〈周瑜傳〉只用四字記下結局：「巴丘病卒」。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "age-thirtysix",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an unpaved earthen footpath at a Eastern Han riverside camp near Baqiu, one adult messenger with a bound topknot and plain hemp gown holding a folded blank petition beside an empty canvas tent and timber poles, overcast morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04070",
+          "text": "他那年三十六歲；薦魯肅的上疏，孫權會採納嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "no-diagnosis",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in mild soft afternoon light, one history reader resting a finger beside a undecorated history margin, open history book off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04071",
+          "text": "還記得南郡那支箭嗎？《周瑜傳》沒把它寫成死因；不能判作舊傷復發。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "sunquan-mourns",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot within a timber mourning hall with woven mats, one young Jiangdong ruler wearing an undyed plain mourning gown and a simple fabric headwrap, holding a folded mourning cloth in subdued daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04072",
+          "text": "孫權穿素服舉哀，身旁的人也為之悲痛。"
+        }
+      ]
+    },
+    {
+      "id": "meet-at-wuhu",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 210 CE Wuhu river landing in subdued overcast daylight, one young adult Jiangdong ruler with bound topknot wearing an undyed plain mourning hemp gown standing solemnly before a covered wooden funeral bier resting on timber supports, river boats distant",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04073",
+          "text": "靈柩還吳時，孫權親往蕪湖迎接。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "pay-funeral",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot inside a timber mourning hall with woven mats in soft afternoon light, one young Jiangdong ruler wearing a plain linen headwrap and a long silk court hanfu garment handing over a plain provision token, plain token close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04074",
+          "text": "送還的費用，也由孫權安排供給。"
+        }
+      ]
+    },
+    {
+      "id": "kingmaker",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot inside a timber mourning hall with woven mats in pale diffuse window light, one young Jiangdong ruler with tied topknot and a long silk court robe looking toward an empty chair, plain chair at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04075",
+          "text": "裴注記孫權說：公瑾有王佐之資，如今我靠誰呢？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "succeed",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beneath the roof of a timber command hall with bamboo screens in clear morning, one young Jiangdong ruler with tied topknot and a long silk court gown handing over a plain command token, simple wooden token as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04076",
+          "text": "還記得開場那封上疏嗎？孫權拜魯肅為奮武校尉，讓他領周瑜的兵。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "chengpu-takes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a third-century timber command hall, one senior lower-Yangtze officer with bound topknot in a plain cross-collar woven tunic tied with a hemp sash receiving a folded unlettered appointment scroll, bamboo screens and natural morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04077",
+          "text": "程普則接任南郡太守。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "four-thousand",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a timber command hall with bamboo screens in diffuse window light, one Jiangdong successor commander wearing a plain cloth headwrap and a cloth robe over lamellar armor receiving a plain command token, wooden token under the figure gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04078",
+          "text": "魯肅接下的，是周瑜四千多名士兵與四縣奉邑。"
+        }
+      ]
+    },
+    {
+      "id": "move-lukou",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot within a timber Jiangling office with lattice windows in sunlit daytime, one Jiangdong successor commander with tied hair and a cloth tunic over lamellar armor pointing to an undecorated downstream map, plain map at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04079",
+          "text": "魯肅先駐江陵，後來再把軍隊移到陸口。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-incoming",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study in lamplight, one robed scholar opening a stitched novel, without writing pages close beside the figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04080",
+          "text": "小說裡，是誰想阻止周瑜的西行？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-obstacles",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an ancient Chinese riverboat deck in soft diffuse window light, one ancient Chinese riverboat messenger with a topknot and a plain robe holding out an unlettered folded letter, unlettered paper at the near edge, the whole vignette enclosed by the visible blank border of an opened illustrated storybook page",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04081",
+          "text": "《三國演義》第五十七回，諸葛亮派人送來一封信；信裡寫了什麼？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ],
+      "chapter": "小說讓諸葛亮送信攔路"
+    },
+    {
+      "id": "letter-warns",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, full-bleed scene on a third-century wooden riverboat deck: one adult southern naval commander with hair tied high and lamellar vest holding a blank folded letter in both sleeved hands; an open unlettered illustrated storybook is plainly visible on a low wooden stand in the lower foreground, without an outer picture border, natural overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04082",
+          "text": "小說信中先說，益州地險民強，遠征又難運糧。"
+        }
+      ]
+    },
+    {
+      "id": "novel-liuzhang",
+      "template": "big",
+      "data": {
+        "kicker": "小說：《三國演義》第 57 回",
+        "text": "**劉璋能守益州**",
+        "sub": "信裡還提醒江東防備另一個對手"
+      },
+      "lines": [
+        {
+          "id": "s04083",
+          "text": "信又說，劉璋雖然軟弱，也守得住益州；江東還得提防誰？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "letter-difficult",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot inside an ancient wooden riverboat cabin in mild diffuse window light, one ancient Chinese naval commander with a bound topknot, layered robe and lamellar vest reading a plain letter, blank paper under the figure gaze, the whole vignette enclosed by the visible blank border of an opened illustrated storybook page",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04084",
+          "text": "小說信還提醒：曹操雖在赤壁敗過，仍想報仇；江東一空，他可能趁虛再來。"
+        }
+      ]
+    },
+    {
+      "id": "novel-sigh",
+      "template": "big",
+      "data": {
+        "kicker": "小說：《三國演義》第 57 回",
+        "text": "**周瑜長嘆**",
+        "sub": "讀完諸葛亮送來的信後"
+      },
+      "lines": [
+        {
+          "id": "s04085",
+          "text": "讀完信，小說的周瑜長嘆一聲。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "after-letter",
+      "template": "big",
+      "data": {
+        "kicker": "小說：《三國演義》第 57 回",
+        "text": "**先寫給孫權**",
+        "sub": "再向將士交代後事"
+      },
+      "lines": [
+        {
+          "id": "s04086",
+          "text": "他隨後先寫給孫權，再向將士交代後事。"
+        }
+      ]
+    },
+    {
+      "id": "novel-last-order",
+      "template": "big",
+      "data": {
+        "kicker": "小說：《三國演義》第 57 回",
+        "text": "**善事吳侯**",
+        "sub": "周瑜囑咐將士，共成大業"
+      },
+      "lines": [
+        {
+          "id": "s04087",
+          "text": "他對將士說，自己沒能完成報效孫權的心願，請他們此後好好輔佐吳侯、共同完成大業。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "famous-cry",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside an ancient wooden riverboat cabin after a fainting spell, one ill adult Chinese naval commander with bound topknot and layered woven gown sitting upright on bedding, brows drawn and mouth wide open in an anguished shout, muted daylight, the whole vignette enclosed by the visible blank paper border of an opened illustrated storybook page",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04088",
+          "text": "小說寫他隨後昏厥，醒來才喊：「既生瑜，何生亮！」"
+        }
+      ]
+    },
+    {
+      "id": "novel-cry-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study desk in thin soft morning light, one robed scholar closing the novel slowly, closed stitched novel off to one side, the whole vignette enclosed by the visible blank border of an opened illustrated storybook page",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04089",
+          "text": "史書也記了這聲長嘆嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-lusu",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study table in diffuse window light, one history reader setting the novel beside a chronicle, two plain volumes under the figure gaze, the whole vignette enclosed by the visible blank border of an opened illustrated storybook page",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04090",
+          "text": "〈周瑜傳〉沒有記下這句長嘆。"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in warm sunlit daytime, one history reader separating the two closed books, history and novel volumes at frame center, the whole vignette enclosed by the visible blank border of an opened illustrated storybook page",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s04091",
+          "text": "能核對的傳世文字，也沒有把諸葛亮寫成他發病的原因。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "周瑜最後一程：病卒與三氣"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s04092",
+          "text": "想跟著原文看清三國名場面，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}

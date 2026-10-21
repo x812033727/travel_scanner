@@ -1,0 +1,73 @@
+{
+  "script_sha256": "2201aaa948660f2375d60d5fe598a87c4a61e10d22cf32c137c2702d1ba494ac",
+  "source_check_scope": ["s04048", "s04058", "s04062", "s04064", "s04065", "s04071"],
+  "sources": {
+    "SZ54": {
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/054.htm",
+      "local_copy": "/tmp/s04-sg54.html",
+      "anchors_checked": ["p6", "p8", "p21"]
+    },
+    "ZZTJ": {
+      "pinned_url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "downloaded_copy": "/tmp/s04-zztj-pinned-20261019.txt",
+      "line_checked": 5715,
+      "note": "Later chronicle that names 奮威 as 孫堅's younger brother's son 瑜, i.e. 孫瑜; the plain-text transcription reads 『奮威者，孫堅弟子奮威將軍、丹楊太守瑜也』."
+    }
+  },
+  "findings": [
+    {
+      "line_id": "s04048",
+      "verdict": "supported",
+      "spoken_text": "他想讓這位將軍留守攻下的新地。",
+      "source_text": "SZ54 p8:『乞與奮威俱進取蜀，得蜀而并張魯，因留奮威固守其地』；ZZTJ line 5715 identifies 奮威 as 孫瑜.",
+      "antecedent": "s04046 says 『與奮威將軍孫瑜一道西進』; s04047 intervenes with the next planned action, so 『這位將軍』 still refers plainly to 孫瑜.",
+      "visual": "hold-west shows a general setting a counter on an unlettered map. It conveys a planned allocation of territory without claiming the conquest occurred. No contradiction."
+    },
+    {
+      "line_id": "s04058",
+      "verdict": "supported",
+      "spoken_text": "這一帶的百姓還沒歸附，需要有人接手安撫。",
+      "source_text": "SZ54 p21, 〈魯肅傳〉 main text:『劉備近在公安，邊境密邇，百姓未附，宜得良將以鎮撫之。魯肅智略足任，乞以代瑜。』",
+      "nuance": "『這一帶』 points back to the nearby border in s04057; the source does not give a precise location for every unaligned household. 『安撫』 is a plain-language rendering of 鎮撫, and 『接手』 is grounded in the proposed replacement in the next sentence.",
+      "visual": "people-unsettled shows a commander placing a token on a blank border map. It does not depict the civilians but supports the border governance point without contradictory detail."
+    },
+    {
+      "line_id": "s04062",
+      "verdict": "supported",
+      "spoken_text": "上疏最後，他甚至提到自己死去的那一天。",
+      "source_text": "SZ54 p21, 〈魯肅傳〉 main text ends the memorial:『瑜隕踣之日，所懷盡矣。』",
+      "nuance": "隕踣之日 is correctly unpacked as the day of his death; the line marks the end of the main-text memorial before the commentary's second version.",
+      "visual": "last-words shows the officer looking at a folded petition, matching the memorial context. No claim of readable handwriting or a verified original document."
+    },
+    {
+      "line_id": "s04064",
+      "verdict": "supported",
+      "spoken_text": "那一版寫他路上突患急病，治療後也沒好轉。",
+      "source_text": "SZ54 p21, Pei's quotation of 《江表傳》:『至以不謹，道遇暴疾，昨自醫療，日加無損。』",
+      "attribution": "s04063 expressly introduces Pei's quoted 《江表傳》 letter; 『那一版』 keeps this detail out of Chen Shou's main text. 暴疾 and 日加無損 support sudden illness and no recovery.",
+      "visual": "sudden-illness shows a resting commander beside travel belongings. It depicts illness on the road as an illustration; it does not suggest a diagnosis or tie the old arrow wound to death."
+    },
+    {
+      "line_id": "s04065",
+      "verdict": "supported",
+      "spoken_text": "那封信接著說，人生有死，壽命長短不是他要惋惜的事。",
+      "source_text": "SZ54 p21, the same 《江表傳》 letter:『人生有死，脩短命矣，誠不足惜，但恨微志未展……』",
+      "antecedent": "『那封信』 refers back to the alternate letter named in s04063, not to the main-text memorial; s04064 gives its first new detail, and s04065 continues it.",
+      "visual": "life-length shows a hand resting on a folded letter. It matches the second letter without claiming visible text or authentic material form."
+    },
+    {
+      "line_id": "s04071",
+      "verdict": "supported",
+      "spoken_text": "還記得南郡那支箭嗎？《周瑜傳》沒把它寫成死因；不能判作舊傷復發。",
+      "source_text": "SZ54 p6 records the right-rib arrow and serious wound followed by Zhou's return to duty; SZ54 p8 states only 『而道於巴丘病卒』 and supplies no causal link to the arrow. SZ54 p21's main memorial and Pei-quoted variant do not name the arrow as the illness's cause.",
+      "causal_limit": "The line correctly says the surviving passage does not establish recurrence, while leaving the unknown illness unnamed. It does not claim recurrence is medically impossible.",
+      "visual": "no-diagnosis shows a history reader with an undecorated book margin. It points to the written evidence and avoids picturing an arrow as the fatal cause."
+    }
+  ],
+  "overall": {
+    "factual_blockers": [],
+    "visual_blockers": [],
+    "minor_nuance": "s04058's 『這一帶』 should be heard as the frontier just mentioned, not a pinpoint claim about 公安 itself.",
+    "narrative_effect": "The six edited lines clarify references and primary versus Pei-quoted wording. They do not create a recap or interrupt the illness-to-succession sequence."
+  }
+}

@@ -8,11 +8,17 @@ import { cameraWords as cameraWordOf, episodeShort, sceneHtml, sha256, validate,
 import { EPISODE_SERIES, episodeShortFields, episodeShortsProblems, loadEpisodeShorts, shortsFile } from './episode.mjs';
 
 /** The explainer fixture in a sandbox, with a keyframe per shot in its work directory. */
-function episodeBox({ review = [] } = {}) {
-  const box = sandbox('fixture-explainer', 'explainer');
+function episodeBox({ review = [], slug = 'fixture-explainer' } = {}) {
+  const box = sandbox(slug, 'explainer');
+  const video = { ...explainerFixture(), slug, ...(slug.startsWith('curio-') ? { format: 'drama', look: { preset: 'cute-mystery' } } : {}) };
+  writeFileSync(path.join(box.dir, 'video.json'), JSON.stringify(video));
+  if (slug.startsWith('curio-')) {
+    const [fixture] = JSON.parse(readFileSync(shortsFile(slug, box.root), 'utf8'));
+    writeFileSync(shortsFile(slug, box.root), JSON.stringify([{ ...fixture, ...episodeShortFields(slug, 0, 'illustrated') }]));
+  }
   const shots = {};
   mkdirSync(path.join(box.workdir, 'keyframes'), { recursive: true });
-  for (const scene of explainerFixture().scenes.filter((each) => each.template === 'shot')) {
+  for (const scene of video.scenes.filter((each) => each.template === 'shot')) {
     const bytes = Buffer.from(`png of ${scene.id}`);
     const file = `keyframes/${scene.id}-1.png`;
     writeFileSync(path.join(box.workdir, file), bytes);
@@ -73,6 +79,22 @@ test("shorts.json holds this episode's two Shorts, cut from it, named after it, 
     'short 2: source.slug must be fixture-explainer',
     'short 2: slug must be fixture-explainer-short-2',
   ]);
+});
+
+test('Curio requires exactly one sourced episode Short while other series still require two', async () => {
+  const video = { ...explainerFixture(), slug: 'curio-s34', format: 'drama', look: { preset: 'cute-mystery' } };
+  const [fixture] = shortsOf(episodeBox().box);
+  const short = { ...fixture, ...episodeShortFields(video.slug, 0, 'illustrated') };
+  assert.deepEqual(episodeShortsProblems([short], video), []);
+  assert.deepEqual(episodeShortsProblems([], video), ['shorts.json must hold 1 Short']);
+  assert.deepEqual(episodeShortsProblems([short, short], video), ['shorts.json must hold 1 Short']);
+  assert.deepEqual(episodeShortsProblems([short], { ...video, slug: 'ordinary-episode' }), ['shorts.json must hold 2 Shorts']);
+
+  const { box, load } = episodeBox({ slug: 'curio-fixture' });
+  assert.equal(load().shorts.length, 1);
+  await assert.rejects(main(['from-episode', '--slug', box.slug, '--short', '2', '--check'], { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base }), /--short must be 1 for curio-fixture/);
+  writeFileSync(shortsFile(box.slug, box.root), JSON.stringify([short, short]));
+  assert.throws(load, /shorts.json must hold 1 Short/);
 });
 
 test('the series theme brands every card and points every card to the long video', () => {

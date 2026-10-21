@@ -13,7 +13,55 @@ import { readJson } from "../core/paths.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { composeMetadata } from "./metadata.mjs";
+import { composeMetadata, uploadChecklist } from "./metadata.mjs";
+
+const CURIO_CHANNEL_URL = "https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q";
+const V4_OUTRO_SHA256 = "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396";
+const CURIO_OUTRO_SHA256 = "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee";
+
+test("Curio's Traditional Chinese upload description includes the real channel link once", () => {
+  const doc = { ...fixture(), slug: "curio-test" };
+  const timeline = estimateTimeline(doc);
+  const translations = { en: { title: "The story", description: "A history story." } };
+  const { problems, metadata } = composeMetadata({ doc, timeline, translations });
+  assert.deepEqual(problems, []);
+  assert.match(metadata.description, new RegExp(`更多奇聞檔案局影片：${CURIO_CHANNEL_URL}`));
+  assert.equal(metadata.description.split(CURIO_CHANNEL_URL).length - 1, 1);
+  assert.doesNotMatch(metadata.localizations.en.description, /youtube\.com\/channel\//);
+  assert.doesNotMatch(composeMetadata({ doc: fixture(), timeline }).metadata.description, /youtube\.com\/channel\//);
+  const alreadyLinked = { ...doc, youtube: { ...doc.youtube, description: `${doc.youtube.description}\n\n更多影片：${CURIO_CHANNEL_URL}` } };
+  assert.equal(composeMetadata({ doc: alreadyLinked, timeline }).metadata.description.split(CURIO_CHANNEL_URL).length - 1, 1);
+});
+
+test("only a verified 21-second end-screen outro gets Studio's clickable-card handoff", () => {
+  const hash = "a".repeat(64);
+  const branding = { hash, id: "mokaair-brand-package-v4-endscreen", intro_frames: 150, body_frames: 15_723, outro_frames: 630 };
+  const metadata = { title: "A film", category_id: 27, branding_hash: hash };
+  const endScreen = { format: "drama", branding, outroSha256: V4_OUTRO_SHA256, finalFrames: 16_503 };
+  const steps = (choice = endScreen, fields = metadata) => uploadChecklist({ metadata: fields, captions: [], thumbnail: false, endScreen: choice });
+  const text = steps();
+  assert.match(text, /## 4\. 可點片尾（私人上傳後在 Studio 設定）/);
+  assert.match(text, /`final\.mp4` 已有片頭動畫及 21 秒片尾，但片尾的外框不是連結/);
+  assert.match(text, /「片尾」→「從影片匯入」，選範本影片 `oxEtlA8GWas`/);
+  assert.match(text, /「最符合觀眾喜好」影片、訂閱、和「最新上傳」影片/);
+  assert.match(text, /成片長度減 16 秒.*08:54:03.*09:10:03/);
+  assert.match(text, /第 5 秒才完成圖示淡出/);
+  assert.match(text, /播放頁確認三個元素都出現.*都可點/);
+  assert.match(text, /## 5\. 上傳之後/);
+  assert.match(steps({ ...endScreen, outroSha256: CURIO_OUTRO_SHA256 }), /## 4\. 可點片尾/);
+  const withLanguageThumbnail = uploadChecklist({ metadata, captions: [], thumbnail: true, thumbnails: { en: "thumbnails/en.jpg" }, endScreen });
+  assert.match(withLanguageThumbnail, /## 4\. 各語言的縮圖/);
+  assert.match(withLanguageThumbnail, /## 5\. 可點片尾/);
+  assert.match(withLanguageThumbnail, /## 6\. 上傳之後/);
+  for (const changed of [
+    { ...endScreen, format: "shorts" },
+    { ...endScreen, branding: { ...branding, outro_frames: 90 } },
+    { ...endScreen, outroSha256: "b".repeat(64) },
+    { ...endScreen, finalFrames: 16_504 },
+  ]) assert.doesNotMatch(steps(changed), /可點片尾/);
+  assert.doesNotMatch(steps(endScreen, { ...metadata, branding_hash: "b".repeat(64) }), /可點片尾/);
+  assert.doesNotMatch(steps(null), /可點片尾/);
+});
 
 test("every locale's description credits the stock photos of assets[], and says so when they tip it over the byte limit", () => {
   const doc = fixture();

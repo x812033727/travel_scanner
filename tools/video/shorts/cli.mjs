@@ -17,7 +17,7 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
   push         --dir BUILD_DIR
   import       --from DIR --workdir OUTSIDE_REPO      (final.mp4, zh-TW.srt, meta.json)
   from-episode --slug EPISODE --workdir OUTSIDE_REPO [--episode-workdir DIR] [--short 1|2] [--speech ...] [--check]
-               an explainer's two Shorts (docs/videos/<slug>/shorts.json) built on its keyframes
+               an episode's Shorts (one for Curio, two otherwise) built on its keyframes
   from-drama   --slug EPISODE --from SECONDS --to SECONDS --workdir OUTSIDE_REPO [--episode-workdir DIR]
                [--meta FILE] [--captions plain|karaoke] [--channel msedge]
                a vertical cut of an approved drama episode, the 9:16 window following the subject (locate)
@@ -97,7 +97,7 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     print(await importShort({from:need(values,'from'),workdir:values.workdir}));
     return 0;
   }
-  if (command==='from-episode') return fromEpisode(values, { env, home, site });
+  if (command==='from-episode') return fromEpisode(values, { env, home, site, root });
   if (command==='from-drama') return fromDramaCommand(values, { env, home, site, root });
   if (!['validate','build'].includes(command)) throw new Error(`unknown command ${command}`);
   if (!values.file) throw new Error('--file required');
@@ -118,16 +118,17 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
   return 0;
 }
 /**
- * An explainer's Shorts (docs/videos/so-thats-why/): shorts.json resolved against the episode's
+ * An episode's Shorts: shorts.json resolved against the episode's
  * keyframes (each shot becomes its keyframe, bound by hash), then each built like any other script:
  * the resolved script is written beside the builds and the episode's work directory is the source
  * base. After this, check-audio, qa, package and push take each build directory as usual.
  */
-async function fromEpisode(values, { env, home, site }) {
+async function fromEpisode(values, { env, home, site, root }) {
   if (!values.slug) throw new Error('--slug required: the long episode');
   if (values.short !== undefined && !['1','2'].includes(values.short)) throw new Error('--short must be 1 or 2');
   const {loadEpisodeShorts} = await import('./episode.mjs');
-  const episode = loadEpisodeShorts({slug:values.slug, workdirFlag:values['episode-workdir'], env, home});
+  const episode = loadEpisodeShorts({slug:values.slug, workdirFlag:values['episode-workdir'], env, home, root});
+  if (values.short && !episode.shorts[Number(values.short)-1]) throw new Error(`--short must be 1 for ${values.slug}: it has only one Short`);
   const picked = values.short ? [episode.shorts[Number(values.short)-1]] : episode.shorts;
   for (const doc of picked) {
     const errors = validate(doc);

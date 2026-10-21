@@ -5801,6 +5801,14 @@ Ran: Node v24.13.0, Windows, in the worktree at `e456f3782` (clean): the baselin
 Non-claims: this is a 1-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the branch changes, including the component `admin-video-reviews.tsx` that moves the group; it does not judge whether the waiting group belongs below the catalog or the page's pagination, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Curio upload end-screen checklist increment: 1 file (2026-10-20)
+
+Reviewer: `/root/pr1628_duration_review`. Author: `/root`. Scope: DURATION_ONLY for `tools/video/package/cli.mjs` in PR #1628, compared with `origin/main` at `ec2c7676`. Verdict: **PASS**; required duration fixes: none.
+
+The change reads the selected branding once instead of passing `readBranding(workdir)` directly to the existing `brandingCurrent` check. It keeps the same `brandingMatches` predicate, including the equality of approved body, intro and outro frames to `checks.metrics.frames`, and keeps the existing `animeBodyDurationProblems` and later package admission checks. After those gates pass, it passes the already approved branding, final frame count and outro asset SHA to `uploadChecklist` for a written YouTube Studio end-screen placement instruction in `UPLOAD.md`. This does not edit the video, timeline, brand assets, measured duration, metadata runtime proof, approval hash or eligibility. The new checklist can be incomplete when branding evidence is absent, but the prior package gate already decides whether that state is permitted; no duration check is loosened.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` reported exactly `stale duration review binding: tools/video/package/cli.mjs`. The reviewed current file is SHA-256 `d6efe0c8cc1e6728f3b872eea54274134f577569bb416c05896dc30f86e16244`; all other files in the registered duration review set retain their previous bindings. The final check and its regression test are run after the receipt is updated.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, and then the video review list order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5898,7 +5906,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
 | `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
-| `tools/video/package/cli.mjs` | `46e4627f26030e5296ae42970adf5ef313551a593523d8bd47089c1e656e89e4` |
+| `tools/video/package/cli.mjs` | `d6efe0c8cc1e6728f3b872eea54274134f577569bb416c05896dc30f86e16244` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |

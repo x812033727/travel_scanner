@@ -1,4 +1,4 @@
-// A long video's two Shorts, drafted with its script: an explainer episode's
+// A long video's Shorts, drafted with its script: an explainer episode's
 // (docs/videos/so-thats-why/README.md §Shorts) or an illustrated slides video's
 // (docs/videos/ILLUSTRATED.md). The scripts sit in docs/videos/<slug>/shorts.json, cuts of the
 // video (schema 2, line "cut", docs/videos/SHORTS.md) whose pictures are the video's keyframes in
@@ -23,11 +23,12 @@ export const episodeShortFields = (slug, index, series = EPISODE_SERIES) => ({ s
 export const shortsFile = (slug, root = ROOT) => path.join(docDir(slug, root), 'shorts.json');
 
 /**
- * What a shorts.json must be, beyond each Short's own schema: two Shorts of this episode, each
- * named after it, with every shot it shows among the long video's shots.
+ * What a shorts.json must be, beyond each Short's own schema: one Short for a Curio episode,
+ * otherwise two; each is named after its episode and only shows that video's shots.
  */
 export function episodeShortsProblems(shorts, video) {
-  if (!Array.isArray(shorts) || shorts.length !== SHORTS_PER_EPISODE) return [`shorts.json must hold ${SHORTS_PER_EPISODE} Shorts`];
+  const expected = video?.slug?.startsWith('curio-') ? 1 : SHORTS_PER_EPISODE;
+  if (!Array.isArray(shorts) || shorts.length !== expected) return [`shorts.json must hold ${expected} Short${expected === 1 ? '' : 's'}`];
   const shots = new Set((video.scenes ?? []).filter((scene) => scene.template === 'shot').map((scene) => scene.id));
   const problems = [];
   for (const [index, doc] of shorts.entries()) {
