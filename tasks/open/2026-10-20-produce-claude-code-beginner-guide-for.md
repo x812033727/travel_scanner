@@ -18,21 +18,52 @@ scope:
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
+The owner (2026-10-21) set Gary Chen's Codex beginner guide (479,000 views) as the structure to
+match or beat: an agent that lives in your computer, the four basics (project folder, permission
+modes, context, AGENTS.md), one running example, hands-on, Skills/connectors/automation, "it is
+also your tutor". This video is the Claude Code version for people who do not write code, made
+under the tutorial flow rules written from that study (`teaching-flow.md`), with every number
+from real headless runs on an invented event folder. Slug `claude-code-beginner-event-folder`.
 
 ## Definition of done
 
-- [ ] The observable outcome, not the implementation.
+- [x] Brief with outline options, four outcomes and a mechanical 要先實作 list; Jev picked A.
+- [x] 18 headless Claude Code 2.1.295 sessions recorded in `runlog.txt` and `demo/` (seed, prompts,
+      replies, output files); outcomes 1, 3, 4 hold, outcome 2 downgraded to 「有幫助，但不是每一項」.
+- [x] Script (`video.json`, `claims.md`), three fact-check rounds (7, 6, 0 corrections), listener
+      pass, four revisions after the blind panel (tutorial wording), lint clean, `category: "tutorial"`.
+- [x] Narration synthesized and cleared by the audio check (4 rounds; 26 + 7 + 3 lines reworded).
+- [x] Frames, thumbnail, final.mp4 (19:26), zh-TW captions; QA 10 of 11 (the 11th is the owner's
+      narration approval).
+- [ ] Owner approvals on /admin/videos: outline, narration, final cut, then upload package and
+      publish gate (hand-pushed video: the owner decides at every gate).
+- [ ] On YouTube (the owner uploads; `UPLOAD.md` after `package`).
 
 ## Steps
 
-- [ ] First sub-task.
-- [ ] Second sub-task.
+- [x] Plan, run, write, verify, listen, panel, voice, render, assemble, captions, QA, review-push
+      (outline, audio, final all pending the owner).
+- [ ] After the owner approves final: `package`, `review-push --gate publish`.
 
 ## How to verify
 
-The exact commands or clicks that prove it works.
+```bash
+node tools/video/cli.mjs status --slug claude-code-beginner-event-folder
+node tools/video/cli.mjs lint --slug claude-code-beginner-event-folder
+node tools/video/cli.mjs qa --slug claude-code-beginner-event-folder
+```
 
 ## Notes
 
-Findings, decisions and dead ends, so the next agent does not repeat them.
+- Blind panel (tutorial wording) ended at 10 of 13 after four readers; the three "no"s moved
+  between readers (one_line / no_recap / no_detour on the hands-on chapter and the CLAUDE.md score
+  comparison). Two readers independently stopped at the hands-on chapter's replay of earlier
+  steps; that block was cut in revision 4. Verdicts in the work directory `review/narrative*.json`.
+- Length 19:26 is over the brief's 12–16 target; the rule since 2026-10-04 is that the upper end is
+  an aim, and the connector walkthrough (about 2 min, CITED only) was the one chapter cut.
+- The four 「建議」 lines (read other people's Skills first, connect only what you use, keep a copy
+  of originals, press send/delete yourself) are not among the brief's four proposed stance points;
+  the owner decides whether to adopt them into the channel stance.
+- Audio check lesson: 確認信名單 is heard as 確認姓名單 every time; 要寄信的那份名單 passes.
+  Attendee names in narration (宋柏均, 劉思妤, 王志明) are misheard; the cards keep the names and
+  the narration says the role instead.
