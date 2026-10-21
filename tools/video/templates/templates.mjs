@@ -168,8 +168,9 @@ export const TEMPLATE_SPECS = {
       !isText(data.text) && "text is required",
       data.kicker !== undefined && !isText(data.kicker) && "kicker must be text",
       data.sub !== undefined && !isText(data.sub) && "sub must be text",
-      // The reference channel's 「01 煮菜」 card: a one- or two-digit number in red beside the word.
-      data.numeral !== undefined && !/^\d{1,2}$/.test(String(data.numeral)) && "numeral must be one or two digits",
+      // The reference channel's 「01 煮菜」 card: a number of up to three digits (「200」 for a line
+      // limit) in red beside the word; three at 420px are about 760px of the 1700px row.
+      data.numeral !== undefined && !/^\d{1,3}$/.test(String(data.numeral)) && "numeral must be one to three digits",
       iconProblem(data.icon),
     ],
     capacity: () => 0,
