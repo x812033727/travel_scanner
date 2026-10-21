@@ -1,6 +1,6 @@
 # claims：claude-skill-manual-event-folder
 
-撰稿日 2026-10-21。「實跑」的出處是同一資料夾的 `runlog.txt`（27 次無介面 session，Claude Code 2.1.295，sonnet，2026-10-21 UTC 00:27–00:50）與 `demo/`；官方頁是 brief 列的頁面，原檔在 `<work>/_tools/pages/`（UTC 2026-10-20 18:06–18:14 抓，台北 2026-10-21），撰稿時照原檔重讀。格式：`編號｜主張（旁白或卡片上的說法）｜出處｜查核日｜場景`。
+撰稿日 2026-10-21。「實跑」的出處是同一資料夾的 `runlog.txt`（27 次企劃內的無介面 session，UTC 00:27–00:50，加上事後加跑的 W2a、W2b，UTC 01:33–01:35；都是 Claude Code 2.1.295，sonnet，2026-10-21）與 `demo/`；官方頁是 brief 列的頁面，原檔在 `<work>/_tools/pages/`（UTC 2026-10-20 18:06–18:14 抓，台北 2026-10-21），撰稿時照原檔重讀。格式：`編號｜主張（旁白或卡片上的說法）｜出處｜查核日｜場景`。
 
 ## 主張
 
@@ -60,10 +60,10 @@ c53｜翻開前，20 行與 69 行兩本開場一樣大（+77 對 +75.5）｜實
 c54｜翻開那一步：20 行那本 +487、+436、+436；69 行那本三次都 +1,288，約 2.8 倍（平均差 835）｜實跑：總表 growth；成果 4 (b)；Unexpected 3｜2026-10-21｜fat
 c55｜翻開後一直帶著：20 行那本之後 9、9、6 個請求，69 行那本 7、7、8 個；比喻對不上：翻開後整本留在對話裡；改了說明書，進行中的對話不會重讀（後者引用）｜實跑：總表 carry；https://code.claude.com/docs/en/skills（Skill content lifecycle: enters the conversation as a single message and stays there … does not re-read the skill file on later turns）｜2026-10-21｜fat、stays
 c56｜20 行那本三次檢查都沒碰 確認信範本.md｜實跑：成果 4 (c)（no CS session touched 確認信範本.md by any tool）｜2026-10-21｜fat
-c57｜部門對照：8 次裡 3 次讀到（CSa、CSb 用 Bash cat；CVc 用 Read），5 次沒讀到｜實跑：總表最後一欄；Unexpected 2｜2026-10-21｜appendix-miss
+c57｜部門對照：只寫檔名的 8 次裡 3 次讀到（CSa、CSb 用 Bash cat；CVc 用 Read），5 次沒讀到；跟 W2 同一本、只差第 17 行的 W1a、W1b 是 0／2｜實跑：總表最後一欄；Unexpected 2、2b｜2026-10-21｜appendix-miss、appendix-fixed
 c58｜CVa 回覆原文一句：「部門對照.md 不存在。」｜實跑：demo/CVa/reply.md「需要你確認 1.」｜2026-10-21｜appendix-quote
 c59｜原因：第 5 步只寫檔名沒寫位置；session 先從資料夾最上層找（`ls -R .` 看不到 .claude）；找不到就照第一批名單統一部門、回覆最後請你給對照表；結果仍對是因為第一批名單已統一（C9 PASS）｜實跑：Unexpected 2；CSa 的 Bash 指令序列；CSc、CVa、CVb、W1a、W1b 的 reply｜2026-10-21｜appendix-quote、appendix-why
-c60｜點名附件連位置寫（從說明書資料夾算起的路徑）、寫什麼時候才看、上傳前確認點名的檔都在；卡片標「改法未重跑」｜https://agentskills.io/specification（File references: use relative paths from the skill root）；https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（Verify all referenced files exist in the correct locations；Referencing it in skill.md will help Claude decide if it needs to access that resource）｜2026-10-21｜appendix-rule
+c60｜改一行就讀到：W2 用的 SKILL.md（book-loc，3d129d4036c107cf）是加了第 8 步的那一本只改第 17 行：「   照 部門對照.md 統一。」→「   照 .claude/skills/signup-check/部門對照.md 統一。」，其他行不變（卡片放第 15–18 行原文）；寫上位置之後 W2a、W2b 兩次都在第一個 Bash 指令讀到部門對照（2／2），都翻開 signup-check、沒翻別本，B1–B6 6／6、mine M1–M5 5／5，growth +500、之後 6／7 個請求帶著，確認信範本沒碰｜實跑：runlog.txt「Item W2 (added) W2-setup」的 diff 與雜湊、W2a、W2b 段落、Unexpected 2b、總表 W2a／W2b 兩列；demo/booklets/book-loc、demo/W2a、demo/W2b｜2026-10-21｜appendix-fix、appendix-fixed、appendix-rule
 c61｜怎麼選：每次都要照做的進內文，偶爾才用的範本、對照表放附件｜https://agentskills.io/specification（Move detailed reference material to separate files）；https://code.claude.com/docs/en/skills（every line is a recurring token cost）；實跑旁證 c54–c56｜2026-10-21｜appendix-choose
 c62｜壓縮：對的 signup-check.zip 三筆都在 signup-check/ 底下（2,271 位元組）；錯的三個檔散在最上層（2,193 位元組）｜實跑：M4；demo/pack/*.txt｜2026-10-21｜zip
 c63｜ZIP 的根要是技能資料夾本身；檔案直接散在 ZIP 最上層是錯的結構｜https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（Package your skill: Correct／Incorrect structure）｜2026-10-21｜zip
@@ -79,6 +79,8 @@ c72｜ChatGPT 桌面版側邊欄有 Skills，ChatGPT 打 @ 選一本；Codex 打
 c73｜ChatGPT 與 Codex 也會照 description 自己挑（implicit invocation）｜https://learn.chatgpt.com/docs/build-skills（Implicit invocation … when your task matches the skill description）｜2026-10-21｜chatgpt
 c74｜說明書的資料夾可以夾小程式，AI 會去執行（比喻對不上的第三處）｜https://agentskills.io/specification（scripts/: Contains executable code that agents can run）；https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（Add scripts）｜2026-10-21｜risk
 c75｜只裝自己寫的或信得過來源的；同事給的也先讀過每一個檔再開｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Only install skills only from trusted sources … including one shared by a colleague—review it before enabling）；https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（Use Skills only from trusted sources）｜2026-10-21｜risk
+c77｜寫上位置對只寫檔名：2／2 對 0／2（同一本只差這一行的 W1）、對企劃內只寫檔名的 3／8；W2 只跑兩次（卡片標「之後加跑的兩次」）｜實跑：runlog Unexpected 2b、W1 對 W2 的 NOTE｜2026-10-21｜appendix-fixed
+c78｜W2a、W2b 第一個 Bash 指令裡讀附件的那一段：`cat .claude/skills/signup-check/部門對照.md`；兩次都把兩個新人的部門統一成業務部、行銷部｜實跑：runlog W2a 第 3841 行、W2b 第 3985 行的 tool_use Bash（節錄）；demo/W2a/reply.md「業務」→業務部、「Marketing」→行銷部｜2026-10-21｜appendix-cmd
 c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處｜2026-10-21｜closing
 
 站主觀點（標成「這個頻道的做法／門檻」，不是站主自己的經歷）：「交代到第三次就寫成說明書」（three）、「看不懂的那一頁就不裝」（risk）；第 2、3 點落在 cover-rule、appendix-choose 的選擇規則，那兩處另有 c11、c61 的出處。
@@ -95,6 +97,7 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 | 大小 L 組 | 五種書櫃，time.txt | `runs.sh L0a…LMb`（manual） | LF≈L1；LM−L0 對 L1−L0 | LF−L1 最大 3；+77、+75.5、+422.5、+462 | 總表 first= means |
 | 附件 CF | shelf5＋book-fat | `runs.sh CFa/CFb/CFc` | growth 比 CS 大、平均差 ≥300 | +1,288×3 對 +436～+487，平均差 835 | 成果 4 (b) |
 | 自己的一行 W1 | shelf5＋book-mine | `runs.sh W1a/W1b` | M1–M4 至少一次全過 | 兩次 M1–M5 全過 | mine.mjs 段落 |
+| 附件寫上位置 W2（事後加跑） | shelf5＋book-loc（book-mine 只改第 17 行），skill-auto.txt | `runs.sh W2a/W2b`（acceptEdits） | 部門對照讀到 | 2／2 第一個指令就讀到；B1–B6 6／6、M1–M5 5／5 | runlog Item W2 (added)、Unexpected 2b |
 | 叫它寫 G1 | 沒有書櫃，write-skill.txt | `runs.sh G1` | 寫出一本，cover-check 判定 | 寫入被擋、沒有檔；想寫的內容 102 字介紹、71 行內文 | G1 段落與兩條 NOTE |
 | 打包 M4 | book-lean | `node zip.mjs` | 對的第一層是 signup-check/ | 同預期 | M4 |
 | 上傳 | — | 引用支援文章與公開頁 screencast | — | 沒有登入、沒有上傳 | c64 |
@@ -107,15 +110,15 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 - 第 5 章照成果 1 的條件逐字講「三種交代方式結果一樣」「這一批它不靠說明書也猜得到」，主例的差別只講 310 對 34 字、462 token、帶得走（引用）。
 - 第 3 章不放官方的六種用途清單（為了片長）；「每一份報名表裡都有一筆叫測試」的玩笑移到第 5 章第三步。
 - G1 照實講成「叫它寫可以當草稿」，結果是寫入被擋、它想寫的內容把部門對照寫進內文；不跑 G2（紀錄沒跑）。
-- 附件章多一段「附件怎麼點名」：寫位置的改法只引規格頁與支援文章，卡片標「改法未重跑」，旁白不說它修好了。
+- 附件章多一段「改一行就找到」：企劃沒有這組 session；協調者事後加跑 W2a、W2b（只改第 5 步第 17 行，寫上附件位置），結果 2／2 讀到。附件章因此以「八次裡五次找不到」開場、以這一行的修正收尾（appendix-fix、appendix-fixed、appendix-cmd）；「附件怎麼點名」的第 1 點改成實跑，第 2、3 點仍引規格頁與支援文章。
 - 第 7 章的「網頁版跟 Claude Code 會不會同步」沒有寫成不確定：兩份頁面的說法其實相容（網頁版→Claude Code 單向同步；資料夾裡的不會上網頁版），所以照兩邊的事實講。不確定的「我」只用兩句：免費版方案、中文選單名。
 - 「上一支」只回呼一次（第 1 章第一句）；少了 name 的那一本在旁白裡不說是上一支的，卡片出處寫「左：前一支的檔」。
 - 選項 A 的 stats「45 個工具」照撰稿日數到的 45。
-- 片長估 15.3 分鐘，超過 target_minutes [9, 12] 的上限。
+- 片長估 15.7 分鐘，超過 target_minutes [9, 12] 的上限。
 
 ## 我懷疑但沒動的事
 
-- 「附件寫明位置就找得到」沒有重跑；若要當成果講，需要一組新的 W 類 session（book-lean 第 5 步改成「照這本說明書資料夾裡的 部門對照.md 統一」）。
+- 寫上位置的修正只跑了 2 次（W2a、W2b），而且兩次都用 Bash cat 讀，不是 Read；樣本小，卡片標了「之後加跑的兩次」。
 - 怎麼把資料夾壓成 ZIP（Windows 右鍵「壓縮成 ZIP 檔」、Mac「壓縮」）沒有上卡：紀錄只有 zip.mjs，官方頁沒寫作業系統的做法。觀眾若真的要照做，這一步缺一張卡。
 - 「Settings › Capabilities」與「Customize › Skills」是支援文章的英文名；網頁版實際介面沒看過。
 - 第 2 章 time-ask 的回覆卡用 L1a（書櫃上只有 signup-check 一本），旁白說「signup-check 上了書櫃」，對得上；但 L 組是 manual 模式，C 組是 acceptEdits，兩組的 token 數不互比。
@@ -126,6 +129,6 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 
 ## 進度
 
-- 全部 64 個場景已寫完（open … closing），loops 21 條，video.json 由 `<work>/_tools/writer/build-video.mjs` 從 `scenes.mjs`、`top.mjs`、`loops.json` 產生。
-- lint：剩下的錯誤只有發音字典的 11 個新詞（見 lexicon-additions.json）；0 警告。
-- 估計 15.3 分鐘、168 句、3,409 口語單位；最長的卡片狀態估 13.1 秒。
+- 全部 67 個場景已寫完（open … closing；2026-10-21 加跑 W2 之後加了 appendix-fix、appendix-fixed、appendix-cmd），loops 22 條，video.json 由 `<work>/_tools/writer/build-video.mjs` 從 `scenes.mjs`、`top.mjs`、`loops.json` 產生。
+- lint：0 錯誤、0 警告（發音字典的新詞已由協調者併入）。
+- 估計 15.7 分鐘、174 句、3,510 口語單位；最長的卡片狀態估 13.1 秒。
