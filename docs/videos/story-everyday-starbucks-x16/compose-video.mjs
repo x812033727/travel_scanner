@@ -78,7 +78,7 @@ const safeguards = [
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
 const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160221", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160507k", "x160601", "x160605", "x160614"]);
-const sceneSplitAfterIds = new Set(["x160414a", "x160507k", "x160602j"]);
+const sceneSplitAfterIds = new Set(["x160317a", "x160414a", "x160507k"]);
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: row.text.endsWith("？") ? 450 : /(?:家|美元)。$/.test(row.text) ? 180 : 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
 const scenes = [];
@@ -134,8 +134,7 @@ const loops = [
   { setup: "x160427", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
   { setup: "x160507j", payoff: "x160641", what: "七月原群組年末精確實關數" },
   { setup: "x160507m", payoff: "x160507n", what: "六月以後美國餘下關店的預定收尾時間" },
-  { setup: "x160527", payoff: "x160602", what: "更多實關店的退租費用結果" },
-  { setup: "x160602g", payoff: "x160602m", what: "關店後餘下租金由誰承擔" },
+  { setup: "x160527", payoff: "x160601", what: "關門之前退租費能否先入帳" },
   { setup: "x160619", payoff: "x160641", what: "七月群組跨財年合計實際關店數" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));

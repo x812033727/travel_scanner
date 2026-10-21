@@ -1,6 +1,6 @@
 # X16 星巴克｜Shorts 逐句作者來源矩陣
 
-`shorts.json` SHA-256：`001ced8780c9058069bac84fe8f126599cf09cee77415998c8be31e46bac98d5`；`video.json` SHA-256：`f2410a03ab11ad66aeab2143cdf5997bf4c7dcc26edaf4ba276971a0513088e3`。作者標記，非獨立逐句審查 PASS。
+`shorts.json` SHA-256：`f570bcecc0068e68939a51a582316272254049908e46e8540cf2c6183117cd66`；`video.json` SHA-256：`73c8bca81c4870e3303d847bdd81d1d569721a05e6fc5017d521739c88e08533`。作者標記，非獨立逐句審查 PASS。
 
 | Short／拍 | 句 ID | 旁白 | 作者來源標記 |
 | --- | --- | --- | --- |
