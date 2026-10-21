@@ -25,7 +25,7 @@ scope:
 - [x] A／B 企劃、推薦 A 的一條故事主線、30–60 秒濃縮開場及 5 秒片頭／21 秒片尾與連結規格已寫成 `docs/videos/curio-s52/brief.md`。
 - [x] 兩份直接可取用的固定 Git 文字與 SHA、行段、當日與後出編輯的界線寫在 `docs/videos/curio-s52/research.md`。
 - [x] R2 題材／大綱由另一人按當時 hash 獨立覆核通過；作者完成逐句主張表、至少八分鐘估時正文劇本與書面畫面，R3 精確 hash 見 `review/r3-author-freeze.md`。
-- [x] R3–R6 作者、獨立來源／畫面及雙人敘事審核紀錄已保存；R6 來源／畫面 PASS、敘事 FAIL。R7 來源／畫面公開資料三處 HOLD，正式敘事四項 FAIL。R8 獨立史料／書面畫面因 4 月 17 日誤寫成 5 月 17 日而 HOLD／HOLD，雙人敘事合併三題 FAIL。R9 史料／書面畫面 PASS，但兩位新盲讀共同否決章界、重述與旁枝；R10 作者已修稿但正文按 300／325 CPM 只約 7:14／6:49。R11 找到固定 1771 年皇家學會觀測原報 OCR，新增校鐘、三人分列觀測與 Cook 對微光和暗影幾秒不確定的敘述；正文 300／325 CPM 估 8:53／8:23。R11 仍待獨立來源／畫面、全新雙盲與真實語音時長。
+- [x] R3–R18 的來源、敘事與語音定點修訂均有逐版回條；目前口播以 R19 精確 `script.md` 為準，獨立來源／書面畫面 PASS、兩位盲讀各 13／13、正式合併 13／13，實際正文 10:25.03。
 - [ ] 依精確稿完成政策、網站、TTS／音檢、MiniMax 原生畫面、動畫片頭片尾、成片／上架包及 Studio 連結檢查；未經各關卡前不稱影片完成。
 
 ## Steps
@@ -49,10 +49,13 @@ scope:
 - [x] R10 作者按共同失敗點修稿並重生逐句主張與分鏡，凍結五檔與時長風險。
 - [x] R11 找到直接相關固定原報轉錄，增加鐘的校時和接觸判讀細節，凍結五檔、主張、畫面與保守估時；作者檢查不等於獨立 PASS。
 - [x] 對現行 R15 精確五檔由另人獨立查核來源／書面畫面 **PASS／PASS**，兩名全新隔離讀者各 13／13 並正式合併 **13／13 PASS**；實際 TTS 正文 **10:23.30**。證據見 `docs/videos/curio-s52/verify-15.md`。
-- [ ] R15 兩輪定點重配後正式音檢仍有 18 旗標；先按 `review/r15-audio-final-flag-review.json` 獨立聽辨現有 WAV，網站音訊卡待站主審。音訊未放行前不做付費插圖或後續成片。
+- [x] R15 的 18 旗標已由後續 R16–R19 修句與重配處理；R19 全篇正式機器音檢 115／115、0 旗標。人耳與網站音訊卡仍待站主。
 - [x] R16 作者依 18 旗標定點改 18 句口播與主張，重生劇本並凍結五檔；最快估算正文 8:25.43、lint 0／0，見 `review/r16-author-audio-clarity.md`。未作新音檔或付費插圖。
 - [x] R16 獨立史料／書面畫面 PASS、全新隔離雙讀者正式合併 13／13 PASS；只合成 18 句，其餘 101 句沿用，實際正文 10:43.17。正式音檢三輪均 119／119、僅 `s52127` 旗標；同文定點重配已達兩次上限。見 `review/r16-source-independent.md`、`r16-isolated-merge.md`、`r17-author-single-line-fix.md`。
-- [ ] R17 只改 `s52127` 一句與對應主張、重生劇本；須另一人核精確來源／書面畫面差分及兩名全新隔離讀者盲評，之後才重配新句與正式音檢。R16 舊 WAV／政策／網站劇本卡均不可冒作 R17 核准；網站音訊卡仍待站主。
+- [x] R17–R19 後續完整重審／音檢見各版回條；當前 R19 旁白、政策與受委派的本機稿件決策有效，未冒稱網站卡或人耳音訊核准。
+- [x] R21／R22 開場前兩張原生圖已個別 KEEP；R24 單景文字修補獨立 PASS，開場後五張新圖直接檢視均 **HOLD**（機器誤收兩張現代兒童圖），STOP 已恢復，累計 US$0.1250／全片上限 US$4.46。
+- [x] R25 已把 `s52003`–`s52007` 五個提示詞定點改為成年角色與合時期道具；獨立紙面審查 PASS，但 `s52003`／`s52006` 定點試畫又被機器誤收成年提示下的兒童形象，兩張人工 **HOLD**。STOP 已恢復，未續畫其他三景。
+- [ ] 重新設計 S52 畫面退路：`s52003` 可用同章已收的 `s52001` 原圖（必須連同 prompt／camera 精確複製才能吃快取，仍需該景評審與重複畫面觀感檢查）；`s52006` 無可直接沿用的離岸船景。先處理此系統性人物年齡漂移，再決定其餘百景是否能批量生成。
 
 ## How to verify
 
@@ -60,6 +63,7 @@ scope:
 
 ## Notes
 
+- 2026-10-21 R25 current handoff: [R19 audio](../../docs/videos/curio-s52/review/r19-audio.md) 115／115 zero machine flags and 10:25.03 measured body; owner website audio/listening card still pending. [R24 written prompt PASS](../../docs/videos/curio-s52/review/r24-archive-independent-20261021.md) does not cover the later paid images. [R24 native opening stop](../../docs/videos/curio-s52/review/r24-opening-batch-native-stop-20261021.md) rejects `s52003`–`s52007` despite two machine PASS verdicts; R24 ledger US$0.1250. [R25 author prompt repair](../../docs/videos/curio-s52/review/r25-opening-prompt-author-20261021.md) changes exactly those five prompt strings, `video.json` SHA `0c99cfc58d4ba18153a022aaca19966a9965fcc288429228c3d9e4b82aed773e`, lint 0／0; [independent paper review](../../docs/videos/curio-s52/review/r25-opening-prompt-independent.md) PASS for a bounded pilot. [R25 native two-shot stop](../../docs/videos/curio-s52/review/r25-opening-native-independent-stop.md) human REJECT `s52003` and `s52006` despite both machine 9.29 PASS; STOP present, ledger US$0.1520 (12 images／11 judge／0 reservations). Full art, music, branded edit, QA, Shorts and actual Studio links do not exist yet.
 - 2026-10-20：題材可行性已完成；直接下載 C（Cook 1769 日誌、1893 Wharton 編輯轉錄）21,861 行與 K（Kippis 1788 左右近時代傳記）15,413 行。Kippis 沿用既刊航海／觀測材料，不當第二次獨立實驗；只印格林一人四個接觸時間，不能倒推三人確切秒差。
 - C 的**1893 編者前言** L1069–1073 誤寫凌日 `June 1st`，但庫克**當日日誌** C L5963 起寫 6 月 3 日，K L1151 也記 3 日。後續旁白須用 6 月 3 日，不把編者錯誤當歧見或把「暗影」直接判成已證實的現代單一光學機制。
 - B 案的 5 月象限儀失竊會牽涉英國人扣船／拘押酋長，不能以輕鬆神探語氣省略殖民強制，故推薦 A。雲端仍無 S52 逐句稿、語音、插圖、影片或上傳；任何 8–11 分鐘只是企劃目標。
