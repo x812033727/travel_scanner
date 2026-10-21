@@ -1,0 +1,1873 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；節奏自然，不替人物演逐字對白。",
+    "performance": "杜蒙塞爾與普斯卡斯人名自然唸；1878 同代親歷、其中的未具名來信、愛迪生 1910 晚年回憶，來源層次分開。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s59",
+  "sources": [
+    {
+      "title": "du Moncel, Le Téléphone, le Microphone et le Phonographe，1878 同代法文原版固定轉錄",
+      "url": "https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Dyer 與 Martin, Edison: His Life and Inventions，1910；第十章愛迪生晚年自述",
+      "url": "https://github.com/GITenberg/Edison--His-Life-and-Inventions_820/blob/b100fab326616897d87d7e296672f5f916624d32/820.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s59006",
+      "payoff": "s59077",
+      "what": "杜蒙塞爾是否也能成功操作"
+    },
+    {
+      "setup": "s59007",
+      "payoff": "s59034",
+      "what": "十八美元草圖做了什麼"
+    },
+    {
+      "setup": "s59008",
+      "payoff": "s59090",
+      "what": "指定條件下重試的結果"
+    },
+    {
+      "setup": "s59009",
+      "payoff": "s59107",
+      "what": "聲音究竟出自操作者還是機器"
+    },
+    {
+      "setup": "s59018",
+      "payoff": "s59044",
+      "what": "如何將人聲變成機械壓痕"
+    },
+    {
+      "setup": "s59028",
+      "payoff": "s59052",
+      "what": "記錄如何重新發聲"
+    },
+    {
+      "setup": "s59030",
+      "payoff": "s59039",
+      "what": "用什麼承接聲紋"
+    },
+    {
+      "setup": "s59063",
+      "payoff": "s59064",
+      "what": "編輯室會怎樣聽"
+    },
+    {
+      "setup": "s59076",
+      "payoff": "s59077",
+      "what": "換人操作的結果"
+    },
+    {
+      "setup": "s59081",
+      "payoff": "s59095",
+      "what": "杜蒙塞爾失敗的具體原因"
+    },
+    {
+      "setup": "s59088",
+      "payoff": "s59090",
+      "what": "在場院士如何評價重試"
+    },
+    {
+      "setup": "s59086",
+      "payoff": "s59107",
+      "what": "腹語疑慮如何分辨"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s59001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59001",
+          "text": "一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a demonstrator places a hand-cranked cylinder device on an academy table, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "會場傳出人聲，目光卻轉向操作員"
+    },
+    {
+      "id": "s59002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59002",
+          "text": "他搖動機器側邊的手柄，細細的人聲竟從喇叭口傳出來。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a demonstrator turns a crank beside a small cylinder and speaking horn, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59003",
+          "text": "席間先是驚嘆，跟著響起掌聲。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one seated scholar raises his hands to applaud a tabletop device, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59004",
+          "text": "但一封現場來信說，有人盯著操作員的嘴，懷疑是腹語。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one skeptical scholar studies a demonstrator's face from his chair, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59005",
+          "text": "科學院索性請杜蒙塞爾自己試，現在換他面對話筒。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one older scholar reaches toward the crank of the device, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59006",
+          "text": "一個沒有練過的人，真能讓這台機器說話嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar holds a crank still beside a small speaking horn, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59007",
+          "text": "愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor holds a blank machine sketch beside a workshop bench, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59008",
+          "text": "幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar carries a small cylinder machine toward an office doorway, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59009",
+          "text": "這隻手轉出的人聲，要怎麼證明不是那張嘴偷偷發出來的？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one listener points at a speaking horn while watching a human profile, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59010",
+          "text": "電報紙盤轉過壓針，留下細小的訊號痕跡；這跟會說話的圓筒有什麼關係？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one telegraph operator watches a stylus mark a spinning paper disk, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "電報的壓痕成了留聲機的草圖"
+    },
+    {
+      "id": "s59011",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59011",
+          "text": "這段由愛迪生三十多年後回憶；它能交代機器的來路，不能替巴黎現場作證。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1910 回憶",
+        "sub": "非巴黎現場證詞"
+      }
+    },
+    {
+      "id": "s59012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59012",
+          "text": "他的自動電報器讓紙盤一邊轉，一邊把摩斯訊號壓進紙面。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor guides a paper disk under a small telegraph stylus, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59013",
+          "text": "電磁鐵帶著壓針沿螺旋槽走，紙盤上便留下點和劃的高低起伏。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one telegraph operator watches an embossing point follow a spiral track on a paper disk, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59014",
+          "text": "紙盤留下的是點和劃；另一台機器能把這些痕跡讀回電線嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one operator watches an embossed paper disk beside a second telegraph machine, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59015",
+          "text": "按他的回憶，普通電報每分鐘三十五到四十個詞；這張紙盤卻能送出數百個詞。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one telegraph operator watches a disk spin beneath a stylus, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59016",
+          "text": "紙盤並不知道那些點和劃的意思，只要另一個接點讀到相同的凸起，就能重送訊號。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one operator places an embossed paper disk onto a second contact machine, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59017",
+          "text": "可這種壓痕已經告訴他：一次動作，能被留下來，讓機器再走一遍。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor holds a curled embossed paper strip near a desk lamp, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59018",
+          "text": "可那個接點只會重送電報訊號；人聲要怎樣留下自己的痕跡？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one telegraph operator watches a contact point read an embossed paper disk on a second machine, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59019",
+          "text": "愛迪生想起電話實驗中的薄片：它會隨人聲震動，能不能帶動一根針？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor watches a simple telephone diaphragm move beside a mechanical stylus, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59020",
+          "text": "他還做過一個小玩具，試過聲音能否讓薄片帶動其他機件。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor examines a diaphragm and a small ratchet toy beside a speaking funnel, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59021",
+          "text": "他對著漏斗大聲說話，紙人竟像在鋸木頭；這股力怎樣傳過去？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor watches a tiny paper sawman move beside a speaking funnel, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59022",
+          "text": "玩具裡的薄片帶動棘爪，棘爪再推小輪，紙人就跟著輪子動。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor watches a pawl catch a ratchet beside a tiny paper figure, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59023",
+          "text": "小輪再用繩子牽著紙人；當聲音停了，這段動作要怎樣留住？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor touches a thin cord beside the small paper sawman, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59024",
+          "text": "他看見喊話能推著玩具走；下一步要找的，是一個在聲音停後仍保有動作的材料。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor leans over a small ratchet toy next to a funnel, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59025",
+          "text": "這只是讓聲音推動玩具，還沒有把剛說過的字句保存下來。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor rests a hand beside a stopped paper toy and funnel, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59026",
+          "text": "杜蒙塞爾也提醒：畫下聲音痕跡早有人做過，真正新鮮的是讓舊痕跡再次發聲。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar holds a plain old sound-trace sheet beside a small phonograph, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59027",
+          "text": "開頭那張電報紙盤留下點劃；愛迪生現在要讓薄片推針，留下人聲的起伏。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor positions a stylus behind a vibrating diaphragm, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59028",
+          "text": "等那串凹凸重新經過針，薄片能不能被迫照原來的方式再抖一次？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor traces a finger along a shallow spiral groove, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59029",
+          "text": "如果能，電報的重複訊號就可能變成一句重複的人聲。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor sets an embossed disk beside a small speaking horn, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59030",
+          "text": "但紙盤上的概念還不能回答：真的要用什麼東西承接那根針？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor studies a blank thin sheet beside a grooved cylinder, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59031",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59031",
+          "text": "他於是畫了一台小機器，草圖上還標了給工匠的十八美元。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "US$18",
+        "sub": "草圖上的計件工價"
+      }
+    },
+    {
+      "id": "s59032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59032",
+          "text": "那不是發明獎金；愛迪生說他平時就把計件工價寫在草圖上。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor points to an unmarked corner of a workshop sketch, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59033",
+          "text": "接過草圖的工匠叫克呂西；愛迪生自己卻相信它真的會說話嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one workshop craftsman studies a blank sketch beside a metal cylinder, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59034",
+          "text": "開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one craftsman fits a small cylinder onto a wooden bench machine, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "克呂西的錫箔圓筒回了話"
+    },
+    {
+      "id": "s59035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59035",
+          "text": "愛迪生晚年說，自己其實不太相信第一台就能成功。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor watches an unfinished cylinder with a doubtful expression, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59036",
+          "text": "他盼的只是聽回一兩個字，好證明這條路值得繼續。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor leans toward a silent speaking horn, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59037",
+          "text": "克呂西甚至問：這台怪裝置究竟要做什麼？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one craftsman examines a small crank and speaking horn on the workbench, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59038",
+          "text": "愛迪生告訴他，要讓機器把說過的話還回來。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor gestures toward a small cylinder machine in a workshop, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59039",
+          "text": "圓筒表面裹著一張很薄的錫箔，外面有一根貼近箔面的針。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one craftsman smooths a blank thin foil over a grooved cylinder, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59040",
+          "text": "錫箔要服貼圓筒，稍稍陷進預先刻好的螺旋槽，針才找到一路可走的位置。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one craftsman smooths a thin foil sheet over a shallow cylinder groove, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59041",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59041",
+          "text": "圓筒上的螺旋槽替針帶路；人聲又要怎麼進入這條路？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "螺旋槽帶路",
+        "sub": "手柄帶圓筒旋轉並平移"
+      }
+    },
+    {
+      "id": "s59042",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59042",
+          "text": "針後面還墊著橡膠，讓薄片的抖動傳給它，卻不把薄片的動作壓住。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "薄片→橡膠→針",
+        "sub": "針壓在錫箔上"
+      }
+    },
+    {
+      "id": "s59043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59043",
+          "text": "針對錫箔的壓力還要先調好；杜蒙塞爾描述了一根螺絲和可轉動的支架。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one craftsman checks an adjustment screw on a hand-cranked tinfoil cylinder phonograph, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59044",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59044",
+          "text": "人把嘴靠在話筒，聲音撞上裡面的薄片，薄片把震動傳給針。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "聲音→薄片→針",
+        "sub": "針將痕跡壓進錫箔"
+      }
+    },
+    {
+      "id": "s59045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59045",
+          "text": "原書說要說得有力，嘴唇貼著話筒邊；這股力氣又怎麼留在錫箔上？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one speaker brings his mouth very close to a small recording mouthpiece, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59046",
+          "text": "手柄一轉，錫箔從針尖下滑過，那些震動便壓成一道道深淺不同的痕。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one craftsman turns the hand crank of a tinfoil cylinder phonograph on a workbench, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59047",
+          "text": "圓筒上的重飛輪幫助手柄轉得均勻，免得一句話的前後快慢差太多。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one craftsman turns a crank linked to a small heavy flywheel, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59048",
+          "text": "圓筒同時慢慢往旁邊移；這些線條，還能自己說回那句話嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one craftsman watches a hand-cranked tinfoil cylinder rotate on a workbench, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59049",
+          "text": "它留下的是被聲音壓出的形狀，箔上並沒有寫著可讀的歌詞。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor studies tiny blank indentations on a strip of foil, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59050",
+          "text": "錄完的錫箔可以拆下收好，杜蒙塞爾形容，那就像把一句話放進皮夾。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one craftsman gently stores a rolled blank foil sheet in a paper sleeve, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59051",
+          "text": "錄完後把針放回痕跡開頭，再轉同一個圓筒。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor places a stylus at the start of a foil groove, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59052",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59052",
+          "text": "箔上的凸起反過來推動針，針帶動薄片，薄片再推動空氣。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "錫箔→針→薄片",
+        "sub": "回放的傳動方向"
+      }
+    },
+    {
+      "id": "s59053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59053",
+          "text": "反向傳回來的力比錄音時弱，杜蒙塞爾說，喇叭口因此還要接一個擴聲的角筒。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one craftsman attaches a plain flared horn to a small mouthpiece, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59054",
+          "text": "他寫這聲音略顯細弱，卻能傳到房間各處；同一張錫箔再播幾次，痕跡會怎樣？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one listener at the back of a room tilts his ear toward a tabletop horn, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59055",
+          "text": "機器若真的說話，聲音應該從這道痕跡走出來，而不是從操作員喉嚨來。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one listener bends an ear toward the speaking horn of a tinfoil phonograph, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59056",
+          "text": "愛迪生後來回憶，他對第一台試著唸了「小羊」童謠，回放竟很清楚。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor leans toward a small horn on a tinfoil cylinder machine, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59057",
+          "text": "我們引的是愛迪生多年後的回憶，不能當成當天的聲音，也不能稱作人類第一段錄音。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one historian studies an unmarked later memoir beside a plain tinfoil cylinder sketch, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59058",
+          "text": "愛迪生後來說，機器一次就回了話，連他自己也大吃一驚。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor leans toward a small cylinder machine with a surprised face, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59059",
+          "text": "錫箔每播一次，壓痕就可能變淺；如果手柄的轉速也變了，又會怎樣？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one craftsman lifts a worn sheet of foil from a small cylinder, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59060",
+          "text": "手搖也有麻煩；轉得比錄音時快，聽起來就會變尖。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one operator turns a small crank carefully under soft light, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59061",
+          "text": "若轉得更慢，音調又會往下掉；人手很難每次都重現錄音時那個速度。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one operator watches his hand slow on a crank beside a cylinder, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59062",
+          "text": "所以第一次奏效，還不能保證換一個房間、換一隻手也一樣。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one inventor packs a small cylinder machine in a plain wooden case, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59063",
+          "text": "愛迪生帶著它走進《科學美國人》的編輯室；那裡的人又會怎麼聽？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one inventor carries a plain wooden device case into a newspaper office, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59064",
+          "text": "愛迪生說，他走到編輯比奇的桌前拆開包裹，放好機器，再唸一次、放一次。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one inventor sets a cylinder device on an editor's desk, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "編輯室的人圍到機器旁"
+    },
+    {
+      "id": "s59065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59065",
+          "text": "他說回放聲傳遍編輯室，圍觀的人也愈來愈多；陌生聽眾確實聽到了聲音。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one editor listens toward a tabletop phonograph horn from across the office, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59066",
+          "text": "愛迪生還說，報人事後仍難解釋聲音從哪裡來；巴黎的人會提出更尖銳的懷疑。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one editor examines a silent phonograph on a desk after a demonstration, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59067",
+          "text": "開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar presents a small cylinder machine before a plain meeting room, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59068",
+          "text": "普斯卡斯負責操作；那陣掌聲後，旁人又盯上了什麼？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one demonstrator positions a hand beside the crank of a tabletop device, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59069",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59069",
+          "text": "他引用一名在場者寫給報紙的信，說掌聲後還有另一種反應。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1878 現場來信",
+        "sub": "未具名・非會議決議"
+      }
+    },
+    {
+      "id": "s59070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59070",
+          "text": "有人看著普斯卡斯的臉，覺得機器的聲音像腹語。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one seated skeptic watches the demonstrator's mouth rather than the horn, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59071",
+          "text": "機器也許會出聲，可操作員若替它幫忙，旁人能分辨嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one skeptical listener points toward an operator's face, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59072",
+          "text": "那封信沒有記下這些人的名字，不能變成一份具名院士的表決紀錄。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one historian turns over a blank unsigned letter on a desk, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59073",
+          "text": "杜蒙塞爾倒替院士的謹慎說話：面對一件讓人驚訝的事，科學院本就該仔細查。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar rereads a plain notebook beside the machine, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59074",
+          "text": "難題其實變得更窄：人聲究竟留在錫箔上，還是有人趁著搖柄替喇叭口補聲？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one seated skeptic studies the speaking horn and crank of a tinfoil phonograph, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59075",
+          "text": "科學院於是請杜蒙塞爾自己動手；若換人仍有聲音，疑問就少了一層。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar extends a hand to receive the crank of the machine, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59076",
+          "text": "杜蒙塞爾握住機器的那一刻，剛才的聲音能重來嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one older scholar reaches toward a speaking horn at a table, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59077",
+          "text": "開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar rests his hand on a tabletop phonograph after a failed try, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "杜蒙塞爾試說，機器沒答話"
+    },
+    {
+      "id": "s59078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59078",
+          "text": "來信說，幾個本來不信的人因此更高興了。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one seated skeptic gives a restrained smile toward a silent machine, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59079",
+          "text": "但「他試失敗」只說明這一次沒成功，還不能推翻普斯卡斯先前的示範。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar compares a still phonograph with an attentive expression, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59080",
+          "text": "此刻人們掌握兩件相反的觀察：同一台機器，在普斯卡斯手上發聲，在杜蒙塞爾手上沉默。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar studies a silent phonograph between two empty chairs, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59081",
+          "text": "只靠這兩次示範，分得出是機器出了問題，還是操作方式不同嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one observer inspects a still foil cylinder beside a silent speaking horn, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59082",
+          "text": "幾位院士想查清它究竟能做什麼，沒有讓討論停在兩次相反的印象裡。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar opens an office door while holding a small device case, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59083",
+          "text": "他們請普斯卡斯到秘書室，在他們指定的條件下重做；腹語還藏得住嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one demonstrator carries a small cylinder machine toward a secretary's room, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59084",
+          "text": "原書沒有列出每一條指定條件，我們也不能替他們補一套現代實驗流程。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar gestures toward a plain meeting table with the device, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59085",
+          "text": "普斯卡斯沒有被換掉；這回由要求重試的院士指定條件，看他能不能再讓機器說話。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar stands near a tabletop cylinder and watches the crank, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59086",
+          "text": "若聲音只靠他的嘴，旁邊的人應該能發現；但試一次夠不夠？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one observer leans near the speaking horn and crank of a tabletop phonograph, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59087",
+          "text": "他自己先前試過，也知道沒練習時，這東西不會任人擺布。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one older scholar looks at the mouthpiece with a thoughtful expression, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59088",
+          "text": "秘書室裡，普斯卡斯將照院士的條件重試；那幾位在場的人會怎麼說？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar watches a closed office door beside a phonograph, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59089",
+          "text": "秘書室裡，普斯卡斯照要求重新讓機器發聲。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one demonstrator turns a tabletop phonograph crank inside a small office, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "秘書室重試，疑問落在話筒邊"
+    },
+    {
+      "id": "s59090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59090",
+          "text": "杜蒙塞爾記載，要求重試的幾名院士對結果感到滿意。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one observer nods beside a phonograph in a small office, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59091",
+          "text": "他沒有寫整個科學院正式投票，也沒有說所有懷疑都在那一刻消失。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar closes an unmarked meeting folder near the device, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59092",
+          "text": "仍有人說，要自己做過同一件事，才能相信；親自試，機器還會答話嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one skeptical scholar extends a hand toward the crank, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59093",
+          "text": "杜蒙塞爾轉述，這些人到親手試過，才接受話語確實能由器械再傳回。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar turns a crank while listening toward a small horn, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59094",
+          "text": "杜蒙塞爾幾天後應同僚邀請，又對著同一種機器反覆試說。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one older scholar speaks toward a small recording mouthpiece at his desk, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59095",
+          "text": "他承認第一次站太遠，嘴唇沒有貼到話筒的邊。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one older scholar brings his face nearer to a speaking horn, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59096",
+          "text": "差別就在聲音進入機器的第一步；他再次試說，錫箔能把話還回來嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one older scholar watches the recording mouthpiece beside a stopped crank, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59097",
+          "text": "聲音要先推動薄片，針才會壓出清楚的痕；先前離太遠，這一步就不夠。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar checks the stylus behind a diaphragm while speaking near a horn, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59098",
+          "text": "練習幾次後，他說自己也能讓機器把話還回來。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one older scholar smiles faintly while turning a small cylinder crank, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59099",
+          "text": "他也承認，要有些練習才比較有把握；初次試的人和熟手，原本就不是相同條件。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one older scholar practices turning a phonograph crank beside a horn, cool morning light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59100",
+          "text": "就連熟手普斯卡斯，也會遇到有些句子清楚、有些模糊；哪種字更容易聽清？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one demonstrator pauses and listens closely to a speaking horn, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59101",
+          "text": "杜蒙塞爾注意到，母音多、帶些 r 音的字，比滿是 s 音的字容易聽清。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar speaks slowly toward a tabletop mouthpiece, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59102",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59102",
+          "text": "杜蒙塞爾還記下一個對照：若讓針反方向讀已刻好的痕跡，會聽見什麼？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "順讀／倒讀",
+        "sub": "同一聲紋・方向相反"
+      }
+    },
+    {
+      "id": "s59103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59103",
+          "text": "他說倒讀仍有聲，卻不像原來的字句；另有人聽出倒過來的音節。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one listener reacts to a hand-cranked foil cylinder phonograph being played in reverse, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59104",
+          "text": "原書沒說秘書室那天做過倒讀；他另有辦法，能把操作員的聲音擋在聽者之外嗎？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar considers a tinfoil cylinder device beside a simple telephone receiver, soft candlelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59105",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s59105",
+          "text": "如果要另外檢查是否有人代替機器發聲，杜蒙塞爾還提出把留聲機接到電話的辦法。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "隔開聽者",
+        "sub": "電話檢驗只是書中提議"
+      }
+    },
+    {
+      "id": "s59106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59106",
+          "text": "讓聲音只傳到遠端聽者那裡，現場沒有聲音可供人配嘴；但書中沒說秘書室當天這樣做。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one distant listener lifts a simple telephone receiver in another room, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59107",
+          "text": "那個說話者的嘴，終於能和喇叭裡的聲音分開看：箔上的壓痕自己推動薄片。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one observer watches a foil groove on a slowly rotating cylinder phonograph, dim workshop light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59108",
+          "text": "看完原記錄，你會相信那只手，還是親自轉一次、聽一次？",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one viewer's hand reaches toward a small hand-cranked cylinder machine, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s59109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s59109",
+          "text": "原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+          "emotion": "自然說書；1878 同代記錄與愛迪生後來回憶分開說，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one viewer reaches toward a plain video player beside a phonograph illustration, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**腹語？**",
+      "tag": "巴黎・1878",
+      "sub": "留聲機的重試",
+      "shot": "s59001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "科學院聽見留聲機說話，為何有人懷疑腹語？｜奇聞檔案局",
+    "description": "1878 年巴黎科學院聽見愛迪生留聲機的人聲，掌聲之後，一封現場來信記下少數人的腹語疑問。杜蒙塞爾親自操作卻沒成功；普斯卡斯在指定條件下重試，他也在幾天後找出自己失手的原因。\n\n腹語猜測出自杜蒙塞爾所引的未具名現場來信，並非科學院全體決議。機器起源與「小羊」童謠只依愛迪生 1910 年晚年自述，不能當作當時聲音的留存證據。畫面是原創插圖與機械示意卡，不冒充 1878 年實物。查核：2026-10-21。\n\n1878 法文原版固定全文：https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt\n1910 愛迪生自述固定全文：https://github.com/GITenberg/Edison--His-Life-and-Inventions_820/blob/b100fab326616897d87d7e296672f5f916624d32/820.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "留聲機",
+      "愛迪生",
+      "杜蒙塞爾",
+      "巴黎科學院",
+      "腹語",
+      "聲音歷史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

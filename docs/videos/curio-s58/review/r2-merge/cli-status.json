@@ -1,0 +1,74 @@
+{
+  "slug": "curio-s58",
+  "round": "R2",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s58 --answers /workspace/travel_scanner/docs/videos/curio-s58/review/r2-merge/merged-answers.json --workdir /tmp/curio-s58-r2-merge-formal-XeYP5W --json",
+  "workdir": "/tmp/curio-s58-r2-merge-formal-XeYP5W",
+  "official_record_path": "/tmp/curio-s58-r2-merge-formal-XeYP5W/curio-s58/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "8a1db1dc2a9441a7b16683c70067203ddc7be6c0070560f32c02d91b5e32de34",
+    "brief.md": "7b44818f6b681a4ee786c00a32359b4181772aeaa1b5cd897bcd13871b1ad016",
+    "claims.md": "73f9ea7122ec728357b7eb3c8487b9657b4bbe0e6d140c4b0514a7deddc2d471",
+    "video.json": "d69ce07f441aeabddc231d4d98fe4437ffea4e7c763198d2a61be1161bebe0cb",
+    "script.md": "9d590c8c3e6f93628d87d4618276ee967364aa36e0b54c7008c9266b6daae0ac"
+  },
+  "creative_sha256_after": {
+    "research.md": "8a1db1dc2a9441a7b16683c70067203ddc7be6c0070560f32c02d91b5e32de34",
+    "brief.md": "7b44818f6b681a4ee786c00a32359b4181772aeaa1b5cd897bcd13871b1ad016",
+    "claims.md": "73f9ea7122ec728357b7eb3c8487b9657b4bbe0e6d140c4b0514a7deddc2d471",
+    "video.json": "d69ce07f441aeabddc231d4d98fe4437ffea4e7c763198d2a61be1161bebe0cb",
+    "script.md": "9d590c8c3e6f93628d87d4618276ee967364aa36e0b54c7008c9266b6daae0ac"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "9ad26823d4360c49212f14d5b2f05c7ba7783269dd03ab6f893e43a209d29bc9",
+    "b": "9ed2f8a7d5d2f35def56aedf04da388c9fdf1c02f4555c59d7c710e541ab18a4"
+  },
+  "merged_answers_sha256": "a71a7c9fc5ef3a4091749bea1902a125c58588703f9b9726d4abb8074a080d67",
+  "stdout_sha256": "827c1946c0d83f74115d529e3992c06ea0b2e85ebc760e9e67de7535d56908e2",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "f471cfb7ef98fbd8b9731b7799fe6d28eefbba1f78afba18380fd41e53ee0fd4",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58005] 達格隆後來寫，另一個球中彈，朝農舍方向墜下。；讀者二：[s58005] 達格隆後來寫，另一個球中彈，朝農舍方向墜下。"
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58041] 他看見達蓋爾號下降，最後落在農舍牆邊。；讀者二：[s58041] 他看見達蓋爾號下降，最後落在農舍牆邊。"
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58049] 沙只剩約兩袋，下面究竟還有沒有敵兵？；讀者二：[s58049] 沙只剩約兩袋，下面究竟還有沒有敵兵？"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58041] 他看見達蓋爾號下降，最後落在農舍牆邊。；讀者二：[s58041] 他看見達蓋爾號下降，最後落在農舍牆邊。"
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58071] 另一位教士在深夜接待了疲累的隊伍。；讀者二：[s58105] 一頁頁原稿要先排成可拍攝的版面。"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "8b4882b3b38424be4992e08405f9e1ef9b40b6425221dbb9ecb466566a1a4289",
+  "narrative_hash": "e41d386112b07a74",
+  "official_round": 1
+}
