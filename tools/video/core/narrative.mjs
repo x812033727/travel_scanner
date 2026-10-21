@@ -381,12 +381,12 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  */
 const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/;
 
-export function panelVerdict(answer) {
+export function panelVerdict(answer, questions = NARRATIVE_PANEL) {
   const given = new Map();
   for (const entry of Array.isArray(answer?.answers) ? answer.answers : []) {
     if (isObject(entry) && typeof entry.id === "string") given.set(entry.id, entry);
   }
-  const answers = NARRATIVE_PANEL.map(({ id, question, required }) => {
+  const answers = questions.map(({ id, question, required }) => {
     const entry = given.get(id);
     const quoted = typeof entry?.evidence === "string" && entry.evidence.trim() ? entry.evidence.trim().slice(0, 200) : null;
     // A "yes" has to be auditable: the question asks for one line of the narration quoted with its
