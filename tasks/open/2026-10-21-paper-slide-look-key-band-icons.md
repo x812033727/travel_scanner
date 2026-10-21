@@ -72,9 +72,9 @@ theme.css, so all new CSS is inlined per page and attached only when a card uses
 
 `node --test tools/video/templates/templates.test.mjs tools/video/templates/terminal/terminal-human.test.mjs tools/video/render/render.test.mjs tools/video/render/browser.test.mjs`,
 `npm run test:tools`, and
-`node tools/video/cli.mjs render --file tools/video/templates/fixtures/paper/video.json --workdir <dir> --channel msedge`
-(after PR 2; before it, the fixture's `theme` fails the schema, so draw it from renderPlan directly):
-open contact-sheet.png and the terminal states' transition frames.
+`node tools/video/render/repeat.mjs --file tools/video/templates/fixtures/paper/video.json --channel msedge --runs 2 --out <dir>`
+(the fixture runs two minutes, so `render` stops at the eight-minute floor; repeat.mjs draws without
+lint): open run-1/'s stills and the terminal states' transition frames.
 
 ## Notes
 

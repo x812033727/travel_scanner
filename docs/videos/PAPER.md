@@ -40,13 +40,14 @@
 
 `tools/video/templates/fixtures/paper/video.json`：`theme`、`keys`／`key`、`numeral`、`icon`、`typing` 全用上；
 它的 contact sheet 在 [`paper-look-contact-sheet.jpg`](paper-look-contact-sheet.jpg)（2026-10-21 以 Edge 渲染）。
-自己看圖：
+範例只有兩分多鐘，`render` 會停在八分鐘下限的 lint，所以自己看圖用不經 lint 的重畫工具：
 
 ```bash
-node tools/video/cli.mjs render --file tools/video/templates/fixtures/paper/video.json --workdir <目錄> --channel msedge
+node tools/video/render/repeat.mjs --file tools/video/templates/fixtures/paper/video.json --channel msedge --runs 2 --out <目錄>
 ```
 
-開 `<目錄>/contact-sheet.png` 看版面，終端機的 `frames/<key>-tNNN.png` 逐格看打字。
+`<目錄>/run-1/` 是每個狀態的定格與轉場格（終端機的 `-tNNN.png` 逐格看打字），兩輪比對也順便證明紙底的影格可重現。
+正式影片照常 `render --slug`。
 
 ## 工具裡的落點
 
