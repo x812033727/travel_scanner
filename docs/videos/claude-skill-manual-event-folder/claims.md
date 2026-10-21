@@ -42,16 +42,16 @@ c35｜內文第 9–20 行照原檔上卡，七步逐條照唸｜實跑：demo/b
 c36｜第一批的寄信名單裡有兩個王志明：chihming.wang（業務部）與 cm.wang（研發部）｜實跑：demo/start/輸出/確認信名單.csv 第 3、6 行；selftest C2｜2026-10-21｜body-2、two-wangs
 c37｜第二批有一筆「測試二」（test2@example.com，部門寫「測試」）｜實跑：demo/start/報名表_第二批.csv 第 6 行｜2026-10-21｜body-3
 c38｜第七步的「才」：檢查時它沒有寫確認信；CSa 回覆最後一句「我沒有寫確認信，技能說明要寫的時候才寫。」｜實跑：runlog CSa reply｜2026-10-21｜body-7
-c39｜那一句要求的全文（34 字）｜實跑：demo/prompts/skill-auto.txt｜2026-10-21｜ask
+c39｜那一句要求的全文（33 字；檔案 34 字元含結尾換行，查核 1 改）｜實跑：demo/prompts/skill-auto.txt｜2026-10-21｜ask
 c40｜CSa 第一個工具呼叫就是 Skill signup-check；回覆第一句「第二批 6 筆已檢查完。2 人加進寄信名單，1 人列入要補資料，其餘 3 筆沒有動。」（卡片照原文）｜實跑：runlog CSa stream summary 與 reply｜2026-10-21｜ask
-c41｜CSa 依序：翻開 signup-check → 讀報名表與名單（3 個 Bash 指令被擋）→ 部門對照在資料夾最上層兩次找不到，再到說明書資料夾讀到 → 用 Edit 改三個輸出檔（簡郁庭、邱品妍進名單，宋柏均進要補資料）→ 回覆提醒黃雅婷問能不能改線上、要有人回｜實跑：runlog CSa 的 tool_use 序列、permission_denials=3、NOTE (runner)｜2026-10-21｜run-steps
+c41｜CSa 依序：翻開 signup-check → 讀報名表與名單（全程 3 個 Bash 指令被擋：讀檔時 1 個、寫檔時 2 個；查核 1 把卡片第 2 步改成「整段共有三個指令被擋下」）→ 部門對照在資料夾最上層兩次找不到，再到說明書資料夾讀到 → 用 Edit 改三個輸出檔（簡郁庭、邱品妍進名單，宋柏均進要補資料）→ 回覆提醒黃雅婷問能不能改線上、要有人回｜實跑：runlog CSa 的 tool_use 序列、permission_denials=3、NOTE (runner)｜2026-10-21｜run-steps
 c42｜CS 三次：寄信名單都 18 個 Email；要補資料從 3 變 4｜實跑：CSa–CSc B5、B4；起點 要補資料 3 人（劉思妤、曾詩涵、洪子晴，selftest C7）｜2026-10-21｜run-stats
 c43｜事先寫好的六項檢查（batch2.mjs B1–B6）三次都全過；兩份原始報名表雜湊不變（835aff4efdfd433b、d93be0d8338f8802）｜實跑：成果 1 的 NOTE｜2026-10-21｜run-stats
 c44｜每次貼七步（CPa、CPb）、七步寫在 CLAUDE.md（CMa、CMb）、寫成說明書（CS）都 6／6：「三種交代方式結果一樣」；什麼都不交代（CN1）也 6／6：「這一批它不靠說明書也猜得到」｜實跑：總表；成果 1 的 NOTE；Unexpected 4｜2026-10-21｜four-ways
 c45｜CN1 是看第一批的輸出檔和日誌推出平常的做法｜實跑：demo/CN1/reply.md 第一段｜2026-10-21｜four-ways
-c46｜差別：貼上那一邊每次 310 字（706 位元組）對 34 字（90 位元組）、得自己留著；CLAUDE.md 問什麼都帶 462；只有說明書能整個資料夾帶去 Claude 網頁版（引用）｜實跑：M1 `wc -c`、node 字數（paste.txt 310、skill-auto.txt 34）；LM−L0；引用：https://support.claude.com/en/articles/12512180-use-skills-in-claude（Upload a ZIP file containing your skill folder）｜2026-10-21｜four-ways、differences
+c46｜差別：貼上那一邊每次 309 字（706 位元組的檔案去掉結尾換行；查核 1 由 310 改）對 33 字（90 位元組，查核 1 由 34 改）、得自己留著；CLAUDE.md 問什麼都帶 462；只有說明書能整個資料夾帶去 Claude 網頁版（引用）｜實跑：M1 `wc -c`、node 字數（paste.txt 310、skill-auto.txt 34，都含檔尾一個換行；打的字是 309、33）；LM−L0；引用：https://support.claude.com/en/articles/12512180-use-skills-in-claude（Upload a ZIP file containing your skill folder）｜2026-10-21｜four-ways、differences
 c47｜觀眾加的第 8 步（兩行）照原檔上卡；全檔 22 行，6f8319939f194993｜實跑：demo/booklets/book-mine/signup-check/SKILL.md；M1｜2026-10-21｜step8、step8-b
-c48｜加了第 8 步，W1a、W1b 兩次都多一份 輸出/待回覆.csv，只有一列：黃雅婷、改成線上參加可以嗎？、待回覆（未回答）（卡片是 W1a 那份的原文）｜實跑：W1a、W1b mine.mjs M1–M5 PASS；demo/W1a/輸出/待回覆.csv｜2026-10-21｜step8-result
+c48｜加了第 8 步，W1a、W1b 兩次都多一份 輸出/待回覆.csv，只有一列：黃雅婷、改成線上參加可以嗎？；只有 W1a 多一欄「狀態」寫「待回覆（未回答）」，W1b 只有三欄（卡片是 W1a 那份的原文；查核 1 把旁白 ykf3 改成「第一次還多一欄狀態」）｜實跑：W1a、W1b mine.mjs M1–M5 PASS；demo/W1a/輸出/待回覆.csv｜2026-10-21｜step8-result
 c49｜她在寄信名單裡只出現一次｜實跑：mine.mjs M4 PASS（W1a、W1b）｜2026-10-21｜step8-result
 c50｜叫它自己寫一本的那一句要求（拆成六段上卡，全文在說明欄）｜實跑：demo/prompts/write-skill.txt；runlog G1 ## prompt｜2026-10-21｜g1-ask
 c51｜結果沒寫成：寫進 .claude/skills/signup-check/SKILL.md 被擋下（「Claude requested permissions to write to … but you haven't granted it yet.」），回覆要你允許；資料夾裡沒有 SKILL.md｜實跑：runlog G1 tool_error、reply、cover-check `FAIL SKILL.md exists`｜2026-10-21｜g1-result
@@ -74,7 +74,7 @@ c67｜網頁版介紹上限 200 字元，規格是 1,024；signup-check 的介�
 c68｜免費版能不能上傳：support〈Use skills in Claude〉列 Free、Pro、Max、Team、Enterprise；Claude 文件 overview 的 claude.ai 一節只列 Pro、Max、Team、Enterprise（「我」的不確定句）｜https://support.claude.com/en/articles/12512180-use-skills-in-claude；https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（### claude.ai: Custom Skills … Available on Pro, Max, Team, and Enterprise plans）｜2026-10-21｜plans
 c69｜網頁版開著的技能，會單向同步到同一個帳號登入的 Claude Code（需要 v2.1.273 以上）；開 session 時同步，之後約每 10 分鐘查一次｜https://support.claude.com/en/articles/12512180-use-skills-in-claude（Use skills in Claude Code）｜2026-10-21｜sync
 c70｜資料夾裡這一本不會自己跑上網頁版，要另外上傳（Claude Code 的技能在檔案系統裡，跟 claude.ai 分開）｜https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview（Custom Skills do not sync across surfaces … Claude Code Skills are filesystem-based and separate from both claude.ai and API）｜2026-10-21｜sync
-c71｜格式是公開標準；支援工具清單有 45 個，Gemini CLI、Cursor、GitHub Copilot 都在上面｜https://agentskills.io/clients（撰稿日以 `_tools/clients.mjs pages/clients.html` 數出 `clients: 45`；原檔 grep 有 Gemini CLI、Cursor、GitHub Copilot）；https://support.claude.com/en/articles/12512176-what-are-skills（Agent Skills open standard）｜2026-10-21｜clients
+c71｜格式是公開標準；支援工具清單有 46 個（查核 1 由 45 改：clients.mjs 的正規式要求 instructionsUrl，漏數了沒有這欄的 Piebald；2026-10-21 重抓的頁與撰稿時的原檔都是 46 筆 name），Gemini CLI、Cursor、GitHub Copilot 都在上面｜https://agentskills.io/clients（撰稿日以 `_tools/clients.mjs pages/clients.html` 數出 `clients: 45`；原檔 grep 有 Gemini CLI、Cursor、GitHub Copilot）；https://support.claude.com/en/articles/12512176-what-are-skills（Agent Skills open standard）｜2026-10-21｜clients
 c72｜ChatGPT 桌面版側邊欄有 Skills，ChatGPT 打 @ 選一本；Codex 打 $ 或 /skills；單獨的 skill 在 ChatGPT 桌面版、Codex CLI 與 IDE 擴充，網頁版只透過外掛帶進來（沒有安裝、沒有測試）｜https://learn.chatgpt.com/docs/build-skills｜2026-10-21｜chatgpt
 c73｜ChatGPT 與 Codex 也會照 description 自己挑（implicit invocation）｜https://learn.chatgpt.com/docs/build-skills（Implicit invocation … when your task matches the skill description）｜2026-10-21｜chatgpt
 c74｜說明書的資料夾可以夾小程式，AI 會去執行（比喻對不上的第三處）｜https://agentskills.io/specification（scripts/: Contains executable code that agents can run）；https://support.claude.com/en/articles/12512198-how-to-create-custom-skills（Add scripts）｜2026-10-21｜risk
@@ -90,7 +90,7 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 | 示範 | 輸入 | 動作 | 預期（brief） | 實際 | 證據 |
 | --- | --- | --- | --- | --- | --- |
 | 主例 CS | shelf5＋book-lean，skill-auto.txt | `runs.sh CSa/CSb/CSc`（acceptEdits） | 至少 2 次翻開 signup-check，B1、B4、B5 過 | 3／3 翻開，B1–B6 6／6，18 個 Email，報名表雜湊不變 | runlog CS 三段、總表 |
-| 簡單做法 CP | shelf5＋appendix-loose，paste.txt（310 字） | `runs.sh CPa/CPb` | B1、B4、B5 過 | 6／6；沒有翻開任何一本 | 總表 |
+| 簡單做法 CP | shelf5＋appendix-loose，paste.txt（309 字） | `runs.sh CPa/CPb` | B1、B4、B5 過 | 6／6；沒有翻開任何一本 | 總表 |
 | 最接近的內建功能 CM | shelf5＋claude-md-book＋appendix-loose，skill-auto.txt | `runs.sh CMa/CMb` | B1、B4、B5 過 | 6／6 | 總表 |
 | 控制組 CN1 | 只有 shelf5，skill-auto.txt | `runs.sh CN1` | 照實記 | 6／6（照第一批推出做法） | 總表、demo/CN1/reply.md |
 | 封面 CV | shelf5＋book-vague | `runs.sh CVa/CVb/CVc` | CV 比 CS 少 2 次以上才成立 | 3／3 翻開 checklist：成果 3 降級 | 成果 3 的 NOTE |
@@ -107,13 +107,13 @@ c76｜答案句：它平常只看封面，要用才翻開｜c21、c24 的出處�
 - 開場不用企劃第 4 句「封面沒寫好，AI 連翻都不會翻」：CV 3／3 翻開，成果 3 降級。開場的意外改用執行紀錄裡沒有預料到的「點名的附件 8 次裡 5 次找不到」（Unexpected 2），在第 6 章回收，並用來寫附件章的做法。
 - 開場第 2 句的天真問題改成「Skill，不就是把一段提示存起來，下次再貼嗎？」：企劃那句「那是寫程式的人在用的吧」跟上一支的開場同一個意思。
 - 第 4 章照成果 3 降級的條件寫：「這次含糊的也翻開了三次」，封面寫法靠引用（疑難排解、規格好壞例），數字只講封面大小與省下的 61 token。
-- 第 5 章照成果 1 的條件逐字講「三種交代方式結果一樣」「這一批它不靠說明書也猜得到」，主例的差別只講 310 對 34 字、462 token、帶得走（引用）。
+- 第 5 章照成果 1 的條件逐字講「三種交代方式結果一樣」「這一批它不靠說明書也猜得到」，主例的差別只講 309 對 33 字、462 token、帶得走（引用）。
 - 第 3 章不放官方的六種用途清單（為了片長）；「每一份報名表裡都有一筆叫測試」的玩笑移到第 5 章第三步。
 - G1 照實講成「叫它寫可以當草稿」，結果是寫入被擋、它想寫的內容把部門對照寫進內文；不跑 G2（紀錄沒跑）。
 - 附件章多一段「改一行就找到」：企劃沒有這組 session；協調者事後加跑 W2a、W2b（只改第 5 步第 17 行，寫上附件位置），結果 2／2 讀到。附件章因此以「八次裡五次找不到」開場、以這一行的修正收尾（appendix-fix、appendix-fixed、appendix-cmd）；「附件怎麼點名」的第 1 點改成實跑，第 2、3 點仍引規格頁與支援文章。
 - 第 7 章的「網頁版跟 Claude Code 會不會同步」沒有寫成不確定：兩份頁面的說法其實相容（網頁版→Claude Code 單向同步；資料夾裡的不會上網頁版），所以照兩邊的事實講。不確定的「我」只用兩句：免費版方案、中文選單名。
 - 「上一支」只回呼一次（第 1 章第一句）；少了 name 的那一本在旁白裡不說是上一支的，卡片出處寫「左：前一支的檔」。
-- 選項 A 的 stats「45 個工具」照撰稿日數到的 45。
+- 選項 A 的 stats「46 個工具」：撰稿日數成 45，查核 1 照頁面上 46 筆改成 46。
 - 片長估 15.7 分鐘，超過 target_minutes [9, 12] 的上限。
 
 ## 我懷疑但沒動的事
