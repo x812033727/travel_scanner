@@ -3046,31 +3046,25 @@
   },
   "videoStories": {
     "title": "品牌故事",
-    "intro": "一部作品、一个故事一集，按企划清单免关卡制作：工人在每日数量内依次开始，每支什么时候上架由你决定。",
+    "intro": "品牌故事是视频类别，和观念解说一样：一部作品、一个故事一集，按企划清单免关卡制作，导入的故事由工人在同时进行与每月上限内开始，没有每日数量。每支什么时候上架由你决定。",
     "loadError": "品牌故事读取失败：{message}",
     "kind": "品牌故事",
     "quota": {
       "title": "工人现在能不能开始新故事",
-      "todayLabel": "今天已开始",
       "inFlightLabel": "同时进行",
-      "awaitingLabel": "可以上架、还没上传",
       "monthLabel": "本月已开始",
       "readyLabel": "待做",
-      "today": "{count}／{limit} 支（台北 {day}）",
-      "todayNoLimit": "{count} 支，不限数量（台北 {day}）",
       "of": "{count}／{limit}",
       "count": "{count} 个",
       "holdTitle": "现在不开始新故事：",
       "go": "工人下一轮会开始下一个故事。",
-      "line": "今天 {today} · 同时进行 {inFlight}／{maxInFlight} · 可以上架 {awaiting}／{buffer} · 待做 {ready}"
+      "line": "同时进行 {inFlight}／{maxInFlight} · 待做 {ready}"
     },
     "holds": {
       "paused": "作品已暂停；按“继续”之后，工人才会开始下一个故事。",
       "notActive": "作品不在进行中。",
-      "per_day": "今天（台北 {day}）已经开始 {started} 支，达到每日上限 {perDay} 支；台北时间过了午夜才开始下一个。",
       "in_flight": "正在制作的故事有 {inFlight} 支，达到同时进行的上限 {maxInFlight} 支（在设置标签页调整）。",
       "per_month": "本月已经开始 {month} 集，达到每月上限 {perMonth} 集（在设置标签页调整）。",
-      "upload_buffer": "可以上架、还没上传的故事已有 {awaiting} 支；满 {buffer} 支就先不开始新的。上传并粘贴 YouTube 链接后会继续。",
       "none_ready": "没有待做的故事：清单里的故事都开始过了，或还没导入。"
     },
     "permission": {
@@ -3078,13 +3072,6 @@
       "needs": "修改每日数量、暂停、跳过或恢复故事，以及写入导入，都需要 {capability} 权限，“{content}”和“{owner}”角色拥有该权限。导入的试运行你仍然可以使用。",
       "roles": "你当前的角色：{roles}。",
       "noRoles": "你的账号没有后台角色。"
-    },
-    "perDay": {
-      "label": "每天几支",
-      "none": "不限每日数量",
-      "option": "每天 {count} 支",
-      "save": "修改每日数量",
-      "help": "按台北时间的日期计算。企划的排程是每天两支（中午与晚上八点）；前几支还在检查时，先设少一点。"
     },
     "chapters": {
       "hook": "钩子",
@@ -3186,10 +3173,7 @@
       "otherSeries": "文件是 {file} 的，不是 {series}：试运行会拒绝。",
       "limit": "只导入前几个故事",
       "limitPlaceholder": "全部",
-      "perDay": "创建作品时的每日数量",
-      "perDayFile": "按文件",
       "limitHelp": "按制作顺序取前几个；试做导入 2 个，之后不填数字再导入一次，就会补上其余的。",
-      "perDayHelp": "每日数量只在这次导入创建作品时使用；作品创建之后，到作品页修改。",
       "checking": "试运行中…",
       "check": "试运行",
       "writing": "写入中…",
@@ -3257,6 +3241,8 @@
       "refresh": "刷新进度",
       "chooseVideo": "选择视频（需已有批准的上传包）",
       "newPackage": "将新版批准包发送到 VPS",
+      "titlesOutdated": "重新发送标题说明到 VPS",
+      "titlesOutdatedHelp": "这支品牌故事在标题加上「｜品牌故事」之前就上传完了。重新发送会用同一支视频更新标题与说明，不会重新上传视频。",
       "states": {
         "staging": "准备／传送素材",
         "queued": "VPS 已排入队列",

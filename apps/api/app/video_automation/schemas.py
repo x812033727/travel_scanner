@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 
@@ -681,8 +681,6 @@ SeriesKind = Literal["series", "one-off", "story"]
 # route or the separate 10-minute cute-mystery route (both below the 20-minute schema cap).
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
-# How many stories may start on one Asia/Taipei calendar day, at most.
-STORY_MAX_PER_DAY = 12
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
 SeriesAspect = Literal["world", "bonds", "structure", "mood"]
 SeriesTone = Literal[
@@ -770,9 +768,9 @@ class SeriesIn(StrictModel):
 
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
-    episodes come from the backlog import, not from documents. The daily count and the look
-    belong to a story series only. A one-off explainer runs 8–20 minutes; drama episodes
-    stay at SERIES_MAX_MINUTES.
+    episodes come from the backlog import, not from documents. The look belongs to a story
+    series only, and a story series has no daily count (the owner, 2026-10-21). A one-off
+    explainer runs 8–20 minutes; drama episodes stay at SERIES_MAX_MINUTES.
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -796,7 +794,6 @@ class SeriesIn(StrictModel):
     compilation: bool = False
     visual_tier: VisualTier = "clips"
     total_minutes: int | None = Field(default=None, ge=30, le=480)
-    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
     look: StoryLook | StoryPresetLook | None = None
 
@@ -893,8 +890,8 @@ class SeriesIn(StrictModel):
                 and self.target_minutes > EXPLAINER_MAX_MINUTES
             ):
                 raise ValueError(f"an explainer is at most {EXPLAINER_MAX_MINUTES} minutes")
-            if self.episodes_per_day is not None or self.look is not None:
-                raise ValueError("only a story series has a daily count and a shared look")
+            if self.look is not None:
+                raise ValueError("only a story series has a shared look")
         if self.kind == "one-off":
             if self.total_minutes is not None:
                 raise ValueError("a one-off drama is one episode, not a binge series")
@@ -910,11 +907,10 @@ class SeriesIn(StrictModel):
 class SeriesPatch(StrictModel):
     """What the owner may change later; a field left out stays as it is.
 
-    The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
-    a story series; the service refuses them on the other kinds, which keep their limits.
-    ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
-    settings tab again. An explainer preset stays a one-off's, and a one-off's bible fixes
-    whether it is an explainer and which one (series.patch_problem).
+    The length may reach STORY_MAX_MINUTES and the look may be set only on a story series; the
+    service refuses them on the other kinds, which keep their limits. ``image_model`` sent as
+    null follows the settings tab again. An explainer preset stays a one-off's, and a one-off's
+    bible fixes whether it is an explainer and which one (series.patch_problem).
     """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)
@@ -936,7 +932,6 @@ class SeriesPatch(StrictModel):
     compilation: bool | None = None
     visual_tier: VisualTier | None = None
     # A story series (docs/videos/STORY.md).
-    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
     look: StoryLook | StoryPresetLook | None = None
 
@@ -987,30 +982,22 @@ class SeriesEpisodeOut(BaseModel):
     video: dict[str, object] | None = None
 
 
-# Why no story starts now (docs/videos/STORY.md §每日配額與排程): the series is paused or over, the
-# day's count is reached (the Asia/Taipei calendar day), the episodes in the making fill
-# ``series_max_in_flight``, the month's ``series_episodes_per_month`` is reached, the stories
-# cleared for upload that the owner has not uploaded fill the buffer, or no story is ready.
-StoryHold = Literal[
-    "not_active", "per_day", "in_flight", "per_month", "upload_buffer", "none_ready"
-]
+# Why no story starts now (docs/videos/STORY.md §開工與上限): the series is paused or over, the
+# episodes in the making fill ``series_max_in_flight``, the month's ``series_episodes_per_month``
+# is reached, or no story is ready. A brand story has no daily count (the owner, 2026-10-21).
+StoryHold = Literal["not_active", "in_flight", "per_month", "none_ready"]
 
 
 class StoryQuotaOut(BaseModel):
     """Where a story series stands against its limits, and the reason no story starts now
     (``hold`` and the sentence the owner reads, ``hold_detail``), or None for both when the
     next one may. The same function decides the worker's next job, so the page and the worker
-    cannot disagree. ``day`` is the Asia/Taipei calendar day ``started_today`` counts."""
+    cannot disagree."""
 
-    day: date
-    started_today: int
-    episodes_per_day: int | None
     in_flight: int
     max_in_flight: int
     started_this_month: int
     episodes_per_month: int
-    awaiting_upload: int
-    upload_buffer: int
     ready: int
     hold: StoryHold | None = None
     hold_detail: str | None = None
@@ -1057,10 +1044,9 @@ class SeriesSummary(BaseModel):
     compilation_slug: str | None = None
     compilation_started_at: datetime | None = None
     compilation_finished_at: datetime | None = None
-    # The brand-story columns (docs/videos/STORY.md): the daily count, the image model (None
-    # follows the settings tab) and the shared look; the other kinds leave them None. The worker's
+    # The brand-story columns (docs/videos/STORY.md): the image model (None follows the settings
+    # tab) and the shared look; the other kinds leave them None. The worker's
     # episode job reads them here with the kind and the length, and needs no second request.
-    episodes_per_day: int | None = None
     image_model: str | None = None
     look: dict[str, object] | None = None
     # A story series' standing against its limits, on the owner's reads (the list and the series

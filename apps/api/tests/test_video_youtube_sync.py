@@ -65,6 +65,7 @@ async def _package(
     *,
     youtube_video_id: str | None = None,
     metadata: dict[str, Any] | None = None,
+    category: str | None = None,
 ) -> Package:
     """A video whose upload confirmation is approved, its package in the review store.
 
@@ -94,6 +95,7 @@ async def _package(
         checklist=[],
         last_synced_at=now,
         youtube_video_id=youtube_video_id,
+        category=category,
     )
     review = VideoReview(
         id=uuid4(),
@@ -203,6 +205,24 @@ async def test_a_studio_upload_gets_its_details_captions_thumbnail_and_schedule(
     async with site.factory() as session:
         actions = (await session.scalars(select(AdminAuditLog.action))).all()
     assert "video_youtube_sync_requested" in actions
+
+
+async def test_a_brand_story_packaged_before_the_rule_reaches_youtube_with_its_story_tag(
+    site: Site, launched: list[str]
+) -> None:
+    """The package's titles end with the captions tag only; the video's category on the site
+    puts 「｜品牌故事」 before it on the way out, in every language (requests.STORY_TAGS)."""
+    await site.link()
+    await _package(site, category="story")
+    _studio_video(site)
+    await _request(site, _publish(publish_at=datetime(2030, 1, 2, 12, 0, tzinfo=UTC)))
+    await sync.run_sync(SLUG, site.factory)
+    sent = site.google.updates[-1]
+    assert sent["snippet"]["title"] == "AI 模型怎麼挑？排行榜第一不一定最好用｜品牌故事｜CC字幕"
+    assert {locale: entry["title"] for locale, entry in sent["localizations"].items()} == {
+        "en": "Picking an AI model｜Brand Story｜CC Subtitles",
+        "ja": "AIモデルの選び方｜ブランドストーリー｜字幕付き",
+    }
 
 
 async def test_captions_the_video_already_has_are_not_uploaded_again(
