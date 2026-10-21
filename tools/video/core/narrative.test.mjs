@@ -499,3 +499,32 @@ test("a voiced objection is an open loop", () => {
   }
   assert.equal(OPEN_LOOP_FAMILY.objection.test("這一句只是把範例拉長到一集的長度。"), false);
 });
+
+import { panelRulesSha256 } from "./narrative.mjs";
+
+test("the tutorial wording covers every panel id but outro_no_next, by name", () => {
+  const ids = new Set(NARRATIVE_PANEL.map((question) => question.id));
+  for (const key of Object.keys(TUTORIAL_PANEL_QUESTIONS)) assert.ok(ids.has(key), `${key} is a panel id`);
+  assert.deepEqual([...ids].filter((id) => !(id in TUTORIAL_PANEL_QUESTIONS)), ["outro_no_next"]);
+});
+
+test("a label that only ends in a question mark is still a label", () => {
+  for (const label of ["首先我們來說說它是什麼？", "接下來有了這些基礎，我們來看第二點。"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = label;
+    assert.equal(chapterOpenerProblems(doc, estimateTimeline(doc)).length, 1, label);
+  }
+});
+
+test("the panel contract hash is the questions the reader was sent: a tutorial's differs, a story's is the story hash", () => {
+  const story = fixture();
+  assert.equal(panelRulesSha256(story), PANEL_RULES_SHA256);
+  const tutorial = { ...fixture(), category: "tutorial" };
+  assert.notEqual(panelRulesSha256(tutorial), PANEL_RULES_SHA256);
+  const verdict = { passed: true, answers: [], failed: [], advisory: [] };
+  assert.equal(narrativeRecord(story, verdict, 1).panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.equal(narrativeRecord(tutorial, verdict, 1).panel_rules_sha256, panelRulesSha256(tutorial));
+  // A story verdict recorded before the tutorial wording existed still matches its script.
+  assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), story), true);
+  assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), tutorial), false);
+});

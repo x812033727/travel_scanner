@@ -38,7 +38,7 @@ export const DEFAULT_CADENCE = Object.freeze({ gap: HOOK_GAP_SECONDS, loopsPer10
  * what made the owner's videos read as sections stitched together.
  */
 export const LABEL_OPENERS = [
-  /^(?:先|首先)(?:講|說|從|來|看|聊)/,
+  /^(?:先|首先)(?:我們|你)?(?:講|說|從|來|看|聊)/,
   /^回到/,
   /^(?:打開|翻開)(?:第[一二三四五六七八九十\d]+頁|檔案|下一頁)/,
   /^這一?(?:章|段|集)(?:要|就)?(?:回答|講|說|來)/,
@@ -70,7 +70,8 @@ export const INTERJECTION = /^(?:好|所以|那|那麼|OK|欸|嗯)[，、,]\s*/;
  * viewer is asking, or a callback to what came before. A label that carries none of these is a
  * label (「接下來我們來看第二點」).
  */
-export const PROGRESS_CARRIER = /(?:做好了|搞定了|整理完|寫好了|裝好了|跑完了|做完了|弄好了|有了|之後|你可能會|可能會有個疑惑|[？?]|還記得|前面說過|剛剛|開頭|一開始)/;
+// A bare question mark, 之後 or 有了 is not a carrier: 「首先我們來說說它是什麼？」 is still a label.
+export const PROGRESS_CARRIER = /(?:做好了|搞定了|整理完|寫好了|裝好了|跑完了|做完了|弄好了|你可能會|可能會有個疑惑|有人會問|還記得|前面說過|剛剛|開頭|一開始)/;
 const QUESTION = /[？?]\s*$/;
 /** A sentence that brings a fact back on purpose: not a repeat. */
 export const CALLBACK = /還記得|記得嗎|剛剛|剛才|前面|開頭|一開始|回到那/;
@@ -344,12 +345,17 @@ Markdown fence): {"answers": [{"id": "<question id>", "yes": true|false, "eviden
 // This is only the blind narrative panel's contract. A script may be unchanged while its
 // questions or required-answer rules change; other script/fact-check receipts remain valid.
 // Increment verdict_version if panelVerdict's PASS semantics change without a text change.
-export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
+// The hash is of the questions the reader was actually sent, so rewording the tutorial panel
+// leaves every story video's saved verdict valid, and the other way round.
+const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify({
   instructions: PANEL_INSTRUCTIONS,
-  questions: NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })),
-  tutorial_questions: TUTORIAL_PANEL_QUESTIONS,
+  questions: questions.map(({ id, question, required }) => ({ id, question, required })),
   verdict_version: 1,
 })).digest("hex");
+/** The story panel's contract hash (every script that is not a tutorial). */
+export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
+/** The contract hash of the panel this script is read against. */
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.
@@ -358,7 +364,7 @@ function panelNarrationSha256(doc) {
 }
 
 export function narrativeReviewMatches(check, doc) {
-  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256
+  return Boolean(check?.panel_rules_sha256 === panelRulesSha256(doc)
     && scriptCheckMatches(check, doc)
     && check.panel_narration_sha256 === panelNarrationSha256(doc));
 }
@@ -451,7 +457,7 @@ export function mergePanelVerdicts(verdicts) {
 export function narrativeRecord(doc, verdict, round) {
   return {
     ...scriptCheckBinding(doc),
-    panel_rules_sha256: PANEL_RULES_SHA256,
+    panel_rules_sha256: panelRulesSha256(doc),
     panel_narration_sha256: panelNarrationSha256(doc),
     round,
     passed: verdict.passed,
