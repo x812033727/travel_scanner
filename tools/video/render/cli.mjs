@@ -32,7 +32,7 @@ import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { pinWatermark, selectWatermarkForRender, watermarkRecord } from "../core/watermark.mjs";
 import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
-import { openRenderer, RendererError } from "./browser.mjs";
+import { maxTransitionFrames, openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
 import { TARGET_LOCALES } from "../core/schema.mjs";
@@ -373,7 +373,7 @@ export async function run(command, args, ctx) {
           reused += 1;
           continue;
         }
-        const shot = await renderer.capture(state.key, state.html, { transition: true });
+        const shot = await renderer.capture(state.key, state.html, { transition: true, maxFrames: maxTransitionFrames(scene.template) });
         for (const problem of shot.problems) layout.push({ path: `${scene.id} state ${scene.states.indexOf(state)}`, message: problem });
         writeFileSync(path.join(workdir, stillFile(state.key)), shot.still);
         shot.frames.forEach((frame, index) => writeFileSync(path.join(workdir, transitionFile(state.key, index)), frame));

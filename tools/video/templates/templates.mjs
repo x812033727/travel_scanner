@@ -5,7 +5,10 @@
 // every item is there from the start. Elements that appear in a state get the `enter` class, and
 // the renderer freezes that entrance animation frame by frame (tools/video/render/browser.mjs).
 import { LOCALE_FONTS, SLIDE_FAMILY } from "../render/fonts.mjs";
-import { TERMINAL_CSS, TERMINAL_SPEC, terminalBody } from "./terminal/terminal.mjs";
+import { ICON_CSS, ICON_NAMES, icon, isIconName } from "./icons.mjs";
+import { stateReveals, TERMINAL_CSS, TERMINAL_SPEC, terminalBody } from "./terminal/terminal.mjs";
+
+export { stateReveals } from "./terminal/terminal.mjs";
 
 export const ORIGIN = "https://video.local";
 export const SIZE = { width: 1920, height: 1080 };
@@ -78,6 +81,11 @@ const sourceProblem = (data) =>
   data.source !== undefined && !(isText(data.source) && !data.source.includes("\n") && visibleLength(data.source) <= SOURCE_MAX_CHARS) &&
   `source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`;
 const sourceLine = (data) => (data.source ? `<div class="caption-line">${richText(data.source)}</div>` : "");
+// A card's icon (icons.mjs): one of the names, or nothing.
+const iconProblem = (value, where = "icon") => value !== undefined && !isIconName(value) && `${where} must be one of ${ICON_NAMES.join(", ")}`;
+// A bullets item is a string, or { text, icon } when it carries an icon in place of its number.
+const isItem = (item) => isText(item) || (isObject(item) && isText(item.text));
+const itemText = (item) => (isText(item) ? item : item.text);
 
 // Per template: which data it needs, and how many elements lines may reveal.
 export const TEMPLATE_SPECS = {
@@ -90,23 +98,42 @@ export const TEMPLATE_SPECS = {
     capacity: () => 0,
   },
   bullets: {
-    check: (data) => [data.title !== undefined && !isText(data.title) && "title must be text", !isTextList(data.items, 1, 6) && "items must be 1 to 6 strings", sourceProblem(data)],
+    check: (data) => {
+      const items = Array.isArray(data.items) && data.items.length >= 1 && data.items.length <= 6 && data.items.every(isItem);
+      return [
+        data.title !== undefined && !isText(data.title) && "title must be text",
+        !items && "items must be 1 to 6 strings (or { text, icon } to draw an icon in place of the number)",
+        items && data.items.map((item) => (isObject(item) ? iconProblem(item.icon, "an item's icon") : false)).find(Boolean),
+        sourceProblem(data),
+      ];
+    },
     capacity: (data) => data.items.length,
   },
   compare: {
     check: (data) => {
       const side = (value) => value && isText(value.heading) && isTextList(value.points, 1, 5);
-      return [data.title !== undefined && !isText(data.title) && "title must be text", !side(data.left) && "left needs heading and 1 to 5 points", !side(data.right) && "right needs heading and 1 to 5 points", data.verdict !== undefined && !isText(data.verdict) && "verdict must be text", sourceProblem(data)];
+      return [
+        data.title !== undefined && !isText(data.title) && "title must be text",
+        !side(data.left) && "left needs heading and 1 to 5 points",
+        !side(data.right) && "right needs heading and 1 to 5 points",
+        side(data.left) && iconProblem(data.left.icon, "left.icon"),
+        side(data.right) && iconProblem(data.right.icon, "right.icon"),
+        data.verdict !== undefined && !isText(data.verdict) && "verdict must be text",
+        sourceProblem(data),
+      ];
     },
     capacity: () => 2,
   },
   steps: {
-    check: (data) => [
-      data.title !== undefined && !isText(data.title) && "title must be text",
-      !(Array.isArray(data.steps) && data.steps.length >= 2 && data.steps.length <= 5 && data.steps.every((step) => step && isText(step.title) && (step.detail === undefined || isText(step.detail)))) &&
-        "steps must be 2 to 5 of { title, detail? }",
-      sourceProblem(data),
-    ],
+    check: (data) => {
+      const steps = Array.isArray(data.steps) && data.steps.length >= 2 && data.steps.length <= 5 && data.steps.every((step) => step && isText(step.title) && (step.detail === undefined || isText(step.detail)));
+      return [
+        data.title !== undefined && !isText(data.title) && "title must be text",
+        !steps && "steps must be 2 to 5 of { title, detail?, icon? }",
+        steps && data.steps.map((step) => iconProblem(step.icon, "a step's icon")).find(Boolean),
+        sourceProblem(data),
+      ];
+    },
     capacity: (data) => data.steps.length,
   },
   table: {
@@ -137,7 +164,14 @@ export const TEMPLATE_SPECS = {
     capacity: () => 0,
   },
   big: {
-    check: (data) => [!isText(data.text) && "text is required", data.kicker !== undefined && !isText(data.kicker) && "kicker must be text", data.sub !== undefined && !isText(data.sub) && "sub must be text"],
+    check: (data) => [
+      !isText(data.text) && "text is required",
+      data.kicker !== undefined && !isText(data.kicker) && "kicker must be text",
+      data.sub !== undefined && !isText(data.sub) && "sub must be text",
+      // The reference channel's 「01 煮菜」 card: a one- or two-digit number in red beside the word.
+      data.numeral !== undefined && !/^\d{1,2}$/.test(String(data.numeral)) && "numeral must be one or two digits",
+      iconProblem(data.icon),
+    ],
     capacity: () => 0,
   },
   diagram: {
@@ -242,12 +276,50 @@ export function svgProblems(markup) {
   return problems;
 }
 
+/**
+ * The key band (docs/videos/PAPER.md §關鍵句): one short line under the card that says what the
+ * narration is saying right now, as the reference channel's slides do. `data.keys` gives one a
+ * state (the scene's opening state and one per reveal after the first line, stateCount) and
+ * `data.key` the one line of a single-state scene; each is at most KEY_MAX_CHARS visible
+ * characters, so it reads at a glance on a phone. A scene without either draws no band.
+ */
+export const KEY_MAX_CHARS = 24;
+
+/** How many slide states a scene renders: one, plus one per reveal after its first line (timeline.mjs). */
+export const stateCount = (scene) => stateReveals(scene.lines).length;
+
+/** The key band's line for a state, or undefined. */
+export function sceneKey(scene, stateIndex) {
+  const data = scene.data ?? {};
+  if (Array.isArray(data.keys)) return data.keys[stateIndex];
+  return stateIndex === 0 && isText(data.key) ? data.key : undefined;
+}
+
+/** Everything wrong with a scene's key band lines; applies to every template, screencast included. */
+export function keyProblems(scene) {
+  const data = scene.data ?? {};
+  if (data.key === undefined && data.keys === undefined) return [];
+  const count = stateCount(scene);
+  const bad = (text) => !(isText(text) && !text.includes("\n") && visibleLength(text) <= KEY_MAX_CHARS);
+  if (data.key !== undefined && data.keys !== undefined) return ["key and keys cannot both be set: keys lists one line a state, key is the one line of a single-state scene"];
+  if (data.key !== undefined) {
+    return [
+      bad(data.key) && `key must be one line of at most ${KEY_MAX_CHARS} characters`,
+      count !== 1 && `key is for a scene with one state; this one has ${count} (one plus one per reveal after the first line), so write keys with ${count} lines`,
+    ].filter(Boolean);
+  }
+  if (!Array.isArray(data.keys) || !data.keys.length || data.keys.some(bad)) return [`keys must list one line a state, each at most ${KEY_MAX_CHARS} characters`];
+  if (data.keys.length !== count) return [`keys has ${data.keys.length} lines but the scene has ${count} states (one plus one per reveal after the first line)`];
+  return [];
+}
+
 /** Everything wrong with a scene's data for its template, reveals included. */
 export function sceneProblems(scene) {
   const spec = TEMPLATE_SPECS[scene.template];
   if (!spec) return [`unknown template ${scene.template}`];
   const problems = spec.check(scene.data ?? {}).filter(Boolean);
   if (scene.data?.cc_safe !== undefined && typeof scene.data.cc_safe !== "boolean") problems.push("cc_safe must be a boolean");
+  problems.push(...keyProblems(scene));
   if (problems.length) return problems;
   const reveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
   const capacity = spec.capacity(scene.data);
@@ -304,14 +376,71 @@ const PHOTO_CREDIT_CSS = ".t-photo .print .credit{max-width:1400px}";
 // frame its content ends at y=868, above the lower 15% (which starts at y=918).
 const CC_SAFE_CSS = ":root{--safe-bottom:212px}";
 
+// The big card's numeral layout: the number in the accent colour at 420px, the word beside it.
+const NUMERAL_CSS =
+  ".t-big .numeral-row{display:flex;align-items:center;justify-content:center;gap:48px;max-width:1700px}" +
+  ".t-big .numeral{font-size:420px;font-weight:900;line-height:.9;color:var(--orange);letter-spacing:-.04em;font-variant-numeric:tabular-nums}" +
+  ".t-big .numeral-row .word{font-size:150px;line-height:1.1;text-align:left;max-height:360px}";
+
+// The key band: a white strip with a red edge across the bottom of the card, y 826 to 910, above
+// YouTube's lower 15% (y 918). The content box ends 20px above it (--safe-bottom), so a card
+// with a band has 636px of room instead of 778: a full table or five steps may no longer fit,
+// and render reports it like any other layout problem (the writer shortens the card).
+export const KEY_BAND_CSS =
+  ":root{--safe-bottom:274px}" +
+  ".key-band{position:absolute;left:var(--safe-x);right:var(--safe-x);top:826px;height:84px;display:flex;align-items:center;padding:0 36px;" +
+  "border-left:10px solid var(--orange);border-radius:0 12px 12px 0;background:#fff;color:#1f2a44;box-shadow:0 10px 30px rgba(0,0,0,.18)}" +
+  ".key-band .fit{max-width:100%;font-size:44px;font-weight:700;line-height:1.2;white-space:nowrap}";
+
+/** The band's markup for a state that has a key line, else nothing. */
+export const keyBand = (state) => (isText(state?.key) ? `<div class="key-band enter" style="--i:0"><span class="fit">${richText(state.key)}</span></div>` : "");
+
+/**
+ * The paper theme (docs/videos/PAPER.md): the reference channel's flat slide, cream ground, ink
+ * text, one red accent. A video opts in with `theme: "paper"` at its top level; render carries
+ * this in each slide's page, after the template's own CSS, so a video without it is byte for
+ * byte what it was. The variables turn the dark theme around; the rules after them are the few
+ * places theme.css assumes a dark ground (tints of the paper colour, dark shadows, the chat's
+ * answer bubble). Code and terminal windows stay ink-dark: a terminal reads as one that way.
+ */
+export const THEMES = ["paper"];
+export const PAPER_CSS =
+  ":root{--ground:#f6efe3;--ground-2:#fbf6ec;--panel:#fffaf1;--panel-edge:rgba(31,42,68,.16);--paper:#1f2a44;--muted:#55607a;--faint:#8a90a3;" +
+  "--teal:#1f6f6b;--teal-deep:#1f6f6b;--orange:#d8452f;--red:#c0392b;--code-ground:#1f2a44}" +
+  "body{background:var(--ground)}" +
+  "body::before{background-image:radial-gradient(rgba(31,42,68,.09) 1.5px,transparent 1.6px)}" +
+  ".chrome-progress span{background:rgba(31,42,68,.14)}.chrome-progress .done{background:rgba(31,111,107,.5)}" +
+  ".card,.t-steps .step,.t-stats .stat,.t-cta .cta-card{box-shadow:0 12px 32px rgba(31,42,68,.08)}" +
+  ".t-table tr.hot td{background:rgba(216,69,47,.1)}" +
+  ".t-code .panel{color:#f6efe3;border-color:transparent}.t-code .ln::before{color:#8a90a3}.t-code .ln.hot{background:rgba(79,193,181,.2);box-shadow:inset 6px 0 0 #4fc1b5}" +
+  ".t-terminal .term{border-color:transparent}.t-terminal .bar{border-color:rgba(246,239,227,.14)}.t-terminal .bar i{background:rgba(246,239,227,.22)}" +
+  ".t-terminal .ps{color:#4fc1b5}.t-terminal .cmd{color:#f6efe3}.t-terminal .caret{background:#f0a04b}" +
+  ".t-chat .right .bubble{color:#f6efe3}" +
+  ".t-diagram .paper,.t-screenshot .shot,.t-screencast .sc-screen{box-shadow:0 20px 50px rgba(31,42,68,.18)}" +
+  ".t-photo .print{box-shadow:0 2px 6px rgba(31,42,68,.18),0 26px 60px rgba(31,42,68,.22)}" +
+  ".t-cta .cta-card{box-shadow:0 0 0 12px rgba(216,69,47,.1),0 20px 50px rgba(31,42,68,.14)}";
+const THEME_CSS = { paper: PAPER_CSS };
+/** The page CSS of a video's theme: nothing for the dark theme every video had before. */
+export const themeCss = (theme) => THEME_CSS[theme] ?? "";
+
+// Whether a card draws an icon (icons.mjs), so ICON_CSS rides along only then.
+const usesIcons = (template, data) => {
+  if (template === "big") return isIconName(data.icon);
+  if (template === "bullets") return (Array.isArray(data.items) ? data.items : []).some((item) => isObject(item) && isIconName(item.icon));
+  if (template === "steps") return (Array.isArray(data.steps) ? data.steps : []).some((step) => isIconName(step?.icon));
+  if (template === "compare") return isIconName(data.left?.icon) || isIconName(data.right?.icon);
+  return false;
+};
+
 // CSS a template carries in its own page instead of the theme, so that adding the template moved
 // no other video's frame keys. A function takes the scene's data: a screenshot slide carries the
 // credit CSS only when it draws a credit, so every other screenshot page is byte for byte what it was.
 const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : ""), photo: (data) => PHOTO_CSS + (data.credit ? creditCss("photo") + PHOTO_CREDIT_CSS : "") };
 const templateCss = (scene) => {
   const own = TEMPLATE_CSS[scene.template];
-  const css = typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
-  return css + (scene.data?.cc_safe === true ? CC_SAFE_CSS : "");
+  const data = scene.data ?? {};
+  const css = typeof own === "function" ? own(data) : own ?? "";
+  return css + (usesIcons(scene.template, data) ? ICON_CSS : "") + (scene.template === "big" && data.numeral !== undefined ? NUMERAL_CSS : "") + (data.cc_safe === true ? CC_SAFE_CSS : "");
 };
 
 const RENDERERS = {
@@ -334,19 +463,22 @@ const RENDERERS = {
   },
   bullets(data, state) {
     const show = state.visible(data.items.length);
-    const items = data.items.map((item, index) => `<li${attrs(show(index))}><span class="n">${index + 1}</span><span class="fit">${richText(item)}</span></li>`);
+    // An item with an icon shows it where its number would be.
+    const mark = (item, index) => (isObject(item) && isIconName(item.icon) ? `<span class="n ic">${icon(item.icon)}</span>` : `<span class="n">${index + 1}</span>`);
+    const items = data.items.map((item, index) => `<li${attrs(show(index))}>${mark(item, index)}<span class="fit">${richText(itemText(item))}</span></li>`);
     return `${heading(data, state.first)}<ol>${items.join("")}</ol>${data.note ? `<div class="note">${richText(data.note)}</div>` : ""}${sourceLine(data)}`;
   },
   compare(data, state) {
     const show = state.visible(2);
     const card = (side, index, name) =>
-      `<div${attrs(show(index), `card ${name}`)}><h3>${richText(side.heading)}</h3><ul>${side.points.map((point) => `<li>${richText(point)}</li>`).join("")}</ul></div>`;
+      `<div${attrs(show(index), `card ${name}`)}><h3>${isIconName(side.icon) ? icon(side.icon) : ""}${richText(side.heading)}</h3><ul>${side.points.map((point) => `<li>${richText(point)}</li>`).join("")}</ul></div>`;
     return `${heading(data, state.first)}<div class="cards">${card(data.left, 0, "left")}${card(data.right, 1, "right")}</div>${data.verdict ? `<div class="verdict">${richText(data.verdict)}</div>` : ""}${sourceLine(data)}`;
   },
   steps(data, state) {
     const show = state.visible(data.steps.length);
     const parts = data.steps.map((step, index) => {
-      const card = `<div${attrs(show(index), "step")}><div class="num">STEP ${index + 1}</div><h3>${richText(step.title)}</h3>${step.detail ? `<p>${richText(step.detail)}</p>` : ""}</div>`;
+      const art = isIconName(step.icon) ? `<div class="ic">${icon(step.icon)}</div>` : "";
+      const card = `<div${attrs(show(index), "step")}><div class="num">STEP ${index + 1}</div>${art}<h3>${richText(step.title)}</h3>${step.detail ? `<p>${richText(step.detail)}</p>` : ""}</div>`;
       const arrow = index ? `<div${attrs(show(index), "arrow")}>→</div>` : "";
       return arrow + card;
     });
@@ -365,9 +497,12 @@ const RENDERERS = {
     return `${heading(data, state.first)}<div ${enterClass(state.first, "panel", 1)}>${label}<pre>${lines.join("")}</pre></div>${data.caption ? `<div class="caption">${richText(data.caption)}</div>` : ""}`;
   },
   big(data, state) {
+    const word = `<div ${enterClass(state.first, "word fit", 1)}>${richText(data.text)}</div>`;
     return [
       data.kicker ? `<div ${enterClass(state.first, "kicker", 0)}>${richText(data.kicker)}</div>` : "",
-      `<div ${enterClass(state.first, "word fit", 1)}>${richText(data.text)}</div>`,
+      isIconName(data.icon) ? `<div ${enterClass(state.first, "ic", 0)}>${icon(data.icon)}</div>` : "",
+      // 「01 煮菜」: the numeral beside the word, both entering together.
+      data.numeral !== undefined ? `<div ${enterClass(state.first, "numeral-row", 1)}><div class="numeral">${escapeHtml(pad(data.numeral))}</div>${word}</div>` : word,
       data.sub ? `<div ${enterClass(state.first, "sub fit", 2)}>${richText(data.sub)}</div>` : "",
     ].join("");
   },
@@ -487,7 +622,8 @@ function cornerMark(mark) {
 
 /**
  * One slide state as a complete HTML page.
- * state: { reveal, previousReveal, first, totalReveals, chapter (label to show), chapterNumber, chapterCount }
+ * state: { reveal, previousReveal, first, totalReveals, chapter (label to show), chapterNumber, chapterCount,
+ * key (the key band's line for this state, keyBand), theme (the video's theme, themeCss) }
  */
 export function slideHtml(scene, state) {
   const renderer = RENDERERS[scene.template];
@@ -497,8 +633,11 @@ export function slideHtml(scene, state) {
     sceneId: scene.id,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
-  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, templateCss(scene));
+  return page(`${chrome(scene, state)}${keyBand(state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, pageCss(scene, state));
 }
+
+/** A slide page's own CSS: the template's, the key band's when the state has a line, the theme's last so it overrides. */
+export const pageCss = (scene, state, own = templateCss(scene)) => own + (isText(state?.key) ? KEY_BAND_CSS : "") + themeCss(state?.theme);
 
 /**
  * A series' own thumbnail (docs/videos/so-thats-why/thumbnails.md): its palette, its name in place
