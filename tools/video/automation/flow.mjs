@@ -27,7 +27,7 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
+import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -3374,7 +3374,7 @@ export class Automation {
     const verdicts = [];
     for (let reader = 1; reader <= readers; reader++) {
       const answer = await this.stage("verifier", state.slug, readers > 1 ? { ...payload, reader } : payload, 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
-      verdicts.push(panelVerdict(answer));
+      verdicts.push(panelVerdict(answer, panelQuestions(video)));
     }
     const verdict = mergePanelVerdicts(verdicts);
     mkdirSync(path.dirname(file), { recursive: true });
