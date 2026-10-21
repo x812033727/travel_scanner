@@ -1,6 +1,6 @@
 # X19 Uber｜兩支獨立 Shorts 逐句稿
 
-主片 SHA-256：5feac02ca62feb4625959c1bd8a48266d185e84ac3776783fdc3b3eddb628988；Shorts SHA-256：bc2c17924498699adc6f8267ae820589ec7321c2e0f2e63e9931e10357f44c64。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒書擋。
+主片 SHA-256：c6c442fdf02e65a86be1eaf7115a91a8962a1231a394956e9fca61187110768b；Shorts SHA-256：b6b0212372d776c96572450baa8e9c4350499c72923d088ad0bd6833e8681d95。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒書擋。
 
 ## Short 1｜Uber 外送交易額超車，為何不等於賺錢？
 
@@ -24,6 +24,6 @@
 - x19s205 十二月一日，Postmates 收購才真正完成。（x19-b05-s01）
 - x19s206 兩個消費者 App 當時還分開運作。（x19-b05-s03）
 - x19s207 背後的商家與配送網，這時才開始整合。（x19-b05-s04）
-- x19s208 時間不能倒放：六月反超，不能算成十二月交割成果。（x19-b04-s21）
+- x19s208 時間不能倒放：六月反超，不能算成十二月交割成果。（x19-b04-s20）
 
 原始資料：[Uber S2 SEC 原件](https://www.sec.gov/Archives/edgar/data/1543151/000154315120000027/uberq220earningspressr.htm)、[Uber S3a SEC 原件](https://www.sec.gov/Archives/edgar/data/1543151/000155278120000412/e20423_uber-8k.htm)、[Uber S4 SEC 原件](https://www.sec.gov/Archives/edgar/data/1543151/000162828020015770/uberq320earningspressr.htm)、[Uber S5 SEC 原件](https://www.sec.gov/Archives/edgar/data/1543151/000155278120000580/e20585_ex99-1.htm)、[Uber S5a SEC 原件](https://www.sec.gov/Archives/edgar/data/1543151/000155278120000580/e20585_uber-8k.htm)

@@ -30,4 +30,4 @@ Uber 在 2020 年六月季報裡，外送平台交易額為何超過原本遙遙
 
 S1–S8 及兩份同期 8-K 日期附件均為 Uber 自己向 SEC 提交的工人可讀 HTML 原件，作者索引見 [source-matrix.md](source-matrix.md)。2019／2020／2021／2022 各季的 Gross Bookings 是平台完成交易的美元金額；Revenue 是優步確認營收；部門 Adjusted EBITDA 是公司自訂非 GAAP 尺度；GAAP 淨利又含股權投資重估。不得把「較多訂單額」寫成「外送讓公司賺錢」，也不能拿 2021 年有未實現投資收益的公司淨利證明外送部門盈利。公司 Q2 2020 把 Rides／Eats 改叫 Mobility／Delivery，對比仍按公司同一表格的兩欄。
 
-本包是離線前製：v3 [來源票](reviews/script-source-audit-v3-independent.md)因 S4 日期歸屬 HOLD，兩位獨立盲讀都判 Q8/Q13 不通過。此 v4 已改正雜貨配送的公告時點，刪去自取餐與重複排名，把餐廳網站、司機取件和客群交叉接在同一條手機主線；仍待對**新 SHA**的獨立來源與雙盲檢查，也沒有真實 TTS、插畫、官方書擋媒體、成片或上傳網址。成本與正式製作停點見 [production-quote.md](production-quote.md) 和 [publishing-handoff.md](publishing-handoff.md)。
+本包是離線前製：v4 [獨立來源票](reviews/script-source-audit-v4-independent.md)對舊 SHA 判事實 PASS，但兩位[盲讀 A](reviews/blind-a-v4-independent.md)、[盲讀 B](reviews/blind-b-v4-independent.md)均判重複段落 Q8 與旁支 Q13 不通過。v5 刪掉被點名的服務清單、共用客群段與重複排名，讓餐廳進站、虧損市場退出和真正交割後的配送成本問題沿著手機主線推進；仍待對**v5 新 SHA**的獨立來源與全新雙盲檢查，也沒有真實 TTS、插畫、官方書擋媒體、成片或上傳網址。成本與正式製作停點見 [production-quote.md](production-quote.md) 和 [publishing-handoff.md](publishing-handoff.md)。

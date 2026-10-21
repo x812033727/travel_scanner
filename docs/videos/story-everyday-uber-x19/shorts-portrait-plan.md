@@ -1,6 +1,6 @@
 # X19 Uber｜兩支 Shorts 的逐拍 9:16 規劃
 
-離線前製，綁定主片 5feac02ca62feb4625959c1bd8a48266d185e84ac3776783fdc3b3eddb628988 與 Shorts bc2c17924498699adc6f8267ae820589ec7321c2e0f2e63e9931e10357f44c64。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
+離線前製，綁定主片 c6c442fdf02e65a86be1eaf7115a91a8962a1231a394956e9fca61187110768b 與 Shorts b6b0212372d776c96572450baa8e9c4350499c72923d088ad0bd6833e8681d95。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
 
 每拍從不同的主片 1920×1080 插畫 shot 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。品牌名、日期與金額都由 Shorts 原生 big／note／headline 排版，不請 image-01 畫字，也不重用橫式 stats 當作影格。
 
@@ -23,6 +23,6 @@
 | 2／5 | x19-b05-s01 | x=670, y=0 | blank signed contract becomes joined route map | 十二月才完成；big 12/1；note 2020 年完成 Postmates 收購 |
 | 2／6 | x19-b05-s03 | x=656, y=0 | two blank phones sit side by side | 兩個入口還在 |
 | 2／7 | x19-b05-s04 | x=685, y=0 | phones connect to shared unmarked delivery network | 網路才開始接 |
-| 2／8 | x19-b04-s21 | x=640, y=0 | sealed contract beside two separate blank phones | 時間不能倒放 |
+| 2／8 | x19-b04-s20 | x=640, y=0 | sealed contract beside two separate blank phones | 時間不能倒放 |
 
 焦點與 shot prompt 在編譯時逐字核對，正式裁切在真實插畫生成後才驗。
