@@ -1,6 +1,6 @@
 # X16｜星巴克關店名單七成很新：最後關了幾家？
 
-**狀態：離線前製 v11 作者候選，等待同版獨立 SEC 複核與兩名新讀者盲評。** [v10 來源查核](reviews/script-source-audit-v10-independent.md)只對 v10 事實給 PASS；[盲評 A](reviews/blind-a-v10-independent.md)與[盲評 B](reviews/blind-b-v10-independent.md)同時否決 v10 的 Q7／Q8／Q13，故舊版敘事 HOLD，不能沿用審查票。本片是二十支新品牌故事系列 `brand-stories-everyday-reversals-extra` 的第 16 支，與 `原來如此` B07 的 Tall 杯型命名題不同。尚無付費媒體、成片、Shorts MP4、YouTube 連結或發布收據。
+**狀態：離線前製 v11 事實與敘事 HOLD。** [本版獨立 SEC 查核](reviews/script-source-audit-v11-independent.md)指出 `x160213b–c` 把美國**淨新增**門市目標寫得像毛開店目標；兩名新[盲評 A](reviews/blind-a-v11-independent.md)／[盲評 B](reviews/blind-b-v11-independent.md)都對必答 Q7／Q8／Q13 判 No，指出全美淨數提問未回收、關店句重述及同店銷售支線。須修正口徑和主線、凍結新 SHA，再做來源與雙盲查核。這是二十支新品牌故事系列 `brand-stories-everyday-reversals-extra` 第 16 支，與 `原來如此` B07 的 Tall 杯型命名題不同；尚無付費媒體、成片、Shorts MP4、YouTube 連結或發布收據。
 
 2008-07-01 星巴克**計畫**關約 600 家表現不佳的美國直營店，其中約七成入選店自 FY2006 起才開。店齡是入選群組的統計特徵；公告**未列**店齡為選店標準，不能斷言內部全然不看。故事跟著無地址的示意店卡：一月董事會決定放慢展店，一月底先規劃關約 100 家；七月公告列出單店獲利、預期回報與場址等因素；FY2008 原群組實關 205，全美直營卻淨增 445。其後同一七月群組的季末累計到 384、503、563。2009-01 另提的約 200 家美國店因消費環境轉弱與持續盤點而來，明確**在七月群組之外**。最後三句首句才揭曉七月群組跨兩財年實關 **588**。第六章改追租約如何讓費用與關門落在不同時間；FY2010 同店對照留在獨立 Short 2。
 
