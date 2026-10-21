@@ -1,13 +1,13 @@
 ---
 id: 2026-10-20-curio-s-axis-ninth-batch-s07
 title: "Curio S axis ninth batch: S07 Changban bridge, S15 Date Masamune in white, S19 Eiffel Tower in 1909"
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-history-stories
 claimed_at: 2026-10-20T20:54:34Z
 created_at: 2026-10-20T21:00:00Z
-completed_at:
+completed_at: 2026-10-21T02:19:37Z
 branch:
 depends_on: []
 scope:
@@ -33,13 +33,13 @@ scope:
 
 - [x] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
 - [x] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
-- [ ] 旁白、配樂、插圖做完並 `review-push` 給站主。
+- [x] 旁白、配樂、插圖做完並 `review-push` 給站主。
 
 ## Steps
 
 - [x] 查核先做（研究代理＋獨立覆核代理），再寫稿。
 - [x] 盲評照前幾批的教訓：結論只講一次，第二次提到一律點名回呼並補新事實。
-- [ ] 本月 music 預算已用完：配樂等站主調高預算或下個月再補（同第七、八批）。
+- [x] 本月 music 預算已用完：配樂等站主調高預算或下個月再補（同第七、八批）。
 
 ## 進度（2026-10-21）
 
@@ -48,3 +48,8 @@ scope:
 - 卡住：插圖。`keyframes --slug curio-s07` 回「本月的 judge 次數預算（20000 次）用完了」。配樂也一樣沒額度（本月 music 60 tracks 用完）。
   站主在 `/admin/videos` 設定分頁調高 judge 與 music 預算後，對三集各跑
   `node tools/video/cli.mjs keyframes --slug curio-<id> --takes 3`、`music --slug curio-<id>`，再 `review-push --gate audio` 與 `--gate storyboard`。
+
+## 收尾（2026-10-21）
+
+- 站主調高 judge 與 music 預算後補齊：缺配樂的集數已跑 `music` 並重送 `review-push --gate audio`；第九批三集的插圖畫完（S07 77 張、S15 78 張、S19 68 張；S19 有三句提示詞因背景太寫實、時鐘有數字而改寫），分鏡已送審。
+- 第九批每集花費：S07 US$1.25、S15 US$1.35、S19 US$1.34。
