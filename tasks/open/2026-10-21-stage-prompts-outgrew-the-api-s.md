@@ -1,11 +1,11 @@
 ---
 id: 2026-10-21-stage-prompts-outgrew-the-api-s
 title: Stage prompts outgrew the API's 60,000-character limit
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-story-category
+claimed_at: 2026-10-21T16:56:44Z
 created_at: 2026-10-21T16:55:11Z
 completed_at:
 branch:
