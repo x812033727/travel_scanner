@@ -1,6 +1,6 @@
 # X19 Uber｜SEC 原件與口徑邊界
 
-下表保留 2026-10-20 逐份 HTTP GET 的 Uber SEC HTML 原件快照；位元組與 SHA-256 是**當日原始回應**，不是文字轉檔或當前網頁的雜湊。2026-10-21 的 [v5 獨立查核](reviews/script-source-audit-v5-independent.md)重新 GET 十份後發現每份 raw response 多九個 bytes，僅頁尾 SEC 動態 script tag 的路徑不同；只固定替換該唯一 tag 後，新舊全文逐 byte 相同。不能把 10/20 raw SHA 冒稱 10/21 raw SHA，也不能把 v5 查核轉用成 v6 獨立 PASS。下列每份均小於 3 MiB，主片要用的事實均位於抽出文字的前約 16,000 字內；v6 定稿仍待另一位審稿者重查。
+下表保留 2026-10-20 逐份 HTTP GET 的 Uber SEC HTML 原件快照；位元組與 SHA-256 是**當日原始回應**，不是文字轉檔或當前網頁的雜湊。2026-10-21 的 [v5 獨立查核](reviews/script-source-audit-v5-independent.md)重新 GET 十份後發現每份 raw response 多九個 bytes，僅頁尾 SEC 動態 script tag 的路徑不同；只固定替換該唯一 tag 後，新舊全文逐 byte 相同。後來的 [v6 獨立查核](reviews/script-source-audit-v6-independent.md)只對 v6 凍結檔案判事實 PASS，不能轉用到 v7。也不能把 10/20 raw SHA 冒稱 10/21 raw SHA。下列每份均小於 3 MiB，主片要用的事實均位於抽出文字的前約 16,000 字內；v7 凍結稿仍待另一位審稿者重查。
 
 | 代碼 | SEC 原件 | HTTP bytes | 原始 bytes SHA-256 | 成片可支持的範圍 |
 | --- | --- | ---: | --- | --- |

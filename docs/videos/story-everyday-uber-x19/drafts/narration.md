@@ -1,4 +1,4 @@
-# X19 Uber｜逐句母稿 v6
+# X19 Uber｜逐句母稿 v7
 
 每列為 ID | SEC 來源代碼或 editorial | 台灣繁中旁白 | 無品牌示意鏡頭焦點。所有手機畫面、餐袋與車輛只是概念插畫，不指認任何真實司機或重畫 App。兩條空白派單線是同一個貫穿主物件；精確數字只在後製卡片。
 
@@ -80,7 +80,7 @@ x190417 | S4 | 同季，優步在蘋果手機上的程式陸續把外送入口�
 x190418 | editorial | 示意用戶在兩個無字入口間切換；但這還不是全部，外送袋裡也換了東西。 | anonymous hand moves between car and food bag paths
 x190419 | S4 | 到第三季財報公布時，雜貨配送已進到十多個國家，台灣也在名單裡。 | groceries and plain parcels join food bag
 x190420 | editorial | 可送的東西變多，外送部門的調整後指標何時能轉正？ | courier route passes varied unmarked packages
-x190421 | editorial | 收購仍只是紙上的約定，另一套 App 還沒有接進來。 | sealed contract beside two separate blank phones
+x190421 | editorial | 另一套 App 還沒有接進來。 | sealed contract beside two separate blank phones
 x190422 | editorial | 到了年底，這兩張網真的合上了嗎？ | two delivery maps approach each other
 
 ## b05: 十二月交割，隔年用戶才遷移

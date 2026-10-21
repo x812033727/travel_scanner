@@ -1,6 +1,6 @@
 # X19 Uber｜16:9 逐鏡路線與聲畫邊界
 
-狀態：v6 離線前製。完整 **108 個槽**在 [`video.json`](video.json) 的 `scenes`：六章共 **95 張 `shot` 靜態插畫、12 張原生 `stats` 數字卡、1 個 `outro` 槽**。正文插畫占 **95／107＝88.8%**。每個插畫槽有獨立景別、場景、動作、焦點、光線及對位旁白；逐句證據見 [`line-source-matrix.md`](line-source-matrix.md)。本表說明剪輯路線與退件點，逐鏡 prompt 以 JSON 為準。
+狀態：v7 離線前製。完整 **108 個槽**在 [`video.json`](video.json) 的 `scenes`：六章共 **95 張 `shot` 靜態插畫、12 張原生 `stats` 數字卡、1 個 `outro` 槽**。正文插畫占 **95／107＝88.8%**。每個插畫槽有獨立景別、場景、動作、焦點、光線及對位旁白；逐句證據見 [`line-source-matrix.md`](line-source-matrix.md)。本表說明剪輯路線與退件點，逐鏡 prompt 以 JSON 為準。
 
 輸出 1920×1080、16:9；插畫固定 MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`，只生成 still，**生成影片 clip 0 支**。照片感真實場景、Uber／Postmates 標誌、介面、司機肖像、餐廳商標、可讀收據及財報內文都不生成。匿名車、餐袋、普通手機、空白配送地圖與帳冊是**概念示意**，不可剪成真實當年司機或會議的重演。精確日期、品牌名和金額由剪輯軟體原生排字；12 張 `stats` 不重複當動態背景填時。平移、推拉及物件接剪提供動勢。
 
