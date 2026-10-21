@@ -19,6 +19,8 @@ const sources = [
   { code: "S10", title: "Starbucks FY2009 Q2 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409009696/v52354e10vq.htm", checked_on: "2026-10-20" },
   { code: "S11", title: "Starbucks FY2009 Q3 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309029843/v52638e10vq.htm", checked_on: "2026-10-20" },
   { code: "S12", title: "Starbucks 2009-01-28 FY2009 Q1 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409001273/v51210exv99w1.htm", checked_on: "2026-10-20" },
+  { code: "S13", title: "Starbucks 2008-01-30 FY2008 Q1 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000089102008000019/v37401exv99w1.htm", checked_on: "2026-10-20" },
+  { code: "S14", title: "Starbucks 2008-07-30 FY2008 Q3 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013408013685/v42544exv99w1.htm", checked_on: "2026-10-20" },
 ];
 const codes = new Set(sources.map(source => source.code));
 const lines = [[], [], [], [], [], []];
@@ -32,7 +34,7 @@ for (const raw of readFileSync(path.join(dir, "drafts/narration.md"), "utf8").sp
     if (current < 6) titles[current] = header[2].replace("（濃縮開場）", "");
     continue;
   }
-  if (!/^x16\d{4}[a-z]?\s*\|/.test(raw)) continue;
+  if (!/^x16\d{4}[a-z]{0,2}\s*\|/.test(raw)) continue;
   const parts = raw.split("|").map(part => part.trim());
   if (parts.length !== 4 || current < 0) throw new Error(`Malformed narration row: ${raw}`);
   const [id, refsText, text, cue] = parts;
@@ -55,8 +57,7 @@ const cardRules = [
   [/三點四八億美元/, { title: "關店預計稅前費用", stats: [{ value: "US$328m–348m", label: "2008-07 當時估計；非實支結果" }], source: "S2｜Starbucks 8-K exhibit" }],
   [/實際關了二百零五家/, { title: "七月 600 家計畫的進度", stats: [{ value: "205 家", label: "FY2008 已關；非全年淨減" }], source: "S3｜FY2008 10-K" }],
   [/反而多了四百四十五/, { title: "美國直營店年度淨變化", stats: [{ value: "+445 家", label: "FY2008；6,793 → 7,238" }], source: "S3｜FY2008 10-K" }],
-  [/同店下滑百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；非所有新店的成績" }], source: "S3｜FY2008 10-K" }],
-  [/年底淨減四百七十四家/, { title: "美國直營店年度淨變化", stats: [{ value: "−474 家", label: "FY2009；7,238 → 6,764；非七月群組實關" }], source: "S4｜FY2009 10-K" }],
+  [/美國同店跌百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；只算開滿 13 個月的直營店" }], source: "S3｜FY2008 10-K" }],
   [/累計五百六十三/, { title: "七月原群組逐季實關", stats: [{ value: "384 → 503 → 563 家", label: "FY2009 Q1 → Q2 → Q3；各季末累計" }], source: "S9–S11｜FY2009 10-Q" }],
 ];
 const cards = new Map();
@@ -66,7 +67,7 @@ for (const [pattern, card] of cardRules) {
   cards.set(matches[0].id, card);
 }
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, pan left", "Medium close-up, pan right", "Overhead shot, tilt down", "Low-angle shot, tilt up"];
-const rooms = ["at an anonymous cafe doorway", "at an anonymous cafe counter", "at a modest assessment table", "at a street corner storefront", "in a quiet records aisle", "beside a quiet neighborhood sidewalk"];
+const rooms = ["at an anonymous public notice stand", "at a modest planning desk", "at a modest assessment bench", "by a dimmed counter", "in a quiet records aisle", "beside a plain street corner"];
 const light = ["mild window light", "soft grey morning light", "muted afternoon light", "soft lamp light", "overcast daylight", "soft evening light"];
 const safeguards = [
   "Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
@@ -76,10 +77,10 @@ const safeguards = [
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
-const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160606a", "x160603", "x160605", "x160610", "x160614"]);
-const sceneSplitAfterIds = new Set(["x160603", "x160516"]);
+const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160221", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160507k", "x160601", "x160605", "x160614"]);
+const sceneSplitAfterIds = new Set(["x160414a", "x160507k", "x160602j"]);
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
-const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
+const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: row.text.endsWith("？") ? 450 : /(?:家|美元)。$/.test(row.text) ? 180 : 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
 const scenes = [];
 let shotCount = 0;
 for (const [ci, chapter] of lines.entries()) {
@@ -99,7 +100,7 @@ for (const [ci, chapter] of lines.entries()) {
       const portrait = selected.some(item => portraitSourceLines.has(item.id));
       const recurringCard = /\b(?:shop card|selection folio)\b/i.test(cue) ? " A recurring unmarked index card with one clipped corner rests by the focal prop; it bears no writing or symbol." : "";
       const angle = i % 4 === 0 ? "in front view, eyes toward viewer" : i % 4 === 1 ? "in three-quarter view" : i % 4 === 2 ? "in side-profile view" : "with head turned downward";
-      const room = ci === 2 ? ["at a modest assessment table", "beside a plain cafe doorway", "in a records aisle"][i % 3] : rooms[ci];
+      const room = ci === 2 ? ["at a modest assessment bench", "beside a plain service doorway", "in a records aisle"][i % 3] : rooms[ci];
       const prompt = `${camera[i % camera.length]} ${room}, one anonymous ${cue}, ${angle}, ${light[i % light.length]}.${recurringCard}${portrait ? portraitInstruction : ""} ${safeguards[i % safeguards.length]}`;
       scene = { id, template: "shot", data: { prompt, camera: camera[i % camera.length], visual: "still" }, lines: selected.map(lineFor) };
     }
@@ -117,6 +118,7 @@ const loops = [
   { setup: "x160108", payoff: "x160405", what: "年終直營總店數呈現什麼結果" },
   { setup: "x160109", payoff: "x160641", what: "七月名單最後的實關總數" },
   { setup: "x160205", payoff: "x160206", what: "店數和熟店銷售仍正為何要踩煞車" },
+  { setup: "x160211", payoff: "x160212", what: "已開著的低表現店是否也列入一月轉向" },
   { setup: "x160220", payoff: "x160329", what: "公司對受影響店員的安排希望" },
   { setup: "x160227", payoff: "x160301", what: "七月公告給出單店獲利的新進展" },
   { setup: "x160308", payoff: "x160310", what: "公告還評估將來能否得到可接受回報" },
@@ -124,17 +126,16 @@ const loops = [
   { setup: "x160318", payoff: "x160319", what: "為何宣布選店並非即日關門" },
   { setup: "x160324", payoff: "x160325", what: "資產減損及遣散也列入預估" },
   { setup: "x160327a", payoff: "x160328", what: "關店計畫也影響店員職位" },
-  { setup: "x160325d", payoff: "x160401", what: "列帳和實際關門進度不是同一個時點" },
+  { setup: "x160330", payoff: "x160401", what: "第四季約兩百家關門預估的實績" },
   { setup: "x160332", payoff: "x160401", what: "九月底七月名單實際關店數" },
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
-  { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
-  { setup: "x160418", payoff: "x160420", what: "新開不久的店是否進入同店比較" },
+  { setup: "x160401f", payoff: "x160401g", what: "首批關門後退租預估是否維持" },
   { setup: "x160424", payoff: "x160425", what: "隔年另提哪一批關店計畫" },
   { setup: "x160427", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
-  { setup: "x160514", payoff: "x160515", what: "美國直營店整體是否轉為淨減" },
   { setup: "x160507j", payoff: "x160641", what: "七月原群組年末精確實關數" },
-  { setup: "x160527", payoff: "x160601", what: "更多實關店的退租費用結果" },
-  { setup: "x160606a", payoff: "x160607", what: "六月之後原群組是否還有實際關閉" },
+  { setup: "x160507m", payoff: "x160507n", what: "六月以後美國餘下關店的預定收尾時間" },
+  { setup: "x160527", payoff: "x160602", what: "更多實關店的退租費用結果" },
+  { setup: "x160602g", payoff: "x160602m", what: "關店後餘下租金由誰承擔" },
   { setup: "x160619", payoff: "x160641", what: "七月群組跨財年合計實際關店數" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));

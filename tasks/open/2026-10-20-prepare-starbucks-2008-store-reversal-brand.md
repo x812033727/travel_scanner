@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-starbucks-2008-store-reversal-brand
 title: Prepare Starbucks 2008 store reversal brand-story X16
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-review
-claimed_at: 2026-10-20T23:35:32Z
+owner:
+claimed_at:
 created_at: 2026-10-20T21:23:47Z
 completed_at:
 branch: codex/brand-story-starbucks-x16
@@ -49,7 +49,8 @@ The new 20-video brand-story series needs an X16 Starbucks episode about the Jul
 - [x] Archive v8's same-hash independent SEC factual PASS and two first-blind story HOLD receipts (shared Q7/Q8/Q13); record source scope and the narrative fixes required.
 - [x] Rewrite v9 with a worker-readable January 2009 Starbucks 8-K exhibit explaining the second plan, cut its quarterly/combined arithmetic, strengthen the opening action and keep the July original cohort as the sole running count. Freeze new SHA-linked offline evidence.
 - [x] Obtain a fresh independent same-hash SEC audit and two fresh first-blind story reads for v9; the shared Q3/Q8/Q13 narrative failures require another revision.
-- [ ] Revise to v10 and obtain new same-hash SEC and two fresh first-blind narrative passes before PR. Actual spoken-body duration remains unverified until TTS.
+- [x] Revise to v10, add S13/S14 primary evidence and S4 lease mechanics, and freeze new SHA-linked offline evidence. Actual spoken-body duration remains unverified until TTS.
+- [ ] Obtain new same-hash SEC audit and two fresh first-blind narrative passes before PR.
 
 ## How to verify
 
@@ -95,3 +96,5 @@ V8 independent [SEC audit](../../docs/videos/story-everyday-starbucks-x16/review
 Frozen v9 author candidate: `video.json` SHA-256 `d8e09768665f3ad1783a9a43d62c2ede5a374f35682642cba45521dd7b32ef67`; `shorts.json` `bae123630bfaf9cb49c97998515ecd0f12720beec3bab2d2658d124fff053c37`; `source-matrix.md` `8e07e20539fb22796e24681abafd901e688f1904b14ffbc232f242482641619e`. [Author remediation](../../docs/videos/story-everyday-starbucks-x16/reviews/v9-author-remediation.md) records fixes and limits. New S12 is Starbucks's 2009-01-28 SEC 8-K exhibit 99.1, 176,639 raw bytes, SHA-256 `8a60643e78f1e0326f941a402f7a19ee97996d4d39457fefba0876f6e7008e7c`; its first 3k parsed characters explain weaker consumer conditions, continuing store review and the additional, separate ~200 U.S. stores. The spoken long film removes the second cohort's quarter counts, combined 676 and premature 383/25 finale equation. It has 154 lines, 148-character opening, 2,351-character/2,090-unit substantive body, 26 loops, 94 planned illustrations and 8 cards. Paper body with pauses at 250/300 Chinese units per minute is 9:29.7/8:04.5; actual >=8:00 still needs TTS. Two standalone Shorts are each 8 beats. Lint 0/0, episode Shorts checks `[]`, two individual Shorts schema/source checks, docs-video 236/236 and task check passed. New independent same-hash source and blind receipts are required; no paid media, TTS, MP4, upload or real YouTube URL exists.
 
 v9 independent [SEC audit](../../docs/videos/story-everyday-starbucks-x16/reviews/script-source-audit-v9-independent.md) re-fetched S1–S12 with identical bytes/SHA and passed the frozen line/card/Shorts facts, while retaining the formal worker's >40k targeted-evidence caveat for S3/S4/S5. Truly fresh [blind A](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-a-v9-independent.md) and [blind B](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-b-v9-independent.md) independently marked mandatory Q3, Q8 and Q13 **No**; advisory Q9 also No for both. Chapter six rewinds to repeat 179/119/60 already told in chapters four/five; selected-versus-closed and early announced counts are repeated without explicit callback; the international funding and five-scene comparable-sales explanation pull away from the July cohort's closure progress. Both Shorts work standalone on paper. Thus v9 narrative is **HOLD**. V10 should place the quarter-slowdown inference beside the 563 update without rereading counts, remove redundant selected/closed statements, compress adjacent comparable-sales material and international aside, name chapter six after its actual lease/closure turn, keep >=8:00 substantive paper buffer and re-freeze for independent source and two new blind ballots. No TTS, official bookend files, paid media, MP4, true links or PR exists for X16.
+
+2026-10-21 v10 author candidate: `video.json` SHA-256 `f2410a03ab11ad66aeab2143cdf5997bf4c7dcc26edaf4ba276971a0513088e3`; `shorts.json` `001ced8780c9058069bac84fe8f126599cf09cee77415998c8be31e46bac98d5`; `source-matrix.md` `b328facc48dfbe4d7f0f29b00cf945db14e0d79795066fe4a4470d27d081aeb8`. [Author remediation](../../docs/videos/story-everyday-starbucks-x16/reviews/v10-author-remediation.md) records the v9 narrative repair and new S13/S14 evidence. Main script has 155 lines, 148-character opener, 2,377-character/2,110-unit substantive body, 26 loops, 95 planned illustrations and 7 exact cards. Static paper body at 250/300 units per minute including pauses is 9:46.5/8:20.8; real TTS ≥8:00 remains unverified. Both standalone Shorts have 8 beats. Lint 0/0, episode Shorts `[]`, each Shorts schema/source hash validated, docs-video 236/236 pass; task check and `git diff --check` recorded at author release. This is **not** an independent source or double-blind PASS, paid media, official bookend, MP4, true URL or PR.

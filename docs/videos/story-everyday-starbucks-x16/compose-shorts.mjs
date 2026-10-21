@@ -39,7 +39,7 @@ const lineToScene = new Map(video.scenes.flatMap(scene => scene.lines.map(line =
 // Each source is an actual illustrated scene, never a landscape stats card.
 const anchors = [
   ["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311"],
-  ["x160420", "x160205", "x160317b", "x160418", "x160401a", "x160207", "x160221", "x160312a"],
+  ["x160420", "x160205", "x160317b", "x160414a", "x160401a", "x160207", "x160221", "x160312a"],
 ];
 const crops = [
   [656, 630, 680, 700, 610, 656, 690, 640],
