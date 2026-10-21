@@ -26,7 +26,7 @@
 c1｜開場的練習資料夾：一場虛構講座的報名表、三份「最終版」大綱、確認信草稿；人名、Email（example.com）、地點都是虛構｜`<work>/_tools/make-seed.mjs`；runlog M1（13 個檔的雜湊）；`demo/seed/`｜2026-10-21｜open
 c2｜它會打開資料夾、讀報名表和活動說明、幫檔案改名並搬進封存、寫出名單和確認信草稿｜runlog R4 p1（Bash 列資料夾並讀兩個檔、寫三個檔）、R10 a1（改名、搬進 封存/）、R14 pr2（`輸出/確認信草稿.md`）｜2026-10-21｜verbs
 c3｜「我請它替這個資料夾寫規矩，它只列了檔名，一個檔都沒打開」；它寫的第 3 條原文「簡報大綱有多個「最終版」時，以檔案修改時間最新的為準」｜runlog R5 g1：唯一的工具呼叫是 `Bash ls -la`，接著 Write CLAUDE.md；`demo/g1/CLAUDE.md` 第 5 行｜2026-10-21｜g1-rule
-c4｜這個資料夾裡修改時間最新的那一份（這次絕對最終版），內容是舊的｜runlog M3：`ls -lt` 最上面是 `講座簡報大綱_這次絕對最終版.md`（2026-10-20 08:45 台北），grep 顯示它寫 14:00–16:00、講者待確認｜2026-10-21｜g1-old
+c4｜這個資料夾裡修改時間最新的那一份（這次絕對最終版），內容是舊的｜runlog M3：`ls -lt` 最上面是 `講座簡報大綱_這次絕對最終版.md`（2026-10-20 08:45 台北），grep 顯示它寫 14:00–16:00、講者待確認｜2026-10-21｜g1-old（修訂 1：開場改成問句，不再講結果；結果在權限那一章的 m3-table 揭曉一次）
 c5｜報名表 24 列；缺 Email 3 列；兩個不同的王志明；陳怡君填兩次；張書豪報名後取消；一筆「測試」（查核 2：旁白 f86u 原寫「每一份報名表裡，都有一筆叫「測試」」，此時片中只介紹了一份，第二批那筆叫「測試二」，改成「裡面混了一筆叫「測試」的資料」）｜`demo/seed/講座籌備/報名表.csv`（缺 Email：林佳蓉第一筆、劉思妤、曾詩涵）｜2026-10-21｜signup-form
 c6｜只貼上文字（同一模型、不給工具、不是網頁版）也排出 16 個能寄的人；交出的是文字、0 個檔，最後提議「需要的話，我可以把第一部分存成 CSV」；沒提 11/01；卡片引用的句子「24 筆填表紀錄合併成 21 個人，其中 16 人可以直接寄信。」｜runlog R2 c2；`demo/c2/reply.md`；runner：grep "11/01" 沒有｜2026-10-21｜c2-list、paste-vs-folder
 c7｜打開資料夾的那一次，三個檔寫進 輸出/、原始報名表雜湊不變、日誌寫到 11/01 前要給場地的人數｜runlog R4 p1：created 三個 輸出/ 檔，C1 PASS（835aff4efdfd433b），`demo/p1/輸出/處理日誌.md`「要跟場地說的數字（11/01 前）」｜2026-10-21｜paste-vs-folder
@@ -46,9 +46,9 @@ c20｜規劃模式那一次，資料夾九個檔一個都沒變，交出計畫�
 c21｜手動模式那一次，6 個動作要人同意、全被擋下（不開畫面的 session 直接拒絕；查核 1 把旁白的「停在等人同意」改成「全被擋下」，那是桌面版才會有的畫面），一個檔都沒動｜runlog R9 m1：`permission_denials=6`，folder after 不變，init `permissionMode=default`｜2026-10-21｜perm-runs
 c22｜自動接受編輯那一次，兩份搬進 封存/（檔名前加修改日期），一份改名，改名的是真的最終版｜runlog R10 a1：VERDICT RIGHT；`demo/a1/files-after.txt`｜2026-10-21｜perm-runs
 c23｜計畫裡的第一個提醒「要注意：最新修改時間的那份，內容其實是舊的。」（查核 2：回覆第一段是「我還沒動任何檔案，計畫已寫好…」，提醒在第二段，所以旁白與 kicker 的「開頭」改成「第一個提醒」），對照活動說明選了真的最終版｜runlog R8 pl1 reply（原文）；`demo/pl1/reply.md`｜2026-10-21｜perm-plan
-c24｜這份計畫存在使用者資料夾的 .claude/plans/ 裡，講座籌備的九個檔前後雜湊都一樣｜runlog R8：`tool_use Write <home>\.claude\plans\2026-11-14-md-indexed-pinwheel.md`；`demo/pl1/plan-file.md`｜2026-10-21｜plan-file
+c24｜這份計畫存在使用者資料夾的 .claude/plans/ 裡，講座籌備的九個檔前後雜湊都一樣｜runlog R8：`tool_use Write <home>\.claude\plans\2026-11-14-md-indexed-pinwheel.md`；`demo/pl1/plan-file.md`｜2026-10-21｜plan-file（修訂 1：plan-file 場景刪掉，這條不再出現在旁白或卡片）
 c25｜自動接受編輯也會擋指令：p1 被擋 4 個、s1、a1、a2 各 3 個（跑程式、PowerShell、多段 Bash）；整理名單的兩次（p1、s1）最後改用寫檔工具（Write）做完｜runlog R4、R6、R10、R10b 的 `permission_denials`；a1、a2 的 Bash `mkdir && mv` 有通過（不是用 Write 搬的，旁白只說名單那兩次）｜2026-10-21｜perm-accept
-c26｜自動接受編輯不問就做的不只改檔：mkdir、touch、rm、rmdir、mv、cp、sed（刪檔也算）｜https://code.claude.com/docs/en/permission-modes（「auto-approves common filesystem Bash commands: mkdir, touch, rm, rmdir, mv, cp, and sed」）｜2026-10-21｜accept-scope、risk
+c26｜自動接受編輯不問就做的不只改檔：mkdir、touch、rm、rmdir、mv、cp、sed（刪檔也算）｜https://code.claude.com/docs/en/permission-modes（「auto-approves common filesystem Bash commands: mkdir, touch, rm, rmdir, mv, cp, and sed」）｜2026-10-21｜accept-scope、risk（修訂 1：accept-scope 場景刪掉；只剩 risk 卡的出處用到）
 c27｜先切到 Plan 送出、讀計畫，看過再切到 Accept edits 叫它照做｜https://code.claude.com/docs/en/desktop（Best practice：「Start complex tasks in Plan … switch to Accept edits or Manual to execute it」）｜2026-10-21｜perm-rule
 c28｜上下文快滿時，它會自動把對話壓成摘要再繼續｜https://code.claude.com/docs/en/desktop（「When context fills up, Claude automatically summarizes the conversation and continues working.」）；costs 頁的 auto-compaction｜2026-10-21｜ctx-what、ctx-auto
 c29｜模型選擇器旁的用量圈看這次用了多少；/compact 現在壓成摘要、可以加一句要保留什麼；/clear 開全新的對話、專案記憶還在｜https://code.claude.com/docs/en/desktop（usage ring、`/compact`）、https://code.claude.com/docs/en/commands（`/compact [instructions]`；「/clear starts fresh on a new task while keeping project memory」）、https://code.claude.com/docs/en/costs（custom compaction instructions）｜2026-10-21｜ctx-tools
@@ -64,9 +64,9 @@ c38｜十二行改變的是：檔案進了 輸出/、寫了處理日誌、要補
 c39｜指示越具體、越精簡，照做得越一致；每份 CLAUDE.md 目標 200 行以內｜https://code.claude.com/docs/en/memory（「The more specific and concise your instructions, the more consistently Claude follows them.」「target under 200 lines per CLAUDE.md file」）｜2026-10-21｜md-much
 c40｜它自己寫的六條：第 3 條看修改時間，跟觀眾版第七條（看內容、不看檔名與修改時間；12 行檔的第 9–10 行）相反；六條裡沒有 輸出/、同名、日誌。查核 1：卡片原寫「第 7、8 行」，那兩行是第五、六條，改成「第 7 條」｜runlog R5 runner NOTE（逐條比對）；`demo/g1/CLAUDE.md`｜2026-10-21｜md-g1
 c41｜觀眾改第 5 行（同名的判斷）後，用同樣的八個字重跑、看處理日誌｜練習，沒有跑過觀眾自己的版本；片中跑過的改法是一句 → 八條（v1 → s1，c36）｜2026-10-21｜md-edit、md-check
-c42｜照修改時間排：這次絕對最終版 10/20（16:00、待確認）、真的最終版 10/18（16:30、皆已確認）、最終版 10/05（16:00、第二位待邀請）｜runlog M3（`ls -lt`、`grep`，不呼叫模型）；卡片的月日是台北時間｜2026-10-21｜m3-table
-c43｜要它整理大綱的四次（pl1、m1、a1、a2）都打開讀過，都照內容選真的最終版；寫規矩的 g1 一個檔都沒讀。查核 1：pr1 也讀了三份大綱（並在進度裡以真的最終版為準），所以「打開大綱讀過的那四次」改成「整理大綱的那四次都打開讀過」｜runlog R8、R9、R10、R10b；「Unexpected results」第 1 條｜2026-10-21｜m3-who
-c44｜a1 回覆第一句「整理完了，但我選的不是修改時間最新的那份。」；有 CLAUDE.md 的 a2 也選對，並寫了 輸出/處理日誌.md｜runlog R10 reply；R10b created 輸出/處理日誌.md、VERDICT RIGHT｜2026-10-21｜a1-quote
+c42｜照修改時間排：這次絕對最終版 10/20（16:00、待確認）、真的最終版 10/18（16:30、皆已確認）、最終版 10/05（16:00、第二位待邀請）｜runlog M3（`ls -lt`、`grep`，不呼叫模型）；卡片的月日是台北時間｜2026-10-21｜m3-table（修訂 1：m3-table 移到權限那一章，versions-ask 之後）
+c43｜要它整理大綱的四次（pl1、m1、a1、a2）都打開讀過，都照內容選真的最終版；寫規矩的 g1 一個檔都沒讀。查核 1：pr1 也讀了三份大綱（並在進度裡以真的最終版為準），所以「打開大綱讀過的那四次」改成「整理大綱的那四次都打開讀過」｜runlog R8、R9、R10、R10b；「Unexpected results」第 1 條｜2026-10-21｜m3-who（修訂 1：m3-who 移到 CLAUDE.md 那一章 md-g1 之後；只剩 qey9 一句）
+c44｜a1 回覆第一句「整理完了，但我選的不是修改時間最新的那份。」；有 CLAUDE.md 的 a2 也選對，並寫了 輸出/處理日誌.md｜runlog R10 reply；R10b created 輸出/處理日誌.md、VERDICT RIGHT｜2026-10-21｜a1-quote（修訂 1：a1-quote 移到權限那一章 perm-runs 之後；a2 那句 fgmk 移到 md-g1）
 c45｜只說動作（vague.txt）對講目的（purpose.txt 全文）｜`demo/prompts/vague.txt`、`demo/prompts/purpose.txt`｜2026-10-21｜list-say、list-ask、list-ask-log
 c46｜p1 依序：一個 Bash 列資料夾並讀活動說明和報名表；想跑 Python 整理被擋 4 次；改用 Write 寫三個檔；回覆說沒跑程式、手動核對，建議開 CSV 看筆數｜runlog R4 stream summary 與 reply｜2026-10-21｜list-steps
 c47｜日誌的數字：可寄 16、要補資料 3、素食 4（劉思妤若來 5，建議先報 5）、海鮮過敏 2，寫在「要跟場地說的數字（11/01 前）」那一段｜`demo/p1/輸出/處理日誌.md`｜2026-10-21｜list-stats
@@ -74,12 +74,12 @@ c48｜確認信草稿的活動資訊（第 15–21 行）：日期、時間 14:0
 c49｜草稿寫「活動前一天（11/12）會再寄一封行前提醒。」，講座是 11/14，12 號是前兩天｜`demo/pr2/輸出/確認信草稿.md` 第 34 行；runlog R14 NOTE｜2026-10-21｜letter-slip
 c50｜Skill 的內文只有用到時才載入；一直重貼同一段指示、或 CLAUDE.md 的一段長成流程，就做成 Skill；每次都要的規矩留在 CLAUDE.md｜https://code.claude.com/docs/en/skills（「Unlike CLAUDE.md content, a skill's body loads only when it's used」「Create a skill when you keep pasting…」）；memory（「Keep it to facts Claude should hold in every session」）｜2026-10-21｜skill-what、skill-choose
 c51｜SKILL.md 全文 18 行（第 1–5 行與第 7–18 行兩張，介紹與六步逐句唸）；存成專案的 `.claude/skills/signup-check/SKILL.md`｜`demo/extras/skill/.claude/skills/signup-check/SKILL.md`，cf53f2c9bcd4faf6；skills 頁位置表（Project：`.claude/skills/<skill-name>/SKILL.md`）｜2026-10-21｜skill-head、skill-desc、skill-when、skill-s1–s3b
-c52｜description 讓 Claude 判斷什麼時候自動載入這個 Skill｜https://code.claude.com/docs/en/skills（「the `description` helps Claude decide when to load the skill automatically」）｜2026-10-21｜skill-auto
+c52｜description 讓 Claude 判斷什麼時候自動載入這個 Skill｜https://code.claude.com/docs/en/skills（「the `description` helps Claude decide when to load the skill automatically」）｜2026-10-21｜skill-auto（修訂 1：skill-auto 場景刪掉，這條不再出現）
 c53｜k1 打斜線叫、k2 只說照平常的方式；兩次 init 的技能清單都有 signup-check；k2 的第一個工具呼叫是 Skill `{"skill":"signup-check","args":"報名表_第二批.csv"}`｜runlog R11、R12 init 與 stream；`demo/prompts/skill-slash.txt`、`skill-auto.txt`｜2026-10-21｜skill-ask、skill-pick
 c54｜兩次 B1–B6 全過；寄信名單 18 個 Email｜runlog R11、R12 `second batch`（batch2.mjs）｜2026-10-21｜skill-run
 c55｜SKILL.md 沒寫的黃雅婷改線上也被提出來；部門只統一了新加的兩筆，回覆原文「第一批名單裡還有 mkt、研發、R&D 這類寫法沒統一,我只統一了這次新增的兩筆。」｜runlog R11 B6 PASS、reply；`demo/k1/reply.md`｜2026-10-21｜skill-run、skill-dept
-c56｜接上之前先確認信得過；會抓外部內容的伺服器有提示注入風險（第 1、2 項是頻道建議；查核 2 把旁白 u29s、cxbq 標成「我會建議」。這兩條不在企劃站主觀點四點裡，待站主確認）｜https://code.claude.com/docs/en/mcp（「Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk」）｜2026-10-21｜trust
-c57｜連接器就是有圖形設定流程的 MCP 伺服器；提示框旁的 ＋ → Add connectors 打開目錄；Settings > Connectors 管理或拔掉；連上後能讀行事曆、發訊息｜https://code.claude.com/docs/en/desktop#connect-external-tools｜2026-10-21｜connect、connect-steps、trust
+c56｜接上之前先確認信得過；會抓外部內容的伺服器有提示注入風險（第 1、2 項是頻道建議；查核 2 把旁白 u29s、cxbq 標成「我會建議」。這兩條不在企劃站主觀點四點裡，待站主確認）｜https://code.claude.com/docs/en/mcp（「Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk」）｜2026-10-21｜trust（修訂 1：trust 場景刪掉；只剩 connector-note 的一句「接上之前…先確認信得過」）
+c57｜連接器就是有圖形設定流程的 MCP 伺服器；提示框旁的 ＋ → Add connectors 打開目錄；Settings > Connectors 管理或拔掉；連上後能讀行事曆、發訊息｜https://code.claude.com/docs/en/desktop#connect-external-tools｜2026-10-21｜connect、connect-steps、trust（修訂 1：connect、connect-steps 場景刪掉，Add connectors 的步驟不再出現；只剩 connector-note 的一句「把行事曆、信箱這些服務接進來」）
 c58｜三種排程：雲端不用開電腦、讀不到本機檔、最短 1 小時；桌面版要開電腦、讀得到檔、最短 1 分鐘；/loop 要開著對話、最短 1 分鐘｜https://code.claude.com/docs/en/desktop-scheduled-tasks（Compare scheduling options 表）｜2026-10-21｜sched
 c59｜「A task scheduled for 9am might run at 11pm if your computer was asleep all day.」｜https://code.claude.com/docs/en/desktop-scheduled-tasks#missed-runs｜2026-10-21｜sched-quote
 c60｜排程要跑的那一句（daily.txt 全文）｜`demo/prompts/daily.txt`｜2026-10-21｜daily、daily-out
@@ -104,6 +104,8 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - **權限模式表**用 `table` 卡，不另外放 desktop#choose-a-permission-mode 的 screencast；screencast 只用在 desktop-quickstart（開資料夾）與 desktop#connect-external-tools（連接器）。
 - **排程**：雲端排程（routines）的「研究預覽」「方案」沒有講；只用 desktop-scheduled-tasks 頁的比較表。
 - **確認信那一步**只放草稿的活動資訊一段與那一句錯的日期，沒有放整份草稿。
+
+- **修訂 1（2026-10-21，盲評沒過 7 題之後）**：連接器的導覽（trust、connect、connect-steps 三個場景、Add connectors 的步驟與截圖）拿掉，改成排程那一章裡的兩句（connector-note）；那一章改名「排程：讓報名檢查每天早上自己跑」。開場停在問句（dr6i），「修改時間最新的是舊的」只在權限那一章揭曉一次（m3-table 從實戰章移過去）。實戰章不再重講大綱的選擇：只留一句回呼（ziec），其餘時間給講目的的要求、日誌數字與確認信。另外刪了幾句跟卡片或前一句重複的話（u6x7、a5dm、akxx、356m、3vdd、zhp7、4dkz、jbi2、zm8z、9hhb、5cge、2kxy、2reg、a5xb、y34h、ryau、6s29、7kgt），估計長度從 21.6 降到 19.9 分鐘。事實、數字、引文都沒有改。
 
 ## 我懷疑但沒動的事
 
@@ -132,3 +134,5 @@ c67｜新手坑：直接打開桌面或整個文件夾，裡面連私人的檔�
 - [x] 查核第 1 輪（verify-1.md：7 處事實修正，要第 2 輪）
 - [x] 查核第 2 輪（另一個代理；verify-2.md：6 處事實修正（含說明欄 1 處）、4 句觀點標示；超過 3 處，照規則要再一輪）
 - [x] 查核第 3 輪（又一個代理；verify-3.md：重查 verify-2 的 6 處修正與 c14，0 處事實修正，c67 只補依據）
+- [x] 修訂 1（盲評 7／13 沒過之後）：連接器導覽拿掉、開場停在問句、實戰章不重講大綱、十六人只講一次、stakes 回呼只留一處（cevy，「我前面說過」）、7z44 改成陳述；lint 0 錯誤 0 警告，估 19.9 分鐘、202 句、162 個卡片狀態
+- [ ] 盲評第 2 輪
