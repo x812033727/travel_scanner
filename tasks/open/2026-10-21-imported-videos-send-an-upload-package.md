@@ -45,6 +45,7 @@ make the package unreadable, so the order is languages first, then the package.
       folder lacks, a dub of another length, a thumbnail over 2 MB, a non-drama without a
       disclosure answer; `--languages` refuses once a package was sent.
 - [x] Tests in `import.test.mjs`.
-- [ ] `prep-import.mjs` writes the compilation's tags and category id into meta.json.
-- [ ] Send the package of 種田娶妻打天下 第1–5集 and have the owner approve it.
-- [ ] `COMPILATIONS.md` says the step.
+- [x] `prep-import.mjs` writes the compilation's tags and category id into meta.json.
+- [x] Send the package of 種田娶妻打天下 第1–5集 (sent 2026-10-21, pending).
+- [ ] The owner approves it and 「送到 YouTube」 sends it (PR #1648).
+- [x] `COMPILATIONS.md` says the step.
