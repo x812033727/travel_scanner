@@ -1,0 +1,3253 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-beginner-event-folder",
+  "format": "slides",
+  "category": "tutorial",
+  "target_minutes": [
+    12,
+    16
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像坐在一個從沒讓 AI 碰過檔案的朋友旁邊，陪他做一遍：放鬆、穩，不炫技。開場那句問題帶點好笑；講到它挑錯、被擋下、寫錯日期的地方壓低放慢；每個數字前停半拍；唸規則和步驟時一條一條、咬字清楚；替觀眾問出口的疑問上揚，答案接得乾脆。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code 新手教學：不寫程式也能用，四個基本功整理一整個資料夾",
+    "description": "Claude Code 不是只給工程師的：這支用一個講座資料夾，教你讓它直接讀、改、存你的檔案。\n給已經在用 ChatGPT 或 Claude 網頁版、但從沒讓 AI 碰過自己檔案的上班族、活動企劃和小店老闆。\n\n你會學到：\n・專案資料夾：你打開哪裡，它就在哪裡讀寫\n・權限模式：規劃、手動、自動接受編輯；同一句要求，三個模式各跑一次的結果\n・上下文：對話太長時的用量圈、/compact、/clear，和「寫進度、開新對話」\n・CLAUDE.md：十二行規矩全文；同一句「幫我整理報名名單」在三個資料夾的結果是 8、8、9 項\n・實戰：三份「最終版」該留哪一份、寄信名單與要補資料、確認信草稿（和它寫錯的一個日期）\n・進階：自己寫一個 Skill 處理第二批報名、接上連接器之前的檢查、三種排程\n\n影片裡的 CLAUDE.md（12 行）與 SKILL.md（18 行）都完整出現；每一句要求也都完整放在畫面上。練習資料夾是虛構的：人名、Email（example.com）、地點都不是真的。\n\n怎麼跑的\n・2026-10-21，Windows 11、Claude Code 2.1.295、模型 sonnet，用不開畫面的 session（claude -p）跑了 19 次，其中 1 次登入失敗、不算；每次都從同一份練習資料夾重建。\n・桌面版的畫面只用官方文件頁的截圖：這次沒有登入桌面版，模式選單、權限詢問、排程與連接器都沒有在介面上看過。\n・不開畫面時，手動模式裡要人同意的動作會直接被拒；在桌面版，同樣的動作會停下來問你。\n・「只貼上文字」那一邊是同一個模型、不給任何工具，不是網頁版本身。\n・十項檢查是跑之前寫好的計分腳本，從檔案判定、不讀回覆；每種情況只跑 1 次，換模型、換要求，結果都可能不同。\n・排程只引用官方頁；排程要跑的那一句，直接跑過 1 次。連接器只引用官方頁，沒有接任何服務。\n・Codex 沒有安裝、沒有測試，片中只點名一次。",
+    "tags": [
+      "Claude Code",
+      "Claude Code 新手教學",
+      "Claude Code 教學",
+      "CLAUDE.md",
+      "Claude Code 不會寫程式",
+      "Claude 桌面版",
+      "Claude Code 權限模式",
+      "Claude Skill",
+      "AI 整理檔案",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code 新手教學",
+      "headline": "零程式\n也能用",
+      "sub": "四個基本功，整理一整個講座資料夾",
+      "capture": "folder-shot"
+    }
+  },
+  "sources": [
+    {
+      "title": "Get started with the desktop app｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/desktop-quickstart",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Desktop application｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Choose a permission mode｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/permission-modes",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "How Claude remembers your project｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/memory",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Commands｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/commands",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Manage costs effectively｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/costs",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Extend Claude with skills｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/skills",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Connect Claude Code to tools via MCP｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "title": "Schedule recurring tasks in Claude Code Desktop｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/desktop-scheduled-tasks",
+      "checked_on": "2026-10-21"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "Claude Code 新手教學：不寫程式也能用嗎？",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code 新手教學",
+        "title": "不寫程式，\n也能用 **Claude Code**？",
+        "subtitle": "一個講座資料夾：報名表、三份最終版、確認信草稿"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "uva6",
+          "text": "你可能也這樣想過：Claude Code，不就是給工程師寫程式用的嗎？",
+          "emotion": "輕鬆，帶點好笑，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "verbs",
+      "template": "bullets",
+      "data": {
+        "title": "它會直接動手",
+        "items": [
+          "打開你的資料夾",
+          "讀報名表、活動說明",
+          "幫檔案改名、搬進封存",
+          "寫出名單和確認信草稿"
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜p1、a1、pr2"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "j47g",
+          "text": "其實，它是一個會直接打開你資料夾的 Claude。",
+          "reveal": 1,
+          "emotion": "「其實」亮起來"
+        },
+        {
+          "id": "8rt7",
+          "text": "讀報名表、幫檔案改名、整理寄信名單、寫出確認信草稿。",
+          "reveal": 3,
+          "emotion": "一個一個數，輕快"
+        }
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "big",
+      "data": {
+        "kicker": "也正因為這樣",
+        "text": "它碰得到\n**你的檔案**"
+      },
+      "lines": [
+        {
+          "id": "734w",
+          "text": "也正因為它碰得到你的檔案，你得先學會怎麼管住它。",
+          "emotion": "放慢，壓低"
+        }
+      ]
+    },
+    {
+      "id": "g1-rule",
+      "template": "quote",
+      "data": {
+        "kicker": "它替講座資料夾寫的規矩，第 3 條（g1）",
+        "quote": "簡報大綱有多個「最終版」時，以檔案修改時間最新的為準",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜g1 寫的 CLAUDE.md"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "dqu9",
+          "text": "我請它替這個資料夾寫規矩，它只列了檔名，一個檔都沒打開。",
+          "emotion": "平實，像在交代一件小事"
+        },
+        {
+          "id": "646h",
+          "text": "第三條就寫：好幾份最終版，看修改時間最新的。"
+        }
+      ]
+    },
+    {
+      "id": "g1-old",
+      "template": "big",
+      "data": {
+        "kicker": "可是在這個資料夾",
+        "text": "修改時間最新的\n內容是**舊的**"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "dr6i",
+          "text": "可是在這個資料夾裡，修改時間最新的那一份，內容是舊的。",
+          "emotion": "停半拍，壓低"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "template": "steps",
+      "data": {
+        "title": "看完你會有的",
+        "steps": [
+          {
+            "title": "專案資料夾",
+            "detail": "它在哪裡讀、寫"
+          },
+          {
+            "title": "權限模式",
+            "detail": "動手前先不先問你"
+          },
+          {
+            "title": "上下文",
+            "detail": "對話太長怎麼接"
+          },
+          {
+            "title": "CLAUDE.md",
+            "detail": "規矩寫一次就好"
+          },
+          {
+            "title": "整理一整場講座",
+            "detail": "最終版、名單、確認信"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "vdqi",
+          "text": "這支片給你四個一定要會的基本功：專案資料夾、權限模式、上下文、CLAUDE.md。",
+          "reveal": 4,
+          "emotion": "清楚，一樣一樣點名"
+        },
+        {
+          "id": "mgyy",
+          "text": "最後，讓它把這場講座從頭整理一遍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "signup-form",
+      "chapter": "Claude Code 跟網頁版 ChatGPT、Claude 差在哪？",
+      "template": "bullets",
+      "data": {
+        "title": "報名表.csv｜24 列",
+        "items": [
+          "缺 Email：3 列",
+          "兩個王志明：Email 不同",
+          "陳怡君填了兩次",
+          "張書豪報名後取消",
+          "一筆叫「測試」"
+        ],
+        "source": "練習資料夾｜虛構資料，Email 都是 example.com"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "cza5",
+          "text": "講座的報名表有二十四列，該有的麻煩都有。"
+        },
+        {
+          "id": "gf7y",
+          "text": "有人沒填 Email，有兩個不同的王志明，有人填了兩次，有人報了又取消。",
+          "reveal": 4
+        },
+        {
+          "id": "f86u",
+          "text": "還有，每一份報名表裡，都有一筆叫「測試」。",
+          "reveal": 1,
+          "emotion": "帶笑，輕輕帶過"
+        },
+        {
+          "id": "w9hj",
+          "text": "你可能會想：把報名表貼進 ChatGPT，不也整理得好？",
+          "emotion": "替觀眾問出口，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "c2-list",
+      "template": "quote",
+      "data": {
+        "kicker": "只貼上文字的那一次（c2：同模型、不給工具，不是網頁版）",
+        "quote": "24 筆填表紀錄合併成 21 個人，其中 16 人可以直接寄信。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜c2 的回覆"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "byk3",
+          "text": "整理得好。同一個模型只拿到貼上的文字，也排出了十六個能寄的人。",
+          "emotion": "先肯定，語氣平"
+        }
+      ]
+    },
+    {
+      "id": "paste-vs-folder",
+      "template": "compare",
+      "data": {
+        "title": "同一份報名表，兩種給法",
+        "left": {
+          "heading": "只貼上文字（c2）",
+          "points": [
+            "交出一段文字：0 個檔",
+            "存檔、命名：你自己來",
+            "沒看到活動說明：沒提 11/01"
+          ]
+        },
+        "right": {
+          "heading": "打開 講座籌備/（p1）",
+          "points": [
+            "三個檔寫進 輸出/",
+            "原始報名表：雜湊不變",
+            "日誌寫了 11/01 前要給場地的數"
+          ]
+        },
+        "source": "實跑 10-21｜2.1.295｜c2：同模型只給文字，非網頁版"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "p95r",
+          "text": "差別在後面：它交出的是一段文字，存檔、命名，都要你自己來。",
+          "reveal": 1
+        },
+        {
+          "id": "t4kn",
+          "text": "它也沒看到活動說明，不知道十一月一號前，要把餐點人數給場地。",
+          "emotion": "「十一月一號」放慢"
+        },
+        {
+          "id": "k8cy",
+          "text": "打開資料夾的那一次，三個檔直接寫進輸出資料夾，原檔一個字都沒動。",
+          "reveal": 1
+        },
+        {
+          "id": "7gct",
+          "text": "日誌裡，連這個期限前要給場地的人數都寫好了。"
+        }
+      ]
+    },
+    {
+      "id": "which-tool",
+      "template": "table",
+      "data": {
+        "title": "什麼時候用哪一個",
+        "columns": [
+          "你要它做的",
+          "用"
+        ],
+        "rows": [
+          [
+            "問答案、改一段文字",
+            "網頁版、App，或桌面版的 Chat 分頁"
+          ],
+          [
+            "直接讀、改、存你資料夾裡的檔",
+            "Claude 桌面版的 Code 分頁"
+          ],
+          [
+            "OpenAI 那邊的同類工具",
+            "Codex，這支不講"
+          ]
+        ],
+        "source": "Chat 分頁不碰檔案：desktop-quickstart 2026-10-21"
+      },
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "3sdm",
+          "text": "怎麼選很簡單：只要問答案、改一段字，網頁版就夠了。",
+          "reveal": 1
+        },
+        {
+          "id": "356m",
+          "text": "桌面版裡的 Chat 分頁也一樣，碰不到你的檔案。"
+        },
+        {
+          "id": "y9bk",
+          "text": "要它直接讀、改、存你資料夾裡的檔，才用 Code 分頁裡的 Claude Code。",
+          "reveal": 1
+        },
+        {
+          "id": "4fh3",
+          "text": "OpenAI 那邊的同類工具叫 Codex，這支只講 Claude Code。",
+          "reveal": 1
+        },
+        {
+          "id": "ff34",
+          "text": "那第一步，該讓它看哪個資料夾？",
+          "emotion": "問句上揚，輕收"
+        }
+      ]
+    },
+    {
+      "id": "folder-shot",
+      "chapter": "專案資料夾是什麼？它看得到哪些檔",
+      "template": "screencast",
+      "data": {
+        "title": "第一步：打開一個資料夾",
+        "caption": "Claude Code 文件｜desktop-quickstart｜Start your first session｜2026-10-21 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/desktop-quickstart#start-your-first-session"
+          },
+          {
+            "action": "wait",
+            "selector": "#start-your-first-session"
+          },
+          {
+            "action": "capture",
+            "focus": "#start-your-first-session"
+          }
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "jpvj",
+          "text": "講座的東西全放在一個叫講座籌備的資料夾，這就是它這次的工作範圍。"
+        }
+      ]
+    },
+    {
+      "id": "folder-steps",
+      "template": "steps",
+      "data": {
+        "title": "開第一個對話",
+        "steps": [
+          {
+            "title": "Claude 桌面版 → Code 分頁"
+          },
+          {
+            "title": "提示框下方：環境選 Local"
+          },
+          {
+            "title": "資料夾：Open folder…",
+            "detail": "選 講座籌備"
+          },
+          {
+            "title": "打字，按 Enter 送出"
+          }
+        ],
+        "source": "Claude Code 文件｜desktop-quickstart｜2026-10-21"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "3z8j",
+          "text": "打開 Claude 桌面版，切到 Code 分頁。",
+          "reveal": 1
+        },
+        {
+          "id": "hqqr",
+          "text": "提示框下面那一排，第一個是環境，選 Local。",
+          "reveal": 1
+        },
+        {
+          "id": "zfpy",
+          "text": "旁邊是資料夾，按 Open folder，選講座籌備。",
+          "reveal": 1
+        },
+        {
+          "id": "yfn4",
+          "text": "然後在提示框打字，按 Enter 送出。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "folder-plan",
+      "template": "bullets",
+      "data": {
+        "title": "要準備的",
+        "items": [
+          "Code 分頁內建 Claude Code：不用另外安裝",
+          "付費方案：Pro、Max、Team 或 Enterprise"
+        ],
+        "source": "Claude Code 文件｜desktop-quickstart｜2026-10-21"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "8a3d",
+          "text": "Code 分頁已經內建 Claude Code，不用另外安裝別的東西。",
+          "reveal": 1
+        },
+        {
+          "id": "xsq7",
+          "text": "不過它要付費方案：Pro、Max、Team 或 Enterprise。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "folder-scope",
+      "template": "bullets",
+      "data": {
+        "title": "你打開哪裡，它就在哪裡",
+        "items": [
+          "讀、寫、改名：都在這個資料夾",
+          "只說八個字，它也自己打開活動說明（n1）",
+          "自動接受的修改：這個資料夾裡面"
+        ],
+        "source": "第 2 項：實跑 n1｜第 3 項：permission-modes 頁"
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "axuy",
+          "text": "那它在這個資料夾裡，看得到什麼？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "eifj",
+          "text": "專案資料夾的意思很單純：你打開哪個資料夾，它就在那裡讀、寫、改名。",
+          "reveal": 1
+        },
+        {
+          "id": "3i6w",
+          "text": "就算只說「幫我整理報名名單」八個字，它也自己打開了活動說明。",
+          "reveal": 1
+        },
+        {
+          "id": "xfnv",
+          "text": "自動接受編輯的時候，它不問就能改的，是這個資料夾裡面的檔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "folder-reads",
+      "template": "stats",
+      "data": {
+        "title": "只叫它寫一份進度",
+        "stats": [
+          {
+            "value": "11 個",
+            "label": "它打開的檔",
+            "note": "連兩張圖都打開了"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pr1"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "kgnr",
+          "text": "我叫它寫一份進度的時候，它把資料夾裡十一個檔全打開了，連兩張圖也是。",
+          "reveal": 1,
+          "emotion": "「十一個」放慢"
+        }
+      ]
+    },
+    {
+      "id": "folder-trap",
+      "template": "big",
+      "data": {
+        "kicker": "新手最常踩的坑",
+        "text": "打開整個桌面\n它就**全都讀得到**"
+      },
+      "lines": [
+        {
+          "id": "snrs",
+          "text": "新手最常踩的坑，是直接打開桌面或整個文件夾，連私人的檔它也讀得到。",
+          "emotion": "提醒的口氣，放慢"
+        }
+      ]
+    },
+    {
+      "id": "folder-small",
+      "template": "quote",
+      "data": {
+        "kicker": "怎麼選資料夾",
+        "quote": "Start with a small project you know well.",
+        "translation": "先從一個你很熟的小專案開始。",
+        "source": "Claude Code 文件｜desktop-quickstart｜2026-10-21"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "8bck",
+          "text": "怎麼選？一件事開一個資料夾，裡面只放這件事的檔。"
+        },
+        {
+          "id": "vkes",
+          "text": "第一次用，先從一個你很熟、規模小的資料夾開始。",
+          "reveal": 1
+        },
+        {
+          "id": "azu6",
+          "text": "範圍圈好了，它要動手的時候，會不會先問你？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "perm-open",
+      "chapter": "權限模式怎麼選？規劃、手動、自動接受編輯",
+      "template": "big",
+      "data": {
+        "kicker": "講座籌備/",
+        "text": "三份最終版\n要**改名、要搬**"
+      },
+      "lines": [
+        {
+          "id": "x8va",
+          "text": "三份最終版要改名、要搬，這是它第一次要動你的檔案。",
+          "emotion": "稍微收緊"
+        }
+      ]
+    },
+    {
+      "id": "versions-ask",
+      "template": "code",
+      "data": {
+        "code": "資料夾裡有三個「最終版」的簡報大綱。\n找出真正最新的那一份，\n改名成 講座簡報大綱_2026-11-14.md；\n另外兩份移到 封存/，\n檔名前面加上它們的修改日期。",
+        "caption": "prompts/versions.txt｜三個模式都用這一句｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "q2v6",
+          "text": "要求只有一句：找出真正最新的那一份改名，另外兩份搬進封存資料夾。"
+        }
+      ]
+    },
+    {
+      "id": "perm-fear",
+      "template": "big",
+      "data": {
+        "kicker": "權限模式",
+        "text": "動手之前\n要不要**先問你**"
+      },
+      "lines": [
+        {
+          "id": "7awm",
+          "text": "看到「權限」兩個字，你可能覺得很可怕。",
+          "emotion": "替觀眾說出口"
+        },
+        {
+          "id": "gqpd",
+          "text": "聽起來很專業，其實就是：它動手之前，要不要先問你。",
+          "emotion": "「其實」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "perm-table",
+      "template": "table",
+      "data": {
+        "title": "桌面版的五個模式",
+        "columns": [
+          "模式",
+          "它怎麼做"
+        ],
+        "rows": [
+          [
+            "Manual 手動",
+            "改檔、跑指令前，每次都先問"
+          ],
+          [
+            "Accept edits 自動接受編輯",
+            "改檔、建資料夾、搬檔直接做；其他指令先問"
+          ],
+          [
+            "Plan 規劃",
+            "只讀、只提計畫，核准前不改檔"
+          ],
+          [
+            "Auto 自動",
+            "不例行詢問，背景檢查把關；有開放才出現"
+          ],
+          [
+            "Bypass permissions 略過權限",
+            "幾乎不問；只該用在隔離環境"
+          ]
+        ],
+        "source": "Claude Code 文件｜desktop｜2026-10-21"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "said",
+          "text": "手動模式，改檔案、跑指令之前，每一次都先問你。",
+          "reveal": 1
+        },
+        {
+          "id": "3nzx",
+          "text": "自動接受編輯，改檔案、建資料夾、搬檔直接做，其他指令還是先問。",
+          "reveal": 1
+        },
+        {
+          "id": "ema8",
+          "text": "規劃模式只讀、只提計畫，你核准之前，它不改檔。",
+          "reveal": 1
+        },
+        {
+          "id": "sqpg",
+          "text": "自動模式不例行詢問，改由背景的檢查把關，有開放給你才會出現。",
+          "reveal": 1
+        },
+        {
+          "id": "kqtt",
+          "text": "略過權限幾乎什麼都不問，只該用在隔離的環境裡，新手先別碰。",
+          "reveal": 1,
+          "emotion": "「先別碰」加重"
+        }
+      ]
+    },
+    {
+      "id": "perm-default",
+      "template": "bullets",
+      "data": {
+        "title": "模式選單在哪",
+        "items": [
+          "提示框下面那一排",
+          "選過的模式：依資料夾記住",
+          "規劃模式：只算這一次",
+          "一打開是哪一個：頁面沒寫明"
+        ],
+        "source": "文件 desktop、permission-modes｜2026-10-21"
+      },
+      "claims": [
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "t9pa",
+          "text": "模式在提示框下面那一排的選單裡，做到一半也能換。",
+          "reveal": 1
+        },
+        {
+          "id": "7z44",
+          "text": "那一打開，預設是哪一個？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "gd2z",
+          "text": "選過的模式會依資料夾記住；只有規劃模式，只算這一次。",
+          "reveal": 2
+        },
+        {
+          "id": "u22y",
+          "text": "桌面版一打開是哪一個，我在官方頁沒找到寫明；你自己先看一眼那個選單。",
+          "reveal": 1,
+          "emotion": "坦白，平實"
+        }
+      ]
+    },
+    {
+      "id": "perm-runs",
+      "template": "table",
+      "data": {
+        "title": "同一句要求，三個模式",
+        "columns": [
+          "模式",
+          "資料夾裡的檔",
+          "結果"
+        ],
+        "rows": [
+          [
+            "規劃（pl1）",
+            "一個都沒變",
+            "交出計畫：選真的最終版"
+          ],
+          [
+            "手動（m1）",
+            "一個都沒變",
+            "6 個動作要人同意（被拒）"
+          ],
+          [
+            "自動接受編輯（a1）",
+            "2 份進 封存/，1 份改名",
+            "改名的是真的最終版"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pl1、m1、a1"
+      },
+      "claims": [
+        "c20",
+        "c21",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "3a33",
+          "text": "同樣的一句要求，三個模式各跑一次，會差在哪？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "3q3u",
+          "text": "規劃模式那一次，資料夾九個檔一個都沒變，它交出一份計畫。",
+          "reveal": 1
+        },
+        {
+          "id": "mvtb",
+          "text": "手動模式那一次，有六個動作停在等人同意，一個檔都沒動。",
+          "reveal": 1,
+          "emotion": "「六個」放慢"
+        },
+        {
+          "id": "kr3n",
+          "text": "自動接受編輯那一次，兩份搬進封存，一份改了名。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "perm-plan",
+      "template": "quote",
+      "data": {
+        "kicker": "規劃模式的計畫，開頭先提醒（pl1）",
+        "quote": "要注意：最新修改時間的那份，內容其實是舊的。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pl1 的回覆"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "dj2h",
+          "text": "計畫開頭就先提醒這件事：它對照活動說明，選了內容對得上的真的最終版。",
+          "emotion": "亮一點"
+        }
+      ]
+    },
+    {
+      "id": "plan-file",
+      "template": "big",
+      "data": {
+        "kicker": "計畫存在哪（pl1）",
+        "text": "使用者資料夾的\n**.claude/plans/**",
+        "sub": "講座籌備裡 9 個檔：前後雜湊都一樣"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "a5dm",
+          "text": "這份計畫存在你的使用者資料夾裡，講座籌備的檔，一個都沒碰。"
+        }
+      ]
+    },
+    {
+      "id": "perm-accept",
+      "template": "stats",
+      "data": {
+        "title": "自動接受編輯，指令還是會停",
+        "stats": [
+          {
+            "value": "4",
+            "label": "p1 被擋下"
+          },
+          {
+            "value": "3",
+            "label": "s1 被擋下"
+          },
+          {
+            "value": "3",
+            "label": "a1 被擋下"
+          },
+          {
+            "value": "3",
+            "label": "a2 被擋下"
+          }
+        ],
+        "source": "實跑 2026-10-21｜被擋的是跑程式、PowerShell、多段 Bash"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "7gwr",
+          "text": "自動接受編輯也不是什麼都自動：講清楚目的的那一次，被擋下四個指令。",
+          "reveal": 1,
+          "emotion": "放慢"
+        },
+        {
+          "id": "yitb",
+          "text": "另外三次整理，各被擋下三個。",
+          "reveal": 3
+        },
+        {
+          "id": "dux8",
+          "text": "跑小程式、一口氣下好幾段指令，就會停；整理名單的兩次，改用寫檔的工具做完。"
+        }
+      ]
+    },
+    {
+      "id": "accept-scope",
+      "template": "bullets",
+      "data": {
+        "title": "自動接受編輯，不問就做的",
+        "items": [
+          "改檔案",
+          "建資料夾、搬檔、複製",
+          "刪檔"
+        ],
+        "source": "Claude Code 文件｜permission-modes｜2026-10-21"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "akxx",
+          "text": "反過來，它不問就能做的也不只改字：建資料夾、搬檔，連刪檔都算。",
+          "reveal": 3,
+          "emotion": "「刪檔」加重"
+        }
+      ]
+    },
+    {
+      "id": "perm-rule",
+      "template": "steps",
+      "data": {
+        "title": "先看計畫，再放手",
+        "steps": [
+          {
+            "title": "切到 Plan，送出要求"
+          },
+          {
+            "title": "讀計畫：選哪一份、為什麼"
+          },
+          {
+            "title": "沒問題：切到 Accept edits",
+            "detail": "叫它照計畫做"
+          }
+        ],
+        "source": "Claude Code 文件｜desktop｜Best practice｜2026-10-21"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "vdg7",
+          "text": "怎麼選？新的資料夾、新的要求，先切到規劃模式送出，讀它選哪一份、為什麼。",
+          "reveal": 2
+        },
+        {
+          "id": "qvep",
+          "text": "看過沒問題，再切到自動接受編輯，叫它照計畫做。",
+          "reveal": 1
+        },
+        {
+          "id": "w4fh",
+          "text": "它照計畫做完，事情越做越多，對話也越拉越長。"
+        }
+      ]
+    },
+    {
+      "id": "ctx-open",
+      "chapter": "對話太長怎麼辦？上下文與 /compact、/clear",
+      "template": "big",
+      "data": {
+        "kicker": "這個對話",
+        "text": "裝進了\n**一整個資料夾**"
+      },
+      "lines": [
+        {
+          "id": "d7tu",
+          "text": "名單整理完、最終版也搬好了，這個對話已經裝進一整個資料夾的內容。"
+        }
+      ]
+    },
+    {
+      "id": "ctx-what",
+      "template": "big",
+      "data": {
+        "kicker": "上下文",
+        "text": "這一次對話\n**記得住的量**"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "um5h",
+          "text": "上下文聽起來很專業，其實就是：它在這一次對話裡，能同時記住的量。",
+          "emotion": "「其實」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "ctx-auto",
+      "template": "quote",
+      "data": {
+        "kicker": "快滿的時候",
+        "quote": "When context fills up, Claude automatically summarizes the conversation and continues working.",
+        "translation": "上下文快滿時，Claude 會自動把對話壓成摘要，繼續做下去。",
+        "source": "Claude Code 文件｜desktop｜2026-10-21"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "2aer",
+          "text": "這個量有上限；快滿的時候，它會自動把前面的對話壓成摘要，再繼續做。"
+        }
+      ]
+    },
+    {
+      "id": "ctx-tools",
+      "template": "table",
+      "data": {
+        "title": "看用量、壓縮、換新對話",
+        "columns": [
+          "做法",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "模型選擇器旁的用量圈",
+            "看這次對話用了多少"
+          ],
+          [
+            "/compact",
+            "現在就壓成摘要；可加一句要保留什麼"
+          ],
+          [
+            "/clear",
+            "開全新的對話；專案的記憶還在"
+          ]
+        ],
+        "source": "文件 desktop、commands、costs｜2026-10-21"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "k2hr",
+          "text": "壓掉了哪些細節，你不一定知道；那能不能自己來？",
+          "emotion": "壓低，句尾上揚"
+        },
+        {
+          "id": "u4ry",
+          "text": "桌面版模型選擇器旁邊有個用量圈，點開就看得到這次用了多少。",
+          "reveal": 1
+        },
+        {
+          "id": "uu9z",
+          "text": "壓縮指令，現在就把對話壓成摘要，後面還能加一句，要它保留什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "62gk",
+          "text": "清空指令，開一個全新的對話，專案的記憶還在。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ctx-steps",
+      "template": "steps",
+      "data": {
+        "title": "一件事做完：寫進度、開新對話",
+        "steps": [
+          {
+            "title": "寫一份 進度.md",
+            "detail": "做完的、還沒做的、下一步（pr1）"
+          },
+          {
+            "title": "開一個新的對話"
+          },
+          {
+            "title": "先讀 進度.md，再草擬確認信",
+            "detail": "pr2"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pr1、pr2"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "urtk",
+          "text": "還有一個做法：一件事做完，先叫它把進度寫成一份檔，再開新的對話。",
+          "reveal": 1
+        },
+        {
+          "id": "3vdd",
+          "text": "寫在檔案裡，新的對話讀得到，你也看得到做到哪。"
+        },
+        {
+          "id": "kvzv",
+          "text": "新的對話裡，只叫它先讀進度，再草擬確認信。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "ctx-progress",
+      "template": "code",
+      "data": {
+        "code": "## 還沒做\n- 向場地送出飲食需求（11/01 前）——彙整已備好，尚未送出\n- 向本人確認 4 位待補資料者：\n  - 劉思妤、曾詩涵：沒有 Email\n  - 洪子晴：Email 缺 .com（zihching.hung@example），不猜\n  - 林佳蓉：10/01 那筆無 Email，需確認是否即 10/15 已在名單內的同一人\n- 確認王志明兩個 Email（業務部／研發部）是否真為兩人（目前依規則視為兩人）\n- 確認信尚未寄出（11/07 前；含時間、地點、交通、取消方式）\n- 行前提醒尚未寄出（11/12）",
+        "caption": "輸出/進度.md｜第 16–24 行（全檔 37 行）｜pr1 寫的"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "f34t",
+          "text": "這是它寫的進度裡，還沒做的那一段：餐點人數還沒給場地，四個人要補資料。"
+        }
+      ]
+    },
+    {
+      "id": "miss-where",
+      "template": "big",
+      "data": {
+        "kicker": "進度.md 在哪（pr1）",
+        "text": "不在最上層\n在 **輸出/**"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "fisc",
+          "text": "可是這份進度，沒有出現在資料夾最上層。",
+          "emotion": "停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ctx-miss",
+      "template": "quote",
+      "data": {
+        "kicker": "它的回覆（pr1）",
+        "quote": "放在 `輸出/` 是依 CLAUDE.md「整理出來的檔案一律放到 輸出/」的規矩。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pr1"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "wqdq",
+          "text": "資料夾裡有一份規矩寫著，整理出來的檔一律放進輸出資料夾，它就照做了。"
+        }
+      ]
+    },
+    {
+      "id": "miss-search",
+      "template": "steps",
+      "data": {
+        "title": "新的對話，找進度的經過（pr2）",
+        "steps": [
+          {
+            "title": "讀最上層的 進度.md：找不到"
+          },
+          {
+            "title": "搜整個資料夾"
+          },
+          {
+            "title": "讀到 輸出/進度.md"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pr2 的工具呼叫"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "v239",
+          "text": "新的對話先去最上層找，沒找到。",
+          "reveal": 1
+        },
+        {
+          "id": "787t",
+          "text": "只好把整個資料夾搜一遍，才在輸出資料夾裡讀到。",
+          "reveal": 2
+        },
+        {
+          "id": "gvij",
+          "text": "要它讀哪個檔，就連資料夾一起講清楚。"
+        }
+      ]
+    },
+    {
+      "id": "rules-again",
+      "template": "big",
+      "data": {
+        "kicker": "那規矩呢",
+        "text": "每開一次新對話\n都要**重講**？"
+      },
+      "lines": [
+        {
+          "id": "hygc",
+          "text": "可是每開一次新對話，那些規矩是不是都要重講一次？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "md-open",
+      "chapter": "CLAUDE.md 是什麼？自己寫一份十二行的規矩",
+      "template": "big",
+      "data": {
+        "kicker": "剛剛那份規矩",
+        "text": "**CLAUDE.md**"
+      },
+      "lines": [
+        {
+          "id": "te2v",
+          "text": "不用。剛剛那份規矩，就是一個叫 CLAUDE.md 的檔。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "md-ask",
+      "template": "chat",
+      "data": {
+        "title": "你心裡的那一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "怎麼又要寫一個檔？每次講清楚不就好了？"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "q8bt",
+          "text": "你可能會想：怎麼又要寫一個檔？每次講清楚不就好了？",
+          "reveal": 1,
+          "emotion": "替觀眾問出口，問句上揚"
+        },
+        {
+          "id": "8rzj",
+          "text": "講清楚當然可以，只是那一長段，每次都要重打。"
+        }
+      ]
+    },
+    {
+      "id": "md-why",
+      "template": "quote",
+      "data": {
+        "kicker": "CLAUDE.md",
+        "quote": "Claude reads them at the start of every session.",
+        "translation": "每一次對話開始，Claude 都會先讀這些檔。",
+        "source": "Claude Code 文件｜memory｜2026-10-21"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "3ghe",
+          "text": "寫進 CLAUDE.md，放在資料夾最上層，每次開新對話，它都會先讀。"
+        }
+      ]
+    },
+    {
+      "id": "md-context",
+      "template": "quote",
+      "data": {
+        "kicker": "它是脈絡，不是設定",
+        "quote": "Claude treats them as context, not enforced configuration.",
+        "translation": "Claude 把它們當成脈絡，不是強制的設定。",
+        "source": "Claude Code 文件｜memory｜2026-10-21"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "8gu9",
+          "text": "它是寫給它讀的一段話，不是強制的設定，所以寫法決定它照不照做。"
+        }
+      ]
+    },
+    {
+      "id": "md-all",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "8wjx",
+          "text": "這就是你要寫的那一份：整份十二行，每一條都是一句白話。",
+          "emotion": "慢下來，像要開始唸"
+        }
+      ]
+    },
+    {
+      "id": "md-r1",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          3,
+          4
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "83z3",
+          "text": "第一條，報名表和活動說明，只讀不改；第二條，整理出來的檔，一律放到輸出資料夾。",
+          "emotion": "一條一條，清楚"
+        }
+      ]
+    },
+    {
+      "id": "md-r2",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          5,
+          6
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "hrrt",
+          "text": "第三條，同名不一定同一人，Email 不同就是兩個人。"
+        },
+        {
+          "id": "9ne2",
+          "text": "第四條，同一個 Email 填了兩次，以最後一次為準。"
+        }
+      ]
+    },
+    {
+      "id": "md-r3",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          7,
+          8
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "uqir",
+          "text": "第五條，備註寫取消的，和測試資料，不放進寄信名單。"
+        },
+        {
+          "id": "9upa",
+          "text": "第六條，沒有 Email 或格式不對的，列進要補資料，不要猜。"
+        }
+      ]
+    },
+    {
+      "id": "md-r4",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          9,
+          10
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "qy7z",
+          "text": "第七條，哪一版最新，看內容對不對得上活動說明，不看檔名，也不看修改時間。",
+          "emotion": "放慢，「不看」加重"
+        }
+      ]
+    },
+    {
+      "id": "md-r5",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          11,
+          12
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "d5e5",
+          "text": "最後一條，做完在處理日誌寫下：做了什麼、動了幾筆、哪裡沒把握。"
+        }
+      ]
+    },
+    {
+      "id": "md-vague",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 名單要整理乾淨。",
+        "caption": "只寫一句的那一份（v1 用的）｜全檔 3 行"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "7rum",
+          "text": "為了比較，另一份只寫一句：名單要整理乾淨。"
+        },
+        {
+          "id": "szdb",
+          "text": "兩份規矩，加上什麼都沒有的，會差多少？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "md-checks",
+      "template": "bullets",
+      "data": {
+        "title": "十項檢查（節錄 5 項）",
+        "items": [
+          "原始報名表沒被改",
+          "兩個王志明都在",
+          "取消的、測試的不在名單",
+          "要補資料的人另外列出",
+          "有處理日誌"
+        ],
+        "source": "score.mjs｜跑之前寫好｜從檔案判定，不讀回覆"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "enuy",
+          "text": "我拿同樣的一句「幫我整理報名名單」，在三個資料夾各跑了一次。",
+          "emotion": "平實"
+        },
+        {
+          "id": "zhp7",
+          "text": "對的是同一張十項檢查表：兩個王志明都在、取消的不在、要有處理日誌這些。",
+          "reveal": 5
+        }
+      ]
+    },
+    {
+      "id": "md-runs",
+      "template": "table",
+      "data": {
+        "title": "同樣的一句：幫我整理報名名單",
+        "columns": [
+          "資料夾裡的 CLAUDE.md",
+          "十項過幾項",
+          "差在哪"
+        ],
+        "rows": [
+          [
+            "沒有（n1）",
+            "8",
+            "要補資料的人混在名單裡；沒有日誌"
+          ],
+          [
+            "只寫一句（v1）",
+            "8",
+            "跟沒有一樣"
+          ],
+          [
+            "寫清楚的 12 行（s1）",
+            "9",
+            "進 輸出/、有日誌、要補的人另外列"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜n1、v1、s1 各 1 次"
+      },
+      "claims": [
+        "c36",
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "z4ta",
+          "text": "沒有 CLAUDE.md 的那一次，十項過了八項。",
+          "reveal": 1
+        },
+        {
+          "id": "dbwi",
+          "text": "它沒寫日誌，要補資料的三個人，還混在寄信名單裡。"
+        },
+        {
+          "id": "5vd2",
+          "text": "只寫一句的那一份，也是八項，跟沒有一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "wu36",
+          "text": "寫清楚的那一份，九項。",
+          "reveal": 1,
+          "emotion": "停半拍"
+        },
+        {
+          "id": "8kxe",
+          "text": "有幫助，但不是每一項。",
+          "emotion": "平實，不誇大"
+        }
+      ]
+    },
+    {
+      "id": "md-changed",
+      "template": "compare",
+      "data": {
+        "title": "十二行改變了什麼（s1 對 n1）",
+        "left": {
+          "heading": "照規矩做到的",
+          "points": [
+            "檔案進了 輸出/",
+            "寫了處理日誌",
+            "要補資料的人移出寄信名單"
+          ]
+        },
+        "right": {
+          "heading": "規矩沒寫，就沒做",
+          "points": [
+            "部門寫法沒有統一",
+            "回覆裡說：部門寫法沒有統一"
+          ]
+        },
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜s1、n1"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "dgqg",
+          "text": "改變的是三件：檔案進了輸出資料夾、留了處理日誌、要補資料的人移出了名單。",
+          "reveal": 1
+        },
+        {
+          "id": "wb5r",
+          "text": "沒過的那一項是部門寫法：規矩裡沒寫，它在回覆裡直接說，沒有統一。",
+          "reveal": 1,
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "md-much",
+      "template": "quote",
+      "data": {
+        "kicker": "每份 CLAUDE.md 的目標：200 行以內",
+        "quote": "The more specific and concise your instructions, the more consistently Claude follows them.",
+        "translation": "指示寫得越具體、越精簡，Claude 照做得越一致。",
+        "source": "Claude Code 文件｜memory｜2026-10-21"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "yv7p",
+          "text": "那寫越多越好嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "4dkz",
+          "text": "不是越多越好，是越具體越好。"
+        },
+        {
+          "id": "4f33",
+          "text": "寫得越具體、越精簡，它照做得越一致；每份的目標，是兩百行以內。",
+          "reveal": 1,
+          "emotion": "「兩百行」放慢"
+        }
+      ]
+    },
+    {
+      "id": "md-rule",
+      "template": "big",
+      "data": {
+        "kicker": "這個頻道的建議",
+        "text": "只放每次都要的\n寫得出**怎麼算做對**的"
+      },
+      "lines": [
+        {
+          "id": "3qqw",
+          "text": "這個頻道的建議：只放每次都要的，而且寫得出怎麼算做對的，才寫進去。"
+        }
+      ]
+    },
+    {
+      "id": "md-g1",
+      "template": "compare",
+      "data": {
+        "title": "它自己寫的，對你寫的",
+        "left": {
+          "heading": "它寫的六條（g1）",
+          "points": [
+            "只列了檔名，沒打開檔",
+            "第 3 條：看修改時間最新的",
+            "沒有 輸出/、同名、日誌"
+          ]
+        },
+        "right": {
+          "heading": "你寫的十二行",
+          "points": [
+            "第 7、8 行：看內容對不對得上",
+            "寫了 輸出/、同名、要補資料、日誌"
+          ]
+        },
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜g1｜逐條對照"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "v7ft",
+          "text": "也可以先叫它替你寫一份，再自己改；只是要一條一條對過。"
+        },
+        {
+          "id": "gucw",
+          "text": "還記得開頭那份它自己寫的規矩嗎？它的第三條，跟你的第七條正好相反。",
+          "reveal": 1,
+          "emotion": "「正好相反」加重"
+        },
+        {
+          "id": "eksp",
+          "text": "六條裡也沒有輸出資料夾、沒有同名的判斷，更沒有日誌。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "md-edit",
+      "template": "code",
+      "data": {
+        "code": "# 講座籌備資料夾的規矩\n\n- 報名表.csv、活動說明.md 只讀不改。\n- 整理出來的檔案一律放到 輸出/。\n- 同名不一定同一人：Email 不同就是兩個人。\n- 同一個 Email 填了兩次，以最後一次為準。\n- 備註寫「取消」的和測試資料，不放進寄信名單。\n- 沒有 Email 或格式不對的，列進要補資料，不要猜。\n- 哪一版最新，看內容對不對得上 活動說明.md，\n  不看檔名，也不看修改時間。\n- 做完在 輸出/處理日誌.md 寫下：做了什麼、\n  動了幾筆、哪裡沒把握。",
+        "highlight": [
+          5
+        ],
+        "caption": "講座籌備/CLAUDE.md｜全檔 12 行｜放在資料夾最上層"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "zg6v",
+          "text": "輪到你改一行：把第三條，換成你自己名單判斷同一個人的方式。",
+          "emotion": "轉向觀眾，亮一點"
+        },
+        {
+          "id": "6s29",
+          "text": "例如公司名單看員工編號，社團名單看手機號碼。"
+        }
+      ]
+    },
+    {
+      "id": "md-check",
+      "template": "steps",
+      "data": {
+        "title": "改完，對一次",
+        "steps": [
+          {
+            "title": "改第 3 條"
+          },
+          {
+            "title": "用同樣的八個字再跑一次"
+          },
+          {
+            "title": "打開 輸出/處理日誌.md 對一次"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "csgn",
+          "text": "改完，用同樣的八個字再跑一次。",
+          "reveal": 2
+        },
+        {
+          "id": "y34h",
+          "text": "打開處理日誌，看它有沒有照新的那一條做。",
+          "reveal": 1
+        },
+        {
+          "id": "xkem",
+          "text": "四個基本功都有了，現在讓它把這場講座做出來。"
+        }
+      ]
+    },
+    {
+      "id": "hands-on",
+      "chapter": "實戰：讓 Claude Code 整理一整場講座",
+      "template": "big",
+      "data": {
+        "kicker": "講座籌備/",
+        "text": "先管住它\n**再放手**"
+      },
+      "lines": [
+        {
+          "id": "cevy",
+          "text": "前面說過，碰得到你檔案的東西，你得先管得住它。",
+          "emotion": "回到開場的口氣，壓低"
+        },
+        {
+          "id": "jbi2",
+          "text": "範圍圈好了、模式選好了、規矩也寫了，現在放手讓它做。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "m3-table",
+      "template": "table",
+      "data": {
+        "title": "看一眼資料夾：照修改時間排",
+        "columns": [
+          "大綱",
+          "修改時間",
+          "內容寫的"
+        ],
+        "rows": [
+          [
+            "這次絕對最終版",
+            "10/20",
+            "到 16:00，講者待確認"
+          ],
+          [
+            "真的最終版",
+            "10/18",
+            "到 16:30，兩位皆已確認"
+          ],
+          [
+            "最終版",
+            "10/05",
+            "到 16:00，第二位待邀請"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜ls -lt、grep｜沒有用到模型"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "uy62",
+          "text": "第一件是那三份大綱：最終版、真的最終版、這次絕對最終版。"
+        },
+        {
+          "id": "8bv6",
+          "text": "你的資料夾裡，大概也有這麼一組。",
+          "emotion": "帶笑"
+        },
+        {
+          "id": "xvwf",
+          "text": "照修改時間挑，會挑到哪一份？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "q95g",
+          "text": "照修改時間排，最上面是十月二十號存的這次絕對最終版。",
+          "reveal": 1
+        },
+        {
+          "id": "icfx",
+          "text": "可是它寫的還是四點結束，講者也還在待確認。",
+          "emotion": "壓低"
+        },
+        {
+          "id": "v4ec",
+          "text": "只有十月十八號的真的最終版，寫著四點半結束、兩位講者都已確認。",
+          "reveal": 1
+        },
+        {
+          "id": "u6x7",
+          "text": "最早的最終版，第二位講者還在邀請。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "m3-who",
+      "template": "stats",
+      "data": {
+        "title": "誰選對了",
+        "stats": [
+          {
+            "value": "4／4",
+            "label": "打開大綱讀過的",
+            "note": "pl1、m1、a1、a2：真的最終版"
+          },
+          {
+            "value": "0",
+            "label": "寫規矩前打開的檔",
+            "note": "g1：只列了檔名"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "7kgt",
+          "text": "打開大綱讀過的那四次，四次都照內容，選了真的最終版。",
+          "reveal": 1,
+          "emotion": "「四次」放慢"
+        },
+        {
+          "id": "qey9",
+          "text": "差別只在，有沒有打開來讀。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "a1-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "自動接受編輯那一次，回覆第一句（a1）",
+        "quote": "整理完了，但我選的不是修改時間最新的那份。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜a1 的回覆"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "pf63",
+          "text": "自動接受編輯那一次，回覆第一句就先講清楚：它沒照修改時間選。"
+        },
+        {
+          "id": "fgmk",
+          "text": "有 CLAUDE.md 的那一次也選對了，還照最後一條留了日誌。"
+        }
+      ]
+    },
+    {
+      "id": "list-say",
+      "template": "compare",
+      "data": {
+        "title": "跟它講目的",
+        "left": {
+          "heading": "只說動作",
+          "points": [
+            "幫我整理報名名單。"
+          ]
+        },
+        "right": {
+          "heading": "講目的（p1）",
+          "points": [
+            "我要在 11/7 前寄講座確認信",
+            "整理一份可以直接寄確認信的名單"
+          ]
+        }
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "rcmz",
+          "text": "第二件是報名表：這一次，要怎麼跟它開口？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "2n7n",
+          "text": "跟它講目的：不要只說幫我整理名單，",
+          "reveal": 1
+        },
+        {
+          "id": "wssz",
+          "text": "要說你要在七號前寄確認信，整理一份可以直接寄的名單。",
+          "reveal": 1,
+          "emotion": "「目的」那幾個字加重"
+        }
+      ]
+    },
+    {
+      "id": "list-ask",
+      "template": "code",
+      "data": {
+        "code": "我要在 11/7 前寄講座確認信。\n用這個資料夾的 報名表.csv 和 活動說明.md，\n整理一份可以直接寄確認信的名單，\n存成 輸出/確認信名單.csv；\n沒辦法寄的人另外列在 輸出/要補資料.csv。\n原始檔不要改。\n做完把你做了什麼、動了哪幾筆、哪裡沒把握，\n寫進 輸出/處理日誌.md，\n也算出要跟場地說的素食和過敏人數。",
+        "highlight": [
+          4,
+          5,
+          6
+        ],
+        "caption": "prompts/purpose.txt｜p1 的完整要求｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "6mi9",
+          "text": "它才知道哪些人不該寄、名單存成哪個檔，還有原始檔不能改。"
+        }
+      ]
+    },
+    {
+      "id": "list-ask-log",
+      "template": "code",
+      "data": {
+        "code": "我要在 11/7 前寄講座確認信。\n用這個資料夾的 報名表.csv 和 活動說明.md，\n整理一份可以直接寄確認信的名單，\n存成 輸出/確認信名單.csv；\n沒辦法寄的人另外列在 輸出/要補資料.csv。\n原始檔不要改。\n做完把你做了什麼、動了哪幾筆、哪裡沒把握，\n寫進 輸出/處理日誌.md，\n也算出要跟場地說的素食和過敏人數。",
+        "highlight": [
+          7,
+          8
+        ],
+        "caption": "prompts/purpose.txt｜p1 的完整要求｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "x6xg",
+          "text": "最後叫它留處理日誌，因為你得看得到它做了什麼，才有辦法驗收。"
+        }
+      ]
+    },
+    {
+      "id": "list-steps",
+      "template": "steps",
+      "data": {
+        "title": "這一次，它依序做了什麼（p1）",
+        "steps": [
+          {
+            "title": "列出資料夾，讀活動說明和報名表",
+            "detail": "一個指令一起讀"
+          },
+          {
+            "title": "想跑小程式整理：被擋 4 次"
+          },
+          {
+            "title": "改用寫檔工具：寫出三個檔"
+          },
+          {
+            "title": "回覆：沒跑程式，建議你看筆數"
+          }
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜p1 的工具呼叫"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "dgp2",
+          "text": "它先列出資料夾，把活動說明和報名表一起讀完。",
+          "reveal": 1
+        },
+        {
+          "id": "z2ah",
+          "text": "接著想跑一支小程式來整理，被擋下四次。",
+          "reveal": 1
+        },
+        {
+          "id": "7zrx",
+          "text": "它就改用寫檔的工具，直接寫出三個檔。",
+          "reveal": 1
+        },
+        {
+          "id": "2i58",
+          "text": "回覆裡它自己講明：沒跑程式，是逐列核對的，建議你打開名單看一下筆數。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "list-stats",
+      "template": "stats",
+      "data": {
+        "title": "處理日誌裡的數字（p1）",
+        "stats": [
+          {
+            "value": "16",
+            "label": "可以直接寄確認信"
+          },
+          {
+            "value": "3",
+            "label": "要補資料"
+          },
+          {
+            "value": "4 或 5",
+            "label": "素食",
+            "note": "劉思妤若來是 5，建議先報 5"
+          },
+          {
+            "value": "2",
+            "label": "海鮮過敏"
+          }
+        ],
+        "source": "實跑 2026-10-21｜p1｜輸出/處理日誌.md"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "6edf",
+          "text": "日誌寫得很清楚：可以直接寄的十六人，要補資料的三人。",
+          "reveal": 2
+        },
+        {
+          "id": "y9ad",
+          "text": "素食四份；還沒補 Email 的劉思妤如果也會來，就是五份，它建議先報五。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "3jad",
+          "text": "海鮮過敏兩位，連要給場地的期限，都寫在同一段。",
+          "reveal": 1
+        },
+        {
+          "id": "mysq",
+          "text": "那確認信，它寫得對不對？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "letter",
+      "template": "code",
+      "data": {
+        "code": "## 活動資訊\n- 日期：2026 年 11 月 14 日（六）\n- 時間：14:00–16:30（含 20 分鐘 Q&A）\n- 地點：台北市信義區某共享空間 3F 多功能室\n  - 詳細地址：【請補上】\n- 講者：周以安、范可甯\n- 費用：免費",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": "輸出/確認信草稿.md｜第 15–21 行（全檔 47 行）｜pr2｜地點是虛構的"
+      },
+      "claims": [
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "4d2n",
+          "text": "第三件是確認信。新的對話讀了進度，草擬出來的活動資訊，對得上活動說明。"
+        }
+      ]
+    },
+    {
+      "id": "letter-blank",
+      "template": "code",
+      "data": {
+        "code": "## 活動資訊\n- 日期：2026 年 11 月 14 日（六）\n- 時間：14:00–16:30（含 20 分鐘 Q&A）\n- 地點：台北市信義區某共享空間 3F 多功能室\n  - 詳細地址：【請補上】\n- 講者：周以安、范可甯\n- 費用：免費",
+        "highlight": [
+          5
+        ],
+        "caption": "輸出/確認信草稿.md｜第 15–21 行（全檔 47 行）｜pr2｜地點是虛構的"
+      },
+      "claims": [
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "dnpn",
+          "text": "日期、時間、地點都對；地址和取消方式活動說明沒寫，它就留空讓你補。"
+        }
+      ]
+    },
+    {
+      "id": "letter-slip",
+      "template": "quote",
+      "data": {
+        "kicker": "同一份草稿裡的一句（pr2）",
+        "quote": "活動前一天（11/12）會再寄一封行前提醒。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜pr2 的確認信草稿"
+      },
+      "claims": [
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "ijrk",
+          "text": "可是有一句錯了：它寫活動前一天，括號裡卻是另一個日期。",
+          "emotion": "停半拍，壓低"
+        },
+        {
+          "id": "bf6z",
+          "text": "講座是十四號，它寫的十二號，是前兩天。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "slip-check",
+      "template": "big",
+      "data": {
+        "kicker": "寄信之前",
+        "text": "日期\n**自己對一次**"
+      },
+      "lines": [
+        {
+          "id": "kbvh",
+          "text": "寄信之前，日期由你自己對一次。"
+        },
+        {
+          "id": "mwct",
+          "text": "這一整套檢查，每來一批報名就要再做一次，能不能存起來？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "skill-open",
+      "chapter": "Skill 是什麼？把每週的報名檢查存起來",
+      "template": "big",
+      "data": {
+        "kicker": "報名表_第二批.csv",
+        "text": "6 筆\n同一套檢查**再做一次**"
+      },
+      "lines": [
+        {
+          "id": "rdqu",
+          "text": "可以。第二批報名表進來了，六筆，同一套檢查要再做一次。"
+        }
+      ]
+    },
+    {
+      "id": "skill-what",
+      "template": "quote",
+      "data": {
+        "kicker": "Skill 跟 CLAUDE.md 差在哪",
+        "quote": "Unlike CLAUDE.md content, a skill's body loads only when it's used",
+        "translation": "跟 CLAUDE.md 不一樣，Skill 的內文只有用到時才載入。",
+        "source": "Claude Code 文件｜skills｜2026-10-21"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "2vih",
+          "text": "到這裡你可能會有個疑惑：那 Skill 跟 CLAUDE.md 差在哪？",
+          "emotion": "替觀眾問出口，問句上揚"
+        },
+        {
+          "id": "7b7i",
+          "text": "CLAUDE.md 每次開對話都先讀；Skill 平常只看介紹，用到時才讀內文。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "skill-plain",
+      "template": "big",
+      "data": {
+        "kicker": "Skill",
+        "text": "寫好步驟的說明\n用到才**翻開**"
+      },
+      "lines": [
+        {
+          "id": "uqww",
+          "text": "Skill 聽起來很專業，其實就是一份寫好步驟的說明，存在資料夾裡，用到才翻開。",
+          "emotion": "「其實」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "skill-choose",
+      "template": "table",
+      "data": {
+        "title": "放哪裡",
+        "columns": [
+          "你要它記住的",
+          "放這裡"
+        ],
+        "rows": [
+          [
+            "每次都要守的規矩",
+            "CLAUDE.md"
+          ],
+          [
+            "一直在重貼的同一段指示",
+            "Skill"
+          ],
+          [
+            "CLAUDE.md 裡長成整套流程的那一段",
+            "Skill"
+          ]
+        ],
+        "source": "Claude Code 文件｜skills、memory｜2026-10-21"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "ce5d",
+          "text": "怎麼選？每次都要守的規矩，留在 CLAUDE.md。",
+          "reveal": 1
+        },
+        {
+          "id": "e3dj",
+          "text": "同一段指示一直在重貼，就做成 Skill。",
+          "reveal": 1
+        },
+        {
+          "id": "k8gk",
+          "text": "CLAUDE.md 裡長成整套流程的那一段，也搬過去。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "skill-head",
+      "template": "code",
+      "data": {
+        "code": "---\ndescription: >-\n  檢查講座報名表，產出寄信名單、要補資料名單和處理日誌。\n  有新的報名表進來，或有人說「檢查報名」時用。\n---",
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–5 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "qyw3",
+          "text": "這份 Skill 存在講座籌備裡，名字叫 signup-check。"
+        }
+      ]
+    },
+    {
+      "id": "skill-desc",
+      "template": "code",
+      "data": {
+        "code": "---\ndescription: >-\n  檢查講座報名表，產出寄信名單、要補資料名單和處理日誌。\n  有新的報名表進來，或有人說「檢查報名」時用。\n---",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–5 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "jkeu",
+          "text": "開頭是介紹：檢查講座報名表，產出寄信名單、要補資料名單和處理日誌。",
+          "emotion": "照唸，清楚"
+        }
+      ]
+    },
+    {
+      "id": "skill-when",
+      "template": "code",
+      "data": {
+        "code": "---\ndescription: >-\n  檢查講座報名表，產出寄信名單、要補資料名單和處理日誌。\n  有新的報名表進來，或有人說「檢查報名」時用。\n---",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 1–5 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "saer",
+          "text": "有新的報名表進來，或有人說「檢查報名」時用。"
+        },
+        {
+          "id": "zm8z",
+          "text": "它怎麼知道什麼時候該用？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "skill-auto",
+      "template": "quote",
+      "data": {
+        "kicker": "description 的用處",
+        "quote": "the `description` helps Claude decide when to load the skill automatically",
+        "translation": "description 幫 Claude 判斷，什麼時候自動載入這個 Skill。",
+        "source": "Claude Code 文件｜skills｜2026-10-21"
+      },
+      "claims": [
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "9hhb",
+          "text": "就靠這段介紹，判斷什麼時候該拿出這份 Skill。"
+        }
+      ]
+    },
+    {
+      "id": "skill-s1",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          3,
+          4
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "c3st",
+          "text": "第一步，讀要檢查的報名表，沒指定就讀原本那一份；",
+          "emotion": "一步一步唸"
+        },
+        {
+          "id": "jmbw",
+          "text": "也讀活動說明，和現有的確認信名單。"
+        }
+      ]
+    },
+    {
+      "id": "skill-s1b",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          5,
+          6
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "yf8t",
+          "text": "第二步，同一個 Email 只留最後一次；同名但 Email 不同，當成兩個人；"
+        }
+      ]
+    },
+    {
+      "id": "skill-s1c",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          6
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "s5we",
+          "text": "已經在名單上的 Email，不重複加。"
+        }
+      ]
+    },
+    {
+      "id": "skill-s2",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          7,
+          8
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "ra5q",
+          "text": "第三步，備註寫取消的人和測試資料，不放進寄信名單。"
+        },
+        {
+          "id": "jm8z",
+          "text": "第四步，沒有 Email 或格式不對的，加進要補資料。"
+        }
+      ]
+    },
+    {
+      "id": "skill-s3",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          9,
+          10
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "mc6k",
+          "text": "第五步，其餘加進確認信名單，部門統一成行銷部、業務部、研發部、人資部、財務部。",
+          "emotion": "部門一個一個唸，輕快"
+        }
+      ]
+    },
+    {
+      "id": "skill-s3b",
+      "template": "code",
+      "data": {
+        "code": "# 報名表檢查\n\n1. 讀要檢查的報名表（沒指定就讀 報名表.csv）、\n   活動說明.md，和現有的 輸出/確認信名單.csv。\n2. 同一個 Email 只留最後一次；同名但 Email 不同，\n   當成兩個人。已經在名單上的 Email 不重複加。\n3. 備註寫「取消」的人和測試資料，不放進寄信名單。\n4. 沒有 Email 或格式不對的，加進 輸出/要補資料.csv。\n5. 其餘加進 輸出/確認信名單.csv，部門統一成\n   行銷部、業務部、研發部、人資部、財務部。\n6. 算出素食、過敏、其他忌口各幾位，連同做了什麼，\n   寫進 輸出/處理日誌.md。",
+        "highlight": [
+          11,
+          12
+        ],
+        "caption": ".claude/skills/signup-check/SKILL.md｜第 7–18 行（全檔 18 行）"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "6pwj",
+          "text": "第六步，算出素食、過敏、其他忌口各幾位，連同做了什麼，寫進處理日誌。"
+        }
+      ]
+    },
+    {
+      "id": "skill-ask",
+      "template": "chat",
+      "data": {
+        "title": "同一批，兩種叫法",
+        "messages": [
+          {
+            "side": "right",
+            "name": "打斜線（k1）",
+            "text": "/signup-check 報名表_第二批.csv"
+          },
+          {
+            "side": "right",
+            "name": "不打斜線（k2）",
+            "text": "第二批報名表來了（報名表_第二批.csv），照平常的方式檢查一下。"
+          }
+        ]
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "955c",
+          "text": "一次打斜線加上它的名字，直接叫它。",
+          "reveal": 1
+        },
+        {
+          "id": "743t",
+          "text": "另一次只說：第二批來了，照平常的方式檢查一下。",
+          "reveal": 1
+        },
+        {
+          "id": "ubzr",
+          "text": "兩次開頭的技能清單裡，都有 signup-check。"
+        }
+      ]
+    },
+    {
+      "id": "skill-pick",
+      "template": "quote",
+      "data": {
+        "kicker": "不打斜線那一次，第一個動作：呼叫 Skill 工具（k2）",
+        "quote": "{\"skill\":\"signup-check\",\"args\":\"報名表_第二批.csv\"}",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜k2 的工具呼叫"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "cktr",
+          "text": "那不打斜線，它想得到嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "xxz6",
+          "text": "沒打斜線的那一次，它第一個動作，就是自己拿出這份 Skill。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "skill-run",
+      "template": "table",
+      "data": {
+        "title": "第二批 6 筆的檢查",
+        "columns": [
+          "檢查",
+          "k1",
+          "k2"
+        ],
+        "rows": [
+          [
+            "簡郁庭、邱品妍加進寄信名單",
+            "過",
+            "過"
+          ],
+          [
+            "王志明沒有重複",
+            "過",
+            "過"
+          ],
+          [
+            "測試二不在名單",
+            "過",
+            "過"
+          ],
+          [
+            "宋柏均列進要補資料",
+            "過",
+            "過"
+          ],
+          [
+            "寄信名單共 18 個 Email",
+            "過",
+            "過"
+          ],
+          [
+            "黃雅婷想改線上：有提出來",
+            "過",
+            "過"
+          ]
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜k1、k2"
+      },
+      "claims": [
+        "c54",
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "h5hp",
+          "text": "兩次的六項檢查都全過：兩個新人進了名單，重填的王志明沒有重複。",
+          "reveal": 2,
+          "emotion": "「全過」亮起來"
+        },
+        {
+          "id": "dkmu",
+          "text": "測試二沒放進去，沒填 Email 的宋柏均進了要補資料，名單一共十八個 Email。",
+          "reveal": 3
+        },
+        {
+          "id": "fise",
+          "text": "步驟裡沒寫的黃雅婷想改線上參加，它也挑出來，請你決定。",
+          "reveal": 1,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "skill-dept",
+      "template": "quote",
+      "data": {
+        "kicker": "打斜線那一次的回覆（k1）",
+        "quote": "第一批名單裡還有 mkt、研發、R&D 這類寫法沒統一,我只統一了這次新增的兩筆。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜k1 的回覆"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "qsm5",
+          "text": "部門那一條，它只套在新加的兩筆，舊名單的寫法還問你要不要一起改。"
+        },
+        {
+          "id": "euni",
+          "text": "那要接上行事曆、信箱這些外面的服務呢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "chapter": "連接器和排程：接上之前、每天早上自己跑",
+      "template": "bullets",
+      "data": {
+        "title": "接上之前，先確認信得過",
+        "items": [
+          "別人給的 Skill：先打開，讀每一步",
+          "連接器：只接你真的會用的",
+          "會抓外部內容的：小心被帶偏"
+        ],
+        "source": "第 3 項：文件 mcp 2026-10-21｜第 1、2 項：頻道建議"
+      },
+      "claims": [
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "vjir",
+          "text": "連接器能讓它讀你的行事曆、發訊息，所以接上之前，先確認信得過。"
+        },
+        {
+          "id": "u29s",
+          "text": "別人給的 Skill，先打開讀每一步，像剛剛那份一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "cxbq",
+          "text": "連接器只接你真的會用的那幾個。",
+          "reveal": 1
+        },
+        {
+          "id": "mkj6",
+          "text": "會去抓外部內容的，可能被內容裡藏的指令帶著走，也就是提示注入。",
+          "reveal": 1,
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "connect",
+      "template": "screencast",
+      "data": {
+        "title": "連接器在這裡",
+        "caption": "Claude Code 文件｜desktop｜Connect external tools｜2026-10-21 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/desktop#connect-external-tools"
+          },
+          {
+            "action": "wait",
+            "selector": "#connect-external-tools"
+          },
+          {
+            "action": "capture",
+            "focus": "#connect-external-tools"
+          }
+        ]
+      },
+      "claims": [
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "mpg2",
+          "text": "連接器，就是有圖形設定畫面的 MCP 伺服器。"
+        }
+      ]
+    },
+    {
+      "id": "connect-steps",
+      "template": "steps",
+      "data": {
+        "title": "接上、拔掉",
+        "steps": [
+          {
+            "title": "提示框旁邊的 ＋"
+          },
+          {
+            "title": "Add connectors：打開連接器目錄"
+          },
+          {
+            "title": "Settings > Connectors：管理或拔掉"
+          }
+        ],
+        "source": "Claude Code 文件｜desktop｜2026-10-21"
+      },
+      "claims": [
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "s4ma",
+          "text": "在提示框旁邊按加號，選 Add connectors，就會打開連接器目錄。",
+          "reveal": 2
+        },
+        {
+          "id": "bdds",
+          "text": "要管理或拔掉，到設定裡的 Connectors。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sched",
+      "template": "table",
+      "data": {
+        "title": "三種排程",
+        "columns": [
+          "差在",
+          "雲端",
+          "桌面版",
+          "對話裡的 /loop"
+        ],
+        "rows": [
+          [
+            "要開著電腦",
+            "不用",
+            "要",
+            "要"
+          ],
+          [
+            "要開著對話",
+            "不用",
+            "不用",
+            "要"
+          ],
+          [
+            "讀得到你的檔",
+            "讀不到",
+            "讀得到",
+            "讀得到"
+          ],
+          [
+            "最短間隔",
+            "1 小時",
+            "1 分鐘",
+            "1 分鐘"
+          ]
+        ],
+        "source": "文件 desktop-scheduled-tasks｜2026-10-21"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "hz2s",
+          "text": "最後是排程：要同一個檢查每天早上自己跑，該選哪一種？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "4vmi",
+          "text": "要不要開著電腦：雲端的不用，桌面版和對話裡的那一種都要。",
+          "reveal": 1
+        },
+        {
+          "id": "5cge",
+          "text": "要不要開著對話：只有對話裡的那一種要，關了就停。",
+          "reveal": 1
+        },
+        {
+          "id": "rtnu",
+          "text": "讀不讀得到你的檔：雲端的讀不到，另外兩種讀得到。",
+          "reveal": 1
+        },
+        {
+          "id": "x8et",
+          "text": "最短多久一次：雲端一小時，另外兩種一分鐘。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "sched-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "桌面版排程，新手常踩的坑",
+        "quote": "A task scheduled for 9am might run at 11pm if your computer was asleep all day.",
+        "translation": "排在早上九點的任務，電腦睡了一整天的話，可能晚上十一點才跑。",
+        "source": "Claude Code 文件｜desktop-scheduled-tasks｜2026-10-21"
+      },
+      "claims": [
+        "c59"
+      ],
+      "lines": [
+        {
+          "id": "2kxy",
+          "text": "要讀你資料夾裡的報名表，就用桌面版的排程。"
+        },
+        {
+          "id": "ayze",
+          "text": "新手常踩的坑：排在早上九點的，電腦睡了一整天，可能晚上十一點才跑。",
+          "reveal": 1,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "daily",
+      "template": "code",
+      "data": {
+        "code": "這是每天早上九點要跑的檢查：\n比對 報名表.csv、報名表_第二批.csv 跟 輸出/確認信名單.csv，\n看有沒有還沒放進名單的新報名。\n有的話列出姓名和填表時間，沒有就寫「今天沒有新報名」。\n結果加在 輸出/每日報名摘要.md 的最上面，不要改其他檔案。",
+        "highlight": [
+          1,
+          2,
+          3
+        ],
+        "caption": "prompts/daily.txt｜排程要跑的那一句｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c60"
+      ],
+      "lines": [
+        {
+          "id": "pmzn",
+          "text": "排程要跑的就是這一句：比對兩批報名表和確認信名單，找出還沒放進名單的新報名。"
+        }
+      ]
+    },
+    {
+      "id": "daily-out",
+      "template": "code",
+      "data": {
+        "code": "這是每天早上九點要跑的檢查：\n比對 報名表.csv、報名表_第二批.csv 跟 輸出/確認信名單.csv，\n看有沒有還沒放進名單的新報名。\n有的話列出姓名和填表時間，沒有就寫「今天沒有新報名」。\n結果加在 輸出/每日報名摘要.md 的最上面，不要改其他檔案。",
+        "highlight": [
+          5
+        ],
+        "caption": "prompts/daily.txt｜排程要跑的那一句｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c60"
+      ],
+      "lines": [
+        {
+          "id": "2reg",
+          "text": "結果加在每日摘要的最上面，其他檔都不要改。"
+        }
+      ]
+    },
+    {
+      "id": "daily-res",
+      "template": "bullets",
+      "data": {
+        "title": "跑一次的結果（d1）",
+        "items": [
+          "新報名：簡郁庭、邱品妍",
+          "宋柏均沒有 Email：只註記",
+          "找不到 確認信名單.csv：改用 寄信名單.csv"
+        ],
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜d1｜每日報名摘要.md"
+      },
+      "claims": [
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "p72q",
+          "text": "它列出兩個新報名，簡郁庭和邱品妍；沒填 Email 的宋柏均，另外註記。",
+          "reveal": 2
+        },
+        {
+          "id": "c9ng",
+          "text": "它還說，找不到確認信名單，改用了寄信名單。",
+          "reveal": 1,
+          "emotion": "停半拍"
+        },
+        {
+          "id": "52ry",
+          "text": "因為整理的那一次，名單存成了寄信名單。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "name-rule",
+      "template": "big",
+      "data": {
+        "kicker": "檔名對不上",
+        "text": "名單叫什麼\n也寫進 **CLAUDE.md**"
+      },
+      "lines": [
+        {
+          "id": "fyda",
+          "text": "檔名對不上，每天的檢查就接不起來；名單叫什麼，也寫進 CLAUDE.md。"
+        },
+        {
+          "id": "7fdk",
+          "text": "這些設定要讀一堆說明，看不懂的時候怎麼辦？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tutor-ask",
+      "chapter": "看不懂就問它：它也是你的家教",
+      "template": "code",
+      "data": {
+        "code": "我不會寫程式。\n請用白話解釋 .claude/skills/signup-check/SKILL.md 每一段在做什麼。\n如果我想讓它把「想改成線上參加」的人也另外列出來，\n要加哪一句、加在第幾步？\n只回答，不要改任何檔案。",
+        "caption": "prompts/tutor.txt｜在規劃模式問（t1）｜原檔一行，畫面在標點後換行"
+      },
+      "claims": [
+        "c62"
+      ],
+      "lines": [
+        {
+          "id": "eazv",
+          "text": "SKILL.md 沒寫到想改線上參加的人，不會改，就直接問它。"
+        },
+        {
+          "id": "ryau",
+          "text": "在規劃模式問，它只回答，不動任何檔。"
+        }
+      ]
+    },
+    {
+      "id": "tutor-explain",
+      "template": "quote",
+      "data": {
+        "kicker": "它解釋第 1 步（t1）",
+        "quote": "讀現有名單，是為了知道誰已經在上面了。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜t1 的回覆"
+      },
+      "claims": [
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "y9ec",
+          "text": "它把開頭的介紹和六個步驟，一段一段用白話解釋完，再給一句能直接貼進去的話。"
+        }
+      ]
+    },
+    {
+      "id": "tutor-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "它建議：放在第 5 步後面，當新的第 6 步（t1）",
+        "quote": "6. 備註或報名表裡寫想改成線上參加的人，另外列進 輸出/改線上名單.csv（他們仍留在確認信名單，不要刪）。",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜t1 的回覆"
+      },
+      "claims": [
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "zapm",
+          "text": "加在第五步後面，當新的第六步：想改線上的人另外列一份，但還留在確認信名單裡。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tutor-caveat",
+      "template": "quote",
+      "data": {
+        "kicker": "它自己的提醒（t1）",
+        "quote": "所以不知道「想改線上」是寫在哪一欄",
+        "source": "實跑 2026-10-21｜Claude Code 2.1.295｜t1 的回覆"
+      },
+      "claims": [
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "ycje",
+          "text": "它也提醒，它沒打開報名表，不知道這個要求寫在哪個欄位，要你寫進那句話裡。"
+        },
+        {
+          "id": "ca3e",
+          "text": "把它當成一個什麼都願意解釋的新同事。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "template": "bullets",
+      "data": {
+        "title": "它讀得到、也改得到一切",
+        "items": [
+          "只打開那件事的資料夾",
+          "原始檔先另外留一份",
+          "寄信、刪檔：收不回的，自己按"
+        ],
+        "source": "刪檔在自動接受範圍：permission-modes｜其餘：頻道建議"
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "xx3t",
+          "text": "最後一個該有的警覺：它讀得到、也改得到資料夾裡的一切。",
+          "emotion": "收起來，認真"
+        },
+        {
+          "id": "f59b",
+          "text": "只打開那件事的資料夾，原始檔先另外留一份。",
+          "reveal": 2
+        },
+        {
+          "id": "8v78",
+          "text": "寄信、刪檔這種收不回的事，留給你自己按。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "template": "big",
+      "data": {
+        "kicker": "做完，只要一個檢查",
+        "text": "日誌說幾筆\n檔案就**差幾筆**"
+      },
+      "claims": [
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "4g7t",
+          "text": "檢查只有一個：做完，打開處理日誌和輸出資料夾，對一次。"
+        },
+        {
+          "id": "7ktj",
+          "text": "日誌說動了幾筆，檔案就該差幾筆。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "check-how",
+      "template": "big",
+      "data": {
+        "kicker": "這個頻道的做法",
+        "text": "驗收看**檔案**\n不看「已完成」"
+      },
+      "lines": [
+        {
+          "id": "iexi",
+          "text": "這個頻道的做法是：驗收看日誌和檔案，不看它在對話裡說的「已完成」。"
+        },
+        {
+          "id": "cik3",
+          "text": "最後，你今天就能做的三件事。"
+        }
+      ]
+    },
+    {
+      "id": "three",
+      "chapter": "Claude Code 新手第一天：先做這三件事",
+      "template": "steps",
+      "data": {
+        "title": "你現在先做這三件",
+        "steps": [
+          {
+            "title": "開一個只放一件事的資料夾",
+            "detail": "用規劃模式，叫它先說要怎麼整理"
+          },
+          {
+            "title": "把每次都要交代的三條規矩",
+            "detail": "寫成 CLAUDE.md"
+          },
+          {
+            "title": "下一次做同樣的事",
+            "detail": "叫它留處理日誌，你對一次"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "m8s5",
+          "text": "第一，開一個只放一件事的資料夾，用規劃模式，叫它先說要怎麼整理。",
+          "reveal": 1
+        },
+        {
+          "id": "xsvd",
+          "text": "第二，把你每次都要交代的三條規矩，寫成 CLAUDE.md。",
+          "reveal": 1
+        },
+        {
+          "id": "s9wj",
+          "text": "第三，下一次做同樣的事，叫它留一份處理日誌，你對一次。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "不寫程式也能用：\n**先管住它，再放手**",
+        "cta": "你現在是把檔案貼進網頁版，還是已經讓它打開資料夾了？留言告訴我",
+        "lines": [
+          "四個基本功：專案資料夾、權限模式、上下文、CLAUDE.md",
+          "一份規矩、一個 Skill，整理完一整場講座"
+        ]
+      },
+      "claims": [
+        "c66"
+      ],
+      "lines": [
+        {
+          "id": "h63y",
+          "text": "不寫程式也能用：先管住它，再放手。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "59wc",
+          "text": "你現在是貼進網頁版，還是讓它打開資料夾？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "ddfe",
+          "text": "想看更多實際跑過的教學，就訂閱。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "vdqi",
+      "payoff": "eifj",
+      "what": "承諾的第一個基本功：專案資料夾"
+    },
+    {
+      "setup": "vdqi",
+      "payoff": "gqpd",
+      "what": "承諾的第二個基本功：權限模式"
+    },
+    {
+      "setup": "vdqi",
+      "payoff": "um5h",
+      "what": "承諾的第三個基本功：上下文"
+    },
+    {
+      "setup": "vdqi",
+      "payoff": "3ghe",
+      "what": "承諾的第四個基本功：CLAUDE.md"
+    },
+    {
+      "setup": "mgyy",
+      "payoff": "jbi2",
+      "what": "讓它把整場講座的資料夾整理一遍"
+    },
+    {
+      "setup": "646h",
+      "payoff": "gucw",
+      "what": "它自己寫的第三條規矩，錯在哪"
+    },
+    {
+      "setup": "dr6i",
+      "payoff": "q95g",
+      "what": "修改時間最新、內容卻是舊的是哪一份"
+    },
+    {
+      "setup": "w9hj",
+      "payoff": "byk3",
+      "what": "貼進 ChatGPT 不也整理得好？"
+    },
+    {
+      "setup": "ff34",
+      "payoff": "jpvj",
+      "what": "第一步該讓它看哪個資料夾"
+    },
+    {
+      "setup": "azu6",
+      "payoff": "gqpd",
+      "what": "它動手之前會不會先問你"
+    },
+    {
+      "setup": "7awm",
+      "payoff": "gqpd",
+      "what": "權限聽起來很可怕？"
+    },
+    {
+      "setup": "hygc",
+      "payoff": "te2v",
+      "what": "每開一次新對話，規矩都要重講嗎"
+    },
+    {
+      "setup": "q8bt",
+      "payoff": "8rzj",
+      "what": "怎麼又要寫一個檔？"
+    },
+    {
+      "setup": "yv7p",
+      "payoff": "4dkz",
+      "what": "CLAUDE.md 寫越多越好嗎"
+    },
+    {
+      "setup": "mwct",
+      "payoff": "rdqu",
+      "what": "每一批報名的檢查能不能存起來"
+    },
+    {
+      "setup": "2vih",
+      "payoff": "7b7i",
+      "what": "Skill 跟 CLAUDE.md 差在哪"
+    },
+    {
+      "setup": "euni",
+      "payoff": "vjir",
+      "what": "接上行事曆、信箱這些服務之前"
+    },
+    {
+      "setup": "7fdk",
+      "payoff": "eazv",
+      "what": "設定看不懂的時候怎麼辦"
+    }
+  ]
+}
