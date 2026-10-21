@@ -14,7 +14,7 @@ import { watermark, WATERMARK_FILE, watermarkDataUri, watermarkRecord } from "..
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
-import { coverageProblems, localizedThumbnails } from "./cli.mjs";
+import { coverageProblems, localizedThumbnails, transitionFiles } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
 import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailSubject, thumbnailVariantFile, transitionFile } from "./plan.mjs";
@@ -1000,4 +1000,50 @@ test("a screencast state draws the key band and the theme as a slide does, and i
   assert.equal(problems.length, 1);
   assert.match(problems[0].path, /\(find-guides\)\.data$/);
   assert.match(problems[0].message, new RegExp(`^keys has ${states + 1} lines but the scene has ${states} states`));
+});
+
+test("a transition frame identical to the one before it is not written again: the manifest lists the earlier file twice, and an older count-shaped cache is still read", async () => {
+  const box = sandbox();
+  let captures = 0;
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-21T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html, { transition = false } = {}) => {
+        captures += 1;
+        // A key held for three frames, then the next: frames 0 to 2 alike, 3 different.
+        const frames = transition ? [Buffer.from(`${key} a`), Buffer.from(`${key} a`), Buffer.from(`${key} a`), Buffer.from(`${key} b`)] : [];
+        return { still: Buffer.from(`png ${key}`), frames, problems: [] };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  };
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  const manifest = JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8"));
+  const first = manifest.scenes[0].states[0];
+  const key = path.basename(first.still, ".png");
+  assert.deepEqual(first.transition, [transitionFile(key, 0), transitionFile(key, 0), transitionFile(key, 0), transitionFile(key, 3)]);
+  assert.ok(existsSync(path.join(box.workdir, transitionFile(key, 0))));
+  assert.ok(existsSync(path.join(box.workdir, transitionFile(key, 3))));
+  assert.ok(!existsSync(path.join(box.workdir, transitionFile(key, 1))), "the repeated frame is not on disk");
+  assert.ok(!existsSync(path.join(box.workdir, transitionFile(key, 2))));
+  const cacheFile = path.join(box.workdir, "frames", "cache.json");
+  const cache = JSON.parse(readFileSync(cacheFile, "utf8"));
+  assert.deepEqual(cache[key].transition, first.transition, "the cache keeps the list, so a rerun looks for the files that exist");
+  assert.deepEqual(transitionFiles(key, cache[key]), first.transition);
+  const drawn = captures;
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  assert.equal(captures - drawn, 1, "every state is reused from the cache; only the thumbnail is drawn again");
+  // A cache written before the list: a count, its files named in order.
+  assert.deepEqual(transitionFiles("k", { transition: 2 }), [transitionFile("k", 0), transitionFile("k", 1)]);
+  cache[key].transition = 1;
+  writeFileSync(cacheFile, JSON.stringify(cache));
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  assert.equal(captures - drawn, 2, "the count-shaped entry still names a file that exists, so the state is reused");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8")).scenes[0].states[0].transition, [transitionFile(key, 0)]);
 });

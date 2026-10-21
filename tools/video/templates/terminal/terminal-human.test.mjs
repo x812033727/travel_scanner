@@ -96,14 +96,13 @@ test("render refuses a human-typed state whose narration ends before the typing 
   assert.deepEqual(renderProblems(doc), [], "the 18-frame burst needs no narration to carry it");
 });
 
-test("the paper fixture's terminals type at a human pace within their narration, and the fixture lints clean but for the theme field schema.mjs does not know yet", () => {
+test("the paper fixture's terminals type at a human pace within their narration, and the fixture lints clean", () => {
   for (const each of paper.scenes.filter((scene) => scene.template === "terminal")) {
     assert.equal(each.data.typing, "human", each.id);
     assert.deepEqual(sceneProblems(each), [], each.id);
   }
   assert.deepEqual(renderProblems(paper), []);
   const result = lintVideo(paper, { lexicon: JSON.parse(read("./fixtures/lexicon.json")), brief: readFileSync(new URL("../fixtures/paper/brief.md", import.meta.url), "utf8"), others: [], translations: {} });
-  // `theme` joins core/schema.mjs TOP_KEYS in the follow-up that rebinds the review receipt.
-  assert.deepEqual(result.errors.map((error) => `${error.path}: ${error.message}`), ['.theme: unknown field "theme"']);
+  assert.deepEqual(result.errors, []);
   assert.deepEqual(result.warnings, []);
 });
