@@ -16,7 +16,7 @@ import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
-from app.video_reviews.schemas import ADDED_LOCALES, NARRATION_LOCALES
+from app.video_reviews.schemas import NARRATION_LOCALES
 
 # The narration language of a package that names none: every video made before the dubs.
 DEFAULT_LANGUAGE = "zh-TW"
@@ -80,13 +80,14 @@ _TAG_TAIL = re.compile(
     r"|ซับไทย|CC)\s*$",
     re.IGNORECASE,
 )
-# A title in one of the five whose last segment already says it is subtitled together with
-# something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's, written for
-# an imported video; schemas.ADDED_LOCALES) keeps its words, since replacing the segment would
-# drop the dub. en, ja and ko titles are tagged as they were before those languages came.
+# A title whose last segment already says it is subtitled together with something else
+# ("Dub + Sub Indo", "Dublado + Legendado", "吹替＋CC字幕", written for an imported video's
+# compilation) keeps its words in every language, since replacing the segment would drop the
+# dub and adding a tag after it says captions twice (「Ep. 1–5 | Dub + CC｜CC Subtitles」, the
+# 1–5 compilation's English title before 2026-10-21). Japanese joins with a full-width 「＋」.
 _COMBINED_TAIL = re.compile(
-    r"[|｜][^|｜]*\+\s*(?:CC(?:\s*(?:字幕|Subtitles|자막))?|字幕付き|Legendado|Sub\s*Indo|Vietsub"
-    r"|ซับไทย)\s*$",
+    r"[|｜][^|｜]*[+＋]\s*(?:CC(?:\s*(?:字幕|Subtitles|자막))?|字幕付き|Legendado|Sub\s*Indo"
+    r"|Vietsub|ซับไทย)\s*$",
     re.IGNORECASE,
 )
 # What a brand story's title says before its captions tag, per language (the owner's rule of
@@ -136,22 +137,24 @@ def captioned(title: str, language: str, *, story: bool = False) -> str:
 
     A tag already there, in any language or spacing, is replaced by this language's. When the
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
-    not fit, the full tag stays so the length check says by how much the title is over. A title in
-    es, pt, id, vi or th that already ends with a combined segment ("Dub + Sub Indo") keeps it; a
-    brand story's takes its story tag just before that segment, when the title still fits.
+    not fit, the full tag stays so the length check says by how much the title is over. A title
+    that already ends with a combined segment ("Dub + Sub Indo", "Dub + CC") keeps it; a brand
+    story's takes its story tag just before that segment, when the title still fits.
     """
     bare = title.rstrip()
-    combined = _COMBINED_TAIL.search(bare) if language in ADDED_LOCALES else None
+    combined = _COMBINED_TAIL.search(bare)
     if combined and len(bare) <= TITLE_MAX_CHARS:
         if not story:
             return bare
         head, tail = bare[: combined.start()], bare[combined.start() :]
+        # The space the title had before its segment's bar stays there ("… | Dub + CC").
+        gap = head[len(head.rstrip()) :]
         while True:
             stripped = _STORY_TAIL.sub("", head)
             if stripped == head:
                 break
             head = stripped
-        tagged = f"{head.rstrip()}{STORY_TAGS.get(language, STORY_TAGS['en'])}{tail}"
+        tagged = f"{head.rstrip()}{STORY_TAGS.get(language, STORY_TAGS['en'])}{gap}{tail}"
         return tagged if len(tagged) <= TITLE_MAX_CHARS else bare
     if story:
         bare = _story_titled(bare, language)

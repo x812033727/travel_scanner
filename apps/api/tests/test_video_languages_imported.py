@@ -169,20 +169,26 @@ def test_youtube_gets_the_owner_s_varieties_and_each_language_s_caption_word() -
         "th": "ทะลุมิติไปทำนา ได้เมีย ครองแผ่นดิน ตอนที่ 1｜ซับไทย",
         "en": "Farm, Marry, Conquer Ep. 1｜CC Subtitles",
     }
-    # A compilation's title says dub and subtitles; in the five languages it keeps its words.
+    # A compilation's title says dub and subtitles; in every language it keeps its words rather
+    # than saying captions twice (the 1–5 compilation's en, ja and ko titles before 2026-10-21).
     for language, title in (
         ("id", "Bertani, Beristri, Berkuasa Episode 1–5 | Dub + Sub Indo"),
         ("pt", "Plantar, Casar e Conquistar Ep. 1–5 | Dublado + Legendado"),
         ("es", "Siembra, cásate y conquista Cap. 1–5 | Doblaje latino + CC"),
         ("th", "ทะลุมิติไปทำนา ได้เมีย ครองแผ่นดิน ตอนที่ 1–5 | พากย์ไทย + ซับไทย"),
+        ("en", "Farm, Marry, Conquer Ep. 1–5 | Dub + CC"),
+        ("ja", "畑を耕し嫁を娶り天下を取る 第1–5話 | 吹替＋CC字幕"),
+        ("ko", "농사짓고 장가가서 천하를 얻다 제1–5화 | 더빙 + CC 자막"),
     ):
         assert requests.captioned(title, language) == title, language
-    # en, ja and ko are tagged as before.
-    assert (
-        requests.captioned("Farm, Marry, Conquer Ep. 1–5 | Dub + CC", "en")
-        == "Farm, Marry, Conquer Ep. 1–5 | Dub + CC｜CC Subtitles"
-    )
+    # Titles without one are tagged as before, a tag already there replaced.
     assert requests.captioned("AI 模型怎麼挑", "ja") == "AI 模型怎麼挑｜字幕付き"
+    assert requests.captioned("Farm, Marry, Conquer Ep. 1 | CC", "en") == (
+        "Farm, Marry, Conquer Ep. 1｜CC Subtitles"
+    )
+    # A plus that is not the last segment's dub and captions is an ordinary title.
+    assert requests.captioned("C++ in 10 minutes", "en") == "C++ in 10 minutes｜CC Subtitles"
+    assert requests.captioned("1 + 1 | 第1話", "ja") == "1 + 1 | 第1話｜字幕付き"
     assert requests.NARRATION_LANGUAGES == ("zh-TW", "en", "ja", "ko")
     with pytest.raises(ValueError):
         requests.narration_language({"default_language": "es"})
