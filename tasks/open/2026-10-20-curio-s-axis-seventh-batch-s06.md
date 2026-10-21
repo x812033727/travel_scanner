@@ -31,11 +31,17 @@ S12「關原之戰，家康真的開槍逼小早川倒戈？」（日本）、S2
 
 ## Definition of done
 
-- [ ] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
-- [ ] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
+- [x] 三題各有 `topic-checks/<id>.md`（研究加獨立覆核）。
+- [x] 三集稿子 `loops` 至少 8 個、盲評全過、lint 0 錯誤、`claims.md`、`verify-1.md`，開 PR。
 - [ ] 旁白、配樂、插圖做完並 `review-push` 給站主。
 
 ## Steps
 
-- [ ] 查核先做（研究代理＋獨立覆核代理），再寫稿。
-- [ ] 盲評照 S02、S13、S27 的教訓：結論只講一次，第二次提到一律點名回呼並補新事實。
+- [x] 查核先做（研究代理＋獨立覆核代理），再寫稿。
+- [x] 盲評照 S02、S13、S27 的教訓：結論只講一次，第二次提到一律點名回呼並補新事實。
+
+## 進度（2026-10-20）
+
+- 三題查核（研究＋獨立覆核）、三集稿子（盲評全過、lint 0／0）、旁白、插圖都做完，旁白與分鏡已 `review-push`。
+- 剩下：S20 沒有配樂（S06、S12 有）。本月 music 預算（60 tracks）用完，`music --slug` 回「本月的music預算不夠」。
+  站主在 `/admin/videos` 設定分頁調高預算，或下個月，再對這幾集跑 `node tools/video/cli.mjs music --slug curio-<id>`，然後重送 `review-push --gate audio`。
