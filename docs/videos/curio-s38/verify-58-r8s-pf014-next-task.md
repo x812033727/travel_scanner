@@ -1,5 +1,7 @@
 # S38 下一步｜只解 PF014 畫面 HOLD
 
+**完成註記（2026-10-22 UTC）：**R8t 已把 PF014 改成來源支持的日記譯文卡，通過[獨立書面覆核](verify-60-r8t-pf014-independent.md)；這份 R8s 任務已結束。PF014 不再需要付費試畫，後續界線改見 [R8t 任務](verify-61-r8t-next-task.md)。以下保留原始交接內容供稽核。
+
 2026-10-22 UTC。R8s 兩張佩皮斯日記引句卡已通過獨立書面核對，PF014 單次新原圖因上下黑色 letterbox 寬帶退件；詳見 [原生驗收](verify-57-r8s-pf014-native-stop.md)。目前私有 STOP 在位，帳本 US$0.5830／38 image／37 judge／1 music；`video.json` SHA-256 `f3f49ce1fdd64ac11189dbe8b64bb7bc486e4c03566795a500f9f8b636f3de34`。
 
 下一位作者只處理 **PF014**：凍結一個可解滿框問題的窄範圍候選，維持 1666 年 9 月 2 日佩皮斯在塔上對橋邊火勢與熟人家**擔憂而未確認燒毀**的來源界線，並記錄與 R8s 的精確可逆差分。可評估用有來源的文字卡避免再抽圖，或用保留 `push in` 的修訂提示詞；若改回舊鏡頭或改其他 KEEP 景，必須重算 lint、圖片 request key 與舊圖失效範圍。任何方案都要保持正文插圖至少 70%、連卡最多 3 張、lint 0 errors／0 warnings，並證明九張現有 KEEP 的 entry 與選圖 SHA 不變。
