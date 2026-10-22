@@ -1,0 +1,9 @@
+# S53 R41｜`s53031` 紙審 PASS 後安全離線圖單回綁
+
+2026-10-22 UTC。[R41 不同作者來源與書面畫面紙審](r41-s53031-mature-carpenter-delay-independent-paper.md) **PASS**，收據 SHA `79faae23483d2625a2402fa73494060fdced9c2dfa81c20d1fb1046a5e6e0644`。本步只在私人 `STOP` 在位、jobs `{}` 時，把正式 manifest 的 `visual_hash` 從 R40 `5818abc588740097` 離線改為 R41 `cfbe5fb638b9afd6`，沒有購 `s53031`、judge、配樂或其他媒體；`s53031` 尚無選圖。
+
+付費前先核 `video.json` SHA `56854934253b38463c3ab37cc283cb8dfdc9992dff7c81991fcd17484b622173`、`claims.md` SHA `d6736f0a1126b773038223159e60e5fe4680b56c5abd34594e5088e6c29ea0e8`，以及固定 [Survey D](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4858-L4865) 的供屋延遲界線。舊正式 19-KEEP manifest SHA `87c6150128b00a2a383d59ccc3ed450625c090877ad050a82abac3fade9c8ee3`，各條 judge PASS、無 needs-review、所選實檔 SHA 全對；舊 manifest 私人獨占備份於 `rebind-backups/r40-manifest-before-r41-mature-carpenter.json`，同 SHA。
+
+只替換 canonical JSON 中唯一 `visual_hash` 字串，原子寫入並回讀。新 manifest SHA **`4cfd50a126d5d4f65c4fba6daf1bd8c9e04ecc209aed241a20cf4266d22d4011`**，19 個 KEEP 的完整條目與所選 JPEG SHA 逐筆相同；`s53031` 不在 manifest，R39 首張退件 `s53030` 仍不在內。contact sheet SHA `1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483`、ledger SHA `d8cddfc8aa1bac91ca9e20dc820ae3915921ea5c060878c12841c912cdfccbd9`（US$0.7020／53 images／52 judges／0 reservations）、jobs SHA `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3` 與 STOP 均未動。
+
+之後另做即時 `minimax image-01` 配額／上限預檢：全站餘 images **9,884**、judge calls **7,935**、music **28**，本片 US$0.7020 低於委派上限 US$4.78；正確父工作目錄 `VIDEO_WORKDIR=/workspace/.video-work`、`NODE_USE_ENV_PROXY=1` 下 `keyframes --shot s53031 --takes 1 --dry-run` exit 0，503／1070 prompt chars，單圖估價約 US$0.01。這些檢查只放行**最多第一張 `s53031` 原生圖與一次 judge**；須原尺寸看未裁及所選圖，成人、未完工低架、帳棚、1906 年材物、無入住暗示與 2D 畫風如有實質矛盾立即停，不跳下一景。
