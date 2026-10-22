@@ -1,0 +1,58 @@
+{
+  "revision": "R43-s53032-allocation-question-adult-commander",
+  "reason": "Independent next-scene preflight HOLD: Survey E supports camp-commanders assigning cottages but no two application slips; replace paperwork with anonymous mature commander and empty cottage threshold concept before paid media",
+  "before_sha256": {
+    "video.json": "81d681b05d12d766e6fcf70d6c60ee78a0dace86d55e93d3401b1ab8c7528ab2",
+    "claims.md": "eac14636b9762c539950a5c664387cd91a6512da3fcadbd2944341fdd45ee7cf",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "76f9607d619d8be004904a22c588237c76d86200b4015fd53fbb83fd50d33b3a",
+    "claims.md": "24aba613275829af3af975800bca0ec06c83196f3bcca50a20239bb811bc1ced",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53032",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53032",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53032",
+            "text": "而小屋蓋好之後，誰能先住進去？",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Close shot at a refuge after the 1906 fire, an anonymous camp worker studies two blank application slips, gentle window light",
+          "camera": "tilt down",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53032",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53032",
+            "text": "而小屋蓋好之後，誰能先住進去？",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium-close shot at a 1906 San Francisco official tent camp: one visibly mature grey-haired adult camp commander with lined cheeks and broad shoulders in a plain civilian period jacket pauses beside the open empty doorway of one low simple wooden dwelling; his open hand points toward the vacant threshold while he looks at it, canvas tents only far behind, soft grey daylight; no other people, application papers, forms, letters, signs, uniform badge, child, suburban house, paved street, hardhat, electric light or modern equipment",
+          "camera": "tilt down",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53032",
+      "path": "claims.md exact row",
+      "before": "| s53032 | 而小屋蓋好之後，誰能先住進去？ | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 小屋分配的機構敘述 |",
+      "after": "| s53032 | 而小屋蓋好之後，誰能先住進去？ | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 1913 年調查說營地指揮官分配救濟小屋，並列官方營地住戶、營外帳棚／棚屋住戶等先後；本句只提出誰能優先入住的問題，尚未宣告某戶已獲分配或搬入。畫面是 1906 年營地的匿名原創分配概念：一位灰髮有面紋、穿無徽章便服的成年指揮者在一座空置的低矮木屋門旁，張手指向空門檻，遠處只有帳棚；不冒充實際人物、存世分配紀錄、某戶入住日或原文未記載的「兩張申請單」。 |"
+    }
+  ]
+}
