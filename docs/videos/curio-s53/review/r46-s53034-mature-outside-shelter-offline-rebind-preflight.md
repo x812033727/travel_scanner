@@ -8,4 +8,4 @@
 
 回綁後以 `VIDEO_WORKDIR=/workspace/.video-work`、`NODE_USE_ENV_PROXY=1` 即時查 `media-status`：MiniMax `image-01` 已配置，全站尚有 **9,818 images、7,773 judge calls**（檢查瞬間數值），本片 US$0.7560、無預約。以系統 Chromium 預載、單景 `keyframes --shot s53034 --takes 1 --dry-run`，exit 0；提示詞 **604／1070** 可用字元、模型 ready、單圖估約 US$0.01。R46 正式 lint 0 errors／0 warnings、126 句及 `speechHash=05c4d9a79a8708b4` 不變。
 
-此預檢只放行**最多 `s53034` 第一張原生圖與一次 judge**；正式購圖前仍須重查即時額度／雜湊／上限，並原尺寸看未裁和選用圖。若人物是明顯幼童、棚屋被畫成已受配木屋、折棚搬遷、交鑰匙／申請單、現代物或畫風漂移，立即 STOP 並恢復 21 KEEP；不可跳到 `s53035`。
+此預檢只放行**最多 `s53034` 第一張原生圖與一次 judge**；正式購圖前仍須重查即時額度／雜湊／上限，並原尺寸看未裁和選用圖。若人物是明顯幼童、棚屋被畫成已受配木屋、折棚搬遷、交鑰匙／申請單、現代物或畫風漂移，立即 STOP 並恢復 21 KEEP；不可跳到 `s53036`。
