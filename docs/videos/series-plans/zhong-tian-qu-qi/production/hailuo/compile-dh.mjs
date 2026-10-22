@@ -4,16 +4,19 @@
 // DUBS=en,ja,... adds one dub track and one CC file per locale (<out>.<locale>.m4a / .srt), and every
 // locale with a youtube-locales/<locale>.json entry for the range goes into .youtube.json's localizations.
 // The channel intro and end-screen outro (<VIDEO_WORKDIR>/_branding/current.json) wrap the whole
-// video, the dubs included; BRANDING=0 leaves them out. Every description ends with the links block.
-//   [DUBS=<locales>] [BRANDING=0] node compile-dh.mjs <first> <last> <out.mp4>
+// video, the dubs included; BRANDING=0 leaves them out. The channel mark sits in the top-right corner
+// of the episodes (WATERMARK=0 leaves it out). Every description ends with the links block.
+//   [DUBS=<locales>] [BRANDING=0] [WATERMARK=0] node compile-dh.mjs <first> <last> <out.mp4>
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmdirSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const [first, last, out] = [Number(process.argv[2]), Number(process.argv[3]), path.resolve(process.argv[4])];
 const H = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1"));
 const R = path.resolve(H, "../../../../../..");
+const { CURRENT_WATERMARK, WATERMARKS, WATERMARK_DIR } = await import(pathToFileURL(path.join(R, "tools/video/core/watermark.mjs")).href);
 const tmp = path.join(path.dirname(out), path.basename(out, ".mp4") + "-parts");
 mkdirSync(tmp, { recursive: true });
 const pad = (n) => String(n).padStart(3, "0");
@@ -94,7 +97,18 @@ const meta = path.join(tmp, "chapters.txt");
 writeFileSync(meta, ";FFMETADATA1\n" + chapters.map((c) => `[CHAPTER]\nTIMEBASE=1/1000\nSTART=${Math.round(c.start)}\nEND=${Math.round(c.end)}\ntitle=${c.title}\n`).join(""));
 const list = path.join(tmp, "list.txt");
 writeFileSync(list, [wrap.intro, ...parts, wrap.outro].filter(Boolean).map((p) => `file '${p.mp4.replace(/\\/g, "/")}'`).join("\n"));
-execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-i", meta, "-i", srt, "-map", "0:v", "-map", "0:a", "-map", "2:s", "-map_metadata", "1", "-map_chapters", "1", "-c:v", "copy", "-c:a", "copy", "-c:s", "mov_text", "-metadata:s:s:0", "language=chi", "-movflags", "+faststart", out]);
+// The channel mark (docs/videos/WATERMARK.md, the version every new cut carries) in the top-right
+// corner of the episodes, not of the intro and outro: one more encode of the picture, the sound and
+// CC copied. WATERMARK=0 leaves it out.
+const shown = parts.reduce((sum, p) => sum + p.dur, 0);
+const marked = process.env.WATERMARK === "0" ? null : WATERMARKS[CURRENT_WATERMARK].long;
+const markInput = marked ? ["-i", path.join(WATERMARK_DIR, CURRENT_WATERMARK, marked.file)] : [];
+const picture = marked
+  ? ["-filter_complex", `[0:v][3:v]overlay=${marked.box.x}:${marked.box.y}:enable='between(t,${lead.toFixed(3)},${(lead + shown).toFixed(3)})'[v]`, "-map", "[v]"]
+  : ["-map", "0:v"];
+const pictureCodec = marked ? ["-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p"] : ["-c:v", "copy"];
+execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-i", meta, "-i", srt, ...markInput, ...picture, "-map", "0:a", "-map", "2:s", "-map_metadata", "1", "-map_chapters", "1", ...pictureCodec, "-c:a", "copy", "-c:s", "mov_text", "-metadata:s:s:0", "language=chi", "-movflags", "+faststart", out]);
+if (marked) console.log(`mark ${CURRENT_WATERMARK} at ${marked.box.x},${marked.box.y} from ${lead.toFixed(2)} s to ${(lead + shown).toFixed(2)} s`);
 // YouTube description chapters: 0:00 第 1 集 ...
 const stamp = (t) => `${Math.floor(t / 60000)}:${String(Math.floor(t / 1000) % 60).padStart(2, "0")}`;
 const yt = chapters.map((c) => `${stamp(c.start)} ${c.title}`).join("\n");
