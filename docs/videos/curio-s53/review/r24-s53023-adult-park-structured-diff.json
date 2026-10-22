@@ -1,0 +1,30 @@
+{
+  "revision": "R24",
+  "reason": "s53023 first native adult/era/framing mismatch: replace giant board, childlike hardhat and paved plaza with close adult on bare tented public ground; no narration change",
+  "before_sha256": {
+    "video.json": "2b5d0bfd85a581cac1e08ac8c155a9e8f89969634cc98e1c5300fe3457c7720e",
+    "claims.md": "a276b8561f713f6160fe8fd4d68c79f0c85640ce0f4db2cf031d81f99e3c278e",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "07193188815a7b74529761f3a5c7c5656e9f1e954170b0bf71810cd9b17be1e9",
+    "claims.md": "267fdb63c5f2a36f479bdc3903f06e07a93a21a55659e570a7001b2920799dc7",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "changes": [
+    {
+      "file": "video.json",
+      "path": "scenes[17].data.prompt",
+      "id": "s53023",
+      "before": "Close shot at a public square in 1906, an anonymous relief worker studies a blank map of park blocks beside cottage sketches, soft overcast light",
+      "after": "Close shot from waist up at a bare-ground 1906 San Francisco public relief square, one visibly middle-aged relief worker with grey hair, lined face and a plain dark civilian coat studies a small folded paper sketch with simple cottage roof outlines held below the face, two plain canvas tents close behind, soft overcast light"
+    },
+    {
+      "file": "claims.md",
+      "path": "line:s53023",
+      "id": "s53023",
+      "before": "| s53023 | 可這些公園廣場，真的能讓救災小屋一直住下去嗎？ | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941) | 公園與廣場臨時使用，不是救濟機構土地 |",
+      "after": "| s53023 | 可這些公園廣場，真的能讓救災小屋一直住下去嗎？ | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941), [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 公園與廣場臨時使用，不是救濟機構土地；畫面是灰髮成年匿名工作者在未興建小屋的裸地帳棚前觀看無字小紙草圖的原創概念示意，不是假稱存世平面圖、具名個案或當時已有完工小屋 |"
+    }
+  ]
+}
