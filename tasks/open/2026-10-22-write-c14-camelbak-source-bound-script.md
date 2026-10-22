@@ -19,6 +19,7 @@ scope:
   - docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v6-coordinator.md
   - docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v7-script-receipt.md
   - docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v8-n10-delta-receipt.md
+  - docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v8-coordinator.md
 ---
 
 # Write C14 CamelBak source-bound script and visual plan
@@ -41,7 +42,7 @@ scope:
 - [x] 重開品牌回顧、母公司 2014 年 SEC 年報、1998 口器與 2005 水瓶專利、2003 寄送報導、2006 展場報導與 2007 公司新聞稿；標記年份衝突與不能推出的因果。
 - [x] 撰寫 `script.md`、`script-source-notes.md`、`visual-plan.md`／JSON。
 - [x] 用獨立的機械檢查核對行 ID、字元估時、最長鏡、卡片連續數、圖片時間比、鉤子空檔與圖像提示詞禁項。
-- [ ] 獨立覆核者從原件逐句檢查並留下與稿版雜湊綁定的 PASS／HOLD；作者不能代簽。
+- [x] 獨立覆核者從原件逐句檢查並留下與稿版雜湊綁定的 PASS／HOLD；作者不能代簽。v7 全稿覆核唯一 N10 HOLD，由另一位審查者於 v8 精確 SHA 窄修覆核 PASS；這不代替成圖、TTS 或站主採用。
 
 ## How to verify
 
@@ -50,3 +51,7 @@ scope:
 ## Notes
 
 v1、v2 的純旁白投影各收兩位獨立讀者 HOLD，詳見兩份 `blind-narration-*-coordinator.md`；v2 逐句來源 PASS 與 v3 I01 字卡 PASS 都只綁舊檔案 SHA。v4、v5 獨立逐句與逐鏡覆核均為 HOLD。v6 O02 來源／逐鏡窄修獨立 PASS；74 行 v6 純旁白兩位讀者一 HOLD、一 PASS，精確投影 SHA、分歧和限度記於 `reviews/blind-narration-v6-coordinator.md`。v7 縮短重複咬合機制、明確同一專利 1998 送件／2000 授權、以 2003 背水場合接兩年後水瓶文件、收緊通路段並立即揭露 2012／2014 比例；`reviews/independent-v7-source-visual-review.md` 只在 N10 HOLD，因「水只在喝時才靠近嘴邊」超出 S2 肩上管與 S11 咬合閥證據。v8 只將 N10 改為人控制水何時從出口流出，沿用左右分屏概念鏡頭，重算 N10 紙上秒數，其他 69 行口播及鏡頭內容不改。新 SHA 須獨立 N10 聲畫重查及兩位新純旁白讀者。專利文件對文件引用不推量產 SKU 每個零件；2003 寄送不當首軍用或水瓶動機；1988 背景和商標 first-use 不替品牌回憶定年；2014 毛銷售額占比不是現況或巡店單因果。所有圖像只規劃概念插圖。詳見 `script-source-notes.md`。此票停在 `review`，由獨立覆核接手下一關。
+
+## 2026-10-23 v8 審查交接點
+
+`reviews/independent-v8-n10-delta-review.md` 由非作者審查者按 v8 四檔精確 SHA 對 N10 聲畫窄修判 **PASS**，與 v7 全稿來源／文字逐鏡覆核的其餘 69 行相接。兩位未讀 v8 的純旁白讀者各自只讀 70 行投影（SHA-256 `87598ADA8FAC2AE4FC35F620056FCE395017E4780165CA07B35667861A86757C`），均判 **PASS**，具體與可選潤飾見 `reviews/blind-narration-v8-coordinator.md`。目前可交站主審稿與分鏡方向；**尚非站主採用、TTS 正文 ≥480 秒、生成圖驗收、付費或上架授權**。本票維持 `review`，不更動已受審的四份作者稿。
