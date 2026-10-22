@@ -44,7 +44,7 @@ scope:
 
 ## Notes
 
-2026-10-22：基底是 origin/codex/brand-stories-new-series-20261020 的 f80204ff5；origin/main 尚無 20 集企劃，C04 PR #1668 也以新系列分支為 base。專屬工作樹是 C:\Users\x8120\.codex\worktrees\brand-story-kincho-c05-treatment\travel_scanㄐ；未碰 C03/C04 的文件或媒體。
+2026-10-22：基底是 origin/codex/brand-stories-new-series-20261020 的 f80204ff5；origin/main 尚無 20 集企劃，C04 PR #1668 也以新系列分支為 base。專屬工作樹名為 brand-story-kincho-c05-treatment；未碰 C03/C04 的文件或媒體。
 
 已查金鳥年表、技術遺產頁、產品 Q&A、2017 年公告及署名文章、國立科學博物館的 1895 年木模登錄、國立公文書館的 1943 年授勳卷宗介紹。年表分列 1895 構想、1900 申請、1902 上市；原始 1900 申請件未取得。2017 年公司資料稱早期螺旋約六小時，現行一般規格 Q&A 稱約七小時；不得混為同一產品或推成效力倍數。
 
