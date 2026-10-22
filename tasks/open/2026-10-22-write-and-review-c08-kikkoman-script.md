@@ -20,6 +20,8 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-c080512-source-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-visual-count-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-spout-audio-clarity-fix.md
+
+  - docs/videos/story-everyday-kikkoman-c08/reviews/blind-narration-v5-3-coordinator.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -51,7 +53,7 @@ scope:
 
 - [x] 核對 C08 Treatment 原 PR、現有任務與分支；從含站主企劃核准收據的提交建立獨立工作樹並認領窄票。
 - [x] 依企劃與來源矩陣撰寫六章逐句旁白及逐鏡表。
-- [ ] 獨立逐句來源查核、兩位盲讀、視覺預檢；需要修稿就重新綁定 SHA。
+- [x] 獨立逐句來源查核、兩位盲讀、視覺預檢；需要修稿就重新綁定 SHA。
 - [ ] 執行 check:tasks、diff check 與本集結構檢查，提交草稿 PR；保留站主劇本審核關卡。
 
 ## How to verify
@@ -59,6 +61,10 @@ scope:
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
 ## Current checkpoint (2026-10-23 v5.3)
+
+v5.3 `script.md` SHA `B9E4C547…`、`visual-plan.md` SHA `776F26F2…` 的改動已經獨立來源／配對畫面差異覆核 PASS。新版 84 句只讀旁白輸入 SHA `E6A5036C…` 經**兩位不同盲讀代理各自 PASS**，收據見 `reviews/blind-narration-v5-3-coordinator.md`。兩位的非阻擋口語壓縮建議留給站主審，不為這些微調再改動已查核稿件。現可送站主審劇本／逐鏡方向；正文 TTS 480 秒、實際畫面秒數 ≥70%、整支報價與付費授權仍未通過。未買圖、配音、匯入、上傳或發布。
+
+## Prior v5.3 repair checkpoint
 
 對 v5.2 唯讀旁白（84 行、抽出文字 SHA `9A8F986A…`）的兩位新讀者，一位 PASS 並提出非阻擋的重複句建議，另一位 **HOLD** `c080407–408`：不清楚縮回去的是嘴尖哪一緣。作者 v5.3 只把它口語化為「下緣往瓶裡縮、上緣留在前面；扶正後嘴尖較不積醬油」，並更新同 ID 單焦點字卡。84／84 ID 和 73 shot／11 card 不變；新雜湊與改動見 `reviews/author-v5-spout-audio-clarity-fix.md`。前輪的來源／畫面與盲讀收據都只綁舊 SHA，v5.3 需獨立窄幅來源／畫面覆核、兩名只讀新版旁白的讀者、實測時長及站主審稿。無付費。
 
