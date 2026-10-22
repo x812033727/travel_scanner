@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-produce-c05-kincho-local-pilot-under
 title: Produce C05 Kincho local pilot under approved cap
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-c05-pilot
-claimed_at: 2026-10-22T05:43:51Z
+owner:
+claimed_at:
 created_at: 2026-10-22T05:43:44Z
 completed_at:
 branch: codex/brand-story-kincho-c05-pilot
@@ -52,3 +52,5 @@ C05 金鳥的 79 句劇本與逐鏡方向已由站主核准，另已核准本集
 2026-10-22 續做：C: 有約 19.3 GiB 可用，腳本、視覺、Treatment、來源矩陣及原估價 SHA 全數與核准收據一致。新增工具需要的 `brief.md` 後 lint 為 0 errors／13 warnings；本機 `approvals.json` 綁定 79 句劇本 SHA。TTS 乾跑 79 句、2,353 billable characters；keyframes 乾跑 63 個 shot、最多 189 次生成，當下圖片費上界約 US$2.55（未含評審與其他）。`media-status` 為本集 US$0.00。原估價漏算句子且仍寫核准前狀態，保留原檔 SHA 並新增 `production-quote-erratum.md`。本集正式 TTS 須待共用供應商上的 C06 一輪完成，避免同時擠壓額度；其後依 480 秒與 US$25 停線。詳見 `pilot-runlog.md`。
 
 2026-10-22 正式 TTS 79／79 完成；第 2–6 章純語音 484.74 秒，僅比 480 秒多 4.74 秒。第一輪音訊查核 79／79，24 句標記、exit 1；本機 Whisper 局部讀回證明至少兩句是 Gemini 轉錄誤報。等 C06 查核結束後，須用工具正式 `--second-opinion` 收據縮小錯誤範圍，才可決定窄範圍重錄；每次重錄後重算 480 秒。`media-status` 排除語音費，尚無整支支出確證。圖片、配樂與合成均未開始。詳見 `pilot-runlog.md`。
+
+整支費用保守界線另見 `pilot-runlog.md`：C05 slug 不在主機的 pilot 預算登記；79 次 TTS、79 次逐句轉錄與一次 Jev 的模型級嚴格上界為 US$93.518464，超過核准的 US$25（這不是實際帳單）。正式第二意見可能再觸發 Jev，故新增付費先停，待 C05 可歸屬的供應商實際用量／帳單或逐請求強制預算機制確認後續行動。不能以媒體台帳 US$0.00 判定總支出。
