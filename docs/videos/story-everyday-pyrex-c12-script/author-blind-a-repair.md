@@ -52,3 +52,20 @@
 作者本輪重開 [S1 館方歷史回顧](https://blog.cmog.org/2015/beginning-pyrex) §33–35 和 [S2 百年展新聞稿](https://press.cmog.org/2014/presents-exhibition-transformative-impact-pyrex-american) §95–98：S1 支持 Rorer 背景、試用、推薦、五金店後進百貨及「到 1920 年開始找到位置」的有限回顧；S2 支持 Maddocks、百貨示範、1929 年聘 Lucy Maltby 管理新消費者服務辦公室及 1931 年設上市前評估測試廚房。這些來源沒有量化買家反應、普及率或特定示範日期；新句也不提供任何安全或加熱指示。來源分工仍待**另一代理對新 SHA 逐列核查**。
 
 稿面為 80 個同序唯一 ID、67 插圖／13 後製純卡、最多連續 2 張純卡；旁白 2,513 字元，相鄰節奏檢查點最長 **164 字元**。250 字／分鐘僅供稿面估算，沒有配音時間碼。舊[來源與畫面差異收據](reviews/independent-source-visual-delta-v2.md)與 [O09 重核 v3](reviews/independent-o09-visual-recheck-v3.md)只對舊位元有效；本輪新腳本、新分鏡須獨立差異查核，再由兩位只讀新稿旁白的讀者盲讀。念法、站主劇本決定、正文配音 ≥480 秒、插圖實際可見時間 ≥70%、圖片與費用、上傳發布均未通過。
+
+## 2026-10-23 v4 來源 HOLD 後的作者差異
+
+獨立[來源／畫面差異重核 v4](reviews/independent-source-visual-delta-v4.md)綁下表舊雜湊，判本輪旁白 18 列中的 E10、T09、T11 為 HOLD。館方 [*Women and Pyrex*](https://blog.cmog.org/2015/women-and-pyrex) §30 寫 Rorer／Maddocks **上市前**已接觸原型；[Corning 的 Maltby 回顧](https://www.corning.com/worldwide/en/innovation/the-glass-age/inspiration/glass-heroes/dr-lucy-maltby-glass-cookware-innovator.html) §45–58 寫測試廚房**到 1931 年已設立**，**起初訓練業務員**，不久後才加上產品與改良測試。兩篇均是後來回顧；作者重讀不替代新稿的獨立核查。
+
+| 檔案 | v4 審查輸入 SHA-256 | 本次作者修訂 SHA-256 |
+| --- | --- | --- |
+| `script.md` | `C030DC97CFF150D222828F56847F3D26FE63E88C97535F1755EE086BFD2CC0CF` | `06CB92F117686781DCAA116D32DB021A7DE45AB70BD49D19ECDA6935BF25837A` |
+| `visual-plan.md` | `A90DCE6626EF7A13816E47AE9A2D4BD90A2846948F0A052C4A6B18F526546582` | `D3231901C3DEF3444F016939A0E41A298953612AA6AD5502D35450C7F3490D2F` |
+
+本次旁白**只改 E10、T05、T09、T10、T11**：E10 用明說「其實，在商品上市前」從 E09 的上市後疑問回看原型接觸；E11 的家廚試用仍為既有來源支持的下一步。T05 轉問家庭使用後器型是否順手，避開「示範不足所以聘人」的推定因果；T09 不把 1931 年當確切設立日；T10 加入初期業務訓練；T11 才接後來的產品改良與上市前評估。劇本內補定義 S8／S9 兩篇來源，更新節奏表，不改其他旁白 ID。
+
+畫面**只改 E10、E11、T05、T09、T10、T11**：E10／E11 註記說是上市前原型的匿名概念畫面，不畫可考交付；T05 改成家庭器型比較；T09 後製卡明寫「到 1931 年／公司已有測試廚房」；T10 改為業務員在匿名公司廚房實作；T11 註記限定為後來加入的產品測試。沒有把外觀當配方、原型或可考實物的證據，也沒有生成圖片。
+
+本輪機械核對：兩檔各 80 個唯一同序 ID，旁白與畫面差異集合如上；67 `I`／13 `C`、最長純卡連續 2 張；插圖英文提示詞未含商標、具名人物或可讀字要求。稿面旁白 **2,503 字元**，相鄰節奏檢查點最長 **164 字元**，都不是配音實測秒數。v4 審查結論與前兩位新稿盲讀只對其舊 SHA 有效；本次新 SHA 待另一代理做獨立來源／畫面差異重核，並待兩位只讀新稿的旁白盲讀。念法、站主劇本決定、實測正文 ≥480 秒、插圖實際可見時間、付費、上傳和發布仍未通過；沒有付費呼叫或作者自評 PASS。
+
+`git diff --check` 無空白錯誤（Git 另提示作者收據工作樹 CRLF 將依設定正規化）。`npm run check:tasks` exit 1，錯在工作樹原有兩份無關 open／done 重複票 `2026-10-22-blind-narration-review-a-for-c12` 與 `2026-10-22-independently-audit-c12-pyrex-script-and`；其餘為既有警告。這兩份其他代理未追蹤檔未改、未納入提交。未跑全套 `test:docs-videos` 或任何付費產線。

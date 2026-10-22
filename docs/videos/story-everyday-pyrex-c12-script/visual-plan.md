@@ -1,6 +1,6 @@
 # C12 Pyrex｜逐句、逐鏡可愛插圖計畫
 
-狀態：與 [劇本](script.md) 80 句逐一對應的**前期分鏡方向**；本版隨兩位新稿盲讀的 HOLD 修訂，舊版畫面收據只綁舊雜湊。尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
+狀態：與 [劇本](script.md) 80 句逐一對應的**前期分鏡方向**；本版隨獨立來源／畫面差異重核 v4 的 HOLD 修訂，舊版畫面收據只綁舊雜湊。尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
 
 ## 鏡頭約束
 
@@ -72,8 +72,8 @@
 | E07 | I | Medium shot of a shop worker placing a finished clear baking dish beside a rough glass jar bottom on separate shelves, daylight from a tall window | 商用品與試用品區別。 |
 | E08 | I | Close-up of food visible through a plain clear baking dish on a table, one cook looking through the side, soft kitchen daylight | 透明特徵，不冒稱試烤性能。 |
 | E09 | I | Medium shot of an anonymous shopper leaning toward a clear baking dish with a puzzled expression at a shop counter, daylight from storefront | 信任門檻。 |
-| E10 | I | Wide shot of a modest kitchen with one anonymous cook studying a plain clear baking dish on the counter, soft daylight from a window | 轉向家政專家準備試用的概念畫面；不重建 Corning 聘任場面或具名肖像。 |
-| E11 | I | Medium shot of an anonymous home cook trying a plain clear baking dish in her own modest kitchen, soft window light | 家政專家家中試用的概念插畫，不畫可考證人物。 |
+| E10 | I | Wide shot of a modest kitchen with one anonymous cook studying a plain clear baking dish on the counter, soft daylight from a window | 上市前原型交家政專家後的概念畫面；不重建交付、聘任或具名肖像，也不讓外觀替原型認證。 |
+| E11 | I | Medium shot of an anonymous home cook trying a plain clear baking dish in her own modest kitchen, soft window light | 上市前試做樣品在家中試用的概念插畫，不畫可考證人物或實物。 |
 | E12 | I | Close-up of a plain clear baking dish beside an unmarked closed cookbook on a kitchen table, one hand opening the book, daylight | 廣告與烹飪書由後製短字提示；生圖不生成字或仿舊廣告。 |
 | E13 | I | Medium shot of an anonymous shopper watching an empty cooking demonstration table beside a clear baking dish, bright shop lighting | 用尚待發生的示範承接提問，不畫示範已完成。 |
 | E14 | I | Wide shot of an old hardware shop with plain tools and one clear baking dish on a shelf, one clerk looking toward it, daylight from storefront | 早期五金通路示意。 |
@@ -88,13 +88,13 @@
 | T02 | C | 後製：家政專家／Sarah Tyson Rorer／Mildred Maddocks | 人名只後製，不生成肖像。 |
 | T03 | I | Close-up of one demonstrator's hands presenting food inside a clear baking dish to viewers beyond frame, light from a store window | 看得到實際烹飪結果。 |
 | T04 | I | Medium shot of an anonymous home cook setting a plain clear baking dish on a kitchen shelf, soft daylight from a window | 約 1920 年家庭使用的概念插圖；不指認可考家庭，也不畫普及率。 |
-| T05 | I | Medium shot of several different plain clear baking vessels on separate workshop shelves, one anonymous worker studying them, daylight from a high window | 以不同新品轉到上市前評估；不把 1931 年正式測試廚房提前畫出。 |
+| T05 | I | Close-up of an anonymous home cook comparing two differently shaped plain clear baking dishes on a kitchen table, soft daylight | 以器型、尺寸是否順手提問的家庭概念插圖；不把 1931 年測試廚房或可考抱怨提前畫出。 |
 | T06 | I | Wide shot of a simple early office with a desk and one plain glass baking dish, one anonymous woman entering, daylight from a tall window | 1929 年全職職位的匿名概念圖；不重建公司辦公室原貌或具名肖像。 |
 | T07 | I | Medium shot of an anonymous woman examining a plain glass vessel at a simple office desk, daylight from a high window | Lucy Maltby 的工作只作匿名概念插畫；不畫可辨肖像或尚未設立的正式測試廚房。 |
 | T08 | C | 後製：1929／Lucy Maltby／消費者服務辦公室 | 年份、名字與辦公室只由後製排字，不送生圖。 |
-| T09 | C | 後製：1931／公司測試廚房 | 年份後製，不畫原址。 |
-| T10 | I | Wide shot of a formal test kitchen with plain glass vessels on counters, one anonymous cook recording notes in a blank book, bright window light | 正式設施概念，非館藏照片。 |
-| T11 | I | Medium shot of an anonymous cook checking a new plain glass vessel at a formal test kitchen counter, daylight from high windows | 上市前評估的設施用途。 |
+| T09 | C | 後製：到 1931 年／公司已有測試廚房 | 「到 1931 年已設立」的時間界線只由後製排字，不畫原址或確切成立日。 |
+| T10 | I | Medium shot of one anonymous sales worker practicing with a plain clear baking dish in a formal company kitchen, bright window light | 初期業務員實作訓練的概念插圖；不重建真實課程、學員或廚房原貌。 |
+| T11 | I | Medium shot of an anonymous cook checking a new plain glass vessel at a formal test kitchen counter, daylight from high windows | 後來加入產品與改良測試的概念插圖；不畫成設立當時唯一任務。 |
 | T12 | I | Wide shot of two plain clear baking dishes of different shapes on separate workshop shelves, one anonymous worker looking between them, soft daylight from high windows | 提出配方是否仍相同的問句；不靠玻璃外觀判材質，也不畫可考原物。 |
 | T13 | I | Medium shot of an anonymous glass worker examining a new unmarked glass sample beside an older baking dish, light from a high workshop window | 後來繼續開發，不畫配方內容。 |
 | T14 | I | Wide shot of an old baking dish and a separate modern kitchenware shelf, one viewer standing between them, daylight | 不跨年代替別件商品定材質。 |
