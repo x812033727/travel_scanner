@@ -1,0 +1,1958 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；自然說書。",
+    "performance": "1610 觀測本文與 1880 譯者註解分開；每夜看見的點數，不等於天上物體總數。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s62",
+  "sources": [
+    {
+      "title": "Galileo, Sidereus Nuncius (1610), E. S. Carlos English translation with notes (1880), fixed full text",
+      "url": "https://github.com/GITenberg/The-Sidereal-Messenger-of-Galileo-Galilei--13-and-a-Part-of-the-Preface-to-Kepler-s-Dioptrics__46036/blob/6672b6c62a0f30e9bb9b84410ef48c6698c37ea5/46036-0.txt",
+      "checked_on": "2026-10-22"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s62003",
+      "payoff": "s62051",
+      "what": "換邊真正是誰在動"
+    },
+    {
+      "setup": "s62005",
+      "payoff": "s62045",
+      "what": "十日為何只見兩點"
+    },
+    {
+      "setup": "s62006",
+      "payoff": "s62076",
+      "what": "近旁一點為何遲現"
+    },
+    {
+      "setup": "s62007",
+      "payoff": "s62094",
+      "what": "整組是否隨木星移動"
+    },
+    {
+      "setup": "s62008",
+      "payoff": "s62059",
+      "what": "首夜三點非總數"
+    },
+    {
+      "setup": "s62037",
+      "payoff": "s62038",
+      "what": "次夜位置"
+    },
+    {
+      "setup": "s62022",
+      "payoff": "s62024",
+      "what": "鏡筒看見什麼"
+    },
+    {
+      "setup": "s62037",
+      "payoff": "s62038",
+      "what": "第二夜會否換位"
+    },
+    {
+      "setup": "s62054",
+      "payoff": "s62056",
+      "what": "後續可見點變化"
+    },
+    {
+      "setup": "s62055",
+      "payoff": "s62057",
+      "what": "十二日小點出現"
+    },
+    {
+      "setup": "s62074",
+      "payoff": "s62075",
+      "what": "十七日近點分開"
+    },
+    {
+      "setup": "s62063",
+      "payoff": "s62076",
+      "what": "看似消失的原因"
+    },
+    {
+      "setup": "s62089",
+      "payoff": "s62094",
+      "what": "固定星對照"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s62001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62001",
+          "text": "一六一〇年一月八日入夜，伽利略又把望遠鏡對準木星。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one dark-haired man aligns a plain tube telescope toward a dim winter sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "一月八日，木星旁的點換了邊"
+    },
+    {
+      "id": "s62002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62002",
+          "text": "昨夜分在木星兩側的三個小點，今晚全跑到同一邊。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a plain-robed observer leans toward the eyepiece with a surprised face",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62003",
+          "text": "他原先以為它們是遠方恆星；難道是木星突然越過了它們？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar with short hair looks from the tube toward a blank observing page",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62004",
+          "text": "隔夜雲遮住天空，這個疑問得等下一個晴夜。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a quiet sky watcher waits beside a shut window under low clouds",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62005",
+          "text": "再看時，眼前能數到的點甚至比前兩夜少。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the instrument builder holds a closed notebook beside the telescope",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62006",
+          "text": "有一夜，靠木星的一點又從光暈旁顯出；它先前在哪？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one mature researcher moves a gloved hand near a small telescope focus knob",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62007",
+          "text": "更晚他拿遠處一顆固定星作對照：這一群真的跟著木星走嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a careful mathematician points at one distant pale star from an unlettered sketch",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62008",
+          "text": "但第一夜，他怎麼會只數到三個？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one stargazer in simple robes studies a blank page with three faint unlettered dots",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62009",
+          "text": "能看見那三點的鏡筒，起於更早傳來的荷蘭消息。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one dark-haired man unfolds an unlettered message beside a plain optical tube",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "荷蘭鏡筒消息到來，他開始磨鏡"
+    },
+    {
+      "id": "s62010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62010",
+          "text": "伽利略自己說，起初只是聽聞有人把遠物看得像在眼前。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a plain-robed observer looks across a room through a simple open frame",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62011",
+          "text": "他想把那個傳聞裡的效果重做出來：遠處到底能被拉近多少？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar with short hair sets aside an older plain viewing tube",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62012",
+          "text": "巴黎友人的來信讓傳聞更可靠，他才動手研究折射。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a quiet sky watcher turns an unlettered letter beside two simple glass pieces",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62013",
+          "text": "第一支鏡筒用鉛管，兩端安著形狀不同的透鏡。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the instrument builder fits a plain glass lens to a short dull metal tube",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62014",
+          "text": "他再換更精細的鏡片，讓很遠的物件在視野裡變大。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one mature researcher tests a second plain lens near a wooden window",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62015",
+          "text": "可是變大不等於看得全；很近的光點也可能黏在一起。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a careful mathematician narrows one eye at a softly glowing object through glass",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62016",
+          "text": "可是鏡頭裡兩點那麼近，還能量出它們之間的小角度嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one stargazer in simple robes holds an unlettered blank ruler near a telescope barrel",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62017",
+          "text": "書裡甚至提到，用有不同小孔的薄片改變可看的角度。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one dark-haired man holds a plain perforated metal disc beside the tube",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62018",
+          "text": "他說這樣量出的角距，仍可能差上一兩角分。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a plain-robed observer compares two plain measuring circles without printed numbers",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62019",
+          "text": "所以他得親自看清間隔，再把每次量到的位置記下。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar with short hair sets a quill beside an unlettered open notebook",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62020",
+          "text": "在月面與其他星體之後，他把鏡筒轉向一顆熟悉的行星。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a quiet sky watcher turns the telescope away from a pale Moon toward dark sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62021",
+          "text": "那是木星；真正奇怪的，不在木星圓盤本身。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the instrument builder pauses beside the eyepiece while one pale orb glows outside",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62022",
+          "text": "鏡頭旁一排細光落進他的眼睛，會是普通恆星嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one mature researcher peers at tiny neutral glimmers beyond the tube",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62023",
+          "text": "一月七日晚，他第一次留意木星兩旁這幾點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a careful mathematician opens a blank notebook next to a mounted telescope",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62024",
+          "text": "他看見三個又小又亮的光點，幾乎排成同一直線。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one stargazer in simple robes leans to an eyepiece while faint lights align in the sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "一月七日，三個小點像恆星"
+    },
+    {
+      "id": "s62025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62025",
+          "text": "其中兩個在木星東側，另一個在西側。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one dark-haired man moves a plain pointer over an unlettered tabletop sketch",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62026",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s62026",
+          "text": "出版時，他把這晚看到的隊形留在第一幅小圖裡。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "text": "一月七日",
+        "sub": "東二・西一｜伽利略 1610 年記錄"
+      }
+    },
+    {
+      "id": "s62027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62027",
+          "text": "在他眼裡，它們當時還只是幾顆背景恆星。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar with short hair studies the faint sky with a doubtful expression",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62028",
+          "text": "三點排得整齊、又比旁邊細星亮，才讓他多看了一會。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a quiet sky watcher tilts the tube slightly to follow a pale line of lights",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62029",
+          "text": "但他承認，第一晚沒有細量它們離木星多遠。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the instrument builder leaves measuring dividers resting beside a blank page",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62030",
+          "text": "這個空白很要緊：沒有舊位置，拿什麼判斷它們會不會動？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one mature researcher rests one hand on a clean notebook margin",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62031",
+          "text": "而他這一晚只數到三點，下一夜的隊形仍是未知數。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a careful mathematician turns a blank page beside the telescope without writing",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62032",
+          "text": "若它們真是遠星，隔一晚仍該能用它們作位置參考。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one stargazer in simple robes looks past the telescope toward a fixed distant glimmer",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62033",
+          "text": "木星自己會在天上移動，可一排遠星不會突然換邊。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one dark-haired man slides a plain round token beside three unmarked dots",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62034",
+          "text": "所以隔夜再看，同一片天空就是最短的一次檢驗。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a plain-robed observer returns to the window with the telescope at dusk",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62035",
+          "text": "最東邊和西邊的點，還比剩下那個看起來大些。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar with short hair closes a plain blank card and keeps only a night sketch",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62036",
+          "text": "他當時只能記下所見，等待位置自己給答案。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a quiet sky watcher draws a short unlettered mark into a plain notebook",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62037",
+          "text": "第二夜，那排小點真的還待在原處嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the instrument builder reaches toward the eyepiece beneath the next evening sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62038",
+          "text": "第二夜，三點全在木星西側，而且靠得更近。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one mature researcher jerks back from the telescope with a startled face",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "chapter": "一月八日至十一日，他換了判斷"
+    },
+    {
+      "id": "s62039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62039",
+          "text": "若原先東側那兩點沒動，木星得在一夜間越過它們。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a careful mathematician compares two blank sky sketches laid side by side",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62040",
+          "text": "伽利略先怕的是：木星走得和天文學家的推算不同。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one stargazer in simple robes holds a plain circular token over an unlettered table",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62041",
+          "text": "他很想隔天再核對，可一月九日整片天空都是雲。下次會是什麼隊形？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one dark-haired man stands at a rain-streaked window beside the idle tube",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62042",
+          "text": "窗外看不到木星，書裡沒有把這晚寫成觀測。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a plain-robed observer covers the telescope with a plain cloth beneath clouds",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62043",
+          "text": "十日雲散，他再往同一處看，卻只見兩點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar with short hair uncovers the tube under a clearer evening sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62044",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s62044",
+          "text": "這次兩點都在木星東側，不像前夜全在西側。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "text": "一月十日",
+        "sub": "只見兩點｜伽利略 1610 年記錄"
+      }
+    },
+    {
+      "id": "s62045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62045",
+          "text": "第三點呢？他當時猜它可能被木星擋住。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the instrument builder squints toward a bright planet edge through the eyepiece",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62046",
+          "text": "這只是他的當晚猜測；那一點究竟是哪顆，書裡沒替我們認出來。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one mature researcher leaves an unlettered spot blank on a paper chart",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62047",
+          "text": "同一帶也沒有另一排恆星；每天換隊形，到底是哪一邊在動？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a careful mathematician scans a dark patch of sky beside the bright orb",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62048",
+          "text": "他開始把問題從木星移開：會動的也許是那些小點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one stargazer in simple robes turns a blank sketch around while looking toward the tube",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62049",
+          "text": "十一日，兩個可見點的距離和亮度又與前夜不同。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one dark-haired man slides two blank counters farther apart on the desk",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62050",
+          "text": "多看一夜，新隊形能不能把前兩夜的疑問連起來？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a plain-robed observer lays three unlettered dated pages in a row",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62051",
+          "text": "於是他在書裡說，三個點應該繞著木星運動。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar with short hair circles a plain dot on an unlettered observing sheet",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62052",
+          "text": "他還把它們比成金星、水星繞太陽那樣運行。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a quiet sky watcher studies a plain round wooden model without labels",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62053",
+          "text": "可是那時他並沒有算好它們各自的周期。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the instrument builder sets aside an unfinished unlettered circular sketch",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62054",
+          "text": "先前見過的三個，下一夜可能又只露出一部分。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one mature researcher watches the telescope at the window as dusk deepens",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62055",
+          "text": "再等一夜，木星邊緣會不會多顯出一點？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a careful mathematician steadies the focusing tube near the planet glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62056",
+          "text": "一月十二日初看時，兩側各有一個明亮小點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one stargazer in simple robes checks the telescope view beside two faint lights",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "chapter": "一月十三日，四點同時入眼"
+    },
+    {
+      "id": "s62057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62057",
+          "text": "過了幾個小時，更細的一點在木星東邊近處冒出。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one dark-haired man moves closer to the eyepiece as a tiny glimmer appears",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62058",
+          "text": "那個光點是幾個小時後才進入他的視野；書裡記的是看見的時間。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a plain-robed observer holds a blank paper against the window without marking it",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62059",
+          "text": "下一夜，視野裡第一次同時出現四個小點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar with short hair widens his eyes beside the telescope under a clear sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62060",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s62060",
+          "text": "一月十三日：西側三個，東側一個，原書留下一幅排列圖。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "text": "一月十三日",
+        "sub": "西三・東一｜原書排列圖"
+      }
+    },
+    {
+      "id": "s62061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62061",
+          "text": "四個一起出現，才把「第一晚只數到三個」的意思改掉。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the instrument builder sets a fourth plain token beside three older counters",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62062",
+          "text": "那晚沒見到的東西，不代表它不在木星附近。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one mature researcher looks at a blank space beside the eyepiece",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62063",
+          "text": "可下一次看向木星時，仍會是四個嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a careful mathematician folds one unlettered page while holding the telescope",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62064",
+          "text": "十四日又是雲天；觀測日記在此留了一個空格。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one stargazer in simple robes waits beside a covered telescope beneath grey clouds",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62065",
+          "text": "十五日入夜，四個點又都在木星西側。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one dark-haired man opens a notebook as four faint glimmers appear outside",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62066",
+          "text": "幾個小時後，眼裡卻只剩三個。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a plain-robed observer draws his eye close to the telescope with uncertainty",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62067",
+          "text": "同一晚中間兩點還越挨越近，幾乎併成一點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar with short hair holds two tiny unlettered counters nearly touching",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62068",
+          "text": "再隔一小時，兩點只隔三十角秒，或更少；再近還分得開嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a quiet sky watcher shows two unlettered pinheads almost touching on plain paper",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62069",
+          "text": "天空沒有憑空刪掉一顆；視野裡的「個數」正在變。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the instrument builder lifts a blank card over a pale dot on a table",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62070",
+          "text": "他能記錄亮度、間隔與時間，卻不能每次都追出身份。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one mature researcher sets a small unlettered timepiece beside blank notes",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62071",
+          "text": "這也提醒觀眾：後來的四顆，是多夜比較出的結論。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a careful mathematician compares several unlettered pages under lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62072",
+          "text": "一月十七日，兩個點先出現；接近木星處還有別的嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one stargazer in simple robes leans toward a tube facing a crisp winter sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62073",
+          "text": "他等過幾小時，再回鏡頭前看那個邊緣。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one dark-haired man returns to the telescope after a candle burns low",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62074",
+          "text": "那裡真的會有一點從相鄰光芒裡分開嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a plain-robed observer adjusts the eyepiece gently near a pale planet",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62075",
+          "text": "十七日稍晚，一點從另一點近旁顯出來。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar with short hair notices a small split in the pale glimmer at the eyepiece",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "貼近木星時，幾個點像消失了"
+    },
+    {
+      "id": "s62076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62076",
+          "text": "兩點先貼得太近，後來位置拉開，眼睛才能分開。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a quiet sky watcher separates two plain light-colored counters on a wooden table",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62077",
+          "text": "十九日他又懷疑，有一點幾乎貼在木星邊上。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the instrument builder holds a fingertip near a round blank token",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62078",
+          "text": "到了當晚後段，他才看清那個很小的點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one mature researcher opens an eye wider beside the telescope under lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62079",
+          "text": "晚些看見，不等於它晚些才出現在天上。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a careful mathematician moves a blank card away from a pale paper dot",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62080",
+          "text": "二十三日，原本靠近木星的兩點不再可見。它們去了哪？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one stargazer in simple robes watches two glimmers fade near the bright planet edge",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62081",
+          "text": "他在書裡猜，是被木星擋住；這仍是當時判讀。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one dark-haired man draws a curved unlettered mark around a round token",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62082",
+          "text": "二十四日，另兩點靠得像一點，他也說可能合在一起。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a plain-robed observer presses two pale wooden counters close together",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62083",
+          "text": "他還不能單憑這一夜，畫出哪顆在哪條軌道上。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar with short hair turns an unlettered symbolic orbit sheet face down",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62084",
+          "text": "重要的是：同一組物體，鏡中可能只露一部分。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a quiet sky watcher half covers a pale token with a round blank card",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62085",
+          "text": "到了二月八日，一點朝木星靠近，數小時後消失。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the instrument builder leans forward at the telescope as faint light nears a bright orb",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62086",
+          "text": "二月十一日，靠木星處又能見到第四個小點。只看個數夠嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one mature researcher spots one new tiny glimmer at the edge of the tube view",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62087",
+          "text": "這些消失與再現，讓「數到幾點」變得不可靠。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a careful mathematician flips through unlettered nightly notebook pages",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62088",
+          "text": "但只說它們在木星旁變位，還不夠證明它們跟著木星走。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one stargazer in simple robes looks from one pale planet to a distant fixed glimmer",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62089",
+          "text": "若把整組和遠方不動的星相比，會看見什麼？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one dark-haired man holds a blank straightedge between two sky glimmers",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62090",
+          "text": "二月二十六日晚，先前藏在木星後的一點又顯出。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a plain-robed observer returns to the telescope as a small glimmer clears the planet edge",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "二月二十六日，他拿遠星來比"
+    },
+    {
+      "id": "s62091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62091",
+          "text": "他起先只看見兩點；到了第五個時辰，才看見第三點。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one scholar with short hair turns a plain hourglass beside two faint sketch marks",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62092",
+          "text": "同晚他開始把木星與那些小點，對照更遠的一顆固定星。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a quiet sky watcher aligns a blank pointer toward a distant isolated glimmer",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62093",
+          "text": "那顆遠星像一個不隨木星旅行的參照位置。隔一夜，誰會靠近它？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the instrument builder marks one unlettered reference dot far from a round counter",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62094",
+          "text": "隔晚，木星和旁邊的小點一起更靠近它。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one mature researcher slides a round token and small counters together toward a fixed dot",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62095",
+          "text": "這一次他比的不是點在木星東邊還是西邊。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a careful mathematician moves an unlettered ruler beyond a round token",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62096",
+          "text": "他要看的是整群光點，會不會跟木星一起平移。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one stargazer in simple robes draws one blank arrow beside a cluster of pale counters",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62097",
+          "text": "二月二十八日，一夜裡仍有小點在木星近旁出現。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one dark-haired man checks a tiny glimmer through the telescope at late hour",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62098",
+          "text": "三月一日，四點全在木星東側。若是遠方恆星，怎會一直守在木星旁？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a plain-robed observer compares a blank sketch with four pale marks to the telescope",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62099",
+          "text": "隔天位置又變，但遠方固定星仍能當參照。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one scholar with short hair holds a simple star chart with one isolated unlettered mark",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62100",
+          "text": "到了三月二日，這串近兩個月的觀測，能回答什麼？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a quiet sky watcher stacks many unlettered observation pages on a wooden desk",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62101",
+          "text": "他在書裡說，四個小天體跟著木星向前、向後移。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the instrument builder moves a small group of blank tokens together across the desk",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62102",
+          "text": "它們在木星東、西兩側來回，卻不會離木星無限遠。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one mature researcher rotates a pale round token within a small unlettered circle",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62103",
+          "text": "這比單晚看到三個、兩個或四個，更能解釋整串記錄。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a careful mathematician lays several plain nightly cards in chronological order",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62104",
+          "text": "因此他判斷，它們是在木星周圍運動。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one stargazer in simple robes traces a restrained symbolic path around a blank round token",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62105",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s62105",
+          "text": "他在 1610 年書中叫它們「美第奇星」。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "text": "美第奇星",
+        "sub": "原書作者的名稱｜1610 年"
+      }
+    },
+    {
+      "id": "s62106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62106",
+          "text": "那是書裡的獻辭名稱，不是第一夜就寫下的天體編號。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a plain-robed observer turns from an unlettered dedication page back to sky notes",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62107",
+          "text": "但他能從這串位置，算出四個小天體各自的軌道嗎？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one scholar with short hair leaves four unlettered orbit sketches unfinished",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62108",
+          "text": "還不能。書末說，他當時沒有算出這些軌道。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a quiet sky watcher sets a later blank calculation sheet away from the 1610 pages",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62109",
+          "text": "他還注意到：幾個點靠木星時容易擠在一起。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the instrument builder half closes a notebook over three pale marks",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62110",
+          "text": "較遠處沒見過這種擠法；這也是他的推論，不是逐顆身份證。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one mature researcher places two unlettered dated pages beside the telescope",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62111",
+          "text": "第一晚的三點，十三日的四點，最後都要放回這串變位裡看。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a careful mathematician turns the last page of an unlettered night log",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62112",
+          "text": "固定的 1610 年原書與英譯連結，放在說明欄供你對讀。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one stargazer in simple robes opens an unlettered source volume beside a simple video player",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62113",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62113",
+          "text": "你若只看到第一晚的三點，隔天會不會也回去看？",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one dark-haired man returns one hand to a plain telescope by the window",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s62114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s62114",
+          "text": "喜歡有出處的歷史謎題，訂閱奇聞檔案局。",
+          "emotion": "自然說書；逐夜分清觀測、當時猜測與後來推論，不演伽利略逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a plain-robed observer reaches toward a blank subscribe tile beside a video frame",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "星點去哪了？",
+      "tag": "木星・1610",
+      "sub": "伽利略逐夜改判斷",
+      "shot": "s62001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "伽利略每晚看木星旁的小星，為什麼數目一直變？｜奇聞檔案局",
+    "description": "1610 年 1 月 7 日，伽利略在木星旁看到三個小點；往後幾夜，有時兩個、有時四個。他怎麼從每晚變動的排列，判斷那些小點與木星的關係？本集跟著他出版的逐夜記述，把「當時看見」與「推論」分開。\n\n原創可愛插畫只作故事示意，精確星點數以文中記錄及後製資訊卡為準；1610 年本文和 1880 年譯者註解亦分開。查核作者候選：2026-10-22。\n\n固定本文及英譯：https://github.com/GITenberg/The-Sidereal-Messenger-of-Galileo-Galilei--13-and-a-Part-of-the-Preface-to-Kepler-s-Dioptrics__46036/blob/6672b6c62a0f30e9bb9b84410ef48c6698c37ea5/46036-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "伽利略",
+      "木星衛星",
+      "星際信使",
+      "1610",
+      "歷史謎題",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
