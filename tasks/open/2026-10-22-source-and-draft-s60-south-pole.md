@@ -23,7 +23,7 @@ The owner asked for another genuinely new Curio history film with a condensed op
 ## Definition of done
 
 - [x] A source-bound S60 author candidate has a distinct topic, A/B outline, 30–60-second condensed opener, full >8-minute estimated body, brand and Studio link plan, fixed sources, line-to-claim mapping, and zero-error video lint.
-- [ ] Independent source review, two blind narrative readers and a formal merge have accepted the frozen script.
+- [x] Independent source review, two blind narrative readers and a formal merge have accepted the frozen script.
 - [ ] Approved audio, illustrations, music, final video and upload package exist with actual media QA.
 
 ## Steps
@@ -36,7 +36,7 @@ The owner asked for another genuinely new Curio history film with a condensed op
 - [x] Read the independent R1 source/visual HOLD and author a source-bound R2 repair with an exact structured diff and frozen hashes.
 - [x] Have a different worker verify every source-bound line and written visual against the fixed editions on R2 and R3 hashes.
 - [x] Run two isolated readers and formal merges on R2 and R3; their concrete failures are recorded.
-- [ ] Repair the R3 shared `no_recap` failure and obtain fresh source/visual plus two-reader narrative PASS on R4.
+- [x] Repair the R3 shared `no_recap` failure and obtain fresh source/visual plus two-reader narrative PASS on R4.
 - [ ] Obtain actual content/media gate receipts before paid narration, pictures or music, then produce and QA the full cut.
 
 ## How to verify
@@ -50,3 +50,5 @@ From repository root: `VIDEO_WORKDIR=/tmp/s60-video-work node tools/video/cli.mj
 Key dates: Amundsen's first flag was 1911-12-14, the small tent and two addressee letters were left by 1911-12-17; Scott saw the black flag 1912-01-16 and found the tent 1912-01-18; Amundsen returned to Framheim 1912-01-25. Scott's note says he kept Amundsen's request to forward a letter to King Haakon. Neither fixed book establishes that the king actually received it. The script's last chapter follows this chronology. MiniMax has not been called, no TTS or music has been generated, and no media approval has been claimed; R3 independent source/visual paper review passed. Exact `video.json` content hash should be recorded after independent acceptance and again before any paid-media gate; edits invalidate later receipts.
 
 2026-10-22 R1 independent source/visual review is [HOLD](../../docs/videos/curio-s60/review/r1-independent-source-visual.md). The author then corrected four spoken lines, added the P09 actual night-departure anchor, and replaced all 104 shot prompts so rescue, two Pole camps, letters, return, and Scott's fate follow the narrated chronology. The [R2 author receipt](../../docs/videos/curio-s60/review/r2-author-visual-repair.md) and exact JSON diff freeze `video.json` SHA-256 `bf8d95565857f0a8b976ef6f2d89e730fd88fabcab44201e75a05bd67dabba9c`. R2 independent source/visual paper review passed, but the formal two-reader narrative merge failed four shared items. R3 author repair and [fresh independent source/visual PASS](../../docs/videos/curio-s60/review/r3-independent-source-visual.md) then passed all 110 speech/claim rows and 104 prompts on new hashes. R3 [two-reader formal narrative merge](../../docs/videos/curio-s60/review/r3-formal-merged-narrative.json) remains **FAIL 12/13** solely on repeated king-letter delivery limits at s60106–107 (`no_recap`); [audit](../../docs/videos/curio-s60/review/r3-formal-merge-audit.json) and official CLI replay exit 1. R4 author repair is in progress. No paid media or owner gate has been claimed.
+
+2026-10-22 R4 removed only repeated s60107 and moved its loop payoff to s60106; frozen `video.json` SHA-256 `c0a474072ffa37604dfe2acb9a46f600cac37c9815da5b4b692e213f560fd8ac`. [Independent R4 source/visual audit](../../docs/videos/curio-s60/review/r4-independent-source-visual.md) passed 109/109 spoken claims and 103 illustrated prompts/6 cards on those hashes. Two fresh [blind A](../../docs/videos/curio-s60/review/r4-isolated-blind-a.official-narrative.json) and [blind B](../../docs/videos/curio-s60/review/r4-isolated-blind-b.official-narrative.json) official ballots yielded 13/13 and 11/13; [formal OR merge](../../docs/videos/curio-s60/review/r4-formal-merged-narrative.json) passed 13/13 with matching creative/panel bindings and [audit](../../docs/videos/curio-s60/review/r4-formal-merge-audit.json). The independent official CLI replay exited 0. Next: complete `verify-1.md`, record the user's delegated A outline/current script choice in hash-bound local gates, then synthesize and actually QA audio before any image spending. No paid media or human listening has been claimed.
