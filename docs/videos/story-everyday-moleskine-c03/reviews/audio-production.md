@@ -1,6 +1,6 @@
 # C03 Moleskine｜本機旁白製作與音訊審查
 
-2026-10-21 23:52（臺北時間）讀回本機工作區 `C:\Users\x8120\mokaair-work\videos\story-everyday-moleskine-c03\`。**旁白已合成，自動音訊查核仍有六句旗標；尚無人工試聽或站主音訊核准。** 本文不是成片驗收收據。
+2026-10-21 23:52（臺北時間）讀回本機工作區 `<home>\mokaair-work\videos\story-everyday-moleskine-c03\`。**旁白已合成，自動音訊查核仍有六句旗標；尚無人工試聽或站主音訊核准。** 本文不是成片驗收收據。
 
 ## 合成與時長
 
