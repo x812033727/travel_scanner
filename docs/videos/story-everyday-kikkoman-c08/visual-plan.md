@@ -120,7 +120,7 @@
 | c080508 | card | 後製單焦點卡：1993 年「Good Design 商品選定」；標 G1、K3，非銷售證明。 | 靜態卡／後製切入 |
 | c080509 | shot | Medium shot of an anonymous designer looking at a blank award note beside a generic bottle study, soft desk light. | gentle tilt down |
 | c080510 | shot | Wide shot of an anonymous museum visitor observing a generic glass condiment bottle display, muted gallery light. | gentle tilt up |
-| c080511 | card | 後製單焦點卡：2005 年 MoMA 入藏；標 K3、M1。另註 1961 是物件／設計年份。 | 靜態卡／後製切入 |
+| c080511 | card | 後製單焦點卡：2005 年 MoMA 入藏；標 K3、M1。 | 靜態卡／後製切入 |
 | c080512 | shot | Medium shot of an anonymous curator setting two blank date tags beside a generic bottle outline, soft gallery light. | slow push-in |
 | c080513 | shot | Wide shot of an anonymous visitor looking at a generic bottle in a design gallery, diffuse ceiling light. | gentle pan right |
 | c080514 | shot | Medium shot of an anonymous researcher setting a blank sales ledger aside while viewing a bottle study, desk light. | slow pull-back |
