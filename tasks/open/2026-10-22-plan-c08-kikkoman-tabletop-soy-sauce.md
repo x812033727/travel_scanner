@@ -28,14 +28,14 @@ C08 在「日用品的意外轉身」排定為龜甲萬桌上醬油瓶，但目�
 - [x] 六章 Treatment 有一條可追的設計問題、試作、推出、後來識別的主線，含濃縮開場、約十分鐘容量、章末問題與奇聞檔案局畫面規則。
 - [x] 來源矩陣逐項區分公司、設計團隊、獨立館藏與獎項資料，列出可直接核對的事實、未找到的原件及不得推論的銷售因果。
 - [x] 由另一代理獨立覆核並產生綁定 Treatment 與來源矩陣 SHA256 的收據；實質錯誤修正後再請站主審方向。
-- [ ] 草稿 PR 僅供站主審企劃；在本集企劃核准前不寫逐字稿、不付費生成、不上傳或發布。
+- [x] [草稿 PR #1678](https://github.com/x812033727/travel_scanner/pull/1678) 僅供站主審企劃；在本集企劃核准前不寫逐字稿、不付費生成、不上傳或發布。
 
 ## Steps
 
 - [x] 確認 C08 題目與既有任務、分支、PR、工作樹沒有同題權屬衝突；建立獨立工作樹並認領窄範圍任務。
 - [x] 撰寫 Treatment 與來源矩陣，核對公司沿革、GK 設計紀錄、MoMA 1961 館藏物件及 2018 年立體商標文件。
 - [x] 派另一代理獨立逐來源查核，依查核結果修正並重新綁定雜湊。
-- [ ] 執行文件和任務檢查，提交草稿 PR 並貼 `no-auto-merge`，維持 review 待站主審企劃。
+- [x] 執行文件和任務檢查，提交草稿 PR 並貼 `no-auto-merge`，維持 review 待站主審企劃。
 
 ## How to verify
 
@@ -48,3 +48,5 @@ C08 在「日用品的意外轉身」排定為龜甲萬桌上醬油瓶，但目�
 2026-10-22：已寫六章 [Treatment](../../docs/videos/story-everyday-kikkoman-c08/treatment.md) 與[來源矩陣](../../docs/videos/story-everyday-kikkoman-c08/source-matrix.md)，兩檔仍待獨立逐來源審查和站主企劃核准。日本特許廳商標原始登錄、當年顧客調查與完整試作台帳未找到；正式逐字稿不可把 2018 年公司累計出貨稱作銷量因果。
 
 2026-10-22：獨立來源審查先判 REVISE，指出龜甲萬 2020 年 HTML 與年表 HTML 直接抓取 timeout／503；已以同篇可讀官方 PDF 支持 1955 年、一公升與三年多試作，另以可讀官方環境 PDF 支持 1961 年 150ml，1991 年 100ml 的年表條目降為 reviewer-only。瓶口用語改成「少滴」，不保證絕不滴漏。第二輪企劃來源審查 PASS，收據在 [reviews/source-review.md](../../docs/videos/story-everyday-kikkoman-c08/reviews/source-review.md)，只適用本版企劃；正式逐字稿仍須逐句查核。站主尚未核准 C08 方向。
+
+2026-10-22：已建立草稿 [PR #1678](https://github.com/x812033727/travel_scanner/pull/1678)，以新系列分支為 base，貼 `no-auto-merge`，等待站主採用或修訂方向。`npm run check:tasks` 與 `git diff --cached --check` 通過；沒有 C08 付費媒體、上傳或發布。
