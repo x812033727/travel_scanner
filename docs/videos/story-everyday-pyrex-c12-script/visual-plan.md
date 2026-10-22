@@ -37,7 +37,7 @@
 | O08 | I | Wide shot of a workshop doorway opening onto a modest kitchen interior, one worker carrying a plain glass vessel, afternoon light from the kitchen | 跨場景示意。 |
 | O09 | I | Medium shot of an anonymous home cook washing a plain ceramic dish beside an oven, soft morning window light | 家用環境。 |
 | O10 | I | Close-up of a shopper's hand hesitating over a clear baking vessel on a shop counter, daylight through front glass | 買家疑慮，非當期調查畫面。 |
-| O11 | I | Close-up of a plain ceramic casserole dish on a modest dinner table, one person's hand pointing toward it, warm evening lamplight | 晚餐談起家中烤皿的匿名示意，不重建對白。 |
+| O11 | I | Medium shot of two anonymous adults seated over simple supper bowls at a modest dinner table, one pausing to listen, warm evening lamplight | 陶皿已先前在烤箱碎裂；此鏡只畫晚餐談起舊事，不放完整陶皿或重建對白。接 O12 用短暫回想轉場明示那是較早的烤箱破裂。 |
 | O12 | I | Medium shot of an anonymous cook staring at several pieces of a plain shattered ceramic casserole dish inside an open kitchen oven, warm light from the oven | 破碎陶皿的匿名概念插圖，不重建原物或確切事發構圖。 |
 
 ## Idea（I01–I14）
@@ -118,7 +118,7 @@
 | N11 | C | 後製：PYREX／pyrex 字樣大小寫 ≠ 材質鑑定 | 解迷思；不貼商品假商標。 |
 | N12 | I | Medium shot of a rail worker holding a plain lantern globe near a cold station window, light from the lantern | 回收燈罩難題。 |
 | N13 | I | Close-up of a plain glass jar bottom beside a separate finished baking dish on a kitchen table, one cook's hand beside the jar, daylight | 回收家廚、調方與正式商品。 |
-| N14 | I | Medium shot of a modern home cook holding a plain glass baking dish beside a folded blank product leaflet on a kitchen table, soft daylight | 商品說明由後製字卡呈現，圖中不畫閱讀空白紙張。 |
+| N14 | I | Medium shot of a modern home cook holding a plain glass baking dish beside a folded blank product leaflet on a kitchen table, soft daylight | 本鏡仍為 I 插圖；若呈現商品標示／使用說明，只在現有插圖角落後製短字疊加，不另增純字卡。人物不讀無字紙；成片按實際可見時間重算插圖占比。 |
 | N15 | I | Medium shot of a viewer holding a familiar plain household object and smiling in surprise, bright window light | 留言題的生活感。 |
 | N16 | I | Wide shot of a kitchen table with a plain glass baking dish and an old rail lantern kept on separate sides, one viewer walking away, evening window light | 收回同一條故事線。 |
 
