@@ -63,7 +63,7 @@ The [R5 repair memo](../../docs/videos/curio-s63/review/r5-author-repair.md) spl
 
 ## R6 author repair (2026-10-22 UTC)
 
-R6 [作者窄幅修稿](../../docs/videos/curio-s63/review/r6-author-repair.md)從 R5 兩個 `no_recap` 位置及 B 單獨的片尾 `payoffs` 顧慮出發，只改 `s63002`、`s63004`、`s63052`、`s63106`、`s63126` 五個場景 ID。凍結雜湊：`video.json` `8f8903a7ec270c61636953a7d675840a838604c268132722658c05b26f2dbf68`；`script.md` `dfafdb178646575cc4cefab9c14621284835299caf1c75f3eea86e7835d82bd9`；`claims.md` `10a28deb76976f1b7c32eb4ab0188c6fda33e93d1914d2d1536c1ecd7eb9c18e`。開場 175 漢字約 32 秒，正文排除開場與 CTA 2,682 漢字約 8.25 分鐘（325 字／分）；lint 0/0。**R6 全新獨立來源／畫面審核及兩位未看過 R5 的正式盲讀仍待完成，付費媒體維持封鎖。**
+R6 [作者窄幅修稿](../../docs/videos/curio-s63/review/r6-author-repair.md)從 R5 兩個 `no_recap` 位置及 B 單獨的片尾 `payoffs` 顧慮出發，只改 `s63002`、`s63004`、`s63052`、`s63106`、`s63126` 五個場景 ID。凍結雜湊：`video.json` `8f8903a7ec270c61636953a7d675840a838604c268132722658c05b26f2dbf68`；`script.md` `dfafdb178646575cc4cefab9c14621284835299caf1c75f3eea86e7835d82bd9`；`claims.md` `10a28deb76976f1b7c32eb4ab0188c6fda33e93d1914d2d1536c1ecd7eb9c18e`。開場 175 漢字約 32 秒，正文排除開場與 CTA 2,682 漢字約 8.25 分鐘（325 字／分）；lint 0/0。[R6 獨立來源／畫面審核](../../docs/videos/curio-s63/review/r6-source-visual-independent.md)以完全相同的 R6 凍結雜湊 PASS，五個修改 ID 均無阻擋項，另外 122 個場景逐欄未變。**兩位未看過 R5 的正式盲讀仍待完成；付費媒體維持封鎖。**
 
 ## Notes
 
