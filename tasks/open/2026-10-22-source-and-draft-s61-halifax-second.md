@@ -47,7 +47,9 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 - [x] Two new official isolated R8 blind readers froze separate 13-question votes before CLI; formal OR merged 12/13 HOLD solely on shared `no_recap`.
 - [x] R9 author replaces `s61123`'s repeated rubble fact with Prince's crimson northern sky and roaring fire, retaining `s61059` as the first trapped-injured fact; `s61113` asks where the Common crowd shelters without assigning one tent to a named subgroup. Freeze an exact reversible R8→R9 delta and lint 0/0.
 - [x] Obtain fresh independent source/visual and formal dual-blind reviews of frozen R9 before any media spending; both PASS on R9 hashes.
-- [ ] Run the policy and media preflight on frozen R9 before any paid production.
+- [x] Refresh the outline's stale stage line, select recommended A under the owner's standing choice authorization, send site outline/script review cards, record local exact-hash proxy approvals and add `verify-1.md` as the QA index to the independent R9 fact check.
+- [x] Run one policy preflight and TTS/image dry-runs on frozen R9; preserve the site's `sponsored=0.31` policy FAIL and avoid another paid judge call. Quote 96 shots at about US$3.89 for up to three native takes; music quote needs TTS timeline.
+- [ ] Resolve the site policy false positive after PR #1664 is deployed or obtain an explicit site-owner policy decision; synthesize voice when Gemini daily quota recovers, measure and inspect it, then fix the whole episode media cap before opening art.
 
 ## How to verify
 
@@ -76,3 +78,5 @@ R6 [獨立史料與書面畫面覆核](../../docs/videos/curio-s61/review/r6-ind
 2026-10-22 R9 作者依 [R8 正式合併](../../docs/videos/curio-s61/review/r8-formal-merge-audit.md)的共同 `no_recap` HOLD，把 `s61123` 改為 Prince L924–937 直接描述的北面深紅天空與轟鳴火勢，使 `s61059` 的瓦礫下待救傷者成為第一次講出的火場需求。`s61113` 保留老人病弱者在寒風中趕路的處境，改問公地上的人**可在哪裡暫避寒風**，由後段軍方白帳及教堂大廳回收可用處所，不暗示每名老人病弱者被安排進同一頂帳棚。`s61015` 的比利時救濟船前職有固定來源；因刪除後在 325 字／分鐘只剩約一秒長度餘裕、同範圍替換易重述，這輪保留待獨立讀者判斷。R9 作者 [交接](../../docs/videos/curio-s61/review/r9-author-narrative-repair.md)記錄完整新雜湊與可逆差分；新獨立史料／畫面及兩份正式盲讀仍待，未進媒體。
 
 2026-10-22 R9 [獨立史料與書面畫面](../../docs/videos/curio-s61/review/r9-independent-source-visual.md)在新固定雜湊上 **PASS**，103／103 史實旁白、96／96 插圖提示、7／7 資訊卡均可追溯，lint 0／0。兩位全新隔離讀者各自於 CLI 前凍結原始 13 題票，均 **13／13 YES**；[正式 OR 合併](../../docs/videos/curio-s61/review/r9-formal-merge-audit.md) **13／13 PASS**，官方 CLI 重播 exit 0。政策、站主審核、旁白與影片仍待，這次未呼叫付費媒體。
+
+2026-10-22 R9 [製作前關卡收據](../../docs/videos/curio-s61/review/r9-production-gate-policy-hold.md)：網站 Jev 選推薦 A（1.00）；依站主「用推薦的決定就好不用問」授權，本機對大綱與劇本精確雜湊代行核准並各送站台待審卡，沒有冒稱站主親讀／親聽。新增 [verify-1.md](../../docs/videos/curio-s61/verify-1.md)作正式 QA 史料入口。一次政策預檢因本站「訂閱奇聞檔案局」自家 CTA 被算 `sponsored=0.31>0.30` 而 FAIL，屬待修政策判斷，不能聲稱 PASS；不重送 Jev 或為降分改史料稿。TTS dry-run 106 句／2,668 字元、Sulafat ready；96 圖 MiniMax 三輪上限報約 US$3.89，音樂報價待 timeline。S60/S62 的同網站 Gemini 429 顯示每日額度疑已用完，S61 本輪不再送第三次實際語音，預定 07:05 UTC 之後先重查再單次試。**本集仍 0 圖／0 judge／0 音樂／無 TTS、無成片；完整媒體上限未固定。**
