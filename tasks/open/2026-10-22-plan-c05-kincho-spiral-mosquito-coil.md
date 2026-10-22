@@ -11,7 +11,10 @@ completed_at:
 branch: codex/brand-story-kincho-c05-treatment
 depends_on: []
 scope:
-  - docs/videos/story-everyday-kincho-c05
+  - docs/videos/story-everyday-kincho-c05/treatment.md
+  - docs/videos/story-everyday-kincho-c05/source-matrix.md
+  - docs/videos/story-everyday-kincho-c05/reviews/source-review.md
+  - docs/videos/story-everyday-kincho-c05/reviews/owner-treatment-approval.md
 ---
 
 # Plan C05 Kincho spiral mosquito coil story
@@ -24,7 +27,7 @@ scope:
 
 - [x] C05 有獨立的六章 Treatment、一條因果主線、開場與鉤子草圖、標題與縮圖假設，並明列奇聞檔案局畫面規則。
 - [x] 一手來源矩陣逐項區分 1895 試作、1900 年公司記載申請、1902 年上市及現行產品，標示企業回顧與缺口。
-- [x] 另一代理對固定雜湊的企劃與來源矩陣獨立覆核；審查結果已寫入 reviews/source-review.md。後續仍待站主審方向，沒有劇本、付費生成、匯入或發布。
+- [x] 另一代理對固定雜湊的企劃與來源矩陣獨立覆核；審查結果已寫入 reviews/source-review.md。站主已採用企劃方向，核准範圍見 reviews/owner-treatment-approval.md；本票沒有劇本、付費生成、匯入或發布。
 
 ## Steps
 
@@ -48,3 +51,7 @@ scope:
 獨立代理先判 REVISE，要求移除當下無正文的 Good Design 來源、將僅見 PDF 的早期「六小時」標為 reviewer_only 或刪除、拆開螺旋的長度效果與後來雙卷的運送效果。修訂後對 treatment.md SHA-256 BBA52D1D55CE38560B8C7581EFCC7E739849468882C4FF91146F29F139A93C90、source-matrix.md SHA-256 0939FD2ACEBF84FA8F84559F71C056BD8784E65BD4A875A03687F53B872CA1EA 回報 PASS；收據在 docs/videos/story-everyday-kincho-c05/reviews/source-review.md。這只核准企劃來源界線，不是站主決定。
 
 2026-10-22：草稿 PR #1672（https://github.com/x812033727/travel_scanner/pull/1672）堆疊在新系列草稿 PR #1610，等待站主審本集企劃方向。npm run check:tasks 通過（僅有其他任務的既存 stale／scope 重疊警告）；git diff --cached --check 通過。首次 npm run test:docs-videos 因新工作樹缺少 pinyin-pro 失敗；npm ci 後重跑為 236 測試中 235 通過、1 失敗，失敗在未修改的 docs/videos/imported-long-languages/runner.test.mjs 第 679 行，子程序 package-runtime.mjs 在 Windows 以狀態 3221226505 無 stdout/stderr 結束。本次只有 C05 Markdown 與票；沒有動那組程式或付費媒體。後續若要追全套測試紅燈，依原組件另案處理，不混進 C05 來源審核。
+
+2026-10-22：站主採用本集企劃方向，精確綁定 treatment.md `BBA52D1D55CE38560B8C7581EFCC7E739849468882C4FF91146F29F139A93C90` 與 source-matrix.md `0939FD2ACEBF84FA8F84559F71C056BD8784E65BD4A875A03687F53B872CA1EA`。正式收據在 docs/videos/story-everyday-kincho-c05/reviews/owner-treatment-approval.md。下一張獨立票只做非付費逐句旁白、畫面規劃及獨立審稿；劇本與付費生成仍待分別審批。
+
+本票維持 `review`，因草稿 PR #1672 尚未合併；範圍收窄為本票實際修改的四個檔案，好讓新票獨立持有劇本檔。一次錯誤的 `tasks done` 在本機先寫出未追蹤的 `tasks/done/2026-10-22-plan-c05-kincho-spiral-mosquito-coil.md`，卻因 Windows 檔案占用未能移除 `tasks/open/` 原件；精確刪除又遭工具政策拒絕。未追蹤的本機重複票不會提交，直到政策允許安全清理；乾淨工作樹另行驗證看板。
