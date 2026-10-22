@@ -37,8 +37,8 @@
 | O08 | I | Wide shot of a workshop doorway opening onto a modest kitchen interior, one worker carrying a plain glass vessel, afternoon light from the kitchen | 跨場景示意。 |
 | O09 | I | Medium shot of an anonymous home cook washing a plain ceramic dish beside an oven, soft morning window light | 家用環境。 |
 | O10 | I | Close-up of a shopper's hand hesitating over a clear baking vessel on a shop counter, daylight through front glass | 買家疑慮，非當期調查畫面。 |
-| O11 | I | Medium shot of an anonymous scientist at a workshop bench studying a clear vessel, a plain kitchen doorway in the background, window daylight | 科學家與家廚相接，匿名示意。 |
-| O12 | I | Close-up of a chipped plain ceramic casserole dish beside an oven, one cook looking down at it with surprise, warm kitchen light | 陶皿破裂只按館方回述。 |
+| O11 | I | Close-up of a plain ceramic casserole dish on a modest dinner table, one person's hand pointing toward it, warm evening lamplight | 晚餐談起家中烤皿的匿名示意，不重建對白。 |
+| O12 | I | Medium shot of an anonymous cook staring at several pieces of a plain shattered ceramic casserole dish inside an open kitchen oven, warm light from the oven | 破碎陶皿的匿名概念插圖，不重建原物或確切事發構圖。 |
 
 ## Idea（I01–I14）
 
@@ -46,11 +46,11 @@
 | --- | --- | --- | --- |
 | I01 | I | Medium shot of an anonymous cook at a kitchen table pointing toward a plain thick glass vessel, an inquisitive expression, window light | 不重建夫妻對話或肖像。 |
 | I02 | I | Close-up of two flat-bottomed glass jar pieces on a wooden kitchen table, one hand placing the second beside the first, morning window light | 精確兩件罐底；不是燈罩。 |
-| I03 | I | Overhead view of a railway lantern on one side of a worktable and a separate jar bottom on the other, one hand resting beside the jar, skylight above | 空間分開兩種物件。 |
+| I03 | I | Close-up of a plain thick glass jar bottom beside a bowl of pale cake batter, one cook's hand lifting the jar bottom, morning window light | 電池罐底準備接住麵糊；不畫燈罩變形。 |
 | I04 | I | Medium shot of an anonymous cook pouring pale cake batter into a plain thick glass jar bottom in a modest kitchen, light from a side window | 家庭試烤。 |
 | I05 | I | Close-up of an anonymous cook's worried face beside an oven door, hands holding an empty kitchen towel, warm oven light | 懸念落在表情，無爆裂。 |
 | I06 | I | Close-up of a baked sponge cake resting evenly inside a plain clear glass vessel, one cook lifting it carefully, morning window light | 只表現館方描述的一次結果。 |
-| I07 | C | 後製：一次家中試烤／不能當每件商品的烹調時間表 | 事實界線；不給分鐘與溫度。 |
+| I07 | C | 後製：館方回顧／那次試烤較快 | 只說那次家廚結果；不給通用分鐘與溫度。 |
 | I08 | I | Medium shot of an anonymous cook lining up several different plain empty glass shapes beside a recipe bowl, daylight from a window | 一種料理不夠。 |
 | I09 | I | Overhead view of simple ingredients and three plain glass containers on a kitchen table, one cook's hand choosing a smaller one, daylight above | 不同食譜與尺寸。 |
 | I10 | I | Close-up of a small plain glass cup beside a simple baked custard, one cook's hand setting down a spoon, daylight from the left | 小杯概念，非原件重建。 |
@@ -65,7 +65,7 @@
 | --- | --- | --- | --- |
 | E01 | I | Medium shot of an anonymous glass scientist at a plain workshop bench examining two unmarked clear samples, light from a high window | 後續調方，不畫精確配方。 |
 | E02 | I | Close-up of one scientist's hand moving a plain blank folder beside glass samples on a desk, daylight from a skylight | 專利時間保留，不畫號碼。 |
-| E03 | I | Wide shot of a kitchen table far from a glass workshop bench, one anonymous worker carrying an empty glass mold between rooms, daylight | 家中試用與工廠產出非同日。 |
+| E03 | I | Wide shot of a glass workshop by day, one worker carrying an unfinished clear baking vessel past a shelf of plain jar bottoms, skylight above | 家中試用的罐底與公司新器皿分開，不暗示同日生產。 |
 | E04 | I | Close-up of a worker shaping a plain glass baking vessel in a workshop, light from the work area | 器型設計，不聲稱史實製程細節。 |
 | E05 | C | 後製：1915／首批十二件玻璃烤器 | 館方展覽的年與總數。 |
 | E06 | C | 後製：派盤／有蓋烤皿／蛋奶小杯／焗烤皿 | 只列館方有提及的品類。 |
@@ -118,7 +118,7 @@
 | N11 | C | 後製：PYREX／pyrex 字樣大小寫 ≠ 材質鑑定 | 解迷思；不貼商品假商標。 |
 | N12 | I | Medium shot of a rail worker holding a plain lantern globe near a cold station window, light from the lantern | 回收燈罩難題。 |
 | N13 | I | Close-up of a plain glass jar bottom beside a separate finished baking dish on a kitchen table, one cook's hand beside the jar, daylight | 回收家廚、調方與正式商品。 |
-| N14 | I | Medium shot of a modern home cook reading a completely blank product leaflet beside one glass baking dish, soft kitchen daylight | 具體商品說明，沒有操作示範。 |
+| N14 | I | Medium shot of a modern home cook holding a plain glass baking dish beside a folded blank product leaflet on a kitchen table, soft daylight | 商品說明由後製字卡呈現，圖中不畫閱讀空白紙張。 |
 | N15 | I | Medium shot of a viewer holding a familiar plain household object and smiling in surprise, bright window light | 留言題的生活感。 |
 | N16 | I | Wide shot of a kitchen table with a plain glass baking dish and an old rail lantern kept on separate sides, one viewer walking away, evening window light | 收回同一條故事線。 |
 
