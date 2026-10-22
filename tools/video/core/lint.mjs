@@ -12,7 +12,7 @@ import { DEFAULT_CADENCE, isNarrated, narrativeProblems, TIGHT_CADENCE } from ".
 import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
-import { isStory, storyProblems } from "./story.mjs";
+import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
@@ -464,6 +464,9 @@ export function lintVideo(doc, context = {}) {
     const story = storyProblems(doc, context.series, timeline);
     for (const problem of story.errors) error(problem.path, problem.message);
     for (const problem of story.warnings) warn(problem.path, problem.message);
+    // This brand-story series uses Curio's illustrated mix, but keeps its story identity. Run
+    // the same visual predicate as the host worker before any paid keyframes can be requested.
+    if (isEverydayStory(doc, context.series)) for (const problem of storyCuteVisualProblems(doc)) error(problem.path, problem.message);
   }
   const chapters = chapterList(timeline);
   for (const problem of checkChapters(timeline)) {

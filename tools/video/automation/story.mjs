@@ -44,7 +44,7 @@ import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
-import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
+import { isEverydayStory, namePattern, storyCuteVisualProblems, STORY_KIND, STORY_RULES } from "../core/story.mjs";
 import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
 import { clipHeadline } from "../story-plans/plan.mjs";
 import { AutomationError } from "./client.mjs";
@@ -800,12 +800,8 @@ function draftContext(root, slug, doc) {
 
 const SCENE_PATH = /^scenes\[(\d+)\]/;
 
-// The five cute-mystery brand stories borrow Curio's visual mix, but keep their story-* slugs.
-// Check the complete merged script before keyframes are bought. The usual story writer currently
-// writes shots only; this also guards later chapter edits and changes to that writer's contract.
-const STORY_FIVE_FRAMES = new Set(["title", "chapter", "outro"]);
-const STORY_FIVE_MIN_SHOT_PERCENT = 70;
-const STORY_FIVE_MAX_CARD_RUN = 3;
+// The five-story route, two v2 pilots and the everyday series borrow Curio's visual mix while
+// retaining story-* slugs. The measurement itself lives in core/story.mjs for local lint too.
 const CUTE_PILOT_SLUGS = new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]);
 // These hashes are the independently PASS-reviewed editorial Markdown scripts in the v2 pilot
 // package. The worker imports six plan beats, not those scripts; a new review must compare its
@@ -888,40 +884,9 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
   return null;
 }
 
-export function cuteStoryVisualProblems(doc) {
-  if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug)) return [];
-  const problems = [];
-  const look = doc.look;
-  if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== "cute-mystery" || Object.keys(look).length !== 1) {
-    problems.push({ path: "look", message: 'cute-mystery stories use exactly {"preset":"cute-mystery"}; remove style, negative and other look overrides' });
-  }
-  const body = (doc.scenes ?? []).map((scene, index) => ({ scene, index }))
-    .filter(({ scene }) => !STORY_FIVE_FRAMES.has(scene.template));
-  if (!body.length) return [...problems, { path: "scenes[0]", message: "the cute-mystery story body has no scenes; add illustrated shots before keyframes" }];
-
-  const shots = body.filter(({ scene }) => scene.template === "shot").length;
-  if (shots * 100 < body.length * STORY_FIVE_MIN_SHOT_PERCENT) {
-    // A concrete card path lets relint send the ratio failure back to its chapter's writer.
-    const card = body.findLast(({ scene }) => scene.template !== "shot");
-    problems.push({
-      path: `scenes[${card.index}]`,
-      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); cute-mystery stories need at least ${STORY_FIVE_MIN_SHOT_PERCENT}%`,
-    });
-  }
-
-  let cards = [];
-  for (const item of body) {
-    if (item.scene.template === "shot") { cards = []; continue; }
-    cards.push(item);
-    if (cards.length === STORY_FIVE_MAX_CARD_RUN + 1) {
-      problems.push({
-        path: `scenes[${item.index}]`,
-      message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); cute-mystery stories allow at most ${STORY_FIVE_MAX_CARD_RUN} before an illustrated shot`,
-      });
-      cards = [];
-    }
-  }
-  return problems;
+export function cuteStoryVisualProblems(doc, series) {
+  if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug) && !isEverydayStory(doc, series)) return [];
+  return storyCuteVisualProblems(doc);
 }
 
 /**
@@ -947,7 +912,9 @@ async function relint(automation, state) {
     // so a line changed after it (a length fix, the owner's note on the narration) voids it.
     writeScreenplay(dir, doc);
     errors = lintProject(loadProject({ slug: state.slug, root })).errors;
-    errors.push(...cuteStoryVisualProblems(doc));
+    // Everyday stories already receive the shared visual check in lintProject; avoid duplicate
+    // chapter errors while keeping the existing five-story and v2 pilot worker gates.
+    if (!isEverydayStory(doc, info)) errors.push(...cuteStoryVisualProblems(doc, info));
   } else {
     errors = lintVideo(doc, draftContext(root, state.slug, doc)).errors;
   }

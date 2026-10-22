@@ -554,6 +554,12 @@ test("the five-film and v2 pilot visual gate counts body illustrations and cards
     assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${pilot}: the preimage gate blocks bad visual pacing`);
     assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look: { ...look, style: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
   }
+  for (const slug of ["story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04", "story-everyday-future-c20"]) {
+    const series = { kind: "story" };
+    assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: boundary }, series), [], `${slug}: seven of ten shots pass`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: failing }, series).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${slug}: the preimage gate rejects a low share and four cards`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: failing }, { kind: "other" }), [], `${slug}: story kind is required`);
+  }
   for (const legacy of [SLUG, "story-rolling-suitcase", "story-conveyor-belt-sushi"]) {
     assert.deepEqual(cuteStoryVisualProblems({ slug: legacy, scenes: failing }), [], `${legacy}: the original custom story route keeps its own rules`);
   }
