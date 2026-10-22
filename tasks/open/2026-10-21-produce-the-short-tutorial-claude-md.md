@@ -44,7 +44,7 @@ pictures are synthesized terminals plus official-page captures; the first short 
 - [x] Script under §十–§十二 with `keys`, `icon`, `numeral`, `typing`, `theme: "paper"` (sidecar paper.json folded in once #1651's schema landed locally).
 - [x] Fact check round 1 (58 claims, 0 fact changes; round 2 not required), listener pass (44 items applied), blind panel six readers 8→11→12→11→12→12.
 - [x] tts 8:04, check-audio 0 flagged after two rewording rounds, render 61 states (paper look), assemble, captions zh-TW, qa.
-- [ ] review-push: outline and audio submitted (pending the owner); final with --manual-review; languages.json written with empty locales.
+- [x] review-push: outline (A), audio and final approved by the owner on 2026-10-22 (the first two rounds of clicks landed on other videos); package 4/4; publish gate submitted and pending the owner; languages.json written with empty locales.
 
 ## How to verify
 
