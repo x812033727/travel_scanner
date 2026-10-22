@@ -23,7 +23,7 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 ## Definition of done
 
 - [x] A source-bound, distinct author candidate has a pinned full text, A/B outline, 106 spoken lines, line-level claims, 30–60-second condensed opening, 8–12-minute estimated body, music and end-screen plan, and zero-error/zero-warning video lint.
-- [ ] Independent source and written-visual review, two fresh blind narrative readers, formal merge and policy gate accept the frozen script.
+- [ ] Independent source and written-visual review, two fresh blind narrative readers, formal merge and policy gate accept the frozen script. R9 source/written-visual and formal narrative checks now PASS; policy remains pending.
 - [ ] Owner/site audio review, native illustrations, music, final long cut and Short, package QA and actual Studio end-screen links are complete.
 
 ## Steps
@@ -46,7 +46,8 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 - [x] R7 independent source/visual review held one unsupported citywide-alarm word; R8 author removed it, and the new independent source/visual reviewer PASSed frozen R8.
 - [x] Two new official isolated R8 blind readers froze separate 13-question votes before CLI; formal OR merged 12/13 HOLD solely on shared `no_recap`.
 - [x] R9 author replaces `s61123`'s repeated rubble fact with Prince's crimson northern sky and roaring fire, retaining `s61059` as the first trapped-injured fact; `s61113` asks where the Common crowd shelters without assigning one tent to a named subgroup. Freeze an exact reversible R8→R9 delta and lint 0/0.
-- [ ] Obtain fresh independent source/visual and formal dual-blind reviews of frozen R9 before any media spending.
+- [x] Obtain fresh independent source/visual and formal dual-blind reviews of frozen R9 before any media spending; both PASS on R9 hashes.
+- [ ] Run the policy and media preflight on frozen R9 before any paid production.
 
 ## How to verify
 
@@ -73,3 +74,5 @@ R6 [獨立史料與書面畫面覆核](../../docs/videos/curio-s61/review/r6-ind
 2026-10-22 R8 [獨立史料／書面畫面覆核](../../docs/videos/curio-s61/review/r8-independent-source-visual.md)在固定 video SHA-256 `47860fcf1347bc549dcabeb2630f5a9e63bbbcd7a40c629ceafb16570f96ccb5`、script SHA-256 `00f9734108f68b0093a3c7791fe4b0974a376cb963cbc772c1ed92cc61c11b04` 上 **PASS**；103／103 句有固定錨點，96 圖／7 卡紙審 PASS，lint 0／0，325 CPM 正文 486.20 秒。兩份全新正式隔離盲讀 [A](../../docs/videos/curio-s61/review/r8-isolated-blind-a.md) 11／13（No `no_recap/no_detour`）、[B](../../docs/videos/curio-s61/review/r8-isolated-blind-b.md) 10／13（No `one_line/payoffs/no_recap`）；[正式 OR 合併](../../docs/videos/curio-s61/review/r8-formal-merge-audit.md) **12／13 HOLD**，共同 No 唯 `no_recap`：`s61059` 重述 `s61123` 已講的瓦礫下傷者與消防員知情。R9 需消重並維持八分鐘正文；單讀者的伊莫號前職岔線與老人病弱者避寒回收亦可檢查。未進媒體。
 
 2026-10-22 R9 作者依 [R8 正式合併](../../docs/videos/curio-s61/review/r8-formal-merge-audit.md)的共同 `no_recap` HOLD，把 `s61123` 改為 Prince L924–937 直接描述的北面深紅天空與轟鳴火勢，使 `s61059` 的瓦礫下待救傷者成為第一次講出的火場需求。`s61113` 保留老人病弱者在寒風中趕路的處境，改問公地上的人**可在哪裡暫避寒風**，由後段軍方白帳及教堂大廳回收可用處所，不暗示每名老人病弱者被安排進同一頂帳棚。`s61015` 的比利時救濟船前職有固定來源；因刪除後在 325 字／分鐘只剩約一秒長度餘裕、同範圍替換易重述，這輪保留待獨立讀者判斷。R9 作者 [交接](../../docs/videos/curio-s61/review/r9-author-narrative-repair.md)記錄完整新雜湊與可逆差分；新獨立史料／畫面及兩份正式盲讀仍待，未進媒體。
+
+2026-10-22 R9 [獨立史料與書面畫面](../../docs/videos/curio-s61/review/r9-independent-source-visual.md)在新固定雜湊上 **PASS**，103／103 史實旁白、96／96 插圖提示、7／7 資訊卡均可追溯，lint 0／0。兩位全新隔離讀者各自於 CLI 前凍結原始 13 題票，均 **13／13 YES**；[正式 OR 合併](../../docs/videos/curio-s61/review/r9-formal-merge-audit.md) **13／13 PASS**，官方 CLI 重播 exit 0。政策、站主審核、旁白與影片仍待，這次未呼叫付費媒體。
