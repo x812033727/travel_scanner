@@ -1,0 +1,201 @@
+{
+  "revision": "R26-s53024-first-native",
+  "human_decision": "REJECT",
+  "frozen_video_sha256": "0ca53d7d67a8601f20ae8473f5d8be0bf1389b720cd3a029cdbe446855a783c6",
+  "frozen_claims_sha256": "1454b2cd995cd23607f50d54dfb6ce8f307c26678bcf5e4c31713fc4be3557a3",
+  "frozen_script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+  "prior_r5_independent_source_paper_sha256": "36159426de5d84630190bee8d0d28e17d2c348aa086d31502e072a691d4c4227",
+  "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+  "preflight": {
+    "dry_run_exit": 0,
+    "image_model": "minimax image-01",
+    "global_images_remaining": 10033,
+    "global_judge_calls_remaining": 8437,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "610abca2b0b74f5c43194cf3ed22805c4299dba8106c467f979be0d39922b0fc",
+    "ledger_sha256": "a467eae2420b9f3239b5f46b212de23bd77002a36662eaeb9d8ad594490f2a2d",
+    "usd": 0.513,
+    "images": 39,
+    "judge_calls": 38,
+    "accepted_keep_count": 15
+  },
+  "native": {
+    "manifest_sha256": "8b4fecedb1bbaf0dc5ee4fc83ce8d4a7844def39d8dc7f1562fe22ae284b9e37",
+    "ledger_sha256": "afaacafe7eee540979f3c525330ffbda2162cb893da1209b1fffe185ddd84bcb",
+    "usd": 0.5265,
+    "images": 40,
+    "judge_calls": 39,
+    "spent_usd": 0.0135,
+    "cli_exit": 0
+  },
+  "shot": {
+    "id": "s53024",
+    "take_number": 1,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53024-1.jpg",
+      "sha256": "6b170bea5df42c202cd8d0e45b4691a3bdece844024901691f196d91b97c2651",
+      "dimensions": "1280x720",
+      "private_backup": "rebind-backups/r26-s53024-human-reject-original.jpg"
+    },
+    "selected": {
+      "file": "keyframes/s53024-1-trim.jpg",
+      "sha256": "1751c48ec90ca2eaa866b1b933f4e7f3ae7defd232f63bc4442db7da5d9235be",
+      "dimensions": "1280x720",
+      "top_margin_trim_percent": 1.7,
+      "private_backup": "rebind-backups/r26-s53024-human-reject-trim.jpg"
+    },
+    "request_key": "64116f593ab005c8",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: medium shot instead of wide shot showing the office interior → wide establishing shot of relief office"
+      ],
+      "notes": "The shot framing is medium rather than wide. The cartoon character and style match instructions well."
+    },
+    "human_decision": "REJECT",
+    "reason": "Full-size original and trim show childlike clerk under a modern baseball-style cap, holding featureless blank paper rather than even a simple park map; composition is a medium office portrait, not a wide relief office. Machine passed 9.29 and noticed only medium framing, missing the age/period prop and absent map."
+  },
+  "after_reject": {
+    "manifest_sha256": "246725aaf48f61a0f7e173dfdf49371f72ddbe0d998c2a67c1ccf4c2d3c834fb",
+    "native_manifest_private_backup": "rebind-backups/r26-s53024-native-before-human-reject.json",
+    "rejected_contact_sheet_private_backup": "rebind-backups/r26-s53024-human-reject-contact-sheet.png",
+    "rejected_contact_sheet_backup_sha256": "d2ada75fbec9f224fd738782fcd9ef855434a02d8c3fb4c471a0b1de2cdaeb4f",
+    "contact_sheet": null,
+    "contact_sheets": [],
+    "thumbnail_source": "keyframes/s53005-1.jpg",
+    "ledger_sha256": "afaacafe7eee540979f3c525330ffbda2162cb893da1209b1fffe185ddd84bcb",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "jobs_empty": true,
+    "stop_present": true,
+    "usd": 0.5265,
+    "images": 40,
+    "judge_calls": 39,
+    "reservations": 0,
+    "accepted_keep_count": 15,
+    "total_shot_scenes": 113,
+    "missing_shot_count": 98
+  },
+  "keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    },
+    {
+      "id": "s53023",
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "f13e14b86dc5717ecfad7ae7b4b2c332fd63daf7ed94a06abf5aff1e15e1503f",
+      "request_key": "31d9deaa1374075e",
+      "unchanged": true
+    }
+  ]
+}
