@@ -23,6 +23,7 @@ scope:
   - docs/videos/story-everyday-play-doh-c06/reviews/blind-reader-1.md
   - docs/videos/story-everyday-play-doh-c06/reviews/blind-reader-2.md
   - docs/videos/story-everyday-play-doh-c06/reviews/visual-preflight.md
+  - docs/videos/story-everyday-play-doh-c06/reviews/pronunciation-preflight.md
   - docs/videos/story-everyday-play-doh-c06/production-quote.md
 ---
 
@@ -59,3 +60,4 @@ C06 的企劃已由站主採用，仍缺可審的逐字稿、逐句證據、奇�
 - 2026-10-22：script SHA256 `80671FCE0CC1D03E46B68361173FB547B156C255F1AF10468E3011389E08232F`、video SHA256 `666CD45A5E126D7F17DD95CCE1CACE213B07EAA2597340D3661D5CC3C3C4CBFA`；來源 94／94 PASS、兩位盲讀 PASS、獨立視覺預檢 PASS。80 張插圖、14 張字卡；`lint` 0 errors／0 warnings，`check:tasks` 通過。整支本機試片 US$25 仍只是提案。
 - `npm run test:docs-videos` 235／236 通過；既有 Windows `imported-long-languages/runner.test.mjs:679` 子程序以 3221226505 崩潰、無 stdout/stderr（C05 分支同樣重現）。`tts --dry-run` 因本集尚無可證明的故事工作目錄而回 `STORY_LEXICON_MIGRATION_REQUIRED`；沒有嘗試付費配音。
 - 2026-10-22：草稿 PR [#1676](https://github.com/x812033727/travel_scanner/pull/1676) 疊在 Treatment PR #1674 上，已加 `no-auto-merge`。票維持 review；等站主分別核准稿件及 C06 本集整支付費試片額度。
+- 2026-10-22：另一位代理完成付費前靜態念法預檢，30／30 個外文 `say` 與 `say_for` 綁定 PASS；「庫托」仍屬暫定譯音，首輪音檔需實聽與 ASR 查核，紀錄在 `reviews/pronunciation-preflight.md`。
