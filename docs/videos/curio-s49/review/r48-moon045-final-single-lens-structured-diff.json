@@ -1,0 +1,34 @@
+{
+  "revision": "R48",
+  "base_revision": "R47",
+  "base_commit": "28d0ebd97",
+  "reason": "moon045 second native failed semi-realistic style, extra disc, and rim clamps replacing flaws; final third-native strategy removes workshop/wood supports and isolates two short defects just inside one flat 2D lens rim",
+  "files": {
+    "video.json": {
+      "before_sha256": "66090e007f217053cbb64833274a368505f76630fa80921d05f6ba6474c59663",
+      "after_sha256": "3edd1d5d1afbcdf6d2885abee0c8f03281074ac6c7cd1a18fee26f08af117b8f"
+    },
+    "claims.md": {
+      "before_sha256": "eaac8d83b767c0362002a258cdf13a41b944e58e2e3e64a1b325431ff01400a5",
+      "after_sha256": "85a53df171c1f9621c2b45dcb00f5617948c80784cbc92bb582f49025eeb026c"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "scene_index": 41,
+      "id": "moon045",
+      "field": "scenes[41].data.prompt",
+      "before": "Close shot of one plainly imagined large circular glass lens on two plain wooden supports in a softly lit 1830s workshop. Exactly two small but clearly visible dark nicks touch its outer rim, one upper-right and one lower-left; the glass centre stays clear. Show the whole round lens. No people, faces, extra glass discs, optical tubes, labels, text, numerals, modern tools or black bars; the workshop fills all four edges of the wide frame. A conceptual illustration, not a surviving lens",
+      "after": "Close-up 2D explainer graphic on a plain parchment background: one and only one circular glass lens centered and filling most of the frame, with a simple bold dark outline and solid colour fill. On the glass just inside its outer rim are exactly two short dark hairline defects, one upper-right and one lower-left; each is clearly visible but does not reach the clear centre. No edge clamps, supports, copper ring, second disc, reflections, people, tools, labels, writing, realistic lighting, 3D shading or black bars. Imagined lens from a fictional report, not a surviving object",
+      "claims_row_before": "| moon045 | 文章說第一次鑄鏡失敗，第二次只剩兩處邊緣小瑕疵。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | 一片清晰可見整圈的想像中大鏡片由兩塊素木支撐，僅外緣右上及左下各有一處小而可辨的深色瑕疵，中心清晰；不畫人物、第二片鏡片或真實器材。此為虛構報導的物件概念畫，非存世鏡片或實際鑄造紀錄。 |",
+      "claims_row_after": "| moon045 | 文章說第一次鑄鏡失敗，第二次只剩兩處邊緣小瑕疵。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | 一片置中的淺青色想像鏡片，素羊皮紙背景、深藍粗輪廓和平塗色；僅在鏡片內側靠近右上及左下外緣各有一條短而清楚的深色細瑕，中心清晰。不畫木座、夾具、第二片鏡片、人物或字。此為虛構報導的二次鑄鏡概念圖，非存世鏡片或實際鑄造紀錄。 |"
+    }
+  ],
+  "other_scenes_unchanged": true,
+  "speech_lines_unchanged": 131,
+  "attempt_limit": "third and final native; if rejected, source-card/deterministic fallback only after separate paper review"
+}
