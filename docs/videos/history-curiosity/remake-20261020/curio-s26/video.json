@@ -1,0 +1,1493 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s26",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，說故事時清楚讀出人名、年份與書名；原文和作者評論要分得開。",
+    "performance": "1841 年卡爾的問號引出盧梭的匿名公主，再沿文字和瑪麗的年表走到 1789、1843；判讀保持審慎，不演皇后對飢民說話。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ma003",
+      "payoff": "ma090",
+      "what": "皇后親口說話是否有可核證據"
+    },
+    {
+      "setup": "ma004",
+      "payoff": "ma031",
+      "what": "盧梭筆下是否點名"
+    },
+    {
+      "setup": "ma005",
+      "payoff": "ma033",
+      "what": "法文食物原字"
+    },
+    {
+      "setup": "ma006",
+      "payoff": "ma079",
+      "what": "卡爾自述舊書的歸名"
+    },
+    {
+      "setup": "ma014",
+      "payoff": "ma016",
+      "what": "盧梭為何不進麵包店"
+    },
+    {
+      "setup": "ma018",
+      "payoff": "ma019",
+      "what": "盧梭用什麼傳聞脫困"
+    },
+    {
+      "setup": "ma030",
+      "payoff": "ma031",
+      "what": "公主姓名是否留下"
+    },
+    {
+      "setup": "ma059",
+      "payoff": "ma060",
+      "what": "1789 記錄是否含名言"
+    },
+    {
+      "setup": "ma064",
+      "payoff": "ma069",
+      "what": "可核印字何時出現皇后名"
+    },
+    {
+      "setup": "ma070",
+      "payoff": "ma071",
+      "what": "卡爾寫名時保留什麼"
+    },
+    {
+      "setup": "ma074",
+      "payoff": "ma075",
+      "what": "兩份文字混合的後果"
+    },
+    {
+      "setup": "ma076",
+      "payoff": "ma078",
+      "what": "卡爾後續找書"
+    },
+    {
+      "setup": "ma082",
+      "payoff": "ma083",
+      "what": "1760 年原書可否追索"
+    },
+    {
+      "setup": "ma086",
+      "payoff": "ma090",
+      "what": "文本能否證成親口說過"
+    },
+    {
+      "setup": "ma098",
+      "payoff": "ma080",
+      "what": "卡爾如何根據舊書線索重想皇后署名"
+    },
+    {
+      "setup": "ma042",
+      "payoff": "ma094",
+      "what": "年齡能否認出盧梭的無名公主"
+    },
+    {
+      "setup": "ma046",
+      "payoff": "ma049",
+      "what": "瑪麗何時來到法國"
+    },
+    {
+      "setup": "ma102",
+      "payoff": "ma056",
+      "what": "王室車隊出發時人群喊了什麼"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "「沒有麵包就吃蛋糕」是瑪麗皇后說的嗎？｜奇聞檔案局",
+    "description": "瑪麗・安東尼真的叫窮人吃蛋糕嗎？本集讀盧梭《懺悔錄》的匿名「偉大的公主」、法文 brioche，並比對坎潘對 1789 年麵包口號的回憶和卡爾 1841／1843 年帶保留語氣的歸名。已讀文獻能證明這話後來被歸到皇后名下，沒有證明她親口說過。\n\n法文原句採 TEI 固定版摘錄，完整上下文採《懺悔錄》1903 年英譯；卡爾自述見到的 1760 年書尚未獨立找到，不能當已核原件。畫面是 AI 卡通插畫，不是歷史現場照片。資料截至 2026-10-19。",
+    "tags": [
+      "瑪麗安東尼",
+      "沒有麵包就吃蛋糕",
+      "布里歐修",
+      "盧梭",
+      "懺悔錄",
+      "法國大革命",
+      "歷史名言",
+      "歷史查核",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**她說的？**",
+      "tag": "歷史名場面",
+      "sub": "奶油麵包之謎",
+      "shot": "ma002"
+    }
+  },
+  "sources": [
+    {
+      "title": "盧梭《懺悔錄》第六卷法文摘錄（TEI 引句）",
+      "url": "https://github.com/TEIC/TEI/blob/3525937afae16b45fe581c41e5c0c1a8deac21a3/P5/Source/Specs/q.xml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "盧梭《懺悔錄》完整英譯（1903 年版）",
+      "url": "https://github.com/GITenberg/The-Confessions-of-Jean-Jacques-Rousseau---Complete_3913/blob/5ddfe9b584ced4c0eb8bd8fe83f8f270ceb21a7d/3913-0.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "坎潘《瑪麗・安東尼宮廷回憶錄》完整英譯",
+      "url": "https://github.com/GITenberg/Memoirs-of-the-Court-of-Marie-Antoinette-Queen-of-France-Complete--13-Being-the-Historic-Memoi__3891/blob/664497000339f79b1ba8d926901b874bc78d7a1b/3891-0.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "卡爾《黃蜂》1841 年 11 月與 1843 年 4 月",
+      "url": "https://github.com/GITenberg/Les-gu-pes--s-ries-3--amp--4_42798/blob/bdf3f3ef3f76912d4114d843e81bb096efe64157/42798-0.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "ma001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat examining fresh unlettered magazine sheets at a plain wooden desk, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma001",
+          "text": "一八四一年十一月，卡爾在雜誌上寫下瑪麗・安東尼的名字。",
+          "emotion": "平實說出文本歸屬"
+        }
+      ],
+      "chapter": "一八四一年：卡爾印下皇后名字，卻加了問號"
+    },
+    {
+      "id": "ma002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at desk level in a modest 1841 French room, showing one adult French columnist in dark frock coat and waistcoat questioning his own claim: he pauses a wooden dip pen over one entirely blank magazine leaf on a bare wooden desk. Daylight from a plain window lights his doubtful face and the empty page; the composition ends below the ceiling.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma002",
+          "text": "他對這句話加了保留：究竟是真是假？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat looking from a plain loaf to a closed unlettered magazine, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma003",
+          "text": "我們熟悉的「沒有麵包就吃蛋糕」，真是皇后親口說的嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest eighteenth-century French study: one middle-aged European memoir writer with dark shoulder-length hair tied low at the nape, broad white linen neckcloth, brown knee-length frock coat and cream waistcoat opens a small entirely unlettered memoir beside one plain loaf on a wooden desk, soft window light.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma004",
+          "text": "更早，一位哲學家也記下這句話；他寫的是誰？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside an eighteenth century French bakery, one adult baker in period work clothes holding a small round brioche bun beside an empty plate, diffused indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma005",
+          "text": "法文原句裡的食物，真是我們熟悉的蛋糕嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat reaching for a plain old unlettered volume on a shelf, oil-lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma006",
+          "text": "卡爾後來還提到一本舊書；書裡又指向誰？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma007",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes opening an unlettered eighteenth century memoir beside a small loaf, warm reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma007",
+          "text": "更早的盧梭也寫過一句公主的話；在他自述裡，這句從買麵包的難題冒出來。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "盧梭的買麵包難題，引出一位匿名公主"
+    },
+    {
+      "id": "ma008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest eighteenth-century French lodging: one young adult European male writer with dark shoulder-length hair tied low at the nape by a ribbon, white linen neckcloth, brown knee-length frock coat and cream waistcoat closes a shallow wooden drawer over three small handblown olive-green wine bottles with natural corks and entirely unmarked glass surfaces, soft window light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma008",
+          "text": "盧梭承認，自己偷留主人家的幾瓶阿爾布瓦白酒。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma009",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close shot of one clear unmarked glass cup holding pale straw-colored wine and one fully visible empty earthenware plate on a plain eighteenth-century wooden tabletop. The smooth bare plate center occupies the lower half, with its whole rim visible. The entire frame contains just these two objects and bare timber in soft daylight.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma009",
+          "text": "想在房裡配麵包喝，卻沒先備好麵包。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one young adult eighteenth century European gentleman writer with tied dark hair, a plain brown period coat and cream waistcoat hesitating alone near a closed door, warm light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma010",
+          "text": "叫僕人代買，又怕偷留的酒被發現。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one young adult eighteenth-century European male memoir writer with shoulder-length dark hair tied low at the nape, broad white linen neckcloth, brown knee-length coat and cream waistcoat opening a small cupboard; its bare wooden shelves are visibly empty, soft window light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma012",
+          "text": "他說麵包不能先囤一大堆，喝酒時還是得找吃的。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest eighteenth-century French room: one young adult European male memoir writer with shoulder-length dark hair tied low, broad white linen neckcloth, brown knee-length frock coat and cream waistcoat stands beside a closed plain wooden door. He rests one hand on his coat lapel and looks hesitant about leaving in soft window daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma013",
+          "text": "眼前的麻煩，不只是找人買麵包，還有他的紳士體面。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a modest eighteenth-century French lodging doorway: one young adult European male writer with shoulder-length dark hair tied low at the nape, broad white linen neckcloth and cream waistcoat hesitates while his hand reaches toward his brown knee-length outdoor coat hanging from a simple wooden wall peg; plain plaster wall, timber door and stone floor, diffused daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma014",
+          "text": "可自己到麵包店，只買一小塊，究竟難在哪裡？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma015",
+      "template": "big",
+      "data": {
+        "kicker": "盧梭《懺悔錄》後世英譯",
+        "text": "**with a sword at his side**",
+        "sub": "他把自己寫成「腰間佩劍的紳士」，覺得進店買小麵包有失體面"
+      },
+      "lines": [
+        {
+          "id": "ma015",
+          "text": "盧梭回憶，自己佩著劍，像個體面的紳士。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a small eighteenth-century French bakery: one young adult European male writer with shoulder-length dark hair tied low at the nape, broad white linen neckcloth, cream waistcoat and brown knee-length coat hesitates before a narrow timber door; one small loaf is visible through a leaded pane, with rough plaster facade and cobbled path tightly filling the frame, overcast daylight.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma016",
+          "text": "這樣走進麵包店，只買一小塊，他說怎樣都做不到。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma017",
+      "template": "big",
+      "data": {
+        "kicker": "盧梭《懺悔錄》後世英譯",
+        "text": "**I recollected**",
+        "sub": "他只說自己想起那句話，沒有說親眼聽到公主答話"
+      },
+      "lines": [
+        {
+          "id": "ma017",
+          "text": "這段先寫他自己的窘迫；盧梭真的見過那位公主嗎？",
+          "emotion": "平實說出文本歸屬"
+        }
+      ]
+    },
+    {
+      "id": "ma018",
+      "template": "shot",
+      "data": {
+        "prompt": "Over-shoulder close shot from behind one young adult eighteenth-century French male memoir writer with dark hair tied low, broad white linen neckcloth and brown coat, seated at a plain desk. One closed entirely unlettered memoir notebook rests on the bare tabletop while he turns his head toward a sunlit wooden window.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma018",
+          "text": "麵包店還沒走進去，他的回憶先拐進一位公主的故事。",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one young adult eighteenth century European gentleman writer with tied dark hair, a plain brown period coat and cream waistcoat lifting his gaze from a wine bottle, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma019",
+          "text": "他記起一位公主「漫不經心」的說法；那句話能幫他嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma020",
+      "template": "big",
+      "data": {
+        "kicker": "盧梭《懺悔錄》法文摘錄",
+        "text": "**les paysans**\n**n’avaient pas**\n**de pain**",
+        "sub": "有人向公主稟告，鄉民沒有麵包"
+      },
+      "lines": [
+        {
+          "id": "ma020",
+          "text": "照他寫，有人對那位公主說：鄉下人沒有麵包。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one young adult eighteenth century European gentleman writer with tied dark hair, a plain brown period coat and cream waistcoat quietly looking at a small golden round brioche bun on his wooden desk with a thoughtful expression, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma021",
+          "text": "公主答了一句：那就讓他們吃布里歐修。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest eighteenth-century French pastry shop: one young adult European male writer with shoulder-length dark hair tied low at the nape, broad white linen neckcloth, brown knee-length coat and cream waistcoat points hesitantly to one small plain baked pastry bun on a pewter plate atop a bare wooden counter; rough plaster walls and a small arched bread oven behind, soft light.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma022",
+          "text": "那句話讓盧梭轉向糕點店，繞過了只買一小塊麵包的尷尬。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest eighteenth-century French study: one young adult European male memoir writer with shoulder-length dark hair tied low at the nape, broad white linen neckcloth, brown knee-length coat and cream waistcoat uses both hands to fold shut a small entirely unlettered notebook on a bare wooden table; an empty chair and open room space across from him, soft window light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma023",
+          "text": "盧梭是在講自己想到這句話；讀者沒有跟著走進公主說話的現場。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes examining an unlettered printed page with a blank margin, a separate covered portrait frame on the desk, soft reading light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma030",
+          "text": "這份自述寫到他買食物的經歷；盧梭引用的公主留下姓名了嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes studying a plain unlettered folio beside a separate covered portrait frame, soft reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma031",
+          "text": "沒有。盧梭把自己的羞窘寫清楚，卻只稱她「一位偉大的公主」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes comparing a short unlettered French excerpt leaf and a thick unlettered English translation volume on a reading table, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma032",
+          "text": "剛才那位沒名字的公主，身旁食物的法文字倒可核對。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "法文留下食物，沒留下公主姓名"
+    },
+    {
+      "id": "ma033",
+      "template": "big",
+      "data": {
+        "kicker": "法文原句",
+        "text": "**brioche**",
+        "sub": "這是盧梭法文用字，並非通俗標題裡的「蛋糕」"
+      },
+      "lines": [
+        {
+          "id": "ma033",
+          "text": "法文寫的食物，是布里歐修。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes consulting a thick unlettered English translation volume beside a small plain pastry, warm reading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma034",
+          "text": "這份完整的英文譯本，把公主說的食物譯作「糕點」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma099",
+      "template": "big",
+      "data": {
+        "kicker": "史料層次",
+        "text": "**英譯本／法文摘錄**",
+        "sub": "完整故事讀後世英譯；法文摘錄只核引句原字"
+      },
+      "lines": [
+        {
+          "id": "ma099",
+          "text": "這段完整故事讀自後來的英文譯本；法文摘錄則幫我們核對公主那句話的原字。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes setting a small plain cake beside a later page of a thick unlettered English translation volume, warm reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma037",
+          "text": "英譯稍後說盧梭買回一小塊蛋糕；那是他的吃食，不是公主說話的原字。",
+          "emotion": "平實說出文本歸屬"
+        }
+      ]
+    },
+    {
+      "id": "ma038",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes placing a small plain cake and a round golden brioche bun on separate plates, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma038",
+          "text": "標題裡的「蛋糕」，是後人換上的另一個稱呼。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes pointing to an entirely blank cream name card resting flat on a wooden table between two differently bound source books, soft reading light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma039",
+          "text": "食物的譯法可以換；有沒有年份能把那位公主定位？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes turning over a blank name card beside an unlettered source book, soft reading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma040",
+          "text": "盧梭沒交代這話是由哪個人轉述給他的。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes looking at a blank calendar beside a closed unlettered source book, diffused indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma041",
+          "text": "他也沒交代事情哪一天發生、誰在現場聽見。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes holding a covered portrait frame above an open unlettered source book, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma042",
+          "text": "盧梭那位無名公主，能靠瑪麗的年齡認出來嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes examining an unlettered eighteenth century memoir beside a separate covered portrait frame, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma094",
+          "text": "法文摘錄沒有那句話的確切寫作年。即使知道瑪麗生於哪年，也算不出那位公主的身分。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes turning from a small loaf to an unlettered memoir volume beside a separate simple carriage model, warm reading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma046",
+          "text": "瑪麗真正來到法國，是什麼時候？坎潘的回憶錄記下那一年。",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma049",
+      "template": "big",
+      "data": {
+        "kicker": "坎潘回憶錄",
+        "text": "**1770 年**",
+        "sub": "瑪麗赴法時仍是年少的王太子妃"
+      },
+      "lines": [
+        {
+          "id": "ma049",
+          "text": "一七七〇年，瑪麗・安東尼從奧地利來到法國。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "一七七〇年，瑪麗・安東尼來到法國"
+    },
+    {
+      "id": "ma047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adolescent Austrian Dauphine around fourteen years old in a modest 1770 French court gown pausing beside a horse-drawn carriage window, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma047",
+          "text": "回憶錄寫她一七五五年出生；抵法時，瑪麗還很年輕。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fourteen-year-old Austrian-born teenage girl entering the French court as dauphine in 1770: light powdered curls arranged in a small court updo, a cream eighteenth-century French court gown with modest lace neckline and fitted bodice. She stands alone beside a tall straight-paned palace window against a simple carved wall panel, looking uncertain about her new court role.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma048",
+          "text": "她嫁進法國王室，身分是王太子妃，還不是王后。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma050",
+      "template": "big",
+      "data": {
+        "kicker": "坎潘回憶錄",
+        "text": "**1774 年**",
+        "sub": "路易十五逝世後，瑪麗才成為王后"
+      },
+      "lines": [
+        {
+          "id": "ma050",
+          "text": "路易十五一七七四年去世，她才隨王太子登位，成為王后。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close desk-level still life at a present-day reading table: one untitled cream clothbound French court memoir volume lies open to completely blank pages, with one second plain closed reference book resting apart beside it. Soft window daylight falls across the two books and otherwise bare wooden tabletop.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma051",
+          "text": "一七八九年十月，王室身邊的坎潘記下凡爾賽那個早晨。",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the stone balcony at Versailles in October 1789: one adult French queen in her thirties with pale powdered rolled curls, cream fitted-bodice court gown and full skirt turns toward a plain palace doorway after sending her children inside; distant crowd below is soft background, cloudy daylight.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma052",
+          "text": "人群要皇后走上陽台，還喊不要孩子；她讓孩子退下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult queen in her thirties with pale white powdered curls and a simple cream gown standing at a stone balcony in the morning, resting both hands on the rail with a calm serious expression, facing the front, a plain stone balustrade, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma053",
+          "text": "她真的站在麵包抗議的人群前；坎潘接著記下的是誰說話？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot outside Versailles in October 1789: one adult French working woman in a plain brown fitted wool bodice, long full wool skirt and white linen mob cap raises her open hand toward the distant stone palace; a few softly drawn French townspeople remain behind her, cloudy daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma054",
+          "text": "有人喊王室去巴黎，聲音漸漸合成一片。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the Versailles courtyard in October 1789: one mature French king with powdered hair tied low wears a muted eighteenth-century frock court coat with smooth shoulders, waistcoat and knee breeches, standing beside a plain horse-drawn royal carriage and looking toward the palace guards, cloudy daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma055",
+          "text": "國王答應去巴黎，但要求妻兒同行，衛隊也得安全。",
+          "emotion": "平實說出文本歸屬"
+        }
+      ]
+    },
+    {
+      "id": "ma102",
+      "template": "big",
+      "data": {
+        "kicker": "坎潘事後回憶",
+        "text": "一點鐘離開凡爾賽",
+        "sub": "接著記下車旁的呼喊"
+      },
+      "lines": [
+        {
+          "id": "ma102",
+          "text": "車隊出發時，圍在旁邊的人又喊了什麼？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma056",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-high roadside shot in October 1789: one adult French townswoman in a fitted plain wool bodice, long full skirt and white linen mob cap fills the right half of the frame, mouth open calling to nearby French townspeople. The side panel and one wheel of a horse-drawn royal carriage fill the left half, under cloudy daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma056",
+          "text": "王室車隊出發時，坎潘記人群喊：我們不會再缺麵包了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the road outside Versailles in October 1789: one adult French townswoman in a plain fitted wool bodice, long full skirt and white linen mob cap looks toward a passing horse-drawn royal carriage, cloudy daylight.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma057",
+          "text": "接著人群又把國王喊成「麵包師」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes aligning three plain bread baskets beside a separate small horse-drawn carriage model, mild reading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma058",
+          "text": "他們口中的麵包師、妻子與孩子，指的是王室一家。",
+          "emotion": "平實說出文本歸屬"
+        }
+      ]
+    },
+    {
+      "id": "ma059",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day wooden research desk: one adult researcher in plain contemporary clothes lays two entirely blank cream speech cards far apart beside a closed untitled memoir volume while comparing the reported crowd voices, soft window light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma059",
+          "text": "從陽台到馬車，坎潘記了許多人的聲音；皇后那句話出現了嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma060",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes turning an unlettered later palace memoir page beside a plain loaf, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma060",
+          "text": "坎潘這段仔細記下國王的承諾和人群的麵包口號，卻沒寫皇后叫人吃布里歐修。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes reading an unlettered later palace memoir volume beside a separate covered portrait frame, warm reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma061",
+          "text": "坎潘服務王室，也把那天的人群寫得凶暴；我們讀她的事後回憶，要記得這層立場。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma100",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day research desk: one adult researcher in plain contemporary clothes holds a closed untitled later court memoir apart from a small entirely blank note card, pausing before writing a conclusion about the crowd's motives, warm reading light.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma100",
+          "text": "她還猜，人群喊「不要孩子」是為了削弱孩子替皇后贏得的同情；那是揣測，不是人群自述。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma064",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight desk-level shot in a modest 1841 French study with plain plaster wall: one adult columnist with short dark hair, dark frock coat and waistcoat opens an entirely unlettered magazine on a bare wooden desk beside a compact brass oil lamp with a tiny visible wick flame and glass chimney, warm light.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma064",
+          "text": "那麼，在能核到的印刷文字裡，皇后名字是怎麼出現的？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma065",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat reading an unlettered folded newspaper beside a plain coin purse, diffused indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma065",
+          "text": "開場的卡爾，這裡轉述一則談窮工人的報紙建議。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "卡爾拿這句話諷刺一則勸窮人存錢的建議"
+    },
+    {
+      "id": "ma101",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight waist-up view of one adult 1841 French columnist with short dark hair, broad white neckcloth and dark frock coat at a bare wooden desk in daylight. He rests both hands on a small folded child's wool coat beside an entirely empty plain bowl and one closed unmarked thin weekly magazine. A plain plaster wall and soft window light fill the shallow background.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma101",
+          "text": "卡爾在同頁先寫一位求助婦人說，她因缺食物無法哺乳；再轉向困苦工人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain wooden savings-bank counter in 1840s France: one adult French clerk with short side-parted hair, white neckcloth and dark waistcoat sets an entirely unlettered newspaper beside a closed plain ledger; timber shelves and soft window light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma066",
+          "text": "卡爾轉述，報紙勸窮工人把錢存進儲蓄銀行。",
+          "emotion": "平實說出文本歸屬"
+        }
+      ]
+    },
+    {
+      "id": "ma095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult man with short dark hair in a dark frock coat sitting at a wooden desk in the evening, reading a blank unprinted newspaper with a frowning critical expression, facing the front, a worn cloth cap on the desk, soft oil lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma095",
+          "text": "卡爾這段不是在寫皇后生平，而是在批評那些離窮人處境太遠的建議。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium desk-level shot in a modest 1841 French room with bare plaster walls: one adult columnist in a dark knee-length frock coat, broad white linen neckcloth and waistcoat compares a small plain loaf with a closed bare ledger and one entirely unlettered newspaper on a wooden desk. Side daylight from a plain window illuminates only his upper body and those three desk objects.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma096",
+          "text": "他把沒麵包卻叫人吃布里歐修，比作勸困苦工人去儲蓄銀行。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat writing with a steel dip pen beside a covered portrait frame, oil-lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma069",
+          "text": "開場那個名字，正是出現在這段諷刺裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat lifting a steel dip pen over a plain blank sheet, oil-lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma070",
+          "text": "可還記得開場名字旁那個問號嗎？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat holding a steel dip pen apart from a closed unlettered magazine, oil-lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma071",
+          "text": "卡爾原句說的是「人們歸給瑪麗・安東尼的一句話，不論真假」；署名和真假都隔了一層。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1841 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat folding an unlettered newspaper next to a covered portrait frame, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma072",
+          "text": "他用這句諷刺報紙，沒有說自己曾聽皇后開口。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes holding a blank name card above an unlettered old folio, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma074",
+          "text": "若把後來印上的名字倒貼回盧梭那頁，會怎樣？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma075",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult present-day researcher in plain contemporary clothes separating two differently bound unlettered source books on a desk, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma075",
+          "text": "兩種年代、兩種身分的文字，就被誤看成同一份現場紀錄。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat searching a tall shelf for a plain old unlettered volume, oil-lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma076",
+          "text": "卡爾後來又碰到哪一本書，讓他重新想這段署名？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma077",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat opening a new unlettered journal at his plain wooden desk, oil-lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma077",
+          "text": "一八四三年，卡爾再寫到這句被歸給皇后的話。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "一八四三年：卡爾說另一本書寫了托斯卡納公爵夫人"
+    },
+    {
+      "id": "ma078",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat lifting a plain old unlettered volume from a shelf, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma078",
+          "text": "這次他說，偶然見了一本標著一七六〇年的書。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat placing an unlettered old volume beside his closed magazine on a plain wooden desk, warm oil-lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma079",
+          "text": "照他的轉述，書把同一句話歸給托斯卡納公爵夫人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot from the side at a present-day research shelf: one adult researcher in plain contemporary clothes points into a wide visibly bare gap in a wooden shelf between two closed old cloth-bound volumes. Both volumes face their unmarked page edges toward the viewer, with their spines turned away; the researcher's other arm rests by their side, soft daylight on the empty shelf space.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma097",
+          "text": "那本書若真標一七六〇年，另一個署名就比瑪麗來到法國早了十年。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult man with short dark hair in a dark frock coat sitting at a wooden desk in the afternoon, holding one blank old magazine page close with a surprised thoughtful expression, facing the front, a second blank page on the desk, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma098",
+          "text": "卡爾看見這個年份和另一個署名，會怎樣重想自己寫下的皇后名字？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat placing a blank name card apart from a closed old volume and a closed magazine on a wooden desk, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma080",
+          "text": "他因此推想，皇后的名字或許是後來套上的。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma081",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat looking at a covered queen portrait and a plain old unlettered book, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma081",
+          "text": "他還認為那種說法曾被拿來攻擊皇后；這也是他的看法。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1843 French study, one adult columnist with short dark hair in a dark frock coat and waistcoat turning a plain old volume to inspect its unlettered spine, oil-lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma082",
+          "text": "可是他有沒有留下書名，讓我們也能翻到那一頁？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma083",
+      "template": "big",
+      "data": {
+        "kicker": "卡爾《黃蜂》｜1843 年 4 月",
+        "text": "**un livre daté de 1760**",
+        "sub": "卡爾自稱偶然遇到一部 1760 年的書；這段未給書名或頁碼"
+      },
+      "lines": [
+        {
+          "id": "ma083",
+          "text": "在這段文字裡，他只說偶然遇到一本書，沒給書名或頁碼，讓我們無法照著找到同一頁。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day research table: one adult researcher in plain contemporary clothes places a closed unverified-source folder flat beside a closed untitled old volume; plain plaster wall closely fills the background, soft window light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma084",
+          "text": "沒有找到原書，就不能把那位公爵夫人寫成已核實的主人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes examining a verified unlettered 1843 magazine leaf beside an empty plain wooden book stand, warm reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma085",
+          "text": "即使有更早的印字，也要分清它在寫誰、誰真說過。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult woman researcher with tied-back hair in a plain grey sweater sitting at a wooden desk in the afternoon, holding up one blank loose page with a doubtful questioning expression, facing the front, one closed blank book on the desk, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma086",
+          "text": "這些紙頁，到底能替標題回答到哪一步？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day research desk: one adult researcher in plain contemporary clothes places a small brass balance scale on the wooden table between two separate closed untitled source books, soft window light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma090",
+          "text": "所以依目前查到的原文，不能證實瑪麗皇后說過這句。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult present-day researcher in plain contemporary clothes leaving a small scale untouched beside unlettered source books, warm reading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma091",
+          "text": "反過來，沒找到當時留下的證詞，也無法證明這句話絕對沒從她口中說出。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma092",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one adult present-day researcher in plain contemporary clothes holding a plain blank quotation card near an open unlettered source book, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma092",
+          "text": "若再看到名言圖卡，你會先查原句，還是先查署名？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "ma093",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "盧梭只記匿名公主；卡爾歸名仍存疑"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ma093",
+          "text": "這份檔案先收到這裡；下一頁原文，我們繼續追。"
+        }
+      ]
+    }
+  ]
+}
