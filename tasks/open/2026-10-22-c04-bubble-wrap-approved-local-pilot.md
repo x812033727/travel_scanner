@@ -12,6 +12,7 @@ branch: codex/brand-story-bubble-wrap-c04-local-pilot
 depends_on: []
 scope:
   - docs/videos/story-everyday-bubble-wrap-c04-pilot
+  - docs/videos/story-everyday-bubble-wrap-c04/verify-1.md
 ---
 
 # C04 Bubble Wrap approved local pilot
@@ -22,7 +23,7 @@ scope:
 
 ## Definition of done
 
-- [ ] 留下綁定 C04 定稿三份 SHA-256 與批准範圍的站主收據，先檢查 STOP、已有付費台帳、登入及成本狀態。
+- [x] 留下綁定 C04 定稿三份 SHA-256 與批准範圍的站主收據，先檢查 STOP、已有付費台帳、登入及成本狀態。
 - [ ] 先合成 94 句 TTS，音訊逐句檢查，並以實際時間軸證明第 02–06 章純旁白至少 480 秒；不足時先停，不買圖。
 - [ ] 時長與音訊關卡合格後才製作至多 84 張 MiniMax 插圖、每鏡累計至多三次；逐張驗收 Curio 畫風與史實界線，讀回台帳。
 - [ ] 只製作一首配樂，獨立解碼量到交付長度，避免將請求秒數當成實際音檔秒數；完成本機概念試片與影音 QA。
@@ -30,7 +31,7 @@ scope:
 
 ## Steps
 
-- [ ] 讀當前品牌故事與 Curio 製作規則；建立 hash-bound owner approval，隔離媒體 workdir 並做付費前預檢。
+- [x] 讀當前品牌故事與 Curio 製作規則；建立 hash-bound owner approval，隔離媒體 workdir 並做付費前預檢。
 - [ ] 跑 TTS、量 02–06 章實際秒數、做音訊檢查與必要窄範圍修正。
 - [ ] 再跑圖像、配樂乾跑與受限正式生成；保留工作檔與台帳。
 - [ ] 組本機概念試片、做 QA、回報成片／審核／發布的準確狀態。
@@ -42,3 +43,7 @@ scope:
 ## Notes
 
 起點為 #1670 head commit `4f02e21ae5975a68394377d9f9c3352c42e5c915` 的新託管工作樹，非帶有政策阻擋未追蹤副本的腳本工作樹。此票不宣稱站主已核准正式頻道片頭片尾、後台成片審查或 YouTube Studio 結束畫面元素。正式 TTS 開始前先寫 `docs/videos/story-everyday-bubble-wrap-c04-pilot/approval.md`。
+
+既有 #1670 腳本票仍在 `review`，本試片票新增的原腳本資料夾路徑只限 `verify-1.md`：把已完成、雜湊綁定的**另一代理**逐句來源覆核原文複製到影片 QA 要求的檔名，不改原覆核內容或定稿稿件。兩票同屬 C04 且由本代理負責；此具體重疊為 QA 接口需求，不代表重新認領別人的工作。
+
+2026-10-22 首次正式 TTS 遇到 provider 429、無成功 take 或未知 journal 項目，按 [production-progress.md](../../docs/videos/story-everyday-bubble-wrap-c04-pilot/production-progress.md) 暫停到供應商恢復；圖、配樂、成片都未開始。
