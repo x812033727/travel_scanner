@@ -24,7 +24,7 @@ The owner wants more distinct Curio history films with a complete long and Short
 
 - [x] A distinct A/B outline and recommended single story have an independently feasible pinned primary source, explicit 1848 family-separation versus undated-escape boundary, and full media/end-link plan.
 - [x] A script/storyboard and one-to-one line/source/visual map carry a 30–60 second condensed opener, at least eight minutes of body even at 325 Chinese units per minute, the fixed 5-second intro/21-second outro, and no fabricated upload or paid-media receipts.
-- [ ] Frozen author hashes pass the Curio video lint; parent workflow then obtains separate source/visual and fresh official dual-blind narrative audits before any paid media.
+- [x] Frozen author hashes pass the Curio video lint; separate source/visual and fresh official dual-blind narrative audits pass on the same R8 freeze before any paid media.
 
 ## Steps
 
@@ -32,7 +32,7 @@ The owner wants more distinct Curio history films with a complete long and Short
 - [x] Pin the GITenberg Brown/Stearns source by commit and raw SHA; distinguish Brown-mediated narrative from Stearns and Samuel May appended voices.
 - [x] Draft source boundaries and A/B outline, including website owner versus local delegated decisions, Shorts and Studio links.
 - [x] Independent feasibility receipt, frozen script/storyboard, claims, script export, lint and docs/task check; R3 source/visual audit passed 127/127 lines.
-- [x] Parent receives exact R4 hashes and an independent source/visual receipt; audio and art remain gated while two fresh official blind readers assess the same freeze.
+- [x] R8 exact hashes receive an independent source/visual PASS and fresh official dual-blind narrative PASS, with raw ballots and official isolated CLI replay retained.
 
 ## How to verify
 
@@ -77,7 +77,9 @@ R7 [作者窄幅修稿](../../docs/videos/curio-s63/review/r7-author-repair.md)�
 
 R8 [作者窄幅修稿](../../docs/videos/curio-s63/review/r8-author-repair.md)僅改 `s63053`、`s63125`、`s63126` 三個場景及一條 loop 回收 ID；124／127 個場景逐欄相同。告別後的重述改成 Brown 說過去阻止自己逃走的顧慮已消失；片尾不再第二次說開箱與法律未解，新增他**聽說**北方選民數量為南方兩倍及其若能影響北方會主張另立更好法律的主張。開場安全疑問改由 `s63120` 直接回收。凍結 SHA-256：`video.json` `c417bc8c6f0df78e9c4d8e910db038b6f4ea07c760cc7f3c2e69e98224f63f08`；`script.md` `63caedb24623bd8339607dd5b11e249ce1a4e6691779279a6d8c64ef5bbd665e`；`claims.md` `68c4139f38976d09b9b1b21bdb239eaa4ecb0ddd2f053b0ef445b971d636fe5e`。開場 187 漢字約 34.5 秒、正文排除開場和 CTA 2,676 漢字約 8.23 分鐘（325 字／分）；lint 0／0。**R8 尚待新獨立史料／畫面審核與兩位未讀 R7 的正式盲讀，不得啟動付費媒體。**
 
-另一名獨立審核者已就上述**完全相同 R8 三檔雜湊**查核三個新場景與 `s63009→s63120` 回收點，精確確認其餘 124 個場景未動。[R8 史料／畫面回條](../../docs/videos/curio-s63/review/r8-source-visual-independent.md)為 **PASS、無阻擋 ID**；選民比例明示 Brown「聽說」，改革主張明示「若有影響力」。這仍未通過敘事盲讀；兩位未讀 R7 的新讀者須審同一 R8 凍結封包，付費媒體仍封鎖。
+另一名獨立審核者已就上述**完全相同 R8 三檔雜湊**查核三個新場景與 `s63009→s63120` 回收點，精確確認其餘 124 個場景未動。[R8 史料／畫面回條](../../docs/videos/curio-s63/review/r8-source-visual-independent.md)為 **PASS、無阻擋 ID**；選民比例明示 Brown「聽說」，改革主張明示「若有影響力」。這項來源關本身不判敘事；其後兩位未讀 R7 的新讀者另審相同 R8 凍結封包，結果見下段。
+
+[R8 正式雙人盲讀合併](../../docs/videos/curio-s63/review/r8-formal-merge-audit.md)在完全相同的 R8 凍結稿和官方 13 題上 **PASS 13／13**。全新 A 原票 13／13「是」，全新 B 原票 12／13「是」，B 單獨否決 `no_recap`，因 `s63026` 和 `s63027` 都提「五十美元」；兩句分別是 B02 原文明列的先付及其後每年付款，正式 `mergePanelVerdicts` 逐題 OR 通過。兩張原票、機械合併、三次隔離官方 CLI 輸出及綁定證據全部留存；合併 CLI exit 0，failed／advisory 皆空。史料與敘事稿件關已解鎖；語音、實際插圖、成片、Short、上傳與真實連結仍須逐項製作驗收。
 
 ## Notes
 
