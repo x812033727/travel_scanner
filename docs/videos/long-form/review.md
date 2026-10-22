@@ -5894,6 +5894,19 @@ Ran: Node v24, Windows, in the worktree at `e657196f9`: the baseline hashing abo
 Non-claims: this is a 1-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the commit changes; it does not judge whether 120,000 is the right figure, the cost or latency of longer prompts, or the prompts' content, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1664 free channel subscription increment: 1 file (2026-10-22)
+
+Reviewer: `/root/policy_duration_incremental_review`. Author: `/root/s34_policy_ci_fix` and the prior PR author. Scope: DURATION_ONLY for `apps/api/app/video_automation/judge.py`, reviewed as `git diff 53ad804a68988b7620137d51da6b3cebc1e20e5b..e031cc140 -- apps/api/app/video_automation/judge.py`. The reviewer did not author the change and edits only these two duration receipt files.
+
+Baseline: merge-base `53ad804a68988b7620137d51da6b3cebc1e20e5b` has SHA-256 `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023`, exactly the previous binding. Current SHA-256 is `2397b46fa163ddbc200ff000d808b375976457121c57c4ab714d49e22ed51fcb`. All other 107 registered file hashes match their existing bindings. Before this increment, the duration check reports exactly this one stale file.
+
+Findings: the only changed Python AST assignment is `POLICY_SPONSORED_INSTRUCTIONS`; removing that assignment from both parsed trees makes the full ASTs identical. The wording exempts a free invitation to subscribe to the creator's own YouTube channel while retaining paid membership, external sign-up, discount code, third-party sponsor and endorsement checks. No duration target, 600/780-second aim, 480-second/14,400-frame measured floor, eight-minute minimum, runtime specification, action seconds, source hash, covered status, policy numeric threshold or verdict parser changes. No duration fix is required.
+
+Ran: baseline and current byte hashing, all 108 binding comparisons, AST equivalence check, and `apps/api/.venv/bin/python -m pytest apps/api/tests/test_video_automation_judge.py apps/api/tests/test_video_story_policy.py -q` (61 passed in 4.64 seconds). After updating the receipts, the duration CLI and `review.test.mjs` are rerun; their exact outcomes are reported in the handoff so this report remains stable.
+
+Non-claims: this increment covers one file for duration only. It does not independently re-review the other 107 files, prove probabilistic Jev classifications on live narration, accept any video or audio, or authorize deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, and then the stage prompt limit increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5905,7 +5918,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
 | `.claude/skills/youtube-video/SKILL.md` | `80a340bb20f8bca626efc851e3cfa5064dbfd0548bd444208b3c247867c77ef1` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023` |
+| `apps/api/app/video_automation/judge.py` | `2397b46fa163ddbc200ff000d808b375976457121c57c4ab714d49e22ed51fcb` |
 | `apps/api/app/video_automation/models.py` | `a4525c6ea73cc15c515da105376d261777e590cdf30bef378f3f190eb8353182` |
 | `apps/api/app/video_automation/schemas.py` | `3b5684d7b470f2235d0c2eba36c9ef3ec913da8b3ff444ad28f56140057a7a65` |
 | `apps/api/app/video_automation/series.py` | `f381709708f6f6e29907126e3a508457a16f435b4ae60a87b1b1365050699f73` |
