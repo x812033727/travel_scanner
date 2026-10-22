@@ -138,3 +138,19 @@
 - YouTube Studio 要手動做的事：
   - 結束畫面：「從影片匯入」範本 `oxEtlA8GWas`，三個元素從 7:27（片長減 17 秒）開始。
   - 八條配音音軌與 CC：照後台的上架包上傳。
+
+### 第 6–10 集合集（2026-10-21）
+
+- 先在八個 `youtube-locales/<locale>.json` 加 `compilation["6-10"]`（標題、開頭一句、每集一行，照 1–5 的寫法；章節時間由 `compile-dh.mjs` 重算）。
+- `DUBS=en,ja,ko,es,pt,id,vi,th node compile-dh.mjs 6 10 e006-010.mp4`：成片 493.5 秒，八軌都是 493.48 秒，九份 CC 都從 5.12 秒起、到 7:43 為止（片尾 7:52.5 開始）。
+- 第一次在第 9 集英文配音停下：系統音「Ding.」在合集裡只有 0.62 秒的空檔（單集還有片名卡）。錄音裡有聲音的只有 0.24–0.97 秒，1.3 倍放得下，切掉的只是尾音，所以照葡語同一句的做法加進 `dub-force.json`。重跑時用 `REUSE=1`，已經切好的畫面與配音段不重做。
+- `local/prep-import.mjs 6-10` 後匯入；語言批次要等站主在面板勾語言，上傳包（`import --publish`）要等成片核准。
+- YouTube Studio：結束畫面從範本 `oxEtlA8GWas` 匯入，起點 7:56（片長減 17 秒）。
+
+### 合集加頻道台標（2026-10-21）
+
+- 站主擔心合集被原檔搬到別的平台：`compile-dh.mjs` 在正片（片頭之後、片尾之前）右上角疊上頻道台標，跟其他影片同一張圖、同一個位置（`tools/video/core/watermark.mjs` 的 `CURRENT_WATERMARK`，v1 在 1622,54）。片頭片尾照 BRANDING.md 不疊。
+  - 接片時畫面多編一次（x264 fast／crf 17），聲音與 CC 照舊 copy；`WATERMARK=0` 不疊。
+  - 疊之前看過 6–10 整支的右上角：系統面板在台標的左下方，不重疊；夜景、天空上都讀得到。
+- 第 1–5（`JdeViV2WyCc`）、6–10（`nC_-tNKWd9E`）已經上了 YouTube。YouTube 不能替已上傳的影片換檔，所以重做的版本是新影片：`SUFFIX=-v2 local/prep-import.mjs 1-5` 匯入成 `zhong-tian-qu-qi-e001-005-v2`，舊的由站主在 Studio 改不公開或刪除。
+  - 重組前把舊成片改名成 `e001-005-v1.mp4`，舊匯入資料夾的硬連結才不會被覆寫。
