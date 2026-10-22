@@ -14,6 +14,7 @@ scope:
   - docs/videos/story-everyday-play-doh-c06/reviews/owner-script-production-approval.md
   - docs/videos/story-everyday-play-doh-c06/story-lexicon
   - docs/videos/story-everyday-play-doh-c06/production-pilot.md
+  - docs/videos/story-everyday-play-doh-c06/verify-1.md
 ---
 
 # C06 Play-Doh approved local pilot and lexicon genesis
@@ -47,3 +48,4 @@ scope:
 - 本機驗證：C06 `lint` 0 errors／0 warnings，`lexicon-store.test.mjs` 10／10 PASS，`check:tasks` PASS。`test:docs-videos` 235／236 通過；唯一失敗在無關的 `imported-long-languages/runner.test.mjs:679`，Windows 子程序 exit `3221226505` 且 stdout/stderr 皆空，C06 原劇本分支先前亦重現。沒有為這項既有環境失敗擴改工具或影片稿件。
 - 容量續跑關卡：2026-10-22 05:47 UTC C: 可用約 0.8 GB，G: 是 Google Drive 同一空間，P: 是 pCloud 虛擬雲碟。C06 pilot 本輪 `npm ci` 的重複 `node_modules` 約 598 MiB；對已核對確切路徑的遞迴移除遭自動核准審查 `blocked by policy`，沒有繞過。已請站主手動騰出至少 3 GB C:，或提供有足夠空間的非同步本機磁碟。媒體生成與組片在容量確認前維持 HOLD。
 - 本次續做：C: 重新量得 19.34 GiB 可用，解除容量 HOLD，並將票恢復 `in-progress`；原政策擋下的刪除沒有重試。C06 正式 TTS 94／94 句成功，`narration.wav` 與 `timeline.json` SHA 見 `production-pilot.md`。按 timeline 的 48 kHz 純音訊樣本加總，第 02–06 章 86 句 **505.94 秒**，通過 480 秒門檻；全段 WAV 645.933 秒不能代替正文門檻。音訊逐句查核、站主音訊關卡、圖片與後續組片仍未通過；媒體帳本仍為 US$0.00，TTS 2,716 字元的美元帳尚無可拆收據。
+- 本機 gate 整理：以原站主 Treatment 採用紀錄綁定目前 `brief.md` 的 outline gate；新增 `verify-1.md` 作為既有獨立 94／94 逐句 PASS 的工具索引。兩者都不是新核准、也不放行音訊、圖片或成片。`review/audio.html` 和完整 MP3 試聽檔已產出，待逐句聽辨與站主審核。

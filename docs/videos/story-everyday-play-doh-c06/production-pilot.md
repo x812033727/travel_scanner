@@ -7,6 +7,7 @@
 - 從 C06 Treatment 的確切提交 `3e49a964aa61f20fcf12743140984588a6a1c488` 建立隔離工作樹；在其 `video.json` 尚不存在時，以 PR #1676 `series.json` 的 16 個 `names` 呼叫 `initializeStoryLexicon`。本集工作資料夾在呼叫前不存在，影片工作資料夾的全域 `STOP` 不存在。
 - 嚴格讀回 `videoLexicon({requireSnapshot:true})`：`mode=snapshot`，`sequence=1`，字典 SHA-256 `7dfd45e09466d424522c405627249ae59c42716572c7246979507bfff09c2477`，事件 SHA-256 `42b422ea8a45c866fb5fabd0a29e18ae74a15412a39dde1802a721dd13f8caa7`。
 - 隨後合入 PR #1676 的逐字稿與逐鏡；`script.md`、`video.json`、`visual-plan.tsv` 三個 SHA-256 均與站主核准版本相同。沒有以偽造 `auto.json` 或遷移舊故事來越過字典關卡。
+- 本次續做按先前站主採用的 C06 Treatment 方向，把其衍生的 `brief.md` 記入本機 outline gate，SHA-256 `C519DBB59D21C9E81D6EDA4A6E96D42B7031BF483D66854B1D8F66B8CC2900B0`；原 Treatment 的確切核准收據仍在 `reviews/owner-treatment-approval.md`。另以 `verify-1.md` 索引獨立代理已完成的 94／94 逐句 PASS 收據，沒有自稱新做一次來源查核。
 
 ## 停線與讀回
 
