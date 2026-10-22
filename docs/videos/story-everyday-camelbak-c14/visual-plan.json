@@ -1,12 +1,12 @@
 {
-  "status": "author_draft_unreviewed_unrendered",
+  "status": "author_v4_unreviewed_unrendered",
   "slug": "story-everyday-camelbak-c14",
   "look": {
     "preset": "cute-mystery"
   },
   "image_model_if_later_authorized": "MiniMax image-01",
   "format_if_later_authorized": "drama",
-  "visual_rule": "Every illustration is a conceptual cute scene with generic people and unmarked props. No logo, readable text, named real person, historical reenactment, patent drawing, or real race/shop reconstruction. Brand names, dates, percentages and citations appear only in post-produced cards.",
+  "visual_rule": "Every illustration is a conceptual cute scene with generic people and unmarked props. No logo, readable text, named real person, historical reenactment, patent drawing, real race/shop/trade-show reconstruction, or wartime reconstruction. Brand names, dates, patent numbers, percentages and citations appear only in post-produced cards.",
   "speech": "single zh-TW narrator; sources are silent metadata; no burned-in captions",
   "intro": {
     "duration_s": 5,
@@ -22,419 +22,504 @@
     {
       "line": "H01",
       "kind": "illustration",
-      "prompt": "Wide shot of a generic cyclist on a simple roadside, one hand hovering near an unmarked bicycle bottle, soft overcast light from the left.",
-      "planned_duration_s": 7.0,
+      "prompt": "Medium shot of a generic cyclist rolling along an anonymous road while glancing at a plain bottle on the bicycle frame, cloudy daylight from the left.",
+      "planned_duration_s": 7.7,
       "motion": "push_in"
     },
     {
       "line": "H02",
       "kind": "illustration",
-      "prompt": "Close shot of a plain sock lying beside a sealed transparent water pouch on a work table, a curious generic cyclist looking at them, soft window light.",
-      "planned_duration_s": 9.4,
+      "prompt": "Close shot of a generic cyclist lifting a plain sock from a clean work table, an unmarked water pouch nearby, soft window light.",
+      "planned_duration_s": 9.1,
       "motion": "pan_right"
     },
     {
       "line": "H03",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic rider looking puzzled at a plain tube over one shoulder with a simple wooden clothespin at its end, mild daylight.",
-      "planned_duration_s": 7.2,
-      "motion": "pull_back"
-    },
-    {
-      "line": "H04",
-      "kind": "card",
-      "post_text": "原型 ≠ 首款商品｜ThermoBak（母公司 2014 年回顧）",
-      "planned_duration_s": 10.6
-    },
-    {
-      "line": "H05",
-      "kind": "illustration",
-      "prompt": "Wide conceptual scene of an unmarked soft water pouch on one side and a plain reusable bottle on the other, a generic rider between them, soft grey daylight.",
-      "planned_duration_s": 8.6,
-      "motion": "push_in"
-    },
-    {
-      "line": "O01",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic adult cyclist quietly considering a plain water pouch at a work table, face visible and curious, light from a window.",
-      "planned_duration_s": 10.3,
-      "motion": "pan_right"
-    },
-    {
-      "line": "O02",
-      "kind": "illustration",
-      "prompt": "Wide shot of a generic cyclist rolling along an anonymous open road, reaching toward an unmarked bottle on a bicycle frame, overcast light.",
-      "planned_duration_s": 10.3,
-      "motion": "pull_back"
-    },
-    {
-      "line": "O03",
-      "kind": "illustration",
-      "prompt": "Close shot of one gloved hand reaching toward a plain bicycle bottle while a second unmarked pouch rests nearby, mild daylight.",
-      "planned_duration_s": 9.4,
-      "motion": "pan_left"
-    },
-    {
-      "line": "O04",
-      "kind": "illustration",
-      "prompt": "Close shot of one pair of generic hands sliding a sealed water pouch into a plain sock on a clean tabletop, soft window light.",
-      "planned_duration_s": 6.2,
-      "motion": "push_in"
-    },
-    {
-      "line": "O05",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic cyclist placing a plain sock-shaped pouch behind a blank cycling jersey, face visible in three-quarter view, overcast light.",
-      "planned_duration_s": 7.9,
-      "motion": "pan_right"
-    },
-    {
-      "line": "O06",
-      "kind": "illustration",
-      "prompt": "Close shot of a simple drinking tube curving over a generic cyclist's shoulder toward the mouth, plain clothing and soft daylight.",
+      "prompt": "Close shot of a sock holding a sealed water pouch beside a loose tube and wooden clothespin on a table, warm side light.",
       "planned_duration_s": 6.5,
       "motion": "pull_back"
     },
     {
+      "line": "H04",
+      "kind": "illustration",
+      "prompt": "Wide conceptual view of a generic rider carrying a plain hydration pack toward a small unmarked bicycle shop, overcast light.",
+      "planned_duration_s": 7.9,
+      "motion": "pan_left"
+    },
+    {
+      "line": "H05",
+      "kind": "illustration",
+      "prompt": "Medium conceptual view of one person between a plain cycling pack and a blank reusable bottle, hands hovering over both, soft daylight.",
+      "planned_duration_s": 9.1,
+      "motion": "push_in"
+    },
+    {
+      "line": "O01",
+      "kind": "card",
+      "post_text": "品牌多年後回顧｜Michael Eidson",
+      "planned_duration_s": 9.8
+    },
+    {
+      "line": "O02",
+      "kind": "illustration",
+      "prompt": "Wide shot of a generic cyclist riding past an empty roadside with a plain bottle fixed to the frame, gentle cloudy light.",
+      "planned_duration_s": 9.4,
+      "motion": "pan_right"
+    },
+    {
+      "line": "O03",
+      "kind": "illustration",
+      "prompt": "Close shot of generic hands sliding a sealed water pouch into a plain sock on a clean tabletop, soft window light.",
+      "planned_duration_s": 7.7,
+      "motion": "pull_back"
+    },
+    {
+      "line": "O04",
+      "kind": "illustration",
+      "prompt": "Close shot of a plain sock wrapping a filled pouch, generic hands holding the two layers apart, warm light from a window.",
+      "planned_duration_s": 7.7,
+      "motion": "pan_left"
+    },
+    {
+      "line": "O05",
+      "kind": "illustration",
+      "prompt": "Medium rear three-quarter view of a generic rider carrying a sock-shaped pouch behind a blank cycling jersey, quiet road light.",
+      "planned_duration_s": 6.7,
+      "motion": "push_in"
+    },
+    {
+      "line": "O06",
+      "kind": "illustration",
+      "prompt": "Medium side view of a generic rider guiding a plain tube over one shoulder toward the mouth, muted afternoon light.",
+      "planned_duration_s": 7.7,
+      "motion": "pan_right"
+    },
+    {
       "line": "O07",
       "kind": "illustration",
-      "prompt": "Close shot of a generic hand fastening a wooden clothespin around the end of a plain flexible tube, softly lit work table.",
-      "planned_duration_s": 6.7,
+      "prompt": "Close shot of generic fingers attaching a wooden clothespin to the end of a plain drinking tube, soft side light.",
+      "planned_duration_s": 6.2,
+      "motion": "pull_back"
+    },
+    {
+      "line": "O08",
+      "kind": "illustration",
+      "prompt": "Close shot of a plain clothespin next to an anonymous later soft mouthpiece, separated on a neutral table, diffuse light.",
+      "planned_duration_s": 6.5,
       "motion": "pan_left"
     },
     {
       "line": "O09",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of a clipped tube with a single rounded water droplet held at the end, generic rider watching, soft grey light.",
-      "planned_duration_s": 5.3,
+      "prompt": "Wide conceptual view of a generic rider approaching a simple display shelf with one unmarked hydration pack, soft indoor light.",
+      "planned_duration_s": 6.2,
       "motion": "push_in"
-    },
-    {
-      "line": "O10",
-      "kind": "card",
-      "post_text": "品牌多年後回顧：騎乘 1989",
-      "planned_duration_s": 7.9
-    },
-    {
-      "line": "O11",
-      "kind": "illustration",
-      "prompt": "Wide shot of a plain improvised pouch resting apart from an empty unmarked store shelf, one generic cyclist considering the distance, mild indoor light.",
-      "planned_duration_s": 7.7,
-      "motion": "pull_back"
     },
     {
       "line": "I01",
       "kind": "card",
-      "post_text": "公司回顧：1989 年成立",
-      "planned_duration_s": 9.1
+      "post_text": "公司與母公司回顧：1989 年成立",
+      "planned_duration_s": 7.2
+    },
+    {
+      "line": "I02",
+      "kind": "card",
+      "post_text": "母公司回顧：首款商品 ThermoBak",
+      "planned_duration_s": 7.0
     },
     {
       "line": "I03",
-      "kind": "card",
-      "post_text": "母公司回顧：首款商品 ThermoBak",
-      "planned_duration_s": 10.3
+      "kind": "illustration",
+      "prompt": "Close shot of a blank early-looking backpack beside a plain sock and pouch on separate shelves, no labels, gentle indoor light.",
+      "planned_duration_s": 9.1,
+      "motion": "pan_right"
+    },
+    {
+      "line": "I04",
+      "kind": "illustration",
+      "prompt": "Wide shot of several generic mountain cyclists with unmarked packs resting on a wooded trail, mild morning light.",
+      "planned_duration_s": 8.2,
+      "motion": "pull_back"
     },
     {
       "line": "I05",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic shop worker looking at a closed blank cardboard box on a bicycle-shop counter, no label, soft indoor light.",
-      "planned_duration_s": 8.4,
-      "motion": "pan_right"
+      "prompt": "Medium conceptual view of a generic cyclist setting a plain hydration pack on an anonymous outdoor table near other bicycle silhouettes, cloudy light.",
+      "planned_duration_s": 8.9,
+      "motion": "pan_left"
     },
     {
       "line": "I06",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of an old plain sock-pouch shape beside a later generic backpack silhouette, clearly separate objects, gentle window light.",
-      "planned_duration_s": 7.2,
-      "motion": "pull_back"
+      "prompt": "Medium shot of one generic rider examining a plain hydration pack at an anonymous outdoor event table, soft daylight.",
+      "planned_duration_s": 9.6,
+      "motion": "push_in"
     },
     {
       "line": "I07",
       "kind": "illustration",
-      "prompt": "Wide shot of one generic mountain cyclist pausing on a muted trail to examine plain unmarked gear, overcast light.",
-      "planned_duration_s": 5.8,
-      "motion": "pan_left"
+      "prompt": "Medium shot of two generic adults passing a plain pack across a simple work table, no branded clothing, warm window light.",
+      "planned_duration_s": 9.4,
+      "motion": "pan_right"
     },
     {
       "line": "I08",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic mountain cyclist examining an unmarked hydration pack on a simple bike-shop rack, soft indoor light.",
-      "planned_duration_s": 9.1,
-      "motion": "push_in"
+      "kind": "card",
+      "post_text": "品牌回顧：1993 年 Wemmer 走訪單車店",
+      "planned_duration_s": 5.8
     },
     {
       "line": "I09",
       "kind": "illustration",
-      "prompt": "Close shot of a generic rider raising a plain tube near the mouth while a droplet hangs at its tip, thoughtful expression, mild daylight.",
-      "planned_duration_s": 10.1,
-      "motion": "pan_right"
+      "prompt": "Wide conceptual view of a plain motorcycle traveling along a generic road with a small unmarked pack secured behind it, bright overcast light.",
+      "planned_duration_s": 5.0,
+      "motion": "pull_back"
     },
     {
       "line": "I10",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of two separate blank folders beside a plain flexible mouthpiece, one generic viewer comparing them, soft window light; no technical drawing or implied product lineage.",
-      "planned_duration_s": 10.1,
+      "prompt": "Medium shot of a generic shop visitor looking at an unmarked hydration pack on a plain bicycle-store shelf, soft indoor light.",
+      "planned_duration_s": 7.0,
+      "motion": "pan_left"
+    },
+    {
+      "line": "I11",
+      "kind": "illustration",
+      "prompt": "Close shot of a generic rider holding a plain soft drinking mouthpiece near the face, curious expression, diffuse light.",
+      "planned_duration_s": 8.2,
+      "motion": "push_in"
+    },
+    {
+      "line": "I12",
+      "kind": "illustration",
+      "prompt": "Close shot of generic hands gently squeezing a plain soft mouthpiece above a clean tabletop, no technical diagram, window light.",
+      "planned_duration_s": 8.4,
+      "motion": "pan_right"
+    },
+    {
+      "line": "I13",
+      "kind": "illustration",
+      "prompt": "Wide conceptual shot of a plain hydration pack and a blank reusable bottle on opposite sides of a table, a soft mouthpiece between them, calm light.",
+      "planned_duration_s": 5.5,
       "motion": "pull_back"
     },
     {
       "line": "E01",
       "kind": "card",
-      "post_text": "另一人的管口解法｜Fawcett 1990 專利申請",
-      "planned_duration_s": 9.8
+      "post_text": "1998 申請｜改良飲水口器（2000 公開）",
+      "planned_duration_s": 9.6
     },
     {
       "line": "E02",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic adult gently biting an unmarked flexible drinking tip attached to a plain tube, one water droplet visible, soft daylight.",
-      "planned_duration_s": 6.7,
-      "motion": "push_in"
+      "prompt": "Close shot of a simple soft tube tip lying beside a sealed pouch on a table, generic hands considering it, soft window light.",
+      "planned_duration_s": 8.4,
+      "motion": "pan_left"
     },
     {
       "line": "E03",
       "kind": "illustration",
-      "prompt": "Close shot of a generic hand releasing a plain flexible mouthpiece while a droplet remains contained, soft window light.",
-      "planned_duration_s": 6.2,
-      "motion": "pan_right"
+      "prompt": "Close shot of generic fingers gently pressing the sides of a plain soft drinking tip, a tiny dark slit visible, diffuse light.",
+      "planned_duration_s": 7.2,
+      "motion": "push_in"
     },
     {
       "line": "E04",
       "kind": "illustration",
-      "prompt": "Medium conceptual shot of one generic researcher looking puzzled at a closed blank patent folder and a separate unmarked hydration pack, no arrows or technical drawing, mild desk-lamp light.",
-      "planned_duration_s": 7.0,
-      "motion": "pull_back"
+      "prompt": "Close shot of a plain soft drinking tip resting closed after fingers move away, shallow depth of field, soft side light.",
+      "planned_duration_s": 5.3,
+      "motion": "pan_right"
     },
     {
       "line": "E05",
       "kind": "illustration",
-      "prompt": "Wide shot of an unmarked hydration pack on a work table far from a modest bicycle shop doorway, one generic worker facing the doorway, grey daylight.",
-      "planned_duration_s": 8.4,
+      "prompt": "Medium shot of a generic person testing the placement of a plain soft mouthpiece near the lips, face not based on a real person, gentle light.",
+      "planned_duration_s": 7.2,
       "motion": "pull_back"
     },
     {
       "line": "E06",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic adult cyclist carrying one unmarked hydration pack toward an anonymous race crowd, face visible, soft overcast light.",
-      "planned_duration_s": 9.1,
+      "prompt": "Wide conceptual view of an unmarked early pack on one shelf and a later plain tube tip on another, separated by space, soft indoor light.",
+      "planned_duration_s": 8.4,
+      "motion": "pan_left"
+    },
+    {
+      "line": "E07",
+      "kind": "illustration",
+      "prompt": "Medium shot of generic workers sealing blank boxes containing unmarked hydration packs in a simple warehouse, neutral daylight.",
+      "planned_duration_s": 8.9,
+      "motion": "push_in"
+    },
+    {
+      "line": "E08",
+      "kind": "illustration",
+      "prompt": "Close shot of generic hands placing plain hydration packs into an unmarked shipping carton, even warehouse light.",
+      "planned_duration_s": 10.6,
+      "motion": "pan_right"
+    },
+    {
+      "line": "E09",
+      "kind": "card",
+      "post_text": "2003 寄送報導｜購買 1,000 套＋公司加 500 套",
+      "planned_duration_s": 6.0
+    },
+    {
+      "line": "E10",
+      "kind": "illustration",
+      "prompt": "Wide conceptual view of sealed blank boxes leaving a warehouse on a plain trolley, no uniforms or insignia, cool daylight.",
+      "planned_duration_s": 8.2,
+      "motion": "pull_back"
+    },
+    {
+      "line": "E11",
+      "kind": "illustration",
+      "prompt": "Close shot of a soft water pouch on one side of a table and a blank reusable bottle on the other, a generic hand reaching toward the bottle, soft light.",
+      "planned_duration_s": 7.2,
       "motion": "pan_left"
     },
     {
       "line": "T01",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic cyclist offering an unmarked pack at a simple event table, no identifiable race setting, soft daylight.",
-      "planned_duration_s": 9.1,
-      "motion": "push_in"
+      "kind": "card",
+      "post_text": "2005 年 12 月申請｜2006 年 10 月公開",
+      "planned_duration_s": 5.3
     },
     {
       "line": "T02",
       "kind": "illustration",
-      "prompt": "Wide conceptual shot of one generic cyclist carrying an unmarked pack away from a small event table, muted daylight.",
-      "planned_duration_s": 9.1,
-      "motion": "pan_right"
-    },
-    {
-      "line": "T03",
-      "kind": "card",
-      "post_text": "品牌回顧：1993 年，騎機車拜訪單車店",
-      "planned_duration_s": 9.8
-    },
-    {
-      "line": "T04",
-      "kind": "card",
-      "post_text": "品牌回顧的走訪範圍：佛羅里達至加州｜未證店數、訂單",
-      "planned_duration_s": 7.9
-    },
-    {
-      "line": "T05",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic bike-shop visitor placing an unmarked pack on a plain counter, face visible and hopeful, soft indoor light.",
-      "planned_duration_s": 8.6,
+      "prompt": "Medium shot of a generic adult holding an unmarked reusable bottle with a simple soft spout, no logos, bright indoor light.",
+      "planned_duration_s": 5.8,
       "motion": "push_in"
     },
     {
-      "line": "T06",
+      "line": "T03",
       "kind": "illustration",
-      "prompt": "Wide shot of a generic mountain cyclist examining a hydration pack outside a small unmarked bicycle shop, overcast daylight.",
-      "planned_duration_s": 8.9,
-      "motion": "pan_right"
-    },
-    {
-      "line": "T07",
-      "kind": "illustration",
-      "prompt": "Close conceptual shot of one small plain motorcycle route token beside a much larger blank sales ledger, generic hand kept separate, soft desk light.",
-      "planned_duration_s": 8.9,
-      "motion": "pull_back"
-    },
-    {
-      "line": "T08",
-      "kind": "illustration",
-      "prompt": "Wide conceptual shot of two blank calendar leaves separated by a gentle path, a plain bicycle-shop icon on the earlier leaf and an unmarked bottle silhouette on the later leaf; no readable text.",
-      "planned_duration_s": 9.8,
-      "motion": "pan_left"
-    },
-    {
-      "line": "T09",
-      "kind": "illustration",
-      "prompt": "Close conceptual shot of a generic adult choosing between a plain backpack and a plain bottle on a shelf, thoughtful face, indoor light.",
+      "prompt": "Close shot of generic hands opening a plain hinged bottle spout above a blank reusable bottle, short straw visible inside, soft side light.",
       "planned_duration_s": 6.7,
       "motion": "pan_right"
     },
     {
+      "line": "T04",
+      "kind": "illustration",
+      "prompt": "Wide conceptual view of several plain bottle-cap shapes on a work table, a generic designer comparing them without any drawings or text, window light.",
+      "planned_duration_s": 6.7,
+      "motion": "pull_back"
+    },
+    {
+      "line": "T05",
+      "kind": "card",
+      "post_text": "文件引用｜1998 口器專利 → 2005 水瓶申請",
+      "planned_duration_s": 8.9
+    },
+    {
+      "line": "T06",
+      "kind": "illustration",
+      "prompt": "Medium conceptual view of a blank closed folder beside an unmarked reusable bottle silhouette on a simple table, gentle window light.",
+      "planned_duration_s": 6.2,
+      "motion": "pan_left"
+    },
+    {
+      "line": "T07",
+      "kind": "card",
+      "post_text": "2006 年 2 月｜戶外用品展現場報導",
+      "planned_duration_s": 8.9
+    },
+    {
+      "line": "T08",
+      "kind": "illustration",
+      "prompt": "Medium shot of a generic visitor inspecting a plain reusable bottle at an anonymous exhibition table, no booths or banners, soft overhead light.",
+      "planned_duration_s": 10.1,
+      "motion": "push_in"
+    },
+    {
+      "line": "T09",
+      "kind": "illustration",
+      "prompt": "Close shot of a blank transparent bottle with a flip-up drinking tip and short inner straw, generic hand holding it, diffuse light.",
+      "planned_duration_s": 8.9,
+      "motion": "pan_right"
+    },
+    {
+      "line": "T10",
+      "kind": "illustration",
+      "prompt": "Medium shot of a generic reporter looking closely at an unmarked bottle on a plain display table, no writing or signage, cool indoor light.",
+      "planned_duration_s": 7.0,
+      "motion": "pull_back"
+    },
+    {
+      "line": "T11",
+      "kind": "card",
+      "post_text": "母公司回顧：2006 進入瓶類｜初期 Better Bottle",
+      "planned_duration_s": 10.3
+    },
+    {
+      "line": "T12",
+      "kind": "card",
+      "post_text": "母公司回顧：2006 年新管理團隊｜CEO Sally McCoy",
+      "planned_duration_s": 11.0
+    },
+    {
+      "line": "T13",
+      "kind": "illustration",
+      "prompt": "Wide conceptual shot of a plain hydration pack beside an unmarked reusable bottle on a neutral work table, a generic adult comparing them, soft light.",
+      "planned_duration_s": 9.4,
+      "motion": "pan_left"
+    },
+    {
+      "line": "T14",
+      "kind": "illustration",
+      "prompt": "Medium shot of two generic shoppers considering a blank bottle on a broad unmarked shelf, calm indoor light.",
+      "planned_duration_s": 5.8,
+      "motion": "push_in"
+    },
+    {
+      "line": "T15",
+      "kind": "illustration",
+      "prompt": "Close shot of a generic person refilling an unmarked reusable bottle at a simple water tap, clear daylight.",
+      "planned_duration_s": 7.0,
+      "motion": "pan_right"
+    },
+    {
+      "line": "T16",
+      "kind": "card",
+      "post_text": "2007 公司新聞稿｜設計題目：美觀、實用、人體工學",
+      "planned_duration_s": 11.3
+    },
+    {
+      "line": "T17",
+      "kind": "illustration",
+      "prompt": "Medium shot of a generic designer quietly examining a plain reusable bottle on a neutral display table, soft gallery light.",
+      "planned_duration_s": 8.2,
+      "motion": "pull_back"
+    },
+    {
+      "line": "T18",
+      "kind": "illustration",
+      "prompt": "Wide conceptual view of a plain bottle moving from a small bike-store shelf toward a larger general household shelf, no signs, soft light.",
+      "planned_duration_s": 6.2,
+      "motion": "pan_left"
+    },
+    {
       "line": "N01",
       "kind": "card",
-      "post_text": "2006｜進入可重複使用水瓶類",
-      "planned_duration_s": 8.4
+      "post_text": "2014 零售類別｜單車、戶外、家用品、自然食品",
+      "planned_duration_s": 10.1
     },
     {
       "line": "N02",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of an unmarked reusable bottle beside a separate soft water pouch on a plain table, soft window light.",
-      "planned_duration_s": 10.3,
+      "prompt": "Medium shot of a generic worker placing blank reusable bottles on a neutral mixed-goods shelf, soft indoor light.",
+      "planned_duration_s": 7.4,
       "motion": "push_in"
     },
     {
       "line": "N03",
       "kind": "illustration",
-      "prompt": "Wide shot of a generic cyclist between a bicycle-frame bottle and a plain pack, looking from one to the other, overcast light.",
-      "planned_duration_s": 6.2,
+      "prompt": "Medium conceptual scene of a generic person carrying a blank reusable bottle through an anonymous campus-like walkway toward an ordinary office door, soft daylight.",
+      "planned_duration_s": 8.9,
       "motion": "pan_right"
     },
     {
       "line": "N04",
       "kind": "illustration",
-      "prompt": "Medium conceptual scene of one generic cyclist wearing an unmarked water pouch with a plain drinking tube over the shoulder, both hands near the handlebar, soft overcast light.",
-      "planned_duration_s": 8.6,
+      "prompt": "Wide shot of two generic people using plain hydration packs during different outdoor activities on an anonymous trail, diffuse light.",
+      "planned_duration_s": 8.9,
       "motion": "pull_back"
     },
     {
       "line": "N05",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic adult picking up a plain reusable bottle from a home table, an unmarked pack hanging separately by a doorway, soft daylight.",
-      "planned_duration_s": 6.5,
-      "motion": "push_in"
+      "prompt": "Close shot of one unmarked bottle beside several plain hydration packs on a neutral shelf, soft side light.",
+      "planned_duration_s": 5.8,
+      "motion": "pan_left"
     },
     {
       "line": "N06",
-      "kind": "illustration",
-      "prompt": "Wide conceptual still life with an unmarked water pouch by a bicycle and a plain reusable bottle on a home table, separate settings joined by a soft paper path.",
-      "planned_duration_s": 8.4,
-      "motion": "pull_back"
+      "kind": "card",
+      "post_text": "2012 CamelBak 毛銷售額｜瓶類約 34%",
+      "planned_duration_s": 8.9
     },
     {
       "line": "N07",
-      "kind": "card",
-      "post_text": "Better Bottle 之後｜日常、騎車、兒童瓶款",
-      "planned_duration_s": 11.3
+      "kind": "illustration",
+      "prompt": "Wide conceptual view of unmarked bottles gradually taking more space on a simple neutral shelf, no labels or numbers, even light.",
+      "planned_duration_s": 9.8,
+      "motion": "push_in"
     },
     {
       "line": "N08",
       "kind": "illustration",
-      "prompt": "Wide conceptual shot of a plain bottle moving between several generic shelf shapes while a shopper watches, no shop signs, soft indoor light.",
-      "planned_duration_s": 7.4,
+      "prompt": "Medium shot of a generic adult testing a plain flip-up drinking tip on a blank bottle at a table, soft indoor light.",
+      "planned_duration_s": 8.2,
       "motion": "pan_right"
     },
     {
       "line": "N09",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of two blank calendar pages, an old bicycle-shop icon on one and several generic store doors on the other, no readable writing.",
+      "prompt": "Close conceptual shot of a wooden clothespin beside a plain flip-up drinking tip, both unmarked and separated on a clean table, gentle light.",
       "planned_duration_s": 9.1,
-      "motion": "pan_left"
+      "motion": "pull_back"
     },
     {
       "line": "N10",
-      "kind": "card",
-      "post_text": "2014 零售類別｜單車、戶外、家用品、自然食品",
-      "planned_duration_s": 8.2
+      "kind": "illustration",
+      "prompt": "Medium shot of a generic person choosing between a pouch tube and a blank bottle while seated at a simple table, soft daylight.",
+      "planned_duration_s": 7.9,
+      "motion": "pan_left"
     },
     {
       "line": "N11",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of several unmarked store doors with no arrows assigning a bottle to any one door, generic shopper looking on, mild daylight.",
-      "planned_duration_s": 8.4,
-      "motion": "pan_left"
+      "prompt": "Split conceptual scene with a generic rider carrying an unmarked pack outdoors and a generic office worker setting a plain bottle on a desk, consistent soft light.",
+      "planned_duration_s": 10.1,
+      "motion": "push_in"
     },
     {
       "line": "N12",
       "kind": "illustration",
-      "prompt": "Wide shot of a generic retail display with several different unmarked hydration-pack shapes, one customer examining them, soft indoor light.",
-      "planned_duration_s": 8.6,
-      "motion": "pull_back"
+      "prompt": "Medium shot of a generic person moving a blank bottle from an outdoor shelf to a simple everyday shelf, calm indoor light.",
+      "planned_duration_s": 10.3,
+      "motion": "pan_right"
     },
     {
       "line": "N13",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic mountain cyclist comparing a slim plain pack and a larger plain pack on a trail bench, overcast light.",
-      "planned_duration_s": 6.7,
-      "motion": "pan_left"
+      "kind": "card",
+      "post_text": "2014 CamelBak 毛銷售額｜水袋背包約 37%",
+      "planned_duration_s": 8.4
     },
     {
       "line": "N14",
       "kind": "illustration",
-      "prompt": "Close shot of a generic hiker touching the padded back of an unmarked pack, face visible, soft mountain daylight.",
-      "planned_duration_s": 7.2,
-      "motion": "push_in"
+      "prompt": "Close shot of a generic adult studying two unlabeled stacks of blank bottles and plain hydration packs, no charts or text, soft light.",
+      "planned_duration_s": 6.7,
+      "motion": "pull_back"
     },
     {
       "line": "N15",
-      "kind": "illustration",
-      "prompt": "Medium shot of a generic skier checking a plain unmarked backpack's helmet and board attachments, grey snow light.",
-      "planned_duration_s": 6.0,
-      "motion": "pan_right"
+      "kind": "card",
+      "post_text": "2014 同年度同分母｜瓶類約 50%",
+      "planned_duration_s": 9.4
     },
     {
       "line": "N16",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic runner adjusting a plain waist pack holding several simple bottles, soft overcast park light.",
-      "planned_duration_s": 8.4,
-      "motion": "pull_back"
+      "prompt": "Wide conceptual view of a plain hydration pack and blank reusable bottle side by side, one generic person resting a hand on each, warm window light.",
+      "planned_duration_s": 7.7,
+      "motion": "pan_left"
     },
     {
       "line": "N17",
       "kind": "illustration",
-      "prompt": "Medium shot of a generic accountant turning to a blank two-column sales sheet beside a plain pouch and bottle, soft desk light.",
-      "planned_duration_s": 8.9,
+      "prompt": "Medium shot of a generic cyclist placing a pack by a bicycle while another generic person sets a blank bottle on a desk, soft light.",
+      "planned_duration_s": 7.0,
       "motion": "push_in"
     },
     {
       "line": "N18",
-      "kind": "card",
-      "post_text": "2014 年 CamelBak 毛銷售額｜瓶類約 50%",
-      "planned_duration_s": 9.1
-    },
-    {
-      "line": "N19",
-      "kind": "card",
-      "post_text": "同年度同分母｜水袋背包約 37%",
-      "planned_duration_s": 5.5
-    },
-    {
-      "line": "N20",
       "kind": "illustration",
-      "prompt": "Close conceptual shot of a plain motorcycle-route token and a later blank sales sheet held apart on a desk, no arrow or implied causal proof.",
-      "planned_duration_s": 9.1,
-      "motion": "pan_left"
-    },
-    {
-      "line": "N21",
-      "kind": "illustration",
-      "prompt": "Wide conceptual scene of an unmarked water pouch beside a bicycle and a plain bottle on a home table, two different places for water with no real person.",
-      "planned_duration_s": 8.9,
-      "motion": "push_in"
-    },
-    {
-      "line": "N22",
-      "kind": "illustration",
-      "prompt": "Medium shot of one generic viewer pointing toward a plain water pouch and a plain bottle on a table, curious face, soft home light.",
-      "planned_duration_s": 8.2,
+      "prompt": "Wide closing view of a plain sock, soft water pouch, tube and reusable bottle arranged on a tabletop, a generic hand closing a notebook with blank cover, warm light.",
+      "planned_duration_s": 7.9,
       "motion": "pan_right"
-    },
-    {
-      "line": "N23",
-      "kind": "illustration",
-      "prompt": "Wide shot of a generic narrator silhouette closing a blank notebook beside a pouch and bottle, calm lamp light; leave clear space for the following endscreen.",
-      "planned_duration_s": 8.9,
-      "motion": "pull_back"
     }
-  ],
-  "timing_method": "One shot per spoken line, Unicode code units including punctuation and spaces divided by 250 per minute; preliminary only, adjust to measured TTS before media generation.",
-  "timing_is_measured": false
+  ]
 }
