@@ -1,0 +1,9 @@
+# S49 R45｜`moon044` 滿框提示 34 張 KEEP 離線重綁
+
+2026-10-22 UTC。[不同人 R45 來源／畫面紙審](r45-moon044-full-frame-independent-paper.md) SHA-256 **`4c31c32bb49517b575f4bb1fd6b6ba45d29bd5b67308b96d5a323f153ba54a81`** 已對精確窄修判 **PAPER PASS**。在私人 `STOP` 存在、jobs 空的條件下，僅把 active manifest `visual_hash` 從 R44 **`99b36fbfea602f3c`** 換成 R45 凍結文稿 **`7e10938a182e404e`**。本步**零付費**，沒有買第二張 `moon044`，也沒有把 R44 的機器退件裁圖冒充 KEEP。
+
+守衛核 `video.json` SHA **`c1b1d2d8cbc160580d33f36b98a93e0cfbe8cdd4e0e0b65a591991404275d360`**、`claims.md` SHA **`155e9ed04fe2fa83d7e13e79f12c94d44c45a357d7a822e9d068938c109a8753`**、[可逆差分](r45-moon044-full-frame-structured-diff.json) SHA **`d4d32f65b37096e7e1813bf97056dd92c6930b3c89470306cbf2241cea6b9bdb`** 及非作者 PASS 收據。重綁前 manifest SHA **`5fe354f8fecc7d0d41922214fe0d0517616bf6ed651c7a07f3f926e8aa2f7a9f`**，34／34 KEEP 入選項目與實檔 SHA 相符，`moon044` 不在入選清單。舊 visualHash 位元串恰出現一次；同目錄暫存檔原子替換後，新 active manifest SHA **`3c9a5df3ef20c6be0a965179c1f6e14ebf56a5ad47774f21f46d043d60d64339`**；除 visualHash 外完整 JSON 和 34 個 `shots` 都不變，`look_hash=98a370ae40badbaf` 未改，再核每張所選實檔 SHA 均相符。
+
+[逐圖庫存](r45-moon044-full-frame-rebind-inventory.json) SHA-256 **`e1eb3c67565c32abb4e398069bd119e504199c8c22d7c2f54ee25f2e8dac890b`** 列出所有 34 張選圖。兩張 active contact sheets SHA **`583b7495897b6f7921e29676c824d31b07e696d015d31f2e1841cdb1ab8171e8`**／**`2168412565eae3fb9e1291ccb29959e2338094be5e1ea36e4fb265b8d825ffaa`** 逐位元未改；ledger SHA **`2608c9b2690253b72dc2f200b8dd80ed7c5721662914c41bf7139f6db6dd8ead`** 未改，實花 **US$1.3095／97 image／97 judge／0 預約**；STOP 在位、jobs `{}`。前後 manifest、帳本、jobs 與 contact 備份只在私人 `/workspace/.video-work/curio-s49/review/r45-moon044-full-frame-rebind/`。
+
+程式按現稿重算 `visualHash=7e10938a182e404e`、`speechHash=96f0b30e8cb408c7`，active manifest 已相符；`keyframeProblems` 僅 **82 張缺圖**（首景 `moon044`），其他問題 0。這只是已入選圖與書面版本對齊，**不是 `moon044` 原圖 KEEP**。若買第二張，仍須新鮮 MiniMax 價格／額度及整集 US$5.30 上限預檢，至多一張；原尺寸原圖不得有黑邊，人物、空模、年代、畫風均需人眼驗收，失敗即停，不連買 `moon045`。整集 storyboard、網站聽音和成片仍 HOLD。
