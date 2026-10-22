@@ -1,0 +1,30 @@
+{
+  "revision": "R31",
+  "reason": "R30 s53027 first native machine 10/10 yet human REJECT: large completed two-story house on supposed empty preconstruction site, childlike worker in modern hardhat; narrow only this scene prompt and matching claims visual annotation before any second image",
+  "before_sha256": {
+    "video.json": "2d2191c6a66ae253f4ce9d167babb364729134c4e56244b68723cce1b091a59a",
+    "claims.md": "1479a0328bfe1783075d1b21e4dbc9fad1bc858bd22b10c1506abd0119070f6d",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "b9ce6cc426d547642ff7f6a7ee8c3a2564aad2439ff4b659c0f337ba19e9fea6",
+    "claims.md": "535993a24ade462411a63e5161d1d1dc3552e5470ab0d7c226d4fa677260eeda",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "changes": [
+    {
+      "file": "video.json",
+      "path": "scenes[20].data.prompt",
+      "id": "s53027",
+      "before": "Wide shot at an empty 1906 cottage work site, an anonymous worker studies a blank calendar beside a plain pile of boards, muted afternoon light",
+      "after": "Medium shot at a bare-ground San Francisco relief tent camp in late summer 1906 before cottages are built, one visibly middle-aged bareheaded grey-haired adult relief worker with facial lines in a plain dark civilian coat points to a small unlettered calendar sheet laid on a simple wooden crate beside a low loose stack of rough boards, a single plain canvas tent wall fills the background, soft overcast daylight"
+    },
+    {
+      "file": "claims.md",
+      "path": "line:s53027",
+      "id": "s53027",
+      "before": "| s53027 | 木屋還沒動工，場地期限卻已開始倒數。 | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941)、[D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1906 年 8 月 17 日土地前提早於 9 月 10 日開工；只是日期對照，不推定施工因果 |",
+      "after": "| s53027 | 木屋還沒動工，場地期限卻已開始倒數。 | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941)、[D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1906 年 8 月 17 日土地前提早於 9 月 10 日開工；只是日期對照，不推定施工因果；畫面為 1906 年匿名帳棚營地的原創概念示意：灰髮有面紋、未戴帽的成年平民工作者指向箱上小張無字日曆紙，旁為散放木板、背後僅帆布牆；沒有已建成小屋或屋架，不主張該地當日實有備料、日曆原件或具名人物 |"
+    }
+  ]
+}
