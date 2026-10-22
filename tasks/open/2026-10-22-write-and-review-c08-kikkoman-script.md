@@ -12,6 +12,7 @@ branch: codex/brand-story-kikkoman-c08-script
 depends_on: []
 scope:
   - docs/videos/story-everyday-kikkoman-c08/script.md
+  - docs/videos/story-everyday-kikkoman-c08/script-source-addendum.md
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
@@ -20,6 +21,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-flow-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-shortened.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-expanded.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-c080419-delta.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -48,7 +50,7 @@ scope:
 
 ## How to verify
 
-讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣列出的直接可讀文件；計算 script.md、visual-plan.md SHA256，與三份獨立收據相對；機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
+讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
 ## Notes
 
@@ -81,3 +83,5 @@ scope:
 2026-10-22：79 句縮稿的獨立來源審查判 **HOLD**，指出當時 `c080405` 把近百模型的雙重難題過度縮成收手一瞬間；同一收據另指出第 2–6 章 1,857 字元可能不足 480 秒，已標為歷史失效。作者重新核對 MoMA M1、GK D1、Kikkoman K1/K2a 及 Treatment，改寫為**防滴與控制流量並列要求**，僅把嘴尖內收角度連到 MoMA 明說的少積液、少滴；沒有最終流量量測或零滴漏保證。新增的因果資訊包含 1918 年 1.8 L 回收再用大瓶與 1961 年可再填充桌上小瓶之區別、MoMA 描述的瓶頸外展／透明玻璃／紅蓋，以及醬油易流動的葡萄酒比喻；結尾不補回獎項或出貨。旁白與逐鏡現版 **96／96 ID**、第 2–6 章 **2,324 字元**（較 HOLD 版 +467）、**81 shot／15 card**（84.4%）、最長 **2** 連卡；`git diff --check`、ID／卡片／prompt 禁字結構自檢、`npm run check:tasks` PASS（2077 張票，其他票既有警告）。`script.md` SHA-256 `31438408B20ED60C4AEF2F552720C0DB8DA20D1E05FA69CB40C65262EA378026`；`visual-plan.md` SHA-256 `F6CA5C5C120BB92C5AD414D576ECE1F6372B67C4D8D15F0685E478948C5EC003`。這只是作者自檢；須由不同代理重新做逐句來源查核、兩位只看旁白的新盲讀與獨立視覺預檢，另須正式 TTS 時長及站主稿件核准。未付費、未上傳。
 
 2026-10-22：另一代理對擴稿 96 句與 96 鏡完成獨立來源審查，僅 `c080419` **HOLD**：原句「只支持少滴」把 MoMA M1 同時描述的防滴／控流脈絡說得過窄。作者只改該句為「兩份後來的說明都談到滴液；但都未提供逐次量測，不能保證每次倒取都乾乾淨淨。」相鄰 `c080403`、`405–420`、`606` 與 `c080419` 畫面核對後不改；擴稿審查收據標為歷史失效。新 `script.md` SHA-256 `8443CBD82DDCC75C6BD8603A403D2BDBE8BB9317BCD701AA9A868C568492FA2C`，`visual-plan.md` SHA-256 仍為 `F6CA5C5C120BB92C5AD414D576ECE1F6372B67C4D8D15F0685E478948C5EC003`。現版 **96／96 ID**、正文第 2–6 章 **2,336 字元**、81 shot／15 card、最多兩連卡；`git diff --check`、結構／prompt 禁字自檢及 `npm run check:tasks` PASS（2078 張票，其他票既有警告）。這是作者自檢；新 SHA 的獨立來源差異覆核與兩位新盲讀、視覺預檢、TTS、站主稿件核准仍待完成。未付費、未上傳。
+
+2026-10-22：前輪 `c080419` 差異獨立來源 PASS 只綁 96 句舊稿 `8443CBD8…`／`F6CA5C5C…`，現已標**歷史失效**。第一位新敘事讀者對該稿提出結構 HOLD（旁白欄外意外露出前八格來源，因此不列為正式盲讀收據）：第 2 章反覆容量／上桌、第 3 章繞著握／滴不揭瓶嘴、第 4 章重述滴液與查核界線、第 5 章把上市／補充／入館塞成尾聲、第 6 章重播答案。作者由此重排完整 2–6 章，並新增**不與 Treatment 票重疊**的 `script-source-addendum.md` 窄 scope；原 `source-matrix.md` 仍由 Treatment 票持有，未修改。GK Report No.34 官方 PDF 印刷頁 23–24 由作者下載掃描頁目視核對：設計者後來回憶的大瓶轉注陶壺、可量產且預裝醬油、握法、紅蓋取下後補充開口比大瓶稍寬，均只以 R1 後來回顧歸屬；不採其 60 度／第 101 模型，與 MoMA M1 的近百模型、防滴及控流並列界線分開。全段與逐鏡目前 **82／82 ID**、正文 **2,196 字元**、69 shot／13 card（84.1%）、最多 1 連卡；作者結構和 prompt 禁字自檢 PASS，並更新 `reviews/visual-preflight.md` 為明確的作者技術預檢。`script.md` SHA-256 `A9D45943B0544018EA08B6605120B56CE067D7D1AEA0F0C71A471C4AAAF1507A`；`visual-plan.md` SHA-256 `39C2382CF111AA73C8785CE60E864974BE3C204861C182445565947B38BA24E3`；R1 補充 SHA-256 `942D1FB6A9AF3BF87D2E8E63A69BBE3E4735872B7C4983CDD7C3045219B5F74A`。**新稿未有獨立來源 PASS、兩位新盲讀、獨立視覺預檢或實測 TTS 480 秒**；字數只近似 C05 的實測稿，不能推本集已達標。PR #1681 保留草稿與 `no-auto-merge`；未付費、未上傳。
