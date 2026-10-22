@@ -1,0 +1,7 @@
+# S60 R7 first art applicability and delegated ceiling
+
+2026-10-22 UTC. CurrentvideoSHA51fb65f44b58f4adbf4f3243b14d4155a73e0fd501858467ccd2df113b8e2a9b; scriptbf963ceec7e2f2bef79dc102a7b3ca89f4f6097b44e85907e5e98a2bea20531b; claims21eab7637a46aebc28b7638d4bd720d08c7614d0aa78589d82a6d15034550edb. Mechanical comparison to R4 narration recoverycommit7c1d4ce0b confirms all110scene templates/data unchanged, all103imageprompts/cameras/visuals unchanged; firstchapter7shot wholeobjects unchanged. Independent R4 source/writtenvisual PASS and r4-first-chapter-paper-and-budget remainapplicable totheseunchangedfirst7shots. LateroralchangesR5/R6/R7 separatelysourcechecked; no newimagefacts.
+
+R7 technicalaudio109/109zero flags,2freshblind13/13; proxyproductionaudioapproval explicitly states ownerdidNOTlisten. Narrator-onlydrama hascharacters[]; no lookstage or fictionalcharacter-sheetmanifest is needed. Fixedcute-mystery only,no style/negative.
+
+Userstandinginstructionauthorizesrecommendedproductiondecisionswithoutquestions. Preserveexistingepisodeimage/judgeceiling4.25USD (103×3×.0135=4.1715); music/speech areseparate. Firstpilot7unchangedshots s60001,03,04,05,06,07,08 max1actualnativeeach atmost.0945USD, thenSTOP/nativeinspectionbeforecontinuing. No mediarunning atpreflight; no priorartledgerorselectedimages. Iflivepricingchanges or3actualcap/episodeceilingwouldexceed, stop. No styleplate orvideo-clips purchase.
