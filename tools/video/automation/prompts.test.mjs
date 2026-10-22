@@ -8,7 +8,7 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
 import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
@@ -711,4 +711,27 @@ test("every stage prompt fits the site's limit with room for what the worker app
       assert.ok([...composed].length + room <= limit, `${stage} (${format}) composed is ${[...composed].length} characters`);
     }
   }
+});
+
+test("the manga tier's rule reaches a one-off without a genre, and the default tier adds nothing (docs/videos/BINGE.md)", () => {
+  assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills", "manga"]);
+  assert.deepEqual(TIER_CLIP_SHARE, { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 });
+  assert.match(VISUAL_TIER_RULES.manga, /never "visual": "clip"/);
+  assert.match(VISUAL_TIER_RULES.manga, /new picture every 3 to 5 seconds/);
+  assert.match(VISUAL_TIER_RULES.manga, /one character per picture/);
+  // The owner's narrator choice of 2026-10-22 (Sulafat, the storyteller's register) rides in the tier's rule.
+  assert.match(VISUAL_TIER_RULES.manga, /"performance" plan is the storyteller's[^.]*說書人的語氣，節奏快/);
+  // The sticker drama's hook cadence (the owner, 2026-10-22), which lint measures at 30 s.
+  assert.match(VISUAL_TIER_RULES.manga, /Every 20 to 30 seconds a line lands a hook[^.]*the lint warns on any stretch over 30 seconds/);
+  // A one-off carries no genre: only a tier other than the default is sent, under its own heading.
+  assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off" }), "");
+  assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: "clips" }), "");
+  const manga = genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: "manga" });
+  assert.equal(manga, `## Visual tier (docs/videos/BINGE.md)\n${VISUAL_TIER_RULES.manga}`);
+  // A binge series keeps its genre section, with the tier's rule inside it as before.
+  const binge = genreBlock({ genre: "urban-return", lead: "male", visual_tier: "manga", compilation: false, hands_off: true });
+  assert.match(binge, /^## Genre and retention/);
+  assert.ok(binge.includes(VISUAL_TIER_RULES.manga));
+  assert.match(instructionsFor("writer", "drama", "", null, "", { kind: "one-off", visual_tier: "manga" }), /Visual tier "manga"/);
+  assert.doesNotMatch(instructionsFor("writer", "drama", "", null, "", { kind: "one-off" }), /Visual tier/);
 });

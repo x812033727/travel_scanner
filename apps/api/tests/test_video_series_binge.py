@@ -390,6 +390,12 @@ def test_the_quote_prices_the_run_at_the_settings_prices_against_the_budgets() -
     assert stills.clip_seconds == 1080 and stills.budgets["clip_seconds"].ok and stills.ok
     clips = service.binge_quote(_settings(), 120, 3, "clips")
     assert clips.clip_seconds == 10800 and clips.usd > stills.usd
+    # The motion comic buys no clip at all: pictures, judge calls and the dollar an episode.
+    manga = service.binge_quote(
+        _settings(monthly_images_budget=3000, series_episodes_per_month=60), 120, 3, "manga"
+    )
+    assert manga.clip_seconds == 0 and manga.images == stills.images and manga.ok
+    assert manga.judge_calls == 1200 + 18 and manga.usd < stills.usd
 
 
 def test_the_summary_carries_the_binge_columns_and_an_older_row_reads_as_classic() -> None:

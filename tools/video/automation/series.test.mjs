@@ -2509,3 +2509,52 @@ test("the script verdict reads the craft rows on the script itself: the opening 
   assert.deepEqual(scriptVerdict(passing, SERIES, null), { passed: true, problems: [] }, "without a report (a long anime, no cast) nothing is added");
   assert.deepEqual(scriptVerdict(passing, SERIES, { applies: false, checks: [] }), { passed: true, problems: [] });
 });
+
+test("a one-off that chose the manga tier carries it into series.json, so the lint and the writer hold the script to stills; the default tier is left out as before", async () => {
+  const box = sandbox();
+  const slug = "one-off-7a1b2c3d-e001";
+  const example = dramaFixture();
+  // Every shot a still, as the tier asks: the lint refuses a clip under it.
+  const stills = { ...structuredClone(example), slug, scenes: example.scenes.map((scene) => (scene.template === "shot" ? { ...scene, data: { ...scene.data, visual: "still", camera: scene.data.camera ?? "push in" } } : scene)) };
+  const answers = {
+    "planner:bible": () => BIBLE,
+    writer: (body) => (body.payload.fix ? { video: structuredClone(body.payload.video) } : { video: stills, claims: "原創：山海經北山經\n", lexicon_additions: {} }),
+    verifier: () => ({ report: "# 連貫性第 1 輪\n", video: null, claims: "原創\n", changed_facts: 0 }),
+    listener: (body) => ({ video: body.payload.video, edits: [] }),
+  };
+  const manga = { ...ONE_OFF, visual_tier: "manga" };
+  // The site's answer to the episode start carries the series row the tier lives on.
+  const oneOffStart = (body) => ({
+    request: { id: "one-off-request", premise: manga.premise, title: "精衛", source_guide: null, style_preset: "ink-wash", target_minutes: 2, note: null, status: "started", slug: body.slug, series_slug: manga.slug, episode_number: 1 },
+    episode: { ...oneOffEpisode("started"), slug: body.slug },
+    context: { series: manga, setting: { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...BIBLE, status: "approved" }, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [oneOffEpisode("ready")], recaps: [], mysteries: [] },
+  });
+  const site = fakeSite({ jobs: [job("bible", { series: manga, chapter_number: null, context: { ...job("bible").context, series: manga, setting: null, mysteries: [] } }), job("episode", { series: { ...manga, status: "active", episodes_ready: 1 }, episode: oneOffEpisode("ready") })], answers, oneOffStart });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-22T01:00:00Z") });
+  const dir = path.join(box.root, "docs", "videos", slug);
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "review-push") {
+      const gate = command[command.indexOf("--gate") + 1];
+      const list = site.reviewsOf(slug);
+      if (gate === "script") list.unshift({ id: `script-${list.length}`, gate: "script", status: "pending", choice: null, note: null, decided_at: null, content_sha256: sha(path.join(dir, "script.md")), payload: {} });
+      return { code: 0, out: `${gate} submitted` };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, runCommand: undefined, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  assert.match(await automation.step(), /started from the approved story bible/);
+  assert.deepEqual(readJson(path.join(dir, "series.json")).visual_tier, "manga");
+  const state = automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual(state.series, { slug: ONE_OFF.slug, episode: 1, chapter: 1, kind: "one-off", visual_tier: "manga" });
+  // The next round writes the episode: the writer is told the tier, and the all-still script passes the lint.
+  await automation.step();
+  const writer = site.calls.run.find((run) => run.stage === "writer");
+  assert.ok(writer, "the writer ran");
+  assert.match(writer.instructions, /## Visual tier \(docs\/videos\/BINGE\.md\)\nVisual tier "manga"/);
+});

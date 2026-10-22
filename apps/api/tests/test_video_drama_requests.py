@@ -98,6 +98,11 @@ def test_a_request_needs_a_premise_and_keeps_to_the_presets_and_lengths() -> Non
         3,
         None,
     )
+    # The form's tier: every one-off so far is "clips"; the motion comic is the other choice.
+    assert minimal.visual_tier == "clips"
+    assert DramaRequestIn(premise="p", visual_tier="manga").visual_tier == "manga"
+    with pytest.raises(ValidationError):
+        DramaRequestIn(premise="p", visual_tier="hybrid-ish")
     adapted = DramaRequestIn(
         premise="把這篇改成三幕的旅途故事",
         source_guide="tokyo-first-trip-guide",
@@ -150,7 +155,11 @@ async def test_a_new_request_is_a_one_off_series_with_its_episode_and_an_audit_e
         session,  # type: ignore[arg-type]
         owner,
         DramaRequestIn(
-            premise="精衛填海", source_guide="shanhaijing-birds", target_minutes=2, note="慢一點"
+            premise="精衛填海",
+            source_guide="shanhaijing-birds",
+            target_minutes=2,
+            note="慢一點",
+            visual_tier="manga",
         ),
     )
     assert out.status == "queued" and out.created_by_user_id == owner.id and out.slug is None
@@ -166,6 +175,7 @@ async def test_a_new_request_is_a_one_off_series_with_its_episode_and_an_audit_e
     )
     assert series.title == "精衛填海" and series.open_ended is False and series.note == "慢一點"
     assert (series.style_preset, series.target_minutes) == ("cinematic-3d", 2)
+    assert series.visual_tier == "manga", "the form's tier is the one-off's (BINGE.md §畫面等級)"
     assert isinstance(episode, VideoDramaEpisode)
     assert (episode.series_id, episode.number, episode.status) == (series.id, 1, "planned")
     assert isinstance(row, VideoDramaRequest) and row.id == out.id and row.status == "queued"
