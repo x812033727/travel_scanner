@@ -19,6 +19,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-final-pass.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-flow-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-shortened.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-expanded.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -78,3 +79,5 @@ scope:
 2026-10-22：第二位嚴格盲讀對上述版本判 **HOLD**：`c080410–411` 的嘴尖內斜和積液作用難以在腦中成像；`c080405–408` 重述 `c080311–317`；`c080508–613` 的獎項、館藏、商標、出貨堆疊拖慢結尾，`c080612–614` 又重說功能解答。作者重新打開 MoMA M1、GK D1、龜甲萬 K1/K3 與 Treatment，只用來源可支持的「嘴尖向內斜／較少積液和滴桌」重寫第 3–4 章；畫面 `c080410` 改成僅標角度的泛用側面示意，移除液體回流路徑。結尾保留 2005 館藏與 2018 公司商標公告，1993 設計選定及全球累計出貨留在來源矩陣，不進旁白；以一次拿起、倒出、放回回答開場。現版 79／79 句與鏡 ID 對齊、68 shot／11 card（86.1%）、最多兩連卡、無缺號與生成 prompt 禁字；純文字 2,065 字元，**TTS 尚未實測**。`script.md` SHA-256 `36BC6272BBFF8FC82FF3E9EB68901D5140AF23332AA2FEBD420763A2C6E2CE85`，`visual-plan.md` SHA-256 `B56CA7071222E0CDC2A35C7ED3F0231B6C5615299F34ADFBF39F58F1D97F27C8`。前版來源 PASS 已標為歷史失效。作者只完成自檢；**須由不同代理重新做來源查核、兩位只看旁白的新盲讀及獨立視覺預檢**，站主劇本核准另待處理。未付費、未上傳。
 
 2026-10-22：79 句縮稿的獨立來源審查判 **HOLD**，指出當時 `c080405` 把近百模型的雙重難題過度縮成收手一瞬間；同一收據另指出第 2–6 章 1,857 字元可能不足 480 秒，已標為歷史失效。作者重新核對 MoMA M1、GK D1、Kikkoman K1/K2a 及 Treatment，改寫為**防滴與控制流量並列要求**，僅把嘴尖內收角度連到 MoMA 明說的少積液、少滴；沒有最終流量量測或零滴漏保證。新增的因果資訊包含 1918 年 1.8 L 回收再用大瓶與 1961 年可再填充桌上小瓶之區別、MoMA 描述的瓶頸外展／透明玻璃／紅蓋，以及醬油易流動的葡萄酒比喻；結尾不補回獎項或出貨。旁白與逐鏡現版 **96／96 ID**、第 2–6 章 **2,324 字元**（較 HOLD 版 +467）、**81 shot／15 card**（84.4%）、最長 **2** 連卡；`git diff --check`、ID／卡片／prompt 禁字結構自檢、`npm run check:tasks` PASS（2077 張票，其他票既有警告）。`script.md` SHA-256 `31438408B20ED60C4AEF2F552720C0DB8DA20D1E05FA69CB40C65262EA378026`；`visual-plan.md` SHA-256 `F6CA5C5C120BB92C5AD414D576ECE1F6372B67C4D8D15F0685E478948C5EC003`。這只是作者自檢；須由不同代理重新做逐句來源查核、兩位只看旁白的新盲讀與獨立視覺預檢，另須正式 TTS 時長及站主稿件核准。未付費、未上傳。
+
+2026-10-22：另一代理對擴稿 96 句與 96 鏡完成獨立來源審查，僅 `c080419` **HOLD**：原句「只支持少滴」把 MoMA M1 同時描述的防滴／控流脈絡說得過窄。作者只改該句為「兩份後來的說明都談到滴液；但都未提供逐次量測，不能保證每次倒取都乾乾淨淨。」相鄰 `c080403`、`405–420`、`606` 與 `c080419` 畫面核對後不改；擴稿審查收據標為歷史失效。新 `script.md` SHA-256 `8443CBD82DDCC75C6BD8603A403D2BDBE8BB9317BCD701AA9A868C568492FA2C`，`visual-plan.md` SHA-256 仍為 `F6CA5C5C120BB92C5AD414D576ECE1F6372B67C4D8D15F0685E478948C5EC003`。現版 **96／96 ID**、正文第 2–6 章 **2,336 字元**、81 shot／15 card、最多兩連卡；`git diff --check`、結構／prompt 禁字自檢及 `npm run check:tasks` PASS（2078 張票，其他票既有警告）。這是作者自檢；新 SHA 的獨立來源差異覆核與兩位新盲讀、視覺預檢、TTS、站主稿件核准仍待完成。未付費、未上傳。
