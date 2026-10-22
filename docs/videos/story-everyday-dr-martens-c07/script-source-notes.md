@@ -6,6 +6,8 @@
 | --- | --- | --- | --- |
 | M1 | [London Museum，1995 年靴款館藏 95.525/6a-b](https://www.londonmuseum.org.uk/collections/v/object-91428/boot-ankle-boot/)，網頁 Description 與 Object details 可直接讀。館方寫早期郵差、警察、工廠工作者會穿；**到 1960 年代末**被 skinheads 採用，之後有其他次文化；本件紫黃格紋靴製於 1995 年，由品牌公關公司捐入館藏。 | 「倫敦博物館的館藏說明把青年採用放在六○年代末」「早期工作服用途與後來次文化用途分開」。 | 1995 年靴子不是六○年代現場原件；館方概述沒有指出第一位穿著者、第一張訂單、各群體的銷量或六○年代末的準確年份。也不能把 1995 靴子的格紋樣式畫成 1960 1460。 |
 | A1 | [Arthur Crucq，〈Double ‘Class’. On the Popularization of Dr. Martens〉，Widok，第 31 期（2021）](https://www.pismowidok.org/en/archive/2021/31-visuality-of-social-classes/double-class-on-the-popularization-of-dr.-martens)，HTML 全文、作者與註腳可直接讀。作者在開頭明說自己曾是 1980 年代末荷蘭龐克成員；正文第 41–56 段按時期討論英國工作靴、晚六○年代 skinhead、加勒比音樂影響、晚七○年代 punk，以及之後分歧的政治意義。 | 「工作靴被穿成某些青年群體的階級風格」「龐克是較晚的另一波」「同一種靴在不同穿法和時期有互相衝突的意思」。 | 研究文章有作者自身記憶與二手引文，不是英國六○年代原始銷售檔；其中『第一個』青年群體、1972 年事件因果、鞋帶色碼等細節不能僅憑此文寫成定論。文章部分早期商業沿革與 B1/B3 的授權說法不同，逐句稿沿用已審 B1/B3 界線。 |
+
+逐句初審後，V2 的 1981 年 V&A 照片只保留為背景查核：館方文字沒有說畫中人物穿 Dr. Martens，不能拿照片證明任何靴款或型號。修訂稿 c070602–c070604 改以 A1 對不同政治意義與荷蘭穿法的分析承接；仍不得把 A1 的特定時地觀察寫成所有 skinhead、所有靴款的通則。M1 與 A1 談青年採用時也只指廣義 Dr. Martens 靴，未逐人證成八孔 1460。
 | V2 | [V&A，Staying Power 的 Gavin Watson 段](https://www.vam.ac.uk/articles/staying-power-photographs-of-black-british-experience)，仍可直接讀；1981 年 Wycombe Skins 的館藏說明、ska 與多族裔脈絡。 | 「1981 年的一處 skinhead 場景不能被全部極右化」。 | **未說照片中任何人穿 Dr. Martens**；不可拿此照片證明靴子採用或當年銷售。照片/肖像亦不直接放進 AI 插圖。 |
 
 舊矩陣的 V1 [V&A Dr Martens 策展文](https://www.vam.ac.uk/blog/museum-of-childhood/dr-martens-dips-toe-into-new-market) 在 2026-10-22 直開仍回 403；搜尋索引展示全文片段，**不升格**為工作者直接可讀的逐句唯一依據。M1 已獨立支持「晚六○年代 skinhead 採用」的核心句；A1 提供更細的文化分期。B1/B2/B3/B4 同屬品牌利益方，保留「公司回顧／品牌檔案」歸因。

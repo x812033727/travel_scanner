@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-c07-dr-martens-script-visual
 title: Write and independently review C07 Dr. Martens script and visual plan
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-c07-reviser
+claimed_at: 2026-10-22T11:39:09Z
 created_at: 2026-10-22T05:29:06Z
 completed_at:
 branch: codex/brand-story-dr-martens-c07-script
@@ -49,4 +49,6 @@ scope:
 
 2026-10-22：初稿凍結雜湊見 `reviews/script-review-summary.md`。77 句與 77 鏡 ID 一對一、63 插圖／14 卡、最長兩連卡；仍待另一代理逐句查核、兩位真正盲讀、時長與時間占比實測，不能宣稱 PASS。`npm run check:tasks` 與 `git diff --cached --check` 通過（前者有全庫舊票警告）。首輪 `npm run test:docs-videos` 因新工作樹缺 `pinyin-pro` 中止；`npm ci` 完成後重跑 **235/236 PASS**，唯一失敗是 `docs/videos/imported-long-languages/runner.test.mjs` 的 `initial runtime freezing resolves a portable relative root...`，子程序在 Windows 回 `3221226505`、stderr 空，未觸及 C07 文件。草稿 PR #1680 已貼 `no-auto-merge`，等待獨立審查；不得把 235/236 說成全綠。
 
-2026-10-22：另一代理已先做只看旁白的盲讀，再直接核對來源與逐鏡，完整 77 句 SHA-bound 獨立紀錄見 [script-source-review.md](../../docs/videos/story-everyday-dr-martens-c07/reviews/script-source-review.md)。判定 HOLD：c070304、c070310、c070407、c070412、c070601 的主張範圍／歸因要修；c070603–c070604 的 V&A 照片段事實界線正確但盲聽脫離靴子；c070405 聽感待改；分鏡 c070101／505／608 多焦點、c070310／507 空白紀錄示意及 c070301 密集卡需重排。script SHA DB10ADC588C1FC8E52EE126084D4FC60833A5ACEC60C644AC97D38D98316A3C6；visual SHA 563327B512A7EC674EE53DFDF1F44D4EDB5E514518537E2715584CF9865111FF。作者修後必須重新綁雜湊、再做兩位真正盲讀；未作 TTS 480 秒、付費媒體、站主核准或上架。
+2026-10-22：另一代理已先做只看旁白的盲讀，再直接核對來源與逐鏡，完整 77 句 SHA-bound 獨立紀錄見 [script-source-review.md](../../docs/videos/story-everyday-dr-martens-c07/reviews/script-source-review.md)。判定 HOLD：c070304、c070310、c070407、c070412、c070601 的主張範圍／歸因要修；c070603–c070604 的 V&A 照片段事實界線正確但盲聽脫離靴子；c070405 聽感待改；分鏡 c070101／505／608 多焦點、c070310／507 空白紀錄示意及 c070301 密集卡需重排。舊版 script SHA DB10ADC588C1FC8E52EE126084D4FC60833A5ACEC60C644AC97D38D98316A3C6；visual SHA 563327B512A7EC674EE53DFDF1F44D4EDB5E514518537E2715584CF9865111FF。
+
+2026-10-22：按初審窄幅修訂 77 句，明分 1460 產品史與廣義品牌靴的青年文化史；V&A 1981 照片退回背景查核，不再口播或出卡。分鏡改為 64 插圖／13 單項卡，圖像不造首賣收據、不拼多個焦點。新版 script SHA A1BE5CFC53CE24EDEFA95094E4D442F6E86FE6B0B4F8D0E0D7E5BE7CEE510A14；visual SHA 32B854AE849421F14B39B81CC612745B522E9EBFDFEC1FF62AA09EEAE43984CA。`npm run check:tasks`、`git diff --check` 通過；仍需另一代理重查全部 77 句、兩位只看旁白的新盲讀與站主劇本審核。未作 TTS 480 秒、付費媒體、上架或合併。
