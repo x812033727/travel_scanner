@@ -1,6 +1,35 @@
 # C09 Patagonia｜Treatment 獨立來源覆核收據
 
-覆核者：`codex-c09-independent-reviewer`；日期：2026-10-22；PR：[ #1685](https://github.com/x812033727/travel_scanner/pull/1685)；覆核基準 commit：`74701ee98bbec626c8529a1bdab41052a6bdc40e`。本次是第二代理從來源原頁重新判讀，不沿用撰企劃者的結論。**總判定：HOLD，修訂後重核受影響 ID，暫勿送站主 Treatment 核准。**
+覆核者：`codex-c09-independent-reviewer`；日期：2026-10-22；PR：[ #1685](https://github.com/x812033727/travel_scanner/pull/1685)。以下先列**修訂版第二輪判定**，再保留初版 HOLD 的原始收據。兩輪只對各自的 SHA-256 bytes 有效，不能把初版 HOLD 當成修訂版結論。
+
+## 第二輪：修訂版獨立重核（目前判定）
+
+**判定：PASS，可交站主審 Treatment。** 這只表示目前企劃和來源矩陣在已列的歷史主張與證據邊界上可進入站主企劃關；並非站主核准、逐字稿查核、付費媒體授權、匯入、上傳或發布。
+
+| 綁定項 | 本輪讀回值 |
+| --- | --- |
+| PR head／作者修訂基準 | `67d55c346c9100b54e4bb335bfcc48c2484006af` |
+| `docs/videos/story-everyday-patagonia-c09/treatment.md` SHA-256 | `0769134247D8D98407FDE2DCE3DD8026AF1681CB408A855C62F9708915991FDD` |
+| `docs/videos/story-everyday-patagonia-c09/source-matrix.md` SHA-256 | `EC8E598C9099EBE0FFD51CBF89807C96962C62618A41BE8BA3A66A48986EEA2C` |
+
+本輪重新打開 [S1 1967 當事文章](https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use)、[S2 原序全文重刊](https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html)、[S3 1973 書評](https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment)、[S4 1977 獨立採訪](https://www.newyorker.com/magazine/1977/01/31/ascending)、[S6 Patagonia 2022 回顧](https://www.patagonia.com/stories/sports/climbing/bring-back-clean-climbing/story-116308.html)、[S7 Patagonia label 回顧](https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html)及[S9 版次說明](https://www.karabinclimbingmuseum.com/chouinard-1972-1974-catalogs.html)。S8 掃描圖的逐頁看圖範圍與直接連結記於下方初版來源表；本輪據已看圖記錄重核修訂文字，沒有以掃描**索引**代替頁面內容，也沒有新確證其具體印次。S5 2004 NPS PDF Appendix I 的初輪檢視結果仍只作後設輔證。來源細節和限制見下方 S1–S9 表。
+
+| 前輪問題／ID | 本輪判定及直接證據定位 |
+| --- | --- |
+| 標題、`hook`、M04 的「少買」與必要例外 | **PASS**。三個標題和冷開場均已改成「少用／改推」，不再把使用建議寫成購買命令。[S2 原序第 4–5 段](https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html)先要求使用 chocks、既有 clean 路線不用 pitons，隨後限定必要時可考慮**固定且記入當地指南的 piton**。修訂稿保留「必要時」例外，M04 明說此段不證銷售；逐字稿寫到例外時應補足「固定且記錄」的限定，不能延伸成通常敲入再拔出的做法。 |
+| `origin`、M01–M03、M05 的歷史基礎 | **PASS**。[S1 開頭與 Yosemite Method 節](https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use)確有兩作者及使用岩釘敘述；[S2 原序傷痕段](https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html)是改變使用建議的當事理由；[S4 Doug Scott 前史段](https://www.newyorker.com/magazine/1977/01/31/ascending)表明英國 chocks 先例。[S3 首段與評論段](https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment)證 1972 型錄及 Doug Robinson 文章。1957 保持為 1977 受訪回憶，不宣稱 Chouinard 發明 chocks。 |
+| 掃描版次、`engine`、M06 | **PASS（版次限定）**。新版明寫 S8 為**未定印次**掃描，不用 p48–53 及 p67 推出 1972 最早 50 美分印次有相同頁序；[S8 p0 原圖](https://www.climbaz.com/chouinard72/graphics/page00.JPG)可見一美元，[p67 原圖](https://www.climbaz.com/chouinard72/graphics/page67.JPG)表頭為 Great Pacific Iron Works，[S9 首段、第三段與版次列](https://www.karabinclimbingmuseum.com/chouinard-1972-1974-catalogs.html)記同封面跨 1972–74、50 美分及一美元版、重印改頁。`engine` 用 [S2 原序最後兩段](https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html)與 S3 書評支持理念和教學，用 S8 限定商品線索。[S4 開頭公司商品段及零售店／工廠段](https://www.newyorker.com/magazine/1977/01/31/ascending)另證 1977 年仍售、展示且製造 pitons；稿件也明示不能反向排除短暫停供。 |
+| `turn`、M07–M08 的暢銷說法 | **PASS（歸屬限定）**。[S3 書評第 2–5 段](https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment)是同期的偽善質疑與評論者觀察，不是銷售表。[S6「Chouinard had been forging」段](https://www.patagonia.com/stories/sports/climbing/bring-back-clean-climbing/story-116308.html)才有 1970 年 pitons 為最暢銷的說法；新版明寫 **Patagonia 2022 年回顧稱**，標題與 `hook` 不再無歸屬地稱「暢銷」。沒有推估速度、收益或市場占比。 |
+| `now`、M09–M10、品牌時序 | **PASS**。[S4「In any event, since 1972」段與 1977 店／工廠段](https://www.newyorker.com/magazine/1977/01/31/ascending)支持持續勸少用及後年仍售；[S7 Ventura 段](https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html)說 1973 年使用 Patagonia 服裝標籤。新版把 1972 Chouinard Equipment、1973 服裝標籤和 S4 所述 1973 公司更名分開，並把「推薦／器材方向轉移」標為推論，沒有說 1972 年 Patagonia 公司停售。 |
+| 失效企劃連結與全片結構 | **PASS**。新版移除不存在的 `../brand-stories-everyday-reversals-20261020/20-episode-plan.md` 連結；「已定題目」是企劃流程敘述，仍待站主自己核准本版 Treatment。六章、0:00–9:15 正文、5 秒片頭與 21 秒片尾、30–45 秒鉤子鏈仍是企劃而非完成媒體的證據。 |
+
+**M01–M10 本輪總表：** M01 PASS、M02 PASS、M03 PASS、M04 PASS、M05 PASS（版次限定）、M06 PASS（版次限定）、M07 PASS、M08 PASS（歸屬限定）、M09 PASS、M10 PASS。**Treatment 區塊：**企劃卡、品牌時序、主標題與兩備案、0:00–0:50 開場、`hook`、`origin`、`idea`、`engine`、`turn`、`now`、片尾、鉤子鏈、畫面限制及內部連結均 PASS，以上表限定為準。
+
+**剩餘邊界：**S8 具體印次、最早印次岩釘商品頁、同期產品銷售帳及 1972–77 間每個時點是否持續供貨，仍未獲確證。站主若核准 Treatment，逐字稿仍須逐句查核並保留這些限定。這次沒有更改作者兩檔，也沒有付費製作或發布動作。
+
+## 第一輪：初版 HOLD 原始收據（歷史紀錄）
+
+初版覆核基準 commit：`74701ee98bbec626c8529a1bdab41052a6bdc40e`。當時第二代理從來源原頁重新判讀，不沿用撰企劃者的結論。**初版總判定：HOLD；此判定不適用於上方修訂版 bytes。**
 
 ## 輸入綁定
 
