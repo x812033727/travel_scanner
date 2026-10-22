@@ -75,8 +75,8 @@
 | c080309 | shot | Medium shot of an anonymous diner lifting a clear unmarked bottle over a small dish, gentle table light. | gentle tilt down |
 | c080310 | shot | Close shot of an anonymous diner focusing on a droplet at the lip of a plain bottle, soft side-window light. | gentle tilt up |
 | c080311 | shot | Medium shot of an anonymous diner tilting a generic bottle above a dish then beginning to return it upright, muted light. | slow push-in |
-| c080312 | shot | Close shot of an anonymous designer comparing a plain spout study and a shallow dish on a worktable, soft lamp light. | gentle pan right |
-| c080313 | shot | Medium shot of an anonymous diner pausing with a plain bottle above the table after pouring, diffused indoor light. | slow pull-back |
+| c080312 | shot | Close shot of an anonymous diner watching a single dark drop at the lip of a plain bottle above a clean table, soft lamp light. | gentle pan right |
+| c080313 | shot | Medium shot of an anonymous designer bringing a plain bottle spout close to eye level at a workbench, diffused indoor light. | slow pull-back |
 | c080314 | card | 後製單焦點卡：龜甲萬 2020 回顧「試作超過 3 年」；標 K1。 | 靜態卡／後製切入 |
 | c080315 | shot | Medium shot of an anonymous researcher closing a blank archival folder beside several generic bottle studies, soft desk light. | gentle pan left |
 | c080316 | shot | Close shot of a generic plain bottle spout holding one dark droplet above a white dish, soft overhead light. | gentle tilt down |
@@ -86,15 +86,15 @@
 
 | ID | 類型 | 完整插圖 prompt／後製單焦點卡 | 運鏡 |
 | --- | --- | --- | --- |
-| c080401 | shot | Close shot of an anonymous diner rotating a plain bottle upright over a clean dish after pouring, soft side light. | slow push-in |
-| c080402 | shot | Medium shot of an anonymous designer peering at a plain spout study on a workbench, focused desk-lamp light. | gentle pan right |
+| c080401 | shot | Close shot of an anonymous adult studying a plain bottle spout beside a blank gallery note, soft side light. | slow push-in |
+| c080402 | shot | Medium shot of an anonymous designer arranging several unmarked bottle studies on a workbench, focused desk-lamp light. | gentle pan right |
 | c080403 | card | 後製單焦點卡：MoMA 2015–16 展覽標籤稱「接近 100 個模型」；標 M1，不能當實物清單。 | 靜態卡／後製切入 |
 | c080404 | shot | Medium shot of an anonymous researcher viewing a few blank model outlines on paper, soft archival desk light. | slow pull-back |
 | c080405 | shot | Medium shot of an anonymous designer arranging several unmarked bottle studies while watching their spouts, mild indoor light. | gentle pan left |
 | c080406 | shot | Close shot of an anonymous adult pouring dark liquid through a plain spout into a small dish, soft window light. | gentle tilt down |
 | c080407 | shot | Medium shot of an anonymous diner turning a plain bottle upright after pouring over a small dish, diffused table light. | gentle tilt up |
 | c080408 | shot | Close shot of an anonymous diner rotating a plain bottle back over a dish as the flow stops, soft side light. | slow push-in |
-| c080409 | shot | Medium shot of an anonymous diner reaching for a napkin near a plain condiment bottle, gentle indoor light. | gentle pan right |
+| c080409 | shot | Medium shot of an anonymous designer examining the tip of a generic plain bottle at a workbench, gentle indoor light. | gentle pan right |
 | c080410 | card | 後製單焦點示意卡：泛用瓶嘴末端「向內收的切面」及單一液滴路徑；標 MoMA 後來說明 M1。不是原物精密剖面。 | 靜態卡／後製切入 |
 | c080411 | shot | Close shot of a generic plain spout turning upright with dark liquid moving away from its inner tip, soft light. | slow pull-back |
 | c080412 | shot | Medium shot of an anonymous designer pointing to a clipped edge on a generic bottle model, quiet studio light. | gentle pan left |
@@ -113,8 +113,8 @@
 | c080501 | card | 後製單焦點卡：龜甲萬回顧「1961 年／桌上瓶推出」；標 K1、K3。 | 靜態卡／後製切入 |
 | c080502 | card | 後製單焦點卡：1961 桌上瓶「150 mL」；標 K2a（官方容器史 PDF）。 | 靜態卡／後製切入 |
 | c080503 | shot | Medium shot of an anonymous diner taking a filled plain condiment bottle from a blank carton onto a table, mild daylight. | gentle tilt up |
-| c080504 | shot | Medium shot of an anonymous adult placing a small plain bottle beside a larger storage bottle, soft dining light. | slow push-in |
-| c080505 | shot | Wide shot of an anonymous adult moving a large plain bottle to a kitchen shelf while a small bottle sits on the table, diffused light. | gentle pan right |
+| c080504 | shot | Medium shot of an anonymous adult carefully refilling a small plain bottle from a larger unmarked bottle, soft dining light. | slow push-in |
+| c080505 | shot | Wide shot of an anonymous diner returning a refilled plain small bottle to the table beside dishes, diffused light. | gentle pan right |
 | c080506 | shot | Medium shot of an anonymous diner using a filled plain condiment bottle beside plates and cups, soft indoor light. | slow pull-back |
 | c080507 | shot | Medium shot of an anonymous gallery visitor considering a generic bottle silhouette behind glass, quiet gallery light. | gentle pan left |
 | c080508 | card | 後製單焦點卡：1993 年「Good Design 商品選定」；標 G1、K3，非銷售證明。 | 靜態卡／後製切入 |
@@ -135,15 +135,15 @@
 | c080602 | card | 後製單焦點卡：龜甲萬 2018 新聞稿所述「2018-03-30／日本立體商標註冊／第 6031041 號」；標 K3。 | 靜態卡／後製切入 |
 | c080603 | shot | Close shot of an anonymous adult examining an unmarked bottle silhouette without labels, diffused indoor light. | slow push-in |
 | c080604 | shot | Medium shot of an anonymous researcher reading a blank press-release sheet beside a bottle study, soft desk light. | gentle pan right |
-| c080605 | shot | Medium shot of an anonymous warehouse worker lifting a filled plain bottle from a blank carton, gentle workroom light. | slow pull-back |
-| c080606 | shot | Wide shot of an anonymous museum visitor viewing one generic bottle in a plain display case, mild gallery light. | gentle pan left |
+| c080605 | shot | Medium shot of an anonymous diner placing a plain condiment bottle on a quiet dining table, gentle room light. | slow pull-back |
+| c080606 | shot | Wide shot of an anonymous warehouse worker setting a single blank carton beside a row of similar cartons, mild workroom light. | gentle pan left |
 | c080607 | shot | Medium shot of an anonymous warehouse worker looking along a row of blank cartons with one plain bottle in hand, soft workroom light. | gentle tilt down |
 | c080608 | shot | Close shot of an anonymous researcher noticing a large blank shipment chart beside a generic bottle drawing, desk light. | gentle tilt up |
 | c080609 | card | 後製單焦點卡：龜甲萬公司數字「1961–2018 年 3 月／全球累計出貨逾 5 億瓶」；標 K3，不能稱銷量因果。 | 靜態卡／後製切入 |
 | c080610 | shot | Medium shot of an anonymous warehouse worker moving a plain carton away from a shelf, soft industrial light. | slow push-in |
-| c080611 | shot | Wide shot of an anonymous worker stacking blank cartons beside a plain bottle illustration, muted workroom light. | gentle pan right |
-| c080612 | shot | Close shot of an anonymous diner turning an unlabeled plain bottle to inspect its silhouette, soft table light. | slow pull-back |
-| c080613 | shot | Medium shot of an anonymous diner holding a generic wide-bottomed bottle by its narrow neck above a dish, mild indoor light. | gentle pan left |
+| c080611 | shot | Wide shot of an anonymous diner moving a plain bottle from a blank carton onto a dining table, muted indoor light. | gentle pan right |
+| c080612 | shot | Close shot of an anonymous diner looking at one dark droplet on the lip of a plain bottle after pouring, soft table light. | slow pull-back |
+| c080613 | shot | Medium shot of an anonymous diner holding a generic plain bottle above a dish with its unmarked silhouette visible, mild indoor light. | gentle pan left |
 | c080614 | shot | Wide shot of an anonymous adult using a small plain condiment bottle directly at the table, gentle window light. | gentle tilt down |
 | c080615 | shot | Medium shot of an anonymous diner pointing at a generic reused condiment jar on a home table, soft afternoon light. | gentle tilt up |
 | c080616 | shot | Medium shot of an anonymous host facing the viewer beside a plain condiment bottle and a blank end-screen frame, soft neutral light. | slow push-in |

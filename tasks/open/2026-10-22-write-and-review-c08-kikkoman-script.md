@@ -15,6 +15,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -58,3 +59,5 @@ scope:
 2026-10-22：舊版來源審查已保存為 `reviews/line-source-review-20261022-pre-rewrite.md`，頁首明確標失效。`npm run check:tasks` 通過（2076 張票，既有持有者／範圍警告）；`git diff --check` 通過。完整 `test:docs-videos` 因工作交接提前中止，沒有本輪完整結果；前輪 235／236 PASS 與其他影片語言流程的 Windows 子程序退出碼 3221226505 只作歷史背景，不當本輪綠燈。
 
 2026-10-22：另一代理 `codex-c08-independent-source-review` 重新直接核對 K1、K2a、K3、D1、M1、G1 的原發行者文件，對**現版** 92／92 句旁白、92／92 列畫面及 13／13 張資料卡判 **PASS（來源與畫面事實界線）**。新收據 `docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md` 綁 `script.md` SHA-256 `3EEB08795352580764527B9211C65C511A5D5705931335C0757857835FB145F4` 與 `visual-plan.md` SHA-256 `DB0122E5036F20FBD3A8D9543C545D877D477254937B8B9461A8C0F28BDFAA50`。空白問卷／帳冊／出貨圖僅能作資訊缺口示意，後製不可當已找到的原件。這一關不包含兩名旁白盲讀、獨立美術預檢、TTS 時長、付費或站主劇本核准；任一稿件改動即須重新綁定審查。
+
+2026-10-22：一位**只看旁白**的獨立讀者退回 `c080310–317`／`c080401–409` 的反覆倒取說明、`c080503–506` 的包裝轉工具重述、`c080605–611` 的出貨數字鋪墊，以及 `c080612–614` 可能暗示瓶嘴造成商標註冊的相鄰敘述。作者依此重寫，仍保留 92／92 ID、79 shot／13 卡、最多 2 連卡；K2a 的可再填充與 K3 的約百國均由原發行者文件直接支持，仍須獨立複核。現版 `script.md` SHA-256 `08539F264C5B228805AE9EF3E219E1DF81C10FE9853301A8441B5B25F510BF78`，`visual-plan.md` SHA-256 `04C554C4BDDEE9E37D7D76EA226CF0BA592E41D5365225D68F529F89F514F571`。先前 PASS 收據已存為 `reviews/line-source-review-20261022-pre-blind-fix.md` 並標失效；`line-source-review.md` 預留給新 SHA 的獨立查核。這位盲讀者的 HOLD 不是新稿的通過收據；需先重查來源，再找兩位新讀者只看旁白欄位重讀。
