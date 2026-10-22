@@ -721,6 +721,8 @@ test("the manga tier's rule reaches a one-off without a genre, and the default t
   assert.match(VISUAL_TIER_RULES.manga, /one character per picture/);
   // The owner's narrator choice of 2026-10-22 (Sulafat, the storyteller's register) rides in the tier's rule.
   assert.match(VISUAL_TIER_RULES.manga, /"performance" plan is the storyteller's[^.]*說書人的語氣，節奏快/);
+  // The sticker drama's hook cadence (the owner, 2026-10-22), which lint measures at 30 s.
+  assert.match(VISUAL_TIER_RULES.manga, /Every 20 to 30 seconds a line lands a hook[^.]*the lint warns on any stretch over 30 seconds/);
   // A one-off carries no genre: only a tier other than the default is sent, under its own heading.
   assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off" }), "");
   assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: "clips" }), "");

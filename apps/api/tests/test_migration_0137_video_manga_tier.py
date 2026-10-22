@@ -139,5 +139,5 @@ async def test_upgrade_widens_the_check_and_downgrade_narrows_it_again(
         run(connection, "upgrade")
         assert "manga" in _definition(connection)
 
-    async with engine.begin() as connection:
+    async with engine.connect() as connection:
         await connection.run_sync(exercise)

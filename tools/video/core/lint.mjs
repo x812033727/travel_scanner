@@ -8,7 +8,7 @@ import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { DEFAULT_CADENCE, isNarrated, narrativeProblems, TIGHT_CADENCE } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -515,6 +515,12 @@ export function lintVideo(doc, context = {}) {
     const story = narrativeProblems(doc, timeline, { minutes, cadence });
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
+  }
+  // The sticker drama (the manga tier, docs/videos/BINGE.md §畫面等級) is held by its narrator
+  // over stills, like a brand story, and keeps a hook inside every 30 s of its shots; the
+  // animated dramas keep their own craft untouched (the owner, 2026-10-22).
+  if (context.series?.visual_tier === "manga") {
+    for (const problem of shotHookProblems(doc, timeline, MANGA_HOOK_GAP_SECONDS)) warn(problem.path, problem.message, "narrative");
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
