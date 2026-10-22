@@ -18,6 +18,7 @@ scope:
   - docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-script-receipt.md
   - docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v6-coordinator.md
   - docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v7-script-receipt.md
+  - docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v8-n10-delta-receipt.md
 ---
 
 # Write C14 CamelBak source-bound script and visual plan
@@ -44,8 +45,8 @@ scope:
 
 ## How to verify
 
-`Get-FileHash` 核對採用企劃及作者稿 SHA；解析 v7 的 70 行口播與 JSON 70 鏡一對一、行末 S 來源存在、句長換算鏡頭 ≤12 秒、插圖時間比例 ≥70%、最長連卡 ≤3、冷開場後片頭 5 秒與片尾 21 秒；只把新「鉤」算作設問／揭露，不能把「回收鉤」再算成新鉤，並計算最大暫估空檔 ≤45 秒；`git diff --check`、`npm run check:tasks`。這些只核對草稿結構，不能代替 TTS、逐句事實審查、兩位盲讀或站主決定。
+`Get-FileHash` 核對採用企劃及作者稿 SHA；解析 v8 的 70 行口播與 JSON 70 鏡一對一、行末 S 來源存在、句長換算鏡頭 ≤12 秒、插圖時間比例 ≥70%、最長連卡 ≤3、冷開場後片頭 5 秒與片尾 21 秒；只把新「鉤」算作設問／揭露，不能把「回收鉤」再算成新鉤，並計算最大暫估空檔 ≤45 秒；`git diff --check`、`npm run check:tasks`。這些只核對草稿結構，不能代替 TTS、逐句事實審查、兩位盲讀或站主決定。
 
 ## Notes
 
-v1、v2 的純旁白投影各收兩位獨立讀者 HOLD，詳見兩份 `blind-narration-*-coordinator.md`；v2 逐句來源 PASS 與 v3 I01 字卡 PASS 都只綁舊檔案 SHA。v4、v5 獨立逐句與逐鏡覆核均為 HOLD（`reviews/independent-v4-source-visual-review.md`、`reviews/independent-v5-source-visual-review.md`）。v6 O02 來源／逐鏡窄修獨立 PASS；74 行 v6 純旁白兩位讀者一 HOLD、一 PASS，精確投影 SHA、分歧和限度記於 `reviews/blind-narration-v6-coordinator.md`。v7 因而縮短重複的咬合機制、把 1998 送件與 2000 授權講成同一件專利、將 2003 背水寄送直接對照兩年後瓶子文件、收緊管理／設計／通路段、在 N04 提問後立即交代 2012／2014 比例。新 SHA 需另派獨立審查與兩位新純旁白讀者。主線以 CamelBak 名下較早口器專利、2005 送件／2006 十月公開的水瓶專利**文件對文件引用**及 2006 二月現場展會報導建立橋，不推量產瓶採用專利每個零件；2003 寄送只作另一使用場合，不當首軍用或水瓶動機。1988 專利背景與商標 first-use 不替品牌回憶的同一場騎乘定年。2006 瓶類及 2014 CamelBak 毛銷售額 50%／37% 皆明示年度與分母，不寫現況或巡店單因果。所有圖像只規劃概念插圖，沒有商標、專利附圖或真人重建。詳細待審疑點在 `script-source-notes.md`。此票停在 `review`，由獨立覆核接手下一關。
+v1、v2 的純旁白投影各收兩位獨立讀者 HOLD，詳見兩份 `blind-narration-*-coordinator.md`；v2 逐句來源 PASS 與 v3 I01 字卡 PASS 都只綁舊檔案 SHA。v4、v5 獨立逐句與逐鏡覆核均為 HOLD。v6 O02 來源／逐鏡窄修獨立 PASS；74 行 v6 純旁白兩位讀者一 HOLD、一 PASS，精確投影 SHA、分歧和限度記於 `reviews/blind-narration-v6-coordinator.md`。v7 縮短重複咬合機制、明確同一專利 1998 送件／2000 授權、以 2003 背水場合接兩年後水瓶文件、收緊通路段並立即揭露 2012／2014 比例；`reviews/independent-v7-source-visual-review.md` 只在 N10 HOLD，因「水只在喝時才靠近嘴邊」超出 S2 肩上管與 S11 咬合閥證據。v8 只將 N10 改為人控制水何時從出口流出，沿用左右分屏概念鏡頭，重算 N10 紙上秒數，其他 69 行口播及鏡頭內容不改。新 SHA 須獨立 N10 聲畫重查及兩位新純旁白讀者。專利文件對文件引用不推量產 SKU 每個零件；2003 寄送不當首軍用或水瓶動機；1988 背景和商標 first-use 不替品牌回憶定年；2014 毛銷售額占比不是現況或巡店單因果。所有圖像只規劃概念插圖。詳見 `script-source-notes.md`。此票停在 `review`，由獨立覆核接手下一關。
