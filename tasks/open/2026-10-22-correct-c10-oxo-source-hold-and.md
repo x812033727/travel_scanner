@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-correct-c10-oxo-source-hold-and
 title: Correct C10 OXO source HOLD and image prompts
-status: review
+status: in-progress
 priority: P1
 area: docs
 owner: codex-c10-oxo-script
@@ -43,4 +43,17 @@ PowerShell 解析 `visual-plan.json`，以正則檢查每一條 `shot.prompt`、
 
 已把先前 `2026-10-22-write-c10-oxo-script-and-visual` 從 review 釋出為 open，解除重疊 scope 後認領本票；舊任務代表原稿交付歷史，不能把它的核對結果當新稿來源 PASS。修訂不涉及付費、TTS、站主核准、上架或發布。
 
-`npm run check:tasks` PASS。專屬機械檢查驗 80／80／80 ID 同序且無重號、71 `shot`、9 `stats`、最長連卡 2、`look`／書擋、逐鏡閱讀版與 JSON 文案一對一、全部圖片提示詞中禁用名稱 0 筆。獨立來源 delta 審查仍待新稿推送後重新綁 SHA，不由作者自判 PASS。
+上一輪 `npm run check:tasks` PASS。專屬機械檢查驗 80／80／80 ID 同序且無重號、71 `shot`、9 `stats`、最長連卡 2、`look`／書擋、逐鏡閱讀版與 JSON 文案一對一、全部圖片提示詞中禁用名稱 0 筆。這些舊 bytes 後來由獨立來源 delta 審查綁 SHA 判 PASS；不延伸到後續修訂。
+
+## 2026-10-22 口播盲讀 HOLD 後續修訂
+
+同一已認領的 C10 文件 scope 續處理 [Reader A 收據](../../docs/videos/story-everyday-oxo-c10/reviews/narrative-reader-v2-a.md)，而不是覆寫其判定。上一輪[獨立來源 delta](../../docs/videos/story-everyday-oxo-c10/reviews/source-visual-delta-v2.md)在舊 SHA 上 PASS，本輪修改後須再獨立查核，兩位口播盲讀也須綁新 SHA。
+
+- [x] c100508–513 讓胡蘿蔔展示有可聽的結果：按 2017 年品牌回顧，店家後來看見讓顧客現場試用的價值；不推試用造成銷售。
+- [x] c100601–612 回收開場馬鈴薯與商店問題，減少館方清單；c100313、402、407、501 換成可口述的說法。
+- [x] 80 句／80 鏡 IDs 對齊，逐鏡 JSON 與閱讀版同步，圖片提示詞保留無名稱規則；不改已採用企劃及來源矩陣。
+- [x] 專屬機械檢查與 `git diff --check` 通過，記錄新 SHA，推回草稿 PR #1689；將舊收據列為歷史版本，交獨立 delta 與新盲讀。
+
+本段仍只屬文字製作；未做 TTS、付費圖片／配樂或影片，也沒有站主稿件核准。
+
+本輪專屬檢查：80／80／80 ID 同序無重號；71 `shot`、9 `stats`、最長連卡 2；閱讀版逐鏡與 JSON 逐條相同；全部 `shot.prompt` 及共通契約禁用名稱 0 筆；`look` 與 5／21 秒書擋正確。`git diff --check` 通過。`npm run check:tasks` 這次 exit 1，原因是此工作樹已有其他兩張審查任務的未追蹤 `tasks/open` 孤檔，和已追蹤的 `tasks/done` 同 ID；本票沒有動那些檔案，也不將此記作本票結構 PASS。廣泛的過期認領／scope 重疊只見 warning。
