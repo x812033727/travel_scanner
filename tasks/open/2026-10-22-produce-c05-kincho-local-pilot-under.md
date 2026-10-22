@@ -36,7 +36,7 @@ C05 金鳥的 79 句劇本與逐鏡方向已由站主核准，另已核准本集
 - [x] 核對 PR #1675 的 script／visual、上游 Treatment／矩陣及整支估價雜湊；讀回工作目錄、STOP、既有媒體狀態。
 - [x] 寫入站主本集試片核准收據，先安全初始化專屬發音字典，再建立 `video.json`。
 - [x] lint、TTS／keyframes 乾跑，檢查張數與實際供應商報價；不以字數估計代替 480 秒。
-- [ ] 只送一輪正式 TTS；429 或 STOP 即記錄並停，不重送。成功後量正文、音訊查核，再決定圖片關。
+- [x] 只送一輪正式 TTS；429 或 STOP 即記錄並停，不重送。成功後量正文、音訊查核，再決定圖片關。
 - [ ] 在固定額度內做後續合成與 QA；保持草稿 PR、no-auto-merge，不上傳／發布。
 
 ## How to verify
@@ -50,3 +50,5 @@ C05 金鳥的 79 句劇本與逐鏡方向已由站主核准，另已核准本集
 劇本分支先把 `video.json` 從劇本票的 scope 移交本票，提交 `3e39aec702d17c9b6ba5211cb2b12bcef00cc3fc`，已推送 PR #1675。本票堆疊其上。C05 `video.json` 尚不存在，本集預設媒體工作目錄在檢查時尚不存在；全站／本集 STOP 均未見。上游四份內容雜湊與前次核准相同；估價 SHA-256 `73455BCB2E1A9A7A9E29023F6E39717E439DB20DCF27C1A02037868EFCD9DD36`。供應商曾對別集 C06 TTS 回 HTTP 429，C05 只許一輪正式 TTS；若 429 即停，不以本集重試測配額。
 
 2026-10-22 續做：C: 有約 19.3 GiB 可用，腳本、視覺、Treatment、來源矩陣及原估價 SHA 全數與核准收據一致。新增工具需要的 `brief.md` 後 lint 為 0 errors／13 warnings；本機 `approvals.json` 綁定 79 句劇本 SHA。TTS 乾跑 79 句、2,353 billable characters；keyframes 乾跑 63 個 shot、最多 189 次生成，當下圖片費上界約 US$2.55（未含評審與其他）。`media-status` 為本集 US$0.00。原估價漏算句子且仍寫核准前狀態，保留原檔 SHA 並新增 `production-quote-erratum.md`。本集正式 TTS 須待共用供應商上的 C06 一輪完成，避免同時擠壓額度；其後依 480 秒與 US$25 停線。詳見 `pilot-runlog.md`。
+
+2026-10-22 正式 TTS 79／79 完成；第 2–6 章純語音 484.74 秒，僅比 480 秒多 4.74 秒。第一輪音訊查核 79／79，24 句標記、exit 1；本機 Whisper 局部讀回證明至少兩句是 Gemini 轉錄誤報。等 C06 查核結束後，須用工具正式 `--second-opinion` 收據縮小錯誤範圍，才可決定窄範圍重錄；每次重錄後重算 480 秒。`media-status` 排除語音費，尚無整支支出確證。圖片、配樂與合成均未開始。詳見 `pilot-runlog.md`。
