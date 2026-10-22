@@ -27,7 +27,7 @@ scope:
 - [x] 逐句來源與書面畫面提示、lint 0 error／0 warning、作者自檢與未完成關卡交接。
 - [x] R1 獨立覆核 HOLD 的來源錨點、旁白及書面畫面 R2 差分修復；作者收據記精確 SHA。
 - [x] R12 精確稿經兩位全新隔離讀者的正式敘事關卡合併 PASS。
-- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張提示詞獨立書審 PASS，限額原圖首試後新增 5 KEEP／1 HOLD（`moon021`）；`moon028/030/031` 未畫。STOP 已恢復；全部 121 張插圖通過前不放行分鏡。
+- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張提示詞獨立書審 PASS，限額首試新增 5 KEEP；R21 `moon021` 獨立書審及原圖首試 PASS／KEEP。`moon028/030/031` 未畫，STOP 已恢復；全部 121 張插圖通過前不放行分鏡。
 
 ## Steps
 
@@ -134,6 +134,10 @@ R19 [來源資訊卡作者候選](../../docs/videos/curio-s49/review/r19-moon016
 
 R19 首章 [資訊卡獨立覆核](../../docs/videos/curio-s49/review/r19-moon016-source-card-independent.md) PASS 後，限額單次批次的[原圖驗收與停畫收據](../../docs/videos/curio-s49/review/r19-first-chapter-native-stop.md)列 `moon017–025` 九張：`moon018/022/023` KEEP，另外六張 HOLD；[逐張 SHA 與 judge](../../docs/videos/curio-s49/review/r19-first-chapter-native-inventory.json)已保存。來源層級及年代／成年模式達停止條件，`moon028/030/031` 未畫；STOP 已恢復，前十五張 KEEP 圖 SHA 不變。帳本 **US$0.8100／60 image／60 judge、0 預約**，本集 US$5.30 上限未破；新 manifest `d583679e42d56bcab00eb27e3d4e3df5aadeb4325e0aeac942b042ae8eba0994`。先由作者按共同錯誤修六景，獨立書審後再畫下一批；網站卡、真實聽審與完整影片仍未完成。
 
-R20 [六張 HOLD 原圖定點修復](../../docs/videos/curio-s49/review/r20-six-hold-prompt-author.md)已直接對照 R19 原圖與清單，僅改 `moon017/019/020/021/024/025` 提示詞及 claims 同列畫面說明；[逐字差分](../../docs/videos/curio-s49/review/r20-six-hold-prompt-structured-diff.json)可還原整檔 R19 雜湊。新 `video.json` SHA `b557ddb82e51608adf48052b3174ca8f72e309ee4476df630b3993da14afb8d9`、`claims.md` SHA `84e81619c5e57981515a79d4ec3b97c976a9eb72cfb5fc5e8dd2050765d59617`；劇本與既有語音文字未改。Lint 0／0、read-only dry-run ready；**尚無 R20 新圖，也無獨立覆核**。STOP 在位，帳本維持 US$0.8100／60 image／60 judge；先獨立核六景來源／年代及可逆差分，再決定限額重畫與未畫三景，不把待審的網站音訊卡或技術零旗標說成人耳批准。
+R20 [六張 HOLD 原圖定點修復](../../docs/videos/curio-s49/review/r20-six-hold-prompt-author.md)已直接對照 R19 原圖與清單，僅改 `moon017/019/020/021/024/025` 提示詞及 claims 同列畫面說明；[逐字差分](../../docs/videos/curio-s49/review/r20-six-hold-prompt-structured-diff.json)可還原整檔 R19 雜湊。新 `video.json` SHA `b557ddb82e51608adf48052b3174ca8f72e309ee4476df630b3993da14afb8d9`、`claims.md` SHA `84e81619c5e57981515a79d4ec3b97c976a9eb72cfb5fc5e8dd2050765d59617`；劇本與既有語音文字未改。Lint 0／0、read-only dry-run ready；此作者階段尚無 R20 新圖或獨立覆核。STOP 在位，當時帳本 US$0.8100／60 image／60 judge；不把待審的網站音訊卡或技術零旗標說成人耳批准。
 
 R20 [六景獨立書面覆核](../../docs/videos/curio-s49/review/r20-six-hold-prompt-independent.md)對精確 R20 SHA **PASS**；[六張原生圖停畫收據](../../docs/videos/curio-s49/review/r20-six-hold-native-stop.md)及[逐張雜湊／judge 清單](../../docs/videos/curio-s49/review/r20-six-hold-native-inventory.json)判 `moon017/019/020/024/025` **KEEP**、`moon021` **HOLD**。該景原圖有黑邊，雖選圖裁掉，機器 9／10 FAIL、manifest `needs_review=true`，人物側鬢缺席且成年辨識未穩；不得算分鏡通過。前十五張及 R19 `moon018/022/023` 的圖單項目不變；新 manifest SHA `2161ba818bbfc5b5aba103f6af761c8ad99f0ff448dabe846dba3b16da88c605`。帳本 **US$0.8910／66 image／66 judge、0 預約**，低於 US$5.30 上限，STOP 在位。先窄修 `moon021` 後重新獨立書審與受控原圖驗收；其餘章節、站台卡及全片影片仍待。
+
+R21 [作者單景窄修](../../docs/videos/curio-s49/review/r21-moon021-prompt-author.md)只改 `moon021` 提示詞和 claims 同列畫面欄；[可逆差分](../../docs/videos/curio-s49/review/r21-moon021-prompt-structured-diff.json)可逐字還原 R20 雙檔整體 SHA。新 `video.json` `e01e1d91bff2000cac2ec0e0dcef34b01c431b0259ac81ca914a52f664f11042`、`claims.md` `87447ad856fe06d68ccd02667fad2ab986ad7573d3789ceefa099b04554d1943`，劇本與語音文字未改，其他 128 景未改。直接看 R20 原圖後，提示詞加強成人側鬢／小鬍子／肩型及延伸至四邊的構圖；lint 0／0、read-only dry-run ready，未付費試 R21。STOP 在位、帳本仍 US$0.8910／66 圖／66 judge；待另一人按精確檔獨立覆核，再限額試圖並看原生 JPEG。網站卡及人耳音訊仍待站主。
+
+R21 [獨立書面覆核](../../docs/videos/curio-s49/review/r21-moon021-prompt-independent.md)依精確 SHA **PASS** 後，單景一次 [原生圖驗收](../../docs/videos/curio-s49/review/r21-moon021-native-stop.md) **KEEP**：[原圖 SHA 與 judge 清單](../../docs/videos/curio-s49/review/r21-moon021-native-inventory.json)記灰側鬢與鬍子使成人明確、無原黑邊／現代電燈／可讀字或真觀測證據；機器 10／10 PASS、`needs_review=false`。其餘 23 已畫景項目與選圖檔 SHA 不變；新 manifest `b854c37fe4a757f36392a03af5e43f95e844f1fe6ba26f5e965af84ba9d92248`。STOP 已恢復，帳本 **US$0.9045／67 image／67 judge、0 預約**，低於 US$5.30 上限。`moon028/030/031` 仍未畫；全片 121 張插圖逐張驗收前，勿因 CLI 通用提示就送 storyboard。網站卡、人耳審核及完整影片仍待。
