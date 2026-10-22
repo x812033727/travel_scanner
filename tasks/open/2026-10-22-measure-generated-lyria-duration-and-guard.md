@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-measure-generated-lyria-duration-and-guard
 title: Measure generated Lyria duration and guard music loop seams
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: codex-gpt6-lyria-duration-guard
@@ -98,6 +98,8 @@ passed; `npm run check:tasks` and `git diff --check` passed. The
 retained C03 MP3 was read only: FFmpeg full decode ended at 174.001633 s,
 ffprobe reported 174.001583 s and 4,182,166 bytes, while its old manifest still
 says `seconds: 600`. No vendor call or media rewrite occurred in that check.
+Draft PR #1669 is stacked on C03 #1652; the ticket moved to review after the
+push. Neither PR was merged or deployed.
 
 Existing request-only manifests may still look complete in `pipelineStatus`
 until `music` is rerun for cached measurement. `assemble` rejects them; status
