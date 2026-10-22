@@ -80,8 +80,8 @@ LOOK = {
 }
 PNG = b"\x89PNG\r\n\x1a\n" + b"\x00" * 30
 STANCE = "故事只講查得到出處的事，傳說與事實分開講。"
-# The tutorial's four questions word for word, as they were before brand stories existed: every
-# video that is not a story's is still asked exactly these.
+# The tutorial's four current questions word for word: every video that is not a story's
+# is asked exactly these. Sponsorship wording excludes only the free own-channel CTA.
 TUTORIAL_QUESTIONS = {
     "stance": (
         "This narration is written in keeping with the channel's stance and the owner's "
@@ -96,8 +96,13 @@ TUTORIAL_QUESTIONS = {
         "viewer what to buy, sell, take, sign or vote for)."
     ),
     "sponsored": (
-        "This narration reads as sponsored or promotional: it urges the viewer to buy or sign "
-        "up for a named product or service, or praises one without weighing it."
+        "This narration reads as sponsored or promotional: it urges the viewer to buy, join a "
+        "paid membership, or sign up for a named product or service, or endorses one without "
+        "weighing it. A free invitation to subscribe (訂閱) to the creator's own YouTube channel "
+        "does not count by itself; answer false if that is the only apparent promotion. Still "
+        "answer true if a paid offer, external sign-up, discount "
+        "code, third-party sponsor, or product or service endorsement appears anywhere in the "
+        "narration, even alongside that channel invitation."
     ),
 }
 STORY_ASKED = ["stance", "observation", "advice", "sponsored", "disparage"]

@@ -130,6 +130,25 @@ def test_the_policy_answers_become_a_verdict() -> None:
     assert not sold.passed and sold.note.endswith("沒過（業配高於 0.3）")
 
 
+def test_sponsorship_question_excludes_only_free_own_channel_subscriptions() -> None:
+    question = judging.policy_questions()["sponsored"]
+    instructions = question.instructions
+    assert (
+        "free invitation to subscribe (訂閱) to the creator's own YouTube channel" in instructions
+    )
+    assert "answer false if that is the only apparent promotion" in instructions
+    for paid_or_external_pitch in (
+        "paid membership",
+        "external sign-up",
+        "discount code",
+        "third-party sponsor",
+        "product or service endorsement",
+    ):
+        assert paid_or_external_pitch in instructions
+    assert "even alongside that channel invitation" in instructions
+    assert judging.cut_policy_questions()["sponsored"].instructions == instructions
+
+
 def _pick_payload(**changes: Any) -> dict[str, Any]:
     pick: dict[str, Any] = {
         "choice": "B",
