@@ -690,3 +690,25 @@ test("the slides planner, writer and listener read the tutorial flow rules after
   }
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(FLOW), false, `${stage} reads no flow rules`);
 });
+
+// The site refuses a stage run whose prompt is longer than STAGE_INSTRUCTIONS_MAX (120,000 in
+// apps/api/app/video_automation/schemas.py) before any model is called; that is how #1643's
+// teaching-flow rules stopped every tutorial writer and planner at 60,000 on 2026-10-21. Each
+// composed prompt keeps room for the owner's standing instructions (4,000) and a series or source
+// block, so a rule added later fails here instead of on the host.
+test("every stage prompt fits the site's limit with room for what the worker appends", () => {
+  const schemas = readFileSync(new URL("../../../apps/api/app/video_automation/schemas.py", import.meta.url), "utf8");
+  const limit = Number(/^STAGE_INSTRUCTIONS_MAX = ([0-9_]+)$/m.exec(schemas)?.[1].replaceAll("_", ""));
+  assert.equal(limit, 120_000);
+  const room = 20_000;
+  for (const [key, value] of Object.entries(INSTRUCTIONS)) {
+    if (typeof value !== "string") continue;
+    assert.ok([...value].length + room <= limit, `${key} is ${[...value].length} characters`);
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const stage of ["planner", "writer", "listener"]) {
+      const composed = instructionsFor(stage, format, "x".repeat(4000));
+      assert.ok([...composed].length + room <= limit, `${stage} (${format}) composed is ${[...composed].length} characters`);
+    }
+  }
+});

@@ -37,6 +37,12 @@ TopicWord =Annotated[str, StringConstraints(strip_whitespace=True, min_length=1,
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
+# The longest prompt a stage run takes. 60,000 until 2026-10-21, when #1643's teaching-flow rules
+# took the tutorial writer to 64,454 characters and the planner to 60,261, and every one of those
+# runs was refused before the model was called. Twice the old figure leaves room for the standing
+# instructions the worker appends; tools/video/automation/prompts.test.mjs keeps each prompt under
+# it with that room to spare.
+STAGE_INSTRUCTIONS_MAX = 120_000
 PromptFormat = Literal["slides", "drama", "shorts"]
 # What /video/automation/run takes: the writing stages, plus the model an experiment Short
 # tests (docs/videos/SHORTS.md §端點). ``subject`` is not one of ``Stage``: its model comes
@@ -580,7 +586,7 @@ class StageRunIn(StrictModel):
     slug: str = Field(pattern=SLUG_PATTERN)
     # The stage's prompt (the skill's references/prompts/*.md with the video's context) and
     # its inputs. The model is not the caller's to choose: the stage's setting decides.
-    instructions: str = Field(min_length=1, max_length=60_000)
+    instructions: str = Field(min_length=1, max_length=STAGE_INSTRUCTIONS_MAX)
     payload: dict[str, object]
     max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
     # The video's format, so the prompt is kept under the right heading for the owner to read;
