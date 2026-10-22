@@ -1,6 +1,6 @@
 # C16 Bialetti｜一只八角壺，怎麼把濃咖啡帶進家裡？
 
-狀態：**企劃草案；獨立差異覆核 HOLD，通過後才交站主審核**。這份 Treatment 不是逐字稿、逐鏡製作單、匯入批准或付費生成批准。主線沿用[《日用品的意外轉身》既定 C16 題目](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)：一家鋁製品工坊的家用咖啡壺，經過器具設計、戰後擴產與廣告，變成可在廚房反覆使用的日常物件。每個事實節點見[source-matrix.md](source-matrix.md)。
+狀態：**企劃來源差異覆核已通過，待站主審核方向；M16 人物身分與 M17 發明／權屬／訴訟仍為 HOLD，不寫成確定旁白；尚未核准劇本或付費製作**。這份 Treatment 不是逐字稿、逐鏡製作單、匯入批准或付費生成批准。主線沿用[《日用品的意外轉身》既定 C16 題目](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)：一家鋁製品工坊的家用咖啡壺，經過器具設計、戰後擴產與廣告，變成可在廚房反覆使用的日常物件。每個事實節點見[source-matrix.md](source-matrix.md)。
 
 ## 觀眾問題與包裝
 
