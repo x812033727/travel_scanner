@@ -13,7 +13,6 @@ depends_on: []
 scope:
   - docs/videos/story-everyday-kincho-c05/script.md
   - docs/videos/story-everyday-kincho-c05/visual-plan.md
-  - docs/videos/story-everyday-kincho-c05/video.json
   - docs/videos/story-everyday-kincho-c05/production-quote.md
   - docs/videos/story-everyday-kincho-c05/reviews/owner-script-approval.md
   - docs/videos/story-everyday-kincho-c05/reviews/line-review.md
@@ -43,8 +42,7 @@ scope:
 - [x] 2026-10-22 在同一工作樹修訂 88 句正文和逐句視覺節拍；約 1919／1922 年的商品時數、1940／約 1957 年工法與現行配方分期敘述，刪除舊稿重複揭曉；未製作媒體。
 - [x] 在 Treatment／矩陣 F08／F09 窄改後，按兩位真正盲讀的 REVISE 意見把上一版 88 句收束為 79 句：雙卷、慢燃各緊接問題回答，1940→約 1955→1957→現行順序，逐鏡一對一重排；未改舊收據。
 - [x] 重新做本版逐句來源查核與兩份真正盲讀；新版 Treatment／來源矩陣已獨立 PASS，站主窄幅重綁另待回覆。
-- [ ] 後續付費試片通過獨立核准後，以 TTS 實測正文純旁白至少 480 秒及逐鏡插圖畫面時間至少七成，不把此票的節拍數當作成片結果。
-- [ ] 修訂稿經站主審閱後，已先建立非付費整支估價提案；`video.json`、工具乾跑與 C05 單支付費額度仍待完成／核准。本步不授權上傳／發布。
+- [x] 站主核准的劇本／逐鏡與非付費整支估價已交給後續獨立試片票；本票不持有 `video.json`、TTS 或圖片階段。
 
 ## How to verify
 
@@ -77,3 +75,5 @@ scope:
 本版本機檢查：`npm run check:tasks` exit 0；`git diff --check` 無空白錯誤。`npm run test:docs-videos` 為 **235／236 通過、exit 1**，唯一失敗仍是未修改的 `docs/videos/imported-long-languages/runner.test.mjs:679`，Windows 子行程 `package-runtime.mjs` 退出 `3221226505`、沒有 stdout/stderr；這不是本集內容檢查 PASS。`tools/repo-hygiene.test.mjs` 在本分支舊版基底上找到上游 Treatment 票第 47 行的本機使用者路徑；該路徑已於 Treatment PR #1672 後續提交移除，須在本分支重接最新上游後重跑。這些測試結果不代替時長、圖片時間或站主決定。
 
 2026-10-22：站主在修訂版企劃另行採用後，回覆 PR #1675「核准目前劇本與逐鏡方向（建議）」。新收據 `reviews/owner-script-approval.md` 精確綁定 script `D49FE268109DDCE4BF6E44A3E75831467735DEC23E58D11BCC92065EE533288D`、visual `7908331CE21FE658321D8117D7429ECCA3C1F48C3D558E57B0885E5F26138CAE`，並指出上游兩份核准雜湊；此決定不含付費。`production-quote.md` 非付費提出最多 86 張（63 基本＋23 拆鏡預留）、每張最多三次、79 句旁白與一首配樂、整支 US$25 停線，仍待 C05 專屬核准。重新只計旁白欄，正文 71 句為約 1,993 字元，不是舊筆記 2,209 字元；250 字元／分鐘僅粗估 7:58，TTS 尚未合成，未能宣稱達 480 秒。未買圖；片頭片尾、提示詞、定時與工具乾跑待後續非付費完成。
+
+2026-10-22 試片票交接：站主已另行核准 C05 最多 86 張圖、每張最多三次、79 句旁白與一首配樂、整支 US$25 停線。此核准需要獨立雜湊綁定收據與試片票；`video.json` 從本劇本票 scope 移除，後續製作不得沿用本票的劇本核准冒充付費決定。PR #1675 仍保持草稿及 no-auto-merge；本票留 review 到合併。
