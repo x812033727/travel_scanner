@@ -32,7 +32,7 @@ The owner wants more distinct Curio history films with a complete long and Short
 - [x] Pin the GITenberg Brown/Stearns source by commit and raw SHA; distinguish Brown-mediated narrative from Stearns and Samuel May appended voices.
 - [x] Draft source boundaries and A/B outline, including website owner versus local delegated decisions, Shorts and Studio links.
 - [x] Independent feasibility receipt, frozen script/storyboard, claims, script export, lint and docs/task check; R3 source/visual audit passed 127/127 lines.
-- [ ] Parent receives exact hashes for independent source/visual and two fresh official blind readers; audio and art remain gated.
+- [x] Parent receives exact R4 hashes and an independent source/visual receipt; audio and art remain gated while two fresh official blind readers assess the same freeze.
 
 ## How to verify
 
@@ -53,9 +53,9 @@ Frozen preproduction hashes after R3 source/visual PASS: `video.json` `00cb544ad
 
 Two fresh readers each received only the same frozen R3 narration and 13 official questions. Their separate source ballots and CLI receipts are under `docs/videos/curio-s63/review/r3-isolated-blind-{a,b}.*`. The [formal OR merge](../../docs/videos/curio-s63/review/r3-formal-merge-audit.md) is **11/13 HOLD**: both readers answered No on `no_spoiler` (`s63009`) and `no_recap` (different repetitions at `s63015` and `s63029`); B alone marked `no_detour` at `s63016`. The official CLI replay exited 1 with exactly the two shared required failures. R3 script and source/visual PASS remain archived for their frozen hashes, but the episode cannot enter paid media. The author then made the narrow R4 revision recorded below; it needs fresh independent checks.
 
-## R4 author repair (2026-10-22 UTC)
+## R4 author repair and source review (2026-10-22 UTC)
 
-The [R4 author repair](../../docs/videos/curio-s63/review/r4-author-repair.md) changes only seven scene IDs to keep the box exit and Northern speech unresolved in the opener, remove duplicate age and household income facts, and replace the factory number list with Brown's work and ability to leave. Frozen R4 hashes: `video.json` `0f4cb372e473ed68c54de32fffa9449b98e372a920e7e01700927321eba31364`; `script.md` `85af6713b18b42ad1177063cc3dfc5b5665810d70334678114693460dd3161d7`; `claims.md` `5cbcca08555bf337269a4a9b572bb0c3bd5bd28d19662715f93d9ac151861617`. Story body excludes CTA and remains 2,690 Han characters, 8.28 minutes at 325 CPM; opener is 167 Han characters, about 31 seconds. Lint remains 0/0. **New independent R4 source/visual and two pristine official blind reads are pending.** No paid media may start on R4 until both pass.
+The [R4 author repair](../../docs/videos/curio-s63/review/r4-author-repair.md) changes only seven scene IDs to keep the box exit and Northern speech unresolved in the opener, remove duplicate age and household income facts, and replace the factory number list with Brown's work and ability to leave. Frozen R4 hashes: `video.json` `0f4cb372e473ed68c54de32fffa9449b98e372a920e7e01700927321eba31364`; `script.md` `85af6713b18b42ad1177063cc3dfc5b5665810d70334678114693460dd3161d7`; `claims.md` `5cbcca08555bf337269a4a9b572bb0c3bd5bd28d19662715f93d9ac151861617`. Story body excludes CTA and remains 2,690 Han characters, 8.28 minutes at 325 CPM; opener is 167 Han characters, about 31 seconds. Lint remains 0/0. The [independent R4 source/visual receipt](../../docs/videos/curio-s63/review/r4-source-visual-independent.md) passes 127/127 lines, their anchors and written visuals against these exact hashes. **Two pristine official blind reads are still pending.** No paid media may start on R4 until they pass.
 
 ## Notes
 
