@@ -71,6 +71,8 @@ R7 [作者窄幅修稿](../../docs/videos/curio-s63/review/r7-author-repair.md)�
 
 全新審核者已就上述**相同 R7 三檔雜湊**獨立核對九個新場景的逐句來源、資訊卡與書面畫面，並精確比對其餘 118 個場景；[R7 來源／畫面回條](../../docs/videos/curio-s63/review/r7-source-visual-independent.md)為 **PASS，無阻擋 ID**。回條記下 `s63067` 插圖「成箱」出自相鄰 B05 L1494 的非阻擋連結精度註。這只完成來源關，正式雙盲敘事仍未審；未開始付費媒體。
 
+[R7 正式雙人盲讀合併](../../docs/videos/curio-s63/review/r7-formal-merge-audit.md)經全新 A、B 原票、`panelVerdict`／`mergePanelVerdicts` 逐題 OR 與官方 CLI 隔離重播，為 **12／13 HOLD**；兩人都否決 `no_recap`，A 指 `s63125` 重提開箱與法律未解，B 指 `s63053` 重提妻兒已離開。A 另單獨否決 `payoffs`（`s63125` 尚未給安全問題新答案），正式合併此題由 B 的「是」通過但顧慮保留。R7 來源 PASS 不會解除敘事 HOLD；R8 作者須定向修兩處並再次取得獨立來源／畫面及兩位未讀 R7 的新盲讀。付費媒體仍封鎖。
+
 ## Notes
 
 R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal-merge-audit.md)為 **12／13 HOLD**：A 否決 `payoffs` 與 `no_recap`，B 只否決 `no_recap`；官方逐題 OR 與 CLI 重播共同只擋 `s63103` 的重複接收者資訊。作者須另凍結 R5，並取得新的獨立史料／畫面審核及兩位未讀 R4 的正式盲讀，才可解鎖付費媒體。
