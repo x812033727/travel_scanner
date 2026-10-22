@@ -24,6 +24,7 @@ from app.video_budget.models import (
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
+    UNRECONCILED_STORY_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
     utcnow,
@@ -68,7 +69,7 @@ class BudgetSummary:
 
 
 def is_pilot(slug: str | None) -> bool:
-    return slug in PILOT_SLUGS
+    return slug in PILOT_SLUGS or slug in UNRECONCILED_STORY_SLUGS
 
 
 def _amount(value: Decimal | None, *, allow_zero: bool, code: str) -> Decimal:
