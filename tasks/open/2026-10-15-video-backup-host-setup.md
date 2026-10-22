@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-video-backup-host-setup
 title: Connect the video backup rclone remote on the host and run the first backup
-status: in-progress
+status: open
 priority: P1
 area: ops
-owner: claude-opus-5-5-video-cloud-backup
-claimed_at: 2026-10-22T00:30:44Z
+owner:
+claimed_at:
 created_at: 2026-10-15T02:14:07Z
 completed_at:
 branch: claude/video-cloud-backup-issue-48a886
@@ -50,9 +50,9 @@ locked to the owner's `AI/備份` folder. Design: `docs/videos/BACKUP.md`.
 - [x] Owner steps (2026-10-22; the token never went into a chat).
 - [x] Deploy (#1595 is live), put the file on the host. Backups were already enabled in the
       admin card (2026-10-20 00:45Z, every series on the full tier).
-- [ ] The test answered and one round watched: blocked until the worker's rounds reach the
-      backup again (PR #1657 for the prompt the site refuses, and
-      `2026-10-22-back-up-videos-even-when-an` so a failing round no longer skips it).
+- [x] The test answered and one round watched (2026-10-22 01:25Z; since #1660 every round
+      backs up, `2026-10-22-back-up-videos-even-when-an`).
+- [ ] The first complete backup (with `final.mp4`), checked with `rclone check`, and its size.
 
 ## How to verify
 
@@ -100,3 +100,9 @@ docker compose -f docker-compose.prod.yml exec -T video-worker sh -c \
     and 62 videos on YouTube have no backup record.
   - Left: after #1657 and this branch deploy, check that the lock is reported, the test is
     answered, and the first two videos reach `done`; then measure sizes and close.
+- 2026-10-22 results: a round that finished at 01:25Z answered the owner's test ("已在 AI/備份
+  寫入並刪除測試檔", success) and backed up the two oldest; #1660 (02:02Z) backs up two a round
+  even at the draft cap. By 02:13Z six videos were `partial`, four `pending`, 53 not queued yet.
+  All six are old videos the tidy had already cleared: each lacks `final.mp4` (two also a dub),
+  13–14 files and about 140 KB each. 28 work folders on the host still hold `upload/final.mp4`,
+  so the first complete backup, and the sizes for 空間, come when the queue reaches them.
