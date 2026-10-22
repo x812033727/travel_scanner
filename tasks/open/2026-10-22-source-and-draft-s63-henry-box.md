@@ -47,7 +47,11 @@ git diff --check
 
 The fixed raw text must hash to `6d80216184aaf20433e04aa8d1b6920076211304fcede4a095da3ef5bd62ada2`. The `/tmp` file is disposable source cache, not a committed asset.
 
-Frozen preproduction hashes after R3 source/visual PASS: `video.json` `00cb544ad03d325f8eb666c3d037bf8a0aa3df1026c5c528ae54749a7d8e5090`; `script.md` `557427e904b22b40e8f326f9acd7947950c507c089ee6cee5dd4ea5be68dc37d`; `claims.md` `d1548e7232d4660da2518fac718dc1c00d45878a873d1ef90054e41f63769ee7`. The independent [R3 receipt](../../docs/videos/curio-s63/review/r3-source-visual-independent.md) counts 2,686 story-body Han characters excluding the CTA, or 8.26 minutes at 325 CPM, and a 168-character opener, about 31 seconds. `lint` reported 0 errors/0 warnings; docs-video tests passed 236/236. The official 13-question dual blind read and all paid media remain outstanding.
+Frozen preproduction hashes after R3 source/visual PASS: `video.json` `00cb544ad03d325f8eb666c3d037bf8a0aa3df1026c5c528ae54749a7d8e5090`; `script.md` `557427e904b22b40e8f326f9acd7947950c507c089ee6cee5dd4ea5be68dc37d`; `claims.md` `d1548e7232d4660da2518fac718dc1c00d45878a873d1ef90054e41f63769ee7`. The independent [R3 receipt](../../docs/videos/curio-s63/review/r3-source-visual-independent.md) counts 2,686 story-body Han characters excluding the CTA, or 8.26 minutes at 325 CPM, and a 168-character opener, about 31 seconds. `lint` reported 0 errors/0 warnings; docs-video tests passed 236/236. The subsequent formal blind result is recorded below; no paid media has been started.
+
+## R3 official blind HOLD (2026-10-22 UTC)
+
+Two fresh readers each received only the same frozen R3 narration and 13 official questions. Their separate source ballots and CLI receipts are under `docs/videos/curio-s63/review/r3-isolated-blind-{a,b}.*`. The [formal OR merge](../../docs/videos/curio-s63/review/r3-formal-merge-audit.md) is **11/13 HOLD**: both readers answered No on `no_spoiler` (`s63009`) and `no_recap` (different repetitions at `s63015` and `s63029`); B alone marked `no_detour` at `s63016`. The official CLI replay exited 1 with exactly the two shared required failures. R3 script and source/visual PASS remain archived for their frozen hashes, but the episode cannot enter paid media. The author will narrowly revise these lines as R4, keep at least eight minutes of body at 325 CPM, then seek a new independent source/visual check and two new pristine blind reads.
 
 ## Notes
 
