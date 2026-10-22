@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-c13-victorinox-owner-treatment-adoption
 title: Record C13 Victorinox owner treatment adoption
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-owner-decisions
