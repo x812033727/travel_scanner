@@ -24,7 +24,7 @@ scope:
 ## Definition of done
 
 - [ ] 正式站 `alembic current` 是 `0137_video_manga_tier`，後台「新的漫劇」看得到「動態漫畫」。
-- [ ] 站主在漫劇分頁把旁白聲音改成試聽頁選的那一組（試聽頁 `~/mokaair-work/videos/_audition/manga-narrator-20261022/index.html`，八個 Gemini 聲音 × 說書／沉穩兩種語氣）。
+- [x] 旁白聲音：站主 2026-10-22 聽過試聽頁（`~/mokaair-work/videos/_audition/manga-narrator-20261022/index.html`，八個 Gemini 聲音 × 說書／沉穩）選 **Sulafat・說書（快、尾音有力）**。Sulafat 就是漫劇現在的旁白聲音，不用改設定；說書的語氣寫進 manga 等級的撰稿規則（`VISUAL_TIER_RULES.manga` 要撰稿把 `voice.performance` 寫成說書人：節奏快、尾音收得乾脆有力、關鍵字加重、句間不拖），每集的 performance 會併進 Gemini 的 style，所以只有 manga 等級的片會這樣念。
 - [ ] 「新的漫劇」發起：原創都市爽文前提（不是參考片的小說）、風格 anime-2d、3 分鐘、畫面做法「動態漫畫」；圖片模型跟漫劇設定（現在是 minimax image-01）。
 - [ ] 劇本關卡：劇本沒有任何 `visual: "clip"`、每鏡一兩句、旁白帶故事；`clips --dry-run` 印 0 個要買的鏡頭。
 - [ ] 成片核准後，語言面板勾八語的 CC（配音先不勾：有角色台詞的漫劇配音是第二期）。
