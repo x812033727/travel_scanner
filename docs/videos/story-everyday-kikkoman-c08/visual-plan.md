@@ -56,7 +56,7 @@
 | c080212 | shot | Wide illustrative view of an anonymous adult arranging plain bottle shapes and a blank sketchbook on a worktable, mild desk light. | slow pull-back |
 | c080213 | shot | Medium shot of an anonymous adult turning blank portfolio pages beside a plain bottle on a worktable, soft indoor light. | gentle tilt down |
 | c080214 | shot | Medium shot of an anonymous diner setting a plain bottle between a plate and cup, small dish nearby, muted dining light. | gentle pan left |
-| c080215 | shot | Medium shot of an anonymous worker setting a filled plain tabletop bottle into a blank carton at a generic worktable, soft factory light. | gentle tilt up |
+| c080215 | shot | Conceptual medium shot of an anonymous designer comparing an unfilled generic container mock-up with an open blank carton mock-up at a plain worktable, soft studio light. | gentle tilt up |
 | c080216 | shot | Close shot of an anonymous designer examining a plain condiment bottle beside a blank sketchbook, mild desk-lamp light. | slow push-in |
 | c080217 | shot | Medium shot of an anonymous designer looking toward an ordinary kitchen faucet while holding a blank sketchbook, soft window light. | gentle pan right |
 | c080218 | shot | Wide shot of an anonymous adult setting a filled unmarked small glass condiment bottle directly on a table beside dishes, gentle afternoon light. | slow pull-back |
@@ -87,13 +87,13 @@
 | c080401 | shot | Close shot of an anonymous designer examining a generic bottle spout study beside a blank control sheet, soft desk light; not a historical prototype. | slow push-in |
 | c080403 | shot | Medium shot of an anonymous diner holding a plain bottle upright over a small dish after pouring, gaze fixed on a dark bead near the lip, quiet table light. | gentle pan left |
 | c080404 | shot | Close shot of an anonymous designer tracing the very tip of a generic plain spout study on a blank sheet, diffused indoor light. | gentle tilt down |
-| c080405 | card | 後製單焦點示意卡：泛用瓶嘴側面輪廓，只標「嘴尖末端向內斜小角」；標 MoMA M1。非原物精確剖面，不畫液體回流路徑。 | 靜態卡／後製切入 |
+| c080405 | card | 後製單焦點示意卡：泛用瓶嘴側面輪廓，只標「嘴尖末端向內斜」；標 MoMA M1。非原物精確剖面，不畫角度數值或液體回流路徑。 | 靜態卡／後製切入 |
 | c080406 | shot | Close side view of the very tip of a generic plain bottle spout over a dish, anonymous fingertips blurred in the background, soft side light. | slow push-in |
 | c080407 | shot | Medium shot of an anonymous diner moving a plain bottle away from a small dish after pouring, its lip above a clear table surface, mild window light. | gentle pan right |
 | c080408 | shot | Close shot of an anonymous designer inspecting the clipped edge of a generic plain bottle spout at a workbench, diffused indoor light. | gentle tilt down |
 | c080409 | shot | Medium shot of an anonymous adult tipping an ordinary plain ceramic teapot over a small dish, watching its lower lip, soft indoor light. | gentle pan left |
-| c080410 | card | 後製單焦點功能示意卡：泛用瓶嘴「上緣略長、下緣略短」；E1 榮久庵回述與 K4 公司受訪。非原型照片、非註冊外形精確剖面，不報角度或零滴保證。 | 靜態卡／後製切入 |
-| c080414 | shot | Wide shot of an anonymous worker setting a finished plain filled bottle among blank cartons at a generic worktable, calm factory light. | slow pull-back |
+| c080410 | card | 後製單焦點功能示意卡：泛用瓶嘴「上緣長於下緣」；E1 榮久庵回述與 K4 公司受訪。非原型照片、非註冊外形精確剖面，不標長度、角度或零滴保證。 | 靜態卡／後製切入 |
+| c080414 | shot | Conceptual wide shot of empty generic glass containers waiting beside an inactive plain filling station, with blank cartons nearby and no finished bottles, soft workshop light. | slow pull-back |
 | c080415 | shot | Medium shot of an anonymous shopper reaching for a small filled unmarked condiment bottle on a blank shelf, soft store light. | gentle tilt up |
 
 ### 5｜一九六一年，裝好醬油再上桌
@@ -128,6 +128,7 @@
 
 - `c080202` 的 1918 年 1.8 L 大瓶按 K2a；`c080204–c080206` 的大瓶轉注陶壺、`c080213` 的量產預裝題目、`c080303–c080305` 的握法及 `c080505–c080507` 的開蓋補充口，均歸 GK Report No.34 印刷頁 23–24 的**參與設計者事後回顧** R1；詳見 [來源補充](script-source-addendum.md)。匿名插圖只演示動作，不是 1950 年代特定家庭、酒屋或設計師的照片重建；不能推每戶都轉注、都補充、當年市占或後來銷售效果。
 - `c080212–c080219` 的公司先找設計師及榮久庵的開放構想，分別按 K4 公司受訪與 E1 本人 2009 年回述；`c080217` 的水龍頭僅是概念聯想，畫面不生成已製成的醬油水龍頭。`c080306` 的透明玻璃與紅褐色按 K4 公司設計說法，不推消費者效果。
-- `c080310`、`c080314–c080315` 與 `c080401–c080410` 的防滴與控流雙難題、近百模型與嘴尖末端小角按 MoMA M1 **後來展覽標籤**；E1／K4 只補上下緣的事後說法。口語稿不再使用葡萄酒比喻，亦不把嘴尖角度當作最終控流量測。`c080405`／`c080410` 只以後製泛用輪廓示意嘴尖，其他鏡不畫精確剖面、逐件原型、液體回流路徑或零滴漏。GK D1 的截口說法只補充減少滴液；R1 的「60 度／第 101 個模型」不進稿、不進圖。
+- `c080310`、`c080314–c080315` 與 `c080401–c080410` 的防滴與控流雙難題、近百模型與嘴尖末端向內斜按 MoMA M1 **後來展覽標籤**；E1／K4 只補上下緣的事後說法，不量化兩緣長度。口語稿不再使用葡萄酒比喻，亦不把嘴尖角度當作最終控流量測。`c080405`／`c080410` 只以後製泛用輪廓示意嘴尖，其他鏡不畫精確剖面、逐件原型、液體回流路徑或零滴漏。GK D1 的截口說法只補充減少滴液；R1 的「60 度／第 101 個模型」不進稿、不進圖。
+- `c080215` 僅畫空的通用容器與紙盒模型，表示「可量產、廠內預裝」的設計要求；`c080414` 僅畫等待裝填的通用流程。兩鏡是概念圖，不作當年工廠紀錄；1961 年 150 mL 與預裝上市商品的揭曉留在 `c080501`。
 - `c080501` 的 1961 年 150 mL 上市按 K1、K2a；`c080504–c080507` 的可再填與較寬補充開口，和第 4 章**倒取時蓋上的嘴尖**是兩個位置。大瓶回收再用與小瓶可再填不是同一物流。`c080512` 的 2005 年 MoMA 入藏是後來節點；`c080602` 的日本立體商標只按 K3 公司 2018 新聞稿，沒有另證 JPO 法律效果。1993 年設計選定與 2018 年累計出貨數字仍留在舊來源矩陣，不在本版故事堆疊。
 - 新增 E1／K4 的委託選擇、未實作構想與瓶口比較後，**時長停線仍維持**；來源有部分重疊，稿面字數不能證明正文達 480 秒。另須以真實語音與時間軸分別證明正文 480 秒、每鏡節拍與插圖時間占比；在站主劇本與付費核准前不購買旁白、圖像或配樂，不能靠停頓或重複素材填時間。
