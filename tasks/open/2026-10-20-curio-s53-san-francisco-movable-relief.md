@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s53-san-francisco-movable-relief
 title: Curio S53 San Francisco movable relief cottages feasibility
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-s53-r11-author
+claimed_at: 2026-10-21T01:49:57Z
 created_at: 2026-10-20T17:28:48Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -54,3 +54,13 @@ scope:
 2026-10-20 R3 [官方雙人盲讀合併](../../docs/videos/curio-s53/review/r3-official-panel-merged.md)為 **10／13，FAIL**：`scene_first`、`payoffs`、`no_detour`。R4 作者已補直接公園錨點並限縮帶孩子的寡婦；將前四句留在 1907 年六月同一廣場、第五句歸屬 1913 調查，刪去木材物流和多餘名冊／公寓旁枝，把未付地租的提問接到失訪 23 起已知扣屋，見 [R4 五檔 exact-hash 作者凍結](../../docs/videos/curio-s53/review/r4-author-freeze.md)。現為 **129／129** 口播與主張對齊、119 插圖／7 卡、16 loops，lint 0 errors／0 warnings；快估正文 **8:18.67**，但不是實際 TTS。作者沒有做獨立 PASS、政策、付費媒體或站台核准。下一位只按 R4 凍結 hash 重新核變動來源與書面畫面，另安排兩位此前未讀 R4 稿者只憑同一稿隔離做官方 13 題，未全過繼續 HOLD。
 
 2026-10-20 R10 狀態以 [verify-10.md](../../docs/videos/curio-s53/verify-10.md) 的精確五檔與私有音訊雜湊為準：獨立來源／書面畫面 PASS、隔離雙讀者官方 OR 13／13 PASS、政策 PASS；網站企劃／劇本卡皆 hand-pushed pending，R10 劇本卡取代舊 R5 卡。本機委派編輯選擇與網站待審分開記錄。語音首輪新合成 16 句、沿用 108 段；`s53110` 經兩輪單句重錄後，126／126 音檢零旗標；實測 50.33 秒開場、9:48.37 正文、17.07 秒旁白片尾。後續 [音訊卡及插圖預檢](../../docs/videos/curio-s53/review/r10-art-preflight.md)：音訊精確 timeline 卡已送出為 hand-pushed pending；116 景非付費估價約 US$1.57／最多 US$4.70，本片媒體已花 US$0／US$200 上限。網站全域 judge 剩 15 次、音樂剩 0 次，需開畫前重查額度。現有書面提示詞獨立來源／畫面鏈已過，生成圖仍要逐張驗收；按 S51／S49 順序未畫插圖、未做配樂／成片。仍需站主網站決定與聽音。
+
+2026-10-21 [下一批插圖非付費預檢](../../docs/videos/curio-s53/review/r10-next-art-paper-preflight.md)：全域額度讀回圖片餘 10,799、judge 餘 9,491、音樂餘 32，先前配額耗盡快照已過時；本集仍無付費圖／配樂，私有 `STOP` 已建立。`s53001/003/010` 的匿名人物提示詞雖有 R10 書面史料 PASS，卻缺成年／1900 年代服飾線索；參照 S38／S52 真實幼童漂移，先由作者做三景定點修補與可逆差分，交另一人獨立核對，再在建議的 US$4.78 畫圖加配樂上限內逐張試畫，原生 JPEG 不合史實即停。網站三卡與人耳仍待站主，不把技術零旗標當成網站核准。
+
+2026-10-22 [R11 三景作者定稿](../../docs/videos/curio-s53/review/r11-three-prompt-author.md)：只改 `s53001/003/010` 三個 prompt，R11 `video.json` SHA `df63d7d13d5f440dfbf190bf7c527a99f4eae3ee21aafae6b27aae23d7c253dd`，結構化差分可逐位元還原 R10；台詞與其他四檔、既有 126 句技術音訊不變，lint 0／0。按站主常設推薦委派記錄整集插圖、judge、配樂合計 US$4.78 停線，帳本仍 US$0，STOP 存在。[R11 獨立書面覆核](../../docs/videos/curio-s53/review/r11-three-prompt-independent.md) **PASS，僅限三景逐張原生圖試畫**：先 `s53001`，直接看原圖，沒有年齡／時代／動作矛盾才續 `s53003`、`s53010`；遇到機器誤收的不合史實圖立即停。網站三卡及人耳仍待站主，這不是完成分鏡或成片核准。
+
+2026-10-22 [R11 第一張原生圖停畫](../../docs/videos/curio-s53/review/r11-s53001-native-stop.md)：只買 `s53001` 1 圖／1 judge，原圖 SHA `af6f997ae433d7557c17ee3905210c94688d76f752203df56a2b7c6e1ccbeec6`。人物成年外觀與時代衣著尚可，但畫面變寫實住宅街與大房子，偏離 1907 廣場小型救災屋；judge 自己的 `style=0` 也判 9.71／10 FAIL。**人工 REJECT，STOP 已恢復**；帳本 US$0.0135／整集上限 US$4.78。`s53003`、`s53010` 沒有開畫。須先由作者把開放式廣場和低矮救災小屋規模定點修入 `s53001`，另人獨立紙面核對，再做最多一張定點試畫；網站、人耳、配樂、成片仍待辦。
+
+2026-10-22 [R12 `s53001` 作者定點修補](../../docs/videos/curio-s53/review/r12-s53001-author.md)：只改首景 prompt 為開闊公共廣場與裸地上一排低矮單層木造救災屋，保留成年住戶與 1907 年六月。R12 `video.json` SHA `3b5382c1b06f882936d5e61823efe834f51b1b9c0a858c57f0fc18309be01949`，差分逐位元還原 R11；123 景與所有口播未動，lint 0／0。STOP 存在、帳本仍 US$0.0135／上限 US$4.78；**待另一人獨立核此精確提示詞和史料**，通過後僅准再試 `s53001` 一張並檢查原圖。
+
+2026-10-22 [R12 獨立來源與書面畫面](../../docs/videos/curio-s53/review/r12-s53001-independent.md) **PASS，只限一張重試**；R12 可逐位元還原 R11，1913 年調查 L4970–5001 支持 1907 年六月廣場小屋仍在。[原生圖回條](../../docs/videos/curio-s53/review/r12-s53001-native-stop.md)：追加 1 圖／1 judge，原 JPEG SHA `1b586e6956669a3b6b521a9c7ed38acb43226e6c0eeead197e3f82bc9e483759`，出現明顯現代汽車、樓房與照片式街景；機器雖 9.29／10 PASS，但自身亦指出現代車／建築，**人工 REJECT、STOP 已恢復**。帳本 US$0.0270／US$4.78；下一步作者先收緊首景局部構圖並做可逆差分、另人紙面覆核，勿續 `s53003/010` 或整片插圖。網站卡、人耳、配樂與成片仍待辦。

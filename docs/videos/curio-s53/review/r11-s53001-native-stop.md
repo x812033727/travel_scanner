@@ -1,0 +1,15 @@
+# S53 R11 first native-image pilot — HOLD at `s53001`
+
+2026-10-22 UTC. **Human REJECT for `s53001`; `s53003` and `s53010` were not generated.** The [R11 independent paper review](r11-three-prompt-independent.md) permitted only a sequential three-shot pilot with a stop on the first material visual contradiction. This is that stop, not whole-storyboard review.
+
+## Exact run and private evidence
+
+- The paid call used unchanged R11 `video.json` SHA-256 `df63d7d13d5f440dfbf190bf7c527a99f4eae3ee21aafae6b27aae23d7c253dd`, `keyframes --slug curio-s53 --shot s53001 --takes 1`. The fixed R10 source and 126 spoken lines were unchanged. The prompt and 1K MiniMax quote were checked by `--dry-run` first.
+- The original 1280×720 JPEG is `/workspace/.video-work/curio-s53/keyframes/s53001-1.jpg`, SHA-256 `af6f997ae433d7557c17ee3905210c94688d76f752203df56a2b7c6e1ccbeec6`. I directly inspected that original. A copy and the manifest are preserved privately under `/workspace/.video-work/curio-s53/review/r11-native-first-stop/`; the manifest SHA-256 is `9be3babe009d468ddd95429a45f8306a6681f2def0f4e6361761e2d1077fc83e`.
+- The machine judge reports **9.71/10, `passed=false`, `needs_review=true`**. Its `style=0` finding is a photorealistic miniature background behind a 2D cartoon person. It proposes a flat 2D illustrated background. The other eight rubric scores are 10; those scores do not decide historical setting.
+- The person has adult grey hair and an early-1900s-looking coat/hat, so the age repair helped. But the setting reads as an ordinary residential street with substantial townhouses, lawn and a large detached house with a wide boarded opening. It does **not** convey a small wooden **relief cottage on a public square** as the 1907 opening narration and fixed 1913 survey require. The visual would lead a viewer to a materially different kind of dwelling and setting. Human **REJECT** independently of the machine's style failure.
+- The private ledger is now **US$0.0135**, 1 image, 1 judge, 0 music, 0 reservations, below the delegated cumulative **US$4.78** episode ceiling. `STOP` is again present after the scoped command's EXIT trap. The CLI could not render a contact sheet because this container's Playwright Chromium is unavailable; that does not affect direct original-JPEG inspection. The machine manifest's selected file and `needs_review` entry must not be treated as a final accepted frame.
+
+## Next boundary
+
+Keep `STOP` in place. The author should narrow `s53001` to an **open civic square and a row of low, plain relief cottages**, rather than a suburban house frontage, while preserving one adult, June 1907, one action and the R11 source boundary. A separate source/visual reader should check that exact prompt delta. Only then make at most one more targeted image attempt and inspect the native original, including age, cottage scale, public-square setting and consistent 2D look. Do not continue to `s53003`/`s53010` or the 116-shot queue on this first failed pilot. Human audio/site cards, music, branded long cut and actual YouTube end-screen links remain pending.
