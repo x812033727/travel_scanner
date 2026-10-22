@@ -1,6 +1,7 @@
 # C08 龜甲萬｜瓶嘴問題修訂獨立來源覆核
 
-- 判定：**PASS（僅限逐句來源與逐鏡事實界線）**。
+- **歷史收據，現版失效。** 下列 PASS 只綁 `ED7CDBFA…`／`D696E6A3…` 兩個舊稿 SHA；後續已修訂旁白與逐鏡，現版需另一名代理重新查核，不能把此收據當成現版通過。
+- 當時判定：**PASS（僅限舊版逐句來源與逐鏡事實界線）**。
 - 審查者：`codex-c08-delta-source-review`；2026-10-22。審查者未撰寫本次旁白或分鏡修訂。
 - 草稿 [PR #1681](https://github.com/x812033727/travel_scanner/pull/1681)；送審 head `5a353b1967d45d8acbc962adfe4886dd2b8a5a08`。
 - `script.md` SHA-256：`ED7CDBFAB7588F6D3B69A4FC6E4740EAAB349567CE9ADB80493EA0FB5FF14868`。
