@@ -25,14 +25,14 @@ PR #1681 author head 3c6408aa1 expands C08 from 68 to 84 narration/visual pairs 
 - [x] Reopen K5, K6, K7 and J1 primary materials and old sources relevant to changed claims.
 - [x] Audit all 84 narration and 84 paired visual rows, including 13 postproduction cards.
 - [x] Write a precise independent PASS/HOLD receipt tied to the three current SHA-256 hashes and author head.
-- [ ] Commit and push only this review ticket and unique receipt; update/read back draft PR body.
+- [x] Commit and push only this review ticket and unique receipt; update/read back draft PR body.
 
 ## Steps
 
 - [x] Inspect worktree, PR, adopted Treatment, source addendum, skills and active task scopes; claim only a unique receipt path.
 - [x] Independently inspect K5 printed p45, K6 release, K7 manager interview and J1 slide 15, plus K1/K2a/K3/MoMA/GK/K4 as needed.
 - [x] Pair every current script ID with its visual row, inspect source attribution, product chronology, drawing claims, hook and duration proxies.
-- [ ] Validate staged diff, commit/push, update PR body and read back head/draft/label and body.
+- [x] Validate staged diff, commit/push, update PR body and read back head/draft/label and body.
 
 ## How to verify
 
@@ -41,3 +41,5 @@ Compare this receipt with author input head 3c6408aa1e410fcfc3f721f28b40d90ef383
 ## Notes
 
 K5/K6/K7/J1 support the attributed 2007 cap, separate 2011 sealed product and trademark survey claims within their stated scope. Old v2 HOLD wording and filled-shot contradictions are repaired. Current overall HOLD is narrative/process line c080605 (and its visual c080605), paired visual c080513, source-addendum R1 ID misindex (c080213–214 instead of c080215), and the visual-plan header's incorrect 奇聞檔案局 series label. Preserve the full questionnaire caveat in notes, not voice-over. No paid media, author edits, merging or publication.
+
+The 84/84 receipt and this narrow ticket were committed/pushed in ee46ea1350c0ce3bcf0c5fecfc0bd2793ee83bf4. The draft PR #1681 body was updated and read back with an exact text match, the no-auto-merge label and that remote head. The focused staged diff check passed. npm run check:tasks remains red on the same six untouched, pre-existing untracked duplicate C08 task files; the policy-blocked removal was not retried.
