@@ -1,4 +1,4 @@
-# C08 龜甲萬｜奇聞檔案局逐鏡方向
+# C08 龜甲萬｜品牌故事逐鏡方向（奇聞檔案局畫面規則）
 
 **非付費逐鏡初稿，尚待獨立逐句查核、視覺預檢與站主審稿。** 每一列對應 [script.md](script.md) 的同 ID 旁白一句；本表不是已生成素材、正式 `video.json` 或付費製作核准。旁白實際秒數尚未合成，任何插圖張數與費用都不得由本表直接視為已核准預算。
 
@@ -69,7 +69,7 @@
 | c080301 | shot | Close shot of a generic unmarked glass condiment bottle standing on its broad base on a quiet dining table, soft side light. | slow push-in |
 | c080302 | shot | Medium shot of an anonymous diner lifting a plain bottle by its narrowed middle while a plate remains in frame, diffused daylight. | gentle pan left |
 | c080303 | shot | Close shot of an anonymous hand using thumb, index, and middle fingers to hold the narrowed body of a generic glass condiment bottle, gentle table light. | gentle tilt down |
-| c080304 | shot | Medium shot of an anonymous adult tilting a plain condiment bottle over a small dish, three fingers on its narrowed body, the other hand lightly supporting the pouring elbow, soft window light. | slow pull-back |
+| c080304 | shot | Medium shot of an anonymous adult tilting a plain condiment bottle over a small dish, three fingers on its narrowed body and two others relaxed away from the glass, soft window light. | slow pull-back |
 | c080305 | shot | Wide illustrative view of an anonymous diner lifting a generic condiment bottle between dishes at a low plain table, warm indoor light; no dated costume. | gentle pan right |
 | c080306 | shot | Medium shot of an anonymous diner checking the dark sauce level through a clear unmarked glass bottle without opening it, mild daylight. | gentle tilt up |
 | c080307 | shot | Medium shot of an anonymous diner tilting a plain bottle toward a dish while looking at its short spout, soft table light. | slow push-in |
@@ -112,7 +112,7 @@
 | c080510 | shot | Close shot of an anonymous adult's hand approaching the raised edge of a generic small bottle cap before opening it, no injury depicted, soft kitchen light. | slow push-in |
 | c080511 | shot | Conceptual close shot of an anonymous designer holding two plain cap studies, one with a protruding edge and one with a rounded edge, no exact product or date in image, gentle desk light. | gentle pan right |
 | c080512 | shot | Medium shot of an anonymous adult gently opening a generic cap to refill a plain table bottle, rounded edge visible without an injury scene, warm side light. | gentle tilt down |
-| c080513 | shot | Wide conceptual view of two separate plain containers on a dining table, one glass cruet and one flexible pouch, with an empty space for a future bottle, soft window light. | slow pull-back |
+| c080513 | shot | Close conceptual view of soy sauce in a plain open dish near a window, subtle translucent airflow shapes above the surface; no pouch, sealed bottle or new product shape appears yet, soft window light. | slow pull-back |
 | c080514 | card | 後製單焦點卡：龜甲萬 2011 新聞稿所述「2010 年 500 mL 密封軟袋裝」；標 K6，與 1961 玻璃瓶分開。 | 靜態卡／後製切入 |
 | c080515 | shot | Medium shot of a generic flexible condiment pouch with less liquid leaning against a plain kitchen counter while an anonymous adult notices it, no brand or exact package, soft daylight. | gentle pan left |
 | c080516 | shot | Medium shot of an anonymous cook with one hand occupied by a utensil, looking toward the cap of a generic container, no claim that all users need two hands, warm kitchen light. | gentle tilt up |
@@ -133,8 +133,8 @@
 | c080601 | shot | Medium shot of an anonymous adult studying one unlabeled generic glass cruet silhouette on a plain tabletop, soft studio light; no lineup, consumer test or registered exact shape. | slow push-in |
 | c080602 | card | 後製單焦點卡：龜甲萬 2018 年 4 月新聞稿所報「2018-03-30／日本立體商標註冊日」；標 K3，不寫未核對的 JPO 法律效果。 | 靜態卡／後製切入 |
 | c080603 | shot | Medium shot of an anonymous diner turning an unmarked generic glass condiment bottle in hand beside a plate, diffused daylight. | gentle pan right |
-| c080604 | card | 後製單焦點卡：JPO 人員 2025 案例摘要列「逾千人網路調查／約六成認出申請商標」；標 J1，不補畫問卷題型。 | 靜態卡／後製切入 |
-| c080605 | shot | Close shot of an anonymous researcher looking at one blank folded survey sheet beside a plain glass cruet silhouette, questionnaire contents hidden, no lineup of bottles or respondent scene, gentle desk light. | gentle tilt down |
+| c080604 | card | 後製單焦點卡：JPO 人員 2025 案例摘要列「逾千人網路調查／約六成認出申請商標外形」；標 J1，不補畫問卷題型。 | 靜態卡／後製切入 |
+| c080605 | shot | Conceptual view of one plain tabletop soy sauce bottle silhouette on an anonymous store shelf, with distant blank advertising panels and no logos, dates, survey sheets or reconstructed trademark shape, warm ambient light. | gentle tilt down |
 | c080608 | card | 後製單焦點卡：龜甲萬 2018 年新聞稿稱，截至 2018 年 3 月底國內外累計出貨逾五億瓶；標 K3，不寫零售銷量或瓶嘴因果。 | 靜態卡／後製切入 |
 | c080609 | shot | Close shot of an anonymous diner watching a tiny dark bead near the tip of a plain tabletop bottle just after pouring, small dish below, soft dining light. | gentle tilt down |
 | c080610 | shot | Medium shot of an anonymous diner examining the small pouring outlet on a plain condiment bottle at a table, gentle afternoon light. | slow push-in |
@@ -147,6 +147,6 @@
 - `c080310`、`c080314–c080315` 與 `c080401–c080410` 的防滴與控流雙難題、近百模型與嘴尖末端向內斜按 MoMA M1 **後來展覽標籤**；E1／K4 只補上下緣的事後說法，不量化兩緣長度。口語稿不再使用葡萄酒比喻，亦不把嘴尖角度當作最終控流量測。`c080405`／`c080410` 只以後製泛用輪廓示意嘴尖，其他鏡不畫精確剖面、逐件原型、液體回流路徑或零滴漏。GK D1 的截口說法只補充減少滴液；R1 的「60 度／第 101 個模型」不進稿、不進圖。
 - `c080215` 僅畫空的通用容器與紙盒模型，表示「可量產、廠內預裝」的設計要求；`c080414–c080415` 僅比較空容器、裝填流程與商品方案。兩鏡是概念圖，不作當年工廠或已上架商品紀錄；1961 年 150 mL 與預裝上市商品的揭曉留在 `c080501`。
 - `c080501` 的 1961 年 150 mL 上市按 K1、K2a；`c080504–c080507` 的可再填與較寬補充開口，和第 4 章**倒取時蓋上的嘴尖**是兩個位置。大瓶回收再用與小瓶可再填不是同一物流。`c080509` 的 2005 年 MoMA 入藏是後來節點。`c080511–c080512` 的瓶蓋圓角只按 K5 記載的歐洲子公司 2007 年度改良目的，不拍成已發生傷害，也不推全球瓶蓋全面改變。
-- `c080513–c080524` 是另一款密封容器的保鮮需求、2010 軟袋到 2011 年 200 mL 瓶型；K6 當年新聞稿與 K7 產品主管 2025 年回述分別標出，不拿新瓶的雙逆止閥、內袋、擠壓控量或九十天保鮮主張解釋 1961 年玻璃瓶。`c080519–c080524` 只能畫泛用功能概念，不能複製新瓶外形、把概念剖面當原廠工程圖，或畫出未實測的九十天保鮮結果。K7 的十個月、軟袋站立與設計線索是事後回述，不推兩款瓶子同一外形或原玻璃瓶帶動新瓶銷量。
-- `c080602` 的日本立體商標註冊按 K3 公司 2018 新聞稿與 J1 特許廳人員案例摘要；`c080604–c080605` 的網路調查只按 J1 的受試人數與辨識比例，沒有完整問卷，不畫成無字空瓶排隊讓受試者挑選。`c080608` **有** K3 所報截至 2018 年 3 月底國內外累計出貨逾五億瓶；該數字不是零售量或設計帶動銷量，也不和 J1 的逾四億五千萬瓶未知截止日口徑相加。沒有另證 JPO 原始案卷或權利範圍。
+- `c080513–c080524` 是另一款密封容器的保鮮需求、2010 軟袋到 2011 年 200 mL 瓶型；K6 當年新聞稿與 K7 產品主管 2025 年回述分別標出。`c080513` 只畫空氣接觸醬油的概念，不提前揭露軟袋或新瓶；不拿新瓶的雙逆止閥、內袋、擠壓控量或九十天保鮮主張解釋 1961 年玻璃瓶。`c080519–c080524` 只能畫泛用功能概念，不能複製新瓶外形、把概念剖面當原廠工程圖，或畫出未實測的九十天保鮮結果。K7 的十個月、軟袋站立與設計線索是事後回述，不推兩款瓶子同一外形或原玻璃瓶帶動新瓶銷量。
+- `c080602` 的日本立體商標註冊按 K3 公司 2018 新聞稿與 J1 特許廳人員案例摘要；`c080604` 的網路調查只按 J1 的受試人數與辨識比例，沒有完整問卷，不畫成無字空瓶排隊讓受試者挑選；`c080605` 只用泛用貨架和空白廣告版面呈現 J1 所列長期使用與宣傳，不拍查核者或問卷。`c080608` **有** K3 所報截至 2018 年 3 月底國內外累計出貨逾五億瓶；該數字不是零售量或設計帶動銷量，也不和 J1 的逾四億五千萬瓶未知截止日口徑相加。沒有另證 JPO 原始案卷或權利範圍。
 - 新增有來源的 2007–2011 使用節拍後，**時長停線仍維持**；稿面字數不能證明正文達 480 秒。另須以真實語音與時間軸分別證明正文 480 秒、每鏡節拍與插圖時間占比；在站主劇本與付費核准前不購買旁白、圖像或配樂，不能靠停頓或重複素材填時間。

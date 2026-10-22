@@ -15,6 +15,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/script-source-addendum.md
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v3-84-line-revision.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/author-v4-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -53,7 +54,11 @@ scope:
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
-## Current checkpoint (2026-10-23 v3)
+## Current checkpoint (2026-10-23 v4)
+
+獨立 v3 逐句／逐鏡收據 `reviews/line-source-visual-review-20261023-84-v3.md` 綁前一版雜湊，判 **HOLD**：`c080513` 圖片提前揭露軟袋、`c080605` 把缺問卷的查核過程說進正文並畫研究者、R1 的預裝需求索引寫錯、畫面表標題誤把品牌故事寫成奇聞檔案局。兩位真正只讀旁白的 v3 盲讀雖總評 PASS，也指出 `c080304/308/409–410/513/519/525/604–611` 的口語或故事接力可改善。作者在 v4 修掉這些相鄰問題，保留 84／84 同序 ID、71 shot／13 card；新雜湊與逐項改動見 `reviews/author-v4-84-line-revision.md`。v3 收據及盲讀**不移用**；v4 仍須獨立來源／逐鏡複核、兩位只讀新版旁白的盲讀與獨立視覺預檢。沒有 TTS 正文時長、站主劇本核准或付費核准，持續停在非付費階段。
+
+## Previous checkpoint (2026-10-23 v3)
 
 站主採用的 1961 年「預裝瓶直接上桌」主線保留。新讀到 K5 2008 集團報告、K6 2011 同期新品新聞稿、K7 2025 產品主管回述與 J1 特許廳人員案例簡報後，作者把 2007 年歐洲瓶蓋圓角、2010 軟袋的站立問題、**另一款** 2011 年 200 mL 密封瓶，及 2018 形狀註冊提出的調查資料，接在同一個「餐桌怎麼用」問題後；沒有把新瓶寫成 1961 原瓶改版。獨立 v2 查核留下的 `c080406`、`c080415`、`c080605` 和 2018 出貨附註也一併修正。現在為 84／84 同序 ID，71 shot／13 card、最多一張連卡，正文第 2–6 章約 1,952 個 CJK 字（稿面代理）；詳細 SHA 與來源界線見 `reviews/author-v3-84-line-revision.md`。**新稿仍未獨立逐句來源與畫面 PASS、兩位新盲讀、站主稿件核准或實測 480 秒**。先前所有舊稿 PASS 均不適用；無付費、上傳、發布或合併。
 
