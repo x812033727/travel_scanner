@@ -2,13 +2,16 @@
 // zh-TW.srt, thumbnail.png (the season key art, one for every episode and language). A compilation
 // also gets its other languages for `import --languages`: description.<l>.txt (title line, blank
 // line, description, from .youtube.json's localizations), <l>.srt and dub.<l>.m4a.
-//   node prep-import.mjs <n|first-last> ...
+//   [SUFFIX=-v2] node prep-import.mjs <n|first-last> ...
+// SUFFIX names a compilation's new site entry, for a cut that replaces one already on YouTube
+// (a YouTube video's file cannot be replaced, so the new cut is a new video).
 import { existsSync, linkSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 const R = fileURLToPath(new URL("../../../../../../../", import.meta.url)).replace(/[\/]$/, "");
 const V = process.env.VIDEO_WORKDIR ?? `${process.env.HOME ?? process.env.USERPROFILE}/mokaair-work/videos`;
 const OUT = `${V}/zhong-tian-qu-qi-import`;
 const THUMB = `${V}/zhong-tian-qu-qi-compilations/season1-thumb.png`;
+const suffix = process.env.SUFFIX ?? "";
 const pad = (n) => String(n).padStart(3, "0");
 const link = (a, b) => { if (existsSync(b)) rmSync(b); linkSync(a, b); };
 for (const arg of process.argv.slice(2)) {
@@ -17,9 +20,9 @@ for (const arg of process.argv.slice(2)) {
   if (b) {
     const C = `${V}/zhong-tian-qu-qi-compilations/e${pad(a)}-${pad(b)}`;
     const yt = JSON.parse(readFileSync(`${C}.youtube.json`, "utf8"));
-    dir = `${OUT}/zhong-tian-qu-qi-e${pad(a)}-${pad(b)}`; mp4 = `${C}.mp4`; srt = `${C}.zh-TW.srt`;
+    dir = `${OUT}/zhong-tian-qu-qi-e${pad(a)}-${pad(b)}${suffix}`; mp4 = `${C}.mp4`; srt = `${C}.zh-TW.srt`;
     // tags and category_id go into the upload package (`import --publish`).
-    meta = { slug: `zhong-tian-qu-qi-e${pad(a)}-${pad(b)}`, title: yt.title, description: yt.description, category: "drama", note: `種田娶妻打天下 第${a}–${b}集合集（3D 國漫版，海螺手工製作）`, tags: yt.tags, category_id: yt.category_id };
+    meta = { slug: `zhong-tian-qu-qi-e${pad(a)}-${pad(b)}${suffix}`, title: yt.title, description: yt.description, category: "drama", note: `種田娶妻打天下 第${a}–${b}集合集（3D 國漫版，海螺手工製作）`, tags: yt.tags, category_id: yt.category_id };
     langs = Object.entries(yt.localizations ?? {}).map(([l, t]) => ({ l, text: `${t.title}
 
 ${t.description}
