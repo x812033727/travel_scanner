@@ -1,0 +1,28 @@
+{
+  "revision": "R24",
+  "reason": "moon031 three native originals and two prompt repairs exhausted; source-qualified big card fallback",
+  "files": {
+    "video.json": {
+      "before_sha256": "fb144f9e2af0b6c59b08c477a149b21af6291af8b0b328934d96d87e1c3fe0b8",
+      "after_sha256": "98e00e94079f0725068ecdc44be124934fc69540c0d9be62a0c8340d2222d13c",
+      "before": "      \"id\": \"moon031\",\n      \"template\": \"shot\",\n      \"data\": {\n        \"prompt\": \"Medium close shot in an imagined 1835 New York setting, one fully grown grey-haired middle-aged reader with sideburns and a moustache in a high-collar coat looks puzzled at a tiny unfilled two-dimensional ink contour beside him: two thin parallel lines joined by small open oval ends, a flat graphic mark on a plain blank field; soft daylight, the blank field fills all four edges without a border\",\n        \"camera\": \"pan left\",\n        \"visual\": \"still\"\n      },",
+      "after": "      \"id\": \"moon031\",\n      \"template\": \"big\",\n      \"data\": {\n        \"text\": \"鏡筒重三千磅\",\n        \"kicker\": \"1835 年虛構報導\",\n        \"sub\": \"1859 重印本所載，非器材紀錄\"\n      },"
+    },
+    "claims.md": {
+      "before_sha256": "0071e502905c7669a6bfb70c406921d52e82d5fa54a3e4c8ffd75240eb157809",
+      "after_sha256": "e6a8115bc1b9c14078e99059b836cb6d15027f67fe073671de1daa45d9d54190",
+      "before": "Medium close shot in an imagined 1835 New York setting, one fully grown grey-haired middle-aged reader with sideburns and a moustache in a high-collar coat looks puzzled at a tiny unfilled two-dimensional ink contour beside him: two thin parallel lines joined by small open oval ends, a flat graphic mark on a plain blank field; soft daylight, the blank field fills all four edges without a border。旁白以「文章說」限定重量；背景上的平面墨線只暗示報導裡的鏡筒概念，不是可核原報圖、實體器材或可讀文件。",
+      "after": "大字卡「1835 年虛構報導／鏡筒重三千磅／1859 重印本所載，非器材紀錄」；只標 1859 重印本所載 1835 報導關於赫歇爾父親望遠鏡的說法，非已核實實物、設計圖或原報影像。"
+    }
+  },
+  "script_sha256": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+  "changed_scene_ids": [
+    "moon031"
+  ],
+  "body_shots": 120,
+  "body_cards": 8,
+  "body_shot_share": 0.9375,
+  "max_consecutive_cards": 2,
+  "paid_calls": 0,
+  "reversible": true
+}
