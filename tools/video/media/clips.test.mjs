@@ -17,7 +17,7 @@ import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, s
 import { cacheFile, readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
 import { FIX_ARROW } from "./keyframes.mjs";
-import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
+import { importedTotals, ledgerFile, readLedger, reserve, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -789,6 +789,14 @@ test("a missing manifest and damaged cache cannot silently re-buy paid music", a
   assert.match(second.out.stderr, /restore or reconcile the paid file/);
   assert.equal(site.state.music.length, 1);
   assert.equal(readLedger(box.workdir).totals.music, 1);
+  rmSync(cacheFile(box.workdir));
+  const ledger = readLedger(box.workdir);
+  ledger.entries.find((row) => row.kind === "music").status = "failed";
+  writeFileSync(ledgerFile(box.workdir), JSON.stringify(ledger));
+  const third = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], third.ctx), EXIT.owner, third.out.stderr);
+  assert.match(third.out.stderr, /already paid or reserved/);
+  assert.equal(site.state.music.length, 1, "a charged job later marked failed still forbids silent repurchase");
 });
 
 test("music under illustrated slides comes from the owner's track, with no drama guard", async () => {

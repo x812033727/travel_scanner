@@ -72,7 +72,7 @@ async function retainedGeneratedTrack(workdir, key) {
     }
     return { file: entry.file, sha256: entry.sha256, key, reused: true };
   }
-  const paid = readLedger(workdir).entries.some((row) => row.kind === "music" && row.status !== "failed");
+  const paid = readLedger(workdir).entries.some((row) => row.kind === "music" && (row.status !== "failed" || Number(row.cost_usd) > 0));
   const pending = readJobs(workdir).jobs[key];
   if (paid && !pending) {
     throw new MediaError("a music request was already paid or reserved, but no retained file or pending job is bound to this request; reconcile its cache and ledger before another purchase", { who: "owner" });

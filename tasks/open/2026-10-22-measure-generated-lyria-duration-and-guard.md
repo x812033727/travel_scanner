@@ -109,6 +109,7 @@ generated track and infers the cut length from the saved timeline when its
 caller does not pass one. The `music` command validates a retained manifest or
 cache entry before entering `Stage.music`; a prior paid or reserved music row
 without a recoverable artifact or pending job stops for owner reconciliation.
+This includes a later `failed` row that still carries a nonzero vendor charge.
 Tests cover missing cache, corrupt paid bytes, changed request key and the dub
 caller shape; 53 focused media/assembly tests pass. The illustrated dub fixture
 hit a transient Windows `EPERM` while renaming its unrelated speech journal in
