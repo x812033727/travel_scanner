@@ -1,32 +1,34 @@
-# C13 Victorinox｜作者逐字稿交接收據
+# C13 Victorinox｜作者定向修訂收據（待獨立重審）
 
-**狀態：作者交稿；沒有授予逐句來源 PASS、盲讀 PASS 或站主逐字稿採用。** 2026-10-23（Asia/Taipei）。範圍只含下列逐字稿、來源筆記與逐鏡規劃；沒有生成、配音、付費、匯入、上傳、合併或發布。
+**狀態：作者 v2 交稿，不授予逐句來源、逐鏡、盲讀、站主或付費 PASS。** 2026-10-23（Asia/Taipei）；作者 `codex-c13-script`；同一個 [draft PR #1693](https://github.com/x812033727/travel_scanner/pull/1693)。
 
-## 輸入綁定
+## 已採用輸入與本版輸出
 
-| 已採用輸入 | SHA-256 |
+| 檔案 | SHA-256 |
 | --- | --- |
-| `treatment.md` | `A4A47F06F52490B4044267405445F31AC31EF7FB2C19575D59511D5BE0C57F20` |
-| `source-matrix.md` | `295A7793DE618FEF714FA530F78592527EF77E82BAA38EE5594745B8386641D1` |
+| `treatment.md`（站主已採用，未改） | `A4A47F06F52490B4044267405445F31AC31EF7FB2C19575D59511D5BE0C57F20` |
+| `source-matrix.md`（站主已採用，未改） | `295A7793DE618FEF714FA530F78592527EF77E82BAA38EE5594745B8386641D1` |
+| `script.md` | `FC538ED72ED024CF3F832D9CD1232C674C9C26F31039E06A3C762EADDEB25E10` |
+| `script-source-notes.md` | `DE87D4F65F50B608C977A1B25A3321FA7D2C9CE8861CC78AD8987492DB5CF043` |
+| `visual-plan.md` | `E6AEEDE4D4CC5573E9C6C6C74684378BC10E84FAD7F387960C3AFB0D6112A303` |
+| `visual-plan.json` | `9BFE558EFCCFD7C37357A00973EE9D42007897990E861CEE65C510F73D84DA86` |
 
-站主 Treatment 採用憑據為 `reviews/owner-treatment-adoption.md`；本次未改動上述兩檔或憑據。
+站主 Treatment 採用憑據為 `reviews/owner-treatment-adoption.md`；本次沒有改它、Treatment 或矩陣。以上四個作者檔案是新的獨立審查對象，舊審查雜湊不轉簽。
 
-## 本次交付雜湊
+## 對獨立 HOLD 的定向回應
 
-| 作者檔案 | SHA-256 |
-| --- | --- |
-| `script.md` | `3396B18F8E6C2FE0ED64AB8B25A30E249D025C6BB26A7165259C14AC1BFBD7E3` |
-| `script-source-notes.md` | `9AC5E0879AEB153CA2C5102E1791DED69BC532B16A71139605FF9B189F92CC2A` |
-| `visual-plan.md` | `E191433B42FE743A938CA4A95AE06CE86CA92C276D4C74EC5301936AE17F054E` |
-| `visual-plan.json` | `38F8D379E5DD788D05608310F89F5FB2F9E4CA33EED1871B6C0B7CD88FF9F9B3` |
+獨立 [script/visual 審查](independent-script-visual-review.md) 在舊作者稿上判 HOLD；本輪只修它指出的 T03 來源鏈、61 個插圖 prompt 和 E03／T03 字卡。
 
-## 作者自檢與未通過的通用檢查
+- T03 原稿聲稱不同訪談的人數有差異，但其行末只有 S6，無法支持跨訪談比較。現在 T02–T03 只轉述 [Elsener 本人多年後訪談](https://www.swissmadebusiness.com/brands/victorinox) 說的**部分員工暫借附近企業、約四到八個月、避免裁員**；不在旁白報精確員工人數，也不主張不同訪談衝突。T04 不把借調說成獲利量化證明；來源筆記另說明它不是當年人事名冊。
+- E03 卡只顯示 [Swissinfo 2002/1/29 綜合報導](https://www.swissinfo.ch/eng/archive-banking-fintech/sales-blunted-at-victorinox/2511740) 所述的 2001 年第四季刀具跌幅；E02 口播仍另歸屬 1/25 訪談的十月幅度，兩個時間窗保持未定論。T03 卡只顯示「CEO 多年後回憶｜曾短期借調員工」。兩卡不再露 `S5`／`S10` 等內部代號或「不鎖定人數」這類編輯指令。
+- 61 個插圖 prompt 均移除 `cute-mystery` 字樣，系列畫風只保留精確 `look: {"preset":"cute-mystery"}`；H01 也移除額外 `papercut` 風格詞。鏡頭仍是泛用概念插畫，沒有商標、真人肖像、品牌商品複製或 9/11／機場現場重建。
 
-- 機械核對：六章、75 句、2,718 個口播字元；75 個唯一鏡頭，行 ID 一對一，所有句子均有 S/M 標記。依字數暫排正文 599 秒（未實測）、總長 625 秒；插畫 490／599 秒＝81.8%，最長連續字卡 2，暫排最大具體鉤子間距 43 秒（含 5 秒片頭與末段）。`look.preset` 為 `cute-mystery`，片頭 5 秒、v4 片尾 21 秒另列。
-- 歷史邊界：1945 是美軍 Post Exchange，不補造成民航機場；1989 北美手錶及 1999 授權旅行用品先於 2001；7 月 30 日合營宣布與 11 月營運不同；瑞士 AG 不等於美國 SABI；S10 十月約 30% 與 S5 Q4 近三分之一並列未定論；2002 年四項產品／傳單狀態分開；員工借調明說為 CEO 後來回憶；2005／2014／2017 不強接單一因果。
-- `npm run check:tasks` **exit 1**：兩個既有未追蹤的 `tasks/open` ghost 檔與已完成任務 ID 重複。本任務未刪改或暫存它們。
-- `npm run test:docs-videos` **exit 1**：137 項中 131 pass、6 fail；失敗由本工作樹未安裝 `node_modules`、`tools/video/tts/check.mjs` 找不到 `pinyin-pro` 等現有環境依賴觸發。沒有執行可能長時間卡住的 `npm ci`；本片沒有媒體生成或需新程式行為的改動。
+1989 北美手錶、1999 授權旅行用品均早於 2001；七月 30 日合營宣布早於事件、十一月營運在事件後。瑞士 Victorinox AG 與美國 SABI 分帳，2001 十月訪談與 Q4 綜合報導不合成一個數字，2002 年產品狀態分清；2005／2014／2017 後續事件不歸為同一個 9/11 因果。此輪未改這些來源邊界。
 
-## 待下一關
+## 作者機械檢查與環境限制
 
-請另一名代理對以上精確 SHA 逐句重讀一手／當期來源並簽 PASS/HOLD，再做至少兩位盲讀、繁中念法與 TTS 時長核對。若來源改稿，應重新出 SHA 與收據。站主逐字稿採用和單集付費預算核准均須另立；此收據不代替任何後續關卡。
+- 六章 **75 句／75 鏡**，口播 **2,705 字元**（含標點與空格，不含來源碼）。暫排正文 **599 秒**、插圖 **490 秒＝81.8%**、14 張後製字卡、最長連卡 2、最長單鏡 12 秒；開場後 5 秒片頭，正文後 21 秒 v4 片尾，紙上全長 625 秒。最大標記鉤子間隔沿用原排程約 43 秒。**未配音；正文實際是否 ≥480 秒仍待 TTS。**
+- 本輪本機結構核對 PASS：75 個唯一行 ID 與 JSON 同序，逐行有 S 來源標籤，61 幅插圖 prompt 無 `cute-mystery`，精確系列 `look.preset` 保留，兩張改動字卡不含內部代號／編輯指令。 `git diff --check` exit 0；提交前再核對暫存差異。
+- `npm run check:tasks` **exit 1**，只因兩個已存在、未追蹤的 `tasks/open/2026-10-22-...treatment...md` ghost 檔與 `tasks/done` ID 重複；本任務不刪、不改、不暫存它們。此前 `npm run test:docs-videos` exit 1（131 pass、6 fail），工作樹缺 `node_modules`／`pinyin-pro`；本輪未重試或安裝，不宣稱全量測試通過。
+
+請另一位代理針對**本版四個作者 SHA**重做 T02–T04 來源與 E03／T03 字卡、61 個 prompt 的獨立審查。兩位純旁白盲讀、念法／TTS 實測、圖片驗收、站主逐字稿／分鏡採用與整集付費報價仍是後續關卡；作者不自判 PASS。沒有付費生成、匯入、上傳、合併、發布或部署。

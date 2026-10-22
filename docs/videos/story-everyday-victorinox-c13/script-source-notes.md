@@ -10,7 +10,7 @@
 | E01–E07 | S5、S10／M05 | S10 是 2002-01-25 對 Paul Camenzin 直接訪談：「約 30%」只指 2001 年十月；S5 是 2002-01-29 綜合報導，把近三分之一寫作 2001 年 Q4。**期間衝突保留**，不挑一篇替另一篇校正，不換成 AG 全公司營收。S10 對旅遊、消費、景氣與安檢相對重要性的排序是受訪者判斷，不是獨立歸因模型。西文與葡文是同一次訪談。 |
 | E08–E12 | S2、S3、S5、S10／M03、M05、M06 | S3 2001 10-K 的 −23% 是 **SABI 全年刀具與工具相關產品**，並列一般經濟與企業通路等因素；不把它與 AG、S5、S10 的比率接成同一曲線。 |
 | E13–E15 | S5／M09 | 2002 初：附時鐘刀「趕製中」，圓頭兒童刀「開發中」，無刀片工具「已提供」，託運提醒傳單「已發」。只說狀態，不說四者都上市或反轉業績。 |
-| T01–T05 | S6／M10 | Elsener 的**多年後本人回憶**說暫借部分員工到附近企業，避免裁員；其他訪談人數不一致，所以旁白不給數字。T01、T04–T05 的工作節奏是編輯敘述，不是人事紀錄。 |
+| T01–T05 | S6／M10 | Elsener 的**多年後本人回憶**說暫借部分員工到附近企業約四到八個月，以度過危機並避免裁員。T03 不再比較不同訪談的精確員工人數，也不把 S6 本人的人數說法當同期名冊；T01、T04–T05 的工作節奏是編輯敘述，不是人事紀錄。 |
 | T06–T12 | S2、S4／M03、M07、M08 | S4 的 −34%、+7%、+16% 均是 **SABI 2002 Q2 各品類同比**；不是瑞士 AG 全球營收或淨利。S4 說上半年總產品銷售受單一大客戶特殊促銷影響，不能以這三個成長率推銷售缺口已補上。T10 的「基數、利潤不同」是一般算術上的不可直接相抵判斷，不額外估算。 |
 | T13–N14 | S1、S4、S5、S6、S7／M02、M05、M07、M09–M12 | CEO 多年後認為既有手錶、專業刀、廚刀幫了忙，是歸屬給他本人的觀點。S1 年表記 2005 Wenger、2014 收回旅行用品、2017 停服裝；沒有證據將三者全作 9/11 單一後果。N11–N14 是對前文的編輯總結、觀眾提問與頻道邀請。 |
 
@@ -21,7 +21,7 @@
 - **S3** [SABI 2001 10-K](https://www.sec.gov/Archives/edgar/data/731947/000073194702000003/tenq.htm)：SABI 品類、2001 全年刀具與工具 −23%、多種不利因素、合營 11 月運作。
 - **S4** [SABI 2002 Q2 10-Q](https://www.sec.gov/Archives/edgar/data/731947/000073194702000016/tenq2.htm)：Q2 −34%／+7%／+16%，以及上半年特殊促銷背景。
 - **S5** [Swissinfo 2002-01-29 綜合報導](https://www.swissinfo.ch/eng/archive-banking-fintech/sales-blunted-at-victorinox/2511740)：部分機場與手提限制、Q4 近三分之一、2002 初四種不同狀態。
-- **S6** [Elsener 在 swissmade.business 的事後訪談](https://www.swissmadebusiness.com/brands/victorinox)：暫借員工的本人回憶，非當年人事紀錄。
+- **S6** [Elsener 在 swissmade.business 的事後訪談](https://www.swissmadebusiness.com/brands/victorinox)：本人回憶把部分員工暫借附近企業四到八個月，以避免裁員；非當年人事紀錄。本稿不報其精確員工人數，也不主張不同訪談的數字差異。
 - **S7** [Elsener 在 Blick 的事後訪談](https://www.blick.ch/wirtschaft/victorinox-boss-carl-elsener-im-interview/e7cty4f)：既有手錶、專業刀與廚刀幫助之本人判斷。
 - **S10** [Swissinfo 2002-01-25 對出口經理直接訪談](https://www.swissinfo.ch/spa/archive-finanzas/caen-ventas-de-navajas-suizas/2505136)：30% 限十月，另有受訪者對原因的看法；[葡文同訪談](https://www.swissinfo.ch/por/archive-financas/caem-as-vendas-de-canivetes-su%C3%AD%C3%A7os/2506316)用於對讀，不算第二個獨立見證。
 
