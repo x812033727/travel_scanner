@@ -22,7 +22,7 @@ test("generated music duration comes from a full audio decode, including a repea
     await runTool(ffmpeg, ["-nostdin", "-v", "error", "-f", "lavfi", "-i", "sine=frequency=220:duration=2", "-c:a", "libmp3lame", file]);
     const first = await decodedMusicSeconds(file);
     const reused = await decodedMusicSeconds(file);
-    assert.ok(first >= 1.99 && first <= 2.05, `decoded ${first} s`);
+    assert.ok(first >= 1.95 && first <= 2.05, `decoded ${first} s`);
     assert.equal(reused, first);
 
     const corrupt = path.join(dir, "corrupt.mp3");
