@@ -195,11 +195,14 @@ export async function confirmedVideo({ name, chosen, skippedDubs = {}, readyDubs
 // The cases the Python consumer reads: a zh-TW video with one language's title and description
 // alone, one's captions alone, and one with a skipped dub; one with a dub track (mp3, the owner
 // approving the batch once it is up in Studio); and an English-narrated one whose own language is
-// chosen as well (its title, captions and dub are the video's own).
+// chosen as well (its title, captions and dub are the video's own); and a zh-TW video with
+// titles and captions in the five the worker took on in 2026-10-20 (es and pt go to YouTube as
+// es-419 and pt-BR).
 export const CONTRACT_CASES = {
   "zh-tw-narration": { name: "minimal", chosen: { en: { metadata: true, captions: true }, ja: { captions: true }, ko: { metadata: true, dub: true } }, skippedDubs: { ko: "配音字數超出時間軸，改用字幕" } },
   "zh-tw-dubbed": { name: "minimal", chosen: { ja: { captions: true, dub: true } }, readyDubs: { ja: "mp3" } },
   "en-narration": { name: "en", chosen: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } }, translated: ["zh-TW", "ja", "ko"] },
+  "zh-tw-five-languages": { name: "minimal", chosen: { es: { metadata: true, captions: true }, pt: { metadata: true }, id: { captions: true }, vi: { metadata: true, captions: true }, th: { metadata: true, captions: true } }, translated: ["es", "pt", "id", "vi", "th"] },
 };
 
 /** One case as the site holds it after the batch: the project, its review rows and every stored file. */

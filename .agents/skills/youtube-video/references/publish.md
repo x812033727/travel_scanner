@@ -169,3 +169,17 @@ Shorts 不用 `upload.md`，也不走 `tools/video/cli.mjs package`：`node tool
 - **怎麼來的**：`i18n-sheet` 的 metadata 部件多一個 `thumbnail`（`tag`、`headline`、`sub`，只列 zh-TW 縮圖有的那幾個字），`i18n-merge` 寫進 `i18n/<語系>.json` 的 `thumbnail`，雜湊在 `source_hashes.thumbnail`（三個字當一筆算，zh-TW 縮圖任何一個字改了就整組過期）。`render` 對每個縮圖文字是最新的語系，用同一張背景與版型畫 `thumbnails/<語系>.jpg`；`package` 只收畫的時候用的字和現在 `i18n` 一樣的那幾張。
 - **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（ko、ja 的縮圖各用自己的 Noto Sans KR／JP 排在第一，en 用投影片的 Noto Sans TC）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
 - **變體**：A/B 測試的 `thumbnail-b.jpg`／`thumbnail-c.jpg` 只有 zh-TW，語言縮圖照 A 版做。
+
+## 教學片的標題與縮圖套路（2026-10-21，從熱門片讀的）
+
+〈標題〉那一節的規則照舊；教學片多這幾條，依據在 `docs/videos/reference-study-20261021/README.md`
+§題目：
+
+- 熱門教學片的字眼：「保姆級」「零基礎」「非工程師也能上手」「不用寫程式」「N 分鐘學完 N%」
+  「N 種用法」「一次講清」「最重要的更新」；小頻道那支用挑釁句「出來滿一年了還有人不會嗎？」。
+  一個標題用一組，不疊。
+- 標題的那句話要在片頭 15 秒內唸出來（俗說 AI 在第 14 秒）；標題寫了「N 分鐘」片長就要對得上。
+- 系列名當後綴照舊（「｜俗說 AI」是對方的系列名；我們寫自己的）。
+- 縮圖：大字補標題沒說的那句（標題「CLAUDE.md 就是員工守則」→ 縮圖「寫一次\n不用再講」），
+  ≤ 6 字；右側放 `screencast` 截到的真實官方頁或產品畫面，不用 AI 畫 logo；教學短片用米白底。
+- 說明欄第一段用一句「這集講什麼」＋三到六個「・重點」（俗說 AI 的寫法），再放章節與來源。

@@ -7,7 +7,7 @@
 // frame (tools/video/render/browser.mjs, at most MAX_TRANSITION_FRAMES), so a state's entrance is
 // a fixed number of frames and the rest of the state holds its still: the same stills-and-
 // transitions a slide makes, which assemble already turns into one segment per scene.
-import { ORIGIN, SIZE, chrome, escapeHtml, page, richText } from "../templates/templates.mjs";
+import { ORIGIN, SIZE, chrome, escapeHtml, keyBand, page, pageCss, richText } from "../templates/templates.mjs";
 
 // Timings in ms. Everything ends by 600 ms, the renderer's 18-frame entrance limit at 30 fps.
 export const MOVE_MS = 420;
@@ -108,7 +108,8 @@ export const captureUrl = (file) => `${ORIGIN}/work/${file.split("/").map(encode
 
 /**
  * One state of a screencast scene as a complete page. `plan` is one entry of screencastPlan;
- * `state` carries what slideHtml's does: first, chapter, chapterNumber, chapterCount.
+ * `state` carries what slideHtml's does: first, chapter, chapterNumber, chapterCount, and the
+ * key band's line and the video's theme (templates.mjs keyBand, themeCss), drawn as a slide draws them.
  */
 export function screencastHtml(scene, plan, state) {
   const data = scene.data;
@@ -120,6 +121,6 @@ export function screencastHtml(scene, plan, state) {
     plan.cursor ? CURSOR : "",
   ].join("");
   const caption = data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : "";
-  const body = `${chrome(scene, state)}<main class="content t-screencast">${title}<div class="sc-frame"><div class="sc-screen"><div class="sc-inner">${layers}</div></div></div>${caption}</main>`;
-  return page(body, SIZE, stateCss(plan));
+  const body = `${chrome(scene, state)}${keyBand(state)}<main class="content t-screencast">${title}<div class="sc-frame"><div class="sc-screen"><div class="sc-inner">${layers}</div></div></div>${caption}</main>`;
+  return page(body, SIZE, pageCss(scene, state, stateCss(plan)));
 }

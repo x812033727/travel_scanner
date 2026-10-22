@@ -14,12 +14,13 @@ import { watermark, WATERMARK_FILE, watermarkDataUri, watermarkRecord } from "..
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
-import { coverageProblems, localizedThumbnails } from "./cli.mjs";
+import { coverageProblems, localizedThumbnails, transitionFiles } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
 import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailSubject, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
-import { thumbnailRotation } from "../templates/templates.mjs";
+import { stateCount, thumbnailRotation } from "../templates/templates.mjs";
+import { screencastHtml } from "../screencast/scene.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -499,6 +500,15 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   const slideFontsOnly = localizedThumbnails(plan, () => bundledCoverage());
   assert.deepEqual(slideFontsOnly.drawable.map((own) => own.locale), ["en"]);
   assert.match(slideFontsOnly.gaps.ko, /no bundled font has .*U\+D14C/);
+  // Thai (2026-10-20) is set in Noto Sans Thai; Vietnamese, like the other Latin four, in the slide font.
+  const five = renderPlan(doc, "t", null, { keyframes, translations: { ...translations, th: merged({ ...words("ทำไม"), headline: "ทำไม**โมเดล**นี้" }), vi: merged({ ...words("Vì sao"), headline: "Vì sao **mô hình** này" }) } });
+  const own = Object.fromEntries(five.thumbnail.locales.map((each) => [each.locale, each]));
+  assert.deepEqual(Object.keys(own), ["en", "ko", "vi", "th"]);
+  assert.match(own.th.html, /<html lang="th">.*fonts\/noto-sans-thai\/index\.css/);
+  assert.doesNotMatch(own.vi.html, /noto-sans-thai|noto-sans-kr|noto-sans-jp/);
+  assert.deepEqual(coverageProblems(five, bundledCoverage()), []);
+  assert.deepEqual(localizedThumbnails(five).drawable.map((each) => each.locale), ["en", "ko", "vi", "th"]);
+  assert.deepEqual(Object.keys(five.thumbnail.gaps), ["ja"], "es, pt and id, untranslated, note no gap");
   // Without translations the plan is as it was.
   assert.equal(renderPlan(doc, "t", null, { keyframes }).thumbnail.locales, undefined);
   assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes })), { drawable: [], drawn: {}, gaps: {} });
@@ -944,4 +954,96 @@ test("render decides the channel mark once: a first drawing names and pins it, a
   assert.equal(await main(["render", "--slug", broken.slug], context(broken)), EXIT.lint, out);
   assert.equal(existsSync(pinOf(broken)), false);
   assert.equal(existsSync(path.join(broken.workdir, "frames", "manifest.json")), false);
+});
+
+// The paper look (docs/videos/PAPER.md, 2026-10-21).
+test("a video's theme moves every slide key and no thumbnail key; a key band moves its own scene's keys only", () => {
+  const base = renderPlan(showcase, "theme-a");
+  const themed = renderPlan({ ...showcase, theme: "paper" }, "theme-a");
+  base.scenes.forEach((scene, index) => {
+    scene.states.forEach((state, stateIndex) => {
+      const own = themed.scenes[index].states[stateIndex];
+      assert.notEqual(own.key, state.key, `${scene.id} ${stateIndex}`);
+      assert.ok(own.html.includes("--ground:#f6efe3"), `${scene.id} ${stateIndex} is drawn on paper`);
+    });
+  });
+  assert.equal(themed.thumbnail.key, base.thumbnail.key, "the thumbnail keeps the channel's dark look");
+  assert.deepEqual(themed.thumbnail.variants.map((variant) => variant.key), base.thumbnail.variants.map((variant) => variant.key));
+  const keyed = structuredClone(showcase);
+  keyed.scenes.find((scene) => scene.id === "three-questions").data.keys = ["第一題", "第二題", "第三題"];
+  const banded = renderPlan(keyed, "theme-a");
+  banded.scenes.forEach((scene, index) => {
+    scene.states.forEach((state, stateIndex) => {
+      assert.equal(state.key === base.scenes[index].states[stateIndex].key, scene.id !== "three-questions", `${scene.id} ${stateIndex}`);
+    });
+  });
+  const bullets = banded.scenes.find((scene) => scene.id === "three-questions");
+  assert.match(bullets.states[1].html, /<div class="key-band enter" style="--i:0"><span class="fit">第二題<\/span><\/div>/);
+  assert.ok(bullets.states[1].text.includes("第二題"), "the band's words are checked for glyphs like the card's");
+  assert.ok(!bullets.states[1].html.includes("第一題"), "each state shows its own line");
+});
+
+test("a screencast state draws the key band and the theme as a slide does, and its key lines are checked like a slide's", () => {
+  const tutorial = JSON.parse(readFileSync(new URL("../screencast/fixtures/tutorial/video.json", import.meta.url), "utf8"));
+  const scene = structuredClone(tutorial.scenes.find((each) => each.template === "screencast"));
+  const plan = { capture: 0, file: "screencast/x/0.png", sha256: "", cursor: null, highlight: null, press: false, zoom: null };
+  const plain = screencastHtml(scene, plan, { first: true, chapter: "章", chapterNumber: 1, chapterCount: 2 });
+  const dressed = screencastHtml(scene, plan, { first: true, chapter: "章", chapterNumber: 1, chapterCount: 2, key: "先點攻略區", theme: "paper" });
+  assert.doesNotMatch(plain, /key-band|--ground:#f6efe3/);
+  assert.match(dressed, /<\/div><div class="key-band enter" style="--i:0"><span class="fit">先點攻略區<\/span><\/div><main class="content t-screencast">/);
+  assert.ok(/<style>[^<]*--safe-bottom:274px[^<]*--ground:#f6efe3[^<]*<\/style>/.test(dressed), "the band's CSS, then the theme's, after the scene's own");
+  const states = stateCount(scene);
+  const doc = structuredClone(tutorial);
+  const own = doc.scenes.find((each) => each.template === "screencast");
+  own.data.keys = Array.from({ length: states + 1 }, () => "一句");
+  const problems = renderProblems(doc);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0].path, /\(find-guides\)\.data$/);
+  assert.match(problems[0].message, new RegExp(`^keys has ${states + 1} lines but the scene has ${states} states`));
+});
+
+test("a transition frame identical to the one before it is not written again: the manifest lists the earlier file twice, and an older count-shaped cache is still read", async () => {
+  const box = sandbox();
+  let captures = 0;
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-21T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html, { transition = false } = {}) => {
+        captures += 1;
+        // A key held for three frames, then the next: frames 0 to 2 alike, 3 different.
+        const frames = transition ? [Buffer.from(`${key} a`), Buffer.from(`${key} a`), Buffer.from(`${key} a`), Buffer.from(`${key} b`)] : [];
+        return { still: Buffer.from(`png ${key}`), frames, problems: [] };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  };
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  const manifest = JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8"));
+  const first = manifest.scenes[0].states[0];
+  const key = path.basename(first.still, ".png");
+  assert.deepEqual(first.transition, [transitionFile(key, 0), transitionFile(key, 0), transitionFile(key, 0), transitionFile(key, 3)]);
+  assert.ok(existsSync(path.join(box.workdir, transitionFile(key, 0))));
+  assert.ok(existsSync(path.join(box.workdir, transitionFile(key, 3))));
+  assert.ok(!existsSync(path.join(box.workdir, transitionFile(key, 1))), "the repeated frame is not on disk");
+  assert.ok(!existsSync(path.join(box.workdir, transitionFile(key, 2))));
+  const cacheFile = path.join(box.workdir, "frames", "cache.json");
+  const cache = JSON.parse(readFileSync(cacheFile, "utf8"));
+  assert.deepEqual(cache[key].transition, first.transition, "the cache keeps the list, so a rerun looks for the files that exist");
+  assert.deepEqual(transitionFiles(key, cache[key]), first.transition);
+  const drawn = captures;
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  assert.equal(captures - drawn, 1, "every state is reused from the cache; only the thumbnail is drawn again");
+  // A cache written before the list: a count, its files named in order.
+  assert.deepEqual(transitionFiles("k", { transition: 2 }), [transitionFile("k", 0), transitionFile("k", 1)]);
+  cache[key].transition = 1;
+  writeFileSync(cacheFile, JSON.stringify(cache));
+  assert.equal(await main(["render", "--slug", box.slug], ctx), EXIT.ok, out);
+  assert.equal(captures - drawn, 2, "the count-shaped entry still names a file that exists, so the state is reused");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8")).scenes[0].states[0].transition, [transitionFile(key, 0)]);
 });

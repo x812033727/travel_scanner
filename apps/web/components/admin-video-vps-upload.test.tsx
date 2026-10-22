@@ -156,4 +156,15 @@ describe("VPS Studio mode", () => {
     expect(screen.queryByRole("button", { name: "記錄影片連結" })).toBeNull();
     expect(vi.mocked(fetch).mock.calls.every(([, init]) => !init?.method)).toBe(true);
   });
+
+  it("offers to send a brand story's titles again when it finished before the story tag", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation((_url: string, init?: RequestInit) => Promise.resolve(Response.json(
+      init?.method === "POST" ? view({ state: "queued", video_id: id }) : { ...view({ state: "done", video_id: id }), linked: true, titles_outdated: true },
+    ))));
+    render(<YoutubeVpsUpload slug="test-video" />);
+    await open();
+    expect(await screen.findByText(/在標題加上「｜品牌故事」之前就傳完了/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "重送標題說明到 VPS" }));
+    await waitFor(() => expect(vi.mocked(fetch).mock.calls.some(([url, init]) => init?.method === "POST" && String(url).endsWith("/youtube/vps"))).toBe(true));
+  });
 });
