@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-correct-c10-oxo-source-hold-and
 title: Correct C10 OXO source HOLD and image prompts
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c10-oxo-script
