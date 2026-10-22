@@ -603,7 +603,7 @@ SERIES_GENRES = (
     "custom",
 )
 SERIES_LEADS = ("female", "male", "dual-male")
-VISUAL_TIERS = ("clips", "hybrid", "stills")
+VISUAL_TIERS = ("clips", "hybrid", "stills", "manga")
 SERIES_NUMBERS_CHECK = (
     "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
     "AND (target_minutes BETWEEN 1 AND 20 OR "
@@ -697,7 +697,8 @@ class VideoDramaSeries(Base):
         CheckConstraint(SERIES_ANIME_POLICY_CHECK, name="ck_video_drama_series_anime_policy"),
         CheckConstraint(SERIES_ANIME_RUNTIME_CHECK, name="ck_video_drama_series_anime_runtime"),
         CheckConstraint(
-            "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
+            "visual_tier IN ('clips', 'hybrid', 'stills', 'manga')",
+            name="ck_video_drama_series_tier",
         ),
         CheckConstraint(
             "total_minutes IS NULL OR total_minutes BETWEEN 30 AND 480",
