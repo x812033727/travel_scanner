@@ -4,8 +4,8 @@ title: Write C05 Kincho narration and visual plan
 status: review
 priority: P2
 area: docs
-owner: codex-gpt6-c05-revision
-claimed_at: 2026-10-22T04:32:02Z
+owner: codex-gpt6-c05-approvals-cost
+claimed_at: 2026-10-22T05:28:16Z
 created_at: 2026-10-22T03:39:36Z
 completed_at:
 branch: codex/brand-story-kincho-c05-script
@@ -14,6 +14,8 @@ scope:
   - docs/videos/story-everyday-kincho-c05/script.md
   - docs/videos/story-everyday-kincho-c05/visual-plan.md
   - docs/videos/story-everyday-kincho-c05/video.json
+  - docs/videos/story-everyday-kincho-c05/production-quote.md
+  - docs/videos/story-everyday-kincho-c05/reviews/owner-script-approval.md
   - docs/videos/story-everyday-kincho-c05/reviews/line-review.md
   - docs/videos/story-everyday-kincho-c05/reviews/narrative-reader-1.md
   - docs/videos/story-everyday-kincho-c05/reviews/narrative-reader-2.md
@@ -30,7 +32,7 @@ scope:
 - [x] 依採用的 Treatment 寫六章旁白（第二輪修訂現為 79 句）、每句固定 ID，附逐句來源對照與至少八個可回收的鉤子；來源不足就縮短，不用重述灌長。
 - [x] 完成逐鏡畫面計畫，遵守奇聞檔案局的 MiniMax image-01／cute-mystery、插圖時間至少七成、卡片連續最多三張、片頭片尾及 CC 規則，不產生媒體。插圖時間占比仍須實測後核准。
 - [x] 修訂後稿件由不同代理完成 79／79 逐句來源及逐鏡查核，另有兩位未參與修訂的讀者各自盲讀；三份收據均綁最終新版雜湊。舊稿收據只作歷史。
-- [ ] 完成本修訂稿必要的非付費檢查、更新草稿 PR，交站主審劇本與逐鏡方向；TTS 純旁白及插圖畫面時間屬後續付費試片實測關，不以字數估計替代。
+- [x] 本修訂稿通過已列非付費檢查，草稿 PR 已交站主；站主已核准固定雜湊的劇本與逐鏡方向。TTS 純旁白及插圖畫面時間仍待實測。
 
 ## Steps
 
@@ -42,7 +44,7 @@ scope:
 - [x] 在 Treatment／矩陣 F08／F09 窄改後，按兩位真正盲讀的 REVISE 意見把上一版 88 句收束為 79 句：雙卷、慢燃各緊接問題回答，1940→約 1955→1957→現行順序，逐鏡一對一重排；未改舊收據。
 - [x] 重新做本版逐句來源查核與兩份真正盲讀；新版 Treatment／來源矩陣已獨立 PASS，站主窄幅重綁另待回覆。
 - [ ] 後續付費試片通過獨立核准後，以 TTS 實測正文純旁白至少 480 秒及逐鏡插圖畫面時間至少七成，不把此票的節拍數當作成片結果。
-- [ ] 修訂稿經站主審閱後才建立 `video.json`、整支報價與另行申請 C05 付費製作額度；本步不授權上傳／發布。
+- [ ] 修訂稿經站主審閱後，已先建立非付費整支估價提案；`video.json`、工具乾跑與 C05 單支付費額度仍待完成／核准。本步不授權上傳／發布。
 
 ## How to verify
 
@@ -73,3 +75,5 @@ scope:
 2026-10-22 **最終逐句／逐鏡審查版，待站主決定**：再窄改 E16 不暗示兩款同時販售、V001 讓直條與 H01 一樣正在燃燒、V064 畫少量氧氣仍能進入。`script.md` SHA-256 `D49FE268109DDCE4BF6E44A3E75831467735DEC23E58D11BCC92065EE533288D`；`visual-plan.md` SHA-256 `7908331CE21FE658321D8117D7429ECCA3C1F48C3D558E57B0885E5F26138CAE`。獨立代理對 79／79 句與 79／79 個畫面意圖逐項 PASS，收據在 `reviews/line-review.md`；兩名全新盲讀者各自只讀 ID＋旁白後 PASS，收據在 `reviews/narrative-reader-1.md` 和 `-2.md`，均綁上述 script SHA。正文第 2–6 章 71 句／2,209 字元，按 250 字元／分鐘**僅粗估約 8 分 50 秒**；63 shot／16 card、最長連續兩卡，79.7% 是節拍數，不是畫面時間。新版 Treatment／矩陣雜湊仍為 `4A1C596B9A8A6E9278C99205E9EE381E4FD5AF4EAD5CDC6C448A852D5E7FC8D0`／`A7EB8401ABCC5715C46352187C0EFE100FA3AA47E22A020A1FC16FFD55504516`，站主窄幅企劃重綁、劇本核准及本集付費額度均未取得；不做 TTS／圖／音樂，也未匯入、上傳或發布。
 
 本版本機檢查：`npm run check:tasks` exit 0；`git diff --check` 無空白錯誤。`npm run test:docs-videos` 為 **235／236 通過、exit 1**，唯一失敗仍是未修改的 `docs/videos/imported-long-languages/runner.test.mjs:679`，Windows 子行程 `package-runtime.mjs` 退出 `3221226505`、沒有 stdout/stderr；這不是本集內容檢查 PASS。`tools/repo-hygiene.test.mjs` 在本分支舊版基底上找到上游 Treatment 票第 47 行的本機使用者路徑；該路徑已於 Treatment PR #1672 後續提交移除，須在本分支重接最新上游後重跑。這些測試結果不代替時長、圖片時間或站主決定。
+
+2026-10-22：站主在修訂版企劃另行採用後，回覆 PR #1675「核准目前劇本與逐鏡方向（建議）」。新收據 `reviews/owner-script-approval.md` 精確綁定 script `D49FE268109DDCE4BF6E44A3E75831467735DEC23E58D11BCC92065EE533288D`、visual `7908331CE21FE658321D8117D7429ECCA3C1F48C3D558E57B0885E5F26138CAE`，並指出上游兩份核准雜湊；此決定不含付費。`production-quote.md` 非付費提出最多 86 張（63 基本＋23 拆鏡預留）、每張最多三次、79 句旁白與一首配樂、整支 US$25 停線，仍待 C05 專屬核准。重新只計旁白欄，正文 71 句為約 1,993 字元，不是舊筆記 2,209 字元；250 字元／分鐘僅粗估 7:58，TTS 尚未合成，未能宣稱達 480 秒。未買圖；片頭片尾、提示詞、定時與工具乾跑待後續非付費完成。
