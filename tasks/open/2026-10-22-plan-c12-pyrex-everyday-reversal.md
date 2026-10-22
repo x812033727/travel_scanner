@@ -24,7 +24,7 @@ Series slate C12 described laboratory glass becoming kitchenware. The currently 
 
 - [x] Six-chapter Treatment follows one causal story with Curio visual and hook rules.
 - [x] Source matrix ties each proposed factual claim to direct sources and limits.
-- [ ] Independent reviewer reopens sources and binds final hashes.
+- [ ] Independent reviewer rechecks the repaired M04/M09 and opening against final hashes; the first SHA-bound review held M09 on the old version.
 - [ ] Owner adopts the reviewed Treatment before script authoring.
 
 ## Steps
@@ -32,7 +32,7 @@ Series slate C12 described laboratory glass becoming kitchenware. The currently 
 - [x] Check no active scope owner, branch, or PR for C12.
 - [x] Read museum and brand primary pages directly and correct the series slate premise within this episode.
 - [x] Write draft Treatment and source matrix in this episode folder.
-- [ ] Hand a separate narrow review scope to a different agent.
+- [x] Hand a separate narrow review scope to a different agent; read its 16 PASS / M09 HOLD receipt, revise only affected Treatment and matrix statements, and request a final delta check.
 
 ## How to verify
 
