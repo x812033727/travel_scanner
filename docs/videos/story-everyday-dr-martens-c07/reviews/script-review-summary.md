@@ -1,10 +1,10 @@
 # C07 逐句稿與逐鏡方案｜審查關卡
 
-- 狀態：**HOLD — v3 來源覆核已通過前版，純旁白盲讀指出 c070413–414 暗示無證的「第一位／第一群」；現已窄幅改為六〇年代末的已知例子，等新 SHA 來源差異覆核、兩位新盲讀與站主劇本核准。** 不放行付費媒體或發布。先前所有審查只綁各自的 SHA，不能當本版 PASS。
+- 狀態：**HOLD — v4 來源覆核已通過前版，最新純旁白盲讀指出 c070408–413 的重複、c070509 的未回收承諾，以及 c070516 的對立立場缺少明確兩方。現已按研究原文窄幅修訂，等新 SHA 來源差異覆核、兩位新盲讀與站主劇本核准。** 不放行付費媒體或發布。先前審查只綁各自的 SHA，不能當本版 PASS。
 - 凍結日期：2026-10-22（台北時間）
-- `script.md` SHA-256：`76D12402756C390CD6F3018E29CB90D2DAD6B95D9897690AC7F675DF7D1D1385`
-- `visual-plan.md` SHA-256：`32B854AE849421F14B39B81CC612745B522E9EBFDFEC1FF62AA09EEAE43984CA`
-- `script-source-notes.md` SHA-256：`C42E10CEE8B3F922479459E3AE5A345EBB7969A09DDB4FC5508AFA8384F7240F`
+- `script.md` SHA-256：`1045463BC76C8285A0EE40B0F00BA9E64A44434C71E50597B35DC783BA498654`
+- `visual-plan.md` SHA-256：`1487B891ED7A3FB680A96915E06E7B2C076280F3AD8903A2546B5F53B12FCB2A`
+- `script-source-notes.md` SHA-256：`8FE0C6BC4D16D43289C77742AC1CF078C18AFA079D380362457BB12ECE687A2D`
 - Treatment owner approval：見 [雜湊綁定收據](owner-treatment-approval.md)。該收據只放行**非付費**撰稿與審查，不是本稿核准。
 
 ## 目前可重算的機械結果
@@ -15,7 +15,7 @@
 
 | 關卡 | 收據 | 狀態 |
 | --- | --- | --- |
-| 逐句來源獨立查核 | `script-source-review-v3.md` | 前一版 77/77 PASS；本版只改 c070413–414，待獨立查核者以新 SHA 覆核差異。 |
+| 逐句來源獨立查核 | `script-source-review-v4.md` | 前一版 77/77 PASS；本版改 c070408–411、509、516、602–603 及對應視覺／來源說明，待獨立查核者以新 SHA 覆核差異。 |
 | 真正盲讀 1 | `narrative-reader-1.md` | 待未看 Treatment／來源矩陣的讀者先讀純旁白，再記具體不懂與掉線位置。 |
 | 真正盲讀 2 | `narrative-reader-2.md` | 同上，須與讀者 1 獨立。 |
 | 站主劇本與逐鏡 | 另行決定 | 尚未提出、尚未核准。 |
