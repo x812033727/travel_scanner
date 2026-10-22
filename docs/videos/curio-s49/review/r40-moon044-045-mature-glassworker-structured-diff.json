@@ -1,0 +1,45 @@
+{
+  "revision": "R40",
+  "base_revision": "R39",
+  "base_commit": "3c0696887",
+  "reason": "R39 independent paper HOLD for moon044 and moon045 only: glassworker prompts lacked explicit mature adult cues after repeated childlike native failures; add adult age/face/shoulder/period-clothing cues without changing actions, objects or narration",
+  "files": {
+    "video.json": {
+      "before_sha256": "a3baea2c12c8930690379a04c6d6f2707f68661e53a692f462134a9ee402706d",
+      "after_sha256": "7c793e461696644e78e9723e0a2103e40746bf5e0e51c7c587da080d427f5f75"
+    },
+    "claims.md": {
+      "before_sha256": "df770faf47821fefc2ee8d3b42b7fc91c808420b85f891714efbb44a07a7b111",
+      "after_sha256": "93945e1368d357cd4baa178b156a46735f9de0d9b4ac6386c46f81eb60a023c4"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon044",
+      "path": "scenes[40].data.prompt",
+      "before": "Close shot of one imagined 1830s glassworker checking an empty circular mould, soft furnace light",
+      "after": "Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light",
+      "claims_row_before": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot of one imagined 1830s glassworker checking an empty circular mould, soft furnace light。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light。虛構報導的想像畫面，非真實月面或器材。 |"
+    },
+    {
+      "id": "moon045",
+      "path": "scenes[41].data.prompt",
+      "before": "Medium shot of one imagined 1830s glassworker examining a plain large lens with two tiny edge flaws, soft workshop light",
+      "after": "Medium shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, examining a plain large lens with two tiny edge flaws, soft workshop light",
+      "claims_row_before": "| moon045 | 文章說第一次鑄鏡失敗，第二次只剩兩處邊緣小瑕疵。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Medium shot of one imagined 1830s glassworker examining a plain large lens with two tiny edge flaws, soft workshop light。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon045 | 文章說第一次鑄鏡失敗，第二次只剩兩處邊緣小瑕疵。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Medium shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, examining a plain large lens with two tiny edge flaws, soft workshop light。虛構報導的想像畫面，非真實月面或器材。 |"
+    }
+  ],
+  "unchanged_scene_ids_except": [
+    "moon044",
+    "moon045"
+  ],
+  "unchanged_all_scene_lines": true,
+  "native_generation": 0,
+  "reversible": true
+}
