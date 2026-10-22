@@ -16,6 +16,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-final-pass.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -63,3 +64,5 @@ scope:
 2026-10-22：一位**只看旁白**的獨立讀者退回 `c080310–317`／`c080401–409` 的反覆倒取說明、`c080503–506` 的包裝轉工具重述、`c080605–611` 的出貨數字鋪墊，以及 `c080612–614` 可能暗示瓶嘴造成商標註冊的相鄰敘述。作者依此重寫，仍保留 92／92 ID、79 shot／13 卡、最多 2 連卡；K2a 的可再填充與 K3 的約百國均由原發行者文件直接支持，仍須獨立複核。現版 `script.md` SHA-256 `08539F264C5B228805AE9EF3E219E1DF81C10FE9853301A8441B5B25F510BF78`，`visual-plan.md` SHA-256 `04C554C4BDDEE9E37D7D76EA226CF0BA592E41D5365225D68F529F89F514F571`。先前 PASS 收據已存為 `reviews/line-source-review-20261022-pre-blind-fix.md` 並標失效；`line-source-review.md` 預留給新 SHA 的獨立查核。這位盲讀者的 HOLD 不是新稿的通過收據；需先重查來源，再找兩位新讀者只看旁白欄位重讀。
 
 2026-10-22：獨立代理 `codex-c08-delta-source-review` 重新打開 K1、K2a、K3、D1、M1、G1 原發行者資料，逐句與同 ID 畫面核對現版 92／92 列，**來源和事實界線 PASS**。新 `reviews/line-source-review.md` 綁上段兩個現版 SHA；重點確認可再填充、約百國餐桌及全球累計出貨的原文，並把抽象倒取示意與尚未取得的問卷、模型、帳冊、JPO 原件分開。兩名新讀者盲讀、美術預檢、TTS 與站主稿件核准仍待完成，沒有付費生成。
+
+2026-10-22：真正只看旁白的新盲讀者指出 `c080515` 問「觀眾能否認出無字瓶形」，但 `c080602–604` 只能回答公司所述的日本立體商標註冊；`c080509/514/610` 又重複提醒購買因果。作者將章末問題收窄到**無字樣與圖案的容器外形可否註冊**，保留公司公告與未查 JPO 原件界線；`c080514` 改接瓶形，`c080610` 只說全球累計出貨與零售成交的口徑差。僅修 `c080514–516`、`c080601–602`、`c080610` 旁白和 `c080514` 畫面，保留 92 ID、79 shot／13 card。現版 `script.md` SHA-256 `E2AA781EBB041CBB5A844271540ABB479858E5477FFA51802E8D723E6CAD4474`，`visual-plan.md` SHA-256 `1AA2AF927AD3C2FEBCEECF32A90316539913A242C277F760B03F0EB47323A2CA`。前版獨立 PASS 只綁舊 SHA，已保存為 `reviews/line-source-review-20261022-pre-final-pass.md` 並在原收據標失效；須重新獨立查核，另待兩名新盲讀與獨立美術預檢，不能宣稱稿件已通過。

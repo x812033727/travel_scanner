@@ -123,7 +123,7 @@
 | c080511 | card | 後製單焦點卡：2005 年 MoMA 入藏；標 K3、M1。 | 靜態卡／後製切入 |
 | c080512 | shot | Medium shot of an anonymous curator setting two blank date tags beside a generic bottle outline, soft gallery light. | slow push-in |
 | c080513 | shot | Wide shot of an anonymous visitor looking at a generic bottle in a design gallery, diffuse ceiling light. | gentle pan right |
-| c080514 | shot | Medium shot of an anonymous researcher setting a blank sales ledger aside while viewing a bottle study, desk light. | slow pull-back |
+| c080514 | shot | Medium shot of an anonymous gallery visitor moving from a generic bottle display toward a plain bottle silhouette study, soft gallery light. | slow pull-back |
 | c080515 | shot | Close shot of an anonymous adult turning a plain unlabeled condiment bottle to study its silhouette, gentle window light. | gentle pan left |
 | c080516 | shot | Medium shot of an anonymous adult holding an unmarked bottle against a blank background, soft neutral light. | gentle tilt down |
 
