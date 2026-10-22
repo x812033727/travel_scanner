@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-and-review-c08-kikkoman-script
 title: Write and review C08 Kikkoman script and visual plan
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-c08-final-revision
-claimed_at: 2026-10-22T12:24:20Z
+owner:
+claimed_at:
 created_at: 2026-10-22T05:28:57Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-script
