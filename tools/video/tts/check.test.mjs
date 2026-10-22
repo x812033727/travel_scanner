@@ -12,6 +12,7 @@ import { SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import {
   checkFiles,
   comparable,
+  foldVietnameseTones,
   DUB_LOCALES,
   dubLexicon,
   dubLines,
@@ -40,6 +41,29 @@ const rms = (samples, from = 0, to = samples.length) => {
   for (let index = from; index < to; index++) sum += samples[index] ** 2;
   return Math.sqrt(sum / (to - from));
 };
+
+test("a Vietnamese transcript may place a tone mark on another vowel, but must carry the same tone", () => {
+  // The old and the new placement rules: hoà/hòa, thuỷ/thủy, khoẻ/khỏe, written precomposed or not.
+  assert.equal(comparable("Hoà bình", "vi"), comparable("hòa bình", "vi"));
+  assert.equal(comparable("thuỷ điện", "vi"), comparable("thủy điện", "vi"));
+  assert.equal(comparable("Sức khoẻ", "vi"), comparable("sức khỏe".normalize("NFD"), "vi"));
+  assert.equal(foldVietnameseTones("hoà"), foldVietnameseTones("hòa"));
+  // The tone itself still counts, and so do the vowel marks (â, ă, ơ, ư) and đ.
+  assert.notEqual(comparable("má", "vi"), comparable("mà", "vi"));
+  assert.notEqual(comparable("ma", "vi"), comparable("mạ", "vi"));
+  assert.notEqual(comparable("tâm", "vi"), comparable("tam", "vi"));
+  assert.notEqual(comparable("đi", "vi"), comparable("di", "vi"));
+  // Only Vietnamese is folded this way.
+  assert.notEqual(comparable("hoà"), comparable("hòa"));
+  const line = { id: "v1et", text: "Hoà bình là mục tiêu." };
+  assert.equal(matchKind("hòa bình là mục tiêu", line, null, "vi"), "exact");
+  assert.equal(matchKind("hoa bình là mục tiêu", line, null, "vi"), null, "a missing tone is Jev's to judge");
+});
+
+test("Thai is compared without the spaces a transcriber puts between its words", () => {
+  const line = { id: "th4i", text: "วันนี้เราจะคุยเรื่อง AI กันค่ะ" };
+  assert.equal(matchKind("วันนี้ เรา จะ คุย เรื่อง AI กัน ค่ะ", line, null, "th"), "exact");
+});
 
 test("comparison ignores punctuation, spacing and case, and knows the dictionary's spoken forms", () => {
   assert.equal(comparable("用 AI 挑模型，對吧？"), comparable("用ai挑模型對吧"));
@@ -129,7 +153,7 @@ test("hintTerms lists each English word a line says once, as the script spells i
 });
 
 test("--locale takes a dub's locale and nothing else", () => {
-  assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko"]);
+  assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]);
   for (const locale of DUB_LOCALES) assert.equal(parseDubLocale(locale), locale);
   for (const bad of ["zh-TW", "fr", "EN", "zh-cn", "zh-CN", ""]) assert.throws(() => parseDubLocale(bad), UsageError, bad);
 });

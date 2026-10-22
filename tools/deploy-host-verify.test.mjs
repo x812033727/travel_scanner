@@ -10,7 +10,8 @@ import test from "node:test";
 const SCRIPT = readFileSync(new URL("../.agents/skills/deploy/scripts/host-verify.sh", import.meta.url), "utf8");
 const DRAMA_OFF = "漫劇已停用";
 const DRAFT_CAP = "支草稿，達到上限";
-const hasAwk = spawnSync("awk", ["BEGIN{}"]).status === 0;
+// gawk 5.4 refuses an empty "BEGIN{}", which skipped these tests wherever it is the awk.
+const hasAwk = spawnSync("awk", ["BEGIN{exit 0}"]).status === 0;
 
 function octal(text) {
   return [...Buffer.from(text, "utf8")].map((byte) => `\\${byte.toString(8)}`).join("");
@@ -39,6 +40,16 @@ test("an exit 3 right after the monthly draft cap is counted apart, and the chec
   assert.deepEqual(classify(capped), [0, 0, 1]);
   // A Shorts line between the message and the exit does not break the pair.
   assert.deepEqual(classify("本月已產生 40 支草稿，達到上限 40 支\nvideo-worker: shorts: nothing due\nvideo-worker: auto exited with 3\n"), [0, 0, 1]);
+  // Nor do the Drive backup's lines, which run after a round that ended in an error (#1660, 2026-10-22's log).
+  const backedUp = [
+    "本月已產生 60 支草稿，達到上限 60 支",
+    "backup: google-vids-omni-free-quota: 13 files, 0 MB, checked in Drive under ai-news/google-vids-omni-free-quota",
+    "backup: google-vids-omni-free-quota: the site reads it partial, missing dubs/ja, final.mp4; the tidy keeps its files",
+    "video-worker: auto exited with 3",
+  ].join("\n");
+  assert.deepEqual(classify(backedUp), [0, 0, 1]);
+  // A backup line does not make another round's exit 3 look capped.
+  assert.deepEqual(classify("the token was refused\nbackup: not copying: x; the tidy keeps every video on YouTube\nvideo-worker: auto exited with 3\n"), [1, 0, 0]);
   // An exit 3 after anything else is a failure, and so is another exit after the cap message.
   assert.deepEqual(classify("the token was refused\nvideo-worker: auto exited with 3\n"), [1, 0, 0]);
   assert.deepEqual(classify("本月已產生 40 支草稿，達到上限 40 支\nvideo-worker: auto exited with 4\n"), [1, 0, 0]);

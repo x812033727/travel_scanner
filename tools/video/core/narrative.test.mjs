@@ -456,3 +456,108 @@ test("lint reads the storytelling of a narrated episode: the teaser is an error,
   assert.deepEqual(lintVideo(fixture(), context()).errors, []);
   assert.deepEqual(narrativeProblems(fixture(), estimateTimeline(fixture()), { minutes: 0.5 }).errors, []);
 });
+
+// The tutorial's flow (teaching-flow.md, 2026-10-21): two popular tutorials read against the story
+// wording failed 10 and 8 of the 12 required questions; a tutorial gets the same ids worded for a
+// lesson, a chapter may open on the running example's state, and a voiced objection is a hook.
+import { INTERJECTION, OPEN_LOOP_FAMILY, panelQuestions, PROGRESS_CARRIER, TUTORIAL_PANEL_QUESTIONS } from "./narrative.mjs";
+
+test("a tutorial reads the panel in its own wording, same ids and required flags; every other script keeps the story wording", () => {
+  const story = panelQuestions(fixture());
+  assert.deepEqual(story, NARRATIVE_PANEL);
+  const tutorial = panelQuestions({ ...fixture(), category: "tutorial" });
+  assert.deepEqual(tutorial.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
+  assert.deepEqual(tutorial.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
+  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 12, "outro_no_next keeps the story wording");
+  assert.match(tutorial.find((question) => question.id === "no_toc").question, /承諾句/);
+  assert.match(tutorial.find((question) => question.id === "chapters_link").question, /「好，」「所以，」開頭/);
+  assert.match(tutorial.find((question) => question.id === "open_loops").question, /你可能會想/);
+  assert.doesNotMatch(story.find((question) => question.id === "no_toc").question, /承諾句/);
+  const payload = panelPayload({ ...fixture(), category: "tutorial" }, estimateTimeline(fixture()));
+  assert.equal(payload.questions.find((question) => question.id === "no_toc").question, TUTORIAL_PANEL_QUESTIONS.no_toc);
+  assert.equal(panelQuestions({ ...fixture(), category: "explainer" }), NARRATIVE_PANEL);
+});
+
+test("a chapter that opens on the running example's state or the viewer's question is a progress sentence, not a label", () => {
+  for (const opener of ["好，這四個基本功都搞定了，現在來看它實際能把這場講座做出什麼。", "接下來就是最關鍵的部分，我前面說過，一個能碰你電腦的東西，你得先學會駕馭它。", "所以，名單整理完、活動頁也做好了，接下來我會讓它先總結目前的狀態。", "接下來你可能會想，怎麼又要寫一個 markdown。", "好，那到底要怎麼用？"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = opener;
+    assert.deepEqual(chapterOpenerProblems(doc, estimateTimeline(doc)), [], opener);
+  }
+  for (const label of ["好，接下來我們來看第二點。", "所以，再來是權限。", "那麼，先講它是什麼。"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = label;
+    assert.equal(chapterOpenerProblems(doc, estimateTimeline(doc)).length, 1, label);
+  }
+  assert.equal("好，接下來我們來看第二點。".replace(INTERJECTION, ""), "接下來我們來看第二點。");
+  assert.equal(PROGRESS_CARRIER.test("接下來我們來看第二點。"), false);
+});
+
+test("a voiced objection is an open loop", () => {
+  for (const text of ["你第一次看到可能會想，怎麼又要寫一個 markdown。", "到這裡你可能會有個疑惑，那它跟 Memory 差在哪。", "看到這邊可能覺得很難，其實沒有。", "很多人應該想都沒想到，ChatGPT 現在也有 Skills 了。"]) {
+    assert.ok(Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(text)), text);
+  }
+  assert.equal(OPEN_LOOP_FAMILY.objection.test("這一句只是把範例拉長到一集的長度。"), false);
+});
+
+import { panelRulesSha256 } from "./narrative.mjs";
+
+test("the tutorial wording covers every panel id but outro_no_next, by name", () => {
+  const ids = new Set(NARRATIVE_PANEL.map((question) => question.id));
+  for (const key of Object.keys(TUTORIAL_PANEL_QUESTIONS)) assert.ok(ids.has(key), `${key} is a panel id`);
+  assert.deepEqual([...ids].filter((id) => !(id in TUTORIAL_PANEL_QUESTIONS)), ["outro_no_next"]);
+});
+
+test("a label that only ends in a question mark is still a label", () => {
+  for (const label of ["首先我們來說說它是什麼？", "接下來有了這些基礎，我們來看第二點。"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = label;
+    assert.equal(chapterOpenerProblems(doc, estimateTimeline(doc)).length, 1, label);
+  }
+});
+
+test("the panel contract hash is the questions the reader was sent: a tutorial's differs, a story's is the story hash", () => {
+  const story = fixture();
+  assert.equal(panelRulesSha256(story), PANEL_RULES_SHA256);
+  const tutorial = { ...fixture(), category: "tutorial" };
+  assert.notEqual(panelRulesSha256(tutorial), PANEL_RULES_SHA256);
+  const verdict = { passed: true, answers: [], failed: [], advisory: [] };
+  assert.equal(narrativeRecord(story, verdict, 1).panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.equal(narrativeRecord(tutorial, verdict, 1).panel_rules_sha256, panelRulesSha256(tutorial));
+  // A story verdict recorded before the tutorial wording existed still matches its script.
+  assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), story), true);
+  assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), tutorial), false);
+});
+
+import { MANGA_HOOK_GAP_SECONDS, shotHookProblems } from "./narrative.mjs";
+
+test("a manga-tier drama lands a hook inside every 30 seconds of its shots, with no chapters to lean on (the sticker drama's rule, not the animated dramas')", () => {
+  assert.equal(MANGA_HOOK_GAP_SECONDS, 30);
+  const short = dramaFixture();
+  assert.deepEqual(shotHookProblems(short, estimateTimeline(short)), [], "an episode shorter than the gap is not read");
+  // Twelve narrated shots of a flat statement each: about a minute with nothing hanging.
+  const flat = dramaFixture();
+  const model = flat.scenes.find((scene) => scene.id === "farewell");
+  const letters = "abcdefghijkl";
+  // Valid ids and the first scene's chapter and the thumbnail's shot kept, so lint reads past the schema.
+  flat.scenes = Array.from({ length: 12 }, (_, index) => ({ ...structuredClone(model), id: `pad${letters[index]}`, ...(index === 0 && flat.scenes[0].chapter ? { chapter: flat.scenes[0].chapter } : {}), lines: [{ id: `lpad${letters[index]}`, text: "他把那封信放回抽屜，鎖上，走出書房的門。" }] }));
+  if (flat.thumbnail?.data?.shot) flat.thumbnail.data.shot = "pada";
+  const problems = shotHookProblems(flat, estimateTimeline(flat));
+  assert.ok(problems.length >= 1, "a flat minute is a problem");
+  assert.match(problems[0].message, /no hook between 00:00 and 0\d:\d\d \(\d+ s\): no question left hanging/);
+  // A question, a forward hook or an escalation every other shot closes the gaps.
+  for (const device of ["那封信裡到底寫了什麼？", "先記住這把鑰匙，等一下它會回來。", "但這還不是最怪的。"]) {
+    const hooked = structuredClone(flat);
+    hooked.scenes.forEach((scene, index) => {
+      if (index % 2 === 0) scene.lines[0].text = device;
+    });
+    assert.deepEqual(shotHookProblems(hooked, estimateTimeline(hooked)), [], device);
+  }
+  // Only the manga tier is read: lint warns for it and says nothing for the clips tier.
+  const context = (tier) => ({ series: { slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: tier } });
+  const stills = structuredClone(flat);
+  for (const scene of stills.scenes) scene.data.visual = "still";
+  const manga = lintVideo(stills, context("manga")).warnings.filter((warning) => /no hook between/.test(warning.message));
+  assert.ok(manga.length >= 1, "the manga tier is warned");
+  assert.deepEqual(lintVideo(flat, context("clips")).warnings.filter((warning) => /no hook between/.test(warning.message)), []);
+});

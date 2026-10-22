@@ -401,7 +401,6 @@ export function seriesProblems(series) {
     if (series.image_model !== "image-01") problems.push('series.image_model must be "image-01" for the cute-mystery look');
     if (series.style_preset !== "custom") problems.push('series.style_preset must be "custom" for a story with the cute-mystery look');
   } else if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
-  if (!(Number.isInteger(series.episodes_per_day) && series.episodes_per_day >= 1 && series.episodes_per_day <= 12)) problems.push("series.episodes_per_day must be 1 to 12");
   if (!isText(series.image_model)) problems.push("series.image_model is missing");
   if (!cute && (!isObject(series.look) || Object.hasOwn(series.look, "preset") || !isText(series.look.style) || !isText(series.look.negative))) problems.push("series.look needs a style and a negative prompt, or exactly {preset: \"cute-mystery\"}");
   else if (!cute) {
