@@ -1,0 +1,60 @@
+{
+  "revision": "R35-s53028-source-card",
+  "reason": "Third/final s53028 native human REJECT; source-qualified date card fallback, no fourth image",
+  "before_sha256": {
+    "video.json": "f98955b261259a0f687e409a043afe910fe7e9c38a7630e2b5a2d665ebda4997",
+    "claims.md": "0197cf312874d34cc31895dee05993275357bceac6d81b951fa73334a78841d0",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "dc3bfba35e527d0206a56e78c5784fd8eab7d5fe38c97c59d233280e7861df79",
+    "claims.md": "85eb3ce65fbef3746cd30a311d9af067968b32e5f5152a9c8c24e53d0a1200f9",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53028",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53028",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53028",
+            "text": "九月十日，小屋工程開始。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Close-up waist-up view at a bare-ground 1906 San Francisco relief tent workspace: one unmistakably middle-aged bareheaded carpenter with grey hair, lined cheeks, an oversized round head, wide expressive eyes and a short compact body wears a plain dark civilian shirt; both hands hold a short pale wooden folding ruler with a visible hinged joint and tiny tick marks on top of a separate much wider darker unmarked rough plank resting on one low sawhorse; show both distinct pieces and the full measuring action clearly, only one plain canvas tent wall behind, no completed dwelling or house frame, soft overcast daylight",
+          "camera": "pull back",
+          "visual": "still"
+        },
+        "chapter": "木屋排成街，名額卻有順序"
+      },
+      "after": {
+        "id": "s53028",
+        "template": "big",
+        "lines": [
+          {
+            "id": "s53028",
+            "text": "九月十日，小屋工程開始。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "text": "9 月 10 日，小屋開始興建",
+          "kicker": "1906 年｜舊金山",
+          "sub": "1913 年《舊金山救濟調查》｜英語原文意譯"
+        },
+        "chapter": "木屋排成街，名額卻有順序"
+      }
+    },
+    {
+      "scene": "s53028",
+      "path": "claims.md exact row",
+      "before": "| s53028 | 九月十日，小屋工程開始。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 10 日建屋工程開始，9 月 16 日漢密爾頓廣場完成 20 棟；畫面只作 Q 版原創概念示意：灰髮有面紋、未戴帽的匿名成年木匠，用有折節和小刻線的短木摺尺量另一片明顯較寬、無字的粗木板，木板放在低鋸架，身後僅帆布帳棚牆；不畫完工小屋或屋架，不主張當天確有此人、工具、帳棚工位或這塊木板 |",
+      "after": "| s53028 | 九月十日，小屋工程開始。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查於 1906 年救濟小屋建造脈絡明記原文 `Building began September 10`，下一句記 9 月 16 日漢密爾頓廣場完成 20 棟。三張施工概念原生圖全退件後，本景改用「1906 年｜舊金山」日期與「9 月 10 日，小屋開始興建」來源卡；下標明示 1913 年後出調查及英語原文意譯，不充作 1906 年公文、現場影像、特定工位或具名木匠的證據。 |"
+    }
+  ]
+}
