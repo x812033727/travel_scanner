@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s53-san-francisco-movable-relief
 title: Curio S53 San Francisco movable relief cottages feasibility
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-root
+claimed_at: 2026-10-22T12:33:45Z
 created_at: 2026-10-20T17:28:48Z
 completed_at:
 branch: codex/curio-preproduction-s46-s56-20261020
@@ -224,3 +224,7 @@ scope:
 2026-10-22 R46 [非作者精確來源／畫面紙審](../../docs/videos/curio-s53/review/r46-s53034-mature-outside-shelter-independent-paper.md) **PASS**，收據 SHA `0e6ea9025b3382936c962df0c3713074272918fe6b39068a9a8a5ec597666099`：固定 Survey E 次順位且未分屋界線、精確反填、126 句、lint 0／0、21 KEEP 選圖均過。隨後[STOP 下安全離線回綁與即時預檢](../../docs/videos/curio-s53/review/r46-s53034-mature-outside-shelter-offline-rebind-preflight.md)：正式 manifest 只換 visualHash 至 `12d4b1dcd57ea4c0`，新 SHA `0e57f3346358924e07e9a40f4d84af4d57432b5b52073b162f481e23278fd9c8`，21 KEEP 完整條目／JPEG SHA、contact、ledger、jobs／STOP 不動。即時 image-01 已配置，全站餘 9,818 images、7,773 judges；`s53034 --takes 1 --dry-run` PASS，prompt 604／1070 字、單圖估 US$0.01；本片帳本 US$0.7560／57 image／56 judge／0 預約，低於 US$4.78。**只放行最多 `s53034` 第一張原生圖／一 judge，原尺寸人審不過即停**；不跳 `s53036`。
 
 2026-10-22 R46 [`s53034` 首張原生圖 HUMAN KEEP](../../docs/videos/curio-s53/review/r46-s53034-first-native-keep.md)、[非作者原圖／入選裁圖原尺寸覆核](../../docs/videos/curio-s53/review/r46-s53034-first-native-independent-visual.md)及[逐檔清單](../../docs/videos/curio-s53/review/r46-s53034-first-native-keep-inventory.json)：R46 書面紙審、21 KEEP 安全回綁及 image-01／即時額度／US$4.78 上限／單景 dry-run PASS 後，只買 `s53034` 第一張原圖與一 judge。機器 9.29 PASS，未裁原圖 SHA `962ab7cfc46eb6027305962bc6206d57aa90f5eda41233024c98fd049a85a34e`、入選裁圖 SHA `f68706fcacea4537645c488cca6f2621df2db696a795a597db86467ace3a7895`；銀灰髮有面紋成年住戶站完整帆布／粗木竿帳棚旁，無完工木屋、受配或搬遷暗示。作者與兩位非作者 HUMAN KEEP。實圖雙手藏背後、無明顯木板支撐，地面另有兩片不可讀雜物；僅以[可逆單列差分](../../docs/videos/curio-s53/review/r46-s53034-first-native-claims-match-structured-diff.json)及[另一位非作者紙審 PASS](../../docs/videos/curio-s53/review/r46-s53034-first-native-claims-match-independent-paper.md)把 claims 寫成實圖，新 SHA `05cf94f523ccdcd825ceb7dc78b0c5b61945f0bd3d4367a00364fe095dba50aa`，來源／126 句／音訊及 video 不動，lint 0／0。有效 manifest **22 KEEP** SHA `116b28ed12436e90f4fe1f16300ed670372691df94325ec7326556087512532d`，前 21 完整條目與所選 SHA 全不變；帳本 **US$0.7695／58 image／57 judge／0 預約**、STOP/jobs clean。110 景 shot 尚缺 88；下一景 `s53036` 尚須獨立來源／提示預檢和新媒體條件，不直接開畫。
+
+2026-10-22 R47 [下一景 `s53036` 原版申請單付費前獨立預檢](../../docs/videos/curio-s53/review/r47-s53036-unchanged-application-preflight.md) **PAPER HOLD**，收據 SHA `0537b6817bdf4e63ff25c1e1fec22b56b61e18fa372e4ccd61a92571b562395f`：R4 已刪除 `s53035`，實際下一景 `s53036` 旁白講有些未燒毀住處但需改善者也領小屋；原提示讓人研究空白申請單，是 Survey E 未載的書面程序且缺清楚成年線索。私人 22 KEEP、STOP/jobs 與帳本 US$0.7695 未動；不得以原提示付費。
+
+2026-10-22 R47 [`s53036` 成年受屋概念書面窄修候選](../../docs/videos/curio-s53/review/r47-s53036-mature-cottage-recipient-author.md)與[精確可逆差分](../../docs/videos/curio-s53/review/r47-s53036-mature-cottage-recipient-structured-diff.json)：只改未開畫 `s53036` prompt／claims 同列，從空白申請單改為銀灰髮有面紋的成年女性站在一棟低矮完工救濟小屋旁，遠後方概念性示意完好但擁擠的舊住處；不畫申請、交屋、鑰匙、入住或下一句才談的移往自有／承租地。固定 Survey E 的「有些未燒毀住處者也領屋」及其他 123 景／126 句／音訊不動。新 video SHA `bb1f7bcd556f8c687cc4683eeeb665e0edd762a5e7f39c0ab42e9cfa433bae1c`、claims SHA `a7663e1ce64e53c31cdd36746237417955122ddfd52cc9c9276b45684e9c3612`、visualHash `9568d4ed7e317c66`；反填逐位元回 R46、lint 0／0、單景 dry-run prompt 650／1072 字。私人 22 KEEP 尚綁 R46、STOP/jobs clean、帳本 US$0.7695 不變；本輪無回綁或付費。**待不同作者 R47 紙審 PASS** 才能安全回綁與最多購第一張 `s53036` 一圖一審。
