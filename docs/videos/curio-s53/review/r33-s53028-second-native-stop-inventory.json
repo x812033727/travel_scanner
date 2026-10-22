@@ -1,0 +1,223 @@
+{
+  "revision": "R33-s53028-second-native-stop",
+  "human_decision": "REJECT",
+  "frozen": {
+    "video_sha256": "b41e032ca0006897cf12328d43a0f1f13383d5645892eb34c89d7ba917ca8cfd",
+    "claims_sha256": "f0e4d90b916e6676b9b70dc0637412bc29e00e6335abfa298f5f10edb68edbba",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "r33_paper_sha256": "5ea88735a8a2ccb24b4fb4f8689af4bd51155e1f02059c629b22ccbb40a86f7b"
+  },
+  "preflight": {
+    "dry_run_exit": 0,
+    "image_model": "minimax image-01",
+    "correct_cli_env_root": "/workspace/.video-work",
+    "global_images_remaining": 9980,
+    "global_judge_calls_remaining": 8233,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "1c97c4ab17ffcae0624c0f312d731c9b7c91919c167d0c7f41aee1e6cbdc12bf",
+    "previous_manifest_backup_sha256": "b080a08e4ddecaf1dfd84ebb67fb436cbecc542e3cf4ff5983fc0b66dc04971b",
+    "contact_sheet_sha256": "0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930",
+    "ledger_sha256": "a29940cf76954de8595a3eaacd1a56da94a22a2a2508537dffc96661a384cc8b",
+    "usd": 0.6075,
+    "images": 46,
+    "judge_calls": 45,
+    "keep_count": 18
+  },
+  "shot": {
+    "id": "s53028",
+    "actual_native_attempt_number": 2,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53028-1.jpg",
+      "sha256": "433affe85ed0e5c9db5b61fadaeb9cf228a06a6c2ea8e8574c264eccfdee1f2e",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53028-1-trim.jpg",
+      "sha256": "87e41ddf06d462214a39e8cddb5073482745827d37f4a13f6ec127d2b4d36789",
+      "dimensions": "1280x720",
+      "trim": {
+        "top_percent": 7.3
+      }
+    },
+    "request_key": "4592b1134f5d8aad",
+    "judge": {
+      "overall": 9,
+      "passed": false,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 0,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "style: character and artwork lack the requested chibi explainer cartoon aesthetic and palette → cute chibi cartoon style with exaggerated features",
+        "details: only one marked stick is present instead of both a folding rule and a loose plank → wooden folding ruler resting on a separate rough plank"
+      ],
+      "notes": "The visual misses the specified chibi YouTube explainer animation style. Additionally, the scene combines the rule and plank into a single piece of wood on the sawhorse."
+    },
+    "machine_needs_review": true,
+    "human_decision": "REJECT",
+    "human_reason": "Historically suitable bareheaded mature adult and canvas tent, but near-realistic body/face are stark style drift from fixed chibi look; one marked horizontal stick is not a separate ruler on a loose board, so clear board measurement is absent."
+  },
+  "rejected_native": {
+    "manifest_sha256": "0e724be5182a570ae88c0ca94de2226b2970fa175d23388d406fa63ab700f631",
+    "contact_sheet_sha256": "be9bd10ac31816db0db549de415a7f07001e9a5ccf51eb1e784130cd4c02bbda",
+    "private_original_backup": "rebind-backups/r33-s53028-second-native-rejected-original.jpg",
+    "private_selected_backup": "rebind-backups/r33-s53028-second-native-rejected-selected.jpg"
+  },
+  "after_restore": {
+    "manifest_sha256": "1c97c4ab17ffcae0624c0f312d731c9b7c91919c167d0c7f41aee1e6cbdc12bf",
+    "contact_sheet_sha256": "0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930",
+    "ledger_sha256": "51419ed2bc7373282deb3af23f3cdb1ae12c7243d1e5b3eb996b43f4d65c1c5c",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "jobs_empty": true,
+    "usd": 0.621,
+    "images": 47,
+    "judge_calls": 46,
+    "reservations": 0,
+    "keep_count": 18,
+    "active_s53028": false,
+    "total_shots": 113,
+    "missing_shots": 95,
+    "keyframe_problems": 0
+  },
+  "prior_keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    },
+    {
+      "id": "s53023",
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "f13e14b86dc5717ecfad7ae7b4b2c332fd63daf7ed94a06abf5aff1e15e1503f",
+      "request_key": "31d9deaa1374075e",
+      "unchanged": true
+    },
+    {
+      "id": "s53024",
+      "file": "keyframes/s53024-1-trim.jpg",
+      "sha256": "b297b0078061392271ec4c8c2fdee606469aa87a2397d2850bdad43a754967a5",
+      "request_key": "6d290a6027a337ae",
+      "unchanged": true
+    },
+    {
+      "id": "s53025",
+      "file": "keyframes/s53025-1-trim.jpg",
+      "sha256": "16e9f62963e0cb17c614b0c90ca76e76ee93a4755c85983d8f90962810dea9c3",
+      "request_key": "3ca9726b1ab95a1f",
+      "unchanged": true
+    },
+    {
+      "id": "s53027",
+      "file": "keyframes/s53027-1-trim.jpg",
+      "sha256": "1b1f054057a8fe506086112fe03b8fccc266245833998042d77014f277c49349",
+      "request_key": "ea3586917e242f62",
+      "unchanged": true
+    }
+  ]
+}
