@@ -86,3 +86,20 @@
 舊版來源差異 PASS、兩位 HOLD 及歷次審查只對各自舊 SHA 有效。此新稿待另一代理獨立來源／畫面差異核查及兩位只讀新版旁白的盲讀；念法、站主劇本決定、實際正文 ≥480 秒、插圖可見時間、費用、上傳與發布都未通過。沒有付費呼叫或作者自評 PASS。
 
 定向核對另確認：兩份輸入的 ID 集合與順序完全一致，四個刪除 ID 未殘留於本版劇本／分鏡，插圖英文提示詞沒有商標、具名人物或可讀文字要求。`git diff --check` exit 0（僅有作者收據 CRLF 正規化提示）。`npm run check:tasks` exit 1，錯誤仍是前述兩份無關 open／done 重複 ghost 票；未更動或提交它們。未跑與這次純內容縮稿無關的全套 `test:docs-videos`。
+
+## 2026-10-23 v6 盲讀 A HOLD／B PASS 後的作者 v7 修訂
+
+[v6 獨立來源／畫面差異收據](reviews/independent-source-visual-delta-v6.md) 對下表**舊位元**判 PASS。其後兩位新讀者只讀舊稿 76 行有序旁白：`/root/c12_pyrex_v6_blind_a` 判 **HOLD**，`/root/c12_pyrex_v6_blind_b` 判 **PASS，附修飾建議**。這是兩個不同判定；協調者轉交的各別摘要、檔案雜湊與逐行核對寫在[作者轉記](reviews/blind-narration-v2-a-b-holds.md)，不是作者或讀者自行簽署的新 PASS。
+
+| 檔案 | v6 獨立審查／盲讀輸入 SHA-256 | 本次作者修訂 SHA-256 |
+| --- | --- | --- |
+| `script.md` | `94731B29EF097EBE42CD6ACF892BF79607284B293A47CFF04CD0D42021BC5500` | `90CF888F4EE98CC87D381D90D72C08160CF7C11042BF09C473D5D74B8C6D7A9C` |
+| `visual-plan.md` | `FE10E6874A9A7B7DDCDEF8C978147C2E3E6864281E5D6E336ED1AF9C350B1A05` | `DD9BEFC3642BFCAA1806C8F86AB8DF7BD2089872F92A296EC914A93325E9C5CA` |
+
+相對舊稿，旁白**刪除七個 ID**：`O10, I05, I14, E04, E07, E13, T12`；**修改二十二個存留 ID**：`H02, H05, O04, O06–O09, I11, I13, E03, E08, T11, T13, N02, N05–N09, N11–N13`。畫面同步刪除同七個 ID，並**修改五個存留 ID**：`O09, T11, N05, N12–N13`。O04–O09 現依序交代名稱、工業用途、找市場的人、電池罐與家中轉折；不在 O10 提前點破陶皿。I11 只保留記錄結果，I13 留館方對家廚的比喻；I14、E04、E07 的罐底到商品總結不再重播。E13 的示範預告及 T12 的配方二次提問刪去。H02、H05、O07、E08、T13 也縮短書面轉場。
+
+T11 新增的是具體測試後建議：[Corning Museum／Rakow Library 的 *Women and Pyrex*](https://blog.cmog.org/2015/women-and-pyrex) §35–37 說 Maltby 團隊建議蛋糕烤模加把手、改大小與形狀；[Corning 的 Maltby 回顧](https://www.corning.com/worldwide/en/innovation/the-glass-age/inspiration/glass-heroes/dr-lucy-maltby-glass-cookware-innovator.html) §50–58 說公司到 1931 年已有測試廚房、初期先訓練業務員、後來加入產品及改良測試。新句不指定改良的年份、場次或能歸給某一位員工的原型；T10 的初期業務訓練仍在 T11 之前。畫面只用匿名蛋糕模概念圖，不仿可考原件。
+
+N05 現在只問**一件**現售法國烤器，N06 立即依[該件品牌商品頁](https://www.pyrex.eu/en/products/irresistible-plat-a-four-ovale-en-verre-prise-en-main-facile)回答，N07 限制不得概括全法國；N08 先說家用品與實驗室線不同，再依[Corning 實驗室 FAQ](https://www.corning.com/catalog/cls/documents/faqs/CLS-AN-821.pdf)列出後者，N09 明示兩者規格不能互代。N11 在同一句提出舊盤字樣並依[館方大小寫問答](https://libanswers.cmog.org/faq/398431)回答，不鑑定個別舊物。N12–N13 把[館方起源回顧](https://blog.cmog.org/2015/beginning-pyrex)的鐵路 Nonex、電池罐底和 Bessie 蛋糕接回一起，同時說正式商品仍另調方；沒有把燈罩、罐底、1915 年烤器或今日不同市場的品項說成同一原物或配方，也沒有加安全用法。
+
+兩檔現為 **69 個唯一同序 ID**，56 張原創插圖／13 張後製卡，純卡最長連續 2 張。旁白 **2,019 字元**、所列節奏檢查點最大 **155 字元**，都是稿面單位；插圖 `56×5/(56×5+13×8)=72.9%` 是前期保守配置，非成片可見秒數。短稿能否達正文 **480 秒**未知，不能填重複內容補長；須待獨立來源／畫面差異審查、兩位新雜湊盲讀、獨立念法、站主劇本決定及日後配音時間碼實測。作者沒有替新 SHA 自判來源或盲讀 PASS，沒有生成圖片、配音或花費點數。
