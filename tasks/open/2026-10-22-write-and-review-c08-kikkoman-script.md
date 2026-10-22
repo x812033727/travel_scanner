@@ -54,7 +54,7 @@ scope:
 
 ## Current checkpoint (2026-10-22)
 
-真正只看旁白的讀者對 82 句舊稿判 HOLD：來源口吻和握瓶細節拖慢第 2–3 章，第 4 章的雙難題對「控流」沒有交付可查的解法，第 5 章後半的館藏／年份像清單，片尾沒回到最後一滴。作者已依此改成 75 句／75 鏡、64 shot／11 card，保留 1961 上市、2005 入藏、2018 立體商標；口語欄 2,084 字元，只是字數，**未實測正文 480 秒**。舊版的來源 PASS 收據失效，這版仍待獨立逐句來源核查、兩名只看新旁白的乾淨盲讀、獨立視覺預檢及站主稿件核准。`script.md` SHA-256 `D0A155AF6B0284C513A375E10FE26C0E1E08C07FB4B6E452C6232A4FDA869F05`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；`script-source-addendum.md` SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。作者 ID／鏡數／卡片／禁字與 `git diff --check` 自檢 PASS。本機 `npm run check:tasks` 仍因兩張 reviewer 的未追蹤 open 副本與已提交 done 同 ID 失敗；刪除先前遭 `blocked by policy`，本輪未重試。無付費、無上傳。
+真正只看旁白的讀者對 82 句舊稿判 HOLD：來源口吻和握瓶細節拖慢第 2–3 章，第 4 章的雙難題對「控流」沒有交付可查的解法，第 5 章後半的館藏／年份像清單，片尾沒回到最後一滴。作者已依此改成 75 句／75 鏡、64 shot／11 card，保留 1961 上市、2005 入藏、2018 立體商標；口語欄 2,084 字元，只是字數，**未實測正文 480 秒**。獨立 75／75 來源查核只退回 c080207 的「太重」；現已縮為「笨重」，待新 SHA 差異覆核、兩名只看新旁白的乾淨盲讀、獨立視覺預檢及站主稿件核准。`script.md` SHA-256 `7D2082C3A0A74F63CCDF43EE5921F9703D22A744821A934989D29C04500CB732`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；`script-source-addendum.md` SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。作者 ID／鏡數／卡片／禁字與 `git diff --check` 自檢 PASS。本機 `npm run check:tasks` 仍因三張 reviewer 的未追蹤 open 副本與已提交 done 同 ID 失敗；刪除先前遭 `blocked by policy`，本輪未重試。無付費、無上傳。
 
 ## Notes
 

@@ -1,8 +1,8 @@
 # C08 龜甲萬｜逐鏡作者技術預檢
 
 - 日期：2026-10-22（Asia/Taipei）；執行者為逐字稿／逐鏡作者。**這不是獨立視覺審查、逐句來源 PASS、生成素材驗收或站主核准。**
-- 本輪稿件：`script.md` SHA-256 `D0A155AF6B0284C513A375E10FE26C0E1E08C07FB4B6E452C6232A4FDA869F05`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；[R1 實讀補充](../script-source-addendum.md) SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。
-- 前輪 [82／82 獨立來源 HOLD](line-source-review-20261022-r1-82.md) 與其 [修訂差異 PASS](line-source-review-20261022-r1-82-delta.md) 只適用於舊 SHA。之後一位嚴格旁白盲讀者仍判敘事 HOLD，作者依意見重排與刪去重複句；**本輪不自認獨立來源或敘事 PASS**。新 SHA 待另一代理重新查核、兩位乾淨盲讀與獨立視覺預檢。
+- 本輪稿件：`script.md` SHA-256 `7D2082C3A0A74F63CCDF43EE5921F9703D22A744821A934989D29C04500CB732`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；[R1 實讀補充](../script-source-addendum.md) SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。
+- 前輪 [82／82 獨立來源 HOLD](line-source-review-20261022-r1-82.md) 與其 [修訂差異 PASS](line-source-review-20261022-r1-82-delta.md) 只適用於舊 SHA。新 75 句的 [獨立逐項查核](line-source-review-20261022-short-75.md) 對上一版只退回 `c080207` 的「太重」；作者依收據改成「笨重」，其餘 74 句與逐鏡未動。**本輪不自認獨立來源或敘事 PASS**。新 SHA 待差異覆核、兩位乾淨盲讀與獨立視覺預檢。
 
 ## 本輪機械檢查
 
