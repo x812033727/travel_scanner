@@ -1,14 +1,14 @@
 ---
 id: 2026-10-20-curio-s53-san-francisco-movable-relief
 title: Curio S53 San Francisco movable relief cottages feasibility
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-s53-r11-author
-claimed_at: 2026-10-21T01:49:57Z
+owner:
+claimed_at:
 created_at: 2026-10-20T17:28:48Z
 completed_at:
-branch: codex/curio-s34-endurance-20261019
+branch: codex/curio-preproduction-s46-s56-20261020
 depends_on: []
 scope:
   - docs/videos/curio-s53
@@ -98,3 +98,5 @@ scope:
 2026-10-22 R21 [兩景作者再修](../../docs/videos/curio-s53/review/r21-two-prompt-author.md)及[獨立紙審](../../docs/videos/curio-s53/review/r21-two-prompt-independent-paper.md) **PASS 2／2**：`s53010` 改為成人與木牆圍住的近景庭院，避免長電桿街；`s53018` 由帳棚牆填滿狹縫，避免現代高樓／寬大道。僅兩個提示詞與 claims 同列畫面欄改，劇本／旁白／前 14 張 KEEP 不動；`video.json` SHA `4ac9a518d7387ea66918a89946636ee7dd6412f4926fbe7c5ccbb5a5a249f64a`，`claims.md` SHA `02ee7918a362ce130bed4a9e2c1491f0da80880207d7c57d6aa9eae1820a3022`，lint 0／0。服務 read-only dry-run 20 秒逾時，**未試 R21 原生圖**；STOP／帳本 US$0.4320／33 image／32 judge 不變。恢復後 `s53010` 僅可最後第三張、`s53018` 僅可下一張，均須看原圖而非只信機器；其餘章節／成片仍待。
 
 2026-10-22 媒體站在 `NODE_USE_ENV_PROXY=1` 下恢復已登入 status；R21 [兩張限額原生圖與停線回條](../../docs/videos/curio-s53/review/r21-two-native-stop.md)、[雜湊清單](../../docs/videos/curio-s53/review/r21-two-native-inventory.json)已按各一 take 完成。`s53010` 第三／最後一張沒有現代車與電桿街，但原圖黑邊、人物偏右且畫風較成熟，裁圖僅解黑邊，機器 9／10 FAIL；**HOLD，不買第四張**，先評估同章收圖重用或來源卡，另人紙審。`s53018` 第二張實際原圖沒有高樓，但帳棚如照片、人物正面全身且通道過寬，機器 9／10 FAIL、人工 **REJECT**；任何下一輪先改畫面方案再獨立紙審。14 張舊 KEEP 條目／檔 SHA 未動，STOP 已恢復、jobs 空。帳本 **US$0.4590／35 image／34 judge／0 預約**，本輪新增 US$0.0270，低於 US$4.78 上限。其他分鏡、網站卡、人耳、配樂、長短片與 Studio 連結仍待完成。
+
+2026-10-22 R22 [地震日來源卡與南公園窄景作者候選](../../docs/videos/curio-s53/review/r22-s53010-card-s53018-prompt-author.md)已凍結：`s53010` 三次原生圖已盡，不買第四張，改為有 1913 年調查歸屬的 1906-04-18 日期／事件卡；`s53018` 改為一名成年工作者胸肩近景側身擠過兩道帳棚牆，僅可在獨立紙審後再試一張第三／最後原圖。只改兩個場景及 claims 兩行畫面說明，[可逆差分](../../docs/videos/curio-s53/review/r22-two-scene-structured-diff.json)可逐位元組還原 R21；126 句旁白、其餘 122 景與前 14 張 KEEP 不動。R22 `video.json` SHA `49bdd04e5ebb88ff98cd207c6da0545faf1d1721834a0dc099d514a2daf9fa99`、`claims.md` SHA `34f765eee27fb0ff083413e3e209b42d5dd09b5a2a7a89f16d14556ce1cac44b`，lint 0／0，114／123 正文景為插圖，最長卡片連續 1；帳本仍 US$0.4590，STOP／jobs 空。**待非作者重新核 R22 精確史料、卡片及畫面，方可重綁 manifest 或付費。**網站、人耳、完整分鏡、成片與 Studio 連結待辦。
