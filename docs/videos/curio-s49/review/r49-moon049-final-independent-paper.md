@@ -1,0 +1,5 @@
+# moon049 最後一張提示獨立紙審
+
+PASS。Root重開固定Locke重印文本L501–511：虛構故事先述鏡片完成並運到metropolis，接著製作microscope與mechanical framework。新prompt獨立圓形玻璃鏡片放桌上、旁邊空框相容，不把框內窗片當作鏡片；衣料、木桌為時代相容示意，未重建Herschel真實設備或添加精密尺寸。
+
+逐景逆套moon049 prompt後與HEAD完全一致，全部口播及其餘場景不變；claims僅視覺欄同步。原36KEEP不動；049已2actual，這次只容許1，050已1actual機器FAIL不可重置。capUS$5.30不變，原拒收與付款保持。綁video454ea00f42ca79ba6a4c9a356c6fef736c361d04cf269371653225075b9d2955。
