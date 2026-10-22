@@ -177,6 +177,41 @@ export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
   return problems;
 }
 
+/** The sticker drama's cadence (the manga tier, docs/videos/BINGE.md §畫面等級): a hook inside every 30 s. */
+export const MANGA_HOOK_GAP_SECONDS = 30;
+
+/**
+ * A drama of shots read for the same open loops, with no chapters to lean on: from its first
+ * frame to its last (an outro excluded), a stretch longer than `gap` seconds without a question
+ * left hanging, a forward hook or an escalation is a warning naming its clock. For the manga
+ * tier, whose narrator alone holds the viewer over stills (the owner, 2026-10-22: the sticker
+ * drama's rule, not the animated dramas').
+ */
+export function shotHookProblems(doc, timeline, gap = MANGA_HOOK_GAP_SECONDS) {
+  if (!timeline?.total_frames) return [];
+  const starts = lineStarts(timeline);
+  const outro = (doc.scenes ?? []).find((scene) => scene.template === "outro");
+  const outroAt = outro ? sceneStart(timeline, outro.id) : null;
+  const to = outroAt === null ? frameToSeconds(timeline.total_frames) : frameToSeconds(outroAt);
+  if (to <= gap) return [];
+  const devices = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame === undefined) continue;
+    const at = frameToSeconds(frame);
+    if (at >= to) continue;
+    if (QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text))) devices.push(at);
+  }
+  const points = [0, ...devices.sort((a, b) => a - b), to];
+  const problems = [];
+  for (let index = 1; index < points.length; index++) {
+    const stretch = points[index] - points[index - 1];
+    if (stretch <= gap) continue;
+    problems.push({ path: "scenes", message: `no hook between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no question left hanging, no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了); the manga tier lands one at least every ${gap} s (docs/videos/BINGE.md §畫面等級)` });
+  }
+  return problems;
+}
+
 /**
  * The script's "loops" table (schema.mjs validates its ids and their order): enough of them for
  * the length, one planted in the condensation, none planted in the outro.

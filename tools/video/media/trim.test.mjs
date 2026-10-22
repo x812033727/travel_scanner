@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { ANALYSIS, grayArgs, marginCrop, marginsOf, scaleCrop, trimArgs, trimmedName, trimMargins } from "./trim.mjs";
+import { ANALYSIS, EDGE_INSET_SHARE, grayArgs, insetCrop, marginCrop, marginsOf, scaleCrop, trimArgs, trimmedName, trimMargins } from "./trim.mjs";
 
 /** A grey picture with a flat border of `tone` around a noisy interior. */
 function bordered(width, height, border, tone = 230) {
@@ -54,5 +54,24 @@ test("the ffmpeg arguments read a small grey copy, cut the crop and scale back; 
 
 test("without ffmpeg, or with a picture ffmpeg cannot read, the picture is used as it came", async () => {
   assert.equal(await trimMargins({ env: { FFMPEG_PATH: "/nowhere/ffmpeg" } }, "/tmp", "keyframes/x.png"), null);
+  assert.equal(await trimMargins({ env: { FFMPEG_PATH: "/nowhere/ffmpeg" } }, "/tmp", "keyframes/x.png", { inset: EDGE_INSET_SHARE }), null);
   assert.deepEqual(await trimMargins({ trimImage: async (file) => ({ file: `${file}-t`, sha256: "s", margins: {} }) }, "/tmp", "a.png"), { file: "a.png-t", sha256: "s", margins: {} });
+  // The stand-in is told the inset, as the keyframes stage tells the real one.
+  const asked = [];
+  await trimMargins({ trimImage: async (file, options) => { asked.push([file, options]); return null; } }, "/tmp", "b.png", { inset: 0.04 });
+  assert.deepEqual(asked, [["b.png", { inset: 0.04 }]]);
+});
+
+test("a manga still is cut in by the inset share on every side, inside any paper margin, keeping the aspect and even sides", () => {
+  // No margin: 4% of 512×288 is 20×12 off each side, leaving 472×264 centred.
+  assert.deepEqual(insetCrop(null, ANALYSIS.width, ANALYSIS.height, EDGE_INSET_SHARE), { x: 20, y: 12, w: 472, h: 264 });
+  // The aspect holds to within the rounding of a pixel on the small copy.
+  assert.ok(Math.abs(472 / 264 - 16 / 9) < 0.02);
+  // Inside a margin crop, the inset is taken off the crop, not the picture.
+  const margin = marginCrop(marginsOf(bordered(ANALYSIS.width, ANALYSIS.height, { top: 12, bottom: 12, left: 20, right: 20 }), ANALYSIS.width, ANALYSIS.height), ANALYSIS.width, ANALYSIS.height);
+  const inner = insetCrop(margin, ANALYSIS.width, ANALYSIS.height, EDGE_INSET_SHARE);
+  assert.ok(inner.x > margin.x && inner.y > margin.y && inner.w < margin.w && inner.h < margin.h);
+  assert.equal(inner.w % 2, 0);
+  assert.equal(inner.h % 2, 0);
+  assert.equal(EDGE_INSET_SHARE, 0.04);
 });

@@ -528,3 +528,36 @@ test("the panel contract hash is the questions the reader was sent: a tutorial's
   assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), story), true);
   assert.equal(narrativeReviewMatches(narrativeRecord(story, verdict, 1), tutorial), false);
 });
+
+import { MANGA_HOOK_GAP_SECONDS, shotHookProblems } from "./narrative.mjs";
+
+test("a manga-tier drama lands a hook inside every 30 seconds of its shots, with no chapters to lean on (the sticker drama's rule, not the animated dramas')", () => {
+  assert.equal(MANGA_HOOK_GAP_SECONDS, 30);
+  const short = dramaFixture();
+  assert.deepEqual(shotHookProblems(short, estimateTimeline(short)), [], "an episode shorter than the gap is not read");
+  // Twelve narrated shots of a flat statement each: about a minute with nothing hanging.
+  const flat = dramaFixture();
+  const model = flat.scenes.find((scene) => scene.id === "farewell");
+  const letters = "abcdefghijkl";
+  // Valid ids and the first scene's chapter and the thumbnail's shot kept, so lint reads past the schema.
+  flat.scenes = Array.from({ length: 12 }, (_, index) => ({ ...structuredClone(model), id: `pad${letters[index]}`, ...(index === 0 && flat.scenes[0].chapter ? { chapter: flat.scenes[0].chapter } : {}), lines: [{ id: `lpad${letters[index]}`, text: "他把那封信放回抽屜，鎖上，走出書房的門。" }] }));
+  if (flat.thumbnail?.data?.shot) flat.thumbnail.data.shot = "pada";
+  const problems = shotHookProblems(flat, estimateTimeline(flat));
+  assert.ok(problems.length >= 1, "a flat minute is a problem");
+  assert.match(problems[0].message, /no hook between 00:00 and 0\d:\d\d \(\d+ s\): no question left hanging/);
+  // A question, a forward hook or an escalation every other shot closes the gaps.
+  for (const device of ["那封信裡到底寫了什麼？", "先記住這把鑰匙，等一下它會回來。", "但這還不是最怪的。"]) {
+    const hooked = structuredClone(flat);
+    hooked.scenes.forEach((scene, index) => {
+      if (index % 2 === 0) scene.lines[0].text = device;
+    });
+    assert.deepEqual(shotHookProblems(hooked, estimateTimeline(hooked)), [], device);
+  }
+  // Only the manga tier is read: lint warns for it and says nothing for the clips tier.
+  const context = (tier) => ({ series: { slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: tier } });
+  const stills = structuredClone(flat);
+  for (const scene of stills.scenes) scene.data.visual = "still";
+  const manga = lintVideo(stills, context("manga")).warnings.filter((warning) => /no hook between/.test(warning.message));
+  assert.ok(manga.length >= 1, "the manga tier is warned");
+  assert.deepEqual(lintVideo(flat, context("clips")).warnings.filter((warning) => /no hook between/.test(warning.message)), []);
+});
