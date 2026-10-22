@@ -1,0 +1,58 @@
+{
+  "revision": "R46-s53034-mature-outside-camp-shelter",
+  "reason": "Independent R45 preflight HOLD: original folding tent beside a finished wooden house implies premature assignment or move-in; show one mature outside-camp shack/tent resident at an intact makeshift shelter, without award, waiting days, or boundary fiction",
+  "before_sha256": {
+    "video.json": "52ae0fe8bd2c5f1774af06fb1b74f4da63231122e2f3a868b2742cdc59965fce",
+    "claims.md": "cb950a5cfe810ac1d6e28065e17b80aced461bbaefe53cd07a48bfa869e29b7c",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "1e16b8aaf5718f0df251947136df7e51ca3032346280703c6061feeae381f91d",
+    "claims.md": "81e622a5be8daf793c3f415d803274b5455fb59a0c6380eaa3dcc3689b838f3a",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53034",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53034",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53034",
+            "text": "營地外搭棚的人排在後面，得等官方營地先分完。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot outside an official cottage camp, an unnamed resident folds a plain canvas tent beside a stationary wooden house, soft grey daylight",
+          "camera": "pull back",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53034",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53034",
+            "text": "營地外搭棚的人排在後面，得等官方營地先分完。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot in 1906 San Francisco outside the official camps: one unmistakably mature adult woman with silver-grey hair, lined cheeks and broad adult shoulders stands still with both empty hands beside one intact low makeshift shelter of patched canvas over rough poles and a few loose plank braces. Isolated bare earth, no orderly camp rows, tight plain backdrop, soft overcast daylight. A second-priority shack-or-tent resident as an anonymous concept, not a household receiving a cottage; no finished wooden cottage, folded tent, luggage, key, paper, queue, fence, sign, vehicle, child or other person",
+          "camera": "pull back",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53034",
+      "path": "claims.md exact row",
+      "before": "| s53034 | 營地外搭棚的人排在後面，得等官方營地先分完。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 小屋分配先官方營地，次為營地外棚屋住戶 |",
+      "after": "| s53034 | 營地外搭棚的人排在後面，得等官方營地先分完。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 1913 年調查明記木屋由營地指揮官分配：官方營地住戶列第一，營外棚屋與帳棚住戶列第二；旁白「先分完」只以口語講先後次序，不表示每位官方住戶必獲屋、營外住戶有特定等待日數或此人已受配。畫面是匿名原創次序概念：一位銀灰髮、有面紋與成人肩背的成年女性雙手空著，靜站在完整低矮、補丁帆布架於粗竿並有少量鬆散木板支撐的臨時棚屋旁，背景只留空地；不畫可辨的官方營地邊界、已完工木屋、折棚或搬遷。人物、棚屋及站位不是史料可辨的個案、地點或實際分屋現場，也不宣稱何日獲屋或入住。 |"
+    }
+  ]
+}
