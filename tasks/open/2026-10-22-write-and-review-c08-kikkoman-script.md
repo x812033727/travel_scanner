@@ -17,6 +17,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-final-pass.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-flow-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -68,3 +69,5 @@ scope:
 2026-10-22：真正只看旁白的新盲讀者指出 `c080515` 問「觀眾能否認出無字瓶形」，但 `c080602–604` 只能回答公司所述的日本立體商標註冊；`c080509/514/610` 又重複提醒購買因果。作者將章末問題收窄到**無字樣與圖案的容器外形可否註冊**，保留公司公告與未查 JPO 原件界線；`c080514` 改接瓶形，`c080610` 只說全球累計出貨與零售成交的口徑差。僅修 `c080514–516`、`c080601–602`、`c080610` 旁白和 `c080514` 畫面，保留 92 ID、79 shot／13 card。現版 `script.md` SHA-256 `E2AA781EBB041CBB5A844271540ABB479858E5477FFA51802E8D723E6CAD4474`，`visual-plan.md` SHA-256 `1AA2AF927AD3C2FEBCEECF32A90316539913A242C277F760B03F0EB47323A2CA`。前版獨立 PASS 只綁舊 SHA，已保存為 `reviews/line-source-review-20261022-pre-final-pass.md` 並在原收據標失效；須重新獨立查核，另待兩名新盲讀與獨立美術預檢，不能宣稱稿件已通過。
 
 2026-10-22：獨立代理 `codex-c08-delta-source-review` 比對最後一輪差異，重開 K3 原新聞稿、MoMA 館藏頁與 G1 主辦展品清單，對改動的六句旁白及一列畫面判 **PASS（來源／畫面事實界線）**；未改的 86 句與 91 列沿用前版逐句來源審查。新 `reviews/line-source-review.md` 綁本版兩檔 SHA。92／92 ID 對齊、79 shot／13 card、最多兩連卡與提示詞禁字檢查通過。兩位最終盲讀、獨立美術評審、實際旁白時長及站主劇本核准仍待處理，不涉及付費。
+
+2026-10-22：新盲讀指出第 3 章末承諾「控制流量與少滴」兩邊都解釋，第 4 章的來源與旁白卻只說明瓶嘴內收切面如何減少積液和滴落；同處的事後回顧界線又重複。作者逐一核對 92 句的提問與回收：`c080101/105` → `c080310–312/410–416`；`c080107` → `c080515/601–604`；`c080108` → `c080501–506/614`；`c080214` → `215`、`c080216` → `c080301–313`；`c080304` → `306–309`、`c080317` → `c080410–412`；`c080401` → `402`、`c080408` → `409–411`、`c080417/419` → `c080501–503`；`c080507` → `508–513`、`c080515` → `c080601–604`；`c080607` → `608–610`、`c080611` → `612–614`。`c080615` 是開放留言題。現稿將瓶嘴承諾收窄到 MoMA M1 與設計團隊 D1 能說明的**少積液、少滴**；`c080404` 集中說明館方多年後敘述與缺少逐件原型，`c080413` 只限定效果而不重述資料缺口。第 1 章形狀伏筆也改指可查的公司商標公告。現版 `script.md` SHA-256 `ED7CDBFAB7588F6D3B69A4FC6E4740EAAB349567CE9ADB80493EA0FB5FF14868`；`visual-plan.md` SHA-256 `D696E6A3633E1C8C79FE3AF2B727FF51961E0B2A5ADC9E3EA90002875D3817F2`。前版 PASS 存為 `reviews/line-source-review-20261022-pre-flow-fix.md`，並於原收據標失效；本版需新獨立來源查核、視覺預檢、兩位新盲讀與站主核准，均尚未付費。

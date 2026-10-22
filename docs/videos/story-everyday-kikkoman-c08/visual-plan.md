@@ -78,7 +78,7 @@
 | c080312 | shot | Close shot of an anonymous diner watching a single dark drop at the lip of a plain bottle above a clean table, soft lamp light. | gentle pan right |
 | c080313 | shot | Medium shot of an anonymous designer bringing a plain bottle spout close to eye level at a workbench, diffused indoor light. | slow pull-back |
 | c080314 | card | 後製單焦點卡：龜甲萬 2020 回顧「試作超過 3 年」；標 K1。 | 靜態卡／後製切入 |
-| c080315 | shot | Medium shot of an anonymous researcher closing a blank archival folder beside several generic bottle studies, soft desk light. | gentle pan left |
+| c080315 | shot | Medium shot of an anonymous diner returning a plain bottle upright after pouring into a small dish, soft table light. | gentle pan left |
 | c080316 | shot | Close shot of a generic plain bottle spout holding one dark droplet above a white dish, soft overhead light. | gentle tilt down |
 | c080317 | shot | Medium shot of an anonymous designer holding a plain bottle at a workbench and watching its spout, gentle side light. | gentle tilt up |
 
@@ -90,7 +90,7 @@
 | c080402 | shot | Medium shot of an anonymous designer arranging several unmarked bottle studies on a workbench, focused desk-lamp light. | gentle pan right |
 | c080403 | card | 後製單焦點卡：MoMA 2015–16 展覽標籤稱「接近 100 個模型」；標 M1，不能當實物清單。 | 靜態卡／後製切入 |
 | c080404 | shot | Medium shot of an anonymous researcher viewing a few blank model outlines on paper, soft archival desk light. | slow pull-back |
-| c080405 | shot | Medium shot of an anonymous designer arranging several unmarked bottle studies while watching their spouts, mild indoor light. | gentle pan left |
+| c080405 | shot | Medium shot of an anonymous designer lifting a plain bottle above a small dish, with generic bottle studies in the background, mild indoor light. | gentle pan left |
 | c080406 | shot | Close shot of an anonymous adult pouring dark liquid through a plain spout into a small dish, soft window light. | gentle tilt down |
 | c080407 | shot | Medium shot of an anonymous diner turning a plain bottle upright after pouring over a small dish, diffused table light. | gentle tilt up |
 | c080408 | shot | Close shot of an anonymous diner rotating a plain bottle back over a dish as the flow stops, soft side light. | slow push-in |
@@ -99,7 +99,7 @@
 | c080411 | shot | Close shot of a generic plain spout turning upright with dark liquid moving away from its inner tip, soft light. | slow pull-back |
 | c080412 | shot | Medium shot of an anonymous designer pointing to a clipped edge on a generic bottle model, quiet studio light. | gentle pan left |
 | c080413 | shot | Medium shot of an anonymous researcher comparing two blank notes beside a generic bottle study, soft desk light. | gentle tilt down |
-| c080414 | shot | Medium shot of an anonymous diner carefully pouring from a plain bottle at a table, mild indoor light. | gentle tilt up |
+| c080414 | shot | Medium shot of an anonymous diner rotating a plain bottle upright after pouring beside a dish, mild indoor light. | gentle tilt up |
 | c080415 | shot | Close shot of an anonymous adult holding a plain bottle with its spout above a small dish, soft side light. | slow push-in |
 | c080416 | shot | Medium shot of an anonymous diner checking the liquid level through a clear bottle after pouring, gentle table light. | gentle pan right |
 | c080417 | shot | Wide shot of an anonymous worker setting a finished plain bottle among blank cartons, soft workroom light. | slow pull-back |

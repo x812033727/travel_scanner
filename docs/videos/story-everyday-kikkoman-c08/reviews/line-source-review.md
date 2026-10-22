@@ -1,5 +1,7 @@
 # C08 龜甲萬｜最終鉤子修訂獨立來源覆核
 
+> **歷史收據／目前失效：**此 PASS 僅綁下列舊版 script／visual SHA-256。2026-10-22 再修第 1、3、4 章的問題與回收後，現版須重新獨立查核；本收據不得放行現版。
+
 - 判定：**PASS（僅限逐句來源及逐鏡事實界線）**。
 - 審查者：`codex-c08-delta-source-review`；2026-10-22。審查者未撰寫本次旁白或畫面修訂。
 - 草稿 [PR #1681](https://github.com/x812033727/travel_scanner/pull/1681)；送審 head `2e8d34d8b94bf080fbd6753b9ac01af77f64ea41`。
