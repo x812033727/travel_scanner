@@ -14,10 +14,10 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } fr
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
-import { mediaKey } from "./cache.mjs";
+import { mediaKey, readCache, readJobs } from "./cache.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
-import { ledgerTotals } from "./ledger.mjs";
+import { ledgerTotals, readLedger } from "./ledger.mjs";
 import { mayWriteProject, Stage, statusProblem, trackPrice } from "./stages.mjs";
 
 // Ask for a little more than the video so the fade-out does not reach silence; the server
@@ -54,6 +54,30 @@ export async function decodedMusicSeconds(file, env = process.env, tool = null) 
     throw new Error(`could not measure the fully decoded music duration: ${file}`);
   }
   return seconds;
+}
+
+/** A prior music purchase must be reused or reconciled, never silently replaced. */
+async function retainedGeneratedTrack(workdir, key) {
+  const manifest = readJson(manifestFile(workdir), null);
+  const prior = manifest?.source === "generated" ? manifest : null;
+  if (prior && prior.key !== key) {
+    throw new MediaError(`a paid music track already has request ${prior.key ?? "unknown"}; preserve it and review the changed prompt, model or cut length before buying another`, { who: "owner" });
+  }
+  const entry = prior ?? readCache(workdir).entries[key];
+  if (entry) {
+    if (!entry.file || !entry.sha256) throw new MediaError("retained music has no file or SHA-256 binding; reconcile the paid artifact before rerunning music", { who: "owner" });
+    const file = path.join(workdir, entry.file);
+    if (!existsSync(file) || (await sha256File(file)) !== entry.sha256) {
+      throw new MediaError(`retained music ${entry.file} is missing or differs from its saved SHA-256; restore or reconcile the paid file before rerunning music`, { who: "owner" });
+    }
+    return { file: entry.file, sha256: entry.sha256, key, reused: true };
+  }
+  const paid = readLedger(workdir).entries.some((row) => row.kind === "music" && row.status !== "failed");
+  const pending = readJobs(workdir).jobs[key];
+  if (paid && !pending) {
+    throw new MediaError("a music request was already paid or reserved, but no retained file or pending job is bound to this request; reconcile its cache and ledger before another purchase", { who: "owner" });
+  }
+  return null;
 }
 
 export async function run(command, args, ctx) {
@@ -114,7 +138,7 @@ export async function run(command, args, ctx) {
   const { ffmpeg } = await locateFfmpeg({ ...process.env, ...ctx.env }); // fail before a paid request if decoding is unavailable
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "music", format: doc.format, now: ctx.now });
   const key = mediaKey("music", { provider: status.music.provider, model: status.music.model, prompt: music.prompt, seconds });
-  const track = await stage.music({ id: "music", key, prompt: music.prompt, seconds, target: `music/${key}` });
+  const track = (await retainedGeneratedTrack(workdir, key)) ?? (await stage.music({ id: "music", key, prompt: music.prompt, seconds, target: `music/${key}` }));
   const actualSeconds = await decodedMusicSeconds(path.join(workdir, track.file), ctx.env, ffmpeg);
   const requiredSeconds = timeline.total_frames / FPS;
   const short = actualSeconds < requiredSeconds;

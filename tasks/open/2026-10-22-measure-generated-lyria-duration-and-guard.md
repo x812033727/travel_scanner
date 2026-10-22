@@ -101,6 +101,21 @@ says `seconds: 600`. No vendor call or media rewrite occurred in that check.
 Draft PR #1669 is stacked on C03 #1652; the ticket moved to review after the
 push. Neither PR was merged or deployed.
 
+Independent review of the first PR head found two bypasses, now corrected in
+the same draft: `dub` called the shared music lookup without an explicit cut
+length, and `Stage.generate` could buy a replacement after a missing or changed
+cached file. The shared lookup now requires full-decode evidence for every
+generated track and infers the cut length from the saved timeline when its
+caller does not pass one. The `music` command validates a retained manifest or
+cache entry before entering `Stage.music`; a prior paid or reserved music row
+without a recoverable artifact or pending job stops for owner reconciliation.
+Tests cover missing cache, corrupt paid bytes, changed request key and the dub
+caller shape; 53 focused media/assembly tests pass. The illustrated dub fixture
+hit a transient Windows `EPERM` while renaming its unrelated speech journal in
+the combined run; the exact failing test passed on a focused rerun. The full
+`test:tools` run was stopped after an extended silent period, so it is not
+recorded as passed.
+
 Existing request-only manifests may still look complete in `pipelineStatus`
 until `music` is rerun for cached measurement. `assemble` rejects them; status
 reconciliation has its own open follow-up task

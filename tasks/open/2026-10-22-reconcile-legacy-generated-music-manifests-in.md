@@ -23,7 +23,7 @@ scope:
 Before the generated-music duration guard, `music/manifest.json` stored the requested
 `seconds` as if it were the delivered length. The C03 Moleskine manifest requests
 600 s although the retained MP3 fully decodes to 174.0016 s. The new guard makes
-`assemble` refuse an unmeasured generated track and can remeasure the cached file
+the assembly and dub paths refuse an unmeasured generated track and can remeasure the cached file
 on a manual `music` rerun, but `pipelineStatus` in `state.mjs` still marks an old
 manifest's `music generated` step done solely from `mix_hash`. Automated runners
 can therefore advance to assembly and hit a hold without offering the remeasurement
@@ -58,5 +58,5 @@ pending while its MP3 and media ledger remain untouched.
 Raised from the duration guard branch (`codex/lyria-duration-guard`, stacked on
 the C03 draft PR). The manual `music` path measures a cached MP3 and writes
 `requested_seconds`, `actual_seconds`, `duration_measurement` and `duration_hold`;
-`assemble` already rejects request-only generated manifests. Do not resubmit the
+the shared music input guard already rejects request-only generated manifests. Do not resubmit the
 provider job merely to update status.

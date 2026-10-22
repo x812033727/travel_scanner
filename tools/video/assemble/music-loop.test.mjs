@@ -7,7 +7,8 @@ import test from "node:test";
 
 import { mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, illustratedFixture, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
-import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { ARTIFACTS } from "../core/state.mjs";
+import { estimateTimeline, FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import { EXIT } from "../cli.mjs";
 import { locateFfmpeg, runTool } from "./ffmpeg.mjs";
 import { run as assemble } from "./cli.mjs";
@@ -35,12 +36,19 @@ test("assembly holds a short generated track, accepts sufficient measured audio,
     assert.match(short.problem, /explicit checked loop/);
     assert.match((await musicInputs(doc, dir, dir, { requiredSeconds: actual + 0.01 })).problem, /shorter than/);
     assert.equal((await musicInputs(doc, dir, dir, { requiredSeconds: 1 })).track.file, file);
+    assert.match((await musicInputs(doc, dir, dir)).problem, /no current cut length/);
+    mkdirSync(path.dirname(path.join(dir, ARTIFACTS.timeline)), { recursive: true });
+    writeFileSync(path.join(dir, ARTIFACTS.timeline), JSON.stringify({ total_frames: 5 * FPS }));
+    assert.match((await musicInputs(doc, dir, dir)).problem, /shorter than the 5\.000 s cut/);
+    writeFileSync(path.join(dir, ARTIFACTS.timeline), JSON.stringify({ total_frames: FPS }));
+    assert.equal((await musicInputs(doc, dir, dir)).track.file, file);
 
     writeFileSync(manifestFile, JSON.stringify({ ...manifest, mix_hash: null, requested_mix_hash: mixHash(doc), duration_hold: true }));
     assert.match((await musicInputs(doc, dir, dir, { requiredSeconds: 1 })).problem, /duration hold/);
 
     writeFileSync(manifestFile, JSON.stringify({ ...manifest, actual_seconds: undefined }));
     assert.match((await musicInputs(doc, dir, dir, { requiredSeconds: 1 })).problem, /no fully decoded actual duration/);
+    assert.match((await musicInputs(doc, dir, dir)).problem, /no fully decoded actual duration/);
     writeFileSync(manifestFile, JSON.stringify({ ...manifest, sha256: undefined }));
     assert.match((await musicInputs(doc, dir, dir, { requiredSeconds: 1 })).problem, /no SHA-256 binding/);
     writeFileSync(manifestFile, JSON.stringify(manifest));

@@ -12,9 +12,9 @@ import { LEASE_FILE } from "../core/project-lease.mjs";
 import { approve } from "../core/approvals.mjs";
 import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
-import { readJobs } from "./cache.mjs";
+import { cacheFile, readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
 import { FIX_ARROW } from "./keyframes.mjs";
 import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
@@ -734,6 +734,24 @@ test("short generated music is measured, held and cached; the owner's own track 
   assert.equal(await main(["music", "--slug", box.slug], again.ctx), EXIT.owner, again.out.stderr);
   assert.equal(site.state.music.length, 1, "the same prompt and length are not paid for twice");
   assert.match(again.out.stdout, /reused/);
+  const paidFile = path.join(box.workdir, manifest.file);
+  const retainedBytes = readFileSync(paidFile);
+  rmSync(cacheFile(box.workdir));
+  const noCache = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], noCache.ctx), EXIT.owner, noCache.out.stderr);
+  assert.equal(site.state.music.length, 1, "an intact manifest remeasures without a cache entry or purchase");
+  writeFileSync(paidFile, "changed bytes");
+  const corrupt = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], corrupt.ctx), EXIT.owner, corrupt.out.stderr);
+  assert.match(corrupt.out.stderr, /restore or reconcile the paid file/);
+  assert.equal(site.state.music.length, 1, "a corrupt paid file cannot trigger a replacement request");
+  writeFileSync(paidFile, retainedBytes);
+  const timelineFile = path.join(box.workdir, ARTIFACTS.timeline);
+  writeFileSync(timelineFile, JSON.stringify({ ...timeline, total_frames: timeline.total_frames + 300 }));
+  const changedCut = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], changedCut.ctx), EXIT.owner, changedCut.out.stderr);
+  assert.match(changedCut.out.stderr, /review the changed prompt, model or cut length/);
+  assert.equal(site.state.music.length, 1, "a new request key after a short hold requires a separate decision");
 
   // The owner's own file: checked against music.sha256 when given, refused when missing.
   const file = path.join(box.dir, "video.json");
@@ -756,6 +774,21 @@ test("short generated music is measured, held and cached; the owner's own track 
   const wrong = context(box, site.fetchImpl);
   assert.equal(await main(["music", "--slug", box.slug], wrong.ctx), EXIT.owner);
   assert.match(wrong.out.stderr, /not music\.sha256/);
+});
+
+test("a missing manifest and damaged cache cannot silently re-buy paid music", async () => {
+  const { box } = prepared();
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], first.ctx), EXIT.owner, first.out.stderr);
+  const manifest = manifestOf(box, "music");
+  rmSync(path.join(box.workdir, ARTIFACTS.music));
+  writeFileSync(path.join(box.workdir, manifest.file), "changed bytes");
+  const second = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], second.ctx), EXIT.owner, second.out.stderr);
+  assert.match(second.out.stderr, /restore or reconcile the paid file/);
+  assert.equal(site.state.music.length, 1);
+  assert.equal(readLedger(box.workdir).totals.music, 1);
 });
 
 test("music under illustrated slides comes from the owner's track, with no drama guard", async () => {

@@ -10,6 +10,7 @@ import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic, resolveSfx } from "../core/drama.mjs";
 import { readJson } from "../core/paths.mjs";
 import { ARTIFACTS } from "../core/state.mjs";
+import { FPS } from "../core/timeline.mjs";
 import { requireSfxManifest, sfxDir, sfxManifestVersion, sfxSetProblems, sfxSounds } from "./sfx.mjs";
 
 /**
@@ -36,12 +37,16 @@ export async function musicInputs(doc, workdir, workBase, { requiredSeconds = nu
     if (!existsSync(file)) return { problem: `generated music file is missing: ${generated.file}; restore the paid artifact or run music to reuse its cached job` };
     if (generated.source === "generated" && !generated.sha256) return { problem: `generated music ${generated.file} has no SHA-256 binding; run music again to verify the retained file` };
     if (generated.sha256 && (await sha256File(file)) !== generated.sha256) return { problem: `generated music ${generated.file} no longer matches its manifest SHA-256; restore the paid artifact` };
-    if (requiredSeconds !== null && generated.source === "generated") {
+    if (generated.source === "generated") {
       if (!(Number.isFinite(generated.actual_seconds) && generated.actual_seconds > 0 && generated.duration_measurement === "ffmpeg_full_decode")) {
         return { problem: "generated music has no fully decoded actual duration; run music again to measure the retained track before assemble" };
       }
-      if (generated.actual_seconds < requiredSeconds) {
-        return { problem: `generated music decodes to ${generated.actual_seconds.toFixed(3)} s, shorter than the ${requiredSeconds.toFixed(3)} s cut; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
+      const needed = requiredSeconds ?? (readJson(path.join(workdir, ARTIFACTS.timeline), null)?.total_frames / FPS);
+      if (!(Number.isFinite(needed) && needed > 0)) {
+        return { problem: "generated music has no current cut length to compare against; run tts or pass the required duration before mixing" };
+      }
+      if (generated.actual_seconds < needed) {
+        return { problem: `generated music decodes to ${generated.actual_seconds.toFixed(3)} s, shorter than the ${needed.toFixed(3)} s cut; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
       }
     }
     track = { file, sha256: generated.sha256 ?? null };
