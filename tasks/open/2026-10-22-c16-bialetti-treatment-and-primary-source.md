@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-c16-bialetti-treatment-and-primary-source
 title: C16 Bialetti Treatment and primary-source matrix
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-bialetti-c16
@@ -22,9 +22,9 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 
 ## Definition of done
 
-- [ ] A six-chapter, chronological, hook-led C16 Treatment and a direct-source M01–Mxx matrix exist under `docs/videos/story-everyday-bialetti-c16/`.
+- [x] A six-chapter, chronological, hook-led C16 Treatment and a direct-source M01–Mxx matrix exist under `docs/videos/story-everyday-bialetti-c16/`.
 - [ ] An independent reviewer checks every proposed factual claim against the cited source and records a content hash and unresolved gaps.
-- [ ] A draft PR targets `codex/brand-stories-new-series-20261020`; the owner still controls Treatment approval. No script or paid production is started.
+- [x] A draft PR targets `codex/brand-stories-new-series-20261020`; the owner still controls Treatment approval. No script or paid production is started.
 
 ## Steps
 
@@ -32,7 +32,7 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 - [x] Create and claim this narrow task on `codex/brand-story-bialetti-c16-treatment`.
 - [x] Write Treatment, sources and claim boundaries.
 - [ ] Obtain independent source review, amend any finding, and bind final file hashes.
-- [ ] Run relevant checks and open a draft stacked PR.
+- [x] Run relevant checks and open a draft stacked PR.
 
 ## How to verify
 
@@ -45,3 +45,5 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 2026-10-23 TST: Treatment and M01–M18 matrix authored. The key catalog citation now uses the Italian ministry's own hosted PDF. **Independent source review remains pending; hold Treatment owner gate, script and production until its hash-bound receipt is recorded.**
 
 Author checks: `git diff --cached --check` and `npm run check:tasks` pass. The broad `npm run test:docs-videos` has six unrelated failures because this fresh worktree has no `pinyin-pro` installed in `node_modules`; this task changes only Markdown and the task record.
+
+2026-10-23 TST: Draft stacked PR #1698 is open with `no-auto-merge`. The first independent review in `docs/videos/brand-story-independent-reviews/C16-bialetti-20261023.md` found exact locator/date issues and set HOLD. Author repair now uses the directly opened complete ADI catalog for printed pp. 154–157, removes the 404 INEI pressure citation, distinguishes the Spanish patent's priority/application/publication dates and company assignee, and adds the 1937 original Gazette model notice. **A separate delta review against the new document hashes is still required before the owner Treatment gate.**
