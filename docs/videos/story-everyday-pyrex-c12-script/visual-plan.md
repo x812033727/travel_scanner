@@ -35,7 +35,7 @@
 | O06 | I | Medium shot of a workshop worker holding a plain glass globe before a shelf of different empty containers, daylight from a high window | 市場轉向的視覺問號。 |
 | O07 | I | Close-up of one anonymous worker moving a glass sample from a rail lantern shelf toward a bare display shelf, daylight from the left | 尋找用途，不暗示已找到客戶。 |
 | O08 | I | Medium shot of an anonymous glass worker carrying a plain tall battery jar inside an early workshop, daylight from a high window | 工業容器為後續試烤埋伏筆；不畫切下罐底或當年原物。 |
-| O09 | I | Medium shot of a plain battery jar and a separate ceramic baking dish on a kitchen worktable, one anonymous cook nearby, soft window light | 電池罐仍非烤皿；兩件物品不可畫成同一物。 |
+| O09 | I | Close-up of one plain glass battery jar standing alone on an early industrial workshop shelf, cool daylight from a high window | 完整電池罐仍在工坊，尚非烤皿；家廚提問只由旁白提出。不畫廚房、陶皿、切下的罐底或帶回家的動作。 |
 | O10 | I | Medium shot of an anonymous home cook pausing beside an empty kitchen oven, one hand resting on the counter, morning window light | 匿名暗示 Bessie 的家廚難題；不畫已碎陶皿的倒序場景。 |
 | O11 | I | Medium shot of two anonymous adults seated over simple supper bowls at a modest dinner table, one pausing to listen, warm evening lamplight | 陶皿已先前在烤箱碎裂；此鏡只畫晚餐談起舊事，不放完整陶皿或重建對白。接 O12 用短暫回想轉場明示那是較早的烤箱破裂。 |
 | O12 | I | Medium shot of an anonymous cook staring at several pieces of a plain shattered ceramic casserole dish inside an open kitchen oven, warm light from the oven | 破碎陶皿的匿名概念插圖，不重建原物或確切事發構圖。 |

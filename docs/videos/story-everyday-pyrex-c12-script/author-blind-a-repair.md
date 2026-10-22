@@ -7,7 +7,7 @@
 | 檔案 | 修訂前 SHA-256 | 本版 SHA-256 |
 | --- | --- | --- |
 | `script.md` | `491AEE730835B0FFC6AC034E544AF25BB257C0CAD354BF0FC845DB8376411036` | `87D9B4BB3E09890C526F291DBAFB1F491201E372FDB2C0826F2418829555DF2B` |
-| `visual-plan.md` | `CB61FB065072CD9B3BA100CBBA087CBFB85D70386A1D86D432804CEF399FD122` | `CDD4EC664406A1B12E3F4BA01CA0D3B67CFF6FE04EC32321DE601441358EB26B` |
+| `visual-plan.md` | `CB61FB065072CD9B3BA100CBBA087CBFB85D70386A1D86D432804CEF399FD122` | `EA563A3EFFF9182EC73C3844E3DB7A413143879A6A13E7A6708D77C5CBCC7CAA` |
 
 旁白改動 34 個 ID：`H02, O02–O05, O08–O10, I06–I07, I11, E09–E13, E15–E16, T16, N01–N14, N16`。畫面改動 8 個 ID：`O08–O10, E11–E13, T16, N03`。兩檔均維持舊版 80 個 ID 的順序與唯一性；鏡型仍是 67 張插圖、13 張後製卡，最長連續純卡 2 張。
 
@@ -26,3 +26,14 @@
 作者本次重讀 [S1 館方歷史回顧](https://blog.cmog.org/2015/beginning-pyrex)、[S2 百年展新聞稿](https://press.cmog.org/2014/presents-exhibition-transformative-impact-pyrex-american)、[S4 歐洲品牌歷史](https://www.pyrex.eu/en-eu/pages/history)、[S5 Corning 實驗室 FAQ](https://www.corning.com/catalog/cls/documents/faqs/CLS-AN-821.pdf)、[S6 館方大小寫研究問答](https://libanswers.cmog.org/faq/398431)、[S7 法國現售單件商品頁](https://www.pyrex.eu/en/products/irresistible-plat-a-four-ovale-en-verre-prise-en-main-facile)，並按既有[來源矩陣](../story-everyday-pyrex-c12/source-matrix.md)限縮旁白。S3 官網 FAQ 本次讀取逾時；N01 的歷史材質主張沒有擴張，仍須由獨立查核者對本版雜湊確認。作者查閱不替代任何獨立審核。
 
 稿面旁白 2,630 字元，相鄰節奏檢查點最長 164 字元；這只用 250 字／分鐘作粗估。舊版[來源差異收據](reviews/independent-script-source-delta.md)、[畫面重核](reviews/independent-visual-sequence-recheck.md)和盲評 A 都綁修訂前的位元，**不能沿用為本版 PASS**。下一關：獨立來源／畫面差異重核、兩位對新雜湊的旁白盲讀、獨立念法審查、站主劇本決定。正文配音 ≥480 秒、插圖可見時間 ≥70%、圖像與付費核准、上傳發布均尚未驗收。
+
+## 2026-10-23 O09 畫面時序修補（作者差異）
+
+獨立[來源／畫面差異重核 v2](reviews/independent-source-visual-delta-v2.md)對 `script.md` 的 34 個差異列判 PASS，對 8 個畫面差異列判 7 PASS、O09 HOLD。O09 原提示把完整電池罐及陶皿放在家廚桌上，早於 I02 才講述的次日「兩個切下的罐底」到家時點。依 [S1 館方回顧](https://blog.cmog.org/2015/beginning-pyrex) §25，本次只修 O09 畫面，不新增家庭史實場面。
+
+| 檔案 | 修補前 SHA-256 | 修補後 SHA-256 |
+| --- | --- | --- |
+| `script.md`（位元未變） | `87D9B4BB3E09890C526F291DBAFB1F491201E372FDB2C0826F2418829555DF2B` | `87D9B4BB3E09890C526F291DBAFB1F491201E372FDB2C0826F2418829555DF2B` |
+| `visual-plan.md` | `CDD4EC664406A1B12E3F4BA01CA0D3B67CFF6FE04EC32321DE601441358EB26B` | `EA563A3EFFF9182EC73C3844E3DB7A413143879A6A13E7A6708D77C5CBCC7CAA` |
+
+本次差異 ID **只有畫面 O09**：完整電池罐留在工坊架上，家廚試用只在旁白中提問；不畫廚房、陶皿、切下罐底或帶回家動作。O08 的工坊搬罐、O10 的匿名家廚及 O11–I02 的破皿／晚餐／次日順序不改。v2 獨立收據對舊畫面雜湊的 O09 HOLD 是修補緣由，不能直接當新畫面 PASS；新畫面須由另一位查核者獨立重核。原 34 句旁白位元未變，其逐來源結論仍限於該旁白雜湊。未生圖、未付費、未做盲讀或站主核准。
