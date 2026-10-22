@@ -28,7 +28,6 @@ async def import_story_file(
     series: str,
     apply: bool = False,
     limit: int | None = None,
-    episodes_per_day: int | None = None,
 ) -> dict[str, Any]:
     """Parse the file and import it; the report as the command prints it."""
     try:
@@ -44,6 +43,5 @@ async def import_story_file(
             series_slug=series,
             apply=apply,
             limit=limit,
-            episodes_per_day=episodes_per_day,
         )
     return report.as_dict()

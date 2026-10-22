@@ -24,6 +24,11 @@ export const MARGIN_FLAT_STD = 10;
 export const MARGIN_TONE_STEP = 8;
 export const MARGIN_MAX_SHARE = 0.08;
 export const MARGIN_MIN_SHARE = 0.006;
+// MiniMax image-01 writes small scribbles and signature-like marks along the edges of about a
+// third of its pictures (the 20 samples of 2026-10-22, docs/videos/BINGE.md §畫面等級), and a
+// negative prompt does not stop it. A manga-tier still, which fills the frame under a camera
+// move, is cut in by this share on every side (after any paper margin) and scaled back.
+export const EDGE_INSET_SHARE = 0.04;
 
 function lineStats(gray, width, height, side, index) {
   let sum = 0;
@@ -82,6 +87,20 @@ export function marginCrop(margins, width, height, { minShare = MARGIN_MIN_SHARE
   return { x, y, w, h };
 }
 
+/**
+ * The box `share` of its width and height in from every edge of `crop` (or of the whole
+ * picture when there is no margin crop), centred, with even sides: the same aspect to within a
+ * pixel, since both dimensions lose the same share.
+ */
+export function insetCrop(crop, width, height, share) {
+  const base = crop ?? { x: 0, y: 0, w: width, h: height };
+  const dx = Math.round(base.w * share);
+  const dy = Math.round(base.h * share);
+  const w = Math.floor((base.w - 2 * dx) / 2) * 2;
+  const h = Math.floor((base.h - 2 * dy) / 2) * 2;
+  return { x: base.x + Math.round((base.w - w) / 2), y: base.y + Math.round((base.h - h) / 2), w, h };
+}
+
 /** A crop measured on the analysis copy, scaled to the picture's own size. */
 export function scaleCrop(crop, from, to) {
   const sx = to.width / from.width;
@@ -99,13 +118,15 @@ export const trimArgs = (file, crop, size, outFile) => ["-hide_banner", "-loglev
 export const trimmedName = (file) => file.replace(/(\.[a-z0-9]+)$/i, "-trim$1");
 
 /**
- * Trim the paper margin off a picture in `workdir` when it has one. Returns
- * `{ file, sha256, margins }` for the trimmed copy (file relative to the workdir, as the
- * manifest records it), or null when nothing was cut: no margin, no ffmpeg, or a picture ffmpeg
- * could not read. `ctx.trimImage(file) → { file, sha256, margins } | null` stands in for tests.
+ * Trim the paper margin off a picture in `workdir` when it has one, and with `inset` (a share
+ * of each dimension, EDGE_INSET_SHARE for a manga still) cut that much further in from every
+ * edge. Returns `{ file, sha256, margins, inset? }` for the trimmed copy (file relative to the
+ * workdir, as the manifest records it), or null when nothing was cut: no margin and no inset,
+ * no ffmpeg, or a picture ffmpeg could not read. `ctx.trimImage(file, { inset }) →
+ * { file, sha256, margins, inset? } | null` stands in for tests.
  */
-export async function trimMargins(ctx, workdir, file) {
-  if (ctx.trimImage) return ctx.trimImage(file);
+export async function trimMargins(ctx, workdir, file, { inset = 0 } = {}) {
+  if (ctx.trimImage) return ctx.trimImage(file, { inset });
   let tools;
   try {
     tools = await locateFfmpeg(ctx.env);
@@ -117,16 +138,17 @@ export async function trimMargins(ctx, workdir, file) {
     const { stdout: gray } = await exec(tools.ffmpeg, grayArgs(source), { encoding: "buffer", maxBuffer: 4 << 20, windowsHide: true });
     if (gray.length !== ANALYSIS.width * ANALYSIS.height) return null;
     const margins = marginsOf(gray, ANALYSIS.width, ANALYSIS.height);
-    const crop = marginCrop(margins, ANALYSIS.width, ANALYSIS.height);
-    if (!crop) return null;
+    const margin = marginCrop(margins, ANALYSIS.width, ANALYSIS.height);
+    if (!margin && !inset) return null;
+    const crop = inset ? insetCrop(margin, ANALYSIS.width, ANALYSIS.height, inset) : margin;
     const probe = JSON.parse((await exec(tools.ffprobe, sizeArgs(source), { windowsHide: true })).stdout);
     const size = { width: Number(probe.streams?.[0]?.width), height: Number(probe.streams?.[0]?.height) };
     if (!(size.width > 0 && size.height > 0)) return null;
     const out = trimmedName(file);
     await exec(tools.ffmpeg, trimArgs(source, scaleCrop(crop, ANALYSIS, size), size, path.join(workdir, out)), { windowsHide: true });
     const sha256 = createHash("sha256").update(readFileSync(path.join(workdir, out))).digest("hex");
-    const share = (side) => Math.round((margins[side] / (side === "top" || side === "bottom" ? ANALYSIS.height : ANALYSIS.width)) * 1000) / 10;
-    return { file: out, sha256, margins: { top: share("top"), bottom: share("bottom"), left: share("left"), right: share("right") } };
+    const share = (side) => (margin ? Math.round((margins[side] / (side === "top" || side === "bottom" ? ANALYSIS.height : ANALYSIS.width)) * 1000) / 10 : 0);
+    return { file: out, sha256, margins: { top: share("top"), bottom: share("bottom"), left: share("left"), right: share("right") }, ...(inset ? { inset } : {}) };
   } catch {
     return null;
   }

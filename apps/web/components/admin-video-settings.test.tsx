@@ -74,10 +74,19 @@ function merged(body: Record<string, unknown>) {
   return { ...view, ...rest, drama: { ...view.drama, ...(drama ?? {}) }, slides: { ...view.slides, ...(slides ?? {}) }, updated_at: "2026-09-27T08:00:00Z" };
 }
 
+const backupSettings = {
+  enabled: false, path: "AI/備份", lock_path: null, lock_reported_at: null, problem: null, tiers: {}, folder_names: {}, default_folder_names: {},
+  full_categories: [], updated_at: null, test: { pending_id: null, requested_at: null, status: null, message: null, tested_at: null },
+  space: { free_bytes: null, total_bytes: null, at: null },
+};
+const backupStatus = { enabled: false, path: "AI/備份", uploaded: 0, counts: {}, all_backed_up: false, overdue_hours: 24, videos: [] };
+
 function stubFetch() {
   const puts: unknown[] = [];
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     if (String(input).endsWith("/api/travel/admin/video-automation/prompts")) return Promise.resolve(Response.json({ prompts }));
+    // The Drive backup card below the sections (admin-video-backup.tsx) reads its own routes.
+    if (String(input).includes("/api/travel/admin/video-backup/")) return Promise.resolve(Response.json(String(input).includes("/status") ? backupStatus : backupSettings));
     expect(String(input)).toContain("/api/travel/admin/video-automation/settings");
     if (init?.method === "PUT") {
       const body = JSON.parse(String(init.body));
@@ -148,7 +157,7 @@ describe("AdminVideoSettings", () => {
       "max_retake_rounds", "max_verify_rounds", "max_waiting_drafts", "slides", "stage_instructions", "target_minutes_max", "target_minutes_min", "topic_from_search",
       "topic_from_site", "topic_scope", "topics_per_run", "voice",
     ]);
-    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect((await screen.findByText("已儲存", { selector: "[role=status]" })).textContent).toBe("已儲存");
     expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings");
   });
 
@@ -172,7 +181,7 @@ describe("AdminVideoSettings", () => {
     const body = puts[0] as { slides: Record<string, unknown> };
     expect(body.slides).toEqual({ slides_media_enabled: true, slides_image_model: null, slides_max_usd_per_video: 15, slides_auto_approve_storyboard: true, slides_music_track: "bed.mp3", slides_sfx_set: null });
     expect(body).not.toHaveProperty("drama");
-    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect((await screen.findByText("已儲存", { selector: "[role=status]" })).textContent).toBe("已儲存");
     expect(model).toHaveProperty("value", "");
   });
 
@@ -191,7 +200,7 @@ describe("AdminVideoSettings", () => {
     fireEvent.click(screen.getByRole("button", { name: "儲存共用設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     expect(puts[0]).toEqual({ channel_stance: "1. 先把帳算清楚再花錢", topic_avoid: ["Stocks", "Elections"], monthly_token_budget_millions: 30 });
-    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect((await screen.findByText("已儲存", { selector: "[role=status]" })).textContent).toBe("已儲存");
   });
 
   it("shows the drama's part on the drama tab, follows the clip model's resolutions and lengths, and saves the drama object alone", async () => {
@@ -226,7 +235,7 @@ describe("AdminVideoSettings", () => {
     expect(body.drama.character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
     expect(mediaChoice(view.media_options as never, "clips", "minimax", "MiniMax-H3")?.usd_per_second).toBe(0.13);
     expect(mediaChoice(view.media_options as never, "clips", "gemini", "nope")).toBeNull();
-    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect((await screen.findByText("已儲存", { selector: "[role=status]" })).textContent).toBe("已儲存");
   });
 
   it("gives the drama its own narrator voice, standing instructions and language defaults, or follows the tutorial's", async () => {

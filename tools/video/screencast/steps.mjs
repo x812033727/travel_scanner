@@ -41,7 +41,8 @@ const STEP_KEYS = {
   capture: ["focus", "zoom"],
   mask: ["selector", "rect", "optional"],
 };
-const DATA_KEYS = new Set(["title", "caption", "steps"]);
+// `key` and `keys` are the key band's lines, checked by templates.mjs keyProblems (render/plan.mjs).
+const DATA_KEYS = new Set(["title", "caption", "steps", "key", "keys"]);
 
 // A selector that names one of these is a field the agent never types into.
 const SENSITIVE_SELECTOR = /pass(?:word|wd)?\b|passwd|pwd|密碼|驗證碼|otp\b|one-time|2fa|mfa|token|secret|api[-_ ]?key|credit|card[-_ ]?(?:number|no)|cc-|cvc|cvv|ssn|身分證/i;

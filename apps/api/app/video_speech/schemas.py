@@ -132,8 +132,10 @@ class PairingView(BaseModel):
     status: Literal["pending", "approved", "denied"]
 
 
-# The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md).
-TrackLanguage = Literal["zh-TW", "en", "ja", "ko"]
+# The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md),
+# es, pt, id, vi and th among them since 2026-10-20 (tools/video/core/schema.mjs
+# DUB_TARGET_LOCALES).
+TrackLanguage = Literal["zh-TW", "en", "ja", "ko", "es", "pt", "id", "vi", "th"]
 
 
 class TranscribeIn(VideoBudgetAttribution):

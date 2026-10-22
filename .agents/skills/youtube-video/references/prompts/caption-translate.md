@@ -22,10 +22,11 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 ## Rules
 
 - One entry is one spoken sentence. Translate its meaning, not its words; keep every number, price, date, version and product name exactly as in the source (product names in their official spelling for `<LOCALE>`).
-- Length: about the time the sentence takes to say. English at most about 80 characters per line entry, Japanese and Korean at most about 40, Simplified Chinese about as long as the source. The tool splits long entries into caption cues; you do not.
+- Length: about the time the sentence takes to say. English, Spanish, Portuguese, Indonesian and Vietnamese at most about 80 characters per line entry, Japanese and Korean at most about 40, Thai about 60 not counting the vowel and tone marks written above or below a letter. The tool splits long entries into caption cues; you do not.
 - `max_chars` on a line (present when the owner chose a dub for this locale) is a hard budget: the dub must fit the zh-TW line's slot even sped up 1.15×. Stay under it; cut the words around numbers and names, never the numbers and names.
 - Fill only the parts the sheet holds (`parts`): a sheet without lines wants the title, description, tags and chapter names alone; one without those wants the lines alone.
-- Register: en plain and direct; ja です／ます; ko 합니다체.
+- Register: en plain and direct; ja です／ます; ko 합니다체; es neutral Latin-American Spanish with tú (never vosotros, never voseo); pt Brazilian Portuguese with você; id everyday Jakarta Indonesian with kamu, no slang; vi standard Hanoi Vietnamese with bạn; th polite Bangkok Thai, the narrator a woman, so ค่ะ／นะคะ used sparingly and never ครับ.
+- Script: es, pt, id and vi in Latin letters (vi with every tone mark), th in Thai script, none of them with Chinese characters, kana or Hangul; product, company and model names stay in Latin letters. `i18n-merge` refuses a line of those five in the wrong script.
 - Do not add explanations, greetings or anything the narration does not say; do not drop a clause.
 - Opinions stay the owner's first person ("I", 「私は」, "저는", 「我」).
 - Chapter names: what a viewer searching in `<LOCALE>` would type, at most about 30 characters.

@@ -86,6 +86,7 @@ from app.video_reviews.schemas import (
     DUB_LOCALES,
     LOCALE_PARTS,
     VIDEO_CATEGORY_CODES,
+    WORKER_CAPTION_LOCALES,
     YOUTUBE_VIDEO_ID_PATTERN,
     CategoryIn,
     DecisionIn,
@@ -396,6 +397,16 @@ def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     return {str(locale): choice for locale, choice in chosen.items()}
 
 
+def locale_options(project: VideoProject) -> list[DubLocale]:
+    """The languages the panel offers this video (docs/videos/LANGUAGES.md): all eight, for
+    every category and an imported video alike, since 2026-10-20 the worker makes titles,
+    descriptions and captions in each (WORKER_CAPTION_LOCALES), and since 2026-10-20 dubs
+    them too (WORKER_DUB_LOCALES). What of a language may be chosen is ``_apply_locales``'s
+    rule: no dub on a drama whose characters speak."""
+    _ = project
+    return list(WORKER_CAPTION_LOCALES)
+
+
 def _part_state(value: Any) -> tuple[str | None, str | None]:
     """A part as a languages review reports it: "ready" or {"status": "skipped", "reason"}."""
     if isinstance(value, str):
@@ -653,6 +664,7 @@ def _summary(
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
         "locales": choices,
+        "locale_options": locale_options(project),
         "locales_decided_at": project.locales_decided_at,
         "languages": states,
         "worker_state": None if is_short else producer,
@@ -2052,8 +2064,12 @@ async def _apply_locales(
 ) -> None:
     """Store the owner's language choice, note when they first decided, and log the change.
 
-    Explainer dubs keep their narrator-only category rule. A brand story may store a dub
-    choice early; the worker still needs the exact approved cut's switchable-CC QA before
+    Every video may choose titles, captions and dubs in all eight languages: the worker dubs
+    es, pt, id, vi and th as well since phase two of
+    tasks/open/2026-10-19-worker-video-languages-five.md (an imported video's tracks are still
+    made outside the pipeline). Explainer dubs keep their narrator-only category rule, and a
+    drama whose characters speak is refused a dub in any language. A brand story may store a
+    dub choice early; the worker still needs the exact approved cut's switchable-CC QA before
     starting any language production.
     """
     if (project.format or "slides") == "drama" and any(
@@ -2406,8 +2422,9 @@ async def set_locales(
 ) -> ProjectOut:
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
-    Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
-    add and what of each. An empty choice is a decision too ("only Traditional
+    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko, es,
+    pt, id, vi and th to add and what of each (``locale_options``); a dub in the last five only
+    on an imported video (``_apply_locales``). An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a narrator-only explainer may use a
     drama dub. A brand story may save dub intent earlier, but production waits for its current

@@ -5,6 +5,7 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { useAdminOperations } from "@/components/admin-operations-provider";
 import { AdminErrorState } from "@/components/admin-ui";
+import { VideoBackupCard } from "@/components/admin-video-backup";
 import { AdminVideoSettingsTutorial } from "@/components/admin-video-settings-tutorial";
 import { Button, fieldClass, panelClass, Tabs } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
@@ -23,7 +24,9 @@ import { api } from "@/lib/api";
 // claude_code and codex use subscription accounts on the host; the rest use API keys.
 export const PROVIDERS = ["claude_code", "codex", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
-export const CAPTION_LOCALES = ["en", "ja", "ko"] as const;
+// The languages the panel may pre-tick, in its order: the eight the worker makes titles and
+// captions in since 2026-10-20 (apps/api/app/video_automation/schemas.py CaptionLocale).
+export const CAPTION_LOCALES = ["en", "ja", "ko", "es", "pt", "id", "vi", "th"] as const;
 export const SECTIONS = ["tutorial", "shared"] as const;
 export type Provider = (typeof PROVIDERS)[number];
 export type Stage = (typeof STAGES)[number];
@@ -488,5 +491,7 @@ export function AdminVideoSettings() {
       {section === "tutorial" && <AdminVideoSettingsTutorial {...props} />}
       {section === "shared" && <SharedSettings {...props} />}
     </Tabs>
+    {/* The Drive backup of the videos on YouTube (docs/videos/BACKUP.md), whichever section is open. */}
+    <VideoBackupCard />
   </div>;
 }

@@ -23,12 +23,22 @@ export const OPENING_TEASERS = 3;
 export const LOOPS_PER_10_MINUTES = 3;
 
 /**
+ * The tighter cadence of the series one narrator holds alone over still pictures: a brand story
+ * (owner, 2026-10-18: "講故事也要放鉤子，不然會很無聊看不下去"; the story writer's STORY_HOOK_RULES)
+ * and 奇聞檔案局 (owner, 2026-10-19: as good as the brand stories, "比較順也有比較多鉤子"). The
+ * curio episodes of 2026-10-16 measured 69-81 s at their longest and 2-7 stretches over 45 s each.
+ */
+export const TIGHT_CADENCE = Object.freeze({ gap: 45, loopsPer10: 8 });
+/** The cadence every other narrated video keeps. */
+export const DEFAULT_CADENCE = Object.freeze({ gap: HOOK_GAP_SECONDS, loopsPer10: LOOPS_PER_10_MINUTES });
+
+/**
  * A chapter that opens on a label instead of on the event: the sentence says what the chapter
  * will do (「先講大家聽過的版本」「打開檔案的第一頁」「回到清單上」「最後一頁的線索」「接下來」), which is
  * what made the owner's videos read as sections stitched together.
  */
 export const LABEL_OPENERS = [
-  /^(?:先|首先)(?:講|說|從|來|看|聊)/,
+  /^(?:先|首先)(?:我們|你)?(?:講|說|從|來|看|聊)/,
   /^回到/,
   /^(?:打開|翻開)(?:第[一二三四五六七八九十\d]+頁|檔案|下一頁)/,
   /^這一?(?:章|段|集)(?:要|就)?(?:回答|講|說|來)/,
@@ -44,7 +54,24 @@ export const LABEL_OPENERS = [
 export const OPEN_LOOP_FAMILY = Object.freeze({
   forward: /等一下|等等會|先記住|先記著|之後(?:會|再)|晚一點|後面(?:會|再)|最後再|待會/,
   escalation: /但這還不是|還不是最|更怪的是|更離奇|更麻煩的是|問題來了|結果(?:呢|，|：)|沒想到|偏偏|奇怪的是|怪就怪在/,
+  // The tutorial's own hook (teaching-flow.md §三, 2026-10-21): the narrator says the objection the
+  // viewer is about to raise, then answers it (「你第一次看到可能會想」「到這裡你可能會有個疑惑」).
+  objection: /可能會(?:問|想|覺得|有個疑惑)|到這裡你|看到這邊(?:你)?可能|有人會問|你會不會覺得|很多人(?:會|應該)(?:覺得|想|以為)/,
 });
+/**
+ * A spoken interjection a person opens a sentence with (「好，」「所以，」「那，」); stripped before a
+ * chapter's first sentence is read for a label, because the interjection is how a person talks,
+ * not a section marker (teaching-flow.md §四, 2026-10-21).
+ */
+export const INTERJECTION = /^(?:好|所以|那|那麼|OK|欸|嗯)[，、,]\s*/;
+/**
+ * What a chapter's first sentence may carry besides its label and still be a progress sentence:
+ * the running example's state (「名單整理完、活動頁也做好了」「這四個基本功都搞定了」), a question the
+ * viewer is asking, or a callback to what came before. A label that carries none of these is a
+ * label (「接下來我們來看第二點」).
+ */
+// A bare question mark, 之後 or 有了 is not a carrier: 「首先我們來說說它是什麼？」 is still a label.
+export const PROGRESS_CARRIER = /(?:做好了|搞定了|整理完|寫好了|裝好了|跑完了|做完了|弄好了|你可能會|可能會有個疑惑|有人會問|還記得|前面說過|剛剛|開頭|一開始)/;
 const QUESTION = /[？?]\s*$/;
 /** A sentence that brings a fact back on purpose: not a repeat. */
 export const CALLBACK = /還記得|記得嗎|剛剛|剛才|前面|開頭|一開始|回到那/;
@@ -59,7 +86,7 @@ export const NEXT_VIDEO = /下一集|下一支|下一份檔案|下一部|下部�
 export const isNarrated = (doc, series = null) => !isDrama(doc) || isExplainer(doc) || isStory(series);
 
 /** How many loops a script of `minutes` plants at least. */
-export const requiredLoops = (minutes) => Math.max(2, Math.round((minutes / 10) * LOOPS_PER_10_MINUTES));
+export const requiredLoops = (minutes, per10 = LOOPS_PER_10_MINUTES) => Math.max(2, Math.round((minutes / 10) * per10));
 
 const lineStarts = (timeline) => new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
 const sceneStart = (timeline, id) => (timeline?.scenes ?? []).find((scene) => scene.id === id)?.start_frame ?? null;
@@ -106,8 +133,11 @@ export function chapterOpenerProblems(doc, timeline) {
     const to = next ? (index.get(next.scene) ?? doc.scenes.length) : doc.scenes.length;
     const first = firstLine(doc, from, to);
     if (!first || first.scene.template === "outro") return;
-    const text = first.line.text.replace(/^[「『]/, "");
+    const text = first.line.text.replace(/^[「『]/, "").replace(INTERJECTION, "");
     if (!LABEL_OPENERS.some((pattern) => pattern.test(text))) return;
+    // A label that carries the running example's state, the viewer's question or a callback is a
+    // progress sentence, which is how the reference tutorials move between chapters.
+    if (PROGRESS_CARRIER.test(text)) return;
     problems.push({ path: first.label, message: `the chapter 「${chapter.title}」 opens on a label (「${text.slice(0, 14)}…」): open on the event itself, the consequence of what came before, or its answer; the label is what stitches sections instead of telling a story (script-writing.md §故事主線與鉤子)` });
   });
   return problems;
@@ -116,9 +146,10 @@ export function chapterOpenerProblems(doc, timeline) {
 /**
  * The body (after the condensation, before the outro) read for open loops: a chapter turn, a
  * sentence that ends on a question, a forward hook or an escalation (OPEN_LOOP_FAMILY). A stretch
- * longer than HOOK_GAP_SECONDS without one is a warning naming its minutes.
+ * longer than `gap` seconds (HOOK_GAP_SECONDS unless the series keeps TIGHT_CADENCE) without one
+ * is a warning naming its minutes.
  */
-export function hookCadenceProblems(doc, timeline) {
+export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
   const chapters = chapterList(timeline);
   if (chapters.length < 2 || !timeline?.total_frames) return [];
   const starts = lineStarts(timeline);
@@ -127,7 +158,7 @@ export function hookCadenceProblems(doc, timeline) {
   const outroAt = outro ? sceneStart(timeline, outro.id) : null;
   const from = chapters[1].start;
   const to = outroAt === null ? total : frameToSeconds(outroAt);
-  if (to - from <= HOOK_GAP_SECONDS) return [];
+  if (to - from <= gap) return [];
   const devices = chapters.slice(1).map((chapter) => chapter.start).filter((at) => at >= from && at < to);
   for (const { line } of eachLine(doc)) {
     const frame = starts.get(line.id);
@@ -139,9 +170,44 @@ export function hookCadenceProblems(doc, timeline) {
   const points = [from, ...devices.sort((a, b) => a - b), to];
   const problems = [];
   for (let index = 1; index < points.length; index++) {
-    const gap = points[index] - points[index - 1];
-    if (gap <= HOOK_GAP_SECONDS) continue;
-    problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(gap)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${HOOK_GAP_SECONDS} s (script-writing.md §故事主線與鉤子)` });
+    const stretch = points[index] - points[index - 1];
+    if (stretch <= gap) continue;
+    problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${gap} s (script-writing.md §故事主線與鉤子)` });
+  }
+  return problems;
+}
+
+/** The sticker drama's cadence (the manga tier, docs/videos/BINGE.md §畫面等級): a hook inside every 30 s. */
+export const MANGA_HOOK_GAP_SECONDS = 30;
+
+/**
+ * A drama of shots read for the same open loops, with no chapters to lean on: from its first
+ * frame to its last (an outro excluded), a stretch longer than `gap` seconds without a question
+ * left hanging, a forward hook or an escalation is a warning naming its clock. For the manga
+ * tier, whose narrator alone holds the viewer over stills (the owner, 2026-10-22: the sticker
+ * drama's rule, not the animated dramas').
+ */
+export function shotHookProblems(doc, timeline, gap = MANGA_HOOK_GAP_SECONDS) {
+  if (!timeline?.total_frames) return [];
+  const starts = lineStarts(timeline);
+  const outro = (doc.scenes ?? []).find((scene) => scene.template === "outro");
+  const outroAt = outro ? sceneStart(timeline, outro.id) : null;
+  const to = outroAt === null ? frameToSeconds(timeline.total_frames) : frameToSeconds(outroAt);
+  if (to <= gap) return [];
+  const devices = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame === undefined) continue;
+    const at = frameToSeconds(frame);
+    if (at >= to) continue;
+    if (QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text))) devices.push(at);
+  }
+  const points = [0, ...devices.sort((a, b) => a - b), to];
+  const problems = [];
+  for (let index = 1; index < points.length; index++) {
+    const stretch = points[index] - points[index - 1];
+    if (stretch <= gap) continue;
+    problems.push({ path: "scenes", message: `no hook between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no question left hanging, no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了); the manga tier lands one at least every ${gap} s (docs/videos/BINGE.md §畫面等級)` });
   }
   return problems;
 }
@@ -150,10 +216,10 @@ export function hookCadenceProblems(doc, timeline) {
  * The script's "loops" table (schema.mjs validates its ids and their order): enough of them for
  * the length, one planted in the condensation, none planted in the outro.
  */
-export function loopProblems(doc, timeline, minutes) {
+export function loopProblems(doc, timeline, minutes, per10 = LOOPS_PER_10_MINUTES) {
   const problems = [];
   const loops = Array.isArray(doc.loops) ? doc.loops : [];
-  const required = requiredLoops(minutes);
+  const required = requiredLoops(minutes, per10);
   if (loops.length < required) problems.push({ path: "loops", message: `${loops.length} open loop${loops.length === 1 ? "" : "s"} planted; a narrated video of about ${Math.round(minutes)} minutes plants at least ${required}: "loops" lists each as the line that plants it ("setup"), the line that pays it off ("payoff") and what it holds back ("what"), so every hook is answered (script-writing.md §故事主線與鉤子)` });
   if (!loops.length) return problems;
   const chapters = chapterList(timeline);
@@ -233,12 +299,12 @@ export function outroNextVideoProblems(doc) {
 }
 
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
-export function narrativeProblems(doc, timeline, { minutes } = {}) {
+export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
   const length = Number.isFinite(minutes) ? minutes : frameToSeconds(timeline?.total_frames ?? 0) / 60;
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline), ...loopProblems(doc, timeline, length), ...repeatedFactProblems(doc)]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc)]),
   };
 }
 
@@ -268,6 +334,33 @@ export const NARRATIVE_PANEL = Object.freeze([
   { id: "no_detour", required: true, question: "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？" },
 ]);
 
+/**
+ * The same thirteen checks worded for a tutorial (a slides video whose "category" is "tutorial":
+ * teaching cards, the subject something the viewer operates). Two popular tutorials read against
+ * the story wording on 2026-10-21 failed 10 and 8 of the 12 required questions while reading as
+ * one smooth lesson each; what they do instead is written in teaching-flow.md and here. Same ids,
+ * same required flags, so panelVerdict and the writer's revision loop are unchanged.
+ */
+export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
+  scene_first: "前四句（約 15 秒）是否已經有觀眾能指認的具體東西：一個日期或產品名、一個人用觀眾自己的話問的問題、或觀眾此刻的處境加一個張力，而不是問候、「在 AI 快速發展的時代」這種空話、或「今天要來分享」？",
+  no_spoiler: "開場是否沒有把主例的意外結果（量到的數字、那次失敗）在第一章就講完、正文再講一次？（承諾句點名觀眾最後會做出什麼不算講掉。）",
+  one_line: "全片是否只有一條線往前走：每個概念章只用主例的一部分（開資料夾、搬大綱、寫規矩），實戰章再把主例從頭到尾走一遍，走到的每一步都帶出概念章沒講過的新東西（新的要求、新的數字、新的失敗）；一句點名的回呼（「我前面說過…」「還記得…」）不算倒回去；把概念章已經講完的那一步再講一遍、不帶新東西，才算回頭重講？",
+  no_toc: "開場之後，是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）？開場可以有一句承諾句：點名觀眾看完會拿到的東西（最多四樣）和一個數字或成品，整支片只一次；正文中段把內容排成清單（「還沒解釋的是這四件事」）仍算宣告；最後一個內容章「你現在先做這三件」的動作清單（第一件、第二件、第三件各是一個動作）不算。",
+  chapters_link: "每一章第一句是否帶著東西往前走：主例走到哪裡了（「名單整理完、活動頁也做好了」）、觀眾正要問的問題（「到這裡你可能會有個疑惑」）、上一章留下的後果，或一句利害（「這也是新手最該搞懂的」）？「好，」「所以，」開頭是人講話的樣子，不算標籤；拿掉「接下來／現在／好」之後什麼都不剩的句子（「接下來我們來看第二點」「首先我們來說說它是什麼」）才是標籤，不算銜接。",
+  open_loops: "正文是否每 90 秒內至少有一個鉤子：旁白先講出觀眾下一個疑問再答（「你可能會想…」）、跟觀眾現在的做法對照（「ChatGPT 你得先把檔案丟上去」）、一句利害、前向、升級、或轉折？",
+  payoffs: "每一個講出來的疑問和承諾是否都兌現了：疑問緊接著答案；承諾句點名的東西，正文真的做出來、而且做出來的那一刻就是回收（「想加自己的說明書，就在這一頁按加號」），不必再用「還記得」？片尾留給觀眾的留言題（「你現在是貼進網頁版，還是讓它打開資料夾？」）是給觀眾答的，不是掛著的問題。只重複問題、換句話說，或回答另一件事，都不算回收。",
+  no_recap: "同一個數字或事實是否沒有講超過一次？承諾句點名的東西、正文講到時不算重講；最後一個內容章如果是「現在先做這三件」的行動清單，每件是一個動作，也不算；把正文講過的事實再總結一遍、或正文回頭把開場那段再講一次（「就像剛剛那個故事講的」）才算。",
+  chapters_are_events: "章名是不是觀眾會搜尋的問題或做的事（「怎麼讓它只改一個資料夾」「寫一本找餐廳」），而不是功能標籤（背景、介面導覽、總結）？",
+  opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句利害（「它碰得到你的檔案，所以你得先學會駕馭它」）、一個用觀眾自己的話問的問題、一句帶數字或成品的承諾、或一個停在結果之前的主例時刻？（「接下來我們會看到」這種空宣告不算。）",
+  one_thread: "是否有一個例子從開場帶到結尾，每個新概念都先在這個例子裡發生才有名字，每一章都讓它往前走？開場那個問問題的人在片尾回來。一段集中的用途清單可以（每項不超過三句、都走同一個對照、講完主例接手），每章換一個不相干的例子不算。",
+  no_detour: "是否沒有岔出去的段落：每一段都在推進開場那個問題；一句話回答「我的工具能不能用」的支援清單可以，念分數、引言或誰說了什麼的對照清單、推銷別支影片的段落不行？",
+});
+/** The panel for a script: the tutorial wording for a tutorial, the story wording for everything else. */
+export function panelQuestions(doc) {
+  if (doc?.category !== "tutorial") return NARRATIVE_PANEL;
+  return NARRATIVE_PANEL.map((question) => (TUTORIAL_PANEL_QUESTIONS[question.id] ? { ...question, question: TUTORIAL_PANEL_QUESTIONS[question.id] } : question));
+}
+
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */
 export const PANEL_INSTRUCTIONS = `
 You are a blind reader of ONE zh-TW (Traditional Chinese, Taiwan) YouTube narration script. You
@@ -287,11 +380,17 @@ Markdown fence): {"answers": [{"id": "<question id>", "yes": true|false, "eviden
 // This is only the blind narrative panel's contract. A script may be unchanged while its
 // questions or required-answer rules change; other script/fact-check receipts remain valid.
 // Increment verdict_version if panelVerdict's PASS semantics change without a text change.
-export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
+// The hash is of the questions the reader was actually sent, so rewording the tutorial panel
+// leaves every story video's saved verdict valid, and the other way round.
+const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify({
   instructions: PANEL_INSTRUCTIONS,
-  questions: NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })),
+  questions: questions.map(({ id, question, required }) => ({ id, question, required })),
   verdict_version: 1,
 })).digest("hex");
+/** The story panel's contract hash (every script that is not a tutorial). */
+export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
+/** The contract hash of the panel this script is read against. */
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.
@@ -300,14 +399,14 @@ function panelNarrationSha256(doc) {
 }
 
 export function narrativeReviewMatches(check, doc) {
-  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256
+  return Boolean(check?.panel_rules_sha256 === panelRulesSha256(doc)
     && scriptCheckMatches(check, doc)
     && check.panel_narration_sha256 === panelNarrationSha256(doc));
 }
 
 /** The panel's payload: the script as text and the questions, nothing a reader could lean on. */
 export function panelPayload(doc, timeline) {
-  return { narration: narrationText(doc, timeline), questions: NARRATIVE_PANEL.map(({ id, question }) => ({ id, question })) };
+  return { narration: narrationText(doc, timeline), questions: panelQuestions(doc).map(({ id, question }) => ({ id, question })) };
 }
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
@@ -324,12 +423,12 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  */
 const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/;
 
-export function panelVerdict(answer) {
+export function panelVerdict(answer, questions = NARRATIVE_PANEL) {
   const given = new Map();
   for (const entry of Array.isArray(answer?.answers) ? answer.answers : []) {
     if (isObject(entry) && typeof entry.id === "string") given.set(entry.id, entry);
   }
-  const answers = NARRATIVE_PANEL.map(({ id, question, required }) => {
+  const answers = questions.map(({ id, question, required }) => {
     const entry = given.get(id);
     const quoted = typeof entry?.evidence === "string" && entry.evidence.trim() ? entry.evidence.trim().slice(0, 200) : null;
     // A "yes" has to be auditable: the question asks for one line of the narration quoted with its
@@ -393,7 +492,7 @@ export function mergePanelVerdicts(verdicts) {
 export function narrativeRecord(doc, verdict, round) {
   return {
     ...scriptCheckBinding(doc),
-    panel_rules_sha256: PANEL_RULES_SHA256,
+    panel_rules_sha256: panelRulesSha256(doc),
     panel_narration_sha256: panelNarrationSha256(doc),
     round,
     passed: verdict.passed,

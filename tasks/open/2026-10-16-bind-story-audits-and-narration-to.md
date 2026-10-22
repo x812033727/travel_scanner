@@ -18,9 +18,7 @@ scope:
   - tools/video/dubs/cli.mjs
   - tools/video/dubs/dubs.test.mjs
   - docs/videos/story-lexicon-integration.md
-  - tools/video/automation/flow.mjs
   - tools/video/automation/flow.test.mjs
-  - tools/video/automation/automation.test.mjs
   - tools/video/core/state.mjs
   - tools/video/core/state.test.mjs
   - tools/video/core/paths.mjs
@@ -115,3 +113,10 @@ main commit. Release only those two completed code-file claims so the A01
 duration worker can claim them independently. Preserve this ticket's other
 scopes and incomplete production transition; reclaim the files if later edits
 are needed. Draft #1518 remains untouched.
+
+2026-10-19 owner-authorized narrow claim release: release only
+`tools/video/automation/flow.mjs` and
+`tools/video/automation/automation.test.mjs` for task
+`2026-10-19-host-explainer-route-always-adds-the`. Keep `flow.test.mjs`, the
+remaining scope, the A01 80-to-81 transition, and its release gate in progress.
+Reclaim these two files later if the lexicon work needs them again.

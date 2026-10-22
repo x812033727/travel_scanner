@@ -2394,6 +2394,39 @@ test("a stale worker job cannot start or draft a planning-only imported series",
   assert.equal(started, false);
 });
 
+test("a brand story is counted on its own: it starts past the waiting cap, and an active one takes no place from the other drafts", async () => {
+  // seriesStep: a story episode the site handed over starts though the cap is full; another series' episode waits.
+  const asked = [];
+  const stub = (kind) => ({
+    settings: { drama: { drama_enabled: true } },
+    room: () => (asked.push(kind), false),
+    later: (line) => line,
+    api: {
+      seriesNext: async () => ({ kind: "episode", series: { ...SERIES, kind }, episode: { number: 1, slug: "story-folding-umbrella" } }),
+      episodeStart: async () => {
+        throw new AutomationError(`${kind} started`, { status: 409 });
+      },
+    },
+  });
+  assert.match(await seriesStep(stub("story")), /the site refused to start story 1 \(story-folding-umbrella\): story started/, "the story went straight to the site's start");
+  assert.equal(await seriesStep(stub("long")), null, "another series' episode still waits for room");
+  assert.deepEqual(asked, ["long"], "a story does not ask for room at all");
+
+  // room(): only the drafts that are not brand stories fill the cap.
+  const box = sandbox();
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-19T00:00:00Z") });
+  const active = (slug, extra = {}) => {
+    mkdirSync(path.join(box.work, slug), { recursive: true });
+    writeFileSync(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", created_at: "2026-10-18T00:00:00Z", ...extra }));
+  };
+  active("story-adapt-a4-paper-size", { series: { slug: "brand-stories-adapt", episode: 3, chapter: 1, kind: "story" } });
+  active("story-adapt-dolby-licensing", { series: { slug: "brand-stories-adapt", episode: 4, chapter: 1, kind: "story" } });
+  active("news-of-the-hour");
+  assert.equal(new Automation(ctx, automationClient(ctx), { ...site.settings, max_waiting_drafts: 2 }).room(), true, "one draft that is not a story is waiting, under a cap of two");
+  assert.equal(new Automation(ctx, automationClient(ctx), { ...site.settings, max_waiting_drafts: 1 }).room(), false, "the news draft alone fills a cap of one");
+});
+
 test("Automation long-anime writer and repairs use scoped acts with source authority and full native beats", async () => {
   const box = sandbox(); const site = fakeSite({ answers: { "writer:anime-act": ({ payload }) => ({ act_id: payload.act.id, video: { ...dramaFixture(), scenes: payload.video?.scenes ?? [{ id: `${payload.act.scene_prefix}shot`, chapter: "原作", template: "shot", data: { prompt: "Steam rises as a worker turns a valve", camera: "medium", motion: "the worker turns the valve", characters: [] }, lines: [{ id: payload.line_ids[0], text: "先把管路關上。", speaker: "narrator" }] }] } }) } });
   const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T00:00:00Z") });
@@ -2475,4 +2508,53 @@ test("the script verdict reads the craft rows on the script itself: the opening 
   assert.ok(!verdict.problems.some((problem) => /pace\./.test(problem)), "the pace rows are warnings the writer answers, not a reason to send the script back");
   assert.deepEqual(scriptVerdict(passing, SERIES, null), { passed: true, problems: [] }, "without a report (a long anime, no cast) nothing is added");
   assert.deepEqual(scriptVerdict(passing, SERIES, { applies: false, checks: [] }), { passed: true, problems: [] });
+});
+
+test("a one-off that chose the manga tier carries it into series.json, so the lint and the writer hold the script to stills; the default tier is left out as before", async () => {
+  const box = sandbox();
+  const slug = "one-off-7a1b2c3d-e001";
+  const example = dramaFixture();
+  // Every shot a still, as the tier asks: the lint refuses a clip under it.
+  const stills = { ...structuredClone(example), slug, scenes: example.scenes.map((scene) => (scene.template === "shot" ? { ...scene, data: { ...scene.data, visual: "still", camera: scene.data.camera ?? "push in" } } : scene)) };
+  const answers = {
+    "planner:bible": () => BIBLE,
+    writer: (body) => (body.payload.fix ? { video: structuredClone(body.payload.video) } : { video: stills, claims: "原創：山海經北山經\n", lexicon_additions: {} }),
+    verifier: () => ({ report: "# 連貫性第 1 輪\n", video: null, claims: "原創\n", changed_facts: 0 }),
+    listener: (body) => ({ video: body.payload.video, edits: [] }),
+  };
+  const manga = { ...ONE_OFF, visual_tier: "manga" };
+  // The site's answer to the episode start carries the series row the tier lives on.
+  const oneOffStart = (body) => ({
+    request: { id: "one-off-request", premise: manga.premise, title: "精衛", source_guide: null, style_preset: "ink-wash", target_minutes: 2, note: null, status: "started", slug: body.slug, series_slug: manga.slug, episode_number: 1 },
+    episode: { ...oneOffEpisode("started"), slug: body.slug },
+    context: { series: manga, setting: { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...BIBLE, status: "approved" }, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [oneOffEpisode("ready")], recaps: [], mysteries: [] },
+  });
+  const site = fakeSite({ jobs: [job("bible", { series: manga, chapter_number: null, context: { ...job("bible").context, series: manga, setting: null, mysteries: [] } }), job("episode", { series: { ...manga, status: "active", episodes_ready: 1 }, episode: oneOffEpisode("ready") })], answers, oneOffStart });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-22T01:00:00Z") });
+  const dir = path.join(box.root, "docs", "videos", slug);
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "review-push") {
+      const gate = command[command.indexOf("--gate") + 1];
+      const list = site.reviewsOf(slug);
+      if (gate === "script") list.unshift({ id: `script-${list.length}`, gate: "script", status: "pending", choice: null, note: null, decided_at: null, content_sha256: sha(path.join(dir, "script.md")), payload: {} });
+      return { code: 0, out: `${gate} submitted` };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, runCommand: undefined, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  assert.match(await automation.step(), /started from the approved story bible/);
+  assert.deepEqual(readJson(path.join(dir, "series.json")).visual_tier, "manga");
+  const state = automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual(state.series, { slug: ONE_OFF.slug, episode: 1, chapter: 1, kind: "one-off", visual_tier: "manga" });
+  // The next round writes the episode: the writer is told the tier, and the all-still script passes the lint.
+  await automation.step();
+  const writer = site.calls.run.find((run) => run.stage === "writer");
+  assert.ok(writer, "the writer ran");
+  assert.match(writer.instructions, /## Visual tier \(docs\/videos\/BINGE\.md\)\nVisual tier "manga"/);
 });

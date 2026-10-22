@@ -17,7 +17,7 @@ import { presentationTimeline, selectBrandingForBuild, shiftBrandingCues } from 
 import { toSrt, toVtt } from "../core/captions.mjs";
 import { chapterList, compilationHash, compilationLayout, compilationTimeline, isCompilation, mergeCaptions, totalFrames } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { DEFAULT_LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { frameToMs, visualHash } from "../core/timeline.mjs";
 import { audioInputs, cardSegments, checkCompilationLoudness, CompileError, diskProblem, episodeProblem, gigabytes, joinArgs, joinList, layoutLines, overlapProblems } from "./plan.mjs";
@@ -80,7 +80,7 @@ function mergeEpisodeCaptions({ layout, workBase, workdir, hash, branding }) {
   // A branded cut can be approved before captions are regenerated. Its existing SRT must not
   // be interpreted as presentation timing until its manifest binds it to that exact branding.
   const current = new Map(episodes.map((entry) => [entry.slug, !entry.branding_hash || readJson(path.join(workBase, entry.slug, "captions", "manifest.json"), null)?.branding_hash === entry.branding_hash]));
-  for (const locale of LOCALES) {
+  for (const locale of DEFAULT_LOCALES) {
     const file = (slug) => path.join(workBase, slug, "captions", `${locale}.srt`);
     const missing = episodes.filter((entry) => !current.get(entry.slug) || !existsSync(file(entry.slug))).map((entry) => entry.slug);
     if (missing.length) {
