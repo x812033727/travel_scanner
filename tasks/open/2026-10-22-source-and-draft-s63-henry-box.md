@@ -25,6 +25,7 @@ The owner wants more distinct Curio history films with a complete long and Short
 - [x] A distinct A/B outline and recommended single story have an independently feasible pinned primary source, explicit 1848 family-separation versus undated-escape boundary, and full media/end-link plan.
 - [x] A script/storyboard and one-to-one line/source/visual map carry a 30–60 second condensed opener, at least eight minutes of body even at 325 Chinese units per minute, the fixed 5-second intro/21-second outro, and no fabricated upload or paid-media receipts.
 - [x] Frozen author hashes pass the Curio video lint; separate source/visual and fresh official dual-blind narrative audits pass on the same R8 freeze before any paid media.
+- [ ] Produce and verify narration, original artwork, music, animated long film, subtitles, Short and actual upload package with honest links; keep owner and media review gates bound to the final files.
 
 ## Steps
 
@@ -80,6 +81,14 @@ R8 [作者窄幅修稿](../../docs/videos/curio-s63/review/r8-author-repair.md)�
 另一名獨立審核者已就上述**完全相同 R8 三檔雜湊**查核三個新場景與 `s63009→s63120` 回收點，精確確認其餘 124 個場景未動。[R8 史料／畫面回條](../../docs/videos/curio-s63/review/r8-source-visual-independent.md)為 **PASS、無阻擋 ID**；選民比例明示 Brown「聽說」，改革主張明示「若有影響力」。這項來源關本身不判敘事；其後兩位未讀 R7 的新讀者另審相同 R8 凍結封包，結果見下段。
 
 [R8 正式雙人盲讀合併](../../docs/videos/curio-s63/review/r8-formal-merge-audit.md)在完全相同的 R8 凍結稿和官方 13 題上 **PASS 13／13**。全新 A 原票 13／13「是」，全新 B 原票 12／13「是」，B 單獨否決 `no_recap`，因 `s63026` 和 `s63027` 都提「五十美元」；兩句分別是 B02 原文明列的先付及其後每年付款，正式 `mergePanelVerdicts` 逐題 OR 通過。兩張原票、機械合併、三次隔離官方 CLI 輸出及綁定證據全部留存；合併 CLI exit 0，failed／advisory 皆空。史料與敘事稿件關已解鎖；語音、實際插圖、成片、Short、上傳與真實連結仍須逐項製作驗收。
+
+## Production preflight and blocker (2026-10-22 UTC)
+
+站主在本次對話明示「用推薦的決定就好不用問我」；依此**授權代理採推薦選項**，本機 CLI 在 `/workspace/.video-work/curio-s63/approvals.json` 記錄 A 案大綱及完全相同 R8 `script.md` 的核准，note 清楚說明站主未逐頁親審。`brief.md` 為當前狀態而更新後才綁定大綱；`script.md` SHA-256 仍為 `63caedb24623bd8339607dd5b11e249ce1a4e6691779279a6d8c64ef5bbd665e`。
+
+網站配對權杖檔已存在，不記錄或輸出其內容；加 `NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1` 後，`tts --dry-run` 可查到 Gemini Sulafat：127 請求、3,214 計費字元、約月度免費額度 0.6%。`keyframes --dry-run` 查到 MiniMax image-01：**121 張插圖，單次約 US$1.63、每張最多三次時整集上限約 US$4.90**，截至此時 S63 花費 US$0.00。現有 branding 包的片頭 150 格＝5 秒、片尾 630 格＝21 秒；正式成片須檢查片頭落在第一章後及末 16 秒留給 Studio 結束畫面。`music --dry-run` 目前依賴 TTS 時間軸，尚無報價。
+
+首次正式 `tts` 在**未生成首個音檔**時 exit 4，回覆「Gemini 語音暫時忙碌或達到用量上限，請稍後重試」；工作目錄目前只有 `approvals.json`，媒體帳本顯示 S63 **US$0.00**。需在服務可用後重跑相同 `tts`；再逐句 `check-audio`、處理需重唸句、完成音訊審核，才啟動整集插圖生成。不能把本次 dry-run 或網站服務狀態當作已生成聲音、插圖或成片。
 
 ## Notes
 
