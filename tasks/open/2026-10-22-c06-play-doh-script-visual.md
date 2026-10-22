@@ -44,7 +44,7 @@ C06 的企劃已由站主採用，仍缺可審的逐字稿、逐句證據、奇�
 - [x] 讀回 C06 已核准企劃與來源矩陣，建立逐字稿初稿。
 - [x] 逐句獨立來源查核、修訂、兩位盲讀。
 - [x] 製作逐鏡 JSON、視覺預檢與整支報價，執行必要 lint。
-- [ ] 建立草稿 PR 供站主審劇本與逐鏡方向；維持 review 狀態，不在草稿時 `done`。
+- [x] 建立草稿 PR 供站主審劇本與逐鏡方向；維持 review 狀態，不在草稿時 `done`。
 
 ## How to verify
 
@@ -58,3 +58,4 @@ C06 的企劃已由站主採用，仍缺可審的逐字稿、逐句證據、奇�
 - 第一版稿為 94 句，正文純語音仍待合成後實測；不能把片頭片尾動畫加進八分鐘門檻。
 - 2026-10-22：script SHA256 `80671FCE0CC1D03E46B68361173FB547B156C255F1AF10468E3011389E08232F`、video SHA256 `666CD45A5E126D7F17DD95CCE1CACE213B07EAA2597340D3661D5CC3C3C4CBFA`；來源 94／94 PASS、兩位盲讀 PASS、獨立視覺預檢 PASS。80 張插圖、14 張字卡；`lint` 0 errors／0 warnings，`check:tasks` 通過。整支本機試片 US$25 仍只是提案。
 - `npm run test:docs-videos` 235／236 通過；既有 Windows `imported-long-languages/runner.test.mjs:679` 子程序以 3221226505 崩潰、無 stdout/stderr（C05 分支同樣重現）。`tts --dry-run` 因本集尚無可證明的故事工作目錄而回 `STORY_LEXICON_MIGRATION_REQUIRED`；沒有嘗試付費配音。
+- 2026-10-22：草稿 PR [#1676](https://github.com/x812033727/travel_scanner/pull/1676) 疊在 Treatment PR #1674 上，已加 `no-auto-merge`。票維持 review；等站主分別核准稿件及 C06 本集整支付費試片額度。
