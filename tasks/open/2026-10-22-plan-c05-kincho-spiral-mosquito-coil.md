@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-plan-c05-kincho-spiral-mosquito-coil
 title: Plan C05 Kincho spiral mosquito coil story
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c05-kincho
@@ -31,7 +31,7 @@ scope:
 - [x] 從新系列分支開立獨立工作樹和 codex/brand-story-kincho-c05-treatment 分支；本票只占 docs/videos/story-everyday-kincho-c05。
 - [x] 讀 brand-story、youtube-video/story、curio-episode 與一手資料，起草 Treatment、來源矩陣。
 - [x] 獨立代理核對 Treatment 與矩陣，保存內容雜湊、判定與未解風險。
-- [ ] 執行本次涉及的非付費檢查，提交草稿 PR 等站主審方向。
+- [x] 執行本次涉及的非付費檢查，提交草稿 PR #1672 等站主審方向。
 
 ## How to verify
 
@@ -46,3 +46,5 @@ scope:
 獨立來源調查代理提醒：兩名日本專利師指出可能有更早的 1889 年「蚊遣香」特許第 825 號，但本輪未讀到日本特許廳原件。暫不說上山「發明世界第一支蚊香」，也不把該線索寫成已證實的反駁。妻子ゆき的構想依金鳥回顧歸屬；公文書館摘要歸功於上山英一郎，沒有當年逐字證詞。六章可否承載至少八分鐘仍是下階段逐字稿前的證據容量關卡，不靠重述灌長。
 
 獨立代理先判 REVISE，要求移除當下無正文的 Good Design 來源、將僅見 PDF 的早期「六小時」標為 reviewer_only 或刪除、拆開螺旋的長度效果與後來雙卷的運送效果。修訂後對 treatment.md SHA-256 BBA52D1D55CE38560B8C7581EFCC7E739849468882C4FF91146F29F139A93C90、source-matrix.md SHA-256 0939FD2ACEBF84FA8F84559F71C056BD8784E65BD4A875A03687F53B872CA1EA 回報 PASS；收據在 docs/videos/story-everyday-kincho-c05/reviews/source-review.md。這只核准企劃來源界線，不是站主決定。
+
+2026-10-22：草稿 PR #1672（https://github.com/x812033727/travel_scanner/pull/1672）堆疊在新系列草稿 PR #1610，等待站主審本集企劃方向。npm run check:tasks 通過（僅有其他任務的既存 stale／scope 重疊警告）；git diff --cached --check 通過。首次 npm run test:docs-videos 因新工作樹缺少 pinyin-pro 失敗；npm ci 後重跑為 236 測試中 235 通過、1 失敗，失敗在未修改的 docs/videos/imported-long-languages/runner.test.mjs 第 679 行，子程序 package-runtime.mjs 在 Windows 以狀態 3221226505 無 stdout/stderr 結束。本次只有 C05 Markdown 與票；沒有動那組程式或付費媒體。後續若要追全套測試紅燈，依原組件另案處理，不混進 C05 來源審核。
