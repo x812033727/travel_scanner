@@ -4,8 +4,8 @@ title: Curio S38 Pepys fire and cheese historical episode
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-root
-claimed_at: 2026-10-19T23:55:04Z
+owner: codex-root
+claimed_at: 2026-10-22T12:34:43Z
 created_at: 2026-10-19T22:34:43Z
 completed_at:
 branch:
@@ -99,3 +99,5 @@ R8ac PF020 窄修已獲[非作者固定日記紙審](../../docs/videos/curio-s38
 R8ac 雲端 Node fetch 加上既有環境代理後，live status 恢復、PF020 dry-run 322／1072 字且 `image-01` ready；完整精確前置斷言後只購 PF020 **seed 2 一張＋一次 judge**。[未裁切原圖與正式裁圖](../../docs/videos/curio-s38/verify-102-r8ac-pf020-seed2-keep.md)雙方人眼 **KEEP**：成年住戶已放開布包，布包懸於河面上，沒有首圖的黑桿或現代旁觀者；judge 7.88／10 PASS，但袖口粉色形狀粗糙，留下供分鏡複檢。active manifest **13 selected KEEP**，舊 12 筆 canonical SHA 與所選檔 SHA 均不變；ledger **US$0.8360／56 image／56 judge／1 music**，另有舊 US$0.0035 reservation，STOP 在位、jobs 空。PF021／PF022 尚未購圖，只能按既有書面 PASS 各受控單景試一張、檢查原圖；完整影片未完成。
 
 R8ad PF021 首張原圖[機器 subject=0 FAIL、人工 REJECT](../../docs/videos/curio-s38/verify-103-r8ad-pf021-seed1-machine-human-reject.md)：兩名童貌人物跑離左後方的船，右屋為東亞式翹瓦簷；與 1666 倫敦居民向船跑的旁白相反。已停線並封存退件圖／產出後圖單，active manifest 隔離 PF021、**原 13 張 selected KEEP 完整條目和實檔 SHA 不變**；PF022 未購圖。ledger **US$0.8495／57 image／57 judge／1 music**，另有舊 US$0.0035 reservation；STOP 在位、jobs 空。作者只做[PF021 單景窄修](../../docs/videos/curio-s38/verify-104-r8ad-pf021-prompt-author.md)及[單葉可逆差分](../../docs/videos/curio-s38/verify-104-r8ad-pf021-prompt-structured-diff.json)：明確左側冒煙磚屋→右側木船、成年居民前腳踏上登船板；新 `video.json` SHA `c531301285fd9cbc3730f40c9c4a1d37936f00f2c7a0bfb98bf0c1ba97a7e121`、lint 0／0，旁白／主張不變。**待非作者固定日記紙審、13 KEEP 安全重綁和重新前置檢查；尚未購第二張**。PF022 和全片製作仍未完成。
+
+2026-10-22 續作：PF021第二實圖跑離船而退件，單景改為登船動作，獨立紙審PASS後第三／最後實圖judge9.29與原圖KEEP。現14 KEEP、STOP在位、jobs空；見verify-106至109。最新video a150042d8a53b5d63a86821759a81aef934240008ad4dd82c55bb83b99060844；帳本實付US$0.8765。PF022未畫，整片未完成。
