@@ -21,6 +21,11 @@
     "preset": "cute-mystery"
   },
   "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
   "loops": [
     {
       "setup": "cb106",
@@ -108,7 +113,7 @@
       "lines": [
         {
           "id": "cb101",
-          "text": "西元二〇八年冬天，長江邊上。",
+          "text": "西元兩百零八年冬天，長江邊上。",
           "emotion": "沉穩開場，語速放慢"
         }
       ]
@@ -164,7 +169,7 @@
       "id": "letter-claim",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged general in a dark robe seated at a low writing table in a lamplit room at night, a faint sly smile on his face as he brushes a blank letter, an inkstone beside him, warm lamp light from the right",
+        "prompt": "Medium shot of a bearded middle-aged general in a dark robe at a low wooden table in the evening, holding a brush over a blank sheet of paper and grinning to the front, an inkstone beside him, soft lamp light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -268,7 +273,7 @@
       "chapter": "曹操寫信說有八十萬，周瑜算出另一個數字",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old storyteller in a long gown sitting behind a small table in a teahouse in the evening, raising a wooden clapper with a big grin, a teapot beside him, warm lantern light",
+        "prompt": "Medium shot of an old bearded storyteller in a plain grey gown at a small wooden table in a teahouse in the afternoon, slapping a wooden clapper down on the table with a big grin to the front, a teapot beside him, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -313,7 +318,7 @@
       "id": "pei-adds-notes",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a scholar's hand slipping a narrow strip of paper between two bamboo slips in an open bundle on a table, a brush resting beside it, soft window light from the left",
+        "prompt": "Medium shot of a bearded scholar in a plain robe at a wooden desk in the afternoon, tucking a narrow strip of blank paper into an open bundle of bamboo slips and looking pleased, a brush resting beside it, soft window light from the left",
         "camera": "pull out",
         "visual": "still"
       },
@@ -469,7 +474,7 @@
       "id": "lu-su-why",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the calm middle-aged official's face in a dim palace corridor, eyebrows raised in a frank, pleading look, a lantern glowing behind him",
+        "prompt": "Medium shot of a calm middle-aged official in a dark robe standing in a palace corridor in the afternoon, eyebrows raised in a frank, pleading look to the front, a plain pillar behind him, soft overcast light",
         "camera": "drift",
         "visual": "still"
       },
@@ -599,7 +604,7 @@
       "id": "ruler-pats-back",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the young ruler with a reddish beard standing in a hall at night, one hand raised in a firm promise and a determined smile, a lamp on a stand beside him, warm lamp light",
+        "prompt": "Medium shot of a young ruler with a reddish beard standing in a palace hall in the evening, raising his right hand high as he makes a promise with a determined smile, soft lamp light",
         "camera": "push in",
         "visual": "still"
       },
@@ -742,7 +747,7 @@
       "id": "loading-reeds",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a sailor in a short tunic stuffing bundles of dry reeds and brushwood into the hold of a war boat in daytime, his face focused, more bundles stacked on the dock beside him, overcast light",
+        "prompt": "Medium shot of a sailor in a short tunic on the deck of a wooden war boat in daytime, hugging a big bundle of dry straw to his chest with a busy face, more straw bundles piled behind him, overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1078,7 +1083,7 @@
       "id": "camp-on-fire",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a riverside army camp at night seen from across the water, a distant orange glow along the shore and smoke rising into the sky, one boatman in the foreground watching with his mouth open, moonlight",
+        "prompt": "Wide shot of a dark river at night, one boatman standing in a small boat in the foreground staring with his mouth open at the far shore, where a long orange glow and rising smoke fill the horizon, moonlight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1151,7 +1156,7 @@
       "id": "empty-altar",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an empty three-tiered earthen altar on a riverbank in mild daylight, wind tugging at one bare banner pole, one crow perched on the top tier, overcast sky",
+        "prompt": "Medium shot of a puzzled scholar in a plain robe standing beside a three-tiered earthen platform on a riverbank in mild daylight, scratching his head as he looks up at its bare top, overcast sky",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1208,7 +1213,18 @@
           "id": "cb512",
           "text": "曹操把剩下的船燒了，才撤退。還記得開頭，他說那把火是他自己放的嗎？",
           "emotion": "語氣親近，略上揚"
-        },
+        }
+      ]
+    },
+    {
+      "id": "half-dead",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hungry young soldier in a torn quilted tunic trudging along a muddy road in grey daylight, clutching his stomach with a pale miserable face, light from an overcast sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "cb513",
           "text": "同一句話後面還有八個字：士兵又餓又病，死了一大半。",
@@ -1236,7 +1252,7 @@
       "id": "muddy-road",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a narrow muddy track through marshland under a windy grey sky, one horse stuck to its knees in mud with its rider pulling on the reins, the only shapes are reeds and puddles",
+        "prompt": "Medium shot of a worried general on horseback on a muddy marsh track under an overcast sky, his horse sunk to its knees in mud while he pulls hard on the reins, reeds behind him, soft grey light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1311,7 +1327,7 @@
       "id": "late-fire",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a marsh at night with a line of small fires burning along the reeds far behind, one empty muddy track leading away into the dark, the only shapes are reeds, smoke and the track, faint orange glow",
+        "prompt": "Wide shot of a marsh at dusk, one soldier running away along a muddy track and looking back over his shoulder at a line of small fires in the reeds far behind him, faint orange glow",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1516,7 +1532,7 @@
       "id": "no-fire-word",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a single bamboo slip lying on a dark table, a brush resting across it, soft lamp light from the right",
+        "prompt": "Medium shot of an old scholar in a plain robe holding a single narrow bamboo slip up close to his face, eyebrows raised in surprise, soft lamp light from the right",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1600,7 +1616,7 @@
       "id": "file-closed",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
+        "prompt": "Medium shot of a cheerful clerk in a cardigan at a wooden desk pressing a rubber stamp down onto a blank manila folder, light from a desk lamp on the left",
         "camera": "pan left",
         "visual": "still"
       },

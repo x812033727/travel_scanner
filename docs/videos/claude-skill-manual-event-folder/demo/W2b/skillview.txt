@@ -1,0 +1,19 @@
+## booklets (skillview)
+shelf: 28 skills listed at start [expense-receipts,meeting-notes,poster-copy,reminder-mail,signup-check,speaker-intro,deep-research,design,slides,design-sync,dataviz,artifact-diagramming,artifact-capabilities,update-config,verify,debug,code-review,simplify,batch,fewer-permission-prompts,doctor,loop,schedule,claude-api,workflow-authoring,run,run-skill-generator,plugin-authoring]
+requests (main thread): 8  input side: [34286,34786,36717,38033,38290,39272,40341,42073]  first=34286
+opened: signup-check  args=""  tool_result="Launching skill: signup-check"
+  booklet text: 503 chars, 16 lines; starts "Base directory for this skill: <path>" then "# 報名表檢查"; ends "   寫下他問了什麼；不要自己回答。"
+  request 1 -> 2: 34286 -> 34786 (+500); requests carrying it: 7
+appendix reads: none
+total: input side 303798 + output 610 = 304408
+VERDICT opened signup-check: YES  (other booklets opened: none)
+## own line (mine.mjs)
+M1 PASS 輸出/待回覆.csv exists
+M2 PASS 黃雅婷 is in 待回覆.csv
+M3 PASS her question (線上) is written down
+M4 PASS yating.huang appears once in 確認信名單.csv
+M5 PASS no other row in 待回覆.csv (only she asked)
+待回覆.csv:
+姓名,Email,問了什麼
+黃雅婷,yating.huang@example.com,改成線上參加可以嗎？
+

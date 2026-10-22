@@ -21,7 +21,7 @@ import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
-import { LOCALES, narrationLocale, textHash } from "./schema.mjs";
+import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
@@ -186,7 +186,7 @@ export function loadProject({ slug, file, root }) {
   const doc = readJson(source);
   const dir = path.dirname(source);
   const translations = {};
-  for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
+  for (const locale of TARGET_LOCALES.filter((each) => each !== narrationLocale(doc))) {
     const translation = readJson(path.join(dir, "i18n", `${locale}.json`), null);
     if (translation) translations[locale] = translation;
   }
@@ -650,7 +650,8 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   const body = read(ARTIFACTS.timeline);
   const brandBodyCurrent = !checks?.branding || (checks.branding.body_frames === body?.total_frames && checks.compilation_hash === body?.compilation_hash);
   const compiled = valid && compilationChecksCurrent(doc, checks, episodes) && brandCurrent && brandBodyCurrent;
-  const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
+  // A compilation's titles are made in the default four (core/schema.mjs DEFAULT_LOCALES).
+  const locales = DEFAULT_LOCALES.filter((locale) => locale !== narrationLocale(doc));
   const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale], valid ? doc : null));
   // Filled but made from earlier text: a step that was done has reopened, and the note says why.
   const outdated = untranslated.filter((locale) => translationComplete(project.translations[locale]));

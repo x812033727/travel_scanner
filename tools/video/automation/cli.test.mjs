@@ -110,6 +110,33 @@ test("auto clears one finished video once a round, after the units, whether or n
   assert.deepEqual([...first.commands, ...second.commands, ...third.commands], [], "no stage ran");
 });
 
+test("a round that ends in an error still runs the backup, and leaves the tidy for a whole round", async () => {
+  const box = sandbox();
+  const onYouTube = video(box.work, "old-on-youtube");
+  const site = fakeSite({ videos: [listing("old-on-youtube")] });
+  // 2026-10-21: the site refused an overlong prompt every round, and no round reached the backup.
+  const refusing = async (url, init = {}) => (new URL(url).pathname === "/api/video/automation/settings"
+    ? Response.json({ code: "validation_error", detail: "instructions：內容太長" }, { status: 422 })
+    : site.fetchImpl(url, init));
+  const asked = [];
+  // Backups off, so a tidy that ran would clear the video: only a skipped one leaves it.
+  const backupClient = {
+    config: async () => {
+      asked.push("config");
+      return { enabled: false, path: "AI/備份", lock_path: null, remote_prefix: null, problem: "備份尚未開啟", test: null, videos: [] };
+    },
+    lock: async (body) => {
+      asked.push(`lock ${body.lock_path}: ${body.problem}`);
+      return {};
+    },
+  };
+  const round = context(box, { fetchImpl: refusing }, { backupClient });
+  assert.equal(await main(["auto"], round.ctx), EXIT.external);
+  assert.match(round.out.stderr, /instructions：內容太長/);
+  assert.deepEqual(asked, ["config", "lock null: 主機沒有影片備份用的 rclone 設定（VIDEO_BACKUP_RCLONE_CONFIG 未設定）", "config"]);
+  assert.ok(untouched(onYouTube), "the tidy waits for a round that finished");
+});
+
 test("a round that moves nothing because videos wait on their own names them with the time each is tried again, instead of saying every video waits on the owner", async () => {
   const { idleLine } = await import("./cli.mjs");
   assert.equal(idleLine(), "nothing to do now: every video waits on the owner, or the next draft is not due");

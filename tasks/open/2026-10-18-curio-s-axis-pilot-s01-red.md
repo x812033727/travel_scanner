@@ -18,6 +18,8 @@ scope:
   - docs/videos/history-curiosity/topic-checks/S09.md
   - docs/videos/history-curiosity/topic-checks/S18.md
   - docs/videos/history-curiosity/topics.json
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
 ---
 
 # Curio S axis pilot: S01 Red Cliffs, S09 Okehazama, S18 Napoleon
@@ -30,7 +32,7 @@ scope:
 
 ## Definition of done
 
-- [ ] S01、S09、S18 各有 `topic-checks/<id>.md`（研究加獨立覆核，照 `2026-10-10-curio-topic-bank-checks` 的格式），通過的題目在 `topics.json` 改 `checked`。
+- [x] S01、S09、S18 各有 `topic-checks/<id>.md`（研究加獨立覆核，照 `2026-10-10-curio-topic-bank-checks` 的格式），通過的題目在 `topics.json` 改 `checked`。
 - [ ] 三集照 `curio-episode` skill 做完：大綱站主選、稿子有 `loops` 表、lint 0 錯誤、旁白站主聽過、插圖整集一次報價一次畫、成片過品管、上架包。
 - [ ] 每集的實測（插圖張數與重畫、花費、旁白長度、品管分數）寫回 README §成本與產能。
 
@@ -73,3 +75,25 @@ scope:
   再改兩處後第九輪 13／13；lint 0 錯誤 0 警告、9.0 分鐘。
   剩：中華書局本核對兩處異文（S01.md 第 4、13 列）。S09、S18 的查核還沒做：日文與英法文來源仍被擋，
   可以先找 GitHub 上有沒有《信長公記》或拿破崙驗屍報告的公開文本。
+- 2026-10-19（同上，分支 `claude/curio-s09-check`）：站主開放網域後，S09 查核完成並經獨立覆核（35 列，24 維持、10 加但書、
+  0 推翻）。來源：維基文庫《信長公記》我自刊我書本、國會圖書館的甫庵《信長記》古活字版與參謀本部《日本戰史 桶狹間役》、
+  文化廳國指定文化財 DB。第 3 章照公記重排、四處誤譯改正、刀銘加上「尾張守／上總介」的疑問；盲評第十輪 13／13，lint 0 錯誤、9.0 分鐘。
+  剩：陽明本、天理本沒開；S18 的查核還沒做。
+- 2026-10-19（同上，分支 `claude/curio-s18-check`）：S18 查核 34 列完成（安托馬爾基驗屍紀錄、康斯坦、Komlos 2003、國會圖書館的吉爾雷版畫、
+  1802–03 年外交文件、Maitland、韋氏字典等）。主線成立；157 公分改成假設語氣，1812 年日常用呎的不確定寫進說明欄；
+  「拿破崙情結」的來歷、近衛擲彈兵下限、法國抗議的對象改正。獨立覆核 1 列推翻（「小下士」是拉斯卡斯的敘述）、8 列加但書，
+  照改；結論卡改「他不矮，是被畫小了」。盲評第十三輪 13／13，lint 0 錯誤、8.8 分鐘。三集的稿子與查核都完成。
+- 2026-10-19（同上，分支 `claude/curio-s01-narration`，雲端容器）：三集旁白站主聽過（「三集都沒問題」）；插圖站主授權上限
+  US$9.64，三集一起畫完，全部過評審：S01 84 張 US$1.73（八景改提示詞重畫）、S09 80 張 US$1.74（六景）、
+  S18 74 張 US$1.85（十一景），合計 US$5.32，沒有換圖或改成卡片。改提示詞都照「一個人做一件事」。
+  雲端怎麼做旁白與插圖寫進 `curio-episode` skill 新的一節。下一步：`review-push --gate storyboard` 給站主看分鏡、成片、品管、上架包。
+- 2026-10-19（同上）：站主要把雲端做法寫進 `curio-episode` skill，scope 加上兩份 skill。另外三張票的 scope 也有這份 skill
+  （`2026-10-19-curio-keeps-the-brand-stories-hook` 狀態 review、#1577 已合併；`2026-10-14-curio-episodes-keep-the-series-look` #1500
+  與 `2026-10-14-ai-and-tech-videos-tell-one` #1504 也已合併），沒有人還在改它；這次只在〈交接〉前加一節，跟 main 合併沒有衝突。S09 刀銘卡補「意思是：討取義元」，
+  因為旁白為了唸對改成白話，跟卡上的原文不一樣。
+- 2026-10-19（同上，分支 `claude/curio-s-music`）：站主要配樂、不加鉤子；三集加 `music`（Lyria，三首共 US$0.24）。
+  分鏡站主在對話裡核准；成片三集都做完：S01 16557 格、S09 16621 格、S18 15425 格，-14 LUFS。品管 S09 11／11，
+  S01、S18 10／11，沒過的只有 `links`（容器擋 github.com、loc.gov 圖片頁與 doi.org 擋程式請求，瀏覽器打得開）。
+  S01「公燒其餘船引退」卡 15.7 秒超過上限，第二句移到新圖 `half-dead`（旁白沒重唸），站主再核准旁白與分鏡；
+  S09 因卡片 `sub` 改過重建插圖清單（0 張新圖），站主再核准分鏡。三集各加 `verify-1.md`（抄 topic-checks 的表）。
+  三集合計 US$5.57。成片已 `review-push --gate final`，等站主看；下一步是上架包與語言。

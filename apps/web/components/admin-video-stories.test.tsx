@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { VideoBrowser } from "./admin-video-browser";
 import { AdminVideoSeries } from "./admin-video-series";
-import { AdminVideoStorySeries, nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
+import { nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -67,12 +67,12 @@ const stories = [
   story(8, "T02", "tech", "global", 4, "20:00", "skipped", { started_at: "2026-09-27T01:00:00Z", video: video("story-t02", 8, { dropped_at: "2026-09-27T09:00:00Z" }) }),
 ];
 
-const quota = { day: "2026-09-28", started_today: 1, episodes_per_day: 2, in_flight: 1, max_in_flight: 2, started_this_month: 12, episodes_per_month: 70, awaiting_upload: 3, upload_buffer: 6, ready: 1, hold: null, hold_detail: null };
+const quota = { in_flight: 1, max_in_flight: 2, started_this_month: 12, episodes_per_month: 70, ready: 1, hold: null, hold_detail: null };
 const summary = {
   id: "0f0e0d0c-0b0a-4908-8706-050403020100", slug: "brand-stories", kind: "story", title: "品牌故事：日常背後的生意", premise: "每一集講一個品牌、一件日用品或一個標準。",
   aspects: [], tone: "dual-male-leads-subtext", style_preset: "custom", target_minutes: 13, planned_episodes: 100, episodes_per_chapter: 10, chapters: 1, open_ended: false,
   status: "active", note: null, requested_chapter: null, force_next: false, episodes_done: 4, episodes_started: 1, episodes_ready: 1, docs_pending: 0, messages_pending: 0,
-  media_usd: 27.3, clip_seconds: 0, hands_off: true, compilation: false, visual_tier: "stills", episodes_per_day: 2, image_model: "gemini-3.1-flash-image",
+  media_usd: 27.3, clip_seconds: 0, hands_off: true, compilation: false, visual_tier: "stills", image_model: "gemini-3.1-flash-image",
   look: { style: "flat 2D cartoon", negative: "text, logo" }, quota, created_at: "2026-09-20T00:00:00Z", updated_at: "2026-09-28T00:00:00Z",
 };
 const confirmation = {
@@ -161,10 +161,12 @@ const loadedPlan = async (id: string) => {
   return screen.getByRole("region", { name: `${id} 的企劃` });
 };
 
+// The story series live under Drama, beside the explainer requests; the Videos tab's 品牌故事 category
+// lists only the videos (the owner, 2026-10-21).
 const renderTab = (capabilities = MANAGER, roles: string[] = [], opened: string[] = []) => render(<AdminOperationsProvider bootstrap={bootstrap(capabilities, roles)}>
-  <VideoBrowser onOpen={(slug) => opened.push(slug)} />
+  <AdminVideoSeries onOpenVideo={(slug) => opened.push(slug)} />
 </AdminOperationsProvider>);
-const openStories = () => window.history.replaceState(null, "", "/?tab=reviews&category=story&story_series=brand-stories");
+const openStories = () => window.history.replaceState(null, "", "/?tab=drama&series=brand-stories");
 /** The story rows, not the lists nested in an opened plan. */
 const rows = () => [...screen.getByRole("list", { name: "故事清單" }).querySelectorAll(":scope > li")] as HTMLElement[];
 const row = (id: string) => rows().find((item) => item.textContent?.startsWith(id)) as HTMLElement;
@@ -178,7 +180,7 @@ const wallClock = (iso: string) => {
 
 beforeEach(() => {
   vi.useFakeTimers({ now: NOW, toFake: ["Date"] });
-  window.history.replaceState(null, "", "/?tab=reviews&category=story");
+  window.history.replaceState(null, "", "/?tab=drama");
 });
 
 afterEach(() => {
@@ -231,101 +233,75 @@ describe("the next free publishing slot", () => {
 });
 
 describe("AdminVideoStorySeries and StorySeriesPage", () => {
-  it("keeps the story list and import out of Drama", async () => {
+  it("shows the story list and import under Drama", async () => {
     const { calls } = stubFetch();
-    window.history.replaceState(null, "", "/?tab=drama");
+    renderTab();
+    expect(await screen.findByRole("region", { name: "品牌故事" })).toBeTruthy();
+    expect(await screen.findByRole("form", { name: "匯入企劃清單" })).toBeTruthy();
+    expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(true);
+  });
+
+  it("lists only the videos under the Videos tab's 品牌故事 category, as 觀念解說 does", async () => {
+    const { calls } = stubFetch();
+    window.history.replaceState(null, "", "/?tab=reviews&category=story");
     render(<AdminOperationsProvider bootstrap={bootstrap(MANAGER)}>
-      <AdminVideoStorySeries onOpenSeries={() => undefined} />
+      <VideoBrowser onOpen={() => undefined} />
     </AdminOperationsProvider>);
+    await waitFor(() => expect(calls.some((call) => call.url.includes("/admin/videos/browse?") && call.url.includes("category=story"))).toBe(true));
     expect(screen.queryByRole("region", { name: "品牌故事" })).toBeNull();
     expect(screen.queryByRole("form", { name: "匯入企劃清單" })).toBeNull();
     expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(false);
   });
 
-  it("shows Brand Stories when Videos is the implicit default tab", async () => {
+  it("sends an old Videos story bookmark to Drama with the same series", async () => {
     stubFetch();
-    window.history.replaceState(null, "", "/?category=story");
-    renderTab();
-    expect(await screen.findByRole("region", { name: "品牌故事" })).toBeTruthy();
-    expect(await screen.findByRole("form", { name: "匯入企劃清單" })).toBeTruthy();
-  });
-
-  it("sends an old Drama story bookmark to Videos with the same series", async () => {
-    stubFetch();
-    window.history.replaceState(null, "", "/?tab=drama&series=brand-stories");
+    window.history.replaceState(null, "", "/?tab=reviews&category=story&story_series=brand-stories");
     render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
-      <AdminVideoSeries onOpenVideo={() => undefined} />
+      <VideoBrowser onOpen={() => undefined} />
     </AdminOperationsProvider>);
     await waitFor(() => {
       const params = new URL(window.location.href).searchParams;
-      expect(params.get("tab")).toBe("reviews");
-      expect(params.get("category")).toBe("story");
-      expect(params.get("story_series")).toBe("brand-stories");
-      expect(params.has("series")).toBe(false);
+      expect(params.get("tab")).toBe("drama");
+      expect(params.get("series")).toBe("brand-stories");
+      expect(params.has("story_series")).toBe(false);
+      expect(params.has("category")).toBe(false);
     });
   });
 
-  it("shows a story series under Videos / Brand Stories with today's count and the production hold", async () => {
-    const held = { quota: { ...quota, started_today: 2, hold: "per_day", hold_detail: "今天（台北時間 09/28）已經開始 2 支，每日上限 2 支" } };
+  it("shows a story series under Drama with no daily count, and the production hold", async () => {
+    const held = { quota: { ...quota, in_flight: 2, hold: "in_flight", hold_detail: "正在做的故事有 2 支，同時進行的上限是 2 支" } };
     const { calls } = stubFetch({ series: held });
     renderTab();
     const section = await screen.findByRole("region", { name: "品牌故事" });
     const card = await within(section).findByRole("button", { name: /品牌故事：日常背後的生意/ });
-    expect(card.textContent).toContain("今天 2／2 支（台北 9/28） · 同時進行 1／2 · 可以上架 3／6 · 待做 1");
+    expect(section.textContent).toContain("品牌故事是影片類別，跟觀念解說一樣");
+    expect(section.textContent).toContain("沒有每日支數");
+    expect(card.textContent).toContain("同時進行 2／2 · 待做 1");
+    expect(card.textContent).not.toContain("今天");
     expect(card.textContent).toContain("現在不開新故事：");
-    expect(card.textContent).toContain("今天（台北 9/28）已經開始 2 支，到了每日上限 2 支；台北時間過午夜才開始下一個。");
+    expect(card.textContent).toContain("正在做的故事有 2 支，到了同時進行的上限 2 支（在設定分頁調整）。");
     expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(true);
 
     fireEvent.click(card);
-    await waitFor(() => expect(window.location.search).toContain("story_series=brand-stories"));
+    await waitFor(() => expect(window.location.search).toContain("series=brand-stories"));
     const heading = await screen.findByRole("heading", { name: /品牌故事：日常背後的生意/ });
     expect(heading.textContent).toContain("製作中");
     expect(screen.getByText(/8 個故事 · 完成 4 · 每支約 13 分鐘/).textContent).toContain("圖片模型 gemini-3.1-flash-image");
     const panel = screen.getByRole("region", { name: "工人現在能不能開新故事" });
-    expect(panel.textContent).toContain("今天已開始2／2 支（台北 9/28）");
-    expect(panel.textContent).toContain("同時進行1／2");
-    expect(panel.textContent).toContain("可以上架、還沒上傳3／6");
+    expect(panel.textContent).toContain("同時進行2／2");
     expect(panel.textContent).toContain("本月已開始12／70");
-    expect(within(panel).getByRole("status").textContent).toContain("到了每日上限 2 支");
+    expect(panel.textContent).not.toContain("今天已開始");
+    expect(panel.textContent).not.toContain("可以上架、還沒上傳");
+    expect(within(panel).getByRole("status").textContent).toContain("到了同時進行的上限 2 支");
     // None of a long series' planning: no documents, no chapters, no "start the next one now".
     expect(screen.queryByRole("region", { name: "文件" })).toBeNull();
     expect(screen.queryByRole("button", { name: "現在開始下一集" })).toBeNull();
     expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
     expect(screen.queryByRole("region", { name: "全部影片" })).toBeNull();
-    expect(calls.some((call) => call.url.includes("/admin/videos/browse?") && call.url.includes("category=story"))).toBe(true);
 
     fireEvent.click(screen.getByRole("button", { name: "回作品列表" }));
-    await waitFor(() => expect(window.location.search).not.toContain("story_series="));
+    await waitFor(() => expect(window.location.search).not.toContain("series="));
     expect(await within(await screen.findByRole("region", { name: "品牌故事" })).findByRole("button", { name: /品牌故事：日常背後的生意/ })).toBeTruthy();
-    expect(screen.getByRole("region", { name: "全部影片" })).toBeTruthy();
-  });
-
-  it("normalizes a bookmarked story page to the story category and leaves it when another category is chosen", async () => {
-    stubFetch();
-    window.history.replaceState(null, "", "/?tab=reviews&story_series=brand-stories");
-    renderTab();
-    await waitFor(() => expect(window.location.search).toContain("category=story"));
-    await screen.findByRole("list", { name: "故事清單" });
-    expect(screen.queryByRole("group", { name: "分類" })).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: "回作品列表" }));
-    await screen.findByRole("region", { name: "全部影片" });
-    fireEvent.click(within(screen.getByRole("group", { name: "分類" })).getByRole("button", { name: "教學實作" }));
-    await waitFor(() => expect(window.location.search).toContain("category=tutorial"));
-    expect(window.location.search).not.toContain("story_series=");
-    expect(screen.queryByRole("list", { name: "故事清單" })).toBeNull();
-    expect(screen.getByRole("region", { name: "全部影片" })).toBeTruthy();
-  });
-
-  it("keeps Brand Stories reachable before the first video is produced", async () => {
-    stubFetch({ listed: [] });
-    window.history.replaceState(null, "", "/?tab=reviews");
-    renderTab();
-    await screen.findByText("還沒有影片送審");
-    const category = within(screen.getByRole("group", { name: "分類" })).getByRole("button", { name: "品牌故事" });
-    expect(category).toHaveProperty("disabled", false);
-    fireEvent.click(category);
-    expect(await screen.findByRole("form", { name: "匯入企劃清單" })).toBeTruthy();
-    expect(window.location.search).toContain("category=story");
   });
 
   it("offers retry and a route back when a story series cannot be read", async () => {
@@ -462,44 +438,28 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(planReads(calls, 2)).toBe(2);
   });
 
-  it("routes a non-story series to the Drama tab without showing story controls", async () => {
-    const { calls } = stubFetch({ series: { kind: "long" } });
+  it("opens a series that is not a story as a drama, without the story controls", async () => {
+    const { calls } = stubFetch({ series: { kind: "series" } });
     openStories();
     renderTab();
-    await waitFor(() => expect(window.location.search).toContain("tab=drama"));
-    expect(window.location.search).toContain("series=brand-stories");
-    expect(window.location.search).not.toContain("story_series=");
-    expect(screen.queryByRole("button", { name: "暫停" })).toBeNull();
-    expect(seriesReads(calls)).toEqual([""]);
+    await waitFor(() => expect(seriesReads(calls)).toContain(""));
+    expect(screen.queryByRole("region", { name: "工人現在能不能開新故事" })).toBeNull();
+    expect(screen.queryByRole("list", { name: "故事清單" })).toBeNull();
     expect(calls.some((call) => call.url.includes("/episodes/") && call.method === "GET")).toBe(false);
   });
 
-  it("lets a manager change the daily count, pause the series, skip a story that has not started and bring a skipped one back", async () => {
+  it("lets a manager pause the series, skip a story that has not started and bring a skipped one back, with no daily count to set", async () => {
     const { calls } = stubFetch();
     const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
     openStories();
     renderTab();
     await screen.findByRole("list", { name: "故事清單" });
-    const perDay = screen.getByRole("combobox", { name: "每天幾支" }) as HTMLSelectElement;
-    expect(perDay.value).toBe("2");
-    const save = screen.getByRole("button", { name: "改每日支數" });
-    expect(save).toHaveProperty("disabled", true);
-    fireEvent.change(perDay, { target: { value: "1" } });
-    expect(save).toHaveProperty("disabled", false);
-    fireEvent.click(save);
-    await waitFor(() => expect(calls.some((call) => call.method === "PATCH")).toBe(true));
-    expect(calls.find((call) => call.method === "PATCH")?.body).toEqual({ episodes_per_day: 1 });
-    // The server's answer comes back and the select follows it.
-    await waitFor(() => expect(screen.getByRole("button", { name: "改每日支數" })).toHaveProperty("disabled", true));
-    expect((screen.getByRole("combobox", { name: "每天幾支" }) as HTMLSelectElement).value).toBe("1");
-    fireEvent.change(screen.getByRole("combobox", { name: "每天幾支" }), { target: { value: "" } });
-    fireEvent.click(screen.getByRole("button", { name: "改每日支數" }));
-    await waitFor(() => expect(calls.filter((call) => call.method === "PATCH")).toHaveLength(2));
-    expect(calls.filter((call) => call.method === "PATCH")[1].body).toEqual({ episodes_per_day: null });
+    expect(screen.queryByRole("combobox", { name: "每天幾支" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "改每日支數" })).toBeNull();
 
     fireEvent.click(screen.getByRole("button", { name: "暫停" }));
-    await waitFor(() => expect(calls.filter((call) => call.method === "PATCH")).toHaveLength(3));
-    expect(calls.filter((call) => call.method === "PATCH")[2].body).toEqual({ status: "paused" });
+    await waitFor(() => expect(calls.filter((call) => call.method === "PATCH")).toHaveLength(1));
+    expect(calls.filter((call) => call.method === "PATCH")[0].body).toEqual({ status: "paused" });
     expect(await screen.findByRole("button", { name: "繼續" })).toBeTruthy();
 
     // Only a story that has not started may be skipped, and only one that never started comes back.
@@ -512,8 +472,8 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await waitFor(() => expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series/brand-stories/episodes/7/restore") && call.method === "POST")).toBe(true));
     expect(within(row("T02")).queryByRole("button", { name: "恢復" })).toBeNull();
     expect(row("T02").textContent).toContain("開始做過、影片已放棄，可以重做一次");
-    // A story series has no compilation; the Videos workspace never asks for one.
-    expect(calls.some((call) => call.url.includes("/admin/videos?series="))).toBe(false);
+    // A story series has no compilation: only the first read, before the kind is known, asks.
+    expect(calls.filter((call) => call.url.includes("/admin/videos?series=")).length).toBeLessThanOrEqual(1);
   });
 
   it("says why the server refused to bring a story back", async () => {
@@ -616,13 +576,13 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     fireEvent.change(within(form).getByRole("textbox", { name: "或貼上檔案內容" }), { target: { value: JSON.stringify(storyFile, null, 2) } });
     expect(form.textContent).toContain("3 個故事，作品 brand-stories。");
     fireEvent.change(within(form).getByRole("spinbutton", { name: "只匯入前幾個故事" }), { target: { value: "2" } });
-    fireEvent.change(within(form).getByRole("combobox", { name: "建立作品時的每日支數" }), { target: { value: "1" } });
+    expect(within(form).queryByRole("combobox", { name: "建立作品時的每日支數" })).toBeNull();
     fireEvent.click(check);
     const report = await within(form).findByRole("region", { name: "匯入結果" });
     const posts = () => calls.filter((call) => call.method === "POST");
     expect(posts()).toHaveLength(1);
     expect(posts()[0].url).toBe("/api/travel/admin/video-automation/series/brand-stories/stories/import");
-    expect(posts()[0].body).toEqual({ file: storyFile, apply: false, limit: 2, episodes_per_day: 1 });
+    expect(posts()[0].body).toEqual({ file: storyFile, apply: false, limit: 2 });
     expect(report.textContent).toContain("試跑結果：什麼都沒有寫入");
     expect(report.textContent).toContain("會照檔案建立作品 brand-stories。");
     expect(report.textContent).toContain("檔案有 3 個故事，這次匯入 2 個：新增 2、更新 0、不動 0、拒絕 0。");
@@ -638,9 +598,9 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(posts()).toHaveLength(1);
     fireEvent.click(write);
     await waitFor(() => expect(posts()).toHaveLength(2));
-    expect(posts()[1].body).toEqual({ file: storyFile, apply: true, limit: 2, episodes_per_day: 1 });
+    expect(posts()[1].body).toEqual({ file: storyFile, apply: true, limit: 2 });
     // Written, the page opens the series the import created.
-    await waitFor(() => expect(window.location.search).toContain("story_series=brand-stories"));
+    await waitFor(() => expect(window.location.search).toContain("series=brand-stories"));
     expect(await screen.findByRole("heading", { name: /品牌故事：日常背後的生意/ })).toBeTruthy();
   });
 
@@ -690,7 +650,7 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(form.textContent).toContain("已選 stories.json");
     fireEvent.click(within(form).getByRole("button", { name: "試跑" }));
     await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
-    expect(calls.find((call) => call.method === "POST")?.body).toEqual({ file: storyFile, apply: false, limit: null, episodes_per_day: null });
+    expect(calls.find((call) => call.method === "POST")?.body).toEqual({ file: storyFile, apply: false, limit: null });
   });
 
   it("offers each story ready to upload its next free slot, filled into the form that records the upload", async () => {

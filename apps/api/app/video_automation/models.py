@@ -63,7 +63,11 @@ DEFAULT_VOICE: dict[str, Any] = {
 }
 DEFAULT_TOPIC_SCOPE = ["AI", "科技", "AI 工具教學"]
 DEFAULT_TOPIC_AVOID = ["投資建議", "醫療建議", "選舉政治"]
-DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko"]
+# What the language panel pre-ticks (titles, descriptions and captions, never a dub): all eight
+# languages a video may add, the owner's choice of 2026-10-20 for the tutorials' defaults and
+# the drama's alike (DEFAULT_DRAMA drama_caption_locales). Migration 0136 writes the same list
+# into the settings row, which a code default alone would not reach.
+DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
@@ -126,7 +130,7 @@ DEFAULT_DRAMA: dict[str, Any] = {
     "drama_stage_models": None,
     "drama_stage_instructions": {},
     "drama_voice": None,
-    "drama_caption_locales": [],
+    "drama_caption_locales": list(DEFAULT_CAPTION_LOCALES),
     "drama_auto_approve_audio": True,
     "drama_auto_approve_final": True,
     "drama_max_verify_rounds": 3,
@@ -341,8 +345,11 @@ class VideoAutomationSettings(Base):
         JSON, default=_default({}), server_default=text("'{}'")
     )
     drama_voice: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    # All eight pre-ticked since migration 0136 (DEFAULT_CAPTION_LOCALES); '[]' before it.
     drama_caption_locales: Mapped[list[str]] = mapped_column(
-        JSON, default=_default([]), server_default=text("'[]'")
+        JSON,
+        default=_default(DEFAULT_CAPTION_LOCALES),
+        server_default=text("'" + json.dumps(DEFAULT_CAPTION_LOCALES, ensure_ascii=True) + "'"),
     )
     drama_auto_approve_audio: Mapped[bool] = mapped_column(
         Boolean, default=True, server_default="true"
@@ -596,7 +603,7 @@ SERIES_GENRES = (
     "custom",
 )
 SERIES_LEADS = ("female", "male", "dual-male")
-VISUAL_TIERS = ("clips", "hybrid", "stills")
+VISUAL_TIERS = ("clips", "hybrid", "stills", "manga")
 SERIES_NUMBERS_CHECK = (
     "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
     "AND (target_minutes BETWEEN 1 AND 20 OR "
@@ -690,7 +697,8 @@ class VideoDramaSeries(Base):
         CheckConstraint(SERIES_ANIME_POLICY_CHECK, name="ck_video_drama_series_anime_policy"),
         CheckConstraint(SERIES_ANIME_RUNTIME_CHECK, name="ck_video_drama_series_anime_runtime"),
         CheckConstraint(
-            "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
+            "visual_tier IN ('clips', 'hybrid', 'stills', 'manga')",
+            name="ck_video_drama_series_tier",
         ),
         CheckConstraint(
             "total_minutes IS NULL OR total_minutes BETWEEN 30 AND 480",
@@ -763,11 +771,12 @@ class VideoDramaSeries(Base):
     compilation_finished_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
-    # The brand-story columns (docs/videos/STORY.md; migration 0111). How many episodes may start
-    # on one Asia/Taipei calendar day (NULL: no daily limit); the image model this series' media
-    # jobs use (NULL: the settings tab's); and the look every story of the series shares,
-    # {"style", "negative", "motion"?}, which a story series keeps here because it has no
-    # setting book. The other kinds leave the daily count and the look NULL.
+    # The brand-story columns (docs/videos/STORY.md; migration 0111). ``episodes_per_day`` is no
+    # longer read: a brand story has no daily count since 2026-10-21, and the column waits for a
+    # migration to drop it. The image model this series' media jobs use (NULL: the settings
+    # tab's); and the look every story of the series shares, {"style", "negative", "motion"?},
+    # which a story series keeps here because it has no setting book. The other kinds leave the
+    # look NULL.
     episodes_per_day: Mapped[int | None] = mapped_column(Integer, nullable=True)
     image_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
     look: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)

@@ -17,13 +17,29 @@ import { localizationPlanProblems } from "../production/retention.mjs";
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
 export const FORMATS = ["slides", "screencast", DRAMA_FORMAT];
-// The languages a video can carry (docs/videos/LANGUAGES.md): zh-TW is the narration language,
-// the other three are the ones the owner may add. The site itself has five locales
-// (apps/api/app/i18n.py, with zh-CN); the owner dropped zh-CN from videos on 2026-10-09.
-export const LOCALES = ["zh-TW", "en", "ja", "ko"];
+// The languages a video can be narrated (and dubbed) in (docs/videos/LANGUAGES.md): zh-TW, the
+// channel's own, and en, ja and ko, the four the owner fixed on 2026-10-09. The site itself has
+// five locales (apps/api/app/i18n.py, with zh-CN); the owner dropped zh-CN from videos then.
+export const NARRATION_LOCALES = ["zh-TW", "en", "ja", "ko"];
+// The languages a video can carry captions, a title and a description in: the four, and the
+// five the owner added on 2026-10-20 for every pipeline video (es-419 Latin-American Spanish,
+// pt-BR Brazilian Portuguese, Indonesian, Vietnamese, Thai; YouTube gets es and pt under the
+// tags apps/api/app/video_youtube/requests.py YOUTUBE_LANGUAGES gives them). A translation, a
+// caption file, a localized title or thumbnail can be in any of these; a narration only in
+// NARRATION_LOCALES.
+export const TARGET_LOCALES = [...NARRATION_LOCALES, "es", "pt", "id", "vi", "th"];
+// The languages a dub can be in: every target language, since phase two of the 2026-10-19
+// worker-languages task (the owner approved dubs in the five on 2026-10-20). A dub reads the
+// caption translation in the narration's voice; the five never become a narration language, so
+// this list is its own and NARRATION_LOCALES keeps the four.
+export const DUB_TARGET_LOCALES = [...TARGET_LOCALES];
+// What a video is made in when nobody chose its languages (a package from before the language
+// panel, a hand run outside the site, the examples), and what a compilation's captions and titles
+// are made in: the four, as before the five joined. Only a choice on the site asks for the five.
+export const DEFAULT_LOCALES = [...NARRATION_LOCALES];
 export const NARRATION_LOCALE = "zh-TW";
 /** The locale a video is narrated in: its `narration_locale`, zh-TW when it has none or an unknown one. */
-export const narrationLocale = (doc) => (LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);
+export const narrationLocale = (doc) => (NARRATION_LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);
 export const TEMPLATES = [
   "title",
   "chapter",
@@ -82,10 +98,14 @@ export const SCENE_ID = SLUG;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const RATE = /^[+-]\d{1,2}%$/;
 
+// The slide looks a video may ask for (docs/videos/PAPER.md); templates.mjs THEMES draws them.
+export const THEMES = ["paper"];
 const TOP_KEYS = new Set([
   "schema_version",
   "slug",
   "format",
+  // The paper look for a slides video's cards: cream ground, ink text, one red accent.
+  "theme",
   // The language the voice reads and the captions translate from; zh-TW when absent.
   "narration_locale",
   "source_guide",
@@ -321,8 +341,9 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
-  if (doc.narration_locale !== undefined && !LOCALES.includes(doc.narration_locale)) {
-    errors.push({ path: "narration_locale", message: `must be one of ${LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
+  if (doc.theme !== undefined && !THEMES.includes(doc.theme)) errors.push({ path: "theme", message: `must be ${THEMES.map((theme) => `"${theme}"`).join(" or ")} (docs/videos/PAPER.md), or left out for the dark theme` });
+  if (doc.narration_locale !== undefined && !NARRATION_LOCALES.includes(doc.narration_locale)) {
+    errors.push({ path: "narration_locale", message: `must be one of ${NARRATION_LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
   }
   const locale = narrationLocale(doc);
   if (doc.localization_plan !== undefined) {

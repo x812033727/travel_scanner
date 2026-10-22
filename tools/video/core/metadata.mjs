@@ -23,24 +23,64 @@ export const LABELS = {
   en: { chapters: "Chapters", article: "Full article", sources: "Sources", pictures: "Image credits", colon: ": ", parens: [" (", ")"] },
   ja: { chapters: "チャプター", article: "記事全文", sources: "参考資料", pictures: "画像の出典", colon: "：", parens: ["（", "）"] },
   ko: { chapters: "챕터", article: "전체 글", sources: "참고 자료", pictures: "이미지 출처", colon: ": ", parens: [" (", ")"] },
+  es: { chapters: "Capítulos", article: "Artículo completo", sources: "Fuentes", pictures: "Créditos de las imágenes", colon: ": ", parens: [" (", ")"] },
+  pt: { chapters: "Capítulos", article: "Artigo completo", sources: "Fontes", pictures: "Créditos das imagens", colon: ": ", parens: [" (", ")"] },
+  id: { chapters: "Bab", article: "Artikel lengkap", sources: "Sumber", pictures: "Sumber gambar", colon: ": ", parens: [" (", ")"] },
+  vi: { chapters: "Chương", article: "Bài viết đầy đủ", sources: "Nguồn tham khảo", pictures: "Nguồn hình ảnh", colon: ": ", parens: [" (", ")"] },
+  th: { chapters: "สารบัญ", article: "บทความฉบับเต็ม", sources: "แหล่งข้อมูล", pictures: "ที่มาของภาพ", colon: ": ", parens: [" (", ")"] },
 };
 
 // What every title ends with, per locale, so a viewer sees in the search results that the video
 // has captions (the owner's rule of 2026-10-12: 影片標題都要有「｜CC字幕」, worded per language).
 // Every video carries at least its narration's captions, so the generic wording is always true.
 // apps/api/app/video_youtube/requests.py CAPTION_TAGS holds the same table for the packages
-// approved before this rule; keep the two in step.
+// approved before this rule; keep the two in step. es, pt, id, vi and th take the word viewers
+// search for subtitled videos in each (an imported series' titles end the same way since
+// 2026-10-18); a Spanish title says CC.
 export const CAPTION_TAGS = {
   "zh-TW": "｜CC字幕",
   en: "｜CC Subtitles",
   ja: "｜字幕付き",
   ko: "｜CC 자막",
+  es: "｜CC",
+  pt: "｜Legendado",
+  id: "｜Sub Indo",
+  vi: "｜Vietsub",
+  th: "｜ซับไทย",
 };
 
 // The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
 // 2026-10-12), and any tag a title may already end with, whatever its language and spacing.
 export const SHORT_CAPTION_TAG = "｜CC";
-const TAG_TAIL = /\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$/i;
+const TAG_TAIL = /\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|Legendado|Sub\s*Indo|Vietsub|ซับไทย|CC)\s*$/i;
+
+// What a brand story's title says before its captions tag, per locale, so the series shows in
+// the search results (the owner's rule of 2026-10-20: 品牌故事標題加「| 品牌故事」, worded per
+// language): 「…？｜品牌故事｜CC字幕」.
+export const STORY_TAGS = {
+  "zh-TW": "｜品牌故事",
+  en: "｜Brand Story",
+  ja: "｜ブランドストーリー",
+  ko: "｜브랜드 스토리",
+  es: "｜Historia de marca",
+  pt: "｜História de marca",
+  id: "｜Kisah Merek",
+  vi: "｜Câu chuyện thương hiệu",
+  th: "｜เรื่องราวแบรนด์",
+};
+const STORY_TAIL = /\s*[|｜]\s*(?:品牌故事|Brand\s*Story|ブランドストーリー|브랜드\s*스토리|Historia\s*de\s*marca|História\s*de\s*marca|Kisah\s*Merek|Câu\s*chuyện\s*thương\s*hiệu|เรื่องราวแบรนด์)\s*$/i;
+
+/**
+ * A brand story's `title` ending with its locale's story tag, once, ready for withCaptionTag: a
+ * captions tag or story tag already there, in any language or spacing, is taken off first. The
+ * tag is left off when, with it, even the short captions tag would pass TITLE_MAX_CHARS.
+ */
+export function withStoryTag(title, locale) {
+  let bare = title.trimEnd();
+  for (let stripped = bare.replace(TAG_TAIL, "").replace(STORY_TAIL, ""); stripped !== bare; stripped = bare.replace(TAG_TAIL, "").replace(STORY_TAIL, "")) bare = stripped;
+  const tagged = `${bare}${STORY_TAGS[locale] ?? STORY_TAGS.en}`;
+  return [...tagged].length + [...SHORT_CAPTION_TAG].length <= TITLE_MAX_CHARS ? tagged : bare;
+}
 
 /**
  * `title` ending with its locale's captions tag, once: a tag already there, in any language or

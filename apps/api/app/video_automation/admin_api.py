@@ -901,7 +901,6 @@ class StoryImportIn(BaseModel):
     file: Any
     apply: bool = False
     limit: int | None = None
-    episodes_per_day: int | None = None
 
 
 class StoryImportRowsOut(BaseModel):
@@ -990,7 +989,6 @@ async def import_video_series_stories(
             series_slug=slug,
             apply=payload.apply,
             limit=payload.limit,
-            episodes_per_day=payload.episodes_per_day,
             actor=user,
         )
     except SeriesRefused as error:

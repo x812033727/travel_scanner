@@ -126,7 +126,7 @@ const SERIES = {
   aspects: [], tone: "no-romance", style_preset: "custom", target_minutes: 13, planned_episodes: 100, episodes_per_chapter: 10, chapters: 1, open_ended: false,
   status: "active", note: "企劃清單在 docs/videos/story-plans", requested_chapter: null, force_next: false, episodes_done: 0, episodes_started: 0, episodes_ready: 1, docs_pending: 0,
   media_usd: 0, clip_seconds: 0, genre: "xianxia-bonds", lead: "dual-male", hands_off: true, compilation: false, visual_tier: "stills", total_minutes: null,
-  episodes_per_day: 2, image_model: "gemini-3.1-flash-image", look: LOOK, quota: null, created_at: "2026-09-28T00:00:00Z", updated_at: "2026-09-28T00:00:00Z",
+  image_model: "gemini-3.1-flash-image", look: LOOK, quota: null, created_at: "2026-09-28T00:00:00Z", updated_at: "2026-09-28T00:00:00Z",
 };
 const EPISODE = { number: 1, chapter_number: 1, title: "折疊傘等了三千年", logline: "雨傘用了三千年，折得進口袋卻是 1928 年的事：一副伸縮傘骨怎麼變成一門生意。", beats: PLAN, status: "ready", slug: SLUG, recap: null, started_at: null, finished_at: null, video: null };
 

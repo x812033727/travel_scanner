@@ -105,7 +105,7 @@ async def test_a_dry_run_answers_the_report_and_writes_nothing(
     owner = await _user(db, "owner")
     assert await _counts(db) == [0, 0, 0]
     async with _client(db, viewer) as client:
-        dry = await client.post(IMPORT, json={"file": _file(), "limit": 2, "episodes_per_day": 1})
+        dry = await client.post(IMPORT, json={"file": _file(), "limit": 2})
     assert dry.status_code == 200, dry.text
     assert await _counts(db) == [0, 0, 0], "no series, no episode, no audit record"
     body = dry.json()
@@ -115,7 +115,7 @@ async def test_a_dry_run_answers_the_report_and_writes_nothing(
     # The answer is the import's own report, field for field.
     async with db() as session:
         report = await stories.import_story_rows(
-            session, _file(), series_slug="stories-test", limit=2, episodes_per_day=1
+            session, _file(), series_slug="stories-test", limit=2
         )
     assert body == report.as_dict()
 
@@ -160,11 +160,9 @@ async def test_writing_needs_what_creating_a_series_needs_and_is_audited(
     assert read_only.json()["code"] == "admin_capability_required"
     assert await _counts(db) == [0, 0, 0]
 
-    # The pilot: two stories, one a day, by an account that may manage content.
+    # The pilot: two stories, by an account that may manage content.
     async with _client(db, editor) as client:
-        pilot = await client.post(
-            IMPORT, json={"file": _file(), "apply": True, "limit": 2, "episodes_per_day": 1}
-        )
+        pilot = await client.post(IMPORT, json={"file": _file(), "apply": True, "limit": 2})
         rest = await client.post(IMPORT, json={"file": _file(), "apply": True})
         nothing_new = await client.post(IMPORT, json={"file": _file(), "apply": True})
     assert pilot.status_code == 200, pilot.text
@@ -175,7 +173,11 @@ async def test_writing_needs_what_creating_a_series_needs_and_is_audited(
     async with db() as session:
         series = await session.scalar(select(VideoDramaSeries))
         assert series is not None
-        assert (series.kind, series.status, series.episodes_per_day) == ("story", "active", 1)
+        assert (series.kind, series.status, series.episodes_per_day) == (
+            "story",
+            "active",
+            None,
+        )
         assert series.created_by_user_id == editor.id
     assert await _episodes(db) == [(1, "ready"), (2, "ready"), (3, "ready")]
 
@@ -331,20 +333,22 @@ async def test_a_skipped_story_comes_back_and_the_worker_sees_it_at_once(
     assert record.metadata_json == {"number": 2, "story": "B01", "reopened": True}
 
 
-async def test_a_story_brought_back_waits_for_the_days_count_like_any_other(
+async def test_a_story_brought_back_waits_for_the_drama_limits_like_any_other(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     clock = {"now": datetime(2026, 10, 1, 4, 0, tzinfo=UTC)}  # noon in Taipei
     monkeypatch.setattr(service, "_now", lambda: clock["now"])
     owner = await _user(db, "owner")
     async with _client(db, owner) as client:
-        await client.post(IMPORT, json={"file": _file(), "apply": True, "episodes_per_day": 1})
+        await client.post(IMPORT, json={"file": _file(), "apply": True})
         await client.post(f"{BASE}/stories-test/episodes/1/skip")
     async with db() as session:
         token = VideoToolToken(name="story-admin", token_hash=uuid4().hex, token_prefix="mkv_a")
         session.add(token)
         await session.commit()
         settings = await settings_service.settings_row(session)
+        settings.series_max_in_flight = 1
+        await session.commit()
         job = (await service.next_job(session, settings)).job
         assert job is not None and job.episode is not None and job.episode.number == 2
         await service.start_episode(session, token, "stories-test", 2, "story-conveyor-sushi")
@@ -353,11 +357,18 @@ async def test_a_story_brought_back_waits_for_the_days_count_like_any_other(
         restored = await client.post(f"{BASE}/stories-test/episodes/1/restore")
     assert restored.status_code == 200
     quota = restored.json()["quota"]
-    assert (quota["ready"], quota["started_today"], quota["hold"]) == (2, 1, "per_day")
+    assert (quota["ready"], quota["in_flight"], quota["hold"]) == (2, 1, "in_flight")
+    assert "started_today" not in quota, "a brand story has no daily count"
     async with db() as session:
         settings = await settings_service.settings_row(session)
-        assert (await service.next_job(session, settings)).job is None, "today's one has started"
-        clock["now"] = datetime(2026, 10, 1, 16, 0, tzinfo=UTC)  # midnight in Taipei
+        assert (await service.next_job(session, settings)).job is None, "one is in the making"
+        second = await session.scalar(
+            select(VideoDramaEpisode).where(VideoDramaEpisode.number == 2)
+        )
+        assert second is not None
+        second.status = "done"
+        await session.commit()
+        clock["now"] = datetime(2026, 10, 1, 5, 0, tzinfo=UTC)  # the same Taipei day
         job = (await service.next_job(session, settings)).job
         assert job is not None and job.episode is not None
         assert job.episode.number == 1, "the story brought back is the lowest ready number"

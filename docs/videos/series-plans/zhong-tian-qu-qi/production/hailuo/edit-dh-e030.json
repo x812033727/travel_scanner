@@ -1,0 +1,83 @@
+{
+  "tempo": 1.07,
+  "title": {
+    "shot": "s01",
+    "text": "種田娶妻打天下",
+    "sub": "第 30 集",
+    "from": 0.1,
+    "to": 2.4
+  },
+  "grades": {},
+  "default_grade": "dh",
+  "finish": "vignette=angle=PI/5,format=yuv420p",
+  "names": {},
+  "punch": {},
+  "sfx_dirs": [
+    "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  ],
+  "name_whoosh": "swish-9",
+  "music": [
+    {
+      "cue": "tension",
+      "from": "s01",
+      "to": "s06",
+      "offset": 0,
+      "gain": -14
+    },
+    {
+      "cue": "comedy",
+      "from": "s07",
+      "to": "s14",
+      "offset": 10,
+      "gain": -16
+    },
+    {
+      "cue": "suspense",
+      "from": "s15",
+      "to": "s28",
+      "offset": 5,
+      "gain": -15
+    },
+    {
+      "cue": "comedy",
+      "from": "s29",
+      "to": "s40",
+      "offset": 30,
+      "gain": -16
+    },
+    {
+      "cue": "tension",
+      "from": "s41",
+      "to": "s44",
+      "offset": 40,
+      "gain": -11,
+      "fade_out": 1.4
+    }
+  ],
+  "sfx": [
+    {
+      "file": "birds",
+      "at": "s07",
+      "to": "s21",
+      "gain": -32
+    },
+    {
+      "file": "paper_04",
+      "at": "s33",
+      "off": 0.3,
+      "gain": -12
+    },
+    {
+      "file": "swish-9",
+      "at": "s41",
+      "off": 0.2,
+      "gain": -14
+    },
+    {
+      "file": "gong_02",
+      "at": "s44",
+      "off": 0.4,
+      "gain": -8
+    }
+  ]
+}

@@ -217,7 +217,7 @@ export function storySeriesFile({ series, episode, plan, cast }) {
     image_model: series.image_model ?? null,
     look: isCuteStoryLook(series.look) ? { preset: "cute-mystery" } : isObject(series.look) ? { style: series.look.style ?? "", negative: series.look.negative ?? "", ...(isText(series.look.motion) ? { motion: series.look.motion } : {}) } : null,
     plan,
-    series: { title: series.title, premise: series.premise ?? "", note: series.note ?? null, hands_off: Boolean(series.hands_off), episodes_per_day: series.episodes_per_day ?? null },
+    series: { title: series.title, premise: series.premise ?? "", note: series.note ?? null, hands_off: Boolean(series.hands_off) },
   };
 }
 
