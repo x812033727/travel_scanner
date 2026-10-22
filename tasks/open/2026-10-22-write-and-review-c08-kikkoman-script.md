@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-and-review-c08-kikkoman-script
 title: Write and review C08 Kikkoman script and visual plan
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-c08-script
-claimed_at: 2026-10-22T05:29:04Z
+owner:
+claimed_at:
 created_at: 2026-10-22T05:28:57Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-script
@@ -14,6 +14,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/script.md
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-a.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-reader-b.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/visual-preflight.md
@@ -51,3 +52,7 @@ scope:
 2026-10-22：初稿 92 句、92 鏡（79 shot／13 卡，按鏡數 85.9%，最多連續 2 卡）；ID 全對齊，提示詞未含品牌、人名與館藏禁字，沒有 3 連同運鏡。純文字約 2,700 字元，尚無 TTS 實長。已派與作者獨立的逐句來源查核代理；兩位真正盲讀與最終視覺預檢仍待完成。
 
 2026-10-22：草稿 PR #1681 已開、維持 `no-auto-merge`。獨立來源查核者曾對 92／92 句及 13／13 卡判 PASS；作者其後把 `c080511` 卡改為單一 2005 年入藏焦點，`visual-plan.md` SHA 改變，原查核收據因此暫時失效，**HOLD 至同一獨立審查者核對並重綁 SHA**。作者技術預檢已寫；兩名只看旁白的盲讀代理尚未完成，不能稱劇本審查通過。結構檢查 92／92 ID 對齊、79／13、最長 2 連卡。`test:docs-videos` 在安裝缺少的依賴後有 235／236 PASS；唯一失敗在其他影片語言流程的 `package-runtime.mjs` Windows 子程序（status 3221226505）。低磁碟下停止後續大型測試；工作樹 `node_modules` 清理命令遭自動審查 `blocked by policy`，未刪除。
+
+2026-10-22：C: 回升至 19.34 GiB 後接續原工作樹，**未重裝依賴**。92 句定向修訂：第 2／3 章改以放穩、握取接力，瓶口解法留到第 4 章揭曉；第 5 章改問設計界後來如何注意，不再用設計評價回答購買成因；第 6 章先解釋累計出貨口徑，再回到無字外形與最後一滴。逐鏡同步更新，仍是 92／92 ID、79 插圖方向／13 卡、最長 2 連卡。現版 `script.md` SHA-256 `3EEB08795352580764527B9211C65C511A5D5705931335C0757857835FB145F4`，`visual-plan.md` SHA-256 `DB0122E5036F20FBD3A8D9543C545D877D477254937B8B9461A8C0F28BDFAA50`；**本機未提交的舊版來源 PASS 收據綁的是舊 SHA，不能當現版通過**。下一關仍需獨立代理對修訂句、卡片與畫面重查，之後兩位只看旁白欄位的真正盲讀。
+
+2026-10-22：舊版來源審查已保存為 `reviews/line-source-review-20261022-pre-rewrite.md`，頁首明確標失效。`npm run check:tasks` 通過（2076 張票，既有持有者／範圍警告）；`git diff --check` 通過。完整 `test:docs-videos` 因工作交接提前中止，沒有本輪完整結果；前輪 235／236 PASS 與其他影片語言流程的 Windows 子程序退出碼 3221226505 只作歷史背景，不當本輪綠燈。
