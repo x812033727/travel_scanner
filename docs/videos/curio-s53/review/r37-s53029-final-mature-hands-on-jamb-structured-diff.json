@@ -1,0 +1,58 @@
+{
+  "revision": "R37-s53029-final-mature-hands-on-jamb",
+  "reason": "Second native machine FAIL subject0/details7, human visual split and drama accept-best unavailable; final tight mature two-hand alignment concept, no fourth image",
+  "before_sha256": {
+    "video.json": "601b54f492cb38ddf046f200f6bb02097868e25b9217605d2661abc33c1aa49e",
+    "claims.md": "0795312a9584486511f8695faeee7dda73863fd5ca64f705da99da5ccba6a745",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "7df8145a61b6ef66d3c65d75e89ea85aa30b6ec28fec217c114e7a05a81d59b6",
+    "claims.md": "50704b954f87256796a9690ef47b12e0bcd0491633ad2645cf9b3e6e310e07b3",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53029",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53029",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Close shot of a single plain completed small wooden relief cottage doorway outdoors in a San Francisco public square in September 1906: one unmistakably middle-aged or older bareheaded grey-haired adult builder with lined cheeks and a plain dark high-collared work shirt stands outside in three-quarter side view, one hand firmly tests the wooden door frame while the other steadies the door edge; the adult upper body and the doorjamb fill the center of the frame, with only bare ground and a simple plank wall at the edges, an empty dark interior without a person, no child, no resident, no lamp, no modern signs, soft overcast daylight",
+          "camera": "pan left",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53029",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Close-up upper-body view from outdoors at one finished plain wooden relief cottage doorway in a San Francisco public square in September 1906: one clearly older bareheaded adult carpenter with short grey hair, thick grey eyebrows and moustache, forehead creases and lined cheeks in a plain dark high-collared work shirt; his face, shoulders, both adult hands, one vertical wooden jamb and the edge of a half-open wooden door fill the frame, cropped below his chest so no legs, full door, roof or house facade are visible; one hand presses the vertical jamb while the other pulls the door edge toward it across a narrow visible gap, and he looks directly at the joint he is testing; only a dark empty interior and one strip of plain plank wall behind, no child, resident, lamp or modern signs, soft overcast daylight",
+          "camera": "push in",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53029",
+      "path": "claims.md exact row",
+      "before": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 16 日漢密爾頓廣場已有 20 棟小屋完成；其後仍隔至少兩三個月，才有相當數量備妥供難民使用。畫面僅作原創概念示意：一名灰髮有面紋、未戴帽的匿名成年建造者站在一間已完成的小屋外，以手檢查空置畫面中的木門框；近景只顯一處門框、無住戶或孩童、無屋內燈光，不主張史料記載此人、這間屋型、當日工序或當日有人入住。 |",
+      "after": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 16 日漢密爾頓廣場已有 20 棟小屋完成；其後仍隔至少兩三個月，才有相當數量備妥供難民使用。畫面只作原創概念示意：灰髮、灰眉灰鬍、有額紋面紋、未戴帽的匿名中老年成年木匠在一間已完成小屋門外，胸上特寫，雙手分別按木門柱和半開木門邊，讓縫隙可見；門內暗且空，不畫住戶、孩童或燈，不主張史料記載此人、這間屋型、當日驗框工序或當日已有住戶入住，也不把一個門框當成 20 棟逐棟畫像。 |"
+    }
+  ]
+}
