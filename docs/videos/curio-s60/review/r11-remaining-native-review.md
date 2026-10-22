@@ -12,9 +12,20 @@
 | s60017 | **KEEP**：路旗緊鄰狹長冰裂縫，日光雪地吻合旗不能單獨保證安全的提問。 | `9d4a41517d380b400046d0c895bb5b948188485c203a18925333f088fc024be3` | `1557e0ee6f2dfe3868e33c39b567f02baf1f2eeb11ea7447a32e87e1ea1177c5` | 1／2 |
 | s60018 | **KEEP**：懸落木橇與繃緊繩索呈現裂縫救援；人物作救援示意，來源同段亦記 Wisting 綁繩下去，非逐秒重建。 | `27e434dbaddf6ea7577ce8b0a0b8375265f3302023102b0326519544e0e50c48` | `6b99acca165440323e8589705f6ec364d04f5ee540ca4f5bc0068ff542d40a89` | 1／2 |
 
-所有原圖為 private `keyframes/{ID}-{selected seed}.jpg`，selected 檔名與雜湊在 manifest；本表兩者均實際開圖。早先 machine FAIL 的 take 保留，沒有用 native 覆核改寫機器狀態。s60016 重大地形矛盾已立即 touch STOP；log 原文計數為 after 9 new keyframes；逐景 manifest／明細可核對7個新景、8次實際 take（含 s60014 的第一張 machine FAIL），不以該摘要計數覆蓋逐景次數，jobs 已排空。新完成7景中6 KEEP、1 REJECT；其餘87景未完成。本輪每景實際次數如表，不能以新 prompt 重置。s60016 地點及時序依 P02 L10065–10083；Framheim／冰棚環境界線另見固定 Amundsen L4975–5034，不把雪丘或約100英尺冰壓脊等同高山尖峰。
+所有原圖為 private `keyframes/{ID}-{selected seed}.jpg`，selected 檔名與雜湊在 manifest；本表兩者均實際開圖。早先 machine FAIL 的 take 保留，沒有用 native 覆核改寫機器狀態。s60016 重大地形矛盾已立即 touch STOP；log 原文計數為 after 9 new keyframes，與實際 ledger 相符：s60012–018 共8次實際 image，加上尚未進入 manifest 的 s60019 ready image 1次，合計9次。原回條只查 manifest／log明細，漏算 s60019，現已更正，不是 log 計數差異，jobs 已排空。新完成7景中6 KEEP、1 REJECT；另有 s60019 已用1 actual、尚未 judge／native 本回條判讀；只有其餘86景仍零 actual。本輪每景實際次數如表，不能以新 prompt 重置。s60016 地點及時序依 P02 L10065–10083；Framheim／冰棚環境界線另見固定 Amundsen L4975–5034，不把雪丘或約100英尺冰壓脊等同高山尖峰。
 
 沒有付費、生圖或修改 creative、media、manifest／帳本、Git。本回條是視覺監看，不宣稱新增來源或站主聽音驗收。固定來源及創作邊界沿用 R8 獨立紙審，R11 s60010 變更另有單景紙審。
 
 - video.json SHA-256 `1a3ab06788a085744ffa812a0b43595134782909ae2433cf4e3a762e312a6fcf`
 - 本次讀取 manifest SHA-256 `b8d5d1d04b8077721644597ba923462e1e11ea884cfa0b7915cf1bea0a129e63`（batch 會繼續改變）。
+
+## Inventory 更正：已生成但尚未 judge 的 s60019
+
+root 的零次 guard 攔住直接 bulk，並指出本回條首次盤點漏掉 cache／ledger ready、尚未寫入 manifest 的原圖。現重新交叉核對：
+
+- `s60019-1.jpg` 已存在，SHA-256 `2a5e18139c8314c43fe16b26cf8052ba3fa540cd6e41261b12ed4e416e22d819`，129648 bytes，與 cache entry `c1f06493e2b2b8d6` 完全吻合。
+- ledger `entries[58]`：2026-10-22T14:41:51.856Z、image/minimax/image-01、status ready、US$0.0035、job `97364909-9274-4f7d-bf6d-9de921517bab`。該景已1 actual、只餘2，**不是零次**。
+- 本更正時 manifest 尚無 s60019、ledger 尚無該景 judge；因此此圖 **PENDING judge／native**，不添加 KEEP。root 已另看原圖，將先以原 prompt 快取 judge，最多另2張新圖；不能重置 actual。
+- 正確批次 inventory：s60012–018 七景已判讀（6 KEEP、1 REJECT），s60019 一景 ready 待審，其餘86景零次。R12 對16的修圖用量另記，不倒改 R11 九次歷史。
+
+本次只補正報告與核對現存檔雜湊，未付費、改 manifest／media／creative 或 Git。
