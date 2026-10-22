@@ -16,6 +16,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v3-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v4-84-line-revision.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -54,7 +55,11 @@ scope:
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
-## Current checkpoint (2026-10-23 v4)
+## Current checkpoint (2026-10-23 v5)
+
+獨立 v4 逐句來源／配對畫面查核 `reviews/line-source-visual-review-20261023-84-delta-v4.md` 對前一版判 PASS，**不是敘事盲讀通過**。兩位真正只讀 v4 旁白的讀者均判故事 **HOLD**：瓶嘴內斜與上下緣被講成兩個答案，控流問題的口語解釋未收束；2007 年圓角蓋到另一款生醬油轉場突兀；最後把商標、調查和出貨堆成清單，沒有回到「無字外形被認出」。作者 v5 依此重排同一瓶嘴的動作說明，明確交代另一款產品，移除片尾出貨數字卡並收回品牌標記。新版 84／84 同序 ID、73 shot／11 card；新 SHA 與修改表見 `reviews/author-v5-84-line-revision.md`。v4 查核及盲讀都**不移用**，v5 仍須獨立來源／畫面覆核、兩位只讀新版旁白的盲讀、時長及站主核准。無付費製作。
+
+## Previous checkpoint (2026-10-23 v4)
 
 獨立 v3 逐句／逐鏡收據 `reviews/line-source-visual-review-20261023-84-v3.md` 綁前一版雜湊，判 **HOLD**：`c080513` 圖片提前揭露軟袋、`c080605` 把缺問卷的查核過程說進正文並畫研究者、R1 的預裝需求索引寫錯、畫面表標題誤把品牌故事寫成奇聞檔案局。兩位真正只讀旁白的 v3 盲讀雖總評 PASS，也指出 `c080304/308/409–410/513/519/525/604–611` 的口語或故事接力可改善。作者在 v4 修掉這些相鄰問題，保留 84／84 同序 ID、71 shot／13 card；新雜湊與逐項改動見 `reviews/author-v4-84-line-revision.md`。v3 收據及盲讀**不移用**；v4 仍須獨立來源／逐鏡複核、兩位只讀新版旁白的盲讀與獨立視覺預檢。沒有 TTS 正文時長、站主劇本核准或付費核准，持續停在非付費階段。
 
