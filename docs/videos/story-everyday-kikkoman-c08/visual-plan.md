@@ -70,7 +70,7 @@
 | c080301 | shot | Close shot of a generic unmarked glass condiment bottle standing on its broad base on a quiet dining table, soft side light. | slow push-in |
 | c080302 | shot | Medium shot of an anonymous diner lifting a plain bottle by its narrowed middle while a plate remains in frame, diffused daylight. | gentle pan left |
 | c080303 | shot | Close shot of an anonymous hand using thumb, index, and middle fingers to hold the narrowed body of a generic glass condiment bottle, gentle table light. | gentle tilt down |
-| c080304 | shot | Medium shot of an anonymous adult tilting a plain bottle over a small dish, the two free fingers naturally open, soft window light. | slow pull-back |
+| c080304 | shot | Medium shot of an anonymous adult tilting a plain condiment bottle over a small dish, three fingers on its narrowed body, the other hand lightly supporting the pouring elbow, soft window light. | slow pull-back |
 | c080305 | shot | Wide illustrative view of anonymous diners around a low plain table, one hand lifting a generic condiment bottle between dishes, warm indoor light; no dated costume. | gentle pan right |
 | c080306 | shot | Close shot of an anonymous designer studying the slight outward flare at the top of a generic plain bottle, soft workbench light. | gentle tilt up |
 | c080307 | shot | Medium shot of an anonymous diner checking the dark sauce level through a clear unmarked glass bottle without opening it, mild daylight. | slow push-in |
@@ -88,7 +88,7 @@
 
 | ID | 類型 | 完整插圖 prompt／後製單焦點卡 | 運鏡 |
 | --- | --- | --- | --- |
-| c080401 | shot | Close shot of an anonymous designer watching dark sauce flow from a plain bottle into a small dish, a separate plain wine glass blurred far behind, soft workbench light. | slow push-in |
+| c080401 | shot | Close shot of an anonymous diner watching dark sauce pour from a plain condiment bottle into a small dish at a dining table, soft side light. | slow push-in |
 | c080402 | card | 後製單焦點卡：MoMA 2015–16 展覽標籤稱「接近 100 個模型」未同時解決防滴與控流；標 M1，不畫成 100 件現存實物。 | 靜態卡／後製切入 |
 | c080403 | shot | Medium shot of an anonymous designer setting down a plain bottle sketch and lifting a filled generic bottle toward a small dish, quiet desk light. | gentle pan left |
 | c080404 | shot | Medium shot of an anonymous diner tilting an unmarked condiment bottle over a small dish, dark sauce flowing, diffused daylight. | gentle tilt down |
@@ -130,9 +130,9 @@
 
 | ID | 類型 | 完整插圖 prompt／後製單焦點卡 | 運鏡 |
 | --- | --- | --- | --- |
-| c080601 | card | 後製單焦點卡：龜甲萬公告「2018-03-30／日本立體商標註冊」；標 K3，不寫未核對的 JPO 法律效果。 | 靜態卡／後製切入 |
+| c080601 | card | 後製單焦點卡：龜甲萬 2018 年 4 月新聞稿所報「2018-03-30／日本立體商標註冊日」；標 K3，不寫未核對的 JPO 法律效果。 | 靜態卡／後製切入 |
 | c080602 | shot | Close shot of an anonymous adult examining the three-dimensional outline of a generic unmarked bottle from the side, soft studio light; no registered exact shape. | slow push-in |
-| c080603 | shot | Medium shot of an anonymous diner turning an unlabeled generic glass bottle in hand beside a plate, diffused daylight. | gentle pan right |
+| c080603 | shot | Medium shot of an anonymous diner turning an unmarked generic glass condiment bottle in hand beside a plate, diffused daylight. | gentle pan right |
 | c080604 | shot | Wide shot of a generic plain bottle silhouette between an older blank calendar sheet and a newer blank sheet, no legible dates, soft desk light. | slow pull-back |
 | c080605 | shot | Wide shot of an anonymous adult transferring a little dark sauce from a large plain bottle into a ceramic cruet, while a later generic small tabletop bottle sits separate in soft background, warm light. | gentle tilt down |
 | c080606 | shot | Medium shot of an anonymous diner pointing to a reused unmarked condiment jar among ordinary table tools, gentle afternoon light. | slow push-in |
