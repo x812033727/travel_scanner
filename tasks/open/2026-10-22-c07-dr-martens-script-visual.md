@@ -47,4 +47,4 @@ scope:
 
 2026-10-22：倫敦博物館 1995 年館藏物件頁可直接讀，明確寫 Dr. Martens 於 1960 年代末被 skinheads 採用、後有其他次文化；Arthur Crucq 的 2021 年獨立研究可直接讀，分開晚 1960s、晚 1970s punk 與後來極右挪用。V&A 品牌專頁直取仍 403，不作逐句唯一依據。出廠日與未知零售日嚴格分開。舊 Treatment 任務 `done` 曾寫出 done 副本但 open 檔刪除受政策拒絕，詳見舊工作樹，**勿以改寫命令繞過**。
 
-2026-10-22：初稿凍結雜湊見 `reviews/script-review-summary.md`。77 句與 77 鏡 ID 一對一、63 插圖／14 卡、最長兩連卡；仍待另一代理逐句查核、兩位真正盲讀、時長與時間占比實測，不能宣稱 PASS。`npm run check:tasks` 通過（全庫舊票警告）；首輪 `npm run test:docs-videos` 因此新工作樹缺 `pinyin-pro` 中止，正在 `npm ci` 補依賴後重跑。
+2026-10-22：初稿凍結雜湊見 `reviews/script-review-summary.md`。77 句與 77 鏡 ID 一對一、63 插圖／14 卡、最長兩連卡；仍待另一代理逐句查核、兩位真正盲讀、時長與時間占比實測，不能宣稱 PASS。`npm run check:tasks` 與 `git diff --cached --check` 通過（前者有全庫舊票警告）。首輪 `npm run test:docs-videos` 因新工作樹缺 `pinyin-pro` 中止；`npm ci` 完成後重跑 **235/236 PASS**，唯一失敗是 `docs/videos/imported-long-languages/runner.test.mjs` 的 `initial runtime freezing resolves a portable relative root...`，子程序在 Windows 回 `3221226505`、stderr 空，未觸及 C07 文件。草稿 PR #1680 已貼 `no-auto-merge`，等待獨立審查；不得把 235/236 說成全綠。
