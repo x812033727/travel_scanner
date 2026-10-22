@@ -12,7 +12,7 @@
 | S4 | [OXO 2017 握柄回顧](https://www.oxo.com/blog/behind-the-scenes/behind-design-oxos-iconic-good-grips-handles) | 品牌自述 1990 年首批推出、熱塑橡膠、沾水仍防滑、首批削皮刀加 14 件產品。 | 利害關係方；其他來源稱初期 20 件，正文預設只說「一系列」，不定數。 |
 | S5 | [Design Council 2006–07 案例](https://www.design-council.org.uk/en/Case-Studies/All-Case-Studies/OXO-Good-Grips/) | Farber 受訪表示一開始就希望吸引更廣市場；案例記 1990 年推出，將通用設計視為商業策略。 | 頁內 1989／1990「創辦」用語不一；1991 年營收及增長率未附可核底帳，不用來證設計造成銷售。 |
 | S6 | [Los Angeles Times 2000 採訪](https://www.latimes.com/archives/la-xpm-2000-sep-14-cl-20664-story.html) | 十年後訪問 Farber、參與設計的 Patricia Moore；Farber 回憶 1990 年工具外形不同、價格高，零售商初期猶豫；Moore 說消費者後來接受。 | 回憶不等於 1990 年門市資料。文中首批 20 件與 S4 的 15 件衝突；六美元只能歸於 Farber 回憶，不能稱統一零售價。 |
-| S7 | [Smart Design OXO 專案頁](https://smartdesignworldwide.com/projects/oxo-partnership/) | 設計方自述 1989 年接案；使用者研究、人體工學、原型與量產設計；握柄後來延伸其他家用品。 | 參與方的「走向大眾」自述不等於逐年交易紀錄，首批 20 件說法仍待解。 |
+| S7 | [Smart Design OXO 專案頁](https://smartdesignworldwide.com/projects/oxo-partnership/) | 設計方把 Farber 的發現放在 1989 年，並稱雙方自 1990 年起合作；列出使用者研究、人體工學、原型與量產設計，握柄後來延伸其他家用品。 | 此頁本身未證明「1989 年接案」；參與方的「走向大眾」自述不等於逐年交易紀錄，首批 20 件說法仍待解。 |
 
 [Smithsonian 美國歷史博物館削皮刀搜尋頁](https://www.si.edu/object/oxo-good-grips-carrot-peeler%3Anmah_1417719)在搜尋結果可讀，但直接開啟當下回 404；不列為核心來源。另有 Smithsonian Cooper Hewitt 實物館藏及 MoMA 頁可供物件核對。
 
