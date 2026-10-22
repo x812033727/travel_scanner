@@ -42,7 +42,7 @@
     },
     {
       "setup": "s61003",
-      "payoff": "s61057",
+      "payoff": "s61055",
       "what": "火藥庫有誰處理"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "setup": "s61053",
-      "payoff": "s61057",
+      "payoff": "s61055",
       "what": "哪支隊伍處理火藥庫"
     },
     {
@@ -102,8 +102,8 @@
     },
     {
       "setup": "s61113",
-      "payoff": "s61050",
-      "what": "撤離者在哪暫停"
+      "payoff": "s61081",
+      "what": "撤離到公地後的傷者與脆弱者在哪裡避寒"
     },
     {
       "setup": "s61042",
@@ -208,12 +208,12 @@
       "lines": [
         {
           "id": "s61005",
-          "text": "有人把救援工具放下，也有人留在火場；警報過後，搜救怎麼接著做？",
+          "text": "首爆後搜救才展開，火藥庫又有危險；街上的傷者還等得到人來找嗎？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one abandoned shovel beside a mature-faced firefighter still moving toward a smoky street, soft winter light",
+        "prompt": "Medium shot of one anonymous adult searcher pausing among damaged waterfront houses as smoke rises in the distance, grey winter light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -994,12 +994,12 @@
       "lines": [
         {
           "id": "s61031",
-          "text": "火與瓦礫把街口堵住，救援者還得在破路間辨認方向。",
+          "text": "普林斯寫，消防員在首爆後很快回應全城警報，這支隊伍一時還保有組織。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired rescuer searching for a passage between scattered timber and a still-burning waterfront block, cloudy light",
+        "prompt": "Medium shot of several firefighters responding to an alarm beside separate smoky houses in a damaged northern district, 1917 clothing, cold light",
         "camera": "push in",
         "visual": "still"
       }
@@ -1026,12 +1026,12 @@
       "lines": [
         {
           "id": "s61034",
-          "text": "消防隊缺了兩位領隊，北邊的房屋卻還在一處接一處起火。",
+          "text": "北區的火已經不只燒住家，教堂、學校和工廠也被捲進去。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of a mature-faced firefighter facing several separate house fires on a damaged northern street, cloudy light",
+        "prompt": "Wide shot of separate fires across North End homes, a modest church, a plain school and a factory, one firefighter at the distant edge, winter light; no casualties",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1267,7 +1267,7 @@
       "lines": [
         {
           "id": "s61113",
-          "text": "老人與病弱者更難跟上；大家下一個能暫停的地方在哪裡？",
+          "text": "老人與病弱者更難跟上；就算到了公地，他們之後在哪裡避寒？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -1411,12 +1411,12 @@
       "lines": [
         {
           "id": "s61054",
-          "text": "消防員仍守在崗位，造船廠的庫房則有另一支隊伍去處理。",
+          "text": "普林斯接著記下：另有一整支隊伍自願去處理那座火藥庫。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one unmarked adult volunteer walking toward a low magazine building while a distant firefighter remains by a separate smoky street, late daylight",
+        "prompt": "Medium shot of several unmarked adult volunteers standing near a plain low powder magazine within naval-yard grounds, distant smoke; no visible hoses or military emblems",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1427,7 +1427,7 @@
       "lines": [
         {
           "id": "s61055",
-          "text": "普林斯只稱他們是一整支自願參與的砲兵隊，沒有交代隸屬哪個軍種。",
+          "text": "他只稱這批人為砲兵隊，沒交代隸屬軍種或下令者。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -1443,7 +1443,7 @@
       "lines": [
         {
           "id": "s61057",
-          "text": "他們自願做的，是給那座火藥庫灌水。",
+          "text": "他們對那座火藥庫採取的動作，是灌水。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -1460,13 +1460,13 @@
       "lines": [
         {
           "id": "s61059",
-          "text": "同一場警報裡，撤離在街上，灌水在造船廠。",
+          "text": "普林斯寫，消防員知道：有傷者被困在瓦礫下，單靠自己走不出來。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "撤離與灌水同時進行",
-        "kicker": "同一場警報",
+        "text": "瓦礫下仍有人待救",
+        "kicker": "北區火場",
         "sub": "Prince 1920 年研究"
       }
     },

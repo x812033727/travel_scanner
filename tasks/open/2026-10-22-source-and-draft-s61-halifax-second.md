@@ -31,7 +31,7 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 - [x] Check S01–S60 and the topic index for overlap; reject Carrington because direct 1859 sources were inaccessible here, and reject S48's 1858 Atlantic-cable story as overlap.
 - [x] Pin Samuel Henry Prince's 1920 Halifax field study to GITenberg commit `befb706982ba1be631a52d4f686be301c2de7f34`, raw `37580.txt` SHA-256 `97484e988437d13a4f5a72d5c2edbf1c594ea8dff4c5b239d8b17b7c62c29b52`; keep it clear that Prince's book itself combines his observations and cited descriptions.
 - [x] Draft `brief.md`, `research.md`, `video.json`, `script.md`, `claims.md` and author handoff under `docs/videos/curio-s61/`.
-- [x] Self-check every written picture against its own spoken line, then lint: 0 errors, 0 warnings; R6 has 106 lines, 96 illustrated shots and 7 information cards. At fast 325 CPM its first chapter is 48.03 seconds and post-opening body is 484.70 seconds; at 250 CPM the body is 601.57 seconds.
+- [x] Self-check every written picture against its own spoken line, then lint: 0 errors, 0 warnings; R7 has 106 lines, 96 illustrated shots and 7 information cards. At fast 325 CPM its first chapter is 48.23 seconds and post-opening body is 486.57 seconds; at 250 CPM the body is 604.00 seconds.
 - [x] Independent R1 source/visual review found a naval-affiliation error; R2 author corrected it and another worker independently PASSed the fixed Prince attribution and all changed written visuals on frozen hashes.
 - [x] Two isolated R2 blind readers and formal merge found shared narrative failures (`no_toc`, `chapters_link`, `payoffs`, `no_recap`, `no_detour`), despite R2 source/visual PASS.
 - [x] R3 author repaired the narrative on new hashes, added P14 for source-bound rescue organization, and kept prompt/claim alignment and lint 0/0.
@@ -41,11 +41,13 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 - [x] R5 author moved the no-second-blast answer immediately after the all-clear, trimmed after-alert rescue/shelter to five lines with explicit opening callbacks, removed duplicate warning/return lines, and added fixed-text first-blast and early-aid details to keep the body over eight minutes.
 - [x] R5 independent source/visual review isolated one error at `s61130` (two groups wrongly merged into one); R5 blind diagnostics were not valid formal votes and flagged payoff/repetition issues.
 - [x] R6 author repairs the two-group source error, cuts repeated beats, pins additional Prince details to each new line and written visual, and freezes an exact reversible R5→R6 delta.
-- [ ] Have two new isolated blind readers and a new independent source/visual reviewer assess frozen R6, then follow media gates before spending.
+- [x] R6 independent source/visual reviewer PASSed 103 factual lines, 96 written visuals and 7 cards; two new official isolated blind readers each marked 11/13, with formal OR 12/13 HOLD solely on common `no_recap`.
+- [x] R7 author substitutes new sourced actions for repeated s61028/31 and s61054/61 beats, reworks the opening and Common shelter payoff, replaces the s61059 recap card, and fixes direct source anchors at s61008 and s61026. Freeze exact R6→R7 reversible delta and lint 0/0.
+- [ ] Have two new official isolated blind readers and a new independent source/visual reviewer assess frozen R7, then follow media gates before spending.
 
 ## How to verify
 
-From repository root: `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s61 --json`; `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs script --slug curio-s61`; `npm run check:tasks`. The R6 author lint returned 0 errors/0 warnings, 106 lines, 11.2989 estimated minutes at the tool's standard pace. Compare `claims.md` line text against `video.json` and the fixed text before any approval.
+From repository root: `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s61 --json`; `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs script --slug curio-s61`; `npm run check:tasks`. The R7 author lint returned 0 errors/0 warnings, 106 lines, 11.3433 estimated minutes at the tool's standard pace. Compare `claims.md` line text against `video.json` and the fixed text before any approval.
 
 ## Notes
 
@@ -60,3 +62,5 @@ R5 [獨立史料與書面畫面覆核](../../docs/videos/curio-s61/review/r5-ind
 2026-10-22 R6 作者依 R5 HOLD 將 `s61130` 明確改為「有人跑向店鋪；店裡的人則趕回家」，避免合併兩群人。前半段增加 Prince 固定全文裡的戰時船隊、蒙布朗號與伊莫號載貨差別、首次示警缺口、爆炸對城堡／列車的衝擊，以及最初醫療船、訪客和本地居民不同的救援起點；撤離段加入手稿裡孩子、臥床者、仰望天空者的處境，片尾明確以解除通報後的白帳與教堂大廳回收「何處暫停」。緊接安全通報說明第二次爆炸沒有發生，仍把砲兵隊灌水的因果歸於 Prince，而不冒稱核實軍方紀錄。R6 完整檔案與可逆差異見 [作者交接](../../docs/videos/curio-s61/review/r6-author-narrative-repair.md)，待全新獨立覆核；無付費媒體。
 
 R6 [獨立史料與書面畫面覆核](../../docs/videos/curio-s61/review/r6-independent-source-visual.md) **PASS**：103 句史實旁白、96 個畫面提示及 7 卡均對齊固定 Prince 原文，lint 0／0、325 CPM 正文估算 8 分 4.7 秒。兩個 claims 直連錨點可於下版補準，事實已有固定原文支持。全新正式隔離盲讀 A、B 各 11／13；[OR 合併](../../docs/videos/curio-s61/review/r6-formal-merge-audit.md) **12／13 HOLD**，共同 No 僅 `no_recap`：A 指 `s61028/31` 都講瓦礫阻路，B 指 `s61054/61` 都講消防員留守。R7 應刪重述或改為新動作並保持八分鐘正文，再重新雙盲；未進媒體。
+
+2026-10-22 R7 作者把 `s61031` 改為首爆後消防員迅速回應全城警報，`s61054` 改為整支隊伍自願處理火藥庫的行動、`s61055` 才依 Prince 揭示砲兵隊身份，`s61059` 改為瓦礫下傷者尚待消防員協助，讓 `s61061` 留守成為下一個行動而非重述。開場 `s61005` 留待揭曉的搜救問題，不提前揭露工具與留守；`s61113` 改問老人與病弱者抵達公地後何處避寒，以片末白帳回收。`s61008` 的親身參與直連 Prince L766–773，`s61026` 木板直連 L1363–1370。R7 [作者交接](../../docs/videos/curio-s61/review/r7-author-narrative-repair.md)只保存修訂與機械檢查，**獨立 R7 史料／畫面及全新正式雙盲尚未進行**；無付費媒體。
