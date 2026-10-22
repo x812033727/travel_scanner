@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-and-review-c08-kikkoman-script
 title: Write and review C08 Kikkoman script and visual plan
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-c08-narrative-revision
+claimed_at: 2026-10-22T13:42:36Z
 created_at: 2026-10-22T05:28:57Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-script
@@ -51,6 +51,10 @@ scope:
 ## How to verify
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
+
+## Current checkpoint (2026-10-22)
+
+真正只看旁白的讀者對 82 句舊稿判 HOLD：來源口吻和握瓶細節拖慢第 2–3 章，第 4 章的雙難題對「控流」沒有交付可查的解法，第 5 章後半的館藏／年份像清單，片尾沒回到最後一滴。作者已依此改成 75 句／75 鏡、64 shot／11 card，保留 1961 上市、2005 入藏、2018 立體商標；口語欄 2,084 字元，只是字數，**未實測正文 480 秒**。舊版的來源 PASS 收據失效，這版仍待獨立逐句來源核查、兩名只看新旁白的乾淨盲讀、獨立視覺預檢及站主稿件核准。`script.md` SHA-256 `D0A155AF6B0284C513A375E10FE26C0E1E08C07FB4B6E452C6232A4FDA869F05`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；`script-source-addendum.md` SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。作者 ID／鏡數／卡片／禁字與 `git diff --check` 自檢 PASS。本機 `npm run check:tasks` 仍因兩張 reviewer 的未追蹤 open 副本與已提交 done 同 ID 失敗；刪除先前遭 `blocked by policy`，本輪未重試。無付費、無上傳。
 
 ## Notes
 
