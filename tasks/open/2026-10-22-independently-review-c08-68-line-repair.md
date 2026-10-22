@@ -32,7 +32,7 @@ PR #1681 author head `20c8b8f1c` repairs four specific HOLD IDs from an independ
 - [x] Inspect head, files, branch, existing tasks and six pre-existing untracked duplicate open task copies; claim a unique exact review-receipt path.
 - [x] Reopen MoMA, Kikkoman K3, GK and K4; re-read Ekuan's first-person article and the earlier rendered official GK Report.
 - [x] Confirm four specified paired deltas PASS; identify remaining HOLD IDs and the separate evidence-note consistency failure.
-- [ ] Run focused checks, place ticket in review for the still-open PR, commit/push two exact files, and read back PR body.
+- [x] Run focused checks, place ticket in review for the still-open PR, commit/push two exact files, and read back PR body.
 
 ## How to verify
 
@@ -41,3 +41,5 @@ Read `docs/videos/story-everyday-kikkoman-c08/reviews/line-source-visual-review-
 ## Notes
 
 The four requested repair IDs `c080215`, `c080405`, `c080410`, `c080414` now pass their narrow delta check. Overall remains HOLD: `c080605` still says unsupported 「小斜角」; `c080406` says 「改動很小」 and needs to be localized to the tip rather than suggesting unmeasured magnitude; `c080415` shot shows a filled product while its paired narration asks whether launch item would be empty or prefilled. Independently, visual-plan line 133 falsely says 2018 cumulative shipments are absent; `c080604` narration/card and the addendum include K3's correctly qualified >500 million global cumulative shipments through March 2018. The duration STOP and all owner/paid gates remain. Do not edit author inputs or the six untracked policy-blocked copies.
+
+Review receipt and this ticket were committed in `10431cca49541e4eebd341b6a1e8ab5fac537d0c`; `git diff --cached --check` passed. Draft PR #1681 body was updated and read back with exact body match, `no-auto-merge`, and the same remote head. `npm run check:tasks` remains red solely on the six preserved untracked duplicate C08 task files; no policy-blocked deletion was retried.
