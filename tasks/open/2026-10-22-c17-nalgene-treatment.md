@@ -44,3 +44,5 @@ scope:
 2026-10-23 作者稿：`treatment.md` SHA-256 `D7B331C87E1C0904093E95877D75841EBBA495581A3040EDD7DC5C3AE854410F`；`source-matrix.md` SHA-256 `E2A475A1344ED3255E42D93A0542DB2ADA38E73EE2F52B0CDA926B608FEDADE7`。M01–M12 是待重核矩陣，不是 PASS。`npm run check:tasks` 通過（2075 張票，既有跨票警告）；`git diff --check` 通過。無付費、匯入或上架。
 
 2026-10-23：已開[草稿 PR #1699](https://github.com/x812033727/travel_scanner/pull/1699)，base `codex/brand-stories-new-series-20261020`、標記 `no-auto-merge`；原作者輸入檔雜湊如上。下一手先派另一名代理逐項重開來源，查核後才問站主是否採用企劃。
+
+2026-10-23 作者窄修：獨立審查在 `docs/videos/brand-story-independent-reviews/C17-nalgene-20261023.md` 對「1949 水瓶」說法錯置為 S2 標題提出 HOLD；已只把五處來源定位／後續查核提示改為「開頭導語」。新版 `treatment.md` SHA-256 `0451192DAA6EDF85CFD8721674511B6DBDBC671A73AC720B0BCEDFB9E14C1E07`；`source-matrix.md` SHA-256 `892041F854DCF4FBFFF37BFE90AC6B1AA02647CBD146CB2262F7A2E47FAC316E`，細節見同目錄 `author-repair-20261023.md`。M01 定位待另一代理依新版雜湊複核，尚未解除企劃 HOLD 或交站主採用。
