@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-source-and-draft-s62-galileo-jupiter
 title: Source and draft S62 Galileo Jupiter observations episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:48:39Z
+owner:
+claimed_at:
 created_at: 2026-10-22T01:25:22Z
 completed_at:
 branch:
@@ -78,3 +78,5 @@ R8 [製作關卡與語音停點](../../docs/videos/curio-s62/review/r8-productio
 ## 最新製作檢查點（2026-10-22，台北）
 
 接續先前歷史紀錄：R12獨立來源與雙讀者逐題合併通過；同稿首次重錄後114／114句機器檢查通過、0旗標，站主未親聽。精確音檔／時間軸雜湊見 r12-audio-checkpoint.json。首八景正在生成，尚未逐圖驗收；110景插圖＋judge整集上限US$4.46，配樂另限US$0.10，每景最多三次實際圖。未完成合成、成片QA、字幕或Shorts；PR #1662仍是製作草稿。不要以網站US$200取代本集上限。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 36/109，尚未選 73 景；US$0.7425，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s62/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。
