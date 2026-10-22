@@ -90,6 +90,8 @@ R8 [作者窄幅修稿](../../docs/videos/curio-s63/review/r8-author-repair.md)�
 
 首次正式 `tts` 在**未生成首個音檔**時 exit 4，回覆「Gemini 語音暫時忙碌或達到用量上限，請稍後重試」；工作目錄目前只有 `approvals.json`，媒體帳本顯示 S63 **US$0.00**。需在服務可用後重跑相同 `tts`；再逐句 `check-audio`、處理需重唸句、完成音訊審核，才啟動整集插圖生成。不能把本次 dry-run 或網站服務狀態當作已生成聲音、插圖或成片。
 
+另一位未參與撰稿的查核者另寫 [成片 QA 可讀的 `verify-1.md`](../../docs/videos/curio-s63/verify-1.md)：19 個來源／範圍群組涵蓋 127 句、6 張資訊卡及上架文案，18 組在出版文本的說話人限定內 CONFIRMED，0 個仍在旁白引用的 NOT FOUND，1 組是編輯語句 OUT OF SCOPE。報告逐一說明家人後續、選民比例和法律結果的證據界線，並綁上述同一 R8 三檔雜湊；`factsChecks` 可讀且通過。它記錄 `claims.md`、`research.md` 舊導言仍寫「R8 待審」；為維持獨立覆核和正式盲評的檔案雜湊，不修改已凍結的 `claims.md`，當前結論以 R8 正式回條為準。
+
 ## Notes
 
 R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal-merge-audit.md)為 **12／13 HOLD**：A 否決 `payoffs` 與 `no_recap`，B 只否決 `no_recap`；官方逐題 OR 與 CLI 重播共同只擋 `s63103` 的重複接收者資訊。作者須另凍結 R5，並取得新的獨立史料／畫面審核及兩位未讀 R4 的正式盲讀，才可解鎖付費媒體。
