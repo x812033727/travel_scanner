@@ -69,6 +69,8 @@ R6 [作者窄幅修稿](../../docs/videos/curio-s63/review/r6-author-repair.md)�
 
 R7 [作者窄幅修稿](../../docs/videos/curio-s63/review/r7-author-repair.md)以 R6 原票的具體意見為準，把開場 `s63001`–`s63004` 搬到里奇蒙交箱前，`s63009` 畫面不再先抵費城，並把章名改成事件；`s63062` 改為禱告動作，不再重複逃脫方案失敗；`s63067` 改為布朗追求自由的選擇，以免和新開場重述交箱；`s63123`–`s63124` 依 Stearns 腳註分說 1,200 美元索價及仍未知的籌款結果。九個場景 ID 改動、其餘 118 個場景逐欄相同。凍結雜湊：`video.json` `423f78e9ff18b5b77b14a0ad2fbfe71053cf08aba051a640c53038aa012c2263`；`script.md` `0b5f9bad1330cf0ffbb30998a6e3799b3f88386ffda70867fc047b6a8f4ab408`；`claims.md` `ac6a96737c7e84bff49991801874285de2d2a78b637f4e98899e8b16a37942d7`。開場 187 漢字約 34.5 秒，正文排除開場與 CTA 2,685 漢字約 8.26 分鐘（325 字／分）；lint 0／0。R7 只是一份作者候選，仍待新獨立來源／畫面查核，以及兩位未讀 R6 的正式盲讀；**不可沿用 R6 PASS，付費媒體維持封鎖**。
 
+全新審核者已就上述**相同 R7 三檔雜湊**獨立核對九個新場景的逐句來源、資訊卡與書面畫面，並精確比對其餘 118 個場景；[R7 來源／畫面回條](../../docs/videos/curio-s63/review/r7-source-visual-independent.md)為 **PASS，無阻擋 ID**。回條記下 `s63067` 插圖「成箱」出自相鄰 B05 L1494 的非阻擋連結精度註。這只完成來源關，正式雙盲敘事仍未審；未開始付費媒體。
+
 ## Notes
 
 R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal-merge-audit.md)為 **12／13 HOLD**：A 否決 `payoffs` 與 `no_recap`，B 只否決 `no_recap`；官方逐題 OR 與 CLI 重播共同只擋 `s63103` 的重複接收者資訊。作者須另凍結 R5，並取得新的獨立史料／畫面審核及兩位未讀 R4 的正式盲讀，才可解鎖付費媒體。
