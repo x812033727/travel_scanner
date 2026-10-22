@@ -38,7 +38,7 @@
 | V16 | O12 | shot | Medium shot at a generic shipping bench, one anonymous packer lifting a fragile plain straight rod from an unmarked box, overcast light. | 折斷是原廠回顧，不能畫實測破損率。 |
 | V17 | O13–O14 | shot | Wide shot between a bedside table and an unmarked shipping box, one anonymous resident looking from short rods to a closed carton, soft grey light. | 概念對照，不暗示同一個史實場景。 |
 | V18 | O15 | shot | Top-down close-up of one anonymous hand placing a long plain straight strip beside a small round dish on a blank table, mild daylight. | 僅幾何示意；避免虛構精確長度。 |
-| V19 | O16 | shot | Medium shot at an anonymous craft bench, one maker bending a flexible unlit strip into the start of a spiral, soft daylight. | 1895 年標示後製，勿畫真實試作記錄。 |
+| V19 | O16 | shot | Top-down close-up of a long plain unlit strip resting in a loose spiral shape beside a round dish on a blank craft bench, soft daylight. | 僅作幾何示意；不畫 1895 年誰如何試作。 |
 
 ## 3｜想出螺旋，木模卻卡住（I01–I16）
 
@@ -50,7 +50,7 @@
 | V23 | I05–I06 | shot | Close-up on a plain table, one anonymous hand tracing the full unlit spiral path from edge toward center, diffuse light. | 說明路徑，不畫殺蚊效率倍增。 |
 | V24 | I07 | card | `1895｜螺旋試作開始`；來源：金鳥年表。 | 不是上市卡。 |
 | V25 | I08 | shot | Reuse V04 illustration with a closer crop on the wooden mold and the anonymous curator's hand. | 同一物件回收；新裁切仍不能冒充館藏圖。 |
-| V26 | I09–I10 | shot | Close-up at a generic workbench, one anonymous maker examining a simple two-piece wooden spiral mold beside blank raw material, soft side light. | 「填料成形」只為示意，不畫未知實際操作。 |
+| V26 | I09–I10 | shot | Close-up at a generic workbench, one anonymous maker examining a simple wooden spiral trial mold beside blank raw material, soft side light. | 不斷言木模有兩片；「擬填料成形」只為示意。 |
 | V27 | I11 | shot | Wide shot of a plain bench, one anonymous maker looking at a single rough trial shape beside an empty tray, grey daylight. | 不以單一失敗事件冒充記錄。 |
 | V28 | I12–I13 | card | `試作品；不適合大量生產`；來源：國立科學博物館登錄、金鳥技術頁。 | 館藏文字改寫，勿複製圖片或長文。 |
 | V29 | I14 | shot | Medium shot at a neutral production table, one anonymous maker placing an unused wooden mold aside, soft window light. | 情境插畫，不暗示真實拒用時刻。 |
@@ -64,7 +64,7 @@
 | V32 | E01–E02 | card | `1900｜公司年表：發明專利申請`；來源：金鳥年表。 | **申請**，不寫授權、發明人欄或專利號。 |
 | V33 | E03–E04 | card | `1902｜螺旋產品上市`；來源：金鳥年表。 | 與 1900 申請分兩卡；卡片不超連三。 |
 | V34 | E05 | shot | Close-up at a plain table, one anonymous hand setting a trial wooden mold beside an unmarked spiral product, soft daylight. | 七年由後製文字標示，不讓兩件物件冒充同時照片。 |
-| V35 | E06 | shot | Medium shot at a neutral archive desk, one anonymous researcher pausing between two separate blank folders, gentle lamp light. | 只傳達此片沒有逐年資料，不暗示原始檔案被毀。 |
+| V35 | E06 | shot | Medium shot at a neutral archive desk, one anonymous researcher pausing between two separate blank object folders, gentle lamp light. | 僅表示本次物件資料缺完整 1902 工序；不暗示全部史料缺失或被毀。 |
 | V36 | E07–E08 | shot | Wide shot in a neutral exhibit room, one anonymous curator standing beside an unmarked hand-winding extrusion device, soft daylight. | 這是後來保存的設備示意，不能充當 1902 年量產紀錄。 |
 | V37 | E09 | shot | Close-up at a neutral exhibit label area, one anonymous curator pointing beside a plain extrusion device, soft window light. | `約 1910 起` 由後製標字，不讓模型畫字。 |
 | V38 | E10 | card | `後年設備 ≠ 1902 年上市工法紀錄`；來源：金鳥技術頁。 | 明確區隔有物件年代與未知的上市工序。 |
@@ -77,13 +77,13 @@
 | V45 | E19 | shot | Medium shot in a generic older workshop, one anonymous worker still hand-winding two plain strips at an extrusion bench, soft daylight. | 手卷設備據記載用到約 1957 年；不畫 1940 年單一工廠實況。 |
 | V46 | E20 | shot | Wide shot at a neutral shipping desk, one anonymous packer holding a paired spiral above a blank carton, overcast light. | 問運送，不捏造折損率。 |
 
-## 5｜成對運送，單卷使用（T01–T18）
+## 5｜成對運送，單卷使用（T01–T12）
 
 | 畫面 | 句 | 類型 | 畫面意圖／後製字卡 | 驗收重點 |
 | --- | --- | --- | --- | --- |
 | V47 | T01 | shot | Medium shot at a plain shipping bench, one anonymous packer lifting a paired spiral beside an unmarked box, soft grey daylight. | 雙卷用途不與慢燃混成一個機制。 |
 | V48 | T02–T03 | card | `原廠說法：雙卷減少運送折斷、降低運輸成本`；來源：金鳥技術頁。 | 無測得降幅，不畫任何百分比。 |
-| V49 | T04–T05 | shot | Top-down at a neutral table, one anonymous hand arranging a single unlit spiral beside a joined pair and a plain carton, soft light. | 單圈／雙卷作功能對照，不畫實測。 |
+| V49 | T04–T05 | shot | Top-down at a present-day neutral table, one anonymous hand arranging a single unlit spiral beside a joined pair and a plain carton, soft light. | 單圈／雙卷作功能對照；T05 已切到現行用法，不畫實測。 |
 | V50 | T06–T07 | shot | Reuse V06 illustration with a closer crop on the unlit joined pair. | 同一成對物件回收；不能畫成同時點燃。 |
 | V51 | T08 | shot | Medium shot at the same home table, one anonymous resident gently separating a paired spiral into single pieces, soft daylight. | 拆成單卷，形狀清楚。 |
 | V52 | T09–T10 | card | `從中心輕按，再拆成單卷；勿由外側硬拉`；來源：金鳥現行 Q&A。 | 只作現行使用步驟，避免生成模型畫錯手指。 |
@@ -94,7 +94,7 @@
 
 | 畫面 | 句 | 類型 | 畫面意圖／後製字卡 | 驗收重點 |
 | --- | --- | --- | --- | --- |
-| V55 | N01–N02 | shot | Wide shot in a generic modern factory, one anonymous worker guiding a plain flat sheet from a mixer station, soft overhead light. | 是現行製程示意，非舊時工廠。 |
+| V55 | N01–N02 | shot | Wide shot in a generic modern factory, one anonymous worker guiding a plain flat sheet from an unmarked extruder, soft overhead light. | 現行製程先混料，再經擠出機成片；非舊時工廠。 |
 | V56 | N03 | shot | Close-up at a generic machine, one anonymous worker lifting a blank spiral cutout from a plain sheet, diffuse light. | 先打型後乾燥，不混作 1902 工法。 |
 | V57 | N04 | shot | Medium shot in a neutral exhibit room, one anonymous curator placing a hand-wound silhouette beside a stamped silhouette, soft daylight. | 兩時代比較卡由後製上字。 |
 | V58 | N05–N06 | card | `現行一般規格：約 75 公分／約 7 小時`；來源：金鳥現行 Q&A。 | 不倒推 1902 年，不作獨立性能實驗。 |
@@ -102,7 +102,7 @@
 | V60 | N08 | shot | Medium shot at a plain home table, one anonymous resident adjusting an open window beside an unlit spiral in a dish, soft daylight. | 只表達環境影響，安全指示另依實際包裝。 |
 | V61 | N09–N10 | shot | Close-up at a neutral craft bench, one anonymous worker examining the compact cross-section of a plain incense strip, mild side light. | 是氧氣／密度的抽象示意，不畫虛構對照試驗。 |
 | V62 | N11 | shot | Medium shot at a simple home table, one anonymous resident observing a slowly smoldering single spiral, gentle lamp light. | 不畫誇大的殺蚊或健康效果。 |
-| V63 | N12–N13 | card | `1890 直條：除蟲菊粉；現行金鳥工廠說明：合成擬除蟲菊酯`；來源：金鳥年表與工廠頁。 | 不把成分差異說成效力比較；不推及所有品牌。 |
+| V63 | N12–N13 | card | `早年直條：以除蟲菊為原料；現行金鳥工廠說明：合成擬除蟲菊酯`；來源：金鳥蚊香解說與工廠頁。 | 不把成分差異說成效力比較；不推及所有品牌。 |
 | V64 | N14 | shot | Reuse V07 comparison illustration with a slower crop toward the short rod and paired spiral. | 回收開場的同一圖，後製卡點出長度與運送兩個答案。 |
 | V65 | N15–N16 | shot | Medium shot at the same table, one anonymous resident looking curiously between one long single spiral and a joined pair near a blank carton, soft daylight. | 後製留言問「久燃／完整送達」；片尾另留可點連結，不畫字。 |
 
