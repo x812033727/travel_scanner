@@ -11,7 +11,10 @@ completed_at:
 branch: codex/brand-story-play-doh-c06-treatment
 depends_on: []
 scope:
-  - docs/videos/story-everyday-play-doh-c06
+  - docs/videos/story-everyday-play-doh-c06/treatment.md
+  - docs/videos/story-everyday-play-doh-c06/source-matrix.md
+  - docs/videos/story-everyday-play-doh-c06/reviews/source-review.md
+  - docs/videos/story-everyday-play-doh-c06/reviews/owner-treatment-approval.md
 ---
 
 # Research and outline C06 Play-Doh everyday reversal
