@@ -4,8 +4,8 @@ title: Source and draft S60 South Pole letter history episode
 status: in-progress
 priority: P2
 area: docs
-owner: codex-s60-new-episode
-claimed_at: 2026-10-22T00:27:08Z
+owner: codex-root
+claimed_at: 2026-10-22T12:43:23Z
 created_at: 2026-10-22T00:27:06Z
 completed_at:
 branch:
@@ -53,3 +53,5 @@ Key dates: Amundsen's first flag was 1911-12-14, the small tent and two addresse
 2026-10-22 R4 update: [the fixed-source fact check](../../docs/videos/curio-s60/verify-1.md) is PASS for 109/109 script/claims lines and written visuals on `video.json` SHA-256 `c0a474072ffa37604dfe2acb9a46f600cac37c9815da5b4b692e213f560fd8ac`; [the official two-reader OR merge](../../docs/videos/curio-s60/review/r4-formal-merge-audit.json) is 13/13 narrative PASS on the same creative and panel hashes. [First-chapter paper and budget review](../../docs/videos/curio-s60/review/r4-first-chapter-paper-and-budget.md) permits a **seven-image, one-take native test** followed by original-image inspection. The current site quote is 103 images at US$1.3905 for one take each, maximum US$4.1715 for three image+judge attempts each; use a manual US$4.25 art+judge ceiling and keep the project STOP between reviewed batches. These paper receipts do not claim any image KEEP, human audio listening, full film or live Studio link. The R2 paragraph above is historical, not the current media status.
 
 2026-10-22 01:39 UTC audio recovery: a bounded Gemini Sulafat attempt after the earlier 429s returned five more `video_speech_upstream_busy` 429s and produced no audio. The [cooldown receipt](../../docs/videos/curio-s60/review/r4-tts-upstream-cooldown-20261022.md) preserves the exact hashes, dry-run quote and next useful check after 07:05 UTC. Do not treat the valid outline/script choice as human listening approval. Keep the series voice and STOP until TTS and audio QA actually pass.
+
+2026-10-22 額度重置後同聲線TTS恢復：109句全合成、時間軸9:54.47、開場43.33秒；見r4-tts-reset-recovery-20261022。check-audio進行中，未稱通過或人耳核准；未購圖、配樂、影片或上傳。
