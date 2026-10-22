@@ -1,11 +1,11 @@
 ---
 id: 2026-10-19-curio-s38-pepys-fire-cheese
 title: Curio S38 Pepys fire and cheese historical episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:34:43Z
+owner:
+claimed_at:
 created_at: 2026-10-19T22:34:43Z
 completed_at:
 branch:
@@ -105,3 +105,5 @@ R8ad PF021 首張原圖[機器 subject=0 FAIL、人工 REJECT](../../docs/videos
 2026-10-22 剩餘整集沿用性覆核：verify-110確認PF022–111共90景與已審後續版本完整場景相同，旁白／claims不變，14 KEEP有效且0其他keyframe問題。已核live image-01與餘額、整集dry-run；90景每景最多3次、含舊預約整集最壞US$4.525＜US$4.58。採系列整集產圖流程；保留14KEEP，不為7來源卡或outro買圖，批次產出後逐張驗原圖，並非全片已完成。
 
 2026-10-22 批次原圖停點：整集有界指令保留原14張，新增PF022一張、PF023兩張。PF022雖judge7.18 PASS，原圖出現現代高樓及工業煙囪，與1666倫敦直接矛盾，REJECT。PF023第一張機器風格FAIL，第二張9.29 PASS；root原圖檢查為人物踏出古典門廊，服飾為卡通概念，無明確現代器材或來源矛盾，KEEP。觀察到PF022年代問題後即touch STOP，工具完成當前單位後停；jobs空。封存產出圖單與退件，active移除PF022，現15 KEEP、ledgerUS$0.9170／62images／62judges／1music；未把批次exit0誤當整集完成。PF024之後未畫。 修訂及不同審者紙審回條已落地，待新hash安全重綁與受控重試。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 52/96，尚未選 44 景；US$1.9735，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s38/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。
