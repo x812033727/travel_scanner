@@ -1,0 +1,229 @@
+{
+  "round": "R19",
+  "stage": "next-chapter-eight-one-native-each",
+  "video_sha256": "62254351988dae8424e0d94bb136a6b7171e5d991f2c9962508af03fc7248c3a",
+  "paper_receipt": "r19-next-chapter-eight-prompt-independent-pass.md",
+  "pre": {
+    "ledger_sha256": "442d21b4ff1258f7819c7540a462b5ddd296f18e84faaa16e9436ed43eac36ed",
+    "manifest_sha256": "2aa4d25a3950d5c076c2565702aff9e8431eed6e7c0ca62a4454a937558fd1f5",
+    "totals": {
+      "usd": 0.3105,
+      "images": 23,
+      "judge_calls": 23,
+      "reserved": 0,
+      "reservations": 0
+    }
+  },
+  "post": {
+    "ledger_sha256": "e4761e22531131c77d9dbae201af16c822afad5c6bdf58d013395b16e6f68c69",
+    "manifest_sha256": "eafb17ba8426f1c6e79c263bed1bbfcb73f896bc8150b54cff3033e7cf9f0f66",
+    "totals": {
+      "usd": 0.405,
+      "images": 31,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 30,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "stop_present": true,
+    "pending_jobs": 0
+  },
+  "batch_cost_usd": 0.0945,
+  "shots": [
+    {
+      "id": "s53010",
+      "disposition": "REJECT-modern-cars-and-style",
+      "original_file": "keyframes/s53010-1.jpg",
+      "original_sha256": "3b467df02bfa6f78375f2105dc31cb28d64e89a20c03de8b4b2844c6b2fa2390",
+      "selected_file": "keyframes/s53010-1.jpg",
+      "selected_sha256": "3b467df02bfa6f78375f2105dc31cb28d64e89a20c03de8b4b2844c6b2fa2390",
+      "selected_file_verified": true,
+      "judge_passed": false,
+      "judge_overall": 9,
+      "judge_problems": [
+        "style: character lacks chibi proportions and aesthetic of a cute explainer cartoon → chibi proportions with a large round head and cute explainer design",
+        "details: modern automobiles are visible parked on the street in a 1906 setting → historical 1906 street without modern automobiles"
+      ],
+      "manifest_needs_review": true,
+      "manifest_problems": [
+        "style: character lacks chibi proportions and aesthetic of a cute explainer cartoon → chibi proportions with a large round head and cute explainer design",
+        "details: modern automobiles are visible parked on the street in a 1906 setting → historical 1906 street without modern automobiles"
+      ],
+      "cli_log_sha256": "c6dc2d57bf10b8c2d73cdb101074db89f9795e9fd32caa400f1b02eea40d1a98"
+    },
+    {
+      "id": "s53011",
+      "disposition": "KEEP-source-aligned-despite-collapsed-blanket",
+      "original_file": "keyframes/s53011-1.jpg",
+      "original_sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "selected_file": "keyframes/s53011-1.jpg",
+      "selected_sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 9.29,
+      "judge_problems": [
+        "details: blanket is collapsed on the ground beside the pole rather than stretched over it → blanket tied and stretched over the pole"
+      ],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "07f5ec9c560290a3a800295b26928fada1ca81233fc52037b66d1ff19912d307"
+    },
+    {
+      "id": "s53014",
+      "disposition": "KEEP-source-aligned-despite-flap-motion",
+      "original_file": "keyframes/s53014-1.jpg",
+      "original_sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "selected_file": "keyframes/s53014-1.jpg",
+      "selected_sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 9.29,
+      "judge_problems": [
+        "details: character holds both flaps open in a medium-wide framing instead of retying a flap in a close shot → close shot of resident retying a loose tent flap"
+      ],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "7d7cc0d44d3be71d164591345bd0116a827461dc52d4ec611d1466e908e217f4"
+    },
+    {
+      "id": "s53015",
+      "disposition": "KEEP",
+      "original_file": "keyframes/s53015-1.jpg",
+      "original_sha256": "c3ab77568ab17d7aedb1bd1437bbfa23424fe41755e49a2f7d9cab751a470c6d",
+      "selected_file": "keyframes/s53015-1-trim.jpg",
+      "selected_sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 9.29,
+      "judge_problems": [
+        "details: resident looks forward rather than toward gathering clouds → resident looking up toward gathering clouds"
+      ],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "c0c831bfeecd3955d69e69be6c783275d649fb0344d073ad48a1fc95bfa3c68f"
+    },
+    {
+      "id": "s53017",
+      "disposition": "KEEP-source-aligned-despite-two-pointers",
+      "original_file": "keyframes/s53017-1.jpg",
+      "original_sha256": "567441958c7a77b8110b13bf6beb6953ec8cd180c4ba41fa1cd890cc0d85f60b",
+      "selected_file": "keyframes/s53017-1-trim.jpg",
+      "selected_sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 9.29,
+      "judge_problems": [
+        "details: Left worker lacks grey hair and lined features, and both characters point instead of one observing → two relief workers, one pointing toward the ground while the other stands observing"
+      ],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "800a8b93fbd44c60e018d06b0b115897a6c3c8ff9b98602fdb912069ab7fd926"
+    },
+    {
+      "id": "s53018",
+      "disposition": "HOLD-provider-input-new_sensitive-no-original",
+      "original_file": null,
+      "original_sha256": null,
+      "selected_file": null,
+      "selected_sha256": null,
+      "selected_file_verified": false,
+      "judge_passed": null,
+      "judge_overall": null,
+      "judge_problems": [],
+      "manifest_needs_review": true,
+      "manifest_problems": [
+        "no take could be generated: MiniMax refused the content (input new_sensitive)"
+      ],
+      "cli_log_sha256": "dc2c0b0cd05163327fd4dd9965f64f86bae6da0b4cfffe319606c81807d5e098"
+    },
+    {
+      "id": "s53020",
+      "disposition": "KEEP",
+      "original_file": "keyframes/s53020-1.jpg",
+      "original_sha256": "85075d310d7ef026613c03a4ca970392997d6522117aa9ad69385e21e9ab0913",
+      "selected_file": "keyframes/s53020-1-trim.jpg",
+      "selected_sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 10,
+      "judge_problems": [],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "b3939578ab81d3d8bbe7d1c082097483e83fbc212e4796112493361fae3b2fcd"
+    },
+    {
+      "id": "s53021",
+      "disposition": "KEEP",
+      "original_file": "keyframes/s53021-1.jpg",
+      "original_sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "selected_file": "keyframes/s53021-1.jpg",
+      "selected_sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "selected_file_verified": true,
+      "judge_passed": true,
+      "judge_overall": 10,
+      "judge_problems": [],
+      "manifest_needs_review": false,
+      "manifest_problems": [],
+      "cli_log_sha256": "711ccf952ff76b4b4ba286de6af849a6f4e97dfdf9e637b6bf8a2dc56f544312"
+    }
+  ],
+  "first_chapter_keep": [
+    {
+      "id": "s53002",
+      "key": "3fabf6b170be13c7",
+      "selected_file": "keyframes/s53002-1.jpg",
+      "selected_sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "file_verified": true
+    },
+    {
+      "id": "s53003",
+      "key": "b27d248cc2079365",
+      "selected_file": "keyframes/s53003-1-trim.jpg",
+      "selected_sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "file_verified": true
+    },
+    {
+      "id": "s53004",
+      "key": "56a3f1c6e491c852",
+      "selected_file": "keyframes/s53004-1.jpg",
+      "selected_sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "file_verified": true
+    },
+    {
+      "id": "s53005",
+      "key": "a0c90dd32d332bf6",
+      "selected_file": "keyframes/s53005-1.jpg",
+      "selected_sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "file_verified": true
+    },
+    {
+      "id": "s53006",
+      "key": "ed52dc29c5fe6f2c",
+      "selected_file": "keyframes/s53006-1-trim.jpg",
+      "selected_sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "file_verified": true
+    },
+    {
+      "id": "s53007",
+      "key": "b27d248cc2079365",
+      "selected_file": "keyframes/s53003-1-trim.jpg",
+      "selected_sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "file_verified": true
+    },
+    {
+      "id": "s53008",
+      "key": "994e4f240a328552",
+      "selected_file": "keyframes/s53008-1-trim.jpg",
+      "selected_sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "file_verified": true
+    },
+    {
+      "id": "s53009",
+      "key": "2f99489d63ec38a0",
+      "selected_file": "keyframes/s53009-1-trim.jpg",
+      "selected_sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "file_verified": true
+    }
+  ]
+}
