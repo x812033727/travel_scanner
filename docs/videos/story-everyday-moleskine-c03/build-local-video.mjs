@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-// Rebuild this local, reviewed C03 video document from the exact narration revision.
-// This is a local editorial artifact builder, not the host story worker or a media stage.
+// ARCHIVAL ONLY: this was the 2026-10-21 preproduction builder (83 stills/11 cards,
+// 78-store slide reading). The current C03 video.json has later visual recuts and a
+// 79-store annual-report correction. Do not use this script to rebuild the film.
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -345,6 +346,5 @@ if (process.argv.includes("--inspect")) {
   }
   process.stdout.write(`${chapterCounts.join("\n")}\n`);
 } else {
-  writeFileSync(out, JSON.stringify(doc, null, 2) + "\n");
-  process.stdout.write(`video.json: ${scenes.length} scenes, ${shotNumber} stills, ${cardNumber} stats cards; narration sha256 ${narrationSha256}\n`);
+  throw new Error(`archival ${doc.slug} builder (${shotNumber} stills/${cardNumber} cards) cannot overwrite the current 67-still/27-card film at ${out}`);
 }

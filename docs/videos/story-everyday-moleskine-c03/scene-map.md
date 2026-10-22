@@ -1,6 +1,6 @@
 # C03｜旁白縮編後的場景轉換條件
 
-狀態：**版型與時長預算，尚非正式分鏡或通過 lint 的劇本**。20 段旁白已縮編；`video.json` 要等最終雜湊的獨立查核完成再建立。下列時間仍待逐句場景與 TTS 時間軸核對。
+狀態：**2026-10-21 的前期轉換表，非現行分鏡**。20 段旁白縮編時尚未建立 `video.json`；下表保留當時的容量估算，不代表目前已產圖後的鏡頭配置。現行場景與字卡以 [`video.json`](video.json) 和[分鏡修訂表](shot-plan.md)為準：94 景中有 67 張插畫、27 張字卡。
 
 ## 先處理時長
 
@@ -14,7 +14,7 @@ node --input-type=module -e 'import fs from "node:fs"; import {spokenUnits,DEFAU
 
 ## 分鏡容量與資料結構
 
-沿用 [插畫與成本前檢](shot-plan.md)的 **83 張 still + 11 張後製卡 = 94 正文場景**，六章分配依序為 8／17／17／21／16／15 場。若縮編稿的章節長度大幅改變，依實際 TTS 停頓重配張數，不硬套下表。全片平均正文每畫面約 6 秒；每個 `shot` 的預估旁白最長 12 秒，超過需拆鏡。故事規則的平均 still 時長 5–11 秒。
+原先預算為 **83 張 still + 11 張後製卡 = 94 場景**，下表六章分配 8／17／17／21／16／15 是建置前初排。實際 `video.json` 的章節場景數已是 6／12／16／22／18／20，畫面改版後各章插畫與字卡數見[分鏡修訂表](shot-plan.md)。TTS 已實測，原估時長不可代替時間軸；每個畫面仍須按旁白剪點檢查。
 
 | 章 | 對應稿段號 | 初排場景 | 現稿概算時間 | 現稿 spoken units | 揭露與字卡位置 |
 | --- | --- | ---: | ---: | ---: | --- |
@@ -25,7 +25,7 @@ node --input-type=module -e 'import fs from "node:fs"; import {spokenUnits,DEFAU
 | Turn | 13–16 | 14 still + 2 cards | 1:55 | 413 | 2016 簽約與 2017 完成收購分開；2017 紙本占比與營運成本。 |
 | Now | 17–20 | 13 still + 2 cards | 2:08 | 469 | 2025 批發與減損、2026 H1 回升與仍虧損並列；三句收尾。 |
 
-第六章已將 **2026 H1** 納入畫面界線；轉正式 `video.json` 時仍須保留這個較新的營運節點，避免把 2025 的下降當成持續現況。卡片安排需手工檢查最多三張連續；story lint 本身沒有這項上限。
+第六章已將 **2026 H1** 納入畫面界線；正式 `video.json` 仍保留這個較新的營運節點，避免把 2025 的下降當成持續現況。現行卡片最長連續 2 張；這項比例與連續限制仍須以現行場景手工核對。
 
 `video.json` 對照 C02 使用 `format: "drama"`、`category: "explainer"`、`look: {"preset":"cute-mystery"}`、`characters: []`、`series: {"slug":"brand-stories-everyday-reversals","episode":3,"chapter":1}`。`category: "explainer"` 才允許 `stats`／`compare`／`steps`／`table` 等後製資料卡；旁邊的 `series.json` 的 `kind: "story"` 仍會啟用品牌故事專屬 lint。每個插畫場景必填 `template: "shot"`、`data.prompt`、`data.visual: "still"`、唯一短行 ID 和非空旁白。實際縮編後，再寫 `loops`、至少三個 HTTPS `sources`、縮圖與 YouTube 文案。
 
