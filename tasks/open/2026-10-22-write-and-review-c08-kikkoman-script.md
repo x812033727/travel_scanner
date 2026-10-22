@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-and-review-c08-kikkoman-script
 title: Write and review C08 Kikkoman script and visual plan
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-root-c08-author
+claimed_at: 2026-10-22T18:01:44Z
 created_at: 2026-10-22T05:28:57Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-script
@@ -14,6 +14,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/script.md
   - docs/videos/story-everyday-kikkoman-c08/script-source-addendum.md
   - docs/videos/story-everyday-kikkoman-c08/visual-plan.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/author-v3-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -52,7 +53,11 @@ scope:
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
-## Current checkpoint (2026-10-22)
+## Current checkpoint (2026-10-23 v3)
+
+站主採用的 1961 年「預裝瓶直接上桌」主線保留。新讀到 K5 2008 集團報告、K6 2011 同期新品新聞稿、K7 2025 產品主管回述與 J1 特許廳人員案例簡報後，作者把 2007 年歐洲瓶蓋圓角、2010 軟袋的站立問題、**另一款** 2011 年 200 mL 密封瓶，及 2018 形狀註冊提出的調查資料，接在同一個「餐桌怎麼用」問題後；沒有把新瓶寫成 1961 原瓶改版。獨立 v2 查核留下的 `c080406`、`c080415`、`c080605` 和 2018 出貨附註也一併修正。現在為 84／84 同序 ID，71 shot／13 card、最多一張連卡，正文第 2–6 章約 1,952 個 CJK 字（稿面代理）；詳細 SHA 與來源界線見 `reviews/author-v3-84-line-revision.md`。**新稿仍未獨立逐句來源與畫面 PASS、兩位新盲讀、站主稿件核准或實測 480 秒**。先前所有舊稿 PASS 均不適用；無付費、上傳、發布或合併。
+
+## Historical checkpoint (2026-10-22)
 
 真正只看旁白的讀者對 82 句舊稿判 HOLD：來源口吻和握瓶細節拖慢第 2–3 章，第 4 章的雙難題對「控流」沒有交付可查的解法，第 5 章後半的館藏／年份像清單，片尾沒回到最後一滴。作者已依此改成 75 句／75 鏡、64 shot／11 card，保留 1961 上市、2005 入藏、2018 立體商標；口語欄 2,084 字元，只是字數，**未實測正文 480 秒**。獨立 75／75 來源查核只退回 c080207 的「太重」；現已縮為「笨重」，待新 SHA 差異覆核、兩名只看新旁白的乾淨盲讀、獨立視覺預檢及站主稿件核准。`script.md` SHA-256 `7D2082C3A0A74F63CCDF43EE5921F9703D22A744821A934989D29C04500CB732`；`visual-plan.md` SHA-256 `D05FFAF9727B4A38BA2B5B2A2776D67EC8B1ED877D0B28EA5617670D497EFA24`；`script-source-addendum.md` SHA-256 `B45786E3BFA31DD8D84087E1532F7BEF3C6297A964E313B19A847FFB6C996A5E`。作者 ID／鏡數／卡片／禁字與 `git diff --check` 自檢 PASS。本機 `npm run check:tasks` 仍因三張 reviewer 的未追蹤 open 副本與已提交 done 同 ID 失敗；刪除先前遭 `blocked by policy`，本輪未重試。無付費、無上傳。
 
