@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-source-and-draft-s63-henry-box
 title: Source and draft S63 Henry Box Brown escape episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:49:01Z
+owner:
+claimed_at:
 created_at: 2026-10-22T02:07:54Z
 completed_at:
 branch:
@@ -105,3 +105,5 @@ Brown's narrative has the wife's and children's forced sale in August 1848, but 
 ## 最新製作檢查點（2026-10-22，台北）
 
 前述R4／R8暫停記錄為歷史狀態。最新R9獨立來源查核通過，新雙讀者各13／13；127句旁白已生成，13:41.07，正文12:42.43，開場52.83秒。主辨識接受126／127句、0旗標；s63028保留供應商拒絕，由離線SenseVoice及另一查核者重跑確認內容相符。跨供應商機器證據127句，不宣稱主辨識器127句通過或站主親聽。詳見review/r9-s63028-independent-asr-audit.md與r9-cross-provider-audio-production-decision.md。首九景正在生成，尚待原圖驗收；121景插圖＋judge整集上限US$4.91，每景最多三次實際圖。PR #1665尚非成片；配樂／合成／QA／字幕／Shorts仍待做。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 20/119，尚未選 99 景；US$0.5400，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s63/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。
