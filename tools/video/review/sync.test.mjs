@@ -1377,6 +1377,108 @@ test("the look goes up as one review per character, and the owner's picks come b
   assert.match(again.out.stdout, /already recorded/);
 });
 
+/** A site that, as the live one does on every submission, drops the files no review names. */
+function tidySite() {
+  const server = site();
+  const fetchImpl = async (url, init = {}) => {
+    const response = await server.fetchImpl(url, init);
+    if (init.method === "POST" && new URL(url).pathname.endsWith("/reviews") && response.status === 201) {
+      const named = new Set(server.state.reviews.flatMap((review) => (review.files ?? []).map((file) => file.sha256)));
+      for (const hash of [...server.state.files.keys()]) if (!named.has(hash)) server.state.files.delete(hash);
+    }
+    return response;
+  };
+  return { state: server.state, fetchImpl };
+}
+
+/** The site's log of a push, its routes relative to the video and every file named <sha>. */
+const routes = (server, slug) => server.state.calls.map((call) => `${call.method} ${call.pathname.replace(`/api/video/reviews/${slug}`, "").replace(/[0-9a-f]{64}/, "<sha>") || "/"}`);
+
+test("the look uploads one character's sheets and submits it before the next character's go up: a site that tidies on every submission keeps them all", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = tidySite();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(routes(server, box.slug), ["PUT /", "PUT /files/<sha>", "PUT /files/<sha>", "POST /reviews", "PUT /files/<sha>", "PUT /files/<sha>", "POST /reviews"]);
+  assert.deepEqual([...server.state.reviews].reverse().map((review) => review.subject), ["jingwei", "yandi"]);
+  assert.equal(server.state.files.size, 4, "every sheet is still on the site");
+  assert.doesNotMatch(push.out.stdout, /uploading them again/);
+});
+
+test("a look review the site answers 409 files-missing for goes up again once the sheets it names are uploaded again", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "yandi" && !refused) {
+      // The site lost the sheets between their upload and this submission (ticket 2026-10-22-409).
+      refused += 1;
+      for (const file of body.files) server.state.files.delete(file.sha256);
+      return Response.json({ code: "video_review_files_missing", detail: `這些檔案還沒上傳完：${body.files.map((file) => file.sha256).join(", ")}` }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.equal(refused, 1);
+  assert.deepEqual([...server.state.reviews].reverse().map((review) => [review.subject, review.status]), [["jingwei", "pending"], ["yandi", "pending"]]);
+  assert.equal(server.state.files.size, 4, "the sheets the site lost went up again");
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 6, "yandi's two sheets went up twice");
+  assert.match(push.out.stdout, /look \(yandi\): the site no longer has 2 of the review's files \(這些檔案還沒上傳完：[0-9a-f]{64}, [0-9a-f]{64}\); uploading them again and resending/);
+  assert.match(push.out.stdout, /look \(yandi\) submitted for review \(pending\)/);
+});
+
+test("a look review the site refuses twice for missing files fails as a service failure after one resend, so the worker's next round pushes again", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "yandi") {
+      refused += 1;
+      // A detail that names no file: every file of the review goes up again, once.
+      return Response.json({ code: "video_review_files_missing", detail: "新版審核附件尚未上傳完" }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.external, push.out.stderr);
+  assert.equal(refused, 2, "one resend, then the error stands");
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 6, "every sheet of the refused review went up again");
+  assert.match(push.out.stdout, /look \(yandi\): the site no longer has 2 of the review's files \(新版審核附件尚未上傳完\); uploading them again and resending/);
+  assert.match(push.out.stderr, /新版審核附件尚未上傳完/);
+  assert.deepEqual(server.state.reviews.map((review) => review.subject), ["jingwei"], "the first character's review stands");
+});
+
+test("a files-missing answer for a file this push did not upload is not resent: the error stands", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "jingwei") {
+      refused += 1;
+      return Response.json({ code: "video_review_files_missing", detail: `這些檔案還沒上傳完：${"f".repeat(64)}` }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.external);
+  assert.equal(refused, 1);
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 2, "nothing went up again");
+  assert.doesNotMatch(push.out.stdout, /uploading them again/);
+  assert.equal(server.state.reviews.length, 0);
+});
+
 test("the storyboard goes up with every keyframe and the judge's lowest score, and its approval is recorded", async () => {
   const box = sandbox("fixture-drama", "drama");
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
