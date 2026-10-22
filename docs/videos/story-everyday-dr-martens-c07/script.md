@@ -2,7 +2,7 @@
 
 **狀態：非付費逐句旁白修訂稿，尚待另一代理逐句來源查核、兩位真正盲讀、TTS 正文實長與站主劇本核准。** 站主已採用的只有 [Treatment 方向](reviews/owner-treatment-approval.md)。ID、依據與章名不進配音。每句對應 [逐鏡計畫](visual-plan.md) 的一鏡；畫面示意不冒充史料。
 
-依據代號：[B1｜Dr. Martens plc 公司沿革](https://www.drmartensplc.com/about-us/our-brand/)、[B2｜品牌 History](https://www.drmartens.com/ca/en_CA/history)、[B3｜品牌 1460 檔案](https://www.drmartens.com/uk/en_gb/archive/1460)、[B4｜公司現行定位](https://www.drmartensplc.com/our-business/what-we-do/)、[M1｜London Museum 館藏物件](https://www.londonmuseum.org.uk/collections/v/object-91428/boot-ankle-boot/)、[A1｜Arthur Crucq 2021 獨立研究](https://www.pismowidok.org/en/archive/2021/31-visuality-of-social-classes/double-class-on-the-popularization-of-dr.-martens)、[V2｜V&A 1981 年 Watson 館藏脈絡](https://www.vam.ac.uk/articles/staying-power-photographs-of-black-british-experience)。B1–B4 是同一利益方的事後回顧；M1 是博物館對 1995 年藏品的後來說明；A1 是研究者詮釋；V2 **沒有說照片人物穿 Dr. Martens**。細節及禁用推論見 [補充來源說明](script-source-notes.md)。
+依據代號：[B1｜Dr. Martens plc 公司沿革](https://www.drmartensplc.com/about-us/our-brand/)、[B2｜品牌 History](https://www.drmartens.com/ca/en_CA/history)、[B3｜品牌 1460 檔案](https://www.drmartens.com/uk/en_gb/archive/1460)、[B4｜公司 What we do](https://www.drmartensplc.com/our-business/what-we-do/)、[B5｜公司 Our business](https://www.drmartensplc.com/our-business/)、[M1｜London Museum 館藏物件](https://www.londonmuseum.org.uk/collections/v/object-91428/boot-ankle-boot/)、[A1｜Arthur Crucq 2021 獨立研究](https://www.pismowidok.org/en/archive/2021/31-visuality-of-social-classes/double-class-on-the-popularization-of-dr.-martens)、[V2｜V&A 1981 年 Watson 館藏脈絡](https://www.vam.ac.uk/articles/staying-power-photographs-of-black-british-experience)。B1–B5 是同一利益方的事後回顧或現行自述；M1 是博物館對 1995 年藏品的後來說明；A1 是研究者詮釋；V2 **沒有說照片人物穿 Dr. Martens**。細節及禁用推論見 [補充來源說明](script-source-notes.md)。
 
 ## 1 hook｜同一雙靴的兩種工作
 
@@ -12,7 +12,7 @@
 | c070102 | 鞋子看起來相似，別人讀出的意思，卻可能完全不同。 | A1／主題推論 |
 | c070103 | 它是 Dr. Martens 的一四六〇；公司檔案說，第一雙在一九六〇年從工廠下線。 | B3；出廠非開賣 |
 | c070104 | 倫敦博物館的館藏說明，到了六〇年代末，Dr. Martens 靴款已被一群青年穿進自己的風格。 | M1；泛指品牌靴款，不限定 1460；skinheads 後文揭示 |
-| c070105 | 一雙為長時間站立而做的靴，怎麼變成別人一眼就能認出的身分訊號？ | B1、M1、A1／全片提問 |
+| c070105 | 一雙被久站的工作者穿上的靴，怎麼變成別人一眼就能認出的身分訊號？ | B1、M1、A1／全片提問；不推定設計目的 |
 | c070106 | 是鞋廠先替它安排了新角色，還是穿的人替它加上第二種語言？ | A1／編輯性提問，不宣稱已證行銷意圖 |
 | c070107 | 要回答，得先暫時離開英國的音樂現場。 | B1、B2／轉場 |
 | c070108 | 因為這雙英國靴的故事，先從德國一個腳下的麻煩開始。 | B1、B2／公司回顧 |
@@ -50,7 +50,7 @@
 | c070307 | 這個日期說的是出廠，並沒有證明當天已經在店裡賣給顧客。 | B3／證據界線 |
 | c070308 | 公司的同一份檔案還說，下個星期，它才被帶到鞋業展會，準備接夏季生產訂單。 | B3；不推首筆零售日 |
 | c070309 | 出廠、去展會、真正被人買走，是三件不同的事。 | B3／節點區分 |
-| c070310 | 出廠日有記錄；首次賣給顧客是哪一天，目前仍沒法確定。 | B3、source-matrix／只述本次資料能查定的範圍 |
+| c070310 | 品牌檔案記了首雙下線日；在本次找到的資料裡，首次賣給顧客的日期仍不確定。 | B3、source-matrix／公司事後產品檔案；只述本次資料能查定的範圍 |
 | c070311 | 從德國緩震鞋底到英國八孔靴，商品本身先經過一次改造。 | B1、B3／小結 |
 | c070312 | 接下來，更難回答的是另一種改造：它被誰穿上，又被看成什麼？ | B1、M1／章末鉤 |
 
@@ -106,8 +106,8 @@
 | c070606 | 這不是鞋子自己開口，而是社會把許多意思壓在同一個輪廓上。 | A1／編輯解釋 |
 | c070607 | 倫敦博物館保存的一雙一九九五年格紋靴，又顯示它後來進入時尚款式。 | M1；該館藏是 1995 年產品，不畫成 1960 1460 |
 | c070608 | 從工作用品、青年符號，到流行服飾，每一次換場景，都有人重新讀它。 | B1、M1、A1／敘事總結 |
-| c070609 | 公司今天談一四六〇，會把它放在個人表達的品牌敘事裡。 | B2、B4；現行公司自述 |
-| c070610 | 那是今天公司的說法，不等於一九六〇年鞋廠已安排好往後每一種穿法。 | B1、B4、A1／年代與主體區分 |
+| c070609 | 公司今天談一四六〇，會把它放在個人表達的品牌敘事裡。 | B4、B5；現行公司自述，兩頁同屬品牌利益方 |
+| c070610 | 那是今天公司的說法，不等於一九六〇年鞋廠已安排好往後每一種穿法。 | B1、B5、A1／年代與主體區分 |
 | c070611 | 回到開場那個問題：這類靴先服務腳下的工作，後來穿的人讓它說出更多話。 | B1、M1、A1／泛指靴款的編輯性結論，不把每段文化史指定為 1460 |
 | c070612 | 它不屬於單一群體，也沒有一個可以算成轉型起點的神奇夜晚。 | M1、A1／反絕對化結論 |
 | c070613 | 你有沒有一件日用品，原本只是好用，後來卻慢慢代表了你自己？ | 觀眾提問，不涉歷史主張 |

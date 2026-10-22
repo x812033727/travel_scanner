@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-c07-dr-martens-script-visual
 title: Write and independently review C07 Dr. Martens script and visual plan
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-c07-reviser
+claimed_at: 2026-10-22T11:50:32Z
 created_at: 2026-10-22T05:29:06Z
 completed_at:
 branch: codex/brand-story-dr-martens-c07-script
@@ -52,3 +52,5 @@ scope:
 2026-10-22：另一代理已先做只看旁白的盲讀，再直接核對來源與逐鏡，完整 77 句 SHA-bound 獨立紀錄見 [script-source-review.md](../../docs/videos/story-everyday-dr-martens-c07/reviews/script-source-review.md)。判定 HOLD：c070304、c070310、c070407、c070412、c070601 的主張範圍／歸因要修；c070603–c070604 的 V&A 照片段事實界線正確但盲聽脫離靴子；c070405 聽感待改；分鏡 c070101／505／608 多焦點、c070310／507 空白紀錄示意及 c070301 密集卡需重排。舊版 script SHA DB10ADC588C1FC8E52EE126084D4FC60833A5ACEC60C644AC97D38D98316A3C6；visual SHA 563327B512A7EC674EE53DFDF1F44D4EDB5E514518537E2715584CF9865111FF。
 
 2026-10-22：按初審窄幅修訂 77 句，明分 1460 產品史與廣義品牌靴的青年文化史；V&A 1981 照片退回背景查核，不再口播或出卡。分鏡改為 64 插圖／13 單項卡，圖像不造首賣收據、不拼多個焦點。新版 script SHA A1BE5CFC53CE24EDEFA95094E4D442F6E86FE6B0B4F8D0E0D7E5BE7CEE510A14；visual SHA 32B854AE849421F14B39B81CC612745B522E9EBFDFEC1FF62AA09EEAE43984CA。`npm run check:tasks`、`git diff --check` 通過；仍需另一代理重查全部 77 句、兩位只看旁白的新盲讀與站主劇本審核。未作 TTS 480 秒、付費媒體、上架或合併。
+
+2026-10-22：獨立 v2 收據 `reviews/script-source-review-v2.md` 對前稿 77 句判 74 PASS、3 HOLD（c070105 的設計目的、c070310 的檔案性質／首賣日範圍、c070609 的公司現行定位來源）。本輪只修三句與必要的 B5 來源標註；B5 在 `script-source-notes.md` 登錄，不更動已核准 Treatment 的來源矩陣。現稿 script SHA 5264D383C8E1CA8787DAD68F24989B774E53233813D4F6DEE00764B31B6E6F60，visual SHA 仍 32B854AE849421F14B39B81CC612745B522E9EBFDFEC1FF62AA09EEAE43984CA。等同一位獨立查核者在新 SHA 上重看差異，再做兩位新盲讀；目前仍 HOLD。另有他人建立的未追蹤重複票 `tasks/open/2026-10-22-c07-revised-script-source-review.md`，本輪未觸碰或刪除。
