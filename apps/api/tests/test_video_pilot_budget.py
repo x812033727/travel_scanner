@@ -30,6 +30,7 @@ from app.video_budget.models import (
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
+    UNRECONCILED_STORY_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
 )
@@ -354,6 +355,37 @@ async def test_followon_accounts_fail_closed_until_each_usd_5_row_exists(
             Decimal("4.5"),
             Decimal("0.5"),
         )
+
+
+@pytest.mark.asyncio
+async def test_everyday_stories_are_guarded_without_a_fresh_spendable_account(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    assert UNRECONCILED_STORY_SLUGS == {
+        "story-everyday-moleskine-c03",
+        "story-everyday-bubble-wrap-c04",
+        "story-everyday-kincho-c05",
+        "story-everyday-play-doh-c06",
+    }
+    # Existing status and rollback checks only expect accounts in PILOT_LIMITS_USD.
+    assert UNRECONCILED_STORY_SLUGS.isdisjoint(PILOT_SLUGS)
+    assert all(service.is_pilot(slug) for slug in UNRECONCILED_STORY_SLUGS)
+    for slug in UNRECONCILED_STORY_SLUGS:
+        with pytest.raises(AppError) as missing:
+            await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
+        assert missing.value.code == "video_budget_missing_account"
+
+    # An accidental USD 25 row cannot bypass historical-charge reconciliation.
+    async with sessions() as session:
+        session.add_all(
+            VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD)
+            for slug in UNRECONCILED_STORY_SLUGS
+        )
+        await session.commit()
+    for slug in UNRECONCILED_STORY_SLUGS:
+        with pytest.raises(AppError) as unreviewed:
+            await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
+        assert unreviewed.value.code == "video_budget_invalid_account"
 
 
 @pytest.mark.asyncio

@@ -122,6 +122,10 @@ const PILOT_SLUGS = new Set([
   "story-five-adidas-puma-brothers",
   "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
+  "story-everyday-moleskine-c03",
+  "story-everyday-bubble-wrap-c04",
+  "story-everyday-kincho-c05",
+  "story-everyday-play-doh-c06",
 ]);
 
 // A judge/locate request is itself the paid operation, unlike a generation's durable job.

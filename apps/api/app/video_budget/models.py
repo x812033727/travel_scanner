@@ -51,6 +51,18 @@ PILOT_LIMITS_USD = {
     **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
 }
 PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
+# These productions already called paid providers before they had per-video budget rows.
+# Recognize them at server dispatch boundaries when the caller supplies the slug;
+# do not create a spendable account
+# or include them in the active account/status set until their prior charges are reconciled.
+UNRECONCILED_STORY_SLUGS = frozenset(
+    (
+        "story-everyday-moleskine-c03",
+        "story-everyday-bubble-wrap-c04",
+        "story-everyday-kincho-c05",
+        "story-everyday-play-doh-c06",
+    )
+)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 

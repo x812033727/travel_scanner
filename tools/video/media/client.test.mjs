@@ -10,6 +10,10 @@ const FOLLOWON_SLUGS = [
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
 ];
+const EVERYDAY_SLUGS = [
+  "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
+  "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
+];
 
 test("a pilot judge call carries one operation ID and never repeats an uncertain provider answer", async () => {
   let calls = 0;
@@ -25,8 +29,8 @@ test("a pilot judge call carries one operation ID and never repeats an uncertain
   assert.equal(sent.slug, judged.slug);
 });
 
-test("each follow-on judge and locate call carries an operation ID and stops on an uncertain answer", async () => {
-  for (const slug of FOLLOWON_SLUGS) {
+test("each guarded story judge and locate call carries an operation ID and stops on an uncertain answer", async () => {
+  for (const slug of [...FOLLOWON_SLUGS, ...EVERYDAY_SLUGS]) {
     for (const send of [
       (fetchImpl) => judge({ request: { ...judged, slug }, ...options(fetchImpl) }),
       (fetchImpl) => locate({ request: { slug, sha256: "a".repeat(64) }, ...options(fetchImpl) }),
@@ -77,8 +81,8 @@ test("a pilot image submission stops after one ambiguous answer", async () => {
   assert.equal(calls, 1);
 });
 
-test("each follow-on image submission stops after one ambiguous answer", async () => {
-  for (const slug of FOLLOWON_SLUGS) {
+test("each guarded story image submission stops after one ambiguous answer", async () => {
+  for (const slug of [...FOLLOWON_SLUGS, ...EVERYDAY_SLUGS]) {
     let calls = 0;
     const fetchImpl = async (_url, init) => {
       calls += 1;
