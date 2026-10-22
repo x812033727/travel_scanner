@@ -61,3 +61,5 @@ R5 作者稿已凍結在 [R5 收據](../../docs/videos/curio-s62/review/r5-autho
 R5 [獨立史料／書面畫面覆核](../../docs/videos/curio-s62/review/r5-independent-source-visual.md) **PASS**：114 句、110 圖、4 卡對齊固定史料，lint 0／0。全新正式隔離讀者 A 11／13、B 10／13；[正式 OR 合併](../../docs/videos/curio-s62/review/r5-formal-merge-audit.md) **12／13 HOLD**，兩人共同 No 僅 `no_recap`：`s62057/58` 連續兩句重複同一光點幾小時後顯現。官方 CLI 重播 exit 1。R6 應只修此重述且保留來源界線與 325 CPM 正文至少八分鐘，再由新兩人重評；本輪不進 TTS 或付費圖。
 
 R6 作者版已凍結於 [R6 收據](../../docs/videos/curio-s62/review/r6-author-single-recap-repair.md)：`s62058` 改講 1 月 12 日東西兩點各離木星兩角分、後出細點貼近的原書新資訊；開場只問稍晚隊形，不先講細點必顯，1 月 10 日不再問不可確證的去向。5 個可逆 JSON leaf 與文字差分已保存。`video.json` SHA `9551bab89a03d91dc29afd103bdc383541fde1b10d8fb3b7de0eb218cbb6a7ad`、`script.md` SHA `0816b0a91b5b4e22571db7cf04b350b121dd56e364a57637f228a1d3f9d8a3c3`、`narrative_hash` `12dee2d6e454e303`；lint 0／0、325 CPM 正文 8.232 分鐘。R6 待新獨立來源／書面畫面覆核及兩位全新正式盲讀，沒有任何媒體核准。
+
+R6 兩位全新正式隔離盲讀 A、B 各 12／13；[正式 OR 合併](../../docs/videos/curio-s62/review/r6-formal-merge-audit.md)仍 **12／13 HOLD**，共同 No 只剩 `no_recap`：`s62004` 開場雲遮一月九日，正文 `s62041` 再說相同雲遮而未明示回呼。官方 CLI 重播 exit 1。R7 應具體回呼開場那夜或換新史料事件，再重新核來源與盲讀；R6 未進媒體。
