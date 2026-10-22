@@ -26,6 +26,7 @@ scope:
 - [x] S1–S7 可讀原件重開，M01–M12 逐項列出來源、適用邊界和精確問題。
 - [x] 收據綁定作者兩檔 SHA-256，清楚區分來源 PASS 與待修 HOLD；不冒稱站主企劃核准。
 - [x] 收據與票提交至草稿 PR #1699，讀回 head、draft 和 no-auto-merge。
+- [x] 作者窄修後以新兩檔 SHA-256 覆核五處來源定位替換；PASS 附記提交至同一草稿 PR。
 
 ## Steps
 
@@ -42,6 +43,4 @@ scope:
 
 2026-10-23：來源主線已核對；Treatment 與矩陣把 2019 原廠稿「水瓶 1949 debut」說成**標題**，實際在開頭導語，正式標題不含 1949。這是精確來源定位問題，見審查收據；其餘 M 項按收據界線可用。沒有編修 Treatment、付費、匯入、合併、上傳或發布。
 
-## Notes
-
-Findings, decisions and dead ends, so the next agent does not repeat them.
+2026-10-23：作者 head `2f3fbcd500f5e0cc345b286739addd6943f5eeab` 把三處實質定位與兩處審稿提示的「標題」改為「開頭導語」。新 Treatment SHA-256 `0451192DAA6EDF85CFD8721674511B6DBDBC671A73AC720B0BCEDFB9E14C1E07`，矩陣 SHA-256 `892041F854DCF4FBFFF37BFE90AC6B1AA02647CBD146CB2262F7A2E47FAC316E`；與舊版逐位元組比對只見這五處，S2 重新讀取證實位置正確。差異覆核 PASS，見收據附記。站主企劃採用仍另待核准；PR body 編輯遭自動審查 `blocked by policy`，不改走其他方式重試。
