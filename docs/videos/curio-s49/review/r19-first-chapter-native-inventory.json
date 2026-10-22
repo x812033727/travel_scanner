@@ -1,0 +1,202 @@
+{
+  "revision": "R19",
+  "stage": "first-chapter-bounded-first-take",
+  "at_utc": "2026-10-22T00:48:10+00:00",
+  "creative_sha256": {
+    "video.json": "a62df2aa4003850b38011dcd2877105bf2d98fe4fc36584304655a1d43ef2928",
+    "claims.md": "3ca1287ab6b9e579be65c975c3cc7a393beba869c28f29515f1bfe756b5481ec",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "requested_shots": [
+    "moon017",
+    "moon018",
+    "moon019",
+    "moon020",
+    "moon021",
+    "moon022",
+    "moon023",
+    "moon024",
+    "moon025",
+    "moon028",
+    "moon030",
+    "moon031"
+  ],
+  "generated_shots": [
+    "moon017",
+    "moon018",
+    "moon019",
+    "moon020",
+    "moon021",
+    "moon022",
+    "moon023",
+    "moon024",
+    "moon025"
+  ],
+  "unattempted_shots": [
+    "moon028",
+    "moon030",
+    "moon031"
+  ],
+  "rows": [
+    {
+      "id": "moon017",
+      "original_file": "keyframes/moon017-1.jpg",
+      "original_sha256": "6d9acad850fe7a3559fe5188453ce8bc4cba66826885c2442bcf7a1e99352fe5",
+      "selected_file": "keyframes/moon017-1-trim.jpg",
+      "selected_sha256": "68046a150cff42acd7af056ec59cbeaaccf5a8d67c1fab954ce6c22ea3f62e02",
+      "machine_score": 9.71,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "human_decision": "HOLD",
+      "human_reason": "Detached unsupported hand grips broadsheet; machine anatomy/detached FAIL. Original also had top/bottom margins; selected crop removes margins but not hand.",
+      "judge_problems": [
+        "detached: floating hand with no visible arm holding the upper right edge of the paper scroll → single character holding the document with visible arms"
+      ]
+    },
+    {
+      "id": "moon018",
+      "original_file": "keyframes/moon018-1.jpg",
+      "original_sha256": "119fbb94e8b5651e9a053697e9f912bd44a97b081bd8fb6765f4e052a47a6a4b",
+      "selected_file": "keyframes/moon018-1.jpg",
+      "selected_sha256": "119fbb94e8b5651e9a053697e9f912bd44a97b081bd8fb6765f4e052a47a6a4b",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "KEEP",
+      "human_reason": "Grey-haired cartoon researcher in library and no supposed original supplement; point misses shelf gap, a minor detail that does not imply a found original.",
+      "judge_problems": [
+        "details: character points downward toward a chair rather than at an empty gap on a bookshelf → pointing directly at an empty gap between books on a shelf"
+      ]
+    },
+    {
+      "id": "moon019",
+      "original_file": "keyframes/moon019-1.jpg",
+      "original_sha256": "cab6954b6a1a03311e2453965d393d2b17e5460cdf72f5ec04b230cdd15978ac",
+      "selected_file": "keyframes/moon019-1.jpg",
+      "selected_sha256": "cab6954b6a1a03311e2453965d393d2b17e5460cdf72f5ec04b230cdd15978ac",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "HOLD",
+      "human_reason": "Second open book beside the 1859 reprint can visually imply another obtained source, contrary to this line and the paper-approved one-reprint-only visual.",
+      "judge_problems": [
+        "details: an extra open book rests on the table despite the prompt asking for a bare desk with one book → a bare wooden desk with only one book"
+      ]
+    },
+    {
+      "id": "moon020",
+      "original_file": "keyframes/moon020-1.jpg",
+      "original_sha256": "cc8df929484607b4474ef40e0a7d124a2055a693426e9b7a8f09b3b790d313b0",
+      "selected_file": "keyframes/moon020-1-trim.jpg",
+      "selected_sha256": "eb157f3d0ac86422dc82f03842c7d42215c8718ad7a4367c39d29774782eadb9",
+      "machine_score": 7.88,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "HOLD",
+      "human_reason": "Modern office doors, necktie and printed labels replace the imagined 1835 observatory letter scene; era/source framing is misleading despite machine PASS.",
+      "judge_problems": [
+        "awkward: misshapen stubby fingers and nonsensical envelope fold lines on the desk → clerk with defined cartoon hands folding a standard envelope flap"
+      ]
+    },
+    {
+      "id": "moon021",
+      "original_file": "keyframes/moon021-1.jpg",
+      "original_sha256": "04cce0f9b785710e8bfbf21d694baa9703b1406ea57c30c08283c6095d6d2e96",
+      "selected_file": "keyframes/moon021-1.jpg",
+      "selected_sha256": "04cce0f9b785710e8bfbf21d694baa9703b1406ea57c30c08283c6095d6d2e96",
+      "machine_score": 9.71,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "human_decision": "HOLD",
+      "human_reason": "Young boy and modern adjustable electric lamp replace the adult 1835 imagined illustrator; machine subject FAIL.",
+      "judge_problems": [
+        "subject: character at desk is depicted as a young child rather than an adult → adult illustrator with mature facial features"
+      ]
+    },
+    {
+      "id": "moon022",
+      "original_file": "keyframes/moon022-1.jpg",
+      "original_sha256": "6ef0cb929260f1146ec87df088fdce53df3cb4e8999319ece0f75f88f62efc35",
+      "selected_file": "keyframes/moon022-1.jpg",
+      "selected_sha256": "6ef0cb929260f1146ec87df088fdce53df3cb4e8999319ece0f75f88f62efc35",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "KEEP",
+      "human_reason": "Blank index card lifted from an otherwise empty tray by grey-haired cartoon researcher; no claimed extant Grant letter.",
+      "judge_problems": [
+        "details: The tray beneath the card contains numerous slats or files rather than being empty → an entirely empty smooth interior of the wooden document tray"
+      ]
+    },
+    {
+      "id": "moon023",
+      "original_file": "keyframes/moon023-1.jpg",
+      "original_sha256": "c10121bc373ea45539ab2f3bec4425a5c80a10b1a9bdf4050ce0d19becabd38f",
+      "selected_file": "keyframes/moon023-1-trim.jpg",
+      "selected_sha256": "999d7fc657a3988807994d0ee4509bda2b27e916cee79d9036cb5e82ca1cbfc4",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "KEEP",
+      "human_reason": "Adult-looking reader with goatee holds unlettered blank paper/envelope in an imagined setting; no actual Grant letter is shown.",
+      "judge_problems": [
+        "details: The character handles a large folded sheet of paper instead of an envelope on the table → holding a small unlettered postal envelope"
+      ]
+    },
+    {
+      "id": "moon024",
+      "original_file": "keyframes/moon024-1.jpg",
+      "original_sha256": "35cc6de844e25b215dc7e5d941ebaa51aab93fa0251026569534bd206720091e",
+      "selected_file": "keyframes/moon024-1.jpg",
+      "selected_sha256": "35cc6de844e25b215dc7e5d941ebaa51aab93fa0251026569534bd206720091e",
+      "machine_score": 9,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "human_decision": "HOLD",
+      "human_reason": "Readable marks and stacked document boxes occupy the supposedly empty archive-tray scene, implying accessible Royal Society papers; machine text FAIL.",
+      "judge_problems": [
+        "text: legible lettering on the white box in the lower left corner → blank unlabelled box on the floor",
+        "details: desk on the right holds stacked boxes and documents instead of an empty tray → empty wooden document tray on the desk"
+      ]
+    },
+    {
+      "id": "moon025",
+      "original_file": "keyframes/moon025-1.jpg",
+      "original_sha256": "4432ae0af556774d6c1f1366dfb5497de19c08ea0ab29b1f05a057e160f03946",
+      "selected_file": "keyframes/moon025-1.jpg",
+      "selected_sha256": "4432ae0af556774d6c1f1366dfb5497de19c08ea0ab29b1f05a057e160f03946",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "human_decision": "HOLD",
+      "human_reason": "Figure is an unmistakable young child wearing a modern zip hoodie and sneakers in a contemporary library; material era/age mismatch despite machine PASS.",
+      "judge_problems": [
+        "details: full-body framing instead of a close shot → close-up framing from the chest up"
+      ]
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.6885,
+    "images": 51,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 51,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.81,
+    "images": 60,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 60,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "manifest_before_sha256": "f2a2a813a0b255156c0f9fef78d2c0bfbeed3de5b07e6db8706bc519714ab712",
+  "manifest_after_sha256": "d583679e42d56bcab00eb27e3d4e3df5aadeb4325e0aeac942b042ae8eba0994",
+  "first15_original_entries_and_selected_files_unchanged": true,
+  "stop_present_after": true,
+  "contact_sheet_regenerated": false,
+  "stop_reason": "Two source-level visual risks and three age/era mismatch images by moon024; moon025 was in flight when STOP was restored."
+}

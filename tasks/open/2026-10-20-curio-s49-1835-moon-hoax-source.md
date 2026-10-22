@@ -27,6 +27,7 @@ scope:
 - [x] 逐句來源與書面畫面提示、lint 0 error／0 warning、作者自檢與未完成關卡交接。
 - [x] R1 獨立覆核 HOLD 的來源錨點、旁白及書面畫面 R2 差分修復；作者收據記精確 SHA。
 - [x] R12 精確稿經兩位全新隔離讀者的正式敘事關卡合併 PASS。
+- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD，重複來源與年代錯誤已恢復 STOP；`moon028/030/031` 未畫。六張 HOLD 須修圖及獨立覆核，全部 121 張插圖通過前不放行分鏡。
 
 ## Steps
 
@@ -63,7 +64,10 @@ scope:
 - [x] 兩位全新隔離讀者重做 R11 正式十三題雙盲：兩人均否決 `payoffs` 與 `no_recap`，官方合併 FAIL（11/13）。
 - [x] R12 作者按 R11 正式失分窄修並凍結五檔精確 SHA；保留史料範圍與圖像示意界線，lint 0/0。
 - [x] R12 凍結檔經獨立來源／書面畫面覆核及正式十三題雙盲 PASS；R12 音檢 HOLD 後窄修，R15 再經獨立查核、隔離雙盲、完整政策及 131/131 音檢 PASS。
-- [ ] 網站大綱／劇本／音訊卡仍待審；依精確 R15 稿完成整集插圖、分鏡、配樂、片頭片尾、成片與品管。
+- [x] R16 三景提示詞與主張畫面描述的獨立書面覆核 PASS；`moon015` 第二次原生圖人工 KEEP，`moon016` 首圖雖機器 PASS 仍因現代燈具／主動作錯誤人工 REJECT；`moon017` 未生成，STOP 已恢復。
+- [x] R17 作者依 R16 原生圖退件只窄修 `moon016` 提示詞與對應 claims 書面畫面，凍結可逆差分及精確 SHA；未花媒體費用。
+- [ ] 另一位工作者按 R17 精確雜湊獨立核 `moon016` 史料／書面畫面與其餘景未改，再決定單景付費重試；其餘未完成景不可把機器圖單當整片通過。
+- [ ] 網站大綱／劇本／音訊卡仍待審；依精確 R17 畫面檔與未改的 R15 口播完成整集插圖、分鏡、配樂、片頭片尾、成片與品管。
 
 ## How to verify
 
@@ -71,6 +75,9 @@ scope:
 
 ## Notes
 
+- 2026-10-22 R17 author handoff: [單景提示詞與主張畫面修補](../../docs/videos/curio-s49/review/r17-moon016-prompt-author.md)把場景由會引出現代檯燈的書桌移到 1835 年紐約報攤木櫃台，令成年灰髮讀者**拿起**小本無字增刊示意，旁邊大張白報平放。精確可逆 [差分](../../docs/videos/curio-s49/review/r17-moon016-prompt-structured-diff.json)只改 `moon016` 的 `data.prompt` 及 claims 畫面描述；R17 `video.json` SHA `5cb5211ff2cbe6eeb503859dc1c4cb078dbad9dfa77671bb816144ddf267a802`、`claims.md` SHA `33e07a082a41f42a720b5be972a8767ff2a5d7a31a27e06aa256883a544545ea`，劇本與口播不變，lint 0／0。R16 前 15 張個別 KEEP 原圖的提示詞與鏡頭不變；R16 `moon016` 仍人工 REJECT。STOP 存在，ledger 未變 US$0.6615／49 image／49 judge／0 reservation，本集委派停畫上限 US$5.30。**R17 只有作者候選，待非作者做史料／書面畫面獨立覆核；未追加付費圖或宣稱網站審核完成。**
+- 2026-10-22 R16 native handoff: [原生圖逐張回條](../../docs/videos/curio-s49/review/r16-next-art-native-stop.md)記錄 `moon015` take 1 黑邊退件、take 2 原生圖及機器 10/10 **KEEP**；`moon016` take 1 雖機器 9.29 PASS，原圖人物偏幼、現代可調式檯燈、把大報拿在手上而非拿增刊，人工 **REJECT**。因此 `moon017` 未開畫。精確 R16 `video.json`／口播未改，私有 STOP 存在；ledger US$0.6615／49 image／49 judge／0 reservation，低於本集委派停畫上限 US$5.30。先由作者窄改 `moon016` 並讓另人核來源及提示詞，勿直接放行全片插圖。網站卡、人耳聽審、片頭片尾、成片、Shorts、Studio 連結皆待完成。
+- 2026-10-21 R16 current handoff: [14 selected original-size images](../../docs/videos/curio-s49/review/r15-final-visual-independent.md) were independently KEEP on the exact R15 `video.json`／manifest pair; this is 14 of 122 shots. With STOP present and no new paid calls, [R16 author](../../docs/videos/curio-s49/review/r16-next-art-prompt-author.md) changes only `moon015`–`moon017` prompts and their claims visual descriptions, reversible by [exact diff](../../docs/videos/curio-s49/review/r16-next-art-prompt-structured-diff.json) to R15 hashes. New `video.json` SHA `77905b41c1f15d5c799181c7dedd4c031c50dcbbbeba741943ca2e4236e59b8b`, `claims.md` SHA `7aec3277c9a70120ff8638834c0efcd8502a1cf3984e40b3519ac2adf681c027`, script unchanged, lint 0／0. Private ledger US$0.621 (46 image／46 judge／0 reservations). Next independent paper source/visual delta, then scoped 3-shot native pilot and direct KEEP decisions; owner website cards and human listening still pending.
 - 2026-10-20：[R11 官方雙盲](../../docs/videos/curio-s49/review/r11-official-panel.md)兩人一致給 11/13，`payoffs`／`no_recap` **FAIL**。[R12 作者窄修與五檔精確凍結](../../docs/videos/curio-s49/review/r12-author-freeze.md)把開場第二觀測問題限於本次核對的重印本與 Jacoby 評論、用 L1619–1626 的「三月新月」回收持續月面觀測的時間，並整理南行、重印書及《晚郵報》段落的重述。R12 `video.json` SHA `bfff58fdda9eb5501fb46d5211222cb135dff30a4c0a25223e7a10884d6a4c06`、`script.md` `ab8e840e2c74b283b60e65e62d62e41d79d6eea0ded323e4888a3940de80ab7e`、`claims.md` `e87359c6f7e53f6567fb82697cebbdf39e171dda423483b8ace117a5c9561658`；其餘兩檔見凍結表。133 句／130 編號景／11 loop，lint 0/0。**R12 獨立來源、兩位新盲讀及完整新音檢仍待，付費媒體停。**
 - 2026-10-20：[R11 固定來源及書面畫面獨立覆核](../../docs/videos/curio-s49/review/r11-source-independent.md)按五檔精確 SHA **PASS**：`moon019` 限定本次沒查到增刊原件，L145–165 是 1859 重印，J4063–4070 是 1902 評論，沒有把 Jacoby 的紐約推測說成確定；`moon022→023` 收窄 Grant 來信問題並直接回收，L224–239 僅證明報導自稱。兩景畫面均為無字示意，沒有當成原件。133/133 劇本、130/130 claims、11 loops 對齊，lint 0/0；其後 R11 敘事結論見上項。付費媒體停。
 - 2026-10-20：[R10 來源／書面畫面獨立覆核](../../docs/videos/curio-s49/review/r10-source-independent.md)依凍結五檔 **PASS**；[R10 官方雙盲](../../docs/videos/curio-s49/review/r10-official-panel.md)兩名新讀者共同否決 `payoffs`，合併 **FAIL，12/13**。兩人均指出 `moon018→019` 對被冒稱增刊的查閱位置沒有直接回答；A 另指出 `moon022→023` 問所有見證者原始材料而只回答信件。[R11 作者窄修與五檔精確凍結](../../docs/videos/curio-s49/review/r11-author-freeze.md)讓 `moon019` 明答本次沒查到增刊原件、可翻的是 1859 重印本，並把 Jacoby 1902「稿件在美國製作」明確歸屬；`moon022` 收窄為開場 Grant 來信。`moon019` 改為無字重印書示意，兩行 claims 錨點縮到 L145–165／J4063–4070／L224–239。R11 `video.json` SHA `ff048feb89d227ed88f0ddd648a746ea5d41e70fde9a432f4f4ea80d062e42b9`、`script.md` `a9fb4bcc6e271609d79e34d2f4278cdb2c797d0fc8af32b52d4f68b3b1629259`、`claims.md` `867593fb21255f4b4764471347f8ebe779241931537970294ec39cca12d2e1fb`；brief／research 沿用 R10。133/133 劇本、130/130 claims、124/124 shot、6/6 big 對齊，11 loops 有效，lint 0/0，正文最快文字估 **8:12**，docs-videos 236/236，check:tasks 成功。**R11 獨立來源／書面畫面與新正式雙盲仍待；舊音訊不代表 R11，付費媒體仍停。**
@@ -119,3 +126,10 @@ R12 [作者凍結](../../docs/videos/curio-s49/review/r12-author-freeze.md)、[�
 R12 [完整語音驗證](../../docs/videos/curio-s49/verify-13.md)：TTS 新合成 19 句／525 billable characters、重用 114 句；首輪全稿 133/133 音檢 3 旗標。兩輪定點補錄各 3 句／92 characters 後，再完整檢查兩次，旗標 **3→3→2**。最終 `moon019`「這次沒查到」與 `moon120`「引文」仍被聽錯；`moon122` 已清。最終 13:30.13 全旁白，正文 12:26.53，時長過線但**音訊 HOLD**；兩輪補錄上限已用完，不送 audio gate、不進插圖／配樂／成片。請作者只窄修 `moon019` 與 `moon120` 的易混詞並同步 claims，重做精確來源、敘事、政策、必要網站與音訊關卡；R12 既有 WAV 與音檢均不得移轉到新稿。
 
 R15 [完整語音驗證](../../docs/videos/curio-s49/verify-15.md)：精確 `script.md` SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`，來源及書面畫面獨立 PASS、隔離雙讀者 13/13 PASS、完整政策 PASS。網站大綱／劇本卡 `hand_pushed` 待審，本機編輯批准與網站狀態分開記。TTS 新合成 6 句／176 字、重用 125 句；首次完整 131/131 音檢只標 `moon120`（0.22），定點補錄一次／36 字後完整 131/131 **0 旗標**。最終 WAV／timeline 13:21.43、開場濃縮 48.03 秒、正文 12:17.83。音訊卡已送網站，`review-pull` 顯示 outline／script／audio 均 `waiting for the owner`；未聲稱站主已聽或網站批准。插圖、配樂、最終成片尚待後續製作與驗收。
+
+R17 [獨立書面](../../docs/videos/curio-s49/review/r17-moon016-prompt-independent.md)雖 PASS，單張 [原生圖](../../docs/videos/curio-s49/review/r17-moon016-native-stop.md)因大報上出現文字欄人工 REJECT；評審 9.29／10 PASS 不可覆蓋此來源風險。私有帳本 US$0.675／50 圖／50 judge，STOP 已恢復。R18 [作者六景窄修與可逆差分](../../docs/videos/curio-s49/review/r18-first-block-source-prompt-author.md)移除該大報，並讓增刊原件、格蘭特原信、皇家學會文件維持「本次未查獲／報導自稱」的畫面界線；`video.json` SHA `686c2c7bd35232da0b3483810dfc659e8c01f2bb3dd9a6113fbedafcb2a705c6`、`claims.md` SHA `42a0ba94dc4677ca8a460f3001d46279f883559784b2d9daa972336316df8839`，`script.md` 與 R15 音訊文字不變。Lint 0／0，dry-run 只確認服務就緒，未付費畫 R18 圖。下一步獨立來源／畫面差分覆核；PASS 後 `moon016` 一張原圖驗收，首章批次與全片仍分別設停止關。
+R18 [獨立六景書面覆核](../../docs/videos/curio-s49/review/r18-first-block-source-prompt-independent.md) **PASS**，但唯一新畫 `moon016` 的[原尺寸驗收](../../docs/videos/curio-s49/review/r18-moon016-native-stop.md) **REJECT／HOLD**：背景出現可辨文字樣記號、櫃檯兩側大量紙疊，機器 9／10 且 `passed=false`。原圖與縮圖留在私有工作目錄，前十五張 KEEP 原圖及清單項目未變。STOP 已恢復；累計 **US$0.6885／51 圖／51 judge、0 音樂、0 預約**，低於 US$5.30 上限。R18 首章批次未開；可考慮同 prompt 的一次附 judge 修正 seed-2，或同章已接受圖／標明來源界線的資訊卡，需先決定並受原圖品管與卡片比例約束。
+
+R19 [來源資訊卡作者候選](../../docs/videos/curio-s49/review/r19-moon016-source-card-author.md)在 `moon016` 經三次原圖 REJECT／兩輪 prompt 修補後改用「報紙自稱／學術刊物增刊／本片未取得原刊」資訊卡，保留該句旁白及來源層級；[可逆差分](../../docs/videos/curio-s49/review/r19-moon016-card-structured-diff.json)只改一景與 claims 視覺欄。R19 SHA `a62df2aa…`／`3ca1287a…`，script 不變；lint 0／0，121／128＝94.5% 插圖、連續卡片最多 2。私有 STOP 在位，US$0.6885／51 圖／51 judge，無新付費。**待非作者獨立審核卡片來源與畫面界線**，通過才可依六批策略從 `moon017` 畫首章、逐張驗原圖；不把插圖策略當成人耳／站台核准。
+
+R19 首章 [資訊卡獨立覆核](../../docs/videos/curio-s49/review/r19-moon016-source-card-independent.md) PASS 後，限額單次批次的[原圖驗收與停畫收據](../../docs/videos/curio-s49/review/r19-first-chapter-native-stop.md)列 `moon017–025` 九張：`moon018/022/023` KEEP，另外六張 HOLD；[逐張 SHA 與 judge](../../docs/videos/curio-s49/review/r19-first-chapter-native-inventory.json)已保存。來源層級及年代／成年模式達停止條件，`moon028/030/031` 未畫；STOP 已恢復，前十五張 KEEP 圖 SHA 不變。帳本 **US$0.8100／60 image／60 judge、0 預約**，本集 US$5.30 上限未破；新 manifest `d583679e42d56bcab00eb27e3d4e3df5aadeb4325e0aeac942b042ae8eba0994`。先由作者按共同錯誤修六景，獨立書審後再畫下一批；網站卡、真實聽審與完整影片仍未完成。
