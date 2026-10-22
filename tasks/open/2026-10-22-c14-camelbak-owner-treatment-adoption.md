@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-c14-camelbak-owner-treatment-adoption
 title: Record C14 CamelBak owner treatment adoption
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-owner-decisions
