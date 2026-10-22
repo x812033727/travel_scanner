@@ -89,7 +89,7 @@
 | c080404 | shot | Close shot of an anonymous designer tracing the very tip of a generic plain spout study on a blank sheet, diffused indoor light. | gentle tilt down |
 | c080405 | shot | Medium conceptual view of an ordinary plain ceramic teapot tipped toward a small dish, its lower lip visually prominent but no exact historical comparison, soft indoor light. | gentle pan left |
 | c080406 | shot | Close conceptual view of a dark bead near the lower edge of a generic ceramic teapot spout just after an anonymous hand stops pouring, no measured path or dated prototype, soft side light. | slow push-in |
-| c080407 | card | 後製單焦點示意卡：一個泛用瓶嘴的側面輪廓標「上緣長於下緣／末端向內收」；E1／K4 與 MoMA M1 描述同一處改動。非原物精確剖面，不畫角度數值或液體回流路徑。 | 靜態卡／後製切入 |
+| c080407 | card | 後製單焦點示意卡：一個泛用瓶嘴的側面輪廓，只標「下緣收短、上緣留長」；E1／K4 與 MoMA M1 描述同一處改動。非原物精確剖面，不畫角度數值或液體回流路徑。 | 靜態卡／後製切入 |
 | c080408 | shot | Medium shot of an anonymous diner tipping a plain glass condiment bottle so a narrow stream reaches a small dish, then beginning to bring it upright, warm table light. | gentle tilt up |
 | c080409 | shot | Close shot of a plain bottle moving away from a small dish after pouring, a little dark liquid near the short spout but no spotless-table guarantee, mild window light. | gentle pan right |
 | c080410 | shot | Wide shot of the same anonymous diner setting the plain glass bottle back among dishes, the small dish and short spout both visible, soft dining light. | slow pull-back |

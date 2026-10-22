@@ -1,8 +1,8 @@
-# C08 龜甲萬｜逐鏡作者技術預檢 v5.2
+# C08 龜甲萬｜逐鏡作者技術預檢 v5.3
 
 - 日期：2026-10-23（Asia/Taipei）；執行者為逐字稿／逐鏡作者。**這不是獨立視覺審查、逐句來源 PASS、生成素材驗收或站主核准。**
-- 本輪稿件：`script.md` SHA-256 `53D82301F053189718BC2BD883A44A030A2F8694D4C25EA8645931829C8DBEA8`；`visual-plan.md` SHA-256 `8562D6C5BFA224B4416268809C44B1FE575E6AE9AA9C75353622C4B78C46BA12`；[來源補充](../script-source-addendum.md) SHA-256 `82D1147FE720B4ECB3A9222C8A19E76717BC40B4E70B56EA9A3256F5D22DEDE5`。修訂內容見 [作者 v5 收據](author-v5-84-line-revision.md)、[v5.1 窄幅修正](author-v5-c080512-source-fix.md)與 [v5.2 鏡數修正](author-v5-visual-count-fix.md)。
-- 獨立 [v5.1 來源與配對畫面差異審查](line-source-visual-review-20261023-84-delta-v5-1.md) 綁上一版旁白與逐鏡雜湊，對 `c080512` **PASS**。本版只有統計表更正，仍須另一代理核對新逐鏡雜湊。兩位 v4 旁白讀者的故事 HOLD 促成 v5 重寫，不能轉用為本版 PASS。
+- 本輪稿件：`script.md` SHA-256 `B9E4C547FFA190609B433D48FF7E27A94B9C9DF4322AEB48104A3163694B3376`；`visual-plan.md` SHA-256 `776F26F2E15477D443C6D8CFAC0EF32440DCBE5EFA85CA022FEDE7F883A84785`；[來源補充](../script-source-addendum.md) SHA-256 `82D1147FE720B4ECB3A9222C8A19E76717BC40B4E70B56EA9A3256F5D22DEDE5`。修訂內容見 [作者 v5 收據](author-v5-84-line-revision.md)、[v5.1 窄幅修正](author-v5-c080512-source-fix.md)、[v5.2 鏡數修正](author-v5-visual-count-fix.md)與 [v5.3 口語明確化](author-v5-spout-audio-clarity-fix.md)。
+- 前輪 v5.1 來源差異與 v5.2 機械鏡數已各由另一代理 PASS，但都綁舊雜湊；兩位真正只看 v5.2 旁白的讀者對中央瓶嘴解釋一 PASS、一 HOLD。作者只修 `c080407–408` 及該卡的文字，仍須另一代理按本版 SHA 覆核並重新盲讀。
 
 ## 本輪機械檢查
 

@@ -19,6 +19,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-c080512-source-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-visual-count-fix.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-spout-audio-clarity-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -57,7 +58,11 @@ scope:
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
-## Current checkpoint (2026-10-23 v5.2)
+## Current checkpoint (2026-10-23 v5.3)
+
+對 v5.2 唯讀旁白（84 行、抽出文字 SHA `9A8F986A…`）的兩位新讀者，一位 PASS 並提出非阻擋的重複句建議，另一位 **HOLD** `c080407–408`：不清楚縮回去的是嘴尖哪一緣。作者 v5.3 只把它口語化為「下緣往瓶裡縮、上緣留在前面；扶正後嘴尖較不積醬油」，並更新同 ID 單焦點字卡。84／84 ID 和 73 shot／11 card 不變；新雜湊與改動見 `reviews/author-v5-spout-audio-clarity-fix.md`。前輪的來源／畫面與盲讀收據都只綁舊 SHA，v5.3 需獨立窄幅來源／畫面覆核、兩名只讀新版旁白的讀者、實測時長及站主審稿。無付費。
+
+## Previous checkpoint (2026-10-23 v5.2)
 
 獨立 v5.1 對 `c080512` 的窄幅來源／配對畫面覆核已 **PASS**，綁定舊 `visual-plan.md` 雜湊；作者再發現 v5 把兩張字卡改成插圖後，逐鏡表頂部的統計沒有同步更新。v5.2 **僅更正表格與段落數字**：第 4 章 10 shot／1 card、第 6 章 7 shot／2 card、總計 73 shot／11 card，最多 1 連卡。84 個逐鏡列、旁白與來源補充的內容及雜湊不變；新 visual SHA 與改動見 `reviews/author-v5-visual-count-fix.md`。這個文字統計仍需獨立精確雜湊覆核；兩名只讀 v5.2 旁白的盲讀也未做。無 TTS 時長、站主稿件核准或付費。
 
