@@ -1,14 +1,14 @@
 ---
 id: 2026-10-15-video-backup-host-setup
 title: Connect the video backup rclone remote on the host and run the first backup
-status: blocked
+status: in-progress
 priority: P1
 area: ops
-owner: claude-festive-archimedes
-claimed_at: 2026-10-19T18:02:34Z
+owner: claude-opus-5-5-video-cloud-backup
+claimed_at: 2026-10-22T00:30:44Z
 created_at: 2026-10-15T02:14:07Z
 completed_at:
-branch: claude/festive-archimedes-9ntb36
+branch: claude/video-cloud-backup-issue-48a886
 depends_on:
   - 2026-10-15-video-backup-worker
   - 2026-10-15-video-backup-web
@@ -27,29 +27,32 @@ locked to the owner's `AI/備份` folder. Design: `docs/videos/BACKUP.md`.
 
 ## Definition of done
 
-- [ ] Owner: Drive API enabled in their Google Cloud project, a desktop OAuth client,
-      `rclone authorize "drive"` with scope `drive` run on their PC, token pasted once.
+- [x] Owner: Drive API enabled in their Google Cloud project, a desktop OAuth client,
+      authorized on their PC with scope `drive` (`rclone config create`, 2026-10-22).
       The `AI/備份` folder ID read from its Drive URL.
-- [ ] `/etc/travel-scanner/rclone-videos/rclone.conf` (uid 1001, 0600, in a 0750 folder of
+- [x] `/etc/travel-scanner/rclone-videos/rclone.conf` (uid 1001, 0600, in a 0750 folder of
       the same owner): remote `videobackup`, `type = drive`, `scope = drive`, the owner's
       `client_id`/`client_secret`, `root_folder_id = <AI/備份 id>`.
   - [x] `ops/video/rclone-videos.conf.example` shows the shape without secrets (rclone
         v1.74.4 parses it as written).
   - [x] `ops/backup/manifest-paths.txt` already takes `/etc/travel-scanner` whole, so the new
         folder is in the nightly bundle without a line of its own.
-- [ ] `rclone lsd videobackup:` lists only the contents of `AI/備份`.
+- [x] `rclone lsd videobackup:` lists only the contents of `AI/備份`.
 - [ ] Backup enabled in the admin card, test passes, the first video backed up and visible
       in `G:\我的雲端硬碟\AI\備份\<series>\` on the owner's PC; `rclone check` clean.
-- [ ] Measured sizes (basic and full, one each) written into BACKUP.md's 空間 section;
-      the owner told the projected monthly use so they can choose a Drive plan.
+- [ ] Measured sizes (basic and full, one each) written into BACKUP.md's 空間 section.
+      (The plan question is settled: the owner has 5 TiB.)
 
 ## Steps
 
 - [x] Owner steps written out in `docs/videos/BACKUP.md` §主機設定, with the Google Cloud
       "Testing" trap (a refresh token there expires after 7 days) and a troubleshooting table.
-- [ ] Owner steps (they run `rclone authorize`; the token never goes into a chat).
-- [ ] Deploy (#1595 merged 2026-10-19 17:53 UTC; the auto-deploy timer should take it), put
-      the file on the host, enable, test, watch one round.
+- [x] Owner steps (2026-10-22; the token never went into a chat).
+- [x] Deploy (#1595 is live), put the file on the host. Backups were already enabled in the
+      admin card (2026-10-20 00:45Z, every series on the full tier).
+- [ ] The test answered and one round watched: blocked until the worker's rounds reach the
+      backup again (PR #1657 for the prompt the site refuses, and
+      `2026-10-22-back-up-videos-even-when-an` so a failing round no longer skips it).
 
 ## How to verify
 
@@ -67,8 +70,8 @@ docker compose -f docker-compose.prod.yml exec -T video-worker sh -c \
 - From the worker task (2026-10-19): the file goes in a folder, not at
   `/etc/travel-scanner/rclone-videos.conf`. Compose mounts `/etc/travel-scanner/rclone-videos/`
   read-only, so put the remote in `/etc/travel-scanner/rclone-videos/rclone.conf`, readable by
-  the worker's uid 1001: `install -d -m 0750 -o 1001 -g 1001 /etc/travel-scanner/rclone-videos`,
-  then `install -m 0600 -o 1001 -g 1001 rclone.conf /etc/travel-scanner/rclone-videos/`. The
+  the worker's uid 1001 (the `install -o 1001` written here first does not work on the host;
+  see 2026-10-22 below and BACKUP.md §主機設定 step 4). The
   remote must be named `videobackup` (or set `VIDEO_BACKUP_REMOTE`). `VIDEO_BACKUP_LOCK_PATH` is
   `AI/備份` in compose; change it there if `root_folder_id` points elsewhere. Read the verify
   commands' paths as `/etc/mokaair/rclone-videos/rclone.conf` inside the container
@@ -80,3 +83,20 @@ docker compose -f docker-compose.prod.yml exec -T video-worker sh -c \
   and putting the file on the host (this cloud session has no SSH to the host). The verify
   commands copy the file to /tmp first because the mount is read-only and rclone may write
   a refreshed token back.
+- 2026-10-22 (claude-opus-5-5-video-cloud-backup), with the owner:
+  - Google Cloud: reused the YouTube project `mokaair-studio-sync` (already 實際運作中, Drive
+    API already enabled) and added a desktop client. Its first secret was pasted into a chat
+    by mistake, so the owner added a new one and disabled the old one before authorizing.
+  - `rclone config create … --config %USERPROFILE%\rclone-videos.conf` on the owner's PC does
+    the authorization and writes the whole file at once, so the token is never copied by hand.
+    winget's rclone 1.75.1 (ARM64); the host's 1.74.4 reads the file.
+  - `install -o 1001` fails on the host (`invalid user: '1001'`, uutils `install` wants a
+    name); `mkdir`/`chown 1001:1001`/`chmod` works. BACKUP.md now says so.
+  - Verified from inside video-worker (uid 1001): `lsd` lists only `偶的江湖`,
+    `公開影片-20261018-部分備份` and `奇聞檔案局`; `about` says 5 TiB, 4.769 TiB free.
+  - After 7 minutes nothing had moved: every round since 2026-10-21 16:43Z ends in the
+    site's "instructions：內容太長" before the backup, which ran only after a whole round. The
+    last lock report is 2026-10-21 01:00, the owner's test (2026-10-21 01:03) is unanswered,
+    and 62 videos on YouTube have no backup record.
+  - Left: after #1657 and this branch deploy, check that the lock is reported, the test is
+    answered, and the first two videos reach `done`; then measure sizes and close.
