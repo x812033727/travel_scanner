@@ -1,0 +1,227 @@
+{
+  "revision": "R40-s53030-second-native-human-keep",
+  "decision": "HUMAN_KEEP_AFTER_MACHINE_PASS_AND_THRESHOLD_REVIEW",
+  "frozen": {
+    "video_sha256": "65bec2d34c7d8443b9e45112e1193c6645feee86e676c0552d78b79f2335c312",
+    "claims_before_visual_match_sha256": "4e6ac59efe8a07e7159547cada6da853f0367dae125ee628643be94822664010",
+    "claims_after_visual_match_sha256": "68c2ab442dd0b20daef0b39977360f6b03a0974132bfd5967d90a2a07db53a0c",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "paper_sha256": "96019db9bfa461a587bdf4e0b1017359fdce611a103904098a72800d6e67fdd4",
+    "independent_visual_sha256": "478fa6e82cfe26442981ea17b77a9f08a09314fbcbe274a7d9c8f009bc1e8f48",
+    "claims_match_diff_sha256": "c0ce1b1664bb39c039add808e24be468a9fc7359e918d62d1bd2f512121d6957",
+    "claims_match_independent_paper_sha256": "5d950383eb110ebd3d787d351d48d1c41fc9004671aaa31e797bd3ff7c077300",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "dry_run_exit": 0,
+    "provider": "minimax",
+    "model": "image-01",
+    "correct_cli_env_root": "/workspace/.video-work",
+    "node_proxy_flag": "NODE_USE_ENV_PROXY=1",
+    "browser_preload": "/usr/bin/chromium for local contact sheet",
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "99b5ebf6c33ce866d08871b904dc9cc8cfa3ec1ba5c66c5b11c7ba6a108c2dc1",
+    "contact_sheet_sha256": "0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930",
+    "ledger_sha256": "2c924c6368bd267e1c006e5754666fa071fd270d7c4c0c98195ae7266b7cdace",
+    "usd": 0.6885,
+    "images": 52,
+    "judge_calls": 51,
+    "keep_count": 18
+  },
+  "shot": {
+    "id": "s53030",
+    "actual_native_attempt_number": 2,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53030-1.jpg",
+      "sha256": "35935d8a7dc06cc6ba40a64ca3bdea5c6be948d62031afe16b7803dd868b7de9",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53030-1-trim.jpg",
+      "sha256": "4391aabeb46fe056953d83e881ba4ca579d1b7d39f5043303f44b05ac1d504b8",
+      "dimensions": "1280x720",
+      "top_margin_trim_percent": 8
+    },
+    "request_key": "c7c01c95128e82d5",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: utility pole with power lines runs across the center background despite explicit exclusion → remove utility pole and overhead wires from background"
+      ],
+      "notes": "The scene accurately captures the specified chibi explainer style and character action. However, an excluded utility pole with overhead lines appears in the background."
+    },
+    "machine_needs_review": false,
+    "human_decision": "KEEP",
+    "prompt_deviations": [
+      "overhead utility wires and pole despite no-power-line prompt",
+      "woman appears older than specified middle age but clearly adult",
+      "particular plank attachment is not visually certain"
+    ],
+    "source_style_assessment": "Tent-side adult waiting and two adults at unfinished low timber frame convey ongoing construction; no immediate occupancy, false count/date or style drift; wires are not established as impossible in urban 1906."
+  },
+  "after": {
+    "manifest_sha256": "87c6150128b00a2a383d59ccc3ed450625c090877ad050a82abac3fade9c8ee3",
+    "visual_hash": "5818abc588740097",
+    "contact_sheet_sha256": "1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483",
+    "ledger_sha256": "d8cddfc8aa1bac91ca9e20dc820ae3915921ea5c060878c12841c912cdfccbd9",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "jobs_empty": true,
+    "usd": 0.702,
+    "images": 53,
+    "judge_calls": 52,
+    "reservations": 0,
+    "keep_count": 19,
+    "accepted_keyframe_problems": 0,
+    "total_shot_templates": 111,
+    "missing_shot_images": 92
+  },
+  "prior_keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    },
+    {
+      "id": "s53023",
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "f13e14b86dc5717ecfad7ae7b4b2c332fd63daf7ed94a06abf5aff1e15e1503f",
+      "request_key": "31d9deaa1374075e",
+      "unchanged": true
+    },
+    {
+      "id": "s53024",
+      "file": "keyframes/s53024-1-trim.jpg",
+      "sha256": "b297b0078061392271ec4c8c2fdee606469aa87a2397d2850bdad43a754967a5",
+      "request_key": "6d290a6027a337ae",
+      "unchanged": true
+    },
+    {
+      "id": "s53025",
+      "file": "keyframes/s53025-1-trim.jpg",
+      "sha256": "16e9f62963e0cb17c614b0c90ca76e76ee93a4755c85983d8f90962810dea9c3",
+      "request_key": "3ca9726b1ab95a1f",
+      "unchanged": true
+    },
+    {
+      "id": "s53027",
+      "file": "keyframes/s53027-1-trim.jpg",
+      "sha256": "1b1f054057a8fe506086112fe03b8fccc266245833998042d77014f277c49349",
+      "request_key": "ea3586917e242f62",
+      "unchanged": true
+    }
+  ],
+  "no_third_s53030_image": true,
+  "first_rejected_native_preserved_private": true
+}
