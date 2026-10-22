@@ -27,7 +27,7 @@ scope:
 - [x] 逐句來源與書面畫面提示、lint 0 error／0 warning、作者自檢與未完成關卡交接。
 - [x] R1 獨立覆核 HOLD 的來源錨點、旁白及書面畫面 R2 差分修復；作者收據記精確 SHA。
 - [x] R12 精確稿經兩位全新隔離讀者的正式敘事關卡合併 PASS。
-- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張限額首試新增 5 KEEP；R21 `moon021` 原圖 KEEP。R22 首章尾端三景獨立書審 PASS，原圖 `moon028` KEEP、`moon030` 技術 HOLD、`moon031` REJECT。STOP 已恢復，全部 121 張插圖通過前不放行分鏡。
+- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張限額首試新增 5 KEEP；R21 `moon021` 原圖 KEEP。R22 首章尾端三景獨立書審 PASS，原圖 `moon028` KEEP、`moon030` 技術 HOLD、`moon031` REJECT。R23 定點修後 `moon030` 原圖 KEEP；`moon031` 供應商逾時未得新圖。STOP 已恢復，全部 121 張插圖通過前不放行分鏡。
 
 ## Steps
 
@@ -147,3 +147,5 @@ R21 [獨立書面覆核](../../docs/videos/curio-s49/review/r21-moon021-prompt-i
 R22 [首章尾端三景作者窄修](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-author.md)只改 `moon028/030/031` 提示詞及 claims 同列畫面文字；[可逆差分](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-structured-diff.json)逐字還原 R21 整檔 SHA。新 `video.json` `26a4812f69c312041509544b1b664c5568b523112d1c17ecfd8c79d5b8ef7052`、`claims.md` `4e25e9837f5ea9365490aa40df0c55596124594154a61d58334a89abc5120cfb`，script／語音文字不變。`moon028` 去兩份可得來源紙、只留單一報紙上的概念月亮圓；`moon030/031` 從錯誤實體器材／海報轉為成年 1830 年代讀者看平放紙上的簡筆圖。Lint 0／0、只讀 dry-run ready；未畫 R22 圖，前 24 景 KEEP 未改。STOP 在位、帳本維持 US$0.9315／69 圖／69 judge；待另一人獨立核三景來源和書面差分後，再限額原圖驗收。網站卡、人耳音訊與全片分鏡仍待。
 
 R22 [獨立書審](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-independent.md)按精確 SHA **PASS**；受控一次[原圖停畫收據](../../docs/videos/curio-s49/review/r22-first-chapter-tail-native-stop.md)及[完整雜湊清單](../../docs/videos/curio-s49/review/r22-first-chapter-tail-native-inventory.json)判 `moon028` **KEEP**（一份無字概念報紙）、`moon030` **技術 HOLD**（實體器材已消失，但自動裁圖仍有細黑頂邊）、`moon031` **REJECT**（擬文字列與實體小圓筒代替無字扁平墨線，機器 9.29 PASS 仍退）。前 24 張 KEEP 圖單項目／選圖 SHA 不變；新 manifest `29fd2d89b96cb1dc609db00263337db9a46cd06089b462151940c399d0095d06`，帳本 **US$0.9720／72 image／72 judge、0 預約**，STOP 在位，低於 US$5.30 上限。先處理兩張 HOLD／退圖，剩餘其他章節不可因 CLI 通用提示送 storyboard；網站卡與完整影片仍待。
+
+R23 [兩景作者窄修](../../docs/videos/curio-s49/review/r23-moon030-031-prompt-author.md)及[獨立書審 PASS](../../docs/videos/curio-s49/review/r23-moon030-031-prompt-independent.md)只改 `moon030/031` 圖像提示與 claims 畫面欄；`video.json` SHA `fb144f9e2af0b6c59b08c477a149b21af6291af8b0b328934d96d87e1c3fe0b8`、claims SHA `0071e502905c7669a6bfb70c406921d52e82d5fa54a3e4c8ffd75240eb157809`，劇本與音檔不變。兩景限額[原生圖收據](../../docs/videos/curio-s49/review/r23-moon030-031-native-stop.md)：`moon030` 新原圖 **KEEP**，無黑邊、機器 10/10；`moon031` MiniMax 逾時未回新圖／未收費、舊 R22 退件仍不能用。既有 25 個 KEEP 圖單項目與檔案雜湊不變；帳本 US$0.9855（74 image entries／73 judge），另有一筆零費逾時紀錄，STOP 已恢復，低於整集 US$5.30。下次只准在供應商穩定後補 `moon031` 的有界一次嘗試，先核原圖，再談下一章；不可宣稱首章完成或全片分鏡可推。
