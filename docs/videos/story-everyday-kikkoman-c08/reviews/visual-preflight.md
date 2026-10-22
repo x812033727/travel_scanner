@@ -1,8 +1,8 @@
-# C08 龜甲萬｜逐鏡作者技術預檢 v5
+# C08 龜甲萬｜逐鏡作者技術預檢 v5.1
 
 - 日期：2026-10-23（Asia/Taipei）；執行者為逐字稿／逐鏡作者。**這不是獨立視覺審查、逐句來源 PASS、生成素材驗收或站主核准。**
-- 本輪稿件：`script.md` SHA-256 `ACCC7EB9FB001AE819119FBC0296AFD5F3CD0D1D09389740796F33342036F991`；`visual-plan.md` SHA-256 `38C3B4CEDC6DE1CF45F18AA5EE272DB7737AF25B92885A4035DFC4434C225B68`；[來源補充](../script-source-addendum.md) SHA-256 `82D1147FE720B4ECB3A9222C8A19E76717BC40B4E70B56EA9A3256F5D22DEDE5`。修訂內容見 [作者 v5 收據](author-v5-84-line-revision.md)。
-- 獨立 [v4 來源與配對畫面審查](line-source-visual-review-20261023-84-delta-v4.md) 綁上一版 84／84 稿件，判來源／畫面 **PASS**；兩位真正只看 v4 旁白的讀者判故事 **HOLD**。本版依其意見重寫，仍須另一代理以新 SHA 覆核並重新盲讀。
+- 本輪稿件：`script.md` SHA-256 `53D82301F053189718BC2BD883A44A030A2F8694D4C25EA8645931829C8DBEA8`；`visual-plan.md` SHA-256 `38C3B4CEDC6DE1CF45F18AA5EE272DB7737AF25B92885A4035DFC4434C225B68`；[來源補充](../script-source-addendum.md) SHA-256 `82D1147FE720B4ECB3A9222C8A19E76717BC40B4E70B56EA9A3256F5D22DEDE5`。修訂內容見 [作者 v5 收據](author-v5-84-line-revision.md)與 [v5.1 窄幅修正](author-v5-c080512-source-fix.md)。
+- 獨立 [v5 來源與配對畫面審查](line-source-visual-review-20261023-84-delta-v5.md) 綁上一版 84／84 稿件，僅 `c080512` **HOLD**；其餘來源、配對畫面與相鄰句已核對。作者只將此句收回 K5 的改良目的與瓶蓋範圍，仍須另一代理以新 SHA 窄幅覆核。兩位 v4 旁白讀者的故事 HOLD 促成 v5 重寫，不能轉用為本版 PASS。
 
 ## 本輪機械檢查
 

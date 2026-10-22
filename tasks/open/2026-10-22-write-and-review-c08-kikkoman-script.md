@@ -17,6 +17,7 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v3-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v4-84-line-revision.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-84-line-revision.md
+  - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-c080512-source-fix.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -55,7 +56,11 @@ scope:
 
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
-## Current checkpoint (2026-10-23 v5)
+## Current checkpoint (2026-10-23 v5.1)
+
+獨立 v5 來源／畫面覆核 `reviews/line-source-visual-review-20261023-84-delta-v5.md` 僅退回 `c080512`：K5 只能證歐洲子公司把**瓶蓋**凸起改圓的用意，不能把安全成效說成已實測。作者 v5.1 僅修這一句，保留 84／84 旁白與分鏡順序，畫面和來源補充雜湊不變；新旁白 SHA 與改動見 `reviews/author-v5-c080512-source-fix.md`。v5 獨立收據仍為舊稿 HOLD，不能自行轉 PASS；此新 SHA 待獨立窄幅複核與兩名只讀新版旁白的盲讀。正文 TTS、站主劇本／逐鏡核准及付費均未進行。
+
+## Previous checkpoint (2026-10-23 v5)
 
 獨立 v4 逐句來源／配對畫面查核 `reviews/line-source-visual-review-20261023-84-delta-v4.md` 對前一版判 PASS，**不是敘事盲讀通過**。兩位真正只讀 v4 旁白的讀者均判故事 **HOLD**：瓶嘴內斜與上下緣被講成兩個答案，控流問題的口語解釋未收束；2007 年圓角蓋到另一款生醬油轉場突兀；最後把商標、調查和出貨堆成清單，沒有回到「無字外形被認出」。作者 v5 依此重排同一瓶嘴的動作說明，明確交代另一款產品，移除片尾出貨數字卡並收回品牌標記。新版 84／84 同序 ID、73 shot／11 card；新 SHA 與修改表見 `reviews/author-v5-84-line-revision.md`。v4 查核及盲讀都**不移用**，v5 仍須獨立來源／畫面覆核、兩位只讀新版旁白的盲讀、時長及站主核准。無付費製作。
 
