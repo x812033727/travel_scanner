@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-c07-dr-martens-script-visual
 title: Write and independently review C07 Dr. Martens script and visual plan
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-c07-reviser
-claimed_at: 2026-10-22T11:57:33Z
+owner:
+claimed_at:
 created_at: 2026-10-22T05:29:06Z
 completed_at:
 branch: codex/brand-story-dr-martens-c07-script
