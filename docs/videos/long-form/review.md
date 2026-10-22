@@ -5813,9 +5813,19 @@ Validation before rebinding: `node --test tools/video/core/branding.test.mjs too
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Everyday brand-story Curio visual lint increment: 2 files (2026-10-22)
+
+Reviewer: `codex-gpt6-duration-independent-review`. Author: `codex-gpt6-everyday-curio-guard`. Scope: DURATION_ONLY for `tools/video/core/lint.mjs` and `tools/video/core/lint.test.mjs` in `17a35a99f` (the `story-everyday-*` visual guard). The reviewer wrote none of those source changes and inspected `git diff 17a35a99f^ 17a35a99f --` for both files, plus the new visual predicate in `tools/video/core/story.mjs` and the unchanged `isShot` definition in `tools/video/core/drama.mjs`. The prior review report hashes to its receipt (`1fc3a0f7a0cd7cdeaac0ddb4c203032b88ec980f288af35ec803ffddeaec43f6`). Before this increment, `node tools/video/long-form/cli.mjs check` failed on exactly these two stale bindings. The other 106 registered file hashes still matched their existing bindings.
+
+`lint.mjs` imports a visual predicate and, inside the existing `isStory(context.series)` block, adds errors only when both the slug starts `story-everyday-` and the series kind is `story`. The predicate reads the exact look preset, body scene templates, shot share and consecutive card count. It does not write to the document or timeline. The chapter check, estimated duration, target minutes, frame count, measured 480-second body floor and final-video proof are unchanged. The new `lint.test.mjs` test checks a passing illustrated story, wrong look, 60% illustrated scenes, four consecutive cards and non-target series/slugs; it adds no duration exception. This guard can reject a visually invalid story but cannot make a short one pass. No duration correction is required.
+
+Validation before rebinding: `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/lint.test.mjs` passed 68/68 on Node v24.13.0. The post-rebinding plan check and receipt test are recorded in the handoff after the report hash is fixed. This review does not accept the script, media, owner gate, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, and then the video review list order increment, and now the fractional-frame brand-intro caption boundary increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the fractional-frame brand-intro caption boundary increment, and now the everyday brand-story Curio visual lint increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5887,8 +5897,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
 | `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `e1353a9d3af8a938eecaeeb2a9626a3827fb42864c7fe60f279ef0d5030eec61` |
-| `tools/video/core/lint.test.mjs` | `fba256c3088f4a21999bebc2dc40fdad57f6a8ae552fac05d0b25f89880ce3a5` |
+| `tools/video/core/lint.mjs` | `d3a2a9bdc1fa907f6d828d77a0d72b74c83867d158aaa3570de713e7a9e762c0` |
+| `tools/video/core/lint.test.mjs` | `be8d05ab058b399f7da6a5b63e05be78c3254f623004574cf0588f70344f0dbc` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `80627bb4e6c68365acebeb46ae9f95f67e9408d0a9d25402ca62a82a7936183a` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
