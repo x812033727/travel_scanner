@@ -60,3 +60,11 @@
 上節的 `57290395…` 雜湊保留作零付費畫面改版的歷史版本。現行 `video.json` SHA-256 為 `2DCFE691C05C5A041B16BCDBB77ACC8FDAE2955D0247CC41F951C5C9097F7833`：`c03-p12-s02`／`c031202` 的 2016 年底直營店數由 78 更正為 **79 家**，來源改用 D’Ieteren 2016 Activity Report 印刷頁 35、37 與 2017 年報印刷頁 7。其餘 93 句旁白、場景 ID／順序及 67 插畫／27 字卡配置未動。舊投資人簡報的 78 與年報衝突，保留在來源矩陣及[事實更正紀錄](reviews/factual-correction.md)。
 
 此更正使既有 `c031202` 配音、含該句的時間軸和相應字幕成為舊稿產物；須先做單句 TTS 乾跑與重錄，再重算第 02–20 段純語音是否仍至少 480 秒，並重新檢查念法與成片。更正本身沒有呼叫付費媒體，媒體帳本的 US$1.646 是**重錄前**讀值；原本的 US$25 全片停線及未結算費查核仍適用。舊查核與盲評收據維持其原雜湊的歷史判定，不能充作這次更正的獨立核准。
+
+## 2026-10-22 更正後畫面讀回與語音阻擋
+
+獨立來源覆核採兩份 D’Ieteren 年報支持的 **2016 年底 79 家直營店**，現行 `video.json` SHA-256 為 `2DCFE691C05C5A041B16BCDBB77ACC8FDAE2955D0247CC41F951C5C9097F7833`；更正只涉及 `c031202` 的一個數字和同景字卡。舊查核收據保留，新增 `reviews/factual-correction.md` 與 `reviews/factual-correction-independent.md` 分別記作者修訂及獨立簽核。
+
+正式 `keyframes --takes 3 --channel msedge` 對現行版回報 **67／67 張原圖與評審沿用、0 張新生成**，manifest 畫面雜湊為 `35f8abdf564d872a`。`render --channel msedge` 在 27 張字卡中重畫 9 張、沿用 18 張，產出現行 `contact-sheet.png` 與 `thumbnail.jpg`；人工讀圖見到 `c03-p12-s02` 的 `79 家`、字卡可辨且縮圖品牌名夠大。圖像與音樂帳本仍為 **US$1.646，保留額 0**；不把此數字當成全片總成本。音樂 MP3 的完整解碼與預期接縫另見 `reviews/music-loop-precheck.md`，最終混音仍待人耳驗收。
+
+TTS 乾跑始終只需重合成 **94 句中的 `c031202` 一句、約 28 可計費字元**。三次受控執行均收到供應商 HTTP 429「Gemini 語音暫時忙碌或達到用量上限」，無新音檔，speech journal 無結果不明請求。既有 `timeline.json` 的 speech hash 仍是舊稿；不得用其 481.25 秒正文讀值宣稱新版通過八分鐘。企劃與劇本已送 `/admin/videos` 並讀回 `pending`；新版音訊與分鏡尚未送審。服務恢復後先只重錄這句，重新量正文純語音、跑音訊查核、再送音訊與分鏡；後續 clips、assemble、CC 和成片 QA 仍未完成。
