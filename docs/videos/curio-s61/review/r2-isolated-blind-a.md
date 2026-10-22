@@ -2,7 +2,7 @@
 
 First-time viewer judgment. Source material: `brief.md`, `script.md`, `video.json`, and the official `narrative --slug curio-s61 --json` narration and questions only. Yes: **6/13**; no: **7/13**. The official `narrative --answers` check exited **1** (`passed: false`): six required no answers and one advisory no answer. The exact CLI input is `r2-isolated-blind-a.answers.json`. The stdout verdict is `r2-isolated-blind-a.receipt.json`; the official workdir record with creative binding is `r2-isolated-blind-a.official-narrative.json`. The check used private workdir `/tmp/s61-r2-blind-a`.
 
-Script SHA-256: `1f55c9182b1aac974cecea31d7755b1c310da29db651a6993aa310da9bb63fc9`  
+Script SHA-256: `1f55c9182b1aac974cecea31d7755b1c310da29db651a6993aa310da9bb63fc9`
 Video SHA-256: `800a8c7476bee77fad9b97e8a23e5b7e26007cfcf32e5ee471db371257fec134`
 
 | Official question | Answer | Evidence and reason |
