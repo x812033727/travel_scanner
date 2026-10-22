@@ -57,3 +57,16 @@ PowerShell 解析 `visual-plan.json`，以正則檢查每一條 `shot.prompt`、
 本段仍只屬文字製作；未做 TTS、付費圖片／配樂或影片，也沒有站主稿件核准。
 
 本輪專屬檢查：80／80／80 ID 同序無重號；71 `shot`、9 `stats`、最長連卡 2；閱讀版逐鏡與 JSON 逐條相同；全部 `shot.prompt` 及共通契約禁用名稱 0 筆；`look` 與 5／21 秒書擋正確。`git diff --check` 通過。`npm run check:tasks` 這次 exit 1，原因是此工作樹已有其他兩張審查任務的未追蹤 `tasks/open` 孤檔，和已追蹤的 `tasks/done` 同 ID；本票沒有動那些檔案，也不將此記作本票結構 PASS。廣泛的過期認領／scope 重疊只見 warning。
+
+## 2026-10-22 v3 口播盲讀 HOLD 的窄化修訂
+
+[v3 來源與逐鏡差異收據](../../docs/videos/story-everyday-oxo-c10/reviews/source-visual-delta-v3.md)對舊 script SHA `67AC2AB3D054CC0023EC09A0EBC6124CE9DAC48E27B66D8E28CE649A3CE77980` 判 PASS；同 SHA 的[v3 口播盲讀 A](../../docs/videos/story-everyday-oxo-c10/reviews/narrative-reader-v3-a.md)判 HOLD。前者不能移植到本次新 bytes，後者指出開場承諾超過可證範圍及章尾問第二雙手卻由館方代答。
+
+- [x] c100108 收窄為「如何讓人有機會親手試」，與 S4 的店內展示可直接對答。
+- [x] c100507–514 保留胡蘿蔔試用，明講品牌回顧中的店家看見試用價值及後來示範延伸，不虛構買賣、銷量、特定顧客或另一雙手的實測；章末改問產品延伸。
+- [x] c100601–612 用刀具與開罐器立即回答新章末問題，片尾回收握不住與貨架看不懂兩道阻力，對應卡片及鏡頭同步。
+- [x] 完成 80 ID、提示詞禁名、閱讀版一致及差異檢查，記錄 SHA，推回草稿 PR 並轉 review；交另一代理重新綁 SHA 覆核來源及盲讀。Task board 的工作樹孤檔失敗另記，不算通過。
+
+本次仍無 TTS、付費生成、站主稿件核准、匯入、上傳或發布。
+
+本輪檢查：80／80／80 唯一 ID 同序；71 `shot`、9 `stats`、最長連卡 2；閱讀版與 JSON 0 列不符；全部 `shot.prompt` 和 `visual_contract` 禁用名稱 0 筆；`look` 及 5／21 秒書擋正確；`git diff --check` 通過。`npm run check:tasks` 仍 exit 1，這次是四張其他審查任務的未追蹤 `tasks/open` 孤檔與已追蹤 `tasks/done` 同 ID；沒有改動或清除那些檔案。舊 v3 來源 PASS 和盲讀 HOLD 都只對舊 script SHA `67AC2AB3D054CC0023EC09A0EBC6124CE9DAC48E27B66D8E28CE649A3CE77980` 生效，不能把新版自判通過。
