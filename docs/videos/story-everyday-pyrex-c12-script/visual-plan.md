@@ -1,6 +1,6 @@
 # C12 Pyrex｜逐句、逐鏡可愛插圖計畫
 
-狀態：與 [劇本](script.md) 80 句逐一對應的**前期分鏡方向**，尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
+狀態：與 [劇本](script.md) 80 句逐一對應的**前期分鏡方向**；本版隨盲評 A 修訂，舊版畫面收據僅供對照。尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
 
 ## 鏡頭約束
 
@@ -34,9 +34,9 @@
 | O05 | C | 後製：Nonex／鐵路燈罩與工業用品 | 名稱由後製；不讓模型描字。 |
 | O06 | I | Medium shot of a workshop worker holding a plain glass globe before a shelf of different empty containers, daylight from a high window | 市場轉向的視覺問號。 |
 | O07 | I | Close-up of one anonymous worker moving a glass sample from a rail lantern shelf toward a bare display shelf, daylight from the left | 尋找用途，不暗示已找到客戶。 |
-| O08 | I | Wide shot of a workshop doorway opening onto a modest kitchen interior, one worker carrying a plain glass vessel, afternoon light from the kitchen | 跨場景示意。 |
-| O09 | I | Medium shot of an anonymous home cook washing a plain ceramic dish beside an oven, soft morning window light | 家用環境。 |
-| O10 | I | Close-up of a shopper's hand hesitating over a clear baking vessel on a shop counter, daylight through front glass | 買家疑慮，非當期調查畫面。 |
+| O08 | I | Medium shot of an anonymous glass worker carrying a plain tall battery jar inside an early workshop, daylight from a high window | 工業容器為後續試烤埋伏筆；不畫切下罐底或當年原物。 |
+| O09 | I | Medium shot of a plain battery jar and a separate ceramic baking dish on a kitchen worktable, one anonymous cook nearby, soft window light | 電池罐仍非烤皿；兩件物品不可畫成同一物。 |
+| O10 | I | Medium shot of an anonymous home cook pausing beside an empty kitchen oven, one hand resting on the counter, morning window light | 匿名暗示 Bessie 的家廚難題；不畫已碎陶皿的倒序場景。 |
 | O11 | I | Medium shot of two anonymous adults seated over simple supper bowls at a modest dinner table, one pausing to listen, warm evening lamplight | 陶皿已先前在烤箱碎裂；此鏡只畫晚餐談起舊事，不放完整陶皿或重建對白。接 O12 用短暫回想轉場明示那是較早的烤箱破裂。 |
 | O12 | I | Medium shot of an anonymous cook staring at several pieces of a plain shattered ceramic casserole dish inside an open kitchen oven, warm light from the oven | 破碎陶皿的匿名概念插圖，不重建原物或確切事發構圖。 |
 
@@ -73,9 +73,9 @@
 | E08 | I | Close-up of food visible through a plain clear baking dish on a table, one cook looking through the side, soft kitchen daylight | 透明特徵，不冒稱試烤性能。 |
 | E09 | I | Medium shot of an anonymous shopper leaning toward a clear baking dish with a puzzled expression at a shop counter, daylight from storefront | 信任門檻。 |
 | E10 | I | Close-up of a shopper's cautious face reflected faintly in a plain glass dish, light from a shop window | 疑慮而非家戶統計。 |
-| E11 | I | Medium shot of an anonymous home cook arranging a plain baking dish on a demonstration table, bright indoor daylight | 示範概念，匿名。 |
-| E12 | I | Close-up of a cook's hand setting a clear dish beside a plain oven, light from a broad kitchen window | 使用場景，不是操作教學。 |
-| E13 | I | Medium shot of a shopper turning a plain glass dish in both hands on a shop floor, light from a high window | 名稱本身無法解說商品。 |
+| E11 | I | Medium shot of an anonymous home cook trying a plain clear baking dish in her own modest kitchen, soft window light | 家政專家家中試用的概念插畫，不畫可考證人物。 |
+| E12 | I | Close-up of a plain clear baking dish beside an unmarked closed cookbook on a kitchen table, one hand opening the book, daylight | 廣告與烹飪書由後製短字提示；生圖不生成字或仿舊廣告。 |
+| E13 | I | Medium shot of an anonymous shopper watching an empty cooking demonstration table beside a clear baking dish, bright shop lighting | 用尚待發生的示範承接提問，不畫示範已完成。 |
 | E14 | I | Wide shot of an old hardware shop with plain tools and one clear baking dish on a shelf, one clerk looking toward it, daylight from storefront | 早期五金通路示意。 |
 | E15 | I | Wide shot of a department store kitchenware counter, one shopper stopping before a clear baking dish, light from high windows | 後來百貨通路示意。 |
 | E16 | I | Medium shot of an anonymous cooking demonstrator lifting a plain glass dish toward an audience beyond frame, bright shop lighting | 家政專家進場；不畫品牌廣告。 |
@@ -99,7 +99,7 @@
 | T13 | I | Medium shot of an anonymous glass worker examining a new unmarked glass sample beside an older baking dish, light from a high workshop window | 後來繼續開發，不畫配方內容。 |
 | T14 | I | Wide shot of an old baking dish and a separate modern kitchenware shelf, one viewer standing between them, daylight | 不跨年代替別件商品定材質。 |
 | T15 | I | Close-up of a modern household glass baking dish turned over in one person's hands, its base completely plain, kitchen daylight | 現代材質提問，不畫假標示。 |
-| T16 | I | Wide shot of three separate shelves holding anonymous glass kitchen and laboratory vessels, one viewer studying them, bright diffuse light | 末章三條產品線，不暗示材質外觀差。 |
+| T16 | I | Wide shot of an old clear baking dish on one shelf and a separate modern glass baking dish on another, one viewer studying the older dish, diffuse light | 只提出最早材質問題；末章範圍從 N01 逐例展開，不預示三條商品線。 |
 
 ## Now（N01–N16）
 
@@ -107,7 +107,7 @@
 | --- | --- | --- | --- |
 | N01 | C | 後製：1915 美國首批烤器／硼矽玻璃 | 限歷史批次。 |
 | N02 | I | Close-up of a historical plain clear baking vessel beside a separate railway lantern globe, one hand pointing between them, daylight | 相關研發路線，非同配方。 |
-| N03 | C | 後製：美國消費級玻璃烤器／館方稱已數十年採熱強化鈉鈣玻璃 | 不換算改材確切年。 |
+| N03 | C | 後製：現今美國消費級玻璃烤器／館方稱主要為熱強化鈉鈣玻璃 | 限現行主要配方；不給精確換材年份，不說所有品項相同。 |
 | N04 | I | Medium shot of an anonymous archivist comparing several unmarked glass dishes on separate shelves, daylight from a library window | 不同工廠與例外，非鑑定法。 |
 | N05 | I | Close-up of a person's hands holding an old glass dish with a completely blank base, soft daylight from a side window | 不請模型畫大小寫品牌。 |
 | N06 | C | 後製：一件現售法國製橢圓玻璃烤器／商品頁標示硼矽玻璃 | 單一商品，非普遍推論。 |
