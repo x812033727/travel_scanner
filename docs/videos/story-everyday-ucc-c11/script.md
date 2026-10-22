@@ -1,6 +1,6 @@
 # C11 UCC｜一罐奶咖能帶上車，為什麼還要拿工具打孔？
 
-**狀態：繁中單旁白新修訂稿，待獨立重核與兩位新鮮盲讀。** 站主已採用 [六章企劃](treatment.md)；v4 [獨立來源與畫面文字覆核](reviews/script-source-delta-v4.md)通過，但兩位純旁白盲讀都判 HOLD（[A 協調轉錄](reviews/narrative-reader-v4-a-author-transcription.md)、[B 協調轉錄](reviews/narrative-reader-v4-b-author-transcription.md)）。本稿依兩份 HOLD 收緊研發銜接、開場與結尾；舊收據不能沿用到改字版本。之後仍須交站主審劇本及逐鏡。沒有 C11 的 TTS 實長或付費媒體授權。ID、章名、依據及括號註解不進配音；每句 ID 對應 [逐鏡 JSON](visual-plan.json) 及 [閱讀版逐鏡表](visual-plan.md)。來源界線見 [逐字稿說明](script-source-notes.md)。
+**狀態：繁中單旁白新修訂稿，待獨立重核與兩位新鮮盲讀。** 站主已採用 [六章企劃](treatment.md)；v4 [獨立來源與畫面文字覆核](reviews/script-source-delta-v4.md)通過，但兩位純旁白盲讀都判 HOLD（[A 協調轉錄](reviews/narrative-reader-v4-a-author-transcription.md)、[B 協調轉錄](reviews/narrative-reader-v4-b-author-transcription.md)）。v5 [獨立來源差異覆核](reviews/script-source-delta-v5.md)另對 `c110410` 的當時品名判 HOLD；本稿已改為不宣稱精確中文品名的描述，見[作者修訂紀錄](reviews/script-source-v5-c110410-author-repair.md)。所有舊收據只綁舊版，新稿仍待獨立重核。之後仍須交站主審劇本及逐鏡。沒有 C11 的 TTS 實長或付費媒體授權。ID、章名、依據及括號註解不進配音；每句 ID 對應 [逐鏡 JSON](visual-plan.json) 及 [閱讀版逐鏡表](visual-plan.md)。來源界線見 [逐字稿說明](script-source-notes.md)。
 
 來源代號沿用已核 [來源矩陣](source-matrix.md)：U1（UCC 2026 回顧）、U2（UCC 2025 回顧）、U3（UCC 博物館）、U4（UCC 沿革）、H1（濱田市）、H2（島根縣）；H3 為另行重讀的濱田市現行人物頁。所有歷史場景都是原創概念插圖，並非當日影像。
 
@@ -68,7 +68,7 @@
 | c110407 | 內塗層解的是罐壁問題，並沒有回答分層與高溫走味。 | U1；塗層只對變色，不推三題同解 |
 | c110408 | 對飲料那兩關，UCC 只說找專家反覆試，沒有交代最後採用的配方。 | U1、U2；公司回顧的試作與公開細節界線，不編機制 |
 | c110409 | 能確定的下一步，是這款奶咖終於做成了可以販售的商品。 | U1、U2；公司所述結果，不宣稱試驗先後或效果數據 |
-| c110410 | 一九六九年四月，當時名叫「UCC 咖啡牛奶罐」的商品開賣。 | U1、U2、U4；只說月，不編首日 |
+| c110410 | 一九六九年四月，UCC 這款含奶罐裝咖啡開賣。 | U1、U2；只說產品描述與上市月份，不另造當時品名 |
 | c110411 | 這是咖啡生意向前跨的一步：人可以把一罐奶咖從販售處帶開。 | U1、U2；編輯歸納 |
 | c110412 | 可是上架，不代表大家當場就想買。 | U1、U2；下一章懸念 |
 | c110413 | 但想喝這罐奶咖，當時還得找專用的開孔器。 | U2；初代開罐方式，第一次揭露 |
