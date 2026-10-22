@@ -1,0 +1,98 @@
+{
+  "revision": "R44-s53033-first-native-human-reject-stop",
+  "decision": "HUMAN_REJECT_AFTER_MACHINE_PASS",
+  "frozen": {
+    "video_sha256": "4a3b3447bb1f5d980b0a0965309c1e9a3fda81f64ead117e87910f340f61831d",
+    "claims_sha256": "69d91d3b6e5bf5e551060f0eeab5f7745a1704d5c24e59f1f1d10993554ba4c3",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "source_section": "Survey E L4887-4897",
+    "independent_paper_sha256": "8e1fb3fba82f1f02b8679df4c1cb2523b90e785854ccc01ad41727c9c9a2eca0",
+    "independent_visual_sha256": "3829fa0b32295a2dca72fc4e57e8d09ad7d0a2347c5e32e9e5b26f3f145a92c0",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "provider": "minimax",
+    "model": "image-01",
+    "images_remaining_immediate_snapshot": 9851,
+    "judges_remaining_immediate_snapshot": 7807,
+    "dry_run_exit": 0,
+    "prompt_chars": 541,
+    "prompt_budget_chars": 1069,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "72ee1b654a045a952ed78b12373e54f036f003239b2666523e07540a0496fbd1",
+    "contact_sheet_sha256": "7567d866096ae2ae1d8c92a191b8b6aa74ca1b67c56a4e5582ab6fa9cf666a57",
+    "ledger_sha256": "ae0310f9f3b3e78631d54f6815e1be4439147453da1b3fc919f2bf02b662772f",
+    "usd": 0.729,
+    "images": 55,
+    "judge_calls": 54,
+    "keep_count": 20
+  },
+  "rejected_take": {
+    "id": "s53033",
+    "actual_native_attempt_number": 1,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "rebind-backups/r44-s53033-first-native-rejected-original.jpg",
+      "sha256": "03395c643975a65c416b43f495c68c9eec2aabeedc7a627987bec7640ca1ef92",
+      "dimensions": "1280x720"
+    },
+    "selected_trim": {
+      "file": "rebind-backups/r44-s53033-first-native-rejected-trim.jpg",
+      "sha256": "6362e3900789c2fd3b9c9b427b44c1b8a35d3dcf4cd6f1854169423751f8da94",
+      "dimensions": "1280x720",
+      "top_margin_trim_percent": 8
+    },
+    "request_key": "d03d4e8b79710fd9",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: wide framing instead of a medium shot with the subject positioned far left rather than centered → medium shot centered on the woman"
+      ],
+      "notes": "The shot is framed as a wide landscape rather than a medium shot. A vehicle-like structure also appears in the background contrary to prompt constraints."
+    },
+    "machine_needs_review": false,
+    "human_decision": "REJECT",
+    "primary_reason": "modern box-van/camper-like windshield and grille/bumper in 1906 tent camp survives selected trim",
+    "secondary_age_ambiguity_not_reject_basis": true,
+    "charged_rejected_manifest_sha256": "8d6b3bfc624797f961b41bf0776bad7833c41684ebbad441b2a9db7ad37c4244",
+    "charged_rejected_contact_sha256": "bd130254a5420128fd9591ff3378ec0fa1a73017e37af2ed0f437222e82d883e"
+  },
+  "after": {
+    "active_manifest_sha256": "72ee1b654a045a952ed78b12373e54f036f003239b2666523e07540a0496fbd1",
+    "active_contact_sheet_sha256": "7567d866096ae2ae1d8c92a191b8b6aa74ca1b67c56a4e5582ab6fa9cf666a57",
+    "ledger_sha256": "b30c39d2018dd95c2316e5440f08a641a254dae70c9a5df8db977baf1e6929e2",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "totals": {
+      "usd": 0.7425,
+      "images": 56,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 55,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "keep_count": 20,
+    "previous_20_entries_identical": true,
+    "selected_jpeg_hashes_match": true,
+    "rejected_jpegs_removed_from_active_keyframes": true,
+    "s53034_undrawn": true
+  }
+}
