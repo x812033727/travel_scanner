@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-source-and-draft-s60-south-pole
 title: Source and draft S60 South Pole letter history episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:43:23Z
+owner:
+claimed_at:
 created_at: 2026-10-22T00:27:06Z
 completed_at:
 branch:
@@ -55,3 +55,5 @@ Key dates: Amundsen's first flag was 1911-12-14, the small tent and two addresse
 2026-10-22 01:39 UTC audio recovery: a bounded Gemini Sulafat attempt after the earlier 429s returned five more `video_speech_upstream_busy` 429s and produced no audio. The [cooldown receipt](../../docs/videos/curio-s60/review/r4-tts-upstream-cooldown-20261022.md) preserves the exact hashes, dry-run quote and next useful check after 07:05 UTC. Do not treat the valid outline/script choice as human listening approval. Keep the series voice and STOP until TTS and audio QA actually pass.
 
 2026-10-22 額度重置後同聲線TTS恢復：109句全合成、時間軸9:54.47、開場43.33秒；見r4-tts-reset-recovery-20261022。check-audio進行中，未稱通過或人耳核准；未購圖、配樂、影片或上傳。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 48/100，尚未選 52 景；US$1.0125，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s60/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。
