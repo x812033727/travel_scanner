@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-c10-oxo-script-and-visual
 title: Write C10 OXO script and visual plan
-status: review
+status: open
 priority: P1
 area: docs
-owner: codex-c10-oxo-script
-claimed_at: 2026-10-22T14:06:36Z
+owner:
+claimed_at:
 created_at: 2026-10-22T14:06:24Z
 completed_at:
 branch: codex/brand-story-oxo-c10-script
