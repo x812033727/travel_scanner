@@ -31,7 +31,8 @@ The channel needs a new history episode after S61. A single night of Galileo's 1
 - [x] Check S01–S61 briefs, topic index, and active tasks for overlap; choose a separate historical puzzle.
 - [x] Pin and read the 1610 `Sidereus Nuncius` text through the 1880 Carlos translation and write the source boundary in `research.md`.
 - [x] Draft `brief.md`, `video.json`, `claims.md`, generated `script.md`, and the author freeze for independent reviewers.
-- [ ] Parent workflow obtains an independent source and picture audit, two blind story reads, and the station owner's choice and script approval before any media production.
+- [x] Parent workflow obtained independent source and picture audit, two blind story reads, and the recommended A choice with exact-hash local outline/script approval under the owner's standing instruction; website hand-pushed cards remain pending and no personal owner reading is claimed.
+- [ ] Resume Sulafat TTS when Gemini daily capacity returns; inspect audio, then quote the whole episode and inspect native art before storyboard or final cut is claimed.
 
 ## How to verify
 
@@ -69,3 +70,5 @@ R7 作者定點改稿已凍結於 [R7 收據](../../docs/videos/curio-s62/review
 R7 [獨立史料／書面畫面審查](../../docs/videos/curio-s62/review/r7-independent-source-visual.md)有條件 **HOLD**：114／114 句史料對齊、109／110 圖稿通過，唯一 `s62065` 把一月十五日第三時辰的夜景寫成午後光線。R8 [作者一景修訂](../../docs/videos/curio-s62/review/r8-author-night-light-repair.md)只換這個提示詞及同列主張畫面為燭光和窗外冬夜，`video.json` 1 個 leaf 可逆，114 句、`script.md` SHA `c638b0d28cfbf6b398cd3bb541160685403bf3936fcd1613bc958921623e4326` 與敘事雜湊 `edc7d2005d74f93c` 均未改。R8 `video.json` SHA `c9f249ab7210fa4fb2cf2ac5206c57735ee19efcf0e846414bcfc06bb0745ace`，`claims.md` SHA `50f4b272576e90e3a172fd996fc27995223cd32cf0163264308109e6a3833c73`；lint 0／0，325 CPM 正文仍 8.254 分鐘。R8 待新獨立書面畫面審查與兩位全新正式盲讀，不進媒體。
 
 R8 [獨立史料／書面畫面重驗](../../docs/videos/curio-s62/review/r8-independent-source-visual.md) **PASS**：`s62065` 改為與原書「一月十五日夜間第三時辰」一致的燭光／窗外冬夜；114 句、110／110 個提示詞、4 卡、134 個行錨對齊，lint 0／0。兩位全新正式隔離盲讀 A **11／13**（單票 No `no_toc/no_recap`）、B **13／13**；[官方逐題 OR 合併及獨立 CLI 重播](../../docs/videos/curio-s62/review/r8-formal-merge-audit.md) **13／13 PASS**、exit 0。A 對 `s62041` 結構語及 `s62104` 重述 `s62051` 的疑慮保留供站主審稿，不是雙人共同 No。下一步為站主選擇／核准大綱與劇本，之後才可依系列流程報整集媒體預算與各關卡；目前沒有 TTS、原生插圖、配樂、渲染或上傳。
+
+R8 [製作關卡與語音停點](../../docs/videos/curio-s62/review/r8-production-gate-and-tts-hold.md)：依站主既有「推薦的決定就好不用問」授權選 A，精確 `brief.md` SHA `5941ebf974ad…` 與 `script.md` SHA `c638b0d28cfb…` 各送一次網站審核卡，並在本機透明記錄代行核准；網站卡仍 pending，未聲稱站主親讀。新增 [QA 事實入口](../../docs/videos/curio-s62/verify-1.md)承接獨立 114／114 句、110／110 圖及雙讀者 13／13。正式 lint 0／0；一次性網站政策預檢 PASS。TTS dry-run 114 句／2,514 計費字元，MiniMax dry-run 110 圖、三輪最多約 US$4.46，音樂需等 timeline 再報。唯一一次真實 TTS 呼叫回 Gemini busy／用量上限 exit 4，無 timeline、音檔或 journal；**不立刻重試**，預計 2026-10-22 07:05 UTC 之後單次重查服務再續。沒有原生圖、音樂、成片或上傳。
