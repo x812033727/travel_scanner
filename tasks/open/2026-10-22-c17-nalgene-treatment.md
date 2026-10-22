@@ -42,4 +42,3 @@ scope:
 2026-10-23：未找到可直接讀出 Nalgene 販售節點的 1970 年代原廠型錄。NRS 開放 1976 起的掃描型錄索引，但尚未確定其中有該商品，不把索引當 Nalgene 上架證據。2008 當時公司的 BPA 停產公告由 Chemical Online 原文轉載，須標明載體。2020 公司新聞稿的「50% recycled」腳註為 ISCC mass-balance 分配；2024 Thermo Fisher 事實表較清楚，不能畫成每瓶實體一半回收料粒子。
 
 2026-10-23 作者稿：`treatment.md` SHA-256 `D7B331C87E1C0904093E95877D75841EBBA495581A3040EDD7DC5C3AE854410F`；`source-matrix.md` SHA-256 `E2A475A1344ED3255E42D93A0542DB2ADA38E73EE2F52B0CDA926B608FEDADE7`。M01–M12 是待重核矩陣，不是 PASS。`npm run check:tasks` 通過（2075 張票，既有跨票警告）；`git diff --check` 通過。無付費、匯入或上架。
-
