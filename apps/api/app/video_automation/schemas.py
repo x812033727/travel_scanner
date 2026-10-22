@@ -441,6 +441,12 @@ GUIDE_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$"
 RequestStatus = Literal["queued", "started", "done", "cancelled"]
 
 
+# A series' visual tier (docs/videos/BINGE.md §畫面等級): how many of an episode's shots may be
+# image-to-video clips. ``manga`` (2026-10-22) is the motion comic: every shot a still under a
+# camera move, no clip bought. A one-off chooses one on its form too.
+VisualTier = Literal["clips", "hybrid", "stills", "manga"]
+
+
 class DramaRequestIn(StrictModel):
     """What the owner asks for on /admin/videos: an episode of the drama route to make next.
 
@@ -450,6 +456,9 @@ class DramaRequestIn(StrictModel):
     An explainer may name the ``image_model`` its pictures are drawn with; a cute preset that
     names none is given ``image-01`` here, so the value on the payload is the one that is stored,
     audited and checked for a key. Every other preset is refused one.
+
+    ``visual_tier`` is the one binge field a one-off takes: ``clips`` as every one-off was so
+    far, or ``manga`` for a narrated motion comic of stills (docs/videos/BINGE.md §畫面等級).
     """
 
     premise: str = Field(min_length=1, max_length=4000)
@@ -459,6 +468,7 @@ class DramaRequestIn(StrictModel):
     target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES, strict=True)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
+    visual_tier: VisualTier = "clips"
 
     @field_validator("image_model")
     @classmethod
@@ -710,7 +720,6 @@ SeriesGenre = Literal[
 SeriesLead = Literal["female", "male", "dual-male"]
 # The importer can preserve an ensemble on a planning-only row; create/patch remain narrower.
 SeriesLeadOut = Literal["female", "male", "dual-male", "ensemble"]
-VisualTier = Literal["clips", "hybrid", "stills"]
 MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
 

@@ -168,7 +168,7 @@ SHOT_SECONDS = 6
 RETAKE_FACTOR = 1.5
 KEYFRAME_TAKES = 1.3
 SHEET_IMAGES = 18
-TIER_CLIP_SHARE: dict[str, float] = {"clips": 1.0, "hybrid": 0.4, "stills": 0.1}
+TIER_CLIP_SHARE: dict[str, float] = {"clips": 1.0, "hybrid": 0.4, "stills": 0.1, "manga": 0.0}
 
 
 class SeriesRefused(Exception):
@@ -1223,6 +1223,9 @@ async def create_one_off(
         status="setting",
         note=payload.note,
         image_model=payload.image_model,
+        # The one binge field a one-off takes (docs/videos/BINGE.md): the worker writes it into
+        # series.json only when it is not the default, so older one-offs keep their files.
+        visual_tier=payload.visual_tier,
         created_by_user_id=actor.id,
         created_at=now,
         updated_at=now,

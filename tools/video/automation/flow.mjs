@@ -2311,7 +2311,10 @@ export class Automation {
         chapter: episode.chapter_number,
         ...(animeRuntime ? { kind: "series", category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime }, style_preset: "anime-2d", target_minutes: animeRuntime.body_target_seconds / 60, planned_episodes: series.planned_episodes, open_ended: series.open_ended, closed_ending: beats.closed_ending === true } : {}),
         ...(oneOff
-          ? { kind: "one-off" }
+          // A one-off's own tier (its form's choice, docs/videos/BINGE.md) reaches the lint
+          // and the writer like a binge series' does; the default is left out, so a one-off
+          // from before the form had the choice keeps the file it always had.
+          ? { kind: "one-off", ...(typeof series.visual_tier === "string" && series.visual_tier !== "clips" ? { visual_tier: series.visual_tier } : {}) }
           : {
               genre: series.genre ?? "xianxia-bonds",
               lead: series.lead ?? "dual-male",

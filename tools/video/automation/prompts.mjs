@@ -958,8 +958,8 @@ export const BEATS = ["opening", "first_half", "midpoint", "second_half", "endin
 export const HOOK_TYPES = ["question", "danger", "image", "line", "reversal"];
 export const LEAD_ARCS = ["wins", "suffers", "mixed"];
 export const MIN_SATISFACTION = 2;
-export const VISUAL_TIERS = ["clips", "hybrid", "stills"];
-export const TIER_CLIP_SHARE = { clips: 1, hybrid: 0.4, stills: 0.1 };
+export const VISUAL_TIERS = ["clips", "hybrid", "stills", "manga"];
+export const TIER_CLIP_SHARE = { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 };
 
 const COMMON_SATISFACTIONS = Object.keys(SATISFACTION_TYPES);
 
@@ -1064,6 +1064,11 @@ export const VISUAL_TIER_RULES = {
   clips: 'Visual tier "clips": every shot is an image-to-video clip; "visual" may be left out.',
   hybrid: 'Visual tier "hybrid": at most 40% of the shots carry "visual": "clip" (the climax of each beat: the slap, the reveal, the strike, the face that changes); every other shot is "visual": "still" with a "camera" the tool renders as a slow move (push in, pull out, pan left, pan right, tilt up, tilt down, drift).',
   stills: 'Visual tier "stills": at most 10% of the shots, rounded up (3 of 30), are "visual": "clip", spent on the biggest climaxes first; everything else is "visual": "still" with a "camera" move.',
+  // The motion comic the owner asked for on 2026-10-22 (docs/videos/BINGE.md §畫面等級): the
+  // narrator reads the story over still pictures, as the 漫画解说 channels do, and no clip is
+  // bought at all. The second face in a two-shot is the one the image model loses (it takes one
+  // character reference), so the rule keeps people apart.
+  manga: 'Visual tier "manga": a motion comic read by the narrator. Every shot is "visual": "still" with a "camera" move; never "visual": "clip" (the tool refuses the script). A new picture every 3 to 5 seconds, so a shot carries one or two short lines and a long narration is split over several shots. The narrator tells the story and carries its speed; a character speaks only a short, sharp line, never a speech. Prefer one character per picture: when two must share a frame, put the second one small, turned away or out of focus, since only the first face holds across shots. Alternate the camera move between neighbouring shots, and write each prompt as one clear picture: shot size, place and time, what is happening, where the eye lands. The narration\'s "performance" plan is the storyteller\'s, as the owner chose on 2026-10-22: 說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事. Every 20 to 30 seconds a line lands a hook, in the narration\'s own words so the check can see it: a question left hanging, a forward hook (等一下／先記住／之後會), an escalation (但這還不是／更怪的是／問題來了), a reveal or a reversal; the lint warns on any stretch over 30 seconds without one (the owner, 2026-10-22: this is the sticker drama\'s rule, not the animated dramas\').',
 };
 
 /**
@@ -1075,7 +1080,12 @@ export const VISUAL_TIER_RULES = {
 export function genreBlock(series) {
   if (!series || typeof series !== "object") return "";
   const spec = GENRE_SPECS[series.genre];
-  if (!spec) return "";
+  if (!spec) {
+    // A one-off carries no genre, but may carry a visual tier other than the default
+    // (flow.mjs writes it only then): the tier's rule still binds the writer.
+    const rule = series.visual_tier !== "clips" ? VISUAL_TIER_RULES[series.visual_tier] : null;
+    return rule ? `## Visual tier (docs/videos/BINGE.md)\n${rule}` : "";
+  }
   const lines = [
     "## Genre and retention (docs/videos/BINGE.md)",
     `Genre: ${spec.label} (${series.genre}). Lead: ${series.lead ?? "dual-male"}. Visual tier: ${series.visual_tier ?? "clips"}.`,

@@ -376,9 +376,14 @@ describe("AdminVideoSeries", () => {
 
     fireEvent.click(screen.getByText("新的漫劇", { selector: "summary" }));
     fireEvent.change(screen.getByRole("textbox", { name: "故事前提（必填）" }), { target: { value: "大禹治水" } });
+    // The motion comic of stills (docs/videos/BINGE.md §畫面等級) is the one tier a one-off may
+    // pick besides the default, which the request leaves out as it always did.
+    const requestForm = screen.getByRole("form", { name: "新的漫劇" });
+    fireEvent.click(within(requestForm).getByRole("radio", { name: /^動態漫畫/ }));
     fireEvent.click(screen.getByRole("button", { name: "排進製作" }));
     await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
     expect(calls.find((call) => call.method === "POST")?.url).toContain("/admin/video-automation/drama-requests");
+    expect(calls.find((call) => call.method === "POST")?.body).toMatchObject({ premise: "大禹治水", visual_tier: "manga" });
     await waitFor(() => expect(window.location.search).toContain("series=one-off-1a2b3c4d"));
     // The one-off's page: its bible, its one episode, and none of a long series' planning controls.
     const heading = await screen.findByRole("heading", { name: /精衛填海/ });

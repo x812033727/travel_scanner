@@ -2,7 +2,8 @@
 // does units of work until nothing can move — every video waits on the owner, or a new draft is
 // not due yet — and exits; the worker's loop starts it again a few minutes later. `--once` does
 // a single unit, for trying it by hand. After the units, once a run, the backup copies the videos
-// on YouTube to Google Drive (backup.mjs) and the tidy clears the work files of the oldest video
+// on YouTube to Google Drive (backup.mjs; also after a run that ended in an error) and the tidy
+// clears the work files of the oldest video
 // finished long enough ago that Drive has (tidy.mjs); `tidy` runs that by hand, and
 // `tidy --dry-run` only says what would go. `restyle --slug S` retells one of the worker's videos
 // in the storytelling register (docs/videos/ILLUSTRATED.md §說書式旁白) through the listener's
@@ -203,8 +204,12 @@ export async function run(command, args, ctx) {
     }
     return EXIT.ok;
   } catch (error) {
+    if (error instanceof AutomationError) ctx.stderr.write(`${error.message}\n`);
+    // A round that ends in an error still copies to Drive: a stage that fails every round (a
+    // prompt the site refused, 2026-10-21) must not hold every backup with it. backupRound reads
+    // its own settings, skips on a STOP file and never throws. The tidy waits for a whole round.
+    await backupAfterRound(ctx);
     if (!(error instanceof AutomationError)) throw error;
-    ctx.stderr.write(`${error.message}\n`);
     return error.who === "owner" ? EXIT.owner : EXIT.external;
   }
 }
