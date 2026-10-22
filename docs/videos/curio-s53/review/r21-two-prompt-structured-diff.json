@@ -1,0 +1,39 @@
+{
+  "revision": "R21",
+  "reason": "R20 originals rejected: s53010 realistic long street with utility poles, s53018 modern high-rise skyline and broad central path",
+  "from_r20": {
+    "video.json": "f868ce55f98f7868a8052098d0f6439344585df9e0fa1d0cb32eb0ddbbac21dd",
+    "claims.md": "81f03c571693ff7b28e9898f64dcbb64e9442ec66bde2597c6dfcd7874b7ef1c"
+  },
+  "to_r21": {
+    "video.json": "4ac9a518d7387ea66918a89946636ee7dd6412f4926fbe7c5ccbb5a5a249f64a",
+    "claims.md": "02ee7918a362ce130bed4a9e2c1491f0da80880207d7c57d6aa9eae1820a3022"
+  },
+  "changes": [
+    {
+      "id": "s53010",
+      "video_path": "scenes[9].data.prompt",
+      "old": "Close shot in an original historical explainer illustration of a San Francisco residential courtyard just after dawn on 18 April 1906: one clearly middle-aged adult with compact rounded illustration proportions, grey temples, lined cheeks and a plain early-1900s high-collared wool coat turns toward a distant plume of fire smoke above a cropped timber-and-plaster roofline; the adult and old house wall fill the frame, with no long street view, vehicles, electric streetlights, signs or modern objects; soft smoky morning daylight, full-bleed image",
+      "new": "Medium close shot at dawn after the 18 April 1906 San Francisco earthquake: one unmistakably middle-aged resident with a large rounded head, short stout adult body, silver sideburns, deep facial lines, a moustache, broad shoulders and a plain high-collared wool coat turns toward dark fire smoke rising beyond a short weathered wooden courtyard wall; the resident occupies most of the frame, and the wall fills the rest from edge to edge so the view stays inside the courtyard; smoky orange morning light"
+    },
+    {
+      "id": "s53018",
+      "video_path": "scenes[14].data.prompt",
+      "old": "Medium shot in an original historical explainer illustration of a small San Francisco public relief park in summer 1906: simple canvas tents stand so close together that only one narrow strip of bare earth remains; one clearly middle-aged relief worker with compact rounded illustration proportions, grey temples, lined cheeks and a plain early-1900s coat stands in that gap and studies the cramped spacing, soft overcast daylight, full-bleed image; no buildings, building plans, maps or readable signs",
+      "new": "Close shot at eye level inside a summer 1906 canvas-tent relief camp: two large canvas tent sides crowd the left and right edges and a third tent wall closes the background, leaving only a shoulder-width strip of bare ground; one unmistakably middle-aged relief worker with a large rounded head, compact adult body, grey sideburns, lined face and a plain early-1900s wool coat turns sideways to pass through the gap; canvas and earth fill the entire frame under soft overcast daylight"
+    }
+  ],
+  "claim_visual_row_changes": [
+    {
+      "id": "s53010",
+      "old": "| s53010 | 一九〇六年四月十八日清晨，地震之後又起大火。 | [A L1438–1465](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L1438-L1465) | 1913 年調查的地震與大火敘述；成年住戶與近景舊式住宅牆、遠煙是原創示意，不畫現代車陣、街燈或可辨個案 |",
+      "new": "| s53010 | 一九〇六年四月十八日清晨，地震之後又起大火。 | [A L1438–1465](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L1438-L1465) | 1913 年調查的地震與大火敘述；銀鬢成年住戶、院牆與火煙為原創近景示意，非可辨目擊者或原始影像；畫面不含街道透視 |"
+    },
+    {
+      "id": "s53018",
+      "old": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 建屋宣布、9 月施工及分散營地；窄帳棚間距是 South Park 不足容納分散小屋的概念示意，畫面不用專有地名、假地圖或已建小屋 |",
+      "new": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 窄帳棚間距是南公園不足容納分散小屋的原創概念示意，非南公園現場照片或平面圖；帆布牆充滿景深，避免現代天際線與寬大道 |"
+    }
+  ],
+  "reverse_proof": "Replacing the two new prompt strings and two complete claims rows with their old values reconstructs both R20 files byte-for-byte."
+}
