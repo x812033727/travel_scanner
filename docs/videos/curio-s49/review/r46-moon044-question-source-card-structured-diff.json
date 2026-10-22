@@ -1,0 +1,68 @@
+{
+  "revision": "R46",
+  "base_revision": "R45",
+  "base_commit": "45bf4f2bf",
+  "reason": "Two moon044 originals had full-width black bars, and the second trim also failed adult/period/empty-mould content. Replace this question scene with a source-qualified card; no third native.",
+  "files": {
+    "video.json": {
+      "before_sha256": "c1b1d2d8cbc160580d33f36b98a93e0cfbe8cdd4e0e0b65a591991404275d360",
+      "after_sha256": "5df067876b7180dc47d16e1ef9a88b6e1399105abfc8fd6d3f1439eacad1a179"
+    },
+    "claims.md": {
+      "before_sha256": "155e9ed04fe2fa83d7e13e79f12c94d44c45a357d7a822e9d068938c109a8753",
+      "after_sha256": "c699fd4f6ddb91b02ec67d92e3584400a82b4e8e184dcf938afac5122cddecf0"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon044",
+      "path": "scenes[40]",
+      "before_scene": {
+        "id": "moon044",
+        "template": "shot",
+        "data": {
+          "prompt": "Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light, the workshop continues to all four edges of the wide frame",
+          "camera": "drift right",
+          "visual": "still"
+        },
+        "lines": [
+          {
+            "id": "moon044",
+            "text": "連費用都有了；紙上的鏡片究竟鑄出來了嗎？",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "after_scene": {
+        "id": "moon044",
+        "template": "big",
+        "data": {
+          "text": "鏡片鑄成了嗎？",
+          "kicker": "紙上工程的下一步",
+          "sub": "依 1859 重印本轉述虛構報導"
+        },
+        "lines": [
+          {
+            "id": "moon044",
+            "text": "連費用都有了；紙上的鏡片究竟鑄出來了嗎？",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "claims_row_before": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light, the workshop continues to all four edges of the wide frame。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | 大字卡上標「紙上工程的下一步」、主文「鏡片鑄成了嗎？」、下標「依 1859 重印本轉述虛構報導」。只承接旁白對紙上鑄鏡的提問，並引到下景文章自述；不是 1835 原報、存世鏡片、真實鑄模或工場的證據。 |"
+    }
+  ],
+  "unchanged_scene_count": 128,
+  "unchanged_all_scene_lines": true,
+  "body_shot_count": 115,
+  "body_card_count": 13,
+  "body_scene_count": 128,
+  "max_consecutive_cards": 2,
+  "native_generation": 0,
+  "reversible": true
+}
