@@ -1,0 +1,5 @@
+# S60 R7 first pilot disposition
+
+Root viewed all7fulloriginals and concurs with independentREJECT: firstscene distinctivepeak/selectedcropclippedtraveler underminesflatunidentifiedmound; closedflap isalreadyopen; starryDecemberPole; redinsteadblackflag; whiteflag+wrongmeasuringinstrument; treesatPole; grass/baregroundandnolettterattent. Theseare materialsetting/object/closureissues, notchibiface/anonymousageorreconstructionofeveryprop. SevenJevPASS wereNOTnativeacceptances.
+
+Archivedall7selectedentrieswithoriginalfiles/ledgerpreserved, clearedonlytheiractiveentriesunderSTOP/jobs empty;0KEEP. Actualspend.0945USD/7image+7judge, zeroreserved. Eachfirst7scenehas1actualnativeusedandmax2newremaining acrossallfutureprompts; rest96neverdrawnmax3. Existing4.25USDart/judgeceilingnotreset;R7zero-flagaudio/narrationunchanged. Newvisualauthorrepairrequired beforemorepaidimages.
