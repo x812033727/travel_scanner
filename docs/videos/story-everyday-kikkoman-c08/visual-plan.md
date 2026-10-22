@@ -114,14 +114,14 @@
 | c080512 | shot | Medium shot of an anonymous adult gently opening a generic cap to refill a plain table bottle, rounded edge visible without an injury scene, warm side light. | gentle tilt down |
 | c080513 | shot | Close conceptual view of soy sauce in a plain open dish near a window, subtle translucent airflow shapes above the surface; no pouch, sealed bottle or new product shape appears yet, soft window light. | slow pull-back |
 | c080514 | card | 後製單焦點卡：龜甲萬 2011 新聞稿所述「2010 年 500 mL 密封軟袋裝」；標 K6，與 1961 玻璃瓶分開。 | 靜態卡／後製切入 |
-| c080515 | shot | Medium shot of a generic flexible condiment pouch with less liquid leaning against a plain kitchen counter while an anonymous adult notices it, no brand or exact package, soft daylight. | gentle pan left |
+| c080515 | shot | Medium shot of a generic flexible condiment pouch with less liquid leaning against a plain kitchen counter while an anonymous adult notices it, unmarked and without exact package details, soft daylight. | gentle pan left |
 | c080516 | shot | Medium shot of an anonymous cook with one hand occupied by a utensil, looking toward the cap of a generic container, no claim that all users need two hands, warm kitchen light. | gentle tilt up |
 | c080517 | shot | Conceptual wide shot of one anonymous package designer comparing plain pouch and bottle mock-ups at a worktable, no dated reenactment or exact prototype, soft studio light. | slow push-in |
 | c080518 | card | 後製單焦點卡：龜甲萬 2011 年 7 月公告另一款「200 mL 密封桌上瓶／8 月上市」；標 K6，不與 1961 年 150 mL 玻璃瓶合併。 | 靜態卡／後製切入 |
 | c080519 | shot | Conceptual close view of a generic unmarked squeeze bottle and a separate simple inner-pouch-and-cap study, no exact engineering cross-section or product shape, soft side light. | gentle pan right |
 | c080520 | shot | Conceptual medium shot of anonymous fingertips lightly squeezing a plain double-layer bottle over a dish, a small controlled stream leaving a generic outlet, no numeric drop guarantee, diffused daylight. | gentle tilt down |
 | c080521 | shot | Medium shot of two generic squeeze bottles with the same outer outline and visibly different liquid levels standing on a table, no exact commercial package, soft table light. | slow push-in |
-| c080522 | shot | Wide shot of a generic plain glass cruet and a distinct unmarked squeeze bottle on separate shelves, a shared simple red cap color cue only, no logos or matched exact silhouettes, gentle gallery light. | gentle pan left |
+| c080522 | shot | Wide shot of a generic plain glass cruet and a distinct unmarked squeeze bottle on separate shelves, a shared simple red cap color cue only, without markings or matched exact silhouettes, gentle gallery light. | gentle pan left |
 | c080523 | shot | Medium shot of an anonymous cook using one free hand to press open a generic plain squeeze-bottle cap while the other remains near a utensil, no exact product, soft kitchen light. | gentle tilt down |
 | c080524 | shot | Conceptual close shot of a generic sealed inner pouch inside a plain bottle beneath a small blank calendar symbol, no number, expiry guarantee or exact package, mild side light. | slow push-in |
 | c080525 | shot | Medium shot of an anonymous diner comparing the two distinct generic containers from separate shelves, looking toward the older glass cruet's silhouette, no survey or exact trademark reconstruction, warm side light. | slow pull-back |
@@ -134,7 +134,7 @@
 | c080602 | card | 後製單焦點卡：龜甲萬 2018 年 4 月新聞稿所報「2018-03-30／日本立體商標註冊日」；標 K3，不寫未核對的 JPO 法律效果。 | 靜態卡／後製切入 |
 | c080603 | shot | Medium shot of an anonymous diner turning an unmarked generic glass condiment bottle in hand beside a plate, diffused daylight. | gentle pan right |
 | c080604 | card | 後製單焦點卡：JPO 人員 2025 案例摘要列「逾千人網路調查／約六成認出申請商標外形」；標 J1，不補畫問卷題型。 | 靜態卡／後製切入 |
-| c080605 | shot | Conceptual view of one plain tabletop soy sauce bottle silhouette on an anonymous store shelf, with distant blank advertising panels and no logos, dates, survey sheets or reconstructed trademark shape, warm ambient light. | gentle tilt down |
+| c080605 | shot | Conceptual view of one plain tabletop soy sauce bottle silhouette on an anonymous store shelf, with distant blank advertising panels and no markings, dates, survey sheets or reconstructed trademark shape, warm ambient light. | gentle tilt down |
 | c080608 | card | 後製單焦點卡：龜甲萬 2018 年新聞稿稱，截至 2018 年 3 月底國內外累計出貨逾五億瓶；標 K3，不寫零售銷量或瓶嘴因果。 | 靜態卡／後製切入 |
 | c080609 | shot | Close shot of an anonymous diner watching a tiny dark bead near the tip of a plain tabletop bottle just after pouring, small dish below, soft dining light. | gentle tilt down |
 | c080610 | shot | Medium shot of an anonymous diner examining the small pouring outlet on a plain condiment bottle at a table, gentle afternoon light. | slow push-in |

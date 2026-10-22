@@ -5,7 +5,7 @@ Status: **author repair; independent review pending**. This receipt binds the v4
 | Artifact | SHA-256 |
 | --- | --- |
 | `script.md` | `06A9429AE3730A55E6C43D2A867BE1E481747325B4E5FB95B262AA7B7D443EE2` |
-| `visual-plan.md` | `6285BAB94EDE54143E8C6A3F15044B8D19B5377E5A11AC8277C7386EDD1F92D2` |
+| `visual-plan.md` | `FB559AEC23D55713843886CEACA91603D0F22C9BA4888A36B27A34E4276B0D18` |
 | `script-source-addendum.md` | `7BBEF819C0911CA16B372F904A0FBF5144C8C13CA409BE8A475C7A473391C452` |
 
 ## Repair ledger
@@ -23,6 +23,7 @@ Status: **author repair; independent review pending**. This receipt binds the v4
 ## Mechanical and production boundary
 
 - 84 unique script IDs and 84 visual IDs in identical order; 71 illustration directions, 13 one-focus cards, no adjacent cards. This is a **shot-count** ratio of 84.5%, not a measured illustration **time** share.
+- A final prompt scan found the negative words `brand` and `logos` in `c080515/522/605`; the prompts now use neutral `unmarked`/`without markings`, leaving the pictured action and evidence boundary unchanged. The visual hash above includes this wording repair.
 - `git diff --check` passed after these edits. The six policy-blocked, pre-existing duplicate untracked `tasks/open` copies were left untouched; `check:tasks` is expected to report those duplicates. A clean checkout must run it independently.
 - No current TTS output exists, so the body duration has **not** met the 480-second measured gate. The manuscript length is only a proxy. No paid images, music, upload, merge or publication were performed.
 - Required next: independent exact-hash source and visual recheck; two fresh readers given **only** this narration; visual preflight; then owner script/visual decision. Any further edit invalidates those checks.
