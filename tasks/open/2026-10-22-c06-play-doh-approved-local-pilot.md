@@ -44,3 +44,4 @@ scope:
 - 2026-10-22 05:28 UTC：新故事 genesis 成功，sequence 1、lexicon SHA256 `7dfd45e09466d424522c405627249ae59c42716572c7246979507bfff09c2477`、head event SHA256 `42b422ea8a45c866fb5fabd0a29e18ae74a15412a39dde1802a721dd13f8caa7`；原 C06 工作資料夾在初始化前不存在。
 - 2026-10-22 05:32 UTC：核准稿件／逐鏡三檔的 SHA-256 全與 PR #1676 相同；`lint` 0／0、`tts --dry-run` 94 個請求、約 2,716 計費字元，伺服器本月額度足夠。script gate 已寫入本機 `approvals.json` 並讀回 SHA。
 - 2026-10-22 05:33 UTC：正式 TTS 在供應商 HTTP 429 停下；無任何 WAV、timeline、narration，工作租約已釋放，本集媒體帳本 US$0.00。依製作順序停止，正文 480 秒未通過，沒有買圖。下一次先核對額度與工作日誌，再續配音。
+- 本機驗證：C06 `lint` 0 errors／0 warnings，`lexicon-store.test.mjs` 10／10 PASS，`check:tasks` PASS。`test:docs-videos` 235／236 通過；唯一失敗在無關的 `imported-long-languages/runner.test.mjs:679`，Windows 子程序 exit `3221226505` 且 stdout/stderr 皆空，C06 原劇本分支先前亦重現。沒有為這項既有環境失敗擴改工具或影片稿件。
