@@ -1,0 +1,234 @@
+{
+  "revision": "R41-s53031-first-native-machine-and-human-reject-stop",
+  "decision": "MACHINE_FAIL_HUMAN_REJECT_STOP",
+  "frozen": {
+    "video_sha256": "56854934253b38463c3ab37cc283cb8dfdc9992dff7c81991fcd17484b622173",
+    "claims_sha256": "d6736f0a1126b773038223159e60e5fe4680b56c5abd34594e5088e6c29ea0e8",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "r41_independent_paper_sha256": "79faae23483d2625a2402fa73494060fdced9c2dfa81c20d1fb1046a5e6e0644",
+    "independent_visual_sha256": "517b2226c0b3768454b51e2a450b4f57049e637f543f9504b9bccca0968c21e3",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "provider": "minimax",
+    "model": "image-01",
+    "dry_run_exit": 0,
+    "global_images_remaining": 9884,
+    "global_judge_calls_remaining": 7935,
+    "episode_cap_usd": 4.78,
+    "stop_exit_guard": true,
+    "correct_cli_env_root": "/workspace/.video-work",
+    "node_proxy_flag": "NODE_USE_ENV_PROXY=1"
+  },
+  "before": {
+    "manifest_sha256": "4cfd50a126d5d4f65c4fba6daf1bd8c9e04ecc209aed241a20cf4266d22d4011",
+    "contact_sheet_sha256": "1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483",
+    "ledger_sha256": "d8cddfc8aa1bac91ca9e20dc820ae3915921ea5c060878c12841c912cdfccbd9",
+    "usd": 0.702,
+    "images": 53,
+    "judge_calls": 52,
+    "keep_count": 19
+  },
+  "shot": {
+    "id": "s53031",
+    "actual_native_attempt_number": 1,
+    "original": {
+      "file": "rebind-backups/r41-s53031-first-native-rejected-original.jpg",
+      "sha256": "3188c55fb2a5e69dc18a37e5f4e9c419f5e19ed756b052bf5f5c1398004d9ec4",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "rebind-backups/r41-s53031-first-native-rejected-trim.jpg",
+      "sha256": "31c2331842f61b54ee4fbf9464db326eaaa748f76f923dcf9bd494143e0d0979",
+      "dimensions": "1280x720",
+      "bottom_margin_trim_percent": 1.7
+    },
+    "request_key": "30e44f7b6b17f14c",
+    "judge": {
+      "overall": 9,
+      "passed": false,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 0,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: carpenter is not pressing a board and the background lacks a second incomplete frame → carpenter actively pressing a loose wooden board against the frame",
+        "style: color palette consists of realistic outdoor greens and tans rather than the specified limited palette → limited palette of deep navy, parchment yellow, and muted teal"
+      ],
+      "notes": "The chibi character and overall line art fit the general cartoon aesthetic well. However, the requested color palette and specific framing action were not fully followed."
+    },
+    "machine_needs_review": true,
+    "human_decision": "REJECT",
+    "human_reason": "Mature worker and tents fit broad source, but hand rests on top beam rather than fitting a loose board, second unfinished frame missing, dominant green/tan naturalistic palette misses cute-mystery style; machine style=0 and needs_review prohibit selection."
+  },
+  "failed_native": {
+    "manifest_sha256": "de04ac26ff265dcf17c16778c7d329da81c2cba8636c53fa98c226ee69aa7f90",
+    "contact_sheet_sha256": "3b803cb1ebfb65d515b7211b8806ddda45d62b0cbc7d1676f1affa1a7cec9e69",
+    "private_manifest_backup": "rebind-backups/r41-s53031-first-native-rejected-manifest.json",
+    "private_contact_backup": "rebind-backups/r41-s53031-first-native-rejected-contact.png"
+  },
+  "after_restore": {
+    "manifest_sha256": "4cfd50a126d5d4f65c4fba6daf1bd8c9e04ecc209aed241a20cf4266d22d4011",
+    "contact_sheet_sha256": "1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483",
+    "contact_reconstructed_identical": true,
+    "contact_reconstruction_file": "rebind-backups/r41-reconstructed-19-contact.png",
+    "ledger_sha256": "ce2d97f156a1d7d3b0079a8f1e790374013e21ea9a15bc33e4cf436fad1fec89",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "jobs_empty": true,
+    "usd": 0.7155,
+    "images": 54,
+    "judge_calls": 53,
+    "reservations": 0,
+    "keep_count": 19,
+    "active_s53031": false,
+    "accepted_keyframe_problems": 0,
+    "total_shot_templates": 111,
+    "missing_shot_images": 92
+  },
+  "prior_keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    },
+    {
+      "id": "s53023",
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "f13e14b86dc5717ecfad7ae7b4b2c332fd63daf7ed94a06abf5aff1e15e1503f",
+      "request_key": "31d9deaa1374075e",
+      "unchanged": true
+    },
+    {
+      "id": "s53024",
+      "file": "keyframes/s53024-1-trim.jpg",
+      "sha256": "b297b0078061392271ec4c8c2fdee606469aa87a2397d2850bdad43a754967a5",
+      "request_key": "6d290a6027a337ae",
+      "unchanged": true
+    },
+    {
+      "id": "s53025",
+      "file": "keyframes/s53025-1-trim.jpg",
+      "sha256": "16e9f62963e0cb17c614b0c90ca76e76ee93a4755c85983d8f90962810dea9c3",
+      "request_key": "3ca9726b1ab95a1f",
+      "unchanged": true
+    },
+    {
+      "id": "s53027",
+      "file": "keyframes/s53027-1-trim.jpg",
+      "sha256": "1b1f054057a8fe506086112fe03b8fccc266245833998042d77014f277c49349",
+      "request_key": "ea3586917e242f62",
+      "unchanged": true
+    },
+    {
+      "id": "s53030",
+      "file": "keyframes/s53030-1-trim.jpg",
+      "sha256": "4391aabeb46fe056953d83e881ba4ca579d1b7d39f5043303f44b05ac1d504b8",
+      "request_key": "c7c01c95128e82d5",
+      "unchanged": true
+    }
+  ],
+  "no_next_shot_purchased": true
+}
