@@ -1,11 +1,11 @@
 ---
 id: 2026-10-22-write-and-review-c08-kikkoman-script
 title: Write and review C08 Kikkoman script and visual plan
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-c08-narrative-revision
-claimed_at: 2026-10-22T13:42:36Z
+owner:
+claimed_at:
 created_at: 2026-10-22T05:28:57Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-script
@@ -91,3 +91,7 @@ scope:
 2026-10-22：前輪 `c080419` 差異獨立來源 PASS 只綁 96 句舊稿 `8443CBD8…`／`F6CA5C5C…`，現已標**歷史失效**。第一位新敘事讀者對該稿提出結構 HOLD（旁白欄外意外露出前八格來源，因此不列為正式盲讀收據）：第 2 章反覆容量／上桌、第 3 章繞著握／滴不揭瓶嘴、第 4 章重述滴液與查核界線、第 5 章把上市／補充／入館塞成尾聲、第 6 章重播答案。作者由此重排完整 2–6 章，並新增**不與 Treatment 票重疊**的 `script-source-addendum.md` 窄 scope；原 `source-matrix.md` 仍由 Treatment 票持有，未修改。GK Report No.34 官方 PDF 印刷頁 23–24 由作者下載掃描頁目視核對：設計者後來回憶的大瓶轉注陶壺、可量產且預裝醬油、握法、紅蓋取下後補充開口比大瓶稍寬，均只以 R1 後來回顧歸屬；不採其 60 度／第 101 模型，與 MoMA M1 的近百模型、防滴及控流並列界線分開。全段與逐鏡目前 **82／82 ID**、正文 **2,196 字元**、69 shot／13 card（84.1%）、最多 1 連卡；作者結構和 prompt 禁字自檢 PASS，並更新 `reviews/visual-preflight.md` 為明確的作者技術預檢。`script.md` SHA-256 `A9D45943B0544018EA08B6605120B56CE067D7D1AEA0F0C71A471C4AAAF1507A`；`visual-plan.md` SHA-256 `39C2382CF111AA73C8785CE60E864974BE3C204861C182445565947B38BA24E3`；R1 補充 SHA-256 `942D1FB6A9AF3BF87D2E8E63A69BBE3E4735872B7C4983CDD7C3045219B5F74A`。**新稿未有獨立來源 PASS、兩位新盲讀、獨立視覺預檢或實測 TTS 480 秒**；字數只近似 C05 的實測稿，不能推本集已達標。PR #1681 保留草稿與 `no-auto-merge`；未付費、未上傳。
 
 2026-10-22：另一代理獨立對上段版本 **82／82 句、82／82 鏡**及 R1 原 PDF 完整覆核，`reviews/line-source-review-20261022-r1-82.md` 判 **HOLD 四處**：`c080304` 需補另一手扶肘或不推單手穩握；`c080601` 把 3 月 30 日註冊日誤說成公告日；`c080603` 應把少見範圍限於無文字／圖案的食品容器；視覺 `c080401` 的酒杯／工作台容易偽裝成未記錄的實驗。作者只依此修訂旁白 `c080304/601/603`、畫面 `c080304/401/601/603`，並同步補 R1 握法註記；其餘故事、ID 與 69 shot／13 card 不動。新正文 **2,212 字元**，`script.md` SHA-256 `68B826E740577A1D335F51E371615D4C836591DA3D50C9C1EC717113C4E10361`、`visual-plan.md` SHA-256 `FA56E260A968C1A8A57267E57ABA3A7DF23089FFB2DB9D012AA451C2C512DDC5`、R1 補充 SHA-256 `12BC514DF381743779EA0D21C59A8090D10657EA385AB886D9D680C609C0F5F5`。`git diff --check`、82／82 ID／禁字自檢 PASS；本機 `npm run check:tasks` 因別的 reviewer 留在此工作樹的未追蹤 `tasks/open/2026-10-22-independently-review-c08-gk-backed-82.md` 與已提交的同 ID `tasks/done` 重複而 exit 1，該 reviewer 的刪除被政策擋下，作者未改動或繞過該檔；乾淨 CI checkout 須另驗。這只是作者定向修正與自檢；舊 HOLD 不自動變 PASS，需獨立 delta 覆核、新兩位乾淨旁白盲讀、獨立視覺預檢、TTS 與站主審稿。PR #1681 草稿、`no-auto-merge`，無付費／上傳。
+
+2026-10-22 14:05 UTC handoff／修稿：前一名 C08 作者已結束且無其他活躍 C08 編輯代理，`codex-gpt6-c08-revision-v3` 在同一 PR 分支以 `tasks claim --force` 接手這張既有票；未碰四個受政策限制的未追蹤舊票副本。真正只看 75 句旁白的新讀者判 HOLD，指出第 2／5 章重複「商品瓶變餐具」、第 3 章外形清單、第 4 章滴液重述、2018 商標回收沒有無字瓶形的具體畫面。作者重排為 61／61 ID、52 shot／9 card，最多兩張連卡，按鏡數插圖 85.2%，禁止詞與三連同運鏡自檢通過。第 2–6 章只剩 53 句／1,413 字元；為保住故事而設非付費時長停線，不能把這版當成已達正文純語音 480 秒。直接複核 GK Report No.34 官方掃描頁 23–24，找到可量產、廠內預裝的設計要求，但找不到逐次製程失敗與解法可構成額外完整節拍；不以推想補片長。最終 `script.md` SHA-256 `45AA032EE7449A41ECDE4A7A4AC73032A1AA1FDCDF33A12778C63D2907A2384E`、`visual-plan.md` `C15EA0E3FE69BC73E081A163D3F15F8D9148D89EC25076B865A75A12B449FD0E`、R1 addendum `70F55792FB4887FCE3EC64E90EE9319645B21FFC665A53A93E1C31772E2984D5`。作者 `reviews/visual-preflight.md` 只做結構預檢；舊獨立來源 PASS 均是舊雜湊，不能移用。下一步須先找到實質新原發資料或提站主審一個縮短／換題的具體方案，再對最後定稿作獨立逐句來源審查、兩名乾淨旁白盲讀和獨立視覺預檢；未有劇本、分鏡或付費核准，不做 TTS／插圖／配樂／上傳。`npm run check:tasks` 本工作樹因四個 policy-blocked 的 orphan `tasks/open` 舊副本與已提交 `tasks/done` 重複而 exit 1；本輪未移除或繞過。`git diff --check` PASS。PR #1681 保持 draft／no-auto-merge。
+
+2026-10-22 14:13 UTC 檢查補記：本輪 `npm run test:docs-videos` 跑完 236 項，235 PASS／1 FAIL（exit 1）；唯一失敗是 `docs/videos/imported-long-languages/runner.test.mjs:679` 的既有 portable runtime freezing Windows 子程序，`package-runtime.mjs` 退出碼 3221226505、stdout/stderr 為空。此項與 C08 Markdown 改稿無直接關聯，但不能把全套測試列為通過；C08 結構自檢與 `git diff --check` 通過。`npm run check:tasks` 仍只因四個未追蹤、受政策阻擋的同 ID 舊票副本而失敗。時長及獨立審查均維持 STOP，未製作付費媒體。
