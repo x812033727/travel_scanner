@@ -1,0 +1,19 @@
+## booklets (skillview)
+shelf: 22 skills listed at start [deep-research,design,slides,design-sync,dataviz,artifact-diagramming,artifact-capabilities,update-config,verify,debug,code-review,simplify,batch,fewer-permission-prompts,doctor,loop,schedule,claude-api,workflow-authoring,run,run-skill-generator,plugin-authoring]
+requests (main thread): 6  input side: [33967,34286,37289,39435,39664,41881]  first=33967
+opened: none (no Skill tool call and no booklet text in the conversation)
+appendix reads: none
+total: input side 226522 + output 861 = 227383
+## booklet it wrote (cover-check.mjs, then the file)
+== <work>/run/snap/G1/講座籌備/.claude/skills/signup-check
+   description: 
+   FAIL SKILL.md exists
+   FAIL frontmatter opens on line 1
+   FAIL name "" is 1-64 of a-z 0-9 -
+   FAIL name equals folder "signup-check"
+   FAIL description non-empty (0 characters)
+   PASS description <= 1024 characters (spec)
+   PASS description <= 200 characters (claude.ai upload)
+   PASS body 0 lines, 0 characters, under 500 lines
+   VERDICT fix before upload
+cat: '<work>/run/snap/G1/'$'\350\254\233\345\272\247\347\261\214\345\202\231''/.claude/skills/signup-check/SKILL.md': No such file or directory

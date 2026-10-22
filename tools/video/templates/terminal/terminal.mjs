@@ -11,9 +11,20 @@
 // animations to fixed 1/30 s steps): in the scene's first state the command is typed one
 // character per frame, squeezed to fit the renderer's transition window when it is long, and the
 // output that state shows comes in the frame after the last key. Each later reveal prints its
-// part one line per frame. This file imports nothing from templates.mjs, which imports it.
+// part one line per frame. With `typing: "human"` (2026-10-21, after the owner found the
+// 0.6 s burst "a cut, not typing") the command is typed at HUMAN_KEY_MS a key and every part
+// printed at HUMAN_LINE_MS a line, and the renderer keeps up to TERMINAL_MAX_TRANSITION_FRAMES
+// of it (render/browser.mjs maxTransitionFrames); terminalSeconds says how long a state's
+// motion runs, so render can refuse a state whose narration ends before the typing does. This
+// file imports nothing from templates.mjs, which imports it.
 
 export const TERMINAL_PROMPTS = ["$", ">"];
+// A person types about 12 keys a second and reads output as it scrolls, 3 lines a second.
+export const HUMAN_KEY_MS = 1000 / 12;
+export const HUMAN_LINE_MS = 1000 / 3;
+// 12 s at 30 fps: a 78-column command and 8 lines of output take under 10 s at those rates.
+export const TERMINAL_MAX_TRANSITION_FRAMES = 360;
+export const TERMINAL_TYPING = ["human"];
 // A terminal's classic width, and what fits the window at the slide's type size.
 export const TERMINAL_COLUMNS = 80;
 export const TERMINAL_OUTPUT_LINES = 8;
@@ -63,6 +74,39 @@ function isDate(value) {
 
 const outputLines = (output) => output.flatMap((part) => part.split("\n"));
 
+/**
+ * The cumulative reveal of each slide state of a scene, in order: core/timeline.mjs buildTimeline
+ * makes one state per scene plus one per line that reveals, except that a reveal on the first
+ * line joins the opening state (nothing has been said yet, so there is nothing to wait for).
+ * Shared with templates.mjs stateCount and the key band, which must count states the same way.
+ */
+export function stateReveals(lines = []) {
+  const states = [0];
+  lines.forEach((line, index) => {
+    if (!line?.reveal) return;
+    if (index === 0) states[0] += line.reveal;
+    else states.push(states.at(-1) + line.reveal);
+  });
+  return states;
+}
+
+/**
+ * How many seconds of motion a state of a human-typed terminal scene holds: in the first state
+ * the command's keys and a frame, then this state's output lines; in a later state its lines.
+ * 0 for a scene without `typing: "human"`, whose motion fits the renderer's 18 frames anyway.
+ */
+export function terminalSeconds(scene, stateIndex) {
+  const data = scene.data ?? {};
+  if (data.typing !== "human" || !Array.isArray(data.output)) return 0;
+  const reveals = stateReveals(scene.lines);
+  const total = reveals.at(-1);
+  const shownAt = (index) => (index < 0 ? 0 : data.output.length - total + reveals[index]);
+  const parts = data.output.slice(shownAt(stateIndex - 1), shownAt(stateIndex));
+  const lines = parts.length ? outputLines(parts).length : 0;
+  const typing = stateIndex === 0 ? [...String(data.command ?? "")].length * HUMAN_KEY_MS + FRAME : 0;
+  return (typing + lines * HUMAN_LINE_MS) / 1000;
+}
+
 export const TERMINAL_SPEC = {
   check: (data) => {
     const output = Array.isArray(data.output) && data.output.length >= 1 && data.output.length <= TERMINAL_PARTS && data.output.every(isText) ? data.output : null;
@@ -84,6 +128,7 @@ export const TERMINAL_SPEC = {
         "tool_version is required: the version of the tool that printed the output, as it reports it (for example 2.1.285 (Claude Code)), one line of at most 40 columns",
       commandShows && `the command shows ${commandShows}`,
       outputShows && `the output shows ${outputShows}`,
+      data.typing !== undefined && !TERMINAL_TYPING.includes(data.typing) && `typing must be "human" (the command typed at ${Math.round(1000 / HUMAN_KEY_MS)} keys a second, the output printed ${Math.round(1000 / HUMAN_LINE_MS)} lines a second) or left out`,
     ];
   },
   capacity: (data) => data.output.length,
@@ -98,7 +143,9 @@ export function terminalBody(data, state, heading = "") {
   const show = state.visible(data.output.length);
   const parts = data.output.map((part, index) => ({ ...show(index), lines: part.split("\n") }));
   const chars = [...data.command];
-  const step = Math.min(FRAME, TYPING_WINDOW / chars.length);
+  const human = data.typing === "human";
+  const step = human ? HUMAN_KEY_MS : Math.min(FRAME, TYPING_WINDOW / chars.length);
+  const lineStep = human ? HUMAN_LINE_MS : FRAME;
   // The output this state brings in starts the frame after the last key, or at once.
   const start = state.first ? chars.length * step + FRAME : 0;
   const command = state.first ? chars.map((char, index) => `<span class="k" style="animation-delay:${ms(index * step)}">${escape(char)}</span>`).join("") : escape(data.command);
@@ -114,7 +161,7 @@ export function terminalBody(data, state, heading = "") {
       const text = escape(line) || " ";
       if (!part.shown) return `<div class="row out" data-hidden>${text}</div>`;
       if (!part.entering) return `<div class="row out">${text}</div>`;
-      return `<div class="row out print" style="animation-delay:${ms(start + printed++ * FRAME)}">${text}</div>`;
+      return `<div class="row out print" style="animation-delay:${ms(start + printed++ * lineStep)}">${text}</div>`;
     }),
   );
   // A short session is set larger, to read on a phone; the limits keep it inside the slide.

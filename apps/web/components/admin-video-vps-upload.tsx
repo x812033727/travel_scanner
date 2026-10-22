@@ -15,7 +15,9 @@ type Job = {
   steps: { id: string; done: boolean }[];
   files: { role: string; size: number; received: number }[];
 };
-type View = { configured: boolean; linked: boolean; job: Job | null; new_package?: boolean };
+// titles_outdated: the same package, finished before a brand story's titles took the story tag;
+// a new job sends the details again to the same video (STORY_TITLE_RULE in the API's vps.py).
+type View = { configured: boolean; linked: boolean; job: Job | null; new_package?: boolean; titles_outdated?: boolean };
 type Draft = { title: string; description: string; video_id: string | null };
 type Props = { slug?: string; draft?: Draft; onChange?: () => void; children?: ReactNode; disabled?: boolean };
 
@@ -122,6 +124,10 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
       </>}
       {job.state === "cancelled" && !view?.new_package && <Button disabled={busy} onClick={() => void action("resume")}>{t("restart")}</Button>}
       {view?.new_package && ["done", "cancelled"].includes(job.state) && <Button disabled={busy} onClick={() => void action("start")}>{t("newPackage")}</Button>}
+      {view?.titles_outdated && !view.new_package && job.state === "done" && <>
+        <p className="text-sm">{t("titlesOutdatedHelp")}</p>
+        <Button disabled={busy} onClick={() => void action("start")}>{t("titlesOutdated")}</Button>
+      </>}
       <ul className="grid gap-1 text-sm">{job.steps.map((s) => <li key={s.id}>{s.done ? "✓" : "○"} {t.has(`steps.${s.id}`) ? t(`steps.${s.id}`) : s.id.startsWith("captions_") ? t("captionStep", { language: s.id.slice(9) }) : t("translationStep", { language: s.id.slice(13) })}</li>)}</ul>
       {job.video_id && <a href={`https://studio.youtube.com/video/${job.video_id}/edit`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm text-[var(--teal)] underline"><ExternalLink size={16} aria-hidden />{t("openVideo")}</a>}
       {job.state === "done" && !view?.new_package && <p className="text-sm">{view?.linked ? t("recorded") : t("recordHelp")}</p>}

@@ -36,7 +36,6 @@ db = story_db
 
 REDO = f"{BASE}/stories-test/episodes/{{number}}/redo"
 NOON = datetime(2026, 10, 1, 4, 0, tzinfo=UTC)  # noon in Taipei
-MIDNIGHT = datetime(2026, 10, 1, 16, 0, tzinfo=UTC)  # the next day begins in Taipei
 
 
 @pytest.fixture
@@ -143,7 +142,7 @@ async def test_a_dropped_story_is_made_again_under_a_new_slug_and_the_old_video_
     )
     # The dropped start still counts for its day and its month.
     quota = body["quota"]
-    assert (quota["ready"], quota["started_today"], quota["started_this_month"]) == (3, 1, 1)
+    assert (quota["ready"], quota["started_this_month"]) == (3, 1)
     row = await _episode_row(db, 1)
     assert (row.request_id, row.started_at) == (None, None)
     # The dropped video keeps its project, its request row and its slug.
@@ -193,31 +192,24 @@ async def test_a_dropped_story_is_made_again_under_a_new_slug_and_the_old_video_
     async with db() as session:
         view = await service.series_view(session, "stories-test")
         assert view.quota is not None
-        assert (view.quota.started_today, view.quota.started_this_month) == (2, 2)
+        assert view.quota.started_this_month == 2
         assert view.quota.in_flight == 1
 
 
-async def test_a_remade_story_waits_for_the_days_count_its_dropped_start_used(
+async def test_a_remade_story_starts_the_same_day_its_dropped_video_did(
     db: async_sessionmaker[AsyncSession], clock: dict[str, datetime], tmp_path: Path
 ) -> None:
+    """A brand story has no daily count (the owner, 2026-10-21): the remake does not wait for
+    tomorrow because today's start was the dropped video."""
     owner = await _user(db, "owner")
     token = await _token(db)
     async with _client(db, owner) as client:
-        await client.post(IMPORT, json={"file": _file(), "apply": True, "episodes_per_day": 1})
+        await client.post(IMPORT, json={"file": _file(), "apply": True})
     await _start_and_drop(db, token, owner, tmp_path, 1, "story-rolling-case")
     async with _client(db, owner) as client:
         redone = await client.post(REDO.format(number=1))
     assert redone.status_code == 200, redone.text
-    assert redone.json()["quota"]["hold"] == "per_day", "today's one was the dropped video"
-    async with db() as session:
-        settings = await settings_service.settings_row(session)
-        assert (await service.next_job(session, settings)).job is None
-        with pytest.raises(service.SeriesRefused) as held:
-            await service.start_episode(
-                session, token, "stories-test", 1, "story-rolling-case-redo1"
-            )
-        assert held.value.code == "video_series_story_held"
-    clock["now"] = MIDNIGHT
+    assert redone.json()["quota"]["hold"] is None
     async with db() as session:
         settings = await settings_service.settings_row(session)
         job = (await service.next_job(session, settings)).job
@@ -256,8 +248,8 @@ async def test_a_story_is_redone_at_most_the_limit(
         again = await client.post(REDO.format(number=1))
     assert again.status_code == 200, again.text
     assert again.json()["episodes"][0]["slug"] == "story-rolling-case-redo2"
-    # Both dropped videos still count for today.
-    assert again.json()["quota"]["started_today"] == 2
+    # Both dropped videos still count for the month.
+    assert again.json()["quota"]["started_this_month"] == 2
 
 
 async def test_only_a_story_whose_video_was_dropped_is_redone(

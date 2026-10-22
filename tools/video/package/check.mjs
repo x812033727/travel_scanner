@@ -21,7 +21,7 @@ import path from "node:path";
 import { readApprovals, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { readJson } from "../core/paths.mjs";
-import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, NARRATION_LOCALE, NARRATION_LOCALES, TARGET_LOCALES } from "../core/schema.mjs";
 import { captionLocalesOf, chosenLocales, LOCALE_PARTS, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 
 /** The four items, in the order the report lists them; the server requires every one of them. */
@@ -99,7 +99,7 @@ function mapField(metadata, field, problems = []) {
 }
 
 /** The narration locale metadata.json names as its default_language; zh-TW without a known one. */
-const narrationOf = (metadata) => (LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE);
+const narrationOf = (metadata) => (NARRATION_LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE);
 
 /** [locale, path] for each of `paths` that `pattern` matches, its first group being the locale. */
 const localesOf = (paths, pattern) => [...paths].flatMap((file) => {
@@ -125,7 +125,7 @@ function ticked(locales, locale, part) {
 }
 
 /** Whether two choices' locales tick the same parts; zh-TW, which the panel never offers, is left out as readLanguages leaves it out. */
-const sameChoice = (a, b) => LOCALES.filter((locale) => locale !== NARRATION_LOCALE).every((locale) => LOCALE_PARTS.every((part) => ticked(a, locale, part) === ticked(b, locale, part)));
+const sameChoice = (a, b) => TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE).every((locale) => LOCALE_PARTS.every((part) => ticked(a, locale, part) === ticked(b, locale, part)));
 
 /**
  * With the owner's choice (`languages`, as readLanguages returns it): metadata.json records that
@@ -232,7 +232,7 @@ export function skipReason(skipped, locale) {
  * (the owner's choice is known) also fails a caption file there or listed of a locale outside
  * `locales`.
  */
-export function captionsItem({ files, metadata, locales = LOCALES, strict = false }) {
+export function captionsItem({ files, metadata, locales = DEFAULT_LOCALES, strict = false }) {
   const unreadable = metadataProblem(metadata);
   if (unreadable) return item("captions", false, unreadable);
   const problems = [];
@@ -279,7 +279,7 @@ export function disclosureItem({ metadata }) {
  * exactly the chosen parts; null leaves extra parts alone, as for a package from before the panel.
  * `unchanged` is false when upload/ changed while readPackageReport read it.
  */
-export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES, descriptionLocales = null, brandingMatches = true, languages = null, unchanged = true }) {
+export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = DEFAULT_LOCALES, descriptionLocales = null, brandingMatches = true, languages = null, unchanged = true }) {
   const strict = Boolean(languages);
   return packageReport(
     [
@@ -299,7 +299,7 @@ export function checkPackage({ files, metadata, finalSha256, approvedSha256, met
  */
 export function packageLocalesWanted(workdir, metadata = readJson(path.join(workdir, UPLOAD_DIR, METADATA_FILE), null)) {
   const languages = readLanguages(workdir);
-  const narration = LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE;
+  const narration = NARRATION_LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE;
   return { languages, locales: captionLocalesOf(languages, narration), descriptionLocales: metadataLocalesOf(languages, narration) };
 }
 

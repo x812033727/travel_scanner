@@ -308,7 +308,15 @@ Terms of service (paragraph): The operator may publish videos produced on this s
 
 | 日期 | 事件 | 備註 |
 | --- | --- | --- |
-| | 送出表單 | 案件編號或自動回覆的主旨 |
+| 2026-10-22 | 五個語系的隱私權政策與服務條款加上 §三 的段落並發布 | 生效日改成 2026-10-22；privacy zh-TW v6、其他語系 v5，terms 同。送出前發現正式站還沒有這一節 |
+| 2026-10-22 | 送出表單（站主） | 申請額外配額：每日總配額 50,000、每分鐘尖峰 5,000；`videos.insert` 維持預設 100。在 Chrome 送出，看到「感謝你提交 YouTube API 服務表單」；內建瀏覽器的 reCAPTCHA 一直轉圈送不出去。案件編號待補（看自動回覆信） |
 | | | |
+
+2026-10-22 送出的版本跟 §一 不同的地方：
+
+- 表單現在是七段：第 6 部分要上傳架構圖與使用者流程圖（必附），第 7 部分是確認聲明。
+- 第 1 段選「申請額外配額」，第 5 段選「高於預設配額」。原因：第二期語系上線後字幕是十個語系，一支影片約 4,100 單位（十次 `captions.insert` 各 400），預設 10,000 一天只夠兩支。送出當天已用 9,959／10,000，上傳只用 2／100；前 7 天 `captions.insert` 89 次、`videos.insert` 31 次（Cloud Console 指標）。
+- 說明欄改寫成十個語系並寫進上面的用量；端點只勾程式實際呼叫的 8 個：`videos.insert`、`videos.update`、`videos.list`、`captions.insert`、`captions.list`、`thumbnails.set`、`channels.list`、`playlistItems.list`（沒有 `captions.update`／`delete`）。
+- 附件：隱私權政策、首頁、服務條款的全頁截圖（Playwright，1280 寬，英文語系），架構圖與流程圖用 HTML 畫再轉 PNG；後台截圖由站主自己截。
 
 站主送出之後，同一筆紀錄也寫進票 `tasks/open/2026-09-26-video-hands-off-api-audit.md` 的 Notes；往來的信只記日期與結論，不貼全文。票在稽核有結果之前不要 `done`。

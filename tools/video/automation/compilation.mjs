@@ -15,7 +15,7 @@ import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compil
 import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent, reviewHash, reviewProblem } from "../core/compilation-review.mjs";
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
-import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
 import { ARTIFACTS, compilationChapters, compilationSourceHashes, compilationTranslationStale, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -368,7 +368,7 @@ export async function planMetadata(automation, state, previousProblem = null) {
 function stampLegacyTranslations(dir, before, video) {
   const earlier = compilationSourceHashes(before);
   if (isDeepStrictEqual(earlier, compilationSourceHashes(video))) return;
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const translation = readJson(file, null);
     if (!isObject(translation) || compilationTranslationStale(translation, video) !== "legacy") continue;
@@ -377,9 +377,10 @@ function stampLegacyTranslations(dir, before, video) {
 }
 
 /**
- * The other four locales' title, description, tags and chapter titles, one locale a unit. Every
- * locale the site captions in gets them (YouTube's localizations), whatever the caption
- * setting narrows the episodes to: the compilation's status waits on all four.
+ * The other default locales' title, description, tags and chapter titles, one locale a unit
+ * (core/schema.mjs DEFAULT_LOCALES: en, ja and ko; a compilation is not made in es, pt, id, vi
+ * or th yet). Each gets them (YouTube's localizations), whatever the caption setting narrows the
+ * episodes to: the compilation's status waits on all of them.
  */
 export async function translateMetadata(automation, state) {
   const { ctx } = automation;
@@ -395,7 +396,7 @@ export async function translateMetadata(automation, state) {
   // chapter titles (the plan made again) reads as stale (core/state.mjs translationComplete) and is
   // translated again here instead of kept.
   const source = compilationSourceHashes(video);
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
     let problem = null;
@@ -493,7 +494,7 @@ export async function advanceCompilation(automation, state, next) {
       return `${state.slug}: source public text reviewed`;
     }
     const later = ["metadata translated", "final video approved", "upload package", "on YouTube"].includes(next) || !next;
-    const needsTranslationReview = LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
+    const needsTranslationReview = DEFAULT_LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
       const translation = project.translations[locale];
       return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });

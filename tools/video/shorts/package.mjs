@@ -18,7 +18,8 @@ export const METADATA_FILE = 'metadata.json';
 export const PACKAGE_FILE = 'package.json';
 export const DESCRIPTION_FILE = 'description.zh-TW.txt';
 export const CAPTIONS_FILE = 'zh-TW.srt';
-// The languages a Short may add beside zh-TW: core/schema.mjs LOCALES but the narration's.
+// The languages a Short may add beside zh-TW: core/schema.mjs NARRATION_LOCALES but the narration's
+// (Shorts in the other TARGET_LOCALES are phase three of the 2026-10-19 worker-languages task).
 export const EXTRA_LOCALES = Object.freeze(['en', 'ja', 'ko']);
 const selectedLocales = (settings) => EXTRA_LOCALES.filter((locale) => Array.isArray(settings?.locales) && settings.locales.includes(locale));
 export const captionLocales = (metadata) => ['zh-TW', ...selectedLocales(metadata)];

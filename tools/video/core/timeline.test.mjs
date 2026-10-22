@@ -219,3 +219,13 @@ test("silent action cannot extend an ordinary episode, spoken scene, slide or in
     assert.throws(() => buildTimeline(doc, { a: 96_000, b: 96_000 }), /action_seconds/);
   }
 });
+
+test("visualHash moves with the paper theme, which redraws every card, and not at all without one", () => {
+  const base = visualHash(fixture());
+  const paper = fixture();
+  paper.theme = "paper";
+  assert.notEqual(visualHash(paper), base);
+  const explicit = fixture();
+  explicit.theme = undefined;
+  assert.equal(visualHash(explicit), base, "a video that never had a theme hashes as before");
+});

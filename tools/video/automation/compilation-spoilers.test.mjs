@@ -7,7 +7,7 @@ import { compilationDocument, estimatedCompilationTimeline } from "../core/compi
 import { COMPILATION_REVIEW_FILE, reviewHash } from "../core/compilation-review.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { readJson } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { DEFAULT_LOCALES } from "../core/schema.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { advanceCompilation, planMetadata, translateMetadata } from "./compilation.mjs";
 
@@ -21,7 +21,7 @@ const EPISODES = Array.from({ length: 40 }, (_, index) => ({
 }));
 const REVEAL = EPISODES[19].slug;
 const SAFE_CHAPTER = "門後的腳步";
-const FOREIGN = LOCALES.filter((locale) => locale !== "zh-TW");
+const FOREIGN = DEFAULT_LOCALES.filter((locale) => locale !== "zh-TW");
 const CONTEXT = {
   mysteries: [{ id: "missing-person", question: "她是否還活著？", answer: "她還活著", reveal_episode: 20 }],
   reveal_schedule: [{ mystery_id: "missing-person", episode: 20 }],
@@ -302,7 +302,7 @@ for (const next of ["on YouTube", undefined]) {
     fillTranslations(box);
     writePackage(box);
     await reviewAll(box, next);
-    assert.deepEqual(box.stages("verifier").map(({ payload }) => payload.locale).sort(), [...LOCALES].sort());
+    assert.deepEqual(box.stages("verifier").map(({ payload }) => payload.locale).sort(), [...DEFAULT_LOCALES].sort());
     assert.equal(box.stages("translator").length, 0, "safe complete translations need review, not regeneration");
     assert.equal(box.stages("planner").length, 0);
     assert.deepEqual(box.calls.runs, []);

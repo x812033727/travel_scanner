@@ -114,6 +114,9 @@ class Package:
     # Ready dub tracks of the approved language batch. The Data API has no audio track method,
     # so nothing in this module sends them; the VPS Studio uploader does (vps.assets).
     dubs: dict[str, PackageFile] = field(default_factory=dict)
+    # A brand story's titles carry its story tag before the captions tag (requests.STORY_TAGS):
+    # the video's category on the site, so a package made before the rule is tagged as well.
+    story: bool = False
 
 
 # --- the approved package ------------------------------------------------------------------------
@@ -227,6 +230,7 @@ def read_approved_package(
         captions={locale: _file(item) for locale, item in composed.captions.items()},
         approval_pin=composed.approval_pin,
         dubs={locale: _file(item) for locale, item in composed.dubs.items()},
+        story=project.category == "story",
     )
 
 
@@ -335,7 +339,9 @@ async def request_sync(
         else str(package.metadata.get("description") or "")
     )
     # Checked as YouTube will get it: with the captions tag the request bodies add.
-    problem = text_problem(captioned(title, narration_language(package.metadata)), description)
+    problem = text_problem(
+        captioned(title, narration_language(package.metadata), story=package.story), description
+    )
     if problem:
         raise Refused(422, "video_youtube_text_invalid", problem)
     publish_at = payload.publish_at if payload.visibility == "scheduled" else None
@@ -603,7 +609,7 @@ def _session_of(stored: str | None, sha256: str) -> str | None:
 
 
 async def _same_title_on_channel(
-    client: YoutubeClient, metadata: dict[str, Any], title: str
+    client: YoutubeClient, metadata: dict[str, Any], title: str, *, story: bool = False
 ) -> str | None:
     """A video among the channel's fifty newest uploads that already carries this title.
 
@@ -616,7 +622,11 @@ async def _same_title_on_channel(
         return None
     language = narration_language(metadata)
     names = [name.strip() for name in (title, str(metadata.get("title") or "")) if name.strip()]
-    titles = {*names, *(captioned(name, language).strip() for name in names)}
+    titles = {
+        *names,
+        *(captioned(name, language).strip() for name in names),
+        *(captioned(name, language, story=story).strip() for name in names),
+    }
     for video in await client.videos(await client.playlist_videos(uploads), parts="snippet"):
         if str(as_dict(video.get("snippet")).get("title") or "").strip() in titles:
             return str(video.get("id") or "") or None
@@ -644,13 +654,20 @@ async def _upload(run: Run) -> str:
         if state.kind == "gone":
             session_uri = None
     if session_uri is None:
-        twin = await _same_title_on_channel(client, run.package.metadata, run.request["title"])
+        twin = await _same_title_on_channel(
+            client, run.package.metadata, run.request["title"], story=run.package.story
+        )
         if twin:
             raise StepFailed(
                 f"頻道上已經有同名的影片（{twin}），可能已經在 Studio 傳過了，網站不再傳第二支；"
                 "是同一支的話，改用「已在 Studio 上傳」貼上它的網址"
             )
-        body = insert_body(run.package.metadata, run.request["title"], run.request["description"])
+        body = insert_body(
+            run.package.metadata,
+            run.request["title"],
+            run.request["description"],
+            story=run.package.story,
+        )
         await run.ensure_current(final)
         session_uri = await client.start_upload(body, size=size, content_type=final.content_type)
         uri = session_uri
@@ -759,6 +776,7 @@ async def _details(run: Run, video_id: str) -> str:
         description=run.request["description"],
         visibility=run.request["visibility"],
         publish_at=publish_at,
+        story=run.package.story,
     )
 
     def recorded(_state: dict[str, Any], project: VideoProject) -> None:
