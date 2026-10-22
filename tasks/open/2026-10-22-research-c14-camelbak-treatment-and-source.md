@@ -11,7 +11,8 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/story-everyday-camelbak-c14
+  - docs/videos/story-everyday-camelbak-c14/treatment.md
+  - docs/videos/story-everyday-camelbak-c14/source-matrix.md
 ---
 
 # Research C14 CamelBak treatment and source matrix
@@ -42,3 +43,5 @@ C14 in the approved 20-episode order needs an independently checkable CamelBak t
 Company site and 2014 parent 10-K date founding to 1989; a 2017 USPTO opposition record reports a CamelBak first-use claim of 1988-12-16, while a Fawcett patent retrospectively says 1988 for pack-and-bottle combination. Current CamelBak NZ brand history says the race idea arose in 1989; original year should not be stated as settled in narration. The 1990-filed, 1992-granted Fawcett bite-valve patent describes technical operation, but cannot alone prove every early ThermoBak used that exact valve or that founder Michael Eidson invented it. 2014 parent 10-K dates mountain-biker following to early 1990s and bottle-category expansion to 2006. No paid calls are part of this ticket.
 
 2026-10-23: Draft Treatment SHA-256 `32AF5F0744DF5961E3B92FD2D0E33F305C07DCEED5B2F4D33F6E09C28B39E437`; source matrix SHA-256 `E1C9766A4432F56CA84E7EC9886EF5DAB95895DF7B008096E973FD369A1B5B17`. Independent source review and owner adoption pending.
+
+Draft PR: https://github.com/x812033727/travel_scanner/pull/1695 (review and owner gates pending).
