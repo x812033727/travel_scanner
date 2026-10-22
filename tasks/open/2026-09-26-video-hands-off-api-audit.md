@@ -40,9 +40,9 @@ YouTube 會把未通過稽核的 API 專案用 `videos.insert` 上傳的影片�
 
 - [x] 讀表單與 YouTube API Services 的 Developer Policies，依這個站的情況寫出答案。
 - [x] 隱私權政策段落的草稿，交給站主在後台的法律頁面貼上，或交給內容線處理。
-- [ ] 站主在後台 `/zh-TW/admin/site-pages` 貼上並發布五個語系的隱私權政策段落與服務條款那一句（`YOUTUBE-API-AUDIT.md` §三），再截附件 1、3。
+- [x] 站主在後台 `/zh-TW/admin/site-pages` 貼上並發布五個語系的隱私權政策段落與服務條款那一句（`YOUTUBE-API-AUDIT.md` §三），再截附件 1、3。
 - [ ] T8 完成後補上截圖（附件 4、5、7、8）。
-- [ ] 站主送出表單，把日期與往來記進 `YOUTUBE-API-AUDIT.md` §六 與這張票的 Notes。
+- [x] 站主送出表單，把日期與往來記進 `YOUTUBE-API-AUDIT.md` §六 與這張票的 Notes。
 
 ## How to verify
 
@@ -67,3 +67,4 @@ YouTube 會把未通過稽核的 API 專案用 `videos.insert` 上傳的影片�
 - 站主要決定的：個人或組織身分（法律頁寫的是個人營運，建議個人）；Category 選 Media and Entertainment 還是別的；「Is your API Client publicly accessible?」選 No 靠截圖，還是選 Yes 並開示範帳號；API 用戶端名稱用 Mokaair Studio Sync 或備選。
 - 讀到的兩件會影響 T8 的事：`videos.insert` 現在是自己的桶（每天 100 次、每次 1 單位），不在 10,000 單位裡；Required Minimum Functionality 要求上傳用戶端讓使用者設定標題、說明與瀏覽權限，「可以上架」卡片在做 `videos.insert` 時要補這三個欄位。另外 Developer Policies III.E.4：授權取得的資料最多存 30 天、每 30 天確認授權還在，寫在文件 §五。
 - 之後的順序：貼法律頁段落並發布（五語系）→ T8 → 截圖 → 站主送表單 → 紀錄。稽核有結果之前這張票不 done。
+- 2026-10-22：配額用完（當天 9,959／10,000，十語系字幕一支約 4,100 單位）。五語系隱私權政策與服務條款的 YouTube 段落當天發布；站主當天送出表單，申請每日 50,000 單位，`videos.insert` 維持 100。案件編號待補。細節與跟草稿不同的地方在 `YOUTUBE-API-AUDIT.md` §六。下一步：收到 Google 回信就記日期與結論；核准後確認 Cloud Console 的 Queries per day 變成 50,000。

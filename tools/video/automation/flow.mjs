@@ -27,7 +27,7 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
+import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -2311,7 +2311,10 @@ export class Automation {
         chapter: episode.chapter_number,
         ...(animeRuntime ? { kind: "series", category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime }, style_preset: "anime-2d", target_minutes: animeRuntime.body_target_seconds / 60, planned_episodes: series.planned_episodes, open_ended: series.open_ended, closed_ending: beats.closed_ending === true } : {}),
         ...(oneOff
-          ? { kind: "one-off" }
+          // A one-off's own tier (its form's choice, docs/videos/BINGE.md) reaches the lint
+          // and the writer like a binge series' does; the default is left out, so a one-off
+          // from before the form had the choice keeps the file it always had.
+          ? { kind: "one-off", ...(typeof series.visual_tier === "string" && series.visual_tier !== "clips" ? { visual_tier: series.visual_tier } : {}) }
           : {
               genre: series.genre ?? "xianxia-bonds",
               lead: series.lead ?? "dual-male",
@@ -3374,7 +3377,7 @@ export class Automation {
     const verdicts = [];
     for (let reader = 1; reader <= readers; reader++) {
       const answer = await this.stage("verifier", state.slug, readers > 1 ? { ...payload, reader } : payload, 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
-      verdicts.push(panelVerdict(answer));
+      verdicts.push(panelVerdict(answer, panelQuestions(video)));
     }
     const verdict = mergePanelVerdicts(verdicts);
     mkdirSync(path.dirname(file), { recursive: true });

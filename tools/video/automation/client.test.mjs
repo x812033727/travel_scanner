@@ -177,6 +177,8 @@ test("auto exits for the owner after one real stage request when Claude Code nee
         stages.push(JSON.parse(init.body));
         return Response.json({ code: OUTDATED, detail: DETAIL }, { status: 409 });
       }
+      // The backup still runs after a round that ended in an error; a site from before backups.
+      if (route === "/api/video/automation/backup/config") return Response.json({ code: "not_found", detail: route }, { status: 404 });
       assert.fail(`unexpected request: ${init.method} ${route}`);
     },
   });
@@ -193,6 +195,7 @@ test("auto exits for the owner after one real stage request when Claude Code nee
     "GET /api/video/automation/slides-requests/next",
     "GET /api/video/automation/topics",
     "POST /api/video/automation/run",
+    "GET /api/video/automation/backup/config",
   ]);
   assert.deepEqual(sleeps, []);
 });

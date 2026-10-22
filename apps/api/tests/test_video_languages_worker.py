@@ -1,11 +1,11 @@
-"""The worker makes titles and captions in es, pt, id, vi and th for every video.
+"""The worker makes titles, captions and dubs in es, pt, id, vi and th for every video.
 
 On 2026-10-20 the owner opened the five languages first added for an imported series
 (tests/test_video_languages_imported.py) to every video, of every category, drama included:
-the worker now makes their titles, descriptions and captions
-(tasks/open/2026-10-19-worker-video-languages-five.md, phase one). Their dubs are phase two, so a
-dub in one of them stays refused unless the video was imported, and the settings tab pre-ticks
-titles and captions in all eight.
+the worker makes their titles, descriptions and captions
+(tasks/open/2026-10-19-worker-video-languages-five.md, phase one), and their dubs (phase two)
+wherever a dub is allowed at all: a drama whose characters speak is refused a dub in any
+language. The settings tab pre-ticks titles and captions in all eight, never a dub.
 """
 
 from __future__ import annotations
@@ -27,8 +27,9 @@ from app.video_automation.models import DEFAULT_CAPTION_LOCALES, DEFAULT_DRAMA
 from app.video_automation.schemas import CAPTION_LOCALES, SettingsWrite
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
+    ADDED_LOCALES,
     DUB_LOCALES,
-    IMPORTED_DUB_LOCALES,
+    NARRATION_LOCALES,
     WORKER_CAPTION_LOCALES,
     WORKER_DUB_LOCALES,
     DubLocalesIn,
@@ -91,10 +92,10 @@ async def _view(site: Site) -> Any:
         return await service.project_view(session, SLUG)
 
 
-def test_the_worker_makes_titles_and_captions_in_eight_and_dubs_in_three() -> None:
-    assert WORKER_DUB_LOCALES == ("en", "ja", "ko")
-    assert IMPORTED_DUB_LOCALES == tuple(FIVE)
-    assert list(DUB_LOCALES) == list(WORKER_CAPTION_LOCALES) == EIGHT
+def test_the_worker_makes_titles_captions_and_dubs_in_eight_and_narrates_in_three() -> None:
+    assert NARRATION_LOCALES == ("en", "ja", "ko")
+    assert ADDED_LOCALES == tuple(FIVE)
+    assert list(DUB_LOCALES) == list(WORKER_CAPTION_LOCALES) == list(WORKER_DUB_LOCALES) == EIGHT
     assert list(CAPTION_LOCALES) == EIGHT, "the settings tab offers the panel's eight"
 
 
@@ -122,41 +123,31 @@ async def test_every_pipeline_video_offers_eight_and_takes_titles_and_captions_i
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize(("format", "category"), [("slides", "tutorial"), ("drama", "explainer")])
-async def test_a_dub_in_the_five_is_refused_on_a_pipeline_video(
+async def test_a_pipeline_video_takes_a_dub_in_the_five(
     site: Site, format: str, category: str
 ) -> None:
     await _seed(site, format=format, category=category)
+    saved = await _save(site, {locale: EVERYTHING for locale in reversed(EIGHT)})
+    assert list(saved.locales) == EIGHT
     for locale in FIVE:
-        with pytest.raises(AppError) as refused:
-            await _save(site, {"en": EVERYTHING, locale: EVERYTHING})
-        assert refused.value.status == 422, locale
-        assert refused.value.code == "video_locales_dub_imported_only", locale
-        assert refused.value.detail.startswith(f"{locale} 的配音自動產線還不會做")
-        assert "只有匯入的影片" in refused.value.detail
-    with pytest.raises(AppError) as both:
-        await _save(site, {"th": EVERYTHING, "es": {"dub": True}, "pt": TITLES_AND_CAPTIONS})
-    assert both.value.detail.startswith("es、th 的配音"), "only the dubbed ones, in page order"
-    assert (await _view(site)).locales_decided_at is None, "nothing was stored"
+        assert saved.locales[locale].dub, locale
+        assert saved.languages[locale]["dub"].state == "working", locale
 
-    # The dub checkboxes of the old page take the same rule.
-    with pytest.raises(AppError) as old_page:
-        async with site.factory() as session:
-            await service.set_dub_locales(
-                session, SLUG, site.owner, DubLocalesIn.model_validate({"locales": ["en", "vi"]})
-            )
-    assert old_page.value.code == "video_locales_dub_imported_only"
-
-    # en, ja and ko dubs are what they were.
-    saved = await _save(site, {"ja": EVERYTHING, "es": TITLES_AND_CAPTIONS})
-    assert saved.locales["ja"].dub and list(saved.locales) == ["ja", "es"]
+    # The dub checkboxes of the old page take them too.
+    async with site.factory() as session:
+        old_page = await service.set_dub_locales(
+            session, SLUG, site.owner, DubLocalesIn.model_validate({"locales": ["en", "vi"]})
+        )
+    assert [locale for locale, choice in old_page.locales.items() if choice.dub] == ["en", "vi"]
 
 
 @pytest.mark.asyncio
 async def test_a_drama_keeps_its_own_dub_rule_and_takes_titles_and_captions(site: Site) -> None:
     await _seed(site, format="drama", category="drama")
-    with pytest.raises(AppError) as refused:
-        await _save(site, {"en": EVERYTHING})
-    assert refused.value.code == "video_locales_dub_not_for_drama"
+    for locale in ("en", *FIVE):
+        with pytest.raises(AppError) as refused:
+            await _save(site, {locale: EVERYTHING})
+        assert refused.value.code == "video_locales_dub_not_for_drama", locale
     saved = await _save(site, {locale: TITLES_AND_CAPTIONS for locale in EIGHT})
     assert list(saved.locales) == EIGHT
 

@@ -247,3 +247,21 @@ The two isolated scripts in `docs/videos/brand-stories-pilot-v2-20261015/scripts
 The A01 and B18 `*-shot-plan.md` files are **preproduction estimates**: 95 still illustrations plus 11 cards for A01 (89.6% illustrated), and 91 stills plus 17 cards for B18 (84.3% illustrated); no generated clips. Each includes anonymous one-person neutral-light sample prompts, source-sensitive visual boundaries and an all-in US$25 stop rule. MiniMax's 2026-10-15 official `image-01` list price is US$0.0035 per generated image; judge, TTS and text use their own routes and actual ledger. The A01 plan allocates US$18.45 and leaves US$6.55 unassigned under the US$25 ceiling; B18 allocates all US$25 including contingency. These are planning envelopes, not provider balances, incurred costs or authority to spend. [PR #1508](https://github.com/x812033727/travel_scanner/pull/1508) merged into main as `42fbfb40d` on 2026-10-15; its per-slug shared reservation gate still requires production deployment and live readback before an import can start a paid episode. The first episode can start as soon as an imported series is available. `kind: story` may start B18 whenever its row is `ready` even with `series_auto_continue=false`, so **A01's first import must use the reviewed two-row input with `--limit 1`** and a dry-run whose `stories_imported` is 1 and whose only changed ID is `A01`. After apply, read back that B18's exact slug has no episode row. Set `drama_auto_approve_final=false` so A01's final cut waits for owner viewing; this setting is not a B18 start guard. Only after A01's ledger, playback and owner acceptance may a separate dry-run and authorized `--limit 2` import introduce B18. Provider balances, current host workdirs and live post-deploy schema remain unknown; no production mutation or vendor call occurred at the time of this note.
 
 The reviewed `scripts/A01.md` and `scripts/B18.md` do **not** enter the worker through the compiled `stories.json`. Import transfers six chapter beats; the worker writes its own `story/chapters/*.json`, then merges them into `video.json` and `script.md`. The two independent script PASS receipts bind only the local Markdown. Before paying for TTS or images, the actual chapter files and merged script must be compared against those editorial baselines, independently checked for fact and narrative flow, and bound to their own hashes; shot counts and cost plan must be recalculated if the worker's text differs. Editing only `video.json` is ineffective because the worker rebuilds it from chapter files. The new A01/B18-v2-only worker gate requires an independent hash-bound `story/reviews/script-review.json` on the **actual** chapter and merged output; a missing or stale receipt holds that video before TTS until an explicit admin retry. The receipt format and operator handoff are in the [10-minute story route ticket](2026-10-14-support-10-minute-minimax-cute-brand.md). This is local unmerged code pending CI, not evidence that the reviewed Markdown has been spoken or that the runtime gate is deployed.
+
+### 2026-10-21 Claude took A01 over on the owner's word (production host)
+
+- 2026-10-19 the owner had Claude finish A01. Claude renamed the workdir's `STOP` to
+  `STOP.removed-by-claude-20261020` (owner approved), installed the r47 canonical handoff
+  (backup `manual-revisions/2026-10-20-claude-r47-adopt`), published lexicon v2–v4 through
+  independent `story-lexicon-revise` receipts (Judi 茱蒂, Dash 達許, Ballis 巴利斯, Kim 金,
+  Joe 喬, Sharkey 夏基), and hand-fixed the panel until r47 passed.
+- An independent reader then refused the pilot script review: `PILOT_SCRIPT_REFERENCES` still
+  names the frozen v2 `scripts/A01.md` (f9181602…, 有了輪子，為什麼還等了這麼久？), and r47 tells
+  a different story (the Rollaboard / 1993 Dash line). Facts passed; reference alignment and
+  a 52–61 s hook gap in engine did not.
+- 2026-10-21 the owner chose the frozen v2 story. Claude restored the pre-r47 worker chapters
+  and series.json and recomposed video.json at the compact [7,8] target (backup of the r47
+  state: `manual-revisions/2026-10-21-claude-back-to-v2`) and retried. Next: checks, listener,
+  panel, the length fix down to 7–8 minutes, then an independent reader's
+  `story/reviews/script-review.json` against `scripts/A01.md`. The r47 package stays as history.
+

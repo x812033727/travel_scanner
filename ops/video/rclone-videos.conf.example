@@ -20,5 +20,6 @@ client_secret = <the client secret>
 # The last part of the AI/備份 folder's address in Drive:
 # https://drive.google.com/drive/folders/<this>. It must match VIDEO_BACKUP_LOCK_PATH (AI/備份).
 root_folder_id = <the AI/備份 folder ID>
-# What `rclone authorize "drive" "<client_id>" "<client_secret>"` printed on the owner's PC.
-token = <the JSON line rclone authorize printed>
+# Written by `rclone config create videobackup drive ... --config <file>` on the owner's PC
+# (BACKUP.md §主機設定 step 3), which authorizes in their browser and writes this whole file.
+token = <the JSON line rclone wrote>

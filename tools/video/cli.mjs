@@ -14,7 +14,7 @@ import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
 import { inspectStartedStoryMigration, migrateStartedStoryLexicon } from "./core/lexicon-migration.mjs";
 import { applyStoryLexiconRevision, inspectStoryLexiconRevision } from "./core/lexicon-revision.mjs";
-import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelVerdict } from "./core/narrative.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelQuestions, panelVerdict } from "./core/narrative.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
 import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
@@ -237,7 +237,7 @@ async function cmdNarrative(args, ctx) {
     else ctx.stdout.write(`${payload.narration}\n${payload.questions.map((question, index) => `${index + 1}. [${question.id}] ${question.question}`).join("\n")}\n\nAnswer in a fresh session that has read nothing else, as {"answers": [{"id", "yes", "evidence"}]}, then run this again with --answers <file>.\n`);
     return EXIT.ok;
   }
-  const verdict = panelVerdict(readJson(path.resolve(values.answers)));
+  const verdict = panelVerdict(readJson(path.resolve(values.answers)), panelQuestions(project.doc));
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root });
   const file = path.join(workdir, ...NARRATIVE_REVIEW);
   const round = (readJson(file, null)?.round ?? 0) + 1;

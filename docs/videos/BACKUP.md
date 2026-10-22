@@ -24,8 +24,9 @@
    「AI」資料夾，會另建一個同名的，造成 G: 出現兩個「AI」。
 3. **備份層級**：漫劇與動畫（`category` 為 `drama`、`long-drama`、`anime`）用「完整」，
    其他用「基本」。後台可以依系列覆寫。
-4. **還沒決定**：雲端硬碟的方案與容量。在決定之前，worker 只會在剩餘空間足夠時備份，
-   不夠就停下並在後台提示（見〈空間〉）。
+4. **容量**：站主的方案是 5 TiB（2026-10-22 量到剩 4.77 TiB）。worker 仍然只在剩餘空間
+   足夠時備份，不夠就停下並在後台提示（見〈空間〉）。
+5. **層級（2026-10-20 後台）**：站主把所有系列都改成「完整」。
 
 ## 架構
 
@@ -44,7 +45,9 @@ video-worker 每一輪：排入 → rclone 複製 → rclone check → 上傳 ba
 ```
 
 - **在哪裡執行**：只有 `video-worker` 容器能寫 `video_work`，tidy 也在它那裡，所以備份在
-  它每一輪的最後、tidy 之前跑。自動產生草稿關掉時也照樣備份。API 容器不放 Drive 的權杖。
+  它每一輪的最後、tidy 之前跑。自動產生草稿關掉時也照樣備份。一輪中途出錯結束時也照樣
+  備份，只是不跑 tidy：2026-10-21 網站每輪都拒絕一個太長的提示詞，在這個修正之前，
+  每一輪都在跑到備份之前就結束了。API 容器不放 Drive 的權杖。
 - **權杖**：主機的 `/etc/travel-scanner/rclone-videos/rclone.conf`（擁有者 uid 1001，0600），
   compose 把這個**資料夾**唯讀掛到 worker 的 `/etc/mokaair/rclone-videos/`。掛資料夾而不是
   檔案：檔案還不存在時，Docker 會在那個位置建一個同名資料夾，之後就放不進設定檔。worker
@@ -173,33 +176,55 @@ AI/備份/
 
 ## 主機設定
 
-部署之後還要做一次。前四步要站主本人在自己的電腦上做，權杖不要貼到任何對話裡。
+部署之後還要做一次（2026-10-22 已做完，以下是重做時的步驟，例如 token 失效或換帳號）。
+前三步要站主本人在自己的電腦上做：主機沒有瀏覽器，Google 的同意只能在電腦上按。之後
+影片由主機直接傳到雲端硬碟，不經過這台電腦。用戶端密鑰和 token 不要貼到任何對話裡，
+也不要在 Claude app 的 Terminal 面板裡跑第 3 步（那裡的畫面代理讀得到），開一個獨立的
+終端機視窗。
 
-1. **Google Cloud**：到 Google Cloud Console，用現有的專案或新建一個：
+1. **Google Cloud**：用 YouTube 那個專案（`mokaair-studio-sync`）就好。它的同意畫面已經
+   是正式版，Google Drive API 也已經啟用；換專案的話，這兩項要重做：
    - 啟用「Google Drive API」。
-   - OAuth 同意畫面：使用者類型選「外部」，發布狀態要按「發布應用程式」改成「正式版」。
-     留在「測試」狀態的話，Google 發的 refresh token 7 天就失效，備份每週都會斷。只有站主
-     自己使用，不必送審；授權時會看到「Google 尚未驗證這個應用程式」，按「進階」繼續即可。
-   - 「憑證」→「建立憑證」→「OAuth 用戶端 ID」→ 類型選「電腦版應用程式」，記下用戶端 ID
-     和用戶端密鑰。不要用 YouTube 那組用戶端。
-2. **授權**：在電腦上安裝 rclone（<https://rclone.org/downloads/>），執行
-   `rclone authorize "drive" "<用戶端 ID>" "<用戶端密鑰>"`。瀏覽器會開啟，用放
-   `AI/備份` 的那個 Google 帳號登入並允許。終端機會印出一段 `{"access_token":...}` 的 JSON，
-   那就是 token。
-3. **資料夾 ID**：在 drive.google.com 打開 `AI/備份`，網址
-   `https://drive.google.com/drive/folders/<這一段>` 的最後一段就是 `root_folder_id`。
-4. **寫設定檔**：照 [`ops/video/rclone-videos.conf.example`](../../ops/video/rclone-videos.conf.example)
-   填好 `client_id`、`client_secret`、`root_folder_id`、`token`。
-5. **放到主機**：把設定檔傳到主機（例如 `scp rclone.conf root@<主機>:`），再以 root 執行：
+   - 「Google Auth Platform」→「目標對象」：使用者類型「外部」，發布狀態「實際運作中」
+     （舊介面叫「OAuth 同意畫面」→「發布應用程式」）。留在「測試」的話，Google 發的
+     refresh token 7 天就失效，備份每週都會斷。只有站主自己使用，不必送審。
+   - 「用戶端」→「建立用戶端」→ 類型選「電腦版應用程式」，把用戶端 ID 和密鑰存在電腦上
+     （關掉彈窗後密鑰不會再完整顯示）。不要用 YouTube 那組網頁應用程式用戶端。
+     密鑰不小心外流了，就在同一個用戶端「新增密鑰」，再停用、刪除舊的。
+2. **資料夾 ID**：在 drive.google.com 打開 `AI/備份`，網址
+   `https://drive.google.com/drive/u/0/folders/<這一段>` 的最後一段就是 `root_folder_id`
+   （目前是 `15Qgf5hiXpmOWR3hfgVnGWO5OESYSZAFH`）。它不是機密。
+3. **授權並寫設定檔**：在電腦上安裝 rclone（`winget install Rclone.Rclone`，或
+   <https://rclone.org/downloads/>；裝完要開新的終端機視窗才找得到 `rclone`），執行下面
+   **一條**指令。它會開瀏覽器：用放 `AI/備份` 的那個帳號登入，「尚未驗證」按「進階」→
+   「前往」，權限頁勾雲端硬碟，看到 Success! 即可；問到 Shared Drive 按 Enter（n）。
+   token 直接寫進檔案，不必複製。
+
+   ```bat
+   rem cmd（提示字元是 C:\Users\...>）
+   rclone config create videobackup drive client_id=<用戶端 ID> client_secret=<用戶端密鑰> scope=drive root_folder_id=<資料夾 ID> --config "%USERPROFILE%\rclone-videos.conf"
+   ```
+
+   PowerShell 把最後的 `"%USERPROFILE%\…"` 換成 `"$env:USERPROFILE\rclone-videos.conf"`。
+   跑完先在電腦上確認 `rclone lsd videobackup: --config <那個檔>` 只列出 `AI/備份` 裡的
+   資料夾。檔案的格式見
+   [`ops/video/rclone-videos.conf.example`](../../ops/video/rclone-videos.conf.example)。
+4. **放到主機**：把設定檔傳到主機（例如 `pscp -P 7788 rclone-videos.conf root@<主機>:/root/rclone.conf`），
+   再以 root 執行。主機的 `install` 不接受數字 uid（`install: invalid user: '1001'`，容器的
+   pwuser 在主機上沒有名字），所以用 `chown`：
 
    ```bash
-   install -d -m 0750 -o 1001 -g 1001 /etc/travel-scanner/rclone-videos
-   install -m 0600 -o 1001 -g 1001 rclone.conf /etc/travel-scanner/rclone-videos/rclone.conf
-   rm rclone.conf   # 主機上別留第二份
+   umask 077
+   mkdir -p /etc/travel-scanner/rclone-videos
+   chown 1001:1001 /etc/travel-scanner/rclone-videos && chmod 0750 /etc/travel-scanner/rclone-videos
+   cp /root/rclone.conf /etc/travel-scanner/rclone-videos/rclone.conf
+   chown 1001:1001 /etc/travel-scanner/rclone-videos/rclone.conf && chmod 0600 /etc/travel-scanner/rclone-videos/rclone.conf
+   shred -u /root/rclone.conf   # 主機上別留第二份
    ```
 
    uid 1001 是 video-worker 容器裡的 pwuser。資料夾是掛進容器的，放好檔案不必重啟容器。
-6. **確認 rclone 只看得到 `AI/備份`**：
+   放好之後刪掉電腦上的 `rclone-videos.conf`。
+5. **確認 rclone 只看得到 `AI/備份`**：
 
    ```bash
    cd /root/travel_scanner
@@ -209,9 +234,9 @@ AI/備份/
 
    `lsd` 應該只列出 `AI/備份` 裡面的資料夾（一開始是空的）；看到雲端硬碟最上層的資料夾，
    就是 `root_folder_id` 填錯了。
-7. **開啟**：後台「備份位置」卡確認「主機的 rclone 可以寫入 AI/備份」，勾選開關、儲存，
+6. **開啟**：後台「備份位置」卡確認「主機的 rclone 可以寫入 AI/備份」，勾選開關、儲存，
    按「測試連線」，等 5 分鐘按「重新讀取」，看到「上次測試成功」和剩餘空間。
-8. **第一支**：之後每一輪會備份最舊的兩支。第一支完成後在電腦的
+7. **第一支**：之後每一輪會備份最舊的兩支。第一支完成後在電腦的
    `G:\我的雲端硬碟\AI\備份\<系列>\` 裡看得到檔案，卡片上那支顯示「已備份」。
    想在主機上再核對一次：
 
@@ -227,16 +252,19 @@ AI/備份/
 
 | 卡片或 log 上看到 | 原因與處理 |
 | --- | --- |
-| 「主機沒有影片備份用的 rclone 設定」 | 第 5 步的檔案不在，或路徑打錯 |
-| 「讀不到 …；檔案要讓容器的 pwuser 讀得到」 | 檔案或資料夾不是 uid 1001，重做第 5 步的 `install` |
+| 「主機沒有影片備份用的 rclone 設定」 | 第 4 步的檔案不在，或路徑打錯 |
+| 「讀不到 …；檔案要讓容器的 pwuser 讀得到」 | 檔案或資料夾不是 uid 1001，重做第 4 步的 `chown`／`chmod` |
+| `install: invalid user: '1001'` | 主機的 `install` 不認數字 uid；照第 4 步改用 `chown 1001:1001` |
+| 設定檔放好了，卡片還是說沒有設定，測試也一直沒結果 | worker 的一輪沒跑到備份。看 `docker compose logs video-worker`：沒有任何 `backup:` 開頭的行，就是每一輪都在中途結束；2026-10-22 起一輪出錯也會備份，在那之前的版本要先修好讓那一輪出錯的原因 |
 | 「路徑 … 不在主機鎖定的 AI/備份 之內」 | 後台路徑填到 `AI/備份` 外面了；要備份到別處，改 `root_folder_id` 和 compose 的 `VIDEO_BACKUP_LOCK_PATH` 再部署 |
-| 測試失敗，`invalid_grant` | token 失效：多半是 OAuth 同意畫面還在「測試」，或站主撤銷了授權。改成正式版後重做第 2、4、5 步 |
+| 測試失敗，`invalid_grant` | token 失效：多半是 OAuth 同意畫面還在「測試」，或站主撤銷了授權。改成正式版後重做第 3、4 步 |
 | 「雲端空間不足」 | 剩餘空間少於這次要傳的量加 2 GB；清空間或升級方案，下一輪會自動再試 |
 | 「缺少檔案」 | 網站列出缺哪些；多半是配音或字幕還沒做完，做完後下一輪會補 |
 
 ## 空間
 
-站主還沒決定方案，以下用文件裡的實測值估算：
+站主的方案是 5 TiB：2026-10-22 第一次接上時用了 223 GiB（其中 14 GiB 是其他 Google
+服務），剩 4.77 TiB。以下用文件裡的實測值估算每支的量：
 
 | 種類 | 基本層級／支 |
 | --- | --- |
@@ -245,7 +273,7 @@ AI/備份/
 | 配音 | 每種語言約 1 MB/分鐘 |
 
 完整層級要多算 clips 與 keyframes，第一次實際備份後把量到的數字補進這裡。
-免費的 15 GB 大約只放得下二、三十支插畫版。
+所有系列都設成完整、一支以 1 GB 算，5 TiB 也放得下四千多支，空間不是限制。
 
 ## 已經上傳的舊影片
 

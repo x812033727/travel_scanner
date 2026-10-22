@@ -15,10 +15,15 @@ import { watermarkDataUri } from "../core/watermark.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
 export const thumbnailSeries = (doc) => explainerSeries(doc);
-import { estimateTimeline } from "../core/timeline.mjs";
+import { estimateTimeline, FPS } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { ASSET_ROOTS, captureRef, isStockPath, MARK_OVERLAID, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { ASSET_ROOTS, captureRef, isStockPath, keyProblems, MARK_OVERLAID, ORIGIN, sceneKey, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { terminalSeconds } from "../templates/terminal/terminal.mjs";
+
+// A human-typed terminal state must end its typing this long before its narration does, so the
+// output is read on screen for a moment before the next state cuts in.
+export const TYPING_MARGIN_SECONDS = 0.5;
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -71,7 +76,8 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
   doc.scenes.forEach((scene, index) => {
     if (isShot(scene)) return;
     const where = `scenes[${index}] (${scene.id}).data`;
-    const own = isScreencast(scene) ? screencastSceneProblems(scene) : sceneProblems(scene);
+    // The key band's lines are checked for every card, a screencast's included.
+    const own = isScreencast(scene) ? [...screencastSceneProblems(scene), ...keyProblems(scene)] : sceneProblems(scene);
     for (const message of own) problems.push({ path: where, message });
     if (own.length) return;
     for (const asset of sceneAssets(scene)) {
@@ -87,6 +93,7 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
       else if (asset.endsWith(".svg")) for (const message of svgProblems(readFileSync(file, "utf8"))) problems.push({ path: where, message: `${asset}: ${message}` });
     }
   });
+  problems.push(...typingProblems(doc));
   for (const message of thumbnailProblems(doc.thumbnail, { series: thumbnailSeries(doc) })) problems.push({ path: "thumbnail", message });
   // An opted-in thumbnail picture must be a credited, local raster asset. Check A and the
   // effective B/C data, since a variant may override A's asset.
@@ -122,6 +129,32 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
       if (!screencasts.has(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}" is not a screencast scene of this video` });
       else if (ref.index >= screencasts.get(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}": scene ${ref.scene} takes ${screencasts.get(ref.scene)} captures` });
     }
+  }
+  return problems;
+}
+
+/**
+ * The narration cannot carry the typing: a state of a terminal scene typed at a human pace
+ * (terminal.mjs terminalSeconds) whose estimated hold, from the same timeline the audio stage
+ * uses, ends within TYPING_MARGIN_SECONDS of the last key or line. The qa stage repeats this on
+ * the measured timeline (qa/pace.mjs); here it stops a render before any frame is drawn.
+ */
+export function typingProblems(doc) {
+  const typed = doc.scenes.map((scene, index) => ({ scene, index })).filter(({ scene }) => scene.template === "terminal" && scene.data?.typing === "human" && !sceneProblems(scene).length);
+  if (!typed.length) return [];
+  const timeline = estimateTimeline(doc);
+  const problems = [];
+  for (const { scene, index } of typed) {
+    const states = timeline.scenes.find((each) => each.id === scene.id)?.states ?? [];
+    states.forEach((state, stateIndex) => {
+      const held = (state.end_frame - state.start_frame) / FPS;
+      const needs = terminalSeconds(scene, stateIndex);
+      if (needs + TYPING_MARGIN_SECONDS <= held) return;
+      problems.push({
+        path: `scenes[${index}] (${scene.id}).data`,
+        message: `the narration cannot carry the typing: state ${stateIndex} types and prints for ${needs.toFixed(1)} s but its lines hold it about ${held.toFixed(1)} s (it needs ${TYPING_MARGIN_SECONDS} s more); give the state more to say, spread the output over more reveals, or shorten the command`,
+      });
+    });
   }
   return problems;
 }
@@ -182,8 +215,11 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     if (isShot(scene)) return { id: scene.id, template: scene.template, kind: "clip", states: [] };
     const mark = !drawn ? null : cardsMove && movesAsCard(timeline.scenes[index].states) ? MARK_OVERLAID : drawn;
     const marked = mark ? { marked: mark !== MARK_OVERLAID } : {};
+    // The video's theme (templates.mjs themeCss) and the state's key band line ride in the state:
+    // a video with neither draws the pages it always did.
+    const look = { ...(doc.theme ? { theme: doc.theme } : {}) };
     if (isScreencast(scene)) {
-      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount, ...(mark ? { mark } : {}) });
+      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount, ...look, ...(mark ? { mark } : {}) });
       return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
     }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
@@ -200,7 +236,9 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
         chapter: NO_CHAPTER_LABEL.has(scene.template) ? null : chapter,
         chapterNumber,
         chapterCount,
+        ...look,
         ...(mark ? { mark } : {}),
+        key: sceneKey(scene, stateIndex),
       });
       return { reveal: state.reveal, first: stateIndex === 0, html, key: hash(theme, html, assetHash), text: visibleText(html) };
     });
@@ -263,7 +301,7 @@ export const localeThumbnailFile = (locale) => `thumbnails/${locale}.jpg`;
 function screencastStates(scene, timelineStates, manifest, theme, chromeState) {
   if (!manifest) throw new Error(`screencast scene ${scene.id} has no captures yet; the render stage takes them first`);
   return screencastPlan(manifest, timelineStates).map((plan, stateIndex) => {
-    const html = screencastHtml(scene, plan, { ...chromeState, first: stateIndex === 0 });
+    const html = screencastHtml(scene, plan, { ...chromeState, first: stateIndex === 0, key: sceneKey(scene, stateIndex) });
     return { reveal: timelineStates[stateIndex].reveal, first: stateIndex === 0, html, key: hash(theme, html, plan.sha256), text: visibleText(html) };
   });
 }

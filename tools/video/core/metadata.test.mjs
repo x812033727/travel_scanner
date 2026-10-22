@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withUtm, youtubeWarnings } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, STORY_TAGS, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withStoryTag, withUtm, youtubeWarnings } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -172,6 +172,31 @@ test("the description credits the stock photos after the sources, in the vendors
 test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
   assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+});
+
+test("a brand story's title says so in its own language before the captions tag, once", async () => {
+  assert.deepEqual(Object.keys(STORY_TAGS).sort(), Object.keys(CAPTION_TAGS).sort(), "every captioned language has its story word");
+  assert.equal(withCaptionTag(withStoryTag("杜比憑什麼讓全世界付它錢？", "zh-TW"), "zh-TW"), "杜比憑什麼讓全世界付它錢？｜品牌故事｜CC字幕");
+  assert.equal(withCaptionTag(withStoryTag("Why does the world pay Dolby?", "en"), "en"), "Why does the world pay Dolby?｜Brand Story｜CC Subtitles");
+  assert.equal(withStoryTag("ドルビーはなぜ", "ja"), "ドルビーはなぜ｜ブランドストーリー");
+  assert.equal(withStoryTag("¿Por qué Dolby?", "es"), "¿Por qué Dolby?｜Historia de marca");
+  // A tag already there, story or captions, in any language or spacing, is not doubled.
+  assert.equal(withStoryTag("杜比｜品牌故事｜CC字幕", "zh-TW"), "杜比｜品牌故事");
+  assert.equal(withStoryTag("Dolby | brand story", "en"), "Dolby｜Brand Story");
+  assert.equal(withStoryTag("Dolby｜Brand Story", "ja"), "Dolby｜ブランドストーリー", "another language's story tag is replaced");
+  // Left off when it would leave no room for even the short captions tag.
+  assert.equal(withStoryTag("a".repeat(85), "en"), `${"a".repeat(85)}｜Brand Story`);
+  assert.equal(withStoryTag("a".repeat(90), "en"), "a".repeat(90));
+  // The package composes it for a story only, in every localization.
+  const { composeMetadata } = await import("../package/metadata.mjs");
+  const doc = fixture();
+  const timeline = estimateTimeline(doc);
+  const translations = { en: { title: "A title", description: "A description" } };
+  const plain = composeMetadata({ doc, timeline, translations }).metadata;
+  assert.doesNotMatch(plain.title, /品牌故事/);
+  const story = composeMetadata({ doc: { ...doc, category: "story" }, timeline, translations }).metadata;
+  assert.equal(story.title, `${doc.youtube.title}｜品牌故事｜CC字幕`);
+  assert.equal(story.localizations.en.title, "A title｜Brand Story｜CC Subtitles");
 });
 
 test("every title ends with its language's captions tag, added once", () => {

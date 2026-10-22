@@ -11,22 +11,26 @@ import { createHash } from "node:crypto";
 
 import { CHANNEL_ACCENT_EN } from "../core/accent.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
-import { eachLine, NARRATION_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, DUB_TARGET_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
 import { planRequests } from "../tts/requests.mjs";
 
-export const DUB_LOCALES = NARRATION_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
-/** The locales one video can be dubbed in: every caption locale but the one it is narrated in. */
-export const dubLocales = (doc) => NARRATION_LOCALES.filter((locale) => locale !== narrationLocale(doc));
+// Every language a zh-TW video can be dubbed in: en, ja and ko, and since 2026-10-20 es, pt, id,
+// vi and th (core/schema.mjs DUB_TARGET_LOCALES; never a narration language).
+export const DUB_LOCALES = DUB_TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+/** The locales one video can be dubbed in: every dub locale but the one it is narrated in. */
+export const dubLocales = (doc) => DUB_TARGET_LOCALES.filter((locale) => locale !== narrationLocale(doc));
 // The locales whose dictionary aliases may be written in Chinese characters ("P 九十五"). Only
 // zh-TW since the owner dropped zh-CN from videos (2026-10-09); kept a set for the callers.
 export const CHINESE_LOCALES = new Set([NARRATION_LOCALE]);
-// What gets a dub when nobody chose (no --locale, no languages.json): every dub locale. Before
-// 2026-10-09 this left out zh-CN, whose viewers hear Mandarin in the zh-TW narration already;
-// zh-CN is no longer a video language at all.
-export const DEFAULT_DUB_LOCALES = [...DUB_LOCALES];
+// What gets a dub when nobody chose (no --locale, no languages.json): en, ja and ko, the dubs a
+// video was made with before the five joined (core/schema.mjs DEFAULT_LOCALES). Only a choice on
+// the site, or --locale, asks for a dub in es, pt, id, vi or th. Before 2026-10-09 this left
+// out zh-CN, whose viewers hear Mandarin in the zh-TW narration already; zh-CN is no longer a
+// video language at all.
+export const DEFAULT_DUB_LOCALES = DEFAULT_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 /** The same default for one video, whatever it is narrated in (DEFAULT_DUB_LOCALES for zh-TW). */
-export const defaultDubLocales = (doc) => dubLocales(doc);
+export const defaultDubLocales = (doc) => DEFAULT_LOCALES.filter((locale) => locale !== narrationLocale(doc));
 export const DUB_FORMATS = ["m4a", "mp3", "wav"];
 export const DEFAULT_FORMAT = "m4a";
 // Silence between two dubbed lines once the original pause is used up.
@@ -50,10 +54,15 @@ export const MAX_TEMPO_OVERRUN = 1.25;
 // narration's own rate: what the same voice manages in each language. The zh-TW rate is measured
 // from the narration itself (5.8 characters a second on the 2026-09-26 batch), so a video read
 // faster or slower than usual carries that into its budgets. The rate a finished dub measured
-// replaces the estimate (fit.json), so the next video's budgets are real.
-export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15 };
+// replaces the estimate (fit.json), so the next video's budgets are real. es, pt, id, vi and th
+// start from the 種田娶妻打天下 dubs (946 lines of e001–e024, measured 2026-10-20 without spaces
+// and punctuation) converted to this file's count, every character, by each language's ratio of
+// all characters to bare ones (tasks/open/2026-10-19-worker-video-languages-five.md, "Speaking
+// rates"): es 13.3, pt 11.9, id 13.3, vi 17.4, th 12.5 characters a second. Thai counts its
+// combining vowels and tone marks here, as the 種田娶妻 count did.
+export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15, es: 2.3, pt: 2.05, id: 2.3, vi: 3.0, th: 2.15 };
 // When the narration cannot be measured (no audio lengths in the timeline).
-export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-TW": 5.8 };
+export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, es: 13.3, pt: 11.9, id: 13.3, vi: 17.4, th: 12.5, "zh-TW": 5.8 };
 // Budgets leave this much of the room unused: a translator lands close to the limit, not on it.
 export const BUDGET_MARGIN = 0.97;
 // What a line costs before its first word and after its last (breath, the trimmed margins, the
@@ -69,6 +78,13 @@ export const DUB_STYLES = {
   en: `Relaxed, conversational tech explainer talking to a friend, in clear, natural English. ${STYLE_TAIL}`,
   ja: `Relaxed, conversational tech explainer talking to a friend, in natural standard Japanese. ${STYLE_TAIL}`,
   ko: `Relaxed, conversational tech explainer talking to a friend, in natural standard Korean. ${STYLE_TAIL}`,
+  // The five name the variety the 種田娶妻打天下 dubs were made in (its dub-glossary.json "lead"),
+  // with this channel's explainer manner in place of the voice-actor wording.
+  es: `Relaxed, conversational tech explainer talking to a friend, in natural, neutral Latin American Spanish (Mexican standard), with no foreign accent. ${STYLE_TAIL}`,
+  pt: `Relaxed, conversational tech explainer talking to a friend, in natural Brazilian Portuguese (São Paulo standard), with no foreign accent. ${STYLE_TAIL}`,
+  id: `Relaxed, conversational tech explainer talking to a friend, in natural standard Indonesian (Jakarta, conversational, not stiff or formal), with no foreign accent. ${STYLE_TAIL}`,
+  vi: `Relaxed, conversational tech explainer talking to a friend, in natural standard Northern Vietnamese (Hanoi), with clear tones and no foreign accent. ${STYLE_TAIL}`,
+  th: `Relaxed, conversational tech explainer talking to a friend, in natural standard Central Thai (Bangkok), with clear tones, polite particles only where written, and no foreign accent. ${STYLE_TAIL}`,
 };
 
 const CJK = /[぀-ヿ㐀-鿿豈-﫿ｦ-ﾟ가-힯]/u;

@@ -32,7 +32,7 @@ from app.video_automation.models import (
     VideoAutomationSettings,
 )
 from app.video_automation.schemas import CAPTION_LOCALES
-from app.video_reviews.schemas import DUB_LOCALES, IMPORTED_DUB_LOCALES
+from app.video_reviews.schemas import ADDED_LOCALES, DUB_LOCALES
 from tests.test_migration_sql_dialect import offenders_in
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
@@ -77,7 +77,7 @@ def test_the_migration_writes_what_the_models_and_schemas_now_default_to() -> No
     assert list(migration.EIGHT) == EIGHT == DEFAULT_CAPTION_LOCALES
     assert list(migration.EIGHT) == list(CAPTION_LOCALES) == list(DUB_LOCALES)
     assert DEFAULT_DRAMA["drama_caption_locales"] == EIGHT
-    assert migration.FIVE == IMPORTED_DUB_LOCALES
+    assert migration.FIVE == ADDED_LOCALES
     server_default = VideoAutomationSettings.__table__.c.drama_caption_locales.server_default
     assert server_default is not None
     assert str(cast(Any, server_default).arg) == f"'{migration.EIGHT_JSON}'"

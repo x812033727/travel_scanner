@@ -364,8 +364,11 @@ test("a shot is a clip unless it says still, and both kinds validate", () => {
 });
 
 test("a binge tier caps the clips, rounded up: 12 of 30 in hybrid, 3 of 30 in stills, and clips caps nothing", () => {
-  assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills"]);
-  assert.deepEqual(TIER_CLIP_SHARE_MAX, { clips: 1, hybrid: 0.4, stills: 0.1 });
+  assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills", "manga"]);
+  assert.deepEqual(TIER_CLIP_SHARE_MAX, { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 });
+  // The motion comic buys nothing: one clip is one too many.
+  assert.deepEqual(visualTierProblems(episodeWith(30, 0), "manga"), { errors: [], warnings: [] });
+  assert.match(visualTierProblems(episodeWith(30, 1), "manga").errors[0].message, /1 of 30 shots are clips; the "manga" tier allows at most 0/);
   assert.deepEqual(validateVideo(episodeWith(30, 12)), []);
   assert.deepEqual(visualTierProblems(episodeWith(30, 12), "hybrid"), { errors: [], warnings: [] });
   const hybrid = visualTierProblems(episodeWith(30, 13), "hybrid");
@@ -384,7 +387,7 @@ test("a binge tier caps the clips, rounded up: 12 of 30 in hybrid, 3 of 30 in st
   const unknown = visualTierProblems(episodeWith(4, 4), "premium");
   assert.equal(unknown.errors.length, 1);
   assert.equal(unknown.errors[0].path, "series.visual_tier");
-  assert.match(unknown.errors[0].message, /"premium" is not a visual tier; the tiers are clips, hybrid, stills/);
+  assert.match(unknown.errors[0].message, /"premium" is not a visual tier; the tiers are clips, hybrid, stills, manga/);
 });
 
 test("a drama needs a shot, and a custom look needs a style", () => {

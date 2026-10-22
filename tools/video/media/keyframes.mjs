@@ -23,7 +23,7 @@ import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
 import { composeShotPrompt, DEFAULT_IMAGE_PROMPT_LIMIT, imagePromptLimit, shotPromptBudget } from "./prompt-budget.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, pictureHashes, retakeable, sameImage, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
-import { trimMargins } from "./trim.mjs";
+import { EDGE_INSET_SHARE, trimMargins } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // How far `--seed-offset` may shift a shot's seeds. The server refuses a request whose hash
@@ -337,12 +337,13 @@ export function readStylePlate(workdir, hash) {
  * off (trim.mjs): the trimmed copy's file and sha stand in for the picture's in the manifest,
  * the judge having seen the picture as it came. Returns the picture, trimmed or not.
  */
-async function trimmed(ctx, workdir, picture, id) {
-  const cut = await trimMargins(ctx, workdir, picture.file);
+async function trimmed(ctx, workdir, picture, id, inset = 0) {
+  const cut = await trimMargins(ctx, workdir, picture.file, { inset });
   if (!cut) return picture;
   const widest = Math.max(...Object.values(cut.margins));
-  ctx.stdout.write(`${id}: trimmed a ${widest}% paper margin\n`);
-  return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins };
+  const notes = [...(widest > 0 ? [`trimmed a ${widest}% paper margin`] : []), ...(cut.inset ? [`cut ${Math.round(cut.inset * 100)}% in from every edge`] : [])];
+  if (notes.length) ctx.stdout.write(`${id}: ${notes.join(", ")}\n`);
+  return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins, ...(cut.inset ? { inset: cut.inset } : {}) };
 }
 
 async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, limit = DEFAULT_IMAGE_PROMPT_LIMIT, provider = "image model", ctx }) {
@@ -463,7 +464,11 @@ export async function run(command, args, ctx) {
   // A still that fills the frame under a camera move (illustrated slides, the explainer) is drawn
   // at 2K when the server prices the model at 2K; a drama's keyframes, which become a clip's
   // first frame, stay at the 1K the clip models take.
-  const stillPictures = slides || isExplainer(doc);
+  // A manga-tier drama (docs/videos/BINGE.md §畫面等級) is stills too, and its pictures are cut
+  // in from every edge where image-01 writes its scribbles (trim.mjs EDGE_INSET_SHARE).
+  const manga = (doc.series?.visual_tier ?? project.series?.visual_tier) === "manga";
+  const stillPictures = slides || isExplainer(doc) || manga;
+  const inset = manga ? EDGE_INSET_SHARE : 0;
   const sizeFor = (status) => (stillPictures ? imageSizeFor(status, format) : null);
   // Illustrated slides draw from a style plate unless the owner gave the look its own frames,
   // and only with an image model that reads one (stages.mjs takesStyleReference); a model known
@@ -660,7 +665,7 @@ export async function run(command, args, ctx) {
         break;
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
-      if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id);
+      if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id, inset);
       entry.takes = [...entry.takes.filter((each) => each.seed !== seed), { seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(fixes.length ? { fixes } : {}), ...(picture.margins ? { margins: picture.margins } : {}) }].sort((a, b) => a.seed - b.seed);
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
