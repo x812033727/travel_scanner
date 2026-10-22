@@ -33,7 +33,8 @@ The owner asked to keep making new Curio history episodes. S61 asks why people i
 - [x] Draft `brief.md`, `research.md`, `video.json`, `script.md`, `claims.md` and author handoff under `docs/videos/curio-s61/`.
 - [x] Self-check every written picture against its own spoken line, then lint: 0 errors, 0 warnings; 107 lines, 95 illustrated shots, 9 information cards, 10.28-minute full estimate, first chapter 57 seconds.
 - [x] Independent R1 source/visual review found a naval-affiliation error; R2 author corrected it and another worker independently PASSed the fixed Prince attribution and all changed written visuals on frozen hashes.
-- [ ] Run two isolated blind narrative readers and formal merge; then follow media gates before spending.
+- [x] Run two isolated R2 blind narrative readers and formal merge; the five shared required failures are recorded.
+- [ ] Repair the shared R2 narrative failures, obtain fresh independent source/visual and two-reader narrative PASS, then follow media gates before spending.
 
 ## How to verify
 
@@ -45,4 +46,4 @@ From repository root: `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli
 
 The source-rich fallback replaced 1859 Carrington: ADS and Wikisource were blocked by this environment's proxy 403, while GitHub search yielded later summaries but no fixed 1859 astronomy and telegraph first-person pair. S48 already covers the 1858 Atlantic cable. No paid TTS, MiniMax, judge, music, website approval, final video or YouTube upload has been performed for S61. Brand intro/outro assets and the actual clickable links are planned only; they are not outputs of this author draft.
 
-2026-10-22 R2 independent [source/visual PASS](../../docs/videos/curio-s61/review/r2-independent-source-visual.md): video SHA-256 `800a8c7476bee77fad9b97e8a23e5b7e26007cfcf32e5ee471db371257fec134`, no claimed navy affiliation for the volunteer battery, naval yard retained only as the magazine location; six repaired prompts omit unsupported hose operations. R2 lint 0/0. Two fresh blind narrative readers and formal merge remain pending; no media gate is approved.
+2026-10-22 R2 independent [source/visual PASS](../../docs/videos/curio-s61/review/r2-independent-source-visual.md): video SHA-256 `800a8c7476bee77fad9b97e8a23e5b7e26007cfcf32e5ee471db371257fec134`, no claimed navy affiliation for the volunteer battery, naval yard retained only as the magazine location; six repaired prompts omit unsupported hose operations. R2 lint 0/0. Two isolated readers each voted 6/13 YES on R2, and the [formal OR merge](../../docs/videos/curio-s61/review/r2-formal-merged-narrative.json) is 7/13 YES, **FAIL** on `no_toc`, `chapters_link`, `payoffs`, `no_recap`, `no_detour`, with advisory `chapters_are_events` also NO. The [audit](../../docs/videos/curio-s61/review/r2-formal-merge-audit.json) binds both official receipts; official CLI replay exits 1 on those same five required IDs. R3 author repair is in progress; no media gate is approved.
