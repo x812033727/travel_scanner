@@ -61,6 +61,10 @@ The [R4 author repair](../../docs/videos/curio-s63/review/r4-author-repair.md) c
 
 The [R5 repair memo](../../docs/videos/curio-s63/review/r5-author-repair.md) splits one source sentence into two sequential events at `s63103` and `s63104`: six-o'clock wagon arrival, then inquiry for the addressed box and loading. It removes the repeated receiver planning without adding undocumented speech. Frozen R5 hashes: `video.json` `118430ef07ca7ac2e6d7c198088bdd1ef312755e126fef15ea2b310475a39adf`; `script.md` `dee3cb408979b3ca7dff85fb00e63915c2e54e555a0ee22e776e28fc97556c0f`; `claims.md` `5b616ce92afd61feed9264e57da240388619588e636550a91e93a315e2d6a9fc`. Body excluding opener and CTA is 2,673 Han characters, 8.22 minutes at 325 CPM; opener remains 167 Han characters, about 31 seconds. Lint 0/0. The [independent R5 source/visual receipt](../../docs/videos/curio-s63/review/r5-source-visual-independent.md) passes the unchanged 125/127 lines by exact diff and independently checks the two revised lines. The [formal R5 dual-blind merge](../../docs/videos/curio-s63/review/r5-formal-merge-audit.md) is **12/13 HOLD** on `no_recap`: A flags `s63052`, B flags `s63106`. B alone also flags final `s63126` on `payoffs`; OR merge passes that question while preserving the concern. R6 needs fresh source and blind checks.
 
+## R6 author repair (2026-10-22 UTC)
+
+R6 [作者窄幅修稿](../../docs/videos/curio-s63/review/r6-author-repair.md)從 R5 兩個 `no_recap` 位置及 B 單獨的片尾 `payoffs` 顧慮出發，只改 `s63002`、`s63004`、`s63052`、`s63106`、`s63126` 五個場景 ID。凍結雜湊：`video.json` `8f8903a7ec270c61636953a7d675840a838604c268132722658c05b26f2dbf68`；`script.md` `dfafdb178646575cc4cefab9c14621284835299caf1c75f3eea86e7835d82bd9`；`claims.md` `10a28deb76976f1b7c32eb4ab0188c6fda33e93d1914d2d1536c1ecd7eb9c18e`。開場 175 漢字約 32 秒，正文排除開場與 CTA 2,682 漢字約 8.25 分鐘（325 字／分）；lint 0/0。**R6 全新獨立來源／畫面審核及兩位未看過 R5 的正式盲讀仍待完成，付費媒體維持封鎖。**
+
 ## Notes
 
 R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal-merge-audit.md)為 **12／13 HOLD**：A 否決 `payoffs` 與 `no_recap`，B 只否決 `no_recap`；官方逐題 OR 與 CLI 重播共同只擋 `s63103` 的重複接收者資訊。作者須另凍結 R5，並取得新的獨立史料／畫面審核及兩位未讀 R4 的正式盲讀，才可解鎖付費媒體。
