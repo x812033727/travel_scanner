@@ -110,7 +110,6 @@
 | s60104 | 但「史考特收下」和「國王收到」中間隔著回程；他能走回去嗎？ | [P11](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L15981-L16052)、[P12](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L17294-L17328)；待逐句獨立覆核 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
 | s60105 | 史考特三月二十九日寫下最後一篇日記；他沒有活著返回。 | [P12](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L17294-L17328)；待逐句獨立覆核 | 無人物的雪埋帳篷與合上日記，避免把已逝者畫成活著返程。 |
 | s60106 | 他的日記後來被找到；這兩份文本沒有追到國王信的最終送達。 | [P12](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L17294-L17328)；待逐句獨立覆核 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
-| s60107 | 所以能存檔的是留信、找到和收下；送達國王仍待別的證據。 | 節目說明／互動提問，無新增史實主張 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
 | s60108 | 如果你也想看當事人的原文，兩份固定全文都放在說明欄。 | 節目說明／互動提問，無新增史實主張 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
 | s60109 | 你會把重要消息只帶在身上，還是也留一份給後來者？ | 節目說明／互動提問，無新增史實主張 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
 | s60110 | 喜歡有出處的歷史謎題，訂閱奇聞檔案局。 | 節目說明／互動提問，無新增史實主張 | 原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。 |
