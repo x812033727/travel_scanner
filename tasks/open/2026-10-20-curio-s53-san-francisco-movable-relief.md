@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s53-san-francisco-movable-relief
 title: Curio S53 San Francisco movable relief cottages feasibility
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:33:45Z
+owner:
+claimed_at:
 created_at: 2026-10-20T17:28:48Z
 completed_at:
 branch: codex/curio-preproduction-s46-s56-20261020
@@ -232,3 +232,5 @@ scope:
 2026-10-22 S53續作：s53036第一原圖9.29 PASS及不同審者KEEP；claims移除未出現在圖中的床鋪描述，獨立紙審PASS。現23 KEEP、ledgerUS$0.7830、STOP/jobs正常，見r48清冊。s53037未畫，整片未完成。
 
 2026-10-22 批次原圖停點：有界十景批次產出到s53051前停。s53037與s53049機器PASS及root原圖KEEP：匿名卡通住戶與小屋／零錢租金概念，未把chibi比例或概念零錢數量當史實退件。s53048原圖現代玻璃辦公室，s53050第二原圖明確有筆電與印刷表格，與1906背景矛盾，REJECT。s53051第一張機器因黑邊及室內／戶外失配FAIL，STOP在下一張送出前生效；沒有第二實圖。s53048/50/51隔離並保留所有真實付費，active現25 KEEP，ledgerUS$0.8775／66images／65judges，STOP在位、jobs空。s53052之後未畫。 修訂及不同審者紙審回條已落地，待新hash安全重綁與受控重試。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 47/107，尚未選 60 景；US$1.4750，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s53/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。

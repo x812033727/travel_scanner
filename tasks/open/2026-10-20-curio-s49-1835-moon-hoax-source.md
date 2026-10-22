@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s49-1835-moon-hoax-source
 title: Curio S49 1835 Moon Hoax source-audited preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-10-22T12:33:44Z
+owner:
+claimed_at:
 created_at: 2026-10-20T15:07:01Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -307,3 +307,5 @@ R48 [第三／最後一張 `moon045` 原圖 HUMAN KEEP](../../docs/videos/curio-
 2026-10-22 S49續作：moon046首圖機器FAIL／人工REJECT，保存真實US$1.3770支出並還原35 KEEP。只窄修單景為成熟成人持無字草稿，r49獨立紙審PASS；待安全重綁與即時預檢再第二張。
 
 2026-10-22 R49 moon046第二原圖10/10及root原圖KEEP，現36 KEEP／79未畫，實付US$1.3905，STOP/jobs正常。來源／旁白仍限定為虛構報導，見r49-second-native-keep與inventory。
+
+- 2026-10-22 hourly-limit checkpoint: 本輪選圖 manifest 62/115，尚未選 53 景；US$2.0790，STOP／空 jobs 已確認。機器 FAIL 與人工 native 回條均保留，未放行分鏡、成片或上傳；詳見 [精確檢查點](../../docs/videos/curio-s49/review/production-hourly-limit-checkpoint.md)。限額恢復後從已付費快取與逐景 ready 次數繼續，勿重置重試或預算。
