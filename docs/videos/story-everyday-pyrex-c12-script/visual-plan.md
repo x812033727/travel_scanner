@@ -1,12 +1,12 @@
 # C12 Pyrex｜逐句、逐鏡可愛插圖計畫
 
-狀態：與 [劇本](script.md) 80 句逐一對應的**前期分鏡方向**；本版隨獨立來源／畫面差異重核 v4 的 HOLD 修訂，舊版畫面收據只綁舊雜湊。尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
+狀態：與 [劇本](script.md) 76 句逐一對應的**前期分鏡方向**；本版隨兩位 v5 旁白盲讀 HOLD 收短重複鏡頭，舊版畫面收據只綁舊雜湊。尚未生成、審圖、定秒數或取得付費核准。影片 slug 預定為 `story-everyday-pyrex-c12`；格式 drama，MiniMax `image-01`，畫風只填 `look: {"preset":"cute-mystery"}`。配樂為輕巧、好奇、略帶神祕感的無人聲單曲，聲量不蓋旁白。
 
 ## 鏡頭約束
 
 - `I` 是原創插圖，以下英文欄可直接作場景提示詞草案；`C` 是**後製**字卡，中文文案絕不送入生圖提示詞。所有場景為史實概念插畫，非原件或可考證事故重建；人物匿名，無可辨認真人相貌。
 - 提示詞只寫景別、場所、一個主體與一個動作、光源。**不含** Pyrex、Nonex、Corning 或人物姓名、logo、商標、可讀字、仿製舊廣告、產品照片、文字說明。玻璃材質沒有可靠外觀差別；末章用獨立字卡標示範圍，插畫不畫「兩種材料一眼可辨」或爆裂／絕對安全對比。
-- 67 張 `I`、13 張 `C`；字卡最多兩張連續（E05–E06、T08–T09）。配音後按**實際秒數**算占比，初步限制為每張插圖可見至少 5 秒、每張純字卡最多 8 秒；在此保守配置下插圖時間至少 `67×5/(67×5+13×8)=76.3%`，超過 70% 目標。這不是已量到的成片數據，若配音長度使鏡頭變短或加卡，需重算。
+- 63 張 `I`、13 張 `C`；字卡最多兩張連續（E05–E06、T08–T09）。配音後按**實際秒數**算占比，初步限制為每張插圖可見至少 5 秒、每張純字卡最多 8 秒；在此保守配置下插圖時間至少 `63×5/(63×5+13×8)=75.2%`，超過 70% 目標。這不是已量到的成片數據，若配音長度使鏡頭變短或加卡，需重算。
 - H01 第一秒直接入故事。H06 後接固定 5 秒頻道片頭，N16 後接固定 21 秒 v4 片尾／連結。卡片、片頭片尾不能湊 480 秒正文旁白。鏡頭運動在製作時交替慢推、輕漂、慢拉，不用同一動作連續三鏡。
 - 一句一畫面為目標；若實測單句過短，合併視覺停留而不刪來源對位；如須拆句或改字，視為劇本修訂，重查該句與相鄰節奏。帶同一物件的 H04→I02、H05→E05、H06→N03 懸念可沿用構圖意象，但不重用假史料照片。
 
@@ -86,7 +86,6 @@
 | --- | --- | --- | --- |
 | T01 | I | Medium shot of an anonymous woman cooking at a department store demonstration counter, one clear baking dish before her, bright overhead light | 家政專家示範概念；旁白雖介紹 Rorer，不重建她本人的相貌或某場示範。 |
 | T02 | C | 後製：家政專家／Sarah Tyson Rorer／Mildred Maddocks | 人名只後製，不生成肖像。 |
-| T03 | I | Close-up of one demonstrator's hands presenting food inside a clear baking dish to viewers beyond frame, light from a store window | 看得到實際烹飪結果。 |
 | T04 | I | Medium shot of an anonymous home cook setting a plain clear baking dish on a kitchen shelf, soft daylight from a window | 約 1920 年家庭使用的概念插圖；不指認可考家庭，也不畫普及率。 |
 | T05 | I | Close-up of an anonymous home cook comparing two differently shaped plain clear baking dishes on a kitchen table, soft daylight | 以器型、尺寸是否順手提問的家庭概念插圖；不把 1931 年測試廚房或可考抱怨提前畫出。 |
 | T06 | I | Wide shot of a simple early office with a desk and one plain glass baking dish, one anonymous woman entering, daylight from a tall window | 1929 年全職職位的匿名概念圖；不重建公司辦公室原貌或具名肖像。 |
@@ -98,8 +97,7 @@
 | T12 | I | Wide shot of two plain clear baking dishes of different shapes on separate workshop shelves, one anonymous worker looking between them, soft daylight from high windows | 提出配方是否仍相同的問句；不靠玻璃外觀判材質，也不畫可考原物。 |
 | T13 | I | Medium shot of an anonymous glass worker examining a new unmarked glass sample beside an older baking dish, light from a high workshop window | 後來繼續開發，不畫配方內容。 |
 | T14 | I | Wide shot of an old baking dish and a separate modern kitchenware shelf, one viewer standing between them, daylight | 不跨年代替別件商品定材質。 |
-| T15 | I | Close-up of a modern household glass baking dish turned over in one person's hands, its base completely plain, kitchen daylight | 現代材質提問，不畫假標示。 |
-| T16 | I | Wide shot of an old clear baking dish on one shelf and a separate modern glass baking dish on another, one viewer studying the older dish, diffuse light | 只提出最早材質問題；末章範圍從 N01 逐例展開，不預示三條商品線。 |
+| T16 | I | Close-up of one plain early glass baking dish on a shelf, one anonymous viewer studying it, diffuse light | 只提出最早材質問題；匿名概念物件，不指認 1915 年可考原物或靠外觀判配方。 |
 
 ## Now（N01–N16）
 
@@ -114,16 +112,14 @@
 | N07 | I | Medium shot of a shopper standing before separate anonymous cookware shelves in a bright modern store, holding one plain oval glass dish | 不用單件替全店代言。 |
 | N08 | C | 後製：Corning 今日實驗室 PYREX／另一種商品線 | 大寫只作來源名稱，不作辨材捷徑。 |
 | N09 | I | Close-up of a plain laboratory flask on one bench and a separate household baking dish on another, one worker between them, bright window light | 實驗器具與烤器分開。 |
-| N10 | I | Wide shot of three separate windows showing an old kitchen, a modern cookware shop and a laboratory, one viewer in foreground, daylight | 三個範圍，不靠顏色表示配方。 |
 | N11 | C | 後製：PYREX／pyrex 字樣大小寫 ≠ 材質鑑定 | 解迷思；不貼商品假商標。 |
 | N12 | I | Medium shot of a rail worker holding a plain lantern globe near a cold station window, light from the lantern | 回收燈罩難題。 |
 | N13 | I | Close-up of a plain glass jar bottom beside a separate finished baking dish on a kitchen table, one cook's hand beside the jar, daylight | 回收家廚、調方與正式商品。 |
 | N14 | I | Medium shot of a modern home cook holding a plain glass baking dish beside a folded blank product leaflet on a kitchen table, soft daylight | 本鏡仍為 I 插圖；若呈現商品標示／使用說明，只在現有插圖角落後製短字疊加，不另增純字卡。人物不讀無字紙；成片按實際可見時間重算插圖占比。 |
-| N15 | I | Medium shot of a viewer holding a familiar plain household object and smiling in surprise, bright window light | 留言題的生活感。 |
-| N16 | I | Wide shot of a kitchen table with a plain glass baking dish and an old rail lantern kept on separate sides, one viewer walking away, evening window light | 收回同一條故事線。 |
+| N16 | I | Wide shot of a plain glass baking dish on a kitchen table, one viewer setting it down, warm evening window light | 收在本件器皿，配單一訂閱邀請；N12–N13 已回扣鐵路與家廚，不再重畫鐵路燈。 |
 
 **N16 後：固定 21 秒 v4 片尾與連結位。**
 
 ## 製作前檢查
 
-本表只是插圖構思；初步 67/80 是插圖數量比，並非已核准的張數、可見時間或費用。劇本獨立查核、兩位盲讀、站主劇本審查後，先做旁白實測與時長收據；正文未達 480 秒則停線，不買 67 張圖。通過後才能按確定的鏡頭時長、重用／拆鏡及預算重新報價並請站主核准整支本機試片。任何圖片、旁白、配樂、上傳或發布均未在此關授權。
+本表只是插圖構思；初步 63/76 是插圖數量比，並非已核准的張數、可見時間或費用。劇本獨立查核、兩位盲讀、站主劇本審查後，先做旁白實測與時長收據；正文未達 480 秒則停線，不買圖。通過後才能按確定的鏡頭時長、重用／拆鏡及預算重新報價並請站主核准整支本機試片。任何圖片、旁白、配樂、上傳或發布均未在此關授權。
