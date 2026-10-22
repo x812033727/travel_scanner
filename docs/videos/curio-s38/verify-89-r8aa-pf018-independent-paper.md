@@ -17,4 +17,18 @@
 
 `/workspace/.video-work/curio-s38/STOP` 在位，`media/jobs.json` 為空 jobs。現行 `keyframes/manifest.json` SHA-256 `a7c5920fd1e4c96b66bb7d9331541c36683987999617279bca9a75c21197c48d` 仍綁 **R8z** `visual_hash=7f589efde612587a`，只有 11 張舊 KEEP，沒有 PF018；11 筆完整條目 canonical SHA-256 `59cb354fcf4a4d38d746e4fc49e7dd39742d248ce1094d7de4d80a95f8a6e301`，逐張選圖 JPEG SHA 均與圖單及先前清冊一致。`media/ledger.json` SHA-256 `a753f6ef1831579858e439305677e3c4a8599b35141b9136e37099fe84d772c0`，仍是 US$0.782／52 image／52 judge／1 music，另有舊 US$0.0035 reservation；聯絡表為空。以上與 [R8z 退件清冊](verify-87-r8z-pf018-seed1-reject-inventory.json)相符。
 
+| KEEP ID | 實算所選 JPEG SHA-256 |
+| --- | --- |
+| `pf001` | `608203b99cd453ad7218d8c773c93ca92900997d2a9a73a1be44090cba60ccb0` |
+| `pf002` | `5cff4f5806cc88ff4ffa5d78b59984f0cc5e618e6c8e998ad64cc20a4f84ea39` |
+| `pf003` | `608203b99cd453ad7218d8c773c93ca92900997d2a9a73a1be44090cba60ccb0` |
+| `pf004` | `82efccf4b92bc59da94688527fd43e9347ad45d271b048e0877a8f3337bb7921` |
+| `pf005` | `34ff83a651a59ba9383091d33151ca4bce62c9d04d6f65bd4bc75dbf55e8c52c` |
+| `pf008` | `8e08ff956a0f64c4243e584dc870acbfaa8ab4e77b18cabab809e42aabd03418` |
+| `pf010` | `5fc7fd687ced8649ecae9b392df16383047aab399a3525786a498b6efcc65850` |
+| `pf011` | `c1bc71715db707d97170cf07c02ff7d9d83b4902ca3d6b8d388ab44bd3b60466` |
+| `pf016` | `4c81c46f16a8a8db0185c1fd7814b86254480948f4c02144402977cea8c3e383` |
+| `pf017` | `728004748d86146993ebf2a37dbccd61afa94b9663b0316308576cfd029cb1a4` |
+| `pf012` | `d45e13d382104b92cabb56a58f0d8d902db8e8938c412102d3c6053e042e3696` |
+
 書面 PASS 後，任何新的 PF018 圖像請求都必須先在 STOP 與空 jobs 下安全離線重綁 R8aa 圖單，保全 11 筆 KEEP 與 ledger，再只試 PF018 **一張實際原圖和一次正式 judge**，立即檢查未裁切原圖。先前被退的 PF018 原圖仍算一次嘗試；新 prompt 不重設次數。PF020–022、完整 storyboard 及成片仍未在此審內驗收。
