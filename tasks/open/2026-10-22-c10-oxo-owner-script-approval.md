@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-c10-oxo-owner-script-approval
 title: Record C10 OXO owner script approval
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-owner-decisions

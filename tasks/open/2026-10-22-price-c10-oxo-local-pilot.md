@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-price-c10-oxo-local-pilot
 title: Price C10 OXO local pilot before paid calls
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-c10-quote
