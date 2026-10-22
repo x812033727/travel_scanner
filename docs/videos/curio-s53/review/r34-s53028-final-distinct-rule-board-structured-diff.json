@@ -1,0 +1,30 @@
+{
+  "revision": "R34-s53028-final-distinct-rule-board",
+  "reason": "R33 second actual s53028 was source-safe adult/tent but machine style=0 and no separate measured plank; last allowed prompt narrows adult to large-head compact-body proportions and makes short hinged ruler visibly distinct from wider dark rough board, preserving source/speech/18 KEEP",
+  "before_sha256": {
+    "video.json": "b41e032ca0006897cf12328d43a0f1f13383d5645892eb34c89d7ba917ca8cfd",
+    "claims.md": "f0e4d90b916e6676b9b70dc0637412bc29e00e6335abfa298f5f10edb68edbba",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "f98955b261259a0f687e409a043afe910fe7e9c38a7630e2b5a2d665ebda4997",
+    "claims.md": "0197cf312874d34cc31895dee05993275357bceac6d81b951fa73334a78841d0",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "changes": [
+    {
+      "file": "video.json",
+      "path": "scenes[21].data.prompt",
+      "id": "s53028",
+      "before": "Tight close shot of one visibly middle-aged grey-haired bareheaded carpenter with a lined adult face and plain dark civilian work clothes at a bare-ground 1906 San Francisco relief tent site; from chest to hands, both adult hands press a short wooden folding rule against one loose rough plank on a low sawhorse to measure its length; only a single plain canvas tent wall behind, no visible completed dwelling, roof or house frame, soft grey daylight",
+      "after": "Close-up waist-up view at a bare-ground 1906 San Francisco relief tent workspace: one unmistakably middle-aged bareheaded carpenter with grey hair, lined cheeks, an oversized round head, wide expressive eyes and a short compact body wears a plain dark civilian shirt; both hands hold a short pale wooden folding ruler with a visible hinged joint and tiny tick marks on top of a separate much wider darker unmarked rough plank resting on one low sawhorse; show both distinct pieces and the full measuring action clearly, only one plain canvas tent wall behind, no completed dwelling or house frame, soft overcast daylight"
+    },
+    {
+      "file": "claims.md",
+      "path": "line:s53028",
+      "id": "s53028",
+      "before": "| s53028 | 九月十日，小屋工程開始。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 10 日建屋工程開始，9 月 16 日漢密爾頓廣場完成 20 棟；畫面只作成年灰髮、未戴硬帽的匿名木匠在裸地帳棚前用短木摺尺量一片散置木板的近景概念示意，背景僅帆布牆、不畫完工小屋或屋架；不主張當天確有此人、工具、帳棚工位或這塊木板 |",
+      "after": "| s53028 | 九月十日，小屋工程開始。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 10 日建屋工程開始，9 月 16 日漢密爾頓廣場完成 20 棟；畫面只作 Q 版原創概念示意：灰髮有面紋、未戴帽的匿名成年木匠，用有折節和小刻線的短木摺尺量另一片明顯較寬、無字的粗木板，木板放在低鋸架，身後僅帆布帳棚牆；不畫完工小屋或屋架，不主張當天確有此人、工具、帳棚工位或這塊木板 |"
+    }
+  ]
+}
