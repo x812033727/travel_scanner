@@ -74,3 +74,7 @@ R8 [獨立史料／書面畫面重驗](../../docs/videos/curio-s62/review/r8-ind
 R8 [製作關卡與語音停點](../../docs/videos/curio-s62/review/r8-production-gate-and-tts-hold.md)：依站主既有「推薦的決定就好不用問」授權選 A，精確 `brief.md` SHA `5941ebf974ad…` 與 `script.md` SHA `c638b0d28cfb…` 各送一次網站審核卡，並在本機透明記錄代行核准；網站卡仍 pending，未聲稱站主親讀。新增 [QA 事實入口](../../docs/videos/curio-s62/verify-1.md)承接獨立 114／114 句、110／110 圖及雙讀者 13／13。正式 lint 0／0；一次性網站政策預檢 PASS。TTS dry-run 114 句／2,514 計費字元，MiniMax dry-run 110 圖、三輪最多約 US$4.46，音樂需等 timeline 再報。唯一一次真實 TTS 呼叫回 Gemini busy／用量上限 exit 4，無 timeline、音檔或 journal；**不立刻重試**，預計 2026-10-22 07:05 UTC 之後單次重查服務再續。沒有原生圖、音樂、成片或上傳。
 
 2026-10-22 額度重置後同聲線TTS恢復：114句全合成，時間軸650.13秒，開場46.9秒。check-audio進行中，未稱通過或人耳核准；見r8-tts-reset-recovery-20261022。
+
+## 最新製作檢查點（2026-10-22，台北）
+
+接續先前歷史紀錄：R12獨立來源與雙讀者逐題合併通過；同稿首次重錄後114／114句機器檢查通過、0旗標，站主未親聽。精確音檔／時間軸雜湊見 r12-audio-checkpoint.json。首八景正在生成，尚未逐圖驗收；110景插圖＋judge整集上限US$4.46，配樂另限US$0.10，每景最多三次實際圖。未完成合成、成片QA、字幕或Shorts；PR #1662仍是製作草稿。不要以網站US$200取代本集上限。
