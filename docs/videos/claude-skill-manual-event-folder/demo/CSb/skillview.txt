@@ -1,0 +1,9 @@
+## booklets (skillview)
+shelf: 28 skills listed at start [expense-receipts,meeting-notes,poster-copy,reminder-mail,signup-check,speaker-intro,deep-research,design,slides,design-sync,dataviz,artifact-diagramming,artifact-capabilities,update-config,verify,debug,code-review,simplify,batch,fewer-permission-prompts,doctor,loop,schedule,claude-api,workflow-authoring,run,run-skill-generator,plugin-authoring]
+requests (main thread): 10  input side: [34287,34723,34971,36367,37083,37882,38948,39557,40006,41281]  first=34287
+opened: signup-check  args=""  tool_result="Launching skill: signup-check"
+  booklet text: 425 chars, 14 lines; starts "Base directory for this skill: <path>" then "# 報名表檢查"; ends "7. 要寫確認信的時候，才照 確認信範本.md 寫。"
+  request 1 -> 2: 34287 -> 34723 (+436); requests carrying it: 9
+appendix reads: none
+total: input side 375105 + output 691 = 375796
+VERDICT opened signup-check: YES  (other booklets opened: none)

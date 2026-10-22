@@ -9,6 +9,24 @@
 - 引用別人的數據要在字卡角落標「來源：某某，YYYY-MM」。
 - 渲染後每張都打開看：有沒有超框、斷行怪不怪、中英混排的空白。
 
+## 紙底版型（全自動路線的教學短片，2026-10-21）
+
+站主看了深色字卡的教學片說「畫面有點弱」，目標是參考頻道的扁平投影片。全自動路線的 `video.json`
+開四樣東西就能做到，細節與色盤在 `docs/videos/PAPER.md`，範例
+`tools/video/templates/fixtures/paper/video.json`：
+
+- **`theme: "paper"`**（頂層）：米白底 `#f6efe3`、墨藍字 `#1f2a44`、印章紅 `#d8452f` 當唯一重點色；
+  程式碼與終端機視窗仍是深色。沒寫就是原本的深色主題，縮圖不套。
+- **每張底下一句關鍵句**：場景 `data.keys`，每個渲染狀態一句（一景一個＋第一句以外每個 `reveal`
+  一個），≤ 24 字；只有一個狀態的場景寫 `data.key`。是旁白正在講的那句的濃縮，不是標題。帶子在
+  CC 區之上，有帶子的卡片內容區少 142px，太滿的表格要縮。
+- **一張一個物件**：`big` 加 `numeral: "1"` 畫「01 ＋ 詞」；`big`、`bullets` 的項目（`{ "text",
+  "icon" }`）、`steps[]`、`compare.left/right` 用 `icon` 指定十六個線條圖示之一（folder、file、
+  document、checklist、terminal、clock、person、warning、book、gear、search、chat、globe、lock、
+  lightning、arrow）。
+- **指令真的打出來**：`terminal` 加 `typing: "human"`，每秒 12 字、輸出每秒 3 行；`render` 會擋旁白
+  撐不住打字時間的狀態（打字秒數 ＋ 0.5 秒要小於該狀態的旁白），撰稿多講幾句或拆 `reveal`。
+
 ## 插圖（全自動路線的插圖投影片）
 
 - 一張插圖回答「這一句在講什麼畫面」，照攝影師給插畫家的工單順序寫：景別、地點與時間、一個人在做的一件事（有簡單的臉或背影、剪影，不是無臉人偶）、視線落點的物件與材質、光從哪來；提示詞用英文，≤1000 字，不畫字、不畫 logo、不畫真人的臉（真人與 logo 用剪影、泛稱物件或 `screenshot` 卡片標出處）。

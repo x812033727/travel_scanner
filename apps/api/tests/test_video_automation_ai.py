@@ -609,3 +609,18 @@ async def test_usage_sums_this_months_calls_and_counts_each_drafted_video_once(
         assert await usage.slug_has_draft(session, slug)
         assert not await usage.slug_has_draft(session, f"{slug}-old")
         assert isinstance(await topics.site_topics(session), list)
+
+
+def test_a_stage_prompt_may_run_to_the_limit_and_not_past_it() -> None:
+    """The tutorial writer's prompt passed 60,000 characters with #1643 (64,454); the limit is
+    STAGE_INSTRUCTIONS_MAX, which the tools' prompt test keeps every prompt under."""
+    from app.video_automation.schemas import STAGE_INSTRUCTIONS_MAX
+
+    assert STAGE_INSTRUCTIONS_MAX == 120_000
+    writer = StageRunIn(stage="writer", slug="t", instructions="字" * 64_454, payload={})
+    assert len(writer.instructions) == 64_454
+    StageRunIn(stage="writer", slug="t", instructions="字" * STAGE_INSTRUCTIONS_MAX, payload={})
+    with pytest.raises(ValidationError):
+        StageRunIn(
+            stage="writer", slug="t", instructions="字" * (STAGE_INSTRUCTIONS_MAX + 1), payload={}
+        )

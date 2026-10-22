@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 
@@ -27,14 +27,22 @@ from app.video_media.catalog import MEDIA_VENDORS, find_model
 ProviderName = Literal["claude_code", "codex", "openai", "anthropic", "minimax", "gemini"]
 ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
-# The languages the language panel pre-ticks for a new video, besides zh-TW: the owner decided
-# on 2026-10-09 that a video's languages are four (zh-TW narration plus en, ja, ko).
-CaptionLocale = Literal["en", "ja", "ko"]
+# The languages the language panel may pre-tick for a new video, besides zh-TW, in the page's
+# order: the eight the worker makes titles and captions in (app/video_reviews/schemas.py
+# WORKER_CAPTION_LOCALES, the same list). The owner added es, pt, id, vi and th on 2026-10-20
+# and pre-ticks all eight (models.DEFAULT_CAPTION_LOCALES, migration 0136).
+CaptionLocale = Literal["en", "ja", "ko", "es", "pt", "id", "vi", "th"]
 CAPTION_LOCALES: tuple[CaptionLocale, ...] = get_args(CaptionLocale)
 TopicWord =Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
+# The longest prompt a stage run takes. 60,000 until 2026-10-21, when #1643's teaching-flow rules
+# took the tutorial writer to 64,454 characters and the planner to 60,261, and every one of those
+# runs was refused before the model was called. Twice the old figure leaves room for the standing
+# instructions the worker appends; tools/video/automation/prompts.test.mjs keeps each prompt under
+# it with that room to spare.
+STAGE_INSTRUCTIONS_MAX = 120_000
 PromptFormat = Literal["slides", "drama", "shorts"]
 # What /video/automation/run takes: the writing stages, plus the model an experiment Short
 # tests (docs/videos/SHORTS.md §端點). ``subject`` is not one of ``Stage``: its model comes
@@ -168,7 +176,9 @@ class DramaSettings(StrictModel):
     drama_stage_models: dict[Stage, StageModel] | None = None
     drama_stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
     drama_voice: VoiceSettings | None = None
-    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=3)
+    drama_caption_locales: list[CaptionLocale] = Field(
+        default_factory=list, max_length=len(CAPTION_LOCALES)
+    )
     drama_auto_approve_audio: bool = True
     drama_auto_approve_final: bool = True
     drama_max_verify_rounds: int = Field(default=3, ge=1, le=5)
@@ -206,7 +216,7 @@ class _SettingsFields(StrictModel):
     voice: VoiceSettings
     target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
-    caption_locales: list[CaptionLocale] = Field(max_length=3)
+    caption_locales: list[CaptionLocale] = Field(max_length=len(CAPTION_LOCALES))
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)
     max_verify_rounds: int = Field(ge=1, le=5)
@@ -431,6 +441,12 @@ GUIDE_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$"
 RequestStatus = Literal["queued", "started", "done", "cancelled"]
 
 
+# A series' visual tier (docs/videos/BINGE.md §畫面等級): how many of an episode's shots may be
+# image-to-video clips. ``manga`` (2026-10-22) is the motion comic: every shot a still under a
+# camera move, no clip bought. A one-off chooses one on its form too.
+VisualTier = Literal["clips", "hybrid", "stills", "manga"]
+
+
 class DramaRequestIn(StrictModel):
     """What the owner asks for on /admin/videos: an episode of the drama route to make next.
 
@@ -440,6 +456,9 @@ class DramaRequestIn(StrictModel):
     An explainer may name the ``image_model`` its pictures are drawn with; a cute preset that
     names none is given ``image-01`` here, so the value on the payload is the one that is stored,
     audited and checked for a key. Every other preset is refused one.
+
+    ``visual_tier`` is the one binge field a one-off takes: ``clips`` as every one-off was so
+    far, or ``manga`` for a narrated motion comic of stills (docs/videos/BINGE.md §畫面等級).
     """
 
     premise: str = Field(min_length=1, max_length=4000)
@@ -449,6 +468,7 @@ class DramaRequestIn(StrictModel):
     target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES, strict=True)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
+    visual_tier: VisualTier = "clips"
 
     @field_validator("image_model")
     @classmethod
@@ -576,7 +596,7 @@ class StageRunIn(StrictModel):
     slug: str = Field(pattern=SLUG_PATTERN)
     # The stage's prompt (the skill's references/prompts/*.md with the video's context) and
     # its inputs. The model is not the caller's to choose: the stage's setting decides.
-    instructions: str = Field(min_length=1, max_length=60_000)
+    instructions: str = Field(min_length=1, max_length=STAGE_INSTRUCTIONS_MAX)
     payload: dict[str, object]
     max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
     # The video's format, so the prompt is kept under the right heading for the owner to read;
@@ -677,8 +697,6 @@ SeriesKind = Literal["series", "one-off", "story"]
 # route or the separate 10-minute cute-mystery route (both below the 20-minute schema cap).
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
-# How many stories may start on one Asia/Taipei calendar day, at most.
-STORY_MAX_PER_DAY = 12
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
 SeriesAspect = Literal["world", "bonds", "structure", "mood"]
 SeriesTone = Literal[
@@ -702,7 +720,6 @@ SeriesGenre = Literal[
 SeriesLead = Literal["female", "male", "dual-male"]
 # The importer can preserve an ensemble on a planning-only row; create/patch remain narrower.
 SeriesLeadOut = Literal["female", "male", "dual-male", "ensemble"]
-VisualTier = Literal["clips", "hybrid", "stills"]
 MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
 
@@ -766,9 +783,9 @@ class SeriesIn(StrictModel):
 
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
-    episodes come from the backlog import, not from documents. The daily count and the look
-    belong to a story series only. A one-off explainer runs 8–20 minutes; drama episodes
-    stay at SERIES_MAX_MINUTES.
+    episodes come from the backlog import, not from documents. The look belongs to a story
+    series only, and a story series has no daily count (the owner, 2026-10-21). A one-off
+    explainer runs 8–20 minutes; drama episodes stay at SERIES_MAX_MINUTES.
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -792,7 +809,6 @@ class SeriesIn(StrictModel):
     compilation: bool = False
     visual_tier: VisualTier = "clips"
     total_minutes: int | None = Field(default=None, ge=30, le=480)
-    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
     look: StoryLook | StoryPresetLook | None = None
 
@@ -889,8 +905,8 @@ class SeriesIn(StrictModel):
                 and self.target_minutes > EXPLAINER_MAX_MINUTES
             ):
                 raise ValueError(f"an explainer is at most {EXPLAINER_MAX_MINUTES} minutes")
-            if self.episodes_per_day is not None or self.look is not None:
-                raise ValueError("only a story series has a daily count and a shared look")
+            if self.look is not None:
+                raise ValueError("only a story series has a shared look")
         if self.kind == "one-off":
             if self.total_minutes is not None:
                 raise ValueError("a one-off drama is one episode, not a binge series")
@@ -906,11 +922,10 @@ class SeriesIn(StrictModel):
 class SeriesPatch(StrictModel):
     """What the owner may change later; a field left out stays as it is.
 
-    The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
-    a story series; the service refuses them on the other kinds, which keep their limits.
-    ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
-    settings tab again. An explainer preset stays a one-off's, and a one-off's bible fixes
-    whether it is an explainer and which one (series.patch_problem).
+    The length may reach STORY_MAX_MINUTES and the look may be set only on a story series; the
+    service refuses them on the other kinds, which keep their limits. ``image_model`` sent as
+    null follows the settings tab again. An explainer preset stays a one-off's, and a one-off's
+    bible fixes whether it is an explainer and which one (series.patch_problem).
     """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)
@@ -932,7 +947,6 @@ class SeriesPatch(StrictModel):
     compilation: bool | None = None
     visual_tier: VisualTier | None = None
     # A story series (docs/videos/STORY.md).
-    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
     look: StoryLook | StoryPresetLook | None = None
 
@@ -983,30 +997,22 @@ class SeriesEpisodeOut(BaseModel):
     video: dict[str, object] | None = None
 
 
-# Why no story starts now (docs/videos/STORY.md §每日配額與排程): the series is paused or over, the
-# day's count is reached (the Asia/Taipei calendar day), the episodes in the making fill
-# ``series_max_in_flight``, the month's ``series_episodes_per_month`` is reached, the stories
-# cleared for upload that the owner has not uploaded fill the buffer, or no story is ready.
-StoryHold = Literal[
-    "not_active", "per_day", "in_flight", "per_month", "upload_buffer", "none_ready"
-]
+# Why no story starts now (docs/videos/STORY.md §開工與上限): the series is paused or over, the
+# episodes in the making fill ``series_max_in_flight``, the month's ``series_episodes_per_month``
+# is reached, or no story is ready. A brand story has no daily count (the owner, 2026-10-21).
+StoryHold = Literal["not_active", "in_flight", "per_month", "none_ready"]
 
 
 class StoryQuotaOut(BaseModel):
     """Where a story series stands against its limits, and the reason no story starts now
     (``hold`` and the sentence the owner reads, ``hold_detail``), or None for both when the
     next one may. The same function decides the worker's next job, so the page and the worker
-    cannot disagree. ``day`` is the Asia/Taipei calendar day ``started_today`` counts."""
+    cannot disagree."""
 
-    day: date
-    started_today: int
-    episodes_per_day: int | None
     in_flight: int
     max_in_flight: int
     started_this_month: int
     episodes_per_month: int
-    awaiting_upload: int
-    upload_buffer: int
     ready: int
     hold: StoryHold | None = None
     hold_detail: str | None = None
@@ -1053,10 +1059,9 @@ class SeriesSummary(BaseModel):
     compilation_slug: str | None = None
     compilation_started_at: datetime | None = None
     compilation_finished_at: datetime | None = None
-    # The brand-story columns (docs/videos/STORY.md): the daily count, the image model (None
-    # follows the settings tab) and the shared look; the other kinds leave them None. The worker's
+    # The brand-story columns (docs/videos/STORY.md): the image model (None follows the settings
+    # tab) and the shared look; the other kinds leave them None. The worker's
     # episode job reads them here with the kind and the length, and needs no second request.
-    episodes_per_day: int | None = None
     image_model: str | None = None
     look: dict[str, object] | None = None
     # A story series' standing against its limits, on the owner's reads (the list and the series

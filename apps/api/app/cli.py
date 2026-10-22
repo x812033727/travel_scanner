@@ -1169,11 +1169,6 @@ def main() -> None:
     story_import.add_argument(
         "--limit", type=int, help="Import only the first N stories in production order"
     )
-    story_import.add_argument(
-        "--episodes-per-day",
-        type=int,
-        help="Stories that may start per Taipei day (1-12); read when the import makes the series",
-    )
     guides_links_rebuild.add_argument(
         "--dry-run", action="store_true", help="Report what would change without writing"
     )
@@ -1362,7 +1357,6 @@ def main() -> None:
                 series=args.series,
                 apply=args.apply,
                 limit=args.limit,
-                episodes_per_day=args.episodes_per_day,
             )
         )
         print(json.dumps(outcome, ensure_ascii=False, indent=2))

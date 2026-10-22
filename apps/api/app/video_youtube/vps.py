@@ -33,6 +33,11 @@ from app.video_youtube.state import running
 CHUNK = 4 * 1024 * 1024
 ACTIVE = {"staging", "queued", "running", "needs_action"}
 HASH = re.compile(r"^[a-f0-9]{64}$")
+# The title rule a brand story's job was composed under, part of its id: since 2026-10-21 its
+# titles carry the story tag (requests.STORY_TAGS), so a story finished under the rule before
+# may send its details again, to the same video, without a new package. Other videos keep the
+# id the service documents, sha256(slug + ':' + package sha256).
+STORY_TITLE_RULE = "story-titles-1"
 CHANNEL = re.compile(r"^UC[A-Za-z0-9_-]{22}$")
 
 
@@ -123,6 +128,12 @@ async def remote(
         raise Refused(503, "vps_unavailable", "暫時無法連線到 VPS，工作紀錄會保留") from None
 
 
+def job_key(slug: str, pack: sync.Package) -> str:
+    """The VPS job id for this package as the site now composes its titles."""
+    seed = f"{slug}:{pack.sha256}" + (f":{STORY_TITLE_RULE}" if pack.story else "")
+    return hashlib.sha256(seed.encode()).hexdigest()
+
+
 async def latest(slug: str, *, settings: Config) -> dict[str, Any] | None:
     if not valid_slug(slug):
         raise Refused(422, "vps_invalid_slug", "影片識別資料不正確")
@@ -158,6 +169,7 @@ async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
     # The job identifies the entire approved package, including a later language batch.
     # Reading progress stays available when that batch needs resubmission.
     new_package = False
+    titles_outdated = False
     if job:
         runtime = await load_runtime_settings(session)
         row = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
@@ -173,6 +185,12 @@ async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
                     verify_files=False,
                 )
                 new_package = pack.sha256 != job["review_sha256"]
+                # The same package, finished before its titles took the story tag.
+                titles_outdated = (
+                    not new_package
+                    and job.get("state") == "done"
+                    and job.get("id") != job_key(slug, pack)
+                )
             except Refused:
                 new_package = True
     return {
@@ -180,6 +198,7 @@ async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
         "job": job,
         "linked": bool(job and job.get("video_id") and job["video_id"] == project.youtube_video_id),
         "new_package": new_package,
+        "titles_outdated": titles_outdated,
     }
 
 
@@ -254,10 +273,11 @@ async def assets(
     return result
 
 
-def _captioned_entry(entry: Any, locale: str) -> Any:
-    """A localization with its language's captions tag on the title; anything else as it is."""
+def _captioned_entry(entry: Any, locale: str, *, story: bool = False) -> Any:
+    """A localization with its language's captions tag on the title, a brand story's with its
+    story tag before it; anything else as it is."""
     if isinstance(entry, dict) and isinstance(entry.get("title"), str):
-        return {**entry, "title": captioned(entry["title"], locale)}
+        return {**entry, "title": captioned(entry["title"], locale, story=story)}
     return entry
 
 
@@ -279,7 +299,15 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
             "job": old,
             "linked": bool(old.get("video_id") and old["video_id"] == project.youtube_video_id),
         }
-    if old and old.get("state") == "done" and old.get("review_sha256") == pack.sha256:
+    key = job_key(slug, pack)
+    # A finished job of this package is the answer, unless it was composed under an older title
+    # rule: then a new job sends the details again to the video it made.
+    if (
+        old
+        and old.get("state") == "done"
+        and old.get("review_sha256") == pack.sha256
+        and old.get("id") == key
+    ):
         return {
             "configured": True,
             "job": old,
@@ -304,8 +332,9 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         payload.description if payload.description is not None else m.get("description", "")
     )
     narration = m.get("default_language", "zh-TW")
-    # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once.
-    title = captioned(title, narration)
+    # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once; a
+    # brand story's with its story tag before it (requests.STORY_TAGS).
+    title = captioned(title, narration, story=pack.story)
     problem = text_problem(title, description)
     if problem:
         raise Refused(422, "vps_text_invalid", problem)
@@ -326,12 +355,11 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         "made_for_kids": m["made_for_kids"],
         "contains_synthetic_media": m["contains_synthetic_media"],
         "localizations": {
-            locale: _captioned_entry(entry, locale)
+            locale: _captioned_entry(entry, locale, story=pack.story)
             for locale, entry in localizations.items()
             if locale != narration
         },
     }
-    key = hashlib.sha256(f"{slug}:{pack.sha256}".encode()).hexdigest()
     job = await remote(
         "PUT",
         f"/jobs/{key}",

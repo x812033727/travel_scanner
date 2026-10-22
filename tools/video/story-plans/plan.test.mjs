@@ -50,7 +50,6 @@ const series = (overrides = {}) => ({
   title: "品牌故事",
   kind: "story",
   target_minutes: 13,
-  episodes_per_day: 2,
   hands_off: true,
   visual_tier: "stills",
   style_preset: "custom",
@@ -190,8 +189,10 @@ test("the schedule places every story once, two a day", () => {
 
 test("the series row is a hands-off stills story series", () => {
   assert.deepEqual(seriesProblems(series()), []);
-  const problems = seriesProblems(series({ kind: "series", visual_tier: "clips", hands_off: false, target_minutes: 3, episodes_per_day: 0 })).join("\n");
-  for (const expected of [/kind must be "story"/, /visual_tier must be "stills"/, /hands_off must be true/, /target_minutes must be 12 to 15/, /episodes_per_day must be 1 to 12/]) assert.match(problems, expected);
+  const problems = seriesProblems(series({ kind: "series", visual_tier: "clips", hands_off: false, target_minutes: 3 })).join("\n");
+  for (const expected of [/kind must be "story"/, /visual_tier must be "stills"/, /hands_off must be true/, /target_minutes must be 12 to 15/]) assert.match(problems, expected);
+  // A brand story is a video category with no daily count: an older plan's count is read past.
+  assert.deepEqual(seriesProblems(series({ episodes_per_day: 0 })), []);
 });
 
 test("a ten-minute MiniMax brand story accepts only the exact cute-mystery look", () => {

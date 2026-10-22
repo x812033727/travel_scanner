@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
 import { UsageError } from "../core/paths.mjs";
-import { chaptersFrom, finalReview, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, languageFileProblem, languageFiles, measureProblems, projectBody, readMeta } from "./import.mjs";
+import { chaptersFrom, finalReview, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, importPublish, languageFileProblem, languageFiles, measureProblems, projectBody, publishFields, readMeta } from "./import.mjs";
 
 const DESCRIPTION = "一段說明。\n\n章節\n00:00 一張圖，三個問題\n00:48 畫面真，不代表故事真\n1:02:03 很長的一章\n\n資料來源\nS01｜NIST";
 const META = { slug: "ai-real-world-01-image-trust", titles: ["照片不能當證據之後，我們還能相信什麼？", "AI 圖片越來越真：我們該怎麼查證？"], description: DESCRIPTION };
@@ -324,6 +324,101 @@ test("language files are found by name and checked by kind", (t) => {
   assert.equal(languageFileProblem("captions", Buffer.from("no cues")), "no caption cues");
   assert.match(languageFileProblem("metadata", Buffer.from(`${"x".repeat(101)}\n\nbody`)), /1–100 characters/);
   assert.equal(languageFileProblem("metadata", Buffer.from("Title\r\n\r\nBody\r\n")), null);
+});
+
+/** An imported drama whose cut the owner approved, its en and ja batch sent before. */
+function approved(t, overrides = {}) {
+  const box = imported(t, { status: "approved", ...overrides });
+  box.known.locales_decided_at = "2026-10-19T17:09:11Z";
+  box.known.reviews.push({ id: "l1", gate: "languages", subject: null, status: "approved", payload: {} });
+  writeFileSync(path.join(box.from, "meta.json"), JSON.stringify({ ...META, category: "drama", tags: ["種田", "AI短劇"], category_id: 24 }));
+  return box;
+}
+
+test("--publish sends the upload package: metadata.json, the cut, the thumbnail and the ticked language files", async (t) => {
+  const box = approved(t);
+  const lines = [];
+  const result = await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe, log: (line) => lines.push(line) });
+  assert.equal(result.status, "pending");
+  assert.deepEqual(result.locales, ["en"], "ja's title was not ticked");
+  assert.deepEqual(result.skipped, { captions: {}, dub: {} });
+  const review = box.calls.at(-1)[2];
+  assert.equal(review.gate, "publish");
+  assert.deepEqual(review.files.map((file) => [file.role, file.content_type]), [
+    ["metadata", "application/json"], ["final", "video/mp4"], ["thumbnail", "image/png"], ["captions_zh-TW", "application/x-subrip"],
+    ["captions_en", "application/x-subrip"], ["dub_en", "audio/mp4"], ["captions_ja", "application/x-subrip"], ["dub_ja", "audio/mp4"],
+  ]);
+  // The site binds the approval to metadata.json, and metadata.json to the approved cut.
+  assert.equal(review.content_sha256, review.files[0].sha256);
+  const bytes = readFileSync(path.join(box.workdir, META.slug, "review", `publish-import-${createHash("sha256").update("the cut").digest("hex").slice(0, 16)}.json`));
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), review.content_sha256);
+  const metadata = JSON.parse(bytes);
+  assert.equal(metadata.final_sha256, createHash("sha256").update("the cut").digest("hex"));
+  assert.equal(metadata.title, META.titles[0]);
+  assert.equal(metadata.default_language, "zh-TW");
+  assert.deepEqual(metadata.tags, ["種田", "AI短劇"]);
+  assert.equal(metadata.category_id, "24");
+  assert.equal(metadata.made_for_kids, false);
+  assert.equal(metadata.contains_synthetic_media, true, "a drama is disclosed");
+  assert.deepEqual(metadata.localizations, { en: { title: "Farm, Wed, Conquer · Episode 1 | CC", description: "A failed interview, a thunderstorm, a debt." } });
+  assert.deepEqual(metadata.language_choice, box.known.locales, "the panel as the site checks it");
+  assert.equal(metadata.skipped_dub_locales, undefined);
+  assert.equal(review.payload.hand_pushed, true);
+  assert.equal(review.payload.package.ok, true);
+  assert.deepEqual(review.payload.package.items.map((item) => item.id), ["files", "descriptions", "captions", "disclosure"]);
+  assert.deepEqual(review.payload.locales, ["zh-TW", "en"]);
+  assert.equal(review.payload.zh.title, META.titles[0]);
+  assert.deepEqual(lines, [`${META.slug}: upload package pending (zh-TW, en)`]);
+});
+
+test("--publish says a ticked caption or dub the folder lacks as skipped, and refuses a ticked title it lacks", async (t) => {
+  const box = approved(t, { locales: { en: { metadata: true, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } } });
+  rmSync(path.join(box.from, "dub.en.m4a"));
+  const result = await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  assert.deepEqual(Object.keys(result.skipped.dub), ["en", "ko"]);
+  assert.deepEqual(result.skipped.captions, {});
+  const metadata = JSON.parse(readFileSync(path.join(box.workdir, META.slug, "review", readdirSync(path.join(box.workdir, META.slug, "review")).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.match(metadata.skipped_dub_locales.ko, /has no dub.ko track/);
+  const untitled = approved(t, { locales: { ko: { metadata: true, captions: false, dub: false } } });
+  await assert.rejects(importPublish({ from: untitled.from, workdir: untitled.workdir, client: untitled.client, probe: untitled.probe }), /ko title and description: no description.ko.txt/);
+});
+
+test("--publish waits for the approved cut and refuses what YouTube or the site would refuse", async (t) => {
+  const pending = approved(t, { status: "pending" });
+  await assert.rejects(importPublish({ from: pending.from, workdir: pending.workdir, client: pending.client, probe: pending.probe }), /approved as the site's newest final cut/);
+  const other = approved(t, { sha: "c".repeat(64) });
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, client: other.client, probe: other.probe }), /approved as the site's newest final cut/);
+  const long = approved(t);
+  await assert.rejects(importPublish({ from: long.from, workdir: long.workdir, client: long.client, probe: async () => 120 }), /dub.en.m4a: lasts 120.00 s/);
+  const big = approved(t);
+  writeFileSync(path.join(big.from, "thumbnail.png"), Buffer.alloc(2 * 1024 * 1024 + 1));
+  await assert.rejects(importPublish({ from: big.from, workdir: big.workdir, client: big.client, probe: big.probe }), /YouTube takes 2097152/);
+  const unsaid = approved(t);
+  writeFileSync(path.join(unsaid.from, "meta.json"), JSON.stringify({ ...META, category: "tutorial", tags: Array.from({ length: 11 }, (_, i) => `t${i}`) }));
+  await assert.rejects(importPublish({ from: unsaid.from, workdir: unsaid.workdir, client: unsaid.client, probe: unsaid.probe }), (error) => /contains_synthetic_media/.test(error.message) && /tags/.test(error.message));
+  for (const box of [pending, other, long]) assert.ok(!box.calls.some(([kind]) => kind === "part" || kind === "submit"), "nothing is uploaded before the package passes");
+  for (const box of [big, unsaid]) assert.deepEqual(box.calls, [], "the folder is checked before the site is asked");
+});
+
+test("a languages batch is not sent after the upload package", async (t) => {
+  const box = approved(t);
+  box.known.reviews.push({ id: "p1", gate: "publish", subject: null, status: "pending", payload: {} });
+  await assert.rejects(importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe }), /upload package was already sent/);
+  assert.deepEqual(box.calls.map(([kind]) => kind), ["project"]);
+});
+
+test("publish fields: a drama is disclosed unless meta.json says otherwise", () => {
+  const meta = readMeta({ ...META, category: "drama" });
+  assert.equal(publishFields({}, meta).fields.contains_synthetic_media, true);
+  assert.equal(publishFields({ contains_synthetic_media: false, disclosure_reason: "stylised" }, meta).fields.contains_synthetic_media, false);
+  assert.deepEqual(publishFields({ made_for_kids: "no", category_id: "ent" }, meta).problems, ["category_id is YouTube's number, 24 for entertainment", "made_for_kids: true or false"]);
+});
+
+test("the command reads --publish, not beside --languages", async () => {
+  let err = "";
+  const code = await main(["import", "--from", ".", "--languages", "--publish"], { stderr: { write: (chunk) => { err += chunk; } }, stdout: { write: () => {} } });
+  assert.equal(code, EXIT.usage);
+  assert.match(err, /two steps/);
 });
 
 test("the command reads --languages", async () => {

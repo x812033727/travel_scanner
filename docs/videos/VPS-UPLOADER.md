@@ -337,7 +337,7 @@ JSON 僅接受該常數列出的鍵，例如 `{ "title": "#title-textarea #textb
 | POST /jobs/:id/resume | 人工處理後續跑；可帶已核對的 video_id |
 | POST /jobs/:id/cancel | 取消等待；保留素材與已知影片 ID |
 
-網站工作 ID 為 `sha256(slug + ':' + approved metadata sha256)`。工作建立後的標題與說明
+網站工作 ID 為 `sha256(slug + ':' + approved metadata sha256)`；品牌故事（分類 `story`）再接 `':story-titles-1'`，因為 2026-10-21 起它的標題在 CC 標記前多了「｜品牌故事」。同一個核准包在舊規則下已完成的品牌故事，後台會顯示「重送標題說明到 VPS」，新工作帶原影片 ID，只更新詳細資料、不重傳 MP4。工作建立後的標題與說明
 固定在該 manifest；更改後台表單不會改寫進行中的工作。新核准版本可帶原影片 ID 建立另一筆，
 但原工作 active 時會拒絕。素材只接受核准的本機 review-store 檔案，不接受任意下載 URL。
 manifest 的檔案角色是 `final`、`thumbnail`、`captions_<locale>` 與 `dub_<locale>`；工作檢視
