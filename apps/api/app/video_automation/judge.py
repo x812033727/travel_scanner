@@ -216,8 +216,13 @@ POLICY_ADVICE_INSTRUCTIONS = (
     "what to buy, sell, take, sign or vote for)."
 )
 POLICY_SPONSORED_INSTRUCTIONS = (
-    "This narration reads as sponsored or promotional: it urges the viewer to buy or sign up "
-    "for a named product or service, or praises one without weighing it."
+    "This narration reads as sponsored or promotional: it urges the viewer to buy, join a "
+    "paid membership, or sign up for a named product or service, or endorses one without "
+    "weighing it. A free invitation to subscribe (訂閱) to the creator's own YouTube channel "
+    "does not count by itself; answer false if that is the only apparent promotion. Still "
+    "answer true if a paid offer, external sign-up, discount "
+    "code, third-party sponsor, or product or service endorsement appears anywhere in the "
+    "narration, even alongside that channel invitation."
 )
 # The story's own three. Jev reads wording only (app.ai.jev): whether the story's facts are
 # right is the verifier's, before the narration is recorded, never a question here. A brand
