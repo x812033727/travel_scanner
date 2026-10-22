@@ -1,0 +1,58 @@
+{
+  "revision": "R44-s53033-mature-official-camp-priority",
+  "reason": "Independent original-prompt preflight HOLD: generic resident and cottage row can obscure official-camp prior eligibility or imply a particular assignment; narrow mature tent resident and one unoccupied low wooden dwelling before paid media",
+  "before_sha256": {
+    "video.json": "76f9607d619d8be004904a22c588237c76d86200b4015fd53fbb83fd50d33b3a",
+    "claims.md": "003e44937888d2e6f3dda5baba27283caf77f2552e732deb149fe6d53e9f3448",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "4a3b3447bb1f5d980b0a0965309c1e9a3fda81f64ead117e87910f340f61831d",
+    "claims.md": "69d91d3b6e5bf5e551060f0eeab5f7745a1704d5c24e59f1f1d10993554ba4c3",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53033",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53033",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53033",
+            "text": "官方營地住戶，有優先分配小屋的資格。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Wide shot at an official cottage camp, an anonymous resident points toward a plain wooden cottage among a row of small huts, muted afternoon light",
+          "camera": "drift left",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53033",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53033",
+            "text": "官方營地住戶，有優先分配小屋的資格。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot in a 1906 San Francisco official canvas-tent camp: one visibly mature adult woman resident with silver-streaked hair, lined cheeks and full adult shoulders stands beside one plain tent, one hand resting on a tent rope as she looks across a bare camp lane toward exactly one low finished but unoccupied wooden dwelling with a plain closed door; modest period coat and long skirt, soft overcast daylight; no key, papers, queue, other family, person inside the dwelling, nameplate, vehicle, suburban street, hardhat or modern device",
+          "camera": "drift left",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53033",
+      "path": "claims.md exact row",
+      "before": "| s53033 | 官方營地住戶，有優先分配小屋的資格。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 官方營地住戶獲得分配優先；不預告後面的土地與契約轉折 |",
+      "after": "| s53033 | 官方營地住戶，有優先分配小屋的資格。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 1913 年調查明記木屋由營地指揮官分配，官方營地住戶列第一，營外棚屋／帳棚住戶次之；此處只說群組優先次序，不表示每位住戶立即獲屋或某人已入住。畫面為匿名原創資格概念：一名灰髮帶面紋的成年女性站在 1906 年官方帳棚營地的一頂帆布帳棚旁，望向營地另一端一棟低矮木屋，屋中沒有可見住戶；她的身分、站位、動作與此屋均非史料可辨的個案，不畫鑰匙、申請單、既定受配或入住房門，也不預告後面的土地與契約轉折。 |"
+    }
+  ]
+}
