@@ -1,11 +1,13 @@
 // `music`: the video's background track (docs/videos/DRAMA.md; slides: docs/videos/ILLUSTRATED.md). `music.prompt` has the server
-// generate one at least as long as the video into music/; `music.track` names the owner's own
+// request a track at least as long as the video into music/; the decoded result is measured
+// before assembly because the provider may return less audio. `music.track` names the owner's own
 // file under <work base>/_music/, checked against music.sha256 when given. Either way
 // music/manifest.json carries the mix hash status compares.
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
@@ -18,8 +20,8 @@ import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { mayWriteProject, Stage, statusProblem, trackPrice } from "./stages.mjs";
 
-// The track outlasts the video a little, so the fade-out never runs into silence; the server
-// takes 10 to 600 seconds.
+// Ask for a little more than the video so the fade-out does not reach silence; the server
+// accepts requests of 10 to 600 seconds, but may return a shorter decoded track.
 export const TAIL_SECONDS = 5;
 export const MIN_TRACK_SECONDS = 10;
 export const MAX_TRACK_SECONDS = 600;
@@ -30,6 +32,29 @@ export function trackSeconds(totalFrames) {
 }
 
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.music);
+
+/** Final decoded timestamp from ffmpeg -progress (its historical out_time_ms is microseconds). */
+export function decodedProgressSeconds(output) {
+  const fields = Object.fromEntries(String(output).trim().split(/\r?\n/).map((line) => line.split(/=(.*)/s, 2)));
+  if (fields.progress !== "end") return null;
+  const micros = Number(fields.out_time_us ?? fields.out_time_ms);
+  if (Number.isFinite(micros) && micros > 0) return micros / 1_000_000;
+  const stamp = /^(\d+):(\d{2}):(\d{2}(?:\.\d+)?)$/.exec(fields.out_time ?? "");
+  if (!stamp) return null;
+  const seconds = Number(stamp[1]) * 3600 + Number(stamp[2]) * 60 + Number(stamp[3]);
+  return Number.isFinite(seconds) && seconds > 0 ? seconds : null;
+}
+
+/** Decode the complete audio stream. ffprobe's MP3 header duration alone is not delivery proof. */
+export async function decodedMusicSeconds(file, env = process.env, tool = null) {
+  const ffmpeg = tool ?? (await locateFfmpeg({ ...process.env, ...env })).ffmpeg;
+  const { stdout } = await runTool(ffmpeg, ["-nostats", "-v", "error", "-xerror", "-i", file, "-map", "0:a:0", "-f", "null", "-", "-progress", "pipe:1"]);
+  const seconds = decodedProgressSeconds(stdout);
+  if (seconds === null) {
+    throw new Error(`could not measure the fully decoded music duration: ${file}`);
+  }
+  return seconds;
+}
 
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
@@ -86,13 +111,24 @@ export async function run(command, args, ctx) {
   const status = await mediaStatus(options);
   const problem = statusProblem(status, "music", doc.format);
   if (problem) throw new MediaError(problem, { who: "owner" });
+  const { ffmpeg } = await locateFfmpeg({ ...process.env, ...ctx.env }); // fail before a paid request if decoding is unavailable
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "music", format: doc.format, now: ctx.now });
   const key = mediaKey("music", { provider: status.music.provider, model: status.music.model, prompt: music.prompt, seconds });
   const track = await stage.music({ id: "music", key, prompt: music.prompt, seconds, target: `music/${key}` });
-  const manifest = { mix_hash: mix, source: "generated", file: track.file, sha256: track.sha256, seconds, prompt: music.prompt, key, model: manifest_model(status), generated_at: ctx.now().toISOString() };
+  const actualSeconds = await decodedMusicSeconds(path.join(workdir, track.file), ctx.env, ffmpeg);
+  const requiredSeconds = timeline.total_frames / FPS;
+  const short = actualSeconds < requiredSeconds;
+  // An insufficient track retains the requested mix binding for audit, but has no passing mix_hash.
+  // This keeps the existing status checklist from marking "music generated" complete.
+  const manifest = { mix_hash: short ? null : mix, requested_mix_hash: mix, source: "generated", file: track.file, sha256: track.sha256, requested_seconds: seconds, actual_seconds: actualSeconds, duration_measurement: "ffmpeg_full_decode", duration_hold: short, prompt: music.prompt, key, model: manifest_model(status), generated_at: ctx.now().toISOString() };
   atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
-  recordStage(workdir, "music", { source: "generated", seconds, reused: track.reused, usd: ledgerTotals(workdir).usd }, ctx.now());
-  ctx.stdout.write(`music: ${track.file} (${seconds} s${track.reused ? ", reused" : ""}); this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\nnext: node tools/video/cli.mjs assemble --slug ${doc.slug}\n`);
+  recordStage(workdir, "music", { source: "generated", requested_seconds: seconds, actual_seconds: actualSeconds, duration_hold: short, reused: track.reused, usd: ledgerTotals(workdir).usd }, ctx.now());
+  ctx.stdout.write(`music: ${track.file} (decoded ${actualSeconds.toFixed(3)} s; requested ${seconds} s${track.reused ? "; reused" : ""}); this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
+  if (short) {
+    ctx.stderr.write(`music needs the owner: decoded track is shorter than the ${requiredSeconds.toFixed(3)} s cut. Keep this paid file; arrange an explicit checked loop or another licensed track. No replacement was bought.\n`);
+    return EXIT.owner;
+  }
+  ctx.stdout.write(`next: node tools/video/cli.mjs assemble --slug ${doc.slug}\n`);
   return EXIT.ok;
 }
 

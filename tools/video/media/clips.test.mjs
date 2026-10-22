@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { locateFfmpeg } from "../assemble/ffmpeg.mjs";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { LEASE_FILE } from "../core/project-lease.mjs";
@@ -26,6 +28,15 @@ const TOKEN = `mkv_${"c".repeat(43)}`;
 const SHA = (data) => createHash("sha256").update(data).digest("hex");
 const PNG = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);
 const MP4 = (text) => Buffer.concat([Buffer.from("\x00\x00\x00\x18ftypisom", "binary"), Buffer.from(text)]);
+let fixtureMusicBytes;
+async function musicFixture() {
+  if (fixtureMusicBytes) return fixtureMusicBytes;
+  const { ffmpeg } = await locateFfmpeg();
+  const result = spawnSync(ffmpeg, ["-nostdin", "-v", "error", "-f", "lavfi", "-i", "sine=frequency=220:duration=1", "-c:a", "libmp3lame", "-f", "mp3", "pipe:1"], { maxBuffer: 2 * 1024 * 1024 });
+  if (result.status !== 0) throw new Error(`fixture MP3 could not be encoded: ${String(result.stderr)}`);
+  fixtureMusicBytes = result.stdout;
+  return fixtureMusicBytes;
+}
 
 const STATUS = {
   enabled: true,
@@ -73,7 +84,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
     if (init.method === "POST" && route === "music") {
       const request = JSON.parse(init.body);
       state.music.push(request);
-      const bytes = Buffer.from(`ID3music|${request.prompt}|${request.seconds}`);
+      const bytes = await musicFixture();
       state.files.set(SHA(bytes), bytes);
       return Response.json({ id: `music${state.music.length}`, status: "ready", file: { sha256: SHA(bytes), size: bytes.length, content_type: "audio/mpeg" }, error: null, retry_after_seconds: 0, usd_estimate: 0.08 });
     }
@@ -696,7 +707,7 @@ test("a still shot buys no clip: its keyframe goes into the manifest, a clip may
   assert.match(flagged.out.stderr, /shots sea-storm have no passed keyframe; run keyframes first/);
 });
 
-test("music is generated a little longer than the video and cached, or the owner's own track is checked", async () => {
+test("short generated music is measured, held and cached; the owner's own track is checked", async () => {
   const { box, doc, timeline } = prepared();
   const site = mediaSite();
   const dry = context(box, site.fetchImpl);
@@ -704,17 +715,23 @@ test("music is generated a little longer than the video and cached, or the owner
   assert.match(dry.out.stdout, new RegExp(`music: ${trackSeconds(timeline.total_frames)} s for a`));
   assert.match(dry.out.stdout, /gemini lyria-3\.5 ready; about US\$0\.08/);
   const run = context(box, site.fetchImpl);
-  assert.equal(await main(["music", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(await main(["music", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr);
   assert.equal(site.state.music.length, 1);
   assert.deepEqual(site.state.music[0], { slug: "fixture-drama", prompt: doc.music.prompt, seconds: trackSeconds(timeline.total_frames) });
   const manifest = manifestOf(box, "music");
-  assert.equal(manifest.mix_hash, mixHash(doc));
   assert.equal(manifest.source, "generated");
+  assert.equal(manifest.mix_hash, null, "a duration hold cannot pass the music checklist");
+  assert.equal(manifest.requested_mix_hash, mixHash(doc));
+  assert.equal(manifest.requested_seconds, trackSeconds(timeline.total_frames));
+  assert.ok(manifest.actual_seconds > 0.9 && manifest.actual_seconds < 1.1);
+  assert.equal(manifest.duration_hold, true);
+  assert.match(run.out.stderr, /music needs the owner/);
+  assert.equal((await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "music generated").done, false);
   assert.match(manifest.file, /^music\/[0-9a-f]{16}\.mp3$/);
   assert.ok(existsSync(path.join(box.workdir, manifest.file)));
   assert.equal(readLedger(box.workdir).totals.music, 1);
   const again = context(box, site.fetchImpl);
-  assert.equal(await main(["music", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(await main(["music", "--slug", box.slug], again.ctx), EXIT.owner, again.out.stderr);
   assert.equal(site.state.music.length, 1, "the same prompt and length are not paid for twice");
   assert.match(again.out.stdout, /reused/);
 

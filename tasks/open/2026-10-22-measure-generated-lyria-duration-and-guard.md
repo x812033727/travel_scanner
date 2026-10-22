@@ -1,14 +1,14 @@
 ---
 id: 2026-10-22-measure-generated-lyria-duration-and-guard
 title: Measure generated Lyria duration and guard music loop seams
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: codex-gpt6-lyria-duration-guard
+claimed_at: 2026-10-22T02:57:00Z
 created_at: 2026-10-22T01:02:17Z
 completed_at:
-branch:
+branch: codex/lyria-duration-guard
 depends_on: []
 scope:
   - tools/video/media/music.mjs
@@ -16,6 +16,7 @@ scope:
   - tools/video/assemble/drama.mjs
   - tools/video/assemble/cli.mjs
   - tools/video/media/music-duration.test.mjs
+  - tools/video/media/clips.test.mjs
   - tools/video/assemble/music-loop.test.mjs
 ---
 
@@ -35,29 +36,29 @@ a tool defect affecting other long videos, not a reason to re-buy the track.
 
 ## Definition of done
 
-- [ ] A generated music artifact records its **decoded actual duration** separately
+- [x] A generated music artifact records its **decoded actual duration** separately
       from the requested duration. The stage output and manifest do not report the
       request as delivered length, including on cache reuse.
-- [ ] When the source is shorter than the planned soundtrack, the assembly path
+- [x] When the source is shorter than the planned soundtrack, the assembly path
       either stops with an actionable hold or uses an explicit, measured loop plan
       whose joins pass an audio check. A 174-second answer for a 600-second
       request cannot silently become a passing long-film music receipt.
-- [ ] The policy works for a sufficiently long generated track and a short track;
+- [x] The policy works for a sufficiently long generated track and a short track;
       failures preserve the existing artifact, job identity, hash and ledger, with
       no automatic paid replacement.
 
 ## Steps
 
-- [ ] Trace the request, download, cache and manifest through `music.mjs`, then
+- [x] Trace the request, download, cache and manifest through `music.mjs`, then
       the manifest read and FFmpeg input through `sound.mjs`, `cli.mjs` and
       `drama.mjs`. Decide whether this route should hold or make a checked loop;
       document the rule in the task before changing code.
-- [ ] Measure the decoded file duration after download and on reuse. Keep the
+- [x] Measure the decoded file duration after download and on reuse. Keep the
       requested duration as request metadata, and expose the actual duration in
       the persisted receipt and console output.
-- [ ] Enforce the selected short-track rule before a final music/assemble success;
+- [x] Enforce the selected short-track rule before a final music/assemble success;
       if looping is allowed, record join positions and inspect or measure the joins.
-- [ ] Add tests using decodable short audio. Existing `clips.test.mjs` fakes
+- [x] Add tests using decodable short audio. Existing `clips.test.mjs` fakes
       MP3 bytes with `ID3` text, so it cannot prove duration or join behavior.
 
 ## How to verify
@@ -72,6 +73,8 @@ hold or a verified loop receipt, without another vendor request.
 
 ## Notes
 
+2026-10-22 implementation choice before editing code: retain the paid generated file, job key, hash and ledger; measure its **fully decoded** duration after download and on cache reuse. If a generated track is shorter than the cut, `assemble` will stop before encoding with an actionable message rather than silently repeating it. This is the ticket's allowed hold route. A future explicit loop and seam QA can resume the film with the retained source; this change will not buy another track automatically. The existing `clips.test.mjs` media stub returns literal `ID3` text rather than decodable audio, so its one music-generation fixture must become a real decodable short MP3; the four other tickets mentioning that file are unclaimed/open when this scope was added.
+
 The C03 measurement above came from the production handoff on 2026-10-22;
 this ticket audit read the tool path, not the media bytes. `music.mjs` computes
 `trackSeconds()` (maximum 600), sends that value to `Stage.music()`, and writes
@@ -82,3 +85,22 @@ length in prompt text; that is no guarantee of actual duration.
 `drama.mjs` loops the input indefinitely to the film length. No existing open
 task was found for this duration mismatch. Scope is limited to the listed tool
 files and new tests; no C03 files, media or provider code are assigned here.
+
+2026-10-22 implementation and checks: `music` now locates FFmpeg before a paid
+request, fully decodes the downloaded or cached file, writes distinct
+`requested_seconds` and `actual_seconds`, and returns an owner hold on a short
+answer while preserving the same paid file, key, SHA and ledger. `assemble`
+checks the generated file's SHA and measured duration against the current cut
+before encoding segments. A one-second decodable MP3 exercises the short and
+cache paths; a two-second MP3 exercises both short and sufficient assembly
+inputs. With the supported bundled Node, the focused media and assembly suite
+passed; `npm run check:tasks` and `git diff --check` passed. The
+retained C03 MP3 was read only: FFmpeg full decode ended at 174.001633 s,
+ffprobe reported 174.001583 s and 4,182,166 bytes, while its old manifest still
+says `seconds: 600`. No vendor call or media rewrite occurred in that check.
+
+Existing request-only manifests may still look complete in `pipelineStatus`
+until `music` is rerun for cached measurement. `assemble` rejects them; status
+reconciliation has its own open follow-up task
+`2026-10-22-reconcile-legacy-generated-music-manifests-in`, dependent on the
+active A01 lexicon task that owns `tools/video/core/state.mjs`.
