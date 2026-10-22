@@ -1,0 +1,58 @@
+{
+  "revision": "R40-s53030-adult-waiting-unfinished-cottage",
+  "reason": "First s53030 native human REJECT showed childlike figure, finished large street house/sign, no carpenters; narrow source-safe waiting/construction concept",
+  "before_sha256": {
+    "video.json": "7ebd094e7bd89ba3ebf036440385ffb6f54aa3f8bdf746b30bbcc91c7d72ba10",
+    "claims.md": "7ea2850176e7e8a27e10fa7807db0007358f52868eb3f8bedd87ca8a711820f4",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "65bec2d34c7d8443b9e45112e1193c6645feee86e676c0552d78b79f2335c312",
+    "claims.md": "4e6ac59efe8a07e7159547cada6da853f0367dae125ee628643be94822664010",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53030",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53030",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53030",
+            "text": "可等著換進木屋的人，還要再等多久？",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Wide shot at a refuge after the 1906 fire, an unnamed resident watches carpenters work on another wooden house, diffuse morning light",
+          "camera": "push in",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53030",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53030",
+            "text": "可等著換進木屋的人，還要再等多久？",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium-wide view in a bare-earth San Francisco public-square relief camp in late 1906: foreground one unmistakably middle-aged female refugee with streaks of grey hair, lined cheeks, adult hands, a plain dark long skirt and shawl stands outside one simple canvas tent, looking toward work at a distance; on the right only one low unfinished small wooden relief cottage frame with exposed vertical studs and loose rough boards, two visibly grown bareheaded carpenters in plain period work shirts attaching one plank by hand, no completed roof, door or resident inside; no large finished suburban house, paved street, traffic sign, power line, hardhat or modern machine, diffuse overcast daylight",
+          "camera": "push in",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53030",
+      "path": "claims.md exact row",
+      "before": "| s53030 | 可等著換進木屋的人，還要再等多久？ | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 建屋宣布、9 月施工及分散營地 |",
+      "after": "| s53030 | 可等著換進木屋的人，還要再等多久？ | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年救濟小屋是為取代帳棚，9 月 10 日開工、9 月 16 日漢密爾頓廣場完成 20 棟，但至少隔兩三個月才有相當數量可供難民使用。畫面只作匿名等待與持續施工的原創概念：有灰髮與面紋的中年成年女性在一頂帆布帳棚外望向兩位明顯成年木匠，後者在低矮未完工的小屋木架上裝一片粗板；不畫已可入住的完工住宅、郊區街道或現代路牌，不主張史料記載此女子、木匠、特定營地工位或同日實際施工方式。 |"
+    }
+  ]
+}
