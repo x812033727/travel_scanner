@@ -1,6 +1,6 @@
 # S61｜哈利法克斯的「第二次爆炸」警報：固定來源
 
-2026-10-22 UTC。**作者查核候選，尚未經獨立覆核。** 題目是 1917 年 12 月 6 日哈利法克斯港爆炸後，為何人們又收到第二次爆炸警報，以及第二次爆炸為何沒有發生。S01–S60 brief、題庫與任務以 Halifax／哈利法克斯爆炸查無同題；S48 是 1858 年大西洋電纜，S60 是南極兩封信。原先考慮的 1859 年 Carrington 太陽風暴，在本環境無法取得可固定、可直接核讀的同期天文與電報原始記錄，因此不採用。
+2026-10-22 UTC。**R3 作者查核候選；R2 曾獨立史料／畫面覆核通過，R3 新增敘事與 P14 待重新獨立覆核。** 題目是 1917 年 12 月 6 日哈利法克斯港爆炸後，為何人們又收到第二次爆炸警報，以及第二次爆炸為何沒有發生。S01–S60 brief、題庫與任務以 Halifax／哈利法克斯爆炸查無同題；S48 是 1858 年大西洋電纜，S60 是南極兩封信。原先考慮的 1859 年 Carrington 太陽風暴，在本環境無法取得可固定、可直接核讀的同期天文與電報原始記錄，因此不採用。
 
 | 代號 | 固定全文 | 可證與限制 |
 | --- | --- | --- |
@@ -25,6 +25,8 @@
 | P11 | 群眾暫到 Common／山坡後，軍方搭白帳，教堂及其他空間整理成臨時收容處；一些較完整民宅也接納人。 | [P L2051–2094](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L2051-L2094)。不把同一帳棚或家庭重建成可指認個案。 |
 | P12 | 一波冬季風雪隨後來到；當時的傷者與流離居民面臨寒冷。 | [P L970–994](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L970-L994)、[P L1390–1404](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1390-L1404)。不說風雪與警報同一分鐘。 |
 | P13 | 爆後當晚外連電報線已有多條恢復，救援訊息向外傳；Prince 引馬薩諸塞救援人員在 12 月 8 日看到市府內的忙亂。 | [P L2310–2324](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L2310-L2324)、[P L1040–1079](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1040-L1079)。不可把 12 月 8 日救援人員放進 12 月 6 日初次警報。 |
+
+| P14 | Prince 寫首幾小時有人先尋家人，沒有家屬牽掛的訪客較早協助；通訊崩潰使遠處未傷居民一度不知最重災區，先清掃身邊碎玻璃。初期有人把同一廢墟翻找兩三次；約五小時後，搜救隊各被派到確定區域，完成的地段會記下來。 | [P L1990–2023](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1990-L2023)。這是 Prince 對救援組織的研究敘述；不重建可識別的個人、官方地圖或逐隊行動表。 |
 
 ## 敘事及畫面邊界
 

@@ -37,23 +37,23 @@
   "loops": [
     {
       "setup": "s61002",
-      "payoff": "s61059",
-      "what": "第二次警報是否真的又爆炸"
+      "payoff": "s61097",
+      "what": "第二次警報最後有沒有爆炸"
     },
     {
       "setup": "s61003",
-      "payoff": "s61058",
-      "what": "火藥庫會不會成下一個爆點"
+      "payoff": "s61057",
+      "what": "火藥庫有誰處理"
+    },
+    {
+      "setup": "s61004",
+      "payoff": "s61081",
+      "what": "往公地走的人到哪裡落腳"
     },
     {
       "setup": "s61005",
-      "payoff": "s61066",
-      "what": "有人撤離也有人留守"
-    },
-    {
-      "setup": "s61008",
       "payoff": "s61061",
-      "what": "Prince 的來源界線"
+      "what": "哪些救援者仍留守"
     },
     {
       "setup": "s61006",
@@ -61,49 +61,64 @@
       "what": "第一次爆炸從何而來"
     },
     {
-      "setup": "s61016",
-      "payoff": "s61019",
-      "what": "兩船在狹口如何接上危險"
+      "setup": "s61007",
+      "payoff": "s61040",
+      "what": "火勢是否真的逼近火藥庫"
     },
     {
-      "setup": "s61031",
-      "payoff": "s61057",
-      "what": "火藥庫是否真有火勢危險"
+      "setup": "s61016",
+      "payoff": "s61017",
+      "what": "狹口訊號能否避撞"
+    },
+    {
+      "setup": "s61024",
+      "payoff": "s61025",
+      "what": "燃燒貨船會造成什麼"
+    },
+    {
+      "setup": "s61030",
+      "payoff": "s61060",
+      "what": "消防失去領隊後誰指揮"
     },
     {
       "setup": "s61039",
-      "payoff": "s61058",
-      "what": "撤離與留守如何同時存在"
+      "payoff": "s61040",
+      "what": "火藥庫是否受火勢威脅"
     },
     {
-      "setup": "s61052",
-      "payoff": "s61061",
-      "what": "砲兵隊的灌水怎樣被記錄"
+      "setup": "s61053",
+      "payoff": "s61057",
+      "what": "哪支隊伍處理火藥庫"
     },
     {
-      "setup": "s61070",
-      "payoff": "s61075",
-      "what": "失去領隊的消防怎樣接回救援"
+      "setup": "s61065",
+      "payoff": "s61066",
+      "what": "危險解除消息何時傳到公地"
+    },
+    {
+      "setup": "s61068",
+      "payoff": "s61081",
+      "what": "回家後無處可住怎麼辦"
     },
     {
       "setup": "s61074",
-      "payoff": "s61079",
-      "what": "斷線的城市怎樣連外"
+      "payoff": "s61075",
+      "what": "搜救怎樣確認哪些街區已查"
     },
     {
-      "setup": "s61083",
-      "payoff": "s61094",
-      "what": "空地避難後在哪過夜"
+      "setup": "s61080",
+      "payoff": "s61081",
+      "what": "救出後住哪裡"
     },
     {
-      "setup": "s61087",
-      "payoff": "s61093",
-      "what": "風雪來時怎樣找到遮蔽"
+      "setup": "s61088",
+      "payoff": "s61089",
+      "what": "帳棚之後的天氣"
     },
     {
-      "setup": "s61097",
-      "payoff": "s61100",
-      "what": "Prince 的因果解釋能證到哪裡"
+      "setup": "s61096",
+      "payoff": "s61097",
+      "what": "火藥庫警報的結果"
     }
   ],
   "scenes": [
@@ -151,7 +166,7 @@
         }
       ],
       "data": {
-        "prompt": "Medium shot outside a 1917 naval-yard gate, one middle-aged guard looks toward a plain low storage building beyond the wall, smoke distant in pale daylight",
+        "prompt": "Medium shot outside a 1917 naval-yard gate, one middle-aged guard looks toward a plain low storage building beyond the wall, smoke distant in pale light",
         "camera": "push in",
         "visual": "still"
       }
@@ -162,7 +177,7 @@
       "lines": [
         {
           "id": "s61004",
-          "text": "已經受傷的人，還得往開闊地走；那裡安全嗎？",
+          "text": "已經受傷的人，還得往開闊地走；會有人接應嗎？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -199,7 +214,7 @@
         }
       ],
       "data": {
-        "prompt": "Wide shot of two ships separated by a narrow Halifax harbor channel, one middle-aged dockwatcher on the near wharf, muted daylight",
+        "prompt": "Wide shot of two ships separated by a narrow Halifax harbor channel, one middle-aged dockwatcher on the near wharf, muted light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -210,7 +225,7 @@
       "lines": [
         {
           "id": "s61007",
-          "text": "火勢真的朝火藥庫去，還是街上的人只聽見傳言？",
+          "text": "火勢真的危險地靠近火藥庫，還是有人聽錯了？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -226,7 +241,7 @@
       "lines": [
         {
           "id": "s61008",
-          "text": "參與過救援的普林斯，在一九二〇年留下兩條線索。",
+          "text": "參與救援的普林斯，三年後把這個上午寫進研究。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -242,7 +257,7 @@
       "lines": [
         {
           "id": "s61009",
-          "text": "一條是人群如何逃，另一條是有人怎麼處理火藥庫。",
+          "text": "他寫街上有人往公地跑，也有人朝火藥庫那邊去。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -258,7 +273,7 @@
       "lines": [
         {
           "id": "s61010",
-          "text": "第二次巨響最後有沒有來？先回到港口那一撞。",
+          "text": "同一座港口，稍早有兩艘船正擠進狹口。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -274,13 +289,13 @@
       "lines": [
         {
           "id": "s61011",
-          "text": "這座港口在戰時忙著運補，軍需船和民用船交錯進出。",
+          "text": "兩艘船要會過的地方，是戰時船隻繁忙的狹口。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "戰時港口的兩艘船",
+      "chapter": "兩艘船在狹口相撞",
       "data": {
-        "prompt": "Wide shot over wartime Halifax harbor, one mature-faced port worker checks a moored cargo vessel from a wooden quay, overcast light",
+        "prompt": "Wide shot of two cargo vessels approaching a narrow Halifax harbor passage, one mature-faced port worker watching from a wooden quay, overcast light",
         "camera": "pan right",
         "visual": "still"
       }
@@ -355,7 +370,7 @@
       "lines": [
         {
           "id": "s61016",
-          "text": "兩艘船必須在同一處狹口會過；哪一個動作出錯了？",
+          "text": "兩艘船必須在同一處狹口會過；訊號能讓它們避開嗎？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -456,7 +471,7 @@
         }
       ],
       "data": {
-        "prompt": "Close shot of one grey-haired researcher resting a finger beside a blank report page, quiet window daylight",
+        "prompt": "Close shot of one grey-haired researcher resting a finger beside a blank report page, quiet window light",
         "camera": "pan left",
         "visual": "still"
       }
@@ -467,7 +482,7 @@
       "lines": [
         {
           "id": "s61023",
-          "text": "第一次警告不足；第二次危險傳來時，人們會怎麼辦？",
+          "text": "岸上的人還不懂貨艙裡有什麼，火卻沒有等他們弄明白。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -483,7 +498,7 @@
       "lines": [
         {
           "id": "s61024",
-          "text": "如果第一次危險沒說清，第二次傳來時誰敢不跑？",
+          "text": "沒有充分示警的燃燒貨船，接著把什麼推上街頭？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -503,7 +518,7 @@
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "第一次爆炸，街道失去原樣",
+      "chapter": "起火貨船炸碎港邊街道",
       "data": {
         "prompt": "Wide shot of the smoking cargo ship in Halifax harbor as a distant flash spreads across the waterfront, one grey-haired dockworker turning away, overcast light",
         "camera": "pan right",
@@ -521,7 +536,7 @@
         }
       ],
       "data": {
-        "prompt": "Close shot of one mature-faced shopkeeper shielding his face beside a shattered window frame, diffused daylight",
+        "prompt": "Close shot of one mature-faced shopkeeper shielding his face beside a shattered window frame, diffused light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -564,14 +579,14 @@
       "lines": [
         {
           "id": "s61029",
-          "text": "普林斯當年的傷亡估數很大，但不是我們今天的定本名冊。",
+          "text": "首爆還留下另一種傷：有人仍在等救援。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "當時估數",
-        "kicker": "Prince 1920 年記錄",
-        "sub": "非最新名冊"
+        "text": "有人還在等救援",
+        "kicker": "首爆之後",
+        "sub": "Prince 1920 年研究"
       }
     },
     {
@@ -580,12 +595,12 @@
       "lines": [
         {
           "id": "s61030",
-          "text": "最先要做的是找人與滅火；少了領隊，誰來分工？",
+          "text": "最先要做的是找人與滅火；可消防隊少了領隊，誰來指揮？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged firefighter unrolling a hose beside damaged wooden houses, cold daylight",
+        "prompt": "Medium shot of one middle-aged firefighter unrolling a hose beside damaged wooden houses, cold light",
         "camera": "drift right",
         "visual": "still"
       }
@@ -644,7 +659,7 @@
       "lines": [
         {
           "id": "s61034",
-          "text": "那時若再有人喊「另一處也會爆」，誰能立即核清？",
+          "text": "就在碎玻璃還沒清時，新警告又指向哪裡？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -724,7 +739,7 @@
       "lines": [
         {
           "id": "s61039",
-          "text": "被警告的是什麼，離火究竟有多近？",
+          "text": "那座海軍造船廠火藥庫，真的受到火勢威脅嗎？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -740,13 +755,13 @@
       "lines": [
         {
           "id": "s61040",
-          "text": "普林斯說，爆炸還不到一小時，火藥庫的消息已傳開。",
+          "text": "普林斯說，火勢危險地靠近海軍造船廠內的火藥庫。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "警報把人帶往空地",
+      "chapter": "士兵把人帶向公地",
       "data": {
-        "prompt": "Medium shot of one adult naval messenger hurrying past broken storefronts toward a street crossing, winter daylight",
+        "prompt": "Wide shot of smoke close to a plain low naval-yard magazine, one middle-aged guard looking on from a gate, winter light; no measured distance or visible detonation",
         "camera": "pull back",
         "visual": "still"
       }
@@ -757,12 +772,12 @@
       "lines": [
         {
           "id": "s61041",
-          "text": "它在海軍造船廠裡，附近仍有火勢；這不是空白地圖上的點。",
+          "text": "他沒給出相距幾步，卻說不到一小時警報已沿街傳開。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot with one mature-faced yard guard beside a low magazine building and distant smoke beyond a boundary wall, pale daylight",
+        "prompt": "Medium shot of one mature-faced messenger hurrying from a smoky naval-yard gate toward a damaged street, pale daylight",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -794,7 +809,7 @@
         }
       ],
       "data": {
-        "prompt": "Close shot of an abandoned hammer and bandage roll beside one grey-haired parent guiding a child away, chilly daylight",
+        "prompt": "Close shot of an abandoned hammer and bandage roll beside one grey-haired parent guiding a child away, chilly light",
         "camera": "pan left",
         "visual": "still"
       }
@@ -885,7 +900,7 @@
       "lines": [
         {
           "id": "s61049",
-          "text": "有人以為第二次快來，有人卻不知道消息從哪裡起。",
+          "text": "有人一路往山坡走，仍等不到能放心回去的消息。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -901,12 +916,12 @@
       "lines": [
         {
           "id": "s61050",
-          "text": "空地聚起人，也聚起一個新的問題：現在還能回去嗎？",
+          "text": "公地與山坡聚起人；留在火邊的，還得處理那座庫房。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced father watching the damaged city from the edge of Halifax Common, late daylight",
+        "prompt": "Medium shot of one mature-faced father watching the damaged city from the edge of Halifax Common, late light",
         "camera": "pan left",
         "visual": "still"
       }
@@ -917,12 +932,12 @@
       "lines": [
         {
           "id": "s61051",
-          "text": "普林斯引用的記述說，後來有人騎馬通報危險已過。",
+          "text": "有些人衣薄帶傷，還在空地上等待。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged messenger on horseback approaching waiting residents at the Common, overcast light",
+        "prompt": "Medium shot of one middle-aged resident in a thin wool coat waiting among distant people on Halifax Common, cold overcast light",
         "camera": "drift right",
         "visual": "still"
       }
@@ -933,12 +948,12 @@
       "lines": [
         {
           "id": "s61052",
-          "text": "警報可以解除，碎掉的窗、斷掉的路不會立刻恢復。",
+          "text": "撤離先讓人離開危險，卻沒有處理火藥庫本身。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one adult resident returning toward a broken window frame carrying a folded blanket, muted light",
+        "prompt": "Medium shot of one mature-faced resident at the edge of an open field watching distant smoke above the naval-yard wall, muted light",
         "camera": "push in",
         "visual": "still"
       }
@@ -949,14 +964,14 @@
       "lines": [
         {
           "id": "s61053",
-          "text": "更要緊的是，第二次究竟沒發生，還是我們漏看了？",
+          "text": "誰去處理火藥庫，讓警報不變成第二聲？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "第二次有沒有爆？",
-        "kicker": "警報不是結果",
-        "sub": "先核原始研究"
+        "text": "誰處理火藥庫？",
+        "kicker": "公地在等消息",
+        "sub": "Prince 1920 年研究"
       }
     },
     {
@@ -965,12 +980,12 @@
       "lines": [
         {
           "id": "s61054",
-          "text": "普林斯留下的答案，指向海軍造船廠裡的一個動作。",
+          "text": "消防員仍守在崗位，造船廠的庫房則有另一支隊伍去處理。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged unmarked volunteer approaching a low magazine doorway inside the naval yard, smoke far behind, afternoon light",
+        "prompt": "Medium shot of one unmarked adult volunteer walking toward a low magazine building while a distant firefighter remains by a separate smoky street, late daylight",
         "camera": "pull back",
         "visual": "still"
       }
@@ -981,7 +996,7 @@
       "lines": [
         {
           "id": "s61055",
-          "text": "那個動作是灌水；但他的書究竟能證到哪一步？",
+          "text": "普林斯只把那批人稱作一支砲兵隊。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -997,12 +1012,12 @@
       "lines": [
         {
           "id": "s61056",
-          "text": "要看清楚，得把警報、行動和結果拆成三張紙。",
+          "text": "他寫，整支隊伍自願處理海軍造船廠的火藥庫。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one adult clerk placing three unlettered paper sheets apart on a bare desk, gentle daylight",
+        "prompt": "Medium shot of several adult artillery volunteers in plain wool field coats approaching a low naval-yard storehouse, no branch insignia or visible equipment, overcast light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1013,13 +1028,13 @@
       "lines": [
         {
           "id": "s61057",
-          "text": "第一張是警報：普林斯說，當時有人擔心火燒近火藥庫。",
+          "text": "他們自願做的，是給那座火藥庫灌水。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "火藥庫有水，第二聲沒有來",
+      "chapter": "砲兵隊自願灌水，消防繼續留守",
       "data": {
-        "prompt": "Medium shot of one middle-aged naval guard looking from a plain low magazine toward a distant smoke column, pale afternoon light",
+        "prompt": "Medium shot of unmarked adult artillery volunteers beside a plain low magazine doorway, distant smoke and pale afternoon light, no visible water delivery equipment",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1030,12 +1045,12 @@
       "lines": [
         {
           "id": "s61058",
-          "text": "第二張是行動：他寫，一整支砲兵隊自願去灌水。",
+          "text": "他沒有說誰下令，也沒留下從哪裡取水的細節。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired artillery volunteer leading a few adult teammates toward a low storehouse in the naval yard, overcast light",
+        "prompt": "Close shot of one grey-haired researcher studying a plain unlettered account beside an empty document slot, soft light",
         "camera": "drift right",
         "visual": "still"
       }
@@ -1046,14 +1061,14 @@
       "lines": [
         {
           "id": "s61059",
-          "text": "第三張是結果：第二次爆炸沒有發生。",
+          "text": "同一場警報裡，撤離在街上，灌水在造船廠。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "沒有第二次爆炸",
-        "kicker": "Prince 1920 年記錄",
-        "sub": "警報 ≠ 爆炸"
+        "text": "撤離與灌水同時進行",
+        "kicker": "同一場警報",
+        "sub": "Prince 1920 年研究"
       }
     },
     {
@@ -1062,12 +1077,12 @@
       "lines": [
         {
           "id": "s61060",
-          "text": "普林斯把這個結果，歸給砲兵隊的處置。",
+          "text": "還記得失去兩位領隊的消防隊嗎？一名市政官員接手指揮。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one adult researcher placing a finger beside a simple unlettered study page, window light",
+        "prompt": "Medium shot of one mature-faced city official giving directions to firefighters beside a damaged Halifax street, cloudy light",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1078,12 +1093,12 @@
       "lines": [
         {
           "id": "s61061",
-          "text": "我們這次沒取得軍方灌水命令或完整值勤記錄。",
+          "text": "消防員沒有隨第二次警報離開崗位，仍待在火場。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired archive researcher facing an empty document slot on a shelf, soft indoor light",
+        "prompt": "Medium shot of one grey-haired firefighter holding position beside damaged houses while evacuees move far away, soft winter light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1094,12 +1109,12 @@
       "lines": [
         {
           "id": "s61062",
-          "text": "所以不能補出誰下令、哪個閥門開了、火離庫有幾步。",
+          "text": "撤得太急，許多人連一塊麵包都沒帶走。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one mature-faced researcher marking an empty question box in a plain archive notebook, mild daylight",
+        "prompt": "Close shot of one mature-faced evacuee with an empty cloth bag on Halifax Common, cold grey light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1110,12 +1125,12 @@
       "lines": [
         {
           "id": "s61063",
-          "text": "能說的是，他的研究把灌水和未再爆炸連在一起。",
+          "text": "寒風裡，有人折樹枝生火，等一聲「安全」。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot of one middle-aged unmarked volunteer looking at a quiet magazine with smoke fading beyond the yard, cloudy light",
+        "prompt": "Medium shot of one middle-aged resident warming hands at a small branch fire on the open Common, cold cloudy light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1126,12 +1141,12 @@
       "lines": [
         {
           "id": "s61064",
-          "text": "這也說明，當時逃跑的人不是在怕一件完全憑空捏造的事。",
+          "text": "公地上仍有人盯著城市的方向，不知道能否返回。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one adult resident pausing at the edge of an open field and turning toward the still-smoking harbor, late daylight",
+        "prompt": "Medium shot of one adult resident watching the distant damaged city from Halifax Common, late daylight",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1142,14 +1157,14 @@
       "lines": [
         {
           "id": "s61065",
-          "text": "但「將爆」沒有變成「已爆」；誰留在火場接回救援？",
+          "text": "危險解除的消息，何時能送到公地？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "將爆／未爆",
-        "kicker": "把預警與結果分開",
-        "sub": "普林斯研究"
+        "text": "危險過了嗎？",
+        "kicker": "公地仍有人等待",
+        "sub": "Prince 轉引同時代敘述"
       }
     },
     {
@@ -1158,12 +1173,12 @@
       "lines": [
         {
           "id": "s61066",
-          "text": "人群慢慢能往回走；先前留下的消防員還在工作。",
+          "text": "普林斯所引手稿裡，騎馬的人終於告訴人群：危險已過。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged firefighter holding a hose near damaged houses as distant residents return, late winter light",
+        "prompt": "Medium shot of one middle-aged messenger on horseback reaching waiting residents on Halifax Common, overcast daylight",
         "camera": "push in",
         "visual": "still"
       }
@@ -1174,12 +1189,12 @@
       "lines": [
         {
           "id": "s61067",
-          "text": "他們的兩位領隊在首爆失去性命，現場指揮卻重新接起來。",
+          "text": "他們能往回走，卻要走回被爆炸打碎的街道。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired city official speaking to a firefighter beside an unlettered street plan, cloudy light",
+        "prompt": "Medium shot of one grey-haired resident walking back toward a damaged Halifax lane with broken window frames, late winter light",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1190,12 +1205,12 @@
       "lines": [
         {
           "id": "s61068",
-          "text": "如果連消防隊都被打散，受傷的人該由誰先接手？",
+          "text": "可是回到家門前，屋子還能住嗎？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one adult nurse carrying a plain medical satchel toward a makeshift first-aid doorway, soft light",
+        "prompt": "Close shot of one mature-faced resident pausing before a damaged wooden home with broken windows, soft daylight",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1206,12 +1221,12 @@
       "lines": [
         {
           "id": "s61069",
-          "text": "普林斯的下一個畫面，是組織一點點回來。",
+          "text": "這個問題得靠軍方、教堂和鄰居各自接手。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged soldier sorting unlettered relief tags on a wooden table beside a shelter, afternoon light",
+        "prompt": "Medium shot of one middle-aged relief worker between a plain military tent, church hall and nearby houses, cloudy light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1222,12 +1237,12 @@
       "lines": [
         {
           "id": "s61070",
-          "text": "真正要等的，從來不只一句「安全了」，還有能運作的救援。",
+          "text": "警報放下後，搜救還在碎裂的街區裡繼續。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot of one grey-haired volunteer guiding an injured person toward a plain relief station, overcast daylight",
+        "prompt": "Medium shot of one grey-haired rescuer searching a damaged street with unlettered tools, overcast daylight",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1238,13 +1253,13 @@
       "lines": [
         {
           "id": "s61071",
-          "text": "首爆後，消防員仍留守；軍人也接起警戒與運送。",
+          "text": "同一片瓦礫，早期搜救者竟翻過兩三遍，因為還沒分派搜尋區域。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "斷線的城市重新連出去",
+      "chapter": "搜救隊把廢墟分區搜尋",
       "data": {
-        "prompt": "Medium shot of one mature-faced soldier carrying a medical kit past a mature-faced firefighter at a damaged street corner, pale light",
+        "prompt": "Medium shot of one mature-faced rescuer lifting a wooden beam from already disturbed ruins on a Halifax street, pale light",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1255,12 +1270,12 @@
       "lines": [
         {
           "id": "s61072",
-          "text": "普林斯還記下一群劇團演員，轉身組起早期救護站。",
+          "text": "有人先找自己的家人，才有餘力加入救援；沒這層牽掛的訪客往往先動手。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot inside a plain 1917 relief hall, one adult performer sets a folded blanket on a makeshift treatment table, window light",
+        "prompt": "Medium shot of one adult resident checking a damaged doorway for family while a rescue party works in the distance, cloudy light",
         "camera": "drift right",
         "visual": "still"
       }
@@ -1271,12 +1286,12 @@
       "lines": [
         {
           "id": "s61073",
-          "text": "他們不是先寫好救災劇本，只是現場能用什麼，就先用什麼。",
+          "text": "住得遠的未傷者，一時甚至不知道哪裡災情最重，於是先清掃身邊的碎玻璃。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one grey-haired performer placing a water jug beside an empty cot in a relief hall, diffuse light",
+        "prompt": "Wide shot of one middle-aged resident surveying scattered window glass far from the hardest-hit harbor streets, overcast light",
         "camera": "push in",
         "visual": "still"
       }
@@ -1287,12 +1302,12 @@
       "lines": [
         {
           "id": "s61074",
-          "text": "救援有了落點，消息卻仍需要一條能出城的線。",
+          "text": "消息難通，讓人一度不知哪裡最需要人手；誰能把搜尋分開？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced telegraph operator inspecting a snapped wire beside a damaged pole, grey afternoon light",
+        "prompt": "Close shot of one grey-haired relief volunteer looking from a damaged residential street toward distant harbor smoke, grey daylight",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1303,12 +1318,12 @@
       "lines": [
         {
           "id": "s61075",
-          "text": "普林斯說，爆後不到一小時，電報公司恢復一條外線。",
+          "text": "大約五小時後，搜救者終於編成小隊，各自分到一塊確定的搜尋區域。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one middle-aged telegraph operator pressing a key beside a repaired plain wire, soft light",
+        "prompt": "Medium shot of an adult rescue leader directing small search parties down separate damaged Halifax streets, afternoon light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1319,12 +1334,12 @@
       "lines": [
         {
           "id": "s61076",
-          "text": "另有人找到通往蒙克頓仍能用的線路，把鐵路叫來。",
+          "text": "搜完一個地段就記下來，避免再把同一處反覆翻找。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one adult railway official following a cable along Bedford Road, overcast daylight",
+        "prompt": "Close shot of one middle-aged searcher marking an unlettered area list beside a ruined street, cloudy light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1335,12 +1350,12 @@
       "lines": [
         {
           "id": "s61077",
-          "text": "這兩條消息來源相同，卻不是同一個人完成的壯舉。",
+          "text": "同一處不再被反覆翻找，搜救速度因此快了些。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one mature-faced clerk placing two unlettered message slips side by side, quiet indoor light",
+        "prompt": "Medium shot of one mature-faced rescuer moving from a checked ruin toward an untouched section of the street, afternoon light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1351,12 +1366,12 @@
       "lines": [
         {
           "id": "s61078",
-          "text": "若沒有車，受傷的人怎樣離開最重的那一區？",
+          "text": "傷者得有人接；劇團演員已在當天中午組起救護站。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot of one middle-aged rail worker checking a damaged Halifax train yard, daylight through smoke",
+        "prompt": "Medium shot inside a plain 1917 relief hall, one adult performer laying a blanket on a makeshift treatment cot, window light",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1367,12 +1382,12 @@
       "lines": [
         {
           "id": "s61079",
-          "text": "有人從毀壞的車場，找出還能跑的引擎與車廂。",
+          "text": "士兵在警戒、搬運和送食物之間穿梭。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired railway mechanic testing a locomotive wheel beside debris, cloudy light",
+        "prompt": "Medium shot of one grey-haired soldier carrying a food crate past a guarded damaged street while another adult carries a stretcher, cloudy light",
         "camera": "drift right",
         "visual": "still"
       }
@@ -1383,14 +1398,14 @@
       "lines": [
         {
           "id": "s61080",
-          "text": "四小時內，一列醫療列車載著傷者往特魯羅去。",
+          "text": "救出之後，還有一個問題：今晚住哪裡？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "四小時內",
-        "kicker": "醫療列車離城",
-        "sub": "Prince 1920 年記錄"
+        "text": "救出之後，住哪裡？",
+        "kicker": "破屋與公地",
+        "sub": "Prince 1920 年研究"
       }
     },
     {
@@ -1399,12 +1414,12 @@
       "lines": [
         {
           "id": "s61081",
-          "text": "這不是表示城市恢復了，只是先打通一條路。",
+          "text": "軍方在公地搭起一頂頂白帳棚，先前往開闊地跑的人終於有地方暫時停下。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged railway worker watching a small medical train depart damaged sidings, soft afternoon light",
+        "prompt": "Medium shot of one middle-aged soldier raising a white canvas tent on Halifax Common while evacuees wait nearby, cold daylight",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1415,12 +1430,12 @@
       "lines": [
         {
           "id": "s61082",
-          "text": "當晚，普林斯又列出更多往外的電報線。",
+          "text": "教堂與其他大廳裡，有人補好破窗、掃去玻璃，讓還能用的屋子成為臨時庇護處。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one grey-haired telegraph worker sorting blank outgoing slips beside multiple plain wire coils, lamplight",
+        "prompt": "Medium shot of one grey-haired caretaker sweeping glass from a simple church hall while another adult patches a window, grey light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1431,12 +1446,12 @@
       "lines": [
         {
           "id": "s61083",
-          "text": "消息能出去，外地救援才有較清楚的入口。",
+          "text": "危險過去後，受災的人才陸續走進這些臨時庇護處。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced dispatcher handing an unlettered note to a rail courier at a dim station, indoor light",
+        "prompt": "Medium shot of one mature-faced resident entering a plain temporary shelter with a folded blanket after the alarm, cloudy light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1447,12 +1462,12 @@
       "lines": [
         {
           "id": "s61084",
-          "text": "可是空地上的人，今夜能住哪裡？",
+          "text": "帳棚與教堂之外，還有哪一扇門會為他們打開？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot of one adult resident surveying a row of damaged homes from Halifax Common, late cold daylight",
+        "prompt": "Wide shot of one adult evacuee pausing between a church hall and nearby homes at the edge of Halifax Common, late light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1463,12 +1478,12 @@
       "lines": [
         {
           "id": "s61085",
-          "text": "軍方開始在公地搭起白色帳棚，先給人遮蔽。",
+          "text": "較完整的民宅，也有人打開門接納鄰居。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one grey-haired soldier raising the canvas wall of a plain white shelter on Halifax Common, cold light",
+        "prompt": "Medium shot of one grey-haired host opening a plain wooden house door to a bundled neighbor, cold daylight",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1479,12 +1494,12 @@
       "lines": [
         {
           "id": "s61086",
-          "text": "教堂與其他可用建物，也有人掃去玻璃，準備安置。",
+          "text": "有些民宅一次收留十幾名受災者。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced caretaker sweeping broken glass from a simple church hall floor, grey window light",
+        "prompt": "Medium shot inside a plain 1917 Halifax home, one mature-faced host arranging bedding for a small group of adult evacuees, soft lamplight",
         "camera": "drift right",
         "visual": "still"
       }
@@ -1495,7 +1510,7 @@
       "lines": [
         {
           "id": "s61087",
-          "text": "新的問題跟著來了：冬天不會等救援整理好才開始。",
+          "text": "可戶外的白帳棚，還有一個新的對手。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -1511,12 +1526,12 @@
       "lines": [
         {
           "id": "s61088",
-          "text": "前一場風險退了，下一場考驗是冷、住處和還沒安頓的人。",
+          "text": "帳棚搭好後，天氣又要給這些人什麼？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one adult volunteer sorting an unlettered intake list in a crowded but calm shelter, soft lamplight",
+        "prompt": "Close shot of one middle-aged shelter volunteer securing plain tent canvas beneath a darkening winter sky, late daylight",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1527,11 +1542,11 @@
       "lines": [
         {
           "id": "s61089",
-          "text": "普林斯說，爆炸後還有接連而來的冬季風雪。",
+          "text": "接連的冬季風雪到了，先前離開公地的人還需要遮蔽；城裡的許多窗仍然破著。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
-      "chapter": "沒有第二聲，仍有很長的善後",
+      "chapter": "風雪逼人走進收容處",
       "data": {
         "prompt": "Wide shot of one mature-faced shelter volunteer securing canvas against falling snow in Halifax, muted winter light",
         "camera": "pull back",
@@ -1544,12 +1559,12 @@
       "lines": [
         {
           "id": "s61090",
-          "text": "在公地避難的人，有些人衣服薄，還帶著傷。",
+          "text": "風雪到了，受傷又衣薄的人，屋頂之外還需要什麼？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one middle-aged resident holding a blanket around his shoulders on an open Halifax field, cloudy cold light",
+        "prompt": "Medium shot of one middle-aged injured resident wrapped in a blanket inside a plain relief hall, snow visible beyond a window, soft light",
         "camera": "tilt down",
         "visual": "still"
       }
@@ -1560,12 +1575,12 @@
       "lines": [
         {
           "id": "s61091",
-          "text": "警報結束，不等於每個人已找到屋頂和熱食。",
+          "text": "收容處一開始還兼做衣物與食物發放站，因為匆忙逃出來的人常沒有帶上這些。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one grey-haired relief worker carrying a plain soup pot into a temporary hall, warm indoor light",
+        "prompt": "Close shot of one grey-haired shelter worker arranging plain blankets and soup bowls in a temporary hall, warm indoor light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1576,12 +1591,12 @@
       "lines": [
         {
           "id": "s61092",
-          "text": "有人把教堂整理成收容處，有較完整的民宅接納鄰人。",
+          "text": "較完整的民宅，有些一住就是幾個星期。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one adult host opening a plain house door to a bundled neighbor, cold daylight",
+        "prompt": "Medium shot of one adult host sharing a modest room with several bundled evacuees in a Halifax home, cold light through a window",
         "camera": "pan left",
         "visual": "still"
       }
@@ -1592,12 +1607,12 @@
       "lines": [
         {
           "id": "s61093",
-          "text": "這些決定沒有把城市修好，卻讓人至少有地方過夜。",
+          "text": "大廳裡陌生人並排睡下，才暫時有了屋頂。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Close shot of one middle-aged volunteer arranging folded blankets on a simple shelter cot, soft lamplight",
+        "prompt": "Wide shot inside a modest shelter hall, adult evacuees resting side by side on plain cots, soft lamplight",
         "camera": "drift right",
         "visual": "still"
       }
@@ -1608,7 +1623,7 @@
       "lines": [
         {
           "id": "s61094",
-          "text": "普林斯想研究的，正是這種從奔逃到合作的變化。",
+          "text": "普林斯把這種從奔逃到合作的變化，寫成他的社會研究。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
@@ -1624,12 +1639,12 @@
       "lines": [
         {
           "id": "s61095",
-          "text": "火藥庫確是警報的對象；還能只把奔逃說成盲從嗎？",
+          "text": "普林斯轉引的街頭記述裡，許多人只見火與警報；火藥庫最後有沒有再炸？",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced resident looking back from an open field toward the low naval-yard building, pale light",
+        "prompt": "Medium shot of one mature-faced resident at a damaged Halifax crossing looking toward the smoky naval-yard direction, grey light",
         "camera": "pan right",
         "visual": "still"
       }
@@ -1640,12 +1655,12 @@
       "lines": [
         {
           "id": "s61096",
-          "text": "也不是說人人都留下；當時有街上人群與留守者兩條線。",
+          "text": "普林斯的記錄，終於能把警報與後來的結果分開。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Wide shot of one adult firefighter at a street corner with distant evacuees on another road, cloudy light",
+        "prompt": "Wide shot of the quiet low naval-yard magazine after the smoke has thinned, one adult observer standing far away, soft dusk light",
         "camera": "pull back",
         "visual": "still"
       }
@@ -1656,14 +1671,14 @@
       "lines": [
         {
           "id": "s61097",
-          "text": "最後，第二次爆炸沒有在哈利法克斯發生。",
+          "text": "普林斯明確記載，沒有第二次爆炸。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "text": "第二聲沒來",
-        "kicker": "哈利法克斯・1917-12-06",
-        "sub": "Prince 1920 年研究"
+        "text": "沒有第二次爆炸",
+        "kicker": "Prince 1920 年記錄",
+        "sub": "火藥庫警報的結果"
       }
     },
     {
@@ -1672,12 +1687,12 @@
       "lines": [
         {
           "id": "s61098",
-          "text": "普林斯把這點歸於砲兵隊灌水，而不是命運忽然放過。",
+          "text": "他把這個結果歸給整支砲兵隊的灌水。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
-        "prompt": "Medium shot of one mature-faced unmarked volunteer beside a quiet magazine in the yard, smoke gone, soft dusk light",
+        "prompt": "Medium shot of one mature-faced unmarked artillery volunteer beside a quiet low magazine in the yard, smoke gone, soft dusk light",
         "camera": "drift left",
         "visual": "still"
       }
@@ -1688,93 +1703,13 @@
       "lines": [
         {
           "id": "s61099",
-          "text": "這次沒取得那支隊伍的原始值勤記錄；怎能補出每一步？",
+          "text": "這份研究沒交代命令與供水細節；沒有獨立值勤卷宗，就不能再往下補。",
           "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
         }
       ],
       "data": {
         "prompt": "Close shot of one middle-aged archive researcher leaving a blank document slot untouched on a wooden shelf, gentle light",
         "camera": "pan left",
-        "visual": "still"
-      }
-    },
-    {
-      "id": "s61100",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "s61100",
-          "text": "這份研究確定留下的，是警報、撤離與沒有第二次巨響。",
-          "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
-        }
-      ],
-      "data": {
-        "prompt": "Medium shot of one adult historian aligning three unlettered cards on a desk beside a simple harbor sketch, window light",
-        "camera": "drift right",
-        "visual": "still"
-      }
-    },
-    {
-      "id": "s61101",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "s61101",
-          "text": "也留下另一件事：線路、列車與帳棚，怎樣慢慢把人接回來。",
-          "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
-        }
-      ],
-      "data": {
-        "prompt": "Medium shot of one mature-faced relief worker carrying an unlettered list between a train platform and a shelter, cloudy light",
-        "camera": "push in",
-        "visual": "still"
-      }
-    },
-    {
-      "id": "s61102",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "s61102",
-          "text": "他筆下的謎底，是有人在火藥庫灌水，讓第二聲沒來。",
-          "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
-        }
-      ],
-      "data": {
-        "prompt": "Close shot of one middle-aged artillery volunteer pausing beside a closed low magazine door, soft dusk light",
-        "camera": "pan right",
-        "visual": "still"
-      }
-    },
-    {
-      "id": "s61103",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "s61103",
-          "text": "你會先問那聲警報從哪裡來，還是誰在火邊沒有離開？",
-          "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
-        }
-      ],
-      "data": {
-        "prompt": "Medium shot of one grey-haired viewer studying a plain harbor diagram beside a blank field notebook, soft indoor light",
-        "camera": "pull back",
-        "visual": "still"
-      }
-    },
-    {
-      "id": "s61104",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "s61104",
-          "text": "如果喜歡有出處的歷史故事，訂閱奇聞檔案局。",
-          "emotion": "自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白"
-        }
-      ],
-      "data": {
-        "prompt": "Close shot of one viewer reaching toward an unlettered video tile beside two miniature historical frames, gentle light",
-        "camera": "tilt down",
         "visual": "still"
       }
     },
@@ -1791,7 +1726,7 @@
       "lines": [
         {
           "id": "s61997",
-          "text": "第二次爆炸是零次；普林斯把結果歸給火藥庫灌水。",
+          "text": "離開與留守，都是那天人們做出的選擇。",
           "emotion": "清楚收束；不覆蓋品牌片尾最後十六秒可點元素"
         },
         {
