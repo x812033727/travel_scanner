@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-c06-play-doh-treatment
 title: Research and outline C06 Play-Doh everyday reversal
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-gpt6-c06-treatment
@@ -31,7 +31,7 @@ the 1965 sale before any script or paid media is approved.
       collecting-institution or original patent material with claim boundaries.
 - [x] An independent checker reviews the exact document hashes and records a
       PASS or required corrections.
-- [ ] A draft PR exposes the Treatment and source review for owner direction;
+- [x] A draft PR exposes the Treatment and source review for owner direction;
       no script or media approval is inferred.
 
 ## Steps
@@ -39,7 +39,7 @@ the 1965 sale before any script or paid media is approved.
 - [x] Read Kutol, Hasbro, The Strong and the original US3167440A record.
 - [x] Draft Treatment and source matrix in the C06 folder only.
 - [x] Resolve independent source-check findings, then bind final hashes.
-- [ ] Run task/doc checks, commit and open a draft PR.
+- [x] Run task/doc checks, commit and open a draft PR.
 
 ## How to verify
 
@@ -64,3 +64,10 @@ The author corrected all three issue groups. Reviewer reread the final
 Treatment SHA 14B33CCB9C51E3451D9A0D2FE287056185E15FDDCCD3DB3A5CA284D76BB950A1
 and source matrix SHA D18F1BBC58E6A141B957EAD9AC42A7A4375E2004A7736D0D6C57B59044D58FD2;
 verdict PASS for nonpaid Treatment only. See `reviews/source-review.md`.
+
+Draft PR #1674 is stacked on the 20-episode series branch and labeled
+`no-auto-merge`. The owner has not yet approved this C06 direction. No C06
+script, priced production, media, import, upload or publication exists.
+`npm run check:tasks` exited 0 with unrelated existing claim warnings;
+`git diff --check` exited 0. The ticket stays `review` until owner direction
+and the PR disposition are known.
