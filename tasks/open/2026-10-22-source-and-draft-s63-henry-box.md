@@ -101,3 +101,7 @@ R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal
 Brown's narrative has the wife's and children's forced sale in August 1848, but does not explicitly date his own escape. The book's hymn is signed 1849-09-01, while the cited title page lacks a printed publication year; do not infer a publication year or an escape day from that signature. Exact 27 hours and 3 ft 1 in × 2 ft × 2 ft 6 in are Samuel J. May's appended speech extract, not Brown's stopwatch/measurement. The book was written by Charles Stearns from Brown's statement; it is not Brown's autograph diary. The source is accessible at pinned GITenberg revision `a92658e80effa4cce03bb19c13e96ffaaae5fa2b`; NPS and other sites tested through this cloud proxy returned CONNECT 403, so unviewed pages are not used as evidence. No paid voice, image or music has been requested for S63.
 
 2026-10-22 同聲線語音已恢復：127句、13:37.13時間軸、52.60秒濃縮開場。check-audio進行中；精確證據r8-tts-reset-recovery-20261022，未稱QA通過／人耳核准，未進插圖。
+
+## 最新製作檢查點（2026-10-22，台北）
+
+前述R4／R8暫停記錄為歷史狀態。最新R9獨立來源查核通過，新雙讀者各13／13；127句旁白已生成，13:41.07，正文12:42.43，開場52.83秒。主辨識接受126／127句、0旗標；s63028保留供應商拒絕，由離線SenseVoice及另一查核者重跑確認內容相符。跨供應商機器證據127句，不宣稱主辨識器127句通過或站主親聽。詳見review/r9-s63028-independent-asr-audit.md與r9-cross-provider-audio-production-decision.md。首九景正在生成，尚待原圖驗收；121景插圖＋judge整集上限US$4.91，每景最多三次實際圖。PR #1665尚非成片；配樂／合成／QA／字幕／Shorts仍待做。
