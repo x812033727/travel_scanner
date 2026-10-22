@@ -77,6 +77,8 @@ R7 [作者窄幅修稿](../../docs/videos/curio-s63/review/r7-author-repair.md)�
 
 R8 [作者窄幅修稿](../../docs/videos/curio-s63/review/r8-author-repair.md)僅改 `s63053`、`s63125`、`s63126` 三個場景及一條 loop 回收 ID；124／127 個場景逐欄相同。告別後的重述改成 Brown 說過去阻止自己逃走的顧慮已消失；片尾不再第二次說開箱與法律未解，新增他**聽說**北方選民數量為南方兩倍及其若能影響北方會主張另立更好法律的主張。開場安全疑問改由 `s63120` 直接回收。凍結 SHA-256：`video.json` `c417bc8c6f0df78e9c4d8e910db038b6f4ea07c760cc7f3c2e69e98224f63f08`；`script.md` `63caedb24623bd8339607dd5b11e249ce1a4e6691779279a6d8c64ef5bbd665e`；`claims.md` `68c4139f38976d09b9b1b21bdb239eaa4ecb0ddd2f053b0ef445b971d636fe5e`。開場 187 漢字約 34.5 秒、正文排除開場和 CTA 2,676 漢字約 8.23 分鐘（325 字／分）；lint 0／0。**R8 尚待新獨立史料／畫面審核與兩位未讀 R7 的正式盲讀，不得啟動付費媒體。**
 
+另一名獨立審核者已就上述**完全相同 R8 三檔雜湊**查核三個新場景與 `s63009→s63120` 回收點，精確確認其餘 124 個場景未動。[R8 史料／畫面回條](../../docs/videos/curio-s63/review/r8-source-visual-independent.md)為 **PASS、無阻擋 ID**；選民比例明示 Brown「聽說」，改革主張明示「若有影響力」。這仍未通過敘事盲讀；兩位未讀 R7 的新讀者須審同一 R8 凍結封包，付費媒體仍封鎖。
+
 ## Notes
 
 R4 [正式雙人盲讀合併審核](../../docs/videos/curio-s63/review/r4-formal-merge-audit.md)為 **12／13 HOLD**：A 否決 `payoffs` 與 `no_recap`，B 只否決 `no_recap`；官方逐題 OR 與 CLI 重播共同只擋 `s63103` 的重複接收者資訊。作者須另凍結 R5，並取得新的獨立史料／畫面審核及兩位未讀 R4 的正式盲讀，才可解鎖付費媒體。
