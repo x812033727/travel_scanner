@@ -4,8 +4,8 @@ title: Plan C05 Kincho spiral mosquito coil story
 status: review
 priority: P2
 area: docs
-owner: codex-gpt6-c05-treatment-revision
-claimed_at: 2026-10-22T04:35:20Z
+owner: codex-gpt6-c05-approvals-cost
+claimed_at: 2026-10-22T05:26:20Z
 created_at: 2026-10-22T03:23:46Z
 completed_at:
 branch: codex/brand-story-kincho-c05-treatment
@@ -29,7 +29,7 @@ scope:
 - [x] 一手來源矩陣逐項區分 1895 試作、1900 年公司記載申請、1902 年上市及現行產品，標示企業回顧與缺口。
 - [x] 另一代理對**舊版固定雜湊**的企劃與來源矩陣獨立覆核；歷史結果在 reviews/source-review.md。站主已採用舊版企劃方向，當時適用範圍見 reviews/owner-treatment-approval.md；本票沒有劇本、付費生成、匯入或發布。
 - [x] F08 勘誤及年代／製程擴充後，另一代理已重核 Treatment 與來源矩陣的新 SHA-256；舊版 PASS 不沿用。
-- [ ] 以新雜湊向站主取得此勘誤／擴充的窄幅企劃重綁；舊版決定保留原文作歷史，不自行改寫。
+- [x] 站主已採用新雜湊的修訂版企劃；舊版決定保留原文作歷史，不自行改寫。
 
 ## Steps
 
@@ -63,3 +63,5 @@ scope:
 2026-10-22 最終勘誤版：再把綠色緣由精修為昔日蚊遣所用**草葉顏色**的意象，不把煙說成綠色。`treatment.md` SHA-256 `2F43D74ECE206FFDBB9EDE7C2CFEB2D45CCB9099919EAB447D92AC6A74A03CDD`；`source-matrix.md` SHA-256 `B2AC86D42C8A315512253B8F3240634D91DA44A9D920FDE2C5E42800B61006C8`。獨立代理 `/root/c08_readonly_scout` 逐項重核後 PASS，收據附於 `reviews/source-review.md`；僅完成新版本的 Treatment 來源關，站主先前核准仍只綁舊版 SHA，窄幅重綁待決。新版來源必須再由下游逐字稿分支對齊、逐句查核。這張票維持 review，不代表新版本站主已核准或 PR 已合併。
 
 2026-10-22 最終收據補記：僅將 Treatment／矩陣頁首狀態從「待獨立覆核」改為「已獨立覆核、待站主重綁」，獨立代理逐位元組還原後確認正文與來源列和前次 PASS 完全相同。**提交版** Treatment SHA-256 `4A1C596B9A8A6E9278C99205E9EE381E4FD5AF4EAD5CDC6C448A852D5E7FC8D0`、矩陣 SHA-256 `A7EB8401ABCC5715C46352187C0EFE100FA3AA47E22A020A1FC16FFD55504516`；`reviews/source-review.md` 綁這兩個最終雜湊。舊版站主決定不自動轉成新版核准。本工作樹的 `npm run check:tasks` 因先前刪除遭政策阻擋的本機未追蹤 `tasks/done/` 重複票而 exit 1；此檔不提交，須在乾淨工作樹驗證看板。
+
+2026-10-22 站主對 PR #1672 修訂版回覆「採用修訂版企劃（建議）」，決定精確綁定 Treatment `4A1C596B9A8A6E9278C99205E9EE381E4FD5AF4EAD5CDC6C448A852D5E7FC8D0` 與來源矩陣 `A7EB8401ABCC5715C46352187C0EFE100FA3AA47E22A020A1FC16FFD55504516`。新收據附在 `reviews/owner-treatment-approval.md` 末段；原版決定仍在首段。此票保持 review，PR 保持草稿與 no-auto-merge；逐字稿、成本及付費製作另由下游票處理。
