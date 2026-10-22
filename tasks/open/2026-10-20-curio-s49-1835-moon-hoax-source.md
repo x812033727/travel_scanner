@@ -27,7 +27,7 @@ scope:
 - [x] 逐句來源與書面畫面提示、lint 0 error／0 warning、作者自檢與未完成關卡交接。
 - [x] R1 獨立覆核 HOLD 的來源錨點、旁白及書面畫面 R2 差分修復；作者收據記精確 SHA。
 - [x] R12 精確稿經兩位全新隔離讀者的正式敘事關卡合併 PASS。
-- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張限額首試新增 5 KEEP；R21 `moon021` 原圖 KEEP。首章尾端 `moon028` 紙審 HOLD 未畫，`moon030/031` 各一張原圖 REJECT；STOP 已恢復。全部 121 張插圖通過前不放行分鏡。
+- [ ] R19 `moon016` 來源資訊卡獨立 PASS；首章首輪 `moon017–025` 九圖中 3 KEEP／6 HOLD。R20 六張限額首試新增 5 KEEP；R21 `moon021` 原圖 KEEP。R22 首章尾端三景獨立書審 PASS，原圖 `moon028` KEEP、`moon030` 技術 HOLD、`moon031` REJECT。STOP 已恢復，全部 121 張插圖通過前不放行分鏡。
 
 ## Steps
 
@@ -143,3 +143,7 @@ R21 [作者單景窄修](../../docs/videos/curio-s49/review/r21-moon021-prompt-a
 R21 [獨立書面覆核](../../docs/videos/curio-s49/review/r21-moon021-prompt-independent.md)依精確 SHA **PASS** 後，單景一次 [原生圖驗收](../../docs/videos/curio-s49/review/r21-moon021-native-stop.md) **KEEP**：[原圖 SHA 與 judge 清單](../../docs/videos/curio-s49/review/r21-moon021-native-inventory.json)記灰側鬢與鬍子使成人明確、無原黑邊／現代電燈／可讀字或真觀測證據；機器 10／10 PASS、`needs_review=false`。其餘 23 已畫景項目與選圖檔 SHA 不變；新 manifest `b854c37fe4a757f36392a03af5e43f95e844f1fe6ba26f5e965af84ba9d92248`。STOP 已恢復，帳本 **US$0.9045／67 image／67 judge、0 預約**，低於 US$5.30 上限。`moon028/030/031` 仍未畫；全片 121 張插圖逐張驗收前，勿因 CLI 通用提示就送 storyboard。網站卡、人耳審核及完整影片仍待。
 
 首章尾端 [三景獨立書審](../../docs/videos/curio-s49/review/r21-first-chapter-three-paper-independent.md)判 `moon028` **HOLD／未畫**：兩張實體紙會把 Grant 與皇家學會原件暗示為讀者手邊可比對。`moon030/031` 書面 PASS 後，受控一次[原生圖停畫收據](../../docs/videos/curio-s49/review/r21-first-chapter-tail-native-stop.md)與[逐張清單](../../docs/videos/curio-s49/review/r21-first-chapter-tail-native-inventory.json)均人工 **REJECT**：`moon030` 是實體有鏡筒三腳架望遠鏡而非虛構無鏡筒草圖（機器 9.29 PASS 仍退），`moon031` 是現代童貌／檯燈／海報取代成年讀者與報紙（機器 9 FAIL）。前 24 個 KEEP 景圖單項目和選圖 SHA 不變；新 manifest `cb9f8dd0d2f4e4906f1b42a12e78efbfe69a0a25af84eec38dc62fbb2dbc7765`，帳本 **US$0.9315／69 image／69 judge、0 預約**，STOP 在位且低於 US$5.30 上限。三景須定點修提示詞、再獨立書審與原圖驗收；先不開下一章、勿送 storyboard。網站卡與完整影片仍待。
+
+R22 [首章尾端三景作者窄修](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-author.md)只改 `moon028/030/031` 提示詞及 claims 同列畫面文字；[可逆差分](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-structured-diff.json)逐字還原 R21 整檔 SHA。新 `video.json` `26a4812f69c312041509544b1b664c5568b523112d1c17ecfd8c79d5b8ef7052`、`claims.md` `4e25e9837f5ea9365490aa40df0c55596124594154a61d58334a89abc5120cfb`，script／語音文字不變。`moon028` 去兩份可得來源紙、只留單一報紙上的概念月亮圓；`moon030/031` 從錯誤實體器材／海報轉為成年 1830 年代讀者看平放紙上的簡筆圖。Lint 0／0、只讀 dry-run ready；未畫 R22 圖，前 24 景 KEEP 未改。STOP 在位、帳本維持 US$0.9315／69 圖／69 judge；待另一人獨立核三景來源和書面差分後，再限額原圖驗收。網站卡、人耳音訊與全片分鏡仍待。
+
+R22 [獨立書審](../../docs/videos/curio-s49/review/r22-first-chapter-tail-prompt-independent.md)按精確 SHA **PASS**；受控一次[原圖停畫收據](../../docs/videos/curio-s49/review/r22-first-chapter-tail-native-stop.md)及[完整雜湊清單](../../docs/videos/curio-s49/review/r22-first-chapter-tail-native-inventory.json)判 `moon028` **KEEP**（一份無字概念報紙）、`moon030` **技術 HOLD**（實體器材已消失，但自動裁圖仍有細黑頂邊）、`moon031` **REJECT**（擬文字列與實體小圓筒代替無字扁平墨線，機器 9.29 PASS 仍退）。前 24 張 KEEP 圖單項目／選圖 SHA 不變；新 manifest `29fd2d89b96cb1dc609db00263337db9a46cd06089b462151940c399d0095d06`，帳本 **US$0.9720／72 image／72 judge、0 預約**，STOP 在位，低於 US$5.30 上限。先處理兩張 HOLD／退圖，剩餘其他章節不可因 CLI 通用提示送 storyboard；網站卡與完整影片仍待。

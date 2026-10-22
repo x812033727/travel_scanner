@@ -1,0 +1,89 @@
+{
+  "revision": "R22",
+  "stage": "first-chapter-tail-three-bounded-first-takes",
+  "at_utc": "2026-10-22T01:14:51.110972+00:00",
+  "creative_sha256": {
+    "video.json": "26a4812f69c312041509544b1b664c5568b523112d1c17ecfd8c79d5b8ef7052",
+    "claims.md": "4e25e9837f5ea9365490aa40df0c55596124594154a61d58334a89abc5120cfb",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "requested_shots": [
+    "moon028",
+    "moon030",
+    "moon031"
+  ],
+  "generated_shots": [
+    "moon028",
+    "moon030",
+    "moon031"
+  ],
+  "rows": [
+    {
+      "id": "moon028",
+      "original_file": "keyframes/moon028-1.jpg",
+      "original_sha256": "d24eaa7a43dcc53f3c7acb55e94555271a5b8b7c922d5776140f6f41c43d1def",
+      "selected_file": "keyframes/moon028-1-trim.jpg",
+      "selected_sha256": "48c1cf7cc044d3972ca07ecc003e3a1ffe2296e397e83efb95eb2a053b78c8cd",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: character rests both hands on the table instead of pointing at the broadsheet circle → pointing directly at the moon circle with one index finger"
+      ],
+      "human_decision": "KEEP",
+      "human_reason": "Full original shows clearly older period reader and one generic broadsheet with an unlettered moon circle, bare counter, no two external Grant/Royal Society documents or readable words. He rests hands rather than pointing to the circle; minor gesture mismatch. Selected 4.5% trim keeps source-safe scene."
+    },
+    {
+      "id": "moon030",
+      "original_file": "keyframes/moon030-1.jpg",
+      "original_sha256": "bf2372ee8e31d740d88adefd75c9ad26355f90b47ec1c7e29ed57786fbae303c",
+      "selected_file": "keyframes/moon030-1-trim.jpg",
+      "selected_sha256": "bc965c99c5e76a54e4ce38e74d4c27224b178d658d56312bf97f6879200e6f19",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "HOLD",
+      "human_reason": "Adult period scholar draws two separate circles on one sheet; no physical telescope or tripod. Original has black letterbox bars top and bottom; selected 5.9% automatic trim still leaves a thin near-black strip at top (~5 pixels at 720p by read-only pixel inspection). Source/action fixed, technical edge needs clean QC before KEEP; no second paid take."
+    },
+    {
+      "id": "moon031",
+      "original_file": "keyframes/moon031-1.jpg",
+      "original_sha256": "6e297a01226b76102f58e237b9c7c155932c0d874ee451e9bc21274210b39082",
+      "selected_file": "keyframes/moon031-1-trim.jpg",
+      "selected_sha256": "c07bae3d6d8028ba2d91cca85365af9e0603b6eee517907d28588e8ea393b663",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: the newspaper has simulated text lines and a physical cylindrical object instead of an ink outline on an unlettered page → newspaper blank except for a flat ink line drawing of a hollow cylinder"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "Adult period reader replaces child and modern lamp, but full original shows pseudo printed lines on supposedly unlettered newspaper plus a separate physical small cylindrical object on its surface rather than only a flat ink outline. Judge details notes the same substantive discrepancy despite machine PASS; selected crop does not cure it."
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.9315,
+    "images": 69,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 69,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.972,
+    "images": 72,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 72,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "manifest_before_sha256": "cb9f8dd0d2f4e4906f1b42a12e78efbfe69a0a25af84eec38dc62fbb2dbc7765",
+  "manifest_after_sha256": "29fd2d89b96cb1dc609db00263337db9a46cd06089b462151940c399d0095d06",
+  "prior_24_keep_entries_unchanged": true,
+  "stop_present_after": true,
+  "full_storyboard_approved": false,
+  "log_sha256": "bb857e77f1aa8e1afb28894dd2c105e3ed84737701eb051b0d8693b2442ea674"
+}
