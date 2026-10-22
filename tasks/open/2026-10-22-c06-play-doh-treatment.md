@@ -66,8 +66,14 @@ and source matrix SHA D18F1BBC58E6A141B957EAD9AC42A7A4375E2004A7736D0D6C57B59044
 verdict PASS for nonpaid Treatment only. See `reviews/source-review.md`.
 
 Draft PR #1674 is stacked on the 20-episode series branch and labeled
-`no-auto-merge`. The owner has not yet approved this C06 direction. No C06
+`no-auto-merge`. At PR creation, the owner had not approved this C06 direction. No C06
 script, priced production, media, import, upload or publication exists.
 `npm run check:tasks` exited 0 with unrelated existing claim warnings;
 `git diff --check` exited 0. The ticket stays `review` until owner direction
 and the PR disposition are known.
+
+2026-10-22 later: owner adopted the exact C06 Treatment direction in this
+conversation. Hash-bound receipt is `reviews/owner-treatment-approval.md`.
+Approval allows nonpaid script drafting and per-line/source review; it does not
+approve the script or any paid media. The draft PR and ticket remain in review
+until their own disposition; a separate ticket/branch owns script work.
