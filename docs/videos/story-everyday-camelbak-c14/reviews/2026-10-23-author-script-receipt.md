@@ -8,7 +8,7 @@
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| [`script.md`](../script.md) | `93BB68588CE3BF30B238578D53216964108711F1838596AB7E95A0630362771F` |
+| [`script.md`](../script.md) | `4974D957F308D2C9642BCA106BAA7B29B4EE42A8CFD605AEDB5B755596D6A104` |
 | [`script-source-notes.md`](../script-source-notes.md) | `FDE6E7272EF206E09AE03E64010D0225D1285CD17B5F7B32394ACAEF6C727BF3` |
 | [`visual-plan.md`](../visual-plan.md) | `89D50B4D40A2A9D54996F68376EA6A416248B32E6822ADC6DA2CC51ADC897E95` |
 | [`visual-plan.json`](../visual-plan.json) | `B83E80424E12B2180E7F2F75E8E84ED1716DC314C8D021C6DA83F25E44F50681` |
@@ -20,6 +20,7 @@
 - 53 鏡概念插圖、14 張後製字卡；插圖時間 442.0／580.4 秒，即 76.2%；最長連卡 2，最長單鏡暫估 11.5 秒。真實畫面比例須在圖像與成片後重驗。
 - 圖像 prompt 自檢未出現 CamelBak、ThermoBak、Eidson、Fawcett、Wemmer、logo、專利附圖等禁項；姓名、日期、百分比只在後製卡片。插圖皆為泛用概念場景，未生成任何圖。
 - `npm run check:tasks` 退出碼 0，驗證 2,079 個 task 檔；既有其他任務的過期認領與 scope 重疊仍有警告。提交前另跑 `git diff --cached --check`，只 stage 本稿及自己的 task 檔。
+- `npm run test:docs-videos` 初跑退出碼 1；這個工作樹的 `node_modules` 缺少 lockfile 已列的 `pinyin-pro`，多個非 C14 測試回 `ERR_MODULE_NOT_FOUND`。嘗試 `npm ci --no-audit --no-fund` 補依賴，超過八分鐘仍未完成，已停止；全量測試不記為通過。C14 的逐行／分鏡結構檢查與 `check:tasks` 結果仍須和此限制分開看。
 
 ## 特別交接
 
