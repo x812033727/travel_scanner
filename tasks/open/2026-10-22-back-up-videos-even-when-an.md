@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tools/video/automation/cli.mjs
   - tools/video/automation/cli.test.mjs
+  - tools/video/automation/client.test.mjs
 ---
 
 # Back up videos even when an automation round ends in an error
@@ -52,6 +53,9 @@ On the host after the deploy: `docker compose -f docker-compose.prod.yml logs --
 
 ## Notes
 
+- `client.test.mjs` "auto exits for the owner … Claude Code needs updating" drives `auto` into
+  an error with a fake site that fails on any request it does not expect; it now answers the
+  backup config with a 404 (a site from before backups) and expects that request last.
 - On Windows, two tests in `backup.test.mjs` fail on main as well ("a file added after the
   backup…", "a check that finds Drive's copy different…"); this change does not touch
   backup.mjs. CI runs them on Linux.
