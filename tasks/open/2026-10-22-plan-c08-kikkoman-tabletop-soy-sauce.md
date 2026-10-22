@@ -5,7 +5,7 @@ status: review
 priority: P2
 area: docs
 owner: codex-gpt6-c08-treatment
-claimed_at: 2026-10-22T04:33:12Z
+claimed_at: 2026-10-22T05:26:34Z
 created_at: 2026-10-22T04:33:08Z
 completed_at:
 branch: codex/brand-story-kikkoman-c08-treatment
@@ -28,7 +28,7 @@ C08 在「日用品的意外轉身」排定為龜甲萬桌上醬油瓶，但目�
 - [x] 六章 Treatment 有一條可追的設計問題、試作、推出、後來識別的主線，含濃縮開場、約十分鐘容量、章末問題與奇聞檔案局畫面規則。
 - [x] 來源矩陣逐項區分公司、設計團隊、獨立館藏與獎項資料，列出可直接核對的事實、未找到的原件及不得推論的銷售因果。
 - [x] 由另一代理獨立覆核並產生綁定 Treatment 與來源矩陣 SHA256 的收據；實質錯誤修正後再請站主審方向。
-- [x] [草稿 PR #1678](https://github.com/x812033727/travel_scanner/pull/1678) 僅供站主審企劃；在本集企劃核准前不寫逐字稿、不付費生成、不上傳或發布。
+- [x] [草稿 PR #1678](https://github.com/x812033727/travel_scanner/pull/1678) 供站主審企劃；站主已採用本版方向，收據綁定 Treatment／Matrix SHA。正式逐字稿與付費製作仍待各自核准。
 
 ## Steps
 
@@ -50,3 +50,5 @@ C08 在「日用品的意外轉身」排定為龜甲萬桌上醬油瓶，但目�
 2026-10-22：獨立來源審查先判 REVISE，指出龜甲萬 2020 年 HTML 與年表 HTML 直接抓取 timeout／503；已以同篇可讀官方 PDF 支持 1955 年、一公升與三年多試作，另以可讀官方環境 PDF 支持 1961 年 150ml，1991 年 100ml 的年表條目降為 reviewer-only。瓶口用語改成「少滴」，不保證絕不滴漏。第二輪企劃來源審查 PASS，收據在 [reviews/source-review.md](../../docs/videos/story-everyday-kikkoman-c08/reviews/source-review.md)，只適用本版企劃；正式逐字稿仍須逐句查核。站主尚未核准 C08 方向。
 
 2026-10-22：已建立草稿 [PR #1678](https://github.com/x812033727/travel_scanner/pull/1678)，以新系列分支為 base，貼 `no-auto-merge`，等待站主採用或修訂方向。`npm run check:tasks` 與 `git diff --cached --check` 通過；沒有 C08 付費媒體、上傳或發布。
+
+2026-10-22：站主在本對話選擇「採用 C08 企劃方向（建議）」。已依原版 Treatment 與 Matrix SHA-256 寫入 [owner-treatment-approval.md](../../docs/videos/story-everyday-kikkoman-c08/reviews/owner-treatment-approval.md)。只放行非付費的逐字稿、逐句查核及逐鏡設計；未核准正式稿或任何 C08 費用。
