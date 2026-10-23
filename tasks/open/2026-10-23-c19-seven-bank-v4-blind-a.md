@@ -39,3 +39,5 @@ The latest C19 script requires editorial readback after two source-scope repairs
 ## Notes
 
 Locked projection SHA-256 `99D990690BE8E5757CB7C9580CF7DCAD7D26CCC6E4B7FC0B7F2C5ADBA7CE0590`; external lock SHA-256 `51B15B1A81F3490D6982526DA0E963B15CD014AC395ED30CC2833F24FC9B13FF`; author head `c1fe8f9daa667712f9be9e6746148f05ad39f89f`. Context-exposed reviewer HOLD: `no_recap` at `c190610`, which restates `c190301`–`c190313`. Eleven other required checks PASS. This receipt does not count toward either required independent blind read; two fresh readers without inherited C19 context are needed on the final narration.
+
+Draft review PR: https://github.com/x812033727/travel_scanner/pull/1762 (`no-auto-merge`).
