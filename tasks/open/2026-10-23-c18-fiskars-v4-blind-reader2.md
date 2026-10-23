@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c18-fiskars-v4-blind-reader2
 title: C18 Fiskars v4 narrator-only blind reader 2
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c18-blind-reader2
@@ -23,13 +23,13 @@ The revised C18 script in author PR #1711 needs a second independent narrator-on
 ## Definition of done
 
 - [x] A hash-bound, independent twelve-check narrator-only verdict is recorded in a separate review receipt.
-- [ ] The draft review PR is opened for author and owner readback.
+- [x] The draft review PR is opened for author and owner readback.
 
 ## Steps
 
 - [x] Read only the supplied narrator copy, verify SHA-256, and lock the verdict before consulting other material.
 - [x] Record exact line IDs and a narrow repair for each hold point.
-- [ ] Push the isolated receipt branch and open a draft PR against the author's exact head.
+- [x] Push the isolated receipt branch and open a draft PR against the author's exact head.
 
 ## How to verify
 
@@ -37,4 +37,4 @@ Confirm the input SHA-256 above, run `node tools/tasks.mjs check` and `git diff 
 
 ## Notes
 
-Locked HOLD: `c180413 → c180416 → c180501` changes from lasting grip design to a new factory without a clear narrative reason; the 1977 factory answer does not advance the central grip/recognition question. The repair can be a targeted bridge at `c180416` and payoff at `c180501–c180503`, or removal of an optional factory detour. No author script or visual file was edited.
+Locked HOLD: `c180413 → c180416 → c180501` changes from lasting grip design to a new factory without a clear narrative reason; the 1977 factory answer does not advance the central grip/recognition question. The repair can be a targeted bridge at `c180416` and payoff at `c180501–c180503`, or removal of an optional factory detour. No author script or visual file was edited. Draft PR #1731 is based on author head `6124314f07768134220fa830012c526761ff190a`; retain `no-auto-merge` and leave this task in review until the PR is resolved.
