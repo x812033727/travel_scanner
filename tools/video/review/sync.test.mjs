@@ -1066,6 +1066,20 @@ async function pushLanguages(box, site) {
   return { code: await main(["review-push", "--slug", box.slug, "--gate", "languages"], run.ctx), ...run.out };
 }
 
+test("a language batch carries each chosen language's own thumbnail from the package, never an unchosen one's", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const thumbnails = path.join(box.workdir, "upload", "thumbnails");
+  mkdirSync(thumbnails, { recursive: true });
+  for (const locale of ["en", "ko", "th"]) writeFileSync(path.join(thumbnails, `${locale}.jpg`), `jpeg ${locale}`);
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "thumbnail_en", "captions_ja", "description_ko", "captions_ko", "thumbnail_ko", "metadata", "languages_manifest"]);
+  assert.deepEqual(batch.files.find((file) => file.role === "thumbnail_en"), { role: "thumbnail_en", sha256: sha(Buffer.from("jpeg en")), size: 7, content_type: "image/jpeg" });
+  assert.deepEqual(Object.keys(batch.payload.locales.en), ["metadata", "captions"], "a thumbnail is not a part the owner chooses");
+  assert.ok(JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"))).files.some((file) => file.role === "thumbnail_ko"), "the manifest the approval binds to names it");
+});
+
 test("a language batch names the upload confirmation, final cut and choice it belongs to, and review-pull records it by that manifest", async (t) => {
   const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
   t.after(() => rmSync(box.base, { recursive: true, force: true }));

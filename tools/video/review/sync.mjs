@@ -875,6 +875,13 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
       entry.captions = "ready";
     }
+    // The language's own thumbnail, for Studio's language page: a video whose languages came
+    // after its upload confirmation has it only here, and the manual upload guide reads it from
+    // the newest approved batch. Not a part the owner chooses, so the payload does not list it.
+    const thumbnail = path.join(workdir, UPLOAD_DIR, "thumbnails", `${locale}.jpg`);
+    if ((choice.metadata || choice.captions || choice.dub) && locale !== narration && existsSync(thumbnail)) {
+      files.push(await upload(request, slug, thumbnail, `thumbnail_${locale}`, "image/jpeg"));
+    }
     // The narration is the video's own audio: no dub of it is made, and YouTube would take a
     // second track of it as a duplicate, so the batch says so instead of leaving the part open.
     if (choice.dub && locale === narration) entry.dub = { status: "skipped", reason: NARRATION_DUB_SKIP };
