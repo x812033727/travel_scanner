@@ -13,7 +13,7 @@ const SHA = /^[a-f0-9]{64}$/;
 const ID = /^C(0[1-9]|1[0-9]|20)$/;
 const SLUG = /^story-everyday-[a-z0-9-]+-c(0[1-9]|1[0-9]|20)$/;
 const SERIES = "brand-stories-everyday-reversals";
-const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C10", "C11", "C14", "C15"];
+const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C10", "C11", "C14", "C15", "C19"];
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const insist = (ok, message) => { if (!ok) throw new Error(message); };
 
@@ -148,7 +148,7 @@ export function parseScript(markdown, id) {
 export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}) {
   const source = JSON.parse(readFileSync(path.resolve(root, manifestPath), "utf8"));
   insist(source.schema_version === 1 && source.series_slug === SERIES && Array.isArray(source.entries), "unsupported approval manifest");
-  insist(source.entries.length === APPROVED_IDS.length, "approval manifest must contain the ten owner-approved scripts");
+  insist(source.entries.length === APPROVED_IDS.length, "approval manifest must contain every owner-approved script");
   const wanted = new Set(ids.map((value) => value.toUpperCase()));
   insist([...wanted].every((value) => ID.test(value)), "invalid --id value");
   const allIds = new Set();
@@ -176,7 +176,7 @@ export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}
     insist(scenes.length === entry.expected_lines, `${entry.id} narration count mismatch: expected ${entry.expected_lines}, got ${scenes.length}`);
     return { ...entry, scenes, source_md };
   });
-  insist(APPROVED_IDS.every((id) => allIds.has(id)), "approval manifest ID set differs from the owner's ten approvals");
+  insist(APPROVED_IDS.every((id) => allIds.has(id)), "approval manifest ID set differs from the owner's approvals");
   insist([...wanted].every((value) => allIds.has(value)), "requested ID is absent from approval manifest");
   return { series_slug: source.series_slug, entries: wanted.size ? entries.filter((entry) => wanted.has(entry.id)) : entries };
 }

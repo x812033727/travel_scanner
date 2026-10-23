@@ -1,6 +1,8 @@
 # C19 Seven Bank｜一手來源矩陣
 
-狀態：**作者初查，待另一代理逐項獨立重核**。本矩陣只授權下列可說範圍；公司回顧、同期年報與現行商業模型各自標示，不能把不同年度拼成同一張損益表。2026-10-23 讀取以下原發行者頁面與 PDF。
+狀態：**v13 作者修訂；完整新版仍待獨立重核**。v7、v8 的獨立審查分別留在 `reviews/independent-v7-source-visual.md` 與 `reviews/independent-v8-source-visual.md`；v8 來源 81/81 PASS、配鏡 79/81 PASS，兩項配鏡 HOLD 已窄修，舊版 PASS 不自動延續到新版。站主採用的六章企劃與原 M01–M16 事實方向不變。本矩陣只授權下列可說範圍；公司回顧、同期年報與現行商業模型各自標示，不能把不同年度拼成同一張損益表。2026-10-24 讀取以下原發行者頁面與 PDF。
+
+v13 的夜間顧客、晚餐動機與提款成功均為旁白明示的想像情境：須同時假設卡片適用、服務時段相符、發卡行核准、機器正常且有鈔。這不是 2001 年或現實中某筆交易的原始紀錄，不得畫成真實 ATM 畫面或藉此推斷逐台現金路線。
 
 ## 原件
 
@@ -8,11 +10,12 @@
 | --- | --- | --- |
 | S1 | [Seven Bank，ATM 20 周年年表](https://www.sevenbank.co.jp/corp/company/atm-history.html)，「ATM 的歷史」1987／1999、「Seven Bank ATM 的歷史」2001／2005／2007 | 公司 2021 年左右的日文回顧，不是 1987 年問卷原件；文中也記錄先行競爭者。 |
 | S2 | [Seven Bank，公司沿革](https://www.sevenbank.co.jp/english/corp/company/history.html)，2001、2005、2007 及 ATM 台數欄 | 官方日期表；可分辨成立、獲牌、開業、ATM 啟用、改名。 |
-| S3 | [Seven Bank，Annual Report 2010](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf)，`Operations in Outline`、`Partner Financial Institutions`、財務附註 18–19 | 截至 2010-03-31 的公司說明與財務附註；財務單位為百萬日圓，不是現時費率。 |
+| S3 | [Seven Bank，Annual Report 2010](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf)，`Operations in Outline`、`Partner Financial Institutions`、`Support Systems that Keep ATM Operations Stable` PDF pp.19–20、財務附註 18–19 | 2010 年公司說明與截至 2010-03-31 的財務附註；財務單位為百萬日圓，不是現時費率。pp.19–20 支援中心、中繼、現金管理不可倒寫為 2001 年逐台實況。 |
 | S4 | [Seven Bank，Integrated Report 2024](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf)，`Domestic Business: ATM Platform Strategy`、`Business Model`、`+Connect` | 以 2023 財年為主的公司模型及後來服務，不能作 2001 年創業者原話。 |
 | S5 | [Seven Bank，2005 年改名公告](https://www.sevenbank.co.jp/corp/news/2005/060801.html)，§變更理由及預定日期 | 2005-06-03 發出的同期公告；公司提議 2005-10-11 改名，實施日以 S2 覆核。 |
 | S6 | [IY Bank，2002 年首次揭露誌](https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf)，「設立の背景」「事業コンセプト」「ATM事業」 | 比較接近創立時的公司原件；同時寫自家帳戶金融服務與供合作金融機構使用的 ATM 事業。 |
 | S7 | [IY Bank，2001-11-09 設點新聞稿](https://www.sevenbank.co.jp/corp/news/2001/1109_1.html)，正文及附表 | 同期公告，區分 5 月首日實績與 11 月 11 日預定達到的台數；未來設點計畫不當成已完成。 |
+| S8 | [IY Bank，Disclosure 2005](https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf)，PDF p.25／印刷 p.25，`ATM事業の状況` | 區分 2001 年 12 月開始的 Seven-Eleven 店舖營業款入金與 2003 財年開始的一般企業營業款入金；公司原件，不推個別 ATM 的紙鈔去向。 |
 
 ## 必查主張
 
@@ -34,6 +37,9 @@
 | M14 | 2005 年的公司改名公告說，選「Seven」是為了反映在 Seven-Eleven 等店鋪提供 24/365 服務的特徵，也配合 Seven & i 集團命名。 | S5「變更理由」；S2 實際改名日。 | 屬公司同期對命名的解釋，不把它講成唯一創辦動機。 |
 | M15 | 2001 年 5 月 15 日首批 66 台 ATM 在東京 23 區的 59 個地點開始運作。 | S7 2001-11-09 公告第 2 段；S6「ATM 事業」回顧 66 台。 | 66 是**機器台數**、59 是**地點數**；這是首日設置而非全部 2001 年底台數。S7 預告的 11 月 11 日 2,005 台不要寫成 11 月 9 日已達成。 |
 | M16 | IY Bank 2002 年首次揭露誌把「為自家帳戶提供存提款等金融服務」與「讓其他金融機構客戶使用本行 ATM 網路」列為兩種並行業務。 | S6「設立の背景」「事業コンセプト」，原文分列 `金融サービス事業`、`ATM事業`。 | 這可解釋銀行不只是替超商放機器，但不能從這張圖證明當年為何捨棄其他公司的代理／合資方案。 |
+| M17 | 2010 年報描述，東京與大阪的 ATM 支援中心全天監看與接聽顧客詢問，可遠端處理問題，必要時協調保全與維修；**另**有橫濱與大阪中繼系統，兩套同時運作，任一套有能力在另一套停機時承接全部交易。 | S3 PDF pp.19–20 `Support Systems that Keep ATM Operations Stable`。 | 支援中心城市與中繼城市不同，不能混稱；這是公司當時描述的能力，不代表曾切換成功，也不保證任何個別 ATM 全天在線。 |
+| M18 | 2010 年報說，ATM 放更多現金可減少補鈔頻率但增加資金成本，放更少會增加補鈔頻率與相關外包成本；公司逐台分析使用趨勢，並把附近超商及企業的營業款入金納入現金管理；報告稱每台 ATM 每月補鈔頻率約 1.7 次。 | S3 PDF p.20 `Aiming for Non-Stop ATM Operations`。 | 這是當年公司網路層級的營運描述與頻率，不能推個別機器、特定店或現今數值；**不證明存入紙鈔直接轉入提款鈔匣**，也不證明一台永不停機。 |
+| M19 | 銀行於 2001 年 12 月開始為 Seven-Eleven 店舖辦理營業款入金；面向一般企業的營業款入金於 2003 財年才開始。 | S8 PDF p.25 `ATM事業の状況` 直接分述兩個起點；S1 的較晚年表只概括 2001 年 12 月服務。 | 2001 年只能說集團旗下店舖，不能泛稱「企業」或一般公司；不從入金服務推出同一張紙鈔可立即被提出。 |
 
 ## 硬界線
 
@@ -41,4 +47,5 @@
 - 顧客使用費、銀行向 Seven Bank 付的 ATM 使用費、Seven Bank 公司的 ATM 費收入、佈點與維運成本，四者分開。M07–M08、M12 不能混成「提款的人各付多少，它就賺多少」。
 - S1／S3／S4 的公司回顧、報告日期須明講；必要時補同期牌照或財報原件。所有收入與台數只說其所屬期間；不以舊年度數字猜 2026 年現況。
 - S6／S7 已提供較早的公司原件，但依然是公司自己對商業選擇的說明。尤其 S6 的圖有「共同 ATM 營運公司構想」字樣，尚不足以敘述詳細的內部淘汰過程。
+- S8 把 2001 店舖入金與 2003 財年一般企業入金明確分開；本稿的 2001 情節只用前者。
 - 來源中的「日本第一」等廣告語不用於劇本；日期與範圍沒有獨立原件時，保守歸屬 Seven Bank。
