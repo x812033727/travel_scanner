@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-write-c17-nalgene-source-bound-script
 title: Write C17 Nalgene source-bound script and visual plan
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c17-script
@@ -26,15 +26,15 @@ C17 Treatment and M01–M12 were independently checked and adopted on PR #1699. 
 
 ## Definition of done
 
-- [ ] Six chronological chapters have a concrete cold open, open loops, source-bound spoken lines, a one-to-one cute-mystery visual plan, and a clear closing answer/comment/subscription sequence.
-- [ ] Every factual line has a reviewable source mapping; illustration prompts contain no brand names, logos, readable text, real-person likenesses, or false documentary evidence.
-- [ ] Mechanical author checks and unresolved duration/source/visual/blind-reader gates are recorded. This task does not claim independent PASS, actual TTS duration, or production approval.
+- [x] Six chronological chapters have a concrete cold open, open loops, source-bound spoken lines, a one-to-one cute-mystery visual plan, and a clear closing answer/comment/subscription sequence.
+- [x] Every factual line has a reviewable source mapping; illustration prompts contain no brand names, logos, readable text, real-person likenesses, or false documentary evidence.
+- [x] Mechanical author checks and unresolved duration/source/visual/blind-reader gates are recorded. This task does not claim independent PASS, actual TTS duration, or production approval.
 
 ## Steps
 
-- [ ] Draft narration and per-line source notes from the adopted matrix.
-- [ ] Draft one-to-one visual cues and machine-readable plan with the fixed look preset.
-- [ ] Check IDs, chapter order, coverage, card runs, prompt restrictions, and task-board status; open a draft PR without auto-merge.
+- [x] Draft narration and per-line source notes from the adopted matrix.
+- [x] Draft one-to-one visual cues and machine-readable plan with the fixed look preset.
+- [x] Check IDs, chapter order, coverage, card runs, prompt restrictions, and task-board status; open a draft PR without auto-merge.
 
 ## How to verify
 
@@ -43,3 +43,5 @@ Use `git diff --check`, a local ID/source/visual consistency check, and `npm run
 ## Notes
 
 Base: adopted C17 PR #1699 head `2410b0976b22b57215069a4fe06e924d12bf6741`. Existing PR body has a stale HOLD after an automatic `blocked by policy` on editing; do not retry that action by another route. This script branch contains no paid or release work. Managed worktree attachment failed, so the Git worktree was created from the original C17 checkout and remains functional but unmanaged by the app.
+
+Author draft PR: https://github.com/x812033727/travel_scanner/pull/1703 (draft, no-auto-merge). 69/69 line/source/visual IDs match; 60 illustration cues, 9 cards, max card run 1; `npm run check:tasks` and staged diff check passed. Next: another agent's independent line-and-visual review, two narration-only blind readers, then owner script approval. Body TTS, illustrated time share, and paid budget remain unmeasured/unapproved.
