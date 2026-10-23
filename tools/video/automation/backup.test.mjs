@@ -166,6 +166,33 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   assert.ok(!full.some((item) => /^(segments|build|frames|audio|review|media)\//.test(item)));
 });
 
+test("planFiles: the full tier keeps each chosen language's unpackaged dub track and thumbnail, never an unchosen one", () => {
+  const box = sandbox();
+  const languages = { locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: false, dub: false } } };
+  const dir = video(box.work, "story-a4", {
+    "languages.json": JSON.stringify(languages),
+    "upload/dubs/en.m4a": "packaged",
+    "upload/thumbnails/en.jpg": "jpg",
+    "dubs/en.m4a": "packaged",
+    "dubs/ja.m4a": "given up",
+    "dubs/ko.m4a": "not chosen",
+    "dubs/ja/audio/l1.wav": "never",
+    "thumbnails/en.jpg": "jpg",
+    "thumbnails/ja.jpg": "jpg",
+    "thumbnails/ko.jpg": "jpg",
+    "thumbnails/th.jpg": "not chosen",
+  });
+  const basic = planFiles(dir, "basic").map((item) => item.path);
+  assert.ok(!basic.some((item) => item.startsWith("dubs/未進上傳包/") || item === "thumbnails/ja.jpg"), "the basic tier is the package alone");
+  const full = planFiles(dir, "full");
+  assert.deepEqual(full.map((item) => item.path).filter((item) => !basic.includes(item)), ["dubs/未進上傳包/ja.m4a", "thumbnails/ja.jpg", "thumbnails/ko.jpg"]);
+  assert.equal(full.find((item) => item.path === "thumbnails/en.jpg").source, path.join(dir, "upload", "thumbnails", "en.jpg"), "the package's own copy wins");
+  assert.deepEqual(contentsOf(full.map((item) => item.path)).dubs, ["en"], "an unpackaged track is not counted as a packaged dub");
+
+  rmSync(path.join(dir, "languages.json"));
+  assert.ok(planFiles(dir, "full").some((item) => item.path === "dubs/未進上傳包/ko.m4a"), "without a choice every track is kept");
+});
+
 test("contentsOf: what the site counts, a Short's caption beside its cut, and the parts skipped with a reason", () => {
   const contents = contentsOf(
     ["final.mp4", "metadata.json", "thumbnail.jpg", "descriptions/en.txt", "captions/en.srt", "dubs/en.m4a", "zh-TW.srt", "clips/manifest.json", "clips/a.mp4"],
@@ -201,6 +228,18 @@ test("a round copies the package into the series folder, checks it, uploads back
   assert.deepEqual(gate.verdicts.get("curio-h01"), { ok: true, why: "in Drive" });
   assert.ok(!existsSync(path.join(box.work, "_backup-stage", "curio-h01")), "the staging folder goes");
   assert.match(lines.at(-1), /curio-h01: 5 files/);
+});
+
+test("a work directory made by hand, with no auto.json, is backed up from its upload package; an empty one is not", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "free-vs-paid-ai-plans-2026");
+  rmSync(path.join(dir, "auto.json"));
+  put(path.join(box.work, "not-a-video"), "notes.txt");
+  const site = fakeSite({ videos: [target("free-vs-paid-ai-plans-2026"), target("not-a-video")] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  assert.ok(listing(path.join(box.drive, "奇聞檔案局", "free-vs-paid-ai-plans-2026")).includes("final.mp4"));
+  assert.deepEqual(gate.verdicts.get("free-vs-paid-ai-plans-2026"), { ok: true, why: "in Drive" });
+  assert.ok(!gate.verdicts.has("not-a-video") && !existsSync(path.join(box.work, "not-a-video", STATE_FILE)));
 });
 
 test("a file added after the backup queues it again, copies only that, and keeps the overwritten version", async () => {

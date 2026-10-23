@@ -33,7 +33,6 @@ from app.video_backup.schemas import (
 from app.video_backup.target import (
     DEFAULT_FOLDER_NAMES,
     DEFAULT_PATH,
-    FULL_CATEGORIES,
     PathInvalid,
     Tier,
     as_dict,
@@ -162,7 +161,6 @@ def view_of(row: ProviderConfig | None) -> SettingsView:
         tiers=tiers_of(config),
         folder_names=mapping_of(config, "folder_names"),
         default_folder_names=dict(DEFAULT_FOLDER_NAMES),
-        full_categories=sorted(FULL_CATEGORIES),
         updated_at=parse_time(config.get("saved_at")),
         test=probe_view(row),
         space=space_view(config),
