@@ -123,20 +123,55 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false,
  * awkward body fails, at 9 only a missed detail is let through, at 10 nothing is. `plate` says
  * the judge is also shown the video's style plate. The questions are the ones measured on the
  * 163 recorded takes; a reworded one has to be measured again.
+ *
+ * A manga-tier drama's keyframes (docs/videos/BINGE.md §畫面等級; docs/videos/DRAMA.md §manga
+ * 等級的關鍵影格用是非題) take the same checks with what its scored rubric asked on top: one
+ * identity question per character in the shot (`characters`, against the sheet the judge is
+ * shown, a redraw fault like the six), the style held against the sheets rather than a plate,
+ * and the subtitle band when the subtitles are burned in (`subtitleBand`, a second-look flaw).
+ * `craft` false leaves out `generated`: that is the print-illustration question the scored
+ * rubric asks of illustrated slides alone, and its fix clauses (uneven lines, no finish) would
+ * be written into an anime still's retake prompt. These additions were not measured on
+ * recorded takes; the first episodes judged with them are the measurement.
  */
-export function keyframeChecks({ plate = false } = {}) {
+export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true } = {}) {
   const redraw = { weight: 0.25, cost: 10 };
   return [
+    ...characters.map((character) => ({ key: `identity_${character.id.replace(/-/g, "_")}`, question: identityCheck(character), ...redraw })),
     { key: "text", question: "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
     { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, or a face or body warped out of shape? A finger that is hidden or left out by the style does not count.", ...redraw },
     { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
     { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
     { key: "frame", question: "Does the picture fail to fill the frame as one upright picture: bars or blurred panels at the sides, the scene tilted, blank paper or a table showing past its corners, or the scene drawn as a photograph of a print? A thin plain margin does not count.", ...redraw },
-    { key: "style", question: plate ? "Is the technique clearly unlike the picture labelled \"style plate\": another medium, another palette or another finish?" : "Is the technique clearly unlike the style the context describes: another medium, another palette or another finish?", ...redraw },
+    {
+      key: "style",
+      question: characters.length
+        ? "Is the technique clearly unlike the reference sheets shown: another medium (3D render, photograph), another palette or another finish, or not the style the context describes?"
+        : plate
+          ? "Is the technique clearly unlike the picture labelled \"style plate\": another medium, another palette or another finish?"
+          : "Is the technique clearly unlike the style the context describes: another medium, another palette or another finish?",
+      ...redraw,
+    },
     { key: "details", question: "Is a secondary thing the shot prompt asks for missing or different: a prop, a bystander, a gesture, the shot size?", weight: 2, cost: 3 },
     { key: "awkward", question: "Is a hand, a face or a body awkward enough that a viewer would notice it on a second look, beyond the way the style simplifies everything?", weight: 3, cost: 6 },
-    { key: "generated", question: "Does it read as generated rather than printed by hand: an even outline traced around everything, the same fine detail everywhere, a glossy, airbrushed or glowing finish?", weight: 2, cost: 6 },
+    ...(craft ? [{ key: "generated", question: "Does it read as generated rather than printed by hand: an even outline traced around everything, the same fine detail everywhere, a glossy, airbrushed or glowing finish?", weight: 2, cost: 6 }] : []),
+    ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject, or a face, inside the bottom 14% of the frame, where the subtitles will be burned in?", weight: 1, cost: 3 }] : []),
   ];
+}
+
+// The server takes a rubric question of at most this many characters (apps/api/app/video_media/
+// schemas.py JudgeCriterion.question); a shot look's appearance can run to 800, so the identity
+// check cuts it to fit rather than have the whole call refused.
+export const MAX_CHECK_QUESTION_CHARS = 400;
+
+/** The identity fault check of one character in a shot: against the sheet, or against the sheet's face in the shot's named look. */
+function identityCheck(character) {
+  if (!character.shot_look) return `Is ${character.name} not the person on the reference sheet labelled "${character.name}": another face, hair, clothing or build, or a mark of theirs (a scar, glasses, a hair colour) missing or added? A pose, an expression, the lighting or the shot size does not count.`;
+  const head = `Is ${character.name} not the person on the reference sheet labelled "${character.name}" in face and bone structure, or not in the requested look ${character.shot_look}: `;
+  const tail = "? The requested clothing, hair and age override the sheet's styling; a pose, an expression or the lighting does not count.";
+  const room = MAX_CHECK_QUESTION_CHARS - head.length - tail.length;
+  const appearance = String(character.appearance ?? "");
+  return `${head}${appearance.length > room ? `${appearance.slice(0, room - 1).replace(/\s+\S*$/, "")}…` : appearance}${tail}`;
 }
 
 /**
@@ -519,9 +554,11 @@ export async function run(command, args, ctx) {
   const plated = platedWith(status);
   if (plateWanted && !plated) ctx.stdout.write(plateSkipped(chosenImage));
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
-  // Illustrated slides are judged by yes/no fault checks once the server takes them; a drama's
-  // pictures, and any picture on an older server, are scored on the rubric as before.
-  const checks = (slides || isCuteExplainer(doc)) && Boolean(status.limits?.judge_checks);
+  // Illustrated slides, and a manga-tier drama's stills, are judged by yes/no fault checks once
+  // the server takes them (the scored judge tops out at the owner's bar of 7: on 2026-10-23 one
+  // shot in 46 of a sticker drama passed, docs/videos/DRAMA.md §manga 等級的關鍵影格用是非題); an
+  // animated drama's pictures, and any picture on an older server, are scored on the rubric as before.
+  const checks = (slides || isCuteExplainer(doc) || manga) && Boolean(status.limits?.judge_checks);
   const size = sizeFor(status);
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned
@@ -564,7 +601,9 @@ export async function run(command, args, ctx) {
   const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
-    rubric: checks ? keyframeChecks({ plate: Boolean(plate) }) : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
+    rubric: checks
+      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : {}) })
+      : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
     context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
   });
   // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
@@ -651,6 +690,15 @@ export async function run(command, args, ctx) {
         throw error;
       }
       if (!picture.reused) generated += 1;
+      // A manga still is judged as the viewer meets it: cut in from every edge first (trim.mjs),
+      // and the cut copy put in the store for the judge. image-01 letterboxes many of its
+      // pictures and writes marks along the edges, and both go with the cut; judged whole, 42
+      // of a sticker drama's 46 shots were failed for the bars on 2026-10-23, and the fix clauses
+      // chased them in every retake. The other stills are judged whole and trimmed after.
+      if (manga) {
+        picture = await trimmed(ctx, workdir, picture, scene.id, inset);
+        if (picture.margins) await stage.upload(path.join(workdir, picture.file));
+      }
       let judge;
       try {
         judge = await stage.judge({
@@ -665,7 +713,7 @@ export async function run(command, args, ctx) {
         break;
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
-      if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id, inset);
+      if (stillPictures && !manga) picture = await trimmed(ctx, workdir, picture, scene.id, inset);
       entry.takes = [...entry.takes.filter((each) => each.seed !== seed), { seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(fixes.length ? { fixes } : {}), ...(picture.margins ? { margins: picture.margins } : {}) }].sort((a, b) => a.seed - b.seed);
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
