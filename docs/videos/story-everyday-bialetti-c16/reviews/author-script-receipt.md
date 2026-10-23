@@ -16,8 +16,8 @@
 | 檔案 | SHA-256 |
 | --- | --- |
 | `script.md` | `1F92C7016D71488D4553E9D3AF246A41B2CC8435CC1A19468BED0106212CE22F` |
-| `visual-plan.json` | `573D4A485E4611B475558C83D0A3CC0BE5A20D672E37F700919BCEFD128DE91B` |
-| `visual-plan.md` | `8BFECB74AA53597E9ABF099B497E3F124C056F3AA617BD356DE149005A9B935A` |
+| `visual-plan.json` | `47B7720D7F4408927CDFCF7B3FA42E8A35E6F06AE30EE2284A1E5D9AE170E664` |
+| `visual-plan.md` | `F625C5EF9873D7D5D72CF4ED4DF6B174040B0D24A8A22953A45686F0FC770C1B` |
 | `script-source-notes.md` | `A650E4B7A4A7BA0FBCE2C279242C7B447DC5ED6C656168C98045EE96E7978C0A` |
 
 ## 作者預檢
@@ -32,7 +32,11 @@
 
 [獨立逐句來源與配鏡首輪收據](independent-script-source-visual-review.md)將 **85/85 旁白來源判 PASS，但總體 HOLD**：`c160106`、`c160508`、`c160510`、`c160511` 把 1957 年《Fiera di Milano》雜誌印刷頁誤導成展場直立海報；`c160602`、`c160604`、`c160605` 把不同館的物件紀錄誤導成當前或同場展櫃。作者只改這七列的 `visual-plan.md` 與對應 JSON 的 `camera`／`prompt`，其餘 78 鏡及 85 句旁白、來源註記原始 bytes 不變。新版改為素面雜誌頁和彼此分隔的館藏資料夾／目錄卡；原廣告與真實藏品仍不重畫。
 
-機械差異比對以首輪收據的 PR blob 為基準，確認 JSON 與 Markdown 恰好同改七個 ID；新視覺 SHA-256 見上表。首輪收據對舊視覺 bytes 的 HOLD 不會被本作者修訂自動改成 PASS；**須由同一獨立審查者讀新 blob，連同相鄰鏡頭重新判定**。作者沒有把「旁白來源 PASS」冒稱整套稿件 PASS。
+機械差異比對以首輪收據的 PR blob 為基準，確認 JSON 與 Markdown 恰好同改七個 ID；當時視覺 Markdown SHA-256 `8BFECB74AA53597E9ABF099B497E3F124C056F3AA617BD356DE149005A9B935A`、JSON `573D4A485E4611B475558C83D0A3CC0BE5A20D672E37F700919BCEFD128DE91B`。首輪收據對舊視覺 bytes 的 HOLD 不會被本作者修訂自動改成 PASS；須由同一獨立審查者讀新 blob，連同相鄰鏡頭重新判定。作者沒有把「旁白來源 PASS」冒稱整套稿件 PASS。
+
+## 相鄰鏡 c160607 窄修（2026-10-23）
+
+原審查者[七鏡差異覆核](independent-script-source-visual-review.md)判七鏡 PASS，但順看相鄰鏡找到 `c160607` 仍以空白海報指涉 1957 年雜誌印刷廣告，因此整套維持 **85/85 旁白來源 PASS、84/85 配鏡 PASS、1 鏡 HOLD**。作者在該覆核提交 `e70f5fa3f072fce2d5ae773653113ade8f11eb5d` 之後，只把 `c160607` 的第三份時間線物件改為一頁完全無字的素面雜誌紙，同步 Markdown 與 JSON；原廣告仍未重畫。對 `e70f5fa3f` 兩份原始 blob 作機械差異比對，恰好只改這一個 ID。劇本、來源註記、其餘 84 鏡的 bytes 與 SHA-256 不變；新版視覺 SHA-256 見上表。**待同一審查者再核 `c160607` 與前後配對，本作者不自判整套 PASS。**
 
 ## 待另一位審查者及站主
 
