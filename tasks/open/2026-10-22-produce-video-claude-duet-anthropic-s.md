@@ -34,7 +34,7 @@ The owner asked on 2026-10-23 for a second AI/tech current-events video from the
 - [x] tts (8:39 on the first synthesis), pace, check-audio twice (5 → 3 flagged, all reworded), review-push audio (pending the owner; re-pushed after the rewording).
 - [x] keyframes (round 1: 42 shots, 5 needing review; round 2 with simpler prompts: all passed, nothing to accept-best), storyboard pushed (pending), render, assemble (8:36 + branding), captions, review-push final: qa 8/11 — narration unapproved (owner), pace (thumb-approve 8.8 s; fixed by the rewording round that followed), policy (Jev 符合立場 0.47, 業配 0.24: the owner decides at the final gate).
 - [x] Rewording round (iuiv, tiyx, 2cae shortened under 8 s; tv2w reworded): check-audio 0 flagged, audio re-pushed, assemble (8:27 body), final re-pushed: qa 9/11 — narration unapproved (owner) and policy (Jev 符合立場 0.53, 業配 0.22) are the owner's call at the final gate.
-- [ ] package, review-push publish: blocked until the owner approves the final cut on /admin/videos.
+- [x] package (4/4) and review-push publish done 2026-10-23 after the owner approved narration, storyboard and final on /admin/videos; the publish card is pending the owner, then Studio upload as a private video and the URL pasted on the card.
 - [ ] package, review-push publish; note what the owner still has to do.
 
 ## How to verify

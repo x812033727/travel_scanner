@@ -33,7 +33,7 @@ The owner asked on 2026-10-22 for an AI/tech current-events video. The freshest 
 - [x] Verifier rounds 1–2 (verify-1.md 15 fact edits, verify-2.md 1), listener pass by the coordinator, three blind storytelling reads (66 → 74 → 78; last read 11/13, the two misses fixed afterwards without a fourth read).
 - [x] tts (8:53 → 9:11 after the outro split), pace on the real timeline, check-audio with the Whisper second opinion, review-push audio (pending the owner).
 - [x] keyframes (two rounds, then --accept-best for 7 shots the judge kept rejecting), storyboard pushed (pending), render, assemble, captions, qa 9/11 (narration unapproved = owner; policy: Jev 有示範 0.49 < 0.6), review-push final (pending).
-- [ ] package, review-push publish: blocked until the owner approves the final cut on /admin/videos (package exits 3 before that).
+- [x] package (4/4) and review-push publish done 2026-10-23 after the owner approved narration, storyboard and final on /admin/videos; the publish card is pending the owner, then Studio upload as a private video and the URL pasted on the card.
 
 ## How to verify
 
