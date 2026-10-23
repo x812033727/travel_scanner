@@ -16,6 +16,8 @@ const review: Review = {
     { role: "metadata", sha256: hash(5), size: 800, content_type: "application/json" },
     ...["zh_tw", "zh-CN", "en", "ja", "ko"].map((locale, i) => ({ role: `captions_${locale}`, sha256: hash(i + 5), size: 100, content_type: locale === "ja" ? "text/vtt" : "text/plain" })),
     { role: "description_en", sha256: hash(9), size: 100, content_type: "text/plain" },
+    { role: "thumbnail-b", sha256: "b".repeat(64), size: 500, content_type: "image/jpeg" },
+    ...["en", "ja"].map((locale) => ({ role: `thumbnail_${locale}`, sha256: (locale === "en" ? "e" : "f").repeat(64), size: 500, content_type: "image/jpeg" })),
   ],
   choice: null, note: null, created_at: "2026-09-28T00:00:00Z", decided_at: "2026-09-28T00:00:00Z",
 };
@@ -69,6 +71,9 @@ describe("manual YouTube upload", () => {
     expect(screen.getByRole("link", { name: "下載中文（台灣）字幕" }).getAttribute("download")).toBe("zh-TW.srt");
     expect(screen.getByRole("link", { name: "下載日文字幕" }).getAttribute("download")).toBe("ja.vtt");
     expect(screen.getByRole("link", { name: "下載縮圖" }).getAttribute("download")).toBe("thumbnail.png");
+    expect(screen.getByRole("link", { name: "縮圖 英文" }).getAttribute("download")).toBe("thumbnail.en.jpg");
+    expect(screen.getByRole("link", { name: "縮圖 日文" }).getAttribute("href")).toBe(`/api/admin-video-files/test-video/${"f".repeat(64)}`);
+    expect(screen.queryByRole("link", { name: /縮圖 B/ })).toBeNull();
     expect(screen.getByText(/原本的「失敗／等待」可能仍保留/)).toBeTruthy();
     for (const [url, init] of vi.mocked(fetch).mock.calls) {
       expect(String(url).startsWith("/api/")).toBe(true);
