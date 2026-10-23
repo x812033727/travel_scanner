@@ -89,7 +89,7 @@ for (const short of plan.filter((s) => !wanted.length || wanted.includes(s.episo
   writeFileSync(path.join(dir, "meta.json"), `${JSON.stringify({
     slug: `${slug}-short`, line: "drama", series: "zhong-tian-qu-qi",
     titles: [youtube["zh-TW"].title, `${short.hook.replace("\n", "，")}｜種田娶妻打天下 #Shorts`],
-    description: youtube["zh-TW"].description, source: { slug, start_seconds: short.from, end_seconds: short.to }, synthetic_media: true,
+    description: youtube["zh-TW"].description, source: { slug, start_seconds: short.from, end_seconds: short.to, ...(short.full_video ? { url: short.full_video } : {}) }, synthetic_media: true,
   }, null, 2)}\n`);
   for (const locale of LOCALES) if (youtube[locale]) writeFileSync(path.join(dir, `description.${locale}.txt`), `${youtube[locale].title}\n\n${youtube[locale].description}\n`);
   if (process.env.META_ONLY === "1") continue;
