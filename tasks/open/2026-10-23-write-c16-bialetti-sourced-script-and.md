@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-write-c16-bialetti-sourced-script-and
 title: Write C16 Bialetti sourced script and Curio visual plan
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-script
@@ -26,18 +26,18 @@ C16's Treatment and direct-source matrix were independently checked and adopted 
 
 ## Definition of done
 
-- [ ] Six connected chapters with stable line IDs, per-line source anchors, a 30–60 second hook, chapter-end questions, and an outro with answer, comment prompt, and subscription reason.
-- [ ] A one-to-one Curio visual plan with original illustration prompts, post-produced cards, exact cute-mystery look, 5-second intro placement, 21-second v4 outro, and no resolved portrayal of M16 or M17 HOLD claims.
+- [x] Six connected chapters with stable line IDs, per-line source anchors, a 30–60 second hook, chapter-end questions, and an outro with answer, comment prompt, and subscription reason.
+- [x] A one-to-one Curio visual plan with original illustration prompts, post-produced cards, exact cute-mystery look, 5-second intro placement, 21-second v4 outro, and no resolved portrayal of M16 or M17 HOLD claims.
 - [ ] An independent reviewer rechecks every narration claim and paired visual meaning against the direct sources, recording hashes; two fresh readers assess narration alone and author repairs any common failure.
-- [ ] A draft stacked PR carries the authored files and review receipts, with no-auto-merge. No paid generation, import, upload, merge, deployment, or claim of measured TTS duration.
+- [x] A draft stacked PR carries the authored files and author precheck receipt, with no-auto-merge. No paid generation, import, upload, merge, deployment, or claim of measured TTS duration.
 
 ## Steps
 
 - [x] Verify PR #1698 adoption hashes, narrowed Treatment claim, open PRs, branches, and absence of a C16 script claim; branch at `e32a2b5f05b38e4fe25ba7db5738e5b2e48aa2f4` without force.
 - [x] Draft narration, source notes, and 1:1 visual plan in separate C16 script worktree.
-- [ ] Run mechanical checks; record author hash and limitations.
+- [x] Run mechanical checks; record author hash and limitations.
 - [ ] Obtain independent source/paired-visual review and two narration-only blind reads; apply any required author repairs and re-review changed hashes.
-- [ ] Open draft stacked PR and hand off owner script/visual approval gate.
+- [x] Open draft stacked PR and hand off independent review, blind-read, and owner script/visual approval gates.
 
 ## How to verify
 
@@ -48,3 +48,5 @@ C16's Treatment and direct-source matrix were independently checked and adopted 
 2026-10-23 UTC: The managed `create_worktree` request failed because this chat's default cwd is not the Git repository (`Git ref lookup failed`). A separate ordinary Git worktree was created from the exact owner-adopted Treatment head; `attach_worktree` reports it is not managed. This does not affect Git isolation. The policy-blocked untracked ghost approval task remains only in the Treatment worktree and is untouched here.
 
 The 1933 date is a retrospective design attribution; the visible utility-model dates are 1950/1951. The laundry inspiration is a legend. M16 identity and M17 invention, ownership, and litigation stay unresolved and out of definitive narration or art. Script length and illustration share are paper plans until real TTS and timing are measured after later owner/cost gates.
+
+Author draft pushed as [draft PR #1704](https://github.com/x812033727/travel_scanner/pull/1704), initially at `0149597e39136cb3aea08b50c181cb640710c592`, stacked on `codex/brand-story-bialetti-c16-treatment`; `no-auto-merge` and draft state were read back. Script SHA-256 `1F92C7016D71488D4553E9D3AF246A41B2CC8435CC1A19468BED0106212CE22F`, visual JSON `1238039373D123C1461BFE3AE4E9020C1F7BB3B7D0BC8B1217DEBBAC2D9BA364`, visual Markdown `748B551F18E1FA93184B643D14734BD83F17E34EC7DD943D38D77E16C7E1E548`, source notes `A650E4B7A4A7BA0FBCE2C279242C7B447DC5ED6C656168C98045EE96E7978C0A`. Mechanical check: 85/85 unique ordered IDs, 74 shots, 11 cards, max consecutive cards 1, no banned names in shot prompts, `npm run check:tasks` exit 0 in this script worktree, `git diff --cached --check` exit 0 before first commit. Independent review and two fresh narration-only blind reads remain pending; this author task is in review and not done.
