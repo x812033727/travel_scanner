@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c-series-video-safety-guards
 title: Port C-series video safety guards to main
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: codex-c-series-video-safety-port
@@ -67,3 +67,11 @@ After the lint/state port, their complete focused test files passed 70/70 with z
 The unmerged #1669 task `2026-10-22-reconcile-legacy-generated-music-manifests-in` is absorbed by the `state.mjs` change and its focused test: legacy request-only, short, sufficient, changed-cut, missing-file, changed-byte and owner-track cases are covered. Read-only C03 verification found the retained 4,182,166-byte MP3 still matches its manifest SHA, while the old manifest has only requested `seconds: 600` and no decoded duration; the new `pipelineStatus` correctly says `music generated = false` and points to `music --slug story-everyday-moleskine-c03` for cached measurement. No C03 file, ledger or provider job was changed. The unmerged #1669 independent-review task is preserved in `2026-10-23-renew-c-series-canonical-duration-review`.
 
 The shared music guard reaches `dubSound()` only after `dubLocale()` has synthesized pending translation lines. It stops before dub mixing, but does not prevent speech spend first. Follow-up `2026-10-23-preflight-music-before-paid-dub-synthesis` records the separate pre-spend work; no dubs code or paid speech work is part of this port.
+
+2026-10-23 review handoff: draft PR #1784 is open at head
+`e4f0390a6` on merged-main budget base `efbb3012f`. The independent reviewer
+rebound the eight changed canonical duration files while preserving the other
+100 hashes; 52/52 affected tests, 2/2 receipt tests and 473-plan CLI passed.
+The owner removed two exact task-board open duplicates after automatic approval
+review blocked deletion; `npm run check:tasks` then passed 2117 files. Hosted PR
+checks and final merge remain the gate for this task.
