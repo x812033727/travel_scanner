@@ -858,9 +858,10 @@ function StorySeriesDetail({ series, error, onBack, onOpenVideo, onChanged }: { 
   const now = useNow();
   const isEveryday = series.slug === EVERYDAY_SERIES_SLUG;
   const progress = useStoryPreproduction(isEveryday);
+  const reloadProgress = progress.reload;
   // Bumped by an import from this page: it may rewrite a plan the list's row does not show.
   const [generation, setGeneration] = useState(0);
-  const imported = useCallback(() => { setGeneration((value) => value + 1); progress.reload(); onChanged(); }, [onChanged, progress.reload]);
+  const imported = useCallback(() => { setGeneration((value) => value + 1); reloadProgress(); onChanged(); }, [onChanged, reloadProgress]);
   const back = () => {
     // The page's own filters and the opened story stay behind with it.
     const target = new URL(window.location.href);
