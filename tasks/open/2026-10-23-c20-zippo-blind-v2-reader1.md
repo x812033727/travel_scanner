@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c20-zippo-blind-v2-reader1
 title: C20 Zippo blind v2 reader1
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c20-blind-v2-reader1
@@ -25,14 +25,14 @@ C20 作者稿改過三個來源／配鏡爭點後，舊版盲讀不再適用。�
 
 - [x] 在讀任何企劃、來源、審查或規範前，只讀固定 SHA-256 的旁白投影並鎖定 12 項 PASS／HOLD 判斷。
 - [x] 收據逐項給旁白 ID／行號及具體理由，明說不涵蓋來源、配鏡與真實 TTS。
-- [ ] 只提交本任務檔與 blind-v2-reader1.md，開對作者 head 的獨立 draft PR 並貼 no-auto-merge；讀回 PR head／base／標籤與 auto-merge 狀態。
+- [x] 只提交本任務檔與 blind-v2-reader1.md，開對作者 head 的獨立 draft PR 並貼 no-auto-merge；讀回 PR head／base／標籤與 auto-merge 狀態。
 
 ## Steps
 
 - [x] 核對輸入檔 68 行與 SHA-256 3E55ABA282998A8A18101D8047F313C88DAAA8CE7E6FD4E21BCF93B117C0C342。
 - [x] 固定第一階段收據於獨立暫存檔，SHA-256 BAF9BFB32A80CD58C4C6B6976702972CD0C033F5B1B85E77FB788C9830CECA1E。
 - [x] 讀 repo 規範，從作者 head 856b6b24564d7de3a4b1804ccf1f7fc6f10232f2 建極小稀疏、無初始 checkout 的獨立 worktree，claim 此窄 scope。
-- [ ] 驗證收據、task 與 staged diff，commit／push，開 draft PR 並核對遠端狀態。
+- [x] 驗證收據、task 與 staged diff，commit／push，開 draft PR 並核對遠端狀態。
 
 ## How to verify
 
@@ -41,3 +41,5 @@ C20 作者稿改過三個來源／配鏡爭點後，舊版盲讀不再適用。�
 ## Notes
 
 2026-10-23：第一階段 3 PASS／9 HOLD。最需要作者處理的是 c200107 的「為何首款就承諾」在 c200608 沒有答案；戰時／日期碼／博物館與六億段落的因果推進也不足。這是旁白判斷，不能用於取代來源或配鏡查核；沒有改動作者腳本。
+
+2026-10-23：draft PR #1739 https://github.com/x812033727/travel_scanner/pull/1739 已建立，首個 commit 5c27d5ceee7d1f120d3221678e23db5b7462a4b7。GitHub 讀回 base codex/brand-story-zippo-c20-script（遠端 head 856b6b24564d7de3a4b1804ccf1f7fc6f10232f2）、head 為本分支、isDraft=true、no-auto-merge label 存在、autoMergeRequest=null；PR 只新增本收據和本 task。這是提交供審狀態，敘事 HOLD 未解除。
