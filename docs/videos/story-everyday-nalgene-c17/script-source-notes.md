@@ -34,10 +34,10 @@
 | O07 | S1/S2 M04 (inference) |
 | O08 | S1/S2 M04 (use case) |
 | O09 | S2 M01/M12 |
-| O10 | S2 M01/M12 |
+| O10 | S1/S2 M02/M03 (separate adoption and consumer product stages) |
 | O11 | S1/S3 M02 |
-| O12 | S1/S3 M02 (question) |
-| I01 | S1/S3 M02 |
+| O12 | S1/S3 M02 (question; no claim of a unique first user) |
+| I01 | S1/S3 M02 (company retrospective; no claim of a unique first user) |
 | I02 | S1/S3 M02 |
 | I03 | S1/S3 M02 (retrospective, no named trip) |
 | I04 | S1/S3 M02 (inference) |
@@ -48,18 +48,18 @@
 | I09 | S1/S2 M02/M03 (inference) |
 | I10 | S2 M03 |
 | I11 | S2 M03 (question) |
-| E01 | S2 M05 |
+| E01 | S2/S5 M03 (consumer unit in the mid-1970s, not first-sale date) |
 | E02 | S2 M04/M05 |
 | E03 | scene (generic use) |
-| E04 | S2/S5 M03 |
+| E04 | S2 M03 (company retrospective on existing outdoor demand) |
 | E05 | S2 M03 (business inference) |
-| E06 | S2 M01/M12 |
-| E07 | S2 M05 |
+| E06 | S2 M05 (narrative question) |
+| E07 | S2 M05 (company retrospective on later settings) |
 | E08 | S2 M05 |
 | E09 | S1/S2 M04/M05 (inference) |
 | E10 | narrative transition |
 | E11 | S4 M06 (question) |
-| T01 | S4 M06 |
+| T01 | S4 M06 (announced future material change; no completed-change claim) |
 | T02 | S4 M06 (announcement, not completed) |
 | T03 | S4 M06 (Outdoor BPA polycarbonate only) |
 | T04 | S4 M06 (announced phase-out only) |

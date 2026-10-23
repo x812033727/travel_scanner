@@ -1,15 +1,19 @@
 # C17 Nalgene｜作者劇本與分鏡收據
 
-2026-10-23，狀態：**AUTHOR DRAFT / INDEPENDENT REVIEW PENDING**。本收據只記作者自檢，絕不代表獨立來源 PASS、兩位盲讀 PASS、站主核准、實際配音時長、插圖成圖或成片。
+2026-10-23，狀態：**AUTHOR DRAFT v2 / blind-reader-1 HOLD narrow repair / INDEPENDENT RE-REVIEW PENDING**。本收據只記作者自檢，絕不代表獨立來源 PASS、兩位新版盲讀 PASS、站主核准、實際配音時長、插圖成圖或成片。
 
 ## 基準與檔案雜湊
 
 - 隔離分支：`codex/brand-story-nalgene-c17-script`，從已採用的 PR #1699 head `2410b0976b22b57215069a4fe06e924d12bf6741` 建立。
 - 已採用 Treatment SHA-256：`0451192DAA6EDF85CFD8721674511B6DBDBC671A73AC720B0BCEDFB9E14C1E07`；來源矩陣 SHA-256：`892041F854DCF4FBFFF37BFE90AC6B1AA02647CBD146CB2262F7A2E47FAC316E`。這兩件的獨立查核與站主採用屬前一關，不覆蓋新稿。
-- `script.md` SHA-256：`13451D6D8B5E8D20B640EC712CCF9C0A27D4187DAF9DCC2622863FA18C014D0C`。
-- `script-source-notes.md` SHA-256：`76A370FF4CD1CEAE6038B911738AF8D6E5A5E43A6B6E652C6D6FCE1F57102010`。
-- `visual-plan.md` SHA-256：`B02B42465AC996309A3FF0F1E8DFF02157A59E7B5ACC21952E1F7E7BD459CD9C`。
-- `visual-plan.json` SHA-256：`60D6FEE9A279424125100DEA7DFE127D6D887D284D40F9D4277E8000A3AE0A89`。
+- `script.md` SHA-256：`5B1ADE1DA22D04131627C6EC2E6A62BA222428F58D1765D1ABAABD3D6E2357A9`。
+- `script-source-notes.md` SHA-256：`E89AE30074A09BA68A2D0C29760691CCFBBA82C3F89883AEBD45501471C1E8EB`。
+- `visual-plan.md` SHA-256：`7DC6C943FC8967AFD0B448A8AB460A354AEF4A754DCBF2ECFFB6460DDDA5CEB7`。
+- `visual-plan.json` SHA-256：`5193C8DB8144F1028B7CB85B1F19BE80316A62694391D58291DEF00FD0634A85`。
+
+## 第一位盲讀 HOLD 的狹義修訂
+
+第一位只讀旁白盲讀的 [收據](blind-reader-1.md) 綁定舊版 `script.md` SHA-256 `13451D6D8B5E8D20B640EC712CCF9C0A27D4187DAF9DCC2622863FA18C014D0C`，其 HOLD 不因作者修稿自動改為 PASS。新版 O01 直接進入羅徹斯特工作台；O12／I01 第一時間回答誰把瓶子帶上步道，並去掉無同期記錄支撐的「最先」；I11／E01 第一時間回答七〇年代中期成立消費品部門；E11／T01 先回答材料沒有一直相同。O09／O10 只保留一次 1949 分類，後句改說使用與消費產品的不同階段；E06 改問下一個使用場景，E07 立即回答。相關來源註與畫面同時改動。**仍須兩位讀者用整份新版旁白重新盲讀，另一代理逐句與逐鏡查核。**
 
 ## 作者機械檢查
 
@@ -17,10 +21,10 @@
 | --- | --- |
 | 敘事結構 | Hook、Origin、Idea、Engine、Turn、Now 六章；開場後 5 秒片頭，結尾後 21 秒片尾與連結位。 |
 | 逐句配對 | 69 句旁白／69 句來源註／69 個 JSON 畫面，ID、順序與 JSON 旁白文字一致。 |
-| 文字長度 | 正文旁白約 2,086 個字元；**沒有**以字數宣稱 TTS 達 480 秒。 |
-| 畫面種類 | 60 張插圖方向、9 張後製字卡；按張數為 87.0% 插圖，最多連續 1 張字卡。**沒有**按實際秒數證明正文插圖 ≥70%。 |
+| 文字長度 | 全部旁白約 2,090 個字元、正文（不含 H）約 1,888 個字元；**沒有**以字數宣稱 TTS 達 480 秒。 |
+| 畫面種類 | 61 張插圖方向、8 張後製字卡；按張數為 88.4% 插圖，最多連續 1 張字卡。**沒有**按實際秒數證明正文插圖 ≥70%。 |
 | 提示詞初篩 | 插圖提示詞無 `Nalgene`、`Nalge`、`Thermo`、`Tritan`、`BPA`、`Outdoor`、`Everyday`、`Sustain` 字樣；圖片模型不產生字卡。所有畫面仍待另一代理逐鏡檢查。 |
-| 紙上鉤子 | H05/H07、O07/O12、I05/I11、E04/E07/E11、T03/T06/T09/T13、N04/N06/N09/N13 有問句、揭露或轉向；相鄰標記最長 190 字元。**不是**實際 30–45 秒節拍量測。 |
+| 紙上鉤子 | H05/H07、O07/O12、I05/I11、E01/E06/E07/E11、T01/T03/T06/T09/T13、N04/N06/N09/N13 有問句、揭露或轉向；**不是**實際 30–45 秒節拍量測。 |
 
 ## 下一關須查的重點
 
