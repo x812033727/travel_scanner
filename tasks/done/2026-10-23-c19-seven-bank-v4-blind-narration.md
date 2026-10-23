@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-c19-seven-bank-v4-blind-narration
 title: C19 Seven Bank v4 blind narration reader B receipt
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-c19-v4-blind-reader-b
 claimed_at: 2026-10-23T07:30:35Z
 created_at: 2026-10-23T07:30:26Z
-completed_at:
+completed_at: 2026-10-23T07:33:14Z
 branch: codex/c19-seven-bank-v4-blind-b
 depends_on: []
 scope:
@@ -25,7 +25,7 @@ PR #1742 needs an independent narrator-only judgment on its 79 spoken lines. The
 
 - [x] Preserve a dated, hash-locked verdict on all 12 narrative criteria with exact line IDs for every HOLD.
 - [x] Compare the blind input to the exact author-script head and save a narrow post-lock receipt.
-- [ ] Open a draft PR stacked on the author-script branch with no author-script changes.
+- [x] Open a draft PR stacked on the author-script branch with no author-script changes.
 
 ## Steps
 
@@ -33,7 +33,7 @@ PR #1742 needs an independent narrator-only judgment on its 79 spoken lines. The
 - [x] Lock the verdict before reading PR or repository material.
 - [x] Read repository instructions and compare all 79 spoken lines against PR #1742 head `c1fe8f9daa667712f9be9e6746148f05ad39f89f`.
 - [x] Copy the unedited lock file and write the separate post-lock comparison.
-- [ ] Verify the receipt, finish this task, and open the stacked draft PR.
+- [x] Verify the receipt, finish this task, and open the stacked draft PR.
 
 ## How to verify
 
@@ -41,4 +41,4 @@ Check the input SHA-256, the saved blind-verdict SHA-256, and the 79 ID/text pai
 
 ## Notes
 
-The blind lock was created at 2026-10-23T15:27:41+08:00 before any other material was read; SHA-256 `E790294AF1367C139405B22EC0B32EE4CA1F4718D3CA6A2F0E5883B828AC1A80`. It records 6 PASS and 6 HOLD. The exact-head comparison found zero differences across 79 spoken lines. Source claims, visual plan, paid media, and owner approval remain separate gates.
+The blind lock was created at 2026-10-23T15:27:41+08:00 before any other material was read; SHA-256 `E790294AF1367C139405B22EC0B32EE4CA1F4718D3CA6A2F0E5883B828AC1A80`. It records 6 PASS and 6 HOLD. The exact-head comparison found zero differences across 79 spoken lines. Source claims, visual plan, paid media, and owner approval remain separate gates. Draft PR #1763 is stacked on the author-script branch and labeled `no-auto-merge`.
