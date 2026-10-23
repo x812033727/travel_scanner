@@ -1,7 +1,7 @@
 ---
 id: 2026-10-22-reconcile-c03-c06-prior-charges-and
 title: Reconcile C03-C06 prior charges and activate the USD 25 all-in route
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5.5-everyday-budget
