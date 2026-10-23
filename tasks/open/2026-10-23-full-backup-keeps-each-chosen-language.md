@@ -45,6 +45,9 @@ backup hold every chosen language's voice track and thumbnail.
 - [x] Every backed-up video defaults to the full tier (owner, 2026-10-23: 如果有備份的都要完整備份);
   a series set to basic or off in the settings still wins. `FULL_CATEGORIES` and the settings
   view's `full_categories` are gone; the card's help text says so in five locales.
+- [x] A work directory made by hand, with `upload/final.mp4` and no `auto.json`
+  (`openai-devday-2026-recap`, `free-vs-paid-ai-plans-2026`), is backed up too; before, the
+  round skipped any directory without `auto.json`, so these two were never queued.
 - [ ] Deployed, and a full-tier video with an unpackaged track shows it in Drive.
 
 ## How to verify

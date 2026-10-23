@@ -591,7 +591,9 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // The site's own slug pattern; anything else is never joined onto the work base.
     if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
     const workdir = job.workdir(video.slug);
-    if (!fs.existsSync(path.join(workdir, "auto.json"))) continue;
+    // A work directory the worker made has auto.json; one made by hand (a renewal, a recut) has
+    // only its upload package, and is backed up all the same.
+    if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs)) continue;
     if (video.tier === "off") {
       verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
       continue;
