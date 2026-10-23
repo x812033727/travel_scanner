@@ -20,6 +20,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.problems import AppError
 from app.video_budget.models import (
+    EVERYDAY_STORY_PREFIX,
     FOLLOWON_LIMIT_USD,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
@@ -68,7 +69,25 @@ class BudgetSummary:
 
 
 def is_pilot(slug: str | None) -> bool:
-    return slug in PILOT_SLUGS
+    # Any everyday-object film enters the budget guard. The seven known pilots
+    # are held before activation; an unknown film has no reviewed account.
+    return slug in PILOT_SLUGS or (
+        isinstance(slug, str) and slug.startswith(EVERYDAY_STORY_PREFIX)
+    )
+
+
+def is_preproduction_held(slug: str | None) -> bool:
+    # No everyday-object film has a reviewed, spendable account in this release.
+    return isinstance(slug, str) and slug.startswith(EVERYDAY_STORY_PREFIX)
+
+
+def _require_activated(slug: str) -> None:
+    if is_preproduction_held(slug):
+        raise BudgetError(
+            503,
+            "video_budget_preproduction_hold",
+            "本片的舊費用或供應商帳戶、語音與價格尚未核對，不能送出付費請求",
+        )
 
 
 def _amount(value: Decimal | None, *, allow_zero: bool, code: str) -> Decimal:
@@ -160,6 +179,7 @@ async def reserve(
     """
     if not is_pilot(slug):
         return None
+    _require_activated(slug)
     operation_id = _label(operation_id, name="operation_id", length=160)
     category = _label(category, name="category", length=40)
     provider = _label(provider, name="provider", length=40)
@@ -346,6 +366,8 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     """Read the aggregate ledger for a pilot without exposing account credentials."""
     if not is_pilot(slug):
         return None
+    if is_preproduction_held(slug):
+        _require_activated(slug)
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
     if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
