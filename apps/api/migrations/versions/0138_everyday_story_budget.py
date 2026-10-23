@@ -12,6 +12,7 @@ USD 25. Rerunning the upgrade never resets an account or a hold that was already
 """
 
 from collections.abc import Sequence
+from decimal import Decimal
 
 import sqlalchemy as sa
 from alembic import op
@@ -22,7 +23,7 @@ down_revision: str | None = "0137_video_manga_tier"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
-LIMIT_USD = "25.000000"
+LIMIT_USD = Decimal("25.000000")
 HISTORICAL_HOLD = "pre-ledger-history"
 UNRECONCILED = (
     "story-everyday-moleskine-c03",
@@ -58,10 +59,12 @@ def upgrade() -> None:
         sa.column("created_at", sa.DateTime(timezone=True)),
         sa.column("updated_at", sa.DateTime(timezone=True)),
     )
+    # A typed bind: PostgreSQL refuses a VARCHAR parameter for the numeric columns.
+    limit = sa.literal(LIMIT_USD, sa.Numeric(12, 6))
     for slug in UNRECONCILED + FRESH:
         op.execute(
             insert(account)
-            .values(slug=slug, limit_usd=sa.literal(LIMIT_USD), created_at=sa.func.now())
+            .values(slug=slug, limit_usd=limit, created_at=sa.func.now())
             .on_conflict_do_nothing(index_elements=["slug"])
         )
     for slug in UNRECONCILED:
@@ -75,7 +78,7 @@ def upgrade() -> None:
                 category="historical",
                 provider="unattributed",
                 model="pre-ledger",
-                max_usd=sa.literal(LIMIT_USD),
+                max_usd=limit,
                 status="uncertain",
                 attempts=1,
                 created_at=sa.func.now(),
