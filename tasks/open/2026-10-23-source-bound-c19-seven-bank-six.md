@@ -28,14 +28,14 @@ The C19 slot in the approved 20-episode editorial plan had only a source entranc
 
 ## Steps
 
-- [x] Read the 2001–2007 issuer timeline, the issuer's own 1999 competitor timeline, the 2010 annual report, the 2024 integrated report, and the 2005 renaming notice.
+- [x] Read the 2001–2007 issuer timeline, the issuer's own 1999 competitor timeline, the 2001 launch release and 2002 inaugural disclosure, the 2010 annual report, the 2024 integrated report, and the 2005 renaming notice.
 - [x] Draft one chronological cause-and-effect story with a narrow 45-second opening and six chapter budgets.
 - [ ] Commission independent source review and repair any held claims.
 - [ ] Request owner Treatment adoption; do not start a script on an unadopted Treatment.
 
 ## How to verify
 
-- Open every S1–S5 URL and check M01–M14 directly against source text/table.
+- Open every S1–S7 URL and check M01–M16 directly against source text/table.
 - Run `npm run check:tasks` and `git diff --check` in this worktree. Owner approval, script, media and release are separate gates.
 
 ## Notes
@@ -45,3 +45,4 @@ The C19 slot in the approved 20-episode editorial plan had only a source entranc
 - The retrospective ATM page groups transfers under May 2001, while the dated corporate timeline starts money transfers on June 18. Use the latter precise date in any script.
 - 2010 annual report separates customer ATM transaction fees set by partner institutions from ATM usage fees paid to Seven Bank. Its ATM fee income and placement expense are two dated line items, not profit per machine.
 - 2024 integrated report gives later +Connect and cash top-up context; do not backdate them into 2001.
+- The 2001 issuer release gives first-day 66 machines at 59 Tokyo sites; the inaugural 2002 disclosure already separates the bank's own account services from its partner-ATM business. These contemporaneous documents make the initial business model concrete without claiming the license was the only possible route.
