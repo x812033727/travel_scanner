@@ -5932,6 +5932,20 @@ The reviewed diff adds a collapsed, escaped source Markdown display to the admin
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch c-series-video-safety-port increment: 8 files (2026-10-23)
+
+Reviewer: `codex-duration-review-c-series`. Author: `codex-c-series-video-safety-port` (source HEAD `4ba043f573059be8c9c50eac1a4b5e7dfc1aec52`, branch `codex/c-series-video-safety-port-20261023`). Scope: DURATION_ONLY for `tools/video/assemble/cli.mjs`, `tools/video/core/{branding,branding.test,lint,lint.test,state,state.test}.mjs`, and `tools/video/media/clips.test.mjs`. The reviewer did not author the source changes and edited only this canonical report, review.json, and the narrow task record. The eight-file diff from merged main `efbb3012f0778f79327394b079a52070d0f12d94` has 174 additions and 17 deletions. The branch also changes files outside this duration binding, which this receipt does not approve.
+
+Baseline: All eight `git show origin/main:<path>` byte SHA-256 values matched the existing JSON binding and report table before this increment. The other 100 of 108 registered worktree files also matched. The report itself matched its prior `report_sha256` (`0ee807326a6209ad9e425188983d7379ede38d5a06c5ce28c9f9d078c342fcdd`). Before rebinding, `node tools/video/long-form/cli.mjs check` failed for exactly these eight stale paths and no others. The eight new hashes below are the reviewed source bytes at the frozen HEAD.
+
+Findings: `branding.mjs` rounds a fractional-frame intro cue boundary on forward and reverse caption shifting, with a new round-trip test; it does not add frames or change narration duration. `lint.mjs` adds the cute-mystery illustration/card mix error only for the everyday story identity, with tests for that scope; it changes no minute target or acceptance floor. `state.mjs` marks generated music complete only when the current speech hash, fully decoded duration at least `timeline.total_frames / FPS`, and retained file SHA-256 agree; a missing, held, short, or altered paid track stays incomplete. The owner-supplied music branch retains its former mix-hash rule. `assemble/cli.mjs` passes the current cut length to `musicInputs`; it does not stretch, shorten or count the bookends toward the narration body. `clips.test.mjs` replaces a fake MP3 fixture with decoded audio and checks short-track hold, no silent repurchase, retained-byte integrity and changed-cut refusal. The one-second fixture is a media regression fixture, not a production episode duration. `core/duration.mjs`, `core/schema.mjs`, QA duration checks, long-form plans and policy are byte-unchanged from merged main. The unwrapped knowledge-story body floor remains 480 seconds at 30 fps, excluding intro and outro; no existing duration assertion was removed or loosened. No duration correction is required.
+
+Ran: Node v24.13.0 for the independent hash audit and bundled Node v24.19.0 for focused tests on Windows; `git diff --check origin/main...HEAD` passed; the pre-rebind long-form CLI reported exactly the eight expected stale bindings. The post-rebind CLI and review test results are recorded in the narrow task and PR handoff, so this report remains bound to the tested bytes.
+
+Non-claims: This is an eight-file incremental duration review. It does not re-review the other 100 bound files or all unbound safety changes, judge live media, confirm paid-provider behavior, or approve production deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Drama Shorts languages increment: 2 files (2026-10-23)
 
 Reviewer: `claude-pr-review-1783-drama-shorts-languages`. Author: `claude-opus-5-5-shorts-1-5`. Scope: DURATION_ONLY for `apps/api/app/video_reviews/admin_service.py` and `apps/web/components/admin-video-reviews.test.tsx` on branch `claude/shorts-1-5-editing-87d7bf` (PR #1783), changed by `aa2505b2c` ("feat(video): drama Shorts carry their episode's nine languages") and carried to HEAD `f5bd3c367`, a merge of origin/main at `efbb3012f`, which is also the merge base. Reviewed as `git diff origin/main -- <each of the 2 files>` (21 added lines, 1 removed). The branch also changes 8 unbound files (`apps/api/tests/test_video_languages_imported.py`, `apps/web/components/admin-video-reviews.tsx`, `docs/videos/LANGUAGES.md`, two `hailuo/shorts-dh` production files, `tools/video/import/import.mjs`, `tools/video/import/import.test.mjs` and a task file under `tasks/open/`); they were not reviewed for this receipt. The reviewer wrote none of the code and edits only this report and review.json.
@@ -5947,7 +5961,7 @@ Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, and then the look gate clean-up grace increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, and then the look gate clean-up grace increment, then the C-series video safety increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5997,7 +6011,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `docs/videos/so-thats-why/README.md` | `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `76a51bc9c90b7b23ac91b22bf0278b8f61173ca3d418794b2112ae8eade96403` |
-| `tools/video/assemble/cli.mjs` | `6e6800340e9567bf1e71ec9e61668d713272bb10d845d51a02e9116cdabf5080` |
+| `tools/video/assemble/cli.mjs` | `b0826429abaeb5572586c5dff0294f6081378d6246fe473057e959d65950c18c` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
@@ -6012,22 +6026,22 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
 | `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
-| `tools/video/core/branding.mjs` | `da1e635285601e1398d7e4233c20f8fab2e9f752c693c67e82512f2dffd4adaa` |
-| `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
+| `tools/video/core/branding.mjs` | `d341aaba2cc148e1c7c92e40396d432da52560cc5a3d9636a2b68f3aaf74a319` |
+| `tools/video/core/branding.test.mjs` | `97a554bdd2a4564e0cef66a3d60088378d92c82f20f22a2859fe2573b0d7efdf` |
 | `tools/video/core/drama.mjs` | `0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1` |
 | `tools/video/core/drama.test.mjs` | `dd57757c7ed3ba058cc45827ac09308dc55404be89f90b696f127af3d98c1272` |
 | `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
 | `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `1cab1d19f5f09970f233bb46cf0464bef554399beeae39ddfeef00af4c2b8c54` |
-| `tools/video/core/lint.test.mjs` | `2f7fc1b21c307677f822e1d589fa96c017b066041a95289abdc090013ceb9e5b` |
+| `tools/video/core/lint.mjs` | `f757dfd12c02529f30737831bbd0cdc72c868299861d09de8dc951c8e1be9ee6` |
+| `tools/video/core/lint.test.mjs` | `8fce9454d6cad19b2734c97bf7898dc7a273175aacaa83aa5b93ef9be06a9d05` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
-| `tools/video/core/state.mjs` | `920a5065c5569856703686b10c72fea2ce2eed0c973c69ec82765f33373bf687` |
-| `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
+| `tools/video/core/state.mjs` | `624e57fab00920dae15f1b373949bbc9ca79340a905cca07034c0e598782be9d` |
+| `tools/video/core/state.test.mjs` | `c0cd4afc34b17111cbefbe4c7b9727d3901113ec8cada84d8edb8ef386869f04` |
 | `tools/video/core/timeline.mjs` | `a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362` |
 | `tools/video/core/timeline.test.mjs` | `fce82218d4efc4f923d22b3fc3ed42b1a9a743d2930c0cb229fed366e53c06d8` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
@@ -6040,7 +6054,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
+| `tools/video/media/clips.test.mjs` | `8d057fb90db90355e88e560e2472fb3088307fb0d7bd08300166bf146f89df99` |
 | `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
 | `tools/video/package/cli.mjs` | `46e4627f26030e5296ae42970adf5ef313551a593523d8bd47089c1e656e89e4` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |

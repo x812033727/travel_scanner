@@ -8,6 +8,7 @@
 // and no picture may show. The length stays target_minutes' business, as for any video, and the
 // longest shot stays drama.mjs's MAX_SHOT_SECONDS; these rules only add what a story needs.
 import { isDrama, isShot, NARRATOR, shotVisual } from "./drama.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_PRESET } from "./curio.mjs";
 import { FPS } from "./timeline.mjs";
 
 export const STORY_KIND = "story";
@@ -42,6 +43,51 @@ export const STORY_RULES = [
 
 /** Whether series.json (loadProject's `series`) makes this video a brand story. */
 export const isStory = (series) => series?.kind === STORY_KIND;
+
+/** The everyday series keeps its story identity while borrowing Curio's visual limits. */
+export const isEverydayStory = (doc, series) => isStory(series) && /^story-everyday-/.test(doc?.slug ?? "");
+
+const CUTE_STORY_FRAMES = new Set(["title", "chapter", "outro"]);
+
+/**
+ * Shared visual check for the cute-mystery story routes. The caller decides which story slugs
+ * use it; both local lint and the host worker use these same look, ratio and card-run rules.
+ */
+export function storyCuteVisualProblems(doc) {
+  const problems = [];
+  const look = doc?.look;
+  if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== CURIO_PRESET || Object.keys(look).length !== 1) {
+    problems.push({ path: "look", message: `cute-mystery stories use exactly {"preset":"${CURIO_PRESET}"}; remove style, negative and other look overrides` });
+  }
+  const body = (doc?.scenes ?? []).map((scene, index) => ({ scene, index }))
+    .filter(({ scene }) => !CUTE_STORY_FRAMES.has(scene.template));
+  if (!body.length) return [...problems, { path: "scenes[0]", message: "the cute-mystery story body has no scenes; add illustrated shots before keyframes" }];
+
+  const shots = body.filter(({ scene }) => isShot(scene)).length;
+  const minPercent = CURIO_MIN_SHOT_SHARE * 100;
+  if (shots * 100 < body.length * minPercent) {
+    // A concrete card path lets the worker send the ratio failure to its chapter's writer.
+    const card = body.findLast(({ scene }) => !isShot(scene));
+    problems.push({
+      path: `scenes[${card.index}]`,
+      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); cute-mystery stories need at least ${minPercent}%`,
+    });
+  }
+
+  let cards = [];
+  for (const item of body) {
+    if (isShot(item.scene)) { cards = []; continue; }
+    cards.push(item);
+    if (cards.length === CURIO_MAX_CARD_RUN + 1) {
+      problems.push({
+        path: `scenes[${item.index}]`,
+        message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); cute-mystery stories allow at most ${CURIO_MAX_CARD_RUN} before an illustrated shot`,
+      });
+      cards = [];
+    }
+  }
+  return problems;
+}
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
