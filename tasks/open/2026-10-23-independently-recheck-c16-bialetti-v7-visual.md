@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-independently-recheck-c16-bialetti-v7-visual
 title: Independently recheck C16 Bialetti v7 visual handoff delta
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-v7-visual-delta
@@ -30,7 +30,7 @@ PR #1704 changed the nine prompts that had blocked the earlier independent C16 v
 - [x] Compare all author changes from old head `02051051742014e18de262e29819618206c6bcad` to new head.
 - [x] Recheck each of the nine changed visuals against its narration and forbidden-depiction constraints.
 - [x] Independently verify MD/JSON field equality and 72/72 ID pairing.
-- [ ] Open a draft receipt PR stacked on the new exact author head.
+- [x] Open draft receipt PR #1767 stacked on the new exact author head and apply `no-auto-merge`.
 
 ## How to verify
 
@@ -39,3 +39,5 @@ Run the structural Python readback against both Git heads, `npm run check:tasks`
 ## Notes
 
 Verdict: PASS, no remaining blocking shot. New JSON `c160210` explicitly keeps the shell closed and bars filter/water-path depiction; all 63 prompts now match Markdown exactly. Source notes and script bytes are unchanged. This does not imply blind reads, owner approval, measured TTS, paid media, upload, or publication.
+
+Draft review PR: https://github.com/x812033727/travel_scanner/pull/1767; review receipt SHA-256 `66B46C07DF2DFE98C399897B790342A4C3148F9FF2C8CE11483679479C6A7FF9`. The Codex app artifact attachment call returned unavailable after PR creation; the PR and `no-auto-merge` label were verified on GitHub.
