@@ -37,10 +37,10 @@ The owner asked for twenty C-series plans and eligible approved scripts in the v
 
 ## How to verify
 
-`node --test tools/video/story-plans/plan.test.mjs`; `cd apps/api && uv run pytest tests/test_video_story_import.py`; `npm run check:tasks`; `git diff --check`. Before production apply, GET the series status as `paused`, dry-run the exact reviewed `stories.json`, then read back the paused status and all twenty episode rows.
+`node --test tools/video/story-plans/plan.test.mjs`; `cd apps/api && uv run pytest tests/test_video_story_import.py`; `npm run check:tasks`; `git diff --check`. Before production apply, dry-run the exact reviewed `stories.json`; apply creates the absent series already paused in the same transaction as its planned rows. Read back the paused status and all twenty episode rows.
 
 ## Notes
 
-2026-10-23: Production read-only API showed no everyday-reversals story series and one C03 VideoProject (`story-everyday-moleskine-c03`, series slug matches, episode 3, no YouTube ID). The existing importer marks new rows `ready`. Safe production order is empty-series create, immediate pause and GET readback, dry-run/apply while paused, then read back all rows and verify no new request. No production mutation has occurred.
+2026-10-23: Production read-only API showed no everyday-reversals story series and one C03 VideoProject (`story-everyday-moleskine-c03`, series slug matches, episode 3, no YouTube ID). The existing importer marks new rows `ready`. This exact batch now creates its series paused and its episodes planned in one transaction; dry-run precedes apply, followed by readback of all rows and no new request. No production mutation has occurred.
 
 Claim override rationale: the overlap reported task `2026-10-18-story-thumbnail-brand` was last claimed October 18, its branch is neither a local worktree nor an open PR, and its implementation landed in main as #1568. This task touches the same validators for a separate series-scoped change; the old task file was left untouched.

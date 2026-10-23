@@ -216,29 +216,33 @@ def test_compiled_everyday_batch_matches_python_import_validation() -> None:
     assert checked.ignored == []
 
 
-async def test_everyday_import_requires_an_existing_paused_series(
+async def test_everyday_import_creates_paused_series_atomically_and_refuses_active_reimport(
     db: async_sessionmaker[AsyncSession],
 ) -> None:
     document = _everyday_file()
     async with db() as session:
+        dry_run = await stories.import_story_rows(
+            session, document, series_slug=stories.EVERYDAY_REVERSALS_SLUG,
+            limit=3
+        )
+        assert not dry_run.written and dry_run.series_created
+        assert (await session.scalars(select(VideoDramaSeries))).all() == []
         report = await stories.import_story_rows(
             session, document, series_slug=stories.EVERYDAY_REVERSALS_SLUG,
             apply=True, limit=3
         )
-        assert not report.written
-        assert "must already exist with status paused" in "\n".join(report.problems)
-        assert (await session.scalars(select(VideoDramaSeries))).all() == []
-        await _pause_empty_series(session, document)
+        assert report.written and report.series_created and report.create == ["C01", "C02", "C03"]
         series = await session.scalar(select(VideoDramaSeries))
-        assert series is not None
+        assert series is not None and series.status == "paused"
+        assert len((await session.scalars(select(VideoDramaEpisode))).all()) == 3
         series.status = "active"
         await session.commit()
         report = await stories.import_story_rows(
             session, document, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
         )
         assert not report.written
-        assert "must already exist with status paused" in "\n".join(report.problems)
-        assert (await session.scalars(select(VideoDramaEpisode))).all() == []
+        assert "must have status paused" in "\n".join(report.problems)
+        assert len((await session.scalars(select(VideoDramaEpisode))).all()) == 3
 
 
 async def test_paused_everyday_import_links_existing_c03_without_a_new_request_and_is_idempotent(

@@ -960,7 +960,7 @@ async def import_story_rows(
 
     Nothing is written unless ``apply`` and no problem was found. When the series does not
     exist, ``apply`` creates it from the file's series object (kind ``story``, active), except
-    that the everyday reversals series must already exist paused for review-only import. An
+    that the everyday reversals series is created paused for review-only import. An
     existing series row is never changed (the owner may have edited it), and the fields that
     differ are reported. ``limit`` imports only the first stories in production order; a later
     run without it adds the rest.
@@ -1026,11 +1026,9 @@ async def import_story_rows(
                 )
             ).all()
         )
-    if series_slug == EVERYDAY_REVERSALS_SLUG and (
-        series is None or series.status != "paused"
-    ):
+    if series_slug == EVERYDAY_REVERSALS_SLUG and series is not None and series.status != "paused":
         report.problems.append(
-            f"{EVERYDAY_REVERSALS_SLUG} must already exist with status paused before import"
+            f"{EVERYDAY_REVERSALS_SLUG} must have status paused before import"
         )
         return report
     if series_slug == EVERYDAY_REVERSALS_SLUG and series is not None:
@@ -1132,6 +1130,10 @@ async def import_story_rows(
         if new_series is None:  # its problems were reported above
             return report
         series = await add_series(session, actor, new_series)
+        if series_slug == EVERYDAY_REVERSALS_SLUG:
+            # add_series normally activates a story series. Keep this review-only
+            # batch paused in the same transaction that creates its episode rows.
+            series.status = "paused"
         await session.flush()
     updates = [
         (plan, plan.row) for plan in plans if plan.action == "update" and plan.row is not None
