@@ -10,6 +10,7 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
@@ -33,6 +34,7 @@ from app.problems import AppError, app_error_handler
 from app.video_backup import admin_api
 from app.video_backup import admin_settings as settings
 from app.video_backup import admin_status as status
+from app.video_backup.review_files import ReviewFile, backup_files, package_path
 from app.video_backup.schemas import LockIn, ProbeAnswerIn, ReportIn, SettingsIn
 from app.video_backup.target import (
     PathInvalid,
@@ -591,6 +593,133 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     [video] = config.videos
     assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "full")
     assert video.expected.captions == ["ko"] and video.backup is None
+
+
+def review(gate: str, status: str, at: datetime, files: list[tuple[str, str, str]]) -> VideoReview:
+    """A review with (role, content type, sha256 seed) files, decided at ``at``."""
+    return VideoReview(
+        gate=gate,
+        status=status,
+        content_sha256=uuid4().hex * 2,
+        summary=gate,
+        decided_at=at,
+        created_at=at,
+        files=[
+            {"role": role, "content_type": kind, "sha256": seed * 64, "size": 10}
+            for role, kind, seed in files
+        ],
+    )
+
+
+def test_review_roles_take_the_upload_packages_names_and_the_rest_is_left_out() -> None:
+    assert package_path("final", "video/mp4") == "final.mp4"
+    assert package_path("thumbnail", "image/png") == "thumbnail.png"
+    assert package_path("thumbnail-b", "image/jpeg") == "thumbnail-b.jpg"
+    assert package_path("thumbnail_ja", "image/jpeg") == "thumbnails/ja.jpg"
+    assert package_path("captions_zh-TW", "application/x-subrip") == "captions/zh-TW.srt"
+    assert package_path("description_pt", "text/plain") == "descriptions/pt.txt"
+    assert package_path("dub_en", "audio/mp4") == "dubs/en.m4a"
+    assert package_path("metadata", "application/json") == "metadata.json"
+    for noise in ("languages_manifest", "contact_sheet", "evidence_keyframes_a-1", "preview"):
+        assert package_path(noise, "image/jpeg") is None, noise
+
+
+def test_the_newest_approved_review_wins_each_role_and_pending_dubs_stay_unpackaged() -> None:
+    early = datetime(2026, 10, 23, 14, 0, tzinfo=UTC)
+    # A languages batch approved before the confirmation (zhong-tian-qu-qi-e001-short) still
+    # brings its dub tracks; the confirmation's newer captions win over the batch's.
+    rows = [
+        review(
+            "languages",
+            "approved",
+            early,
+            [("dub_en", "audio/mp4", "1"), ("captions_en", "text/plain", "2")],
+        ),
+        review(
+            "publish",
+            "approved",
+            early + timedelta(hours=1),
+            [
+                ("final", "video/mp4", "3"),
+                ("captions_en", "text/plain", "4"),
+                ("thumbnail", "image/jpeg", "5"),
+            ],
+        ),
+        review("publish", "approved", early - timedelta(days=1), [("final", "video/mp4", "6")]),
+        review(
+            "languages",
+            "pending",
+            early + timedelta(hours=2),
+            [
+                ("dub_ja", "audio/mp4", "7"),
+                ("captions_ja", "text/plain", "8"),
+                ("dub_en", "audio/mp4", "9"),
+                ("thumbnail_ja", "image/jpeg", "a"),
+            ],
+        ),
+        review("languages", "rejected", early, [("dub_ko", "audio/mp4", "b")]),
+    ]
+    full = {
+        item.path: item.sha256[0] for item in backup_files(rows, full=True, held=lambda _: True)
+    }
+    assert full == {
+        "captions/en.srt": "4",
+        "captions/未進上傳包/ja.srt": "8",
+        "dubs/en.m4a": "1",
+        "dubs/未進上傳包/ja.m4a": "7",
+        "final.mp4": "3",
+        "thumbnail.jpg": "5",
+        "thumbnails/ja.jpg": "a",
+    }, "an approved dub is never shadowed by a pending one, and a rejected batch brings nothing"
+    basic = {item.path for item in backup_files(rows, full=False, held=lambda _: True)}
+    assert basic == {"captions/en.srt", "dubs/en.m4a", "final.mp4", "thumbnail.jpg"}
+    gone = backup_files(rows, full=False, held=lambda sha256: not sha256.startswith("3"))
+    assert "final.mp4" not in {item.path for item in gone}, "a file the store no longer has"
+    assert all(isinstance(item, ReviewFile) and item.size == 10 for item in gone)
+
+
+async def test_a_ready_video_without_a_work_directory_gets_its_review_files_first_in_line(
+    site: Site, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("curio-h20"))
+    await site.add(project("curio-s01", youtube_video_id=None))
+    await site.confirm("curio-s01")
+    video = await site.video("curio-s01")
+    at = datetime.now(UTC)
+    async with site.factory() as session:
+        session.add(review("languages", "approved", at, [("dub_en", "audio/mp4", "c")]))
+        session.add(
+            review(
+                "publish",
+                "approved",
+                at,
+                [("final", "video/mp4", "d"), ("thumbnail", "image/jpeg", "e")],
+            )
+        )
+        for row in session.new:
+            if isinstance(row, VideoReview):
+                row.project_id = video.id
+        await session.commit()
+    store = tmp_path / "video-reviews"
+    for seed in ("c", "d"):
+        (store / "curio-s01").mkdir(parents=True, exist_ok=True)
+        (store / "curio-s01" / (seed * 64)).write_bytes(b"x")
+    monkeypatch.setattr(
+        status, "get_settings", lambda: type("S", (), {"video_review_dir": str(store)})()
+    )
+    async with site.factory() as session:
+        config = await status.worker_config(session)
+    assert [item.slug for item in config.videos] == ["curio-s01", "curio-h20"], (
+        "not on YouTube first"
+    )
+    ready, uploaded = config.videos
+    assert [(item.path, item.sha256[0]) for item in ready.review_files] == [
+        ("dubs/en.m4a", "c"),
+        ("final.mp4", "d"),
+    ]
+    assert uploaded.review_files == []
 
 
 async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_after_a_revision(

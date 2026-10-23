@@ -175,6 +175,13 @@ class ExpectedParts(BaseModel):
     dubs: list[str]
 
 
+class WorkerReviewFile(BaseModel):
+    # Where it goes in the episode's folder, and the review store's name for it (its sha256).
+    path: str
+    sha256: Sha256
+    size: int
+
+
 class WorkerVideo(BaseModel):
     slug: str
     # None for a video ready to upload and not on YouTube yet.
@@ -189,6 +196,9 @@ class WorkerVideo(BaseModel):
     expected: ExpectedParts
     # The record as the worker last reported it, or None before its first report.
     backup: dict[str, object] | None
+    # For a video with no work directory on the worker's host: its package in the review store,
+    # which the worker mounts read-only (review_files.py). Empty when the store has none of it.
+    review_files: list[WorkerReviewFile] = Field(default_factory=list)
 
 
 class WorkerProbe(BaseModel):

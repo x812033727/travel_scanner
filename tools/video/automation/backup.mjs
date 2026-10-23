@@ -13,12 +13,16 @@
 // the video reported done; the site counts the report against the owner's language choice and
 // may answer partial. A file added later (a dub approved after the upload) queues the video again.
 //
+// A video made outside this worker has no work directory here; the site then lists its package in
+// the review store (review_files, apps/api/app/video_backup/review_files.py), which the worker
+// mounts read-only, and its records live under _backup-review/<slug>/ instead.
+//
 // Each video's own record is backup-state.json, not auto.json: a lane that saves an older copy of
 // auto.json can then never erase it. The tidy reads the round's verdicts (backupGate), so a
 // video whose backup is not done, not confirmed by the site, or has new files keeps its files.
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
-import { copyFileSync, createReadStream, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, createReadStream, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { atomicWrite, isInside, readJson, resolveWorkBase, stopRequested } from "../core/paths.mjs";
@@ -39,6 +43,12 @@ export const MANIFEST_FILE = "backup.json";
 // Under the work base, so the tidy (which skips names beginning with "_") never reads it.
 export const STAGE_DIR = "_backup-stage";
 export const OLD_VERSIONS = "_舊版";
+// The site's review store, mounted read-only (<root>/<slug>/<sha256>), and where the records of a
+// video backed up from it go: under the work base, a name the tidy and the lanes never read.
+export const REVIEW_DIR_ENV = "VIDEO_REVIEW_DIR";
+export const DEFAULT_REVIEW_DIR = "/var/lib/mokaair/video-reviews";
+export const REVIEW_STATE_DIR = "_backup-review";
+const SHA256 = /^[0-9a-f]{64}$/;
 export const QUOTA_MARGIN_BYTES = 2 * 1024 ** 3;
 export const MAX_FAILURES = 3;
 export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
@@ -101,7 +111,7 @@ function isFile(file, fs) {
   }
 }
 
-const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync };
+const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync };
 
 /**
  * The owner's language choice in languages.json: the locales with a dub, with captions (a dub
@@ -170,6 +180,28 @@ export function planFiles(workdir, tier, fs = nodeFs) {
   return [...planned.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([where, source]) => ({ source, path: where }));
 }
 
+/**
+ * The files of a video backed up from the review store: the site's list (review_files), each from
+ * <root>/<slug>/<sha256>, with the site's hash. A listed file the store no longer has is left out,
+ * as a work directory's tidied file would be; a path that could climb out of the episode's folder
+ * is never planned.
+ */
+export function planReviewFiles(root, video, fs = nodeFs) {
+  const folder = path.join(root, video.slug);
+  const planned = [];
+  for (const item of video.review_files ?? []) {
+    const where = String(item?.path ?? "");
+    if (!SHA256.test(String(item?.sha256 ?? "")) || !where || where.startsWith("/") || where.includes("\\") || where.split("/").some((part) => !part || part === "." || part === "..")) continue;
+    const source = path.join(folder, item.sha256);
+    if (!isInside(source, folder) || !isFile(source, fs)) continue;
+    planned.push({ source, path: where, sha256: item.sha256 });
+  }
+  return planned.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+}
+
+/** What a video's backup copies: its work directory's tier files, or its review-store package. */
+const planOf = (job, video) => (video.from_review ? planReviewFiles(job.reviewRoot, video, job.fs) : planFiles(video.dir, video.tier, job.fs));
+
 /** A file's sha256, streamed: a final.mp4 is gigabytes. */
 export function sha256File(file) {
   return new Promise((resolve, reject) => {
@@ -181,7 +213,7 @@ export function sha256File(file) {
 /**
  * The plan with each file's size and sha256. A file whose size and modification time match the
  * last backup's entry keeps that hash, so a round over many finished videos reads only what
- * changed.
+ * changed; a review-store file comes with its hash, which is its name there.
  */
 export async function hashPlan(plan, previous, { fs = nodeFs, hash = sha256File } = {}) {
   const known = new Map((previous?.files ?? []).map((entry) => [entry.path, entry]));
@@ -190,8 +222,8 @@ export async function hashPlan(plan, previous, { fs = nodeFs, hash = sha256File 
     const stat = fs.statSync(item.source);
     const before = known.get(item.path);
     const mtime = Math.round(stat.mtimeMs);
-    const sha256 = before && before.size === stat.size && before.mtime_ms === mtime && before.sha256 ? before.sha256 : await hash(item.source);
-    entries.push({ ...item, size: stat.size, mtime_ms: mtime, sha256 });
+    const sha256 = item.sha256 ?? (before && before.size === stat.size && before.mtime_ms === mtime && before.sha256 ? before.sha256 : await hash(item.source));
+    entries.push({ source: item.source, path: item.path, size: stat.size, mtime_ms: mtime, sha256 });
   }
   return entries;
 }
@@ -344,8 +376,9 @@ export function prefixUnder(wantedPath, lock) {
 }
 
 /**
- * The staging folder: the episode's layout as hard links to the work files (a copy where a link
- * cannot be made), so one `rclone copy` puts every file where it goes. Removed after the copy.
+ * The staging folder: the episode's layout as hard links to the work files (a symbolic link where
+ * a hard link cannot be made, as from the review store's volume; a copy where neither can), so one
+ * `rclone copy --copy-links` puts every file where it goes. Removed after the copy.
  */
 function buildStage(base, slug, plan, fs) {
   const root = path.join(base, STAGE_DIR);
@@ -359,7 +392,11 @@ function buildStage(base, slug, plan, fs) {
     try {
       fs.linkSync(item.source, target);
     } catch {
-      fs.copyFileSync(item.source, target);
+      try {
+        fs.symlinkSync(item.source, target);
+      } catch {
+        fs.copyFileSync(item.source, target);
+      }
     }
   }
   return stage;
@@ -375,10 +412,10 @@ const stamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$
 /** The copy, then the check, of one local folder into one Drive folder; null, or why it failed. */
 async function copyChecked(job, local, remote, ts) {
   const filters = ["--exclude", `/${OLD_VERSIONS}/**`, "--exclude", `/${MANIFEST_FILE}`];
-  const copy = await job.rclone(["copy", local, remote, "--checksum", "--drive-chunk-size", "64M", "--tpslimit", "5", "--retries", "5", "--backup-dir", `${remote}/${OLD_VERSIONS}/${ts}`, ...filters]);
+  const copy = await job.rclone(["copy", local, remote, "--copy-links", "--checksum", "--drive-chunk-size", "64M", "--tpslimit", "5", "--retries", "5", "--backup-dir", `${remote}/${OLD_VERSIONS}/${ts}`, ...filters]);
   if (copy.code !== 0) return `rclone copy: ${why(copy)}`;
   // Hashes on both sides (Drive keeps an md5 of every file), so nothing is downloaded.
-  const check = await job.rclone(["check", local, remote, "--one-way", ...filters]);
+  const check = await job.rclone(["check", local, remote, "--one-way", "--copy-links", ...filters]);
   if (check.code !== 0) return `rclone check: ${why(check)}`;
   return null;
 }
@@ -407,7 +444,7 @@ async function tellSite(job, slug, body) {
 async function failed(job, video, state, error) {
   const attempts = (state.attempts ?? 0) + 1;
   const next = { ...state, state: attempts >= MAX_FAILURES ? "failed" : "pending", attempts, error, last_attempt_at: job.now.toISOString() };
-  saveBackupState(job.workdir(video.slug), next);
+  saveBackupState(video.dir, next);
   await tellSite(job, video.slug, { state: next.state, folder: video.folder, tier: video.tier, attempts, error });
   job.lines.push(`backup: ${video.slug}: ${next.state === "failed" ? `failed ${attempts} times; tried again in six hours` : `attempt ${attempts} failed`}: ${error}`);
   return next;
@@ -415,10 +452,10 @@ async function failed(job, video, state, error) {
 
 /** Copy one video to Drive and report it; the new state. */
 async function backUp(job, video, state) {
-  const workdir = job.workdir(video.slug);
+  const workdir = video.dir;
   const previous = readJson(path.join(workdir, MANIFEST_FILE), null);
-  const plan = planFiles(workdir, video.tier, job.fs);
-  if (!plan.length && !previous?.files?.length) return failed(job, video, state, `${workdir} has no upload package to back up`);
+  const plan = planOf(job, video);
+  if (!plan.length && !previous?.files?.length) return failed(job, video, state, video.from_review ? "the review store has none of its files" : `${workdir} has no upload package to back up`);
   let entries;
   try {
     entries = await hashPlan(plan, previous, { fs: job.fs, hash: job.hash });
@@ -473,28 +510,28 @@ async function backUp(job, video, state) {
 
 /** Tell the site a backup is done; it may answer partial, with what is missing. */
 async function confirm(job, video, state) {
-  const metadata = readJson(path.join(job.workdir(video.slug), UPLOAD, "metadata.json"), null);
-  const manifest = readJson(path.join(job.workdir(video.slug), MANIFEST_FILE), null);
+  const metadataFile = video.from_review ? planReviewFiles(job.reviewRoot, video, job.fs).find((item) => item.path === "metadata.json")?.source : path.join(video.dir, UPLOAD, "metadata.json");
+  const metadata = metadataFile ? readJson(metadataFile, null) : null;
+  const manifest = readJson(path.join(video.dir, MANIFEST_FILE), null);
   const paths = (manifest?.files ?? []).map((entry) => entry.path);
   const answer = await tellSite(job, video.slug, {
     state: "done", folder: video.folder, tier: state.tier, bytes: state.bytes, files: state.files, files_hash: state.files_hash, contents: contentsOf(paths, metadata),
   });
   if (!answer) return state;
   const next = { ...state, site_state: answer.state, missing: Array.isArray(answer.missing) ? answer.missing : [] };
-  saveBackupState(job.workdir(video.slug), next);
+  saveBackupState(video.dir, next);
   if (answer.state !== "done") job.lines.push(`backup: ${video.slug}: the site reads it ${answer.state}${next.missing.length ? `, missing ${next.missing.join(", ")}` : ""}; the tidy keeps its files`);
   return next;
 }
 
 /** Whether a done backup still covers the work files (the new or changed ones, by the cached hashes) and the YouTube id. */
 async function stillCovered(job, video) {
-  const workdir = job.workdir(video.slug);
-  const previous = readJson(path.join(workdir, MANIFEST_FILE), null);
+  const previous = readJson(path.join(video.dir, MANIFEST_FILE), null);
   if (!previous) return { covered: false, why: "no backup.json" };
   // Backed up while ready to upload, and uploaded since: backup.json is sent again with the id.
   if ((previous.youtube_video_id ?? null) !== (video.youtube_video_id ?? null)) return { covered: false, why: `its YouTube id is now ${video.youtube_video_id ?? "none"}` };
   try {
-    const entries = await hashPlan(planFiles(workdir, video.tier, job.fs), previous, { fs: job.fs, hash: job.hash });
+    const entries = await hashPlan(planOf(job, video), previous, { fs: job.fs, hash: job.hash });
     const changed = changedFiles(entries, previous);
     return changed.length ? { covered: false, why: `${changed.length} new or changed file${changed.length === 1 ? "" : "s"} (${changed.slice(0, 3).map((entry) => entry.path).join(", ")})` } : { covered: true };
   } catch (error) {
@@ -574,6 +611,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     remote: String(ctx.env[REMOTE_ENV] || DEFAULT_REMOTE),
     rclone: runner ?? (rclone.env ? rcloneRunner(rclone.env) : async () => ({ code: -1, stdout: "", stderr: rclone.problem })),
     workdir: (slug) => path.join(base, slug),
+    reviewRoot: String(ctx.env[REVIEW_DIR_ENV] || DEFAULT_REVIEW_DIR),
     prefix: null,
   };
   if (copy) {
@@ -601,13 +639,23 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
   const verdicts = new Map();
   const queue = [];
   let reports = 0;
-  for (const video of config.videos ?? []) {
+  const unseen = [];
+  for (const listed of config.videos ?? []) {
     // The site's own slug pattern; anything else is never joined onto the work base.
-    if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
-    const workdir = job.workdir(video.slug);
+    if (typeof listed?.slug !== "string" || !SLUG.test(listed.slug)) continue;
+    const own = job.workdir(listed.slug);
     // A work directory the worker made has auto.json; one made by hand (a renewal, a recut) has
-    // only its upload package, and is backed up all the same.
-    if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs)) continue;
+    // only its upload package, and is backed up all the same. A video made elsewhere has neither,
+    // and is backed up from the review store when the site lists its files there.
+    const local = fs.existsSync(path.join(own, "auto.json")) || isFile(path.join(own, UPLOAD, "final.mp4"), fs);
+    const fromReview = !local && planReviewFiles(job.reviewRoot, listed, fs).length > 0;
+    if (!local && !fromReview) {
+      unseen.push(listed.slug);
+      continue;
+    }
+    const video = { ...listed, from_review: fromReview, dir: fromReview ? path.join(base, REVIEW_STATE_DIR, listed.slug) : own };
+    const workdir = video.dir;
+    if (fromReview && copy) fs.mkdirSync(workdir, { recursive: true });
     if (video.tier === "off") {
       verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
       continue;
@@ -639,6 +687,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
+  if (copy && unseen.length) lines.push(`backup: ${unseen.length} listed video${unseen.length === 1 ? " has" : "s have"} no work directory here and nothing in the review store at ${job.reviewRoot}: ${unseen.slice(0, 5).join(", ")}${unseen.length > 5 ? ", …" : ""}`);
   return { lines, gate: { enabled: true, verdicts } };
 }
 

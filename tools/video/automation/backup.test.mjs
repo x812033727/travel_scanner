@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf } from "./backup.mjs";
+import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, planReviewFiles, prefixUnder, REVIEW_STATE_DIR, STATE_FILE, verdictOf } from "./backup.mjs";
 import { tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T03:00:00Z");
@@ -293,6 +293,61 @@ test("a video ready to upload is backed up before YouTube; a revision is copied 
   await backupRound(ctxFor(box, { now: later(15) }), { client: uploaded.client, rclone: fakeRclone(box.drive).run });
   assert.equal(manifest().youtube_video_id, "dQw4w9WgXcQ");
   assert.equal(uploaded.reports.at(-1).state, "done");
+});
+
+/** A review store (<root>/<slug>/<sha256>) holding `files` ({ path: content }), and the site's list of them. */
+function reviewStore(box, slug, files) {
+  const root = path.join(box.box, "reviews");
+  const listed = Object.entries(files).map(([where, content], index) => {
+    const sha256 = String(index).padStart(64, "a");
+    if (content !== null) put(path.join(root, slug), sha256, content);
+    return { path: where, sha256, size: content === null ? 0 : Buffer.byteLength(content) };
+  });
+  return { root, listed };
+}
+
+test("a video made elsewhere is backed up from the review store, every chosen language's voice, captions and thumbnail", async () => {
+  const box = sandbox();
+  const slug = "curio-s01";
+  const { root, listed } = reviewStore(box, slug, {
+    "final.mp4": "cut",
+    "metadata.json": JSON.stringify({ skipped_caption_locales: {}, skipped_dub_locales: {} }),
+    "thumbnail.jpg": "jpg",
+    "thumbnails/ja.jpg": "ja jpg",
+    "captions/zh-TW.srt": "字幕",
+    "captions/ja.srt": "ja",
+    "descriptions/ja.txt": "說明 ja",
+    "dubs/ja.m4a": "ja voice",
+    "dubs/未進上傳包/en.m4a": "waiting for the owner",
+    "dubs/ko.m4a": null,
+  });
+  const climbing = [...listed, { path: "../escape.txt", sha256: listed[0].sha256, size: 3 }, { path: "x.txt", sha256: "not-a-hash", size: 1 }];
+  assert.deepEqual(planReviewFiles(root, { slug, review_files: climbing }).map((item) => item.path), listed.filter((item) => item.size).map((item) => item.path).sort(), "a file the store lacks or a path out of the folder is never planned");
+  const site = fakeSite({ videos: [target(slug, { youtube_video_id: null, tier: "full", review_files: climbing })] });
+  const ctx = ctxFor(box, { env: { VIDEO_REVIEW_DIR: root } });
+  const { gate } = await backupRound(ctx, { client: site.client, rclone: fakeRclone(box.drive).run });
+  const episode = path.join(box.drive, "奇聞檔案局", slug);
+  assert.deepEqual(listing(episode), ["backup.json", "captions/ja.srt", "captions/zh-TW.srt", "descriptions/ja.txt", "dubs/ja.m4a", "dubs/未進上傳包/en.m4a", "final.mp4", "metadata.json", "thumbnail.jpg", "thumbnails/ja.jpg"]);
+  assert.equal(readFileSync(path.join(episode, "dubs", "ja.m4a"), "utf8"), "ja voice");
+  assert.ok(!existsSync(path.join(box.work, slug)), "no work directory is made for it");
+  const records = path.join(box.work, REVIEW_STATE_DIR, slug);
+  assert.equal(stateOf(records).site_state, "done");
+  assert.equal(JSON.parse(readFileSync(path.join(records, MANIFEST_FILE), "utf8")).youtube_video_id, null);
+  const done = site.reports.at(-1);
+  assert.equal(done.state, "done");
+  assert.deepEqual([done.contents.dubs, done.contents.captions, done.contents.final, done.contents.metadata], [["ja"], ["ja", "zh-TW"], true, true], "the unpackaged track is not counted");
+  assert.deepEqual(gate.verdicts.get(slug), { ok: true, why: "in Drive" });
+  const again = fakeRclone(box.drive);
+  await backupRound(ctxFor(box, { now: later(5), env: { VIDEO_REVIEW_DIR: root } }), { client: site.client, rclone: again.run });
+  assert.deepEqual(again.calls, [], "nothing changed, nothing copied");
+});
+
+test("a listed video with no work directory and nothing in the review store is named, not passed over in silence", async () => {
+  const box = sandbox();
+  const site = fakeSite({ videos: [target("made-elsewhere", { youtube_video_id: null })] });
+  const { lines, gate } = await backupRound(ctxFor(box, { env: { VIDEO_REVIEW_DIR: path.join(box.box, "no-store") } }), { client: site.client, rclone: fakeRclone(box.drive).run });
+  assert.match(lines.at(-1), /^backup: 1 listed video has no work directory here and nothing in the review store at .*: made-elsewhere$/);
+  assert.ok(!gate.verdicts.has("made-elsewhere") && site.reports.length === 0);
 });
 
 test("nothing changed: a done video is not copied again", async () => {
