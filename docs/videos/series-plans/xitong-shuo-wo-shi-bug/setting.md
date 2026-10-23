@@ -35,13 +35,13 @@
 
 | id | 名字 | 身分 | 外貌（image-01 提示詞） | 聲音 | 走向 |
 | --- | --- | --- | --- | --- | --- |
-| `jiang-he` | 江河 | 男主，穿越來的程式設計師，九域唯一的撿垃圾玩家 | a young East Asian man of 26 in a 2D anime manhua style: slightly messy jet-black hair with a few strands over the forehead, sharp tired eyes with dark grey irises, a thin pale scar through the left eyebrow, lean build; he wears a worn dark-green hooded traveller's jacket over a grey shirt, fingerless gloves and a patched satchel; a translucent pale-blue system panel floats beside him with no readable text | Charon | 從只想在異世界活下來的廢人，到懂得這個系統是有人寫的、也懂得自己可以改寫它的人。 |
+| `jiang-he` | 江河 | 男主，穿越來的程式設計師，九域唯一的撿垃圾玩家 | a young East Asian man of 26 in a 2D anime manhua style: slightly messy jet-black hair with a few strands over the forehead, sharp tired eyes with dark grey irises, a thin pale scar through the left eyebrow, lean build; he wears a worn dark-green hooded traveller's jacket over a grey shirt, fingerless gloves and a patched satchel; a translucent pale-blue system panel floats beside him with no readable text | Charon | 從只想在異世界活下來的廢人，到懂得這個系統是有人寫的；再到把撿來的一切還給九域、自己成了回收桶裡最後一件，被一千二百三十七個人認領回來的人。 |
 | `xitong` | 系統 | 面板的聲音，只有江河聽得到 | no character picture: the system is a translucent pale-blue panel with a soft glow and no readable text, drawn beside whoever reads it | Schedar | 第一季它在面板上跳過一行不像系統的字「別撿那一顆」（第 18 集，旁白念出來）；第 30 集它第一次用人的聲音說話：「歡迎回來。」 |
 | `qian-lin` | 千凜 | 女主，被白鹿公會「勸捨」掉主技能的前劍士 | a young East Asian woman of 22 in a 2D anime manhua style: long straight ash-black hair tied in a high ponytail with a red cord, sharp light-amber eyes, a small mole under the left eye, slim athletic build; she wears a fitted dark-red short jacket with black trim over a high-collared black top, a sword belt with an empty scabbard, and fingerless leather gloves | Kore | 從把自己當廢人的劍士，到拿回被捨棄的技能、第一個相信他的人。 |
-| `bai-heng` | 白珩 | 第一季反派，白鹿公會會長，技能「鑑定」 | a tall East Asian man of 38 in a 2D anime manhua style: slicked-back silver-white hair, narrow pale-grey eyes behind thin gold-rimmed glasses, a calm thin smile; he wears a long white high-collared guild coat with silver deer embroidery over a black vest, white gloves, a silver chain | Algieba | 從看穿所有人面板的神，到第一次看不懂一個人的面板。 |
+| `bai-heng` | 白珩 | 第一季反派，白鹿公會會長，技能「鑑定」 | a tall East Asian man of 38 in a 2D anime manhua style: slicked-back silver-white hair, narrow pale-grey eyes behind thin gold-rimmed glasses, a calm thin smile; he wears a long white high-collared guild coat with silver deer embroidery over a black vest, white gloves, a silver chain | Algieba | 從看穿所有人面板的神，到第一次看不懂一個人的面板；十年前他在垃圾坑邊看著上一個回收程序被清空、什麼都沒按，十年後又坐在同一個位置，還是沒按。 |
 | `lao-niang` | 酒館老闆娘 阿桂 | 落石酒館老闆娘，收留沒職業的人 | a sturdy East Asian woman of 45 in a 2D anime manhua style: short wavy dark-brown hair under a plain headscarf, warm brown eyes, laugh lines, strong arms; she wears a rolled-sleeve linen blouse, a dark apron and a ladle tucked in the apron string | Gacrux | 她的廢技是「辨味」，第一季末才知道這個技能救了整個鎮。 |
 | `xiao-tie` | 小鐵 | 拾荒少年，江河第一個跟班 | an East Asian boy of 14 in a 2D anime manhua style: spiky dusty-brown hair, big round hazel eyes, a sunburnt freckled face and a gap-toothed grin; he wears an oversized patched brown vest over a torn shirt, rope-tied trousers and a huge wicker basket on his back | Leda | 從只會撿殘片賣錢的孩子，到第一個覺醒出「兩格技能槽」的拾荒者。 |
-| `tang-ce` | 唐測 | 白鹿公會落石分部的測試官，第一季的小反派 | an East Asian man of 30 in a 2D anime manhua style: neatly combed black hair with a side part, thin eyebrows, narrow dark eyes, a sneering mouth; he wears a white guild uniform with a silver deer badge, a clipboard-like slate of pale stone, a short cape | Puck | 第一個當眾叫他廢人的人，也是第一個被他的廢技打臉的人。 |
+| `tang-ce` | 唐測 | 白鹿公會落石分部的測試官，第一季的小反派 | an East Asian man of 30 in a 2D anime manhua style: neatly combed black hair with a side part, thin eyebrows, narrow dark eyes, a sneering mouth; he wears a white guild uniform with a silver deer badge, a clipboard-like slate of pale stone, a short cape | Puck | 第一個當眾叫他廢人的人，也是第一個被他的廢技打臉的人；第 33 集拿回十六歲丟掉的「臉紅」，從此一說謊就臉紅，最後當眾替江河作證。 |
 | `shi-mo` | 石魔 | 灰岩廢礦的守坑魔物，一級副本的 boss | a hulking golem of grey cracked rock in a 2D anime manhua style, three times a man's height, a single glowing pale-blue crystal eye in its chest, moss and rusted mining chains hanging from its shoulders, slow heavy limbs | 未定 | 十年沒人打得過它，因為沒人撿起它腳邊那顆被丟掉的【辨聲】。 |
 
 ## 長線謎團
@@ -52,7 +52,7 @@
 | m02 | 為什麼只有江河撿得起別人的廢技？ | S1 | S2 | 他的職業欄是「無」，因為他被系統當成「垃圾回收程序」載入；撿垃圾不是技能，是他在這個世界的身分。 |
 | m03 | 千凜被捨棄的主技能是什麼、在哪裡？ | S1 | S1 | 「斬鋼」，被白鹿公會勸捨後流進捨棄池，被白珩私藏在自己的第三格裡。第 29 集江河從白珩的面板裡把它撿回來。 |
 | m04 | 江河真的是猝死嗎？ | S1 | S3 | 他改完的最後一個 bug，就是這個系統的「讀檔」功能；他是被系統選中的，不是死掉的。 |
-| m05 | 面板為什麼會當機？ | S1 | S2 | 技能槽沒有上限，但面板的載入有：第一季末三十個技能讓它當機三秒，第二季他學會「卸載」。 |
+| m05 | 面板為什麼會當機？ | S1 | S1 | 技能槽沒有上限，面板的載入有：上限三十，多一個就當機（第 21 集三秒，第 32 集多了管理員變十秒）。第 33 集他從管理員的日誌裡找到「卸載」——不是捨棄，是把技能送到指定的面板；原主認領後，那個技能就移出清空名單。 |
 | m06 | 系統那句「別撿那一顆」是誰說的？ | S1 | S2 | 是前一任垃圾回收程序留下的訊息——九域不是第一次來一個撿垃圾的人。 |
 
 ## 調性
