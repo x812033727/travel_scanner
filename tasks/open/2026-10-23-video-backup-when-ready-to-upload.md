@@ -43,6 +43,8 @@ YouTube; if it is revised later, overwrite it then.
   list, so nothing is copied mid-revision; once it is ready again the changed files are copied
   over the old ones, which move to `_舊版/<time>/` as before.
 - [x] A report for a video that is neither uploaded nor ready is refused.
+- [x] The full tier also keeps each chosen language's caption file the package lacks, under
+  `captions/未進上傳包/` (owner, 2026-10-23: every chosen language's voice, thumbnail and CC).
 - [x] BACKUP.md and the card's text in five locales say "uploaded or ready to upload".
 
 ## How to verify

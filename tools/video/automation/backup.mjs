@@ -47,12 +47,15 @@ export const REPORTS_PER_ROUND = 10;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
 export const FULL_DIRS = ["clips", "keyframes", "characters"];
 export const FULL_FILES = ["timeline.json", "narration.wav"];
-// The full tier also keeps, for each language the owner chose (languages.json), the dub track the
-// worker made but did not package (given up on, or not yet approved) and the language's thumbnail.
-// Unpackaged tracks go to their own folder, so the site never counts them as packaged dubs.
+// The full tier also keeps, for each language the owner chose (languages.json), the dub track and
+// caption file the worker made but did not package (given up on, or not yet approved) and the
+// language's thumbnail. Unpackaged files go to their own folders, so the site never counts them
+// as packaged.
 export const UNPACKAGED_DUBS = "dubs/未進上傳包";
+export const UNPACKAGED_CAPTIONS = "captions/未進上傳包";
 const DUB_TRACK = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.(m4a|mp3|wav)$/;
 const LOCALE_THUMBNAIL = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.jpg$/;
+const CAPTION_FILE = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.srt$/;
 const LANGUAGES_FILE = "languages.json";
 const SERIES_DIR = "_series";
 const UPLOAD = "upload";
@@ -101,9 +104,10 @@ function isFile(file, fs) {
 const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync };
 
 /**
- * The owner's language choice in languages.json: the locales with a dub and those with any part
- * (a language's thumbnail goes with any part, as package writes it). null without a readable
- * choice, and then every track and thumbnail the work directory has is kept.
+ * The owner's language choice in languages.json: the locales with a dub, with captions (a dub
+ * brings its captions) and with any part (a language's thumbnail goes with any part, as package
+ * writes it). null without a readable choice, and then every track, caption file and thumbnail
+ * the work directory has is kept.
  */
 function chosenLocales(workdir, fs) {
   let locales;
@@ -116,6 +120,7 @@ function chosenLocales(workdir, fs) {
   const parts = Object.entries(locales).filter(([, part]) => part && typeof part === "object");
   return {
     dub: new Set(parts.filter(([, part]) => part.dub === true).map(([locale]) => locale)),
+    captions: new Set(parts.filter(([, part]) => part.captions === true || part.dub === true).map(([locale]) => locale)),
     any: new Set(parts.filter(([, part]) => Object.values(part).some((value) => value === true)).map(([locale]) => locale)),
   };
 }
@@ -133,7 +138,8 @@ function localeFiles(dir, pattern, fs) {
  * under the episode's folder: the whole upload package (description.<locale>.txt into
  * descriptions/<locale>.txt), the work directory's thumbnail.jpg when the package has none, and
  * for the full tier clips/, keyframes/, characters/, timeline.json and narration.wav, and for each
- * chosen language the dub track the package lacks (under dubs/未進上傳包/) and its thumbnail.
+ * chosen language the dub track and caption file the package lacks (under dubs/未進上傳包/ and
+ * captions/未進上傳包/) and its thumbnail.
  */
 export function planFiles(workdir, tier, fs = nodeFs) {
   const planned = new Map();
@@ -151,6 +157,10 @@ export function planFiles(workdir, tier, fs = nodeFs) {
     for (const [source, locale] of localeFiles(path.join(workdir, "dubs"), DUB_TRACK, fs)) {
       if (packaged.has(locale) || (chosen && !chosen.dub.has(locale))) continue;
       planned.set(`${UNPACKAGED_DUBS}/${path.basename(source)}`, source);
+    }
+    for (const [source, locale] of localeFiles(path.join(workdir, "captions"), CAPTION_FILE, fs)) {
+      if (planned.has(`captions/${locale}.srt`) || (chosen && !chosen.captions.has(locale))) continue;
+      planned.set(`${UNPACKAGED_CAPTIONS}/${locale}.srt`, source);
     }
     for (const [source, locale] of localeFiles(path.join(workdir, "thumbnails"), LOCALE_THUMBNAIL, fs)) {
       if (planned.has(`thumbnails/${locale}.jpg`) || (chosen && !chosen.any.has(locale))) continue;
