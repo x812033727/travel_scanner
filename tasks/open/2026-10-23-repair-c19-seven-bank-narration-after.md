@@ -30,7 +30,8 @@ The owner approved the C19 Treatment direction, not the script. Independent full
 - [x] Pair all 79 author source notes and MD/JSON visuals with the revised narration; limit the 2023–24 service to a short, accurately scoped coda.
 - [x] Preserve 1987→1999→2001→2002→2005→2007→2010 chronology and the separate customer fee and partner ATM usage fee in the 2010 report.
 - [x] Generate a new narration-only projection for two fresh, independent, context-free blind readers.
-- [ ] Obtain independent full source and paired visual re-review on the exact v5 head.
+- [x] Obtain independent full source and paired visual re-review on the exact v5 head: #1769 found narration/source 79/79 PASS and seven visual HOLDs.
+- [ ] Obtain independent seven-shot visual delta recheck on the new author head.
 - [ ] Obtain two fresh, independent narrator-only blind verdicts on the exact v5 projection.
 - [ ] Present the independently reviewed script and visual direction to the owner for the separate script gate.
 
@@ -40,6 +41,8 @@ The owner approved the C19 Treatment direction, not the script. Independent full
 - [x] Revise script, source notes, and paired MD/JSON visuals; document the narrative-order refinement.
 - [x] Regenerate the narrator-only projection and run mechanical parity checks.
 - [x] Commit and push the v5 author draft to original draft PR #1742.
+- [x] Read #1769's seven precise visual HOLDs and revise only those paired MD/JSON prompts for one visible person doing one action.
+- [x] Commit and push the seven-shot visual delta to the same draft PR #1742.
 
 ## How to verify
 
@@ -48,3 +51,7 @@ From clean v5 checkout `C:\Users\x8120\.codex\worktrees\brand-story-seven-bank-c
 ## Notes
 
 The approved Treatment's paper sequence put the fee mechanism before expansion; the v5 narrator script puts 2005–07 expansion first to keep the chronology continuous. This is a narration-order refinement under the same approved factual direction, explicitly documented for owner review. The full source/visual PASS at the preceding `c1fe8f9` head and blind HOLD receipts #1763/#1764 do not validate v5. The original author checkout has a policy-blocked untracked `tasks/done` duplicate; leave it intact. This clean detached checkout keeps this tracked `tasks/open` task pending independent review. No paid media or product publishing was attempted. Exact v5 author hashes and projection are in `reviews/author-script-receipt-20261023.md`.
+
+## Seven-shot visual delta after #1769
+
+Independent full review #1769 is bound to author head `8849fe98ee08b9741c67d715fbd781938799fa94`: narration/source 79/79 PASS, visual 72/79 PASS, seven HOLDs for `c190204`, `c190309`, `c190403`, `c190504`, `c190516`, `c190517`, and `c190610`. The author changed only those seven `visual-plan.md` and `visual-plan.json` prompts to a single person and action with static context. `script.md` and `script-source-notes.md` retain the exact #1769 audited bytes, and the narrator-only projection remains the same. This is an author repair, not an independent visual PASS; ask another reviewer for a seven-shot hash-bound delta before owner script/visual approval. The exact new visual hashes are in the adjacent author receipt. The old policy-blocked duplicate is untouched.
