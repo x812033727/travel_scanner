@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c19-seven-bank-blind-narrator-reader
 title: C19 Seven Bank blind narrator reader B
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c19-blind-reader-b
@@ -26,14 +26,14 @@ Give the C19 author draft a second independent narrator-only story judgment boun
 - [x] Blind read only the `ID<TAB>voice` projection, verify its SHA-256 and 79 lines, and lock all 12 mandatory panel answers before consulting author context.
 - [x] Preserve the pre-context lock verbatim and provide the same twelve answers in machine-readable JSON with exact line IDs.
 - [x] Use a separate sparse worktree and branch rooted at author PR #1742 head `f45d93dd263a06f582a2ebc06441b3f924bad381`.
-- [ ] Open a draft review PR with auto-merge disabled; keep the author branch and script untouched.
+- [x] Open draft review PR #1752 against the author branch with auto-merge disabled; keep the author branch and script untouched.
 
 ## Steps
 
 - [x] Read the projection and lock verdict in a temporary receipt; its SHA-256 is `74F5819331A21DCBEB2362A8EEE27E9D0248726A546B85CC171B91DB01A7D520`.
-- [x] Copy that exact receipt into the review directory and render the 12 mandatory answers into `narrative-reader-2.json`.
-- [ ] Verify projection/source alignment, JSON, task metadata, and whitespace; commit and push only review receipt and this task file.
-- [ ] Create draft PR against the exact author branch and record its URL.
+- [x] Copy the locked receipt into the review directory and render the 12 mandatory answers into `narrative-reader-2.json`. Git normalizes its final CRLF, so the committed Markdown blob SHA-256 is `E251391CC6043FAD9DEC1DCE0697E5BF4C735269074476E06833FF756E69BE8D`; the pre-context local lock SHA-256 remains above.
+- [x] Verify 79/79 projection/source alignment, JSON, task metadata, and whitespace; commit and push only review receipt and this task file.
+- [x] Create draft PR against the exact author branch: https://github.com/x812033727/travel_scanner/pull/1752.
 
 ## How to verify
 
