@@ -98,3 +98,19 @@ can omit both, leaving the server unable to identify the film. This branch
 does not claim API-only protection against an old worker. Production rollout
 must first establish that all old C-series workers are stopped and cannot
 restart, or add authenticated project binding in a separate reviewed change.
+
+Read-only production check at 2026-10-23 11:36 UTC through the saved
+`hostinger2` session: `travel-scanner-autodeploy.timer` was `not-found` and
+inactive, `list-timers` showed zero instances, and the poller file under
+`/opt/travel-scanner-autodeploy/` was absent. Live checkout HEAD was
+`6f9aec8d1606829d81a3acfe926c8d303bb1b0d9`. The running `video-worker`
+container lacked `tools/video/core/pending-pilot-budget.mjs`; its
+`tools/video/tts/client.mjs` SHA-256 was
+`de583a38f1f10aff0ac3dedee049ba5dd88f380083ddb0685ed8c7e0d1f4d32e`.
+`docker top` showed worker entrypoint shells and sleeps, no active Node job at
+that instant; `video-ai-worker` had RQ Python processes. A local Windows
+command-line scan found no process visibly naming `story-everyday-*`. These
+snapshots do not prove an old client cannot restart or use a generic token.
+No auto-deploy timer was installed at the check; a future manual or changed
+host deployment still needs the old-worker cutover readback before claiming
+the C-series paid stop is complete.
