@@ -10,6 +10,7 @@ import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic, resolveSfx } from "../core/drama.mjs";
 import { readJson } from "../core/paths.mjs";
 import { ARTIFACTS } from "../core/state.mjs";
+import { FPS } from "../core/timeline.mjs";
 import { requireSfxManifest, sfxDir, sfxManifestVersion, sfxSetProblems, sfxSounds } from "./sfx.mjs";
 
 /**
@@ -17,7 +18,7 @@ import { requireSfxManifest, sfxDir, sfxManifestVersion, sfxSetProblems, sfxSoun
  * <work base>/_music/ (checked against music.sha256 when given) or the track the music stage
  * generated into the work directory. `{ music, track }`, or `{ problem }`.
  */
-export async function musicInputs(doc, workdir, workBase) {
+export async function musicInputs(doc, workdir, workBase, { requiredSeconds = null } = {}) {
   const music = resolveMusic(doc);
   let track = null;
   if (music?.track) {
@@ -27,8 +28,28 @@ export async function musicInputs(doc, workdir, workBase) {
     track = { file, sha256: music.sha256 ?? (await sha256File(file)) };
   } else if (music) {
     const generated = readJson(path.join(workdir, ARTIFACTS.music), null);
-    if (!generated?.file || generated.mix_hash !== mixHash(doc)) return { problem: "music/manifest.json is missing or was made for older music settings; run music first" };
-    track = { file: path.join(workdir, generated.file), sha256: generated.sha256 ?? null };
+    if (!generated?.file) return { problem: "music/manifest.json is missing; run music first" };
+    if (generated.source === "generated" && generated.duration_hold) {
+      return { problem: `generated music decodes to ${Number(generated.actual_seconds).toFixed(3)} s and is on a duration hold; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
+    }
+    if (generated.mix_hash !== mixHash(doc)) return { problem: "music/manifest.json was made for older music settings; run music first" };
+    const file = path.join(workdir, generated.file);
+    if (!existsSync(file)) return { problem: `generated music file is missing: ${generated.file}; restore the paid artifact or run music to reuse its cached job` };
+    if (generated.source === "generated" && !generated.sha256) return { problem: `generated music ${generated.file} has no SHA-256 binding; run music again to verify the retained file` };
+    if (generated.sha256 && (await sha256File(file)) !== generated.sha256) return { problem: `generated music ${generated.file} no longer matches its manifest SHA-256; restore the paid artifact` };
+    if (generated.source === "generated") {
+      if (!(Number.isFinite(generated.actual_seconds) && generated.actual_seconds > 0 && generated.duration_measurement === "ffmpeg_full_decode")) {
+        return { problem: "generated music has no fully decoded actual duration; run music again to measure the retained track before assemble" };
+      }
+      const needed = requiredSeconds ?? (readJson(path.join(workdir, ARTIFACTS.timeline), null)?.total_frames / FPS);
+      if (!(Number.isFinite(needed) && needed > 0)) {
+        return { problem: "generated music has no current cut length to compare against; run tts or pass the required duration before mixing" };
+      }
+      if (generated.actual_seconds < needed) {
+        return { problem: `generated music decodes to ${generated.actual_seconds.toFixed(3)} s, shorter than the ${needed.toFixed(3)} s cut; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
+      }
+    }
+    track = { file, sha256: generated.sha256 ?? null };
   }
   return { music, track };
 }

@@ -19,8 +19,6 @@ scope:
   - tools/video/dubs/dubs.test.mjs
   - docs/videos/story-lexicon-integration.md
   - tools/video/automation/flow.test.mjs
-  - tools/video/core/state.mjs
-  - tools/video/core/state.test.mjs
   - tools/video/core/paths.mjs
   - tools/video/tts/check.mjs
   - tools/video/tts/check.test.mjs
@@ -120,3 +118,7 @@ are needed. Draft #1518 remains untouched.
 `2026-10-19-host-explainer-route-always-adds-the`. Keep `flow.test.mjs`, the
 remaining scope, the A01 80-to-81 transition, and its release gate in progress.
 Reclaim these two files later if the lexicon work needs them again.
+
+2026-10-23 owner-directed narrow C-series handoff: the shared checkout had no uncommitted
+changes in `tools/video/core/state.mjs` or `state.test.mjs`. The board steward released only
+these two paths for the C-series safety port; this ticket's other scope, status and checks remain.

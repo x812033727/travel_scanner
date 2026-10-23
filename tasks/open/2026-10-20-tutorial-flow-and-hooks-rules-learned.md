@@ -18,8 +18,6 @@ scope:
   - tools/video/automation/prompts.test.mjs
   - tools/video/core/narrative.mjs
   - tools/video/core/narrative.test.mjs
-  - tools/video/core/lint.mjs
-  - tools/video/core/lint.test.mjs
   - docs/videos/reference-study-20261021
 ---
 
@@ -81,3 +79,7 @@ npm run test:tools
   triple ask at the close.
 - Not done, for other tickets: a per-slide key-sentence bar like 俗說 AI's; title and thumbnail
   patterns of the two hits (「還有人不會嗎？」「非技術人員也能上手」) in `publish.md`.
+
+2026-10-23 owner-directed narrow C-series handoff: the shared checkout had no uncommitted
+changes in `tools/video/core/lint.mjs` or `lint.test.mjs`. The board steward released only these
+two paths for the C-series safety port; this ticket's other scope, status and checks remain.
