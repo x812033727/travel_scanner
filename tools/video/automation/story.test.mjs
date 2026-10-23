@@ -702,9 +702,21 @@ test("a v2 pilot holds before TTS until an independent review binds the actual s
   saveReceipt();
   assert.equal(pilotScriptReviewProblem(places), null);
 
-  // Normal non-scene metadata may be updated without changing the reviewed narration or shots.
+  // A fresh receipt cannot approve a video that still publishes uncited plan research.
   const videoFile = path.join(world.dir, "video.json");
   const originalVideo = readFileSync(videoFile, "utf8");
+  const videoWithExtraSource = JSON.parse(originalVideo);
+  videoWithExtraSource.sources.push({ title: "Unused research", url: "https://example.test/uncited", checked_on: "2026-10-19" });
+  writeFileSync(videoFile, JSON.stringify(videoWithExtraSource));
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /A01 video\.json sources no longer match the effective claims/);
+  writeFileSync(videoFile, originalVideo);
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
+  // Normal non-scene metadata may be updated without changing the reviewed narration or shots.
   const videoWithId = JSON.parse(originalVideo);
   videoWithId.youtube.video_id = "test-video-id";
   writeFileSync(videoFile, JSON.stringify(videoWithId));
@@ -842,6 +854,45 @@ test("a flagged v2 pilot audio take waits for owner review instead of rewriting 
   assert.match(await world.automation.advance(world.state()), /screenplay is approved here/);
   assert.match(await world.automation.advance(world.state()), /narration synthesized/);
   assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 2);
+});
+
+test("A01 publishes only effective cited sources in plan order across partial and repeated merges", () => {
+  const sources = Array.from({ length: 25 }, (_, index) => ({
+    url: `https://source.example/${index}`, publisher: `Publisher ${index}`, checked: "2026-10-19",
+  }));
+  const plan = { ...PLAN, sources };
+  const info = storySeriesFile({ series: SERIES, episode: EPISODE, plan, cast: [] });
+  const cited = [0, 1, 2, 5, 6, 8, 11, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24];
+  const chapters = Object.fromEntries(CHAPTER_KEYS.map((key, chapterIndex) => {
+    const id = `${key}-01`;
+    return [key, {
+      key, title: key,
+      scenes: [{ id, template: "shot", data: { prompt: "a suitcase in an airport" }, lines: [] }],
+      claims: cited.filter((_, index) => index % CHAPTER_KEYS.length === chapterIndex)
+        .map((source, index) => ({ id: `${key}${index}`, scene: id, source, verdict: "PENDING" })),
+    }];
+  }));
+  chapters.hook.claims.push(
+    { id: "not-found", scene: "hook-01", source: 3, verdict: "NOT FOUND" },
+    { id: "orphan", scene: "hook-missing", source: 4, verdict: "CONFIRMED" },
+    ...[null, -1, 1.5, "7", 25].map((source, index) => ({ id: `invalid-${index}`, scene: "hook-01", source, verdict: "PENDING" })),
+  );
+  const compose = (slug, current) => composeStory({ slug, info, chapters: current, voice: SERIES.voice, root: "." });
+  const expected = cited.map((index) => ({ title: sources[index].publisher, url: sources[index].url, checked_on: sources[index].checked }));
+
+  assert.deepEqual(compose("story-rolling-suitcase-v2", { hook: chapters.hook }).sources,
+    chapters.hook.claims.slice(0, 3).map((row) => row.source).sort((a, b) => a - b).map((index) => expected[cited.indexOf(index)]),
+    "a partial merge includes only its written chapter's effective citations");
+  assert.deepEqual(compose("story-rolling-suitcase-v2", chapters).sources, expected, "the A01 25-source plan publishes its 18 cited entries");
+  assert.deepEqual(compose("story-rolling-suitcase-v2", chapters).sources, expected, "repeating the merge cannot restore unused URLs");
+
+  const revised = structuredClone(chapters);
+  const removed = revised.now.claims.shift().source;
+  assert.deepEqual(compose("story-rolling-suitcase-v2", revised).sources,
+    expected.filter((source) => source.url !== sources[removed].url), "a rewritten chapter removes a citation that no current scene uses");
+  assert.equal(compose("story-rolling-suitcase-v2", {}).sources.length, 0, "an unwritten A01 chapter cites nothing");
+  assert.equal(compose("story-conveyor-belt-sushi-v2", chapters).sources.length, sources.length, "B18 keeps its existing source behavior");
+  assert.equal(compose(SLUG, chapters).sources.length, sources.length, "ordinary stories keep their existing source behavior");
 });
 
 test("a plan's thumbnail.brand reaches the thumbnail in place of the tag, and leaves the pictures' hash alone", () => {
