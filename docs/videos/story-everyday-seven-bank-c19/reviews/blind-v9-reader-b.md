@@ -1,7 +1,7 @@
 # C19 v9 narration blind review — reader B (locked)
 
-Input: `git show 02b8bde88:docs/videos/story-everyday-seven-bank-c19/reviews/narration-v9-only.txt`  
-Input SHA-256: `511C916DA99A1C494B430BC64A0D28D7AC440CE35DB3ABC533D5887B8D46A2AD`  
+Input: `git show 02b8bde88:docs/videos/story-everyday-seven-bank-c19/reviews/narration-v9-only.txt`
+Input SHA-256: `511C916DA99A1C494B430BC64A0D28D7AC440CE35DB3ABC533D5887B8D46A2AD`
 Scope: first-listener narrative only. No source, fact, visual, or production approval.
 
 **Locked verdict: HOLD — 11/12 criteria pass.** Each criterion scores 1 for PASS, 0 for HOLD.
