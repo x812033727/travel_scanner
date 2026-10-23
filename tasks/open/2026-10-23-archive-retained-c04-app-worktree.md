@@ -20,7 +20,7 @@ scope:
 
 The app-managed C04 Bubble Wrap review checkout remains after its source PR
 #1668 closed. Its exact root is
-`C:\Users\x8120\.codex\worktrees\brand-story-bubble-wrap-c04\travel_scanㄐ`.
+`<home>/.codex/worktrees/brand-story-bubble-wrap-c04/travel_scanㄐ`.
 The 2026-10-23 closeout audit found it clean, pushed and idle. It contains a
 `node_modules` junction. App `archive_worktree` returned queued repeatedly;
 a later attempt said `Could not verify the task's primary checkout`. The
