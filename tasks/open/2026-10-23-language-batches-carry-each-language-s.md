@@ -1,14 +1,14 @@
 ---
 id: 2026-10-23-language-batches-carry-each-language-s
 title: Language batches carry each language's thumbnail and the manual guide reads them
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-23T17:22:36Z
 created_at: 2026-10-23T17:22:06Z
 completed_at:
-branch:
+branch: claude/language-batch-thumbnails
 depends_on: []
 scope:
   - tools/video/review/sync.mjs
@@ -51,3 +51,7 @@ languages' captions, titles and descriptions.
 `node --test tools/video/review/sync.test.mjs` (97 pass);
 `cd apps/api && uv run pytest tests/test_video_youtube_language_package.py tests/test_video_youtube_language_contract.py tests/test_video_languages_worker.py`;
 `cd apps/web && npx vitest run components/admin-video-manual-upload.test.tsx` (11 pass).
+
+## Notes
+
+- Claimed with --force: `2026-10-22-409` (claude-fable-5.1) also lists `tools/video/review/sync.mjs`, but its code merged as #1697 and only a host check is left, so nothing of it edits the file now.
