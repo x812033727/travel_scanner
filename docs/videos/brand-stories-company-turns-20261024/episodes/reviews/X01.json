@@ -1,0 +1,24 @@
+{
+  "id": "X01",
+  "reviewed": "2026-10-24",
+  "reviewer": "Claude Opus independent source reviewer x_review_a",
+  "story_sha256": "204b0768458f6669de9b6fed2fe7bbc1533f1640dca0984f7768a42a69e54306",
+  "verdict": "fixed",
+  "sources_opened": 8,
+  "changes": [
+    "新增工人讀得到的 Adobe Q4 FY2013 財報新聞稿（8-K Exhibit 99.1）為 sources[4]：143.9 萬份、營收與淨利兩年數字、訂閱收入 11.379 億",
+    "新增 Adobe Q4 FY2012 財報新聞稿（8-K Exhibit 99.1）為 sources[5]：2012 年末付費訂閱 32.6 萬份",
+    "新增 Adobe Q3 FY2013 10-Q 為 sources[6]：2013 年 5 月宣布新功能只給訂戶、CS6 仍以永久授權提供",
+    "must_verify[0] 改為「約 140 萬份（143.9 萬；前一年末約 30 萬，32.6 萬）」並加引 sources[4]、[5]；logline 與 hook 的 30 萬／140 萬加「約」",
+    "must_verify[2] 加引 sources[6]、[4]（28% 由新聞稿損益表 11.379／40.552 億算得）",
+    "新增 Adobe Q2 FY2014 10-Q 為 sources[7]（不掛在必查事實上）：CS6 撤出盒裝與大量授權通路、官網與部分市場仍提供，供 notes 的陷阱說明查證",
+    "must_verify[1]、[3]、[4]、[5] 只見於超過 3 MB 的 FY2012／FY2013／FY2015 10-K，找過 8-K 新聞稿與 10-Q 都沒有完整原句，列 reviewer_only"
+  ],
+  "notes": "2014 財年第二季「停止一般供應」是 CS6 永久授權撤出盒裝與大量授權通路；當季 10-Q 稱官網與部分市場仍提供，不可說 CS6 從此完全買不到。訂閱份數精確為 2012 年末 32.6 萬、2013 年末 143.9 萬，口播用「約 30 萬／約 140 萬」。2013 年 5 月宣布後 CS6 仍照賣，「新功能只給訂戶」不等於強制訂閱。",
+  "reviewer_only": [
+    1,
+    3,
+    4,
+    5
+  ]
+}
