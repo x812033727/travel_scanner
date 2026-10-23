@@ -1,6 +1,6 @@
 # 查核第 1 輪：ai-shopping-agents-blocked
 
-查核日 2026-10-22。獨立查核者（不是撰稿者）。七個來源今天都以 `Mokaair-editorial/1.0` UA 重新抓過，同一主機間隔至少 1 秒，全部 HTTP 200、沒有轉址；去掉 `<!-- -->` 後逐句比對。沒有用網路搜尋（0／5）。抽出的全部字串在 `C:\Users\x8120\mokaair-work\videos\ai-shopping-agents-blocked\_tools\verify\claims-list.tsv`（240 條），聽感檢查的輸出在同資料夾的 `listener.txt`，重抓的頁面在 `_tools\verify\live\`。
+查核日 2026-10-22。獨立查核者（不是撰稿者）。七個來源今天都以 `Mokaair-editorial/1.0` UA 重新抓過，同一主機間隔至少 1 秒，全部 HTTP 200、沒有轉址；去掉 `<!-- -->` 後逐句比對。沒有用網路搜尋（0／5）。抽出的全部字串在 `<home>\mokaair-work\videos\ai-shopping-agents-blocked\_tools\verify\claims-list.tsv`（240 條），聽感檢查的輸出在同資料夾的 `listener.txt`，重抓的頁面在 `_tools\verify\live\`。
 
 網址代號（「HTTP」欄是今天的狀態碼）：
 
