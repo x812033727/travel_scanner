@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c20-zippo-script-source-and-visual
 title: C20 Zippo script source and visual review
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c20-source-visual-review
@@ -31,7 +31,7 @@ Treatment PR #1708 and its source audit PR #1710 cover the six-chapter plan, but
 - [x] Inspect the adopted Treatment, source matrix, author script/source notes, visual Markdown and JSON.
 - [x] Reopen official Zippo history, original US patent, US/UK current service pages, date codes, Arc FAQ and 600-millionth production page.
 - [x] Independently compare 68/68 exact IDs and texts; document three narrow HOLDs.
-- [ ] Commit and push the independent receipt; attach draft review PR and read back its head, base, labels and merge mode.
+- [x] Commit and push the independent receipt; open a draft review PR and read back its head, base, labels and merge mode.
 
 ## How to verify
 
@@ -40,3 +40,7 @@ Recompute SHA-256 from `git show 4b51defa16c8a8ca19f5504d67d1428c56227b4f:docs/v
 ## Notes
 
 2026-10-23: Author head `4b51defa16c8a8ca19f5504d67d1428c56227b4f` is still the exact head checked. Four blob hashes agree with the author's own receipt, but this reviewer re-read sources independently. 65 PASS / 3 HOLD: `c200207` should identify the 1933 price and first guarantee as a later corporate recollection in voice/card; `c200310` incorrectly implies a 1933 sales source and depicts a sales card; `c200410` dates the current Repair Clinic exhibit to the museum's 1997 opening without direct evidence. See the precise fixes and 68-row matrix in `docs/videos/story-everyday-zippo-c20/reviews/independent-script-source-visual-review.md`. No author files, paid media, import, upload, or publication were changed.
+
+2026-10-23: [Draft review PR #1732](https://github.com/x812033727/travel_scanner/pull/1732) targets `codex/brand-story-zippo-c20-script`; initial pushed head `563029d850033e57421cd5b12088ae0857b852ff`. GitHub readback confirms `isDraft=true`, `autoMergeRequest=null`, `no-auto-merge` label present. `npm run check:tasks` passed (pre-existing unrelated warnings); staged diff whitespace check passed. `codex_app/attach_artifact` was attempted but the desktop tool reported unavailable; the PR URL remains in this durable ticket and review receipt.
+
+Task closeout note: `npm run tasks -- done` wrote `tasks/done/2026-10-23-c20-zippo-script-source-and-visual.md` but reported that Windows still held the source file open. One exact `Remove-Item -LiteralPath` attempt against the verified open-file path was **blocked by policy**. No alternate deletion route was attempted. The task is left in `review` in this PR; the locally untracked done copy is not staged or pushed. Finish the move only after the policy or file-handle condition is resolved through an approved route.
