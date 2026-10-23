@@ -1,33 +1,29 @@
 ---
 id: 2026-10-23-show-brand-story-preproduction-intake-progress
 title: Show brand story planning and script intake beside finished-video progress
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: codex-c-series-integration
+claimed_at: 2026-10-23T18:29:02Z
 created_at: 2026-10-23T12:15:47Z
 completed_at:
-branch:
+branch: codex/brand-story-preproduction-progress-20261024
 depends_on: []
 scope:
-  - apps/api/app/video_automation/schemas.py
-  - apps/api/app/video_automation/series.py
-  - apps/api/tests/test_video_series.py
+  - apps/api/app/video_automation/admin_api.py
+  - apps/api/app/video_automation/story_progress.py
+  - apps/api/tests/test_video_story_progress.py
   - apps/web/components/admin-video-stories.tsx
   - apps/web/components/admin-video-stories.test.tsx
-  - apps/web/messages/zh-TW/admin.json
-  - apps/web/messages/zh-CN/admin.json
-  - apps/web/messages/en/admin.json
-  - apps/web/messages/ja/admin.json
-  - apps/web/messages/ko/admin.json
+  - apps/web/lib/admin-video-story-progress-copy.ts
 ---
 
 # Show brand story planning and script intake beside finished-video progress
 
 ## Why
 
-The C01–C20 planning intake and ten eligible script cards have been saved to the
+The C01–C20 planning intake and eleven live script cards have been saved to the
 video backend. This `kind=story` series renders in `admin-video-stories.tsx`:
 its list card shows status and quota without preproduction intake, and its
 detail counts episodes with `status=done` as finished films. The generic
@@ -46,23 +42,23 @@ view. The story UI needs separate persisted plan and script-card signals.
 
 ## Steps
 
-- [ ] Read the full stored story plans and only count episodes with valid plan
+- [x] Read the full stored story plans and only count episodes with valid plan
       identity, chapters and sources. Match each live script-review card to its
       exact series, episode number and project slug; exclude dropped, rejected,
       superseded or mismatched cards. Count original source Markdown separately:
       C03 has an approved legacy card without `source_md`.
-- [ ] Render these read-only counters on the `kind=story` list/detail with
-      localized labels. Existing series and project detail GETs may be used if
-      they meet the predicate; otherwise coordinate the API scope before editing.
-- [ ] Test full, partial and absent intake and retain the finished-video progress
+- [x] Add one read-only preproduction summary endpoint and render its counters
+      on the `kind=story` list/detail with localized labels. Keep the response
+      model and copy in separate, unclaimed modules.
+- [x] Test full, partial and absent intake and retain the finished-video progress
       assertion. Coordinate existing claims before editing any scoped file.
 
 ## How to verify
 
 Run focused story UI/API tests, `admin-video-stories.test.tsx`, i18n checks,
 and read back the C-series card in admin. For current persisted state it should
-show 20 full plans, ten live script cards (nine source Markdown plus one C03
-legacy card), and zero finished films. A failed backend read must be shown as
+show 20 full plans, ten approved and one pending script card (ten source
+Markdown plus one C03 legacy card), and zero finished films. A failed backend read must be shown as
 unavailable rather than silently counted as zero.
 
 ## Notes
@@ -72,3 +68,14 @@ Filed 2026-10-23 during C-series closeout; corrected after readback of the
 detail computes `done` from episode status. The generic series progress label
 does not render this story card. This ticket does not authorize changing the
 finished-video metric, uploading, publishing or paid generation.
+
+2026-10-24 scope narrowed after collision check. The original `schemas.py` and
+five `messages/*/admin.json` paths have active claims from other work lines;
+`admin_api.py`, the story component/test and the proposed new modules have no
+active task or open-PR path owner. The endpoint and local copy module satisfy
+the same definition of done without editing those claimed files.
+
+2026-10-24 implementation complete in the shared checkout: backend endpoint
+tests 5/5, story UI tests 28/28, web typecheck, Ruff and focused mypy pass.
+The definition of done remains open until the merged release is deployed and
+the live admin card is read back. No new worktree was created.

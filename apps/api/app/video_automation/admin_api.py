@@ -37,7 +37,7 @@ from app.models import User, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
-from app.video_automation import run_jobs, slides_requests
+from app.video_automation import run_jobs, slides_requests, story_progress
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
@@ -730,6 +730,15 @@ async def video_series_binge_quote(
     _ = user
     row = await service.settings_row(session)
     return drama_series.binge_quote(row, total_minutes, episode_minutes, visual_tier)
+
+
+@admin_router.get("/story-preproduction", response_model=story_progress.StoryPreproductionOut)
+async def video_story_preproduction(
+    user: ContentReader, session: Session
+) -> story_progress.StoryPreproductionOut:
+    """Read authored brand-story progress without changing the finished-film count."""
+    _ = user
+    return await story_progress.story_preproduction(session)
 
 
 @admin_router.get("/series/{slug}", response_model=SeriesOut)
