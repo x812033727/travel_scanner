@@ -50,11 +50,12 @@ PILOT_LIMITS_USD = {
     "story-conveyor-belt-sushi-v2": FOLLOWON_LIMIT_USD,
     **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
 }
-PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
-# These productions already called paid providers before they had per-video budget rows.
-# Recognize them at server dispatch boundaries when the caller supplies the slug;
-# do not create a spendable account
-# or include them in the active account/status set until their prior charges are reconciled.
+# The everyday-object series has its own per-film USD 25 accounts (0138). PILOT_LIMITS_USD
+# stays the reviewed 0133 set the migration guard reads back for the 0132 rollback image.
+EVERYDAY_STORY_PREFIX = "story-everyday-"
+# These four called paid providers before they had accounts. 0138 opens each with one
+# uncertain USD 25 hold for that unrecorded history, so nothing is spendable until an
+# operator settles it against provider evidence (RECONCILE.md).
 UNRECONCILED_STORY_SLUGS = frozenset(
     (
         "story-everyday-moleskine-c03",
@@ -63,6 +64,20 @@ UNRECONCILED_STORY_SLUGS = frozenset(
         "story-everyday-play-doh-c06",
     )
 )
+HISTORICAL_HOLD_OPERATION_ID = "pre-ledger-history"
+# Plus the owner-approved local pilots that made no paid call before their accounts existed.
+EVERYDAY_PILOT_SLUGS = UNRECONCILED_STORY_SLUGS | frozenset(
+    (
+        "story-everyday-dr-martens-c07",
+        "story-everyday-oxo-c10",
+        "story-everyday-frixion-c15",
+    )
+)
+BUDGET_LIMITS_USD = {
+    **PILOT_LIMITS_USD,
+    **{slug: PILOT_LIMIT_USD for slug in sorted(EVERYDAY_PILOT_SLUGS)},
+}
+PILOT_SLUGS = frozenset(BUDGET_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 

@@ -126,13 +126,18 @@ const PILOT_SLUGS = new Set([
   "story-everyday-bubble-wrap-c04",
   "story-everyday-kincho-c05",
   "story-everyday-play-doh-c06",
+  "story-everyday-dr-martens-c07",
+  "story-everyday-oxo-c10",
+  "story-everyday-frixion-c15",
 ]);
+// An everyday-object film without an account still goes the one-send way: the API refuses it.
+const isBudgeted = (slug) => PILOT_SLUGS.has(slug) || (typeof slug === "string" && slug.startsWith("story-everyday-"));
 
 // A judge/locate request is itself the paid operation, unlike a generation's durable job.
 // The pilot path sends it once with a unique operation ID. An ambiguous transport answer must
 // keep the server's reservation and stop the worker; retrying with a fresh ID could buy it twice.
 async function postJudgeOrLocate(options, route, request) {
-  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  if (!isBudgeted(request.slug)) return (await postJson(options, route, request)).json();
   const body = { ...request, operation_id: request.operation_id ?? randomUUID() };
   try {
     const response = await call({ ...defaults(options), attempts: 1, path: route, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
@@ -152,7 +157,7 @@ async function postJudgeOrLocate(options, route, request) {
 }
 
 async function postPaidJob(options, route, request) {
-  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  if (!isBudgeted(request.slug)) return (await postJson(options, route, request)).json();
   try {
     const response = await call({
       ...defaults(options), attempts: 1, path: route,

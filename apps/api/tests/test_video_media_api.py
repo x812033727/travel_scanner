@@ -20,7 +20,7 @@ from app.db import get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
-from app.video_budget.models import FOLLOWON_SLUGS
+from app.video_budget.models import EVERYDAY_PILOT_SLUGS, FOLLOWON_SLUGS, PILOT_SLUGS
 from app.video_budget.service import BudgetError, BudgetSummary, Reservation
 from app.video_media import admin_api, meter
 from app.video_media.jobs import MediaContext
@@ -192,7 +192,7 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "story-conveyor-belt-sushi",
         "story-rolling-suitcase-v2",
         "story-conveyor-belt-sushi-v2",
-    }
+    } | EVERYDAY_PILOT_SLUGS
     assert body["pilot_budgets"]["story-rolling-suitcase"] == {
         "limit_usd": "25.000000",
         "reserved_usd": "1.500000",
@@ -256,7 +256,7 @@ async def test_status_shows_followon_budgets_after_all_five_accounts_exist(
         response = await client.get("/api/v1/video/media/status")
     assert response.status_code == 200, response.text
     budgets = response.json()["pilot_budgets"]
-    assert len(budgets) == 9
+    assert set(budgets) == PILOT_SLUGS
     assert {slug: budgets[slug]["limit_usd"] for slug in FOLLOWON_SLUGS} == {
         slug: "5" for slug in FOLLOWON_SLUGS
     }

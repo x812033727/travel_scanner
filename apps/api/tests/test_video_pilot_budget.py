@@ -25,8 +25,11 @@ from app.models import User, VideoToolToken
 from app.problems import AppError
 from app.video_budget import recovery, service
 from app.video_budget.models import (
+    BUDGET_LIMITS_USD,
+    EVERYDAY_PILOT_SLUGS,
     FOLLOWON_LIMIT_USD,
     FOLLOWON_SLUGS,
+    HISTORICAL_HOLD_OPERATION_ID,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
@@ -151,7 +154,9 @@ async def test_cross_stage_reservations_hold_exactly_at_boundary(
 async def test_v2_remakes_have_independent_accounts_and_legacy_slugs_stay_protected(
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
-    assert PILOT_SLUGS == {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG} | FOLLOWON_SLUGS
+    assert PILOT_SLUGS == (
+        {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG} | FOLLOWON_SLUGS | EVERYDAY_PILOT_SLUGS
+    )
     for slug in (SLUG, OTHER_SLUG, V2_SLUG):
         hold = await _reserve(sessions, "full-film", "25", slug=slug)
         assert hold is not None and hold.dispatch_allowed
@@ -357,35 +362,98 @@ async def test_followon_accounts_fail_closed_until_each_usd_5_row_exists(
         )
 
 
-@pytest.mark.asyncio
-async def test_everyday_stories_are_guarded_without_a_fresh_spendable_account(
-    sessions: async_sessionmaker[AsyncSession],
-) -> None:
-    assert UNRECONCILED_STORY_SLUGS == {
-        "story-everyday-moleskine-c03",
-        "story-everyday-bubble-wrap-c04",
-        "story-everyday-kincho-c05",
-        "story-everyday-play-doh-c06",
-    }
-    # Existing status and rollback checks only expect accounts in PILOT_LIMITS_USD.
-    assert UNRECONCILED_STORY_SLUGS.isdisjoint(PILOT_SLUGS)
-    assert all(service.is_pilot(slug) for slug in UNRECONCILED_STORY_SLUGS)
-    for slug in UNRECONCILED_STORY_SLUGS:
-        with pytest.raises(AppError) as missing:
-            await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
-        assert missing.value.code == "video_budget_missing_account"
-
-    # An accidental USD 25 row cannot bypass historical-charge reconciliation.
+async def _open_everyday_accounts(sessions: async_sessionmaker[AsyncSession]) -> None:
+    """The rows 0138 writes: one USD 25 account each, history held in full for C03-C06."""
     async with sessions() as session:
         session.add_all(
             VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD)
-            for slug in UNRECONCILED_STORY_SLUGS
+            for slug in sorted(EVERYDAY_PILOT_SLUGS)
+        )
+        await session.flush()
+        session.add_all(
+            VideoPilotBudgetOperation(
+                slug=slug,
+                operation_id=HISTORICAL_HOLD_OPERATION_ID,
+                category="historical",
+                provider="unattributed",
+                model="pre-ledger",
+                max_usd=PILOT_LIMIT_USD,
+                status="uncertain",
+                attempts=1,
+            )
+            for slug in sorted(UNRECONCILED_STORY_SLUGS)
         )
         await session.commit()
-    for slug in UNRECONCILED_STORY_SLUGS:
-        with pytest.raises(AppError) as unreviewed:
-            await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
-        assert unreviewed.value.code == "video_budget_invalid_account"
+
+
+@pytest.mark.asyncio
+async def test_everyday_films_with_unrecorded_history_cannot_spend_until_settled(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    assert UNRECONCILED_STORY_SLUGS < EVERYDAY_PILOT_SLUGS
+    assert all(BUDGET_LIMITS_USD[slug] == PILOT_LIMIT_USD for slug in EVERYDAY_PILOT_SLUGS)
+    # The migration guard reads back exactly the reviewed 0133 accounts.
+    assert EVERYDAY_PILOT_SLUGS.isdisjoint(PILOT_LIMITS_USD)
+    await _open_everyday_accounts(sessions)
+
+    for slug in sorted(UNRECONCILED_STORY_SLUGS):
+        account = await _summary(sessions, slug)
+        assert account is not None
+        assert (account.remaining_usd, account.uncertain_operations) == (Decimal("0"), 1)
+        with pytest.raises(AppError) as held:
+            await _reserve(sessions, "first-new-call", "0.000001", slug=slug)
+        assert held.value.code == "video_budget_exhausted"
+
+    # Settling the hold at a provider-backed upper bound frees only the rest of USD 25.
+    c05 = "story-everyday-kincho-c05"
+    async with sessions() as session:
+        await service.settle(
+            session,
+            slug=c05,
+            operation_id=HISTORICAL_HOLD_OPERATION_ID,
+            actual_usd=Decimal("20"),
+            receipt_ref="ai-studio-project-total-test",
+        )
+    assert (await _summary(sessions, c05)).remaining_usd == Decimal("5")  # type: ignore[union-attr]
+    allowed = await _reserve(sessions, "tts-1", "5", slug=c05)
+    assert allowed is not None and allowed.dispatch_allowed
+    with pytest.raises(AppError) as exhausted:
+        await _reserve(sessions, "tts-2", "0.000001", slug=c05)
+    assert exhausted.value.code == "video_budget_exhausted"
+
+
+@pytest.mark.asyncio
+async def test_new_everyday_pilots_open_with_their_own_usd_25(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _open_everyday_accounts(sessions)
+    for slug in sorted(EVERYDAY_PILOT_SLUGS - UNRECONCILED_STORY_SLUGS):
+        assert (await _summary(sessions, slug)).remaining_usd == PILOT_LIMIT_USD  # type: ignore[union-attr]
+        hold = await _reserve(sessions, "full-film", "25", slug=slug)
+        assert hold is not None and hold.dispatch_allowed
+        with pytest.raises(AppError) as exhausted:
+            await _reserve(sessions, "one-more", "0.000001", slug=slug)
+        assert exhausted.value.code == "video_budget_exhausted"
+
+
+@pytest.mark.asyncio
+async def test_unapproved_everyday_film_fails_closed_without_an_account(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _open_everyday_accounts(sessions)
+    unapproved = "story-everyday-kikkoman-c08"
+    assert service.is_pilot(unapproved)
+    with pytest.raises(AppError) as missing:
+        await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
+    assert missing.value.code == "video_budget_missing_account"
+    # A hand-made row cannot open it either: its ceiling is not in the reviewed table.
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=unapproved, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+    with pytest.raises(AppError) as invalid:
+        await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
+    assert invalid.value.code == "video_budget_invalid_account"
+    assert not service.is_pilot("story-five-unrelated") and not service.is_pilot(None)
 
 
 @pytest.mark.asyncio

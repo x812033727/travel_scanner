@@ -13,6 +13,10 @@ const FOLLOWON_SLUGS = [
 const EVERYDAY_SLUGS = [
   "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
   "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
+  "story-everyday-dr-martens-c07", "story-everyday-oxo-c10",
+  "story-everyday-frixion-c15",
+  // Without an account the API refuses it; the client must still send it only once.
+  "story-everyday-kikkoman-c08",
 ];
 
 test("a pilot judge call carries one operation ID and never repeats an uncertain provider answer", async () => {

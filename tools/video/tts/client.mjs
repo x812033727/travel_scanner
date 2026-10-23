@@ -18,7 +18,15 @@ export const PILOT_SLUGS = new Set([
   "story-five-lego-legoland", "story-five-costco-hot-dog",
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
+  "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
+  "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
+  "story-everyday-dr-martens-c07", "story-everyday-oxo-c10",
+  "story-everyday-frixion-c15",
 ]);
+// Every everyday-object film is attributed, approved or not: the API holds each to its own
+// USD 25 account and refuses one that has none, rather than letting it spend unrecorded.
+export const isBudgetedSlug = (slug) =>
+  PILOT_SLUGS.has(slug) || (typeof slug === "string" && slug.startsWith("story-everyday-"));
 
 // A paid request was sent and no answer came back: the connection dropped after it went out, a
 // gateway or the web route answered instead of the API, or the answer broke off on the way. The
@@ -186,7 +194,7 @@ export async function speechStatus(options) {
 async function postPaid(options, path, body, read) {
   // One operation ID covers this logical request, including any HTTP retry after a response
   // that proves the provider did not charge. The API never re-dispatches an uncertain ID.
-  const attributed = PILOT_SLUGS.has(options.videoSlug)
+  const attributed = isBudgetedSlug(options.videoSlug)
     ? { ...body, video_slug: options.videoSlug, operation_id: randomUUID() }
     : body;
   const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(attributed) };

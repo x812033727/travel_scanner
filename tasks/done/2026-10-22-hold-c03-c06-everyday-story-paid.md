@@ -1,13 +1,13 @@
 ---
 id: 2026-10-22-hold-c03-c06-everyday-story-paid
 title: Stage C03-C06 attributed-route budget holds before historical reconciliation
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-everyday-budget-guard
 claimed_at: 2026-10-22T12:25:09Z
 created_at: 2026-10-22T12:25:03Z
-completed_at:
+completed_at: 2026-10-23T06:17:33Z
 branch: codex/everyday-budget-preflight
 depends_on: []
 scope:
@@ -68,3 +68,5 @@ the duplicate remains untracked locally and makes local `check:tasks` fail.
 
 Verification: budget pytest 19 passed, 2 skipped; media client 8 passed; ruff
 passed; `npm run check:tasks` exit 0. No provider call was made.
+
+2026-10-23 (claude-opus-5.5-everyday-budget): This guard ships in the same PR as `2026-10-22-reconcile-c03-c06-prior-charges-and`, which supersedes draft #1684. Closed here so the two scopes stop overlapping.

@@ -17,6 +17,14 @@ const FOLLOWON_SLUGS = [
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
 ];
+const EVERYDAY_SLUGS = [
+  "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
+  "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
+  "story-everyday-dr-martens-c07", "story-everyday-oxo-c10",
+  "story-everyday-frixion-c15",
+];
+// No account yet: still attributed, so the API refuses it instead of it spending unrecorded.
+const UNAPPROVED_EVERYDAY = "story-everyday-kikkoman-c08";
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 const audio = () => encodeWav(Int16Array.from({ length: 4800 }, (_, i) => Math.round(Math.sin(i / 8) * 3000)));
 // What Node's fetch throws: a TypeError whose cause carries the socket's code.
@@ -84,7 +92,7 @@ function server(answers) {
 }
 
 test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
-  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS]) {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS, ...EVERYDAY_SLUGS, UNAPPROVED_EVERYDAY]) {
     for (const paid of PAID) {
       const { calls, options } = server([() => problem(429, "rate_limit_exceeded"), paid.ok]);
       paid.check(await paid.send({ ...options, videoSlug: slug }));
@@ -131,6 +139,7 @@ test("pilot auditions require their matching slug and charge that film; generic 
   assert.equal(await audition(a01, "story-rolling-suitcase"), EXIT.usage);
   assert.equal(await audition(generic, "story-rolling-suitcase-v2-typo"), EXIT.usage);
   assert.equal(await audition(generic, "story-five-lego-legoland-typo"), EXIT.usage);
+  assert.equal(await audition(generic, UNAPPROVED_EVERYDAY), EXIT.usage);
   const pilotWork = { ...ctx, env: { ...ctx.env, VIDEO_WORKDIR: path.join(box.base, "story-conveyor-belt-sushi-v2") } };
   assert.equal(await main(["audition", "--text-file", generic, "--voices", "gemini:Sulafat"], pilotWork), EXIT.usage);
   assert.equal(await main(["audition", "--text-file", a01, "--voices", "gemini:Sulafat", "--slug", "story-rolling-suitcase-v2"], pilotWork), EXIT.usage);
@@ -144,7 +153,7 @@ test("pilot auditions require their matching slug and charge that film; generic 
     assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
   }
 
-  for (const slug of FOLLOWON_SLUGS) {
+  for (const slug of [...FOLLOWON_SLUGS, ...EVERYDAY_SLUGS]) {
     const file = path.join(box.base, `${slug}.txt`);
     writeFileSync(file, `試聽 ${slug} 的旁白。`);
     assert.equal(await audition(file), EXIT.usage, `${slug}: the file must name its budget`);
