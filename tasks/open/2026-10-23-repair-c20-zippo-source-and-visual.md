@@ -45,6 +45,6 @@ scope:
 
 ## Notes
 
-第一輪避免把後述 1933 售價及保證說成同期商品卡，也不把現今 Repair Clinic 倒定年到 1997。v3 保留其區分，並移除不服務保修主線的六億支段落；正文紙上估約 520.1 秒，不是實際 TTS。
+第一輪避免把後述 1933 售價及保證說成同期商品卡，也不把現今 Repair Clinic 倒定年到 1997；1997 是擴建後新館，第一間較小的館於 1993 年已開幕。v3 保留其區分，並移除不服務保修主線的六億支段落；正文紙上估約 520.8 秒，不是實際 TTS。
 
-v3 作者 head `5b0c8b9890e8ed4264b2de4d5c141b1ddc6c730f` 已推到 PR #1728；GitHub 讀回仍是 draft、`no-auto-merge`，沒有 auto-merge request。64 句只讀旁白投影另存於 b16f 暫存目錄，SHA-256 `4BB0C3CC75CF20B8C9B5C6F16A4C631708258091920A117C69F00589BC11A881`。`node tools/video/cli.mjs lint --help` 在此工作樹因缺少本機 `pinyin-pro` 套件於載入階段退出；不宣稱影片 lint 通過。結構比對 64/64、`npm run check:tasks`、`git diff --cached --check` 已通過。
+v3 作者 head `5b0c8b9890e8ed4264b2de4d5c141b1ddc6c730f` 曾推到 PR #1728；該次 GitHub 讀回是 draft、`no-auto-merge`，沒有 auto-merge request。64 句只讀旁白最新投影另存於 b16f 暫存目錄，SHA-256 `75274D367D1B147BED2D59BC91827E142064886F2C2469DF130668DF680698B6`。`node tools/video/cli.mjs lint --help` 在此工作樹因缺少本機 `pinyin-pro` 套件於載入階段退出；不宣稱影片 lint 通過。結構比對 64/64、`npm run check:tasks`、`git diff --cached --check` 曾通過，最後窄修後需重跑。

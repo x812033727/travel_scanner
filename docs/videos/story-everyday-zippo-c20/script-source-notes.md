@@ -6,7 +6,7 @@
 
 | 來源代號 | 原件與本稿使用範圍 |
 | --- | --- |
-| M01–M03、M06 | [Zippo 公司歷史](https://kb.zippo.com/the-history-of-zippo)，1930s／1940s；友人場景、1933 售價與初期承諾都要標成公司回顧，沒有同期銷售卡原件。1990s 段只將博物館開幕定年 1997，Repair Clinic 是現況描述；另見[博物館專頁](https://zippo.com/pages/zippo-case-museum-flagship-store)。 |
+| M01–M03、M06 | [Zippo 公司歷史](https://kb.zippo.com/the-history-of-zippo)，1930s／1940s；友人場景、1933 售價與初期承諾都要標成公司回顧，沒有同期銷售卡原件。1990s 段所述 1997 為 Zippo／Case 新館開幕；[博物館專頁](https://zippo.com/pages/zippo-case-museum-flagship-store)另記較小的前館於 1993 開幕，今日維修展示不能倒定年到 1997。 |
 | M04–M05 | [美國專利 2,032,695 原始掃描](https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf)，第 1–2 頁；僅證當時申請、列名發明人與所述機構，不證每代產品、保修成本或今日工序。 |
 | M07 | [Zippo 底部日期碼知識庫](https://kb.zippo.com/zippo-lighter/date-codes)，`Dating Your Zippo Lighter`／`Date Codes`；最初品質管制與找送修批次模式，後來可判年份。 |
 | M08 | [Zippo 美國保固頁](https://kb.zippo.com/warranty-repair) 與[未點火問題頁](https://kb.zippo.com/zippo-lighter/not-lighting)；只說傳統防風口袋打火機的機械功能及耗材分類，不給燃料或點火操作教學。 |
@@ -22,7 +22,7 @@
 | c200102 | M03、M08；限傳統防風口袋打火機 |
 | c200103 | M04–M05；原始專利的構件，不照描圖 |
 | c200104 | M07；底部日期碼初始品質管制用途 |
-| c200105 | M09；英國站現行流程，不當全球條款 |
+| c200105 | M09；英國站現行流程，不虛構表格欄位 |
 | c200106 | M08–M10；機械、外觀與英國內膽流程的問題 |
 | c200107 | M03、M08–M10；公司後述的起點與現行條款構成可答主問 |
 | c200201 | M02；明示公司事後回顧，不作現場實錄 |
@@ -58,7 +58,7 @@
 | c200407 | M07；公司對原始用途的說明 |
 | c200408 | M07；同頁對今日與初始用途的區分 |
 | c200409 | M07–M08；政策範圍與敘事推論 |
-| c200410 | 官方歷史頁 1990s 段與現行博物館頁；只把開幕定年 1997 |
+| c200410 | 官方博物館頁 Museum History 與現況展區；1997 指新館，不說首座博物館 |
 | c200411 | M08–M09；概念轉場，不當個案 |
 | c200412 | M08–M10；章末未解問題 |
 | c200501 | M09；只限英國站現行流程 |
