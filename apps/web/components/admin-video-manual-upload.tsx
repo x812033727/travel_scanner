@@ -44,6 +44,7 @@ function DownloadFile({ slug, file, label, name }: { slug: string; file: ReviewF
 
 function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   const t = useTranslations("admin.videoYoutube.manual");
+  const reviewText = useTranslations("admin.videoReviews");
   const when = useWhen();
   const { project, review, metadata, metadataFailed } = data;
   const zh = record(review.payload.zh);
@@ -63,6 +64,8 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   } : translations[selected] ?? {};
   const tags = strings(metadata.tags ?? zh.tags);
   const thumbnail = fileFor(review, "thumbnail");
+  // Each language's own thumbnail, for Studio's language page (thumbnail_<locale>; a hyphen is a Test & compare variant).
+  const localeThumbnails = review.files.filter((file) => file.role.startsWith("thumbnail_"));
   const final = mp4Retired(project) ? undefined : fileFor(review, "final");
   const disclosure = record(review.payload.disclosure);
   const synthetic = typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : disclosure.synthetic;
@@ -99,6 +102,10 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       <h3 className="font-bold">{t("thumbnailStep")}</h3>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("thumbnailHelp")}</p>
       <div>{thumbnail ? <DownloadFile slug={project.slug} file={thumbnail} label={t("downloadThumbnail")} name={thumbnail.content_type === "image/png" ? "thumbnail.png" : "thumbnail.jpg"} /> : <p className="text-sm">{t("thumbnailMissing")}</p>}</div>
+      {localeThumbnails.length > 0 && <ul className="flex flex-wrap gap-2">{localeThumbnails.map((file) => {
+        const locale = canonical(file.role.slice("thumbnail_".length));
+        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={reviewText("downloadLocaleThumbnail", { locale: localeName(locale) })} name={`thumbnail.${locale}.${file.content_type === "image/png" ? "png" : "jpg"}`} /></li>;
+      })}</ul>}
     </section>
     <section className={stepClass} aria-label={t("captionsStep")}>
       <h3 className="font-bold">{t("captionsStep")}</h3>
