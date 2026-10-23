@@ -7,12 +7,15 @@ import {
   type UsageOperation,
 } from "@/lib/usage-catalog";
 
+const TIMEOUT_MS = 3000;
+
 export async function loadUsageCatalog(locale: string): Promise<UsageCatalogState> {
   const apiBase = (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
   try {
     const response = await fetch(`${apiBase}/api/v1/usage-catalog?locale=${encodeURIComponent(locale)}`, {
       cache: "no-store",
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(TIMEOUT_MS),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload: unknown = await response.json();
@@ -37,4 +40,40 @@ function defaultCost(operation: UsageOperation): number {
   return defaultUsageCatalog.operation_costs[operation];
 }
 
-export const getUsageCatalog = cache(loadUsageCatalog);
+// Every page render reads the catalog from the root layout, so an uncached fetch turned each
+// crawler hit into an API request and a database transaction; on 2026-10-23 a distributed
+// crawl drained the API connection pool that way and took the admin console down with it.
+// One fetch per locale per process every TTL is enough for prices that change by hand.
+// A failure is remembered briefly so a struggling API is not asked again on every render,
+// and the last good catalog keeps serving until a fetch succeeds again.
+const READY_TTL_MS = 30_000;
+const UNAVAILABLE_TTL_MS = 5_000;
+
+type CacheEntry = { state: UsageCatalogState; expiresAt: number };
+const entries = new Map<string, CacheEntry>();
+const inflight = new Map<string, Promise<UsageCatalogState>>();
+
+export function resetUsageCatalogCache() {
+  entries.clear();
+  inflight.clear();
+}
+
+export async function loadSharedUsageCatalog(locale: string): Promise<UsageCatalogState> {
+  const entry = entries.get(locale);
+  if (entry && entry.expiresAt > Date.now()) return entry.state;
+  const pending = inflight.get(locale);
+  if (pending) return pending;
+  const request = loadUsageCatalog(locale).then((state) => {
+    if (state.status === "ready") {
+      entries.set(locale, { state, expiresAt: Date.now() + READY_TTL_MS });
+      return state;
+    }
+    const fallback = entry?.state.status === "ready" ? entry.state : state;
+    entries.set(locale, { state: fallback, expiresAt: Date.now() + UNAVAILABLE_TTL_MS });
+    return fallback;
+  }).finally(() => inflight.delete(locale));
+  inflight.set(locale, request);
+  return request;
+}
+
+export const getUsageCatalog = cache(loadSharedUsageCatalog);
