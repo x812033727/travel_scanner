@@ -8,7 +8,9 @@ import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
 
 type Draft = { title: string; description: string; video_id: string | null };
-type Package = { project: Project; review: Review; metadata: Record<string, unknown>; metadataFailed: boolean };
+// `files` is the upload confirmation's, with the newest approved language batch's over them: a
+// language added after the upload has its captions, description and thumbnail only there.
+type Package = { project: Project; review: Review; languages: Review | null; files: ReviewFile[]; metadata: Record<string, unknown>; metadataFailed: boolean };
 const strings = (value: unknown) => list(value).filter((item): item is string => typeof item === "string");
 const canonical = (locale: string) => {
   const key = locale.toLowerCase().replaceAll("_", "-");
@@ -46,15 +48,15 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   const t = useTranslations("admin.videoYoutube.manual");
   const reviewText = useTranslations("admin.videoReviews");
   const when = useWhen();
-  const { project, review, metadata, metadataFailed } = data;
+  const { project, review, languages, files, metadata, metadataFailed } = data;
   const zh = record(review.payload.zh);
   const previous = project.youtube_sync?.request;
   const id = youtubeVideoId(project.youtube_video_id ?? "") ?? youtubeVideoId(previous?.video_id ?? "") ?? youtubeVideoId(draft?.video_id ?? "");
   const original = canonical(text(metadata.default_language) || "zh-TW");
   const translations = Object.fromEntries(Object.entries(record(metadata.localizations)).map(([locale, values]) => [canonical(locale), record(values)]));
-  const captionFiles = review.files.filter((file) => file.role.startsWith("captions_"));
-  const descriptionFiles = review.files.filter((file) => file.role.startsWith("description_"));
-  const locales = [...new Set([original, ...strings(review.payload.locales).map(canonical), ...Object.keys(translations),
+  const captionFiles = files.filter((file) => file.role.startsWith("captions_"));
+  const descriptionFiles = files.filter((file) => file.role.startsWith("description_"));
+  const locales = [...new Set([original, ...strings(review.payload.locales).map(canonical), ...Object.keys(record(languages?.payload.locales)).map(canonical), ...Object.keys(translations),
     ...captionFiles.map((file) => canonical(file.role.slice("captions_".length))), ...descriptionFiles.map((file) => canonical(file.role.slice("description_".length)))])];
   const localeName = (locale: string) => t.has(`languages.${locale}`) ? t(`languages.${locale}`) : locale;
   const [selected, setSelected] = useState(original);
@@ -65,7 +67,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   const tags = strings(metadata.tags ?? zh.tags);
   const thumbnail = fileFor(review, "thumbnail");
   // Each language's own thumbnail, for Studio's language page (thumbnail_<locale>; a hyphen is a Test & compare variant).
-  const localeThumbnails = review.files.filter((file) => file.role.startsWith("thumbnail_"));
+  const localeThumbnails = files.filter((file) => file.role.startsWith("thumbnail_"));
   const final = mp4Retired(project) ? undefined : fileFor(review, "final");
   const disclosure = record(review.payload.disclosure);
   const synthetic = typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : disclosure.synthetic;
@@ -132,7 +134,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
     <details className="rounded-xl border border-[var(--line)] p-4">
       <summary className="cursor-pointer text-sm font-semibold">{t("backupTitle")}</summary>
       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("backupHelp")}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...review.files.filter((file) => file.role === "metadata")].map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} name={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} /></li>)}</ul>
+      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...files.filter((file) => file.role === "metadata")].map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} name={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} /></li>)}</ul>
     </details>
   </div>;
 }
@@ -153,7 +155,13 @@ function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft;
         if (sync && !sync.interrupted && ["queued", "running"].includes(sync.status)) { setError("running"); return; }
         const review = project.reviews.find((item) => item.gate === "publish" && item.status === "approved");
         if (!review || project.dropped_at) { setError("noPackage"); return; }
-        const metadataUrl = fileUrl(slug, fileFor(review, "metadata"));
+        // The newest approved batch of languages (reviews come newest first), as YouTube sync reads it.
+        // One older than the confirmation belongs to an earlier package, whose own files are newer.
+        const newestLanguages = project.reviews.find((item) => item.gate === "languages" && !item.subject && item.status === "approved");
+        const languages = newestLanguages && Date.parse(newestLanguages.created_at) > Date.parse(review.created_at) ? newestLanguages : null;
+        const files = [...new Map([...review.files, ...(languages?.files ?? [])].map((file) => [file.role, file])).values()];
+        // Its metadata.json is the package's own, written again with every language translated since.
+        const metadataUrl = fileUrl(slug, (languages && fileFor(languages, "metadata")) || fileFor(review, "metadata"));
         let metadata: Record<string, unknown> = {};
         let metadataFailed = !metadataUrl;
         if (metadataUrl) {
@@ -167,7 +175,7 @@ function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft;
             metadataFailed = true;
           }
         }
-        if (current) setData({ project, review, metadata, metadataFailed });
+        if (current) setData({ project, review, languages, files, metadata, metadataFailed });
       } catch {
         if (current) setError("loadFailed");
       }
