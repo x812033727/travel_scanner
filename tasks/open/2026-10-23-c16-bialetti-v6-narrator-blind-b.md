@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c16-bialetti-v6-narrator-blind-b
 title: Independently blind review C16 Bialetti v6 narrator
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-blind-b
