@@ -230,7 +230,7 @@ for (const phase of ['docs-intent', 'work-intent',
         assert.equal(fs.existsSync(path.join(doc, 'intent.json')), true);
         assert.equal(fs.existsSync(path.join(work, 'intent.json')), true);
       }
-      if (phase === 'receipt') {
+      if (phase === 'receipt' || phase === 'index-temp') {
         const recovered = await recoverBefore({ ...f, adoptionGrant: f.grant,
           grant: recoveryGrant(f) });
         assert.equal(recovered.status, 'HOLD_RECOVERED_BEFORE_104');

@@ -193,13 +193,22 @@ function assertOldAudit(roots, plan, { allowPendingEvent = false, grant = null }
     && sourceHash(index.after) === plan.before_source_sha256, 'OLD_TIP_DRIFT');
   if (pending) {
     const pendingDir = path.join(root, plan.event_id);
-    const files = fs.readdirSync(pendingDir);
-    need(files.length === 0 || (files.length === 1 && files[0] === 'manual-amendment.json'),
-      'PENDING_EVENT_FOREIGN_FILE');
+    const files = fs.readdirSync(pendingDir).sort();
+    const indexTemp = `index.json.a01-${plan.event_id}.new`;
+    // A crash between writing the index temporary and renaming it leaves both files.
+    need(files.length === 0
+      || (files.length === 1 && files[0] === 'manual-amendment.json')
+      || (files.length === 2 && files[0] === indexTemp
+        && files[1] === 'manual-amendment.json'),
+    'PENDING_EVENT_FOREIGN_FILE');
     if (files.length) {
       const expected = expectedEventArtifacts(plan, index.after, grant);
-      need(hash(path.join(pendingDir, files[0])) === sha(expected.amendment),
+      need(hash(path.join(pendingDir, 'manual-amendment.json')) === sha(expected.amendment),
         'PENDING_AMENDMENT_DRIFT');
+      if (files.length === 2) {
+        need(hash(path.join(pendingDir, indexTemp)) === sha(expected.index),
+          'PENDING_INDEX_TEMP_DRIFT');
+      }
     }
   }
   return index;
