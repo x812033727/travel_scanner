@@ -42,7 +42,7 @@ languages' captions, titles and descriptions.
   the batch for an unchosen file.
 - [x] The manual guide merges the newest approved language batch newer than the confirmation:
   its metadata.json (all translations), captions, descriptions and thumbnails.
-- [ ] Duration review increment for `sync.mjs` and `sync.test.mjs` by an independent reviewer.
+- [x] Duration review increment for `sync.mjs` and `sync.test.mjs` by an independent reviewer (`claude-pr-review-language-thumbnails-20261024`, PASS).
 - [ ] Merged and deployed. Existing videos get thumbnails on the site only with their next
   language batch (A4's dub retries will send one).
 
