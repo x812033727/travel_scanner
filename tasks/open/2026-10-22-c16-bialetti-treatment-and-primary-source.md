@@ -11,7 +11,9 @@ completed_at:
 branch: codex/brand-story-bialetti-c16-treatment
 depends_on: []
 scope:
-  - docs/videos/story-everyday-bialetti-c16
+  - docs/videos/story-everyday-bialetti-c16/treatment.md
+  - docs/videos/story-everyday-bialetti-c16/source-matrix.md
+  - docs/videos/story-everyday-bialetti-c16/reviews/author-repair-20261023.md
 ---
 
 # C16 Bialetti Treatment and primary-source matrix
@@ -23,7 +25,7 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 ## Definition of done
 
 - [x] A six-chapter, chronological, hook-led C16 Treatment and a direct-source M01–Mxx matrix exist under `docs/videos/story-everyday-bialetti-c16/`.
-- [ ] An independent reviewer checks every proposed factual claim against the cited source and records a content hash and unresolved gaps.
+- [x] An independent reviewer checks every proposed factual claim against the cited source and records a content hash and unresolved gaps.
 - [x] A draft PR targets `codex/brand-stories-new-series-20261020`; the owner still controls Treatment approval. No script or paid production is started.
 
 ## Steps
@@ -31,7 +33,7 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 - [x] Check C16 task, PR, local branch, remote branch and worktree ownership; none overlapped this scope.
 - [x] Create and claim this narrow task on `codex/brand-story-bialetti-c16-treatment`.
 - [x] Write Treatment, sources and claim boundaries.
-- [ ] Obtain independent source review, amend any finding, and bind final file hashes.
+- [x] Obtain independent source review, amend any finding, and bind final file hashes.
 - [x] Run relevant checks and open a draft stacked PR.
 
 ## How to verify
@@ -47,3 +49,5 @@ C16 is only a topic in the 20-episode plan. The familiar 1933 invention story is
 Author checks: `git diff --cached --check` and `npm run check:tasks` pass. The broad `npm run test:docs-videos` has six unrelated failures because this fresh worktree has no `pinyin-pro` installed in `node_modules`; this task changes only Markdown and the task record.
 
 2026-10-23 TST: Draft stacked PR #1698 is open with `no-auto-merge`. The first independent review in `docs/videos/brand-story-independent-reviews/C16-bialetti-20261023.md` found exact locator/date issues and set HOLD. Author repair now uses the directly opened complete ADI catalog for printed pp. 154–157, removes the 404 INEI pressure citation, distinguishes the Spanish patent's priority/application/publication dates and company assignee, and adds the 1937 original Gazette model notice. **A separate delta review against the new document hashes is still required before the owner Treatment gate.**
+
+2026-10-23 TST: The independent source delta and status-only check passed, with M16 identity and M17 origin/ownership/litigation still unresolved. The owner adopted this exact Treatment direction in `docs/videos/brand-story-owner-approvals/C16-bialetti-treatment-20261023.md` (Treatment SHA-256 `1B82057CE1CA064C84829F64F2D5B4679CC2E9CCA74F14F24964650636282EEE`; matrix SHA-256 `3705477A06ED4395C44D57882951349B0D8D16DAF8D946DC86CECEC9ADF1D713`). This task now claims only its three existing Treatment/source/author-receipt files while PR #1698 remains in review. A separate C16 script task may claim exact new script, shot and review files; this task grants no script or paid-production approval.
