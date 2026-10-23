@@ -1,6 +1,6 @@
 # C20 Zippo｜企劃逐項來源矩陣
 
-查閱日期：2026-10-23（台北時間）。本表對應 [六章 Treatment](treatment.md)，僅處理企劃事實，**不是逐句劇本審查或法律建議**。官方歷史頁是公司後來的敘述，須在旁白標歸屬；現行保修頁只證明所標地區與產品的現行服務。美國舊網址 `/pages/repairs-windproof-lighter` 目前會轉到新知識庫，故內膽更換的直接引據改用**仍可讀的 Zippo 英國站**，不推成每個市場完全相同流程。
+查閱日期：2026-10-23（台北時間）；[草稿 PR #1710 的獨立覆核收據](https://github.com/x812033727/travel_scanner/pull/1710)已逐項 PASS。本表對應 [六章 Treatment](treatment.md)，僅處理企劃事實，**不是逐句劇本審查或法律建議**。官方歷史頁是公司後來的敘述，須在旁白標歸屬；現行保修頁只證明所標地區與產品的現行服務。美國舊網址 `/pages/repairs-windproof-lighter` 目前會轉到新知識庫，故內膽更換的直接引據改用**仍可讀的 Zippo 英國站**，不推成每個市場完全相同流程。
 
 | ID／可用說法 | 可直接讀的一手來源與位置 | 可說界線／作者初判 |
 | --- | --- | --- |
@@ -14,7 +14,7 @@
 | **M08** 現行 Zippo 美國知識庫稱終身「能用，否則免費修」適用 Zippo **防風口袋打火機**的機械功能；一般未點火可能先是燃料、火石或燈芯保養問題。 | [Zippo〈Warranty & Repair〉](https://kb.zippo.com/warranty-repair)，頁首及 `Windproof Lighters Troubleshooting`；[〈Windproof Lighter - Not Lighting〉](https://kb.zippo.com/zippo-lighter/not-lighting)，`Still Having Trouble?`；[Zippo 美國版口袋打火機說明書 PDF](https://productinstructions.zippo.com/Documents/English_USA/01_Windproof_Lighters/01_Windproof_Instructions_EN.pdf)，`Guarantee`。 | **PASS—現行公司條款**。範圍是防風口袋打火機，不是所有 Zippo 產品；日常燃料／消耗件仍需取得，不能講成終身免費供應。簡述概念，不教填充或點火步驟。 |
 | **M09** 現行 Zippo 英國站維修頁說，需要處理內膽時，通常以新內膽替換，不修原內膽；原內膽若要取回須在表單註明。 | [Zippo UK〈Zippo Repairs: Windproof Lighter〉](https://www.zippo.co.uk/pages/zippo-repairs-windproof-lighter)，`Prepare Zippo Lighter To Ship` 下 `IMPORTANT` 段。 | **PASS—英國站流程，須標地區**。美國舊維修頁的搜尋快取也有相同文字，但現已轉址，不作現行美國流程的直接證據；其他市場可能不同。不得說整支一律換新或修後仍是全部原件。 |
 | **M10** 外部塗裝與裝飾不在美國現行防風打火機**終身保證**內；鉸鏈破損則有免費機械維修說明。 | [Zippo〈Windproof Lighter - Decoration Wearing Off〉](https://kb.zippo.com/zippo-lighter/worn-deco)，問答；[〈Windproof Lighter - Broken Hinge〉](https://kb.zippo.com/zippo-lighter/hinge-broke)，問答。 | **PASS—明列範圍**。不能說外觀一律完全無解，因美國頁另請持有未滿一年的消費者聯繫客服；也不把「可修鉸鏈」擴成每一種受損外殼必修復原貌。 |
-| **M11** Zippo 英國站對住在英國的顧客要求以**保價且可追蹤**的方式寄往維修中心；這是送修流程的條件，不是全球通用的寄件規定。 | [Zippo UK 送修頁](https://www.zippo.co.uk/pages/zippo-repairs-windproof-lighter)，`Sending Zippo Lighter`、`Customers living in the UK`。 | **RECHECK—只限英國現行條款**。旁白可說免費維修另有寄件步驟，但不下各地郵資由誰負擔的結論，也不把英國寄件方式套到台灣。原擬引用的[英語國際版說明書 PDF](https://productinstructions.zippo.com/Documents/English%20outside%20of%20USA%20and%20UK/01_Windproof_Lighters/01_Windproof_Instructions-English_en.pdf)目前無法直接讀回；其費用句不用於本版主張。 |
+| **M11** Zippo 英國站對住在英國的顧客要求以**保價且可追蹤**的方式寄往維修中心；這是送修流程的條件，不是全球通用的寄件規定。 | [Zippo UK 送修頁](https://www.zippo.co.uk/pages/zippo-repairs-windproof-lighter)，`Sending Zippo Lighter`、`Customers living in the UK`。 | **PASS—只限英國現行條款**。旁白可說免費維修另有寄件步驟，但不下各地郵資由誰負擔的結論，也不把英國寄件方式套到台灣。原擬引用的[英語國際版說明書 PDF](https://productinstructions.zippo.com/Documents/English%20outside%20of%20USA%20and%20UK/01_Windproof_Lighters/01_Windproof_Instructions-English_en.pdf)目前無法直接讀回；其費用句不用於本版主張。 |
 | **M12** Zippo 的 Double Arc 可充電內膽是另一產品，其現行維修 FAQ 指兩年保固視窗，不自動繼承傳統防風打火機的終身保證。 | [Zippo〈Double Arc Rechargeable Lighter Insert〉](https://kb.zippo.com/arc-repair-faqs-and-guidance)，`If my insert needs repair`；[Warranty & Repair](https://kb.zippo.com/warranty-repair)，`Other Products Troubleshooting`。 | **PASS—現行產品差異**。不要把 Arc 與原始傳統內膽混為同一機件，也不講它已滿兩年一定無服務；只說此頁標示兩年保固。 |
 | **M13** Zippo 官方頁記載 2020-06-03 製作第六億支打火機。 | [Zippo〈600 Million Zippo Lighters〉](https://zippo.com/pages/600-millionth-zippo-lighter)，頁首及 `2020` 時間軸。 | **PASS—公司生產里程碑**。不是 2020 年當年銷量，也不能證明終身保證單獨造成六億支、公司利潤或減廢數量。 |
 

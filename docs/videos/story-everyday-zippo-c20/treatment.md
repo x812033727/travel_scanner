@@ -1,6 +1,6 @@
 # C20 Zippo｜賣打火機的公司，為何承諾壞了就修？
 
-狀態：**六章企劃作者初稿，待另一代理逐項來源覆核與站主採用方向**。這是《日用品的意外轉身》[既定 C20 選題](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)，不是已核准逐字稿、付費試片或上架計畫。日期、商品範圍及可說界線以 [source-matrix.md](source-matrix.md) 為準。
+狀態：**六章企劃與來源矩陣已獲獨立逐項覆核 PASS；待站主採用方向**。這是《日用品的意外轉身》[既定 C20 選題](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)，不是已核准逐字稿、付費試片或上架計畫。日期、商品範圍及可說界線以 [source-matrix.md](source-matrix.md) 為準；獨立覆核見[草稿 PR #1710](https://github.com/x812033727/travel_scanner/pull/1710)。
 
 ## 觀眾問題與一條主線
 
