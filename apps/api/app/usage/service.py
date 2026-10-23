@@ -616,7 +616,10 @@ async def update_usage_package(
 
 
 async def public_usage_catalog(session: AsyncSession, locale: str) -> UsageCatalog:
-    await seed_usage_packages(session)
+    # Every page render reads this, so the seed (one query per package and a flush) runs only
+    # on a database that has never been seeded rather than on each anonymous GET.
+    if await session.scalar(select(UsagePackage.id).where(UsagePackage.code == "TRIAL_3")) is None:
+        await seed_usage_packages(session)
     packages = list(
         (
             await session.scalars(
