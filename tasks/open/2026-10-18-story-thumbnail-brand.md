@@ -16,8 +16,6 @@ scope:
   - tools/video/templates/fixtures/brand-samples.json
   - tools/video/story-plans/plan.mjs
   - tools/video/story-plans/plan.test.mjs
-  - tools/video/automation/story.mjs
-  - tools/video/automation/story.test.mjs
   - tools/video/core/timeline.mjs
   - apps/api/app/video_automation/stories.py
   - apps/api/tests/test_video_story.py
