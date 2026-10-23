@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-independently-recheck-c19-seven-bank-five
 title: Independently recheck C19 Seven Bank five-ID delta
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c19-seven-bank-delta-reviewer
@@ -24,7 +24,7 @@ Author PR #1742 narrowed five holds from independent full review PR #1745. The n
 
 - [x] The five changed IDs have explicit PASS/HOLD reasoning tied to original Seven Bank sources.
 - [x] A separate receipt binds all four author files to the new Git blob SHA-256 and checks 79/79 parity.
-- [ ] A draft, no-auto-merge PR contains only this receipt and task handoff, based on the new author head.
+- [x] A draft, no-auto-merge PR contains only this receipt and task handoff, based on the new author head.
 
 ## Steps
 
@@ -32,7 +32,7 @@ Author PR #1742 narrowed five holds from independent full review PR #1745. The n
 - [x] Compare a33b270..f45d93d and verify only five IDs and author receipt changed.
 - [x] Reopen S3 PDF P14, S4 PDF P17–P18, S6 PDF P2 and S7 2001 notice.
 - [x] Recompute four file hashes from both Git blobs and worktree bytes; parse all four files for parity and visual counts.
-- [ ] Run task and diff checks, push the review branch, open a draft PR, and record its URL.
+- [x] Run task and diff checks, push the review branch, open a draft PR, and record its URL.
 
 ## How to verify
 
@@ -40,4 +40,4 @@ Read docs/videos/story-everyday-seven-bank-c19/reviews/independent-delta-review-
 
 ## Notes
 
-All five old HOLDs now PASS at exact f45d93dd: c190313 no imagined partner hesitation; c190409 restricted to S3 maintenance/funding costs; c190410 no fixed amount symbol; c190501 includes points beyond the initial corner; c190607 represents already offered document-reading functions without universal availability. Prior 74 PASS rows remain unchanged in the author four files. Blind readers, owner approval, measured TTS and illustration time, paid media, import, upload and publication remain separate.
+All five old HOLDs now PASS at exact f45d93dd: c190313 no imagined partner hesitation; c190409 restricted to S3 maintenance/funding costs; c190410 no fixed amount symbol; c190501 includes points beyond the initial corner; c190607 represents already offered document-reading functions without universal availability. Prior 74 PASS rows remain unchanged in the author four files. Draft PR #1748: https://github.com/x812033727/travel_scanner/pull/1748; base is exact author f45d93dd, no-auto-merge label applied. npm run check:tasks validated 2077 task files with unrelated existing warnings; staged diff whitespace check passed. Do not mark this task done until PR #1748 is merged or owner otherwise closes the review. Blind readers, owner approval, measured TTS and illustration time, paid media, import, upload and publication remain separate.
