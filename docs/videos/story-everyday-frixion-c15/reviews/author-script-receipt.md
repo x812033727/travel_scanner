@@ -15,7 +15,9 @@
 | `script.md` | `FAB7571AD64F338FD44C19AD2B60CB04FB70BC62A3D4BD8E70FF5E998B8AAF8E` |
 | `script-source-notes.md` | `6102BBE94D970F2F2D344D4ADCECBC592C32A40C4805F1D26C319468C78F8B8E` |
 | `visual-plan.md` | `AB6EF77756ED8E6904AE22B7ACE8DB2D733338B7C4647658E319A2D19272F512` |
-| `visual-plan.json` | `6D11E8F1B682DC390541DE795F53FE548E81F0FC73193FFB2DE07FB77C2E8AF1` |
+| `visual-plan.json` | `6B33E813D57BAC2C1DAF0C29BBC2E6CAE9C784D80D23520D048C479271EB72DE` |
+
+上表綁定 PR 的 Git blob 位元組（`git show HEAD:<path>`）而非 Windows 工作檔換行。`visual-plan.json` 在本機工作檔為 CRLF，當時量到的 SHA-256 `6D11E8F1B682DC390541DE795F53FE548E81F0FC73193FFB2DE07FB77C2E8AF1`；Git 收進的是 LF，因此 PR 與 fresh checkout 的 SHA-256 為上表 `6B33E813…`。兩者只有換行差異，逐鏡內容未改；獨立審查請以 PR blob 雜湊綁定。
 
 87 句旁白和 87 鏡 ID 一對一。71 鏡插圖，16 張後製字卡；最長連續字卡 2 張；71 個圖片提示詞各不相同。旁白欄合計 2,414 字符，**250 字符／分的紙上代理值約 579.4 秒**；按旁白字符加權的紙上插圖占比約 80.3%。這些都是規劃數，不是 TTS、圖片時間或剪片實測，不能拿來通過正文 480 秒及插圖畫面 ≥70% 關卡。片頭 5 秒與片尾 21 秒不計入正文。
 
