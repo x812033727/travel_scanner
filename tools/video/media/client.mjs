@@ -13,6 +13,7 @@ import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
 import { sha256File } from "../core/approvals.mjs";
+import { isPreproductionHeld } from "../core/pending-pilot-budget.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
@@ -122,13 +123,31 @@ const PILOT_SLUGS = new Set([
   "story-five-adidas-puma-brothers",
   "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
+  "story-everyday-moleskine-c03",
+  "story-everyday-bubble-wrap-c04",
+  "story-everyday-kincho-c05",
+  "story-everyday-play-doh-c06",
+  "story-everyday-dr-martens-c07",
+  "story-everyday-oxo-c10",
+  "story-everyday-frixion-c15",
 ]);
+// An everyday-object film without an account still goes the one-send way: the API refuses it.
+const isBudgeted = (slug) => PILOT_SLUGS.has(slug) || (typeof slug === "string" && slug.startsWith("story-everyday-"));
+
+function requireBudgetReady(slug) {
+  if (isPreproductionHeld(slug)) {
+    throw new MediaError(`the ${slug} whole-film budget route is on preproduction hold`, {
+      code: "video_budget_preproduction_hold", who: "owner",
+    });
+  }
+}
 
 // A judge/locate request is itself the paid operation, unlike a generation's durable job.
 // The pilot path sends it once with a unique operation ID. An ambiguous transport answer must
 // keep the server's reservation and stop the worker; retrying with a fresh ID could buy it twice.
 async function postJudgeOrLocate(options, route, request) {
-  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  requireBudgetReady(request.slug);
+  if (!isBudgeted(request.slug)) return (await postJson(options, route, request)).json();
   const body = { ...request, operation_id: request.operation_id ?? randomUUID() };
   try {
     const response = await call({ ...defaults(options), attempts: 1, path: route, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
@@ -148,7 +167,8 @@ async function postJudgeOrLocate(options, route, request) {
 }
 
 async function postPaidJob(options, route, request) {
-  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  requireBudgetReady(request.slug);
+  if (!isBudgeted(request.slug)) return (await postJson(options, route, request)).json();
   try {
     const response = await call({
       ...defaults(options), attempts: 1, path: route,

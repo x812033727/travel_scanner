@@ -6,6 +6,7 @@ import asyncio
 import hashlib
 import json
 import os
+import time
 from collections.abc import AsyncIterator, Coroutine
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -164,6 +165,12 @@ async def test_a_video_goes_from_report_to_decision_and_back_to_the_pipeline(
             summary="成片第二版",
             files=[{"role": "preview", "sha256": new_cut, "size": 8, "content_type": "video/mp4"}],
         )
+        # A submission's clean-up spares a file that arrived within UPLOAD_GRACE (the next
+        # review of the gate may name it); the old cut is from an earlier round.
+        old_path = store.path(slug, old_cut)
+        assert old_path is not None
+        aged = time.time() - 2 * service.UPLOAD_GRACE.total_seconds()
+        os.utime(old_path, (aged, aged))
         second = await service.submit_review(session, store, slug, second_in, token)
         again = await service.submit_review(session, store, slug, second_in, token)
         assert again.id == second.id, "the same content is not a new review"

@@ -108,7 +108,7 @@ def project(slug: str, **fields: Any) -> VideoProject:
 @pytest.mark.parametrize(
     ("video", "key", "folder", "tier"),
     [
-        (project("curio-h01", category="explainer"), "curio", "奇聞檔案局/curio-h01", "basic"),
+        (project("curio-h01", category="explainer"), "curio", "奇聞檔案局/curio-h01", "full"),
         (
             project(
                 "ou-de-jianghu-ep-3",
@@ -130,19 +130,19 @@ def project(slug: str, **fields: Any) -> VideoProject:
             ),
             "ai-lab",
             "Shorts/ai-lab/lab-short-1",
-            "basic",
+            "full",
         ),
-        (project("cut-short-1", shorts_line="cut"), "cut", "Shorts/cut/cut-short-1", "basic"),
-        (project("ai-term-embedding"), "ai-terms", "AI 名詞十分鐘/ai-term-embedding", "basic"),
-        (project("story-costco", category="story"), "story", "品牌故事/story-costco", "basic"),
+        (project("cut-short-1", shorts_line="cut"), "cut", "Shorts/cut/cut-short-1", "full"),
+        (project("ai-term-embedding"), "ai-terms", "AI 名詞十分鐘/ai-term-embedding", "full"),
+        (project("story-costco", category="story"), "story", "品牌故事/story-costco", "full"),
         (
             project("phone-scanning", category="tutorial"),
             "tutorial",
             "tutorial/phone-scanning",
-            "basic",
+            "full",
         ),
         (project("jingwei", format="drama", category="drama"), "drama", "drama/jingwei", "full"),
-        (project("nothing-said"), "other", "其他/nothing-said", "basic"),
+        (project("nothing-said"), "other", "其他/nothing-said", "full"),
     ],
 )
 def test_each_video_is_filed_under_its_series_with_the_owners_default_tier(
@@ -291,7 +291,7 @@ def done(folder: str, **contents: Any) -> dict[str, Any]:
     return {
         "state": "done",
         "folder": folder,
-        "tier": "basic",
+        "tier": "full",
         "bytes": 1000,
         "files": 4,
         "files_hash": HASH,
@@ -425,7 +425,8 @@ async def test_a_done_backup_reads_stale_once_the_owner_chooses_another_language
 
 async def test_a_fuller_tier_than_the_one_copied_reads_stale(site: Site) -> None:
     await site.add(project("curio-h05"))
-    await report(site, "curio-h05", **done("奇聞檔案局/curio-h05"))
+    await save(site, tiers={"curio": "basic"})
+    await report(site, "curio-h05", **{**done("奇聞檔案局/curio-h05"), "tier": "basic"})
     await save(site, tiers={"curio": "full"})
     async with site.factory() as session:
         view = await status.video_status(session, "curio-h05")
@@ -462,7 +463,7 @@ async def test_reports_the_site_cannot_trust_are_refused(site: Site) -> None:
 
 async def test_the_first_folder_sticks_after_the_series_is_renamed(site: Site) -> None:
     await site.add(project("curio-h07"))
-    await report(site, "curio-h07", state="pending", folder="奇聞檔案局/curio-h07", tier="basic")
+    await report(site, "curio-h07", state="pending", folder="奇聞檔案局/curio-h07", tier="full")
     await save(site, folder_names={"curio": "奇聞"})
     kept = await report(site, "curio-h07", **done("奇聞檔案局/curio-h07"))
     assert (kept.folder, kept.state) == ("奇聞檔案局/curio-h07", "done")
@@ -479,7 +480,7 @@ async def test_failures_are_audited_once_and_quota_blocks_record_the_free_space(
             "curio-h08",
             state="failed",
             folder=folder,
-            tier="basic",
+            tier="full",
             attempts=attempts,
             error="rclone check: 2 differences",
         )
@@ -491,7 +492,7 @@ async def test_failures_are_audited_once_and_quota_blocks_record_the_free_space(
         "curio-h08",
         state="blocked_quota",
         folder=folder,
-        tier="basic",
+        tier="full",
         error="剩 1 GB，這次要 3 GB",
         free_bytes=1,
         total_bytes=15,
@@ -514,7 +515,7 @@ async def test_the_summary_says_all_backed_up_only_when_every_uploaded_video_is_
     assert (summary.uploaded, summary.all_backed_up) == (2, False)
     assert summary.counts["done"] == 1 and summary.counts["not_queued"] == 1
     assert [video.slug for video in summary.videos] == ["curio-b"]
-    await report(site, "curio-b", state="pending", folder="奇聞檔案局/curio-b", tier="basic")
+    await report(site, "curio-b", state="pending", folder="奇聞檔案局/curio-b", tier="full")
     async with site.factory() as session:
         video = await session.scalar(select(VideoProject).where(VideoProject.slug == "curio-b"))
         assert video is not None and video.backup is not None
@@ -542,7 +543,7 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     async with site.factory() as session:
         config = await status.worker_config(session)
     [video] = config.videos
-    assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "basic")
+    assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "full")
     assert video.expected.captions == ["ko"] and video.backup is None
 
 

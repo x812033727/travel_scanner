@@ -6,7 +6,9 @@ submitting the same content again returns the review that exists, whatever its s
 rejected cut cannot come back as a fresh pending one without changing. Shorts final reviews
 also bind the complete QA receipt; changed evidence creates a new review revision before
 upload, and its publish review must name that approved final review. Files no live or decided
-review refers to are deleted from the store. A video the owner dropped takes no more
+review refers to are deleted from the store once they are UPLOAD_GRACE old: a gate with a
+review per character uploads every sheet first and submits one review at a time, so a file
+the next review will name is still there. A video the owner dropped takes no more
 submissions or decisions.
 
 Once the owner has uploaded a video themselves and pasted its YouTube address (HANDS-OFF.md
@@ -138,6 +140,12 @@ BROWSE_QUERY_MAX = 80
 # later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
 # thumbnail, captions and descriptions are small and stay.
 PREVIEW_RETENTION = timedelta(days=7)
+# How long a file no review refers to survives a submission's clean-up, counted from when it
+# arrived. The look gate sends one review per character after uploading every character's
+# sheets (tools/video/review/sync.mjs lookSubmissions), so the first review's clean-up must
+# not take the next one's files (ticket 2026-10-22-409). Dropping a video and pruning a
+# published preview still delete at once.
+UPLOAD_GRACE = timedelta(hours=1)
 YOUTUBE_ID = re.compile(YOUTUBE_VIDEO_ID_PATTERN)
 YOUTUBE_HOSTS = frozenset(
     {"youtu.be", "youtube.com", "www.youtube.com", "m.youtube.com", "studio.youtube.com"}
@@ -1867,7 +1875,7 @@ async def submit_review(
         await _short_approved(session, project, review, now)
     project.last_synced_at = now
     await session.commit()
-    store.keep_only(slug, kept_files([*reviews, review]))
+    store.keep_only(slug, kept_files([*reviews, review]), older_than=UPLOAD_GRACE)
     return _review_out(review)
 
 

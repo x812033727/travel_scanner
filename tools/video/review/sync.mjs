@@ -473,7 +473,11 @@ function client(ctx) {
   if (!credentials.token) throw new ReviewError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
-  return async function request(method, route, { json, bytes, query } = {}) {
+  // sha256 → { file, role, contentType } of every file upload() sent through this client, so
+  // a review the site answers 409 video_review_files_missing for can send them again (resubmit).
+  request.sources = new Map();
+  return request;
+  async function request(method, route, { json, bytes, query } = {}) {
     const url = `${credentials.site}/api/video/reviews/${route}${query ? `?${new URLSearchParams(query)}` : ""}`;
     let last;
     for (let attempt = 0; attempt < ATTEMPTS; attempt++) {
@@ -506,12 +510,13 @@ function client(ctx) {
       await sleep(Math.min(Number(response.headers.get("retry-after")) || 2 ** attempt, 30) * 1000);
     }
     throw last;
-  };
+  }
 }
 
 /** Upload one file in parts unless the site has it already; returns its review file entry. */
 async function upload(request, slug, file, role, contentType) {
   const sha256 = await sha256File(file);
+  request.sources?.set(sha256, { file, role, contentType });
   const size = statSync(file).size;
   const parts = Math.max(1, Math.ceil(size / PART_BYTES));
   const handle = openSync(file, "r");
@@ -1067,6 +1072,12 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
 /**
  * The look gate: one review per character, its candidate sheets as files, the owner picks one
  * (docs/videos/DRAMA.md). Every review is bound to characters/manifest.json.
+ *
+ * Each character comes back as a function that uploads that character's sheets and returns
+ * its review, so review-push uploads one character, submits it, then uploads the next: every
+ * submission ends with the site's clean-up of the files no review names, and sending every
+ * character's sheets first left the first review's clean-up to take the others' (ticket
+ * 2026-10-22-409; the site now spares what just arrived, and this order does not rely on it).
  */
 async function lookSubmissions({ request, project, workdir }) {
   const { doc } = project;
@@ -1074,8 +1085,7 @@ async function lookSubmissions({ request, project, workdir }) {
   const manifest = readJson(file, null);
   if (!manifest?.characters) throw new ReviewError("characters/manifest.json is missing; run look first", { who: "owner" });
   const sha = await sha256File(file);
-  const bodies = [];
-  for (const [id, entry] of Object.entries(manifest.characters)) {
+  return Object.entries(manifest.characters).map(([id, entry]) => async () => {
     const character = doc.characters?.find((each) => each.id === id);
     const files = [];
     const options = [];
@@ -1085,7 +1095,7 @@ async function lookSubmissions({ request, project, workdir }) {
       options.push({ key: optionKey(candidate.n), index: candidate.n, file_role: role, judge: { overall: candidate.judge?.overall ?? null, problems: candidate.judge?.problems ?? [] } });
     }
     const suggested = entry.suggested ? optionKey(entry.suggested) : null;
-    bodies.push({
+    return {
       gate: "look",
       subject: id,
       content_sha256: sha,
@@ -1098,9 +1108,8 @@ async function lookSubmissions({ request, project, workdir }) {
         prompt: entry.prompt ?? "",
       },
       files,
-    });
-  }
-  return bodies;
+    };
+  });
 }
 
 // Mirrors MAX_REVIEW_FILES in apps/api/app/video_reviews/schemas.py: the most files one review takes.
@@ -1223,11 +1232,45 @@ async function storyboardSubmission({ request, project, workdir }) {
   };
 }
 
-/** Everything a gate submits: several reviews for the look, one for the others. */
+/**
+ * Everything a gate submits: several reviews for the look, one for the others. An entry is a
+ * review, or a function that uploads a review's files and returns it when called, for a gate
+ * whose reviews go up one at a time (lookSubmissions).
+ */
 async function submissions(gate, places) {
   if (gate === "look") return lookSubmissions(places);
   if (gate === "storyboard") return [await storyboardSubmission(places)];
   return [await submission(gate, places)];
+}
+
+// The site's answer to a review naming a file it does not hold (apps/api/app/video_reviews/
+// admin_service.py submit_review); its detail lists the files by sha256.
+const FILES_MISSING = "video_review_files_missing";
+const SHA256_WORDS = /[0-9a-f]{64}/g;
+
+/**
+ * Submit a review; when the site answers 409 video_review_files_missing for files this command
+ * uploaded (the site cleaned them up between the upload and the submission: ticket
+ * 2026-10-22-409), they go up again and the review is sent once more. The review's files the
+ * detail names are sent again, or all of them when it names none; a detail naming only files
+ * that are not the review's, or a file this command did not upload, leaves the error to
+ * stand, as does a second refusal: the push fails as a service failure, and the worker's next
+ * round uploads everything again before it submits.
+ */
+async function submit(request, slug, body, { ctx, what }) {
+  try {
+    return await request("POST", `${slug}/reviews`, { json: body });
+  } catch (error) {
+    if (!(error instanceof ReviewError && error.code === FILES_MISSING)) throw error;
+    const named = [...new Set(error.message.match(SHA256_WORDS) ?? [])];
+    const own = new Set((body.files ?? []).map((file) => file.sha256));
+    const missing = named.length ? named.filter((sha256) => own.has(sha256)) : [...own];
+    const sources = missing.map((sha256) => request.sources?.get(sha256));
+    if (!missing.length || sources.some((source) => !source)) throw error;
+    ctx.stdout.write(`${slug}: ${what}: the site no longer has ${missing.length} of the review's files (${error.message}); uploading them again and resending\n`);
+    for (const source of sources) await upload(request, slug, source.file, source.role, source.contentType);
+    return request("POST", `${slug}/reviews`, { json: body });
+  }
 }
 
 function common(args, { allowManualReview = false } = {}) {
@@ -1299,7 +1342,9 @@ export async function reviewPush(args, ctx) {
     // 2026-10-11-hand-driven-film-approved-on-its): the site approves none of its reviews on arrival.
     const handPushed = !existsSync(path.join(workdir, WORKER_STATE_FILE));
     if (handPushed) ctx.stdout.write(`${values.slug}: not a video the worker made (no ${WORKER_STATE_FILE} in its work directory): the owner decides at every gate\n`);
-    for (const candidate of bodies) {
+    for (const entry of bodies) {
+      // A gate whose reviews go up one at a time uploads this review's files only now.
+      const candidate = typeof entry === "function" ? await entry() : entry;
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
       const remote = sources ?? (["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null);
@@ -1313,7 +1358,7 @@ export async function reviewPush(args, ctx) {
       const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(summary) });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
       if (lines !== null) ctx.stdout.write(`${values.slug}: ${what}: the judge's remarks on the kept pictures were ${lines ? `cut to ${lines} lines a picture` : "left out"} to keep the review's payload within the site's limit (${bytes} bytes now); keyframes/manifest.json has them all\n`);
-      const review = await request("POST", `${values.slug}/reviews`, { json: body });
+      const review = await submit(request, values.slug, body, { ctx, what });
       ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);
     }
     return ctx.EXIT.ok;
