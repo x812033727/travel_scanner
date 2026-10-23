@@ -10,7 +10,7 @@ const settingsEndpoint = "/api/travel/admin/video-backup/settings";
 const saved: BackupSettingsView = {
   enabled: true, path: "AI/備份", lock_path: "AI/備份", lock_reported_at: "2026-10-19T10:00:00Z", problem: null,
   tiers: {}, folder_names: {}, default_folder_names: { curio: "奇聞檔案局", story: "品牌故事", other: "其他" },
-  full_categories: ["anime", "drama", "long-drama"], updated_at: "2026-10-19T10:00:00Z",
+  updated_at: "2026-10-19T10:00:00Z",
   test: { pending_id: null, requested_at: null, status: null, message: null, tested_at: null },
   space: { free_bytes: null, total_bytes: null, at: null },
 };

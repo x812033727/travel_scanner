@@ -59,7 +59,6 @@ class SettingsView(BaseModel):
     tiers: dict[str, Tier]
     folder_names: dict[str, str]
     default_folder_names: dict[str, str]
-    full_categories: list[str]
     updated_at: datetime | None
     test: ProbeView
     space: SpaceView
