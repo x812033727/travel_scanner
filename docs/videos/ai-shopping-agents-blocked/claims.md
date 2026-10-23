@@ -14,7 +14,7 @@ c7｜Muse 推薦過一家不送到記者地址的連鎖超市；記者另外提�
 c8｜記者算上等回覆、要它多搜幾家、澄清送貨範圍的時間，認為自己搜大概還比較快（「it likely would have been faster to search myself」；查核第 1 輪在 3wra 補「大概」對應 likely）；她把代理比成「anxious and apologetic teenager」去跑腿，要一大堆指示、回來的東西不完全是要的；她也說最適合代理的是「finding the absolute lowest price on a product you already know you want」｜同 c1｜2026-10-22｜waiting-at-table, faster-myself, apologetic-runner, wrong-item, rote-task
 c9｜The RealReal 實驗：商品放進購物車保留 20 分鐘，別人拿不到（「making it impossible for other people to swipe it」；10 件全放進去「effectively blocking other shoppers from purchasing them」，查核第 1 輪 45au 改「等於一件都拿不到」）；記者要 Muse 把喜歡的品牌最新上架的 10 件一次全放進購物車；她無意購買；每次 20 分鐘到期就要它再放一次；「On and on this went, all day」；最後是記者自己結束任務；「If I were a less honest, pure-hearted person, I would deploy an agent to run this personalized, technically allowed reserve system endlessly」；她擔心很快要跟別人的代理競爭｜同 c1｜2026-10-22｜boutique-tease, open-door-bell, ch5, realreal-rules, fitting-room-armful, twenty-minutes-again, queue-outside, stop-bell, second-runner, hold-tickets
 c10｜Amazon 自家平台內有代理式購物功能：監控價格、自動補貨、依使用者設的規則購買（旁白「沒想到，Amazon 自己平台裡就有一個代理」）；站主觀點「生意的攻防」是意見｜同 c1｜2026-10-22｜own-runner, repeat-basket, two-shops, business-fight
-c11｜Amazon 去年（2025）11 月告 Perplexity（Comet 購物功能），法官今年 8 月站在 Perplexity 那一邊；Amazon 的確認信自 7 月起拿掉品名與商品圖片，避免被外部 AI 讀取｜https://www.theverge.com/tech/998078/amazon-blocks-meta-muse-ai-agent-shopping｜2026-10-22｜amazon-stats
+c11｜Amazon 去年（2025）11 月告 Perplexity（Comet 購物功能），法官今年 8 月站在 Perplexity 那一邊；Amazon 的確認信自 7 月起拿掉品名與商品圖片，避免被外部 AI 讀取；紙底版表格「對方的代理也在站上買」出自 10-22 那篇（ignored its requests to stop its agent from shopping on the site，查核第 3 輪補記）｜https://www.theverge.com/tech/998078/amazon-blocks-meta-muse-ai-agent-shopping ；https://www.theverge.com/report/1015811/ai-shopping-agents-blocked-amazon-the-realreal-target-meta-muse｜2026-10-23｜amazon-stats, perplexity
 c12｜JPMorgan Chase 執行長 Jamie Dimon 說銀行不會讓外部代理存取帳戶，對客戶和公司「too risky」（旁白不唸人名）｜同 c1｜2026-10-22｜bank-counter
 c13｜沃爾瑪 2026-10-21 宣布讓代理替顧客購物、附規則；The Verge 寫「Next month」會讓你在網站上用 AI 代理（片尾「沃爾瑪下個月開」）。查核第 1 輪：開場預告 rbf3 原寫「同一週，沃爾瑪……」，接在九月的 Amazon 與 The RealReal 那一天後面，聽起來是同一週，報導沒寫 The RealReal 實驗的日期、Amazon 彈窗是 9 月，改「十月，沃爾瑪……」｜https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers ；https://www.theverge.com/ai-artificial-intelligence/1015715/walmart-ai-shopping-agents｜2026-10-22｜walmart-door-tease, street-of-doors, superstore-far, ch6, closing
 c14｜Target 發言人：代理能否存取要看它怎麼做那件任務與有哪些防護；代理可能進得了網站的一部分、進不了另一部分，為了保護顧客資料與購物體驗；Target 有防護擋未授權的代理與機器人存取顧客帳號、發起交易。旁白 e7qb 是把發言人的話套回記者的兩次嘗試，是推論，不是發言人逐字；發言人說的是「may depend」，查核第 1 輪改成「可能就看那一次任務怎麼做」｜同 c1｜2026-10-22｜target-answer, guard-explains, three-doors, three-questions
@@ -84,4 +84,50 @@ c28｜Muse 在 2026 年 9 月上旬推出（The Verge 2026-09-21 寫「launched 
 - 第二輪盲評 74 分、過十題（剩 one_line、no_recap、no_detour）。第三輪改動：刪 `three-doors` 表（9mxy 背心那一句留在說明欄；nsdf 刪；jcf4「價格跟人一樣」改成新 shot `same-shelf-price`，c23）、刪 `handshake`（dgyj「零售商反應壓倒性正面」，c19 仍在上表）；9rar／uzsj／6kbe 綁回 Muse（「Muse 不是第一個」「九月，輪到 Muse 看到告示」，日期不變）；片尾 dmat 改成答案句（店家要代理公開、照規矩走），不再重述 Amazon 的三個理由；p68i 改成判斷準則；9963 改成點名回呼；xitp 改「問題在門，不在它」。
 - 第三輪盲評 78 分、過十一題（剩 payoffs：p68i 謎語式回答；no_recap：34qh、6kbe 後半句、cspx）。第四輪改動：p68i 改成直接回答（Meta 說 Muse 會、沃爾瑪寫進設定）、刪 `turnstile-next-day`（34qh）、6kbe 拿掉「九月輪到 Muse」、cspx 只講 Meta 的回應沒有答案、e7qb 縮短。三輪盲評都記在工作區 `review/narrative.json`（規則是最多兩輪，第三輪是多做的）；之後交給站主在後台判。
 - 旁白與成片品管之後（2026-10-23）：旁白第二次聽檢 73c8 又被兩個轉寫聽成「到齊」，改成「二十分鐘一到」；插圖兩輪後 5 張（boutique-tease、street-of-doors、receipts-return、second-runner、torn-ticket）用 `--accept-best` 保留最好的一張，成片關卡會標人工審看。第一次 qa 8／11：旁白未核准（站主）、pace（outro 19 秒）、policy（Jev 有示範 0.44）。修法：片尾答案拆成兩張 shot（answer-street：dmat；answer-table：nvep 新 id）、outro 只留留言題與訂閱句；第七章加 granola-apply／granola-verdict 兩張 shot（dsks、bix6），把三個問題套在穀物棒那一次（事實都來自 c4、c19、c24 既有主張，「下單我自己來」是站主做法）；4zg9 加一個問句補 90 秒內的鉤子。
+
+## 紙底版（2026-10-23）
+
+照 `brief.md`〈新規則版（2026-10-23）〉重寫成 `theme: "paper"` 的短片「一個概念」（三種門），沒有 `shot`；上一版 53 張插圖的腳本留在 `<VIDEO_WORKDIR>/ai-shopping-agents-blocked/_tools/v1-illustrated/video.json`。事實一條都沒有新增，每個場景的 `claims` 只引用上表既有的 c 編號；數字（20 分鐘、10 件、50／100／200 美元、去年 11 月、今年 7／8 月、12 美元）與上表相同。lint 估 8.3 分鐘、82 句、1822 口語單位、49 景 70 個狀態（68 個帶圖示、大數字、表格、步驟、對照或引文）。
+
+每一章用到的 c 編號：
+
+- 開場「AI 代理不是會幫我買了嗎？」（open … promise）：c13（10 月 21 日沃爾瑪）、c6（Amazon 關門，一個月前）、c1（記者派 Muse）、c4／c9／c27（動詞清單：搜商品、比價、放購物車、下單）、c5（少了一家店它不一定會講）、c21（承諾句的沃爾瑪上限）。
+- 「它真的買得到嗎？」（target-door … rote-rule）：c1、c2、c3（Target 擋、過、擋）、c14（Target 的說法，只用「看那次任務怎麼做、網站有哪些防護」一句）、c16（比喻停點：擋的是所有自動程式）、c4（三家店）、c5（Muse 自己補的那句）、c7（西岸超市不送到紐約）、c8（自己搜大概還比較快；記者說真正用得上它的，可能是已經知道要買什麼、只差比價的任務）。
+- 「Amazon 為什麼把門關上？」（sunday … still-blocked）：c6（星期天、彈窗原文、三個理由、要求移除、「公開運作」）、c10（Amazon 自己的代理）、c11（告 Perplexity、確認信、法官）。「現在還擋不擋」是照實說不確定，報導日之後沒有新消息。
+- 「門開著會怎樣？」（realreal … tickets）：c9（20 分鐘、10 件、一整天、門外的人、記者自己停掉、永遠跑下去、跟別人的代理搶）、c17（12 美元只在卡片副標）、c18（技術長）、c19（Meta 發言人）。
+- 「有沒有店家把規矩寫清楚？」（walmart … owner-rules）：c13、c20（Muse 與 ChatGPT、Gemini 並列，只在卡片副標）、c21（設定檔三步、預設核准、上限例子、上限內仍可能再核准、隨時可刪）、c22（Agent Gateway 用 MCP、先開測試版只在卡片副標）、c23（價格跟人一樣）、c24（條款）。
+- 「那我要不要用？」（three-questions … closing）：c19、c5、c4、c21（三件事套在穀物棒那一趟）、c8（站主用法呼應記者的選法）、c2／c6／c13（答案卡）。
+
+「我」的句子五句，來源：sx6e、xiq6、fezk、5i3t 來自 brief 的站主觀點；druk 是照實說不確定（Amazon 現在還擋不擋 Muse）。5i3t／owner-use 在第 3 輪之後由統籌改成 brief 站主觀點原話（只派它做已經知道要買什麼、只差比價和下單的任務，每一筆買之前要它先問我），是站主做法，不是報導。玩笑兩句：desu（按重新整理的那隻手）、fp4t（搶演唱會票的手速）。
+
+門的編號照影片出現的順序：01 看情況（Target）、02 全擋（Amazon）、03 正門加規則（沃爾瑪）；brief 的列法是「全擋／看情況／正門加規則」，只是順序不同。
+
+這一版沒有用到、仍留在上表的：c12（JPMorgan 執行長，上一版就已刪，岔路）、c15（Target 與 OpenAI、Google、Microsoft 的合作名單：不介紹別家代理，brief〈不做的事〉）、c25（不用 Walmart+、Sam's Club 也能用：上一版就已刪）、c26（古董洋裝與拍賣會：新規則版的最後一章改成行動清單，沒有位置）、c28（Muse 上市不到一個月：第 3 章開場那一個狀態已經 36 個口語單位，加了會超過 8 秒）。c11 的「7 月起確認信拿掉品名與圖片」只在表格那一列，旁白只說「確認信也拿掉了品名和圖片」，不唸月份（每章最多唸兩個數字）。c22 的「先對企業與開發者開測試版」只在卡片副標。
+
+shorts.json 兩支重寫成沒有 `shot` 的字卡（`big`／headline），事實同上：第 1 支 c1、c2、c3、c4、c5、c13；第 2 支 c9、c17、c18、c19（只說「店家和 Meta 怎麼回應，完整的在長片」）。
+
+字典沒有新增：這一版用到的拉丁詞（AI、Amazon、The Verge、Meta、Muse、Target、Sam's Club、Costco、Perplexity、The RealReal、Agent Gateway、MCP）在上一版就都在了。
+
+lint 剩一個警告：outro 只有一句（訂閱句）。答案句與留言題各自放在它前面的 `big` 卡（answer、ask），每個狀態都在 8 秒以內，照 10-23 啟動訊息的做法。
+
+## 查核第 3 輪（2026-10-23，紙底版，獨立查核者）
+
+五個來源（The Verge 三篇、沃爾瑪新聞稿、TechCrunch）今天以編輯 UA 重開，全部 HTTP 200、無轉址、無更正註記；對照用的 67 句原文今天都還逐字在頁面上（`_tools/verify/round3/phrases.txt`），`sources` 這五筆的 `checked_on` 改 2026-10-23。改了五處事實的強度，全表見 `verify-3.md`：
+
+- c14：wx69 與 door-01 卡片副標原寫「Target 說，看那次任務怎麼做」，發言人說的是 may depend（第 1 輪已因同一原因改過 e7qb），改「可能要看」，說明欄同步；「當時」拿掉（原文 what safeguards are in place）。
+- c8：rote-rule 原寫「記者的選法是：……才交給它」，報導只說這類任務「is where an agent could be truly useful」，沒說她只交這種任務，改「記者說，最用得上它的是……的任務」，卡片 kicker／text／sub／key 同步。
+- c9：why-not-block 卡片副標與 key 原寫「很快，你會跟別人的代理搶」，原文 may soon be competing，改「你可能得」。
+- c21：door-03 的比喻句 8fej 與卡片副標補「預設」（Customers must approve agent purchases by default；第 1 輪改章名時的同一理由）。
+- c21：Agent Profiles 是「launching in the next month」，片中行動清單 q3kh 原寫「像沃爾瑪，先設好再派它出門」，配上「你現在先做三件」聽起來今天就能設，改「像沃爾瑪即將推出的設定檔」，卡片 detail 同步。
+
+另：c11 表格那一列「對方的代理也在站上買」出自 The Verge 2026-10-22（Amazon said the AI company had ignored its requests to stop its agent from shopping on the site），9-21 那篇只寫 Comet shopping experience；事實成立，c11 的出處補記 10-22 那篇。
+
+## 查核第 4 輪（2026-10-23，獨立查核者，不是第 1–3 輪）
+
+五個來源今天再以編輯 UA 重開，全部 HTTP 200、無轉址（`_tools/verify/round4/live/`）。第 3 輪改的五處裡四處成立（c14「可能要看」、c9「你可能得」、c21「預設」、c21「即將推出的設定檔」）；改了一處：
+
+- c8：rote-rule 第 3 輪改成「記者說，最用得上它的是……」，原文是「A more rote task like … is where an agent could be truly useful」，沒有「最」，也有 could 的保留。n3fs 改「記者說，真正用得上它的，可能是：……的任務」，卡片 kicker 改「記者說它可能真正用得上的」、key 改「只差比價的任務，它可能真有用」，text／sub 不變。
+
+統籌在第 3 輪後改寫的 5i3t、owner-use 卡、vaf7、dxbj、xiq6、2y4r 都對得上來源與 brief 站主觀點，第 3 輪報的 5i3t 意見不符已消失。全表見 `verify-4.md`。
+- 紙底版旁白（2026-10-23）：第一次合成 8:05 正文，聽檢 8 句被標（她／它／他、記者→記著、搜→收、店→點、公告→公號、搶→吵、代理→戴莉）改措辭後重錄；qa 10／11（只剩旁白等站主；policy 這一版 Jev 過了）。行動清單卡因查核加長的步驟說明放不下，拿掉卡片標題、縮短說明。
 
