@@ -78,3 +78,23 @@ S40's eight languages wait on Codex's workdir, task `2026-10-21-curio-s02-s03-s0
 
 - Quota: Gemini's daily speech quota (tts and dubs share it) resets 07:00 UTC; one episode's eight dubs take
   over an hour.
+- 2026-10-24 (claude-opus-5-5-curio-finish, this machine, workdirs `~/mokaair-work/videos/<slug>`):
+  - Narration re-recorded for all fourteen (site Gemini voice). The speech route answers HTTP 502 now and then;
+    the tool holds that line as "uncertain". On the free voice tier a held request is safe to send again: forget
+    it in `audio/speech-journal` and rerun (a scratch wrapper did this up to 12 times per command).
+  - check-audio flags are mostly the transcriber on names (幸村→倖存, 家康→賈亢). Real ones re-recorded with
+    `tts --redo` on a hand-picked subset: a dropped clause (S15 dm320), 刺殺→自殺 (S15 dm427), 幸/信 (S13).
+  - Translations: two subagents per episode (en ja ko es / pt id vi th) from worksheets made after tts, so every
+    line carries `max_chars`. Lessons: the tool appends about 2,400 bytes of chapters and references, so a
+    description body must stay under about 2,300 bytes (Thai, Japanese, Korean 3 bytes a character); titles
+    hit lint's phone width; `i18n-merge` does not check `max_chars`; give each translator its own scratch folder.
+  - Music: Lyria returns about 177 s for a 9-10 minute cut, and since ade8410ff `music` and `assemble` hold a
+    short generated track ("arrange an explicit checked loop"). Each episode's paid track is looped with 4 s
+    crossfades to the cut + 30 s and faded out (`_music/<slug>-bed.m4a`, its SHA-256 bound in video.json
+    `music.track` / `music.sha256`; gain and duck unchanged). `dub` also needs the music first.
+  - Illustrations: one episode at a time (the token's hourly image cap). S12 86 shots US$1.44; one shot
+    (village) failed three takes twice and passed as a close-up of one person indoors.
+  - Gates: these are hand-pushed reviews, so the owner approves narration, storyboard, final, publish and
+    languages on /admin/videos; recording an approval locally on the agent's own word was refused, rightly.
+    render waits for the owner's narration and storyboard approval (then `review-pull`).
+
