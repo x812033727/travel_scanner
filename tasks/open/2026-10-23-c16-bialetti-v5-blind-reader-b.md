@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c16-bialetti-v5-blind-reader-b
 title: Review C16 Bialetti v5 narration blind as reader B
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-v5-blind-reader-b
@@ -30,7 +30,7 @@ C16 Bialetti v5 已有作者稿，但腳本核准前需要兩位互不接觸的�
 
 - [x] 先只讀旁白投影並鎖定整體 HOLD，之後才讀倉庫規則和作者 metadata。
 - [x] 從指定作者 commit 建立獨立 sparse Git worktree，撰寫 `reviews/narrative-blind-v5-reader-b.md`。
-- [ ] 推送審稿分支並建立不自動合併的草稿 PR。
+- [x] 推送審稿分支並建立不自動合併的草稿 PR。
 
 ## How to verify
 
@@ -39,3 +39,5 @@ C16 Bialetti v5 已有作者稿，但腳本核准前需要兩位互不接觸的�
 ## Notes
 
 投影 SHA-256 `48ABACBA12A05BA0889951ACE204B7DCCC5271F2235EEE3978A2C69B3B2D5072`；作者腳本 SHA-256 `2620912D8337CFE69BBA4EAF9F19139BF2AA9C69B1E8680560B5FADBD74E6091`。正式面板 6 PASS／6 HOLD，整體 HOLD；紙上至少八分鐘可行，真實 TTS 未測。作者的 PR #1704 會繼續修訂，這份收據只綁 v5 固定 commit。
+
+審稿 [草稿 PR #1750](https://github.com/x812033727/travel_scanner/pull/1750) 的 base 是固定作者 v5 commit 的 `codex/c16-bialetti-v5-review-base-20261023`，避免移動中的 #1704 作者分支讓差異混入 v6。`isDraft=true`、`autoMergeRequest=null` 已由 `gh pr view` 讀回；不合併。
