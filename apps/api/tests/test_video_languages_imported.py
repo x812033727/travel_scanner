@@ -133,6 +133,29 @@ async def test_a_pipeline_video_takes_a_dub_in_the_five(site: Site) -> None:
 
 
 @pytest.mark.asyncio
+async def test_a_drama_short_carries_its_episode_s_dubs_and_a_narrated_short_does_not(
+    site: Site,
+) -> None:
+    # 種田娶妻打天下's Shorts (2026-10-23) are cut from the imported episodes, their dubs the
+    # episodes' tracks cut to the same span.
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SLUG))
+        assert project is not None
+        project.format, project.shorts_line, project.checklist = "drama", "drama", []
+        await session.commit()
+    assert (await _view(site)).dub_allowed
+    saved = await _save(site, {locale: EVERYTHING for locale in DUB_LOCALES})
+    assert all(saved.locales[locale].dub for locale in DUB_LOCALES)
+
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SLUG))
+        assert project is not None
+        project.format, project.shorts_line = "shorts", "lab"
+        await session.commit()
+    assert not (await _view(site)).dub_allowed
+
+
+@pytest.mark.asyncio
 async def test_a_dub_retry_takes_the_eight_languages() -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
