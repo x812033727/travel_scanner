@@ -5,10 +5,10 @@ status: in-progress
 priority: P1
 area: docs
 owner: codex-c-series-integration
-claimed_at: 2026-10-23T09:21:22Z
+claimed_at: 2026-10-23T16:30:51Z
 created_at: 2026-10-23T09:21:17Z
 completed_at:
-branch: codex/everyday-story-review-import-20261023
+branch: codex/c-series-evidence-c19-v5-20261024
 depends_on: []
 scope:
   - docs/videos/story-everyday-crocs-c01
@@ -62,8 +62,8 @@ uses one existing checkout and creates no new worktree.
 
 - [x] Restore the twenty tracked episode folders from their latest authored and pilot heads.
 - [x] Restore independent receipts from separate review PRs without converting HOLD to PASS.
-- [ ] Audit provenance, repository hygiene and the integration PR diff.
-- [ ] Close superseded PRs only after the reviewed content is durable and imported.
+- [x] Audit provenance, repository hygiene and the integration PR diff.
+- [x] Close superseded PRs only after the reviewed content is durable and imported.
 
 ## How to verify
 
@@ -80,3 +80,16 @@ Live PR path inventory found additional standalone review and pilot folders outs
 main episode folders. The owner asked to close the draft stack after preservation, so this
 claimed scope was extended only to those exact sibling evidence folders. Their PR heads will
 be fetched into this same checkout; no extra worktree is needed.
+
+2026-10-24 follow-up audit: integration PR #1778 is merged and there are no open C01–C20
+PRs. Final author PR #1742 was closed, but its v5 C19 script and visuals were not the
+version in `origin/main`: main had v3. Restored only the four exact author v5 files from
+`83415c48249250c3cff6e302c1d7a79514377610` in this existing checkout. The
+independent v5 full-source and final-seven-visual receipts bind those SHA-256 values.
+Added a 79-line locked narration projection, two fresh independent blind-read receipts,
+and `reviews/v5-main-reconciliation-20261024.md`. Both readers HOLD the narrative, so
+this is evidence preservation, not owner script approval or a paid production release.
+`npm run check:tasks` passes (pre-existing shared-queue warnings); `git diff --check`
+passes. `npm run test:docs-videos` runs 235/236 tests green; unrelated existing Windows
+test `docs/videos/imported-long-languages/runner.test.mjs:679` reproduces a child Node
+exit 3221226505, with no stderr, and is being triaged separately. No new worktree made.
