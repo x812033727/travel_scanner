@@ -8,6 +8,7 @@ import path from "node:path";
 
 import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic, resolveSfx } from "../core/drama.mjs";
+import { loopCovers } from "../core/music-loop.mjs";
 import { readJson } from "../core/paths.mjs";
 import { ARTIFACTS } from "../core/state.mjs";
 import { FPS } from "../core/timeline.mjs";
@@ -29,8 +30,9 @@ export async function musicInputs(doc, workdir, workBase, { requiredSeconds = nu
   } else if (music) {
     const generated = readJson(path.join(workdir, ARTIFACTS.music), null);
     if (!generated?.file) return { problem: "music/manifest.json is missing; run music first" };
-    if (generated.source === "generated" && generated.duration_hold) {
-      return { problem: `generated music decodes to ${Number(generated.actual_seconds).toFixed(3)} s and is on a duration hold; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
+    const looped = generated.source === "generated" && Boolean(generated.loop);
+    if (generated.source === "generated" && generated.duration_hold && !looped) {
+      return { problem: `generated music decodes to ${Number(generated.actual_seconds).toFixed(3)} s and is on a duration hold; keep the paid file and arrange an explicit checked loop (music --loop) or another licensed track before assemble` };
     }
     if (generated.mix_hash !== mixHash(doc)) return { problem: "music/manifest.json was made for older music settings; run music first" };
     const file = path.join(workdir, generated.file);
@@ -45,8 +47,9 @@ export async function musicInputs(doc, workdir, workBase, { requiredSeconds = nu
       if (!(Number.isFinite(needed) && needed > 0)) {
         return { problem: "generated music has no current cut length to compare against; run tts or pass the required duration before mixing" };
       }
-      if (generated.actual_seconds < needed) {
-        return { problem: `generated music decodes to ${generated.actual_seconds.toFixed(3)} s, shorter than the ${needed.toFixed(3)} s cut; keep the paid file and arrange an explicit checked loop or another licensed track before assemble` };
+      if (generated.actual_seconds < needed && !loopCovers(generated, needed)) {
+        const why = looped ? `; its recorded loop covers a ${Number(generated.loop.cut_seconds).toFixed(3)} s cut of another file or length, so record it again (music --loop)` : "; keep the paid file and arrange an explicit checked loop (music --loop) or another licensed track before assemble";
+        return { problem: `generated music decodes to ${generated.actual_seconds.toFixed(3)} s, shorter than the ${needed.toFixed(3)} s cut${why}` };
       }
     }
     track = { file, sha256: generated.sha256 ?? null };
