@@ -12,14 +12,16 @@
 
 | 路徑 | SHA-256 |
 | --- | --- |
-| `script.md` | `FAB7571AD64F338FD44C19AD2B60CB04FB70BC62A3D4BD8E70FF5E998B8AAF8E` |
-| `script-source-notes.md` | `6102BBE94D970F2F2D344D4ADCECBC592C32A40C4805F1D26C319468C78F8B8E` |
-| `visual-plan.md` | `AB6EF77756ED8E6904AE22B7ACE8DB2D733338B7C4647658E319A2D19272F512` |
-| `visual-plan.json` | `6B33E813D57BAC2C1DAF0C29BBC2E6CAE9C784D80D23520D048C479271EB72DE` |
+| `script.md` | `81CB336C4E6B7FF09B3B54D14FAA90121607C4E89F81F1E3F2C7162D631672A4` |
+| `script-source-notes.md` | `77F082979846CCA547E997EEAAC036AC9884B04B048B3CF87FD5D5E939A4BE99` |
+| `visual-plan.md` | `291F270CBD05E4DEC4727D8662E39D858B016D41AB6694639B63C3648965CC1C` |
+| `visual-plan.json` | `851B22774902D3E968B161E934CFE3533C4DB3B976A58C9A191EA99525DBF7FB` |
 
-上表綁定 PR 的 Git blob 位元組（`git show HEAD:<path>`）而非 Windows 工作檔換行。`visual-plan.json` 在本機工作檔為 CRLF，當時量到的 SHA-256 `6D11E8F1B682DC390541DE795F53FE548E81F0FC73193FFB2DE07FB77C2E8AF1`；Git 收進的是 LF，因此 PR 與 fresh checkout 的 SHA-256 為上表 `6B33E813…`。兩者只有換行差異，逐鏡內容未改；獨立審查請以 PR blob 雜湊綁定。
+上表綁定此輪修訂稿的 Git blob 位元組（`git show :<path>`）而非 Windows 工作檔換行。初版 `visual-plan.json` 本機 CRLF SHA-256 為 `6D11E8F1…`，初版 PR LF SHA-256 為 `6B33E813…`；這兩個都是歷史值。此輪變更了 O07–O09、O13 的逐鏡內容，審查應綁定上表**新**雜湊。
 
-87 句旁白和 87 鏡 ID 一對一。71 鏡插圖，16 張後製字卡；最長連續字卡 2 張；71 個圖片提示詞各不相同。旁白欄合計 2,414 字符，**250 字符／分的紙上代理值約 579.4 秒**；按旁白字符加權的紙上插圖占比約 80.3%。這些都是規劃數，不是 TTS、圖片時間或剪片實測，不能拿來通過正文 480 秒及插圖畫面 ≥70% 關卡。片頭 5 秒與片尾 21 秒不計入正文。
+獨立審查 PR #1705 對作者 head `842c28156a91b916454a42e241dde2e543f91079` 留下 HOLD：O13 的「稍微變暖」暗示未證實的觸發門檻；O07–O09 未指明原廠回顧中的紙杯。作者因此只把 O13 改成季節／氣溫變化的問句，並把同鏡改成不顯示即時改色的季節場景；O07–O09 提示詞明寫無字紙杯，來源備註同步改窄。舊版由 Git 舊 head 保留。**尚待同一位獨立審查者差異重核；作者沒有自判 PASS。**
+
+87 句旁白和 87 鏡 ID 一對一。71 鏡插圖，16 張後製字卡；最長連續字卡 2 張；71 個圖片提示詞各不相同。旁白欄合計 2,413 字符，**250 字符／分的紙上代理值約 579.1 秒**；按旁白字符加權的紙上插圖占比約 80.3%。這些都是規劃數，不是 TTS、圖片時間或剪片實測，不能拿來通過正文 480 秒及插圖畫面 ≥70% 關卡。片頭 5 秒與片尾 21 秒不計入正文。
 
 作者機械檢查：`script.md`、`visual-plan.md`、`visual-plan.json` ID 集合相同且無缺漏；提示詞不含 FriXion／PILOT／ILLUSION／Magic Cup 等品牌或產品字、logo、字體及畫風替代詞；`look.preset` 全為 `cute-mystery`，模型為 `MiniMax image-01`。畫面是內容相關的概念插畫，非歷史照片或精確化學示意。`npm run check:tasks` 於本工作樹退出碼 0，驗證 2076 張任務檔；其他既有任務的過期持有及範圍重疊只列 warning。最後提交前再記錄 `git diff --check`。
 

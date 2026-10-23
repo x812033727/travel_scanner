@@ -20,13 +20,13 @@
 | O04 | shot | Medium shot of an adult looking at a plain cup with an empty writing desk behind, soft indoor light. | 當時尚無可擦筆。 |
 | O05 | card | 1972 申請｜1975 取得 | 只呈原廠回顧，勿疊專利號。 |
 | O06 | shot | Medium shot of an adult designer examining a plain cup beside several blank product sketches, soft studio light. | 用途抉擇。 |
-| O07 | shot | Wide shot of an adult lifting an unmarked cup at a simple table, a clear water pitcher beside it, mild window light. | Magic Cup 概念，不描摹原品。 |
-| O08 | shot | Close shot of an adult pouring clear cool water into a plain cup as its outer surface shifts to a muted second tone, soft light. | 不指定實際顯退色方向。 |
-| O09 | shot | Medium shot of an adult smiling at a plain cup with a visible muted color change, simple kitchen, overcast light. | 可見效果。 |
+| O07 | shot | Wide shot of an adult lifting an unmarked paper cup at a simple table, a clear water pitcher beside it, mild window light. | Magic Cup 為紙杯；不描摹原品花樣。 |
+| O08 | shot | Close shot of an adult pouring clear cool water into an unmarked paper cup as its outer surface shifts to a muted second tone, soft light. | 紙杯無字；不指定實際顯退色方向。 |
+| O09 | shot | Medium shot of an adult smiling at an unmarked paper cup with a visible muted color change, simple kitchen, overcast light. | 紙杯可見效果，不畫商標。 |
 | O10 | shot | Medium shot of an adult toy designer holding a small unmarked toy that changes muted color near a cool surface, soft table lamp. | 不指定真實商品造形。 |
 | O11 | shot | Medium shot of an adult placing a plain cup beside a plain pen and a blank sheet, thoughtful face, soft side light. | 材料路線用途對照。 |
 | O12 | shot | Close shot of an adult turning a plain cup away and examining a narrow pen tip, worktable, soft lamp light. | 原優點遇新限制。 |
-| O13 | shot | Medium shot of an adult writer noticing an abstract ink stroke shift color near a warm window, worried face, diffused light. | 假設風險，非既有產品事故。 |
+| O13 | shot | Medium shot of an adult writer examining an abstract ink stroke on paper beside a window with bare branches outside, concerned face, soft overcast light. | 季節氣溫疑問；不畫輕微升溫即改色。 |
 | I01 | shot | Close shot of an adult researcher comparing two unmarked swatches as one fades in a mild room, soft window light. | 溫度影響概念。 |
 | I02 | shot | Medium shot of an adult writer keeping a sheet steady while a plain cup changes color nearby, calm indoor light. | 書寫需穩定的對比。 |
 | I03 | card | 1988｜記憶型墨水 | 來源 S1，未冒稱市售筆。 |
