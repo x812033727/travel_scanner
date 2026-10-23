@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-c-series-video-safety-guards
 title: Port C-series video safety guards to main
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-c-series-video-safety-port
 claimed_at: 2026-10-23T12:02:10Z
 created_at: 2026-10-23T11:51:28Z
-completed_at:
+completed_at: 2026-10-23T12:51:47Z
 branch: codex/c-series-video-safety-port-20261023
 depends_on: []
 scope:
@@ -42,7 +42,7 @@ The C01–C20 series needs three retained safety fixes from older draft PRs: sub
 - [x] C-series subtitles round-trip across a fractional-frame intro.
 - [x] Everyday stories keep the approved cute-mystery look, at least 70% illustrated body scenes, and at most three consecutive cards in both local lint and host relint.
 - [x] Generated music records fully decoded duration and holds short or stale paid tracks before assembly encoding or dub mixing; no automatic replacement music purchase occurs.
-- [ ] Existing long-form duration guards remain independently reviewed and SHA-bound after final code edits; required CI checks pass.
+- [x] Existing long-form duration guards remain independently reviewed and SHA-bound after final code edits; required CI checks pass.
 
 ## Steps
 
@@ -50,7 +50,7 @@ The C01–C20 series needs three retained safety fixes from older draft PRs: sub
 - [x] Port #1610 branding fix, #1667 story and host guard, and #1669 music guard without overwriting newer main changes.
 - [x] Make audio tests skip only when FFmpeg is absent; CI video-tests must run them with FFmpeg.
 - [x] Coordinate narrow ownership release for `tools/video/core/lint.mjs`, `lint.test.mjs`, `state.mjs`, `state.test.mjs` before editing them, then add them to scope and finish the local lint/status guards.
-- [ ] Have an independent reviewer inspect final duration-bound file bytes and renew `docs/videos/long-form/review.md/json` under a separate claim.
+- [x] Have an independent reviewer inspect final duration-bound file bytes and renew `docs/videos/long-form/review.md/json` under a separate claim.
 
 ## How to verify
 
@@ -75,3 +75,10 @@ rebound the eight changed canonical duration files while preserving the other
 The owner removed two exact task-board open duplicates after automatic approval
 review blocked deletion; `npm run check:tasks` then passed 2117 files. Hosted PR
 checks and final merge remain the gate for this task.
+
+2026-10-23 final readback: all 23 reported CI checks passed on exact PR head
+`9ba84ef766398f1f2d7efe915d73e39adcd6dbeb`, including required API, web,
+containers and full-stack smoke. PR #1784 was squash-merged as
+`ade8410ff985efe477176ccca60b2ba80ef1b12b`; old drafts #1610, #1667
+and #1669 were closed with preserved-work comments. This code task is complete;
+media/QA and paid-dub preflight remain in separate open tickets.
