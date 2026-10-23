@@ -1,8 +1,10 @@
-"""Run normal migrations, except for one reviewed application rollback state.
+"""Run normal migrations, except for reviewed application rollback states.
 
 The 0132 application can serve the additive 0133 story-budget schema, but its
 Alembic directory cannot resolve that newer revision. Compose recreates `migrate`
 before starting the API on rollback, so the exception must live in that command.
+The 0137 C-series compatibility image likewise accepts only the reviewed 0138
+budget schema after reading back its held accounts and historical operations.
 This module never stamps or downgrades a database.
 """
 
@@ -25,10 +27,19 @@ from sqlalchemy.pool import NullPool
 
 from app.config import get_settings
 from app.schema import expected_schema_revision, migration_revisions
-from app.video_budget.models import PILOT_LIMITS_USD, VideoPilotBudget
+from app.video_budget.models import (
+    C_SERIES_PILOT_LIMITS_USD,
+    C_SERIES_PRE_LEDGER_OPERATION_ID,
+    PILOT_LIMITS_USD,
+    UNRECONCILED_STORY_SLUGS,
+    VideoPilotBudget,
+    VideoPilotBudgetOperation,
+)
 
 ROLLBACK_IMAGE_HEAD = "0132_video_pilot_budget"
 REVIEWED_FUTURE_REVISION = "0133_story_followon_budget"
+C_SERIES_ROLLBACK_IMAGE_HEAD = "0137_video_manga_tier"
+C_SERIES_REVIEWED_FUTURE_REVISION = "0138_story_everyday_budget"
 State = Literal["exact", "upgrade", "rollback-compatible"]
 
 
@@ -52,6 +63,8 @@ def classify_revisions(
     if current == expected:
         return MigrationState(current, expected, "exact")
     if expected == ROLLBACK_IMAGE_HEAD and current == REVIEWED_FUTURE_REVISION:
+        return MigrationState(current, expected, "rollback-compatible")
+    if expected == C_SERIES_ROLLBACK_IMAGE_HEAD and current == C_SERIES_REVIEWED_FUTURE_REVISION:
         return MigrationState(current, expected, "rollback-compatible")
     if current is None or current in known_revisions:
         return MigrationState(current, expected, "upgrade")
@@ -90,17 +103,19 @@ async def _revisions(connection: AsyncConnection) -> tuple[str, ...]:
     return tuple(result.scalars())
 
 
-async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
-    """Read back the 0133 migration's budget effects before skipping Alembic."""
+async def _verify_reviewed_budget_schema(
+    connection: AsyncConnection, *, expected_accounts: dict[str, Decimal], revision: str
+) -> None:
+    """Read back the exact budget accounts and shared schema before skipping Alembic."""
     rows = await connection.execute(
         select(VideoPilotBudget.slug, VideoPilotBudget.limit_usd, VideoPilotBudget.created_at)
     )
     accounts = rows.all()
     actual = {slug: Decimal(limit) for slug, limit, _created_at in accounts}
-    if len(accounts) != len(PILOT_LIMITS_USD) or actual != PILOT_LIMITS_USD:
-        raise MigrationGuardError("reviewed 0133 budget accounts or limits do not match")
+    if len(accounts) != len(expected_accounts) or actual != expected_accounts:
+        raise MigrationGuardError(f"reviewed {revision} budget accounts or limits do not match")
 
-    # Every column used by the 0132 budget service must still exist after rollback.
+    # Every column used by either rollback image's budget service must remain.
     await connection.execute(
         text(
             "SELECT id, slug, operation_id, category, provider, model, max_usd, "
@@ -199,7 +214,95 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
         "createindexix_video_pilot_budget_operations_slug"
         "onpublic.video_pilot_budget_operationsusingbtree(slug)",
     }:
-        raise MigrationGuardError("reviewed 0133 operation slug index is missing")
+        raise MigrationGuardError(f"reviewed {revision} operation slug index is missing")
+
+
+async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
+    """Read back the nine-account 0133 contract before skipping Alembic."""
+    await _verify_reviewed_budget_schema(
+        connection, expected_accounts=PILOT_LIMITS_USD, revision="0133"
+    )
+
+
+async def _verify_reviewed_0138(connection: AsyncConnection) -> None:
+    """Verify seven held accounts and the four preserved pre-ledger exposure rows."""
+    await _verify_reviewed_budget_schema(
+        connection,
+        expected_accounts={**PILOT_LIMITS_USD, **C_SERIES_PILOT_LIMITS_USD},
+        revision="0138",
+    )
+    # Verify the four indispensable baseline holds. Other operations may appear
+    # after a later evidence-backed settlement or activation; the rollback app
+    # still counts them in summaries and refuses every C-series paid admission.
+    rows = await connection.execute(
+        select(
+            VideoPilotBudgetOperation.slug,
+            VideoPilotBudgetOperation.operation_id,
+            VideoPilotBudgetOperation.category,
+            VideoPilotBudgetOperation.provider,
+            VideoPilotBudgetOperation.model,
+            VideoPilotBudgetOperation.max_usd,
+            VideoPilotBudgetOperation.actual_usd,
+            VideoPilotBudgetOperation.status,
+            VideoPilotBudgetOperation.attempts,
+            VideoPilotBudgetOperation.receipt_ref,
+            VideoPilotBudgetOperation.release_reason,
+        ).where(
+            VideoPilotBudgetOperation.slug.in_(UNRECONCILED_STORY_SLUGS),
+            VideoPilotBudgetOperation.operation_id == C_SERIES_PRE_LEDGER_OPERATION_ID,
+        )
+    )
+    historic = rows.all()
+    if (
+        len(historic) != len(UNRECONCILED_STORY_SLUGS)
+        or {row[0] for row in historic} != UNRECONCILED_STORY_SLUGS
+    ):
+        raise MigrationGuardError("reviewed 0138 pre-ledger holds are missing")
+    for (
+        _slug,
+        operation_id,
+        category,
+        provider,
+        model,
+        maximum,
+        actual,
+        status,
+        attempts,
+        receipt,
+        release_reason,
+    ) in historic:
+        try:
+            maximum_matches = Decimal(maximum) == Decimal("25.000000")
+        except (TypeError, ValueError):
+            maximum_matches = False
+        if (
+            operation_id != C_SERIES_PRE_LEDGER_OPERATION_ID
+            or category != "historical"
+            or provider != "unattributed"
+            or model != "unattributed"
+            or not maximum_matches
+            or attempts != 1
+        ):
+            raise MigrationGuardError("reviewed 0138 pre-ledger hold identity changed")
+        if status == "uncertain":
+            valid = actual is None and release_reason is None
+        elif status == "settled":
+            valid = actual is not None and receipt is not None
+        elif status == "released":
+            valid = (
+                actual is None
+                and isinstance(release_reason, str)
+                and bool(
+                    re.fullmatch(
+                        r"operator-no-charge evidence=[A-Za-z0-9][A-Za-z0-9._:/#-]{0,159}; \S.*",
+                        release_reason,
+                    )
+                )
+            )
+        else:
+            valid = False
+        if not valid:
+            raise MigrationGuardError("reviewed 0138 pre-ledger hold outcome is invalid")
 
 
 async def read_state() -> MigrationState:
@@ -210,7 +313,12 @@ async def read_state() -> MigrationState:
         async with engine.connect() as connection:
             state = classify_revisions(await _revisions(connection), expected, known)
             if state.state == "rollback-compatible":
-                await _verify_reviewed_0133(connection)
+                if state.current == REVIEWED_FUTURE_REVISION:
+                    await _verify_reviewed_0133(connection)
+                elif state.current == C_SERIES_REVIEWED_FUTURE_REVISION:
+                    await _verify_reviewed_0138(connection)
+                else:
+                    raise MigrationGuardError("unreviewed rollback revision")
             return state
     finally:
         await engine.dispose()

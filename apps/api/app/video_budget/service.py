@@ -20,6 +20,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.problems import AppError
 from app.video_budget.models import (
+    C_SERIES_PILOT_LIMITS_USD,
     EVERYDAY_STORY_PREFIX,
     FOLLOWON_LIMIT_USD,
     PILOT_LIMIT_USD,
@@ -111,7 +112,7 @@ def _label(value: str, *, name: str, length: int) -> str:
 def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
     if slug == B18_V2_SLUG:
         return limit_usd in (PILOT_LIMIT_USD, B18_V2_LIMIT_USD)
-    return limit_usd == PILOT_LIMITS_USD.get(slug)
+    return limit_usd == PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
 
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
@@ -366,7 +367,9 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     """Read the aggregate ledger for a pilot without exposing account credentials."""
     if not is_pilot(slug):
         return None
-    if is_preproduction_held(slug):
+    # A known held C-series account may be inspected after 0138 seeds it.
+    # Unknown everyday slugs stay hidden even if someone inserts a row.
+    if is_preproduction_held(slug) and slug not in C_SERIES_PILOT_LIMITS_USD:
         _require_activated(slug)
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
     if account is None:
@@ -376,7 +379,8 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     reserved, settled, uncertain, settled_count, released, overruns = await _totals(session, slug)
     # Show the intended ceiling even before 0133 lowers B18's persisted row.
     # This is a read-only transitional state; reserve stays held at USD 25.
-    effective_limit = PILOT_LIMITS_USD[slug]
+    effective_limit = PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
+    assert effective_limit is not None
     remaining = effective_limit - reserved - settled
     return BudgetSummary(
         slug=slug,
