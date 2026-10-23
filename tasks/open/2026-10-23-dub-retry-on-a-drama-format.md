@@ -35,7 +35,7 @@ brand story or a drama was refused this way.
 
 - [x] `packageRefusal` reads `clips/manifest.json` for a drama, as `package` does.
 - [x] A test fails with the old call and passes with the fix (`package-refusal.test.mjs`).
-- [ ] Duration review increment for `flow.mjs` by an independent reviewer.
+- [x] Duration review increment for `flow.mjs` by an independent reviewer (`claude-pr-review-dub-retry-clips-20261023`, PASS).
 - [ ] Merged and deployed; the owner presses 「再做一次」 for A4's ja/ko/es/id again and the worker takes them.
 
 ## How to verify
