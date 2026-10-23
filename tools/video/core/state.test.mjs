@@ -17,7 +17,7 @@ import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
 import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, compilationTranslationStale, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
-import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
+import { buildTimeline, estimateTimeline, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 import { planRequests } from "../tts/requests.mjs";
 
@@ -606,6 +606,43 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   stamp(compilationSourceHashes(drawn.doc));
   assert.deepEqual(i18nWarnings(), [], "made from the current text, lint says nothing");
   assert.equal((await drawnStatus()).next.id, "final video approved");
+});
+
+test("generated music status needs a measured current cut and retained paid bytes", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = dramaFixture();
+  const timeline = writeTimeline(box);
+  const file = path.join(box.workdir, "music", "paid.mp3");
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, "retained paid track");
+  const manifest = { source: "generated", file: "music/paid.mp3", sha256: sha(readFileSync(file)), mix_hash: mixHash(doc) };
+  const store = (value) => writeFileSync(path.join(box.workdir, "music", "manifest.json"), JSON.stringify(value));
+  const done = async () => (await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "music generated").done;
+
+  store(manifest);
+  assert.equal(await done(), false, "a legacy request-only manifest cannot claim a measured track");
+  const measured = { ...manifest, actual_seconds: timeline.total_frames / FPS + 1, duration_measurement: "ffmpeg_full_decode" };
+  store(measured);
+  assert.equal(await done(), true, "fully decoded audio covers the current cut and matches retained bytes");
+  store({ ...measured, actual_seconds: timeline.total_frames / FPS - 0.01 });
+  assert.equal(await done(), false, "a short paid track remains held");
+  store({ ...measured, duration_hold: true });
+  assert.equal(await done(), false, "a held manifest cannot pass just because its mix hash matches");
+  store(measured);
+  writeFileSync(file, "changed paid track");
+  assert.equal(await done(), false, "changed paid bytes invalidate the manifest");
+  rmSync(file);
+  assert.equal(await done(), false, "missing paid bytes invalidate the manifest");
+  writeFileSync(file, "retained paid track");
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...timeline, total_frames: timeline.total_frames + 2 * FPS }));
+  assert.equal(await done(), false, "a longer current cut must be covered by the same retained track");
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...timeline, speech_hash: "0".repeat(64) }));
+  assert.equal(await done(), false, "a timeline from an older script is not the current cut");
+
+  const owned = { ...doc, music: { track: "licensed.mp3" } };
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(owned));
+  store({ source: "track", track: "licensed.mp3", mix_hash: mixHash(owned) });
+  assert.equal(await done(), true, "owner-supplied track status keeps its existing mix-hash behavior");
 });
 
 test("illustrated slides walk the picture and music steps, bound to the shots rather than the cards", async () => {

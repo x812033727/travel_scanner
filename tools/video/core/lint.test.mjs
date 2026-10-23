@@ -444,6 +444,28 @@ test("series.json's kind decides whether the brand story rules apply", () => {
   assert.deepEqual(lintVideo(doc, context({ brief: storyBrief(), series: plain })).errors, [], "the same script in a plain series may buy one clip and name a brand in a picture");
 });
 
+test("local lint applies Curio visual limits only to story-everyday episodes of kind story", () => {
+  const doc = storyFixture();
+  doc.slug = "story-everyday-test-c04";
+  doc.look = { preset: "cute-mystery" };
+  const options = context({ brief: storyBrief(), series: storySeries() });
+  const visual = (result) => result.errors.filter((error) => /cute-mystery stories/.test(error.message));
+  assert.deepEqual(visual(lintVideo(doc, options)), [], "ten illustrated body scenes pass");
+
+  const badLook = structuredClone(doc);
+  badLook.look.style = "additional style";
+  assert.deepEqual(visual(lintVideo(badLook, options)).map((error) => error.path), ["look"]);
+
+  const badMix = structuredClone(doc);
+  for (let index = 5; index < 9; index++) {
+    badMix.scenes[index].template = "stats";
+    badMix.scenes[index].data = { title: "單一數字", stats: [{ value: "1", label: "註記" }] };
+  }
+  assert.deepEqual(visual(lintVideo(badMix, options)).map((error) => error.path), ["scenes[8]", "scenes[8]"], "60% shots and four cards fail before media");
+  assert.deepEqual(visual(lintVideo(badMix, { ...options, series: { ...storySeries(), kind: undefined } })), [], "a non-story series is unchanged");
+  assert.deepEqual(visual(lintVideo({ ...badMix, slug: "story-legacy-example" }, options)), [], "an unrelated story slug is unchanged");
+});
+
 test("Azure bills each Chinese character twice, plus markup", () => {
   const doc = { scenes: [{ lines: [{ id: "aaaa", text: "中文AB" }] }] };
   assert.equal(billableEstimate(doc), 4 + 2 + 30);
