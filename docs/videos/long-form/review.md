@@ -5924,6 +5924,14 @@ Ran: Node v24.13.0, Windows, in the worktree at `df7357e80` (clean): the baselin
 Non-claims: this is a 3-file incremental source duration review. It does not re-review the other 105 bound files or the unbound files the commit changes, including `storage.py` and the API tests; it does not judge whether one hour is the right grace, the store's disk use, the retry's correctness under concurrent pushes or the look gate's behaviour on the live site, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Everyday C-series admin script source display increment (2026-10-23)
+
+Reviewer: `codex-independent-c-series-duration-review`. Author: `codex-c-series-ui-review`. Scope: DURATION_ONLY for `apps/web/components/admin-video-review-card.tsx` and the five `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` files. The independent review is recorded in `docs/videos/brand-stories-everyday-reversals-20261020/reviews/admin-script-source-duration-delta-20261023.md`; it binds each current file hash and was written without editing the implementation or this registry.
+
+The reviewed diff adds a collapsed, escaped source Markdown display to the admin script review card and one label per locale. The existing minute display, scene seconds validation, runtime keys, measured-frame evidence, body acceptance conditions and OP/ED budgets are unchanged. No duration target, floor, gate, measurement or acceptance rule changes. This increment rebinds only the six reviewed files. It does not validate backend import, media, paid generation, deployment or live admin behavior.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, and then the look gate clean-up grace increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5954,16 +5962,16 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
-| `apps/web/components/admin-video-review-card.tsx` | `2faf220e5f844f10455f363c54852c16bd4e98b918347466334e230854339fba` |
+| `apps/web/components/admin-video-review-card.tsx` | `d2175914066087259a671b20bec3c79175a75c89ab240621d1a46bc07b95d87e` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `dd43e975a4f4ae79cb3683b53a57124d17de2a94c976f60ac80717c2aa46e4f6` |
 | `apps/web/components/admin-video-series.test.tsx` | `8ddd2c677cb81450a8f4855d3336c16c2ba19675a31a1de2ceafee9e6dd64c2b` |
 | `apps/web/components/admin-video-series.tsx` | `6b65a53ce58cbdca6390b97a028c7b86f4ed3fa9b435e5ba7b2e5c749d607021` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `69ea8360ceb4a3c63d8c5c71edd2e0d4c109834b0fd53236627fae2d16390d8f` |
-| `apps/web/messages/ja/admin.json` | `48cb5824bde6f90bbba4d5409e180c70624fabc9aa4cc90572d22b4106b24d80` |
-| `apps/web/messages/ko/admin.json` | `8e7c0d9cab03e686ce95ffdf4c3c1a26332a9aefd1fc8f6fe1c6599ac9f164c0` |
-| `apps/web/messages/zh-CN/admin.json` | `930b77e6fb695db7cde4bc25e4d17e6dcf0fa5503f7a54d0380444a209d688ba` |
-| `apps/web/messages/zh-TW/admin.json` | `e5e8878c34e48da24da7ba9dc269161049f0b74e64fc8554635aa19ac75307c8` |
+| `apps/web/messages/en/admin.json` | `36a759c2478924db3fbd163deaa7579b8d4897a2148b026cfe5f49f6e1dd242b` |
+| `apps/web/messages/ja/admin.json` | `60133ff6562aeb37ff7b19548f30b315d0ffcc6d9f0eb14a64c525239304ec17` |
+| `apps/web/messages/ko/admin.json` | `c7dfd04b60db1e5ef1330a7d04326da6885dfc67af7fc7a0c6872a6fddbb1cee` |
+| `apps/web/messages/zh-CN/admin.json` | `5fc68116b39d6a598ff888f592685a351728d8a45c93f564e1fbfa56c9468f4f` |
+| `apps/web/messages/zh-TW/admin.json` | `558ed16db8a1b7ebcc4c08aa799d183be83a2a4ff7750886fff91715d80c5f67` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |

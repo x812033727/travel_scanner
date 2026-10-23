@@ -18,6 +18,8 @@ scope:
   - apps/web/messages/en/admin.json
   - apps/web/messages/ja/admin.json
   - apps/web/messages/ko/admin.json
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Display imported approved script source in admin review cards
@@ -37,3 +39,5 @@ the original source and visual notes cannot be read in `/admin/videos`.
 ## How to verify
 
 Run the focused `admin-video-review-card.test.tsx` component test and web typecheck.
+The duration review binds this card and the five admin message files by SHA-256; obtain an
+independent delta review before rebinding `review.md` and `review.json`.
