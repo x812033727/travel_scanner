@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c19-seven-bank-v3-delta1-blind
 title: C19 Seven Bank v3 delta1 blind reader 2 receipt
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c19-blind-reader-2
@@ -25,14 +25,14 @@ The revised C19 Seven Bank author script needs a fresh narrator-only judgment ti
 
 - [x] Lock the 12-criterion verdict before reading the repository, PR or other reviews.
 - [x] Compare the 79-line projection with the author script at exact PR #1742 head.
-- [ ] Submit the independent lock and receipt on a draft PR stacked on the author head.
+- [x] Submit the independent lock and receipt on a draft PR stacked on the author head.
 
 ## Steps
 
 - [x] Read only the narrator projection and hash it.
 - [x] Lock the spoken-only verdict and preserve its SHA-256.
 - [x] Read the project rules and compare exact author-head narration.
-- [ ] Push the receipt branch and open a draft PR.
+- [x] Push the receipt branch and open a draft PR.
 
 ## How to verify
 
@@ -40,4 +40,4 @@ Confirm the original pre-repo lock hashes to `924346470BB90CC19D4DF62EE8204C4642
 
 ## Notes
 
-The locked verdict is HOLD on 7/12 generic narrative criteria. It does not certify sources, visuals, TTS duration, owner approval or the paired-reader result. The author script and visual plan were not edited.
+The locked verdict is HOLD on 7/12 generic narrative criteria. It does not certify sources, visuals, TTS duration, owner approval or the paired-reader result. The author script and visual plan were not edited. Draft [PR #1764](https://github.com/x812033727/travel_scanner/pull/1764) targets the exact author branch and had base SHA `c1fe8f9daa667712f9be9e6746148f05ad39f89f` when opened. Leave this task in review until that PR is resolved.
