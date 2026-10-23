@@ -27,9 +27,13 @@ from app.video_budget import recovery, service
 from app.video_budget.models import (
     FOLLOWON_LIMIT_USD,
     FOLLOWON_SLUGS,
+    PENDING_PILOT_LIMITS_USD,
+    PENDING_PILOT_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
+    PREPRODUCTION_HOLD_SLUGS,
+    UNRECONCILED_STORY_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
 )
@@ -354,6 +358,56 @@ async def test_followon_accounts_fail_closed_until_each_usd_5_row_exists(
             Decimal("4.5"),
             Decimal("0.5"),
         )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("slug", sorted(PREPRODUCTION_HOLD_SLUGS))
+async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
+    sessions: async_sessionmaker[AsyncSession],
+    slug: str,
+) -> None:
+    assert PREPRODUCTION_HOLD_SLUGS == UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
+    if slug in PENDING_PILOT_SLUGS:
+        assert PENDING_PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
+    assert slug not in PILOT_SLUGS
+    assert service.is_pilot(slug)
+    for account_exists in (False, True):
+        if account_exists:
+            async with sessions() as session:
+                session.add(VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD))
+                await session.commit()
+        with pytest.raises(AppError) as refused:
+            await _reserve(sessions, "first-paid-call", "0.15", slug=slug)
+        assert refused.value.code == "video_budget_preproduction_hold"
+        with pytest.raises(AppError) as unreadable:
+            await _summary(sessions, slug)
+        assert unreadable.value.code == "video_budget_preproduction_hold"
+    async with sessions() as session:
+        operations = (
+            await session.scalars(
+                sa.select(VideoPilotBudgetOperation).where(VideoPilotBudgetOperation.slug == slug)
+            )
+        ).all()
+    assert operations == []
+
+
+@pytest.mark.asyncio
+async def test_unapproved_everyday_film_fails_closed_without_an_account(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    unapproved = "story-everyday-kikkoman-c08"
+    assert service.is_pilot(unapproved)
+    with pytest.raises(AppError) as missing:
+        await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
+    assert missing.value.code == "video_budget_missing_account"
+    # A hand-made row cannot open it either: its ceiling is not in the reviewed table.
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=unapproved, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+    with pytest.raises(AppError) as invalid:
+        await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
+    assert invalid.value.code == "video_budget_invalid_account"
+    assert not service.is_pilot("story-five-unrelated") and not service.is_pilot(None)
 
 
 @pytest.mark.asyncio
