@@ -77,9 +77,16 @@ for (const short of plan.filter((s) => !wanted.length || wanted.includes(s.episo
   // "| CC" tail traded for #Shorts, the description pointing at the full episode.
   const episodeMeta = JSON.parse(readFileSync(path.join(src, "meta.json"), "utf8"));
   const youtube = { "zh-TW": { title: `${episodeMeta.title.replace(/\s*\|.*$/, "")} #Shorts`, description: `${short.hook.replace("\n", "，").replace(/[^！？。…]$/, "$&。")}\n完整第 ${short.episode} 集在頻道。\n\n${episodeMeta.description}\n\n#Shorts #種田娶妻打天下 #國漫` } };
+  // youtube-locales holds en, ja and ko for episodes 1–5 only; every other episode's are in its
+  // import folder (description.<locale>.txt: title, blank line, description).
   for (const locale of LOCALES) {
-    const entry = JSON.parse(readFileSync(path.join(H, "youtube-locales", `${locale}.json`), "utf8")).episodes[String(short.episode)];
-    if (entry) youtube[locale] = { title: `${entry.title.replace(/\s*\|.*$/, "")} #Shorts`, description: `${entry.description}\n\n#Shorts` };
+    let entry = JSON.parse(readFileSync(path.join(H, "youtube-locales", `${locale}.json`), "utf8")).episodes[String(short.episode)];
+    const file = path.join(src, `description.${locale}.txt`);
+    if (!entry && existsSync(file)) {
+      const [title, ...rest] = readFileSync(file, "utf8").replace(/^﻿/, "").split(/\r?\n/);
+      entry = { title, description: rest.join("\n").trim() };
+    }
+    if (entry) youtube[locale] = { title: `${entry.title.replace(/\s*[|｜].*$/, "")} #Shorts`, description: `${entry.description}\n\n#Shorts` };
   }
   writeFileSync(path.join(dir, "youtube.json"), `${JSON.stringify({ episode: short.episode, from: short.from, to: short.to, localizations: youtube }, null, 2)}\n`);
   // What the site takes: meta.json for tools/video/shorts import (a drama Short pointing back at
