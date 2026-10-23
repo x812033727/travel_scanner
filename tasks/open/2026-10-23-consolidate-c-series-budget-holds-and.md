@@ -11,11 +11,13 @@ completed_at:
 branch: codex/c-series-budget-safe-integration-20261023
 depends_on: []
 scope:
+  - apps/api/app/video_automation/ai.py
   - apps/api/app/video_budget/models.py
   - apps/api/app/video_budget/service.py
   - apps/api/app/video_budget/RECONCILE.md
   - apps/api/app/video_budget/PENDING_EVERYDAY.md
   - apps/api/tests/test_video_pilot_budget.py
+  - apps/api/tests/test_video_automation_ai.py
   - tools/video/core/pending-pilot-budget.mjs
   - tools/video/automation/client.mjs
   - tools/video/automation/client.test.mjs
@@ -45,9 +47,10 @@ separate task, because the current 0137 API cannot roll back from 0138.
       unresolved; no new account or migration is created in this release.
 - [x] C03–C07/C10/C15 remain on a preproduction hold even if an account row is
       accidentally present.
-- [x] Attributed API requests and current local TTS, media and automation
-      routes fail closed for the held pilots, while other everyday slugs
-      require a reviewed account.
+- [x] Attributed API requests and queued subscription stages fail closed for
+      every everyday story. Current local TTS, media and automation clients
+      hold the series before send, including unapproved slugs paired with an
+      older API.
 - [ ] Focused API and Node tests pass on the exact PR head. The Alembic head
       and original pilot account map remain unchanged. Deployment, billing
       reconciliation, migration and paid work remain separate gates.

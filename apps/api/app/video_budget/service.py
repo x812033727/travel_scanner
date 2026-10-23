@@ -25,7 +25,6 @@ from app.video_budget.models import (
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
-    PREPRODUCTION_HOLD_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
     utcnow,
@@ -77,8 +76,13 @@ def is_pilot(slug: str | None) -> bool:
     )
 
 
+def is_preproduction_held(slug: str | None) -> bool:
+    # No everyday-object film has a reviewed, spendable account in this release.
+    return isinstance(slug, str) and slug.startswith(EVERYDAY_STORY_PREFIX)
+
+
 def _require_activated(slug: str) -> None:
-    if slug in PREPRODUCTION_HOLD_SLUGS:
+    if is_preproduction_held(slug):
         raise BudgetError(
             503,
             "video_budget_preproduction_hold",
@@ -362,7 +366,7 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     """Read the aggregate ledger for a pilot without exposing account credentials."""
     if not is_pilot(slug):
         return None
-    if slug in PREPRODUCTION_HOLD_SLUGS:
+    if is_preproduction_held(slug):
         _require_activated(slug)
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
     if account is None:

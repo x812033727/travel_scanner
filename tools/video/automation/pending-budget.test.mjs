@@ -5,7 +5,7 @@ import { PREPRODUCTION_HOLD_SLUGS } from "../core/pending-pilot-budget.mjs";
 import { automationClient } from "./client.mjs";
 
 test("held everyday paid model and Jev stages stop before contacting an older API", async () => {
-  for (const slug of PREPRODUCTION_HOLD_SLUGS) {
+  for (const slug of [...PREPRODUCTION_HOLD_SLUGS, "story-everyday-kikkoman-c08"]) {
     let calls = 0;
     const client = automationClient({
       home: process.cwd(),

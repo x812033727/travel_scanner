@@ -2,9 +2,10 @@
 
 The owner approved a USD 25 **whole-film ceiling** for C03–C07, C10 and C15.
 This code does not activate a paid route for any of them. The API rejects
-attributed requests, and current local TTS, media and automation clients return
-`video_budget_preproduction_hold` before dispatch. A new client paired with an
-older API is also held locally.
+attributed requests and queued subscription-model stages, and current local TTS,
+media and automation clients return
+`video_budget_preproduction_hold` before dispatch for every `story-everyday-*`
+slug. A new client paired with an older API is also held locally.
 
 The speech API still accepts requests that omit both `video_slug` and
 `operation_id` for existing non-series workflows. An old TTS/ASR/Jev client
@@ -19,7 +20,8 @@ This guard creates no account and changes no migration. C03–C06 used paid
 providers before a per-film ledger existed; their unresolved historical
 exposure is treated as the full USD 25 ceiling, with **zero newly spendable
 balance**. C07, C10 and C15 also have no account. Even a mistakenly inserted
-account cannot bypass any of these seven API holds.
+account cannot bypass any of these seven API holds. Other everyday stories have
+no paid account and receive the same API and local preproduction hold.
 
 Before a later reviewed activation change removes a hold:
 

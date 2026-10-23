@@ -1,9 +1,10 @@
 // C03-C06 have unresolved pre-ledger paid history treated as full exposure;
-// C07/C10/C15 have approved ceilings but no account. Keep all seven requests local until the account,
-// old charges, exact voice/model/region, price ceiling, and all-stage attribution
-// have been reviewed and enabled together.
-// The API independently rejects them; this local hold also protects a new CLI talking
-// to an older API that would otherwise treat an unknown slug as an ordinary video.
+// C07/C10/C15 have approved ceilings but no account. These seven need explicit
+// review before activation. All other everyday stories have no paid account or
+// approval yet, so the whole series remains held locally. The current API
+// independently rejects attributed calls; the local hold also protects a new
+// CLI talking to an older API that treats an unknown slug as an ordinary video.
+export const EVERYDAY_STORY_PREFIX = "story-everyday-";
 export const PREPRODUCTION_HOLD_SLUGS = Object.freeze([
   "story-everyday-moleskine-c03",
   "story-everyday-bubble-wrap-c04",
@@ -14,4 +15,4 @@ export const PREPRODUCTION_HOLD_SLUGS = Object.freeze([
   "story-everyday-frixion-c15",
 ]);
 
-export const isPreproductionHeld = (slug) => PREPRODUCTION_HOLD_SLUGS.includes(slug);
+export const isPreproductionHeld = (slug) => typeof slug === "string" && slug.startsWith(EVERYDAY_STORY_PREFIX);

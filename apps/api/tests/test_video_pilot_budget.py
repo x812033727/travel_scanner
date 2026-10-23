@@ -392,21 +392,27 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
 
 
 @pytest.mark.asyncio
-async def test_unapproved_everyday_film_fails_closed_without_an_account(
+async def test_unapproved_everyday_film_stays_held_with_or_without_an_account(
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
     unapproved = "story-everyday-kikkoman-c08"
     assert service.is_pilot(unapproved)
     with pytest.raises(AppError) as missing:
         await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
-    assert missing.value.code == "video_budget_missing_account"
-    # A hand-made row cannot open it either: its ceiling is not in the reviewed table.
+    assert missing.value.code == "video_budget_preproduction_hold"
+    with pytest.raises(AppError) as hidden:
+        await _summary(sessions, unapproved)
+    assert hidden.value.code == "video_budget_preproduction_hold"
+    # A hand-made row cannot open it either.
     async with sessions() as session:
         session.add(VideoPilotBudget(slug=unapproved, limit_usd=PILOT_LIMIT_USD))
         await session.commit()
     with pytest.raises(AppError) as invalid:
         await _reserve(sessions, "first-paid-call", "0.5", slug=unapproved)
-    assert invalid.value.code == "video_budget_invalid_account"
+    assert invalid.value.code == "video_budget_preproduction_hold"
+    with pytest.raises(AppError) as hidden_again:
+        await _summary(sessions, unapproved)
+    assert hidden_again.value.code == "video_budget_preproduction_hold"
     assert not service.is_pilot("story-five-unrelated") and not service.is_pilot(None)
 
 

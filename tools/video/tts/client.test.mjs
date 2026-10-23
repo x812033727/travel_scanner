@@ -94,7 +94,7 @@ function server(answers) {
 
 test("held everyday paid speech routes stop before contacting an older server", async () => {
   assert.deepEqual([...PREPRODUCTION_HOLD_SLUGS], EVERYDAY_SLUGS);
-  for (const slug of PREPRODUCTION_HOLD_SLUGS) {
+  for (const slug of [...PREPRODUCTION_HOLD_SLUGS, UNAPPROVED_EVERYDAY]) {
     for (const paid of PAID) {
       const { calls, options } = server([paid.ok]);
       await assert.rejects(paid.send({ ...options, videoSlug: slug }),
@@ -112,7 +112,7 @@ test("a server budget hold is an owner refusal, not an uncertain speech charge",
 });
 
 test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
-  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS, UNAPPROVED_EVERYDAY]) {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS]) {
     for (const paid of PAID) {
       const { calls, options } = server([() => problem(429, "rate_limit_exceeded"), paid.ok]);
       paid.check(await paid.send({ ...options, videoSlug: slug }));

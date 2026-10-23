@@ -79,10 +79,13 @@ C15 are held for attributed API requests and at the current local paid-client
 boundary. Legacy speech clients can omit attribution entirely; the server
 cannot infer a C-series slug from such a request. Keep old workers stopped and
 verify the current client on every C-series worker before a production rollout.
+That client also holds every other `story-everyday-*` slug before contacting an
+older API that may not recognize the series. The current API holds new and
+previously queued model stages, including subscription models, before dispatch.
 A provider bill alone does not activate paid work. Any other
-`story-everyday-` slug fails closed with
-`video_budget_missing_account` until a reviewed migration opens its account:
-the local TTS, media and automation clients attribute every slug in the series.
+`story-everyday-` slug gets `video_budget_preproduction_hold` until a reviewed
+activation opens its account;
+the local TTS, media and automation clients hold the entire series before send.
 
 C03–C06 called TTS, transcription, Jev and (C03) media before they had accounts.
 Until a future migration seeds a full USD 25 uncertain `pre-ledger-history`

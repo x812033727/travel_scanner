@@ -1165,7 +1165,6 @@ test("all budgeted story chapters always use saved jobs for writing and checks",
     "story-five-lego-legoland", "story-five-costco-hot-dog",
     "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
     "story-five-pringles-vat-case",
-    "story-everyday-kikkoman-c08",
   ]) {
     for (const stage of ["writer", "verifier", "listener"]) {
       const box = sandbox(), routes = [];

@@ -44,7 +44,7 @@ from app.video_automation.usage import (
     slug_has_draft,
     usage_view,
 )
-from app.video_budget.service import is_pilot
+from app.video_budget.service import is_pilot, is_preproduction_held
 from app.video_shorts.models import VideoShortsSettings
 
 __all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
@@ -181,6 +181,14 @@ async def prepare_stage(
     shorts: VideoShortsSettings | None = None,
     choice: tuple[str, str] | None = None,
 ) -> tuple[str, str, UsageView, bool]:
+    # New durable submissions must not queue a C-series stage, including a
+    # subscription model that does not use the per-call USD ledger.
+    if is_preproduction_held(request.slug):
+        raise StageFailed(
+            503,
+            "video_budget_preproduction_hold",
+            "這支日用品故事仍在製作前停線，不能送出模型請求",
+        )
     if request.format == "shorts" and shorts is None:
         shorts = await _shorts_row(session)
     if choice is not None:
@@ -232,6 +240,14 @@ async def run_stage(
     *,
     job: VideoStageJob | None = None,
 ) -> StageRunOut:
+    # A job queued before this release can still reach the worker. Hold it
+    # before the dispatch timestamp or any subscription/API provider call.
+    if is_preproduction_held(request.slug):
+        raise StageFailed(
+            503,
+            "video_budget_preproduction_hold",
+            "這支日用品故事仍在製作前停線，不能送出模型請求",
+        )
     # The old synchronous route has no stable request key. A lost answer could be charged
     # and then submitted again, so pilot stages must use the durable /run/jobs receipt.
     if is_pilot(request.slug) and job is None:
