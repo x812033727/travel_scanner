@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-audit-c17-revised-narration-sources-and
 title: Audit C17 revised narration sources and paired visuals
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-root-c17-review
