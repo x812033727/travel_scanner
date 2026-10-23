@@ -22,6 +22,25 @@ metadata:
 3. 稿子的規則：`.agents/skills/youtube-video/references/script-writing.md` §故事主線與鉤子。
 4. 為什麼這樣設計：`docs/videos/STORY.md`（頁首的 2026-10-15 決定蓋過頁內的 Gemini／13 分鐘舊規格）。
 
+## 審稿工作目錄與 C 槽空間
+
+品牌故事的逐來源查核、盲讀和逐鏡差異審查，**不要每輪、每位讀者開一份完整 Git worktree**。
+獨立審查靠隔離輸入：讀者只拿指定版本的旁白投影或待查檔案、固定 commit 與 SHA，先鎖定判定，
+再由主對話核對作者稿與提交收據；不靠各自複製整個 repo。唯讀審查優先在同一份共用 checkout
+使用 `git show <commit>:<path>` 讀不可變版本，或從該版本匯出小型文字檔。主對話串行寫入收據；
+不可讓多位代理同時切換同一工作目錄的分支。不同讀者的判定與鎖定稿仍須各自留存。
+
+需要寫入隔離時，先查現有可重用且乾淨的 checkout、工作占用及 C 槽剩餘空間；能在既有
+checkout 完成就不新增副本。確實無法共用才開**一份**暫時 worktree，優先 sparse checkout，
+在任務票記下用途、路徑、負責人與預計清理點。不要把臨時 worktree 一層層建在別的
+worktree 之下。空間不足或無法確認所有權時停止建立，先回報。
+
+每輪結束時，對自己建立的暫時 worktree 逐一核對：`git status --porcelain=v1
+--untracked-files=all` 為空、HEAD 已推到遠端、沒有仍需保留的 ignored／付費素材、沒有代理或
+行程使用它、不是 pinned／共用／主要 checkout，且 PR、收據與任務票可從遠端或保留路徑取回。
+符合後用 `git worktree remove <精確路徑>` 清理並讀回確認；開著草稿 PR 並不要求保留已推送的
+本機 checkout。任何條件不明就保留並記入任務票，不能用批次遞迴刪除或繞過 policy block。
+
 ## 站主定案（改任何一條都要先問站主）
 
 | 項目 | 定案 | 來源 |
