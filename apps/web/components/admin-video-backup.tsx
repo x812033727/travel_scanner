@@ -23,7 +23,6 @@ export type BackupSettingsView = {
   tiers: Record<string, Tier>;
   folder_names: Record<string, string>;
   default_folder_names: Record<string, string>;
-  full_categories: string[];
   updated_at: string | null;
   test: { pending_id: string | null; requested_at: string | null; status: "success" | "failed" | null; message: string | null; tested_at: string | null };
   space: { free_bytes: number | null; total_bytes: number | null; at: string | null };
@@ -255,7 +254,7 @@ export function VideoBackupCard() {
         </div>
         <fieldset className="grid gap-3 text-sm" disabled={disabled}>
           <legend className="text-base font-bold">{copy.tiersTitle}</legend>
-          <p className="leading-6 text-[var(--muted)]">{fill(copy.tiersHelp, { categories: view.full_categories.join(", ") })}</p>
+          <p className="leading-6 text-[var(--muted)]">{copy.tiersHelp}</p>
           <div className="overflow-x-auto"><table className="w-full min-w-[30rem] text-left">
             <thead><tr><th className="pb-2 pr-3">{copy.seriesKey}</th><th className="pb-2 pr-3">{copy.tiersTitle}</th><th className="pb-2">{copy.folderName}</th></tr></thead>
             <tbody>{draft.rows.map((row) => <tr key={row.key} className="border-t border-[var(--line)]">
