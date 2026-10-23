@@ -151,6 +151,37 @@ describe("manual YouTube upload", () => {
     expect(screen.getByRole("link", { name: /下載影片/ }).getAttribute("href")).toBe("/api/admin-video-download/test-video");
   });
 
+  it("reads a language added after the upload from the newest approved language batch, and never an older batch", async () => {
+    const later = (seconds: number) => new Date(Date.parse(review.created_at) + seconds * 1000).toISOString();
+    const batch = (id: string, created: string, metadataHash: string, locale: string): Review => ({
+      ...review, id, gate: "languages", created_at: created, decided_at: created, payload: { locales: { [locale]: { metadata: "ready", captions: "ready" } } },
+      files: [
+        { role: `description_${locale}`, sha256: hash(6), size: 100, content_type: "text/plain" },
+        { role: `captions_${locale}`, sha256: "a".repeat(64), size: 100, content_type: "text/plain" },
+        { role: `thumbnail_${locale}`, sha256: "c".repeat(64), size: 500, content_type: "image/jpeg" },
+        { role: "metadata", sha256: metadataHash, size: 900, content_type: "application/json" },
+      ],
+    });
+    const translated = { ...metadata, localizations: { ...metadata.localizations, th: { title: "ชื่อไทย", description: "คำอธิบาย" } } };
+    // Newest first, as the API orders them: the Thai batch, then the publish review, then a batch older than it.
+    const value = { ...project, reviews: [batch("thai", later(60), "d".repeat(64), "th"), review, batch("older", later(-60), hash(7), "vi")] };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url === "/api/travel/admin/videos/test-video") return Promise.resolve(Response.json(value));
+      if (url === `/api/admin-video-files/test-video/${"d".repeat(64)}`) return Promise.resolve(Response.json(translated));
+      throw new Error(`Unexpected request: ${url}`);
+    }));
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    fireEvent.change(screen.getByRole("combobox", { name: "語言" }), { target: { value: "th" } });
+    expect(screen.getByLabelText("標題")).toHaveProperty("value", "ชื่อไทย");
+    expect(screen.getByRole("link", { name: "縮圖 泰文" }).getAttribute("download")).toBe("thumbnail.th.jpg");
+    expect(screen.getByRole("link", { name: "下載泰文字幕" }).getAttribute("href")).toBe(`/api/admin-video-files/test-video/${"a".repeat(64)}`);
+    expect(screen.getByRole("link", { name: "下載日文字幕" })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "縮圖 越南文" })).toBeNull();
+    expect(screen.queryByRole("option", { name: "越南文" })).toBeNull();
+  });
+
   it("explains missing final files and does not offer a preview as an upload", async () => {
     stub({ ...project, reviews: [{ ...review, files: review.files.filter((file) => file.role !== "final") }] });
     render(<YoutubeManualUpload slug={project.slug} />);

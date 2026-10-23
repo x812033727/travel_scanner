@@ -368,6 +368,13 @@ def compose(
                     raise invalid("配音附件格式不正確，請重新送審")
                 else:
                     dubs[locale] = item
+            # A chosen language's own thumbnail rides along for the manual upload guide (Studio's
+            # language page); YouTube's API takes no per-language thumbnail, so sync leaves it.
+            thumbnail = files.get(f"thumbnail_{locale}")
+            if thumbnail is not None and any(selection.values()) and locale != narration:
+                if thumbnail["content_type"] not in ("image/jpeg", "image/png"):
+                    raise invalid("語言縮圖附件格式不正確，請重新送審")
+                allowed_roles.add(f"thumbnail_{locale}")
         if set(files) - retired_roles != allowed_roles:
             raise invalid("語言包附有未選取或未完成的素材，請重新送審")
         if verify_files:
