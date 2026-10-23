@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-c19-seven-bank-sourced-script-and
 title: C19 Seven Bank sourced script and paired visual plan
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-c19-script
 claimed_at: 2026-10-23T05:58:37Z
 created_at: 2026-10-23T05:58:25Z
-completed_at:
+completed_at: 2026-10-23T06:11:15Z
 branch:
 depends_on: []
 scope:
@@ -36,7 +36,7 @@ The owner adopted C19's revised treatment at author PR #1716 head `eb34fb007`; t
 - [x] Reopen issuer S1–S7; keep 2001, 2002, 2010 and 2024 claims in their own periods.
 - [x] Draft an approximately 54-second paper hook and post-intro body plausibly over 480 seconds without treating paper timing as actual TTS.
 - [x] Check 79/79 script, source-notes, visual MD and JSON ID/order/narration/source parity; no branded terms in image prompts.
-- [ ] Publish draft no-auto-merge PR and hand exact hashes/projection to independent reviewers. No paid generation, import or upload.
+- [x] Publish draft no-auto-merge PR #1742 and hand exact hashes/projection to independent reviewers. No paid generation, import or upload.
 
 ## How to verify
 
@@ -48,3 +48,4 @@ Run `npm run check:tasks`, `git diff --check`, and author parity check for IDs, 
 - The 2001 announcement's July >1,000 machines is a retrospective achieved point. The 11/11 figure in that 11/09 document was still prospective and was not used.
 - The 2010 fee figures are rounded from 85,294 and 9,003 million yen into approximately 853 and 90 hundred-million yen. They cannot be subtracted into per-machine profit.
 - The title, script, dates, fees and all visuals remain author-draft text only; no voice, music, image, import or upload was requested.
+- Draft PR #1742 is based on the owner-adopted Treatment branch. Independent source/visual review and two blind narration readers are next; do not treat this author task's completion as those gates passing.
