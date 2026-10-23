@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-independently-verify-final-c15-frixion-source
 title: Independently verify final C15 FriXion source and visual delta
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c15-final-delta
