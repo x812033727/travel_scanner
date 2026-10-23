@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-independently-review-c16-bialetti-v7-script
 title: Independently review C16 Bialetti v7 script and visuals
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-v7-independent
@@ -30,7 +30,7 @@ The author changed C16 from the previously reviewed 81-line v6 to a 72-line v7. 
 - [x] Read the primary issuer sources, then audit every current narration line and paired visual, including M16/M17 boundaries.
 - [x] Compare Markdown and JSON structurally and review every unequal prompt for meaning and forbidden-image risk.
 - [x] Write `docs/videos/story-everyday-bialetti-c16/reviews/independent-script-source-visual-v7.md` with exact verdict and minimum repair.
-- [ ] Open a draft review PR stacked on PR #1704 and attach it to this task.
+- [x] Open draft review PR #1765 stacked on PR #1704; apply `no-auto-merge`.
 
 ## How to verify
 
@@ -39,3 +39,5 @@ Run `npm run check:tasks` and `git diff --check`. Independently extract the Mark
 ## Notes
 
 Current verdict: 72/72 narration-source PASS; 72/72 visual-to-narration semantic PASS; overall visual file handoff HOLD because JSON c160210 omits the Markdown prohibition on drawing the filter or water path, which can spoil the mechanism reveal. Eight other prompt differences are also documented by ID and need synchronization. No paid production, owner approval, merge, upload, or publication is authorized here.
+
+Review PR: https://github.com/x812033727/travel_scanner/pull/1765 (draft, base `codex/brand-story-bialetti-c16-script`, exact parent `02051051742014e18de262e29819618206c6bcad`). The app artifact attachment tool returned unavailable after creation; the PR itself and label were verified on GitHub.
