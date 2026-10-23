@@ -42,7 +42,7 @@ their approved cut was mixed with.
   `loop` into `music/manifest.json`.
 - [x] `musicInputs` (assemble and dub) and status accept a short bed only with a loop recorded for
   that file, that decoded length and a cut no longer than the recorded one.
-- [ ] Duration review increment for `core/state.mjs`.
+- [x] Duration review increment for `core/state.mjs` (`claude-pr-review-music-loop-20261024`, PASS).
 - [ ] Merged, deployed; `music --loop` run for A4 on the host and its block cleared; the ja/ko/es/id
   dubs made.
 
