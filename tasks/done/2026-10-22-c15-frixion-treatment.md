@@ -1,13 +1,13 @@
 ---
 id: 2026-10-22-c15-frixion-treatment
 title: Research C15 FriXion brand story treatment and sources
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-gpt6-c15-treatment
 claimed_at: 2026-10-22T16:41:36Z
 created_at: 2026-10-22T16:41:23Z
-completed_at:
+completed_at: 2026-10-22T17:31:41Z
 branch: codex/brand-story-frixion-c15-treatment
 depends_on: []
 scope:
