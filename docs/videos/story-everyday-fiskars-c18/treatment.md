@@ -1,6 +1,6 @@
 # C18 Fiskars｜一把橘色剪刀，怎麼變成識別？
 
-狀態：**作者初稿，待獨立逐項來源覆核與站主審核企劃方向**。本檔是《日用品的意外轉身》[既定 C18 選題](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)的六章 Treatment，不是已核准逐字稿、分鏡報價、媒體生成或上架計畫。每個日期與可說界線見 [source-matrix.md](source-matrix.md)。
+狀態：**企劃來源獨立覆核 PASS，站主於 2026-10-23 採用方向；逐字稿仍未審核**。本檔是《日用品的意外轉身》[既定 C18 選題](../brand-stories-everyday-reversals-20261020/20-episode-plan.md)的六章 Treatment，不是已核准逐字稿、分鏡報價、媒體生成或上架計畫。逐項獨立審查見[審查草稿 PR #1706](https://github.com/x812033727/travel_scanner/pull/1706)；每個日期與可說界線見 [source-matrix.md](source-matrix.md)。
 
 ## 觀眾問題與包裝
 
@@ -41,4 +41,4 @@
 
 ## 待核與關卡
 
-另一位代理須直接讀 [source-matrix.md](source-matrix.md) 所列原件，逐項對照本檔並綁兩檔 SHA-256。來源不足、範圍過廣或公司回顧被說成當年原件，就退回修改。**站主採用企劃後**才能寫逐字稿與逐句查核；稿件核准、整支報價與付費、匯入、上傳、發布都是另外的關卡。
+另一位代理已直接讀 [source-matrix.md](source-matrix.md) 所列原件，逐項對照本檔並在[審查草稿 PR #1706](https://github.com/x812033727/travel_scanner/pull/1706)綁定來源內容的 SHA-256；M02 曾退回，修訂後獨立重核 PASS。站主已採用此企劃方向，可寫逐字稿與逐句查核；稿件核准、整支報價與付費、匯入、上傳、發布仍是另外的關卡。
