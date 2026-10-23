@@ -1,0 +1,455 @@
+# run log: docs/videos/claude-md-house-rules, brief.md "要先實作" items N0, N1, N2
+#          (two new `claude -p` runs so the chapter-5 terminal cards show the line a viewer types)
+
+Date: 2026-10-21 Taipei / 2026-10-21 UTC (every item carries its own UTC time)
+Claude Code: 2.1.295 (Claude Code)
+bash: GNU bash (Git Bash, MINGW64) on Windows 11 Home 10.0.26200
+Model: not printed by the plain command. The saved session transcripts (<home>/.claude/projects/..., not in the
+    repository) show every assistant message of N1 and N2 on model "claude-opus-5-5", i.e. the CLI's default for
+    this account. This differs from n1/s1 in claude-code-beginner-event-folder/runlog.txt, which went through
+    session.sh with `--model sonnet`. A viewer typing the plain line gets their own default model.
+Cost: not printed by the plain command (no `--output-format json`, and no second run was made so that the
+    folders hold exactly one run each). Token counts from the transcripts are under "Session transcripts".
+
+How to read this file
+- Everything under "$ ..." is quoted from files the commands wrote (<work>/run/N0.txt, N1.txt, N2.txt,
+  N1.reply.txt, N2.reply.txt). The only edits: the video work area is written <work>, the home directory <home>.
+- Lines starting "NOTE (runner):" are the runner's own remarks. They are not output.
+- "[exit N]" lines are printed right after the command they follow.
+- <work> is <home>/mokaair-work/videos/claude-md-house-rules (outside the repository). The runner's scripts are
+  in <work>/_tools (n0.sh, run-item.sh, summarize.py, termwrap.py), the two folders in <work>/run/n and
+  <work>/run/s. $S = docs/videos/claude-code-beginner-event-folder/demo/seed/講座籌備, $W = <work>/run.
+- The model calls were made with two environment variables in front of the plain command:
+  MSYS_NO_PATHCONV=1 (so Git Bash does not rewrite arguments as paths) and CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+  (so the run leaves no memory notes under <home>/.claude). Neither changes what the viewer types.
+- Where the commands were started from: a Git Bash shell that is itself a child of a Claude Code desktop
+  session, so it carries environment variables whose names start with CLAUDE or ANTHROPIC (as the
+  beginner-event-folder runlog describes). A viewer's own terminal would not have these.
+- The seed folder 講座籌備 is copied with `cp -a`; 報名表.csv is the same bytes as in the repository
+  (sha256 835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187) before and after both runs.
+- Stop-condition verdicts are at the end, under "Verdicts".
+
+====================================================================================================
+Item N0  version and folders   (2026-10-21T14:03:08Z)
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+$ mkdir -p "$W" && cp -a "$S" "$W/n" && cp -a "$S" "$W/s"
+[exit 0]
+$ cp docs/videos/claude-code-beginner-event-folder/demo/extras/claude-md-specific/CLAUDE.md "$W/s/CLAUDE.md"
+[exit 0]
+$ (cd "$W/n" && ls)
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+[exit 0]
+$ (cd "$W/s" && ls && cat CLAUDE.md)
+CLAUDE.md
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+# 講座籌備資料夾的規矩
+
+- 報名表.csv、活動說明.md 只讀不改。
+- 整理出來的檔案一律放到 輸出/。
+- 同名不一定同一人：Email 不同就是兩個人。
+- 同一個 Email 填了兩次，以最後一次為準。
+- 備註寫「取消」的和測試資料，不放進寄信名單。
+- 沒有 Email 或格式不對的，列進要補資料，不要猜。
+- 哪一版最新，看內容對不對得上 活動說明.md，
+  不看檔名，也不看修改時間。
+- 做完在 輸出/處理日誌.md 寫下：做了什麼、
+  動了幾筆、哪裡沒把握。
+[exit 0]
+$ (cd "$W/n" && sha256sum 報名表.csv)
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+$ (cd "$W/s" && sha256sum 報名表.csv)
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+NOTE (runner): 7 files in n, 8 in s; CLAUDE.md is the 12-line specific one. The `ls` of n is chapter 5's first terminal card (7 lines, each well under 80 columns).
+
+====================================================================================================
+Sign-in probe (not part of the brief; one cheap call to confirm the CLI is signed in before N1)   (2026-10-21T14:03:34Z)
+====================================================================================================
+$ (cd <work>/run/probe && MSYS_NO_PATHCONV=1 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 180 claude -p "回答 ok" --model sonnet)
+ok
+[exit 0]  stderr bytes: 0
+NOTE (runner): signed in; no authentication error, so N1 and N2 proceed.
+
+====================================================================================================
+Item N1  cwd <work>/run/n   (2026-10-21T14:04:17Z)
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+$ ls
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+[exit 0]
+$ sha256sum 報名表.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+$ claude -p --permission-mode acceptEdits "幫我整理報名名單。"
+(started 2026-10-21T14:04:18Z; env MSYS_NO_PATHCONV=1 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1; stdout below, stderr in N1.stderr.txt)
+名單整理好了，存成 `報名名單_整理後.csv`，原始的 `報名表.csv` 沒有改動。
+
+**原本 24 筆，整理後是 19 位有效報名**，沒有超過 30 人的名額。
+
+### 我做了哪些處理
+- **刪掉測試資料**：「測試 / test@example.com」那筆。
+- **合併重複報名**：
+  - 陳怡君填了兩次，Email 只差大小寫和一個空格，所以當成同一人。留下 10/03 那筆，飲食改成素食。
+  - 林佳蓉填了兩次，第一次沒填 Email，用 10/15 補填的 Email。
+- **移除取消的人**：張書豪 10/06 寫了「不能去了，請幫我取消」，依活動說明不寄確認信。
+- **統一部門名稱**：行銷、Marketing、mkt 都改成「行銷部」，R&D、研發都改成「研發部」，其他部門也一樣補上「部」字。
+- **其他整理**：拿掉姓名前後多出來的空格；飲食需求空白的寫成「未填」。
+
+### 需要你確認的地方
+1. **王志明有兩筆**，Email 和部門都不一樣（業務部 chihming.wang、研發部 cm.wang）。我先當成兩個人都留著，但也可能是同一人換了部門重填。
+2. **劉思妤、曾詩涵沒有 Email**，11/07 前要寄確認信，得先跟她們要。
+3. **洪子晴的 Email 是 `zihching.hung@example`**，看起來少了 `.com`。
+4. **陳怡君只寫「素食」**，沒說是全素還是蛋奶素。
+5. **蔡明哲、謝承恩飲食欄沒填**，要不要當成「無」再請你決定。
+
+### 飲食需求統計（要在 11/01 前給場地）
+| 類別 | 份數 | 名單 |
+|---|---|---|
+| 全素 | 2 | 劉思妤、江怡萱 |
+| 蛋奶素 | 2 | 林佳蓉、楊淑芬 |
+| 素食（還沒確認是哪種） | 1 | 陳怡君 |
+| 海鮮過敏 | 2 | 黃雅婷、周家豪 |
+| 不吃牛 | 1 | 王志明（業務部） |
+| 不吃豬 | 1 | 曾詩涵 |
+| 不吃辣 | 1 | 鄭宇翔 |
+| 無 | 7 | |
+| 未填 | 2 | 蔡明哲、謝承恩 |
+
+各部門人數：行銷部 5 人、業務部 4 人、研發部 4 人、人資部 3 人、財務部 3 人。
+[exit 0]  (ended 2026-10-21T14:05:07Z, wall 49 s, stderr bytes 0)
+$ ls
+報名名單_整理後.csv
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+[exit 0]
+$ sha256sum 報名表.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+$ find . -type f -newer 活動說明.md | sort
+./報名名單_整理後.csv
+./舊版簡報大綱_2025.md
+./講座簡報大綱_最終版.md
+./講座簡報大綱_真的最終版.md
+./講座簡報大綱_這次絕對最終版.md
+./講者介紹.md
+[exit 0]
+NOTE (runner): the folder gained exactly one file, 報名名單_整理後.csv, at the root; no 輸出/, no log. The `find -newer` list above is noisy because the seed files carry different mtimes; the sha256 check under "Session transcripts" is the authoritative diff.
+
+====================================================================================================
+Item N2  cwd <work>/run/s   (2026-10-21T14:05:15Z)
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+$ ls
+CLAUDE.md
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+[exit 0]
+$ sha256sum 報名表.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+$ claude -p --permission-mode acceptEdits "幫我整理報名名單。"
+(started 2026-10-21T14:05:16Z; env MSYS_NO_PATHCONV=1 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1; stdout below, stderr in N2.stderr.txt)
+名單整理好了，報名表一共 24 筆：**16 人可以寄信**，**4 筆要先補 Email**，另外 4 筆不放進名單。4 個檔案都在 `輸出/`，報名表.csv 和活動說明.md 我只有讀，沒有改。
+
+**處理方式：**
+- **已取消：** 張書豪 10/01 報名、10/06 用同一個 Email 寫了取消，所以不放進名單。
+- **測試資料：** 姓名「測試」那筆拿掉了。
+- **同一個 Email 填兩次：** 陳怡君 10/03 又填了一次，飲食改成素食，以這次為準。
+- **王志明有兩位：** 兩筆的 Email 和部門都不一樣，當作兩個人，都在名單裡。
+- **要補資料：** 劉思妤、曾詩涵沒有填 Email。洪子晴的 `zihching.hung@example` 少了 `.com` 這類結尾，我沒有替他補上。
+- **部門寫法統一：** mkt 和 Marketing 改成行銷部，R&D 改成研發部，其他沒寫「部」的也補上，原本的寫法留在名單備註裡。
+
+**給場地的飲食需求**（這 16 人，要在 11/01 前交）：素食 4 份，海鮮過敏 2 位，不吃牛 1 位、不吃辣 1 位，沒有特殊需求 6 位，沒填 2 位。
+
+**要你確認的事：**
+1. **林佳蓉：** 10/01 那筆沒有 Email，10/15 有一筆同名、同部門、同飲食，備註寫「補上 email」。看起來是同一人，但我沒有自己合併。10/01 那筆還放在要補資料裡，你確認後刪掉就好，飲食也不要重複算。
+2. **陳怡君：** 兩次填的 Email 只差大小寫和開頭的空白，我當作同一人。她寫的「素食」沒說是全素還是蛋奶素，交給場地前最好問一下。
+3. **蔡明哲、謝承恩：** 飲食欄是空白，不知道是沒有需求還是漏填，我先標成「未填」。
+
+名額 30 人，現在 16 人，加上待補的最多 20 人，不會超過。完整紀錄寫在 `輸出/處理日誌.md`。
+
+`輸出/` 裡的檔案：
+- 寄信名單.csv
+- 要補資料.csv
+- 飲食需求彙整.md
+- 處理日誌.md
+[exit 0]  (ended 2026-10-21T14:06:33Z, wall 76 s, stderr bytes 0)
+$ ls
+CLAUDE.md
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+輸出
+[exit 0]
+$ ls 輸出
+寄信名單.csv
+處理日誌.md
+要補資料.csv
+飲食需求彙整.md
+[exit 0]
+$ cat 輸出/處理日誌.md
+# 處理日誌
+
+- 日期：2026-10-21
+- 來源：報名表.csv（只讀，未修改）；活動說明.md（只讀，未修改）
+
+## 做了什麼
+1. 讀入報名表.csv 共 24 筆。
+2. Email 先去掉前後空白、轉小寫再比對，同一個 Email 只留最後一次填寫。
+3. 排除測試資料，以及最後一次填寫寫了「取消」的人。
+4. 沒有 Email 或 Email 格式不對的，原樣列進要補資料，不猜。
+5. 部門名稱統一寫法：行銷/Marketing/mkt → 行銷部；研發/R&D → 研發部；業務 → 業務部；人資 → 人資部；財務 → 財務部。
+6. 飲食需求欄空白的寫「未填」，不當作「無」。
+7. 依名單統計飲食需求，給場地用。
+
+## 產出
+- 寄信名單.csv：16 人
+- 要補資料.csv：4 筆
+- 飲食需求彙整.md
+
+## 24 筆的去向
+| 去向 | 筆數 | 內容 |
+|---|---|---|
+| 寄信名單 | 16 | |
+| 要補資料 | 4 | 林佳蓉（10/01 無 Email）、劉思妤（無 Email）、曾詩涵（無 Email）、洪子晴（`zihching.hung@example` 缺網域結尾） |
+| 被同 Email 後一筆取代 | 1 | 陳怡君 10/01（10/03 重填，飲食改成素食） |
+| 取消 | 2 | 張書豪 10/01 報名、10/06 同 Email 取消 → 整個人不放 |
+| 測試資料 | 1 | 姓名「測試」、test@example.com |
+
+修正過的欄位：陳怡君 Email 前面的空白與大小寫；洪子晴姓名後面的空白；7 筆的部門寫法（上面第 5 點）。
+
+## 哪裡沒把握
+- **林佳蓉**：10/01 那筆沒有 Email，10/15 同名、同部門、同飲食那筆寫了「補上 email」，看起來是同一人。但依規則不猜，10/01 那筆仍放在要補資料裡，請人工確認後刪除即可。
+- **王志明 ×2**：兩個 Email、兩個部門（業務部／研發部），依規則當作兩個人，都放進名單。
+- **陳怡君的 Email 比對**：兩次寫法差在大小寫和開頭空白（`yijun.chen` vs ` YiJun.Chen`）。我把 Email 當作不分大小寫，判定為同一人，以 10/03 那筆為準。
+- **陳怡君「素食」**：沒說是全素還是蛋奶素，給場地前最好問一下。
+- **未填飲食**：蔡明哲、謝承恩沒填，不確定是「沒有需求」還是漏填。
+- **部門統一**：mkt、Marketing 當作行銷部，R&D 當作研發部，屬於常見寫法的判斷，原寫法留在名單備註裡。
+- **名額**：活動名額 30 人，目前名單 16 人＋待補 3～4 人，沒有超額。
+- 資料夾裡的簡報大綱、講者介紹跟報名名單無關，這次沒有動。
+[exit 0]
+$ sha256sum 報名表.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+[exit 0]
+$ find . -type f -newer 活動說明.md | sort
+./CLAUDE.md
+./舊版簡報大綱_2025.md
+./講座簡報大綱_最終版.md
+./講座簡報大綱_真的最終版.md
+./講座簡報大綱_這次絕對最終版.md
+./講者介紹.md
+./輸出/寄信名單.csv
+./輸出/處理日誌.md
+./輸出/要補資料.csv
+./輸出/飲食需求彙整.md
+[exit 0]
+NOTE (runner): the folder gained 輸出/ with four files; nothing else changed (sha256 check below).
+
+====================================================================================================
+Session transcripts (read from <home>/.claude/projects/<cwd>/<session>.jsonl, which the plain command saves; tool inputs shortened)
+====================================================================================================
+===== n
+prompt as received (repr): '幫我整理報名名單。'
+prompt length (chars): 9
+first timestamp: 2026-10-21T14:04:20.157Z  last timestamp: 2026-10-21T14:05:03.328Z
+assistant messages: 10  models: {'claude-opus-5-5': 10}
+usage (sum over assistant messages): {'input_tokens': 20, 'output_tokens': 7876, 'cache_creation_input_tokens': 32174, 'cache_read_input_tokens': 375664}
+tool calls: 5
+  Bash: {"command": "cd \"<work>/run/n\" && ls -la && find . -maxdepth 3 -type f | head -50", "description": "List files in working directory"}
+  Read: {"file_path": "<work>\\run\\n\\報名表.csv"}
+  Read: {"file_path": "<work>\\run\\n\\活動說明.md"}
+  Bash: {"command": "cd \"<work>/run/n\" && head -c 3 報名表.csv | od -An -tx1; file 報名表.csv 2>/dev/null", "description": "Check original CSV encoding"}
+  Write: {"file_path": "<work>\\run\\n\\報名名單_整理後.csv", "content": "<834 chars>"}
+===== s
+prompt as received (repr): '幫我整理報名名單。'
+prompt length (chars): 9
+first timestamp: 2026-10-21T14:05:19.274Z  last timestamp: 2026-10-21T14:06:24.811Z
+assistant messages: 15  models: {'claude-opus-5-5': 15}
+usage (sum over assistant messages): {'input_tokens': 30, 'output_tokens': 15625, 'cache_creation_input_tokens': 39075, 'cache_read_input_tokens': 591008}
+tool calls: 9
+  Bash: {"command": "cd \"<work>/run/s\" && ls -laR && for f in *.md *.csv; do echo \"=== $f\"; cat \"$f\"; done", "description": "List folder and show file contents"}
+  Glob: {"pattern": "**/*", "path": "<work>\\run\\s"}
+  Read: {"file_path": "<work>\\run\\s\\報名表.csv"}
+  Read: {"file_path": "<work>\\run\\s\\活動說明.md"}
+  PowerShell: {"command": "python --version; Test-Path \"輸出\"", "description": "Check Python and output folder"}
+  Write: {"file_path": "<work>\\run\\s\\輸出\\寄信名單.csv", "content": "<960 chars>"}
+  Write: {"file_path": "<work>\\run\\s\\輸出\\要補資料.csv", "content": "<308 chars>"}
+  Write: {"file_path": "<work>\\run\\s\\輸出\\飲食需求彙整.md", "content": "<378 chars>"}
+  Write: {"file_path": "<work>\\run\\s\\輸出\\處理日誌.md", "content": "<1205 chars>"}
+
+sha256 check of the seed files after the runs (`sha256sum -c` against the repository seed):
+--- <work>/run/n
+報名表.csv: OK
+活動說明.md: OK
+舊版簡報大綱_2025.md: OK
+講座簡報大綱_最終版.md: OK
+講座簡報大綱_真的最終版.md: OK
+講座簡報大綱_這次絕對最終版.md: OK
+講者介紹.md: OK
+--- <work>/run/s
+報名表.csv: OK
+活動說明.md: OK
+舊版簡報大綱_2025.md: OK
+講座簡報大綱_最終版.md: OK
+講座簡報大綱_真的最終版.md: OK
+講座簡報大綱_這次絕對最終版.md: OK
+講者介紹.md: OK
+
+Every file in both folders after the runs:
+--- <work>/run/n
+7f24be4bc775ad0960729048573c4a516e62ce8cc0c2472416eeba7e73731769 *./報名名單_整理後.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *./報名表.csv
+dbb8347eff00c718b4b3469de7583e14f16715f5ef6223959f5ce2bea70cd9c1 *./活動說明.md
+70e76f9d4719f48e69220581cc6e68841cd681ccfdfc4a0de0027fc03fc929f0 *./舊版簡報大綱_2025.md
+023fffb9a4f4a1a8bdf88156ae406031c2130f7c4062b7a482244ae0f990beac *./講座簡報大綱_最終版.md
+a58f1499bb24ccc361eac8d30742e92d107029de7e659e66c6d527d7808ba325 *./講座簡報大綱_真的最終版.md
+ccd63a6f4912c0775778bd93de02974b7eaa0e7f0f9463ae026e14bee41e2220 *./講座簡報大綱_這次絕對最終版.md
+cf84f3a8948276191ed56c6fdccd430e22de473e188fcc339fb62287d638a177 *./講者介紹.md
+--- <work>/run/s
+8e865483370aa2d48357ecc657987276b8797e7dc342b023cedad897e034a03e *./CLAUDE.md
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *./報名表.csv
+dbb8347eff00c718b4b3469de7583e14f16715f5ef6223959f5ce2bea70cd9c1 *./活動說明.md
+70e76f9d4719f48e69220581cc6e68841cd681ccfdfc4a0de0027fc03fc929f0 *./舊版簡報大綱_2025.md
+023fffb9a4f4a1a8bdf88156ae406031c2130f7c4062b7a482244ae0f990beac *./講座簡報大綱_最終版.md
+a58f1499bb24ccc361eac8d30742e92d107029de7e659e66c6d527d7808ba325 *./講座簡報大綱_真的最終版.md
+ccd63a6f4912c0775778bd93de02974b7eaa0e7f0f9463ae026e14bee41e2220 *./講座簡報大綱_這次絕對最終版.md
+cf84f3a8948276191ed56c6fdccd430e22de473e188fcc339fb62287d638a177 *./講者介紹.md
+8966e35ce76d090f319689735eda0f25de78e16ba82b0de9eaca951ffb88bed1 *./輸出/寄信名單.csv
+1986ee57555c5047c37b0855afc13692d28ceeff105747ec74c6ae8569ad35c4 *./輸出/處理日誌.md
+76439b8d1d0ec62db35d60ba392b2aed38578ee8bc19f6a65df759081f2c4dc3 *./輸出/要補資料.csv
+5bd7076018c1495a196b30a1989a48bd6172f97a9b3fb6bf97e2a7365a153453 *./輸出/飲食需求彙整.md
+
+====================================================================================================
+Terminal cards (what an 80-column terminal shows; CJK = 2 columns; a long line breaks where the terminal breaks it)
+====================================================================================================
+--- Card 1 (N0): $ ls   in <work>/run/n
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+
+--- Card 2 (N1): $ claude -p --permission-mode acceptEdits "幫我整理報名名單。"   first 8 screen lines of the reply
+名單整理好了，存成 `報名名單_整理後.csv`，原始的 `報名表.csv` 沒有改動。
+
+**原本 24 筆，整理後是 19 位有效報名**，沒有超過 30 人的名額。
+
+### 我做了哪些處理
+- **刪掉測試資料**：「測試 / test@example.com」那筆。
+- **合併重複報名**：
+  - 陳怡君填了兩次，Email 只差大小寫和一個空格，所以當成同一人。留下 10/03 那筆
+-- 38 screen lines in total at 80 columns; shown 8
+
+--- Card 3 (N1): $ ls   after the run
+報名名單_整理後.csv
+報名表.csv
+活動說明.md
+舊版簡報大綱_2025.md
+講座簡報大綱_最終版.md
+講座簡報大綱_真的最終版.md
+講座簡報大綱_這次絕對最終版.md
+講者介紹.md
+
+--- Card 4 (N2): $ claude -p --permission-mode acceptEdits "幫我整理報名名單。"   first 8 screen lines of the reply
+名單整理好了，報名表一共 24 筆：**16 人可以寄信**，**4 筆要先補 Email**，另外 4 
+筆不放進名單。4 個檔案都在 `輸出/`，報名表.csv 和活動說明.md 我只有讀，沒有改。
+
+**處理方式：**
+- **已取消：** 張書豪 10/01 報名、10/06 用同一個 Email 寫了取消，所以不放進名單
+。
+- **測試資料：** 姓名「測試」那筆拿掉了。
+- **同一個 Email 填兩次：** 陳怡君 10/03 又填了一次，飲食改成素食，以這次為準。
+-- 34 screen lines in total at 80 columns; shown 8
+
+--- Card 5 (N2): $ ls 輸出
+寄信名單.csv
+處理日誌.md
+要補資料.csv
+飲食需求彙整.md
+
+--- Card 6 (N2): $ cat 輸出/處理日誌.md   first 8 screen lines
+# 處理日誌
+
+- 日期：2026-10-21
+- 來源：報名表.csv（只讀，未修改）；活動說明.md（只讀，未修改）
+
+## 做了什麼
+1. 讀入報名表.csv 共 24 筆。
+2. Email 先去掉前後空白、轉小寫再比對，同一個 Email 只留最後一次填寫。
+-- 47 screen lines in total at 80 columns; shown 8
+
+--- (N2) $ sha256sum 報名表.csv
+835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187 *報名表.csv
+
+====================================================================================================
+Verdicts (the brief's 成立條件, "要先實作")
+====================================================================================================
+N0: `claude --version` printed 2.1.295 (Claude Code), the version the brief expects. `ls` lists 7 files in
+    <work>/run/n and 8 in <work>/run/s (CLAUDE.md added). The 12-line CLAUDE.md is the specific one
+    (demo/extras/claude-md-specific/CLAUDE.md), byte-identical (sha256 8e865483…).
+N1 (no CLAUDE.md): wrote NO log and NO 輸出/. It created exactly one file, at the folder root:
+    報名名單_整理後.csv (sha256 7f24be4b…). The reply does not contain the words 處理日誌. The Chinese argument
+    arrived intact: the session transcript records the user message as the 9 characters 幫我整理報名名單。
+    (eight characters plus the full stop), so the brief's `要求.txt` fallback was NOT needed and NOT used.
+    Same shape as n1 (one csv at the root, people with missing data kept in the list with a note, no log,
+    original untouched).
+N2 (with CLAUDE.md): has 輸出/處理日誌.md. 輸出/ holds four files: 寄信名單.csv (16 people), 要補資料.csv
+    (4 rows), 飲食需求彙整.md, 處理日誌.md. The log has the three headings 做了什麼 / 產出 + 24 筆的去向 (the
+    counts) / 哪裡沒把握, i.e. the 做了什麼／動了幾筆／沒把握 trio the brief asks for, in s1's manner.
+    Same shape as s1 (same four file names, same counts 16 / 4).
+=> 成果 1 成立: N2 has 輸出/處理日誌.md and N1 has not. Chapter 5 can use both runs' terminal cards
+    (N0's `ls`, N1's reply, N2's `ls 輸出`, N2's 處理日誌 excerpt).
+報名表.csv sha256, before and after, both folders (4 measurements, all equal):
+    835aff4efdfd433bbc300139a81a9b212db20e5f155d0075ab79a7f0c9f79187  — the value the brief expects (835aff4efdfd433b…).
+    `sha256sum -c` against the seed: all 7 seed files OK in both folders after the runs (nothing else touched).
+
+Differences worth knowing when quoting (NOTE (runner)):
+- N2 did not merge 林佳蓉 (10/01 row without Email stays in 要補資料, 10/15 row is in 寄信名單) and says so
+  under 哪裡沒把握; N1 merged the two rows on its own. N2 kept 王志明 as two people (per the rule); N1 also
+  kept both but asked the user to confirm.
+- N1 counted 19 valid sign-ups (kept the three without a usable Email in the list, flagged); N2 counts 16 + 4
+  to complete.
+- N2's first reply line wraps at column 80 inside 「另外 4 筆」 (see the terminal cards above).
+- Both runs were made by the account's default model (claude-opus-5-5), not sonnet as n1/s1 were.
+- Timing: N1 49 s wall (model window 14:04:20Z–14:05:03Z), N2 76 s wall (14:05:19Z–14:06:24Z).
+- g1 was not rerun; nothing else called the model except the one sign-in probe (`claude -p "回答 ok" --model
+  sonnet` in an empty directory, reply "ok").

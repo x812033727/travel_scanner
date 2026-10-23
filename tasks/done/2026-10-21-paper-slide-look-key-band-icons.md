@@ -1,13 +1,13 @@
 ---
 id: 2026-10-21-paper-slide-look-key-band-icons
 title: Paper slide look: key band, icons, numeral card, human terminal typing
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable
 claimed_at: 2026-10-21T13:48:38Z
 created_at: 2026-10-21T13:46:37Z
-completed_at:
+completed_at: 2026-10-21T16:35:24Z
 branch: claude/paper-slide-look
 depends_on: []
 scope:
@@ -54,17 +54,17 @@ theme.css, so all new CSS is inlined per page and attached only when a card uses
 
 ## Definition of done
 
-- [ ] `theme: "paper"`, `data.keys`/`data.key`, `big.numeral`, `icon` on big/bullets/steps/compare and
+- [x] `theme: "paper"`, `data.keys`/`data.key`, `big.numeral`, `icon` on big/bullets/steps/compare and
       `terminal.typing: "human"` render as docs/videos/PAPER.md describes; a video without them is
       byte for byte what it was (templates.test.mjs holds the showcase heads to it).
-- [ ] render refuses a human-typed state its narration cannot carry; qa repeats it on the measured timeline.
-- [ ] `theme` passes the schema and moves visualHash only when set; docs and the review receipt follow.
+- [x] render refuses a human-typed state its narration cannot carry; qa repeats it on the measured timeline.
+- [x] `theme` passes the schema and moves visualHash only when set; docs and the review receipt follow.
 
 ## Steps
 
 - [x] PR 1 (no receipt-bound file): icons.mjs, numeral, key band, stateCount, human typing,
       maxFrames, PAPER_CSS/themeCss, the paper fixture, visuals.md, PAPER.md, tests.
-- [ ] PR 2 (receipt-bound files, stacked on PR 1): schema.mjs TOP_KEYS, timeline.mjs visualHash,
+- [x] PR 2 (receipt-bound files, stacked on PR 1): schema.mjs TOP_KEYS, timeline.mjs visualHash,
       qa/pace.mjs terminalHoldProblems + qa/cli.mjs, docs/videos/README.md, automated.md; an
       independent reviewer rebinds docs/videos/long-form/review.json.
 
@@ -87,3 +87,8 @@ lint): open run-1/'s stills and the terminal states' transition frames.
 ## Notes
 
 Findings, decisions and dead ends, so the next agent does not repeat them.
+
+## Outcome
+
+- PR #1650 (renderer, no receipt-bound file) merged 2026-10-22 15:52Z; PR #1651 (schema, visualHash, qa typing hold, docs, receipt; numeral to three digits; repeated transition frames written once) merged 2026-10-22 16:34Z.
+- Deferred, noted in #1651: typingProblems re-estimates the timeline; a full card under the key band fails only at render; terminalSeconds against visibility has no direct test.
