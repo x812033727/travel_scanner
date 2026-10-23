@@ -25,7 +25,7 @@ The owner adopted C15's revised Treatment; the 87-line script and 87 paired visu
 - [x] Reopen directly readable PILOT development histories, current FAQs and dated press release, and check each of the 87 lines against its source tags.
 - [x] Check all 87 paired visuals for additional factual implications and the Curio illustration constraints.
 - [x] Bind the review to the actual PR checkout file hashes and report precise HOLDs or PASS, without altering the author's script or visuals.
-- [ ] Resolve all HOLDs on revised author bytes and recheck the changed lines and corresponding visuals.
+- [x] Resolve all HOLDs on revised author bytes and recheck the changed lines and corresponding visuals.
 
 ## Steps
 
@@ -33,7 +33,7 @@ The owner adopted C15's revised Treatment; the 87-line script and 87 paired visu
 - [x] Open sources S1–S5 and inspect S6's patent-publication metadata.
 - [x] Compare script/visual Markdown/JSON IDs and narration strings; recompute sizes, card run, paper durations and SHA-256 on a fresh worktree from PR head.
 - [x] Write independent HOLD receipt with source locators and narrowly proposed repairs.
-- [ ] Recheck author correction before moving this task to done.
+- [x] Recheck author correction before moving this task to done.
 
 ## How to verify
 
@@ -42,3 +42,5 @@ The owner adopted C15's revised Treatment; the 87-line script and 87 paired visu
 ## Notes
 
 2026-10-23: Initial review found O13's “稍微變暖” exceeds the cited source's measured temperature claim; the 1976 Magic Cup is a paper cup, while O07–O09 prompts say only “plain cup”, risking ceramic/glass depiction. The author receipt's JSON SHA was measured on a CRLF working file, while the committed PR head checks out to LF bytes and a different SHA; author repaired only that receipt at head `842c28156`, so it is no longer a HOLD. Exact details are in `independent-script-source-visual-v1.md`; retain HOLD on O13/O07–O09 until corrected and rechecked. No paid media was made.
+
+2026-10-23: Author head `665738706d90f7bddae20d1874cfb24dd878fe1d` repaired O13 and O07–O09. Recomputed four LF checkout hashes, read the exact diff, checked both primary PILOT pages again, and verified all 87 script/visual IDs and narration pairs. The same independent reviewer marked the updated source/visual text PASS in `independent-script-source-visual-v1.md`; the former HOLD is retained there as history. No paid media was made.
