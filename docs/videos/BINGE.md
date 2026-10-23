@@ -222,7 +222,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 
 - **`manga` 等級是單集也能選的**（「新的漫劇」表單的「畫面做法」，`DramaRequestIn.visual_tier`，預設 `clips`）：單集的 series.json 原本不帶任何合集欄位，工人在它不是 `clips` 時才把 `visual_tier` 寫進去，所以舊的單集一個位元組都不變；提示詞的題材段落在沒有題材時也會單獨送出等級規則（`prompts.mjs` 的 `genreBlock`）。
 - **`manga` 等級每 30 秒要有一個鉤子**（站主 2026-10-22：這是貼圖漫劇的規矩，動畫漫劇的規格不動）：撰稿規則要求每 20–30 秒用旁白的話落一個鉤子（懸著的問題、前向鉤子、升級、揭露或反轉）；lint 用 `core/narrative.mjs` 的 `shotHookProblems` 照旁白片同一套字樣（問號、等一下／先記住／之後會、但這還不是／更怪的是／問題來了）在整集鏡頭的時間軸上量，超過 `MANGA_HOOK_GAP_SECONDS` 30 秒沒有一個就警告（`lint.mjs` 只對 `series.visual_tier === "manga"` 量；動畫漫劇不量）。
-- **`manga` 等級的關鍵影格四邊各裁 4%**（`media/trim.mjs` 的 `EDGE_INSET_SHARE`，`keyframes.mjs` 在 judge 之後、寫 manifest 之前，跟紙邊裁切同一條路，裁完放回原尺寸）：image-01 大約三成的圖會在邊緣長出小字或假簽名（2026-10-22 的 20 張樣張），寫 negative 擋不住，裁掉最穩。判斷用的 judge 看的是原圖，manifest 與之後的運鏡用裁過的檔。
+- **`manga` 等級的關鍵影格四邊各裁 4%**（`media/trim.mjs` 的 `EDGE_INSET_SHARE`，`keyframes.mjs` 跟紙邊裁切同一條路，裁完放回原尺寸）：image-01 大約三成的圖會在邊緣長出小字或假簽名（2026-10-22 的 20 張樣張），寫 negative 擋不住，裁掉最穩。2026-10-24 起 manga 等級先裁、把裁過的檔放進媒體庫、再問 judge（原本判原圖，image-01 的上下黑邊讓《系統說我是 BUG》第 1 集 42／46 鏡被判沒填滿畫框）；manifest 與之後的運鏡用裁過的檔。judge 的問法也改成是非題，見 [`DRAMA.md`](DRAMA.md) §manga 等級的關鍵影格用是非題。
 
 - **`visual` 欄位**：鏡頭 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`，預設 `clip`（`shotVisual`）。`clipShotScenes`／`stillShotScenes` 分兩堆；`clipsHash` 只算 clip 鏡頭。
 - **lint**（`core/lint.mjs`）從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（`draftEpisode` 從作品寫進去；沒有就不檢查）：超過上限是錯誤（`visualTierProblems`），`clips` 等級裡出現 still 只警告。合集模式（`series.json` 的 `compilation` 為真）第一個場景是 `title` 卡也是錯誤：冷開場。
