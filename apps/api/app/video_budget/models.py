@@ -50,6 +50,32 @@ PILOT_LIMITS_USD = {
     "story-conveyor-belt-sushi-v2": FOLLOWON_LIMIT_USD,
     **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
 }
+# Keep the reviewed 0133 account set unchanged. This release is only a paid
+# admission guard; it adds no account or Alembic revision.
+EVERYDAY_STORY_PREFIX = "story-everyday-"
+# These four called paid providers before they had accounts. Their unknown
+# historical exposure must be treated as the full USD 25 ceiling until a later
+# migration creates a durable hold and provider billing reconciles it.
+UNRECONCILED_STORY_SLUGS = frozenset(
+    (
+        "story-everyday-moleskine-c03",
+        "story-everyday-bubble-wrap-c04",
+        "story-everyday-kincho-c05",
+        "story-everyday-play-doh-c06",
+    )
+)
+# These approved ceilings are still preproduction holds. They have no account;
+# even an accidentally inserted account must never activate them.
+PENDING_PILOT_LIMITS_USD = {
+    "story-everyday-dr-martens-c07": PILOT_LIMIT_USD,
+    "story-everyday-oxo-c10": PILOT_LIMIT_USD,
+    "story-everyday-frixion-c15": PILOT_LIMIT_USD,
+}
+PENDING_PILOT_SLUGS = frozenset(PENDING_PILOT_LIMITS_USD)
+# Historical reconciliation alone would not prove the current voice, model,
+# supplier account, region, or prices. A separate reviewed change must lift
+# these holds before any new paid request can be admitted.
+PREPRODUCTION_HOLD_SLUGS = UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
 PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 

@@ -5,6 +5,7 @@
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { stopRequested } from "../core/paths.mjs";
+import { isPreproductionHeld } from "../core/pending-pilot-budget.mjs";
 import { INPUT_CHANGED_CODE, INPUT_CHANGED_MESSAGE, normalizeRun, policyHeld, POLICY_HOLD_CODE, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
 import path from "node:path";
 
@@ -40,6 +41,8 @@ const PILOT_STORY_SLUGS = new Set([
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
 ]);
+// The API guards every everyday-object film and refuses one without an account.
+const isPilotStory = (slug) => PILOT_STORY_SLUGS.has(slug) || (typeof slug === "string" && slug.startsWith("story-everyday-"));
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -48,6 +51,14 @@ export class AutomationError extends Error {
     this.code = code;
     // "owner": needs the site owner (token, keys, a budget they set); "service": try again later.
     this.who = who;
+  }
+}
+
+function requireBudgetReady(slug) {
+  if (isPreproductionHeld(slug)) {
+    throw new AutomationError(`the ${slug} whole-film budget route is on preproduction hold`, {
+      status: 503, code: "video_budget_preproduction_hold", who: "owner",
+    });
   }
 }
 
@@ -61,6 +72,7 @@ const OWNER_CODES = new Set([
   "video_budget_operation_conflict",
   "video_budget_operation_reused",
   "video_budget_missing_account",
+  "video_budget_preproduction_hold",
   "video_pilot_durable_required",
   "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",
@@ -346,8 +358,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     throw pending(body, lastProblem, lastProblem || null);
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
+    requireBudgetReady(slug);
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
-    const pilotStory = PILOT_STORY_SLUGS.has(slug);
+    const pilotStory = isPilotStory(slug);
     // Pilots use the durable receipt for every stage, even bounded story chapters.
     // Other anime acts and story chapters keep their existing transport.
     if (!pilotStory && (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant))) return request("POST", "automation/run", body, { paid: true });
@@ -364,6 +377,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
   }
   async function retryRuns(slug, authorization = {}) {
+    requireBudgetReady(slug);
     try {
       const confirmed = [];
       // `authorization.kind` is what blocked the video (flow.mjs blockedKindOf): for
@@ -483,7 +497,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
      * endpoint, the site answers 404 and the caller reports it as not available. One Jev call:
      * an answer lost on the way throws RUN_UNCERTAIN instead of spending another (JUDGE).
      */
-    judgePolicy: (body) => request("POST", "automation/judge/policy", body, JUDGE),
+    judgePolicy: async (body) => {
+      requireBudgetReady(body.slug);
+      return request("POST", "automation/judge/policy", body, JUDGE);
+    },
     /**
      * Jev's choice among a brief's outlines (docs/videos/HANDS-OFF.md §Jev 挑大綱): body
      * { slug, brief, options: [{ key, title, summary, hook }] }, 2 to 3 options, no other field.
@@ -491,7 +508,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
      * 409 video_judge_not_enabled while the stance is blank or the switch is off. One Jev call,
      * never asked again here once it was sent and its answer lost (RUN_UNCERTAIN, JUDGE).
      */
-    judgeOutline: (body) => request("POST", "automation/judge/outline", body, JUDGE),
+    judgeOutline: async (body) => {
+      requireBudgetReady(body.slug);
+      return request("POST", "automation/judge/outline", body, JUDGE);
+    },
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {

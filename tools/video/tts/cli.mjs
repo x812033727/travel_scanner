@@ -6,6 +6,7 @@ import readline from "node:readline";
 import { parseArgs } from "node:util";
 
 import { NARRATOR } from "../core/drama.mjs";
+import { isPreproductionHeld } from "../core/pending-pilot-budget.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
@@ -291,7 +292,7 @@ async function audition(args, ctx) {
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
   if (values.slug && !/^[a-z0-9][a-z0-9-]{1,99}$/.test(values.slug)) throw new UsageError("audition --slug must be a valid video slug");
-  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
+  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-|story-everyday-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
     throw new UsageError("audition --slug names a budgeted story family but is not an exact budgeted story slug");
   }
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
@@ -299,6 +300,9 @@ async function audition(args, ctx) {
   if (pilotSlugs?.size === 0) throw new UsageError("pilot audition text and workdir name different pilot films");
   if (pilotSlugs && !pilotSlugs.has(values.slug)) {
     throw new UsageError(`pilot audition needs its matching --slug (${[...pilotSlugs].join(" or ")})`);
+  }
+  if (isPreproductionHeld(values.slug)) {
+    throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
   }
   const text = readFileSync(values["text-file"], "utf8").replace(/^﻿/, "").trim();
   if (!text || text.length > MAX_REQUEST_CHARACTERS) throw new UsageError(`the sample must be 1 to ${MAX_REQUEST_CHARACTERS} characters`);
@@ -353,6 +357,9 @@ async function tts(args, ctx) {
   if (lint.errors.length) {
     ctx.stdout.write(`${project.doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
+  }
+  if (!values["dry-run"] && isPreproductionHeld(project.doc.slug)) {
+    throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
   }
   const { doc, lexicon } = project;
   const planned = planRequests(doc, lexicon);
@@ -571,6 +578,7 @@ export async function run(command, args, ctx) {
         strict: true,
       }).values;
       const slug = loadProject({ slug: values.slug, file: values.file, root: ctx.root }).doc.slug;
+      if (isPreproductionHeld(slug)) throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
       return await checkAudio(args, ctx, { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: slug });
     }
     return await tts(args, ctx);
