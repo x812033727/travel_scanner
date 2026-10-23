@@ -21,7 +21,14 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from app.auth.service import current_user
 from app.db import Base, get_session
-from app.models import AdminAuditLog, ProviderConfig, User, VideoProject, VideoToolToken
+from app.models import (
+    AdminAuditLog,
+    ProviderConfig,
+    User,
+    VideoProject,
+    VideoReview,
+    VideoToolToken,
+)
 from app.problems import AppError, app_error_handler
 from app.video_backup import admin_api
 from app.video_backup import admin_settings as settings
@@ -37,7 +44,7 @@ from app.video_backup.target import (
 )
 from app.video_speech.admin_api import video_tool
 
-MODELS = (User, VideoProject, ProviderConfig, AdminAuditLog, VideoToolToken)
+MODELS = (User, VideoProject, VideoReview, ProviderConfig, AdminAuditLog, VideoToolToken)
 HASH = "a" * 64
 OTHER_HASH = "b" * 64
 
@@ -228,6 +235,37 @@ class Site:
                 select(AdminAuditLog).where(AdminAuditLog.action == action)
             )
             return list(rows.all())
+
+    async def confirm(self, slug: str, status: str = "approved") -> None:
+        """The owner's upload confirmation of a video not on YouTube yet, and its languages
+        decided: ready to upload (docs/videos/LANGUAGES.md §上架流程)."""
+        async with self.factory() as session:
+            video = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+            assert video is not None
+            video.locales_decided_at = datetime.now(UTC)
+            session.add(
+                VideoReview(
+                    project_id=video.id,
+                    gate="publish",
+                    # A new cut, a new confirmation: its own content hash.
+                    content_sha256=uuid4().hex * 2,
+                    summary="上架確認",
+                    status=status,
+                    decided_at=datetime.now(UTC),
+                )
+            )
+            await session.commit()
+
+    async def supersede(self, slug: str) -> None:
+        """A renewed final cut: the upload confirmation is superseded (renew_final)."""
+        async with self.factory() as session:
+            video = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+            assert video is not None
+            for review in await session.scalars(
+                select(VideoReview).where(VideoReview.project_id == video.id)
+            ):
+                review.status = "superseded"
+            await session.commit()
 
 
 @pytest.fixture
@@ -437,7 +475,7 @@ async def test_reports_the_site_cannot_trust_are_refused(site: Site) -> None:
     await site.add(project("curio-h06"))
     await site.add(project("not-uploaded", youtube_video_id=None))
     cases = [
-        ("not-uploaded", done("其他/not-uploaded"), "video_backup_not_uploaded"),
+        ("not-uploaded", done("其他/not-uploaded"), "video_backup_not_ready"),
         ("curio-h06", done("奇聞/curio-h06"), "video_backup_folder_changed"),
         (
             "curio-h06",
@@ -509,6 +547,8 @@ async def test_the_summary_says_all_backed_up_only_when_every_uploaded_video_is_
     await site.add(project("curio-a"))
     await site.add(project("curio-b"))
     await site.add(project("draft-only", youtube_video_id=None))
+    await site.add(project("dropped", youtube_video_id=None, dropped_at=datetime.now(UTC)))
+    await site.confirm("dropped")
     await report(site, "curio-a", **done("奇聞檔案局/curio-a"))
     async with site.factory() as session:
         summary = await status.status(session)
@@ -533,6 +573,12 @@ async def test_the_summary_says_all_backed_up_only_when_every_uploaded_video_is_
         everything = await status.status(session, everything=True)
     assert finished.all_backed_up and finished.videos == []
     assert [video.slug for video in everything.videos] == ["curio-a", "curio-b"]
+    await site.add(project("curio-ready", youtube_video_id=None))
+    await site.confirm("curio-ready")
+    async with site.factory() as session:
+        waiting = await status.status(session)
+    assert (waiting.uploaded, waiting.all_backed_up) == (3, False), "ready counts as uploaded"
+    assert [video.slug for video in waiting.videos] == ["curio-ready"]
 
 
 async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site: Site) -> None:
@@ -545,6 +591,37 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     [video] = config.videos
     assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "full")
     assert video.expected.captions == ["ko"] and video.backup is None
+
+
+async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_after_a_revision(
+    site: Site,
+) -> None:
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("curio-h10", youtube_video_id=None))
+    await site.add(project("curio-h11", youtube_video_id=None, locales={"ja": {"dub": True}}))
+    await site.add(project("lab-short-2", youtube_video_id=None, shorts_line="lab"))
+    await site.add(project("curio-h12", youtube_video_id=None))
+    for slug in ("curio-h10", "curio-h11", "lab-short-2"):
+        await site.confirm(slug)
+    await site.confirm("curio-h12", status="pending")
+
+    async def listed() -> list[tuple[str, str | None]]:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return [(video.slug, video.youtube_video_id) for video in config.videos]
+
+    # curio-h11's Japanese dub is still being made; curio-h12 waits for its confirmation.
+    assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
+    view = await report(site, "curio-h10", **done("奇聞檔案局/curio-h10"))
+    assert view.state == "done" and view.youtube_video_id is None
+    await site.supersede("curio-h10")
+    assert await listed() == [("lab-short-2", None)], "a revision waits until it is ready again"
+    with pytest.raises(AppError) as refused:
+        await report(site, "curio-h10", **done("奇聞檔案局/curio-h10"))
+    assert refused.value.code == "video_backup_not_ready"
+    await site.confirm("curio-h10")
+    assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
 
 
 # --- the routes ---------------------------------------------------------------------------------

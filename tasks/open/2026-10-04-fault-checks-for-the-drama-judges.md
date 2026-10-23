@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-fault-checks-for-the-drama-judges
 title: Fault checks for the drama's judges (sheets, keyframes, clips) and sharper subject and finger checks
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1-elated-lamarr
+claimed_at: 2026-10-23T16:04:00Z
 created_at: 2026-10-04T01:41:03Z
 completed_at:
-branch:
+branch: claude/elated-lamarr-9f0ed3
 depends_on:
   - 2026-10-03-keyframe-judge-scale
 scope:
@@ -18,6 +18,7 @@ scope:
   - tools/video/media/look-keyframes.test.mjs
   - tools/video/media/clips.test.mjs
   - docs/videos/DRAMA.md
+  - docs/videos/BINGE.md
   - docs/videos/ILLUSTRATED.md
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
@@ -56,8 +57,10 @@ computed by the server), which were measured on 163 recorded takes. Two things w
 
 - [ ] Collect recorded verdicts of a drama's look, keyframes and clips (the wedding pilot's work
       directory has a few; a full episode is better) and tabulate them as `dist.mjs` does.
-- [ ] Draft checks for each kind from the existing rubric questions and the serious faults
+- [x] Draft checks for each kind from the existing rubric questions and the serious faults
       `INSTRUCTIONS` lists (identity against the sheet, a cut inside a clip, the subtitle band).
+      Done for keyframes (2026-10-24, manga tier only, shipped: see Notes); sheets and clips
+      are still drafts to write.
 - [ ] Measure on the recorded takes before changing code; ask the owner before spending
       (about US$0.01 a call).
 - [ ] Try a `subject` question that names the shot's one main action, and an `anatomy` question
@@ -78,6 +81,33 @@ pass, the labelled rejects fail, and the verdict of a take asked about twice doe
 - What did not work, so nobody tries it again: explaining the scale in the request context, in
   the rubric questions or in the system instruction; a grade per criterion; a deduction per
   criterion. Numbers in `docs/videos/ILLUSTRATED.md` §judge 的刻度與判定沿用.
+
+### 2026-10-24: the manga tier's keyframes take the checks (claude-fable-5.1)
+
+- Why now: 《系統說我是 BUG》e001 (46 shots, image-01 stills, `visual_tier: "manga"`) blocked on
+  2026-10-23 15:11Z with "keyframes still fails after 2 prompt fixes": best take per shot
+  5.08–7.03, one shot ≥ 7; the judge's problems were the letterbox bars (42 lines), `clean`
+  (85), style "looks 3D", `no_text` (20). The scored ceiling of 7 again, so the measured route
+  was taken without a new measurement: the checks are what gets measured on e001–e004.
+- What shipped (`media/keyframes.mjs`, `docs/videos/DRAMA.md` §manga 等級的關鍵影格用是非題):
+  `keyframeChecks({ characters, subtitleBand, craft: false })` for `visual_tier === "manga"`
+  on a server with `limits.judge_checks`. The seven measured questions word for word
+  (`text`, `anatomy`, `detached`, `subject`, `frame`, `details`, `awkward`), plus one
+  `identity_<id>` redraw check per character in the shot (against the sheet the judge is
+  shown; the shot-look variant cuts the appearance to the 400-character limit), `style` held
+  to the sheets (3D render, photograph, another palette or finish), `subtitle_band` (cost 3,
+  weight 1) when subtitles are burned in; no `generated`, since its fix clauses would be
+  written into an anime still's retake prompt. `needs_review` only when a redraw check is
+  answered true (every redraw check is cost 10, under the floor of 4); at a bar of 7 two
+  second-look flaws pass and three fail. `judge_min_score` untouched. Other tiers scored as
+  before.
+- The judge is shown the cut-in copy for manga (trim first, `stage.upload`, then judge), on
+  any server: image-01's bars and edge marks are inside what `trim.mjs` cuts, and judged whole
+  the bars failed 42 of 46 shots and their fix clauses went into every retake.
+- Not measured on recorded takes: `identity_*`, the sheets variant of `style`, `subtitle_band`,
+  and judging the cut copy. The before/after on e001 after the deploy is written below.
+- Still open on this ticket: the look sheets and the clips (scored; no recorded takes
+  measured), and the sharper `subject`/`anatomy` wording on the 28 labelled takes.
 - A candidate system instruction or answer format can only be measured inside the API container
   or after a deploy; the auto-mode classifier refuses a script piped into the container, so it
   needs the owner (skill `deploy`, rule 6).

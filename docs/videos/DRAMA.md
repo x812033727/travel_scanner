@@ -155,6 +155,15 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 
 `assemble`：`layoutDrama` 每場景給 `stills`（卡片，走原路）或 `clip`；`clipSegmentArgs`＝scale/pad → `setpts` → `fps=30` → `tpad` → `trim` → `overlay` 字幕條，編碼參數與投影片段相同但 `-tune film`、獨立 `CLIP_ENCODER_VERSION`，所以 `-c copy` 串接照舊；`dissolve` 在段內用上一鏡最後一格做。音訊：旁白 `asplit` 一路當側鏈，音樂 `stream_loop`＋淡入淡出＋`volume`，`sidechaincompress`，`amix=duration=first`（長度精確等於旁白），再兩段式 loudnorm；沒有 `music` 走原路。檢查：片段格數、第 0 格 PSNR、凍格 >60、音樂床 ≤ −24 LUFS、既有探測與響度。煙霧測試用 `lavfi testsrc2` 與 `sine` 造替身，不碰任何服務。
 
+### manga 等級的關鍵影格用是非題（2026-10-24 加，票 `2026-10-04-fault-checks-for-the-drama-judges`）
+
+打分數的 judge 把「挑不出毛病」打成 7、從不往上，站主的門檻也是 7（[`ILLUSTRATED.md`](ILLUSTRATED.md) §judge 的刻度與判定沿用，2026-10-04 量的）。貼圖漫劇把這件事放大了：《系統說我是 BUG》第 1 集 46 鏡在 2026-10-23 兩輪提示詞修正後仍擋在關鍵影格，每鏡最佳分 5.08–7.03、≥ 7 的只有 1 鏡，判詞最多的是 image-01 的上下黑邊（42 次）與 `clean`（85 次）。所以 `visual_tier === "manga"` 的作品（單集或合集，`series.json` 的 `visual_tier`）在伺服器宣告 `limits.judge_checks` 時改送是非題（`media/keyframes.mjs` 的 `keyframeChecks({ characters, subtitleBand, craft: false })`），`judge_min_score` 不動；動畫漫劇（`clips`／`hybrid`／`stills`）的設定圖、關鍵影格、片段照舊打分數，它們的出圖還沒量過。
+
+- **題目**：插圖投影片量過的那幾題逐字沿用（`text`、`anatomy`、`detached`、`subject`、`frame`、`details`、`awkward`），加上打分數的 rubric 本來就問漫劇的事：每個在鏡的角色一題 `identity_<id>`（對照 judge 看到的那張設定圖：臉、髮型、服裝、體型，或少了／多了疤、眼鏡、髮色這類記號；有 `shot_look` 的問臉與骨架加上該 look 的外觀，外觀太長會截到伺服器的 400 字上限）、`style` 改成「技法明顯不像設定圖：3D 渲染、照片、別的調色或完成度」、燒錄字幕時多一題 `subtitle_band`（主體或臉落在底部 14%；權重 1、`cost` 3，第二眼的毛病）。沒有 `generated`：那是插圖投影片的印刷手感題，答有時的修正句（線條要不均勻、不要光澤）會被寫進動漫靜圖的重做提示詞。
+- **判定**：`identity_*` 與六題重畫級都是 `cost` 10，答有就低於每項下限 4，這一鏡 `needs_review`，走提示詞修正；`details`／`awkward`／`subtitle_band` 只拉低 overall，門檻 7 時任兩題同時答有還過，三題都有才不過。分數題不再是門檻。
+- **judge 看裁過的圖**：manga 等級先裁（紙邊＋四邊 4%，`trim.mjs`）、把裁過的檔放進媒體庫、再問 judge；其他靜圖仍是先判原圖再裁。image-01 的上下黑邊與邊緣小字都在裁掉的範圍內，判原圖時黑邊讓 42／46 鏡被判「沒填滿畫框」，修正句又把它追進每一次重做。舊伺服器（沒有 `judge_checks`）上 manga 也是判裁過的圖。
+- **沒量過的部分**：identity、style（設定圖版）、subtitle_band 三題與「先裁再判」沒有在已記錄的出圖上量過；第一批用它判的集數就是量測，結果記在票裡。`--accept-best` 仍只給插圖影片：漫劇沒過的鏡頭等提示詞修正與站主重試。
+
 ## 伺服器：`apps/api/app/video_media/`
 
 比照 `video_speech`／`video_reviews`：`admin_api.py` 集中所有 `AppError`（後台路徑不需要四語訊息）、`schemas.py`、`models.py`（`video_media_jobs`，migration `0096`）、`jobs.py`、`storage.py`（`MediaStore(ReviewStore)`）、`meter.py`（包 `usage_meter` 的月計數器）、`catalog.py`、`settings.py`（`VIDEO_MEDIA_*` 環境變數）、`judge.py`、`providers/`。驗證沿用影片工具權杖。

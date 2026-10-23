@@ -64,8 +64,8 @@ UNRECONCILED_STORY_SLUGS = frozenset(
         "story-everyday-play-doh-c06",
     )
 )
-# These approved ceilings are still preproduction holds. They have no account;
-# even an accidentally inserted account must never activate them.
+# These approved ceilings remain preproduction holds even after 0138 creates
+# accounts for reconciliation. An account alone must never activate dispatch.
 PENDING_PILOT_LIMITS_USD = {
     "story-everyday-dr-martens-c07": PILOT_LIMIT_USD,
     "story-everyday-oxo-c10": PILOT_LIMIT_USD,
@@ -76,6 +76,13 @@ PENDING_PILOT_SLUGS = frozenset(PENDING_PILOT_LIMITS_USD)
 # supplier account, region, or prices. A separate reviewed change must lift
 # these holds before any new paid request can be admitted.
 PREPRODUCTION_HOLD_SLUGS = UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
+# This separate 0138 account set is recorded for read-only reconciliation while
+# paid admission remains held. Keep PILOT_LIMITS_USD as the reviewed 0133 set.
+C_SERIES_PILOT_LIMITS_USD = {
+    **{slug: PILOT_LIMIT_USD for slug in UNRECONCILED_STORY_SLUGS},
+    **PENDING_PILOT_LIMITS_USD,
+}
+C_SERIES_PRE_LEDGER_OPERATION_ID = "pre-ledger-history"
 PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 

@@ -241,7 +241,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 不管要它給分數、等級還是扣分，這個模型都縮在中間的預設值，文字怎麼定義都拉不動兩端；只有低分端對明寫的數字聽話（可讀文字、四隻手臂落到 3）。問「有沒有可讀的字」「有沒有哪隻手超過五指」這種是非題，它才肯表態：乾淨的圖一題都不答有，瑕疵點名點得具體。所以做法是**模型只回答是非，分數由伺服器算**（延續 `verdict()`「overall 由程式重算」）：
 
-- 伺服器：`JudgeCriterion` 多一個 `cost`。rubric 的每一題都帶 `cost` 時，這次呼叫改用 `CHECK_INSTRUCTIONS`、回答是每題一個布林值，該項分數＝沒有瑕疵 10、有瑕疵 10 − `cost`；沒回答或不是 `false` 一律算有瑕疵。overall 仍是加權平均，過關規則不變（overall ≥ 站主門檻、每項 ≥ 4）。不帶 `cost` 的 rubric 和以前逐字相同，漫劇的設定圖、關鍵影格、片段都不受影響。`GET /api/video/media/status` 的 `limits.judge_checks` 告訴工具伺服器會這樣問（`apps/api/app/video_media/judge.py`、`schemas.py`）。
+- 伺服器：`JudgeCriterion` 多一個 `cost`。rubric 的每一題都帶 `cost` 時，這次呼叫改用 `CHECK_INSTRUCTIONS`、回答是每題一個布林值，該項分數＝沒有瑕疵 10、有瑕疵 10 − `cost`；沒回答或不是 `false` 一律算有瑕疵。overall 仍是加權平均，過關規則不變（overall ≥ 站主門檻、每項 ≥ 4）。不帶 `cost` 的 rubric 和以前逐字相同，漫劇的設定圖、關鍵影格、片段都不受影響（2026-10-24 起例外：`manga` 等級的關鍵影格也送是非題，[`DRAMA.md`](DRAMA.md) §manga 等級的關鍵影格用是非題）。`GET /api/video/media/status` 的 `limits.judge_checks` 告訴工具伺服器會這樣問（`apps/api/app/video_media/judge.py`、`schemas.py`）。
 - 工具：插圖投影片在伺服器宣告 `judge_checks` 時改送 `keyframeChecks`（`media/keyframes.mjs`），九題：
 
 | 題 | 問什麼 | 權重／`cost` | 有的話 |
