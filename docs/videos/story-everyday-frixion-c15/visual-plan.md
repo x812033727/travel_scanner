@@ -1,6 +1,6 @@
 # C15 FriXion｜逐句逐鏡預製作表
 
-狀態：作者回修分鏡，與 [87 句逐字稿](script.md) 一對一；待原來源審查者差異覆核及兩位讀者重讀新稿。尚未生成、審圖或量到任何媒體秒數。`shot` 為 MiniMax `image-01`、**精確** `look: {"preset":"cute-mystery"}` 的候選提示詞；`card` 的繁中與數字一律由後製疊字，不送圖片模型。`shot` 提示詞只描述概念插畫，不是當年實驗的證據重建。人物均為不具名虛構成年人；無真實人物相貌、產品商標、可讀文字。店頭、紙杯與筆身均無品牌。微膠囊示意不按真實比例。縮圖大字 `FRIXION` 另由後製，不屬本表的付費張數。
+狀態：作者回修分鏡，與 [87 句逐字稿](script.md) 一對一；待獨立來源／配鏡差異覆核及兩位新讀者讀最終旁白。尚未生成、審圖或量到任何媒體秒數。`shot` 為 MiniMax `image-01`、**精確** `look: {"preset":"cute-mystery"}` 的候選提示詞；`card` 的繁中與數字一律由後製疊字，不送圖片模型。`shot` 提示詞只描述概念插畫，不是當年實驗的證據重建。人物均為不具名虛構成年人；無真實人物相貌、產品商標、可讀文字。店頭、紙杯與筆身均無品牌。微膠囊示意不按真實比例。縮圖大字 `FRIXION` 另由後製，不屬本表的付費張數。
 
 **片段順序**：H01–H08 冷開場 → 5 秒既定片頭 → O01–N20 → 21 秒 v4 片尾與結束畫面連結。每列暫以該句旁白占正文字符比推算停留秒數，**不是實際 TTS、畫面或插圖占比實測**。概念上每一句一景；剪輯可在同一句內給圖做緩慢運鏡，不能拖時補 480 秒。連續字卡最多一張。獨立逐鏡覆核須看「旁白加畫面」是否額外暗示已知錯誤。
 
@@ -77,7 +77,7 @@
 | N02 | shot | Conceptual close shot of an adult pointing to a tiny gap around a plain pen ball and suspended round ink particles, soft neutral light. | 無精密比例。 |
 | N03 | card | 2010｜按壓式 | 後續多色款不畫具體商品。 |
 | N04 | shot | Medium shot of the opening adult writer returning to the same blank page and a plain pen, curious expression, soft desk lamp. | 回到開場。 |
-| N05 | shot | Conceptual close shot of an adult tracing translucent round capsules beside a pale abstract ink stroke on blank paper, soft lamp. | 微膠囊示意。 |
+| N05 | shot | Conceptual close shot of an adult observing an abstract dark ink stroke turn pale under gentle friction from a plain pen end on blank paper, soft lamp. | 現行產品摩擦熱消色的概念示意，不再重畫微膠囊。 |
 | N06 | shot | Close shot of an adult lifting a plain pen end from a faint pale stroke while the paper surface stays intact, soft light. | 不畫墨屑全脫落。 |
 | N07 | card | 現行 FAQ：約 60°C | 現行文件歸屬。 |
 | N08 | card | 2017 新聞稿：約 65°C | 兩卡連續，上限 3；差異不合併。 |
