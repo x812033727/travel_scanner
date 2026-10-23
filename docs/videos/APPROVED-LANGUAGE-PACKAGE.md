@@ -57,6 +57,15 @@ review page. `files` lists the exact role, SHA-256, byte size and content type o
 every attached metadata, description, caption and dub file. It excludes the
 manifest itself to avoid a circular hash.
 
+Since 2026-10-24 a batch also carries each chosen language's own thumbnail,
+`thumbnail_<locale>` (`upload/thumbnails/<locale>.jpg`, `image/jpeg`), for every
+language other than the narration with at least one part chosen and a thumbnail in
+the package. It is not a part the owner chooses, so `locales` does not list it. The
+consumer accepts it (JPEG or PNG) and leaves it: no YouTube API takes a per-language
+thumbnail. The manual upload guide on `/admin/videos` reads the newest approved
+batch newer than the upload confirmation, so a language added after the upload has
+its captions, title, description and thumbnail there.
+
 ## Producer
 
 `review-push --gate languages` sends the parts that are made, then binds the batch
