@@ -291,6 +291,16 @@ ${locale}
   assert.deepEqual(result.unticked, ["ja metadata", "ja captions", "ja dub", "ko captions"], "en, ja and ko are read as before");
 });
 
+test("--languages sends a drama Short its episode's languages, cut to the Short", async (t) => {
+  // 種田娶妻打天下's Shorts (hailuo/shorts-dh.mjs) went up through tools/video/shorts import and push.
+  const box = imported(t);
+  box.known.checklist = [{ key: "built", done: true }, { key: "qa", done: true }];
+  box.known.shorts_line = "drama";
+  const result = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  assert.equal(result.status, "pending");
+  assert.deepEqual(Object.keys(box.calls.at(-1)[2].payload.locales), ["en", "ja"]);
+});
+
 test("--languages says which ticked parts the folder lacks", async (t) => {
   const box = imported(t, { locales: { en: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: true, dub: true } } });
   const result = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
@@ -307,7 +317,9 @@ test("--languages refuses a batch for another cut, a dub of another length, and 
   await assert.rejects(importLanguages({ from: rejected.from, workdir: rejected.workdir, client: rejected.client, probe: rejected.probe }), /import the cut first/);
   const notOurs = imported(t);
   notOurs.known.checklist = [];
-  await assert.rejects(importLanguages({ from: notOurs.from, workdir: notOurs.workdir, client: notOurs.client, probe: notOurs.probe }), /was not imported by this command/);
+  await assert.rejects(importLanguages({ from: notOurs.from, workdir: notOurs.workdir, client: notOurs.client, probe: notOurs.probe }), /was not imported by this command, nor is it a drama Short/);
+  notOurs.known.shorts_line = "lab";
+  await assert.rejects(importLanguages({ from: notOurs.from, workdir: notOurs.workdir, client: notOurs.client, probe: notOurs.probe }), /nor is it a drama Short/, "a narrated Short has no episode's tracks");
   const long = imported(t);
   await assert.rejects(importLanguages({ from: long.from, workdir: long.workdir, client: long.client, probe: async () => 120 }), /dub.en.m4a: lasts 120.00 s, the cut 113.50 s/);
   const titled = imported(t);

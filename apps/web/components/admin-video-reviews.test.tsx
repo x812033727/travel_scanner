@@ -670,6 +670,22 @@ describe("AdminVideoReviews", () => {
     expect(within(reader).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", true);
   });
 
+  it("shows a drama Short its language panel with dubs open, and a narrated Short none", async () => {
+    const approvedFinal = { ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" };
+    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, pending: 0, reviews: [approvedFinal], ...fields })));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    vi.stubGlobal("fetch", detail({ format: "drama", shorts_line: "drama", shorts_series: "zhong-tian-qu-qi", dub_allowed: true }));
+    const drama = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(panel).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", false);
+    drama.unmount();
+
+    vi.stubGlobal("fetch", detail({ format: "shorts", shorts_line: "lab", shorts_series: "daily", dub_allowed: false }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { level: 2 });
+    expect(screen.queryByRole("region", { name: "這支影片的語言" })).toBeNull();
+  });
+
   it("waits for the final cut before offering languages, greys out a drama's dub unless the narrator tells it alone, and lets a reader only look", async () => {
     const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
     window.history.replaceState(null, "", "/?video=ai-model-choice");

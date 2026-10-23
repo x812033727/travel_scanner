@@ -1331,9 +1331,13 @@ def _dub_allowed(
 
     The series kind comes from the server's episode row, so recategorising a brand story as
     an explainer does not unlock an older cut. The category also catches a standalone story.
+
+    A drama Short is cut from an episode, and its dubs are that episode's tracks cut to the
+    same span (``import --languages``): nothing is made for it, so it may carry them. A lab or
+    cut Short has a narrator the worker never dubs.
     """
     if project.shorts_line is not None:
-        return False
+        return project.shorts_line == "drama"
     if (project.format or "slides") != "drama":
         return True
     if _story_dub_preselectable(project, series_kind):
