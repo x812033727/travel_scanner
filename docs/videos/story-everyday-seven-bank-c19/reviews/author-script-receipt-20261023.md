@@ -1,6 +1,6 @@
-# C19 Seven Bank｜作者 v3 敘事與逐鏡文字收據
+# C19 Seven Bank｜作者 v3 敘事與逐鏡文字收據（來源界線窄修）
 
-**關卡：作者修稿完成，待新版獨立全文來源與配鏡查核、兩位只讀旁白盲讀，以及站主核稿。** 站主採用的是 [六章企劃](../treatment.md) 的事實方向，未核准本版劇本。前版在 [來源／配鏡全文審查 #1745](https://github.com/x812033727/travel_scanner/pull/1745) 和 [差異審查 #1748](https://github.com/x812033727/travel_scanner/pull/1748) 達到 79／79 PASS，但該結論只適用當時的 `f45d93d`。其後兩份只讀旁白審查 [#1751](https://github.com/x812033727/travel_scanner/pull/1751)、[#1752](https://github.com/x812033727/travel_scanner/pull/1752) 對同一舊投影判 HOLD；不能拿舊來源查核覆蓋這次重寫，也不能拿作者自評代替新盲讀。
+**關卡：作者完成兩句來源範圍窄修；待非作者差異覆核、兩位新版只讀旁白盲讀，以及站主核稿。** 站主採用的是 [六章企劃](../treatment.md) 的事實方向，未核准本版劇本。[v3 獨立全文來源／配鏡審查 #1758](https://github.com/x812033727/travel_scanner/pull/1758) 針對前一個精確 head `ed2d5f524` 得到 77／79 旁白來源 PASS、78／79 獨立畫面 PASS，HOLD 為 `c190607` 的 +Connect 採用範圍和 `c190609` 的 ATM Teller 七成交易分母。本次只改這兩句、同 ID 來源註記、`c190607` 字卡與 JSON 對應欄位；#1758 的舊雜湊結論不可直接套用新稿。更早兩位只讀旁白審查 [#1751](https://github.com/x812033727/travel_scanner/pull/1751)、[#1752](https://github.com/x812033727/travel_scanner/pull/1752) 對 v2 投影判 HOLD；新版仍需兩位各自盲讀。
 
 ## 精確檔案與機械核對
 
@@ -8,16 +8,16 @@
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| `script.md` | `68EE62A86E23199CB29CEE484587F50E2EB3AD89C7501319F81EAC9C047146A1` |
-| `script-source-notes.md` | `43AAC856B4ADC4E56C4E6F0BAF1FDD40C2ED550D8D9E17C2651D4B8B05280E10` |
-| `visual-plan.md` | `0A0C9535AAC21C43980B1D4AD705502FA4FADCEADB428FD871EE8C8F0854C57E` |
-| `visual-plan.json` | `039CB84B7F306C0584E73F98F013DB09BF770F1F052206E45A136F59873C04AA` |
+| `script.md` | `69BD8C475DA083A6D943B15FE2BE210915BE173F14839EBF3918ADF52F0441A1` |
+| `script-source-notes.md` | `78EBAC3F31EE50B1D9784C3F0EF19777949FC467342599D0EF065A344BFB3F45` |
+| `visual-plan.md` | `F2847832EC538AF1BC016EF353D036ED34670F0CD72F91F5380E7DBE43F8D84D` |
+| `visual-plan.json` | `83B06A187381D3A6F7C7FDB6B0E25FBC786DE8BE3B6EE0C171C939F5308709A7` |
 
 79 句旁白對應 79 鏡，ID 與順序在四檔相同；JSON 的 `narration`、`source_tags` 與逐字稿一字不差。66 鏡概念插圖、13 張後製字卡，連續字卡最多兩張；按鏡數插圖為 83.5%，真正畫面時間占比待成片實測。圖片模型只規劃 MiniMax `image-01`，`look` 精確 `{"preset":"cute-mystery"}`；提示詞不含品牌名稱或可讀商標。沒有產圖、配音、配樂、匯入、上傳或發布。
 
-只讀旁白新版投影只含 79 行 `ID<TAB>旁白<LF>`，位於 `C:\Users\x8120\.codex\worktrees\b16f\travel_scanㄐ\c19-seven-bank-narration-v3-only.txt`，SHA-256 `CD7832A0116A629BE39328C888DBD7AB05CE05D366EB7C30CD563C12608CCC5B`。分派兩位新讀者時只給這份位元組固定的投影及固定判準，不給企劃、來源、逐鏡或其他讀者意見；先由非作者重開原件作全文來源與配鏡審查。
+只讀旁白修訂投影只含 79 行 `ID<TAB>旁白<LF>`，位於 `C:\Users\x8120\.codex\worktrees\b16f\travel_scanㄐ\c19-seven-bank-narration-v3-delta1-only.txt`，SHA-256 `99D990690BE8E5757CB7C9580CF7DCAD7D26CCC6E4B7FC0B7F2C5ADBA7CE0590`。#1758 所查前版投影 `c19-seven-bank-narration-v3-only.txt` 及其 SHA `CD7832A0116A629BE39328C888DBD7AB05CE05D366EB7C30CD563C12608CCC5B` 保留不覆寫。分派兩位新讀者時只給修訂投影及固定判準，不給企劃、來源、逐鏡或其他讀者意見；非作者只需針對這次改動重開 S4 原件與配鏡做差異覆核。
 
-開場 `c190101–107` 為 199 個字元，紙上約 48 秒；5 秒既有片頭後的正文 `c190201–612` 為 2,131 個字元，按每字 0.24 秒約 511 秒。這只是一致的字數代理，**不是實際配音達到 480 秒的證據**；付費圖片仍須等正常語速配音實測過門檻、單集預算路由與完整上限另獲核准。21 秒 v4 片尾及連結位置在 `c190612` 後。用章界、實際提問和承諾句估計，非機械的 30–45 秒懸念間隔最大約 39.4 秒；此值仍待只聽旁白者驗證感受。
+開場 `c190101–107` 為 199 個字元，紙上約 48 秒；5 秒既有片頭後的正文 `c190201–612` 為 2,141 個字元，按每字 0.24 秒約 514 秒。這只是一致的字數代理，**不是實際配音達到 480 秒的證據**；付費圖片仍須等正常語速配音實測過門檻、單集預算路由與完整上限另獲核准。21 秒 v4 片尾及連結位置在 `c190612` 後。用章界、實際提問和承諾句估計，非機械的 30–45 秒懸念間隔最大約 39.4 秒；此值仍待只聽旁白者驗證感受。
 
 ## 修稿對應盲讀 HOLD
 
@@ -44,6 +44,6 @@
 
 ## 新句的來源邊界
 
-`c190308–309` 的 2001 年七月逾千台與十一月上旬約一萬六千個帳戶，限 [同年十一月公告](https://www.sevenbank.co.jp/corp/news/2001/1109_1.html) 已發生部分；沒有把其十一月十一日預告寫為實績。`c190310` 的 2001 年十二月企業銷售款入金，按 [公司年表](https://www.sevenbank.co.jp/corp/company/atm-history.html)；`c190512` 才引用 [2010 年報 p.10](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf) 的補鈔用途，沒有倒寫早期省費量。`c190414` 五百五十五家合作機構、`c190501–502` 合作成本和同介面，均限該年報 p.14 截至 2010 年三月的模型。`c190602–603` 的 ATM 櫃員與通知功能、`c190608–609` 的櫃台縮減與約七成下班後交易，均按 [2024 整合報告 p.16](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf) 轉述；約七成只指該段新服務交易，不是全網提款。
+`c190308–309` 的 2001 年七月逾千台與十一月上旬約一萬六千個帳戶，限 [同年十一月公告](https://www.sevenbank.co.jp/corp/news/2001/1109_1.html) 已發生部分；沒有把其十一月十一日預告寫為實績。`c190310` 的 2001 年十二月企業銷售款入金，按 [公司年表](https://www.sevenbank.co.jp/corp/company/atm-history.html)；`c190512` 才引用 [2010 年報 p.10](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf) 的補鈔用途，沒有倒寫早期省費量。`c190414` 五百五十五家合作機構、`c190501–502` 合作成本和同介面，均限該年報 p.14 截至 2010 年三月的模型。`c190607` 的九家是 [2024 整合報告 pp.16、18](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf) 截至當年七月的 **+Connect 採用銀行**，不是每項功能或逐台部署數；`c190609` 的約七成只指該報告 p.16 的 **ATM Teller／ATM 櫃員服務交易**發生在銀行櫃台關閉時，不是所有 +Connect 服務或全網提款。
 
-上述只是作者定位與界線，**新版 79 句及 79 鏡仍須完整、獨立、逐項核對**；兩位新讀者也必須各自鎖定對本版旁白的十二項判斷。站主核稿、任何整支付費上限與實際語音時長均為後續獨立關卡。
+上述只是作者定位與界線；#1758 的 77 句來源 PASS 和 78 鏡畫面 PASS 僅屬其舊雜湊，**本版 `c190607`、`c190609` 與配對字卡仍待獨立差異覆核**。兩位新讀者必須各自鎖定對本版旁白的十二項判斷。站主核稿、任何整支付費上限與實際語音時長均為後續獨立關卡。

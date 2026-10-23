@@ -9,7 +9,7 @@
 | S1 | [Seven Bank ATM 20 周年回顧](https://www.sevenbank.co.jp/corp/company/atm-history.html)：1987 代收、顧客調查、1999 先例、2005 第二代及 2007 服務，均按公司回顧表述。 |
 | S2 | [Seven Bank 沿革](https://www.sevenbank.co.jp/english/corp/company/history.html)：牌照、成立、開業、ATM、匯款、2005 改名及 2007 設點依各自日期，不合併。 |
 | S3 | [Seven Bank 2010 年報](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf)：pp.10–15 的企業營業款補鈔、商業模型與合作方用途、p.54 的單年度費用，不能回填 2001 合約或推每台淨利。 |
-| S4 | [Seven Bank 2024 整合報告](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf)：pp.11、16–18 的後來用途與 +Connect，九家只限 2024-07。 |
+| S4 | [Seven Bank 2024 整合報告](https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf)：pp.11、16–18 的後來用途；九家只限 2024-07 的 +Connect 採用銀行，約七成只限 ATM Teller 交易。 |
 | S5 | [IY Bank 2005 改名公告](https://www.sevenbank.co.jp/corp/news/2005/060801.html)：同期公司對命名的說明，日期由 S2 核實。 |
 | S6 | [IY Bank 2002 首次揭露誌](https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf)：自家金融服務與合作機構 ATM 事業分開；沒有取牌與合作代理替代方案的比較決策紀錄。 |
 | S7 | [IY Bank 2001 設點公告](https://www.sevenbank.co.jp/corp/news/2001/1109_1.html)：首日 59 地點／66 台、7 月逾千台是已記錄實績；11 月 11 日台數在 11 月 9 日公告裡仍屬預告，本稿不採。 |
@@ -98,9 +98,9 @@
 | c190604 | M12；後來的現金儲值服務，非 2001 功能 |
 | c190605 | M12；2024 模型，非所有服務免費 |
 | c190606 | M13、S4 PDF pp.17–18；以設問保留普及範圍 |
-| c190607 | M13；九家限 2024-07，採用機構數不等於逐台功能 |
+| c190607 | S4 PDF pp.16、18、M13；九家限 2024-07 的 +Connect 採用銀行，不是全部功能或逐台可用 |
 | c190608 | S4 PDF p.16；按公司 2024 回顧轉述，不倒寫為 2001 創業動機 |
-| c190609 | S4 PDF p.16；+Connect 服務段落約 70% 交易在銀行櫃台關閉時，不擴成全網 ATM 交易 |
+| c190609 | S4 PDF p.16；約 70% 的分母僅 ATM Teller 交易，不擴成全網 ATM 或所有 +Connect 交易 |
 | c190610 | M04–M05、M15–M16；一行直接回答開場，不推未證比較動機 |
 | c190611 | 與本集跨機構網路相連的留言題 |
 | c190612 | 系列訂閱邀請，不點名下一集 |
