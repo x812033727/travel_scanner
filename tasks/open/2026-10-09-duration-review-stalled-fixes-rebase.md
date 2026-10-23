@@ -11,8 +11,7 @@ completed_at:
 branch: codex/stalled-video-reviewed-fixes-20261008
 depends_on: []
 scope:
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
+  - tasks/open/2026-10-09-duration-review-stalled-fixes-rebase.md
 ---
 
 # Revalidate duration-only receipt after stalled video fixes rebase
@@ -77,3 +76,9 @@ are retained under
 - This task completes the review and receipt refresh only. PR merge/deployment,
   movie owner playback, language choice and YouTube publication are distinct
   and are not asserted by this task.
+
+2026-10-23 owner-directed narrow C-series handoff: the shared checkout's canonical
+`docs/videos/long-form/review.md` and `review.json` were clean. The board steward released
+only these two paths for an independent final duration review; the historical review,
+remaining task status and checks are preserved. This task now scopes only its own record,
+which keeps the still-open review ticket valid without reserving the canonical receipt.

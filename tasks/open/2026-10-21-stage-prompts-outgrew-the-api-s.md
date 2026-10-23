@@ -14,8 +14,6 @@ scope:
   - apps/api/app/video_automation/schemas.py
   - apps/api/tests/test_video_automation_ai.py
   - tools/video/automation/prompts.test.mjs
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
 ---
 
 # Stage prompts outgrew the API's 60,000-character limit
@@ -35,3 +33,8 @@ raise the API's limit rather than shorten the rules.
 - [x] A tools test fails when any composed stage prompt, with room for the standing
       instructions, would pass the limit the API declares.
 - [ ] Deployed, and the worker's next writer run is accepted.
+
+2026-10-23 owner-directed narrow C-series handoff: the shared checkout's canonical
+`docs/videos/long-form/review.md` and `review.json` were clean. The board steward released
+only these two paths for an independent final duration review; this ticket's other scope,
+status and deployment check remain.
