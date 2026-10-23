@@ -281,7 +281,9 @@ export async function importLanguages({ from, workdir, env = process.env, home, 
   const meta = readMeta(JSON.parse(readFileSync(metaFile, "utf8")));
   const site = client ?? siteClient({ env, home });
   const known = await site.project(meta.slug);
-  if (!known || !(known.checklist ?? []).some((item) => item.key === IMPORTED)) throw new UsageError(`${meta.slug} was not imported by this command; import its cut first`);
+  // A drama Short (tools/video/shorts import and push) carries its episode's languages the same way.
+  const takes = known && ((known.checklist ?? []).some((item) => item.key === IMPORTED) || known.shorts_line === "drama");
+  if (!takes) throw new UsageError(`${meta.slug} was not imported by this command, nor is it a drama Short; import its cut first`);
   if (publishSent(known)) throw new UsageError(`${meta.slug}: an upload package was already sent; a languages batch after it would not match it (docs/videos/COMPILATIONS.md)`);
   const current = (known.reviews ?? []).find((review) => review.gate === "final" && !review.subject);
   const sha256 = await sha256File(final);
