@@ -42,5 +42,6 @@ The C19 slot in the approved 20-episode editorial plan had only a source entranc
 
 - Seven Bank's own ATM anniversary timeline names Sakura Bank/am-pm and E-net in 1999. No first-in-Japan framing.
 - Corporate history separates IY Bank founding (2001-04-10), bank license (04-25), bank opening (05-07) and ATM launch (05-15). It changes name only in 2005.
+- The retrospective ATM page groups transfers under May 2001, while the dated corporate timeline starts money transfers on June 18. Use the latter precise date in any script.
 - 2010 annual report separates customer ATM transaction fees set by partner institutions from ATM usage fees paid to Seven Bank. Its ATM fee income and placement expense are two dated line items, not profit per machine.
 - 2024 integrated report gives later +Connect and cash top-up context; do not backdate them into 2001.
