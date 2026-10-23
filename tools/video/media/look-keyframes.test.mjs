@@ -1774,3 +1774,119 @@ test("--accept-best is still refused for a cute explainer: its failing picture i
   assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* fix the prompts of its shots instead/);
   assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
 });
+
+/** The drama fixture as a manga-tier episode: every shot a still (the tier allows no clip), the tier in series.json as the worker writes it. */
+function mangaSandbox() {
+  const box = sandbox("fixture-drama", "drama");
+  rewrite(box, (doc) => {
+    for (const scene of doc.scenes) if (scene.template === "shot") scene.data.visual = "still";
+  });
+  writeFileSync(path.join(box.dir, "series.json"), `${JSON.stringify({ visual_tier: "manga" }, null, 2)}\n`);
+  return box;
+}
+
+test("a manga drama's fault checks: one identity question per character before the measured ones, the style held to the sheets, no print-craft question, the subtitle band when burned in", () => {
+  const cast = [{ id: "jing-wei", name: "精衛", appearance: "a girl of twelve with a red ribbon" }, { id: "yandi", name: "炎帝", appearance: "an old man", shot_look: "court", shot_looks: [] }];
+  const checks = keyframeChecks({ characters: cast, subtitleBand: true, craft: false });
+  assert.deepEqual(checks.map((item) => item.key), ["identity_jing_wei", "identity_yandi", "text", "anatomy", "detached", "subject", "frame", "style", "details", "awkward", "subtitle_band"]);
+  assert.deepEqual(checks.filter((item) => item.cost === 10).map((item) => item.key), ["identity_jing_wei", "identity_yandi", "text", "anatomy", "detached", "subject", "frame", "style"], "a wrong identity redraws the shot like the six measured faults");
+  assert.ok(checks.every((item) => item.cost > 0 && item.cost <= 10 && item.question.length <= 400 && /^[a-z][a-z0-9_]{0,39}$/.test(item.key)));
+  assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
+  assert.match(checks[0].question, /^Is 精衛 not the person on the reference sheet labelled "精衛": another face, hair, clothing or build, or a mark of theirs/);
+  assert.match(checks[1].question, /not in the requested look court: an old man\? The requested clothing, hair and age override the sheet's styling/);
+  assert.match(checks.find((item) => item.key === "style").question, /unlike the reference sheets shown/);
+  assert.equal(checks.find((item) => item.key === "generated"), undefined, "the print-illustration question would write its fixes into an anime still's retake");
+  // The measured questions are the illustrated slides' word for word.
+  const slides = keyframeChecks();
+  for (const key of ["text", "anatomy", "detached", "subject", "frame", "details", "awkward"]) assert.deepEqual(checks.find((item) => item.key === key), slides.find((item) => item.key === key), key);
+  assert.deepEqual(keyframeChecks({ characters: [], subtitleBand: false, craft: false }).map((item) => item.key), ["text", "anatomy", "detached", "subject", "frame", "style", "details", "awkward"]);
+  assert.equal(keyframeChecks({ craft: false }).find((item) => item.key === "style").question, slides.find((item) => item.key === "style").question, "with no cast the style is held to the look's text, as the slides' is without a plate");
+  // A long shot look is cut to the server's limit on a question rather than refused.
+  const long = keyframeChecks({ characters: [{ id: "x", name: "X", appearance: "a word ".repeat(200).trim(), shot_look: "rain" }] })[0].question;
+  assert.ok(long.length <= 400 && long.endsWith("…? The requested clothing, hair and age override the sheet's styling; a pose, an expression or the lighting does not count."), long);
+  // What the server computes from the answers at the owner's bar of 7 (apps/api/app/video_media/judge.py).
+  const total = checks.reduce((sum, item) => sum + item.weight, 0);
+  const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
+  assert.equal(overall(), 10);
+  assert.ok(overall("awkward", "details") >= 7 && overall("awkward", "subtitle_band") >= 7, "two second-look flaws pass at 7");
+  assert.ok(overall("awkward", "details", "subtitle_band") < 7, "all three do not");
+  assert.ok(10 - checks[0].cost < 4, "an identity fault fails the take under the server's floor whatever the rest answers");
+});
+
+test("a manga drama's keyframes are judged by the fault checks on a server that takes them, from the cut-in copy, and scored on the rubric on one that does not", async () => {
+  const box = mangaSandbox();
+  const cut = [];
+  // The stand-in trimmer of a sandbox: writes the cut copy beside the picture and records what it was asked.
+  const cutter = (sandboxed) => async (file, options) => {
+    cut.push([file, options]);
+    const out = file.replace(/\.png$/, "-trim.png");
+    writeFileSync(path.join(sandboxed.workdir, out), PNG(`cut ${file}`));
+    return { file: out, sha256: SHA(PNG(`cut ${file}`)), margins: { top: 0, bottom: 0, left: 0, right: 0 }, inset: options.inset };
+  };
+  const trimImage = cutter(box);
+  const IDENTITY_PROBLEM = `identity_yandi: 炎帝 has a beard the sheet does not${FIX_ARROW}炎帝 clean-shaven as on his sheet`;
+  const verdicts = (kind, request) => {
+    if (kind !== "keyframe") return { overall: 9, passed: true };
+    // The farewell fails every take on an identity fault; the rest are clean.
+    return request.context.shot.id === "farewell" ? { overall: 9.76, passed: false, problems: [IDENTITY_PROBLEM] } : { overall: 10, passed: true };
+  };
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts });
+  const look = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["look", "--slug", box.slug], look.ctx), EXIT.ok, look.out.stderr);
+  await main(["look", "--slug", box.slug, "--choose", "jingwei=1,yandi=1"], context(box, site.fetchImpl).ctx);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const run = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const judged = site.state.judges.filter((request) => request.kind === "keyframe");
+  assert.equal(judged.length, 6, "three shots once, the farewell three times");
+  const drama = dramaFixture();
+  const castOf = (id) => drama.scenes.find((scene) => scene.id === id).data.characters.map((cid) => drama.characters.find((character) => character.id === cid));
+  for (const request of judged) {
+    const id = request.context.shot.id;
+    assert.deepEqual(request.rubric, keyframeChecks({ characters: castOf(id), subtitleBand: true, craft: false }), id);
+    assert.ok(request.rubric.every((item) => item.cost > 0), `${id} is asked yes/no questions`);
+    // The judge is shown the cut-in copy, which went to the store first, beside the sheets.
+    assert.ok(request.files[0].sha256.length === 64 && site.state.uploads.some((upload) => upload.sha256 === request.files[0].sha256), `${id}: the judged picture is in the store`);
+  }
+  assert.deepEqual(judged[1].rubric.slice(0, 2).map((item) => item.key), ["identity_jingwei", "identity_yandi"]);
+  assert.deepEqual(judged[1].files.map((file) => file.label), ["keyframe", "sheet 精衛", "sheet 炎帝"]);
+  assert.deepEqual(judged.at(-1).rubric.map((item) => item.key), ["text", "anatomy", "detached", "subject", "frame", "style", "details", "awkward", "subtitle_band"], "the bird's shot names no character");
+  assert.ok(cut.every(([file, options]) => /^keyframes\/.*-\d\.png$/.test(file) && options.inset === 0.04), JSON.stringify(cut));
+  assert.equal(cut.length, 6, "every take is cut in before it is judged");
+  assert.equal(judged[0].files[0].sha256, SHA(PNG("cut keyframes/opening-1.png")));
+  assert.match(run.out.stdout, /opening: cut 4% in from every edge\nopening take 1: judge 10\/10\n/);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.shots.opening.file, "keyframes/opening-1-trim.png");
+  assert.equal(manifest.shots.opening.sha256, SHA(PNG("cut keyframes/opening-1.png")), "the judged copy is the one the manifest keeps");
+  assert.equal(manifest.shots.farewell.needs_review, true, "a redraw fault answered true leaves the shot for a prompt fix");
+  assert.equal(manifest.shots.farewell.takes.length, 3);
+  assert.deepEqual(manifest.shots.farewell.problems, [IDENTITY_PROBLEM]);
+  assert.deepEqual(manifest.shots.farewell.fixes, ["炎帝 clean-shaven as on his sheet"]);
+  assert.match(site.state.images.find((request) => request.shot_id === "farewell" && request.seed === 2).prompt, /Corrections: 炎帝 clean-shaven as on his sheet/);
+  assert.match(run.out.stdout, /ERROR farewell: no take passed the judge: identity_yandi/);
+  // A rerun asks nothing again: the verdicts stand on the question as it is asked now.
+  const again = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.lint, again.out.stderr);
+  assert.equal(site.state.judges.filter((request) => request.kind === "keyframe").length, 6);
+  assert.match(again.out.stdout, /opening: kept \(judge 10\/10\)\n/);
+  // --accept-best is still not for a drama: its pictures wait for the prompt fix, then the owner's retry.
+  const refused = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], refused.ctx), EXIT.usage);
+
+  // A server without the checks scores the same episode on the rubric, identity questions first, still from the cut-in copy.
+  const scored = mangaSandbox();
+  const scoredSite = mediaSite({ status: { ...STATUS, limits: {} }, verdicts: () => ({ overall: 8, passed: true }) });
+  assert.equal(await main(["look", "--slug", scored.slug], context(scored, scoredSite.fetchImpl).ctx), EXIT.ok);
+  await main(["look", "--slug", scored.slug, "--choose", "jingwei=1,yandi=1"], context(scored, scoredSite.fetchImpl).ctx);
+  await approve({ gate: "look", docDir: scored.dir, workdir: scored.workdir, note: "test" });
+  const plain = context(scored, scoredSite.fetchImpl, { trimImage: cutter(scored) });
+  assert.equal(await main(["keyframes", "--slug", scored.slug], plain.ctx), EXIT.ok, plain.out.stderr);
+  const asked = scoredSite.state.judges.filter((request) => request.kind === "keyframe");
+  assert.equal(asked.length, 4);
+  assert.ok(asked.every((request) => request.rubric.every((item) => item.cost === undefined)));
+  assert.deepEqual(asked[1].rubric.map((item) => item.key), ["identity_jingwei", "identity_yandi", "prompt", "style", "clean", "no_text", "subtitle_band"]);
+  assert.equal(asked[0].files[0].sha256, SHA(PNG("cut keyframes/opening-1.png")), "the scored judge too is shown the cut-in copy: the bars it would fail as unclean are gone with it");
+  assert.ok(scoredSite.state.uploads.some((upload) => upload.sha256 === asked[0].files[0].sha256));
+  assert.equal(manifestOf(scored, "keyframes").shots.opening.file, "keyframes/opening-1-trim.png");
+});
