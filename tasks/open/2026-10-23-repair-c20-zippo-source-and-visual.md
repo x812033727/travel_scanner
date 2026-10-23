@@ -45,6 +45,6 @@ scope:
 
 ## Notes
 
-第一輪避免把後述 1933 售價及保證說成同期商品卡，也不把現今 Repair Clinic 倒定年到 1997；1997 是擴建後新館，第一間較小的館於 1993 年已開幕。v3 保留其區分，並移除不服務保修主線的六億支段落；正文紙上估約 520.8 秒，不是實際 TTS。
+第一輪避免把後述 1933 售價及保證說成同期商品卡，也不把現今 Repair Clinic 倒定年到 1997；1997 是擴建後新館，第一間較小的館於 1993 年已開幕。v3 保留其區分，並移除不服務保修主線的六億支段落。獨立全文審查 PR #1746 再指出五處英國表格／寄件路線及虛構修復結果的誤導；目前已窄修，正文紙上估約 521.8 秒，不是實際 TTS，差異仍待非作者重核。
 
-v3 作者 head `5b0c8b9890e8ed4264b2de4d5c141b1ddc6c730f` 曾推到 PR #1728；該次 GitHub 讀回是 draft、`no-auto-merge`，沒有 auto-merge request。64 句只讀旁白最新投影另存於 b16f 暫存目錄，SHA-256 `75274D367D1B147BED2D59BC91827E142064886F2C2469DF130668DF680698B6`。`node tools/video/cli.mjs lint --help` 在此工作樹因缺少本機 `pinyin-pro` 套件於載入階段退出；不宣稱影片 lint 通過。結構比對 64/64、`npm run check:tasks`、`git diff --cached --check` 曾通過，最後窄修後需重跑。
+v3 作者 head `d9d70e3fa8be4b73283847de0ae17ad2993f82e1` 曾推到 PR #1728；該次 GitHub 讀回是 draft、`no-auto-merge`，沒有 auto-merge request。64 句只讀旁白最新投影另存於 b16f 暫存目錄，SHA-256 `0AB3EE39F253B19604618BDF70424DBEEDA51711561673B3120A06563697F761`。`node tools/video/cli.mjs lint --help` 在此工作樹因缺少本機 `pinyin-pro` 套件於載入階段退出；不宣稱影片 lint 通過。最後窄修已重新跑結構比對 64/64 與 `npm run check:tasks`；`git diff --cached --check` 尚待 Git 索引鎖移除後重跑。索引鎖精確刪除遭自動審查 `blocked by policy`，已請站主手動移除，未繞過。
