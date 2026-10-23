@@ -1,13 +1,13 @@
 ---
 id: 2026-10-22-c17-nalgene-treatment
 title: Research C17 Nalgene brand story treatment and sources
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-c17-nalgene-treatment
 claimed_at: 2026-10-22T18:52:30Z
 created_at: 2026-10-22T18:52:18Z
-completed_at:
+completed_at: 2026-10-23T03:21:22Z
 branch: codex/brand-story-nalgene-c17
 depends_on: []
 scope:
@@ -22,16 +22,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 六章 Treatment 有一條可講的因果主線、開場與每 30–45 秒具體鉤子、片頭片尾／畫面界線；未核准時不寫逐字稿或付費。
-- [ ] 逐項來源矩陣將可直接讀的原廠／供應商原件連到 M01–M12，標清可說與不可推論，供另一代理獨立重開。
-- [ ] 獨立來源審查綁 Treatment／矩陣雜湊後，才送站主審企劃方向。
+- [x] 六章 Treatment 有一條可講的因果主線、開場與每 30–45 秒具體鉤子、片頭片尾／畫面界線；未核准時不寫逐字稿或付費。
+- [x] 逐項來源矩陣將可直接讀的原廠／供應商原件連到 M01–M12，標清可說與不可推論，供另一代理獨立重開。
+- [x] 獨立來源審查綁 Treatment／矩陣雜湊後，才送站主審企劃方向。
 
 ## Steps
 
 - [x] 查現有 20 題企劃、看板、PR 和工作樹，從系列分支另開 C17 工作樹並認領。
 - [x] 讀一手頁與原發行者重刊新聞稿；保留 1949／1960s／mid-1970s／2008／2020 的口徑差異。
 - [x] 寫 Treatment、來源矩陣並做機械檢查；提交草稿 PR。
-- [ ] 派不同代理獨立逐項重開來源；必要時作者修訂並重核，再交站主企劃審核。
+- [x] 派不同代理獨立逐項重開來源；必要時作者修訂並重核，再交站主企劃審核。
 
 ## How to verify
 
@@ -46,3 +46,5 @@ scope:
 2026-10-23：已開[草稿 PR #1699](https://github.com/x812033727/travel_scanner/pull/1699)，base `codex/brand-stories-new-series-20261020`、標記 `no-auto-merge`；原作者輸入檔雜湊如上。下一手先派另一名代理逐項重開來源，查核後才問站主是否採用企劃。
 
 2026-10-23 作者窄修：獨立審查在 `docs/videos/brand-story-independent-reviews/C17-nalgene-20261023.md` 對「1949 水瓶」說法錯置為 S2 標題提出 HOLD；已只把五處來源定位／後續查核提示改為「開頭導語」。新版 `treatment.md` SHA-256 `0451192DAA6EDF85CFD8721674511B6DBDBC671A73AC720B0BCEDFB9E14C1E07`；`source-matrix.md` SHA-256 `892041F854DCF4FBFFF37BFE90AC6B1AA02647CBD146CB2262F7A2E47FAC316E`，細節見同目錄 `author-repair-20261023.md`。M01 定位待另一代理依新版雜湊複核，尚未解除企劃 HOLD 或交站主採用。
+
+2026-10-23 企劃關卡完成：獨立審查者在 head `c2a90306b5b9c82fb0319b407fa4e8a48f1bde1f` 對新版 Treatment／矩陣雜湊做差異覆核並解除窄 HOLD，M01–M12 依矩陣界線可用；站主隨後答覆「採用 C17 企劃方向」。同目錄 `owner-treatment-adoption-20261023.md` 綁定兩份輸入 SHA 與獨立收據 SHA。這張票的企劃工作結案；後續逐字稿以另張窄範圍任務承接，並另走劇本與付費關卡。
