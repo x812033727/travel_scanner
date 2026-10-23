@@ -36,6 +36,7 @@ export const PREFIXES = {
   T: { category: "asia-brand", region: "tw" },
   C: { category: "tech", region: null },
 };
+export const EVERYDAY_REVERSALS_SLUG = "brand-stories-everyday-reversals";
 // `headline` is the channel's thumbnail limit (templates.mjs THUMB_HEADLINE_MAX), counted the way
 // the qa stage counts it (headlineCount: a CJK glyph one, a Latin word or a number one, at most
 // THUMB_HEADLINE_WORDS_MAX of those); a story over it is a warning (storyWarnings), since the
@@ -105,14 +106,16 @@ export function claimSupported(claim, sources) {
 }
 
 /** Everything wrong with one story, as a list of sentences; empty when it is sound. */
-export function storyProblems(story, fileId = story?.id) {
+export function storyProblems(story, fileId = story?.id, { seriesSlug } = {}) {
   const problems = [];
   if (!isObject(story)) return ["the file is not a JSON object"];
   for (const key of Object.keys(story)) if (!STORY_KEYS.includes(key)) problems.push(`unknown field "${key}"`);
   if (typeof story.id !== "string" || !ID.test(story.id)) problems.push(`id "${story.id}" is not a letter A, B, K, T or C and two digits`);
   else if (story.id !== fileId) problems.push(`id "${story.id}" does not match the file name ${fileId}.json`);
   if (typeof story.slug !== "string" || !SLUG.test(story.slug)) problems.push(`slug "${story.slug}" must be story-<lowercase letters, digits, hyphens>, at most 60 characters`);
-  const prefix = PREFIXES[String(story.id ?? "")[0]];
+  const prefix = seriesSlug === EVERYDAY_REVERSALS_SLUG && String(story.id ?? "").startsWith("C")
+    ? { category: "everyday", region: null }
+    : PREFIXES[String(story.id ?? "")[0]];
   if (!CATEGORIES.includes(story.category)) problems.push(`category must be one of ${CATEGORIES.join(", ")}`);
   else if (prefix && story.category !== prefix.category) problems.push(`category "${story.category}" does not fit id ${story.id} (${prefix.category})`);
   if (!REGIONS.includes(story.region)) problems.push(`region must be one of ${REGIONS.join(", ")}`);
@@ -542,7 +545,7 @@ export function planProblems(plan, { expected = { everyday: 40, "asia-brand": 40
       problems.push(`${entry.id}: not valid JSON (${entry.error})`);
       continue;
     }
-    for (const problem of storyProblems(entry.story, entry.id)) problems.push(`${entry.id}: ${problem}`);
+    for (const problem of storyProblems(entry.story, entry.id, { seriesSlug: plan.series?.slug })) problems.push(`${entry.id}: ${problem}`);
     for (const [seen, key] of [[slugs, "slug"], [titles, "title"]]) {
       const value = entry.story[key];
       if (typeof value !== "string") continue;

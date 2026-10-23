@@ -384,6 +384,7 @@ const beatOf = (beats: Record<string, unknown>, key: string) => {
  */
 function ScriptBody({ review }: { review: Review }) {
   const t = useTranslations("admin.videoReviews");
+  const sourceMarkdown = text(review.payload.source_md);
   const coverage = record(review.payload.coverage);
   const problems = list(review.payload.continuity_problems).map(text).filter(Boolean);
   const beats = record(review.payload.beats);
@@ -399,6 +400,10 @@ function ScriptBody({ review }: { review: Review }) {
   // A chapter heading where the chapter changes, so the scenes read as acts.
   const headings = scenes.map((scene, index) => (text(scene.chapter) && text(scene.chapter) !== text(scenes[index - 1]?.chapter) ? text(scene.chapter) : ""));
   return <div className="grid gap-4">
+    {sourceMarkdown && <details className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3">
+      <summary className="cursor-pointer text-sm font-semibold">{t("scriptSourceMarkdown")}</summary>
+      <pre className="mt-3 max-h-[28rem] overflow-auto whitespace-pre-wrap break-words rounded-lg bg-[var(--surface)] p-3 text-xs leading-6" data-testid="script-source-markdown">{sourceMarkdown}</pre>
+    </details>}
     {Object.keys(coverage).length > 0 && <p className="flex flex-wrap items-center gap-2 text-sm"><strong>{t("scriptCoverage")}</strong>{coverageKeys.map((key) => <span key={key} className="flex items-center gap-1">{t(`scriptBeats.${key}`)}<AdminStatusPill status={coverageTone[text(coverage[key])] ?? "inactive"}>{text(coverage[key]) || "—"}</AdminStatusPill></span>)}
       {hasHighTension && highTension.map((value, index) => <span key={`high-tension-${index}`} className="flex items-center gap-1">{t("scriptBeats.highTension", { number: index + 1 })}<AdminStatusPill status={coverageTone[value]}>{value}</AdminStatusPill></span>)}
       {hasConsequences && <span className="flex items-center gap-1">{t("scriptBeats.consequences")}<AdminStatusPill status={coverageTone[text(coverage.consequences)]}>{text(coverage.consequences)}</AdminStatusPill></span>}
