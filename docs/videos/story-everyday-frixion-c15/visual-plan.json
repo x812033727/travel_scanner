@@ -1,5 +1,5 @@
 {
-  "status": "author_draft_unreviewed_no_paid_media",
+  "status": "author_revision_pending_rechecks_no_paid_media",
   "timing_basis": "paper proxy only; requires actual TTS and media timeline",
   "intro": "5s after hook",
   "outro": "21s v4 endscreen after body",
@@ -7,22 +7,22 @@
   "look": {
     "preset": "cute-mystery"
   },
-  "shot_count": 71,
-  "card_count": 16,
+  "shot_count": 72,
+  "card_count": 15,
   "items": [
     {
       "id": "H01",
       "chapter": "H",
-      "narration": "紙上寫錯一個字，你拿筆尾來回擦，黑色筆跡就在眼前淡掉。",
+      "narration": "你在書桌前寫錯一個字，拿筆尾來回擦，黑色筆跡就在眼前淡掉。",
       "source_tags": "M01；場景示意",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Close shot of an adult hand rubbing a plain pen end across a line of abstract ink marks on blank paper, soft desk lamp from left.",
-      "visual_guardrail": "筆跡用抽象短線，圖內不生字。",
-      "paper_seconds_at_250_cjk_per_minute": 6.48
+      "prompt": "Medium shot of an adult seated at a writing desk rubbing a plain pen end across abstract ink marks on blank paper, soft desk lamp from left.",
+      "visual_guardrail": "書桌場景與動作同鏡；圖內不生字。",
+      "paper_seconds_at_250_cjk_per_minute": 6.96
     },
     {
       "id": "H02",
@@ -55,49 +55,49 @@
     {
       "id": "H04",
       "chapter": "H",
-      "narration": "但這支筆的祕密，曾經先出現在一只遇到冷水會變色的杯子上。",
+      "narration": "一九七六年，PILOT 把變色材料用在紙杯上；為什麼不先做筆？",
       "source_tags": "M03；loop A",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult holding a plain cup as its unmarked surface changes between two muted tones, soft kitchen light from left.",
-      "visual_guardrail": "冷水杯概念；無原品花樣。",
-      "paper_seconds_at_250_cjk_per_minute": 6.72
+      "prompt": "Medium shot of an adult setting an unmarked paper cup beside a clear water pitcher on a simple table, soft kitchen light from left.",
+      "visual_guardrail": "不在開場先畫出變色結果；無原品花樣。",
+      "paper_seconds_at_250_cjk_per_minute": 7.44
     },
     {
       "id": "H05",
       "chapter": "H",
-      "narration": "後來，一種墨水終於能通過筆尖；寫下的顏色卻還是留在紙上。",
-      "source_tags": "M05–M06；loop B",
+      "narration": "二零零一年，微膠囊又縮小了；這次能擠過筆尖嗎？",
+      "source_tags": "M05；loop B",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
       "prompt": "Close shot of an adult craft worker holding a plain pen tip beside a few round ink capsules, soft workbench lamp.",
-      "visual_guardrail": "無比例尺與字。",
-      "paper_seconds_at_250_cjk_per_minute": 6.72
+      "visual_guardrail": "不畫已通過筆尖；無比例尺與字。",
+      "paper_seconds_at_250_cjk_per_minute": 5.52
     },
     {
       "id": "H06",
       "chapter": "H",
-      "narration": "再後來，有人問：既然能換色，能不能把顏色換成透明？",
+      "narration": "二零零二年，歐洲行銷人員看過變色筆，卻提出另一個要求。",
       "source_tags": "M06；loop C",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult product planner pointing at a plain dark ink stroke and a separate pale stroke on blank paper, soft office light.",
-      "visual_guardrail": "只作想法示意，不是實際會議。",
-      "paper_seconds_at_250_cjk_per_minute": 6.0
+      "prompt": "Medium shot of an adult product planner examining a plain pen and a blank page with a questioning expression, soft office light.",
+      "visual_guardrail": "不先畫透明化結果，也不是當年會議影像。",
+      "paper_seconds_at_250_cjk_per_minute": 6.48
     },
     {
       "id": "H07",
       "chapter": "H",
-      "narration": "可是讓字消失，和讓一整批筆在普通日子裡好好寫字，是兩道難題。",
+      "narration": "二零零四年，公司決定商品化；這支筆何時能走到店裡？",
       "source_tags": "M08–M09；loop D",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -106,36 +106,36 @@
       },
       "prompt": "Wide shot of an adult worker inspecting several plain pens beside a small mixing vessel on a worktable, overcast window light.",
       "visual_guardrail": "量產難題概念，不是工廠影像。",
-      "paper_seconds_at_250_cjk_per_minute": 7.2
+      "paper_seconds_at_250_cjk_per_minute": 6.0
     },
     {
       "id": "H08",
       "chapter": "H",
-      "narration": "一只會變色的杯子，究竟跨過哪些門檻，才變成這支可擦的筆？",
+      "narration": "從紙杯到可擦筆，這些決定究竟怎麼接成同一條路？",
       "source_tags": "M01–M10；主問題",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult holding a plain cup in one hand and a plain pen in the other, puzzled expression, soft lamp light.",
+      "prompt": "Medium shot of an adult holding an unmarked paper cup in one hand and a plain pen in the other, puzzled expression, soft lamp light.",
       "visual_guardrail": "開場主問題的兩物件。",
-      "paper_seconds_at_250_cjk_per_minute": 6.72
+      "paper_seconds_at_250_cjk_per_minute": 5.52
     },
     {
       "id": "O01",
       "chapter": "O",
-      "narration": "要回答這個問題，先把時間倒回七零年代初，而不是從筆尖開始。",
-      "source_tags": "M02",
+      "narration": "一九七零年秋天，PILOT 的研究從樹葉變色得到靈感。",
+      "source_tags": "M02；公司回顧",
       "kind": "card",
-      "postproduction_text": "1970 → 2006",
-      "visual_guardrail": "倒敘定位；首張卡。",
-      "paper_seconds_at_250_cjk_per_minute": 6.96
+      "postproduction_text": "1970",
+      "visual_guardrail": "事件年份定位；不列故事目錄。",
+      "paper_seconds_at_250_cjk_per_minute": 6.48
     },
     {
       "id": "O02",
       "chapter": "O",
-      "narration": "PILOT 後來回顧，一九七零年秋天的葉色變化，啟發了這條研究路線。",
+      "narration": "依公司事後回顧，團隊開始試做隨溫度改變顏色的材料。",
       "source_tags": "M02；公司回顧",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -144,12 +144,12 @@
       },
       "prompt": "Medium shot of an adult researcher examining a fallen autumn leaf beside a blank notebook, muted outdoor daylight.",
       "visual_guardrail": "公司回顧的靈感概念，不畫真人。",
-      "paper_seconds_at_250_cjk_per_minute": 8.16
+      "paper_seconds_at_250_cjk_per_minute": 6.0
     },
     {
       "id": "O03",
       "chapter": "O",
-      "narration": "他們想做的，是一種能隨溫度改變顏色的材料。",
+      "narration": "他們當時沒想到書寫工具，眼前還只是材料研究。",
       "source_tags": "M02",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -158,20 +158,20 @@
       },
       "prompt": "Close shot of an adult researcher gently warming a plain color swatch beside a blank notebook, soft laboratory window light.",
       "visual_guardrail": "研究方向概念。",
-      "paper_seconds_at_250_cjk_per_minute": 5.04
+      "paper_seconds_at_250_cjk_per_minute": 5.28
     },
     {
       "id": "O04",
       "chapter": "O",
-      "narration": "這裡還沒有誰寫錯字，更沒有一支可以擦掉字的筆。",
-      "source_tags": "M02–M03",
+      "narration": "材料會變色，接著還得找到能讓人看見變化的用途。",
+      "source_tags": "M02–M03；分析",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult looking at a plain cup with an empty writing desk behind, soft indoor light.",
-      "visual_guardrail": "當時尚無可擦筆。",
+      "prompt": "Medium shot of an adult designer examining several blank product sketches beside a color swatch, soft studio light.",
+      "visual_guardrail": "尋找材料用途，不先指定商品。",
       "paper_seconds_at_250_cjk_per_minute": 5.52
     },
     {
@@ -194,7 +194,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult designer examining a plain cup beside several blank product sketches, soft studio light.",
+      "prompt": "Medium shot of an adult designer examining an unmarked paper cup beside several blank product sketches, soft studio light.",
       "visual_guardrail": "用途抉擇。",
       "paper_seconds_at_250_cjk_per_minute": 6.96
     },
@@ -243,8 +243,8 @@
     {
       "id": "O10",
       "chapter": "O",
-      "narration": "一九八五年，溫度變色又走進玩具，用突然改變的外觀製造驚喜。",
-      "source_tags": "M03",
+      "narration": "一九八五年，溫度變色又走進玩具；下一站會輪到筆嗎？",
+      "source_tags": "M03；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
@@ -252,7 +252,7 @@
       },
       "prompt": "Medium shot of an adult toy designer holding a small unmarked toy that changes muted color near a cool surface, soft table lamp.",
       "visual_guardrail": "不指定真實商品造形。",
-      "paper_seconds_at_250_cjk_per_minute": 6.96
+      "paper_seconds_at_250_cjk_per_minute": 6.0
     },
     {
       "id": "O11",
@@ -264,7 +264,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult placing a plain cup beside a plain pen and a blank sheet, thoughtful face, soft side light.",
+      "prompt": "Medium shot of an adult placing an unmarked paper cup beside a plain pen and a blank sheet, thoughtful face, soft side light.",
       "visual_guardrail": "材料路線用途對照。",
       "paper_seconds_at_250_cjk_per_minute": 7.2
     },
@@ -278,7 +278,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Close shot of an adult turning a plain cup away and examining a narrow pen tip, worktable, soft lamp light.",
+      "prompt": "Close shot of an adult turning an unmarked paper cup away and examining a narrow pen tip, worktable, soft lamp light.",
       "visual_guardrail": "原優點遇新限制。",
       "paper_seconds_at_250_cjk_per_minute": 6.24
     },
@@ -320,7 +320,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult writer keeping a sheet steady while a plain cup changes color nearby, calm indoor light.",
+      "prompt": "Medium shot of an adult writer keeping a sheet steady while an unmarked paper cup changes color nearby, calm indoor light.",
       "visual_guardrail": "書寫需穩定的對比。",
       "paper_seconds_at_250_cjk_per_minute": 5.76
     },
@@ -417,8 +417,8 @@
     {
       "id": "I10",
       "chapter": "I",
-      "narration": "膠囊也不能只求小；外壁如果太脆，材料的耐用性又會出問題。",
-      "source_tags": "M05",
+      "narration": "膠囊變小時，外壁也可能太脆，耐用性又成了下一關。",
+      "source_tags": "M05；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
@@ -426,7 +426,7 @@
       },
       "prompt": "Close shot of an adult researcher checking a delicate translucent capsule under a plain magnifier, soft workbench light.",
       "visual_guardrail": "外壁耐用性概念。",
-      "paper_seconds_at_250_cjk_per_minute": 6.72
+      "paper_seconds_at_250_cjk_per_minute": 5.76
     },
     {
       "id": "I11",
@@ -462,7 +462,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult lifting a plain cup away while testing a plain pen over a blank sheet, soft side light.",
+      "prompt": "Medium shot of an adult lifting an unmarked paper cup away while testing a plain pen over a blank sheet, soft side light.",
       "visual_guardrail": "不畫倒杯液入筆。",
       "paper_seconds_at_250_cjk_per_minute": 6.72
     },
@@ -591,8 +591,8 @@
     {
       "id": "E05",
       "chapter": "E",
-      "narration": "在那個情境裡，寫、修正、再寫，原本得靠不只一件工具。",
-      "source_tags": "M07",
+      "narration": "修正之後，還得換一支筆才能重寫；能不能省下這一步？",
+      "source_tags": "M07；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
@@ -600,7 +600,7 @@
       },
       "prompt": "Close shot of an adult hand moving between two plain writing tools on a blank sheet, soft classroom light.",
       "visual_guardrail": "不暗示全歐法規。",
-      "paper_seconds_at_250_cjk_per_minute": 6.24
+      "paper_seconds_at_250_cjk_per_minute": 6.0
     },
     {
       "id": "E06",
@@ -691,7 +691,7 @@
     {
       "id": "E13",
       "chapter": "E",
-      "narration": "但桌上做得出一小杯，不代表工廠能把每一批都做得一樣。",
+      "narration": "可是實驗室小量做得出來，工廠大量生產卻很難保持同樣品質。",
       "source_tags": "M09；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -700,12 +700,12 @@
       },
       "prompt": "Wide shot of an adult worker checking many plain ink vessels lined on a worktable, soft factory window light.",
       "visual_guardrail": "工業化概念，勿畫批次數。",
-      "paper_seconds_at_250_cjk_per_minute": 6.24
+      "paper_seconds_at_250_cjk_per_minute": 6.72
     },
     {
       "id": "E14",
       "chapter": "E",
-      "narration": "原廠回顧，穩定量產仍得克服；決定上市不等於已經備好貨。",
+      "narration": "原廠回顧，研發人員在實驗室與工廠間反覆奔走，追著品質標準調整。",
       "source_tags": "M09",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -714,36 +714,36 @@
       },
       "prompt": "Medium shot of an adult worker inspecting two differently shaded plain ink vessels, concerned face, soft overhead light.",
       "visual_guardrail": "一致性難題示意。",
-      "paper_seconds_at_250_cjk_per_minute": 6.48
+      "paper_seconds_at_250_cjk_per_minute": 7.44
     },
     {
       "id": "E15",
       "chapter": "E",
-      "narration": "這條從杯子繞過來的路，什麼時候真的走到店裡？",
+      "narration": "消費者真正買得到它，還要等到哪一年？",
       "source_tags": "M09–M10；章末 hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult worker closing an unmarked carton of plain pens near a store doorway, muted daylight.",
-      "visual_guardrail": "店頭上市懸念，不暗示確切貨況。",
-      "paper_seconds_at_250_cjk_per_minute": 5.28
+      "prompt": "Medium shot of an adult planner looking at an empty store shelf while holding a blank product sketch, muted daylight.",
+      "visual_guardrail": "只問何時可買，不假造量產工法或已備貨。",
+      "paper_seconds_at_250_cjk_per_minute": 4.32
     },
     {
       "id": "T01",
       "chapter": "T",
-      "narration": "二零零六年，FriXion 先在歐洲上市，才把那個透明化的問句交給使用者。",
-      "source_tags": "M10",
+      "narration": "兩年後，二零零六年，FriXion 先在歐洲上市，店裡終於有了可買的筆。",
+      "source_tags": "M10；回收上市時間",
       "kind": "card",
       "postproduction_text": "2006｜歐洲先上市",
       "visual_guardrail": "簡短定位卡。",
-      "paper_seconds_at_250_cjk_per_minute": 8.88
+      "paper_seconds_at_250_cjk_per_minute": 8.64
     },
     {
       "id": "T02",
       "chapter": "T",
-      "narration": "使用者寫下筆跡，筆尾摩擦生熱，顏色轉為無色，便能在原處重寫。",
+      "narration": "使用者寫下筆跡，用筆尾擦過，便能在原處寫上第二筆。",
       "source_tags": "M01、M10",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -752,21 +752,21 @@
       },
       "prompt": "Medium shot of an adult writer rubbing a plain pen end against an abstract ink mark beside a second fresh mark on blank paper, soft desk light.",
       "visual_guardrail": "三步由後製分層動畫，不要求圖片模型畫時間序列或生字。",
-      "paper_seconds_at_250_cjk_per_minute": 7.2
+      "paper_seconds_at_250_cjk_per_minute": 6.0
     },
     {
       "id": "T03",
       "chapter": "T",
-      "narration": "這時那只變色杯的原理，已經走過記憶、縮小與日常穩定的考驗。",
-      "source_tags": "M03–M09；回收 A/B/C",
+      "narration": "原本得另找修正工具的動作，這時被收進同一支筆。",
+      "source_tags": "M07、M10；用途落地",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult holding a plain cup beside a plain pen over a blank page, relieved expression, soft side light.",
-      "visual_guardrail": "回收開場道具。",
-      "paper_seconds_at_250_cjk_per_minute": 6.96
+      "prompt": "Medium shot of an adult writer setting a separate correction tool aside while holding one plain pen over a blank page, soft side light.",
+      "visual_guardrail": "單筆完成修正的使用結果，不再清單回顧。",
+      "paper_seconds_at_250_cjk_per_minute": 5.52
     },
     {
       "id": "T04",
@@ -785,56 +785,60 @@
     {
       "id": "T05",
       "chapter": "T",
-      "narration": "PILOT 回顧，日本先朝商務使用者推廣，最初推出零點七毫米筆尖。",
+      "narration": "PILOT 回顧，日本先朝商務使用者推廣，使用情境和歐洲不同。",
       "source_tags": "M11",
       "kind": "card",
-      "postproduction_text": "日本初期：0.7 mm",
-      "visual_guardrail": "筆尖規格由後製標。",
-      "paper_seconds_at_250_cjk_per_minute": 7.92
+      "postproduction_text": "日本：商務使用者",
+      "visual_guardrail": "客群定位，不把所有日本使用者畫成同一類。",
+      "paper_seconds_at_250_cjk_per_minute": 7.44
     },
     {
       "id": "T06",
       "chapter": "T",
-      "narration": "正式上市前，還有三天店頭試賣；公司記下的是準備三千支。",
-      "source_tags": "M10",
+      "narration": "二零零七年三月，日本正式推出，初期使用零點七毫米筆尖。",
+      "source_tags": "M10–M11",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
       "prompt": "Medium shot of an adult shop clerk arranging a small row of unmarked pens on a counter, soft storefront daylight.",
-      "visual_guardrail": "三日試賣與準備量後製，不畫數千支。",
+      "visual_guardrail": "正式上市概念；不再疊試賣數字。",
       "paper_seconds_at_250_cjk_per_minute": 6.48
     },
     {
       "id": "T07",
       "chapter": "T",
-      "narration": "回顧說銷售接近原先預計的三倍，沒有給出可直接換算的總銷量。",
-      "source_tags": "M10；精確界線",
-      "kind": "card",
-      "postproduction_text": "準備 3,000 支｜銷售約為預計 3 倍",
-      "visual_guardrail": "絕不可換算實售 9,000 支。",
-      "paper_seconds_at_250_cjk_per_minute": 6.96
-    },
-    {
-      "id": "T08",
-      "chapter": "T",
-      "narration": "到二零零七年三月，日本才正式推出。",
-      "source_tags": "M10",
+      "narration": "原廠說，日本文字的筆畫較密，原來的筆尖留下新的要求。",
+      "source_tags": "M11",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Wide shot of an adult customer selecting one plain pen from a modest unmarked display, soft shop light.",
-      "visual_guardrail": "日本正式推出概念。",
-      "paper_seconds_at_250_cjk_per_minute": 4.08
+      "prompt": "Medium shot of an adult office worker examining closely spaced abstract ink strokes on blank paper, soft desk lamp.",
+      "visual_guardrail": "密集筆畫示意，不生可讀字。",
+      "paper_seconds_at_250_cjk_per_minute": 6.24
+    },
+    {
+      "id": "T08",
+      "chapter": "T",
+      "narration": "要畫更細的線，筆尖縮小，墨水也得跟著通過它。",
+      "source_tags": "M05、M11；分析",
+      "kind": "shot",
+      "model": "MiniMax image-01",
+      "look": {
+        "preset": "cute-mystery"
+      },
+      "prompt": "Close shot of an adult engineer examining a fine plain pen tip beside round ink capsules, soft workbench light.",
+      "visual_guardrail": "細筆尖與膠囊的配合，無精確比例。",
+      "paper_seconds_at_250_cjk_per_minute": 5.28
     },
     {
       "id": "T09",
       "chapter": "T",
-      "narration": "在需要寫密集筆畫的地方，零點七毫米還留下了更細的要求。",
-      "source_tags": "M11；hook",
+      "narration": "那些微膠囊，還能從更細的筆尖順利出去嗎？",
+      "source_tags": "M05、M11；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
@@ -842,7 +846,7 @@
       },
       "prompt": "Close shot of an adult office worker trying to fit fine abstract strokes in a small square on blank paper, desk lamp from left.",
       "visual_guardrail": "密集筆畫不生漢字。",
-      "paper_seconds_at_250_cjk_per_minute": 6.48
+      "paper_seconds_at_250_cjk_per_minute": 4.8
     },
     {
       "id": "T10",
@@ -899,21 +903,21 @@
     {
       "id": "N01",
       "chapter": "N",
-      "narration": "按壓式要回答的，就是那個露在空氣中的筆尖問題。",
+      "narration": "筆帽不在，露出的筆尖更容易乾，按壓式先遇到這道難題。",
       "source_tags": "M12",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of an adult engineer holding an uncapped plain retractable pen toward a soft airflow in a workshop, gentle window light.",
-      "visual_guardrail": "露尖難題。",
-      "paper_seconds_at_250_cjk_per_minute": 5.52
+      "prompt": "Medium shot of an adult engineer examining an uncapped plain retractable pen tip on a workbench, gentle window light.",
+      "visual_guardrail": "露尖容易乾；不畫未記載的工程測試。",
+      "paper_seconds_at_250_cjk_per_minute": 6.24
     },
     {
       "id": "N02",
       "chapter": "N",
-      "narration": "PILOT 說，較大的墨水微粒和筆尖間的間隙，使乾燥更難處理。",
+      "narration": "PILOT 說，較大的墨水微粒和筆尖間隙，讓乾燥更難處理。",
       "source_tags": "M12",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -922,22 +926,22 @@
       },
       "prompt": "Conceptual close shot of an adult pointing to a tiny gap around a plain pen ball and suspended round ink particles, soft neutral light.",
       "visual_guardrail": "無精密比例。",
-      "paper_seconds_at_250_cjk_per_minute": 7.44
+      "paper_seconds_at_250_cjk_per_minute": 6.96
     },
     {
       "id": "N03",
       "chapter": "N",
-      "narration": "到二零一零年，按壓式才推出；後來又有多色等其他形式。",
+      "narration": "原廠說，團隊反覆調整筆尖內部構造；二零一零年才推出按壓式。",
       "source_tags": "M12",
       "kind": "card",
       "postproduction_text": "2010｜按壓式",
       "visual_guardrail": "後續多色款不畫具體商品。",
-      "paper_seconds_at_250_cjk_per_minute": 6.24
+      "paper_seconds_at_250_cjk_per_minute": 6.96
     },
     {
       "id": "N04",
       "chapter": "N",
-      "narration": "產品外形一路變，但開頭那個「擦掉」的疑問還沒有說完。",
+      "narration": "回到最初那張紙：字淡了，是墨水被拿走，還是顏色換了狀態？",
       "source_tags": "M01；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -946,12 +950,12 @@
       },
       "prompt": "Medium shot of the opening adult writer returning to the same blank page and a plain pen, curious expression, soft desk lamp.",
       "visual_guardrail": "回到開場。",
-      "paper_seconds_at_250_cjk_per_minute": 6.24
+      "paper_seconds_at_250_cjk_per_minute": 6.72
     },
     {
       "id": "N05",
       "chapter": "N",
-      "narration": "現行產品說明把變色成分裝在微膠囊中；摩擦產生的熱讓顏色轉無色。",
+      "narration": "現行產品說明裡，微膠囊封著變色成分；摩擦熱把顏色轉成無色。",
       "source_tags": "M01、M13",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -960,7 +964,7 @@
       },
       "prompt": "Conceptual close shot of an adult tracing translucent round capsules beside a pale abstract ink stroke on blank paper, soft lamp.",
       "visual_guardrail": "微膠囊示意。",
-      "paper_seconds_at_250_cjk_per_minute": 7.44
+      "paper_seconds_at_250_cjk_per_minute": 6.96
     },
     {
       "id": "N06",
@@ -979,22 +983,22 @@
     {
       "id": "N07",
       "chapter": "N",
-      "narration": "PILOT 現行問答，把這種消色設定寫成約六十度。",
+      "narration": "PILOT 現行使用問答，把摩擦消色門檻寫成約六十度。",
       "source_tags": "M13",
       "kind": "card",
       "postproduction_text": "現行 FAQ：約 60°C",
       "visual_guardrail": "現行文件歸屬。",
-      "paper_seconds_at_250_cjk_per_minute": 6.0
+      "paper_seconds_at_250_cjk_per_minute": 6.48
     },
     {
       "id": "N08",
       "chapter": "N",
-      "narration": "公司二零一七年的新聞稿卻寫約六十五度，兩份文件不是同一句規格。",
+      "narration": "二零一七年的新聞稿寫約六十五度，那是另一份文件的說法。",
       "source_tags": "M08、M13；差異",
       "kind": "card",
       "postproduction_text": "2017 新聞稿：約 65°C",
       "visual_guardrail": "兩卡連續，上限 3；差異不合併。",
-      "paper_seconds_at_250_cjk_per_minute": 7.44
+      "paper_seconds_at_250_cjk_per_minute": 6.48
     },
     {
       "id": "N09",
@@ -1013,7 +1017,7 @@
     {
       "id": "N10",
       "chapter": "N",
-      "narration": "低溫有時讓顏色回來；現行問答說約零下十度開始，約零下二十度可能較完整。",
+      "narration": "回色是另一方向：現行問答說約零下十度開始，零下二十度可能更完整。",
       "source_tags": "M13",
       "kind": "shot",
       "model": "MiniMax image-01",
@@ -1022,7 +1026,7 @@
       },
       "prompt": "Medium shot of an adult comparing a faint page before and after cool storage, still uncertain expression, muted indoor light.",
       "visual_guardrail": "不示範重要文件回復；數值後製。",
-      "paper_seconds_at_250_cjk_per_minute": 8.4
+      "paper_seconds_at_250_cjk_per_minute": 7.68
     },
     {
       "id": "N11",
@@ -1055,8 +1059,8 @@
     {
       "id": "N13",
       "chapter": "N",
-      "narration": "所以，把字「擦掉」的方便，也正是重要紙面要避開它的理由。",
-      "source_tags": "M13；分析",
+      "narration": "既然冷熱都可能動到顏色，哪些紙就不能交給它？",
+      "source_tags": "M13；hook",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
@@ -1064,7 +1068,7 @@
       },
       "prompt": "Medium shot of an adult choosing between a plain erasable pen and a plain permanent pen beside two blank sheets, soft desk light.",
       "visual_guardrail": "判斷場景。",
-      "paper_seconds_at_250_cjk_per_minute": 6.72
+      "paper_seconds_at_250_cjk_per_minute": 5.28
     },
     {
       "id": "N14",
@@ -1104,7 +1108,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of the opening adult holding a plain color-changing cup beside the same writing desk, soft evening lamp.",
+      "prompt": "Medium shot of the opening adult holding an unmarked color-changing paper cup beside the same writing desk, soft evening lamp.",
       "visual_guardrail": "回收杯子。",
       "paper_seconds_at_250_cjk_per_minute": 6.72
     },
@@ -1118,7 +1122,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of the opening adult holding a plain pen above the same page, with cup in background, gentle lamp light.",
+      "prompt": "Medium shot of the opening adult holding a plain pen above the same page, with an unmarked paper cup in background, gentle lamp light.",
       "visual_guardrail": "回收筆。",
       "paper_seconds_at_250_cjk_per_minute": 6.48
     },
@@ -1132,7 +1136,7 @@
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Close shot of a plain cup and pen together in the adult's hands, one visible muted color change and one pale ink stroke, soft light.",
+      "prompt": "Close shot of an unmarked paper cup and plain pen together in the adult's hands, one visible muted color change and one pale ink stroke, soft light.",
       "visual_guardrail": "用途轉身，不是同一配方宣稱。",
       "paper_seconds_at_250_cjk_per_minute": 6.72
     },
@@ -1153,16 +1157,16 @@
     {
       "id": "N20",
       "chapter": "N",
-      "narration": "如果喜歡這種把日用品往回追的故事，歡迎訂閱，一起看下一個轉身。",
-      "source_tags": "編輯收尾；不點名下集",
+      "narration": "如果喜歡這種從日用品追出轉折的故事，歡迎訂閱。",
+      "source_tags": "編輯收尾；不提下集",
       "kind": "shot",
       "model": "MiniMax image-01",
       "look": {
         "preset": "cute-mystery"
       },
-      "prompt": "Medium shot of the opening adult placing the plain cup and pen on the desk and facing camera with a gentle smile, soft lamp.",
+      "prompt": "Medium shot of the opening adult placing the unmarked paper cup and plain pen on the desk and facing camera with a gentle smile, soft lamp.",
       "visual_guardrail": "不預告或命名下一集。",
-      "paper_seconds_at_250_cjk_per_minute": 7.44
+      "paper_seconds_at_250_cjk_per_minute": 5.52
     }
   ]
 }
