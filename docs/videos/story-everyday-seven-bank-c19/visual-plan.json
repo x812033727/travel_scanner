@@ -1,6 +1,6 @@
 {
   "slug": "story-everyday-seven-bank-c19",
-  "status": "author-v10-narrative-repair-awaits-independent-review-no-paid-media-approval",
+  "status": "author-v11-narrative-repair-awaits-independent-review-no-paid-media-approval",
   "narration_language": "zh-TW",
   "image_model": "MiniMax image-01",
   "look": {
@@ -21,8 +21,8 @@
     "duck_db": -10,
     "status": "planned-only-no-generation"
   },
-  "shot_count": 70,
-  "card_count": 11,
+  "shot_count": 71,
+  "card_count": 10,
   "shots": [
     {
       "line_id": "c190101",
@@ -36,9 +36,9 @@
       "line_id": "c190102",
       "chapter": "hook",
       "kind": "shot",
-      "narration": "銀行櫃台早關了，她手裡卻是一張別家銀行的卡。",
-      "source_tags": "概念場景；M01、M16，不暗示所有他行卡皆可用",
-      "prompt": "近景，同一位深藍外套顧客持完全空白的銀行卡；窗外一間無字銀行建築已暗，小店仍亮著。"
+      "narration": "她正要用現金付晚餐，卻只帶著別家銀行的卡；銀行櫃台已經關了。",
+      "source_tags": "明示虛構晚餐動機；M01、M16，不暗示所有他行卡皆可用",
+      "prompt": "近景，同一深藍外套顧客持完全空白的銀行卡和無字餐費單，旁邊一只空餐盤；窗外無字銀行建築已暗，沒有真實交易畫面。"
     },
     {
       "line_id": "c190103",
@@ -508,7 +508,7 @@
       "line_id": "c190510",
       "chapter": "turn",
       "kind": "card",
-      "narration": "截至二〇一〇年三月的那個年度，ATM 相關費收入約八百五十三億日圓。",
+      "narration": "二〇一〇年的年報，記下這張 ATM 網一年的相關費收入，約八百五十三億日圓。",
       "source_tags": "M08、S3 PDF p.54；85,294 百萬日圓四捨五入，限該年度",
       "card_text": "年度至 2010-03 · ATM 費收入約 ¥853 億"
     },
@@ -516,15 +516,15 @@
       "line_id": "c190511",
       "chapter": "turn",
       "kind": "shot",
-      "narration": "這不是她一筆提款的收據，是整張網一年的合計。",
-      "source_tags": "M08；單年度合計，不推每筆或每台",
-      "prompt": "深藍外套顧客手中只有一張空白收據，背景是一份無字年度資料夾，兩者分開。"
+      "narration": "那是整張網的費用收入，不能當成她這一筆的收據。",
+      "source_tags": "M08；單年度合計，不推每筆或每台；此時虛構顧客尚未提款",
+      "prompt": "俯視一份完全無字的年度資料夾和數台素面 ATM 小模型，無個人收據、人物、可讀數字或成功交易介面。"
     },
     {
       "line_id": "c190512",
       "chapter": "turn",
       "kind": "shot",
-      "narration": "年報還有一筆不直觀的帳：機器裡多放現金，補鈔可以少跑幾趟，卻會占住更多資金。",
+      "narration": "但夜裡要能提款，機器就得有鈔。多放一些，錢會被占住。",
       "source_tags": "M18、S3 PDF p.20；2010 公司營運取捨，不量化逐台成本",
       "prompt": "俯視一台素面 ATM 模型與兩個大小不同的封閉現金盒，旁有一張全空白資金紙；不畫最佳現金量或成本數字。"
     },
@@ -532,23 +532,23 @@
       "line_id": "c190513",
       "chapter": "turn",
       "kind": "shot",
-      "narration": "少放現金，外包補鈔服務得跑得更勤，相關費用就升高。",
+      "narration": "少放一些，補鈔車又得多跑幾趟。",
       "source_tags": "M18、S3 PDF p.20；2010 公司營運取捨，不稱每台同幅變化",
       "prompt": "一名匿名補鈔員提著封閉現金盒走向素面機器，背景僅有無字外包服務車剪影；不畫逐台頻率或收費。"
     },
     {
       "line_id": "c190514",
       "chapter": "turn",
-      "kind": "card",
-      "narration": "同年度，ATM 設置相關費約九十億日圓，這仍只是維持網路所需費用的一部分。",
-      "source_tags": "M08、S3 PDF p.54；9,003 百萬日圓四捨五入，與收入同年度，非全成本",
-      "card_text": "年度至 2010-03 · ATM 設置相關費約 ¥90 億"
+      "kind": "shot",
+      "narration": "光把機器放進店裡，也有自己的費用。",
+      "source_tags": "M08、S3 PDF p.54；設置相關費只是網路費用一部分，不報該年度數字",
+      "prompt": "素面 ATM 放在泛用小店角落，旁有無字工具盒與全空白成本資料夾；不畫具體安裝程序、費用數字或真實店面。"
     },
     {
       "line_id": "c190515",
       "chapter": "turn",
       "kind": "shot",
-      "narration": "還有資金、系統與行政等成本，不能把收入扣掉這一項，就當成每台機器的利潤。",
+      "narration": "系統、資金、行政也要錢。只看兩筆數字，算不出每台賺多少。",
       "source_tags": "M08、S3 PDF pp.5、54；成本與逐台界線",
       "prompt": "俯視近景，無字收入卡、設置費卡之外另有數個全空白資金、系統與行政資料夾，不畫相減算式。"
     },
@@ -556,8 +556,8 @@
       "line_id": "c190516",
       "chapter": "turn",
       "kind": "shot",
-      "narration": "所以每台放多少鈔票，得看它平常怎麼被使用；只把所有機器塞滿，也不能解決成本。",
-      "source_tags": "M18、S3 PDF p.20；依公司逐台使用趨勢作編輯歸納，不指確切庫存規則",
+      "narration": "公司也得看機器的使用趨勢，安排放鈔與補鈔。",
+      "source_tags": "M18、S3 PDF p.20；依公司使用趨勢調整現金管理，不指確切庫存規則",
       "prompt": "一名匿名分析員檢視全空白使用趨勢紙，旁放一台素面 ATM 模型和封閉現金盒；不畫統一庫存規則。"
     },
     {
@@ -652,9 +652,9 @@
       "line_id": "c190610",
       "chapter": "now",
       "kind": "shot",
-      "narration": "在這個想像的夜晚，合作銀行核准了她的卡，時段合適，機器也正常有鈔；她終於拿到錢。零售集團成立銀行、維持這張合作網，才把提款口帶進超商。",
+      "narration": "想像她的銀行核准了卡，機器也正常有鈔。她拿到錢，晚餐的帳有了著落。這個提款口背後，是零售集團建起並維持的合作網。",
       "source_tags": "M04–M05、M07、M16–M18、S3 PDF pp.13–14、19–20；明示虛構成功示例，不聲稱真實交易",
-      "prompt": "明確是假想情境：同一深藍外套顧客的一隻手從素面 ATM 出鈔口拿起幾張完全無字紙鈔；螢幕全空白，無品牌、收據、真實交易或現金來源路線。"
+      "prompt": "明確是假想情境：同一深藍外套顧客的一隻手從素面 ATM 出鈔口拿起幾張完全無字紙鈔，另一手夾著無字餐費單；螢幕全空白，無品牌、收據、真實交易或現金來源路線。"
     },
     {
       "line_id": "c190611",
