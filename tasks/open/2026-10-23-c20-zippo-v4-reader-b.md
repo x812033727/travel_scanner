@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c20-zippo-v4-reader-b
 title: C20 Zippo v4 independent narrator reader B
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c20-reader-b
@@ -26,14 +26,14 @@ An independent narrator-only blind reading is required for C20's Zippo v4 text. 
 - [x] Reader B sees only the 64-line narration, records all twelve required PASS/HOLD answers with IDs, and locks a local read-only SHA-bound verdict before author context.
 - [x] Exact author PR #1728 head and 64/64 narration parity are independently verified after the lock.
 - [x] The byte-identical lock and a separate explanatory receipt are added to this isolated branch.
-- [ ] Draft review PR is opened against the exact author branch and its base/head and checks are read back.
+- [x] Draft review PR is opened against the exact author branch and its base/head and checks are read back.
 
 ## Steps
 
 - [x] Read blind narration and lock `HOLD` verdict (no_spoiler, no_detour, no_recap).
 - [x] Create worktree/branch from author commit `3b27a5af392acfe88a168850aa57d2f27cb2f84d`.
 - [x] Compare all 64 ID/text pairs against the author script with ordinal equality.
-- [ ] Run focused checks, push branch, open draft PR, and record readback.
+- [x] Run focused checks, push branch, open draft PR, and record readback.
 
 ## How to verify
 
@@ -42,3 +42,5 @@ Read `docs/videos/story-everyday-zippo-c20/reviews/reader2-v4-blind-lock.json` a
 ## Notes
 
 This is a text-only narrative HOLD. The score is independent from source/visual verification, paid voice runtime, owner acceptance, import, upload, and publication. Local read-only lock was created before author context; the copy in Git has the same SHA. The exact author script has 64 matching lines, no missing/extra/duplicate IDs, and no text mismatches. The draft PR stays open for author/editor review of the three HOLD points.
+
+2026-10-23: Draft review PR #1757 opened against author branch `codex/brand-story-zippo-c20-script`; pre-push author head was exact `3b27a5af392acfe88a168850aa57d2f27cb2f84d`. `npm run check:tasks` passed; `npm run test:docs-videos` had 131/137 pass and six failures due to missing local `pinyin-pro`. `git diff --check` passed. No author script edits or paid/publish actions.
