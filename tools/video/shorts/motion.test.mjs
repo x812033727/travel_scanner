@@ -3,7 +3,7 @@ import test from 'node:test';
 
 import { DISSOLVE_FRAMES, MOTION_SOURCE_SCALE } from '../assemble/drama.mjs';
 import { PROFILE } from './core.mjs';
-import { backgroundChain, backgroundOf, cameraOf, cardEntries, cardsList, CAMERA_WORDS, COVER_MIN_PSNR, ENTRANCE_FRAMES, firstFrameArgs, framePsnrArgs, lastFrameArgs, LOOP_FRAMES, LOOP_MIN_PSNR, loopProblems, MOTION_VERSION, parsePsnr, PSNR_CAP, psnrText, psnrValue, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
+import { backgroundChain, backgroundOf, cameraOf, cardEntries, cardsList, CAMERA_WORDS, COVER_MIN_PSNR, ENTRANCE_FRAMES, firstFrameArgs, framePsnrArgs, markStages, lastFrameArgs, LOOP_FRAMES, LOOP_MIN_PSNR, loopProblems, MOTION_VERSION, parsePsnr, PSNR_CAP, psnrText, psnrValue, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
 import { ENTRANCE } from './layouts.mjs';
 
 const timeline = {
@@ -62,7 +62,7 @@ test('a segment lays the phrases\' cards over the moving background, dissolves f
 });
 
 test('the caption layer is the last input, laid over the cards at the bar; without it the arguments are what they were', () => {
-  assert.equal(MOTION_VERSION, 'shorts-motion-v4');
+  assert.equal(MOTION_VERSION, 'shorts-motion-v5');
   const scene = { background: '/w/assets/pic.png', move: 'push-in', frames: 90, cardsList: '/w/build/cards-000.txt', outFile: '/w/clips/000.mp4' };
   const plain = segmentArgs(scene);
   assert.deepEqual(segmentArgs({ ...scene, captionsList: null }), plain);
@@ -78,6 +78,29 @@ test('the caption layer is the last input, laid over the cards at the bar; witho
   for (const flag of ['libx264', '-g', '60', '-sc_threshold', '0', '+cgop', '-fps_mode', 'cfr']) assert.ok(lit.includes(flag), flag);
   // The layer's list is the cards' ffconcat: every state held for its frames, the last named again.
   assert.equal(cardsList([{ file: '/w/captions/000-00.png', frames: 40 }, { file: '/w/captions/000-01.png', frames: 20 }]), "ffconcat version 1.0\nfile '/w/captions/000-00.png'\noption framerate 30\nduration 1.333333\nfile '/w/captions/000-01.png'\noption framerate 30\nduration 0.666667\nfile '/w/captions/000-01.png'\noption framerate 30\n");
+});
+
+test('the channel mark is the last input, laid over the cards and the captions and under the loop tail; without it the arguments are what they were', () => {
+  const mark = { id: 'v1', sha256: 'a'.repeat(64), file: '/repo/tools/video/watermark/v1/shorts.png', box: { x: 636, y: 80, width: 266, height: 92 } };
+  const scene = { background: '/w/backdrops/002.png', move: 'drift', frames: 90, cardsList: '/w/build/cards-002.txt', outFile: '/w/clips/002.mp4' };
+  const plain = segmentArgs(scene);
+  assert.deepEqual(segmentArgs({ ...scene, mark: null }), plain);
+  assert.deepEqual(markStages(2, 'carded', mark), ['[2:v]scale=266:92:out_color_matrix=bt709:out_range=tv,format=yuva420p[mark]', '[carded][mark]overlay=636:80[marked]']);
+  const marked = segmentArgs({ ...scene, mark });
+  assert.deepEqual(marked.slice(marked.indexOf('/w/build/cards-002.txt') + 1, marked.indexOf('-filter_complex')), ['-i', mark.file], 'one frame, not a looped input: overlay holds it to the end');
+  assert.match(marked[marked.indexOf('-filter_complex') + 1], /\[pic\]\[cards\]overlay=0:0:eof_action=pass\[carded\];\[2:v\]scale=266:92:out_color_matrix=bt709:out_range=tv,format=yuva420p\[mark\];\[carded\]\[mark\]overlay=636:80\[marked\];\[marked\]format=yuv420p,setparams=.*\[out\]$/);
+  assert.deepEqual(marked.slice(marked.indexOf('-map')), plain.slice(plain.indexOf('-map')), 'the encoder is every segment\'s, so the join still copies');
+
+  // With everything else a scene can have: the inputs before the mark keep their numbers, and the
+  // mark sits over the captions and under the loop tail, so the cut still ends on its first frame.
+  const busy = { ...scene, dissolveFrom: '/w/build/last-001.png', captionsList: '/w/build/captions-002.txt', loopTo: '/w/build/scene-000.png' };
+  const full = segmentArgs({ ...busy, mark });
+  assert.deepEqual(full.filter((_, index) => full[index - 1] === '-i'), ['/w/backdrops/002.png', '/w/build/cards-002.txt', '/w/build/last-001.png', '/w/build/captions-002.txt', '/w/build/scene-000.png', mark.file]);
+  const graph = full[full.indexOf('-filter_complex') + 1];
+  const laid = /\[5:v\]scale=266:92:out_color_matrix=bt709:out_range=tv,format=yuva420p\[mark\];\[captioned\]\[mark\]overlay=636:80\[marked\];/;
+  assert.match(graph, /\[carded\]\[captions\]overlay=80:1430:eof_action=pass\[captioned\];\[5:v\]scale=266:92[^;]*\[mark\];\[captioned\]\[mark\]overlay=636:80\[marked\];\[4:v\]scale=1080:1920,format=yuva420p,fade=t=in:s=0:n=12:alpha=1,setpts=[^;]*\[loop\];\[marked\]\[loop\]overlay=0:0:eof_action=repeat\[looped\];\[looped\]format=yuv420p/);
+  const unmarked = segmentArgs(busy);
+  assert.equal(graph.replace(laid, '').replace('[marked][loop]', '[captioned][loop]'), unmarked[unmarked.indexOf('-filter_complex') + 1], 'the two stages are all the mark adds');
 });
 
 test('a scene\'s first card enters over at most twelve one-frame entries before its still; a card without an entrance is its still alone, as before', () => {

@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime as dt
 import io
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -326,7 +327,11 @@ class PollerCase(unittest.TestCase):
 
     def test_deploy_failure_writes_the_paused_file(self) -> None:
         runner = green_runner(
-            **{"deploy-travel-scanner.sh": Completed(1, "health check failed\nrolled back\n")}
+            **{
+                "deploy-travel-scanner.sh": Completed(
+                    1, "video drain refused; checkout restored; worker may be stopped\n"
+                )
+            }
         )
         decision = self.poller(runner).tick()
         self.assertEqual(decision.action, "failed")
@@ -334,20 +339,51 @@ class PollerCase(unittest.TestCase):
         first, record = autodeploy.read_paused(self.paths.paused)
         self.assertIn(TARGET[:12], first)
         self.assertIn("exited 1", first)
+        self.assertIn("deployment and video-ai-worker state require readback", first)
+        self.assertNotIn("rolled back", first)
         self.assertLessEqual(len(first.encode("utf-8")), autodeploy.FIRST_LINE_LIMIT)
         self.assertEqual((record["sha"], record["exit"]), (TARGET, 1))
         self.assertEqual(record["created_at"], "2026-10-07T03:00:00+00:00")
         self.assertTrue(
-            Path(record["log"]).read_text(encoding="utf-8").startswith("health check failed")
+            Path(record["log"]).read_text(encoding="utf-8").startswith("video drain refused")
         )
         self.assertEqual(len(self.notifier.posts), 1)
         self.assertIn("FAILED", self.notifier.posts[0])
+        self.assertIn("deployment and video-ai-worker state require readback", self.notifier.posts[0])
+        self.assertNotIn("rolled back", self.notifier.posts[0])
         # The next tick does nothing until a person removes the file.
         runner = green_runner()
         self.assertEqual(self.poller(runner).tick().action, "paused")
         self.assertEqual(runner.calls, [])
         self.paths.paused.unlink()
         self.assertEqual(self.poller(green_runner()).tick().action, "deployed")
+
+    def test_stuck_warm_drain_times_out_before_systemd_and_leaves_failed_receipt(self) -> None:
+        self.assertLess(autodeploy.DEPLOY_TIMEOUT, 2 * 60 * 60)
+
+        class StuckDeploy(FakeRunner):
+            def run(self, args, *, timeout=60, log_path=None):
+                if list(args) == [str(self_paths.deploy_script)]:
+                    self.calls.append(list(args))
+                    self.deploy_timeout = timeout
+                    raise subprocess.TimeoutExpired(args, timeout)
+                return super().run(args, timeout=timeout, log_path=log_path)
+
+        self_paths = self.paths
+        runner = StuckDeploy(green_runner().responses)
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "failed")
+        self.assertEqual(runner.deploy_timeout, autodeploy.DEPLOY_TIMEOUT)
+        self.assertEqual(self.state()["last_deploy"]["exit"], 124)
+        first, receipt = autodeploy.read_paused(self.paths.paused)
+        self.assertIn("exited 124", first)
+        self.assertIn("deployment and video-ai-worker state require readback", first)
+        self.assertNotIn("rolled back", first)
+        self.assertEqual(receipt["sha"], TARGET)
+        self.assertEqual(len(self.notifier.posts), 1)
+        self.assertIn("deployment and video-ai-worker state require readback", self.notifier.posts[0])
+        self.assertNotIn("rolled back", self.notifier.posts[0])
+        self.assertFalse(runner.ran("bash "))  # no success verification
 
     def test_paused_file_has_exactly_two_lines(self) -> None:
         autodeploy.write_paused(

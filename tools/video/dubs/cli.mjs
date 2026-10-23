@@ -23,7 +23,9 @@ import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, prese
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
-import { eachLine, LOCALES } from "../core/schema.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
+import { StoryLexiconError } from "../core/story-lexicon.mjs";
+import { DUB_TARGET_LOCALES, eachLine } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
@@ -87,7 +89,7 @@ function options(args) {
   if (!values.slug && !values.file) throw new UsageError("dub needs --slug (or --file for an example outside docs/videos)");
   // Which locales can be dubbed depends on the narration language, so the list is checked once the video is read.
   const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : null;
-  for (const locale of locales ?? []) if (!LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${LOCALES.join(", ")}`);
+  for (const locale of locales ?? []) if (!DUB_TARGET_LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${DUB_TARGET_LOCALES.join(", ")}`);
   if (!DUB_FORMATS.includes(values.format)) throw new UsageError(`--format must be one of ${DUB_FORMATS.join(", ")}`);
   if (values["keep-fitting"] && !values.redo) throw new UsageError("--keep-fitting goes with --redo: it keeps the earlier take of a retaken line that no longer fits its window");
   return { ...values, locales };
@@ -485,8 +487,9 @@ async function dub(args, ctx) {
 
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const credentials = requireCredentials(ctx);
-  const clientOpts = clientOptions(ctx, credentials);
+  const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);
   if (!status.gemini_configured) throw new SpeechError("the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)", { who: "owner" });
   const remaining = geminiRemaining(status);
@@ -508,6 +511,10 @@ export async function run(command, args, ctx) {
   try {
     return await dub(args, ctx);
   } catch (error) {
+    if (error instanceof StoryLexiconError) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.owner;
+    }
     if (error instanceof SpeechError) {
       ctx.stderr.write(`${error.message}\n`);
       return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;

@@ -2308,7 +2308,10 @@
       "blocked": "The video is stuck: press \"Try this video again\" above first; this becomes available once it moves",
       "stopped": "A STOP file holds the worker; available once it is removed"
     },
-    "dubDramaLater": "Dubbing a drama comes later; for now a drama gets titles, descriptions and captions.",
+    "dubDramaLater": "Dubbing is not yet available for this drama. Only eligible narrator-led videos can get dubbed tracks.",
+    "dubStoryNeedsSwitchableCC": "This brand story has not been verified as a cut with switchable Traditional Chinese captions. Dubbing becomes available after a cut without burned-in captions passes review.",
+    "dubStoryPreselectedPendingFinal": "You may select dubbing now. Saving records your choice only; production waits until this exact Chinese final cut is approved, has no burned-in subtitles, and its Traditional Chinese CC can be turned off.",
+    "dubStoryPendingFinal": "Waiting for this cut and switchable Chinese CC to pass review",
     "tickDefaults": "Tick the defaults",
     "zhOnly": "Traditional Chinese only",
     "languagesSave": "Save",
@@ -2354,6 +2357,11 @@
       "en": "English",
       "ja": "Japanese",
       "ko": "Korean",
+      "es": "Spanish (Latin America)",
+      "pt": "Portuguese (Brazil)",
+      "id": "Indonesian",
+      "vi": "Vietnamese",
+      "th": "Thai",
       "zh-CN": "Simplified Chinese"
     },
     "chooseLook": "Choose the sheet every shot is drawn from",
@@ -2445,6 +2453,7 @@
     "pickProbability": "Pick probability",
     "pickStance": "Keeps to the stance",
     "pickDemo": "Has a demonstration",
+    "pickDemoNotAsked": "Not asked (explainer)",
     "pickAdvice": "The brief gives advice",
     "pickThresholds": "Thresholds: stance and demonstration at least {min}, advice at most {max}.",
     "pickChosen": "Jev's pick",
@@ -2647,6 +2656,11 @@
       "en": "English",
       "ja": "Japanese",
       "ko": "Korean",
+      "es": "Spanish (Latin America)",
+      "pt": "Portuguese (Brazil)",
+      "id": "Indonesian",
+      "vi": "Vietnamese",
+      "th": "Thai",
       "zh-CN": "Simplified Chinese"
     },
     "subscription": "subscription",
@@ -2992,6 +3006,10 @@
       "stills": {
         "name": "Stills",
         "detail": "Almost every shot is a still with camera motion, a clip only for one key shot in ten: the cheapest, for the pilot."
+      },
+      "manga": {
+        "name": "Motion comic",
+        "detail": "A narrator reads the story over a new still every few seconds, each under camera motion, and not one second of clip is bought: the manhua-narration channels' format."
       }
     },
     "totalMinutesLabel": "{minutes} minutes in all",
@@ -3032,31 +3050,25 @@
   },
   "videoStories": {
     "title": "Brand stories",
-    "intro": "One series, one story per episode, made hands-off from the planned list: the worker starts the stories in order within the daily count, and you decide when each one goes up.",
+    "intro": "Brand stories are a video category, like explainers: one series, one story per episode, made hands-off from the planned list. The worker starts the imported stories within the in-the-making and monthly limits; there is no daily count. You decide when each one goes up.",
     "loadError": "The brand stories could not be read: {message}",
     "kind": "Brand stories",
     "quota": {
       "title": "Whether the worker may start a new story now",
-      "todayLabel": "Started today",
       "inFlightLabel": "In the making",
-      "awaitingLabel": "Ready to upload, not uploaded",
       "monthLabel": "Started this month",
       "readyLabel": "Waiting to start",
-      "today": "{count} of {limit} (Taipei, {day})",
-      "todayNoLimit": "{count}, no daily limit (Taipei, {day})",
       "of": "{count} of {limit}",
       "count": "{count}",
       "holdTitle": "No new story starts now:",
       "go": "The worker starts the next story on its next round.",
-      "line": "Today {today} · in the making {inFlight} of {maxInFlight} · ready to upload {awaiting} of {buffer} · waiting {ready}"
+      "line": "In the making {inFlight} of {maxInFlight} · waiting {ready}"
     },
     "holds": {
       "paused": "the series is paused; press Resume and the worker starts the next story.",
       "notActive": "the series is not running.",
-      "per_day": "{started} started today (Taipei, {day}), which is the daily limit of {perDay}; the next one starts after midnight Taipei time.",
       "in_flight": "{inFlight} stories are in the making, the limit of {maxInFlight} at a time (set on the settings tab).",
       "per_month": "{month} episodes started this month, the monthly limit of {perMonth} (set on the settings tab).",
-      "upload_buffer": "{awaiting} stories are ready to upload and not uploaded yet; at {buffer} no new one starts. Upload them and paste their YouTube addresses to go on.",
       "none_ready": "no story is waiting: every story in the list has started, or none has been imported yet."
     },
     "permission": {
@@ -3064,13 +3076,6 @@
       "needs": "Changing the daily count, pausing, skipping or bringing back a story, and writing an import need the {capability} permission, which the {content} and {owner} roles have. You can still dry-run an import.",
       "roles": "Your roles: {roles}.",
       "noRoles": "Your account has no admin role."
-    },
-    "perDay": {
-      "label": "Stories a day",
-      "none": "No daily limit",
-      "option": "{count} a day",
-      "save": "Change the daily count",
-      "help": "Counted by the Taipei calendar day. The plan's schedule is two a day (noon and 8 pm); keep it lower while the first videos are being checked."
     },
     "chapters": {
       "hook": "Hook",
@@ -3172,10 +3177,7 @@
       "otherSeries": "The file is for {file}, not {series}: the dry run will refuse it.",
       "limit": "Import only the first stories",
       "limitPlaceholder": "All of them",
-      "perDay": "Stories a day when the series is created",
-      "perDayFile": "As the file says",
       "limitHelp": "The first ones in production order; the pilot imports 2, and a later import without a number adds the rest.",
-      "perDayHelp": "The daily count applies only when this import creates the series; afterwards, change it on the series page.",
       "checking": "Checking…",
       "check": "Dry run",
       "writing": "Writing…",
@@ -3243,6 +3245,8 @@
       "refresh": "Refresh progress",
       "chooseVideo": "Choose a video with an approved upload package",
       "newPackage": "Send the newly approved package to VPS",
+      "titlesOutdated": "Send the titles and descriptions to VPS again",
+      "titlesOutdatedHelp": "This brand story finished uploading before its titles took the brand-story tag. Sending again updates the same video's titles and descriptions; the video is not uploaded again.",
       "states": {
         "staging": "Preparing / transferring files",
         "queued": "Queued on VPS",
@@ -3335,7 +3339,12 @@
         "zh-CN": "Chinese (China)",
         "en": "English",
         "ja": "Japanese",
-        "ko": "Korean"
+        "ko": "Korean",
+        "es": "Spanish (Latin America)",
+        "pt": "Portuguese (Brazil)",
+        "id": "Indonesian",
+        "vi": "Vietnamese",
+        "th": "Thai"
       }
     },
     "title": "YouTube channel",

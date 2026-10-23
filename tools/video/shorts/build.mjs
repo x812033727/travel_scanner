@@ -9,6 +9,7 @@ import { sfxSetHash, sfxTrackArgs } from '../assemble/sfx.mjs';
 import { musicInputs, sfxInputs } from '../assemble/sound.mjs';
 import { encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mjs';
+import { watermark, watermarkRecord } from '../core/watermark.mjs';
 import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, captionHtml, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
 import { CAPTION_BOX, captionsOption, captionsSummary, timingFile } from './karaoke.mjs';
 import { themeOf, themeText } from './layouts.mjs';
@@ -349,12 +350,15 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   const settings = source === 'server' && client ? await client.settings() : null;
   const range = settings ? { minSeconds: settings.seconds_min, maxSeconds: settings.seconds_max } : PROFILE;
   const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], align: captionStyle === 'karaoke', synthesizeImpl, synthesizeAlignedImpl, alignImpl });
-  const codeHash = sha256(['build.mjs','core.mjs','karaoke.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1','../render/browser.mjs'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
+  // The channel mark every Short carries (docs/videos/WATERMARK.md): its bytes are part of what
+  // was built, beside the module that says where it sits (a PNG cannot join the list read as text).
+  const mark = watermark(undefined, 'shorts');
+  const codeHash = sha256(['build.mjs','core.mjs','karaoke.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1','../render/browser.mjs','../core/watermark.mjs'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
   const audioHash = sha256(narration.clips.map(bytes=>sha256(bytes)).join(''));
   // The bed and the effect set are part of what was built: another file under the same name is another cut.
   const sound = await shortSound(doc, base);
   const soundHash = sha256(JSON.stringify({ track: sound.track?.sha256 ?? null, sfx: sound.sfx ? sfxSetHash(doc, sound.sfx.manifest) : null }));
-  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash,soundHash,captions:captionStyle})).slice(0,16);
+  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash,soundHash,captions:captionStyle,watermark:{id:mark.id,sha256:mark.sha256}})).slice(0,16);
   // Every attempt is separate: a failed rerun must never leave an old successful manifest next to new bytes.
   const directory = path.join(base,doc.slug,`${buildId}-${Date.now()}`);
   if (stopRequested(path.join(base,doc.slug)) || stopRequested(directory)) throw new Error('STOP requested');
@@ -407,7 +411,7 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
     // first segment, drawn when that segment was encoded, is the cover and what the replay joins.
     const loopTo = index === spans.length - 1 && stills.length ? stills[0] : null;
     const segment = path.join(directory,'clips',`${number(span.sceneIndex)}.mp4`);
-    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, captionsList, loopTo, outFile: segment }));
+    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, captionsList, loopTo, mark, outFile: segment }));
     motion.push({ scene: span.sceneIndex, frames: span.frames, camera: background.camera, background: background.background, dissolve: dissolveFrom !== null, loop: loopTo !== null, entrance: entries.length - span.cues.length });
     const still = path.join(directory,'build',`scene-${number(span.sceneIndex)}.png`);
     await runTool(ffmpeg, firstFrameArgs(segment, still));
@@ -472,7 +476,7 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
   if (timing) saveJson(path.join(directory,'timing.json'),timing);
-  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,captions:captionsSummary(timing),grammar:{cover_psnr:psnrValue(measured.grammar.cover_psnr),loop_psnr:psnrValue(measured.grammar.loop_psnr),loop_frames:LOOP_FRAMES},music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
+  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,captions:captionsSummary(timing),watermark:watermarkRecord(mark),grammar:{cover_psnr:psnrValue(measured.grammar.cover_psnr),loop_psnr:psnrValue(measured.grammar.loop_psnr),loop_frames:LOOP_FRAMES},music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
   // What the site's ledger is told when the final cut is approved: /video/speech takes no slug,
   // so only the tool knows which Short the narration was for (docs/videos/SHORTS.md §花費與預算).
   saveJson(path.join(directory,USAGE_FILE),{narration:{seconds:Number(wavs.reduce((sum,w)=>sum+w.samples.length/w.sampleRate,0).toFixed(3)),characters:phrasesOf(doc).reduce((sum,phrase)=>sum+[...phrase].length,0),calls:narration.calls,provider:narration.provider,...(narration.model?{model:narration.model}:{})},stages:{},checks:{}});

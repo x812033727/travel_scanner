@@ -12,8 +12,8 @@ import { CAPTION_BOX } from './karaoke.mjs';
 export { DISSOLVE_FRAMES };
 // Folded into the build id: a change here re-encodes every Short. v2: the caption layer input;
 // v3: the loop tail, the last frames dissolving into the first; v4: the entrance frames of each
-// scene's first card.
-export const MOTION_VERSION = 'shorts-motion-v4';
+// scene's first card; v5: the channel mark over the cards.
+export const MOTION_VERSION = 'shorts-motion-v5';
 // The entrance of a scene's first card (layouts.mjs ENTRANCE): at most this many frames, drawn
 // one by one by build.mjs with the card's animations paused and seeked at 1/30 s steps
 // (render/browser.mjs), each listed for one frame before the settled still (cardEntries). The
@@ -118,20 +118,29 @@ export function cardEntries({ file, frames, entrance = [] }) {
  * seconds, BT.709), the same for every segment so the join copies. Without a caption layer or a
  * loop the arguments are what they were.
  *
+ * `mark` is the channel mark (core/watermark.mjs, the `shorts` shape; docs/videos/WATERMARK.md):
+ * its PNG, the last input, laid at its box over the cards and the captions, so a card's top scrim
+ * does not dim it, and under the loop tail, so the cut still ends on the very frame it began
+ * with. A dissolve's first frames show the previous scene's last frame, which carries the mark
+ * too, under this one: the mark is opaque, so the two are one mark. Without it the arguments are
+ * what they were.
+ *
  * The loop input is LOOP_FRAMES + 2 frames of the still, faded in by frame count (the first at
  * nothing, the one LOOP_FRAMES later at everything) and moved to the segment's end with setpts;
  * overlay passes the frames before it through untouched and repeats its last frame after it, so
  * the segment's last frame is the still whatever image2 rounds the input's length to.
  */
-export function segmentArgs({ background, move, frames, cardsList: list, dissolveFrom = null, captionsList = null, loopTo = null, outFile }) {
+export function segmentArgs({ background, move, frames, cardsList: list, dissolveFrom = null, captionsList = null, loopTo = null, mark = null, outFile }) {
   const inputs = ['-loop', '1', '-framerate', String(FPS), '-t', seconds(frames), '-i', background, '-f', 'concat', '-safe', '0', '-i', list];
   let next = 2;
   const dissolveInput = dissolveFrom ? next++ : null;
   const captionsInput = captionsList ? next++ : null;
   const loopInput = loopTo ? next++ : null;
+  const markInput = mark ? next++ : null;
   if (dissolveFrom) inputs.push('-loop', '1', '-framerate', String(FPS), '-t', seconds(DISSOLVE_FRAMES + 2), '-i', dissolveFrom);
   if (captionsList) inputs.push('-f', 'concat', '-safe', '0', '-i', captionsList);
   if (loopTo) inputs.push('-loop', '1', '-framerate', String(FPS), '-t', seconds(LOOP_FRAMES + 2), '-i', loopTo);
+  if (mark) inputs.push('-i', mark.file);
   const graph = [`[0:v]${backgroundChain(move, frames).join(',')}[pic]`];
   let last = 'pic';
   if (dissolveFrom) {
@@ -147,6 +156,10 @@ export function segmentArgs({ background, move, frames, cardsList: list, dissolv
     graph.push(`[${last}][captions]overlay=${CAPTION_BOX.x}:${CAPTION_BOX.y}:eof_action=pass[captioned]`);
     last = 'captioned';
   }
+  if (mark) {
+    graph.push(...markStages(markInput, last, mark));
+    last = 'marked';
+  }
   if (loopTo) {
     graph.push(`[${loopInput}:v]scale=${WIDTH}:${HEIGHT},format=yuva420p,fade=t=in:s=0:n=${LOOP_FRAMES}:alpha=1,setpts=PTS+${seconds(Math.max(0, frames - LOOP_FRAMES - 1))}/TB[loop]`);
     graph.push(`[${last}][loop]overlay=0:0:eof_action=repeat[looped]`);
@@ -159,6 +172,19 @@ export function segmentArgs({ background, move, frames, cardsList: list, dissolv
     '-an', '-c:v', 'libx264', '-threads', '2', '-preset', 'fast', '-crf', '20', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
     '-g', String(FPS * 2), '-keyint_min', String(FPS * 2), '-sc_threshold', '0', '-flags', '+cgop',
     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-r', String(FPS), '-fps_mode', 'cfr', outFile,
+  ];
+}
+
+/**
+ * The two stages that lay the channel mark over `[last]` into `[marked]`: its PNG converted with
+ * the BT.709 matrix, as the long video's is (assemble/drama.mjs overlayGraph), then overlaid at
+ * its box; one frame, which overlay holds to the end. Shared with the reframed drama Short
+ * (from-drama.mjs), so both kinds of Short carry the mark alike.
+ */
+export function markStages(input, last, mark) {
+  return [
+    `[${input}:v]scale=${mark.box.width}:${mark.box.height}:out_color_matrix=bt709:out_range=tv,format=yuva420p[mark]`,
+    `[${last}][mark]overlay=${mark.box.x}:${mark.box.y}[marked]`,
   ];
 }
 

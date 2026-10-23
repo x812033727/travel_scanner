@@ -1,0 +1,3282 @@
+{
+  "series_title": "Sunny & Pip: Elementary English",
+  "version": 2,
+  "episodes": [
+    {
+      "id": "ep37",
+      "number": 37,
+      "season": 4,
+      "title_en": "Telling the Time",
+      "title_zh_TW": "看鐘說時間",
+      "titles": {
+        "zh-TW": "看鐘說時間",
+        "zh-CN": "看钟说时间",
+        "ja": "時計を見て時刻を言おう",
+        "ko": "시계를 보고 시간 말하기"
+      },
+      "topic": "telling-time",
+      "objectives_zh_TW": [
+        "看類比鐘與數位時間，辨認七點、八點與七點半。",
+        "用 It is ... 說出整點，認識 half past 表示過半小時。",
+        "跟讀時間句，並在聽讀選擇中配對正確鐘面。"
+      ],
+      "parent_tip_zh_TW": "畫三個鐘面，分別是 7:00、8:00、7:30；七點半的時針應在七與八之間。先指鐘，再選擇跟說或寫句。",
+      "practice": {
+        "prompt_en": "Draw clocks for 7:00 and 7:30. Write a sentence for each.",
+        "prompt_zh_TW": "畫七點與七點半的鐘，各寫一句時間。",
+        "sample_answer_en": "It is seven o'clock. It is half past seven."
+      },
+      "scenes": [
+        {
+          "id": "ep37-s01",
+          "english": "It is seven o'clock.",
+          "demo": "It is seven o'clock.",
+          "instruction": {
+            "en": "The long hand points to twelve at an exact hour.",
+            "zh-TW": "整點時，分針指向十二。",
+            "zh-CN": "整点时，分针指向十二。",
+            "ja": "ちょうどの時刻は長い針が十二だよ。",
+            "ko": "정각에는 긴바늘이 십이를 가리켜요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點。",
+            "zh-CN": "现在是七点。",
+            "ja": "七時です。",
+            "ko": "일곱 시예요."
+          },
+          "visual": "clock:07:00",
+          "mode": "demo",
+          "target": "clock:07:00",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep37-s02",
+          "english": "It is eight o'clock.",
+          "demo": "It is eight o'clock.",
+          "instruction": {
+            "en": "The short hand shows the hour.",
+            "zh-TW": "看短短的時針說幾點。",
+            "zh-CN": "看短短的时针说几点。",
+            "ja": "短い針を見て、何時か言おう。",
+            "ko": "짧은바늘을 보고 몇 시인지 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是八點。",
+            "zh-CN": "现在是八点。",
+            "ja": "八時です。",
+            "ko": "여덟 시예요."
+          },
+          "visual": "clock:08:00",
+          "mode": "demo",
+          "target": "clock:08:00",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep37-s03",
+          "english": "It is half past seven.",
+          "demo": "It is half past seven.",
+          "instruction": {
+            "en": "Half past means thirty minutes after the hour.",
+            "zh-TW": "半點是過整點三十分鐘。",
+            "zh-CN": "半点是过整点三十分钟。",
+            "ja": "半は、ちょうどの時刻から三十分後だよ。",
+            "ko": "반은 정각에서 삼십 분 지난 때예요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點半。",
+            "zh-CN": "现在是七点半。",
+            "ja": "七時半です。",
+            "ko": "일곱 시 반이에요."
+          },
+          "visual": "clock:07:30",
+          "mode": "demo",
+          "target": "clock:07:30",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep37-s04",
+          "english": "It is eight o'clock.",
+          "demo": "It is eight o'clock.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是八點。",
+            "zh-CN": "现在是八点。",
+            "ja": "八時です。",
+            "ko": "여덟 시예요."
+          },
+          "visual": "clock:08:00",
+          "mode": "repeat",
+          "target": "clock:08:00",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep37-s05",
+          "english": "Listen and choose.",
+          "demo": "It is seven o'clock.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點。",
+            "zh-CN": "现在是七点。",
+            "ja": "七時です。",
+            "ko": "일곱 시예요."
+          },
+          "visual": "clock:07:00",
+          "mode": "quiz",
+          "target": "clock:07:00",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "clock:07:30",
+            "clock:07:00",
+            "clock:08:00"
+          ]
+        },
+        {
+          "id": "ep37-s06",
+          "english": "What time is it?",
+          "demo": "What time is it?",
+          "instruction": {
+            "en": "Use this question to ask the time.",
+            "zh-TW": "用這句話問現在幾點。",
+            "zh-CN": "用这句话问现在几点。",
+            "ja": "この文で今の時刻を聞こう。",
+            "ko": "이 문장으로 지금 시간을 물어요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在幾點？",
+            "zh-CN": "现在几点？",
+            "ja": "今、何時ですか？",
+            "ko": "지금 몇 시예요?"
+          },
+          "visual": "sentence:What time is it?",
+          "mode": "demo",
+          "target": "sentence:What time is it?",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep37-s07",
+          "english": "Listen and choose.",
+          "demo": "It is eight o'clock.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是八點。",
+            "zh-CN": "现在是八点。",
+            "ja": "八時です。",
+            "ko": "여덟 시예요."
+          },
+          "visual": "clock:08:00",
+          "mode": "quiz",
+          "target": "clock:08:00",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "clock:07:30",
+            "clock:07:00",
+            "clock:08:00"
+          ]
+        },
+        {
+          "id": "ep37-s08",
+          "english": "It is half past seven.",
+          "demo": "It is half past seven.",
+          "instruction": {
+            "en": "Choose words and write your sentence.",
+            "zh-TW": "選詞，在紙上寫一句。",
+            "zh-CN": "选词，在纸上写一句。",
+            "ja": "言葉を選んで、紙に一文書こう。",
+            "ko": "낱말을 골라 종이에 한 문장을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點半。",
+            "zh-CN": "现在是七点半。",
+            "ja": "七時半です。",
+            "ko": "일곱 시 반이에요."
+          },
+          "visual": "clock:07:30",
+          "mode": "repeat",
+          "target": "clock:07:30",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep37-s09",
+          "english": "Listen and choose.",
+          "demo": "It is half past seven.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點半。",
+            "zh-CN": "现在是七点半。",
+            "ja": "七時半です。",
+            "ko": "일곱 시 반이에요."
+          },
+          "visual": "clock:07:30",
+          "mode": "quiz",
+          "target": "clock:07:30",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "clock:07:30",
+            "clock:07:00",
+            "clock:08:00"
+          ]
+        },
+        {
+          "id": "ep37-s10",
+          "english": "It is eight o'clock.",
+          "demo": "It is eight o'clock.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是八點。",
+            "zh-CN": "现在是八点。",
+            "ja": "八時です。",
+            "ko": "여덟 시예요."
+          },
+          "visual": "clock:08:00",
+          "mode": "review",
+          "target": "clock:08:00",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep38",
+      "number": 38,
+      "season": 4,
+      "title_en": "Our Week",
+      "title_zh_TW": "我們的一週",
+      "titles": {
+        "zh-TW": "我們的一週",
+        "zh-CN": "我们的一周",
+        "ja": "私たちの一週間",
+        "ko": "우리의 일주일"
+      },
+      "topic": "days-of-week",
+      "objectives_zh_TW": [
+        "辨認 Monday、Wednesday、Friday 三個星期名稱。",
+        "用 on 加星期，描述那天做的活動。",
+        "看句跟讀並寫出一到兩句虛構的每週活動。"
+      ],
+      "parent_tip_zh_TW": "使用虛構的一週行程，不必提供孩子的真實課表；英文星期名稱以大寫字母開頭，前面用 on。",
+      "practice": {
+        "prompt_en": "Imagine a week. Write two sentences using on and days.",
+        "prompt_zh_TW": "想像一週活動，用 on 加星期寫兩句。",
+        "sample_answer_en": "On Monday, I read. On Friday, I play."
+      },
+      "scenes": [
+        {
+          "id": "ep38-s01",
+          "english": "On Monday, I read.",
+          "demo": "On Monday, I read.",
+          "instruction": {
+            "en": "Put on before a day of the week.",
+            "zh-TW": "星期前面用英文的 on。",
+            "zh-CN": "星期前面用英文的 on。",
+            "ja": "曜日の前にはオンをつけよう。",
+            "ko": "요일 앞에는 온을 붙여요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期一，我閱讀。",
+            "zh-CN": "星期一，我阅读。",
+            "ja": "月曜日に本を読みます。",
+            "ko": "월요일에 책을 읽어요."
+          },
+          "visual": "day:Monday",
+          "mode": "demo",
+          "target": "day:Monday",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep38-s02",
+          "english": "On Wednesday, I draw.",
+          "demo": "On Wednesday, I draw.",
+          "instruction": {
+            "en": "Listen to the day and the activity.",
+            "zh-TW": "聽聽星期與活動怎麼說。",
+            "zh-CN": "听听星期与活动怎么说。",
+            "ja": "曜日と活動の言い方を聞こう。",
+            "ko": "요일과 활동을 어떻게 말하는지 들어요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期三，我畫畫。",
+            "zh-CN": "星期三，我画画。",
+            "ja": "水曜日に絵を描きます。",
+            "ko": "수요일에 그림을 그려요."
+          },
+          "visual": "day:Wednesday",
+          "mode": "demo",
+          "target": "day:Wednesday",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep38-s03",
+          "english": "On Friday, I play.",
+          "demo": "On Friday, I play.",
+          "instruction": {
+            "en": "Day names begin with capital letters.",
+            "zh-TW": "英文星期名稱以大寫開頭。",
+            "zh-CN": "英文星期名称以大写开头。",
+            "ja": "英語の曜日は大文字で始めよう。",
+            "ko": "영어 요일 이름은 대문자로 시작해요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期五，我玩耍。",
+            "zh-CN": "星期五，我玩耍。",
+            "ja": "金曜日に遊びます。",
+            "ko": "금요일에 놀아요."
+          },
+          "visual": "day:Friday",
+          "mode": "demo",
+          "target": "day:Friday",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep38-s04",
+          "english": "On Wednesday, I draw.",
+          "demo": "On Wednesday, I draw.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期三，我畫畫。",
+            "zh-CN": "星期三，我画画。",
+            "ja": "水曜日に絵を描きます。",
+            "ko": "수요일에 그림을 그려요."
+          },
+          "visual": "day:Wednesday",
+          "mode": "repeat",
+          "target": "day:Wednesday",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep38-s05",
+          "english": "Listen and choose.",
+          "demo": "On Monday, I read.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期一，我閱讀。",
+            "zh-CN": "星期一，我阅读。",
+            "ja": "月曜日に本を読みます。",
+            "ko": "월요일에 책을 읽어요."
+          },
+          "visual": "day:Monday",
+          "mode": "quiz",
+          "target": "day:Monday",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "day:Wednesday",
+            "day:Friday",
+            "day:Monday"
+          ]
+        },
+        {
+          "id": "ep38-s06",
+          "english": "What do you do on Monday?",
+          "demo": "What do you do on Monday?",
+          "instruction": {
+            "en": "Ask about an activity on that day.",
+            "zh-TW": "問問那一天做什麼活動。",
+            "zh-CN": "问问那一天做什么活动。",
+            "ja": "その曜日に何をするか聞こう。",
+            "ko": "그 요일에 무엇을 하는지 물어요."
+          },
+          "demo_translation": {
+            "zh-TW": "你星期一做什麼？",
+            "zh-CN": "你星期一做什么？",
+            "ja": "月曜日に何をしますか？",
+            "ko": "월요일에 무엇을 해요?"
+          },
+          "visual": "sentence:What do you do on Monday?",
+          "mode": "demo",
+          "target": "sentence:What do you do on Monday?",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep38-s07",
+          "english": "Listen and choose.",
+          "demo": "On Wednesday, I draw.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期三，我畫畫。",
+            "zh-CN": "星期三，我画画。",
+            "ja": "水曜日に絵を描きます。",
+            "ko": "수요일에 그림을 그려요."
+          },
+          "visual": "day:Wednesday",
+          "mode": "quiz",
+          "target": "day:Wednesday",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "day:Wednesday",
+            "day:Friday",
+            "day:Monday"
+          ]
+        },
+        {
+          "id": "ep38-s08",
+          "english": "On Monday, I read.",
+          "demo": "On Monday, I read.",
+          "instruction": {
+            "en": "Choose words and write your sentence.",
+            "zh-TW": "選詞，在紙上寫一句。",
+            "zh-CN": "选词，在纸上写一句。",
+            "ja": "言葉を選んで、紙に一文書こう。",
+            "ko": "낱말을 골라 종이에 한 문장을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期一，我閱讀。",
+            "zh-CN": "星期一，我阅读。",
+            "ja": "月曜日に本を読みます。",
+            "ko": "월요일에 책을 읽어요."
+          },
+          "visual": "sentence:On Monday, I read.",
+          "mode": "repeat",
+          "target": "sentence:On Monday, I read.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep38-s09",
+          "english": "Listen and choose.",
+          "demo": "On Friday, I play.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期五，我玩耍。",
+            "zh-CN": "星期五，我玩耍。",
+            "ja": "金曜日に遊びます。",
+            "ko": "금요일에 놀아요."
+          },
+          "visual": "day:Friday",
+          "mode": "quiz",
+          "target": "day:Friday",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "day:Wednesday",
+            "day:Friday",
+            "day:Monday"
+          ]
+        },
+        {
+          "id": "ep38-s10",
+          "english": "On Friday, I play.",
+          "demo": "On Friday, I play.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期五，我玩耍。",
+            "zh-CN": "星期五，我玩耍。",
+            "ja": "金曜日に遊びます。",
+            "ko": "금요일에 놀아요."
+          },
+          "visual": "day:Friday",
+          "mode": "review",
+          "target": "day:Friday",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep39",
+      "number": 39,
+      "season": 4,
+      "title_en": "Learning at School",
+      "title_zh_TW": "在學校學習",
+      "titles": {
+        "zh-TW": "在學校學習",
+        "zh-CN": "在学校学习",
+        "ja": "学校で学ぼう",
+        "ko": "학교에서 배워요"
+      },
+      "topic": "school-subjects",
+      "objectives_zh_TW": [
+        "辨認 English、math、art 三個科目名稱。",
+        "用 I like ... 說喜歡的科目，並問 What do you like?。",
+        "跟讀科目句，練習用 and 連接兩個喜歡的科目。"
+      ],
+      "parent_tip_zh_TW": "每個人喜歡的科目可以不同，示例沒有標準喜好；可指向科目字卡，也可用虛構角色回答。",
+      "practice": {
+        "prompt_en": "Choose subjects for a fictional child. Write one or two sentences.",
+        "prompt_zh_TW": "替虛構角色選喜歡的科目，寫一到兩句。",
+        "sample_answer_en": "I like math. I like English and art."
+      },
+      "scenes": [
+        {
+          "id": "ep39-s01",
+          "english": "I like English.",
+          "demo": "I like English.",
+          "instruction": {
+            "en": "Say a school subject after I like.",
+            "zh-TW": "喜歡的科目放在句子後面。",
+            "zh-CN": "喜欢的科目放在句子后面。",
+            "ja": "好きな教科を文の後ろに入れよう。",
+            "ko": "좋아하는 과목을 문장 뒤에 넣어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡英文。",
+            "zh-CN": "我喜欢英语。",
+            "ja": "英語が好きです。",
+            "ko": "영어를 좋아해요."
+          },
+          "visual": "word:English",
+          "mode": "demo",
+          "target": "word:English",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep39-s02",
+          "english": "I like math.",
+          "demo": "I like math.",
+          "instruction": {
+            "en": "Look and listen.",
+            "zh-TW": "看一看，聽一聽。",
+            "zh-CN": "看一看，听一听。",
+            "ja": "見て、聞いてみよう。",
+            "ko": "보고 들어 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡數學。",
+            "zh-CN": "我喜欢数学。",
+            "ja": "算数が好きです。",
+            "ko": "수학을 좋아해요."
+          },
+          "visual": "word:math",
+          "mode": "demo",
+          "target": "word:math",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep39-s03",
+          "english": "I like art.",
+          "demo": "I like art.",
+          "instruction": {
+            "en": "Look and listen.",
+            "zh-TW": "看一看，聽一聽。",
+            "zh-CN": "看一看，听一听。",
+            "ja": "見て、聞いてみよう。",
+            "ko": "보고 들어 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡美術。",
+            "zh-CN": "我喜欢美术。",
+            "ja": "図工が好きです。",
+            "ko": "미술을 좋아해요."
+          },
+          "visual": "word:art",
+          "mode": "demo",
+          "target": "word:art",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep39-s04",
+          "english": "I like math.",
+          "demo": "I like math.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡數學。",
+            "zh-CN": "我喜欢数学。",
+            "ja": "算数が好きです。",
+            "ko": "수학을 좋아해요."
+          },
+          "visual": "word:math",
+          "mode": "repeat",
+          "target": "word:math",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep39-s05",
+          "english": "Listen and choose.",
+          "demo": "I like English.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡英文。",
+            "zh-CN": "我喜欢英语。",
+            "ja": "英語が好きです。",
+            "ko": "영어를 좋아해요."
+          },
+          "visual": "word:English",
+          "mode": "quiz",
+          "target": "word:English",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "word:English",
+            "word:math",
+            "word:art"
+          ]
+        },
+        {
+          "id": "ep39-s06",
+          "english": "What do you like?",
+          "demo": "What do you like?",
+          "instruction": {
+            "en": "Use this question to ask about likes.",
+            "zh-TW": "用這句問別人喜歡什麼。",
+            "zh-CN": "用这句问别人喜欢什么。",
+            "ja": "この文で好きなものを聞こう。",
+            "ko": "이 문장으로 좋아하는 것을 물어요."
+          },
+          "demo_translation": {
+            "zh-TW": "你喜歡什麼？",
+            "zh-CN": "你喜欢什么？",
+            "ja": "何が好きですか？",
+            "ko": "무엇을 좋아해요?"
+          },
+          "visual": "sentence:What do you like?",
+          "mode": "demo",
+          "target": "sentence:What do you like?",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep39-s07",
+          "english": "Listen and choose.",
+          "demo": "I like math.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡數學。",
+            "zh-CN": "我喜欢数学。",
+            "ja": "算数が好きです。",
+            "ko": "수학을 좋아해요."
+          },
+          "visual": "word:math",
+          "mode": "quiz",
+          "target": "word:math",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "word:English",
+            "word:math",
+            "word:art"
+          ]
+        },
+        {
+          "id": "ep39-s08",
+          "english": "I like English and art.",
+          "demo": "I like English and art.",
+          "instruction": {
+            "en": "And joins two subjects that you like.",
+            "zh-TW": "用 and 連接兩個喜歡的科目。",
+            "zh-CN": "用 and 连接两个喜欢的科目。",
+            "ja": "アンドで好きな教科を二つつなごう。",
+            "ko": "앤드로 좋아하는 과목 두 개를 이어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡英文和美術。",
+            "zh-CN": "我喜欢英语和美术。",
+            "ja": "英語と図工が好きです。",
+            "ko": "영어와 미술을 좋아해요."
+          },
+          "visual": "sentence:I like English and art.",
+          "mode": "repeat",
+          "target": "sentence:I like English and art.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep39-s09",
+          "english": "Listen and choose.",
+          "demo": "I like art.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡美術。",
+            "zh-CN": "我喜欢美术。",
+            "ja": "図工が好きです。",
+            "ko": "미술을 좋아해요."
+          },
+          "visual": "word:art",
+          "mode": "quiz",
+          "target": "word:art",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "word:English",
+            "word:math",
+            "word:art"
+          ]
+        },
+        {
+          "id": "ep39-s10",
+          "english": "I like English and art.",
+          "demo": "I like English and art.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡英文和美術。",
+            "zh-CN": "我喜欢英语和美术。",
+            "ja": "英語と図工が好きです。",
+            "ko": "영어와 미술을 좋아해요."
+          },
+          "visual": "sentence:I like English and art.",
+          "mode": "review",
+          "target": "sentence:I like English and art.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep40",
+      "number": 40,
+      "season": 4,
+      "title_en": "Daily Routines",
+      "title_zh_TW": "每日作息",
+      "titles": {
+        "zh-TW": "每日作息",
+        "zh-CN": "每日作息",
+        "ja": "毎日の習慣",
+        "ko": "매일 하는 일"
+      },
+      "topic": "present-third-person",
+      "objectives_zh_TW": [
+        "用簡單現在式說平常反覆做的事。",
+        "比較 I walk 與 Sam walks，觀察第三人稱單數動詞的 s。",
+        "用明確虛構人物理解 she、he，跟讀並寫一組日常句。"
+      ],
+      "parent_tip_zh_TW": "Sam 和 Amy 是虛構角色；本集文字設定 Amy 使用 she、Sam 使用 he。觀察 walks、reads 的字尾，不依真人外貌推定代名詞。",
+      "practice": {
+        "prompt_en": "Write one routine for I and one for Sam.",
+        "prompt_zh_TW": "用 I 和 Sam 各寫一句平常的活動。",
+        "sample_answer_en": "I walk to school. Sam walks to school."
+      },
+      "scenes": [
+        {
+          "id": "ep40-s01",
+          "english": "I walk to school.",
+          "demo": "I walk to school.",
+          "instruction": {
+            "en": "This sentence tells a usual activity.",
+            "zh-TW": "這句說的是平常的活動。",
+            "zh-CN": "这句说的是平常的活动。",
+            "ja": "この文はいつもの活動を表すよ。",
+            "ko": "이 문장은 평소 하는 일을 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我走路去學校。",
+            "zh-CN": "我走路去学校。",
+            "ja": "歩いて学校へ行きます。",
+            "ko": "걸어서 학교에 가요."
+          },
+          "visual": "sentence:I walk to school.",
+          "mode": "demo",
+          "target": "sentence:I walk to school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep40-s02",
+          "english": "Sam walks to school.",
+          "demo": "Sam walks to school.",
+          "instruction": {
+            "en": "For Sam, add s to walk.",
+            "zh-TW": "主詞換成 Sam，動詞加 s。",
+            "zh-CN": "主语换成 Sam，动词加 s。",
+            "ja": "サムの文では動詞にエスをつけよう。",
+            "ko": "샘의 문장에서는 동사에 에스를 붙여요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 走路去學校。",
+            "zh-CN": "Sam 走路去学校。",
+            "ja": "サムは歩いて学校へ行きます。",
+            "ko": "샘은 걸어서 학교에 가요."
+          },
+          "visual": "sentence:Sam walks to school.",
+          "mode": "demo",
+          "target": "sentence:Sam walks to school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep40-s03",
+          "english": "She reads a book.",
+          "demo": "She reads a book.",
+          "instruction": {
+            "en": "She means Amy here; reads ends in s.",
+            "zh-TW": "這裡她指 Amy，動詞也加 s。",
+            "zh-CN": "这里她指 Amy，动词也加 s。",
+            "ja": "ここでは彼女はエイミー。動詞にエス。",
+            "ko": "여기서 그녀는 에이미예요. 동사에 에스."
+          },
+          "demo_translation": {
+            "zh-TW": "她讀一本書。",
+            "zh-CN": "她读一本书。",
+            "ja": "彼女は本を読みます。",
+            "ko": "그녀는 책을 읽어요."
+          },
+          "visual": "sentence:She reads a book.",
+          "mode": "demo",
+          "target": "sentence:She reads a book.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep40-s04",
+          "english": "Sam walks to school.",
+          "demo": "Sam walks to school.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 走路去學校。",
+            "zh-CN": "Sam 走路去学校。",
+            "ja": "サムは歩いて学校へ行きます。",
+            "ko": "샘은 걸어서 학교에 가요."
+          },
+          "visual": "sentence:Sam walks to school.",
+          "mode": "repeat",
+          "target": "sentence:Sam walks to school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep40-s05",
+          "english": "Listen and choose.",
+          "demo": "I walk to school.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我走路去學校。",
+            "zh-CN": "我走路去学校。",
+            "ja": "歩いて学校へ行きます。",
+            "ko": "걸어서 학교에 가요."
+          },
+          "visual": "sentence:I walk to school.",
+          "mode": "quiz",
+          "target": "sentence:I walk to school.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:She reads a book.",
+            "sentence:I walk to school.",
+            "sentence:Sam walks to school."
+          ]
+        },
+        {
+          "id": "ep40-s06",
+          "english": "Amy reads a book.",
+          "demo": "Amy reads a book.",
+          "instruction": {
+            "en": "A name can replace she in this sentence.",
+            "zh-TW": "這句可用名字代替「她」。",
+            "zh-CN": "这句可用名字代替“她”。",
+            "ja": "この文の彼女を名前に替えられるよ。",
+            "ko": "이 문장의 그녀를 이름으로 바꿔도 돼요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 讀一本書。",
+            "zh-CN": "Amy 读一本书。",
+            "ja": "エイミーは本を読みます。",
+            "ko": "에이미는 책을 읽어요."
+          },
+          "visual": "sentence:Amy reads a book.",
+          "mode": "demo",
+          "target": "sentence:Amy reads a book.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep40-s07",
+          "english": "Listen and choose.",
+          "demo": "Sam walks to school.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 走路去學校。",
+            "zh-CN": "Sam 走路去学校。",
+            "ja": "サムは歩いて学校へ行きます。",
+            "ko": "샘은 걸어서 학교에 가요."
+          },
+          "visual": "sentence:Sam walks to school.",
+          "mode": "quiz",
+          "target": "sentence:Sam walks to school.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:She reads a book.",
+            "sentence:I walk to school.",
+            "sentence:Sam walks to school."
+          ]
+        },
+        {
+          "id": "ep40-s08",
+          "english": "He reads a book.",
+          "demo": "He reads a book.",
+          "instruction": {
+            "en": "He means Sam here; keep s on reads.",
+            "zh-TW": "這裡他指 Sam，動詞保留 s。",
+            "zh-CN": "这里他指 Sam，动词保留 s。",
+            "ja": "ここでは彼はサム。動詞のエスは残そう。",
+            "ko": "여기서 그는 샘이에요. 동사의 에스는 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "他讀一本書。",
+            "zh-CN": "他读一本书。",
+            "ja": "彼は本を読みます。",
+            "ko": "그는 책을 읽어요."
+          },
+          "visual": "sentence:He reads a book.",
+          "mode": "repeat",
+          "target": "sentence:He reads a book.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep40-s09",
+          "english": "Listen and choose.",
+          "demo": "She reads a book.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "她讀一本書。",
+            "zh-CN": "她读一本书。",
+            "ja": "彼女は本を読みます。",
+            "ko": "그녀는 책을 읽어요."
+          },
+          "visual": "sentence:She reads a book.",
+          "mode": "quiz",
+          "target": "sentence:She reads a book.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:She reads a book.",
+            "sentence:I walk to school.",
+            "sentence:Sam walks to school."
+          ]
+        },
+        {
+          "id": "ep40-s10",
+          "english": "Sam walks. Amy reads.",
+          "demo": "Sam walks. Amy reads.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 走路。Amy 閱讀。",
+            "zh-CN": "Sam 走路。Amy 阅读。",
+            "ja": "サムは歩きます。エイミーは本を読みます。",
+            "ko": "샘은 걸어요. 에이미는 책을 읽어요."
+          },
+          "visual": "sentence:Sam walks. Amy reads.",
+          "mode": "review",
+          "target": "sentence:Sam walks. Amy reads.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep41",
+      "number": 41,
+      "season": 4,
+      "title_en": "Habits in Our Day",
+      "title_zh_TW": "次數與習慣",
+      "titles": {
+        "zh-TW": "次數與習慣",
+        "zh-CN": "次数与习惯",
+        "ja": "どのくらいするかな",
+        "ko": "얼마나 자주 할까요"
+      },
+      "topic": "frequency-adverbs",
+      "objectives_zh_TW": [
+        "理解 always、sometimes、never 表示不同頻率。",
+        "觀察頻率詞放在一般動作動詞前面的例句。",
+        "用虛構人物的習慣跟讀與寫句，不把頻率當好壞評價。"
+      ],
+      "parent_tip_zh_TW": "本集習慣都屬於虛構人物。always 指每次，sometimes 指有時，never 指從不；可以想像自己的角色，不以閱讀頻率評價孩子。",
+      "practice": {
+        "prompt_en": "Imagine two habits for a character. Use always, sometimes, or never.",
+        "prompt_zh_TW": "為角色想像兩個習慣，用總是、有時或從不的英文寫句。",
+        "sample_answer_en": "Sam always reads at school. Pip sometimes reads in the park."
+      },
+      "scenes": [
+        {
+          "id": "ep41-s01",
+          "english": "Sam always reads at school.",
+          "demo": "Sam always reads at school.",
+          "instruction": {
+            "en": "Always means every time in this situation.",
+            "zh-TW": "總是表示這情境下每一次。",
+            "zh-CN": "总是表示这情境下每一次。",
+            "ja": "いつもは、その場面で毎回という意味。",
+            "ko": "항상은 그 상황에서 매번이라는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 在學校總是閱讀。",
+            "zh-CN": "Sam 在学校总是阅读。",
+            "ja": "サムは学校でいつも本を読みます。",
+            "ko": "샘은 학교에서 항상 책을 읽어요."
+          },
+          "visual": "sentence:Sam always reads at school.",
+          "mode": "demo",
+          "target": "sentence:Sam always reads at school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep41-s02",
+          "english": "Amy sometimes reads at school.",
+          "demo": "Amy sometimes reads at school.",
+          "instruction": {
+            "en": "Sometimes means some times, but not every time.",
+            "zh-TW": "有時表示不是每次都做。",
+            "zh-CN": "有时表示不是每次都做。",
+            "ja": "ときどきは、毎回ではないという意味。",
+            "ko": "가끔은 매번 하는 것은 아니라는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 在學校有時閱讀。",
+            "zh-CN": "Amy 在学校有时阅读。",
+            "ja": "エイミーは学校でときどき本を読みます。",
+            "ko": "에이미는 학교에서 가끔 책을 읽어요."
+          },
+          "visual": "sentence:Amy sometimes reads at school.",
+          "mode": "demo",
+          "target": "sentence:Amy sometimes reads at school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep41-s03",
+          "english": "Pip never reads at night.",
+          "demo": "Pip never reads at night.",
+          "instruction": {
+            "en": "Never means not at any time.",
+            "zh-TW": "從不表示一次也不做。",
+            "zh-CN": "从不表示一次也不做。",
+            "ja": "まったくしないは、一度もしないこと。",
+            "ko": "전혀 하지 않음은 한 번도 안 한다는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 晚上從不閱讀。",
+            "zh-CN": "Pip 晚上从不阅读。",
+            "ja": "ピップは夜にはまったく本を読みません。",
+            "ko": "핍은 밤에 책을 전혀 읽지 않아요."
+          },
+          "visual": "sentence:Pip never reads at night.",
+          "mode": "demo",
+          "target": "sentence:Pip never reads at night.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep41-s04",
+          "english": "Amy sometimes reads at school.",
+          "demo": "Amy sometimes reads at school.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 在學校有時閱讀。",
+            "zh-CN": "Amy 在学校有时阅读。",
+            "ja": "エイミーは学校でときどき本を読みます。",
+            "ko": "에이미는 학교에서 가끔 책을 읽어요."
+          },
+          "visual": "sentence:Amy sometimes reads at school.",
+          "mode": "repeat",
+          "target": "sentence:Amy sometimes reads at school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep41-s05",
+          "english": "Listen and choose.",
+          "demo": "Sam always reads at school.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 在學校總是閱讀。",
+            "zh-CN": "Sam 在学校总是阅读。",
+            "ja": "サムは学校でいつも本を読みます。",
+            "ko": "샘은 학교에서 항상 책을 읽어요."
+          },
+          "visual": "sentence:Sam always reads at school.",
+          "mode": "quiz",
+          "target": "sentence:Sam always reads at school.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:Amy sometimes reads at school.",
+            "sentence:Pip never reads at night.",
+            "sentence:Sam always reads at school."
+          ]
+        },
+        {
+          "id": "ep41-s06",
+          "english": "Pip sometimes reads in the park.",
+          "demo": "Pip sometimes reads in the park.",
+          "instruction": {
+            "en": "Put sometimes before the action word here.",
+            "zh-TW": "這裡頻率詞放在動詞前。",
+            "zh-CN": "这里频率词放在动词前。",
+            "ja": "この文では頻度の言葉を動詞の前に。",
+            "ko": "이 문장에서는 빈도 표현을 동사 앞에 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 有時在公園閱讀。",
+            "zh-CN": "Pip 有时在公园阅读。",
+            "ja": "ピップはときどき公園で本を読みます。",
+            "ko": "핍은 가끔 공원에서 책을 읽어요."
+          },
+          "visual": "sentence:Pip sometimes reads in the park.",
+          "mode": "demo",
+          "target": "sentence:Pip sometimes reads in the park.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep41-s07",
+          "english": "Listen and choose.",
+          "demo": "Amy sometimes reads at school.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 在學校有時閱讀。",
+            "zh-CN": "Amy 在学校有时阅读。",
+            "ja": "エイミーは学校でときどき本を読みます。",
+            "ko": "에이미는 학교에서 가끔 책을 읽어요."
+          },
+          "visual": "sentence:Amy sometimes reads at school.",
+          "mode": "quiz",
+          "target": "sentence:Amy sometimes reads at school.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:Amy sometimes reads at school.",
+            "sentence:Pip never reads at night.",
+            "sentence:Sam always reads at school."
+          ]
+        },
+        {
+          "id": "ep41-s08",
+          "english": "Amy sometimes reads at school.",
+          "demo": "Amy sometimes reads at school.",
+          "instruction": {
+            "en": "Choose words and write your sentence.",
+            "zh-TW": "選詞，在紙上寫一句。",
+            "zh-CN": "选词，在纸上写一句。",
+            "ja": "言葉を選んで、紙に一文書こう。",
+            "ko": "낱말을 골라 종이에 한 문장을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 在學校有時閱讀。",
+            "zh-CN": "Amy 在学校有时阅读。",
+            "ja": "エイミーは学校でときどき本を読みます。",
+            "ko": "에이미는 학교에서 가끔 책을 읽어요."
+          },
+          "visual": "sentence:Amy sometimes reads at school.",
+          "mode": "repeat",
+          "target": "sentence:Amy sometimes reads at school.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep41-s09",
+          "english": "Listen and choose.",
+          "demo": "Pip never reads at night.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 晚上從不閱讀。",
+            "zh-CN": "Pip 晚上从不阅读。",
+            "ja": "ピップは夜にはまったく本を読みません。",
+            "ko": "핍은 밤에 책을 전혀 읽지 않아요."
+          },
+          "visual": "sentence:Pip never reads at night.",
+          "mode": "quiz",
+          "target": "sentence:Pip never reads at night.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:Amy sometimes reads at school.",
+            "sentence:Pip never reads at night.",
+            "sentence:Sam always reads at school."
+          ]
+        },
+        {
+          "id": "ep41-s10",
+          "english": "People have different habits.",
+          "demo": "People have different habits.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "人們有不同的習慣。",
+            "zh-CN": "人们有不同的习惯。",
+            "ja": "人にはそれぞれ違う習慣があります。",
+            "ko": "사람마다 습관이 달라요."
+          },
+          "visual": "sentence:People have different habits.",
+          "mode": "review",
+          "target": "sentence:People have different habits.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep42",
+      "number": 42,
+      "season": 4,
+      "title_en": "Weather and Seasons",
+      "title_zh_TW": "天氣與季節",
+      "titles": {
+        "zh-TW": "天氣與季節",
+        "zh-CN": "天气与季节",
+        "ja": "天気と季節",
+        "ko": "날씨와 계절"
+      },
+      "topic": "weather-seasons",
+      "objectives_zh_TW": [
+        "用 It is ... 描述晴天、雨天與有風的天氣。",
+        "在示例情境中理解冬天與春天的描述。",
+        "觀察季節前面用 in，跟讀並寫出天氣句。"
+      ],
+      "parent_tip_zh_TW": "冬冷春暖是本集想像地點的天氣，不代表世界每個地方。可談所在地的實際感受，不需要到戶外驗證天氣。",
+      "practice": {
+        "prompt_en": "Imagine the weather in a place. Write two sentences.",
+        "prompt_zh_TW": "想像一個地方的天氣，寫兩句。",
+        "sample_answer_en": "It is sunny. In spring, it is warm."
+      },
+      "scenes": [
+        {
+          "id": "ep42-s01",
+          "english": "It is sunny.",
+          "demo": "It is sunny.",
+          "instruction": {
+            "en": "Describe the weather with it is.",
+            "zh-TW": "用這個句型描述天氣。",
+            "zh-CN": "用这个句型描述天气。",
+            "ja": "この形で天気を言ってみよう。",
+            "ko": "이 문장 틀로 날씨를 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "天氣晴朗。",
+            "zh-CN": "天气晴朗。",
+            "ja": "晴れています。",
+            "ko": "날씨가 맑아요."
+          },
+          "visual": "sun",
+          "mode": "demo",
+          "target": "sun",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep42-s02",
+          "english": "It is rainy.",
+          "demo": "It is rainy.",
+          "instruction": {
+            "en": "Look and listen.",
+            "zh-TW": "看一看，聽一聽。",
+            "zh-CN": "看一看，听一听。",
+            "ja": "見て、聞いてみよう。",
+            "ko": "보고 들어 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "正在下雨。",
+            "zh-CN": "正在下雨。",
+            "ja": "雨が降っています。",
+            "ko": "비가 와요."
+          },
+          "visual": "rain",
+          "mode": "demo",
+          "target": "rain",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep42-s03",
+          "english": "It is windy.",
+          "demo": "It is windy.",
+          "instruction": {
+            "en": "Look and listen.",
+            "zh-TW": "看一看，聽一聽。",
+            "zh-CN": "看一看，听一听。",
+            "ja": "見て、聞いてみよう。",
+            "ko": "보고 들어 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "天氣有風。",
+            "zh-CN": "天气有风。",
+            "ja": "風が吹いています。",
+            "ko": "바람이 불어요."
+          },
+          "visual": "wind",
+          "mode": "demo",
+          "target": "wind",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep42-s04",
+          "english": "It is rainy.",
+          "demo": "It is rainy.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "正在下雨。",
+            "zh-CN": "正在下雨。",
+            "ja": "雨が降っています。",
+            "ko": "비가 와요."
+          },
+          "visual": "rain",
+          "mode": "repeat",
+          "target": "rain",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep42-s05",
+          "english": "Listen and choose.",
+          "demo": "It is sunny.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "天氣晴朗。",
+            "zh-CN": "天气晴朗。",
+            "ja": "晴れています。",
+            "ko": "날씨가 맑아요."
+          },
+          "visual": "sun",
+          "mode": "quiz",
+          "target": "sun",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sun",
+            "rain",
+            "wind"
+          ]
+        },
+        {
+          "id": "ep42-s06",
+          "english": "In winter, it is cold.",
+          "demo": "In winter, it is cold.",
+          "instruction": {
+            "en": "Imagine a cold winter here; use in before winter.",
+            "zh-TW": "想像寒冷冬天，季節前用 in。",
+            "zh-CN": "想象寒冷冬天，季节前用 in。",
+            "ja": "寒い冬を想像しよう。季節の前はイン。",
+            "ko": "추운 겨울을 상상해요. 계절 앞에는 인."
+          },
+          "demo_translation": {
+            "zh-TW": "冬天時，天氣寒冷。",
+            "zh-CN": "冬天时，天气寒冷。",
+            "ja": "冬は寒いです。",
+            "ko": "겨울에는 추워요."
+          },
+          "visual": "sentence:In winter, it is cold.",
+          "mode": "demo",
+          "target": "sentence:In winter, it is cold.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep42-s07",
+          "english": "Listen and choose.",
+          "demo": "It is rainy.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "正在下雨。",
+            "zh-CN": "正在下雨。",
+            "ja": "雨が降っています。",
+            "ko": "비가 와요."
+          },
+          "visual": "rain",
+          "mode": "quiz",
+          "target": "rain",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sun",
+            "rain",
+            "wind"
+          ]
+        },
+        {
+          "id": "ep42-s08",
+          "english": "In spring, it is warm.",
+          "demo": "In spring, it is warm.",
+          "instruction": {
+            "en": "Imagine a warm spring in this place.",
+            "zh-TW": "想像這個地方有溫暖的春天。",
+            "zh-CN": "想象这个地方有温暖的春天。",
+            "ja": "この場所の暖かい春を想像しよう。",
+            "ko": "이곳의 따뜻한 봄을 상상해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "春天時，天氣溫暖。",
+            "zh-CN": "春天时，天气温暖。",
+            "ja": "春は暖かいです。",
+            "ko": "봄에는 따뜻해요."
+          },
+          "visual": "sentence:In spring, it is warm.",
+          "mode": "repeat",
+          "target": "sentence:In spring, it is warm.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep42-s09",
+          "english": "Listen and choose.",
+          "demo": "It is windy.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "天氣有風。",
+            "zh-CN": "天气有风。",
+            "ja": "風が吹いています。",
+            "ko": "바람이 불어요."
+          },
+          "visual": "wind",
+          "mode": "quiz",
+          "target": "wind",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sun",
+            "rain",
+            "wind"
+          ]
+        },
+        {
+          "id": "ep42-s10",
+          "english": "In winter, I wear a coat.",
+          "demo": "In winter, I wear a coat.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "冬天時，我穿外套。",
+            "zh-CN": "冬天时，我穿外套。",
+            "ja": "冬はコートを着ます。",
+            "ko": "겨울에는 외투를 입어요."
+          },
+          "visual": "sentence:In winter, I wear a coat.",
+          "mode": "review",
+          "target": "sentence:In winter, I wear a coat.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep43",
+      "number": 43,
+      "season": 4,
+      "title_en": "What Is Happening?",
+      "title_zh_TW": "現在在做什麼",
+      "titles": {
+        "zh-TW": "現在在做什麼",
+        "zh-CN": "现在在做什么",
+        "ja": "今、何をしているかな",
+        "ko": "지금 무엇을 하고 있나요"
+      },
+      "topic": "present-progressive",
+      "objectives_zh_TW": [
+        "用 am、is、are 加動詞 ing 描述現在正在做的事。",
+        "比較 I am、Sam is、They are 的搭配。",
+        "看完整句跟讀，並寫一到兩句現在進行的活動。"
+      ],
+      "parent_tip_zh_TW": "把句子當作故事中此刻的活動；先讀完整句再觀察 am/is/are 與 ing，不要求孩子表演不方便的動作。",
+      "practice": {
+        "prompt_en": "Imagine what Sam and friends are doing now. Write two sentences.",
+        "prompt_zh_TW": "想像 Sam 和朋友現在正在做的事，寫兩句。",
+        "sample_answer_en": "Sam is walking. They are playing."
+      },
+      "scenes": [
+        {
+          "id": "ep43-s01",
+          "english": "I am reading.",
+          "demo": "I am reading.",
+          "instruction": {
+            "en": "Describe now using am and a verb ending ing.",
+            "zh-TW": "我正在做，用 am 加動詞 ing。",
+            "zh-CN": "我正在做，用 am 加动词 ing。",
+            "ja": "今していることはアムと動詞のイング。",
+            "ko": "지금 하는 일은 앰과 동사의 아이엔지."
+          },
+          "demo_translation": {
+            "zh-TW": "我正在閱讀。",
+            "zh-CN": "我正在阅读。",
+            "ja": "私は今、本を読んでいます。",
+            "ko": "나는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:I am reading.",
+          "mode": "demo",
+          "target": "sentence:I am reading.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep43-s02",
+          "english": "Sam is walking.",
+          "demo": "Sam is walking.",
+          "instruction": {
+            "en": "For Sam, use is before the ing verb.",
+            "zh-TW": "Sam 正在做，用 is 加動詞 ing。",
+            "zh-CN": "Sam 正在做，用 is 加动词 ing。",
+            "ja": "サムには、動詞の前にイズを使おう。",
+            "ko": "샘에게는 동사 앞에 이즈를 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 正在走路。",
+            "zh-CN": "Sam 正在走路。",
+            "ja": "サムは今、歩いています。",
+            "ko": "샘은 지금 걷고 있어요."
+          },
+          "visual": "sentence:Sam is walking.",
+          "mode": "demo",
+          "target": "sentence:Sam is walking.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep43-s03",
+          "english": "They are playing.",
+          "demo": "They are playing.",
+          "instruction": {
+            "en": "For they, use are before the ing verb.",
+            "zh-TW": "他們正在做，用 are 加動詞 ing。",
+            "zh-CN": "他们正在做，用 are 加动词 ing。",
+            "ja": "ゼイには、動詞の前にアーを使おう。",
+            "ko": "데이에는 동사 앞에 아를 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們正在玩耍。",
+            "zh-CN": "他们正在玩耍。",
+            "ja": "みんなは今、遊んでいます。",
+            "ko": "그들은 지금 놀고 있어요."
+          },
+          "visual": "sentence:They are playing.",
+          "mode": "demo",
+          "target": "sentence:They are playing.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep43-s04",
+          "english": "Sam is walking.",
+          "demo": "Sam is walking.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 正在走路。",
+            "zh-CN": "Sam 正在走路。",
+            "ja": "サムは今、歩いています。",
+            "ko": "샘은 지금 걷고 있어요."
+          },
+          "visual": "sentence:Sam is walking.",
+          "mode": "repeat",
+          "target": "sentence:Sam is walking.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep43-s05",
+          "english": "Listen and choose.",
+          "demo": "I am reading.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我正在閱讀。",
+            "zh-CN": "我正在阅读。",
+            "ja": "私は今、本を読んでいます。",
+            "ko": "나는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:I am reading.",
+          "mode": "quiz",
+          "target": "sentence:I am reading.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:They are playing.",
+            "sentence:I am reading.",
+            "sentence:Sam is walking."
+          ]
+        },
+        {
+          "id": "ep43-s06",
+          "english": "We are playing.",
+          "demo": "We are playing.",
+          "instruction": {
+            "en": "Use are with we, too.",
+            "zh-TW": "我們正在做，也搭配 are。",
+            "zh-CN": "我们正在做，也搭配 are。",
+            "ja": "ウィーにもアーを使おう。",
+            "ko": "위에도 아를 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們正在玩耍。",
+            "zh-CN": "我们正在玩耍。",
+            "ja": "私たちは今、遊んでいます。",
+            "ko": "우리는 지금 놀고 있어요."
+          },
+          "visual": "sentence:We are playing.",
+          "mode": "demo",
+          "target": "sentence:We are playing.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep43-s07",
+          "english": "Listen and choose.",
+          "demo": "Sam is walking.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 正在走路。",
+            "zh-CN": "Sam 正在走路。",
+            "ja": "サムは今、歩いています。",
+            "ko": "샘은 지금 걷고 있어요."
+          },
+          "visual": "sentence:Sam is walking.",
+          "mode": "quiz",
+          "target": "sentence:Sam is walking.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:They are playing.",
+            "sentence:I am reading.",
+            "sentence:Sam is walking."
+          ]
+        },
+        {
+          "id": "ep43-s08",
+          "english": "She is reading.",
+          "demo": "She is reading.",
+          "instruction": {
+            "en": "She is Amy in this example.",
+            "zh-TW": "這句中的她是虛構的 Amy。",
+            "zh-CN": "这句中的她是虚构的 Amy。",
+            "ja": "この例の彼女はエイミーだよ。",
+            "ko": "이 예문의 그녀는 에이미예요."
+          },
+          "demo_translation": {
+            "zh-TW": "她正在閱讀。",
+            "zh-CN": "她正在阅读。",
+            "ja": "彼女は今、本を読んでいます。",
+            "ko": "그녀는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:She is reading.",
+          "mode": "repeat",
+          "target": "sentence:She is reading.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep43-s09",
+          "english": "Listen and choose.",
+          "demo": "They are playing.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們正在玩耍。",
+            "zh-CN": "他们正在玩耍。",
+            "ja": "みんなは今、遊んでいます。",
+            "ko": "그들은 지금 놀고 있어요."
+          },
+          "visual": "sentence:They are playing.",
+          "mode": "quiz",
+          "target": "sentence:They are playing.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:They are playing.",
+            "sentence:I am reading.",
+            "sentence:Sam is walking."
+          ]
+        },
+        {
+          "id": "ep43-s10",
+          "english": "Sam is walking now.",
+          "demo": "Sam is walking now.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 現在正在走路。",
+            "zh-CN": "Sam 现在正在走路。",
+            "ja": "サムは今、歩いています。",
+            "ko": "샘은 지금 걷고 있어요."
+          },
+          "visual": "sentence:Sam is walking now.",
+          "mode": "review",
+          "target": "sentence:Sam is walking now.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep44",
+      "number": 44,
+      "season": 4,
+      "title_en": "Compare Our Choices",
+      "title_zh_TW": "比較選擇",
+      "titles": {
+        "zh-TW": "比較選擇",
+        "zh-CN": "比较选择",
+        "ja": "好きなものを比べよう",
+        "ko": "좋아하는 것 비교하기"
+      },
+      "topic": "preferences-contrast-both",
+      "objectives_zh_TW": [
+        "用 but 連接示例人物不同的喜好。",
+        "用 We both like ... 表示我們兩人都喜歡同一事物。",
+        "看句跟讀並為兩個虛構人物寫一到兩句喜好比較。"
+      ],
+      "parent_tip_zh_TW": "不同喜好都可以。both 在本集專指兩人；先用角色說清楚共同喜好，再寫句，無須讓孩子迎合別人的選擇。",
+      "practice": {
+        "prompt_en": "Imagine two people and compare their likes in two sentences.",
+        "prompt_zh_TW": "想像兩個人的喜好，用兩句比較相同或不同處。",
+        "sample_answer_en": "I like apples, but Sam likes bananas. We both like art."
+      },
+      "scenes": [
+        {
+          "id": "ep44-s01",
+          "english": "I like apples, but Sam likes bananas.",
+          "demo": "I like apples, but Sam likes bananas.",
+          "instruction": {
+            "en": "But joins two contrasting choices.",
+            "zh-TW": "用 but 連接不同的喜好。",
+            "zh-CN": "用 but 连接不同的喜好。",
+            "ja": "バットで違う好みをつなごう。",
+            "ko": "벗으로 서로 다른 취향을 이어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡蘋果，但 Sam 喜歡香蕉。",
+            "zh-CN": "我喜欢苹果，但 Sam 喜欢香蕉。",
+            "ja": "私はりんごが好きですが、サムはバナナが好きです。",
+            "ko": "나는 사과를 좋아하지만 샘은 바나나를 좋아해요."
+          },
+          "visual": "sentence:I like apples, but Sam likes bananas.",
+          "mode": "demo",
+          "target": "sentence:I like apples, but Sam likes bananas.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep44-s02",
+          "english": "I like bananas, but Amy likes apples.",
+          "demo": "I like bananas, but Amy likes apples.",
+          "instruction": {
+            "en": "Notice likes after the name Amy.",
+            "zh-TW": "注意 Amy 後面的動詞加 s。",
+            "zh-CN": "注意 Amy 后面的动词加 s。",
+            "ja": "エイミーの後の動詞のエスに注目。",
+            "ko": "에이미 뒤의 동사에 붙은 에스를 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡香蕉，但 Amy 喜歡蘋果。",
+            "zh-CN": "我喜欢香蕉，但 Amy 喜欢苹果。",
+            "ja": "私はバナナが好きですが、エイミーはりんごが好きです。",
+            "ko": "나는 바나나를 좋아하지만 에이미는 사과를 좋아해요."
+          },
+          "visual": "sentence:I like bananas, but Amy likes apples.",
+          "mode": "demo",
+          "target": "sentence:I like bananas, but Amy likes apples.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep44-s03",
+          "english": "We both like apples.",
+          "demo": "We both like apples.",
+          "instruction": {
+            "en": "Both means two people share this choice.",
+            "zh-TW": "both 表示兩人都有這個喜好。",
+            "zh-CN": "both 表示两人都有这个喜好。",
+            "ja": "ボウスは二人とも同じ好みという意味。",
+            "ko": "보스는 두 사람 모두 같은 취향이라는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們兩人都喜歡蘋果。",
+            "zh-CN": "我们两人都喜欢苹果。",
+            "ja": "私たちは二人ともりんごが好きです。",
+            "ko": "우리 둘 다 사과를 좋아해요."
+          },
+          "visual": "sentence:We both like apples.",
+          "mode": "demo",
+          "target": "sentence:We both like apples.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep44-s04",
+          "english": "I like bananas, but Amy likes apples.",
+          "demo": "I like bananas, but Amy likes apples.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡香蕉，但 Amy 喜歡蘋果。",
+            "zh-CN": "我喜欢香蕉，但 Amy 喜欢苹果。",
+            "ja": "私はバナナが好きですが、エイミーはりんごが好きです。",
+            "ko": "나는 바나나를 좋아하지만 에이미는 사과를 좋아해요."
+          },
+          "visual": "sentence:I like bananas, but Amy likes apples.",
+          "mode": "repeat",
+          "target": "sentence:I like bananas, but Amy likes apples.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep44-s05",
+          "english": "Listen and choose.",
+          "demo": "I like apples, but Sam likes bananas.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡蘋果，但 Sam 喜歡香蕉。",
+            "zh-CN": "我喜欢苹果，但 Sam 喜欢香蕉。",
+            "ja": "私はりんごが好きですが、サムはバナナが好きです。",
+            "ko": "나는 사과를 좋아하지만 샘은 바나나를 좋아해요."
+          },
+          "visual": "sentence:I like apples, but Sam likes bananas.",
+          "mode": "quiz",
+          "target": "sentence:I like apples, but Sam likes bananas.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I like bananas, but Amy likes apples.",
+            "sentence:We both like apples.",
+            "sentence:I like apples, but Sam likes bananas."
+          ]
+        },
+        {
+          "id": "ep44-s06",
+          "english": "Sam likes apples. I like apples, too.",
+          "demo": "Sam likes apples. I like apples, too.",
+          "instruction": {
+            "en": "These two people share the same choice.",
+            "zh-TW": "這兩個人有相同的喜好。",
+            "zh-CN": "这两个人有相同的喜好。",
+            "ja": "この二人は同じものが好きだよ。",
+            "ko": "이 두 사람은 같은 것을 좋아해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 喜歡蘋果。我也喜歡蘋果。",
+            "zh-CN": "Sam 喜欢苹果。我也喜欢苹果。",
+            "ja": "サムはりんごが好きです。私もりんごが好きです。",
+            "ko": "샘은 사과를 좋아해요. 나도 사과를 좋아해요."
+          },
+          "visual": "sentence:Sam likes apples. I like apples, too.",
+          "mode": "demo",
+          "target": "sentence:Sam likes apples. I like apples, too.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep44-s07",
+          "english": "Listen and choose.",
+          "demo": "I like bananas, but Amy likes apples.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡香蕉，但 Amy 喜歡蘋果。",
+            "zh-CN": "我喜欢香蕉，但 Amy 喜欢苹果。",
+            "ja": "私はバナナが好きですが、エイミーはりんごが好きです。",
+            "ko": "나는 바나나를 좋아하지만 에이미는 사과를 좋아해요."
+          },
+          "visual": "sentence:I like bananas, but Amy likes apples.",
+          "mode": "quiz",
+          "target": "sentence:I like bananas, but Amy likes apples.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I like bananas, but Amy likes apples.",
+            "sentence:We both like apples.",
+            "sentence:I like apples, but Sam likes bananas."
+          ]
+        },
+        {
+          "id": "ep44-s08",
+          "english": "We both like apples.",
+          "demo": "We both like apples.",
+          "instruction": {
+            "en": "Choose words and write your sentence.",
+            "zh-TW": "選詞，在紙上寫一句。",
+            "zh-CN": "选词，在纸上写一句。",
+            "ja": "言葉を選んで、紙に一文書こう。",
+            "ko": "낱말을 골라 종이에 한 문장을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們兩人都喜歡蘋果。",
+            "zh-CN": "我们两人都喜欢苹果。",
+            "ja": "私たちは二人ともりんごが好きです。",
+            "ko": "우리 둘 다 사과를 좋아해요."
+          },
+          "visual": "sentence:We both like apples.",
+          "mode": "repeat",
+          "target": "sentence:We both like apples.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep44-s09",
+          "english": "Listen and choose.",
+          "demo": "We both like apples.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們兩人都喜歡蘋果。",
+            "zh-CN": "我们两人都喜欢苹果。",
+            "ja": "私たちは二人ともりんごが好きです。",
+            "ko": "우리 둘 다 사과를 좋아해요."
+          },
+          "visual": "sentence:We both like apples.",
+          "mode": "quiz",
+          "target": "sentence:We both like apples.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I like bananas, but Amy likes apples.",
+            "sentence:We both like apples.",
+            "sentence:I like apples, but Sam likes bananas."
+          ]
+        },
+        {
+          "id": "ep44-s10",
+          "english": "I like apples, but Sam likes bananas.",
+          "demo": "I like apples, but Sam likes bananas.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡蘋果，但 Sam 喜歡香蕉。",
+            "zh-CN": "我喜欢苹果，但 Sam 喜欢香蕉。",
+            "ja": "私はりんごが好きですが、サムはバナナが好きです。",
+            "ko": "나는 사과를 좋아하지만 샘은 바나나를 좋아해요."
+          },
+          "visual": "sentence:I like apples, but Sam likes bananas.",
+          "mode": "review",
+          "target": "sentence:I like apples, but Sam likes bananas.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep45",
+      "number": 45,
+      "season": 4,
+      "title_en": "What We Can Do",
+      "title_zh_TW": "我們能做什麼",
+      "titles": {
+        "zh-TW": "我們能做什麼",
+        "zh-CN": "我们能做什么",
+        "ja": "できることを伝えよう",
+        "ko": "할 수 있는 일 말하기"
+      },
+      "topic": "can-cannot",
+      "objectives_zh_TW": [
+        "用 can 加原形動詞描述能做的事。",
+        "理解 cannot 與縮寫 can't 的意思相同。",
+        "跟讀能力句，練習選擇適合自己的替代活動。"
+      ],
+      "parent_tip_zh_TW": "句子只是角色當下的示例，不是對能力下定論。孩子可以選指圖、目光選擇或口說，不需要真的游泳或做動作。",
+      "practice": {
+        "prompt_en": "Invent a character. Write two sentences using can and cannot.",
+        "prompt_zh_TW": "創作一個角色，用 can 和 cannot 各寫一句。",
+        "sample_answer_en": "I can read. I cannot swim."
+      },
+      "scenes": [
+        {
+          "id": "ep45-s01",
+          "english": "I can read.",
+          "demo": "I can read.",
+          "instruction": {
+            "en": "Put the action word after can.",
+            "zh-TW": "can 後面放原形動詞。",
+            "zh-CN": "can 后面放原形动词。",
+            "ja": "キャンの後には元の形の動詞を置こう。",
+            "ko": "캔 뒤에는 동사 원형을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會閱讀。",
+            "zh-CN": "我会阅读。",
+            "ja": "私は読むことができます。",
+            "ko": "나는 읽을 수 있어요."
+          },
+          "visual": "sentence:I can read.",
+          "mode": "demo",
+          "target": "sentence:I can read.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep45-s02",
+          "english": "I cannot draw.",
+          "demo": "I cannot draw.",
+          "instruction": {
+            "en": "Cannot says an action is not possible for someone.",
+            "zh-TW": "cannot 表示無法做這個動作。",
+            "zh-CN": "cannot 表示无法做这个动作。",
+            "ja": "キャノットは、その動作ができないこと。",
+            "ko": "캐낫은 그 동작을 할 수 없다는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會畫畫。",
+            "zh-CN": "我不会画画。",
+            "ja": "私は絵を描くことができません。",
+            "ko": "나는 그림을 그릴 수 없어요."
+          },
+          "visual": "sentence:I cannot draw.",
+          "mode": "demo",
+          "target": "sentence:I cannot draw.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep45-s03",
+          "english": "I can't swim.",
+          "demo": "I can't swim.",
+          "instruction": {
+            "en": "Cannot and its short form mean the same thing.",
+            "zh-TW": "cannot 和縮寫的意思相同。",
+            "zh-CN": "cannot 和缩写的意思相同。",
+            "ja": "キャノットと短い形は同じ意味だよ。",
+            "ko": "캐낫과 줄인 말은 같은 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會游泳。",
+            "zh-CN": "我不会游泳。",
+            "ja": "私は泳ぐことができません。",
+            "ko": "나는 수영할 수 없어요."
+          },
+          "visual": "sentence:I can't swim.",
+          "mode": "demo",
+          "target": "sentence:I can't swim.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep45-s04",
+          "english": "I cannot draw.",
+          "demo": "I cannot draw.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會畫畫。",
+            "zh-CN": "我不会画画。",
+            "ja": "私は絵を描くことができません。",
+            "ko": "나는 그림을 그릴 수 없어요."
+          },
+          "visual": "sentence:I cannot draw.",
+          "mode": "repeat",
+          "target": "sentence:I cannot draw.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep45-s05",
+          "english": "Listen and choose.",
+          "demo": "I can read.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會閱讀。",
+            "zh-CN": "我会阅读。",
+            "ja": "私は読むことができます。",
+            "ko": "나는 읽을 수 있어요."
+          },
+          "visual": "sentence:I can read.",
+          "mode": "quiz",
+          "target": "sentence:I can read.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I can read.",
+            "sentence:I cannot draw.",
+            "sentence:I can't swim."
+          ]
+        },
+        {
+          "id": "ep45-s06",
+          "english": "I cannot swim. I can't swim.",
+          "demo": "I cannot swim. I can't swim.",
+          "instruction": {
+            "en": "Read both forms and compare their spelling.",
+            "zh-TW": "讀兩種寫法，比較拼字。",
+            "zh-CN": "读两种写法，比较拼字。",
+            "ja": "二つの形を読んで、つづりを比べよう。",
+            "ko": "두 형태를 읽고 철자를 비교해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會游泳。我不會游泳。",
+            "zh-CN": "我不会游泳。我不会游泳。",
+            "ja": "私は泳げません。私は泳げません。",
+            "ko": "나는 수영할 수 없어요. 나는 수영할 수 없어요."
+          },
+          "visual": "sentence:I cannot swim. I can't swim.",
+          "mode": "demo",
+          "target": "sentence:I cannot swim. I can't swim.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep45-s07",
+          "english": "Listen and choose.",
+          "demo": "I cannot draw.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會畫畫。",
+            "zh-CN": "我不会画画。",
+            "ja": "私は絵を描くことができません。",
+            "ko": "나는 그림을 그릴 수 없어요."
+          },
+          "visual": "sentence:I cannot draw.",
+          "mode": "quiz",
+          "target": "sentence:I cannot draw.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I can read.",
+            "sentence:I cannot draw.",
+            "sentence:I can't swim."
+          ]
+        },
+        {
+          "id": "ep45-s08",
+          "english": "You can point.",
+          "demo": "You can point.",
+          "instruction": {
+            "en": "You may choose pointing, speaking, or looking.",
+            "zh-TW": "可以選指圖、說話或看著答案。",
+            "zh-CN": "可以选指图、说话或看着答案。",
+            "ja": "指さし、声、視線から選んでいいよ。",
+            "ko": "가리키기, 말하기, 바라보기 중에 골라도 돼요."
+          },
+          "demo_translation": {
+            "zh-TW": "你可以用手指出來。",
+            "zh-CN": "你可以用手指出来。",
+            "ja": "指でさしてもいいですよ。",
+            "ko": "손으로 가리켜도 돼요."
+          },
+          "visual": "sentence:You can point.",
+          "mode": "repeat",
+          "target": "sentence:You can point.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep45-s09",
+          "english": "Listen and choose.",
+          "demo": "I can't swim.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不會游泳。",
+            "zh-CN": "我不会游泳。",
+            "ja": "私は泳ぐことができません。",
+            "ko": "나는 수영할 수 없어요."
+          },
+          "visual": "sentence:I can't swim.",
+          "mode": "quiz",
+          "target": "sentence:I can't swim.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I can read.",
+            "sentence:I cannot draw.",
+            "sentence:I can't swim."
+          ]
+        },
+        {
+          "id": "ep45-s10",
+          "english": "We can choose an activity.",
+          "demo": "We can choose an activity.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可以選擇一個活動。",
+            "zh-CN": "我们可以选择一个活动。",
+            "ja": "私たちは活動を選べます。",
+            "ko": "우리는 활동을 고를 수 있어요."
+          },
+          "visual": "sentence:We can choose an activity.",
+          "mode": "review",
+          "target": "sentence:We can choose an activity.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep46",
+      "number": 46,
+      "season": 4,
+      "title_en": "Making Plans",
+      "title_zh_TW": "訂小計畫",
+      "titles": {
+        "zh-TW": "訂小計畫",
+        "zh-CN": "订小计划",
+        "ja": "小さな計画を立てよう",
+        "ko": "작은 계획 세우기"
+      },
+      "topic": "going-to-future",
+      "objectives_zh_TW": [
+        "用 I am going to 加原形動詞描述計畫。",
+        "理解 tomorrow 表示明天，區分計畫與正在做的事。",
+        "跟讀未來計畫句，並在紙上寫一到兩句想像計畫。"
+      ],
+      "parent_tip_zh_TW": "明天的閱讀、玩耍與走路都是可選示例，可替換為適合角色的活動；計畫可以更改，不要求孩子一定完成。",
+      "practice": {
+        "prompt_en": "Imagine tomorrow. Write one or two sentences about a plan.",
+        "prompt_zh_TW": "想像明天，用一到兩句寫計畫。",
+        "sample_answer_en": "I am going to read tomorrow. I am going to play tomorrow."
+      },
+      "scenes": [
+        {
+          "id": "ep46-s01",
+          "english": "I am going to read tomorrow.",
+          "demo": "I am going to read tomorrow.",
+          "instruction": {
+            "en": "Use am going to for a plan.",
+            "zh-TW": "用 am going to 說計畫。",
+            "zh-CN": "用 am going to 说计划。",
+            "ja": "アムゴーイングトゥーで計画を言おう。",
+            "ko": "앰 고잉 투로 계획을 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天閱讀。",
+            "zh-CN": "我打算明天阅读。",
+            "ja": "明日は本を読むつもりです。",
+            "ko": "나는 내일 책을 읽을 계획이에요."
+          },
+          "visual": "sentence:I am going to read tomorrow.",
+          "mode": "demo",
+          "target": "sentence:I am going to read tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep46-s02",
+          "english": "I am going to play tomorrow.",
+          "demo": "I am going to play tomorrow.",
+          "instruction": {
+            "en": "Put the base action word after going to.",
+            "zh-TW": "going to 後放原形動詞。",
+            "zh-CN": "going to 后放原形动词。",
+            "ja": "ゴーイングトゥーの後は元の形の動詞。",
+            "ko": "고잉 투 뒤에는 동사 원형을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天玩耍。",
+            "zh-CN": "我打算明天玩耍。",
+            "ja": "明日は遊ぶつもりです。",
+            "ko": "나는 내일 놀 계획이에요."
+          },
+          "visual": "sentence:I am going to play tomorrow.",
+          "mode": "demo",
+          "target": "sentence:I am going to play tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep46-s03",
+          "english": "I am going to walk tomorrow.",
+          "demo": "I am going to walk tomorrow.",
+          "instruction": {
+            "en": "Tomorrow means the day after today.",
+            "zh-TW": "明天是今天的下一天。",
+            "zh-CN": "明天是今天的下一天。",
+            "ja": "明日は今日の次の日だよ。",
+            "ko": "내일은 오늘의 다음 날이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天走路。",
+            "zh-CN": "我打算明天走路。",
+            "ja": "明日は歩くつもりです。",
+            "ko": "나는 내일 걸을 계획이에요."
+          },
+          "visual": "sentence:I am going to walk tomorrow.",
+          "mode": "demo",
+          "target": "sentence:I am going to walk tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep46-s04",
+          "english": "I am going to play tomorrow.",
+          "demo": "I am going to play tomorrow.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天玩耍。",
+            "zh-CN": "我打算明天玩耍。",
+            "ja": "明日は遊ぶつもりです。",
+            "ko": "나는 내일 놀 계획이에요."
+          },
+          "visual": "sentence:I am going to play tomorrow.",
+          "mode": "repeat",
+          "target": "sentence:I am going to play tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep46-s05",
+          "english": "Listen and choose.",
+          "demo": "I am going to read tomorrow.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天閱讀。",
+            "zh-CN": "我打算明天阅读。",
+            "ja": "明日は本を読むつもりです。",
+            "ko": "나는 내일 책을 읽을 계획이에요."
+          },
+          "visual": "sentence:I am going to read tomorrow.",
+          "mode": "quiz",
+          "target": "sentence:I am going to read tomorrow.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I am going to walk tomorrow.",
+            "sentence:I am going to read tomorrow.",
+            "sentence:I am going to play tomorrow."
+          ]
+        },
+        {
+          "id": "ep46-s06",
+          "english": "What are you going to do tomorrow?",
+          "demo": "What are you going to do tomorrow?",
+          "instruction": {
+            "en": "Use this question to ask about a plan.",
+            "zh-TW": "用這句問對方的計畫。",
+            "zh-CN": "用这句问对方的计划。",
+            "ja": "この文で相手の計画を聞こう。",
+            "ko": "이 문장으로 상대의 계획을 물어요."
+          },
+          "demo_translation": {
+            "zh-TW": "你打算明天做什麼？",
+            "zh-CN": "你打算明天做什么？",
+            "ja": "明日は何をするつもりですか？",
+            "ko": "내일 무엇을 할 계획이에요?"
+          },
+          "visual": "sentence:What are you going to do tomorrow?",
+          "mode": "demo",
+          "target": "sentence:What are you going to do tomorrow?",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep46-s07",
+          "english": "Listen and choose.",
+          "demo": "I am going to play tomorrow.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天玩耍。",
+            "zh-CN": "我打算明天玩耍。",
+            "ja": "明日は遊ぶつもりです。",
+            "ko": "나는 내일 놀 계획이에요."
+          },
+          "visual": "sentence:I am going to play tomorrow.",
+          "mode": "quiz",
+          "target": "sentence:I am going to play tomorrow.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I am going to walk tomorrow.",
+            "sentence:I am going to read tomorrow.",
+            "sentence:I am going to play tomorrow."
+          ]
+        },
+        {
+          "id": "ep46-s08",
+          "english": "I am going to read tomorrow.",
+          "demo": "I am going to read tomorrow.",
+          "instruction": {
+            "en": "Choose words and write your sentence.",
+            "zh-TW": "選詞，在紙上寫一句。",
+            "zh-CN": "选词，在纸上写一句。",
+            "ja": "言葉を選んで、紙に一文書こう。",
+            "ko": "낱말을 골라 종이에 한 문장을 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天閱讀。",
+            "zh-CN": "我打算明天阅读。",
+            "ja": "明日は本を読むつもりです。",
+            "ko": "나는 내일 책을 읽을 계획이에요."
+          },
+          "visual": "sentence:I am going to read tomorrow.",
+          "mode": "repeat",
+          "target": "sentence:I am going to read tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep46-s09",
+          "english": "Listen and choose.",
+          "demo": "I am going to walk tomorrow.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天走路。",
+            "zh-CN": "我打算明天走路。",
+            "ja": "明日は歩くつもりです。",
+            "ko": "나는 내일 걸을 계획이에요."
+          },
+          "visual": "sentence:I am going to walk tomorrow.",
+          "mode": "quiz",
+          "target": "sentence:I am going to walk tomorrow.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I am going to walk tomorrow.",
+            "sentence:I am going to read tomorrow.",
+            "sentence:I am going to play tomorrow."
+          ]
+        },
+        {
+          "id": "ep46-s10",
+          "english": "Tomorrow, I am going to play.",
+          "demo": "Tomorrow, I am going to play.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "明天，我打算玩耍。",
+            "zh-CN": "明天，我打算玩耍。",
+            "ja": "明日は遊ぶつもりです。",
+            "ko": "내일 나는 놀 계획이에요."
+          },
+          "visual": "sentence:Tomorrow, I am going to play.",
+          "mode": "review",
+          "target": "sentence:Tomorrow, I am going to play.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep47",
+      "number": 47,
+      "season": 4,
+      "title_en": "A Busy Day",
+      "title_zh_TW": "忙碌的一天",
+      "titles": {
+        "zh-TW": "忙碌的一天",
+        "zh-CN": "忙碌的一天",
+        "ja": "いそがしい一日",
+        "ko": "바쁜 하루"
+      },
+      "topic": "weekend-story",
+      "objectives_zh_TW": [
+        "跟著連貫故事辨認早上時間、現在活動與明天計畫。",
+        "在聽讀選擇中配對故事出現過的句子。",
+        "看句跟讀，選兩句依故事先後整理內容。"
+      ],
+      "parent_tip_zh_TW": "故事順序是星期六早上閱讀、之後在公園相聚玩耍，最後說明天計畫；可停格指出 now 與 tomorrow 的不同。",
+      "practice": {
+        "prompt_en": "Retell the story in two sentences: an activity and a plan.",
+        "prompt_zh_TW": "用兩句重述故事：一句現在活動，一句明天計畫。",
+        "sample_answer_en": "Sunny is reading a book now. Pip is going to play tomorrow."
+      },
+      "scenes": [
+        {
+          "id": "ep47-s01",
+          "english": "It is Saturday. It is seven o'clock.",
+          "demo": "It is Saturday. It is seven o'clock.",
+          "instruction": {
+            "en": "Our story begins on a Saturday morning.",
+            "zh-TW": "故事從星期六早上開始。",
+            "zh-CN": "故事从星期六早上开始。",
+            "ja": "土曜日の朝から物語が始まるよ。",
+            "ko": "이야기는 토요일 아침에 시작해요."
+          },
+          "demo_translation": {
+            "zh-TW": "今天是星期六。現在是七點。",
+            "zh-CN": "今天是星期六。现在是七点。",
+            "ja": "土曜日です。七時です。",
+            "ko": "토요일이에요. 일곱 시예요."
+          },
+          "visual": "clock:07:00",
+          "mode": "demo",
+          "target": "clock:07:00",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep47-s02",
+          "english": "Sunny is reading a book now.",
+          "demo": "Sunny is reading a book now.",
+          "instruction": {
+            "en": "Listen for what Sunny is doing now.",
+            "zh-TW": "聽聽 Sunny 現在正在做什麼。",
+            "zh-CN": "听听 Sunny 现在正在做什么。",
+            "ja": "サニーが今していることを聞こう。",
+            "ko": "써니가 지금 무엇을 하는지 들어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sunny 現在正在讀一本書。",
+            "zh-CN": "Sunny 现在正在读一本书。",
+            "ja": "サニーは今、本を読んでいます。",
+            "ko": "써니는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:Sunny is reading a book now.",
+          "mode": "demo",
+          "target": "sentence:Sunny is reading a book now.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep47-s03",
+          "english": "Pip is going to play tomorrow.",
+          "demo": "Pip is going to play tomorrow.",
+          "instruction": {
+            "en": "Pip tells Sunny a plan for tomorrow.",
+            "zh-TW": "Pip 告訴 Sunny 明天的計畫。",
+            "zh-CN": "Pip 告诉 Sunny 明天的计划。",
+            "ja": "ピップがサニーに明日の計画を話すよ。",
+            "ko": "핍이 써니에게 내일의 계획을 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 打算明天玩耍。",
+            "zh-CN": "Pip 打算明天玩耍。",
+            "ja": "ピップは明日遊ぶつもりです。",
+            "ko": "핍은 내일 놀 계획이에요."
+          },
+          "visual": "sentence:Pip is going to play tomorrow.",
+          "mode": "demo",
+          "target": "sentence:Pip is going to play tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep47-s04",
+          "english": "Sunny is reading a book now.",
+          "demo": "Sunny is reading a book now.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sunny 現在正在讀一本書。",
+            "zh-CN": "Sunny 现在正在读一本书。",
+            "ja": "サニーは今、本を読んでいます。",
+            "ko": "써니는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:Sunny is reading a book now.",
+          "mode": "repeat",
+          "target": "sentence:Sunny is reading a book now.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep47-s05",
+          "english": "Listen and choose.",
+          "demo": "It is Saturday. It is seven o'clock.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "今天是星期六。現在是七點。",
+            "zh-CN": "今天是星期六。现在是七点。",
+            "ja": "土曜日です。七時です。",
+            "ko": "토요일이에요. 일곱 시예요."
+          },
+          "visual": "clock:07:00",
+          "mode": "quiz",
+          "target": "clock:07:00",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "clock:08:00",
+            "clock:07:30",
+            "clock:07:00"
+          ]
+        },
+        {
+          "id": "ep47-s06",
+          "english": "Sunny and Pip meet at the park.",
+          "demo": "Sunny and Pip meet at the park.",
+          "instruction": {
+            "en": "Later, the two friends meet at the park.",
+            "zh-TW": "稍後，兩位朋友在公園碰面。",
+            "zh-CN": "稍后，两位朋友在公园碰面。",
+            "ja": "その後、二人は公園で会うよ。",
+            "ko": "나중에 두 친구가 공원에서 만나요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sunny 和 Pip 在公園碰面。",
+            "zh-CN": "Sunny 和 Pip 在公园碰面。",
+            "ja": "サニーとピップは公園で会います。",
+            "ko": "써니와 핍은 공원에서 만나요."
+          },
+          "visual": "place:park",
+          "mode": "demo",
+          "target": "place:park",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep47-s07",
+          "english": "Listen and choose.",
+          "demo": "Sunny is reading a book now.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sunny 現在正在讀一本書。",
+            "zh-CN": "Sunny 现在正在读一本书。",
+            "ja": "サニーは今、本を読んでいます。",
+            "ko": "써니는 지금 책을 읽고 있어요."
+          },
+          "visual": "sentence:Sunny is reading a book now.",
+          "mode": "quiz",
+          "target": "sentence:Sunny is reading a book now.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:Sunny is reading a book now.",
+            "sentence:Sunny is walking to school now.",
+            "sentence:Sunny is playing now."
+          ]
+        },
+        {
+          "id": "ep47-s08",
+          "english": "They are playing now.",
+          "demo": "They are playing now.",
+          "instruction": {
+            "en": "They means Sunny and Pip in this story.",
+            "zh-TW": "這裡他們指 Sunny 和 Pip。",
+            "zh-CN": "这里他们指 Sunny 和 Pip。",
+            "ja": "この話のみんなはサニーとピップだよ。",
+            "ko": "이 이야기의 둘은 써니와 핍이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們現在正在玩耍。",
+            "zh-CN": "他们现在正在玩耍。",
+            "ja": "二人は今、遊んでいます。",
+            "ko": "둘은 지금 놀고 있어요."
+          },
+          "visual": "sentence:They are playing now.",
+          "mode": "repeat",
+          "target": "sentence:They are playing now.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep47-s09",
+          "english": "Listen and choose.",
+          "demo": "Pip is going to play tomorrow.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 打算明天玩耍。",
+            "zh-CN": "Pip 打算明天玩耍。",
+            "ja": "ピップは明日遊ぶつもりです。",
+            "ko": "핍은 내일 놀 계획이에요."
+          },
+          "visual": "sentence:Pip is going to play tomorrow.",
+          "mode": "quiz",
+          "target": "sentence:Pip is going to play tomorrow.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:Pip is going to walk tomorrow.",
+            "sentence:Pip is going to play tomorrow.",
+            "sentence:Pip is going to read tomorrow."
+          ]
+        },
+        {
+          "id": "ep47-s10",
+          "english": "They are going to play again tomorrow.",
+          "demo": "They are going to play again tomorrow.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們打算明天再一起玩。",
+            "zh-CN": "他们打算明天再一起玩。",
+            "ja": "二人は明日また遊ぶつもりです。",
+            "ko": "둘은 내일 다시 놀 계획이에요."
+          },
+          "visual": "sentence:They are going to play again tomorrow.",
+          "mode": "review",
+          "target": "sentence:They are going to play again tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    },
+    {
+      "id": "ep48",
+      "number": 48,
+      "season": 4,
+      "title_en": "Days and Plans Mission",
+      "title_zh_TW": "日子計畫任務",
+      "titles": {
+        "zh-TW": "日子計畫任務",
+        "zh-CN": "日子计划任务",
+        "ja": "毎日と計画のミッション",
+        "ko": "일상과 계획 미션"
+      },
+      "topic": "days-plans-review",
+      "objectives_zh_TW": [
+        "複習七點半、每週活動與第三人稱單數日常句。",
+        "比較正在做的事與明天計畫，回顧兩人共同喜好的說法。",
+        "跟讀並選兩種已學句型，寫自己的虛構角色小任務。"
+      ],
+      "parent_tip_zh_TW": "本集只複習已學句型。先讓孩子選熟悉的兩句跟讀，再替虛構角色寫短句；可以分次完成，不以速度或音量評分。",
+      "practice": {
+        "prompt_en": "Write two sentences: one usual activity and one plan for tomorrow.",
+        "prompt_zh_TW": "寫兩句：一句平常活動，一句明天計畫。",
+        "sample_answer_en": "On Monday, I read. I am going to play tomorrow."
+      },
+      "scenes": [
+        {
+          "id": "ep48-s01",
+          "english": "It is half past seven.",
+          "demo": "It is half past seven.",
+          "instruction": {
+            "en": "Remember the long hand at six for half past.",
+            "zh-TW": "複習半點，分針指向六。",
+            "zh-CN": "复习半点，分针指向六。",
+            "ja": "半のとき、長い針は六だったね。",
+            "ko": "반일 때는 긴바늘이 육을 가리켰지요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點半。",
+            "zh-CN": "现在是七点半。",
+            "ja": "七時半です。",
+            "ko": "일곱 시 반이에요."
+          },
+          "visual": "clock:07:30",
+          "mode": "demo",
+          "target": "clock:07:30",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep48-s02",
+          "english": "She reads a book.",
+          "demo": "She reads a book.",
+          "instruction": {
+            "en": "She is Amy; remember s for her routine.",
+            "zh-TW": "她指 Amy，日常動詞加 s。",
+            "zh-CN": "她指 Amy，日常动词加 s。",
+            "ja": "彼女はエイミー。いつもの動作にエス。",
+            "ko": "그녀는 에이미예요. 평소 동작에는 에스."
+          },
+          "demo_translation": {
+            "zh-TW": "她讀一本書。",
+            "zh-CN": "她读一本书。",
+            "ja": "彼女は本を読みます。",
+            "ko": "그녀는 책을 읽어요."
+          },
+          "visual": "sentence:She reads a book.",
+          "mode": "demo",
+          "target": "sentence:She reads a book.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep48-s03",
+          "english": "I am going to read tomorrow.",
+          "demo": "I am going to read tomorrow.",
+          "instruction": {
+            "en": "Remember this form for a plan tomorrow.",
+            "zh-TW": "複習用這個句型說明天計畫。",
+            "zh-CN": "复习用这个句型说明天计划。",
+            "ja": "この形で明日の計画を言ったね。",
+            "ko": "이 문장 틀로 내일 계획을 말했지요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天閱讀。",
+            "zh-CN": "我打算明天阅读。",
+            "ja": "明日は本を読むつもりです。",
+            "ko": "나는 내일 책을 읽을 계획이에요."
+          },
+          "visual": "sentence:I am going to read tomorrow.",
+          "mode": "demo",
+          "target": "sentence:I am going to read tomorrow.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep48-s04",
+          "english": "She reads a book.",
+          "demo": "She reads a book.",
+          "instruction": {
+            "en": "Read the sentence with me.",
+            "zh-TW": "看句子，跟著讀。",
+            "zh-CN": "看句子，跟着读。",
+            "ja": "文を見て、いっしょに読もう。",
+            "ko": "문장을 보고 따라 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "她讀一本書。",
+            "zh-CN": "她读一本书。",
+            "ja": "彼女は本を読みます。",
+            "ko": "그녀는 책을 읽어요."
+          },
+          "visual": "sentence:She reads a book.",
+          "mode": "repeat",
+          "target": "sentence:She reads a book.",
+          "wait_seconds": 5,
+          "note_zh_TW": "看完整英文句並跟著共用英文示範讀；這是有示範的引導閱讀。完整保留五秒回應，不要求獨立朗讀。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep48-s05",
+          "english": "Listen and choose.",
+          "demo": "It is half past seven.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在是七點半。",
+            "zh-CN": "现在是七点半。",
+            "ja": "七時半です。",
+            "ko": "일곱 시 반이에요."
+          },
+          "visual": "clock:07:30",
+          "mode": "quiz",
+          "target": "clock:07:30",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "clock:07:30",
+            "clock:08:00",
+            "clock:07:00"
+          ]
+        },
+        {
+          "id": "ep48-s06",
+          "english": "On Monday, I read.",
+          "demo": "On Monday, I read.",
+          "instruction": {
+            "en": "Remember on before the day of the week.",
+            "zh-TW": "複習星期前面用 on。",
+            "zh-CN": "复习星期前面用 on。",
+            "ja": "曜日の前はオンだったね。",
+            "ko": "요일 앞에는 온이었지요."
+          },
+          "demo_translation": {
+            "zh-TW": "星期一，我閱讀。",
+            "zh-CN": "星期一，我阅读。",
+            "ja": "月曜日に本を読みます。",
+            "ko": "월요일에 책을 읽어요."
+          },
+          "visual": "day:Monday",
+          "mode": "demo",
+          "target": "day:Monday",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep48-s07",
+          "english": "Listen and choose.",
+          "demo": "She reads a book.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "她讀一本書。",
+            "zh-CN": "她读一本书。",
+            "ja": "彼女は本を読みます。",
+            "ko": "그녀는 책을 읽어요."
+          },
+          "visual": "sentence:She reads a book.",
+          "mode": "quiz",
+          "target": "sentence:She reads a book.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:They read a book.",
+            "sentence:She reads a book.",
+            "sentence:I read a book."
+          ]
+        },
+        {
+          "id": "ep48-s08",
+          "english": "They are playing now.",
+          "demo": "They are playing now.",
+          "instruction": {
+            "en": "Now tells us the activity is happening.",
+            "zh-TW": "現在表示活動正在進行。",
+            "zh-CN": "现在表示活动正在进行。",
+            "ja": "今は、活動が続いていることを表すよ。",
+            "ko": "지금은 활동이 진행 중이라는 뜻이에요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們現在正在玩耍。",
+            "zh-CN": "他们现在正在玩耍。",
+            "ja": "みんなは今、遊んでいます。",
+            "ko": "그들은 지금 놀고 있어요."
+          },
+          "visual": "sentence:They are playing now.",
+          "mode": "repeat",
+          "target": "sentence:They are playing now.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        },
+        {
+          "id": "ep48-s09",
+          "english": "Listen and choose.",
+          "demo": "I am going to read tomorrow.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみよう。",
+            "ko": "듣고 골라 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算明天閱讀。",
+            "zh-CN": "我打算明天阅读。",
+            "ja": "明日は本を読むつもりです。",
+            "ko": "나는 내일 책을 읽을 계획이에요."
+          },
+          "visual": "sentence:I am going to read tomorrow.",
+          "mode": "quiz",
+          "target": "sentence:I am going to read tomorrow.",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句／選圖：所有選項不附翻譯、不預標正解。英文示範後完整等待六秒，再顯示答案與四語翻譯；不是獨立閱讀評量。",
+          "choices": [
+            "sentence:I am going to play tomorrow.",
+            "sentence:I am going to walk tomorrow.",
+            "sentence:I am going to read tomorrow."
+          ]
+        },
+        {
+          "id": "ep48-s10",
+          "english": "We both like art.",
+          "demo": "We both like art.",
+          "instruction": {
+            "en": "Let us say it again.",
+            "zh-TW": "我們再說一次。",
+            "zh-CN": "我们再说一次。",
+            "ja": "もう一度言ってみよう。",
+            "ko": "다시 말해 봐요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們兩人都喜歡美術。",
+            "zh-CN": "我们两人都喜欢美术。",
+            "ja": "私たちは二人とも図工が好きです。",
+            "ko": "우리 둘 다 미술을 좋아해요."
+          },
+          "visual": "sentence:We both like art.",
+          "mode": "review",
+          "target": "sentence:We both like art.",
+          "wait_seconds": 5,
+          "note_zh_TW": "以完整句子示範本集情境與規律。保留五秒回應時間，可指選、跟說或安靜觀看。"
+        }
+      ]
+    }
+  ]
+}

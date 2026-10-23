@@ -152,7 +152,7 @@ def uuid_text(value):
 def aware_time(value, label):
     require(text_value(value), f"{label} needs an ISO 8601 time")
     try:
-        moment = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        moment = datetime.fromisoformat(value)
     except ValueError as error:
         raise Refused(f"{label} needs an ISO 8601 time") from error
     require(moment.tzinfo is not None, f"{label} time must include a timezone")

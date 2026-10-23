@@ -13,6 +13,12 @@
 // bar (motion.mjs lays the same list over a card), measured inside the Shorts safe area, so
 // `layout` can pass where an import's cannot. What comes out is a build of this tool: check-audio,
 // qa, package and push take the directory as any other (`line: "drama"`, `source.slug`).
+//
+// The Short carries the channel mark like any other (motion.mjs markStages, the `shorts` shape;
+// docs/videos/WATERMARK.md). An episode cut with the mark has it burned into its top right
+// corner, and a 608 px window passing over it would show half a mark, enlarged: the window is
+// kept clear of the box the episode's checks.json records (windowRange), and a shot whose
+// subject can then no longer be in the window stops the build, by name.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
@@ -22,6 +28,7 @@ import { HEIGHT as SOURCE_HEIGHT, WIDTH as SOURCE_WIDTH, muxArgs } from '../asse
 import { approvalState } from '../core/approvals.mjs';
 import { appliedBranding, presentationTimeline } from '../core/branding.mjs';
 import { ROOT, docDir as docDirOf, readJson, resolveWorkBase, resolveWorkdir, stopRequested, videoFile } from '../core/paths.mjs';
+import { watermark, watermarkRecord } from '../core/watermark.mjs';
 import { locate, mediaStatus, putFile, scaleBox } from '../media/client.mjs';
 import { parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { embeddedFont, loudnessProblems, loudnessResult, measureFinal, profileProblems } from './build.mjs';
@@ -29,10 +36,11 @@ import { PROFILE, SCRIPT_FILE, USAGE_FILE, captionHtml, parseSrt, saveJson, sha2
 import { timelineFromCaptions } from './import.mjs';
 import { CAPTION_BOX, captionLines, captionsOption, captionsSummary, phraseGroups, timingFile } from './karaoke.mjs';
 import { themeOf } from './layouts.mjs';
-import { cardsList, firstFrameArgs } from './motion.mjs';
+import { cardsList, firstFrameArgs, markStages } from './motion.mjs';
 
 // Folded into the build id with this module's own code hash: a change here is another cut.
-export const REFRAME_VERSION = 'shorts-reframe-v1';
+// v2: the channel mark over the picture, and the window kept off the episode's own.
+export const REFRAME_VERSION = 'shorts-reframe-v2';
 // The 9:16 window of a 1080-high picture: 1080 × 9 / 16 is 607.5, taken even.
 export const WINDOW = Object.freeze({ width: 608, height: SOURCE_HEIGHT });
 export const SOURCE = Object.freeze({ width: SOURCE_WIDTH, height: SOURCE_HEIGHT });
@@ -128,13 +136,36 @@ export function shotSpans(timeline, startFrame, endFrame) {
   return spans;
 }
 
-/** The window's left edge for a subject centred at `centre` (source pixels): inside the picture. */
-export const windowX = (centre) => Math.min(Math.max(Math.round(centre - WINDOW.width / 2), 0), SOURCE.width - WINDOW.width);
+/** Every left edge a window may take: the whole picture. */
+export const FULL_RANGE = Object.freeze({ min: 0, max: SOURCE.width - WINDOW.width });
+
+/**
+ * The left edges a window may take in an episode whose cut carries the channel mark at `box`
+ * (source pixels, checks.json `watermark.box`): the windows that end before the mark or the ones
+ * that begin after it, whichever side is wider, so no window ever shows a part of it. Without a
+ * box, the whole picture.
+ */
+export function windowRange(box = null) {
+  if (!box) return FULL_RANGE;
+  const before = { min: FULL_RANGE.min, max: Math.min(FULL_RANGE.max, box.x - WINDOW.width) };
+  const after = { min: Math.max(FULL_RANGE.min, box.x + box.width), max: FULL_RANGE.max };
+  const range = before.max - before.min >= after.max - after.min ? before : after;
+  if (range.max < range.min) throw new Error(`the episode's channel mark (x ${box.x}–${box.x + box.width}) leaves no ${WINDOW.width} px window beside it`);
+  return range;
+}
+
+/** The window's left edge for a subject centred at `centre` (source pixels): inside the picture, and inside `range`. */
+export const windowX = (centre, range = FULL_RANGE) => Math.min(Math.max(Math.round(centre - WINDOW.width / 2), range.min), range.max);
+
+/** Where a located box (0–1000 scale) of a `picture` of that size is centred, in source pixels. */
+export function subjectCentre(box, picture = SOURCE) {
+  const pixels = scaleBox(box, picture.width, picture.height);
+  return ((pixels.left + pixels.right) / 2) * (SOURCE.width / picture.width);
+}
 
 /** The window's left edge for a located box (0–1000 scale) of a `picture` of that size: centred on the box. */
-export function windowFor(box, picture = SOURCE) {
-  const pixels = scaleBox(box, picture.width, picture.height);
-  return windowX(((pixels.left + pixels.right) / 2) * (SOURCE.width / picture.width));
+export function windowFor(box, picture = SOURCE, range = FULL_RANGE) {
+  return windowX(subjectCentre(box, picture), range);
 }
 
 /**
@@ -217,16 +248,18 @@ export function reframeChain(startFrame, endFrame, expr) {
 /**
  * The ffmpeg arguments of the Short's picture: the episode (input 0) reframed, the caption
  * layer (input 1, an ffconcat list of the lit caption bars and the blank between phrases) laid
- * over it at the bar, the colour tags and the Short's encoder; no sound here.
+ * over it at the bar, the channel mark (`mark`, input 2) over that when given, the colour tags
+ * and the Short's encoder; no sound here. Without a mark the arguments are what they were.
  */
-export function reframeArgs({ final, startFrame, endFrame, expr, captionsList, outFile }) {
+export function reframeArgs({ final, startFrame, endFrame, expr, captionsList, mark = null, outFile }) {
   const graph = [
     `[0:v]${reframeChain(startFrame, endFrame, expr).join(',')}[pic]`,
     '[1:v]format=rgba[captions]',
     `[pic][captions]overlay=${CAPTION_BOX.x}:${CAPTION_BOX.y}:eof_action=pass[captioned]`,
-    `[captioned]${COLOUR}[out]`,
+    ...(mark ? markStages(2, 'captioned', mark) : []),
+    `[${mark ? 'marked' : 'captioned'}]${COLOUR}[out]`,
   ].join(';');
-  return ['-y', '-v', 'error', '-i', final, '-f', 'concat', '-safe', '0', '-i', captionsList, '-filter_complex', graph, '-map', '[out]', '-frames:v', String(endFrame - startFrame), '-an', ...ENCODER, outFile];
+  return ['-y', '-v', 'error', '-i', final, '-f', 'concat', '-safe', '0', '-i', captionsList, ...(mark ? ['-i', mark.file] : []), '-filter_complex', graph, '-map', '[out]', '-frames:v', String(endFrame - startFrame), '-an', ...ENCODER, outFile];
 }
 
 /**
@@ -351,7 +384,8 @@ export function readEpisode({ slug, workdir, root = ROOT }) {
   if (!existsSync(final)) throw new Error(`no final.mp4 in ${workdir}: assemble ${slug} first`);
   const body = readJson(path.join(workdir, 'timeline.json'), null);
   if (!body) throw new Error(`no timeline.json in ${workdir}: run tts for ${slug} first`);
-  const timeline = presentationTimeline(body, appliedBranding(readJson(path.join(workdir, 'checks.json'), null)));
+  const checks = readJson(path.join(workdir, 'checks.json'), null);
+  const timeline = presentationTimeline(body, appliedBranding(checks));
   const captionFile = CAPTION_FILES.map((name) => path.join(workdir, name)).find((file) => existsSync(file));
   if (!captionFile) throw new Error(`no zh-TW captions in ${workdir} (${CAPTION_FILES.join(', ')}): run captions for ${slug} first`);
   return {
@@ -363,6 +397,8 @@ export function readEpisode({ slug, workdir, root = ROOT }) {
     captionFile,
     video: readJson(videoFile(slug, root), null),
     keyframes: readJson(path.join(workdir, 'keyframes', 'manifest.json'), null),
+    // The channel mark burned into the cut, with its box, or null (assemble's checks.json).
+    watermark: checks?.watermark ?? null,
     docDir: docDirOf(slug, root),
   };
 }
@@ -429,15 +465,18 @@ async function renderCaptionLayer({ doc, phrases, directory, channel, fontCss, b
  * keyframe this work directory has, else the frame in the middle of the shot pulled out of the
  * cut), one locate call a shot, the shot's characters as the labels. A card scene asks nothing
  * and keeps the centre. Returns the shots with their windows and what the calls answered.
+ * `range` (windowRange) keeps every window off the episode's own channel mark: a window it moved
+ * says by how much (`mark_shift`, source pixels), and a subject it leaves outside the window
+ * stops the build, since the only window that shows that subject shows half the mark.
  */
-async function locateShots({ shots, episode, media, maxLabels, ffmpeg, directory, stop }) {
+async function locateShots({ shots, episode, media, maxLabels, ffmpeg, directory, stop, range = FULL_RANGE }) {
   const located = [];
   let calls = 0;
   let model = null;
   for (const shot of shots) {
     if (stop()) throw new Error('STOP requested');
     if (shot.template !== 'shot') {
-      located.push({ shot: shot.id, template: shot.template, start: shot.start, end: shot.end, picture: 'card', subject: null, x: CENTRE_X });
+      located.push({ shot: shot.id, template: shot.template, start: shot.start, end: shot.end, picture: 'card', subject: null, x: windowX(SOURCE.width / 2, range) });
       continue;
     }
     const keyframe = episode.keyframes?.shots?.[shot.id]?.file;
@@ -457,8 +496,13 @@ async function locateShots({ shots, episode, media, maxLabels, ffmpeg, directory
     calls += 1;
     model = answer.model ?? model;
     const subject = pickSubject(answer.boxes, labels);
-    const x = subject ? windowFor(subject.box, { width: answer.width || SOURCE.width, height: answer.height || SOURCE.height }) : CENTRE_X;
-    located.push({ shot: shot.id, template: 'shot', start: shot.start, end: shot.end, picture, ...(picture === 'frame' ? { frame: shot.picture_frame } : {}), sha256: digest, labels, boxes: Array.isArray(answer.boxes) ? answer.boxes.length : 0, subject, x });
+    const centre = subject ? subjectCentre(subject.box, { width: answer.width || SOURCE.width, height: answer.height || SOURCE.height }) : SOURCE.width / 2;
+    const x = windowX(centre, range);
+    if (subject && (centre < x || centre > x + WINDOW.width)) {
+      throw new Error(`shot ${shot.id}: its subject (${subject.label}) is at x ${Math.round(centre)} of the episode, beside the channel mark burned into the cut; a window on it would show half the mark. Move --from or --to so the Short leaves this shot out`);
+    }
+    const shift = windowX(centre) - x;
+    located.push({ shot: shot.id, template: 'shot', start: shot.start, end: shot.end, picture, ...(picture === 'frame' ? { frame: shot.picture_frame } : {}), sha256: digest, labels, boxes: Array.isArray(answer.boxes) ? answer.boxes.length : 0, subject, x, ...(shift ? { mark_shift: shift } : {}) });
   }
   return { located, calls, model };
 }
@@ -499,8 +543,11 @@ export async function fromDrama({ slug, from, to, workdir, episodeWorkdir, meta 
   if (!(maxLabels > 0)) throw new Error('the site has no locate yet (GET /video/media/status lists no limits.locate_labels): update the site before reframing a drama');
 
   const documentBytes = Buffer.from(`${JSON.stringify(doc, null, 2)}\n`);
-  const codeHash = sha256(['from-drama.mjs', 'build.mjs', 'core.mjs', 'karaoke.mjs', 'layouts.mjs', 'motion.mjs'].map((file) => readFileSync(new URL(file, import.meta.url), 'utf8')).join('\n') + REFRAME_VERSION);
-  const buildId = sha256(JSON.stringify({ document: sha256(documentBytes), source: approval.sha256, span: [span.startFrame, span.endFrame], codeHash, captions: captionStyle, channel: channel ?? null })).slice(0, 16);
+  // The channel mark this Short carries, and the windows the episode's own leaves it.
+  const mark = watermark(undefined, 'shorts');
+  const windows = windowRange(episode.watermark?.box ?? null);
+  const codeHash = sha256(['from-drama.mjs', 'build.mjs', 'core.mjs', 'karaoke.mjs', 'layouts.mjs', 'motion.mjs', '../core/watermark.mjs'].map((file) => readFileSync(new URL(file, import.meta.url), 'utf8')).join('\n') + REFRAME_VERSION);
+  const buildId = sha256(JSON.stringify({ document: sha256(documentBytes), source: approval.sha256, span: [span.startFrame, span.endFrame], codeHash, captions: captionStyle, channel: channel ?? null, watermark: { id: mark.id, sha256: mark.sha256 } })).slice(0, 16);
   // Every attempt is its own directory, as build.mjs makes them: a failed rerun never leaves an
   // old manifest beside new bytes.
   const directory = path.join(base, doc.slug, `${buildId}-${now().getTime()}`);
@@ -509,7 +556,7 @@ export async function fromDrama({ slug, from, to, workdir, episodeWorkdir, meta 
   writeFileSync(path.join(directory, SCRIPT_FILE), documentBytes);
 
   console.error(`${doc.slug}: locate the subject of ${shots.filter((shot) => shot.template === 'shot').length} shots (${span.frames} frames of ${slug} from ${secondsOf(span.startFrame)} s)`);
-  const { located, calls, model } = await locateShots({ shots, episode, media, maxLabels, ffmpeg, directory, stop });
+  const { located, calls, model } = await locateShots({ shots, episode, media, maxLabels, ffmpeg, directory, stop, range: windows });
   const pieces = cropPieces(located.map((shot) => ({ start: shot.start, end: shot.end, x: shot.x })));
   const expr = cropExpr(pieces);
 
@@ -544,7 +591,7 @@ export async function fromDrama({ slug, from, to, workdir, episodeWorkdir, meta 
   console.error(`${doc.slug}: reframe ${span.frames} frames (${located.length} scenes, ${pieces.filter((piece) => piece.x0 !== piece.x1).length} moves)`);
   if (stop()) throw new Error('STOP requested');
   const video = path.join(directory, 'build', 'video.mp4');
-  await runTool(ffmpeg, reframeArgs({ final: episode.final, startFrame: span.startFrame, endFrame: span.endFrame, expr, captionsList, outFile: video }));
+  await runTool(ffmpeg, reframeArgs({ final: episode.final, startFrame: span.startFrame, endFrame: span.endFrame, expr, captionsList, mark, outFile: video }));
   const final = path.join(directory, 'upload', 'final.mp4');
   await runTool(ffmpeg, muxArgs(video, audioFile, final));
   const measured = await measureFinal(final, { ffmpeg, ffprobe });
@@ -572,12 +619,15 @@ export async function fromDrama({ slug, from, to, workdir, episodeWorkdir, meta 
       version: REFRAME_VERSION,
       source: { slug, final_sha256: approval.sha256, start_frame: span.startFrame, end_frame: span.endFrame, width: SOURCE.width, height: SOURCE.height },
       window: WINDOW,
+      // The episode's own mark and the windows it left, when its cut carries one.
+      ...(episode.watermark ? { episode_mark: episode.watermark.box, window_range: windows } : {}),
       move_frames: MOVE_FRAMES,
       shots: located,
       pieces,
       locate: { calls, model },
     },
     captions: captionsSummary(timing),
+    watermark: watermarkRecord(mark),
     loudness: measured.loudness,
     video: { codec: stream.codec_name, width: stream.width, height: stream.height, fps: stream.r_frame_rate },
     audio: { codec: audio.codec_name, sample_rate: audio.sample_rate },

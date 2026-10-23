@@ -1,0 +1,776 @@
+{
+  "schema_version": 1,
+  "slug": "zero-root-yaozu-e001",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "lushi",
+      "name": "陸拾",
+      "appearance": "East Asian young man of eighteen, handsome with straight brows, high nose bridge and a dimple when he smiles, lean and wiry from years of carrying water, sun-tanned skin, black hair tied in a short rough ponytail with hemp cord, left iris slightly paler than the right, faded grey-blue coarse cotton short jacket and trousers, straw sandals, a cracked gourd hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的鄉下少年，聲音清亮，說話快，一緊張就結巴，心地好、有點傻氣"
+      }
+    },
+    {
+      "id": "yanchong",
+      "name": "嚴崇",
+      "appearance": "East Asian man of fifty, square face, hooked nose, thin moustache and goatee, portly, brown elder's robe with dark embroidered borders, topknot with a small bronze crown, a string of black jade prayer beads in his right hand, a smile that never reaches his eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的發福長老，聲音油滑，拖長音，笑裡藏刀"
+      }
+    },
+    {
+      "id": "yanshaoyuan",
+      "name": "嚴少淵",
+      "appearance": "East Asian young man of nineteen, strikingly handsome with sharp brows, phoenix eyes, thin lips and a clean jawline, tall and broad-shouldered, black hair tied high under a jade crown, fitted deep purple inner-disciple robe with gold trim, black-sheathed long sword at his hip, arrogant bearing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十九歲的天才少爺，聲音冷，語氣傲慢，句尾上揚帶著嘲諷"
+      }
+    },
+    {
+      "id": "yunzhiyi",
+      "name": "雲知意",
+      "appearance": "East Asian young woman of eighteen, cool elegant beauty with an oval face, willow-leaf brows, almond eyes and fair skin, tall and slender, long black hair half tied up with a white jade hairpin, fitted moon-white disciple robe with cloud embroidery and a silver sash, a slim silver sword at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的仙門大小姐，聲音溫和清冷，咬字清楚"
+      }
+    },
+    {
+      "id": "dizi",
+      "name": "外門弟子",
+      "appearance": "East Asian young man of sixteen, round face with a mocking grin, white outer-disciple robe of the Xuanqiong sect with a pale blue sash, hair in a simple topknot",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十六歲的外門弟子，愛起鬨，語氣嘲笑"
+      }
+    },
+    {
+      "id": "shanxiao",
+      "name": "山魈",
+      "appearance": "a one-legged mountain spirit with a monkey-like face, grey-brown shaggy fur, long thin arms, yellow eyes and a wide grin of small teeth, its single leg bending backward at the knee, eerie but not gory",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；山野精怪，尖細詭異的嬉笑聲"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "tense guzi and taiko pulse under airy dizi flute, ancient Chinese fantasy, building to a hush at the end, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "測出零靈根被當眾羞辱，宗主千金偷塞他一個饅頭｜長燈村 第1集",
+    "description": "十八歲的陸拾背著奶奶醃的菜上山測靈根，想當仙人寄錢回家。問天石卻一點光都不給他。《長燈村：零靈根的我被一村妖祖養大》第 1 集。",
+    "tags": [
+      "長燈村",
+      "AI漫劇",
+      "修仙",
+      "玄幻",
+      "零靈根"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "一點光都沒有",
+      "tag": "長燈村",
+      "shot": "s10"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "問天石",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand on the stone, high angle, slow push in",
+        "prompt": "Insert of a sun-tanned calloused right hand hovering just above a man-high black stone on a white jade terrace, palm open, the stone surface dark and smooth, morning light from the left; Yan Chong speaks off screen",
+        "motion": "The hand presses flat onto the black stone and stays there; the stone stays completely dark",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e1a01",
+          "speaker": "yanchong",
+          "text": "零——。",
+          "emotion": "拖長音，譏笑"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot of a round white jade terrace above a sea of clouds, the black stone at the centre, Lu Shi in grey-blue coarse clothes alone beside it on screen left with a clay jar on his back, a ring of white-robed disciples around the terrace, an elder seated on a raised dais on screen right; dizi speaks off screen",
+        "motion": "The ring of disciples bursts out laughing and points at Lu Shi",
+        "characters": [
+          "lushi",
+          "yanchong"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a02",
+          "speaker": "dizi",
+          "text": "零靈根也敢上山？",
+          "emotion": "起鬨、大笑"
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lu Shi beside the black stone on screen left, facing right toward Yan Chong off screen right, his right hand still on the stone, an embarrassed grin, the clay jar strap over his shoulder",
+        "motion": "Lu Shi scratches the back of his head with his left hand and grins awkwardly",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a03",
+          "speaker": "lushi",
+          "text": "再、再按一次行嗎？",
+          "emotion": "尷尬地陪笑，結巴"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up of Yan Chong seated on the raised dais on screen right, facing left toward Lu Shi off screen left, black jade prayer beads in his right hand, a thin smile",
+        "motion": "Yan Chong flicks one prayer bead along the string with his thumb",
+        "characters": [
+          "yanchong"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a04",
+          "speaker": "yanchong",
+          "text": "問天石不說謊。",
+          "emotion": "慢條斯理，看笑話"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lu Shi at the stone on screen left, both hands raised above the black stone, jaw set, eyes on the stone",
+        "motion": "Lu Shi slams both palms onto the stone and leans his weight into it",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a05",
+          "speaker": "lushi",
+          "text": "亮啊……給我亮啊！",
+          "emotion": "咬牙、使勁"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the two hands on the stone, locked",
+        "prompt": "Insert of two sun-tanned hands pressed flat on the black stone, knuckles white, the stone surface dull and dark with no glow at all; a disciple speaks off screen",
+        "motion": "The hands slide down the dark stone a little as the arms give up",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e1a06",
+          "speaker": "dizi",
+          "text": "一點光都沒有！",
+          "emotion": "哄笑"
+        }
+      ]
+    },
+    {
+      "id": "s06b",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up of Yan Chong seated on the raised dais on screen right, facing left toward Lu Shi off screen left, black jade prayer beads in his right hand, waving the other hand lazily",
+        "motion": "Yan Chong waves his left hand as if shooing a fly",
+        "characters": [
+          "yanchong"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a28",
+          "speaker": "yanchong",
+          "text": "零靈根，下一個。",
+          "emotion": "不耐煩"
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the white jade terrace from behind the crowd, the disciples parting in a lane, Yan Shaoyuan in a deep purple gold-trimmed robe striding up the white steps on screen right toward the black stone, Lu Shi small beside the stone on screen left; Yan Chong speaks off screen",
+        "motion": "Yan Shaoyuan walks up the last steps as the disciples step aside for him",
+        "characters": [
+          "yanshaoyuan",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a07",
+          "speaker": "yanchong",
+          "text": "少淵，讓他看看什麼叫天才。",
+          "emotion": "得意，抬高聲音"
+        }
+      ],
+      "chapter": "天才"
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of Yan Shaoyuan on screen right stepping toward the stone, Lu Shi on screen left in his path, the black stone between them",
+        "motion": "Yan Shaoyuan knocks Lu Shi aside with his shoulder without looking at him",
+        "characters": [
+          "yanshaoyuan",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a08",
+          "speaker": "yanshaoyuan",
+          "text": "讓開。",
+          "emotion": "冷淡、不屑"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the pale hand on the stone, slow push in",
+        "prompt": "Insert of a pale long-fingered hand with a jade ring and a deep purple gold-trimmed sleeve, hovering just above the black stone; a disciple speaks off screen",
+        "motion": "The hand touches the stone and gold and crimson light floods up through the black surface",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e1a09",
+          "speaker": "dizi",
+          "text": "雙色！",
+          "emotion": "驚呼"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, low angle, tilt up",
+        "prompt": "Wide shot of the white jade terrace, a twin column of gold and crimson light erupting from the black stone into the clouds above, Yan Shaoyuan at the stone with his hand on it, every disciple's shadow split into gold and red on the white floor, Lu Shi at the edge of frame on screen left; Yan Chong speaks off screen",
+        "motion": "The gold and crimson column surges up through the clouds as the crowd falls back",
+        "characters": [
+          "yanshaoyuan",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a10",
+          "speaker": "yanchong",
+          "text": "金紅雙色，百年一見！",
+          "emotion": "激動，高聲宣布"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi on screen left, his face lit gold and red from the light column off screen right, his right hand on the strap of the clay jar on his back",
+        "motion": "Lu Shi steps back once and grips the jar strap tighter",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Yan Shaoyuan beside the fading light column on screen right, turning his head left toward Lu Shi off screen left, nose slightly wrinkled",
+        "motion": "Yan Shaoyuan turns from the stone and sniffs toward Lu Shi's jar",
+        "characters": [
+          "yanshaoyuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a11",
+          "speaker": "yanshaoyuan",
+          "text": "什麼味道？",
+          "emotion": "嫌惡"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Over-the-shoulder from behind Lu Shi on Yan Shaoyuan, locked",
+        "prompt": "Over-the-shoulder from behind Lu Shi, the back of his head and the clay jar on his shoulder at frame left, Yan Shaoyuan facing him at screen right a step away",
+        "motion": "Lu Shi swings the clay jar from his back to his chest and hugs it with both arms",
+        "characters": [
+          "yanshaoyuan",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a12",
+          "speaker": "lushi",
+          "text": "我奶奶醃的菜。",
+          "emotion": "認真，護著"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Yan Shaoyuan beside the fading light column on screen right, chin raised, a cold smile, eyes on Lu Shi off screen left",
+        "motion": "Yan Shaoyuan flicks his sleeve toward the jar as if brushing off dust",
+        "characters": [
+          "yanshaoyuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a13",
+          "speaker": "yanshaoyuan",
+          "text": "鄉下醃菜，也配上問天台？",
+          "emotion": "嘲諷"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up of Yan Chong seated on the raised dais on screen right, facing left toward Lu Shi off screen left, black jade prayer beads in his right hand, raising his left hand",
+        "motion": "Yan Chong waves two fingers toward the stewards",
+        "characters": [
+          "yanchong"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a14",
+          "speaker": "yanchong",
+          "text": "來人，請他下山。",
+          "emotion": "輕描淡寫"
+        }
+      ],
+      "chapter": "醃菜罈"
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Three-shot, locked",
+        "prompt": "Three-shot of Lu Shi in the centre hugging the clay jar, two stewards in brown robes gripping his upper arms from both sides, the black stone behind them",
+        "motion": "The two stewards heave at his arms; Lu Shi rolls his shoulders once and both stewards stumble back a step while he does not move",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Yan Chong on the dais on screen right, prayer beads stopped in his fingers, one eyebrow rising, eyes on Lu Shi off screen left",
+        "motion": "Yan Chong leans forward on the arm of his chair",
+        "characters": [
+          "yanchong"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a15",
+          "speaker": "yanchong",
+          "text": "嗯？",
+          "emotion": "意外，狐疑"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lu Shi on screen left hugging the clay jar, facing right toward Yan Chong off screen right, calm and a little stubborn",
+        "motion": "Lu Shi hitches the jar higher in his arms and turns toward the steps",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a16",
+          "speaker": "lushi",
+          "text": "我自己會走。",
+          "emotion": "平靜，有骨氣"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the boot and the jar, low angle, locked",
+        "prompt": "Insert at floor level of a black embroidered boot under a deep purple robe hem swinging toward a clay jar held at knee height in sun-tanned hands; Yan Shaoyuan speaks off screen",
+        "motion": "The boot kicks the jar out of the hands; it cracks open on the white jade and the pickled greens spill across the floor",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e1a17",
+          "speaker": "yanshaoyuan",
+          "text": "那就帶著你的菜滾。",
+          "emotion": "冷笑"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lu Shi on screen left looking down at the spilled pickles below the frame, his face going still, his right hand at the bottom of frame",
+        "motion": "Lu Shi closes his right hand into a fist at his side and slowly lifts his eyes to look straight ahead, his body and face staying turned toward the camera the whole time",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a18",
+          "speaker": "lushi",
+          "text": "那是我奶奶醃了三個月的……",
+          "emotion": "壓著火，聲音發抖"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of Yun Zhiyi in a moon-white robe stepping in from screen right in front of Lu Shi on screen left, facing right with her back to him, the spilled pickles and cracked jar at her feet",
+        "motion": "Yun Zhiyi steps between them and kneels to gather the pickles back into the cracked jar",
+        "characters": [
+          "yunzhiyi",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a19",
+          "speaker": "yunzhiyi",
+          "text": "師兄，夠了。",
+          "emotion": "平靜而堅定"
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Yan Shaoyuan on screen right, looking down-left toward Yun Zhiyi off screen left, his cold smile gone, jaw tight",
+        "motion": "Yan Shaoyuan lowers the foot he kicked with and steps back",
+        "characters": [
+          "yanshaoyuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a20",
+          "speaker": "yanshaoyuan",
+          "text": "知意，妳替他說話？",
+          "emotion": "不悅，壓低"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Yun Zhiyi kneeling on screen left in soft morning light, white jade hairpin catching the light, the cracked jar in her hands, her eyes lifting up toward Lu Shi off screen right",
+        "motion": "Yun Zhiyi lifts the cracked jar in both hands and raises her eyes to Lu Shi",
+        "characters": [
+          "yunzhiyi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a21",
+          "speaker": "yunzhiyi",
+          "text": "菜還能吃。",
+          "emotion": "溫和，輕聲"
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot on the white jade terrace, Yun Zhiyi rising on screen right holding out the cracked jar, Lu Shi on screen left, the crowd blurred behind them",
+        "motion": "Yun Zhiyi hands the cracked jar to Lu Shi and he takes it with both hands",
+        "characters": [
+          "yunzhiyi",
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s24b",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi face on screen left, ears red, eyes on Yun Zhiyi off screen right, the cracked jar hugged to his chest",
+        "motion": "Lu Shi bows his head quickly to Yun Zhiyi",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a29",
+          "speaker": "lushi",
+          "text": "謝、謝謝妳。",
+          "emotion": "結巴，臉紅"
+        },
+        {
+          "id": "e1a30",
+          "speaker": "yunzhiyi",
+          "text": "下山吧。",
+          "emotion": "輕聲"
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "chapter": "霧路",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of a huge stone mountain gate at dusk, a stone path running down into fog and pine trees, Lu Shi small on screen left walking out through the gate with the cracked jar tied on his back",
+        "motion": "Lu Shi walks out through the gate and down the first steps into the fog",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "Two-shot at the foggy stone steps below the gate at dusk, Yun Zhiyi on screen right catching up, a cloth-wrapped steamed bun in her right hand, Lu Shi on screen left turning back",
+        "motion": "Yun Zhiyi presses the cloth-wrapped bun into Lu Shi's hands",
+        "characters": [
+          "yunzhiyi",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a22",
+          "speaker": "yunzhiyi",
+          "text": "拿著，別在這裡吃。",
+          "emotion": "壓低聲音，急"
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi face on screen left in dusk fog, eyes on Yun Zhiyi off screen right, the wrapped bun held against his chest",
+        "motion": "Lu Shi looks from the bun up to Yun Zhiyi",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a23",
+          "speaker": "lushi",
+          "text": "妳……為什麼？",
+          "emotion": "愣住，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Yun Zhiyi on screen right in dusk fog, half turned back toward the gate, glancing over her shoulder at Lu Shi off screen left",
+        "motion": "Yun Zhiyi turns away and walks back up the steps into the fog",
+        "characters": [
+          "yunzhiyi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a24",
+          "speaker": "yunzhiyi",
+          "text": "回家再看。",
+          "emotion": "輕聲，不回頭"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the bun in the hands, locked",
+        "prompt": "Insert of sun-tanned hands holding a cloth-wrapped steamed bun against the grey-blue coarse jacket, dusk light; Lu Shi speaks off screen",
+        "motion": "The hands tuck the wrapped bun inside the front of the jacket",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e1a25",
+          "speaker": "lushi",
+          "text": "留給奶奶吃。",
+          "emotion": "自言自語，暖"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot from high in the pines of a narrow stone path through thick fog at dusk, Lu Shi small on the path walking with the cracked jar on his back, gnarled branches overhanging the path",
+        "motion": "Lu Shi walks along the foggy path under the branches",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Lu Shi on the foggy path at dusk, stopping mid-step, head tilting up toward the branches above",
+        "motion": "Lu Shi stops walking and raises his head toward the branches",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a26",
+          "speaker": "lushi",
+          "text": "誰？",
+          "emotion": "警覺，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Extreme close-up in dusk fog of Lu Shi's face on screen right looking up, and above him on screen left a grey-furred monkey-like face hanging upside down from a branch, yellow eyes",
+        "motion": "The upside-down monkey face drops down until it is an inch from Lu Shi's nose and grins",
+        "characters": [
+          "shanxiao",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1a27",
+          "speaker": "shanxiao",
+          "text": "嘻。",
+          "emotion": "尖細詭異的嬉笑"
+        }
+      ]
+    }
+  ]
+}

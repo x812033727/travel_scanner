@@ -16,12 +16,12 @@ import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, episodeNumbers, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
+import { videoLexicon } from "./lexicon-store.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
-import { isNarrated, NARRATIVE_REVIEW } from "./narrative.mjs";
-import { scriptCheckMatches } from "./script-check.mjs";
+import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
-import { LOCALES, narrationLocale, textHash } from "./schema.mjs";
+import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
@@ -186,12 +186,14 @@ export function loadProject({ slug, file, root }) {
   const doc = readJson(source);
   const dir = path.dirname(source);
   const translations = {};
-  for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
+  for (const locale of TARGET_LOCALES.filter((each) => each !== narrationLocale(doc))) {
     const translation = readJson(path.join(dir, "i18n", `${locale}.json`), null);
     if (translation) translations[locale] = translation;
   }
   const shelf = path.dirname(dir);
-  const shelfLexicon = readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
+  const shelfLexicon = existsSync(path.join(dir, "story-lexicon"))
+    ? videoLexicon({ slug: path.basename(dir), dir }).lexicon
+    : readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
   const others = [];
   if (existsSync(shelf)) {
     for (const entry of readdirSync(shelf, { withFileTypes: true })) {
@@ -569,10 +571,10 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const next = steps.find((step) => !step.done) ?? null;
   const dubs = drama || compilation ? {} : dubsStatus(project, workdir, speech);
   // The storytelling panel (core/narrative.mjs): missing until it is asked, stale once the script
-  // it read has changed. It is not a checklist step; the worker asks it between the listener's
-  // edit and the gates, and `narrative --slug` asks it on the owner-driven route.
+  // or the questions it read have changed. It is not a checklist step; the worker asks it
+  // between the listener's edit and the gates, and `narrative --slug` asks it on the owner route.
   const panel = valid && !compilation && isNarrated(doc, project.series) ? readJson(path.join(workdir, ...NARRATIVE_REVIEW), null) : null;
-  const narrative = panel ? { status: scriptCheckMatches(panel, doc) ? (panel.passed ? "passed" : "failed") : "stale", failed: panel.failed ?? [] } : { status: "missing", failed: [] };
+  const narrative = panel ? { status: narrativeReviewMatches(panel, doc) ? (panel.passed ? "passed" : "failed") : "stale", failed: panel.failed ?? [] } : { status: "missing", failed: [] };
   return { steps, next, stop: stopRequested(workdir), lint, dubs, narrative };
 }
 
@@ -648,7 +650,8 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   const body = read(ARTIFACTS.timeline);
   const brandBodyCurrent = !checks?.branding || (checks.branding.body_frames === body?.total_frames && checks.compilation_hash === body?.compilation_hash);
   const compiled = valid && compilationChecksCurrent(doc, checks, episodes) && brandCurrent && brandBodyCurrent;
-  const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
+  // A compilation's titles are made in the default four (core/schema.mjs DEFAULT_LOCALES).
+  const locales = DEFAULT_LOCALES.filter((locale) => locale !== narrationLocale(doc));
   const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale], valid ? doc : null));
   // Filled but made from earlier text: a step that was done has reopened, and the note says why.
   const outdated = untranslated.filter((locale) => translationComplete(project.translations[locale]));

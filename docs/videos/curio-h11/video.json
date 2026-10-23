@@ -1,0 +1,1571 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h11",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像陪觀眾翻同一本書。購藏開場帶好奇，檢測和新聞事件依序推進；年份、材料與文字的差別咬字清楚，保留研究者歸屬；結尾模型只是一種做法，沉著收在原文仍待解讀。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "loops": [
+    {
+      "setup": "v1687a61",
+      "payoff": "v69591a8",
+      "what": "羊皮紙樣本帶回什麼年代"
+    },
+    {
+      "setup": "v766e7f7",
+      "payoff": "v470a2c5",
+      "what": "大學如何處理解讀消息的疑慮"
+    },
+    {
+      "setup": "v960e564",
+      "payoff": "v81627c3",
+      "what": "頁邊影像讓研究者看見什麼"
+    },
+    {
+      "setup": "v524a452",
+      "payoff": "v69591a8",
+      "what": "讀不出文字能先查什麼"
+    },
+    {
+      "setup": "v652f3b2",
+      "payoff": "v404103f",
+      "what": "字的位置是否留下規律"
+    },
+    {
+      "setup": "v07a5163",
+      "payoff": "v439465f",
+      "what": "頁邊筆跡能指向誰"
+    },
+    {
+      "setup": "v7cfdf05",
+      "payoff": "vb393dd6",
+      "what": "生成相似文字是否解讀原稿"
+    },
+    {
+      "setup": "vaee9829",
+      "payoff": "v1df5834",
+      "what": "淡藍字是否隱藏文字；反轉比對辨認背面透字"
+    },
+    {
+      "setup": "v361508d",
+      "payoff": "v470a2c5",
+      "what": "解讀研究公開後是否獲接受；具體回收學者疑慮與校方處置"
+    },
+    {
+      "setup": "va972623",
+      "payoff": "vd262f61",
+      "what": "只看文字分布能否連起圖像相近的分區"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "伏尼契手稿讀不懂，究竟查清了什麼？｜奇聞檔案局",
+    "description": "一本寫著未知文字的書，如何從收藏桌走進實驗室？本集沿購藏、材料定年、文字統計、2019年大學聲明及2024年多光譜研究往前，最後介紹2025年Naibbe作者模型。羊皮紙的年代、後加筆跡與可生成的相似文本，各有不同證據範圍；沒有把模型說成原文已解讀。\n\n資料查核：2026-10-16。Naibbe部分依作者README，未宣稱本頻道重跑模型或讀畢受限全文。AI插畫為敘事示意，圖中文字與流程是後製標示；當代研究者不生成可辨識本人肖像。",
+    "tags": [
+      "伏尼契手稿",
+      "Voynich Manuscript",
+      "MS 408",
+      "未知文字",
+      "歷史懸案",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "讀不懂\n**查得出？**",
+      "tag": "手稿檔案",
+      "sub": "一層一層檢驗",
+      "shot": "book-purchase"
+    }
+  },
+  "sources": [
+    {
+      "title": "Beinecke Library：伏尼契手稿館藏介紹",
+      "url": "https://beinecke.library.yale.edu/beinecke/collections/beinecke-cipher-voynich-manuscript",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Beinecke：MS408 館藏目錄",
+      "url": "https://pre1600ms.beinecke.library.yale.edu/docs/pre1600.ms408.htm",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "University of Arizona 原始實驗報告：羊皮紙定年",
+      "url": "https://www.voynich.nu/papers/Carbon_GH_2009.pdf",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Montemurro / Zanette：2013文字分布研究",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "University of Bristol：2019-05-16聲明",
+      "url": "https://www.bristol.ac.uk/news/2019/may/voynich-manuscript.html",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Lisa Fagin Davis：2024多光譜研究紀錄",
+      "url": "https://manuscriptroadtrip.wordpress.com/2024/09/08/multispectral-imaging-and-the-voynich-manuscript/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Greshko：Naibbe 作者README",
+      "url": "https://raw.githubusercontent.com/greshko/naibbe-cipher/main/README.md",
+      "checked_on": "2026-10-16"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "book-purchase",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a historical bookseller opening an unmarked illustrated manuscript on a wooden table, inside a historical book room, soft window light from the left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C01"
+      ],
+      "lines": [
+        {
+          "id": "va7e787b",
+          "text": "一九一二年，義大利。一名書商買下一本書，翻開來，是植物和陌生的文字。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ],
+      "chapter": "書商翻開一冊陌生的書"
+    },
+    {
+      "id": "strange-writing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a historical bookseller holding a closed manuscript at chest height, its plain unmarked cloth back cover facing the viewer, his eyes wide at what he just saw, one unlabeled botanical sketch card on the wooden table, soft window light from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03"
+      ],
+      "lines": [
+        {
+          "id": "v3962cb5",
+          "text": "那些圖像似乎想說明什麼，可是旁邊一行行的句子，還沒有確定的讀法。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "tease-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a conservator holding a tiny parchment sample above a plain laboratory tray, at a workbench under a soft task lamp.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v1687a61",
+          "text": "後來，研究人員會從羊皮紙取下一點樣本，想先問出它的年紀。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "tease-release",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a modern reader comparing two blank news sheets at a desk, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "v766e7f7",
+          "text": "一所大學也會發布解讀研究的消息，學者隨即提出疑慮。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "tease-light",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a imaging specialist adjusting a plain display beside a closed manuscript cradle, at a workbench under a soft task lamp.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09",
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v960e564",
+          "text": "再後來，研究者重新處理不同光下拍到的影像，試著看清頁邊淡去的字。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "opening-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a archive reader holding an unmarked manuscript beside a blank question card, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v98729cd",
+          "text": "這些方法，能讓我們讀懂內容，還是先讓別的問題有了答案？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "book-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an early-twentieth-century bookseller studying an unmarked manuscript with a pencil beside a stack of plain notebooks, soft light through a bookshop window.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C18"
+      ],
+      "lines": [
+        {
+          "id": "vc14d268",
+          "text": "伏尼契從買下它以後，就持續嘗試解讀。直到他去世，仍沒能解開這本書的謎。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ],
+      "chapter": "書商用餘生追查這本書"
+    },
+    {
+      "id": "not-first-reader",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a historical bookseller noticing faded marks near a blank page margin, inside a historical book room, soft window light from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C01",
+        "H11-C10",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "vde0982c",
+          "text": "可他翻過的頁面，還留著更早讀者的痕跡。研究者得從眼前這本實物，找能辨認的東西。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "leaf-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian carefully opening an unmarked folded parchment sheet, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C02"
+      ],
+      "lines": [
+        {
+          "id": "v8949601",
+          "text": "今天的館藏目錄，記錄它共有一百零二葉羊皮紙，裡面還有折頁。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "leaf-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a archive reader turning one blank parchment leaf between thumb and finger, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C02",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v2405e28",
+          "text": "一葉有正反兩面。所以看到葉數時，不能直接把它當成頁數。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "plant-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a archive reader following a plain botanical drawing with one finger, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03"
+      ],
+      "lines": [
+        {
+          "id": "vd5e8190",
+          "text": "你先看到的可能是一株植物，旁邊排著幾行字，像在解釋這株植物。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "image-purpose",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a reader setting a blank label beside a botanical drawing, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v179b9a8",
+          "text": "但沒有讀懂那些句子，就還不能確定，它真的在寫植物的用途。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "foldout-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian unfolding a sheet with simple unlabelled circles and star shapes, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03"
+      ],
+      "lines": [
+        {
+          "id": "v61e210f",
+          "text": "翻到別處，圖像又換了。書裡有星形的圖案，也有連成一片的圓形構圖。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "pictures-divide",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a archive reader sorting two unmarked illustration cards beside a closed book, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v339ff28",
+          "text": "圖畫讓研究者分出不同部分，文字卻沒有因此變成一本可以直接查的字典。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "unknown-author",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a archivist opening an empty catalogue drawer beside an unmarked manuscript, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03",
+        "H11-C06",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v44daffa",
+          "text": "作者和文字系統還沒定案，研究者先把這些能看見的形狀，留下可比較的記錄。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "separate-layers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archive researcher separating a plain margin sketch from a page panel, on a manuscript worktable.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "vaa3669c",
+          "text": "頁邊也有後來讀者加上的字。分析正文以前，還得把不同時期的痕跡分清楚。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "where-to-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a conservator examining the edge of a blank parchment leaf, at a workbench under a soft task lamp.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v524a452",
+          "text": "如果暫時讀不出一句話，能不能先從承載文字的材料開始問？",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "sample-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a conservator holding a tiny parchment sample above a plain laboratory tray, at a workbench under a soft task lamp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v57b521e",
+          "text": "還記得開場那份極小的樣本嗎？要知道它的年代，研究者把目光轉向羊皮紙。",
+          "emotion": "問句輕輕上揚"
+        }
+      ],
+      "chapter": "樣本帶回的是材料年代"
+    },
+    {
+      "id": "conservation-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a conservator inspecting an unmarked leaf through a simple magnifier, at a workbench under a soft task lamp.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v5f9aa2e",
+          "text": "取樣時，保存人員先找出沒有修補過的地方，才讓實驗室取得材料。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "four-samples",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a conservator arranging four small parchment samples in separate plain trays at a laboratory bench.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v0e564e3",
+          "text": "研究人員從四葉取下四份樣本，每份都只有細細一小條。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "clean-samples",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a laboratory technician moving a small sample vial into a plain cleaning station.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v771b973",
+          "text": "樣本還得先清理，因為手指留下的油脂，或裝訂用的黏著物，都可能干擾定年。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "animal-material",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a laboratory researcher placing a plain sample envelope beside a measuring instrument, at a workbench under a soft task lamp.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "vd7a16ea",
+          "text": "羊皮紙來自動物皮。動物活著時吸收的碳，能留下估算年代的線索。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "carbon-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a analyst separating a sample tray from an unmarked page copy, at a laboratory sample station with a soft inspection lamp.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v611e63e",
+          "text": "實驗室要回答的，是這份材料有多老，跟它上面的字是不是能翻譯，是兩個問題。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "dating-work",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a analyst examining a blank result sheet beside a small sample tray, at a laboratory sample station with a soft inspection lamp.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v9b3074b",
+          "text": "二〇〇九年的定年工作，給出了一段範圍：十五世紀前半。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "range-card",
+      "template": "big",
+      "data": {
+        "text": "1404–1438",
+        "kicker": "羊皮紙的碳定年範圍",
+        "sub": "來源見說明欄"
+      },
+      "claims": [
+        "H11-C04"
+      ],
+      "lines": [
+        {
+          "id": "v69591a8",
+          "text": "更精確地說，是一四〇四年到一四三八年。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "what-was-measured",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a conservator pointing to the bare edge beside an unreadable ink stroke, at a workbench under a soft task lamp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C05"
+      ],
+      "lines": [
+        {
+          "id": "vcbef25e",
+          "text": "這個結果測的是羊皮紙，沒有直接替每一筆墨水標上書寫日期。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "ink-constraint",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a laboratory researcher studying a tiny ink mark through a magnifier, at a workbench under a soft task lamp.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C04",
+        "H11-C05"
+      ],
+      "lines": [
+        {
+          "id": "v4a9a901",
+          "text": "墨水本身要取到足夠、又能分開的材料來測定，並不容易。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "return-to-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a analyst transcribing abstract strokes onto a blank working sheet, at a laboratory sample station with a soft inspection lamp.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "v3be0bcb",
+          "text": "研究者還是得把書打開，把那些重複出現的字形，一個個記下來。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "counts-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a analyst sorting repeated symbol cards across a long desk, at a laboratory sample station with a soft inspection lamp.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v652f3b2",
+          "text": "即使暫時不知道字的意思，字在書裡出現的位置，會不會先透露線索？",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "distribution-study",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a analyst grouping repeated abstract symbol cards into small piles, at a data-analysis worktable with plain shelves behind.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "va099beb",
+          "text": "有人開始比較：哪些字形常常一起出現，哪些集中在書的某些部分。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ],
+      "chapter": "研究者把字形排出關係"
+    },
+    {
+      "id": "not-single-sign",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a analyst pointing across several blank page panels on a table, at a data-analysis worktable with plain shelves behind.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v2fc22c8",
+          "text": "這樣看，問題就從單一符號像哪個字，變成整本書的文字怎麼分布。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "time-study",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher arranging unlabelled page markers along a desk, at a data-analysis worktable with plain shelves behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "v4394559",
+          "text": "二〇一三年的一項研究，用資訊理論去分析這種分布。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "transcription-count",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an analyst aligning identical blank symbol tokens beside a manuscript page on a data worktable.",
+        "camera": "pan right"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "v16d9e2d",
+          "text": "他們使用已經轉寫好的版本，把陌生字形換成固定符號，讓同一個字能被反覆計數。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "equal-sections",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of a researcher placing equal-sized blank text strips in separate sections across a long table.",
+        "camera": "pull out"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "v6856059",
+          "text": "整份文字被分成同樣長的部分。每一部分裡，哪些詞出現，又各出現多少次，都能逐一比較。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "word-locations",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of an analyst moving a cluster of matching unmarked tokens into one of several plain trays.",
+        "camera": "drift"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "ve1179dc",
+          "text": "常在某一段出現的詞，能替那一段留下特徵；到處都一樣常見的詞，就難以區分段落。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "local-groups",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a analyst moving one cluster of abstract tokens beside another, at a data-analysis worktable with plain shelves behind.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "va919cc7",
+          "text": "有些詞在一部分特別集中，換到另一部分，又換成其他詞比較常見。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "compared-books",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a researcher aligning three closed books with an unlabelled page strip on a data-analysis desk.",
+        "camera": "push in"
+      },
+      "claims": [
+        "H11-C16"
+      ],
+      "lines": [
+        {
+          "id": "vfc824ec",
+          "text": "研究裡拿來比較的，有中文的史記，也有英文的物種起源，和拉丁文文本。",
+          "emotion": "好奇，清楚交代研究者做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "picture-link-question",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a researcher sliding a plain plant drawing away from grouped abstract tokens on a data worktable.",
+        "camera": "pan left"
+      },
+      "claims": [
+        "H11-C16",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "va972623",
+          "text": "那開場看到的植物圖呢？不看圖，只看文字，也能把相近的部分找出來嗎？",
+          "emotion": "重新提起前面植物圖的線索，問句留一拍。"
+        }
+      ]
+    },
+    {
+      "id": "sections-connect",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an analyst placing two plain plant illustration cards beside grouped neutral tokens on a large worktable.",
+        "camera": "push in"
+      },
+      "claims": [
+        "H11-C16"
+      ],
+      "lines": [
+        {
+          "id": "vd262f61",
+          "text": "他們也只靠文字分布，連起兩個常見植物圖的部分，得到與圖像相呼應的關係。",
+          "emotion": "好奇，清楚交代研究者做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "compare-language",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a researcher comparing two unmarked distribution sheets, at a data-analysis worktable with plain shelves behind.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "va085d00",
+          "text": "研究者把這種組織性，和已知語言的文字比較，認為它帶著語言資訊的特徵。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "pattern-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a analyst aligning a sorted row of symbol cards beside a scattered row, at a data-analysis worktable with plain shelves behind.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06"
+      ],
+      "lines": [
+        {
+          "id": "v404103f",
+          "text": "有些常一起出現的詞，連開頭或結尾的形狀都相近，讓研究者更想追它們的關係。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "meaning-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reader placing abstract symbol cards beside a plain plant drawing, at a data-analysis worktable with plain shelves behind.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v98e1b79",
+          "text": "可是知道哪些詞會聚在一起，還不能說出那一段是在談哪株植物。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "research-progress",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a researcher laying the same abstract token beside two different page panels, at a data-analysis worktable with plain shelves behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v361508d",
+          "text": "日後有人提出解讀這本書的方法時，其他研究者會接受嗎？",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "release-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a modern reader comparing two blank news sheets at a desk, inside a quiet reading room, soft grey window light from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "v14ba199",
+          "text": "二〇一九年，布里斯托大學把名譽研究人員的一篇手稿論文，介紹給公眾。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ],
+      "chapter": "大學新聞隔天換了內容"
+    },
+    {
+      "id": "paper-published",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a university news editor seated at a communications desk, both hands setting down a closed research journal, only its plain page edges and unmarked cloth back cover visible, soft grey window light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "v7639780",
+          "text": "那篇論文已刊在羅曼語研究期刊，事前經過雙盲審查。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "experts-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reader marking a question beside an unmarked news page, at a university communications desk with a muted partition behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "va5b5d45",
+          "text": "對這項研究，語言學和中世紀研究領域，都有學者提出有效性的疑慮。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "statement-date",
+      "template": "big",
+      "data": {
+        "text": "2019 年 5 月 16 日",
+        "kicker": "校方發布聲明",
+        "sub": "來源見說明欄"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "vd9827f1",
+          "text": "新聞發布的隔天，五月十六日，校方發出聲明。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "independent-work",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a editor placing a plain institutional label beside a separate research folder, at a university communications desk with a muted partition behind.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "vec5b307",
+          "text": "校方後來說明，這項研究是他自行完成的，並不是大學參與的計畫。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "story-removed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a university editor seated at a desk, both arms visible as he slides one blank news sheet into an open wooden desk drawer, a plain paper stack on the desktop, soft grey window light from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "v470a2c5",
+          "text": "回應這些學者的疑慮，校方撤下開場那則新聞，等待進一步驗證。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "paper-distinction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader separating an unmarked news sheet from a bound journal, at a university communications desk with a muted partition behind.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "vc25d396",
+          "text": "撤下的是新聞稿。那篇研究論文，不能因此就被說成已經撤稿。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "book-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a librarian placing an unmarked manuscript back into a cradle, at a university communications desk with a muted partition behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C03",
+        "H11-C07",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v438a4b9",
+          "text": "這本書繼續留在館藏裡。報導熱鬧過後，頁邊那些淡去的痕跡，也還在。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "margin-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a imaging specialist examining the margin of a blank page under a lamp, at a workbench under a soft task lamp.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09",
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v07a5163",
+          "text": "如果先看清那些痕跡，會不會碰到另一位讀者留下的線索？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "images-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a imaging specialist opening a plain image folder beside a manuscript cradle, at a workbench under a soft task lamp.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09"
+      ],
+      "lines": [
+        {
+          "id": "v2b32364",
+          "text": "二〇二四年，一組過去拍下的影像，讓研究者重新查看這本書。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ],
+      "chapter": "舊影像讓頁邊多出字來"
+    },
+    {
+      "id": "captured-earlier",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a imaging technician positioning a camera above a blank manuscript sheet, at a workbench under a soft task lamp.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09"
+      ],
+      "lines": [
+        {
+          "id": "v3763f90",
+          "text": "它們早在十年前拍攝，挑的是書裡十頁，用不同波段的光來觀察。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "different-light",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a imaging specialist turning a lamp toward the edge of a plain sheet, at a workbench under a soft task lamp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09"
+      ],
+      "lines": [
+        {
+          "id": "vd854ca2",
+          "text": "同一頁在不同光下，材料和墨水的反應可能不同，淡去的筆畫就有機會更清楚。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "full-release",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher arranging ten small unlabelled image panels on a table, at an imaging review bench beside a dark monitor.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09"
+      ],
+      "lines": [
+        {
+          "id": "v7cc1054",
+          "text": "部分細節以前就發表過，這次公開的，是整組影像，還有重新處理的結果。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "ghost-writing",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an imaging operator examining a blank foldout on a light table; the image will receive an editorial ghost-pattern overlay later.",
+        "camera": "push in"
+      },
+      "claims": [
+        "H11-C17"
+      ],
+      "lines": [
+        {
+          "id": "vaee9829",
+          "text": "但影像變清楚，也可能更容易看錯。有一頁冒出淡藍色的字，它真是藏起來的文字嗎？",
+          "emotion": "好奇，清楚交代研究者做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "reverse-match",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a conservation researcher turning one blank translucent sheet over beside a second plain sheet on a light table.",
+        "camera": "push in"
+      },
+      "claims": [
+        "H11-C17"
+      ],
+      "lines": [
+        {
+          "id": "v1df5834",
+          "text": "戴維斯把影像反轉，再拿同一葉的背面來比，才把那些字認成從背面透過來的影子。",
+          "emotion": "好奇，清楚交代研究者做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "tease-payoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a imaging specialist adjusting a plain display beside a closed manuscript cradle, at a workbench under a soft task lamp.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C09",
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v965353b",
+          "text": "開場那個想看清頁邊的動作，現在指向首頁右側的幾欄痕跡。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "three-columns",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a archive reader examining three vertical columns of abstract marks on a blank sheet, at an imaging review bench beside a dark monitor.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v81627c3",
+          "text": "研究者戴維斯辨認出三欄：一欄拉丁字母，一欄手稿符號，旁邊又是一欄拉丁字母。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "margin-obstacle",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an imaging researcher moving a translucent green shape away from a plain margin diagram.",
+        "camera": "tilt down"
+      },
+      "claims": [
+        "H11-C19"
+      ],
+      "lines": [
+        {
+          "id": "v173f6fc",
+          "text": "首頁邊緣還被背面綠葉的影子擋住。她請影像專家處理，才看清其中更多筆畫。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "offset-alphabet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a reader sliding one row of blank letter tiles one position beside another, at an imaging review bench beside a dark monitor.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v0931109",
+          "text": "兩欄拉丁字母，位置還錯開一個。看起來很像有人試著把符號排在一起。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "decoding-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher holding a plain comparison slip near a manuscript margin, at an imaging review bench beside a dark monitor.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "vc34e31d",
+          "text": "戴維斯把這幾欄符號，拿去和曾經接觸手稿的人留下的筆跡比較。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "handwriting-comparison",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher comparing two unmarked historical handwriting sheets, at an imaging review bench beside a dark monitor.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v439465f",
+          "text": "她認為，馬爾奇字裡的一些特徵，與頁邊的筆畫相符；這仍是她的初步判讀。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "not-key",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a archivist separating a margin sketch from a full manuscript page, at an imaging review bench beside a dark monitor.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10"
+      ],
+      "lines": [
+        {
+          "id": "v4353a57",
+          "text": "三欄符號的用途還沒有定案，也沒有帶來能讀出全書的密鑰。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "pattern-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher laying abstract symbol tiles beside a plain rule sheet, at an imaging review bench beside a dark monitor.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C06",
+        "H11-C12",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v7cfdf05",
+          "text": "那麼，之前找到的文字規律呢？如果有人能造出相似的文字，又能說明多少？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "model-new",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a researcher laying a plain rule sheet beside an unmarked text card, at a paper-model worktable beside tall windows.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C12"
+      ],
+      "lines": [
+        {
+          "id": "v2ebbd0d",
+          "text": "二〇二五年，研究者格雷什科提出一個叫奈貝的模型，換了一個方向試。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ],
+      "chapter": "有人試著造出相似的文字"
+    },
+    {
+      "id": "hand-method",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a researcher arranging plain paper cards and one writing tool on a model worktable beside a window.",
+        "camera": "pan right"
+      },
+      "claims": [
+        "H11-C12"
+      ],
+      "lines": [
+        {
+          "id": "v199620f",
+          "text": "這套方法還有一個限制：要能用十五世紀已有的材料，徒手完成。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "known-input",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a researcher moving one plain input card toward a row of blank process cards, at a paper-model worktable beside tall windows.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C12"
+      ],
+      "lines": [
+        {
+          "id": "v37a7ba4",
+          "text": "他的起點是已知的拉丁文或義大利文，再依設計的步驟，把它變成另一種文本。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "similar-output",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher comparing two plain pattern cards beside a closed notebook, at a paper-model worktable beside tall windows.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C12"
+      ],
+      "lines": [
+        {
+          "id": "v2a16849",
+          "text": "作者說，這樣做出的文本，會呈現手稿裡好幾種相似的統計特徵。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "model-payoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reader placing a model folder beside a separate manuscript box, at a paper-model worktable beside tall windows.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C12",
+        "H11-C13"
+      ],
+      "lines": [
+        {
+          "id": "vb393dd6",
+          "text": "這就讓一種可能的製作方式，可以被拿出來研究；但他沒有翻譯原稿。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "known-versus-original",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a researcher turning an input card back toward its original place, at a paper-model worktable beside tall windows.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C13",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "vd56bdd7",
+          "text": "模型有已知輸入，可以檢查轉換後怎麼讀回去。原稿當初寫了什麼，仍待找到讀法。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "知道得更多，仍待讀懂"
+        ]
+      },
+      "claims": [
+        "H11-C14",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "v6911d5a",
+          "text": "還記得開場那本書嗎？它的紙和頁邊，已經能帶我們往前走；正文仍在等可檢驗的讀法。",
+          "emotion": "平實承接，咬字清楚"
+        },
+        {
+          "id": "v75e1ebb",
+          "text": "如果先查一樣，你會選圖、字，還是紙？",
+          "emotion": "平實承接，咬字清楚"
+        },
+        {
+          "id": "v9e503a3",
+          "text": "訂閱奇聞檔案局，陪我們沿著能核對的紀錄，把怪事查清楚。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    }
+  ]
+}

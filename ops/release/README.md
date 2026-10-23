@@ -8,7 +8,7 @@
 | 路徑 | 做什麼 | 拿哪些鎖 |
 |---|---|---|
 | 一般部署腳本 `/root/deploy-travel-scanner.sh`（只在主機上，root，mode 700，不在 git 裡） | 一次跑完：fast-forward 到 `origin/main`，`compose up --build -d` 重建全部應用容器（image tag `:local`） | 只拿 `/var/lock/travel-scanner-deploy.lock` |
-| 自動部署 timer（`ops/autodeploy/`，root 的 systemd timer，每 5 分鐘一輪） | 發現 `origin/main` 比 live 新、該 SHA 的 CI 綠了、沒有付費影片工作在跑，就呼叫**上面那支一般部署腳本**。它自己不拿鎖、不建容器；先跑腳本的 `--dry-run`，看到 `exit 3` 就等下一輪，所以暫停檔與規則 1 對它一樣有效 | 跟一般部署腳本一樣，只在腳本執行期間由腳本拿 `/var/lock/travel-scanner-deploy.lock` |
+| 自動部署 timer（`ops/autodeploy/`，2026-10-16 正式機未安裝） | 若日後啟用，每 5 分鐘檢查 `origin/main`、CI、付費工作，再呼叫**上面那支一般部署腳本**。它自己不拿鎖、不建容器；先跑腳本的 `--dry-run`，看到 `exit 3` 就等下一輪 | 跟一般部署腳本一樣，只在腳本執行期間由腳本拿 `/var/lock/travel-scanner-deploy.lock` |
 | 分段發布工具（例如 `docs/ai-terms-series/release_host.py`、`docs/ai-news-2026-ytd/deploy_release.py`） | `prepare`（建 `:<sha>` 映像、把當下的容器記成基準）→ 等 CI → `activate`（停服務、`pg_dump`、換上映像）→ 內容階段 `dry-run → drafts → publish-articles → publish-index`。每一段開始前核對容器還是上一段留下的樣子，不是就拒絕 | 每個階段執行期間持有四把：`/var/lock/travel-scanner-deploy.lock`、`/root/mokaair-deploy.lock`、`/run/mokaair-manual-deploy.lock`、`/run/travel-scanner-deployer/deploy.lock` |
 
 鎖只在單一階段執行期間被持有。階段之間鎖是空的，一般部署腳本照樣能跑，容器一被重建，
@@ -89,7 +89,7 @@ python3 ops/release/hold.py clear   /root/mokaair-x-<sha12> <sha40>
 2. 在發布目錄裡寫下決定（例如 `abandoned.md`：誰、何時、為什麼、容器與資料要不要回復）。
 3. 然後才刪暫停檔：`rm /root/travel-scanner-deploy.hold`。
 
-順序不能反過來。暫停檔一刪，一般部署腳本就會重建容器，發布目錄裡的基準就再也對不上了；而且自動部署 timer 開著時，刪掉之後**最多 5 分鐘內**它就會自己跑一般部署腳本，不需要任何人動手，所以「先刪暫停檔、等一下再決定」不存在。
+順序不能反過來。若一般部署腳本在暫停檔刪除後執行，就會重建容器，發布目錄裡的基準再也對不上；若日後啟用自動部署 timer，它在刪除後最多 5 分鐘內也可能呼叫一般部署腳本。因此須先決定並記錄，再刪暫停檔。
 
 ## 在主機上驗證，不碰正式環境
 
@@ -113,3 +113,76 @@ python3 ops/release/hold.py clear   /root/mokaair-x-<sha12> <sha40>
   見 `ops/deployer/README.md`。
 - 自動部署 timer 自己的暫停檔 `/root/travel-scanner-autodeploy.paused`（自動部署失敗後寫下）只擋 timer，
   不擋一般部署腳本與分段發布；規則與格式在 `ops/autodeploy/README.md`。
+
+## 一次性部署的影片工作排空關卡（待安裝）
+
+2026-10-16 的 #1521 部署在預檢後開始，另一筆影片寫稿在建置期間才進入
+`running`，最後被 `compose up --build -d` 重建 `video-ai-worker` 打斷。因此開頭的
+唯讀預檢、以及未來 auto timer 的第七關，都不能保證重建瞬間安全。
+
+`ops/release/video_stage_drain.sh` 是最後一道關卡，需安裝為
+`/opt/travel-scanner-deploy/video_stage_drain.sh`，由主機上**不在 Git 的**
+`/root/deploy-travel-scanner.sh` 在正常 `compose up --build -d` 與回滾的同一命令
+**各呼叫一次**。主機腳本本來就持有 `/var/lock/travel-scanner-deploy.lock`；手動包裝
+與 auto timer 都呼叫它，所以兩條路徑共用此關卡。後台部署中心與分階段發布
+另有執行器，須各自審核，不能以此關卡聲稱已受保護。
+正式主機補丁在首次呼叫前清除 helper 的 repo、compose 與 marker 測試覆寫環境變數，
+讓正常與回滾兩處關卡都使用與主機腳本相同的正式目標；離線測試仍可直接覆寫 helper。
+
+關卡驗證目前只有一個、命令為 `python -m app.video_automation.run_jobs` 的容器。
+這個命令在正式機是 PID 1、沒有 entrypoint；RQ 2.12 的第一個 SIGTERM 會停止取
+新工作並等待當前 horse 完成。腳本用 `docker container stop --signal=SIGTERM
+--timeout=-1`，不讓 Docker 的預設 10 秒 SIGKILL 中斷付費呼叫。停止後重新核對
+相同容器 ID、正常退出、非 OOM，並由 PostgreSQL 查 `video_stage_jobs` 的
+`running` 筆數必須為 0。查詢失敗、仍有 `running`、容器命令變了或排空失敗都
+`exit 3`；腳本不可接著重建。`queued` 與 `uncertain` 不阻擋；也不重新派送任何工作。
+排空前開始的工作會先完成，排空後唯一消費者已停，故預檢到重建之間新進工作
+只會停在佇列。正常關卡成功後寫入綁定本次隨機 nonce、原始 SHA 與容器 ID 的
+root-only ready 收據。若正常 `compose up` 局部失敗並刪掉 worker 容器，回滾只在
+同次收據、已重設的原始 checkout、無未解 marker、DB `running=0` 都成立時允許
+零容器重建；若 worker 已重啟則再排空一次。正常關卡拒絕時，主機腳本持原部署
+鎖把已快進的 checkout 重設至 `LOCAL_SHA` 並讀回，留下失敗收據；worker 可能已停，
+不能把重設 checkout 當成部署成功。`--no-rollback` 的故障訊息只指引先核對狀態，
+不提供未經 guard 的手動 `compose up` 命令。
+
+送出第一個 SIGTERM 前寫入 `/run/travel-scanner-deploy/video-ai-drain.pending`
+（內容是容器 ID）；只有停穩、同一容器 ID、DB `running=0` 後才刪。
+若外層 watchdog 在 `docker stop --timeout=-1` 等待期間殺掉 deploy shell，
+Docker CLI 與部署鎖可能在子程序結束前仍存活，也可能由 systemd 收掉；不能
+假設它們必定同步退出。若未來啟用 auto timer，poller 的 paused 收據會阻止下一輪
+自動部署；即使另一個
+操作者啟動手動部署，殘留 marker 也會讓 guard 拒絕，避免向仍在排空的 RQ
+worker 送出第二個 SIGTERM（RQ 會將第二次視為強制停止）。須唯讀核對 marker
+中的容器、RQ job 與 DB 收據，確認工作已終結且 worker 停止後，才由站主單獨
+核准清除 marker 與後續重啟；不可直接重送模型。
+
+**安裝計畫（須另外取得主機腳本寫入核准，現在尚未安裝）：**
+
+1. 在分支合併／下次部署前，把經獨立審查的 `video_stage_drain.sh` 與
+   `video_stage_host_patch.py` 連同 SHA-256 送到主機暫存目錄；先以本機測試和
+   `bash -n` 檢查兩檔。先以 `systemctl is-enabled travel-scanner-autodeploy.timer`
+   和 `systemctl list-timers travel-scanner-autodeploy.timer` 記錄 timer 是否安裝／
+   啟用；2026-10-16 的正式機未安裝 auto timer，不可把 repo 的 90 分鐘設定與
+   paused 收據當作現場保護。若日後啟用，須先核對它呼叫相同已補丁主機腳本。
+2. 唯讀核對 `/root/deploy-travel-scanner.sh` 的 SHA-256、700 權限、兩處原始
+   `compose up --build -d` 錨點及目前沒有部署鎖。2026-10-16 讀到的 SHA-256 是
+   `c6e69658cd22351008a179389e807304cb284052136b3aaf1522ffb281a39370`；
+   若已變動，先重新審查而非覆寫。
+3. 先跑 `python3 video_stage_host_patch.py --render --host-script
+   /root/deploy-travel-scanner.sh`，比較預期兩處插入與 `bash -n`。再以
+   `--install --expected-sha256 <剛核對的完整雜湊>` 執行；它持有同一把部署鎖、
+   留下 mode 600 原稿備份，原子寫入 mode 700 的 helper 與主機腳本；若後段
+   寫入或讀回失敗，仍持鎖原子還原原主機腳本並驗證原始雜湊。
+4. 讀回兩檔雜湊，確認主機腳本只出現兩次 helper 路徑、`bash -n` 通過，
+   `--dry-run` 仍在更動前返回；再從下一次**已另獲核准**的部署 log 核對兩種
+   排空路徑與 DB 狀態。這一步會停止／重啟 worker，安裝本身不呼叫 helper。
+
+**安裝回滾：** 若新關卡設計有問題，先擋住所有新部署入口（如有 auto timer
+也保持暫停）、確認無部署鎖／執行中付費工作；用備份的完整雜湊和 `bash -n`
+驗證原稿，持同一部署鎖將原稿原子還原為 `/root/deploy-travel-scanner.sh`，維持
+mode 700。原稿沒有最後排空關卡，在替代保護審核及安裝前不可再次部署。helper
+留存作稽核；若 guard 曾停住 worker 並拒絕，先讀 RQ 與 DB 實況，由站主決定何時
+重啟，絕不因回滾腳本而自動重送模型工作。若日後安裝 repo 版本的 auto timer，其 poller
+子程序超時設定為 90 分鐘，比 systemd 的兩小時上限早 30 分鐘；離線測試驗證
+poller 能寫 exit 124 的 paused 收據，這不是目前正式機已有該收據的證據。超時後
+仍需核查 worker 是否已停止與工作收據，不可把退出碼當成已部署。

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "kind": "senior-high-renderer-art-checks",
+  "status": "passed",
+  "checked_at_utc": "2026-10-08T04:43:45+00:00",
+  "source": {
+    "path": "docs/videos/english-senior-high-complete/lessons.json",
+    "sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+    "episodes": 72,
+    "scenes": 720
+  },
+  "season_sha256": {
+    "season01.json": "10202276f9096337597dca7caaa73963a138cae20f150df84c8be0f9e75285d0",
+    "season02.json": "33be29e51db76cce5d8114e848341c7ebed3da9ce84f06d523fc73cdcd84c6a0",
+    "season03.json": "21bd0f39cb25f2438583c2c76fa4b4cb5e11169651f7bb42228d2e45ce64d83d",
+    "season04.json": "9a841246b2ac97a591edfea45f40e9d0e97c1234c2a979901414631f93cc8139",
+    "season05.json": "f3a663c11fb2d7389ab453faa0696924a8175299584bd224828412e63f6efd90",
+    "season06.json": "af3937690705d3f14f09b3b6024e8ff82bb87da0f7443dbd5dcf8db0a878c072"
+  },
+  "renderer": {
+    "profile": "sunny-pip-senior-high-v1",
+    "version": 1,
+    "pillow_version": "12.1.1.post0",
+    "dependencies_sha256": {
+      "senior_high/visuals.py": "84e0ac3e4ae913dfb1607b66326319323ae9c202e5ece973fd293d131b43e2b0",
+      "senior_high/objects.py": "31ba058cc88977da777298e25c018d79826a9ef1654a3c063015cc7e2f6f65bd",
+      "senior_high/profile.py": "eab258a1a99666c2742b9745761a94fb7f4e6967697df3f98bf063c5e484fe25",
+      "senior_high/shared.py": "b6a9a989aeb3f0a4788ac3bef914f4848970025377eca92709afe31ea58be1b6",
+      "elementary_series/visuals.py": "278611605bccc72a4d25a21d079f48aa05532959df844290efc933007e139a5c",
+      "elementary_series/objects.py": "f07f5ba5d8aa7b4722c7dc58adc773dd2fc5ad03b533b982d29d9e4859e07f47",
+      "elementary_series/profile.py": "286556a479d59b312a60659b7134e2a8d1e181f1819bba641c3ea702f4832ebc",
+      "elementary_series/shared.py": "1e84f853d16783d1ebb162ef1c8578b5eb2e587b260666f007529230a31e0f93",
+      "elementary/visuals.py": "faca79119f20fbddb17df79f101d2b5a7836a1784f8f01155501b44469550ac7",
+      "elementary/objects.py": "eb943f8078fc33b8bdd8ff318592f14418772e0e6cb3507d4156182eb8577b73",
+      "elementary/profile.py": "1869c69da66eecb4a1b581b4c20166495e96024266f361dda203141a8fa609b0",
+      "elementary/shared.py": "ba14f8222c157fd6fb9c3bb14eeec4159840af56985ec9a2fe572eb439dc1c02",
+      "preschool/visuals.py": "a2d69a628cc6f4189a3834ef979aaa5284b8029ce89c912c8f024198670a5316",
+      "preschool/objects.py": "00edbf2502567c33c44d8381a1ea3eaee321d2604aedfb4fda317a3b7e97ceec",
+      "preschool/build.py": "a1626a698e6f799cb2b270dcbecd5d575587b273a8fc0b69817efbca81481496",
+      "preschool/audio.py": "9902f71cf269132a08eda7080eb85fab53745e72278a52f83e30f233f164da11",
+      "fonts/DejaVuSans.ttf": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "fonts/DejaVuSans-Bold.ttf": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    }
+  },
+  "checker": {
+    "path": "tools/video/senior_high/art_qa.py",
+    "sha256": "c5e9fde2b89e8c1eff5a692bd24e8e46c1f35a405475622db5ebdcec2bb4e111"
+  },
+  "checks": {
+    "scene_phase_frames": 2160,
+    "frame_dimensions": [
+      1280,
+      720
+    ],
+    "plain_caption_reserve": {
+      "top_px": 630,
+      "height_px": 90
+    },
+    "quiz_answer_invariance_scenes": 216,
+    "quiz_invariance_scope": "Instruction and waiting phases; target, visual, demo, English, instruction, guided-reading, speaker and translation mutations.",
+    "guided_glyph_mask_scenes": 144,
+    "glyph_overflow_failures": 0,
+    "minimum_measured_font_px": 23,
+    "minimum_measured_ink_gap_px": 9.0,
+    "maximum_measured_line_count": 6,
+    "negative_control": {
+      "detected": true,
+      "erased_glyph_core_pixels": 884
+    },
+    "legacy_tokens": 92,
+    "picture_choice_bounds_cases": 404,
+    "cache_matches_uncached_phases": true,
+    "execution": {
+      "reused_exact_current_source_scenes": 360,
+      "newly_checked_scenes_after_interruption": 360,
+      "recovery_basis": "Current S1-S3 season bytes and merged episode contents were verified identical to passing durable receipts; S4-S6 were checked after interruption with per-scene checkpoints."
+    },
+    "failures": []
+  },
+  "direct_frame_review": {
+    "reviewer": "senior-high artwork assistant",
+    "samples": [
+      "guided fixture",
+      "neutral quiz fixture",
+      "six-line long-choice fixture",
+      "ep34-s05 long-choice source frame"
+    ],
+    "result": "Clear text, complete glyphs and safe layout.",
+    "scope": "Selected rendered frames inspected with view_image before final source QA. Actual encoded-frame review is recorded separately; no full-video viewing claim."
+  },
+  "detailed_report_sha256": "39a5cf51025deed4004e4b8be3d529567b7e4ae087b048a9c1af21d36afb36a1"
+}

@@ -1,0 +1,9 @@
+# H12 四語本機上架資料預檢
+
+日期：2026-10-17（Asia/Taipei）。這是已核准繁中成片的本機多語素材預檢，不是上傳包審核，也不代表多語音訊 QA 或站主試聽通過。
+
+- 已核准 `final.mp4` 仍為 161,440,572 bytes，SHA-256 `2B24B5DF98A459CD587364C24D80FB0A7AFADFF4519DE86001B4A7D0E11D047D`。原 `thumbnail.jpg` SHA-256 `3C5A9181CD5804E502E817842AFB1B43F88E7AE44A6FA8EB1D4A583093DE8093`。`render --thumbnails-only` 只新增／更新英、日、韓縮圖及 `frames/manifest.json` 的語言縮圖欄位，不重畫已核准成片的任何畫格。
+- `lint --slug curio-h12 --json` 為 0 errors，7 個既有的畫面描述／估時 warnings。英、日、韓文稿各有 93 句、7 章，且各自包含標題、說明、標籤及縮圖字；目前三語 JSON SHA-256 見 `i18n-translation-1.md`。英／日／韓專屬縮圖的最終文案分別為 `POEM / OR FACT?`、`食卓 / 詩か記録？`、`식탁 / 시? 기록?`。日語與韓語由另一名審稿者逐語唯讀檢查，確認問句自然、沒有把詩作寫成現場證據；三張圖片也逐張檢視，字體清楚、沒有裁切。
+- 語言縮圖：`thumbnails/en.jpg` 98,649 bytes，SHA-256 `83DCCE938A31C75CBBBC23C15A181551736A5E1BD7E866F17D6A5F86F09C8A4F`；`thumbnails/ja.jpg` 97,851 bytes，SHA-256 `19F4C4859D8CA8740BE3E72C0DCD701FE851F2EB41AA73E1A5E08E2412B7F8F4`；`thumbnails/ko.jpg` 90,683 bytes，SHA-256 `7675D621C4ED90E5B4524364EEEB4ECED31762E7949D096B44EF3C64D391DD6D`。均低於 YouTube 2 MB 縮圖門檻。`frames/manifest.json` SHA-256 `E2D1F0313FA58180CA51C6F0EB872D45E6935A26A0DDD936FDC4DB1514EED681`，沒有語言縮圖缺口。
+- 配音成音後重跑 `captions`：zh-TW 97、en 96、ja 102、ko 99 cue，`captions/manifest.json` 每語 `problems=[]`、`skipped={}`，SHA-256 `F7DDDE6605616989E94D501112246E8E4EB84C5FE53DFFAB3CA3D968FD67A1AC`。SRT SHA-256：zh-TW `9167E89A8EDEF9D695FE6D9A4D94141D2156A0A1D6CD8DC5E80C7373C57C1E71`；en `AF6B532D6305ACD908CF147FCD261841735F9DC414CDB95C0DC0639DA397739C`；ja `24217245CC825C802E2D34FAFFD855CCB4C3E13F9E2635B7C47E5A098E7686E3`；ko `A0F226C39175E7646C2081201876AF2196AF3DC222036A6884A711077FE19066`。日後若任何語言定向重錄，必須重新產生其字幕並重查時間軸。
+- `status --slug curio-h12` 讀回繁中 final 已核准、captions 已寫，但 `upload package` 與 `on YouTube` 皆未完成。此預檢後英、日、韓的機械音訊 QA 均完成 93／93 句，分別留 12、27、20 句旗標；三語仍待站主試聽，不因此視作通過。日語前次連線失敗及受控復原見 `i18n-audio-qa-ja-held.md`。故尚未執行 `package`、`review-push` 或上傳。

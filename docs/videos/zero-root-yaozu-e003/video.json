@@ -1,0 +1,956 @@
+{
+  "schema_version": 1,
+  "slug": "zero-root-yaozu-e003",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "lushi",
+      "name": "陸拾",
+      "appearance": "East Asian young man of eighteen, handsome with straight brows, high nose bridge and a dimple when he smiles, lean and wiry from years of carrying water, sun-tanned skin, black hair tied in a short rough ponytail with hemp cord, left iris slightly paler than the right, faded grey-blue coarse cotton short jacket and trousers, straw sandals, a cracked gourd hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的鄉下少年，聲音清亮，說話快，一緊張就結巴，心地好、有點傻氣"
+      }
+    },
+    {
+      "id": "azheng",
+      "name": "阿猙",
+      "appearance": "East Asian man of twenty-five, rugged and handsome with an honest, simple expression, over two metres tall and solidly muscled, close-cropped hair, an old scar running down the middle of his forehead, a worn sleeveless brown short jacket, a big bundle of firewood tied on his back",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的憨直壯漢，聲音低沉厚實，說話很慢，一次只說兩三個字"
+      }
+    },
+    {
+      "id": "grandma",
+      "name": "胡奶奶",
+      "appearance": "East Asian old woman of about seventy, silver-white hair coiled into a round bun held with a wooden hairpin, small and thin but with a very straight back, long narrow eyes, a dark teal coarse cotton jacket fastened at the side with an apron tied over it, always holding a polished, gleaming tofu knife",
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十歲的老奶奶，低沉沙啞，刀子嘴豆腐心，說話不快但每個字都有分量"
+      }
+    },
+    {
+      "id": "aunt",
+      "name": "三嬸",
+      "appearance": "East Asian woman of forty, tall and lean, rosy cheeks and thick eyebrows, hair wrapped in a red cloth, a slight limp in her left leg, a black blacksmith's apron, sleeves rolled up to the elbows, burn scars on her forearms",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的鐵匠大嬸，嗓門大，脾氣急，一急就罵人但很疼孩子"
+      }
+    },
+    {
+      "id": "gui",
+      "name": "歸伯",
+      "appearance": "East Asian old man in his sixties, short and stocky with a slightly hunched back, a face full of deep wrinkles, a short grizzled beard, a conical bamboo hat and a straw rain cape, a bamboo fishing rod in his hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十多歲的老漁夫村長，說話慢吞吞，話很少，很沉穩"
+      }
+    },
+    {
+      "id": "tuantuan",
+      "name": "團團",
+      "appearance": "East Asian girl of seven, round face, big eyes and chubby cheeks, black hair tied in two small buns with red cord, a peach-pink padded jacket, often holding a stick of candied hawthorns",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七歲的小女孩，奶聲奶氣，天真又得意，講到吃的就興奮"
+      }
+    },
+    {
+      "id": "sun",
+      "name": "孫二",
+      "appearance": "East Asian man of forty, wiry and thin, smiling eyes and a mouthful of white teeth, an old felt hat, carrying a peddler's load on a shoulder pole hung all over with needles, thread and candies, shaking a pellet drum in his hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的走村貨郎，油嘴滑舌，愛看熱鬧，說話拉長音帶著嘲笑"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "soft guzheng and warm dizi flute over a gentle lantern-night hush, a bright playful pipa and drum burst in the middle, then a tender erhu, ending on one low suspenseful guqin note, ancient Chinese fantasy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "仙門退貨回村想偷偷躲起來，全村三百盞燈半夜等他｜長燈村 第3集",
+    "description": "陸拾跟著阿猙走下山坡，三百盞燈籠同時亮起，全村人在村口等他。貨郎一句「仙門退貨的回來啦」，三嬸的鐵錘就砸了下去。回到家，奶奶掰開他留著的饅頭。《長燈村：零靈根的我被一村妖祖養大》第 3 集。",
+    "tags": [
+      "長燈村",
+      "AI漫劇",
+      "修仙",
+      "玄幻",
+      "燈籠"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "三百盞燈等他",
+      "tag": "長燈村",
+      "shot": "s04"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "力氣，大",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot on the moonlit pine path beside the fallen pine, Lushi on screen left with the cracked jar on his back and a bamboo pole slotted through its rope sling, Azheng towering on screen right with the edgeless axe raised in his right hand, its blunt back turned down over a thick pine log lying across the stones between them, cold blue moonlight",
+        "motion": "Azheng taps the log once with the blunt back of the axe and the log splits cleanly in two along its length",
+        "characters": [
+          "lushi",
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a01",
+          "speaker": "azheng",
+          "text": "力氣，大。",
+          "emotion": "憨直，像在解釋"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the split log, locked",
+        "prompt": "Insert of a thick pine log on the moonlit stone path, split clean along its length with both halves still pressed together, pale fresh wood showing in the crack, the blunt iron head of an old axe resting on the stones beside it",
+        "motion": "The two halves of the log fall apart and roll away from each other across the stones",
+        "characters": []
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left in cold moonlight, eyes wide on the split log below frame, Azheng off screen right",
+        "motion": "Lushi jerks his head up toward Azheng off screen right, one finger raised to ask",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a02",
+          "speaker": "lushi",
+          "text": "這哪是力氣大？阿猙哥，你——",
+          "emotion": "追問，話說到一半被打斷"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow push in",
+        "prompt": "Wide shot from behind Lushi on screen left and Azheng on screen right at the crest of the moonlit slope, looking down into a dark valley where a long line of unlit paper lanterns runs from the foot of the slope to a village gate",
+        "motion": "Three hundred paper lanterns flare alight all at once from the foot of the slope to the village gate and form one long warm orange river of light",
+        "characters": [
+          "lushi",
+          "azheng"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left, warm orange lantern light rising over it from below, the jar strap across his shoulder, tiny points of lantern light shining in his eyes",
+        "motion": "Lushi takes one step forward to the edge of the slope, his lips parting",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a03",
+          "speaker": "lushi",
+          "text": "三百盞……全亮了？",
+          "emotion": "愣住，不敢相信"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up, low angle of Azheng on screen right, warm lantern glow from below on his face and the old scar on his forehead, the edgeless axe in his right hand, eyes on Lushi off screen left",
+        "motion": "Azheng swings the axe up onto his shoulder",
+        "characters": [
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a04",
+          "speaker": "azheng",
+          "text": "等你。",
+          "emotion": "憨直，慢"
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "chapter": "燈河",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, pan right",
+        "prompt": "Wide shot of stone steps winding down the slope between two rows of glowing paper lanterns, Lushi on screen right hurrying down ahead with the cracked jar on his back, Azheng on screen left a few steps behind with the axe on his shoulder and firewood on his back",
+        "motion": "Lushi hurries down the lantern-lit steps toward screen right with Azheng striding after him",
+        "characters": [
+          "lushi",
+          "azheng"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Lushi on screen right among glowing paper lanterns on the steps, warm orange light on his sun-tanned face, the ends of his short ponytail lifting in the night wind, Azheng off screen left behind him",
+        "motion": "Lushi turns his head back over his left shoulder with a wide smile that shows his dimple",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a05",
+          "speaker": "lushi",
+          "text": "是……在等我？",
+          "emotion": "不敢相信，笑了出來"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand on the jacket, locked",
+        "prompt": "Insert of a sun-tanned hand on the front of a grey-blue coarse jacket over the round bulge of a cloth-wrapped bun tucked inside, warm lantern light; Lushi speaks off screen",
+        "motion": "The hand closes slowly into a fist on the cloth over the bulge",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a06",
+          "speaker": "lushi",
+          "text": "可我……沒選上。",
+          "emotion": "笑容收起來，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the village gate at night, a huge old pagoda tree over a carved stone archway hung with warm paper lanterns, a crowd of villagers holding lanterns soft and out of focus beneath it, Third Aunt in front at the centre with a lantern held high, Old Gui on screen left with a bamboo fishing rod, Tuantuan on screen right with a stick of candied hawthorns",
+        "motion": "Third Aunt pushes forward out of the crowd with her lantern held high",
+        "characters": [
+          "aunt",
+          "gui",
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a07",
+          "speaker": "aunt",
+          "text": "拾兒回來啦！",
+          "emotion": "大嗓門，高興得喊出來"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot at the foot of the steps below the lantern-lit archway, Azheng on screen right standing tall with the axe on his shoulder, Lushi on screen left crouching behind Azheng's broad arm with the cracked jar on his back",
+        "motion": "Azheng takes one big step aside to screen right, leaving Lushi crouching in the open",
+        "characters": [
+          "lushi",
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a08",
+          "speaker": "lushi",
+          "text": "別、別喊那麼大聲……",
+          "emotion": "想躲，壓低聲音"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "chapter": "仙門瞎了眼",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Third Aunt on screen right under the lantern-lit archway, a red cloth wrapped over her hair, a black blacksmith's apron with a heavy iron hammer hanging from its belt, a lantern in her left hand, eyes on Lushi off screen left",
+        "motion": "Third Aunt limps one step forward, thrusting the lantern out toward Lushi off screen left",
+        "characters": [
+          "aunt"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a09",
+          "speaker": "aunt",
+          "text": "躲什麼？讓三嬸瞧瞧！",
+          "emotion": "嗓門大，又好氣又好笑"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left in warm lantern light, head lowered, eyes down, Third Aunt off screen right",
+        "motion": "Lushi bows his head lower, both hands clutching the jar strap on his shoulder",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a10",
+          "speaker": "lushi",
+          "text": "三嬸，我……其實我沒——",
+          "emotion": "低頭，鼓起勇氣想認錯，話沒說完"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "Medium close-up, low angle of Third Aunt on screen right, thick eyebrows drawn together, rosy cheeks, the lantern in her left hand lighting her face from below",
+        "motion": "Third Aunt plants her free fist hard on her hip",
+        "characters": [
+          "aunt"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a11",
+          "speaker": "aunt",
+          "text": "仙門瞎了眼！",
+          "emotion": "想都不想，大聲"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Group shot, locked",
+        "prompt": "Group shot under the lantern-lit archway, Third Aunt on screen right with her fist on her hip, Old Gui at the centre in a conical bamboo hat and straw rain cape holding a bamboo fishing rod whose line ends in a bare knot with no hook, Tuantuan on screen left by his knee, villagers with lanterns soft and out of focus behind them",
+        "motion": "Old Gui nods once slowly under his bamboo hat while the villagers behind him nod along",
+        "characters": [
+          "aunt",
+          "gui",
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a12",
+          "speaker": "gui",
+          "text": "瞎了。",
+          "emotion": "慢吞吞，很認真"
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left, lifting his head in confusion, warm lantern light, eyes on Third Aunt off screen right",
+        "motion": "Lushi straightens up, raising one hand palm out toward the crowd",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a13",
+          "speaker": "lushi",
+          "text": "等等……誰告訴你們的？",
+          "emotion": "愣住，一頭霧水"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tuantuan on screen right under the lanterns, two small hair buns tied with red cord, a peach-pink padded jacket, a stick of candied hawthorns at her mouth, eyes on Lushi off screen left",
+        "motion": "Tuantuan points the stick of candied hawthorns at Lushi off screen left",
+        "characters": [
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a14",
+          "speaker": "tuantuan",
+          "text": "我算的。",
+          "emotion": "奶聲奶氣，很得意"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand over the bun, locked",
+        "prompt": "Insert of a sun-tanned hand flattening over the round bulge of a cloth-wrapped bun inside a grey-blue coarse jacket, warm lantern light; Tuantuan speaks off screen",
+        "motion": "The hand clamps down over the bulge to hide it",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a15",
+          "speaker": "tuantuan",
+          "text": "饅頭要留給奶奶，對吧？",
+          "emotion": "歪著頭，奶聲奶氣"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left, eyes wide, cheeks flushing red in the lantern light, Tuantuan off screen right",
+        "motion": "Lushi steps back half a pace with both hands pressed over the front of his jacket",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a16",
+          "speaker": "lushi",
+          "text": "妳、妳怎麼知道？",
+          "emotion": "嚇一跳，結巴"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "chapter": "退貨",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, pan left",
+        "prompt": "Wide shot of the lantern-lit village gate from the side road, Sun Er on screen right stepping out of the dark into the lantern light with a peddler's load on a shoulder pole hung with needles, thread and candies, an old felt hat, a pellet drum in his hand, the crowd of villagers soft and out of focus on screen left",
+        "motion": "Sun Er saunters into the lantern light toward screen left, twirling the pellet drum",
+        "characters": [
+          "sun"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a17",
+          "speaker": "sun",
+          "text": "喲，仙門退貨的回來啦！",
+          "emotion": "嘴賤，拉長音看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left, the smile gone, warm lantern light, Sun Er off screen right",
+        "motion": "Lushi turns his face away to screen left, pulling the jar strap tight against his chest",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Sun Er on screen right in lantern light, an old felt hat, a wide grin of white teeth, the shoulder pole of his peddler's load on his shoulder, eyes on Lushi off screen left",
+        "motion": "Sun Er leans forward, wagging the pellet drum at Lushi off screen left",
+        "characters": [
+          "sun"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a18",
+          "speaker": "sun",
+          "text": "白吃十八年，還想當仙人？",
+          "emotion": "嘴賤，笑得很欠揍"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hammer at the apron belt, locked",
+        "prompt": "Insert of a heavy iron smith's hammer hanging from the belt of a black blacksmith's apron, a burn-scarred forearm with the sleeve rolled to the elbow, the hand closing on its handle, lantern light; Third Aunt speaks off screen",
+        "motion": "The hand yanks the hammer free of the apron belt",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a19",
+          "speaker": "aunt",
+          "text": "你再說一遍。",
+          "emotion": "壓低嗓子，很兇"
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Sun Er on screen right beside his peddler's load set down on the stone pavement, a heavy iron hammer swinging down from frame left toward the paving stones a hand's width from the load, lantern light",
+        "motion": "The iron hammer slams into the paving stone right beside the peddler's load, cracking the stone and making the load jump",
+        "characters": [
+          "sun"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Sun Er's face on screen right, his grin frozen, his old felt hat knocked crooked, lantern light, Third Aunt off screen left",
+        "motion": "Sun Er raises both hands beside his face in surrender",
+        "characters": [
+          "sun"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a20",
+          "speaker": "sun",
+          "text": "三、三嬸，說笑的……",
+          "emotion": "嚇到結巴，陪著笑"
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "Medium close-up, low angle of Third Aunt on screen left in lantern light, the iron hammer in her right hand, her burn-scarred forearm, glaring at Sun Er off screen right",
+        "motion": "Third Aunt heaves the iron hammer up onto her shoulder",
+        "characters": [
+          "aunt"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a21",
+          "speaker": "aunt",
+          "text": "長燈村的孩子，你也敢笑？",
+          "emotion": "怒吼，護短"
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Old Gui on screen left under a conical bamboo hat and straw rain cape, short grizzled beard, deep wrinkles, the bamboo fishing rod upright in his hand, eyes on Sun Er off screen right",
+        "motion": "Old Gui lowers the fishing rod until it points down the dark road toward screen right",
+        "characters": [
+          "gui"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a22",
+          "speaker": "gui",
+          "text": "送客。",
+          "emotion": "慢吞吞，不容商量"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, pan right",
+        "prompt": "Wide shot of the village gate, villagers with lanterns and brooms soft and out of focus on screen left surging forward behind Third Aunt with her hammer raised, Sun Er on screen right scrambling away out of the archway with his peddler's load on his shoulder",
+        "motion": "Sun Er runs out of the gate toward screen right with his load swinging while the villagers chase after him",
+        "characters": [
+          "sun",
+          "aunt"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Tuantuan on screen left under the archway, two small hair buns tied with red cord, a peach-pink padded jacket, waving her stick of candied hawthorns toward Sun Er off screen right",
+        "motion": "Tuantuan hops up on her toes, waving the candied hawthorns high over her head",
+        "characters": [
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a23",
+          "speaker": "tuantuan",
+          "text": "下回糖要算便宜點！",
+          "emotion": "跳著喊，很開心"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left, eyes glistening wet in warm lantern light, a trembling smile, Third Aunt off screen right",
+        "motion": "Lushi wipes his eyes with the back of his sleeve, laughing",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a24",
+          "speaker": "lushi",
+          "text": "你們……都不笑我？",
+          "emotion": "鼻子一酸，又想哭又想笑"
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot under the lantern-lit archway, Lushi on screen left a head shorter, Third Aunt on screen right with the iron hammer hanging back on her apron belt",
+        "motion": "Third Aunt roughly ruffles Lushi's hair with one big hand",
+        "characters": [
+          "lushi",
+          "aunt"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a25",
+          "speaker": "aunt",
+          "text": "笑啥？菜都熱三回了！",
+          "emotion": "粗聲粗氣，很疼他"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the fishing rod, locked",
+        "prompt": "Insert of the tip of an old bamboo fishing rod against the lantern light, its thin line hanging down and ending in a bare knot with no hook, a weathered hand on the rod; Lushi speaks off screen",
+        "motion": "The weathered hand lifts the rod, swinging the bare line up into the light",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a26",
+          "speaker": "lushi",
+          "text": "歸伯，您的釣竿沒有鉤？",
+          "emotion": "好奇，順口一問"
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Old Gui on screen left under a conical bamboo hat and straw rain cape, the bamboo fishing rod in his hand, the corners of his eyes creased, eyes on Lushi off screen right",
+        "motion": "Old Gui turns away into the village with the fishing rod on his shoulder",
+        "characters": [
+          "gui"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a27",
+          "speaker": "gui",
+          "text": "魚，自己會來。",
+          "emotion": "慢吞吞，不多解釋"
+        }
+      ]
+    },
+    {
+      "id": "s34",
+      "chapter": "饅頭",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot of the Hu family courtyard at night, an old wooden square table under a lantern hanging from the eaves, bowls of home cooking and an oil lamp on it, Grandma Hu sitting very straight on a bench on screen right with a gleaming tofu knife beside her bowl, Lushi on screen left at the courtyard gate with the cracked jar on his back",
+        "motion": "Lushi steps in through the courtyard gate, stopping short at the sight of the laid table",
+        "characters": [
+          "lushi",
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a28",
+          "speaker": "grandma",
+          "text": "回來了？洗手，吃飯。",
+          "emotion": "低沉沙啞，像什麼事都沒發生"
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the cracked jar, locked",
+        "prompt": "Insert of a cracked clay jar held above the old wooden table beside the oil lamp, a crack running down its side, a pair of sun-tanned hands around it; Lushi speaks off screen",
+        "motion": "The hands set the cracked jar down gently on the table",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a29",
+          "speaker": "lushi",
+          "text": "奶奶，醃菜……只剩半罈了。",
+          "emotion": "心虛，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Grandma Hu on screen right at the table, silver hair in a round bun with a wooden hairpin, a dark teal side-fastened jacket and apron, oil lamp light on her face, eyes on Lushi off screen left",
+        "motion": "Grandma Hu pushes a full bowl of rice across the table toward Lushi off screen left",
+        "characters": [
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a30",
+          "speaker": "grandma",
+          "text": "人回來就好。",
+          "emotion": "淡淡的，聲音軟了一點"
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the bun on the table, locked",
+        "prompt": "Insert of a sun-tanned hand on a round white steamed bun sitting on its unfolded cloth on the old wooden table beside a bowl of rice, oil lamp light; Lushi speaks off screen",
+        "motion": "The hand pushes the round white bun on its cloth across the table toward screen right",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a31",
+          "speaker": "lushi",
+          "text": "這饅頭，我留給您的。",
+          "emotion": "有點得意，捨不得吃留下來的"
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Grandma Hu on screen right in oil lamp light, the round white steamed bun in both hands in front of her chest, the corner of her mouth softening",
+        "motion": "Grandma Hu tears the steamed bun open in half with both hands",
+        "characters": [
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a32",
+          "speaker": "grandma",
+          "text": "傻孩子。",
+          "emotion": "嘴上嫌，眼裡軟"
+        }
+      ]
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the broken bun, slow push in",
+        "prompt": "Insert of two old hands holding the two halves of a torn white steamed bun over the wooden table, a soft pale blue glow coming from inside the bread, oil lamp light",
+        "motion": "A small glowing pale blue spirit stone and a folded slip of paper drop out of the bun onto the table",
+        "characters": []
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left lit pale blue from below by the glow of the spirit stone, oil lamp light on one side",
+        "motion": "Lushi leans in over the table with his mouth falling open",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a33",
+          "speaker": "lushi",
+          "text": "石頭……會發光？",
+          "emotion": "驚呆"
+        }
+      ]
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the slip of paper, locked",
+        "prompt": "Insert of a sun-tanned hand holding up a small unfolded slip of paper near the oil lamp, a few faint ink brushstrokes on it too small to make out; Lushi speaks off screen",
+        "motion": "The hand turns the slip upside down",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a34",
+          "speaker": "lushi",
+          "text": "又是字……我看不懂。",
+          "emotion": "撓頭，有點洩氣"
+        }
+      ]
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Grandma Hu on screen right, the small slip of paper close to her eyes in her fingers, oil lamp light on one side of her face; Lushi speaks off screen",
+        "motion": "Grandma Hu folds the slip shut in one hand, her mouth setting into a hard line",
+        "characters": [
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a35",
+          "speaker": "lushi",
+          "text": "奶奶？",
+          "emotion": "察覺不對，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot across the table, Lushi on screen left leaning in, Grandma Hu on screen right holding the folded slip of paper, the oil lamp flame burning between them",
+        "motion": "Grandma Hu raises the folded slip toward the lamp flame",
+        "characters": [
+          "lushi",
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a36",
+          "speaker": "lushi",
+          "text": "奶奶，上面寫什麼？",
+          "emotion": "著急，伸手想攔"
+        }
+      ]
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the lamp flame, slow push in",
+        "prompt": "Insert of the oil lamp flame on the wooden table, an old hand holding the corner of a small folded slip of paper just above it",
+        "motion": "The flame licks up and catches the corner of the paper",
+        "characters": []
+      }
+    }
+  ]
+}

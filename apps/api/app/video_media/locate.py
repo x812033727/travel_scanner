@@ -23,10 +23,14 @@ from PIL import Image
 
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
+from app.video_budget.service import is_pilot
 from app.video_media.providers import USER_AGENT, MediaUpstreamError, raise_for_status
 from app.video_media.schemas import LocateIn, LocateOut, SubjectBox
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
+
+PILOT_MAX_IMAGE_DIMENSION = 1536
+PILOT_MAX_OUTPUT_TOKENS = 4096
 
 IMAGE_TYPES = frozenset({"image/png", "image/jpeg", "image/webp"})
 # Gemini's box scale: a coordinate is a thousandth of the picture's height or width.
@@ -114,6 +118,12 @@ def picture(store: MediaStore, media: MediaSettings, payload: LocateIn) -> Pictu
             f"送給 Gemini 的圖片超過 {media.video_media_inline_judge_bytes} 位元組；請先縮小",
         )
     width, height = image_size(path)
+    if is_pilot(payload.slug) and max(width, height) > PILOT_MAX_IMAGE_DIMENSION:
+        raise LocateError(
+            422,
+            "video_pilot_budget_unknown_price",
+            "試作圖片超過已定價的 1536 像素邊界",
+        )
     return Picture(content_type=content_type, data=data, width=width, height=height)
 
 
@@ -141,14 +151,17 @@ def request_body(payload: LocateIn, image: Picture) -> dict[str, Any]:
             }
         },
     ]
+    generation_config: dict[str, Any] = {
+        "temperature": 0,
+        "responseMimeType": "application/json",
+        "responseSchema": SCHEMA,
+    }
+    if is_pilot(payload.slug):
+        generation_config["maxOutputTokens"] = PILOT_MAX_OUTPUT_TOKENS
     return {
         "system_instruction": {"parts": [{"text": INSTRUCTIONS}]},
         "contents": [{"role": "user", "parts": parts}],
-        "generationConfig": {
-            "temperature": 0,
-            "responseMimeType": "application/json",
-            "responseSchema": SCHEMA,
-        },
+        "generationConfig": generation_config,
     }
 
 
@@ -236,4 +249,13 @@ async def locate(
         text = gemini_output_text(answer if isinstance(answer, dict) else {})
     except ValueError as error:
         raise LocateError(502, "video_media_locate_failed", f"locate 沒有回答：{error}") from error
-    return LocateOut(boxes=boxes(text), width=image.width, height=image.height, model=model)
+    result = LocateOut(boxes=boxes(text), width=image.width, height=image.height, model=model)
+    usage = answer.get("usageMetadata") if isinstance(answer, dict) else None
+    if isinstance(usage, dict):
+        prompt = usage.get("promptTokenCount")
+        total = usage.get("totalTokenCount")
+        if isinstance(prompt, int) and isinstance(total, int) and 0 <= prompt <= total:
+            return result.model_copy(
+                update={"usage_input_tokens": prompt, "usage_total_tokens": total}
+            )
+    return result

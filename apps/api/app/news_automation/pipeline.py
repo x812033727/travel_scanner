@@ -27,7 +27,8 @@ from app.news_automation.assets import ensure_assets
 from app.news_automation.duplicates import (
     DUPLICATE_UNCERTAIN,
     cleared_by_editor,
-    known_titles,
+    has_cjk_title,
+    known_stories,
 )
 from app.news_automation.models import (
     LOCALES,
@@ -658,16 +659,18 @@ async def process_candidate(
             candidate.error_code = None
             await session.commit()
 
+        cross_category_review = False
         if await cleared_by_editor(session, candidate):
             # An editor, or the judge, already answered an uncertain check for this evidence.
             duplicate = "distinct"
         else:
+            known = await known_stories(session, candidate)
             duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
                 redis,
                 environment,
                 candidate.source_title,
                 "\n".join(row.excerpt for row in evidence),
-                await known_titles(session, candidate),
+                known.titles,
             )
             if duplicate == "manual" and duplicate_reasons == ["quota_unavailable"]:
                 # Jev's budget for the UTC day is spent, which says nothing about the story:
@@ -681,10 +684,37 @@ async def process_candidate(
                 )
                 await session.commit()
                 return "jev_paused"
+            semantic_verdict = duplicate
+            cjk_cross_match = bool(known.cross_category_matches) and (
+                has_cjk_title(candidate.source_title)
+                or any(has_cjk_title(match.title) for match in known.cross_category_matches)
+            )
+            cross_category_review = bool(known.cross_category_matches) and (
+                duplicate == "duplicate" or (duplicate == "distinct" and cjk_cross_match)
+            )
+            if cross_category_review:
+                # Jev cannot name which title it matched. A cross-category lexical match
+                # may be a separate development, so a high score cannot close it unseen.
+                # Its CJK autopilot is disabled; a CJK "distinct" cannot clear the hit.
+                duplicate = "manual"
+                duplicate_reasons = [
+                    *duplicate_reasons,
+                    "cross_category_cjk_requires_review"
+                    if semantic_verdict == "distinct"
+                    else "cross_category_match_requires_review",
+                ]
             # An uncertain answer holds the story and the hold replaces the marker. Should
             # the judge then call it distinct, this is how it knows a rewrite it ordered was
             # still waiting to be written (judge._rewrite_still_owed).
             interrupted = duplicate == "manual" and candidate.error_code == JUDGE_REDRAFT_MARKER
+            details: dict[str, Any] = (
+                {"interrupted": JUDGE_REDRAFT_MARKER} if interrupted else {}
+            )
+            if known.cross_category_matches:
+                details["cross_category_matches"] = [
+                    match.audit_json() for match in known.cross_category_matches
+                ]
+                details["semantic_verdict"] = semantic_verdict
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,
@@ -698,7 +728,7 @@ async def process_candidate(
                     provider="jev",
                     model=environment.jev_model,
                     reasons_json=duplicate_reasons,
-                    details_json={"interrupted": JUDGE_REDRAFT_MARKER} if interrupted else {},
+                    details_json=details,
                     evidence_hash=candidate.evidence_hash,
                     prompt_version=candidate.prompt_version,
                 )
@@ -713,7 +743,9 @@ async def process_candidate(
                 session,
                 candidate,
                 DUPLICATE_UNCERTAIN,
-                "Semantic duplicate check was uncertain.",
+                "Cross-category duplicate needs review."
+                if cross_category_review
+                else "Semantic duplicate check was uncertain.",
             )
             return "manual_review"
         await session.commit()

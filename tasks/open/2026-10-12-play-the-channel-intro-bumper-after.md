@@ -1,11 +1,11 @@
 ---
 id: 2026-10-12-play-the-channel-intro-bumper-after
 title: Play the channel intro bumper after the opening condensation, not before the first line
-status: review
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5-bumper
-claimed_at: 2026-10-13T13:27:44Z
+owner:
+claimed_at:
 created_at: 2026-10-12T07:44:57Z
 completed_at:
 branch: claude/bumper-after-condensation
@@ -127,3 +127,8 @@ Then build one real illustrated video and check with ffprobe that the first audi
 - Follow-up not done here: the 奇聞檔案局 v2 recuts (curio-*-v2) are new slugs not in the repo
   yet; a first build of them gets the new placement by default, and an existing pinned workdir
   needs `--intro-after-condensation`.
+
+
+### 2026-10-17 owner-authorized claim release
+
+Implementation in #1481 is merged. The owner authorized releasing this obsolete claim for independent A01 lexicon integration. This ticket remains open only pending archival; do not reimplement the merged work. No production action is authorized by this metadata change.

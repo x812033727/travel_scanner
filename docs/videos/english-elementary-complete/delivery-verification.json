@@ -1,0 +1,505 @@
+{
+  "checked_at": "2026-10-08T02:23:46.196624+00:00",
+  "completed": true,
+  "episodes": 72,
+  "seasons": 6,
+  "source_sha256": {
+    "lessons.json": "f5607ecc22669e284f023c0032f414f55f03dbc705449dc667ada64ba2b1fe12",
+    "season01.json": "6dbb61ebd35d8a901302410981fcd9f68e9285409a6411e67a1b0f2ba94ca125",
+    "season02.json": "3a54054d9af3e2f6856f3986372ac461b21e21f91c7ee0c2d15ff168f2b4315e",
+    "season03.json": "88b7b802cc54739dc5a2b8e547e2344bfff547565b6763b3c90893fb74ae551f",
+    "season04.json": "bbe762bffb797490ca391041682de2a095a113df43b5f8a2b8e3b99e366895c8",
+    "season05.json": "c1d8b00c74b570016b18473e65381336571a6f7168ed86da913e70602c8605a2",
+    "season06.json": "bf1a82091a2ddf4ae493a67afb5c64ba40687dc80c7082b4dbee6525a0fd75e4"
+  },
+  "duration_seconds": 13049.675,
+  "per_season_duration_seconds": {
+    "1": 2162.36,
+    "2": 2186.6,
+    "3": 2183.037,
+    "4": 2169.019,
+    "5": 2177.189,
+    "6": 2171.469
+  },
+  "audio_locales": [
+    "zh-TW",
+    "en",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "cc_locales": [
+    "zh-TW",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "english_cc": false,
+  "voice_provider": "Microsoft Edge read-aloud trial; not configured backend production voices",
+  "renderer_profiles": {
+    "season_1": "sunny-pip-elementary-season-one-v1",
+    "seasons_2_to_6": "sunny-pip-elementary-complete-v2"
+  },
+  "new_renderer_sha256": "738e3a5371800899f22248bf51c6a709d3858260ff296cfcb1c138939e1108e1",
+  "source_and_media_verification": {
+    "passed": true,
+    "checked_episodes": 72,
+    "errors": [],
+    "full_decode_receipts": 72
+  },
+  "first_season_preservation": {
+    "passed": true,
+    "unchanged_files": 228,
+    "original_source_episode_objects_equal": true
+  },
+  "artwork": {
+    "passed": true,
+    "episodes": 60,
+    "scenes": 600,
+    "rendered_frames": 2400,
+    "quiz_answer_invariance_scenes": 180,
+    "guided_pixel_preservation_scenes": 106,
+    "multiline_strip_bounds_checks": 86
+  },
+  "practice": {
+    "activities": 72,
+    "example_answers": 72,
+    "pdf_pages": 85,
+    "source_field_matches": 432,
+    "packaged_text_matches_reviewed_pdf": true
+  },
+  "player_checks": {
+    "jsdom_passed": true,
+    "player_variants": 7,
+    "real_browser_playback": false,
+    "limitation": "Local file navigation was blocked by administrator policy; media events/decoding are mocked in jsdom. Actual films have separate successful FFmpeg full-decode receipts."
+  },
+  "repository_tests": {
+    "tools_total": 2012,
+    "tools_passed": 2009,
+    "tools_skipped": 3,
+    "tools_failed": 0,
+    "pipeline_regressions_passed": 17
+  },
+  "delivery_checks": {
+    "passed": true,
+    "report_sha256": "d32d06537ed258f6e35fba7202f5fb597263e7bad5f1bc43d664b5a3a4916b5f",
+    "validation": "Independent CRC, exact membership, member SHA against checked media, UI SHA, relative assets, four-language CC cues, CSV and practice/PDF checks"
+  },
+  "packages": [
+    {
+      "file": "Sunny_Pip_Elementary_Season_01.zip",
+      "bytes": 157454385,
+      "sha256": "c156ea69168f1be3781c443039b472b4d718dc5896a090dd0e866ccc80d8c1ef",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 9029,
+          "sha256": "8e825da4ae2d3180fb4e99601fd262e08b423d42eab8cf0ada66ca62e1bba819"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 53484,
+          "sha256": "1ea8652971e5628783b1e662c476ac7e6c2a0e7d10507b328288fe23dfea21e4"
+        }
+      ],
+      "season": 1
+    },
+    {
+      "file": "Sunny_Pip_Elementary_Season_02.zip",
+      "bytes": 146956441,
+      "sha256": "0ff2bb38cbe159fa29f91203bdd742dac6cd0b8127ac05b37973a2c343077120",
+      "episode_ids": [
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 8022,
+          "sha256": "0ca9bf795439a4b05b47434d1ebc12c08d3f7638d56a042cab96d66935041f0e"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 56164,
+          "sha256": "fdb99eebaf83b1d41048beb2f414e8aa38105e000e9a35005748c24e049e3610"
+        }
+      ],
+      "season": 2
+    },
+    {
+      "file": "Sunny_Pip_Elementary_Season_03.zip",
+      "bytes": 149097930,
+      "sha256": "bd77163adbc52ebca46741b9020f0935e8c474830a098dbdc976e448d7d58edc",
+      "episode_ids": [
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 8551,
+          "sha256": "b2d9a56992d2cd19d045bf8116b44f7e169311c3a84fa5d2d0c05ea24b98d323"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 64448,
+          "sha256": "eb06c5e96b7f2770e1d527c03aca1c30494a828a5e5e6debba982107e93a87ca"
+        }
+      ],
+      "season": 3
+    },
+    {
+      "file": "Sunny_Pip_Elementary_Season_04.zip",
+      "bytes": 148341443,
+      "sha256": "b66a7e902a7bff6c692194ec6099913ad83704b7e6e1f04336a1b8308e202970",
+      "episode_ids": [
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 8531,
+          "sha256": "0a5ec7e3e4df0c38ba3007999d534166312aad7e0fb6722a271b21fe1082c356"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 60902,
+          "sha256": "63b383bbcb3f2973875c965160c99a88043ad5d9136a182ca70318694c018eb1"
+        }
+      ],
+      "season": 4
+    },
+    {
+      "file": "Sunny_Pip_Elementary_Season_05.zip",
+      "bytes": 158793840,
+      "sha256": "63f1ce681ae51adf48dac33ddac6ad0c0825a2c2395b5db2b72cbfd691d23f62",
+      "episode_ids": [
+        "ep49",
+        "ep50",
+        "ep51",
+        "ep52",
+        "ep53",
+        "ep54",
+        "ep55",
+        "ep56",
+        "ep57",
+        "ep58",
+        "ep59",
+        "ep60"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 8904,
+          "sha256": "ed8f345f49de73a35e3d5d3223b2cabf412b4b9392bdcc66d2f7fd5298af1760"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 65406,
+          "sha256": "297f94a3274898a0625a83c755d0106ffd44f8170fc0751475d626f0f0e85f2a"
+        }
+      ],
+      "season": 5
+    },
+    {
+      "file": "Sunny_Pip_Elementary_Season_06.zip",
+      "bytes": 158565336,
+      "sha256": "cd29ad0a638e9b6f5257a0154ca21eba92fe3f3104e29eec12156d165a498d97",
+      "episode_ids": [
+        "ep61",
+        "ep62",
+        "ep63",
+        "ep64",
+        "ep65",
+        "ep66",
+        "ep67",
+        "ep68",
+        "ep69",
+        "ep70",
+        "ep71",
+        "ep72"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 9076,
+          "sha256": "b27fa0bbca3a1fc469250ba53375a7d03649be09b8a49f59ab32bcb08c088429"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 73052,
+          "sha256": "bf3810b86d2e864e09214349a0c78bd42a8aaa12a4c13de12b2ee4d97013a03b"
+        }
+      ],
+      "season": 6
+    },
+    {
+      "file": "Sunny_Pip_Elementary_72_Episodes.zip",
+      "bytes": 918960271,
+      "sha256": "9cae64ae8d9eb0a11386f524b8cd0d0df2968837ac32a5089b499ef21da982b3",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12",
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24",
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36",
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48",
+        "ep49",
+        "ep50",
+        "ep51",
+        "ep52",
+        "ep53",
+        "ep54",
+        "ep55",
+        "ep56",
+        "ep57",
+        "ep58",
+        "ep59",
+        "ep60",
+        "ep61",
+        "ep62",
+        "ep63",
+        "ep64",
+        "ep65",
+        "ep66",
+        "ep67",
+        "ep68",
+        "ep69",
+        "ep70",
+        "ep71",
+        "ep72"
+      ],
+      "episodes": 72,
+      "files": 1229,
+      "video_files": 144,
+      "audio_files": 360,
+      "caption_files": 576,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 72,
+          "bytes": 44038,
+          "sha256": "424710939b272e1210e47c531812770edc0f0f11c6017d28f2e97f216396e92a"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 72,
+          "bytes": 167525,
+          "sha256": "53ca0fc335309c431f019b17b1a27962f5575f93304a9b95339b5bbe93137217"
+        }
+      ]
+    }
+  ],
+  "catalog": {
+    "file": "國小英文72集課程目錄.csv",
+    "rows": 72,
+    "encoding": "UTF-8 BOM",
+    "bytes": 18354,
+    "sha256": "1fde6dbb6ba52be4c1d31f707af36d100f51949a310be496046e4d9623c44677"
+  },
+  "practice_files": [
+    {
+      "file": "Practice.html",
+      "rows": 72,
+      "bytes": 44038,
+      "sha256": "424710939b272e1210e47c531812770edc0f0f11c6017d28f2e97f216396e92a"
+    },
+    {
+      "file": "Practice.pdf",
+      "rows": 72,
+      "bytes": 167525,
+      "sha256": "4854083ca823767761c5348b4c379e1a1d4c4f8e9c400fca6cc6dee7494343d1"
+    }
+  ],
+  "manual_media_samples": [
+    {
+      "episode": "ep17",
+      "time_seconds": 82.808,
+      "frame": "media-preview-ep17-quiz.png",
+      "final_sha256": "8027091f7d1736001aaa3c91e0a7336aa3c90be3a81d6fd512390dafe79c508a",
+      "frame_sha256": "2ca536b33492562fb03370467694e9fd48f39c16145ad53e9a0753505538b7db",
+      "manually_viewed": true,
+      "observation": "Two sentence choices remain neutral before answer reveal; text readable."
+    },
+    {
+      "episode": "ep18",
+      "time_seconds": 95.208,
+      "frame": "media-preview-ep18-count.png",
+      "final_sha256": "1d320b74e92bbfea8de4b33f6aca54ead4f04b05c2d9295d031777d2319a53d1",
+      "frame_sha256": "45af811041c0bd5f00d98bccf27064a1327bc895ab74d277d3b797d1a32a3ab4",
+      "manually_viewed": true,
+      "observation": "Ten equally sized cookies shown in two rows of five; English caption readable."
+    },
+    {
+      "episode": "ep37",
+      "time_seconds": 42.408,
+      "frame": "media-preview-ep37-clock.png",
+      "final_sha256": "9a7d554cc984a9b8e2e8fba5b48477098c270095c4c5554c664d523aa0904038",
+      "frame_sha256": "5e94bb0bbde9134870878b8b27fc0fdfa077e0b24d3f15cf46f6518a7f3ce152",
+      "manually_viewed": true,
+      "observation": "07:30 minute hand points at six, hour hand falls between seven and eight; English half-past-seven sentence matches."
+    },
+    {
+      "episode": "ep66",
+      "time_seconds": 59.848,
+      "frame": "media-preview-ep66-guided.png",
+      "final_sha256": "6dd4dab7c6548d1d04adc816aede46ac25a49978e3d14af2f33299062d13ae3b",
+      "frame_sha256": "db49414e76aab67f0d77e9ca7cc45888849261dab0af7937d77a9e1b1e715455",
+      "manually_viewed": true,
+      "observation": "Both lines of the guided advice sentence remain intact in encoded media; descenders, reading-aid rectangles and response dots do not overlap."
+    },
+    {
+      "episode": "ep69",
+      "time_seconds": 132.24,
+      "frame": "media-preview-ep69-guided.png",
+      "final_sha256": "dd452baab3bd68042b17997b83cc164b21ef16baa9de97f7f2aa6b525a58f7e7",
+      "frame_sha256": "6b90d3780d1c47440df1bfa285cbd7ced1ee7b3a97914c2c4a152c5afdbb38a5",
+      "manually_viewed": true,
+      "observation": "Two-line invitation and reading aids stay legible in the encoded film, with no erased descenders or CC-safe-area intrusion."
+    }
+  ]
+}

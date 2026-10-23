@@ -1,18 +1,23 @@
 ---
 id: 2026-10-11-news-fetcher-is-refused-by-cloudflare
 title: News fetcher is refused by Cloudflare where plain curl from the host is not
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-news-sources
+claimed_at: 2026-10-15T17:09:40Z
 created_at: 2026-10-11T05:23:46Z
 completed_at:
-branch:
+branch: claude/news-sources-red-fix
 depends_on: []
 scope:
   - apps/api/app/news_automation/fetch.py
+  - apps/api/app/news_automation/scanner.py
+  - apps/api/app/news_automation/validation.py
+  - apps/api/app/news_automation/sources.json
   - apps/api/tests/test_news_automation.py
+  - apps/web/components/admin-news-workspace.tsx
+  - apps/web/components/admin-news-workspace.test.tsx
   - docs/news-automation.md
 ---
 
@@ -43,24 +48,24 @@ robots.txt is read as "not permitted" and raises that same error.
 
 ## Definition of done
 
-- [ ] The cause is established, not assumed: the same request the fetcher sends is
+- [x] The cause is established, not assumed: the same request the fetcher sends is
       reproduced from the host (pinned IP, `Host` header, SNI, the fetcher's headers and
       TLS context) and compared with the plain request, for CFTC and for one of the
       Anthropic hosts.
-- [ ] Either the fetcher reaches those publishers again without giving up the rebinding
+- [x] Either the fetcher reaches those publishers again without giving up the rebinding
       protection, or the reason it cannot is written here with what would have to change.
-- [ ] CFTC press releases scans again, or is switched off with the reason in its note.
-- [ ] The five sources refused on 2026-10-11 are tried again once the cause is known.
+- [x] CFTC press releases scans again, or is switched off with the reason in its note.
+- [x] The five sources refused on 2026-10-11 are tried again once the cause is known.
 
 ## Steps
 
-- [ ] Reproduce on the host inside the api container, one request per variant: by name;
+- [x] Reproduce on the host inside the api container, one request per variant: by name;
       pinned IP with `Host` and SNI; with and without the `Accept` list; HTTP/1.1 against
       HTTP/2. Record status and the `cf-ray` / `server` headers.
-- [ ] If the pinned request is what is refused: keep the validation of the resolved
+- [x] If the pinned request is what is refused: keep the validation of the resolved
       addresses but connect by name through a transport that pins the address (a custom
       resolver or connection pool), so the request line and TLS look ordinary.
-- [ ] A test with a fake transport for the chosen shape; the existing SSRF tests keep
+- [x] A test with a fake transport for the chosen shape; the existing SSRF tests keep
       passing.
 - [ ] Rerun `sources_cli` on the host (dry run, then apply, with the owner's go-ahead).
 
@@ -148,3 +153,34 @@ scan and `consecutive_failures` back at 0.
   (`2026-10-06-daily-summary-of-stuck-news-sources`).
 - Do not weaken the checks to make it pass: HTTPS only, public addresses only, the host
   allow-list and robots.txt stay.
+
+## 2026-10-16: fixed (claude-opus-5-5-news-sources, owner asked to fix every red source)
+
+The owner asked to fix every news source shown in red on `/admin/news?tab=sources`. Read-only
+production state at 2026-10-15 17:00Z: two enabled sources failing every hour (CFTC 211 in a
+row, GitHub blog 22) and nine disabled with `validation_failed`. Each was run through the real
+`validate_source_configuration` inside the news-worker with every HTTP hop logged:
+
+| Source | Cause | Fix |
+| --- | --- | --- |
+| CFTC press releases | Cloudflare challenges httpx's ALPN offer (403 `cf-mitigated: challenge`); without the offer the pinned request answers 200 for the feed and a release page | `fetch._NoAlpnContext`: `tls_context()` ignores `set_alpn_protocols`; pinning, Host/SNI, certificate checks unchanged |
+| GitHub blog | full-text feed 2.3 MB > 2 MB cap | source config `max_response_bytes` (listing only, capped at 8 MB); GitHub set to 6 MB |
+| Mistral AI news | feed served as `text/plain` | `text/plain` whose body is XML is read as `application/xml` |
+| MODA, NSTC | robots.txt 404 read as "not permitted" | RFC 9309: a 4xx other than 429 restricts nothing |
+| Central bank | /robots.txt redirects to the home page (HTML), read as "not permitted" | a redirect that lands on no robots file = no robots.txt |
+| FSC (crypto) | no crypto title on the listing this week ("no entries"), and the first item links to sfb.gov.tw | validation checks the titles the keyword filter set aside, and only entries on the source's own site (as the scanner does) |
+| Ars Technica AI | robots 405 fixed by the RFC rule, but every article page answers 405 (AWS ELB) to curl and a browser UA from the host | disabled in `sources.json` with the reason |
+| OpenAI News, The Block | every article page answers 403 with a Cloudflare challenge to curl and a browser UA too | stay disabled (OpenAI now `enabled: false` in the file) |
+
+The branch's `fetch.py`, `validation.py` and `sources.json` were loaded into one process in the
+news-worker (nothing on disk changed, no database write) and validated all ten: CFTC, GitHub
+blog, MODA, FSC, central bank, NSTC and Mistral pass; Ars, OpenAI News and The Block fail on
+their article pages as above. No browser impersonation was added: the User-Agent stays
+`Mokaair-editorial/1.0`, robots.txt is still honoured.
+
+Also: `/admin/news` showed every `last_error` in red, so a successful scan's note (DeepMind
+"Left out 11 feed entries older than 72 hours") looked like a failure. Only `failed`,
+`validation_failed`, `stuck` and `partial` are red now.
+
+Left after merge: deploy, then `sources_cli` dry run and `--apply` on the host with the owner's
+go-ahead (it validates and re-enables the seven), then check `/admin/news?tab=sources`.

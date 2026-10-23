@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "kind": "junior-high-renderer-art-checks",
+  "status": "passed",
+  "checked_at_utc": "2026-10-08T03:05:02+00:00",
+  "source": {
+    "path": "docs/videos/english-junior-high-complete/lessons.json",
+    "sha256": "f499f5313c32246f397f0b525574047c525c978d2ae21b5d614a962822c320eb",
+    "episodes": 72,
+    "scenes": 720
+  },
+  "season_sha256": {
+    "season01.json": "8c40ddac7acd50563408345bda2d93e3181859112864515721fa804be21ffbf2",
+    "season02.json": "d9c903a787d87bc6c32bdfd659996285e0e1615ec0dbcb6aa41de15d3ce4a79d",
+    "season03.json": "910d4d717956c0a8b85a7bd7ab572b6c747d90d97a4b841a423723a0bfa5bccf",
+    "season04.json": "0eff2d2538db4f5afa2a1bf196434e60a96a210d6206ee392e4ae4bf0d771a65",
+    "season05.json": "b9a1fcd2cb42f303bc197917e64c3c3976baecb58038a61c2e4c2e51f82ddf3e",
+    "season06.json": "b56c0781eb4e9229661ea4a8076da8f84405559fceeb93cfbd77c61694807086"
+  },
+  "renderer": {
+    "profile": "sunny-pip-junior-high-v1",
+    "version": 1,
+    "pillow_version": "12.1.1.post0",
+    "dependencies_sha256": {
+      "junior_high/visuals.py": "c427fef127fdd5cc1d0bcba46d7dbb43acaa98e3980be9dcac5e92b8794f69b3",
+      "junior_high/objects.py": "6c3d8b865985378207422d1cee83dcede588262de4811795bb6be05198442a0d",
+      "junior_high/profile.py": "4a4f82683e1b619e0b1d96e3ad6577ee7c29423bfb06f46837fef1db4359be5c",
+      "junior_high/shared.py": "b6a9a989aeb3f0a4788ac3bef914f4848970025377eca92709afe31ea58be1b6",
+      "elementary_series/visuals.py": "278611605bccc72a4d25a21d079f48aa05532959df844290efc933007e139a5c",
+      "elementary_series/objects.py": "f07f5ba5d8aa7b4722c7dc58adc773dd2fc5ad03b533b982d29d9e4859e07f47",
+      "elementary_series/profile.py": "286556a479d59b312a60659b7134e2a8d1e181f1819bba641c3ea702f4832ebc",
+      "elementary_series/shared.py": "1e84f853d16783d1ebb162ef1c8578b5eb2e587b260666f007529230a31e0f93",
+      "elementary/visuals.py": "faca79119f20fbddb17df79f101d2b5a7836a1784f8f01155501b44469550ac7",
+      "elementary/objects.py": "eb943f8078fc33b8bdd8ff318592f14418772e0e6cb3507d4156182eb8577b73",
+      "elementary/profile.py": "1869c69da66eecb4a1b581b4c20166495e96024266f361dda203141a8fa609b0",
+      "elementary/shared.py": "ba14f8222c157fd6fb9c3bb14eeec4159840af56985ec9a2fe572eb439dc1c02",
+      "preschool/visuals.py": "a2d69a628cc6f4189a3834ef979aaa5284b8029ce89c912c8f024198670a5316",
+      "preschool/objects.py": "00edbf2502567c33c44d8381a1ea3eaee321d2604aedfb4fda317a3b7e97ceec",
+      "preschool/build.py": "a1626a698e6f799cb2b270dcbecd5d575587b273a8fc0b69817efbca81481496",
+      "preschool/audio.py": "9902f71cf269132a08eda7080eb85fab53745e72278a52f83e30f233f164da11",
+      "fonts/DejaVuSans.ttf": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "fonts/DejaVuSans-Bold.ttf": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    }
+  },
+  "checker": {
+    "path": "tools/video/junior_high/art_qa.py",
+    "sha256": "b28968b46f99f7601abb155856b3d47969d05591f4d5ec2142a90b0f47262a25"
+  },
+  "checks": {
+    "scene_phase_frames": 2160,
+    "frame_dimensions": [
+      1280,
+      720
+    ],
+    "plain_caption_reserve": {
+      "top_px": 630,
+      "height_px": 90
+    },
+    "quiz_answer_invariance_scenes": 216,
+    "quiz_invariance_scope": "Instruction and waiting phases; target, visual, demo, English, instruction, guided-reading, speaker and translation mutations.",
+    "guided_glyph_mask_scenes": 144,
+    "glyph_overflow_failures": 0,
+    "minimum_measured_font_px": 28,
+    "minimum_measured_ink_gap_px": 9.0,
+    "maximum_measured_line_count": 5,
+    "negative_control": {
+      "detected": true,
+      "erased_glyph_core_pixels": 1261
+    },
+    "legacy_tokens": 92,
+    "picture_choice_bounds_cases": 404,
+    "cache_matches_uncached_phases": true,
+    "failures": []
+  },
+  "manual_frame_review": {
+    "reviewer": "coordinating agent",
+    "episode": "ep01",
+    "phases": [
+      "guided reading",
+      "quiz waiting",
+      "quiz reveal"
+    ],
+    "result": "Clear text and safe layout.",
+    "scope": "Selected rendered frames; not a full-video viewing claim."
+  },
+  "detailed_report_sha256": "feaf5672aae4e6a5c24e2d4ce488fd4825739f93498341d169e3eda873c949dd"
+}

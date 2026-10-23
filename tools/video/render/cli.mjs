@@ -15,6 +15,11 @@
 // frames manifest for this very script, adds only thumbnail_locales and thumbnail_locale_gaps to
 // it, and leaves the slide states, their cache, thumbnail.jpg, the variants and the contact sheet
 // as they are, so nothing the approved final.mp4 was cut from is drawn again.
+//
+// The channel mark (docs/videos/WATERMARK.md) is decided here, once: a video drawn for the first
+// time carries the current mark in the corner of every card, the manifest names it for assemble
+// to lay over the shots, and watermark.json pins it. A cut that existed before stays unmarked;
+// --adopt-watermark gives an unapproved one the mark.
 import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -25,11 +30,12 @@ import { burnIn, hasPictures, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
+import { pinWatermark, selectWatermarkForRender, watermarkRecord } from "../core/watermark.mjs";
 import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
-import { openRenderer, RendererError } from "./browser.mjs";
+import { maxTransitionFrames, openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { TARGET_LOCALES } from "../core/schema.mjs";
 import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
 import { BrowserMissing } from "../screencast/browser.mjs";
@@ -43,6 +49,32 @@ const CACHE_FILE = path.join("frames", "cache.json");
 
 function print(out, label, problems) {
   for (const problem of problems) out.write(`${label} ${problem.path}: ${problem.message}\n`);
+}
+
+/**
+ * The transition frames a cached state plays, in order: a list of files, where a frame identical
+ * to the one before it names that file again (a terminal typed at a human pace holds each key
+ * for two or three frames, so its 360 frames are far fewer PNGs; assemble's layoutScenes plays a
+ * file as often as it is listed), or, from a cache written before 2026-10-21, a count of files
+ * named in order.
+ */
+export const transitionFiles = (key, entry) => (Array.isArray(entry.transition) ? entry.transition : Array.from({ length: entry.transition }, (_, index) => transitionFile(key, index)));
+
+/** Write a state's transition frames, skipping one that repeats the frame before it; returns the files to play. */
+function writeTransition(workdir, key, frames) {
+  const files = [];
+  let previous = null;
+  frames.forEach((frame, index) => {
+    if (previous && Buffer.from(frame).equals(Buffer.from(previous.bytes))) {
+      files.push(previous.file);
+      return;
+    }
+    const file = transitionFile(key, index);
+    writeFileSync(path.join(workdir, file), frame);
+    previous = { bytes: frame, file };
+    files.push(file);
+  });
+  return files;
 }
 
 const glyphList = (missing) => missing.map((char) => `"${char}" U+${char.codePointAt(0).toString(16).toUpperCase()}`).join(", ");
@@ -172,7 +204,7 @@ async function drawLocalized(renderer, localized, workdir) {
     writeFileSync(path.join(workdir, own.file), thumb.still);
     localized.drawn[own.locale] = { file: own.file, hash: own.hash };
   }
-  for (const locale of LOCALES) {
+  for (const locale of TARGET_LOCALES) {
     const file = path.join(workdir, localeThumbnailFile(locale));
     if (!localized.drawn[locale] && existsSync(file)) rmSync(file);
   }
@@ -253,7 +285,7 @@ export async function run(command, args, ctx) {
     // --recapture takes the screencast scenes' pages again; --profile points their browser at a
     // persistent profile the owner signed in to himself (agents never pass it). --thumbnails-only
     // draws the language thumbnails alone (thumbnailsOnly).
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" }, recapture: { type: "boolean" }, profile: { type: "string" }, "thumbnails-only": { type: "boolean" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" }, recapture: { type: "boolean" }, profile: { type: "string" }, "thumbnails-only": { type: "boolean" }, "adopt-watermark": { type: "boolean" } },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("render needs --slug (or --file for an example outside docs/videos)");
@@ -318,7 +350,8 @@ export async function run(command, args, ctx) {
   }
   // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations, workdir });
+  const mark = selectWatermarkForRender({ doc, workdir, adopt: values["adopt-watermark"] ?? false });
+  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations, workdir, watermark: mark });
   const undrawn = undrawnSubject(plan, { compilation });
   if (undrawn) {
     ctx.stderr.write(`${undrawn}\n`);
@@ -361,16 +394,15 @@ export async function run(command, args, ctx) {
       }
       for (const state of scene.states) {
         const known = cache[state.key];
-        const files = known ? [stillFile(state.key), ...Array.from({ length: known.transition }, (_, index) => transitionFile(state.key, index))] : [];
+        const files = known ? [stillFile(state.key), ...transitionFiles(state.key, known)] : [];
         if (known && files.every((file) => existsSync(path.join(workdir, file)))) {
           reused += 1;
           continue;
         }
-        const shot = await renderer.capture(state.key, state.html, { transition: true });
+        const shot = await renderer.capture(state.key, state.html, { transition: true, maxFrames: maxTransitionFrames(scene.template) });
         for (const problem of shot.problems) layout.push({ path: `${scene.id} state ${scene.states.indexOf(state)}`, message: problem });
         writeFileSync(path.join(workdir, stillFile(state.key)), shot.still);
-        shot.frames.forEach((frame, index) => writeFileSync(path.join(workdir, transitionFile(state.key, index)), frame));
-        cache[state.key] = { transition: shot.frames.length, problems: shot.problems };
+        cache[state.key] = { transition: writeTransition(workdir, state.key, shot.frames), problems: shot.problems };
         drawn += 1;
       }
       atomicWrite(cacheFile, `${JSON.stringify(cache)}\n`);
@@ -448,9 +480,13 @@ export async function run(command, args, ctx) {
       states: scene.states.map((state) => ({
         reveal: state.reveal,
         still: stillFile(state.key),
-        transition: Array.from({ length: cache[state.key].transition }, (_, index) => transitionFile(state.key, index)),
+        transition: transitionFiles(state.key, cache[state.key]),
       })),
+      // Whether the card's own frames carry the channel mark; a shot never does.
+      ...(scene.marked === undefined ? {} : { marked: scene.marked }),
     })),
+    // The channel mark these frames were drawn with: assemble lays the same one over the shots.
+    ...(mark ? { watermark: watermarkRecord(mark) } : {}),
     thumbnail: plan.thumbnail ? THUMBNAIL_FILE : null,
     // B and C for YouTube's "Test & compare", when video.json has them; A is `thumbnail`.
     ...(plan.thumbnail?.variants ? { thumbnail_variants: plan.thumbnail.variants.map((variant) => variant.file) } : {}),
@@ -472,6 +508,7 @@ export async function run(command, args, ctx) {
       : {}),
   };
   atomicWrite(path.join(workdir, ARTIFACTS.frames), `${JSON.stringify(manifest, null, 2)}\n`);
+  pinWatermark(workdir, mark, ctx.now());
   const strips = subtitles ? subtitles.strips.length : 0;
   recordStage(workdir, "render", { states: drawn + reused, drawn, reused, strips, seconds, channel: channel ?? "bundled chromium" }, ctx.now());
   const sheet = tiles.length ? `; contact sheet: ${path.join(workdir, ARTIFACTS.contactSheet)}` : "";

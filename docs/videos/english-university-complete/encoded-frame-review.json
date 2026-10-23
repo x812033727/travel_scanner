@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "kind": "adult-english-encoded-frame-review",
+  "course": "university",
+  "status": "passed",
+  "completed_at_utc": "2026-10-08T06:57:52+00:00",
+  "source": {
+    "path": "docs/videos/english-university-complete/lessons.json",
+    "sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4"
+  },
+  "art_check_summary_sha256": "eb9ac38a7d1e3c8c31b05e2364cd2f17f1b37de1f1466e52d45a9dd171a7991e",
+  "artifact_paths_relative_to": "course output directory",
+  "reviewer": "adult-English artwork assistant",
+  "scope": {
+    "episodes": [
+      "ep01",
+      "ep12",
+      "ep24",
+      "ep25",
+      "ep36",
+      "ep48"
+    ],
+    "decoded_frames_inspected": 18,
+    "method": "FFmpeg extraction from completed final.mp4 files, followed by direct assistant inspection with view_image.",
+    "selection": "One guided-repeat frame and one waiting/reveal pair per episode. A appears in ep01/ep25, B in ep12/ep36, and C in ep24/ep48.",
+    "timing_basis": "Resolved scene start, demo_start, demo_end and reveal_at values; waiting samples fall inside the response interval.",
+    "full_video_viewing": false,
+    "audio_listening": false,
+    "caption_assessment": "The reserved lower 90 pixels were inspected. Optional CC overlays were not rendered into these PNG samples."
+  },
+  "criteria": [
+    "Embedded English is legible and complete, including descenders, punctuation and guided word backgrounds.",
+    "The waiting snapshot leaves all options neutral; the later snapshot highlights the correct option and prints the answer.",
+    "Course branding and season/stage headers match the source.",
+    "Learning text and artwork remain above the reserved optional-CC area."
+  ],
+  "source_binding": "Some samples were extracted while only a frozen season was available. Every sampled authored episode and its resolved counterpart were revalidated against the final merged source for this report.",
+  "episode_receipt_sha256": {
+    "ep01": "d51dd09cd5968a1acc9708918253f7c515b7c805be8660dcb777d1a332488c79",
+    "ep12": "b13663d206e0084102d3b0b5e241839b652b1f9b14b789b957f7b78fb77b4e5d",
+    "ep24": "47f36647986b0b6677c092188721cdca94c92a20fd544f4beeb161b79538fa06",
+    "ep25": "080e6702aaf3747ac470ce83e7d2be3c3ca28aaaada5913d252819c6fdc2087a",
+    "ep36": "36fd5670836d043c4cae9ebbfcf1e79a7cd1570e5e68f05edf2cf5b4507f3eaa",
+    "ep48": "557a94030cf20599b6130469032c6a2ed0e052b3be4d1430ff72eb7b42e6799e"
+  },
+  "episodes": [
+    {
+      "course": "university",
+      "episode": "ep01",
+      "title_en": "Reading an Assignment Brief",
+      "video": "ep01/final.mp4",
+      "video_sha256": "3f5237066c9b915841e8fb5fbf574a0d8bb0e6b073521b208043bb68bc092ecb",
+      "checks_sha256": "1733036f22872acf7402a66b894bd1fead314bd1e19edd2473477f408c7484cf",
+      "authored_source": "docs/videos/english-university-complete/lessons.json",
+      "authored_source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+      "authored_episode_sha256": "9b3c6e1d4fdc17b9cbbfae0fa5d10a20775f35e13b700f573166f52045fa9064",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "8d029fb275407e3bdde10a3f0439d9173dc88db3e6e22dc5a7fdcb236da00108",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "a20e3d945cb918dd64e367c3343244cbf37fec1b8b36acaa88a458d154afceae",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:21:15+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep01-s04",
+          "video_seconds_requested": 73.718,
+          "scene_local_seconds": 6.518,
+          "scene_start_seconds": 67.2,
+          "demo_start_seconds": 5.768,
+          "demo_end_seconds": 11.0,
+          "reveal_at_seconds": 16.0,
+          "image": "encoded-qa/ep01-guided.png",
+          "image_sha256": "1f3abda1aaaf576393e1de7c77aae19578842a11a6ff94e6fc08c2a35b4cd5a7",
+          "expected_english": "I will judge each option using access and maintenance as criteria.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 101.112,
+          "scene_local_seconds": 12.08,
+          "scene_start_seconds": 89.032,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.08,
+          "reveal_at_seconds": 15.08,
+          "image": "encoded-qa/ep01-quiz-wait.png",
+          "image_sha256": "3c1edb3f60397587782203e795e997fa33422bd7227755657103c46477fbb3be",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Our audience needs a recommendation, not a general description.",
+            "The brief asks us to evaluate one courtyard proposal.",
+            "A useful plan connects the audience, criteria, and required evidence."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 104.712,
+          "scene_local_seconds": 15.68,
+          "scene_start_seconds": 89.032,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.08,
+          "reveal_at_seconds": 15.08,
+          "image": "encoded-qa/ep01-quiz-reveal.png",
+          "image_sha256": "434c91109901ab50225e63ac7c10664b7885e0939723513356d40a5b5bfa5527",
+          "expected_english": "Our audience needs a recommendation, not a general description.",
+          "expected_choices": [
+            "Our audience needs a recommendation, not a general description.",
+            "The brief asks us to evaluate one courtyard proposal.",
+            "A useful plan connects the audience, criteria, and required evidence."
+          ],
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:21:34+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "university",
+      "episode": "ep12",
+      "title_en": "From Seminar Discussion to Follow-Up Email",
+      "video": "ep12/final.mp4",
+      "video_sha256": "affdcd8af14dd4fd8560cbcede3d3dedcecae99f42aa3dfd2f133f6b08e4373a",
+      "checks_sha256": "c04fc916e5b1f6805fabfbe8b6ab3eb6bde67e709ab1f1bec542ba4ef2d59372",
+      "authored_source": "docs/videos/english-university-complete/lessons.json",
+      "authored_source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+      "authored_episode_sha256": "8023a50c0e123cfdd89fc05e74298e32b699c3b4752e565fa369ac5ff99d5583",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "321bc425b9285bc7eff81fe4a9a1fcae3ae6d78a41ba4d24612e18ab31636530",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "465a6e9dbeb5fcbb5b46e14c6472093d45500208b7ed96c2fab4bb1d9b5e2091",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:29:47+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep12-s04",
+          "video_seconds_requested": 81.926,
+          "scene_local_seconds": 6.518,
+          "scene_start_seconds": 75.408,
+          "demo_start_seconds": 5.768,
+          "demo_end_seconds": 11.36,
+          "reveal_at_seconds": 16.36,
+          "image": "encoded-qa/ep12-guided.png",
+          "image_sha256": "f7c88456a15537954b32b1d164ac6134569d24f090ddee910c643620275458cd",
+          "expected_english": "May I include observations of spoken explanations if I state their limits?",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep12-s07",
+          "video_seconds_requested": 153.84,
+          "scene_local_seconds": 11.864,
+          "scene_start_seconds": 141.976,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.864,
+          "reveal_at_seconds": 14.864,
+          "image": "encoded-qa/ep12-quiz-wait.png",
+          "image_sha256": "577d5e7789139abde7b513b5719a0ac3a55416b18eb6705362e202f315fd2b2d",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Translated labels support access, but they are only one communication channel.",
+            "I will organize the written materials while awaiting confirmation.",
+            "Evidence, qualified claims, and focused questions guide my next revision."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep12-s07",
+          "video_seconds_requested": 157.44,
+          "scene_local_seconds": 15.464,
+          "scene_start_seconds": 141.976,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.864,
+          "reveal_at_seconds": 14.864,
+          "image": "encoded-qa/ep12-quiz-reveal.png",
+          "image_sha256": "90b5d179ff73aedc30e380b5a249d27543b01c5777ad2b622e05361b61a941fb",
+          "expected_english": "I will organize the written materials while awaiting confirmation.",
+          "expected_choices": [
+            "Translated labels support access, but they are only one communication channel.",
+            "I will organize the written materials while awaiting confirmation.",
+            "Evidence, qualified claims, and focused questions guide my next revision."
+          ],
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:30:18+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "university",
+      "episode": "ep24",
+      "title_en": "Writing a Mini Literature Review",
+      "video": "ep24/final.mp4",
+      "video_sha256": "8af57e2562dc92c6efd40a819d0fce5397b6fa927a405e64a3c15eeec0165c5a",
+      "checks_sha256": "500d82becb67976ca06c55392435e900b5a683862112a005bd4ecd0d103c5d55",
+      "authored_source": "docs/videos/english-university-complete/lessons.json",
+      "authored_source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+      "authored_episode_sha256": "d9b8209d32a6dcbc3adea915156b6b6ca56468cc91a56a2cb823d858315b13d6",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "632057e3e4f6e43168610061ad833fb17caccdd505953ad3d1434cc5f433ee5e",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "dc4bea8ead06fd3960c61a6a51b45c98efaca73fbc9b711422397f522ed116cd",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:46:49+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep24-s04",
+          "video_seconds_requested": 85.262,
+          "scene_local_seconds": 6.518,
+          "scene_start_seconds": 78.744,
+          "demo_start_seconds": 5.768,
+          "demo_end_seconds": 12.464,
+          "reveal_at_seconds": 17.464,
+          "image": "encoded-qa/ep24-guided.png",
+          "image_sha256": "004980d5d10958d8b77c08208b98928c869e0608b3bd6cbb29ec8eeff926a5f7",
+          "expected_english": "We still need evidence connecting checklist use with complete and approachable demonstrations.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 215.784,
+          "scene_local_seconds": 13.4,
+          "scene_start_seconds": 202.384,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.4,
+          "reveal_at_seconds": 16.4,
+          "image": "encoded-qa/ep24-quiz-wait.png",
+          "image_sha256": "1c2fee5d0fac8b6b8ca0475445cff896bd6bff5dce1c599618e1c9a9c119c27c",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "These fictional training sources examine peer orientation from different perspectives.",
+            "A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+            "I will identify these materials as fictional rather than imply real published research."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 219.384,
+          "scene_local_seconds": 17.0,
+          "scene_start_seconds": 202.384,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.4,
+          "reveal_at_seconds": 16.4,
+          "image": "encoded-qa/ep24-quiz-reveal.png",
+          "image_sha256": "fb0f9a856c9e52cf3b2ff757213f2660a6b9bc1b8f4dc4fd6973118f31748275",
+          "expected_english": "I will identify these materials as fictional rather than imply real published research.",
+          "expected_choices": [
+            "These fictional training sources examine peer orientation from different perspectives.",
+            "A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+            "I will identify these materials as fictional rather than imply real published research."
+          ],
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:47:18+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "university",
+      "episode": "ep25",
+      "title_en": "Defining a Project Boundary",
+      "video": "ep25/final.mp4",
+      "video_sha256": "1e0d3a3580d5df2f65ebd269bf934a3ab0d8d1852babd42c4953bd2df0158f77",
+      "checks_sha256": "563369ccc11f411544daaf5c2a068be8d371f5f508f3c69300098e9221dff01a",
+      "authored_source": "docs/videos/english-university-complete/season03.json",
+      "authored_source_sha256": "5713e388c363874572639c1e8722bf7b83a95e3bd087b6f40a4c660744617604",
+      "authored_episode_sha256": "0f017586922d6b026d82c6d40eea055d7bb62cbca02473d9c2077dcf4eb19034",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "3ed466ecfbe4d133fa95a80f11929aef19a4d27d0da0d7d2b71956bc8c253793",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "f2515ac529a87b64a4bf6dda0e87f5ce8982c1d5f108bdf6a1490b194c348388",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T05:59:22+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep25-s04",
+          "video_seconds_requested": 77.63,
+          "scene_local_seconds": 8.006,
+          "scene_start_seconds": 69.624,
+          "demo_start_seconds": 7.256,
+          "demo_end_seconds": 12.512,
+          "reveal_at_seconds": 17.512,
+          "image": "encoded-qa/ep25-guided.png",
+          "image_sha256": "21d520797b14e9a47c3b29d0dbe5b30e07409cdba45b144cdad15949399a17d6",
+          "expected_english": "We will deliver a process map, not a replacement booking system.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep25-s09",
+          "video_seconds_requested": 194.688,
+          "scene_local_seconds": 11.864,
+          "scene_start_seconds": 182.824,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.864,
+          "reveal_at_seconds": 14.864,
+          "image": "encoded-qa/ep25-quiz-wait.png",
+          "image_sha256": "224fbba09933492bde54799350a095619991e35aaf2fc1dfb4d881f739f81c52",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Requests for software development belong in a later proposal.",
+            "Our fictional project examines how students find available laboratory equipment.",
+            "We will deliver a process map, not a replacement booking system."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep25-s09",
+          "video_seconds_requested": 198.288,
+          "scene_local_seconds": 15.464,
+          "scene_start_seconds": 182.824,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.864,
+          "reveal_at_seconds": 14.864,
+          "image": "encoded-qa/ep25-quiz-reveal.png",
+          "image_sha256": "77bcd775bf07b7afdffddffc7a0d822f48495c6f5ade353d3bcb88fbc99b1720",
+          "expected_english": "Requests for software development belong in a later proposal.",
+          "expected_choices": [
+            "Requests for software development belong in a later proposal.",
+            "Our fictional project examines how students find available laboratory equipment.",
+            "We will deliver a process map, not a replacement booking system."
+          ],
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T05:59:45+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "university",
+      "episode": "ep36",
+      "title_en": "An Integrated Research Brief",
+      "video": "ep36/final.mp4",
+      "video_sha256": "700e0532f062386ff7d075595c083ddc8584680266eaa6dc733b39038b59f851",
+      "checks_sha256": "e256fe35e8b61efb89d60d776cbacda2a3bd83cb5ae3cd1b40d7f60ed10c4d24",
+      "authored_source": "docs/videos/english-university-complete/lessons.json",
+      "authored_source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+      "authored_episode_sha256": "6a9b5f1bc52bc415832e5a7904dda953780f18feb41aab673e392184cd6ecfd9",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "55dea7bdc45ed264feebf800fa272020188707d589af45d55b857b419edaf0e8",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "20f5bb939f1d1b14fcad672fa935ccf86f14f5066bc0d2c6a12544e60816a1a3",
+      "completion_basis": "READY marker in the preceding completed seasonal batch log, with matching current full-decode receipt; the full-course batch subsequently reset current status.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:12:46+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep36-s04",
+          "video_seconds_requested": 80.51,
+          "scene_local_seconds": 8.126,
+          "scene_start_seconds": 72.384,
+          "demo_start_seconds": 7.376,
+          "demo_end_seconds": 13.184,
+          "reveal_at_seconds": 18.184,
+          "image": "encoded-qa/ep36-guided.png",
+          "image_sha256": "97e671402d0731ce42f889ab0c50a56731ce7857d2596cdd614983da03e66cd0",
+          "expected_english": "We combined route observations with short explanations from willing visitors.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 153.144,
+          "scene_local_seconds": 13.256,
+          "scene_start_seconds": 139.888,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.256,
+          "reveal_at_seconds": 16.256,
+          "image": "encoded-qa/ep36-quiz-wait.png",
+          "image_sha256": "2d5f70f4b5c6a60121462f9f4442c2aba7fcc3760affcf79118567876f880ae8",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Our fictional brief asks where visitors lose track of an exhibition route.",
+            "Confusion occurred near the exit, but observations covered only the opening session.",
+            "We combined route observations with short explanations from willing visitors."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 156.744,
+          "scene_local_seconds": 16.856,
+          "scene_start_seconds": 139.888,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.256,
+          "reveal_at_seconds": 16.256,
+          "image": "encoded-qa/ep36-quiz-reveal.png",
+          "image_sha256": "511f1488a061ecaefe1b732fdca328e2d577d8d1e1537c15c72edc1eef035364",
+          "expected_english": "Confusion occurred near the exit, but observations covered only the opening session.",
+          "expected_choices": [
+            "Our fictional brief asks where visitors lose track of an exhibition route.",
+            "Confusion occurred near the exit, but observations covered only the opening session.",
+            "We combined route observations with short explanations from willing visitors."
+          ],
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:13:11+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "completed_batch_log": "encoded-qa/ep36-completed-batch.log",
+      "completed_batch_log_sha256": "e4e81bf31158eeb03a473693f11072a06664b24da9dc225f9bfb2a1952798f05",
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "university",
+      "episode": "ep48",
+      "title_en": "Communicating a Final Project",
+      "video": "ep48/final.mp4",
+      "video_sha256": "f99542d7a92c48a0e08865d234820f8a2f6cab99be5879865fa3f4cddaae6a73",
+      "checks_sha256": "184043641005b4b3611aa832cc46b74f7956791e604a55c79acc7abb570e7e18",
+      "authored_source": "docs/videos/english-university-complete/lessons.json",
+      "authored_source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+      "authored_episode_sha256": "44fd311d8ba5c56fb75d79cdb85e1f088719c57416742c2d64729c3c1c2f30d6",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "0073ca27c698dc3123922c2321272e296009db5e6fe741473a5582d155ec6aa4",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "e6fa6edae447baaa644c67bb43499c6ff08e4fdf44700b006775ae8239125d90",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:57:21+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep48-s04",
+          "video_seconds_requested": 83.822,
+          "scene_local_seconds": 7.214,
+          "scene_start_seconds": 76.608,
+          "demo_start_seconds": 6.464,
+          "demo_end_seconds": 13.688,
+          "reveal_at_seconds": 18.688,
+          "image": "encoded-qa/ep48-guided.png",
+          "image_sha256": "d18e8cc899abf0ef1f0cad7c73074546909b04766a4c84d5414ab0e64cb1c8f1",
+          "expected_english": "The abstract summarizes the evidence; the presentation explains why the distinction matters.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 212.688,
+          "scene_local_seconds": 13.544,
+          "scene_start_seconds": 199.144,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.544,
+          "reveal_at_seconds": 16.544,
+          "image": "encoded-qa/ep48-quiz-wait.png",
+          "image_sha256": "d2597fde95f3ce5fe9c70c97a6764d8377b8a6ea871b1a85b750cd75e94ea4e7",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Our fictional final project connects an archive search problem with a testable labeling proposal.",
+            "The abstract summarizes the evidence; the presentation explains why the distinction matters.",
+            "Our next step is to test whether readers distinguish collections from individual documents."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 216.288,
+          "scene_local_seconds": 17.144,
+          "scene_start_seconds": 199.144,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.544,
+          "reveal_at_seconds": 16.544,
+          "image": "encoded-qa/ep48-quiz-reveal.png",
+          "image_sha256": "94fea95f14b7307b6e0db03c70e34876ef474862b03d0db7d65c7ae8506b98e7",
+          "expected_english": "Our next step is to test whether readers distinguish collections from individual documents.",
+          "expected_choices": [
+            "Our fictional final project connects an archive search problem with a testable labeling proposal.",
+            "The abstract summarizes the evidence; the presentation explains why the distinction matters.",
+            "Our next step is to test whether readers distinguish collections from individual documents."
+          ],
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:57:52+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The UNIVERSITY brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    }
+  ]
+}

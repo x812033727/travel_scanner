@@ -11,6 +11,7 @@ import { parseSrt } from "./captions.mjs";
 import { lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { animeRuntimeProof } from "./duration.mjs";
 import { dramaFixture, fixture, fixtureLexicon, sandbox, storyFixture, writeAudioFixture } from "./fixtures/load.mjs";
+import { NARRATIVE_PANEL, narrativeRecord, panelVerdict } from "./narrative.mjs";
 import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
@@ -259,6 +260,29 @@ test("status walks the checklist and names the next command", async () => {
   const next = await status();
   assert.equal(next.id, "frames rendered");
   assert.match(next.todo, /cli\.mjs render --slug fixture-minimal/);
+});
+
+test("status marks an old narrative PASS stale without reopening a paid checklist step", async (t) => {
+  const box = sandbox();
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const verdict = panelVerdict({ answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: true, evidence: "[q1ex] 有人做了一件事。",
+  })) });
+  const current = narrativeRecord(doc, verdict, 1);
+  const file = path.join(box.workdir, "review", "narrative.json");
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, JSON.stringify(current));
+  const read = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const passed = await read();
+  assert.equal(passed.narrative.status, "passed");
+
+  const legacy = { ...current };
+  delete legacy.panel_rules_sha256;
+  writeFileSync(file, JSON.stringify(legacy));
+  const stale = await read();
+  assert.equal(stale.narrative.status, "stale");
+  assert.equal(stale.next?.id, passed.next?.id, "a read-only status must not reopen paid work");
 });
 
 test("editing the script after synthesis makes the narration stale again", async () => {

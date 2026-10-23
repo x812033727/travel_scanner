@@ -24,7 +24,7 @@ import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { confirmedVideo, DECIDED_AT, languageSite, tool, toolContext } from "./language-contract.mjs";
 import { AutomationError, RUN_UNCERTAIN } from "../automation/client.mjs";
-import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems, WORKER_STATE_FILE } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -239,6 +239,28 @@ test("review-push --gate outline asks Jev first and sends the pick with the brie
   assert.equal(revoked.state.reviews.length, 0);
 });
 
+// Ticket 2026-10-11-hand-driven-film-approved-on-its: a film an agent pushed by hand was approved at
+// every gate on its own reviewer's word. The owner decided (2026-10-17) that such a film is theirs
+// at every gate: review-push marks it, and the site approves none of its reviews on arrival.
+test("review-push marks a video the worker did not make as hand-pushed, and leaves the worker's own pushes unmarked", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  const server = site({ judge: () => PICK });
+  const hand = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], hand.ctx), EXIT.ok, hand.out.stderr);
+  assert.equal(server.state.reviews[0].payload.hand_pushed, true);
+  assert.deepEqual(server.state.reviews[0].payload.pick, PICK, "Jev's pick still travels, for the owner to read");
+  assert.match(hand.out.stdout, new RegExp(`${box.slug}: not a video the worker made \\(no auto\\.json in its work directory\\): the owner decides at every gate`));
+
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
+  const worker = site({ judge: () => PICK });
+  const own = context(box, worker.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], own.ctx), EXIT.ok, own.out.stderr);
+  assert.equal("hand_pushed" in worker.state.reviews[0].payload, false);
+  assert.doesNotMatch(own.out.stdout, /not a video the worker made/);
+});
+
 test("review-push --gate outline whose Jev answer is lost sends the outline to the owner without a pick and does not ask Jev again for that brief; a new brief is asked", async () => {
   const box = sandbox();
   writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
@@ -261,7 +283,7 @@ test("review-push --gate outline whose Jev answer is lost sends the outline to t
   const again = push();
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(server.state.judge.length, 1);
-  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.ok(again.out.stdout.split("\n").includes(`${box.slug}: Jev's answer on this outline was lost at 2026-09-25T06:00:00.000Z (HTTP 504: 請求已送到 API，Jev 可能已經判斷) and is not asked again: the outline goes up for the owner without a pick (delete ${path.join("review", "outline-lost.json")} to ask Jev once more)`), again.out.stdout);
   assert.equal("pick" in server.state.reviews[0].payload, false);
 
   // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
@@ -1929,6 +1951,9 @@ test("a storyboard that goes up with nothing kept goes up with every shot kept: 
 
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */
 async function pushStoryboard(box) {
+  // The worker's own push (a hand-pushed one also carries hand_pushed, tested on its own).
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], push.ctx), EXIT.ok, push.out.stderr);

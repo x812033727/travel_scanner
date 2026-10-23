@@ -8,11 +8,11 @@ owner:
 claimed_at:
 created_at: 2026-10-11T08:37:13Z
 completed_at:
-branch:
+branch: claude/youthful-brahmagupta-1giys7
 depends_on: []
 scope:
   - apps/api/app/news_automation/validation.py
-  - apps/api/tests/test_news_automation.py
+  - apps/api/tests/test_news_refetch_diagnostics.py
 ---
 
 # Expose upstream HTTP status and recover held-news source validation
@@ -36,7 +36,7 @@ copy is not a successful native source-current check.
 
 ## Definition of done
 
-- [ ] Held-source diagnostics retain a bounded, safe upstream status and request
+- [x] Held-source diagnostics retain a bounded, safe upstream status and request
       stage so editors can distinguish transport refusal from changed content.
 - [ ] The CFTC source is successfully checked through the native safe fetcher
       before any normal refresh/reverify, or its external access blocker remains
@@ -48,7 +48,7 @@ copy is not a successful native source-current check.
 
 - [ ] Inspect the native conditional and unconditional diagnostics and the final
       candidate/run/assessment/audit state before attempting recovery.
-- [ ] Add bounded upstream diagnostic metadata without response credentials or
+- [x] Add bounded upstream diagnostic metadata without response credentials or
       unrestricted bodies, preserving the existing public error contract.
 - [ ] Once official access succeeds, use the normal audited refresh-evidence
       route and independently read its Evidence, audit, retry and exact queue
@@ -97,3 +97,36 @@ ALPN handshake. It is not implemented or deployed. Do not treat HTTP2 or the
 two merged diagnostic notes as recovered native CFTC article access, and do
 not repeat the earlier probing that reached429. Current production remains
 the verified3591 release, and Root has not altered this source or fetcher.
+
+### 2026-10-16 diagnostics in the repo (claude-opus-5-5-pr-tidy)
+
+The first box is done in the repo. The CFTC recovery (second box, third step) is still open and
+needs the host: it was not attempted here.
+
+Claimed with `--force` over `2026-10-11-news-fetcher-is-refused-by-cloudflare`. That task's code
+landed in #1516, its branch is gone, and its one open step is a host-side `sources_cli` rerun.
+Scope moved from `test_news_automation.py`, which draft #1480 extends, to a new
+`apps/api/tests/test_news_refetch_diagnostics.py`.
+
+`validation.py`: the four `source_refetch_failed` reasons (two in `refresh_evidence`, two in
+`revalidate_evidence`) now come from `_refetch_failed(url, error, stage)`.
+- When the fetch says why, the reason keeps its old prefix and adds `:<stage>:<detail>`:
+  - `stage` is `listing` (the feed or listing read for a summary source) or `article` (the
+    evidence page).
+  - `detail` is `http_<status>` for an upstream status, `robots_refused`, `content_type`,
+    `too_large`, `redirect` or `unsafe_url`.
+- Example: `source_refetch_failed:<url>:HTTPStatusError:article:http_403` is the Cloudflare
+  refusal the 08:35/08:36 diagnostics saw.
+- Only fixed codes and the integer status are kept, never a body, header or cookie.
+- A failure that says nothing more (a timeout) keeps the earlier
+  `source_refetch_failed:<url>:<class>` form. The existing exact-string tests and the
+  prefix-based handling are unchanged, and nothing in api or web parses these strings.
+
+Ran: the new tests (7/7, covering 403, 503, a robots refusal, content type, non-public address,
+an unchanged timeout through both functions, and real changed content still reported as
+`source_content_changed`). Also `test_news_automation.py`, `test_news_review_actions.py`,
+`test_news_backfill_cli.py` and the new files (314 passed, 6 skipped), `ruff check .`, `mypy app`
+and `mypy tests`.
+
+Released after this change so the host recovery can be picked up; nothing else in the repo is
+left for it.

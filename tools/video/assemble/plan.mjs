@@ -157,11 +157,17 @@ export function parseEbur128(stderr) {
 /**
  * Compare frame `n` of a video with an image. Frames are picked by number, not by seeking:
  * a seek in the joined file lands on the wrong frame often enough to fail a correct video.
+ *
+ * `mask` is a box ({ x, y, width, height }) painted black on both sides before they are
+ * compared: where the channel mark was laid over the video's frame (core/watermark.mjs) and the
+ * image, a clean source frame, has none, so the score stays a measure of the picture. drawbox
+ * works on YUV, so the image goes through it before it is made RGB like the frame.
  */
-export function psnrArgs(video, n, image) {
+export function psnrArgs(video, n, image, { mask = null } = {}) {
+  const box = mask ? `drawbox=x=${mask.x}:y=${mask.y}:w=${mask.width}:h=${mask.height}:color=black:t=fill,` : "";
   return [
     "-hide_banner", "-nostats", "-i", video, "-i", image,
-    "-lavfi", `[0:v]select=eq(n\\,${n}),format=rgb24[a];[1:v]scale=${WIDTH}:${HEIGHT},format=rgb24[b];[a][b]psnr`,
+    "-lavfi", `[0:v]select=eq(n\\,${n}),${box}format=rgb24[a];[1:v]scale=${WIDTH}:${HEIGHT},${mask ? "format=yuv444p," : ""}${box}format=rgb24[b];[a][b]psnr`,
     "-frames:v", "1", "-f", "null", "-",
   ];
 }

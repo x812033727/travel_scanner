@@ -113,3 +113,7 @@ and record the count here, or that no page has been declined yet.
 - A first scan records undated entries and entries older than 72 hours as seen. Expect
   up to five candidates from GitHub Changelog, two from the Claude Code changelog and one
   from the developer blog on the first scan, and none from the HTML listings.
+- 2026-10-16: the first-scan baseline bug (`2026-10-10-news-first-scan-failure-keeps-baseline`) is
+  fixed in the repo. A failed first scan no longer writes `last_scanned_at`, so the next scan still
+  takes the baseline. It protects the new HTML listings only once deployed: load after that deploy,
+  or keep checking each new HTML listing's first scan by hand as the note above says.

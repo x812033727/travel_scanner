@@ -926,9 +926,48 @@ async def _payload(
         payload.update(review)
     elif case.stage == "duplicate":
         payload["title"] = candidate.source_title
-        payload["known_stories"] = duplicates.closest_titles(
-            candidate.source_title, await duplicates.known_titles(session, candidate), limit=10
+        # Preserve the cross-category evidence that caused this hold. Re-ranking all
+        # titles by character similarity alone can push the matched article out of
+        # the ten-title judge context, then a "distinct" answer can clear the hold.
+        duplicate_records = await _records(session, candidate, "duplicate")
+        stored_matches = (
+            (duplicate_records[0].details_json or {}).get("cross_category_matches", [])
+            if duplicate_records
+            else []
         )
+        highlighted: list[str] = []
+        highlighted_titles: set[str] = set()
+        if isinstance(stored_matches, list):
+            for match in stored_matches[:8]:
+                if not isinstance(match, dict):
+                    continue
+                title = match.get("title")
+                match_id = match.get("id")
+                rationale = match.get("rationale")
+                if not isinstance(title, str) or not isinstance(match_id, str):
+                    continue
+                slug = match.get("slug")
+                identity = (
+                    f"{slug}; id={match_id}"
+                    if isinstance(slug, str)
+                    else f"id={match_id}"
+                )
+                explanation = rationale if isinstance(rationale, str) else ""
+                highlighted.append(
+                    f"{title} [cross-category {match.get('kind', 'story')}: "
+                    f"{identity}; {explanation}]"
+                )
+                highlighted_titles.add(title)
+        remaining = [
+            title for title in await duplicates.known_titles(session, candidate)
+            if title not in highlighted_titles
+        ]
+        payload["known_stories"] = [
+            *highlighted,
+            *duplicates.closest_titles(
+                candidate.source_title, remaining, limit=max(0, 10 - len(highlighted))
+            ),
+        ][:10]
     else:
         payload.update(await _redraft_review(session, candidate, case.hold, usable))
     return payload, judged

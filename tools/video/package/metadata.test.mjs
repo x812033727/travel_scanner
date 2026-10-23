@@ -30,15 +30,15 @@ test("every locale's description credits the stock photos of assets[], and says 
   assert.match(metadata.description, /\n\n📚 參考資料\n[^\n]+\n\n📷 圖片來源\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n\n#/);
   assert.doesNotMatch(metadata.description, /Mokaair 自有圖解/, "own diagrams are not credited");
   assert.match(metadata.localizations.en.description, /\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com/);
-  // A body that fits without the credits (lint composes it that way) and not with them.
+  // A body that fits without the credits and not with them: the problem says what the credits take.
   const credits = creditBytes(doc.assets, "zh-TW");
   const slack = () => DESCRIPTION_MAX_BYTES - Buffer.byteLength(composeMetadata({ doc: { ...doc, assets: [] }, timeline }).metadata.description, "utf8");
   doc.youtube.description += "字".repeat(Math.ceil((slack() - credits + 1) / 3));
-  assert.ok(slack() >= 0 && slack() < credits, `${slack()} bytes of room under lint's count, ${credits} needed`);
+  assert.ok(slack() >= 0 && slack() < credits, `${slack()} bytes of room without the credits, ${credits} needed`);
   assert.deepEqual(composeMetadata({ doc: { ...doc, assets: [] }, timeline }).problems, []);
   const over = composeMetadata({ doc, timeline }).problems;
   assert.equal(over.length, 1);
-  assert.match(over[0], new RegExp(`^zh-TW\\.description: \\d+ bytes once composed, at most ${DESCRIPTION_MAX_BYTES} \\(the 圖片來源 credits of assets\\[\\] add ${credits} bytes that lint does not count: shorten youtube\\.description or use fewer stock photos\\)$`));
+  assert.match(over[0], new RegExp(`^zh-TW\\.description: \\d+ bytes once composed, at most ${DESCRIPTION_MAX_BYTES} \\(the 圖片來源 credits of assets\\[\\] take ${credits} of them: shorten youtube\\.description or use fewer stock photos\\)$`));
 });
 
 test("every locale's description opens on the hook, links the article once with the video's campaign after the body, and ends on the series hashtag", () => {

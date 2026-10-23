@@ -7,6 +7,7 @@ import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, Admin
 import {
   control, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
+import { STORY_SERIES_SLUG } from "@/components/admin-video-stories";
 import { syncRunning } from "@/components/admin-video-youtube";
 import { Button } from "@/components/community/ui";
 import { updateAdminQuery, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -71,7 +72,7 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
 }
 
 /**
- * The catalog of every tutorial under the two groups that wait for the owner (the category section
+ * The catalog of every long video under the two groups that wait for the owner (the category section
  * of docs/videos/HANDS-OFF.md): one line a video, narrowed by a category, a state and a search, a page at a time. The
  * filters live in the URL, so a view can be bookmarked and the back button undoes a filter; the counts
  * on the pills come from the server with the other filters kept. The page reads the site again every
@@ -81,6 +82,8 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
 export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) => void; revision?: number }) {
   const t = useTranslations("admin.videoReviews");
   const [category] = useAdminQueryValue("category", "", isCategoryFilter);
+  // A bookmark from when the brand-story series opened here: they live under Drama now.
+  const [storySeries] = useAdminQueryValue("story_series", "", (value) => STORY_SERIES_SLUG.test(value));
   const [state] = useAdminQueryValue("state", "", isBrowseState);
   const [query] = useAdminQueryValue("q");
   const [pageValue] = useAdminQueryValue("page", "1", isPageNumber);
@@ -102,6 +105,11 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
   const text = draft.seen === query ? draft.text : query;
 
   useEffect(() => {
+    if (storySeries) updateAdminQuery({ tab: "drama", series: storySeries, story_series: "", category: "", page: "" });
+  }, [storySeries]);
+
+  useEffect(() => {
+    if (storySeries) return;
     let controller = new AbortController();
     const load = () => {
       controller.abort();
@@ -121,8 +129,9 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
     const timer = window.setInterval(load, REFRESH_MS);
     return () => { window.clearInterval(timer); controller.abort(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [suffix, reload, revision]);
+  }, [suffix, reload, revision, storySeries]);
 
+  if (storySeries) return null;
   const categoryCounts = countsOf(data?.facets.category);
   const stateCounts = countsOf(data?.facets.state);
   return <section aria-label={t("browserTitle")} className="grid gap-3">

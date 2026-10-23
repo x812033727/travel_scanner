@@ -1,0 +1,4292 @@
+{
+  "number": 2,
+  "title": "黑鳳山",
+  "theme": "亂世來了，能讓人活下去的地方，才叫家。",
+  "start_state": "禁軍包圍許家，太監跪稱阿令為長公主；天下大旱、流民四起，宰相與國師都在找她。",
+  "end_state": "許硯識破假禁軍、保住阿令；收服黑鳳山、娶女寨主柳三娘為第四位妻子；柳溪堡建成，收留三萬流民；原主落水的真相揭開、錢員外伏法；打退魏家借來的叛軍。宣旨的國師墨塵看著許硯眼前的空氣笑：「老鄉，你的系統幾級了？」",
+  "guest_cast": [
+    {
+      "id": "s02-han-qi",
+      "name": "韓七",
+      "role": "相府暗衛統領，第一篇章扮成宮中太監「韓公公」帶假禁軍來殺阿令；其實兩頭下注，暗中替國師辦事",
+      "appearance": "東亞年輕男性，三十歲，白淨清瘦的冷峻美男：細長丹鳳眼、薄唇、下頜線俐落，笑起來只動嘴角；扮太監時穿深紫宦官袍、戴黑紗帽、手持白拂塵，袍下露出一雙釘雲紋鐵釘的黑皮快靴；卸裝後穿黑色窄袖夜行勁裝，頭髮高束"
+    },
+    {
+      "id": "s02-sun-taiyi",
+      "name": "孫太醫",
+      "role": "被韓七挾持來驗病的老太醫，當年伺候過阿令的母后，暗中幫阿令",
+      "appearance": "東亞老年男性，六十五歲，清瘦慈和：白鬍子修得整齊、眉毛花白、眼神溫和而清明，穿洗舊的青灰官服、背一只紅木藥匣，手指乾淨修長"
+    },
+    {
+      "id": "s02-wu-zhubu",
+      "name": "吳主簿",
+      "role": "清水縣衙主簿，膽小但守律法，被唐小棠請來擋開棺",
+      "appearance": "東亞中年男性，四十歲，斯文瘦削：方巾、細框圓臉、留短鬚、眼神有點慌但站得直，穿深藍縣吏長衫，懷裡總抱著一本厚律書"
+    },
+    {
+      "id": "s02-shi-laoqi",
+      "name": "石老七",
+      "role": "黑鳳寨的獨臂伙夫，其實是當年鎮北秦家軍的伙頭兵，第一個拿起鋤頭的人",
+      "appearance": "東亞老年男性，五十五歲，結實硬朗：短白髮、方臉、濃眉下一雙沉穩的眼、臉上刻著風霜但五官端正，左袖空空打結，穿褪色的灰褐短褐、腰繫圍裙，站姿筆直像老兵"
+    },
+    {
+      "id": "s02-zheng-duo",
+      "name": "鄭鐸",
+      "role": "青州都尉，魏家門生，兩度帶官軍圍黑鳳山",
+      "appearance": "東亞中年男性，四十歲，英挺但帶傲氣：方臉、劍眉、修剪整齊的短鬚，穿銀亮魚鱗甲與紅色戰袍、戴銀盔，騎一匹白馬"
+    },
+    {
+      "id": "s02-xu-dalang",
+      "name": "許大郎",
+      "role": "許硯的族兄，受錢員外指使把原主推下河的人（即第一季的 s01-xu-dalang）",
+      "appearance": "東亞年輕男性，二十八歲，瘦高、五官清秀卻眼神閃躲：高顴骨、細眉、薄唇，膚色偏黃，穿灰褐粗布短褂、頭髮亂束，雙手總是不安地搓著"
+    },
+    {
+      "id": "s02-a-fu",
+      "name": "阿福",
+      "role": "混在流民裡裝啞巴的魏家探子，寫一手工整官體字",
+      "appearance": "東亞年輕男性，三十歲，瘦小清秀：圓臉、細眼總是笑瞇瞇低著頭、膚色白淨不像流民，穿打補丁的土灰布衣，手指乾淨、指節有長年握筆的繭"
+    },
+    {
+      "id": "s02-hu-badou",
+      "name": "胡八斗",
+      "role": "魏家糧行大掌櫃，在青州囤糧哄抬",
+      "appearance": "東亞中年男性，四十五歲，富態圓潤：大圓臉、雙下巴、一雙精明的小眼、八字眉，穿深棕織金錦袍、頭戴瓜皮帽，手裡一個玉扳指轉個不停"
+    },
+    {
+      "id": "s02-he-cang",
+      "name": "賀蒼",
+      "role": "叛軍真正的首領，前邊軍校尉，被魏家銀子收買，最後倒戈",
+      "appearance": "東亞男性，三十五歲，硬朗英俊的武將：深眼窩、高鼻、眉骨上一道淡淡的舊疤、短鬍渣，膚色黝黑，身形高大，穿舊黑鐵甲外罩褪色的赭紅戰袍，腰挎一把長直刀"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "假禁軍是誰派來的？",
+      "setup_episode": 61,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t02",
+      "question": "孫太醫為什麼要幫阿令？",
+      "setup_episode": 65,
+      "payoff_episode": 67
+    },
+    {
+      "id": "s02-t03",
+      "question": "阿令為什麼偏偏選了柳溪村？",
+      "setup_episode": 64,
+      "payoff_episode": 69
+    },
+    {
+      "id": "s02-t04",
+      "question": "韓七回去到底報了什麼？",
+      "setup_episode": 68,
+      "payoff_episode": 109
+    },
+    {
+      "id": "s02-t05",
+      "question": "山寨裡的人為什麼都不像山賊？",
+      "setup_episode": 71,
+      "payoff_episode": 76
+    },
+    {
+      "id": "s02-t06",
+      "question": "柳三娘頸上的舊軍牌是什麼？",
+      "setup_episode": 73,
+      "payoff_episode": 84
+    },
+    {
+      "id": "s02-t07",
+      "question": "官軍為什麼偏挑這時候圍山？",
+      "setup_episode": 76,
+      "payoff_episode": 80
+    },
+    {
+      "id": "s02-t08",
+      "question": "家裡誰會第一個接納柳三娘？",
+      "setup_episode": 82,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t09",
+      "question": "柳三娘帶來的第一個獎勵是什麼？",
+      "setup_episode": 83,
+      "payoff_episode": 89
+    },
+    {
+      "id": "s02-t10",
+      "question": "國師為什麼贊成和親？",
+      "setup_episode": 64,
+      "payoff_episode": 109
+    },
+    {
+      "id": "s02-t11",
+      "question": "學堂第一課教什麼？",
+      "setup_episode": 95,
+      "payoff_episode": 97
+    },
+    {
+      "id": "s02-t12",
+      "question": "魏家真正的糧倉在哪裡？",
+      "setup_episode": 103,
+      "payoff_episode": 105
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "跪錯的靴子",
+      "youtube_title": "上百禁軍跪喊長公主殿下，窮秀才低頭一看靴子，發現這群人根本不是宮裡來的",
+      "duration_s": 95,
+      "logline": "許硯要保住剛被認出身分的阿令，卻被一群自稱禁軍、要她「即刻回宮」的人堵在自家院子裡。",
+      "hook": "上百支火把把小院照成白晝，領頭太監跪在阿令腳前：「長公主殿下。」許硯手裡的飯碗啪地落地。",
+      "hook_type": "image",
+      "mid_hook": "太監磕頭時袍角掀起，許硯看見他靴底釘著一排雲紋鐵釘，和上一季魏少卿家丁踹他家門的那雙一模一樣。",
+      "conflict": "假太監韓公公要阿令立刻上轎，許硯手上沒有任何能擋禁軍的東西。",
+      "turn": "許硯搬出大衡律：配婚名冊上的妻子離開夫家，要縣衙銷籍，縣衙天亮才開門；當著全村，假禁軍只能答應等一夜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "院角桌底下，小禾抱著草編兔子縮成一團，聽見韓公公低聲交代：「天亮前，連他一起。」一雙黑靴停在桌前，桌布被刀鞘慢慢挑起。",
+        "question": "躲在桌底的小禾會被發現嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "夜裡上百支火把圍成一圈，禁軍同時單膝落地，火光映在阿令不動的臉上。",
+      "glamour_shot": "阿令站在火光正中，灰白粗布衣裙被夜風吹起一角，鳳眼冷冷俯看跪地的太監，一動不動。",
+      "setups": [
+        "s02-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "用律法替全家爭到一夜時間"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "xu-xiaohe",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，亥時",
+        "knowledge": "許硯知道阿令是長公主，也看出這群禁軍穿的是相府的靴子。",
+        "carry_forward": "系統彈出強制任務「天亮前保住阿令」，失敗抹去一項農學知識；小禾躲在桌底。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "一盤算盤珠",
+      "youtube_title": "刺客刀鞘挑起桌布的瞬間，首富千金一把算盤珠撒下去，假太監的底細當場露餡",
+      "duration_s": 85,
+      "logline": "許硯要證明這群禁軍是假的，卻只有一夜，而假太監的人已經在院裡四處搜。",
+      "hook": "刀鞘挑到一半，唐小棠的金算盤「失手」落地，一百顆珠子滾滿院子，侍衛一腳踩上去仰面滑倒。",
+      "hook_type": "danger",
+      "mid_hook": "秦霜抱起小禾進屋，小禾貼在許硯耳邊：「他說天亮連哥哥一起。」許硯臉上的笑一下子沒了。",
+      "conflict": "要讓全家相信、也要讓自己確定：這群人是來殺人的，不是來接人的。",
+      "turn": "唐小棠捧著一錠銀子去「孝敬」韓公公；真正的宮中內侍收禮要先把銀子翻面看戳記，他卻直接揣進袖子，唐小棠回頭對許硯比了一個假字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "許硯推門進屋，阿令已經換上一身素衣，背對他把木簪插好：「我跟他們走。」門在他面前關上。",
+        "question": "阿令要拿自己換全家？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "一百顆金算盤珠在火光下滾滿院子，三個侍衛接連滑倒。",
+      "glamour_shot": "唐小棠蹲下撿算盤，抬頭衝侍衛甜甜一笑，梨渦裡全是算計，粉色絲帶在火光裡晃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禾平安脫身",
+        "唐小棠用宮規試出太監是假的"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "xu-xiaohe",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院",
+        "許家正屋"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，子時",
+        "knowledge": "全家都知道這群人是假的，而且天亮前要動手。",
+        "carry_forward": "阿令打算自己跟假禁軍走；系統任務倒數剩三個時辰。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "門外的真話",
+      "youtube_title": "冷面公主關門要獨自赴死，窮秀才隔著門說了一句真話，系統好感度當場暴漲",
+      "duration_s": 110,
+      "logline": "許硯要攔住打算犧牲自己的阿令，卻只能用真話，因為系統一聽到假話就扣分。",
+      "hook": "門關上前一瞬，許硯伸腳卡住門縫，被夾得齜牙咧嘴：「你走了，我任務就失敗。」系統：「說謊，扣 2 分。」",
+      "hook_type": "line",
+      "mid_hook": "阿令終於開口：那個太監叫韓七，是相府的暗衛統領，她在宮裡見過他站在宰相身後。",
+      "conflict": "阿令認為只要她走，許家就安全；許硯知道她一出村就沒命。",
+      "turn": "許硯改說真話：「我不想你走。」好感度從 68 跳到 72；阿令第一次沒有拿匕首對著他，而是聽他的計畫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯把一卷白麻布放在阿令手上：「今晚，長公主得死一次。」他看著她：「你信我嗎？」阿令握緊白麻，嘴唇動了動。",
+        "question": "阿令敢把命交給許硯的假死計嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "系統面板在門縫的燭光裡彈出，好感度條從 68 跳到 72，金色光點散開。",
+      "glamour_shot": "阿令在燭光下的側臉，鳳眼裡的冷第一次化開一點，木簪上的一縷碎髮垂在頰邊。",
+      "setups": [],
+      "payoffs": [
+        "s02-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令好感 68→72，因為許硯說了不想她走的真話",
+        "確認刺客是宰相派的"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "xitong"
+      ],
+      "locations": [
+        "許家正屋"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，丑時前",
+        "knowledge": "許硯知道假太監是相府暗衛統領韓七，宰相要阿令死在路上。",
+        "carry_forward": "假死計：讓長公主今晚「病逝」，辦一場出殯。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "她父皇看不見她",
+      "youtube_title": "長公主終於說出逃宮真相：父皇被國師迷住，宰相要把她送去和親換江山",
+      "duration_s": 125,
+      "logline": "阿令要決定信不信許硯，先得把她逃出宮的一切說出來，而門外的刺客隨時會進來。",
+      "hook": "阿令把白麻布繞上手腕：「信。」接著第一次自己開口：「我父皇，看不見我了。」",
+      "hook_type": "line",
+      "mid_hook": "阿令說，朝中只有一個人力挺把她送去朔漠和親：國師墨塵，而且是在父皇最不清醒的那天。",
+      "conflict": "許硯要在天亮前弄懂敵人是誰，才知道該騙過誰。",
+      "turn": "阿令說她是混進罪奴配婚名冊逃出宮的；許硯問她名冊那麼多村子，為什麼偏偏是柳溪，她別開臉不答。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿令的宮裝剛從箱底拿出一半，門外韓七的聲音貼著門縫：「殿下，奴才進來請安。」門閂被一把薄刀從外面慢慢撥開。",
+        "question": "韓七會撞見阿令藏著的宮裝嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "阿令打開箱底，月白繡銀鳳宮裝在燭光裡一層層展開，像一片雪。",
+      "glamour_shot": "阿令捧著宮裝低頭，燭光從下巴照上來，眼眶微紅卻一滴淚都不掉。",
+      "setups": [
+        "m09",
+        "s02-t03",
+        "s02-t10",
+        "m07"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令主動說出逃宮的全部經過",
+        "許硯知道國師力挺和親"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "s02-han-qi"
+      ],
+      "locations": [
+        "許家正屋"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，丑時",
+        "knowledge": "皇帝被國師迷住、宰相逼和親、國師力挺和親；阿令不肯說為什麼選柳溪。",
+        "carry_forward": "韓七正要進門；宮裝還攤在床上。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "病來如山倒",
+      "youtube_title": "刺客破門請安，長公主當場病倒在丈夫懷裡，連帶來的太醫都說她撐不過今晚",
+      "duration_s": 90,
+      "logline": "許硯要讓韓七相信阿令快死了，偏偏韓七帶著自己的太醫要親手把脈。",
+      "hook": "門閂落地，門開的一瞬阿令一口氣咳出來，軟倒在許硯懷裡；宮裝被秦霜一腳踢進床底。",
+      "hook_type": "danger",
+      "mid_hook": "韓七拍手，一個白鬍子老太醫被推進來：「孫太醫，給殿下請脈。」許硯的手心全是汗。",
+      "conflict": "真太醫一摸脈就知道阿令沒病。",
+      "turn": "秦霜教阿令的秦家閉氣法讓脈象細若游絲；孫太醫把了很久，抬頭說：「脈微欲絕，撐不過今晚。」韓七笑了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "孫太醫收脈枕時，在許硯掌心塞進一張紙條，低聲說：「娘娘的女兒，」「老臣認得。」紙條上只有四個字：「寅時放火。」",
+        "question": "太醫為什麼幫他們？誰要放火？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "燭光裡老太醫三根手指搭在阿令腕上，鏡頭推近脈搏，屋裡所有人同時屏住呼吸。",
+      "glamour_shot": "阿令閉眼「病倒」在許硯臂彎，長髮散在他肩上，臉白得像瓷，睫毛卻在微微顫。",
+      "setups": [
+        "s02-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "騙過韓七：阿令「病危」",
+        "秦霜的閉氣法救了場"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "s02-han-qi",
+        "s02-sun-taiyi"
+      ],
+      "locations": [
+        "許家正屋"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，丑時二刻",
+        "knowledge": "孫太醫認得阿令、站在她這邊；刺客寅時要放火燒屋。",
+        "carry_forward": "離寅時不到一個時辰。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "白幡出村",
+      "youtube_title": "刺客準備放火滅口，全村連夜替長公主出殯，白幡隊伍就從禁軍眼前走過去",
+      "duration_s": 100,
+      "logline": "許硯要在刺客放火前把阿令「送走」，辦一場全村都來的假出殯。",
+      "hook": "許硯攥著紙條看更漏：寅時還有半個時辰。他推開窗喊：「敲鐘！」",
+      "hook_type": "question",
+      "mid_hook": "柳溪的老鐘響了九下，王二牛帶著全村披麻戴孝湧進院子，韓七的人被白幡擠到牆邊，手裡的火摺子根本點不著。",
+      "conflict": "韓七要開棺驗看，棺材裡沒有長公主。",
+      "turn": "唐小棠請來的縣衙主簿翻開律書：「擅開皇親棺槨，杖一百。」韓七若還想裝成禁軍，就只能看著棺材抬出門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "白幡隊伍走過韓七面前，披麻的阿令低頭跟在最後。小禾牽著她的手，突然大聲喊：「阿令姊姊，你走慢點！」韓七猛地轉頭。",
+        "question": "小禾這一喊，是不是全完了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "凌晨的柳溪村，上百個白幡在火把間緩緩移動，像一條白色的河從禁軍面前流過。",
+      "glamour_shot": "阿令披著粗麻低頭走在白幡下，只露出半張臉，風把麻布吹開一線，露出清冷的眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全村站到許家這邊",
+        "用律法擋住韓七開棺"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "wang-erniu",
+        "xu-xiaohe",
+        "s02-han-qi",
+        "s02-wu-zhubu"
+      ],
+      "locations": [
+        "柳溪村許家小院",
+        "柳溪村村道"
+      ],
+      "state": {
+        "time": "第二季第 2 日，寅時前",
+        "knowledge": "假出殯已開始，棺材裡躺的是誰觀眾還不知道。",
+        "carry_forward": "小禾當眾喊出阿令的名字。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "棺裡的人",
+      "youtube_title": "八歲小妹一句話差點害死全家，下一秒她哭出來的話，讓刺客都不敢再看",
+      "duration_s": 95,
+      "logline": "許硯要讓假出殯撐過韓七的最後一眼，可韓七已經起了疑心。",
+      "hook": "韓七轉頭的瞬間，小禾掙開阿令的手撲向棺材，哭得撕心裂肺：「阿令姊姊，你等等小禾！」全村跟著哭成一片。",
+      "hook_type": "reversal",
+      "mid_hook": "韓七趁亂把棺蓋推開一寸：裡面是月白宮裝、白玉步搖，和一隻冰冷蒼白的手。",
+      "conflict": "韓七要親眼確定長公主死了。",
+      "turn": "觀眾這才看見，躺在棺裡的是化了白妝、閉著氣、手握冰塊的秦霜；韓七摸到那隻冰冷的手，終於鬆了口氣。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "韓七合上棺蓋，對手下說：「殿下金身，」「抬回京安葬。」秦霜還在裡面。許硯的手停在車轅上。",
+        "question": "讓棺材上車，秦霜就被帶去京城？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "棺蓋推開一寸的縫，宮裝的銀鳳紋在火把下一閃，一隻蒼白的手靜靜搭在上面。",
+      "glamour_shot": "棺中的秦霜一身宮裝、閉眼不動，英氣的眉在白妝下仍然挺拔，像一尊睡著的將軍。",
+      "setups": [],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禾臨機哭棺救了全家",
+        "秦霜扮屍騙過韓七"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "xu-xiaohe",
+        "s02-han-qi",
+        "s02-sun-taiyi"
+      ],
+      "locations": [
+        "柳溪村村道"
+      ],
+      "state": {
+        "time": "第二季第 2 日，寅時",
+        "knowledge": "韓七相信長公主死了；孫太醫是當年伺候皇后的人。",
+        "carry_forward": "韓七要把棺材連同裡面的秦霜運回京城。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "橋頭路祭",
+      "youtube_title": "刺客要把棺材運回京城，窮秀才自稱駙馬跟車，一場路祭把棺裡的人偷偷換了出來",
+      "duration_s": 90,
+      "logline": "許硯要在棺材出縣前把秦霜換出來，還不能讓韓七起疑。",
+      "hook": "許硯翻身坐上棺車：「我是駙馬，按律送葬。」韓七的刀出鞘一半，又按了回去。",
+      "hook_type": "line",
+      "mid_hook": "柳溪橋頭，王二牛帶著二十個鄉親擺開路祭，香煙滾滾，嗩吶震天；禁軍被一碗碗祭酒團團圍住。",
+      "conflict": "要在幾十雙眼睛底下調包一口棺材。",
+      "turn": "濃煙裡，唐小棠雇來的抬棺人把棺材換成一口填了石頭的同款棺；秦霜從橋下的船裡探出頭，對許硯比了個大拇指。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "山坡上，韓七回頭看了柳溪一眼，從袖裡拿出阿令的木簪：「長公主沒死。」手下一愣。他笑：「回去就說死了。」",
+        "question": "韓七為什麼要替他們瞞？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju",
+        "shuang"
+      ],
+      "spectacle": "清晨的石橋上香煙滾滾，嗩吶隊與禁軍擠成一團，橋下一艘小船悄悄滑出霧裡。",
+      "glamour_shot": "秦霜從船頭探身，白妝還沒洗掉，晨光打在她咧嘴一笑的臉上，高馬尾甩出水珠。",
+      "setups": [
+        "s02-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜平安換出",
+        "假禁軍帶著石頭棺離開柳溪"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "s02-han-qi"
+      ],
+      "locations": [
+        "柳溪橋",
+        "柳溪村外山坡"
+      ],
+      "state": {
+        "time": "第二季第 2 日，清晨",
+        "knowledge": "許硯以為騙過了韓七；觀眾知道韓七看穿了卻選擇不說。",
+        "carry_forward": "韓七帶著阿令的木簪回京，要報什麼是個謎。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "她先牽的手",
+      "youtube_title": "騙過刺客的那天早上，冷面長公主第一次主動牽起窮秀才的手，系統獎勵箱應聲打開",
+      "duration_s": 115,
+      "logline": "危機過了，許硯想知道阿令為什麼偏偏選了柳溪，而阿令終於願意說。",
+      "hook": "許硯回到院子，系統「叮」一聲：「強制任務完成。」阿令好感度從 72 衝上 80，一只金色獎勵箱在他眼前彈開。",
+      "hook_type": "image",
+      "mid_hook": "獎勵是「城郭營造圖」：城牆、甕城、水門畫得清清楚楚，下面一行小字：「工匠自備。」許硯看著自家破牆苦笑。",
+      "conflict": "阿令一直不肯說的那件事：她為什麼選柳溪。",
+      "turn": "阿令說，母后臨終前只留了一句話：「青州柳溪，」「有個會種田的人。」她來的時候以為是句胡話，現在不這麼想了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿令伸手牽住許硯，指尖冰涼。她沒有放開，抬眼直直看他：「你不是他。」「對不對？」",
+        "question": "許硯要對她說出穿越的事嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "晨光裡，金色獎勵箱在許硯眼前打開，光點散成一張淡藍色的城郭圖，覆在破舊的柳溪村上。",
+      "glamour_shot": "阿令站在晨光下的籬笆邊，素衣被風吹動，第一次主動伸出手，低頭時耳尖微紅。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令好感 72→80，因為他為她扛下整夜的險",
+        "拿到城郭營造圖（工匠與石料要自己找）"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院"
+      ],
+      "state": {
+        "time": "第二季第 2 日，早晨",
+        "knowledge": "阿令的母后臨終指名柳溪；阿令起疑他不是原主。",
+        "carry_forward": "唐小棠清晨已帶商隊出發去州府買糧。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "黑鳳山下",
+      "youtube_title": "公主問他到底是誰，他用一句真話滑過去；下一刻首富千金的商隊在黑鳳山被劫上山",
+      "duration_s": 135,
+      "logline": "許硯剛過了阿令這關，就得面對錢員外上門落井下石，以及唐小棠商隊失蹤的消息。",
+      "hook": "許硯張嘴，系統先跳出一行字：「警告：說謊扣 10 分。」他吞了吞口水：「我是許硯。」系統：「真話。」阿令瞇眼：「滑頭。」",
+      "hook_type": "line",
+      "mid_hook": "唐家的馬自己跑回村口，鞍上空無一人，馬鞍插著一支黑鳳羽箭，箭上綁著一張紙：「要人，拿一萬斤糧。」",
+      "conflict": "錢員外上門說許家「害死公主」要收地抵罪；同時唐小棠被山賊擄走，大旱年許家根本拿不出一萬斤糧。",
+      "turn": "許硯拿出韓七臨走為了自保簽下的文書：「殿下病薨，與許家無涉。」蓋的是禁軍印。錢員外當著全村臉色發青，帶人灰溜溜退走；許硯轉身就拿起柴刀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "黑鳳山懸崖寨門下，唐小棠被一個大漢扛在肩上，懷裡死死抱著算盤。崖頂一聲女人大笑，一把彎刀從高處反射出冷光。",
+        "question": "唐小棠落到了誰手上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shuang",
+        "xiju",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "黑鳳山的懸崖山寨在夕陽下黑壓壓立在崖頂，一長串商隊貨車被山賊推上之字形的山道。",
+      "glamour_shot": "崖頂背光的柳三娘只露剪影：粗辮甩在肩後，雙刀反握，額前黑鳳布巾被風吹得獵獵作響。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "錢員外收地不成，當眾吃癟",
+        "保住許家田產"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "qian-yuanwai",
+        "wang-erniu",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院",
+        "柳溪村口",
+        "黑鳳山寨門"
+      ],
+      "state": {
+        "time": "第二季第 2 日，黃昏",
+        "knowledge": "唐小棠被黑鳳山的山賊擄走，對方要一萬斤糧。",
+        "carry_forward": "許硯決定上黑鳳山。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "單刀赴會",
+      "youtube_title": "首富千金被山賊扛上山，丈夫只帶一個兄弟單刀赴會，到了寨門才發現她在吃雞腿",
+      "duration_s": 85,
+      "logline": "許硯要把唐小棠從黑鳳山帶回來，可他手上沒有糧、沒有兵，只有一個王二牛。",
+      "hook": "崖頂的彎刀一揮，綁唐小棠的繩子應聲斷開。女人的聲音笑道：「黑鳳寨不綁女人。」唐小棠揉著手腕先問：「贖金能殺價嗎？」",
+      "hook_type": "reversal",
+      "mid_hook": "許硯和王二牛摸黑爬山，半山腰一張大網從天而降，王二牛被倒吊在樹上大喊：「硯哥，我看見你的腳底了！」",
+      "conflict": "秦霜要帶人一起上山，許硯只肯帶王二牛，怕人多了對方真的動手。",
+      "turn": "許硯解開網結時發現：這不是山賊的陷阱，是獵戶捕鹿的活扣，網邊還綁著曬乾的稻草。山上的人，以前是種田的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "寨門一開，八百個山賊拉滿弓對準他們。正中的虎皮椅旁，唐小棠啃著雞腿招手：「相公，你來啦！」",
+        "question": "唐小棠怎麼成了寨主的座上客？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shuang"
+      ],
+      "spectacle": "夜裡的之字形山道，火把一路往上；半山腰一張大網兜著王二牛晃來晃去。",
+      "glamour_shot": "唐小棠坐在虎皮椅邊晃腿，桃粉襦裙在山寨火盆的光裡亮得像一朵花，手上還拿著雞腿。",
+      "setups": [
+        "s02-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠平安無事",
+        "看出山賊原本是農戶"
+      ],
+      "characters": [
+        "xu-yan",
+        "wang-erniu",
+        "tang-xiaotang",
+        "liu-sanniang"
+      ],
+      "locations": [
+        "黑鳳山山道",
+        "黑鳳山寨聚義廳"
+      ],
+      "state": {
+        "time": "第二季第 3 日，夜",
+        "knowledge": "唐小棠沒事；山寨的陷阱是獵戶的手法。",
+        "carry_forward": "八百張弓還對著許硯。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "比誰的酒烈",
+      "youtube_title": "女寨主擺下兩罈酒要他喝贏才放人，秀才一把火點著自己的酒，八百山賊當場看傻",
+      "duration_s": 80,
+      "logline": "許硯要贖回唐小棠，女寨主柳三娘卻要他先喝贏她。",
+      "hook": "柳三娘把兩罈酒砸在桌上：「喝贏我，放人。」唐小棠小聲：「我押了你贏，三百兩。」",
+      "hook_type": "line",
+      "mid_hook": "柳三娘問唐小棠為什麼大旱年還帶商隊亂跑；唐小棠嚼著雞腿說：「我逃婚的，怕魏家的人追。」柳三娘笑出聲：「同道中人。」",
+      "conflict": "許硯一碗就倒，柳三娘喝十罈不醉。",
+      "turn": "許硯改規矩：「不比喝得多，」「比誰的酒烈。」他倒出自己蒸過三次的酒，火摺子一湊，碗口竄起一圈藍火。滿寨嘩然。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "柳三娘仰頭喝乾那碗火酒，臉不紅氣不喘，一腳把彎刀踢到許硯腳邊：「第二場，比武。你挑誰？」",
+        "question": "書生要怎麼跟女寨主比武？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "shuang"
+      ],
+      "spectacle": "聚義廳裡一碗酒燒起藍色火焰，八百個山賊同時往前探頭，火光映滿一張張看傻的臉。",
+      "glamour_shot": "柳三娘仰頭灌酒，粗辮甩過肩頭，喝完用手背一抹紅唇，眼尾上挑地笑。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賭酒贏了一場",
+        "柳三娘對許硯起了興趣"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "wang-erniu"
+      ],
+      "locations": [
+        "黑鳳山寨聚義廳"
+      ],
+      "state": {
+        "time": "第二季第 3 日，深夜",
+        "knowledge": "柳三娘知道唐小棠是逃婚的首富千金。",
+        "carry_forward": "第二場比武。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "她頸上的牌",
+      "youtube_title": "秀才指著女寨主說我挑你，被摔了七次還站起來，第八次卻碰到了她最不能碰的東西",
+      "duration_s": 80,
+      "logline": "許硯要用比武贏回唐小棠，對手是一個人能打十個的柳三娘。",
+      "hook": "許硯撿起彎刀，刀尖指向柳三娘：「我挑你。」八百人一起倒吸一口氣，王二牛抱頭：「硯哥你瘋了！」",
+      "hook_type": "line",
+      "mid_hook": "第七次摔倒時，柳三娘的額巾被許硯扯落，頸上露出一塊磨得發亮的舊鐵牌，像是軍牌。",
+      "conflict": "許硯根本不會武，只能靠站起來的次數撐面子。",
+      "turn": "第八次，許硯故意不躲，一把抓住那塊鐵牌想穩住身子；全場突然安靜，柳三娘的笑一瞬間沒了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "彎刀貼上許硯的喉嚨，柳三娘一字一字地說：「誰准你碰它？」刀鋒壓下一分。",
+        "question": "柳三娘真的會動手嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shachang"
+      ],
+      "spectacle": "火盆圍成的比武圈，柳三娘雙刀翻飛，許硯第七次被摔出圈外，八百人拍桌叫好。",
+      "glamour_shot": "柳三娘慢動作轉身，暗紅皮甲與黑辮一起甩開，雙刀在火光裡劃出兩道弧。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "摔了七次還站起來，山賊開始收起嘲笑"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "wang-erniu",
+        "tang-xiaotang"
+      ],
+      "locations": [
+        "黑鳳山寨比武場"
+      ],
+      "state": {
+        "time": "第二季第 4 日，凌晨",
+        "knowledge": "柳三娘頸上有一塊她極在乎的舊軍牌。",
+        "carry_forward": "刀還壓在許硯喉頭。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "八百張嘴",
+      "youtube_title": "女寨主的刀壓在他喉頭，首富千金丟出一本帳：殺了他，你們山上只剩十二天的糧",
+      "duration_s": 95,
+      "logline": "許硯要活下來、也要贏回唐小棠，他賭上的是讓八百人一個月不下山搶糧。",
+      "hook": "金算盤從人群裡飛來，敲在刀背上「噹」一聲。唐小棠舉著一本帳：「殺了他，」「下個月吃什麼？」",
+      "hook_type": "danger",
+      "mid_hook": "唐小棠這兩天把寨裡的糧倉和名冊全算過了：糧只夠十二天；八百人裡六百個是佃農，兩百個是逃兵，沒有一個是天生的賊。",
+      "conflict": "許硯提出第三場賭局：一個月內讓全寨吃飽，不再下山搶；輸了，他留在山上當長工。",
+      "turn": "柳三娘收刀，伸手：「賭。」系統同時彈出強制任務：「三十日內讓八百人吃飽。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "任務下方又跳出一行紅字：「失敗：抹去農學知識。」許硯盯著那行字，手裡的種子袋掉在地上。",
+        "question": "輸了，他就再也不會種田了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shuang",
+        "xiju",
+        "zhongtian"
+      ],
+      "spectacle": "唐小棠把帳本攤在寨主桌上，八百人圍成一圈，聽一個小姑娘一筆一筆念出他們還能活幾天。",
+      "glamour_shot": "唐小棠站在桌上撥算盤，鵝黃襦裙與粉絲帶在山風裡飄，一秒從嬌俏變精明的眼神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠一本帳救了許硯",
+        "看清山寨是被逼上山的農戶與逃兵"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山寨聚義廳"
+      ],
+      "state": {
+        "time": "第二季第 4 日，清晨",
+        "knowledge": "山寨糧只夠十二天；任務失敗會失去全部農學知識。",
+        "carry_forward": "三十日倒數開始；山頂又冷又多石頭。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "紙做的房子",
+      "youtube_title": "山頂太冷種不出糧，秀才說要蓋紙房子，女寨主笑他瘋了，獨臂伙夫卻第一個拿起鋤頭",
+      "duration_s": 90,
+      "logline": "許硯要在霜降前讓種子發芽，只能在山頂搭起油紙暖棚，可山賊不肯幹農活。",
+      "hook": "許硯蹲在石頭地上畫圖：「蓋間紙房子，」「菜就不怕凍。」柳三娘笑得拍腿：「紙能擋霜？」",
+      "hook_type": "line",
+      "mid_hook": "山賊們把鋤頭一丟：「老子是山賊，不是佃農！」獨臂的伙夫石老七默默撿起鋤頭，第一鋤下去，翻土的手法比誰都老練。",
+      "conflict": "要竹子、桐油、油紙，還要一群願意彎腰的人。",
+      "turn": "石老七鋤一壟，身後就多一個人；到太陽下山，兩百個山賊排成一列在翻土，動作整齊得像操練過。許硯多看了石老七一眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，許硯被一聲脆響驚醒，衝出門外：剛搭好的竹架一排排倒在月光下，斷口整整齊齊。一個黑影翻過寨牆。",
+        "question": "誰砍了暖棚？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "夕陽下的山坡，兩百個山賊同時揮鋤，一壟壟黑土翻開，遠處竹架剛剛立起。",
+      "glamour_shot": "柳三娘靠在寨牆上看人翻土，嘴上嘲笑，眼神卻跟著許硯走，風把她的粗辮吹到胸前。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "山賊開始下田",
+        "暖棚第一排竹架搭起"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "s02-shi-laoqi",
+        "wang-erniu",
+        "tang-xiaotang"
+      ],
+      "locations": [
+        "黑鳳山南坡",
+        "黑鳳山寨"
+      ],
+      "state": {
+        "time": "第二季第 5 日，夜",
+        "knowledge": "石老七手法像當過兵；唐小棠已寫信回唐家要桐油。",
+        "carry_forward": "暖棚竹架被人砍倒，砍的人翻牆跑了。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "刀口會說話",
+      "youtube_title": "暖棚一夜被砍光，女寨主要全寨跪著查，秀才看了一眼刀口就說：砍的人是官府的",
+      "duration_s": 95,
+      "logline": "許硯要找出砍暖棚的人，柳三娘卻要拿全寨八百人出氣。",
+      "hook": "清晨，柳三娘把八百人排成一列，雙刀出鞘：「誰幹的？」許硯舉起一根竹子：「不用問，刀口會說話。」",
+      "hook_type": "question",
+      "mid_hook": "斷口是一刀平削，只有官軍的直刀砍得出來；山寨用的全是獵刀和柴刀。整個寨子只有一個上個月才入夥的人帶著直刀。",
+      "conflict": "揪出內奸，又不能讓柳三娘當場動私刑。",
+      "turn": "內奸被石老七一把按住，袖裡掉出青州都尉府的腰牌；柳三娘第一次對許硯說出山寨的來歷：「這裡的人，」「沒一個想當賊。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "內奸被拖走前突然回頭，衝柳三娘大喊：「都尉快到了！」「你爹的事，」「他全知道！」柳三娘手裡的刀停在半空。",
+        "question": "柳三娘的爹到底出了什麼事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shuang",
+        "quanmou"
+      ],
+      "spectacle": "八百山賊排成長列，晨霧從他們腳邊流過，許硯拿著一根斷竹從列前走過。",
+      "glamour_shot": "柳三娘雙刀交叉站在晨霧裡，額巾下的眉眼凌厲，聽到「你爹」兩字時眼神一顫。",
+      "setups": [
+        "s02-t07",
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揪出都尉府安插的內奸",
+        "柳三娘說出山寨是被官府逼上山的鄉親"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "s02-shi-laoqi",
+        "s02-zheng-duo",
+        "wang-erniu"
+      ],
+      "locations": [
+        "黑鳳山寨"
+      ],
+      "state": {
+        "time": "第二季第 6 日，清晨",
+        "knowledge": "都尉府在山寨安了眼線；都尉知道柳三娘父親的事。",
+        "carry_forward": "柳三娘被一句話刺中，都尉的兵要來了。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "一個月",
+      "youtube_title": "山賊一個月沒下山搶一粒米，女寨主數完人頭愣住了，山腳下卻亮起一條火龍",
+      "duration_s": 105,
+      "logline": "許硯要在三十天裡把暖棚重新蓋起來、讓八百人吃飽，而官軍隨時會來。",
+      "hook": "柳三娘揪著內奸的衣領：「說！」石老七一把按住她的手：「三娘，別問了。」她咬著牙鬆手。",
+      "hook_type": "danger",
+      "mid_hook": "第二十天清晨，暖棚掀開，一片綠芽從黑土裡冒出來；八百個山賊擠在油紙外面，有人哭了，有人不敢大聲喘氣。",
+      "conflict": "暖棚要重搭、種子要撐過寒夜，柳三娘還不信紙房子能救命。",
+      "turn": "第三十天，柳三娘點完人頭：沒有一個人下山搶過糧。系統：「任務完成。」同時跳出一行：「偵測到良緣：」「柳三娘 15。」許硯差點被口水嗆到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "慶功的火堆剛點起來，哨兵從崖邊跑回來：「山腳下，全是火把！」黑夜裡一條火龍正沿著山道往上爬。",
+        "question": "官軍為什麼偏挑這時候來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "山坡上第一片油紙暖棚在夜裡透出暖黃的光，像一排燈籠趴在黑色的山上。",
+      "glamour_shot": "柳三娘蹲在暖棚裡，指尖碰了碰一株綠芽，抬頭對許硯露出第一個不帶嘲笑的笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "山寨第一次一個月不下山搶",
+        "柳三娘好感 15",
+        "暖棚種出第一批薯苗與速生菜"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "s02-shi-laoqi",
+        "tang-xiaotang",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山南坡暖棚",
+        "黑鳳山寨"
+      ],
+      "state": {
+        "time": "第二季第 36 日，夜",
+        "knowledge": "任務完成，保住了農學知識；柳三娘被系統標成「良緣」。",
+        "carry_forward": "官軍火把從山腳爬上山。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "並肩",
+      "youtube_title": "兩千官軍夜圍黑鳳山，女寨主要殺下山，秀才拉住她：守，用我的紙燈籠",
+      "duration_s": 95,
+      "logline": "許硯要讓八百人守住山寨，柳三娘卻只想帶人衝下山拚命。",
+      "hook": "柳三娘雙刀一拔：「下山，殺出一條路！」許硯攔在她前面：「衝下去，八百個人回不來。」",
+      "hook_type": "line",
+      "mid_hook": "官軍背後突然亂了：秦霜帶著一百個柳溪鄉勇從山腳殺出，紅纓槍挑翻了官軍的帥旗。",
+      "conflict": "兩千官軍對八百山賊，山道只有一條。",
+      "turn": "許硯把暖棚剩下的油紙紮成上百盞燈籠，掛滿東坡的空林；官軍以為主力在東邊，全壓過去，正好撞進柳三娘的落石陣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "都尉鄭鐸在山下高喊：「交出許硯，饒全寨不死！」八百個山賊同時轉頭，看向柳三娘。",
+        "question": "柳三娘會交出許硯嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "東坡空林裡上百盞油紙燈籠同時亮起，官軍的火把長龍轉了一個大彎朝它們湧去。",
+      "glamour_shot": "秦霜騎馬從官軍陣後殺出，黑紅輕甲反著火光，紅纓槍一挑，帥旗應聲倒下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜率柳溪鄉勇來援",
+        "燈籠疑兵騙走官軍主力"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "s02-zheng-duo",
+        "wang-erniu",
+        "s02-shi-laoqi"
+      ],
+      "locations": [
+        "黑鳳山山道",
+        "黑鳳山東坡"
+      ],
+      "state": {
+        "time": "第二季第 36 日，深夜",
+        "knowledge": "官軍點名要許硯，不是要剿山寨。",
+        "carry_forward": "柳三娘要當著八百人選。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "老娘的人",
+      "youtube_title": "官軍要她交出秀才換全寨活命，女寨主一罈火酒砸下山：老娘的人，誰敢要",
+      "duration_s": 90,
+      "logline": "許硯要守住山寨，柳三娘要守住她的面子和她的人，官軍卻還有後手。",
+      "hook": "柳三娘笑出聲，抄起一罈許硯的烈酒砸下山道，秦霜一箭點火，一道火牆橫在官軍面前：「老娘的人，誰敢要？」",
+      "hook_type": "image",
+      "mid_hook": "火牆後，鄭鐸的副將悄悄調頭，不攻山寨，而是摸向南坡：那裡只有暖棚和十幾個守夜的老人。",
+      "conflict": "官軍被火牆擋住，卻轉去燒山寨的命根子。",
+      "turn": "許硯看懂了：「不是剿匪，」「是來斷糧的。」他和柳三娘同時往南坡跑。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "一支火箭劃過夜空，正中最大的那座暖棚，油紙轟地燒起來。暖棚裡還有三個老人沒出來。",
+        "question": "暖棚裡的老人逃得出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "山道上一道火牆騰起，官軍的馬在火光前人立而起，火星飛滿夜空。",
+      "glamour_shot": "柳三娘站在崖邊，火光從下往上照亮她的笑臉，粗辮被熱風吹起，雙刀扛在肩上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "火牆逼退官軍正面"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "s02-zheng-duo",
+        "s02-shi-laoqi"
+      ],
+      "locations": [
+        "黑鳳山山道",
+        "黑鳳山南坡暖棚"
+      ],
+      "state": {
+        "time": "第二季第 37 日，凌晨",
+        "knowledge": "官軍的真正目標是山寨的糧與許硯。",
+        "carry_forward": "最大的暖棚著火，裡面還有人。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "你娶我",
+      "youtube_title": "女寨主衝進火裡搶下山寨的命根子，慶功宴上一刀插進桌面：要我歸順可以，你娶我",
+      "duration_s": 140,
+      "logline": "許硯要救暖棚裡的人、打退官軍，再全身而退回柳溪，可山寨不打算放他走。",
+      "hook": "柳三娘第一個衝進火裡，許硯拎著濕棉被跟上；兩人一人背出一個老人，第三個被石老七扛了出來。",
+      "hook_type": "danger",
+      "mid_hook": "王二牛氣喘吁吁送上阿令的密信：鄭鐸手上的調兵令，蓋的不是兵部大印，是魏家的私印。魏少卿知道唐小棠在山上，也知道許硯會來。",
+      "conflict": "官軍沒退乾淨，山寨的糧差點被燒光，柳三娘的面子和八百人的生路都要一個交代。",
+      "turn": "許硯站上寨牆把魏家私調官軍的事喊下山，官兵一聽是替相府公子辦私事，軍心大亂；秦霜燒了山腳的糧車，鄭鐸連夜撤兵。慶功宴上，當初笑他書呆子的山賊一個個端碗來敬，柳三娘吃下第一顆暖棚裡長出的薯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯起身告辭，柳三娘「鏘」地把彎刀插進桌面，八百隻碗同時停下：「要我歸順可以，你娶我。」",
+        "question": "許硯娶不娶女寨主？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "懸崖山寨裡八百人同時舉碗，火盆一路燒到崖邊，遠處的官軍火把正一盞盞往山下退。",
+      "glamour_shot": "柳三娘在宴席火光中把刀插進桌面，抬眼看許硯，眼尾上挑，紅唇勾起一個勢在必得的笑。",
+      "setups": [],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救出暖棚裡三個老人",
+        "揭穿魏家私調官軍、逼退鄭鐸",
+        "阿令靠認印立功",
+        "柳三娘好感 15→22"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "s02-shi-laoqi",
+        "s02-zheng-duo",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山南坡暖棚",
+        "黑鳳山寨聚義廳"
+      ],
+      "state": {
+        "time": "第二季第 37 日，夜",
+        "knowledge": "魏少卿私調官軍要抓許硯；柳三娘要他娶她。",
+        "carry_forward": "許硯要回家問三位妻子。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "回家問老婆",
+      "youtube_title": "女寨主逼婚，秀才說要回家問老婆，三位妻子同時放下筷子，冷面公主起身就走",
+      "duration_s": 90,
+      "logline": "許硯要給柳三娘一個答案，得先過家裡三位妻子這一關。",
+      "hook": "刀還插在桌上，王二牛一口酒噴了出來。許硯乾咳：「我回家問問。」柳三娘：「問誰？」「問我老婆們。」",
+      "hook_type": "line",
+      "mid_hook": "柳溪飯桌上，許硯把柳三娘給的彎刀輕輕放在桌中央。三雙筷子同時停在半空。",
+      "conflict": "許硯帶著唐小棠平安回村，全村夾道放鞭炮；可一進家門，三位妻子各有各的算盤，沒有人先開口。",
+      "turn": "第一個開口的是唐小棠，她已經算好了：「她嫁過來，」「八百人是自家人。」「划算。」秦霜拍桌：「山賊進門？不行！」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "一直沒說話的阿令放下碗，起身走出門。系統輕響：「阿令好感 80→76。」許硯看著那行字，第一次慌了。",
+        "question": "阿令是在吃醋，還是另有心事？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "柳溪破屋的飯桌上，一把黑鳳紋彎刀橫在一盤青菜和三雙筷子中間。",
+      "glamour_shot": "三位妻子同時抬眼看許硯：阿令月白清冷、秦霜皺眉、唐小棠撐著下巴笑，燭光把三張臉排成一排。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠支持、秦霜反對，家裡的態度攤開"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山寨聚義廳",
+        "柳溪村許家飯桌"
+      ],
+      "state": {
+        "time": "第二季第 38 日，晚",
+        "knowledge": "唐小棠贊成、秦霜反對、阿令好感掉了 4。",
+        "carry_forward": "阿令一個人走進院子。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "磨刀的公主",
+      "youtube_title": "冷面公主深夜在院子裡磨匕首，丈夫嚇得不敢靠近，走過去一看她在排喜宴座位",
+      "duration_s": 95,
+      "logline": "許硯要哄回阿令，卻發現她在想的事跟他以為的完全不同；而柳三娘不請自來。",
+      "hook": "院子裡磨刀聲沙沙，阿令背對著許硯磨她的匕首。許硯腳步一頓：「那個……我可以解釋。」",
+      "hook_type": "danger",
+      "mid_hook": "阿令把匕首一收，攤開一張紙：她在排喜宴的座位，宮裡的規矩，誰坐上首、誰敬第一杯，一個都不能錯。好感掉的那 4 分，是因為他沒先問她。",
+      "conflict": "家裡還沒談妥，柳三娘已經帶著二十個山賊和一擔擔聘禮出現在柳溪村口。",
+      "turn": "柳三娘大步進院：「我來看看我男人的家。」四個女人在院門口站成一圈，誰都沒先讓。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "秦霜的紅纓槍和柳三娘的雙刀同時出手，在許硯鼻尖前一寸交叉，火星濺到他眉毛上。",
+        "question": "兩個女人真要在院子裡打起來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "柳溪村口二十個山賊挑著紅綢聘禮排成一列，村民扒著門縫看。",
+      "glamour_shot": "阿令在月下低頭寫座位，木簪斜插，眼皮微抬瞥了許硯一眼，嘴角幾乎看不見地彎了一下。",
+      "setups": [
+        "s02-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "許硯向阿令道歉沒先問她，好感回到 78"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang"
+      ],
+      "locations": [
+        "柳溪村許家小院",
+        "柳溪村口"
+      ],
+      "state": {
+        "time": "第二季第 39 日，上午",
+        "knowledge": "阿令在意的是被尊重；柳三娘直接上門。",
+        "carry_forward": "秦霜與柳三娘兵刃相交。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "槍與刀",
+      "youtube_title": "將門之女對上女寨主，槍刀相交誰也不讓，直到八歲小妹抱著兔子走進兩人中間",
+      "duration_s": 90,
+      "logline": "許硯要讓秦霜和柳三娘停手，系統卻在這時候丟給他一個七天的限時任務。",
+      "hook": "許硯抱頭蹲下，兩人在他頭頂過了十招，槍尖挑飛了他的布帶，頭髮散了一臉。",
+      "hook_type": "image",
+      "mid_hook": "系統彈窗蓋住半個畫面：「七日內，柳三娘到 40。」目前 22；失敗懲罰寫著：「隨機一位妻子清零。」",
+      "conflict": "兩個最能打的女人誰都不肯先收手。",
+      "turn": "小禾抱著草編兔子走進兩人中間，仰頭問：「你們要打我哥哥嗎？」槍和刀同時收回，兩個人搶著蹲下去看小禾有沒有被嚇到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "柳三娘蹲下時，袖裡掉出一張摺皺的告示。秦霜撿起來一看，臉色變了：官府通緝柳家滿門，罪名「通敵」。",
+        "question": "柳家通了誰的敵？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "goxue"
+      ],
+      "spectacle": "院子裡紅纓槍與雙刀纏鬥的慢動作，一片落葉被槍風切成兩半，許硯散髮蹲在正中間。",
+      "glamour_shot": "秦霜與柳三娘同時收招，一黑紅一暗紅兩道身影背對背站定，高馬尾與粗辮在風裡一起揚起。",
+      "setups": [
+        "s02-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜與柳三娘打成平手、互相服氣"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "a-ling",
+        "tang-xiaotang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院"
+      ],
+      "state": {
+        "time": "第二季第 39 日，正午",
+        "knowledge": "七日任務開始；柳家被以「通敵」通緝。",
+        "carry_forward": "秦霜手上的通緝告示。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "只說一半",
+      "youtube_title": "女寨主的通緝令和將門之女父親的罪名一模一樣，她說出落草的原因，卻只說了一半",
+      "duration_s": 120,
+      "logline": "許硯要讓柳三娘說出她為什麼落草，柳三娘卻只肯說一半。",
+      "hook": "秦霜把告示拍在桌上，手指點著那個朱紅大印：「同一年，同一顆印。」「跟我爹一樣。」",
+      "hook_type": "question",
+      "mid_hook": "錢員外的家丁在牆外起鬨：「許家要娶山賊婆囉！」柳三娘一手一個把他們扔進池塘，濺得錢員外一身泥。",
+      "conflict": "柳三娘只說她爹是獵戶、被官府冤枉，全家逃上黑鳳山；再問，她就閉嘴。",
+      "turn": "許硯又看見她頸上的舊軍牌，這次看清了：上面的字被磨得只剩一個「北」。柳三娘把它塞回衣領：「撿的。」秦霜沒說話，眼神卻沒離開那塊牌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡屋頂上，柳三娘抱著膝蓋對許硯說：「我爹最後一句話是……」她突然停住，轉頭看他，眼眶發紅。",
+        "question": "她爹最後說了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "兩個錢家家丁被拋進池塘，水花炸開，錢員外的綢袍被濺成泥色。",
+      "glamour_shot": "柳三娘坐在月下的屋脊，粗辮垂在肩前，額巾解下拿在手裡，第一次露出卸下防備的側臉。",
+      "setups": [],
+      "payoffs": [
+        "s02-t06",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘好感 22→30，因為許硯陪她坐了一夜、沒逼問",
+        "錢員外家丁當眾吃癟"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "qian-yuanwai",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家",
+        "許家屋頂"
+      ],
+      "state": {
+        "time": "第二季第 39 日，夜",
+        "knowledge": "柳家被冤通敵；軍牌上只剩一個「北」字；秦霜起了疑。",
+        "carry_forward": "柳三娘欲言又止；任務剩六天。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "嫁妝怎麼算",
+      "youtube_title": "女寨主抬來一箱嫁妝，首富千金拿算盤一筆筆算，最後一句划算被她聽得清清楚楚",
+      "duration_s": 95,
+      "logline": "許硯要讓柳三娘的好感在期限內過 40，唐小棠的一句玩笑卻差點讓婚事告吹。",
+      "hook": "柳三娘把話吞了回去，抹了把眼睛：「明天再說。」第二天一早，她把一口大箱子砸在院子裡：「嫁妝！」箱蓋一開，三百張山貨皮子和一卷黑鳳山全圖。",
+      "hook_type": "image",
+      "mid_hook": "唐小棠撥著算盤報價，報到最後一頁停住：嫁妝單上寫著「黑鳳山，八百口」。她抬頭：「人，也算嫁妝？」",
+      "conflict": "八百張嘴要兩年的糧，許家眼下扛不起。",
+      "turn": "許硯把那一頁撕下來：「人不是嫁妝，是家人。」他提出讓山寨出山貨、藥材，走唐家的商路賣；柳三娘的好感跳到 35。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "柳三娘去廚房端茶，聽見唐小棠在裡頭跟丫鬟說：「娶她？當然划算，」「白撿八百個兵。」茶盤落地。系統：「柳三娘好感 35→18。」",
+        "question": "婚事要黃了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "goxue",
+        "zhongtian"
+      ],
+      "spectacle": "院子裡攤開一整張手繪黑鳳山全圖，山溝、泉眼、林場密密麻麻，唐小棠趴在上面撥算盤。",
+      "glamour_shot": "唐小棠趴在山圖上，雙環髻上的粉絲帶垂到紙面，抬頭時梨渦一閃，算盤珠被撥得飛快。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "談成山寨山貨走唐家商路的生意"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村許家小院",
+        "許家廚房"
+      ],
+      "state": {
+        "time": "第二季第 40 日",
+        "knowledge": "柳三娘聽到唐小棠說娶她划算，好感掉到 18。",
+        "carry_forward": "任務剩五天，好感離 40 差 22。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "帳本上的我",
+      "youtube_title": "女寨主以為自己只是一筆帳，首富千金追出去翻開帳本：你看，我也是一筆虧本生意",
+      "duration_s": 110,
+      "logline": "許硯要挽回柳三娘的信任，唐小棠要補回自己捅的簍子。",
+      "hook": "柳三娘撿起碎茶盞，笑得很淡：「原來我是一筆帳。」她轉身就走，唐小棠提著裙子追出去。",
+      "hook_type": "line",
+      "mid_hook": "唐小棠在村口攔住她，翻開自己的帳本最前頁，上面寫著：「冒名配婚，本錢零。」「賺了一個家。」",
+      "conflict": "柳三娘不信許家要的是她，不是八百個兵。",
+      "turn": "柳三娘看完帳本笑了，卻不回頭：「要我信，叫他自己來證明。」許硯決定當著全村寫下文書：黑鳳寨八百人不入許家軍。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "祠堂裡，許硯的筆懸在文書上「不要兵，只要她」那行字上。秦霜一把抓住他的手腕：「你瘋了？那是八百個人！」",
+        "question": "許硯真要放棄八百個兵？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "柳溪祠堂裡全村老少擠滿，一張空白文書攤在供桌上，燭火搖晃。",
+      "glamour_shot": "唐小棠在村口夕陽裡攤開帳本，粉色襦裙被風吹起，臉上第一次沒有笑，只有認真。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠與柳三娘和好"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "qin-shuang",
+        "a-ling",
+        "wang-erniu"
+      ],
+      "locations": [
+        "柳溪村口",
+        "柳溪祠堂"
+      ],
+      "state": {
+        "time": "第二季第 41 日",
+        "knowledge": "柳三娘要許硯用行動證明他娶的是人。",
+        "carry_forward": "文書寫到一半，秦霜反對。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "不要兵",
+      "youtube_title": "秀才當眾立下文書不要女寨主的八百個兵，八百山賊看完卻全跪下：我們自己跟",
+      "duration_s": 100,
+      "logline": "許硯要用一紙文書證明真心，賭的是八百人會不會覺得被看不起。",
+      "hook": "許硯輕輕掙開秦霜的手：「兵可以再練，她只有一個。」落筆，按手印。秦霜愣住了。",
+      "hook_type": "line",
+      "mid_hook": "王二牛把文書扛上山，柳三娘當著八百人念完；山賊們炸了：「他看不起我們？」有人摔了碗。",
+      "conflict": "八百人覺得被拒絕，柳三娘夾在中間。",
+      "turn": "石老七站上石台：「他是不想拿你們換她。」八百人沉默片刻，一個接一個跪下：「我們不是嫁妝！」「我們自己跟！」柳三娘好感 18→42，任務完成；一只金色獎勵箱浮起，許硯沒打開，收了起來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "山腳下秦霜正帶柳溪鄉勇操練，石老七路過，手裡的柴捆掉在地上，臉色發白：「這槍法……是秦家的。」",
+        "question": "石老七怎麼認得秦家槍法？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "goxue"
+      ],
+      "spectacle": "懸崖山寨的石台下，八百個山賊一排接一排跪下，像麥浪一樣倒下去。",
+      "glamour_shot": "柳三娘捏著文書站在石台上，風把紙吹得嘩嘩響，她低頭笑，眼角卻有一點亮光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘好感 18→42，因為他寧可不要兵也要她",
+        "八百人自願歸順",
+        "強制任務完成"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "wang-erniu",
+        "s02-shi-laoqi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪祠堂",
+        "黑鳳山寨石台",
+        "黑鳳山腳校場"
+      ],
+      "state": {
+        "time": "第二季第 42 日",
+        "knowledge": "八百人自願跟許家；獎勵箱還沒開；石老七認得秦家槍法。",
+        "carry_forward": "婚期定在三日後，辦在山上。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "誰先接納她",
+      "youtube_title": "所有人以為冷面公主最難搞，喜宴座位一排出來，她竟把女寨主排在自己身邊",
+      "duration_s": 105,
+      "logline": "婚禮前夜，許硯要讓四位妻子坐得下同一張桌，以為最難過的是阿令。",
+      "hook": "秦霜追上石老七：「你是誰？」石老七低頭撿柴：「伙夫。」轉身時，他用的是軍中的轉身步。",
+      "hook_type": "question",
+      "mid_hook": "阿令攤開她排了三天的喜宴座位：上首正中是許硯，右手第一位不是她，是柳三娘。",
+      "conflict": "秦霜還沒點頭，三位妻子各自的面子都要顧到。",
+      "turn": "阿令把自己的白玉步搖插進柳三娘的辮子：「宮裡的規矩，新人坐上首。」柳三娘第一次說不出話；秦霜看在眼裡，終於說：「明天比箭，你贏我就認。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿令替柳三娘理好步搖，輕聲說：「我也是被逼來的。」頓了頓，她看向許硯：「這裡，是家。」柳三娘的眼淚掉了下來。",
+        "question": "阿令什麼時候把這裡當成家的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "燭光下一張大紅喜宴座位圖攤在桌上，四個名字圍著許硯的名字排成一圈。",
+      "glamour_shot": "阿令替柳三娘插上白玉步搖，月白衣袖拂過暗紅皮甲，兩種美在燭光裡並排。",
+      "setups": [],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令第一個接納柳三娘",
+        "阿令好感 78→82，因為許硯讓她主持家禮"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "liu-sanniang",
+        "qin-shuang",
+        "s02-shi-laoqi",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山腳校場",
+        "柳溪村許家"
+      ],
+      "state": {
+        "time": "第二季第 44 日，婚禮前夜",
+        "knowledge": "阿令接納了柳三娘；秦霜要比箭才認。",
+        "carry_forward": "明天山上婚禮，還有一場比箭。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "比箭成親",
+      "youtube_title": "山上婚禮比箭定輸贏，將門之女最後一箭故意射偏，女寨主追問：你讓我",
+      "duration_s": 100,
+      "logline": "婚禮當天，許硯要讓秦霜和柳三娘和好，系統卻在拜堂時又塞來一個任務。",
+      "hook": "柳三娘抹掉眼淚，把步搖插緊：「明天，我嫁。」隔天的黑鳳山頂鑼鼓震天，八百山賊一身紅，柳溪鄉親扛著雞鴨爬上山；兩邊人馬在寨門口互看，誰都不知道該先笑還是先拱手。",
+      "hook_type": "image",
+      "mid_hook": "比箭到最後一箭，兩人都是九中靶心。秦霜拉滿弓，箭卻偏了半寸。柳三娘猛地回頭：「你讓我？」秦霜：「新娘子不能輸。」",
+      "conflict": "兩個最好勝的女人要在全寨面前分出高下。",
+      "turn": "拜完天地，許硯拿出那只沒開的獎勵箱，和柳三娘一起打開：「山林索道與梯田圖」。柳三娘看懂了，那是讓黑鳳山再也不用下山搶的圖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "司儀剛喊「送入洞房」，系統跳出新任務：「今晚四人同桌，」「吃完一頓飯。」失敗懲罰：「全體 -10。」許硯看向四個女人，笑容僵住。",
+        "question": "四個人能平平安安吃完一頓飯嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "懸崖山寨掛滿紅燈籠，八百個山賊與上百個柳溪鄉親擠在同一片崖頂，紅綢一路掛到雲裡。",
+      "glamour_shot": "柳三娘一身暗紅嫁衣、辮上插著白玉步搖，回眸看秦霜時，崖頂的風把紅蓋頭吹起一角。",
+      "setups": [],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜接納柳三娘",
+        "拿到山林索道與梯田圖（繩索與工匠要自己找）",
+        "柳三娘好感 42→46"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "a-ling",
+        "tang-xiaotang",
+        "xu-xiaohe",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山寨",
+        "黑鳳山寨喜堂"
+      ],
+      "state": {
+        "time": "第二季第 45 日，傍晚",
+        "knowledge": "四位妻子彼此認了，但還沒同桌吃過一頓飯。",
+        "carry_forward": "隱藏任務：今晚四人同桌吃完一頓飯。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "喜宴與號角",
+      "youtube_title": "四個老婆第一次同桌吃飯，系統任務剛完成，山下號角一響五千官軍圍住黑鳳山",
+      "duration_s": 135,
+      "logline": "許硯要讓四位妻子吃完第一頓團圓飯，喜宴卻成了官軍等的時機。",
+      "hook": "喜桌上，阿令和秦霜同時夾了一塊肉放進許硯碗裡，兩雙筷子在碗上方撞在一起。唐小棠默默把算盤往前推：「這頓一共……」",
+      "hook_type": "image",
+      "mid_hook": "錢員外派人送來的賀禮被當眾打開：一雙破草鞋。柳三娘正要拔刀，唐小棠笑盈盈抽出一張錢員外欠唐家三千兩的借據，當著百桌賓客念出來，送禮的家丁抱頭逃下山。",
+      "conflict": "四個女人誰都不肯先放下筷子，任務離成功只差最後一口。",
+      "turn": "小禾爬上桌，把四個人的碗推到一起：「一起吃才香。」四雙筷子同時夾向同一盤菜，系統：「任務完成，」「全體 +5。」八百人同時舉碗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "百桌碰碗聲還沒落，山下長長一聲號角。崖邊的哨兵回頭，臉色慘白：火把從四面八方湧來，五千官軍把黑鳳山圍得水洩不通。柳三娘的酒碗落地。",
+        "question": "新婚當夜，誰能讓黑鳳山活下來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "goxue",
+        "shuang"
+      ],
+      "spectacle": "山寨喜宴上百桌紅燈籠一路排到崖邊，下一刻山腳的火把連成一片火海。",
+      "glamour_shot": "四位妻子同桌：月白、黑紅、桃粉、暗紅四種顏色圍著許硯，燈籠光裡四個人同時低頭偷笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全家第一次四位妻子同桌吃完飯",
+        "四位妻子好感各 +5（阿令 87、秦霜 74、唐小棠 77、柳三娘 51）",
+        "錢員外的羞辱被當眾反打"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山寨喜堂",
+        "黑鳳山崖邊"
+      ],
+      "state": {
+        "time": "第二季第 45 日，夜",
+        "knowledge": "官軍趁喜宴把黑鳳山圍死，人數五千。",
+        "carry_forward": "五千官軍圍山，黑鳳山只有一條山道。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "鎖了一季的配方",
+      "youtube_title": "五千官軍圍住新婚山寨，秀才終於打開鎖了一整季的火藥配方，第一條規矩卻是不炸人",
+      "duration_s": 95,
+      "logline": "許硯要讓黑鳳山活過今晚，只剩那張他發誓不用的火藥配方。",
+      "hook": "柳三娘一把扯下紅蓋頭，抄起雙刀；許硯按住她的手：「新娘子今天不打架。」",
+      "hook_type": "line",
+      "mid_hook": "許硯眼前彈出一行字：「確認開啟？」「不可撤銷。」面板上的配方文字一片模糊，只有名稱亮著。他按下確認：「只炸山，不炸人。」",
+      "conflict": "有方法沒材料：缺硝，山上沒人知道哪裡有。",
+      "turn": "柳三娘想了一會兒：「後山蝙蝠洞，」「地上有層白霜。」她帶人連夜進洞，天亮前扛回十幾簍。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯指著唯一的山道：「炸這裡。」秦霜沉聲：「炸了，他們上不來，」「我們也出不去。」所有人看著他，火摺子已經在他手裡。",
+        "question": "許硯要親手封死山寨的唯一出路？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "zhongtian"
+      ],
+      "spectacle": "火把照進後山蝙蝠洞，成千上萬隻蝙蝠從洞口傾瀉而出，掠過柳三娘舉著的火把。",
+      "glamour_shot": "柳三娘還穿著暗紅嫁衣、外面套上皮甲，舉著火把走進洞口，辮上的白玉步搖一閃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "開啟火藥配方並定下「只炸山不炸人」",
+        "柳三娘找到硝源"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "s02-shi-laoqi",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山寨",
+        "黑鳳山後山蝙蝠洞"
+      ],
+      "state": {
+        "time": "第二季第 46 日，凌晨",
+        "knowledge": "火藥能做，但只夠炸一次。",
+        "carry_forward": "要不要炸掉唯一的山道。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "山會打雷",
+      "youtube_title": "五千官軍爬上山道，秀才點燃引信卻熄了，女寨主舉火衝上懸崖，整座山轟地打了一聲雷",
+      "duration_s": 90,
+      "logline": "許硯要用一聲巨響讓五千官軍退兵，而且不能傷到一個人。",
+      "hook": "天剛亮，官軍先鋒踏上窄窄的山道。許硯咬牙點火：「炸。」引信嘶嘶燒到一半，熄了。",
+      "hook_type": "danger",
+      "mid_hook": "柳三娘一把奪過火把，沿著懸崖邊的石縫跑向藥包，官軍的弓箭手已經發現了她。",
+      "conflict": "引信受潮，官軍離藥包只剩五十步。",
+      "turn": "轟的一聲，山道前段的岩壁整片崩落，土石在官軍先鋒面前堆成一道牆，沒有一個人被埋；五千人看著冒煙的山，以為山神發怒，都尉鄭鐸的馬受驚把他甩進泥坑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "官軍潰退的煙塵裡，許硯眼前的系統面板邊緣，閃過一道暗紅色的光，像有人在遠處看了他一眼。下一秒就不見了。",
+        "question": "面板上那道紅光是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "火藥炸開山壁，土石與塵煙沖天，黑鳳寨的旗幟被氣浪掀起；山道前一道新生的石牆擋住官軍。",
+      "glamour_shot": "柳三娘從崖邊煙塵裡翻身躍回，嫁衣下擺被氣浪吹起，臉上沾著灰，卻笑得最大聲。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "五千官軍不戰而退，無一人傷亡",
+        "柳三娘好感 51→56，因為他把點火的事交給她"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "s02-zheng-duo",
+        "xitong"
+      ],
+      "locations": [
+        "黑鳳山山道",
+        "黑鳳山崖頂"
+      ],
+      "state": {
+        "time": "第二季第 46 日，清晨",
+        "knowledge": "火藥第一次用了；系統面板閃過不明的紅光。",
+        "carry_forward": "黑鳳山出入只剩新修的小路；天下大旱，流民開始往青州湧。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "從村到堡",
+      "youtube_title": "流民湧進柳溪村，長公主拿出宮裡的本事登記戶籍，人群裡卻走出一個讓小妹發抖的人",
+      "duration_s": 105,
+      "logline": "許硯要把柳溪村擴成一座堡收留流民，卻不知道流民裡有一個害過原主的人。",
+      "hook": "許硯揉眼再看，面板一片正常淡藍。系統：「無異常。」他還沒鬆口氣，王二牛衝來：「硯哥，村口來了三千人！」",
+      "hook_type": "question",
+      "mid_hook": "阿令擺開戶籍桌，用宮裡造冊的法子三炷香登記完五百人，石匠、木匠、窯工一一挑出來；城郭營造圖第一次有了能動手的人。",
+      "conflict": "要人、要石料、要吃飯的嘴越來越多。",
+      "turn": "夜裡石老七找到許硯，終於說了實話：他當年是鎮北秦家軍的伙頭兵，「秦將軍不會通敵。」許硯還沒消化這句話，流民隊伍裡一個瘦高的男人經過，小禾一下躲到他身後發抖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，那個瘦高男人摸進小禾的房間，屏住氣，伸手去拿她枕邊的草編兔子。小禾的眼睛突然睜開。",
+        "question": "他為什麼要偷小禾的兔子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "ganren"
+      ],
+      "spectacle": "柳溪村口三千流民排成蜿蜒長隊，阿令的戶籍桌前竹牌一塊塊遞出。",
+      "glamour_shot": "阿令坐在戶籍桌後提筆，月白衣袖挽起，抬眼叫下一個人時，陽光落在她的睫毛上。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令三炷香登記五百人、挑出工匠",
+        "石老七承認是秦家軍舊人"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "wang-erniu",
+        "xu-xiaohe",
+        "s02-shi-laoqi",
+        "s02-xu-dalang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村口",
+        "許家小禾的房間"
+      ],
+      "state": {
+        "time": "第二季第 50 日，夜",
+        "knowledge": "秦將軍舊部說秦將軍沒通敵；有個陌生人怕被小禾認出。",
+        "carry_forward": "陌生人的手已經碰到兔子。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "兔子不能拆",
+      "youtube_title": "陌生人半夜偷八歲小妹的草編兔子，將門之女兩秒破門，小妹一句話讓全家都愣住",
+      "duration_s": 100,
+      "logline": "許硯要弄清楚有人為什麼要搶妹妹的玩具，答案卻藏在原主留下的一句話裡。",
+      "hook": "小禾抱緊兔子放聲尖叫，門板被一槍挑飛，秦霜的槍尖兩秒就頂到男人喉前；男人翻窗逃走，只留下一個錢袋。",
+      "hook_type": "danger",
+      "mid_hook": "小禾抱著兔子發抖：「他是大郎哥。」「哥哥落水那天，」「他也在河邊。」許硯第一次聽到原主落水不是意外。",
+      "conflict": "兔子裡顯然藏著什麼，可那是小禾唯一的寶貝。",
+      "turn": "許硯要拆兔子，小禾死死抱住：「哥哥說，等他回來才能拆。」許硯放下手，他不是她等的那個哥哥，這個兔子他不拆。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "王二牛倒出那人掉下的錢袋，一錠銀子滾到燈下，底下壓著一個戳記：「相府」。許硯抬頭：「魏家，要一個小孩的兔子？」",
+        "question": "魏家為什麼要搶小禾的兔子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "門板被槍尖整片挑飛，月光灌進屋裡，秦霜持槍立在門口的剪影。",
+      "glamour_shot": "秦霜收槍蹲下，替小禾擦眼淚，英氣的臉在燭光下第一次溫柔得像姊姊。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禾平安，許大郎現形",
+        "許硯尊重小禾，沒拆兔子"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "xu-xiaohe",
+        "wang-erniu",
+        "s02-xu-dalang"
+      ],
+      "locations": [
+        "許家小禾的房間"
+      ],
+      "state": {
+        "time": "第二季第 50 日，深夜",
+        "knowledge": "族兄許大郎與原主落水有關，身上帶著相府的銀子。",
+        "carry_forward": "許大郎逃了；兔子裡藏著魏家要的東西。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "第一架水車",
+      "youtube_title": "天下大旱河水見底，將門之女好感破八十，系統給的水車圖一轉，流民跪在田邊哭了",
+      "duration_s": 120,
+      "logline": "許硯要讓旱田有水，系統給了水車圖，木匠、木料和一條快乾掉的河都得自己想辦法。",
+      "hook": "許硯把相府銀子往桌上一扔，坐在小禾窗下守了一整夜。天亮時，一碗熱茶遞到他眼前。",
+      "hook_type": "image",
+      "mid_hook": "秦霜坐到他身邊：「你比原來那個好。」系統叮一聲：「秦霜好感 74→80。」獎勵箱彈開：龍骨水車與筒車圖。",
+      "conflict": "河水太低，水車轉不起來；木匠只有三個。",
+      "turn": "許硯帶流民在河上築起一道石堰把水位抬高；柳三娘從黑鳳山放下第一批索道木料。第七天，第一架筒車吱呀轉起，水流進乾裂的田。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "水剛流進田，突然越來越小，最後斷了。上游傳來錢員外的笑聲：他的家丁正把一車車石頭推進河裡：「這河，是我錢家的！」",
+        "question": "錢員外斷了水，田怎麼辦？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "第一架高大的筒車在河上轉起來，竹筒一個個舀起河水倒進水槽，流進龜裂的田地。",
+      "glamour_shot": "秦霜坐在晨光的門檻上，高馬尾垂在肩後，把茶遞給許硯時別開臉，耳根微紅。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜好感 74→80，因為他守了小禾一夜",
+        "拿到水車圖並造出第一架筒車",
+        "許硯跟小禾約好學堂第一課"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "qian-yuanwai",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "許家小院",
+        "柳溪河石堰",
+        "柳溪村旱田"
+      ],
+      "state": {
+        "time": "第二季第 58 日",
+        "knowledge": "水車能用；錢員外在上游築壩斷水。",
+        "carry_forward": "流民種下的田要乾了。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "河是誰的",
+      "youtube_title": "員外築壩說這條河是他家的，長公主翻出一本百年縣志，上面寫的卻是另一個名字",
+      "duration_s": 90,
+      "logline": "許硯要讓河水回到田裡，錢員外仗著地契說河是他的。",
+      "hook": "許硯走上壩頂，錢員外搖著地契：「河在我地上，就是我家的！」身後家丁哄笑。",
+      "hook_type": "line",
+      "mid_hook": "阿令翻開她從縣衙借來的百年縣志：「柳溪河，官河。」「私截者杖八十。」錢員外的笑僵在臉上。",
+      "conflict": "錢員外不服，要拖去縣衙慢慢告。",
+      "turn": "柳三娘帶來的山寨弟兄一人一塊石頭，半個時辰拆光了壩；錢員外灰頭土臉退走。混亂裡，阿令卻注意到一個自稱啞巴的流民阿福，蹲在地上用樹枝寫字，寫的是一手工整的官體。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "王二牛跑回來：「許大郎躲在錢府地窖！」秦霜已經把槍扛上肩：「翻牆，三息就夠。」許硯看著錢府高牆，沒有搜查令。",
+        "question": "闖不闖錢府？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shuang",
+        "quanmou",
+        "zhongtian"
+      ],
+      "spectacle": "上百個山寨弟兄排成一條人龍搬石頭，石壩一塊塊消失，河水轟地重新奔流。",
+      "glamour_shot": "阿令站在壩上翻開縣志，河風把書頁和她的衣袖一起吹起，聲音不大卻壓住全場。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "河水回到柳溪田裡",
+        "阿令憑縣志讓錢員外當眾吃癟"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "liu-sanniang",
+        "qin-shuang",
+        "qian-yuanwai",
+        "wang-erniu",
+        "s02-a-fu"
+      ],
+      "locations": [
+        "柳溪河上游錢家壩",
+        "錢府外"
+      ],
+      "state": {
+        "time": "第二季第 59 日",
+        "knowledge": "許大郎藏在錢府；流民裡有個「啞巴」會寫官體字。",
+        "carry_forward": "要不要硬闖錢府。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "學堂第一課",
+      "youtube_title": "秀才不闖員外府，反而開了一間學堂，第一課只教一個字，一百個孩子同時舉起手",
+      "duration_s": 110,
+      "logline": "許硯要抓許大郎又不能落人口實，他選擇開學堂，讓消息自己找上門。",
+      "hook": "許硯按下秦霜的槍：「不闖。讓他自己出來。」轉頭對全村喊：「明天學堂開門！」「來上學，管飯！」",
+      "hook_type": "line",
+      "mid_hook": "學堂第一課，許硯在黑板上寫了一個大字：「禾」。「有禾就有飯吃。」小禾站起來大聲念，一百個孩子跟著念，窗外的流民大人紅了眼眶。",
+      "conflict": "許大郎躲在錢府不出來，錢員外要把他送走滅口。",
+      "turn": "下課時，一個錢府長工的兒子拉住許硯的袖子：「我爹說，今晚有船，」「要送走地窖的人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "子夜的柳溪河，一條小船已經解纜，許大郎縮在船艙裡。船夫撐篙的一刻，崖上的柳三娘拉滿弓，箭頭對準船繩。",
+        "question": "一箭射得中嗎？船會不會跑掉？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhongtian"
+      ],
+      "spectacle": "新蓋的學堂裡一百個孩子同時舉手，窗外擠滿流民大人的臉。",
+      "glamour_shot": "柳三娘伏在崖頂拉弓，月光勾出她的側臉與弓弦，粗辮垂在背上一動不動。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "學堂開學，一百個孩子入學",
+        "得到許大郎今晚出逃的消息"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "s02-xu-dalang"
+      ],
+      "locations": [
+        "柳溪學堂",
+        "柳溪河夜渡口"
+      ],
+      "state": {
+        "time": "第二季第 60 日，子夜",
+        "knowledge": "錢員外要把許大郎送走。",
+        "carry_forward": "船要開了，箭在弦上。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "落水真相",
+      "youtube_title": "族兄跪在祠堂說出原主落水的真相：推他下河的是我，叫我推的是錢員外",
+      "duration_s": 120,
+      "logline": "許硯要從許大郎嘴裡問出原主落水的真相，錢員外卻搶先一步反咬。",
+      "hook": "箭射斷船繩，小船打轉；秦霜從岸上一躍跳上船頭，許大郎還來不及跳河，就被她一把按在船板上。",
+      "hook_type": "danger",
+      "mid_hook": "祠堂裡，許大郎在族老面前跪下：「是我推你下河的。」他說，原主那天在河邊撿到一枚玉佩，錢員外受魏家之命要拿回去，原主不給。",
+      "conflict": "許硯要的是錢員外伏法，許大郎卻怕得隨時會翻供。",
+      "turn": "許大郎說完，祠堂裡一片死寂；原主是因為一枚玉佩被推下河的，而魏家到現在還在找它。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "祠堂大門被踹開，錢員外帶著縣衙差役闖進來，指著許硯：「他綁了我家的長工！」鐵鍊嘩啦一聲，鎖上許硯的手腕。",
+        "question": "錢員外反咬一口，許硯要坐牢？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang",
+        "goxue"
+      ],
+      "spectacle": "柳溪祠堂裡祖宗牌位層層疊疊，燭火下全族老少圍成一圈，許大郎跪在正中。",
+      "glamour_shot": "秦霜站在祠堂門口，黑紅輕甲沾著夜露，槍尖點地，眼神冷得像北疆的雪。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "抓回許大郎",
+        "原主落水的真相大白"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "s02-xu-dalang",
+        "qian-yuanwai",
+        "wang-erniu"
+      ],
+      "locations": [
+        "柳溪河夜渡口",
+        "柳溪祠堂"
+      ],
+      "state": {
+        "time": "第二季第 61 日，凌晨",
+        "knowledge": "原主被許大郎推下河，主使是錢員外，背後是魏家要那枚玉佩。",
+        "carry_forward": "許硯被差役鎖走。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "錢員外伏法",
+      "youtube_title": "員外帶差役反咬秀才綁人，首富千金一本帳、長公主一條律、八歲小妹一本舊書冊，當堂翻盤",
+      "duration_s": 120,
+      "logline": "許硯要在縣衙公堂上讓錢員外伏法，可許大郎已經被嚇得要翻供。",
+      "hook": "鐵鍊剛扣上，唐小棠擠進祠堂舉起一本帳：「錢府帳房的副本，」「五十兩買的。」",
+      "hook_type": "line",
+      "mid_hook": "縣衙公堂上，許大郎被錢員外一眼瞪得發抖：「我、我剛才是被逼的……」錢員外笑了。",
+      "conflict": "證人翻供，帳本只能證明錢員外付過錢，不能證明付錢做什麼。",
+      "turn": "小禾抱著一本舊書冊衝進公堂：那是原主的書，最後一頁寫著原主的字：「大郎約我河邊。」「若我不回，錢員外。」阿令扮成書吏念出大衡律：主使殺人，與下手者同罪。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "錢員外被拖下公堂，突然回頭狂笑：「魏家會放過它？」「它在你妹妹手裡！」滿堂的人一起看向小禾懷裡的兔子。人群後，啞巴阿福悄悄退出門外。",
+        "question": "兔子裡到底藏著什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shuang",
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "清水縣衙公堂外擠滿柳溪村民與流民，驚堂木落下時，百人同時屏息。",
+      "glamour_shot": "阿令一身灰布書吏衣、髮束方巾，站在公堂側念律，清冷的嗓音讓滿堂安靜。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "錢員外伏法、田產充公分給佃戶",
+        "唐小棠的帳、阿令的律、小禾的書冊各立一功",
+        "唐小棠好感 77→79"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "xu-xiaohe",
+        "qian-yuanwai",
+        "s02-xu-dalang",
+        "s02-a-fu"
+      ],
+      "locations": [
+        "清水縣衙公堂"
+      ],
+      "state": {
+        "time": "第二季第 61 日，午後",
+        "knowledge": "錢員外伏法；全堂都聽見東西在小禾的兔子裡；阿福溜走了。",
+        "carry_forward": "兔子裡的東西被所有人知道了。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "兔子裡的玉佩",
+      "youtube_title": "柳溪堡城牆建成那晚，八歲小妹親手拆開草編兔子，將門之女看見裡面的東西手在發抖",
+      "duration_s": 150,
+      "logline": "許硯要守住兔子裡的東西，也要讓柳溪堡在流民潮之前建成。",
+      "hook": "許硯一路狂奔回家，推門：小禾抱著兔子坐在床上，柳三娘雙刀橫在膝上守在門口：「我在，誰也拿不走。」",
+      "hook_type": "danger",
+      "mid_hook": "城牆最後一塊石頭落下，柳溪堡的匾額掛上城門；錢府的大宅改成學堂和糧倉，當年錢家的佃戶拿到了自己名字的田契，有人跪在地上捧著那張紙哭。",
+      "conflict": "魏家知道東西在哪了，許硯要在對方動手前弄清楚那是什麼，卻不想逼小禾。",
+      "turn": "夜裡，小禾自己抱著兔子走到許硯面前：「哥哥回來了，可以拆了。」她把兔子放在他手上，等他拆。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "兔子裡掉出一枚刻著猛虎的青玉佩。秦霜進門看見，臉一下白了，捧起玉佩的手在發抖：「這是我爹的東西。」她抬頭，眼淚掉下來：「他送出來，是要救命的。」",
+        "question": "秦將軍要救誰的命？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "柳溪堡城牆一天天升高的延時：從破村、木柵、夯土到石牆，最後匾額掛上城門，城下流民潮水般湧來。",
+      "glamour_shot": "秦霜在燭光下捧著玉佩，高馬尾垂在肩前，淚光裡的杏眼第一次露出小女孩的樣子。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "柳溪堡建成：城牆、水車、糧倉、學堂",
+        "錢家佃戶分到田",
+        "小禾把原主的託付交給了許硯"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "a-ling",
+        "tang-xiaotang",
+        "wang-erniu"
+      ],
+      "locations": [
+        "許家小禾的房間",
+        "柳溪堡城門",
+        "柳溪堡學堂"
+      ],
+      "state": {
+        "time": "第二季第 70 日，夜",
+        "knowledge": "原主撿到的玉佩是秦烈山的東西；秦霜認為父親藉它求救。",
+        "carry_forward": "玉佩的真正用途與秦將軍的下落；三萬流民正往柳溪堡走來。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "三萬人到了",
+      "youtube_title": "將門之女捧著父親的求救信物要連夜北上，城外卻湧來三萬流民，堡裡的糧只夠一個月",
+      "duration_s": 100,
+      "logline": "秦霜想立刻去救父親，許硯卻得先讓湧到門口的三萬人活下來。",
+      "hook": "秦霜握著玉佩抓起長槍就往外走：「我爹還活著。」許硯擋在門口：「現在去北疆，是送死。」",
+      "hook_type": "line",
+      "mid_hook": "城樓上的鼓突然響了。王二牛衝上來，臉都白了：「硯哥，城外的人……看不到尾。」三萬流民從地平線一路排到城門。",
+      "conflict": "糧倉只夠全堡吃一個月，再加三萬張嘴，十天就見底。",
+      "turn": "秦霜把玉佩收進懷裡，轉身上城：「先讓他們活。」唐小棠捏著州府來的信：青州糧價，今天翻了三倍。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "城外最後一鍋粥見了底，人群像潮水一樣湧向城門，粗大的門閂發出一聲讓人牙酸的裂響。",
+        "question": "城門要被擠破了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhongtian"
+      ],
+      "spectacle": "柳溪堡城樓俯瞰，三萬流民從城下一直排到地平線，炊煙與黃塵混在一起。",
+      "glamour_shot": "秦霜站在城頭，風把紅色披風與高馬尾一起吹向身後，她看著城下的人群，咬緊了牙。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜放下私仇先顧百姓"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "tang-xiaotang",
+        "wang-erniu"
+      ],
+      "locations": [
+        "許家小院",
+        "柳溪堡城樓"
+      ],
+      "state": {
+        "time": "第二季第 71 日",
+        "knowledge": "玉佩是秦烈山送出的求救信物；三萬流民到了，青州糧價翻三倍。",
+        "carry_forward": "城門被人潮擠到快裂。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "排隊有粥",
+      "youtube_title": "三萬流民擠爆城門，秀才拿著自製的鐵皮喇叭一喊，長公主三個時辰讓三萬人排成一條線",
+      "duration_s": 95,
+      "logline": "許硯要讓三萬人不擠出人命，還要讓糧撐得夠久。",
+      "hook": "門閂斷裂的前一刻，許硯站上城垛舉起一只鐵皮喇叭，聲音蓋過整片人潮：「排隊的有粥！搶的沒有！」",
+      "hook_type": "danger",
+      "mid_hook": "阿令在城門下擺開十張戶籍桌，一人一塊竹牌、一牌一碗粥；三個時辰後，三萬人排成一條繞城三圈的長龍。",
+      "conflict": "人是安靜下來了，可糧還是只夠十天。",
+      "turn": "阿令在竹牌名冊裡發現同一個名字登記了兩次，筆跡都是工整的官體：又是那個「啞巴」阿福。她不動聲色，在名冊上畫了一個小圈。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "系統彈出強制任務：「十日內，」「三萬人不餓死一個。」失敗懲罰：「全體 -20。」唐小棠同時衝上城樓：「明天再漲三倍！」「糧店全關門了！」",
+        "question": "十天，三萬人，糧從哪裡來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "三萬流民繞城三圈排成長龍，每個人手上一塊竹牌，粥棚的白煙一路升起。",
+      "glamour_shot": "阿令坐在戶籍桌後，一縷碎髮被風吹到唇邊，她抬手撥開，提筆寫下下一個名字。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三萬流民有序領粥",
+        "阿令盯上阿福"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "s02-a-fu",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城門",
+        "柳溪堡城樓"
+      ],
+      "state": {
+        "time": "第二季第 71 日，傍晚",
+        "knowledge": "魏家囤糧哄抬；阿福是重複登記、會寫官體的可疑人物。",
+        "carry_forward": "十日任務開始倒數。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "一天翻三倍",
+      "youtube_title": "糧行掌櫃當眾羞辱首富千金買不起糧，她笑著記下對方的車轍，下一秒說出要押上整個唐家",
+      "duration_s": 100,
+      "logline": "許硯和唐小棠要從魏家手裡弄到糧，而對方坐擁整個青州的糧倉。",
+      "hook": "系統倒數「10:00:00」跳動。唐小棠撥完最後一顆算盤珠：「我們的錢，只夠買三天。」",
+      "hook_type": "question",
+      "mid_hook": "青州糧市，魏家糧行大掌櫃胡八斗當眾把唐小棠的銀子推回來：「首富千金，」「也有買不起的一天？」圍觀的人哄笑。",
+      "conflict": "魏家握著全州的糧，價格隨他喊。",
+      "turn": "許硯注意到胡八斗的運糧車輪上沾的是西山的紅土，不是城裡糧倉的青石板灰：魏家真正的糧，不在城裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "回程馬車上，唐小棠說出她的計：「讓他自己把糧倒出來。」許硯問代價。她把小金算盤放在他手心：「唐家的招牌。」",
+        "question": "唐小棠敢把整個唐家押上去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "青州糧市一條街全是緊閉的糧店門板，只有魏家糧行門口排著長隊，價牌上的數字一天改了三次。",
+      "glamour_shot": "唐小棠站在糧行門口被人笑，她抬起下巴甜甜一笑，眼神卻冷得像算盤珠。",
+      "setups": [
+        "s02-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看出魏家另有藏糧處"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "s02-hu-badou",
+        "xitong"
+      ],
+      "locations": [
+        "青州糧市",
+        "魏家糧行"
+      ],
+      "state": {
+        "time": "第二季第 72 日",
+        "knowledge": "魏家真正的糧倉在西山。",
+        "carry_forward": "唐小棠要拿唐家招牌設局。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "沙子船",
+      "youtube_title": "首富千金放話唐家十萬石糧船三日到，魏家掌櫃差點信了，堡裡的啞巴卻連夜去告密",
+      "duration_s": 90,
+      "logline": "許硯和唐小棠要讓魏家相信糧價會崩，可堡裡藏著魏家的眼睛。",
+      "hook": "唐小棠在信上落款，對著燭火吹乾：「爹，借你的名字一用。」信鴿從城樓飛出。",
+      "hook_type": "image",
+      "mid_hook": "深夜河灣，柳三娘的人扮成唐家船工，把五十條船裝滿沙子，上面鋪一層金黃的穀子，船頭插上唐家的旗。",
+      "conflict": "要讓胡八斗相信唐家十萬石糧就要到了，逼他在崩盤前拋糧。",
+      "turn": "觀眾看見阿福摸到河灣，用指頭撥開穀子，看見底下的沙，轉身消失在夜裡；城樓上的許硯望著河灣，一句話也沒說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "魏家糧行後堂，阿福跪在胡八斗面前開口說話了，聲音清清楚楚：「許家的糧船，裝的是沙子。」胡八斗放聲大笑。",
+        "question": "計被識破，三萬人怎麼辦？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "zhongtian"
+      ],
+      "spectacle": "夜色裡五十條糧船停滿河灣，船頭唐家旗幟在火把下翻飛，像一支真正的船隊。",
+      "glamour_shot": "柳三娘站在船頭指揮裝船，暗紅皮甲上落著穀殼，回頭一聲口哨，五十條船同時亮燈。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "假糧船布置完成"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "s02-a-fu",
+        "s02-hu-badou"
+      ],
+      "locations": [
+        "柳溪堡城樓",
+        "柳溪河灣",
+        "魏家糧行後堂"
+      ],
+      "state": {
+        "time": "第二季第 74 日，夜",
+        "knowledge": "觀眾知道阿福是魏家的人、會說話，已經告密。",
+        "carry_forward": "胡八斗知道糧船是假的。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "糧倉瀉成河",
+      "youtube_title": "魏家掌櫃以為識破了沙子船，借錢狂收糧準備大賺，天亮河上卻開來真正的五十條糧船",
+      "duration_s": 120,
+      "logline": "許硯要讓魏家自己把藏起來的糧倒出來，答案就在胡八斗的貪心裡。",
+      "hook": "胡八斗笑得拍桌，下令把全州能借的錢都借來，再收十萬石：「等唐家出醜，價再翻十倍！」",
+      "hook_type": "reversal",
+      "mid_hook": "天亮，河面上又來了五十條船，船吃水極深，掀開的艙板下全是金黃的穀子：唐萬金真的派了糧船。沙子船只是給阿福看的。",
+      "conflict": "糧價一崩，借錢囤糧的胡八斗要賠光，只能搶在崩盤前拋。",
+      "turn": "許硯跟著胡八斗連夜運糧的車隊，車轍上的紅土一路通到西山一座廢寺；寺門一開，魏家藏的糧倉滿到屋梁。唐小棠早在城裡開了五十家小鋪，低價把拋出的糧全收了進來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "廢寺裡金黃的穀子正瀉成一條河，寺門外一陣馬蹄，魏少卿搖著灑金摺扇帶著三十個家丁堵住門口：「誰准你們動我家的糧？」",
+        "question": "魏少卿堵門，糧運得出去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "zhongtian",
+        "shuang"
+      ],
+      "spectacle": "西山廢寺的糧倉被打開，金黃的穀子從破門瀉成一條河，一路流到台階下。",
+      "glamour_shot": "唐小棠站在穀子河邊撥著小金算盤，晨光照著她的雙環髻，笑出一對梨渦。",
+      "setups": [],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "魏家藏糧被逼出、低價收進",
+        "唐小棠好感 79→83，因為許硯在全城面前把功勞給了她",
+        "唐小棠獎勵箱：複式帳法與銀票防偽圖（紙與印工要自己找）"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "s02-hu-badou",
+        "wei-shaoqing",
+        "tang-wanjin",
+        "xitong"
+      ],
+      "locations": [
+        "魏家糧行後堂",
+        "柳溪河",
+        "西山廢寺糧倉"
+      ],
+      "state": {
+        "time": "第二季第 75 日",
+        "knowledge": "魏家藏糧處找到了；許硯早知道阿福是探子，故意讓他看沙子船。",
+        "carry_forward": "魏少卿堵在廢寺門口。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "啞巴開口",
+      "youtube_title": "宰相公子堵門搶糧被前未婚妻一句話噎回去，回到堡裡，裝了兩個月的啞巴終於開口",
+      "duration_s": 110,
+      "logline": "許硯要保住收進來的糧，也要拔掉堡裡的探子。",
+      "hook": "唐小棠走到魏少卿面前，抽出一張契：「你家掌櫃畫的押。」「魏公子，要退貨嗎？」魏少卿的扇子停在半空。",
+      "hook_type": "line",
+      "mid_hook": "回到堡裡，許硯當眾表揚阿福「搬糧有功」，賞他一碗肉；阿令同時把一封從魏家糧行搜出的密報，和阿福在名冊上的字並排攤開。字跡一模一樣。",
+      "conflict": "阿福是魏家安的眼線，他送出去的消息不止糧的事。",
+      "turn": "阿福被按住時不慌不忙地笑了，第一次用正常的聲音說話：「你們以為，」「我只送了糧船的事？」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿福被押走前回頭看著阿令，一字一字地說：「相爺早知道長公主沒死。」阿令的手指在袖裡握緊了匕首。",
+        "question": "宰相知道了，他會怎麼做？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "柳溪堡廣場上，兩張字跡並排鋪在長桌上，上千流民圍著看，啞巴阿福站在正中。",
+      "glamour_shot": "阿令垂眸比對兩張紙，月白衣袖垂在桌邊，抬眼看阿福時目光像刀。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "魏少卿搶糧不成",
+        "揪出魏家探子阿福"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "wei-shaoqing",
+        "s02-a-fu"
+      ],
+      "locations": [
+        "西山廢寺",
+        "柳溪堡廣場"
+      ],
+      "state": {
+        "time": "第二季第 75 日，夜",
+        "knowledge": "宰相從阿福那裡知道長公主還活著。",
+        "carry_forward": "長公主藏身柳溪堡的事已經傳到京城。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "四人分工",
+      "youtube_title": "宰相知道公主沒死，四位妻子第一次分工：一個管人、一個練兵、一個管錢、一個管山",
+      "duration_s": 95,
+      "logline": "許硯要在宰相出手前讓柳溪堡站穩，靠的是四位妻子各管一攤。",
+      "hook": "阿令鬆開匕首，平靜得嚇人：「那就讓他來。」她轉身攤開一張柳溪堡的地圖。",
+      "hook_type": "line",
+      "mid_hook": "唐小棠一口氣說出宰相每年臘月收鹽稅、每季換一次糧行掌櫃、最怕御史查哪本帳，說得比相府的人還清楚。許硯問：「你怎麼這麼熟？」她答得很快：「唐家跟相府，」「做了十年生意。」",
+      "conflict": "三萬人要管、要練、要養，許硯一個人顧不過來。",
+      "turn": "飯桌上四位妻子各領一攤：阿令管戶籍、秦霜練兵、唐小棠管錢、柳三娘管山林。三天後，柳溪堡第一次像一座城一樣運轉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "城門口停下一輛鑲金馬車，唐萬金掀簾下車，看都不看許硯，只對女兒說：「小棠，跟爹回江南。」唐小棠手裡的算盤停了。",
+        "question": "唐小棠會跟爹走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "zhongtian",
+        "tianchong"
+      ],
+      "spectacle": "四位妻子並肩站在城頭分派人手，城下三千鄉勇操練、伐木隊下山、算帳房燈火通明的蒙太奇。",
+      "glamour_shot": "四位妻子在城頭一字排開：月白、黑紅、桃粉、暗紅四種顏色在風裡同時揚起。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "四位妻子各管一攤",
+        "鄉勇擴到三千人",
+        "柳三娘好感 56→59，因為許硯把整座山林交給她管"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "tang-wanjin",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡許家飯桌",
+        "柳溪堡城頭",
+        "柳溪堡城門"
+      ],
+      "state": {
+        "time": "第二季第 78 日",
+        "knowledge": "唐小棠對相府熟得不尋常；唐萬金親自來接女兒。",
+        "carry_forward": "唐小棠要選家還是爹。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "爹來收帳",
+      "youtube_title": "首富老爹來接女兒回家，看完女婿的帳本當場改口，轉身卻對冷面公主深深一拜",
+      "duration_s": 100,
+      "logline": "許硯要讓唐萬金放心把女兒留下，唐萬金卻有自己的帳要算。",
+      "hook": "唐小棠把算盤往懷裡一抱：「不回。」唐萬金當場坐地哭：「我的命好苦哇！」全城的人都探出頭來看。",
+      "hook_type": "line",
+      "mid_hook": "許硯把這一季的帳本遞過去，唐萬金越翻眼睛越亮，翻到糧價那一頁，一拍大腿：「這女婿，划算！」",
+      "conflict": "唐萬金嘴上要女兒，心裡算的是另一件事。",
+      "turn": "夜裡唐萬金單獨求見阿令，進門就整整齊齊行了一個宮禮：「殿下長大了。」阿令愣住，她從沒見過這個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "唐萬金的馬車夫在院外餵馬，抬手壓低斗笠，露出半張白淨的臉：韓七。他的目光正落在阿令的窗上。",
+        "question": "韓七怎麼混進了柳溪堡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "goxue",
+        "quanmou"
+      ],
+      "spectacle": "唐萬金的車隊十二輛鑲金馬車停滿柳溪堡廣場，金鑰匙串在他腰間叮噹響。",
+      "glamour_shot": "唐小棠抱著算盤站在父親面前，嘟著嘴卻眼眶微紅，桃粉襦裙與身後的金色馬車相映。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐萬金同意女兒留下，還帶來一船糧的長期供貨",
+        "唐小棠好感 83→85，因為許硯替她擋下父親"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "tang-wanjin",
+        "a-ling",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡廣場",
+        "阿令房中",
+        "柳溪堡院外"
+      ],
+      "state": {
+        "time": "第二季第 79 日，夜",
+        "knowledge": "唐萬金認得長公主、行的是宮禮；韓七混在唐家車隊裡。",
+        "carry_forward": "韓七盯著阿令的窗。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "韓七的帳",
+      "youtube_title": "那個放過公主的刺客又出現了，被女寨主一網兜住，他說的第一句話讓公主臉色發白",
+      "duration_s": 120,
+      "logline": "許硯要知道韓七為什麼回來，韓七卻要拿一個秘密換自己的命。",
+      "hook": "韓七剛翻上牆，柳三娘從屋頂撒下一張獵網，秦霜的槍尖已經頂在網眼上：「別動。」",
+      "hook_type": "danger",
+      "mid_hook": "韓七被綁在柱子上反而笑了：「我跟相爺說，」「殿下死了。」「木簪，給了國師。」許硯一愣：他兩邊都報了，報的是兩個答案。",
+      "conflict": "宰相發現被騙要殺韓七，他逃來這裡，要拿國師的秘密換一條命。",
+      "turn": "韓七說，國師當年在朝上力挺和親，卻私下吩咐他：「她若逃，就讓她逃。」「留著她，」「會有人替我種出天下。」許硯眼前的系統面板，邊緣又閃過一道暗紅。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿令臉色發白，盯著韓七：「那晚宮門沒鎖……」「也是他安排的？」韓七笑而不答，只說了兩個字：「殿下。」",
+        "question": "阿令的逃亡，一開始就是國師的局？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue"
+      ],
+      "spectacle": "月下一張大網從屋頂兜頭罩下，韓七翻身落地，網繩在月光裡繃成一張銀色的蛛網。",
+      "glamour_shot": "柳三娘蹲在屋脊上收網，粗辮從肩頭滑下，月光照著她得意上挑的眼尾。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04",
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "活捉韓七",
+        "知道國師故意放走阿令"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "liu-sanniang",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡院中"
+      ],
+      "state": {
+        "time": "第二季第 79 日，深夜",
+        "knowledge": "韓七對宰相說阿令死了、把木簪交給國師；國師故意放阿令逃，要她找到「種天下的人」。",
+        "carry_forward": "阿令懷疑自己的逃亡是國師的局；宰相的人隨時會到。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "交出公主",
+      "youtube_title": "三萬流民十天一個沒餓死，糧行掌櫃跪著求買糧，宰相親筆信送到：交出公主，青州給你",
+      "duration_s": 140,
+      "logline": "許硯要讓阿令相信她是自己選擇留下的，同時完成十日任務，宰相卻開出了天價。",
+      "hook": "阿令轉身要走，許硯拉住她：「門是他開的，」「路是你自己走的。」阿令停住。系統：「阿令好感 87→89。」",
+      "hook_type": "line",
+      "mid_hook": "第十天，系統：「任務完成。」「三萬人，無一餓死。」堡外第一片水車灌溉的粟田翻起金浪；胡八斗跪在城門口求唐小棠把糧賣回給他，價錢隨她開。",
+      "conflict": "宰相的人要來了，許硯得決定柳溪堡站哪一邊。",
+      "turn": "唐小棠當著胡八斗，把糧按原價賣給城外排隊的窮人，一粒都不賣給他；胡八斗癱坐在地。四位妻子並肩站上城頭，看著城下排隊的人一個個領到米。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "一騎快馬衝到城下，相府使者高舉一封朱漆密信。許硯拆開，只有一行字，宰相的親筆：「交出公主，青州給你。」四位妻子同時看向他。",
+        "question": "一座青州換一個公主，許硯換不換？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhongtian",
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "柳溪堡外第一片金色粟田在風裡翻浪，筒車一排排轉動，四位妻子並肩站在城頭。",
+      "glamour_shot": "阿令在城頭轉身看許硯，夕陽把她的月白衣裙染成金色，眼裡第一次沒有防備。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "十日任務完成，三萬人無一餓死",
+        "阿令好感 87→89",
+        "胡八斗當眾吃癟、魏家糧行在青州倒了"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "s02-hu-badou",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡粟田",
+        "柳溪堡城門"
+      ],
+      "state": {
+        "time": "第二季第 81 日",
+        "knowledge": "宰相開價：交出公主換青州。",
+        "carry_forward": "許硯手上的密信。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "撕信",
+      "youtube_title": "宰相開價拿整個青州換公主，秀才當著四位妻子把信撕了：青州，我自己種",
+      "duration_s": 85,
+      "logline": "許硯拒絕宰相的交易，代價是兩萬叛軍要壓到柳溪堡。",
+      "hook": "四雙眼睛盯著他。許硯把信撕成兩半，再撕成四半：「青州？我自己種。」碎紙飄下城牆。",
+      "hook_type": "image",
+      "mid_hook": "被綁在柴房的韓七聽見消息，笑出聲：「你撕的不是信，」「是兩萬人。」「魏公子去找叛軍了。」",
+      "conflict": "柳溪堡只有三千鄉勇、一道剛蓋好的城牆。",
+      "turn": "系統彈出強制任務：「守住柳溪堡七日。」許硯看著任務，第一次沒有吐槽，只點了一下頭。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "探馬滾下馬背：「兩萬叛軍，三天後到！」他攤開手裡搶來的叛軍旗：上面寫著「清君側」，旗角縫的卻是魏家的家紋。",
+        "question": "宰相公子要借叛軍的手滅了柳溪堡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shachang"
+      ],
+      "spectacle": "撕碎的密信從柳溪堡城頭飄下，落在城下排隊領米的流民頭上，有人撿起碎紙抬頭看。",
+      "glamour_shot": "四位妻子站在許硯身後看他撕信，阿令眼裡一閃而過的笑，秦霜抱臂點頭，柳三娘大笑，唐小棠鼓掌。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令、秦霜、唐小棠好感各 +2，因為他拒絕拿阿令換青州（柳三娘只說「早該撕」，好感沒動）"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡柴房"
+      ],
+      "state": {
+        "time": "第二季第 81 日，傍晚",
+        "knowledge": "魏少卿借來兩萬叛軍，三日後到。",
+        "carry_forward": "七日守城任務開始。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "三天",
+      "youtube_title": "兩萬叛軍三天後到，女寨主要用火藥轟，秀才偏不肯，竟把種田的水車改成了守城利器",
+      "duration_s": 100,
+      "logline": "許硯要在三天內讓三千鄉勇守住兩萬人，還不肯把火藥對準人。",
+      "hook": "柳三娘把一包藥抱上桌：「轟他們！」許硯把藥包推回去：「說好的，只炸山，不炸人。」",
+      "hook_type": "line",
+      "mid_hook": "許硯拆下城外三架筒車，讓水流帶動連桿，木臂一下一下把成捆的濕草球甩出城牆，落點分毫不差。木匠們看傻了：「水車還能這樣用？」",
+      "conflict": "沒有火藥，三千人怎麼擋兩萬人。",
+      "turn": "唐小棠攤開魏家的運糧路線：叛軍的糧全靠魏家車隊，走的是她唐家走了十年的老路，「每個車夫的名字，」「我都知道。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡阿令推門進來，一身月白繡銀鳳宮裝，白玉步搖在燭光下輕晃：「明天，我站上城頭。」許硯放下圖紙：「他們會朝你射箭。」她只是看著他。",
+        "question": "長公主要用自己當旗幟？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shachang",
+        "zhongtian",
+        "tianchong"
+      ],
+      "spectacle": "三架筒車改成的水力投臂在城頭一起揮動，草球劃出整齊的弧線落在城外空地上。",
+      "glamour_shot": "阿令一身長公主宮裝站在門口，燭光從背後照出輪廓，步搖垂珠輕晃，眼神平靜又決絕。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "水車改成守城投臂",
+        "唐小棠摸清叛軍糧道"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "liu-sanniang",
+        "tang-xiaotang"
+      ],
+      "locations": [
+        "柳溪堡作坊",
+        "柳溪堡城頭",
+        "許家正屋"
+      ],
+      "state": {
+        "time": "第二季第 83 日，夜",
+        "knowledge": "叛軍糧道靠魏家；阿令要以長公主身分上城。",
+        "carry_forward": "叛軍明天到。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "叛軍到了",
+      "youtube_title": "兩萬叛軍兵臨城下，宰相公子要首富千金出城跟他走，她當眾撕了那張逼她的婚書",
+      "duration_s": 95,
+      "logline": "許硯要守城，魏少卿要先在陣前羞辱柳溪堡，逼他們自亂。",
+      "hook": "許硯沉默很久，伸手把她的步搖扶正：「我站你旁邊。」天一亮，城頭上的王二牛擦了擦眼睛：地平線上黑壓壓一片，兩萬叛軍的旗幟一面接一面升起來。",
+      "hook_type": "image",
+      "mid_hook": "魏少卿騎馬出陣，搖著摺扇：「交出唐小棠，」「還有那假公主！」「饒你們一城！」唐小棠站上城垛，抖開一張舊婚書，正是當年魏家逼唐家簽下的那張，嘶地撕成兩半。",
+      "conflict": "叛軍人多勢眾，魏少卿想先在陣前打掉柳溪堡的士氣。",
+      "turn": "撕婚書的一刻城上鄉勇齊聲叫好；可許硯看出來，真正指揮叛軍的不是魏少卿，是他身邊那個不說話的刀疤將領賀蒼，邊軍出身的打法。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "入夜，南門外一片死寂。突然幾十架雲梯同時搭上城牆，黑影一個個往上爬，最近的一個已經伸手攀上城垛。",
+        "question": "南門守得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "王二牛的臉之後切到他看見的地平線：兩萬叛軍的旗海與煙塵壓向柳溪堡。",
+      "glamour_shot": "唐小棠站在城垛上撕婚書，桃粉裙擺與碎紙一起被風吹起，下巴抬得高高的。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠當眾撕婚書、羞辱魏少卿",
+        "看出叛軍真正的指揮是賀蒼"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "wang-erniu",
+        "wei-shaoqing",
+        "s02-he-cang"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡城外陣前"
+      ],
+      "state": {
+        "time": "第二季第 84 日，夜",
+        "knowledge": "叛軍由賀蒼指揮；夜襲南門。",
+        "carry_forward": "雲梯已經搭上南門。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "南門",
+      "youtube_title": "叛軍夜襲南門雲梯搭上城牆，將門之女一桿長槍守住缺口，城裡卻有人打開了北門",
+      "duration_s": 90,
+      "logline": "許硯要守住南門的夜襲，不知道真正的危險在背後。",
+      "hook": "攀上城垛的那隻手剛要用力，一桿紅纓槍橫掃而過，雲梯被挑離城牆，連人帶梯往後倒進黑夜。秦霜：「下一個。」",
+      "hook_type": "danger",
+      "mid_hook": "水力投臂一起揮動，浸了油的草球落在城外空地燒成一道火牆，把後續的叛軍隔在火光外面，沒有一個人被砸中。",
+      "conflict": "南門缺口一個接一個，鄉勇第一次上陣手在抖。",
+      "turn": "秦霜在城頭一個人來回奔守三處缺口，鄉勇看著她，一個個握緊了槍；第一波夜襲退了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "北邊突然傳來一聲巨大的門軸聲。許硯回頭：北門正在緩緩打開，推門的人是應該關在牢裡的阿福。門外，叛軍的火把已經湧了過來。",
+        "question": "阿福怎麼逃出來的？北門擋得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang"
+      ],
+      "spectacle": "夜裡南門外燃起一道橫貫的火牆，城頭剪影裡秦霜持槍立在垛口，火星在她身後飛舞。",
+      "glamour_shot": "秦霜在火光裡慢動作回槍，黑紅輕甲與紅色披風同時揚起，高馬尾甩出一道弧。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "南門第一波夜襲被擋下",
+        "秦霜好感 82→84，因為許硯把南門全交給她指揮"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "s02-a-fu",
+        "s02-he-cang"
+      ],
+      "locations": [
+        "柳溪堡南門",
+        "柳溪堡北門"
+      ],
+      "state": {
+        "time": "第二季第 85 日，凌晨",
+        "knowledge": "阿福用藏在髮髻裡的鐵絲開了牢鎖，打開北門。",
+        "carry_forward": "叛軍正湧向敞開的北門。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "山上下來的人",
+      "youtube_title": "叛奸半夜打開北門，女寨主帶八百山賊從後山殺下來，首富千金已經斷了叛軍的糧",
+      "duration_s": 95,
+      "logline": "許硯要堵住北門，只能指望那個不在城裡的人。",
+      "hook": "北門大開，叛軍的前鋒已經衝到門洞。山上一聲長嘯，柳三娘帶著八百山賊從後山索道上一個接一個滑下來，正好落在叛軍側面。",
+      "hook_type": "image",
+      "mid_hook": "王二牛掄著大斧用斧背把阿福拍倒在地，北門重新關上；唐小棠的信鴿同時落在城頭：魏家的運糧車隊被她收買的車夫拉進了柳溪堡，叛軍只剩兩天的糧。",
+      "conflict": "叛軍斷糧，就會拚命。",
+      "turn": "叛軍果然變招：賀蒼撤到城外田裡，把來不及進城的一百多個農戶綁成一排，推到陣前。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "魏少卿在陣前大喊：「開門換人！」「不開，」「一炷香一個！」城下的農戶抬頭看著城上，城上的人都看著許硯。",
+        "question": "開門，還是不開？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou"
+      ],
+      "spectacle": "八百山賊沿著黑鳳山的索道從夜空裡滑下來，一條條人影劃過月亮，直落叛軍側翼。",
+      "glamour_shot": "柳三娘第一個從索道上落地，雙刀出鞘，粗辮在身後甩出一道黑弧，月光照亮她的笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "北門重新關上、阿福再度被擒",
+        "柳三娘從山上夾擊立功",
+        "唐小棠斷了叛軍糧道"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "s02-a-fu",
+        "wei-shaoqing",
+        "s02-he-cang"
+      ],
+      "locations": [
+        "柳溪堡北門",
+        "黑鳳山索道",
+        "柳溪堡城外田野"
+      ],
+      "state": {
+        "time": "第二季第 85 日，清晨",
+        "knowledge": "叛軍斷糧，拿城外農戶當人質。",
+        "carry_forward": "一炷香一個人的倒數。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "城頭金印",
+      "youtube_title": "叛軍拿百姓逼開城門，冷面公主一身宮裝走上城頭亮出金印，兩萬叛軍一半跪下",
+      "duration_s": 130,
+      "logline": "許硯不肯開門也不肯讓百姓死，阿令要用她最危險的身分換這一城。",
+      "hook": "香才點上，城頭響起一聲清冷的嗓音：「看著我。」阿令一身長公主宮裝走上城垛，舉起一方金印：「我是蕭令儀。」",
+      "hook_type": "image",
+      "mid_hook": "魏少卿尖聲大喊：「長公主早就死了！是假的！」阿令不理他，對著叛軍念出一筆筆帳：「你們的餉是魏家的。」「打完這仗，」「你們是反賊，」「他是功臣。」",
+      "conflict": "叛軍裡一大半是被逼反的邊軍與農戶，他們信不信一個「死了的」公主。",
+      "turn": "陣中一個老兵先扔下長槍跪下：「我守過宮門。」「認得殿下。」接著是一排、一片，兩萬叛軍跪下了一半。賀蒼握著刀，第一次猶豫了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "魏少卿從親兵手裡奪過一張弓，咬著牙拉滿，箭頭對準城頭上那抹月白。弦聲一響。",
+        "question": "這一箭射得中阿令嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "長公主在城頭亮出金印，城下兵器落地的聲音連成一片，上萬叛軍像麥浪一樣一排排跪下。",
+      "glamour_shot": "阿令站在城垛上，月白繡銀鳳宮裝與白玉步搖在晨風裡飛揚，舉印的手穩得一動不動。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一萬叛軍放下兵器",
+        "阿令以長公主之名救下人質"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "wei-shaoqing",
+        "s02-he-cang"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡城外陣前"
+      ],
+      "state": {
+        "time": "第二季第 85 日，上午",
+        "knowledge": "長公主沒死的事當著兩萬人公開了。",
+        "carry_forward": "魏少卿的箭已經射出。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "擋箭",
+      "youtube_title": "宰相公子一箭射向城頭公主，秀才撲過去把她拉進懷裡，叛軍首領當場掉轉了刀口",
+      "duration_s": 100,
+      "logline": "許硯要護住阿令，也要讓叛軍的最後一根柱子倒戈。",
+      "hook": "箭到的一瞬，許硯撲過去把阿令拉倒在垛口後，箭「篤」地釘進他耳邊的木城牌，箭尾嗡嗡直抖。",
+      "hook_type": "danger",
+      "mid_hook": "阿令抓著他的衣襟，失聲喊：「許硯！」系統：「阿令好感 91→93。」許硯耳朵嗡嗡響，只看見她的眼睛。",
+      "conflict": "賀蒼還握著另一半叛軍，魏少卿要趁亂逃。",
+      "turn": "賀蒼看著城頭，慢慢把刀轉了過來，刀尖對準魏少卿：「我打的是奸臣，不是公主。」魏少卿帶著五十個家丁拍馬就逃，秦霜一路追出十里。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "秦霜空手回來，只帶回魏少卿逃跑時掉的灑金摺扇。許硯拆開扇骨，裡面捲著一張紙條，紅墨寫著：「聖旨已在路上。墨。」",
+        "question": "署名「墨」的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "shachang"
+      ],
+      "spectacle": "一支箭在慢動作裡穿過城頭的晨光，釘進木牌，箭尾震出一圈圈殘影。",
+      "glamour_shot": "阿令倒在許硯懷裡抬頭，步搖散開，長髮落在他的手臂上，冷了一整季的鳳眼裡全是慌。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令好感 91→93，因為他不顧命擋在她前面",
+        "賀蒼率殘部倒戈",
+        "叛軍之圍解了"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "wei-shaoqing",
+        "s02-he-cang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡城外官道"
+      ],
+      "state": {
+        "time": "第二季第 85 日，正午",
+        "knowledge": "魏少卿逃了；有個署名「墨」的人說聖旨已在路上。",
+        "carry_forward": "聖旨要來了。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "一萬張新的嘴",
+      "youtube_title": "打完仗一萬叛軍不肯走要留下，首富千金說養不起，秀才一點頭，系統跳出一條沒見過的進度條",
+      "duration_s": 110,
+      "logline": "許硯要決定怎麼處置一萬個放下兵器的叛軍，系統卻露出它從沒給他看過的東西。",
+      "hook": "阿令看著紙條，只說了兩個字：「國師。」許硯手指一緊，紙條被他攥成一團。",
+      "hook_type": "line",
+      "mid_hook": "城外一萬個放下兵器的人跪著不走：「回去也是死，」「讓我們種田吧。」唐小棠算盤一響：「再加一萬張嘴。」許硯點頭：「收。」系統彈出一條從沒出現過的淡金色進度條：「民心：3%」。",
+      "conflict": "柳溪堡剛養活三萬人，又要多一萬。",
+      "turn": "柳三娘帶著降兵上山開梯田，好感 59→64，獎勵箱打開：「山林藥草圖譜」。堡裡清點完：守城七日，自家沒有少一個人。許硯第一次在城頭坐下來，四位妻子陪他看夕陽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夕陽下的官道盡頭揚起漫天黃塵，一面面明黃龍旗升起，三千禁軍護著一頂黑色大轎，直直朝柳溪堡而來。",
+        "question": "聖旨是來抓人還是來封官？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "zhongtian"
+      ],
+      "spectacle": "一萬個降兵在柳溪堡外放下兵器、扛起鋤頭，夕陽下一片刀槍堆成小山，旁邊是一排排新的鋤頭。",
+      "glamour_shot": "四位妻子陪許硯坐在城頭，夕陽把四個人的側臉染成金色，柳三娘把酒碗遞給他，阿令把頭輕輕靠過來。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "收編一萬降兵開墾",
+        "柳三娘好感 59→64，獎勵：山林藥草圖譜（採藥人要自己找）",
+        "守城七日任務完成"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "s02-he-cang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡城外"
+      ],
+      "state": {
+        "time": "第二季第 88 日，黃昏",
+        "knowledge": "系統有一條「民心」進度條；京城的人到了。",
+        "carry_forward": "三千禁軍與一頂黑轎逼近。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "真禁軍",
+      "youtube_title": "三千禁軍包圍柳溪堡，秀才再看一次靴子，這次是真的；公主在最後一頓團圓飯說了一句話",
+      "duration_s": 115,
+      "logline": "許硯要保住阿令，這次來的是真正的皇家儀仗，他沒有律法可以擋。",
+      "hook": "禁軍在城下列陣，許硯第一件事是低頭看靴子：宮制黑緞，鞋尖繡金線。真的。他的心沉了下去。",
+      "hook_type": "image",
+      "mid_hook": "黑色大轎在城外停了一整天，簾子一次都沒掀開。轎旁的太監說：「天亮宣旨。」韓七在柴房裡低聲說：「那頂轎子，」「只有一個人坐。」",
+      "conflict": "如果聖旨要阿令回宮，柳溪堡擋不住。",
+      "turn": "全家坐滿一張飯桌：四位妻子、小禾、王二牛、唐萬金。沒有人提明天，阿令親手給每個人盛了一碗湯，這是她第一次下廚。湯有點鹹，沒人說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜深，阿令把額頭抵在許硯肩上：「若旨上要我走，」「你別攔。」許硯開口想說話，她用手指按住他的嘴。",
+        "question": "許硯會眼睜睜看她被帶走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "柳溪堡城下三千禁軍列成方陣，明黃龍旗與黑色大轎在暮色裡一動不動。",
+      "glamour_shot": "飯桌燭光裡，阿令捲起袖子替每個人盛湯，月白衣袖沾了一點油漬，她低頭時第一次笑出了聲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全家第一次坐滿飯桌",
+        "阿令好感 93→94，因為全家喝完了她煮鹹的湯"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "wang-erniu",
+        "tang-wanjin",
+        "s02-han-qi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城下",
+        "柳溪堡許家飯桌",
+        "柳溪堡柴房"
+      ],
+      "state": {
+        "time": "第二季第 88 日，深夜",
+        "knowledge": "來的是真禁軍，轎裡坐的人連韓七都怕。",
+        "carry_forward": "天亮宣旨。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "老鄉",
+      "youtube_title": "聖旨沒抓公主反封秀才為官，相府來的人當場傻眼，轎裡的國師卻看著他眼前的空氣笑了",
+      "duration_s": 150,
+      "logline": "許硯要在聖旨前護住阿令，卻發現聖旨要的不是她，而是他；而轎裡的人看得見他的秘密。",
+      "hook": "天亮，許硯牽著阿令走到宣旨台前，擋在她身前一步：「旨上寫什麼，我都攔。」",
+      "hook_type": "line",
+      "mid_hook": "宣旨太監展開黃綾，旨意只有一句：封許硯為青州團練使，即刻率柳溪鄉勇北上狼牙關，抗朔漠。一個字都沒提長公主。隨行的相府長史臉色鐵青，他袖裡準備好的「私築城池」罪狀一個字都用不上。",
+      "conflict": "許硯以為最大的威脅是阿令被帶走，真正的威脅卻在那頂轎子裡。",
+      "turn": "阿令接過聖旨細看，玉璽旁邊有一個極小的私印，是她小時候父皇教她刻的那一枚，她的手指輕輕撫過去。黑轎簾子終於掀開，一個穿黑底銀星道袍、手持黑玉拂塵的男人走下來，所有禁軍同時低頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "國師墨塵走到許硯面前，目光沒有落在他臉上，而是落在他眼前那一小塊空氣上，那裡正浮著淡藍色的系統面板。他微微一笑：「老鄉，你的系統，幾級了？」",
+        "question": "國師為什麼看得見系統？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "tianchong",
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "國師眼前浮起暗紅色的光框，與許硯的淡藍面板在同一個畫面裡隔空相對，兩道光在晨霧裡互相映照。",
+      "glamour_shot": "國師墨塵走下黑轎，黑髮半束，蒼白俊美的臉帶著溫柔的笑，黑玉拂塵輕輕一甩，晨光照在他銀線星紋的袍上。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令保住了，不用回宮",
+        "許硯升任青州團練使",
+        "相府長史準備的罪狀落空",
+        "阿令看見父皇留下的暗記"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡宣旨台"
+      ],
+      "state": {
+        "time": "第二季第 89 日，清晨",
+        "knowledge": "聖旨命他北上狼牙關；國師看得見他的系統，還叫他老鄉。",
+        "carry_forward": "北上的命令與國師的問題；四位妻子要分兩路。"
+      }
+    }
+  ]
+}

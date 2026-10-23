@@ -1,0 +1,838 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e012",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a tense low taiko pulse and a held low string drone under the torchlit standoff at the start, a short tender guqin phrase, then playful plucked pipa and pizzicato strings as the money pouch is found, a bright triumphant suona flourish when the magistrate backs down, a quiet night wind with soft bamboo flute as the yard empties, and a sudden sharp low string sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "要他交出一個老婆，小妹從泥裡撿起一袋銀子｜種田娶妻打天下 第12集",
+    "description": "胡縣令湊到許硯耳邊：交出她一個，名冊就不查。許硯只說兩個字：「不換。」縣令甩袖要把名冊送州府，袖子裡卻掉出一個錢袋，被小禾從泥裡撿起來舉得高高的：「伯伯掉的！」錢記銀號五十兩，還有一張字條「事成再付」，當著全村唸了出來。人散之後，系統彈出強制任務：十日內白紙一百張，失敗就失去讀寫能力。《種田娶妻打天下》第 12 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "一個\n都不交",
+      "tag": "種田娶妻打天下",
+      "shot": "s15"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "不換",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a01",
+          "speaker": "xuyan",
+          "text": "不換。",
+          "emotion": "直起身，聲音不大"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Xu Yan on screen left in front of the farmhouse, a folded sheet of red paper with no readable writing in one hand, Magistrate Hu in his black gauze hat and blue-green robe on screen right leaning in close to Xu Yan's ear, torchlight on both faces",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不換。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he straightens up away from Magistrate Hu and looks him straight in the eye",
+        "characters": [
+          "xuyan",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a02",
+          "speaker": "xitong",
+          "text": "叮，好感上升。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Group shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: group shot of the three women standing in front of the farmhouse door, Qin Shuang on the left with a wooden stave held across her chest, Tang Xiaotang in the middle with her hair half undone and the small gold abacus at her waist, A-ling on the right very still in her grey-white dress, all looking toward Xu Yan off screen right, torchlight on their faces; the system voice speaks off screen",
+        "motion": "Qin Shuang thumps the end of her stave on the ground and breaks into a grin, Tang Xiaotang claps both hands over her mouth, and A-ling slowly raises her eyes",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of A-ling on screen left, her face turned toward Xu Yan's back off screen right, torchlight from the side drawing the shadow of her long lashes across her cheek, smoky eyeliner and soft red lips, a few loose black strands beside her cheek",
+        "motion": "A-ling lowers her eyes toward his back, and the cold line of her lips softens a little",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hand and the sleeve, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: insert of a slender hand inside a long grey-white cotton sleeve, the fingers wrapped around the plain wooden hilt of a short sheathed dagger hidden in the sleeve, torchlight on the knuckles",
+        "motion": "The fingers slowly loosen one by one and slide off the hilt, and the sleeve falls back over it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a03",
+          "speaker": "huxianling",
+          "text": "好，有骨氣。",
+          "emotion": "冷笑，退一步"
+        },
+        {
+          "id": "zq12a04",
+          "speaker": "huxianling",
+          "text": "名冊明早送州府！",
+          "emotion": "提高聲音，說給全院聽"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Magistrate Hu on screen right, pale and plump in his black gauze hat and blue-green robe with bulging sleeves, torchlight from below, narrow eyes on Xu Yan off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「好，有骨氣。」 then 「名冊明早送州府！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he takes a step back and flicks one wide sleeve",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a05",
+          "speaker": "tangxiaotang",
+          "text": "送州府……",
+          "emotion": "臉一白"
+        },
+        {
+          "id": "zq12a06",
+          "speaker": "tangxiaotang",
+          "text": "三個都瞞不住。",
+          "emotion": "小聲，發抖"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of Tang Xiaotang on screen left by the farmhouse door, her looped buns half undone and the pink silk ribbons loose, one hand clutching the small gold abacus at her waist, torchlight on her face",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「送州府……」 then 「三個都瞞不住。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her fingers freeze on the abacus beads and she glances sideways at Qin Shuang off screen left",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a07",
+          "speaker": "xuyan",
+          "text": "他敢查，",
+          "emotion": "壓低聲音"
+        },
+        {
+          "id": "zq12a08",
+          "speaker": "xuyan",
+          "text": "就讓他不敢查。",
+          "emotion": "眼睛盯著縣令，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Xu Yan on screen left, the folded red paper in his hand, torchlight on his face, eyes fixed on Magistrate Hu off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「他敢查，」 then 「就讓他不敢查。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his eyes travel slowly over the magistrate from the gauze hat down to the wide sleeves, searching",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "掉了",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a09",
+          "speaker": "huxianling",
+          "text": "明早，州府見！",
+          "emotion": "一甩袖，轉身要走"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: wide shot of Magistrate Hu turning toward the broken gate on screen right in his black gauze hat and blue-green robe, Constable Zhao in a black constable's hat and black uniform beside him with an iron ruler at his belt, a crowd of constables with wooden batons and torches at the gate behind them",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「明早，州府見！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he flings one wide sleeve out hard and turns toward the gate, and the constables start to turn with him",
+        "characters": [
+          "huxianling",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sleeve and the mud, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: insert at boot height of a wide blue-green official sleeve swinging past a black official boot in the mud, torchlight glinting in the puddles",
+        "motion": "A heavy cloth pouch slips out of the swinging sleeve and drops into the mud beside the boot, and the boot steps away without stopping",
+        "characters": []
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a10",
+          "speaker": "qinshuang",
+          "text": "小禾，回來！",
+          "emotion": "畫外，急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium shot of little Xiaohe in her patched lilac jacket and red-string pigtails, the straw rabbit under one arm, running from screen left across the muddy yard toward the middle of the yard, torches behind the fence; Qin Shuang speaks off screen",
+        "motion": "Xiaohe runs on without looking back, her pigtails bouncing, and crouches down in the mud to pick something up",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a11",
+          "speaker": "xiaohe",
+          "text": "伯伯掉的！",
+          "emotion": "奶聲，舉得高高的"
+        },
+        {
+          "id": "zq12a12",
+          "speaker": "xiaohe",
+          "text": "好重喔！",
+          "emotion": "笑，得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: low angle medium shot of little Xiaohe standing in the mud in the middle of the yard under the torches, lifting a muddy heavy cloth pouch high above her head with both hands, the straw rabbit tucked under her arm, round face beaming with one front tooth missing",
+        "motion": "Xiaohe speaks 2 short Mandarin lines, 「伯伯掉的！」 then 「好重喔！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the pouch sags in her small hands and its mouth falls open",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the open pouch, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: insert of the open mouth of a muddy cloth pouch held in two small hands, the edges of a stack of folded paper banknotes inside, each stamped with a square red seal, no readable writing, a glint of silver beneath",
+        "motion": "One folded banknote slides partway out of the pouch mouth",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a13",
+          "speaker": "huxianling",
+          "text": "小孩子胡鬧，",
+          "emotion": "臉色發白，聲音發緊"
+        },
+        {
+          "id": "zq12a14",
+          "speaker": "huxianling",
+          "text": "拿過來！",
+          "emotion": "伸手"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of Magistrate Hu on screen right, his pale plump face gone grey in the torchlight, sweat on his upper lip, double chin trembling, looking at Xiaohe off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「小孩子胡鬧，」 then 「拿過來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he reaches a plump hand out toward Xiaohe off screen left",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a15",
+          "speaker": "qinshuang",
+          "text": "大人別急，",
+          "emotion": "橫棍擋住，冷笑"
+        },
+        {
+          "id": "zq12a16",
+          "speaker": "qinshuang",
+          "text": "當眾點一點。",
+          "emotion": "乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium shot of Qin Shuang stepping in front of little Xiaohe, Xiaohe on screen left holding the muddy pouch to her chest, Qin Shuang on screen right between her and the gate, a wooden stave held across her body, high ponytail swinging, torchlight on her face",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「大人別急，」 then 「當眾點一點。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she plants the end of the stave in the mud in front of Xiaohe, facing toward Magistrate Hu off screen right",
+        "characters": [
+          "qinshuang",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "chapter": "字條",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: wide shot of little Xiaohe standing alone in the mud in the middle of the yard holding the open pouch, the ring of torches around the fence, Magistrate Hu in his blue-green robe frozen on screen right near the gate",
+        "motion": "A single folded banknote slips out of the pouch, flutters down through the torchlight and lands on the mud right in front of Magistrate Hu's black official boot",
+        "characters": [
+          "xiaohe",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a17",
+          "speaker": "tangxiaotang",
+          "text": "錢記銀號，",
+          "emotion": "撿起銀票，一眼"
+        },
+        {
+          "id": "zq12a18",
+          "speaker": "tangxiaotang",
+          "text": "五十兩整。",
+          "emotion": "冷笑，帳房口氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Tang Xiaotang on screen left, crouched, holding a folded paper banknote with a square red seal and no readable writing up to the torchlight, big sparkling eyes narrowed",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「錢記銀號，」 then 「五十兩整。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she flicks the banknote with one finger and lifts her chin toward Magistrate Hu off screen right",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a19",
+          "speaker": "erniu",
+          "text": "錢記？",
+          "emotion": "大嗓門"
+        },
+        {
+          "id": "zq12a20",
+          "speaker": "erniu",
+          "text": "錢員外家的！",
+          "emotion": "嚷出來"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: wide shot of Wang Erniu behind the bamboo fence on screen left among eight village young men in coarse cloth holding staves, hoes and torches, all craning toward the middle of the yard",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「錢記？」 then 「錢員外家的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the young men turn to each other and raise their torches higher",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a21",
+          "speaker": "xuyan",
+          "text": "袋子裡，",
+          "emotion": "蹲下來，掏"
+        },
+        {
+          "id": "zq12a22",
+          "speaker": "xuyan",
+          "text": "還有一張字條。",
+          "emotion": "挑眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Xu Yan crouched in the mud on screen left, holding the muddy cloth pouch open in one hand, torchlight on his face",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「袋子裡，」 then 「還有一張字條。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he draws a small folded slip of paper out of the pouch with two fingers",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the slip of paper, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: insert of a man's fingers unfolding a small slip of rough paper with a few faint ink brush marks, nothing legible, torchlight showing through the paper",
+        "motion": "The fingers unfold the slip and turn it toward the torchlight",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a23",
+          "speaker": "xuyan",
+          "text": "事成，",
+          "emotion": "一字一字，唸給全院聽"
+        },
+        {
+          "id": "zq12a24",
+          "speaker": "xuyan",
+          "text": "再付。",
+          "emotion": "加重"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of Xu Yan on screen left holding the small slip of paper beside his face, torchlight on his eyes",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「事成，」 then 「再付。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lowers the slip and raises his eyes to the magistrate off screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a25",
+          "speaker": "erniu",
+          "text": "錢員外，",
+          "emotion": "憨笑，擋住"
+        },
+        {
+          "id": "zq12a26",
+          "speaker": "erniu",
+          "text": "急著去哪？",
+          "emotion": "大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: two-shot by the broken gate, Qian Yuanwai in his dark gold silk robe on screen right edging sideways toward the gate with his head pulled into his collar, Wang Erniu on screen left stepping into his path with a thick stave held across",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「錢員外，」 then 「急著去哪？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then Qian Yuanwai stops dead and his small eyes dart around for another way out",
+        "characters": [
+          "erniu",
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a27",
+          "speaker": "xuyan",
+          "text": "大人，",
+          "emotion": "笑，往前一步"
+        },
+        {
+          "id": "zq12a28",
+          "speaker": "xuyan",
+          "text": "這名冊，還查嗎？",
+          "emotion": "慢慢地"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: medium close-up of Xu Yan on screen left walking toward Magistrate Hu off screen right, the slip of paper held up between two fingers, a slight mischievous smile, torchlight on his face",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「大人，」 then 「這名冊，還查嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he stops one arm's length away and waits",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a29",
+          "speaker": "huxianling",
+          "text": "不、不查了。",
+          "emotion": "冒汗，咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of Magistrate Hu on screen right, sweat running down his pale plump face, his narrow eyes darting from side to side",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「不、不查了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he wipes his forehead with one wide sleeve",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "chapter": "收隊",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a30",
+          "speaker": "huxianling",
+          "text": "收、收隊！",
+          "emotion": "甩袖，快步"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: wide shot of the broken gate on screen right, Magistrate Hu hurrying out through it with his robe held up, Constable Zhao beside him waving the constables out, torches bobbing",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「收、收隊！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the constables crowd out after him, torches swinging",
+        "characters": [
+          "huxianling",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a31",
+          "speaker": "huxianling",
+          "text": "錢是他給的，",
+          "emotion": "壓低聲音，自言自語"
+        },
+        {
+          "id": "zq12a32",
+          "speaker": "huxianling",
+          "text": "主意可不是……",
+          "emotion": "更低，回頭瞄一眼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of Magistrate Hu under the broken gate on screen right, half turned away, torchlight on one side of his face, muttering to himself",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「錢是他給的，」 then 「主意可不是……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he glances back once over his shoulder into the yard and hurries on",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: close-up of A-ling on screen left, torchlight on her face, sharp upturned phoenix eyes, a few loose black strands beside her cheek",
+        "motion": "A-ling's head turns sharply toward the gate off screen right and her eyes narrow",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow crane up",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, a ring of many torches throwing flickering orange light across the muddy ground: extreme wide high angle shot over the farmhouse yard, a long line of torches filing out of the broken gate and away down the dark village road, villagers drifting home, a few small figures left standing in the yard",
+        "motion": "The line of torches winds away down the road and the yard below grows dark",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "chapter": "任務",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a33",
+          "speaker": "xitong",
+          "text": "叮。獲得，造紙術改良。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse late at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, the yard now empty and quiet, cold blue moonlight and a single guttering torch stuck in the mud: medium close-up of Xu Yan on screen left sitting on the chopping block, hair falling over his forehead, moonlight on his face, looking at the empty air just in front of him; the system voice speaks off screen",
+        "motion": "Xu Yan lets out a long breath, then his eyebrows shoot up at the empty air and he starts to grin",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a34",
+          "speaker": "xuyan",
+          "text": "總算給點好東西。",
+          "emotion": "鬆口氣，笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse late at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, the yard now empty and quiet, cold blue moonlight and a single guttering torch stuck in the mud: close-up of Xu Yan's face on screen left, his palms pressed together in front of his chin, a wide boyish grin crinkling his eyes, a strand of hair over his forehead, the persimmon tree dark behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「總算給點好東西。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he rubs his hands together, then his grin freezes halfway",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a35",
+          "speaker": "xitong",
+          "text": "強制任務：十日內，白紙一百張。",
+          "emotion": "平板電子音，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Group shot, locked",
+        "prompt": "In the dirt yard of the farmhouse late at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, the yard now empty and quiet, cold blue moonlight and a single guttering torch stuck in the mud: group shot of the three women by the farmhouse door in the moonlight, Qin Shuang on the left leaning on her wooden stave, Tang Xiaotang in the middle, A-ling on the right, all looking toward Xu Yan off screen right; the system voice speaks off screen",
+        "motion": "Tang Xiaotang tilts her head, Qin Shuang raises one brow and nudges her, and A-ling takes half a step toward him",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a36",
+          "speaker": "xuyan",
+          "text": "一百張？",
+          "emotion": "傻眼"
+        },
+        {
+          "id": "zq12a37",
+          "speaker": "xuyan",
+          "text": "我連紙坊都沒有！",
+          "emotion": "崩潰，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse late at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, the yard now empty and quiet, cold blue moonlight and a single guttering torch stuck in the mud: close-up of Xu Yan on screen left on the chopping block, moonlight on his face, staring at the empty air in front of him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「一百張？」 then 「我連紙坊都沒有！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he grabs his hair with both hands",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq12a38",
+          "speaker": "xitong",
+          "text": "失敗：失去讀寫能力。",
+          "emotion": "平板，更冷"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse late at night, a low mud wall topped with a bamboo fence, a broken wooden gate on the right, a woodpile and chopping block, a persimmon tree, the yard now empty and quiet, cold blue moonlight and a single guttering torch stuck in the mud: extreme close-up of Xu Yan's eyes, moonlight in his pupils, thick brows, a few strands of black hair over his forehead; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes go wide and his pupils shrink",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

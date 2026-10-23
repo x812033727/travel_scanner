@@ -16,7 +16,7 @@ from sqlalchemy import select
 from app.admin.service import encrypt_secrets
 from app.models import AdminAuditLog, ProviderConfig, VideoProject, VideoReview
 from app.video_reviews.admin_service import review_store
-from app.video_youtube import sync, vps, vps_settings
+from app.video_youtube import requests, sync, vps, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.state import new_state
 from tests.test_video_youtube import Site, _app, open_site
@@ -359,6 +359,45 @@ async def test_existing_video_omits_mp4_and_completed_receipt_is_recorded_once(
             )
         )
         assert len(logs) == 1
+
+
+async def test_a_brand_story_finished_before_the_story_tag_sends_its_titles_again(
+    fixture: tuple[Site, Remote],
+) -> None:
+    """A story uploaded under the old title rule: the same package, its job done. The site offers
+    to send the details again, and the new job goes to the same video without the MP4."""
+    site, remote = fixture
+    old_id = (await begin(site, url=f"https://youtu.be/{STUDIO_ID}"))["job"]["id"]
+    assert remote.job
+    remote.job["state"] = "done"
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject))
+        assert project is not None
+        # The id the service documents: a video that is not a story keeps it.
+        documented = f"{SLUG}:{remote.job['review_sha256']}".encode()
+        assert old_id == hashlib.sha256(documented).hexdigest()
+        status = await vps.status(session, SLUG)
+        assert (status["new_package"], status["titles_outdated"]) == (False, False)
+        project.category = "story"
+        await session.commit()
+    async with site.factory() as session:
+        status = await vps.status(session, SLUG)
+    assert (status["new_package"], status["titles_outdated"]) == (False, True)
+
+    again = await begin(site)
+    assert again["job"]["id"] != old_id
+    assert again["job"]["video_id"] == STUDIO_ID
+    assert all(f["role"] != "final" for f in remote.manifest["files"])
+    assert remote.manifest["metadata"]["title"].endswith("｜品牌故事｜CC字幕")
+    assert all(
+        entry["title"].endswith(requests.STORY_TAGS[locale] + requests.CAPTION_TAGS[locale])
+        for locale, entry in remote.manifest["metadata"]["localizations"].items()
+    )
+    # Done under the current rule, the same package is the finished job again.
+    remote.job["state"] = "done"
+    async with site.factory() as session:
+        assert (await vps.status(session, SLUG))["titles_outdated"] is False
+    assert (await begin(site))["job"]["id"] == again["job"]["id"]
 
 
 async def test_api_and_vps_cannot_start_over_each_other(fixture: tuple[Site, Remote]) -> None:

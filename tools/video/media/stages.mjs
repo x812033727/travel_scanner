@@ -239,10 +239,9 @@ export class Stage {
       try {
         submitted = await submit({ request, ...this.options });
       } catch (error) {
-        // The server answered and took nothing (a spent budget, an exhausted request, a bad
-        // reference): nothing is held. A lost connection may have left a job behind, so its
-        // hold stays until a rerun submits the same key again and books what it finds.
-        if (error instanceof MediaError && error.status > 0) release(this.workdir, key);
+        // An explicit refusal (spent budget, exhausted request, bad reference) releases the
+        // local hold. An uncertain vendor outcome keeps it for owner reconciliation.
+        if (error instanceof MediaError && error.status > 0 && error.code !== "video_media_outcome_uncertain") release(this.workdir, key);
         throw error;
       }
       if (TERMINAL.has(submitted.status)) job = submitted;
@@ -263,6 +262,11 @@ export class Stage {
     rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
     if (job.status !== "ready" || !job.file?.sha256) {
       const code = job.error?.code || `video_media_job_${job.status}`;
+      if (code === "video_media_outcome_uncertain") {
+        // The vendor may have charged before its result disappeared. Keep both the local
+        // reservation and the job id so a rerun cannot buy a fresh attempt by accident.
+        throw new MediaError(`${id}: ${job.error?.detail || code}; reconcile job ${job.id} before retrying`, { code, who: "owner", job });
+      }
       bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
       forgetJob(this.workdir, key, job.id);
       throw new MediaError(`${id}: ${job.error?.detail || code}`, { code, job });

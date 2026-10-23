@@ -1,0 +1,11 @@
+高中系列：六季×十二集＝72集；S1–S2高一grade10、S3–S4高二grade11、S5–S6高三grade12。這是銜接國中系列的分級微課程與閱讀寫作練習，不宣稱完整取代任何地區學校課綱或正式程度測驗。延續使用者已採用的短課程型式，每集10幕、完整語音實測約180–300秒，不套用一般科技解說長片格式。
+所有媒體/字型/ZIP在 /workspace/senior-high-series-output；新工具 tools/video/senior_high，新原稿本目錄；所有既有系列原稿、工具和媒體不得修改。五声軌 en、zh-TW、zh-CN、ja、ko；四語CC zh-TW、zh-CN、ja、ko；英文固定在畫面，沒有英文CC。試製Edge聲音，不宣稱後台正式配音。
+JSON schema沿用 docs/videos/english-junior-high-complete/season01.json，top-level series_title='Sunny & Pip: Senior High English',version=4,episodes。episode:id ep01–ep72,number,season,grade10/11/12,title_en,title_zh_TW,titles{zh-TW,zh-CN,ja,ko},topic,objectives_zh_TW(三條),parent_tip_zh_TW(自學提醒),practice,scenes。
+每集10scenes、至少3quiz、至少2個guided_reading:true的repeat。scene:id epNN-sNN,english,demo,instruction{en,zh-TW,zh-CN,ja,ko},demo_translation{四語},visual,target,mode(demo/repeat/quiz/review),wait_seconds(一般5、quiz6),note_zh_TW。Quiz choices2–3不同token,target恰為其一；三題正解位置0/1/2各一次。Quiz固定english及instruction.en='Listen and choose.'；其餘instruction為'聽一聽，選一選。','听一听，选一选。','聞いて、選んでみましょう。','듣고 골라 보세요.'。demo為英文示範，四聲軌也共用原音；稱聽讀選句，不冒充獨立評量。
+English demo最多16詞/110ASCII字元；instruction.en最多14詞/110ASCII字元；繁簡中通常≤34字，日韓≤55字，簡潔自然並教實際觀念。ASCII英文標點。多幕連貫呈現文本、分析與修訂，不只念策略名稱。不要未加引號地說錯誤文法例如we does。避免絕對文法規則；限定正在教的例句。
+Visual以sentence:英文句子、word:單詞為主，最長110ASCII字元；也可number:1..100,count:1..20,clock:HH:MM,day:英文星期,place:home|school|park|library|shop和既有legacy objects。不創造未支援token。選項須唯一正解，不能用同義選项產生歧義。中性集名不提前洩漏quiz答案。
+Practice每集固定reading_en,prompt_en,prompt_zh_TW,sample_answer_en,questions（恰3項，各prompt_en,answer_en）。reading_en虛構但自然的完整短文：高一90–130詞，高二120–160詞，高三140–180詞。可多段，以空白分詞計數。問題1細節/摘要，問題2因果/指代/組織，問題3有文本依據的推論、評估或改寫；不是三題照抄。答案可從文本或已教內容得到，不要求額外知識。至少一道需解釋原因或引用文本依據。
+ep45圖表教材另有practice.chart，包含title_en、labels(兩個標籤)、values(兩個有限數值)、axis_min、axis_max、unit_en。資料與虛構短文一致；教材用同一資料繪製零基線與截短基線兩張比較圖，明示座標範圍。圖表只加入獨立教材，不更動已凍結的影片renderer。
+prompt_en及繁中對應：高一寫60–90詞、高二80–110詞、高三100–140詞（可書信、摘要、觀點段落、雙段短文或簡報講稿，符合本集）。sample_answer_en須落在相應字數內並滿足任務所有要點。活動與答案分頁；PDF每集閱讀/理解頁、寫作頁、後置答案頁。閱讀文章是作者創作情境；涉及數字明示為fictional class survey或hypothetical，不包裝成真實研究。無須真實個資。
+每季12集只整合複習，不引入新核心文法；目標都必須出現在影片或practice。高中內容須比國中更深入：語境判斷、資訊整合、證據/推論區別、修訂與清楚表達，而非只換難詞。不得使用AI泛泛模板/空洞同一段落替換名詞。
+建議s1情境,s2–3例句/對比,s4guided repeat,s5quiz,s6應用,s7quiz,s8guided repeat,s9quiz,s10review。root獨立審稿後才freeze；audio開始後改source必須先告知。作者只寫自己seasonNN.json，不改其他季、合併檔或renderer。完成時回報字數、自查和待審項目。

@@ -17,26 +17,25 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 import { ApiError, api, apiProblemMessage } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
 
-// The brand stories (docs/videos/STORY.md): a drama series of kind "story" whose episodes are the
+// The brand stories (docs/videos/STORY.md): a series of kind "story" whose episodes are the
 // planned backlog, one story each, imported from stories.json and made two a day by the worker. An
 // episode's beats are the story's plan (its id, category, region, publishing slot, the question,
 // six chapters, the facts to verify, the sources and the fact checker's caveats); after its first
-// read the series page reads only the list's part of them, and a plan is read when it opens. The drama tab
-// shows the story series apart (AdminVideoStorySeries), and a story series opens on its own page
-// (StorySeriesPage): what holds the next story back, the daily count, pause, the stories ready to
+// read the series page reads only the list's part of them, and a plan is read when it opens. The Videos tab
+// shows the story series under the story category (AdminVideoStorySeries), and a series opens on its own page
+// (StorySeriesPage): what holds the next story back, pause, the stories ready to
 // upload with their next free slot, the list of every story, and the import. The changes ask for
 // content.manage, as the API's series endpoints do; a reader sees everything and changes nothing.
 type SeriesEpisode = Series["episodes"][number];
 // Where a story series stands against its limits, from the server (apps/api/app/video_automation
-// series.py story_quota, the same function that decides the worker's next job). day is the
-// Asia/Taipei calendar day started_today counts, as the server sees it.
+// series.py story_quota, the same function that decides the worker's next job). A brand story is a
+// video category like the explainer, not a schedule: there is no daily count (the owner, 2026-10-21).
 export type StoryQuota = {
-  day: string; started_today: number; episodes_per_day: number | null; in_flight: number; max_in_flight: number;
-  started_this_month: number; episodes_per_month: number; awaiting_upload: number; upload_buffer: number; ready: number;
+  in_flight: number; max_in_flight: number; started_this_month: number; episodes_per_month: number; ready: number;
   hold?: string | null; hold_detail?: string | null;
 };
 // The story columns of a series; the other kinds leave them out or null.
-export type StorySeries = Series & { episodes_per_day?: number | null; image_model?: string | null; quota?: StoryQuota | null };
+export type StorySeries = Series & { image_model?: string | null; quota?: StoryQuota | null };
 type StorySummary = Omit<StorySeries, "docs" | "episodes">;
 // StoryImportReport.as_dict() (apps/api/app/video_automation/stories.py): the answer to a dry run and
 // to an import, and, beside the problem fields of a 422, the report of a file that was refused.
@@ -55,21 +54,19 @@ const CHAPTER_KEYS = ["hook", "origin", "idea", "engine", "turn", "now"] as cons
 const SOURCE_KINDS = ["official", "court", "academic", "archive", "reference", "news", "book"] as const;
 const STORY_ID = /^[ABKTC][0-9]{2}$/;
 // The series slug the import's path takes (SERIES_SLUG_PATTERN in the API's schemas).
-const SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
+export const STORY_SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 // Where a story is, from its episode and its video: not started, in the making, ready to upload,
 // scheduled or public on YouTube, finished without a video to show, skipped, or its video dropped.
 const STATES = ["waiting", "making", "ready", "scheduled", "published", "done", "skipped", "dropped"] as const;
 type StoryState = (typeof STATES)[number];
 const stateTone: Record<StoryState, string> = { waiting: "inactive", making: "running", ready: "active", scheduled: "queued", published: "ok", done: "ok", skipped: "inactive", dropped: "failed" };
 const seriesTone: Record<string, string> = { setting: "pending", outline: "pending", active: "active", paused: "inactive", finished: "inactive" };
-const HOLDS = ["per_day", "in_flight", "per_month", "upload_buffer", "none_ready"] as const;
-// The daily count a story series takes (STORY_MAX_PER_DAY); empty lifts the limit.
-const PER_DAY_CHOICES = Array.from({ length: 12 }, (_, index) => index + 1);
+const HOLDS = ["in_flight", "per_month", "none_ready"] as const;
 // The import request's cap (STORY_IMPORT_MAX_BYTES in apps/api/app/video_automation/admin_api.py).
 // It is under the 5 MiB the site's relay and the API take, so a bigger file is refused here, by
 // name, before it travels; a hundred stories are about 1.2 MB as a request.
 export const STORY_IMPORT_MAX_BYTES = 4 * 1024 * 1024;
-// The publishing slots (docs/videos/STORY.md, the daily quota and schedule): noon and eight in the
+// The publishing slots (docs/videos/STORY.md §開工與上限, the original schedule): noon and eight in the
 // evening, Taipei time. Taiwan keeps UTC+8 all year, so a slot is a fixed offset from UTC midnight.
 const SLOT_HOURS: Record<string, number> = { "12:00": 12, "20:00": 20 };
 const TAIPEI_OFFSET_MS = 8 * 3_600_000;
@@ -200,16 +197,6 @@ function useNow(): number {
   return now;
 }
 
-/** The server's Taipei day (YYYY-MM-DD) as the locale writes a month and day; nothing is converted. */
-function useTaipeiDay() {
-  const locale = useLocale();
-  const format = useMemo(() => new Intl.DateTimeFormat(locale, { month: "numeric", day: "numeric", timeZone: "UTC" }), [locale]);
-  return (day: string) => {
-    const parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
-    return parts ? format.format(Date.UTC(Number(parts[1]), Number(parts[2]) - 1, Number(parts[3]))) : day;
-  };
-}
-
 /** A publishing slot in Taipei time, with its weekday, whatever the viewer's own time zone. */
 function useSlotTime() {
   const locale = useLocale();
@@ -220,26 +207,13 @@ function useSlotTime() {
 /** Why no story starts now, in the owner's words; the server's own sentence for a reason this page does not know. */
 function useHoldReason() {
   const t = useTranslations("admin.videoStories");
-  const taipeiDay = useTaipeiDay();
   return (quota: StoryQuota, status: string): string => {
     const hold = quota.hold ?? "";
     if (!hold) return "";
     if (hold === "not_active") return status === "paused" ? t("holds.paused") : t("holds.notActive");
     if (!(HOLDS as readonly string[]).includes(hold)) return quota.hold_detail || hold;
-    return t(`holds.${hold}`, {
-      day: taipeiDay(quota.day), started: quota.started_today, perDay: quota.episodes_per_day ?? 0, inFlight: quota.in_flight, maxInFlight: quota.max_in_flight,
-      month: quota.started_this_month, perMonth: quota.episodes_per_month, awaiting: quota.awaiting_upload, buffer: quota.upload_buffer,
-    });
+    return t(`holds.${hold}`, { inFlight: quota.in_flight, maxInFlight: quota.max_in_flight, month: quota.started_this_month, perMonth: quota.episodes_per_month });
   };
-}
-
-/** Today's count against the daily limit, as the server counts the Taipei day. */
-function useTodayText() {
-  const t = useTranslations("admin.videoStories");
-  const taipeiDay = useTaipeiDay();
-  return (quota: StoryQuota) => (quota.episodes_per_day == null
-    ? t("quota.todayNoLimit", { day: taipeiDay(quota.day), count: quota.started_today })
-    : t("quota.today", { day: taipeiDay(quota.day), count: quota.started_today, limit: quota.episodes_per_day }));
 }
 
 /** An admin role's name as the members page shows it, where the owner grants roles. */
@@ -264,22 +238,19 @@ function StoryPermissionNote() {
   </aside>;
 }
 
-/** Started today against the daily limit, in flight, cleared for upload against the buffer, and why no story starts. */
+/** In flight, this month's starts, the stories still to make, and why no story starts. */
 function StoryQuotaPanel({ quota, status }: { quota: StoryQuota; status: string }) {
   const t = useTranslations("admin.videoStories");
-  const today = useTodayText();
   const holdReason = useHoldReason();
   const reason = holdReason(quota, status);
   const figures = [
-    [t("quota.todayLabel"), today(quota)],
     [t("quota.inFlightLabel"), t("quota.of", { count: quota.in_flight, limit: quota.max_in_flight })],
-    [t("quota.awaitingLabel"), t("quota.of", { count: quota.awaiting_upload, limit: quota.upload_buffer })],
     [t("quota.monthLabel"), t("quota.of", { count: quota.started_this_month, limit: quota.episodes_per_month })],
     [t("quota.readyLabel"), t("quota.count", { count: quota.ready })],
   ];
   return <section aria-label={t("quota.title")} className="grid gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
     <p className="font-bold">{t("quota.title")}</p>
-    <dl className="grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-5">{figures.map(([label, value]) => <div key={label} className="grid gap-0.5">
+    <dl className="grid gap-3 text-sm sm:grid-cols-3">{figures.map(([label, value]) => <div key={label} className="grid gap-0.5">
       <dt className="text-[var(--muted)]">{label}</dt><dd className="font-semibold">{value}</dd>
     </div>)}</dl>
     {reason
@@ -288,17 +259,11 @@ function StoryQuotaPanel({ quota, status }: { quota: StoryQuota; status: string 
   </section>;
 }
 
-/** Pause or resume the series, and how many stories may start a day. */
+/** Pause or resume the series. */
 function StoryControls({ series, onChanged }: { series: StorySeries; onChanged: () => void }) {
-  const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
-  // The owner's pick, kept only while the server still has the value it was picked over: a save,
-  // or another admin's, brings the select back to what the server says.
-  const current = series.episodes_per_day == null ? "" : String(series.episodes_per_day);
-  const [pick, setPick] = useState<{ over: string; value: string } | null>(null);
-  const perDay = pick && pick.over === current ? pick.value : current;
   const patch = async (what: string, body: Record<string, unknown>) => {
     setBusy(what);
     setError("");
@@ -315,17 +280,7 @@ function StoryControls({ series, onChanged }: { series: StorySeries; onChanged: 
     <div className="flex flex-wrap items-end gap-3">
       {series.status === "active" && <Button secondary disabled={busy === "status"} onClick={() => void patch("status", { status: "paused" })}>{ts("pause")}</Button>}
       {series.status === "paused" && <Button secondary disabled={busy === "status"} onClick={() => void patch("status", { status: "active" })}>{ts("resume")}</Button>}
-      <form className="flex flex-wrap items-end gap-3" aria-label={t("perDay.label")} onSubmit={(event) => { event.preventDefault(); void patch("per-day", { episodes_per_day: perDay ? Number(perDay) : null }); }}>
-        <label className="grid gap-2 text-sm font-semibold">{t("perDay.label")}
-          <select className={control} value={perDay} disabled={busy === "per-day"} onChange={(event) => setPick({ over: current, value: event.target.value })}>
-            <option value="">{t("perDay.none")}</option>
-            {PER_DAY_CHOICES.map((count) => <option key={count} value={String(count)}>{t("perDay.option", { count })}</option>)}
-          </select>
-        </label>
-        <Button type="submit" secondary disabled={busy === "per-day" || perDay === current}>{busy === "per-day" ? ts("saving") : t("perDay.save")}</Button>
-      </form>
     </div>
-    <p className="text-sm leading-6 text-[var(--muted)]">{t("perDay.help")}</p>
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
   </div>;
 }
@@ -677,7 +632,6 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
   // Bumped whenever the file changes, so a report answers only the file it was asked about.
   const [version, setVersion] = useState(0);
   const [limit, setLimit] = useState("");
-  const [perDay, setPerDay] = useState("");
   const [answer, setAnswer] = useState<{ key: string; report: StoryImportReport } | null>(null);
   const [busy, setBusy] = useState<"" | "check" | "apply">("");
   const [error, setError] = useState("");
@@ -686,9 +640,8 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
   const target = seriesSlug ?? parsed?.slug ?? "";
   const limitValue = limit.trim() ? Number(limit) : null;
   const limitOk = limitValue === null || (Number.isInteger(limitValue) && limitValue >= 1);
-  const perDayValue = !seriesSlug && perDay ? Number(perDay) : null;
-  const key = JSON.stringify([version, target, limitValue, perDayValue]);
-  const ready = Boolean(parsed && !parsed.invalid && SLUG.test(target)) && limitOk;
+  const key = JSON.stringify([version, target, limitValue]);
+  const ready = Boolean(parsed && !parsed.invalid && STORY_SERIES_SLUG.test(target)) && limitOk;
   const report = answer?.report ?? null;
   const current = answer?.key === key;
   // A clean dry run of exactly what is on the form, with something to write.
@@ -705,7 +658,7 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
   };
   const run = async (apply: boolean) => {
     if (!parsed || parsed.invalid || !ready) return;
-    const body = JSON.stringify({ file: parsed.document, apply, limit: limitValue, episodes_per_day: perDayValue });
+    const body = JSON.stringify({ file: parsed.document, apply, limit: limitValue });
     const bytes = new Blob([body]).size;
     if (bytes > STORY_IMPORT_MAX_BYTES) {
       setError(t("import.tooLarge", { size: megabytesUp(bytes), max: megabytes(STORY_IMPORT_MAX_BYTES) }));
@@ -734,20 +687,14 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
     </label>
     {parsed?.invalid && <p className="text-sm text-red-800">{t("import.invalidJson", { message: parsed.invalid })}</p>}
     {parsed && !parsed.invalid && <p className="text-sm text-[var(--muted)]">{parsed.stories === null ? t("import.noStories") : t("import.parsed", { count: parsed.stories, slug: parsed.slug || "—" })}</p>}
-    {!seriesSlug && parsed && !parsed.invalid && !SLUG.test(parsed.slug) && <p className="text-sm text-red-800">{t("import.noSlug")}</p>}
+    {!seriesSlug && parsed && !parsed.invalid && !STORY_SERIES_SLUG.test(parsed.slug) && <p className="text-sm text-red-800">{t("import.noSlug")}</p>}
     {seriesSlug && parsed?.slug && parsed.slug !== seriesSlug && <p className="text-sm text-amber-800">{t("import.otherSeries", { file: parsed.slug, series: seriesSlug })}</p>}
     <div className="grid gap-3 md:grid-cols-2">
       <label className="grid gap-2 text-sm font-semibold">{t("import.limit")}
         <input className={control} type="number" min={1} max={500} inputMode="numeric" value={limit} disabled={busy !== ""} placeholder={t("import.limitPlaceholder")} aria-invalid={!limitOk} onChange={(event) => setLimit(event.target.value)} />
       </label>
-      {!seriesSlug && <label className="grid gap-2 text-sm font-semibold">{t("import.perDay")}
-        <select className={control} value={perDay} disabled={busy !== ""} onChange={(event) => setPerDay(event.target.value)}>
-          <option value="">{t("import.perDayFile")}</option>
-          {PER_DAY_CHOICES.map((count) => <option key={count} value={String(count)}>{t("perDay.option", { count })}</option>)}
-        </select>
-      </label>}
     </div>
-    <p className="text-xs leading-5 text-[var(--muted)]">{seriesSlug ? t("import.limitHelp") : `${t("import.limitHelp")} ${t("import.perDayHelp")}`}</p>
+    <p className="text-xs leading-5 text-[var(--muted)]">{t("import.limitHelp")}</p>
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     <div className="flex flex-wrap gap-3">
       <Button type="submit" secondary={confirmable} disabled={!ready || busy !== ""}>{busy === "check" ? t("import.checking") : t("import.check")}</Button>
@@ -760,14 +707,19 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
 }
 
 /**
- * The story series on the drama tab: each one with where it stands against its limits and why no
- * story starts, opened on its own page; and the import, which also creates a series from its file.
+ * The story series under the Drama tab, beside the explainer requests: each one with its limits and
+ * why no story starts, opened on its own page; and the import, which also creates a series from its
+ * file. The Videos tab's 品牌故事 category lists only the videos, as 觀念解說 does (the owner,
+ * 2026-10-21).
  */
 export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
+  return <StorySeriesList onOpenSeries={onOpenSeries} />;
+}
+
+function StorySeriesList({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const manage = useAdminActionGuard("content.manage");
-  const today = useTodayText();
   const holdReason = useHoldReason();
   const [series, setSeries] = useState<StorySummary[] | null>(null);
   const [error, setError] = useState("");
@@ -791,7 +743,7 @@ export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: s
             <AdminStatusPill status="active">{t("kind")}</AdminStatusPill>
             <AdminStatusPill status={seriesTone[each.status] ?? "inactive"}>{ts(`statuses.${each.status}`)}</AdminStatusPill>
           </span>
-          {quota && <span className="text-sm text-[var(--muted)]">{t("quota.line", { today: today(quota), inFlight: quota.in_flight, maxInFlight: quota.max_in_flight, awaiting: quota.awaiting_upload, buffer: quota.upload_buffer, ready: quota.ready })}</span>}
+          {quota && <span className="text-sm text-[var(--muted)]">{t("quota.line", { inFlight: quota.in_flight, maxInFlight: quota.max_in_flight, ready: quota.ready })}</span>}
           {reason && <span className="text-sm text-amber-900">{t("quota.holdTitle")} {reason}</span>}
         </button>
       </li>;
@@ -809,6 +761,10 @@ export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: s
  * every story with its plan, and the import again (it updates only the stories not started yet).
  */
 export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
+  return <StorySeriesDetail series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={onChanged} />;
+}
+
+function StorySeriesDetail({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const manage = useAdminActionGuard("content.manage");

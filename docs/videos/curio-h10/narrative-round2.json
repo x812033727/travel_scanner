@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "review_kind": "first_read_strict_blind",
+  "slug": "curio-h10",
+  "video_json": "<repo>/docs/videos/curio-h10/video.json",
+  "video_sha256": "58E37C2EB2BC8190BA16AA4B9DC5050397819A12E263B29CF3A0641DBA7C306B",
+  "cli": "node tools/video/cli.mjs narrative --slug curio-h10 --json",
+  "mandatory_pass_count": 11,
+  "mandatory_total": 12,
+  "advisory_pass_count": 1,
+  "advisory_total": 1,
+  "answers": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h28b2255 00:00]",
+        "[h2643cff 00:08]"
+      ],
+      "reason": "首句即在一八四五年格林海斯，兩艘船正在離港；第二句承接留下的隊伍。"
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h16d9247 00:16]",
+        "[hd8ce35d 00:23]",
+        "[he5a1f1d 00:30]",
+        "[h81770de 00:37]"
+      ],
+      "reason": "紙、海圖、岸上鐵件都停在找到線索的時刻，未在開場說出船或簽名者的辨認結果。"
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h28b2255 00:00]",
+        "[hd476f23 01:14]",
+        "[h72b4789 02:18]",
+        "[h832761a 05:46]",
+        "[h93d6e3d 08:20]",
+        "[hf310a51 09:00]"
+      ],
+      "reason": "從遠征失蹤，循紙條和見聞找船，最後辨認簽名者，按事件及後續查明的次序推進。"
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h7ca6f6b 03:09]",
+        "[h3369d03 05:10]",
+        "[h9ce4071 07:03]"
+      ],
+      "reason": "段落轉換以故事內尚待回答的問題推進，沒有宣告影片章節或列出後續內容。"
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h81770de 00:37]",
+        "[h3017f70 00:44]",
+        "[h049dfec 02:11]",
+        "[h72b4789 02:18]",
+        "[hfd3d3c2 03:53]",
+        "[hef33fec 04:01]",
+        "[he8d16a9 05:38]",
+        "[h832761a 05:46]",
+        "[h9ce4071 07:03]",
+        "[h6db9312 07:10]",
+        "[h93c7c04 08:42]",
+        "[h2fd7271 08:52]"
+      ],
+      "reason": "各章首句接續離港、棄船、找船、岸上意外、第二艘船與簽名辨認；05:46 的鐵件回呼指向開場相隔逾五分鐘的伏筆，同時回答上一章未說明的岸上發現。"
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h81770de 00:37]",
+        "[h7e65daf 01:35]",
+        "[h049dfec 02:11]",
+        "[h7ca6f6b 03:09]",
+        "[hfd3d3c2 03:53]",
+        "[h3369d03 05:10]",
+        "[h947eb54 06:16]",
+        "[h9ce4071 07:03]",
+        "[hcc5d7ed 07:56]",
+        "[h93c7c04 08:42]"
+      ],
+      "reason": "正文的未答問題分布於00:37、01:35、02:11、03:09、03:53、05:10、06:16、07:03、07:56、08:42，相鄰間隔都少於90秒。"
+    },
+    {
+      "id": "payoffs",
+      "pass": false,
+      "advisory": false,
+      "evidence": [
+        "[h3369d03 05:10]",
+        "[hc2e7f24 05:16]",
+        "[h725fbb3 06:09]",
+        "[h3b4187b 06:57]"
+      ],
+      "reason": "05:10 明確問口述中的沉船描述怎麼變成下一次海底搜尋位置；其後改談岸上物件與零件促成的改道，06:57 只說沉船區域『接上』因紐特見聞，沒有交代這條口述線索如何具體轉成搜尋位置，也沒有點名回答該問句。"
+    },
+    {
+      "id": "no_recap",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h2643cff 00:08]",
+        "[h3e67f13 00:51]",
+        "[h832761a 05:46]",
+        "[h93c7c04 08:42]"
+      ],
+      "reason": "一百三十四是新增的啟航總數；鐵件和菲茨詹姆斯的重提都有明確回呼，未見同一數字或結論的無目的重講。"
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "advisory": true,
+      "evidence": [
+        "[h28b2255 00:00]",
+        "[h3017f70 00:44]",
+        "[h72b4789 02:18]",
+        "[hef33fec 04:01]",
+        "[h832761a 05:46]",
+        "[h6db9312 07:10]",
+        "[h2fd7271 08:52]"
+      ],
+      "reason": "七個章名分別寫離港、困冰、紙邊計畫、口述畫上海圖、鐵件改道、見聞指向海灣、簽名得到證據，都是事件或揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[he593c8f 09:25]",
+        "[h6980aac 09:28]"
+      ],
+      "reason": "片尾只問本片哪條線索最吸引人並邀請訂閱，沒有提下集、下一片或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h16d9247 00:16]",
+        "[hd8ce35d 00:23]",
+        "[he5a1f1d 00:30]"
+      ],
+      "reason": "首個離港場景之後依序留下紙上簽名、海圖標位、岸上鐵件三個具體未揭結果的時刻。"
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h28b2255 00:00]",
+        "[h421fbee 02:47]",
+        "[hbb9c913 06:50]",
+        "[h93d6e3d 08:20]",
+        "[hf310a51 09:00]"
+      ],
+      "reason": "富蘭克林遠征的船隊與留下姓名的人由開場引入，紙條、兩艘沉船和遺傳辨認一路推進同一件失蹤遠征。"
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "advisory": false,
+      "evidence": [
+        "[h1020a89 03:22]",
+        "[h3a137ee 04:16]",
+        "[h725fbb3 06:09]",
+        "[h540a29e 08:14]",
+        "[h2fd7271 08:52]"
+      ],
+      "reason": "口述、位置、零件、船體構造及遺骸比對均服務於開場的船與人如何被認出，沒有獨立岔題段或清單式念讀。"
+    }
+  ]
+}

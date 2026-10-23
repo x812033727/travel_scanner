@@ -17,9 +17,10 @@ and the worker starts it.
 A brand-story series is a series of ``kind = "story"`` (docs/videos/STORY.md): active from the
 start, no documents at all, its episodes the stories of a planned backlog imported ready
 (``app.video_automation.stories``). The next ready story starts without waiting for the one
-before, unless a limit holds (``story_quota``): the day's count on the Asia/Taipei calendar
-day, the episodes in the making, the month's count, or STORY_UPLOAD_BUFFER stories cleared for
-upload that the owner has not uploaded yet. A skipped story that never started can be brought
+before, unless a limit holds (``story_quota``): the series is paused, or the episodes in the
+making or the month's count reach the drama settings' limits. A brand story is a video category
+like the explainer, not a schedule: there is no daily count (the owner's decision of 2026-10-21).
+A skipped story that never started can be brought
 back (``restore_episode``); one whose video was dropped can be made again, a limited number of
 times, under a new video slug (``redo_episode``); a skipped episode of the other kinds cannot.
 
@@ -42,7 +43,7 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import ColumnElement, and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
+from app.models import AdminAuditLog, User, VideoProject, VideoToolToken
 from app.video_automation.anime_policy import anime_chapter_problem, is_long_anime
 from app.video_automation.judge import (
     retention_required_for,
@@ -112,12 +113,8 @@ ONE_OFF_PREFIX = "one-off-"
 DISCUSSION_NOTE = "討論後出了新版本"
 RECONCILIATION_NOTE = "文字已修改，製作資料尚未同步；請明確要求討論模型同步後再核准"
 DEPENDENCY_NOTE = "上游文件有新版本，請重新核對後核准"
-# A brand-story series (docs/videos/STORY.md §每日配額與排程). A story counts against the day it
-# started on in Asia/Taipei, where the owner lives and the upload slots are; and no new story
-# starts while this many are cleared for upload (their upload confirmation approved) without a
-# YouTube id, so a few days without uploads never piles up more finished stories.
+# The owner's calendar day, for the dates a story's messages name.
 TAIPEI = ZoneInfo("Asia/Taipei")
-STORY_UPLOAD_BUFFER = 6
 # What the request row of a started story says besides its title and logline.
 STORY_PREMISE_FIELDS = ("question",)
 # A story whose video was dropped may be made again this many times (``redo_episode``): a video
@@ -171,7 +168,7 @@ SHOT_SECONDS = 6
 RETAKE_FACTOR = 1.5
 KEYFRAME_TAKES = 1.3
 SHEET_IMAGES = 18
-TIER_CLIP_SHARE: dict[str, float] = {"clips": 1.0, "hybrid": 0.4, "stills": 0.1}
+TIER_CLIP_SHARE: dict[str, float] = {"clips": 1.0, "hybrid": 0.4, "stills": 0.1, "manga": 0.0}
 
 
 class SeriesRefused(Exception):
@@ -636,29 +633,18 @@ def story_quota(
     episodes: list[VideoDramaEpisode],
     settings: VideoAutomationSettings,
     *,
-    now: datetime,
     started_this_month: int,
-    awaiting_upload: int,
-    earlier_starts: Sequence[datetime] = (),
 ) -> StoryQuotaOut:
     """Where a story series stands against its limits, and why no story starts now, if one
-    does not (docs/videos/STORY.md §每日配額與排程).
+    does not (docs/videos/STORY.md §開工與上限).
 
     ``started_this_month`` counts the series' episodes started since the first of the month
-    (UTC, as for every series); ``awaiting_upload`` its stories cleared for upload without a
-    YouTube id (``_awaiting_upload``). The day's count is every episode whose ``started_at``
-    falls on today's Asia/Taipei calendar day, whatever became of it since: 15:59:59Z is still
-    that day in Taipei, 16:00:00Z is the next. ``earlier_starts`` are the starts of dropped
-    videos whose story is being made again (``_earlier_starts``): the episode no longer carries
-    them, and they count for their day all the same. The first limit that holds is the reason.
+    (UTC, as for every series), the remade stories' dropped videos included. There is no daily
+    count and no upload buffer: a brand story is a video category, not a schedule (the owner's
+    decision of 2026-10-21). The first limit that holds is the reason.
     """
-    today = taipei_day(now)
-    started_today = sum(
-        1 for e in episodes if e.started_at is not None and taipei_day(e.started_at) == today
-    ) + sum(1 for moment in earlier_starts if taipei_day(moment) == today)
     in_flight = sum(1 for e in episodes if e.status == "started")
     ready = sum(1 for e in episodes if e.status == "ready")
-    per_day = series.episodes_per_day
     max_in_flight = settings.series_max_in_flight
     per_month = settings.series_episodes_per_month
     hold: StoryHold | None = None
@@ -666,34 +652,20 @@ def story_quota(
     if series.status != "active":
         hold = "not_active"
         detail = "作品已暫停" if series.status == "paused" else "作品不在進行中"
-    elif per_day is not None and started_today >= per_day:
-        hold = "per_day"
-        detail = f"今天（台北時間 {today:%m/%d}）已經開始 {started_today} 支，每日上限 {per_day} 支"
     elif in_flight >= max_in_flight:
         hold = "in_flight"
         detail = f"正在做的故事有 {in_flight} 支，同時進行的上限是 {max_in_flight} 支"
     elif started_this_month >= per_month:
         hold = "per_month"
         detail = f"本月已經開始 {started_this_month} 集，每月上限 {per_month} 集"
-    elif awaiting_upload >= STORY_UPLOAD_BUFFER:
-        hold = "upload_buffer"
-        detail = (
-            f"可以上架、還沒上傳的故事已有 {awaiting_upload} 支；滿 {STORY_UPLOAD_BUFFER} 支就先"
-            "不開新的，上傳並貼上 YouTube 網址後會繼續"
-        )
     elif ready == 0:
         hold = "none_ready"
         detail = "沒有待做的故事：清單裡的故事都開始過了，或還沒匯入"
     return StoryQuotaOut(
-        day=today,
-        started_today=started_today,
-        episodes_per_day=per_day,
         in_flight=in_flight,
         max_in_flight=max_in_flight,
         started_this_month=started_this_month,
         episodes_per_month=per_month,
-        awaiting_upload=awaiting_upload,
-        upload_buffer=STORY_UPLOAD_BUFFER,
         ready=ready,
         hold=hold,
         hold_detail=detail,
@@ -731,9 +703,6 @@ def next_job_for(
     settings: VideoAutomationSettings,
     *,
     started_this_month: int,
-    now: datetime | None = None,
-    awaiting_upload: int = 0,
-    earlier_starts: Sequence[datetime] = (),
 ) -> NextJob | None:
     """What the worker should do next for this series, or None when it waits for the owner.
 
@@ -741,21 +710,12 @@ def next_job_for(
     is due), then the next ready episode, in order, one at a time unless the settings allow two.
 
     A story series has no documents and its stories do not wait for one another: the next ready
-    one in number order starts unless ``story_quota`` names a reason not to. ``now``,
-    ``awaiting_upload`` and ``earlier_starts`` are read only there.
+    one in number order starts unless ``story_quota`` names a reason not to.
     """
     if is_planning_only(series):
         return None
     if is_story(series):
-        quota = story_quota(
-            series,
-            episodes,
-            settings,
-            now=now or _now(),
-            started_this_month=started_this_month,
-            awaiting_upload=awaiting_upload,
-            earlier_starts=earlier_starts,
-        )
+        quota = story_quota(series, episodes, settings, started_this_month=started_this_month)
         if quota.hold is not None:
             return None
         return NextJob(
@@ -989,7 +949,6 @@ def summary_view(
         compilation_slug=series.compilation_slug,
         compilation_started_at=series.compilation_started_at,
         compilation_finished_at=series.compilation_finished_at,
-        episodes_per_day=series.episodes_per_day,
         image_model=series.image_model,
         look=dict(series.look) if isinstance(series.look, dict) else None,
         quota=quota,
@@ -1075,17 +1034,6 @@ def _earlier_videos(series: VideoDramaSeries) -> ColumnElement[bool]:
     )
 
 
-async def _earlier_starts(session: AsyncSession, series: VideoDramaSeries) -> list[datetime]:
-    """When a story series' dropped-then-remade videos started; empty for the other kinds,
-    whose episodes never start twice, and read without a query for them."""
-    if not is_story(series):
-        return []
-    found = await session.scalars(
-        select(VideoDramaRequest.started_at).where(_earlier_videos(series))
-    )
-    return [moment for moment in found.all() if moment is not None]
-
-
 async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -> int:
     now = _now()
     start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
@@ -1104,31 +1052,6 @@ async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -
             )
             or 0
         )
-    return int(found or 0)
-
-
-async def _awaiting_upload(session: AsyncSession, series: VideoDramaSeries) -> int:
-    """How many of the series' episodes are cleared for upload and not on YouTube yet.
-
-    Cleared for upload is the video's upload confirmation (its ``publish`` review) approved,
-    the same record the "ready to upload" list reads (app.video_reviews.admin_service); on
-    YouTube is ``youtube_video_id`` set, which the owner's pasted address or the site's own
-    upload writes. A dropped video is never uploaded, so it does not count.
-    """
-    confirmed = select(VideoReview.project_id).where(
-        VideoReview.gate == "publish", VideoReview.status == "approved"
-    )
-    found = await session.scalar(
-        select(func.count(VideoProject.id))
-        .select_from(VideoProject)
-        .join(VideoDramaEpisode, VideoDramaEpisode.slug == VideoProject.slug)
-        .where(
-            VideoDramaEpisode.series_id == series.id,
-            VideoProject.youtube_video_id.is_(None),
-            VideoProject.dropped_at.is_(None),
-            VideoProject.id.in_(confirmed),
-        )
-    )
     return int(found or 0)
 
 
@@ -1156,10 +1079,7 @@ async def _story_quota(
         series,
         episodes,
         await _limits(session),
-        now=_now(),
         started_this_month=await _started_this_month(session, series),
-        awaiting_upload=await _awaiting_upload(session, series),
-        earlier_starts=await _earlier_starts(session, series),
     )
 
 
@@ -1263,7 +1183,6 @@ async def add_series(
                 "visual_tier": payload.visual_tier,
                 "total_minutes": payload.total_minutes,
                 "target_minutes": payload.target_minutes,
-                "episodes_per_day": payload.episodes_per_day,
                 "image_model": payload.image_model,
                 "production_policy": payload.production_policy,
                 "runtime_spec": values["runtime_spec"],
@@ -1304,6 +1223,9 @@ async def create_one_off(
         status="setting",
         note=payload.note,
         image_model=payload.image_model,
+        # The one binge field a one-off takes (docs/videos/BINGE.md): the worker writes it into
+        # series.json only when it is not the default, so older one-offs keep their files.
+        visual_tier=payload.visual_tier,
         created_by_user_id=actor.id,
         created_at=now,
         updated_at=now,
@@ -1452,7 +1374,7 @@ def patch_problem(
     bible was written for the one it was filed in. To change after that, the owner withdraws
     the one-off and files a new one.
 
-    Only a story series has a daily count and a shared look. A one-off explainer runs 8–20
+    Only a story series has a shared look. A one-off explainer runs 8–20
     minutes; other dramas stay within SERIES_MAX_MINUTES. A story series stays hands-off,
     stills only and never compiled, keeps a look, and has no chapters to resize.
     """
@@ -1499,10 +1421,8 @@ def patch_problem(
                 "故事聖經已經寫了，不能換成另一個解說系列的風格；要換請撤回這部再重新發起",
             )
     if not is_story(series):
-        if changes.get("episodes_per_day") is not None or changes.get("look") is not None:
-            return SeriesRefused(
-                422, "video_series_story_only", "每日支數與共用畫風只有品牌故事作品才有"
-            )
+        if changes.get("look") is not None:
+            return SeriesRefused(422, "video_series_story_only", "共用畫風只有品牌故事作品才有")
         if {"style_preset", "target_minutes"} & changes.keys():
             minutes = patch_target_minutes(series, changes)
             explainer = (
@@ -1532,6 +1452,28 @@ def patch_problem(
         )
     if "look" in changes and changes["look"] is None:
         return SeriesRefused(422, "video_series_story_look", "品牌故事要留著每個故事共用的畫風")
+    if {"look", "target_minutes", "image_model", "style_preset"} & changes.keys():
+        # PATCH carries only changed fields. Check the complete route before persisting it,
+        # including a switch between the original custom look and the MiniMax preset.
+        look = changes.get("look", series.look)
+        minutes = changes.get("target_minutes", series.target_minutes)
+        image_model = changes.get("image_model", series.image_model)
+        style_preset = changes.get("style_preset", series.style_preset)
+        if look == {"preset": "cute-mystery"}:
+            if (minutes, image_model, style_preset) != (10, "image-01", "custom"):
+                return SeriesRefused(
+                    422,
+                    "video_series_story_cute_route",
+                    "可愛懸疑品牌故事須為 10 分鐘、image-01，且敘事風格為 custom",
+                )
+        elif series.look == {"preset": "cute-mystery"} and (
+            minutes is None or not 12 <= minutes <= 15 or style_preset != "custom"
+        ):
+            return SeriesRefused(
+                422,
+                "video_series_story_custom_route",
+                "改回自訂品牌故事畫風時，須同時設定 12–15 分鐘且敘事風格為 custom",
+            )
     if "episodes_per_chapter" in changes:
         return SeriesRefused(409, "video_series_story_fixed", "品牌故事沒有篇章，不分每篇集數")
     return None
@@ -2048,7 +1990,7 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
         raise SeriesRefused(
             409,
             "video_series_story_no_action",
-            "品牌故事沒有篇章也不做合集；故事照每日支數自己開始，要調整就改每日支數或暫停作品",
+            "品牌故事沒有篇章也不做合集；匯入的故事會自己開始，要停就暫停作品或略過那個故事",
         )
     docs = await _docs(session, series)
     latest = latest_docs(docs)
@@ -2380,7 +2322,6 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
             )
         ).all()
     )
-    now = _now()
     for series in rows:
         docs = await _docs(session, series)
         episodes = await _episodes(session, series)
@@ -2390,9 +2331,6 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
             episodes,
             settings,
             started_this_month=await _started_this_month(session, series),
-            now=now,
-            awaiting_upload=await _awaiting_upload(session, series) if is_story(series) else 0,
-            earlier_starts=await _earlier_starts(session, series),
         )
         if job is None:
             continue

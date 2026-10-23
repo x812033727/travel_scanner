@@ -16,6 +16,7 @@ from app.video_automation.anime_policy import is_long_anime
 from app.video_automation.judge import (
     COMPILATION_QA_ITEMS,
     QA_ITEMS,
+    demo_asked_of,
     final_qa_passed,
     outline_pick_passed,
     publish_package_passed,
@@ -631,18 +632,22 @@ async def auto_approves_script(
     return script_check_passed(payload, retention_required=retention_required_for(series.genre))
 
 
-async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> bool:
+async def auto_picks_outline(
+    session: AsyncSession, payload: dict[str, Any], category: str | None = None
+) -> bool:
     """Whether an outline review stands on Jev's pick (docs/videos/HANDS-OFF.md).
 
     The switch must be on and the stance written, so no video gets its viewpoint decided by
-    the AI before the owner wrote one down; then the pick must clear the thresholds.
+    the AI before the owner wrote one down; then the pick must clear the thresholds, the
+    demonstration among them unless the video's own row (``category``) files it as an
+    explainer or a story.
     """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
     if row is None or not row.auto_pick_outline or not (row.channel_stance or "").strip():
         return False
-    return outline_pick_passed(payload)
+    return outline_pick_passed(payload, demo_asked_of(category))
 
 
 async def auto_approves_final(

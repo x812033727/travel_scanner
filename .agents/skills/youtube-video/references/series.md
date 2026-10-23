@@ -31,6 +31,19 @@
 - 站主問問題就只回答（`revised` 為 null）；要求改才出新版本，回覆裡列出改了什麼。**文件**的新版本由站上存成一個等站主核准的 `review` 版本，被取代的那版備註「討論後出了新版本」——不算 `series_doc_rewrites`，也不算每月草稿，沒有輪數上限。**劇本**的新版本由工人自己寫回 `video.json`（每句 id 保留、過 lint，撰稿模型最多修 3 次，仍不過就還原並在回覆裡說明），接著重跑查核與聽眾審稿、重寫 `script.md`、再送一次劇本關卡。
 - 模型給不出可用的答案時，工人代它回一則「模型這一輪沒有給出可用的回覆（…）」，原始答案留在 `answers/discuss-<時間>.txt`，串停在那裡等站主，不自動重試。
 - 討論不能動到上面已核准的文件（討論細綱時不能改設定集）：模型只建議，站主到那條串再說。
+- **請求失敗時**（`tools/video/automation/discuss.mjs`）：站上一次只交出所有作品裡最舊的一則未回覆訊息，所以一則訊息永遠不回，後面所有串都會跟著卡住。工人因此一定會回覆或在有限輪數內放手：
+  - **文件串**（`answerDocument`）
+    - 答案在請求送出後遺失（`RUN_UNCERTAIN`）：回一則 `lostReply`，不自己再問，因為可能已計費。
+    - 站上拒絕（4xx），或模型服務本身拒絕（502 `video_ai_upstream_failed`，例如設定集太長超過模型上下文、金鑰失效）：回一則 `refusedReply`，同樣的請求不再每輪重送。
+    - 可能會過的失敗（5xx、429、`video_ai_upstream_busy`）：這一輪先放著，下一輪再問；每則訊息等了幾輪記在 `_series/<作品>/discussion-waits.json`。連續 `MAX_DOCUMENT_WAITS`（6）輪都沒過，就回一則 `failingReply`，讓後面的串繼續；中間只要成功一次，計數就清掉。
+  - **劇本串**（`answerScript`）：失敗算那支影片的，照影片各階段的規則處理（`requestFailed`）。
+    - 答案遺失擋成 `uncertain:writer`。
+    - 伺服器已沒有那個工作擋成 `job_gone:writer`。
+    - 被拒絕擋下並寫明原因。
+    - 忙碌或限流讓影片延後，訊息跟著等。
+    - 影片因這則訊息被擋時記下 `blocked_line`，等站主在影片頁重試後再回。
+    - 影片因別的原因停住時，回一則 `blockedReply`，不把訊息扣著。
+  - 付了錢的答案若網站沒收下，留在 `discussion-answer.json`（作品的在 `_series/<作品>/`，劇本的在影片工作目錄），下次輪到這則訊息時直接送出，不再問模型一次。
 
 ## 劇本關卡（`script`）
 
@@ -104,7 +117,7 @@ node tools/video/cli.mjs look --slug <slug>            # 有存檔就沿用，�
 - 詞彙表是所有影片共用的（`speechHash` 含整份）：設定集階段就把人名、門派名、術語加齊（設定集與故事聖經 JSON 的 `lexicon`），之後少加。
 - 作品文件的提示詞紀錄在漫劇設定子分頁的「目前的提示詞」依 variant 分開（`planner:setting`、`planner:bible`、`planner:discuss`、`writer:discuss` 等），不會蓋掉教學企劃的。
 - 集數的 slug 固定為 `<作品>-e<三位數>`；作品 slug 最長 40 字；單集的作品 slug 是 `one-off-<請求 id 前 8 碼>`，影片就是 `one-off-<…>-e001`。合集是 `<作品>-full`（單集沒有合集）。
-- 一鍵合集開拍前要先到設定分頁調預算，否則報價標紅、工人做到一半停在 429 等：`monthly_clip_seconds_budget` 6,000（hybrid 120 分鐘要 4,320）、`monthly_images_budget` 3,000、`series_episodes_per_month` 60、`series_max_in_flight` 3、`max_waiting_drafts` ≥ 4（工人的 `room()` 連進行中的集數一起算）。
+- 一鍵合集開拍前要先到設定分頁調預算，否則報價標紅、工人做到一半停在 429 等：`monthly_clip_seconds_budget` 6,000（hybrid 120 分鐘要 4,320）、`monthly_images_budget` 3,000、`series_episodes_per_month` 60、`series_max_in_flight` 3、`max_waiting_drafts` ≥ 4（工人的 `room()` 連進行中的集數一起算；品牌故事例外：站主 2026-10-19 要它獨立計算，進行中的故事不佔這個名額、開工也不問它，只受站上的故事配額與 `series_max_in_flight` 管）。
 - 節奏的秒數是工人量的，不是模型寫的：查核只回 `hook_line`／`satisfaction_lines`／`cliffhanger_line` 的句子 id；模型自己填秒數會被忽略。鉤子提示詞寫 ≤ 5 秒、門檻 8 秒，是給每分鐘 250 字的估計留餘裕。
 - 合集的說明欄預算很小：40 集只剩 500 位元組給本文（每章一行約 150 位元組，總上限 5,000）；超標時章節退成「第 N 集」並警告，不是錯誤。
 - `compile` 結束碼 2 多半是某一集在核准後重剪了（雜湊對不上 `approvals.json`）：回那一集重送 `review-push --gate final`，不要 `--force`。

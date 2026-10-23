@@ -39,12 +39,12 @@
     {
       "title": "GitHub pull request review quickstart",
       "url": "https://docs.github.com/en/pull-requests/get-started/reviewing-pull-requests-quickstart",
-      "checked_on": "2026-09-27"
+      "checked_on": "2026-10-08"
     },
     {
       "title": "Claude Code CLI reference",
       "url": "https://code.claude.com/docs/en/cli-reference",
-      "checked_on": "2026-09-27"
+      "checked_on": "2026-10-08"
     }
   ],
   "scenes": [
@@ -68,7 +68,24 @@
         {
           "id": "v40001",
           "text": "AI 送來一份修補程式，你會直接合併嗎？"
-        },
+        }
+      ]
+    },
+    {
+      "id": "opening-gates",
+      "template": "bullets",
+      "data": {
+        "title": "合併前的三道關",
+        "items": [
+          "需求契約",
+          "實際差異",
+          "回歸測試"
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
         {
           "id": "v40002",
           "text": "我帶你看需求、差異與回歸，三道關都要過。"
@@ -99,7 +116,21 @@
         {
           "id": "v40008",
           "text": "人數不合法也會擋，兩個結果都是綠色。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "why-green-missing",
+      "template": "big",
+      "data": {
+        "kicker": "沒被測到的路徑",
+        "text": "不整除的案例",
+        "sub": "綠燈不能證明帳算對"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
         {
           "id": "v40009",
           "text": "不整除的路徑沒人問，所以錯誤藏得好好的。"
@@ -121,7 +152,11 @@
         "title": "綠燈實際測了什麼",
         "language": "javascript",
         "code": "assert.deepEqual(splitFareCents(120, 3),\n  [40, 40, 40]);\nassert.throws(() => splitFareCents(100, 0),\n  RangeError);",
-        "caption": "原本只有整除和非法人數兩題"
+        "caption": "原本只有整除和非法人數兩題",
+        "highlight": [
+          1,
+          2
+        ]
       },
       "claims": [
         "c1"
@@ -134,7 +169,26 @@
         {
           "id": "v4e1001",
           "text": "第一個測一百二十分，三人平均分。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "old-test-code-part2",
+      "template": "code",
+      "data": {
+        "title": "綠燈實際測了什麼",
+        "language": "javascript",
+        "code": "assert.deepEqual(splitFareCents(120, 3),\n  [40, 40, 40]);\nassert.throws(() => splitFareCents(100, 0),\n  RangeError);",
+        "caption": "原本只有整除和非法人數兩題",
+        "highlight": [
+          3,
+          4
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
         {
           "id": "v4e1002",
           "text": "第二個測零人時要拋出錯誤。"
@@ -152,7 +206,11 @@
         "title": "漏掉的案例",
         "language": "javascript",
         "code": "splitFareCents(100, 3)\n// 原本得到 [33, 33, 33]\n// 總和 99，少了 1",
-        "caption": "起始程式與事後測試實際輸出"
+        "caption": "起始程式與事後測試實際輸出",
+        "highlight": [
+          1,
+          2
+        ]
       },
       "claims": [
         "c1"
@@ -165,14 +223,51 @@
         {
           "id": "v40015",
           "text": "這不是顯示格式的問題，總和真的少了一分。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "bug-example-part2",
+      "template": "code",
+      "data": {
+        "title": "漏掉的案例",
+        "language": "javascript",
+        "code": "splitFareCents(100, 3)\n// 原本得到 [33, 33, 33]\n// 總和 99，少了 1",
+        "caption": "起始程式與事後測試實際輸出",
+        "highlight": [
+          3
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
         {
           "id": "v40016",
           "text": "如果少掉的一分錢會記入帳務，就算測試全綠也不能合併。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "bug-example-part3",
+      "template": "code",
+      "data": {
+        "title": "漏掉的案例",
+        "language": "javascript",
+        "code": "splitFareCents(100, 3)\n// 原本得到 [33, 33, 33]\n// 總和 99，少了 1",
+        "caption": "起始程式與事後測試實際輸出",
+        "highlight": [
+          1,
+          3
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
         {
           "id": "v40017",
-          "text": "接下來看 AI 真正交出的修補。"
+          "text": "接下來看一份可以重跑的本地修補。"
         },
         {
           "id": "v40018",
@@ -186,9 +281,10 @@
       "data": {
         "title": "這份示範的來源",
         "items": [
-          "自有小型程式",
-          "同一句明確需求",
-          "實際 Claude Code 修補"
+          "程式和測試的完整差異",
+          "修補測試9項重跑全過",
+          "非正式站事故／非已合併PR",
+          "可公開重跑的本地修補"
         ]
       },
       "claims": [
@@ -197,19 +293,22 @@
       "lines": [
         {
           "id": "v40021",
-          "text": "我用自己寫的分攤函式，讓 Claude Code 依照題目修改。"
+          "text": "這份本地分攤範例，留下了程式和測試的完整差異。"
         },
         {
           "id": "v40022",
-          "text": "它改了程式和測試，工具自寫九個測試都通過。"
+          "text": "修補後的九個測試重跑全過，稍後再做事後驗收。",
+          "reveal": 1
         },
         {
           "id": "v40023",
-          "text": "這不是正式站的事故，也不是已合併的真實 PR。"
+          "text": "這不是正式站的事故，也不是已合併的真實 PR。",
+          "reveal": 1
         },
         {
           "id": "v40024",
-          "text": "它是可以公開重跑的一份本地修補案例。"
+          "text": "它是可以公開重跑的一份本地修補案例。",
+          "reveal": 1
         },
         {
           "id": "v40025",
@@ -235,18 +334,37 @@
         {
           "id": "v40029",
           "text": "先把需求寫成你可以算得出來的條件。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "gate-one-rules",
+      "template": "bullets",
+      "data": {
+        "title": "需求包括原有規則",
+        "items": [
+          "保留輸入規則",
+          "保留分配規則",
+          "驗收條件能自己口述"
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
         {
           "id": "v40030",
           "text": "這題要保留輸入規則，不能只修一個範例。"
         },
         {
           "id": "v40031",
-          "text": "也不能悄悄把分配規則改成另一種做法。"
+          "text": "也不能悄悄把分配規則改成另一種做法。",
+          "reveal": 1
         },
         {
           "id": "v40032",
-          "text": "第一關的答案，應該能不靠工具自己口述。"
+          "text": "第一關的答案，應該能不靠工具自己口述。",
+          "reveal": 1
         }
       ]
     },
@@ -284,15 +402,18 @@
         },
         {
           "id": "v40036",
-          "text": "第二條，所有人的份額加總，必須等於原來金額。"
+          "text": "第二條，所有人的份額加總，必須等於原來金額。",
+          "reveal": 1
         },
         {
           "id": "v40037",
-          "text": "第三條，任何兩人最多只差一分。"
+          "text": "第三條，任何兩人最多只差一分。",
+          "reveal": 1
         },
         {
           "id": "v40038",
-          "text": "第四條，有餘數時，前面的人先分到。"
+          "text": "第四條，有餘數時，前面的人先分到。",
+          "reveal": 1
         },
         {
           "id": "v40039",
@@ -323,7 +444,33 @@
         {
           "id": "v4e2001",
           "text": "再代入兩分給三個人，正確是前兩位各一分。"
+        }
+      ]
+    },
+    {
+      "id": "small-remainder-total",
+      "template": "compare",
+      "data": {
+        "title": "2分分給3人",
+        "left": {
+          "heading": "起始程式",
+          "points": [
+            "1、1、1",
+            "總和3"
+          ]
         },
+        "right": {
+          "heading": "需求結果",
+          "points": [
+            "1、1、0",
+            "總和2"
+          ]
+        }
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
         {
           "id": "v4e2002",
           "text": "第三位拿零分，總和仍是兩分。"
@@ -341,8 +488,8 @@
         "title": "原有輸入規則也算契約",
         "items": [
           "總額：非負安全整數",
-          "人數：1 到 100",
-          "非法輸入：RangeError"
+          "人數：1到100",
+          "原有輸入檢查要保留"
         ]
       },
       "claims": [
@@ -359,11 +506,13 @@
         },
         {
           "id": "v40044",
-          "text": "人數只能是一到一百之間的安全整數。"
+          "text": "人數只能是一到一百之間的安全整數。",
+          "reveal": 1
         },
         {
           "id": "v40045",
-          "text": "修補若刪掉這些檢查，就算範例變對也不能過關。"
+          "text": "修補若刪掉這些檢查，就算範例變對也不能過關。",
+          "reveal": 1
         },
         {
           "id": "v40046",
@@ -402,18 +551,37 @@
         {
           "id": "v40050",
           "text": "這組數字同時檢查總和與餘數順序。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "contract-case-check",
+      "template": "bullets",
+      "data": {
+        "title": "總和與順序一起看",
+        "items": [
+          "每人差不多還不夠",
+          "需求契約是審查的尺",
+          "2分給3人：1、1、0"
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
         {
           "id": "v40051",
           "text": "只測每個人差不多，還是不夠。"
         },
         {
           "id": "v40052",
-          "text": "需求契約先寫清楚，才有審查的尺。"
+          "text": "需求契約先寫清楚，才有審查的尺。",
+          "reveal": 1
         },
         {
           "id": "v40053",
-          "text": "換成兩分三人，正確順序也是一、一、零。"
+          "text": "換成兩分三人，正確順序也是一、一、零。",
+          "reveal": 1
         }
       ]
     },
@@ -435,18 +603,46 @@
         {
           "id": "v40057",
           "text": "先確認它只改到預期的程式和測試。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "gate-two-reading",
+      "template": "steps",
+      "data": {
+        "title": "直接檢查實際差異",
+        "steps": [
+          {
+            "title": "代入",
+            "detail": "100分給3人"
+          },
+          {
+            "title": "保護",
+            "detail": "原輸入條件保留"
+          },
+          {
+            "title": "差異",
+            "detail": "直接看檔案變更"
+          }
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
         {
           "id": "v40058",
           "text": "接著把新增邏輯代入一百分除三的例子。"
         },
         {
           "id": "v40059",
-          "text": "最後看它有沒有刪掉原來的保護條件。"
+          "text": "最後看它有沒有刪掉原來的保護條件。",
+          "reveal": 1
         },
         {
           "id": "v40060",
-          "text": "文字摘要可能遺漏細節，差異本身才是檢查對象。"
+          "text": "文字摘要可能遺漏細節，差異本身才是檢查對象。",
+          "reveal": 1
         }
       ]
     },
@@ -457,7 +653,11 @@
         "title": "修補的核心四行",
         "language": "javascript",
         "code": "const base = Math.floor(totalCents / people);\nconst remainder = totalCents - base * people;\nreturn Array.from({ length: people }, (_, i) =>\n  i < remainder ? base + 1 : base);",
-        "caption": "從實際 Claude Code 差異節錄"
+        "caption": "從本地修補差異節錄",
+        "highlight": [
+          1,
+          2
+        ]
       },
       "claims": [
         "c4"
@@ -470,7 +670,26 @@
         {
           "id": "v40064",
           "text": "再算剩下幾分，要補給幾位前面的人。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "diff-core-part2",
+      "template": "code",
+      "data": {
+        "title": "修補的核心四行",
+        "language": "javascript",
+        "code": "const base = Math.floor(totalCents / people);\nconst remainder = totalCents - base * people;\nreturn Array.from({ length: people }, (_, i) =>\n  i < remainder ? base + 1 : base);",
+        "caption": "從本地修補差異節錄",
+        "highlight": [
+          3,
+          4
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
         {
           "id": "v40065",
           "text": "總額一百，分給三人，各拿三十三，還剩一分錢。"
@@ -478,7 +697,26 @@
         {
           "id": "v40066",
           "text": "第一位多拿一分，其餘兩位維持三十三。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "diff-core-part3",
+      "template": "code",
+      "data": {
+        "title": "修補的核心四行",
+        "language": "javascript",
+        "code": "const base = Math.floor(totalCents / people);\nconst remainder = totalCents - base * people;\nreturn Array.from({ length: people }, (_, i) =>\n  i < remainder ? base + 1 : base);",
+        "caption": "從本地修補差異節錄",
+        "highlight": [
+          2,
+          4
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
         {
           "id": "v40067",
           "text": "用兩分三人再代一次，就能看到前兩位各多一分。"
@@ -510,7 +748,8 @@
         },
         {
           "id": "v4e3002",
-        "text": "在函式裡，AI 把平均四捨五入換成基本分與餘數。"
+          "text": "這份修補把平均四捨五入，換成基本分與餘數。",
+          "reveal": 1
         },
         {
           "id": "v4e3003",
@@ -522,11 +761,12 @@
       "id": "diff-check",
       "template": "bullets",
       "data": {
-        "title": "讀差異時看三處",
+        "title": "差異裡的檢查與範圍",
         "items": [
           "輸入驗證保留嗎？",
           "有改題目以外的檔嗎？",
-          "新測試在驗什麼？"
+          "新測試在驗什麼？",
+          "部署／帳務設定要另外討論"
         ]
       },
       "claims": [
@@ -539,11 +779,13 @@
         },
         {
           "id": "v40071",
-          "text": "再看檔案清單，只有程式和測試被修改。"
+          "text": "再看檔案清單，只有程式和測試被修改。",
+          "reveal": 1
         },
         {
           "id": "v40072",
-          "text": "新增測試涵蓋不整除、零金額和非法輸入。"
+          "text": "新增測試涵蓋不整除、零金額和非法輸入。",
+          "reveal": 1
         },
         {
           "id": "v40073",
@@ -551,7 +793,8 @@
         },
         {
           "id": "v40074",
-          "text": "如果它順手改了部署或帳務設定，應該另外討論。"
+          "text": "如果它順手改了部署或帳務設定，應該另外討論。",
+          "reveal": 1
         },
         {
           "id": "v40075",
@@ -566,7 +809,11 @@
         "title": "新測試要讀斷言",
         "language": "javascript",
         "code": "assert.deepEqual(splitFareCents(100, 3),\n  [34, 33, 33]);\nassert.deepEqual(splitFareCents(2, 5),\n  [1, 1, 0, 0, 0]);",
-        "caption": "這兩個斷言存在實際修補測試"
+        "caption": "這兩個斷言存在實際修補測試",
+        "highlight": [
+          1,
+          2
+        ]
       },
       "claims": [
         "c4"
@@ -579,7 +826,26 @@
         {
           "id": "v4e4001",
           "text": "這份修補測到一百分除三，是三十四、三十三、三十三。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "test-assertions-part2",
+      "template": "code",
+      "data": {
+        "title": "新測試要讀斷言",
+        "language": "javascript",
+        "code": "assert.deepEqual(splitFareCents(100, 3),\n  [34, 33, 33]);\nassert.deepEqual(splitFareCents(2, 5),\n  [1, 1, 0, 0, 0]);",
+        "caption": "這兩個斷言存在實際修補測試",
+        "highlight": [
+          3,
+          4
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
         {
           "id": "v4e4002",
           "text": "也測到兩分分五人，前兩位各一分，其餘拿零。"
@@ -609,18 +875,37 @@
         {
           "id": "v40078",
           "text": "真正的專案還要看相關模組、型別與維運影響。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "not-real-pr-scope",
+      "template": "bullets",
+      "data": {
+        "title": "這份示範的適用範圍",
+        "items": [
+          "連付款系統時要擴大審查",
+          "方法可帶入真實審查",
+          "本地示範不等於核准"
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
         {
           "id": "v40079",
           "text": "如果這段程式連著付款系統，範圍會更大。"
         },
         {
           "id": "v40080",
-          "text": "影片示範的方法，可以帶進真正的審查流程。"
+          "text": "影片示範的方法，可以帶進真正的審查流程。",
+          "reveal": 1
         },
         {
           "id": "v40081",
-          "text": "我把這個範圍明確標出，避免觀眾以為是真實核准。"
+          "text": "我把這個範圍明確標出，避免觀眾以為是真實核准。",
+          "reveal": 1
         }
       ]
     },
@@ -642,18 +927,46 @@
         {
           "id": "v40085",
           "text": "工具自己寫的測試有用，但不能是唯一標準。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "gate-three-replay",
+      "template": "steps",
+      "data": {
+        "title": "把同一份事後驗收放回舊碼",
+        "steps": [
+          {
+            "title": "重現",
+            "detail": "先抓到原來的錯"
+          },
+          {
+            "title": "舊碼",
+            "detail": "跑同一份事後驗收"
+          },
+          {
+            "title": "修補",
+            "detail": "再評估新修補"
+          }
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
         {
           "id": "v40086",
           "text": "好的驗收測試，應該先在舊版程式重現這個錯誤。"
         },
         {
           "id": "v40087",
-          "text": "所以我先拿舊碼跑同一份事後驗收。"
+          "text": "所以我先拿舊碼跑同一份事後驗收。",
+          "reveal": 1
         },
         {
           "id": "v40088",
-          "text": "理想順序是先讓驗收能重現舊錯，再評估新修補。"
+          "text": "理想順序是先讓驗收能重現舊錯，再評估新修補。",
+          "reveal": 1
         }
       ]
     },
@@ -672,7 +985,7 @@
         "right": {
           "heading": "修補",
           "points": [
-            "自寫 9 項通過",
+            "修補測試 9 項通過",
             "事後 4 類全通過"
           ]
         }
@@ -691,7 +1004,8 @@
         },
         {
           "id": "v40093",
-          "text": "換成修補後，四類事後驗收全通過。"
+          "text": "換成修補後，四類事後驗收全通過。",
+          "reveal": 1
         },
         {
           "id": "v40094",
@@ -710,7 +1024,11 @@
         "title": "不只測一組數字",
         "language": "javascript",
         "code": "for (let total = 0; total <= 500; total += 1) {\n  for (let people = 1; people <= 20; people += 1) {\n    const shares = splitFareCents(total, people);\n    const sum = shares.reduce((a, b) => a + b, 0);\n    assert.equal(sum, total);\n    assert.ok(Math.max(...shares) - Math.min(...shares) <= 1);\n  }\n}",
-        "caption": "驗收邏輯節錄（畫面改寫、省略長度檢查）"
+        "caption": "驗收邏輯節錄（畫面改寫、省略長度檢查）",
+        "highlight": [
+          1,
+          2
+        ]
       },
       "claims": [
         "c5"
@@ -723,7 +1041,27 @@
         {
           "id": "v40099",
           "text": "我還把零到五百的總額，搭配一到二十人跑過。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "property-part2",
+      "template": "code",
+      "data": {
+        "title": "不只測一組數字",
+        "language": "javascript",
+        "code": "for (let total = 0; total <= 500; total += 1) {\n  for (let people = 1; people <= 20; people += 1) {\n    const shares = splitFareCents(total, people);\n    const sum = shares.reduce((a, b) => a + b, 0);\n    assert.equal(sum, total);\n    assert.ok(Math.max(...shares) - Math.min(...shares) <= 1);\n  }\n}",
+        "caption": "驗收邏輯節錄（畫面改寫、省略長度檢查）",
+        "highlight": [
+          4,
+          5,
+          6
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
         {
           "id": "v40100",
           "text": "每組都檢查總和，並確認最大差距不超過一分。"
@@ -731,7 +1069,28 @@
         {
           "id": "v40101",
           "text": "這種性質檢查，能抓到你沒想到的餘數組合。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "property-part3",
+      "template": "code",
+      "data": {
+        "title": "不只測一組數字",
+        "language": "javascript",
+        "code": "for (let total = 0; total <= 500; total += 1) {\n  for (let people = 1; people <= 20; people += 1) {\n    const shares = splitFareCents(total, people);\n    const sum = shares.reduce((a, b) => a + b, 0);\n    assert.equal(sum, total);\n    assert.ok(Math.max(...shares) - Math.min(...shares) <= 1);\n  }\n}",
+        "caption": "驗收邏輯節錄（畫面改寫、省略長度檢查）",
+        "highlight": [
+          1,
+          2,
+          5,
+          6
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
         {
           "id": "v40102",
           "text": "實際回圈涵蓋大量組合，但仍不是形式化證明。"
@@ -748,12 +1107,20 @@
       "data": {
         "title": "事後驗收的實際輸出",
         "image": "docs/videos/ai-bug-fix-pr-review/demo/claude-acceptance.png",
-        "caption": "同一示範的 Claude 修補；原始輸出重排，4／4 通過"
+        "caption": "同一示範的本地修補；原始輸出重排，4／4 通過"
       },
-      "claims": ["c5"],
+      "claims": [
+        "c5"
+      ],
       "lines": [
-        {"id": "v4shot0", "text": "這是同一份修補在本機跑出的驗收輸出。"},
-        {"id": "v4shot1", "text": "四項綠燈有紀錄，但還要對照需求與完整差異。"}
+        {
+          "id": "v4shot0",
+          "text": "這是同一份修補在本機跑出的驗收輸出。"
+        },
+        {
+          "id": "v4shot1",
+          "text": "四項綠燈有紀錄，但還要對照需求與完整差異。"
+        }
       ]
     },
     {
@@ -763,12 +1130,12 @@
         "title": "性質測試逐組查三件事",
         "steps": [
           {
-            "title": "人數",
-            "detail": "輸出長度相同"
-          },
-          {
             "title": "總額",
             "detail": "各份額加總不變"
+          },
+          {
+            "title": "人數",
+            "detail": "輸出長度相同"
           },
           {
             "title": "差距",
@@ -786,11 +1153,13 @@
         },
         {
           "id": "v4e5001",
-          "text": "它還比對輸出長度，確認沒有漏掉任何人。"
+          "text": "它還比對輸出長度，確認沒有漏掉任何人。",
+          "reveal": 1
         },
         {
           "id": "v4e5002",
-          "text": "再找最大和最小份額，差距不能超過一。"
+          "text": "再找最大和最小份額，差距不能超過一。",
+          "reveal": 1
         },
         {
           "id": "v4e5003",
@@ -804,9 +1173,10 @@
       "data": {
         "title": "再保護原本沒壞的地方",
         "items": [
-          "零元額分攤",
+          "零金額：每人零分",
           "總額非法輸入",
-          "人數非法輸入"
+          "人數非法輸入",
+          "原有輸入驗證要保留"
         ]
       },
       "claims": [
@@ -819,11 +1189,13 @@
         },
         {
           "id": "v40106",
-          "text": "負數、小數或超大總額，仍然要被拒絕。"
+          "text": "負數、小數或超大總額，仍然要被拒絕。",
+          "reveal": 1
         },
         {
           "id": "v40107",
-          "text": "零人、超過一百人和小數人數也是一樣。"
+          "text": "零人、超過一百人和小數人數也是一樣。",
+          "reveal": 1
         },
         {
           "id": "v40108",
@@ -831,7 +1203,8 @@
         },
         {
           "id": "v40109",
-          "text": "尤其輸入驗證最容易在重寫時被無意刪掉。"
+          "text": "輸入驗證也可能在重寫時被無意刪掉。",
+          "reveal": 1
         }
       ]
     },
@@ -853,14 +1226,37 @@
         {
           "id": "v40113",
           "text": "需求契約告訴你什麼叫修好。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "three-gates-evidence",
+      "template": "steps",
+      "data": {
+        "title": "把證據放在一起",
+        "steps": [
+          {
+            "title": "差異",
+            "detail": "改了哪些檔與行"
+          },
+          {
+            "title": "回歸",
+            "detail": "在測試範圍內成立"
+          }
+        ]
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
         {
           "id": "v40114",
           "text": "差異讓你知道實際改了哪些檔、哪些行。"
         },
         {
           "id": "v40115",
-          "text": "回歸則證明新舊規則至少在測試範圍內成立。"
+          "text": "回歸則證明新舊規則至少在測試範圍內成立。",
+          "reveal": 1
         },
         {
           "id": "v40116",
@@ -898,15 +1294,18 @@
         },
         {
           "id": "v40120",
-          "text": "第一，需求有哪些明確的驗收條件。"
+          "text": "第一，需求有哪些明確的驗收條件。",
+          "reveal": 1
         },
         {
           "id": "v40121",
-          "text": "第二，實際差異只改了哪些地方。"
+          "text": "第二，實際差異只改了哪些地方。",
+          "reveal": 1
         },
         {
           "id": "v40122",
-          "text": "第三，哪個測試先紅、修補後又如何變綠。"
+          "text": "第三，哪個測試先紅、修補後又如何變綠。",
+          "reveal": 1
         },
         {
           "id": "v40123",
@@ -935,11 +1334,13 @@
         },
         {
           "id": "v4e6001",
-          "text": "附上完整差異，不只貼兩行好看的核心程式。"
+          "text": "附上完整差異，不只貼兩行好看的核心程式。",
+          "reveal": 1
         },
         {
           "id": "v4e6002",
-          "text": "再列出重跑指令與通過的測試範圍。"
+          "text": "再列出重跑指令與通過的測試範圍。",
+          "reveal": 1
         },
         {
           "id": "v4e6003",
@@ -955,7 +1356,8 @@
         "items": [
           "需求本身正確嗎？",
           "改動範圍完整嗎？",
-          "風險與回滾可接受嗎？"
+          "風險與回滾可接受嗎？",
+          "最後由負責者判斷"
         ]
       },
       "claims": [
@@ -968,15 +1370,18 @@
         },
         {
           "id": "v40127",
-          "text": "需求若一開始寫錯，測試也可能跟著綠錯方向。"
+          "text": "需求若一開始寫錯，測試也可能跟著綠錯方向。",
+          "reveal": 1
         },
         {
           "id": "v40128",
-          "text": "還要有人看改動範圍、資料影響和回滾方式。"
+          "text": "還要有人看改動範圍、資料影響和回滾方式。",
+          "reveal": 2
         },
         {
           "id": "v40129",
-          "text": "負責合併的人，得對這個判斷負責。"
+          "text": "負責合併的人，得對這個判斷負責。",
+          "reveal": 1
         },
         {
           "id": "v40130",
@@ -1003,18 +1408,37 @@
         {
           "id": "v40134",
           "text": "也可以要求修改，或在看過證據後核准。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "github-evidence",
+      "template": "bullets",
+      "data": {
+        "title": "留下同一份證據",
+        "items": [
+          "示範不核准真實PR",
+          "讓下一位審查者追溯",
+          "不用別人的PR裝飾畫面"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
         {
           "id": "v40135",
           "text": "這裡不替任何真實 PR 點核准。"
         },
         {
           "id": "v40136",
-          "text": "重點是讓下一位審查者找到同一份證據。"
+          "text": "重點是讓下一位審查者找到同一份證據。",
+          "reveal": 1
         },
         {
           "id": "v40137",
-          "text": "影片畫面展示規則，不會用別人的 PR 當裝飾。"
+          "text": "影片畫面展示規則，不會用別人的 PR 當裝飾。",
+          "reveal": 1
         }
       ]
     },
@@ -1041,18 +1465,37 @@
         {
           "id": "v40141",
           "text": "先過需求、差異、回歸這三道關，再由人作最後判斷。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "outro-practice",
+      "template": "bullets",
+      "data": {
+        "title": "拿下一份修補試一次",
+        "items": [
+          "起始碼、修補、測試放在一起",
+          "小修補先練三道關",
+          "再用到較大改動"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
         {
           "id": "v40142",
           "text": "這次的起始碼、修補和測試，要放在一起核對。"
         },
         {
           "id": "v40143",
-          "text": "拿你下一個小修補照著試一次，比背規則更有用。"
+          "text": "拿你下一個小修補照著試一次，比背規則更有用。",
+          "reveal": 1
         },
         {
           "id": "v40144",
-          "text": "這個小練習之後，再把同一方法用到較大的改動。"
+          "text": "這個小練習之後，再把同一方法用到較大的改動。",
+          "reveal": 1
         }
       ]
     }

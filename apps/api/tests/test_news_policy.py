@@ -179,6 +179,85 @@ def test_an_explicit_warning_does_not_bypass_other_hard_checks() -> None:
     assert original.model_dump(mode="json") == before
 
 
+@pytest.mark.parametrize("locale,text", [
+    ("zh-TW", "Evernorth 股東在鎖定期間內不得賣出持股。"),
+    ("zh-TW", "股東的賣出限制將維持六個月。"),
+    ("zh-TW", "該公司透過募資買進更多上市公司的股份。"),
+    ("zh-TW", "該公司買進比特幣，等待結算完成。"),
+    ("zh-TW", "該公司買進比特幣。"),
+    ("zh-TW", "買進比特幣後，該公司擴大持倉。"),
+    ("zh-TW", "買進比特幣的上市公司公布持倉。"),
+    ("zh-TW", "買進限制。"),
+    ("zh-TW", "Bitfinex 問美國政府是否賣出扣押的比特幣；答覆稱並未賣出。"),
+    ("zh-TW", "ESMA 說明受監管業者提供買進與賣出加密資產的服務。"),
+    ("zh-TW", "MoonPay 說明這份報告不建議讀者買進或賣出任何代幣。"),
+    ("zh-TW", "這不是建議買進或賣出任何代幣。"),
+    ("zh-TW", "漲跌幅只是市場資料，並非買進建議。"),
+    ("zh-CN", "这份报告不建议读者买入或卖出任何代币。"),
+    ("en", "The company bought tokens last week; the filing does not recommend buying."),
+    ("en", "The company bought bitcoin before the rally."),
+    ("en", "The company bought bitcoin."),
+    ("en", "Buy orders."),
+    ("en", "This is not a buy signal. There is no price target."),
+    ("ja", "同社は先週、暗号資産を購入したと発表しました。"),
+    ("ko", "회사는 지난주 토큰을 매수했다고 발표했습니다."),
+])
+def test_reported_or_negated_trades_are_not_crypto_recommendations(
+    locale: str, text: str,
+) -> None:
+    item = with_crypto_disclaimer(
+        document(locale, {"type": "paragraph", "text": text}), "crypto", locale,
+    )
+    assert not any(
+        problem.startswith("crypto_recommendation:")
+        for problem in hard_policy_problems(item, "crypto", locale, source_count=1)
+    )
+
+
+def test_reported_shareholder_lockup_in_a_table_is_not_advice() -> None:
+    item = with_crypto_disclaimer(document("zh-TW", {
+        "type": "table", "header": ["對象", "賣出限制"],
+        "rows": [["Evernorth 股東", "期間內不得賣出持股"]],
+    }), "crypto", "zh-TW")
+    assert not any(
+        problem.startswith("crypto_recommendation:")
+        for problem in hard_policy_problems(item, "crypto", "zh-TW", source_count=1)
+    )
+
+
+@pytest.mark.parametrize("locale,text", [
+    ("zh-TW", "建議讀者現在買進比特幣。"),
+    ("zh-TW", "現在就買進比特幣。"),
+    ("zh-TW", "現在買進比特幣。"),
+    ("zh-TW", "買進比特幣。"),
+    ("zh-TW", "買進比特幣，等待價格上漲。"),
+    ("zh-CN", "现在买入比特币。"),
+    ("zh-CN", "买入比特币。"),
+    ("zh-CN", "买入比特币，等待价格上涨。"),
+    ("zh-TW", "建議不要賣出手上的代幣。"),
+    ("zh-TW", "你不要賣出手上的代幣。"),
+    ("zh-CN", "建议投资者买入这枚代币。"),
+    ("en", "You should buy this token now."),
+    ("en", "Buy this token now."),
+    ("en", "Buy bitcoin before the rally."),
+    ("en", "Buy bitcoin."),
+    ("en", "Sell bitcoin."),
+    ("en", "We recommend selling this token."),
+    ("ja", "今すぐ購入すべきです。"),
+    ("ja", "このトークンを購入すべきです。"),
+    ("ko", "지금 매수하세요."),
+    ("zh-TW", "本文不建議買進，但你應該賣出。"),
+    ("en", "We do not recommend buying. You should sell this token."),
+])
+def test_direct_reader_trading_advice_is_still_blocked(locale: str, text: str) -> None:
+    item = with_crypto_disclaimer(
+        document(locale, {"type": "paragraph", "text": text}), "crypto", locale,
+    )
+    assert "crypto_recommendation: price or trading language is not allowed" in (
+        hard_policy_problems(item, "crypto", locale, source_count=1)
+    )
+
+
 @pytest.mark.parametrize("locale", list(CRYPTO_MARKERS))
 def test_missing_warning_gets_one_source_neutral_notice_before_the_topic_link(locale: str) -> None:
     bare = document(locale)

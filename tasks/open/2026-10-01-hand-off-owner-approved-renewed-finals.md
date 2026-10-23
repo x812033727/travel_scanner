@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-01T09:53:00Z
 completed_at:
-branch: codex/video-approved-final-languages-20261004
+branch: codex/renewed-finals-host-handoff-20261007
 depends_on:
   - 2026-10-01-long-video-renewal-tools-and-ui
 scope:
@@ -34,24 +34,25 @@ approval alone does not replace the canonical worker's old final, branding pin,
 checks, timeline, captions or upload package. The renewal submission guard deliberately
 refuses those old bytes. An explicit source-bound handoff is still required before
 automatic production can continue, including manual imported cuts with no normal TTS
-or scene timeline. This ticket is not authorization to deploy or operate live media.
+or scene timeline. Production operations require direct owner instructions; the
+authorized 2026-10-07 scope and limits are recorded below.
 
 ## Definition of done
 
-- [ ] For the six isolated v1 revisions with a verified canonical body, the owner can
+- [x] For the six isolated v1 revisions with a verified canonical body, the owner can
       adopt only the exact newly approved review/hash/branding into a fresh, verified
       work snapshot; canonical originals, approval decisions and body proof are archived.
-- [ ] The transfer rechecks owner approval and upload inactivity immediately before an
+- [x] The transfer rechecks owner approval and upload inactivity immediately before an
       atomic activation. Failure, stale approval or ambiguous result keeps the old worker
       held and preserves both snapshots; changing an approval id alone is impossible.
-- [ ] Imported season and legacy candidates have a separate explicit manual-package
+- [x] Imported season and legacy candidates have a separate explicit manual-package
       handoff binding original/final/body proofs, translated metadata and every caption
       offset. Missing timeline/TTS/scene evidence is reported rather than fabricated.
 - [ ] Newly approved final identity and all applicable source reviews are reflected in
       publish/language manifests, canonical approval artifacts and actual uploaded bytes.
 - [ ] Renewed compilations either gain verified episode/body/caption source transfer or
       retain a precise documented hold with their own follow-up; no old merged SRT reuse.
-- [ ] No paid regeneration occurs unless a separately authorized body change needs it;
+- [x] No paid regeneration occurs unless a separately authorized body change needs it;
       unchanged narration and source caches are retained.
 
 ## Steps
@@ -109,6 +110,125 @@ timeline. A successful HTTP response is not approval, canonical activation or up
 - The existing guard intentionally rejects renewed compilation producer output and any
   normal worker still holding old final/branding/caption bytes. Keep that protection
   until this source-bound transfer exists. Never delete an old approval or use force.
+
+## Authorized production continuation, 2026-10-07
+
+- The owner's current instruction explicitly authorizes guarded activation, new
+  publish reviews and selected-language continuation on deployed PR #1210. It
+  explicitly forbids YouTube upload/publication and paid media regeneration. The
+  first eight videos remain excluded from publish while Claude checks current
+  figures: DevDay, price war, Sora, Google Vids, Siri, agents broke in, jobs chart
+  and the free/paid plans comparison. Prior broader media permissions do not
+  override this instruction.
+- Deployed Git was freshly pinned to
+  `2024304170c6b43ecb4259e6b4fb0ce8a60d9893`. All 18 actual current human-approved
+  review identities, decision audit rows, final-store hashes and upload/job
+  inactivity were reread before guarded operations. An owned global STOP drained
+  the worker; preexisting provider work was allowed to finish and not retried.
+- All 18 source-bound snapshots were freshly prepared, verified and canonically
+  activated with exact native final approval pull/readback, worker UID 1001
+  restored and individual STOP retained. The actual aggregate
+  activation audit passed at `2026-10-07T01:23:28.492Z`; no paid media or YouTube
+  operation occurred. Operator artifacts are outside Git at
+  `<home>/mokaair-work/handoff/renewed-finals-20261007` and on the host at
+  `/root/renewed-finals-20261007`.
+- Fresh receipt inventory confirms all 18 previous host canonical inventories
+  were empty. Activation reserved archive paths but created no old-directory
+  archives; actual archive existence is zero. Original local snapshots, approved
+  review-store media, source bundles, failed preparations and receipts remain
+  preserved. A reserved archive path is not evidence of an existing archive.
+- DevDay's earlier retained-caption mapping failed closed before activation.
+  A fresh sibling preparation used the deployed `approved-line-windows` adapter:
+  153 real source lines and 161 actual approved cues passed exact text/number/time
+  checks. Only the explicit adapter mapping changed; media, approved SRT and
+  timing bytes were unchanged. The failed snapshot and proof were preserved.
+- Six current-source videos were prepared in three isolated profiles with their
+  exact separate lexicons using `prepareApprovedFinalBatch`, without any model
+  request. Original
+  358 artifacts, 279 old English translations, ledgers and uncertain request
+  accounting remain archived and charged. Existing English/Japanese/Korean dub
+  choices and Simplified Chinese metadata/CC choices were not broadened or skipped.
+- The worker's writable docs volume contained an old executable language runner,
+  although deployed Git had the required export. The failed import created no
+  language workspace, lock or request. The original frozen runtime was preserved;
+  a separate exact deployed-Git `runtime-v2` with pinned dependencies prepared the
+  profiles successfully. Follow-up:
+  `2026-10-07-keep-executable-language-runtime-current`.
+- All ten allowed new base publish reviews are confirmed approved, with complete
+  review-store file hashes and the actual deployed Python package consumer
+  checked. All 18 current human-final/canonical/source identities passed the
+  aggregate readback at `2026-10-07T02:00:20.638Z`; the excluded eight still have
+  no current pending or approved publish review. Base approval is separate from
+  a complete selected-language package or upload readiness.
+- EP01 and EP02 originally failed before review POST because their approved PNG
+  thumbnails exceed 2 MiB. Their explicit codec projections are now approved:
+  EP01 `574e74fd-7086-44b2-81b5-e19c40974b84`, EP02
+  `afa7d310-e34b-4b97-a367-92eaad66b854`. EP01 uses an explicitly lossy JPEG with
+  unchanged geometry/composition (PSNR 50.3422 dB, SSIM 0.995318); EP02 uses
+  a PNG with exactly identical decoded pixels (SSIM 1). Full original evidence,
+  canonical metadata and native receipts are unchanged. Each received one POST,
+  and independent actual-store verification passed. This is encoding evidence,
+  not new human artwork approval or paid generation. Native encoding/MIME support
+  remains in `2026-10-07-support-proven-thumbnail-encoding-in-renewal`.
+- Four retained legacy language reviews are confirmed approved for all selected
+  metadata and CC: RTX `c1cdb9b8-8211-45a7-bff8-1e3d110f6eae`, always-on agent
+  `04e33e0b-8128-4530-8e79-ba0d2aca18ce`, agent costs
+  `61079dd0-b9db-4d42-a4af-9bdeaea41829`, vibe coding
+  `61c62386-507a-40c6-b9e1-8d9d4d02f20a`. Actual deployed schema, source checks,
+  retained chapter/caption offsets and every review-store file passed. All 32
+  metadata/CC parts are ready; 12 chosen dub parts remain working. The actual
+  complete-package consumer still refuses missing selected dubs rather than
+  treating these four videos as upload-ready.
+- Selected-language continuation is limited to metadata and CC on the existing
+  subscription providers. All selected dubs remain held; choices are retained,
+  and no skip, audio QA, media generation or upload readiness is fabricated.
+- The first serial attempt ran four successful subscription stages (EP01/EP05
+  English metadata translator and reviewer), then held at
+  `2026-10-07T02:04:22.951Z`: native translation returns one reviewed unit before
+  the full locale merge, while the imported runner tried to hash the missing
+  locale artifact. All four actual results, request journals and accounting are
+  preserved; fresh readback confirmed zero unresolved results and all isolated
+  STOPs restored. Follow-up:
+  `2026-10-07-continue-imported-language-units-before-requiring`.
+- A separate external operator adapter now drains only unanswered native units,
+  preserves provider payloads and validates caption units against their exact
+  original lines. Completion requires this invocation's successful native merge
+  plus full current-source metadata/CC checks. Source, STOP, unknown-result,
+  settings and producer guards remain active. All 21 tests passed in the exact
+  pinned worker image against the actual production `runtime-v2`, with network
+  disabled and source mounts read-only. The native runtime, manifests, prior
+  attempt logs and canonical receipts remain unchanged.
+- The known-result continuation started once at
+  `2026-10-07T02:17:53.938Z`, background PID `3176196`. All three startup dry-runs
+  passed; the first profile began at `02:18:33.561Z`, with the other two durably
+  queued. Its first new caption-unit translator returned successfully without
+  repeating the preserved metadata pair. Read
+  `/root/renewed-finals-20261007/translation-resume-r2-state.json`, native journals,
+  `translation-unit-progress.jsonl` and the actual backend language reviews for
+  completion. Driver running or a successful unit is not full locale completion.
+  Unknown results stop the serial driver and preserve every request and answer.
+- EP03-EP06 still need source-bound image MIME repair before any future upload:
+  their approved PNG bytes were declared JPEG by the native filename-based
+  transport. The actual Python parser accepts this but does not sniff image
+  bytes. This is recorded in the encoding follow-up; no prior review or source
+  receipt was mutated to hide it.
+
+Authorized production checkpoint:
+
+- [x] Activate and read back all 18 exact approved canonical finals.
+- [x] Submit and read back new approved base publish reviews for the allowed ten.
+- [x] Keep all eight fact-check exclusions out of publish.
+- [x] Rebind the four retained metadata/CC language packages to their new finals.
+- [x] Start guarded serial metadata/CC continuation for the six current-source videos.
+- [ ] Finish all six selected metadata/CC sets and read back their actual new language reviews.
+- [ ] Apply the eight fact-check results before their future publish submissions.
+- [ ] Resolve selected dub holds under separate owner authorization.
+- [ ] Repair EP03-EP06 image MIME through a versioned source-bound contract before upload.
+
+The repository claim is released after recording this checkpoint. This does not
+release/reset the ongoing host producer locks or journals. Continue only from the
+R2 state and actual process/review readback; do not start another launcher or
+retry an unresolved unit. The wider ticket remains open for the documented holds.
 
 ## Recovery continuation, 2026-10-04
 

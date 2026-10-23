@@ -1,0 +1,444 @@
+{
+  "checked_at": "2026-10-08T06:59:15.622466+00:00",
+  "completed": true,
+  "course": "university",
+  "episodes": 48,
+  "seasons": 4,
+  "stages": {
+    "1": 12,
+    "2": 12,
+    "3": 12,
+    "4": 12
+  },
+  "scenes": 480,
+  "source_sha256": {
+    "lessons.json": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+    "season01.json": "ae9fc6bd37124c4e7ce810131866347a698dba7fa3a6c96d2669e680511e7e2d",
+    "season02.json": "e3b1930853a28f5684ada76ed06958460cf2e8e425afc89e75a4b8d48099e575",
+    "season03.json": "5713e388c363874572639c1e8722bf7b83a95e3bd087b6f40a4c660744617604",
+    "season04.json": "d0fb5465f331b908c89387913162a3edfa015ece95ee6fdf4ede714bd382a3cc"
+  },
+  "resolved_sha256": "9e64f1f34fc64c4e14805e1393ed7d031228808cb09062cf2ca935fa7ee77e8a",
+  "duration_seconds": 11027.027,
+  "per_season_duration_seconds": {
+    "1": 2684.587,
+    "2": 2813.549,
+    "3": 2703.917,
+    "4": 2824.973
+  },
+  "episode_duration_range_seconds": [
+    213.933333,
+    253.2
+  ],
+  "media_files": {
+    "final_mp4": 48,
+    "picture_mp4": 48,
+    "audio_m4a": 240,
+    "srt": 192,
+    "vtt": 192
+  },
+  "audio_locales": [
+    "zh-TW",
+    "en",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "cc_locales": [
+    "zh-TW",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "english_cc": false,
+  "english_text": "Fixed in the picture; translated CC remains independently selectable.",
+  "voice_provider": "Microsoft Edge read-aloud preview; not the configured backend voice",
+  "backend_publication": false,
+  "renderer_profile": "sunny-pip-adult-english-v1",
+  "renderer_profile_version": 1,
+  "shared_render_engine_version": 3,
+  "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+  "source_and_media_verification": {
+    "passed": true,
+    "checked_episodes": 48,
+    "errors": [],
+    "full_decode_receipts": 48,
+    "shared_english_demos": true,
+    "response_intervals_seconds": [
+      5,
+      6
+    ],
+    "final_dimensions": [
+      1280,
+      720
+    ],
+    "output_fps": 30,
+    "animation_fps": 15,
+    "report_sha256": "905c94136db1a849532cd469bfbfe103b9b6c6d4429d4fdf354ed1db5adc7d25"
+  },
+  "artwork": {
+    "summary": "art-checks.json",
+    "sha256": "eb9ac38a7d1e3c8c31b05e2364cd2f17f1b37de1f1466e52d45a9dd171a7991e",
+    "phase_frames": 1440,
+    "quiz_answer_invariance_scenes": 144,
+    "guided_glyph_mask_scenes": 96
+  },
+  "authoring_review": {
+    "report": "authoring-review.json",
+    "sha256": "cf78e8e693118484c6dc10a3899ccaca808964def7bd31772ea769635696747c",
+    "episodes": 48,
+    "unresolved_p1_p2": 0
+  },
+  "practice": {
+    "worksheets": 96,
+    "reading_pages": 48,
+    "writing_pages": 48,
+    "readings": 48,
+    "questions": 144,
+    "reading_answers": 144,
+    "writing_tasks": 48,
+    "example_answers": 48,
+    "activities_precede_separate_answer_section": true,
+    "source_matches": true,
+    "charts": {},
+    "pdf_pages": 145,
+    "pdf": {
+      "pages": 145,
+      "worksheet_pages": 96,
+      "reading_pages": 48,
+      "writing_pages": 48,
+      "answer_pages": 48,
+      "source_passages_questions_prompts_answers_match": true,
+      "answers_separated": true,
+      "chart_captions_match": []
+    }
+  },
+  "practice_font": {
+    "file": "NotoSansTC-Regular.ttf",
+    "sha256": "b1f977a91bf3d0eab029a2b713ed9ad14eda085a15ca8ed202e35c66731f23cf",
+    "source_url": "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Variable/TTF/Subset/NotoSansTC-VF.ttf",
+    "static_weight": 400,
+    "embedded_subset": true
+  },
+  "player_checks": {
+    "jsdom_passed": true,
+    "player_variants": 5,
+    "real_browser_playback": false,
+    "limitation": "Earlier local-file browser access was rejected by administrator policy. jsdom uses mocked media events; actual films separately passed FFmpeg full decoding.",
+    "root_report_sha256": "2d4f1e75be289a61d6ba3fcd2011071bb2503c18a2c3e35276eccb2c28090469",
+    "season_report_sha256": "0e1192029e1db2f10464234f4a72170ffd7ba841020623a0cf444b093f66591a"
+  },
+  "repository_tests": {
+    "tools_total": 2015,
+    "tools_passed": 2012,
+    "tools_skipped": 3,
+    "tools_failed": 0,
+    "pipeline_regressions_passed": 40,
+    "confirmed_exit": {
+      "command": "bash .agents/skills/dev-and-ci/scripts/run-checks.sh tools",
+      "started_at": "2026-10-08T05:42:39.128296+00:00",
+      "ended_at": "2026-10-08T05:45:33.998486+00:00",
+      "exit_code": 0
+    },
+    "tools_log_sha256": "e5b1eed4db9582ee43949d98640df65208041cc883e5f097ed93ce99b0ea6f9d"
+  },
+  "delivery_checks": {
+    "passed": true,
+    "report_sha256": "99cc922978f6c2b1e6daa0d66645eeb0b14ac459adb36b79b3e08e1da97fc772",
+    "checker_sha256": "7a75bc7387ad981a02502a9295dddb71ad9d71c6e0b67c47cc3f8a9fcefd883f",
+    "validation": "Read-only ZIP CRC/member/SHA checks, exact comparison with checked root media, fresh mocked jsdom UI tests and player hashes, actual ffprobe stream metadata, independently recomputed artwork/font fingerprints, parsed player data and relative assets, CSV metadata, PDF page counts and every page text, independent reading questions/writing and separate answers. No real-browser playback or fresh codec decode is performed.",
+    "archive_files_compared": 1632,
+    "combined_zip_bytes": 1053756616,
+    "all_five_zip_bytes": 2107718580
+  },
+  "packages": [
+    {
+      "file": "Sunny_Pip_University_Season_01.zip",
+      "bytes": 251491953,
+      "sha256": "e22785394bf1e02a6ab14d1f99db3ef878fc4daf442dae47e96c30a0ab2f24c4",
+      "course": "university",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 53984,
+          "sha256": "1af1582f9853857dbc506c88667898029d54064d867de669c3e64c6755859ac1"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 134596,
+          "sha256": "f2fbe22c86735847d3a2f07c5da7bbeafabcc7cc8593efe87e76d4cbc3604489"
+        }
+      ],
+      "season": 1
+    },
+    {
+      "file": "Sunny_Pip_University_Season_02.zip",
+      "bytes": 273937839,
+      "sha256": "3ef1258137f9510e3221b26b7b34d0dfbdfdae635f06155e534fbe9c17277659",
+      "course": "university",
+      "episode_ids": [
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 56196,
+          "sha256": "bcb499051602855ed4d8dd09457cab67c3ba864fc5cb4d0ccec7e29774c9b937"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 137100,
+          "sha256": "be3b65998618620b00b5a910a329961485fcea6ecaf17d986c5330c5b2e95b63"
+        }
+      ],
+      "season": 2
+    },
+    {
+      "file": "Sunny_Pip_University_Season_03.zip",
+      "bytes": 251915944,
+      "sha256": "46de44ffda062d62e85abc3f45556fd31bc4066ca7378be7236467646ee726f3",
+      "course": "university",
+      "episode_ids": [
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 53670,
+          "sha256": "9b88ad8371a1853e4ccf9ec339474c85e58ff702976e073aa4d1535b86ddc0d4"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 137642,
+          "sha256": "b827765460037d6f67d5a79fa61a6ff473a7c1bff96d4334e2e2307b4c9017f3"
+        }
+      ],
+      "season": 3
+    },
+    {
+      "file": "Sunny_Pip_University_Season_04.zip",
+      "bytes": 276616228,
+      "sha256": "f85aa75896222e274a6b74f6a50c72abd1251c0ebda2b425fc60fe4a32bea73b",
+      "course": "university",
+      "episode_ids": [
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 54489,
+          "sha256": "de81ae581260dfc5bd77c1d2fc18d7256e94ef88b837faf4a569f4ba05824ca7"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 142211,
+          "sha256": "aa4d979e3849bbb9276af80b278f00b45d6d1a2a2ab6b849c44dc9eb145113a1"
+        }
+      ],
+      "season": 4
+    },
+    {
+      "file": "Sunny_Pip_University_48_Episodes.zip",
+      "bytes": 1053756616,
+      "sha256": "3d3c3980fed78c1490523d8d2c37564e71d4d7bd8eeffc1da93499221fcaa79d",
+      "course": "university",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12",
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24",
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36",
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48"
+      ],
+      "episodes": 48,
+      "files": 821,
+      "video_files": 96,
+      "audio_files": 240,
+      "caption_files": 384,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 48,
+          "bytes": 209405,
+          "sha256": "db4eb7065209b50e24d500e62f73b9de7b356821d714b632d9ed2b9941983e8f"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 48,
+          "bytes": 376613,
+          "sha256": "9c5ec3c4db7c03326e34acd6d69ed3f74d3191234629ea6bcd5b9f3558c3162e"
+        }
+      ]
+    }
+  ],
+  "catalog": {
+    "file": "大學英文48集課程目錄.csv",
+    "rows": 48,
+    "encoding": "UTF-8 BOM",
+    "bytes": 11994,
+    "sha256": "ab0ea107a023bfde6eba2d6073ed195d22bdbdc98f6830242aedb7f25eab7c87"
+  },
+  "practice_files": [
+    {
+      "file": "Practice.html",
+      "rows": 48,
+      "bytes": 209405,
+      "sha256": "db4eb7065209b50e24d500e62f73b9de7b356821d714b632d9ed2b9941983e8f"
+    },
+    {
+      "file": "Practice.pdf",
+      "rows": 48,
+      "bytes": 376613,
+      "sha256": "0ae8ed7c42cb8999dd9f7361f655049514a810dea7fe3ae4247c692e7ddd9786"
+    }
+  ],
+  "manual_media_samples": {
+    "report": "encoded-frame-review.json",
+    "report_sha256": "8d49849778f5e852e10959a392857c71bd8ee114bd66216cbb63adc5b86139a4",
+    "scope": {
+      "episodes": [
+        "ep01",
+        "ep12",
+        "ep24",
+        "ep25",
+        "ep36",
+        "ep48"
+      ],
+      "decoded_frames_inspected": 18,
+      "method": "FFmpeg extraction from completed final.mp4 files, followed by direct assistant inspection with view_image.",
+      "selection": "One guided-repeat frame and one waiting/reveal pair per episode. A appears in ep01/ep25, B in ep12/ep36, and C in ep24/ep48.",
+      "timing_basis": "Resolved scene start, demo_start, demo_end and reveal_at values; waiting samples fall inside the response interval.",
+      "full_video_viewing": false,
+      "audio_listening": false,
+      "caption_assessment": "The reserved lower 90 pixels were inspected. Optional CC overlays were not rendered into these PNG samples."
+    },
+    "failures": []
+  }
+}

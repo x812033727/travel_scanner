@@ -1,0 +1,3499 @@
+{
+  "version": 4,
+  "course": "workplace",
+  "series_title": "Sunny & Pip: Workplace English",
+  "episodes": [
+    {
+      "id": "ep25",
+      "number": 25,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Agreeing on a Handoff",
+      "title_zh_TW": "確認交接驗收條件",
+      "titles": {
+        "zh-TW": "確認交接驗收條件",
+        "zh-CN": "确认交接验收条件",
+        "ja": "引き継ぎの完了条件を確認する",
+        "ko": "인계 완료 조건 확인하기"
+      },
+      "topic": "handoff-acceptance-criteria",
+      "objectives_zh_TW": [
+        "用可觀察條件界定交接完成。",
+        "向接手者確認檔案、權限與驗收責任。",
+        "寫出含期限、例外與回覆要求的交接訊息。"
+      ],
+      "parent_tip_zh_TW": "把自己的「做好了」換成接手者可以逐項檢查的條件；傳送檔案不等於對方已驗收。",
+      "practice": {
+        "reading_en": "In a fictional design team, Nora sends a product leaflet to the sales coordinator, Amir, with the message, 'All done.' Amir assumes that the leaflet can go to the printer. Nora means only that the layout is ready for review. Their manager asks them to agree on acceptance criteria before transferring responsibility. Nora will provide the editable source file, a printable draft, and a list of unresolved comments. Amir will check that every link works and that the leaflet uses the approved prices. He will also confirm that he can open the source file. If a check fails, he will return the checklist with a specific issue rather than silently repairing it. The marketing lead, not Amir, will approve the final version for printing. Their handoff note records these responsibilities and asks Amir to acknowledge acceptance. Sending a file now starts a review; it does not automatically authorize publication.",
+        "prompt_en": "Write 100-140 words drafting the handoff note. Include deliverables, acceptance checks, final approval authority, and what happens if a check fails.",
+        "prompt_zh_TW": "寫100至140詞的交接訊息，包含交付項目、驗收檢查、最終核准權限，以及未通過檢查的處理方式。",
+        "sample_answer_en": "Hi Amir, the leaflet layout is ready for your review. I have included the editable source file, printable draft, and unresolved comments. Before accepting the handoff, please check that you can open the source file, all links work, and the approved prices appear. If anything fails, please return the checklist with the relevant page and issue so I can correct it. Your acceptance confirms that the handoff meets these conditions; it does not approve printing. The marketing lead will approve the final version separately. Could you acknowledge receipt and confirm when you can complete the checks? I will remain responsible for the draft until you accept the handoff.",
+        "questions": [
+          {
+            "prompt_en": "Why do Nora and Amir interpret the first message differently?",
+            "answer_en": "Nora means the layout is ready for review, while Amir thinks the leaflet is approved for printing."
+          },
+          {
+            "prompt_en": "How does the checklist change responsibility transfer?",
+            "answer_en": "Amir checks specific conditions and acknowledges acceptance; responsibility no longer transfers merely because Nora sends a file."
+          },
+          {
+            "prompt_en": "Would a working source file alone justify printing? Give a reason.",
+            "answer_en": "No. Other checks remain, and only the marketing lead can approve the final version for printing."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The draft is ready for review, but the handoff is not complete.",
+          "demo": "The draft is ready for review, but the handoff is not complete.",
+          "instruction": {
+            "en": "Name the work situation before asking for action.",
+            "zh-TW": "先交代工作情境，再提出行動要求。",
+            "zh-CN": "先交代工作情境，再提出行动要求。",
+            "ja": "行動を求める前に、仕事の状況を示します。",
+            "ko": "행동을 요청하기 전에 업무 상황을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "草稿已可供審閱，但交接尚未完成。",
+            "zh-CN": "草稿已可供审阅，但交接尚未完成。",
+            "ja": "原稿はレビューできますが、引き継ぎはまだ完了していません。",
+            "ko": "초안은 검토할 준비가 되었지만 인계는 아직 끝나지 않았어요."
+          },
+          "visual": "sentence:The draft is ready for review, but the handoff is not complete.",
+          "target": "sentence:The draft is ready for review, but the handoff is not complete.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s01"
+        },
+        {
+          "english": "Please confirm that the links work and the approved prices appear.",
+          "demo": "Please confirm that the links work and the approved prices appear.",
+          "instruction": {
+            "en": "Define observable conditions instead of saying the work is ready.",
+            "zh-TW": "用可檢查條件說明何謂完成。",
+            "zh-CN": "用可检查条件说明何谓完成。",
+            "ja": "準備できたと言うだけでなく、確認できる条件を示します。",
+            "ko": "준비되었다고만 하지 말고 확인할 수 있는 조건을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "請確認連結可用，且顯示核准價格。",
+            "zh-CN": "请确认链接可用，且显示核准价格。",
+            "ja": "リンクが機能し、承認済みの価格が表示されるか確認してください。",
+            "ko": "링크가 작동하고 승인된 가격이 표시되는지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm that the links work and the approved prices appear.",
+          "target": "sentence:Please confirm that the links work and the approved prices appear.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s02"
+        },
+        {
+          "english": "I will include the source file and a list of unresolved comments.",
+          "demo": "I will include the source file and a list of unresolved comments.",
+          "instruction": {
+            "en": "Name the files and unresolved items included in the handoff.",
+            "zh-TW": "列出交接所含檔案與未解決項目。",
+            "zh-CN": "列出交接所含文件与未解决项目。",
+            "ja": "引き継ぎに含むファイルと未解決の項目を示します。",
+            "ko": "인계에 포함된 파일과 미해결 항목을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會附上原始檔與未解決意見清單。",
+            "zh-CN": "我会附上源文件与未解决意见清单。",
+            "ja": "元のファイルと未解決のコメント一覧を添付します。",
+            "ko": "원본 파일과 해결되지 않은 의견 목록을 첨부하겠어요."
+          },
+          "visual": "sentence:I will include the source file and a list of unresolved comments.",
+          "target": "sentence:I will include the source file and a list of unresolved comments.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s03"
+        },
+        {
+          "english": "Please confirm that the links work and the approved prices appear.",
+          "demo": "Please confirm that the links work and the approved prices appear.",
+          "instruction": {
+            "en": "Define observable conditions instead of saying the work is ready.",
+            "zh-TW": "用可檢查條件說明何謂完成。",
+            "zh-CN": "用可检查条件说明何谓完成。",
+            "ja": "準備できたと言うだけでなく、確認できる条件を示します。",
+            "ko": "준비되었다고만 하지 말고 확인할 수 있는 조건을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "請確認連結可用，且顯示核准價格。",
+            "zh-CN": "请确认链接可用，且显示核准价格。",
+            "ja": "リンクが機能し、承認済みの価格が表示されるか確認してください。",
+            "ko": "링크가 작동하고 승인된 가격이 표시되는지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm that the links work and the approved prices appear.",
+          "target": "sentence:Please confirm that the links work and the approved prices appear.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The draft is ready for review, but the handoff is not complete.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "草稿已可供審閱，但交接尚未完成。",
+            "zh-CN": "草稿已可供审阅，但交接尚未完成。",
+            "ja": "原稿はレビューできますが、引き継ぎはまだ完了していません。",
+            "ko": "초안은 검토할 준비가 되었지만 인계는 아직 끝나지 않았어요."
+          },
+          "visual": "sentence:The draft is ready for review, but the handoff is not complete.",
+          "target": "sentence:The draft is ready for review, but the handoff is not complete.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep25-s05",
+          "choices": [
+            "sentence:Please confirm that the links work and the approved prices appear.",
+            "sentence:The draft is ready for review, but the handoff is not complete.",
+            "sentence:I will include the source file and a list of unresolved comments."
+          ]
+        },
+        {
+          "english": "If anything is missing, please return the checklist before accepting the handoff.",
+          "demo": "If anything is missing, please return the checklist before accepting the handoff.",
+          "instruction": {
+            "en": "Use if to show when this action is needed.",
+            "zh-TW": "用if說明何時需要採取這項行動。",
+            "zh-CN": "用if说明何时需要采取这项行动。",
+            "ja": "ifを使い、どのような場合にその行動が必要か示します。",
+            "ko": "if를 써서 어떤 경우에 이 행동이 필요한지 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "若有缺項，請在接受交接前退回檢查表。",
+            "zh-CN": "若有缺项，请在接受交接前退回检查表。",
+            "ja": "不足があれば、引き継ぎを受け入れる前にチェックリストを返してください。",
+            "ko": "빠진 것이 있으면 인계를 수락하기 전에 점검표를 돌려주세요."
+          },
+          "visual": "sentence:If anything is missing, please return the checklist before accepting the handoff.",
+          "target": "sentence:If anything is missing, please return the checklist before accepting the handoff.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "I will include the source file and a list of unresolved comments.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會附上原始檔與未解決意見清單。",
+            "zh-CN": "我会附上源文件与未解决意见清单。",
+            "ja": "元のファイルと未解決のコメント一覧を添付します。",
+            "ko": "원본 파일과 해결되지 않은 의견 목록을 첨부하겠어요."
+          },
+          "visual": "sentence:I will include the source file and a list of unresolved comments.",
+          "target": "sentence:I will include the source file and a list of unresolved comments.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep25-s07",
+          "choices": [
+            "sentence:The draft is ready for review, but the handoff is not complete.",
+            "sentence:Please confirm that the links work and the approved prices appear.",
+            "sentence:I will include the source file and a list of unresolved comments."
+          ]
+        },
+        {
+          "english": "Can you confirm who will approve the final version?",
+          "demo": "Can you confirm who will approve the final version?",
+          "instruction": {
+            "en": "Ask the receiving person to confirm the shared understanding.",
+            "zh-TW": "請接手者確認雙方理解一致。",
+            "zh-CN": "请接手者确认双方理解一致。",
+            "ja": "受け取る人に、共通の理解を確認してもらいます。",
+            "ko": "인계받는 사람에게 같은 이해인지 확인을 요청해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你能確認誰會核准最終版本嗎？",
+            "zh-CN": "你能确认谁会批准最终版本吗？",
+            "ja": "最終版を承認する担当者を確認してもらえますか。",
+            "ko": "최종본을 누가 승인할지 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Can you confirm who will approve the final version?",
+          "target": "sentence:Can you confirm who will approve the final version?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "If anything is missing, please return the checklist before accepting the handoff.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若有缺項，請在接受交接前退回檢查表。",
+            "zh-CN": "若有缺项，请在接受交接前退回检查表。",
+            "ja": "不足があれば、引き継ぎを受け入れる前にチェックリストを返してください。",
+            "ko": "빠진 것이 있으면 인계를 수락하기 전에 점검표를 돌려주세요."
+          },
+          "visual": "sentence:If anything is missing, please return the checklist before accepting the handoff.",
+          "target": "sentence:If anything is missing, please return the checklist before accepting the handoff.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep25-s09",
+          "choices": [
+            "sentence:If anything is missing, please return the checklist before accepting the handoff.",
+            "sentence:The draft is ready for review, but the handoff is not complete.",
+            "sentence:Please confirm that the links work and the approved prices appear."
+          ]
+        },
+        {
+          "english": "Can you confirm who will approve the final version?",
+          "demo": "Can you confirm who will approve the final version?",
+          "instruction": {
+            "en": "Ask the receiving person to confirm the shared understanding.",
+            "zh-TW": "請接手者確認雙方理解一致。",
+            "zh-CN": "请接手者确认双方理解一致。",
+            "ja": "受け取る人に、共通の理解を確認してもらいます。",
+            "ko": "인계받는 사람에게 같은 이해인지 확인을 요청해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你能確認誰會核准最終版本嗎？",
+            "zh-CN": "你能确认谁会批准最终版本吗？",
+            "ja": "最終版を承認する担当者を確認してもらえますか。",
+            "ko": "최종본을 누가 승인할지 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Can you confirm who will approve the final version?",
+          "target": "sentence:Can you confirm who will approve the final version?",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep25-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep26",
+      "number": 26,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Explaining a Dependency",
+      "title_zh_TW": "說明工作依賴與影響",
+      "titles": {
+        "zh-TW": "說明工作依賴與影響",
+        "zh-CN": "说明工作依赖与影响",
+        "ja": "作業の依存関係と影響を説明する",
+        "ko": "업무 의존 관계와 영향 설명하기"
+      },
+      "topic": "dependency-and-impact",
+      "objectives_zh_TW": [
+        "清楚指出工作開始所需的前置資料。",
+        "把延遲與後續交付影響連結。",
+        "提出有條件的替代流程而不假裝已獲批准。"
+      ],
+      "parent_tip_zh_TW": "寫出「缺什麼→哪項工作受影響→可怎麼調整」；不要只說被某個部門卡住。",
+      "practice": {
+        "reading_en": "At a fictional service company, Elena is preparing a guide for new support staff. The product team has not yet approved its list of service features. Elena can write the welcome section, but she cannot verify the guide's examples without the approved list. Her first status message says that the product team is blocking training. She rewrites it to explain the dependency instead of assigning blame. The examples require confirmed feature descriptions; if approval arrives after Thursday, the planned review will move to the following week. Elena proposes drafting the general introduction in parallel. She clearly labels the feature examples as pending and asks the training manager to approve this partial approach. The product team agrees to provide an update on Thursday, but does not promise final approval that day. The revised message distinguishes a status update from a delivery commitment and gives colleagues a useful choice while the missing input is resolved.",
+        "prompt_en": "Write 100-140 words updating the training manager. Explain the missing input, its effect, the proposed parallel work, and the decision you need.",
+        "prompt_zh_TW": "寫100至140詞向訓練主管更新狀況，說明缺少的前置資料、影響、可並行工作與需要的決定。",
+        "sample_answer_en": "The guide's examples depend on the approved feature list, which is still under review. Without it, I cannot confirm that the examples accurately describe the service. If approval arrives after Thursday, the guide review will need to move to next week. I propose drafting the general introduction now and leaving the feature examples clearly marked as pending. This would let us make progress without presenting unapproved information as final. Please confirm whether you approve that partial approach. The product team has promised a Thursday status update, not final approval on Thursday. After that update, I will revise the schedule and explain whether the original review date remains possible.",
+        "questions": [
+          {
+            "prompt_en": "Which part of the guide can Elena draft before feature approval?",
+            "answer_en": "She can draft the general introduction or welcome section."
+          },
+          {
+            "prompt_en": "Why is the revised status message more useful than the first?",
+            "answer_en": "It identifies the required input, the effect of late approval, and a parallel work option instead of assigning blame."
+          },
+          {
+            "prompt_en": "Can the manager assume that the feature list will be approved on Thursday? Explain.",
+            "answer_en": "No. The product team has promised only a status update on Thursday, not final approval."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The training guide depends on the approved list of service features.",
+          "demo": "The training guide depends on the approved list of service features.",
+          "instruction": {
+            "en": "Name the input that another task needs before it can start.",
+            "zh-TW": "指出另一項工作開始前所需的輸入。",
+            "zh-CN": "指出另一项工作开始前所需的输入。",
+            "ja": "次の作業に必要な情報や成果物を示します。",
+            "ko": "다음 작업을 시작하는 데 필요한 정보나 결과물을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "訓練指南需要已核准的服務功能清單。",
+            "zh-CN": "培训指南需要已批准的服务功能清单。",
+            "ja": "研修ガイドの作成には、承認済みのサービス機能一覧が必要です。",
+            "ko": "교육 안내서를 만들려면 승인된 서비스 기능 목록이 필요해요."
+          },
+          "visual": "sentence:The training guide depends on the approved list of service features.",
+          "target": "sentence:The training guide depends on the approved list of service features.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s01"
+        },
+        {
+          "english": "Without that list, we cannot check whether the examples are accurate.",
+          "demo": "Without that list, we cannot check whether the examples are accurate.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "沒有該清單，我們就無法檢查範例是否正確。",
+            "zh-CN": "没有该清单，我们就无法检查示例是否正确。",
+            "ja": "その一覧がないと、例が正確か確認できません。",
+            "ko": "그 목록이 없으면 예시가 정확한지 확인할 수 없어요."
+          },
+          "visual": "sentence:Without that list, we cannot check whether the examples are accurate.",
+          "target": "sentence:Without that list, we cannot check whether the examples are accurate.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s02"
+        },
+        {
+          "english": "A late approval would move the review to next week.",
+          "demo": "A late approval would move the review to next week.",
+          "instruction": {
+            "en": "Use would to describe the possible consequence of late approval.",
+            "zh-TW": "用would說明核准延遲的可能後果。",
+            "zh-CN": "用would说明批准延迟的可能后果。",
+            "ja": "wouldを使い、承認が遅れた場合に考えられる結果を示します。",
+            "ko": "would를 써서 승인이 늦어질 경우 가능한 결과를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若核准延遲，審閱就會移到下週。",
+            "zh-CN": "若批准延迟，审阅就会移到下周。",
+            "ja": "承認が遅れると、レビューは来週に移ります。",
+            "ko": "승인이 늦어지면 검토가 다음 주로 미뤄져요."
+          },
+          "visual": "sentence:A late approval would move the review to next week.",
+          "target": "sentence:A late approval would move the review to next week.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s03"
+        },
+        {
+          "english": "Without that list, we cannot check whether the examples are accurate.",
+          "demo": "Without that list, we cannot check whether the examples are accurate.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "沒有該清單，我們就無法檢查範例是否正確。",
+            "zh-CN": "没有该清单，我们就无法检查示例是否正确。",
+            "ja": "その一覧がないと、例が正確か確認できません。",
+            "ko": "그 목록이 없으면 예시가 정확한지 확인할 수 없어요."
+          },
+          "visual": "sentence:Without that list, we cannot check whether the examples are accurate.",
+          "target": "sentence:Without that list, we cannot check whether the examples are accurate.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The training guide depends on the approved list of service features.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "訓練指南需要已核准的服務功能清單。",
+            "zh-CN": "培训指南需要已批准的服务功能清单。",
+            "ja": "研修ガイドの作成には、承認済みのサービス機能一覧が必要です。",
+            "ko": "교육 안내서를 만들려면 승인된 서비스 기능 목록이 필요해요."
+          },
+          "visual": "sentence:The training guide depends on the approved list of service features.",
+          "target": "sentence:The training guide depends on the approved list of service features.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep26-s05",
+          "choices": [
+            "sentence:Without that list, we cannot check whether the examples are accurate.",
+            "sentence:A late approval would move the review to next week.",
+            "sentence:The training guide depends on the approved list of service features."
+          ]
+        },
+        {
+          "english": "We can draft the general introduction while the feature list is being reviewed.",
+          "demo": "We can draft the general introduction while the feature list is being reviewed.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "功能清單審閱期間，我們可先寫一般介紹。",
+            "zh-CN": "功能清单审阅期间，我们可先写一般介绍。",
+            "ja": "機能一覧のレビュー中に、一般的な紹介部分を下書きできます。",
+            "ko": "기능 목록을 검토하는 동안 일반 소개 부분의 초안을 작성할 수 있어요."
+          },
+          "visual": "sentence:We can draft the general introduction while the feature list is being reviewed.",
+          "target": "sentence:We can draft the general introduction while the feature list is being reviewed.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "A late approval would move the review to next week.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若核准延遲，審閱就會移到下週。",
+            "zh-CN": "若批准延迟，审阅就会移到下周。",
+            "ja": "承認が遅れると、レビューは来週に移ります。",
+            "ko": "승인이 늦어지면 검토가 다음 주로 미뤄져요."
+          },
+          "visual": "sentence:A late approval would move the review to next week.",
+          "target": "sentence:A late approval would move the review to next week.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep26-s07",
+          "choices": [
+            "sentence:A late approval would move the review to next week.",
+            "sentence:The training guide depends on the approved list of service features.",
+            "sentence:Without that list, we cannot check whether the examples are accurate."
+          ]
+        },
+        {
+          "english": "Please confirm whether that partial approach is acceptable before we proceed.",
+          "demo": "Please confirm whether that partial approach is acceptable before we proceed.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們進行前確認能否接受這種分段做法。",
+            "zh-CN": "请在我们进行前确认能否接受这种分段做法。",
+            "ja": "進める前に、この部分的な進め方でよいか確認してください。",
+            "ko": "진행하기 전에 이 부분적 접근이 괜찮은지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm whether that partial approach is acceptable before we proceed.",
+          "target": "sentence:Please confirm whether that partial approach is acceptable before we proceed.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We can draft the general introduction while the feature list is being reviewed.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "功能清單審閱期間，我們可先寫一般介紹。",
+            "zh-CN": "功能清单审阅期间，我们可先写一般介绍。",
+            "ja": "機能一覧のレビュー中に、一般的な紹介部分を下書きできます。",
+            "ko": "기능 목록을 검토하는 동안 일반 소개 부분의 초안을 작성할 수 있어요."
+          },
+          "visual": "sentence:We can draft the general introduction while the feature list is being reviewed.",
+          "target": "sentence:We can draft the general introduction while the feature list is being reviewed.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep26-s09",
+          "choices": [
+            "sentence:The training guide depends on the approved list of service features.",
+            "sentence:We can draft the general introduction while the feature list is being reviewed.",
+            "sentence:Without that list, we cannot check whether the examples are accurate."
+          ]
+        },
+        {
+          "english": "Please confirm whether that partial approach is acceptable before we proceed.",
+          "demo": "Please confirm whether that partial approach is acceptable before we proceed.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們進行前確認能否接受這種分段做法。",
+            "zh-CN": "请在我们进行前确认能否接受这种分段做法。",
+            "ja": "進める前に、この部分的な進め方でよいか確認してください。",
+            "ko": "진행하기 전에 이 부분적 접근이 괜찮은지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm whether that partial approach is acceptable before we proceed.",
+          "target": "sentence:Please confirm whether that partial approach is acceptable before we proceed.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep26-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep27",
+      "number": 27,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Raising a Risk Early",
+      "title_zh_TW": "及早提出風險與選項",
+      "titles": {
+        "zh-TW": "及早提出風險與選項",
+        "zh-CN": "及早提出风险与选项",
+        "ja": "リスクと選択肢を早めに伝える",
+        "ko": "위험과 선택지를 일찍 알리기"
+      },
+      "topic": "early-risk-with-options",
+      "objectives_zh_TW": [
+        "區分風險、已發生問題與確定結果。",
+        "用具體觀察支持風險提醒。",
+        "提供替代方案並設定決策時點。"
+      ],
+      "parent_tip_zh_TW": "風險訊息要回答「為何現在要注意」；同時附上可行選項與何時必須決定。",
+      "practice": {
+        "reading_en": "In a fictional events agency, Daniel is coordinating a small product launch. The venue has not confirmed when presenters can enter for rehearsal. Nothing has failed yet, but the missing confirmation creates a risk: the team may have no chance to test the room's presentation equipment before the event. Daniel alerts his manager while alternatives are still available. A remote rehearsal would help speakers practice their transitions, but it would not test the venue equipment. An earlier site visit could address that gap, although the venue must agree and a coordinator would need to attend. Daniel asks the manager to choose a backup by Wednesday so there is time to arrange it. He also requests a fresh venue update that morning. His message does not claim that the launch will definitely be delayed. It explains the warning sign, the possible consequence, and the limitations of each response before a preventable problem becomes urgent.",
+        "prompt_en": "Write 100-140 words raising the rehearsal risk. Include the observed warning sign, possible impact, two options with limitations, and a decision deadline.",
+        "prompt_zh_TW": "寫100至140詞提出彩排風險，包含警訊、可能影響、兩項選擇及限制，與決策期限。",
+        "sample_answer_en": "The venue has not confirmed rehearsal access, so we may be unable to test the room equipment before the launch. This is a risk rather than a confirmed delay. We could rehearse remotely to practice speaker transitions, but that would leave the equipment untested. Alternatively, we could request an earlier site visit, subject to venue approval and a coordinator being available. I will ask the venue for another update on Wednesday morning. Please choose a backup by Wednesday so we can arrange it in time. If access is confirmed before then, I will check whether the original rehearsal still covers both speaker practice and equipment testing.",
+        "questions": [
+          {
+            "prompt_en": "What observation leads Daniel to raise a risk?",
+            "answer_en": "The venue has not confirmed access for rehearsal."
+          },
+          {
+            "prompt_en": "Why are remote rehearsal and an earlier site visit not equivalent?",
+            "answer_en": "Remote rehearsal can test speaker transitions but not the room equipment; a site visit can address equipment testing but requires venue approval and staff availability."
+          },
+          {
+            "prompt_en": "Why is Daniel justified in contacting his manager before anything fails?",
+            "answer_en": "A decision is needed by Wednesday to arrange a backup, so early notice preserves workable options."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The venue has not confirmed access for our rehearsal.",
+          "demo": "The venue has not confirmed access for our rehearsal.",
+          "instruction": {
+            "en": "Give the observation that supports the claim.",
+            "zh-TW": "提出支持主張的具體觀察。",
+            "zh-CN": "提出支持主张的具体观察。",
+            "ja": "主張を支える具体的な観察結果を示します。",
+            "ko": "주장을 뒷받침하는 구체적인 관찰 내용을 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "場地方尚未確認我們能否入場彩排。",
+            "zh-CN": "场地方尚未确认我们能否入场彩排。",
+            "ja": "会場は、リハーサルのための入場をまだ確認していません。",
+            "ko": "행사장 측이 리허설을 위한 입장을 아직 확정하지 않았어요."
+          },
+          "visual": "sentence:The venue has not confirmed access for our rehearsal.",
+          "target": "sentence:The venue has not confirmed access for our rehearsal.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s01"
+        },
+        {
+          "english": "The launch may be delayed if we cannot test the presentation equipment.",
+          "demo": "The launch may be delayed if we cannot test the presentation equipment.",
+          "instruction": {
+            "en": "Describe what may happen without presenting it as certain.",
+            "zh-TW": "說明可能發生的事，不說成必然。",
+            "zh-CN": "说明可能发生的事，不说成必然。",
+            "ja": "起こり得ることを、確定した事実として述べないようにします。",
+            "ko": "일어날 수 있는 일을 확정된 사실처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "若無法測試簡報設備，發表活動可能延遲。",
+            "zh-CN": "若无法测试演示设备，发布活动可能延迟。",
+            "ja": "発表機器を試せない場合、発表会が遅れる可能性があります。",
+            "ko": "발표 장비를 시험하지 못하면 출시 행사가 늦어질 수 있어요."
+          },
+          "visual": "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+          "target": "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s02"
+        },
+        {
+          "english": "We could rehearse remotely, although that would not test the room equipment.",
+          "demo": "We could rehearse remotely, although that would not test the room equipment.",
+          "instruction": {
+            "en": "Use although to explain what this alternative cannot achieve.",
+            "zh-TW": "用although說明此替代方案做不到什麼。",
+            "zh-CN": "用although说明此替代方案做不到什么。",
+            "ja": "althoughを使い、この代替案では実現できないことを示します。",
+            "ko": "although를 써서 이 대안으로 달성할 수 없는 것을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可遠端彩排，但那無法測試現場設備。",
+            "zh-CN": "我们可远程彩排，但那无法测试现场设备。",
+            "ja": "遠隔でリハーサルできますが、会場の機器は試せません。",
+            "ko": "원격으로 리허설할 수 있지만 현장 장비는 시험할 수 없어요."
+          },
+          "visual": "sentence:We could rehearse remotely, although that would not test the room equipment.",
+          "target": "sentence:We could rehearse remotely, although that would not test the room equipment.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s03"
+        },
+        {
+          "english": "The launch may be delayed if we cannot test the presentation equipment.",
+          "demo": "The launch may be delayed if we cannot test the presentation equipment.",
+          "instruction": {
+            "en": "Describe what may happen without presenting it as certain.",
+            "zh-TW": "說明可能發生的事，不說成必然。",
+            "zh-CN": "说明可能发生的事，不说成必然。",
+            "ja": "起こり得ることを、確定した事実として述べないようにします。",
+            "ko": "일어날 수 있는 일을 확정된 사실처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "若無法測試簡報設備，發表活動可能延遲。",
+            "zh-CN": "若无法测试演示设备，发布活动可能延迟。",
+            "ja": "発表機器を試せない場合、発表会が遅れる可能性があります。",
+            "ko": "발표 장비를 시험하지 못하면 출시 행사가 늦어질 수 있어요."
+          },
+          "visual": "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+          "target": "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The venue has not confirmed access for our rehearsal.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "場地方尚未確認我們能否入場彩排。",
+            "zh-CN": "场地方尚未确认我们能否入场彩排。",
+            "ja": "会場は、リハーサルのための入場をまだ確認していません。",
+            "ko": "행사장 측이 리허설을 위한 입장을 아직 확정하지 않았어요."
+          },
+          "visual": "sentence:The venue has not confirmed access for our rehearsal.",
+          "target": "sentence:The venue has not confirmed access for our rehearsal.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep27-s05",
+          "choices": [
+            "sentence:The venue has not confirmed access for our rehearsal.",
+            "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+            "sentence:We could rehearse remotely, although that would not test the room equipment."
+          ]
+        },
+        {
+          "english": "Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "demo": "Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "或者，我們可請場地團隊核准提早到場參訪。",
+            "zh-CN": "或者，我们可请场地团队批准提前到场参观。",
+            "ja": "別の案として、早めの会場訪問の許可を会場担当者に求められます。",
+            "ko": "다른 방안으로 행사장 담당자에게 이른 현장 방문을 승인해 달라고 요청할 수 있어요."
+          },
+          "visual": "sentence:Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "target": "sentence:Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We could rehearse remotely, although that would not test the room equipment.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可遠端彩排，但那無法測試現場設備。",
+            "zh-CN": "我们可远程彩排，但那无法测试现场设备。",
+            "ja": "遠隔でリハーサルできますが、会場の機器は試せません。",
+            "ko": "원격으로 리허설할 수 있지만 현장 장비는 시험할 수 없어요."
+          },
+          "visual": "sentence:We could rehearse remotely, although that would not test the room equipment.",
+          "target": "sentence:We could rehearse remotely, although that would not test the room equipment.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep27-s07",
+          "choices": [
+            "sentence:The venue has not confirmed access for our rehearsal.",
+            "sentence:We could rehearse remotely, although that would not test the room equipment.",
+            "sentence:The launch may be delayed if we cannot test the presentation equipment."
+          ]
+        },
+        {
+          "english": "Please choose a backup by Wednesday so we can arrange it.",
+          "demo": "Please choose a backup by Wednesday so we can arrange it.",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請最晚週三選定備案，讓我們能安排。",
+            "zh-CN": "请最晚周三选定备用方案，让我们能安排。",
+            "ja": "手配できるよう、水曜日までに代替案を選んでください。",
+            "ko": "준비할 수 있도록 수요일까지 대안을 골라 주세요."
+          },
+          "visual": "sentence:Please choose a backup by Wednesday so we can arrange it.",
+          "target": "sentence:Please choose a backup by Wednesday so we can arrange it.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "或者，我們可請場地團隊核准提早到場參訪。",
+            "zh-CN": "或者，我们可请场地团队批准提前到场参观。",
+            "ja": "別の案として、早めの会場訪問の許可を会場担当者に求められます。",
+            "ko": "다른 방안으로 행사장 담당자에게 이른 현장 방문을 승인해 달라고 요청할 수 있어요."
+          },
+          "visual": "sentence:Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "target": "sentence:Alternatively, we could ask the venue team to approve an earlier site visit.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep27-s09",
+          "choices": [
+            "sentence:The venue has not confirmed access for our rehearsal.",
+            "sentence:The launch may be delayed if we cannot test the presentation equipment.",
+            "sentence:Alternatively, we could ask the venue team to approve an earlier site visit."
+          ]
+        },
+        {
+          "english": "Please choose a backup by Wednesday so we can arrange it.",
+          "demo": "Please choose a backup by Wednesday so we can arrange it.",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請最晚週三選定備案，讓我們能安排。",
+            "zh-CN": "请最晚周三选定备用方案，让我们能安排。",
+            "ja": "手配できるよう、水曜日までに代替案を選んでください。",
+            "ko": "준비할 수 있도록 수요일까지 대안을 골라 주세요."
+          },
+          "visual": "sentence:Please choose a backup by Wednesday so we can arrange it.",
+          "target": "sentence:Please choose a backup by Wednesday so we can arrange it.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep27-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep28",
+      "number": 28,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Negotiating Priorities",
+      "title_zh_TW": "協商優先順序與取捨",
+      "titles": {
+        "zh-TW": "協商優先順序與取捨",
+        "zh-CN": "协商优先顺序与取舍",
+        "ja": "優先順位と取捨選択を相談する",
+        "ko": "우선순위와 절충안 협의하기"
+      },
+      "topic": "priority-tradeoff",
+      "objectives_zh_TW": [
+        "用交付影響表達容量限制。",
+        "把優先順序轉成可決定的取捨。",
+        "取得主管選擇後通知受影響的人。"
+      ],
+      "parent_tip_zh_TW": "不要同時承諾互相衝突的期限；把可選路徑與各自代價寫清楚。",
+      "practice": {
+        "reading_en": "At a fictional consulting office, Maya is reviewing the monthly report when her manager requests an urgent proposal. Both documents need the same afternoon review slot. Maya could say yes to both and work without a clear plan, but that would hide the conflict until a deadline is missed. Instead, she presents two paths. She can prioritize the proposal if the report deadline moves to the following morning. Alternatively, another qualified reviewer could handle the report while she finishes the proposal. She explains that an unreviewed report is not a useful third option because the report goes directly to the planning meeting. The manager decides that the proposal matters most this week and authorizes the later report. Maya records the new deadline and tells the planning coordinator, who adjusts the meeting materials. Her response protects the important outcome without treating every request as equally urgent or assuming permission to move someone else's deadline.",
+        "prompt_en": "Write 100-140 words replying to the urgent proposal request. Explain the conflict, offer two realistic options, request a priority decision, and describe follow-up.",
+        "prompt_zh_TW": "寫100至140詞回覆緊急提案要求，說明衝突、兩個可行方案、需要的優先決定與後續通知。",
+        "sample_answer_en": "I can review the urgent proposal this afternoon, but it needs the same review time as the monthly report. If the proposal takes priority, I will need approval to deliver the report tomorrow morning. A second option is to assign another qualified reviewer to the report so both original deadlines can remain. Sending the report without review would create a problem for the planning meeting, so I do not recommend that approach. Which outcome should take priority this week? Once you choose an option, I will confirm the schedule in writing and notify the planning coordinator and any other colleagues affected by the revised deadline.",
+        "questions": [
+          {
+            "prompt_en": "What makes the two tasks conflict?",
+            "answer_en": "Both require the same afternoon review slot."
+          },
+          {
+            "prompt_en": "Why does Maya reject sending the report without review?",
+            "answer_en": "It goes directly to a planning meeting, so an unreviewed version would not provide a reliable meeting document."
+          },
+          {
+            "prompt_en": "Does Maya independently move the report deadline? Give evidence.",
+            "answer_en": "No. She requests a priority decision, and the manager authorizes the later report before Maya notifies the coordinator."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The urgent proposal and the monthly report require the same review time.",
+          "demo": "The urgent proposal and the monthly report require the same review time.",
+          "instruction": {
+            "en": "Name the work situation before asking for action.",
+            "zh-TW": "先交代工作情境，再提出行動要求。",
+            "zh-CN": "先交代工作情境，再提出行动要求。",
+            "ja": "行動を求める前に、仕事の状況を示します。",
+            "ko": "행동을 요청하기 전에 업무 상황을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "緊急提案與月報需要同一段審閱時間。",
+            "zh-CN": "紧急提案与月报需要同一段审阅时间。",
+            "ja": "急ぎの提案書と月次報告書は、同じ時間帯のレビューを必要としています。",
+            "ko": "긴급 제안서와 월간 보고서를 같은 시간에 검토해야 해요."
+          },
+          "visual": "sentence:The urgent proposal and the monthly report require the same review time.",
+          "target": "sentence:The urgent proposal and the monthly report require the same review time.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s01"
+        },
+        {
+          "english": "I can prioritize the proposal if the report deadline moves.",
+          "demo": "I can prioritize the proposal if the report deadline moves.",
+          "instruction": {
+            "en": "Use if to keep a commitment tied to its condition.",
+            "zh-TW": "用if保留承諾成立的條件。",
+            "zh-CN": "用if保留承诺成立的条件。",
+            "ja": "ifを使い、約束が成立する条件を残します。",
+            "ko": "if를 써서 약속이 성립하는 조건을 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若報告期限延後，我可優先處理提案。",
+            "zh-CN": "若报告期限延后，我可优先处理提案。",
+            "ja": "報告書の締め切りを延ばせるなら、提案書を優先できます。",
+            "ko": "보고서 마감이 미뤄지면 제안서를 우선할 수 있어요."
+          },
+          "visual": "sentence:I can prioritize the proposal if the report deadline moves.",
+          "target": "sentence:I can prioritize the proposal if the report deadline moves.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s02"
+        },
+        {
+          "english": "Keeping both deadlines would require another reviewer.",
+          "demo": "Keeping both deadlines would require another reviewer.",
+          "instruction": {
+            "en": "Name the extra support needed to keep both deadlines.",
+            "zh-TW": "說明保留兩項期限所需的額外支援。",
+            "zh-CN": "说明保留两项期限所需的额外支持。",
+            "ja": "両方の締め切りを守るために必要な追加支援を示します。",
+            "ko": "두 마감을 모두 지키는 데 필요한 추가 지원을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "若保留兩項期限，就需要另一名審閱者。",
+            "zh-CN": "若保留两项期限，就需要另一名审阅者。",
+            "ja": "両方の締め切りを守るには、もう一人のレビュアーが必要です。",
+            "ko": "두 마감을 모두 지키려면 검토자가 한 명 더 필요해요."
+          },
+          "visual": "sentence:Keeping both deadlines would require another reviewer.",
+          "target": "sentence:Keeping both deadlines would require another reviewer.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s03"
+        },
+        {
+          "english": "I can prioritize the proposal if the report deadline moves.",
+          "demo": "I can prioritize the proposal if the report deadline moves.",
+          "instruction": {
+            "en": "Use if to keep a commitment tied to its condition.",
+            "zh-TW": "用if保留承諾成立的條件。",
+            "zh-CN": "用if保留承诺成立的条件。",
+            "ja": "ifを使い、約束が成立する条件を残します。",
+            "ko": "if를 써서 약속이 성립하는 조건을 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若報告期限延後，我可優先處理提案。",
+            "zh-CN": "若报告期限延后，我可优先处理提案。",
+            "ja": "報告書の締め切りを延ばせるなら、提案書を優先できます。",
+            "ko": "보고서 마감이 미뤄지면 제안서를 우선할 수 있어요."
+          },
+          "visual": "sentence:I can prioritize the proposal if the report deadline moves.",
+          "target": "sentence:I can prioritize the proposal if the report deadline moves.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The urgent proposal and the monthly report require the same review time.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "緊急提案與月報需要同一段審閱時間。",
+            "zh-CN": "紧急提案与月报需要同一段审阅时间。",
+            "ja": "急ぎの提案書と月次報告書は、同じ時間帯のレビューを必要としています。",
+            "ko": "긴급 제안서와 월간 보고서를 같은 시간에 검토해야 해요."
+          },
+          "visual": "sentence:The urgent proposal and the monthly report require the same review time.",
+          "target": "sentence:The urgent proposal and the monthly report require the same review time.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep28-s05",
+          "choices": [
+            "sentence:I can prioritize the proposal if the report deadline moves.",
+            "sentence:The urgent proposal and the monthly report require the same review time.",
+            "sentence:Keeping both deadlines would require another reviewer."
+          ]
+        },
+        {
+          "english": "Which outcome matters most for this week?",
+          "demo": "Which outcome matters most for this week?",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "本週哪項成果最重要？",
+            "zh-CN": "本周哪项成果最重要？",
+            "ja": "今週、どの成果を最も重視しますか。",
+            "ko": "이번 주에는 어떤 결과가 가장 중요한가요?"
+          },
+          "visual": "sentence:Which outcome matters most for this week?",
+          "target": "sentence:Which outcome matters most for this week?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Keeping both deadlines would require another reviewer.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若保留兩項期限，就需要另一名審閱者。",
+            "zh-CN": "若保留两项期限，就需要另一名审阅者。",
+            "ja": "両方の締め切りを守るには、もう一人のレビュアーが必要です。",
+            "ko": "두 마감을 모두 지키려면 검토자가 한 명 더 필요해요."
+          },
+          "visual": "sentence:Keeping both deadlines would require another reviewer.",
+          "target": "sentence:Keeping both deadlines would require another reviewer.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep28-s07",
+          "choices": [
+            "sentence:The urgent proposal and the monthly report require the same review time.",
+            "sentence:I can prioritize the proposal if the report deadline moves.",
+            "sentence:Keeping both deadlines would require another reviewer."
+          ]
+        },
+        {
+          "english": "Once you decide, I will notify everyone affected by the change.",
+          "demo": "Once you decide, I will notify everyone affected by the change.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "你決定後，我會通知所有受變更影響的人。",
+            "zh-CN": "你决定后，我会通知所有受变更影响的人。",
+            "ja": "決定後、変更の影響を受ける全員に連絡します。",
+            "ko": "결정하시면 변경에 영향을 받는 모든 사람에게 알리겠어요."
+          },
+          "visual": "sentence:Once you decide, I will notify everyone affected by the change.",
+          "target": "sentence:Once you decide, I will notify everyone affected by the change.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Which outcome matters most for this week?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "本週哪項成果最重要？",
+            "zh-CN": "本周哪项成果最重要？",
+            "ja": "今週、どの成果を最も重視しますか。",
+            "ko": "이번 주에는 어떤 결과가 가장 중요한가요?"
+          },
+          "visual": "sentence:Which outcome matters most for this week?",
+          "target": "sentence:Which outcome matters most for this week?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep28-s09",
+          "choices": [
+            "sentence:Which outcome matters most for this week?",
+            "sentence:The urgent proposal and the monthly report require the same review time.",
+            "sentence:I can prioritize the proposal if the report deadline moves."
+          ]
+        },
+        {
+          "english": "Once you decide, I will notify everyone affected by the change.",
+          "demo": "Once you decide, I will notify everyone affected by the change.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "你決定後，我會通知所有受變更影響的人。",
+            "zh-CN": "你决定后，我会通知所有受变更影响的人。",
+            "ja": "決定後、変更の影響を受ける全員に連絡します。",
+            "ko": "결정하시면 변경에 영향을 받는 모든 사람에게 알리겠어요."
+          },
+          "visual": "sentence:Once you decide, I will notify everyone affected by the change.",
+          "target": "sentence:Once you decide, I will notify everyone affected by the change.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep28-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep29",
+      "number": 29,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Reporting What Happened",
+      "title_zh_TW": "依時間報告事件事實",
+      "titles": {
+        "zh-TW": "依時間報告事件事實",
+        "zh-CN": "按时间报告事件事实",
+        "ja": "出来事を時系列で報告する",
+        "ko": "사건을 시간 순서대로 보고하기"
+      },
+      "topic": "incident-factual-timeline",
+      "objectives_zh_TW": [
+        "按順序區分發現、確認與處理。",
+        "避免把事件時間先後誤寫成因果。",
+        "在簡報中標明影響範圍與尚待查證事項。"
+      ],
+      "parent_tip_zh_TW": "事件摘要先寫可核對的觀察；「在更新之後」不等於「由更新造成」。",
+      "practice": {
+        "reading_en": "In a fictional shared office, reception staff report that the booking calendar is unavailable on Tuesday morning. The office coordinator confirms that the problem affects reception and the meeting room desk. Existing printed schedules remain available, so staff can still check bookings already recorded. New requests go onto a temporary form approved for this fictional exercise. The coordinator's incident summary orders the known events: staff reported the issue, the coordinator confirmed its scope, and reception began recording new requests separately. A colleague mentions a calendar update from the previous evening. The coordinator records this as background, not as a confirmed cause. The service team has not yet established why access failed. The summary promises another update after the service team responds and names the coordinator as the communication owner. It avoids repair instructions, speculation about individual mistakes, and a recovery time that nobody has verified. Readers can distinguish observed facts from unanswered questions.",
+        "prompt_en": "Write 100-140 words giving a factual incident update. Include the event sequence, known impact, temporary handling, uncertainty about cause, and the next update.",
+        "prompt_zh_TW": "寫100至140詞的事實性事件更新，包含事件順序、已知影響、暫時處理、原因不確定性與下次更新。",
+        "sample_answer_en": "Reception reported that the booking calendar was unavailable on Tuesday morning. The coordinator then confirmed that reception and the meeting room desk were affected. Existing printed schedules remain available for checking previously recorded bookings. Reception is recording new requests on the approved temporary form used in this exercise. A calendar update took place yesterday evening, but we have not established that it caused the access problem. The service team is reviewing the cause, and no recovery time has been confirmed. I will coordinate communication and share another confirmed update after the service team responds. Please keep observations separate from possible explanations when adding information to the incident record.",
+        "questions": [
+          {
+            "prompt_en": "Which booking information remains available?",
+            "answer_en": "Existing printed schedules remain available for bookings already recorded."
+          },
+          {
+            "prompt_en": "Why does the coordinator mention the previous update only as background?",
+            "answer_en": "The timing is known, but the service team has not established a causal connection to the access problem."
+          },
+          {
+            "prompt_en": "Would promising immediate recovery be supported by the summary? Explain.",
+            "answer_en": "No. The cause and recovery time are unverified, and the coordinator promises only a confirmed update after the service team responds."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "Staff reported that the shared booking calendar was unavailable this morning.",
+          "demo": "Staff reported that the shared booking calendar was unavailable this morning.",
+          "instruction": {
+            "en": "Report the observed event without assigning unsupported blame.",
+            "zh-TW": "報告觀察到的事件，不無據歸責。",
+            "zh-CN": "报告观察到的事件，不无据归责。",
+            "ja": "観察した出来事を報告し、根拠なく責任を決め付けません。",
+            "ko": "관찰한 사건을 보고하고 근거 없이 책임을 돌리지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "同仁回報今天上午共用預約日曆無法使用。",
+            "zh-CN": "同事报告今天上午共享预约日历无法使用。",
+            "ja": "今朝、共有予約カレンダーが使えないと職員から報告がありました。",
+            "ko": "직원들이 오늘 아침 공유 예약 달력을 사용할 수 없다고 보고했어요."
+          },
+          "visual": "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+          "target": "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s01"
+        },
+        {
+          "english": "The coordinator confirmed the issue after the first report.",
+          "demo": "The coordinator confirmed the issue after the first report.",
+          "instruction": {
+            "en": "Use a clear time reference to order events or commitments.",
+            "zh-TW": "用明確時間排列事件或承諾。",
+            "zh-CN": "用明确时间排列事件或承诺。",
+            "ja": "明確な時間表現で、出来事や約束の順序を示します。",
+            "ko": "명확한 시간 표현으로 사건이나 약속의 순서를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "協調員在首次回報後確認了問題。",
+            "zh-CN": "协调员在首次报告后确认了问题。",
+            "ja": "最初の報告の後、調整担当者が問題を確認しました。",
+            "ko": "담당자가 첫 보고 후 문제를 확인했어요."
+          },
+          "visual": "sentence:The coordinator confirmed the issue after the first report.",
+          "target": "sentence:The coordinator confirmed the issue after the first report.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s02"
+        },
+        {
+          "english": "The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "demo": "The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "instruction": {
+            "en": "State the boundary of the evidence or your authority.",
+            "zh-TW": "說明證據或自身權限的界線。",
+            "zh-CN": "说明证据或自身权限的界线。",
+            "ja": "証拠で言える範囲、または自分の権限の範囲を示します。",
+            "ko": "증거로 말할 수 있는 범위나 자신의 권한을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "原因仍在調查；我們尚未確認與昨天更新有關。",
+            "zh-CN": "原因仍在调查；我们尚未确认与昨天更新有关。",
+            "ja": "原因は調査中で、昨日の更新との関連はまだ確認できていません。",
+            "ko": "원인은 조사 중이며 어제 업데이트와의 관련성은 아직 확인하지 못했어요."
+          },
+          "visual": "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "target": "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s03"
+        },
+        {
+          "english": "The coordinator confirmed the issue after the first report.",
+          "demo": "The coordinator confirmed the issue after the first report.",
+          "instruction": {
+            "en": "Use a clear time reference to order events or commitments.",
+            "zh-TW": "用明確時間排列事件或承諾。",
+            "zh-CN": "用明确时间排列事件或承诺。",
+            "ja": "明確な時間表現で、出来事や約束の順序を示します。",
+            "ko": "명확한 시간 표현으로 사건이나 약속의 순서를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "協調員在首次回報後確認了問題。",
+            "zh-CN": "协调员在首次报告后确认了问题。",
+            "ja": "最初の報告の後、調整担当者が問題を確認しました。",
+            "ko": "담당자가 첫 보고 후 문제를 확인했어요."
+          },
+          "visual": "sentence:The coordinator confirmed the issue after the first report.",
+          "target": "sentence:The coordinator confirmed the issue after the first report.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Staff reported that the shared booking calendar was unavailable this morning.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "同仁回報今天上午共用預約日曆無法使用。",
+            "zh-CN": "同事报告今天上午共享预约日历无法使用。",
+            "ja": "今朝、共有予約カレンダーが使えないと職員から報告がありました。",
+            "ko": "직원들이 오늘 아침 공유 예약 달력을 사용할 수 없다고 보고했어요."
+          },
+          "visual": "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+          "target": "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep29-s05",
+          "choices": [
+            "sentence:The coordinator confirmed the issue after the first report.",
+            "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+            "sentence:Staff reported that the shared booking calendar was unavailable this morning."
+          ]
+        },
+        {
+          "english": "Reception recorded new requests on the approved temporary form.",
+          "demo": "Reception recorded new requests on the approved temporary form.",
+          "instruction": {
+            "en": "Report the observed event without assigning unsupported blame.",
+            "zh-TW": "報告觀察到的事件，不無據歸責。",
+            "zh-CN": "报告观察到的事件，不无据归责。",
+            "ja": "観察した出来事を報告し、根拠なく責任を決め付けません。",
+            "ko": "관찰한 사건을 보고하고 근거 없이 책임을 돌리지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "接待人員用已核准的臨時表單記錄新需求。",
+            "zh-CN": "接待人员用已批准的临时表单记录新需求。",
+            "ja": "受付は、承認済みの仮受付用紙に新しい依頼を記録しました。",
+            "ko": "접수 담당자가 승인된 임시 양식에 새 요청을 기록했어요."
+          },
+          "visual": "sentence:Reception recorded new requests on the approved temporary form.",
+          "target": "sentence:Reception recorded new requests on the approved temporary form.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "原因仍在調查；我們尚未確認與昨天更新有關。",
+            "zh-CN": "原因仍在调查；我们尚未确认与昨天更新有关。",
+            "ja": "原因は調査中で、昨日の更新との関連はまだ確認できていません。",
+            "ko": "원인은 조사 중이며 어제 업데이트와의 관련성은 아직 확인하지 못했어요."
+          },
+          "visual": "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "target": "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep29-s07",
+          "choices": [
+            "sentence:The cause is still being reviewed; we have not confirmed a connection to yesterday's update.",
+            "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+            "sentence:The coordinator confirmed the issue after the first report."
+          ]
+        },
+        {
+          "english": "I will share the next confirmed update after the service team responds.",
+          "demo": "I will share the next confirmed update after the service team responds.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "服務團隊回覆後，我會分享下一則已確認更新。",
+            "zh-CN": "服务团队回复后，我会分享下一则已确认更新。",
+            "ja": "サービス担当チームの返答後、次の確認済み情報を共有します。",
+            "ko": "서비스 담당팀이 답하면 다음 확인된 소식을 공유하겠어요."
+          },
+          "visual": "sentence:I will share the next confirmed update after the service team responds.",
+          "target": "sentence:I will share the next confirmed update after the service team responds.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Reception recorded new requests on the approved temporary form.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "接待人員用已核准的臨時表單記錄新需求。",
+            "zh-CN": "接待人员用已批准的临时表单记录新需求。",
+            "ja": "受付は、承認済みの仮受付用紙に新しい依頼を記録しました。",
+            "ko": "접수 담당자가 승인된 임시 양식에 새 요청을 기록했어요."
+          },
+          "visual": "sentence:Reception recorded new requests on the approved temporary form.",
+          "target": "sentence:Reception recorded new requests on the approved temporary form.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep29-s09",
+          "choices": [
+            "sentence:Staff reported that the shared booking calendar was unavailable this morning.",
+            "sentence:Reception recorded new requests on the approved temporary form.",
+            "sentence:The coordinator confirmed the issue after the first report."
+          ]
+        },
+        {
+          "english": "I will share the next confirmed update after the service team responds.",
+          "demo": "I will share the next confirmed update after the service team responds.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "服務團隊回覆後，我會分享下一則已確認更新。",
+            "zh-CN": "服务团队回复后，我会分享下一则已确认更新。",
+            "ja": "サービス担当チームの返答後、次の確認済み情報を共有します。",
+            "ko": "서비스 담당팀이 답하면 다음 확인된 소식을 공유하겠어요."
+          },
+          "visual": "sentence:I will share the next confirmed update after the service team responds.",
+          "target": "sentence:I will share the next confirmed update after the service team responds.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep29-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep30",
+      "number": 30,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Symptoms and Possible Causes",
+      "title_zh_TW": "區分現象與原因假說",
+      "titles": {
+        "zh-TW": "區分現象與原因假說",
+        "zh-CN": "区分现象与原因假说",
+        "ja": "症状と原因の仮説を区別する",
+        "ko": "증상과 원인 가설 구분하기"
+      },
+      "topic": "symptom-root-cause-hypothesis",
+      "objectives_zh_TW": [
+        "用觀察陳述問題現象。",
+        "將可能原因標記為待驗證假說。",
+        "選擇能區分競爭解釋的下一步證據。"
+      ],
+      "parent_tip_zh_TW": "先問哪個觀察能區分兩種解釋，避免把第一個想到的原因寫成定論。",
+      "practice": {
+        "reading_en": "At a fictional training center, several registration forms arrive without department names. The administrator initially suggests that staff are ignoring instructions. A colleague separates the observation from that explanation: the names are missing, but nobody has established why. One hypothesis is that the department label is unclear. Another is that staff are using an older form without that field. The team decides to compare submitted form versions and ask volunteers to explain how they interpreted the current label. If missing names occur mainly on the older form, replacing outdated copies may help. If people using the current form misunderstand the label, a wording change may be needed. Both explanations could also contribute. The administrator records each hypothesis and the evidence that would support it. The team has not yet selected a final fix. This approach avoids blaming people before checking the materials and makes the next information request more focused.",
+        "prompt_en": "Write 100-140 words proposing an investigation note. Separate the observed problem from two possible causes and explain which evidence would distinguish them.",
+        "prompt_zh_TW": "寫100至140詞的調查建議，區分問題現象與兩個可能原因，說明能區分它們的證據。",
+        "sample_answer_en": "The observed problem is that several registration forms lack department names. We should not conclude that staff ignored instructions without checking other explanations. One possibility is that the current field label is unclear. Another is that some people received an older form without the field. I suggest comparing the submitted versions first and then asking volunteers how they understood the current label. Missing names mainly on old forms would support replacing outdated copies. Misunderstanding among users of the current form would support revising the wording. Both causes may contribute, so the evidence could justify more than one change. We should record our findings before choosing a final response.",
+        "questions": [
+          {
+            "prompt_en": "What is the directly observed problem?",
+            "answer_en": "Several submitted registration forms do not include department names."
+          },
+          {
+            "prompt_en": "How do the proposed checks relate to the two hypotheses?",
+            "answer_en": "Comparing versions tests the outdated-form explanation; asking users about the current label tests the unclear-wording explanation."
+          },
+          {
+            "prompt_en": "Would evidence for one hypothesis automatically rule out the other? Give a reason.",
+            "answer_en": "No. The reading explicitly allows both outdated forms and unclear wording to contribute to the missing names."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "Several training forms arrived without a department name.",
+          "demo": "Several training forms arrived without a department name.",
+          "instruction": {
+            "en": "Report the observed event without assigning unsupported blame.",
+            "zh-TW": "報告觀察到的事件，不無據歸責。",
+            "zh-CN": "报告观察到的事件，不无据归责。",
+            "ja": "観察した出来事を報告し、根拠なく責任を決め付けません。",
+            "ko": "관찰한 사건을 보고하고 근거 없이 책임을 돌리지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "幾份訓練表單送達時未填部門名稱。",
+            "zh-CN": "几份培训表单提交时未填部门名称。",
+            "ja": "研修用紙の何枚かに、部署名が記入されていませんでした。",
+            "ko": "교육 양식 여러 장에 부서명이 빠져 있었어요."
+          },
+          "visual": "sentence:Several training forms arrived without a department name.",
+          "target": "sentence:Several training forms arrived without a department name.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s01"
+        },
+        {
+          "english": "That is the observed problem, not yet an explanation.",
+          "demo": "That is the observed problem, not yet an explanation.",
+          "instruction": {
+            "en": "State the boundary of the evidence or your authority.",
+            "zh-TW": "說明證據或自身權限的界線。",
+            "zh-CN": "说明证据或自身权限的界线。",
+            "ja": "証拠で言える範囲、または自分の権限の範囲を示します。",
+            "ko": "증거로 말할 수 있는 범위나 자신의 권한을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "那是觀察到的問題，還不是解釋。",
+            "zh-CN": "那是观察到的问题，还不是解释。",
+            "ja": "それは観察された問題であり、まだ説明ではありません。",
+            "ko": "그것은 관찰된 문제이지 아직 원인에 대한 설명은 아니에요."
+          },
+          "visual": "sentence:That is the observed problem, not yet an explanation.",
+          "target": "sentence:That is the observed problem, not yet an explanation.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s02"
+        },
+        {
+          "english": "The field label may be unclear, but we need evidence.",
+          "demo": "The field label may be unclear, but we need evidence.",
+          "instruction": {
+            "en": "Mark a possible explanation as something still to be tested.",
+            "zh-TW": "把可能的解釋標為待驗證假說。",
+            "zh-CN": "把可能的解释标为待验证假说。",
+            "ja": "考えられる説明を、まだ検証が必要な仮説として示します。",
+            "ko": "가능한 설명을 아직 검증해야 하는 가설로 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "欄位標示可能不清楚，但我們需要證據。",
+            "zh-CN": "字段标签可能不清楚，但我们需要证据。",
+            "ja": "項目名が分かりにくい可能性がありますが、証拠が必要です。",
+            "ko": "항목 이름이 불명확할 수 있지만 증거가 필요해요."
+          },
+          "visual": "sentence:The field label may be unclear, but we need evidence.",
+          "target": "sentence:The field label may be unclear, but we need evidence.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s03"
+        },
+        {
+          "english": "That is the observed problem, not yet an explanation.",
+          "demo": "That is the observed problem, not yet an explanation.",
+          "instruction": {
+            "en": "State the boundary of the evidence or your authority.",
+            "zh-TW": "說明證據或自身權限的界線。",
+            "zh-CN": "说明证据或自身权限的界线。",
+            "ja": "証拠で言える範囲、または自分の権限の範囲を示します。",
+            "ko": "증거로 말할 수 있는 범위나 자신의 권한을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "那是觀察到的問題，還不是解釋。",
+            "zh-CN": "那是观察到的问题，还不是解释。",
+            "ja": "それは観察された問題であり、まだ説明ではありません。",
+            "ko": "그것은 관찰된 문제이지 아직 원인에 대한 설명은 아니에요."
+          },
+          "visual": "sentence:That is the observed problem, not yet an explanation.",
+          "target": "sentence:That is the observed problem, not yet an explanation.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Several training forms arrived without a department name.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "幾份訓練表單送達時未填部門名稱。",
+            "zh-CN": "几份培训表单提交时未填部门名称。",
+            "ja": "研修用紙の何枚かに、部署名が記入されていませんでした。",
+            "ko": "교육 양식 여러 장에 부서명이 빠져 있었어요."
+          },
+          "visual": "sentence:Several training forms arrived without a department name.",
+          "target": "sentence:Several training forms arrived without a department name.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep30-s05",
+          "choices": [
+            "sentence:Several training forms arrived without a department name.",
+            "sentence:That is the observed problem, not yet an explanation.",
+            "sentence:The field label may be unclear, but we need evidence."
+          ]
+        },
+        {
+          "english": "We should compare the form versions before deciding what to change.",
+          "demo": "We should compare the form versions before deciding what to change.",
+          "instruction": {
+            "en": "Choose a check that can distinguish the competing explanations.",
+            "zh-TW": "選擇能區分不同解釋的檢查。",
+            "zh-CN": "选择能区分不同解释的检查。",
+            "ja": "異なる説明を区別できる確認方法を選びます。",
+            "ko": "서로 다른 설명을 구별할 수 있는 확인 방법을 골라요."
+          },
+          "demo_translation": {
+            "zh-TW": "決定修改什麼前，我們應比較表單版本。",
+            "zh-CN": "决定修改什么前，我们应比较表单版本。",
+            "ja": "何を変更するか決める前に、用紙の版を比較すべきです。",
+            "ko": "무엇을 바꿀지 결정하기 전에 양식 버전을 비교해야 해요."
+          },
+          "visual": "sentence:We should compare the form versions before deciding what to change.",
+          "target": "sentence:We should compare the form versions before deciding what to change.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The field label may be unclear, but we need evidence.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "欄位標示可能不清楚，但我們需要證據。",
+            "zh-CN": "字段标签可能不清楚，但我们需要证据。",
+            "ja": "項目名が分かりにくい可能性がありますが、証拠が必要です。",
+            "ko": "항목 이름이 불명확할 수 있지만 증거가 필요해요."
+          },
+          "visual": "sentence:The field label may be unclear, but we need evidence.",
+          "target": "sentence:The field label may be unclear, but we need evidence.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep30-s07",
+          "choices": [
+            "sentence:Several training forms arrived without a department name.",
+            "sentence:The field label may be unclear, but we need evidence.",
+            "sentence:That is the observed problem, not yet an explanation."
+          ]
+        },
+        {
+          "english": "If only the older version has missing labels, that would support the version explanation.",
+          "demo": "If only the older version has missing labels, that would support the version explanation.",
+          "instruction": {
+            "en": "If links a possible finding to the explanation it would support.",
+            "zh-TW": "if把可能發現連到它會支持的解釋。",
+            "zh-CN": "if把可能发现连到它会支持的解释。",
+            "ja": "ifは、得られるかもしれない結果と、それが支持する説明を結び付けます。",
+            "ko": "if는 가능한 발견을 그 발견이 뒷받침할 설명과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若只有舊版缺標示，就會支持版本差異的解釋。",
+            "zh-CN": "若只有旧版缺标签，就会支持版本差异的解释。",
+            "ja": "古い版だけに項目名がなければ、版の違いという説明を支持します。",
+            "ko": "이전 버전에만 항목 이름이 없다면 버전 차이라는 설명을 뒷받침해요."
+          },
+          "visual": "sentence:If only the older version has missing labels, that would support the version explanation.",
+          "target": "sentence:If only the older version has missing labels, that would support the version explanation.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We should compare the form versions before deciding what to change.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "決定修改什麼前，我們應比較表單版本。",
+            "zh-CN": "决定修改什么前，我们应比较表单版本。",
+            "ja": "何を変更するか決める前に、用紙の版を比較すべきです。",
+            "ko": "무엇을 바꿀지 결정하기 전에 양식 버전을 비교해야 해요."
+          },
+          "visual": "sentence:We should compare the form versions before deciding what to change.",
+          "target": "sentence:We should compare the form versions before deciding what to change.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep30-s09",
+          "choices": [
+            "sentence:Several training forms arrived without a department name.",
+            "sentence:That is the observed problem, not yet an explanation.",
+            "sentence:We should compare the form versions before deciding what to change."
+          ]
+        },
+        {
+          "english": "If only the older version has missing labels, that would support the version explanation.",
+          "demo": "If only the older version has missing labels, that would support the version explanation.",
+          "instruction": {
+            "en": "If links a possible finding to the explanation it would support.",
+            "zh-TW": "if把可能發現連到它會支持的解釋。",
+            "zh-CN": "if把可能发现连到它会支持的解释。",
+            "ja": "ifは、得られるかもしれない結果と、それが支持する説明を結び付けます。",
+            "ko": "if는 가능한 발견을 그 발견이 뒷받침할 설명과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若只有舊版缺標示，就會支持版本差異的解釋。",
+            "zh-CN": "若只有旧版缺标签，就会支持版本差异的解释。",
+            "ja": "古い版だけに項目名がなければ、版の違いという説明を支持します。",
+            "ko": "이전 버전에만 항목 이름이 없다면 버전 차이라는 설명을 뒷받침해요."
+          },
+          "visual": "sentence:If only the older version has missing labels, that would support the version explanation.",
+          "target": "sentence:If only the older version has missing labels, that would support the version explanation.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep30-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep31",
+      "number": 31,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Feedback People Can Use",
+      "title_zh_TW": "讓回饋能付諸行動",
+      "titles": {
+        "zh-TW": "讓回饋能付諸行動",
+        "zh-CN": "让反馈能付诸行动",
+        "ja": "行動につながるフィードバック",
+        "ko": "행동으로 옮길 수 있는 피드백"
+      },
+      "topic": "actionable-feedback",
+      "objectives_zh_TW": [
+        "區分人格評語與可觀察工作行為。",
+        "用事例說明行為影響。",
+        "提出可試行的調整並邀請對方回應。"
+      ],
+      "parent_tip_zh_TW": "把「不夠細心」改成某次具體行為、造成的影響及下一次可採取的做法。",
+      "practice": {
+        "reading_en": "In a fictional operations team, Luis asks Priya to review his handover notes. He wants to know whether the next action is clear, rather than asking whether she likes his writing. Priya identifies a specific example: yesterday's note included a deadline but did not name an owner for the supplier query. Both teams waited for the other to answer, so the query remained open. Priya avoids calling Luis careless. She explains the behavior, its effect, and a possible adjustment: confirm an owner before sending the next note. Luis explains that the receiving team had not accepted responsibility when he wrote it. Together they add a pending-owner label and a request for confirmation instead of assigning someone without agreement. They will review the next handover to see whether the action is clearer. The conversation improves the process because the feedback includes evidence and leaves room for information the reviewer did not initially have.",
+        "prompt_en": "Write 100-140 words giving feedback on the handover note. Include a specific observation, its impact, an actionable request, and an invitation to explain constraints.",
+        "prompt_zh_TW": "寫100至140詞回饋交接筆記，包含具體觀察、影響、可行要求，以及邀請對方說明限制。",
+        "sample_answer_en": "Thanks for asking me to review the handover note. Yesterday's supplier query had a deadline, but it did not identify who would answer it. Both teams waited for the other, and the query remained open. For the next handover, could you confirm an owner before sending the note? If responsibility has not been accepted, please mark the owner as pending and ask the receiving team to confirm, rather than assigning someone without agreement. Would that approach work for you, or is there a constraint I have missed? We can review the next note together to check whether the action and responsibility are clearer to the receiving team.",
+        "questions": [
+          {
+            "prompt_en": "What feedback does Luis request?",
+            "answer_en": "He asks whether his handover notes make the next action clear."
+          },
+          {
+            "prompt_en": "Why do Luis and Priya add a pending-owner label?",
+            "answer_en": "The receiving team had not accepted responsibility, so the label reveals the gap without assigning someone without agreement."
+          },
+          {
+            "prompt_en": "What makes Priya's feedback more useful than calling Luis careless?",
+            "answer_en": "It names a specific missing owner, explains the resulting delay, proposes an adjustment, and invites information about constraints."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "Could you review whether my handover notes make the next action clear?",
+          "demo": "Could you review whether my handover notes make the next action clear?",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你能檢視我的交接筆記是否清楚交代下一步嗎？",
+            "zh-CN": "你能检查我的交接记录是否清楚交代下一步吗？",
+            "ja": "私の引き継ぎメモで次の行動が明確か、確認してもらえますか。",
+            "ko": "제 인계 메모에 다음 행동이 명확한지 검토해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you review whether my handover notes make the next action clear?",
+          "target": "sentence:Could you review whether my handover notes make the next action clear?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s01"
+        },
+        {
+          "english": "In yesterday's note, the task had a deadline but no named owner.",
+          "demo": "In yesterday's note, the task had a deadline but no named owner.",
+          "instruction": {
+            "en": "Describe a specific behavior and its effect on the work.",
+            "zh-TW": "描述具體行為及其工作影響。",
+            "zh-CN": "描述具体行为及其工作影响。",
+            "ja": "具体的な行動と、それが仕事に与える影響を述べます。",
+            "ko": "구체적인 행동과 업무에 미친 영향을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "昨天的筆記中，任務有期限卻沒有具名負責人。",
+            "zh-CN": "昨天的记录中，任务有期限却没有写明负责人。",
+            "ja": "昨日のメモでは、作業に期限はありましたが担当者名がありませんでした。",
+            "ko": "어제 메모에는 작업 마감은 있었지만 담당자 이름이 없었어요."
+          },
+          "visual": "sentence:In yesterday's note, the task had a deadline but no named owner.",
+          "target": "sentence:In yesterday's note, the task had a deadline but no named owner.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s02"
+        },
+        {
+          "english": "As a result, both teams waited for the other to reply.",
+          "demo": "As a result, both teams waited for the other to reply.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "因此，兩個團隊都等著對方回覆。",
+            "zh-CN": "因此，两个团队都等着对方回复。",
+            "ja": "その結果、両チームとも相手の返答を待っていました。",
+            "ko": "그 결과 두 팀 모두 상대의 답을 기다렸어요."
+          },
+          "visual": "sentence:As a result, both teams waited for the other to reply.",
+          "target": "sentence:As a result, both teams waited for the other to reply.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s03"
+        },
+        {
+          "english": "In yesterday's note, the task had a deadline but no named owner.",
+          "demo": "In yesterday's note, the task had a deadline but no named owner.",
+          "instruction": {
+            "en": "Describe a specific behavior and its effect on the work.",
+            "zh-TW": "描述具體行為及其工作影響。",
+            "zh-CN": "描述具体行为及其工作影响。",
+            "ja": "具体的な行動と、それが仕事に与える影響を述べます。",
+            "ko": "구체적인 행동과 업무에 미친 영향을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "昨天的筆記中，任務有期限卻沒有具名負責人。",
+            "zh-CN": "昨天的记录中，任务有期限却没有写明负责人。",
+            "ja": "昨日のメモでは、作業に期限はありましたが担当者名がありませんでした。",
+            "ko": "어제 메모에는 작업 마감은 있었지만 담당자 이름이 없었어요."
+          },
+          "visual": "sentence:In yesterday's note, the task had a deadline but no named owner.",
+          "target": "sentence:In yesterday's note, the task had a deadline but no named owner.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Could you review whether my handover notes make the next action clear?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "你能檢視我的交接筆記是否清楚交代下一步嗎？",
+            "zh-CN": "你能检查我的交接记录是否清楚交代下一步吗？",
+            "ja": "私の引き継ぎメモで次の行動が明確か、確認してもらえますか。",
+            "ko": "제 인계 메모에 다음 행동이 명확한지 검토해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you review whether my handover notes make the next action clear?",
+          "target": "sentence:Could you review whether my handover notes make the next action clear?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep31-s05",
+          "choices": [
+            "sentence:In yesterday's note, the task had a deadline but no named owner.",
+            "sentence:Could you review whether my handover notes make the next action clear?",
+            "sentence:As a result, both teams waited for the other to reply."
+          ]
+        },
+        {
+          "english": "Next time, could you confirm an owner before sending the note?",
+          "demo": "Next time, could you confirm an owner before sending the note?",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "下次寄送筆記前，你能先確認負責人嗎？",
+            "zh-CN": "下次发送记录前，你能先确认负责人吗？",
+            "ja": "次回は、メモを送る前に担当者を確認してもらえますか。",
+            "ko": "다음에는 메모를 보내기 전에 담당자를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Next time, could you confirm an owner before sending the note?",
+          "target": "sentence:Next time, could you confirm an owner before sending the note?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "As a result, both teams waited for the other to reply.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "因此，兩個團隊都等著對方回覆。",
+            "zh-CN": "因此，两个团队都等着对方回复。",
+            "ja": "その結果、両チームとも相手の返答を待っていました。",
+            "ko": "그 결과 두 팀 모두 상대의 답을 기다렸어요."
+          },
+          "visual": "sentence:As a result, both teams waited for the other to reply.",
+          "target": "sentence:As a result, both teams waited for the other to reply.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep31-s07",
+          "choices": [
+            "sentence:Could you review whether my handover notes make the next action clear?",
+            "sentence:In yesterday's note, the task had a deadline but no named owner.",
+            "sentence:As a result, both teams waited for the other to reply."
+          ]
+        },
+        {
+          "english": "Would that change work for you, or is there a constraint I have missed?",
+          "demo": "Would that change work for you, or is there a constraint I have missed?",
+          "instruction": {
+            "en": "Invite the other person to explain a constraint you may have missed.",
+            "zh-TW": "邀請對方說明你可能漏看的限制。",
+            "zh-CN": "邀请对方说明你可能漏看的限制。",
+            "ja": "見落としているかもしれない制約を、相手に説明してもらいます。",
+            "ko": "놓쳤을 수 있는 제약을 상대가 설명하도록 요청해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這項調整對你可行嗎，還是有我沒注意到的限制？",
+            "zh-CN": "这项调整对你可行吗，还是有我没注意到的限制？",
+            "ja": "その変更は可能ですか。それとも、私が見落とした制約がありますか。",
+            "ko": "그렇게 바꿀 수 있나요, 아니면 제가 놓친 제약이 있나요?"
+          },
+          "visual": "sentence:Would that change work for you, or is there a constraint I have missed?",
+          "target": "sentence:Would that change work for you, or is there a constraint I have missed?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Next time, could you confirm an owner before sending the note?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "下次寄送筆記前，你能先確認負責人嗎？",
+            "zh-CN": "下次发送记录前，你能先确认负责人吗？",
+            "ja": "次回は、メモを送る前に担当者を確認してもらえますか。",
+            "ko": "다음에는 메모를 보내기 전에 담당자를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Next time, could you confirm an owner before sending the note?",
+          "target": "sentence:Next time, could you confirm an owner before sending the note?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep31-s09",
+          "choices": [
+            "sentence:Next time, could you confirm an owner before sending the note?",
+            "sentence:Could you review whether my handover notes make the next action clear?",
+            "sentence:In yesterday's note, the task had a deadline but no named owner."
+          ]
+        },
+        {
+          "english": "Would that change work for you, or is there a constraint I have missed?",
+          "demo": "Would that change work for you, or is there a constraint I have missed?",
+          "instruction": {
+            "en": "Invite the other person to explain a constraint you may have missed.",
+            "zh-TW": "邀請對方說明你可能漏看的限制。",
+            "zh-CN": "邀请对方说明你可能漏看的限制。",
+            "ja": "見落としているかもしれない制約を、相手に説明してもらいます。",
+            "ko": "놓쳤을 수 있는 제약을 상대가 설명하도록 요청해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這項調整對你可行嗎，還是有我沒注意到的限制？",
+            "zh-CN": "这项调整对你可行吗，还是有我没注意到的限制？",
+            "ja": "その変更は可能ですか。それとも、私が見落とした制約がありますか。",
+            "ko": "그렇게 바꿀 수 있나요, 아니면 제가 놓친 제약이 있나요?"
+          },
+          "visual": "sentence:Would that change work for you, or is there a constraint I have missed?",
+          "target": "sentence:Would that change work for you, or is there a constraint I have missed?",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep31-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep32",
+      "number": 32,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Disagreeing Through Shared Criteria",
+      "title_zh_TW": "用共同標準處理分歧",
+      "titles": {
+        "zh-TW": "用共同標準處理分歧",
+        "zh-CN": "用共同标准处理分歧",
+        "ja": "共通の基準で意見の違いを扱う",
+        "ko": "공통 기준으로 이견 다루기"
+      },
+      "topic": "shared-criteria-disagreement",
+      "objectives_zh_TW": [
+        "承認不同方案背後的合理需求。",
+        "先確認共同評估標準再比較。",
+        "用小型試行與待查證資料處理僵局。"
+      ],
+      "parent_tip_zh_TW": "先找雙方都接受的判斷標準；對方案的喜好不是證據。",
+      "practice": {
+        "reading_en": "At a fictional publishing office, the editorial and finance teams disagree about a purchase request form. Editors want fewer questions so they can submit requests quickly. Finance staff want enough context to review unusual purchases without repeated messages. Rather than voting on the most popular design, they agree on shared criteria: reasonable completion effort and enough information for a decision. They compare a short version with a longer version using the same fictional sample requests. The short form may save writing time but create more follow-up questions. The longer form may prevent those questions but repeat information already held elsewhere. Neither effect has been measured yet. The teams plan a small trial and agree to record both completion effort and requests for clarification. They will also remove fields that duplicate existing records. The disagreement becomes a testable design question, while the shared criteria make it harder for either team to ignore the other's work.",
+        "prompt_en": "Write 100-140 words proposing a way to resolve the form disagreement. Include shared criteria, both tradeoffs, a fair comparison, and the later decision.",
+        "prompt_zh_TW": "寫100至140詞提出表單分歧的處理方法，包含共同標準、雙方取捨、公平比較與後續決策。",
+        "sample_answer_en": "Both teams need a form that is manageable to complete and useful for reviewing purchases. I suggest using those two criteria before choosing a design. A short form may reduce writing but increase follow-up questions; a longer form may provide context while repeating information we already hold. Let us test both versions with the same fictional sample requests and record completion effort as well as clarification requests. We should also identify fields that duplicate existing records. After the trial, we can compare the results and revise either version if necessary. This gives us a shared basis for deciding without treating one team's preference as proof that its design works better.",
+        "questions": [
+          {
+            "prompt_en": "Which two shared criteria do the teams agree on?",
+            "answer_en": "Reasonable completion effort and enough information for a review decision."
+          },
+          {
+            "prompt_en": "Why do they use the same sample requests for both versions?",
+            "answer_en": "It makes the comparison fairer by reducing differences caused by the requests themselves."
+          },
+          {
+            "prompt_en": "Would choosing the shorter form immediately be evidence-based? Explain.",
+            "answer_en": "No. Its possible time savings and follow-up costs have not been measured; the planned trial is meant to test them."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "We agree that the new request form should be easy to use and easy to review.",
+          "demo": "We agree that the new request form should be easy to use and easy to review.",
+          "instruction": {
+            "en": "State the shared criteria before comparing the designs.",
+            "zh-TW": "比較設計前，先說明共同標準。",
+            "zh-CN": "比较设计前，先说明共同标准。",
+            "ja": "設計を比較する前に、共通の基準を述べます。",
+            "ko": "설계를 비교하기 전에 공통 기준을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們同意新申請表應容易填寫，也容易審閱。",
+            "zh-CN": "我们同意新申请表应容易填写，也容易审核。",
+            "ja": "新しい申請用紙は、記入も確認も簡単にすべきだという点で一致しています。",
+            "ko": "새 신청서는 작성하기도 검토하기도 쉬워야 한다는 데 동의해요."
+          },
+          "visual": "sentence:We agree that the new request form should be easy to use and easy to review.",
+          "target": "sentence:We agree that the new request form should be easy to use and easy to review.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s01"
+        },
+        {
+          "english": "A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "demo": "A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "instruction": {
+            "en": "Use but to contrast a benefit with a possible cost.",
+            "zh-TW": "用but對比好處與可能的代價。",
+            "zh-CN": "用but对比好处与可能的代价。",
+            "ja": "butを使い、利点と考えられる負担を対比します。",
+            "ko": "but을 써서 이점과 가능한 대가를 대비해요."
+          },
+          "demo_translation": {
+            "zh-TW": "較短表單可減少書寫，但可能讓審閱者缺少必要背景。",
+            "zh-CN": "较短表单可减少填写量，但可能让审核者缺少必要背景。",
+            "ja": "短い用紙は記入量を減らしますが、確認者に必要な背景が不足するかもしれません。",
+            "ko": "짧은 양식은 작성량을 줄이지만 검토자에게 필요한 배경이 빠질 수 있어요."
+          },
+          "visual": "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "target": "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s02"
+        },
+        {
+          "english": "A longer form provides context, although some questions may repeat existing information.",
+          "demo": "A longer form provides context, although some questions may repeat existing information.",
+          "instruction": {
+            "en": "Use although to qualify a benefit with a possible drawback.",
+            "zh-TW": "用although補上好處背後的可能缺點。",
+            "zh-CN": "用although补上好处背后的可能缺点。",
+            "ja": "althoughを使い、利点に伴う可能性のある欠点も示します。",
+            "ko": "although를 써서 이점에 따를 수 있는 단점도 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "較長表單提供背景，但部分問題可能重複既有資訊。",
+            "zh-CN": "较长表单提供背景，但部分问题可能重复已有信息。",
+            "ja": "長い用紙は背景を示しますが、一部の質問は既存情報と重複するかもしれません。",
+            "ko": "긴 양식은 배경을 제공하지만 일부 질문은 기존 정보와 중복될 수 있어요."
+          },
+          "visual": "sentence:A longer form provides context, although some questions may repeat existing information.",
+          "target": "sentence:A longer form provides context, although some questions may repeat existing information.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s03"
+        },
+        {
+          "english": "A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "demo": "A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "instruction": {
+            "en": "Use but to contrast a benefit with a possible cost.",
+            "zh-TW": "用but對比好處與可能的代價。",
+            "zh-CN": "用but对比好处与可能的代价。",
+            "ja": "butを使い、利点と考えられる負担を対比します。",
+            "ko": "but을 써서 이점과 가능한 대가를 대비해요."
+          },
+          "demo_translation": {
+            "zh-TW": "較短表單可減少書寫，但可能讓審閱者缺少必要背景。",
+            "zh-CN": "较短表单可减少填写量，但可能让审核者缺少必要背景。",
+            "ja": "短い用紙は記入量を減らしますが、確認者に必要な背景が不足するかもしれません。",
+            "ko": "짧은 양식은 작성량을 줄이지만 검토자에게 필요한 배경이 빠질 수 있어요."
+          },
+          "visual": "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "target": "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We agree that the new request form should be easy to use and easy to review.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們同意新申請表應容易填寫，也容易審閱。",
+            "zh-CN": "我们同意新申请表应容易填写，也容易审核。",
+            "ja": "新しい申請用紙は、記入も確認も簡単にすべきだという点で一致しています。",
+            "ko": "새 신청서는 작성하기도 검토하기도 쉬워야 한다는 데 동의해요."
+          },
+          "visual": "sentence:We agree that the new request form should be easy to use and easy to review.",
+          "target": "sentence:We agree that the new request form should be easy to use and easy to review.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep32-s05",
+          "choices": [
+            "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context.",
+            "sentence:A longer form provides context, although some questions may repeat existing information.",
+            "sentence:We agree that the new request form should be easy to use and easy to review."
+          ]
+        },
+        {
+          "english": "Let us compare completion effort and follow-up questions using the same sample requests.",
+          "demo": "Let us compare completion effort and follow-up questions using the same sample requests.",
+          "instruction": {
+            "en": "Apply the same stated criteria to every option.",
+            "zh-TW": "用同一組明示標準比較各選項。",
+            "zh-CN": "用同一组明示标准比较各选项。",
+            "ja": "すべての選択肢を、明示した同じ基準で比較します。",
+            "ko": "모든 선택지에 명시한 동일 기준을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們用相同申請範例比較填寫負擔與後續問題。",
+            "zh-CN": "我们用相同申请示例比较填写负担与后续问题。",
+            "ja": "同じ申請例を使い、記入の負担と追加質問を比較しましょう。",
+            "ko": "같은 신청 예시로 작성 부담과 후속 질문을 비교해 봐요."
+          },
+          "visual": "sentence:Let us compare completion effort and follow-up questions using the same sample requests.",
+          "target": "sentence:Let us compare completion effort and follow-up questions using the same sample requests.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "A longer form provides context, although some questions may repeat existing information.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "較長表單提供背景，但部分問題可能重複既有資訊。",
+            "zh-CN": "较长表单提供背景，但部分问题可能重复已有信息。",
+            "ja": "長い用紙は背景を示しますが、一部の質問は既存情報と重複するかもしれません。",
+            "ko": "긴 양식은 배경을 제공하지만 일부 질문은 기존 정보와 중복될 수 있어요."
+          },
+          "visual": "sentence:A longer form provides context, although some questions may repeat existing information.",
+          "target": "sentence:A longer form provides context, although some questions may repeat existing information.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep32-s07",
+          "choices": [
+            "sentence:A longer form provides context, although some questions may repeat existing information.",
+            "sentence:We agree that the new request form should be easy to use and easy to review.",
+            "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context."
+          ]
+        },
+        {
+          "english": "We can choose after the trial instead of treating either preference as proof.",
+          "demo": "We can choose after the trial instead of treating either preference as proof.",
+          "instruction": {
+            "en": "Set a check that can confirm progress or trigger a revision.",
+            "zh-TW": "訂下能確認進度或啟動修訂的檢查。",
+            "zh-CN": "订下能确认进度或启动修订的检查。",
+            "ja": "進捗を確かめ、必要なら見直すための確認を設定します。",
+            "ko": "진행 상황을 확인하거나 수정을 시작할 점검을 정해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可在試行後選擇，不把任何偏好當成證明。",
+            "zh-CN": "我们可在试行后选择，不把任何偏好当成证明。",
+            "ja": "どちらかの好みを証拠とせず、試行後に選べます。",
+            "ko": "어느 쪽의 선호도 증거로 여기지 말고 시험 후 선택할 수 있어요."
+          },
+          "visual": "sentence:We can choose after the trial instead of treating either preference as proof.",
+          "target": "sentence:We can choose after the trial instead of treating either preference as proof.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Let us compare completion effort and follow-up questions using the same sample requests.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們用相同申請範例比較填寫負擔與後續問題。",
+            "zh-CN": "我们用相同申请示例比较填写负担与后续问题。",
+            "ja": "同じ申請例を使い、記入の負担と追加質問を比較しましょう。",
+            "ko": "같은 신청 예시로 작성 부담과 후속 질문을 비교해 봐요."
+          },
+          "visual": "sentence:Let us compare completion effort and follow-up questions using the same sample requests.",
+          "target": "sentence:Let us compare completion effort and follow-up questions using the same sample requests.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep32-s09",
+          "choices": [
+            "sentence:We agree that the new request form should be easy to use and easy to review.",
+            "sentence:Let us compare completion effort and follow-up questions using the same sample requests.",
+            "sentence:A shorter form reduces writing, but it may leave reviewers without necessary context."
+          ]
+        },
+        {
+          "english": "We can choose after the trial instead of treating either preference as proof.",
+          "demo": "We can choose after the trial instead of treating either preference as proof.",
+          "instruction": {
+            "en": "Set a check that can confirm progress or trigger a revision.",
+            "zh-TW": "訂下能確認進度或啟動修訂的檢查。",
+            "zh-CN": "订下能确认进度或启动修订的检查。",
+            "ja": "進捗を確かめ、必要なら見直すための確認を設定します。",
+            "ko": "진행 상황을 확인하거나 수정을 시작할 점검을 정해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可在試行後選擇，不把任何偏好當成證明。",
+            "zh-CN": "我们可在试行后选择，不把任何偏好当成证明。",
+            "ja": "どちらかの好みを証拠とせず、試行後に選べます。",
+            "ko": "어느 쪽의 선호도 증거로 여기지 말고 시험 후 선택할 수 있어요."
+          },
+          "visual": "sentence:We can choose after the trial instead of treating either preference as proof.",
+          "target": "sentence:We can choose after the trial instead of treating either preference as proof.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep32-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep33",
+      "number": 33,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Requests Across Teams",
+      "title_zh_TW": "跨部門請求的背景與界線",
+      "titles": {
+        "zh-TW": "跨部門請求的背景與界線",
+        "zh-CN": "跨部门请求的背景与边界",
+        "ja": "他部署への依頼に背景を添える",
+        "ko": "다른 부서에 맥락을 담아 요청하기"
+      },
+      "topic": "cross-department-request",
+      "objectives_zh_TW": [
+        "讓不熟悉專案的人理解請求目的。",
+        "界定所需輸入、期限與使用方式。",
+        "明示未承諾事項並允許對方協商。"
+      ],
+      "parent_tip_zh_TW": "檢查對方能否只讀這則訊息就理解為何找他、要什麼及是否必須承接。",
+      "practice": {
+        "reading_en": "In a fictional coworking business, the community team is revising its visitor guide. The facilities team knows which entrance delivery staff should use, but it has not been involved in writing the guide. Community coordinator Asha therefore adds context to her request instead of sending an unexplained document and asking for approval. She asks facilities to confirm the approved delivery entrance and the contact point listed beside it. The information is needed before Friday's guide review. Asha explains that she will remain responsible for editing the document; facilities is being asked only to verify the stated facts. She includes the relevant paragraph rather than expecting colleagues to search the whole guide. She also asks them to suggest another contact or a workable date if the deadline is difficult. The message does not assume that a request automatically becomes someone else's commitment. It provides enough detail for the receiving team to assess the work and reply usefully.",
+        "prompt_en": "Write 100-140 words requesting a factual check from facilities. Explain the purpose, exact input, deadline, responsibility boundary, and an alternative if timing is difficult.",
+        "prompt_zh_TW": "寫100至140詞請設施團隊核對事實，交代目的、具體輸入、期限、責任界線與時間難配合時的替代方式。",
+        "sample_answer_en": "Hello Facilities Team, we are revising the visitor guide before its Friday review. Could you check the attached paragraph and confirm the approved delivery entrance and the contact point listed beside it? Your knowledge will help us avoid directing delivery staff to the wrong place. This is a request to verify those facts, not to write or approve the entire guide. I will remain responsible for editing the document and incorporating your corrections. Please let me know whether you can provide the check before Friday's review. If that timing is difficult, could you suggest another suitable contact or a date that would be workable for your team?",
+        "questions": [
+          {
+            "prompt_en": "What exactly does Asha ask facilities to verify?",
+            "answer_en": "The approved delivery entrance and the contact point listed beside it."
+          },
+          {
+            "prompt_en": "Why does she include only the relevant paragraph?",
+            "answer_en": "It lets facilities assess the requested factual check without searching the whole guide."
+          },
+          {
+            "prompt_en": "Which feature shows that Asha is not assuming an automatic commitment?",
+            "answer_en": "She asks for a different contact or workable date if the deadline is difficult, allowing the team to respond to the request."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "demo": "We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "instruction": {
+            "en": "Name the work situation before asking for action.",
+            "zh-TW": "先交代工作情境，再提出行動要求。",
+            "zh-CN": "先交代工作情境，再提出行动要求。",
+            "ja": "行動を求める前に、仕事の状況を示します。",
+            "ko": "행동을 요청하기 전에 업무 상황을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們正修訂訪客指南，需要協助檢查送貨入口指示。",
+            "zh-CN": "我们正修订访客指南，需要协助检查送货入口说明。",
+            "ja": "来訪者ガイドを改訂しており、搬入口の案内を確認する協力が必要です。",
+            "ko": "방문자 안내서를 수정 중이며 배송 출입구 안내 확인에 도움이 필요해요."
+          },
+          "visual": "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "target": "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s01"
+        },
+        {
+          "english": "Could your facilities team confirm the approved entrance and contact point?",
+          "demo": "Could your facilities team confirm the approved entrance and contact point?",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你們的設施團隊能確認核准入口與聯絡窗口嗎？",
+            "zh-CN": "你们的设施团队能确认批准使用的入口与联系窗口吗？",
+            "ja": "施設管理チームで、承認済みの入口と連絡窓口を確認してもらえますか。",
+            "ko": "시설 관리팀에서 승인된 출입구와 연락 창구를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could your facilities team confirm the approved entrance and contact point?",
+          "target": "sentence:Could your facilities team confirm the approved entrance and contact point?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s02"
+        },
+        {
+          "english": "We need that information before the guide review on Friday.",
+          "demo": "We need that information before the guide review on Friday.",
+          "instruction": {
+            "en": "Use a clear time reference to order events or commitments.",
+            "zh-TW": "用明確時間排列事件或承諾。",
+            "zh-CN": "用明确时间排列事件或承诺。",
+            "ja": "明確な時間表現で、出来事や約束の順序を示します。",
+            "ko": "명확한 시간 표현으로 사건이나 약속의 순서를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "週五指南審閱前，我們需要這項資訊。",
+            "zh-CN": "周五指南审核前，我们需要这项信息。",
+            "ja": "金曜日のガイドのレビュー前に、その情報が必要です。",
+            "ko": "금요일 안내서 검토 전에 그 정보가 필요해요."
+          },
+          "visual": "sentence:We need that information before the guide review on Friday.",
+          "target": "sentence:We need that information before the guide review on Friday.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s03"
+        },
+        {
+          "english": "Could your facilities team confirm the approved entrance and contact point?",
+          "demo": "Could your facilities team confirm the approved entrance and contact point?",
+          "instruction": {
+            "en": "Make the requested action small enough to answer clearly.",
+            "zh-TW": "把要求說得具體，讓對方能明確回覆。",
+            "zh-CN": "把要求说得具体，让对方能明确回复。",
+            "ja": "相手が明確に返答できるよう、依頼内容を具体的にします。",
+            "ko": "상대가 명확히 답할 수 있도록 요청을 구체적으로 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你們的設施團隊能確認核准入口與聯絡窗口嗎？",
+            "zh-CN": "你们的设施团队能确认批准使用的入口与联系窗口吗？",
+            "ja": "施設管理チームで、承認済みの入口と連絡窓口を確認してもらえますか。",
+            "ko": "시설 관리팀에서 승인된 출입구와 연락 창구를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could your facilities team confirm the approved entrance and contact point?",
+          "target": "sentence:Could your facilities team confirm the approved entrance and contact point?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們正修訂訪客指南，需要協助檢查送貨入口指示。",
+            "zh-CN": "我们正修订访客指南，需要协助检查送货入口说明。",
+            "ja": "来訪者ガイドを改訂しており、搬入口の案内を確認する協力が必要です。",
+            "ko": "방문자 안내서를 수정 중이며 배송 출입구 안내 확인에 도움이 필요해요."
+          },
+          "visual": "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "target": "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep33-s05",
+          "choices": [
+            "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+            "sentence:Could your facilities team confirm the approved entrance and contact point?",
+            "sentence:We need that information before the guide review on Friday."
+          ]
+        },
+        {
+          "english": "This request covers a factual check, not responsibility for writing the entire guide.",
+          "demo": "This request covers a factual check, not responsibility for writing the entire guide.",
+          "instruction": {
+            "en": "Specify what the work includes and what requires another agreement.",
+            "zh-TW": "說清工作範圍及另需協議的部分。",
+            "zh-CN": "说清工作范围及另需协议的部分。",
+            "ja": "作業の範囲と、別途合意が必要な部分を明確にします。",
+            "ko": "업무 범위와 별도 합의가 필요한 부분을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "此請求只含事實核對，不含撰寫整份指南的責任。",
+            "zh-CN": "此请求只含事实核对，不含撰写整份指南的责任。",
+            "ja": "この依頼は事実確認であり、ガイド全体の執筆責任を求めるものではありません。",
+            "ko": "이번 요청은 사실 확인이며 안내서 전체 작성 책임을 뜻하지 않아요."
+          },
+          "visual": "sentence:This request covers a factual check, not responsibility for writing the entire guide.",
+          "target": "sentence:This request covers a factual check, not responsibility for writing the entire guide.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We need that information before the guide review on Friday.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "週五指南審閱前，我們需要這項資訊。",
+            "zh-CN": "周五指南审核前，我们需要这项信息。",
+            "ja": "金曜日のガイドのレビュー前に、その情報が必要です。",
+            "ko": "금요일 안내서 검토 전에 그 정보가 필요해요."
+          },
+          "visual": "sentence:We need that information before the guide review on Friday.",
+          "target": "sentence:We need that information before the guide review on Friday.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep33-s07",
+          "choices": [
+            "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+            "sentence:We need that information before the guide review on Friday.",
+            "sentence:Could your facilities team confirm the approved entrance and contact point?"
+          ]
+        },
+        {
+          "english": "If the timing is difficult, please suggest another contact or a workable date.",
+          "demo": "If the timing is difficult, please suggest another contact or a workable date.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若時間難配合，請建議其他窗口或可行日期。",
+            "zh-CN": "若时间难配合，请建议其他联系人或可行日期。",
+            "ja": "日程が難しければ、別の窓口か対応可能な日を提案してください。",
+            "ko": "일정이 어렵다면 다른 연락 창구나 가능한 날짜를 제안해 주세요."
+          },
+          "visual": "sentence:If the timing is difficult, please suggest another contact or a workable date.",
+          "target": "sentence:If the timing is difficult, please suggest another contact or a workable date.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "This request covers a factual check, not responsibility for writing the entire guide.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "此請求只含事實核對，不含撰寫整份指南的責任。",
+            "zh-CN": "此请求只含事实核对，不含撰写整份指南的责任。",
+            "ja": "この依頼は事実確認であり、ガイド全体の執筆責任を求めるものではありません。",
+            "ko": "이번 요청은 사실 확인이며 안내서 전체 작성 책임을 뜻하지 않아요."
+          },
+          "visual": "sentence:This request covers a factual check, not responsibility for writing the entire guide.",
+          "target": "sentence:This request covers a factual check, not responsibility for writing the entire guide.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep33-s09",
+          "choices": [
+            "sentence:We are revising the visitor guide and need help checking the delivery entrance instructions.",
+            "sentence:Could your facilities team confirm the approved entrance and contact point?",
+            "sentence:This request covers a factual check, not responsibility for writing the entire guide."
+          ]
+        },
+        {
+          "english": "If the timing is difficult, please suggest another contact or a workable date.",
+          "demo": "If the timing is difficult, please suggest another contact or a workable date.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若時間難配合，請建議其他窗口或可行日期。",
+            "zh-CN": "若时间难配合，请建议其他联系人或可行日期。",
+            "ja": "日程が難しければ、別の窓口か対応可能な日を提案してください。",
+            "ko": "일정이 어렵다면 다른 연락 창구나 가능한 날짜를 제안해 주세요."
+          },
+          "visual": "sentence:If the timing is difficult, please suggest another contact or a workable date.",
+          "target": "sentence:If the timing is difficult, please suggest another contact or a workable date.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep33-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep34",
+      "number": 34,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Explaining a Scope Change",
+      "title_zh_TW": "說明範圍變更的連帶影響",
+      "titles": {
+        "zh-TW": "說明範圍變更的連帶影響",
+        "zh-CN": "说明范围变更的连带影响",
+        "ja": "範囲変更の影響を説明する",
+        "ko": "범위 변경의 영향을 설명하기"
+      },
+      "topic": "scope-change-effects",
+      "objectives_zh_TW": [
+        "區分原定交付內容與新增要求。",
+        "連結變更、審閱工作與時程影響。",
+        "在開始額外工作前取得明確決定。"
+      ],
+      "parent_tip_zh_TW": "先列出原範圍與新要求，再談期限；「小修改」仍可能增加審閱或核准步驟。",
+      "practice": {
+        "reading_en": "At a fictional communications agency, a client approves a digital brochure for an upcoming launch. Later, the client asks for printed copies as well and calls this a small format change. Project lead Ben explains the additional work without dismissing the request. Printed copies require a proof review, confirmed quantities, and a supplier deadline. These steps were not included in the agreed digital package. Ben offers two options: release the digital brochure on the original date and arrange printing afterward, or revise the schedule so both versions arrive together. He does not invent a printing date before checking supplier availability. The client chooses the staged delivery, subject to reviewing a separate printing estimate. Ben records the new scope and identifies what still needs approval. The team continues the digital work but does not ask the printer to start yet. Clear scope communication preserves a useful deadline while keeping added work and unresolved decisions visible.",
+        "prompt_en": "Write 100-140 words responding to the printing request. Identify the added scope, schedule effects, two delivery options, and approval needed before printing starts.",
+        "prompt_zh_TW": "寫100至140詞回覆印製要求，指出新增範圍、時程影響、兩種交付方式及開印前需要的核准。",
+        "sample_answer_en": "We can explore printed copies, but they add work beyond the agreed digital brochure. Printing requires a proof review, confirmed quantities, and a supplier deadline. One option is to release the digital version on the original launch date and arrange printing afterward. The other is to revise the schedule so both versions arrive together. I will need to check supplier availability before confirming a printing date. If you prefer staged delivery, we can continue the digital work while preparing a separate printing estimate. Please approve the revised scope and estimate before we ask the printer to start. This will keep the additional work and remaining decisions clear.",
+        "questions": [
+          {
+            "prompt_en": "Which steps does printing add to the digital project?",
+            "answer_en": "A proof review, confirmed quantities, and a supplier deadline."
+          },
+          {
+            "prompt_en": "How does staged delivery protect the original launch date?",
+            "answer_en": "It keeps the digital release on the original date while arranging printing separately afterward."
+          },
+          {
+            "prompt_en": "Can the team start printing immediately after the client chooses staged delivery? Explain.",
+            "answer_en": "No. The choice is subject to a separate printing estimate, and the revised scope and remaining approval must be resolved first."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The agreed package includes a digital brochure, but printed copies are a new request.",
+          "demo": "The agreed package includes a digital brochure, but printed copies are a new request.",
+          "instruction": {
+            "en": "Specify what the work includes and what requires another agreement.",
+            "zh-TW": "說清工作範圍及另需協議的部分。",
+            "zh-CN": "说清工作范围及另需协议的部分。",
+            "ja": "作業の範囲と、別途合意が必要な部分を明確にします。",
+            "ko": "업무 범위와 별도 합의가 필요한 부분을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "已議定方案包含數位手冊，但印製版本是新要求。",
+            "zh-CN": "已商定方案包含数字手册，但印刷版本是新要求。",
+            "ja": "合意済みの内容はデジタルパンフレットで、印刷物は新しい依頼です。",
+            "ko": "합의된 범위에는 디지털 안내서가 포함되지만 인쇄본은 새 요청이에요."
+          },
+          "visual": "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+          "target": "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s01"
+        },
+        {
+          "english": "Printing adds a proof review and a supplier deadline.",
+          "demo": "Printing adds a proof review and a supplier deadline.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "印製會增加校樣審閱與供應商期限。",
+            "zh-CN": "印刷会增加校样审核与供应商期限。",
+            "ja": "印刷には校正確認と業者への締め切りが加わります。",
+            "ko": "인쇄에는 교정본 검토와 업체 마감이 추가돼요."
+          },
+          "visual": "sentence:Printing adds a proof review and a supplier deadline.",
+          "target": "sentence:Printing adds a proof review and a supplier deadline.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s02"
+        },
+        {
+          "english": "We can keep the launch date if the digital version remains the first delivery.",
+          "demo": "We can keep the launch date if the digital version remains the first delivery.",
+          "instruction": {
+            "en": "Use if to keep a commitment tied to its condition.",
+            "zh-TW": "用if保留承諾成立的條件。",
+            "zh-CN": "用if保留承诺成立的条件。",
+            "ja": "ifを使い、約束が成立する条件を残します。",
+            "ko": "if를 써서 약속이 성립하는 조건을 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若仍先交付數位版，我們可維持發表日期。",
+            "zh-CN": "若仍先交付数字版，我们可维持发布日期。",
+            "ja": "デジタル版を先に納品するなら、公開日は維持できます。",
+            "ko": "디지털 버전을 먼저 납품한다면 공개 날짜를 유지할 수 있어요."
+          },
+          "visual": "sentence:We can keep the launch date if the digital version remains the first delivery.",
+          "target": "sentence:We can keep the launch date if the digital version remains the first delivery.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s03"
+        },
+        {
+          "english": "Printing adds a proof review and a supplier deadline.",
+          "demo": "Printing adds a proof review and a supplier deadline.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "印製會增加校樣審閱與供應商期限。",
+            "zh-CN": "印刷会增加校样审核与供应商期限。",
+            "ja": "印刷には校正確認と業者への締め切りが加わります。",
+            "ko": "인쇄에는 교정본 검토와 업체 마감이 추가돼요."
+          },
+          "visual": "sentence:Printing adds a proof review and a supplier deadline.",
+          "target": "sentence:Printing adds a proof review and a supplier deadline.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The agreed package includes a digital brochure, but printed copies are a new request.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "已議定方案包含數位手冊，但印製版本是新要求。",
+            "zh-CN": "已商定方案包含数字手册，但印刷版本是新要求。",
+            "ja": "合意済みの内容はデジタルパンフレットで、印刷物は新しい依頼です。",
+            "ko": "합의된 범위에는 디지털 안내서가 포함되지만 인쇄본은 새 요청이에요."
+          },
+          "visual": "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+          "target": "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep34-s05",
+          "choices": [
+            "sentence:Printing adds a proof review and a supplier deadline.",
+            "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+            "sentence:We can keep the launch date if the digital version remains the first delivery."
+          ]
+        },
+        {
+          "english": "Delivering both versions together would require a revised schedule.",
+          "demo": "Delivering both versions together would require a revised schedule.",
+          "instruction": {
+            "en": "State what must move when another request takes priority.",
+            "zh-TW": "說明另一要求優先時須延後什麼。",
+            "zh-CN": "说明另一要求优先时须延后什么。",
+            "ja": "別の依頼を優先すると、何を後に回す必要があるか示します。",
+            "ko": "다른 요청을 우선하면 무엇을 미뤄야 하는지 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "若兩個版本一起交付，就需要修改時程。",
+            "zh-CN": "若两个版本一起交付，就需要修改日程。",
+            "ja": "両方を同時に納品するには、日程の見直しが必要です。",
+            "ko": "두 버전을 함께 납품하려면 일정을 수정해야 해요."
+          },
+          "visual": "sentence:Delivering both versions together would require a revised schedule.",
+          "target": "sentence:Delivering both versions together would require a revised schedule.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "We can keep the launch date if the digital version remains the first delivery.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若仍先交付數位版，我們可維持發表日期。",
+            "zh-CN": "若仍先交付数字版，我们可维持发布日期。",
+            "ja": "デジタル版を先に納品するなら、公開日は維持できます。",
+            "ko": "디지털 버전을 먼저 납품한다면 공개 날짜를 유지할 수 있어요."
+          },
+          "visual": "sentence:We can keep the launch date if the digital version remains the first delivery.",
+          "target": "sentence:We can keep the launch date if the digital version remains the first delivery.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep34-s07",
+          "choices": [
+            "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+            "sentence:Printing adds a proof review and a supplier deadline.",
+            "sentence:We can keep the launch date if the digital version remains the first delivery."
+          ]
+        },
+        {
+          "english": "Please approve the revised scope before we ask the supplier to proceed.",
+          "demo": "Please approve the revised scope before we ask the supplier to proceed.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們要求供應商開始前核准修訂範圍。",
+            "zh-CN": "请在我们要求供应商开始前批准修订范围。",
+            "ja": "業者に作業を依頼する前に、変更後の範囲を承認してください。",
+            "ko": "업체에 진행을 요청하기 전에 변경된 범위를 승인해 주세요."
+          },
+          "visual": "sentence:Please approve the revised scope before we ask the supplier to proceed.",
+          "target": "sentence:Please approve the revised scope before we ask the supplier to proceed.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Delivering both versions together would require a revised schedule.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若兩個版本一起交付，就需要修改時程。",
+            "zh-CN": "若两个版本一起交付，就需要修改日程。",
+            "ja": "両方を同時に納品するには、日程の見直しが必要です。",
+            "ko": "두 버전을 함께 납품하려면 일정을 수정해야 해요."
+          },
+          "visual": "sentence:Delivering both versions together would require a revised schedule.",
+          "target": "sentence:Delivering both versions together would require a revised schedule.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep34-s09",
+          "choices": [
+            "sentence:Delivering both versions together would require a revised schedule.",
+            "sentence:The agreed package includes a digital brochure, but printed copies are a new request.",
+            "sentence:Printing adds a proof review and a supplier deadline."
+          ]
+        },
+        {
+          "english": "Please approve the revised scope before we ask the supplier to proceed.",
+          "demo": "Please approve the revised scope before we ask the supplier to proceed.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們要求供應商開始前核准修訂範圍。",
+            "zh-CN": "请在我们要求供应商开始前批准修订范围。",
+            "ja": "業者に作業を依頼する前に、変更後の範囲を承認してください。",
+            "ko": "업체에 진행을 요청하기 전에 변경된 범위를 승인해 주세요."
+          },
+          "visual": "sentence:Please approve the revised scope before we ask the supplier to proceed.",
+          "target": "sentence:Please approve the revised scope before we ask the supplier to proceed.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep34-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep35",
+      "number": 35,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "Recovering a Service Commitment",
+      "title_zh_TW": "在權限內提出服務補救",
+      "titles": {
+        "zh-TW": "在權限內提出服務補救",
+        "zh-CN": "在权限内提出服务补救",
+        "ja": "権限の範囲でサービス回復を提案する",
+        "ko": "권한 안에서 서비스 회복 제안하기"
+      },
+      "topic": "service-recovery-with-limits",
+      "objectives_zh_TW": [
+        "承認已確認的服務落差與影響。",
+        "提出自己可承諾的補救步驟。",
+        "區分申請補償與核准補償。"
+      ],
+      "parent_tip_zh_TW": "道歉後接具體行動，但別把需要主管核准的補償說成已保證。",
+      "practice": {
+        "reading_en": "In a fictional workshop supplier, a package of printed exercises fails to arrive before a customer's session. Support representative Leila confirms the missed delivery and acknowledges that the group could not complete its planned activities. She does not argue that the materials may still be useful later. Under the invented rules of this training scenario, Leila may send digital materials and request a replacement shipment, but a supervisor must approve refunds. She offers to send the digital version today and confirm the replacement delivery separately after checking availability. She also offers to request a refund review without promising its result. The customer prefers the digital materials immediately and asks for the review. Leila records both requests and promises an update tomorrow even if the review remains pending. Her plan gives the customer a definite next contact while keeping delivery dates and compensation decisions within the information and authority she actually has.",
+        "prompt_en": "Write 100-140 words responding to the customer. Acknowledge the impact, offer immediate help, explain the refund limit, and commit to a realistic update.",
+        "prompt_zh_TW": "寫100至140詞回覆客戶，承認影響、提供即時協助、說明退款權限限制，並承諾可達成的更新。",
+        "sample_answer_en": "I am sorry the printed exercises did not arrive before your workshop. I understand that your group could not complete the activities you had planned. I can send the digital materials today so you have access to them immediately. I can also request a replacement shipment and confirm its delivery separately after checking availability. Under the rules of this training scenario, a supervisor must approve refunds, so I can request a review but cannot promise its outcome. I have recorded your request for that review. I will update you tomorrow even if a decision is still pending, and I will clearly separate confirmed arrangements from items awaiting approval.",
+        "questions": [
+          {
+            "prompt_en": "What immediate help can Leila provide?",
+            "answer_en": "She can send the digital materials today."
+          },
+          {
+            "prompt_en": "Why does she discuss the replacement delivery separately?",
+            "answer_en": "Its availability and delivery timing still need confirmation, so she cannot responsibly promise a date yet."
+          },
+          {
+            "prompt_en": "Does tomorrow's update guarantee a refund decision? Give evidence.",
+            "answer_en": "No. Leila promises to update the customer even if the supervisor's review is still pending."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "I am sorry the workshop materials did not arrive before your session.",
+          "demo": "I am sorry the workshop materials did not arrive before your session.",
+          "instruction": {
+            "en": "Report the observed event without assigning unsupported blame.",
+            "zh-TW": "報告觀察到的事件，不無據歸責。",
+            "zh-CN": "报告观察到的事件，不无据归责。",
+            "ja": "観察した出来事を報告し、根拠なく責任を決め付けません。",
+            "ko": "관찰한 사건을 보고하고 근거 없이 책임을 돌리지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "很抱歉工作坊材料未在你的場次前送達。",
+            "zh-CN": "很抱歉工作坊材料未在你的场次前送达。",
+            "ja": "ワークショップの資料が開始前に届かず、申し訳ありません。",
+            "ko": "워크숍 자료가 세션 전에 도착하지 않아 죄송해요."
+          },
+          "visual": "sentence:I am sorry the workshop materials did not arrive before your session.",
+          "target": "sentence:I am sorry the workshop materials did not arrive before your session.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s01"
+        },
+        {
+          "english": "I understand that this left your group without the planned exercises.",
+          "demo": "I understand that this left your group without the planned exercises.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我了解這讓你們的小組缺少原定練習。",
+            "zh-CN": "我理解这让你们的小组缺少原定练习。",
+            "ja": "そのため、皆様が予定していた演習に取り組めなかったと理解しています。",
+            "ko": "그 때문에 여러분이 예정된 연습을 하지 못했다는 점을 이해해요."
+          },
+          "visual": "sentence:I understand that this left your group without the planned exercises.",
+          "target": "sentence:I understand that this left your group without the planned exercises.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s02"
+        },
+        {
+          "english": "I can send the digital materials today and confirm the replacement delivery separately.",
+          "demo": "I can send the digital materials today and confirm the replacement delivery separately.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我今天可寄數位材料，另行確認補寄送達時間。",
+            "zh-CN": "我今天可发数字材料，另行确认补寄送达时间。",
+            "ja": "デジタル資料は本日送れます。代替品の配送予定は別途確認します。",
+            "ko": "디지털 자료는 오늘 보내고 대체 자료의 배송 일정은 별도로 확인할 수 있어요."
+          },
+          "visual": "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+          "target": "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s03"
+        },
+        {
+          "english": "I understand that this left your group without the planned exercises.",
+          "demo": "I understand that this left your group without the planned exercises.",
+          "instruction": {
+            "en": "Connect a delay or change to its specific effect.",
+            "zh-TW": "把延誤或變更連到具體影響。",
+            "zh-CN": "把延误或变更连到具体影响。",
+            "ja": "遅れや変更が何に影響するかを具体的に結び付けます。",
+            "ko": "지연이나 변경을 구체적인 영향과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我了解這讓你們的小組缺少原定練習。",
+            "zh-CN": "我理解这让你们的小组缺少原定练习。",
+            "ja": "そのため、皆様が予定していた演習に取り組めなかったと理解しています。",
+            "ko": "그 때문에 여러분이 예정된 연습을 하지 못했다는 점을 이해해요."
+          },
+          "visual": "sentence:I understand that this left your group without the planned exercises.",
+          "target": "sentence:I understand that this left your group without the planned exercises.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "I am sorry the workshop materials did not arrive before your session.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "很抱歉工作坊材料未在你的場次前送達。",
+            "zh-CN": "很抱歉工作坊材料未在你的场次前送达。",
+            "ja": "ワークショップの資料が開始前に届かず、申し訳ありません。",
+            "ko": "워크숍 자료가 세션 전에 도착하지 않아 죄송해요."
+          },
+          "visual": "sentence:I am sorry the workshop materials did not arrive before your session.",
+          "target": "sentence:I am sorry the workshop materials did not arrive before your session.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep35-s05",
+          "choices": [
+            "sentence:I understand that this left your group without the planned exercises.",
+            "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+            "sentence:I am sorry the workshop materials did not arrive before your session."
+          ]
+        },
+        {
+          "english": "I can request a refund review, but I cannot approve a refund myself.",
+          "demo": "I can request a refund review, but I cannot approve a refund myself.",
+          "instruction": {
+            "en": "State the boundary of the evidence or your authority.",
+            "zh-TW": "說明證據或自身權限的界線。",
+            "zh-CN": "说明证据或自身权限的界线。",
+            "ja": "証拠で言える範囲、または自分の権限の範囲を示します。",
+            "ko": "증거로 말할 수 있는 범위나 자신의 권한을 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我可申請退款審查，但無權自行核准退款。",
+            "zh-CN": "我可申请退款审核，但无权自行批准退款。",
+            "ja": "返金の審査は依頼できますが、私自身には返金を承認する権限がありません。",
+            "ko": "환불 검토를 요청할 수 있지만 제가 직접 환불을 승인할 수는 없어요."
+          },
+          "visual": "sentence:I can request a refund review, but I cannot approve a refund myself.",
+          "target": "sentence:I can request a refund review, but I cannot approve a refund myself.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "I can send the digital materials today and confirm the replacement delivery separately.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我今天可寄數位材料，另行確認補寄送達時間。",
+            "zh-CN": "我今天可发数字材料，另行确认补寄送达时间。",
+            "ja": "デジタル資料は本日送れます。代替品の配送予定は別途確認します。",
+            "ko": "디지털 자료는 오늘 보내고 대체 자료의 배송 일정은 별도로 확인할 수 있어요."
+          },
+          "visual": "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+          "target": "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep35-s07",
+          "choices": [
+            "sentence:I can send the digital materials today and confirm the replacement delivery separately.",
+            "sentence:I am sorry the workshop materials did not arrive before your session.",
+            "sentence:I understand that this left your group without the planned exercises."
+          ]
+        },
+        {
+          "english": "I will update you tomorrow, even if the review is still pending.",
+          "demo": "I will update you tomorrow, even if the review is still pending.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "即使審查尚未完成，我也會明天向你更新。",
+            "zh-CN": "即使审核尚未完成，我也会明天向你更新。",
+            "ja": "審査中の場合でも、明日状況をお知らせします。",
+            "ko": "검토가 진행 중이더라도 내일 상황을 알려드리겠어요."
+          },
+          "visual": "sentence:I will update you tomorrow, even if the review is still pending.",
+          "target": "sentence:I will update you tomorrow, even if the review is still pending.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "I can request a refund review, but I cannot approve a refund myself.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我可申請退款審查，但無權自行核准退款。",
+            "zh-CN": "我可申请退款审核，但无权自行批准退款。",
+            "ja": "返金の審査は依頼できますが、私自身には返金を承認する権限がありません。",
+            "ko": "환불 검토를 요청할 수 있지만 제가 직접 환불을 승인할 수는 없어요."
+          },
+          "visual": "sentence:I can request a refund review, but I cannot approve a refund myself.",
+          "target": "sentence:I can request a refund review, but I cannot approve a refund myself.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep35-s09",
+          "choices": [
+            "sentence:I am sorry the workshop materials did not arrive before your session.",
+            "sentence:I can request a refund review, but I cannot approve a refund myself.",
+            "sentence:I understand that this left your group without the planned exercises."
+          ]
+        },
+        {
+          "english": "I will update you tomorrow, even if the review is still pending.",
+          "demo": "I will update you tomorrow, even if the review is still pending.",
+          "instruction": {
+            "en": "Give the next action and the person responsible for it.",
+            "zh-TW": "說明下一步與負責的人。",
+            "zh-CN": "说明下一步与负责的人。",
+            "ja": "次の行動と、その担当者を示します。",
+            "ko": "다음 행동과 담당자를 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "即使審查尚未完成，我也會明天向你更新。",
+            "zh-CN": "即使审核尚未完成，我也会明天向你更新。",
+            "ja": "審査中の場合でも、明日状況をお知らせします。",
+            "ko": "검토가 진행 중이더라도 내일 상황을 알려드리겠어요."
+          },
+          "visual": "sentence:I will update you tomorrow, even if the review is still pending.",
+          "target": "sentence:I will update you tomorrow, even if the review is still pending.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep35-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep36",
+      "number": 36,
+      "season": 3,
+      "stage": 3,
+      "course": "workplace",
+      "title_en": "A Project Recovery Brief",
+      "title_zh_TW": "整合專案回復計畫",
+      "titles": {
+        "zh-TW": "整合專案回復計畫",
+        "zh-CN": "整合项目恢复计划",
+        "ja": "プロジェクト立て直しの要点をまとめる",
+        "ko": "프로젝트 회복 계획 요약하기"
+      },
+      "topic": "integrated-project-recovery",
+      "objectives_zh_TW": [
+        "整合事實、依賴、風險與範圍取捨。",
+        "讓補救計畫包含已確認責任與驗收條件。",
+        "用簡短決策訊息交代待批准事項及下次檢查。"
+      ],
+      "parent_tip_zh_TW": "整合複習：讓讀者找到目前事實、選項取捨、誰做什麼、何時檢查與哪一項還沒批准。",
+      "practice": {
+        "reading_en": "In a fictional recruitment project, a welcome pack is running late because its approved contact list arrived after the planned editing slot. Project lead Owen writes a recovery brief that separates confirmed facts from open decisions. The essential guide is drafted, but optional building maps still require review. He proposes releasing the guide first and sending the maps later. This protects the start date while creating a separate delivery task and a risk that recipients miss the later maps. Mina has accepted responsibility for checking the guide's links and approved contact details. The communications team has agreed to label the later delivery clearly. Owen asks the sponsor to approve the staged release rather than describing it as already agreed. He schedules a check-in to review acceptance checks, the map deadline, and remaining risks. The brief combines dependencies, scope choices, ownership, and honest limits, giving the sponsor a concrete recovery decision instead of a vague promise to work faster.",
+        "prompt_en": "Write 100-140 words presenting the recovery brief. Include the cause of delay, staged option and tradeoff, accepted ownership, approval request, and next check.",
+        "prompt_zh_TW": "寫100至140詞的回復計畫摘要，包含延誤原因、分階段方案及代價、已承接責任、核准請求與下次檢查。",
+        "sample_answer_en": "The welcome pack is late because the approved contact list arrived after the editing slot. The essential guide is drafted, but the optional building maps still need review. I propose releasing the guide first and sending the maps separately. This protects the start date, although it creates another delivery and a risk that recipients miss the maps. Mina has accepted the final checks for working links and approved contact details. Communications will label the later delivery clearly. Please approve this staged release before we announce it. At the next check-in, we will review the acceptance checks, confirm the map deadline, and decide whether any remaining risk requires a change.",
+        "questions": [
+          {
+            "prompt_en": "What delayed editing of the welcome pack?",
+            "answer_en": "The approved contact list arrived after the planned editing slot."
+          },
+          {
+            "prompt_en": "What tradeoff does the staged release create?",
+            "answer_en": "It protects the start date but adds a separate delivery and the risk that recipients miss the later maps."
+          },
+          {
+            "prompt_en": "Is the recovery plan fully approved when Owen sends the brief? Explain.",
+            "answer_en": "No. Mina and communications have accepted their tasks, but the sponsor still needs to approve the staged release."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "english": "The welcome pack is delayed because the approved contact list arrived late.",
+          "demo": "The welcome pack is delayed because the approved contact list arrived late.",
+          "instruction": {
+            "en": "Report the observed event without assigning unsupported blame.",
+            "zh-TW": "報告觀察到的事件，不無據歸責。",
+            "zh-CN": "报告观察到的事件，不无据归责。",
+            "ja": "観察した出来事を報告し、根拠なく責任を決め付けません。",
+            "ko": "관찰한 사건을 보고하고 근거 없이 책임을 돌리지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "歡迎資料包因核准聯絡清單晚到而延誤。",
+            "zh-CN": "欢迎资料包因批准的联系名单晚到而延误。",
+            "ja": "承認済みの連絡先一覧が遅れて届いたため、案内セットが遅れています。",
+            "ko": "승인된 연락처 목록이 늦게 도착해 안내 자료가 지연되고 있어요."
+          },
+          "visual": "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+          "target": "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s01"
+        },
+        {
+          "english": "We can release the essential guide first and add the optional inserts later.",
+          "demo": "We can release the essential guide first and add the optional inserts later.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可先發布必要指南，再補上選配附件。",
+            "zh-CN": "我们可先发布必要指南，再补上可选附件。",
+            "ja": "必須のガイドを先に公開し、任意の付録は後で追加できます。",
+            "ko": "필수 안내서를 먼저 공개하고 선택 자료는 나중에 추가할 수 있어요."
+          },
+          "visual": "sentence:We can release the essential guide first and add the optional inserts later.",
+          "target": "sentence:We can release the essential guide first and add the optional inserts later.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s02"
+        },
+        {
+          "english": "That protects the start date but requires a separate delivery for the inserts.",
+          "demo": "That protects the start date but requires a separate delivery for the inserts.",
+          "instruction": {
+            "en": "Contrast the protected start date with the added delivery task.",
+            "zh-TW": "對比保住的開始日期與新增交付工作。",
+            "zh-CN": "对比保住的开始日期与新增交付工作。",
+            "ja": "維持できる開始日と、追加の配布作業を対比します。",
+            "ko": "유지되는 시작 날짜와 추가 전달 작업을 대비해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這可保住開始日期，但附件需要另行交付。",
+            "zh-CN": "这可保住开始日期，但附件需要另行交付。",
+            "ja": "開始日は守れますが、付録は別途配布する必要があります。",
+            "ko": "시작 날짜를 지킬 수 있지만 추가 자료는 별도로 전달해야 해요."
+          },
+          "visual": "sentence:That protects the start date but requires a separate delivery for the inserts.",
+          "target": "sentence:That protects the start date but requires a separate delivery for the inserts.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s03"
+        },
+        {
+          "english": "We can release the essential guide first and add the optional inserts later.",
+          "demo": "We can release the essential guide first and add the optional inserts later.",
+          "instruction": {
+            "en": "Offer a workable option and explain what it changes.",
+            "zh-TW": "提出可行選項，說明它會改變什麼。",
+            "zh-CN": "提出可行选项，说明它会改变什么。",
+            "ja": "実行できる選択肢と、それによる変化を示します。",
+            "ko": "실행 가능한 선택지와 그에 따른 변화를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可先發布必要指南，再補上選配附件。",
+            "zh-CN": "我们可先发布必要指南，再补上可选附件。",
+            "ja": "必須のガイドを先に公開し、任意の付録は後で追加できます。",
+            "ko": "필수 안내서를 먼저 공개하고 선택 자료는 나중에 추가할 수 있어요."
+          },
+          "visual": "sentence:We can release the essential guide first and add the optional inserts later.",
+          "target": "sentence:We can release the essential guide first and add the optional inserts later.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s04",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "The welcome pack is delayed because the approved contact list arrived late.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "歡迎資料包因核准聯絡清單晚到而延誤。",
+            "zh-CN": "欢迎资料包因批准的联系名单晚到而延误。",
+            "ja": "承認済みの連絡先一覧が遅れて届いたため、案内セットが遅れています。",
+            "ko": "승인된 연락처 목록이 늦게 도착해 안내 자료가 지연되고 있어요."
+          },
+          "visual": "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+          "target": "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep36-s05",
+          "choices": [
+            "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+            "sentence:We can release the essential guide first and add the optional inserts later.",
+            "sentence:That protects the start date but requires a separate delivery for the inserts."
+          ]
+        },
+        {
+          "english": "Mina has accepted the final check for working links and approved contact details.",
+          "demo": "Mina has accepted the final check for working links and approved contact details.",
+          "instruction": {
+            "en": "Name an owner without assuming that a team has accepted responsibility.",
+            "zh-TW": "指定負責者前先確認對方已承接。",
+            "zh-CN": "指定负责人前先确认对方已承接。",
+            "ja": "担当を示す際は、相手が引き受けたか確認します。",
+            "ko": "담당자를 정할 때 상대가 맡기로 했는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Mina已承接連結可用與核准聯絡資訊的最後檢查。",
+            "zh-CN": "Mina已接受链接可用与批准联系信息的最后检查。",
+            "ja": "ミナは、リンクの動作と承認済み連絡先の最終確認を引き受けました。",
+            "ko": "미나는 작동하는 링크와 승인된 연락처의 최종 확인을 맡기로 했어요."
+          },
+          "visual": "sentence:Mina has accepted the final check for working links and approved contact details.",
+          "target": "sentence:Mina has accepted the final check for working links and approved contact details.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s06"
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "That protects the start date but requires a separate delivery for the inserts.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這可保住開始日期，但附件需要另行交付。",
+            "zh-CN": "这可保住开始日期，但附件需要另行交付。",
+            "ja": "開始日は守れますが、付録は別途配布する必要があります。",
+            "ko": "시작 날짜를 지킬 수 있지만 추가 자료는 별도로 전달해야 해요."
+          },
+          "visual": "sentence:That protects the start date but requires a separate delivery for the inserts.",
+          "target": "sentence:That protects the start date but requires a separate delivery for the inserts.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep36-s07",
+          "choices": [
+            "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+            "sentence:That protects the start date but requires a separate delivery for the inserts.",
+            "sentence:We can release the essential guide first and add the optional inserts later."
+          ]
+        },
+        {
+          "english": "Please approve the staged release; we will review remaining risks at the next check-in.",
+          "demo": "Please approve the staged release; we will review remaining risks at the next check-in.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請核准分階段發布；我們將在下次碰面檢查剩餘風險。",
+            "zh-CN": "请批准分阶段发布；我们将在下次碰面检查剩余风险。",
+            "ja": "段階的な公開を承認してください。残るリスクは次の確認会で見直します。",
+            "ko": "단계별 공개를 승인해 주세요. 다음 점검 회의에서 남은 위험을 검토하겠어요."
+          },
+          "visual": "sentence:Please approve the staged release; we will review remaining risks at the next check-in.",
+          "target": "sentence:Please approve the staged release; we will review remaining risks at the next check-in.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s08",
+          "guided_reading": true
+        },
+        {
+          "english": "Listen and choose.",
+          "demo": "Mina has accepted the final check for working links and approved contact details.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Mina已承接連結可用與核准聯絡資訊的最後檢查。",
+            "zh-CN": "Mina已接受链接可用与批准联系信息的最后检查。",
+            "ja": "ミナは、リンクの動作と承認済み連絡先の最終確認を引き受けました。",
+            "ko": "미나는 작동하는 링크와 승인된 연락처의 최종 확인을 맡기로 했어요."
+          },
+          "visual": "sentence:Mina has accepted the final check for working links and approved contact details.",
+          "target": "sentence:Mina has accepted the final check for working links and approved contact details.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句練習，不是獨立能力評量；示範後保留六秒，再顯示答案與翻譯。",
+          "id": "ep36-s09",
+          "choices": [
+            "sentence:The welcome pack is delayed because the approved contact list arrived late.",
+            "sentence:We can release the essential guide first and add the optional inserts later.",
+            "sentence:Mina has accepted the final check for working links and approved contact details."
+          ]
+        },
+        {
+          "english": "Please approve the staged release; we will review remaining risks at the next check-in.",
+          "demo": "Please approve the staged release; we will review remaining risks at the next check-in.",
+          "instruction": {
+            "en": "Separate an agreed decision from a proposal awaiting approval.",
+            "zh-TW": "區分已同意決定與待批准提案。",
+            "zh-CN": "区分已同意决定与待批准提案。",
+            "ja": "合意した決定と、承認待ちの提案を区別します。",
+            "ko": "합의된 결정과 승인 대기 중인 제안을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請核准分階段發布；我們將在下次碰面檢查剩餘風險。",
+            "zh-CN": "请批准分阶段发布；我们将在下次碰面检查剩余风险。",
+            "ja": "段階的な公開を承認してください。残るリスクは次の確認会で見直します。",
+            "ko": "단계별 공개를 승인해 주세요. 다음 점검 회의에서 남은 위험을 검토하겠어요."
+          },
+          "visual": "sentence:Please approve the staged release; we will review remaining risks at the next check-in.",
+          "target": "sentence:Please approve the staged release; we will review remaining risks at the next check-in.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "以工作情境中的完整句子練習語意、限制與具體行動；深入推理見課後閱讀寫作。",
+          "id": "ep36-s10"
+        }
+      ]
+    }
+  ]
+}

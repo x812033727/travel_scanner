@@ -633,6 +633,54 @@ function stretched(doc = fixture()) {
   doc.loops = ["cd01", "cd02", "cd03"].map((setup, index) => ({ setup, payoff: payoffs[index], what: "範例拉長用的鉤子" }));
   return doc;
 }
+
+function sevenMinuteStory(target = 7.1) {
+  const doc = storyFixture();
+  doc.slug = "story-rolling-suitcase-v2";
+  doc.category = "story";
+  doc.series = { slug: "brand-stories-curio-pilot-v2", episode: 1, chapter: 1 };
+  doc.look = { preset: "cute-mystery" };
+  doc.target_minutes = [7, 8];
+  doc.scenes.at(-1).lines = [{ id: "cl01", text: "故事到這裡。" }];
+  let index = 0;
+  while (estimateTimeline(doc).total_frames / FPS / 60 < target) {
+    const suffix = (index++).toString(36).padStart(4, "0");
+    doc.scenes.splice(doc.scenes.length - 1, 0, {
+      id: `compact-${suffix}`, template: "shot", chapter: index % 6 === 0 ? `轉折 ${index}` : undefined,
+      data: { prompt: "a generic traveler pulling an unbranded wheeled suitcase around a corner, cute cartoon illustration, no text", camera: "slow push in", visual: "still" },
+      lines: [
+        { id: `c${suffix}a`, text: "旅客拉著箱子往前走，到了轉角卻又卡住。" },
+        { id: `c${suffix}b`, text: "有人換了做法，卻還得回答另一個問題。" },
+      ],
+    });
+  }
+  return doc;
+}
+
+test("A01 retains the narrated episode and open-loop lint at seven minutes; B18 waits for eight", () => {
+  const a01 = sevenMinuteStory();
+  const minutes = estimateTimeline(a01).total_frames / FPS / 60;
+  assert.ok(minutes >= 7 && minutes < 8, `the regression fixture is a compact episode, not an eight-minute one: ${minutes}`);
+  const series = { ...storySeries(), slug: "brand-stories-curio-pilot-v2", episode: 1, look: { preset: "cute-mystery" } };
+  const options = context({ brief: storyBrief(), series });
+  const result = lintVideo(a01, options);
+  assert.ok(result.summary, messages(result.errors));
+  assert.ok(result.warnings.some((warning) => /the outro asks for no subscription/.test(warning.message)),
+    "the seven-minute A01 still runs episodeScriptProblems");
+  assert.ok(result.warnings.some((warning) => warning.kind === "narrative" && warning.path === "loops"),
+    "the seven-minute A01 still runs narrativeProblems");
+  assert.ok(result.warnings.some((warning) => /the opening chapter runs about/.test(warning.message)),
+    "the seven-minute A01 still checks its condensed opening");
+  const earlyDraft = lintVideo(sevenMinuteStory(6.8), options);
+  assert.ok(earlyDraft.warnings.some((warning) => warning.kind === "narrative" && warning.path === "loops"),
+    "a shorter A01 draft still receives narrative lint before measured audio exists");
+
+  const b18 = { ...a01, slug: "story-conveyor-belt-sushi-v2", series: { ...a01.series, episode: 2 }, target_minutes: [9, 11] };
+  const other = lintVideo(b18, { ...options, series: { ...series, episode: 2 } });
+  assert.ok(other.summary, messages(other.errors));
+  assert.ok(!other.warnings.some((warning) => /the outro asks for no subscription|the opening chapter runs about/.test(warning.message)
+    || warning.kind === "narrative"), "a B18 draft under eight minutes does not get the A01-only narrative exception");
+});
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
 // a subscribe invitation with a reason.
 const THREE_SENTENCES = [
@@ -843,4 +891,26 @@ test("the translated titles' channel warnings sit under youtube/<locale>, which 
   assert.deepEqual(refused.map((warning) => warning.path), ["i18n/en.json"]);
   assert.match(refused[0].message, /package refuses it/);
   assert.equal(captionsItem({ lintWarnings: refused, manifest: { locales: { "zh-TW": {}, en: {} } }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true }).ok, false);
+});
+
+// A tutorial's one promise sentence (teaching-flow.md §一, 2026-10-21): the two reference
+// tutorials open on what the viewer will be able to do; a table of contents still warns.
+test("a tutorial's promise sentence is not a table of contents; sections and ordinals still are", () => {
+  const opening = (text, category) => {
+    const long = closed(stretched());
+    if (category) long.category = category;
+    long.scenes[0].lines[0].text = text;
+    long.scenes[0].lines[1].text = "這一句是開場的第二句。";
+    return lintVideo(long, context()).warnings.filter((warning) => /table of contents/.test(warning.message)).map((warning) => warning.path);
+  };
+  const skill = "今天不講艱深的東西，就用一個生活上的比喻，帶你幾分鐘把 Skill 完全搞懂。最後再教你在網頁版自己加一本。";
+  const codex = "所以這支影片我會告訴你 Codex 是什麼，然後帶你學會四個一定要知道的基本功：專案、權限、上下文和 AGENTS.md。";
+  assert.deepEqual(opening(skill, "tutorial"), []);
+  assert.deepEqual(opening(codex, "tutorial"), []);
+  assert.deepEqual(opening(codex, "explainer"), ["scenes[0]"], "the story route keeps its condensation");
+  assert.deepEqual(opening(codex), ["scenes[0]"], "no category is the story route");
+  assert.deepEqual(opening(skill), [], "one deliverable and no list was never a table of contents");
+  assert.deepEqual(opening("接下來分成三段，帶你學會怎麼用。", "tutorial"), ["scenes[0]"], "sections named as such");
+  assert.deepEqual(opening("第一，先看價格。第二，再看額度。最後，教你怎麼選。", "tutorial"), ["scenes[0]"], "an ordinal run");
+  assert.deepEqual(opening("接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題。", "tutorial"), ["scenes[0]"], "an announcement with no promise verb");
 });

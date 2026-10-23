@@ -2,13 +2,16 @@
 
     python -m app.news_automation.sources_cli            # dry run: validate, write nothing
     python -m app.news_automation.sources_cli --apply --actor-email owner@example.com
+    python -m app.news_automation.sources_cli --source-url https://deepmind.google/blog/rss.xml \
+        --preserve-on-validation-failure --apply --actor-email owner@example.com
 
 The file is the source of truth for what the hourly scanner reads; /admin/news can still
 disable or edit a source afterwards. Every write goes through the same service calls as
 the admin page, so an enabled source must pass the fetch-and-parse validation from this
-host, and each change leaves an audit row for the actor. A source that fails validation
-is still recorded, disabled, with the reason, so the list shows what was tried. Sources in
-the database but not in the file are reported and left alone.
+host, and each change leaves an audit row for the actor. By default, a source that fails
+validation is still recorded, disabled, with the reason. The targeted preserve option
+instead leaves an existing source unchanged and exits nonzero on validation failure.
+Sources in the database but not in the file are reported and left alone.
 """
 
 from __future__ import annotations
@@ -117,14 +120,22 @@ async def _record_refusal(session: AsyncSession, source_id: Any, detail: str) ->
 
 
 async def import_sources(
-    session: AsyncSession, rows: list[SourceWrite], *, actor: User | None
+    session: AsyncSession,
+    rows: list[SourceWrite],
+    *,
+    actor: User | None,
+    selected_only: bool = False,
+    preserve_on_validation_failure: bool = False,
 ) -> dict[str, Any]:
-    """Dry run when ``actor`` is None; otherwise create or update every listed source."""
+    """Dry run when ``actor`` is None; otherwise create or update the selected sources."""
 
     # Plain snapshots, not ORM rows: a refused validation rolls the session back, which
     # expires every loaded row, and reading one afterwards would be blocking IO.
+    query = select(NewsSource)
+    if selected_only:
+        query = query.where(NewsSource.url.in_([row.url for row in rows]))
     existing = {
-        row.url: (row.id, _current(row)) for row in await session.scalars(select(NewsSource))
+        row.url: (row.id, _current(row)) for row in await session.scalars(query)
     }
     listed = {row.url for row in rows}
     results: list[dict[str, Any]] = []
@@ -164,6 +175,15 @@ async def import_sources(
                 "news_source_validation_failed",
             }:
                 raise
+            if preserve_on_validation_failure:
+                # The service rolled its attempted write back. In a targeted production
+                # update, keep the persisted source (including enabled and scan state)
+                # exactly as it was instead of replacing it with a disabled fallback.
+                result["enabled"] = stored["enabled"] if stored is not None else None
+                result["preserved"] = stored is not None
+                result["error"] = error.detail
+                results.append(result)
+                continue
             # Keep the definition, switched off, so the admin list shows the attempt.
             fallback = changes | {"enabled": False}
             if current_id is None:
@@ -178,7 +198,7 @@ async def import_sources(
             result["enabled"] = False
             result["error"] = error.detail
         results.append(result)
-    unlisted = sorted(url for url in existing if url not in listed)
+    unlisted = [] if selected_only else sorted(url for url in existing if url not in listed)
     return {
         "applied": actor is not None,
         "sources": results,
@@ -192,8 +212,21 @@ async def import_sources(
     }
 
 
-async def run(path: Path, *, apply: bool, actor_email: str | None) -> dict[str, Any]:
+async def run(
+    path: Path,
+    *,
+    apply: bool,
+    actor_email: str | None,
+    source_url: str | None = None,
+    preserve_on_validation_failure: bool = False,
+) -> dict[str, Any]:
+    if preserve_on_validation_failure and source_url is None:
+        raise SystemExit("--source-url is required with --preserve-on-validation-failure")
     rows = load_file(path)
+    if source_url is not None:
+        rows = [row for row in rows if row.url == source_url]
+        if not rows:
+            raise SystemExit(f"Source URL is not listed in {path}: {source_url}")
     try:
         async with SessionFactory() as session:
             actor = None
@@ -205,7 +238,13 @@ async def run(path: Path, *, apply: bool, actor_email: str | None) -> dict[str, 
                     raise SystemExit("The actor must be an active administrator")
                 # Detached, its loaded id survives the rollback a refused source causes.
                 session.expunge(actor)
-            return await import_sources(session, rows, actor=actor)
+            return await import_sources(
+                session,
+                rows,
+                actor=actor,
+                selected_only=source_url is not None,
+                preserve_on_validation_failure=preserve_on_validation_failure,
+            )
     finally:
         await engine.dispose()
 
@@ -215,9 +254,28 @@ def main() -> None:
     parser.add_argument("--file", type=Path, default=DEFAULT_FILE)
     parser.add_argument("--apply", action="store_true", help="Write; dry run otherwise")
     parser.add_argument("--actor-email", help="Administrator the audit rows are recorded for")
+    parser.add_argument("--source-url", help="Process exactly this URL from the source file")
+    parser.add_argument(
+        "--preserve-on-validation-failure",
+        action="store_true",
+        help=(
+            "Keep the existing source unchanged and exit nonzero on validation failure; "
+            "requires --source-url"
+        ),
+    )
     args = parser.parse_args()
-    report = asyncio.run(run(args.file, apply=args.apply, actor_email=args.actor_email))
+    report = asyncio.run(
+        run(
+            args.file,
+            apply=args.apply,
+            actor_email=args.actor_email,
+            source_url=args.source_url,
+            preserve_on_validation_failure=args.preserve_on_validation_failure,
+        )
+    )
     print(json.dumps(report, ensure_ascii=False, indent=2))
+    if args.preserve_on_validation_failure and report["summary"]["failed_validation"]:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

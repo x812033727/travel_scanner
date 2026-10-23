@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "course": "university",
+  "status": "clear",
+  "source_sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+  "episodes_reviewed": 48,
+  "scenes_reviewed": 480,
+  "unresolved_p1_p2": 0,
+  "scope": "Independent agent review of each full five-language season source, including reading passages, grounded questions, writing tasks and model answers. This is editorial review, not external linguistic certification or full-film listening.",
+  "seasons": [
+    {
+      "course": "university",
+      "season": 1,
+      "reviewer": "independent artwork/quality agent",
+      "source": "docs/videos/english-university-complete/season01.json",
+      "initial_sha256": "2ec6c24d273e67ac7c32f21ddcd1ba00049f92bbe4081366cf39984d704180f0",
+      "current_sha256": "ae9fc6bd37124c4e7ce810131866347a698dba7fa3a6c96d2669e680511e7e2d",
+      "source_sha256": "ae9fc6bd37124c4e7ce810131866347a698dba7fa3a6c96d2669e680511e7e2d",
+      "status": "clear",
+      "unresolvedP1P2": 0,
+      "reviewed_at": "2026-10-08T05:48:53+00:00",
+      "review_scope": {
+        "episodes": 12,
+        "scenes": 120,
+        "instruction_values": 600,
+        "instruction_locales": 5,
+        "demo_translation_values": 480,
+        "translation_locales": 4,
+        "neutral_quizzes": 36,
+        "guided_repeat_scenes": 24,
+        "independent_readings": 12,
+        "reading_questions_and_answers": 36,
+        "writing_prompts_and_models": 12,
+        "metadata_objectives_tips_titles": 12,
+        "specific_five_language_cue_sets_rechecked": 24
+      },
+      "method": "Independent full-field source review; exact repeated model/translation values and canonical quiz instructions were equality-checked before deduplicated display. Author made all source edits. All requested fixes and new localized cues were reread at the final source hash.",
+      "issues": [
+        {
+          "id": "U1-01",
+          "severity": "P2",
+          "locations": [
+            "ep04/practice.reading_en",
+            "ep04/practice.questions[0].answer_en"
+          ],
+          "finding": "The opening named equal access versus equal outcomes, but the example and model distinguished formal availability from practical access.",
+          "fix": "Aligned the opening, following explanation and first answer with formal availability versus practical access.",
+          "resolved": true
+        },
+        {
+          "id": "U1-02",
+          "severity": "P3",
+          "locations": [
+            "ep03-s03/demo_translation.zh-CN"
+          ],
+          "finding": "内核矛盾 was an unnatural rendering of central tension in this academic context.",
+          "fix": "Changed to 核心矛盾.",
+          "resolved": true
+        },
+        {
+          "id": "U1-03",
+          "severity": "P2",
+          "locations": [
+            "ep05-s03/demo",
+            "ep05-s03/english",
+            "ep05-s03/visual",
+            "ep05-s03/target",
+            "ep05-s03/demo_translation"
+          ],
+          "finding": "A familiar map symbol did not identify who was familiar with it; Japanese implied familiarity on the newcomers side, obscuring the staff/newcomer contrast.",
+          "fix": "Specified a map symbol familiar to staff and synchronized all four translations and display fields.",
+          "resolved": true
+        },
+        {
+          "id": "U1-04",
+          "severity": "P2",
+          "locations": [
+            "ep08-s02/demo_translation",
+            "ep08-s05/demo_translation",
+            "ep08-s06/demo_translation",
+            "ep08-s07/demo_translation"
+          ],
+          "finding": "Live sessions were narrowed to in-person teaching in Japanese and Chinese although the source only established synchronous teaching.",
+          "fix": "Used リアルタイムの授業 and 同步課程/同步课程; repeated quiz translations match.",
+          "resolved": true
+        },
+        {
+          "id": "U1-05",
+          "severity": "P2",
+          "locations": [
+            "ep01-ep12/s02/instruction",
+            "ep01-ep12/s03/instruction",
+            "ep01-ep12/s04/instruction"
+          ],
+          "finding": "Generic templates did not identify the concrete language or concept being taught; repeat prompts sometimes referred to two parts without an identified two-part relation.",
+          "fix": "Added 24 distinct topic-specific cue sets in all five languages, at least two per episode; revised the repeat prompt to keep the key relationship or distinction clear.",
+          "resolved": true
+        },
+        {
+          "id": "U1-06",
+          "severity": "P2",
+          "locations": [
+            "ep02-s03/instruction",
+            "ep12-s02/instruction.en"
+          ],
+          "finding": "One new cue referred to not necessarily although the demonstration used without necessarily; bare multiword metalanguage also produced awkward English verb adjacency.",
+          "fix": "Used a clear added-material/analysis distinction in five languages; explicitly introduced the phrase may serve in English.",
+          "resolved": true
+        },
+        {
+          "id": "U1-07",
+          "severity": "P3",
+          "locations": [
+            "ep09-s03/instruction.en",
+            "ep09-s03/instruction.zh-TW",
+            "ep09-s03/instruction.zh-CN",
+            "ep10/practice.prompt_zh_TW"
+          ],
+          "finding": "An overall approval, literal significance wording and one Simplified character in the Traditional Chinese prompt needed cleanup.",
+          "fix": "Removed an, clarified explanation of the questions importance, and changed 兩项 to 兩項.",
+          "resolved": true
+        }
+      ],
+      "fixes": [
+        {
+          "issue": "U1-01",
+          "resolution": "Aligned the opening, following explanation and first answer with formal availability versus practical access.",
+          "verified": true
+        },
+        {
+          "issue": "U1-02",
+          "resolution": "Changed to 核心矛盾.",
+          "verified": true
+        },
+        {
+          "issue": "U1-03",
+          "resolution": "Specified a map symbol familiar to staff and synchronized all four translations and display fields.",
+          "verified": true
+        },
+        {
+          "issue": "U1-04",
+          "resolution": "Used リアルタイムの授業 and 同步課程/同步课程; repeated quiz translations match.",
+          "verified": true
+        },
+        {
+          "issue": "U1-05",
+          "resolution": "Added 24 distinct topic-specific cue sets in all five languages, at least two per episode; revised the repeat prompt to keep the key relationship or distinction clear.",
+          "verified": true
+        },
+        {
+          "issue": "U1-06",
+          "resolution": "Used a clear added-material/analysis distinction in five languages; explicitly introduced the phrase may serve in English.",
+          "verified": true
+        },
+        {
+          "issue": "U1-07",
+          "resolution": "Removed an, clarified explanation of the questions importance, and changed 兩项 to 兩項.",
+          "verified": true
+        }
+      ],
+      "review_conclusions": {
+        "english_grammar_and_academic_pragmatics": "clear",
+        "five_language_meaning_and_qualifiers": "clear",
+        "quiz_target_distinctness": "clear",
+        "fictional_context_and_evidence_scope": "clear",
+        "reading_question_support": "clear",
+        "models_fulfill_all_prompt_requirements": "clear",
+        "specific_concrete_objectives_and_cues": "clear",
+        "episode12_integrates_prior_learning": "clear"
+      },
+      "structure_validation": "PASS: adult_english.verify_series.verify_structure(source, allow_season_subset=True, course=university)",
+      "reading_words": {
+        "min": 174,
+        "max": 186
+      },
+      "model_words": {
+        "min": 126,
+        "max": 138
+      },
+      "episode_review": [
+        {
+          "episode": "ep01",
+          "status": "clear",
+          "note": "Audience, evaluation criteria, required comparison and independent evidence collection align across brief, questions and action plan."
+        },
+        {
+          "episode": "ep02",
+          "status": "clear",
+          "note": "Summary versus analysis is distinguished; additional quotation alone does not establish stronger reasoning or guarantee a grade."
+        },
+        {
+          "episode": "ep03",
+          "status": "clear",
+          "note": "The meeting prioritizes conceptual scope, records prior attempts and distinguishes next steps from approval of the entire essay."
+        },
+        {
+          "episode": "ep04",
+          "status": "clear",
+          "note": "Formal availability versus practical access now matches the hypothetical clinic/bus example, reflection and evidence-based answers."
+        },
+        {
+          "episode": "ep05",
+          "status": "clear",
+          "note": "Notes separate claim, hypothetical example, explanatory link, limitation and unanswered recruitment question; staff familiarity is explicit."
+        },
+        {
+          "episode": "ep06",
+          "status": "clear",
+          "note": "The hypothetical signage pilot retains timing, competing explanations, setting and uncertainty; summary never strengthens correlation to causation."
+        },
+        {
+          "episode": "ep07",
+          "status": "clear",
+          "note": "Seminar interpretation distinguishes narrator from author, grounds a qualified reading in textual contrast, and invites counterevidence."
+        },
+        {
+          "episode": "ep08",
+          "status": "clear",
+          "note": "Disagreement accepts replay benefits while challenging universal replacement; synchronous teaching and subject-specific limits remain intact."
+        },
+        {
+          "episode": "ep09",
+          "status": "clear",
+          "note": "Feedback requests test interpretation and significance before surface editing; model revises scope without automatically accepting every suggestion."
+        },
+        {
+          "episode": "ep10",
+          "status": "clear",
+          "note": "Work dependencies, independent tasks, conditional site substitution and observation-reconciliation buffer match the reading and plan."
+        },
+        {
+          "episode": "ep11",
+          "status": "clear",
+          "note": "The instructor email identifies conflicting documents, previous checking, a narrow request and useful work possible while waiting."
+        },
+        {
+          "episode": "ep12",
+          "status": "clear",
+          "note": "The final integrated task combines qualified evidence, peer feedback and a focused instructor email using prior season concepts."
+        }
+      ],
+      "limits": "Source semantic review only; no audio-pronunciation or complete encoded-video playback claim. Source-bound artwork QA follows separately."
+    },
+    {
+      "course": "university",
+      "season": 2,
+      "reviewer": "workplace_34",
+      "status": "clear",
+      "reviewed_at": "2026-10-08T05:57:53.060753+00:00",
+      "initial_source_sha256": "5c20f2fa06cc32203a95f7ee13b88299dc11cafc549508efbcba817e831847d2",
+      "source_sha256": "e3b1930853a28f5684ada76ed06958460cf2e8e425afc89e75a4b8d48099e575",
+      "scope": "All 12 episodes: titles, objectives, tips, all 84 unique English demos with four full translations and five-language teaching instructions, all 120 scene occurrences, 12 readings, 36 questions/answers, 12 writing prompts/models. Included every unique guided-repeat and review sentence. Independently checked instructional alignment, claim strength, hypothetical evidence, source attribution, word counts, repeated translations, quiz neutrality, and correct-answer positions.",
+      "issues": [
+        {
+          "id": "u2-tools-translation",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep13 simplified translation mistakenly said 任务具 instead of 工具; all repeated occurrences corrected."
+        },
+        {
+          "id": "u2-newcomer-scope",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep13 Japanese newcomers incorrectly narrowed club members to freshmen; changed to 新しいメンバー throughout."
+        },
+        {
+          "id": "u2-instruction-alignment",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep15-s06, ep18-s06, and ep19-s06 now teach the actual planned/completed distinction, idea attribution, and visitor-influence evidence limit rather than a generic next-action cue; all five instruction languages reviewed."
+        },
+        {
+          "id": "u2-reservations-not-attendance",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep22 booking records now establish reservations, not actual attendance or learning. Reading, model, question answer, demo, visual/target, option text, translations, and instructional cue corrected consistently."
+        },
+        {
+          "id": "u2-verifiable-real-sources",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep18, ep19, ep22, and ep24 models explicitly state that real assignments require suitable verifiable sources replacing the fictional training materials; ep23 already states this fully."
+        },
+        {
+          "id": "u2-conditional-outcome",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep16-s04 Traditional/Simplified translations preserve the hypothetical possibility of reduced omissions even without improved understanding; they no longer imply established non-improvement."
+        },
+        {
+          "id": "u2-korean-punctuation",
+          "severity": "P3",
+          "status": "resolved",
+          "detail": "Korean full stops normalized from Chinese 。 to . in all teaching and translation strings."
+        },
+        {
+          "id": "u2-metalinguistic-cues",
+          "severity": "P3",
+          "status": "resolved",
+          "detail": "Four English teaching cues now explicitly name the target phrase to avoid bare phrase-plus-verb ambiguity; semantic alignment with unchanged four-language instructions rechecked."
+        }
+      ],
+      "checks": {
+        "structure_validator": "PASS: university, 12/48 episodes, 120 scenes",
+        "unique_demos": 84,
+        "scene_occurrences": 120,
+        "readings": 12,
+        "grounded_questions": 36,
+        "writing_models": 12,
+        "reading_word_range": [
+          175,
+          190
+        ],
+        "model_word_range": [
+          127,
+          148
+        ],
+        "repeated_demo_translation_consistency": true,
+        "neutral_five_language_quiz_instructions": true,
+        "correct_positions_each_episode": [
+          0,
+          1,
+          2
+        ],
+        "fictional_source_and_real_assignment_boundaries": true
+      },
+      "corrections_verified": "Every requested correction was read in final source; all 84 unique five-language instructional/demo sets were reviewed, with repeated translations checked mechanically. Word counts and neutral quiz contracts independently checked after final corrections. Final six-leaf delta from the prior reviewed source consists only of the two ep16 conditional translations and four clarified English metalinguistic cues; every leaf directly inspected.",
+      "other_findings": "Readings and model answers are substantive and preserve research feasibility, alternative explanations, sampling coverage, interpretation limits, and honest attribution. All 36 answers are grounded in the text. No unresolved material grammar, scope, evidence, or translation issue found.",
+      "unresolved_p1_p2": 0,
+      "completed_at": "2026-10-08T05:58:39.922351+00:00"
+    },
+    {
+      "course": "university",
+      "season": 3,
+      "reviewer": "root",
+      "status": "clear",
+      "reviewed_at": "2026-10-08T05:42:38.769206+00:00",
+      "source_sha256": "5713e388c363874572639c1e8722bf7b83a95e3bd087b6f40a4c660744617604",
+      "scope": "All twelve episodes: unique five-language instructions and demonstrations/translations, titles/objectives/tips, all readings, questions/answers, writing prompts/models. Repeated identical scene text deduplicated for reading; all scene roles/choices validated structurally.",
+      "issues": [
+        {
+          "id": "u3-ep26-review-dependency",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "Reading only required guide arrival before recruitment, whereas answer required completed review. Make reading explicit."
+        },
+        {
+          "id": "u3-specific-teaching-cues",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "Only six generic instruction sets across all twelve lessons. Add two concrete five-language teaching cues per episode before recording."
+        }
+      ],
+      "other_findings": "No additional unresolved grammar, translation meaning, unsupported answer, writing-task coverage or numerical-interpretation issues found. Fictional contexts explicit; ep30 twelve/six/two of twenty correct; ep36 integrates the season.",
+      "initial_source_sha256": "e205bca74b2e020c79826358cef11f9a58048feff61aaf163dae1df0f47f496b",
+      "unresolved_p1_p2": 0,
+      "completed_at": "2026-10-08T05:50:03.998180+00:00",
+      "corrections_verified": "Exactly181 leafchanges:180 instructionleafchanges for24 unique five-language cues with12 repeatedcuecopies,plus1 ep26reading clarification. Allchangedtext directlyreviewed,othercontentunchanged."
+    },
+    {
+      "course": "university",
+      "season": 4,
+      "source": "/workspace/travel_scanner/docs/videos/english-university-complete/season04.json",
+      "initial_sha256": "7e29665736f021a4e7317279d16c551b7f55e037617dd10bb16f5b07f205913a",
+      "current_sha256": "d0fb5465f331b908c89387913162a3edfa015ece95ee6fdf4ede714bd382a3cc",
+      "source_sha256": "d0fb5465f331b908c89387913162a3edfa015ece95ee6fdf4ede714bd382a3cc",
+      "status": "clear",
+      "unresolvedP1P2": 0,
+      "reviewer": "/root/workplace_12",
+      "reviewed_at": "2026-10-08T05:55:27.908393+00:00",
+      "review_scope": {
+        "episodes": 12,
+        "scenes": 120,
+        "instruction_locales": 5,
+        "translation_locales": 4,
+        "neutral_quizzes": 36,
+        "guided_repeats": 24,
+        "independent_readings": 12,
+        "reading_questions_and_answers": 36,
+        "writing_prompts_and_models": 12,
+        "localized_titles_objectives_self_study_tips": true
+      },
+      "review_conclusions": {
+        "english_grammar_and_core_pragmatics": "clear",
+        "instruction_demo_alignment_all_five_languages": "clear after two corrections",
+        "fictional_data_and_academic_scope": "clear; hypothetical ep40 counts labeled, causal limitations retained, fictional opportunity not represented as real recruitment",
+        "reading_question_support": "clear; every answer supported by its passage, reason/evidence questions meaningful",
+        "models_fulfill_all_prompt_requirements": "clear; observed findings and proposed tests consistently distinguished",
+        "season12_integrates_prior_learning": "clear; ep48 combines abstract, presentation, poster, questions, limitations, reflection and next test",
+        "translation_fidelity": "clear across all four locales after explicit ep46 referent",
+        "quiz_and_repeated_demo_consistency": "checked; three unique choices, target equals spoken demo, each correct position once per episode, all repeated translations and nonquiz instructions equal"
+      },
+      "issues": [
+        {
+          "id": "U4-01",
+          "severity": "P2",
+          "locations": [
+            "ep39-s06/instruction (all five locales)"
+          ],
+          "finding": "The cue described a next step, but the example states the boundary between an accessible example and exhaustive technical explanation.",
+          "requested_correction": "Teach the actual scope boundary in all five locales.",
+          "resolved": true,
+          "fix": "Mark the boundary between an accessible example and a complete technical explanation; all four localized instructions match."
+        },
+        {
+          "id": "U4-02",
+          "severity": "P2",
+          "locations": [
+            "ep46-s03/demo and translations",
+            "ep46-s07/demo and translations",
+            "ep46 visual/target/choice references"
+          ],
+          "finding": "Search explanations and localized phrases could mean search instructions rather than users explaining reasons for their search choices, obscuring the research topic.",
+          "requested_correction": "Make users and the reasons for their choices explicit in English and all four translations, updating every quiz reference.",
+          "resolved": true,
+          "fix": "Would studying users' reasons for search choices fit your group's current research questions?; translations explicitly identify user choice reasons and all repeated targets/choices match."
+        }
+      ],
+      "structure_validation": "PASS: university 12/48 episodes, 120 scenes, complete season subset; executed independently after final corrections",
+      "reading_words": {
+        "min": 176,
+        "max": 182
+      },
+      "model_words": {
+        "min": 130,
+        "max": 137
+      },
+      "limitations": "Source review only; no TTS, encoded video, rendered worksheets, or actual browser playback was assessed in this review."
+    }
+  ]
+}

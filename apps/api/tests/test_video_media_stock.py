@@ -9,6 +9,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import io
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock
@@ -28,6 +29,7 @@ from app.db import get_session
 from app.models import ProviderConfig, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
+from app.video_budget.service import BudgetSummary
 from app.video_media import admin_api, meter, stock
 from app.video_media.jobs import MediaContext
 from app.video_media.schemas import (
@@ -669,6 +671,23 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
     monkeypatch.setattr(admin_api, "enforce_named_rate_limit", state["limits"])
     monkeypatch.setattr(admin_api, "prune", state["prune"])
     monkeypatch.setattr(meter, "month_usd", AsyncMock(return_value=0.0))
+
+    async def pilot_summary(_session: Any, slug: str) -> BudgetSummary:
+        return BudgetSummary(
+            slug,
+            Decimal("25.000000"),
+            Decimal("0"),
+            Decimal("0"),
+            Decimal("25.000000"),
+            0,
+            0,
+            0,
+            0,
+            False,
+            Decimal("0"),
+        )
+
+    monkeypatch.setattr(admin_api, "summary", pilot_summary)
     return state
 
 
@@ -735,9 +754,7 @@ async def test_the_routes_search_and_fetch_without_a_budget_and_say_so_on_status
     async with AsyncClient(
         transport=ASGITransport(app=_app(_token())), base_url="http://t"
     ) as client:
-        unavailable = await client.post(
-            "/api/v1/video/media/stock/search", json={"query": "Seoul"}
-        )
+        unavailable = await client.post("/api/v1/video/media/stock/search", json={"query": "Seoul"})
         off = await client.get("/api/v1/video/media/status")
         media["runtime"] = BOTH
         monkeypatch.setattr(stock, "search", fake_search)

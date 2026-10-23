@@ -1,0 +1,20 @@
+{
+  "id": "A42",
+  "reviewed": "2026-10-18",
+  "reviewer": "Claude Opus 5.5 (independent brand-field rebind 2026-10-18)",
+  "story_sha256": "30df40cbc443ceeb1d943e329c28474109ad4c88cddda53aab6da2d9c7ded506",
+  "verdict": "fixed",
+  "sources_opened": 9,
+  "changes": [
+    "標題「日本的比歐洲大一圈」改為「日本的比國際規格寬了 6 公釐」：ISO B 是國際規格不是歐洲規格，實際差距是 B5 寬 6 公釐、長 7 公釐，用可量的數字取代「大一圈」。",
+    "hook：Microsoft PaperKind 沒有直放的 JIS B4 項目，只有「JIS B4 橫放」364×257，改成照文件的名稱與數字，再說轉回直的是 257×364；must_verify[1] 與 sources[5] 的說明同步改。",
+    "turn：「比 ISO B0 大約 3%」日文維基指的是邊長，改為「邊長比 ISO B0 長約 3%」（面積約多 6%），sources[4] 說明同步改。",
+    "engine：A 列照搬 DIN、B 列面積 1.5 倍與原紙相當於四六判改依平凡社；「菊判接近 A5 所以採 A、四六判沒對應所以另訂 B」的動機在要點裡明說是 @DIME 的整理；「正好對上」改成「相當於」（765×1085 對 788×1091）。",
+    "turn：補上 Hoover 的 203×267 同年被採為聯邦政府信紙標準（Kuhn：1921-09-14），讓「聯邦政府 1980 年 1 月才改用」有前提。",
+    "idea 與 must_verify[3]、sources[1]：DIN 原文是 Directorate of the German State Railway，「地區管理局」改為「管理局」。",
+    "caveats 補上 JIS B4 橫放的名稱、3% 指邊長、標題 6 公釐指 B5 寬度差，並把動機的出處改為只說 @DIME；Treatment 標題、開場草稿、章節表與主線摘要同步改。",
+    "2026-10-18：thumbnail 加 brand「A4 紙」（站主要求縮圖用大字公司名，PR #1568）；內容事實未變，只重綁雜湊"
+  ],
+  "notes": "已開 Kuhn、DIN 新聞稿、コトバンク平凡社、@DIME、日文維基、Microsoft PaperKind、CNS 網路服務、中文維基、英文維基 Letter，九頁工人都讀得到。Lichtenberg 1786-10-25 信、1798-11-03 Loi sur le timbre 對應 A2/B3/A3/B4/B5、DIN 476 1922-08-18、A0 841×1189、1923 年秋國鐵、ISO 216 與聯合國 1975、A4 約 5 克、JIS B4 257×364 與 B5 182×257、ISO B4 250×353 與 B5 176×250、B0 1.5 平方公尺與算術平均都與來源一致。1929 年 12 月日本標準規格第 92 號「紙ノ仕上寸法」：平凡社寫制定年月與 A 列取自 DIN，商工省出自日文維基。「為了四六判另訂 B」的動機只有 @DIME，旁白一定要說「據小學館 @DIME 的整理」，而且不要照 @DIME 說 1929 年採用「ISO」的 A 判。Windows 清單只能說「JIS B4 橫放 364×257」與「JIS B5 橫向 182×257」，沒有直放的 JIS B4 項目。JIS B0 大約 3% 是指邊長，面積約大 6%。美國的部分只說 1980 年 1 月，不提雷根，也不提卡特。台灣考卷用四六版只有中文維基（引的是 xuite 部落格），可以放進旁白，但要說「據維基百科整理」，而且不要延伸到台灣市售 B4、B5 是哪一套。CNS 5 的 B 系列是哪一套沒有查到，不要說。內容撐得起 10 分鐘，最紮實的是第四、五章。",
+  "reviewer_only": []
+}

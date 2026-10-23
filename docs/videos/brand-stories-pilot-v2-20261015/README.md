@@ -1,0 +1,36 @@
+# A01／B18 品牌故事新版試作｜奇聞檔案局規格
+
+2026-10-15 編輯修訂。**兩支新版企劃已通過各自的獨立來源審稿並編出本機 `stories.json`；兩份逐字旁白也已各由另一位審查者通過文字事實與敘事審查。尚未匯入正式站，沒有配音、插畫、成片、上傳或可點的片尾連結。** 舊 100 題庫與其 2026-09-28 審稿留作歷史來源，不覆寫、不沿用其核准狀態。
+
+站主已選定品牌故事改成奇聞檔案局新版規格：MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`、每支旁白正文約 10 分鐘；先完成 A01／B18 試作，再做[已選的五支](../brand-stories-five-20261014/README.md)。兩支各有 US$25 **所有付費項目合計**上限，實際執行仍須先由正式環境的帳本和供應商餘額證明可控。
+
+| 順序 | 新版作品 slug | 觀眾追的問題 | 新版企劃 |
+| --- | --- | --- | --- |
+| A01 | `story-rolling-suitcase-v2` | 輪子箱早有前案，為何直到 1970 年才進百貨公司？後來如何更順手？ | [輪子行李箱](A01-rolling-suitcase.md) |
+| B18 | `story-conveyor-belt-sushi-v2` | 一間缺人的壽司店如何把啤酒工廠輸送帶變成新吃法？ | [迴轉壽司](B18-conveyor-belt-sushi.md) |
+
+本包的 [`series.json`](series.json) 是**兩集獨立新系列** `brand-stories-curio-pilot-v2`，第 1、2 集依序安排中午時段。工人真正讀的是資料庫中的六章 `beats`；[`episodes/A01.json`](episodes/A01.json) 與 [`episodes/B18.json`](episodes/B18.json) 才是供新版審稿與將來編譯的輸入。每支保留母企劃的十項必查事實與來源索引，重寫了標題、問題、六章因果與開場伏筆；母企劃原檔與審稿在 [`brand-stories-100`](../story-plans/brand-stories-100/README.md)。新版 slug 與系列隔開舊排程，也避免把舊版媒體或批准誤當新版結果。**本包的完整 `scripts/*.md` 不會隨 `stories.json` 匯入；工人會依六章 `beats` 另寫 `story/chapters/*.json`，再合併成 `video.json`／`script.md`。**
+
+## 試作匯入的精確批次
+
+`kind: story` 會挑最早的 `ready` 集數啟動，**不受 `series_auto_continue=false` 阻止**。A01 開拍時只匯入本包兩列中的第一列：以同一份已審 `stories.json` 先執行 `video-story-import --series brand-stories-curio-pilot-v2 --limit 1` 唯讀試跑。報告必須是 `stories_in_file=2`、`stories_imported=1`，`rows.create` 只含 `A01`，所有 `rows` 都沒有 `B18`，且沒有 `problems` 或 slug 衝突；核對輸入 SHA 後才可在核准範圍內以**完全相同的參數與檔案**加 `--apply`。匯入後立即讀回資料庫：新系列只應有 `story-rolling-suitcase-v2` 一列，`story-conveyor-belt-sushi-v2` 不得存在。若任一結果不同，停止工人與匯入，先查原因。關掉 `drama_auto_approve_final` 是留給站主看成片的另一道關卡，不能代替精確匯入。
+
+待 A01 的實際帳本、旁白、成片與站主看片都通過，再對同一份兩列輸入以 `--limit 2` 重新唯讀試跑；確認 A01 維持已開始／不變，只有 B18 待新增，才可在新的核准批次中匯入 B18。每日集數或關閉自動接續都不能當成 B18 尚未入列的證據。
+
+## 每支影片的觀看順序
+
+1. 第 1 秒進入具體場景。旁白開場 30–60 秒，只預告後續三個有年份的轉折，在結果前停住；預告要按事件順序，正文逐一回收。
+2. 第一章後接頻道 **5 秒動畫片頭**。第二章從人物和困境出發，之後每章由上一章的結果引出下一個問題，不念章節目錄，也不重播已說過的答案。
+3. 六章合計目標旁白正文 **約 10:00**，實際秒數由 TTS timeline 與 `ffprobe` 量。正文至少 8 分鐘；材料不足就縮短或退回企劃，不能用沉默、慢播或片頭片尾充數。只用台灣口音單人旁白；繁中字幕跟音訊。
+4. 正文末三句回答開場、留一題與故事相關的留言問題、給有理由的訂閱邀請。接 **21 秒動畫片尾**；YouTube Studio 在最後 16 秒設「最符合觀眾喜好」影片、訂閱與「最新上傳」影片，實際上傳後逐項點擊驗證。MP4 卡位本身不可點。
+
+畫面以 MiniMax 可愛卡通**靜態插畫**說故事。`look` 只能是 `{"preset":"cute-mystery"}`，不加 `style` 或 `negative`；不生成商標、名人肖像、真實文件內文。全部正文鏡頭用 `visual: "still"` 與後製緩慢運鏡，**生成影片 clip 鏡頭數為零**；片頭片尾沿用頻道既有 v4 動畫素材。若成片格式需要配樂，只能在整支 US$25 帳本內預留有上限的一條配樂，不開無界重試。提示詞逐鏡只寫時地、景別、**一個一般化人物做一件事**、焦點與柔和／陰天／檯燈等中性光線；物件或風景鏡頭也要有該人物的動作，避免晴朗正午與飽和綠色植物。正文至少 70% 是插畫 `shot`，連續卡片最多三張；卡片只放必要的數字、名字、短引文或來源。插畫是故事示意，不聲稱重建歷史現場。預估 75–120 張只是排程假設，付費前需依定稿分鏡估全片張數、重畫、judge、TTS、文字模型、轉錄與合成的上限。
+
+## 審稿與交付關卡
+
+- 本包的 `episodes/*.json` 已重排敘事，**母企劃審稿的 hash 不再適用**。另一位查核者須打開來源、逐章比對新版敘述、為每支另寫 `episodes/reviews/<ID>.json`，並以新版 `story_sha256` 綁定；尤其核對 A01 的 1970 年接受、1928 年箱子的製作年界線、Samsonite 1997／2000 年表及 Travelpro 競爭者說法，B18 的轉彎靈感兩種來源、20／50 日圓、實用新案與多重擴張因素。不得把本機結構檢查當獨立查核。
+- 2026-10-15 校正後來源 hash：A01 `c247eba081af44e183549d26f34bcdd0d9d98c3e9205672641c8a58b9ebd424d`；B18 `f9be8cd707c30ac0260543f89bd5ce22960a3b5582d83c233fcce0db1633df23`。兩份新版[獨立審稿](episodes/reviews)分別通過並綁定這兩個 hash；這只核准企劃中的來源敘述，不能代替逐字稿或成片審查。若 JSON 任一字更動須重新計算並重審。
+- `node docs/videos/brand-stories-pilot-v2-20261015/build.mjs --draft` 驗證結構後，兩份新版審稿讓 `--write` 編出本機 [`stories.json`](stories.json)；Python `check_story_file` 回傳兩支、零問題／拒絕／忽略。正式環境 exact slug／佇列／媒體／鎖與版本仍須唯讀查驗，才可評估匯入。
+- 匯入後先核對工人實際產出的六章 `story/chapters/*.json`、`video.json` 與 `script.md`。逐章與本包已審的完整旁白比對開場伏筆、年份、因果、來源限定與結尾回收；若要採用本包逐字稿，須依工人的章檔格式逐章接入並重新跑 lint、事實查核與聽眾審稿，不能只覆寫下一輪會被章檔重建的 `video.json`。若採用工人新稿，須另做逐句事實查核與完整敘事盲評，並以**實際稿件的 hash** 留下審稿收據。本包手稿的 PASS 不自動核准工人新稿。兩個 `-v2` slug 在正式 worker 的 `script` 關卡會因缺少 `<VIDEO_WORKDIR>/<slug>/story/reviews/script-review.json` 而停住；獨立審查者依[操作欄位](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)比對實稿並寫入 hash 綁定的 PASS 收據，站主才可明確重試。若章稿或合併稿改動，舊收據失效並再次停住。依實稿重排逐鏡表、預估配音長度與整集成本後，才能進入 TTS 與圖像生成。批准付費後記錄每項實際支出、鏡頭與音訊 hash。`video.json`、TTS、圖像、片尾可點元素和站主看過成片，各要各自的證據。
+
+兩份完整旁白及各自的獨立收據在 [`scripts/`](scripts/)：A01 [稿件](scripts/A01.md)／[審查](scripts/reviews/A01.md)，B18 [稿件](scripts/B18.md)／[審查](scripts/reviews/B18.md)。它們是工人實際稿件的**編輯與逐章比對底本**，不是 `stories.json` 的一部分。審查只對稿件 hash 的**文字**有效；稿面語速估算 A01 正文約 9:02、B18 約 9:06，實際長度要等台灣口音 TTS timeline。兩集分章畫面與全項成本前檢見 [A01](A01-shot-plan.md)、[B18](B18-shot-plan.md)：它們是付費前的張數、畫面界線和 US$25 停損假設，實際逐鏡清單與價格要等聲音、正式機帳本及供應商餘額核對。整個企劃是編輯輸入，不代表已開始正式製作。[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)記錄主機前檢、付費閘與站主驗收；舊版 100 題每日排程不因這兩筆新版 draft 自動更改。

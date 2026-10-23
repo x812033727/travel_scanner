@@ -26,7 +26,7 @@ import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mj
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
-import { LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -910,7 +910,7 @@ const manifestBytes = (manifest) => `${JSON.stringify(manifest, null, 2)}\n`;
 
 /** A language choice as the site keeps it (LocalesIn): the chosen locales only, a dub with its captions. */
 export function siteChoice(locales) {
-  return Object.fromEntries(LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
+  return Object.fromEntries(TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
     const entry = locales?.[locale] ?? {};
     const choice = { metadata: entry.metadata === true, captions: entry.captions === true || entry.dub === true, dub: entry.dub === true };
     return choice.metadata || choice.captions || choice.dub ? [[locale, choice]] : [];
@@ -1253,6 +1253,10 @@ function fail(error, ctx) {
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
 
+// The worker's state file beside a video's work files (automation/flow.mjs STATE_FILE). A video
+// whose work directory has none was not made by the worker: someone pushes it by hand.
+export const WORKER_STATE_FILE = "auto.json";
+
 export async function reviewPush(args, ctx) {
   const values = common(args, { allowManualReview: true });
   const dir = docDir(values.slug, ctx.root);
@@ -1291,6 +1295,10 @@ export async function reviewPush(args, ctx) {
     const sources = gate === "languages" ? await request("GET", values.slug) : null;
     if (sources && !renewedFinal(sources)) languageSource(sources, project);
     const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
+    // A film pushed by hand is the owner's at every gate (owner, 2026-10-17; ticket
+    // 2026-10-11-hand-driven-film-approved-on-its): the site approves none of its reviews on arrival.
+    const handPushed = !existsSync(path.join(workdir, WORKER_STATE_FILE));
+    if (handPushed) ctx.stdout.write(`${values.slug}: not a video the worker made (no ${WORKER_STATE_FILE} in its work directory): the owner decides at every gate\n`);
     for (const candidate of bodies) {
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
@@ -1299,6 +1307,7 @@ export async function reviewPush(args, ctx) {
       const bound = candidate.gate === "languages" && !renewedFinal(remote) ? await bindLanguageSource({ body: candidate, remote, project, workdir, request }) : await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       // A batch's summary says what it sends: renewal.mjs words the narration's skip its own way.
       const summary = bound.gate === "languages" ? languagesSummary(bound.payload.locales) : bound.summary;
+      if (handPushed) bound.payload = { ...bound.payload, hand_pushed: true };
       // Every review this command sends leaves through here, so none carries a summary the
       // site would refuse for its length, nor a payload it would refuse for its size.
       const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(summary) });

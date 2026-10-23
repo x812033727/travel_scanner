@@ -8,7 +8,7 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
 import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
@@ -63,6 +63,15 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
   assert.match(planner, /收尾：「…」, a question, a\s+stop before the event, a number or a reversal/);
   assert.match(planner, /主線：<the spine in one sentence/);
+  // 2026-10-15: one story shape and one protagonist, chosen before the spine (register.mjs NARRATIVE_RULES).
+  assert.match(planner, /故事線：<事件／實測／疑問／抉擇（選一）>\n主角：<the one person, team, image, bill or project carried from the opening to the close>\n主線：/);
+  assert.match(planner, /One protagonist, one story shape/);
+  assert.match(planner, /At most one metaphor in the whole video/);
+  assert.match(planner, /never 「以官網為準」/);
+  assert.match(planner, /A term is explained at the moment the protagonist meets it, in one line/);
+  assert.match(planner, /Two definitions in a row are a lecture/);
+  assert.match(planner, /A qualification the facts need is said once, attached to the claim it limits/);
+  assert.match(planner, /The condensation's closing question asks what the video answers; it never states an outcome/);
   assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
   assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
@@ -264,6 +273,11 @@ test("an object closed one brace early and followed by its next key is read whol
   assert.deepEqual(parseAnswer(answer), { worksheet: { locale: "ja", lines: [{ id: "3qzu", text: "次は概要欄の記事を開いて" }] }, fixes: ["9iqg: 28 characters → 「1つ目は」"] });
   // When the rest does not complete it, the first object is still the answer.
   assert.deepEqual(parseAnswer('{"worksheet":{"lines":[]}},"fixes":[oops'), { worksheet: { lines: [] } });
+  // story-adapt-michelin-guide-stars' ko translator on 2026-10-19, four times running: the draft
+  // and the final each closed one brace early, so its critique and final were lost and the answer
+  // read as a draft that skipped its critique.
+  const twice = '{"draft":{"worksheet":{"lines":[{"id":"gtmy","text":"미슐랭"}],"title":null}}},"critique":["gtmy: MICHELIN is a brand name"],"final":{"worksheet":{"lines":[{"id":"gtmy","text":"MICHELIN"}],"title":null}}}}';
+  assert.deepEqual(parseAnswer(twice), { worksheet: { lines: [{ id: "gtmy", text: "MICHELIN" }], title: null } });
 });
 
 test("episode title authors receive the original answers and schedule units, not only runtime state", () => {
@@ -642,14 +656,16 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 // A change here moves the durable key of every unfinished explainer journal (the instructions
 // are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
 // none unfinished, then update the digest. Three of the four moved on 2026-10-13, when the
-// condensation became one scene of the story and the close stopped naming the next episode. The cute explainer presets get variants of their own
+// condensation became one scene of the story and the close stopped naming the next episode; the
+// writer moved again on 2026-10-15, when NARRATIVE_RULES gained the story shapes and the one
+// protagonist. The cute explainer presets get variants of their own
 // so that these four never have to move for them.
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
     "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
     "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
-    "writer:explainer": "11ec620a6084cd27a3916971e8d9bf68cda593229218d39ff3e00106534ff0e0",
+    "writer:explainer": "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {
@@ -657,4 +673,65 @@ test("the four explainer instruction texts are byte for byte what they were", ()
     assert.equal(sha256(EXPLAINER_INSTRUCTIONS[key]), digest, key);
     assert.equal(sha256(instructionsFor(stage, "drama", "", variant)), digest, `${key} as composed`);
   }
+});
+
+// The tutorial flow rules (register.mjs TEACHING_FLOW_RULES, 2026-10-21): the three slides
+// stages that write read them after the teaching route; the verifier and the translator do not.
+import { TEACHING_FLOW_RULES as FLOW } from "./register.mjs";
+
+test("the slides planner, writer and listener read the tutorial flow rules after the teaching route", () => {
+  assert.match(FLOW, /ONE promise sentence naming what the\s+viewer will have at the end/);
+  assert.match(FLOW, /the voiced objection/);
+  assert.match(FLOW, /three to five sentences, each carrying a number or an\s+admitted uncertainty/);
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(FLOW), `${stage} gets the tutorial flow rules`);
+    assert.ok(prompt.indexOf(TEACHING_RULES) < prompt.indexOf(FLOW), `${stage} reads them after the teaching route`);
+  }
+  for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(FLOW), false, `${stage} reads no flow rules`);
+});
+
+// The site refuses a stage run whose prompt is longer than STAGE_INSTRUCTIONS_MAX (120,000 in
+// apps/api/app/video_automation/schemas.py) before any model is called; that is how #1643's
+// teaching-flow rules stopped every tutorial writer and planner at 60,000 on 2026-10-21. Each
+// composed prompt keeps room for the owner's standing instructions (4,000) and a series or source
+// block, so a rule added later fails here instead of on the host.
+test("every stage prompt fits the site's limit with room for what the worker appends", () => {
+  const schemas = readFileSync(new URL("../../../apps/api/app/video_automation/schemas.py", import.meta.url), "utf8");
+  const limit = Number(/^STAGE_INSTRUCTIONS_MAX = ([0-9_]+)$/m.exec(schemas)?.[1].replaceAll("_", ""));
+  assert.equal(limit, 120_000);
+  const room = 20_000;
+  for (const [key, value] of Object.entries(INSTRUCTIONS)) {
+    if (typeof value !== "string") continue;
+    assert.ok([...value].length + room <= limit, `${key} is ${[...value].length} characters`);
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const stage of ["planner", "writer", "listener"]) {
+      const composed = instructionsFor(stage, format, "x".repeat(4000));
+      assert.ok([...composed].length + room <= limit, `${stage} (${format}) composed is ${[...composed].length} characters`);
+    }
+  }
+});
+
+test("the manga tier's rule reaches a one-off without a genre, and the default tier adds nothing (docs/videos/BINGE.md)", () => {
+  assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills", "manga"]);
+  assert.deepEqual(TIER_CLIP_SHARE, { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 });
+  assert.match(VISUAL_TIER_RULES.manga, /never "visual": "clip"/);
+  assert.match(VISUAL_TIER_RULES.manga, /new picture every 3 to 5 seconds/);
+  assert.match(VISUAL_TIER_RULES.manga, /one character per picture/);
+  // The owner's narrator choice of 2026-10-22 (Sulafat, the storyteller's register) rides in the tier's rule.
+  assert.match(VISUAL_TIER_RULES.manga, /"performance" plan is the storyteller's[^.]*說書人的語氣，節奏快/);
+  // The sticker drama's hook cadence (the owner, 2026-10-22), which lint measures at 30 s.
+  assert.match(VISUAL_TIER_RULES.manga, /Every 20 to 30 seconds a line lands a hook[^.]*the lint warns on any stretch over 30 seconds/);
+  // A one-off carries no genre: only a tier other than the default is sent, under its own heading.
+  assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off" }), "");
+  assert.equal(genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: "clips" }), "");
+  const manga = genreBlock({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off", visual_tier: "manga" });
+  assert.equal(manga, `## Visual tier (docs/videos/BINGE.md)\n${VISUAL_TIER_RULES.manga}`);
+  // A binge series keeps its genre section, with the tier's rule inside it as before.
+  const binge = genreBlock({ genre: "urban-return", lead: "male", visual_tier: "manga", compilation: false, hands_off: true });
+  assert.match(binge, /^## Genre and retention/);
+  assert.ok(binge.includes(VISUAL_TIER_RULES.manga));
+  assert.match(instructionsFor("writer", "drama", "", null, "", { kind: "one-off", visual_tier: "manga" }), /Visual tier "manga"/);
+  assert.doesNotMatch(instructionsFor("writer", "drama", "", null, "", { kind: "one-off" }), /Visual tier/);
 });

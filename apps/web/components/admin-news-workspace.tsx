@@ -57,8 +57,8 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
-  | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
-  | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
+  | "zhDraft" | "translationHold" | "readyToPublish" | "readyJudgeHold" | "finalEditHold" | "jevFinalHold"
+  | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "navigationRepaired" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "judgeClosed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident" | "reopen";
 const actionPath: Record<Action, string> = {
@@ -74,6 +74,9 @@ const situationActions: Record<Situation, readonly Action[]> = {
   translationHold: ["approve", "reject"],
   hardChecksHold: ["approve", "verify", "reject"],
   readyToPublish: ["publish", "verify", "reject"],
+  // Ready by every check, but the AI judge's last call asks for a correction: the route is the
+  // editor and a re-check. Publishing stays the owner's explicit decision, with its server checks.
+  readyJudgeHold: ["publish", "verify", "reject"],
   // The five-locale article is saved; the final editor or Jev's last call held it back.
   finalEditHold: ["publish", "verify", "reject"],
   jevFinalHold: ["publish", "verify", "reject"],
@@ -83,6 +86,7 @@ const situationActions: Record<Situation, readonly Action[]> = {
   duplicate: ["notDuplicate", "reject"],
   // The pages changed after the check: take the current text and check the article again.
   evidenceChanged: ["refresh", "reject"],
+  navigationRepaired: ["refresh", "reject"],
   redraft: ["retry", "reject"],
   failed: ["approve", "retry", "verify", "reject"],
   // Only lead-only pages: a rerun cannot find a page to cite.
@@ -101,8 +105,10 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
     case "manual_review":
       if (candidate.error_code === "news_duplicate_uncertain") return "duplicate";
       if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
+      if (candidate.error_code === "news_navigation_evidence_repaired") return "navigationRepaired";
       if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
-      if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
+      // A rerun or a re-check clears judge_decision, so "manual" here is the judge's current answer.
+      if (candidate.error_code === "news_ready_to_publish") return candidate.judge_decision === "manual" ? "readyJudgeHold" : "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
       if (candidate.error_code === "news_final_edit_hold") return "finalEditHold";
       if (candidate.error_code === "news_jev_final_hold") return "jevFinalHold";
@@ -145,6 +151,31 @@ function problemMessage(problem: unknown, fallback: string) {
 
 function named(names: Record<string, string>, key: string) {
   return names[key] ?? key;
+}
+
+function isResolved(candidate: NewsCandidateSummary): boolean {
+  return candidate.status === "published" || candidate.status === "rejected" || candidate.status === "duplicate";
+}
+
+type CrossCategoryMatch = { id: string; title: string; slug?: string; rationale?: string };
+
+function crossCategoryMatches(candidate: NewsCandidate | null | undefined): CrossCategoryMatch[] {
+  // The API sends assessments oldest first. Use only the latest duplicate check so an
+  // earlier evidence version cannot appear as the reason for the current hold.
+  const latest = candidate?.assessments.filter((item) => item.assessment_type === "duplicate").at(-1);
+  const stored = latest?.details.cross_category_matches;
+  if (!Array.isArray(stored)) return [];
+  return stored.flatMap((item: unknown) => {
+    if (item === null || typeof item !== "object") return [];
+    const match = item as Record<string, unknown>;
+    if (typeof match.id !== "string" || typeof match.title !== "string") return [];
+    return [{
+      id: match.id,
+      title: match.title,
+      slug: typeof match.slug === "string" ? match.slug : undefined,
+      rationale: typeof match.rationale === "string" ? match.rationale : undefined,
+    }];
+  });
 }
 
 export function AdminNewsWorkspace() {
@@ -232,6 +263,8 @@ export function AdminNewsWorkspace() {
   // A switched-off source keeps its last status but is no longer scanned, so it is not
   // counted, the same as the dashboard's news_sources_stuck.
   const isStuck = (item: NewsSource) => item.enabled && item.last_status === "stuck";
+  // A scan that worked can still leave a note (entries left out as too old): grey, not red.
+  const sourceFailed = (item: NewsSource) => ["failed", "validation_failed", "stuck", "partial"].includes(item.last_status);
   const stuckCount = sources.filter(isStuck).length;
   const orderedSources = [...sources].sort((a, b) => Number(isStuck(b)) - Number(isStuck(a)));
 
@@ -275,6 +308,7 @@ export function AdminNewsWorkspace() {
   // judge row is history for the table below, not the answer to this hold.
   const newestJudge = detail?.assessments.filter((item) => item.assessment_type === "judge").at(-1);
   const judgement = detail?.judge_decision && (newestJudge?.details.hold === detail.error_code || newestJudge?.details.failure === detail.error_code) ? newestJudge : undefined;
+  const duplicateMatches = crossCategoryMatches(detail);
 
   const act = (name: Action) => run(async () => {
     if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
@@ -408,7 +442,7 @@ export function AdminNewsWorkspace() {
                 <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{statusName(item.status)}</span>
                 {badgeName(item) && <span className="rounded-full border border-[var(--line)] px-2 py-1 text-xs font-bold">{badgeName(item)}</span>}
               </span>
-              {holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
+              {!isResolved(item) && holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
               <strong className="mt-1 block">{item.source_title}</strong>
               <span className="mt-1 block text-xs text-[var(--muted)]">{item.vertical.toUpperCase()} · {item.event_date ?? item.created_at.slice(0, 10)}</span>
             </button>
@@ -422,8 +456,14 @@ export function AdminNewsWorkspace() {
         {!detail ? <Empty>{copy.pickOne}</Empty> : <section className="space-y-5">
           <div className={panelClass}><div className="flex flex-wrap items-center gap-2"><span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[detail.status] ?? "bg-[var(--paper)]"}`}>{statusName(detail.status)}</span><strong>{detail.source_title}</strong></div>
             <a href={detail.canonical_url} target="_blank" rel="noopener noreferrer" className="mt-2 block break-all text-sm text-[var(--teal)] underline">{detail.canonical_url}</a>
-            {detail.error_code && <p className="mt-3 text-sm font-semibold text-red-700">{holdName(detail)}</p>}
-            {detail.error_detail && <p className="mt-1 break-words text-xs text-[var(--muted)]">{detail.error_detail}</p>}
+            {isResolved(detail) ? (detail.error_code || detail.error_detail) && <details className="mt-3 text-sm text-[var(--muted)]">
+              <summary className="cursor-pointer">{copy.reasons}</summary>
+              {detail.error_code && <p className="mt-2 font-semibold">{holdName(detail)}</p>}
+              {detail.error_detail && <p className="mt-1 break-words text-xs">{detail.error_detail}</p>}
+            </details> : <>
+              {detail.error_code && <p className="mt-3 text-sm font-semibold text-red-700">{holdName(detail)}</p>}
+              {detail.error_detail && <p className="mt-1 break-words text-xs text-[var(--muted)]">{detail.error_detail}</p>}
+            </>}
           </div>
           <div className={`${panelClass} space-y-3`}>
             <h2 className="text-xl font-bold">{copy.nextStep}</h2>
@@ -441,8 +481,16 @@ export function AdminNewsWorkspace() {
             </p>}
             {situation === "duplicate" && <div>
               <h3 className="font-semibold">{copy.similarTitles}</h3>
-              {detail.similar_titles?.length
-                ? <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">{detail.similar_titles.map((title) => <li key={title}>{title}</li>)}</ol>
+              {duplicateMatches.length || detail.similar_titles?.length
+                ? <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
+                  {duplicateMatches.map((match) => <li key={match.id}>
+                    <strong>{match.title}</strong>
+                    <span className="block break-all text-xs text-[var(--muted)]">{match.slug ? `${match.slug} · ` : ""}{match.id}</span>
+                    {match.rationale && <span className="block text-xs text-[var(--muted)]">{match.rationale}</span>}
+                  </li>)}
+                  {detail.similar_titles?.filter((title) => !duplicateMatches.some((match) => match.title === title))
+                    .map((title) => <li key={title}>{title}</li>)}
+                </ol>
                 : <p className="mt-2 text-sm text-[var(--muted)]">{copy.noSimilarTitles}</p>}
             </div>}
             {actions.length > 0 && <div className="space-y-3 border-t border-[var(--line)] pt-3">
@@ -488,7 +536,7 @@ export function AdminNewsWorkspace() {
         <label>Parser config (JSON)<textarea className={fieldClass} rows={4} value={sourceDraft.config} onChange={(event) => setSourceDraft({ ...sourceDraft, config: event.target.value })} /></label></div>
         <label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" checked={sourceDraft.firstParty} disabled={sourceDraft.role !== "evidence"} onChange={(event) => setSourceDraft({ ...sourceDraft, firstParty: event.target.checked })} />{copy.firstParty}</label><Button className="mt-3" disabled={!manage.allowed || busy || !sourceDraft.name || !sourceDraft.url} onClick={() => void addSource()}>{copy.add}</Button></section>
         {stuckCount > 0 && <p role="alert" className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm font-semibold text-red-800">{fillNewsCopy(copy.stuckSources, { count: stuckCount })}</p>}
-        <section className="grid gap-3">{orderedSources.map((item) => <article key={item.id} className={isStuck(item) ? `${panelClass} border-red-400` : panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className="mt-2 text-sm text-red-700">{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
+        <section className="grid gap-3">{orderedSources.map((item) => <article key={item.id} className={isStuck(item) ? `${panelClass} border-red-400` : panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className={`mt-2 text-sm ${sourceFailed(item) ? "text-red-700" : "text-[var(--muted)]"}`}>{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
       {tab === "settings" && settings && <section className={`${panelClass} space-y-5`}><label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={settings.enabled} onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })} />{copy.enable}</label>
         <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
         <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">

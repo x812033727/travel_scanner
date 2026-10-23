@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "owner-authorized-single-scene-deletion-and-outro-rewrite",
+  "checked_on": "2026-10-16",
+  "owner_authorization": "Delete only two-mysteries (former scene 86) and rewrite qv4y to limit 'unresolved' to the three keepers' final fate; independently recheck before submitting the script",
+  "previous_video_sha256": "df09424752626cebe532988a19c4cb1848542bdf1423697d0fbc4d9ed812d88b",
+  "video_sha256": "f95964a79acb436db43ad02541948dad7013de01bce778530baa5da1d5d64397",
+  "script_sha256": "e56c63227974cdb4c836a915227735806bf2b869b0a5547050aa69f756570338",
+  "claims_sha256": "4bd8c6ef2937b48d3049453e7c28fb8d4060235ef8354ace7b4ed326416c94d8",
+  "loops_sha256": "52442e7bdded23f8844f98bc27721d5f10e529c3150c1cd6af0ffe7371a4c4c3",
+  "deleted_scenes": ["two-mysteries"],
+  "rewritten_lines": ["qv4y"],
+  "visual_prompt_fact_corrections": [
+    "passing-ship: show a distant silhouette without asserting the light was unlit",
+    "inspector-lands: remove the impossible indoor record room setting from an outdoor landing shot"
+  ],
+  "scenes": 89,
+  "spoken_lines": 91,
+  "estimated_minutes": 8.5,
+  "lint": {"errors": 0, "warnings": 4},
+  "independent_fact_and_continuity": "PASS on the exact current hashes; NLB Moore/Muirhead, Gibson 1912, NRS 2026; 11 loops valid; reviewer rechecked the final prompt-only delta",
+  "independent_script_only_blind": "HOLD on exact script SHA: mandatory Q8 no_recap failed at repeated door/lock wording, coat question, and 1912 poem year; all other mandatory questions passed",
+  "owner_script_review": "not_submitted",
+  "paid_calls": 0
+}

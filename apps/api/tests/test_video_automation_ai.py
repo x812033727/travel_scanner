@@ -282,6 +282,27 @@ async def test_budgets_and_missing_keys_stop_a_stage_before_any_model_is_called(
     assert len(stage["provider"].calls) == 1, "only the planner re-run above reached the model"
 
 
+@pytest.mark.asyncio
+async def test_pilot_text_calls_require_a_durable_subscription_job_before_any_model_call(
+    stage: dict[str, Any],
+) -> None:
+    pilot = _request("writer", "story-rolling-suitcase")
+    api_row = VideoAutomationSettings(stage_models=API_MODELS, enabled=True)
+    with pytest.raises(ai.StageFailed) as unpriced:
+        await ai.prepare_stage(_session(), KEYS, api_row, pilot)
+    assert unpriced.value.code == "video_budget_price_unknown"
+    assert stage["provider"].calls == []
+
+    plan_row = VideoAutomationSettings(
+        stage_models={"writer": {"provider": "claude_code", "model": "claude-opus-5-5"}},
+        enabled=True,
+    )
+    with pytest.raises(ai.StageFailed) as nondurable:
+        await ai.run_stage(_session(), AGENT, plan_row, pilot, None)
+    assert nondurable.value.code == "video_pilot_durable_required"
+    assert stage["provider"].calls == []
+
+
 @pytest.mark.parametrize(
     ("error", "status", "code", "retry"),
     [
@@ -459,9 +480,14 @@ async def test_the_run_route_needs_a_token_and_passes_refusals_on_with_their_ret
     )
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
         busy = await client.post("/api/v1/video/automation/run", json=body)
+        pilot = await client.post(
+            "/api/v1/video/automation/run",
+            json={**body, "slug": "story-conveyor-belt-sushi"},
+        )
         bad = await client.post("/api/v1/video/automation/run", json={**body, "stage": "boss"})
     assert busy.status_code == 503 and busy.headers["retry-after"] == "12"
     assert busy.json()["code"] == "video_ai_upstream_busy"
+    assert pilot.status_code == 409 and pilot.json()["code"] == "video_pilot_durable_required"
     assert bad.status_code == 422, "only the six stages exist"
     remembered = [
         fake.merge.await_args.args[0] for fake in app.state.sessions if fake.merge.await_count
@@ -583,3 +609,18 @@ async def test_usage_sums_this_months_calls_and_counts_each_drafted_video_once(
         assert await usage.slug_has_draft(session, slug)
         assert not await usage.slug_has_draft(session, f"{slug}-old")
         assert isinstance(await topics.site_topics(session), list)
+
+
+def test_a_stage_prompt_may_run_to_the_limit_and_not_past_it() -> None:
+    """The tutorial writer's prompt passed 60,000 characters with #1643 (64,454); the limit is
+    STAGE_INSTRUCTIONS_MAX, which the tools' prompt test keeps every prompt under."""
+    from app.video_automation.schemas import STAGE_INSTRUCTIONS_MAX
+
+    assert STAGE_INSTRUCTIONS_MAX == 120_000
+    writer = StageRunIn(stage="writer", slug="t", instructions="字" * 64_454, payload={})
+    assert len(writer.instructions) == 64_454
+    StageRunIn(stage="writer", slug="t", instructions="字" * STAGE_INSTRUCTIONS_MAX, payload={})
+    with pytest.raises(ValidationError):
+        StageRunIn(
+            stage="writer", slug="t", instructions="字" * (STAGE_INSTRUCTIONS_MAX + 1), payload={}
+        )

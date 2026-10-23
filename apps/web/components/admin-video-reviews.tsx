@@ -9,7 +9,7 @@ import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
   CompilationDownload, control, finalApproved, isBlocked, type LanguagePart, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
   type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
-  useRefresh, useWhen, youtubeSyncStuck,
+  useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -113,21 +113,14 @@ function chosenBody(choices: Choices): Record<string, Required<LocaleChoice>> {
 // languages to pre-tick (docs/videos/LANGUAGES.md; the settings tab, admin-video-settings.tsx).
 type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_locales?: string[] } };
 
-// The drama categories whose dub the owner may tick (docs/videos/DUBS.md): a cute explainer is told
-// by the narrator alone. The page sees the project row, not the script, so it decides by category,
-// as the server does when it stores the choice (apps/api/app/video_reviews/admin_service.py
-// DUBBABLE_DRAMA_CATEGORIES); the dub tool reads the script and has the last word
-// (tools/video/dubs/cli.mjs spokenByCharacter), skipping the dub of a drama whose characters speak.
-// A brand story is narrator-only too, but its zh-TW subtitles are burned in: the owner's call.
-const DUBBABLE_DRAMA_CATEGORIES: ReadonlySet<string> = new Set(["explainer"]);
-
 /**
  * The languages this video gets on top of Traditional Chinese and what of each: titles and
  * descriptions, closed captions, a dub track (docs/videos/LANGUAGES.md). The owner decides once
- * the final cut is approved; the worker then makes only what is ticked and reports each part back,
- * and the video is not scheduled until every chosen part is made. A dub track is timed with its
- * captions, so ticking it ticks them; a drama can be dubbed only in a category the narrator tells
- * alone (DUBBABLE_DRAMA_CATEGORIES, docs/videos/DUBS.md), its box greyed out otherwise. The panel
+ * the final cut is approved, except that a brand story can save its dub choice earlier. The
+ * worker reports each completed part back, and the video waits to be scheduled until they are
+ * made. A dub track is timed with its captions, so ticking it ticks them; a story's paid dub
+ * production still waits for the approved clean final cut and switchable Chinese CC. Other drama
+ * dub choices stay greyed out unless the server allows them (docs/videos/DUBS.md). The panel
  * stays after the video is public: more can be ticked, and unticking only holds for what is not on
  * YouTube yet. A dub track the worker gave up on can be asked for again from its cell
  * (docs/videos/DUBS.md): the cell says where that request stands, how the last one ended, and why
@@ -137,7 +130,13 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const drama = (project.format ?? "slides") === "drama";
-  const dramaDubOff = drama && !DUBBABLE_DRAMA_CATEGORIES.has(project.category ?? "");
+  // The server distinguishes saving a story's dub choice from making the track. An older API
+  // omits the preselection flag, so early selection remains locked on that version.
+  const storyDubPreselectable = drama && project.story_dub_preselectable === true;
+  const dramaDubOff = drama && !(project.dub_allowed ?? (project.category === "explainer")) && !storyDubPreselectable;
+  const storyDubOff = dramaDubOff && project.category === "story";
+  const storyDubPending = storyDubPreselectable && project.dub_allowed !== true;
+  const showChoices = finalApproved(project) || storyDubPreselectable;
   // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
   // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
   const saved = choicesOf(project.locales);
@@ -158,6 +157,16 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const shownError = refused && project.dub_retries?.[refused]?.open ? "" : error;
   const decided = Boolean(project.locales_decided_at);
   const changed = JSON.stringify(chosen) !== savedKey;
+  // The rows: what the server offers this video (all eight; an API from before the imported
+  // videos' five offered en, ja and ko), and any language already saved, so a choice never hides.
+  const offered: readonly string[] = project.locale_options ?? NARRATION_LOCALES;
+  // The worker dubs all eight since 2026-10-20. A video tools/video/cli.mjs import put on the
+  // site (its checklist says so) has its es, pt, id, vi and th tracks made outside the pipeline,
+  // so only the worker's own dubs offer to be made again there.
+  const imported = project.checklist.some((item) => item.key === "imported");
+  const narrationLocales: readonly string[] = NARRATION_LOCALES;
+  const workerRemakes = (locale: string) => !imported || narrationLocales.includes(locale);
+  const rows = LOCALES.filter((locale) => offered.includes(locale) || LOCALE_PARTS.some((part) => saved[locale][part]));
   const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
   const toggle = (locale: (typeof LOCALES)[number], part: (typeof LOCALE_PARTS)[number], on: boolean) => setChosen((current) => {
     const next = { ...current[locale], [part]: on };
@@ -256,7 +265,8 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     }
     // A code this page has no sentence for says nothing, and still offers no button.
     if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
-    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub;
+    // Only the worker makes a dub again: an imported video's es, pt, id, vi and th never offer it.
+    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending && workerRemakes(locale);
     // Rendered for every saved dub, also with nothing in it, so that the line the next read
     // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
     return <>
@@ -274,21 +284,26 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   };
   return <section aria-label={t("languagesTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
     <p className="font-bold">{t("languagesTitle")}</p>
-    {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
+    {!showChoices ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languageProgressHelp")}</p>
+      {storyDubOff && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryNeedsSwitchableCC")}</p>}
+      {storyDubPending && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryPreselectedPendingFinal")}</p>}
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
-        <tbody>{LOCALES.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
+        <tbody>{rows.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
           <th scope="row" className="py-2 pr-3 text-left font-semibold">{t(`locales.${locale}`)}</th>
           {LOCALE_PARTS.map((part) => {
             const dubOff = part === "dub" && dramaDubOff;
             const state = saved[locale][part] ? project.languages?.[locale]?.[part] : undefined;
+            const offTitle = dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : undefined;
             return <td key={part} className="py-2 align-top">
-              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t("dubDramaLater") : undefined}>
+              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={offTitle}>
                 <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
-                {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
+                {part === "dub" && saved[locale].dub && storyDubPending && (!state || state.state === "working")
+                  ? <span className="text-xs text-[var(--muted)]">{t("dubStoryPendingFinal")}</span>
+                  : state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
               </label>
               {part === "dub" && saved[locale].dub && dubRetry(locale, state)}
             </td>;
@@ -536,12 +551,12 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 
 /**
  * The tutorials (slides videos): dramas and Shorts live on their own tabs, and the list is asked
- * for without the Shorts, which would otherwise crowd the tutorials out of it. What waits for the owner
- * comes first (a decision, a stopped video, a finished cut whose languages are not chosen), then what is
- * ready to upload (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md); under the two, every tutorial
- * is in the catalog, one line each, with the category and state filters, a search and pages
- * (VideoBrowser). A video that needs the owner is in both: the group is the reminder, the catalog the
- * record. Above them all, the owner asks for a video of one site article and sees those requests
+ * for without the Shorts, which would otherwise crowd the tutorials out of it. What is ready to upload
+ * comes first (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md), then every tutorial in the catalog,
+ * one line each, with the category and state filters, a search and pages (VideoBrowser), and under the
+ * catalog's pages what waits for the owner (a decision, a stopped video, a finished cut whose languages
+ * are not chosen): the owner asked for it there, so the catalog is not pushed down the page. A video
+ * that needs the owner is in both: the group is the reminder, the catalog the record. Above them all, the owner asks for a video of one site article and sees those requests
  * (admin-video-slides-requests.tsx).
  */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
@@ -564,9 +579,9 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   return <div className="grid gap-6" aria-label={t("listTitle")}>
     <SlidesRequests onOpen={onOpen} />
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
-    {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
     {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}
     <VideoBrowser onOpen={onOpen} revision={revision} />
+    {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
   </div>;
 }
 

@@ -35,8 +35,9 @@ export const TRANSITIONS = ["cut", "dissolve"];
 // camera move that ffmpeg animates in assemble). A still costs one image instead of clip seconds.
 export const VISUAL_MODES = ["clip", "still"];
 // A binge series' visual tier caps the share of its shots that may be clips (docs/videos/BINGE.md).
-export const VISUAL_TIERS = ["clips", "hybrid", "stills"];
-export const TIER_CLIP_SHARE_MAX = { clips: 1, hybrid: 0.4, stills: 0.1 };
+// "manga" is the motion comic: every shot a still under a camera move, no clip at all.
+export const VISUAL_TIERS = ["clips", "hybrid", "stills", "manga"];
+export const TIER_CLIP_SHARE_MAX = { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 };
 export const SUBTITLE_STYLES = ["drama", "plain"];
 export const MUSIC_TRACK = /^[a-z0-9][a-z0-9._-]{0,63}\.(?:mp3|m4a|wav|flac)$/;
 // An episode of a long series (docs/videos/SERIES.md): the series' slug as the site knows it.
@@ -227,8 +228,8 @@ const hash16 = (...parts) => {
 
 export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
-/** A drama drawn in one of the explainer presets: narrator only, every shot a still. */
-export const isExplainer = (doc) => isDrama(doc) && isExplainerPreset(doc.look?.preset);
+/** A narrator-only explainer: brand stories may use its picture look while keeping a cast. */
+export const isExplainer = (doc) => isDrama(doc) && doc.category !== "story" && isExplainerPreset(doc.look?.preset);
 /** The series whose identity an explainer wears ("sothatswhy"), or null: the channel's, or not an explainer. */
 export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
 /** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */

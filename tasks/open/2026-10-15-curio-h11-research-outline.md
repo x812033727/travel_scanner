@@ -1,0 +1,154 @@
+---
+id: 2026-10-15-curio-h11-research-outline
+title: Prepare Curio H11 Voynich source refresh and outline choices
+status: open
+priority: P2
+area: docs
+owner:
+claimed_at:
+created_at: 2026-10-15T16:34:00Z
+completed_at:
+branch: codex/curio-next-five-20261016
+depends_on: []
+scope:
+  - docs/videos/curio-h11
+---
+
+# Prepare Curio H11 Voynich source refresh and outline choices
+
+## Why
+
+使用者要求接續製作五集奇聞檔案局。H11 伏尼契手稿需要把新研究與仍未知的內容分清，產出可讓站主直接選 A／B 的大綱包；本任務只處理 H11 前製。
+
+## Definition of done
+
+- [x] research.md 列實際取得、僅摘要與無法開啟的來源。
+- [x] claims.md 分清材料定年、文字統計、頁邊註記及全文解讀。
+- [x] brief.md 提供 A／B、可朗讀 30–60 秒開場、六章、3–5 轉折、loops 與結尾新資訊。
+- [x] 獨立審核員讀回修正版；大綱層級通過，非正式劇本十三題通過。
+- [x] 完成獨立覆核與手動 outline 送審交接，後台讀回 pending。
+- [x] 原版與補格式版均讀回站主選 A；本集 US$6／本批 US$30 估算停手上限已核准。
+- [x] 延伸完成本機 A 案 video.json、script.md、逐句來源、loops 與作者檢查。
+- [x] 正式劇本通過獨立史料與十三題覆核後，交站主核准。
+
+## Steps
+
+- [x] 閱讀現行系列規則及腳本故事、開場、結尾和十三題規則。
+- [x] 唯讀參考 949bb91fc 題庫，重開館方、原始論文、校方聲明及研究者來源。
+- [x] 納入 2024 多光譜、2025 Yale 筆跡介紹及 Naibbe 作者 README 的有限結論。
+- [x] 按獨立覆核意見修正「2009 年定年工作」、開場不先揭露撤下新聞，以及模型圖僅為提案示意。
+- [x] 大綱階段送審後曾釋出票；當時尚無 video.json、未啟動付費工人。
+
+## How to verify
+
+`git diff --check`；`npm run check:tasks`；逐讀三份文件，確認每個大綱主張有來源、每案六章時長與 loops、開場文字可朗讀 30–60 秒。Naibbe 完整論文、原始 Yale 掃描與 NSA PDF 本輪未取得，不可宣稱已讀。
+
+## Notes — 大綱前階段歷史（目前狀態見下方正式稿交接）
+
+工作樹 curio-next-five，base a77a9416d；查核日 2026-10-16 Asia/Taipei。Arizona 原站 404，以大學供稿的 Phys.org 刊載版替代並明示；Naibbe 論文正文 403，但 raw README 已讀。多光譜筆跡歸屬是研究者判讀，不是解密完成。共同預算每集 US$6／五集 US$30 仍是尚未授權提案。本任務付費 US$0，未啟動付費工人、未推送。獨立覆核者 curio_h12_m09_planning 重開八個可讀來源，讀回定年、開場及模型示意修訂後無剩餘阻擋項。凍結 brief SHA-256：4cc10a9506a997a0beca7f102e277fdcd6b45edfa488b204fcc39b3e61b50b6d。git diff --check 與 check:tasks 通過（1895 票；既有長期認領／scope 警告保留）。
+
+2026-10-16 01:01（Asia/Taipei），主代理完成五集手動 outline 送審並讀回 pending；H11 review ID：`83bac5e3-c59b-417e-8060-0b14b4381f60`，對應上述最新 brief SHA。獨立覆核與送審交接完成，釋出認領但不標 done。下一位接手者須先讀回站主 A／B 選擇及本批 US$30 明確授權；目前兩者均未核准。送審卡未啟動付費製作。已送審 brief 維持原樣，由主代理統一 commit／PR。
+
+## 2026-10-16 正式稿交接（目前狀態）
+
+原版及補格式版 A 均已核准，收據見 `docs/videos/curio-next-five-20261016/decision-20261016.json`、`format-decision-20261016.json`。本集 US$6／五集 US$30 已授權，本作者尚未付費。原 research-outline 任務延伸正式稿，owner 保持 `codex-curio-h10-h11-scripts`，保留 claim 供盲評修稿，不另開重疊票。
+
+video SHA-256 `560e1e84f82768a440480a9ab39d8c8b394fe0c88d608b9818fc457dda6e8134`；brief `a82c6e996fbe316e5e0acb27396cc278f94dcbb9278e3b5f9baa33384a28f564`。75 句，文字時間軸估算 9.41 分鐘；純口播估算 489.12 秒。lint 0 errors／0 warnings，詳見 `script-validation.json`。完整正文、逐句來源、loops、估時與作者十三題自檢均在本集目錄。
+
+H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推測及 Naibbe 作者模型分層；沒有聲稱全文破解或實測模型。待獨立正式稿覆核及站主劇本核准；未送劇本後台、未配音、未產圖、未發布。
+
+本輪 `git diff --check`、逐句／來源／SHA 一致性檢查通過；`npm run check:tasks` 通過，驗證 1895 票，保留其他任務既有長期認領／重疊警告。作者收據並不充當盲評。
+
+## 2026-10-16 第一輪敘事退修
+
+獨立盲評未過：chapters_link, payoffs, no_recap, chapters_are_events, no_detour。已完成第 1 輪結構修訂，原答案保留在 `narrative-round1.json`，逐項回應在 `narrative-revision-1.md`。新版 video SHA `fc9b6b1ff2f94ab75ea1aa2d4e6753ad1d001b0de82ce693a1d3fd89f8e801a4`；75 句，估算 9.57 分。lint 0 errors／0 warnings；未標 narrative pass。提交後釋出認領，供獨立事實覆核接手。無後台劇本送審、無付費呼叫。
+
+第 1 輪修訂驗證：逐句文字及時間軸句序、主張／來源 ID、video／brief SHA 一致；`git diff --check` 與 `npm run check:tasks` 通過（1895 票，只有其他既有認領警告）。
+
+## 2026-10-16 獨立正式劇本史料查核
+
+查核員 `codex-gpt6-h10-h11-fact` 對版號 SHA-256 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4` 完成逐句、逐景資料與上架文字查核；[verify-1.md](../../docs/videos/curio-h11/verify-1.md) 記錄全部 75 句／73 景、來源、存取限制及聽眾檢查。沒有史實修改或未解主張，lint 0 errors／0 warnings。`v6856059` 一句 41 字，配音時注意停頓；期刊 Naibbe 全文未取得，正式稿只使用作者 README 能支持的範圍。此收據只覆核當前 SHA；若劇本改字要重新核對及重新綁定。獨立嚴格敘事盲評十三題全過，但站主正式劇本審核仍未完成。未送後台、未付費。
+
+主代理匯入新的 script-only 盲評答案，`narrative` 工具 exit 0（13/13 yes）。`script --slug curio-h11` 重新生成稿件，SHA-256 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`；`review-push --gate script` 成功，`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已在 `/admin/videos` 等待站主核准；尚未配音／產圖。
+
+## 2026-10-16 繁中旁白製作與 QA（進行中）
+
+站主已在後台核准本版劇本，`status --slug curio-h11` 現場讀回 `script approved`。`video.json` SHA-256 仍是 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4`，`script.md` SHA-256 仍是 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`。保留核准版本，未修改正文。
+
+`tts --dry-run` 為 Gemini Sulafat 73 請求、2,346 計費字元；`keyframes --dry-run` 為 MiniMax image-01 70 景，首輪約 US$0.94、最多三 take 約 US$2.83。共用停手帳本 `<home>/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json` 先保留 H11 TTS US$0.20，再實際合成 73/73 請求、75 句 WAV，實測旁白 09:08.2、2,346 計費字元；日誌無 hold，帳本按 US$0.20 保守估算結算，非供應商美元帳單。
+
+音訊 QA 另先保留 US$0.50，`check-audio` 完成 75/75 轉寫、1 次 Jev 判讀：48 句逐字相符、13 句同音／語助詞、4 句 Jev 接受，另有 10 句旗標（`v2405e28`, `v0e564e3`, `v16d9e2d`, `va919cc7`, `v470a2c5`, `v1df5834`, `v439465f`, `v2ebbd0d`, `vd56bdd7`, `v75e1ebb`）。QA US$0.50 以請求數保守估算結算；H11 累計估算 US$0.70，無供應商最終美元帳單。`review/audio.html` 已建立。本機 Whisper small 不看稿獨立轉寫完 10 句，逐句判讀見 `docs/videos/curio-h11/audio-qa-1.md`：0 句足以直接重錄、6 句支持辨識漂移、4 句仍需站主試聽（`v0e564e3`、`v1df5834`、`v2ebbd0d`、`vd56bdd7`）。**旁白尚未核准、未送分鏡、未產圖。**先把音訊與報告送後台；站主聽後若指出確定錯字，再定向重錄並重新核准。
+
+`timeline.json` SHA-256 `FF66A71BAC562CAE9A3013BFC7F72DD50A5F06107D4843F6A8421BD062AEFCA4`。`review-push --gate audio` 已成功送出 H11 旁白預覽；`review-pull --gate audio` 讀回 `waiting for the owner`。下一步等站主試聽並在後台核准，或指出句 ID／錯字。不可把本機第二轉寫當成站主核准。
+
+## 2026-10-16 旁白核准與插畫製作（最新狀態）
+
+站主已試聽 H11 旁白並在後台核准；`review-pull --slug curio-h11 --gate audio` 現場讀回 `audio: approval recorded`，`status` 顯示 `narration approved`。上述 10 句自動旗標仍保留於 QA 收據，未自行重錄。劇本正文與時間軸未改。
+
+`keyframes --dry-run --slug curio-h11 --takes 3` 顯示 70 景，MiniMax image-01 1K，首輪約 US$0.94、三 take 上限約 US$2.83。付費前已在共用停手帳本預留 H11 插畫 US$2.83；原有音訊估算 US$0.70，預留後本集 US$3.53，未逾本集 US$6、本批 US$30。正使用 `keyframes --slug curio-h11 --takes 3` 製作與 Gemini 逐圖評審，逐鏡保存通過的快取。`strange-writing` 三 take 均出現可辨漢字，評審 text 0；整批結束後需定向修提示詞，不能把失敗 take 當成通過插畫。完成後依實際帳本結算、修明確問題，再送分鏡供站主核准。未送分鏡、未製成片、未上傳。
+
+## 2026-10-16 插畫 QA 完成（最新狀態）
+
+第一輪 70 鏡中 67 鏡通過，`strange-writing`、`paper-published`、`story-removed` 三鏡三 take 仍未過。已定向改這三鏡提示詞，第二輪只產生 5 張圖；其餘 67 鏡沿用快取與評審結果。最終 `video.json` SHA-256 `FE86AE2B1795834CA23FC2E032A3DD8AD5C2DF72840AA13116898319C2FB3624`，已核准的 `script.md` SHA-256 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108` 未變。`lint` 為 0 errors／0 warnings；`status` 讀回 script approved、narration approved、keyframes drawn。
+
+最終 70／70 鏡評審通過，0 `needs_review`；manifest SHA-256 `30B7D6CEB8CD441A1D85DC8BDA684C90E959753B954ECD1216FE362C96EFFC99`。三頁聯絡表已逐頁目視，無新增史實矛盾；詳細缺陷、修法與三頁 SHA 見 `docs/videos/curio-h11/keyframes-qa-1.md`。本機媒體帳本工具估算 US$1.458、108 張 image-01 圖片／108 次 Gemini 評審，無 held／unknown／failed；主代理已將修圖預留按 US$0.0675 結算，共用帳本本集與音訊 US$0.70 合計 US$2.158、無未結預留，低於本集 US$6。未製成片或上傳。
+
+`review-push --slug curio-h11 --gate storyboard` 已送出並回報 pending；`review-pull --slug curio-h11 --gate storyboard` 現場讀回 `storyboard: waiting for the owner`。三頁聯絡表已交站主查看；需站主在 `/admin/videos` 核准本版分鏡才可進成片。未製成片、未上傳。
+
+## 2026-10-16 分鏡核准與成片製作中
+
+站主回覆已看過三頁聯絡表並核准 H11 分鏡；`review-pull --gate storyboard` 和 `status --slug curio-h11` 現場讀回 `storyboard approved`，綁定既有 70／70 通過的 manifest。`render` 已完成（3 個需畫的卡片狀態），`clips` 乾跑與實跑均確認 70 張 still、0 個付費片段，沒有新圖或影片生成費用。`assemble` 正在本機編碼；尚未完成最終 QA、成片送審或上傳。
+
+## 2026-10-16 成片已送人工審核（最新狀態）
+
+`assemble` 已完成 9:34.2 成片，繁中字幕 104 cue。最終 QA **10／11**，唯一未過為片尾同一卡片停留 22 秒（規則上限 15 秒）；已在送審時標記 `--manual-review`，不把它說成全過。失效的 Phys.org 轉載連結已換成原始亞利桑那大學實驗報告的可開 PDF；語言檔 `decided_at: null` 明確保留站主尚未選語言。本次只做繁中成片，劇本 75 句、已核准旁白與 70 張分鏡均未改。
+
+`review-push --gate final --manual-review` 成功送出 720p 預覽，`review-pull --gate final` 現場讀回 `final: waiting for the owner`。成片 SHA-256 `060B86C335008868EA93CC1977417A64EBE0A63D7F2994762671D7BBF27D3A15`。完整 11 項、來源修復、預覽與字幕雜湊及停手帳本見 [final-qa-1.md](../../docs/videos/curio-h11/final-qa-1.md)。H11 累計保守估算 US$2.208／US$6；尚未核准成片、未製作上傳包、未上傳 YouTube。
+
+## 2026-10-16 H11 成片核准與繁中基礎包
+
+站主在後台核准成片，`review-pull --gate final` 讀回 `approval recorded`。`package --slug curio-h11` 建出繁中基礎包，四項檢查全過，詳見 [upload-qa-1.md](../../docs/videos/curio-h11/upload-qa-1.md)；`review-push --gate publish` 已送審，`review-pull` 讀回 `publish: waiting for the owner`。後台語言選項尚未保存（`decided_at: null`）；站主表示要另選外語部件，選定後需按其設定製作並重新打包。未上傳或發布。
+
+## 2026-10-16 三語選擇與取樣單位修正
+
+後台已保存英、日、韓各語的標題說明、字幕與配音，`locales_decided_at=2026-10-16T05:22:29.664767Z`；站主另核准 H11 多語 US$2.00，H11 估算停手上限 US$8.00。加上 H10 同額增額，五集目前合計 US$34.00；見 [multilingual-authorization-1.md](../../docs/videos/curio-h11/multilingual-authorization-1.md)。三語工作表已填，但未合併或配音。
+
+英文獨立審稿查到已核准繁中第 `v0e564e3` 句的「四頁」與 Hodgins 2009 原始定年報告的四「葉」不符，已在同一 H11 任務認領內將唯一這句改為「四葉」，同步主張表及來源登錄；原始樣本分別出自第 8、26、47、68 葉。新版 `script.md` SHA-256 `7000C074516D3A30484E794D9D490DFF9412E8A869AD4743D81915CDAC7D6238`，獨立史料及十三題敘事複核全過，lint 0／0；見 [修正收據](../../docs/videos/curio-h11/source-correction-1.md)及[複核收據](../../docs/videos/curio-h11/source-recheck-1.md)。已 `review-push --gate script` 送新版後台，`review-pull` 讀回等待站主；**舊劇本、旁白、成片及上傳包核准不得沿用**。先等新版劇本核准，再重建並送審後續媒體。英、日獨立翻譯審稿的 HOLD 及修項見各語 `i18n-review-*-1.md`；三語未付費合成、未上傳。
+
+## 2026-10-16 修正版旁白核准與新成片待站主
+
+站主已核准 `7000C074…D6238` 劇本與只重錄 `v0e564e3`「四葉」的新旁白；`review-pull` 分別讀回 script/audio approval recorded。重錄一個請求、25 計費字元，其餘舊 take 快取沿用；新版時間軸 SHA-256 `CCFF7C2723920387883243FC131FDFD1B6B8D57606DE39EF1A33587B96E36905`。重新合成的 9:34.3 成片 SHA-256 `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`，四語字幕已按新版繁中時間軸產出。完整媒體與 QA 收據見 [final-qa-2.md](../../docs/videos/curio-h11/final-qa-2.md)。
+
+`review-push --gate final --manual-review` 已送新版 720p 預覽；`review-pull` 讀回 **waiting for the owner**。QA 為 10／11，只有片尾同一卡停留 22 秒未過節奏門檻，已請站主審看新版。舊成片與上傳包核准不能沿用。H11 共用帳本目前保守估算 US$2.348／US$8，三語付費配音尚未開始，YouTube 未上傳。
+
+## 2026-10-16 H11 認領移交與多語接續
+
+站主明確同意將已結束的 `codex-gpt6-h11-audio-production` 認領移交；主協調者以 `codex-gpt6-h11-final` 重新認領本票。新版「四葉」成片 `54EFA178…801FF1BC` 已在後台核准，本機 `approvals.json` 及 `status` 均對應此 SHA。英、日、韓三語的標題說明、字幕、配音在 `languages.json` 全勾；翻譯獨立審稿最終各為 PASS。三語配音乾跑分別為 73 個請求、英 5,641／日 2,669／韓 2,878 計費字元，三語皆 0 個無法塞入的視窗。沿用已核准的繁中劇本與成片，先處理新版上傳包，再依每語 US$0.15 配音、US$0.50 音訊 QA 預留、執行及核銷；新增多語上限 US$2.00、H11 總上限 US$8.00。遇到費用不明或需要定向重錄先停，不自行擴額。未上傳 YouTube。
+
+英語 73 請求／5,641 計費字元已完成，9:34.3 音軌 0 時槽超出；75 句 QA 有 6 旗標，離線 Whisper small 全部複核。3 句 Gemini 差異被離線排除、1 句 Marci/Marcy 為同音拼寫，`v2ebbd0d` Naibbe 與 `vb393dd6` text/texts 需站主聽感；細節與逐句試聽頁見 [i18n-audio-qa-en-1.md](../../docs/videos/curio-h11/i18n-audio-qa-en-1.md)。英語 TTS／QA 各 US$0.15／0.50 已估算核銷，H11 累計 US$2.998／8、多語 US$0.65／2。日語 TTS US$0.15 已預留且開始執行。站主尚未試聽英語配音，未送語言審核或上傳。
+
+站主其後依逐句頁試聽並回覆「英語旁白可以」；僅代表音訊聽感通過，不代表 `languages` 後台卡或 Studio 上傳已完成。日語製作續行。
+
+日語 TTS 已完成 73 請求／2,669 計費字元，產物 `dubs/ja.m4a` SHA `52048F3AC27C411DC05A7666514A0B710D01D49E46E2B747783A53409FFD2CEE`；`ffprobe` 實測 574.300 秒，73 視窗 0 超出、2 個需加速，最高 1.12x。TTS US$0.15 已核銷，H11 累計 US$3.148／8、多語 US$0.80／2。日語 QA 尚未執行；將先預留再跑。
+
+日語 73 請求／2,669 計費字元已完成，9:34.3 音軌 0 時槽超出、2 個加速最高 1.12 倍。75 句 QA 為 39 exact、16 Jev 接受、20 旗標；離線 Whisper small 定向複核 12 句，關鍵否定 `v3962cb5`、數量 `v4353a57` 皆支持核准稿。已整理需站主聽辨的六句與逐句頁，見 [i18n-audio-qa-ja-1.md](../../docs/videos/curio-h11/i18n-audio-qa-ja-1.md)。日語 TTS／QA 各 US$0.15／0.50 已估算核銷，H11 US$3.648／8、多語 US$1.30／2。尚未宣稱日語旁白核准。韓語 TTS US$0.15 已預留並執行中，未上傳 YouTube。
+
+韓語 TTS 73 請求／2,878 計費字元已完成，`dubs/ko.m4a` 574.300 秒，73 視窗 0 加速／0 超出。75 句 QA 為 57 exact、2 Jev 接受、16 旗標；兩句離線近音分流後，站主已試聽並回覆「韓語旁白可以」，不自行重錄；見 [i18n-audio-qa-ko-1.md](../../docs/videos/curio-h11/i18n-audio-qa-ko-1.md)。韓語 TTS／QA 各 US$0.15／0.50 已核銷，H11 全集 US$4.298／8、多語 US$1.95／2，最終供應商帳單不可得。四語字幕已重建（zh-TW 104、en 84、ja 121、ko 121 cues），三語本機上傳包 `package` 四項皆過，含新版核准成片 `54EFA178…`；尚待日語人耳結果再送新版上傳包／語言卡，未上傳 YouTube。
+
+## 2026-10-16 三語試聽完成與上傳包送審
+
+站主已再試聽日語逐句頁，回覆「日語旁白可以」；英、韓人耳結果亦已接受。依先前核准的 H11 認領移交，任務認領從已結束的 `codex-gpt6-h11-final` 轉至 `codex-gpt6-h11-package-close`。沒有重錄或新付費呼叫，共用停手帳本未更動，H11 估算仍為 US$4.298／8（多語 US$1.95／2）。
+
+本機四語上傳包九項 SHA 與 [upload-qa-2.md](../../docs/videos/curio-h11/upload-qa-2.md) 一致；`package --slug curio-h11` exit 0、4／4，`metadata.json` SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`，成片 SHA `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`。新版 `review-push --gate publish` 與 `review-push --gate languages` 均送審成功；各自 `review-pull` 讀回 `waiting for the owner`。下一步由站主在 `/admin/videos` 審閱這兩張最新版卡片，再由站主親自在 YouTube Studio 處理私人上傳與三語音軌；後續須讀回核准與 Studio 狀態，不可把送審當成上傳或發布。
+
+唯讀後台列核對最新版 `publish` review ID `78c54776-53db-4f4c-b902-536f871f30dd`／SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`、最新版 `languages` review ID `fef69bcd-548f-4837-af28-5d8108d287ac`／SHA `8B35A601DE8F5A705E44AD5DF2946A09404C43CF36BB9F51923902216E4521AB`，兩者目前均 `pending`。舊繁中基礎包 publish ID `52c30ba2-0309-4879-bf36-331366d74e8a` 已 `superseded`。本票改為 `blocked`，理由是等待站主審核與其自行操作 Studio；沒有活躍產製工作。
+
+## 2026-10-17 H11 語言縮圖補件
+
+站主指出 H11 缺少語言專用縮圖。原任務持有者已結束工作；先前站主已同意 H11 範圍移交，此次又直接要求修正 H11。查無其他 H11 工作樹、遠端分支或開啟中的獨立 PR；先將原本因站主／Studio 關卡而 `blocked` 的票改回 `open`，再以 `--force` 將本範圍認領給 `codex-gpt6-h11-thumbnail`，只處理縮圖。詳見 [thumbnail-locales-20261017.md](../../docs/videos/curio-h11/thumbnail-locales-20261017.md)。
+
+已用 `render --thumbnails-only` 補齊英、日、韓三張 1280×720 語言專用縮圖，逐張及 320×180 預覽核對，三語文案來源雜湊均 current。`lint` 0／0、`package` 4／4；新版 `upload/metadata.json` SHA `301E34A22EEF16AF3EE38906FD448CAC059795D4F9ED54BA0FCB1D8AD50D2192`，主繁中縮圖與已核准成片 SHA 均未變、三語音軌未重錄。後台讀回最新 `publish` 卡 `8be04d82-9f4a-43f0-b177-c082dbb7ff65`／SHA `301E34A22EEF16AF3EE38906FD448CAC059795D4F9ED54BA0FCB1D8AD50D2192` 與 `languages` 卡 `cd3f9fe3-7f02-4df2-98e8-c928d9bd1b49`／SHA `CA1BE987B9EEC6B31C1270B4DAC132B4D59467D5C2D2375AD9A5E946E032E2FE` 皆 `pending`；既有私人影片 ID `9Gn00ib57OA`，英／日／韓 dub state 仍為 uploaded。下一步是站主核准這兩張新卡，開啟 `https://studio.youtube.com/video/9Gn00ib57OA/edit` 的「語言」頁，分別點 en／ja／ko，在各語「縮圖」按新增，上傳媒體工作目錄的 `upload/thumbnails/en.jpg`、`ja.jpg`、`ko.jpg`，按「更新」，重新整理後逐語切換驗證畫面。沒有付費呼叫，也未改公開狀態。
+
+站主回覆「OK」後，2026-10-17 03:14 UTC 現場後台讀回上述兩張最新卡皆 approved；`review-pull --gate publish`／`languages` 已記錄到本機 `approvals.json`，各自 SHA 與上傳包一致。已將三張 Studio 語言縮圖路徑交站主；尚待其實際上傳與逐語顯示確認，不把後台核准或既有配音 uploaded 狀態當作語言縮圖上傳證據。
+
+2026-10-17 03:27 UTC，站主回覆「三語縮圖都已顯示」，表示在 H11 Studio 語言頁逐語上傳並重整後，英／日／韓縮圖均已由站主目視確認。本機再核三張 `upload/thumbnails/` SHA 與[縮圖補件收據](../../docs/videos/curio-h11/thumbnail-locales-20261017.md)一致；新版上傳包 `metadata.json` SHA `301E34A2…D2192`、成片 SHA `54EFA178…801FF1BC` 均未變，`approvals.json` 有對應的最新 `publish`／`languages` 核准。此為站主回報的 Studio 顯示狀態，代理未獨立驗觀眾端，也沒有排程或發布。H11 語言縮圖缺漏已按站主回報解決；保留本票供整批 PR／上架交接，釋出認領。

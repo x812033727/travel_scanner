@@ -78,7 +78,7 @@ def verify_review(
         raise ValueError("Repository preservation identity and review details required")
     try:
         reviewed_at = datetime.fromisoformat(
-            review["reviewed_at"].replace("Z", "+00:00")
+            review["reviewed_at"]
         )
     except ValueError as error:
         raise ValueError(

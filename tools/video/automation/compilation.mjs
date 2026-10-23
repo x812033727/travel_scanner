@@ -15,7 +15,7 @@ import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compil
 import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent, reviewHash, reviewProblem } from "../core/compilation-review.mjs";
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
-import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
 import { ARTIFACTS, compilationChapters, compilationSourceHashes, compilationTranslationStale, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -368,7 +368,7 @@ export async function planMetadata(automation, state, previousProblem = null) {
 function stampLegacyTranslations(dir, before, video) {
   const earlier = compilationSourceHashes(before);
   if (isDeepStrictEqual(earlier, compilationSourceHashes(video))) return;
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const translation = readJson(file, null);
     if (!isObject(translation) || compilationTranslationStale(translation, video) !== "legacy") continue;
@@ -377,9 +377,10 @@ function stampLegacyTranslations(dir, before, video) {
 }
 
 /**
- * The other four locales' title, description, tags and chapter titles, one locale a unit. Every
- * locale the site captions in gets them (YouTube's localizations), whatever the caption
- * setting narrows the episodes to: the compilation's status waits on all four.
+ * The other default locales' title, description, tags and chapter titles, one locale a unit
+ * (core/schema.mjs DEFAULT_LOCALES: en, ja and ko; a compilation is not made in es, pt, id, vi
+ * or th yet). Each gets them (YouTube's localizations), whatever the caption setting narrows the
+ * episodes to: the compilation's status waits on all of them.
  */
 export async function translateMetadata(automation, state) {
   const { ctx } = automation;
@@ -395,7 +396,7 @@ export async function translateMetadata(automation, state) {
   // chapter titles (the plan made again) reads as stale (core/state.mjs translationComplete) and is
   // translated again here instead of kept.
   const source = compilationSourceHashes(video);
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
     let problem = null;
@@ -443,6 +444,34 @@ export async function translateMetadata(automation, state) {
 }
 
 /**
+ * Package again when upload/ no longer holds what package would write now: the composed
+ * title, description, tags, localizations and chapters, or the rendered thumbnail. The message
+ * of the round, or null when the package is current.
+ */
+async function repackageStale(automation, state, project, why) {
+  const workdir = automation.workdir(state.slug);
+  const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
+  const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
+  if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
+  const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
+  const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
+  const fieldsMoved = !packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]));
+  if (!fieldsMoved && !thumbnailMoved(workdir)) return null;
+  const result = await automation.run(["package", "--slug", state.slug]);
+  if (result.code !== 0) return automation.block(state, `package failed ${why}: ${automation.lastLine(result.out)}`);
+  return `${state.slug}: ${why === "after public-text review" ? "reviewed " : ""}upload metadata rebuilt`;
+}
+
+/** Whether the rendered thumbnail.jpg differs from the one upload/ holds (package copies it). */
+function thumbnailMoved(workdir) {
+  const rendered = path.join(workdir, "thumbnail.jpg");
+  if (!existsSync(rendered)) return false;
+  const packaged = path.join(workdir, "upload", "thumbnail.jpg");
+  return !existsSync(packaged) || !readFileSync(rendered).equals(readFileSync(packaged));
+}
+
+/**
  * One step of a compilation, or undefined when `next` is a step every video shares (the final
  * cut, the upload package, the YouTube id), which flow.mjs handles.
  */
@@ -465,27 +494,23 @@ export async function advanceCompilation(automation, state, next) {
       return `${state.slug}: source public text reviewed`;
     }
     const later = ["metadata translated", "final video approved", "upload package", "on YouTube"].includes(next) || !next;
-    const needsTranslationReview = LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
+    const needsTranslationReview = DEFAULT_LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
       const translation = project.translations[locale];
       return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });
     if (needsTranslationReview) return translateMetadata(automation, state);
-    // Status historically binds a package only to final.mp4. A resumed worker must replace
-    // its old public fields before handing that package to the shared publish step.
-    if (next === "on YouTube" || !next) {
-      const workdir = automation.workdir(state.slug);
-      const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
-      const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-      const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
-      if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
-      const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
-      const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
-      if (!packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]))) {
-        const result = await automation.run(["package", "--slug", state.slug]);
-        if (result.code !== 0) return automation.block(state, `package failed after public-text review: ${automation.lastLine(result.out)}`);
-        return `${state.slug}: reviewed upload metadata rebuilt`;
-      }
+    if (!next) {
+      const repackaged = await repackageStale(automation, state, project, "after public-text review");
+      if (repackaged) return repackaged;
     }
+  }
+  // Status binds a package only to final.mp4, so a compilation planned again after its package
+  // (an owner's reset, a deleted keyframes manifest) keeps a byte-identical cut and the old
+  // package. Before the publish push, any compilation whose fields or thumbnail moved is packaged
+  // again; one past its upload (`next` is no longer "on YouTube") is left as YouTube has it.
+  if (next === "on YouTube") {
+    const repackaged = await repackageStale(automation, state, loadProject({ slug: state.slug, root: ctx.root }), context.mysteries.length ? "after public-text review" : "after a new plan");
+    if (repackaged) return repackaged;
   }
   if (next === "cards rendered") {
     const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];

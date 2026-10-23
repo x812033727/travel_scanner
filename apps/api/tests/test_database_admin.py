@@ -13,6 +13,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+import app.schema as schema_module
 from app.admin.operations_service import list_audit_logs
 from app.auth.service import create_admin_step_up_token, current_user
 from app.config import get_settings
@@ -111,6 +112,54 @@ async def test_database_overview_maps_one_fixed_postgres_snapshot(
     sql = str(session.execute.await_args.args[0])
     assert "pg_stat_activity" in sql
     assert "pg_stat_database" in sql
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("revision", "is_current"),
+    [
+        ("0133_story_followon_budget", True),
+        ("0134_unreviewed_change", False),
+    ],
+)
+async def test_database_overview_reports_exact_0133_rollback_revision(
+    monkeypatch: pytest.MonkeyPatch, revision: str, is_current: bool
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0132_video_pilot_budget"
+    )
+    monkeypatch.setattr(
+        database_service, "expected_schema_revision", lambda: "0132_video_pilot_budget"
+    )
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = None
+    scalar_rows = Mock()
+    scalar_rows.all.return_value = []
+    session.scalars.return_value = scalar_rows
+    session.execute.return_value = MappingResult(
+        one={
+            "version": "17.6",
+            "database_size_bytes": 10_000,
+            "maximum": 100,
+            "active": 2,
+            "idle": 4,
+            "waiting": 1,
+            "long_transactions": 0,
+            "lock_waits": 1,
+            "cache_hit_ratio": 99.95,
+            "current_revision": revision,
+        }
+    )
+    monkeypatch.setattr(
+        DatabaseAgentClient,
+        "overview",
+        AsyncMock(return_value=AgentDatabaseOverview(connected=True, available=True)),
+    )
+    snapshot = await database_overview(cast(AsyncSession, session))
+    assert snapshot.schema_info is not None
+    assert snapshot.schema_info.expected_revision == "0132_video_pilot_budget"
+    assert snapshot.schema_info.current_revision == revision
+    assert snapshot.schema_info.is_current is is_current
 
 
 @pytest.mark.asyncio

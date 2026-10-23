@@ -18,9 +18,13 @@
 //   <sha>.wav   a synthesis's confirmed answer as `send` returned it, saved before the entry says so.
 //   <sha>.<wait id>.claim  for a moment, while a run turns a waiting entry back into its own sent
 //               one: whoever creates it first sends, so two runs never both do.
+//   <sha>.answer.json  the complete confirmation, bound to exact sent bytes, committed before
+//               replacing sent. A closed producer's intact staged answer or legacy temp can be
+//               reused without changing canonical sent; exact evidence stays under recovery/.
 //
 // A run asking for the same body takes a confirmed answer from disk instead of buying it again,
-// and stops on a sent or held one without sending it (SPEECH_UNCERTAIN, the owner's, exit 3): it
+// and stops on a sent or held one without a proven saved answer (SPEECH_UNCERTAIN, the owner's,
+// exit 3): it
 // may have run and been charged, and only `forget` clears it. A waiting one it sends: nothing
 // that may have reached a provider is out, and the run that left it stopped mid-wait or, still
 // asleep, stops when it wakes (exit 4) without sending. A body that differs in any byte
@@ -37,10 +41,10 @@
 //   node tools/video/tts/speech-journal.mjs list --dir D
 //   node tools/video/tts/speech-journal.mjs forget --dir D --sha S
 import { createHash, randomUUID } from "node:crypto";
-import { closeSync, existsSync, fsyncSync, linkSync, mkdirSync, openSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, fsyncSync, linkSync, lstatSync, mkdirSync, openSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { parseArgs } from "node:util";
+import { isDeepStrictEqual, parseArgs } from "node:util";
 
 import { atomicWrite, UsageError } from "../core/paths.mjs";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
@@ -63,6 +67,7 @@ export const requestSha256 = (body) => sha256(JSON.stringify(body));
 const entryFile = (dir, sha) => path.join(dir, `${sha}.json`);
 const claimFile = (dir, sha, waitId) => path.join(dir, `${sha}.${waitId}.claim`);
 const wavFile = (dir, sha) => path.join(dir, `${sha}.wav`);
+const answerFile = (dir, sha) => path.join(dir, `${sha}.answer.json`);
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const oneLine = (text) => String(text).replace(/\s+/g, " ").trim();
 
@@ -95,6 +100,147 @@ function createOnce(file, data) {
   } finally {
     rmSync(temporary, { force: true });
   }
+}
+
+// A permission error is not proof that another producer stopped. PID reuse is conservative:
+// an unrelated live process with the same PID holds as well.
+function processAlive(pid) {
+  try { process.kill(pid, 0); return true; }
+  catch (error) { return error?.code === "ESRCH" ? false : null; }
+}
+
+const regular = (file) => {
+  try { return lstatSync(file).isFile(); } catch { return false; }
+};
+const CONFIRMED_FIELDS = ["confirmed_at", "sent_sha256", "wav_sha256", "wav_bytes", "billable", "answer", "answer_sha256"];
+function asSent(entry) {
+  const sent = { ...entry, status: "sent" };
+  for (const name of CONFIRMED_FIELDS) delete sent[name];
+  return sent;
+}
+
+// The complete confirmation is committed through a new name before the replace of `sent`.
+// This is local persistence only: neither this file nor an orphan temp authorizes another POST.
+function stageAnswer(route, dir, sha, sentBytes, confirmedBytes, create) {
+  const data = json({ schema_version: 1, sent_sha256: sha256(sentBytes), sent_bytes: sentBytes.length,
+    confirmed_sha256: sha256(confirmedBytes), confirmed_bytes: confirmedBytes.length,
+    confirmed_base64: confirmedBytes.toString("base64") });
+  const file = answerFile(dir, sha);
+  if (!create(file, data) && (!regular(file) || !readFileSync(file).equals(Buffer.from(data)))) {
+    throw holdError(route, dir, sha, "has a different retained answer confirmation");
+  }
+}
+
+/** Strict recovery checks; ordinary accepted/cached answers still follow each route's contract. */
+function recoveryAnswer(route, dir, sha, candidate, request) {
+  const fields = Object.keys(asSent(candidate));
+  fields.push("confirmed_at");
+  if (candidate.sent_sha256 !== undefined) fields.push("sent_sha256");
+  fields.push(...(route === SPEECH ? ["wav_sha256", "wav_bytes", "billable"] : ["answer", "answer_sha256"]));
+  if (!isDeepStrictEqual(Object.keys(candidate).sort(), fields.sort())) return null;
+  if (route === SPEECH) {
+    if (!SHA256.test(candidate.wav_sha256 ?? "") || !Number.isInteger(candidate.wav_bytes) || candidate.wav_bytes <= 44 ||
+        !Number.isFinite(candidate.billable) || candidate.billable < 0 || !regular(wavFile(dir, sha))) return null;
+    const answer = route.load(dir, sha, candidate);
+    if (!answer) return null;
+    try {
+      const wav = parseWav(answer.wav);
+      requireNarrationFormat(wav);
+      return wav.samples.length ? answer : null;
+    } catch { return null; }
+  }
+  if (!SHA256.test(candidate.answer_sha256 ?? "") || !intact(candidate) || !candidate.answer || typeof candidate.answer !== "object") return null;
+  const keys = Object.keys(candidate.answer);
+  if (route === TRANSCRIBE) return keys.length === 1 && keys[0] === "text" && typeof candidate.answer.text === "string" ? candidate.answer.text : null;
+  if (keys.length !== 1 || keys[0] !== "results" || !Array.isArray(candidate.answer.results)) return null;
+  const ids = (request.lines ?? []).map((line) => line.id);
+  const results = candidate.answer.results;
+  if (!ids.length || new Set(ids).size !== ids.length || results.length !== ids.length || new Set(results.map((item) => item?.id)).size !== ids.length) return null;
+  for (const result of results) {
+    if (!result || !isDeepStrictEqual(Object.keys(result).sort(), ["id", "noul"]) || !ids.includes(result.id)) return null;
+    const value = result.noul;
+    if (!(typeof value === "number" && Number.isFinite(value) && value >= 0 && value <= 1) && !["NaN", "Infinity", "-Infinity"].includes(value)) return null;
+  }
+  return route.load(dir, sha, candidate);
+}
+
+/**
+ * Read/reuse an exact complete answer left after a failed local promotion. Canonical `sent`
+ * stays untouched, so recovery cannot replace a newer held, forgotten or retaken generation.
+ * All evidence is preserved before hand-out, using exclusive content-addressed files. Archive
+ * files are never discovery candidates. Concurrent readers may reuse one answer, as they can
+ * for an ordinary confirmed entry; only the first creates its identical proof.
+ */
+function recoverAnswer(route, dir, sha, entry, request, { create, processAlive: alive }) {
+  const file = entryFile(dir, sha);
+  if (!regular(file)) return null;
+  const sentBytes = readFileSync(file);
+  try {
+    if (!isDeepStrictEqual(JSON.parse(sentBytes.toString("utf8")), entry) || !isDeepStrictEqual(entry.request, request)) return null;
+  } catch { return null; }
+  const sentSha = sha256(sentBytes);
+  const candidates = [];
+  const names = readdirSync(dir).filter((name) => name === `${sha}.answer.json` || new RegExp(`^${sha}\\.json\\.[1-9][0-9]*\\.tmp$`).test(name)).sort();
+  for (const name of names) {
+    const source = path.join(dir, name);
+    if (!regular(source)) return null;
+    const sourceBytes = readFileSync(source);
+    let raw, candidate, pid;
+    try {
+      if (name === `${sha}.answer.json`) {
+        const stage = JSON.parse(sourceBytes.toString("utf8"));
+        if (stage.schema_version !== 1 || stage.sent_sha256 !== sentSha || stage.sent_bytes !== sentBytes.length ||
+            !SHA256.test(stage.confirmed_sha256 ?? "") || !Number.isInteger(stage.confirmed_bytes) || typeof stage.confirmed_base64 !== "string") return null;
+        raw = Buffer.from(stage.confirmed_base64, "base64");
+        if (raw.toString("base64") !== stage.confirmed_base64 || raw.length !== stage.confirmed_bytes || sha256(raw) !== stage.confirmed_sha256) return null;
+        candidate = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(raw));
+        pid = candidate.producer_pid;
+      } else {
+        raw = sourceBytes;
+        candidate = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(raw));
+        pid = Number(name.slice(`${sha}.json.`.length, -4));
+      }
+    } catch { return null; }
+    // A known older generation is retained, but cannot answer for this one.
+    if (!isDeepStrictEqual(asSent(candidate), entry)) continue;
+    if (candidate.status !== "confirmed" || candidate.schema_version !== 1 || candidate.request_sha256 !== sha ||
+        (candidate.path ?? SPEECH.path) !== route.path || !Number.isInteger(pid) || pid <= 0 || pid > 0x7fffffff ||
+        (candidate.producer_pid !== undefined && candidate.producer_pid !== pid) || alive(pid) !== false ||
+        typeof candidate.confirmed_at !== "string" || !Number.isFinite(Date.parse(candidate.confirmed_at)) ||
+        (candidate.sent_sha256 !== undefined && candidate.sent_sha256 !== sentSha)) return null;
+    // Legacy temps have no byte hash/nonce. Only the exact JSON the old writer copied from
+    // `sent`, including key order, whitespace and newline, establishes their original receipt.
+    if (name !== `${sha}.answer.json` && !Buffer.from(json(asSent(candidate))).equals(sentBytes)) return null;
+    const answer = recoveryAnswer(route, dir, sha, candidate, request);
+    if (answer === null) return null;
+    candidates.push({ name, sourceBytes, raw, candidate, pid, answer });
+  }
+  if (!candidates.length || new Set(candidates.map((item) => sha256(item.raw))).size !== 1) return null;
+  const [chosen] = candidates;
+  const recovery = path.join(dir, "recovery");
+  const archive = path.join(recovery, sentSha);
+  for (const directory of [recovery, archive]) {
+    try { mkdirSync(directory); } catch (error) { if (error?.code !== "EEXIST") throw error; }
+    const info = lstatSync(directory);
+    if (!info.isDirectory() || info.isSymbolicLink()) throw holdError(route.path, dir, sha, "has a recovery directory that is not an ordinary directory");
+  }
+  const preserve = (name, bytes) => {
+    const target = path.join(archive, name);
+    if (!create(target, bytes) && (!regular(target) || !readFileSync(target).equals(Buffer.from(bytes)))) {
+      throw holdError(route.path, dir, sha, "has changed recovery evidence");
+    }
+    return { name, sha256: sha256(bytes), bytes: bytes.length };
+  };
+  const evidence = { sent: preserve("sent.json", sentBytes), confirmed: preserve("confirmed.json", chosen.raw) };
+  if (route === SPEECH) evidence.wav = preserve("answer.wav", chosen.answer.wav);
+  evidence.sources = candidates.map((item, index) => ({ original_name: item.name, ...preserve(`source-${index}.json`, item.sourceBytes) }));
+  const proof = json({ schema_version: 1, request_sha256: sha, path: route.path, sent_sha256: sentSha,
+    confirmed_sha256: sha256(chosen.raw), producer_pid: chosen.pid, evidence });
+  preserve("proof.json", Buffer.from(proof));
+  // An intentional release/forget/retake that happened while evidence was copied cannot be
+  // treated as the generation we just validated. No canonical write occurs in either case.
+  if (!regular(file) || !readFileSync(file).equals(sentBytes)) return null;
+  return { answer: chosen.answer, entryHash: sentSha };
 }
 
 // The bodies client.mjs sends for a clip and for Jev (transcribeClip, judgeLines), built the same
@@ -220,31 +366,48 @@ function takenOver(route, dir, sha) {
  * disk when an earlier run bought it. `reused` counts the answers taken from disk.
  * `release()` drops the confirmed entries handed out so far: call it once their results are saved.
  */
-export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
+export function openSpeechJournal(dir, { now = () => new Date(), write = durableWrite, create = createOnce, processAlive: alive = processAlive } = {}) {
   const stamp = () => now().toISOString();
-  const handed = new Set();
+  // Byte hashes identify the consumed generation, not merely its same-body request key.
+  const handed = new Map();
 
   function hold(entry, why) {
     try {
-      durableWrite(entryFile(dir, entry.request_sha256), json({ ...entry, status: "held", held_at: stamp(), why: oneLine(why) }));
+      write(entryFile(dir, entry.request_sha256), json({ ...entry, status: "held", held_at: stamp(), why: oneLine(why) }));
     } catch {
       // The sent entry stays, and holds as well.
     }
   }
 
   /** A confirmed answer from disk, or the hold an entry that is not one makes. */
-  function saved(route, sha, entry) {
+  function saved(route, sha, entry, request) {
     if (entry.status === "confirmed") {
+      const file = entryFile(dir, sha);
+      let snapshot;
+      try {
+        if (!regular(file)) throw new Error("not an ordinary receipt");
+        snapshot = readFileSync(file);
+        if (!isDeepStrictEqual(JSON.parse(snapshot.toString("utf8")), entry) || !isDeepStrictEqual(entry.request, request)) throw new Error("another receipt");
+      } catch { throw holdError(route.path, dir, sha, "has a confirmed receipt that changed before reuse"); }
       const answer = route.load(dir, sha, entry);
+      if (!regular(file) || !readFileSync(file).equals(snapshot)) throw holdError(route.path, dir, sha, "has a confirmed receipt that changed during reuse");
       if (answer !== null) {
         if (!handed.has(sha)) journal.reused += 1;
-        handed.add(sha);
+        handed.set(sha, sha256(snapshot));
         return answer;
       }
       hold(entry, "its saved answer is missing or changed on disk");
       throw holdError(route.path, dir, sha, "has a saved answer that is missing or changed on disk");
     }
-    if (entry.status === "sent") throw holdError(route.path, dir, sha, `was sent at ${entry.sent_at} by a run that recorded no answer (it may still be running)`);
+    if (entry.status === "sent") {
+      const recovered = recoverAnswer(route, dir, sha, entry, request, { create, processAlive: alive });
+      if (recovered) {
+        if (!handed.has(sha)) journal.reused += 1;
+        handed.set(sha, recovered.entryHash);
+        return recovered.answer;
+      }
+      throw holdError(route.path, dir, sha, `was sent at ${entry.sent_at} by a run that recorded no answer that can be safely reused (it may still be running)`);
+    }
     if (entry.status === "held") throw holdError(route.path, dir, sha, `is held in the speech journal since ${entry.held_at}: ${entry.why}`);
     throw holdError(route.path, dir, sha, "has a speech journal entry that cannot be read");
   }
@@ -255,20 +418,21 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
    */
   function resume(sha, waitId, sent) {
     const claim = claimFile(dir, sha, waitId);
-    if (!createOnce(claim, "")) return false;
+    if (!create(claim, "")) return false;
     try {
       const current = readEntry(dir, sha);
       if (current?.status !== "waiting" || current.wait_id !== waitId) return false;
-      durableWrite(entryFile(dir, sha), json(sent));
+      write(entryFile(dir, sha), json(sent));
       return true;
     } finally {
       rmSync(claim, { force: true });
     }
   }
 
-  async function sendOnce(route, send, sent) {
+  async function sendOnce(route, send, sent, initialSentBytes) {
     const sha = sent.request_sha256;
     let entry = sent;
+    let sentBytes = initialSentBytes;
     let waitId = null;
     // client.mjs tells of each wait between two tries; every answer before one settled the request.
     const waits = {
@@ -279,7 +443,7 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
         // waiting entry is one another run sends: the request stops here, before the sleep, and
         // sendOnce holds it. Nothing is sent again by this run.
         try {
-          durableWrite(entryFile(dir, sha), json({ ...entry, status: "waiting", wait_id: id, waiting_at: stamp(), why }));
+          write(entryFile(dir, sha), json({ ...entry, status: "waiting", wait_id: id, waiting_at: stamp(), why }));
         } catch (error) {
           throw new Error(`the journal could not record its wait: ${error.message}`, { cause: error });
         }
@@ -291,6 +455,9 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
         waitId = null;
         entry = { ...sent, sent_at: stamp() };
         if (!resume(sha, id, entry)) throw takenOver(route.path, dir, sha);
+        // A settled refusal can change the sent timestamp before the actual successful POST.
+        // Bind its answer to that complete final sent receipt, never the initial attempt's.
+        sentBytes = Buffer.from(json(entry));
       },
     };
     let result;
@@ -315,8 +482,24 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
       throw holdError(route.path, dir, sha, `was answered, and ${problem}`);
     }
     const answer = route.save(dir, sha, result);
-    durableWrite(entryFile(dir, sha), json({ ...entry, status: "confirmed", confirmed_at: stamp(), ...answer }));
-    handed.add(sha);
+    const confirmedBytes = Buffer.from(json({ ...entry, status: "confirmed", confirmed_at: stamp(), sent_sha256: sha256(sentBytes), ...answer }));
+    stageAnswer(route.path, dir, sha, sentBytes, confirmedBytes, create);
+    if (!regular(entryFile(dir, sha)) || !readFileSync(entryFile(dir, sha)).equals(sentBytes)) {
+      throw holdError(route.path, dir, sha, "has a sent receipt that changed while its complete answer was received");
+    }
+    write(entryFile(dir, sha), confirmedBytes);
+    handed.set(sha, sha256(confirmedBytes));
+    // The fsynced canonical confirmation now contains the complete answer. Normal success
+    // keeps the original journal shape; only a failed promotion needs the staged confirmation.
+    try {
+      const file = entryFile(dir, sha);
+      const stage = answerFile(dir, sha);
+      if (regular(file) && readFileSync(file).equals(confirmedBytes) && regular(stage)) {
+        const retained = JSON.parse(readFileSync(stage, "utf8"));
+        if (retained.sent_sha256 === sha256(sentBytes) && retained.confirmed_sha256 === sha256(confirmedBytes)
+          && regular(file) && readFileSync(file).equals(confirmedBytes)) rmSync(stage);
+      }
+    } catch { /* Retained complete evidence is safe to keep. */ }
     return result;
   }
 
@@ -327,16 +510,21 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
     mkdirSync(dir, { recursive: true });
     // Another run may release or forget an entry between the two steps: look once more.
     for (let attempt = 0; attempt < 2; attempt++) {
-      const sent = { schema_version: 1, path: route.path, request_sha256: sha, request, status: "sent", sent_at: stamp() };
-      if (createOnce(entryFile(dir, sha), json(sent))) return sendOnce(route, send, sent);
+      if (!existsSync(entryFile(dir, sha)) && existsSync(answerFile(dir, sha))) {
+        throw holdError(route.path, dir, sha, "has a retained answer without its original sent receipt");
+      }
+      const sent = { schema_version: 1, path: route.path, request_sha256: sha, request, status: "sent", sent_at: stamp(), generation: randomUUID(), producer_pid: process.pid };
+      const sentBytes = Buffer.from(json(sent));
+      if (create(entryFile(dir, sha), sentBytes)) return sendOnce(route, send, sent, sentBytes);
       const entry = readEntry(dir, sha, route);
       // Left mid-wait: every answer it had settled it, so this run sends it, unless another run
       // claims it first.
       if (entry?.status === "waiting") {
-        if (resume(sha, entry.wait_id, sent)) return sendOnce(route, send, sent);
+        if (existsSync(answerFile(dir, sha))) throw holdError(route.path, dir, sha, "has a retained answer beside a waiting receipt");
+        if (resume(sha, entry.wait_id, sent)) return sendOnce(route, send, sent, sentBytes);
         continue;
       }
-      if (entry) return saved(route, sha, entry);
+      if (entry) return saved(route, sha, entry, request);
     }
     throw holdError(route.path, dir, sha, "has a speech journal entry another run keeps changing");
   }
@@ -356,9 +544,21 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
       return async ({ lines, language = NARRATION_LOCALE, ...options }) => journaled(JUDGE, judgeBody({ lines, language }), () => judge({ ...options, lines, language }));
     },
     release() {
-      for (const sha of handed) {
+      for (const [sha, consumed] of handed) {
+        const file = entryFile(dir, sha);
+        // A stale reader must not remove a newer intentional same-body retake.
+        if (!regular(file) || sha256(readFileSync(file)) !== consumed) continue;
+        const stage = answerFile(dir, sha);
+        if (regular(stage)) {
+          try {
+            const retained = JSON.parse(readFileSync(stage, "utf8"));
+            const current = readEntry(dir, sha);
+            const original = current.status === "sent" ? consumed : current.sent_sha256;
+            if (retained.sent_sha256 === original) rmSync(stage);
+          } catch { /* Unreadable retained evidence holds rather than being silently deleted. */ }
+        }
         // The entry first: a WAV left without one is unused, an entry left without its WAV holds.
-        rmSync(entryFile(dir, sha), { force: true });
+        rmSync(file, { force: true });
         rmSync(wavFile(dir, sha), { force: true });
       }
       handed.clear();
@@ -394,6 +594,14 @@ export function forgetSpeechJournal(dir, sha) {
   if (!SHA256.test(sha ?? "")) throw new UsageError("--sha must be a request sha256 (64 hex characters)");
   const entry = readEntry(dir, sha);
   if (!entry) throw new UsageError(`no entry ${sha} in ${dir}`);
+  const stage = answerFile(dir, sha);
+  if (regular(stage)) {
+    try {
+      const retained = JSON.parse(readFileSync(stage, "utf8"));
+      const original = entry.status === "sent" ? sha256(readFileSync(entryFile(dir, sha))) : entry.sent_sha256;
+      if (retained.sent_sha256 === original) rmSync(stage);
+    } catch { /* Keep an unknown generation as evidence; it cannot authorize another POST. */ }
+  }
   rmSync(entryFile(dir, sha), { force: true });
   rmSync(wavFile(dir, sha), { force: true });
   for (const name of readdirSync(dir)) if (name.startsWith(`${sha}.`) && name.endsWith(".claim")) rmSync(path.join(dir, name), { force: true });
@@ -425,7 +633,10 @@ export function main(args, { stdout = process.stdout, stderr = process.stderr } 
       stdout.write(`${entry.sha} ${entry.claimed ? "claimed" : entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
     }
     const holds = entries.filter((entry) => !["confirmed", "waiting"].includes(entry.status)).length;
-    if (holds) stdout.write(`${holds} held: check the provider's usage, then forget each with --sha\n`);
+    if (holds) {
+      stdout.write("rerun the original native command to validate retained complete answers first; do not forget just to repair local file I/O.\n");
+      stdout.write(`${holds} held: check the provider's usage if native validation is still unresolved, before explicitly forgetting each with --sha\n`);
+    }
     const claimed = entries.filter((entry) => entry.claimed).length;
     if (claimed) stdout.write(`${claimed} claimed by a run that stopped while taking it back: nothing of it went out, and every run holds it until you forget it with --sha\n`);
     const waiting = entries.filter((entry) => entry.status === "waiting" && !entry.claimed).length;

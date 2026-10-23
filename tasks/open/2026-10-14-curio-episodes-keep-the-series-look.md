@@ -13,15 +13,12 @@ depends_on: []
 scope:
   - tools/video/core/curio.mjs
   - tools/video/core/curio.test.mjs
-  - tools/video/core/lint.mjs
   - .agents/skills/curio-episode
   - .claude/skills/curio-episode
   - .agents/skills/youtube-video/SKILL.md
   - .claude/skills/youtube-video/SKILL.md
   - AGENTS.md
   - docs/videos/history-curiosity/look.md
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Curio episodes keep the series look: a shared skill and a lint gate
@@ -55,9 +52,21 @@ three images at a time, and fell back to source cards.
 
 ## Notes
 
+2026-10-18 owner-authorized narrow transfer: release only
+`docs/videos/long-form/review.md` and `review.json` to the A01 duration task.
+The curio duration receipt and H04–H06 remake remain unchecked and in
+progress; reclaim these paths when that independent review is ready.
+
 - Thresholds from the delivered episodes: illustration share 73% (U02 v1) to 95% (H01 v2); longest
   card run 3 (U02 v1). A curio episode is recognised by its slug, because H04–H06 v2 had dropped
   `look` altogether.
 - New episodes take the host's cute-explainer route (`cute-mystery`), where `settle()` already drops
   a writer's `style`/`negative` and the nine-question judge reads every picture; Codex worked in
   local `slides` format, where none of that applies.
+
+2026-10-18 narrow claim release (owner-authorized): #1500 merged the curio lint
+gate into main at `bda1755ff049dbb7c89db858a080bcb788767427`; the latest
+main commit touching `tools/video/core/lint.mjs` is that same SHA. Release only
+that completed code-file claim for the A01-specific duration/narrative gate.
+This ticket stays in progress for its unchecked independent duration receipt
+and H04–H06 remake; reclaim `lint.mjs` if those later require further edits.

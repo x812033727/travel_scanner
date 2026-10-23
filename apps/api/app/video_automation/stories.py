@@ -25,6 +25,7 @@ run is the default and writes nothing; running ``apply`` twice changes nothing t
 
 from __future__ import annotations
 
+import math
 import re
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -42,7 +43,7 @@ from app.video_automation.models import (
     VideoDramaEpisode,
     VideoDramaSeries,
 )
-from app.video_automation.schemas import STORY_MAX_PER_DAY, SeriesIn
+from app.video_automation.schemas import SeriesIn
 from app.video_automation.series import add_series, is_redo_of
 
 # --- the backlog checker's rules (tools/video/story-plans/plan.mjs) ----------------------------
@@ -78,6 +79,8 @@ LIMITS = {
     "point_min": 60,
     "point_max": 400,
     "headline": 12,
+    # tools/video/templates/templates.mjs THUMB_BRAND_MAX: the company's name in large type.
+    "brand": 12,
     "appearance": 800,
     "claim": 200,
     "supports": 240,
@@ -143,6 +146,57 @@ def _is_text(value: object) -> TypeGuard[str]:
 def _is_int(value: object) -> TypeGuard[int]:
     # JSON has no separate booleans for Python: True is an int there, and never a number here.
     return isinstance(value, int) and not isinstance(value, bool)
+
+
+# The thumbnail's brand name, as tools/video/templates/templates.mjs draws it (brandProblem,
+# brandFontSize): at most 12 characters on one line, and no wider than the channel's column
+# (432 px) holds at 38 px. A CJK glyph or a full-width form is 1 em, a capital 0.62, a small
+# letter or a digit 0.6, a space 0.3, any other mark 0.45. Both tests hold the two to
+# tools/video/templates/fixtures/brand-samples.json.
+BRAND_COLUMN_WIDTH = 432
+BRAND_SIZE_MIN = 38
+BRAND_SIZE_MAX = 168
+BRAND_FULL = re.compile("[぀-ヿ㐀-鿿豈-﫿가-힯＀-｠]")
+
+
+def _brand_glyph_width(char: str) -> float:
+    if BRAND_FULL.fullmatch(char):
+        return 1
+    if "A" <= char <= "Z":
+        return 0.62
+    if "a" <= char <= "z" or "0" <= char <= "9":
+        return 0.6
+    return 0.3 if char == " " else 0.45
+
+
+def _brand_fit_size(brand: str) -> int:
+    em = 0.0
+    for char in brand.strip():
+        em += _brand_glyph_width(char)
+    return math.floor(BRAND_COLUMN_WIDTH / (em or 1) / 2) * 2
+
+
+def brand_font_size(brand: str) -> int:
+    """The px the thumbnail sets an accepted brand name at (templates.mjs brandFontSize)."""
+    return max(BRAND_SIZE_MIN, min(BRAND_SIZE_MAX, _brand_fit_size(brand)))
+
+
+def brand_problem(brand: object) -> str | None:
+    """Why a thumbnail brand name cannot be drawn, or None; None itself is no brand at all."""
+    if brand is None:
+        return None
+    if not _is_text(brand):
+        return "must be text"
+    if any(char in brand for char in "\n\r\t*"):
+        return "must be one line of plain text (no line break, no tab, no ** emphasis)"
+    if len(brand.strip()) > LIMITS["brand"]:
+        return (
+            f"has {len(brand.strip())} characters; "
+            f"at most {LIMITS['brand']} fit the column on one line"
+        )
+    if _brand_fit_size(brand) < BRAND_SIZE_MIN:
+        return f"is too wide for the column even at {BRAND_SIZE_MIN} px; shorten it"
+    return None
 
 
 def _get(value: object, key: str) -> Any:
@@ -381,6 +435,9 @@ def story_problems(story: Any) -> list[str]:
         problems.append(
             f"thumbnail.headline is {len(headline)} characters, at most {LIMITS['headline']}"
         )
+    brand = brand_problem(_get(story.get("thumbnail"), "brand"))
+    if brand:
+        problems.append(f"thumbnail.brand {brand}")
 
     number = story.get("number")
     if not _is_int(number) or number < 1:
@@ -416,19 +473,35 @@ def series_problems(series: Any) -> list[str]:
     if series.get("compilation", False) is not False:
         problems.append("series.compilation must be false")
     minutes = series.get("target_minutes")
+    look = series.get("look")
+    cute = isinstance(look, dict) and look == {"preset": "cute-mystery"}
     low, high = STORY_MINUTES
-    if not _is_int(minutes) or not low <= minutes <= high:
+    if cute:
+        if not _is_int(minutes) or minutes != 10:
+            problems.append("series.target_minutes must be 10 for the cute-mystery look")
+        if series.get("image_model") != "image-01":
+            problems.append('series.image_model must be "image-01" for the cute-mystery look')
+        if series.get("style_preset") != "custom":
+            problems.append(
+                'series.style_preset must be "custom" for a story with the cute-mystery look'
+            )
+    elif not _is_int(minutes) or not low <= minutes <= high:
         problems.append(f"series.target_minutes must be {low} to {high}")
-    per_day = series.get("episodes_per_day")
-    if not _is_int(per_day) or not 1 <= per_day <= STORY_MAX_PER_DAY:
-        problems.append(f"series.episodes_per_day must be 1 to {STORY_MAX_PER_DAY}")
     if not _is_text(series.get("image_model")):
         problems.append("series.image_model is missing")
-    style = _get(series.get("look"), "style")
-    negative = _get(series.get("look"), "negative")
-    if not _is_text(style) or not _is_text(negative):
-        problems.append("series.look needs a style and a negative prompt")
-    else:
+    style = _get(look, "style")
+    negative = _get(look, "negative")
+    if not cute and (
+        not isinstance(look, dict)
+        or "preset" in look
+        or not _is_text(style)
+        or not _is_text(negative)
+    ):
+        problems.append(
+            'series.look needs a style and a negative prompt, or exactly '
+            '{preset: "cute-mystery"}'
+        )
+    elif not cute:
         if len(style) > LIMITS["look_style"]:
             problems.append(f"series.look.style is over {LIMITS['look_style']} characters")
         if len(negative) > LIMITS["look_negative"]:
@@ -697,11 +770,8 @@ def plan_rows(
     return plans, problems, notes
 
 
-def _series_fields(series: dict[str, Any], episodes_per_day: int | None) -> dict[str, Any]:
-    fields = {key: value for key, value in series.items() if key in SeriesIn.model_fields}
-    if episodes_per_day is not None:
-        fields["episodes_per_day"] = episodes_per_day
-    return fields
+def _series_fields(series: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in series.items() if key in SeriesIn.model_fields}
 
 
 def _validation_problems(error: ValidationError) -> list[str]:
@@ -720,7 +790,6 @@ COMPARED = (
     "note",
     "target_minutes",
     "planned_episodes",
-    "episodes_per_day",
     "image_model",
     "look",
     "style_preset",
@@ -776,16 +845,15 @@ async def import_story_rows(
     series_slug: str,
     apply: bool = False,
     limit: int | None = None,
-    episodes_per_day: int | None = None,
     actor: User | None = None,
 ) -> StoryImportReport:
     """Check a compiled stories.json and import its stories into the story series named.
 
     Nothing is written unless ``apply`` and no problem was found. When the series does not
-    exist, ``apply`` creates it from the file's series object (kind ``story``, active), with
-    ``episodes_per_day`` in place of the file's when given; an existing series row is never
-    changed (the owner may have edited it), and the fields that differ are reported. ``limit``
-    imports only the first stories in production order; a later run without it adds the rest.
+    exist, ``apply`` creates it from the file's series object (kind ``story``, active); an
+    existing series row is never changed (the owner may have edited it), and the fields that
+    differ are reported. ``limit`` imports only the first stories in production order; a later
+    run without it adds the rest.
     A run that writes leaves one audit record: who ran it (``actor``; none from the host
     command), the stories created, updated and left alone, and the ``limit`` it ran with.
     """
@@ -802,8 +870,6 @@ async def import_story_rows(
     )
     if limit is not None and limit < 1:
         report.problems.append("--limit must be 1 or more")
-    if episodes_per_day is not None and not 1 <= episodes_per_day <= STORY_MAX_PER_DAY:
-        report.problems.append(f"--episodes-per-day must be 1 to {STORY_MAX_PER_DAY}")
     if report.problems:
         return report
 
@@ -818,7 +884,7 @@ async def import_story_rows(
     if series is None:
         report.series_created = True
         try:
-            new_series = SeriesIn.model_validate(_series_fields(check.series, episodes_per_day))
+            new_series = SeriesIn.model_validate(_series_fields(check.series))
         except ValidationError as error:
             report.problems.extend(_validation_problems(error))
     else:
@@ -829,11 +895,6 @@ async def import_story_rows(
             )
             return report
         report.series_differs = series_differences(series, check.series)
-        if episodes_per_day is not None:
-            report.notes.append(
-                "--episodes-per-day applies only when the import creates the series; "
-                "change the daily count on /admin/videos"
-            )
         rows = list(
             (
                 await session.scalars(

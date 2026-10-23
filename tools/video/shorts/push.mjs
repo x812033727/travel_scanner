@@ -128,8 +128,12 @@ export async function upload(client, slug, file, role) {
 /**
  * Send a build directory. Returns { slug, final, publish }: each the site's review, or null when
  * it was not sent; `waits` says what the Short waits for when the package did not go.
+ * `handPushed` is a Short sent by a person or an agent (`shorts/cli.mjs push`), not by the worker's
+ * own line (lab.mjs, cut.mjs): its reviews carry `hand_pushed`, so the site approves none of them on
+ * arrival and the owner decides at both gates (owner, 2026-10-17; docs/videos/HANDS-OFF.md).
  */
-export async function push({ directory, client, log = () => {} }) {
+export async function push({ directory, client, log = () => {}, handPushed = false }) {
+  const marked = (body) => (handPushed ? { ...body, payload: { ...body.payload, hand_pushed: true } } : body);
   const doc = readJson(path.join(directory, SCRIPT_FILE), null);
   const timeline = readJson(path.join(directory, 'timeline.json'), null);
   const final = path.join(directory, 'upload', 'final.mp4');
@@ -172,7 +176,7 @@ export async function push({ directory, client, log = () => {} }) {
   if (existsSync(verify)) files.push(await upload(client, slug, verify, 'evidence_verify'));
   const finalSha256 = files[0].sha256;
   if (staleQa() || finalSha256 !== qa.final_sha256) return { slug, final: null, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
-  const review = { ...finalReview({ doc, qa, usage: readJson(path.join(directory, USAGE_FILE), null), timeline, finalSha256 }), files };
+  const review = { ...marked(finalReview({ doc, qa, usage: readJson(path.join(directory, USAGE_FILE), null), timeline, finalSha256 })), files };
   const sent = await client.submit(slug, review);
   // The site may reuse a decided review for this MP4. Its approval only covers the QA
   // it actually stores, not a newer verdict with different inputs or failed items.
@@ -205,7 +209,7 @@ export async function push({ directory, client, log = () => {} }) {
   if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));
   if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
-  const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256, finalReviewId: sent.id }), files: packaged });
+  const confirmed = await client.submit(slug, { ...marked(publishReview({ metadata, report, metadataSha256: packaged[0].sha256, finalReviewId: sent.id })), files: packaged });
   log(`${slug}: publish review ${confirmed.status}${confirmed.note ? ` (${confirmed.note})` : ''}`);
   return { slug, final: sent, publish: confirmed, waits: confirmed.status === 'approved' ? null : 'the upload package waits for the owner on /admin/videos' };
 }

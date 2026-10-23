@@ -12,6 +12,9 @@ check sees the tree the merge would produce, not the branch alone.
 import re
 import types
 
+import pytest
+
+import app.schema as schema_module
 from app.schema import (
     describe_heads,
     expected_schema_revision,
@@ -54,6 +57,23 @@ def test_no_other_revision_counts_as_current() -> None:
     assert all(schema_is_current(revision) is False for revision in others)
     assert schema_is_current(head) is True
     assert schema_is_current(None) is False
+
+
+def test_only_the_reviewed_next_budget_revision_is_accepted_by_0132_rollback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0132_video_pilot_budget"
+    )
+    assert schema_is_current("0132_video_pilot_budget")
+    assert schema_is_current("0133_story_followon_budget")
+    assert not schema_is_current("0133_other_change")
+    assert not schema_is_current("0134_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0133_story_followon_budget"
+    )
+    assert schema_is_current("0133_story_followon_budget")
+    assert not schema_is_current("0132_video_pilot_budget")
 
 
 def _script(revision: str, down_revision: str) -> types.SimpleNamespace:

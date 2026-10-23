@@ -7,7 +7,7 @@ import { compilationDocument, estimatedCompilationTimeline } from "../core/compi
 import { COMPILATION_REVIEW_FILE, reviewHash } from "../core/compilation-review.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { readJson } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { DEFAULT_LOCALES } from "../core/schema.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { advanceCompilation, planMetadata, translateMetadata } from "./compilation.mjs";
 
@@ -21,7 +21,7 @@ const EPISODES = Array.from({ length: 40 }, (_, index) => ({
 }));
 const REVEAL = EPISODES[19].slug;
 const SAFE_CHAPTER = "門後的腳步";
-const FOREIGN = LOCALES.filter((locale) => locale !== "zh-TW");
+const FOREIGN = DEFAULT_LOCALES.filter((locale) => locale !== "zh-TW");
 const CONTEXT = {
   mysteries: [{ id: "missing-person", question: "她是否還活著？", answer: "她還活著", reveal_episode: 20 }],
   reveal_schedule: [{ mystery_id: "missing-person", episode: 20 }],
@@ -238,9 +238,35 @@ test("an explicit series without mysteries keeps the old planner and translation
   assert.match(await planMetadata(box.automation, box.state), /planned/);
   assert.equal(box.video().compilation.titles[REVEAL], "她還活著");
   for (const locale of FOREIGN) assert.match(await translateMetadata(box.automation, box.state), new RegExp(locale));
+  writePackage(box);
   assert.equal(await advanceCompilation(box.automation, box.state, "on YouTube"), undefined);
   assert.equal(box.stages("verifier").length, 0);
   assert.deepEqual(box.calls.contexts, []);
+});
+
+test("a compilation without mysteries planned again after its package is packaged again before the publish push, and one past its upload is left alone", async (t) => {
+  const box = fixture(t, { context: { ...CONTEXT, mysteries: [] } });
+  box.respond((stage, payload) => (stage === "planner" ? proposal() : translation(payload.locale)));
+  await planMetadata(box.automation, box.state);
+  for (const locale of FOREIGN) await translateMetadata(box.automation, box.state);
+  writeFileSync(path.join(box.workdir, "thumbnail.jpg"), Buffer.from("thumb-1"));
+  writePackage(box);
+  writeFileSync(path.join(box.workdir, "upload", "thumbnail.jpg"), Buffer.from("thumb-1"));
+  assert.equal(await advanceCompilation(box.automation, box.state, "on YouTube"), undefined, "a current package goes on to the publish push");
+  // The owner's reset plans a new title: the cut is byte-identical, the package is not.
+  const doc = box.video();
+  writeJson(path.join(box.dir, "video.json"), { ...doc, youtube: { ...doc.youtube, title: "第二版企劃的標題" } });
+  assert.equal(await advanceCompilation(box.automation, box.state, "upload package"), undefined, "the package step itself is flow.mjs's");
+  assert.equal(await advanceCompilation(box.automation, box.state, null), undefined, "a video past its upload keeps what YouTube has");
+  assert.deepEqual(box.calls.runs, []);
+  assert.match(await advanceCompilation(box.automation, box.state, "on YouTube"), /upload metadata rebuilt/);
+  assert.deepEqual(box.calls.runs, [["package", "--slug", box.slug]]);
+  // A thumbnail rendered again moves the package too, with the fields unchanged.
+  writePackage(box);
+  writeFileSync(path.join(box.workdir, "thumbnail.jpg"), Buffer.from("thumb-2"));
+  assert.match(await advanceCompilation(box.automation, box.state, "on YouTube"), /upload metadata rebuilt/);
+  assert.equal(box.calls.runs.length, 2);
+  assert.equal(box.stages("verifier").length, 0);
 });
 
 test("a translated revelation is independently rejected and rewritten before its locale is saved", async (t) => {
@@ -276,7 +302,7 @@ for (const next of ["on YouTube", undefined]) {
     fillTranslations(box);
     writePackage(box);
     await reviewAll(box, next);
-    assert.deepEqual(box.stages("verifier").map(({ payload }) => payload.locale).sort(), [...LOCALES].sort());
+    assert.deepEqual(box.stages("verifier").map(({ payload }) => payload.locale).sort(), [...DEFAULT_LOCALES].sort());
     assert.equal(box.stages("translator").length, 0, "safe complete translations need review, not regeneration");
     assert.equal(box.stages("planner").length, 0);
     assert.deepEqual(box.calls.runs, []);

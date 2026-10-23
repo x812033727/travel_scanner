@@ -1,0 +1,3499 @@
+{
+  "version": 4,
+  "course": "university",
+  "series_title": "Sunny & Pip: University English",
+  "episodes": [
+    {
+      "id": "ep13",
+      "number": 13,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Narrowing a Research Question",
+      "title_zh_TW": "縮小研究問題",
+      "titles": {
+        "zh-TW": "縮小研究問題",
+        "zh-CN": "缩小研究问题",
+        "ja": "研究の問いを絞り込む",
+        "ko": "연구 질문 좁히기"
+      },
+      "topic": "research-question-scope-feasibility",
+      "objectives_zh_TW": [
+        "把寬廣興趣轉成可用證據回答的問題。",
+        "界定對象、情境與比較項目。",
+        "檢查資料與時間能否支持研究範圍。"
+      ],
+      "parent_tip_zh_TW": "把每個抽象詞改成你能辨識或觀察的項目，再檢查是否仍問同一個問題。",
+      "practice": {
+        "reading_en": "In a fictional research methods course, Nia begins with the topic \"technology and belonging.\" She wants to know whether digital tools improve university life, but the question includes too many tools, experiences, and student groups for a short project. Her tutor asks what evidence she could realistically examine. Nia has access to publicly shared welcome messages from two student societies and can analyze how those messages invite newcomers to participate. She revises her question to ask how the societies' welcome messages describe participation and whether they address students who cannot attend in person. This version identifies a manageable set of texts and a clear analytical focus. It does not establish whether newcomers actually feel more included; answering that would require different evidence. Nia writes this boundary into her proposal rather than hiding it. She also checks whether both societies have enough comparable messages from the same period. If one has only a single announcement, she will adjust the comparison before claiming that it represents a regular communication pattern. Narrowing the question makes the project more answerable without making the underlying issue unimportant.",
+        "prompt_en": "Write a 120-160-word research proposal for Nia. State the focused question, identify the texts and comparison, explain feasibility, and distinguish what the analysis can and cannot establish.",
+        "prompt_zh_TW": "以120至160詞替Nia寫研究提案，包含聚焦問題、文本與比較、可行性，以及分析能確立和不能確立之處。",
+        "sample_answer_en": "My project asks how two student societies' welcome messages describe participation and whether they address students who cannot attend in person. I will compare publicly shared messages from the same period, focusing on invitations, participation options, and assumptions about availability. This is more feasible than studying whether technology improves university life because it identifies a manageable set of texts and a specific analytical task. Before finalizing the comparison, I will check that both societies provide enough comparable material. A single announcement should not automatically be treated as evidence of a regular pattern. The analysis can show how participation is represented in the messages, but it cannot establish how included newcomers actually feel. I will state that limitation clearly and explain that investigating students' experiences would require additional evidence beyond the texts.",
+        "questions": [
+          {
+            "prompt_en": "What materials can Nia realistically examine?",
+            "answer_en": "She can examine publicly shared welcome messages from two student societies."
+          },
+          {
+            "prompt_en": "How does the revised question make the project more feasible?",
+            "answer_en": "It defines a limited set of comparable texts and focuses on how participation is described instead of all effects of digital technology."
+          },
+          {
+            "prompt_en": "Can message analysis establish whether newcomers feel included? Explain using the passage.",
+            "answer_en": "No. The texts show representations of participation, while actual feelings would require evidence about newcomers' experiences."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep13-s01",
+          "english": "My original topic includes too many tools, experiences, and student groups.",
+          "demo": "My original topic includes too many tools, experiences, and student groups.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我原本的主題涵蓋太多工具、經驗與學生群體。",
+            "zh-CN": "我原本的主题涵盖太多工具、经验与学生群体。",
+            "ja": "最初のテーマには、道具、経験、学生集団が多すぎます。",
+            "ko": "처음 주제에는 도구, 경험, 학생 집단이 너무 많이 포함돼요."
+          },
+          "visual": "sentence:My original topic includes too many tools, experiences, and student groups.",
+          "target": "sentence:My original topic includes too many tools, experiences, and student groups.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep13-s02",
+          "english": "I can examine welcome messages from two fictional student societies.",
+          "demo": "I can examine welcome messages from two fictional student societies.",
+          "instruction": {
+            "en": "Specify the available texts so a broad topic becomes a feasible research task.",
+            "zh-TW": "指明可取得文本，讓廣泛主題成為可行研究任務。",
+            "zh-CN": "指明可取得文本，让广泛主题成为可行研究任务。",
+            "ja": "利用できる文章を特定し、広いテーマを実行可能な研究課題にします。",
+            "ko": "확보할 수 있는 글을 특정해 넓은 주제를 실행 가능한 연구 과제로 만들어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我可以分析兩個虛構學生社團的迎新訊息。",
+            "zh-CN": "我可以分析两个虚构学生社团的迎新消息。",
+            "ja": "架空の学生団体二つの歓迎メッセージを分析できます。",
+            "ko": "가상의 학생 동아리 두 곳의 환영 메시지를 분석할 수 있어요."
+          },
+          "visual": "sentence:I can examine welcome messages from two fictional student societies.",
+          "target": "sentence:I can examine welcome messages from two fictional student societies.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep13-s03",
+          "english": "How do these messages address students who cannot attend in person?",
+          "demo": "How do these messages address students who cannot attend in person?",
+          "instruction": {
+            "en": "Ask how the messages address a group, rather than claiming to measure feelings.",
+            "zh-TW": "詢問訊息如何回應群體，不聲稱測量感受。",
+            "zh-CN": "询问消息如何回应群体，不声称测量感受。",
+            "ja": "感情を測ると主張せず、メッセージが集団にどう対応するか尋ねます。",
+            "ko": "감정을 측정한다고 주장하지 말고 메시지가 집단을 어떻게 고려하는지 물어요."
+          },
+          "demo_translation": {
+            "zh-TW": "這些訊息如何回應無法親自出席的學生？",
+            "zh-CN": "这些消息如何回应无法亲自出席的学生？",
+            "ja": "これらのメッセージは、対面で参加できない学生にどう対応していますか。",
+            "ko": "이 메시지는 직접 참석할 수 없는 학생을 어떻게 고려하나요?"
+          },
+          "visual": "sentence:How do these messages address students who cannot attend in person?",
+          "target": "sentence:How do these messages address students who cannot attend in person?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep13-s04",
+          "english": "The question identifies a specific comparison that the available texts can support.",
+          "demo": "The question identifies a specific comparison that the available texts can support.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個問題指出現有文本能支持的具體比較。",
+            "zh-CN": "这个问题指出现有文本能支持的具体比较。",
+            "ja": "この問いは、利用できる文章で検討できる具体的な比較を示しています。",
+            "ko": "이 질문은 확보한 글로 뒷받침할 수 있는 구체적인 비교를 제시해요."
+          },
+          "visual": "sentence:The question identifies a specific comparison that the available texts can support.",
+          "target": "sentence:The question identifies a specific comparison that the available texts can support.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep13-s05",
+          "english": "Listen and choose.",
+          "demo": "I can examine welcome messages from two fictional student societies.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我可以分析兩個虛構學生社團的迎新訊息。",
+            "zh-CN": "我可以分析两个虚构学生社团的迎新消息。",
+            "ja": "架空の学生団体二つの歓迎メッセージを分析できます。",
+            "ko": "가상의 학생 동아리 두 곳의 환영 메시지를 분석할 수 있어요."
+          },
+          "visual": "sentence:I can examine welcome messages from two fictional student societies.",
+          "target": "sentence:I can examine welcome messages from two fictional student societies.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:I can examine welcome messages from two fictional student societies.",
+            "sentence:My original topic includes too many tools, experiences, and student groups.",
+            "sentence:A focused question matches the claim to the evidence I can collect."
+          ]
+        },
+        {
+          "id": "ep13-s06",
+          "english": "I should check that both societies provide comparable material from the same period.",
+          "demo": "I should check that both societies provide comparable material from the same period.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我應確認兩個社團提供同時期可比較的材料。",
+            "zh-CN": "我应确认两个社团提供同时期可比较的材料。",
+            "ja": "両団体に同じ時期の比較可能な資料があるか確認すべきです。",
+            "ko": "두 동아리 모두 같은 시기의 비교 가능한 자료를 제공하는지 확인해야 해요."
+          },
+          "visual": "sentence:I should check that both societies provide comparable material from the same period.",
+          "target": "sentence:I should check that both societies provide comparable material from the same period.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep13-s07",
+          "english": "Listen and choose.",
+          "demo": "I should check that both societies provide comparable material from the same period.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我應確認兩個社團提供同時期可比較的材料。",
+            "zh-CN": "我应确认两个社团提供同时期可比较的材料。",
+            "ja": "両団体に同じ時期の比較可能な資料があるか確認すべきです。",
+            "ko": "두 동아리 모두 같은 시기의 비교 가능한 자료를 제공하는지 확인해야 해요."
+          },
+          "visual": "sentence:I should check that both societies provide comparable material from the same period.",
+          "target": "sentence:I should check that both societies provide comparable material from the same period.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:My original topic includes too many tools, experiences, and student groups.",
+            "sentence:I should check that both societies provide comparable material from the same period.",
+            "sentence:A focused question matches the claim to the evidence I can collect."
+          ]
+        },
+        {
+          "id": "ep13-s08",
+          "english": "Message analysis cannot establish how included newcomers actually feel.",
+          "demo": "Message analysis cannot establish how included newcomers actually feel.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "訊息分析無法確立新成員實際感受到多少接納。",
+            "zh-CN": "消息分析无法确立新成员实际感受到多少接纳。",
+            "ja": "メッセージの分析だけでは、新しいメンバーが実際にどれほど受け入れられたと感じるかは分かりません。",
+            "ko": "메시지 분석만으로 신규 구성원이 실제로 얼마나 소속감을 느끼는지는 확인할 수 없어요."
+          },
+          "visual": "sentence:Message analysis cannot establish how included newcomers actually feel.",
+          "target": "sentence:Message analysis cannot establish how included newcomers actually feel.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep13-s09",
+          "english": "Listen and choose.",
+          "demo": "Message analysis cannot establish how included newcomers actually feel.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "訊息分析無法確立新成員實際感受到多少接納。",
+            "zh-CN": "消息分析无法确立新成员实际感受到多少接纳。",
+            "ja": "メッセージの分析だけでは、新しいメンバーが実際にどれほど受け入れられたと感じるかは分かりません。",
+            "ko": "메시지 분석만으로 신규 구성원이 실제로 얼마나 소속감을 느끼는지는 확인할 수 없어요."
+          },
+          "visual": "sentence:Message analysis cannot establish how included newcomers actually feel.",
+          "target": "sentence:Message analysis cannot establish how included newcomers actually feel.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:My original topic includes too many tools, experiences, and student groups.",
+            "sentence:A focused question matches the claim to the evidence I can collect.",
+            "sentence:Message analysis cannot establish how included newcomers actually feel."
+          ]
+        },
+        {
+          "id": "ep13-s10",
+          "english": "A focused question matches the claim to the evidence I can collect.",
+          "demo": "A focused question matches the claim to the evidence I can collect.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "聚焦的問題讓主張配合我能蒐集的證據。",
+            "zh-CN": "聚焦的问题让主张配合我能搜集的证据。",
+            "ja": "焦点を絞った問いは、主張を集められる証拠に合わせます。",
+            "ko": "초점이 분명한 질문은 주장을 수집 가능한 근거에 맞춰요."
+          },
+          "visual": "sentence:A focused question matches the claim to the evidence I can collect.",
+          "target": "sentence:A focused question matches the claim to the evidence I can collect.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep14",
+      "number": 14,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Choosing Search Concepts and Keywords",
+      "title_zh_TW": "選擇搜尋概念與關鍵詞",
+      "titles": {
+        "zh-TW": "選擇搜尋概念與關鍵詞",
+        "zh-CN": "选择搜索概念与关键词",
+        "ja": "検索概念とキーワードを選ぶ",
+        "ko": "검색 개념과 핵심어 선택하기"
+      },
+      "topic": "research-search-concepts-synonyms",
+      "objectives_zh_TW": [
+        "把研究問題拆成有關係的概念。",
+        "以近義詞探索作者的不同命名方式。",
+        "記錄搜尋調整及排除理由。"
+      ],
+      "parent_tip_zh_TW": "先記下想找的概念，再列不同作者可能採用的詞；每次調整都寫下原因。",
+      "practice": {
+        "reading_en": "In a fictional information literacy workshop, Marco investigates how campus signs help first-time visitors find accessible routes. His first search uses the complete sentence from his research question and returns a mixture of unrelated material. The librarian asks him to separate the question into concepts: navigation, accessibility, and unfamiliar users. For each concept, Marco lists possible terms, such as wayfinding for navigation and newcomers for unfamiliar users. He notices that an article using the phrase barrier-free routes may still be relevant even if it does not use his original wording. He keeps a search log that records the terms tried, the kinds of results found, and the reason for each change. When results focus on vehicle navigation, he adds a pedestrian concept instead of assuming every irrelevant result proves the topic is unresearched. He also reads short descriptions before deciding whether a source fits the question. The workshop does not promise that a particular search system will behave in a fixed way. Marco's aim is to make his choices explainable and revisable, while recognizing that different writers may describe the same concept differently.",
+        "prompt_en": "Write a 120-160-word search strategy for Marco. Identify three concepts, suggest alternative terms, explain one adjustment for irrelevant results, and describe what the search log should record.",
+        "prompt_zh_TW": "以120至160詞替Marco寫搜尋策略，列三項概念及替代詞，解釋排除無關結果的調整與搜尋紀錄內容。",
+        "sample_answer_en": "I will organize the search around navigation, accessibility, and users who are unfamiliar with the campus. Alternative terms may include wayfinding for navigation, barrier-free routes for accessible routes, and newcomers or first-time visitors for unfamiliar users. These alternatives matter because relevant authors may not use the wording in my original question. If the results mainly discuss vehicle navigation, I will add a pedestrian concept and check whether the results become more relevant. I will read source descriptions before deciding that a text belongs in the project. My log will record the terms I tried, the kinds of results they produced, and why I changed the search. It will also note reasons for excluding sources, so I can review my decisions without treating the first unsuccessful search as proof that no useful research exists.",
+        "questions": [
+          {
+            "prompt_en": "Which three concepts does Marco identify first?",
+            "answer_en": "He identifies navigation, accessibility, and unfamiliar users."
+          },
+          {
+            "prompt_en": "Why can a source using barrier-free routes still be relevant?",
+            "answer_en": "It may describe the accessibility concept using different wording from Marco's original question."
+          },
+          {
+            "prompt_en": "Why is a log more useful than recording only the final search terms?",
+            "answer_en": "It preserves the reasoning behind adjustments and exclusions, allowing Marco to review and revise the process instead of concealing unsuccessful attempts."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep14-s01",
+          "english": "My question combines navigation, accessibility, and unfamiliar users.",
+          "demo": "My question combines navigation, accessibility, and unfamiliar users.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的問題結合導航、可及性與不熟悉環境的使用者。",
+            "zh-CN": "我的问题结合导航、可及性与不熟悉环境的用户。",
+            "ja": "私の問いは、道案内、アクセスのしやすさ、不慣れな利用者を組み合わせています。",
+            "ko": "제 질문은 길 찾기, 접근성, 익숙하지 않은 이용자를 결합해요."
+          },
+          "visual": "sentence:My question combines navigation, accessibility, and unfamiliar users.",
+          "target": "sentence:My question combines navigation, accessibility, and unfamiliar users.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep14-s02",
+          "english": "Different authors may use wayfinding instead of navigation.",
+          "demo": "Different authors may use wayfinding instead of navigation.",
+          "instruction": {
+            "en": "The phrase may use allows different terminology without requiring identical wording.",
+            "zh-TW": "may use保留作者用語差異，不要求措辭相同。",
+            "zh-CN": "may use保留作者用语差异，不要求措辞相同。",
+            "ja": "may use は、表現の一致を求めず、著者による用語の違いを認めます。",
+            "ko": "may use는 같은 표현을 요구하지 않고 저자마다 다른 용어를 쓸 여지를 남겨요."
+          },
+          "demo_translation": {
+            "zh-TW": "不同作者可能用wayfinding而非navigation。",
+            "zh-CN": "不同作者可能用wayfinding而非navigation。",
+            "ja": "著者によっては、navigation ではなく wayfinding を使うかもしれません。",
+            "ko": "저자에 따라 navigation 대신 wayfinding을 쓸 수 있어요."
+          },
+          "visual": "sentence:Different authors may use wayfinding instead of navigation.",
+          "target": "sentence:Different authors may use wayfinding instead of navigation.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep14-s03",
+          "english": "A relevant source may describe accessible routes as barrier-free routes.",
+          "demo": "A relevant source may describe accessible routes as barrier-free routes.",
+          "instruction": {
+            "en": "Connect alternative wording to the accessibility concept before judging source relevance.",
+            "zh-TW": "先連結替代用語與可及性概念，再判斷來源相關性。",
+            "zh-CN": "先链接替代用语与可及性概念，再判断来源相关性。",
+            "ja": "別の表現をアクセスの概念に結びつけてから、資料の関連性を判断します。",
+            "ko": "대체 표현을 접근성 개념과 연결한 뒤 자료의 관련성을 판단해요."
+          },
+          "demo_translation": {
+            "zh-TW": "相關來源可能把無障礙路線稱作barrier-free routes。",
+            "zh-CN": "相关来源可能把无障碍路线称作barrier-free routes。",
+            "ja": "関連する資料では、利用しやすい経路を barrier-free routes と表すかもしれません。",
+            "ko": "관련 자료는 접근 가능한 경로를 barrier-free routes라고 표현할 수 있어요."
+          },
+          "visual": "sentence:A relevant source may describe accessible routes as barrier-free routes.",
+          "target": "sentence:A relevant source may describe accessible routes as barrier-free routes.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep14-s04",
+          "english": "I will record the concepts and explain why I change the terms.",
+          "demo": "I will record the concepts and explain why I change the terms.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會記錄概念，並解釋更換詞語的原因。",
+            "zh-CN": "我会记录概念，并解释更换词语的原因。",
+            "ja": "概念を記録し、用語を変える理由を説明します。",
+            "ko": "개념을 기록하고 검색어를 바꾸는 이유를 설명할 거예요."
+          },
+          "visual": "sentence:I will record the concepts and explain why I change the terms.",
+          "target": "sentence:I will record the concepts and explain why I change the terms.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep14-s05",
+          "english": "Listen and choose.",
+          "demo": "Different authors may use wayfinding instead of navigation.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "不同作者可能用wayfinding而非navigation。",
+            "zh-CN": "不同作者可能用wayfinding而非navigation。",
+            "ja": "著者によっては、navigation ではなく wayfinding を使うかもしれません。",
+            "ko": "저자에 따라 navigation 대신 wayfinding을 쓸 수 있어요."
+          },
+          "visual": "sentence:Different authors may use wayfinding instead of navigation.",
+          "target": "sentence:Different authors may use wayfinding instead of navigation.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Different authors may use wayfinding instead of navigation.",
+            "sentence:My question combines navigation, accessibility, and unfamiliar users.",
+            "sentence:A search log makes my decisions visible and open to revision."
+          ]
+        },
+        {
+          "id": "ep14-s06",
+          "english": "Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "demo": "Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "加入行人概念可能減少車輛導航的無關結果。",
+            "zh-CN": "加入行人概念可能减少车辆导航的无关结果。",
+            "ja": "歩行者という概念を加えると、車両案内の無関係な結果が減るかもしれません。",
+            "ko": "보행자 개념을 더하면 차량 길 찾기에 관한 무관한 결과가 줄 수 있어요."
+          },
+          "visual": "sentence:Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "target": "sentence:Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep14-s07",
+          "english": "Listen and choose.",
+          "demo": "Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "加入行人概念可能減少車輛導航的無關結果。",
+            "zh-CN": "加入行人概念可能减少车辆导航的无关结果。",
+            "ja": "歩行者という概念を加えると、車両案内の無関係な結果が減るかもしれません。",
+            "ko": "보행자 개념을 더하면 차량 길 찾기에 관한 무관한 결과가 줄 수 있어요."
+          },
+          "visual": "sentence:Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "target": "sentence:Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:My question combines navigation, accessibility, and unfamiliar users.",
+            "sentence:Adding a pedestrian concept may reduce irrelevant results about vehicle navigation.",
+            "sentence:A search log makes my decisions visible and open to revision."
+          ]
+        },
+        {
+          "id": "ep14-s08",
+          "english": "I should read source descriptions before deciding whether they fit my question.",
+          "demo": "I should read source descriptions before deciding whether they fit my question.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我應先讀來源簡介，再決定是否符合問題。",
+            "zh-CN": "我应先读来源简介，再决定是否符合问题。",
+            "ja": "問いに合うか判断する前に、資料の説明を読むべきです。",
+            "ko": "질문에 맞는지 판단하기 전에 자료 설명을 읽어야 해요."
+          },
+          "visual": "sentence:I should read source descriptions before deciding whether they fit my question.",
+          "target": "sentence:I should read source descriptions before deciding whether they fit my question.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep14-s09",
+          "english": "Listen and choose.",
+          "demo": "I should read source descriptions before deciding whether they fit my question.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我應先讀來源簡介，再決定是否符合問題。",
+            "zh-CN": "我应先读来源简介，再决定是否符合问题。",
+            "ja": "問いに合うか判断する前に、資料の説明を読むべきです。",
+            "ko": "질문에 맞는지 판단하기 전에 자료 설명을 읽어야 해요."
+          },
+          "visual": "sentence:I should read source descriptions before deciding whether they fit my question.",
+          "target": "sentence:I should read source descriptions before deciding whether they fit my question.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:My question combines navigation, accessibility, and unfamiliar users.",
+            "sentence:A search log makes my decisions visible and open to revision.",
+            "sentence:I should read source descriptions before deciding whether they fit my question."
+          ]
+        },
+        {
+          "id": "ep14-s10",
+          "english": "A search log makes my decisions visible and open to revision.",
+          "demo": "A search log makes my decisions visible and open to revision.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "搜尋紀錄讓我的決策清楚可見，也能修訂。",
+            "zh-CN": "搜索纪录让我的决策清楚可见，也能修订。",
+            "ja": "検索記録があれば、判断を可視化し、見直せます。",
+            "ko": "검색 기록은 판단 과정을 드러내고 수정할 수 있게 해요."
+          },
+          "visual": "sentence:A search log makes my decisions visible and open to revision.",
+          "target": "sentence:A search log makes my decisions visible and open to revision.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep15",
+      "number": 15,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Matching Sources to the Question",
+      "title_zh_TW": "讓來源符合研究問題",
+      "titles": {
+        "zh-TW": "讓來源符合研究問題",
+        "zh-CN": "让来源符合研究问题",
+        "ja": "資料と問いの適合性を判断する",
+        "ko": "자료와 연구 질문의 적합성 판단하기"
+      },
+      "topic": "source-purpose-fitness-not-ranking",
+      "objectives_zh_TW": [
+        "辨認來源的目的、讀者與製作方式。",
+        "依研究問題判斷可支持的主張。",
+        "避免用單一可信度排名取代適用性分析。"
+      ],
+      "parent_tip_zh_TW": "先問這份來源能證明什麼，再問它是否值得信任；不同問題可能需要不同材料。",
+      "practice": {
+        "reading_en": "For a fictional project about a new campus garden, Leah collects three materials: an official opening announcement, a volunteer's diary, and a maintenance schedule. She initially plans to rank them from most to least trustworthy and use only the highest-ranked source. Her tutor asks what question each material can answer. The announcement explains how the institution presents the garden to the public, but it is designed to celebrate the opening rather than document every difficulty. The diary offers a detailed personal account of volunteering, yet it cannot represent all volunteers' experiences. The maintenance schedule records planned tasks, not proof that every task actually happened. Leah realizes that usefulness depends partly on the claim she wants to make. To analyze public framing, the announcement is directly relevant. To explore one volunteer's changing expectations, the diary is valuable when its perspective is identified. To compare plans with completed work, she would need records beyond the schedule. Instead of rejecting sources simply because they have a purpose or limitation, Leah states those features and chooses evidence that fits a clearly defined question.",
+        "prompt_en": "Write a 120-160-word source-selection note for Leah. Explain what each of the three materials can support, state its limitation, and justify one choice for a focused research question.",
+        "prompt_zh_TW": "以120至160詞替Leah寫選材筆記，說明三種材料能支持什麼及其限制，並為一個聚焦問題選擇合適來源。",
+        "sample_answer_en": "The opening announcement is useful for asking how the institution publicly presents the garden. Its celebratory purpose limits its value as a complete record of difficulties, but that same purpose is relevant when studying public framing. The volunteer's diary can support an analysis of one person's changing expectations; it should not stand for all volunteers. The maintenance schedule identifies planned tasks, although it cannot prove that the work was completed. For my focused question about how the garden is represented to the public, I would begin with the announcement and examine its language and selected details. I would explain its purpose rather than treat it as a neutral account of everything that happened. If I later wanted to compare plans with completed work, I would need additional records beyond the schedule.",
+        "questions": [
+          {
+            "prompt_en": "What are Leah's three sources?",
+            "answer_en": "They are an official opening announcement, a volunteer's diary, and a maintenance schedule."
+          },
+          {
+            "prompt_en": "Why does the schedule not prove that maintenance happened?",
+            "answer_en": "It records planned tasks rather than evidence that those tasks were completed."
+          },
+          {
+            "prompt_en": "Can a celebratory announcement still be a useful source? Give a reason.",
+            "answer_en": "Yes. Its purpose makes it directly relevant to a question about public framing, as long as it is not treated as a complete record of events or difficulties."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep15-s01",
+          "english": "Source usefulness depends on the question and the claim I want to support.",
+          "demo": "Source usefulness depends on the question and the claim I want to support.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "來源用途取決於問題與我要支持的主張。",
+            "zh-CN": "来源用途取决于问题与我要支持的主张。",
+            "ja": "資料の有用性は、問いと裏付けたい主張によって決まります。",
+            "ko": "자료의 유용성은 질문과 뒷받침하려는 주장에 달려 있어요."
+          },
+          "visual": "sentence:Source usefulness depends on the question and the claim I want to support.",
+          "target": "sentence:Source usefulness depends on the question and the claim I want to support.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep15-s02",
+          "english": "The announcement shows how the institution presents the garden publicly.",
+          "demo": "The announcement shows how the institution presents the garden publicly.",
+          "instruction": {
+            "en": "Use the phrase shows how to limit the evidence to public presentation.",
+            "zh-TW": "用shows how把公告證據限定在對外呈現方式。",
+            "zh-CN": "用shows how把公告证据限定在对外呈现方式。",
+            "ja": "shows how を使い、お知らせが示す証拠を公的な提示方法に限定します。",
+            "ko": "shows how를 써서 공지문의 근거를 대외적 제시 방식으로 한정해요."
+          },
+          "demo_translation": {
+            "zh-TW": "公告呈現機構如何向公眾介紹花園。",
+            "zh-CN": "公告呈现机构如何向公众介绍花园。",
+            "ja": "お知らせは、組織が庭を公にどう紹介しているかを示します。",
+            "ko": "공지문은 기관이 정원을 대외적으로 어떻게 소개하는지 보여 줘요."
+          },
+          "visual": "sentence:The announcement shows how the institution presents the garden publicly.",
+          "target": "sentence:The announcement shows how the institution presents the garden publicly.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep15-s03",
+          "english": "Its celebratory purpose may leave difficulties out of the account.",
+          "demo": "Its celebratory purpose may leave difficulties out of the account.",
+          "instruction": {
+            "en": "May leave out identifies possible selection without automatically accusing the source of dishonesty.",
+            "zh-TW": "may leave out指出可能取捨，不直接指控來源不誠實。",
+            "zh-CN": "may leave out指出可能取舍，不直接指控来源不诚实。",
+            "ja": "may leave out は、不誠実と決めつけず、選択による省略の可能性を示します。",
+            "ko": "may leave out은 부정직하다고 단정하지 않고 선택적 생략 가능성을 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "其慶祝目的可能讓敘述省略困難。",
+            "zh-CN": "其庆祝目的可能让叙述省略困难。",
+            "ja": "祝賀を目的としているため、困難が記述から抜けている可能性があります。",
+            "ko": "축하하려는 목적 때문에 서술에서 어려움이 빠질 수 있어요."
+          },
+          "visual": "sentence:Its celebratory purpose may leave difficulties out of the account.",
+          "target": "sentence:Its celebratory purpose may leave difficulties out of the account.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep15-s04",
+          "english": "The diary represents one volunteer's experience, not every volunteer's view.",
+          "demo": "The diary represents one volunteer's experience, not every volunteer's view.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "日記呈現一位志工的經驗，非所有志工的看法。",
+            "zh-CN": "日记呈现一位志工的经验，非所有志工的看法。",
+            "ja": "日記が示すのは一人の経験であり、全ボランティアの見方ではありません。",
+            "ko": "일기는 자원봉사자 한 명의 경험이지 모든 봉사자의 견해가 아니에요."
+          },
+          "visual": "sentence:The diary represents one volunteer's experience, not every volunteer's view.",
+          "target": "sentence:The diary represents one volunteer's experience, not every volunteer's view.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep15-s05",
+          "english": "Listen and choose.",
+          "demo": "The announcement shows how the institution presents the garden publicly.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "公告呈現機構如何向公眾介紹花園。",
+            "zh-CN": "公告呈现机构如何向公众介绍花园。",
+            "ja": "お知らせは、組織が庭を公にどう紹介しているかを示します。",
+            "ko": "공지문은 기관이 정원을 대외적으로 어떻게 소개하는지 보여 줘요."
+          },
+          "visual": "sentence:The announcement shows how the institution presents the garden publicly.",
+          "target": "sentence:The announcement shows how the institution presents the garden publicly.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The announcement shows how the institution presents the garden publicly.",
+            "sentence:Source usefulness depends on the question and the claim I want to support.",
+            "sentence:A source's limitations should shape how I use it."
+          ]
+        },
+        {
+          "id": "ep15-s06",
+          "english": "The schedule records planned tasks but does not prove their completion.",
+          "demo": "The schedule records planned tasks but does not prove their completion.",
+          "instruction": {
+            "en": "Contrast planned tasks with evidence that the work was completed.",
+            "zh-TW": "對比計畫工作與已完成工作的證據。",
+            "zh-CN": "对比计划工作与已完成工作的证据。",
+            "ja": "計画された作業と、作業が完了したことを示す証拠を対比します。",
+            "ko": "계획된 작업과 작업이 완료되었음을 보여 주는 근거를 대비해요."
+          },
+          "demo_translation": {
+            "zh-TW": "時程表記錄計畫工作，卻不證明已完成。",
+            "zh-CN": "时程表记录计划工作，却不证明已完成。",
+            "ja": "予定表は計画された作業を記録しますが、完了の証明にはなりません。",
+            "ko": "일정표는 계획된 작업을 기록하지만 완료를 증명하지는 않아요."
+          },
+          "visual": "sentence:The schedule records planned tasks but does not prove their completion.",
+          "target": "sentence:The schedule records planned tasks but does not prove their completion.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep15-s07",
+          "english": "Listen and choose.",
+          "demo": "The schedule records planned tasks but does not prove their completion.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "時程表記錄計畫工作，卻不證明已完成。",
+            "zh-CN": "时程表记录计划工作，却不证明已完成。",
+            "ja": "予定表は計画された作業を記録しますが、完了の証明にはなりません。",
+            "ko": "일정표는 계획된 작업을 기록하지만 완료를 증명하지는 않아요."
+          },
+          "visual": "sentence:The schedule records planned tasks but does not prove their completion.",
+          "target": "sentence:The schedule records planned tasks but does not prove their completion.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Source usefulness depends on the question and the claim I want to support.",
+            "sentence:The schedule records planned tasks but does not prove their completion.",
+            "sentence:A source's limitations should shape how I use it."
+          ]
+        },
+        {
+          "id": "ep15-s08",
+          "english": "I need additional records to compare planned work with completed work.",
+          "demo": "I need additional records to compare planned work with completed work.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我要比較計畫與完成工作，需要額外紀錄。",
+            "zh-CN": "我要比较计划与完成工作，需要额外纪录。",
+            "ja": "予定された作業と完了した作業を比べるには、追加の記録が必要です。",
+            "ko": "계획된 작업과 완료된 작업을 비교하려면 추가 기록이 필요해요."
+          },
+          "visual": "sentence:I need additional records to compare planned work with completed work.",
+          "target": "sentence:I need additional records to compare planned work with completed work.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep15-s09",
+          "english": "Listen and choose.",
+          "demo": "I need additional records to compare planned work with completed work.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我要比較計畫與完成工作，需要額外紀錄。",
+            "zh-CN": "我要比较计划与完成工作，需要额外纪录。",
+            "ja": "予定された作業と完了した作業を比べるには、追加の記録が必要です。",
+            "ko": "계획된 작업과 완료된 작업을 비교하려면 추가 기록이 필요해요."
+          },
+          "visual": "sentence:I need additional records to compare planned work with completed work.",
+          "target": "sentence:I need additional records to compare planned work with completed work.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Source usefulness depends on the question and the claim I want to support.",
+            "sentence:A source's limitations should shape how I use it.",
+            "sentence:I need additional records to compare planned work with completed work."
+          ]
+        },
+        {
+          "id": "ep15-s10",
+          "english": "A source's limitations should shape how I use it.",
+          "demo": "A source's limitations should shape how I use it.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "來源的限制應影響我使用它的方式。",
+            "zh-CN": "来源的限制应影响我使用它的方式。",
+            "ja": "資料の限界を踏まえて、使い方を決めるべきです。",
+            "ko": "자료의 한계를 고려해 사용 방식을 정해야 해요."
+          },
+          "visual": "sentence:A source's limitations should shape how I use it.",
+          "target": "sentence:A source's limitations should shape how I use it.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep16",
+      "number": 16,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Separating Data, Interpretation, and Claims",
+      "title_zh_TW": "分清資料、詮釋與主張",
+      "titles": {
+        "zh-TW": "分清資料、詮釋與主張",
+        "zh-CN": "分清数据、诠释与主张",
+        "ja": "データ・解釈・主張を区別する",
+        "ko": "자료, 해석, 주장 구분하기"
+      },
+      "topic": "observations-interpretation-claim-chain",
+      "objectives_zh_TW": [
+        "區分直接觀察、可能解釋與延伸主張。",
+        "檢查推論鏈各步驟的證據。",
+        "避免把合理解釋當成已證實原因。"
+      ],
+      "parent_tip_zh_TW": "為筆記標記「看見的事」「對它的解釋」「進一步結論」，再檢查中間缺哪種證據。",
+      "practice": {
+        "reading_en": "In a fictional library evaluation exercise, a report describes a hypothetical change to an archive request form. After the form was shortened, fewer submitted requests lacked a required date. The report's author interprets this pattern as a possible sign that the revised form made the requirement easier to understand. A student reader, Chris, summarizes the report by writing that shorter forms always improve user understanding. His partner asks him to separate what was recorded from what was inferred. The recorded observation concerns missing dates in submitted requests. The explanation concerns users' understanding, which was not measured directly. The broad claim about all shorter forms goes further still. Chris returns to the report and notices that staff also began checking forms at the desk during the same period. This change could affect the number of incomplete submissions without showing that users understood the instructions better. He revises his summary to report the observed pattern and present improved understanding as one possible explanation. He also recommends gathering users' explanations of the requirement before drawing a stronger conclusion about comprehension.",
+        "prompt_en": "Write a 120-160-word analytical note for Chris. Separate the observation, proposed interpretation, and overgeneralized claim; identify an alternative explanation and suggest evidence for a stronger understanding claim.",
+        "prompt_zh_TW": "以120至160詞替Chris寫分析筆記，區分觀察、詮釋與過度概括，指出替代解釋，並提出理解程度所需證據。",
+        "sample_answer_en": "The recorded observation is that fewer submitted archive requests lacked a required date after the form was shortened. One interpretation is that the revised form made the requirement easier to understand, but understanding was not measured directly. The statement that shorter forms always improve comprehension is therefore much broader than the evidence supports. Staff also began checking requests at the desk during the same period. Their checks could reduce incomplete submissions even if users' understanding did not change. I would revise the summary to preserve the observed pattern while presenting improved understanding as a possible explanation. To investigate that explanation more directly, we could ask users to explain the requirement in their own words. The new evidence should address comprehension rather than merely count completed fields again.",
+        "questions": [
+          {
+            "prompt_en": "What was directly recorded in the report?",
+            "answer_en": "Fewer submitted requests lacked a required date after the form was shortened."
+          },
+          {
+            "prompt_en": "Why might desk checks explain the observed pattern?",
+            "answer_en": "Staff could catch missing dates before submission, reducing incomplete requests without any improvement in users' understanding."
+          },
+          {
+            "prompt_en": "Why would asking users to explain the requirement strengthen the analysis?",
+            "answer_en": "It would provide more direct evidence about comprehension, the concept invoked by the interpretation but not measured in the original observation."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep16-s01",
+          "english": "The fictional report records fewer missing dates after a form was shortened.",
+          "demo": "The fictional report records fewer missing dates after a form was shortened.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "虛構報告記錄表單縮短後，漏填日期較少。",
+            "zh-CN": "虚构报告记录表单缩短后，漏填日期较少。",
+            "ja": "架空の報告では、様式を短くした後、日付の記入漏れが減っています。",
+            "ko": "가상 보고서는 양식을 줄인 뒤 날짜 누락이 감소했다고 기록해요."
+          },
+          "visual": "sentence:The fictional report records fewer missing dates after a form was shortened.",
+          "target": "sentence:The fictional report records fewer missing dates after a form was shortened.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep16-s02",
+          "english": "Improved understanding is a possible interpretation, not a directly measured result.",
+          "demo": "Improved understanding is a possible interpretation, not a directly measured result.",
+          "instruction": {
+            "en": "Distinguish an explanation of understanding from a result that was actually measured.",
+            "zh-TW": "區分理解程度的解釋與實際測量的結果。",
+            "zh-CN": "区分理解程度的解释与实际测量的结果。",
+            "ja": "理解についての説明と、実際に測定された結果を区別します。",
+            "ko": "이해에 관한 설명과 실제로 측정된 결과를 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "理解改善是可能的詮釋，並非直接測量的結果。",
+            "zh-CN": "理解改善是可能的诠释，并非直接测量的结果。",
+            "ja": "理解の向上は可能な解釈であり、直接測定された結果ではありません。",
+            "ko": "이해 향상은 가능한 해석이지 직접 측정한 결과가 아니에요."
+          },
+          "visual": "sentence:Improved understanding is a possible interpretation, not a directly measured result.",
+          "target": "sentence:Improved understanding is a possible interpretation, not a directly measured result.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep16-s03",
+          "english": "Staff also began checking the forms at the desk during that period.",
+          "demo": "Staff also began checking the forms at the desk during that period.",
+          "instruction": {
+            "en": "Also introduces a simultaneous change that could explain the same observed pattern.",
+            "zh-TW": "also引入同時變化，可能解釋同一觀察模式。",
+            "zh-CN": "also引入同时变化，可能解释同一观察模式。",
+            "ja": "also は、同じ観察傾向を説明し得る、同時に起きた変化を加えます。",
+            "ko": "also는 같은 관찰 패턴을 설명할 수 있는 동시적 변화를 더해요."
+          },
+          "demo_translation": {
+            "zh-TW": "同一期間，員工也開始在櫃檯檢查表單。",
+            "zh-CN": "同一期间，员工也开始在柜台检查表单。",
+            "ja": "同じ時期に、職員も窓口で様式を確認し始めました。",
+            "ko": "그 기간에 직원들도 창구에서 양식을 확인하기 시작했어요."
+          },
+          "visual": "sentence:Staff also began checking the forms at the desk during that period.",
+          "target": "sentence:Staff also began checking the forms at the desk during that period.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep16-s04",
+          "english": "Those checks could reduce missing dates without improving users' understanding.",
+          "demo": "Those checks could reduce missing dates without improving users' understanding.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "即使使用者理解未改善，那些檢查仍可能減少漏填日期。",
+            "zh-CN": "即使用户理解未改善，那些检查仍可能减少漏填日期。",
+            "ja": "その確認で、利用者の理解が深まらなくても日付の記入漏れは減る可能性があります。",
+            "ko": "그 확인으로 이용자의 이해가 나아지지 않아도 날짜 누락이 줄 수 있어요."
+          },
+          "visual": "sentence:Those checks could reduce missing dates without improving users' understanding.",
+          "target": "sentence:Those checks could reduce missing dates without improving users' understanding.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep16-s05",
+          "english": "Listen and choose.",
+          "demo": "Improved understanding is a possible interpretation, not a directly measured result.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "理解改善是可能的詮釋，並非直接測量的結果。",
+            "zh-CN": "理解改善是可能的诠释，并非直接测量的结果。",
+            "ja": "理解の向上は可能な解釈であり、直接測定された結果ではありません。",
+            "ko": "이해 향상은 가능한 해석이지 직접 측정한 결과가 아니에요."
+          },
+          "visual": "sentence:Improved understanding is a possible interpretation, not a directly measured result.",
+          "target": "sentence:Improved understanding is a possible interpretation, not a directly measured result.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Improved understanding is a possible interpretation, not a directly measured result.",
+            "sentence:The fictional report records fewer missing dates after a form was shortened.",
+            "sentence:I should distinguish the recorded pattern from explanations that still need testing."
+          ]
+        },
+        {
+          "id": "ep16-s06",
+          "english": "We could ask users to explain the requirement in their own words.",
+          "demo": "We could ask users to explain the requirement in their own words.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可以請使用者用自己的話解釋要求。",
+            "zh-CN": "我们可以请用户用自己的话解释要求。",
+            "ja": "利用者に、要件を自分の言葉で説明してもらう方法があります。",
+            "ko": "이용자에게 요구 사항을 자신의 말로 설명해 달라고 할 수 있어요."
+          },
+          "visual": "sentence:We could ask users to explain the requirement in their own words.",
+          "target": "sentence:We could ask users to explain the requirement in their own words.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep16-s07",
+          "english": "Listen and choose.",
+          "demo": "We could ask users to explain the requirement in their own words.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可以請使用者用自己的話解釋要求。",
+            "zh-CN": "我们可以请用户用自己的话解释要求。",
+            "ja": "利用者に、要件を自分の言葉で説明してもらう方法があります。",
+            "ko": "이용자에게 요구 사항을 자신의 말로 설명해 달라고 할 수 있어요."
+          },
+          "visual": "sentence:We could ask users to explain the requirement in their own words.",
+          "target": "sentence:We could ask users to explain the requirement in their own words.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional report records fewer missing dates after a form was shortened.",
+            "sentence:We could ask users to explain the requirement in their own words.",
+            "sentence:I should distinguish the recorded pattern from explanations that still need testing."
+          ]
+        },
+        {
+          "id": "ep16-s08",
+          "english": "A claim about all shorter forms goes beyond this limited observation.",
+          "demo": "A claim about all shorter forms goes beyond this limited observation.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "對所有較短表單的主張超出這項有限觀察。",
+            "zh-CN": "对所有较短表单的主张超出这项有限观察。",
+            "ja": "短い様式すべてについての主張は、この限られた観察を超えています。",
+            "ko": "모든 짧은 양식에 관한 주장은 이 제한된 관찰을 넘어가요."
+          },
+          "visual": "sentence:A claim about all shorter forms goes beyond this limited observation.",
+          "target": "sentence:A claim about all shorter forms goes beyond this limited observation.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep16-s09",
+          "english": "Listen and choose.",
+          "demo": "A claim about all shorter forms goes beyond this limited observation.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "對所有較短表單的主張超出這項有限觀察。",
+            "zh-CN": "对所有较短表单的主张超出这项有限观察。",
+            "ja": "短い様式すべてについての主張は、この限られた観察を超えています。",
+            "ko": "모든 짧은 양식에 관한 주장은 이 제한된 관찰을 넘어가요."
+          },
+          "visual": "sentence:A claim about all shorter forms goes beyond this limited observation.",
+          "target": "sentence:A claim about all shorter forms goes beyond this limited observation.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional report records fewer missing dates after a form was shortened.",
+            "sentence:I should distinguish the recorded pattern from explanations that still need testing.",
+            "sentence:A claim about all shorter forms goes beyond this limited observation."
+          ]
+        },
+        {
+          "id": "ep16-s10",
+          "english": "I should distinguish the recorded pattern from explanations that still need testing.",
+          "demo": "I should distinguish the recorded pattern from explanations that still need testing.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我應分清記錄的模式與仍待檢驗的解釋。",
+            "zh-CN": "我应分清记录的模式与仍待检验的解释。",
+            "ja": "記録された傾向と、まだ検証が必要な説明を区別すべきです。",
+            "ko": "기록된 패턴과 아직 검증이 필요한 설명을 구분해야 해요."
+          },
+          "visual": "sentence:I should distinguish the recorded pattern from explanations that still need testing.",
+          "target": "sentence:I should distinguish the recorded pattern from explanations that still need testing.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep17",
+      "number": 17,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Comparing Two Source Positions",
+      "title_zh_TW": "比較兩個來源的立場",
+      "titles": {
+        "zh-TW": "比較兩個來源的立場",
+        "zh-CN": "比较两个来源的立场",
+        "ja": "二つの資料の立場を比較する",
+        "ko": "두 자료의 입장 비교하기"
+      },
+      "topic": "compare-sources-shared-question-different-priorities",
+      "objectives_zh_TW": [
+        "用共同問題組織來源比較。",
+        "分辨真正矛盾與優先考量不同。",
+        "以證據界定可共同成立的結論。"
+      ],
+      "parent_tip_zh_TW": "不要先寫甲摘要再寫乙摘要；先找兩者都在回答的問題，以及各自認為最重要的準則。",
+      "practice": {
+        "reading_en": "In a fictional policy-reading exercise, Rosa compares two training texts about a campus refill station. Text A recommends placing the station near the main entrance because visitors can notice it immediately. Text B favors a quieter corridor because people can refill bottles without blocking a busy doorway. Rosa first describes the texts as complete opposites. On closer reading, she sees that both support providing a refill station and both care about convenient use. Their disagreement concerns the location and the relative importance of visibility and circulation. Text A discusses how newcomers find facilities, while Text B describes the movement of groups during class changes. Neither text provides direct evidence about how many people would use each proposed location. Rosa organizes her comparison around shared aims, different criteria, and missing evidence. She concludes that the texts reveal a design tension rather than proving that one author cares about users and the other does not. A useful next step would examine whether a location can be visible without creating congestion. This question emerges from the comparison instead of merely choosing a favorite source.",
+        "prompt_en": "Write a 120-160-word comparison of the fictional texts. Identify their shared aim, explain their different priorities and evidence, avoid a false opposition, and propose a question for further investigation.",
+        "prompt_zh_TW": "以120至160詞比較兩篇虛構文本，指出共同目標、不同優先順序與證據，避免假對立，並提出後續問題。",
+        "sample_answer_en": "Both training texts support a campus refill station and aim to make it convenient to use. Their disagreement concerns location rather than the value of the facility itself. Text A prioritizes visibility near the main entrance, especially for newcomers who need to find it. Text B prioritizes circulation and warns that refilling could obstruct a busy doorway during class changes. These are different user-related criteria, so the comparison should not suggest that only one author considers users. Neither text directly establishes likely use at each proposed location. Together, they identify a tension between being easy to find and leaving enough space for movement. Further investigation could ask whether another location provides clear visibility without congestion. That question would build on both sources instead of selecting one position before examining the practical conditions.",
+        "questions": [
+          {
+            "prompt_en": "What aim do both texts share?",
+            "answer_en": "Both support a refill station that is convenient for campus users."
+          },
+          {
+            "prompt_en": "What is the main difference between their priorities?",
+            "answer_en": "Text A prioritizes visibility and discovery, while Text B prioritizes circulation and avoiding congestion."
+          },
+          {
+            "prompt_en": "Why is it misleading to say the texts are complete opposites?",
+            "answer_en": "They agree on the facility and broad user-oriented aim; their disagreement concerns the balance of location criteria, and neither proves expected use."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep17-s01",
+          "english": "Both fictional texts support a refill station that is convenient to use.",
+          "demo": "Both fictional texts support a refill station that is convenient to use.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "兩篇虛構文本都支持設置方便使用的補水站。",
+            "zh-CN": "两篇虚构文本都支持设置方便使用的补水站。",
+            "ja": "二つの架空の文章は、使いやすい給水所の設置を支持しています。",
+            "ko": "두 가상 글 모두 편리하게 이용할 수 있는 급수대 설치를 지지해요."
+          },
+          "visual": "sentence:Both fictional texts support a refill station that is convenient to use.",
+          "target": "sentence:Both fictional texts support a refill station that is convenient to use.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep17-s02",
+          "english": "Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "demo": "Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "instruction": {
+            "en": "Use while to compare priorities within the sources' shared practical goal.",
+            "zh-TW": "用while在來源共同實際目標中比較優先順序。",
+            "zh-CN": "用while在来源共同实际目标中比较优先级。",
+            "ja": "while を使い、資料に共通する実用上の目的の中で優先順位を比較します。",
+            "ko": "while을 써서 자료의 공통된 실용적 목표 안에서 우선순위를 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "文本A優先考慮可見性，文本B重視繁忙空間的通行。",
+            "zh-CN": "文本A优先考虑可见性，文本B重视繁忙空间的通行。",
+            "ja": "文章Aは見つけやすさを優先し、文章Bは混雑する場所での移動を重視します。",
+            "ko": "글 A는 눈에 잘 띄는 것을 우선하고 글 B는 붐비는 공간의 이동을 강조해요."
+          },
+          "visual": "sentence:Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "target": "sentence:Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep17-s03",
+          "english": "Their disagreement concerns location criteria rather than the value of providing water.",
+          "demo": "Their disagreement concerns location criteria rather than the value of providing water.",
+          "instruction": {
+            "en": "Use rather than to locate disagreement in criteria, not support for the facility.",
+            "zh-TW": "rather than把分歧定位在準則，而非支持設施與否。",
+            "zh-CN": "rather than把分歧定位在准则，而非支持设施与否。",
+            "ja": "rather than は、意見の違いを施設への賛否ではなく基準に位置づけます。",
+            "ko": "rather than은 의견 차이를 시설 찬반이 아니라 기준의 차이로 한정해요."
+          },
+          "demo_translation": {
+            "zh-TW": "他們的分歧在於選址準則，而非供水的價值。",
+            "zh-CN": "他们的分歧在于选址准则，而非供水的价值。",
+            "ja": "意見の違いは、水を提供する価値ではなく、設置場所の基準にあります。",
+            "ko": "의견 차이는 물 제공의 가치가 아니라 위치 선정 기준에 있어요."
+          },
+          "visual": "sentence:Their disagreement concerns location criteria rather than the value of providing water.",
+          "target": "sentence:Their disagreement concerns location criteria rather than the value of providing water.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep17-s04",
+          "english": "Neither text directly establishes expected use at each proposed location.",
+          "demo": "Neither text directly establishes expected use at each proposed location.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "兩篇文本都未直接確立各提議地點的預期使用量。",
+            "zh-CN": "两篇文本都未直接确立各提议地点的预期使用量。",
+            "ja": "どちらの文章も、候補地ごとの予想利用量を直接明らかにはしていません。",
+            "ko": "어느 글도 각 제안 위치의 예상 이용량을 직접 확인하지는 않아요."
+          },
+          "visual": "sentence:Neither text directly establishes expected use at each proposed location.",
+          "target": "sentence:Neither text directly establishes expected use at each proposed location.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep17-s05",
+          "english": "Listen and choose.",
+          "demo": "Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "文本A優先考慮可見性，文本B重視繁忙空間的通行。",
+            "zh-CN": "文本A优先考虑可见性，文本B重视繁忙空间的通行。",
+            "ja": "文章Aは見つけやすさを優先し、文章Bは混雑する場所での移動を重視します。",
+            "ko": "글 A는 눈에 잘 띄는 것을 우선하고 글 B는 붐비는 공간의 이동을 강조해요."
+          },
+          "visual": "sentence:Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "target": "sentence:Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Text A prioritizes visibility, while Text B emphasizes movement through busy spaces.",
+            "sentence:Both fictional texts support a refill station that is convenient to use.",
+            "sentence:Shared aims and different priorities provide a useful structure for comparing sources."
+          ]
+        },
+        {
+          "id": "ep17-s06",
+          "english": "Could another location offer visibility without creating congestion?",
+          "demo": "Could another location offer visibility without creating congestion?",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一地點能兼顧可見性，又不造成壅塞嗎？",
+            "zh-CN": "另一地点能兼顾可见性，又不造成壅塞吗？",
+            "ja": "別の場所なら、混雑を生まずに見つけやすくできるでしょうか。",
+            "ko": "다른 위치라면 혼잡을 만들지 않으면서 눈에 잘 띌 수 있을까요?"
+          },
+          "visual": "sentence:Could another location offer visibility without creating congestion?",
+          "target": "sentence:Could another location offer visibility without creating congestion?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep17-s07",
+          "english": "Listen and choose.",
+          "demo": "Could another location offer visibility without creating congestion?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一地點能兼顧可見性，又不造成壅塞嗎？",
+            "zh-CN": "另一地点能兼顾可见性，又不造成壅塞吗？",
+            "ja": "別の場所なら、混雑を生まずに見つけやすくできるでしょうか。",
+            "ko": "다른 위치라면 혼잡을 만들지 않으면서 눈에 잘 띌 수 있을까요?"
+          },
+          "visual": "sentence:Could another location offer visibility without creating congestion?",
+          "target": "sentence:Could another location offer visibility without creating congestion?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Both fictional texts support a refill station that is convenient to use.",
+            "sentence:Could another location offer visibility without creating congestion?",
+            "sentence:Shared aims and different priorities provide a useful structure for comparing sources."
+          ]
+        },
+        {
+          "id": "ep17-s08",
+          "english": "The comparison reveals a design tension, not a difference in concern for users.",
+          "demo": "The comparison reveals a design tension, not a difference in concern for users.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "比較顯示設計上的取捨，而非是否關心使用者的差異。",
+            "zh-CN": "比较显示设计上的取舍，而非是否关心用户的差异。",
+            "ja": "比較が示すのは設計上の難しさであり、利用者への配慮の有無ではありません。",
+            "ko": "비교는 설계상 긴장을 보여 주는 것이지 이용자에 대한 관심 차이를 보여 주는 게 아니에요."
+          },
+          "visual": "sentence:The comparison reveals a design tension, not a difference in concern for users.",
+          "target": "sentence:The comparison reveals a design tension, not a difference in concern for users.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep17-s09",
+          "english": "Listen and choose.",
+          "demo": "The comparison reveals a design tension, not a difference in concern for users.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "比較顯示設計上的取捨，而非是否關心使用者的差異。",
+            "zh-CN": "比较显示设计上的取舍，而非是否关心用户的差异。",
+            "ja": "比較が示すのは設計上の難しさであり、利用者への配慮の有無ではありません。",
+            "ko": "비교는 설계상 긴장을 보여 주는 것이지 이용자에 대한 관심 차이를 보여 주는 게 아니에요."
+          },
+          "visual": "sentence:The comparison reveals a design tension, not a difference in concern for users.",
+          "target": "sentence:The comparison reveals a design tension, not a difference in concern for users.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Both fictional texts support a refill station that is convenient to use.",
+            "sentence:Shared aims and different priorities provide a useful structure for comparing sources.",
+            "sentence:The comparison reveals a design tension, not a difference in concern for users."
+          ]
+        },
+        {
+          "id": "ep17-s10",
+          "english": "Shared aims and different priorities provide a useful structure for comparing sources.",
+          "demo": "Shared aims and different priorities provide a useful structure for comparing sources.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "共同目標與不同優先順序提供有用的來源比較結構。",
+            "zh-CN": "共同目标与不同优先级提供有用的来源比较结构。",
+            "ja": "共通の目的と異なる優先順位は、資料比較の有用な構成になります。",
+            "ko": "공통 목표와 서로 다른 우선순위는 자료 비교에 유용한 구조를 제공해요."
+          },
+          "visual": "sentence:Shared aims and different priorities provide a useful structure for comparing sources.",
+          "target": "sentence:Shared aims and different priorities provide a useful structure for comparing sources.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep18",
+      "number": 18,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Paraphrasing Without Losing Qualifications",
+      "title_zh_TW": "改寫時保留限定條件",
+      "titles": {
+        "zh-TW": "改寫時保留限定條件",
+        "zh-CN": "改写时保留限定条件",
+        "ja": "限定条件を保って言い換える",
+        "ko": "한정 조건을 유지하며 바꿔 쓰기"
+      },
+      "topic": "paraphrase-scope-qualifier-attribution",
+      "objectives_zh_TW": [
+        "改寫句構時保留群體、條件與主張強度。",
+        "辨識近義替換造成的意思偏移。",
+        "以原文比對檢查改寫是否忠實。"
+      ],
+      "parent_tip_zh_TW": "完成改寫後圈出可能、部分、在某條件下等限制，逐一核對是否仍在。",
+      "practice": {
+        "reading_en": "In a fictional academic writing workshop, Eli paraphrases a short training passage about peer discussion. The passage states: \"For some first-year students in this workshop, discussing an outline with a partner may help reveal unclear links between ideas.\" Eli's first version says that peer discussion improves all students' writing. Although he has changed the vocabulary, he has also changed the meaning. The original concerns some first-year participants in one workshop, identifies a possible benefit, and focuses on noticing unclear connections in an outline. It does not claim a general improvement in finished writing. Eli rewrites the sentence to preserve those boundaries while changing its structure. He also keeps attribution to the fictional training passage, recognizing that using his own wording does not make the underlying idea his own. To check the revision, he compares the group, activity, outcome, and degree of certainty with the original. He does not copy the entire sentence and merely replace a few words. The exercise shows that a responsible paraphrase changes expression while preserving the source's scope and evidential strength.",
+        "prompt_en": "Write a 120-160-word paraphrase commentary. Give a faithful paraphrase of the fictional passage, explain three qualifications preserved, and state why attribution remains necessary. Treat it as training material, not a real research citation.",
+        "prompt_zh_TW": "以120至160詞寫改寫說明，忠實改寫虛構段落、解釋三項保留限制及為何仍須註明來源；勿當真實研究引用。",
+        "sample_answer_en": "The fictional training passage suggests that, within this workshop, reviewing an outline with a partner could help some first-year students notice weak connections between their ideas. This paraphrase keeps the setting limited to the workshop rather than extending the finding to every learning context. It also preserves the restricted group, since the statement concerns some first-year students rather than all students. Finally, could help retains the original uncertainty and does not turn a possible benefit into a guaranteed improvement. The outcome remains noticing unclear links in an outline, not producing better finished writing in general. Attribution is still needed because the underlying idea comes from the training passage even though the wording has changed. This exercise should not be presented as evidence from a real published study. A real assignment would require suitable, verifiable sources in place of these fictional materials.",
+        "questions": [
+          {
+            "prompt_en": "What possible benefit does the original passage identify?",
+            "answer_en": "It identifies the possibility that partner discussion helps some first-year workshop participants notice unclear links in an outline."
+          },
+          {
+            "prompt_en": "How does Eli's first paraphrase change the meaning?",
+            "answer_en": "It expands the group to all students, removes the workshop context and uncertainty, and changes a specific noticing outcome into general writing improvement."
+          },
+          {
+            "prompt_en": "Why does a faithful paraphrase still need attribution?",
+            "answer_en": "The ideas originate in the source even when the writer changes the wording and sentence structure."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep18-s01",
+          "english": "The fictional passage describes a possible benefit for some first-year workshop participants.",
+          "demo": "The fictional passage describes a possible benefit for some first-year workshop participants.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "虛構段落描述部分一年級工作坊學員的可能益處。",
+            "zh-CN": "虚构段落描述部分一年级工作坊学员的可能益处。",
+            "ja": "架空の文章は、講習会の一部の一年生にとっての可能な利点を述べています。",
+            "ko": "가상 글은 워크숍에 참여한 일부 1학년생에게 가능한 이점을 설명해요."
+          },
+          "visual": "sentence:The fictional passage describes a possible benefit for some first-year workshop participants.",
+          "target": "sentence:The fictional passage describes a possible benefit for some first-year workshop participants.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep18-s02",
+          "english": "Discussing an outline may help them notice unclear connections between ideas.",
+          "demo": "Discussing an outline may help them notice unclear connections between ideas.",
+          "instruction": {
+            "en": "Keep may and the specific noticing outcome when paraphrasing the possible benefit.",
+            "zh-TW": "改寫可能益處時，保留may與具體察覺結果。",
+            "zh-CN": "改写可能益处时，保留may与具体察觉结果。",
+            "ja": "可能な利点を言い換える際、may と具体的な気づきの結果を保ちます。",
+            "ko": "가능한 이점을 바꿔 쓸 때 may와 구체적인 알아차림의 결과를 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "討論大綱可能幫他們注意到想法間不清楚的連結。",
+            "zh-CN": "讨论大纲可能帮他们注意到想法间不清楚的链接。",
+            "ja": "構成案を話し合うことで、考えの不明確なつながりに気づけるかもしれません。",
+            "ko": "개요를 토론하면 생각 사이의 불분명한 연결을 알아차리는 데 도움이 될 수 있어요."
+          },
+          "visual": "sentence:Discussing an outline may help them notice unclear connections between ideas.",
+          "target": "sentence:Discussing an outline may help them notice unclear connections between ideas.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep18-s03",
+          "english": "It does not claim that discussion improves every student's finished writing.",
+          "demo": "It does not claim that discussion improves every student's finished writing.",
+          "instruction": {
+            "en": "Identify the expanded group and outcome that the original statement does not support.",
+            "zh-TW": "指出原句不支持的群體與結果擴張。",
+            "zh-CN": "指出原句不支持的群体与结果扩张。",
+            "ja": "元の文が裏付けていない、対象集団と結果の拡大を指摘します。",
+            "ko": "원문이 뒷받침하지 않는 집단과 결과의 확대를 지적해요."
+          },
+          "demo_translation": {
+            "zh-TW": "它沒有主張討論會改善每位學生的完稿。",
+            "zh-CN": "它没有主张讨论会改善每位学生的完稿。",
+            "ja": "話し合いが全学生の完成原稿を改善するとは述べていません。",
+            "ko": "토론이 모든 학생의 완성된 글을 개선한다고 주장하지는 않아요."
+          },
+          "visual": "sentence:It does not claim that discussion improves every student's finished writing.",
+          "target": "sentence:It does not claim that discussion improves every student's finished writing.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep18-s04",
+          "english": "My paraphrase must preserve the group, activity, outcome, and uncertainty.",
+          "demo": "My paraphrase must preserve the group, activity, outcome, and uncertainty.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的改寫必須保留群體、活動、結果與不確定性。",
+            "zh-CN": "我的改写必须保留群体、活动、结果与不确定性。",
+            "ja": "言い換えでは、対象集団、活動、結果、不確かさを保つ必要があります。",
+            "ko": "바꿔 쓸 때 집단, 활동, 결과, 불확실성을 유지해야 해요."
+          },
+          "visual": "sentence:My paraphrase must preserve the group, activity, outcome, and uncertainty.",
+          "target": "sentence:My paraphrase must preserve the group, activity, outcome, and uncertainty.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep18-s05",
+          "english": "Listen and choose.",
+          "demo": "Discussing an outline may help them notice unclear connections between ideas.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "討論大綱可能幫他們注意到想法間不清楚的連結。",
+            "zh-CN": "讨论大纲可能帮他们注意到想法间不清楚的链接。",
+            "ja": "構成案を話し合うことで、考えの不明確なつながりに気づけるかもしれません。",
+            "ko": "개요를 토론하면 생각 사이의 불분명한 연결을 알아차리는 데 도움이 될 수 있어요."
+          },
+          "visual": "sentence:Discussing an outline may help them notice unclear connections between ideas.",
+          "target": "sentence:Discussing an outline may help them notice unclear connections between ideas.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Discussing an outline may help them notice unclear connections between ideas.",
+            "sentence:The fictional passage describes a possible benefit for some first-year workshop participants.",
+            "sentence:A faithful paraphrase changes expression without expanding the original claim."
+          ]
+        },
+        {
+          "id": "ep18-s06",
+          "english": "Changing the wording does not make the source's idea my own.",
+          "demo": "Changing the wording does not make the source's idea my own.",
+          "instruction": {
+            "en": "Explain why changing the wording does not transfer ownership of the underlying idea.",
+            "zh-TW": "說明改變措辭為何不會改變想法的來源。",
+            "zh-CN": "说明改变措辞为何不会改变想法的来源。",
+            "ja": "表現を変えても、元の考えの出所が変わらない理由を説明します。",
+            "ko": "표현을 바꿔도 핵심 생각의 출처가 바뀌지 않는 이유를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "改變措辭不會使來源的想法變成我原創。",
+            "zh-CN": "改变措辞不会使来源的想法变成我原创。",
+            "ja": "表現を変えても、資料の考えが自分のものになるわけではありません。",
+            "ko": "표현을 바꾼다고 자료의 생각이 제 독창적인 생각이 되지는 않아요."
+          },
+          "visual": "sentence:Changing the wording does not make the source's idea my own.",
+          "target": "sentence:Changing the wording does not make the source's idea my own.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep18-s07",
+          "english": "Listen and choose.",
+          "demo": "Changing the wording does not make the source's idea my own.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "改變措辭不會使來源的想法變成我原創。",
+            "zh-CN": "改变措辞不会使来源的想法变成我原创。",
+            "ja": "表現を変えても、資料の考えが自分のものになるわけではありません。",
+            "ko": "표현을 바꾼다고 자료의 생각이 제 독창적인 생각이 되지는 않아요."
+          },
+          "visual": "sentence:Changing the wording does not make the source's idea my own.",
+          "target": "sentence:Changing the wording does not make the source's idea my own.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional passage describes a possible benefit for some first-year workshop participants.",
+            "sentence:Changing the wording does not make the source's idea my own.",
+            "sentence:A faithful paraphrase changes expression without expanding the original claim."
+          ]
+        },
+        {
+          "id": "ep18-s08",
+          "english": "I will attribute the idea and identify this passage as fictional training material.",
+          "demo": "I will attribute the idea and identify this passage as fictional training material.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會註明想法來源，並標示這是虛構訓練材料。",
+            "zh-CN": "我会注明想法来源，并标示这是虚构训练材料。",
+            "ja": "考えの出所を示し、この文章が架空の練習資料だと明記します。",
+            "ko": "생각의 출처를 밝히고 이 글이 가상의 훈련 자료임을 명시할 거예요."
+          },
+          "visual": "sentence:I will attribute the idea and identify this passage as fictional training material.",
+          "target": "sentence:I will attribute the idea and identify this passage as fictional training material.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep18-s09",
+          "english": "Listen and choose.",
+          "demo": "I will attribute the idea and identify this passage as fictional training material.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會註明想法來源，並標示這是虛構訓練材料。",
+            "zh-CN": "我会注明想法来源，并标示这是虚构训练材料。",
+            "ja": "考えの出所を示し、この文章が架空の練習資料だと明記します。",
+            "ko": "생각의 출처를 밝히고 이 글이 가상의 훈련 자료임을 명시할 거예요."
+          },
+          "visual": "sentence:I will attribute the idea and identify this passage as fictional training material.",
+          "target": "sentence:I will attribute the idea and identify this passage as fictional training material.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional passage describes a possible benefit for some first-year workshop participants.",
+            "sentence:A faithful paraphrase changes expression without expanding the original claim.",
+            "sentence:I will attribute the idea and identify this passage as fictional training material."
+          ]
+        },
+        {
+          "id": "ep18-s10",
+          "english": "A faithful paraphrase changes expression without expanding the original claim.",
+          "demo": "A faithful paraphrase changes expression without expanding the original claim.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "忠實改寫改變表達，不擴大原本的主張。",
+            "zh-CN": "忠实改写改变表达，不扩大原本的主张。",
+            "ja": "忠実な言い換えは、元の主張を広げずに表現を変えます。",
+            "ko": "충실한 바꿔 쓰기는 원래 주장을 확대하지 않고 표현을 바꿔요."
+          },
+          "visual": "sentence:A faithful paraphrase changes expression without expanding the original claim.",
+          "target": "sentence:A faithful paraphrase changes expression without expanding the original claim.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep19",
+      "number": 19,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Using a Quotation for Analysis",
+      "title_zh_TW": "用引文支持分析",
+      "titles": {
+        "zh-TW": "用引文支持分析",
+        "zh-CN": "用引文支持分析",
+        "ja": "引用を分析につなげる",
+        "ko": "인용을 분석으로 연결하기"
+      },
+      "topic": "quotation-introduction-wording-analysis",
+      "objectives_zh_TW": [
+        "說明為何精確措辭值得引用。",
+        "提供引文情境並分析關鍵語句。",
+        "區分引文證明的內容與作者自己的推論。"
+      ],
+      "parent_tip_zh_TW": "如果你不分析引文中的用字，就檢查摘要或改寫是否比整段引用更合適。",
+      "practice": {
+        "reading_en": "A fictional training document for a campus museum describes a proposed display as \"a conversation rather than a finished answer.\" In a writing exercise, Sam wants to analyze how this wording presents the museum's relationship with visitors. His first paragraph ends immediately after the quotation, leaving readers to decide why it matters. He revises the paragraph by introducing the document's purpose and identifying the quoted words as the focus of his analysis. He explains that conversation suggests an exchange in which visitors may contribute, while finished answer would imply settled authority. The contrast therefore frames the display as open to interpretation. Sam also states what the quotation cannot establish: inviting participation in promotional language does not prove that visitors will actually influence display decisions. He would need evidence about the museum's practices to support that stronger claim. The quotation is clearly attributed to the fictional training document and is not presented as a real museum statement. Sam learns that an effective quotation requires a reason to preserve the exact wording and analysis that connects that wording to a limited claim.",
+        "prompt_en": "Write a 120-160-word analytical paragraph about the fictional training quotation. Introduce its context, quote the key wording accurately, analyze the contrast, and state what the quotation cannot establish.",
+        "prompt_zh_TW": "以120至160詞分析虛構訓練引文，交代情境、準確引用關鍵文字、分析對比，並說明引文不能確立什麼。",
+        "sample_answer_en": "The fictional training document presents a proposed museum display as \"a conversation rather than a finished answer.\" This contrast matters because the two expressions assign different roles to visitors. Conversation suggests that meaning may develop through exchange, whereas a finished answer implies that the institution has already settled the issue. The wording therefore frames the display as open to interpretation and gives the reader a reason to expect participation. However, the quotation supports a claim about how the display is presented, not proof that visitors will influence actual decisions. Establishing that stronger claim would require evidence about participation practices and their effects. Preserving the exact phrase is useful here because the analysis depends on its contrasting terms. The quotation belongs to a fictional exercise and should not be cited as a real museum's statement. A real assignment would require suitable, verifiable sources in place of these fictional materials.",
+        "questions": [
+          {
+            "prompt_en": "Which exact contrast does Sam analyze?",
+            "answer_en": "He analyzes \"a conversation rather than a finished answer.\""
+          },
+          {
+            "prompt_en": "Why is direct quotation useful in this paragraph?",
+            "answer_en": "The analysis depends on the specific contrast between conversation and finished answer, so preserving those exact terms matters."
+          },
+          {
+            "prompt_en": "Why does the quotation not prove visitor influence over decisions?",
+            "answer_en": "It is wording that presents the display as participatory; actual influence would require evidence about practices and decisions beyond the promotional statement."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep19-s01",
+          "english": "The fictional document calls the display a conversation rather than a finished answer.",
+          "demo": "The fictional document calls the display a conversation rather than a finished answer.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "虛構文件稱展示是對話，而非完成的答案。",
+            "zh-CN": "虚构文档称展示是对话，而非完成的答案。",
+            "ja": "架空の文書は、展示を完成済みの答えではなく対話と呼んでいます。",
+            "ko": "가상 문서는 전시를 완성된 답이 아니라 대화라고 불러요."
+          },
+          "visual": "sentence:The fictional document calls the display a conversation rather than a finished answer.",
+          "target": "sentence:The fictional document calls the display a conversation rather than a finished answer.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep19-s02",
+          "english": "I quote these words because their contrast is central to my analysis.",
+          "demo": "I quote these words because their contrast is central to my analysis.",
+          "instruction": {
+            "en": "Because explains why preserving exact wording is necessary for this analysis.",
+            "zh-TW": "because說明此分析為何需要保留精確措辭。",
+            "zh-CN": "because说明此分析为何需要保留精确措辞。",
+            "ja": "because は、この分析に正確な言葉の保持が必要な理由を説明します。",
+            "ko": "because는 이 분석에 정확한 표현을 유지해야 하는 이유를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我引用這些字，是因為其對比是分析核心。",
+            "zh-CN": "我引用这些字，是因为其对比是分析核心。",
+            "ja": "この言葉を引用するのは、その対比が分析の中心だからです。",
+            "ko": "이 말의 대조가 분석의 핵심이므로 그대로 인용해요."
+          },
+          "visual": "sentence:I quote these words because their contrast is central to my analysis.",
+          "target": "sentence:I quote these words because their contrast is central to my analysis.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep19-s03",
+          "english": "Conversation suggests exchange, while a finished answer suggests settled authority.",
+          "demo": "Conversation suggests exchange, while a finished answer suggests settled authority.",
+          "instruction": {
+            "en": "Use while to explain the interpretive difference between the quotation's contrasting terms.",
+            "zh-TW": "用while解釋引文對比用語的詮釋差異。",
+            "zh-CN": "用while解释引文对比用语的诠释差异。",
+            "ja": "while を使い、引用中の対照的な表現の解釈上の違いを説明します。",
+            "ko": "while을 써서 인용문의 대조되는 용어 사이의 해석 차이를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "對話暗示交流，而完成的答案暗示既定權威。",
+            "zh-CN": "对话暗示交流，而完成的答案暗示既定权威。",
+            "ja": "対話は交流を、完成済みの答えは確定した権威を連想させます。",
+            "ko": "대화는 교류를, 완성된 답은 확정된 권위를 시사해요."
+          },
+          "visual": "sentence:Conversation suggests exchange, while a finished answer suggests settled authority.",
+          "target": "sentence:Conversation suggests exchange, while a finished answer suggests settled authority.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep19-s04",
+          "english": "The wording frames the display as open to interpretation.",
+          "demo": "The wording frames the display as open to interpretation.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "這種措辭把展示呈現為可供詮釋。",
+            "zh-CN": "这种措辞把展示呈现为可供诠释。",
+            "ja": "この表現は、展示を解釈に開かれたものとして位置づけます。",
+            "ko": "이 표현은 전시를 해석에 열려 있는 것으로 제시해요."
+          },
+          "visual": "sentence:The wording frames the display as open to interpretation.",
+          "target": "sentence:The wording frames the display as open to interpretation.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep19-s05",
+          "english": "Listen and choose.",
+          "demo": "I quote these words because their contrast is central to my analysis.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我引用這些字，是因為其對比是分析核心。",
+            "zh-CN": "我引用这些字，是因为其对比是分析核心。",
+            "ja": "この言葉を引用するのは、その対比が分析の中心だからです。",
+            "ko": "이 말의 대조가 분석의 핵심이므로 그대로 인용해요."
+          },
+          "visual": "sentence:I quote these words because their contrast is central to my analysis.",
+          "target": "sentence:I quote these words because their contrast is central to my analysis.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:I quote these words because their contrast is central to my analysis.",
+            "sentence:The fictional document calls the display a conversation rather than a finished answer.",
+            "sentence:A quotation needs context, analysis, attribution, and a clearly bounded claim."
+          ]
+        },
+        {
+          "id": "ep19-s06",
+          "english": "It does not prove that visitors influence actual display decisions.",
+          "demo": "It does not prove that visitors influence actual display decisions.",
+          "instruction": {
+            "en": "Separate how participation is presented from evidence of actual visitor influence.",
+            "zh-TW": "區分參與的呈現方式與訪客實際影響的證據。",
+            "zh-CN": "区分参与的呈现方式与访客实际影响的证据。",
+            "ja": "参加の示し方と、来場者の実際の影響を示す証拠を区別します。",
+            "ko": "참여를 제시하는 방식과 관람객의 실제 영향에 관한 근거를 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這不證明訪客會影響實際展示決定。",
+            "zh-CN": "这不证明访客会影响实际展示决定。",
+            "ja": "来場者が実際の展示決定に影響する証明にはなりません。",
+            "ko": "관람객이 실제 전시 결정에 영향을 준다는 증거는 아니에요."
+          },
+          "visual": "sentence:It does not prove that visitors influence actual display decisions.",
+          "target": "sentence:It does not prove that visitors influence actual display decisions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep19-s07",
+          "english": "Listen and choose.",
+          "demo": "It does not prove that visitors influence actual display decisions.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這不證明訪客會影響實際展示決定。",
+            "zh-CN": "这不证明访客会影响实际展示决定。",
+            "ja": "来場者が実際の展示決定に影響する証明にはなりません。",
+            "ko": "관람객이 실제 전시 결정에 영향을 준다는 증거는 아니에요."
+          },
+          "visual": "sentence:It does not prove that visitors influence actual display decisions.",
+          "target": "sentence:It does not prove that visitors influence actual display decisions.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional document calls the display a conversation rather than a finished answer.",
+            "sentence:It does not prove that visitors influence actual display decisions.",
+            "sentence:A quotation needs context, analysis, attribution, and a clearly bounded claim."
+          ]
+        },
+        {
+          "id": "ep19-s08",
+          "english": "A stronger claim would require evidence about participation practices.",
+          "demo": "A stronger claim would require evidence about participation practices.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "更強的主張需要參與實踐方面的證據。",
+            "zh-CN": "更强的主张需要参与实践方面的证据。",
+            "ja": "より強い主張には、参加の実践に関する証拠が必要です。",
+            "ko": "더 강한 주장에는 참여 관행에 관한 근거가 필요해요."
+          },
+          "visual": "sentence:A stronger claim would require evidence about participation practices.",
+          "target": "sentence:A stronger claim would require evidence about participation practices.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep19-s09",
+          "english": "Listen and choose.",
+          "demo": "A stronger claim would require evidence about participation practices.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "更強的主張需要參與實踐方面的證據。",
+            "zh-CN": "更强的主张需要参与实践方面的证据。",
+            "ja": "より強い主張には、参加の実践に関する証拠が必要です。",
+            "ko": "더 강한 주장에는 참여 관행에 관한 근거가 필요해요."
+          },
+          "visual": "sentence:A stronger claim would require evidence about participation practices.",
+          "target": "sentence:A stronger claim would require evidence about participation practices.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional document calls the display a conversation rather than a finished answer.",
+            "sentence:A quotation needs context, analysis, attribution, and a clearly bounded claim.",
+            "sentence:A stronger claim would require evidence about participation practices."
+          ]
+        },
+        {
+          "id": "ep19-s10",
+          "english": "A quotation needs context, analysis, attribution, and a clearly bounded claim.",
+          "demo": "A quotation needs context, analysis, attribution, and a clearly bounded claim.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "引文需要情境、分析、來源註明與範圍清楚的主張。",
+            "zh-CN": "引文需要情境、分析、来源注明与范围清楚的主张。",
+            "ja": "引用には、文脈、分析、出所の明示、範囲を定めた主張が必要です。",
+            "ko": "인용에는 맥락, 분석, 출처 표시, 범위가 분명한 주장이 필요해요."
+          },
+          "visual": "sentence:A quotation needs context, analysis, attribution, and a clearly bounded claim.",
+          "target": "sentence:A quotation needs context, analysis, attribution, and a clearly bounded claim.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep20",
+      "number": 20,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Distinguishing Association from Causation",
+      "title_zh_TW": "區分關聯與因果",
+      "titles": {
+        "zh-TW": "區分關聯與因果",
+        "zh-CN": "区分关联与因果",
+        "ja": "関連と因果を区別する",
+        "ko": "연관성과 인과관계 구분하기"
+      },
+      "topic": "association-alternative-explanation",
+      "objectives_zh_TW": [
+        "用精確動詞描述同時出現的差異。",
+        "辨識自選參與造成的替代解釋。",
+        "提出有助於檢查因果解釋的額外證據。"
+      ],
+      "parent_tip_zh_TW": "看到參加者表現較好，先問他們原本是否不同，再決定能否使用cause。",
+      "practice": {
+        "reading_en": "In a fictional methods exercise, a hypothetical survey finds that students who attended optional archive workshops report more confidence using historical sources than students who did not attend. A promotional draft says that the workshops caused the higher confidence. Amira questions this conclusion because attendance was voluntary and confidence was measured only after the sessions. Students who were already interested in archives may have been more likely to attend, and they may also have felt more confident beforehand. The survey therefore identifies an association but does not isolate the workshop's effect. Amira revises the statement to describe the observed difference without assigning a definite cause. She suggests collecting information about participants' prior experience and confidence before the workshop. Comparing changes over time would address part of the uncertainty, although it would not automatically remove every difference between the groups. She also distinguishes reported confidence from demonstrated skill; a person may feel confident without evaluating a source accurately. The exercise teaches Amira to connect the strength of the conclusion to the design of the evidence rather than to how persuasive a simple success story sounds.",
+        "prompt_en": "Write a 120-160-word methods commentary. Report the association, explain self-selection and missing baseline evidence, distinguish confidence from skill, and propose a useful but limited improvement.",
+        "prompt_zh_TW": "以120至160詞寫方法評析，陳述關聯，解釋自選與基準資料不足，區分信心與技能，提出有限度的改善。",
+        "sample_answer_en": "The hypothetical survey shows that workshop attendees reported higher confidence with historical sources than non-attendees. This is an association, not proof that the workshops caused the difference. Attendance was voluntary, so students with prior interest or experience may have been more likely to join. Confidence was measured only afterward, leaving their earlier confidence unknown. Collecting information before and after the workshop would help show whether confidence changed, and recording prior experience could clarify another difference between the groups. However, these additions would not automatically remove every alternative explanation. The outcome also needs careful naming: self-reported confidence is not the same as demonstrated source-evaluation skill. A stronger evaluation would define the intended outcome clearly and gather evidence appropriate to it, while keeping any causal conclusion proportional to the study design.",
+        "questions": [
+          {
+            "prompt_en": "What difference does the hypothetical survey report?",
+            "answer_en": "Workshop attendees report higher confidence using historical sources than non-attendees."
+          },
+          {
+            "prompt_en": "How can voluntary attendance complicate a causal interpretation?",
+            "answer_en": "Students with greater prior interest, experience, or confidence may be more likely to attend, so the groups may differ before the workshop."
+          },
+          {
+            "prompt_en": "Would before-and-after confidence measures prove improved source-evaluation skill? Explain.",
+            "answer_en": "No. They could show reported confidence changes, but skill requires appropriate performance evidence, and other differences may still complicate causation."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep20-s01",
+          "english": "In this hypothetical survey, attendees report higher confidence than non-attendees.",
+          "demo": "In this hypothetical survey, attendees report higher confidence than non-attendees.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在假設問卷中，參加者回報的信心高於未參加者。",
+            "zh-CN": "在假设问卷中，参加者回报的信心高于未参加者。",
+            "ja": "この仮の調査では、参加者は不参加者より高い自信を報告しています。",
+            "ko": "이 가상 설문에서 참가자는 비참가자보다 높은 자신감을 보고해요."
+          },
+          "visual": "sentence:In this hypothetical survey, attendees report higher confidence than non-attendees.",
+          "target": "sentence:In this hypothetical survey, attendees report higher confidence than non-attendees.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep20-s02",
+          "english": "Attendance was voluntary, so the groups may have differed before the workshops.",
+          "demo": "Attendance was voluntary, so the groups may have differed before the workshops.",
+          "instruction": {
+            "en": "Voluntary participation creates a possible group difference before any workshop effect.",
+            "zh-TW": "自願參與使工作坊效果之前就可能有群體差異。",
+            "zh-CN": "自愿参与使工作坊效果之前就可能有群体差异。",
+            "ja": "任意参加では、講習会の効果が出る前から集団が異なる可能性があります。",
+            "ko": "자발적 참여는 워크숍 효과가 나타나기 전부터 집단 차이를 만들 수 있어요."
+          },
+          "demo_translation": {
+            "zh-TW": "參與是自願的，因此兩組在工作坊前可能已不同。",
+            "zh-CN": "参与是自愿的，因此两组在工作坊前可能已不同。",
+            "ja": "参加は任意だったため、講習会の前から集団が異なっていた可能性があります。",
+            "ko": "참여가 자발적이어서 두 집단은 워크숍 전부터 달랐을 수 있어요."
+          },
+          "visual": "sentence:Attendance was voluntary, so the groups may have differed before the workshops.",
+          "target": "sentence:Attendance was voluntary, so the groups may have differed before the workshops.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep20-s03",
+          "english": "Prior interest could influence both attendance and confidence.",
+          "demo": "Prior interest could influence both attendance and confidence.",
+          "instruction": {
+            "en": "Use could influence both to identify a possible common explanation for the association.",
+            "zh-TW": "could influence both指出關聯的可能共同解釋。",
+            "zh-CN": "could influence both指出关联的可能共同解释。",
+            "ja": "could influence both は、関連に対する共通の説明の可能性を示します。",
+            "ko": "could influence both는 연관성에 대한 가능한 공통 설명을 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "先前興趣可能同時影響參與與信心。",
+            "zh-CN": "先前兴趣可能同时影响参与与信心。",
+            "ja": "以前からの関心が、参加と自信の両方に影響した可能性があります。",
+            "ko": "기존 관심이 참여와 자신감 모두에 영향을 줄 수 있어요."
+          },
+          "visual": "sentence:Prior interest could influence both attendance and confidence.",
+          "target": "sentence:Prior interest could influence both attendance and confidence.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep20-s04",
+          "english": "The association does not isolate the workshop's effect.",
+          "demo": "The association does not isolate the workshop's effect.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "這項關聯無法單獨分離工作坊的效果。",
+            "zh-CN": "这项关联无法单独分离工作坊的效果。",
+            "ja": "この関連だけでは、講習会の効果を切り分けられません。",
+            "ko": "이 연관성만으로 워크숍의 효과를 분리할 수 없어요."
+          },
+          "visual": "sentence:The association does not isolate the workshop's effect.",
+          "target": "sentence:The association does not isolate the workshop's effect.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep20-s05",
+          "english": "Listen and choose.",
+          "demo": "Attendance was voluntary, so the groups may have differed before the workshops.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "參與是自願的，因此兩組在工作坊前可能已不同。",
+            "zh-CN": "参与是自愿的，因此两组在工作坊前可能已不同。",
+            "ja": "参加は任意だったため、講習会の前から集団が異なっていた可能性があります。",
+            "ko": "참여가 자발적이어서 두 집단은 워크숍 전부터 달랐을 수 있어요."
+          },
+          "visual": "sentence:Attendance was voluntary, so the groups may have differed before the workshops.",
+          "target": "sentence:Attendance was voluntary, so the groups may have differed before the workshops.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Attendance was voluntary, so the groups may have differed before the workshops.",
+            "sentence:In this hypothetical survey, attendees report higher confidence than non-attendees.",
+            "sentence:My conclusion should reflect the evidence's design and remaining limits."
+          ]
+        },
+        {
+          "id": "ep20-s06",
+          "english": "Before-and-after measures could address some uncertainty about earlier confidence.",
+          "demo": "Before-and-after measures could address some uncertainty about earlier confidence.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "前後測量可處理部分先前信心的不確定性。",
+            "zh-CN": "前后测量可处理部分先前信心的不确定性。",
+            "ja": "前後の測定で、それ以前の自信に関する不確かさを一部減らせます。",
+            "ko": "사전·사후 측정은 이전 자신감에 대한 일부 불확실성을 줄일 수 있어요."
+          },
+          "visual": "sentence:Before-and-after measures could address some uncertainty about earlier confidence.",
+          "target": "sentence:Before-and-after measures could address some uncertainty about earlier confidence.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep20-s07",
+          "english": "Listen and choose.",
+          "demo": "Before-and-after measures could address some uncertainty about earlier confidence.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "前後測量可處理部分先前信心的不確定性。",
+            "zh-CN": "前后测量可处理部分先前信心的不确定性。",
+            "ja": "前後の測定で、それ以前の自信に関する不確かさを一部減らせます。",
+            "ko": "사전·사후 측정은 이전 자신감에 대한 일부 불확실성을 줄일 수 있어요."
+          },
+          "visual": "sentence:Before-and-after measures could address some uncertainty about earlier confidence.",
+          "target": "sentence:Before-and-after measures could address some uncertainty about earlier confidence.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:In this hypothetical survey, attendees report higher confidence than non-attendees.",
+            "sentence:Before-and-after measures could address some uncertainty about earlier confidence.",
+            "sentence:My conclusion should reflect the evidence's design and remaining limits."
+          ]
+        },
+        {
+          "id": "ep20-s08",
+          "english": "Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "demo": "Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "自述信心不等於實際展現的來源評估能力。",
+            "zh-CN": "自述信心不等于实际展现的来源评估能力。",
+            "ja": "自己申告の自信は、実際に示された資料評価の技能とは異なります。",
+            "ko": "보고된 자신감은 입증된 자료 평가 능력과 같지 않아요."
+          },
+          "visual": "sentence:Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "target": "sentence:Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep20-s09",
+          "english": "Listen and choose.",
+          "demo": "Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "自述信心不等於實際展現的來源評估能力。",
+            "zh-CN": "自述信心不等于实际展现的来源评估能力。",
+            "ja": "自己申告の自信は、実際に示された資料評価の技能とは異なります。",
+            "ko": "보고된 자신감은 입증된 자료 평가 능력과 같지 않아요."
+          },
+          "visual": "sentence:Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "target": "sentence:Reported confidence is not the same as demonstrated source-evaluation skill.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:In this hypothetical survey, attendees report higher confidence than non-attendees.",
+            "sentence:My conclusion should reflect the evidence's design and remaining limits.",
+            "sentence:Reported confidence is not the same as demonstrated source-evaluation skill."
+          ]
+        },
+        {
+          "id": "ep20-s10",
+          "english": "My conclusion should reflect the evidence's design and remaining limits.",
+          "demo": "My conclusion should reflect the evidence's design and remaining limits.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的結論應反映證據設計與仍存在的限制。",
+            "zh-CN": "我的结论应反映证据设计与仍存在的限制。",
+            "ja": "結論には、証拠の設計と残る限界を反映させるべきです。",
+            "ko": "결론에는 근거의 설계와 남아 있는 한계가 반영되어야 해요."
+          },
+          "visual": "sentence:My conclusion should reflect the evidence's design and remaining limits.",
+          "target": "sentence:My conclusion should reflect the evidence's design and remaining limits.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep21",
+      "number": 21,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Explaining Sampling Limits",
+      "title_zh_TW": "說明抽樣的限制",
+      "titles": {
+        "zh-TW": "說明抽樣的限制",
+        "zh-CN": "说明抽样的限制",
+        "ja": "標本の限界を説明する",
+        "ko": "표본의 한계 설명하기"
+      },
+      "topic": "sample-recruitment-coverage-bias",
+      "objectives_zh_TW": [
+        "辨識招募方式可能漏掉的群體。",
+        "區分樣本數量與代表性。",
+        "限定結論並提出與缺口相符的招募改善。"
+      ],
+      "parent_tip_zh_TW": "先畫出誰有機會看到邀請、誰會選擇回答，再檢查結果被推廣到哪些人。",
+      "practice": {
+        "reading_en": "In a fictional campus services exercise, an online questionnaire asks students whether they find the new appointment system easy to use. The invitation appears only inside the system, and participation is optional. Most respondents give positive answers. The project team initially writes that students are satisfied with the system. Yara asks who could have been missed. Students who could not log in would not see the invitation, while students who stopped using the system might be unlikely to respond. The sample therefore gives information about those who encountered the invitation and chose to answer, not necessarily all intended users. Adding more responses through the same route might increase the amount of information without correcting this coverage problem. Yara suggests offering another way to participate and deliberately seeking accounts from students who needed help accessing appointments. She does not claim that excluded students must be dissatisfied; their experiences are simply unknown in the current data. Her revised report preserves the positive responses while limiting the population to which they can reasonably be applied. The limitation becomes a reason for better evidence collection, not a reason to discard every response.",
+        "prompt_en": "Write a 120-160-word sampling critique. Explain the invitation and response limits, distinguish more responses from broader coverage, avoid assuming excluded students' views, and propose an appropriate improvement.",
+        "prompt_zh_TW": "以120至160詞評析抽樣，說明邀請與回覆限制，區分數量與涵蓋範圍，勿假設被排除者觀點，並提出改善。",
+        "sample_answer_en": "The questionnaire provides useful information about students who entered the appointment system, saw the invitation, and chose to respond. It may miss people who could not log in or had already stopped using the service. Positive answers therefore should not automatically be generalized to all intended users. Collecting more responses through the same invitation route would not necessarily correct the coverage gap, even if it produced a larger sample. We also should not assume that missing students are dissatisfied; the present data do not establish their views. A useful improvement would offer a separate participation route and seek experiences from students who needed help accessing appointments. The report can retain the positive findings while clearly identifying whose responses they represent and what further evidence is needed before drawing a broader conclusion.",
+        "questions": [
+          {
+            "prompt_en": "Where does the invitation appear?",
+            "answer_en": "It appears only inside the appointment system, and responding is optional."
+          },
+          {
+            "prompt_en": "Why might a larger sample through the same route still have a limitation?",
+            "answer_en": "It could continue missing students who cannot enter the system or have stopped using it, leaving the coverage problem unchanged."
+          },
+          {
+            "prompt_en": "Is it justified to conclude that excluded students dislike the system? Explain.",
+            "answer_en": "No. Their experiences are missing, so the evidence supports uncertainty about their views rather than a definite negative conclusion."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep21-s01",
+          "english": "The fictional questionnaire invitation appears only inside the appointment system.",
+          "demo": "The fictional questionnaire invitation appears only inside the appointment system.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "虛構問卷的邀請只出現在預約系統內。",
+            "zh-CN": "虚构问卷的邀请只出现在预约系统内。",
+            "ja": "架空の質問票への案内は、予約システムの内部にだけ表示されます。",
+            "ko": "가상 설문 초대는 예약 시스템 안에만 표시돼요."
+          },
+          "visual": "sentence:The fictional questionnaire invitation appears only inside the appointment system.",
+          "target": "sentence:The fictional questionnaire invitation appears only inside the appointment system.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep21-s02",
+          "english": "Students who cannot log in may never see the invitation.",
+          "demo": "Students who cannot log in may never see the invitation.",
+          "instruction": {
+            "en": "The condition cannot log in identifies who may be excluded by the invitation route.",
+            "zh-TW": "cannot log in條件指出邀請途徑可能排除誰。",
+            "zh-CN": "cannot log in条件指出邀请途径可能排除谁。",
+            "ja": "cannot log in という条件は、案内経路から除外され得る人を示します。",
+            "ko": "cannot log in이라는 조건은 초대 경로에서 배제될 수 있는 사람을 드러내요."
+          },
+          "demo_translation": {
+            "zh-TW": "無法登入的學生可能從未看到邀請。",
+            "zh-CN": "无法登录的学生可能从未看到邀请。",
+            "ja": "ログインできない学生は、案内を一度も見ない可能性があります。",
+            "ko": "로그인할 수 없는 학생은 초대를 전혀 못 볼 수 있어요."
+          },
+          "visual": "sentence:Students who cannot log in may never see the invitation.",
+          "target": "sentence:Students who cannot log in may never see the invitation.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep21-s03",
+          "english": "More responses through the same route may not solve this coverage problem.",
+          "demo": "More responses through the same route may not solve this coverage problem.",
+          "instruction": {
+            "en": "Distinguish a larger response count from improved coverage of intended users.",
+            "zh-TW": "區分回覆數增加與預期使用者涵蓋改善。",
+            "zh-CN": "区分回复数增加与预期用户涵盖改善。",
+            "ja": "回答数の増加と、想定利用者をより広く含むことを区別します。",
+            "ko": "응답 수 증가와 예상 이용자에 대한 포괄 범위 개선을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "同一路徑的更多回覆可能無法解決涵蓋不足。",
+            "zh-CN": "同一路径的更多回复可能无法解决涵盖不足。",
+            "ja": "同じ経路で回答が増えても、この対象範囲の問題は解決しないかもしれません。",
+            "ko": "같은 경로의 응답이 늘어도 이 포괄 범위 문제는 해결되지 않을 수 있어요."
+          },
+          "visual": "sentence:More responses through the same route may not solve this coverage problem.",
+          "target": "sentence:More responses through the same route may not solve this coverage problem.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep21-s04",
+          "english": "We should not assume that excluded students are dissatisfied.",
+          "demo": "We should not assume that excluded students are dissatisfied.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們不應假設被排除的學生都不滿意。",
+            "zh-CN": "我们不应假设被排除的学生都不满意。",
+            "ja": "含まれなかった学生が不満だと決めつけるべきではありません。",
+            "ko": "포함되지 않은 학생들이 불만족한다고 가정해서는 안 돼요."
+          },
+          "visual": "sentence:We should not assume that excluded students are dissatisfied.",
+          "target": "sentence:We should not assume that excluded students are dissatisfied.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep21-s05",
+          "english": "Listen and choose.",
+          "demo": "Students who cannot log in may never see the invitation.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "無法登入的學生可能從未看到邀請。",
+            "zh-CN": "无法登录的学生可能从未看到邀请。",
+            "ja": "ログインできない学生は、案内を一度も見ない可能性があります。",
+            "ko": "로그인할 수 없는 학생은 초대를 전혀 못 볼 수 있어요."
+          },
+          "visual": "sentence:Students who cannot log in may never see the invitation.",
+          "target": "sentence:Students who cannot log in may never see the invitation.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Students who cannot log in may never see the invitation.",
+            "sentence:The fictional questionnaire invitation appears only inside the appointment system.",
+            "sentence:A sampling limitation tells me where additional evidence is needed."
+          ]
+        },
+        {
+          "id": "ep21-s06",
+          "english": "Another participation route could reach students who needed help accessing appointments.",
+          "demo": "Another participation route could reach students who needed help accessing appointments.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一參與途徑可接觸需要協助才能預約的學生。",
+            "zh-CN": "另一参与途径可接触需要协助才能预约的学生。",
+            "ja": "別の参加経路なら、予約へのアクセスに支援が必要だった学生にも届く可能性があります。",
+            "ko": "다른 참여 경로는 예약 접근에 도움이 필요했던 학생에게 닿을 수 있어요."
+          },
+          "visual": "sentence:Another participation route could reach students who needed help accessing appointments.",
+          "target": "sentence:Another participation route could reach students who needed help accessing appointments.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep21-s07",
+          "english": "Listen and choose.",
+          "demo": "Another participation route could reach students who needed help accessing appointments.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一參與途徑可接觸需要協助才能預約的學生。",
+            "zh-CN": "另一参与途径可接触需要协助才能预约的学生。",
+            "ja": "別の参加経路なら、予約へのアクセスに支援が必要だった学生にも届く可能性があります。",
+            "ko": "다른 참여 경로는 예약 접근에 도움이 필요했던 학생에게 닿을 수 있어요."
+          },
+          "visual": "sentence:Another participation route could reach students who needed help accessing appointments.",
+          "target": "sentence:Another participation route could reach students who needed help accessing appointments.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional questionnaire invitation appears only inside the appointment system.",
+            "sentence:Another participation route could reach students who needed help accessing appointments.",
+            "sentence:A sampling limitation tells me where additional evidence is needed."
+          ]
+        },
+        {
+          "id": "ep21-s08",
+          "english": "The findings describe respondents, not necessarily all intended users.",
+          "demo": "The findings describe respondents, not necessarily all intended users.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "結果描述回覆者，不一定代表所有預期使用者。",
+            "zh-CN": "结果描述回复者，不一定代表所有预期用户。",
+            "ja": "結果が示すのは回答者であり、想定利用者全員とは限りません。",
+            "ko": "결과는 응답자를 설명하며 모든 예상 이용자를 반드시 대표하지는 않아요."
+          },
+          "visual": "sentence:The findings describe respondents, not necessarily all intended users.",
+          "target": "sentence:The findings describe respondents, not necessarily all intended users.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep21-s09",
+          "english": "Listen and choose.",
+          "demo": "The findings describe respondents, not necessarily all intended users.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "結果描述回覆者，不一定代表所有預期使用者。",
+            "zh-CN": "结果描述回复者，不一定代表所有预期用户。",
+            "ja": "結果が示すのは回答者であり、想定利用者全員とは限りません。",
+            "ko": "결과는 응답자를 설명하며 모든 예상 이용자를 반드시 대표하지는 않아요."
+          },
+          "visual": "sentence:The findings describe respondents, not necessarily all intended users.",
+          "target": "sentence:The findings describe respondents, not necessarily all intended users.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional questionnaire invitation appears only inside the appointment system.",
+            "sentence:A sampling limitation tells me where additional evidence is needed.",
+            "sentence:The findings describe respondents, not necessarily all intended users."
+          ]
+        },
+        {
+          "id": "ep21-s10",
+          "english": "A sampling limitation tells me where additional evidence is needed.",
+          "demo": "A sampling limitation tells me where additional evidence is needed.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "抽樣限制指出我在哪些地方需要額外證據。",
+            "zh-CN": "抽样限制指出我在哪些地方需要额外证据。",
+            "ja": "標本の限界は、追加の証拠が必要な部分を教えてくれます。",
+            "ko": "표본의 한계는 추가 근거가 필요한 부분을 알려 줘요."
+          },
+          "visual": "sentence:A sampling limitation tells me where additional evidence is needed.",
+          "target": "sentence:A sampling limitation tells me where additional evidence is needed.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep22",
+      "number": 22,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Synthesizing Evidence and Identifying Gaps",
+      "title_zh_TW": "統整證據並找出缺口",
+      "titles": {
+        "zh-TW": "統整證據並找出缺口",
+        "zh-CN": "统整证据并找出缺口",
+        "ja": "証拠を統合して不足を見つける",
+        "ko": "근거를 종합하고 공백 찾기"
+      },
+      "topic": "synthesis-complementary-methods-gaps",
+      "objectives_zh_TW": [
+        "圍繞共同問題統整不同種類的資料。",
+        "區分證據互補與看似互相矛盾。",
+        "把缺口寫成可研究的後續問題。"
+      ],
+      "parent_tip_zh_TW": "每段先提出跨來源重點，再指出各來源如何支援或限制該重點。",
+      "practice": {
+        "reading_en": "In a fictional student research exercise, Mei examines whether a campus repair room supports independent learning. One training source summarizes booking records and reports that the room is regularly reserved. Another describes interviews in which novice users say they value staff guidance. A third presents observations of users waiting for help with unfamiliar tools. Mei's first draft summarizes each source in a separate paragraph without explaining their relationship. She reorganizes the draft around a question: what would count as evidence of independent learning? The booking records show reservations, but they do not establish actual attendance or reveal what users learn. The interviews suggest that guidance matters to novices, while the observations indicate moments when users cannot proceed alone. These findings are not necessarily contradictory. Guided participation could be part of a learning process, but none of the sources follows users long enough to show increasing independence. Mei identifies that shared gap and proposes comparing how the same users approach similar tasks over time. Her synthesis does not force every source to answer the same question equally well; it explains how different evidence contributes to a more carefully limited conclusion.",
+        "prompt_en": "Write a 120-160-word synthesis of the three fictional training sources. Organize by the learning question, connect their different evidence, explain a shared gap, and propose a focused follow-up.",
+        "prompt_zh_TW": "以120至160詞統整三個虛構訓練來源，以學習問題組織，連結不同證據、說明共同缺口並提出聚焦追蹤。",
+        "sample_answer_en": "The three training sources document reservations and the role of guidance, but they do not establish increasing independence. Booking records document reservations rather than actual attendance or learning outcomes. Interviews describe novices' appreciation of staff support, and observations show users pausing when unfamiliar tools prevent them from continuing alone. These findings can fit together: assistance may be part of learning rather than evidence that learning has failed. However, none of the sources follows the same users over time, so the materials cannot show whether dependence on help decreases with experience. A useful follow-up would examine how returning users approach similar tasks and when they seek assistance. This would address the gap more directly than collecting additional booking totals, while preserving the distinction between using a facility and developing a skill. A real assignment would require suitable, verifiable sources in place of these fictional materials.",
+        "questions": [
+          {
+            "prompt_en": "What does each type of source contribute?",
+            "answer_en": "Booking records show reservations, interviews describe novices' views of guidance, and observations show moments when users wait for help."
+          },
+          {
+            "prompt_en": "Why are appreciation of guidance and difficulty working alone not necessarily contradictory?",
+            "answer_en": "Guided participation can be part of learning, so needing help at one stage does not prove that learning fails."
+          },
+          {
+            "prompt_en": "Why would following the same users over time address the identified gap?",
+            "answer_en": "It could show changes in how users handle similar tasks and seek help, providing evidence about developing independence that one-time records lack."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep22-s01",
+          "english": "The fictional sources provide records, interviews, and observations of the repair room.",
+          "demo": "The fictional sources provide records, interviews, and observations of the repair room.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "虛構來源提供維修室的紀錄、訪談與觀察。",
+            "zh-CN": "虚构来源提供维修室的纪录、访谈与观察。",
+            "ja": "架空の資料には、修理室の記録、面接、観察が含まれます。",
+            "ko": "가상 자료는 수리실의 기록, 인터뷰, 관찰을 제공해요."
+          },
+          "visual": "sentence:The fictional sources provide records, interviews, and observations of the repair room.",
+          "target": "sentence:The fictional sources provide records, interviews, and observations of the repair room.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep22-s02",
+          "english": "Booking records show reservations, but they do not establish actual attendance or learning.",
+          "demo": "Booking records show reservations, but they do not establish actual attendance or learning.",
+          "instruction": {
+            "en": "Separate recorded reservations from evidence of actual attendance and learning.",
+            "zh-TW": "區分預約紀錄與實際出席及學習的證據。",
+            "zh-CN": "区分预约记录与实际出席及学习的证据。",
+            "ja": "記録された予約と、実際の来訪や学習の証拠を区別します。",
+            "ko": "기록된 예약과 실제 방문 및 학습의 근거를 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "預約紀錄呈現預訂，但不能確立實際出席或學習。",
+            "zh-CN": "预约记录呈现预订，但不能确立实际出席或学习。",
+            "ja": "予約記録は予約を示しますが、実際の来訪や学習の証明にはなりません。",
+            "ko": "예약 기록은 예약을 보여 주지만 실제 방문이나 학습을 입증하지는 않아요."
+          },
+          "visual": "sentence:Booking records show reservations, but they do not establish actual attendance or learning.",
+          "target": "sentence:Booking records show reservations, but they do not establish actual attendance or learning.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep22-s03",
+          "english": "Guidance may support learning even when novices cannot yet work independently.",
+          "demo": "Guidance may support learning even when novices cannot yet work independently.",
+          "instruction": {
+            "en": "May and yet allow assistance and developing independence to coexist in the explanation.",
+            "zh-TW": "may與yet讓協助和發展中的獨立性同時成立。",
+            "zh-CN": "may与yet让协助和发展中的独立性同时成立。",
+            "ja": "may と yet により、支援と発達途中の自立性を両立して説明できます。",
+            "ko": "may와 yet을 쓰면 도움과 발달 중인 자립성을 함께 설명할 수 있어요."
+          },
+          "demo_translation": {
+            "zh-TW": "即使新手還不能獨立操作，指導仍可能支援學習。",
+            "zh-CN": "即使新手还不能独立操作，指导仍可能支持学习。",
+            "ja": "初心者がまだ自立して作業できなくても、指導は学習を支える可能性があります。",
+            "ko": "초보자가 아직 독립적으로 일하지 못해도 지도는 학습을 도울 수 있어요."
+          },
+          "visual": "sentence:Guidance may support learning even when novices cannot yet work independently.",
+          "target": "sentence:Guidance may support learning even when novices cannot yet work independently.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep22-s04",
+          "english": "None of the sources follows the same users long enough to show increasing independence.",
+          "demo": "None of the sources follows the same users long enough to show increasing independence.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "沒有來源長期追蹤相同使用者，以顯示獨立性提升。",
+            "zh-CN": "没有来源长期追踪相同用户，以显示独立性提升。",
+            "ja": "自立性の向上を示せるほど長く同じ利用者を追った資料はありません。",
+            "ko": "어느 자료도 자립성 향상을 보여 줄 만큼 같은 이용자를 오래 추적하지 않아요."
+          },
+          "visual": "sentence:None of the sources follows the same users long enough to show increasing independence.",
+          "target": "sentence:None of the sources follows the same users long enough to show increasing independence.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep22-s05",
+          "english": "Listen and choose.",
+          "demo": "Booking records show reservations, but they do not establish actual attendance or learning.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "預約紀錄呈現預訂，但不能確立實際出席或學習。",
+            "zh-CN": "预约记录呈现预订，但不能确立实际出席或学习。",
+            "ja": "予約記録は予約を示しますが、実際の来訪や学習の証明にはなりません。",
+            "ko": "예약 기록은 예약을 보여 주지만 실제 방문이나 학습을 입증하지는 않아요."
+          },
+          "visual": "sentence:Booking records show reservations, but they do not establish actual attendance or learning.",
+          "target": "sentence:Booking records show reservations, but they do not establish actual attendance or learning.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Booking records show reservations, but they do not establish actual attendance or learning.",
+            "sentence:The fictional sources provide records, interviews, and observations of the repair room.",
+            "sentence:Synthesis explains how different evidence supports a carefully limited conclusion."
+          ]
+        },
+        {
+          "id": "ep22-s06",
+          "english": "We could examine how returning users approach similar tasks over time.",
+          "demo": "We could examine how returning users approach similar tasks over time.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可檢視回訪使用者隨時間如何處理類似任務。",
+            "zh-CN": "我们可查看回访用户随时间如何处理类似任务。",
+            "ja": "再訪する利用者が、似た作業に時間とともにどう取り組むか調べられます。",
+            "ko": "재방문 이용자가 시간에 따라 비슷한 과제에 어떻게 접근하는지 살펴볼 수 있어요."
+          },
+          "visual": "sentence:We could examine how returning users approach similar tasks over time.",
+          "target": "sentence:We could examine how returning users approach similar tasks over time.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep22-s07",
+          "english": "Listen and choose.",
+          "demo": "We could examine how returning users approach similar tasks over time.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們可檢視回訪使用者隨時間如何處理類似任務。",
+            "zh-CN": "我们可查看回访用户随时间如何处理类似任务。",
+            "ja": "再訪する利用者が、似た作業に時間とともにどう取り組むか調べられます。",
+            "ko": "재방문 이용자가 시간에 따라 비슷한 과제에 어떻게 접근하는지 살펴볼 수 있어요."
+          },
+          "visual": "sentence:We could examine how returning users approach similar tasks over time.",
+          "target": "sentence:We could examine how returning users approach similar tasks over time.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional sources provide records, interviews, and observations of the repair room.",
+            "sentence:We could examine how returning users approach similar tasks over time.",
+            "sentence:Synthesis explains how different evidence supports a carefully limited conclusion."
+          ]
+        },
+        {
+          "id": "ep22-s08",
+          "english": "That follow-up would address learning more directly than additional booking totals.",
+          "demo": "That follow-up would address learning more directly than additional booking totals.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "該追蹤會比增加預約總數更直接回應學習問題。",
+            "zh-CN": "该追踪会比增加预约总数更直接回应学习问题。",
+            "ja": "その追跡調査は、予約総数の追加より学習の問題に直接迫れます。",
+            "ko": "그 후속 조사는 예약 총계를 더 모으는 것보다 학습 문제에 직접 접근할 수 있어요."
+          },
+          "visual": "sentence:That follow-up would address learning more directly than additional booking totals.",
+          "target": "sentence:That follow-up would address learning more directly than additional booking totals.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep22-s09",
+          "english": "Listen and choose.",
+          "demo": "That follow-up would address learning more directly than additional booking totals.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "該追蹤會比增加預約總數更直接回應學習問題。",
+            "zh-CN": "该追踪会比增加预约总数更直接回应学习问题。",
+            "ja": "その追跡調査は、予約総数の追加より学習の問題に直接迫れます。",
+            "ko": "그 후속 조사는 예약 총계를 더 모으는 것보다 학습 문제에 직접 접근할 수 있어요."
+          },
+          "visual": "sentence:That follow-up would address learning more directly than additional booking totals.",
+          "target": "sentence:That follow-up would address learning more directly than additional booking totals.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:The fictional sources provide records, interviews, and observations of the repair room.",
+            "sentence:Synthesis explains how different evidence supports a carefully limited conclusion.",
+            "sentence:That follow-up would address learning more directly than additional booking totals."
+          ]
+        },
+        {
+          "id": "ep22-s10",
+          "english": "Synthesis explains how different evidence supports a carefully limited conclusion.",
+          "demo": "Synthesis explains how different evidence supports a carefully limited conclusion.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "統整說明不同證據如何支持審慎限定的結論。",
+            "zh-CN": "统整说明不同证据如何支持审慎限定的结论。",
+            "ja": "統合では、異なる証拠が慎重に限定した結論をどう支えるか説明します。",
+            "ko": "종합은 서로 다른 근거가 신중하게 한정한 결론을 어떻게 뒷받침하는지 설명해요."
+          },
+          "visual": "sentence:Synthesis explains how different evidence supports a carefully limited conclusion.",
+          "target": "sentence:Synthesis explains how different evidence supports a carefully limited conclusion.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep23",
+      "number": 23,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Attributing Ideas and Stating Evidence Limits",
+      "title_zh_TW": "註明想法來源與證據限制",
+      "titles": {
+        "zh-TW": "註明想法來源與證據限制",
+        "zh-CN": "注明想法来源与证据限制",
+        "ja": "考えの出所と証拠の限界を示す",
+        "ko": "생각의 출처와 근거의 한계 밝히기"
+      },
+      "topic": "ethical-attribution-fictional-training-sources",
+      "objectives_zh_TW": [
+        "區分原創分析、來源想法與引文。",
+        "明確標示虛構訓練引用不可當真實研究。",
+        "說明尚未查證來源時應採取的行動。"
+      ],
+      "parent_tip_zh_TW": "引用資訊缺漏時先記為待核實，不要補造作者、日期或出版細節。",
+      "practice": {
+        "reading_en": "In a fictional writing clinic, Jo drafts a paragraph using two materials labeled Training Source A and Training Source B. These documents are invented for the exercise and do not represent published research. Source A describes how a hypothetical mentoring group organizes meetings; Source B offers a participant's fictional reflection. Jo paraphrases a scheduling idea from Source A and quotes a short phrase from Source B. She initially adds realistic-looking author names and publication dates to make the paragraph appear complete. The tutor explains that these details would misrepresent the materials. Jo removes them, identifies the documents by their actual training labels, and explicitly states that they are fictional. She also separates her own comparison from the ideas borrowed from each document. For a real assignment, she would need appropriate, verifiable sources and complete reference information checked against those sources. If a needed detail were missing, she should investigate or ask for guidance rather than invent it. Jo learns that honest attribution concerns both the origin of ideas and the limits of what the materials can legitimately support.",
+        "prompt_en": "Write a 120-160-word source-use note for Jo. Distinguish paraphrase, quotation, and her analysis; explain the fictional labels, reject invented reference details, and describe what a real assignment would require.",
+        "prompt_zh_TW": "以120至160詞替Jo寫來源使用說明，區分改寫、引文與自己的分析，交代虛構標籤、拒絕編造書目，並說明真實作業要求。",
+        "sample_answer_en": "My paragraph uses an idea paraphrased from Training Source A and a phrase quoted from Training Source B. Both documents are fictional materials created for this exercise, so I will identify them with their actual labels and will not present them as published research. My comparison of the two documents is my own analysis, but the ideas and quoted wording still need clear attribution. I should remove invented author names and publication dates because realistic-looking details would falsely suggest a verifiable publication. For a real assignment, I would replace these training materials with suitable sources that readers can check and verify the reference information against them. If essential details were unavailable, I would investigate or request guidance rather than fill the gap with invented information. Attribution should make the evidence traceable and its limits visible.",
+        "questions": [
+          {
+            "prompt_en": "What is wrong with the author names and dates Jo initially adds?",
+            "answer_en": "They are invented and falsely make fictional training documents look like real published sources."
+          },
+          {
+            "prompt_en": "Why does Jo need attribution even for her paraphrase?",
+            "answer_en": "The wording is hers, but the underlying scheduling idea comes from Training Source A."
+          },
+          {
+            "prompt_en": "What should Jo do if reference details are missing in a real assignment?",
+            "answer_en": "She should investigate the source or seek guidance rather than invent details, because readers need accurate information to verify the evidence."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep23-s01",
+          "english": "Training Source A and Training Source B are fictional exercise materials.",
+          "demo": "Training Source A and Training Source B are fictional exercise materials.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "訓練來源A與訓練來源B是虛構練習材料。",
+            "zh-CN": "训练来源A与训练来源B是虚构练习材料。",
+            "ja": "練習用資料Aと練習用資料Bは、架空の教材です。",
+            "ko": "훈련 자료 A와 훈련 자료 B는 가상의 연습 자료예요."
+          },
+          "visual": "sentence:Training Source A and Training Source B are fictional exercise materials.",
+          "target": "sentence:Training Source A and Training Source B are fictional exercise materials.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep23-s02",
+          "english": "I should not invent author names or dates to make references look complete.",
+          "demo": "I should not invent author names or dates to make references look complete.",
+          "instruction": {
+            "en": "Distinguish completing verified reference details from inventing information that looks plausible.",
+            "zh-TW": "區分補齊已核實書目與編造看似合理的資訊。",
+            "zh-CN": "区分补齐已核实书目与编造看似合理的信息。",
+            "ja": "確認済みの書誌情報を補うことと、もっともらしい情報を作ることを区別します。",
+            "ko": "검증된 서지 정보를 채우는 것과 그럴듯한 정보를 지어내는 것을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不應編造作者或日期，讓引用看似完整。",
+            "zh-CN": "我不应编造作者或日期，让引用看似完整。",
+            "ja": "参考文献を完全に見せるために、著者名や日付を作ってはいけません。",
+            "ko": "참고 문헌을 완전해 보이게 하려고 저자명이나 날짜를 지어내면 안 돼요."
+          },
+          "visual": "sentence:I should not invent author names or dates to make references look complete.",
+          "target": "sentence:I should not invent author names or dates to make references look complete.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep23-s03",
+          "english": "My paraphrase still needs attribution because the underlying idea comes from another source.",
+          "demo": "My paraphrase still needs attribution because the underlying idea comes from another source.",
+          "instruction": {
+            "en": "Because explains why attribution survives a change in wording.",
+            "zh-TW": "because解釋措辭改變後為何仍須註明來源。",
+            "zh-CN": "because解释措辞改变后为何仍须注明来源。",
+            "ja": "because は、表現を変えても出所の明示が必要な理由を説明します。",
+            "ko": "because는 표현을 바꿔도 출처 표시가 필요한 이유를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的改寫仍需註明來源，因為想法來自別處。",
+            "zh-CN": "我的改写仍需注明来源，因为想法来自别处。",
+            "ja": "考え自体は別の資料から来ているので、言い換えにも出所の明示が必要です。",
+            "ko": "바꿔 쓴 내용도 핵심 생각이 다른 자료에서 왔으므로 출처를 밝혀야 해요."
+          },
+          "visual": "sentence:My paraphrase still needs attribution because the underlying idea comes from another source.",
+          "target": "sentence:My paraphrase still needs attribution because the underlying idea comes from another source.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep23-s04",
+          "english": "I will distinguish borrowed ideas from my own comparison of the documents.",
+          "demo": "I will distinguish borrowed ideas from my own comparison of the documents.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會區分借用的想法與我自己的文件比較。",
+            "zh-CN": "我会区分借用的想法与我自己的文档比较。",
+            "ja": "借りた考えと、私自身による文書の比較を区別します。",
+            "ko": "빌려온 생각과 제가 직접 한 문서 비교를 구분할 거예요."
+          },
+          "visual": "sentence:I will distinguish borrowed ideas from my own comparison of the documents.",
+          "target": "sentence:I will distinguish borrowed ideas from my own comparison of the documents.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep23-s05",
+          "english": "Listen and choose.",
+          "demo": "I should not invent author names or dates to make references look complete.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不應編造作者或日期，讓引用看似完整。",
+            "zh-CN": "我不应编造作者或日期，让引用看似完整。",
+            "ja": "参考文献を完全に見せるために、著者名や日付を作ってはいけません。",
+            "ko": "참고 문헌을 완전해 보이게 하려고 저자명이나 날짜를 지어내면 안 돼요."
+          },
+          "visual": "sentence:I should not invent author names or dates to make references look complete.",
+          "target": "sentence:I should not invent author names or dates to make references look complete.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:I should not invent author names or dates to make references look complete.",
+            "sentence:Training Source A and Training Source B are fictional exercise materials.",
+            "sentence:Honest attribution makes the origin and limits of evidence clear."
+          ]
+        },
+        {
+          "id": "ep23-s06",
+          "english": "A real assignment requires suitable sources that readers can verify.",
+          "demo": "A real assignment requires suitable sources that readers can verify.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "真實作業需要讀者能查證的適當來源。",
+            "zh-CN": "真实作业需要读者能查证的适当来源。",
+            "ja": "実際の課題には、読み手が確認できる適切な資料が必要です。",
+            "ko": "실제 과제에는 독자가 검증할 수 있는 적절한 자료가 필요해요."
+          },
+          "visual": "sentence:A real assignment requires suitable sources that readers can verify.",
+          "target": "sentence:A real assignment requires suitable sources that readers can verify.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep23-s07",
+          "english": "Listen and choose.",
+          "demo": "A real assignment requires suitable sources that readers can verify.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "真實作業需要讀者能查證的適當來源。",
+            "zh-CN": "真实作业需要读者能查证的适当来源。",
+            "ja": "実際の課題には、読み手が確認できる適切な資料が必要です。",
+            "ko": "실제 과제에는 독자가 검증할 수 있는 적절한 자료가 필요해요."
+          },
+          "visual": "sentence:A real assignment requires suitable sources that readers can verify.",
+          "target": "sentence:A real assignment requires suitable sources that readers can verify.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Training Source A and Training Source B are fictional exercise materials.",
+            "sentence:A real assignment requires suitable sources that readers can verify.",
+            "sentence:Honest attribution makes the origin and limits of evidence clear."
+          ]
+        },
+        {
+          "id": "ep23-s08",
+          "english": "If details are missing, I should investigate or ask for guidance.",
+          "demo": "If details are missing, I should investigate or ask for guidance.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "若細節缺漏，我應調查或請求指導。",
+            "zh-CN": "若细节缺漏，我应调查或请求指导。",
+            "ja": "詳細が欠けていれば、調べるか助言を求めるべきです。",
+            "ko": "세부 정보가 없으면 조사하거나 지도를 구해야 해요."
+          },
+          "visual": "sentence:If details are missing, I should investigate or ask for guidance.",
+          "target": "sentence:If details are missing, I should investigate or ask for guidance.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep23-s09",
+          "english": "Listen and choose.",
+          "demo": "If details are missing, I should investigate or ask for guidance.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若細節缺漏，我應調查或請求指導。",
+            "zh-CN": "若细节缺漏，我应调查或请求指导。",
+            "ja": "詳細が欠けていれば、調べるか助言を求めるべきです。",
+            "ko": "세부 정보가 없으면 조사하거나 지도를 구해야 해요."
+          },
+          "visual": "sentence:If details are missing, I should investigate or ask for guidance.",
+          "target": "sentence:If details are missing, I should investigate or ask for guidance.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Training Source A and Training Source B are fictional exercise materials.",
+            "sentence:Honest attribution makes the origin and limits of evidence clear.",
+            "sentence:If details are missing, I should investigate or ask for guidance."
+          ]
+        },
+        {
+          "id": "ep23-s10",
+          "english": "Honest attribution makes the origin and limits of evidence clear.",
+          "demo": "Honest attribution makes the origin and limits of evidence clear.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "誠實註明來源能讓證據出處與限制清楚。",
+            "zh-CN": "诚实注明来源能让证据出处与限制清楚。",
+            "ja": "誠実な出所の明示は、証拠の由来と限界を明確にします。",
+            "ko": "정직한 출처 표시는 근거의 출처와 한계를 명확히 해요."
+          },
+          "visual": "sentence:Honest attribution makes the origin and limits of evidence clear.",
+          "target": "sentence:Honest attribution makes the origin and limits of evidence clear.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    },
+    {
+      "id": "ep24",
+      "number": 24,
+      "season": 2,
+      "stage": 2,
+      "course": "university",
+      "title_en": "Writing a Mini Literature Review",
+      "title_zh_TW": "撰寫小型文獻回顧",
+      "titles": {
+        "zh-TW": "撰寫小型文獻回顧",
+        "zh-CN": "撰写小型文献回顾",
+        "ja": "短い文献レビューを書く",
+        "ko": "짧은 문헌 검토 쓰기"
+      },
+      "topic": "integrated-literature-review-evidence-gap",
+      "objectives_zh_TW": [
+        "以問題組織多來源而非逐篇列摘要。",
+        "整合一致、差異與研究限制。",
+        "以證據缺口提出可行下一步並誠實引用。"
+      ],
+      "parent_tip_zh_TW": "每段問自己：讀者是否能看到來源之間的關係，以及這關係對問題有何意義？",
+      "practice": {
+        "reading_en": "In a fictional university writing exercise, Arjun prepares a mini literature review about peer orientation for new laboratory users. The materials are three fictional training sources, not real publications. Source A reports interviews in which newcomers describe peer explanations as approachable. Source B records observations showing that some peer guides skip safety-related steps when demonstrating familiar tasks. Source C describes a revised checklist but provides no follow-up evidence about how guides use it. Arjun initially writes one summary after another and concludes that peer orientation is effective. On revision, he organizes the review around approachability, accuracy, and the evidence needed to connect them. The interviews support a claim about newcomers' perceptions, while the observations raise a concern about consistency. The checklist is a proposed response, not demonstrated proof that the concern has been solved. Arjun identifies a gap: none of the materials establishes whether guided use of the checklist preserves approachability while improving complete demonstrations. He proposes observing that process before and after a revision, with the limits of such a comparison stated clearly. His review attributes the fictional sources accurately and keeps its conclusion narrower than the initial claim.",
+        "prompt_en": "Write a 120-160-word mini review of the three fictional training sources. Organize around approachability and accuracy, distinguish evidence from a proposed solution, identify a gap, and suggest a limited next step.",
+        "prompt_zh_TW": "以120至160詞回顧三個虛構訓練來源，以親近感與準確性組織，分辨證據與提案，找出缺口並提出有限度下一步。",
+        "sample_answer_en": "The three fictional training sources suggest that peer orientation may be approachable, but they do not establish that it consistently provides complete demonstrations. Source A's interviews support a claim about newcomers' perceptions. Source B's observations identify omitted safety-related steps, showing why approachability alone is not enough to demonstrate overall effectiveness. Source C offers a revised checklist, but without follow-up evidence it remains a proposed response rather than a proven solution. Together, the materials reveal a gap concerning whether guided checklist use can improve completeness while preserving an approachable learning experience. Observing demonstrations before and after a revision could help investigate this question, although other changes would need consideration before making a causal claim. These sources are fictional training documents, so this review is an exercise rather than a summary of real published research. A real assignment would require suitable, verifiable sources in place of these fictional materials.",
+        "questions": [
+          {
+            "prompt_en": "What type of evidence does each training source provide?",
+            "answer_en": "Source A gives interviews about perceptions, Source B gives observations of omitted steps, and Source C describes a checklist without follow-up evidence."
+          },
+          {
+            "prompt_en": "Why does the checklist not prove that the problem is solved?",
+            "answer_en": "It is a proposed response, and the materials do not show how guides use it or whether demonstrations become more complete."
+          },
+          {
+            "prompt_en": "What makes Arjun's revised organization stronger than three separate summaries?",
+            "answer_en": "It connects the sources around approachability, accuracy, and a shared evidence gap, allowing a limited conclusion and a focused follow-up question."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep24-s01",
+          "english": "These fictional training sources examine peer orientation from different perspectives.",
+          "demo": "These fictional training sources examine peer orientation from different perspectives.",
+          "instruction": {
+            "en": "Identify the task and the context before choosing an expression.",
+            "zh-TW": "先辨認任務與情境，再選擇表達。",
+            "zh-CN": "先辨认任务与情境，再选择表达。",
+            "ja": "表現を選ぶ前に、課題と状況を確認します。",
+            "ko": "표현을 고르기 전에 과제와 상황을 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這些虛構訓練來源從不同角度檢視同儕導覽。",
+            "zh-CN": "这些虚构训练来源从不同角度查看同侪导览。",
+            "ja": "これらの架空の練習資料は、仲間による案内を異なる観点から検討しています。",
+            "ko": "이 가상 훈련 자료들은 동료 안내를 서로 다른 관점에서 살펴봐요."
+          },
+          "visual": "sentence:These fictional training sources examine peer orientation from different perspectives.",
+          "target": "sentence:These fictional training sources examine peer orientation from different perspectives.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep24-s02",
+          "english": "Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "demo": "Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "instruction": {
+            "en": "Connect each claim to its evidence type instead of treating all sources as interchangeable.",
+            "zh-TW": "把主張連到證據種類，不把所有來源視為可互換。",
+            "zh-CN": "把主张连到证据种类，不把所有来源视为可互换。",
+            "ja": "資料を交換可能と扱わず、各主張を証拠の種類に結びつけます。",
+            "ko": "자료를 서로 바꿔 써도 된다고 보지 말고 각 주장을 근거 유형과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "訪談支持親近感的主張，觀察則揭露示範漏步。",
+            "zh-CN": "访谈支持亲近感的主张，观察则揭露示范漏步。",
+            "ja": "面接は親しみやすさの主張を支え、観察は実演で省かれた手順を示します。",
+            "ko": "인터뷰는 친근함에 관한 주장을 뒷받침하고 관찰은 시연에서 빠진 단계를 보여 줘요."
+          },
+          "visual": "sentence:Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "target": "sentence:Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep24-s03",
+          "english": "The checklist is a proposed response, not evidence that the problem has been solved.",
+          "demo": "The checklist is a proposed response, not evidence that the problem has been solved.",
+          "instruction": {
+            "en": "Separate proposing a solution from demonstrating that it works.",
+            "zh-TW": "區分提出解方與證明解方有效。",
+            "zh-CN": "区分提出解方与证明解方有效。",
+            "ja": "解決策を提案することと、有効性を示すことを区別します。",
+            "ko": "해결책을 제안하는 것과 그 효과를 입증하는 것을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "檢查表是提議的回應，不是問題已解決的證據。",
+            "zh-CN": "检查表是提议的回应，不是问题已解决的证据。",
+            "ja": "チェックリストは対応案であり、問題が解決した証拠ではありません。",
+            "ko": "점검표는 제안된 대응책이지 문제가 해결되었다는 근거는 아니에요."
+          },
+          "visual": "sentence:The checklist is a proposed response, not evidence that the problem has been solved.",
+          "target": "sentence:The checklist is a proposed response, not evidence that the problem has been solved.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep24-s04",
+          "english": "We still need evidence connecting checklist use with complete and approachable demonstrations.",
+          "demo": "We still need evidence connecting checklist use with complete and approachable demonstrations.",
+          "instruction": {
+            "en": "Read aloud, keeping the key relationship or distinction clear.",
+            "zh-TW": "清楚跟讀，保留關鍵關係或區分。",
+            "zh-CN": "清楚跟读，保留关键关系或区分。",
+            "ja": "重要な関係や区別が伝わるように音読します。",
+            "ko": "핵심 관계나 구분이 명확하게 드러나도록 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們仍需連結檢查表使用與完整親切示範的證據。",
+            "zh-CN": "我们仍需链接检查表使用与完整亲切示范的证据。",
+            "ja": "チェックリストの使用を、完全で親しみやすい実演に結びつける証拠がまだ必要です。",
+            "ko": "점검표 사용을 빠짐없고 친근한 시연과 연결하는 근거가 여전히 필요해요."
+          },
+          "visual": "sentence:We still need evidence connecting checklist use with complete and approachable demonstrations.",
+          "target": "sentence:We still need evidence connecting checklist use with complete and approachable demonstrations.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep24-s05",
+          "english": "Listen and choose.",
+          "demo": "Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "訪談支持親近感的主張，觀察則揭露示範漏步。",
+            "zh-CN": "访谈支持亲近感的主张，观察则揭露示范漏步。",
+            "ja": "面接は親しみやすさの主張を支え、観察は実演で省かれた手順を示します。",
+            "ko": "인터뷰는 친근함에 관한 주장을 뒷받침하고 관찰은 시연에서 빠진 단계를 보여 줘요."
+          },
+          "visual": "sentence:Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "target": "sentence:Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:Interviews support a claim about approachability, while observations reveal omitted demonstration steps.",
+            "sentence:These fictional training sources examine peer orientation from different perspectives.",
+            "sentence:A mini review links sources, evaluates limits, and identifies a focused evidence gap."
+          ]
+        },
+        {
+          "id": "ep24-s06",
+          "english": "A before-and-after observation could help, but other changes would need consideration.",
+          "demo": "A before-and-after observation could help, but other changes would need consideration.",
+          "instruction": {
+            "en": "Apply the expression to the next action in this situation.",
+            "zh-TW": "把表達運用到情境中的下一步行動。",
+            "zh-CN": "把表达运用到情境中的下一步行动。",
+            "ja": "この状況で次に取る行動に表現を使います。",
+            "ko": "이 상황에서 다음에 할 행동에 표현을 적용해요."
+          },
+          "demo_translation": {
+            "zh-TW": "前後觀察可能有幫助，但也需考量其他變化。",
+            "zh-CN": "前后观察可能有帮助，但也需考量其他变化。",
+            "ja": "前後の観察は役立つ可能性がありますが、ほかの変化も考慮が必要です。",
+            "ko": "사전·사후 관찰은 도움이 될 수 있지만 다른 변화도 고려해야 해요."
+          },
+          "visual": "sentence:A before-and-after observation could help, but other changes would need consideration.",
+          "target": "sentence:A before-and-after observation could help, but other changes would need consideration.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        },
+        {
+          "id": "ep24-s07",
+          "english": "Listen and choose.",
+          "demo": "A before-and-after observation could help, but other changes would need consideration.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "前後觀察可能有幫助，但也需考量其他變化。",
+            "zh-CN": "前后观察可能有帮助，但也需考量其他变化。",
+            "ja": "前後の観察は役立つ可能性がありますが、ほかの変化も考慮が必要です。",
+            "ko": "사전·사후 관찰은 도움이 될 수 있지만 다른 변화도 고려해야 해요."
+          },
+          "visual": "sentence:A before-and-after observation could help, but other changes would need consideration.",
+          "target": "sentence:A before-and-after observation could help, but other changes would need consideration.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:These fictional training sources examine peer orientation from different perspectives.",
+            "sentence:A before-and-after observation could help, but other changes would need consideration.",
+            "sentence:A mini review links sources, evaluates limits, and identifies a focused evidence gap."
+          ]
+        },
+        {
+          "id": "ep24-s08",
+          "english": "I will identify these materials as fictional rather than imply real published research.",
+          "demo": "I will identify these materials as fictional rather than imply real published research.",
+          "instruction": {
+            "en": "Read the complete sentence without dropping its conditions or limits.",
+            "zh-TW": "完整跟讀，不省略條件或限制。",
+            "zh-CN": "完整跟读，不省略条件或限制。",
+            "ja": "条件や限界を省かずに、文全体を音読します。",
+            "ko": "조건이나 한계를 빼지 않고 문장 전체를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會標示材料為虛構，不暗示是真實已出版研究。",
+            "zh-CN": "我会标示材料为虚构，不暗示是真实已出版研究。",
+            "ja": "資料を架空と明示し、実在する公刊研究であるかのようには示しません。",
+            "ko": "자료가 가상임을 밝히고 실제 출판 연구인 것처럼 암시하지 않을 거예요."
+          },
+          "visual": "sentence:I will identify these materials as fictional rather than imply real published research.",
+          "target": "sentence:I will identify these materials as fictional rather than imply real published research.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep24-s09",
+          "english": "Listen and choose.",
+          "demo": "I will identify these materials as fictional rather than imply real published research.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會標示材料為虛構，不暗示是真實已出版研究。",
+            "zh-CN": "我会标示材料为虚构，不暗示是真实已出版研究。",
+            "ja": "資料を架空と明示し、実在する公刊研究であるかのようには示しません。",
+            "ko": "자료가 가상임을 밝히고 실제 출판 연구인 것처럼 암시하지 않을 거예요."
+          },
+          "visual": "sentence:I will identify these materials as fictional rather than imply real published research.",
+          "target": "sentence:I will identify these materials as fictional rather than imply real published research.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：聽英文後等待六秒揭答與翻譯，不作獨立聽力評量。",
+          "choices": [
+            "sentence:These fictional training sources examine peer orientation from different perspectives.",
+            "sentence:A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+            "sentence:I will identify these materials as fictional rather than imply real published research."
+          ]
+        },
+        {
+          "id": "ep24-s10",
+          "english": "A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+          "demo": "A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+          "instruction": {
+            "en": "Review how the details support a clear and appropriate response.",
+            "zh-TW": "複習細節如何支持清楚且合宜的回應。",
+            "zh-CN": "复习细节如何支持清楚且合宜的回应。",
+            "ja": "細部が明確で適切な応答をどう支えるか復習します。",
+            "ko": "세부 내용이 명확하고 적절한 응답을 어떻게 뒷받침하는지 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "小型回顧連結來源、評估限制，指出聚焦證據缺口。",
+            "zh-CN": "小型回顾链接来源、评估限制，指出聚焦证据缺口。",
+            "ja": "短いレビューは資料を結びつけ、限界を評価し、明確な証拠の不足を示します。",
+            "ko": "짧은 검토는 자료를 연결하고 한계를 평가하며 구체적인 근거 공백을 밝혀요."
+          },
+          "visual": "sentence:A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+          "target": "sentence:A mini review links sources, evaluates limits, and identifies a focused evidence gap.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先聽情境示範並觀察句子關係，課後以閱讀及寫作深化分析。"
+        }
+      ]
+    }
+  ]
+}

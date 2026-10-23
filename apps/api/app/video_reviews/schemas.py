@@ -49,11 +49,37 @@ ContentType = Literal[
     "application/json",
 ]
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
-# The languages a video can be made in besides zh-TW, in the order the page lists them. The
-# owner decided on 2026-10-09 that a video's languages are four: narrated in zh-TW, with en, ja
-# and ko to add; the site keeps its five locales, the videos do not.
-DubLocale = Literal["en", "ja", "ko"]
-DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
+# The languages a video can be made in besides zh-TW, in the order the page lists them
+# (docs/videos/LANGUAGES.md). The owner decided on 2026-10-09 that a video's languages are
+# zh-TW narration plus en, ja and ko; the site keeps its five locales, the videos do not. These
+# three are also the ones a video can be narrated in (tools/video/core/schema.mjs
+# NARRATION_LOCALES), so a package's narration language is zh-TW or one of them.
+NarrationLocale = Literal["en", "ja", "ko"]
+NARRATION_LOCALES: tuple[NarrationLocale, ...] = get_args(NarrationLocale)
+# On 2026-10-18 the owner added Latin-American Spanish, Brazilian Portuguese, Indonesian,
+# Vietnamese and Thai, first for 種田娶妻打天下, an imported series made outside the pipeline.
+# On 2026-10-20 they opened them to every video: the worker makes their titles, descriptions
+# and captions (tools/video/core/schema.mjs TARGET_LOCALES), and, since phase two of
+# tasks/open/2026-10-19-worker-video-languages-five.md, their dubs (DUB_TARGET_LOCALES). They
+# are never a narration language. YouTube gets each under its own tag
+# (app/video_youtube/requests.py YOUTUBE_LANGUAGES).
+AddedLocale = Literal["es", "pt", "id", "vi", "th"]
+ADDED_LOCALES: tuple[AddedLocale, ...] = get_args(AddedLocale)
+# Every language a video may add, whatever of it is made: the panel's rows, a stored choice's
+# keys and a languages batch's locales.
+DubLocale = Literal[NarrationLocale, AddedLocale]
+DUB_LOCALES: tuple[DubLocale, ...] = (*NARRATION_LOCALES, *ADDED_LOCALES)
+# What the worker makes titles, descriptions and captions in: all of them, for every category
+# (``admin_service.locale_options``); and what it dubs: all of them too, wherever a dub is
+# allowed at all (``admin_service._apply_locales``: no drama whose characters speak).
+WORKER_CAPTION_LOCALES: tuple[DubLocale, ...] = DUB_LOCALES
+WORKER_DUB_LOCALES: tuple[DubLocale, ...] = DUB_LOCALES
+
+
+def _worker_caption_locales() -> list[DubLocale]:
+    return [*WORKER_CAPTION_LOCALES]
+
+
 # Languages a video could be made in before (zh-CN until 2026-10-09). A stored choice or an
 # approved languages batch may still name one; it is ignored rather than refused, so the video's
 # other languages keep working (``without_retired_locales``).
@@ -333,8 +359,8 @@ class ProjectSummary(BaseModel):
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
-    # The languages the owner chose after the final cut and what of each, empty until they
-    # decide; when they first decided; where each chosen part stands, from the languages reviews;
+    # The languages the owner chose and what of each, empty until they decide (brand stories
+    # may preselect before the final cut); when they first decided; where each chosen part stands;
     # and whether the video may be scheduled: its upload confirmation approved, its languages
     # decided and every chosen part ready, skipped or uploaded, and no YouTube id yet
     # (docs/videos/LANGUAGES.md).
@@ -342,6 +368,9 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
+    # The languages the panel offers this video, in its order: all eight for every video
+    # (WORKER_CAPTION_LOCALES), each with its dub (WORKER_DUB_LOCALES) wherever a dub is allowed.
+    locale_options: list[DubLocale] = Field(default_factory=_worker_caption_locales)
     # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
     # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
     # request, why it cannot be asked for again. Both empty for a Short.
@@ -375,6 +404,12 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Whether the current cut may start dub production. A story needs an approved final with
+    # switchable-caption QA bound to its hash; saved intent alone never grants this.
+    dub_allowed: bool = False
+    # A brand story can save the owner's dub choice before that final is ready. Distinct from
+    # dub_allowed so an older client or worker cannot confuse preselection with permission to buy.
+    story_dub_preselectable: bool = False
     # Set only in the answer to a pasted YouTube address without a publish time: why the
     # linked channel gave none (still private, not in the channel, not linked...), or None
     # when it gave one or the owner typed one (admin_service.link_youtube).

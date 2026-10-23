@@ -1,0 +1,1851 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h12",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像對朋友講一樁真實奇聞；問句自然上揚，日期與數字放慢，不模仿歷史人物。",
+    "performance": "開場跟著補給船等回應，語速收緊；搜索與石板段清楚接續。西側損害的數字放慢，海浪結論保留調查者語氣；詩作段稍放輕，原信展出時溫和收束。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "loops": [
+    {
+      "setup": "3nwg",
+      "payoff": "448s",
+      "what": "穆爾寫信後，登島時究竟看見什麼"
+    },
+    {
+      "setup": "q7ay",
+      "payoff": "dfa9",
+      "what": "信中西側損害如何在監督調查中被補足"
+    },
+    {
+      "setup": "i73f",
+      "payoff": "i9ud",
+      "what": "後來紙上的餐桌場景出自誰的作品"
+    },
+    {
+      "setup": "fkmm",
+      "payoff": "cyaq",
+      "what": "燈室為何看起來準備完畢"
+    },
+    {
+      "setup": "h8mk",
+      "payoff": "igw7",
+      "what": "最後完成的工作把時間推到哪一天"
+    },
+    {
+      "setup": "r3ds",
+      "payoff": "e5pv",
+      "what": "監督如何推想三人去處"
+    },
+    {
+      "setup": "gqqh",
+      "payoff": "a83d",
+      "what": "散落繩具能否證明當時正在使用"
+    },
+    {
+      "setup": "7nu6",
+      "payoff": "6xq2",
+      "what": "受損設施能否證明三人最後如何失蹤"
+    },
+    {
+      "setup": "rvc2",
+      "payoff": "i3cg",
+      "what": "失蹤的救生圈能否證明有人救援"
+    },
+    {
+      "setup": "e2rt",
+      "payoff": "jreq",
+      "what": "後來的文字如何描出當年文件未記下的屋內一幕"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "三個人失蹤後，燈塔的故事改了哪裡？｜奇聞檔案局",
+    "description": "1900 年，弗蘭南燈塔三名看守員失蹤。補給船、登島者的信、監督的調查與後來的詩，留下了不同性質的文字。\n\n本集跟著穆爾的同一封信，再與調查報告和詩作對讀，分辨工作紀錄、事故推斷與文學場景。三人的最後遭遇未能確定；未動的晚餐與倒椅不能當成最初現場證據。\n\n來源查核於 2026-10-16。插圖為 AI 敘事示意，人物為非肖像式一般角色；沒有重演確定的死亡過程。",
+    "tags": [
+      "弗蘭南燈塔",
+      "Flannan Isles",
+      "燈塔失蹤",
+      "歷史懸案",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "空屋\n**誰加餐桌**",
+      "tag": "奇聞檔案局",
+      "sub": "1900 年留下的紀錄",
+      "shot": "landing-no-reply"
+    }
+  },
+  "sources": [
+    {
+      "title": "Northern Lighthouse Board：1900 電報、Moore 信與 Muirhead 報告",
+      "url": "https://www.nlb.org.uk/history/flannan-isles/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Northern Lighthouse Board：Flannan Islands",
+      "url": "https://www.nlb.org.uk/lighthouses/flannan-islands/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Gibson 1912：Fires - Book I，Flannan Isle",
+      "url": "https://www.gutenberg.org/cache/epub/42677/pg42677-images.html",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "National Records of Scotland：2026 原信展覽",
+      "url": "https://nrscotland.gov.uk/latest-news/scotland-s-lighthouse-history-in-exhibition/",
+      "checked_on": "2026-10-16"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "arrival-date",
+      "chapter": "補給船等不到回應",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a lighthouse tender near a rocky Scottish island in winter daylight, one sailor holds a rail and watches the distant lighthouse, centered in frame, with soft light from the left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C02"
+      ],
+      "lines": [
+        {
+          "id": "jjr5",
+          "text": "一九〇〇年十二月二十六日，弗蘭南群島。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "landing-no-reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view from the deck of a 1900 Scottish supply steamship nearing a rocky island lighthouse on a grey day. One adult relief keeper in a dark wool coat looks toward the empty metal flagpole beside the lighthouse; its bare tip and full pole are clearly visible with no cloth attached. The boat, island landing, and lighthouse share the frame.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C02"
+      ],
+      "lines": [
+        {
+          "id": "ht63",
+          "text": "換班的穆爾跟著補給船到了，岸上卻沒有升起平常的旗號。"
+        }
+      ]
+    },
+    {
+      "id": "horn-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on the wooden deck of a small 1900 steamship at sea, one sailor in a wool coat pulls the cord of a brass steam whistle mounted above the ship rail; white steam rises from the whistle, with open sea behind and soft grey daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C02"
+      ],
+      "lines": [
+        {
+          "id": "a2ec",
+          "text": "船上的汽笛響了幾次，還是等不到回應。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "rocket-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the wooden deck of a small 1900 steamship at sea, one captain launches a single signal rocket from the ship rail into a plain grey sky; the rocket and its white smoke are clearly visible above him, with open sea behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C02"
+      ],
+      "lines": [
+        {
+          "id": "xng2",
+          "text": "船長又發了一枚火箭，燈塔依然沒有動靜。"
+        }
+      ]
+    },
+    {
+      "id": "letter-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an archive reading table, one archivist unfolds a plain letter beside a closed envelope, centered in frame, with gentle light falling from above.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "3nwg",
+          "text": "兩天後，穆爾把這次登島寫進一封信。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "west-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the west landing of a rocky Scottish island under an overcast sky, one inspector stops at a bent railing with a concerned expression, centered in frame, with gentle light falling from above.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C09"
+      ],
+      "lines": [
+        {
+          "id": "q7ay",
+          "text": "三天後，監督走向西側碼頭，要查看留下的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "poem-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight medium shot of one later reader studying a plain page beside a small bare dining tabletop model, with the reader's face, page and empty tabletop filling the frame, soft window light from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "i73f",
+          "text": "多年後，另一張紙寫到了燈塔裡的一張餐桌。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "opening-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a public archive exhibition room during opening hours, one archivist holds a plain folder with a lighthouse silhouette, centered in frame, with muted side illumination.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C17"
+      ],
+      "lines": [
+        {
+          "id": "kxdb",
+          "text": "穆爾那天看見什麼？後來紙上的那一幕，又是誰寫的？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "boat-launched",
+      "chapter": "穆爾進屋，又跑回小艇",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Scottish island east landing in winter daylight, one relief keeper faces the camera as he steps directly from a small open rowboat onto a wet stone step, with soft light from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "xf7d",
+          "text": "小艇靠上東側碼頭，穆爾先跳到了岸上。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "boat-waits",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of one sailor waiting beside a wooden oar in a small open boat at the rocky east landing in daytime, facing the camera, with boat rail and water filling the background and indirect light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "874p",
+          "text": "同行的人留在艇裡，等他從燈塔回來報訊。"
+        }
+      ]
+    },
+    {
+      "id": "letter-recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an archive reading table, one archivist unfolds a plain letter beside a closed envelope, centered in frame, with gentle light falling from above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "448s",
+          "text": "穆爾後來寫，他走到燈塔外，仍沒看見任何看守員。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "entrance-gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper reaches for a plain closed gate, centered in frame, with muted side illumination.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C04"
+      ],
+      "lines": [
+        {
+          "id": "sspt",
+          "text": "他先碰到關著的院門，屋外的門也關著；信裡沒有說門被反鎖。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper peers through an open kitchen doorway, centered in frame, with soft light from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C04"
+      ],
+      "lines": [
+        {
+          "id": "4pa4",
+          "text": "可是再走進去，廚房本身的門卻是開的。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "cold-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up inside a stone lighthouse room in daytime, one keeper bends to inspect a cold soot-dark empty hearth beneath a simple chimney, his face visible in window daylight from above.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C04"
+      ],
+      "lines": [
+        {
+          "id": "5udf",
+          "text": "穆爾看了火爐，判斷已經好幾天沒生火。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "empty-beds",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper stands beside an empty simple bed, centered in frame, with muted side illumination.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C04"
+      ],
+      "lines": [
+        {
+          "id": "pec2",
+          "text": "他接著逐間查看，床上都沒有人。"
+        }
+      ]
+    },
+    {
+      "id": "serious-absence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one alarmed relief keeper hurrying down a rough stone path toward the island landing in winter daylight, sea and bare rocks behind him, face turned toward the camera, with soft light from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "iima",
+          "text": "他沒有繼續慢慢找，立刻轉身跑向碼頭。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "boat-report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper raises a hand toward a boat just outside the frame, centered in frame, with indirect light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "t4yn",
+          "text": "回到艇邊，他告訴同伴，整個住處都空了。"
+        }
+      ]
+    },
+    {
+      "id": "search-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain stone room of a 1900 Scottish lighthouse in grey daylight, one sailor in a wool coat opens a wooden cupboard and looks inside during a search, with a bare stone wall and small window behind him.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03"
+      ],
+      "lines": [
+        {
+          "id": "ek7h",
+          "text": "於是有人跟他再次上去，把屋裡重新找了一遍。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "room-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper pauses at a lightroom doorway with raised eyebrows, centered in frame, with muted side illumination.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C05"
+      ],
+      "lines": [
+        {
+          "id": "fkmm",
+          "text": "這次他們走進燈室，裡面又會留下什麼？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "lamp-ready",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a 1900 stone lighthouse lantern room: an adult keeper's hand inspects the dark unlit wick of a brass oil burner beside its full plain metal oil reservoir on a bare stone shelf. Grey daylight enters from one small window; only period brass equipment, stone and the keeper's hand are in view, with no electric fixture or laboratory glassware.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C05"
+      ],
+      "lines": [
+        {
+          "id": "cyaq",
+          "text": "燈室裡的燈已經清理，盛油的容器也裝滿了。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "who-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a public archive exhibition room during opening hours, one archivist opens three plain personnel folders, centered in frame, with gentle light falling from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C01"
+      ],
+      "lines": [
+        {
+          "id": "anms",
+          "text": "失蹤的是杜卡特、馬歇爾，還有麥克阿瑟。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "replacement-duty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain duty desk in winter daylight, one clerk faces the camera while setting a single blank duty card beside a closed folder, with muted side illumination.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C01"
+      ],
+      "lines": [
+        {
+          "id": "v7kk",
+          "text": "原本的一位看守員正在請病假，麥克阿瑟才來代班。"
+        }
+      ]
+    },
+    {
+      "id": "captain-volunteers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a lighthouse tender near a rocky Scottish island in winter daylight, one captain raises an open hand beside the ships wheel, centered in frame, with soft light from the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C06"
+      ],
+      "lines": [
+        {
+          "id": "c8s2",
+          "text": "消息送回補給船後，船長徵求願意留守的人。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "relight-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a lighthouse lightroom at night, one relief keeper faces the camera while lighting a small oil flame behind the glass lighthouse lens, dark window behind him, with warm oil-lamp light from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C06"
+      ],
+      "lines": [
+        {
+          "id": "bkys",
+          "text": "當晚，穆爾和留下的同伴重新把燈點亮。"
+        }
+      ]
+    },
+    {
+      "id": "search-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper scans a rocky hollow from a safe footpath, centered in frame, with gentle light falling from above.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C17"
+      ],
+      "lines": [
+        {
+          "id": "njtt",
+          "text": "接著他們走遍島上，仍沒有找到三人的身影。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "coat-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper pauses before a single coat hanging on a peg, centered in frame, with soft light from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "z4u3",
+          "text": "穆爾後來記下一件小事：麥克阿瑟的外套留在住處。外套能告訴我們誰先離站嗎？",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "others-clothes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper examines an empty boot shelf and two empty coat pegs, centered in frame, with indirect light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "7tig",
+          "text": "另外兩人的海靴和防水外衣，卻沒有留在屋內。"
+        }
+      ]
+    },
+    {
+      "id": "clothing-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper looks between the hanging coat and an empty boot shelf, centered in frame, with gentle light falling from above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "phjr",
+          "text": "穆爾熟悉同伴出門時的穿著，這幾件衣物因此很要緊。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "landing-clothes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up inside a Scottish island lighthouse during a daytime relief visit, one relief keeper points to a bare wooden boot shelf and empty floor beside the door, his concerned face visible, with muted side illumination.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "m6gi",
+          "text": "他說，那些裝備是他們下到碼頭附近時才會穿的。"
+        }
+      ]
+    },
+    {
+      "id": "sequence-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reader's desk, one reader leaves three plain figure tokens in an unordered cluster beside a blank letter, centered in frame, with indirect light from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "3w38",
+          "text": "至於麥克阿瑟為什麼沒穿外套，兩份記錄沒有解釋，也無法排出三人離站的先後。"
+        }
+      ]
+    },
+    {
+      "id": "work-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper lifts a slate beside a closed logbook, centered in frame, with muted side illumination.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "h8mk",
+          "text": "穆爾的信記下做完的工作；調查報告能不能把時間接起來？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "slate-entry",
+      "chapter": "石板把調查推回十一天前",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of objects on a 1900 wooden record desk: a small matte-black chalk writing slate in a rough wooden frame, with a few faint white chalk tally strokes, lies beside a separate thick bound paper logbook. Rough stone wall and grey window daylight behind them; no electronic screen or readable letters.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "cuxc",
+          "text": "調查報告補上信裡沒有寫的石板，上面留著待抄的觀測。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "log-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a lighthouse record room during an investigation, one investigator rests a finger beside a closed plain logbook, centered in frame, with indirect light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "s7pw",
+          "text": "日誌本最後寫到十二月十三日。"
+        }
+      ]
+    },
+    {
+      "id": "clock-has-no-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a lighthouse record room during an investigation, one investigator points to a plain stopped wall clock above a blank report, centered in frame, with muted side illumination.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C20"
+      ],
+      "lines": [
+        {
+          "id": "s4hn",
+          "text": "報告也記下屋裡的鐘停了；鐘面卻說不出是哪一天。"
+        }
+      ]
+    },
+    {
+      "id": "slate-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of objects on a 1900 wooden record desk: a small matte-black chalk writing slate in a rough wooden frame, with a few faint white chalk tally strokes, lies beside a separate thick bound paper logbook. Rough stone wall and grey window daylight behind them; no electronic screen or readable letters.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "fgbf",
+          "text": "不過，後續的資料還在石板上，並沒有一起消失。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "morning-reading",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a 1900 lighthouse record room, one inspector points to a small black chalk slate beside a brass barometer and thermometer on a worn wooden desk, with three short rows of faint chalk marks and soft grey window light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "ey9a",
+          "text": "其中包含十五日早上九點的氣壓、氣溫與風況。"
+        }
+      ]
+    },
+    {
+      "id": "extinguish-time",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D cel-shaded overhead illustration of two separate everyday-work clues on a rough 1900 wooden desk: a small black chalk writing slate with faint tally strokes and one empty washed cast-iron cooking pot. Clear open space between them, with soft grey window daylight. No hands, notes, labels, numbers, dates, people or readable writing.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C07"
+      ],
+      "lines": [
+        {
+          "id": "yt2k",
+          "text": "石板也留了當天早上熄燈的時間。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-work",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper peers through an open kitchen doorway, centered in frame, with soft light from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C05"
+      ],
+      "lines": [
+        {
+          "id": "37tf",
+          "text": "屋裡的鍋具已經洗過，廚房也整理好了。"
+        }
+      ]
+    },
+    {
+      "id": "work-date-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D cel-shaded overhead illustration of two separate everyday-work clues on a rough 1900 wooden desk: a small black chalk writing slate with faint tally strokes and one empty washed cast-iron cooking pot. Clear open space between them, with soft grey window daylight. No hands, notes, labels, numbers, dates, people or readable writing.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C08"
+      ],
+      "lines": [
+        {
+          "id": "igw7",
+          "text": "把這些日常工作合起來，調查把失蹤推在那天下午。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "inference-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a public archive exhibition room during opening hours, one archivist draws a broken line between two blank cards, centered in frame, with muted side illumination.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C08"
+      ],
+      "lines": [
+        {
+          "id": "7zvf",
+          "text": "這是從工作留下的痕跡推回去，沒有人目擊最後離開。"
+        }
+      ]
+    },
+    {
+      "id": "passing-ship",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a passing steamer at midnight, one captain faces the camera while scanning a fully dark island silhouette across the water; only a small deck lantern beside him gives faint light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "x5ik",
+          "text": "另有一艘過船回報，十五日午夜經過時沒有看見燈。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "report-delay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a lighthouse record room, one coastal clerk sits alone facing the camera as he opens a newly delivered plain sealed message on the desk, with indirect light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "ds8v",
+          "text": "但繆爾黑德在報告裡說，這則消息是在失蹤被發現後，才傳到燈塔局。"
+        }
+      ]
+    },
+    {
+      "id": "shore-observers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a lighthouse record room during an investigation, one shore observer raises a telescope beside a coastal window, centered in frame, with gentle light falling from above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "3tt3",
+          "text": "岸上也有人每晚記錄，看不看得見這座燈塔。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "visibility-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of one coastal observer at a window facing the camera while squinting toward a hazy sea and faint island silhouette outside, with muted side illumination.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "nxpd",
+          "text": "但隔著海看不到光，能直接當成燈已經熄了嗎？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "shore-witnesses",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a small coastal stone cottage in winter daylight, one lighthouse inspector pauses with a closed blank notebook at the doorway, centered in frame, with indirect overcast light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "k8sw",
+          "text": "監督找到實際負責岸上瞭望的兩名少年，問他們各晚看見了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "shore-log",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a lighthouse record room during an investigation, one investigator opens a plain observation book, centered in frame, with soft light from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "szic",
+          "text": "監督翻查岸上的紀錄，發現看不見並不是新鮮事。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "several-nights",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a lighthouse record room during an investigation, one observer lowers a telescope in thick coastal haze, centered in frame, with indirect light from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "s9zp",
+          "text": "天氣阻擋視線時，連續四五晚看不見燈，也曾發生。"
+        }
+      ]
+    },
+    {
+      "id": "two-records",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a public archive exhibition room during opening hours, one archivist separates a ship token from a shore token on a desk, centered in frame, with gentle light falling from above.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "ufsf",
+          "text": "所以過船的通報和岸上的紀錄，必須分開判讀。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "time-place-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a lighthouse record room during an investigation, one investigator studies an unlabelled island outline, centered in frame, with muted side illumination.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C08",
+        "H12-C17"
+      ],
+      "lines": [
+        {
+          "id": "r3ds",
+          "text": "時間漸漸縮小了，三個人又是往島上的哪裡去？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "inspector-lands",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the eastern stone landing at the Flannan Islands lighthouse during the investigation, one inspector steps onto the stone platform, centered in frame, with soft light from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C09"
+      ],
+      "lines": [
+        {
+          "id": "s7g4",
+          "text": "二十九日，監督繆爾黑德登島，親自檢查現場。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "east-intact",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the rocky east landing below a lighthouse under a grey sky, one anonymous inspector touches a neatly stored coil of rope beside the landing, sea behind, soft light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "qj6q",
+          "text": "東側的繩索都還在，跟上次換班收妥的樣子一樣。"
+        }
+      ]
+    },
+    {
+      "id": "west-recalled",
+      "chapter": "西側少了一只繩具箱",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the west landing of a rocky Scottish island under an overcast sky, one inspector stops at a bent railing with a concerned expression, centered in frame, with gentle light falling from above.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "8hj7",
+          "text": "監督換到西側，眼前的損害跟東側完全不同。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "sea-blocks-descent",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide side view of the high western cliff of a Scottish lighthouse in 1900. One adult human inspector in a brown wool coat and cap stands safely on the elevated iron derrick platform, peering down at a lower stone landing overwhelmed by rough breaking waves. The platform and inspector are clearly above the sea, with no person on the lower landing.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C10"
+      ],
+      "lines": [
+        {
+          "id": "ijjn",
+          "text": "海況讓監督下不到碼頭，只能走到起重機平台。"
+        }
+      ]
+    },
+    {
+      "id": "platform-height",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain coastal investigation office, one inspector faces the camera and points to a low rocky platform on a small raised clay island terrain model resting on a solid wooden table, with soft light from the left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C10"
+      ],
+      "lines": [
+        {
+          "id": "y4ag",
+          "text": "那座平台的位置，在海面上七十英尺。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "box-location",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the west landing of a rocky Scottish island under an overcast sky, one inspector points toward an empty rock crevice above the platform, centered in frame, with indirect light from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C10"
+      ],
+      "lines": [
+        {
+          "id": "tvjn",
+          "text": "放繩具的木箱原本更高，藏在岩石的縫隙裡。"
+        }
+      ]
+    },
+    {
+      "id": "box-contents",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an earlier moment on a rocky western landing, one lighthouse keeper faces the camera beside an open plain wooden storage box set into a high rock crevice, visible coils of rope and simple iron handles inside, with soft overcast daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C21"
+      ],
+      "lines": [
+        {
+          "id": "dwtd",
+          "text": "箱裡原收著繫船、登岸的繩子，還有起重機把手。"
+        }
+      ]
+    },
+    {
+      "id": "box-height",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up inside a plain coastal investigation office, one inspector faces the camera and points to an upper rock ledge on a small raised clay island terrain model resting on a solid wooden table, with gentle light from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C10"
+      ],
+      "lines": [
+        {
+          "id": "madp",
+          "text": "箱子的位置，離海面大約一百一十英尺。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "height-card",
+      "template": "big",
+      "data": {
+        "text": "110 英尺",
+        "kicker": "繩具箱的位置",
+        "sub": "NLB 調查報告｜不是浪高"
+      },
+      "claims": [
+        "H12-C10"
+      ],
+      "lines": [
+        {
+          "id": "efzu",
+          "text": "這是設施所在的高度，並不是當時量到的浪高。"
+        }
+      ]
+    },
+    {
+      "id": "box-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty rectangular bare patch in a rocky crevice at the high western landing of a 1900 Scottish lighthouse. Several large, tightly wound rope coils remain beside it. One investigator’s gloved hand points to the empty patch, with grey sea far below; the frame is cropped tightly around the ropes and rock.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "dfa9",
+          "text": "放繩具的木箱不見了；繩束卻留在岩縫和起重機旁。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "rope-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at the west landing of a rocky Scottish island, one inspector crouches beside an untouched tightly wound rope coil fixed in a rock crevice, studying it with a questioning face, with overcast daylight from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "gqqh",
+          "text": "那些繩子，失蹤當天有人用過嗎？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "coiled-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the west landing of a rocky Scottish island under an overcast sky, a gloved hand holds a neatly tied coil above a rough rock, centered in frame, with gentle light falling from above.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "a83d",
+          "text": "監督查看時，繩束都還捲著，沒有一束被解開；這只能說明檢查時的狀態，不能確認失蹤當天誰用過。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "previous-crane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at the western lighthouse landing during the winter before the disappearance, one workman in a plain coat stands safely above the platform while rough sea water carries away an old crane below, soft overcast light from the left, no keepers in danger.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C22"
+      ],
+      "lines": [
+        {
+          "id": "vn6y",
+          "text": "前一個冬季，上一台起重機曾被海水沖走。"
+        }
+      ]
+    },
+    {
+      "id": "crane-safe",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D graphic illustration of a 1900 lighthouse landing viewed from above. A short weathered iron lifting beam has been lowered to lie flat along the rocky platform; its chain is wound around an iron anchor bolt embedded in the same rock. The beam hinge, base and anchor are all visible. No water, raised arm, hanging hook, cargo, machinery cab or people.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "eskw",
+          "text": "起重機本身也完好，吊臂已放下並固定在岩石上。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "crane-covered",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a rocky western landing, one inspector faces the camera while touching a plain canvas cover tied firmly around a stationary cylindrical hand-winch drum beside a small fixed derrick, with overcast light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "dvmg",
+          "text": "捲筒的帆布罩還綁著，沒有顯示有人正在動它。"
+        }
+      ]
+    },
+    {
+      "id": "railings-twisted",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D graphic close-up of a coastal iron safety railing in 1900. At the center, the horizontal iron bar is sharply bent into a downward V shape, and one vertical post is twisted sideways; all pieces remain bolted to rough rock. Grey sea behind, no people or signs.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "wc2e",
+          "text": "可是平台和通道的鐵欄杆，被扭得變了形。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "stone-displaced",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at the west landing of a rocky Scottish island under an overcast sky, one inspector crouches beside a large fallen stone on a path, centered in frame, with muted side illumination.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C18"
+      ],
+      "lines": [
+        {
+          "id": "anru",
+          "text": "更高處一塊大石頭，甚至被移到了下方的通道上。"
+        }
+      ]
+    },
+    {
+      "id": "stone-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the concrete path above the west landing during an inspection, one inspector stands beside a massive displaced stone block for scale and studies it, grey sea far below, soft overcast light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C23"
+      ],
+      "lines": [
+        {
+          "id": "2d4b",
+          "text": "報告估它重逾二十英擔，約一公噸。"
+        }
+      ]
+    },
+    {
+      "id": "buoy-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D graphic close-up with thick dark outlines: one bare weathered iron railing post at a rocky coast, with a short frayed rope tied in a tight intact knot around it. The loose frayed end dangles into empty air. Only the rail, frayed rope, bare rock and grey sea; no circular objects, floats, attached gear, text or people.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C18"
+      ],
+      "lines": [
+        {
+          "id": "rvc2",
+          "text": "連綁在欄杆上的救生圈都不見了，曾有人拿它救人嗎？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "buoy-height",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view looking up from rough sea toward a high stone walkway on a Scottish island cliff, one inspector stands above beside a bare iron railing with a short torn rope tie, a long rock face separating the railing from the water under an overcast sky.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C24"
+      ],
+      "lines": [
+        {
+          "id": "cbd8",
+          "text": "救生圈所在的通道欄杆，約和剛才那只木箱的岩縫一樣高。"
+        }
+      ]
+    },
+    {
+      "id": "buoy-ties",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the west landing of a rocky Scottish island, one inspector's gloved hand points to a tight knotted rope on an iron rail with a conspicuous ragged pale canvas scrap caught in the knot, overcast daylight from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C18"
+      ],
+      "lines": [
+        {
+          "id": "q5ct",
+          "text": "監督查看綁繩，發現繩結沒被解開，上面還黏著帆布。"
+        }
+      ]
+    },
+    {
+      "id": "buoy-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a rocky island landing, one inspector faces the camera while holding a ragged pale canvas scrap beside an intact knotted rope tie still fastened to an iron rail, with gentle overcast light from above.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C18"
+      ],
+      "lines": [
+        {
+          "id": "i3cg",
+          "text": "因此他判斷，救生圈是被海水從固定處撕掉的。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "departure-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at the west landing of a rocky Scottish island under an overcast sky, one inspector carries a blank notebook toward the lighthouse, centered in frame, with muted side illumination.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C11"
+      ],
+      "lines": [
+        {
+          "id": "7nu6",
+          "text": "西側的損害能說明三人最後如何失蹤嗎？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "investigator-opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a coastal investigation office in winter, one inspector signs a blank report with a careful expression, centered in frame, with muted side illumination.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C09",
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "ecsy",
+          "text": "一九〇一年一月八日，他寫下自己認為最可能的解釋。"
+        }
+      ],
+      "chapter": "報告寫下最可能的解釋"
+    },
+    {
+      "id": "secure-gear",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the rocky western landing of a 1900 Scottish lighthouse under a grey winter sky, one generic keeper braces a plain wooden rope chest against a high rock ledge near neatly coiled mooring ropes, with rough sea far below.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "e5pv",
+          "text": "他的推想是，三人到西側附近，想把繩具箱等器材保住。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "wave-hypothesis",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a coastal investigation office, one inspector faces the camera and points to a small clay island terrain model on a solid table, with a single raised wave-shaped piece reaching the western landing, indirect light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "ek4w",
+          "text": "接著，一股突然衝上來的大浪，漫過他們站的地方。"
+        }
+      ]
+    },
+    {
+      "id": "returning-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a coastal investigation office in winter, one inspector moves a plain translucent water-flow model downward over an unlabelled rocky west-landing model on the desk, soft side light from the left, this is a teaching model of a hypothesis.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "9jra",
+          "text": "監督推想，回落的海水才把三人捲走。"
+        }
+      ]
+    },
+    {
+      "id": "wave-label",
+      "template": "big",
+      "data": {
+        "text": "最可能的解釋",
+        "kicker": "1901-01-08 調查結論",
+        "sub": "Muirhead 的推斷｜海浪推想未證實"
+      },
+      "claims": [
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "6xq2",
+          "text": "這是監督依損害提出的事故推想，現場無法證實那一刻發生了什麼。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "wind-compared",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a coastal investigation office, one inspector faces the camera while turning a small metal wind vane fixed to a wooden tabletop stand beside a raised clay island terrain model, with muted side illumination.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C19"
+      ],
+      "lines": [
+        {
+          "id": "v7k5",
+          "text": "他也考慮過強風吹走人的可能，還比較了風向。"
+        }
+      ]
+    },
+    {
+      "id": "west-wind",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a coastal investigation office, one inspector faces the camera and points from the rocky western edge toward the higher central hill of a small raised clay island terrain model resting on a solid wooden table, with soft light from the left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C19"
+      ],
+      "lines": [
+        {
+          "id": "e8ux",
+          "text": "當時的西風，會把人推向島上較高的地方。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "wind-escape",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a coastal investigation office in winter, one inspector points to an unlabelled sloping island relief model where a small plain human token rests before the cliff edge, soft lamplight from the left, a teaching model of his wind comparison.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C19"
+      ],
+      "lines": [
+        {
+          "id": "33cn",
+          "text": "他認為，真被風吹，人還能在崖頂前伏倒。"
+        }
+      ]
+    },
+    {
+      "id": "water-preferred",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a coastal investigation office in winter, one inspector places a wave token beside a blank report, centered in frame, with indirect light from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C19"
+      ],
+      "lines": [
+        {
+          "id": "hpye",
+          "text": "因此，這個風向不支持三人直接被風吹落海的說法。"
+        }
+      ]
+    },
+    {
+      "id": "poem-bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet archive desk, one reader faces the camera while opening a plain poetry volume beside a closed old letter folder, with soft lamp light from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C15",
+        "H12-C17"
+      ],
+      "lines": [
+        {
+          "id": "e2rt",
+          "text": "多年後，另一位作者替空屋加上了新的細節。"
+        }
+      ]
+    },
+    {
+      "id": "poem-recalled",
+      "chapter": "餐桌走進了詩",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later reader's desk beside a window, one reader notices a blank page beside small paper cutouts of a dinner plate and overturned chair, centered in frame, with indirect light from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "i9ud",
+          "text": "開頭那張紙，是一九一二年出版的吉布森詩集裡的一首燈塔詩。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "untouched-meal",
+      "template": "big",
+      "data": {
+        "text": "未動的晚餐",
+        "kicker": "1912 年詩作中的場面",
+        "sub": "Gibson〈Flannan Isle〉｜非現場證詞"
+      },
+      "claims": [
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "jreq",
+          "text": "詩中的飯菜放在桌上，還沒有人動過。"
+        }
+      ]
+    },
+    {
+      "id": "overturned-chair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reading table beside a window, one reader looks down at a small model chair unmistakably lying on its side beside a closed poetry book, chair legs horizontal on the tabletop, with soft light from the left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "uedh",
+          "text": "同一段裡，還有一張翻倒在地的椅子。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "poem-effect",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reading table beside a window, one reader pauses with a startled expression above the poetry volume, centered in frame, with indirect light from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "tbuz",
+          "text": "這首詩讓讀者想像有人倉促離席；原始紀錄也這麼寫嗎？"
+        }
+      ]
+    },
+    {
+      "id": "memory-recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a reading table beside a window, one archivist faces the camera while holding a plain letter above a closed poetry book set aside on the table, with gentle light from above.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C03",
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "wdik",
+          "text": "穆爾的信裡，沒有記下飯菜，也沒有那張倒椅。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later reader's desk beside a window, one reader notices a blank page beside small paper cutouts of a dinner plate and overturned chair, centered in frame, with indirect light from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C05",
+        "H12-C15"
+      ],
+      "lines": [
+        {
+          "id": "dt4e",
+          "text": "還記得那間整理好的廚房嗎？那是當年記下的狀態，不能反推出最後一餐。"
+        }
+      ]
+    },
+    {
+      "id": "document-card",
+      "template": "compare",
+      "data": {
+        "title": "同一座燈塔，兩種文字",
+        "left": {
+          "heading": "1900–1901 紀錄",
+          "points": [
+            "搜索與工作痕跡"
+          ]
+        },
+        "right": {
+          "heading": "1912 詩作",
+          "points": [
+            "餐桌與倒椅"
+          ]
+        },
+        "source": "NLB 原始文件；Gibson 1912"
+      },
+      "claims": [
+        "H12-C05",
+        "H12-C15",
+        "H12-C16"
+      ],
+      "lines": [
+        {
+          "id": "2kc7",
+          "text": "穆爾當年的信保留了原件，現在能跟後來的詩並排對讀。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "exhibit-first",
+      "chapter": "原信重新被人看見",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet public archive exhibition room, one archive attendant faces the camera while lowering a plain old letter into the center of an open glass display case, with indirect light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C16"
+      ],
+      "lines": [
+        {
+          "id": "3ncp",
+          "text": "二〇二六年，蘇格蘭國家檔案館第一次把穆爾原信展出。"
+        }
+      ]
+    },
+    {
+      "id": "ending-outro",
+      "template": "outro",
+      "data": {
+        "title": "最後一刻未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "原信仍在",
+          "傳說有來處"
+        ]
+      },
+      "claims": [
+        "H12-C16",
+        "H12-C17"
+      ],
+      "lines": [
+        {
+          "id": "qv4y",
+          "text": "『未結』只留給三人最後的遭遇，不代表後來每個細節都無從核對。",
+          "emotion": "溫和收束"
+        },
+        {
+          "id": "r5bz",
+          "text": "你聽過的版本，還多了什麼細節？",
+          "emotion": "親近地提問"
+        },
+        {
+          "id": "wpvq",
+          "text": "訂閱奇聞檔案局，一起追問故事的來處。",
+          "emotion": "溫和收束"
+        }
+      ]
+    }
+  ]
+}

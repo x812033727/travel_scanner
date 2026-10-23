@@ -90,7 +90,8 @@ class JevOutcomeUncertain(JevError):
     follow a request the provider already answered, so a second POST of the same
     question may be a second paid answer to it. ``phase`` says where the answer was lost:
     ``send`` (the connection failed after the request may have left), ``response`` (an
-    upstream 5xx, which does not say whether the work ran) or ``body`` (an answer that
+    upstream 5xx, or a 429/529 in budgeted pilot mode, which does not prove a
+    charge was avoided) or ``body`` (an answer that
     arrived but could not be read as JSON). ``wires_sent`` counts every POST this
     ``ask()`` handed to the transport; only the last of them can have been processed, the
     others were refused (429, 529) or never connected. ``request_sha256`` is the hash of
@@ -202,9 +203,8 @@ _NEVER_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
 # Refused inside this process before a byte left: a bad URL scheme, or a request httpx will
 # not write. Nothing is uncertain about them and a second try cannot help.
 _NOT_SENT_AND_FINAL = (httpx.UnsupportedProtocol, httpx.LocalProtocolError)
-# The two statuses the vendor says to retry, with how many retries each gets. This code
-# takes both to mean the request was turned away rather than run; if TypeSafe ever bills a
-# 429 or a 529, this is the line to change.
+# The two statuses the vendor says ordinary requests may retry. Budgeted pilot
+# calls cannot infer no charge from those statuses, so they disable these retries.
 _REFUSED_RETRIES = {429: 2, 529: 3}
 
 
@@ -220,6 +220,7 @@ class JevClient:
         *,
         max_state_tokens: int = VENDOR_MAX_STATE_TOKENS,
         max_request_tokens: int = VENDOR_MAX_REQUEST_TOKENS,
+        retry_refusals: bool = True,
         client: httpx.AsyncClient | None = None,
     ) -> None:
         self.api_key = api_key
@@ -227,6 +228,7 @@ class JevClient:
         self.model = model
         self.max_state_tokens = max_state_tokens
         self.max_request_tokens = max_request_tokens
+        self.retry_refusals = retry_refusals
         self._external_client = client
         self._client = client or httpx.AsyncClient(timeout=timeout_seconds)
         # Evidence, not control. ``application_calls`` counts the ``ask()`` calls that
@@ -321,9 +323,10 @@ class JevClient:
         """POST the question so that at most one request the provider may have run is sent.
 
         A paid answer that is lost on the way back does not say whether the provider ran
-        the request, so the loop retries only what it can prove was not run: a connection
-        that never opened (once), and the 429 (twice) and 529 (three times) the vendor
-        says to retry. A read or write timeout, a dropped connection, any other 5xx and a
+        the request. The ordinary loop retries a connection that never opened (once),
+        and the 429 (twice) and 529 (three times) the vendor says to retry. Budgeted
+        pilot calls disable those provider-refusal retries and retain the reservation.
+        A read or write timeout, a dropped connection, any other 5xx and a
         2xx whose body is not JSON raise ``JevOutcomeUncertain`` at once. One ``ask()``
         therefore puts at most one possibly-processed request on the wire, plus at most
         three the provider refused or never received; the shared ``attempt`` count caps
@@ -390,6 +393,16 @@ class JevClient:
                     f"{_vendor_message(response)}"
                 )
             if status in _REFUSED_RETRIES:
+                if not self.retry_refusals:
+                    # A budgeted pilot needs positive no-charge proof before it can
+                    # send another paid wire. A 429/529 alone is not that proof.
+                    raise JevOutcomeUncertain(
+                        f"Jev answered HTTP {status} without a charge receipt; not sent again",
+                        phase="response",
+                        wires_sent=wires,
+                        request_sha256=request_sha256,
+                        status=status,
+                    )
                 if attempt < _REFUSED_RETRIES[status]:
                     base, jitter = (0.5, 0.25) if status == 429 else (1.0, 0.5)
                     await self._backoff(attempt, base=base, jitter=jitter, retry_after=response)
@@ -450,7 +463,12 @@ def _vendor_message(response: httpx.Response) -> str:
     return response.text[:120]
 
 
-def jev_client(settings: Settings, client: httpx.AsyncClient | None = None) -> JevClient:
+def jev_client(
+    settings: Settings,
+    client: httpx.AsyncClient | None = None,
+    *,
+    retry_refusals: bool = True,
+) -> JevClient:
     if not settings.jev_configured or not settings.jev_api_key:
         raise AppError(503, "provider_unavailable", "尚未設定 Jev API 金鑰")
     return JevClient(
@@ -460,6 +478,7 @@ def jev_client(settings: Settings, client: httpx.AsyncClient | None = None) -> J
         settings.jev_timeout_seconds,
         max_state_tokens=settings.jev_max_state_tokens,
         max_request_tokens=settings.jev_max_request_tokens,
+        retry_refusals=retry_refusals,
         client=client,
     )
 

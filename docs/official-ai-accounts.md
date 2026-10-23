@@ -72,7 +72,7 @@ Last verified: 2026-10-10
 | [`@GoogleAI`](https://x.com/GoogleAI) | Google AI 消息 | <https://ai.google/> 頁尾 | <https://blog.google/technology/ai/> | `Google AI blog` |
 | [`@googleaidevs`](https://x.com/googleaidevs) | Gemini API 開發者更新 | <https://github.com/google-gemini> 組織頁 | Gemini API 更新紀錄 | `讀不到：一頁到底` |
 | [`@GoogleLabs`](https://x.com/GoogleLabs) | 實驗產品 | <https://labs.google/> | <https://labs.google/> | `未測` |
-| [`@googledevs`](https://x.com/googledevs) | 開發者消息 | <https://developers.googleblog.com/> 頁尾 | <https://developers.googleblog.com/> | `讀不到：robots.txt 回轉址，掃描器視為拒絕` |
+| [`@googledevs`](https://x.com/googledevs) | 開發者消息 | <https://developers.googleblog.com/> 頁尾 | <https://developers.googleblog.com/> | `同站 robots.txt 轉址可讀；尚未獨立加入來源` |
 | [`@Gemini_Notebook`](https://x.com/Gemini_Notebook) | Gemini Notebook（原 NotebookLM）更新 | 只有第三方：<https://www.freepressjournal.in/tech/google-rebrands-notebooklm-as-gemini-notebook-heres-why> | <https://blog.google/> | `Google Keyword blog` |
 | `@GoogleAIStudio` | AI Studio 更新 | 未查證：沒有官方頁面連到 | — | — |
 
@@ -147,8 +147,10 @@ Last verified: 2026-10-10
 - 一頁到底、按日期分段的更新紀錄（Claude 各 App、OpenAI API、ChatGPT／Codex、Gemini API、Gemini App）：
   `2026-10-10-read-each-dated-section-of-a`。
 - VS Code 的 feed 會列出未來日期的 Insiders 版：`2026-10-10-let-a-news-source-leave-entries`。
-- Google Developers blog 的 robots.txt 回轉址：`2026-10-10-decide-whether-the-news-fetcher-follows`
-  （要不要跟轉址是站主的決定）。
+- Google Developers blog 的 robots.txt 回轉址：站主於 2026-10-14 同意只跟隨經 HTTPS、
+  公網位址和 TLS 驗證的同網域轉址；跨網域轉址與 404 仍拒絕。DeepMind 來源允許
+  `developers.googleblog.com` 與 `blog.google` 兩個已查證的文章轉址主機，
+  但 Google Developers blog 尚未獨立加入來源。
 - 回 403 或要跑 JavaScript 的網站（xAI、Perplexity、Microsoft Copilot、Meta AI、Qwen、Z.ai、Midjourney、
   Runway）沒有開票：掃描器不跑瀏覽器，這些要等對方提供 feed。這幾列的原因來自 2026-09-30 的調查
   （票 `2026-09-30-cover-every-major-ai-agent-company`），這次沒有重測。

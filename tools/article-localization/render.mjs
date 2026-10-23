@@ -7,7 +7,7 @@ import process from 'node:process';
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import { loadBoundJob, finishRenderBinding } from './artifact-integrity.mjs';
-import { containerFor, contains, overlaps } from './render-layout.mjs';
+import { containerFor, contains, layoutIssues, MIN_FONT_PX } from './render-layout.mjs';
 
 const args = process.argv.slice(2);
 if (args.length !== 2 || args[0] !== '--job') throw new Error('Usage: node tools/article-localization/render.mjs --job <staged job directory>');
@@ -40,6 +40,7 @@ async function load(page, source, size) {
     return {
       text: [...svg.querySelectorAll('text')].filter(node => node.textContent.trim()).map(node => ({ value: node.textContent, box: box(node), font: getComputedStyle(node).fontFamily, size: Number.parseFloat(getComputedStyle(node).fontSize) })),
       rectangles: [...svg.querySelectorAll('rect,circle,ellipse')].map(box),
+      strokes: [...svg.querySelectorAll('line,polyline,polygon,path')].map(box),
     };
   });
 }
@@ -72,7 +73,8 @@ try {
         const horizontalRoom = Math.max(1, container.right - container.left - 12);
         const verticalRoom = Math.max(1, container.bottom - container.top - 8);
         const ratio = Math.min(horizontalRoom / text.box.width, verticalRoom / text.box.height, 0.9);
-        const fontSize = Math.max(14, Math.floor(text.size * ratio));
+        // Never below the reviewers' floor: a label that still does not fit is reported, not shrunk further.
+        const fontSize = Math.max(MIN_FONT_PX, Math.floor(text.size * ratio));
         if (fontSize < text.size) adjustments.push({ textIndex, before: text.size, after: fontSize });
       });
       if (!adjustments.length) break;
@@ -88,20 +90,7 @@ try {
       localized = await load(page, source, size);
     }
     if (fontAdjustments.length || sourceBytesChanged) await writeFile(svgPath, canonicalSvgText(source));
-    const issues = [];
-    if (original.text.length !== localized.text.length) issues.push({ reason: 'visible text node count changed' });
-    localized.text.forEach((text, textIndex) => {
-      const originalText = original.text[textIndex];
-      const canvas = { left: 0, top: 0, right: size.width, bottom: size.height };
-      if (!contains(canvas, text.box)) issues.push({ textIndex, text: text.value, reason: 'outside SVG canvas' });
-      if (originalText) {
-        const container = containerFor(original, originalText);
-        if (container && !contains(container, text.box)) issues.push({ textIndex, text: text.value, reason: 'outside original containing shape' });
-      }
-      for (let other = 0; other < textIndex; other++) {
-        if (overlaps(text.box, localized.text[other].box) && originalText && original.text[other] && !overlaps(originalText.box, original.text[other].box)) issues.push({ textIndex, other, reason: 'new text overlap' });
-      }
-    });
+    const issues = layoutIssues({ original, localized, size });
     const preview = svgPath.replace(/\.svg$/, '-preview.png');
     await page.screenshot({ path: preview, type: 'png' });
     const rendered = [];

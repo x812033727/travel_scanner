@@ -26,6 +26,8 @@ const refs = { reference: () => ({ series: "SERIES", drama: "DRAMA" }), dramaPay
 // module existed (6c0d2af01). The instructions are part of a stage's durable key: a changed
 // digest means every unfinished flat-explainer or story journal of that stage is asked, and paid
 // for, again. prompts.test.mjs pins the four explainer texts themselves; these are the others.
+// The explainer writer, composed both ways below, moved on 2026-10-15, when NARRATIVE_RULES gained
+// the story shapes and the one protagonist.
 
 test("the composed instructions of the existing explainer and discussion variants are byte for byte what they were", () => {
   const pinned = [
@@ -34,11 +36,11 @@ test("the composed instructions of the existing explainer and discussion variant
     // With a one-off's row, as the bible's planner and its discussion are called.
     [["planner", "drama", "", "bible-explainer", "", ROW], "b93cb7f20bcc65ec84bac37620e65de6ca751d92431df1a5c8eb91b824274731"],
     [["planner", "drama", "", "discuss", "", ROW], "29078b6d8256814a28b6e822caf71e1bcb111ba8997a95fedd7820bb5e5242f4"],
-    [["writer", "drama", "", "explainer", "", ROW], "7118c05ab1d61c8ef56d2d8ea7dc91150e5d234d2f89be78bb8e4ddb73cb42ee"],
+    [["writer", "drama", "", "explainer", "", ROW], "a1665a4a26a86a0240b520d0ea20c811c91f9e4dd21334baeb7577f5e1a87e65"],
     [["verifier", "drama", "", "explainer", "", ROW], "767589242dd2d5af85305cdcee2caf1b974e30e56990d18f4a275f8eda468b78"],
     [["writer", "drama", "", "discuss", "", ROW], "1f9670db394d4ce6d41c910803be70f921e821f64ebfdf12866f2f1db92d91c2"],
     // With the owner's standing instructions and the channel's stance.
-    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "9c4b38696f21e814dfd005abc13d20c1f00cc66fbdde3ba5901f512a329d0feb"],
+    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "d39ffc8bc9d381977b76a2a32c14dd6fce7e24646bdc991904da778a8ff835bd"],
     // The story drama's planner, which a variant with no text of its own falls back to.
     [["planner", "drama"], "675c9213407aa771820dc4ae1eb837e33049f5659636135e06d84a624e7f9de9"],
   ];
@@ -101,7 +103,8 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // Computed from this file's module as committed, never copied from the design's orders. Every
 // text but the two verifiers' moved on 2026-10-13: the condensation became one scene of the
 // story, the chapters became its beats, the scripts carry a "loops" table and the close no
-// longer names the next file. A later
+// longer names the next file. The four writers moved again on 2026-10-15 (NARRATIVE_RULES: one
+// story shape, one protagonist). A later
 // change of wording within one variant is a new prompt: an unfinished journal of the same stage
 // AND variant then has other inputs, and the run stops with video_ai_receipt_input_changed (never
 // a flat-explainer one: the pins of group 1). That is all it covers. run-receipts.mjs matches a
@@ -110,17 +113,19 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // its journal under "explainer" or "bible-explainer", and the worker would start a new journal and
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
+// The four 奇聞檔案局 texts that read the bible's 鉤子 or the writer's hook rules moved on 2026-10-19,
+// when the series took the brand stories' 45-second cadence, eight loops and its music bed.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
-  "writer:explainer-cartoon": [23232, "2cd997894102ccdec60bb168aaeeaacdac8813dbf4398e25f5a93ac577af5df6"],
+  "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
-  "writer:discuss-cartoon": [21697, "9429d3e7f4d84bc081cd5934ac0f9d2c568fb1c4402ecf70de283767641eedcf"],
-  "planner:bible-explainer-mystery": [9051, "5c7719c165af9f55033645f20b3db9d62d88eb70607830b9b5435871afeb04b0"],
-  "writer:explainer-mystery": [25440, "b4200b0f41192152aace36e11d94ca3fb6b2f850bc586a44c44b3a31297ad048"],
+  "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
+  "planner:bible-explainer-mystery": [9111, "ef9cf2ef25cf3cd54c445e33d25c80fb469d96e53d70044e93ca451d1b9a087b"],
+  "writer:explainer-mystery": [30898, "5616f3107d33d27d29a53800cb08bf3a7d306aef48e1698a1a124a5d81542302"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
-  "planner:discuss-mystery": [9680, "5d624fcce19d6da7ff36695548869e312d62edbddc382b1a30831db82a8edcf3"],
-  "writer:discuss-mystery": [23986, "2d194ffdaa631661cff2f461f6df1b6e7775753e0cdbe233a24f33dc544126fb"],
+  "planner:discuss-mystery": [9740, "925081165290cf91c680835650ccdd14e8d6f9256b794ec799c628aaf06686cd"],
+  "writer:discuss-mystery": [29444, "4d2d50d6495e995a7591ffb8fa0b60794a3b3fe13925d997dca61d548a126938"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -138,6 +143,19 @@ test("the ten texts of the two profiled series are the pinned ones, composed wit
   // The owner's standing instructions and the channel's stance are still appended, as for any stage.
   const standing = instructionsFor("writer", "drama", "旁白慢一點", "explainer-mystery", "1. 先講事實", null);
   assert.ok(standing.startsWith(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-mystery"]) && standing.includes("旁白慢一點") && standing.includes("1. 先講事實"));
+});
+
+test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's does not change", () => {
+  // Owner, 2026-10-19: the brand stories were smoother, had more hooks and music; this series is to
+  // be as good or better. Lint reads the same 45 s and eight loops on a curio- slug.
+  const mystery = instructionsFor("writer", "drama", "", "explainer-mystery");
+  assert.match(mystery, /No stretch of the body runs longer than 45 seconds\s+without one/);
+  assert.match(mystery, /"loops" lists at least 8 for ten minutes/);
+  assert.match(mystery, /ends its last sentence on one concrete, unanswered question/);
+  assert.match(mystery, /"music" is never left out/);
+  assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
+  const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
+  assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
 });
 
 test("each series' texts name their own series, look, cards and rules, and nothing of the flat explainer's or of each other's", () => {

@@ -8,9 +8,9 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
-import { writeAudioFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, fixture, fixtureLexicon, sandbox, storyFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
-import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
 import { buildTimeline, SAMPLE_RATE, speechHash, visualHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
@@ -42,7 +42,7 @@ function finishedVideo({ seconds = {} } = {}) {
   const workdir = box.workdir;
   mkdirSync(workdir, { recursive: true });
   // Translations of every line and field, current with the zh-TW text.
-  for (const locale of LOCALES.filter((each) => each !== "zh-TW")) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== "zh-TW")) {
     const lines = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `line ${line.id}` }]));
     const chapters = Object.fromEntries(doc.scenes.filter((scene) => scene.chapter).map((scene) => [scene.id, `${locale} ${scene.id}`]));
     atomicWrite(path.join(box.dir, "i18n", `${locale}.json`), `${JSON.stringify({ title: `${locale} title`, description: `${locale} description`, tags: [`${locale} tag`], chapters, source_hashes: sourceHashes(doc), lines }, null, 2)}\n`);
@@ -105,6 +105,21 @@ function context(box, fetchImpl) {
 }
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
+
+test("brand-story QA records the subtitle mode of its own script, while missing media never passes", async () => {
+  for (const burnedIn of [false, true]) {
+    const box = sandbox("fixture-story", "story");
+    const doc = storyFixture();
+    doc.subtitles.burn_in = burnedIn;
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);
+    assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+    const report = readReport(box.workdir);
+    assert.equal(report.subtitles_burned_in, burnedIn);
+    assert.equal(report.ok, false, "a subtitle-mode field alone cannot authorize a dub");
+    assert.equal(report.final_sha256, null, "a final cut must exist before its hash can bind QA");
+  }
+});
 
 test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
   const { box, workdir } = finishedVideo();
@@ -462,7 +477,7 @@ test("usage: qa needs a slug, and a script with lint errors is sent to lint firs
 const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
 
 test("a compiled series passes its six checks without a judge, and a re-cut episode fails the join", async () => {
-  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, LOCALES])) });
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, DEFAULT_LOCALES])) });
   writeTranslations(box, box.doc);
   const fake = fakeFfmpeg({ total: COMPILATION_FRAMES });
   const compiled = compileContext(box, fake);

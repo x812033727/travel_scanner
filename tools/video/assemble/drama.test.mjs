@@ -535,3 +535,82 @@ test("a shot cut from another shot's clip lays out as that clip from its start f
   assert.deepEqual(frameArgs("clips/a.mp4", 45, "out.png").slice(-6), ["-vf", "select=eq(n\\,45)", "-fps_mode", "passthrough", "-frames:v", "1", "out.png"].slice(-6));
   assert.deepEqual(lastFrameArgs("seg.mp4", 180, "last.png"), frameArgs("seg.mp4", 179, "last.png"));
 });
+
+test("the channel mark is laid on a segment first, under the dissolve and the strips, as the last input; without one nothing changes", async () => {
+  const { overlayInputs } = await import("./drama.mjs");
+  const mark = { id: "v1", sha256: "a".repeat(64), file: "watermark/v1/long.png", box: { x: 1622, y: 54, width: 208, height: 74 } };
+  const still = { keyframe: "keyframes/a.png", frames: 180, move: motionMove({ camera: "slow push in" }), outFile: "seg.mp4" };
+  const clip = { clip: "clips/a.mp4", frames: 180, fit: fitPlan(180, 180), outFile: "seg.mp4" };
+  assert.deepEqual(motionSegmentArgs({ ...still, mark: null }), motionSegmentArgs(still), "the arguments are what they were");
+  assert.deepEqual(clipSegmentArgs({ ...clip, mark: null }), clipSegmentArgs(clip), "the arguments are what they were");
+  assert.deepEqual(overlayInputs("s.ffconcat", "last.png"), overlayInputs("s.ffconcat", "last.png", null));
+  assert.deepEqual(Object.keys(overlayInputs("s.ffconcat", "last.png")), ["inputs", "subtitlesInput", "dissolveInput"]);
+
+  const inputsOf = (args) => args.filter((_, index) => args[index - 1] === "-i");
+  const graphOf = (args) => args[args.indexOf("-filter_complex") + 1];
+  const tail = (args) => graphOf(args).slice(graphOf(args).indexOf("[pic];"));
+  const laid = "[1:v]scale=208:74:out_color_matrix=bt709:out_range=tv,format=yuva420p[mark];[pic][mark]overlay=1622:54[marked];";
+  for (const [args, plain] of [[motionSegmentArgs({ ...still, mark }), motionSegmentArgs(still)], [clipSegmentArgs({ ...clip, mark }), clipSegmentArgs(clip)]]) {
+    assert.deepEqual(inputsOf(args), [...inputsOf(plain), "watermark/v1/long.png"]);
+    assert.equal(tail(args), `[pic];${laid}[marked]format=yuv420p,${tail(plain).split("[pic]format=yuv420p,")[1]}`, "the mark, then the colour tags");
+    // One input and two stages are all the mark adds: the picture chain and the encoder are the segment's own.
+    const stripped = args.filter((value, index) => !(value === "watermark/v1/long.png" || (value === "-i" && args[index + 1] === "watermark/v1/long.png")));
+    stripped[stripped.indexOf("-filter_complex") + 1] = graphOf(args).replace(laid, "").replace("[marked]format=yuv420p", "[pic]format=yuv420p");
+    assert.deepEqual(stripped, plain);
+  }
+
+  // With strips and a dissolve: the mark goes under both, so the previous scene's last frame,
+  // which carries it already, fades over a picture that carries it once.
+  const busy = { subtitlesList: "segments/a-subtitles.ffconcat", dissolveFrom: "build/last-prev.png" };
+  const full = motionSegmentArgs({ ...still, ...busy, mark });
+  const clipFull = clipSegmentArgs({ ...clip, ...busy, mark });
+  assert.deepEqual(inputsOf(full), ["keyframes/a.png", "segments/a-subtitles.ffconcat", "build/last-prev.png", "watermark/v1/long.png"]);
+  assert.equal(full[full.indexOf("watermark/v1/long.png") - 2], "build/last-prev.png", "the mark is one frame, not a looped input: overlay holds it");
+  assert.equal(tail(full), tail(clipFull), "the mark, dissolve, strips and colour chain is the clip segment's");
+  assert.match(graphOf(full), /\[pic\];\[3:v\]scale=208:74:out_color_matrix=bt709:out_range=tv,format=yuva420p\[mark\];\[pic\]\[mark\]overlay=1622:54\[marked\];\[2:v\]scale=1920:1080,format=yuva420p,fade=t=out[^;]*\[prev\];\[marked\]\[prev\]overlay=0:0:eof_action=pass\[dissolved\];\[1:v\]format=rgba\[strips\];\[dissolved\]\[strips\]overlay=0:main_h-overlay_h:eof_action=pass\[captioned\];\[captioned\]format=yuv420p/);
+  const stripsOnly = motionSegmentArgs({ ...still, subtitlesList: busy.subtitlesList, mark });
+  assert.match(graphOf(stripsOnly), /\[2:v\]scale=208:74[^;]*\[mark\];\[pic\]\[mark\]overlay=1622:54\[marked\];\[1:v\]format=rgba\[strips\];\[marked\]\[strips\]overlay/);
+
+  // The keys: a segment without the mark keeps its key; with it, the bytes and the place count.
+  const scene = { id: "a", frames: 180, keyframe: { file: "keyframes/a.png", sha256: "1".repeat(64) }, clip: { file: "clips/a.mp4", sha256: "1".repeat(64) }, transition: "cut" };
+  const keys = [(each) => motionSegmentKey(scene, still.move, null, null, each), (each) => clipSegmentKey(scene, clip.fit, null, null, each)];
+  for (const key of keys) {
+    assert.equal(key(null), key(undefined));
+    assert.notEqual(key(mark), key(null));
+    assert.equal(key({ ...mark, file: "elsewhere/long.png" }), key(mark), "where the checkout is does not count");
+    assert.notEqual(key({ ...mark, sha256: "b".repeat(64) }), key(mark));
+    assert.notEqual(key({ ...mark, id: "v2" }), key(mark));
+    assert.notEqual(key({ ...mark, box: { ...mark.box, x: 100 } }), key(mark));
+  }
+  assert.equal(keys[0](null), motionSegmentKey(scene, still.move));
+  assert.equal(keys[1](null), clipSegmentKey(scene, clip.fit));
+  // A cut from another clip's frame and a mark never collide in the key.
+  assert.notEqual(clipSegmentKey({ ...scene, from_frame: 45 }, clip.fit, null, null, mark), clipSegmentKey({ ...scene, from_frame: 45 }, clip.fit));
+});
+
+test("a moving card says whether its own frame carries the mark, as render recorded it", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { illustratedTransition } = await import("./drama.mjs");
+  const doc = illustratedFixture();
+  const timeline = estimateTimeline(doc);
+  const keyframes = { shots: Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "e".repeat(64) }])) };
+  const lay = (frames) => layoutDrama(doc, timeline, frames, null, keyframes, { transitionRule: illustratedTransition, cardMotion: true });
+  const plain = framesManifestFor(doc, timeline);
+  assert.ok(lay(plain).every((scene) => !("marked" in scene)), "frames drawn without the mark say nothing of it");
+  // Render marks a card with reveals in its own frame and leaves a card with one state to assemble.
+  const marked = { scenes: plain.scenes.map((scene) => (scene.kind === "stills" ? { ...scene, marked: scene.states.length > 1 } : scene)) };
+  assert.deepEqual(lay(marked).filter((scene) => scene.card).map((scene) => [scene.id, scene.marked]), [["hook", false], ["rule", false], ["wrap", false]]);
+  assert.ok(lay(marked).filter((scene) => !scene.card).every((scene) => !("marked" in scene)), "a shot is always given the mark, a card with reveals never");
+});
+
+test("the source-frame comparison leaves the mark's box out on both sides, and is what it was without one", async () => {
+  const { psnrArgs } = await import("./plan.mjs");
+  const plain = psnrArgs("seg.mp4", 0, "frame.png");
+  assert.deepEqual(psnrArgs("seg.mp4", 0, "frame.png", undefined), plain);
+  assert.deepEqual(psnrArgs("seg.mp4", 0, "frame.png", { mask: null }), plain);
+  assert.equal(plain[plain.indexOf("-lavfi") + 1], "[0:v]select=eq(n\\,0),format=rgb24[a];[1:v]scale=1920:1080,format=rgb24[b];[a][b]psnr");
+  const masked = psnrArgs("seg.mp4", 0, "frame.png", { mask: { x: 1622, y: 54, width: 208, height: 74 } });
+  const box = "drawbox=x=1622:y=54:w=208:h=74:color=black:t=fill";
+  assert.equal(masked[masked.indexOf("-lavfi") + 1], `[0:v]select=eq(n\\,0),${box},format=rgb24[a];[1:v]scale=1920:1080,format=yuv444p,${box},format=rgb24[b];[a][b]psnr`);
+  assert.deepEqual(masked.filter((_, index) => index !== masked.indexOf("-lavfi") + 1), plain.filter((_, index) => index !== plain.indexOf("-lavfi") + 1));
+});

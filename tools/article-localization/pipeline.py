@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import tomllib
 import xml.etree.ElementTree as ET
 from collections.abc import Iterable, Mapping
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -24,8 +25,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
-
-import tomllib
 
 ROOT = Path(__file__).resolve().parents[2]
 LOCALES = ("zh-TW", "zh-CN", "en", "ja", "ko")

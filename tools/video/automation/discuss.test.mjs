@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
-import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, lostReply, refusedReply } from "./discuss.mjs";
+import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, failingReply, lostReply, MAX_DOCUMENT_WAITS, refusedReply } from "./discuss.mjs";
 import { Automation } from "./flow.mjs";
 import { instructionsFor } from "./prompts.mjs";
 
@@ -90,6 +90,59 @@ test("an error of the planner's request on a document never ends the run: a lost
   await assert.rejects(answerDocument(automation, job("token")), /the token was refused/, "everyone's trouble still ends the run");
   failing(new AutomationError("no JSON", { code: OUTPUT_INVALID }));
   assert.match(await answerDocument(automation, job("unusable")), /the planner gave no usable answer on outline \(no JSON\)/);
+});
+
+test("a document line whose planner request keeps waiting is answered once after MAX_DOCUMENT_WAITS runs, so the threads behind it move on; one that gets through clears its count", async () => {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-16T10:00:00Z") };
+  const replies = [];
+  const api = { messageAnswer: async (id, body) => { replies.push({ id, ...body }); return {}; } };
+  const busy = () => Object.assign(new AutomationError("模型服務忙碌中", { status: 503, code: "video_ai_upstream_busy" }), { stage: "planner" });
+  const job = (id) => ({ message: { id, body_md: "第二幕為什麼這樣排？" }, subject: "outline", series: { slug: "held" }, doc: null, context: {} });
+  const waits = path.join(box.work, "_series", "held", "discussion-waits.json");
+  // One run of the worker: a fresh Automation, so only what is on disk carries over.
+  let asked = 0;
+  const run = (answer) => {
+    const automation = new Automation(ctx, api, {});
+    Object.assign(automation, { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }), stage: async () => { asked += 1; return answer(); } });
+    return (id) => answerDocument(automation, job(id));
+  };
+  const failing = () => { throw busy(); };
+
+  for (let round = 1; round < MAX_DOCUMENT_WAITS; round += 1) {
+    assert.match(await run(failing)("stuck"), /the line waits for the next run$/, `run ${round}`);
+  }
+  assert.deepEqual(replies, [], "nothing is told while the request may still pass");
+  assert.equal(JSON.parse(readFileSync(waits, "utf8")).stuck, MAX_DOCUMENT_WAITS - 1);
+  assert.match(await run(failing)("stuck"), new RegExp(`kept failing for ${MAX_DOCUMENT_WAITS} runs \\(video_ai_upstream_busy: 模型服務忙碌中\\); the owner is told and the threads behind it move on$`));
+  assert.deepEqual(replies, [{ id: "stuck", reply_md: failingReply(MAX_DOCUMENT_WAITS, "video_ai_upstream_busy: 模型服務忙碌中"), revised: null }]);
+  assert.equal(asked, MAX_DOCUMENT_WAITS, "asked once a run");
+  assert.ok(!existsSync(waits), "the count goes with the answer");
+
+  // A line that gets through before the limit starts again from nothing next time.
+  for (let round = 1; round < MAX_DOCUMENT_WAITS; round += 1) await run(failing)("flaky");
+  assert.match(await run(() => ({ reply: "因為第二幕要有代價。", revised: null }))("flaky"), /the planner answered the owner on outline$/);
+  assert.ok(!existsSync(waits), "a line that got through clears its count");
+  assert.match(await run(failing)("flaky"), /the line waits for the next run$/, "a later wait counts from one");
+});
+
+test("a document line the model service itself refused (502 video_ai_upstream_failed) is answered at once with the refusal, not asked every run", async () => {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-16T10:00:00Z") };
+  const replies = [];
+  const automation = new Automation(ctx, { messageAnswer: async (id, body) => { replies.push({ id, ...body }); return {}; } }, {});
+  let asked = 0;
+  Object.assign(automation, {
+    reference: () => ({}),
+    dramaPayload: () => ({ drama_settings: {} }),
+    stage: async () => {
+      asked += 1;
+      throw Object.assign(new AutomationError("prompt is too long for the model", { status: 502, code: "video_ai_upstream_failed" }), { stage: "planner" });
+    },
+  });
+  const job = { message: { id: "long", body_md: "整份設定集重寫成更長的版本" }, subject: "setting", series: { slug: "held" }, doc: null, context: {} };
+  assert.match(await answerDocument(automation, job), /^series held: the site refused the planner request on setting \(video_ai_upstream_failed: prompt is too long for the model\); the owner is told and the thread waits$/);
+  assert.deepEqual([replies, asked], [[{ id: "long", reply_md: refusedReply("video_ai_upstream_failed: prompt is too long for the model"), revised: null }], 1]);
 });
 
 const SITE_AWAY = () => new AutomationError("網站暫時無法使用", { status: 502, code: "upstream_unavailable" });

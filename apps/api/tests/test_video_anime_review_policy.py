@@ -344,7 +344,9 @@ async def test_native_submissions_wait_for_the_owner_even_when_global_shortcuts_
         episode_number=120,
         format="drama",
     )
-    session = MagicMock(scalar=AsyncMock(side_effect=[series, episode]), commit=AsyncMock())
+    session = MagicMock(
+        scalar=AsyncMock(side_effect=[series, episode, series.kind]), commit=AsyncMock(),
+    )
     monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
     monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[]))
     shortcuts = []

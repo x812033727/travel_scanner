@@ -22,15 +22,92 @@ CRYPTO_MARKERS: Mapping[str, str] = {
     "ko": "투자 조언이 아닙니다",
 }
 FORBIDDEN_CRYPTO = (
-    "漲跌幅",
-    "買進",
-    "賣出",
     "price target",
     "buy signal",
     "sell signal",
     "entry point",
     "exit point",
 )
+# A transaction verb alone describes what someone did (or was barred from doing).
+# Only an instruction to the reader belongs in the hard recommendation gate. The
+# editorial judge still reviews market-led reporting and claims about returns.
+_CRYPTO_TRADE_VERB = r"(?:買進|買入|賣出|买进|买入|卖出)"
+_CRYPTO_ZH_ADVICE = re.compile(
+    rf"(?:建議|建议|推薦|推荐|應該|应该|最好|請|请|逢低|逢高)"
+    rf"[^。！？.!?；;\n]{{0,12}}{_CRYPTO_TRADE_VERB}"
+)
+_CRYPTO_ZH_NEGATED_CUE = re.compile(
+    r"(?:不屬於|不属于|不是|並非|并非|沒有|没有|不|未|非|無|无)\s*$"
+)
+_CRYPTO_ZH_READER_ADVICE = re.compile(
+    rf"(?:你|您|讀者|读者|投資人|投资者)[^。！？.!?；;\n]{{0,12}}"
+    rf"(?:要|應該|应该|最好|請|请|不要)[^。！？.!?；;\n]{{0,8}}{_CRYPTO_TRADE_VERB}"
+)
+_CRYPTO_ZH_IMPERATIVE = re.compile(
+    rf"(?:^|[。！？；;]\s*)(?:(?:現在|现在)(?:\s*就)?|立即|馬上|马上|請|请)"
+    rf"\s*{_CRYPTO_TRADE_VERB}"
+)
+_CRYPTO_ZH_BARE_IMPERATIVE = re.compile(
+    rf"(?:^|[。！？；;]\s*){_CRYPTO_TRADE_VERB}"
+    r"[^。！？.!?；;，,\n]{1,20}[，,]\s*"
+    r"(?:等待|等候)[^。！？.!?；;\n]{0,12}(?:上漲|上涨|獲利|获利|反彈|反弹)"
+)
+_CRYPTO_ZH_STANDALONE_IMPERATIVE = re.compile(
+    rf"(?:^|[。！？；;]\s*){_CRYPTO_TRADE_VERB}\s*"
+    r"(?:[^的，,。！？.!?；;\n]{0,10}(?:幣|币)|股票|股份|持股|[a-z0-9]{2,12})"
+    r"[。！？.!?]"
+)
+_CRYPTO_EN_ADVICE = re.compile(
+    r"\b(?:you|readers?|investors?)\s+(?:should|must|need to|ought to)\s+"
+    r"(?:not\s+)?(?:buy|sell)\b|^(?:buy|sell)(?:\s+\w+){0,4}\s+now\b|"
+    r"^(?:buy|sell)\s+(?:this|these|your)\b|"
+    r"^(?:buy|sell)(?:\s+\w+){1,4}\s+before\b|"
+    r"\b(?:recommend|advise|suggest)\s+(?:buying|selling|to buy|to sell)\b"
+)
+_CRYPTO_EN_NEGATED_CUE = re.compile(r"\b(?:not|never|no|without|doesn't|don't)\s*$")
+_CRYPTO_EN_NEGATED_SIGNAL = re.compile(r"\b(?:not|no|without)\s+(?:an?\s+)?$")
+_CRYPTO_EN_STANDALONE_IMPERATIVE = re.compile(
+    r"(?:^|[.!?]\s+)(?:buy|sell)\s+"
+    r"(?!(?:orders?|signals?|sides?|walls?|pressure|volume|interest)\b)"
+    r"(?:[a-z0-9-]+\s+){0,3}[a-z0-9-]+[.!?](?:\s|$)"
+)
+_CRYPTO_JA_ADVICE = re.compile(
+    r"(?:今すぐ(?:買う|売る|購入|売却)|(?:買う|売る|購入|売却)す?べき|"
+    r"(?:買う|売る|購入|売却)ことを(?:勧め|推奨))"
+)
+_CRYPTO_KO_ADVICE = re.compile(
+    r"(?:지금\s*(?:매수|매도)하세요|(?:매수|매도)해야\s*합니다|"
+    r"(?:매수|매도)를?\s*(?:권장|추천)합니다)"
+)
+
+
+def _crypto_recommendation(document: GuideDocument) -> bool:
+    """Find direct trading advice in prose without treating reported trades as advice."""
+    for _, original in _news_prose(document):
+        prose = original.casefold()
+        for term in FORBIDDEN_CRYPTO:
+            for match in re.finditer(re.escape(term), prose):
+                if not _CRYPTO_EN_NEGATED_SIGNAL.search(
+                    prose[max(0, match.start() - 16):match.start()]
+                ):
+                    return True
+        if any(pattern.search(prose) for pattern in (
+            _CRYPTO_ZH_READER_ADVICE, _CRYPTO_ZH_IMPERATIVE, _CRYPTO_ZH_BARE_IMPERATIVE,
+            _CRYPTO_ZH_STANDALONE_IMPERATIVE,
+        )):
+            return True
+        if _CRYPTO_EN_STANDALONE_IMPERATIVE.search(prose):
+            return True
+        if any(pattern.search(prose) for pattern in (_CRYPTO_JA_ADVICE, _CRYPTO_KO_ADVICE)):
+            return True
+        for match in _CRYPTO_ZH_ADVICE.finditer(prose):
+            if _CRYPTO_ZH_NEGATED_CUE.search(prose[max(0, match.start() - 8):match.start()]):
+                continue
+            return True
+        for match in _CRYPTO_EN_ADVICE.finditer(prose):
+            if not _CRYPTO_EN_NEGATED_CUE.search(prose[max(0, match.start() - 16):match.start()]):
+                return True
+    return False
 FORBIDDEN_TECH = (
     "值得買",
     "該不該買",
@@ -576,7 +653,7 @@ def hard_policy_problems(
         marker = CRYPTO_MARKERS[locale].casefold()
         if marker not in text and not has_crypto_disclaimer:
             problems.append(f"crypto_disclaimer: missing {CRYPTO_MARKERS[locale]}")
-        if any(term.casefold() in text for term in FORBIDDEN_CRYPTO):
+        if _crypto_recommendation(document):
             problems.append("crypto_recommendation: price or trading language is not allowed")
         if not has_crypto_disclaimer:
             problems.append("crypto_disclaimer_block: disclaimer must be a callout")

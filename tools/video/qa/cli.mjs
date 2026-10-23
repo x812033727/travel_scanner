@@ -21,9 +21,10 @@ import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS
 import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
-import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { DEFAULT_LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
+import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
+import { isStory } from "../core/story.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -31,7 +32,7 @@ import { THUMBNAIL_FILE } from "../render/cli.mjs";
 import { assembleItem, captionsItem, COMPILATION_ITEM_IDS, compilationCaptionsItem, disclosureDecision, disclosureItem, item, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
 import { factsChecks, VERIFY_FILE } from "./facts.mjs";
 import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.mjs";
-import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
+import { paceDetail, paceProblems, slideStates, terminalHoldDetail, terminalHoldProblems } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
@@ -194,7 +195,7 @@ async function compilationQa(ctx, { project, lint, workdir, workBase }) {
     command: "compile",
     stale: `other cuts or cards${!brandingMatches ? ", or another branding selection" : ""}${uncleared.length ? ` (episodes not cleared for upload: ${uncleared.join(", ")})` : ""}`,
   }));
-  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
+  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: DEFAULT_LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
@@ -256,6 +257,10 @@ export async function run(command, args, ctx) {
   // at the narration, zh-TW and the chosen locales; a dub track given up on only warns.
   const languages = readLanguages(workdir);
   const captionLocales = captionLocalesOf(languages, narrationLocale(doc));
+  // Chosen locales with no translation yet are made by the languages step after this final gate:
+  // the captions item only warns about them. The narration's own and zh-TW are always required.
+  const required = alwaysLocales(narrationLocale(doc));
+  const untranslated = captionLocales.filter((locale) => !required.includes(locale) && !project.translations[locale]);
   const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
   const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
   if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run assemble again");
@@ -276,6 +281,9 @@ export async function run(command, args, ctx) {
   } else {
     try {
       const states = slideStates(doc, timeline);
+      // A terminal typed at a human pace must finish before its narration does, on the cut as measured.
+      const holds = terminalHoldProblems(doc, timeline);
+      const withHolds = (passed, detail) => item("pace", passed && holds.length === 0, holds.length ? `${detail}; ${terminalHoldDetail(holds)}` : detail);
       if (pictures) {
         // Illustrated slides (docs/videos/ILLUSTRATED.md) are measured on the cadence: a picture
         // held past the limit or too little of the runtime illustrated fails; a slow average only shows.
@@ -284,16 +292,18 @@ export async function run(command, args, ctx) {
         const summary = cadenceSummary(states);
         const share = Math.round(illustrationShare(doc, timeline) * 100);
         const figures = `${summary.count} pictures, the longest ${summary.longest} s, a new one every ${summary.average} s on average, ${share}% of the runtime illustrated (limits: ${MAX_PICTURE_SECONDS} s, ${Math.round(MIN_ILLUSTRATION_SHARE * 100)}%)`;
-        items.push(item("pace", failing.length === 0, failing.length ? `${figures}; ${failing.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}` : figures, cadence.filter((problem) => problem.kind === "average").map((problem) => problem.message)));
+        const paced = withHolds(failing.length === 0, failing.length ? `${figures}; ${failing.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}` : figures);
+        const averages = cadence.filter((problem) => problem.kind === "average").map((problem) => problem.message);
+        items.push(averages.length ? { ...paced, warnings: averages } : paced);
       } else {
         const problems = paceProblems(states);
-        items.push(item("pace", problems.length === 0, paceDetail(states, problems)));
+        items.push(withHolds(problems.length === 0, paceDetail(states, problems)));
       }
     } catch (error) {
       items.push(item("pace", false, error.message));
     }
   }
-  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
+  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs, untranslated }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
@@ -314,7 +324,11 @@ export async function run(command, args, ctx) {
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
-  const report = { ...qaReport(items, finalSha256), ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
+  // The site's brand-story dub decision reads this only from a passing final QA attached to
+  // the same final.mp4 hash. The assemble item binds subtitlesHash(doc) to checks.json, and the
+  // captions item checks the current zh-TW CC; old reviews have no such evidence and stay locked.
+  const storySubtitles = drama && isStory(project.series) ? { subtitles_burned_in: burnIn(doc) } : {};
+  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
   // A lost judgement is the owner's, whatever the other items say: exit 3 keeps review-push from
   // posting the cut, and the code on the last line tells it from a token the owner has to replace.

@@ -18,7 +18,7 @@ import { parseArgs } from "node:util";
 import { ROOT } from "../core/paths.mjs";
 import { loadProject } from "../core/state.mjs";
 import { isScreencast } from "../screencast/steps.mjs";
-import { openRenderer } from "./browser.mjs";
+import { maxTransitionFrames, openRenderer } from "./browser.mjs";
 import { renderPlan, stillFile, themeHash, transitionFile } from "./plan.mjs";
 
 const md5 = (buffer) => createHash("md5").update(buffer).digest("hex");
@@ -33,7 +33,7 @@ export async function drawOnce(states, { channel, root = ROOT, out = null } = {}
   if (out) mkdirSync(out, { recursive: true });
   try {
     for (const state of states) {
-      const shot = await renderer.capture(state.key, state.html, { transition: true });
+      const shot = await renderer.capture(state.key, state.html, { transition: true, maxFrames: maxTransitionFrames(state.template) });
       drawn.set(state.key, { still: md5(shot.still), frames: shot.frames.map(md5) });
       if (!out) continue;
       writeFileSync(path.join(out, path.basename(stillFile(state.key))), shot.still);
@@ -80,7 +80,8 @@ async function main() {
   const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ROOT);
   const only = values.scenes ? new Set(values.scenes.split(",")) : null;
   const picked = plan.scenes.filter((scene) => !only || only.has(scene.id));
-  const states = [...new Map(picked.flatMap((scene) => scene.states).map((state) => [state.key, state])).values()];
+  // Each state remembers its scene's template: a terminal's entrance may run longer (maxTransitionFrames).
+  const states = [...new Map(picked.flatMap((scene) => scene.states.map((state) => ({ ...state, template: scene.template }))).map((state) => [state.key, state])).values()];
   const channel = values.channel ?? process.env.VIDEO_BROWSER_CHANNEL;
   const drawn = [];
   for (let run = 0; run < runs; run++) {

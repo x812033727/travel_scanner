@@ -39,9 +39,10 @@ import { parseArgs } from "node:util";
 
 import { pinyin } from "pinyin-pro";
 
-import { emptyLexicon, isKnownTerm } from "../core/lexicon.mjs";
+import { isKnownTerm } from "../core/lexicon.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { DUB_TARGET_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { speechLexicon } from "../dubs/plan.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
@@ -63,13 +64,14 @@ export const DEFAULT_THRESHOLD = 0.5;
 // itself is down, and the run stops instead of spending minutes of retries on every line left.
 export const GIVE_UP_AFTER = 3;
 const TRANSCRIBE_RATE = 16_000;
-// The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md).
-export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+// The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md),
+// es, pt, id, vi and th among them since 2026-10-20 (core/schema.mjs DUB_TARGET_LOCALES).
+export const DUB_LOCALES = DUB_TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const CHINESE = new Set([NARRATION_LOCALE]);
 
 /** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
 export function parseDubLocale(value, narration = NARRATION_LOCALE) {
-  const dubs = LOCALES.filter((locale) => locale !== narration);
+  const dubs = DUB_TARGET_LOCALES.filter((locale) => locale !== narration);
   if (!dubs.includes(value)) {
     throw new UsageError(`--locale must be one of ${dubs.join(", ")}: a dubbed track; the narration is checked without --locale`);
   }
@@ -91,13 +93,31 @@ export function checkFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCA
   return { cache: path.join("review", `check${suffix}.json`), flags: path.join("review", `check-flags${suffix}.json`) };
 }
 
+// Vietnamese tone marks as combining characters (NFD): grave, acute, tilde, hook above, dot below.
+// The vowel marks (circumflex, breve, horn) are letters of their own and stay where they are.
+const VI_TONE = /[\u0300\u0301\u0303\u0309\u0323]/gu;
+
+/**
+ * A Vietnamese text with each syllable's tone mark moved to the syllable's end: the old and the
+ * new placement rules put it on different vowels (hoà and hòa, thuỷ and thủy), and a transcript
+ * may write either, but the tone itself still has to match (ma, má and mà stay three words).
+ */
+export function foldVietnameseTones(text) {
+  return String(text)
+    .normalize("NFD")
+    .replace(/[\p{L}\p{M}]+/gu, (syllable) => syllable.replace(VI_TONE, "") + (syllable.match(VI_TONE) ?? []).join(""))
+    .normalize("NFC");
+}
+
 /**
  * The text with only its words left: NFKC, lower case, no punctuation, symbols or spaces. That
  * is what every locale's transcript is compared on: case and punctuation in English, full-width
- * forms and spacing in Japanese and Korean, punctuation in Chinese.
+ * forms and spacing in Japanese, Korean and Thai, punctuation in Chinese, and in Vietnamese also
+ * where a syllable's tone mark sits (foldVietnameseTones).
  */
-export function comparable(text) {
-  return String(text).normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
+export function comparable(text, locale = null) {
+  const folded = locale === "vi" ? foldVietnameseTones(text) : String(text);
+  return folded.normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
 }
 
 /** How a line was meant to sound: the dictionary's spoken forms in place of its terms. */
@@ -116,10 +136,13 @@ export function lexiconFor(lexicon, locale = NARRATION_LOCALE) {
 }
 
 // Interjections the voice adds on its own, in Traditional and Simplified characters. 耶 and 餒
-// count only when added at the end of a line (好耶, 氣餒 are words); 吧 is left out, since the
+// count only when added at a clause's end (好耶, 氣餒 are words); 吧 is left out, since the
 // script uses it as a particle too.
 const FILLERS = /[啊喔哦欸誒诶嗯呃齁]/gu;
 const CLOSING_PARTICLES = /[耶餒馁]+$/u;
+// Check boundaries before comparable removes punctuation. Remove one added particle per
+// clause, preserving lexical 氣餒/气馁 and 好耶, but allowing an extra 氣餒耶 or 好耶餒.
+const CLAUSE_CLOSING_PARTICLES = /(?<=[\p{L}\p{N}])(?:(?<!好)耶|(?<![氣气])[餒馁])(?=\s*(?:\p{P}|$))/gu;
 // Latin-script words, as the transcriber's hint list takes them: one word each.
 const LATIN_WORD = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*/g;
 // Mirrors TranscribeIn.terms' max_length in apps/api/app/video_speech/schemas.py.
@@ -163,17 +186,40 @@ export function reading(text) {
  */
 export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
-  const said = comparable(heard);
-  if (forms.some((form) => comparable(form) === said)) return "exact";
+  const said = comparable(heard, locale);
+  if (forms.some((form) => comparable(form, locale) === said)) return "exact";
   // Same-sound characters and filler particles are Mandarin's; in another language, whatever
   // differs beyond spelling is Jev's to judge.
   if (!CHINESE.has(locale)) return null;
   const bare = (text) => comparable(text).replace(FILLERS, "");
   // A closing particle comes off what was heard only, so a script ending in 氣餒 still needs it.
-  const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, "")];
+  const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, ""), bare(String(heard).replace(CLAUSE_CLOSING_PARTICLES, ""))];
   if (forms.some((form) => saidBare.includes(bare(form)))) return "filler";
   const saidReadings = saidBare.map(reading);
   if (forms.some((form) => saidReadings.includes(reading(bare(form))))) return "sound";
+  return null;
+}
+
+// Words the voice has read aloud before a line, a stray token rather than the script: on
+// 2026-10-15 the English dubs of H05 and H06 opened lines with "thought", glued to the sentence
+// ("thoughtIt proves ...") or on a line of its own. Jev passed one of them; a viewer hears it.
+export const LEAKED_WORDS = ["thought"];
+
+/**
+ * The leaked word a transcript opens with, as heard, or null: a word of LEAKED_WORDS at the very
+ * start, followed by nothing, a space or newline, punctuation or a capital letter (glued to the
+ * sentence), when the line itself does not start with that word. "Thoughtful" is no leak.
+ */
+export function leakedWord(heard, line) {
+  const said = String(heard ?? "").trimStart();
+  // The line's first word, past any opening quote or bracket.
+  const first = (spokenText(line).match(/[\p{L}\p{N}']+/u)?.[0] ?? "").toLowerCase();
+  for (const word of LEAKED_WORDS) {
+    if (first === word || said.slice(0, word.length).toLowerCase() !== word) continue;
+    // Case-sensitive on purpose: with the i flag \p{Lu} would take "thoughtful"'s f as well.
+    const next = said.slice(word.length, word.length + 1);
+    if (next === "" || /^[\s\p{Lu}]$/u.test(next) || /^[^\p{L}\p{N}']$/u.test(next)) return said.slice(0, word.length);
+  }
   return null;
 }
 
@@ -250,7 +296,7 @@ export async function checkAudio(args, ctx, options) {
   }
   const { doc } = project;
   // Use the unfiltered shelf dictionary, including for --file and Chinese dubs of English video.
-  const lexicon = lexiconFor(readJson(path.join(path.dirname(project.dir), "lexicon.json"), emptyLexicon()), locale);
+  const lexicon = lexiconFor(project.shelfLexicon, locale);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const track = trackFiles(locale, narration);
   const timeline = readJson(path.join(workdir, track.timeline), null);
@@ -259,6 +305,7 @@ export async function checkAudio(args, ctx, options) {
   }
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "check-audio", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const lines = dub ? dubLines(timeline, project.translations[locale], locale, doc.slug) : narrationLines(doc);
   // What makes the clips again: the flags file goes to it as `--redo`.
   const remake = dub ? `dub --slug ${doc.slug} --locale ${locale}` : `tts --slug ${doc.slug}`;
@@ -363,6 +410,7 @@ export async function checkAudio(args, ctx, options) {
   // The lines Jev still doubts go to the second transcriber, once per clip (the entry is the clip's).
   const doubts = () => Object.entries(results).filter(([, entry]) => !entry.match && entry.noul < threshold);
   const byLine = new Map(lines.map(({ line }) => [line.id, line]));
+  const order = new Map(lines.map(({ line }, index) => [line.id, index]));
   let secondFailed = null;
   if (second) {
     const name = secondOpinionName(second);
@@ -395,11 +443,23 @@ export async function checkAudio(args, ctx, options) {
   const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
   const alike = entries.filter(([, entry]) => entry.match && entry.match_kind !== "exact").length;
   const doubted = doubts();
-  const cleared = doubted.filter(([, entry]) => clearedBySecond(entry));
-  const flagged = doubted.filter(([, entry]) => !clearedBySecond(entry));
-  const judgedFine = entries.length - exact - alike - doubted.length;
+  // A leaked word is flagged whatever Jev or a second transcript says: the clip says it.
+  const leaks = new Map(entries.flatMap(([id, entry]) => {
+    const word = leakedWord(entry.heard, byLine.get(id));
+    return word ? [[id, word]] : [];
+  }));
+  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry) && !leaks.has(id));
+  const doubtedIds = new Set(doubted.map(([id]) => id));
+  const leakedOnly = entries.filter(([id]) => leaks.has(id) && !doubtedIds.has(id));
+  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry) || leaks.has(id)), ...leakedOnly]
+    .sort(([a], [b]) => order.get(a) - order.get(b));
+  const judgedFine = entries.length - exact - alike - doubted.length - leakedOnly.length;
   const flagsFile = path.join(workdir, files.flags);
-  const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
+  const jevNote = (entry) => (typeof entry.noul === "number" ? `Jev ${entry.noul.toFixed(2)}` : "Jev not asked");
+  const noteOf = (id, entry) => (leaks.has(id)
+    ? `leaked word 「${leaks.get(id)}」 before the line (${jevNote(entry)}): heard 「${entry.heard}」`
+    : `${jevNote(entry)}: heard 「${entry.heard}」`);
+  const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, noteOf(id, entry)]));
   // A dub's flags name their track, and the translation the dub was read from.
   const provenance = dub ? { locale, translation_hash: timeline.translation_hash } : {};
   atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, ...provenance, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
@@ -416,6 +476,7 @@ export async function checkAudio(args, ctx, options) {
       judged: judgedFine + doubted.length,
       ...(cleared.length ? { cleared: cleared.length } : {}),
       flagged: flagged.length,
+      ...(leaks.size ? { leaked: leaks.size } : {}),
       unchecked: missing,
       transcribed,
       jev_calls: jevCalls,
@@ -424,8 +485,9 @@ export async function checkAudio(args, ctx, options) {
   );
 
   const clearedText = cleared.length ? `, ${cleared.length} cleared by a second transcript` : "";
+  const leakText = leaks.size ? `, ${leaks.size} of them for a leaked word` : "";
   ctx.stdout.write(
-    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold})\n`,
+    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
@@ -439,7 +501,8 @@ export async function checkAudio(args, ctx, options) {
   if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
   for (const [id, entry] of flagged) {
     const other = entry.second ? `\n    ${entry.second.by}: ${entry.second.heard}` : "";
-    ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
+    const why = leaks.has(id) ? `leaked word 「${leaks.get(id)}」, ${jevNote(entry)}` : jevNote(entry);
+    ctx.stdout.write(`  ${id}  ${why}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
   }
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the ${dub ? "translation" : "line"}, then node tools/video/cli.mjs ${remake} --redo ${flagsFile}\n`);

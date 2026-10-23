@@ -1,0 +1,43 @@
+{
+  "slug": "zero-root-yaozu",
+  "title": "長燈村：零靈根的我被一村妖祖養大",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 10,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 600,
+  "episode_seconds": {
+    "min": 50,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "closed_ending": true,
+  "aspect": {
+    "decided": "16:9",
+    "decided_at": "2026-10-15",
+    "why": "站主選橫式。每集 50–180 秒照常上架成一般影片，每篇章 10 集另剪一支合輯長片；要進 Shorts 時從橫式畫面中央裁 9:16 的預告片段，所以構圖要把主角與奇觀放在畫面中央三分之一。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom，需要鉤子類型、主角走向與每集兩個爽點的留存規則）；每季的 season-NN.json 就是六份篇章細綱的來源。target_minutes 只能填整數分鐘，填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）：網頁點數路線照《偶的江湖》第 1 集的作法（docs/videos/series-plans/ou-de-jianghu/production），或走管線裡的 MiniMax 影片 adapter。",
+    "look": "真人電影感，依 setting.json visual_bible；每個主要角色先做一組角色參考圖（正臉、側臉、全身、本相／真身），所有首格都帶參考圖，避免 600 集換臉。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md：前 3 秒就要出現鉤子畫面與第一句台詞，前 10 秒 4–8 個鏡頭，鏡長中位數約 2 秒，台詞一句 1–10 字，幾乎不用旁白，燒錄繁中字幕，每 6–8 鏡回一次全景。",
+    "reuse": "一支 6 秒海螺片段用 data.source 切成 2–3 個鏡頭；固定場景（長燈村飯桌、村口、捉妖司破院、玄穹宗大殿）每季先拍一組可重用的空景與全景。",
+    "voice": "國語；每個主要角色固定一個聲音，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "《偶的江湖》第 1 集海螺帳本的實際單價：影片約 12 點／秒，2K 首格約 23 點／張。",
+    "per_episode": "平均 100 秒一集、約 45 個鏡頭；約 28 支 6 秒片段（約 170 秒）＋三成重拍、約 30 張首格 → 約 2,600 點影片＋700 點首格 ≈ 3,300 點。",
+    "per_season": "60 集 ≈ 200,000 點；十季 ≈ 2,000,000 點。",
+    "levers": "文戲改用一張首格＋緩推（stills）可省四到六成；重用空景；先拍第一季第一篇章 10 集（≈ 33,000 點）量完留存再決定後面的量。",
+    "owner_decision": false,
+    "decided": "2026-10-15 站主同意先拍第一季第一篇章 10 集（第 1–10 集，約 33,000 點），看留存再決定。"
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；每集的 spectacle 與 glamour_shot 都要照它寫。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包（設定集、總綱、逐集細綱），還不是逐集劇本；比例、預算、作品名已定，聲音等站主從試聽裡挑。",
+  "voice_decision": "2026-10-15 站主說「給我選」：九個主要角色各三個 Gemini 聲音、各錄兩次的試聽頁已交給站主，等站主挑。",
+  "title_decision": "2026-10-15 站主：作品名先維持《長燈村：零靈根的我被一村妖祖養大》。"
+}

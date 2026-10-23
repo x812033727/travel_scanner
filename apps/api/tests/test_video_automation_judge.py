@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from decimal import Decimal
 from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock
@@ -14,7 +15,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 
-from app.ai.jev import ChoiceAnswer, JevClient, JevError, NoulAnswer
+from app.ai.jev import ChoiceAnswer, JevClient, JevError, JevRequestInvalid, NoulAnswer
 from app.config import Settings
 from app.db import get_session
 from app.models import VideoToolToken
@@ -35,6 +36,7 @@ from app.video_automation.judge import (
     read_outline_answers,
     read_policy_answers,
 )
+from app.video_budget import service as pilot_budget
 from app.video_speech import admin_api as speech_api
 from app.video_speech.checking import CheckUnavailable
 
@@ -279,6 +281,216 @@ async def test_the_outline_route_asks_jev_once_and_returns_the_pick(
 
 
 @pytest.mark.asyncio
+async def test_pilot_jev_reserves_before_dispatch_settles_usage_and_rejects_exact_replay(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payload = judging.JudgeOutlineIn.model_validate(
+        {**OUTLINE_BODY, "slug": "story-rolling-suitcase"}
+    )
+    session = AsyncMock()
+    reserve = AsyncMock(
+        side_effect=[
+            SimpleNamespace(dispatch_allowed=True),
+            SimpleNamespace(dispatch_allowed=False),
+        ]
+    )
+    settle = AsyncMock()
+    uncertain = AsyncMock()
+    release = AsyncMock()
+    monkeypatch.setattr(pilot_budget, "reserve", reserve)
+    monkeypatch.setattr(pilot_budget, "settle", settle)
+    monkeypatch.setattr(pilot_budget, "mark_uncertain", uncertain)
+    monkeypatch.setattr(pilot_budget, "release", release)
+    sent = 0
+
+    async def invoke(on_usage: Any) -> OutlinePick:
+        nonlocal sent
+        sent += 1
+        assert on_usage is not None
+        await on_usage({"input_tokens": 392, "output_tokens": 65})
+        return read_outline_answers(_answers(), OPTIONS)
+
+    runtime = Settings(jev_api_key="test-key")
+    first = await admin_api._pilot_jev_call(
+        session,
+        runtime,
+        slug=payload.slug,
+        kind="outline",
+        payload=payload,
+        invoke=invoke,
+    )
+    assert first.choice == "B"
+    assert reserve.await_args_list[0].kwargs["max_usd"] == Decimal("0.002688")
+    assert settle.await_args.kwargs["actual_usd"] == Decimal("0.000016464")
+    assert reserve.await_args_list[0].kwargs["operation_id"] == settle.await_args.kwargs[
+        "operation_id"
+    ]
+    with pytest.raises(AppError) as replay:
+        await admin_api._pilot_jev_call(
+            session,
+            runtime,
+            slug=payload.slug,
+            kind="outline",
+            payload=payload,
+            invoke=invoke,
+        )
+    assert replay.value.code == "video_budget_operation_reused"
+    assert reserve.await_args_list[0].kwargs["operation_id"] == reserve.await_args_list[1].kwargs[
+        "operation_id"
+    ]
+    assert sent == 1
+    uncertain.assert_not_awaited()
+    release.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_pilot_jev_keeps_unknown_usage_but_releases_a_proven_prewire_refusal(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payload = judging.JudgeOutlineIn.model_validate(
+        {**OUTLINE_BODY, "slug": "story-conveyor-belt-sushi"}
+    )
+    reserve = AsyncMock(return_value=SimpleNamespace(dispatch_allowed=True))
+    settle = AsyncMock()
+    uncertain = AsyncMock()
+    release = AsyncMock()
+    monkeypatch.setattr(pilot_budget, "reserve", reserve)
+    monkeypatch.setattr(pilot_budget, "settle", settle)
+    monkeypatch.setattr(pilot_budget, "mark_uncertain", uncertain)
+    monkeypatch.setattr(pilot_budget, "release", release)
+
+    async def missing_usage(on_usage: Any) -> OutlinePick:
+        await on_usage({})
+        raise AssertionError("usage callback must refuse before this line")
+
+    runtime = Settings(jev_api_key="test-key")
+    with pytest.raises(AppError) as unknown:
+        await admin_api._pilot_jev_call(
+            AsyncMock(),
+            runtime,
+            slug=payload.slug,
+            kind="outline",
+            payload=payload,
+            invoke=missing_usage,
+        )
+    assert unknown.value.code == "video_budget_usage_unknown"
+    uncertain.assert_awaited_once()
+    settle.assert_not_awaited()
+    release.assert_not_awaited()
+
+    async def refused(_on_usage: Any) -> OutlinePick:
+        raise CheckUnavailable(429, "jev_budget_exhausted", "今天用完了")
+
+    with pytest.raises(CheckUnavailable):
+        await admin_api._pilot_jev_call(
+            AsyncMock(),
+            runtime,
+            slug=payload.slug,
+            kind="outline",
+            payload=payload,
+            invoke=refused,
+        )
+    release.assert_awaited_once()
+    assert uncertain.await_count == 1
+
+
+@pytest.mark.asyncio
+async def test_pilot_jev_vendor_validation_response_keeps_reserved_cost_uncertain(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payload = judging.JudgeOutlineIn.model_validate(
+        {**OUTLINE_BODY, "slug": "story-conveyor-belt-sushi-v2"}
+    )
+    monkeypatch.setattr(
+        pilot_budget, "reserve", AsyncMock(return_value=SimpleNamespace(dispatch_allowed=True))
+    )
+    uncertain = AsyncMock()
+    release = AsyncMock()
+    monkeypatch.setattr(pilot_budget, "mark_uncertain", uncertain)
+    monkeypatch.setattr(pilot_budget, "release", release)
+    monkeypatch.setattr(pilot_budget, "settle", AsyncMock())
+
+    async def vendor_refused(_on_usage: Any) -> OutlinePick:
+        raise JevRequestInvalid("Jev refused the request (422) after dispatch")
+
+    with pytest.raises(JevRequestInvalid):
+        await admin_api._pilot_jev_call(
+            AsyncMock(),
+            Settings(jev_api_key="test-key"),
+            slug=payload.slug,
+            kind="outline",
+            payload=payload,
+            invoke=vendor_refused,
+        )
+    uncertain.assert_awaited_once()
+    release.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_pilot_jev_disables_vendor_refusal_retries(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    selected: list[bool] = []
+
+    class FakeJev:
+        async def ask(self, _state: Any, _questions: Any) -> tuple[dict[str, Any], dict[str, int]]:
+            return {}, {"input_tokens": 1}
+
+        async def close(self) -> None:
+            return None
+
+    def client_factory(_settings: Any, _client: Any, *, retry_refusals: bool) -> FakeJev:
+        selected.append(retry_refusals)
+        return FakeJev()
+
+    monkeypatch.setattr(judging, "jev_client", client_factory)
+    monkeypatch.setattr(judging, "consume_jev_call", AsyncMock(return_value=True))
+    on_usage = AsyncMock()
+    await judging._ask(Settings(), AsyncMock(), {}, {}, None, on_usage)
+    await judging._ask(Settings(), AsyncMock(), {}, {}, None)
+    assert selected == [False, True]
+    on_usage.assert_awaited_once_with({"input_tokens": 1})
+
+
+@pytest.mark.asyncio
+async def test_pilot_policy_route_uses_the_shared_budget_before_jev(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _settings(monkeypatch, "1. 先算帳")
+    monkeypatch.setattr(
+        admin_api,
+        "load_runtime_settings",
+        AsyncMock(return_value=Settings(jev_api_key="test-key")),
+    )
+    reserve = AsyncMock(return_value=SimpleNamespace(dispatch_allowed=True))
+    settle = AsyncMock()
+    monkeypatch.setattr(pilot_budget, "reserve", reserve)
+    monkeypatch.setattr(pilot_budget, "settle", settle)
+    monkeypatch.setattr(pilot_budget, "mark_uncertain", AsyncMock())
+
+    async def judged(*_args: Any, on_usage: Any, **_kwargs: Any) -> PolicyVerdict:
+        assert reserve.await_count == 1, "the dollar hold was committed before the model call"
+        await on_usage({"input_tokens": 1000})
+        return PolicyVerdict(
+            stance=0.9, demo=None, advice=0.1, sponsored=0.1, passed=True, note="ok",
+            questions="story", observation=0.8, disparage=0.1,
+        )
+
+    monkeypatch.setattr(admin_api, "judge_policy", judged)
+    app = _app()
+    _worker(app)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        verdict = await client.post(
+            "/api/v1/video/automation/judge/policy",
+            json={"slug": "story-rolling-suitcase", "script": "旁白全文", "viewpoint": "先查來源"},
+        )
+    assert verdict.status_code == 200, verdict.text
+    assert verdict.json()["passed"] is True
+    assert reserve.await_args.kwargs["category"] == "jev"
+    assert settle.await_args.kwargs["actual_usd"] == Decimal("0.000042")
+
+
+@pytest.mark.asyncio
 async def test_the_routes_refuse_without_a_stance_or_the_switch_and_map_jev_failures(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -333,7 +545,9 @@ def _route_jev(
         "private-jev-key", "https://private-jev.invalid", "test-model", 1, client=provider
     )
     consumed = AsyncMock(return_value=True)
-    monkeypatch.setattr(judging, "jev_client", lambda settings, client=None: jev)
+    monkeypatch.setattr(
+        judging, "jev_client", lambda settings, client=None, *, retry_refusals=True: jev
+    )
     monkeypatch.setattr(judging, "consume_jev_call", consumed)
     monkeypatch.setattr(judging, "policy_questions_for", AsyncMock(return_value="tutorial"))
     monkeypatch.setattr(JevClient, "_backoff", AsyncMock())
