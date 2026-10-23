@@ -75,8 +75,12 @@ separate controlled correction. Never ignore a charge because the local row says
 ## Everyday-object stories awaiting a ledger
 
 The current guard creates no new account or operation. C03–C06, C07, C10 and
-C15 are held at the API and local paid-client boundary. A provider bill alone
-does not activate paid work. Any other `story-everyday-` slug fails closed with
+C15 are held for attributed API requests and at the current local paid-client
+boundary. Legacy speech clients can omit attribution entirely; the server
+cannot infer a C-series slug from such a request. Keep old workers stopped and
+verify the current client on every C-series worker before a production rollout.
+A provider bill alone does not activate paid work. Any other
+`story-everyday-` slug fails closed with
 `video_budget_missing_account` until a reviewed migration opens its account:
 the local TTS, media and automation clients attribute every slug in the series.
 

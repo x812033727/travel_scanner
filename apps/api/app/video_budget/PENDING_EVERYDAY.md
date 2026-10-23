@@ -1,9 +1,19 @@
 # Everyday-story paid admission
 
 The owner approved a USD 25 **whole-film ceiling** for C03–C07, C10 and C15.
-This code does not activate a paid route for any of them. The API and current
-local TTS, media and automation clients return `video_budget_preproduction_hold`
-before dispatch. A new client paired with an older API is also held locally.
+This code does not activate a paid route for any of them. The API rejects
+attributed requests, and current local TTS, media and automation clients return
+`video_budget_preproduction_hold` before dispatch. A new client paired with an
+older API is also held locally.
+
+The speech API still accepts requests that omit both `video_slug` and
+`operation_id` for existing non-series workflows. An old TTS/ASR/Jev client
+that omits both fields cannot be identified as C-series by the server. Before
+deploying or treating this as a production stop, verify that every old C-series
+worker is stopped and cannot restart with its old client; confirm that the
+current client is installed on every permitted C-series worker. Do not use an
+unattributed request to test a held film. Binding paid requests to an
+authenticated project identity belongs in the later activation review.
 
 This guard creates no account and changes no migration. C03–C06 used paid
 providers before a per-film ledger existed; their unresolved historical

@@ -52,6 +52,10 @@ rollback path are unsafe to deploy as written.
       published and account-specific prices, retake allowance and all paid
       TTS/ASR/Jev/image/music/text routes are verified before lifting any
       admission hold.
+- [ ] Paid speech requests are bound to an authenticated project identity,
+      or every permitted C-series worker is proven to use a client that sends
+      attribution and every legacy worker is disabled. An omitted slug cannot
+      silently bypass the C-series budget guard.
 - [ ] The previous application image can safely serve the new database head
       after rollback. Real PostgreSQL and Compose upgrade/rollback tests and
       production readback pass before paid work resumes.

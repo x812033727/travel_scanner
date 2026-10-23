@@ -45,8 +45,9 @@ separate task, because the current 0137 API cannot roll back from 0138.
       unresolved; no new account or migration is created in this release.
 - [x] C03–C07/C10/C15 remain on a preproduction hold even if an account row is
       accidentally present.
-- [x] API and local TTS, media and automation routes fail closed for the
-      held pilots, while other everyday slugs require a reviewed account.
+- [x] Attributed API requests and current local TTS, media and automation
+      routes fail closed for the held pilots, while other everyday slugs
+      require a reviewed account.
 - [ ] Focused API and Node tests pass on the exact PR head. The Alembic head
       and original pilot account map remain unchanged. Deployment, billing
       reconciliation, migration and paid work remain separate gates.
@@ -61,9 +62,11 @@ separate task, because the current 0137 API cannot roll back from 0138.
 ## How to verify
 
 Run focused `apps/api` budget/API pytest, targeted Ruff/mypy, three Node client
-suites, `uv run alembic heads`, and `npm run check:tasks`. After any separately
-approved deployment, read back refusal for each of the seven slugs and prove
-the existing accounts/status remain unchanged.
+suites, `uv run alembic heads`, and `npm run check:tasks`. Before deployment,
+prove no old C-series worker with a client that omits speech attribution is
+running or able to restart. After any separately approved deployment, read back
+refusal for each of the seven attributed slugs and prove existing
+accounts/status remain unchanged.
 
 ## Notes
 
@@ -85,3 +88,10 @@ automation/media/TTS client tests. Targeted Ruff, budget mypy, task check and
 `git diff --check` passed. Alembic remains exactly
 `0137_video_manga_tier (head)` and `PILOT_LIMITS_USD` is unchanged. CI and
 deployed readback are later gates, not represented by these local results.
+
+Independent review found that the speech API still accepts requests with no
+`video_slug` or `operation_id` for existing workflows. A legacy C-series client
+can omit both, leaving the server unable to identify the film. This branch
+does not claim API-only protection against an old worker. Production rollout
+must first establish that all old C-series workers are stopped and cannot
+restart, or add authenticated project binding in a separate reviewed change.
