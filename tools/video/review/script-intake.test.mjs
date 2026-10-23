@@ -107,8 +107,23 @@ test("submission remains pending and rerun does not repeat a write", async () =>
 
 test("the existing C03 approved exact-hash narration is retained without a new card", async () => {
   const box = fixture();
+  const c03 = box.entries[0];
+  const chapterScenes = [["c03-p01-s01", "c03-p01-s02"], ["c03-p02-s01"],
+    ["c03-p03-s01"], ["c03-p04-s01"], ["c03-p05-s01"], ["c03-p20-s04"]];
+  let sceneNumber = 0;
+  const script = chapterScenes.map((ids, i) => `### 第 ${i + 1} 章\n\n${ids.map((id) => {
+    sceneNumber++;
+    return `#### ${sceneNumber}. ${id}\n旁白：第 ${sceneNumber} 句。\n`;
+  }).join("\n")}`).join("\n");
+  writeFileSync(path.join(box.root, c03.script_path), script);
+  c03.script_sha256 = sha(script);
+  c03.expected_lines = sceneNumber;
+  writeFileSync(box.manifestFile, JSON.stringify({ schema_version: 1,
+    series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
   const entry = loadIntake(box.manifestPath, { root: box.root, ids: ["C03"] }).entries[0];
   const calls = [];
+  let corruptLineId = false;
+  let corruptText = false;
   const request = async (method, route) => {
     calls.push([method, route]);
     if (route.includes("/context?episode=")) return {
@@ -119,11 +134,25 @@ test("the existing C03 approved exact-hash narration is retained without a new c
       episode_number: 3, format: "drama", shorts_line: null, dropped_at: null,
       reviews: [{ id: "legacy", gate: "script", subject: null, status: "approved",
         content_sha256: entry.script_sha256, summary: "Earlier approved C03 script",
-        payload: { hand_pushed: true, scenes: entry.scenes } }] };
+        payload: { hand_pushed: true, scenes: entry.scenes.map((scene, index) => ({
+          ...scene, chapter: index === 0 ? scene.chapter : null,
+          lines: [{ ...scene.lines[0], id: corruptLineId && index === 0 ? "c039999"
+            : scene.id.replace(/^c03-p(\d{2})-s(\d{2})$/, "c03$1$2"),
+          text: corruptText && index === 0 ? "已改動的旁白" : scene.lines[0].text }],
+        })) } }] };
   };
   const result = await runIntake({ ...box, ids: ["C03"], apply: true, request });
   assert.equal(result[0].action, "already-present");
   assert.deepEqual(calls.map(([method]) => method), ["GET", "GET"]);
+  corruptLineId = true;
+  await assert.rejects(runIntake({ ...box, ids: ["C03"], apply: true, request }),
+    /same-hash review payload differs/);
+  assert.deepEqual(calls.map(([method]) => method), ["GET", "GET", "GET", "GET"]);
+  corruptLineId = false;
+  corruptText = true;
+  await assert.rejects(runIntake({ ...box, ids: ["C03"], apply: true, request }),
+    /same-hash review payload differs/);
+  assert.deepEqual(calls.map(([method]) => method), ["GET", "GET", "GET", "GET", "GET", "GET"]);
 });
 
 test("strict parser rejects an unsupported or ambiguous row", () => {

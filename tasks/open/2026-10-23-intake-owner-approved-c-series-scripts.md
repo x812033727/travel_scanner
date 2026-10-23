@@ -27,18 +27,18 @@ SHA-256 values, identify the approved episode, and avoid activating production.
 
 ## Definition of done
 
-- [ ] All ten approved scripts appear on the correct `/admin/videos` episode cards with
+- [x] All ten approved scripts appear on the correct `/admin/videos` episode cards with
       exact SHA-256 and line count readback, while C01/C02 and plan-only episodes do not.
-- [ ] The series is paused, each episode planned, and no paid job is queued by intake.
-- [ ] A second invocation is idempotent and a different live review is refused.
+- [x] The series is paused, each episode planned, and no paid job is queued by intake.
+- [x] A second invocation is idempotent and a different live review is refused.
 
 ## Steps
 
 - [x] Bind ten script paths, hashes, counts, owner approval PRs and basis in
       `approved-scripts.json`.
 - [x] Dry-run the strict Markdown parser against all ten unchanged files.
-- [ ] Pass mock transport tests and independent code review.
-- [ ] Run production preflight, apply only after series readback, and verify all cards.
+- [x] Pass mock transport tests and independent code review.
+- [x] Run production preflight, apply only after series readback, and verify all cards.
 
 ## How to verify
 
@@ -51,3 +51,13 @@ the same tool with `--apply` only after the paused backend series has been read 
 The screenplay format covers C03/C04, table format C05/C06/C07/C08/C10/C11/C15,
 and chapter bullets C14. The manifest excludes C01/C02 despite their local previews,
 because a preview is not an exact owner script approval.
+
+2026-10-23 production readback: the exact series has 20 planned episodes and is
+paused, with zero new `video_drama_requests`. C03 already had an approved card at
+the manifest SHA; all 94 scene IDs and narration texts match. Its earlier card uses
+`c030101`-style narration IDs rather than the intake's scene IDs. Nine other approved
+scripts were submitted as pending manual cards. A fresh API readback verified all ten
+hashes, line counts, project identities, and series/episode states; the nine new
+cards also retain the complete exact source Markdown. The full ten-entry `--apply`
+then reported `already-present` for every entry, with no PUT or POST. A regression
+test covers both the earlier C03 ID mapping and a corrupted legacy ID rejection.

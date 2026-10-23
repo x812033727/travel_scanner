@@ -204,10 +204,16 @@ function checkProject(project, manifest, entry) {
     // narration ID/text match; submitting it again would supersede an approval.
     const legacyC03 = entry.id === "C03" && same.status === "approved" && same.payload?.hand_pushed === true
       && Array.isArray(same.payload.scenes) && same.payload.scenes.length === entry.scenes.length
-      && same.payload.scenes.every((scene, index) => scene?.id === entry.scenes[index].id
-        && Array.isArray(scene.lines) && scene.lines.length === 1
-        && scene.lines[0]?.id === entry.scenes[index].lines[0].id
-        && scene.lines[0]?.text === entry.scenes[index].lines[0].text);
+      && same.payload.scenes.every((scene, index) => {
+        const legacyId = /^c03-p(\d{2})-s(\d{2})$/.exec(scene?.id ?? "");
+        return scene?.id === entry.scenes[index].id
+          && Array.isArray(scene.lines) && scene.lines.length === 1
+          // C03's earlier card kept the original narration-row ID, while this
+          // intake assigns the scene ID to its single narration line.
+          && (scene.lines[0]?.id === entry.scenes[index].lines[0].id
+            || (legacyId && scene.lines[0]?.id === `c03${legacyId[1]}${legacyId[2]}`))
+          && scene.lines[0]?.text === entry.scenes[index].lines[0].text;
+      });
     insist(currentFormat || legacyC03, `${entry.id}: same-hash review payload differs from approved source`);
     return "already-present";
   }
