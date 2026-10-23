@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-blind-review-c16-bialetti-v7-fresh
 title: Blind review C16 Bialetti v7 fresh reader one
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c16-v7-fresh-reader-1
@@ -25,14 +25,14 @@ Draft PR #1704 has a new C16 Bialetti v7 narrator text. It needs a fresh reader'
 
 - [x] Lock 12 narrator-only story verdicts against the supplied 72-line input, with line IDs and listener effects for every HOLD, before reading repository context.
 - [x] Compare all projected spoken IDs, order, and text with PR #1704 head `f064752a557617d591cd1841996956eba2c07a52` and publish a separate receipt.
-- [ ] Open a draft PR stacked on the author's PR head and attach it to the review task.
+- [x] Open a draft PR stacked on the author's PR head and attach it to the review task.
 
 ## Steps
 
 - [x] Read only the narrator projection, verify its SHA-256, and save the dated lock outside the repository.
 - [x] Read repository instructions and relevant skills only after lock, then compare with the exact author Git blob.
 - [x] Copy the unchanged lock and independent receipt to the narrow review scope.
-- [ ] Run checks, commit, push, and open the stacked draft PR.
+- [x] Run checks, commit, push, and open the stacked draft PR.
 
 ## How to verify
 
@@ -41,3 +41,5 @@ Draft PR #1704 has a new C16 Bialetti v7 narrator text. It needs a fresh reader'
 ## Notes
 
 Independent verdict: 6 PASS, 6 HOLD. The projection has 72 unique spoken IDs and matches the author head's 72 unique IDs/texts exactly. The author script raw SHA-256 is `E8C7CE3F426CAB6AB6EA37756CC6A73BF34AF09E3C6D0CB088288D928982A918`. The PR description still cites 81 lines and old script SHA `726D...`; use the exact Git blob. This task makes no author-script changes or historical-source/visual verdict and gives no media, owner, merge, upload, or publication approval.
+
+Draft stacked PR: https://github.com/x812033727/travel_scanner/pull/1770. Base branch was `f064752a557617d591cd1841996956eba2c07a52` when opened. `npm run check:tasks` passed with existing warnings; `git diff --cached --check` passed. The PR was attached to the Codex task.
