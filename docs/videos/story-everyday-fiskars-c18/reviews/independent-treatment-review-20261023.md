@@ -2,7 +2,13 @@
 
 覆核日：2026-10-23（台北）。審查者：`codex-c18-independent-review`，未撰寫 C18 Treatment 或來源矩陣，也未修改作者兩檔。
 
-## 最新差異覆核：PASS
+## 站主採用後狀態差異覆核：PASS
+
+作者 [PR #1702](https://github.com/x812033727/travel_scanner/pull/1702) 最新 head `c82b348110728e25e3bd2adea8c22136a22fb538`。由該 head 的**實際 Git blob bytes** 重算：`treatment.md` SHA-256 `74E6239C274C73C243962253425A2438E73677072EF35FF60F53AE1EA6ED6FF8`；`source-matrix.md` SHA-256 `88F6C22CF1361B871E02DCD5DA896618B2F2EC9361B346E7B79D1F7536EB7623`。與前次已核 head `95285e787b65729292232572970340953ffce3ac` 比較，兩份作者檔的差異只有 Treatment 開頭／結尾的關卡狀態與審查連結、矩陣前言的審查連結，以及 M02 評級 `RECHECK`→`PASS`。M01–M12 的事實陳述、引據、年代、權屬、畫面邊界和 Treatment 六章正文均**未改**；作者另更新自己的任務狀態，未納入本收據的來源判定。
+
+**本次 metadata delta PASS；前次 M02 修訂後的 M01–M12／六章內容 PASS 可沿用到上述新 head。** 這只確認最新作者檔反映站主已採用企劃，未把企劃通過推成逐字稿、逐鏡、付費、匯入或發布核准。以下兩節分別保留前次事實修訂 PASS 與最初 HOLD 的精確版本歷史。
+
+## 前次 M02 事實差異覆核：PASS
 
 作者已在 [PR #1702](https://github.com/x812033727/travel_scanner/pull/1702) 新 head `95285e787b65729292232572970340953ffce3ac` 窄修本收據唯一 HOLD。從該 head 的**實際 Git blob bytes** 重算：`treatment.md` SHA-256 `A18B0A0FAE68F8689CA365F498325860FB0C657E59E2AEFA932FE1371AE743D9`；`source-matrix.md` SHA-256 `506268EF53EF65B77D8836480614EED9FA55B58BE7FDAADE11C6650552AC75F3`。PR 的兩檔 diff 僅改矩陣 M02 與 Treatment 第 2 章對應格，其他 M01、M03–M12 說法未變。
 
@@ -11,7 +17,7 @@
 | 矩陣 M02 | 改成「二戰後公司管理層推動公司結構改革，以適應大量生產」，並明示不能推剪刀產量或大量生產起始日。與 [2024 公司上市說明書 PDF 頁 44](https://fiskarsgroup.com/wp-content/uploads/2024/01/Fiskars-Oyj-Abp-Listing-Prospectus-for-Fiskars-Corporations-EUR-200-million-sustainability-linked-notes.pdf) 及 [公司歷史頁 1940s 段](https://fiskarsgroup.com/about-us/our-story/) 相符。**PASS**。 |
 | Treatment 第 2 章 | 改成「戰後為適應大量生產而推動的公司結構改革」，畫面／口播邊界又補不得報戰後剪刀產量或量產起始年。1649、1832、1960 年代的相鄰節點沒有新因果，六章仍維持原順序。**PASS**。 |
 
-**本版企劃來源結論：M01–M12 PASS，六章方向 PASS，均須保留原表限定語。** 此 PASS 只解除舊版 M02 HOLD；不代表站主已採用企劃，也不是逐字稿、逐鏡、配音或付費授權。以下舊版 HOLD 表與逐項核對保留作差異追溯，不可誤讀為新 head 仍 HOLD。
+**本版企劃來源結論：M01–M12 PASS，六章方向 PASS，均須保留原表限定語。** 在此版覆核時，PASS 只解除舊版 M02 HOLD，當時尚不代表站主採用；後續採用狀態已由首節重核。這也不是逐字稿、逐鏡、配音或付費授權。以下舊版 HOLD 表與逐項核對保留作差異追溯，不可誤讀為新 head 仍 HOLD。
 
 本機 `npm run check:tasks` 此時因審查者工作樹的同一任務同時留在 `tasks/open` 與 `tasks/done` 而退出 1：任務板 `done` 曾寫出完成副本，移除 open 副本則遭 `blocked by policy`。這兩個結案殘留**未納入本次 PR 提交**，審查者不再嘗試刪除或繞過。收據內容以已推 PR 檔案讀回為準；此環境限制不改變上面的來源差異判定。
 
@@ -53,4 +59,4 @@
 
 ## 修訂與下一關
 
-作者已將 `source-matrix.md` M02 與 `treatment.md` 第 2 章戰後量產句收窄，並通過上方新 head 的差異重核。下一關是站主審閱並決定是否採用這版企劃。逐字稿、逐句來源審查、兩位只讀旁白盲讀、整支報價、付費、匯入及發布都不在本收據範圍。
+作者已將 `source-matrix.md` M02 與 `treatment.md` 第 2 章戰後量產句收窄，並通過前次差異重核；站主其後採用此企劃方向，最新狀態與標籤已在本收據首節核實。下一關是逐字稿與逐句來源審查。兩位只讀旁白盲讀、整支報價、付費、匯入及發布都不在本收據範圍。
