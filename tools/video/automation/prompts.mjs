@@ -229,6 +229,20 @@ the close says nothing about the next video. "lint_warnings", when the payload c
 are the storytelling checks on this draft: fix what they name with wording alone, never by
 adding or dropping a fact, a scene or a line id.`;
 
+/**
+ * How the listener answers (flow.mjs listen): the whole edited script, or, for a long one, only
+ * the lines it changed, which the tool writes onto the script by id. A manga drama's fifty-odd
+ * shots made the listener answer lines when only the whole script was asked for, and two such
+ * answers blocked the video (ticket 2026-10-23-lines-video).
+ */
+export const LISTENER_ANSWER = `Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}; or,
+when the script is long (a drama of dozens of shots, any script whose whole video.json would
+crowd your answer), {"lines": [{"id": "<line id>", "text": "<the edited line>", "emotion":
+"<optional: a short direction for the voice>"}, …], "notes": "<one line on what you changed>"}
+with only the lines you changed. The tool writes each onto the script by its id and leaves out
+an id the script does not have, so this shape edits lines and cannot drop one. Prefer "lines"
+for a long script.`;
+
 export const INSTRUCTIONS = {
   planner: `${WRITING_COMMON}
 
@@ -437,7 +451,7 @@ arrives without 「其實」, a run of same-length sentences); the tool sets the
 words. Wording and rhythm are yours; the facts, the scenes, the pictures' prompts, the pauses and
 the line ids are not.
 
-Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}.
+${LISTENER_ANSWER}
 
 ${REGISTER_RULES}`,
 
@@ -790,7 +804,9 @@ finding ｜ verdict ｜ before → after", counts, and what you suspected but di
   listener: `${LISTENER_BASE}
 
 This is a drama: every line has a "speaker" and a character's line may have an "emotion"; keep both
-exactly, and keep a character's line in that character's voice (short, spoken, in the moment).`,
+exactly, and keep a character's line in that character's voice (short, spoken, in the moment).
+
+${LISTENER_ANSWER}`,
 };
 
 /** What the settings tab adds under the skill's text: the owner's standing instructions for the stage. */

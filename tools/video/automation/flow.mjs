@@ -422,6 +422,48 @@ function writeVideo(dir, video) {
 }
 
 /**
+ * A listener's answer as saveAndLint takes it. The listener of a long script (a manga drama runs
+ * fifty-odd shots) tends to answer the rewrite pass's shape, {"lines": [{id, text, emotion?}],
+ * "notes"}, instead of the whole video.json, and two such answers blocked a video (ticket
+ * 2026-10-23-lines-video). Those lines are written onto a copy of the script the listener was
+ * given, by id: the text, and the emotion when one is given; a line whose text changes loses
+ * its spoken form, which was written for the old words. An id the script has no line for is
+ * left out and logged. The result is { video, edits } with one edit per line that changed. An
+ * answer with a video object, or without a lines array, is returned as it is.
+ */
+export function listenerEdits(video, answer, log = () => {}) {
+  if (answer?.video || !Array.isArray(answer?.lines)) return answer;
+  const edited = structuredClone(video);
+  const lines = new Map([...eachLine(edited)].map(({ line }) => [line.id, line]));
+  const edits = [];
+  const unknown = [];
+  const seen = new Set();
+  for (const entry of answer.lines) {
+    const id = String(entry?.id ?? "");
+    const line = lines.get(id);
+    if (!line) {
+      unknown.push(id || "?");
+      continue;
+    }
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const text = typeof entry.text === "string" && entry.text.trim() ? entry.text.trim() : line.text;
+    const emotion = typeof entry.emotion === "string" && entry.emotion.trim() ? entry.emotion.trim() : line.emotion;
+    if (text === line.text && emotion === line.emotion) continue;
+    const before = line.text;
+    if (text !== line.text) {
+      line.text = text;
+      delete line.say;
+      delete line.say_for;
+    }
+    if (emotion !== undefined) line.emotion = emotion;
+    edits.push(`${id}: ${before} → ${text}`);
+  }
+  if (unknown.length) log(`  listener: ${unknown.length} of its lines name no line of the script and are left out: ${unknown.join(", ")}`);
+  return { video: edited, edits, ...(typeof answer.notes === "string" && answer.notes.trim() ? { notes: answer.notes.trim() } : {}) };
+}
+
+/**
  * The writer's lexicon additions into the shared dictionary. A term lint would refuse in the
  * dictionary (isProposableTerm: "8B" starts with a digit) is left out like any other unusable
  * proposal, since one such entry fails lint for every video that shares the file.
@@ -3452,7 +3494,9 @@ export class Automation {
     // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
     const variant = state.format === "drama" ? null : this.variantOf(state);
     const listenPayload = { script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, listenPayload, video, "listener", "listen") : await this.stage("listener", state.slug, { video, ...listenPayload, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, variant);
+    const answered = isLongAnime(state) ? await this.animeRewrite(state, listenPayload, video, "listener", "listen") : await this.stage("listener", state.slug, { video, ...listenPayload, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, variant);
+    // A long script's listener may answer the lines it changed instead of the whole video.json.
+    const answer = listenerEdits(video, answered, (line) => this.log(line));
     const problem = await this.saveAndLint(state, answer);
     const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;
