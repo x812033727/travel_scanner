@@ -1,4 +1,5 @@
-"""Each uploaded video's backup as the worker reports it, and whether every one is in Drive.
+"""Each video's backup as the worker reports it, and whether every one is in Drive: the videos
+on YouTube and those ready to upload, so a finished video is in Drive before it is uploaded.
 
 ``video_projects.backup`` (migration 0135) is the worker's last report. The site does not take
 the worker's "done" on trust alone: it counts the report's contents against what the owner's
@@ -40,6 +41,7 @@ from app.video_backup.target import (
     remote_prefix,
     resolve_target,
 )
+from app.video_reviews.admin_service import ready_unuploaded
 
 # A backup should finish in the rounds after the upload; one queued longer is flagged.
 OVERDUE_HOURS = 24
@@ -134,14 +136,15 @@ def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) ->
     )
 
 
-async def _uploaded(session: AsyncSession) -> list[VideoProject]:
-    """Every video with a YouTube id, oldest first: those are the ones Drive must hold."""
+async def _eligible(session: AsyncSession) -> list[VideoProject]:
+    """Every video with a YouTube id and every one ready to upload, oldest first: those are the
+    ones Drive must hold. One being revised drops out until it is ready again, so the worker
+    copies its new files over the old ones only then (the old ones go to _舊版)."""
     rows = await session.scalars(
-        select(VideoProject)
-        .where(VideoProject.youtube_video_id.is_not(None))
-        .order_by(VideoProject.created_at, VideoProject.slug)
+        select(VideoProject).where(VideoProject.youtube_video_id.is_not(None))
     )
-    return list(rows.all())
+    projects = [*rows.all(), *await ready_unuploaded(session)]
+    return sorted(projects, key=lambda project: (project.created_at, project.slug))
 
 
 async def status(session: AsyncSession, *, everything: bool = False) -> StatusView:
@@ -149,7 +152,7 @@ async def status(session: AsyncSession, *, everything: bool = False) -> StatusVi
     config = backup_settings.config_of(row)
     enabled = backup_settings.enabled_of(row)
     now = _now()
-    views = [backup_view(project, config, now) for project in await _uploaded(session)]
+    views = [backup_view(project, config, now) for project in await _eligible(session)]
     counts: dict[BackupState, int] = dict.fromkeys(STATES, 0)
     for item in views:
         counts[item.state] += 1
@@ -186,12 +189,12 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
     pending = as_dict(config.get("test")) or None
     requested_at = parse_time(pending.get("requested_at")) if pending else None
     videos = []
-    for project in await _uploaded(session):
+    for project in await _eligible(session):
         target = _target(project, config)
         videos.append(
             WorkerVideo(
                 slug=project.slug,
-                youtube_video_id=str(project.youtube_video_id),
+                youtube_video_id=project.youtube_video_id,
                 category=project.category,
                 series_key=target.series_key,
                 series_slug=project.series_slug,
@@ -233,8 +236,11 @@ async def report(
     """The worker's account of one video's backup. A "done" that lacks a file the owner's
     choice asks for is stored as partial, with what is missing."""
     project = await _project(session, slug)
-    if project.youtube_video_id is None:
-        raise AppError(409, "video_backup_not_uploaded", "這支影片還沒上傳 YouTube，不用備份")
+    if project.youtube_video_id is None and not await ready_unuploaded(session, slug):
+        # Neither on YouTube nor ready: never finished, or being revised since the round began.
+        raise AppError(
+            409, "video_backup_not_ready", "這支影片還沒上傳 YouTube，也還不能上架，不用備份"
+        )
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
     target = _target(project, config)

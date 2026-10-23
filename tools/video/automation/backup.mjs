@@ -1,7 +1,9 @@
-// The backup (docs/videos/BACKUP.md): every video on YouTube is copied to the owner's Google
-// Drive, under AI/備份/<series>/<episode>/, with rclone, and the tidy keeps a video's files on the
-// host until Drive has them. The site holds the settings and each video's folder and tier
-// (apps/api/app/video_backup); this file does the copying, once a round, before the tidy.
+// The backup (docs/videos/BACKUP.md): every video on YouTube or ready to upload is copied to the
+// owner's Google Drive, under AI/備份/<series>/<episode>/, with rclone, and the tidy keeps a
+// video's files on the host until Drive has them. The site holds the settings, the list of videos
+// and each one's folder and tier (apps/api/app/video_backup); this file does the copying, once a
+// round, before the tidy. A video being revised is off the site's list until it is ready again,
+// so its new files are copied over the old ones only then.
 //
 // What goes: the tier's files (planFiles), hashed into backup.json beside the work directory's
 // other records. A round copies at most VIDEO_BACKUP_PER_ROUND videos, oldest first, with
@@ -474,11 +476,13 @@ async function confirm(job, video, state) {
   return next;
 }
 
-/** Whether a done backup still covers the work files: the new or changed ones, by the cached hashes. */
+/** Whether a done backup still covers the work files (the new or changed ones, by the cached hashes) and the YouTube id. */
 async function stillCovered(job, video) {
   const workdir = job.workdir(video.slug);
   const previous = readJson(path.join(workdir, MANIFEST_FILE), null);
   if (!previous) return { covered: false, why: "no backup.json" };
+  // Backed up while ready to upload, and uploaded since: backup.json is sent again with the id.
+  if ((previous.youtube_video_id ?? null) !== (video.youtube_video_id ?? null)) return { covered: false, why: `its YouTube id is now ${video.youtube_video_id ?? "none"}` };
   try {
     const entries = await hashPlan(planFiles(workdir, video.tier, job.fs), previous, { fs: job.fs, hash: job.hash });
     const changed = changedFiles(entries, previous);

@@ -333,9 +333,7 @@ async def _check_anime_review(
         and gate in ("script", "audio", "final", "publish")
     ):
         if project.series_slug != series.slug:
-            raise AppError(
-                409, "video_anime_runtime_invalid", "影片的系列標記與正式動漫集數不符"
-            )
+            raise AppError(409, "video_anime_runtime_invalid", "影片的系列標記與正式動漫集數不符")
         episode = await session.scalar(
             select(VideoDramaEpisode).where(
                 VideoDramaEpisode.series_id == series.id,
@@ -603,9 +601,7 @@ def _summary(
 ) -> dict[str, Any]:
     choices = locale_choices(project)
     stored_retries = project.dub_retries or {}
-    states = (
-        languages if languages is not None else language_states(choices, [], stored_retries)
-    )
+    states = languages if languages is not None else language_states(choices, [], stored_retries)
     is_short = project.shorts_line is not None
     # The owner's requests to make a skipped dub again, and why one cannot be asked for now
     # (docs/videos/DUBS.md §再做一次). A Short has no language panel, so neither. Without the
@@ -645,9 +641,7 @@ def _summary(
         "shorts_series": project.shorts_series,
         "source_slug": project.source_slug,
         "shorts_state": (
-            shorts_slots.state_of(project, pending, publish_approved_at, hold)
-            if is_short
-            else None
+            shorts_slots.state_of(project, pending, publish_approved_at, hold) if is_short else None
         ),
         "slot_at": hold.starts_at if is_short and hold is not None else None,
         "youtube_removed_at": project.youtube_removed_at,
@@ -696,11 +690,7 @@ async def _project(session: AsyncSession, slug: str, *, lock: bool = False) -> V
     statement = select(VideoProject).where(VideoProject.slug == slug)
     if lock:
         statement = statement.with_for_update().execution_options(populate_existing=True)
-    project: VideoProject | None = (
-        await session.scalar(statement)
-        if valid_slug(slug)
-        else None
-    )
+    project: VideoProject | None = await session.scalar(statement) if valid_slug(slug) else None
     if project is None:
         raise AppError(404, "video_project_not_found", "找不到這支影片")
     return project
@@ -806,7 +796,8 @@ async def upsert_project(
         and not _story_dub_ready(await _reviews(session, project))
     ):
         retry_report = {
-            locale: item for locale, item in retry_report.items()
+            locale: item
+            for locale, item in retry_report.items()
             if not (isinstance(item, dict) and item.get("status") == "taken")
         }
     # Only the request the worker names by id moves; the answer says what the site accepted.
@@ -819,7 +810,8 @@ async def upsert_project(
     project.updated_at = now
     current = _current_final(await _reviews(session, project)) if project.id else None
     if (
-        current is not None and RENEWAL_KEY in (current.payload or {})
+        current is not None
+        and RENEWAL_KEY in (current.payload or {})
         and current.status != "approved"
     ):
         _hold_final_review(project)
@@ -856,7 +848,8 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
     reviews = await _reviews(session, project)
     series_kind = (
         await video_series_kind(session, slug)
-        if project.format == "drama" and project.shorts_line is None else None
+        if project.format == "drama" and project.shorts_line is None
+        else None
     )
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
@@ -946,9 +939,7 @@ async def download_path(session: AsyncSession, work_dir: str | None, slug: str) 
 
 def _is_public(now: datetime) -> Any:
     """A video whose publish time is past: what the Shorts tab counts as public."""
-    return and_(
-        VideoProject.youtube_video_id.is_not(None), VideoProject.youtube_publish_at <= now
-    )
+    return and_(VideoProject.youtube_video_id.is_not(None), VideoProject.youtube_publish_at <= now)
 
 
 def _not_public(now: datetime) -> Any:
@@ -1240,7 +1231,8 @@ async def _short_revision_allowed(session: AsyncSession, project: VideoProject) 
         or (project.youtube_sync or {}).get("status") in ("queued", "running")
     ):
         raise AppError(
-            409, "video_shorts_review_upload_started",
+            409,
+            "video_shorts_review_upload_started",
             "影片已開始上傳或同步，請先核對 YouTube 狀態；目前不能重新送審成片",
         )
     # The VPS sender takes the same project lock before staging or starting an upload.
@@ -1358,15 +1350,18 @@ def _renewable_final(project: VideoProject, reviews: list[VideoReview]) -> Video
     # explicitly unfinished checklist item is waiting to upload, not a published cut.
     waiting_upload = len(upload_items) == 1 and upload_items[0].get("done") is False
     if (
-        project.youtube_video_id is not None or project.youtube_upload_session is not None
-        or project.youtube_sync is not None or project.youtube_publish_at is not None
+        project.youtube_video_id is not None
+        or project.youtube_upload_session is not None
+        or project.youtube_sync is not None
+        or project.youtube_publish_at is not None
         or project.youtube_removed_at is not None
         or project.stage.strip().lower() in ("published", "uploaded", "done")
         or (project.stage.strip().lower() == "on youtube" and not waiting_upload)
         or any(item.get("done") is True for item in upload_items)
     ):
         raise AppError(
-            409, "video_final_renewal_upload_started",
+            409,
+            "video_final_renewal_upload_started",
             "影片已有上傳紀錄或完成狀態，請先核對上傳身分；不能直接換版",
         )
     final = _current_final(reviews)
@@ -1394,7 +1389,8 @@ async def final_renewal_state(session: AsyncSession, slug: str) -> FinalRenewalS
     reviews = await _reviews(session, project)
     final = _renewable_final(project, reviews)
     return FinalRenewalState(
-        version=_renewal_version(project, reviews), final_review_id=final.id,
+        version=_renewal_version(project, reviews),
+        final_review_id=final.id,
         final_sha256=final.content_sha256,
     )
 
@@ -1533,9 +1529,7 @@ async def renew_final(
     return _review_out(replacement)
 
 
-def _renewed_submission(
-    reviews: list[VideoReview], payload: ReviewIn
-) -> VideoReview | None:
+def _renewed_submission(reviews: list[VideoReview], payload: ReviewIn) -> VideoReview | None:
     if RENEWAL_KEY in payload.payload:
         raise AppError(422, "video_final_renewal_reserved", "換版記錄只能由站主換版流程建立")
     final = _current_final(reviews)
@@ -1544,11 +1538,13 @@ def _renewed_submission(
     if payload.gate == "final" and payload.content_sha256 == final.content_sha256:
         return final  # A worker resend cannot replace the owner's pending evidence or enable QA.
     if payload.gate in RENEWAL_GATES and (
-        payload.gate == "final" or final.status != "approved"
+        payload.gate == "final"
+        or final.status != "approved"
         or payload.payload.get("final_review_id") != str(final.id)
     ):
         raise AppError(
-            409, "video_final_renewal_review_required",
+            409,
+            "video_final_renewal_review_required",
             "新版成片須先由站主核准；後續上架與語言審核須綁定這筆成片審核",
         )
     return None
@@ -1574,14 +1570,23 @@ def _renewed_source(store: ReviewStore, slug: str, payload: ReviewIn, final: Vid
         valid = (
             metadata.get("final_sha256") == final.content_sha256
             and metadata.get("branding_hash") == final.payload.get("branding_hash")
-            and all(item.sha256 == final.content_sha256
-                    for item in payload.files if item.role == "final")
+            and all(
+                item.sha256 == final.content_sha256
+                for item in payload.files
+                if item.role == "final"
+            )
         )
     else:
         source = metadata.get("source")
-        valid = isinstance(source, dict) and source.get("final") == {
-            "review_id": str(final.id), "content_sha256": final.content_sha256,
-        } and source.get("branding_hash") == final.payload.get("branding_hash")
+        valid = (
+            isinstance(source, dict)
+            and source.get("final")
+            == {
+                "review_id": str(final.id),
+                "content_sha256": final.content_sha256,
+            }
+            and source.get("branding_hash") == final.payload.get("branding_hash")
+        )
     if not valid:
         raise AppError(
             409, "video_final_renewal_source_stale", "來源仍是舊成片，請重製上架包與語言"
@@ -1605,9 +1610,12 @@ def _supersede_short_reviews(
                 action="video_review_superseded",
                 target=f"video_review:{older.id}",
                 metadata_json={
-                    "slug": project.slug, "gate": older.gate,
-                    "previous_status": older.status, "replacement_review_id": str(new_id),
-                    "sha256": older.content_sha256, "revision": older.revision or 0,
+                    "slug": project.slug,
+                    "gate": older.gate,
+                    "previous_status": older.status,
+                    "replacement_review_id": str(new_id),
+                    "sha256": older.content_sha256,
+                    "revision": older.revision or 0,
                 },
             )
         )
@@ -2331,17 +2339,17 @@ async def request_dub_retry(
     if previous is not None and previous.open:
         return await project_view(session, slug, work_dir)
     reviews = await _reviews(session, project)
-    if project.format == "drama" and (
-        project.category == "story" or await video_series_kind(session, slug) == "story"
-    ) and not _story_dub_ready(reviews):
+    if (
+        project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and not _story_dub_ready(reviews)
+    ):
         raise AppError(
             409,
             "video_dub_retry_story_final_not_ready",
             "目前成片尚未通過無燒錄字幕與可關閉繁中 CC 的完整審核，配音重做要等通過後才開始",
         )
-    part = (
-        language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
-    )
+    part = language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
     if project.shorts_line is not None or part is None or part.state != "skipped":
         raise AppError(409, "video_dub_retry_not_skipped", "只有跳過的配音可以再做一次")
     seen = worker_view(work_dir, slug)
@@ -2391,9 +2399,7 @@ async def request_dub_retry(
                 f"不夠再做一條配音（約 {needed} 字）；"
                 "可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月",
             )
-    entry = dub_retry.new_request(
-        user_id=user.id, reason=part.reason, characters=needed, now=now
-    )
+    entry = dub_retry.new_request(user_id=user.id, reason=part.reason, characters=needed, now=now)
     project.dub_retries = {**retries, locale: entry}
     project.updated_at = now
     # The worker's list is the newest LIST_LIMIT videos by this column: a request on an older
@@ -2817,6 +2823,34 @@ async def _published_before(session: AsyncSession, cutoff: datetime) -> list[Vid
         .where(VideoProject.youtube_video_id.is_not(None), confirmed.c.decided_at <= cutoff)
     )
     return list(rows)
+
+
+async def ready_unuploaded(session: AsyncSession, slug: str | None = None) -> list[VideoProject]:
+    """Videos not on YouTube yet that may be uploaded, by the list's ready_to_upload rule (a
+    Short needs only its upload confirmation), for the Drive backup (docs/videos/BACKUP.md).
+    A renewed final cut supersedes the confirmation, so a video being revised is not among them."""
+    confirmed = _confirmations()
+    query = (
+        select(VideoProject, confirmed.c.decided_at)
+        .join(confirmed, confirmed.c.project_id == VideoProject.id)
+        .where(VideoProject.youtube_video_id.is_(None), VideoProject.dropped_at.is_(None))
+    )
+    if slug is not None:
+        query = query.where(VideoProject.slug == slug)
+    rows = (await session.execute(query)).all()
+    batches = await _language_batches(session, [project for project, _at in rows])
+    return [
+        project
+        for project, approved_at in rows
+        if project.shorts_line is not None
+        or ready_to_upload(
+            project,
+            approved_at,
+            language_states(
+                locale_choices(project), batches.get(project.id, []), project.dub_retries or {}
+            ),
+        )
+    ]
 
 
 async def prune_published_previews(

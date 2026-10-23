@@ -261,6 +261,33 @@ test("a file added after the backup queues it again, copies only that, and keeps
   assert.deepEqual(site.reports.at(-1).contents.dubs, ["en"]);
 });
 
+test("a video ready to upload is backed up before YouTube; a revision is copied over it only once it is ready again", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-h13");
+  const ready = target("curio-h13", { youtube_video_id: null });
+  const site = fakeSite({ videos: [ready] });
+  await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  const episode = path.join(box.drive, "奇聞檔案局", "curio-h13");
+  const manifest = () => JSON.parse(readFileSync(path.join(episode, MANIFEST_FILE), "utf8"));
+  assert.equal(manifest().youtube_video_id, null);
+  assert.equal(stateOf(dir).site_state, "done");
+  // A renewed cut: the site drops the video from its list until the owner confirms it again.
+  put(dir, "upload/final.mp4", "a new cut");
+  site.client.config = ((config) => async () => ({ ...(await config()), videos: [] }))(site.client.config);
+  const revising = fakeRclone(box.drive);
+  await backupRound(ctxFor(box, { now: later(5) }), { client: site.client, rclone: revising.run });
+  assert.deepEqual(revising.calls, [], "nothing is copied mid-revision");
+  const again = fakeSite({ videos: [ready] });
+  await backupRound(ctxFor(box, { now: later(10) }), { client: again.client, rclone: fakeRclone(box.drive).run });
+  assert.equal(readFileSync(path.join(episode, "final.mp4"), "utf8"), "a new cut");
+  assert.notEqual(readFileSync(path.join(episode, "_舊版", "20261020T031000Z", "final.mp4"), "utf8"), "a new cut");
+  // Uploaded: nothing new to copy, but backup.json is sent again with the YouTube id.
+  const uploaded = fakeSite({ videos: [target("curio-h13")] });
+  await backupRound(ctxFor(box, { now: later(15) }), { client: uploaded.client, rclone: fakeRclone(box.drive).run });
+  assert.equal(manifest().youtube_video_id, "dQw4w9WgXcQ");
+  assert.equal(uploaded.reports.at(-1).state, "done");
+});
+
 test("nothing changed: a done video is not copied again", async () => {
   const box = sandbox();
   video(box.work, "curio-h03");
