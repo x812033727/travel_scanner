@@ -13,6 +13,7 @@ import type { Series } from "@/components/admin-video-series";
 import { syncRunning, type YoutubeConnection, useYoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button } from "@/components/community/ui";
 import { adminUsersCopy } from "@/lib/admin-users-copy";
+import { adminVideoStoryProgressCopy } from "@/lib/admin-video-story-progress-copy";
 import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { ApiError, api, apiProblemMessage } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
@@ -37,6 +38,76 @@ export type StoryQuota = {
 // The story columns of a series; the other kinds leave them out or null.
 export type StorySeries = Series & { image_model?: string | null; quota?: StoryQuota | null };
 type StorySummary = Omit<StorySeries, "docs" | "episodes">;
+const EVERYDAY_SERIES_SLUG = "brand-stories-everyday-reversals";
+type StoryPreproduction = {
+  series_slug: string;
+  total_episodes: number;
+  full_plans: number;
+  scripts_approved: number;
+  scripts_pending: number;
+  source_markdown_verified: number;
+  finished_films: number;
+  episodes: {
+    number: number;
+    slug: string | null;
+    title: string;
+    full_plan: boolean;
+    script_status: "approved" | "pending" | null;
+    source_markdown_verified: boolean;
+    film_status: string;
+  }[];
+};
+type StoryProgressRead = { kind: "loading" } | { kind: "unavailable" } | { kind: "ready"; data: StoryPreproduction };
+
+function isStoryPreproduction(value: unknown): value is StoryPreproduction {
+  if (!value || typeof value !== "object") return false;
+  const result = value as Record<string, unknown>;
+  const counts = ["total_episodes", "full_plans", "scripts_approved", "scripts_pending", "source_markdown_verified", "finished_films"];
+  return result.series_slug === EVERYDAY_SERIES_SLUG
+    && result.total_episodes === 20
+    && counts.every((key) => { const count = result[key]; return typeof count === "number" && Number.isInteger(count) && count >= 0 && count <= 20; })
+    && Array.isArray(result.episodes)
+    && result.episodes.every((row: unknown) => {
+      if (!row || typeof row !== "object") return false;
+      const episode = row as Record<string, unknown>;
+      return Number.isInteger(episode.number) && (typeof episode.slug === "string" || episode.slug === null)
+        && typeof episode.title === "string" && typeof episode.full_plan === "boolean"
+        && (episode.script_status === "approved" || episode.script_status === "pending" || episode.script_status === null)
+        && typeof episode.source_markdown_verified === "boolean" && typeof episode.film_status === "string";
+    });
+}
+
+function useStoryPreproduction(enabled: boolean): { read: StoryProgressRead; reload: () => void } {
+  const [read, setRead] = useState<StoryProgressRead>({ kind: "loading" });
+  const reload = useCallback(() => {
+    if (!enabled) return;
+    api<unknown>("/admin/video-automation/story-preproduction")
+      .then((value) => {
+        if (!isStoryPreproduction(value)) throw new Error("invalid story preproduction response");
+        setRead({ kind: "ready", data: value });
+      })
+      .catch(() => setRead({ kind: "unavailable" }));
+  }, [enabled]);
+  useRefresh(reload);
+  return { read, reload };
+}
+
+function StoryProgressValues({ read }: { read: StoryProgressRead }) {
+  const copy = adminVideoStoryProgressCopy(useLocale());
+  if (read.kind === "loading") return <span className="text-sm text-[var(--muted)]">{copy.loading}</span>;
+  if (read.kind === "unavailable") return <span role="alert" className="text-sm text-red-800">{copy.unavailable}</span>;
+  const value = read.data;
+  const counts = [
+    [copy.plans, value.full_plans],
+    [copy.approved, value.scripts_approved],
+    [copy.pending, value.scripts_pending],
+    [copy.markdown, value.source_markdown_verified],
+    [copy.finished, value.finished_films],
+  ] as const;
+  return <span className="flex flex-wrap gap-x-5 gap-y-1 text-sm">{counts.map(([label, count]) =>
+    <span key={label}><span className="text-[var(--muted)]">{label}</span> <strong>{count}/{value.total_episodes}</strong></span>,
+  )}</span>;
+}
 // StoryImportReport.as_dict() (apps/api/app/video_automation/stories.py): the answer to a dry run and
 // to an import, and, beside the problem fields of a 422, the report of a file that was refused.
 export type StoryImportReport = {
@@ -390,9 +461,10 @@ function StoryPlan({ episode }: { episode: SeriesEpisode }) {
  * video was dropped may be made again, up to STORY_REDO_LIMIT times, and a remade one still opens
  * the video it replaced.
  */
-function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged }: { series: StorySeries; now: number; generation: number; canManage: boolean; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
+function StoryList({ series, now, generation, preproduction, canManage, onOpenVideo, onChanged }: { series: StorySeries; now: number; generation: number; preproduction: StoryPreproduction | null; canManage: boolean; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
+  const progressCopy = adminVideoStoryProgressCopy(useLocale());
   const [category, setCategory] = useAdminQueryValue("story_category", "", isCategory);
   const [state, setState] = useAdminQueryValue("story_state", "", isState);
   const [opened, setOpened] = useAdminQueryValue("story", "", isStoryId);
@@ -453,6 +525,7 @@ function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged 
       const dropped = episode.status === "skipped" && Boolean(episode.started_at);
       const redo = storyRedo(episode.slug);
       const redoable = dropped && redo.count < STORY_REDO_LIMIT;
+      const preproductionEpisode = preproduction?.episodes.find((item) => item.number === episode.number && item.slug === episode.slug);
       return <li key={episode.number} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3">
         <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
           <span className="font-mono text-sm font-bold">{id || `#${episode.number}`}</span>
@@ -460,6 +533,13 @@ function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged 
           <AdminStatusPill status={stateTone[where]}>{t(`states.${where}`)}</AdminStatusPill>
         </div>
         <p className="mt-1 text-sm text-[var(--muted)]">{facts.join(" · ")}</p>
+        {preproduction && <p className="mt-1 text-xs text-[var(--muted)]">{preproductionEpisode
+          ? [
+            preproductionEpisode.full_plan ? progressCopy.rowPlan : progressCopy.rowPlanMissing,
+            preproductionEpisode.script_status === "approved" ? progressCopy.rowApproved : preproductionEpisode.script_status === "pending" ? progressCopy.rowPending : progressCopy.rowScriptMissing,
+            preproductionEpisode.source_markdown_verified ? progressCopy.rowMarkdown : progressCopy.rowMarkdownMissing,
+          ].join(" · ")
+          : progressCopy.rowUnavailable}</p>}
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {id && <Button secondary aria-expanded={open} onClick={() => setOpened(open ? "" : id)}>{open ? t("list.closePlan") : t("list.openPlan")}</Button>}
           {video && <Button secondary onClick={() => onOpenVideo(video.slug)}>{t("list.openVideo")}</Button>}
@@ -719,10 +799,12 @@ export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: s
 function StorySeriesList({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
+  const progressCopy = adminVideoStoryProgressCopy(useLocale());
   const manage = useAdminActionGuard("content.manage");
   const holdReason = useHoldReason();
   const [series, setSeries] = useState<StorySummary[] | null>(null);
   const [error, setError] = useState("");
+  const progress = useStoryPreproduction(Boolean(series?.some((each) => each.slug === EVERYDAY_SERIES_SLUG)));
   const load = useCallback(() => {
     // An older site ignores the filter and is filtered here.
     api<{ series?: StorySummary[] }>("/admin/video-automation/series?kind=story")
@@ -745,6 +827,10 @@ function StorySeriesList({ onOpenSeries }: { onOpenSeries: (slug: string) => voi
           </span>
           {quota && <span className="text-sm text-[var(--muted)]">{t("quota.line", { inFlight: quota.in_flight, maxInFlight: quota.max_in_flight, ready: quota.ready })}</span>}
           {reason && <span className="text-sm text-amber-900">{t("quota.holdTitle")} {reason}</span>}
+          {each.slug === EVERYDAY_SERIES_SLUG && <span className="grid gap-1 border-t border-[var(--line)] pt-2">
+            <span className="text-sm font-semibold">{progressCopy.title}</span>
+            <StoryProgressValues read={progress.read} />
+          </span>}
         </button>
       </li>;
     })}</ul>}
@@ -767,11 +853,15 @@ export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged 
 function StorySeriesDetail({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
+  const progressCopy = adminVideoStoryProgressCopy(useLocale());
   const manage = useAdminActionGuard("content.manage");
   const now = useNow();
+  const isEveryday = series.slug === EVERYDAY_SERIES_SLUG;
+  const progress = useStoryPreproduction(isEveryday);
+  const reloadProgress = progress.reload;
   // Bumped by an import from this page: it may rewrite a plan the list's row does not show.
   const [generation, setGeneration] = useState(0);
-  const imported = useCallback(() => { setGeneration((value) => value + 1); onChanged(); }, [onChanged]);
+  const imported = useCallback(() => { setGeneration((value) => value + 1); reloadProgress(); onChanged(); }, [onChanged, reloadProgress]);
   const back = () => {
     // The page's own filters and the opened story stay behind with it.
     const target = new URL(window.location.href);
@@ -788,11 +878,16 @@ function StorySeriesDetail({ series, error, onBack, onOpenVideo, onChanged }: { 
       <p className="text-sm text-[var(--muted)]">{t("page.facts", { stories: series.episodes.length, done, minutes: series.target_minutes, usd: Number(series.media_usd ?? 0).toFixed(2) })}{series.image_model ? ` · ${t("page.imageModel", { model: series.image_model })}` : ""}</p>
       <p className="whitespace-pre-wrap text-sm leading-6">{series.premise}</p>
     </header>
+    {isEveryday && <section aria-label={progressCopy.title} className="grid gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
+      <h3 className="text-lg font-bold">{progressCopy.title}</h3>
+      <StoryProgressValues read={progress.read} />
+      <p className="text-sm text-[var(--muted)]">{progressCopy.explanation}</p>
+    </section>}
     {!manage.allowed && <StoryPermissionNote />}
     {series.quota && <StoryQuotaPanel quota={series.quota} status={series.status} />}
     {manage.allowed && <StoryControls series={series} onChanged={onChanged} />}
     <StoryReadyGroup series={series} now={now} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
-    <StoryList series={series} now={now} generation={generation} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
+    <StoryList series={series} now={now} generation={generation} preproduction={isEveryday && progress.read.kind === "ready" ? progress.read.data : null} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
     <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" open={series.episodes.length === 0}>
       <summary className="cursor-pointer text-lg font-bold">{t("import.again")}</summary>
       <div className="mt-4"><StoryImportForm seriesSlug={series.slug} canManage={manage.allowed} onImported={imported} /></div>
