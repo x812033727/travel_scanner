@@ -166,6 +166,33 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   assert.ok(!full.some((item) => /^(segments|build|frames|audio|review|media)\//.test(item)));
 });
 
+test("planFiles: the full tier keeps each chosen language's unpackaged dub track and thumbnail, never an unchosen one", () => {
+  const box = sandbox();
+  const languages = { locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: false, dub: false } } };
+  const dir = video(box.work, "story-a4", {
+    "languages.json": JSON.stringify(languages),
+    "upload/dubs/en.m4a": "packaged",
+    "upload/thumbnails/en.jpg": "jpg",
+    "dubs/en.m4a": "packaged",
+    "dubs/ja.m4a": "given up",
+    "dubs/ko.m4a": "not chosen",
+    "dubs/ja/audio/l1.wav": "never",
+    "thumbnails/en.jpg": "jpg",
+    "thumbnails/ja.jpg": "jpg",
+    "thumbnails/ko.jpg": "jpg",
+    "thumbnails/th.jpg": "not chosen",
+  });
+  const basic = planFiles(dir, "basic").map((item) => item.path);
+  assert.ok(!basic.some((item) => item.startsWith("dubs/未進上傳包/") || item === "thumbnails/ja.jpg"), "the basic tier is the package alone");
+  const full = planFiles(dir, "full");
+  assert.deepEqual(full.map((item) => item.path).filter((item) => !basic.includes(item)), ["dubs/未進上傳包/ja.m4a", "thumbnails/ja.jpg", "thumbnails/ko.jpg"]);
+  assert.equal(full.find((item) => item.path === "thumbnails/en.jpg").source, path.join(dir, "upload", "thumbnails", "en.jpg"), "the package's own copy wins");
+  assert.deepEqual(contentsOf(full.map((item) => item.path)).dubs, ["en"], "an unpackaged track is not counted as a packaged dub");
+
+  rmSync(path.join(dir, "languages.json"));
+  assert.ok(planFiles(dir, "full").some((item) => item.path === "dubs/未進上傳包/ko.m4a"), "without a choice every track is kept");
+});
+
 test("contentsOf: what the site counts, a Short's caption beside its cut, and the parts skipped with a reason", () => {
   const contents = contentsOf(
     ["final.mp4", "metadata.json", "thumbnail.jpg", "descriptions/en.txt", "captions/en.srt", "dubs/en.m4a", "zh-TW.srt", "clips/manifest.json", "clips/a.mp4"],

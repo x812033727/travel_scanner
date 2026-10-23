@@ -98,6 +98,7 @@ AI/備份/
       backup.json
       _舊版/<時間>/…                 （之後被覆蓋的舊檔）
       （完整層級另外有）clips/ keyframes/ characters/ timeline.json narration.wav
+                       dubs/未進上傳包/<語言>.m4a、上傳包缺的 thumbnails/<語言>.jpg
   Shorts/<shorts_series 或 shorts_line>/<slug>/…
   其他/<slug>/…
 ```
@@ -131,6 +132,13 @@ AI/備份/
   `zh-TW.srt`、`cover.png`、`titles.json`。
 - **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`timeline.json`、
   `narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
+  另外照站主勾的語言（`languages.json`）補上傳包沒有的東西：勾了配音、工人錄出音軌
+  （`dubs/<語言>.m4a`／`.mp3`／`.wav`）卻沒進上傳包的（被放棄的，或還沒核准的），放進
+  `dubs/未進上傳包/<語言>.m4a`；勾了任何一項的語言，上傳包缺它的縮圖時，用工作資料夾
+  `thumbnails/<語言>.jpg` 補進 `thumbnails/`。沒進上傳包的音軌沒過工人的檢查，要上架前先
+  聽過；它放在自己的資料夾，網站不會把它算成已打包的配音。沒有 `languages.json` 時，工作
+  資料夾有的音軌和縮圖都備份。tidy 會清掉工作資料夾的音軌，所以已備份完成的完整層級影片
+  有這些新檔時會再排一次，傳完才清。
 - **任何層級都不備份**：`segments/`、`build/`、`frames/`、`review/`、`media/` 快取、
   `audio/` 中間檔。這些可以重算，或只是審核用的預覽。
 
