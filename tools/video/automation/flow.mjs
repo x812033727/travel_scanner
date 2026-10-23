@@ -21,7 +21,7 @@ import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs
 import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
+import { hasCast, illustrated, isDrama, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { CURIO_MUSIC, CURIO_PRESET } from "../core/curio.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
@@ -814,7 +814,7 @@ function packageChoiceStale(workdir) {
  * its order. Free: no request, nothing written. A dub asked for again is only worth buying when
  * its batch can be built afterwards (takeDubRetry). The sentence is shown on the admin card.
  */
-function packageRefusal(project, workdir) {
+export function packageRefusal(project, workdir) {
   const { doc, lexicon } = project;
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
@@ -829,8 +829,10 @@ function packageRefusal(project, workdir) {
     branded = false;
   }
   if (!branded) return "成片用的片頭片尾和現在選的不一樣";
+  // A drama's cut (a brand story is one) is bound to its clips, as package reads them.
+  const clips = isDrama(doc) ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
   const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
-  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, null, keyframes)) return "成片不在了，或它的檢查記錄比現在的腳本和畫面舊";
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, clips, keyframes)) return "成片不在了，或它的檢查記錄比現在的腳本和畫面舊";
   if (assembledAudioProblems(timeline, checks, workdir).length) return "成片不是用現在這份旁白錄音合成的";
   return null;
 }
