@@ -34,8 +34,6 @@ scope:
   - apps/web/messages
   - docs/videos/LANGUAGES.md
   - docs/videos/DUBS.md
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
 ---
 
 # Video worker makes es, pt, id, vi, th captions, titles and dubs
@@ -313,3 +311,8 @@ After the deploy:
     `VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT` to 1,500,000 in the host `.env`, only with the
     owner's explicit approval. Deploy order is as in phase 1: the worker image with the API, or
     before it, or a ticked five-language dub stays "working" on an old worker.
+
+2026-10-23 owner-directed narrow C-series handoff: the shared checkout's canonical
+`docs/videos/long-form/review.md` and `review.json` were clean. The board steward released
+only these two paths for an independent final duration review; this ticket's other scope,
+status and outstanding owner steps remain.
