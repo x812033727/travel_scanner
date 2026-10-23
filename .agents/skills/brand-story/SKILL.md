@@ -38,8 +38,10 @@ worktree 之下。空間不足或無法確認所有權時停止建立，先回�
 每輪結束時，對自己建立的暫時 worktree 逐一核對：`git status --porcelain=v1
 --untracked-files=all` 為空、HEAD 已推到遠端、沒有仍需保留的 ignored／付費素材、沒有代理或
 行程使用它、不是 pinned／共用／主要 checkout，且 PR、收據與任務票可從遠端或保留路徑取回。
-符合後用 `git worktree remove <精確路徑>` 清理並讀回確認；開著草稿 PR 並不要求保留已推送的
-本機 checkout。任何條件不明就保留並記入任務票，不能用批次遞迴刪除或繞過 policy block。
+符合後先核對解析後的 Windows 絕對目標路徑位於預期工作區。Codex app 管理的 worktree 用
+`archive_worktree` 留存快照與附件；手動建立的才用 `git worktree remove <精確路徑>`。兩者都要
+讀回確認。若 app 拒絕封存，或任何條件不明，就保留並記入任務票；不能批次遞迴刪除、改用
+手動強刪或繞過 policy block。開著草稿 PR 並不要求保留已推送的本機 checkout。
 
 ## 站主定案（改任何一條都要先問站主）
 
