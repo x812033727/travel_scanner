@@ -1,0 +1,103 @@
+{
+  "reader": "reader_1",
+  "author_pr": 1711,
+  "author_head_sha": "2e212b27d68bb408c0ca64bc2d6be05bf255fe64",
+  "projection_sha256": "40C7D991F00BF46E28ED116795FCC46E38BFC0AA5E4792CE3A86F2502B0B1A21",
+  "basis": "85 tab-separated narration ID and spoken-line pairs only; generic NARRATIVE_PANEL definition; no source validation",
+  "passed": false,
+  "failed_required": ["one_line", "no_toc", "chapters_link", "no_recap", "no_detour"],
+  "advisory": ["chapters_are_events"],
+  "answers": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180101] 清晨，桌邊的抽屜拉開，一把橘色手把的剪刀露出半截。",
+      "reason": "The opening places a specific object and action at a desk in the morning."
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180106] 多年後，一份登記文件又把橘色標在剪刀的一個部位。",
+      "reason": "The preview names a later document but withholds its jurisdiction, date, goods, and precise boundary."
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "yes": false,
+      "evidence": "[c180606] 回到抽屜：金屬負責切，塑膠手把讓握持與成型有了新做法。",
+      "reason": "After the registration and museum dates, the closing returns to and retells the material split already developed in chapter 3, rather than adding a new event or finding."
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "yes": false,
+      "evidence": "[c180201] 那個手把的故事，要從一間還沒有塑膠的鐵工坊說起。",
+      "reason": "This tells the listener where the narration will begin instead of entering the event directly."
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "yes": false,
+      "evidence": "[c180201] 那個手把的故事，要從一間還沒有塑膠的鐵工坊說起。",
+      "reason": "It restates the opening question about the workshop and handle as a story setup; the next line supplies the first new historical event."
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180316] 機器裡留下的東西，會不會成為這把剪刀最醒目的部分？",
+      "reason": "Questions and turns recur through the body at roughly chapter length or less."
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180401] 依 Fiskars 後來的回顧，留下的是機器裡的橘色塑膠。",
+      "reason": "This directly answers the preceding question about what remained in the machine; other chapter endings also receive concrete answers."
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "yes": false,
+      "evidence": "[c180608] 各地登記得分開看；加拿大那份原始登記，只列手動剪刀與圖中特定握柄的橘色。",
+      "reason": "The Canadian goods and handle boundary were already stated in chapter 5, and this repeats them without a named callback."
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "yes": false,
+      "evidence": "[c180201] 那個手把的故事，要從一間還沒有塑膠的鐵工坊說起。",
+      "reason": "The projection contains spoken lines and IDs but no chapter names, so this optional question cannot be verified from the permitted material; the quoted line only locates a chapter opening."
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180611] 如果你想把每天使用的物件，連同它背後的決定一起看懂，歡迎訂閱奇聞檔案局。",
+      "reason": "The close invites subscription without announcing a later video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180106] 多年後，一份登記文件又把橘色標在剪刀的一個部位。",
+      "reason": "The opening separately teases the extra factory trial color, an unsuitable grip for another hand, and the later registration document before giving their outcomes."
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "yes": true,
+      "evidence": "[c180609] 所以讓人記住的，並不只是一點橘色塑膠，還有那把一直要被拿來用的剪刀。",
+      "reason": "The recurring object is the Fiskars scissors; making, gripping, coloring, and identifying that object supply a recognizable thread."
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "yes": false,
+      "evidence": "[c180519] 可館藏上兩組不同的年份，為什麼不能當成同一件事？",
+      "reason": "The new puzzle about a museum object's design and manufacture dates redirects the closing from how the scissors' handle, use, and orange identifier developed."
+    }
+  ]
+}
