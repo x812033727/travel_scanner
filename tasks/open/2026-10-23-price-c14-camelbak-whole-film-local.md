@@ -25,13 +25,13 @@ C14's script and visual direction are owner approved, but no whole-film quantity
 - [x] Count all 70 shots, distinct image upper bound, retry cap, cards, narration and music.
 - [x] Reopen current official image, image-judge and music pricing; include unattributed TTS/ASR and other charges inside a whole-film hard stop.
 - [x] Recompute the post-hook body duration and illustrated-time proxy from JSON rather than repeating a whole-voice figure as body.
-- [ ] Push the nonpaid quote in the existing draft PR and read back draft/no-auto-merge.
+- [x] Push the nonpaid quote in the existing draft PR and read back draft/no-auto-merge.
 
 ## Steps
 
 - [x] Bind approved script and visual hashes.
 - [x] Document the 63-image/189-attempt estimate and US$25 proposal.
-- [ ] Run checks, push, and update PR status text.
+- [x] Run checks, push, and update PR status text.
 
 ## How to verify
 
@@ -42,3 +42,5 @@ Recompute script/visual SHA-256 and parse `visual-plan.json`: 70 rows, 54 illust
 2026-10-23: The prior PR body and owner approval receipt called the 496.5-second whole spoken plan "body". Direct JSON arithmetic shows actual planned post-hook body is only 456.2 seconds; this is a paper estimate, not a TTS failure. The quote corrects the denominator without changing approved script or visuals. The code in this branch has no C14 per-episode budget slug; production ledger and prior charges remain unread, so no paid request may start.
 
 2026-10-23 checks: `git diff --check` passed. `npm run check:tasks` exited 1 only because this worktree already contains an untracked `tasks/open/2026-10-22-independently-verify-c14-camelbak-v4-source.md` alongside its untracked `tasks/done/` copy; it is not part of this quote. The prior agent reported exact removal was policy-blocked. Both copies are left untouched and excluded from this PR. Existing queue overlap/stale-owner warnings are not this quote's changes.
+
+2026-10-23 readback: Quote commit `033c1f4dc` pushed to PR #1695. GitHub reports `isDraft=true`, `no-auto-merge`, `autoMergeRequest=null`, and its body now corrects 496.5 seconds to all narration and 456.2 seconds to post-hook body. No paid approval requested or call made. This task stays in `review` while the draft PR remains unmerged.
