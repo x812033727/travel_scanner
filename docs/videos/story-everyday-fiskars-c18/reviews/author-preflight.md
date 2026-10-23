@@ -6,18 +6,28 @@
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| `script.md` | `B390D5C43B080C71928F3A368BEBD75FD11FC8E814AB8B42E70B9846A3D358FB` |
-| `source-notes.md` | `8D854E405A20888087ECBC0CB32CB6D337362746BEBA75311AF74CC7D510AD6B` |
-| `visual-plan.md` | `BC228AE25FF6247B36AB3F54D4ADFF8D3986085F42110C5E09979875C2F66F63` |
-| `visual-plan.json` | `7D30F6B09CB00093043E988348928527136B505D0A2C88AB46EBBDE4C37CAF48` |
+| `script.md` | `416FEFEE8D88D789DC54755B1591D58C4BE5510A8A071AAA2D0D5F6E919E96F1` |
+| `source-notes.md` | `0E8591F7FB8A0DED5706E57B6BB631E98F86F17EF57CEE417136E638BFEDBEFA` |
+| `visual-plan.md` | `87BF9FF384DD51956152F5531310C388230EF6E315F6E20511ACC2AA07E75ACE` |
+| `visual-plan.json` | `6301E905E5C019CC04EC6F82B3874E8CC1FAD48335B7B6A1AAAC19B664FB1F99` |
 
 ## 可重現的結構檢查
 
 - `script.md` 85 句、`visual-plan.json` 85 景；逐 ID 比對差異 0、重複 ID 0。74 景 `shot`、11 張後製 `stats`；連續字卡最多 2 張。
 - 74 個圖片 `prompt` 對品牌／設計師姓名、商標字、`logo`、可讀文字、真人、年份數字的禁詞掃描命中 0。畫風只在 `look: {"preset":"cute-mystery"}`；模型是 MiniMax `image-01`。這是文字掃描，不代表日後圖片評審已過。
-- 正文（第 2–6 章）作者文字約 1,988 個含標點字元；這不是配音秒數。`TTS ≥480 秒` 和插圖畫面時間 `≥70%` 均未測，不能據此購圖。
+- 正文（第 2–6 章）作者文字約 2,000 個含標點字元；這不是配音秒數。`TTS ≥480 秒` 和插圖畫面時間 `≥70%` 均未測，不能據此購圖。
 - `npm run check:tasks`：exit 0，另有與本票無關的既有 stale/overlap warnings。
 - `npm run test:docs-videos`：exit 1，測試在此新工作樹因缺少 `pinyin-pro` 套件而失敗；不可稱測試通過。這批測試未覆蓋本稿逐句事實。
+
+## 獨立 HOLD 後作者窄修
+
+[獨立初審草稿 PR #1717](https://github.com/x812033727/travel_scanner/pull/1717) 對前一版 85／85 句及配鏡判為 HOLD。作者本次只動其四組必修與兩處文字清理，**仍待同一位審核者按上表新雜湊作 delta recheck**：
+
+- H01 `c180103–104`：開場補 Fiskars 多年後回顧歸屬，拿掉真實樣品桌擺法斷言；c180104 改概念手持樣片。
+- H02 `c180307–308`：把無原件支持的「製作成本下降」改為年報的「一般用剪刀更便宜」，取消成本帳視覺。
+- H03 `c180511`：補「登記圖中特定握柄整個可見表面」，配鏡只畫外形原創的通用概念剪刀。
+- H04 `c180608`：只把加拿大原件的商品／外觀範圍講成直接讀到的內容，不推定芬蘭或美國範圍。
+- 非必修清理：`c180609`「一桶」改「一點」，`c180214` prompt 改正向素面桌描述。
 
 ## 待下一關
 
