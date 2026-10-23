@@ -22,6 +22,8 @@ scope:
   - docs/videos/story-everyday-kikkoman-c08/reviews/author-v5-spout-audio-clarity-fix.md
 
   - docs/videos/story-everyday-kikkoman-c08/reviews/blind-narration-v5-3-coordinator.md
+
+  - docs/videos/story-everyday-kikkoman-c08/reviews/owner-script-approval.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-rewrite.md
   - docs/videos/story-everyday-kikkoman-c08/reviews/line-source-review-20261022-pre-blind-fix.md
@@ -61,6 +63,8 @@ scope:
 讀 script.md 的每一行 ID 與「依」欄，逐項打開來源矩陣和 script-source-addendum.md 列出的原發行者文件；計算 script.md、visual-plan.md、R1 補充 SHA256，與新一輪獨立收據相對。機械檢查句 ID／鏡 ID 完整、插圖占比與連續卡上限。執行 npm run check:tasks 與 git diff --check。純文字字數估算不算實測 480 秒，正式旁白仍需另關卡。
 
 ## Current checkpoint (2026-10-23 v5.3)
+
+站主已回覆「核准目前劇本與逐鏡方向」，明確指向草稿 PR #1681 的 84 句／84 鏡 v5.3 版本；精確稿件與視覺 SHA、決定邊界見 `reviews/owner-script-approval.md`。此核准不含付費製作；實際 TTS 正文 ≥480 秒、插圖畫面時間 ≥70%、整支報價及單集預算歸因仍各待驗證。
 
 v5.3 `script.md` SHA `B9E4C547…`、`visual-plan.md` SHA `776F26F2…` 的改動已經獨立來源／配對畫面差異覆核 PASS。新版 84 句只讀旁白輸入 SHA `E6A5036C…` 經**兩位不同盲讀代理各自 PASS**，收據見 `reviews/blind-narration-v5-3-coordinator.md`。兩位的非阻擋口語壓縮建議留給站主審，不為這些微調再改動已查核稿件。現可送站主審劇本／逐鏡方向；正文 TTS 480 秒、實際畫面秒數 ≥70%、整支報價與付費授權仍未通過。未買圖、配音、匯入、上傳或發布。
 
