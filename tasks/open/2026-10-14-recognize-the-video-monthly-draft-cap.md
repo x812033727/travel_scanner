@@ -1,14 +1,14 @@
 ---
 id: 2026-10-14-recognize-the-video-monthly-draft-cap
 title: Recognize the video monthly draft cap in deploy verification
-status: review
+status: in-progress
 priority: P2
 area: tools
-owner: claude-opus-5-5-draft-cap
-claimed_at: 2026-10-17T16:41:28Z
+owner: claude-opus-5-5-video-cloud-backup
+claimed_at: 2026-10-22T02:15:08Z
 created_at: 2026-10-14T17:33:16Z
 completed_at:
-branch:
+branch: claude/video-backup-verify-lines
 depends_on: []
 scope:
   - .agents/skills/deploy/scripts/host-verify.sh
@@ -84,3 +84,14 @@ claiming this ticket; its remaining work was host rollout at filing time.
   two messages. Removing the new branch makes two of its four tests fail.
 - `post-deploy.md` explains the new field next to `auto_exit4_drama_off`.
 - Left: the next deployment on a host at its cap shows the check passing with the `NOTE`.
+
+### 2026-10-22 backup lines between the cap and the exit (claude-opus-5-5-video-cloud-backup)
+
+- The #1660 deploy (53ad804a6, 02:02Z) ran on a host at its cap and the check still failed:
+  `auto_exited=2 auto_exit3_draft_cap=0`. Since #1660 a round that ends in an error runs the
+  Drive backup, so `backup: …` lines sit between 「本月已產生 60 支草稿，達到上限 60 支」 and
+  `auto exited with 3`, and the pair was lost. The awk program now skips `backup:` and `tidy:`
+  lines like the Shorts lines; the test adds that log and a negative case.
+- `hasAwk` probed with `awk 'BEGIN{}'`, which gawk 5.4 (Git for Windows) refuses, so the awk
+  tests skipped silently on Windows; the probe is `BEGIN{exit 0}` now and all four run.
+- Left: the next deploy at the cap shows the check passing with the `NOTE`.

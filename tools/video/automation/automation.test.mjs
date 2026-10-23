@@ -12,10 +12,11 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
-import { cuePieces } from "../core/captions.mjs";
+import { cuePieces, LOCALE_RULES, measure, parseSrt } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
 import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { CURIO_MUSIC } from "../core/curio.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -1940,6 +1941,20 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   assert.deepEqual(settled.characters, []);
   assert.equal(settle(written, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "anime-2d" }).look.preset, "cinematic-3d", "any other request preset still yields to the writer's");
 
+  // 奇聞檔案局 always has its music bed (owner, 2026-10-19), unless the owner's switch is off; the
+  // writer's own bed stays, and 原來如此 and the flat one-off keep what the writer wrote.
+  const musical = { ...settings, drama: { ...DRAMA_SETTINGS, music_enabled: true } };
+  const silent = { ...written, music: undefined };
+  assert.deepEqual(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, CURIO_MUSIC, "a curio script the writer left without music gets the series bed");
+  assert.notEqual(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, CURIO_MUSIC, "a copy, not the frozen constant");
+  const own = { prompt: "slow harp, no vocals", gain_db: -22 };
+  assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
+  assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
+  for (const preset of ["cute-cartoon", "flat-explainer"]) {
+    assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
+    assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, own, `${preset}: the writer's bed is kept`);
+  }
+
   const box = sandbox();
   const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
   const site = fakeSite({ answers: { planner: () => ({ slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: ["https://en.wikipedia.org/wiki/Speed_of_sound"], brief }) }, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
@@ -2091,10 +2106,12 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.deepEqual(Object.keys(call.payload), ["narration", "questions"], "the reader is told the script and the questions, nothing else");
   assert.equal(call.instructions, PANEL_INSTRUCTIONS, "no standing instructions, no stance, no genre section");
   assert.match(call.payload.narration, /^# /);
+  assert.equal(panels, 1, "a flat explainer asks one reader");
   assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included");
   const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
   assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
   assert.equal(verdict.panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.equal(verdict.readers, undefined, "one reader: no per-reader record");
   assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
 
   // 2. A required "no" is a rewrite, and the script is verified, heard and read again.
@@ -2116,6 +2133,60 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.equal(blockedKindOf(state), "prompt_fixes:narrative");
   assert.equal(resetForRetry(state), "prompt_fixes:narrative");
   assert.equal(state.prompt_fixes.narrative, undefined);
+});
+
+// 奇聞檔案局 asks two readers, as the brand stories do (owner, 2026-10-19): a required question
+// fails only when both say "no". 原來如此 (cute-cartoon) still asks one.
+test("the storytelling panel of a 奇聞檔案局 episode asks two readers and fails a question only when both say no", async () => {
+  for (const [preset, readers] of [["cute-mystery", 2], ["cute-cartoon", 1]]) {
+    const slug = `panel-${preset}`;
+    const box = sandbox(slug, "explainer");
+    const asked = [];
+    const site = fakeSite({ answers: {
+      writer: () => ({ video: longExplainer() }),
+      verifier: (body) => {
+        if (body.variant !== "narrative") return { report: "# 查核\n", video: null, claims: "", changed_facts: 0 };
+        asked.push(body.payload);
+        // Round 1: each reader fails a different question, so the two together pass. Round 2: both
+        // fail the same one.
+        if (asked.length <= readers) return panelAnswers(asked.length === 1 ? { chapters_link: false } : { payoffs: false });
+        return panelAnswers({ chapters_link: false });
+      },
+    } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-19T02:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    automation.persist({ slug, title: "雷聲", format: "drama", style_preset: preset, target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+    const state = readJson(path.join(box.work, slug, "auto.json"));
+    assert.equal(await automation.saveAndLint(state, { video: longExplainer() }), null, preset);
+    assert.equal(readJson(path.join(box.root, "docs", "videos", slug, "video.json")).look.preset, preset);
+
+    const outcome = await automation.narrativeGate(state);
+    assert.equal(asked.length, readers, `${preset}: ${readers} reader(s) a round`);
+    const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
+    if (readers === 1) {
+      assert.deepEqual(Object.keys(asked[0]), ["narration", "questions"], "one reader: the payload it always had");
+      assert.match(outcome, /screenplay rewritten after the storytelling panel's note/, "one reader's no is a rewrite");
+      assert.equal(verdict.readers, undefined);
+      continue;
+    }
+    assert.deepEqual(asked.map((payload) => payload.reader), [1, 2], "each reader's request is its own");
+    assert.deepEqual(Object.keys(asked[0]), ["narration", "questions", "reader"]);
+    assert.equal(asked[0].narration, asked[1].narration, "both read the same script");
+    assert.match(outcome, /the storytelling panel passed \(round 1\)/, "a question one reader met is met");
+    assert.deepEqual([verdict.passed, verdict.failed], [true, []]);
+    assert.deepEqual(verdict.readers.map((each) => each.failed), [["chapters_link"], ["payoffs"]], "each reader's answers are kept");
+
+    const video = readJson(path.join(box.root, "docs", "videos", slug, "video.json"));
+    video.scenes[0].lines[0].text = "接下來我們來看三件事。";
+    assert.equal(await automation.saveAndLint(state, { video }), null);
+    assert.match(await automation.narrativeGate(state), /screenplay rewritten after the storytelling panel's note/, "both readers' no is a rewrite");
+    assert.equal(asked.length, 4);
+    const problem = site.calls.run.at(-1).payload.fix.problems[0];
+    assert.match(problem, /說故事檢查沒過：chapters_link/);
+    assert.match(problem, /讀者一：.*讀者二：/, "the writer reads both readers' evidence");
+    assert.deepEqual(readJson(path.join(box.work, slug, "review", "narrative.json")).failed, ["chapters_link"]);
+  }
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
@@ -2983,6 +3054,63 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.onSite().ready_to_upload, true);
 });
 
+/** filledSheet, in Thai script for a th sheet: what a translator that keeps to the locale's script answers. */
+function scriptSheet(sheet) {
+  const filled = filledSheet(sheet);
+  if (sheet.locale !== "th") return filled;
+  const thai = (text) => text.replace(/^th /, "ภาษาไทย ").replace(/[a-z]+/g, "คำ");
+  return {
+    ...filled,
+    title: filled.title && { ...filled.title, text: "เลือกโมเดลอย่างไร" },
+    description: filled.description && { ...filled.description, text: "สามคำถามก่อนดูอันดับ" },
+    chapters: filled.chapters.map((chapter) => ({ ...chapter, text: `บท ${thai(chapter.scene)}` })),
+    lines: filled.lines.map((line) => ({ ...line, text: `โมเดลนี้ราคาเริ่มต้นต่อเดือนและใช้งานได้ทันทีโดยไม่ต้องติดตั้งอะไรเพิ่มเติม ${thai(line.id)}` })),
+  };
+}
+
+test("a pipeline video's es, pt, id, vi or th title and captions are translated in the locale's register and script, cut by the locale's rules and sent in the batch (2026-10-20)", async () => {
+  const video = await finishedVideo({ translate: scriptSheet });
+  video.choose({ es: { metadata: false, captions: true, dub: false }, th: { metadata: true, captions: true, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: es captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: th metadata and captions translated and reviewed$/);
+  const [es, th] = video.calls("translator");
+  assert.deepEqual([es.payload.locale, th.payload.locale], ["es", "th"]);
+  assert.match(th.instructions, /th polite Bangkok Thai with the woman narrator's ค่ะ／นะคะ used sparingly \(never ครับ\)/);
+  assert.match(th.instructions, /es neutral Latin-American Spanish with tú \(never vosotros, never voseo\)/);
+  assert.match(th.instructions, /th about 60 not counting the vowel and tone marks/);
+  assert.ok(video.runs.includes(`i18n-sheet --slug ${video.slug} --locale th --parts metadata,captions`));
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(es captions, th metadata\+captions\)$/);
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload, { locales: { es: { captions: "ready" }, th: { metadata: "ready", captions: "ready" } } });
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual(Object.keys(metadata.localizations), ["th"]);
+  assert.equal(metadata.localizations.th.title, "เลือกโมเดลอย่างไร｜ซับไทย", "the title says it has Thai subtitles");
+  assert.deepEqual(metadata.captions, ["captions/es.srt", "captions/th.srt", "captions/zh-TW.srt"]);
+  assert.match(readFileSync(video.upload("description.th.txt"), "utf8"), /สารบัญ/, "the description's sections are labelled in Thai");
+  // Every Thai cue breaks between words and fits 35 letters a line, the marks above and below not counted.
+  const rules = LOCALE_RULES.th;
+  const words = new Intl.Segmenter("th", { granularity: "word" });
+  for (const cue of parseSrt(readFileSync(video.upload("captions", "th.srt"), "utf8"))) {
+    const lines = cue.text.split("\n");
+    assert.ok(lines.length <= rules.maxLines);
+    for (const line of lines) {
+      assert.ok(measure(line, rules) <= rules.maxChars, `"${line}" fits`);
+      const breaks = new Set([...words.segment(line)].map(({ index }) => index));
+      assert.ok(breaks.has(0), `"${line}" starts on a word`);
+    }
+  }
+  assert.equal(await video.step(), null, "everything chosen is made");
+});
+
+test("a th sheet answered in English does not merge: the worker asks the translation again instead of sending Latin captions as Thai", async () => {
+  const video = await finishedVideo();
+  video.choose({ th: { metadata: false, captions: true, dub: false } });
+  assert.match(await video.step(), /the th translation does not merge: .*not written in Thai script, as th is/);
+  assert.ok(!existsSync(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "th.json")) || Object.keys(readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "th.json")).lines).length === 0, "nothing in English went in as Thai");
+  assert.equal(video.reviews("languages").length, 0);
+});
+
 test("a choice narrowed before the upload, after its package was written, writes the package again once, without the parts it no longer has, and the exact package goes up for the confirmation; a package that matches the choice is left alone", async () => {
   const video = await finishedVideo({ confirmed: false });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
@@ -3419,11 +3547,14 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // text says "four languages" and the zh-CN register and length lines are gone; all four changed.
 // 2026-10-13: the translator was told a translated title and its tags carry no channel or series
 // name (the owner); the other three kept their bytes.
+// 2026-10-20: es, pt, id, vi and th joined the targets (the owner); every text names each locale's
+// line length and register, the translator and the caption reviewer its script, and the header
+// says "up to nine languages"; all four changed.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7",
-  caption_reviewer: "52456f5b30e7c539cb0c84e105fc821ece01c4fb323a573f4d49cfa7e8c62647",
-  "translator:shorten": "4253eeb617b7998df7ec725e74d9bebaa64e83018371b2d695748a9758f9d5be",
-  "translator:reword": "d87f8a43b9c5ecd33c9da5e6f9cb19f6331f0261752c3140a824a1994ff53481",
+  translator: "e78f9d64ed6298f39bc017b13f86d8127a92e59a356c43dccb5a2d14dd1108ff",
+  caption_reviewer: "a604598518f2d55bfd070de6961e9bd82bcc6d76910864e5f3a15488d02bf8ea",
+  "translator:shorten": "e1ebd8424a051e1b6beb23745d5cbaa6ec9daf49e1075f73da6e62b6976fb0a7",
+  "translator:reword": "58380c45cb614385b72f95bc6eec1620f41b99d5215c009df99b03fde1347028",
 };
 const promptSha = (text) => createHash("sha256").update(text).digest("hex");
 

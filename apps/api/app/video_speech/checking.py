@@ -43,10 +43,9 @@ TRANSCRIBE_INSTRUCTIONS = (
     "(for example AI, GPT, p95). Write numbers the way they are spoken. Do not correct, "
     "summarize or add anything. Output only the transcript."
 )
-# One prompt per track language (the values of TrackLanguage in schemas.py). The three dubs are
-# read from translations that write numbers as digits, so their transcribers are left to do the
-# same. A zh-CN dub is not made since 2026-10-09 (a video's languages are four), so it has no
-# prompt any more.
+# One prompt per track language (the values of TrackLanguage in schemas.py). The dubs are read
+# from translations that write numbers as digits, so their transcribers are left to do the same.
+# A zh-CN dub is not made since 2026-10-09, so it has no prompt any more.
 TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE: dict[str, str] = {
     NARRATION_LANGUAGE: TRANSCRIBE_INSTRUCTIONS,
     "en": (
@@ -66,6 +65,39 @@ TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE: dict[str, str] = {
         "not in Hangul. Do not correct, summarize, translate or add anything. Output only the "
         "transcript."
     ),
+    # The five a dub can be in since 2026-10-20 (tasks/open/2026-10-19-worker-video-languages-
+    # five.md, phase two); never a narration. Each names the variety the dub voice is asked for
+    # (tools/video/dubs/plan.mjs DUB_STYLES).
+    "es": (
+        "Transcribe this Latin American Spanish narration word for word in Spanish, with its "
+        "accents and ñ. Write English words, acronyms and product names as Latin letters the way "
+        "they are spoken (for example AI, GPT, p95). Do not correct, summarize, translate or add "
+        "anything. Output only the transcript."
+    ),
+    "pt": (
+        "Transcribe this Brazilian Portuguese narration word for word in Portuguese, with its "
+        "accents and cedillas. Write English words, acronyms and product names as Latin letters "
+        "the way they are spoken (for example AI, GPT, p95). Do not correct, summarize, "
+        "translate or add anything. Output only the transcript."
+    ),
+    "id": (
+        "Transcribe this Indonesian narration word for word in Indonesian. Write English words, "
+        "acronyms and product names as Latin letters the way they are spoken (for example AI, "
+        "GPT, p95), not in an Indonesian spelling. Do not correct, summarize, translate or add "
+        "anything. Output only the transcript."
+    ),
+    "vi": (
+        "Transcribe this Vietnamese narration word for word in Vietnamese, with every tone mark "
+        "and vowel mark. Write English words, acronyms and product names as Latin letters the "
+        "way they are spoken (for example AI, GPT, p95), not in a Vietnamese spelling. Do not "
+        "correct, summarize, translate or add anything. Output only the transcript."
+    ),
+    "th": (
+        "Transcribe this Thai narration word for word in Thai script. Write English words, "
+        "acronyms and product names as Latin letters the way they are spoken (for example AI, "
+        "GPT, p95), not in Thai script. Do not correct, summarize, translate or add anything. "
+        "Output only the transcript."
+    ),
 }
 # Speech recognisers take a phrase list for the same reason: a short English word inside
 # Mandarin ("Go", "Plus") is heard as whichever Chinese character sounds like it, inside
@@ -79,6 +111,11 @@ SOUND_ALIKE_SCRIPT = {
     "en": "other words",
     "ja": "kana",
     "ko": "Hangul",
+    "es": "Spanish words",
+    "pt": "Portuguese words",
+    "id": "Indonesian words",
+    "vi": "Vietnamese syllables",
+    "th": "Thai script",
 }
 
 

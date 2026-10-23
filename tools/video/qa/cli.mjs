@@ -21,7 +21,7 @@ import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS
 import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { isStory } from "../core/story.mjs";
@@ -32,7 +32,7 @@ import { THUMBNAIL_FILE } from "../render/cli.mjs";
 import { assembleItem, captionsItem, COMPILATION_ITEM_IDS, compilationCaptionsItem, disclosureDecision, disclosureItem, item, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
 import { factsChecks, VERIFY_FILE } from "./facts.mjs";
 import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.mjs";
-import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
+import { paceDetail, paceProblems, slideStates, terminalHoldDetail, terminalHoldProblems } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
@@ -195,7 +195,7 @@ async function compilationQa(ctx, { project, lint, workdir, workBase }) {
     command: "compile",
     stale: `other cuts or cards${!brandingMatches ? ", or another branding selection" : ""}${uncleared.length ? ` (episodes not cleared for upload: ${uncleared.join(", ")})` : ""}`,
   }));
-  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
+  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: DEFAULT_LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
@@ -281,6 +281,9 @@ export async function run(command, args, ctx) {
   } else {
     try {
       const states = slideStates(doc, timeline);
+      // A terminal typed at a human pace must finish before its narration does, on the cut as measured.
+      const holds = terminalHoldProblems(doc, timeline);
+      const withHolds = (passed, detail) => item("pace", passed && holds.length === 0, holds.length ? `${detail}; ${terminalHoldDetail(holds)}` : detail);
       if (pictures) {
         // Illustrated slides (docs/videos/ILLUSTRATED.md) are measured on the cadence: a picture
         // held past the limit or too little of the runtime illustrated fails; a slow average only shows.
@@ -289,10 +292,12 @@ export async function run(command, args, ctx) {
         const summary = cadenceSummary(states);
         const share = Math.round(illustrationShare(doc, timeline) * 100);
         const figures = `${summary.count} pictures, the longest ${summary.longest} s, a new one every ${summary.average} s on average, ${share}% of the runtime illustrated (limits: ${MAX_PICTURE_SECONDS} s, ${Math.round(MIN_ILLUSTRATION_SHARE * 100)}%)`;
-        items.push(item("pace", failing.length === 0, failing.length ? `${figures}; ${failing.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}` : figures, cadence.filter((problem) => problem.kind === "average").map((problem) => problem.message)));
+        const paced = withHolds(failing.length === 0, failing.length ? `${figures}; ${failing.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}` : figures);
+        const averages = cadence.filter((problem) => problem.kind === "average").map((problem) => problem.message);
+        items.push(averages.length ? { ...paced, warnings: averages } : paced);
       } else {
         const problems = paceProblems(states);
-        items.push(item("pace", problems.length === 0, paceDetail(states, problems)));
+        items.push(withHolds(problems.length === 0, paceDetail(states, problems)));
       }
     } catch (error) {
       items.push(item("pace", false, error.message));

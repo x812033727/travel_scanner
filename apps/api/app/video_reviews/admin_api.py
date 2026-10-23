@@ -222,6 +222,10 @@ async def retry_dub(
 ) -> ProjectOut:
     """Ask the worker to make a skipped dub track again (docs/videos/DUBS.md §再做一次).
 
+    Any of the eight languages a video may add (DubLocale): the worker dubs all of them since
+    2026-10-20, es, pt, id, vi and th included; anything else is a 422 like any unknown
+    language.
+
     It only records the request and reads the month's Gemini speech meter; the worker takes it
     on its next round, and the service refuses what the worker could not act on."""
     runtime = await load_runtime_settings(session)

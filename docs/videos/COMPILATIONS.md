@@ -53,9 +53,11 @@
 | 2 | 合集請求 API | `apps/api/app/video_reviews/`（或新的 `video_compilations/`）、一支 migration | `POST /admin/videos/compilations {title, episodes[], intro, outro}` 建一筆請求；工人用 `next`、`start`、`done` 取件；請求記下各集 master 的 SHA |
 | 3 | 工人組合集 | `tools/video/compile/`（泛化成「任意 mp4 加字幕加配音」）、`tools/video/automation/` | 統一規格、包頭尾、合併 CC 與配音、寫章節與 youtube metadata，再 `review-push` final；下載與 VPS 上傳程式也認得這種合集 |
 | 4 | 後台介面 | `apps/web/components/admin-video-browser.tsx`、BFF | 列表可以多選，拖曳排序，有標題、片頭、片尾的開關，按「建立合集」後看得到進度；完成後出現在影片列表，可以下載和審核 |
-| 5 | 已匯入漫劇的多語配音（之後） | 本機工具、`tools/video/import/` 的語言掛載 | 每集掛上 `dub_<locale>` 與 `captions_<locale>`；**等繁中確認後才開工** |
+| 5 | 已匯入漫劇的多語配音 | `tools/video/import/` 的 `--languages` | 已做：`import --from DIR --languages` 把資料夾的 `description.<l>.txt`、`<l>.srt`、`dub.<l>.m4a` 照站主在語言面板勾的部件送成一批 `languages`（hand_pushed，綁定網站上最新的那份匯入成片；配音長度和成片差超過 0.5 秒就不送）。送出後要換成片：只剩這個指令送的、站主還沒核准的語言批次時，一般 `import` 照樣可以換，再送一次 `--languages` 取代舊批次；站主核准過就要走換版流程 |
 
-1 是 3 的前提，2 和 4 可以平行做。5 獨立，不擋前面四張。
+| 6 | 匯入影片的上傳包 | `tools/video/import/` 的 `--publish` | 已做（2026-10-21）：成片與語言批次都核准後，`import --from DIR --publish` 用同一個資料夾組上傳包（`publish` 審核：metadata.json、1080p final.mp4、封面 ≤ 2 MB、zh-TW 與勾選語言的 CC 和配音，hand_pushed），站主核准後卡片進「可以上架」，按「送到 YouTube」跟其他影片一樣。meta.json 可加 `tags`、`category_id`、`made_for_kids`、`contains_synthetic_media`（漫劇預設要揭露）。**先送語言、再送上傳包**：上傳包送出後 `--languages` 會拒絕，因為之後的語言批次沒有網站要的來源清單，會讓上傳包讀不了 |
+
+1 是 3 的前提，2 和 4 可以平行做。5、6 獨立，不擋前面四張。
 
 ## 風險
 

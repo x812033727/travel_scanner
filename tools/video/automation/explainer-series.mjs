@@ -5,6 +5,7 @@
 // EXPLAINER_VARIANTS: the series' brief reaches the model in the instructions, never in the
 // payload, so no payload of an existing video moves and the settings page's "prompt sent" row of
 // one series is never overwritten by another's.
+import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
 import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
 import { CONDENSATION_RULE, NARRATIVE_RULES } from "./register.mjs";
@@ -214,7 +215,30 @@ today,`,
   descriptionGuide: `description is the body only, ending on 「資料截至 YYYY-MM-DD」 with "today"'s
   date and one sentence saying that the illustrations are AI-generated and how real people are
   shown`,
-  music: "light, curious, a little mysterious, no vocals",
+  music: CURIO_MUSIC.prompt,
+  // The owner (2026-10-19) found the brand stories smoother, with more hooks and with music, and
+  // wants this series as good or better: the story writer's cadence (story-prompts.mjs
+  // STORY_HOOK_RULES), told as a file, and a music bed every episode. Lint reads the same 45 s and
+  // eight loops on a curio- slug (core/narrative.mjs TIGHT_CADENCE).
+  storyRules: `File hooks (an episode of 奇聞檔案局 is held by one narrator over still pictures, so these replace
+the 60-to-90-second cadence and the three-loops-for-ten-minutes minimum of the hook rules above;
+every other hook rule stands):
+- About every 30 to 45 seconds of the body (about 130 to 200 spoken characters) at least one
+  question is left hanging: a question, an escalation (「但這還不是最怪的」), a record that does
+  not fit, holding back the why, or a turn. No stretch of the body runs longer than 45 seconds
+  without one; lint warns past it.
+- Every chapter but the close ends its last sentence on one concrete, unanswered question or
+  action (a record not yet opened, a number not yet explained, a search whose result is not yet
+  told), and the next chapter's first sentence picks it up: the parts of the structure are beats
+  of ONE story told in the order it happened, never sections the narrator walks through.
+- A hook stands on a fact of this file: a date, a number, one person's decision, something that
+  should not have been there. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never
+  a table of contents. At most one forward hook in the whole episode says so out loud, and
+  「還記得…」 at most five times.
+- "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
+  least 3 of them planted in the condensation, and every one is paid off.
+- The series has a music bed under the whole narration, as the brand stories do: when
+  "drama_settings.music_enabled" is true, "music" is never left out.`,
   shortOne: "Short 1 is the hook and how the file closes (存檔 or 未結) in brief",
   bibleOf: "ONE 奇聞檔案局 file",
   premiseIs: `"premise" is the file (an event, a claim or a legend, or a question about one)`,
@@ -240,8 +264,8 @@ that reveals it); the opening hook as the first spoken line (a year or a place a
 doing one concrete thing); the ONE scene the condensation tells, in order, up to the first fact
 that makes no sense, then the three or four later moments it teases, each cut off before its
 result (「開場濃縮：…」, no later chapter's result given away); the open loops it plants
-(「鉤子：<what is held back> → 第 N 章回收」, at least three, the condensation's teasers among
-them); then one chapter for each line of
+(「鉤子：<what is held back> → 第 N 章回收」, at least eight for ten minutes, about one for every
+75 seconds of the body, the condensation's teasers among them); then one chapter for each line of
 原因, in the same order, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
 key pictures as "picture: one person doing one thing, and where / camera"; where a number, a
@@ -399,7 +423,8 @@ ${PICTURE_RULES}
 ${cardRules(cards)}
 ${p.shape}
 - ${CONDENSATION_RULE}
-${NARRATIVE_RULES}
+${NARRATIVE_RULES}${p.storyRules ? `
+${p.storyRules}` : ""}
 ${LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";
   "subtitles": {"burn_in": false}; ${p.thumbnailGuide}

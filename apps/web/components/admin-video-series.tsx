@@ -44,7 +44,7 @@ type SeriesEpisode = {
 // compilation joins the finished episodes into one cut the owner downloads from the series page.
 type SeriesGenre = "xianxia-bonds" | "rebirth-revenge" | "system-game" | "urban-return" | "empress-rise" | "custom";
 type SeriesLead = "female" | "male" | "dual-male" | "ensemble";
-type VisualTier = "clips" | "hybrid" | "stills";
+type VisualTier = "clips" | "hybrid" | "stills" | "manga";
 type RuntimeSpec = { body_target_seconds: number; op_ed_budget_seconds: number; broadcast_slot_seconds: number; slot_reserve_seconds: number };
 type SeriesSummary = {
   id: string; slug: string; title: string; premise: string; aspects: string[]; tone: string; style_preset: string; target_minutes: number;
@@ -111,7 +111,7 @@ const isLongAnime = (series: SeriesSummary) => !series.planning_only && series.p
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 const GENRES: readonly SeriesGenre[] = ["xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"];
 const LEADS: readonly SeriesLead[] = ["female", "male", "dual-male"];
-const TIERS: readonly VisualTier[] = ["clips", "hybrid", "stills"];
+const TIERS: readonly VisualTier[] = ["clips", "hybrid", "stills", "manga"];
 const BUDGETS = ["clip_seconds", "images", "judge_calls", "episodes_per_month"] as const;
 // The API's bounds on a binge run (SeriesIn.total_minutes); the episode length is narrower than the
 // classic form's 1–8 because the compilation's rhythm is written for two-to-four-minute episodes.
@@ -383,6 +383,8 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
  */
 function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesSlug: string | null) => void; media?: MediaOptions; configured?: readonly string[]; noKey?: string }) {
   const t = useTranslations("admin.videoReviews");
+  // The tier's names live with the series forms (admin.videoSeries), which this form shares them with.
+  const tiers = useTranslations("admin.videoSeries");
   const [premise, setPremise] = useState("");
   const [title, setTitle] = useState("");
   const [guide, setGuide] = useState("");
@@ -391,6 +393,9 @@ function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesS
   // The owner's own pick of an image model; null until they make one (derived each render, so a
   // settings answer that arrives after the preset was picked changes nothing they chose).
   const [imageChoice, setImageChoice] = useState<string | null>(null);
+  // The one binge field a one-off takes (docs/videos/BINGE.md §畫面等級): "clips" as every
+  // one-off was so far, or the narrated motion comic of stills.
+  const [tier, setTier] = useState<VisualTier>("clips");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -411,7 +416,7 @@ function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesS
     try {
       const filed = await api<DramaRequest>("/admin/video-automation/drama-requests", {
         method: "POST",
-        body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined, image_model: image.offered && image.value ? image.value : undefined }),
+        body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined, image_model: image.offered && image.value ? image.value : undefined, ...(tier === "clips" ? {} : { visual_tier: tier }) }),
       });
       setPremise(""); setTitle(""); setGuide(""); setNote("");
       onFiled(filed?.series_slug ?? null);
@@ -445,6 +450,12 @@ function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesS
           </select>
         </label>}
       </div>
+      {!isExplainerPreset(preset) && <fieldset className="grid gap-2"><legend className="text-sm font-semibold">{tiers("binge.tier")}</legend>
+        {(["clips", "manga"] as const).map((each) => <label key={each} className="flex items-start gap-2">
+          <input type="radio" name="request-tier" className="mt-1" value={each} checked={tier === each} disabled={busy} onChange={() => setTier(each)} />
+          <span className="grid gap-1 text-sm"><span className="font-semibold">{tiers(`tiers.${each}.name`)}</span><span className="text-[var(--muted)]">{tiers(`tiers.${each}.detail`)}</span></span>
+        </label>)}
+      </fieldset>}
       <label className="grid gap-2 text-sm font-semibold">{t("requestNote")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("requestNotePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       <div><Button type="submit" disabled={busy || !premise.trim() || !guideOk || !Number.isInteger(minutes) || minutes < duration.min || minutes > duration.max}>{busy ? t("saving") : t("fileRequest")}</Button></div>

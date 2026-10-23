@@ -9,7 +9,9 @@
 // JetBrains Mono for code. A caption locale whose script that font lacks or draws in another
 // font's weight gets its own font, first in the stack, on its own thumbnail only (LOCALE_FONTS):
 // Korean (Hangul) and Japanese, whose kanji the TC font draws in their Traditional Chinese forms
-// (直, 骨, 写 differ in stroke from the Japanese standard). Coverage is judged per language, so a
+// (直, 骨, 写 differ in stroke from the Japanese standard), and Thai, which no other bundled font
+// has (2026-10-20; es, pt, id and vi are Latin letters the TC font's latin and vietnamese subsets
+// cover, so their thumbnails stay in it). Coverage is judged per language, so a
 // Traditional Chinese slide still refuses the Japanese forms only the JP font has. The Simplified
 // Chinese font stays bundled, but no locale uses it since zh-CN left the video languages
 // (2026-10-09).
@@ -23,6 +25,7 @@ export const FONT_PACKAGES = {
   "noto-sans-kr": "@fontsource-variable/noto-sans-kr",
   "noto-sans-sc": "@fontsource-variable/noto-sans-sc",
   "noto-sans-jp": "@fontsource-variable/noto-sans-jp",
+  "noto-sans-thai": "@fontsource-variable/noto-sans-thai",
 };
 
 /** The fonts every page loads: the slide font and the code font. */
@@ -33,6 +36,7 @@ export const SLIDE_FAMILY = "Noto Sans TC Variable";
 export const LOCALE_FONTS = {
   ko: { font: "noto-sans-kr", family: "Noto Sans KR Variable", lang: "ko" },
   ja: { font: "noto-sans-jp", family: "Noto Sans JP Variable", lang: "ja" },
+  th: { font: "noto-sans-thai", family: "Noto Sans Thai Variable", lang: "th" },
 };
 
 const require = createRequire(import.meta.url);

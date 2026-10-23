@@ -26,7 +26,7 @@ import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mj
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
-import { LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -910,7 +910,7 @@ const manifestBytes = (manifest) => `${JSON.stringify(manifest, null, 2)}\n`;
 
 /** A language choice as the site keeps it (LocalesIn): the chosen locales only, a dub with its captions. */
 export function siteChoice(locales) {
-  return Object.fromEntries(LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
+  return Object.fromEntries(TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
     const entry = locales?.[locale] ?? {};
     const choice = { metadata: entry.metadata === true, captions: entry.captions === true || entry.dub === true, dub: entry.dub === true };
     return choice.metadata || choice.captions || choice.dub ? [[locale, choice]] : [];

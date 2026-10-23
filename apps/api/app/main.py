@@ -86,6 +86,8 @@ from app.usage.router import admin_router as admin_usage_router
 from app.usage.router import router as usage_router
 from app.video_automation.admin_api import admin_router as admin_video_automation_router
 from app.video_automation.admin_api import tool_router as video_automation_router
+from app.video_backup.admin_api import admin_router as admin_video_backup_router
+from app.video_backup.admin_api import tool_router as video_backup_router
 from app.video_media.admin_api import media_router as video_media_router
 from app.video_plans.router import router as admin_video_plans_router
 from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
@@ -212,6 +214,9 @@ app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")
 app.include_router(video_youtube_router, prefix="/api/v1")
 app.include_router(video_youtube_publish_router, prefix="/api/v1")
+# Registered before the automation routes, which share its /video/automation prefix.
+app.include_router(video_backup_router, prefix="/api/v1")
+app.include_router(admin_video_backup_router, prefix="/api/v1")
 app.include_router(video_automation_router, prefix="/api/v1")
 app.include_router(admin_video_automation_router, prefix="/api/v1")
 app.include_router(video_media_router, prefix="/api/v1")

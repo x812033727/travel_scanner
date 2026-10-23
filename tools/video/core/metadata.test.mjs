@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withUtm, youtubeWarnings } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, STORY_TAGS, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withStoryTag, withUtm, youtubeWarnings } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -174,6 +174,31 @@ test("hashtags drop spaces and punctuation, skip repeats in any case and stop at
   assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
 });
 
+test("a brand story's title says so in its own language before the captions tag, once", async () => {
+  assert.deepEqual(Object.keys(STORY_TAGS).sort(), Object.keys(CAPTION_TAGS).sort(), "every captioned language has its story word");
+  assert.equal(withCaptionTag(withStoryTag("杜比憑什麼讓全世界付它錢？", "zh-TW"), "zh-TW"), "杜比憑什麼讓全世界付它錢？｜品牌故事｜CC字幕");
+  assert.equal(withCaptionTag(withStoryTag("Why does the world pay Dolby?", "en"), "en"), "Why does the world pay Dolby?｜Brand Story｜CC Subtitles");
+  assert.equal(withStoryTag("ドルビーはなぜ", "ja"), "ドルビーはなぜ｜ブランドストーリー");
+  assert.equal(withStoryTag("¿Por qué Dolby?", "es"), "¿Por qué Dolby?｜Historia de marca");
+  // A tag already there, story or captions, in any language or spacing, is not doubled.
+  assert.equal(withStoryTag("杜比｜品牌故事｜CC字幕", "zh-TW"), "杜比｜品牌故事");
+  assert.equal(withStoryTag("Dolby | brand story", "en"), "Dolby｜Brand Story");
+  assert.equal(withStoryTag("Dolby｜Brand Story", "ja"), "Dolby｜ブランドストーリー", "another language's story tag is replaced");
+  // Left off when it would leave no room for even the short captions tag.
+  assert.equal(withStoryTag("a".repeat(85), "en"), `${"a".repeat(85)}｜Brand Story`);
+  assert.equal(withStoryTag("a".repeat(90), "en"), "a".repeat(90));
+  // The package composes it for a story only, in every localization.
+  const { composeMetadata } = await import("../package/metadata.mjs");
+  const doc = fixture();
+  const timeline = estimateTimeline(doc);
+  const translations = { en: { title: "A title", description: "A description" } };
+  const plain = composeMetadata({ doc, timeline, translations }).metadata;
+  assert.doesNotMatch(plain.title, /品牌故事/);
+  const story = composeMetadata({ doc: { ...doc, category: "story" }, timeline, translations }).metadata;
+  assert.equal(story.title, `${doc.youtube.title}｜品牌故事｜CC字幕`);
+  assert.equal(story.localizations.en.title, "A title｜Brand Story｜CC Subtitles");
+});
+
 test("every title ends with its language's captions tag, added once", () => {
   assert.equal(withCaptionTag("AI 模型怎麼挑｜原來如此事務所", "zh-TW"), "AI 模型怎麼挑｜原來如此事務所｜CC字幕");
   assert.equal(withCaptionTag("Picking a model", "en"), "Picking a model｜CC Subtitles");
@@ -181,7 +206,15 @@ test("every title ends with its language's captions tag, added once", () => {
   assert.equal(withCaptionTag("AI 모델 고르기", "ko"), "AI 모델 고르기｜CC 자막");
   assert.equal(withCaptionTag("AI 模型怎麼挑｜CC字幕 ", "zh-TW"), "AI 模型怎麼挑｜CC字幕", "not twice");
   assert.equal(withCaptionTag("t", "fr"), "t｜CC Subtitles", "an untabled locale reads the English tag");
-  assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "ja", "ko", "zh-TW"]);
+  assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "es", "id", "ja", "ko", "pt", "th", "vi", "zh-TW"]);
+  // es, pt, id, vi and th (2026-10-20): the word viewers search for subtitled videos in each.
+  assert.equal(withCaptionTag("Cómo elegir un modelo", "es"), "Cómo elegir un modelo｜CC");
+  assert.equal(withCaptionTag("Como escolher um modelo", "pt"), "Como escolher um modelo｜Legendado");
+  assert.equal(withCaptionTag("Cara memilih model", "id"), "Cara memilih model｜Sub Indo");
+  assert.equal(withCaptionTag("Cách chọn mô hình", "vi"), "Cách chọn mô hình｜Vietsub");
+  assert.equal(withCaptionTag("วิธีเลือกโมเดล", "th"), "วิธีเลือกโมเดล｜ซับไทย");
+  assert.equal(withCaptionTag("วิธีเลือกโมเดล｜ซับไทย", "th"), "วิธีเลือกโมเดล｜ซับไทย", "not twice");
+  assert.equal(withCaptionTag("Cara memilih model | Sub Indo", "vi"), "Cara memilih model｜Vietsub", "another language's tag is replaced");
   // A tag added by hand, or in another language, is replaced rather than added to.
   assert.equal(withCaptionTag("Area 51｜ CC字幕", "en"), "Area 51｜CC Subtitles");
   assert.equal(withCaptionTag("51 區｜ CC字幕｜CC字幕", "zh-TW"), "51 區｜CC字幕");

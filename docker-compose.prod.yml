@@ -308,10 +308,19 @@ services:
       WHISPER_MODEL: medium
       HF_HOME: /var/lib/mokaair/video-home/whisper
       # The first run also downloads the model; the default (10 min plus 2 a clip) covers it.
+      # The backup to the owner's Google Drive (docs/videos/BACKUP.md): the rclone remote
+      # "videobackup" in the host's /etc/travel-scanner/rclone-videos/rclone.conf, whose
+      # root_folder_id is the Drive folder named here. Without the file the worker reports
+      # "not configured" to the site; once backups are on, the tidy then keeps every video.
+      VIDEO_BACKUP_RCLONE_CONFIG: /etc/mokaair/rclone-videos/rclone.conf
+      VIDEO_BACKUP_LOCK_PATH: AI/備份
     volumes:
       - video_work:/var/lib/mokaair/video-work
       - video_home:/var/lib/mokaair/video-home
       - video_docs:/opt/mokaair/docs/videos
+      # A folder, not the file: a missing host file would be created as a folder by the mount
+      # and block the setup. The file must be readable by the worker's uid 1001.
+      - /etc/travel-scanner/rclone-videos:/etc/mokaair/rclone-videos:ro
     # Chromium renders the slides; Docker's 64 MB /dev/shm makes it crash on 1080p pages.
     shm_size: "1gb"
     # Each lane may render with its own Chromium and ffmpeg at the same time.

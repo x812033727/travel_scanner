@@ -10,7 +10,7 @@ import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
 import { writeAudioFixture, fixture, fixtureLexicon, sandbox, storyFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
-import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
 import { buildTimeline, SAMPLE_RATE, speechHash, visualHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
@@ -42,7 +42,7 @@ function finishedVideo({ seconds = {} } = {}) {
   const workdir = box.workdir;
   mkdirSync(workdir, { recursive: true });
   // Translations of every line and field, current with the zh-TW text.
-  for (const locale of LOCALES.filter((each) => each !== "zh-TW")) {
+  for (const locale of DEFAULT_LOCALES.filter((each) => each !== "zh-TW")) {
     const lines = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `line ${line.id}` }]));
     const chapters = Object.fromEntries(doc.scenes.filter((scene) => scene.chapter).map((scene) => [scene.id, `${locale} ${scene.id}`]));
     atomicWrite(path.join(box.dir, "i18n", `${locale}.json`), `${JSON.stringify({ title: `${locale} title`, description: `${locale} description`, tags: [`${locale} tag`], chapters, source_hashes: sourceHashes(doc), lines }, null, 2)}\n`);
@@ -477,7 +477,7 @@ test("usage: qa needs a slug, and a script with lint errors is sent to lint firs
 const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
 
 test("a compiled series passes its six checks without a judge, and a re-cut episode fails the join", async () => {
-  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, LOCALES])) });
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, DEFAULT_LOCALES])) });
   writeTranslations(box, box.doc);
   const fake = fakeFfmpeg({ total: COMPILATION_FRAMES });
   const compiled = compileContext(box, fake);

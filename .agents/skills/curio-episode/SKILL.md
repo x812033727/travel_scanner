@@ -1,6 +1,6 @@
 ---
 name: curio-episode
-description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、該走哪條路線（新集走主機可愛解說 cute-mystery；重製走本機 recut）、MiniMax image-01 可愛插圖怎麼寫提示詞、插圖怎麼驗收（內容相關的可愛插畫，不是證據重建）、整集一次報價、卡片的上限、片頭片尾、配音與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、U、L 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
+description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、該走哪條路線（新集走主機可愛解說 cute-mystery；重製走本機 recut）、MiniMax image-01 可愛插圖怎麼寫提示詞、插圖怎麼驗收（內容相關的可愛插畫，不是證據重建）、整集一次報價、卡片的上限、跟品牌故事一樣每 45 秒一個鉤子與配樂、片頭片尾、配音與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、U、L 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
 metadata:
   short-description: 奇聞檔案局：系列畫風、路線、插圖驗收、檢查
 ---
@@ -35,6 +35,8 @@ metadata:
 | 長度 | 目標 10 分鐘，旁白正文至少 8 分鐘 | `docs/videos/long-form/README.md` |
 | 片頭片尾 | 頻道片頭放在開場濃縮之後（`intro_at` = after_first_chapter）；片尾 v4-endscreen，旁白不提下一支 | `docs/videos/BRANDING.md` |
 | 語言 | zh-TW 先做完，en／ja／ko 的標題說明、CC、配音由站主勾選 | `docs/videos/DUBS.md` |
+| 鉤子 | 跟品牌故事一樣密：正文每 30–45 秒一個懸念，沒有超過 45 秒的空檔；`loops` 十分鐘至少 8 個；每章停在一個沒解的問題上 | 站主 2026-10-19「品牌故事比較順也有比較多鉤子」；lint 的 `TIGHT_CADENCE`（`tools/video/core/narrative.mjs`） |
+| 配樂 | 每一集都有：`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`，跟品牌故事同樣的音量；沒有配樂 lint 會警告 | 站主 2026-10-19「而且有音樂」；`tools/video/core/curio.mjs` 的 `CURIO_MUSIC` |
 
 ## 選路線
 
@@ -46,6 +48,30 @@ metadata:
 
 不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
 H04–H06 就是在這裡偏掉的。
+
+## 稿子：跟品牌故事一樣順、一樣多鉤子
+
+2026-10-19 站主比較兩個系列後說品牌故事「內容比較順也有比較多鉤子，而且有音樂」，要奇聞檔案局做到一樣好或更好。
+量到的差距：H10、H11、H12、M09、U09、H01 v2 的最長空檔 69–81 秒，每集有 2–7 段超過 45 秒沒有任何懸念；
+品牌故事的撰稿規則是 45 秒。所以：
+
+- **每 30–45 秒（約 130–200 字）一個懸念**：一個問題、一個升級（「但這還不是最怪的」）、一份對不上的紀錄、
+  先不講為什麼、或一個轉折。鉤子要站在這個檔案的事實上（日期、數字、某個人的決定、不該出現的東西），
+  不寫空話（「接下來更精采」），不念目錄。
+- **每章結尾停在一個具體、還沒解的問題或動作上，下一章第一句就接它**。結構裡的「流傳的版本、紀錄、
+  最站得住的解釋」是**同一個故事照發生順序的段落**，不是旁白一段一段走過的區塊；章名照事件取。
+- **`loops` 十分鐘至少 8 個**，開場濃縮種下至少 3 個，每一個都要回收。
+- 寫完跑 `node tools/video/cli.mjs lint --slug <SLUG>`：curio- 的 slug 用 45 秒、8 個伏筆檢查（警告），
+  每一段「no open loop between …」都要讀那一段稿子補上懸念，不是加一個問號湊數。
+- 盲評：本機 `node tools/video/cli.mjs narrative --slug <SLUG>` 每一題都過；品牌故事在主機上問兩位讀者、
+  兩位都答「否」才算沒過，本機重評時也比照，不要為一位讀者的「否」一直改稿。
+
+## 配樂
+
+每一集都有配樂，跟品牌故事一樣墊在整段旁白底下（片頭片尾的品牌音樂另外算）。`video.json` 寫上
+`CURIO_MUSIC` 那一行（見上表），旁白之後跑 `node tools/video/cli.mjs music --slug <SLUG>`（一首約 US$0.15，
+看 `status` 印出的報價），再 `assemble`。主機路線的撰稿提示詞也要求在設定開著配樂時一定寫 `music`。
+2026-10-19 以前交付的集數都沒有配樂，**不補**（站主 2026-10-19「新的集數再開始就好」）：重製或重新合成舊集時也不要順手加。
 
 ## 插圖提示詞怎麼寫
 
@@ -88,7 +114,7 @@ peaked cap raising a brass telescope to one eye, rigging behind him, light from 
 
 ## 預算：整集一次報、一次授權
 
-一集約 75–120 張插圖，每張含評審約 US$0.0135，加上重畫，整集大約 **US$1.5–3**（H01：136 次生成
+一集約 75–120 張插圖，每張含評審約 US$0.0135，加上重畫，整集大約 **US$1.5–3**，再加一首配樂（約 US$0.15）（H01：136 次生成
 US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限金額一次報給站主，核准後一次畫完；
 **不要**一張、三張地分批要授權。試畫樣張只在換畫風時才需要，系列畫風已經定了。
 
@@ -98,9 +124,73 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤**，包含這份 skill 的系列檢查。lint 紅了先修稿
    或分鏡，不要繞過。
 3. 旁白（頻道聲音）→ `check-audio` → 站主聽。
-4. 插圖整集一次畫 → 分鏡卡給站主看一次 → 成片 → 品管 → 上架包。
+4. 插圖整集一次畫 → 分鏡卡給站主看一次 → 配樂（`music`）→ 成片 → 品管 → 上架包。
 5. 配音、Shorts：`docs/videos/DUBS.md`、`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；
    手動 `build --redo` 一定帶 `--speech server`，不帶會換成 Windows 的聲音。
+
+## 在雲端環境做旁白與插圖（Claude Code 雲端、Codex 雲端）
+
+2026-10-19 S01、S09、S18 三集的旁白和插圖全部在雲端容器裡做完，沒碰本機。容器裡沒有 Windows 的聲音，
+所以旁白一律走網站的頻道聲音（伺服器 Gemini TTS），插圖走網站的 MiniMax；兩者都要網站權杖，錢記在網站上。
+
+**準備（每個新容器一次）**
+
+1. 網路：容器的對外連線要允許 `mokaair.com`（環境設定的網域白名單，站主開）。Node 的 `fetch` 預設不走
+   代理，每個 `cli.mjs` 指令前面都要加 `NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1`；不加會報「cannot reach
+   mokaair.com」。
+2. 權杖：`node tools/video/cli.mjs login --name <名字>`（例如 `claude-cloud-curio`）。它印出後台連結和代碼，
+   等站主在後台按「允許」才結束，權杖存在 `~/.mokaair/video-tool.json`，不進 repo。容器回收就要重配一次。
+3. 長指令一律用工具的背景執行（Claude Code 的 `run_in_background`），不要在 shell 裡用 `&` 丟背景：
+   回合結束時 `&` 的程序會被殺，`login` 等不到允許、代碼過期。輸出導到檔案，不要接 `grep` 管線（會卡緩衝）。
+   背景執行最長 2 小時，到時間會被殺；整集插圖一集一個指令分開跑，不要三集串在一個指令裡。
+4. 工作目錄在 `<VIDEO_WORKDIR>/<SLUG>/`（預設在容器家目錄下；音檔、`narration.wav`、`keyframes/manifest.json`、
+   `review/check.json`）；容器回收就沒了，交接寫進票，不要只寫路徑。
+
+**旁白**
+
+1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>` → `check-audio --slug <SLUG>`。
+2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>`
+   只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
+3. 重唸還錯（中文多音字、年份、日文人名）就改那一句的字：`lexicon.json` 只收拉丁字母開頭的詞，中文讀音
+   不能放進去。改的那句若是卡片上的原文（刀銘、題字），旁白跟卡片就不一樣了：卡片的 `sub` 補一句「意思是……」，
+   讓觀眾知道旁白唸的是白話。改了旁白就要重新跑一次盲評 `narrative`（新讀者），再 `script --slug` 重產 `script.md`。
+4. `review-push --slug <SLUG> --gate audio` 送審，站主在 `/admin/videos` 決定後 `review-pull --slug <SLUG>` 記下。
+   站主在對話裡要先聽，就用 `ffmpeg -i narration.wav -codec:a libmp3lame -b:a 96k <SLUG>-narration.mp3`
+   轉成 mp3 傳給站主；後台用不了、站主在對話裡說可以時，才 `approve --slug <SLUG> --gate audio --note "<站主原話>"`。
+5. Gemini 回 429（`video_speech_upstream_busy`）可能是一時忙碌，也可能是網站那把金鑰的當日額度用完；工具會照
+   `Retry-After` 自己重送。重送一小時以上還是 429，多半是當日額度：Gemini 的每日額度在太平洋時間午夜重置
+   （夏令 07:00 UTC、冬令 08:00 UTC），S01 就是等到 07:05 UTC 才唸完。不要一直手動重跑。
+
+**插圖**
+
+1. `keyframes --slug <SLUG> --dry-run` 拿到張數與上限金額，三集一起報、一次授權（見上一節）。
+2. 授權後一集一個背景指令：`keyframes --slug <SLUG> --takes 3`，約 30–60 分鐘。
+3. 評審三次都不過的景，照〈插圖提示詞怎麼寫〉改成「一個人做一件事」再跑同一個指令：過了的圖吃快取，
+   只畫改過的景。S01 八景、S09 六景、S18 十一景都是這樣一輪就過。
+4. 網站回 HTTP 502 或背景到時被殺：直接重跑同一個指令，已經過的不會再收費；`ledgerTotals(workdir)`
+   （`tools/video/media/ledger.mjs`）看這集花了多少。S01、S09、S18 每集 US$1.7–1.9，三集合計 US$5.32。
+5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
+6. 同一集的 `tts`、`check-audio` 與 `keyframes` 會互相鎖住（「the project is held by keyframes」，結束碼 3，什麼都沒送）：
+   同一集一次只跑一個；不同集可以同時跑。排隊等前一個指令時，等待時間也算在背景的 2 小時裡，等太久會被殺，
+   重跑即可（過的圖吃快取）。
+7. 評審回「AI 拒絕回應（PROHIBITED_CONTENT）」時整個指令停下：是下一景的提示詞或畫面踩到安全規則
+   （S34 是「偷渡的少年坐在淺水裡」）。改成成年人、穿著衣服、在乾地上，再重跑。
+
+**配樂與成片**
+
+1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
+   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`
+   → `review-push --gate final`。
+2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
+   exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
+   接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的
+   `headless_shell`），再帶這個環境變數跑。
+3. `qa` 讀 `video.json` 旁邊的 `verify-<n>.md`：查核寫在 `topic-checks/` 的集數，要放一份 `verify-1.md` 把那份表抄過來。
+   卡片一個狀態超過 15 秒是 `pace` 失敗：把卡上第二句移到一張新插圖，不重唸；但旁白與分鏡的核准會失效，要站主再核准。
+4. `links` 在容器裡常是 403：github.com 被網路政策擋，loc.gov 的圖片頁和 doi.org 擋程式請求。瀏覽器打得開就不是壞連結，
+   回報給站主時寫清楚。
+5. 改了 `video.json` 的任何一景（連卡片的 `sub`），插圖清單就要重建：重跑 `keyframes`（全吃快取，0 張新圖），
+   分鏡核准也會失效。
 
 ## 交接
 

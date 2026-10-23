@@ -37,6 +37,7 @@ export const DEFAULT_DAYS = 7;
 export const MAX_DAYS = 3650;
 const DAY_MS = 86_400_000;
 const PENDING_REVIEW_HOLD = "pending language batches or other reviews still await the owner's decision";
+const BACKUP_HOLD = "not in Google Drive yet";
 
 /**
  * What goes from a finished video's work directory, relative to it: the media the stages made,
@@ -215,11 +216,25 @@ function compilationHold(state, states) {
 }
 
 /**
+ * A video on YouTube keeps its files until Drive has them (backup.mjs, docs/videos/BACKUP.md):
+ * why it is held, or null. `backup` is the round's backupGate: undefined when the caller has
+ * none (the tidy as before), { enabled: false } when backups are off, { unknown } when the round
+ * could not tell, which holds every video on YouTube, or { enabled: true, verdicts }.
+ */
+function backupHold(slug, backup) {
+  if (backup === undefined || backup === null || backup.enabled === false) return null;
+  if (backup.unknown) return `${BACKUP_HOLD}: its backup state is unknown (${backup.unknown})`;
+  const verdict = backup.verdicts?.get(slug);
+  if (!verdict) return `${BACKUP_HOLD}: the site's backup list has no entry for it`;
+  return verdict.ok ? null : `${BACKUP_HOLD}: ${verdict.why}`;
+}
+
+/**
  * Whether a video is finished and since when: null when it is not (being made, blocked, waiting
  * for the owner, or already tidied); { held } when it is finished but something still needs its
  * files; { problem } when it is finished but has no usable date; else { at, how }.
  */
-function judge(video, { states, listed, videos, repos, fs }) {
+function judge(video, { states, listed, videos, repos, fs, backup }) {
   const { slug, workdir, state } = video;
   if (state.tidied_at) return null;
   const dropped = state.status === "dropped";
@@ -234,6 +249,8 @@ function judge(video, { states, listed, videos, repos, fs }) {
   }
   const compilation = compilationHold(state, states);
   if (compilation) return { held: compilation };
+  const unsaved = backupHold(slug, backup);
+  if (unsaved) return { held: unsaved };
   if (!listed) return { held: "the site's video list was not read, so its publish time and languages are unknown" };
   // The newest 200 can omit older videos; local approvals cannot establish their current
   // publish time or language work. Keep the files until the site supplies this video's row.
@@ -443,9 +460,10 @@ function clearVideo(video, { base, repos, now, dryRun, fs }) {
  * One round of the tidy: every finished video in the work base sorted into due, waiting, held
  * and undated, then the oldest due one cleared (or, with dryRun, what would go listed). `base`
  * is tidyBase's real path; `site` is the round's video list from the site (ProjectSummary[]),
- * null when it was not read; `repos` are the repositories nothing may touch.
+ * null when it was not read; `backup` is the round's backup gate (backupHold); `repos` are the
+ * repositories nothing may touch.
  */
-export function tidyRound({ base: given, repos: named = [ROOT], site = null, now = new Date(), days = DEFAULT_DAYS, dryRun = false, fs = nodeFs }) {
+export function tidyRound({ base: given, repos: named = [ROOT], site = null, backup, now = new Date(), days = DEFAULT_DAYS, dryRun = false, fs = nodeFs }) {
   // Every path below is compared with real paths: a link in the work base's own path is the
   // operator's choice, a link below it is never followed.
   const base = realOr(given, fs);
@@ -456,7 +474,7 @@ export function tidyRound({ base: given, repos: named = [ROOT], site = null, now
   const listed = Array.isArray(site) ? new Map(site.filter((video) => typeof video?.slug === "string").map((video) => [video.slug, video])) : null;
   const round = { base, days, dryRun, due: [], waiting: [], held: [], undated: [], refused: [], cleared: null };
   for (const video of videos) {
-    const verdict = judge(video, { states, listed, videos, repos, fs });
+    const verdict = judge(video, { states, listed, videos, repos, fs, backup });
     if (!verdict) continue;
     if (verdict.held) round.held.push({ slug: video.slug, why: verdict.held });
     else if (verdict.problem) round.undated.push({ slug: video.slug, why: verdict.problem });
@@ -521,6 +539,8 @@ export function roundLines(round, { verbose = false } = {}) {
   if (!verbose) {
     const pending = round.held.filter((entry) => entry.why === PENDING_REVIEW_HOLD);
     if (pending.length) lines.push(`tidy: finished but kept while reviews need the files: ${pending.map((entry) => `${entry.slug} (${entry.why})`).join("; ")}`);
+    const unsaved = round.held.filter((entry) => entry.why.startsWith(BACKUP_HOLD));
+    if (unsaved.length) lines.push(`tidy: ${unsaved.length} finished ${unsaved.length === 1 ? "video keeps its" : "videos keep their"} files until Google Drive has them: ${firstFew(unsaved, (entry) => entry.slug, 5)}`);
     return lines;
   }
   if (!round.cleared) lines.push(`tidy: nothing is due${round.refused.length ? " that can be cleared" : ""}`);
