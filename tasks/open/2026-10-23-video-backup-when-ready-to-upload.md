@@ -13,7 +13,6 @@ depends_on: []
 scope:
   - apps/api/app/video_backup/admin_status.py
   - apps/api/app/video_backup/schemas.py
-  - apps/api/app/video_reviews/admin_service.py
   - apps/api/tests/test_video_backup.py
   - tools/video/automation/backup.mjs
   - tools/video/automation/backup.test.mjs
@@ -57,9 +56,10 @@ YouTube; if it is revised later, overwrite it then.
   in-progress over the same files, but its code (PR #1761) is merged and deployed; only its
   deploy check is open, which changes no file.
 - The tidy is unchanged: it clears only uploaded videos, which are still all listed.
-- `ready_unuploaded` in `video_reviews/admin_service.py` reuses the list's own rule
-  (`ready_to_upload`, `_confirmations`, `_language_batches`), so the backup and the review page
-  never disagree about which video is ready.
+- `ready_unuploaded` lives in `video_backup/admin_status.py` and calls the review list's own
+  `ready_to_upload`, so the backup and the review page never disagree about which video is
+  ready. It first sat in `video_reviews/admin_service.py`, but that file is bound by the duration
+  review receipt (`docs/videos/long-form/review.json`), and CI failed on the stale binding.
 - On Windows, `node --test tools/video/automation/backup.test.mjs` fails three tests: the two
   noted in the full-backup task and the new revision test, all at the second copy into the fake
   Drive. They are expected to pass on Linux CI; check it there.

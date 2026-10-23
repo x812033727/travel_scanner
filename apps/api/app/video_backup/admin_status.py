@@ -14,10 +14,10 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 from typing import Any, Literal
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import AdminAuditLog, VideoProject, VideoToolToken
+from app.models import AdminAuditLog, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_backup import admin_settings as backup_settings
 from app.video_backup.admin_settings import parse_time
@@ -41,7 +41,7 @@ from app.video_backup.target import (
     remote_prefix,
     resolve_target,
 )
-from app.video_reviews.admin_service import ready_unuploaded
+from app.video_reviews.admin_service import language_states, locale_choices, ready_to_upload
 
 # A backup should finish in the rounds after the upload; one queued longer is flagged.
 OVERDUE_HOURS = 24
@@ -134,6 +134,50 @@ def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) ->
         and queued_at is not None
         and now - queued_at > timedelta(hours=OVERDUE_HOURS),
     )
+
+
+async def ready_unuploaded(session: AsyncSession, slug: str | None = None) -> list[VideoProject]:
+    """Videos not on YouTube yet that may be uploaded, by the review list's ready_to_upload rule
+    (a Short needs only its upload confirmation). A renewed final cut supersedes the
+    confirmation, so a video being revised is not among them. It lives here, not beside
+    ready_to_upload, because admin_service.py is bound by the duration review receipt."""
+    confirmed = (
+        select(VideoReview.project_id, func.max(VideoReview.decided_at).label("decided_at"))
+        .where(VideoReview.gate == "publish", VideoReview.status == "approved")
+        .group_by(VideoReview.project_id)
+        .subquery()
+    )
+    query = (
+        select(VideoProject, confirmed.c.decided_at)
+        .join(confirmed, confirmed.c.project_id == VideoProject.id)
+        .where(VideoProject.youtube_video_id.is_(None), VideoProject.dropped_at.is_(None))
+    )
+    if slug is not None:
+        query = query.where(VideoProject.slug == slug)
+    rows = (await session.execute(query)).all()
+    batches: dict[Any, list[VideoReview]] = {}
+    if rows:
+        reviews = await session.scalars(
+            select(VideoReview).where(
+                VideoReview.project_id.in_([project.id for project, _at in rows]),
+                VideoReview.gate == "languages",
+                VideoReview.status.in_(("pending", "approved")),
+            )
+        )
+        for review in reviews:
+            batches.setdefault(review.project_id, []).append(review)
+    return [
+        project
+        for project, approved_at in rows
+        if project.shorts_line is not None
+        or ready_to_upload(
+            project,
+            approved_at,
+            language_states(
+                locale_choices(project), batches.get(project.id, []), project.dub_retries or {}
+            ),
+        )
+    ]
 
 
 async def _eligible(session: AsyncSession) -> list[VideoProject]:
