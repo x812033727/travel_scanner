@@ -10,7 +10,8 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic } from "../core/drama.mjs";
-import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { MIN_LOOP_SECONDS } from "../core/music-loop.mjs";
+import { atomicWrite, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
@@ -80,12 +81,53 @@ async function retainedGeneratedTrack(workdir, key) {
   return null;
 }
 
+/**
+ * `music --loop`: the owner's decision that a retained generated track shorter than the cut
+ * plays looped, as every mix already plays it (assemble/drama.mjs soundGraph, `-stream_loop -1`),
+ * so a published video's dubs carry the bed its approved cut was mixed with. Free: no provider
+ * request, no credentials. Checked: the file still matches its saved SHA-256, its length comes
+ * from a full decode, it is at least MIN_LOOP_SECONDS, and the cut on disk (checks.json) was
+ * assembled with these music settings. Writes the loop into music/manifest.json, which
+ * musicInputs and status read (core/music-loop.mjs loopCovers).
+ */
+async function recordLoop({ doc, lexicon, workdir, mix, ctx, EXIT }) {
+  const manifest = readJson(manifestFile(workdir), null);
+  if (manifest?.source !== "generated" || !manifest.file || !manifest.sha256) {
+    throw new UsageError("music --loop needs a retained generated track with its SHA-256 in music/manifest.json; an owner's own track loops by its own file");
+  }
+  const file = path.join(workdir, manifest.file);
+  if (!isInside(file, workdir) || !existsSync(file) || (await sha256File(file)) !== manifest.sha256) {
+    throw new UsageError(`retained music ${manifest.file} is missing or differs from its saved SHA-256; restore the paid file before recording a loop`);
+  }
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  if (!timeline || timeline.speech_hash !== speechHash(doc, lexicon)) throw new UsageError("timeline.json is missing or was built for an older script; the loop is recorded for the current cut");
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checks?.ok || checks.mix_hash !== mix || checks.speech_hash !== timeline.speech_hash) {
+    throw new UsageError("no current cut was assembled with these music settings; the loop reuses the bed of an assembled cut, so assemble first");
+  }
+  const actualSeconds = await decodedMusicSeconds(file, ctx.env);
+  if (actualSeconds < MIN_LOOP_SECONDS) throw new UsageError(`the track decodes to ${actualSeconds.toFixed(3)} s, under the ${MIN_LOOP_SECONDS} s a looped bed needs; choose another licensed track`);
+  const cutSeconds = timeline.total_frames / FPS;
+  const loop = { method: "stream_loop", sha256: manifest.sha256, track_seconds: actualSeconds, cut_seconds: cutSeconds, plays: Math.ceil(cutSeconds / actualSeconds), decided_at: ctx.now().toISOString() };
+  if (!mayWriteProject(ctx, workdir, "music")) return EXIT.incomplete;
+  atomicWrite(manifestFile(workdir), `${JSON.stringify({ ...manifest, mix_hash: mix, actual_seconds: actualSeconds, duration_measurement: "ffmpeg_full_decode", duration_hold: false, loop }, null, 2)}\n`);
+  recordStage(workdir, "music", { source: "generated", looped: true, actual_seconds: actualSeconds, cut_seconds: cutSeconds }, ctx.now());
+  ctx.stdout.write(`music: ${manifest.file} (decoded ${actualSeconds.toFixed(3)} s) plays ${loop.plays} times under the ${cutSeconds.toFixed(3)} s cut, as the assembled cut does; recorded in music/manifest.json\n`);
+  return EXIT.ok;
+}
+
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
-  const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" } }, strict: true }).values;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, loop: { type: "boolean" } }, strict: true }).values;
   if (!values.slug && !values.file) throw new UsageError("music needs --slug (or --file for an example outside docs/videos)");
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const { doc, lexicon } = project;
+  if (values.loop) {
+    if (!resolveMusic(doc)?.prompt) throw new UsageError(`${doc.slug} has no generated music to loop`);
+    const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
+    // Recorded for the cut already made, so the script's lint today does not stand in the way.
+    return recordLoop({ doc, lexicon, workdir, mix: mixHash(doc), ctx, EXIT });
+  }
   const lint = lintProject(project);
   if (lint.errors.length) {
     ctx.stdout.write(`${doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
