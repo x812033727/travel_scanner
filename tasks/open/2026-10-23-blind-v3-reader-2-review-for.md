@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-blind-v3-reader-2-review-for
 title: Blind v3 reader 2 review for FriXion C15 narration
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-c15-blind-v3-reader-2
@@ -39,3 +39,5 @@ The C15 FriXion narration needs a second independent v3 story-panel reading befo
 ## Notes
 
 The panel rules SHA-256 is `5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75`. The author baseline is `be7bad23848f925dda3495701802bafa0f8f43c4`. The verdict lock was written before repository review material was consulted; no other reader report was read. The lock SHA-256 is `F73B30D5D49D90B568078AA16F9F97EA246D98E1A4A31898DDF5EF1A5A9F4383`.
+
+Draft review PR: https://github.com/x812033727/travel_scanner/pull/1725. The task stays in `review` until that PR is reviewed and merged.
