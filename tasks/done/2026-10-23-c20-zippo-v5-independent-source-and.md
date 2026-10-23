@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-c20-zippo-v5-independent-source-and
 title: C20 Zippo v5 independent source and visual audit
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-c20-v5-source-review
 claimed_at: 2026-10-23T07:37:27Z
 created_at: 2026-10-23T07:37:10Z
-completed_at:
+completed_at: 2026-10-23T07:43:04Z
 branch: codex/c20-zippo-v5-full-source-visual-review
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ Independently check the 60-line v5 script and 60 paired visual directions in aut
 
 - [x] Reopen the patent, company history and date-code record, UK repairs, US warranty/hinge/finish, and Double Arc first-party pages.
 - [x] Verify script, source notes, visual Markdown and JSON pairings and hashes.
-- [ ] Commit the receipt and open a stacked draft PR without editing author files.
+- [x] Commit the receipt and open a stacked draft PR without editing author files: [#1766](https://github.com/x812033727/travel_scanner/pull/1766).
 
 ## How to verify
 
