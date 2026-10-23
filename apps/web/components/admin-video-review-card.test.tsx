@@ -31,6 +31,31 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+it("shows an imported script's exact Markdown as escaped, scrollable source beside narration", () => {
+  const source = "# 核准原稿\n| ID | 旁白 | 依據 |\n| H01 | 來源 <img src=x onerror=alert(1)> | F01 |";
+  const script: Review = {
+    ...final,
+    gate: "script",
+    summary: "Owner-approved source script",
+    payload: {
+      source_md: source,
+      scenes: [{ id: "H01", chapter: "第一章", template: "shot", prompt: null,
+        lines: [{ id: "H01", speaker: "narrator", text: "來源已核准" }] }],
+    },
+    files: [],
+  };
+  const { container, rerender } = render(<ReviewCard slug="story-everyday-kincho-c05" review={script} canManage={false} onDecided={vi.fn()} />);
+  expect(screen.getByText("來源已核准")).toBeTruthy();
+  expect(screen.getByText("展開完整原稿（含來源與畫面註記）")).toBeTruthy();
+  const original = screen.getByTestId("script-source-markdown");
+  expect(original.textContent).toBe(source);
+  expect(original.className).toContain("max-h-[28rem]");
+  expect(container.querySelector("img")).toBeNull();
+
+  rerender(<ReviewCard slug="story-everyday-kincho-c05" review={{ ...script, payload: { scenes: script.payload.scenes } }} canManage={false} onDecided={vi.fn()} />);
+  expect(screen.queryByTestId("script-source-markdown")).toBeNull();
+});
+
 describe("language results and upload package readiness", () => {
   const base: ProjectSummary = {
     slug: "imported-cut", title: "Imported cut", stage: "final approved", pending: 0,

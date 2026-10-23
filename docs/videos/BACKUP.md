@@ -22,8 +22,9 @@
 2. **授權用 A 案**：rclone 使用完整的 `drive` 權限，但 remote 設 `root_folder_id`
    鎖在 `AI/備份` 這個資料夾。只用 `drive.file` 的話，rclone 看不到站主自己建的
    「AI」資料夾，會另建一個同名的，造成 G: 出現兩個「AI」。
-3. **備份層級**：漫劇與動畫（`category` 為 `drama`、`long-drama`、`anime`）用「完整」，
-   其他用「基本」。後台可以依系列覆寫。
+3. **備份層級**：有備份的影片一律用「完整」（站主 2026-10-23）；後台可以把某個系列改成
+   基本或關閉。之前只有漫劇與動畫預設完整，沒設定過的新系列（例如 `brand-stories-adapt`）
+   就落到基本。
 4. **容量**：站主的方案是 5 TiB（2026-10-22 量到剩 4.77 TiB）。worker 仍然只在剩餘空間
    足夠時備份，不夠就停下並在後台提示（見〈空間〉）。
 5. **層級（2026-10-20 後台）**：站主把所有系列都改成「完整」。
@@ -69,7 +70,7 @@ video-worker 每一輪：排入 → rclone 複製 → rclone check → 上傳 ba
 | --- | --- |
 | 開關 | 關閉時 worker 不備份，tidy 也不會因為備份而保留檔案（回到原本的行為） |
 | 路徑 | 可以貼 `G:\我的雲端硬碟\AI\備份\`、`G:\My Drive\AI\備份`、`AI/備份` 或 `/AI/備份/`；卡片會即時顯示「儲存為：AI/備份」 |
-| 預設層級 | 依 `category` 決定：`drama`／`long-drama`／`anime` 用完整，其他用基本 |
+| 預設層級 | 完整（系列沒有覆寫時） |
 | 系列覆寫 | 每個系列選預設、基本、完整或關閉 |
 | 資料夾名稱 | 每個系列的雲端資料夾名稱，預設見下表 |
 | 測試連線 | worker 下一輪（約 5 分鐘內）寫入再刪除 `_probe-<時間>.txt`，回報結果與剩餘空間；按「重新讀取」看結果 |
@@ -98,6 +99,7 @@ AI/備份/
       backup.json
       _舊版/<時間>/…                 （之後被覆蓋的舊檔）
       （完整層級另外有）clips/ keyframes/ characters/ timeline.json narration.wav
+                       dubs/未進上傳包/<語言>.m4a、上傳包缺的 thumbnails/<語言>.jpg
   Shorts/<shorts_series 或 shorts_line>/<slug>/…
   其他/<slug>/…
 ```
@@ -131,6 +133,13 @@ AI/備份/
   `zh-TW.srt`、`cover.png`、`titles.json`。
 - **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`timeline.json`、
   `narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
+  另外照站主勾的語言（`languages.json`）補上傳包沒有的東西：勾了配音、工人錄出音軌
+  （`dubs/<語言>.m4a`／`.mp3`／`.wav`）卻沒進上傳包的（被放棄的，或還沒核准的），放進
+  `dubs/未進上傳包/<語言>.m4a`；勾了任何一項的語言，上傳包缺它的縮圖時，用工作資料夾
+  `thumbnails/<語言>.jpg` 補進 `thumbnails/`。沒進上傳包的音軌沒過工人的檢查，要上架前先
+  聽過；它放在自己的資料夾，網站不會把它算成已打包的配音。沒有 `languages.json` 時，工作
+  資料夾有的音軌和縮圖都備份。tidy 會清掉工作資料夾的音軌，所以已備份完成的完整層級影片
+  有這些新檔時會再排一次，傳完才清。
 - **任何層級都不備份**：`segments/`、`build/`、`frames/`、`review/`、`media/` 快取、
   `audio/` 中間檔。這些可以重算，或只是審核用的預覽。
 
@@ -138,6 +147,8 @@ AI/備份/
 
 1. **排入**：每一輪掃描網站列出的、有 YouTube ID 的影片。還沒有備份紀錄的就排入
    （`pending`），所以剛上傳的影片、Shorts 和上線前已經上傳的舊影片都會被排進來。
+   工作資料夾要有 `auto.json`（工人做的），或至少有 `upload/final.mp4`（手動做的，例如
+   續作或重剪，2026-10-23 起）；兩樣都沒有的資料夾不排入。
    每支影片的備份狀態存在工作資料夾的 `backup-state.json`，不放進 `auto.json`，避免產線
    存檔時蓋掉它。
 2. **列清單**：依層級列出檔案，計算 sha256 與大小。上一次 `backup.json` 裡大小與修改時間

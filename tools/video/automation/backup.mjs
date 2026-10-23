@@ -45,6 +45,13 @@ export const REPORTS_PER_ROUND = 10;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
 export const FULL_DIRS = ["clips", "keyframes", "characters"];
 export const FULL_FILES = ["timeline.json", "narration.wav"];
+// The full tier also keeps, for each language the owner chose (languages.json), the dub track the
+// worker made but did not package (given up on, or not yet approved) and the language's thumbnail.
+// Unpackaged tracks go to their own folder, so the site never counts them as packaged dubs.
+export const UNPACKAGED_DUBS = "dubs/未進上傳包";
+const DUB_TRACK = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.(m4a|mp3|wav)$/;
+const LOCALE_THUMBNAIL = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.jpg$/;
+const LANGUAGES_FILE = "languages.json";
 const SERIES_DIR = "_series";
 const UPLOAD = "upload";
 const DESCRIPTION = /^description\.([A-Za-z0-9-]+)\.txt$/;
@@ -92,10 +99,39 @@ function isFile(file, fs) {
 const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync };
 
 /**
+ * The owner's language choice in languages.json: the locales with a dub and those with any part
+ * (a language's thumbnail goes with any part, as package writes it). null without a readable
+ * choice, and then every track and thumbnail the work directory has is kept.
+ */
+function chosenLocales(workdir, fs) {
+  let locales;
+  try {
+    locales = JSON.parse(fs.readFileSync(path.join(workdir, LANGUAGES_FILE), "utf8"))?.locales;
+  } catch {
+    return null;
+  }
+  if (!locales || typeof locales !== "object" || Array.isArray(locales)) return null;
+  const parts = Object.entries(locales).filter(([, part]) => part && typeof part === "object");
+  return {
+    dub: new Set(parts.filter(([, part]) => part.dub === true).map(([locale]) => locale)),
+    any: new Set(parts.filter(([, part]) => Object.values(part).some((value) => value === true)).map(([locale]) => locale)),
+  };
+}
+
+/** The regular files directly in `dir` whose names match `pattern`, as [absolute, locale] pairs. */
+function localeFiles(dir, pattern, fs) {
+  return walk(dir, fs)
+    .filter(([, relative]) => !relative.includes("/"))
+    .map(([source, relative]) => [source, relative.match(pattern)?.[1]])
+    .filter(([, locale]) => locale);
+}
+
+/**
  * The files a tier copies from a work directory, as { source, path } with `path` where it goes
  * under the episode's folder: the whole upload package (description.<locale>.txt into
  * descriptions/<locale>.txt), the work directory's thumbnail.jpg when the package has none, and
- * for the full tier clips/, keyframes/, characters/, timeline.json and narration.wav.
+ * for the full tier clips/, keyframes/, characters/, timeline.json and narration.wav, and for each
+ * chosen language the dub track the package lacks (under dubs/未進上傳包/) and its thumbnail.
  */
 export function planFiles(workdir, tier, fs = nodeFs) {
   const planned = new Map();
@@ -108,6 +144,16 @@ export function planFiles(workdir, tier, fs = nodeFs) {
   if (tier === "full") {
     for (const dir of FULL_DIRS) for (const [source, relative] of walk(path.join(workdir, dir), fs)) planned.set(`${dir}/${relative}`, source);
     for (const name of FULL_FILES) if (isFile(path.join(workdir, name), fs)) planned.set(name, path.join(workdir, name));
+    const chosen = chosenLocales(workdir, fs);
+    const packaged = new Set([...planned.keys()].map((where) => where.match(/^dubs\/([^/]+)\.[A-Za-z0-9]+$/)?.[1]).filter(Boolean));
+    for (const [source, locale] of localeFiles(path.join(workdir, "dubs"), DUB_TRACK, fs)) {
+      if (packaged.has(locale) || (chosen && !chosen.dub.has(locale))) continue;
+      planned.set(`${UNPACKAGED_DUBS}/${path.basename(source)}`, source);
+    }
+    for (const [source, locale] of localeFiles(path.join(workdir, "thumbnails"), LOCALE_THUMBNAIL, fs)) {
+      if (planned.has(`thumbnails/${locale}.jpg`) || (chosen && !chosen.any.has(locale))) continue;
+      planned.set(`thumbnails/${locale}.jpg`, source);
+    }
   }
   return [...planned.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([where, source]) => ({ source, path: where }));
 }
@@ -545,7 +591,9 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // The site's own slug pattern; anything else is never joined onto the work base.
     if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
     const workdir = job.workdir(video.slug);
-    if (!fs.existsSync(path.join(workdir, "auto.json"))) continue;
+    // A work directory the worker made has auto.json; one made by hand (a renewal, a recut) has
+    // only its upload package, and is backed up all the same.
+    if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs)) continue;
     if (video.tier === "off") {
       verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
       continue;
