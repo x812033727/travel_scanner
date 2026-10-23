@@ -34,7 +34,7 @@ import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -711,6 +711,78 @@ test("auto takes a video from a topic to the outline, waits for the owner, then 
   const status = await pipelineStatus({ slug, root: box.root, workdir: path.join(box.work, slug) });
   assert.equal(status.next.id, "narration synthesized");
   assert.deepEqual(automatedVideos(box.work).map((state) => [state.slug, state.verified, state.listener_done]), [[slug, true, true]]);
+});
+
+/**
+ * Ticket 2026-10-23-lines-video: a video taken to its listener stage, whose listener answers
+ * `listener(body)` instead of the whole script. Returns the worker's line for that step, the
+ * script as it was before the listener, and the script as saved.
+ */
+async function listenedWith(listener) {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: { ...answersFor(slug), listener } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
+  assert.match(await automation.step(), /outline sent/);
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  assert.match(await automation.step(), /chose outline B/);
+  assert.match(await automation.step(), /script drafted and passes lint/);
+  assert.match(await automation.step(), /fact-check round 1/);
+  const before = JSON.parse(readFileSync(docFile, "utf8"));
+  const line = await automation.step();
+  return { line, before, saved: JSON.parse(readFileSync(docFile, "utf8")), state: automatedVideos(box.work)[0], out };
+}
+
+test("a listener that answers the lines it changed, as a long script's does, has them written onto the script by id; an id the script lacks is left out and logged", async () => {
+  // The manga drama's listener (《系統說我是 BUG》 e002–e004, 2026-10-22) answered this shape twice and the video blocked.
+  const { line, before, saved, state, out } = await listenedWith(() => ({
+    lines: [
+      { id: "x9fe", speaker: "narrator", emotion: "slow, as a question", text: "第一個問題是，你要它做什麼工作。" },
+      { id: "p5vs", text: "完整的比較表，放在說明欄的文章裡。記得訂閱。" },
+      { id: "zzzz", text: "這一句的 id 不在劇本裡。" },
+    ],
+    notes: "結尾收短，第一個問題放慢。",
+  }));
+  assert.match(line, /listener edit, 2 changes/);
+  assert.equal(before.scenes[1].lines[0].id, "x9fe");
+  const x9fe = saved.scenes[1].lines[0];
+  assert.equal(x9fe.text, before.scenes[1].lines[0].text, "a line whose text came back unchanged keeps it");
+  assert.equal(x9fe.emotion, "slow, as a question", "the emotion is applied");
+  assert.equal(x9fe.reveal, 1, "the line's other keys stay");
+  const p5vs = saved.scenes.flatMap((scene) => scene.lines).find((each) => each.id === "p5vs");
+  assert.equal(p5vs.text, "完整的比較表，放在說明欄的文章裡。記得訂閱。");
+  assert.equal(p5vs.say, undefined, "a spoken form written for the old words goes with them");
+  assert.equal(p5vs.say_for, undefined);
+  assert.deepEqual(saved.scenes.flatMap((scene) => scene.lines).map((each) => each.id), before.scenes.flatMap((scene) => scene.lines).map((each) => each.id), "no line is added or dropped");
+  assert.equal(saved.scenes.flatMap((scene) => scene.lines).some((each) => each.text.includes("不在劇本裡")), false);
+  assert.match(out.stdout, /listener: 1 of its lines name no line of the script and are left out: zzzz/);
+  assert.equal(state.listener_done, true);
+  assert.equal(state.verified, false, "a changed line is checked again");
+});
+
+test("a listener's lines that name no line of the script change nothing and break nothing", async () => {
+  const { line, before, saved, state, out } = await listenedWith(() => ({ lines: [{ id: "nope", text: "x" }, { id: 7, text: "y" }, { text: "no id at all" }], notes: "" }));
+  assert.match(line, /listener edit, 0 changes/);
+  assert.deepEqual(saved, before, "the script is saved as it was");
+  assert.match(out.stdout, /listener: 3 of its lines name no line of the script and are left out: nope, 7, \?/);
+  assert.deepEqual([state.listener_done, state.verified], [true, true]);
+});
+
+test("listenerEdits leaves a whole-script answer and an answer without lines as they are, and never edits the script it was given", () => {
+  const video = fixture();
+  const whole = { video: { ...video, title: "x" }, edits: ["a"] };
+  assert.equal(listenerEdits(video, whole), whole);
+  const none = { notes: "nothing" };
+  assert.equal(listenerEdits(video, none), none);
+  const text = JSON.stringify(video);
+  const applied = listenerEdits(video, { lines: [{ id: "k7p2", text: "改了。" }, { id: "k7p2", text: "又改。" }, { id: "m4qa", text: "   " }] });
+  assert.deepEqual(applied.edits, ["k7p2: 每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？ → 改了。"], "the first of two entries for a line wins; an empty text is no edit");
+  assert.equal(applied.video.scenes[0].lines[0].text, "改了。");
+  assert.equal(JSON.stringify(video), text, "the script the listener read is not changed in place");
 });
 
 test("a dictionary term the writer proposes that lint would refuse is left out, so it fails no video's lint; a word left unknown goes back to the writer as any lint error does", async () => {
