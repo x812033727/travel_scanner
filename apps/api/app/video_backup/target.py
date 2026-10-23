@@ -19,8 +19,9 @@ from app.video_reviews.admin_service import locale_choices
 
 Tier = Literal["basic", "full", "off"]
 TIERS: tuple[Tier, ...] = ("basic", "full", "off")
-# The owner's rule of 2026-10-15: the dramas and the animation keep their paid clips.
-FULL_CATEGORIES = frozenset({"drama", "long-drama", "anime"})
+# The owner's rule of 2026-10-23: every video that is backed up is backed up in full; a series
+# set to basic or off in the settings is the only exception.
+DEFAULT_TIER: Tier = "full"
 # A series key that no rule found, and its folder.
 OTHER = "other"
 SHORTS = "Shorts"
@@ -140,10 +141,6 @@ def series_key(project: VideoProject) -> str:
     return project.category or OTHER
 
 
-def default_tier(project: VideoProject) -> Tier:
-    return "full" if project.category in FULL_CATEGORIES else "basic"
-
-
 def series_folder(key: str, shorts: bool, folder_names: Mapping[str, str]) -> str:
     name = folder_names.get(key) or DEFAULT_FOLDER_NAMES.get(key) or key
     return f"{SHORTS}/{name}" if shorts else name
@@ -171,7 +168,7 @@ def resolve_target(
     later must not split one video between two folders. The tier follows the settings now."""
     key = series_key(project)
     chosen = (tiers or {}).get(key)
-    tier: Tier = chosen if chosen in TIERS else default_tier(project)
+    tier: Tier = chosen if chosen in TIERS else DEFAULT_TIER
     folder = stored_folder(project) or (
         f"{series_folder(key, project.shorts_line is not None, folder_names or {})}/"
         f"{episode_folder(project)}"

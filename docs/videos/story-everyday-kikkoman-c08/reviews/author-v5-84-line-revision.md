@@ -1,0 +1,22 @@
+# C08 author revision v5｜blind-reader story HOLD repair
+
+Status: **author revision, independent v5 review pending**. The [v4 independent source/paired-visual PASS](line-source-visual-review-20261023-84-delta-v4.md) applies only to its old hashes. Two separate v4 narration-only readers each returned story **HOLD**. Neither verdict is overwritten by this author receipt.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `script.md` | `ACCC7EB9FB001AE819119FBC0296AFD5F3CD0D1D09389740796F33342036F991` |
+| `visual-plan.md` | `38C3B4CEDC6DE1CF45F18AA5EE272DB7737AF25B92885A4035DFC4434C225B68` |
+| `script-source-addendum.md` | `82D1147FE720B4ECB3A9222C8A19E76717BC40B4E70B56EA9A3256F5D22DEDE5` |
+
+The v4 blind input was **only** 84 spoken lines in `c08-v4-narration-06A9429A.txt` (SHA-256 `B1CD0DC2ACA2A688D458FD5961700E854ADFB7E976BBCD859CC5C8B8A0262A9E`). Reader A held the unfulfilled flow-control promise and attribution/geometry density (spoken lines 27–48), and the trademark payoff omitted from the final recap (75–82). Reader B held the two apparent spout answers (43–48), the 2007-cap to fresh-soy-sauce jump (60–63), and the trademark/survey/shipment fact stack (75–82). These are story judgments, separate from factual source review. Both said actual body duration remains unmeasured.
+
+| Changed area | v5 repair and source ceiling |
+| --- | --- |
+| Opening and hand action (`c080105`, `c080303–306`) | Three opening questions become two. Spoken fingers, hand movement and clear glass are shorter; [GK R1](https://www.gk-design.co.jp/GK_Report/GKReport_34.pdf) remains a participant retrospective and [MoMA M1](https://www.moma.org/collection/works/90106) a later gallery label. |
+| Two spout goals (`c080309–315`, `c080401–410`) | One continuous physical sequence: the ordinary teapot's projecting lower lip → the tabletop bottle's longer upper lip/inward tip → sauce still pours into the dish → less sauce pools at the tip when the bottle returns upright. [Ekuan E1](https://toyokeizai.net/articles/-/10265?display=b), [Kikkoman K4](https://news.mynavi.jp/techplus/article/20140106-syouyu/), [MoMA M1](https://www.moma.org/collection/works/90106) and [GK D1](https://www.gk-design.co.jp/en/archives/history/2242/) support a narrow comparison and less dripping. No angle size, final flow-rate measurement, guaranteed zero drip or staged dated prototypes. One concept card at `c080407` shows the same upper/lower lip relationship; no duplicate solution card. |
+| Separate product bridge (`c080510–513`) | [K5](https://www.kikkoman.com/jp/csr/report/pdf/csr_pdf_report_archive08.pdf) supports only the European subsidiary's rounded cap protrusion in fiscal 2007. The next line explicitly announces **another** fresh-soy-sauce product, with the air-exposure concern attributed to [K7](https://www.kikkoman.com/jp/info/assets/250527_story.pdf). No injury event or 1961 design motive is invented. |
+| Trademark payoff (`c080603`, `c080608–609`) | Kept the 2018 registration and [J1](https://tmfive.org/wp-content/uploads/2025/06/2025-INTA-9th-Joint-Workshop-JPO.pdf) survey/long-use clues, but removed the spoken >500 million shipment figure and card, which diverted the ending. The final shot and spoken line now connect the opening last drop to later recognition of the bottle's unprinted silhouette. [K3](https://cdn.kyodonewsprwire.jp/prwfile/release/M103831/201804162969/_prw_PR1fl_58lMXR0V.pdf) remains the company's source for the registered shape, not evidence of design-driven sales. |
+
+Mechanical author check: 84 unique narration IDs and 84 visual IDs in the same order; 73 illustration directions, 11 one-focus cards, longest card run 1; no `Kikkoman`, `Ekuan`, `GK`, `MoMA`, `logo`, `brand` or `cute-mystery` in the 73 generation prompts. `git diff --check` passes. Shot-count illustration ratio is 86.9%; the required **screen-time** ratio has not been measured. The body is text only, with no paid C08 TTS and no verified 480-second duration. No paid image/music, upload, merge or publication. Six pre-existing policy-blocked duplicate untracked open-task copies remain untouched and prevent a local `check:tasks` PASS.
+
+Next: another agent rechecks v5 changed factual claims and paired visuals against the cited direct sources, then two new readers receive only the v5 narration. If they hold again, repair and rebind; owner script/visual review and whole-film price approval remain separate gates.

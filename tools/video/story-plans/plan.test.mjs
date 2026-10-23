@@ -69,6 +69,29 @@ test("the id decides the category and, for the Asian brands, the region", () => 
   assert.match(storyProblems(story({ id: "A02" }), "A01").join("\n"), /does not match the file name A01\.json/);
 });
 
+test("C everyday ids belong only to the exact everyday reversals series", () => {
+  const everyday = story({ id: "C03", slug: "story-everyday-moleskine-c03" });
+  const tech = { ...everyday, category: "tech" };
+  const seriesSlug = "brand-stories-everyday-reversals";
+  assert.deepEqual(storyProblems(everyday, "C03", { seriesSlug }), []);
+  assert.match(storyProblems(everyday, "C03").join("\n"), /category "everyday" does not fit id C03 \(tech\)/);
+  assert.match(storyProblems(everyday, "C03", { seriesSlug: "brand-stories-100" }).join("\n"), /category "everyday" does not fit id C03 \(tech\)/);
+  assert.deepEqual(storyProblems(tech, "C03"), []);
+  assert.match(storyProblems(tech, "C03", { seriesSlug }).join("\n"), /category "tech" does not fit id C03 \(everyday\)/);
+
+  const plan = {
+    series: series({ slug: seriesSlug }),
+    schedule: schedule([["C03", "C04"]]),
+    stories: [
+      { id: "C03", story: everyday },
+      { id: "C04", story: story({ id: "C04", slug: "story-everyday-bubble-wrap-c04", title: "另一集" }) },
+    ],
+  };
+  assert.deepEqual(planProblems(plan, { expected: null }), []);
+  plan.series.slug = "brand-stories-100";
+  assert.match(planProblems(plan, { expected: null }).join("\n"), /C03: category "everyday" does not fit id C03 \(tech\)/);
+});
+
 test("the six chapters come in order and say something", () => {
   const swapped = story();
   [swapped.chapters[0], swapped.chapters[1]] = [swapped.chapters[1], swapped.chapters[0]];

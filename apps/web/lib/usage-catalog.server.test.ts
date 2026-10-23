@@ -1,8 +1,21 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { usageOperations } from "./usage-catalog";
-import { loadUsageCatalog } from "./usage-catalog.server";
+import { loadSharedUsageCatalog, loadUsageCatalog, resetUsageCatalogCache } from "./usage-catalog.server";
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
+  resetUsageCatalogCache();
+});
+
+function catalogResponse(trialUses: number) {
+  const payload = {
+    trial_uses: trialUses,
+    packages: [],
+    operation_costs: Object.fromEntries(usageOperations.map((operation) => [operation, 1])),
+  };
+  return new Response(JSON.stringify(payload), { status: 200 });
+}
 
 describe("loadUsageCatalog", () => {
   it("loads the localized public catalog without caching", async () => {
@@ -57,5 +70,40 @@ describe("loadUsageCatalog", () => {
       status: "unavailable",
       catalog: null,
     });
+  });
+});
+
+describe("loadSharedUsageCatalog", () => {
+  it("asks the API once per locale until the entry expires", async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(catalogResponse(3)));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await Promise.all([loadSharedUsageCatalog("en"), loadSharedUsageCatalog("en")]);
+    await loadSharedUsageCatalog("en");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    await loadSharedUsageCatalog("ja");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+
+    vi.advanceTimersByTime(31_000);
+    await loadSharedUsageCatalog("en");
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
+  it("keeps serving the last good catalog while the API fails, and backs off", async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(catalogResponse(4)));
+    vi.stubGlobal("fetch", fetchMock);
+    await loadSharedUsageCatalog("en");
+
+    vi.advanceTimersByTime(31_000);
+    fetchMock.mockImplementation(() => Promise.resolve(new Response("{}", { status: 500 })));
+    const stale = await loadSharedUsageCatalog("en");
+    expect(stale.status).toBe("ready");
+    expect(stale.catalog?.trial_uses).toBe(4);
+
+    await loadSharedUsageCatalog("en");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 });
