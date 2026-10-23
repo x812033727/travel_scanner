@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-intake-owner-approved-c-series-scripts
 title: Intake owner-approved C-series scripts as manual admin review cards
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-c-series-integration
 claimed_at: 2026-10-23T09:23:56Z
 created_at: 2026-10-23T09:23:47Z
-completed_at:
+completed_at: 2026-10-23T11:45:51Z
 branch: codex/everyday-story-review-import-20261023
 depends_on: []
 scope:
