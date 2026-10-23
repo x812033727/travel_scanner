@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-c18-fiskars-blind-reader-1
 title: C18 Fiskars independent blind narrative reader 1
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-c18-blind-reader-1
 claimed_at: 2026-10-23T04:36:19Z
 created_at: 2026-10-23T04:36:02Z
-completed_at:
+completed_at: 2026-10-23T04:38:58Z
 branch: codex/brand-story-fiskars-c18-blind-reader-1
 depends_on: []
 scope:
