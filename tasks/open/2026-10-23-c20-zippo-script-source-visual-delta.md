@@ -1,7 +1,7 @@
 ---
 id: 2026-10-23-c20-zippo-script-source-visual-delta
 title: C20 Zippo script source visual delta review
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c20-source-visual-delta-review
@@ -24,14 +24,14 @@ Independent source/visual review PR #1732 judged the author's C20 script at head
 
 - [x] A standalone receipt locks the new author head and four blob SHA-256 values, tests 68/68 alignment, and states a precise PASS/HOLD verdict for the three changed IDs.
 - [x] The receipt reopens relevant primary sources and carries forward the prior 65 PASS only after confirming those rows have no unrelated drift.
-- [ ] A separate draft, no-auto-merge review PR targets the author branch, with metadata read back.
+- [x] A separate draft, no-auto-merge review PR targets the author branch, with metadata read back.
 
 ## Steps
 
 - [x] Reopen Zippo history, museum and original patent; compare `c200207`, `c200310`, `c200410` voice and paired visuals in context.
 - [x] Recompute four new hashes, inspect the old/new four-file diff, and assert identical order/content across all 68 IDs and 58 shot / 10 card entries.
 - [x] Write the exact delta receipt without editing the author's worktree or paid media.
-- [ ] Commit, push, open draft review PR, apply `no-auto-merge` and read back exact base/head.
+- [x] Commit, push, open draft review PR, apply `no-auto-merge` and read back exact base/head.
 
 ## How to verify
 
@@ -42,3 +42,5 @@ Use `git diff 4b51defa16c8a8ca19f5504d67d1428c56227b4f 856b6b24564d7de3a4b1804cc
 2026-10-23: Reopened official primary sources. New `c200207` now labels the 1933 price/guarantee as company recollection in voice and card; `c200310` separates that recollection from the 1934 patent filing and removes the invented sales-card image; `c200410` dates only the museum opening to 1997 and makes the Repair Clinic current, while the next image is explicitly fictional. All three PASS. The other 65 rows are unchanged from the old 68-row independent review. New four files align 68/68, with 58 shots and 10 cards. No author files or media were changed.
 
 The earlier PR #1732 task file and its locally untracked duplicate remain untouched after the exact cleanup attempt was blocked by policy. This separate task uses its own isolated sparse worktree and new receipt path.
+
+2026-10-23: [Draft delta review PR #1735](https://github.com/x812033727/travel_scanner/pull/1735) targets author branch `codex/brand-story-zippo-c20-script` and carries `docs/videos/story-everyday-zippo-c20/reviews/independent-script-source-visual-delta-review.md`. GitHub readback at reviewer head `0a9114f93940b884ba76a1a79e57095aa79d0d89` confirmed `isDraft=true`, `autoMergeRequest=null`, and the real `no-auto-merge` label. The desktop artifact attachment succeeded. `npm run check:tasks` passed with pre-existing unrelated warnings; staged whitespace check passed. The ticket stays in `review` while this draft PR awaits external handling; no task-file move or cleanup of the earlier blocked duplicate was attempted.
