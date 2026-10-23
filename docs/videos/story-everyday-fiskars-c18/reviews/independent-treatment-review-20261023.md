@@ -2,7 +2,20 @@
 
 覆核日：2026-10-23（台北）。審查者：`codex-c18-independent-review`，未撰寫 C18 Treatment 或來源矩陣，也未修改作者兩檔。
 
-## 判定
+## 最新差異覆核：PASS
+
+作者已在 [PR #1702](https://github.com/x812033727/travel_scanner/pull/1702) 新 head `95285e787b65729292232572970340953ffce3ac` 窄修本收據唯一 HOLD。從該 head 的**實際 Git blob bytes** 重算：`treatment.md` SHA-256 `A18B0A0FAE68F8689CA365F498325860FB0C657E59E2AEFA932FE1371AE743D9`；`source-matrix.md` SHA-256 `506268EF53EF65B77D8836480614EED9FA55B58BE7FDAADE11C6650552AC75F3`。PR 的兩檔 diff 僅改矩陣 M02 與 Treatment 第 2 章對應格，其他 M01、M03–M12 說法未變。
+
+| 差異 | 重新核對與結論 |
+| --- | --- |
+| 矩陣 M02 | 改成「二戰後公司管理層推動公司結構改革，以適應大量生產」，並明示不能推剪刀產量或大量生產起始日。與 [2024 公司上市說明書 PDF 頁 44](https://fiskarsgroup.com/wp-content/uploads/2024/01/Fiskars-Oyj-Abp-Listing-Prospectus-for-Fiskars-Corporations-EUR-200-million-sustainability-linked-notes.pdf) 及 [公司歷史頁 1940s 段](https://fiskarsgroup.com/about-us/our-story/) 相符。**PASS**。 |
+| Treatment 第 2 章 | 改成「戰後為適應大量生產而推動的公司結構改革」，畫面／口播邊界又補不得報戰後剪刀產量或量產起始年。1649、1832、1960 年代的相鄰節點沒有新因果，六章仍維持原順序。**PASS**。 |
+
+**本版企劃來源結論：M01–M12 PASS，六章方向 PASS，均須保留原表限定語。** 此 PASS 只解除舊版 M02 HOLD；不代表站主已採用企劃，也不是逐字稿、逐鏡、配音或付費授權。以下舊版 HOLD 表與逐項核對保留作差異追溯，不可誤讀為新 head 仍 HOLD。
+
+本機 `npm run check:tasks` 此時因審查者工作樹的同一任務同時留在 `tasks/open` 與 `tasks/done` 而退出 1：任務板 `done` 曾寫出完成副本，移除 open 副本則遭 `blocked by policy`。這兩個結案殘留**未納入本次 PR 提交**，審查者不再嘗試刪除或繞過。收據內容以已推 PR 檔案讀回為準；此環境限制不改變上面的來源差異判定。
+
+## 舊版判定（已由上述差異覆核解除）
 
 **HOLD（M02 一處需修）**。M01、M03–M12 依下表所列來源與限定語可用；M02 的「戰後大量生產」比原始來源多一步。這是對下列**精確版本**的判定，作者修字後須重算 SHA-256，並由獨立審查者只重核改動及相鄰主張；本收據不能沿用為新版 PASS。
 
@@ -40,4 +53,4 @@
 
 ## 修訂與下一關
 
-作者只需收窄 `source-matrix.md` M02 與 `treatment.md` 第 2 章戰後量產句；若開場或主線其他句隨之改動，也納入 delta。修訂稿提交後，以新 head 與兩檔 SHA-256 重核，才可考慮企劃 PASS 與站主採用。逐字稿、逐句來源審查、兩位只讀旁白盲讀、整支報價、付費、匯入及發布都不在本收據範圍。
+作者已將 `source-matrix.md` M02 與 `treatment.md` 第 2 章戰後量產句收窄，並通過上方新 head 的差異重核。下一關是站主審閱並決定是否採用這版企劃。逐字稿、逐句來源審查、兩位只讀旁白盲讀、整支報價、付費、匯入及發布都不在本收據範圍。
