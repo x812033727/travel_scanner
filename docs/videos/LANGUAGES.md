@@ -184,6 +184,17 @@
 
 試做：一支做好的影片勾五語的標題說明與 CC，泰文與越文的 CC 先請懂的人（或另一個模型）看過，再讓面板大量勾。
 
+## 漫劇 Shorts 帶它那一集的語言（2026-10-23）
+
+站主 2026-10-23 要《種田娶妻打天下》每集切一支 Shorts（`hailuo/shorts-dh.mjs`），上 Shorts 分頁時帶跟正片一樣的九種語言（票 `2026-10-23-drama-shorts-carry-nine-languages-dubs`）。Short 的配音就是那一集的配音軌切同一段，不用另外做，所以：
+
+| 規則 | 做法 |
+| --- | --- |
+| 開給誰 | 只開給內容線是 `drama` 的 Short（`_dub_allowed`）。實測與長片精華的 Short 有旁白，工人不替它配音，照舊沒有語言面板 |
+| 後台 | 漫劇 Short 的影片頁顯示語言面板，八種的標題說明、CC、配音都能勾 |
+| 檔案怎麼上站 | 先用 `tools/video/shorts` 的 `import` 與 `push` 送成片，再用 `tools/video/cli.mjs import --from DIR --languages` 照勾的部件送同一批（hand_pushed，站主核准）；批次綁的是 Short 自己最新的成片 |
+| 上傳包 | Short 的上傳包照舊只帶 Shorts 設定裡的語言；其他語言的標題、CC 與配音由站主從語言批次的卡片下載，在 Studio 加 |
+
 ## 上架流程：一張卡、五個狀態
 
 | 狀態 | 條件 | 站主看到 |
