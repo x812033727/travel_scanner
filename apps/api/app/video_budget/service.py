@@ -21,6 +21,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.problems import AppError
 from app.video_budget.models import (
     FOLLOWON_LIMIT_USD,
+    PENDING_PILOT_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
@@ -69,7 +70,16 @@ class BudgetSummary:
 
 
 def is_pilot(slug: str | None) -> bool:
-    return slug in PILOT_SLUGS or slug in UNRECONCILED_STORY_SLUGS
+    return slug in PILOT_SLUGS or slug in UNRECONCILED_STORY_SLUGS or slug in PENDING_PILOT_SLUGS
+
+
+def _require_activated(slug: str) -> None:
+    if slug in PENDING_PILOT_SLUGS:
+        raise BudgetError(
+            503,
+            "video_budget_preproduction_hold",
+            "本片的供應商價格、舊費用與單片帳戶尚未核對，不能送出付費請求",
+        )
 
 
 def _amount(value: Decimal | None, *, allow_zero: bool, code: str) -> Decimal:
@@ -161,6 +171,7 @@ async def reserve(
     """
     if not is_pilot(slug):
         return None
+    _require_activated(slug)
     operation_id = _label(operation_id, name="operation_id", length=160)
     category = _label(category, name="category", length=40)
     provider = _label(provider, name="provider", length=40)
@@ -347,6 +358,7 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     """Read the aggregate ledger for a pilot without exposing account credentials."""
     if not is_pilot(slug):
         return None
+    _require_activated(slug)
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
     if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")

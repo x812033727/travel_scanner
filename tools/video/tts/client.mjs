@@ -9,6 +9,7 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash, randomUUID } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
+import { PENDING_PILOT_SLUGS, isPendingPilotBudget } from "../core/pending-pilot-budget.mjs";
 import { toNarrationRate } from "./wav.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
@@ -18,6 +19,7 @@ export const PILOT_SLUGS = new Set([
   "story-five-lego-legoland", "story-five-costco-hot-dog",
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
+  ...PENDING_PILOT_SLUGS,
 ]);
 
 // A paid request was sent and no answer came back: the connection dropped after it went out, a
@@ -44,7 +46,7 @@ const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_confi
 // any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
 // 503; the code with another status came from something else and stays uncertain.
 const JEV_NOT_SET = { status: 503, code: "provider_unavailable" };
-const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
+const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || code.startsWith("video_budget_") || code.startsWith("video_pilot_budget_") || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
 // A paid request's 5xx the API answers itself (apps/api/app/video_speech/admin_api.py; synthesis
 // gives the reserved characters back first), retried as before: the API reached the provider's
@@ -184,6 +186,11 @@ export async function speechStatus(options) {
  * paid for, so it is SPEECH_UNCERTAIN like a lost one, never sent again.
  */
 async function postPaid(options, path, body, read) {
+  if (isPendingPilotBudget(options.videoSlug)) {
+    throw new SpeechError(`the ${options.videoSlug} whole-film budget route is on preproduction hold`, {
+      code: "video_budget_preproduction_hold", who: "owner",
+    });
+  }
   // One operation ID covers this logical request, including any HTTP retry after a response
   // that proves the provider did not charge. The API never re-dispatches an uncertain ID.
   const attributed = PILOT_SLUGS.has(options.videoSlug)

@@ -63,6 +63,15 @@ UNRECONCILED_STORY_SLUGS = frozenset(
         "story-everyday-play-doh-c06",
     )
 )
+# The owner approved these USD 25 pilot ceilings, but their complete cost routes and
+# supplier/account readbacks are not ready. They are recognized so every paid API
+# boundary fails closed, without creating spendable accounts or changing the reviewed
+# 0133 account set. A later activation must migrate and verify one account per slug.
+PENDING_PILOT_LIMITS_USD = {
+    "story-everyday-oxo-c10": PILOT_LIMIT_USD,
+    "story-everyday-frixion-c15": PILOT_LIMIT_USD,
+}
+PENDING_PILOT_SLUGS = frozenset(PENDING_PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 

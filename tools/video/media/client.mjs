@@ -13,6 +13,7 @@ import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
 import { sha256File } from "../core/approvals.mjs";
+import { PENDING_PILOT_SLUGS, isPendingPilotBudget } from "../core/pending-pilot-budget.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
@@ -126,12 +127,22 @@ const PILOT_SLUGS = new Set([
   "story-everyday-bubble-wrap-c04",
   "story-everyday-kincho-c05",
   "story-everyday-play-doh-c06",
+  ...PENDING_PILOT_SLUGS,
 ]);
+
+function requirePilotBudgetReady(slug) {
+  if (isPendingPilotBudget(slug)) {
+    throw new MediaError(`the ${slug} whole-film budget route is on preproduction hold`, {
+      code: "video_budget_preproduction_hold", who: "owner",
+    });
+  }
+}
 
 // A judge/locate request is itself the paid operation, unlike a generation's durable job.
 // The pilot path sends it once with a unique operation ID. An ambiguous transport answer must
 // keep the server's reservation and stop the worker; retrying with a fresh ID could buy it twice.
 async function postJudgeOrLocate(options, route, request) {
+  requirePilotBudgetReady(request.slug);
   if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
   const body = { ...request, operation_id: request.operation_id ?? randomUUID() };
   try {
@@ -152,6 +163,7 @@ async function postJudgeOrLocate(options, route, request) {
 }
 
 async function postPaidJob(options, route, request) {
+  requirePilotBudgetReady(request.slug);
   if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
   try {
     const response = await call({

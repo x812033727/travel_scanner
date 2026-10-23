@@ -27,6 +27,8 @@ from app.video_budget import recovery, service
 from app.video_budget.models import (
     FOLLOWON_LIMIT_USD,
     FOLLOWON_SLUGS,
+    PENDING_PILOT_LIMITS_USD,
+    PENDING_PILOT_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
@@ -124,6 +126,34 @@ async def _media_job(
 
 async def _unlocked(_: object) -> bool:
     return False
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("slug", sorted(PENDING_PILOT_SLUGS))
+async def test_approved_new_story_stays_on_preproduction_hold_even_with_an_account(
+    sessions: async_sessionmaker[AsyncSession], slug: str
+) -> None:
+    assert PENDING_PILOT_LIMITS_USD[slug] == Decimal("25")
+    assert slug not in PILOT_SLUGS  # No spendable account is seeded by the current migration.
+    assert service.is_pilot(slug)
+    for account_exists in (False, True):
+        if account_exists:
+            async with sessions() as session:
+                session.add(VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD))
+                await session.commit()
+        with pytest.raises(service.BudgetError) as refused:
+            await _reserve(sessions, "tts-line-1", "0.15", slug=slug, category="speech")
+        assert refused.value.code == "video_budget_preproduction_hold"
+        with pytest.raises(service.BudgetError) as unreadable:
+            await _summary(sessions, slug)
+        assert unreadable.value.code == "video_budget_preproduction_hold"
+    async with sessions() as session:
+        operations = (
+            await session.scalars(
+                sa.select(VideoPilotBudgetOperation).where(VideoPilotBudgetOperation.slug == slug)
+            )
+        ).all()
+    assert operations == []
 
 
 @pytest.mark.asyncio

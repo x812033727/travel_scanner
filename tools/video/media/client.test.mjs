@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { judge, locate, pollOnce, submitImage } from "./client.mjs";
+import { PENDING_PILOT_SLUGS } from "../core/pending-pilot-budget.mjs";
+import { judge, locate, pollOnce, submitClip, submitImage, submitMusic } from "./client.mjs";
 
 const options = (fetchImpl) => ({ site: "https://example.test", token: "test-token", fetchImpl, sleep: async () => {}, attempts: 3 });
 const judged = { slug: "story-rolling-suitcase-v2", kind: "keyframe", files: [], rubric: [] };
@@ -14,6 +15,23 @@ const EVERYDAY_SLUGS = [
   "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
   "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
 ];
+
+test("C10 and C15 paid media and judge calls stop locally before transport", async () => {
+  for (const slug of PENDING_PILOT_SLUGS) {
+    let calls = 0;
+    const fetchImpl = async () => { calls += 1; return Response.json({ id: "unexpected" }); };
+    for (const send of [
+      () => submitImage({ request: { slug, purpose: "shot", prompt: "image" }, ...options(fetchImpl) }),
+      () => submitClip({ request: { slug, shot_id: "s1", prompt: "clip", first_frame: "hash", seconds: 5 }, ...options(fetchImpl) }),
+      () => submitMusic({ request: { slug, prompt: "music", seconds: 30 }, ...options(fetchImpl) }),
+      () => judge({ request: { ...judged, slug }, ...options(fetchImpl) }),
+      () => locate({ request: { slug, sha256: "a".repeat(64) }, ...options(fetchImpl) }),
+    ]) {
+      await assert.rejects(send(), (error) => error.code === "video_budget_preproduction_hold" && error.who === "owner");
+    }
+    assert.equal(calls, 0, slug);
+  }
+});
 
 test("a pilot judge call carries one operation ID and never repeats an uncertain provider answer", async () => {
   let calls = 0;

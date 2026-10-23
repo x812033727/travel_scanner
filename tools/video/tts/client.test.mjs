@@ -6,6 +6,7 @@ import path from "node:path";
 import { EXIT, main } from "../cli.mjs";
 import { everyones } from "../automation/flow.mjs";
 import { sandbox, tempDir } from "../core/fixtures/load.mjs";
+import { PENDING_PILOT_SLUGS } from "../core/pending-pilot-budget.mjs";
 import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
@@ -82,6 +83,24 @@ function server(answers) {
   };
   return { calls, sleeps, options };
 }
+
+test("C10 and C15 paid speech routes stop before contacting even an older server", async () => {
+  for (const slug of PENDING_PILOT_SLUGS) {
+    for (const paid of PAID) {
+      const { calls, options } = server([paid.ok]);
+      await assert.rejects(paid.send({ ...options, videoSlug: slug }),
+        (error) => error.code === "video_budget_preproduction_hold" && error.who === "owner");
+      assert.equal(calls.length, 0, `${slug}: ${paid.name}`);
+    }
+  }
+});
+
+test("a server budget hold is an owner refusal, not an uncertain speech charge", async () => {
+  const { calls, options } = server([() => problem(503, "video_budget_preproduction_hold")]);
+  await assert.rejects(PAID[0].send({ ...options, videoSlug: "story-rolling-suitcase" }),
+    (error) => error.code === "video_budget_preproduction_hold" && error.who === "owner");
+  assert.equal(calls.length, 1);
+});
 
 test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
   for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS]) {

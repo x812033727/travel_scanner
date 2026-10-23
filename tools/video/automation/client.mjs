@@ -5,6 +5,7 @@
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { stopRequested } from "../core/paths.mjs";
+import { PENDING_PILOT_SLUGS, isPendingPilotBudget } from "../core/pending-pilot-budget.mjs";
 import { INPUT_CHANGED_CODE, INPUT_CHANGED_MESSAGE, normalizeRun, policyHeld, POLICY_HOLD_CODE, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
 import path from "node:path";
 
@@ -39,6 +40,7 @@ const PILOT_STORY_SLUGS = new Set([
   "story-five-lego-legoland", "story-five-costco-hot-dog",
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
+  ...PENDING_PILOT_SLUGS,
 ]);
 
 export class AutomationError extends Error {
@@ -48,6 +50,14 @@ export class AutomationError extends Error {
     this.code = code;
     // "owner": needs the site owner (token, keys, a budget they set); "service": try again later.
     this.who = who;
+  }
+}
+
+function requirePilotBudgetReady(slug) {
+  if (isPendingPilotBudget(slug)) {
+    throw new AutomationError(`the ${slug} whole-film budget route is on preproduction hold`, {
+      status: 503, code: "video_budget_preproduction_hold", who: "owner",
+    });
   }
 }
 
@@ -179,7 +189,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
-      if (response.status === 401 || OWNER_CODES.has(problem.code) || (response.status === JEV_NOT_SET.status && problem.code === JEV_NOT_SET.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
+      if (response.status === 401 || OWNER_CODES.has(problem.code) || problem.code.startsWith("video_budget_") || problem.code.startsWith("video_pilot_budget_") || (response.status === JEV_NOT_SET.status && problem.code === JEV_NOT_SET.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
       if (paid && response.status >= 500 && !settles(settled, response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
@@ -346,6 +356,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     throw pending(body, lastProblem, lastProblem || null);
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
+    requirePilotBudgetReady(slug);
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
     const pilotStory = PILOT_STORY_SLUGS.has(slug);
     // Pilots use the durable receipt for every stage, even bounded story chapters.
@@ -364,6 +375,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
   }
   async function retryRuns(slug, authorization = {}) {
+    requirePilotBudgetReady(slug);
     try {
       const confirmed = [];
       // `authorization.kind` is what blocked the video (flow.mjs blockedKindOf): for
@@ -483,7 +495,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
      * endpoint, the site answers 404 and the caller reports it as not available. One Jev call:
      * an answer lost on the way throws RUN_UNCERTAIN instead of spending another (JUDGE).
      */
-    judgePolicy: (body) => request("POST", "automation/judge/policy", body, JUDGE),
+    judgePolicy: async (body) => {
+      requirePilotBudgetReady(body.slug);
+      return request("POST", "automation/judge/policy", body, JUDGE);
+    },
     /**
      * Jev's choice among a brief's outlines (docs/videos/HANDS-OFF.md §Jev 挑大綱): body
      * { slug, brief, options: [{ key, title, summary, hook }] }, 2 to 3 options, no other field.
@@ -491,7 +506,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
      * 409 video_judge_not_enabled while the stance is blank or the switch is off. One Jev call,
      * never asked again here once it was sent and its answer lost (RUN_UNCERTAIN, JUDGE).
      */
-    judgeOutline: (body) => request("POST", "automation/judge/outline", body, JUDGE),
+    judgeOutline: async (body) => {
+      requirePilotBudgetReady(body.slug);
+      return request("POST", "automation/judge/outline", body, JUDGE);
+    },
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {

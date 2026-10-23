@@ -6,6 +6,7 @@ import readline from "node:readline";
 import { parseArgs } from "node:util";
 
 import { NARRATOR } from "../core/drama.mjs";
+import { isPendingPilotBudget } from "../core/pending-pilot-budget.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
@@ -258,6 +259,9 @@ function pilotAuditionSlugs(textFile, workBase) {
   if (/(?:^|[/_.-])a01(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-rolling-suitcase", "story-rolling-suitcase-v2"]));
   if (/(?:^|[/_.-])b18(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-conveyor-belt-sushi", "story-conveyor-belt-sushi-v2"]));
   if (location.includes("brand-stories-pilot-v2")) hints.push(new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]));
+  for (const [id, slug] of [["c10", "story-everyday-oxo-c10"], ["c15", "story-everyday-frixion-c15"]]) {
+    if (new RegExp(`(?:^|[/_.-])${id}(?=$|[/_.-])`).test(location)) hints.push(new Set([slug]));
+  }
   // These preproduction files use story-plan IDs before video.json is created. The folder
   // alone must force an explicit film choice; an ID narrows it to that one budget account.
   const followonIds = new Map([
@@ -291,7 +295,7 @@ async function audition(args, ctx) {
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
   if (values.slug && !/^[a-z0-9][a-z0-9-]{1,99}$/.test(values.slug)) throw new UsageError("audition --slug must be a valid video slug");
-  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
+  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-|story-everyday-(?:oxo-c10|frixion-c15))/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
     throw new UsageError("audition --slug names a budgeted story family but is not an exact budgeted story slug");
   }
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
@@ -300,6 +304,7 @@ async function audition(args, ctx) {
   if (pilotSlugs && !pilotSlugs.has(values.slug)) {
     throw new UsageError(`pilot audition needs its matching --slug (${[...pilotSlugs].join(" or ")})`);
   }
+  if (isPendingPilotBudget(values.slug)) throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
   const text = readFileSync(values["text-file"], "utf8").replace(/^﻿/, "").trim();
   if (!text || text.length > MAX_REQUEST_CHARACTERS) throw new UsageError(`the sample must be 1 to ${MAX_REQUEST_CHARACTERS} characters`);
   const credentials = requireCredentials(ctx);
@@ -353,6 +358,9 @@ async function tts(args, ctx) {
   if (lint.errors.length) {
     ctx.stdout.write(`${project.doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
+  }
+  if (!values["dry-run"] && isPendingPilotBudget(project.doc.slug)) {
+    throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
   }
   const { doc, lexicon } = project;
   const planned = planRequests(doc, lexicon);
@@ -571,6 +579,7 @@ export async function run(command, args, ctx) {
         strict: true,
       }).values;
       const slug = loadProject({ slug: values.slug, file: values.file, root: ctx.root }).doc.slug;
+      if (isPendingPilotBudget(slug)) throw new SpeechError("this story's whole-film budget route is on preproduction hold", { code: "video_budget_preproduction_hold", who: "owner" });
       return await checkAudio(args, ctx, { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: slug });
     }
     return await tts(args, ctx);
