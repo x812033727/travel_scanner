@@ -359,6 +359,27 @@ export function episodeScriptProblems(doc, timeline, { outroCount = true } = {})
 }
 
 /**
+ * The sticker drama's cut (the manga tier, docs/videos/BINGE.md §畫面等級): a new picture every
+ * 2 to 3.5 seconds, one line per shot. The two 100k-view 動態漫畫 compilations measured on
+ * 2026-10-24 cut every 1.75 to 3.25 s; our first episode held 3.75 s and read as slow. A shot
+ * past this many seconds on one picture is a warning naming the shot.
+ */
+export const MANGA_SHOT_MAX_SECONDS = 4;
+
+/** Each manga shot whose estimated length passes MANGA_SHOT_MAX_SECONDS, as { path, message }. */
+export function mangaShotLengthProblems(doc, timeline) {
+  const problems = [];
+  for (const scene of timeline?.scenes ?? []) {
+    const index = (doc.scenes ?? []).findIndex((each) => each.id === scene.id);
+    if (index < 0 || !isShot(doc.scenes[index])) continue;
+    const seconds = frameToSeconds(scene.end_frame - scene.start_frame);
+    if (seconds <= MANGA_SHOT_MAX_SECONDS) continue;
+    problems.push({ path: `scenes[${index}]`, message: `shot ${scene.id} holds one picture for about ${seconds.toFixed(1)} s; the manga tier cuts every 2 to 3.5 s, at most ${MANGA_SHOT_MAX_SECONDS}: give the shot one line and move the rest to a new picture (docs/videos/BINGE.md §畫面等級)` });
+  }
+  return problems;
+}
+
+/**
  * The thumbnail's headline held to the channel's rule where the writer sees it, as warnings:
  * the rule the qa stage fails the drawn thumbnail on (qa/thumbnail.mjs thumbnailChecks, visuals.md
  * §縮圖): at most THUMB_HEADLINE_MAX characters where a CJK glyph counts one and a Latin word or
@@ -529,6 +550,7 @@ export function lintVideo(doc, context = {}) {
   // animated dramas keep their own craft untouched (the owner, 2026-10-22).
   if (context.series?.visual_tier === "manga") {
     for (const problem of shotHookProblems(doc, timeline, MANGA_HOOK_GAP_SECONDS)) warn(problem.path, problem.message, "narrative");
+    for (const problem of mangaShotLengthProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the synthesized timeline decides)`);
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
