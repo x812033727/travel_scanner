@@ -41,7 +41,7 @@ file. The owner wants every dub downloadable, and the right version, to judge an
   (file, format, role, sha256, lines) beside the skip; a stale take is not sent.
 - [x] YouTube sync's `compose` accepts it for a skipped dub (audio only) and never sends it.
 - [x] The card offers 「下載 <file>（沒過自動檢查）」 and lists the failed lines.
-- [ ] Duration review increment for the bound files.
+- [x] Duration review increment for the bound files (`claude-pr-review-unchecked-dubs-20261024`, PASS).
 - [ ] Merged, deployed; A4's language batch sent again and its card checked.
 
 ## How to verify
