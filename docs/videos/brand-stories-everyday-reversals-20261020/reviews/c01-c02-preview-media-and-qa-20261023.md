@@ -12,7 +12,7 @@
 
 ## 本輪查找範圍
 
-- 2026-10-24 `Test-Path -LiteralPath` 確認 `C:\Users\x8120\mokaair-work\videos\story-everyday-crocs-c01`、`C:\Users\x8120\mokaair-work\videos\story-everyday-tupperware-c02`、`C:\workspace`、使用者目錄下的 `.brand-video-workdir`／`brand-story-preview` 均不存在。
+- 2026-10-24 `Test-Path -LiteralPath` 確認 `<home>\mokaair-work\videos\story-everyday-crocs-c01`、`<home>\mokaair-work\videos\story-everyday-tupperware-c02`、`C:\workspace`、使用者目錄下的 `.brand-video-workdir`／`brand-story-preview` 均不存在。
 - G: 已掛載；指定候選 `G:\我的雲端硬碟\AI\videos\<slug>` 與 `G:\我的雲端硬碟\AI\mokaair-work\videos\<slug>` 兩集目錄均不存在。淺層備份專案清單沒有這兩集；對現有備份收據與交接文字的定點搜尋，也沒有兩集 slug 或上述試片雜湊。
 - 唯讀連線正式主機 `hostinger2` 時，舊文件所列 `/workspace/.brand-video-workdir/story-everyday-crocs-c01/`、`/workspace/.brand-video-workdir/story-everyday-tupperware-c02/`、`/workspace/brand-story-preview/tupperware-c02/` 及 `/var/lib/mokaair/video-work/<slug>` 未找到。**正式主機不等於原始雲端工作區**；這些陰性結果不能證明原始工作區已被刪除，也不能證明沒有其他備份。
 
