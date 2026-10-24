@@ -59,10 +59,12 @@ def _five_file() -> dict[str, Any]:
     return {"schema_version": 1, "series": series, "stories": episodes}
 
 
-def _everyday_file() -> dict[str, Any]:
+def _everyday_file(
+    series_slug: str = stories.EVERYDAY_REVERSALS_SLUG, letter: str = "C"
+) -> dict[str, Any]:
     document = deepcopy(_five_file())
     document["series"].update(
-        slug=stories.EVERYDAY_REVERSALS_SLUG,
+        slug=series_slug,
         planned_episodes=20,
     )
     source_rows = document["stories"][:3]
@@ -71,14 +73,15 @@ def _everyday_file() -> dict[str, Any]:
     for number, story in enumerate(document["stories"], start=1):
         story.update(
             number=number,
-            id=f"C{number:02d}",
+            id=f"{letter}{number:02d}",
             slug=(
                 stories.C03_VIDEO_SLUG
-                if number == 3
-                else f"story-everyday-test-c{number:02d}"
+                if letter == "C" and number == 3
+                else f"story-everyday-test-{letter.lower()}{number:02d}"
             ),
-            category="everyday",
-            title=f"C{number:02d} everyday test",
+            # X stories may be any category; C stories of this batch are all everyday.
+            category="tech" if letter == "X" and number % 2 else "everyday",
+            title=f"{letter}{number:02d} everyday test",
             publish={"day": number, "slot": "12:00"},
         )
         author_caveats = story.get("caveats", "")
@@ -91,7 +94,7 @@ def _everyday_file() -> dict[str, Any]:
             "author_caveats": author_caveats, "review_notes": "",
         })
     document["review_certification"] = {
-        "series_slug": stories.EVERYDAY_REVERSALS_SLUG,
+        "series_slug": series_slug,
         "status": "independent-verified", "entries": proofs,
     }
     return document
@@ -214,6 +217,61 @@ def test_compiled_everyday_batch_matches_python_import_validation() -> None:
     assert len(checked.stories) == 20
     assert checked.problems == []
     assert checked.ignored == []
+
+
+def test_company_turns_x_batch_is_review_only_and_x_ids_stay_in_their_series() -> None:
+    document = _everyday_file(stories.COMPANY_TURNS_SLUG, "X")
+    assert stories.check_story_file(document, stories.COMPANY_TURNS_SLUG).problems == []
+    assert "X stories belong to the brand-stories-company-turns series" in "\n".join(
+        stories.story_problems(document["stories"][0])
+    )
+    without_review = deepcopy(document)
+    del without_review["review_certification"]
+    assert "independent review certification" in "\n".join(
+        stories.check_story_file(without_review, stories.COMPANY_TURNS_SLUG).problems
+    )
+    changed = deepcopy(document)
+    changed["stories"][4]["chapters"][0]["point"] += "新主張。"
+    assert "X05: compiled story changed after independent review" in "\n".join(
+        stories.check_story_file(changed, stories.COMPANY_TURNS_SLUG).problems
+    )
+
+
+def test_compiled_company_turns_batch_matches_python_import_validation() -> None:
+    file = (
+        Path(__file__).resolve().parents[3]
+        / "docs/videos/brand-stories-company-turns-20261024/stories.json"
+    )
+    document = json.loads(file.read_text(encoding="utf-8"))
+    checked = stories.check_story_file(document, stories.COMPANY_TURNS_SLUG)
+    assert len(checked.stories) == 20
+    assert checked.problems == []
+    assert checked.ignored == []
+
+
+async def test_company_turns_import_creates_paused_planned_rows_without_requests(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    document = _everyday_file(stories.COMPANY_TURNS_SLUG, "X")
+    async with db() as session:
+        session.add(VideoAutomationSettings(id=1, drama_enabled=True))
+        await session.commit()
+        report = await stories.import_story_rows(
+            session, document, series_slug=stories.COMPANY_TURNS_SLUG, apply=True
+        )
+        assert report.problems == [] and report.written and report.series_created
+        assert report.create == [f"X{number:02d}" for number in range(1, 21)]
+        series = await session.scalar(select(VideoDramaSeries))
+        assert series is not None and series.status == "paused"
+        episodes = list((await session.scalars(
+            select(VideoDramaEpisode).order_by(VideoDramaEpisode.number)
+        )).all())
+        assert {row.status for row in episodes} == {"planned"} and len(episodes) == 20
+        assert (await session.scalars(select(VideoDramaRequest))).all() == []
+        again = await stories.import_story_rows(
+            session, document, series_slug=stories.COMPANY_TURNS_SLUG, apply=True
+        )
+        assert again.problems == [] and not again.written and again.create == []
 
 
 async def test_everyday_import_creates_paused_series_atomically_and_refuses_active_reimport(
