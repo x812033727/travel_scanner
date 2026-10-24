@@ -148,11 +148,16 @@ visual rows: 73 illustrations, 12 cards, max card streak 2. About 2,424
 spoken Han gives 8:05–8:59 at 300–270 Han/min, just five paper seconds above
 the 480-second floor at 300 Han/min. Actual TTS body duration remains HOLD.
 Script SHA-256 `CE92A01ED85C1F5C36B2FED977B02E5532E345CC136C0A581EA9F0AFCC4FB2D6`,
-visual SHA-256 `B5833D7D98856A7C8E87CF3FE5A68E531A06B33CE94E104CFF7CC0467365D9BE`,
-evidence SHA-256 `6CDEA423C36DF3D140C8F8C378A6BE869D73CFE838B88A8C89E2F5D61058C67B`.
+visual SHA-256 `3BB7E74622BF10EA6E29983C0713857823C0E5F725ADDB07D6D294E292019636`,
+evidence SHA-256 `8170976B9A8182171B8A647A8F4D7A3348F8383ECF3BC117CA9AE890015E104A`.
 New LF narrator-only projection `reviews/narrator-only-ce92a01ed.txt` SHA-256
 `068CC334B2BCE9D9B08973623765548A10F76858E99DC96840429AFA4AE7B8A5`
 requires two independent fresh reads. Prior blind A's precise read was
 `blocked by policy`; no alternate read was attempted and no A verdict exists.
-The complete 85-line final-hash source/visual review and owner script gate
-remain pending. No paid calls, PR or upload under this revision.
+The coordinating task relayed an independent v5 review of the prior visual
+hash: all 85 narration claims and paired visual rows PASS, with one document
+HOLD for the stale precheck summary. That line now says 85 IDs, 73 shots,
+12 cards, 85.9% by count and about 81.3% by conservative planned time;
+only this summary and its dependent hashes changed. A narrow confirmation of
+the new visual hash, two fresh blind reads, and the owner script gate remain
+pending. No paid calls, PR or upload under this revision.

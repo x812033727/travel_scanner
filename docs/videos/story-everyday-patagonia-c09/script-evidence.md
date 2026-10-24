@@ -1,6 +1,6 @@
 # C09 Patagonia｜逐句稿作者查核與敘事收據
 
-**狀態：在上一版 c090302 的[獨立差異查核 PASS](reviews/source-visual-v4-delta-31846e1f.md)後，補入八個 S1／S3／S4 支持的敘事節點；本 85 句版仍待另一代理完整來源／逐鏡覆核、兩位只讀新版旁白的盲讀、視覺預檢與站主劇本核准。** 更早的 [77 句版 76／77 來源 PASS](reviews/source-visual-7386e78f9.md)與 [B 的只讀旁白判定、A 讀取被自動審查拒絕](reviews/narrator-only-2d8bcb231-read-status.md)只約束舊雜湊，**不自動通過本版**。本版 [逐句稿](script.md) SHA-256 `CE92A01ED85C1F5C36B2FED977B02E5532E345CC136C0A581EA9F0AFCC4FB2D6`、[逐鏡草案](visual-plan.md) SHA-256 `B5833D7D98856A7C8E87CF3FE5A68E531A06B33CE94E104CFF7CC0467365D9BE`。沒有做配音、圖片、配樂、影片匯入、上傳或發布。
+**狀態：在上一版 c090302 的[獨立差異查核 PASS](reviews/source-visual-v4-delta-31846e1f.md)後，補入八個 S1／S3／S4 支持的敘事節點；本 85 句版仍待另一代理完整來源／逐鏡覆核、兩位只讀新版旁白的盲讀、視覺預檢與站主劇本核准。** 更早的 [77 句版 76／77 來源 PASS](reviews/source-visual-7386e78f9.md)與 [B 的只讀旁白判定、A 讀取被自動審查拒絕](reviews/narrator-only-2d8bcb231-read-status.md)只約束舊雜湊，**不自動通過本版**。本版 [逐句稿](script.md) SHA-256 `CE92A01ED85C1F5C36B2FED977B02E5532E345CC136C0A581EA9F0AFCC4FB2D6`、[逐鏡草案](visual-plan.md) SHA-256 `3BB7E74622BF10EA6E29983C0713857823C0E5F725ADDB07D6D294E292019636`。沒有做配音、圖片、配樂、影片匯入、上傳或發布。
 
 ## 核准與素材邊界
 
