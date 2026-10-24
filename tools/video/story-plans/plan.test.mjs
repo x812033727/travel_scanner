@@ -92,6 +92,16 @@ test("C everyday ids belong only to the exact everyday reversals series", () => 
   assert.match(planProblems(plan, { expected: null }).join("\n"), /C03: category "everyday" does not fit id C03 \(tech\)/);
 });
 
+test("X ids belong only to the company turns series, in any category", () => {
+  const seriesSlug = "brand-stories-company-turns";
+  const everyday = story({ id: "X06", slug: "story-everyday-wd40-x06" });
+  const tech = { ...everyday, category: "tech" };
+  assert.deepEqual(storyProblems(everyday, "X06", { seriesSlug }), []);
+  assert.deepEqual(storyProblems(tech, "X06", { seriesSlug }), []);
+  assert.match(storyProblems(everyday, "X06").join("\n"), /X stories belong to the brand-stories-company-turns series/);
+  assert.match(storyProblems(everyday, "X06", { seriesSlug: "brand-stories-everyday-reversals" }).join("\n"), /X stories belong/);
+});
+
 test("the six chapters come in order and say something", () => {
   const swapped = story();
   [swapped.chapters[0], swapped.chapters[1]] = [swapped.chapters[1], swapped.chapters[0]];
