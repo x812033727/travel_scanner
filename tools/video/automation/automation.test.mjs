@@ -1847,6 +1847,18 @@ test("a drama reads the drama part's own settings and falls back to the tutorial
   assert.deepEqual(drama.voice, { provider: "gemini", name: "Kore", style: "Grave" }, "the drama's own voice, without the fields Gemini has no use for");
   const followed = settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama" });
   assert.equal(followed.voice.name, "Sulafat");
+  assert.equal(followed.voice.style, "Relaxed", "a drama of no tier reads the tutorial's style");
+  // The manga tier's narrator (BINGE.md §畫面等級, 2026-10-24): with no drama voice chosen, the TTS style is the
+  // storyteller's direction the writer plans from; a chosen drama voice stands; the other tiers keep the tutorial's.
+  const mangaSeries = { slug: "xitong-shuo-wo-shi-bug", visual_tier: "manga" };
+  const manga = settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries });
+  assert.equal(manga.voice.name, "Sulafat");
+  assert.equal(manga.voice.style, "標準國語，咬字清楚，台北人平常說話的語調。說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事");
+  assert.equal(manga.voice.rate, undefined, "still Gemini's fields alone");
+  assert.equal(settle(dramaFixture(), { slug: "jingwei", settings: split, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries }).voice.style, "Grave", "the owner's drama voice stands");
+  assert.equal(settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama", series: { ...mangaSeries, visual_tier: "hybrid" } }).voice.style, "Relaxed");
+  const azureTutorial = { ...following, voice: { provider: "azure", name: "zh-TW-HsiaoChenNeural", style: null, model: null, rate: "+0%" } };
+  assert.deepEqual(settle(dramaFixture(), { slug: "jingwei", settings: azureTutorial, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries }).voice, { provider: "azure", name: "zh-TW-HsiaoChenNeural", rate: "+0%" }, "an Azure voice has no style to carry it");
   const slides = settle(fixture(), { slug: "z", settings: split, sourceGuide: null, root: ROOT });
   assert.equal(slides.voice.name, "Sulafat", "a tutorial keeps the channel voice whatever the drama chose");
 });
