@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-create-held-c-series-budget-accounts
 title: Create held C-series budget accounts in 0138 migration
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T01:11:15Z
 created_at: 2026-10-24T01:11:08Z
-completed_at:
+completed_at: 2026-10-24T01:59:14Z
 branch: codex/c-series-budget-0138-migration-20261024
 depends_on: []
 scope:
@@ -29,14 +29,14 @@ are verified. This migration-only ticket does not activate paid dispatch.
 
 ## Definition of done
 
-- [ ] Revision `0138_story_everyday_budget` upgrades from
+- [x] Revision `0138_story_everyday_budget` upgrades from
       `0137_video_manga_tier` to seven distinct USD 25 held accounts for
       C03–C07, C10 and C15; C03–C06 each carry a full-cap uncertain
       pre-ledger-history reservation using the current compatible model.
-- [ ] Repeated upgrade preserves existing matching data without resetting
+- [x] Repeated upgrade preserves existing matching data without resetting
       balances; any existing conflicting account/reservation causes a clear
       failure instead of `ON CONFLICT DO NOTHING` acceptance.
-- [ ] A real PostgreSQL/Compose upgrade and downgrade prove rollback removes
+- [x] A real PostgreSQL/Compose upgrade and downgrade prove rollback removes
       only rows owned by 0138 and leaves other ledger data untouched.
 - [x] Paid C-series routing and all per-film STOP conditions remain unchanged;
       this PR does not call providers or grant spending access.
@@ -48,7 +48,7 @@ are verified. This migration-only ticket does not activate paid dispatch.
       conflict behavior.
 - [x] Implement only the two scoped new files: 0138 migration and focused
       migration tests. Do not change #1583's overlapping service or guard files.
-- [ ] Exercise idempotence, mismatched pre-existing data, and targeted
+- [x] Exercise idempotence, mismatched pre-existing data, and targeted
       downgrade with real PostgreSQL/Compose; record actual commands/results.
 
 ## How to verify
@@ -90,3 +90,22 @@ accounts, four holds, nine prior accounts, and a prior operation, then drops
 that database. CI or another disposable PostgreSQL environment must run all
 eight PostgreSQL cases before the migration is eligible to merge or deploy.
 No provider call occurred.
+
+2026-10-24 completion readback: PR #1804 head `7ab87304c93ed3e16d6aa582748cbfdd781ae332`
+passed all four required GitHub checks (`api`, `web`, `containers`,
+`full-stack-smoke`); PostgreSQL `api-tests (3/4)` passed after fixing a
+test-only SQLAlchemy result-materialization bug. An independent review found
+no migration safety HOLD. On a disposable local WSL Docker Compose
+`postgres:16-alpine` database, focused tests ran with `RUN_INTEGRATION_TESTS=1`
+and reported `10 passed, 1 skipped` (the skipped case is intentionally CI-only
+because it creates a separate database). Actual Alembic/readback on that
+Compose database: `0137_video_manga_tier` had 9 prior accounts and 0
+operations; upgrade to `0138_story_everyday_budget` had 16 accounts, exactly
+7 C-series USD 25 accounts, 4 full-cap `pre-ledger-history` uncertain holds,
+and 7 provenance rows; downgrade to 0137 restored 9 accounts, 0 operations,
+and no 0138 provenance table. The CI-only disposable-database Alembic
+up/down test also passed in the PostgreSQL job. The exact Compose project
+`cseries0138verify1024` was stopped and removed with `down -v`; `compose ls
+--all` returned `[]`. This verifies the migration, not deployed host state,
+historical charge settlement, spending-route activation, or actual vendor
+prices. All paid C-series STOP gates remain in place.
