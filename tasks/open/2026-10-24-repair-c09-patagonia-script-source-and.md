@@ -66,12 +66,27 @@ measured from voice WAVs and reach 480 seconds before buying any images.
 
 ## Notes
 
-2026-10-24 author revision: 86 narration rows and 86 paired visual rows,
-73 illustrations and 13 postproduction cards, longest card streak 2. Current
+2026-10-24 first author revision: 86 narration rows and paired visual rows,
+73 illustrations and 13 cards. Locked author commit `8221e4bc024f2602de927ef881f99876d202e822`;
 script SHA-256 `8A35934A9747211EE05115350E3DF65235FEACB3586B49CC11084936DA84F9AE`,
 visual SHA-256 `CBA55E719D41C3E7A301CB0B1508E18ED6F5380D58F299F7B04F82EF3885159E`.
-The script has about 2,369 Han characters: paper estimates span 7:54–8:46,
-straddling the required 8:00. These are not voice evidence. No paid calls.
-The approved treatment and source matrix are unchanged; S4's 1977 business
-profit quote was deliberately excluded because it would expand this story's
-approved factual scope and confuse the 1972 motive.
+Independent source/visual review found 80 PASS and six HOLD: five two-year
+cards plus the c090604 rope-loop detail. Two independent narration-only
+readers both held chronology, fact detours, hook pace and closing repetition.
+All three locked reviews and the old projection are preserved under `reviews/`.
+
+2026-10-24 second author revision: 76 narration rows and 76 paired visual
+rows, 64 illustrations and 12 cards, longest card streak 2. Script SHA-256
+`D187ED3C48FF6C28D5080F35CA9F7C4566108322BABA68B755F2CF90D2F9C5B7`,
+visual SHA-256 `394B9968AC3E55DC33A67C524E04E0604FBD07F473E8A442D740532BE6B13960`,
+evidence SHA-256 `734F4DE54A23D64888E986EA2C0DF23618FC80E42CA1BD830806D34FB7D99B0C`.
+Fresh narration-only projection `reviews/narrator-only-d187ed3c4.txt` SHA-256
+`893A76C399F156D32514E7D7A5A4899979372E9539186A4FB9C19EC7653A29C9`
+awaits two new independent blind reads; final-hash source/visual review also
+awaits a different reviewer. About 2,053 spoken Han yields paper estimates
+6:51–7:36 at 300–270 Han/min, so actual 8:00 body duration is a clear risk.
+Do not pad with repeated facts; measure voice only after owner script and
+cost gates. These are not voice evidence. No paid calls. The approved
+treatment and source matrix are unchanged; S4's 1977 business profit quote
+was deliberately excluded because it would expand this story's approved
+factual scope and confuse the 1972 motive.
