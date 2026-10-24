@@ -24,7 +24,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.config import get_settings
 from app.db import engine
-from app.migration_guard import _verify_reviewed_0138
+from app.migration_guard import C20_PILOT_SLUG, _verify_reviewed_0138
 from app.video_budget.models import (
     C_SERIES_PILOT_LIMITS_USD,
     PILOT_LIMITS_USD,
@@ -60,6 +60,23 @@ def run(connection: Connection, direction: str) -> None:
 
 def _prepare_0137(connection: Connection) -> None:
     migration = load_migration()
+    # API shards start at the current head. Reconstruct the older 0137 account
+    # inventory within this test transaction before exercising the 0138 migration.
+    c20_ownership = "video_pilot_budget_0139_owned"
+    if sa.inspect(connection).has_table(c20_ownership):
+        c20_owner = connection.execute(
+            sa.text(f"SELECT slug, account_created FROM {c20_ownership}")
+        ).all()
+        assert c20_owner == [(C20_PILOT_SLUG, True)]
+        connection.execute(sa.text(f"DROP TABLE {c20_ownership}"))
+        connection.execute(
+            sa.delete(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.slug == C20_PILOT_SLUG
+            )
+        )
+        connection.execute(
+            sa.delete(VideoPilotBudget).where(VideoPilotBudget.slug == C20_PILOT_SLUG)
+        )
     if sa.inspect(connection).has_table(migration.OWNERSHIP):
         connection.execute(sa.text(f"DROP TABLE {migration.OWNERSHIP}"))
     connection.execute(
