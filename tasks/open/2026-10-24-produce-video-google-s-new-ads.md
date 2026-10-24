@@ -8,7 +8,7 @@ owner: claude-fable-5-1-news-video
 claimed_at: 2026-10-24T11:27:35Z
 created_at: 2026-10-24T11:26:58Z
 completed_at:
-branch:
+branch: claude/ai-tech-news-video-aa3500 (PR #1833)
 depends_on: []
 scope:
   - docs/videos/google-ai-search-ads-exception
@@ -24,9 +24,9 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 
 ## Definition of done
 
-- [ ] `docs/videos/google-ai-search-ads-exception/` holds brief.md, video.json, claims.md and verify-*.md; lint has zero errors and the storytelling panel passes (or its misses are fixed and recorded).
-- [ ] Outline recorded (owner's standing word: take the recommended option), narration, final and publish gates pushed to /admin/videos (hand-pushed: every gate waits for the owner).
-- [ ] final.mp4, captions and the upload package exist in the local workdir and qa passes 11/11 (policy and narration items are the owner's call at the final gate).
+- [x] `docs/videos/google-ai-search-ads-exception/` holds brief.md, video.json, claims.md and verify-*.md; lint has zero errors and the storytelling panel passes (or its misses are fixed and recorded).
+- [x] Outline recorded (owner's standing word: take the recommended option), narration, final and publish gates pushed to /admin/videos (hand-pushed: every gate waits for the owner).
+- [x] final.mp4, captions and the upload package exist in the local workdir and qa passes 11/11 (policy and narration items are the owner's call at the final gate).
 - [ ] Eight languages (en, ja, ko, es, pt, id, vi, th; owner 2026-10-24 「不只三語了現在是八語」) titles/descriptions, CC, locale thumbnails and dubs made once the owner ticks them on the video page; `review-push --gate languages` accepted.
 
 ## Steps
@@ -35,9 +35,9 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 - [x] Writer: video.json (English cards, 44 scenes / 64 states, est. 9.0 min) + claims.md + 19 lexicon terms (all null), lint clean; outline recorded as A on the owner's standing word.
 - [x] Verifier rounds 1–2 (opus, 5 + 3 fact edits; verify-1.md 50 claims, verify-2.md 47; blog.google 2026-01-22 proves Connected Content Apps predates Oct 16).
 - [x] Listener pass (19 lines). Blind reads: round 1 three readers (6/13, 6/13, 8/13) → 16 lines reworded (recaps became named callbacks, step ordinals and group counts dropped, product list cut, two forward hooks added); round 2 two readers (11/13, 9/13) → 5 more lines; final reader recorded with `narrative --answers` (9/13, verdict in `review/narrative.json`). The three standing misses (scene_first, no_spoiler, no_toc) are the teaching-flow §一 five-sentence opening by design (the answer and the promise sentence are in the opening); no_recap is the chapter-7 「my call」 restating the recipe as the one-sentence answer. Left for the owner's final-gate judgement, not reworked further.
-- [ ] tts (8:30 on the first synthesis, 2,748 characters), pace (63 states, longest 14.2 s, under the 15 s cap), check-audio round 1: 8 flagged → all reworded (連了→接上去, 推薦→優惠, 片段→摘錄, 兩版都有→新舊兩個版本都在, 連接→Connect 那一步, 點三層→第三層) and re-recorded (8:34); round 2 running; then review-push audio.
-- [ ] render, assemble, captions, qa, review-push final.
-- [ ] package, review-push publish; note what the owner still has to do.
+- [x] tts (8:30 on the first synthesis, 2,748 characters), pace (63 states, longest 14.2 s, under the 15 s cap), check-audio round 1: 8 flagged → all reworded (連了→接上去, 推薦→優惠, 片段→摘錄, 兩版都有→新舊兩個版本都在, 連接→Connect 那一步, 點三層→第三層) and re-recorded (8:34); round 2: 2 flagged (「那一頁」「那一步」 heard as 內頁／內部) → reworded, round 3: 0 flagged (8:32); audio pushed and approved by the owner 2026-10-24.
+- [x] render (four passes for the paper layout), assemble (16,164 frames, −14.1 LUFS), captions (120 cues, rebuilt after assemble), qa 9/11 (narration unapproved at run time; policy 有示範 0.56), final pushed and approved by the owner 2026-10-24.
+- [x] package 4/4 (metadata 76607693e8b6), publish gate pushed 2026-10-24 (pending the owner). Owner: upload `upload/final.mp4` in Studio as Private per UPLOAD.md, paste the URL on the 「可以上架」 card, tick the eight languages on the video page.
 - [ ] Languages after the owner's tick: i18n-sheet → translate → merge → review → render (locale thumbnails) → dub → check-audio → captions → package → review-push languages.
 
 ## How to verify
