@@ -122,3 +122,11 @@ release with `--no-charge-reason` still needs the provider's usage or invoice fo
 window showing no charge, since a refused run alone is not no-charge evidence under the
 rules above. Removing a STOP file is a separate owner decision after the readback, and
 neither action calls a provider.
+
+## 2026-10-24: C03 closed and activated by owner decision
+
+C03's `pre-ledger-history` row is settled at the full USD 25 with receipt
+`owner-decision-20261024-c03-full-ceiling` (no provider billing was read; the owner chose
+the full ceiling over reconciliation). The film is activated; the closed row is reported
+separately as `historical_closed_usd` and no longer consumes the ceiling. See
+`PENDING_EVERYDAY.md` §C03 Moleskine activation. C04–C06 are unchanged.
