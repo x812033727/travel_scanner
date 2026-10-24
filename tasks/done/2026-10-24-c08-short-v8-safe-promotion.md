@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-c08-short-v8-safe-promotion
 title: Promote C08 short v8 as guarded same-episode project
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-c08-short-backend
 claimed_at: 2026-10-24T05:13:46Z
 created_at: 2026-10-24T05:13:41Z
-completed_at:
+completed_at: 2026-10-24T05:44:10Z
 branch: codex/c08-kikkoman-canonical-preflight-20261024
 depends_on: []
 scope:
@@ -44,7 +44,7 @@ The owner approved the exact C08 short-v8 narration and visual direction in this
 
 ## How to verify
 
-Run `node tools/video/cli.mjs lint --slug story-everyday-kikkoman-c08-short-v8`, focused Node tests, `node docs/videos/brand-stories-everyday-reversals-20261020/build.mjs`, `npm run check:tasks`, and `git diff --check`. The lint policy change in `tools/video/core/lint.mjs` waits for C15 PR #1810 merge. Do not import, pay for media, upload, publish, or unpause the series here.
+Run `node tools/video/cli.mjs lint --slug story-everyday-kikkoman-c08-short-v8`, focused Node tests, `node docs/videos/brand-stories-everyday-reversals-20261020/build.mjs`, `node tools/video/long-form/cli.mjs check`, `npm run check:tasks`, and `git diff --check`. C15 PR #1810 was merged before the C08 lint change. Do not import, pay for media, upload, publish, or unpause the series here.
 
 ## Notes
 
@@ -55,3 +55,7 @@ The independent C08 plan reviewer certified the revised source hash `5ccbe2040d8
 C08 has no inherited US$25 paid cap: the historical C08 preflight explicitly says another episode's cap does not transfer. The worker requires a separate C08 owner-approved whole-film quote and cap receipt before paid stages, with quote no higher than that cap. The local test's US$25 and US$26 values are synthetic boundary examples, not an authorization or a proposed budget.
 
 The 240-second QA exception is additionally bound to SHA-256 `31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9` over all 36 ordered `[line.id,line.text]` pairs, and `1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c` over ordered `[line.id,line.say,line.say_for]` pairs. A one-character visible narration edit or spoken override edit returns to the ordinary 480-second floor in the focused test, while a visual prompt edit leaves the narration predicate intact. This complements the worker's full-project hash guard.
+
+Independent DURATION_ONLY source review and the four-file receipt were completed at `d9adb5b4b`; guarded CLI and receipt tests passed. The paper post-`say` total remains about 301.63 seconds, not measured media. Actual TTS and human listening, a measured body/final-cut pass, the `v7e03` diagram, picture QA, a C08 whole-film supplier quote and owner cap, production dry-run/import, upload and publication remain separate HOLD gates.
+
+After that review, an independent QA CLI reproduction found that `needsMinimumLength(doc)` still passed `minMinutes: 8` to `assembleItem` for this explainer: a synthetic 9000-frame C08 cut passed the C08-only duration function but failed final QA as 05:00 under eight minutes. The follow-up `2026-10-24-close-exact-c08-short-v8-qa` narrows the CLI argument to the frozen approved C08 predicate and adds real CLI one-frame regression. The earlier DURATION_ONLY receipt is historical until a non-author reviewer rebinds it to the new source head. No synthetic fixture is a measured production cut or an owner listening approval.
