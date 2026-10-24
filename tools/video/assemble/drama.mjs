@@ -48,6 +48,29 @@ export const MOTION_SOURCE_SCALE = 1.25;
 // (smoothstep) and scale it; a Short (shorts/motion.mjs) asks for the plain linear expressions.
 export const MOTION_TRAVEL_SECONDS = 6;
 export const MOTION_TRAVEL_MIN = 0.5;
+// How far a drift slides the window sideways, as a share of the zoom's margin.
+const MOTION_DRIFT_SHARE = 0.15;
+// The sticker drama (the manga tier, docs/videos/BINGE.md §畫面等級) is the other way round. The
+// two 100k-view 動態漫畫 compilations measured on 2026-10-24 (ticket
+// 2026-10-24-manga-sticker-drama-pace-visible-camera: 96×54 grey frames four times a second,
+// the median difference between neighbours inside a shot) keep the whole picture moving, 8 to
+// 12 on that scale against 1.2 for the held-shot move above, with 0 to 15% of frames still
+// against 80%. So a manga still takes a move the viewer sees: push and pull a fifth of the
+// picture, pan and tilt at 1.12, drift 10% with twice the sideways travel, and the whole move
+// inside a typical shot (the full travel from travelSeconds up, never below travelMin of it)
+// rather than over six seconds. Measured on a softened 1080p picture over a three-second shot
+// with the ticket's scale, these land every move at 10 to 29 (push 13.5, tilt 16, drift 10,
+// pan 29) against 1.7 to 11 for the held shot; the ticket's first guess (0.25 / 1.25 / 0.12)
+// pushed a pan to 45, where the same scale reads a cut. These amounts are read only from a move that carries
+// `profile: "manga"` (layoutDrama's `tier`), and MOTION_MANGA_VERSION joins that segment's key,
+// so every other tier and the illustrated slides keep their expressions and their cached
+// segments byte for byte, and a manga cut never collides with a segment made before.
+export const MOTION_MANGA_VERSION = "manga-motion-v1";
+export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
+const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
+export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION });
+/** The amounts a move's expressions use: the manga tier's when the move carries `profile: "manga"`, else the held shot's. */
+export const motionProfile = (move) => (move && typeof move === "object" && move.profile ? MOTION_PROFILES[move.profile] : undefined) ?? STILL_MOTION;
 // Where a drifting picture goes: its shot id decides, so two drifts in a row rarely go one way.
 export const DRIFT_DIRECTIONS = ["right", "left"];
 // A scene change of an illustrated slides video is a cut, like an editor's, except after a
@@ -122,9 +145,10 @@ export function illustratedTransition(source, index, previous = null) {
  * illustrated slides: `transitionRule(source, index)` decides how a shot or a moving card is
  * entered (a drama takes the shot's own word, else a cut), and `cardMotion` lays a single-state
  * card out as a motion scene, its still drifting like a keyframe, so a title or a big number is
- * never a frozen picture; a card with reveals keeps its entrances as its motion.
+ * never a frozen picture; a card with reveals keeps its entrances as its motion. `tier` is the
+ * series' visual_tier: a still shot of the manga tier carries the manga motion profile.
  */
-export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { transitionRule = null, cardMotion = false } = {}) {
+export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { transitionRule = null, cardMotion = false, tier = null } = {}) {
   if (timeline.scenes.length !== frames.scenes.length) {
     throw new PlanError(`the frames were rendered for ${frames.scenes.length} scenes, the timeline has ${timeline.scenes.length}; run render again`);
   }
@@ -156,7 +180,7 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
       const keyframe = keyframes?.shots?.[scene.id] ?? (clips?.shots?.[scene.id]?.still ? clips.shots[scene.id] : null);
       if (!keyframe?.file) throw new PlanError(`shot ${scene.id} is a still with no keyframe; run keyframes first`);
       if (keyframe.needs_review) throw new PlanError(`shot ${scene.id} is a still whose keyframe failed its checks (needs_review in keyframes/manifest.json); fix the prompt and run keyframes again`);
-      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id), transition, fit: null };
+      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id, tier), transition, fit: null };
     }
     const clip = clips?.shots?.[scene.id];
     if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
@@ -203,13 +227,15 @@ export const driftDirection = (id) => DRIFT_DIRECTIONS[[...String(id ?? "")].red
 /**
  * Which camera move animates a still shot, read from the shot's camera direction alone:
  * { name, startsAtIdentity }, a drift adding the direction its shot id gives it. The motion
- * prompt is what happens in the picture, never the camera.
+ * prompt is what happens in the picture, never the camera. `profile` names a motion profile
+ * (MOTION_PROFILES: the manga tier's); any other tier adds nothing, so its moves are unchanged.
  */
-export function motionMove(data, id = null) {
+export function motionMove(data, id = null, profile = null) {
   const lower = typeof data?.camera === "string" ? data.camera.toLowerCase() : "";
   const found = MOVES.find(([, pattern]) => pattern.test(lower));
-  if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]) };
-  return { name: "drift", startsAtIdentity: true, direction: driftDirection(id) };
+  const profiled = profile && MOTION_PROFILES[profile] ? { profile } : {};
+  if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]), ...profiled };
+  return { name: "drift", startsAtIdentity: true, direction: driftDirection(id), ...profiled };
 }
 
 const round4 = (value) => Number(value.toFixed(4));
@@ -221,17 +247,20 @@ const round4 = (value) => Number(value.toFixed(4));
  * the right, so the picture travels left. pan-right therefore slides the window from the right
  * edge to the left edge, and tilt-up (the camera tilting up) slides it from the bottom to the top.
  * The move's progress is linear unless `eased` (smoothstep, 3t² − 2t³: it starts and settles
- * like a hand on a tripod head rather than a motor), and `travel` scales how far it goes.
+ * like a hand on a tripod head rather than a motor), and `travel` scales how far it goes. The
+ * amounts are the move's profile's (motionProfile): a move carrying `profile: "manga"` takes
+ * MANGA_MOTION, every other move the held shot's constants.
  */
 export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const name = typeof move === "string" ? move : move?.name;
   const direction = typeof move === "string" ? undefined : move?.direction;
+  const amounts = motionProfile(move);
   const n = Math.max(frames - 1, 1);
   const t = `on/${n}`;
   const p = eased ? `((${t})*(${t})*(3-2*(${t})))` : t;
   const run = travel === 1 ? p : `${round4(travel)}*${p}`;
-  const zoom = round4(MOTION_ZOOM * travel);
-  const drift = round4(MOTION_DRIFT_ZOOM * travel);
+  const zoom = round4(amounts.zoom * travel);
+  const drift = round4(amounts.driftZoom * travel);
   const centreX = "iw/2-(iw/zoom/2)";
   const centreY = "ih/2-(ih/zoom/2)";
   const midX = "(iw-iw/zoom)/2";
@@ -247,20 +276,27 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
     case "pull-out":
       return { z: `${round4(1 + zoom)}-${zoom}*${p}`, x: centreX, y: centreY };
     case "pan-right":
-      return { z: `${MOTION_PAN_ZOOM}`, x: backward("iw"), y: midY };
+      return { z: `${amounts.panZoom}`, x: backward("iw"), y: midY };
     case "pan-left":
-      return { z: `${MOTION_PAN_ZOOM}`, x: forward("iw"), y: midY };
+      return { z: `${amounts.panZoom}`, x: forward("iw"), y: midY };
     case "tilt-up":
-      return { z: `${MOTION_PAN_ZOOM}`, x: midX, y: backward("ih") };
+      return { z: `${amounts.panZoom}`, x: midX, y: backward("ih") };
     case "tilt-down":
-      return { z: `${MOTION_PAN_ZOOM}`, x: midX, y: forward("ih") };
+      return { z: `${amounts.panZoom}`, x: midX, y: forward("ih") };
     default:
-      return { z: `1+${drift}*${p}`, x: `${midX}${direction === "left" ? "-" : "+"}(iw-iw/zoom)*0.15*${run}`, y: centreY };
+      return { z: `1+${drift}*${p}`, x: `${midX}${direction === "left" ? "-" : "+"}(iw-iw/zoom)*${amounts.driftShare}*${run}`, y: centreY };
   }
 }
 
-/** How far a still of `frames` travels: the full move from MOTION_TRAVEL_SECONDS up, at least MOTION_TRAVEL_MIN of it below. */
-export const motionTravel = (frames) => Math.max(MOTION_TRAVEL_MIN, Math.min(1, frames / (MOTION_TRAVEL_SECONDS * FPS)));
+/**
+ * How far a still of `frames` travels: the full move from its profile's travelSeconds up, at
+ * least travelMin of it below (MOTION_TRAVEL_SECONDS and MOTION_TRAVEL_MIN for the held shot;
+ * MANGA_MOTION's, which finish the move inside a typical shot, for a manga move).
+ */
+export const motionTravel = (frames, move = null) => {
+  const { travelSeconds, travelMin } = motionProfile(move);
+  return Math.max(travelMin, Math.min(1, frames / (travelSeconds * FPS)));
+};
 
 /**
  * The subtitle overlay for one scene: the strips shown for its frames, in order, with the blank
@@ -309,7 +345,10 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null, ma
 }
 
 export function motionSegmentKey(scene, move, subtitles = null, previous = null, mark = null) {
-  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...markKey(mark)]);
+  // A move under a motion profile (the manga tier's) adds the profile's version, so a profile
+  // change re-renders only its own segments and a move without one keeps the key it always had.
+  const profiled = motionProfile(move) === STILL_MOTION ? [] : [MOTION_MANGA_VERSION, move.profile];
+  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...profiled, ...markKey(mark)]);
 }
 
 const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709`;
@@ -406,7 +445,7 @@ export function clipSegmentArgs({ clip, frames, fit, fromFrame = 0, subtitlesLis
 
 /** The keyframe upscaled, then zoompan's crop window travelling as the move says, eased and scaled to the shot: one output frame per input frame. */
 function motionChain(move, frames) {
-  const { z, x, y } = zoompanExpr(move, frames, { eased: true, travel: motionTravel(frames) });
+  const { z, x, y } = zoompanExpr(move, frames, { eased: true, travel: motionTravel(frames, move) });
   return [
     `scale=${WIDTH * MOTION_SOURCE_SCALE}:${HEIGHT * MOTION_SOURCE_SCALE}:flags=lanczos`,
     `zoompan=z='${z}':x='${x}':y='${y}':d=1:s=${WIDTH}x${HEIGHT}:fps=${FPS}`,
