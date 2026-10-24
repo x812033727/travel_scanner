@@ -14,6 +14,10 @@ const ID = /^C(0[1-9]|1[0-9]|20)$/;
 const SLUG = /^story-everyday-[a-z0-9-]+-c(0[1-9]|1[0-9]|20)$/;
 const SERIES = "brand-stories-everyday-reversals";
 const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C14", "C15", "C19"];
+const C08_SHORT_SLUG = "story-everyday-kikkoman-c08-short-v8";
+const C08_SHORT_SCRIPT_SHA256 = "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9";
+const C08_SHORT_SOURCE_SHA256 = "040d9a499ddb864f62ebf0edcc948cc58439ffa13d0dae0ce5a9475297ee5d69";
+const C08_SHORT_SOURCE_PATH = "docs/videos/story-everyday-kikkoman-c08/reviews/v8-short-narration-candidate-20261024.md";
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const insist = (ok, message) => { if (!ok) throw new Error(message); };
 
@@ -71,6 +75,33 @@ function tableScenes(markdown, id) {
   insist(!expectingDivider, "script ends before table divider");
   insist(scenes.length > 0, "no strict narration rows found");
   insist(lastChapter === 6 && new Set(scenes.map((scene) => scene.chapter)).size === 6, "expected six chapter tables");
+  return scenes;
+}
+
+function c08ShortScenes(markdown) {
+  const scenes = [];
+  const seen = new Set();
+  let chapter = null;
+  let lastChapter = 0;
+  for (const [index, raw] of markdown.split(/\r?\n/).entries()) {
+    const line = raw.trim();
+    if (line.startsWith("## ")) {
+      const heading = /^## ([1-6]) (.+)$/.exec(line);
+      insist(heading && Number(heading[1]) === lastChapter + 1, `C08 short-v8 chapter order at line ${index + 1}`);
+      chapter = heading[2].trim();
+      insist(chapter, `C08 short-v8 empty chapter at line ${index + 1}`);
+      lastChapter++;
+      continue;
+    }
+    if (!line.startsWith("-")) continue;
+    const bullet = /^- (v7[a-z]{1,2}[0-9]{2}) (.+)$/.exec(line);
+    insist(chapter && bullet && bullet[2].trim() && !seen.has(bullet[1]), `C08 short-v8 malformed or duplicate narration at line ${index + 1}`);
+    seen.add(bullet[1]);
+    scenes.push({ id: bullet[1], chapter, template: "shot", prompt: null,
+      lines: [{ id: bullet[1], speaker: "narrator", name: null, text: bullet[2].trim(), emotion: null }] });
+  }
+  insist(lastChapter === 6 && scenes.length === 36 && new Set(scenes.map((scene) => scene.chapter)).size === 6,
+    "C08 short-v8 requires six chapters and 36 narration lines");
   return scenes;
 }
 
@@ -141,8 +172,11 @@ export function parseScript(markdown, id) {
   const hasTables = /^\| ID \|/m.test(markdown);
   const hasScenes = /^#### 1\. /m.test(markdown);
   const hasBullets = /^## 第一章｜/m.test(markdown) && /^- \*\*[A-Z][0-9]{2}\*\*/m.test(markdown);
-  insist(Number(hasTables) + Number(hasScenes) + Number(hasBullets) === 1, "script must use exactly one supported line format");
-  return hasTables ? tableScenes(markdown, id) : hasScenes ? screenplayScenes(markdown, id) : bulletScenes(markdown);
+  const hasC08Short = id === "C08" && /^# C08 龜甲萬｜短版 v8 核准旁白投影$/m.test(markdown);
+  insist(Number(hasTables) + Number(hasScenes) + Number(hasBullets) + Number(hasC08Short) === 1,
+    "script must use exactly one supported line format");
+  return hasTables ? tableScenes(markdown, id) : hasScenes ? screenplayScenes(markdown, id)
+    : hasBullets ? bulletScenes(markdown) : c08ShortScenes(markdown);
 }
 
 export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}) {
@@ -158,7 +192,14 @@ export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}
     allIds.add(entry.id);
     insist(Number.isInteger(entry.number) && entry.number === Number(entry.id.slice(1)) && !allNumbers.has(entry.number), `invalid episode number for ${entry.id}`);
     allNumbers.add(entry.number);
-    insist(SLUG.test(entry.slug) && entry.slug.endsWith(`-${entry.id.toLowerCase()}`), `invalid slug for ${entry.id}`);
+    const c08Short = entry.id === "C08" && entry.slug === C08_SHORT_SLUG;
+    insist(c08Short || (SLUG.test(entry.slug) && entry.slug.endsWith(`-${entry.id.toLowerCase()}`)), `invalid slug for ${entry.id}`);
+    if (c08Short) {
+      insist(entry.script_sha256 === C08_SHORT_SCRIPT_SHA256 && entry.expected_lines === 36,
+        "C08 short-v8 approval hash/count differs from the frozen owner-approved projection");
+      insist(hash(readFileSync(path.resolve(root, C08_SHORT_SOURCE_PATH))) === C08_SHORT_SOURCE_SHA256,
+        "C08 short-v8 approved source SHA256 mismatch");
+    }
     const expectedPath = `docs/videos/${entry.slug}/script.md`;
     insist(entry.script_path === expectedPath, `wrong script path for ${entry.id}`);
     insist(SHA.test(entry.script_sha256) && Number.isInteger(entry.expected_lines) && entry.expected_lines > 0, `missing exact hash/count for ${entry.id}`);
@@ -174,6 +215,15 @@ export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}
     insist(Buffer.from(source_md, "utf8").equals(bytes), `${entry.id} script is not valid UTF-8`);
     const scenes = parseScript(source_md, entry.id);
     insist(scenes.length === entry.expected_lines, `${entry.id} narration count mismatch: expected ${entry.expected_lines}, got ${scenes.length}`);
+    if (c08Short) {
+      const project = JSON.parse(readFileSync(path.resolve(root, `docs/videos/${entry.slug}/video.json`), "utf8"));
+      insist(project.slug === entry.slug && project.series?.slug === SERIES && project.series.episode === 8,
+        "C08 short-v8 canonical project identity mismatch");
+      const projected = project.scenes?.flatMap((scene) => scene.lines ?? []);
+      insist(projected?.length === scenes.length && projected.every((line, index) =>
+        line.id === scenes[index].id && line.text === scenes[index].lines[0].text),
+      "C08 short-v8 canonical narration differs from the approved script");
+    }
     return { ...entry, scenes, source_md };
   });
   insist(APPROVED_IDS.every((id) => allIds.has(id)), "approval manifest ID set differs from the owner's approvals");
