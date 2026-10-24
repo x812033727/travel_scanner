@@ -59,3 +59,45 @@ The local offline preflight is
 host-worker guard. At ticket creation, other open tickets owned the core paths,
 including dictionary merge, 10-minute MiniMax cute-brand support, and story
 worker pronunciation handling. This ticket is intentionally unclaimed.
+
+## Read-only path audit and narrow implementation plan (2026-10-24)
+
+The three other open tickets whose **scope** includes `story.mjs` are
+`2026-10-10-dictionary-merge-treats-constructor-and-tostring` (also
+`story.test.mjs` and `flow.mjs`),
+`2026-10-14-support-10-minute-minimax-cute-brand` (also those two paths), and
+`2026-10-17-story-worker-a-rejected-pronunciation-proposal` (`story.mjs`).
+`2026-10-16-align-story-writer-and-listener-guidance` separately includes
+`story.test.mjs`. All currently show `status: open` and no owner. The
+10-minute support ticket says PR #1499 was merged and its owner released an
+obsolete claim for A01 lexicon integration; that is narrower than C09 guard
+authorization. The owner's earlier five-ticket narrow release covered
+`core/lint*`, `core/state*`, and shared `docs/videos/long-form/review.*`, not
+these story worker paths. No other ticket scope was changed or force-claimed.
+
+Exact risk: `advanceStory` in `story.mjs` initializes lexicon and can call
+`relint`; `relint` writes `video.json`, `claims.md`, and `script.md` from the
+six chapter files. `approveScript` writes `script.md` again. Existing
+`pilotScriptReviewProblem` binds only two unrelated v2 pilots and expects
+worker chapter files absent from this manual C09 project. `flow.mjs` calls
+`advanceStory` before its shared TTS/media path. The C09 local project has
+`category: explainer` for approved stats cards, whereas `composeStory` emits
+`category: story`, so even a narration-only comparison would miss damage.
+
+After normal narrow scope coordination, add a C09-only fail-closed check at
+the **start** of `advanceStory`, before lexicon initialization or any write:
+read the canonical approved `script.md`, `visual-plan.json`, and `video.json`
+SHA-256 values, report a precise missing/drifted file if any, and return a
+`STOPPED_HOLD` for the frozen manual project even when all hashes match.
+That non-undefined return prevents the shared `flow.mjs` stages from running.
+Do not try to make C09 pass the v2 six-chapter receipt logic, and do not
+silently regenerate a new 77-scene project. A future worker resumption would
+need a separate reviewed handoff proving chapter-source parity, postproduction
+card-copy parity, owner approval, and C09 budget/voice/account readiness.
+
+Focused tests should invoke the story step with matching, drifted, and missing
+C09 files and assert: exact HOLD reason; original bytes preserved; no lexicon,
+chapter, script or project write; no paid/provider calls. A non-C09 story
+fixture must retain its previous behavior. Add host deployment/readback before
+changing the paused series. This paragraph is a reviewable plan only; no
+claimed worker file was edited.

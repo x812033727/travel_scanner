@@ -5,7 +5,7 @@ status: in-progress
 priority: P1
 area: docs
 owner: codex-c09-v8-promotion
-claimed_at: 2026-10-24T06:16:37Z
+claimed_at: 2026-10-24T06:29:11Z
 created_at: 2026-10-24T06:11:26Z
 completed_at:
 branch: codex/c09-patagonia-script-repair-20261024
@@ -19,6 +19,7 @@ scope:
   - docs/videos/story-everyday-patagonia-c09/preflight-v8.mjs
   - docs/videos/story-everyday-patagonia-c09/video.json
   - docs/videos/story-everyday-patagonia-c09/production-quote.md
+  - docs/videos/story-everyday-patagonia-c09/reviews/production-quote-independent-20261024.md
   - docs/videos/story-everyday-patagonia-c09/pilot-readiness.md
 ---
 
@@ -39,7 +40,7 @@ Keep the exact reviewed direction together before anyone begins paid media.
       card title/source strings and four pronunciation-only `say` fields differ.
 - [x] Textual visual preflight and local lint pass, with all exceptions and
       measured-versus-paper timing states recorded.
-- [ ] Whole-film quote specifies image/voice/review/music quantities and
+- [x] Whole-film quote specifies image/voice/review/music quantities and
       a hard all-in US$25 stop for owner consideration; it does not treat
       C09 script approval as paid authorization.
 
@@ -78,7 +79,21 @@ Only the visible card title/source captions were made viewer-facing, retaining
 the frozen candidate separately. Project SHA-256
 `4ABEBBF0936CD77269A55F197B7051534EE5140785929C9287A13CAE122AD460`.
 Video lint: 0 errors, 10 warnings. See `pilot-readiness.md` for holds. The
-whole-film quote and budget route remain unfinished, so this ticket stays
-in-progress. The generic worker guard has a separate unclaimed task
+whole-film quote is now drafted, while budget-route/old-spend readback and
+owner paid approval remain unfinished. The generic worker guard has a separate unclaimed task
 `2026-10-24-guard-c09-v8-stale-worker`, because the core path has other
 claims; no force claim was used.
+
+2026-10-24 quote follow-up: `production-quote.md` now proposes 67 image slots,
+201 maximum image and corresponding judge requests, 10 local cards, 77 first
+TTS takes plus up to one evidenced redo per line (154 TTS/ASR at most), four
+Jev batches at most, one Lyria track and a US$25 whole-film hard stop.
+Independent price/math audit confirmed the US$2.7935 visible media estimate;
+Gemini judge's internal US$0.01 is not a guaranteed vendor price. Per-request
+TTS/ASR/judge conservative reservations mean not all maxima are guaranteed
+affordable within US$25. Current code's C-series paid admission is held and
+C09 has no reviewed limit entry; the formal provider account, past spend and
+actual voice pricing need readback. The quote is not owner-approved and no
+paid call was made. The independent calculation is saved at
+`reviews/production-quote-independent-20261024.md`. This ticket remains for
+review of those unresolved gates.
