@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-24T06:28:22Z
 completed_at:
-branch:
+branch: codex/c09-patagonia-script-repair-20261024
 depends_on: []
 scope:
   - docs/videos/story-everyday-patagonia-c09/reviews/budget-readback.md
@@ -24,7 +24,8 @@ C09 has a reviewed nonpaid quote in
 `story-everyday-` paid route fails closed. The local C09 media workdir and
 ledger are absent; that does not prove zero historical spend. Account-side
 pricing, prior spend and uncertain requests must be read back before any paid
-admission work, even if the owner later approves this quote.
+admission work. The owner approved the exact quote's all-in US$25 cap on
+2026-10-24; this approval does not remove the paid hold.
 
 ## Definition of done
 
@@ -36,12 +37,14 @@ admission work, even if the owner later approves this quote.
 
 ## Steps
 
-- [ ] Claim only the receipt path through the normal task board; do not force
+- [x] Claim only the receipt path through the normal task board; do not force
       claim budget code or reuse another episode's owner approval.
 - [ ] Read vendor billing and the persisted C09 budget route without sending a
       paid request; reconcile unknown outcomes at full reserved value.
-- [ ] After separate owner approval of the C09 whole-film quote and a reviewed
-      budget-route code change, verify the host readback and exact US$25 stop.
+- [ ] Owner approval of the C09 whole-film quote is documented in
+      `docs/videos/story-everyday-patagonia-c09/reviews/owner-paid-pilot-approval-20261024.md`.
+      After a reviewed budget-route code change, verify the host readback and
+      exact US$25 stop.
 
 ## How to verify
 
@@ -52,10 +55,11 @@ provider dispatch. Keep actual paid probes disabled for this ticket.
 
 ## Notes
 
-The quote proposes 67 illustrations, up to 201 image/judge attempts, 77 first
+The approved quote caps 67 illustrations, up to 201 image/judge attempts, 77 first
 TTS takes plus at most one evidence-backed redo per line, up to 154 ASR checks,
 four Jev batches and one Lyria track, all subject to US$25. The US$2.7935
 visible media figure includes a Gemini judge *internal estimate*, not a vendor
-ceiling. Gemini per-call conservative reservations can exhaust the proposed
-cap before the quantity maxima. Owner approval of the C09 paid pilot has not
-been given. No backend state was read or written in this task creation.
+ceiling. Gemini per-call conservative reservations can exhaust the approved
+cap before the quantity maxima. Owner approved the US$25 all-in local pilot
+cap, while the single-episode route, account prices, old spend and uncertain
+requests remain HOLD. No backend state was read or written in this task update.

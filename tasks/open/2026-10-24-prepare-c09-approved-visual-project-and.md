@@ -1,11 +1,11 @@
 ---
 id: 2026-10-24-prepare-c09-approved-visual-project-and
 title: Prepare C09 approved visual project and paid pilot quote
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-c09-v8-promotion
-claimed_at: 2026-10-24T06:29:11Z
+owner:
+claimed_at:
 created_at: 2026-10-24T06:11:26Z
 completed_at:
 branch: codex/c09-patagonia-script-repair-20261024
@@ -20,6 +20,7 @@ scope:
   - docs/videos/story-everyday-patagonia-c09/video.json
   - docs/videos/story-everyday-patagonia-c09/production-quote.md
   - docs/videos/story-everyday-patagonia-c09/reviews/production-quote-independent-20261024.md
+  - docs/videos/story-everyday-patagonia-c09/reviews/owner-paid-pilot-approval-20261024.md
   - docs/videos/story-everyday-patagonia-c09/pilot-readiness.md
 ---
 
@@ -41,8 +42,8 @@ Keep the exact reviewed direction together before anyone begins paid media.
 - [x] Textual visual preflight and local lint pass, with all exceptions and
       measured-versus-paper timing states recorded.
 - [x] Whole-film quote specifies image/voice/review/music quantities and
-      a hard all-in US$25 stop for owner consideration; it does not treat
-      C09 script approval as paid authorization.
+      a hard all-in US$25 stop separately approved by the owner; script
+      approval alone was never treated as paid authorization.
 
 ## Steps
 
@@ -53,9 +54,10 @@ Keep the exact reviewed direction together before anyone begins paid media.
       preserve the 77/77 independent source/visual PASS and both blind reads.
 - [ ] Guard against stale regeneration from the old 85-line project and run
       local `lint` plus safe dry-run checks. Do not run paid APIs or worker.
-- [ ] Price the complete pilot, inspect single-episode budget routing and
-      prior spend, then ask for separate owner paid approval only after a
-      concrete, independently checked quote.
+- [x] Price the complete pilot, inspect available single-episode budget
+      routing and obtain separate owner approval of the independently checked
+      whole-film cap. Vendor spend still needs account-side readback in
+      `2026-10-24-c09-pilot-budget-readback` before paid admission.
 
 ## How to verify
 
@@ -70,7 +72,9 @@ PR #1806 stays draft/no-auto-merge. Canonical `script.md` now equals the
 owner-approved v8 candidate hash `4445AD74BCAFBAC1DFCA65392199FEC89700C17AB8C01E665AC79DFFFC1AA3F7`.
 Approval receipt is `reviews/owner-v8-approval-20261024.md`. Signed blind A
 is 11/12 Yes (`natural_spoken=No` at c090302/c090401/c090418), B 12/12
-Yes; no common veto. No C09 paid approval, import, upload, or publication.
+Yes; no common veto. The later whole-film US$25 cap approval is recorded in
+`reviews/owner-paid-pilot-approval-20261024.md`; no C09 paid call, import,
+upload, or publication followed.
 
 The current local project was generated with
 `preflight-v8.mjs` and independently checked: 77/77 scene and narration
@@ -79,8 +83,8 @@ Only the visible card title/source captions were made viewer-facing, retaining
 the frozen candidate separately. Project SHA-256
 `4ABEBBF0936CD77269A55F197B7051534EE5140785929C9287A13CAE122AD460`.
 Video lint: 0 errors, 10 warnings. See `pilot-readiness.md` for holds. The
-whole-film quote is now drafted, while budget-route/old-spend readback and
-owner paid approval remain unfinished. The generic worker guard has a separate unclaimed task
+whole-film quote is now drafted, while budget-route/old-spend readback remains
+unfinished. The generic worker guard has a separate unclaimed task
 `2026-10-24-guard-c09-v8-stale-worker`, because the core path has other
 claims; no force claim was used.
 
@@ -93,7 +97,10 @@ Gemini judge's internal US$0.01 is not a guaranteed vendor price. Per-request
 TTS/ASR/judge conservative reservations mean not all maxima are guaranteed
 affordable within US$25. Current code's C-series paid admission is held and
 C09 has no reviewed limit entry; the formal provider account, past spend and
-actual voice pricing need readback. The quote is not owner-approved and no
-paid call was made. The independent calculation is saved at
+actual voice pricing need readback. The owner subsequently approved the exact
+quote's US$25 all-in cap; the bound receipt is
+`reviews/owner-paid-pilot-approval-20261024.md`. No paid call was made. The
+independent calculation is saved at
 `reviews/production-quote-independent-20261024.md`. This ticket remains for
-review of those unresolved gates.
+review of the independent guard and budget tasks; cap approval does not lift
+either paid hold.
