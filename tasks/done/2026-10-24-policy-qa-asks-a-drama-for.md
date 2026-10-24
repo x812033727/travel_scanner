@@ -15,6 +15,9 @@ scope:
   - apps/api/tests/test_video_automation_judge.py
   - docs/videos/HANDS-OFF.md
   - tasks/open/2026-09-28-video-drama-policy-questions.md
+  - apps/api/tests/test_video_judge.py
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # 自動品管的 policy 把漫劇當教學片問「有示範」：每一集成片都不過、免關卡作品永遠停在成片審核
