@@ -614,3 +614,60 @@ test("the source-frame comparison leaves the mark's box out on both sides, and i
   assert.equal(masked[masked.indexOf("-lavfi") + 1], `[0:v]select=eq(n\\,0),${box},format=rgb24[a];[1:v]scale=1920:1080,format=yuv444p,${box},format=rgb24[b];[a][b]psnr`);
   assert.deepEqual(masked.filter((_, index) => index !== masked.indexOf("-lavfi") + 1), plain.filter((_, index) => index !== plain.indexOf("-lavfi") + 1));
 });
+
+test("the manga tier's stills take a move the viewer sees, under their own version; every other move and key is byte for byte what it was (ticket 2026-10-24-manga-sticker-drama-pace-visible-camera)", async () => {
+  const { MANGA_MOTION, MOTION_MANGA_VERSION, MOTION_PROFILES, motionProfile, motionTravel } = await import("./drama.mjs");
+  assert.equal(MOTION_MANGA_VERSION, "manga-motion-v1");
+  assert.deepEqual(MANGA_MOTION, { zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
+  assert.deepEqual(Object.keys(MOTION_PROFILES), ["manga"]);
+  // Only a tier with a profile marks the move; the clips, hybrid and stills tiers add nothing.
+  assert.deepEqual(motionMove({ camera: "push in" }, "a", "manga"), { name: "push-in", startsAtIdentity: true, profile: "manga" });
+  assert.deepEqual(motionMove({}, "b", "manga"), { name: "drift", startsAtIdentity: true, direction: "right", profile: "manga" });
+  for (const tier of ["clips", "hybrid", "stills", null, undefined]) assert.deepEqual(motionMove({ camera: "push in" }, "a", tier), { name: "push-in", startsAtIdentity: true }, String(tier));
+  assert.equal(motionProfile({ name: "push-in" }), motionProfile("push-in"), "no profile: the held shot's amounts");
+  assert.equal(motionProfile({ name: "push-in", profile: "manga" }), MANGA_MOTION);
+  // The expressions: a fifth push or pull, pans and tilts at 1.12, a 10% drift sliding 30% of the margin.
+  const manga = (name, direction) => ({ name, startsAtIdentity: true, profile: "manga", ...(direction ? { direction } : {}) });
+  assert.deepEqual(zoompanExpr(manga("push-in"), 90), { z: "1+0.2*on/89", x: "iw/2-(iw/zoom/2)", y: "ih/2-(ih/zoom/2)" });
+  assert.deepEqual(zoompanExpr(manga("pull-out"), 90), { z: "1.2-0.2*on/89", x: "iw/2-(iw/zoom/2)", y: "ih/2-(ih/zoom/2)" });
+  assert.deepEqual(zoompanExpr(manga("pan-right"), 90), { z: "1.12", x: "(iw-iw/zoom)*(1-on/89)", y: "(ih-ih/zoom)/2" });
+  assert.deepEqual(zoompanExpr(manga("tilt-down"), 90), { z: "1.12", x: "(iw-iw/zoom)/2", y: "(ih-ih/zoom)*on/89" });
+  assert.deepEqual(zoompanExpr(manga("drift", "left"), 90), { z: "1+0.1*on/89", x: "(iw-iw/zoom)/2-(iw-iw/zoom)*0.3*on/89", y: "ih/2-(ih/zoom/2)" });
+  assert.deepEqual(zoompanExpr(manga("push-in"), 60, { travel: 60 / 90 }), { z: "1+0.1333*on/59", x: "iw/2-(iw/zoom/2)", y: "ih/2-(ih/zoom/2)" }, "a two-second shot takes two thirds of the push");
+  assert.deepEqual(zoompanExpr(manga("locked"), 90), { z: "1", x: "0", y: "0" }, "a locked manga shot still holds");
+  // The move finishes inside a three-second shot, keeps 60% of it in a shorter one; the held shot's travel is what it was.
+  assert.equal(motionTravel(90, manga("push-in")), 1);
+  assert.equal(motionTravel(180, manga("push-in")), 1);
+  assert.equal(motionTravel(60, manga("push-in")), 60 / 90);
+  assert.equal(motionTravel(30, manga("push-in")), 0.6);
+  assert.equal(motionTravel(90, { name: "push-in" }), 0.5);
+  assert.equal(motionTravel(90), 0.5);
+  // The segment: a three-second manga push-in zooms the full fifth, eased; the same still without the profile zooms 5%.
+  const graph = (move) => {
+    const args = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 90, move, outFile: "seg.mp4" });
+    return args[args.indexOf("-filter_complex") + 1];
+  };
+  assert.match(graph(manga("push-in")), /zoompan=z='1\+0\.2\*\(\(on\/89\)\*\(on\/89\)\*\(3-2\*\(on\/89\)\)\)':x='iw\/2-\(iw\/zoom\/2\)'/);
+  assert.match(graph({ name: "push-in", startsAtIdentity: true }), /zoompan=z='1\+0\.05\*\(\(on\/89\)/);
+  assert.match(graph(manga("pan-left")), /zoompan=z='1\.12':x='\(iw-iw\/zoom\)\*\(\(on\/89\)/);
+  assert.match(graph(manga("drift", "right")), /zoompan=z='1\+0\.1\*\(\(on\/89\)[^']*':x='\(iw-iw\/zoom\)\/2\+\(iw-iw\/zoom\)\*0\.3\*\(\(on\/89\)/);
+  // The first-frame check reads the same chain, so a manga push-in is measured opening on the whole keyframe.
+  const lavfi = motionFramePsnrArgs("keyframes/a.png", manga("push-in"), 90);
+  assert.match(lavfi[lavfi.indexOf("-lavfi") + 1], /zoompan=z='1\+0\.2\*/);
+  // Keys: a manga move keys apart from the same move without the profile, and the unprofiled keys are the ones main made before this change.
+  const scene = { id: "a", frames: 90, keyframe: { file: "keyframes/a.png", sha256: "1".repeat(64) }, transition: "cut" };
+  assert.equal(motionSegmentKey(scene, motionMove({ camera: "push in" })), "d6b028730031d355");
+  assert.equal(motionSegmentKey(scene, motionMove({}, "b")), "5090ede238e2ddfc");
+  assert.notEqual(motionSegmentKey(scene, motionMove({ camera: "push in" }, "a", "manga")), "d6b028730031d355");
+  assert.notEqual(motionSegmentKey(scene, motionMove({}, "b", "manga")), "5090ede238e2ddfc");
+  // The layout: a manga series' stills carry the profile; any other tier's, and no tier, do not.
+  const doc = dramaFixture();
+  doc.scenes[0].data.visual = "still";
+  const timeline = estimateTimeline(doc);
+  const frames = framesManifestFor(doc, timeline);
+  const keyframes = { shots: { opening: { file: "keyframes/opening-1.png", sha256: "b".repeat(64) } } };
+  const clips = clipsManifestFor(doc);
+  assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "manga" })[0].move, { name: "push-in", startsAtIdentity: true, profile: "manga" });
+  assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "hybrid" })[0].move, { name: "push-in", startsAtIdentity: true });
+  assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes)[0].move, { name: "push-in", startsAtIdentity: true });
+});
