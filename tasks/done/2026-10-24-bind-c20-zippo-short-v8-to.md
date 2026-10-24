@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-bind-c20-zippo-short-v8-to
 title: Bind C20 Zippo short v8 to same backend episode row
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-c20-same-row-import
 claimed_at: 2026-10-24T09:15:22Z
 created_at: 2026-10-24T09:14:30Z
-completed_at:
+completed_at: 2026-10-24T09:21:02Z
 branch: codex/c20-short-v8-same-row-import-20261024
 depends_on: []
 scope:
@@ -46,9 +46,9 @@ ticket; that release is recorded in the old ticket's Notes.
       `2026-10-18-story-thumbnail-brand`, preserving its other scope and Notes.
 - [x] Admit only C20/#20 old slug to approved short-v8 slug in the paused,
       planned review-only importer.
-- [ ] Add focused positive and negative tests, run the relevant API checks and
+- [x] Add focused positive and negative tests, run the relevant API checks and
       task-board validation, then obtain an independent read-only review.
-- [ ] Close this ticket in the implementation PR and keep it draft/no-auto-merge.
+- [x] Close this ticket in the implementation PR and keep it draft/no-auto-merge.
 
 ## How to verify
 
@@ -76,3 +76,8 @@ deployment are later gates.
   columns after a fresh database reload, idempotence, active series,
   foreign/malformed row ID or JSON shape, ready/started
   row, and occupied new video/episode/request slug.
+- Independent reviewer `/root` checked fixed commit `eea582a9e` and the
+  exact follow-up delta at `82fad085f`; both received PASS. The latter adds
+  non-dict beats refusal and verifies the old project from a fresh DB read.
+  Neither commit ran a host import or paid call. The PR remains a merge gate;
+  production dry-run/apply are separate downstream steps after C08 readback.
