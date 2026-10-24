@@ -6109,6 +6109,18 @@ Ran: bundled Node v24.13.0 core duration/lint and QA duration tests, 74 passed, 
 
 Verdict: PASS - DURATION_ONLY for these four source bytes; no duration-code fix remains from this diff.
 
+## C08 short-v8 final QA CLI corrective increment: 2 files (2026-10-24)
+
+Reviewer: codex-root-c08-qa-review. Author: codex-c08-short-backend (source head 3a16c041963e8ea23714c805ff8c191972d1fdfc). Scope: DURATION_ONLY for tools/video/qa/cli.mjs and tools/video/qa/duration.test.mjs. This reviewer wrote neither source file; the prior four-file C08 core/lint review did not cover the separate final QA CLI path.
+
+Baseline: prior report SHA256 b193fe3a78db8f86ca32bbf7d6f74c2188b2b671b317d2c812b8114ec0daa787. The guarded long-form CLI reported exactly these two QA files stale; the other 106 of 108 bindings match the current checkout. This increment changes only those two raw-byte bindings and the report hash.
+
+Findings: final QA previously passed minMinutes=8 to assembleItem even for the frozen C08 short-v8, so a valid four-to-five-minute cut would fail after the independent core duration check. The author now omits that redundant general floor only when isC08ApprovedShortStory(doc) accepts the exact frozen identity and narration. The unchanged knowledgeDurationProblems still requires a current measured body of at least 7200 frames and a checked final cut of at most 9000 frames including selected bookends. All ordinary and historical C08 projects still receive the eight-minute floor. The code does not permit padding with bookends or stale timeline/checks.
+
+Ran independently with bundled Node v24.19: core duration, lint and QA duration tests 75/75 passed. The new real QA CLI fixture explicitly sets VIDEO_MIN_EPISODE_MINUTES=8, then restores it; actual CLI reports body 7199 fail, body 7200 pass, final 9000 pass and final 9001 fail. The historical 84-line C08 fails at the short runtime. Fixture WAVs and final bytes are synthetic and do not prove a produced cut. The prior four-file review was correct for its bound core/lint paths but missed this final CLI integration gap; this corrective increment closes that gap for the new QA bytes.
+
+Verdict: PASS - DURATION_ONLY for these two source bytes; actual C08 TTS duration, final.mp4, paid production, backend import, deployment, upload and publication remain unverified.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -6212,8 +6224,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
 | `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
-| `tools/video/qa/cli.mjs` | `52eb1ed14c075dc861dd9cb1780ee78a1eb0a171b401389f6b791425d527f06e` |
-| `tools/video/qa/duration.test.mjs` | `23d46fee69ea26bff4150d29b74086d363bdf9d171e92cf898e3cf5a6560428d` |
+| `tools/video/qa/cli.mjs` | `3f88cb712d7658e0ac2659e79ea67b673f4201b50d04b330265d4b620dcd2c32` |
+| `tools/video/qa/duration.test.mjs` | `0dd86e17c7048f1873d86abf4c07219eed41ca756c0e1bf30288527635ceb3d8` |
 | `tools/video/qa/qa.test.mjs` | `8c28422af33173c7d19c6e2d9d401247f2007878ffe18ed48989a0a2eeeaab30` |
 | `tools/video/review/sync.mjs` | `c031cfca0a09be601c791c3aa1bcee7e13495a8a6121865679b979b6e98d64eb` |
 | `tools/video/review/sync.test.mjs` | `32d9e0a8408989cc138b8821824d0029a37471b2bb8962a39bff9d8d9ebf0290` |
