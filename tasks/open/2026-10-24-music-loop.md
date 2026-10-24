@@ -1,14 +1,14 @@
 ---
 id: 2026-10-24-music-loop
 title: 新影片的生成配樂比成片短時沒有出路：music --loop 要先有組好的成片，組片又要配樂
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-opus-5-5-music-loop
 claimed_at: 2026-10-24T08:28:28Z
 created_at: 2026-10-24T08:15:00Z
 completed_at:
-branch:
+branch: claude/hungry-nobel-8bb756
 depends_on: []
 scope:
   - tools/video/media/music.mjs
@@ -36,7 +36,7 @@ scope:
 
 - [x] 讀 #1797（`core/music-loop.mjs`、`media/music.mjs` 的 `--loop`、`assemble/sound.mjs` 的 `musicInputs`、`core/state.mjs`）與 #1669 的安全規則，確認「組片前循環」不會放過任何長度下限。
 - [x] 實作、測試（`node --test tools/video/assemble/music-loop.test.mjs` 7 項全過，需要 FFmpeg）。沒改 `state.mjs`／`sound.mjs`，不需要時長收據增量（`node tools/video/long-form/cli.mjs check` PASS）。
-- [ ] 開 PR；部署由站主決定。
+- [x] 開 PR；部署由站主決定。
 
 ## How to verify
 
