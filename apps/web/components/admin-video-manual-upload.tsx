@@ -74,9 +74,26 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   const studio = id ? `https://studio.youtube.com/video/${id}/edit` : "https://studio.youtube.com";
   const requestTime = previous?.visibility === "scheduled" ? previous.publish_at : project.youtube_publish_at;
   const stepClass = "grid min-w-0 gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4";
+  const captionName = (file: ReviewFile) => `${canonical(file.role.slice("captions_".length))}.${file.content_type === "text/vtt" ? "vtt" : "srt"}`;
+  const descriptionName = (file: ReviewFile) => `description.${canonical(file.role.slice("description_".length))}.txt`;
+  // Every file the steps below offer one by one, under the same names, as one archive.
+  const archive = new Map<string, ReviewFile>();
+  if (!id && final) archive.set("final.mp4", final);
+  if (thumbnail) archive.set(thumbnail.content_type === "image/png" ? "thumbnail.png" : "thumbnail.jpg", thumbnail);
+  for (const file of localeThumbnails) archive.set(`thumbnail.${canonical(file.role.slice("thumbnail_".length))}.${file.content_type === "image/png" ? "png" : "jpg"}`, file);
+  for (const file of captionFiles) archive.set(captionName(file), file);
+  for (const file of descriptionFiles) archive.set(descriptionName(file), file);
+  const metadataFile = files.find((file) => file.role === "metadata");
+  if (metadataFile) archive.set("metadata.json", metadataFile);
+  const archiveUrl = `/api/admin-video-package/${project.slug}?${new URLSearchParams([...archive].map(([name, file]) => ["file", `${file.sha256}:${name}`]))}`;
 
   return <div className="grid min-w-0 gap-4">
     <p className="text-sm leading-6 text-[var(--muted)]">{t("intro")}</p>
+    {archive.size > 0 && <div className="grid gap-2 rounded-xl border border-[var(--teal)] p-4">
+      <div><a href={archiveUrl} download={`${project.slug}-upload.zip`} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white"><Download aria-hidden size={16} />{t("downloadAll", { count: archive.size })}</a></div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("downloadAllHelp")}</p>
+      {!id && !final && project.compilation && project.download_available && <p className="text-sm text-amber-900">{t("downloadAllNoVideo")}</p>}
+    </div>}
     {metadataFailed && <p role="alert" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">{t("metadataFailed")}</p>}
     <section className={stepClass} aria-label={t("videoStep")}>
       <h3 className="font-bold">{t("videoStep")}</h3>
@@ -114,7 +131,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       <p className="text-sm leading-6 text-[var(--muted)]">{t("captionsHelp")}</p>
       <ul className="flex flex-wrap gap-2">{captionFiles.map((file) => {
         const locale = canonical(file.role.slice("captions_".length));
-        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadCaption", { language: localeName(locale) })} name={`${locale}.${file.content_type === "text/vtt" ? "vtt" : "srt"}`} /></li>;
+        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadCaption", { language: localeName(locale) })} name={captionName(file)} /></li>;
       })}</ul>
       {captionFiles.length === 0 && <p className="text-sm text-amber-900">{t("captionsMissing")}</p>}
       {id && <a href={`https://studio.youtube.com/video/${id}/translations`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--teal)] underline"><ExternalLink aria-hidden size={16} />{t("openCaptions")}</a>}
@@ -134,7 +151,10 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
     <details className="rounded-xl border border-[var(--line)] p-4">
       <summary className="cursor-pointer text-sm font-semibold">{t("backupTitle")}</summary>
       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("backupHelp")}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...files.filter((file) => file.role === "metadata")].map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} name={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} /></li>)}</ul>
+      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...(metadataFile ? [metadataFile] : [])].map((file) => {
+        const name = file.role === "metadata" ? "metadata.json" : descriptionName(file);
+        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={name} name={name} /></li>;
+      })}</ul>
     </details>
   </div>;
 }

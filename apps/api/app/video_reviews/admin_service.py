@@ -81,7 +81,7 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
-from app.video_reviews import dub_retry
+from app.video_reviews import dub_retry, package_zip
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
@@ -2488,6 +2488,16 @@ async def file_for_admin(
                     break
                 return path, str(item["content_type"])
     raise AppError(404, "video_review_file_not_found", "這個檔案已經不在審核區")
+
+
+async def package_files_for_admin(
+    session: AsyncSession, store: ReviewStore, slug: str, entries: list[tuple[str, str]]
+) -> list[tuple[str, Path]]:
+    """The files of a manual upload package, each under the name the page gives it in the zip;
+    only files some review of this video shows."""
+    project = await _project(session, slug)
+    shown = [list(review.files or []) for review in await _reviews(session, project)]
+    return package_zip.resolve_entries(store, slug, shown, entries)
 
 
 # --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------
