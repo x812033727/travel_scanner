@@ -441,7 +441,8 @@ def test_a_sound_story_passes_and_each_rule_names_what_is_wrong() -> None:
         return "\n".join(stories.story_problems({**copy.deepcopy(story), **changes}))
 
     assert 'unknown field "extra"' in problems(extra=1)
-    assert "is not a letter A, B, K, T or C" in problems(id="Z01")
+    assert "is not a letter A, B, K, T, C or X" in problems(id="Z01")
+    assert "X stories belong to the brand-stories-company-turns series" in problems(id="X01")
     assert "must be story-" in problems(slug="rolling-case")
     assert "must be story-" in problems(slug="story-" + "x" * 55)
     assert 'category "tech" does not fit id A01' in problems(category="tech")
