@@ -13,7 +13,7 @@ const SHA = /^[a-f0-9]{64}$/;
 const ID = /^C(0[1-9]|1[0-9]|20)$/;
 const SLUG = /^story-everyday-[a-z0-9-]+-c(0[1-9]|1[0-9]|20)$/;
 const SERIES = "brand-stories-everyday-reversals";
-const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C10", "C11", "C14", "C15", "C19"];
+const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C14", "C15", "C19"];
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const insist = (ok, message) => { if (!ok) throw new Error(message); };
 

@@ -15,7 +15,7 @@ function fixture() {
   const root = mkdtempSync(path.join(os.tmpdir(), "script-intake-"));
   tempRoots.push(root);
   const entries = [];
-  for (const number of [3, 4, 5, 6, 7, 8, 10, 11, 14, 15, 19]) {
+  for (const number of [3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 19]) {
     const id = `C${String(number).padStart(2, "0")}`;
     const slug = `story-everyday-fixture-${id.toLowerCase()}`;
     const script_path = `docs/videos/${slug}/script.md`;
@@ -41,16 +41,16 @@ test("dry-run validates exact local sources without even calling the transport",
   let calls = 0;
   const result = await runIntake({ ...box, request: () => { calls++; throw new Error("network call"); } });
   assert.equal(calls, 0);
-  assert.equal(result.length, 11);
+  assert.equal(result.length, 12);
   assert.ok(result.every((row) => row.action === "dry-run-local-only"));
 });
 
-test("a changed C19 script refuses before any remote call", async () => {
+test("a changed C09 script refuses before any remote call", async () => {
   const box = fixture();
-  const target = path.join(box.root, box.entries.find((entry) => entry.id === "C19").script_path);
+  const target = path.join(box.root, box.entries.find((entry) => entry.id === "C09").script_path);
   writeFileSync(target, readFileSync(target, "utf8") + "changed\n");
   let calls = 0;
-  await assert.rejects(runIntake({ ...box, ids: ["C19"], apply: true, request: () => { calls++; } }), /C19 script SHA256 mismatch/);
+  await assert.rejects(runIntake({ ...box, ids: ["C09"], apply: true, request: () => { calls++; } }), /C09 script SHA256 mismatch/);
   assert.equal(calls, 0);
 });
 
@@ -160,5 +160,5 @@ test("strict parser rejects an unsupported or ambiguous row", () => {
   const source = readFileSync(path.join(box.root, box.entries[0].script_path), "utf8");
   assert.equal(parseScript(source, "C03").length, 6);
   assert.throws(() => parseScript(source.replace("| c030101 |", "| c030101 | extra |"), "C03"), /malformed table row/);
-  assert.equal(loadIntake(box.manifestPath, { root: box.root }).entries.length, 11);
+  assert.equal(loadIntake(box.manifestPath, { root: box.root }).entries.length, 12);
 });
