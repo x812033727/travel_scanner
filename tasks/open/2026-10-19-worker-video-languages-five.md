@@ -14,7 +14,11 @@ scope:
   - tools/video/core/schema.mjs
   - tools/video/core/stages.mjs
   - tools/video/core/narration-locale.test.mjs
-  - tools/video/dubs
+  - tools/video/dubs/captions-package.test.mjs
+  - tools/video/dubs/encode.mjs
+  - tools/video/dubs/freshness.test.mjs
+  - tools/video/dubs/plan.mjs
+  - tools/video/dubs/plan.test.mjs
   - tools/video/tts
   - tools/video/automation/tidy.mjs
   - tools/video/automation/tidy.test.mjs
@@ -316,3 +320,10 @@ After the deploy:
 `docs/videos/long-form/review.md` and `review.json` were clean. The board steward released
 only these two paths for an independent final duration review; this ticket's other scope,
 status and outstanding owner steps remain.
+
+
+### 2026-10-24 narrow SFX preflight handoff
+
+The board steward releases only `tools/video/dubs/cli.mjs` and `tools/video/dubs/dubs.test.mjs` for `2026-10-24-preflight-required-sfx-before-paid-dub`. Fresh read-only ownership review confirmed merged #1548/#1614, absent old remote heads, no exact-file unmerged work, and only this reconciliation PR among 27 open PRs touching these files. Both exact files in the active curio-s27 producer checkout are clean and equal main; that process and its media were untouched. Two old empty-index title-QA checkouts were inspected and left intact.
+
+Preserve this task owner, status, every other scope, A01 migration/transition obligations, language pilot and paid/monthly-cap/host gates. On the worker-language ticket, its directory claim was expanded to the five remaining existing files solely to exclude the two transferred paths. Reclaim narrowly before any future edit requiring them.

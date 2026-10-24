@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-google-ads-conversion-measurement
 title: 付費 Google Ads 導流的轉換量測
-status: blocked
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: codex-open-task-reconcile-510e
+claimed_at: 2026-10-24T15:04:36Z
 created_at: 2026-09-13T05:16:19Z
-completed_at:
-branch:
+completed_at: 2026-10-24T15:04:36Z
+branch: codex/open-tasks-reconcile-20261024
 depends_on:
   - 2026-09-12-attribute-affiliate-clicks-to-the-guide
 scope:
@@ -83,3 +83,10 @@ cd apps/web && npx vitest run components/analytics-provider.test.tsx components/
   違反會被取消分潤，所以廣告一定只連到自己的文章頁。
 - 範圍重疊：`affiliates/router.py` 目前在 in-progress 的 `2026-09-12-trip-partner-offer-availability` 裡；
   `models.py` 在 `2026-09-12-food-merchant-enrichment` 裡。claim 前先 `npm run tasks -- list`。
+
+
+### 2026-10-24 owner-directed retirement
+
+站主明確回覆「封存這兩張擴充票（建議）」。取消Google Ads付費導流轉換量測擴充；既有分析、分潤與同意設定保留，沒有投廣告或新增追蹤。
+
+本次只接手任務紀錄並依停案決定結案；原驗收未勾項保留為歷史，沒有宣稱這些功能已完成。原帳號／供應商政策與價格敘述未重新驗證，不作現行方案建議。

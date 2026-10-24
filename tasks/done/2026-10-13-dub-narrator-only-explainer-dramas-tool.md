@@ -1,14 +1,14 @@
 ---
 id: 2026-10-13-dub-narrator-only-explainer-dramas-tool
 title: Dub narrator-only explainer dramas: tool, server and language panel
-status: review
+status: done
 priority: P2
 area: tools
-owner: claude-opus-5.5-dub-narrated-drama
-claimed_at: 2026-10-13T12:50:27Z
+owner: codex-open-task-reconcile-510e
+claimed_at: 2026-10-24T14:51:11Z
 created_at: 2026-10-13T12:46:40Z
-completed_at:
-branch: claude/dub-narrated-drama
+completed_at: 2026-10-24T14:51:11Z
+branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
   - tools/video/dubs/cli.mjs
@@ -42,7 +42,7 @@ dubbing for five narrator-only explainer episodes and could not.
 - [x] No automatic default changed: hands-off brand stories still get `drama_caption_locales`
   (no dub), and "tick the defaults" never ticks a dub.
 - [x] `DUBS.md` and `LANGUAGES.md` say a narrator-only explainer drama can be dubbed.
-- [ ] An independent DURATION_ONLY increment to `docs/videos/long-form/review.json` for the bound
+- [x] An independent DURATION_ONLY increment to `docs/videos/long-form/review.json` for the bound
   files this changes (arranged by the coordinator; author and reviewer must differ).
 
 ## Steps
@@ -77,3 +77,10 @@ dubbing for five narrator-only explainer episodes and could not.
   increment lands.
 - `2026-10-12-let-managers-link-a-private-studio` still reads in-progress over the admin files,
   but its PR #1475 merged on 2026-10-12; the claim here was forced for that reason.
+
+
+### 2026-10-24 coordinator acceptance
+
+The sole unchecked item was an independent DURATION_ONLY increment. Existing review.md section "Dubbing narrated dramas, rebound after #1481 increment:3files(2026-10-13)" explicitly binds admin_service.py,admin-video-reviews.test.tsx,dubs.test.mjs for#1482; independent reviewer claude-opus-duration-review-20261013k differs from author. Live GitHub#1482 verifiedMERGED2026-10-13T16:17:57Z at70ecac77820567eba5800c064dea406ec6ad7cca. Fresh current108-binding positive/negative duration27/27 and473plancheck actual0; currentdubs37tests and exactheadae8d6948 LinuxAPI/web/tools gates passed. Archive the stale checklist record only; no claim of new paid dub or media delivery.
+
+Implementation is local on `codex/open-tasks-reconcile-20261024`; merge/deployment and any paid media actions remain separate. No vendor POST, media deletion, upload or approval was performed by this fix.

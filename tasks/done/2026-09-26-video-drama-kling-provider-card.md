@@ -1,14 +1,14 @@
 ---
 id: 2026-09-26-video-drama-kling-provider-card
 title: Video drama: Kling as a third media provider with its own key card
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: codex-open-task-reconcile-510e
+claimed_at: 2026-10-24T15:04:36Z
 created_at: 2026-09-26T01:53:48Z
-completed_at:
-branch:
+completed_at: 2026-10-24T15:04:36Z
+branch: codex/open-tasks-reconcile-20261024
 depends_on:
   - 2026-09-26-video-drama-media-api
   - 2026-09-26-video-drama-media-volume
@@ -50,3 +50,10 @@ cd apps/api && uv run pytest tests/test_admin_provider_settings.py tests/test_ad
 ## Notes
 
 設計全文在 `docs/videos/DRAMA.md`（跟 T1 一起合併）；供應商、價格、政策的研究依據也在那裡。
+
+
+### 2026-10-24 owner-directed retirement
+
+站主明確回覆「封存 Kling API 擴充票（建議）」。取消Kling API供應商卡／新金鑰及預付路線擴充；Hailuo/Kling網頁製作任務、既有素材與核准保留，沒有申請金鑰、預付或改動製作路線。
+
+本次只接手任務紀錄並依停案決定結案；原驗收未勾項保留為歷史，沒有宣稱這些功能已完成。原帳號／供應商政策與價格敘述未重新驗證，不作現行方案建議。

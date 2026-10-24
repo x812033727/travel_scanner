@@ -6339,3 +6339,23 @@ Non-claims: no provider calls, paid generation, production writes, deployment, m
 | `apps/api/app/video_automation/settings.py` | `53d9f4f8bc68050c7bed82505f2838c09478ea39076193063db8bd1376ad7328` |
 | `apps/api/tests/test_video_automation_settings.py` | `a168bd0b83f1b22d2896c25e3445e70c6dbb2d6d59857cb9a78c23ba625c20c2` |
 | `tools/video/media/look-keyframes.test.mjs` | `fbe107f47952de0c793432106f8805def22c268b64455e0906137c88b21da67e` |
+
+## PR #1831 SFX preflight increment: 1 file (2026-10-24)
+
+Reviewer: codex-independent-sfx-preflight-20261024. Author: codex-open-tasks-sfx. Scope: **DURATION_ONLY**. Verdict: **PASS**. Required duration fixes remaining: **none**.
+
+Baseline: the prior `tools/video/dubs/dubs.test.mjs` binding matches reviewed parent `ae8d694864fec1cbd082695d8ea8e5f69b560eea`; main is not the baseline because the earlier music increment already advanced this file. The complete preceding report bytes (SHA256 `5b93c175cc2cc138e3b1247e74d0e4dded56d711d2861fbc01073795a17298b0`) remain the prefix of this report. The preceding receipt (SHA256 `75b4de9f53680e3c6a2f937dbc136e281502b951a94516c5656c7984fbd88e2b`) has exactly one binding advanced and 107 bindings unchanged. Both frozen SFX source/test hashes and all 108 current duration-bound files were independently checked.
+
+Findings: the reviewer inspected the two-file author diff `ae8d694864fec1cbd082695d8ea8e5f69b560eea..dd806b892`, including the unbound dub CLI (SHA256 `4ac25a59de9549389d3a9cf353ecfb9a1ed2ca7cb6d4c5e6321ab886eef15ed4`) and the existing shared `sfxInputs` contract. The new helper applies that same source-set validation before credentials, status, dub cache or journal admission and again at mixing. It neither requires an assembled effects track nor weakens source/manifest hashes. A valid unassembled cut still omits its optional effects track; a source changed after speech admission refuses mixing while retaining paid speech for recovery. Six deterministic invalid-set cases assert zero new status or vendor calls and unchanged source, document, state and retained narration journal bytes. Existing music admission and mixing checks remain intact.
+
+No target duration, narration window, runtime specification, measured-body floor, bookend accounting, C08/C20 identity or exclusive bound, original source hash, covered status, owner gate or cost cap changes. The regression exercises early refusal and retained-media behavior rather than adding time to a short body.
+
+Verification: the author manifest and original logs were independently read and hash-verified. Focused SFX coverage is 10/10 with actual exit 0, after an exact original-CLI red run. Two broader native Windows 64-case attempts retain their actual exit 1 results (61/64 and 60/64); their stacks show existing speech-journal atomic-rename EPERM during narration fixture preparation before the dub preflight. No complete native suite pass is claimed, and that separate journal issue was not modified. The independent standard-isolation receipt regression and 473-plan CLI checks run after this increment is written, with actual exits persisted in `sfx-independent-duration-checks-20261024.json`; no alternate isolation mode or broader duration rerun is substituted for them. Final-head Linux CI remains a separate gate.
+
+Non-claims: no real provider request, paid generation, production write, deployment, import, approval, upload, publication or playback acceptance. This increment accepts only the inspected duration-related change and its exact bytes.
+
+### SFX preflight frozen changed SHA256 binding
+
+| File | SHA256 |
+| --- | --- |
+| `tools/video/dubs/dubs.test.mjs` | `41fcb0eb694fdea3011b3bea6accb79ec21bfaea9aeab80ed59b647510d1496c` |

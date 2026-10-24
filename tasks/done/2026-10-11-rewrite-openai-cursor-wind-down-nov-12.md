@@ -79,4 +79,4 @@ Disposition: close_superseded.
 - Recorded unresolved condition: What it failed: more than ten narration sentences that hold without the subject (D2); a number or a case worked through on screen (X2); key facts in the source's own words on cards that name it (X3). Also D3, D4, S1, S2, which nearly every film failed and which are not what this rewrite is judged by.
 - Owner reply 2026-10-24 cancels further work on this video. Preserve existing YouTube ID zxHRm5jnELc, files, approvals and history. No remake or review rerun.
 
-先依現行VALUE_RULES/TEACHING_RULES重讀該稿與一手來源，判斷題材是否仍可成立；完成腳本與獨立盲讀後再決定製作或退休。
+依站主停案決定結案；不再執行前述重寫建議，歷史未勾項保留。

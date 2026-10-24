@@ -21,7 +21,7 @@
 | 進產線 | 直接 | 下載後 `clips import`（§3） | 同左 |
 | 浮水印、商用 | 無浮水印；依各供應商條款 | 免費下載有浮水印；Standard 以上沒有，且保留 IP 含商用（條款，2026-10-03 讀）。付費帳號也要走「無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本（實測 2026-10-04，§1.2） | 付費方案去浮水印、「Generated content is for commercial use」（會員頁，2026-10-03 讀） |
 | 併發 | 伺服器每小時 240 次圖片送出、360 次 judge（`apps/api/app/video_media/admin_api.py`）；每月 3,000 片段秒、1,500 張圖、3,000 次 judge、60 首音樂（預設，`apps/api/app/video_automation/models.py`） | 方案表：排隊 Standard 8、Pro 8、Master 12、Max 12，同時跑 1／2／2／2（官方 2026-10-04 再讀）；條款（2025-07-14 版）的「排 5、跑 2」是舊的 | 付費方案：排隊不限、fast-track |
-| 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇；import 對任何 profile 都拒絕，不只是不符 provider（§3） | 同左；repo 沒有 Kling adapter（`tasks/open/2026-09-26-video-drama-kling-provider-card.md`，P3） |
+| 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇；import 對任何 profile 都拒絕，不只是不符 provider（§3） | 同左；repo 沒有 Kling adapter（`tasks/done/2026-09-26-video-drama-kling-provider-card.md`；2026-10-24 站主已封存 API 擴充，網頁路線保留） |
 
 ### 1.1 伺服器 API
 

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-take-payment-for-the-usage-packs
 title: Take payment for the usage packs
-status: blocked
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: codex-open-task-reconcile-510e
+claimed_at: 2026-10-24T15:04:36Z
 created_at: 2026-09-24T00:30:24Z
-completed_at:
-branch:
+completed_at: 2026-10-24T15:04:36Z
+branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
   - apps/api/app/usage
@@ -62,3 +62,10 @@ With the provider's sandbox: buy PACK_10, replay the callback twice, balance goe
 
 - Related: `2026-09-14-preview-never-charged` decides what an itinerary preview costs;
   settle it before anything is sold.
+
+
+### 2026-10-24 owner-directed retirement
+
+站主明確回覆「封存這兩張擴充票（建議）」。取消點數包線上收款擴充；既有免費點數、點數帳本與安全計價任務保留，沒有選定金流／發票方案或啟用販售。
+
+本次只接手任務紀錄並依停案決定結案；原驗收未勾項保留為歷史，沒有宣稱這些功能已完成。原帳號／供應商政策與價格敘述未重新驗證，不作現行方案建議。

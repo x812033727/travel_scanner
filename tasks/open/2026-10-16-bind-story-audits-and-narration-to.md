@@ -15,8 +15,6 @@ scope:
   - tools/video/core/story-lexicon.test.mjs
   - tools/video/core/lexicon-store.mjs
   - tools/video/core/lexicon-store.test.mjs
-  - tools/video/dubs/cli.mjs
-  - tools/video/dubs/dubs.test.mjs
   - docs/videos/story-lexicon-integration.md
   - tools/video/automation/flow.test.mjs
   - tools/video/core/paths.mjs
@@ -122,3 +120,10 @@ Reclaim these two files later if the lexicon work needs them again.
 2026-10-23 owner-directed narrow C-series handoff: the shared checkout had no uncommitted
 changes in `tools/video/core/state.mjs` or `state.test.mjs`. The board steward released only
 these two paths for the C-series safety port; this ticket's other scope, status and checks remain.
+
+
+### 2026-10-24 narrow SFX preflight handoff
+
+The board steward releases only `tools/video/dubs/cli.mjs` and `tools/video/dubs/dubs.test.mjs` for `2026-10-24-preflight-required-sfx-before-paid-dub`. Fresh read-only ownership review confirmed merged #1548/#1614, absent old remote heads, no exact-file unmerged work, and only this reconciliation PR among 27 open PRs touching these files. Both exact files in the active curio-s27 producer checkout are clean and equal main; that process and its media were untouched. Two old empty-index title-QA checkouts were inspected and left intact.
+
+Preserve this task owner, status, every other scope, A01 migration/transition obligations, language pilot and paid/monthly-cap/host gates. On the worker-language ticket, its directory claim was expanded to the five remaining existing files solely to exclude the two transferred paths. Reclaim narrowly before any future edit requiring them.

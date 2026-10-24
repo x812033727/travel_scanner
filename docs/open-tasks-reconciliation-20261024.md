@@ -2,9 +2,11 @@
 
 ## 範圍與結果
 
-固定清單為站主指定worktree起始的533張任務。本輪已關閉75張，原清單保留458張；另將新發現的2個缺陷建成獨立票，合計460張open待辦。統計不包含本輪盤點票本身。main基準 `63d49d575a76302b9a82ca611b55bb6a7f6418f6`，指定worktree起始HEAD `68f2153b1`。
+固定清單為站主指定worktree起始的533張任務。本輪已關閉81張，原清單保留452張；新發現的2個缺陷另建票，其中1張已執行結案，1張保留，合計453張open待辦。統計不包含本輪盤點票本身。main基準 `63d49d575a76302b9a82ca611b55bb6a7f6418f6`，指定worktree起始HEAD `68f2153b1`。
 
 每張均閱讀驗收與歷史；程式／帳務／媒體深入驗收僅限逐票明列證據。過期claim、合併紀錄或排隊成功不能證明正式交付。現有素材、費用／UNKNOWN、STOP、原核准、YouTube與其他獨立製作任務均保留。仍在open的項目尚未完成，逐票記錄其剩餘要求；此報告不宣稱全部清空。
+
+程式實作隔離在 `codex/open-tasks-reconcile-20261024`，[PR #1831](https://github.com/x812033727/travel_scanner/pull/1831) 保留 `no-auto-merge`，待審查、合併與部署；指定原worktree僅同步本輪任務與非綁定文件，保留原C08/C20分支與程式內容。任務結案記錄的本機修正不代表已在正式站生效。
 
 ## 站主已決定
 
@@ -12,16 +14,22 @@
 - NAVER金鑰與TourAPI：回覆「封存兩張供應商擴充票」，已封存；目前維持人工Naver精準頁，各景點／店家補資料及發布守門保留。
 - 沖繩美國村：回覆「保留現有網址並修正資料」，已完成，見[正式校正與備份收據](hotspot-review-next-batch.md)。
 - 57張舊片重寫：回覆「只保留常青實測教學（建議）」，已逐張封存38張、保留19張原open票且內容未改。只取消這38張重寫義務；素材、YouTube、STOP、費用及其他製作票保留。封存票保留歷史未勾項並明寫取消原因。
+- Google Ads導流量測、點數包線上付款、Kling API供應商卡：站主另已明確同意封存這3張擴充票；既有點數帳本、免費方案、Hailuo/Kling網頁製作與素材保留。登入者AdSense行為的第三題尚待回覆。
 
 ## 已執行及驗證
 
 - 六個先行程式修正：配音付費前音樂檢查、slides_image金鑰狀態、QA列號/claim ID區分、repeat沿用浮水印與workdir、教學承諾只豁免一句、部署forward/rollback補community-sweeper。另補已核准影片改寫交接文件。
 - 五組工具測試176例通過；sweeper API35例及mypy/Ruff通過；Windows驗收100pass/87skip；既有#1480 OAuth/i18n再驗69例通過。
 - 追加修正：大字卡截圖前檢查自然文字高度與元素重疊；命名Gemini模型轉傳既有2K估價／解析度，保留付費1K快取直到明確force。各自測試與獨立覆核的最終結果見該任務與PR。未變更價目或呼叫付費供應商；既有渲染快取需force才能重新檢查。
+- 第九項修正：任務清單遇別票歸檔造成readENOENT時重讀一次，且原記錄必須仍存在；真重複、解析錯誤、權限錯誤、永久遺失與持續競態仍會報錯。確定性紅燈重現後，24/24測試與獨立peer review通過。
+- 第十項修正：必要音效manifest／來源／SHA在付費配音前檢查，混音時仍重驗，沒有組好的可選效果軌仍可略過。新增10/10零請求與保留既有快取測試通過，獨立時長收據2/2及473企劃exit0；完整native音軌兩輪遇既有speech-journal EPERM，保留失敗，等待PR新head的Linux完整驗收後結案。原Windows journal票仍保留，沒有新增重複票。
+- Gemini追加驗收：媒體74/74、API設定50pass/3既有PostgreSQL integration skip、Ruff/mypy3檔皆exit0；最新duration27/27與473企劃皆exit0，六檔凍結hash讀回一致。
+- 初版八項修正的 `ae8d694864fec1cbd082695d8ea8e5f69b560eea`：八個Linux workflow皆success；含ffmpeg/Chromium的完整工具2740pass/3skip、影片文件236/236。Windows重複完整跑遇既有語法子行程逾時，該項獨立重跑1/1與Linux均通過；另有未改動的adult-English子行程差異，未取得完整stderr。取得Linux完整結果後僅停止本輪兩組自有Windows測試樹並保留log，沒有宣稱Windows完整綠燈。第九修正與最後文件以PR最新head重新驗證。
 - 獨立duration第一輪核心/QA25例、108檔收據4項重綁、473企劃CLI通過；第二輪Gemini改動由另一位獨立代理覆核並僅更新另外4項，保留其他104項與完整舊報告。完整tools/docs-video測試結果在最終PR補記，局部通過不代表完整綠燈。
 - 八個新增新聞來源在正式站皆已啟用、最近掃描成功／未修改、連續失敗0，候選與選題旗標見[來源紀錄](official-ai-accounts.md)。這不代表新聞待審cohort已完成。
 - asyncpg主機觀測窗四種錯誤均0；真Postgres CI檔案七個case實跑通過，三個指定main smoke均綠，詳見該done票。
 - 沖繩校正於13:33:02UTC提交24欄、一筆audit；保留既有ID/slug、13攻略、有效Google資料與排名。完整備份537682432bytes、pg_restore索引1261行及hash通過；五語沖繩與大阪JA公開API讀回均符合。沒有為此部署、重跑collector或呼叫供應商。
+- 三張到期旅遊來源票：清萊／清邁兩篇與圖解已按業者新公告備妥校正，兩輪獨立覆核與schema/lint通過，見[四檔雜湊及待發布事項](chiang-rai-transport-recheck-20261024.md)；尚未發布、整票保留。仙台機場API仍為9-26資料，保留10/25–10/31冬季換季後驗收；圓通院十月日期與現稿一致，僅勾選十月子項，11月及2027年1月條件保留。
 
 ## 尚未消失的問題
 
@@ -32,12 +40,12 @@
 
 ## 新建的後續票
 
-- [必要音效也要在付費配音前檢查](../tasks/open/2026-10-24-preflight-required-sfx-before-paid-dub.md)：保留music修正與mix-time重驗，新增零呼叫失敗案例。
-- [任務盤點的跨票歸檔競態](../tasks/open/2026-10-24-task-inventory-archive-race.md)：保留真重複／解析錯誤，處理別票歸檔導致ENOENT；本輪由父代理序列化mutation。
+- [2026-10-24-preflight-required-sfx-before-paid-dub](../tasks/open/2026-10-24-preflight-required-sfx-before-paid-dub.md)：必要音效預檢已實作；原lexicon與多語工人票僅移交兩個已合併的程式檔認領，其他持有者／A01與付費pilot關卡保留。待最新Linux CI驗收。
+- [2026-10-24-task-inventory-archive-race](../tasks/done/2026-10-24-task-inventory-archive-race.md)：任務盤點的跨票歸檔競態已補上，24/24及獨立peer review通過；本輪仍由父代理序列化mutation。
 
 ## 原533張逐票判斷
 
-### 完成並結案（25）
+### 完成並結案（28）
 
 | 任務 | 證據／後續 |
 | --- | --- |
@@ -49,6 +57,7 @@
 | [2026-10-09-duration-review-stalled-fixes-rebase](../tasks/done/2026-10-09-duration-review-stalled-fixes-rebase.md) | Main scoped files exist: tasks/open/2026-10-09-duration-review-stalled-fixes-rebase.md DoD/Steps 全部勾選；範圍現已只剩此任務記錄。獨立 duration receipt、45/45 focused tests、6/6 matcher comparisons 已記錄；PR #1387 現場確認 2026-10-18 已合併。 |
 | [2026-10-10-load-the-changelog-and-developer-news](../tasks/done/2026-10-10-load-the-changelog-and-developer-news.md) | Outstanding: A day later: each new source has scanned without `stuck`, and the number of Fresh production read-only snapshot 2026-10-24 12:47 UTC: all eight sources enabled, latest successful/not_modified scan, zero consecutive failures; candidates 14/6/14/26/14/7/8/14. Five official-video-topic flags true; old claude.com/blog row absent. Observation gap completed without imports/model calls. |
 | [2026-10-11-decide-and-fact-check-the-rewritten](../tasks/done/2026-10-11-decide-and-fact-check-the-rewritten.md) | Open requirement: A production task exists and names what is listed under Notes. 本票明寫 production task 存在即關閉；main 已有 2026-10-11-produce-claude-code-skills-vs-claude-md.md，逐列記錄來源、D/E大綱、125句、三張卡與後續關卡。 |
+| [2026-10-11-explainer-named-gemini-model-draws-at](../tasks/done/2026-10-11-explainer-named-gemini-model-draws-at.md) | Outstanding criterion: `MediaOptionView` carries `usd_per_image_2k` where the catalogue has one (`schemas.py`, Existing catalogue2K price forwarded by MediaOptionView/settings and used by named Gemini model. No price values changed. Default model keys/MiniMax no-size/legacy omission preserved. Regression proves existing paid1K manifest/cache reused with zero POSTs until explicit --force; fresh named Gemini2K uses own price. Independent review refreshed exactly4 duration-bound files,104 others unchanged, prior report byte-prefix retained. Actual checks all exit0: media74/74;API settings50passed/3existing PostgreSQL integration skips;Ruff;mypy3files;duration27/27;473plans. Post-check frozen6 hashes reverified. Independent reviewer codex-independent-gemini2k-review-20261024. ReportSHA5b93c175cc2cc138e3b1247e74d0e4dded56d711d2861fbc01073795a17298b0;receiptSHA75b4de9f53680e3c6a2f937dbc136e281502b951a94516c5656c7984fbd88e2b. |
 | [2026-10-11-image-status-reads-slides-image-key](../tasks/done/2026-10-11-image-status-reads-slides-image-key.md) | - [ ] A unit case in `stages.test.mjs`. Any test that pins the 2026-10-24 execution: slides_image key fallback added;24 tests passed. Local implementation only; no merge/deploy or paid request. |
 | [2026-10-11-qa-facts-matches-row-numbers-as](../tasks/done/2026-10-11-qa-facts-matches-row-numbers-as.md) | - [ ] A test with a report shaped like `sothatswhy-b26/verify-1.md`: row 19 NOT FOUND, scenes 2026-10-24 execution: Bare ordinal rows no longer treated as claim IDs;23 QA tests and190 historical report comparisons,latest verdicts unchanged. Local implementation only; no merge/deploy or paid request. |
 | [2026-10-11-render-repeat-draws-a-marked-video](../tasks/done/2026-10-11-render-repeat-draws-a-marked-video.md) | - [ ] Without `--workdir` it says the frames are drawn without the mark. 2026-10-24 execution: Repeat reads same pinned watermark/workdir, rejects pin hash drift;full render40 tests passed. Local implementation only; no merge/deploy or paid request. |
@@ -58,21 +67,26 @@
 | [2026-10-12-play-the-channel-intro-bumper-after](../tasks/done/2026-10-12-play-the-channel-intro-bumper-after.md) | Task status=open; unresolved checklist rows=0 03aa68298 / PR #1481 merged; task says only archival remains; all acceptance boxes checked |
 | [2026-10-13-allow-audited-source-refresh-after-legacy](../tasks/done/2026-10-13-allow-audited-source-refresh-after-legacy.md) | Outstanding criterion: 已稽核修復導覽證據、且保留的真實正文來源可原生讀取的候選，可以在後台明確選擇刷新**保留的真實來源**，留下人工原因／稽核並重新通過既有事實、五語及最後一關查核；未通過者仍保留待審。 PR #1480 MERGED 2026-10-18T20:30:54Z at 86c6d9bce117af85ce9267d408721c1f0f7c7dab with SUCCESS rollup. |
 | [2026-10-13-classify-failed-oauth-token-refresh-as](../tasks/done/2026-10-13-classify-failed-oauth-token-refresh-as.md) | PR #1480 MERGED 2026-10-18T20:30:54Z at 86c6d9bce117af85ce9267d408721c1f0f7c7dab with SUCCESS rollup. Fresh read-only current-main-based Windows validation: tests/test_ai_accounts_agent_runs.py plus tests/test_error_localization.py 69 passed, exit 0. |
+| [2026-10-13-dub-narrator-only-explainer-dramas-tool](../tasks/done/2026-10-13-dub-narrator-only-explainer-dramas-tool.md) | - [ ] An independent DURATION_ONLY increment to `docs/videos/long-form/review.json` for the bound The sole unchecked item was an independent DURATION_ONLY increment. Existing review.md section "Dubbing narrated dramas, rebound after #1481 increment:3files(2026-10-13)" explicitly binds admin_service.py,admin-video-reviews.test.tsx,dubs.test.mjs for#1482; independent reviewer claude-opus-duration-review-20261013k differs from author. Live GitHub#1482 verifiedMERGED2026-10-13T16:17:57Z at70ecac77820567eba5800c064dea406ec6ad7cca. Fresh current108-binding positive/negative duration27/27 and473plancheck actual0; currentdubs37tests and exactheadae8d6948 LinuxAPI/web/tools gates passed. Archive the stale checklist record only; no claim of new paid dub or media delivery. |
 | [2026-10-13-localize-news-navigation-refresh-error-codes](../tasks/done/2026-10-13-localize-news-navigation-refresh-error-codes.md) | PR #1480 MERGED 2026-10-18T20:30:54Z at 86c6d9bce117af85ce9267d408721c1f0f7c7dab with SUCCESS rollup. Fresh read-only current-main-based Windows validation: tests/test_ai_accounts_agent_runs.py plus tests/test_error_localization.py 69 passed, exit 0. |
 | [2026-10-13-update-published-openai-math-manuscripts-guide](../tasks/done/2026-10-13-update-published-openai-math-manuscripts-guide.md) | Main scoped files exist: docs/openai-math-manuscripts-update-2026-10-13.md DoD/Steps 全部勾選；五語修正稿經第三輪獨立 PASS 已發布，guide_article_published 五筆與五語公開頁逐一讀回；zh-TW/zh-CN/ja/ko v5、en v4；證據 docs/openai-math-manuscripts-update-2026-10-13.md 在 main。 |
 | [2026-10-14-support-10-minute-minimax-cute-brand](../tasks/done/2026-10-14-support-10-minute-minimax-cute-brand.md) | Task status=open; unresolved checklist rows=0 a1b6b1149 / PR #1499 merged; task says only archival remains; all acceptance boxes checked |
 | [2026-10-16-video-worker-a-rate-limited-topic](../tasks/done/2026-10-16-video-worker-a-rate-limited-topic.md) | - [ ] Deployed; on the host the worker's rounds no longer exit 4 on the topics and a scheduled Ticket explicitly records implementation #1520 merged and remains open only pending archival; live GitHub verified merge 0b6844a4ad7ec31fe810c7b200c05028c4d1b767. |
 | [2026-10-19-a01-0133-story-budget-migration](../tasks/done/2026-10-19-a01-0133-story-budget-migration.md) | PR #1585 MERGED 2026-10-19T07:37:11Z at 63288d02422aabc199bb519b0e6746ef0eda854a. Task DOD and Steps are all checked; migration exists on main. |
+| [2026-10-21-render-layout-check-misses-a-big](../tasks/done/2026-10-21-render-layout-check-misses-a-big.md) | - [ ] A `big` card with icon + two-line text + sub either fits (the icon shrinks or the word wraps Renderer refuses clipped/overlapping big cards before any screenshot;42/42 regressions passed. Independent code+PNG review by codex-final-checks accepted. Native exact bad card zero screenshots; corrected card valid. Current20-card cohort18 first-run passes plus2 bounded retry passes; initial2 startup-timeout failures retained. browser.mjs/render.test.mjs excluded from108 duration REVIEW_FILES; no new binding needed. Existing cached states require explicit render --force to revalidate. |
 | [2026-10-21-tutorial-promise-exemption-in-lint-evaluate](../tasks/done/2026-10-21-tutorial-promise-exemption-in-lint-evaluate.md) | - [ ] `PROMISE_VERB` does not match 可能用／不能用／可能做 (`(?<![可不])能…` or a deliverable noun). 2026-10-24 execution: TOC exception subtracts exactly one real promised-result sentence, negative modal cannot match;52 lint tests passed. Local implementation only; no merge/deploy or paid request. |
 | [2026-10-23-preflight-music-before-paid-dub-synthesis](../tasks/done/2026-10-23-preflight-music-before-paid-dub-synthesis.md) | - [ ] The check uses the current source cut length, SHA and fully decoded generated-music 2026-10-24 execution: Required music validated before speech/status/cache creation, mix-time recheck retained;37 tests passed. Local implementation only; no merge/deploy or paid request. |
 | [2026-10-24-prepare-c20-zippo-v8-canonical-video](../tasks/done/2026-10-24-prepare-c20-zippo-v8-canonical-video.md) | Open requirement: 草稿 PR #1808 CI 與整合審查完成後合併；本票在 PR 待審期間留在 review。 最後未勾項只有 PR #1808 合併；live gh pr view confirms MERGED at 2026-10-24T08:22:49Z, commit 0f166b266f46da55464a27ed8a83d6d7d43f2db2 already on origin/main。 |
 
-### 重複、取代或站主停案（50）
+### 重複、取代或站主停案（53）
 
 | 任務 | 證據／後續 |
 | --- | --- |
 | [2026-09-06-korea-tourism-tourapi-spike](../tasks/done/2026-09-06-korea-tourism-tourapi-spike.md) | NAVER/data.go.kr account and identity-policy decisions remain unresolved; no key, signup or paid request attempted. Owner 2026-10-24 explicitly chose 封存兩張供應商擴充票. Existing feasibility evidence retained; no data.go.kr signup, key acquisition, KTO identity-policy change or supplier integration. Actual candidate/merchant tasks stay open. |
 | [2026-09-06-naver-maps-key](../tasks/done/2026-09-06-naver-maps-key.md) | No current NAVER key validity probe attempted; manual precise Naver identities are a separate path and may make the old headline too broad. Owner 2026-10-24 explicitly chose 封存兩張供應商擴充票. Close key-enrollment expansion; no key applied, configured or verified. Actual KR candidate/merchant tasks stay open and exact-map publication guards stay unchanged. |
+| [2026-09-13-google-ads-conversion-measurement](../tasks/done/2026-09-13-google-ads-conversion-measurement.md) | Outstanding criterion: 站主選的路線寫在 Notes： Owner2026-10-24: 封存這兩張擴充票（建議）。取消Google Ads付費導流轉換量測擴充；既有分析、分潤與同意設定保留，沒有投廣告或新增追蹤。 |
+| [2026-09-24-take-payment-for-the-usage-packs](../tasks/done/2026-09-24-take-payment-for-the-usage-packs.md) | Outstanding criterion: The owner has chosen a provider and settled the invoicing question; both are in Notes. Owner2026-10-24: 封存這兩張擴充票（建議）。取消點數包線上收款擴充；既有免費點數、點數帳本與安全計價任務保留，沒有選定金流／發票方案或啟用販售。 |
+| [2026-09-26-video-drama-kling-provider-card](../tasks/done/2026-09-26-video-drama-kling-provider-card.md) | Outstanding criterion: `PROVIDER_DEFINITIONS` 有 `kling` 卡（base URL＋access key／secret key），`OFFICIAL_PROVIDER_HOSTS` 與 `validate_deployment_security` 的 pinned endpoints 有它，`CONNECTION_TESTED_PROVIDERS` 或 `LOCAL_ONLY_PROVIDERS` 其一。 Owner2026-10-24: 封存 Kling API 擴充票（建議）。取消Kling API供應商卡／新金鑰及預付路線擴充；Hailuo/Kling網頁製作任務、既有素材與核准保留，沒有申請金鑰、預付或改動製作路線。 |
 | [2026-10-08-delivery-check-remaining-native-evidence](../tasks/done/2026-10-08-delivery-check-remaining-native-evidence.md) | Open requirement: Record permitted native observations for empty-file, wrong-name, unable-to-check, close and reload behavior, or explicitly record why a case remains unverified. 原片已被站主拒收並於 2026-10-11 10:19 UTC 停止；本票明載更多 native evidence 不會補救低內容價值。 |
 | [2026-10-10-dictionary-merge-treats-constructor-and-tostring](../tasks/done/2026-10-10-dictionary-merge-treats-constructor-and-tostring.md) | - [ ] A term the dictionary does list is still left as it is. Independent offline fixture passed 2026-10-24: 7 inherited prototype names accepted, own term preserved; story proposals preserve shared/pinned bytes. Current main #1548 replaces obsolete automatic story merger with Object.hasOwn and immutable proposals. |
 | [2026-10-11-make-durable-polling-deadline-regression-deterministic](../tasks/done/2026-10-11-make-durable-polling-deadline-regression-deterministic.md) | - [ ] production polling/paid receipt語意不改 Original task 2026-10-08-make-durable-polling-deadline-regression-deterministic is also in tasks/open; same title and same product scope |
@@ -122,7 +136,7 @@
 | [2026-10-14-enforce-usd-25-all-in-cap](../tasks/done/2026-10-14-enforce-usd-25-all-in-cap.md) | Ticket Notes: Implementation in #1508 is merged; remains open only pending archival; do not reimplement. PR #1508 MERGED at 42fbfb40d147811ab4ae825e05ef11c3f85d85ea. |
 | [2026-10-16-story-budget-rollback-compat](../tasks/done/2026-10-16-story-budget-rollback-compat.md) | Ticket Notes: Implementation in #1521 is merged; remains open only pending archival; do not reimplement. PR #1521 MERGED at 3cdbbd68b667ea202d10b8fd3c611a97cd809217. |
 
-### 仍需執行的離線／唯讀工程與驗收（41）
+### 仍需執行的離線／唯讀工程與驗收（39）
 
 | 任務 | 證據／後續 |
 | --- | --- |
@@ -150,7 +164,6 @@
 | [2026-10-11-add-audited-correction-for-obsolete-held](../tasks/open/2026-10-11-add-audited-correction-for-obsolete-held.md) | Outstanding criterion: Provide an independently reviewed, dry-run-first exact held-candidate 仍有具體新聞資料完整性缺口；先做窄fixture與CAS/稽核路線，再依原cohort續作，保留cap與來源歷史。 |
 | [2026-10-11-add-audited-minor-corrections-for-published](../tasks/open/2026-10-11-add-audited-minor-corrections-for-published.md) | Outstanding criterion: An explicitly selected published candidate accepts a minor correction 仍有具體新聞資料完整性缺口；先做窄fixture與CAS/稽核路線，再依原cohort續作，保留cap與來源歷史。 |
 | [2026-10-11-exclude-rotating-source-widgets-from-news](../tasks/open/2026-10-11-exclude-rotating-source-widgets-from-news.md) | Outstanding criterion: Source-specific fixtures reproduce each current body-hash false change. 仍有具體新聞資料完整性缺口；先做窄fixture與CAS/稽核路線，再依原cohort續作，保留cap與來源歷史。 |
-| [2026-10-11-explainer-named-gemini-model-draws-at](../tasks/open/2026-10-11-explainer-named-gemini-model-draws-at.md) | Outstanding criterion: `MediaOptionView` carries `usd_per_image_2k` where the catalogue has one (`schemas.py`, 補MediaOptionView的2K價格傳遞，保留未指定模型cache key與既有1K素材，僅新請求用一致2K。 |
 | [2026-10-11-localize-batch003-zh-tw-diagram-helpers](../tasks/open/2026-10-11-localize-batch003-zh-tw-diagram-helpers.md) | Outstanding criterion: 四圖全部可見helper改成經審的繁中；意義／數字／取捨不變。 四張繁中SVG的英文helper有精確scope，改為繁中並逐張手機/桌機bounds驗收。 |
 | [2026-10-11-reconcile-reservation-review-residuals](../tasks/open/2026-10-11-reconcile-reservation-review-residuals.md) | Outstanding criterion: 在目前 editor 查找已修正收據，或以無正式寫入 fixture 重現 rapid-search 的 row/dialog identity；Maisen、Thipsamai、dialog merchant ID 与選中列應全程一致。記錄是否重現、序列與 SHA；若可重現另開最小 source/test 票，本票不代改 editor。 原完整訂位研究已取代；只核對Maisen/Thipsamai dialog identity及TABLES/沁園春兩筆精確官方事實。 |
 | [2026-10-11-restore-frontend-flow-polish](../tasks/open/2026-10-11-restore-frontend-flow-polish.md) | Outstanding criterion: My trips 在 390px 等手機寬度有可見、清楚且可觸達的「繼續」入口，五語完整；不遮住旅程標題、狀態、More或刪除動作。 具體手機Continue入口及merchant/restaurant label可獨立窄修，先確認現main文案元件。 |
@@ -164,11 +177,10 @@
 | [2026-10-17-admin-video-list-multi-select-order](../tasks/open/2026-10-17-admin-video-list-multi-select-order.md) | Outstanding criterion: The observable outcome, not the implementation. 以COMPILATIONS.md票4具體化placeholder，補影片list多選/排序/進度UI，依賴後端及compiler主票。 |
 | [2026-10-19-show-each-video-s-drive-backup](../tasks/open/2026-10-19-show-each-video-s-drive-backup.md) | Outstanding criterion: `ProjectSummary` (apps/api/app/video_reviews/schemas.py) carries `backup`: the view API backup_view已可用，仍需把每片狀態接到ProjectSummary/card/detail，維持五語。 |
 | [2026-10-21-an-owner-s-gate-decision-lands](../tasks/open/2026-10-21-an-owner-s-gate-decision-lands.md) | Outstanding criterion: A decision on a superseded review is refused with a message that says the review was API需拒絕superseded review決策、UI刷新被取代卡；先以pushA/pushB/decideA fixture重現。 |
-| [2026-10-21-render-layout-check-misses-a-big](../tasks/open/2026-10-21-render-layout-check-misses-a-big.md) | Task status=open; unresolved checklist rows=5 必要且可離線處理的程式缺口；先重新查 active scope/PR，認領後以 mock/fixture 驗證再修，不呼叫付費 provider。 |
 | [2026-10-22-lookgate](../tasks/open/2026-10-22-lookgate.md) | Task status=open; unresolved checklist rows=4 必要且可離線處理的程式缺口；先重新查 active scope/PR，認領後以 mock/fixture 驗證再修，不呼叫付費 provider。 |
 | [2026-10-24-guard-c09-v8-stale-worker](../tasks/open/2026-10-24-guard-c09-v8-stale-worker.md) | Task status=open; unresolved checklist rows=6 必要且可離線處理的程式缺口；先重新查 active scope/PR，認領後以 mock/fixture 驗證再修，不呼叫付費 provider。 |
 
-### 仍需執行的內容與製作（163）
+### 仍需執行的內容與製作（164）
 
 | 任務 | 證據／後續 |
 | --- | --- |
@@ -184,8 +196,10 @@
 | [2026-09-16-news-batch-4-4-the-8](../tasks/open/2026-09-16-news-batch-4-4-the-8.md) | Recorded unresolved condition: - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-23T00:17:49Z) was stale and is released so it stops locking its scope. Landed: #672. Still open: 29 content packs with research records (only 6 done); check_article/pack_cli lint for every article; three indexes zh-TW only (tech and crypto indexes not touched); merge, deploy, guides-impor 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-09-16-unpublished-content-packs-hub-descriptions-and](../tasks/open/2026-09-16-unpublished-content-packs-hub-descriptions-and.md) | Recorded unresolved condition: 原本擋住它的 content-summary-howto-and-life 認領已釋出，改回 open。工作本身未完成：74 份內容包仍有「第 N 篇」，claude-code-tutorials 與 codex-learning-hub 的描述仍寫 96 篇、60 篇。 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-09-19-aio-answer-first-descriptions-part-2](../tasks/open/2026-09-19-aio-answer-first-descriptions-part-2.md) | Recorded unresolved condition: keeps none, because its body says the prices were not verified, so no price went into its lead 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
+| [2026-09-19-chiang-rai-recheck-2026-11](../tasks/open/2026-09-19-chiang-rai-recheck-2026-11.md) | CurrentDBREADONLYsourcezhTWonly,draft=publicv4/v8; actualplan_import2updates/2publishtrue/0taxonomy/0create/noholds,exit0. Final4sourcehashes+3factualreviewrounds+5fielddatepeerproof in portable receipt. No publish. 兩篇交通校正已在本機備妥並經兩輪審查；取得發布核准及正式讀回，票價與其他未取得費率仍保留。 |
 | [2026-09-19-lny-2027-vietnam-tet-hk-lcsd](../tasks/open/2026-09-19-lny-2027-vietnam-tet-hk-lcsd.md) | Recorded unresolved condition: 這項修正要保留 9/17 的查證日期，以及當時「政府尚未核定」的狀態， 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-09-19-sea-seasons-recheck-2027-01](../tasks/open/2026-09-19-sea-seasons-recheck-2027-01.md) | Recorded unresolved condition: `southeast-asia-seasons-when-to-go` 的泰國月份來自 TAT 東京的行事曆頁與月份表（`/about/weather/`），每年 1 月前後換成新年度；本批第 3 到 7 篇的季節段都跟著本篇的月份寫。越南兩篇（`hue-day-trip-from-da-nang`、`ha-long-bay-cruise-from-hanoi`）上線後，規格允許在 H2-3 中部與北部小段各加一個 article inline（2026-09-19 查內容包，還沒有這兩個連結）。規格 `docs/travel-guides-batch-7/southeast-asia-seasons-when-to-go.md`「上線後與交叉檢查」列了這些與 Air4Thai、常年值換版的條件。 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
+| [2026-09-19-sendai-matsushima-recheck-2026-q4](../tasks/open/2026-09-19-sendai-matsushima-recheck-2026-q4.md) | 當日官方首頁9/10公告與2026活動頁確認圓通院點燈10/24–11/23，既有文章季節句已一致，本輪無需更動來源稿或發布。官方活動頁：https://www.entuuin.or.jp/lightup/2026/ ，原始HTML SHA256 5ee86780de94829d41cd057a0c1a3bfec58ee1d49ab4d310031cce0b0f403d1e。只完成十月日期複查子項；11月活動／船班／橋／瑞巖寺、2027年1月前瑞鳳殿與博物館等子項繼續保留。沒有將後續月份整票結案。 十月圓通院日期已查且現稿一致；11月與2027年1月子項仍待到期查證。 |
 | [2026-09-20-five-language-article-batch-003](../tasks/open/2026-09-20-five-language-article-batch-003.md) | Recorded unresolved condition: - 2026-09-30 (claude-opus-5-5, owner-approved `--force` on 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-09-20-launch-articles-batch-8](../tasks/open/2026-09-20-launch-articles-batch-8.md) | Recorded unresolved condition: 金澤白川鄉、尾道島波海道、昂坪 360、吉隆坡）還沒寫；FOLLOWUPS 開票留到整批上線的 PR。 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-09-20-launch-korea-food-specials-1](../tasks/open/2026-09-20-launch-korea-food-specials-1.md) | Recorded unresolved condition: - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex (since 2026-09-20T12:09:46Z) was stale and is released so it stops locking its scope. Landed: #601. Still open: Per-article production checks (200, h1, canonical, noindex, hero/diagram 200) for the remaining 19 of 22; Subtopic hubs list the right articles; breadcrumb check; Page-by-page verification incl. Naver li 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
@@ -309,7 +323,6 @@
 | [2026-10-12-correct-v4-youtube-end-screen-timing](../tasks/open/2026-10-12-correct-v4-youtube-end-screen-timing.md) | Recorded unresolved condition: for clickable elements, without changing the owner-approved media. 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-10-12-curio-h01-reconstruction-certainty](../tasks/open/2026-10-12-curio-h01-reconstruction-certainty.md) | Recorded unresolved condition: body follows the ordinary new-version review and owner publication decision. 保留尚未完成的明確工作；按scope從現有材料接續，完成後再結案。 |
 | [2026-10-12-lengthen-the-channel-outro-to-20](../tasks/open/2026-10-12-lengthen-the-channel-outro-to-20.md) | Task status=in-progress; unresolved checklist rows=2 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
-| [2026-10-13-dub-narrator-only-explainer-dramas-tool](../tasks/open/2026-10-13-dub-narrator-only-explainer-dramas-tool.md) | Task status=review; unresolved checklist rows=1 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
 | [2026-10-13-explainer-route-files-its-drama-under](../tasks/open/2026-10-13-explainer-route-files-its-drama-under.md) | Task status=open; unresolved checklist rows=2 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
 | [2026-10-13-lint-reads-the-whole-video-for](../tasks/open/2026-10-13-lint-reads-the-whole-video-for.md) | Task status=open; unresolved checklist rows=7 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
 | [2026-10-13-local-assemble-warns-when-its-branding](../tasks/open/2026-10-13-local-assemble-warns-when-its-branding.md) | Task status=open; unresolved checklist rows=5 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
@@ -336,7 +349,7 @@
 | [2026-10-18-story-thumbnail-brand](../tasks/open/2026-10-18-story-thumbnail-brand.md) | Task status=in-progress; unresolved checklist rows=0 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
 | [2026-10-19-a01-104-to-105-guarded-adoption](../tasks/open/2026-10-19-a01-104-to-105-guarded-adoption.md) | Task status=in-progress; unresolved checklist rows=1 保留。現票仍有未驗收條件；須先核對現行實作與證據，依原 scope 完成，不重播未知付費請求。 |
 
-### 保留既有站主決策或驗收關卡（174）
+### 保留既有站主決策或驗收關卡（171）
 
 | 任務 | 證據／後續 |
 | --- | --- |
@@ -347,7 +360,6 @@
 | [2026-09-08-travelpayouts-live-destination-activation](../tasks/open/2026-09-08-travelpayouts-live-destination-activation.md) | Outstanding: Reconcile current Project 570089 Available brands using a working signed-in browser. 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
 | [2026-09-11-seoul-day2-live-requery](../tasks/open/2026-09-11-seoul-day2-live-requery.md) | Outstanding: Production is confirmed to run a build that contains `a044e4c`. 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
 | [2026-09-13-adsense-auto-ads-overlay-setup](../tasks/open/2026-09-13-adsense-auto-ads-overlay-setup.md) | Outstanding: mokaair.com 的自動廣告：錨定、插頁、Multiplex 開啟；橫幅、側邊欄、意圖導向格式、自動最佳化關閉。 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
-| [2026-09-13-google-ads-conversion-measurement](../tasks/open/2026-09-13-google-ads-conversion-measurement.md) | Outstanding criterion: 站主選的路線寫在 Notes： 建議尚未投廣告前先不增付款/追蹤範圍；若要測試，先用站內campaign歸因路線。 |
 | [2026-09-13-search-text](../tasks/open/2026-09-13-search-text.md) | Outstanding: 三筆的 `search_text` 不再含舊城市名。 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
 | [2026-09-14-claude-advanced-live-validation](../tasks/open/2026-09-14-claude-advanced-live-validation.md) | Recorded unresolved condition: GitHub 專用 workflow 已在 .github/workflows/claude-tutorial-validation.yml 準備，由 claude-tutorial-ci-validation 任務管理，預設只做 baseline；尚未合併／dispatch，仍需 claude-lab 與專用 ANTHROPIC_API_KEY。相關系列測試 12 項、workflow baseline 8 項及工具全套 52 項通過。最新審查包含 380 個檔案；425 個文件連結無失效。資料與動作紀錄在 real-operations-summary.json、ci-workflow-validation.json 及 capstone-*.json。 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
 | [2026-09-14-codex-learning-series](../tasks/open/2026-09-14-codex-learning-series.md) | Recorded unresolved condition: 上述條件尚未解除，因此不標 done、不開部分 PR、不匯入或部署。可用預覽環境與產品介面證據補齊後，從最終 60 篇快照繼續驗收。 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
@@ -368,10 +380,8 @@
 | [2026-09-24-first-party-sponsor-placements-design](../tasks/open/2026-09-24-first-party-sponsor-placements-design.md) | Recorded unresolved condition: The owner reads `docs/sponsor-placements.md` and approves or amends it. 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
 | [2026-09-24-hosting-affiliate-links-in-the-hosting](../tasks/open/2026-09-24-hosting-affiliate-links-in-the-hosting.md) | Outstanding criterion: Each programme the owner joined is a `ContentPartner` whose `hosts` match the links 先由站主申請/核准hosting聯盟帳號並提供正式追蹤URL，再加入文章。 |
 | [2026-09-24-reader-support-link-at-the-end](../tasks/open/2026-09-24-reader-support-link-at-the-end.md) | Outstanding criterion: Published articles in all five locales end with one short, plainly worded support 建議保留已完成元件，待站主提供Portaly或Buy Me a Coffee頁址後只改設定。 |
-| [2026-09-24-take-payment-for-the-usage-packs](../tasks/open/2026-09-24-take-payment-for-the-usage-packs.md) | Outstanding criterion: The owner has chosen a provider and settled the invoicing question; both are in Notes. 建議先決定付款供應商、發票與退款政策，再實作sandbox，不直接啟售。 |
 | [2026-09-24-video-pilot-ai-model-choice](../tasks/open/2026-09-24-video-pilot-ai-model-choice.md) | Main scoped files exist: docs/videos/lexicon.json, docs/videos/README.md 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
 | [2026-09-25-video-auto-rollout-pair-the-worker](../tasks/open/2026-09-25-video-auto-rollout-pair-the-worker.md) | Outstanding: 部署腳本加 `--profile video`（改主機腳本要站主同意，備份舊版）。 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
-| [2026-09-26-video-drama-kling-provider-card](../tasks/open/2026-09-26-video-drama-kling-provider-card.md) | Outstanding criterion: `PROVIDER_DEFINITIONS` 有 `kling` 卡（base URL＋access key／secret key），`OFFICIAL_PROVIDER_HOSTS` 與 `validate_deployment_security` 的 pinned endpoints 有它，`CONNECTION_TESTED_PROVIDERS` 或 `LOCAL_ONLY_PROVIDERS` 其一。 目前偶的江湖採Hailuo網頁路線；建議暫保留Kling API供應商實作，避免無帳號路線投入。 |
 | [2026-09-26-video-drama-pilot](../tasks/open/2026-09-26-video-drama-pilot.md) | Main scoped files exist: docs/videos/lexicon.json 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
 | [2026-09-26-video-series-pilot](../tasks/open/2026-09-26-video-series-pilot.md) | Main scoped files exist: docs/videos/SERIES.md 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
 | [2026-09-27-ai-shorts-owner-review-studio-launch](../tasks/open/2026-09-27-ai-shorts-owner-review-studio-launch.md) | Recorded unresolved condition: - No publish review, YouTube upload, schedule, channel stance or other shared setting was changed. Owner listening/phone playback, channel stance approval, private-upload acceptance and actual analytics remain open. Source changes remain local on `codex/shorts-backend-audit`; no PR was created by this correction. 先讀回現行審核/成本/平台狀態，沿既有材料完成可做部分；只把真人驗收、發布選擇、帳號或未授權新增費用留給站主。 |
@@ -515,7 +525,7 @@
 | [2026-10-23-reconcile-c-series-prior-charges-and](../tasks/open/2026-10-23-reconcile-c-series-prior-charges-and.md) | Outstanding criterion: Provider billing establishes each C03–C06 actual charge or an evidence 維持每片全額歷史暴露hold；需帳單/usage證據後才做per-film reconciliation與activation。 |
 | [2026-10-24-c09-pilot-budget-readback](../tasks/open/2026-10-24-c09-pilot-budget-readback.md) | Outstanding: A dated C09-only receipt names the actual provider account/model/region, 保留並向站主確認本票的資料、帳號、成本或驗收決策；不重播未知請求。 |
 
-### 保留外部、帳號或執行環境阻礙（80）
+### 保留外部、帳號或執行環境阻礙（78）
 
 | 任務 | 證據／後續 |
 | --- | --- |
@@ -535,7 +545,6 @@
 | [2026-09-17-commons-non-ascii-filename-ingest](../tasks/open/2026-09-17-commons-non-ascii-filename-ingest.md) | Outstanding criterion: 修完用第七批仙台松島篇原本想用的那張瑞鳳殿照片實測一次。 需取得原瑞鳳殿精確檔名並完成真Commons ingest dry-run；不可把現有單元綠當外部成功。 |
 | [2026-09-19-andaman-ferry-recheck-2026-11](../tasks/open/2026-09-19-andaman-ferry-recheck-2026-11.md) | Main scoped files exist: apps/api/app/guides/content/krabi-airport-transport-where-to-stay.json, apps/api/app/guides/content/krabi-ao-nang-railay-4-islands.json, apps/api/app/guides/content/phuket-phi-phi-james-bond-island-hopping.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-bangkok-stay-recheck-2027-01](../tasks/open/2026-09-19-bangkok-stay-recheck-2027-01.md) | Main scoped files exist: apps/api/app/guides/content/bangkok-where-to-stay.json, apps/api/app/guides/content/bangkok-bts-mrt-boat-guide.json, apps/api/app/guides/content/bangkok-4-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
-| [2026-09-19-chiang-rai-recheck-2026-11](../tasks/open/2026-09-19-chiang-rai-recheck-2026-11.md) | Main scoped files exist: apps/api/app/guides/content/chiang-rai-2-day-itinerary.json, apps/api/app/guides/content/chiang-mai-3-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-daegu-2-day-recheck-2026-12](../tasks/open/2026-09-19-daegu-2-day-recheck-2026-12.md) | Main scoped files exist: apps/api/app/guides/content/daegu-2-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-daegu-airport-recheck-2026-q4](../tasks/open/2026-09-19-daegu-airport-recheck-2026-q4.md) | Main scoped files exist: apps/api/app/guides/content/daegu-airport-ktx-subway-guide.json, apps/api/app/guides/content/daegu-2-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-dnp-park-closures-2027-01-15](../tasks/open/2026-09-19-dnp-park-closures-2027-01-15.md) | Main scoped files exist: apps/api/app/guides/content/krabi-ao-nang-railay-4-islands.json, apps/api/app/guides/content/phuket-phi-phi-james-bond-island-hopping.json, apps/api/app/guides/content/southeast-asia-seasons-when-to-go.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
@@ -549,9 +558,8 @@
 | [2026-09-19-lny-links-expire-2027-02-21](../tasks/open/2026-09-19-lny-links-expire-2027-02-21.md) | Main scoped files exist: apps/api/app/guides/content/japan-golden-week-2027.json, apps/api/app/guides/content/taiwan-long-weekends-2027-flight-planning.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-macau-recheck-2027-04](../tasks/open/2026-09-19-macau-recheck-2027-04.md) | Main scoped files exist: apps/api/app/guides/content/macau-day-trip-from-hong-kong.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-sea-seasons-unlink-2028-01-01](../tasks/open/2026-09-19-sea-seasons-unlink-2028-01-01.md) | Main scoped files exist: apps/api/app/guides/content/southeast-asia-seasons-when-to-go.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
-| [2026-09-19-sendai-airport-intl-2026-10](../tasks/open/2026-09-19-sendai-airport-intl-2026-10.md) | Main scoped files exist: apps/api/app/guides/content/sendai-airport-access-loople-bus-guide.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
+| [2026-09-19-sendai-airport-intl-2026-10](../tasks/open/2026-09-19-sendai-airport-intl-2026-10.md) | 2026-10-24T14:35UTC讀取官方月間頁及API，但台灣航線TimeSeries仍為9-26；宮城縣頁標明2026夏季，不能當冬季驗收。三份API原始回應SHA256：f7f404196d195b00574c2b7eb977a6ad69526acf17dde29864104152efeb9326,bfbef6ab31f8a115a259b0fdddc71d129eb18d75105f1be137dc6c8fcb9b13d3,c35f7ac1e9823b10482c75d9df99ac59d80a103998e46bd59646585b2fdf35aa。尚未取得長榮／星宇的當期冬季每週班表；不修改班次或checked_on，不勾選完成。保留2026-10-25換季後至10-31的複查窗口。來源：https://www.sendai-airport.co.jp/flight/intl-monthly.html 。無內容／正式站異動。 保留10/25–10/31換季後窗口；目前API9-26與夏季頁不能作冬季完成證據。 |
 | [2026-09-19-sendai-four-spring-2027](../tasks/open/2026-09-19-sendai-four-spring-2027.md) | Main scoped files exist: apps/api/app/guides/content/sendai-airport-access-loople-bus-guide.json, apps/api/app/guides/content/sendai-matsushima-2-day-itinerary.json, apps/api/app/guides/content/yamadera-day-trip-from-sendai.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
-| [2026-09-19-sendai-matsushima-recheck-2026-q4](../tasks/open/2026-09-19-sendai-matsushima-recheck-2026-q4.md) | Main scoped files exist: apps/api/app/guides/content/sendai-matsushima-2-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-sentosa-recheck-2026-09](../tasks/open/2026-09-19-sentosa-recheck-2026-09.md) | Main scoped files exist: apps/api/app/guides/content/sentosa-day-guide.json, apps/api/app/guides/content/singapore-4-day-itinerary.json 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-sr-korail-recheck-daegu-jeonju](../tasks/open/2026-09-19-sr-korail-recheck-daegu-jeonju.md) | Recorded unresolved condition: - `korea-ktx-srt-ticket-guide` blocks[25] 的反向連結（第 13、15 篇合併成同一次編輯）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）；若那張票還沒做，先做它，否則 block 編號會變。 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |
 | [2026-09-19-vietnam-rail-recheck-2027-01](../tasks/open/2026-09-19-vietnam-rail-recheck-2027-01.md) | Recorded unresolved condition: - [ ] **大叻專篇（第八批）上線後**：H2-5 加一個 article inline，把「站上還沒有大叻的專篇」那句改掉，並考慮把 `related` 的第四個換成大叻篇。 保留明確日期或官方公告觸發的維護票；未到日期的部分不提前刪改，已到期子項可先查官方來源。 |

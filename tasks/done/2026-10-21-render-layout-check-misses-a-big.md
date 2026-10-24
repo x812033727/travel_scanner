@@ -1,13 +1,13 @@
 ---
 id: 2026-10-21-render-layout-check-misses-a-big
 title: Render layout check misses a big card whose second text line is covered by its sub (icon + two lines + sub)
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-open-tasks-tools
 claimed_at: 2026-10-24T13:50:58Z
 created_at: 2026-10-22T00:40:00Z
-completed_at:
+completed_at: 2026-10-24T14:31:39Z
 branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
@@ -83,10 +83,16 @@ see the problem reported; render `claude-md-house-rules` and see none.
   actual exit 1 and is retained as `big-card-tutorial-big-only-20261024.jsonl`.
   Only those two cards receive one bounded retry (60 seconds per card, 150 overall);
   the failed first receipt is preserved.
+- The single two-card retry completed with actual exit 0: `g1-rule` and `stakes`
+  both rendered with `problems: []`. Its independent receipt is
+  `big-card-tutorial-two-retry-20261024.jsonl`. The unchanged current-source cohort
+  therefore has 18 first-run passes plus two bounded-retry passes, covering all 20
+  distinct big cards. This does not relabel the initial exit-1 run as a success.
 - Independent review by `/root/final_checks` found no code blocker and verified the
   before/after PNGs, zero-screenshot refusal, valid readback and complete 42-test log.
-  Final native retry readback and the independent duration-receipt increment remain
-  coordinator gates before archival. Renderer admission implements the chosen path;
+  Direct inspection of `tools/video/long-form/review.mjs` confirms neither changed
+  product/test path is in `REVIEW_FILES`, so this layout fix needs no duration
+  binding change. Renderer admission implements the chosen path;
   the alternative CSS step is not required.
 
 Found on 2026-10-22 from the owner's first viewing; the render's "content is N px taller than its
@@ -97,3 +103,10 @@ the gap is specifically overlap without overflow.
 ### 2026-10-24 narrow owner-requested execution
 
 Parent coordinated only the exact listed source/test paths after fresh branch/worktree/open-PR checks found no active exact-file implementation. Historical broader stale scope is not taken over; its remaining producer/media/acceptance work stays untouched. The preceding related fixes on this parent branch are retained. Scope is narrowed before product editing. No provider calls, paid regeneration, production settings change or deployment is part of this code task.
+
+
+### 2026-10-24 coordinator acceptance
+
+Renderer refuses clipped/overlapping big cards before any screenshot;42/42 regressions passed. Independent code+PNG review by codex-final-checks accepted. Native exact bad card zero screenshots; corrected card valid. Current20-card cohort18 first-run passes plus2 bounded retry passes; initial2 startup-timeout failures retained. browser.mjs/render.test.mjs excluded from108 duration REVIEW_FILES; no new binding needed. Existing cached states require explicit render --force to revalidate.
+
+Implementation is local on `codex/open-tasks-reconcile-20261024`; merge/deployment and any paid media actions remain separate. No vendor POST, media deletion, upload or approval was performed by this fix.

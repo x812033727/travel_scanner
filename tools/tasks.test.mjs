@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { parseTask, removeArchivedCopy, renderBoard, runCommand, selectReady, serializeTask, slugify, validate } from "./tasks.mjs";
+import { loadTasks, parseTask, removeArchivedCopy, renderBoard, runCommand, selectReady, serializeTask, slugify, validate } from "./tasks.mjs";
 
 const AT = (iso) => new Date(iso);
 
@@ -27,6 +27,68 @@ const runTracked = (root, argv) => run(root, argv, "2026-09-05T09:00:00Z", true)
 function file(root, folder, name) {
   return readFileSync(path.join(root, "tasks", folder, name), "utf8");
 }
+
+test("inventory keeps a task archived between enumeration and read", (t) => {
+  const root = workspace(t);
+  run(root, ["new", "--title", "Concurrent archive", "--area", "tools", "--scope", "tools/example.mjs"]);
+  const name = "2026-09-05-concurrent-archive.md";
+  const source = path.join(root, "tasks", "open", name);
+  let moved = false;
+  const tasks = loadTasks(root, { read: (target, encoding) => {
+    if (target === source && !moved) {
+      moved = true;
+      const task = parseTask(readFileSync(source, "utf8"));
+      writeFileSync(path.join(root, "tasks", "done", name), serializeTask({ ...task, status: "done", completed_at: "2026-09-05T10:00:00Z" }));
+      rmSync(source);
+    }
+    return readFileSync(target, encoding);
+  } });
+  assert.equal(moved, true);
+  assert.equal(tasks.length, 1);
+  assert.equal(tasks[0].id, "2026-09-05-concurrent-archive");
+  assert.equal(tasks[0].folder, "done");
+  assert.equal(tasks[0].status, "done");
+});
+
+test("inventory retains real duplicates and malformed records", (t) => {
+  const root = workspace(t);
+  run(root, ["new", "--title", "Duplicate", "--area", "tools", "--scope", "tools/example.mjs"]);
+  const name = "2026-09-05-duplicate.md";
+  const task = parseTask(file(root, "open", name));
+  writeFileSync(path.join(root, "tasks", "done", name), serializeTask({ ...task, status: "done", completed_at: "2026-09-05T10:00:00Z" }));
+  const tasks = loadTasks(root);
+  assert.equal(tasks.length, 2);
+  assert.ok(validate(tasks).errors.some((message) => message.includes("already used")));
+  writeFileSync(path.join(root, "tasks", "open", name), "not a task\n");
+  assert.throws(() => loadTasks(root), /front matter/);
+});
+
+test("inventory does not retry permission errors", (t) => {
+  const root = workspace(t);
+  run(root, ["new", "--title", "Unreadable", "--area", "tools", "--scope", "tools/example.mjs"]);
+  const denied = Object.assign(new Error("permission denied"), { code: "EACCES" });
+  let reads = 0;
+  assert.throws(() => loadTasks(root, { read: () => { reads += 1; throw denied; } }), (error) => error === denied);
+  assert.equal(reads, 1);
+});
+
+test("inventory does not silently lose a vanished unarchived task", (t) => {
+  const root = workspace(t);
+  run(root, ["new", "--title", "Vanished", "--area", "tools", "--scope", "tools/example.mjs"]);
+  assert.throws(() => loadTasks(root, { read: (target, encoding) => {
+    rmSync(target);
+    return readFileSync(target, encoding);
+  } }), (error) => error.code === "ENOENT");
+});
+
+test("inventory bounds retries when a listed record remains unreadable", (t) => {
+  const root = workspace(t);
+  run(root, ["new", "--title", "Racing", "--area", "tools", "--scope", "tools/example.mjs"]);
+  const missing = Object.assign(new Error("still unavailable"), { code: "ENOENT" });
+  let reads = 0;
+  assert.throws(() => loadTasks(root, { read: () => { reads += 1; throw missing; } }), (error) => error === missing);
+  assert.ok(reads <= 2);
+});
 
 test("reads and rewrites a task file without changing it", () => {
   const source = [

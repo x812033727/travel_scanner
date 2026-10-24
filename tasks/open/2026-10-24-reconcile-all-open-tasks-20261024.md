@@ -17,6 +17,7 @@ scope:
   - .agents/skills/hotspot-review/SKILL.md
   - .claude/skills/hotspot-review/SKILL.md
   - .agents/skills/hotspot-review/references/judging.md
+  - .agents/skills/animation-production/references/providers-and-plans.md
 ---
 
 # Reconcile all 533 open tasks with current completion and owner gates
