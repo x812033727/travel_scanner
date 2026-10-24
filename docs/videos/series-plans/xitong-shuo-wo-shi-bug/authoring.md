@@ -50,6 +50,7 @@
 
 - **旁白說書**：事件由旁白講，角色台詞一句一句短；面板的內容全由旁白念（「叮。是否安裝？」），圖裡的面板不寫字。
 - **一圖一人**：每個 hook、spectacle、glamour_shot 都寫成一個人的畫面；兩人同框只在結尾一鏡。
+- **面板不進外貌**：角色的 `appearance` 只寫人；面板只在那一鏡的 prompt 要它時才畫，英文寫成「a blank pane of pale-blue light, completely empty」，不用 system／screen／interface／UI／window／menu（image-01 會在上面畫字，judge 的 `text` 題就擋）。2026-10-24 第 1 集 s05 就是因為江河的外貌帶著「身旁浮著系統面板」，連「還沒有面板」的鏡頭也畫出帶字的面板，兩輪修提示詞都過不了。
 - **系統的聲音**：`xitong` 是角色 id，它的台詞是面板的字；它第一季只在第 30 集說一句人話。
 - **數字不灌水**：等級、技能都到兩位數；爽在「合併出什麼」。
 - 不黃標與顏值規則照 `setting.json`。
