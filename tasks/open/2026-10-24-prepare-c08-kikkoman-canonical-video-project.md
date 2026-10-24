@@ -49,3 +49,5 @@ npm run check:tasks（exit 0；其他舊票警告）。逐列與五份原件 has
 ## Notes
 
 2026-10-24：由共用 checkout 的 codex/c08-kikkoman-canonical-preflight-20261024 分支進行，沒有再開工作樹、付費呼叫、後台匯入或上傳。c080407 核准的是泛用瓶嘴側面示意，機器 stats 預覽只顯示文字，必須在正式後製補圖並獨立驗收。C08 沒有 production-quote.md 或站主專屬付費上限；原文正文 462.48 秒、採五處候選 GK say 後 464.88 秒都只是紙上代理量，不能當作 TTS 實長。PR #1681 已關閉而未合併，本分支沿 main 已保留的同雜湊原件工作。
+
+候選 B 只改 c080611 的片尾文句，單句來源／配鏡差異 PASS，但兩位獨立盲讀對 one_line、no_toc、chapters_link、no_recap、one_thread、no_detour 都判 No；詳見 reviews/c080611-proposed-b-blind-20261024.md。依雙讀規則整集 HOLD，不能只替換結尾便說稿件已通過。下一輪須提出單線敘事修稿，並按精確新版重新查核、盲讀、請站主核准；不以填字灌到 480 秒。
