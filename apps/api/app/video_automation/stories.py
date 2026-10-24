@@ -83,6 +83,12 @@ REVIEW_ONLY_SERIES = {EVERYDAY_REVERSALS_SLUG: "C", COMPANY_TURNS_SLUG: "X"}
 C03_VIDEO_SLUG = "story-everyday-moleskine-c03"
 C08_ORIGINAL_VIDEO_SLUG = "story-everyday-kikkoman-c08"
 C08_SHORT_VIDEO_SLUG = "story-everyday-kikkoman-c08-short-v8"
+C20_ORIGINAL_VIDEO_SLUG = "story-everyday-zippo-c20"
+C20_SHORT_VIDEO_SLUG = "story-everyday-zippo-c20-short-v8"
+APPROVED_REVIEW_ONLY_SLUG_CHANGES = {
+    "C08": (8, C08_ORIGINAL_VIDEO_SLUG, C08_SHORT_VIDEO_SLUG),
+    "C20": (20, C20_ORIGINAL_VIDEO_SLUG, C20_SHORT_VIDEO_SLUG),
+}
 LIMITS = {
     "title": 60,
     "logline": 120,
@@ -1052,20 +1058,23 @@ async def import_story_rows(
                 report.problems.append(
                     f"existing review-only episode #{row.number} has advanced beyond planned"
                 )
-            story_id = (row.beats or {}).get("id")
-            expected = expected_rows.get(story_id)
-            c08_approved_slug_change = (
+            story_id = row.beats.get("id") if isinstance(row.beats, dict) else None
+            expected = expected_rows.get(story_id) if isinstance(story_id, str) else None
+            approved_change = (
+                APPROVED_REVIEW_ONLY_SLUG_CHANGES.get(story_id)
+                if isinstance(story_id, str) else None
+            )
+            approved_slug_change = (
                 series_slug == EVERYDAY_REVERSALS_SLUG
-                and story_id == "C08"
-                and row.number == 8
+                and approved_change is not None
                 and expected is not None
-                and expected["number"] == 8
-                and row.slug == C08_ORIGINAL_VIDEO_SLUG
-                and expected["slug"] == C08_SHORT_VIDEO_SLUG
+                and row.number == expected["number"] == approved_change[0]
+                and row.slug == approved_change[1]
+                and expected["slug"] == approved_change[2]
             )
             if (
                 expected is None or row.number != expected["number"]
-                or (row.slug != expected["slug"] and not c08_approved_slug_change)
+                or (row.slug != expected["slug"] and not approved_slug_change)
                 or row.chapter_number != 1
             ):
                 report.problems.append(
