@@ -81,6 +81,8 @@ COMPANY_TURNS_SLUG = "brand-stories-company-turns"
 # whose ids are the letter here and 01 to 20.
 REVIEW_ONLY_SERIES = {EVERYDAY_REVERSALS_SLUG: "C", COMPANY_TURNS_SLUG: "X"}
 C03_VIDEO_SLUG = "story-everyday-moleskine-c03"
+C08_ORIGINAL_VIDEO_SLUG = "story-everyday-kikkoman-c08"
+C08_SHORT_VIDEO_SLUG = "story-everyday-kikkoman-c08-short-v8"
 LIMITS = {
     "title": 60,
     "logline": 120,
@@ -1052,9 +1054,19 @@ async def import_story_rows(
                 )
             story_id = (row.beats or {}).get("id")
             expected = expected_rows.get(story_id)
+            c08_approved_slug_change = (
+                series_slug == EVERYDAY_REVERSALS_SLUG
+                and story_id == "C08"
+                and row.number == 8
+                and expected is not None
+                and expected["number"] == 8
+                and row.slug == C08_ORIGINAL_VIDEO_SLUG
+                and expected["slug"] == C08_SHORT_VIDEO_SLUG
+            )
             if (
                 expected is None or row.number != expected["number"]
-                or row.slug != expected["slug"] or row.chapter_number != 1
+                or (row.slug != expected["slug"] and not c08_approved_slug_change)
+                or row.chapter_number != 1
             ):
                 report.problems.append(
                     f"existing review-only episode #{row.number} does not match the certified batch"

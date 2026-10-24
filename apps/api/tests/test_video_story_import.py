@@ -100,6 +100,20 @@ def _everyday_file(
     return document
 
 
+def _certify_changed_story(document: dict[str, Any], index: int) -> None:
+    """Keep a test fixture's independent-review hashes bound to its changed row."""
+    story = document["stories"][index]
+    proof = document["review_certification"]["entries"][index]
+    source = {key: story[key] for key in stories.STORY_KEYS if key in story}
+    source["must_verify"] = [
+        {key: value for key, value in claim.items() if key != "reviewer_only"}
+        for claim in source["must_verify"]
+    ]
+    source["caveats"] = proof["author_caveats"]
+    proof["source_story_sha256"] = stories._json_sha256(source)
+    proof["compiled_story_sha256"] = stories._json_sha256(story, sorted_keys=True)
+
+
 async def _pause_empty_series(session: AsyncSession, document: dict[str, Any]) -> None:
     fields = {
         key: value
@@ -430,6 +444,128 @@ async def test_existing_video_slug_is_not_reused_for_other_everyday_episodes(
             report.problems
         )
         assert (await session.scalars(select(VideoDramaEpisode))).all() == []
+
+
+async def test_c08_approved_short_slug_reuses_only_the_planned_episode_row(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    original = _everyday_file()
+    original["stories"][7]["slug"] = stories.C08_ORIGINAL_VIDEO_SLUG
+    _certify_changed_story(original, 7)
+    revised = deepcopy(original)
+    revised["stories"][7]["slug"] = stories.C08_SHORT_VIDEO_SLUG
+    _certify_changed_story(revised, 7)
+
+    async with db() as session:
+        session.add(VideoAutomationSettings(id=1, drama_enabled=True))
+        first = await stories.import_story_rows(
+            session, original, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert first.problems == [] and first.create == [f"C{i:02d}" for i in range(1, 21)]
+        rows = list((await session.scalars(
+            select(VideoDramaEpisode).order_by(VideoDramaEpisode.number)
+        )).all())
+        before = [(row.id, row.number, row.slug, deepcopy(row.beats)) for row in rows]
+        old_video = VideoProject(
+            slug=stories.C08_ORIGINAL_VIDEO_SLUG,
+            title="Original approved C08 video",
+            format="drama",
+            stage="outline approved",
+            series_slug=stories.EVERYDAY_REVERSALS_SLUG,
+            episode_number=8,
+        )
+        session.add(old_video)
+        await session.commit()
+        old_video_id = old_video.id
+
+        dry_run = await stories.import_story_rows(
+            session, revised, series_slug=stories.EVERYDAY_REVERSALS_SLUG
+        )
+        assert dry_run.problems == [] and not dry_run.written
+        assert dry_run.update == ["C08"] and dry_run.create == []
+        assert dry_run.unchanged == [f"C{i:02d}" for i in range(1, 21) if i != 8]
+        assert rows[7].slug == stories.C08_ORIGINAL_VIDEO_SLUG
+
+        applied = await stories.import_story_rows(
+            session, revised, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert applied.problems == [] and applied.written
+        assert applied.update == ["C08"] and applied.create == []
+        after = list((await session.scalars(
+            select(VideoDramaEpisode).order_by(VideoDramaEpisode.number)
+        )).all())
+        assert len(after) == 20
+        assert after[7].id == before[7][0]
+        assert after[7].slug == stories.C08_SHORT_VIDEO_SLUG
+        assert after[7].status == "planned" and after[7].request_id is None
+        assert [(row.id, row.number, row.slug, row.beats) for row in after if row.number != 8] == [
+            values for values in before if values[1] != 8
+        ]
+        assert (await session.scalar(
+            select(VideoProject.id).where(VideoProject.slug == stories.C08_ORIGINAL_VIDEO_SLUG)
+        )) == old_video_id
+        assert (await session.scalars(select(VideoDramaRequest))).all() == []
+
+
+async def test_c08_short_slug_refuses_foreign_old_slug_or_started_row(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    original = _everyday_file()
+    original["stories"][7]["slug"] = stories.C08_ORIGINAL_VIDEO_SLUG
+    _certify_changed_story(original, 7)
+    revised = deepcopy(original)
+    revised["stories"][7]["slug"] = stories.C08_SHORT_VIDEO_SLUG
+    _certify_changed_story(revised, 7)
+    async with db() as session:
+        first = await stories.import_story_rows(
+            session, original, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert first.problems == [] and first.written
+        c08 = await session.scalar(
+            select(VideoDramaEpisode).where(VideoDramaEpisode.number == 8)
+        )
+        assert c08 is not None
+        c08.slug = "story-everyday-kikkoman-c08-other"
+        await session.commit()
+        foreign = await stories.import_story_rows(
+            session, revised, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert not foreign.written
+        assert (
+            "existing review-only episode #8 does not match the certified batch"
+            in foreign.problems
+        )
+        assert c08.slug == "story-everyday-kikkoman-c08-other"
+
+        c08.slug = stories.C08_ORIGINAL_VIDEO_SLUG
+        c08.status = "ready"
+        await session.commit()
+        started = await stories.import_story_rows(
+            session, revised, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert not started.written
+        assert "existing review-only episode #8 has advanced beyond planned" in started.problems
+        assert c08.slug == stories.C08_ORIGINAL_VIDEO_SLUG
+
+        c08.status = "planned"
+        session.add(VideoProject(
+            slug=stories.C08_SHORT_VIDEO_SLUG,
+            title="Conflicting video",
+            format="drama",
+            stage="outline approved",
+            series_slug="another-series",
+            episode_number=8,
+        ))
+        await session.commit()
+        conflict = await stories.import_story_rows(
+            session, revised, series_slug=stories.EVERYDAY_REVERSALS_SLUG, apply=True
+        )
+        assert not conflict.written
+        assert (
+            f"C08: slug {stories.C08_SHORT_VIDEO_SLUG} is already a video on /admin/videos"
+            in conflict.problems
+        )
+        assert c08.slug == stories.C08_ORIGINAL_VIDEO_SLUG
 
 
 async def test_everyday_reimport_refuses_advanced_or_foreign_rows(
