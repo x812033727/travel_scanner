@@ -1,7 +1,7 @@
 ---
 id: 2026-10-24-episodes-of-a-compilation-series-carry
 title: 合集作品的每一集不放頻道片頭片尾，只有合集放：站主 10-24「一集一集做，每集不用片頭片尾，合集先合再加片頭片尾、分章節」
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-fable
@@ -52,3 +52,4 @@ e005 起（部署後組的集）`checks.json` 沒有 `branding`、成片秒數�
 - 做法：`episodeOfCompilation(doc, series)` ＝ `series?.compilation === true && !isCompilation(doc)`，放在 `LONG_FORMATS` 檢查之後、**讀 pin 之前**：e001–e004 的工作區已有 `branding.json`，若日後 `--force` 重組也不會把片頭片尾帶回來。`adoptionRefusal` 與 `replacementRefusal` 多收 `series`，對這種集回同一句拒絕；`compile/cli.mjs` 呼叫時不傳 series，合集影片本身不受影響（`isCompilation` 為真）。
 - `compile` 已能混用：沒有 `checks.branding` 的集直接用 `final.mp4`（核准雜湊），有的照舊用 `build/body.mp4`。沒改 compile。
 - 範圍多加 `docs/videos/BRANDING.md`（片頭位置表多一列）。
+- PR：https://github.com/x812033727/travel_scanner/pull/1835（2026-10-25）。
