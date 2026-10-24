@@ -403,7 +403,8 @@ export function seriesProblems(series) {
   if (series.hands_off !== true) problems.push("series.hands_off must be true");
   const cute = isObject(series.look) && Object.keys(series.look).length === 1 && series.look.preset === "cute-mystery";
   if (cute) {
-    if (series.target_minutes !== 10) problems.push("series.target_minutes must be 10 for the cute-mystery look");
+    // 13 since the owner's 2026-10-25 decision (docs/videos/channel-review-20261025-story-series/README.md); 10 for the batches before it.
+    if (![10, 13].includes(series.target_minutes)) problems.push("series.target_minutes must be 10 or 13 for the cute-mystery look");
     if (series.image_model !== "image-01") problems.push('series.image_model must be "image-01" for the cute-mystery look');
     if (series.style_preset !== "custom") problems.push('series.style_preset must be "custom" for a story with the cute-mystery look');
   } else if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
