@@ -1,7 +1,7 @@
 ---
 id: 2026-10-24-bind-c20-short-v8-backend-plan
 title: Bind C20 Zippo short v8 plan to approved script
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-c20-backend-plan
@@ -34,7 +34,7 @@ Git history and the original source/project documents.
       script without adding a new narrative direction.
 - [x] An independent source receipt binds the final plan hash and the compiled
       bundle contains exactly 20 rows, with only C20 changed from main.
-- [ ] Local plan, task-board and bundle checks pass; a draft PR is available.
+- [x] Local plan, task-board and bundle checks pass; draft PR #1824 is available.
 - [x] This task does not run a production import, modify script-intake manifest,
       generate paid media, or upload/publish a video.
 
@@ -43,7 +43,7 @@ Git history and the original source/project documents.
 - [x] Claim the five exact plan/compiler/receipt paths on one shared checkout.
 - [x] Project the owner-approved short-v8 story into the C20 plan.
 - [x] Obtain an independent, hash-bound source review and write its receipt.
-- [ ] Rebuild and inspect the 20-row bundle, test, push and open draft PR.
+- [x] Rebuild and inspect the 20-row bundle, test, push and open draft PR.
 
 ## How to verify
 
@@ -68,3 +68,5 @@ all nine sources and signed final hash
 `a473ba0aefa3ede0f234cb9b9b352361c16009752c75aa3e5cbed48b3dd1a057`.
 Compiled bundle has 20 rows; only C20 story and C20 review certification
 differ from `origin/main`.
+The implementation is complete and awaiting draft PR review/CI; task status
+is `review` until the PR is merged. No production import was attempted.
