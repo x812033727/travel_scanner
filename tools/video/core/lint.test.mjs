@@ -748,6 +748,39 @@ test("only the frozen C08 short-v8 identity uses a four-minute draft floor", () 
     else process.env.VIDEO_MIN_EPISODE_MINUTES = oldFloor;
   }
 });
+
+test("only the frozen C20 short-v8 identity uses a five-minute draft floor", () => {
+  const dir = new URL("../../../docs/videos/story-everyday-zippo-c20-short-v8/", import.meta.url);
+  const video = JSON.parse(readFileSync(new URL("video.json", dir), "utf8"));
+  const series = JSON.parse(readFileSync(new URL("series.json", dir), "utf8"));
+  const brief = readFileSync(new URL("brief.md", dir), "utf8");
+  const oldFloor = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
+  try {
+    const result = lintVideo(video, context({ series, brief }));
+    assert.ok(!result.errors.some((error) => error.path === "target_minutes" || /every episode but a drama's runs at least/.test(error.message)),
+      messages(result.errors));
+    assert.ok(result.warnings.some((warning) => warning.kind === "narrative" && /no open loop between/.test(warning.message)),
+      "the C20 short route still receives narrated-story checks");
+    const changedWords = structuredClone(video);
+    changedWords.scenes[0].lines[0].text += "改";
+    const changedSpeech = structuredClone(video);
+    changedSpeech.scenes[1].lines[0].say += "改";
+    for (const other of [
+      { ...video, slug: "story-everyday-zippo-c20" },
+      { ...video, series: { ...video.series, episode: 19 } },
+      { ...video, target_minutes: [6, 7] },
+      changedWords, changedSpeech,
+    ]) {
+      const check = lintVideo(other, context({ series, brief }));
+      assert.ok(check.errors.some((error) => /every episode but a drama's runs at least 8/.test(error.message)),
+        messages(check.errors));
+    }
+  } finally {
+    if (oldFloor === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = oldFloor;
+  }
+});
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
 // a subscribe invitation with a reason.
 const THREE_SENTENCES = [

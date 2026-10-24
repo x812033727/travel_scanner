@@ -87,11 +87,12 @@ test("the verdict still requires no counted exit, and names the capped exits", (
   assert.match(SCRIPT, /auto_exit3_draft_cap=\$cap_exits/);
 });
 
-test("host verification permits only three reviewed budget rollback pairs", { skip: !hasBash && "no bash on this machine" }, () => {
+test("host verification permits only four reviewed budget rollback pairs", { skip: !hasBash && "no bash on this machine" }, () => {
   for (const [imageHead, databaseHead] of [
     ["0132_video_pilot_budget", "0133_story_followon_budget"],
     ["0137_video_manga_tier", "0138_story_everyday_budget"],
     ["0138_story_everyday_budget", "0139_c20_zippo_pilot_budget"],
+    ["0139_c20_zippo_pilot_budget", "0140_c08_kikkoman_pilot_budget"],
   ]) {
     assert.equal(rollbackPair(imageHead, databaseHead), true, `${imageHead} -> ${databaseHead}`);
     assert.equal(rollbackPair(databaseHead, imageHead), false, `${databaseHead} -> ${imageHead}`);
@@ -100,6 +101,8 @@ test("host verification permits only three reviewed budget rollback pairs", { sk
     ["0138_story_everyday_budget", "0138_story_everyday_budget"],
     ["0138_story_everyday_budget", "0139_other_budget"],
     ["0137_video_manga_tier", "0139_c20_zippo_pilot_budget"],
+    ["0139_c20_zippo_pilot_budget", "0140_other_budget"],
+    ["0138_story_everyday_budget", "0140_c08_kikkoman_pilot_budget"],
     ["0132_video_pilot_budget", "0134_unreviewed"],
   ]) {
     assert.equal(rollbackPair(imageHead, databaseHead), false, `${imageHead} -> ${databaseHead}`);
