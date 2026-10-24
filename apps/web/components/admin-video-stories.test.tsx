@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { VideoBrowser } from "./admin-video-browser";
 import { AdminVideoSeries } from "./admin-video-series";
-import { nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
+import { AdminVideoStorySeries, nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, StorySeriesPage, storyRedo, type StorySeries } from "./admin-video-stories";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -75,6 +75,15 @@ const summary = {
   media_usd: 27.3, clip_seconds: 0, hands_off: true, compilation: false, visual_tier: "stills", image_model: "gemini-3.1-flash-image",
   look: { style: "flat 2D cartoon", negative: "text, logo" }, quota, created_at: "2026-09-20T00:00:00Z", updated_at: "2026-09-28T00:00:00Z",
 };
+const EVERYDAY_SERIES_SLUG = "brand-stories-everyday-reversals";
+const preproduction = {
+  series_slug: EVERYDAY_SERIES_SLUG, total_episodes: 20, full_plans: 20, scripts_approved: 10,
+  scripts_pending: 1, source_markdown_verified: 10, finished_films: 0,
+  episodes: [
+    { number: 1, slug: "story-c01", title: "C01 的故事", full_plan: true, script_status: "approved", source_markdown_verified: true, film_status: "planned" },
+    { number: 2, slug: "story-c02", title: "C02 的故事", full_plan: true, script_status: "pending", source_markdown_verified: false, film_status: "planned" },
+  ],
+};
 const confirmation = {
   id: "7a7a7a7a-7a7a-4a7a-8a7a-7a7a7a7a7a7a", gate: "publish", content_sha256: "7".repeat(64), summary: "上傳包",
   payload: { zh: { title: "輪子行李箱的故事", description: "參考資料見說明欄。", tags: ["品牌故事"] }, minutes: 13 },
@@ -104,6 +113,7 @@ const light = (each: Story) => ({ ...each, beats: Object.fromEntries(Object.entr
 type StubOptions = {
   series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean; planRefused?: boolean;
   more?: Story[]; redoRefused?: { code: string; detail: string }; seriesRefused?: boolean;
+  preproduction?: Row; progressRefused?: boolean;
 };
 /**
  * The site as the story pages see it: the story list, the series (whole, or each story's list
@@ -121,6 +131,9 @@ function stubFetch(options: StubOptions = {}) {
     const body = init?.body ? JSON.parse(String(init.body)) as Row : undefined;
     calls.push({ url, method, body });
     const json = (value: unknown, status = 200) => Promise.resolve(Response.json(value, { status }));
+    if (url.endsWith("/admin/video-automation/story-preproduction")) {
+      return options.progressRefused ? json({ code: "internal_error", detail: "進度暫時無法讀取" }, 503) : json(options.preproduction ?? preproduction);
+    }
     if (url.includes("/admin/videos/browse?")) return json({ items: [], total: 0, page: 1, pages: 0, facets: { category: [{ code: "story", count: 0 }], state: [] } });
     if (url.endsWith("/admin/video-automation/series?kind=story")) return json({ series: options.listed ?? [current] });
     if (url.includes("/admin/video-automation/series?kind=")) return json({ series: [] });
@@ -681,5 +694,81 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     const b18 = within(ready).getAllByRole("article").find((item) => item.getAttribute("aria-label")?.startsWith("B18")) as HTMLElement;
     const form = await within(b18).findByRole("form", { name: "送到 YouTube" });
     expect((within(form).getByLabelText("公開時間") as HTMLInputElement).value).toBe(wallClock("2026-09-28T12:00:00Z"));
+  });
+});
+
+describe("C-series preproduction progress", () => {
+  const everydaySummary = { ...summary, slug: EVERYDAY_SERIES_SLUG, status: "paused", episodes_done: 0 };
+  const everydaySeries = {
+    ...everydaySummary,
+    episodes: [
+      story(1, "C01", "everyday", "global", 1, "12:00", "planned"),
+      story(2, "C02", "everyday", "global", 1, "20:00", "planned"),
+    ],
+    docs: [],
+  } as unknown as StorySeries;
+
+  it("shows plans and scripts separately from finished films on the series card", async () => {
+    const { calls } = stubFetch({ listed: [everydaySummary] });
+    render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <AdminVideoStorySeries onOpenSeries={() => undefined} />
+    </AdminOperationsProvider>);
+    const card = await screen.findByRole("button", { name: /品牌故事：日常背後的生意/ });
+    await waitFor(() => expect(card.textContent).toContain("完整企劃 20/20"));
+    expect(card.textContent).toContain("劇本已核准 10/20");
+    expect(card.textContent).toContain("劇本待審 1/20");
+    expect(card.textContent).toContain("Markdown 原稿可核對 10/20");
+    expect(card.textContent).toContain("成片完成 0/20");
+    expect(calls.some((call) => call.url.endsWith("/admin/video-automation/story-preproduction"))).toBe(true);
+  });
+
+  it("shows the same counts and each episode's script stage without promoting them to a film", async () => {
+    stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <StorySeriesPage series={everydaySeries} error="" onBack={() => undefined} onOpenVideo={() => undefined} onChanged={() => undefined} />
+    </AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "前期製作進度" });
+    await waitFor(() => expect(panel.textContent).toContain("完整企劃 20/20"));
+    expect(panel.textContent).toContain("劇本已核准 10/20");
+    expect(panel.textContent).toContain("劇本待審 1/20");
+    expect(panel.textContent).toContain("Markdown 原稿可核對 10/20");
+    expect(panel.textContent).toContain("成片完成 0/20");
+    expect(row("C01").textContent).toContain("企劃完整 · 劇本已核准 · 原稿可核對");
+    expect(row("C02").textContent).toContain("企劃完整 · 劇本待審 · 原稿未核對");
+    expect(screen.getByText(/2 個故事 · 完成 0 · 每支約 13 分鐘/)).toBeTruthy();
+  });
+
+  it("shows an unavailable state instead of false zeroes when the progress API fails", async () => {
+    stubFetch({ listed: [everydaySummary], progressRefused: true });
+    render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <AdminVideoStorySeries onOpenSeries={() => undefined} />
+    </AdminOperationsProvider>);
+    const card = await screen.findByRole("button", { name: /品牌故事：日常背後的生意/ });
+    expect((await within(card).findByRole("alert")).textContent).toContain("前期進度目前無法取得");
+    expect(card.textContent).not.toContain("0/20");
+  });
+
+  it("keeps aggregate progress readable when a partially imported episode has no slug", async () => {
+    stubFetch({ listed: [everydaySummary], preproduction: {
+      ...preproduction,
+      episodes: [{ ...preproduction.episodes[0], slug: null, full_plan: false }],
+    } });
+    render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <AdminVideoStorySeries onOpenSeries={() => undefined} />
+    </AdminOperationsProvider>);
+    const card = await screen.findByRole("button", { name: /品牌故事：日常背後的生意/ });
+    await waitFor(() => expect(card.textContent).toContain("劇本已核准 10/20"));
+    expect(within(card).queryByRole("alert")).toBeNull();
+  });
+
+  it("does not carry C-series episode labels into another story series", async () => {
+    stubFetch();
+    const view = (series: StorySeries) => <AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <StorySeriesPage series={series} error="" onBack={() => undefined} onOpenVideo={() => undefined} onChanged={() => undefined} />
+    </AdminOperationsProvider>;
+    const rendered = render(view(everydaySeries));
+    await waitFor(() => expect(screen.getByText(/企劃完整 · 劇本已核准 · 原稿可核對/)).toBeTruthy());
+    rendered.rerender(view({ ...everydaySeries, slug: "another-story-series" }));
+    expect(screen.queryByText("這集的前期資料無法對應")).toBeNull();
   });
 });

@@ -246,6 +246,36 @@ async def test_latest_approved_batch_adds_three_languages_and_keeps_original_vid
     assert (await _composed(site)).sha256 == result.sha256
 
 
+@pytest.mark.parametrize(
+    ("role", "content_type", "accepted"),
+    [
+        ("thumbnail_en", "image/jpeg", True),
+        ("thumbnail_ja", "image/png", True),
+        ("thumbnail_fr", "image/jpeg", False),
+        ("thumbnail_zh-TW", "image/jpeg", False),
+        ("thumbnail_ko", "text/plain", False),
+    ],
+)
+async def test_a_chosen_languages_own_thumbnail_rides_along_and_nothing_else_does(
+    site: Site, role: str, content_type: str, accepted: bool
+) -> None:
+    batch = await _language_batch(site)
+    body = f"image {role}".encode()
+    item = _entry(role, _put(review_store(site.settings), body), body, content_type)
+
+    def add(manifest: dict[str, Any]) -> None:
+        manifest["files"].insert(-1, item)
+
+    await _replace_manifest(site, batch, add)
+    if not accepted:
+        with pytest.raises(Refused):
+            await _composed(site)
+        return
+    result = await _composed(site)
+    assert set(result.metadata["localizations"]) == set(LOCALES)
+    assert set(result.captions) == {"zh-TW", *LOCALES}
+
+
 @pytest.mark.parametrize("status", ["pending", "rejected", "superseded"])
 async def test_latest_unapproved_batch_never_falls_back_to_older_approved(
     site: Site, status: str
