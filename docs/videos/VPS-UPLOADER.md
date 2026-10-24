@@ -141,12 +141,14 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
    test ! -e /etc/mokaair-uploader/vnc-password
    test ! -e /etc/mokaair-uploader/api/service-secret
    install -d -m 0700 /etc/mokaair-uploader
-   install -d -m 0700 -o 10001 -g 10001 /etc/mokaair-uploader/api
+   install -d -m 0700 /etc/mokaair-uploader/api
+   chown +10001:+10001 /etc/mokaair-uploader/api
    (umask 077; openssl rand -hex 32 > /etc/mokaair-uploader/service-secret)
    (umask 077; openssl rand -hex 4 > /etc/mokaair-uploader/vnc-password)
-   chown 1000:1000 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/vnc-password
+   chown +1000:+1000 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/vnc-password
    chmod 0400 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/vnc-password
-   install -m 0400 -o 10001 -g 10001 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/api/service-secret
+   install -m 0400 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/api/service-secret
+   chown +10001:+10001 /etc/mokaair-uploader/api/service-secret
    ```
 
 3. 從範例建立 `ops/youtube-uploader/.env`（維持 0600），設定確定的 UC 頻道 ID，保留

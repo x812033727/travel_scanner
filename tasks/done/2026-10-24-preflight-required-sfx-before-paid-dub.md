@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-preflight-required-sfx-before-paid-dub
 title: Preflight required sound effects before paid dub speech
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-open-tasks-sfx
 claimed_at: 2026-10-24T15:03:10Z
 created_at: 2026-10-24T13:26:50Z
-completed_at:
+completed_at: 2026-10-24T16:21:39Z
 branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
@@ -25,7 +25,7 @@ Independent review found required SFX are validated by sfxInputs inside dubSound
 
 - [x] Malformed/missing/hash-stale required SFX refuse before speech status/synthesis, creating no new cache or journal.
 - [x] Existing paid history remains; mix-time validation still catches a later race.
-- [ ] Focused regressions and independent duration binding pass.
+- [x] Focused regressions and independent duration binding pass.
 
 ## Steps
 
@@ -87,3 +87,8 @@ was attempted. No real provider request, production write or media change.
 
 
 2026-10-24 independent DURATION_ONLY accepted by codex-independent-sfx-preflight-20261024: one binding advanced from reviewed ae8d6948,107 unchanged; full prior report preserved. Current108 hashes and frozen2 sources reverified; receipt checks2/2 and473plans actualexit0. ReportSHA9a10afd0144a7b0d473c9b537a0a7ff7a0a775bc03a0b58318652947af0a31fe; receiptSHAd2ca7c73240e864127b9afe7e49296471049196679bbe6973aadb470b3fc6ac1. Required new-head Linux coverage remains pending before archival. Existing Windows rename failures remain tracked by the earlier Windows speech-journal tasks; no duplicate task or journal rewrite added.
+
+
+### 2026-10-24 coordinator acceptance
+
+Required Linux acceptance is complete on exact head e2436c4333c38f103ed2b8c2b4b325200c13ca85: all8 workflows and all17 primary CI jobs succeeded (https://github.com/x812033727/travel_scanner/actions/runs/40109449526). Both Linux full-tools logs explicitly pass all10 new SFX guard cases and all24 task-inventory cases. ffmpeg/Chromium fulltools2755passed/3intentional skips; video-docs236/236; VideoTooling2437passed/4intentional skips plus all5 real-media smokes. The earlier native full-dub EPERM failures remain recorded above and in existing Windows journal tickets. Frozen CLI/test hashes4ac25a59de9549389d3a9cf353ecfb9a1ed2ca7cb6d4c5e6321ab886eef15ed4/41fcb0eb694fdea3011b3bea6accb79ec21bfaea9aeab80ed59b647510d1496c reverified after CI. Independent merged108-binding receipt retains both main/branch histories; guards2/2 and473plans actual0, reportcd99059aa3f7f6ddc904c5cb27b6682ed4fc4795dc479530989d6b314d479b19,receipt27f4fb12bc69d2f5843a328c04cbdbd7fe2d31944149a2a4de6a531e1fc62afb. Local implementation accepted; merge/deployment and paid media remain separate.
