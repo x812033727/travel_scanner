@@ -36,7 +36,7 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
-import { A01_COMPACT_BODY_SECONDS, isA01CompactStory, isA01PilotStory } from "../core/duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, isA01CompactStory, isA01PilotStory, isC08ShortStory } from "../core/duration.mjs";
 import { initializeStoryLexicon, proposeStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText } from "../core/paths.mjs";
@@ -161,8 +161,14 @@ const compactA01Story = (slug, info) => isA01PilotStory({
   slug, format: "drama", category: "story", look: info?.look,
   series: { slug: info?.slug, episode: info?.episode },
 });
-export const effectiveStoryMinutes = (slug, info) => compactA01Story(slug, info) ? 8 : Number(info?.target_minutes) || 13;
-export const effectiveStoryLengthBand = (slug, info) => compactA01Story(slug, info)
+const shortC08Story = (slug, info) => isC08ShortStory({
+  slug, format: "drama", category: "explainer", look: info?.look,
+  series: { slug: info?.slug, episode: info?.episode },
+});
+export const effectiveStoryMinutes = (slug, info) => shortC08Story(slug, info) ? 5 : compactA01Story(slug, info) ? 8 : Number(info?.target_minutes) || 13;
+export const effectiveStoryLengthBand = (slug, info) => shortC08Story(slug, info)
+  ? [C08_SHORT_MIN_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS]
+  : compactA01Story(slug, info)
   ? A01_COMPACT_BODY_SECONDS
   : lengthBand(effectiveStoryMinutes(slug, info), info?.look);
 const effectiveChapterBudgets = (slug, info) => chapterBudgets(effectiveStoryMinutes(slug, info), info.look, { compactA01: compactA01Story(slug, info) });
@@ -737,7 +743,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // A brand story's place among the site's videos (/admin/videos filters by it).
     category: "story",
     ...(guide ? { source_guide: guide } : {}),
-    target_minutes: compactA01Story(slug, info) ? [7, 8] : target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
+    target_minutes: shortC08Story(slug, info) ? [4, 5] : compactA01Story(slug, info) ? [7, 8] : target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
     look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
@@ -812,17 +818,95 @@ const SCENE_PATH = /^scenes\[(\d+)\]/;
 // The five-story route, two v2 pilots and the everyday series borrow Curio's visual mix while
 // retaining story-* slugs. The measurement itself lives in core/story.mjs for local lint too.
 const CUTE_PILOT_SLUGS = new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]);
-// These hashes are the independently PASS-reviewed editorial Markdown scripts in the v2 pilot
-// package. The worker imports six plan beats, not those scripts; a new review must compare its
-// actual merged output with the matching frozen reference before a paid TTS or image stage.
+// The v2 hashes bind their independently reviewed Markdown references. Flow also uses
+// membership here to forbid a one-file audio rewrite after flagged takes. C08 has its own
+// frozen-project adoption check below; its entry keeps the same audio rewrite lock without
+// changing the concurrently owned flow.mjs path.
 export const PILOT_SCRIPT_REFERENCES = Object.freeze({
   "story-rolling-suitcase-v2": "f91816021ebea28e1957199a5c73ccc588748e988730efc92e0486d09d5215c6",
   "story-conveyor-belt-sushi-v2": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724",
+  "story-everyday-kikkoman-c08-short-v8": "040d9a499ddb864f62ebf0edcc948cc58439ffa13d0dae0ce5a9475297ee5d69",
 });
 export const PILOT_SCRIPT_REVIEW_FILE = path.join(STORY_DIR, "reviews", "script-review.json");
 const PILOT_REVIEW_CHECKS = ["reference_alignment", "factual_claims", "narrative"];
 const PILOT_REVIEW_FILES = ["script.md", "video.json", "series.json", "claims.md", "verify-1.md"];
 const sha256OnDisk = (file) => existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null;
+
+// This is the exact projection of the owner's C08 short-v8 words and visual directions.
+// Never run the ordinary six-chapter writer or prompt fixer against these files.
+export const C08_SHORT_SLUG = "story-everyday-kikkoman-c08-short-v8";
+export const C08_SHORT_FILES = Object.freeze({
+  "video.json": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+  "visual-plan.json": "3bebc4afe361375b5ab3499e20bb63a832fa6bfc703b97d126f508733b695960",
+  "script.md": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+  "claims.md": "de832835117bc85592d4159074c746de59dac0a014f8908bb0e2fb83c7e9121d",
+  "verify-1.md": "7664a8639bda61135b64dfb951221c03f485db4453b63fa6ffdf1b3b4641c2ba",
+  "series.json": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+  "brief.md": "6af7ebbc1e7874ace553348f82c90d336fac4c748a8ffb0348f0614914034878",
+});
+const C08_SHORT_REVIEW = path.join("story-everyday-kikkoman-c08", "reviews", "v8-short-independent-review-20261024.md");
+const C08_SHORT_REVIEW_SHA256 = "f3a988efcad84a3d97779f10dd0d5cf34b7ad0d4ccf62db12ce357aa771326fb";
+const C08_SHORT_LEXICON_SHA256 = "97e2c4582aca65899d66253914a955256a673484a97966f40013d1275fc2e8f2";
+const C08_SHORT_LEXICON_EVENT_SHA256 = "783a192013e5d27bb9e3728c111f4e82bdd04829326830caeeca61285e3aeb17";
+const C08_PAID_AUTH_FILE = path.join(STORY_DIR, "c08-short-v8-paid-authorization.json");
+const C08_OWNER_APPROVAL_FILE = path.join("docs", "videos", C08_SHORT_SLUG, "owner-pilot-approval-20261024.md");
+const C08_OWNER_APPROVAL_SHA256 = "54d973ab2c46a1b0caa1a207dba4b390fa04084727810a527bbf3eea67d9c607";
+const C08_APPROVED_QUOTE_SHA256 = "28f983bc35272c216ce9026855bf881e0b29f03eadd7169f908d1284d2926948";
+const C08_OWNER_CAP_USD = 25;
+
+/** Fail closed before starting the backend request, and again on every worker continuation. */
+export function c08ShortProjectProblem({ root, slug }) {
+  if (slug !== C08_SHORT_SLUG) return null;
+  const dir = docDir(slug, root);
+  for (const [name, expected] of Object.entries(C08_SHORT_FILES)) {
+    if (sha256OnDisk(path.join(dir, name)) !== expected) return `C08 short-v8 ${name} is absent or differs from the owner-approved projection`;
+  }
+  if (sha256OnDisk(path.join(root, "docs", "videos", C08_SHORT_REVIEW)) !== C08_SHORT_REVIEW_SHA256) {
+    return "C08 short-v8 independent 36/36 review is absent or changed";
+  }
+  // A pre-authored video.json cannot pass initializeStoryLexicon's unstarted-file guard.
+  // Pin the reviewed project's initial snapshot in source before any backend episode start.
+  try {
+    const lexicon = videoLexicon({ root, slug, requireSnapshot: true });
+    if (lexicon.lexicon_sha256 !== C08_SHORT_LEXICON_SHA256 ||
+        lexicon.head_event_sha256 !== C08_SHORT_LEXICON_EVENT_SHA256) {
+      return "C08 short-v8 pinned pronunciation snapshot changed";
+    }
+  } catch {
+    return "C08 short-v8 pinned pronunciation snapshot is absent or unreadable";
+  }
+  let video;
+  try { video = readJson(path.join(dir, "video.json"), null); }
+  catch { return "C08 short-v8 video.json is unreadable"; }
+  if (!isC08ShortStory(video) || !isDeepStrictEqual(video.target_minutes, [4, 5]) ||
+      video.scenes?.length !== 36 || video.scenes.reduce((sum, scene) => sum + (scene.lines?.length ?? 0), 0) !== 36) {
+    return "C08 short-v8 project identity, target or 36-line count is wrong";
+  }
+  return null;
+}
+
+/** Pin the repo owner approval and require its preapproval quote hash and exact USD25 cap in the workdir receipt. */
+export function c08ShortPaidProblem({ root, workdir }) {
+  if (typeof root !== "string" || sha256OnDisk(path.join(root, C08_OWNER_APPROVAL_FILE)) !== C08_OWNER_APPROVAL_SHA256) {
+    return "C08 short-v8 needs unchanged owner approval evidence before paid media";
+  }
+  let receipt;
+  try { receipt = readJson(path.join(workdir, C08_PAID_AUTH_FILE), null); }
+  catch { return "C08 short-v8 paid authorization receipt is unreadable"; }
+  if (!receipt || receipt.schema_version !== 1 || receipt.slug !== C08_SHORT_SLUG ||
+      receipt.status !== "approved" || receipt.approved_by !== "owner" ||
+      receipt.project_video_sha256 !== C08_SHORT_FILES["video.json"] ||
+      typeof receipt.approved_at !== "string" || !Number.isFinite(Date.parse(receipt.approved_at)) ||
+      receipt.quote_source !== "docs/videos/story-everyday-kikkoman-c08-short-v8/production-quote.md" ||
+      receipt.quote_source_sha256 !== C08_APPROVED_QUOTE_SHA256 ||
+      receipt.owner_approval_sha256 !== C08_OWNER_APPROVAL_SHA256 ||
+      !Number.isFinite(receipt.quote_usd) || receipt.quote_usd <= 0 ||
+      receipt.cap_usd !== C08_OWNER_CAP_USD ||
+      receipt.quote_usd > receipt.cap_usd) {
+    return "C08 short-v8 needs the owner's current whole-film supplier quote and cap receipt before any paid media";
+  }
+  return null;
+}
 
 /** Exact current worker output that a second reader must compare and sign off before pilot TTS. */
 export function pilotScriptReviewEvidence({ slug, root, workdir }) {
@@ -955,6 +1039,13 @@ export async function startStory(automation, job) {
   const { series, episode } = job;
   const slug = episode?.slug;
   if (!isText(slug)) return automation.later(`story series ${series.slug}: story ${episode?.number ?? "?"} has no planned video slug; the import sets one`);
+  if (slug === C08_SHORT_SLUG) {
+    if (series.slug !== "brand-stories-everyday-reversals" || episode.number !== 8 || episode.beats?.id !== "C08") {
+      return automation.later("C08 short-v8 backend episode identity does not match the reviewed series plan");
+    }
+    const problem = c08ShortProjectProblem({ root: automation.ctx.root, slug });
+    if (problem) return automation.later(`C08 short-v8 is held before episode start: ${problem}`);
+  }
   let started;
   try {
     started = await automation.api.episodeStart(series.slug, episode.number, slug);
@@ -1009,6 +1100,32 @@ export async function draftStory(automation, started, job = {}) {
     return automation.block(state, `the story cannot be written: ${problem}`);
   }
   const dir = docDir(slug, automation.ctx.root);
+  if (slug === C08_SHORT_SLUG) {
+    if (series.slug !== "brand-stories-everyday-reversals" || episode.number !== 8 || plan.id !== "C08") {
+      automation.persist(state);
+      return automation.block(state, "C08 short-v8 backend episode identity changed after start");
+    }
+    const frozen = c08ShortProjectProblem({ root: automation.ctx.root, slug });
+    if (frozen) {
+      automation.persist(state);
+      return automation.block(state, `STOPPED_HOLD: ${frozen}`);
+    }
+    state.story.adopted_c08_short_v8 = true;
+    state.category = "explainer"; // The approved stats cards use the explainer drama schema.
+    state.verified = true; // The frozen 36/36 independent review is the fact-check evidence.
+    state.listener_done = true; // The owner approved these exact words; no model listener edits them.
+    const workdir = automation.workdir(slug);
+    try {
+      state.story.lexicon_sha256 = initializeStoryLexicon({ root: automation.ctx.root, slug, workdir, names: plan.names ?? [] }).lexicon_sha256;
+    } catch (error) {
+      automation.persist(state);
+      return automation.block(state, `story pronunciation input is held: ${error.message}`);
+    }
+    automation.persist(state);
+    await approve({ gate: "outline", docDir: dir, workdir, now: automation.ctx.now(), note: OUTLINE_NOTE });
+    await automation.report(state, "outline approved");
+    return `${slug}: adopted the frozen owner-approved 36-line project without rewriting its seven production files; paid media remains separately held`;
+  }
   mkdirSync(dir, { recursive: true });
   const cast = storyCast(plan, automation.voice("drama"));
   writeFileSync(path.join(dir, "series.json"), `${JSON.stringify(storySeriesFile({ series, episode, plan, cast }), null, 2)}\n`);
@@ -1033,6 +1150,38 @@ export async function draftStory(automation, started, job = {}) {
  */
 export async function advanceStory(automation, state, next) {
   if (!state.story) return undefined;
+  if (state.slug === C08_SHORT_SLUG) {
+    if (!state.story.adopted_c08_short_v8 || state.series?.slug !== "brand-stories-everyday-reversals" ||
+        state.series.episode !== 8 || state.story.id !== "C08" || state.target_minutes !== 5) {
+      return automation.block(state, "STOPPED_HOLD: C08 short-v8 has no matching frozen-project adoption state");
+    }
+    const frozen = c08ShortProjectProblem({ root: automation.ctx.root, slug: state.slug });
+    if (frozen) return automation.block(state, `STOPPED_HOLD: ${frozen}`);
+    if (next === "brief" || next === "script passes lint") {
+      return automation.block(state, `STOPPED_HOLD: C08 short-v8 ${next} is missing or failing; keep the exact approved files and resolve the gate without a chapter rewrite`);
+    }
+    if (next === "outline approved") {
+      await approve({ gate: "outline", docDir: docDir(state.slug, automation.ctx.root), workdir: automation.workdir(state.slug), now: automation.ctx.now(), note: OUTLINE_NOTE });
+      return `${state.slug}: frozen outline approved again`;
+    }
+    if (next === "script approved") {
+      // writeScreenplay would replace the approved v8 script.md projection.
+      await approve({ gate: "script", docDir: docDir(state.slug, automation.ctx.root), workdir: automation.workdir(state.slug), now: automation.ctx.now(), note: SCRIPT_NOTE });
+      await automation.report(state, "script approved");
+      return `${state.slug}: exact frozen short-v8 script approved without regeneration`;
+    }
+    if (next === "narration approved") {
+      const length = await checkLength(automation, state);
+      if (length !== undefined) return length;
+      const review = await automation.decision(state, "audio", path.join(automation.workdir(state.slug), "timeline.json"));
+      if (review?.status === "rejected") return automation.block(state, "STOPPED_HOLD: owner sent C08 short-v8 audio back; an exact script revision and new approval are needed before re-recording");
+    }
+    if (["look generated", "narration synthesized", "keyframes drawn", "clips generated", "music generated"].includes(next)) {
+      const paid = c08ShortPaidProblem({ root: automation.ctx.root, workdir: automation.workdir(state.slug) });
+      if (paid) return automation.block(state, `STOPPED_HOLD: ${paid}`);
+    }
+    return undefined;
+  }
   let snapshot;
   try {
     snapshot = initializeStoryLexicon({ root: automation.ctx.root, slug: state.slug, workdir: automation.workdir(state.slug) });
@@ -1487,6 +1636,9 @@ async function checkLength(automation, state) {
   }
   const long = seconds > high;
   const measured = `the narration measures ${formatClock(seconds)}, ${long ? "over" : "under"} ${formatClock(long ? high : low)}`;
+  if (state.slug === C08_SHORT_SLUG) {
+    return automation.block(state, `STOPPED_HOLD: C08 short-v8 ${measured}; preserve the owner's exact words and wait for a precise edit or renewed approval`);
+  }
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
   const budgets = Object.fromEntries(effectiveChapterBudgets(state.slug, info).map((budget) => [budget.key, budget.seconds]));
@@ -1561,6 +1713,9 @@ async function narrationSentBack(automation, state) {
  * person.
  */
 export async function fixStoryPrompts(automation, state, kind, { targets = null, ownerNote = null } = {}) {
+  if (state.slug === C08_SHORT_SLUG) {
+    return automation.block(state, `STOPPED_HOLD: C08 short-v8 ${kind} visual direction is owner-approved; review the failed shot and obtain approval for an exact revision before changing prompts`);
+  }
   const found = targets ?? automation.failedTargets(state, kind);
   const summary = found.map((target) => `${target.id}: ${(target.problems ?? []).join("; ") || "failed"}`).join(" | ") || ownerNote || "no detail";
   const rounds = state.prompt_fixes?.[kind] ?? 0;
