@@ -51,3 +51,23 @@ recognize that future head as a rollback state. Deploy a reviewed compatibility
 release and pass a real PostgreSQL/Compose rollback check before that migration.
 This document, a green PR, or account creation alone does not authorize a
 provider call, STOP removal, upload, or publication.
+
+## C03 Moleskine activation (owner decision 2026-10-24)
+
+The owner closed C03's pre-ledger exposure at the **full USD 25 ceiling** instead of
+reconciling provider billing, and activated the film for the work that finishes it:
+one narration line (`c031202`), its transcription and judge, then the unpaid clips,
+assembly, captions, QA and packaging. Concretely:
+
+- `ACTIVATED_STORY_SLUGS` (API `models.py`, local `pending-pilot-budget.mjs`) removes
+  C03 from the admission hold in the API and in the TTS, media and automation clients.
+  C04–C07, C10 and C15 and every other `story-everyday-*` slug stay held exactly as above.
+- On the host, after deployment, the 0138 `pre-ledger-history` row is settled with
+  `reconcile_cli --action settle --expected-status uncertain --actual-usd 25
+  --evidence-ref owner-decision-20261024-c03-full-ceiling`. Only that exact settlement
+  (full ceiling, that receipt) is excluded from C03's balance; an uncertain row or any
+  other settlement still counts in full, so C03 stays exhausted until it is applied.
+  The row is never deleted: rollback verification and every readback still see it, and
+  `summary`/`inspect` report it as `historical_closed_usd`.
+- The USD 25 ceiling therefore guards C03's post-activation work only. The owner accepted
+  that the film's all-in cost is the closed historical exposure plus that work.
