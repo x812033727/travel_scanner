@@ -1,0 +1,85 @@
+{
+  "reader": "r3-isolated-blind-b",
+  "source_packet_sha256": "0be386d8fed3650d925f81017b7c46429e52f093432c3685d90d6a0b87ffa331",
+  "raw_ballot_sha256": "3e70afaf249330cdaf2549807466cdf036409868adf166ec0864b59aee1dd08f",
+  "pr_number": 1665,
+  "pr_head_oid": "bf54573a48ce107afb18f10a57d751c95cac8f0a",
+  "video_json_sha256": "00cb544ad03d325f8eb666c3d037bf8a0aa3df1026c5c528ae54749a7d8e5090",
+  "script_md_sha256": "557427e904b22b40e8f326f9acd7947950c507c089ee6cee5dd4ea5be68dc37d",
+  "panel_narration_sha256": "1dadc85e9a86fd59c538b5df1c8e8e9ec93797bc4e865288dca5dd0230f6623b",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "narrative_hash": "3e0e3799a051d546",
+  "script_hash": "4b8e3ccff19e369d5d4117c0054d0567cc0ddb9cb625ac0da4390e64e70e9a4f",
+  "official_command": "node tools/video/cli.mjs narrative --slug curio-s63 --answers /tmp/s63-r3-blind-b/r3-isolated-blind-b.raw.json --workdir /tmp/s63-r3-blind-b/cli-base --json",
+  "official_exit_code": 1,
+  "official_cli_sha256": "31ba74977078d068d9926989b18369927b83f40305c68dd9145a95a20caa3e86",
+  "official_receipt_sha256": "d45bc5f7613089738bbbc82029ef8ef6584bac8afa2de5b42620098b083118ae",
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[s63001] 費城清晨，一只從里奇蒙來的木箱被拉進一戶人家。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": false,
+      "evidence": "[s63009] 這位亨利・布朗爬出木箱後，真的就安全了嗎？"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "[s63053] 家人已被帶走，布朗此時轉而籌劃自己的逃離。"
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "[s63063] 直到一個念頭轉向日常運貨：人能進箱子嗎？"
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[s63077] 箱身明明標著朝上、小心，搬運者在快運站卻先把他的頭倒向下方。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "[s63089] 後面還有一個轉車處，箱子會被裝上去嗎？"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "[s63108] 布朗終於答了：還好。"
+    },
+    {
+      "id": "no_recap",
+      "yes": false,
+      "evidence": "[s63029] 他付七十二美元房租；南希洗衣所得也用來撐起這個家。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "[s63077] 箱身明明標著朝上、小心，搬運者在快運站卻先把他的頭倒向下方。"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[s63127] 喜歡有出處的歷史奇事，訂閱奇聞檔案局。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "[s63007] 華盛頓轉車時，箱子忽然停在月台；它還能接上那班車嗎？"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "[s63125] 箱蓋一開，他重得自己的身體；但安全還等著法律回答。"
+    },
+    {
+      "id": "no_detour",
+      "yes": false,
+      "evidence": "[s63016] 那間工廠能容兩百人，實際一百五十人做工；其中一百二十人同樣受奴役。"
+    }
+  ],
+  "bound_at_utc": "2026-10-22T03:00:26.979191+00:00"
+}
