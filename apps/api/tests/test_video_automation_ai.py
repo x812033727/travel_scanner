@@ -305,7 +305,7 @@ async def test_pilot_text_calls_require_a_durable_subscription_job_before_any_mo
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize(
-    "slug", ["story-everyday-moleskine-c03", "story-everyday-kikkoman-c08"]
+    "slug", ["story-everyday-bubble-wrap-c04", "story-everyday-kikkoman-c08"]
 )
 async def test_everyday_stage_stops_before_queue_or_queued_job_dispatch(
     stage: dict[str, Any], monkeypatch: pytest.MonkeyPatch, slug: str

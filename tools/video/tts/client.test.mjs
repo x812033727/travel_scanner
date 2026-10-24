@@ -18,8 +18,9 @@ const FOLLOWON_SLUGS = [
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
 ];
+// C03 was activated by the owner on 2026-10-24 and is sent attributed instead.
 const EVERYDAY_SLUGS = [
-  "story-everyday-moleskine-c03", "story-everyday-bubble-wrap-c04",
+  "story-everyday-bubble-wrap-c04",
   "story-everyday-kincho-c05", "story-everyday-play-doh-c06",
   "story-everyday-dr-martens-c07", "story-everyday-oxo-c10",
   "story-everyday-frixion-c15",
@@ -101,6 +102,16 @@ test("held everyday paid speech routes stop before contacting an older server", 
         (error) => error.code === "video_budget_preproduction_hold" && error.who === "owner");
       assert.equal(calls.length, 0, `${slug}: ${paid.name}`);
     }
+  }
+});
+
+test("the activated C03 story sends its paid speech requests attributed and lets the server decide", async () => {
+  const slug = "story-everyday-moleskine-c03";
+  for (const paid of PAID) {
+    const { calls, options } = server([paid.ok]);
+    paid.check(await paid.send({ ...options, videoSlug: slug }));
+    assert.equal(calls.length, 1, `${slug}: ${paid.name}`);
+    assert.equal(JSON.parse(calls[0].body).video_slug, slug, `${slug}: ${paid.name} is attributed`);
   }
 });
 

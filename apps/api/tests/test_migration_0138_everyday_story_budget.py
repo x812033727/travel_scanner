@@ -26,6 +26,7 @@ from app.config import get_settings
 from app.db import engine
 from app.migration_guard import C20_PILOT_SLUG, _verify_reviewed_0138
 from app.video_budget.models import (
+    ACTIVATED_STORY_SLUGS,
     C_SERIES_PILOT_LIMITS_USD,
     PILOT_LIMITS_USD,
     VideoPilotBudget,
@@ -178,7 +179,13 @@ def test_revision_and_held_contract_match_the_0137_compatibility_image() -> None
     assert migration.PRIOR_LIMITS == PILOT_LIMITS_USD
     assert set(migration.PILOTS) == set(C_SERIES_PILOT_LIMITS_USD)
     assert all(C_SERIES_PILOT_LIMITS_USD[slug] == migration.LIMIT for slug in migration.PILOTS)
-    assert all(is_preproduction_held(slug) for slug in migration.PILOTS)
+    # C03 was activated by the owner on 2026-10-24 (models.ACTIVATED_STORY_SLUGS);
+    # the migration still seeds its account and full-ceiling hold unchanged.
+    assert all(
+        is_preproduction_held(slug) != (slug in ACTIVATED_STORY_SLUGS)
+        for slug in migration.PILOTS
+    )
+    assert ACTIVATED_STORY_SLUGS <= set(migration.HISTORICAL)
     assert migration.HISTORICAL_ID == "pre-ledger-history"
 
 
