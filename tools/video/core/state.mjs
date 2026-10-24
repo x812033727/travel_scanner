@@ -18,6 +18,7 @@ import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash,
 import { emptyLexicon } from "./lexicon.mjs";
 import { videoLexicon } from "./lexicon-store.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
+import { loopCovers } from "./music-loop.mjs";
 import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
@@ -497,8 +498,9 @@ export async function pipelineStatus({ slug, root, workdir }) {
     const file = typeof music.file === "string" && music.file ? path.resolve(workdir, music.file) : null;
     musicDone = Boolean(speech) && timeline?.speech_hash === speech &&
       Number.isFinite(requiredSeconds) && requiredSeconds > 0 &&
-      music.duration_measurement === "ffmpeg_full_decode" && !music.duration_hold &&
-      Number.isFinite(music.actual_seconds) && music.actual_seconds >= requiredSeconds &&
+      music.duration_measurement === "ffmpeg_full_decode" &&
+      // A short track counts once its loop is recorded for this cut (music --loop).
+      ((!music.duration_hold && Number.isFinite(music.actual_seconds) && music.actual_seconds >= requiredSeconds) || loopCovers(music, requiredSeconds)) &&
       typeof music.sha256 === "string" && /^[0-9a-f]{64}$/.test(music.sha256) &&
       Boolean(file) && isInside(file, workdir) && existsSync(file) && statSync(file).isFile() &&
       (await sha256File(file)) === music.sha256;
