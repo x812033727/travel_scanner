@@ -13,11 +13,16 @@ const SHA = /^[a-f0-9]{64}$/;
 const ID = /^C(0[1-9]|1[0-9]|20)$/;
 const SLUG = /^story-everyday-[a-z0-9-]+-c(0[1-9]|1[0-9]|20)$/;
 const SERIES = "brand-stories-everyday-reversals";
-const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C14", "C15", "C19"];
+const APPROVED_IDS = ["C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C14", "C15", "C19", "C20"];
 const C08_SHORT_SLUG = "story-everyday-kikkoman-c08-short-v8";
 const C08_SHORT_SCRIPT_SHA256 = "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9";
 const C08_SHORT_SOURCE_SHA256 = "040d9a499ddb864f62ebf0edcc948cc58439ffa13d0dae0ce5a9475297ee5d69";
 const C08_SHORT_SOURCE_PATH = "docs/videos/story-everyday-kikkoman-c08/reviews/v8-short-narration-candidate-20261024.md";
+const C20_SHORT_SLUG = "story-everyday-zippo-c20-short-v8";
+const C20_SHORT_SCRIPT_SHA256 = "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65";
+const C20_SHORT_SOURCE_SHA256 = "8bf33f7f733d5acb8c7ac64186b5932c43e6bb06867a6ffbf2ecc6bf0e68d82d";
+const C20_SHORT_SOURCE_PATH = "docs/videos/story-everyday-zippo-c20/reviews/v8-short-script-candidate-20261024.md";
+const C20_SHORT_VIDEO_SHA256 = "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62";
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const insist = (ok, message) => { if (!ok) throw new Error(message); };
 
@@ -105,6 +110,42 @@ function c08ShortScenes(markdown) {
   return scenes;
 }
 
+function c20ShortScenes(markdown) {
+  const lines = markdown.split(/\r?\n/);
+  insist(lines[0] === "# C20 Zippo v8｜36 句核准短版", "C20 short-v8 projection title mismatch");
+  const scenes = [];
+  const seen = new Set();
+  let state = "intro";
+  for (const [index, raw] of lines.entries()) {
+    const line = raw.trim();
+    if (index === 0 || !line) continue;
+    if (state === "intro") {
+      if (line.startsWith("|")) {
+        insist(line === "| ID | 旁白 | 依據 |", `C20 short-v8 invalid table header at line ${index + 1}`);
+        state = "divider";
+      } else {
+        insist(!line.startsWith("#") && !line.startsWith("-"), `C20 short-v8 unexpected heading at line ${index + 1}`);
+      }
+      continue;
+    }
+    const cells = columns(line);
+    insist(cells, `C20 short-v8 malformed table row at line ${index + 1}`);
+    if (state === "divider") {
+      insist(cells.every((cell) => cell === "---"), `C20 short-v8 missing divider at line ${index + 1}`);
+      state = "rows";
+      continue;
+    }
+    const [lineId, narration, evidence] = cells;
+    insist(/^c20[0-9]{4}$/.test(lineId) && narration && evidence && !seen.has(lineId),
+      `C20 short-v8 invalid or duplicate narration at line ${index + 1}`);
+    seen.add(lineId);
+    scenes.push({ id: lineId, chapter: null, template: "shot", prompt: null,
+      lines: [{ id: lineId, speaker: "narrator", name: null, text: narration, emotion: null }] });
+  }
+  insist(state === "rows" && scenes.length === 36, "C20 short-v8 requires one table with 36 narration lines");
+  return scenes;
+}
+
 function bulletScenes(markdown) {
   const lines = markdown.split(/\r?\n/);
   const chapters = ["第一", "第二", "第三", "第四", "第五", "第六"];
@@ -169,14 +210,15 @@ function screenplayScenes(markdown, id) {
 
 export function parseScript(markdown, id) {
   insist(typeof markdown === "string" && ID.test(id), "invalid script or episode ID");
-  const hasTables = /^\| ID \|/m.test(markdown);
+  const hasC20Short = id === "C20" && /^# C20 Zippo v8｜36 句核准短版$/m.test(markdown);
+  const hasTables = /^\| ID \|/m.test(markdown) && !hasC20Short;
   const hasScenes = /^#### 1\. /m.test(markdown);
   const hasBullets = /^## 第一章｜/m.test(markdown) && /^- \*\*[A-Z][0-9]{2}\*\*/m.test(markdown);
   const hasC08Short = id === "C08" && /^# C08 龜甲萬｜短版 v8 核准旁白投影$/m.test(markdown);
-  insist(Number(hasTables) + Number(hasScenes) + Number(hasBullets) + Number(hasC08Short) === 1,
+  insist(Number(hasTables) + Number(hasScenes) + Number(hasBullets) + Number(hasC08Short) + Number(hasC20Short) === 1,
     "script must use exactly one supported line format");
   return hasTables ? tableScenes(markdown, id) : hasScenes ? screenplayScenes(markdown, id)
-    : hasBullets ? bulletScenes(markdown) : c08ShortScenes(markdown);
+    : hasBullets ? bulletScenes(markdown) : hasC08Short ? c08ShortScenes(markdown) : c20ShortScenes(markdown);
 }
 
 export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}) {
@@ -193,12 +235,19 @@ export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}
     insist(Number.isInteger(entry.number) && entry.number === Number(entry.id.slice(1)) && !allNumbers.has(entry.number), `invalid episode number for ${entry.id}`);
     allNumbers.add(entry.number);
     const c08Short = entry.id === "C08" && entry.slug === C08_SHORT_SLUG;
-    insist(c08Short || (SLUG.test(entry.slug) && entry.slug.endsWith(`-${entry.id.toLowerCase()}`)), `invalid slug for ${entry.id}`);
+    const c20Short = entry.id === "C20" && entry.slug === C20_SHORT_SLUG;
+    insist(c08Short || c20Short || (SLUG.test(entry.slug) && entry.slug.endsWith(`-${entry.id.toLowerCase()}`)), `invalid slug for ${entry.id}`);
     if (c08Short) {
       insist(entry.script_sha256 === C08_SHORT_SCRIPT_SHA256 && entry.expected_lines === 36,
         "C08 short-v8 approval hash/count differs from the frozen owner-approved projection");
       insist(hash(readFileSync(path.resolve(root, C08_SHORT_SOURCE_PATH))) === C08_SHORT_SOURCE_SHA256,
         "C08 short-v8 approved source SHA256 mismatch");
+    }
+    if (c20Short) {
+      insist(entry.script_sha256 === C20_SHORT_SCRIPT_SHA256 && entry.expected_lines === 36,
+        "C20 short-v8 approval hash/count differs from the frozen owner-approved projection");
+      insist(hash(readFileSync(path.resolve(root, C20_SHORT_SOURCE_PATH))) === C20_SHORT_SOURCE_SHA256,
+        "C20 short-v8 approved source SHA256 mismatch");
     }
     const expectedPath = `docs/videos/${entry.slug}/script.md`;
     insist(entry.script_path === expectedPath, `wrong script path for ${entry.id}`);
@@ -223,6 +272,23 @@ export function loadIntake(manifestPath, { root = process.cwd(), ids = [] } = {}
       insist(projected?.length === scenes.length && projected.every((line, index) =>
         line.id === scenes[index].id && line.text === scenes[index].lines[0].text),
       "C08 short-v8 canonical narration differs from the approved script");
+    }
+    if (c20Short) {
+      const approved = tableScenes(readFileSync(path.resolve(root, C20_SHORT_SOURCE_PATH), "utf8"), "C20");
+      insist(approved.length === scenes.length && approved.every((scene, index) =>
+        scene.id === scenes[index].id && scene.lines[0].text === scenes[index].lines[0].text),
+      "C20 short-v8 projection differs from the owner-approved source");
+      approved.forEach((scene, index) => { scenes[index].chapter = scene.chapter; });
+      const videoPath = path.resolve(root, `docs/videos/${entry.slug}/video.json`);
+      insist(hash(readFileSync(videoPath)) === C20_SHORT_VIDEO_SHA256,
+        "C20 short-v8 canonical video SHA256 mismatch");
+      const project = JSON.parse(readFileSync(videoPath, "utf8"));
+      insist(project.slug === entry.slug && project.series?.slug === SERIES && project.series.episode === 20,
+        "C20 short-v8 canonical project identity mismatch");
+      const projected = project.scenes?.flatMap((scene) => scene.lines ?? []);
+      insist(projected?.length === scenes.length && projected.every((line, index) =>
+        line.id === scenes[index].id && line.text === scenes[index].lines[0].text),
+      "C20 short-v8 canonical narration differs from the approved script");
     }
     return { ...entry, scenes, source_md };
   });

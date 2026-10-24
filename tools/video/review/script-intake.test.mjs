@@ -13,6 +13,9 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../
 const c08ShortSlug = "story-everyday-kikkoman-c08-short-v8";
 const c08ShortSha = "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9";
 const c08ShortSource = "docs/videos/story-everyday-kikkoman-c08/reviews/v8-short-narration-candidate-20261024.md";
+const c20ShortSlug = "story-everyday-zippo-c20-short-v8";
+const c20ShortSha = "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65";
+const c20ShortSource = "docs/videos/story-everyday-zippo-c20/reviews/v8-short-script-candidate-20261024.md";
 afterEach(() => { while (tempRoots.length) rmSync(tempRoots.pop(), { recursive: true, force: true }); });
 const sha = (value) => createHash("sha256").update(value).digest("hex");
 
@@ -20,7 +23,7 @@ function fixture() {
   const root = mkdtempSync(path.join(os.tmpdir(), "script-intake-"));
   tempRoots.push(root);
   const entries = [];
-  for (const number of [3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 19]) {
+  for (const number of [3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 19, 20]) {
     const id = `C${String(number).padStart(2, "0")}`;
     const slug = `story-everyday-fixture-${id.toLowerCase()}`;
     const script_path = `docs/videos/${slug}/script.md`;
@@ -58,6 +61,119 @@ function c08ShortFixture() {
     series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
   return { ...box, c08 };
 }
+
+function c20ShortFixture() {
+  const box = fixture();
+  const c20 = box.entries.find((entry) => entry.id === "C20");
+  c20.slug = c20ShortSlug;
+  c20.script_path = `docs/videos/${c20ShortSlug}/script.md`;
+  c20.script_sha256 = c20ShortSha;
+  c20.expected_lines = 36;
+  c20.approval_pr = 1808;
+  for (const source of [c20.script_path, c20ShortSource, `docs/videos/${c20ShortSlug}/video.json`]) {
+    const target = path.join(box.root, source);
+    mkdirSync(path.dirname(target), { recursive: true });
+    copyFileSync(path.join(repoRoot, source), target);
+  }
+  writeFileSync(box.manifestFile, JSON.stringify({ schema_version: 1,
+    series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
+  return { ...box, c20 };
+}
+
+test("C20 short-v8 local intake binds the exact owner-approved 36 lines and six chapters", async () => {
+  const box = c20ShortFixture();
+  const [entry] = loadIntake(box.manifestPath, { root: box.root, ids: ["C20"] }).entries;
+  assert.equal(entry.slug, c20ShortSlug);
+  assert.equal(entry.scenes.length, 36);
+  assert.equal(entry.scenes[0].id, "c200101");
+  assert.equal(entry.scenes.at(-1).id, "c200610");
+  assert.equal(new Set(entry.scenes.map((scene) => scene.chapter)).size, 6);
+  const result = await runIntake({ ...box, ids: ["C20"], request: () => { throw new Error("network call"); } });
+  assert.deepEqual(result, [{ id: "C20", slug: c20ShortSlug, sha256: c20ShortSha,
+    lines: 36, action: "dry-run-local-only" }]);
+});
+
+test("C20 short-v8 refuses changed script, approval, source, video and nearby slug", () => {
+  const box = c20ShortFixture();
+  const load = () => loadIntake(box.manifestPath, { root: box.root, ids: ["C20"] });
+  const scriptFile = path.join(box.root, box.c20.script_path);
+  const script = readFileSync(scriptFile, "utf8");
+  writeFileSync(scriptFile, script + "changed\n");
+  assert.throws(load, /C20 script SHA256 mismatch/);
+  writeFileSync(scriptFile, script);
+  box.c20.script_sha256 = sha(script + "changed");
+  writeFileSync(box.manifestFile, JSON.stringify({ schema_version: 1,
+    series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
+  assert.throws(load, /C20 short-v8 approval hash\/count differs/);
+  box.c20.script_sha256 = c20ShortSha;
+  writeFileSync(box.manifestFile, JSON.stringify({ schema_version: 1,
+    series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
+  const sourceFile = path.join(box.root, c20ShortSource);
+  writeFileSync(sourceFile, readFileSync(sourceFile, "utf8") + "changed\n");
+  assert.throws(load, /C20 short-v8 approved source SHA256 mismatch/);
+  copyFileSync(path.join(repoRoot, c20ShortSource), sourceFile);
+  const videoFile = path.join(box.root, `docs/videos/${c20ShortSlug}/video.json`);
+  const video = JSON.parse(readFileSync(videoFile, "utf8"));
+  video.scenes[0].lines[0].text = "different narration";
+  writeFileSync(videoFile, JSON.stringify(video));
+  assert.throws(load, /C20 short-v8 canonical video SHA256 mismatch/);
+  copyFileSync(path.join(repoRoot, `docs/videos/${c20ShortSlug}/video.json`), videoFile);
+  box.c20.slug = "story-everyday-zippo-c20-short-v9";
+  writeFileSync(box.manifestFile, JSON.stringify({ schema_version: 1,
+    series_slug: "brand-stories-everyday-reversals", entries: box.entries }));
+  assert.throws(load, /invalid slug for C20/);
+});
+
+test("C20 short-v8 parser rejects damaged table, duplicate ID and wrong projection title", () => {
+  const source = readFileSync(path.join(repoRoot, `docs/videos/${c20ShortSlug}/script.md`), "utf8");
+  assert.equal(parseScript(source, "C20").length, 36);
+  assert.throws(() => parseScript(source.replace("| --- | --- | --- |", "| --- | no | --- |"), "C20"), /missing divider/);
+  assert.throws(() => parseScript(source.replace("| c200102 |", "| c200101 |"), "C20"), /duplicate narration/);
+  assert.throws(() => parseScript(source.replace("| c200102 |", "- c200102 |"), "C20"), /malformed table row/);
+  assert.throws(() => parseScript(source.replace("# C20 Zippo v8｜36 句核准短版", "# C20 other"), "C20"), /invalid table header/);
+});
+
+test("C20 short-v8 refuses historical row and submits only a new pending card", async () => {
+  const box = c20ShortFixture();
+  const calls = [];
+  let slug = "story-everyday-zippo-c20";
+  let current = null;
+  const historical = { slug, reviews: [{ gate: "script", status: "approved", content_sha256: "historical-42-line-hash" }] };
+  const frozenHistorical = structuredClone(historical);
+  const request = async (method, route, options = {}) => {
+    calls.push([method, route]);
+    if (route.includes("/context?episode=")) return {
+      series: { slug: "brand-stories-everyday-reversals", kind: "story", status: "paused" },
+      episode: { number: 20, slug, status: "planned" },
+    };
+    assert.notEqual(route, `/api/video/reviews/${historical.slug}`);
+    if (method === "GET") {
+      if (current) return structuredClone(current);
+      const error = new Error("not found"); error.status = 404; throw error;
+    }
+    if (method === "PUT") {
+      current = { ...options.json, slug: c20ShortSlug, reviews: [], dropped_at: null };
+      return structuredClone(current);
+    }
+    if (method === "POST") {
+      const review = { id: "c20-v8-pending", ...options.json, status: "pending" };
+      current.reviews.push(review);
+      return structuredClone(review);
+    }
+    throw new Error(`unexpected ${method} ${route}`);
+  };
+  await assert.rejects(runIntake({ ...box, ids: ["C20"], apply: true, request }), /backend episode\/slug mismatch/);
+  assert.deepEqual(calls.map(([method]) => method), ["GET"]);
+  slug = c20ShortSlug;
+  const [first] = await runIntake({ ...box, ids: ["C20"], apply: true, request });
+  assert.equal(first.action, "submitted");
+  assert.equal(current.reviews[0].status, "pending");
+  assert.deepEqual(historical, frozenHistorical);
+  const writes = calls.filter(([method]) => method === "PUT" || method === "POST").length;
+  const [second] = await runIntake({ ...box, ids: ["C20"], apply: true, request });
+  assert.equal(second.action, "already-present");
+  assert.equal(calls.filter(([method]) => method === "PUT" || method === "POST").length, writes);
+});
 
 test("C08 short-v8 local intake binds the exact owner-approved 36 lines", async () => {
   const box = c08ShortFixture();
@@ -168,7 +284,7 @@ test("dry-run validates exact local sources without even calling the transport",
   let calls = 0;
   const result = await runIntake({ ...box, request: () => { calls++; throw new Error("network call"); } });
   assert.equal(calls, 0);
-  assert.equal(result.length, 12);
+  assert.equal(result.length, 13);
   assert.ok(result.every((row) => row.action === "dry-run-local-only"));
 });
 
@@ -287,5 +403,5 @@ test("strict parser rejects an unsupported or ambiguous row", () => {
   const source = readFileSync(path.join(box.root, box.entries[0].script_path), "utf8");
   assert.equal(parseScript(source, "C03").length, 6);
   assert.throws(() => parseScript(source.replace("| c030101 |", "| c030101 | extra |"), "C03"), /malformed table row/);
-  assert.equal(loadIntake(box.manifestPath, { root: box.root }).entries.length, 12);
+  assert.equal(loadIntake(box.manifestPath, { root: box.root }).entries.length, 13);
 });

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-bind-c20-short-v8-backend-plan
 title: Bind C20 Zippo short v8 plan to approved script
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-c20-backend-plan
 claimed_at: 2026-10-24T08:41:47Z
 created_at: 2026-10-24T08:41:15Z
-completed_at:
+completed_at: 2026-10-24T09:36:46Z
 branch: codex/c20-short-v8-backend-plan-20261024
 depends_on: []
 scope:
