@@ -63,7 +63,11 @@
 
 ## 配樂與音效
 
-配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。這一節寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
+配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。
+
+**生成配樂比影片短：明確、檢查過的循環（2026-10-24）。** 每一次混音（`assemble` 與 `dub`）都用 `-stream_loop -1` 把配樂接到影片長度（`assemble/drama.mjs` 的 `soundGraph`）。2026-10 的品牌故事配樂都只有 3 分鐘左右，成片約 10 分鐘，就是這樣循環出來的。2026-10-23 起生成配樂要有完整解碼量到的長度，比影片短就擋下，因此已上架影片的配音也被擋住。`node tools/video/cli.mjs music --slug <slug> --loop` 是站主同意「沿用成片當初的循環」的那一步：不打任何供應商、不花錢；確認留存的檔還是 manifest 記的 SHA-256、用 ffmpeg 完整解碼量長度（至少 30 秒）、現在的成片確實是用這套配樂設定合成的（`checks.json` 的 `mix_hash`），再把 `loop`（檔案雜湊、配樂秒數、成片秒數、播幾次、決定時間）寫進 `music/manifest.json`。`musicInputs` 與 `status` 只在循環紀錄指向同一個檔、同一個量到的長度、成片不比當時長時才接受它；換了檔或成片變長，就要再跑一次 `--loop`（`core/music-loop.mjs`）。
+
+這一節接下來寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
 
 **manifest 第 2 版**（上表的範例）：
 
