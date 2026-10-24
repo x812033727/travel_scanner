@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-prepare-c15-frixion-canonical-video-project
 title: Prepare C15 FriXion canonical video project without paid calls
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T03:27:36Z
 created_at: 2026-10-24T03:27:29Z
-completed_at:
+completed_at: 2026-10-24T06:51:49Z
 branch: codex/c15-frixion-canonical-preflight-20261024
 depends_on: []
 scope:

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-avoid-false-written-language-lint-hit
 title: Avoid false written-language lint hit inside Japanese text
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T03:31:50Z
 created_at: 2026-10-24T03:31:46Z
-completed_at:
+completed_at: 2026-10-24T06:51:58Z
 branch: codex/c15-frixion-canonical-preflight-20261024
 depends_on: []
 scope:
