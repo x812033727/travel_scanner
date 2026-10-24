@@ -208,7 +208,8 @@ reviewed_budget_rollback_pair() {
   case "$1:$2" in
     0132_video_pilot_budget:0133_story_followon_budget|\
     0137_video_manga_tier:0138_story_everyday_budget|\
-    0138_story_everyday_budget:0139_c20_zippo_pilot_budget) return 0 ;;
+    0138_story_everyday_budget:0139_c20_zippo_pilot_budget|\
+    0139_c20_zippo_pilot_budget:0140_c08_kikkoman_pilot_budget) return 0 ;;
     *) return 1 ;;
   esac
 }
