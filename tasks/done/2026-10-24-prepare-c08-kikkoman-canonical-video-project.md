@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-prepare-c08-kikkoman-canonical-video-project
 title: Prepare C08 Kikkoman canonical video project without paid calls
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T03:36:03Z
 created_at: 2026-10-24T03:36:00Z
-completed_at:
+completed_at: 2026-10-24T06:03:44Z
 branch: codex/c08-kikkoman-canonical-preflight-20261024
 depends_on: []
 scope:
@@ -26,8 +26,8 @@ C08 的 84 句／84 鏡雖已獲站主核准，仍只有 Markdown 前製材料�
 - [x] 84／84 旁白與逐鏡同序、逐字／逐 prompt 可還原；留下卡片圖文差異與付費／時長 HOLD 收據。
 - [x] 非付費 lint、facts、check:tasks、針對性測試皆實跑並記錄結果，不把 lint error 說成通過。
 - [x] 另一位代理獨立只讀覆核轉檔，結果見 reviews/independent-canonical-conversion-20261024.md。
-- [ ] c080611 片尾規則衝突須經新版差異查核、盲讀和站主核准後才可解。
-- [ ] 實際語音 480 秒、插圖時間至少 70%、C08 整支報價與付費核准、單集預算路由、匯入及成片驗收由後續工作處理。
+- [x] c080611 舊版片尾衝突保留在 84 句歷史專案；短版 v8 經全稿差異查核、雙盲讀與站主核准後，另立新 slug，不把舊錯誤冒稱已修。
+- [x] 實際語音、插圖時間、付費與專屬路由、匯入及成片驗收已明確交給頂層短版專案的 `pilot-readiness.md`；本票只結案非付費前製，沒有宣稱完成那些關卡。
 
 ## Steps
 
@@ -36,7 +36,7 @@ C08 的 84 句／84 鏡雖已獲站主核准，仍只有 Markdown 前製材料�
 - [x] 84／84 text、ID、shot prompt、運鏡與完整卡片文字對回原稿；五句 GK 的 say 僅候選且與 text 雜湊綁定。
 - [x] 記錄唯一 lint error c080611 與兩個僅供站主審閱的最小改句候選，沒有改寫核准稿或機器 text。
 - [x] 獨立轉檔審查 PASS，維持 lint／媒體 HOLD。
-- [ ] 等後續 C08 改稿決定。
+- [x] 站主選擇 4–5 分鐘重寫，並核准短版 v8 的 36 句與 36 鏡；已保存兩份精確來源 SHA。
 
 ## How to verify
 
@@ -60,6 +60,10 @@ npm run check:tasks（exit 0；其他舊票警告）。逐列與五份原件 has
 - [x] 凍結兩個來源雜湊，提供可重跑 `build.mjs`、逐字稿／逐鏡 JSON、QA 對接與收據 `short-v8/preflight-20261024.md`。
 - [x] 已跑 schema/facts/畫面比例靜態檢查、67 個針對性測試、task-board check；lint 3 errors／5 warnings 如收據，沒有宣稱 PASS。
 - [x] `test:docs-videos` 全套 235／236 PASS；未修改的 imported-long-languages runtime freezing 測項在 Windows 子行程以 `3221226505` 退出，單獨重跑同樣失敗，詳見 v8 收據；不宣稱完整 gate 綠燈。
-- [ ] `MoMA` 念法需獨立審核與真人聲音驗收；短版 480 秒共用長片 guard 待 C15 路由整合，不改全域規則。
-- [ ] nested `short-v8/` 只有 `lint --file` 可讀；worker 及其他 `--slug` 指令未選取它。短版政策和 episode identity 明確後，依 README 將整包推進頂層同 slug 目錄，重新 lint、同 slug 工作目錄及後台 `stories.json` 精確 dry-run／apply 條件讀回。
-- [ ] 實際 TTS 時長、按秒插圖 70%、`v7e03` 平面功能圖、整支 C08 可歸因報價／付費核准、匯入、上傳與成片驗收仍待後續；本輪沒有付費或後台寫入。
+- [x] `MoMA` 文字念法已由另一位審核者核准；真人聲音驗收仍在頂層專案的就緒表列 HOLD。短版 C08 專用 240 秒正文／300 秒成片規則已通過 lint 與 QA 邊界測試；原 84 句及其他集的 480 秒規則未放寬。
+- [x] 將凍結短版投影置於頂層同 slug 專案；本機 `lint --slug` 0 errors／7 warnings，機器來源、worker 守門與同一 episode row 的 SQLite 模擬已通過。正式站 dry-run／apply 及 row ID 讀回仍在頂層就緒表 HOLD。
+- [x] 頂層 `production-quote.md` 已列整支 US$25 條件式上限與音訊 QA 次數，待站主核准；實際 TTS、按秒插圖 70%、`v7e03` 後製圖、專屬帳本、正式匯入、上傳與成片驗收仍由獨立後續工作處理。本輪沒有付費或後台寫入。
+
+## 2026-10-24 非付費前製結案邊界
+
+本票的原始任務是把已核准稿件轉成可由影片工具處理的專案，包含後續短版重寫所需的安全轉接。最終有效稿是 short-v8；舊 84 句專案只作歷史留存，原 lint error 不因短版通過而消失。頂層 short-v8 的 `pilot-readiness.md` 分列全部未達成的付費、媒體、正式站及上架關卡；`production-quote.md` 僅供站主審核，尚無 C08 費用授權。PR #1811 的程式與非付費轉檔可以獨立合併，不觸發 worker 或媒體請求。真人時長、成本帳本與正式站讀回不可由本票打勾代替。
