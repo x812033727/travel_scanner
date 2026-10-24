@@ -177,6 +177,13 @@ function fitWindows(windows) {
   }));
 }
 
+/** The same required-music check before speech admission and again before mixing. */
+async function dubMusic(doc, timeline, workdir, workBase) {
+  const found = await musicInputs(doc, workdir, workBase, { requiredSeconds: timeline.total_frames / FPS });
+  if (found.problem) throw new UsageError(`the dub cannot carry the music bed: ${found.problem}`);
+  return found;
+}
+
 /**
  * The sound a dub carries under its voice (docs/videos/ILLUSTRATED.md): the music track the
  * script names, checked as `assemble` checks it, and the effects track `assemble` built for the
@@ -191,8 +198,7 @@ async function dubSound(doc, timeline, workdir, workBase) {
   let track = null;
   let music = null;
   if (resolveMusic(doc)) {
-    const found = await musicInputs(doc, workdir, workBase);
-    if (found.problem) throw new UsageError(`the dub cannot carry the music bed: ${found.problem}`);
+    const found = await dubMusic(doc, timeline, workdir, workBase);
     ({ track, music } = found);
   }
   let sfxFile = null;
@@ -488,6 +494,9 @@ async function dub(args, ctx) {
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   requireStorySpeechLexicon(project, workdir);
+  // Refuse unusable required music before buying speech or creating a dub cache/journal.
+  // dubSound checks again at mix time, so a bed changed during speech cannot enter the track.
+  if (resolveMusic(doc)) await dubMusic(doc, timeline, workdir, workBase);
   const credentials = requireCredentials(ctx);
   const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);

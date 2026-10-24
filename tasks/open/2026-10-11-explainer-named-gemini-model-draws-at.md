@@ -1,14 +1,14 @@
 ---
 id: 2026-10-11-explainer-named-gemini-model-draws-at
 title: An explainer that names a Gemini image model is drawn at 1K while 'same as the settings' draws at 2K
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: codex-open-tasks-price
+claimed_at: 2026-10-24T13:53:17Z
 created_at: 2026-10-11T04:03:23Z
 completed_at:
-branch:
+branch: codex/open-tasks-reconcile-20261024
 depends_on:
   - 2026-10-11-explainer-request-names-its-image-model
 scope:
@@ -17,8 +17,7 @@ scope:
   - apps/api/tests/test_video_automation_settings.py
   - tools/video/media/stages.mjs
   - tools/video/media/stages.test.mjs
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
+  - tools/video/media/look-keyframes.test.mjs
 ---
 
 # An explainer that names a Gemini image model is drawn at 1K while 'same as the settings' draws at 2K
@@ -56,3 +55,10 @@ on such a video prints `pictures at 2K`.
 ## Notes
 
 - 2026-10-11 filed from the design's section 7, item 6.
+
+
+### 2026-10-24 narrow owner-requested execution
+
+Parent coordinated only the exact listed source/test paths after fresh branch/worktree/open-PR checks found no active exact-file implementation. Historical broader stale scope is not taken over; its remaining producer/media/acceptance work stays untouched. The preceding related fixes on this parent branch are retained. Scope is narrowed before product editing. No provider calls, paid regeneration, production settings change or deployment is part of this code task.
+
+Parent explicitly adds the existing look-keyframes regression suite to verify paid1K cache reuse with zero new vendor POSTs; fresh named Gemini requests must use2K. Independent duration receipts remain delegated under the reconciliation task. Existing catalog price values are unchanged.

@@ -71,7 +71,7 @@ test("an override prefers the selected image vendor when the same model id exist
 });
 
 test("cross-vendor overrides use that vendor's reported credentials, or explicitly keep them unknown", () => {
-  for (const kind of ["clip", "music"]) {
+  for (const kind of ["clip", "music", "slides_image"]) {
     for (const configured of [true, false]) {
       const original = status();
       original[kind] = { ...original[kind], provider: "minimax", configured };
@@ -200,8 +200,8 @@ test("a 2K picture is asked for by size, keyed apart from the 1K one and priced 
   assert.equal(imagePrice(effective, "slides", "2K"), 0.101);
   assert.equal(imagePrice(effective, "slides"), 0.067);
   assert.equal(imagePrice(effective, null, "2K"), 0, "no 2K price, no 2K estimate");
-  // A series' own image model is drawn and priced at 1K: the 2K price on the settings' choice
-  // belongs to the settings' model, and asking a model that sells no 2K picture is a 422.
+  // An older API omits per-model 2K prices. Such an override stays at 1K rather than
+  // inheriting the settings model's 2K price, which may belong to another model.
   const global = status();
   global.image.usd_per_image_2k = 0.134;
   assert.equal(imageSizeFor(global), "2K");
@@ -224,6 +224,29 @@ test("a 2K picture is asked for by size, keyed apart from the 1K one and priced 
   assert.equal(small.reused, false, "the 1K picture of the same prompt is another key");
   assert.equal(fake.bodies[1].size, undefined);
   assert.equal(fake.calls.filter((call) => call === "POST images").length, 2);
+});
+
+test("a named image model uses its own catalogued 2K price and leaves unoverridden keys alone", async () => {
+  const global = status();
+  global.image.usd_per_image_2k = 0.134;
+  global.models.images.gemini.find((model) => model.value === PRO).usd_per_image_2k = 0.134;
+  global.models.images.gemini.find((model) => model.value === FLASH).usd_per_image_2k = 0.101;
+  global.models.images.minimax[0].usd_per_image_2k = null;
+  const before = structuredClone(global);
+  for (const [model, price] of [[PRO, 0.134], [FLASH, 0.101], [MINI, null]]) {
+    const effective = imageStatus(global, story(model));
+    assert.equal(effective.image.usd_per_image_2k, price);
+    assert.equal(imageSizeFor(effective), price === null ? null : "2K");
+    assert.equal(imagePrice(effective, null, "2K"), price ?? 0);
+  }
+  const named = imageStatus(global, story(FLASH));
+  const fake = fakeStage(named, { actualModel: FLASH, actualPrice: 0.101 });
+  await fake.generate({ size: imageSizeFor(named) });
+  assert.equal(fake.bodies[0].size, "2K");
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.101);
+  const keyInput = { prompt: "synthetic drawing", seed: 1 };
+  assert.equal(fakeStage(imageStatus(global, null)).stage.imageKey(keyInput), fakeStage(global).stage.imageKey(keyInput));
+  assert.deepEqual(global, before, "named metadata must not change the shared settings");
 });
 
 test("the Flash estimate permits a generation below the cap that the default Pro estimate would block", async () => {

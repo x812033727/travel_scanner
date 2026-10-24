@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -734,6 +734,85 @@ test("dub refuses a drama whose characters speak with exit 3, so the worker skip
   const card = capture(explainer, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", explainer.slug, "--locale", "en", "--dry-run"], card.ctx), EXIT.ok, card.out.stdout + card.out.stderr);
   assert.match(card.out.stdout, /^en: \d+ requests, \d+ to synthesize/m);
+});
+
+test("invalid required music refuses a dub before speech, journal entries or audio caches are created", async (t) => {
+  const { mixHash } = await import("../core/drama.mjs");
+  const cases = [
+    ["missing manifest", (manifest) => null, /manifest.json is missing/],
+    ["duration hold", (manifest) => ({ ...manifest, duration_hold: true }), /duration hold/],
+    ["short track", (manifest) => ({ ...manifest, actual_seconds: 1 }), /shorter than/],
+    ["unverified duration", (manifest) => ({ ...manifest, duration_measurement: null }), /no fully decoded actual duration/],
+    ["missing hash", (manifest) => ({ ...manifest, sha256: null }), /no SHA-256 binding/],
+    ["changed bytes", (manifest) => ({ ...manifest, sha256: "0".repeat(64) }), /no longer matches/],
+    ["missing file", (manifest) => ({ ...manifest, file: "music/missing.mp3" }), /generated music file is missing/],
+    ["stale settings", (manifest) => ({ ...manifest, mix_hash: "0".repeat(64) }), /older music settings/],
+    ["invalid loop", (manifest) => ({ ...manifest, actual_seconds: 1, loop: { method: "stream_loop", sha256: manifest.sha256, track_seconds: 1, cut_seconds: manifest.actual_seconds } }), /shorter than/],
+  ];
+  for (const [name, mutate, problem] of cases) await t.test(name, async () => {
+    const box = sandbox();
+    const doc = { ...geminiDoc(fixture()), music: { prompt: "quiet instrumental, no vocals" } };
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+    writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+    const server = fakeServer();
+    const ffmpeg = fakeFfmpeg();
+    await narrate(box, server, ffmpeg);
+    const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+    const file = path.join(box.workdir, "music", "bed.mp3");
+    mkdirSync(path.dirname(file), { recursive: true });
+    writeFileSync(file, "retained paid music");
+    const manifest = mutate({ source: "generated", file: "music/bed.mp3", mix_hash: mixHash(doc), sha256: await sha256File(file), actual_seconds: timeline.total_frames / 30 + 1, duration_measurement: "ffmpeg_full_decode" });
+    if (manifest) writeFileSync(path.join(box.workdir, "music", "manifest.json"), JSON.stringify(manifest));
+    const journal = path.join(box.workdir, "audio", "speech-journal");
+    const journalBytes = () => readdirSync(journal).sort().map((name) => [name, readFileSync(path.join(journal, name)).toString("base64")]);
+    const before = journalBytes();
+    const calls = server.calls.length;
+    const run = capture(box, server, ffmpeg);
+    assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx), EXIT.usage, run.out.stdout + run.out.stderr);
+    assert.match(run.out.stderr, problem);
+    assert.equal(server.calls.length, calls, "music is checked before even the speech status read");
+    assert.deepEqual(journalBytes(), before, "the retained narration journal is byte-for-byte unchanged");
+    assert.equal(existsSync(dubArtifacts(box.workdir, "en").audio), false, "no dub audio cache was created");
+  });
+});
+
+test("a verified generated bed passes preflight, and music changed during speech still refuses the final mix", async (t) => {
+  const { mixHash } = await import("../core/drama.mjs");
+  for (const changed of [false, true]) await t.test(changed ? "file changes after speech starts" : "current generated track", async () => {
+    const box = sandbox();
+    const doc = { ...geminiDoc(fixture()), music: { prompt: "quiet instrumental, no vocals" } };
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+    writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+    const server = fakeServer();
+    const ffmpeg = fakeFfmpeg();
+    await narrate(box, server, ffmpeg);
+    const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+    const file = path.join(box.workdir, "music", "bed.mp3");
+    mkdirSync(path.dirname(file), { recursive: true });
+    writeFileSync(file, "retained paid music");
+    writeFileSync(path.join(box.workdir, "music", "manifest.json"), JSON.stringify({ source: "generated", file: "music/bed.mp3", mix_hash: mixHash(doc), sha256: await sha256File(file), actual_seconds: timeline.total_frames / 30 + 1, duration_measurement: "ffmpeg_full_decode" }));
+    const fetch = server.fetchImpl;
+    let speech = 0;
+    server.fetchImpl = async (url, init) => {
+      const result = await fetch(url, init);
+      if (!url.endsWith("/status") && ++speech === 1 && changed) writeFileSync(file, "changed while speech was being synthesized");
+      return result;
+    };
+    const run = capture(box, server, ffmpeg);
+    const code = await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx);
+    assert.ok(speech > 0, "valid music permits speech work");
+    if (changed) {
+      assert.equal(code, EXIT.usage, run.out.stdout + run.out.stderr);
+      assert.match(run.out.stderr, /no longer matches its manifest SHA-256/);
+      assert.equal(existsSync(dubArtifacts(box.workdir, "en").track("m4a")), false);
+      assert.ok(existsSync(dubArtifacts(box.workdir, "en").cache), "completed speech remains cached for recovery");
+    } else {
+      assert.equal(code, EXIT.ok, run.out.stdout + run.out.stderr);
+      assert.ok(ffmpeg.calls.some((args) => args.includes(file)), "the validated bed is carried in the dub");
+    }
+  });
 });
 
 test("a dub of an illustrated video carries the music bed and the cut's effects track in its own format, and status marks it stale when they change", async () => {

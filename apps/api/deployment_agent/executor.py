@@ -33,6 +33,7 @@ APPLICATION_SERVICES = (
     "alert-scheduler",
     "hotspot-collector",
     "analytics-scheduler",
+    "community-sweeper",
     "web",
 )
 

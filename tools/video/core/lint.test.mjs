@@ -1013,4 +1013,8 @@ test("a tutorial's promise sentence is not a table of contents; sections and ord
   assert.deepEqual(opening("接下來分成三段，帶你學會怎麼用。", "tutorial"), ["scenes[0]"], "sections named as such");
   assert.deepEqual(opening("第一，先看價格。第二，再看額度。最後，教你怎麼選。", "tutorial"), ["scenes[0]"], "an ordinal run");
   assert.deepEqual(opening("接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題。", "tutorial"), ["scenes[0]"], "an announcement with no promise verb");
+  assert.deepEqual(opening(`${codex}接下來我會告訴你，權限、上下文，還有專案。`, "tutorial"), ["scenes[0]"], "a separate list announcement cannot borrow the promise's exemption");
+  for (const hedge of ["可能用", "不能用", "可能做"]) {
+    assert.deepEqual(opening(`這支影片${hedge}三個工具，接下來我會告訴你，權限、上下文，還有專案。`, "tutorial"), ["scenes[0]"], `${hedge} does not promise a viewer action`);
+  }
 });

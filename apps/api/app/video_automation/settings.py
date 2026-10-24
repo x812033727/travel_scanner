@@ -123,6 +123,7 @@ def _media_options(kind: MediaKind) -> dict[MediaProvider, list[MediaOptionView]
                 native_audio=model.native_audio,
                 usd_per_second=model.usd_per_second,
                 usd_per_image=model.usd_per_image,
+                usd_per_image_2k=model.usd_per_image_2k,
                 usd_per_track=model.usd_per_track,
             )
             for model in media_options(vendor, kind)

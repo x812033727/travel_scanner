@@ -6295,3 +6295,47 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/tts/check.test.mjs` | `373bfd9b285f0b4c2386116a17dfe800845874412c0583ae2c1480cca3c6097b` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
 | `tools/video/tts/tts.test.mjs` | `9430c36b0c1e2f19cb3233cfb99e86d6904fa54ae2a5e72f7c1dea3205e920ad` |
+
+## Open-task reconciliation: handoff, dub music and tutorial opening increment (2026-10-24)
+
+Independent reviewer: codex-independent-open-tasks-review-20261024. Authors: codex-open-tasks-docs, codex-open-tasks-tools and codex-open-tasks-api. Verdict: **PASS — DURATION_ONLY** for the frozen bindings below. Required duration fixes remaining: **none**.
+
+This increment continues the predecessor report at SHA256 6b3de57985147623d16fedd42da21d0c4194710ba786fcc1c450f6f0de22507f and predecessor receipt at SHA256 ec1c6241f398461540176c734199942458bf31b3ba68b101e7aea0be742f8d62. Every preceding report byte and historical binding table is retained as evidence of its own revision. Exactly four bindings advance; the other 104 current receipt bindings match their predecessor bytes. Those unchanged files and the original factual claims were not freshly re-reviewed.
+
+The reviewer inspected the actual author diffs and their callers. The rewritten-film handoff preserves the old work directory and required preview attachments before an explicitly authorized website drop, uses a new slug and current outline options, and retains the unchanged-body-only renewal boundary. It changes no production state or duration policy. The dub preflight uses the current narration timeline's exact frame count, validates the existing shared music contract before speech status or synthesis, and invokes the same check again at mixing. It neither extends a short body nor replays an uncertain paid request. The tutorial opening check removes only one eligible promise sentence before checking the remaining opening for a contents announcement; an ordinal run, named sections and a separate list still warn, and 可能用/不能用/可能做 do not acquire a promise exemption. Measured body floors, C08/C20 exclusive identities and upper bounds, source hashes, bookend accounting and owner gates remain unchanged.
+
+Related unbound implementation diffs were inspected too: slides_image credential readback, explicit claim-id versus verifier-row matching, the repeat tool's existing watermark pin, and inclusion of community-sweeper on both deployment forward and rollback commands. The historical QA-report comparison covers 190 tracked reports with no change to any current latest-report acceptance; the two non-latest false-to-true changes are row-number false matches, not newly accepted facts. Original report bytes remain unchanged. Invalid SFX still being checked after speech is a separate follow-up; this increment does not expand the music task to that path.
+
+Independent local verification used the app-bundled Node v24.22.1, with its directory prepended to PATH for child Node processes: media stages plus shared skills 31/31 passed; QA facts 5/5 passed; tutorial promise plus repeat 3/3 passed; unchanged measured-duration core/QA regressions 25/25 passed, including one-frame C08/C20 boundaries; the new forward/rollback service contract passed 1 test with 7 deselected in the existing API virtual environment. A separate offline lexicon fixture verified all seven inherited Latin prototype names, preservation of existing own terms and immutable story proposal/shared-source behavior, with no repository code change. The first focused dub run had 11 passes and two failure counts from a Windows EPERM during the existing narration fixture's speech-journal rename, before the new preflight; the normal-generated and mid-speech-change cases then passed 3/3 on a narrow rerun. The reviewer also read the author's full dub/music-loop result (37/37, zero skips) and image-stage result (24/24, zero skips). This does not claim a full tools-suite or Linux CI run.
+
+No real provider request, paid synthesis, production media generation, production write, import, approval, upload or publication was performed. This receipt accepts the inspected duration-related change and exact bytes; it does not replace factual, image, audio, playback or owner acceptance.
+
+### Frozen changed SHA256 bindings
+
+| File | SHA256 |
+| --- | --- |
+| `.agents/skills/youtube-video/references/automated.md` | `583cda761ce169cd9b0c600ff80137bc6a829192c7cc2ede0b9bdce8aaf7ea32` |
+| `tools/video/core/lint.mjs` | `60e47fc3e303fded0a80a5069d35baa47f3abb2e2fa58f8954ece0f962cd3547` |
+| `tools/video/core/lint.test.mjs` | `3ae7b74639dbeeeea60ce89284b975cd5d90320219eb56bee893c7c4ea361fed` |
+| `tools/video/dubs/dubs.test.mjs` | `b95b080ce0cd03a74577769ce41245a3d6f9272e1733324c865fbb91c143d0ba` |
+
+## Branch open-tasks-reconcile-20261024 Gemini image metadata increment: 4 files (2026-10-24)
+
+Reviewer: codex-independent-gemini2k-review-20261024. Author: codex-open-tasks-price. Scope: **DURATION_ONLY**. Verdict: **PASS**. Required duration fixes remaining: **none**.
+
+Baseline: all four predecessor bindings match the corresponding blobs at main `63d49d575a76302b9a82ca611b55bb6a7f6418f6`. This increment retains the complete preceding report bytes (SHA256 `cf92f69cbeb25097cb9d01550b0ea228ab67556927ee10cec1c043bde8e33150`) as its prefix and the preceding receipt (SHA256 `1ab7f7645fa96d654f565f4f2f3536325d4b3dd4859eb398ef52aec83a87bae0`) as the binding baseline. Exactly four current bindings advance; all other 104 bindings remain identical. Every frozen source/test file was independently checked against the author's six-file SHA256 manifest.
+
+Findings: the API adds an optional nullable image-model 2K price and forwards the existing catalog value; no catalog prices change. The worker selects that named model's own 2K metadata, retaining 1K for an older API that omits it and retaining the MiniMax default size. The existing slides-image credential fix stays present. A regression exercises an existing paid 1K keyframe, upgrades only the API metadata, proves the cached manifest and cache record are retained without another image request, then explicitly forces a new 2K request. Other new coverage checks serialization, distinct Pro/Flash estimates, the actual submitted size, booked cost, unchanged default cache keys and immutable shared status. This changes no narration, time budget, measured-duration floors, 600/780-second targets, C08/C20 identities or exclusive boundaries, source hashes, runtime specifications, covered states, approvals or owner cost gates.
+
+Ran: independent six-file diff and caller inspection, four-file main-baseline verification, full 108-file binding comparison, and frozen-manifest verification. The receipt regression checks and long-form plan checker are required after writing this increment. Related complete API/media checks are recorded separately with their actual process exits; this duration-only finding does not claim a full tools suite or Linux CI result.
+
+Non-claims: no provider calls, paid generation, production writes, deployment, media import, owner approval, upload, publication, or playback acceptance. Existing paid 1K pictures remain accepted by the unchanged cache policy until an explicit redraw; this is not evidence that those pictures are newly generated at 2K.
+
+### Gemini metadata frozen changed SHA256 bindings
+
+| File | SHA256 |
+| --- | --- |
+| `apps/api/app/video_automation/schemas.py` | `60b2aa3b7fe8961517340364c47f86ebaf20be3a822b71bfa968566331694ea1` |
+| `apps/api/app/video_automation/settings.py` | `53d9f4f8bc68050c7bed82505f2838c09478ea39076193063db8bd1376ad7328` |
+| `apps/api/tests/test_video_automation_settings.py` | `a168bd0b83f1b22d2896c25e3445e70c6dbb2d6d59857cb9a78c23ba625c20c2` |
+| `tools/video/media/look-keyframes.test.mjs` | `fbe107f47952de0c793432106f8805def22c268b64455e0906137c88b21da67e` |

@@ -402,6 +402,7 @@ class MediaOptionView(StrictModel):
     native_audio: bool
     usd_per_second: float | None
     usd_per_image: float | None
+    usd_per_image_2k: float | None = None
     usd_per_track: float | None
 
 
