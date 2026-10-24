@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-preserve-c-series-episode-evidence-before
 title: Preserve C-series episode evidence before PR closeout
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-23T16:30:51Z
 created_at: 2026-10-23T09:21:17Z
-completed_at:
+completed_at: 2026-10-24T00:50:36Z
 branch: codex/c-series-evidence-c19-v5-20261024
 depends_on: []
 scope:
@@ -53,9 +53,10 @@ uses one existing checkout and creates no new worktree.
 
 ## Definition of done
 
-- [ ] All C01–C20 evidence folders and distinct independent receipts are preserved in one
-      reviewable integration PR; original approved `script.md` SHA-256 values remain unchanged.
-- [ ] Each open C-series PR is accounted for before merge or close, with any unique code or
+- [x] All C01–C20 evidence folders and distinct independent receipts are preserved on main
+      through integration PR #1778 and C19 corrections #1792 and #1795; original approved
+      `script.md` SHA-256 values remain unchanged.
+- [x] Each open C-series PR is accounted for before merge or close, with any unique code or
       media outside this narrow documentation scope handled separately.
 
 ## Steps
@@ -93,3 +94,14 @@ this is evidence preservation, not owner script approval or a paid production re
 passes. `npm run test:docs-videos` runs 235/236 tests green; unrelated existing Windows
 test `docs/videos/imported-long-languages/runner.test.mjs:679` reproduces a child Node
 exit 3221226505, with no stderr, and is being triaged separately. No new worktree made.
+
+2026-10-24 final preservation audit: #1778 and C19 follow-ups #1792/#1795 are all
+merged. The current tree contains all twenty episode folders and distinct C09/C12
+review siblings. All eleven entries in `approved-scripts.json` match their current
+`script.md` SHA-256 values; the original ten hashes match the #1778 manifest.
+No episode C01–C20 PR remains open; the separate #1802 PR only closes the
+preproduction progress task. C01/C02 preview media and audio acceptance remain
+in `2026-10-23-verify-c01-c02-preview-media-and`; C03–C06 prior charges and
+budget routing remain in `2026-10-23-reconcile-c-series-prior-charges-and`.
+This closes source/evidence preservation, not media QA, paid production or
+upload readiness.

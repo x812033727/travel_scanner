@@ -6084,6 +6084,64 @@ Ran: Node v24.13.0, Windows, in the worktree at `78221b2a9` (clean): the baselin
 Non-claims: this is a 1-file incremental source duration review. It does not bind or re-review the unbound files the commit changes (they were read only to answer this question), or the other 107 bound files; it does not judge whether looping a bed sounds acceptable, whether 30 s or the 0.5 s slack are the right figures, or the owner's choice to reuse the approved cut's loop for dubs, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## C15 written-language lint precision increment: 2 files (2026-10-24)
+
+Reviewer: `codex-c15-receipt-rebind`. Author: `codex-c15-canonical-preflight` (source commit `6be628ab2`). Scope: DURATION_ONLY for `tools/video/core/lint.mjs` and `tools/video/core/lint.test.mjs`. The reviewer wrote neither source file and compared the two-file diff against current `origin/main` after the C15 branch's merge of main. All earlier review increments remain intact.
+
+Baseline: before this increment `review.md` hashed to `ccb375cc7af5514ebd81dfd65bc5f692c4077115fb42e784bb57aa9a120595e7`. The 108-file registry and table agreed with the worktree for 106 files. `node tools/video/long-form/cli.mjs check` and the shipped binding test reported exactly two stale paths: `tools/video/core/lint.mjs` (`f757dfd12c02529f30737831bbd0cdc72c868299861d09de8dc951c8e1be9ee6` -> `4a24499dc1d67eeb90fa30c8ccce96d34abd9a246e50963ecdc66644ed0e7689`) and `tools/video/core/lint.test.mjs` (`8fce9454d6cad19b2734c97bf7898dc7a273175aacaa83aa5b93ef9be06a9d05` -> `a48389a9d57d5a680f81a65541653f416aff2903c7a9232ae8c68a9f6578772f`). Both new values are SHA-256 over raw working-tree bytes. No other binding is changed here.
+
+Findings: the source inserts `/(?<!日)本文/u` and uses it only for the existing `WRITTEN_ONLY` phrase `本文`; every other phrase keeps the same `includes` check. This prevents `日本文字` and `日本文化` from falsely matching the suffix `本文`, while `本文指出原因`, `在本文我們會比較`, and a later standalone `本文` still produce the existing written-language error. The five new test cases cover precisely those outcomes. The diff changes no `target_minutes`, `MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `needsMinimumLength`, `total_frames`, measured body duration, QA floor or assembly path. It adds no duration error or exception, and no duration assertion is removed or loosened. The eight-minute non-drama floor and any identity-specific exception remain in their previously bound code.
+
+Ran: `git diff origin/main HEAD -- tools/video/core/lint.mjs tools/video/core/lint.test.mjs`; raw file SHA-256; `node tools/video/long-form/cli.mjs check` before rebinding (only these two stale); `node --test tools/video/core/lint.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/review.test.mjs` before rebinding (66 pass, one expected stale-binding failure). The CLI and tests are rerun after rebinding; the report hash is written to review.json after this text is final.
+
+Non-claims: this review addresses source-duration regression risk for the two changed bound files. It does not approve C15 narration length, media, a paid pilot, backend import, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining from this diff: none.
+
+## C08 approved short-v8 duration and lint increment: 4 files (2026-10-24)
+
+Reviewer: codex-root-c08-duration-review. Author: codex-c08-short-backend (source head fe1838515e8c887bdde03aef57d5e6722daf6e05). Scope: DURATION_ONLY for tools/video/core/duration.mjs, duration.test.mjs, lint.mjs and lint.test.mjs. This reviewer did not write those four source files and inspected their diff from main and the frozen C08 short-v8 project.
+
+Baseline: prior report SHA256 f4605f077ee5b6ba796556a5d9da614b1471d470d284377c15d8bd97bf1d9829; 104 of 108 existing bindings matched current files. Before rebinding, the guarded CLI reported exactly these four stale paths. Only their raw-byte SHA256 bindings change below; the other 104 are unchanged.
+
+Findings: the exception requires exact C08 short-v8 slug, explainer drama format, noncompilation, everyday series episode 8, sole cute-mystery look, [4,5] target, 36 ordered line IDs and visible text at SHA256 31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9, and ordered say/say_for values at SHA256 1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c. Changing narration or its speech override returns to the ordinary 480-second measured-body floor; changing an image prompt does not extend the narration approval. The exact source needs a current measured body of at least 240 seconds and a checked final cut of at most 300 seconds including bookends. Lint accepts a four-minute draft floor but retains narrated-story checks. All other series episodes retain their existing policy.
+
+Ran: bundled Node v24.13.0 core duration/lint and QA duration tests, 74 passed, zero failed. Cases include one-frame boundaries, stale timeline, altered identity, text or speech, and unchanged narration with edited media. Guarded CLI and receipt tests run after rebinding. MoMA expanded speech has a paper final estimate of about 301.63 seconds, above the cap; actual speech and final frames remain unmeasured and HOLD. This receipt does not approve paid media, backend import, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY for these four source bytes; no duration-code fix remains from this diff.
+
+## C08 short-v8 final QA CLI corrective increment: 2 files (2026-10-24)
+
+Reviewer: codex-root-c08-qa-review. Author: codex-c08-short-backend (source head 3a16c041963e8ea23714c805ff8c191972d1fdfc). Scope: DURATION_ONLY for tools/video/qa/cli.mjs and tools/video/qa/duration.test.mjs. This reviewer wrote neither source file; the prior four-file C08 core/lint review did not cover the separate final QA CLI path.
+
+Baseline: prior report SHA256 b193fe3a78db8f86ca32bbf7d6f74c2188b2b671b317d2c812b8114ec0daa787. The guarded long-form CLI reported exactly these two QA files stale; the other 106 of 108 bindings match the current checkout. This increment changes only those two raw-byte bindings and the report hash.
+
+Findings: final QA previously passed minMinutes=8 to assembleItem even for the frozen C08 short-v8, so a valid four-to-five-minute cut would fail after the independent core duration check. The author now omits that redundant general floor only when isC08ApprovedShortStory(doc) accepts the exact frozen identity and narration. The unchanged knowledgeDurationProblems still requires a current measured body of at least 7200 frames and a checked final cut of at most 9000 frames including selected bookends. All ordinary and historical C08 projects still receive the eight-minute floor. The code does not permit padding with bookends or stale timeline/checks.
+
+Ran independently with bundled Node v24.19: core duration, lint and QA duration tests 75/75 passed. The new real QA CLI fixture explicitly sets VIDEO_MIN_EPISODE_MINUTES=8, then restores it; actual CLI reports body 7199 fail, body 7200 pass, final 9000 pass and final 9001 fail. The historical 84-line C08 fails at the short runtime. Fixture WAVs and final bytes are synthetic and do not prove a produced cut. The prior four-file review was correct for its bound core/lint paths but missed this final CLI integration gap; this corrective increment closes that gap for the new QA bytes.
+
+Verdict: PASS - DURATION_ONLY for these two source bytes; actual C08 TTS duration, final.mp4, paid production, backend import, deployment, upload and publication remain unverified.
+
+## C20 Zippo approved short-v8 measured duration increment: 6 files (2026-10-24)
+
+Reviewer: `codex-c20-duration-independent-review`; author: `codex-c20-short-duration`. Scope: DURATION_ONLY for `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs`, `tools/video/qa/cli.mjs` and `duration.test.mjs`. The reviewer wrote none of these source or test files and read their delta against main `dac5e8331c8312d2fe8c818d0b4bab12ef636281` and the existing C08 exception.
+
+Baseline report SHA256: `926ee0480dc3a8ef51898fa2cf067af1000a75ebbc31fe0218287dbc2e451dc3`. The guarded long-form CLI reported exactly these six stale bindings before renewal; the other 102 of 108 bindings matched. Only the six raw-byte SHA256 bindings below and this report hash change:
+
+| File | Prior SHA256 | Reviewed SHA256 |
+| --- | --- | --- |
+| `tools/video/core/duration.mjs` | `6c7fe00c9ac68730bec717f10929eff9bf9e12ddaf7b80a1882f4b7279475111` | `dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d` |
+| `tools/video/core/duration.test.mjs` | `699a9ef5bbce2b8a53ba957937375793eec67a932250776b311188832ec55a6c` | `2945430037b75c142f4f14f3b07736c102073f85daa6cea984bb1e6ea667a6bd` |
+| `tools/video/core/lint.mjs` | `c73f2a82f595b258b13576806b1320fd1aa51ac4ba3cf99285aff122c7f46e7c` | `6573e87d4b29f786375d8a0f7b56402ee7ae04874c3d4e2020cdb0acd8fb6faf` |
+| `tools/video/core/lint.test.mjs` | `146acef1849fbadfd4e2ed6f3fb52177a74b40b29361d7bfb7eac33dee792f95` | `65b2169c0180dd0850b6e9e3a71304bd0b8245b5f8db7a77b8eac8a38195bf74` |
+| `tools/video/qa/cli.mjs` | `3f88cb712d7658e0ac2659e79ea67b673f4201b50d04b330265d4b620dcd2c32` | `993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33` |
+| `tools/video/qa/duration.test.mjs` | `0dd86e17c7048f1873d86abf4c07219eed41ca756c0e1bf30288527635ceb3d8` | `306d8f2c1f0474b668fb0b7cbb956a2595231ec649dc6cca8124753b43924cf8` |
+
+The exact C20 short-v8 exception requires its slug, noncompilation explainer drama format, everyday series episode 20, sole cute-mystery look, `[5,7]` target and 36 ordered line IDs with visible-text SHA256 `57600d182ae57947e2426e8551b19bc9e660b8808616d7d44b72122a0b666632` and ordered `say`/`say_for` SHA256 `be30d595b6ab35f0d84a5afb56e24b6d20cb079c66536e95c8d85eb5d159faae`. The reviewer recomputed both from `video.json` and independently matched the three approved v8 source-file hashes in the owner receipt. Altering an ID, character, `say` or `say_for` returns the project to the ordinary 480-second measured-body floor. The historical C20 slug and other episodes do not inherit the exception; C08's 240-second body/300-second final rule is unchanged.
+
+The C20 measured narration body must be at least 9,000 frames (300 seconds), excluding intro/outro; the checked presented cut must be at most 12,600 frames (420 seconds), including selected bookends. Lint accepts a five-minute draft floor and still runs narrated-story cadence checks. QA CLI bypasses the redundant generic eight-minute `minMinutes` input only for the same frozen C20 predicate. Shared duration validation still requires a current actual TTS timeline, matching speech hash, correct selected bookend frames and checked final-frame receipt. The reviewer reran bundled Node v24.19 core duration, lint and QA duration tests: 77/77 PASS, including one-frame bounds, changed identity/text/speech/binding, stale evidence and ordinary-length regression. `build.mjs --check` PASS; C20 lint 0 errors/15 warnings; nonpaid preflight PASS for 36 scenes, 33 shots and three cards; task-board check PASS.
+
+Verdict: PASS - DURATION_ONLY for these six reviewed bytes. This confirms the current TTS timeline and assembly's checked frame receipt, not an independent new probe of `final.mp4` during QA; non-anime final bytes are bound later by approval/package. C20 actual TTS, audible pronunciation, final media, budget route, paid generation, backend import, upload and publication remain HOLD.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -6155,11 +6213,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/branding.test.mjs` | `97a554bdd2a4564e0cef66a3d60088378d92c82f20f22a2859fe2573b0d7efdf` |
 | `tools/video/core/drama.mjs` | `0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1` |
 | `tools/video/core/drama.test.mjs` | `dd57757c7ed3ba058cc45827ac09308dc55404be89f90b696f127af3d98c1272` |
-| `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
-| `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
+| `tools/video/core/duration.mjs` | `dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d` |
+| `tools/video/core/duration.test.mjs` | `2945430037b75c142f4f14f3b07736c102073f85daa6cea984bb1e6ea667a6bd` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `f757dfd12c02529f30737831bbd0cdc72c868299861d09de8dc951c8e1be9ee6` |
-| `tools/video/core/lint.test.mjs` | `8fce9454d6cad19b2734c97bf7898dc7a273175aacaa83aa5b93ef9be06a9d05` |
+| `tools/video/core/lint.mjs` | `6573e87d4b29f786375d8a0f7b56402ee7ae04874c3d4e2020cdb0acd8fb6faf` |
+| `tools/video/core/lint.test.mjs` | `65b2169c0180dd0850b6e9e3a71304bd0b8245b5f8db7a77b8eac8a38195bf74` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
@@ -6187,8 +6245,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
 | `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
-| `tools/video/qa/cli.mjs` | `52eb1ed14c075dc861dd9cb1780ee78a1eb0a171b401389f6b791425d527f06e` |
-| `tools/video/qa/duration.test.mjs` | `23d46fee69ea26bff4150d29b74086d363bdf9d171e92cf898e3cf5a6560428d` |
+| `tools/video/qa/cli.mjs` | `993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33` |
+| `tools/video/qa/duration.test.mjs` | `306d8f2c1f0474b668fb0b7cbb956a2595231ec649dc6cca8124753b43924cf8` |
 | `tools/video/qa/qa.test.mjs` | `8c28422af33173c7d19c6e2d9d401247f2007878ffe18ed48989a0a2eeeaab30` |
 | `tools/video/review/sync.mjs` | `c031cfca0a09be601c791c3aa1bcee7e13495a8a6121865679b979b6e98d64eb` |
 | `tools/video/review/sync.test.mjs` | `32d9e0a8408989cc138b8821824d0029a37471b2bb8962a39bff9d8d9ebf0290` |

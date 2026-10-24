@@ -74,7 +74,21 @@ PREFIXES: dict[str, tuple[str, str | None]] = {
     "C": ("tech", None),
 }
 EVERYDAY_REVERSALS_SLUG = "brand-stories-everyday-reversals"
+# The X letter belongs to this one series of company turns; its stories may be any category.
+COMPANY_TURNS_SLUG = "brand-stories-company-turns"
+# Batches imported for review only: the series is created paused, every row stays planned, and
+# the file must carry the builder's independent review certification for its twenty stories,
+# whose ids are the letter here and 01 to 20.
+REVIEW_ONLY_SERIES = {EVERYDAY_REVERSALS_SLUG: "C", COMPANY_TURNS_SLUG: "X"}
 C03_VIDEO_SLUG = "story-everyday-moleskine-c03"
+C08_ORIGINAL_VIDEO_SLUG = "story-everyday-kikkoman-c08"
+C08_SHORT_VIDEO_SLUG = "story-everyday-kikkoman-c08-short-v8"
+C20_ORIGINAL_VIDEO_SLUG = "story-everyday-zippo-c20"
+C20_SHORT_VIDEO_SLUG = "story-everyday-zippo-c20-short-v8"
+APPROVED_REVIEW_ONLY_SLUG_CHANGES = {
+    "C08": (8, C08_ORIGINAL_VIDEO_SLUG, C08_SHORT_VIDEO_SLUG),
+    "C20": (20, C20_ORIGINAL_VIDEO_SLUG, C20_SHORT_VIDEO_SLUG),
+}
 LIMITS = {
     "title": 60,
     "logline": 120,
@@ -129,7 +143,7 @@ CLAIM_KEYS = frozenset(("claim", "sources", *CLAIM_FLAGS))
 COLUMN_KEYS = ("number", "title", "logline", "slug")
 
 # fullmatch throughout: ``$`` would let a trailing newline through, where JavaScript's does not.
-ID = re.compile(r"[ABKTC][0-9]{2}")
+ID = re.compile(r"[ABKTCX][0-9]{2}")
 SLUG = re.compile(r"story-[a-z0-9](?:[a-z0-9-]{0,52}[a-z0-9])?")
 SERIES_SLUG = re.compile(r"[a-z0-9][a-z0-9-]{1,39}")
 GUIDE_SLUG = re.compile(r"[a-z0-9][a-z0-9-]{0,118}[a-z0-9]")
@@ -268,7 +282,9 @@ def story_problems(story: Any, *, series_slug: str | None = None) -> list[str]:
     problems = [f'unknown field "{key}"' for key in story if key not in FILE_KEYS]
     story_id = story.get("id")
     if not isinstance(story_id, str) or not ID.fullmatch(story_id):
-        problems.append(f'id "{story_id}" is not a letter A, B, K, T or C and two digits')
+        problems.append(f'id "{story_id}" is not a letter A, B, K, T, C or X and two digits')
+    elif story_id.startswith("X") and series_slug != COMPANY_TURNS_SLUG:
+        problems.append(f"id {story_id}: X stories belong to the {COMPANY_TURNS_SLUG} series")
     slug = story.get("slug")
     if not isinstance(slug, str) or not SLUG.fullmatch(slug):
         problems.append(
@@ -541,27 +557,31 @@ def _json_sha256(value: Any, *, sorted_keys: bool = False) -> str:
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
 
 
-def _review_certification_problems(document: dict[str, Any], rows: list[Any]) -> list[str]:
-    """Bind this one reviewed C batch to the exact authored and compiled episode text.
+def _review_certification_problems(
+    document: dict[str, Any], rows: list[Any], series_slug: str
+) -> list[str]:
+    """Bind one reviewed batch (C or X) to the exact authored and compiled episode text.
 
     This is a workflow consistency gate, not a signature of a reviewer's identity. The builder
     produces it only after verifying the separate independent source receipts. It also keeps
     its unreviewed ``stories.draft.json`` out of the production importer.
     """
+    letter = REVIEW_ONLY_SERIES[series_slug]
+    batch = f"{series_slug} {letter}"
     certificate = document.get("review_certification")
     if (
         not isinstance(certificate, dict)
         or set(certificate) != {"series_slug", "status", "entries"}
-        or certificate.get("series_slug") != EVERYDAY_REVERSALS_SLUG
+        or certificate.get("series_slug") != series_slug
         or certificate.get("status") != "independent-verified"
     ):
-        return ["everyday C stories need the builder's independent review certification"]
+        return [f"{batch} stories need the builder's independent review certification"]
     entries = certificate.get("entries")
     if not isinstance(entries, list) or len(rows) != 20 or len(entries) != 20:
-        return ["everyday C review certification must match exactly twenty stories"]
+        return [f"{batch} review certification must match exactly twenty stories"]
     problems: list[str] = []
     for index, (story, proof) in enumerate(zip(rows, entries, strict=True), start=1):
-        label = f"C{index:02d}"
+        label = f"{letter}{index:02d}"
         if not isinstance(story, dict) or not isinstance(proof, dict):
             problems.append(f"{label}: invalid review certification row")
             continue
@@ -624,7 +644,7 @@ def check_story_file(document: Any, series_slug: str) -> FileCheck:
         f"{key} (top level)"
         for key in document
         if key not in ("schema_version", "series", "stories")
-        and not (series_slug == EVERYDAY_REVERSALS_SLUG and key == "review_certification")
+        and not (series_slug in REVIEW_ONLY_SERIES and key == "review_certification")
     ]
     version = document.get("schema_version")
     if not _is_int(version) or version != SCHEMA_VERSION:
@@ -638,10 +658,11 @@ def check_story_file(document: Any, series_slug: str) -> FileCheck:
     stories: list[Any] = raw if isinstance(raw, list) else []
     if not stories:
         problems.append("stories must list at least one story")
-    if series_slug == EVERYDAY_REVERSALS_SLUG:
-        problems.extend(_review_certification_problems(document, stories))
+    if series_slug in REVIEW_ONLY_SERIES:
+        problems.extend(_review_certification_problems(document, stories, series_slug))
         if series_object.get("planned_episodes") != 20:
-            problems.append("everyday C series.planned_episodes must be 20")
+            letter = REVIEW_ONLY_SERIES[series_slug]
+            problems.append(f"{series_slug} {letter} series.planned_episodes must be 20")
     refused: list[str] = []
     for index, story in enumerate(stories):
         own = story_problems(story, series_slug=series_slug)
@@ -960,7 +981,7 @@ async def import_story_rows(
 
     Nothing is written unless ``apply`` and no problem was found. When the series does not
     exist, ``apply`` creates it from the file's series object (kind ``story``, active), except
-    that the everyday reversals series is created paused for review-only import. An
+    that a review-only series (REVIEW_ONLY_SERIES) is created paused. An
     existing series row is never changed (the owner may have edited it), and the fields that
     differ are reported. ``limit`` imports only the first stories in production order; a later
     run without it adds the rest.
@@ -968,6 +989,7 @@ async def import_story_rows(
     command), the stories created, updated and left alone, and the ``limit`` it ran with.
     """
     report = StoryImportReport(series=series_slug, apply=apply)
+    review_only = series_slug in REVIEW_ONLY_SERIES
     check = check_story_file(document, series_slug)
     report.stories = len(check.stories)
     report.problems.extend(check.problems)
@@ -1005,7 +1027,7 @@ async def import_story_rows(
             )
             return report
         report.series_differs = series_differences(series, check.series)
-        if series_slug == EVERYDAY_REVERSALS_SLUG:
+        if review_only:
             required = {
                 "target_minutes", "planned_episodes", "image_model", "look",
                 "style_preset", "hands_off", "visual_tier", "compilation",
@@ -1013,7 +1035,7 @@ async def import_story_rows(
             mismatched = sorted(required.intersection(report.series_differs))
             if mismatched:
                 report.problems.append(
-                    "everyday series production settings differ from certified plan: "
+                    "review-only series production settings differ from certified plan: "
                     + ", ".join(mismatched)
                 )
                 return report
@@ -1026,26 +1048,37 @@ async def import_story_rows(
                 )
             ).all()
         )
-    if series_slug == EVERYDAY_REVERSALS_SLUG and series is not None and series.status != "paused":
-        report.problems.append(
-            f"{EVERYDAY_REVERSALS_SLUG} must have status paused before import"
-        )
+    if review_only and series is not None and series.status != "paused":
+        report.problems.append(f"{series_slug} must have status paused before import")
         return report
-    if series_slug == EVERYDAY_REVERSALS_SLUG and series is not None:
+    if review_only and series is not None:
         expected_rows = {story["id"]: story for story in check.stories}
         for row in rows:
             if row.status != "planned" or row.request_id is not None or row.started_at is not None:
                 report.problems.append(
-                    f"existing everyday episode #{row.number} has advanced beyond planned"
+                    f"existing review-only episode #{row.number} has advanced beyond planned"
                 )
-            story_id = (row.beats or {}).get("id")
-            expected = expected_rows.get(story_id)
+            story_id = row.beats.get("id") if isinstance(row.beats, dict) else None
+            expected = expected_rows.get(story_id) if isinstance(story_id, str) else None
+            approved_change = (
+                APPROVED_REVIEW_ONLY_SLUG_CHANGES.get(story_id)
+                if isinstance(story_id, str) else None
+            )
+            approved_slug_change = (
+                series_slug == EVERYDAY_REVERSALS_SLUG
+                and approved_change is not None
+                and expected is not None
+                and row.number == expected["number"] == approved_change[0]
+                and row.slug == approved_change[1]
+                and expected["slug"] == approved_change[2]
+            )
             if (
                 expected is None or row.number != expected["number"]
-                or row.slug != expected["slug"] or row.chapter_number != 1
+                or (row.slug != expected["slug"] and not approved_slug_change)
+                or row.chapter_number != 1
             ):
                 report.problems.append(
-                    f"existing everyday episode #{row.number} does not match the certified batch"
+                    f"existing review-only episode #{row.number} does not match the certified batch"
                 )
         existing_requests = list((await session.scalars(
             select(VideoDramaRequest).where(or_(
@@ -1055,7 +1088,7 @@ async def import_story_rows(
         )).all())
         for request in existing_requests:
             report.problems.append(
-                f"everyday series has drama request {request.slug}; review-only import refused"
+                f"{series_slug} has drama request {request.slug}; review-only import refused"
             )
         if report.problems:
             return report
@@ -1104,7 +1137,7 @@ async def import_story_rows(
         selected,
         rows,
         in_file={story["id"] for story in check.stories},
-        review_only=series_slug == EVERYDAY_REVERSALS_SLUG,
+        review_only=review_only,
     )
     report.problems.extend(problems)
     report.notes.extend(notes)
@@ -1130,7 +1163,7 @@ async def import_story_rows(
         if new_series is None:  # its problems were reported above
             return report
         series = await add_series(session, actor, new_series)
-        if series_slug == EVERYDAY_REVERSALS_SLUG:
+        if review_only:
             # add_series normally activates a story series. Keep this review-only
             # batch paused in the same transaction that creates its episode rows.
             series.status = "paused"

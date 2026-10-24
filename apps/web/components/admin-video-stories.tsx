@@ -123,7 +123,7 @@ const CATEGORIES = ["everyday", "asia-brand", "tech"] as const;
 const REGIONS = ["global", "jp", "kr", "tw"] as const;
 const CHAPTER_KEYS = ["hook", "origin", "idea", "engine", "turn", "now"] as const;
 const SOURCE_KINDS = ["official", "court", "academic", "archive", "reference", "news", "book"] as const;
-const STORY_ID = /^[ABKTC][0-9]{2}$/;
+const STORY_ID = /^[ABKTCX][0-9]{2}$/;
 // The series slug the import's path takes (SERIES_SLUG_PATTERN in the API's schemas).
 export const STORY_SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 // Where a story is, from its episode and its video: not started, in the making, ready to upload,

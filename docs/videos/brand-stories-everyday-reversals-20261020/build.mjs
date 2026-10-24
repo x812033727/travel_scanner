@@ -45,8 +45,10 @@ const rows = IDs.map((id, index) => {
   if (row.number !== index + 1 || row.publish?.day !== index + 1 || row.publish?.slot !== "12:00") {
     problems.push(`${id}: number and noon publish day must follow the twenty-film order`);
   }
-  if (typeof row.slug !== "string" || !/^story-everyday-[a-z0-9-]+-c\d{2}$/.test(row.slug) ||
-      !row.slug.endsWith(`-${id.toLowerCase()}`)) {
+  const c08Short = id === "C08" && row.slug === "story-everyday-kikkoman-c08-short-v8";
+  const c20Short = id === "C20" && row.slug === "story-everyday-zippo-c20-short-v8";
+  if (typeof row.slug !== "string" || (!(c08Short || c20Short) && (!/^story-everyday-[a-z0-9-]+-c\d{2}$/.test(row.slug) ||
+      !row.slug.endsWith(`-${id.toLowerCase()}`)))) {
     problems.push(`${id}: slug must be distinct story-everyday-...-${id.toLowerCase()}`);
   }
   if (!draft) {

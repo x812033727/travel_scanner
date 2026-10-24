@@ -18,8 +18,6 @@ scope:
   - apps/web/components/admin-video-manual-upload.tsx
   - apps/web/components/admin-video-manual-upload.test.tsx
   - docs/videos/APPROVED-LANGUAGE-PACKAGE.md
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Language batches carry each language's thumbnail and the manual guide reads them
@@ -55,3 +53,6 @@ languages' captions, titles and descriptions.
 ## Notes
 
 - Claimed with --force: `2026-10-22-409` (claude-fable-5.1) also lists `tools/video/review/sync.mjs`, but its code merged as #1697 and only a host check is left, so nothing of it edits the file now.
+- 2026-10-24: The owner authorized releasing only `docs/videos/long-form/review.md` and
+  `docs/videos/long-form/review.json` from this ticket for C15's independent duration
+  review binding. Other scope and pending deploy work stay here.

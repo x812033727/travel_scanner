@@ -1,0 +1,18 @@
+{
+  "id": "X11",
+  "reviewed": "2026-10-24",
+  "reviewer": "Claude Opus independent source reviewer x_review_c",
+  "story_sha256": "6da40f3198fac2a8132aa1317da0a0e5a78b336e3f3ad130fca9feb960e66df7",
+  "verdict": "fixed",
+  "sources_opened": 7,
+  "changes": [
+    "must_verify[2]: FY2023 10-K puts one FedEx in Q4 but DRIVE (which includes Network 2.0) in Q2; the claim no longer says both were announced in Q4",
+    "chapters idea: Network 2.0 is now described as part of the DRIVE program launched earlier in FY2023, not as announced alongside one FedEx",
+    "sources[1].supports: rewritten to match the Q2 DRIVE / Q4 one FedEx timing",
+    "sources[5] added: FedEx Newsroom 2023-04-05 release (worker-readable), cited by must_verify[2] for one FedEx, June 2024 and Network 2.0 within DRIVE",
+    "sources[6] added: FedEx 10-Q for the quarter ended 2024-08-31 (2.06 MB, worker-readable), cited by must_verify[3] for the 2024-06-01 merger",
+    "reviewer_only [0,1,4,5,6,7]: the five 10-Ks are 3.45-9.07 MB, over the worker's 3 MB limit, and no readable official page carries the FY2022 facility counts, the 290/130/720/530 and 360 counts, the risk wording or the FY2024 e-commerce rationale (the FY2023-FY2026 Q4 earnings releases on SEC were checked and do not)"
+  ],
+  "notes": "Network 2.0 屬 FY2023 第二季宣布的 DRIVE，不可說與 one FedEx 同季宣布。地點數各有口徑：FY2025 美加約 290、美國約 130；FY2026 年報美國約 360，同份另有美加約 410；10-Q 另寫 2024-08-31 美加逾 150、2025-08-31 美加約 360。後者與 FY2026 美國約 360 同數不同口徑，皆不可混用、相減或推出加拿大地點數。",
+  "reviewer_only": [0, 1, 4, 5, 6, 7]
+}

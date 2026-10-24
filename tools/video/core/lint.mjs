@@ -9,7 +9,7 @@ import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
-import { isA01CompactStory } from "./duration.mjs";
+import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
@@ -24,6 +24,8 @@ import { isCompilation } from "./compilation.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
+// `本文` also overlaps the start of 日本文字/日本文化; still catch a real `本文` later in the line.
+const SELF_REFERENTIAL_TEXT = /(?<!日)本文/u;
 // Narrating how the facts were checked belongs in claims.md, not in the viewer's ear.
 export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "查核後", "截至查證"];
 // The same two lists for an English narration (`narration_locale: "en"`), matched without case.
@@ -423,7 +425,11 @@ export function lintVideo(doc, context = {}) {
       error(label, `"say" was written for an older "text"; update it, then set say_for to ${textHash(line.text)}`);
     }
     if (URL.test(line.text) || URL.test(spoken)) error(label, "never read a URL aloud: say it is in the description");
-    for (const phrase of WRITTEN_ONLY) if (line.text.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
+    for (const phrase of WRITTEN_ONLY) {
+      if (phrase === "本文" ? SELF_REFERENTIAL_TEXT.test(line.text) : line.text.includes(phrase)) {
+        error(label, `"${phrase}" is written language; say it the way you would out loud`);
+      }
+    }
     for (const phrase of PROCESS_TALK) if (line.text.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
     if (english) {
       const lower = line.text.toLowerCase();
@@ -480,7 +486,7 @@ export function lintVideo(doc, context = {}) {
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
-  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc);
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
   // A brand story is narrated and opens on the condensation even when its pictures have a cast.
   if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
@@ -494,7 +500,7 @@ export function lintVideo(doc, context = {}) {
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
   // short: qa's assemble item measures the cut.
-  const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
+  const floor = isC08ApprovedShortStory(doc) ? 4 : isC20ApprovedShortStory(doc) ? 5 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
   // Where the floor holds it is the only length rule (owner, 2026-10-04): the upper end of
