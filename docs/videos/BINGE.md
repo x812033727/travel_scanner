@@ -263,6 +263,8 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 
 合集是「有卡片與縮圖的漫劇」：不能有 `characters`、`look`、`music`、`series`、鏡頭場景，不能 `burn_in`（沿用每集畫面，另產合集 CC）；場景由 `compilation` 區塊推出（每集一張 `chapter` 卡 `card-<N>`「第 N 集 〈標題〉」，最後一張 `outro`），`numbers` 讓跳過的集數留空號。章節卡 2 秒（`CARD_FRAMES = 60`）、片尾 4 秒（`OUTRO_FRAMES = 120`）；`chapter_cards: false`／`outro: false` 就不放。`category_id` 是 24（娛樂），不是教學片的 28。`lintCompilation` 對佔位標題只警告（工人先建文件再由企劃命名；`status` 會等）。
 
+**頻道片頭片尾只在合集放一次**（站主 2026-10-24：「一集一集製作，但每一集就不用放片頭跟片尾；用一個合集把所有的先合再一起加片頭片尾，合集分章節就好，我每次看合集就好」）：`series.json` 的 `compilation` 為真的作品，每一集 `assemble` 時 `core/branding.mjs` 的 `selectBrandingForBuild` 回 null（`episodeOfCompilation`：`series.compilation === true` 且不是 `isCompilation` 的文件），成片＝本體、秒數＝`timeline.json`、`checks.json` 沒有 `branding`，成片審核看到的就是本體；`--adopt-branding` 與 `--intro-after-condensation` 對這種集都拒絕（`adoptionRefusal`／`replacementRefusal`），之前成片留下的 `branding.json` pin 也不會把片頭片尾帶回來。合集影片本身（`<作品>-full`）照 [`BRANDING.md`](BRANDING.md) 包一次頻道片頭（最前面）與片尾；`compile` 對沒有 `branding` 的集直接用它的 `final.mp4`（已核准的雜湊），對 2026-10-24 前帶片頭片尾做好的集（如《系統說我是 BUG》e001–e004）照舊用留存的 `build/body.mp4`，兩種集可以混在同一部合集裡。沒有 `compilation` 的作品、單集漫劇、品牌故事、教學片、解說的品牌行為不變。
+
 **步驟** `COMPILATION_STEPS`（`core/state.mjs` 的 `stepsFor(doc)`；後台標籤在 `review/sync.mjs` 的 `STEP_LABELS`）：
 
 | 步驟 | 誰 | 做什麼 |
