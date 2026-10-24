@@ -9,7 +9,7 @@
 //
 // This file imports nothing from prompts.mjs, which imports it.
 
-import { CONDENSATION_RULE, NARRATIVE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 export const STORY_VARIANT = "story";
 export const STORY_FIX_VARIANT = "story-fix";
@@ -148,6 +148,8 @@ only)}.
   least three; every chapter but "now" leaves one hanging, and "now" leaves none.
 ${NARRATIVE_RULES}
 ${STORY_HOOK_RULES}
+${STORY_OPENING_RULE}
+${TOLD_TO_ONE_VIEWER}
 - Pictures follow "look" (every picture's style), "image_notes" as written, and "story_rules".
   With "sensitivity" "care", never draw the accident, the injury or the protest itself: draw the
   places, the systems and how people changed them. A recurring figure of "cast" is drawn from its
