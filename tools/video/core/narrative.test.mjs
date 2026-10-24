@@ -561,3 +561,50 @@ test("a manga-tier drama lands a hook inside every 30 seconds of its shots, with
   assert.ok(manga.length >= 1, "the manga tier is warned");
   assert.deepEqual(lintVideo(flat, context("clips")).warnings.filter((warning) => /no hook between/.test(warning.message)), []);
 });
+
+// The two story series are told to one viewer (register.mjs TOLD_TO_ONE_VIEWER, 2026-10-25): lint
+// counts 「你」, and the blind panel reads the opening the reference channels use (the stakes,
+// the scene, one promise sentence) instead of three teasers.
+import { isStorySeries, STORY_SERIES_PANEL_QUESTIONS, VIEWER_ADDRESS_PER_1000, viewerAddressProblems } from "./narrative.mjs";
+
+test("a story-series script that never turns to the viewer is warned once; two 「你」 a thousand characters is enough", () => {
+  assert.equal(VIEWER_ADDRESS_PER_1000, 2);
+  // The minimal fixture's own 170 characters say 「你」 six times; a script of chapters that never do is what the check is for.
+  const doc = stretched();
+  for (const scene of doc.scenes) for (const line of scene.lines ?? []) line.text = line.text.replaceAll("你", "他");
+  const timeline = estimateTimeline(doc);
+  const minutes = timeline.total_frames / FPS / 60;
+  const [warning] = viewerAddressProblems(doc);
+  assert.match(warning.message, /「你」 0 times in \d+ spoken characters/);
+  assert.match(messages(narrativeProblems(doc, timeline, { minutes, cadence: TIGHT_CADENCE }).warnings), /told to one viewer/);
+  assert.doesNotMatch(messages(narrativeProblems(doc, timeline, { minutes }).warnings), /told to one viewer/, "the explainers keep their register");
+  // lint reads it on a curio- slug and a brand story, not on an explainer.
+  assert.match(messages(lintVideo({ ...structuredClone(doc), slug: "curio-x01" }, context()).warnings), /told to one viewer/);
+  assert.doesNotMatch(messages(lintVideo({ ...structuredClone(doc), slug: "ai-term-x01" }, context()).warnings), /told to one viewer/);
+  // Turning to the viewer about once a chapter clears it.
+  const told = stretched(fixture(), { pad: "換成你站在那片甲板上，大概也會先看那條斷掉的繩子，然後想到那九個桶。這一句只是把範例拉長到一集的長度。" });
+  assert.deepEqual(viewerAddressProblems(told), []);
+  // A script too short to judge is left alone.
+  assert.deepEqual(viewerAddressProblems(fixture()), []);
+});
+
+test("a curio- or story- slug reads the panel in the viewer wording, with its own contract hash; the ids and required flags do not move", () => {
+  assert.equal(isStorySeries({ slug: "curio-h01-v2" }), true);
+  assert.equal(isStorySeries({ slug: "story-everyday-crocs-c01" }), true);
+  assert.equal(isStorySeries({ slug: "sothatswhy-t26" }), false);
+  const curio = { ...fixture(), slug: "curio-h01-v2" };
+  const questions = panelQuestions(curio);
+  assert.deepEqual(questions.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
+  assert.deepEqual(questions.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
+  for (const id of Object.keys(STORY_SERIES_PANEL_QUESTIONS)) assert.equal(questions.find((question) => question.id === id).question, STORY_SERIES_PANEL_QUESTIONS[id], id);
+  assert.match(questions.find((question) => question.id === "opening_hooks").question, /承諾句/);
+  assert.match(questions.find((question) => question.id === "scene_first").question, /利害/);
+  assert.notEqual(panelRulesSha256(curio), PANEL_RULES_SHA256);
+  assert.notEqual(panelRulesSha256(curio), panelRulesSha256({ ...fixture(), category: "tutorial" }));
+  assert.equal(panelRulesSha256({ ...fixture(), slug: "story-adapt-seiko" }), panelRulesSha256(curio), "both series share one contract");
+  const verdict = { passed: true, answers: [], failed: [], advisory: [] };
+  assert.equal(narrativeRecord(curio, verdict, 1).panel_rules_sha256, panelRulesSha256(curio));
+  assert.equal(narrativeReviewMatches(narrativeRecord(curio, verdict, 1), curio), true);
+  // A verdict recorded against the story wording no longer matches a curio script: it is read again.
+  assert.equal(narrativeReviewMatches(narrativeRecord(fixture(), verdict, 1), curio), false);
+});

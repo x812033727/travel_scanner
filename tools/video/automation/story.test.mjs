@@ -17,7 +17,7 @@ import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture
 import { validateLexicon } from "../core/lexicon.mjs";
 import { reviseStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
-import { NARRATIVE_PANEL, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { NARRATIVE_PANEL, panelRulesSha256 } from "../core/narrative.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isStory } from "../core/story.mjs";
 import { ROOT, readJson } from "../core/paths.mjs";
@@ -1063,7 +1063,7 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   const video = composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, root: "." });
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
-  assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+  assert.deepEqual(video.subtitles, { burn_in: true, style: "drama" }, "new brand stories burn zh-TW subtitles in (the owner, 2026-10-25)");
 });
 
 test("only A01 writes to an eight-minute budget while the shared pilot series stays ten", async () => {
@@ -1134,7 +1134,7 @@ test("a ten-minute story carries the exact MiniMax cute look from series to vide
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.equal(video.category, "story");
-  assert.equal(video.subtitles.burn_in, false, "the merged script keeps zh-TW captions switchable");
+  assert.equal(video.subtitles.burn_in, true, "the merged script keeps the burned-in zh-TW subtitles");
   assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
 });
 
@@ -1252,7 +1252,8 @@ test("a story goes from the site's job to its first media step: started from its
 
   // No script gate for a story: approved here with the reason; nothing went to the owner.
   assert.match(await automation.step(), /a story has no script gate; the screenplay is approved here/);
-  assert.equal(readJson(panelFile).panel_rules_sha256, PANEL_RULES_SHA256);
+  // A brand story (a story- slug) is read in the story-series wording (2026-10-25), so its contract hash is its own.
+  assert.equal(readJson(panelFile).panel_rules_sha256, panelRulesSha256(world.video()));
   assert.equal(readApprovals(workdir).approvals.find((entry) => entry.gate === "script").note, SCRIPT_NOTE);
   assert.ok(existsSync(path.join(dir, "script.md")));
   assert.equal(world.runs.length, 0, "no media command and no review before the script is approved");
