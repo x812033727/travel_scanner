@@ -54,7 +54,14 @@ def schema_is_current(current_revision: str | None) -> bool:
     if current_revision == expected:
         return True
     # Production migrates before switching application containers. These are
-    # the two exact, additive rollback pairs reviewed with budget readbacks.
+    # the exact, additive rollback pairs reviewed with budget readbacks.
     return (
-        expected == "0132_video_pilot_budget" and current_revision == "0133_story_followon_budget"
-    ) or (expected == "0137_video_manga_tier" and current_revision == "0138_story_everyday_budget")
+        (expected == "0132_video_pilot_budget" and current_revision == "0133_story_followon_budget")
+        or (
+            expected == "0137_video_manga_tier" and current_revision == "0138_story_everyday_budget"
+        )
+        or (
+            expected == "0138_story_everyday_budget"
+            and current_revision == "0139_c20_zippo_pilot_budget"
+        )
+    )
