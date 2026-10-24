@@ -14,11 +14,13 @@
 | --- | --- |
 | `script.md` | `D1E0C9CF7D89215EC1D0CC6DEA31C6AA6E7DEC08ECEF55326C8DC0AB379846C3` |
 | `script-source-notes.md` | `4D0FE982F202844DE50311B7ED6F2D01AEDF4D49D4FC9F10D90D6D998093620B` |
-| `visual-plan.md` | `CB291053DAA5C5B42068CC383A345742904E39FBB0FAA356CCB8ABD84DFC6D90` |
+| `visual-plan.md` | `2B8381352032E3001D1C4DB04505D2CBB80285EE6FEF8E743ACB00B2062BDAAF` |
 | `visual-plan.json` | `1C4441AA68A36C2AD11B53A839F2103F343FC5E918E2C68CDBE1B23911637057` |
 | `reviews/narration-v5r4-only.txt` | `F98F3D6E84CCF831FFBBF5BCED3712283F0ABC3558B8444FC982C835098F2225` |
 
 五份資料逐 ID 比對：**42/42** 個唯一 ID 同序；劇本、純旁白與 JSON 的旁白完全相同；劇本、來源表與 JSON 的來源標籤完全相同；視覺 Markdown 的圖片／字卡類型及提示詞與 JSON 完全相同。v5r3 的 59 個 ID 恰少上述 17 個，其餘原文不變。新分章把 `c200502–505` 的 JSON `chapter` 改為 `engine`；共 **38 張概念插圖、4 張後製字卡**，沒有相鄰字卡。
+
+非作者查核發現視覺檔頁尾仍留 v5r3 的 59／52／7 計數；作者只更正該頁尾為 42／38／4，未改逐鏡提示詞或純旁白，並重算上表 `visual-plan.md` 雜湊。此修訂需由非作者以新雜湊重新確認。
 
 ## 時長與剩餘關卡
 
