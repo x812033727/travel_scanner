@@ -1,7 +1,7 @@
 ---
 id: 2026-10-24-stage-exact-c20-0139-rollback-compatibility
 title: Stage exact C20 0139 rollback compatibility
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-c20-budget-compat
@@ -47,7 +47,7 @@ only an exact, read-verified rollback exception before any account migration.
       task-board scope collision; normal claim succeeded without force.
 - [x] Add exact 0139 classification and schema/readback checks.
 - [x] Add unit and isolated PostgreSQL/Compose rollback tests and CI gate.
-- [ ] Run focused checks, push a draft no-auto-merge PR, and record handoff.
+- [x] Run focused checks, push a draft no-auto-merge PR, and record handoff.
 
 ## How to verify
 
@@ -83,3 +83,7 @@ It does not exist in the release migration tree. The later migration must
 match this source or redo the exact compatibility review and test. Deploy this
 0138 compatibility application and verify its production readback before
 installing 0139. Neither step is authorized by this code-only ticket.
+
+Draft PR #1816 is labeled `no-auto-merge` and targets current main. Task is
+in `review` while the explicit CI PostgreSQL result and independent release
+review are pending. This is not a completed deployment or paid activation.
