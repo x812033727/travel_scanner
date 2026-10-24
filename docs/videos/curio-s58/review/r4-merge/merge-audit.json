@@ -1,0 +1,342 @@
+{
+  "slug": "curio-s58",
+  "round": "R4",
+  "rule": "official fixed OR: a cited YES from either reader passes a criterion",
+  "creative_sha256": {
+    "research.md": "0adab42902bd00393a4b7c945a4b37a9eae4f61e79cbbd2710085713f8643132",
+    "brief.md": "8d0d42c6c5cf1de97ee8b497db3d298540b9fc21e1fe3bcee024b749c8960e08",
+    "claims.md": "f0e340870fa7389224932ca732950fb990b4bdebcf4baaabf2d93fa3d994edc1",
+    "video.json": "78960f72a00a5fcc245896d680bc18f9481cef6c472dd9fc94d82ad80ae7e547",
+    "script.md": "b9451d33643dccd8ffc84f4a6f93074f4500adb50855f7a5529d9620eeaa8d0c"
+  },
+  "creative_matches_at_transcription": true,
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "original_path": "../r4-blind-a.md",
+      "original_sha256": "965de7b59b68e381db7486aa3d79071de7a058d34f4b05ce5c59aa0190e071b1",
+      "raw_copy_sha256": "965de7b59b68e381db7486aa3d79071de7a058d34f4b05ce5c59aa0190e071b1",
+      "answer_sha256": "3261c858673bc23ee7e65cf9b6c974e0f21614312e3557b0d4b3e95aa9b733c1",
+      "yes": 11,
+      "no": [
+        "chapters_link",
+        "no_recap"
+      ],
+      "citations": [
+        {
+          "id": "scene_first",
+          "vote": "YES",
+          "quoted_id": "s58001",
+          "quoted_line": "一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The first four narration lines place people and mailbags in an 1870 Paris balloon launch, then show the wind test (`script.md:9,13,17,21`)."
+        },
+        {
+          "id": "no_spoiler",
+          "vote": "YES",
+          "quoted_id": "s58005",
+          "quoted_line": "風向有利，大球也升起了；能越過軍線嗎？",
+          "original_reason_mentions_id": false,
+          "original_reason": "The opening stops at unresolved crossing, message attachment, homing, and bulk capacity questions (`script.md:25,33,37,41`)."
+        },
+        {
+          "id": "one_line",
+          "vote": "YES",
+          "quoted_id": "s58031",
+          "quoted_line": "十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The action moves from an October single-note flight to Dagron's November production and January request, in date order (`script.md:9,131,327,573–589`)."
+        },
+        {
+          "id": "no_toc",
+          "vote": "YES",
+          "quoted_id": "s58099",
+          "quoted_line": "圖爾的郵政檢查員監督製作，調整流程後能趕出多少份？",
+          "original_reason_mentions_id": false,
+          "original_reason": "The opening poses story questions (`script.md:25,33,37,41`) and gives no announcement of the video's coming sections."
+        },
+        {
+          "id": "chapters_link",
+          "vote": "NO",
+          "quoted_id": "s58108",
+          "quoted_line": "達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？",
+          "original_reason_mentions_id": false,
+          "original_reason": "One chapter ends by asking how many films a pigeon carries (`script.md:441`); the next opens by asking the same question again (`script.md:447`). The new 12-or-16-page figure describes one film, not the requested bird load, so this chapter opening still restates the previous question. The equipment question at `script.md:229` also gives way to clothing at the next opening (`script.md:235`)."
+        },
+        {
+          "id": "open_loops",
+          "vote": "YES",
+          "quoted_id": "s58013",
+          "quoted_line": "起飛的小球只試出當時的風；乘客靠什麼辨方向？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Unanswered questions or turns recur throughout, including `script.md:59,99,185,259,385,441,535,569`; there is no apparent 90-second stretch without one."
+        },
+        {
+          "id": "payoffs",
+          "vote": "YES",
+          "quoted_id": "s58111",
+          "quoted_line": "他在報告裡寫，曾把十八片放給同一隻鴿子帶。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The leg attachment question resolves at `script.md:103–111`, film load at `script.md:455–467`, reading tiny print at `script.md:515–523`, and January request at `script.md:581–601`. Delayed answers identify the relevant paper, film, or journey."
+        },
+        {
+          "id": "no_recap",
+          "vote": "NO",
+          "quoted_id": "s58080",
+          "quoted_line": "達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Dagron's arrival in Tours is stated at `script.md:327` and immediately restated at `script.md:331`, without an explicit callback or opening-forecast reason."
+        },
+        {
+          "id": "chapters_are_events",
+          "vote": "YES",
+          "quoted_id": "s58080",
+          "quoted_line": "達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Every chapter title describes an action or event, from the balloon launch through attaching film and receiving chemicals (`script.md:5,47,141,231,333,443,537`)."
+        },
+        {
+          "id": "outro_no_next",
+          "vote": "YES",
+          "quoted_id": "s58146",
+          "quoted_line": "那是他報告的一段鳥程，沒有量出每封私信多久抵達。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The ending limits what the six-day example proves and mentions no later video or file (`script.md:593–605`)."
+        },
+        {
+          "id": "opening_hooks",
+          "vote": "YES",
+          "quoted_id": "s58005",
+          "quoted_line": "風向有利，大球也升起了；能越過軍線嗎？",
+          "original_reason_mentions_id": false,
+          "original_reason": "After the concrete launch, four unresolved moments concern the army line, attaching a note, the bird's direction, and carrying many letters (`script.md:25,33,37,41`)."
+        },
+        {
+          "id": "one_thread",
+          "vote": "YES",
+          "quoted_id": "s58021",
+          "quoted_line": "那些鳥的巢還在巴黎；先把牠們帶出城，才有朝家飛的方向。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The problem of getting messages into besieged Paris links the homing birds (`script.md:91`), Dagron's film process (`script.md:135,451–467`), and the final pigeon-and-balloon exchange (`script.md:581–589`)."
+        },
+        {
+          "id": "no_detour",
+          "vote": "YES",
+          "quoted_id": "s58057",
+          "quoted_line": "村民還找了兩輛車，好搬走倖存的材料。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The long escape sequence tracks preservation of the film-making equipment (`script.md:177,229,243–255,315–319`), which the later workshop must replace or use (`script.md:385–397`); it serves the same delivery problem."
+        }
+      ]
+    },
+    {
+      "reader": "b",
+      "original_path": "../r4-blind-b.md",
+      "original_sha256": "f0380deb62cd71f4ea66d1ac11d9c7fd1f11c049dfbe98b34139f2337a7f4be0",
+      "raw_copy_sha256": "f0380deb62cd71f4ea66d1ac11d9c7fd1f11c049dfbe98b34139f2337a7f4be0",
+      "answer_sha256": "3261c858673bc23ee7e65cf9b6c974e0f21614312e3557b0d4b3e95aa9b733c1",
+      "yes": 11,
+      "no": [
+        "chapters_link",
+        "no_recap"
+      ],
+      "citations": [
+        {
+          "id": "scene_first",
+          "vote": "YES",
+          "quoted_id": "s58001",
+          "quoted_line": "一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The first four spoken lines put us in a dated Paris balloon launch with a passenger, mailbags, pigeons, and a wind test (`script.md:9–21`)."
+        },
+        {
+          "id": "no_spoiler",
+          "vote": "YES",
+          "quoted_id": "s58005",
+          "quoted_line": "風向有利，大球也升起了；能越過軍線嗎？",
+          "original_reason_mentions_id": false,
+          "original_reason": "The opening leaves the crossing, the bird's route, and the bulk-mail solution unresolved (`script.md:25–45`); their outcomes appear later (`script.md:71–75`, `script.md:119`, `script.md:449–467`)."
+        },
+        {
+          "id": "one_line",
+          "vote": "YES",
+          "quoted_id": "s58031",
+          "quoted_line": "十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The account moves from the October outbound balloon and single reply (`script.md:9–127`) to Dagron's November equipment trip (`script.md:131–327`), then film production, carriage, and later delivery (`script.md:335–605`). The October paper note returns only as a brief explicit comparison (`script.md:507`)."
+        },
+        {
+          "id": "no_toc",
+          "vote": "YES",
+          "quoted_id": "s58099",
+          "quoted_line": "圖爾的郵政檢查員監督製作，調整流程後能趕出多少份？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Spoken transitions pose in-story problems, such as the missing equipment and its replacement (`script.md:385–389`), rather than announce an outline. The numbered scene headings are production labels, not narration."
+        },
+        {
+          "id": "chapters_link",
+          "vote": "NO",
+          "quoted_id": "s58108",
+          "quoted_line": "達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Chapter six starts by asking again how many films a bird can carry (`script.md:447`), immediately after chapter five ends with the same unanswered question (`script.md:441`). Its added fact is pages per film, not the requested number of films; the actual answer waits until `script.md:459`."
+        },
+        {
+          "id": "open_loops",
+          "vote": "YES",
+          "quoted_id": "s58013",
+          "quoted_line": "起飛的小球只試出當時的風；乘客靠什麼辨方向？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Questions recur well within 90 seconds across the story, for example the balloon crossing and message attachment (`script.md:25–41`), the equipment losses (`script.md:229–259`), and the weight and readout of the film (`script.md:463–515`)."
+        },
+        {
+          "id": "payoffs",
+          "vote": "YES",
+          "quoted_id": "s58111",
+          "quoted_line": "他在報告裡寫，曾把十八片放給同一隻鴿子帶。",
+          "original_reason_mentions_id": false,
+          "original_reason": "Major questions receive new facts: the leg note is attached and released (`script.md:99–119`), the lost equipment is replaced (`script.md:385–389`), one bird's reported load is eighteen films under one gram (`script.md:441–471`), the writing is enlarged in Paris (`script.md:515–523`), and the requested chemicals arrive (`script.md:569–589`)."
+        },
+        {
+          "id": "no_recap",
+          "vote": "NO",
+          "quoted_id": "s58080",
+          "quoted_line": "達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Dagron's arrival at Tours is stated as the chapter-five handoff (`script.md:327`) and immediately restated at the next chapter opening (`script.md:331`), without an explicit callback."
+        },
+        {
+          "id": "chapters_are_events",
+          "vote": "YES",
+          "quoted_id": "s58080",
+          "quoted_line": "達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+          "original_reason_mentions_id": false,
+          "original_reason": "Each chapter heading names an action or result, such as the second cart passing checks (`script.md:231`), the switch from paper to film (`script.md:333`), and film tied to a pigeon's tail (`script.md:443`)."
+        },
+        {
+          "id": "outro_no_next",
+          "vote": "YES",
+          "quoted_id": "s58146",
+          "quoted_line": "那是他報告的一段鳥程，沒有量出每封私信多久抵達。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The final lines delimit what the twelve-hour flight and chemical delivery prove (`script.md:589–605`); they do not mention another video or file."
+        },
+        {
+          "id": "opening_hooks",
+          "vote": "YES",
+          "quoted_id": "s58005",
+          "quoted_line": "風向有利，大球也升起了；能越過軍線嗎？",
+          "original_reason_mentions_id": false,
+          "original_reason": "After the opening balloon scene, the first chapter leaves at least three later outcomes open: crossing the line (`script.md:25`), attaching an airborne report (`script.md:33`), the bird's direction (`script.md:37`), and the bulk-mail load (`script.md:41`)."
+        },
+        {
+          "id": "one_thread",
+          "vote": "YES",
+          "quoted_id": "s58021",
+          "quoted_line": "那些鳥的巢還在巴黎；先把牠們帶出城，才有朝家飛的方向。",
+          "original_reason_mentions_id": false,
+          "original_reason": "Getting messages into besieged Paris by pigeon remains the concrete problem: one handwritten note establishes the route (`script.md:83–127`), Dagron gets film-making equipment out (`script.md:131–327`), and the film is made, attached, and re-sent (`script.md:335–553`)."
+        },
+        {
+          "id": "no_detour",
+          "vote": "YES",
+          "quoted_id": "s58057",
+          "quoted_line": "村民還找了兩輛車，好搬走倖存的材料。",
+          "original_reason_mentions_id": false,
+          "original_reason": "The extended escape keeps tracking whether Dagron can preserve the equipment needed to make mail films (`script.md:139–149`, `script.md:229–319`); the film, loading, repeat dispatch, and chemical request all show the mail route in use (`script.md:335–605`)."
+        }
+      ]
+    }
+  ],
+  "merged_answer_sha256": "63279bd72dd43b78e3e3c6477a194492521da2a78228aae0ea71362c50e3ed4e",
+  "merged": {
+    "passed": false,
+    "yes": 11,
+    "failed": [
+      "chapters_link",
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[s58001] 一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[s58005] 風向有利，大球也升起了；能越過軍線嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[s58031] 十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[s58099] 圖爾的郵政檢查員監督製作，調整流程後能趕出多少份？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "yes": false,
+        "evidence": "讀者一：[s58108] 達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？；讀者二：[s58108] 達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？",
+        "yes_readers": 0
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[s58013] 起飛的小球只試出當時的風；乘客靠什麼辨方向？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[s58111] 他在報告裡寫，曾把十八片放給同一隻鴿子帶。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "讀者一：[s58080] 達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？；讀者二：[s58080] 達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": true,
+        "evidence": "[s58080] 達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[s58146] 那是他報告的一段鳥程，沒有量出每封私信多久抵達。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[s58005] 風向有利，大球也升起了；能越過軍線嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[s58021] 那些鳥的巢還在巴黎；先把牠們帶出城，才有朝家飛的方向。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[s58057] 村民還找了兩輛車，好搬走倖存的材料。",
+        "yes_readers": 2
+      }
+    ]
+  }
+}

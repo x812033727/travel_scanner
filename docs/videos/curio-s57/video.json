@@ -1,0 +1,2682 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；節奏自然，不替人物演逐字對白。",
+    "performance": "史丹利節錄本與李文斯頓身後編刊日記分開；勸歸兩書皆有，詳細對白只有史丹利；相遇日期不用精確日。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s57",
+  "sources": [
+    {
+      "title": "Henry M. Stanley, How I Found Livingstone，節錄出版敘述，固定版",
+      "url": "https://github.com/GITenberg/How-I-Found-Livingstone--13-Travels-adventures-and-discoveres-in-Central-Africa-including-an-a__5157/blob/41828f7623e5ba1b0db0a4c96630bda15bb0b66e/5157.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "David Livingstone, The Last Journals, Volume II，Horace Waller 1874 身後編刊，固定版",
+      "url": "https://github.com/GITenberg/The-Last-Journals-of-David-Livingstone-in-Central-Africa-from-1865-to-His-Death-Volume-II--of__17024/blob/bd976e865f60f2bc17628640378e4510969a94ad/17024-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s57008",
+      "payoff": "s57149",
+      "what": "補給是否到手"
+    },
+    {
+      "setup": "s57009",
+      "payoff": "s57072",
+      "what": "相遇後的勸歸"
+    },
+    {
+      "setup": "s57010",
+      "payoff": "s57157",
+      "what": "分路的原因"
+    },
+    {
+      "setup": "s57035",
+      "payoff": "s57036",
+      "what": "先報信的人"
+    },
+    {
+      "setup": "s57062",
+      "payoff": "s57063",
+      "what": "返國提議"
+    },
+    {
+      "setup": "s57083",
+      "payoff": "s57084",
+      "what": "相遇後同行方向"
+    },
+    {
+      "setup": "s57089",
+      "payoff": "s57091",
+      "what": "河流方向矛盾"
+    },
+    {
+      "setup": "s57138",
+      "payoff": "s57139",
+      "what": "舊布未追回前新援助先到"
+    },
+    {
+      "setup": "s57128",
+      "payoff": "s57133",
+      "what": "史丹利自己的儲物間仍有可用援助"
+    },
+    {
+      "setup": "s57061",
+      "payoff": "s57072",
+      "what": "恢復食慾後的去向"
+    },
+    {
+      "setup": "s57164",
+      "payoff": "s57165",
+      "what": "交日記前寫完的信"
+    },
+    {
+      "setup": "s57134",
+      "payoff": "s57143",
+      "what": "舊布包實際拿回的日期"
+    },
+    {
+      "setup": "s57107",
+      "payoff": "s57136",
+      "what": "李文斯頓原有的舊箱是否完整"
+    },
+    {
+      "setup": "s57122",
+      "payoff": "s57127",
+      "what": "找貨東行總共走了多久"
+    },
+    {
+      "setup": "s57117",
+      "payoff": "s57120",
+      "what": "水陸兩隊何時會合"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s57001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57001",
+          "text": "一八七二年三月，一本日記被壓上五道封印。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler presses a seal into a closed journal, inland caravan camp at dawn, no readable text",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "五道封印"
+    },
+    {
+      "id": "s57002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57002",
+          "text": "日記主人李文斯頓，把它交給史丹利保管。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer hands a wrapped journal toward the edge of frame, inland caravan camp at dawn, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57003",
+          "text": "史丹利的隊伍正要朝海岸出發。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter shoulders a travel bag beside a waiting caravan, inland caravan camp at dawn",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57004",
+          "text": "日記已要出發，主人又會往哪裡去？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer stands beside a quiet camp shelter, inland caravan camp at dawn",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57005",
+          "text": "幾個月前，兩人還一起搭船、走長路。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, canoe guide steers a small boat across a broad lake, inland caravan camp at dawn",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57006",
+          "text": "相遇前，他虛弱到每走一步都難受。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer rests a hand against a wooden post, inland caravan camp at dawn",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57007",
+          "text": "病痛之外，他還得替下一段路備貨。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler closes a plain travel chest at an inland camp at dawn, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57008",
+          "text": "等物資到手，他就會改變主意嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler looks along a distant caravan trail at dawn, inland camp, no readable text",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57009",
+          "text": "史丹利若勸他回家，他會怎麼回答？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, young reporter waits beside an open doorway, inland caravan camp at dawn",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57010",
+          "text": "兩人到了同一個路口，為何走成兩條路？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, grey-bearded explorer watches a distant footpath divide, inland caravan camp at dawn",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57011",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57011",
+          "text": "一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1871 晚秋",
+        "sub": "烏吉吉"
+      },
+      "chapter": "烏吉吉的空箱"
+    },
+    {
+      "id": "s57012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57012",
+          "text": "他在日記裡記下，長途回程幾乎耗盡體力。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer leans on a walking stick by a lakeshore, lakeside market near Lake Tanganyika",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57013",
+          "text": "那段路的後半，他甚至覺得自己快撐不住。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler pauses under the shade of a tree, lakeside market near Lake Tanganyika",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57014",
+          "text": "痛楚跟著每一步，胃口也消失了。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer pushes away a small meal, lakeside market near Lake Tanganyika",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57015",
+          "text": "進村時，他形容自己瘦得只剩一副骨架。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, elderly traveler sits down outside a lakeside house, lakeside market near Lake Tanganyika",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57016",
+          "text": "烏吉吉的商人們迎了出來；託管貨物的壞消息，要到傍晚才傳來。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one local merchant raises a welcoming hand near a lakeside market, single person, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57017",
+          "text": "市場就在眼前，下一段路的貨在哪裡？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler looks past market stalls toward an empty bag, lakeside market near Lake Tanganyika",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57018",
+          "text": "食物買得到，他原以為休息幾天就能好轉。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, grey-bearded explorer chooses a small portion of food, lakeside market near Lake Tanganyika",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57019",
+          "text": "可他的人告訴他，託管的布和珠子被賣了。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, elderly traveler inspects an empty storage shelf, lakeside market near Lake Tanganyika",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57020",
+          "text": "依他日記，本該存著三千碼布與七百磅珠，這些是路上換物資的本錢。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler gestures at nearly empty cloth and bead shelves in a lakeside Ujiji storeroom, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57021",
+          "text": "這是李文斯頓自己的失物控訴。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler writes a note beside an empty chest, lakeside market near Lake Tanganyika",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57022",
+          "text": "但沒有布和珠，休養後的出發仍是難題。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer closes an almost empty travel pouch, lakeside market near Lake Tanganyika",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57023",
+          "text": "這時，他等得到從海岸來的援手嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler looks down a quiet footpath, lakeside market near Lake Tanganyika",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57024",
+          "text": "他想等從海岸來的人，卻不想一無所有地等。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer sits beside a nearly empty travel bag, lakeside market near Lake Tanganyika",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57025",
+          "text": "一名商人提出，可以賣象牙換東西幫他。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, local trader gestures toward an ivory bundle at a market, lakeside market near Lake Tanganyika",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57026",
+          "text": "李文斯頓當時說，先不要。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer closes his palm in a calm gesture, lakeside market near Lake Tanganyika",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57027",
+          "text": "他另有少量東西寄放別處，並非毫無退路。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler opens a small cloth pouch, lakeside market near Lake Tanganyika",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57028",
+          "text": "遠在這次相遇前，另一條尋人路已經啟動。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter opens travel notes beside a hotel window, Paris Grand Hotel assignment room, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57029",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57029",
+          "text": "報社主編班奈特派史丹利找他。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "班奈特",
+        "sub": "尋人任務"
+      }
+    },
+    {
+      "id": "s57030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57030",
+          "text": "史丹利連他是否活著都不確定；還找得到嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, young reporter studies a blank travel map, Paris Grand Hotel assignment room, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57031",
+          "text": "班奈特還交代，若他缺東西，要帶物資幫忙。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, young reporter listens beside an empty travel notebook, Paris Grand Hotel assignment room, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57032",
+          "text": "按史丹利的回憶，班奈特讓他自行規劃怎麼找，還准他分批提領路費。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter arranges blank travel papers on a desk in the Paris Grand Hotel room, no readable text",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57033",
+          "text": "一邊在等援助，一邊正帶著援助靠近。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, caravan porter carries a wrapped bundle along a footpath, lakeside market near Lake Tanganyika",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57034",
+          "text": "就在他最困頓時，有人突然往屋前跑來。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, local assistant rushes along a village path toward a house, lakeside Ujiji settlement",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57035",
+          "text": "第一個把消息帶到屋前的，會是誰？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, local assistant runs toward a lakeside house, lakeside market near Lake Tanganyika",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57036",
+          "text": "蘇西跑回來，說他看見一個英國人。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, local assistant runs into the courtyard of a lakeside house, lakeside Ujiji settlement",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "蘇西跑來報信"
+    },
+    {
+      "id": "s57037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57037",
+          "text": "他又立刻轉身，去迎那個陌生訪客。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, local assistant hurries back toward a caravan, lakeside Ujiji settlement",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57038",
+          "text": "李文斯頓先看見隊伍前方的美國旗。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, grey-bearded explorer looks toward a small flag in the distance, lakeside Ujiji settlement",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57039",
+          "text": "旗後的陌生人，起初對他還沒有名字。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, elderly traveler watches a caravan emerge near the market, lakeside Ujiji settlement",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57040",
+          "text": "替隊伍舉旗的是阿斯馬尼，也有他的勞動。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, local flag bearer raises a small flag beside the lake, lakeside Ujiji settlement",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57041",
+          "text": "後面還跟著一捆捆貨物、帳篷和器具。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, caravan porter balances a canvas bundle on one shoulder, lakeside Ujiji settlement",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57042",
+          "text": "史丹利也寫到，旗幟把隊伍引進烏吉吉。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, flag bearer carries a small flag along the village edge, lakeside Ujiji settlement",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57043",
+          "text": "人群靠近時，史丹利才遇見蘇西。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter turns toward a call from the village lane, lakeside Ujiji settlement",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57044",
+          "text": "蘇西告訴他，李文斯頓就在這裡。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, local assistant points toward a nearby house, lakeside Ujiji settlement",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57045",
+          "text": "史丹利能從人群裡認出要找的人嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, young reporter searches a village crowd, lakeside Ujiji settlement",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57046",
+          "text": "最後，史丹利走到那位疲憊的老人面前。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, young reporter approaches a shaded veranda, lakeside Ujiji settlement",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57047",
+          "text": "史丹利記得，眼前人臉色蒼白，顯得疲倦。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter pauses before a quiet veranda, lakeside Ujiji settlement",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57048",
+          "text": "他書裡寫，兩人握過手才走向那間屋子。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter extends a hand toward the edge of frame, lakeside Ujiji settlement",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57052",
+          "text": "找人已經成功；接下來會把人帶回去嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter pauses at a lakeside doorway, lakeside Ujiji settlement",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57053",
+          "text": "李文斯頓在日記寫，自己兩年沒聽到歐洲消息；史丹利這次帶來不少。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler listens beside a travel satchel, lakeside Ujiji settlement",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57054",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57054",
+          "text": "連大西洋電報線接通的消息，他都還沒聽過。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "大西洋電報線",
+        "sub": "久未收到的消息"
+      }
+    },
+    {
+      "id": "s57056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57056",
+          "text": "這些新消息，讓他長久低落的心情振作。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer opens a shutter toward morning light, lakeside Ujiji settlement",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57057",
+          "text": "消息有了；原本缺的補給，何時才到？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler looks at a few unopened travel bales, lakeside Ujiji settlement",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57058",
+          "text": "他的胃口回來，一週後也覺得更有力氣。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, grey-bearded explorer eats a simple meal at a table, lakeside Ujiji settlement",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57059",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57059",
+          "text": "他的日記還記，用餐從一天兩次增到四次。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "兩次 → 四次",
+        "sub": "日記中的食慾"
+      }
+    },
+    {
+      "id": "s57060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57060",
+          "text": "可是力氣回來一點，不等於整段病痛消失。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, grey-bearded explorer rests after a short walk, lakeside Ujiji settlement",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57061",
+          "text": "身體好些之後，他會跟記者走回海岸嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler looks toward a far inland path, lakeside Ujiji settlement",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57062",
+          "text": "相遇沒多久，史丹利就問了更難的一題。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter pauses by a doorway before speaking, lakeside Ujiji settlement",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57063",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57063",
+          "text": "史丹利說，抵達後第二天就問他想不想返國。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "相遇後第二天",
+        "sub": "史丹利書中的勸歸"
+      },
+      "chapter": "第一個分岔"
+    },
+    {
+      "id": "s57064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57064",
+          "text": "他的提議，是回去休息，再來完成工作。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, young reporter gestures toward a distant coastal path, quiet Ujiji courtyard",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57065",
+          "text": "李文斯頓想見自己的孩子。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, elderly traveler holds a small family letter, quiet Ujiji courtyard, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57066",
+          "text": "在史丹利的敘述裡，想家與留下同時成立。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer puts down a folded family letter, quiet Ujiji courtyard, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57067",
+          "text": "依史丹利刊出的對話，他自估查水源還要六七個月。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler gestures toward a blank route sketch, quiet Ujiji courtyard, no readable text",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57068",
+          "text": "這段完整對話，是史丹利出版書裡的寫法。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter writes in a notebook beside a tent, quiet Ujiji courtyard, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57069",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57069",
+          "text": "那李文斯頓自己的日記，怎麼記這次勸歸？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "李文斯頓日記",
+        "sub": "勸歸也有記載"
+      }
+    },
+    {
+      "id": "s57072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57072",
+          "text": "身後編刊日記也記史丹利勸歸；他的判斷是先完成未竟考察。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded traveler closes a plain notebook and turns toward an inland research path, quiet Ujiji courtyard, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57073",
+          "text": "他相信那與尼羅河源的問題有關。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler considers a blank parchment by a river, quiet Ujiji courtyard, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57074",
+          "text": "他以為自己已經逼近答案，仍想親自確認。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer looks toward a distant river bend, quiet Ujiji courtyard",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57075",
+          "text": "可是他相信的水源，究竟查清了嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, elderly traveler peers toward an unseen river beyond trees, quiet Ujiji courtyard",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57076",
+          "text": "這是他的研究想法，還不是地理結論。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer sets down a compass beside a blank map, quiet Ujiji courtyard, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57077",
+          "text": "日記還記下女兒艾格妮絲的話。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler reflects beside a quiet house doorway, quiet Ujiji courtyard",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57078",
+          "text": "她盼他回家，也願他先把工作做到滿意。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, grey-bearded explorer pauses at a quiet threshold, quiet Ujiji courtyard",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57079",
+          "text": "對他而言，見家人與完成研究有先後順序。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, elderly traveler places a field notebook beside a walking stick, quiet Ujiji courtyard, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57080",
+          "text": "選擇繼續，不代表他從此不再虛弱。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, grey-bearded explorer pauses beside his walking stick, quiet Ujiji courtyard",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57081",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57081",
+          "text": "更要緊的是，這次勸歸早於二月補給到手。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "勸歸在先",
+        "sub": "補給到手在後"
+      }
+    },
+    {
+      "id": "s57083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57083",
+          "text": "不過兩人接著同路；他們先往哪裡去？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, canoe guide readies a small boat at a lakeshore, quiet Ujiji courtyard",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57084",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57084",
+          "text": "他們先朝坦干依喀湖的北端去。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "坦干依喀湖",
+        "sub": "北端"
+      },
+      "chapter": "先往湖的北邊"
+    },
+    {
+      "id": "s57085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57085",
+          "text": "李文斯頓說，船和人手由史丹利出。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, caravan porter loads a small bundle onto a boat, north shore of Lake Tanganyika",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57086",
+          "text": "史丹利的人手划船，兩人沿湖岸繼續查。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, local canoe guide paddles along a calm shoreline, north shore of Lake Tanganyika",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57087",
+          "text": "北行查水路，正是他不願先返家的研究一部分。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler surveys a river mouth from a boat with a local guide, north shore of Lake Tanganyika",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57089",
+          "text": "岸上有人給出了很肯定的說法。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, local river guide points toward a river mouth from a lakeside bank, north shore of Lake Tanganyika",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57090",
+          "text": "那個說法，隔天還會一樣嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, local river guide watches moving water at a river mouth, north shore of Lake Tanganyika",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57091",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57091",
+          "text": "有人先說湖水流出去，隔天又說流進來。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "流出？流入？",
+        "sub": "兩天的相反說法"
+      }
+    },
+    {
+      "id": "s57092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57092",
+          "text": "李文斯頓於是寫下：暫時保留判斷。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer writes beside a lake, north shore of Lake Tanganyika",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57093",
+          "text": "他仍相信湖有出口，但自己還沒找到證據。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler scans a river mouth from a canoe, north shore of Lake Tanganyika",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57094",
+          "text": "隔天，他們還打算往盧辛加那裡走。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer looks toward a distant north shore village path, north shore of Lake Tanganyika",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57097",
+          "text": "這趟湖上查訪，會讓他們改向海岸嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler looks from a canoe toward the shore, north shore of Lake Tanganyika",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57098",
+          "text": "北端史丹利發燒；好些後，隊伍才又行動。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot under a lakeside shelter on the north shore of Lake Tanganyika, one young reporter in 1870s travel clothes rests on a bedroll beside a closed canvas satchel, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57100",
+          "text": "十二月十三日，兩人回到烏吉吉。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, canoe guide brings a small boat into a familiar harbor, Ujiji harbor on the eastern shore of Lake Tanganyika",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57101",
+          "text": "十五日，李文斯頓在日記裡寫，正準備向東去取自己的貨。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler ties a plain cloth travel bundle in a Ujiji lakeside room, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57104",
+          "text": "十六日，他雇了到通韋的划船者，也找來一名嚮導。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a single canoe paddler steadies a narrow boat at the Ujiji shore, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57105",
+          "text": "十九至二十日，他把收藏的器物裝進大鐵箱，並寫明要由史丹利送回家。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler packs a plain large tin box with small collected objects in a Ujiji room, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57107",
+          "text": "往東找的那批舊貨箱，會完整等著李文斯頓嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler points toward distant storage crates along an eastbound road outside Ujiji, no readable labels",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57108",
+          "text": "史丹利後來又寫到，自己試著勸他返家。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter speaks beside a lakeside veranda, Ujiji lakeside village",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57109",
+          "text": "他甚至提議負擔往海岸的行程。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, young reporter points toward a waiting pack animal, Ujiji lakeside village",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57110",
+          "text": "史丹利在書裡還說，連烏尼安耶貝最好的驢都願替他找來，好讓這趟返程好走些。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter fastens the strap of a plain travel bag at a quiet veranda, soft overcast light, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57111",
+          "text": "他們離開湖邊時，方向朝東。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, caravan porter lifts a wrapped load at dawn, eastbound path outside Ujiji",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57112",
+          "text": "那條路通往物資，不是返國的終點。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, caravan porter follows a path away from a lake, eastbound path outside Ujiji",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57113",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57113",
+          "text": "東行第一天，盧伊切河便擋在隊伍與貨站之間。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1871.12 下旬",
+        "sub": "東行開始"
+      },
+      "chapter": "五十四天的東行"
+    },
+    {
+      "id": "s57114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57114",
+          "text": "同行的人、驢和山羊，一個也不能留在河的這頭。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, one caravan porter leads a donkey across a shallow river on the rainy eastbound route",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57115",
+          "text": "還沒到新年，他們就得先找豆子；前方沒有現成的路糧。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot on an inland route, one local porter holds an empty travel sack for a bean-finding errand beside a bare footpath with no food stalls in view, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57116",
+          "text": "新年第一天，風暴又讓隊伍暫時困在湖灣，無法接著前進。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, porter secures travel bundles beneath a sheltered lakeside awning while a storm blocks departure, inland route",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57117",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57117",
+          "text": "湖上與陸路隊伍分開走，接下來還能順利會合嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one canoe guide scans an empty inland path from a small boat near the lakeshore, overcast light, no drawn route map",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57118",
+          "text": "一月二日，他們在營地立旗，讓陸路隊伍看見該往哪裡走。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one canoe guide plants a plain signal flag at a Tanganyika shore camp, overcast morning light, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57120",
+          "text": "五日，人和山羊終於到齊，史丹利卻又發起燒來。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one young reporter rests beneath a camp shelter near Lake Tanganyika beside a packed travel bag, overcast light, no diagnosis shown",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57121",
+          "text": "李文斯頓趁隊伍停下，仍把考察筆記抄進自己的日記。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler copies notes into a closed-cover journal at a camp table, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57122",
+          "text": "先等人，再等病好；這趟找貨的路究竟要走多久？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one caravan porter waits beside packed bundles at a Tanganyika shore camp, inland supply road ahead, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57123",
+          "text": "六日，史丹利的狀況好些，隊伍才準備再次動身。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an inland camp after recovery, one young reporter folds a plain travel blanket beside a single packed canvas satchel, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57127",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57127",
+          "text": "李文斯頓後來把整段從烏吉吉到貨站的行程，算成五十四天。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "54 天",
+        "sub": "李文斯頓日記"
+      }
+    },
+    {
+      "id": "s57128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57128",
+          "text": "走了這麼久，史丹利自己的儲物間還有援助可用嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, reporter looks toward his own storeroom at the inland cargo post, crates with blank surfaces, no readable labels",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57129",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57129",
+          "text": "他又估計，這段找貨路走了三百多英里。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "300 多英里",
+        "sub": "當事人估算"
+      }
+    },
+    {
+      "id": "s57131",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57131",
+          "text": "到二月十八日，才抵烏尼安耶貝。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1872.02.18",
+        "sub": "抵烏尼安耶貝"
+      }
+    },
+    {
+      "id": "s57132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57132",
+          "text": "他寫自己很慶幸，總算走到了這個落腳處。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer sits outside a supply hut, rainy inland route",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57133",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57133",
+          "text": "抵達後，史丹利的儲物間仍有可用貨；他的貨與李的舊箱是兩批。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one young reporter opens a storeroom door at the inland cargo post, older plain crates set apart from fresh supply bales, no readable labels",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57134",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57134",
+          "text": "清點之後，哪怕一包短少的布，能找回嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer searches among cloth bundles inside a Unyanyembe storeroom, no readable text",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57135",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57135",
+          "text": "史丹利的書還記著：兩人到了貨站，再去打開李文斯頓原有的箱子。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one young reporter uses a hammer and chisel to open an older plain storage box at the inland cargo post, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57136",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57136",
+          "text": "一核對，李文斯頓原有貨物仍然短少；舊箱沒有完整等著他。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, older traveler compares partly empty old boxes with a blank tally sheet, no readable text, inland cargo post",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57137",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57137",
+          "text": "日記記：追問時，有人提到一包布的去處。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler listens beside a closed cloth store, Unyanyembe supply camp, no readable text",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57138",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57138",
+          "text": "那包舊布還沒拿回，先送到的是什麼？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, grey-bearded explorer looks between an old storage chest and new aid bales, Unyanyembe supply camp",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57139",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57139",
+          "text": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, one elderly traveler unpacks a fresh cloth bale at the inland cargo post, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "史丹利把貨交給他"
+    },
+    {
+      "id": "s57140",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57140",
+          "text": "布和小船，讓未完的水路考察有了工具。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, local porter steadies a small boat beside travel supplies, Unyanyembe supply camp",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57141",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57141",
+          "text": "他寫，這些已補過先前失去的貨。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer compares wrapped supplies beside a blank ledger, Unyanyembe supply camp, no readable text",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57142",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57142",
+          "text": "隔天，也就是十九日，藥箱與藥品才收到。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer examines a closed medicine chest, Unyanyembe supply camp",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57143",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57143",
+          "text": "到了二十日，日記才記有人拿出那包藏布。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, local assistant lays a recovered cloth bale beside a blank ledger, Unyanyembe supply camp, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57144",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57144",
+          "text": "同日他收到女兒艾格妮絲寄來的四件法蘭絨襯衫；舊布清帳後，仍少四百三十六碼半。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler folds a flannel shirt beside a blank ledger at an inland cargo post, no readable text",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57147",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57147",
+          "text": "清點告一段落，下一段路還差哪一種援助？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded traveler checks an empty pack frame beside closed supplies at Unyanyembe camp, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57149",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57149",
+          "text": "李文斯頓在日記裡寫：要起行，仍得等同行人手到齊。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, older traveler checks packed new supplies while several empty travel positions await companions, Unyanyembe supply camp",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57150",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57150",
+          "text": "他盼史丹利從海岸替他送來這批人手。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter closes a plain canvas travel bag at Unyanyembe supply camp, soft overcast light, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57151",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57151",
+          "text": "他還特別寫明，不能用奴隸作這趟考察的人手。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, older traveler marks an unreadable hiring list beside supply bales, no chains or stereotyped features, Unyanyembe supply camp",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57154",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57154",
+          "text": "計畫先往南繞湖；之後還要去哪裡？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer traces a broad curve on blank parchment, Unyanyembe supply camp, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57155",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57155",
+          "text": "還要往西，到他心中的水源地。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, elderly traveler points westward from a shaded veranda, Unyanyembe supply camp",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57156",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57156",
+          "text": "那只是他下一步的構想，當時尚未走成。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer rolls up an unfinished route sketch, Unyanyembe supply camp, no readable text",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57157",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57157",
+          "text": "史丹利接下來要去的，反而是海岸。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter checks wrapped baggage inside Unyanyembe supply camp",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57159",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57159",
+          "text": "他先前寫過，相信朋友會希望他把這項工作做完。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, elderly traveler reads a plain field notebook at Unyanyembe supply camp, soft overcast light, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57160",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57160",
+          "text": "同一篇先前日記還寫：完成這趟考察後，他就不會被別人搶先。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, grey-bearded explorer secures a travel notebook with a cord, Unyanyembe supply camp, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57161",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57161",
+          "text": "三月十日，他把五千盧比的備用支票託給史丹利；原有款項用盡才兌。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, elderly traveler folds an unmarked payment note at the inland supply post, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57162",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57162",
+          "text": "十二日，李文斯頓的日記只留下一個動作：寫字。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer writes beside a shaded window, Unyanyembe supply camp",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57164",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57164",
+          "text": "在交出日記前，他先完成了什麼？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, elderly traveler folds a letter page beside a closed journal, Unyanyembe supply camp, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57165",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57165",
+          "text": "三月十三日，李文斯頓完成給班奈特的信。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1872.03.13",
+        "sub": "信件完成"
+      },
+      "chapter": "日記走了，人留下"
+    },
+    {
+      "id": "s57166",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57166",
+          "text": "那天他也完成給英國外交大臣的公文。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer closes a formal letter packet, road outside Unyanyembe, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57167",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57167",
+          "text": "還記得開場那本日記嗎？三月十四日，李文斯頓把它封好，託給正要出發的史丹利。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler extends a sealed journal toward the edge of frame, road outside Unyanyembe, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57168",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57168",
+          "text": "他記下封印用美國金幣、安娜與半安娜幣、帶王室紋章的顏料塊；日記不可先拆。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded traveler presses a plain seal into a closed journal wrapper at Unyanyembe, soft lamp light, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57169",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57169",
+          "text": "清晨行李搬好了，史丹利真能準時走嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, caravan porter carries a travel bale out of a house, road outside Unyanyembe",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57170",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57170",
+          "text": "史丹利說，自己滿腹心事，早餐吃不下。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, young reporter pauses over an untouched breakfast bowl, road outside Unyanyembe",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57171",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57171",
+          "text": "他看李文斯頓，似乎也沒有胃口。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, grey-bearded explorer sits quietly at a breakfast table, road outside Unyanyembe",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57172",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57172",
+          "text": "原想五點出發，兩人找事拖到八點還沒走。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter pauses beside a packed travel bag, road outside Unyanyembe",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57173",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57173",
+          "text": "史丹利還說，會留下兩名隊員，自己在前站多等一天，接李文斯頓最後想交代的事。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, young reporter folds a blank note beside packed luggage at Unyanyembe camp, overcast morning light, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57174",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57174",
+          "text": "李文斯頓還陪他沿路走了一段。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, grey-bearded explorer walks a short distance along a path, road outside Unyanyembe",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57175",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57175",
+          "text": "走到送行的路上，他會改變主意嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, young reporter glances back along a quiet path, road outside Unyanyembe",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57176",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57176",
+          "text": "史丹利又問：你要查清水源才回家嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, young reporter pauses on a path and turns back, road outside Unyanyembe",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57177",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57177",
+          "text": "書中，李文斯頓給的是肯定答案。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, elderly traveler gives a small nod beside the path, road outside Unyanyembe",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57178",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57178",
+          "text": "那仍是史丹利單方面刊出的對話。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, young reporter writes beside a roadside tree, road outside Unyanyembe",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57179",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57179",
+          "text": "蘇西和楚馬，也在這次告別的隊伍裡。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Over the shoulder shot, local assistant waves farewell beside a departing caravan, road outside Unyanyembe",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57181",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57181",
+          "text": "史丹利說，兩人握手後才真正分開。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, young reporter extends one hand in farewell, road outside Unyanyembe",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57182",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57182",
+          "text": "日記走向海岸，主人仍留在內陸。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, grey-bearded explorer watches a caravan vanish down the path, road outside Unyanyembe",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57183",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s57183",
+          "text": "留下的人，最後等到了回家那天嗎？",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, elderly traveler watches the path beyond a quiet camp, road outside Unyanyembe",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s57187",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57187",
+          "text": "一八七三年五月初，他在內陸去世。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1873 年 5 月初",
+        "sub": "編者收錄的追述"
+      }
+    },
+    {
+      "id": "s57188",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57188",
+          "text": "末段消息經蘇西、楚馬追述與編者整理留下。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1874 年編刊",
+        "sub": "蘇西與楚馬追述"
+      }
+    },
+    {
+      "id": "s57189",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s57189",
+          "text": "回看開場那本日記：它的文字後來收入《最後日記》；這場分路，也留下李文斯頓自己的說法。",
+          "emotion": "自然說書；區分兩位當事人的紀錄與推測，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "兩份文字",
+        "sub": "同一場分路"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "找到人\n**沒帶回**",
+      "tag": "史丹利・1871",
+      "sub": "那本日記先走了",
+      "shot": "s57001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "找到李文斯頓，為何沒帶他回家？｜奇聞檔案局",
+    "description": "1871 年晚秋，記者史丹利在烏吉吉找到虛弱的李文斯頓。兩人一起走過坦干依喀湖與通往補給的長路；1872 年 3 月，史丹利帶著封好的日記往海岸走，李文斯頓卻留下。為何找到人沒有變成帶人回家？\n\n本集依據史丹利的節錄出版敘述，以及 Horace Waller 於 1874 年身後編刊的李文斯頓日記。兩書都記勸歸與繼續工作的選擇；細節對白只出自史丹利。相遇日的兩書日期不一致，因此片中只稱 1871 年晚秋。李文斯頓當時的尼羅河源說法屬其研究假說。畫面為原創可愛插圖示意，並非原始照片或精確地圖。資料查核：2026-10-20。\n\n史丹利節錄本：https://github.com/GITenberg/How-I-Found-Livingstone--13-Travels-adventures-and-discoveres-in-Central-Africa-including-an-a__5157/blob/41828f7623e5ba1b0db0a4c96630bda15bb0b66e/5157.txt\n李文斯頓身後編刊日記：https://github.com/GITenberg/The-Last-Journals-of-David-Livingstone-in-Central-Africa-from-1865-to-His-Death-Volume-II--of__17024/blob/bd976e865f60f2bc17628640378e4510969a94ad/17024-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "李文斯頓",
+      "史丹利",
+      "Livingstone",
+      "Henry Morton Stanley",
+      "坦干依喀湖",
+      "歷史探險",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

@@ -1,0 +1,2514 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；節奏自然，不替人物演逐字對白。",
+    "performance": "Dagron 的報告數字都帶來源歸屬；雷特林格是十月另一球；名字先中文，法文不硬念。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s58",
+  "sources": [
+    {
+      "title": "Dagron, La poste par pigeons voyageurs，當事人報告，固定轉錄",
+      "url": "https://github.com/GITenberg/La-poste-par-pigeons-voyageurs--Souvenir-du-si-ge-de-Paris_19588/blob/d2a6e7f42a608005416d925c4fbf1f85d4dbe966/19588-8.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Reitlinger, A Diplomat’s Memoir of 1870，十月另一球親歷，1915 英譯",
+      "url": "https://github.com/GITenberg/A-Diplomat-s-Memoir-of-1870-being-the-account-of-a-balloon-escape-from-the-siege-of-Paris-and__49546/blob/d29b4c2d9670430fcc4b2e5a9e3e39a9e7542f18/49546-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Coxwell, My Life and Balloon Experiences，1887 二手背景",
+      "url": "https://github.com/GITenberg/My-life-and-balloon-experiences-b-With-a-supplementary-chapter-on-military-ballooning_75423/blob/b3fb84abae06b6f01e345f1205ab70dac041c9f0/75423-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s58005",
+      "payoff": "s58017",
+      "what": "十月氣球穿過軍線"
+    },
+    {
+      "setup": "s58007",
+      "payoff": "s58025",
+      "what": "手寫紙卷的綁法"
+    },
+    {
+      "setup": "s58008",
+      "payoff": "s58028",
+      "what": "十月鴿子飛行方向"
+    },
+    {
+      "setup": "s58009",
+      "payoff": "s58113",
+      "what": "作者自報最高容量"
+    },
+    {
+      "setup": "s58033",
+      "payoff": "s58042",
+      "what": "分裝器材的風險"
+    },
+    {
+      "setup": "s58044",
+      "payoff": "s58045",
+      "what": "沙袋破裂"
+    },
+    {
+      "setup": "s58050",
+      "payoff": "s58052",
+      "what": "落地拖行"
+    },
+    {
+      "setup": "s58062",
+      "payoff": "s58063",
+      "what": "器材與人藏匿"
+    },
+    {
+      "setup": "s58068",
+      "payoff": "s58069",
+      "what": "器材藏進酒桶"
+    },
+    {
+      "setup": "s58080",
+      "payoff": "s58081",
+      "what": "圖爾原先的紙張"
+    },
+    {
+      "setup": "s58074",
+      "payoff": "s58075",
+      "what": "攔查再失設備"
+    },
+    {
+      "setup": "s58076",
+      "payoff": "s58077",
+      "what": "設備抵法方防線"
+    },
+    {
+      "setup": "s58086",
+      "payoff": "s58126",
+      "what": "透明底片的閱讀"
+    },
+    {
+      "setup": "s58093",
+      "payoff": "s58094",
+      "what": "設備補足"
+    },
+    {
+      "setup": "s58099",
+      "payoff": "s58103",
+      "what": "同日十份副本"
+    },
+    {
+      "setup": "s58107",
+      "payoff": "s58111",
+      "what": "一鳥載片數"
+    },
+    {
+      "setup": "s58121",
+      "payoff": "s58122",
+      "what": "縮微羽管綁尾"
+    },
+    {
+      "setup": "s58130",
+      "payoff": "s58132",
+      "what": "底片重寄"
+    },
+    {
+      "setup": "s58138",
+      "payoff": "s58143",
+      "what": "一月材料回到手"
+    },
+    {
+      "setup": "s58140",
+      "payoff": "s58141",
+      "what": "化學材料的寄回請求"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s58001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58001",
+          "text": "一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one postal worker loads several plain mail sacks into a wicker balloon basket in Paris, cool autumn morning",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "郵袋隨球升空，鴿子還在籠裡"
+    },
+    {
+      "id": "s58002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58002",
+          "text": "雷特林格坐上去，鴿郵主管也帶著一群鴿子。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one balloon passenger sits beside a simple wicker pigeon cage, soft October daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58003",
+          "text": "被圍城裡的人，把要送到城外的話裝進郵袋。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal worker ties a plain mail sack in the basket beside stone rooftops, pale window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58004",
+          "text": "地面的人先放小球試風，小球向西飄去。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one balloon pilot releases a small trial balloon above a Paris square, clear autumn light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58005",
+          "text": "風向有利，大球也升起了；能越過軍線嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one passenger steadies a wicker basket as its balloon rises over Paris roofs, pale morning sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58006",
+          "text": "同一個吊籃裡，郵袋和鴿子的任務為何不同？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one passenger checks a plain mail sack beside a closed pigeon cage in a tethered balloon basket, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58007",
+          "text": "如果乘客想從空中回報，消息要怎麼繫到鳥身上？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one passenger holds a blank small paper slip beside a wicker pigeon cage, cool sky light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58008",
+          "text": "鳥飛離氣球後，會先朝哪個方向找路？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one homing pigeon perches at a wicker cage door above distant rooftops, pale sky light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58009",
+          "text": "即使一張紙能飛回去，成批的信又怎麼塞得下？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one postal worker compares a tiny blank note with several plain mail sacks, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58010",
+          "text": "小球已不見了，大球還被地面拉住，鴿子等著被放飛。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one balloon handler holds a taut tether beside a basket with a closed wicker pigeon cage, Paris rooftops nearby",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58011",
+          "text": "地面的人讓吊籃先高過屋頂，才敢放開拴住的繩子。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle wide shot, one ground handler guides a tethered balloon basket upward past stone rooftops, clear morning sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "一張回報被綁上鴿腿"
+    },
+    {
+      "id": "s58012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58012",
+          "text": "繩索一斷，氣球立刻自轉，雷特林格看不清城外方向。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one balloon passenger grips a turning basket rail as Paris rooftops blur below, soft sky light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58013",
+          "text": "起飛的小球只試出當時的風；乘客靠什麼辨方向？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one pilot watches a small balloon drift over an empty field, overcast autumn light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58014",
+          "text": "他寫，整艘球連羅盤都沒有，只有一個測高度的小儀器。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one passenger searches a bare wicker balloon basket for navigation instruments, diffused daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58015",
+          "text": "球隨風飄行，他們連前方會降在哪裡也不知道。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one passenger peers over a balloon basket railing toward a hazy horizon, diffused daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58016",
+          "text": "穿過軍線時，乘客聽見下面有人開槍。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one balloon passenger looks down toward distant rifle smoke below the basket, pale sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58017",
+          "text": "球繼續升高，槍聲終於停了。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a single balloon rises above distant rifle smoke toward open sky, no combatants in detail",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58018",
+          "text": "籃底郵袋裝著成千上萬張薄紙信；回城消息也在裡面嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal worker holds a plain sack while looking toward a pigeon cage, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58019",
+          "text": "這時，雷特林格要把剛才的飛行消息送回巴黎。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one passenger writes on a sheet turned away from camera in a basket, diffused daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58020",
+          "text": "鴿郵主管帶了約二十隻鳥，其中一隻會接下這張回報。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pigeon handler tends a simple wicker cage by a balloon basket, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58021",
+          "text": "那些鳥的巢還在巴黎；先把牠們帶出城，才有朝家飛的方向。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a single homing pigeon faces distant Paris rooftops from a balloon basket, pale sky light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58022",
+          "text": "他準備報告已飛過的地區，也記下氣球曾升降的高度。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one passenger writes on a sheet turned away from camera in a basket, diffused daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58023",
+          "text": "剛才籠裡的鴿子，現在要怎麼帶走這張新寫的紙？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one balloon passenger holds a small paper roll beside a closed wicker pigeon cage, sky light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58024",
+          "text": "他把所見寫在小紙上，捲緊後交給主管。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one balloon passenger rolls a small note with all writing turned away from camera, soft sky light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58025",
+          "text": "主管把紙卷繫在一隻鴿子的腿上，還藏在翅膀下。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one pigeon handler carefully fixes a tiny blank paper roll to one bird leg, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58026",
+          "text": "不是郵袋原路返回，而是這隻鳥要往巴黎飛。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pigeon handler opens a wicker cage beside plain mail sacks in a balloon basket, pale sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58027",
+          "text": "鳥先在氣球旁繞了幾圈；牠最後會飛向哪裡？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a single pigeon circles above one distant balloon, pale sky light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58028",
+          "text": "最後牠直飛向巴黎，雷特林格在空中看見的到此為止。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one passenger squints towards a bird disappearing in the distance, soft sky light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58029",
+          "text": "他沒有寫自己看見收件人打開紙卷。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one pigeon recedes toward distant Paris rooftops, no imagined recipient, clear sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58030",
+          "text": "這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one postal worker holds a tiny blank note above several plain mail sacks, soft light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58031",
+          "text": "十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer lifts a heavy plain equipment case beside a balloon basket, grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58032",
+          "text": "他受託在省外製作郵件底片，讓鴿子帶進被圍的城。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer slides an empty glass plate holder into an old camera, window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58033",
+          "text": "任務還沒開始，兩球已把他的機器分開裝載。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer checks two distant balloons beside a Paris rooftop, overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58034",
+          "text": "另一球帶著郵袋、鴿子和剩下的機器，與他同時升空。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer steadies a camera case beside two prepared balloon baskets, cold daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "達格隆分裝器材，另一球墜下"
+    },
+    {
+      "id": "s58035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58035",
+          "text": "達格隆自述，自己那球還載著約六百公斤器材。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one aeronaut stacks heavy plain camera cases in a separate balloon basket, cold morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58036",
+          "text": "達格隆說，起飛當時，風正把他們往東帶。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pilot studies a small weather streamer tied to a pole, cloudy daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58037",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s58037",
+          "text": "達格隆那球叫尼埃普斯號，另一球叫達蓋爾號。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "尼埃普斯號",
+        "sub": "達蓋爾號"
+      }
+    },
+    {
+      "id": "s58038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58038",
+          "text": "穿過軍線後，子彈聲先追上了兩個球。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one aeronaut in a basket looks towards another balloon in the distance, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58039",
+          "text": "約八百公尺高，槍聲還追著；達蓋爾號會怎樣？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one aeronaut flinches at distant rifle smoke below, pale sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58040",
+          "text": "他看見達蓋爾號下降，最後落在農舍牆邊。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a distant balloon descends beside a farmhouse seen from another balloon basket, overcast sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58041",
+          "text": "地面騎兵接近，達格隆認為那球已被俘。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer watches a distant balloon descend by a farmhouse, overcast sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58042",
+          "text": "他分裝在那球的機器，就此沒能帶到圖爾。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, plain mail sacks, a closed pigeon cage and camera cases lie in a downed balloon basket, muted sky",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58043",
+          "text": "他的球還在空中，飛行員開始處理壓艙沙，想甩開追兵。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one balloon pilot grips a plain canvas ballast sack inside a high basket, distant fields below, pale sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58044",
+          "text": "裝沙的舊棉布袋，還撐得住嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one pilot pulls a rope beside a plain canvas ballast sack, pale daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58045",
+          "text": "升高要丟掉壓艙沙；偏偏裝沙的棉布袋裂了。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one worn canvas sack spills sand onto a wicker basket floor, soft sky light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58046",
+          "text": "沙漏到籃裡，他們改拿盤子一點點向外倒。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one aeronaut scoops sand with a shallow plate in a balloon basket, grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58047",
+          "text": "下午約一點半，球升到一千五百公尺，壓艙沙卻只剩約兩袋。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer peers into nearly empty ballast sacks, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58048",
+          "text": "不知落地點有沒有敵兵，他們決定快降，免得追兵先趕到。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one aeronaut watches a field approaching beneath the basket, pale sky light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58049",
+          "text": "達格隆估計，籃子下降時每秒約掉十公尺。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pilot grips two trailing ropes in a descending balloon, grey afternoon",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58050",
+          "text": "引導繩放下了，強風會讓球停住嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one aeronaut grips a taut guide rope as a wicker basket scrapes low over grass, cloudy afternoon",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58051",
+          "text": "那片空地找不到能抓住錨和繩子的灌木。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide ground view, an anchor and rope drag over bare open grass under a moving balloon basket, cloudy afternoon",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58052",
+          "text": "達格隆報告，籃子跟人約被拖出兩公里。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, gloved hand of one aeronaut grips taut basket rope, soft afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58053",
+          "text": "球終於停住了，卻已破爛得不能再乘。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer stands beside torn balloon fabric on a field, pale afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58054",
+          "text": "好在籃子裡還有倖存的箱子，下一段路只能在地面走。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer lifts a surviving plain camera case from a basket, diffuse daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58055",
+          "text": "帶著這些箱子穿過佔領區，第一道搜查怎麼躲？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer holds a closed camera case beside a village road with distant soldiers, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58056",
+          "text": "附近村民帶來衣帽，讓他們換掉飛行裝束，好避開普軍搜查。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one rural villager offers a plain coat beside a collapsed balloon, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "第二車器材穿過攔查"
+    },
+    {
+      "id": "s58057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58057",
+          "text": "村民還找了兩輛車，好搬走倖存的材料。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one driver loads a plain camera case onto a wooden cart, cloudy afternoon",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58058",
+          "text": "第一輛剛裝好，敵兵趕來，把它連器材帶走。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer watches a cart depart down a muddy lane, muted daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58059",
+          "text": "達格隆記得自己混在換裝後的村民中，沒有被認出。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer pulls a plain cap low over his eyes, soft afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58060",
+          "text": "敵兵忙著取走破氣球，他們才有空檔拖走另一輛車。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer guides a second wooden cart across a field, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58061",
+          "text": "他和同伴保住第二輛車，往田間逃。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one cart driver pulls a second equipment cart along a track through open fields, grey afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58062",
+          "text": "追兵又近；他們能躲在哪裡？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer scans the road behind a surviving equipment cart, overcast daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58063",
+          "text": "一位村長同意把他們藏進閣樓。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one village mayor opens an attic trapdoor in a modest home, neutral daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58064",
+          "text": "達格隆把託付給他的紙信交給村長的妻子暫存。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one woman shelters a bundle of blank folded letters in her apron, lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58065",
+          "text": "其餘箱子藏進穀倉；搜查仍帶走其中一箱。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one soldier carries a plain equipment case away from a barn doorway, dim overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58066",
+          "text": "敵兵帶走那一箱後，村長預料他們會折返，立即把這群人載走。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one village mayor guides a covered cart away from a barn along an empty rural lane, overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58067",
+          "text": "一位地方醫生找來持有葡萄酒運輸通行證的車夫。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one local doctor lays a plain unmarked wine-transport pass beside a closed equipment case, daylight, no readable writing",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58068",
+          "text": "剩下的器材能先藏進什麼東西運離村子？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one cart driver looks from a plain wine barrel to a closed equipment case, overcast daylight, no readable text",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58069",
+          "text": "為保住剩下的器材，他們把倖存器材裝進空酒桶運送。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer lowers loose unboxed camera apparatus into an empty wine barrel, diffuse daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58070",
+          "text": "途中又聽說前路的普軍正在徵走馬車；他們只能折回換路。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one cart driver turns a covered cart around at an empty rural fork, overcast daylight, no map or text",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58071",
+          "text": "酒桶不能拿到阿爾西城的稅卡前，他們只好先留在附近小村。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one cart driver leaves closed wine barrels in a small village lane, soft overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58072",
+          "text": "空酒桶只用了一段路；進城後的夜裡，他們才把設備重新裝箱。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one traveler repacks loose camera apparatus into a wooden case inside a modest town room at night, warm lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58073",
+          "text": "到了下一個村，普軍攔下這輛載器材的車。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one armed sentry stops a cart carrying closed wooden cases at a farm gate, rainy dusk",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58074",
+          "text": "士兵要箱子敞著等軍官，這時機器還保得住嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one soldier opens a plain apparatus case on a stopped cart, cloudy evening light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58075",
+          "text": "達格隆說，箱子敞開期間，幾件重要儀器又不見了。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one traveler checks a partly emptied plain camera case beside a cart, dim light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58076",
+          "text": "雨裡還要推著車穿過泥地，設備能否抵達法軍防線？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one traveler pushes an equipment cart into a muddy ploughed field in heavy rain, grey sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58077",
+          "text": "他們穿過雨中田地，帶著車抵達法方防線。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one photographer crosses a country lane with a cart in the distance, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58078",
+          "text": "法方人員起初也不信他們能穿過占領區，行程又被拖慢。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one French guard examines a blank travel paper beside a stopped equipment cart, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58079",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s58079",
+          "text": "十一月二十一日，達格隆終於抵達圖爾。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1870年11月21日",
+        "sub": "圖爾"
+      }
+    },
+    {
+      "id": "s58080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58080",
+          "text": "這時，達格隆手裡已有一片透明薄膜樣本；當地郵務仍用什麼拍？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer holds an existing tiny translucent film sample in a Tours workshop, soft window light, no readable text",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58081",
+          "text": "圖爾已用紙縮拍郵件；字縮得夠小，還能看清嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer positions a plain sheet beneath a camera in a Tours workshop, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "圖爾放下紙張，改拍薄膜"
+    },
+    {
+      "id": "s58082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58082",
+          "text": "當地的布萊斯已在縮拍，一張紙的兩面各印兩頁。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one camera technician turns over an unmarked page beneath a camera in a Tours workshop, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58083",
+          "text": "達格隆認為，當地紙製電文仍不夠令人滿意。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal inspector studies a plain paper message sheet at a Tours table, no readable text, diffused light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58084",
+          "text": "達格隆寫，紙的纖維與顆粒限制了字能縮到多小。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer examines fibrous plain paper with a small loupe, diffused window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58085",
+          "text": "若把整批信印在紙上，鴿子身上的重量很快變成問題。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal clerk weighs a flat stack of blank sheets, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58086",
+          "text": "他拿出透明薄膜樣本，進城後這麼小的字看得清嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer lifts a tiny translucent film over a desk, gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58087",
+          "text": "這不是給人裸眼閱讀的細字便條。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer squints at a translucent strip too small to read, soft daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58088",
+          "text": "達格隆報告，當地負責人看樣後採用薄膜做電文。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal inspector studies a translucent film sample at a table, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58089",
+          "text": "原先用紙縮拍的電文，就此停下。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one workshop assistant places plain paper sheets into a drawer, clear film samples lying still on the table, soft light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58090",
+          "text": "他把薄膜極輕，列為鴿郵載重上的優勢。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer compares thin film and plain paper between his fingers, window light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58091",
+          "text": "達格隆稱，在那個冬天，薄膜平均曝光兩秒。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer operates an old camera by a workshop window, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58092",
+          "text": "相較之下，他說當地的紙張要曝光兩個多小時。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one camera technician waits beside a paper-loaded camera in dim winter light, no clock or readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58093",
+          "text": "薄膜有了，路上丟失的機器又從哪裡補？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one technician inspects an empty camera shelf in a workshop, soft light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58094",
+          "text": "報告裡，兩位攝影愛好者提供相似設備給郵務服務。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one amateur photographer lends a plain camera to a workshop, window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58095",
+          "text": "有了借來的機器，薄膜還能在冬天連續做成副本嗎？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one workshop assistant checks blank glass plates beside a borrowed camera, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58096",
+          "text": "他的同伴也一同工作，薄膜才開始量產。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one assistant aligns a plain sheet beneath a camera, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58097",
+          "text": "團隊把製片流程改得更快、更省成本。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal inspector checks a closed film tray on a workbench, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58098",
+          "text": "他還稱乾式製片較不會在顯影時起泡，也不易從玻璃上脫開。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one darkroom technician lifts a clear film on glass above a chemical tray, no readable text, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58099",
+          "text": "圖爾郵政檢查員接手監督；一天內能趕出多少份？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal inspector checks a closed film tray beside a camera in a Tours workshop, window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58100",
+          "text": "達格隆自稱後來承製官方與私人兩類訊息。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer arranges blank official and private message sheets, diffused light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58101",
+          "text": "達格隆寫，公務電文在中午由檢查員親自交來。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal inspector places a plain unmarked message bundle on a workshop table, midday window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58102",
+          "text": "他的團隊得在同一天把內容縮拍、複製，再交回郵務機關。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one workshop assistant loads an unmarked sheet under a camera, warm workshop light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58103",
+          "text": "他說下午五點前就能交回十份；這是他自報的工作速度。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one clerk arranges ten blank translucent copies in a tidy row, late afternoon window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58104",
+          "text": "他自稱十三組公務電文都沒遲交；城外寄給家人的私信呢？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one workshop assistant places another plain finished film roll in a tray, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58105",
+          "text": "私人電文照相近條件製作，工作間同時面對兩種來件。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk separates two stacks of blank message sheets on a table, window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58106",
+          "text": "達格隆說，私人電文也服務城裡等候消息的家庭。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer arranges blank official and private message sheets, diffused light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58107",
+          "text": "一片片縮微電文做好了；一隻鴿子一次能帶幾片？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk lifts finished film rolls beside a simple wicker pigeon cage, window light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58108",
+          "text": "達格隆說，薄膜夠輕，郵務機關最多能讓一隻鴿子帶十八片；每片又有多少內容？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk lays several tiny translucent film slips beside a wicker pigeon cage, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "郵務員捲底片入羽管，綁上鴿尾"
+    },
+    {
+      "id": "s58109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58109",
+          "text": "他先把十二或十六頁排字縮在一片裡，並非一封信各佔一片。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer holds a translucent film strip beside blank folio sheets, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58110",
+          "text": "他估計平均一片含約三千則短消息。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one printer stacks blank large sheets below a camera, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58111",
+          "text": "照他的算法，那一鳥所載的訊息超過五萬則。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer aligns several thin film slips on a blank desk, diffused light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58112",
+          "text": "訊息這麼多，整組薄膜放上秤又有多重？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk puts a tiny film roll on a brass scale, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58113",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s58113",
+          "text": "他稱這組薄膜總重不到一克。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "Dagron 自述",
+        "sub": "18片・逾5萬則・不足1克"
+      }
+    },
+    {
+      "id": "s58114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58114",
+          "text": "這是他聲稱的最高容量，不等於每批訊息都真的送達。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal clerk points to a hand-set blank counting card beside a pigeon cage, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58115",
+          "text": "他還估計，整個圍城期間拍過約十一萬五千則不同電文。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Overhead view, one postal clerk arranges several tiny unmarked film strips on a plain table, soft lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58116",
+          "text": "整批不同電文的薄膜，合在一起有多重？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Macro shot, one tiny translucent film roll rests beside a small brass scale, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58117",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58117",
+          "text": "那些不同電文做在一起，全部薄膜約重兩克，仍是他自報的製作量。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk weighs several tiny blank film rolls on a brass scale, warm lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58118",
+          "text": "郵務員把透明薄膜捲成細卷，才裝得進羽管。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal worker rolls a translucent film strip into a narrow coil beside a feather quill, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58119",
+          "text": "郵務人員把小卷放進一段羽管。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal worker slides a tiny film roll into a hollow feather quill, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58120",
+          "text": "薄膜能彎，達格隆還稱它不容易受潮，才適合塞進小管。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Macro shot, one technician bends a translucent blank film strip beside a hollow feather quill, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58121",
+          "text": "片塞進羽管了，又該綁在鴿子身上哪裡？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one pigeon handler holds a feather quill near a calm homing pigeon, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58122",
+          "text": "達格隆寫，羽管最後綁在鴿子的尾部。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pigeon handler ties a small quill to one pigeon tail, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58123",
+          "text": "還記得十月那張腿上的手寫紙？這回尾部綁的是羽管。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one homing pigeon rests with a tiny quill tied only to its tail, no paper on its leg, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58124",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58124",
+          "text": "這隻鳥從省外飛回被圍的巴黎。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one pigeon perches on a Paris windowsill with a tiny quill on its tail, pale sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58125",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58125",
+          "text": "城裡要怎樣讀出這卷薄膜上的訊息？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one technician raises a tiny translucent film beneath an enlarging lamp, no readable text",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58126",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58126",
+          "text": "達格隆提過在巴黎用電燈光把透明底片放大。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one technician adjusts a plain optical enlarger, darkroom lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58127",
+          "text": "這解釋了為什麼薄膜必須透明，而不能只做更小的紙。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one technician holds translucent film against an enlarger beam in a darkroom, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58128",
+          "text": "他記下同一片訊息製成多份副本，供郵務反覆寄送。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer prepares several duplicate film rolls at a worktable, soft light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58129",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58129",
+          "text": "複本也讓同一批內容可以分次交給不同的返城鳥。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one pigeon handler places a tiny closed quill beside several separate wicker cages, soft light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58130",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58130",
+          "text": "同樣一片訊息，要不要只寄一次？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal worker holds a tiny feather quill beside a perched pigeon, window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58131",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58131",
+          "text": "少數薄膜很快抵達巴黎，達格隆說只寄了六次；其他片呢？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer lines up duplicate film rolls on a table, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "同一片訊息重寄，化學用品抵達"
+    },
+    {
+      "id": "s58132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58132",
+          "text": "大部分拷貝則平均寄約二十次。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one postal clerk selects another film roll from a plain tray, diffused daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58133",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58133",
+          "text": "少數甚至寄了三十五到三十八次。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer counts tiny blank film cases on a desk, soft light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58134",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58134",
+          "text": "這些是他報告的重寄次數，不能倒算成功率。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer closes a pigeon cage beside duplicate rolls, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58135",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58135",
+          "text": "工作間自稱按時交片，嚴寒卻仍妨礙鴿子飛行。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one pigeon handler shelters a cage from winter weather, grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58136",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58136",
+          "text": "他還自述，把不少郵政匯票也縮拍寄進城。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer makes a tiny film copy of a blank postal payment slip at a workshop camera, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58137",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58137",
+          "text": "據他說，巴黎的收款人因此領到了錢；這仍是他的回報。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one postal clerk holds a plain unmarked payment slip at a Paris counter, subdued window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58138",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58138",
+          "text": "他自己用這條路發過請求，有沒有等到回應？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer writes a blank request at a Bordeaux worktable, soft lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58139",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58139",
+          "text": "一月十八日，他人在波爾多，缺做底片用的化學材料。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one technician searches an almost empty chemical cabinet, gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58140",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58140",
+          "text": "他用鴿郵向巴黎兩位聯絡人求助；請求裡指定什麼寄回方式？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer folds a plain blank note, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58141",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58141",
+          "text": "他請對方搭第一個離城氣球，把材料寄出。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, one photographer presses a plain wax seal onto a folded request at a Bordeaux desk, muted winter light, no readable text",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58142",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58142",
+          "text": "這是寄送請求，不是載運紀錄；他沒寫材料實際坐了什麼交通工具。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one photographer holds a folded blank request beside a closed plain ledger on a worktable, overcast window light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58143",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s58143",
+          "text": "剛剛那封求助信進巴黎，鴿子單趟飛了多久？",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "普瓦捷→巴黎",
+        "sub": "鳥程多久？"
+      }
+    },
+    {
+      "id": "s58144",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58144",
+          "text": "達格隆說，那隻鳥從普瓦捷到巴黎用了十二小時。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, one pigeon flies alone over winter fields, no parcel or route map, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s58145",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s58145",
+          "text": "一月二十四日，材料到了波爾多工作間，與求助相隔六天。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1月18日請求",
+        "sub": "24日材料到"
+      }
+    },
+    {
+      "id": "s58146",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s58146",
+          "text": "鴿子的單趟鳥程不能量出每封私信多久抵達。",
+          "emotion": "自然說書；將 Dagron 自報和另一位乘客的親歷分開，不演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a single pigeon flies over a winter country lane toward a distant city, pale sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**五萬則？**",
+      "tag": "巴黎・1870",
+      "sub": "Dagron 自報的容量",
+      "shot": "s58001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "巴黎被圍，一隻鴿子怎麼帶信進城？｜奇聞檔案局",
+    "description": "1870 年，氣球能把信帶出被圍的巴黎，回信如何進城？攝影師 Dagron 帶著縮微器材出城，遇上另一球中彈、落地逃亡與器材損失；之後才把大量訊息拍進薄膜。\n\nDagron 回報一隻鳥曾載逾五萬則，但這是其自述的最高容量，不等於五萬封實際送達。Reitlinger 的十月球和 Dagron 的十一月球是兩趟不同旅程；畫面為原創可愛插圖示意，並非當年照片或可讀原件。資料查核：2026-10-20。\n\nDagron 固定全文：https://github.com/GITenberg/La-poste-par-pigeons-voyageurs--Souvenir-du-si-ge-de-Paris_19588/blob/d2a6e7f42a608005416d925c4fbf1f85d4dbe966/19588-8.txt\nReitlinger 固定全文：https://github.com/GITenberg/A-Diplomat-s-Memoir-of-1870-being-the-account-of-a-balloon-escape-from-the-siege-of-Paris-and__49546/blob/d29b4c2d9670430fcc4b2e5a9e3e39a9e7542f18/49546-0.txt\nCoxwell 固定全文：https://github.com/GITenberg/My-life-and-balloon-experiences-b-With-a-supplementary-chapter-on-military-ballooning_75423/blob/b3fb84abae06b6f01e345f1205ab70dac041c9f0/75423-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "巴黎圍城",
+      "信鴿",
+      "Dagron",
+      "縮微攝影",
+      "歷史郵政",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
