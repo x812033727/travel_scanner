@@ -23,4 +23,4 @@
 
 `node tools/video/review/script-intake.mjs --id C08` 回 `dry-run-local-only`、36 句與上述投影 SHA，未呼叫網路。`script-intake.test.mjs` 在補齊負測試後 11／11 PASS：包括被改的原件／投影／機器旁白、近似 slug、章序與破損條列、正式站仍為舊 slug 時 1 次 GET／0 寫入，以及新短版 pending 卡與舊 approved project 並存的本機模擬。後兩項只是注入 transport 的測試，不是正式站乾跑或後台卡。
 
-非作者代理先以精確稿件與當時程式 diff 唯讀重核：核准原件、投影與 `video.json` 的 36／36 文字與 ID 相同，精確 C08 例外未放寬其他集數，原四項負測試及舊 slug 0 寫入測試 PASS。代理建議再拒絕章內破損 `-` 行並測新舊 project 共存；作者隨後只新增這兩項守門及測試，11／11 通過。此新增 delta 未取得第二次非作者覆核，不冒稱整支影片已獨立驗收。
+非作者代理先以精確稿件與當時程式 diff 唯讀重核：核准原件、投影與 `video.json` 的 36／36 文字與 ID 相同，精確 C08 例外未放寬其他集數，原四項負測試及舊 slug 0 寫入測試 PASS。代理建議再拒絕章內破損 `-` 行並測新舊 project 共存；作者隨後新增這兩項守門及測試。主協作者 `/root` 於 2026-10-24 08:40 UTC 作第二次非作者唯讀覆核，對 PR #1823 最終 diff（包含這兩項補強）判無 blocker，並獨立重跑 11／11 測試、C08 本機 36 句乾跑與 `git diff --check`，均 PASS。這仍非正式站乾跑、整支影片或付費驗收。

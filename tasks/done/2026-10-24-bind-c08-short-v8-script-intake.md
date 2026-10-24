@@ -43,4 +43,4 @@ C08 的 20 集企劃已採用站主核准的 36 句 short-v8，但後台劇本�
 
 站主核准 C08 v8 原件 SHA `040d9a49...`，頂層投影 SHA `07cc18d1...`；36/36 可見旁白與 canonical `video.json` 同序。主協作者對正式站唯讀 GET：系列 paused、第 8 列舊 slug/planned、舊 84 句卡 approved、新 slug project 404；尚未正式站 import dry-run 或任何寫入。詳見 `docs/videos/brand-stories-everyday-reversals-20261020/reviews/c08-short-v8-script-intake-20261024.md`。
 
-非作者代理對核准原件、投影與當時程式守門給 PASS；後續依其低優先建議追加嚴格條列與新舊卡並存測試。最終 `script-intake.test.mjs` 11／11 PASS，`--id C08` 本機乾跑回 36 句；新增兩項未獲第二次非作者覆核，未進行正式站乾跑。更廣的七份 review test 組合在 Windows 逾 90 秒無結果後中止，不能稱全套通過；CI 須驗最終 head。
+非作者代理對核准原件、投影與當時程式守門給 PASS；後續依其低優先建議追加嚴格條列與新舊卡並存測試。主協作者 `/root` 於 2026-10-24 08:40 UTC 唯讀重核 PR #1823 最終 diff，判無 blocker，獨立重跑 `script-intake.test.mjs` 11／11、`--id C08` 本機 36 句乾跑及 diff check，均 PASS。未進行正式站乾跑。更廣的七份 review test 組合在 Windows 逾 90 秒無結果後中止，不能稱全套通過；CI 須驗最終 head。
