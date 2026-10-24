@@ -243,6 +243,8 @@ def _row(**changes: Any) -> VideoAutomationSettings:
 
 @pytest.fixture
 def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
+    # Locate booking is tested here; the cutover gate has dedicated route tests.
+    monkeypatch.setattr(admin_api, "enforce_paid_intake", AsyncMock())
     settings = MediaSettings(video_media_dir=str(tmp_path))
     store = MediaStore(
         tmp_path,
