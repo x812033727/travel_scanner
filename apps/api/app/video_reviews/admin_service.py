@@ -81,7 +81,8 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
-from app.video_reviews import dub_retry, package_zip
+from app.video_reviews import admin_package_zip as package_zip
+from app.video_reviews import dub_retry
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,

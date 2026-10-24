@@ -24,9 +24,9 @@ from app.infra import get_redis
 from app.models import User
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
+from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
 from app.video_reviews import dub_retry
-from app.video_reviews import package_zip as package_zip_module
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,

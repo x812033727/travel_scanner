@@ -1,4 +1,4 @@
-"""One zip of a manual upload package (app/video_reviews/package_zip.py and its route)."""
+"""One zip of a manual upload package (app/video_reviews/admin_package_zip.py and its route)."""
 
 from __future__ import annotations
 
@@ -16,7 +16,8 @@ from httpx import ASGITransport, AsyncClient
 from app.config import Settings
 from app.models import User
 from app.problems import AppError
-from app.video_reviews import admin_api, admin_service, package_zip
+from app.video_reviews import admin_api, admin_service
+from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews.storage import ReviewStore
 from tests.test_video_reviews import _app
 
