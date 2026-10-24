@@ -1,15 +1,17 @@
 import assert from "node:assert/strict";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { EXIT, main } from "../cli.mjs";
 import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
-import { presentationTimeline } from "../core/branding.mjs";
+import { presentationTimeline, validateBranding } from "../core/branding.mjs";
 import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
-import { eachLine } from "../core/schema.mjs";
+import { eachLine, minEpisodeMinutes } from "../core/schema.mjs";
+import { lintProject, loadProject } from "../core/state.mjs";
 import { buildTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { assembleItem, ITEM_IDS } from "./checks.mjs";
 
@@ -260,4 +262,90 @@ test("QA forwards actual body and presentation timelines to its existing assembl
   checks.metrics.frames -= 1;
   save();
   assert.match((await assemble()).detail, /checked final frame count/, "an unbranded final must match the actual timeline too");
+});
+
+test("QA CLI applies only the frozen C08 short duration band, including one-frame boundaries", async (t) => {
+  const before = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
+  t.after(() => {
+    if (before === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = before;
+  });
+  assert.equal(minEpisodeMinutes(), 8, "the test must exercise the ordinary eight-minute CLI argument");
+
+  const sourceDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../docs/videos");
+  const prepare = (slug, change = () => {}) => {
+    const box = sandbox(slug, "drama");
+    t.after(() => rmSync(box.base, { recursive: true, force: true }));
+    const source = path.join(sourceDir, slug);
+    for (const name of ["video.json", "series.json", "brief.md"]) {
+      writeFileSync(path.join(box.dir, name), readFileSync(path.join(source, name)));
+    }
+    if (existsSync(path.join(source, "story-lexicon"))) {
+      cpSync(path.join(source, "story-lexicon"), path.join(box.dir, "story-lexicon"), { recursive: true });
+    }
+    const file = path.join(box.dir, "video.json");
+    const doc = JSON.parse(readFileSync(file, "utf8"));
+    change(doc);
+    writeFileSync(file, JSON.stringify(doc));
+    const project = loadProject({ slug, root: box.root });
+    assert.deepEqual(lintProject(project).errors, [], `${slug} must reach the QA assemble item`);
+    mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ clips_hash: "fixture-clips" }));
+    const finalFile = path.join(box.workdir, "final.mp4");
+    writeFileSync(finalFile, "local fixture, not real media");
+    const branding = {
+      schema_version: 1, id: "c08-duration-test",
+      intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 },
+      outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 630 },
+    };
+    writeFileSync(path.join(box.workdir, "branding.json"), JSON.stringify(branding));
+    const selected = validateBranding(branding, { base: box.workdir });
+    const ctx = {
+      root: box.root, home: box.base,
+      env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: `mkv_${"q".repeat(43)}`, MOKAAIR_SITE: "https://site.test" },
+      stdout: { write() {} }, stderr: { write() {} }, sleep: async () => {},
+      fetch: async (url) => url.endsWith("/judge/policy") ? Response.json({ passed: true }) : new Response("", { status: 200 }),
+    };
+    const assemble = async (bodyFrames) => {
+      // Silent WAVs and fake final bytes are local fixtures, not a produced or approved cut.
+      const lines = [...eachLine(doc)].map(({ line }) => line.id);
+      const samples = Object.fromEntries(lines.map((id) => [id, 2 * SAMPLE_RATE]));
+      const missing = bodyFrames - buildTimeline(doc, samples).total_frames;
+      assert.ok(missing >= 0);
+      const each = Math.floor(missing / lines.length);
+      for (const id of lines) samples[id] += each * SAMPLES_PER_FRAME;
+      samples[lines.at(-1)] += (missing % lines.length) * SAMPLES_PER_FRAME;
+      const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, project.lexicon) };
+      assert.equal(timeline.total_frames, bodyFrames);
+      writeAudioFixture(timeline, box.workdir);
+      const applied = { hash: selected.hash, intro_frames: 150, outro_frames: 630, body_frames: bodyFrames };
+      const presented = presentationTimeline(timeline, applied);
+      const checks = {
+        ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc),
+        look_hash: lookHash(doc), subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc),
+        clips_hash: "fixture-clips", narration_sha256: timeline.audio_evidence.narration_sha256,
+        final_sha256: await sha256File(finalFile), branding: applied,
+        metrics: { fps: 30, frames: presented.total_frames },
+      };
+      writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+      assert.notEqual(await main(["qa", "--slug", slug], ctx), EXIT.ok, "unbuilt unrelated QA items remain held");
+      const report = JSON.parse(readFileSync(path.join(box.workdir, "review", "qa.json"), "utf8"));
+      assert.deepEqual(report.items.map((entry) => entry.id), ITEM_IDS);
+      return report.items[0];
+    };
+    return { assemble };
+  };
+
+  const short = prepare("story-everyday-kikkoman-c08-short-v8");
+  assert.match((await short.assemble(7_199)).detail, /body is 7199 frames.*needs at least 7200 frames/);
+  assert.equal((await short.assemble(7_200)).ok, true, "the measured body floor is inclusive");
+  assert.equal((await short.assemble(8_220)).ok, true, "8220 body + 780 selected bookend frames is exactly five minutes");
+  assert.match((await short.assemble(8_221)).detail, /final cut is 9001 frames.*needs at most 9000 frames/);
+
+  const historical = prepare("story-everyday-kikkoman-c08", (doc) => {
+    // Its original last line is a known pre-existing narrative-lint hold; adjust only this test copy.
+    doc.scenes.at(-1).lines[0].text = "想接著看其他日用品怎麼意外轉身，訂閱頻道，我們繼續拆開來看。";
+  });
+  assert.match((await historical.assemble(8_220)).detail, /needs at least 14400 frames|under the 8-minute floor/, "the sibling episode source does not inherit short-v8");
 });

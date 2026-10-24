@@ -5,6 +5,9 @@ Alembic directory cannot resolve that newer revision. Compose recreates `migrate
 before starting the API on rollback, so the exception must live in that command.
 The 0137 C-series compatibility image likewise accepts only the reviewed 0138
 budget schema after reading back its held accounts and historical operations.
+The 0138 image accepts only the additive 0139 C20 account contract, with the
+same historical holds and a matching C20 ownership record. Paid admission
+remains held in that image.
 This module never stamps or downgrades a database.
 """
 
@@ -40,6 +43,10 @@ ROLLBACK_IMAGE_HEAD = "0132_video_pilot_budget"
 REVIEWED_FUTURE_REVISION = "0133_story_followon_budget"
 C_SERIES_ROLLBACK_IMAGE_HEAD = "0137_video_manga_tier"
 C_SERIES_REVIEWED_FUTURE_REVISION = "0138_story_everyday_budget"
+C20_ROLLBACK_IMAGE_HEAD = "0138_story_everyday_budget"
+C20_REVIEWED_FUTURE_REVISION = "0139_c20_zippo_pilot_budget"
+C20_PILOT_SLUG = "story-everyday-zippo-c20-short-v8"
+C20_PILOT_LIMIT_USD = Decimal("25.000000")
 State = Literal["exact", "upgrade", "rollback-compatible"]
 
 
@@ -66,6 +73,8 @@ def classify_revisions(
         return MigrationState(current, expected, "rollback-compatible")
     if expected == C_SERIES_ROLLBACK_IMAGE_HEAD and current == C_SERIES_REVIEWED_FUTURE_REVISION:
         return MigrationState(current, expected, "rollback-compatible")
+    if expected == C20_ROLLBACK_IMAGE_HEAD and current == C20_REVIEWED_FUTURE_REVISION:
+        return MigrationState(current, expected, "rollback-compatible")
     if current is None or current in known_revisions:
         return MigrationState(current, expected, "upgrade")
     raise MigrationGuardError(f"database revision {current} is unknown to image head {expected}")
@@ -90,7 +99,7 @@ def _pg_char(value: str | bytes) -> str:
         return value.decode("ascii")
     if isinstance(value, str):
         return value
-    raise MigrationGuardError("reviewed 0133 constraint catalog has an invalid char field")
+    raise MigrationGuardError("reviewed budget constraint catalog has an invalid char field")
 
 
 async def _revisions(connection: AsyncConnection) -> tuple[str, ...]:
@@ -157,7 +166,9 @@ async def _verify_reviewed_budget_schema(
     for key, kind in expected_constraints.items():
         found = actual_constraints.get(key)
         if found is None or found[0] != kind or found[1] is not True:
-            raise MigrationGuardError(f"reviewed 0133 constraint {key[1]} is missing or invalid")
+            raise MigrationGuardError(
+                f"reviewed {revision} constraint {key[1]} is missing or invalid"
+            )
     expected_definitions = {
         ("video_pilot_budgets", "video_pilot_budgets_pkey"): {"PRIMARYKEYslug"},
         ("video_pilot_budgets", "ck_video_pilot_budget_limit"): {
@@ -184,18 +195,18 @@ async def _verify_reviewed_budget_schema(
         if _canonical_check(actual_constraints[key][4]).upper() not in {
             definition.upper() for definition in accepted
         }:
-            raise MigrationGuardError(f"reviewed 0133 constraint {key[1]} changed")
+            raise MigrationGuardError(f"reviewed {revision} constraint {key[1]} changed")
     foreign_key = actual_constraints[
         ("video_pilot_budget_operations", "video_pilot_budget_operations_slug_fkey")
     ]
     if foreign_key[2] != "r" or foreign_key[3] is not True:
-        raise MigrationGuardError("reviewed 0133 operation foreign key changed")
+        raise MigrationGuardError(f"reviewed {revision} operation foreign key changed")
     foreign_key_definition = re.sub(r"\s+", "", foreign_key[4].lower())
     if foreign_key_definition not in {
         "foreignkey(slug)referencesvideo_pilot_budgets(slug)ondeleterestrict",
         "foreignkey(slug)referencespublic.video_pilot_budgets(slug)ondeleterestrict",
     }:
-        raise MigrationGuardError("reviewed 0133 operation foreign key definition changed")
+        raise MigrationGuardError(f"reviewed {revision} operation foreign key definition changed")
 
     indexes = await connection.execute(
         text(
@@ -231,6 +242,10 @@ async def _verify_reviewed_0138(connection: AsyncConnection) -> None:
         expected_accounts={**PILOT_LIMITS_USD, **C_SERIES_PILOT_LIMITS_USD},
         revision="0138",
     )
+    await _verify_c_series_holds(connection, revision="0138")
+
+
+async def _verify_c_series_holds(connection: AsyncConnection, *, revision: str) -> None:
     # Verify the four indispensable baseline holds. Other operations may appear
     # after a later evidence-backed settlement or activation; the rollback app
     # still counts them in summaries and refuses every C-series paid admission.
@@ -257,7 +272,7 @@ async def _verify_reviewed_0138(connection: AsyncConnection) -> None:
         len(historic) != len(UNRECONCILED_STORY_SLUGS)
         or {row[0] for row in historic} != UNRECONCILED_STORY_SLUGS
     ):
-        raise MigrationGuardError("reviewed 0138 pre-ledger holds are missing")
+        raise MigrationGuardError(f"reviewed {revision} pre-ledger holds are missing")
     for (
         _slug,
         operation_id,
@@ -283,7 +298,7 @@ async def _verify_reviewed_0138(connection: AsyncConnection) -> None:
             or not maximum_matches
             or attempts != 1
         ):
-            raise MigrationGuardError("reviewed 0138 pre-ledger hold identity changed")
+            raise MigrationGuardError(f"reviewed {revision} pre-ledger hold identity changed")
         if status == "uncertain":
             valid = actual is None and release_reason is None
         elif status == "settled":
@@ -302,7 +317,50 @@ async def _verify_reviewed_0138(connection: AsyncConnection) -> None:
         else:
             valid = False
         if not valid:
-            raise MigrationGuardError("reviewed 0138 pre-ledger hold outcome is invalid")
+            raise MigrationGuardError(f"reviewed {revision} pre-ledger hold outcome is invalid")
+
+
+async def _verify_reviewed_0139(connection: AsyncConnection) -> None:
+    """Accept only C20's held USD 25 account on the reviewed 0139 revision."""
+    await _verify_reviewed_budget_schema(
+        connection,
+        expected_accounts={
+            **PILOT_LIMITS_USD,
+            **C_SERIES_PILOT_LIMITS_USD,
+            C20_PILOT_SLUG: C20_PILOT_LIMIT_USD,
+        },
+        revision="0139",
+    )
+    await _verify_c_series_holds(connection, revision="0139")
+    # The later migration must record that it created this exact account. A
+    # matching row that predated 0139 is not proof of a new per-film ledger.
+    rows = await connection.execute(
+        text("SELECT slug, account_created, account_created_at FROM video_pilot_budget_0139_owned")
+    )
+    owners = rows.all()
+    if len(owners) != 1 or owners[0][0] != C20_PILOT_SLUG or owners[0][1] is not True:
+        raise MigrationGuardError("reviewed 0139 C20 ownership record is invalid")
+    account = await connection.execute(
+        select(VideoPilotBudget.created_at).where(VideoPilotBudget.slug == C20_PILOT_SLUG)
+    )
+    if owners[0][2] is None or owners[0][2] != account.scalar_one():
+        raise MigrationGuardError("reviewed 0139 C20 ownership timestamp changed")
+    constraints = await connection.execute(
+        text(
+            "SELECT con.contype, con.convalidated, pg_get_constraintdef(con.oid) "
+            "FROM pg_constraint AS con "
+            "WHERE con.conrelid = 'video_pilot_budget_0139_owned'::regclass "
+            "AND con.conname = 'video_pilot_budget_0139_owned_pkey'"
+        )
+    )
+    primary_keys = constraints.all()
+    if (
+        len(primary_keys) != 1
+        or _pg_char(primary_keys[0][0]) != "p"
+        or primary_keys[0][1] is not True
+        or _canonical_check(primary_keys[0][2]).upper() != "PRIMARYKEYSLUG"
+    ):
+        raise MigrationGuardError("reviewed 0139 C20 ownership primary key changed")
 
 
 async def read_state() -> MigrationState:
@@ -317,6 +375,8 @@ async def read_state() -> MigrationState:
                     await _verify_reviewed_0133(connection)
                 elif state.current == C_SERIES_REVIEWED_FUTURE_REVISION:
                     await _verify_reviewed_0138(connection)
+                elif state.current == C20_REVIEWED_FUTURE_REVISION:
+                    await _verify_reviewed_0139(connection)
                 else:
                     raise MigrationGuardError("unreviewed rollback revision")
             return state

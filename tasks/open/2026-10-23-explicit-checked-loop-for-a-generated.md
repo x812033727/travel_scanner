@@ -17,8 +17,6 @@ scope:
   - tools/video/media/music.mjs
   - tools/video/core/state.mjs
   - docs/videos/ILLUSTRATED.md
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Explicit checked loop for a generated music bed shorter than its cut
@@ -56,3 +54,6 @@ their approved cut was mixed with.
 
 - The paid-speech-before-music-check gap stays in `2026-10-23-preflight-music-before-paid-dub-synthesis`.
 - Dolby, Michelin and Seiko need their own `--loop` before any dub or re-cut.
+- 2026-10-24: The owner authorized releasing only `docs/videos/long-form/review.md` and
+  `docs/videos/long-form/review.json` from this ticket for C15's independent duration
+  review binding. Other scope and pending host work stay here.

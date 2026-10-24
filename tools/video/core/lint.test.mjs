@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
@@ -77,6 +78,22 @@ test("URLs and written language are errors; narrating the checking process is a 
   assert.match(messages(result.errors), /never read a URL aloud/);
   assert.match(messages(result.errors), /"綜上所述" is written language/);
   assert.match(messages(result.warnings), /"經查證" narrates the process/);
+});
+
+test("本文 is written language only when it is not part of 日本文", () => {
+  const cases = [
+    ["原廠說，日本文字的筆畫較密，原來的筆尖留下新的要求。", false],
+    ["日本文化有不同的書寫傳統。", false],
+    ["本文指出原因。", true],
+    ["在本文我們會比較兩種設計。", true],
+    ["日本文字的筆畫較密，本文指出筆尖為何要變細。", true],
+  ];
+  for (const [text, expected] of cases) {
+    const doc = fixture();
+    doc.scenes[0].lines[0].text = text;
+    const found = lintVideo(doc, context()).errors.filter((problem) => problem.message.includes('"本文" is written language'));
+    assert.equal(found.length, expected ? 1 : 0, text);
+  }
 });
 
 test("long sentences and parentheses are warnings", () => {
@@ -702,6 +719,34 @@ test("A01 retains the narrated episode and open-loop lint at seven minutes; B18 
   assert.ok(other.summary, messages(other.errors));
   assert.ok(!other.warnings.some((warning) => /the outro asks for no subscription|the opening chapter runs about/.test(warning.message)
     || warning.kind === "narrative"), "a B18 draft under eight minutes does not get the A01-only narrative exception");
+});
+
+test("only the frozen C08 short-v8 identity uses a four-minute draft floor", () => {
+  const dir = new URL("../../../docs/videos/story-everyday-kikkoman-c08-short-v8/", import.meta.url);
+  const video = JSON.parse(readFileSync(new URL("video.json", dir), "utf8"));
+  const series = JSON.parse(readFileSync(new URL("series.json", dir), "utf8"));
+  const brief = readFileSync(new URL("brief.md", dir), "utf8");
+  const oldFloor = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
+  try {
+    const result = lintVideo(video, context({ series, brief }));
+    assert.ok(!result.errors.some((error) => error.path === "target_minutes" || /every episode but a drama's runs at least/.test(error.message)),
+      messages(result.errors));
+    assert.ok(result.warnings.some((warning) => /no open loop between/.test(warning.message)),
+      "the C08 short route still receives narrated-story checks");
+    for (const changed of [
+      { slug: "story-everyday-kikkoman-c08" },
+      { series: { ...video.series, episode: 9 } },
+      { target_minutes: [9, 11] },
+    ]) {
+      const other = lintVideo({ ...video, ...changed }, context({ series, brief }));
+      assert.ok(other.errors.some((error) => /every episode but a drama's runs at least 8/.test(error.message)),
+        messages(other.errors));
+    }
+  } finally {
+    if (oldFloor === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = oldFloor;
+  }
 });
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
 // a subscribe invitation with a reason.

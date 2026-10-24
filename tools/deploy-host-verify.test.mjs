@@ -4,14 +4,25 @@
 // of the script here and run on sample logs.
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 const SCRIPT = readFileSync(new URL("../.agents/skills/deploy/scripts/host-verify.sh", import.meta.url), "utf8");
 const DRAMA_OFF = "漫劇已停用";
 const DRAFT_CAP = "支草稿，達到上限";
+const GIT_BASH = "C:/Program Files/Git/bin/bash.exe";
+const BASH = process.env.BASH || (process.platform === "win32" && existsSync(GIT_BASH) ? GIT_BASH : "bash");
 // gawk 5.4 refuses an empty "BEGIN{}", which skipped these tests wherever it is the awk.
 const hasAwk = spawnSync("awk", ["BEGIN{exit 0}"]).status === 0;
+const hasBash = spawnSync(BASH, ["-c", "exit 0"]).status === 0;
+
+function rollbackPair(imageHead, databaseHead) {
+  const match = SCRIPT.match(/reviewed_budget_rollback_pair\(\) \{\r?\n[\s\S]*?\r?\n\}/);
+  assert.ok(match, "host verifier must declare the reviewed rollback pair predicate");
+  const result = spawnSync(BASH, ["-c", `${match[0]}\nreviewed_budget_rollback_pair "$1" "$2"`, "pair", imageHead, databaseHead], { encoding: "utf8" });
+  assert.equal(result.error, undefined, result.error?.message);
+  return result.status === 0;
+}
 
 function octal(text) {
   return [...Buffer.from(text, "utf8")].map((byte) => `\\${byte.toString(8)}`).join("");
@@ -74,4 +85,25 @@ test("the AI-drama-off exit 4 is still counted apart, and a mixed log counts eac
 test("the verdict still requires no counted exit, and names the capped exits", () => {
   assert.match(SCRIPT, /\[ "\$exited" -eq 0 \]/);
   assert.match(SCRIPT, /auto_exit3_draft_cap=\$cap_exits/);
+});
+
+test("host verification permits only three reviewed budget rollback pairs", { skip: !hasBash && "no bash on this machine" }, () => {
+  for (const [imageHead, databaseHead] of [
+    ["0132_video_pilot_budget", "0133_story_followon_budget"],
+    ["0137_video_manga_tier", "0138_story_everyday_budget"],
+    ["0138_story_everyday_budget", "0139_c20_zippo_pilot_budget"],
+  ]) {
+    assert.equal(rollbackPair(imageHead, databaseHead), true, `${imageHead} -> ${databaseHead}`);
+    assert.equal(rollbackPair(databaseHead, imageHead), false, `${databaseHead} -> ${imageHead}`);
+  }
+  for (const [imageHead, databaseHead] of [
+    ["0138_story_everyday_budget", "0138_story_everyday_budget"],
+    ["0138_story_everyday_budget", "0139_other_budget"],
+    ["0137_video_manga_tier", "0139_c20_zippo_pilot_budget"],
+    ["0132_video_pilot_budget", "0134_unreviewed"],
+  ]) {
+    assert.equal(rollbackPair(imageHead, databaseHead), false, `${imageHead} -> ${databaseHead}`);
+  }
+  assert.match(SCRIPT, /\[ "\$head_n" -eq 1 \] && \[ "\$guard_rc" -eq 0 \] && \[ "\$expected" = "\$alembic_head" \]/);
+  assert.match(SCRIPT, /\[ "\$schema_state" = rollback-compatible \] \\\n+     && reviewed_budget_rollback_pair "\$alembic_head" "\$current"/);
 });
