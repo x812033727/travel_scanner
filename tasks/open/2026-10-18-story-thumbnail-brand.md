@@ -17,7 +17,6 @@ scope:
   - tools/video/story-plans/plan.mjs
   - tools/video/story-plans/plan.test.mjs
   - tools/video/core/timeline.mjs
-  - apps/api/app/video_automation/stories.py
   - apps/api/tests/test_video_story.py
   - .agents/skills/youtube-video/references/story.md
 ---
@@ -70,3 +69,9 @@ cd apps/api && uv run pytest tests/test_video_story.py
   is why the brand is left out of it; the headline is not, so changing a shot story's headline
   makes its keyframes and clips stale (not tried on a real story). Worth its own task if that ever needs doing.
 - Measured in Noto Sans TC 900: 「SEIKO」 at 120 px is 363 px wide, so a capital is about 0.62 em.
+- 2026-10-24: The owner authorized releasing only `apps/api/app/video_automation/stories.py`
+  from this stale scope for the C20 Zippo short-v8 same-row import. PR #1568 merged the
+  thumbnail implementation as `498b1dbfc78f44dfa79926b0c979cb26d3b5202f` on
+  2026-10-18; its branch is gone and no PR remains open. This ticket's other scope and
+  unresolved duration-review note are retained. C20 work is in
+  `2026-10-24-bind-c20-zippo-short-v8-to`.
