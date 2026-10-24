@@ -1,7 +1,7 @@
 ---
 id: 2026-10-24-storyboard-check-passed-problems-manga-details
 title: 免關卡漫劇的分鏡永遠不會自動核准：storyboard_check_passed 要每鏡 problems 為空，manga 是非題過關的鏡頭常帶 details 備註
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5.5
