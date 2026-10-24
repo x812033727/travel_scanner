@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-c20-zippo-v5r2-visual-review
 title: Resolve C20 Zippo script and visual blind-review holds
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T02:56:27Z
 created_at: 2026-10-24T02:55:46Z
-completed_at:
+completed_at: 2026-10-24T06:59:53Z
 branch: codex/c20-zippo-v5r2-20261024
 depends_on: []
 scope:
