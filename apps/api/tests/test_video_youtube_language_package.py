@@ -276,6 +276,43 @@ async def test_a_chosen_languages_own_thumbnail_rides_along_and_nothing_else_doe
     assert set(result.captions) == {"zh-TW", *LOCALES}
 
 
+@pytest.mark.parametrize(
+    ("dub_state", "role", "content_type", "accepted"),
+    [
+        ("skipped", "dub_unchecked_ko", "audio/mp4", True),
+        ("skipped", "dub_unchecked_ko", "text/plain", False),
+        ("skipped", "dub_unchecked_ja", "audio/mp4", False),
+        ("ready", "dub_unchecked_ko", "audio/mp4", False),
+    ],
+)
+async def test_a_skipped_dubs_unchecked_track_rides_along_and_is_never_synced(
+    site: Site, dub_state: str, role: str, content_type: str, accepted: bool
+) -> None:
+    selected = {
+        "ko": {"metadata": True, "captions": True, "dub": True},
+        "ja": {"metadata": True, "captions": True, "dub": False},
+    }
+    batch = await _language_batch(site, selected=selected)
+    body = b"unchecked ko take"
+    item = _entry(role, _put(review_store(site.settings), body), body, content_type)
+
+    def skip(manifest: dict[str, Any]) -> None:
+        if dub_state == "skipped":
+            manifest["files"] = [f for f in manifest["files"] if f["role"] != "dub_ko"]
+            skipped = {"status": "skipped", "reason": "Jev still hears 6h4n wrong"}
+            manifest["locales"]["ko"]["dub"] = skipped
+        manifest["files"].insert(-1, item)
+
+    await _replace_manifest(site, batch, skip)
+    if not accepted:
+        with pytest.raises(Refused):
+            await _composed(site)
+        return
+    result = await _composed(site)
+    assert "ko" not in result.dubs
+    assert set(result.captions) == {"zh-TW", "ko", "ja"}
+
+
 @pytest.mark.parametrize("status", ["pending", "rejected", "superseded"])
 async def test_latest_unapproved_batch_never_falls_back_to_older_approved(
     site: Site, status: str

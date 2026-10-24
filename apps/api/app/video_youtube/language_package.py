@@ -28,6 +28,7 @@ from app.video_youtube.requests import localizations, text_problem
 
 HASH = re.compile(r"^(?:[0-9a-f]{16}|[0-9a-f]{64})$")
 FILE_KEYS = ("role", "sha256", "size", "content_type")
+AUDIO_TYPES = ("audio/mp4", "audio/mpeg", "audio/wav")
 
 
 def invalid(detail: str) -> Refused:
@@ -335,6 +336,14 @@ def compose(
                 if state == "skipped":
                     if role in files:
                         raise invalid("略過的語言項目仍附有素材，請重新送審")
+                    # A dub the check gave up on may carry its track for the owner to judge and
+                    # upload by hand; sync never sends it.
+                    unchecked_role = f"dub_unchecked_{suffix}"
+                    unchecked = files.get(unchecked_role)
+                    if part == "dub" and unchecked is not None:
+                        if unchecked["content_type"] not in AUDIO_TYPES:
+                            raise invalid("未通過檢查的配音附件格式不正確，請重新送審")
+                        allowed_roles.add(unchecked_role)
                     continue
                 if part == "dub" and locale == narration:
                     raise invalid("原旁白語言必須明確略過重複配音，請重新送審")
