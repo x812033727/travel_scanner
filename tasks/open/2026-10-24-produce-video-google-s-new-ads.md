@@ -27,7 +27,7 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 - [x] `docs/videos/google-ai-search-ads-exception/` holds brief.md, video.json, claims.md and verify-*.md; lint has zero errors and the storytelling panel passes (or its misses are fixed and recorded).
 - [x] Outline recorded (owner's standing word: take the recommended option), narration, final and publish gates pushed to /admin/videos (hand-pushed: every gate waits for the owner).
 - [x] final.mp4, captions and the upload package exist in the local workdir and qa passes 11/11 (policy and narration items are the owner's call at the final gate).
-- [ ] Eight languages (en, ja, ko, es, pt, id, vi, th; owner 2026-10-24 「不只三語了現在是八語」) titles/descriptions, CC, locale thumbnails and dubs made once the owner ticks them on the video page; `review-push --gate languages` accepted.
+- [x] Eight languages (en, ja, ko, es, pt, id, vi, th; owner 2026-10-24 「不只三語了現在是八語」) titles/descriptions, CC, locale thumbnails and dubs made; `review-push --gate languages` accepted 2026-10-25.
 
 ## Steps
 
@@ -39,7 +39,8 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 - [x] render (four passes for the paper layout), assemble (16,164 frames, −14.1 LUFS), captions (120 cues, rebuilt after assemble), qa 9/11 (narration unapproved at run time; policy 有示範 0.56), final pushed and approved by the owner 2026-10-24.
 - [x] package 4/4 (metadata 76607693e8b6), publish gate pushed 2026-10-24 (pending the owner). Owner: upload `upload/final.mp4` in Studio as Private per UPLOAD.md, paste the URL on the 「可以上架」 card, tick the eight languages on the video page.
 - [x] Languages (owner ticked all eight with 標題說明＋CC＋配音, 2026-10-24 evening): `languages.json` written; `i18n-sheet --locale en,ja,ko,es,pt,id,vi,th --parts metadata,captions`; one translator agent per locale (all lines under `max_chars` except ja nmqp/sxya where the English setting names alone exceed it); one reviewer agent per locale writing `<workdir>/i18n/<locale>.review.{md,json}`, applied with `_tools/apply-review.mjs <locale>` then `i18n-merge` (fixes per locale: en 15, vi 13, es 16, id 13, ja 9, pt 33, ko 19, th 18; recurring finds: 可能 rendered as certain, 「連 app」 vs 「關開關」 verbs conflated in pt, 人工審核 as censorship in vi, 「英文帳戶」 as UK account in th). `render` drew eight locale thumbnails (pt and id headlines shortened to fit).
-- [ ] Dubs: en recorded (83 requests, 0 over budget, 11 windows sped up ≤1.15x), check-audio 4 flagged → reworded (email, ad section, 'The way I use it') → 0 flagged. ja ko es pt id vi th dubs and their audio checks run as two detached chains (`_tools/dub-chain2.log`, `dub-chain3.log`); then captions → package → review-push languages.
+- [x] Dubs, all eight: recorded in detached chains (`_tools/dub-chain2..24.log`, one project lease so strictly one locale at a time), lines over their window shortened (ja 7+2, pt 2, id 3, es 2, th 1), every audio check driven to 0 flagged by rewording (en 4; ja 17→6→1; ko 11→2; vi 15→1 (nối heard as nói → kết nối); pt 12→3→1→1 (está/estou heard as tá/tô); id 6; es 6; th 15→4). Recurring: the transcriber writes colloquial contractions and expands abbreviations, so avoid está/estou, ตุลาคม vs ต.ค., 版 (ja) and digits that the voice reads differently. One host 502 on es (`speech-journal forget` then rerun).
+- [x] captions (9 locales, dubbed ones on dub timing; reading-speed warnings only), package 4/4 (8 thumbnails, 9 captions, 9 descriptions, 8 dub tracks; pt/id titles shortened under 100 chars), `review-push --gate languages` accepted 2026-10-25 (pending the owner: upload the eight `upload/dubs/<locale>.m4a` in Studio → 語言, then press 「我已經在 Studio 傳好這些配音」 on the card).
 
 ## How to verify
 
