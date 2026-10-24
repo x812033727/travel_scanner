@@ -6181,23 +6181,70 @@ Ran: Node v24.13.0, Windows, in the worktree mid-merge (HEAD `174badd17`, MERGE_
 Non-claims: this is a receipt union for a merge. It does not re-review any source file or the unbound files main changes (among them the C08/C20 intake files of #1827, `stories.py`, `script-intake.mjs` and the task files), and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Manual upload package zip increment: 6 files (2026-10-24)
+
+Reviewer: `claude-pr-review-package-zip-20261024`. Author: `claude-fable-5-1-package-zip`. Scope: DURATION_ONLY for `apps/api/app/video_reviews/admin_service.py` and the five `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` at `78279f67c` ("壓縮檔模組移到 admin 路徑：錯誤碼屬後台，不需多語句子") on branch `claude/manual-download-compression-b32adc` (PR #1830), the second of two commits on top of main at `7f5cc6594` (#1825); the first is `a2cffea7e` ("手動上傳包多一個整包 zip，一次下載全部檔案"). Reviewed as `git diff 7f5cc6594 78279f67c -- <each of the 6 files>` (26 added lines, 0 removed). The two commits also change 7 unbound files (`apps/api/app/video_reviews/admin_package_zip.py`, `apps/api/app/video_reviews/admin_api.py`, `apps/api/tests/test_video_package_zip.py`, the `apps/web/app/api/admin-video-package/[slug]` route and its test, and `apps/web/components/admin-video-manual-upload.tsx` and its test); `admin_package_zip.py`, `admin_api.py` and `admin-video-manual-upload.tsx` were read for context only and are not bound or reviewed. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 7f5cc6594:<path>` hashes to the existing binding and table row for each of the 6 files (`b77cabe8…` admin_service.py, `bbeb812a…` en, `25e7bf0d…` ja, `ffb58991…` ko, `4919b914…` zh-CN, `66ead6f9…` zh-TW admin.json); at `78279f67c` and in the worktree (clean) they hash to the values in the table below (Node `crypto.createHash('sha256')` over the file bytes; none of the 6 holds a CR byte). The other 102 registered files hash to their bindings in the worktree. review.md hashed to the bound `report_sha256` `6b3de57985147623d16fedd42da21d0c4194710ba786fcc1c450f6f0de22507f` before this increment. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these 6 paths and nothing else. Earlier increments are retained in full.
+
+Findings. The change lets the owner download a manual upload package as one zip; it moves no length of a video. admin_service.py (+11/−0): one import (`admin_package_zip as package_zip`) and one function, `package_files_for_admin`, which loads the project, collects the file lists of its reviews and hands them with the requested entries to `package_zip.resolve_entries`, so a zip holds only files some review of this video already shows, each under the name the page gives it. It reads no length, frame count or plan and gates nothing on duration. The five admin.json files each add exactly three keys under `videoYoutube.manual` (`downloadAll`, `downloadAllHelp`, `downloadAllNoVideo`) and change nothing else; the only number in them is the "1080p" resolution of the compilation video that stays outside the archive. A case-insensitive scan of the changed lines for minute, MIN_EPISODE, 480, 14,400, 14400, target_, duration, runtime, floor, anime, plans and 分鐘 finds none. None of the changed lines touches the explainer default of 10 minutes or its 8–20 range, the drama 1–8 minute range, the brand story 13 minutes, the non-drama 8-minute floor, the 480 s / 14,400-frame QA floor, the long-anime policy, the measurement evidence requirements or `plans.json`.
+
+Ran: Node v24.13.0, Windows, in the worktree at `78279f67c` (clean): the baseline hashing above; `git diff 7f5cc6594 HEAD -- <the 6 files>` piped to the keyword scan above (no match); `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly these 6 paths, exit 1). The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable. The web and API tests were not run.
+
+Non-claims: this is a 6-file incremental source duration review. It does not re-review the other 102 bound files or the unbound files the commits change, including `admin_package_zip.py`, `admin_api.py`, the BFF route and `admin-video-manual-upload.tsx`; it does not judge the zip's path safety or size, the wording of the three messages in each locale, or the panel's layout, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1831 merge with #1830 follow-up (2026-10-24)
+
+Reviewer: `codex-independent-duration-integration-20261024`. Authors: `codex-open-tasks-sfx` and `claude-fable-5-1-package-zip`, with the earlier authors retained in their original increments. Scope: DURATION_ONLY for the merge of PR #1831 at `8dceb0fb1a9851c2383a06b4ae2e4e22ed1cb8a0` with main at `2a22270ccf15d572a339ff7d584c63f46c5c3856` (PR #1830). The reviewer authored none of the product changes and edits only this report and review.json.
+
+Baseline: the common ancestor is `63d49d575a76302b9a82ca611b55bb6a7f6418f6`. For each of the 14 changed bindings, SHA-256 of `git show 63d49d575:<path>` equals the baseline receipt. The branch changes 8 bindings and main changes 6, with no overlap. All three receipts contain the same exact 108 keys. All 108 current raw source hashes equal the union: the 8 branch values, the 6 main values, and 94 unchanged baseline values. No source file was repaired or altered by this review.
+
+Findings: incoming admin_service.py adds only the ZIP helper import and project/review-backed package file lookup; it reads no target, duration, frame count or measured evidence. Each of the five admin locale JSONs adds exactly the three manual-ZIP strings, preserving the same {count} parameter. Their 1080p mention is a resolution, not a runtime. The 8 branch bindings keep their previously independently reviewed handoff, dubbing preflight, tutorial-promise and named-Gemini metadata changes. The 600/780-second planning targets, 480-second measured floor, existing explicitly approved exceptions, source bindings and covered states remain unchanged by this integration.
+
+History: all non-table historical sections from base, the branch and main were checked verbatim against the automatic report merge. This retains the manual-upload ZIP increment and all three branch increments (open-task reconciliation, Gemini metadata and SFX preflight). Only the current canonical binding table is refreshed; no historical increment table or verdict is rewritten. The prior branch report SHA-256 is `9a10afd0144a7b0d473c9b537a0a7ff7a0a775bc03a0b58318652947af0a31fe`; the prior main report is `80c25b0b69422d17ba3a90bab7f0ff7866be7a7091e93efa946299a9c4cf5632`.
+
+Ran before writing: pinned three-blob extraction, baseline hashing for all 14 changed bindings, exact 108-key comparison and fresh SHA-256 checks for all 108 merged source files. After the final write, `node --test tools/video/long-form/review.test.mjs` and `node tools/video/long-form/cli.mjs check` are run with actual exits retained in the independent hand-off; the report stays stable while those checks run.
+
+Non-claims: this is duration-only integration review, not a new API/frontend acceptance run or media acceptance. The 7 incoming unbound product files were read for context; paid generation, deployment, upload and publication are outside this review. Existing historical native failures and their distinct later evidence remain intact.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+### Integration changed SHA256 bindings
+
+| File | SHA256 |
+| --- | --- |
+| `.agents/skills/youtube-video/references/automated.md` | `583cda761ce169cd9b0c600ff80137bc6a829192c7cc2ede0b9bdce8aaf7ea32` |
+| `apps/api/app/video_automation/schemas.py` | `60b2aa3b7fe8961517340364c47f86ebaf20be3a822b71bfa968566331694ea1` |
+| `apps/api/app/video_automation/settings.py` | `53d9f4f8bc68050c7bed82505f2838c09478ea39076193063db8bd1376ad7328` |
+| `apps/api/tests/test_video_automation_settings.py` | `a168bd0b83f1b22d2896c25e3445e70c6dbb2d6d59857cb9a78c23ba625c20c2` |
+| `tools/video/core/lint.mjs` | `60e47fc3e303fded0a80a5069d35baa47f3abb2e2fa58f8954ece0f962cd3547` |
+| `tools/video/core/lint.test.mjs` | `3ae7b74639dbeeeea60ce89284b975cd5d90320219eb56bee893c7c4ea361fed` |
+| `tools/video/dubs/dubs.test.mjs` | `41fcb0eb694fdea3011b3bea6accb79ec21bfaea9aeab80ed59b647510d1496c` |
+| `tools/video/media/look-keyframes.test.mjs` | `fbe107f47952de0c793432106f8805def22c268b64455e0906137c88b21da67e` |
+| `apps/api/app/video_reviews/admin_service.py` | `4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c` |
+| `apps/web/messages/en/admin.json` | `eea97d9a8b305c3c6b8e7f61944f915525ced6b807248272fa8af5ce2c7ba202` |
+| `apps/web/messages/ja/admin.json` | `7c203a057bd769550aae0e54534a0d7e7e35e65788815bfc295dfa73241dee63` |
+| `apps/web/messages/ko/admin.json` | `a0056c6ed09a1042625f1bfd1e76b5adf981cba5537e1e47042cfca28c199411` |
+| `apps/web/messages/zh-CN/admin.json` | `b79bd9584a0fe995bdcb77623b18381f107a97ca16f7a2e6b1d60f9c4cabfe66` |
+| `apps/web/messages/zh-TW/admin.json` | `d75cab1992dfd0f51b8a60447c3feb25607dff815951772f91057276b37d40e4` |
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment, then the unchecked dub downloads increment, then the storyboard second-look remarks increment (main, #1821), and then the unchecked dub downloads branch merge with main after #1821. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment, then the unchecked dub downloads increment, then the storyboard second-look remarks increment (main, #1821), and then the unchecked dub downloads branch merge with main after #1821, and then the manual upload package zip increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
 | `.agents/skills/youtube-video/SKILL.md` | `80a340bb20f8bca626efc851e3cfa5064dbfd0548bd444208b3c247867c77ef1` |
-| `.agents/skills/youtube-video/references/automated.md` | `e517d2e5d3845782cf7c32eff6ea78a26d1e3ad74e2b83bb69853ea736feb5eb` |
+| `.agents/skills/youtube-video/references/automated.md` | `583cda761ce169cd9b0c600ff80137bc6a829192c7cc2ede0b9bdce8aaf7ea32` |
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
 | `.claude/skills/youtube-video/SKILL.md` | `80a340bb20f8bca626efc851e3cfa5064dbfd0548bd444208b3c247867c77ef1` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023` |
 | `apps/api/app/video_automation/models.py` | `456f343a463e153edafc11151f7e72063ca0c4122f874e3dc26afc6430c69706` |
-| `apps/api/app/video_automation/schemas.py` | `2fcd70e8c7fa4cd72f3385ce474c664fd712ab54e86ca9117506f01864620d6e` |
+| `apps/api/app/video_automation/schemas.py` | `60b2aa3b7fe8961517340364c47f86ebaf20be3a822b71bfa968566331694ea1` |
 | `apps/api/app/video_automation/series.py` | `5952afc7aca690ee964e7475c5a6380b9323af54ba4d09250946c2ec93e70043` |
-| `apps/api/app/video_automation/settings.py` | `bf60da6b3a153ffba26558ef33964e45fd8b2d8d563861bbfee695d971b30beb` |
-| `apps/api/app/video_reviews/admin_service.py` | `b77cabe88bd63ff0244e3442b1e88730198110dc720027e27c3ce65861da9e01` |
+| `apps/api/app/video_automation/settings.py` | `53d9f4f8bc68050c7bed82505f2838c09478ea39076193063db8bd1376ad7328` |
+| `apps/api/app/video_reviews/admin_service.py` | `4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c` |
 | `apps/api/app/video_reviews/schemas.py` | `6f7516c9fffd8a4cc4c52cf9ecca77ce42817244a31228b374ef42d766d1c5b3` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -6206,7 +6253,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
 | `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
 | `apps/api/tests/test_video_anime_review_policy.py` | `01c7bab94cdb630fa74a9f86e617f67b706818ffaaebe8204301bbe99b73edaf` |
-| `apps/api/tests/test_video_automation_settings.py` | `c6f5a8fdd15753b781072b39af7a2efe08c3c24d240ab548d7cd334743d19ddf` |
+| `apps/api/tests/test_video_automation_settings.py` | `a168bd0b83f1b22d2896c25e3445e70c6dbb2d6d59857cb9a78c23ba625c20c2` |
 | `apps/api/tests/test_video_drama_requests.py` | `6b96e0837ea450fff3597dbb66ab621e32b4817a41f2a395b8ba38445b4ff4fe` |
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
@@ -6216,11 +6263,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/web/components/admin-video-series.test.tsx` | `8ddd2c677cb81450a8f4855d3336c16c2ba19675a31a1de2ceafee9e6dd64c2b` |
 | `apps/web/components/admin-video-series.tsx` | `6b65a53ce58cbdca6390b97a028c7b86f4ed3fa9b435e5ba7b2e5c749d607021` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `bbeb812a65390689773a0bb7c98f0c352a014a49886b4ed532d5f4d9ac8a2e03` |
-| `apps/web/messages/ja/admin.json` | `25e7bf0dd19611f9fe42b70f0774afb284755ea581be2e7de39fe5b542c0770d` |
-| `apps/web/messages/ko/admin.json` | `ffb589913ad50ac259dba8242c01788c543cc635296a69119ab2d6f818a4a06f` |
-| `apps/web/messages/zh-CN/admin.json` | `4919b914ce13c884e5e287e62ecc21c729ee4c4a459e7a666b8b16f47463b7f1` |
-| `apps/web/messages/zh-TW/admin.json` | `66ead6f9c80537806289fee82ee765cd0ebe2378d6c0bf35e929bac9294bc138` |
+| `apps/web/messages/en/admin.json` | `eea97d9a8b305c3c6b8e7f61944f915525ced6b807248272fa8af5ce2c7ba202` |
+| `apps/web/messages/ja/admin.json` | `7c203a057bd769550aae0e54534a0d7e7e35e65788815bfc295dfa73241dee63` |
+| `apps/web/messages/ko/admin.json` | `a0056c6ed09a1042625f1bfd1e76b5adf981cba5537e1e47042cfca28c199411` |
+| `apps/web/messages/zh-CN/admin.json` | `b79bd9584a0fe995bdcb77623b18381f107a97ca16f7a2e6b1d60f9c4cabfe66` |
+| `apps/web/messages/zh-TW/admin.json` | `d75cab1992dfd0f51b8a60447c3feb25607dff815951772f91057276b37d40e4` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -6255,8 +6302,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/duration.mjs` | `dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d` |
 | `tools/video/core/duration.test.mjs` | `2945430037b75c142f4f14f3b07736c102073f85daa6cea984bb1e6ea667a6bd` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `6573e87d4b29f786375d8a0f7b56402ee7ae04874c3d4e2020cdb0acd8fb6faf` |
-| `tools/video/core/lint.test.mjs` | `65b2169c0180dd0850b6e9e3a71304bd0b8245b5f8db7a77b8eac8a38195bf74` |
+| `tools/video/core/lint.mjs` | `60e47fc3e303fded0a80a5069d35baa47f3abb2e2fa58f8954ece0f962cd3547` |
+| `tools/video/core/lint.test.mjs` | `3ae7b74639dbeeeea60ce89284b975cd5d90320219eb56bee893c7c4ea361fed` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
@@ -6267,7 +6314,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/timeline.mjs` | `a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362` |
 | `tools/video/core/timeline.test.mjs` | `fce82218d4efc4f923d22b3fc3ed42b1a9a743d2930c0cb229fed366e53c06d8` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
-| `tools/video/dubs/dubs.test.mjs` | `44a735e05eeaf16efad8b21f2d8d29add19a24a6f38d32c8c683d82f0616343b` |
+| `tools/video/dubs/dubs.test.mjs` | `41fcb0eb694fdea3011b3bea6accb79ec21bfaea9aeab80ed59b647510d1496c` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `87ff70cd6742f764be45edb4bad4033e8b6c97d04e0a862a67c54484beac9051` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
@@ -6277,7 +6324,7 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `8d057fb90db90355e88e560e2472fb3088307fb0d7bd08300166bf146f89df99` |
-| `tools/video/media/look-keyframes.test.mjs` | `4b741628e0502a77226a999431ba50dcab98851db1f4284ec16db6dce8651b8a` |
+| `tools/video/media/look-keyframes.test.mjs` | `fbe107f47952de0c793432106f8805def22c268b64455e0906137c88b21da67e` |
 | `tools/video/package/cli.mjs` | `46e4627f26030e5296ae42970adf5ef313551a593523d8bd47089c1e656e89e4` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
