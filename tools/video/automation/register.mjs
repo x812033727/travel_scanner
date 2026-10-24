@@ -761,7 +761,7 @@ ${NARRATIVE_RULES}
 
 /** The Gemini `voice.style` the owner pastes on the settings tab for this register (≤ 400 characters). */
 export const STORY_VOICE_STYLE =
-  `${CHANNEL_ACCENT}。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。`;
+  `${CHANNEL_ACCENT}。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。`;
 
 const QUESTION = /[？?]\s*$/;
 const GREETING = /大家好|今天(要|來)?跟大家|歡迎(回到|來到)|接下來我們來看/;

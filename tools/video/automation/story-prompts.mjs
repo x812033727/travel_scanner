@@ -17,9 +17,10 @@ export const STORY_FIX_VARIANT = "story-fix";
 const STORY_COMMON = `
 You work on ONE zh-TW (Traditional Chinese, Taiwan) brand story for the Mokaair YouTube channel
 (docs/videos/STORY.md): a non-fiction documentary told by a narrator alone over illustrated stills
-under slow camera moves, with switchable zh-TW captions rather than burned-in subtitles. Use the series target_minutes and look in the
+under slow camera moves, with burned-in zh-TW subtitles (other languages as switchable captions). Use the series target_minutes and look in the
 payload: an original custom story is 12 to 15 minutes with about 90 shots; a cute-mystery story is
-about 10 minutes with about 80 MiniMax illustrations. It tells how a
+about 13 minutes (the series target_minutes) with about 105 MiniMax illustrations and about 3,500
+spoken characters. It tells how a
 brand, an everyday object or an invisible standard came about and how its business works. The
 story was planned and fact-checked before you: "plan" is that plan, and every entry of "facts"
 (the plan's must_verify) was confirmed against its sources by a second reader. Everything you may

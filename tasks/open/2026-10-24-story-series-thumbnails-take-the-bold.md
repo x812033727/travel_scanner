@@ -33,21 +33,21 @@ no expression close-up and a small MOKAAIR mark. At list size they read as one d
 
 ## Definition of done
 
-- [ ] The owner has seen two or three sample thumbnails of delivered episodes (H01 v2, S01, C01)
-      in the bold look and chosen one; this starts with artwork, not code.
-- [ ] A `thumb` layout for `curio-` and `story-` videos: full-bleed keyframe or a bright tone
-      ground, headline plus second line in outlined type readable at 320 px wide, no label pill,
-      the series name small; `thumbnail.data.shot` prefers a face or the object itself.
-- [ ] `qa/thumbnail.mjs` keeps the 6-character and word-boundary checks and adds the second line's
-      limit; the other series' thumbnails are byte-identical to before.
-- [ ] `docs/videos/BRANDING.md` records the look and the owner's choice.
+- [x] The owner has seen three sample thumbnails of delivered episodes (H01 v2, S01, H12) in the
+      bold look (2026-10-25, the session's scratchpad `thumb/bold-sheet.jpg`) and said to try it.
+- [x] A `thumb` layout for `curio-` and `story-` videos (`THUMB_BOLD_LAYOUT`, layout d): full-bleed
+      keyframe under a bottom scrim, headline yellow and second line white, both outlined, no
+      label pill, the brand mark small; the default for the two slug prefixes, a choice elsewhere.
+- [ ] `qa/thumbnail.mjs` adds the second line's limit (about 12 characters) and checks the bold
+      headline's size at 320 px with layout d's full width, not the 40% column's.
+- [ ] `docs/videos/BRANDING.md` records the look; a rendered episode's thumbnail viewed next to a
+      reference at list size.
 
 ## Steps
 
-- [ ] Render the three samples with the existing `thumbnail.variants` machinery and send them to
-      the owner (brand stories: the company name stays as the owner decided on 2026-10-18).
-- [ ] Add the layout under `THUMB_LAYOUTS`/`thumbnailHtml` keyed by the two slug prefixes.
-- [ ] Extend the QA checks and the template tests.
+- [x] Samples sent to the owner (brand stories: the company name stays as the owner decided on 2026-10-18).
+- [x] Layout d in `templates.mjs`/`theme.css`, keyed by the two slug prefixes, outside the rotation.
+- [ ] Extend the QA checks (second line, full-width headline estimate) and BRANDING.md.
 
 ## How to verify
 
@@ -56,6 +56,9 @@ curio episode's thumbnail (`node tools/video/cli.mjs render --slug curio-h01-v2`
 320 px wide next to a reference thumbnail.
 
 ## Notes
+
+- 2026-10-25: layout d landed with the channel-review PR (branch
+  `claude/quirky-files-content-review-27bf04`); what is left is the QA estimate and the doc.
 
 - 2026-10-25 filed from the story-series channel review. The open task
   `2026-10-11-curio-series-own-intro-thumbnail-shorts` is about a series identity (intro, Shorts
