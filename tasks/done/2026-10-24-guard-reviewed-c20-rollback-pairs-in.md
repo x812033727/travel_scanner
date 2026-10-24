@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-guard-reviewed-c20-rollback-pairs-in
 title: Guard reviewed C20 rollback pairs in host verification
-status: review
+status: done
 priority: P1
 area: ops
 owner: codex-c20-budget-compat
 claimed_at: 2026-10-24T05:53:59Z
 created_at: 2026-10-24T05:47:47Z
-completed_at:
+completed_at: 2026-10-24T06:11:51Z
 branch: codex/c20-budget-0139-compat-20261024
 depends_on: []
 scope:

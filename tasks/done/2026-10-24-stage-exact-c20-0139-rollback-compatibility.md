@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-stage-exact-c20-0139-rollback-compatibility
 title: Stage exact C20 0139 rollback compatibility
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-c20-budget-compat
 claimed_at: 2026-10-24T05:36:14Z
 created_at: 2026-10-24T05:36:10Z
-completed_at:
+completed_at: 2026-10-24T06:12:07Z
 branch: codex/c20-budget-0139-compat-20261024
 depends_on: []
 scope:
