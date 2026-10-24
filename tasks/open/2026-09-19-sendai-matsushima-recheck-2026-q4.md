@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-19T06:47:41Z
 completed_at:
-branch:
+branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
   - apps/api/app/guides/content/sendai-matsushima-2-day-itinerary.json
@@ -22,7 +22,7 @@ scope:
 
 ## Definition of done
 
-- [ ] 2026-10：圓通院紅葉點燈當年度日期查過，季節段那一句改好。
+- [x] 2026-10：圓通院紅葉點燈當年度日期查過，季節段那一句改好。
 - [ ] 2026-11 前後：光のページェント 2026 年檔期公布後，季節段冬天那句補上日期或維持只寫月份。
 - [ ] 2026-11：遊覽船冬季安排（16:00 停航、9:00 中型船）、福浦橋冬季時間（11 月到 3 月 8:30–16:30）、瑞巖寺 11 月與 12 月的閉門時間核對完，有變就改表格 2 與季節段。
 - [ ] 2027 年 1 月前：瑞鳳殿冬季開館時間（12/1–1/31 9:00–16:20）與仙台市博物館年末年始休館日核對完。
@@ -30,7 +30,7 @@ scope:
 
 ## Steps
 
-- [ ] **每年 10 月**：重查圓通院紅葉點燈的當年度日期，改季節段那一句。
+- [x] **每年 10 月**：重查圓通院紅葉點燈的當年度日期，改季節段那一句。
 - [ ] **2026 年 11 月前後**：SENDAI光のページェント 官網公布 2026 年檔期後補日期；`japan-winter-illumination-2026` 若加入仙台，那篇可以反向連本篇，但本文不連它（2027 年到期）。
 - [ ] **每年 11 月**：遊覽船、福浦橋、瑞巖寺三項。
 - [ ] **2027 年 1 月前**：瑞鳳殿與仙台市博物館。
@@ -53,3 +53,10 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 春季的 JR 改正（仙石線班次、仙台まるごとパス）與 jreast 票價在 `2026-09-19-sendai-four-spring-2027`；2027-05-11 拆櫻花篇連結在 `2026-09-19-gw-sakura-links-expire-2027-05`。
 - 與第 9 篇共用的るーぷる、まるごとパス數字任何一篇改，同一個 PR 改另一篇；本票的項目不碰那些數字。
 - 反向連結在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。
+
+
+### 2026-10-24 source-maintenance readback
+
+當日官方首頁9/10公告與2026活動頁確認圓通院點燈10/24–11/23，既有文章季節句已一致，本輪無需更動來源稿或發布。官方活動頁：https://www.entuuin.or.jp/lightup/2026/ ，原始HTML SHA256 5ee86780de94829d41cd057a0c1a3bfec58ee1d49ab4d310031cce0b0f403d1e。只完成十月日期複查子項；11月活動／船班／橋／瑞巖寺、2027年1月前瑞鳳殿與博物館等子項繼續保留。沒有將後續月份整票結案。
+
+Release this source-check claim after the persisted handoff; retain all remaining acceptance and media/account/production gates.

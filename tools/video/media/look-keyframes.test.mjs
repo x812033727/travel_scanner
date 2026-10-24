@@ -695,6 +695,40 @@ test("a cute explainer one-off whose series.json names image-01 is sized, priced
   assert.deepEqual(manifestOf(plain, "keyframes").image, { provider: "gemini", model: PRO_MODEL });
 });
 
+test("a named Gemini's 2K metadata keeps paid 1K keyframes until an explicit redraw", async () => {
+  const status = structuredClone(STATUS);
+  status.image.usd_per_image_2k = 0.134;
+  const box = sandbox("fixture-explainer", "explainer");
+  rewrite(box, (video) => { video.series = { slug: "one-off-x", episode: 1, chapter: 1 }; });
+  writeFileSync(path.join(box.dir, "series.json"), `${JSON.stringify({ slug: "one-off-x", episode: 1, image_model: PRO_MODEL, characters: [] })}\n`);
+  const first = explainerFixture().scenes.find((scene) => scene.template === "shot").id;
+  const site = mediaSite({ status, verdicts: () => ({ overall: 8, passed: true }) });
+  const run = (args = []) => {
+    const call = context(box, site.fetchImpl);
+    return { call, result: main(["keyframes", "--slug", box.slug, "--shot", first, ...args], call.ctx) };
+  };
+  const old = run();
+  assert.equal(await old.result, EXIT.ok, old.call.out.stderr);
+  assert.equal(site.state.images.length, 1);
+  assert.equal(Object.hasOwn(site.state.images[0], "size"), false, "an older API has no per-model 2K metadata");
+  const kept = manifestOf(box, "keyframes").shots[first];
+  const oldCache = structuredClone(readCache(box.workdir));
+  status.models.images.gemini.find((model) => model.value === PRO_MODEL).usd_per_image_2k = 0.134;
+  const dry = run(["--dry-run"]);
+  assert.equal(await dry.result, EXIT.ok, dry.call.out.stderr);
+  assert.match(dry.call.out.stdout, /pictures at 2K/);
+  const unchanged = run();
+  assert.equal(await unchanged.result, EXIT.ok, unchanged.call.out.stderr);
+  assert.equal(site.state.images.length, 1, "new metadata alone must not repurchase paid artwork");
+  assert.deepEqual(manifestOf(box, "keyframes").shots[first], kept);
+  assert.deepEqual(readCache(box.workdir), oldCache, "the retained 1K cache record stays intact");
+  const forced = run(["--force"]);
+  assert.equal(await forced.result, EXIT.ok, forced.call.out.stderr);
+  assert.equal(site.state.images.length, 2, "the owner explicitly requested a new picture");
+  assert.equal(site.state.images[1].size, "2K");
+  assert.notEqual(manifestOf(box, "keyframes").shots[first].key, kept.key);
+});
+
 /** The sandbox's video.json, changed by `edit` and written back. */
 function rewrite(box, edit) {
   const file = path.join(box.dir, "video.json");

@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { runInNewContext } from "node:vm";
 
 import { EXIT, main } from "../cli.mjs";
 import { compilationSandbox } from "../compile/fixture.mjs";
@@ -11,8 +12,8 @@ import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture, illustratedFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { watermark, WATERMARK_FILE, watermarkDataUri, watermarkRecord } from "../core/watermark.mjs";
-import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
-import { compareRuns } from "./repeat.mjs";
+import { bigCardLayoutProblems, LAUNCH_ARGS, openRenderer, resolveRequest } from "./browser.mjs";
+import { compareRuns, repeatPlan } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
 import { coverageProblems, localizedThumbnails, transitionFiles } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
@@ -327,6 +328,62 @@ test("the renderer draws in software with main-thread animations, so a frame key
   assert.ok(LAUNCH_ARGS.includes("--disable-threaded-animation"));
 });
 
+// The clipping case is measured from the real paper-look verifiable card with its
+// removed icon restored: a 302.4px two-line word was flex-shrunk to 272.84375px.
+function bigCardGeometry(parts) {
+  const element = ({ top, height, left = 260, width = 1400, naturalHeight = height, hidden = false }) => ({
+    getBoundingClientRect: () => ({ top, bottom: top + height, left, right: left + width, width, height }),
+    closest: () => hidden ? {} : null,
+    parentElement: { appendChild() {} },
+    cloneNode: () => ({ style: {}, getBoundingClientRect: () => ({ height: naturalHeight }), remove() {} }),
+  });
+  const nodes = Object.fromEntries(Object.entries(parts).map(([name, value]) => [`.${name}`, element(value)]));
+  const document = { querySelectorAll: () => [{ querySelector: (selector) => nodes[selector] ?? null }] };
+  return Array.from(runInNewContext(`(${bigCardLayoutProblems.toString()})()`, { document }));
+}
+
+test("big-card layout catches a clipped second line and sibling overlap without rejecting touching or numeral slots", () => {
+  const fitted = { kicker: { top: 170, height: 64 }, ic: { top: 260, height: 158 }, word: { top: 444, height: 302.4 }, sub: { top: 772.4, height: 63 } };
+  assert.deepEqual(bigCardGeometry(fitted), []);
+  assert.match(bigCardGeometry({ ...fitted, word: { top: 444, height: 272.84375, naturalHeight: 302.4 }, sub: { top: 742.84375, height: 63.15625 } }).join("; "), /text is clipped/);
+  assert.match(bigCardGeometry({ ...fitted, word: { top: 400, height: 302.4 } }).join("; "), /icon overlaps its text/);
+  assert.deepEqual(bigCardGeometry({ ...fitted, word: { top: 418, height: 302.4 } }), [], "touching edges do not overlap");
+  assert.deepEqual(bigCardGeometry({ ...fitted, "numeral-row": { top: 444, height: 302.4 } }), [], "a numeral row is not compared against its own word");
+  assert.deepEqual(bigCardGeometry({ ...fitted, ic: { top: 400, height: 158, hidden: true } }), []);
+});
+
+test("a clipped big card is refused before still or entrance screenshots, while a fitting card renders", async () => {
+  for (const clipped of [true, false]) {
+    let screenshots = 0;
+    let closed = false;
+    const parts = { word: { top: 444, height: clipped ? 272.84375 : 302.4, naturalHeight: 302.4 } };
+    const page = {
+      setViewportSize: async () => {}, goto: async () => {},
+      evaluate: async (fn) => {
+        if (fn.name === "pageFamily") return "Noto Sans TC Variable";
+        if (fn.name === "loadFaces") return [];
+        if (fn.name === "pauseAnimations") return 600;
+        if (fn.name === "bigCardLayoutProblems") return bigCardGeometry(parts);
+        if (fn.name === "layoutProblems") return [];
+      },
+      screenshot: async () => { screenshots += 1; return Buffer.from("frame"); },
+    };
+    const browserType = { launch: async () => ({ newContext: async () => ({ route: async () => {}, newPage: async () => page }), close: async () => { closed = true; } }) };
+    const renderer = await openRenderer({ root: ".", browserType });
+    try {
+      if (clipped) {
+        await assert.rejects(() => renderer.capture("a1", "card", { transition: true }), /big card's text is clipped/);
+        assert.equal(screenshots, 0, "no invalid still or entrance frames are drawn");
+      } else {
+        const shot = await renderer.capture("a1", "card", { transition: true });
+        assert.equal(shot.frames.length, 18);
+        assert.equal(screenshots, 19);
+      }
+    } finally { await renderer.close(); }
+    assert.equal(closed, true);
+  }
+});
+
 test("repeat compares runs frame by frame and names the states that differ", () => {
   const run = (still, frames) => new Map([["k1", { still: "s", frames: ["a", "b"] }], ["k2", { still, frames }]]);
   const same = compareRuns([run("s2", ["c"]), run("s2", ["c"])]);
@@ -337,6 +394,23 @@ test("repeat compares runs frame by frame and names the states that differ", () 
   assert.deepEqual(differ.stillsDiffer, ["k2"]);
   assert.deepEqual(differ.framesDiffer, ["k2 (0)"]);
   assert.deepEqual(compareRuns([run("s2", ["c"]), run("s2", ["c", "e"])]).framesDiffer, ["k2 (count)"]);
+});
+
+test("repeat uses the video's exact watermark pin and leaves an unpinned plan unmarked", () => {
+  const workdir = tempDir("video-repeat-mark-");
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const unmarked = repeatPlan(showcase, { root });
+  assert.deepEqual(unmarked.scenes, renderPlan(showcase, themeHash(), root).scenes);
+  const mark = watermark();
+  const pin = JSON.stringify({ schema_version: 1, id: mark.id, sha256: mark.sha256 });
+  writeFileSync(path.join(workdir, WATERMARK_FILE), pin);
+  const repeated = repeatPlan(showcase, { root, workdir });
+  const original = renderPlan(showcase, themeHash(), root, { workdir, watermark: mark });
+  assert.deepEqual(repeated.scenes, original.scenes, "the repeat keeps render's keys and embedded mark bytes");
+  assert.ok(repeated.scenes.some((scene) => scene.states.some((state) => state.html.includes(watermarkDataUri(mark)))));
+  assert.equal(readFileSync(path.join(workdir, WATERMARK_FILE), "utf8"), pin, "the pin is never rewritten");
+  writeFileSync(path.join(workdir, WATERMARK_FILE), JSON.stringify({ schema_version: 1, id: mark.id, sha256: "0".repeat(64) }));
+  assert.throws(() => repeatPlan(showcase, { root, workdir }), /recorded for this video is not the one/);
 });
 
 test("a drama's shots are clips the plan leaves to the media stages; its cards and thumbnail are drawn", () => {

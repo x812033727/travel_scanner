@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-19T06:47:41Z
 completed_at:
-branch:
+branch: codex/open-tasks-reconcile-20261024
 depends_on: []
 scope:
   - apps/api/app/guides/content/sendai-airport-access-loople-bus-guide.json
@@ -46,3 +46,10 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 空港線票價與首末班（2027-03-20 後）、るーぷる與地鐵票券（2027-04-01 前）在 `2026-09-19-sendai-four-spring-2027`，因為那些數字與其他三篇仙台文共用。
 - 反向連結（`japan-ic-card-suica-icoca-guide`、`japan-shinkansen-ticket-guide` blocks[6] 之後新增區塊，第 9、10 篇擇一）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。
 - `tasks/BOARD.md` 不要提交。
+
+
+### 2026-10-24 source-maintenance readback
+
+2026-10-24T14:35UTC讀取官方月間頁及API，但台灣航線TimeSeries仍為9-26；宮城縣頁標明2026夏季，不能當冬季驗收。三份API原始回應SHA256：f7f404196d195b00574c2b7eb977a6ad69526acf17dde29864104152efeb9326,bfbef6ab31f8a115a259b0fdddc71d129eb18d75105f1be137dc6c8fcb9b13d3,c35f7ac1e9823b10482c75d9df99ac59d80a103998e46bd59646585b2fdf35aa。尚未取得長榮／星宇的當期冬季每週班表；不修改班次或checked_on，不勾選完成。保留2026-10-25換季後至10-31的複查窗口。來源：https://www.sendai-airport.co.jp/flight/intl-monthly.html 。無內容／正式站異動。
+
+Release this source-check claim after the persisted handoff; retain all remaining acceptance and media/account/production gates.

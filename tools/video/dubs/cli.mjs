@@ -177,6 +177,19 @@ function fitWindows(windows) {
   }));
 }
 
+/** The same required-music check before speech admission and again before mixing. */
+async function dubMusic(doc, timeline, workdir, workBase) {
+  const found = await musicInputs(doc, workdir, workBase, { requiredSeconds: timeline.total_frames / FPS });
+  if (found.problem) throw new UsageError(`the dub cannot carry the music bed: ${found.problem}`);
+  return found;
+}
+
+/** Validate the declared source set, without requiring an assembled effects track. */
+async function dubSfx(doc, workBase) {
+  const found = await sfxInputs(doc, workBase);
+  if (found.problem) throw new UsageError(`the dub cannot carry the sound effects: ${found.problem}`);
+}
+
 /**
  * The sound a dub carries under its voice (docs/videos/ILLUSTRATED.md): the music track the
  * script names, checked as `assemble` checks it, and the effects track `assemble` built for the
@@ -191,14 +204,12 @@ async function dubSound(doc, timeline, workdir, workBase) {
   let track = null;
   let music = null;
   if (resolveMusic(doc)) {
-    const found = await musicInputs(doc, workdir, workBase);
-    if (found.problem) throw new UsageError(`the dub cannot carry the music bed: ${found.problem}`);
+    const found = await dubMusic(doc, timeline, workdir, workBase);
     ({ track, music } = found);
   }
   let sfxFile = null;
   if (resolveSfx(doc)) {
-    const found = await sfxInputs(doc, workBase);
-    if (found.problem) throw new UsageError(`the dub cannot carry the sound effects: ${found.problem}`);
+    await dubSfx(doc, workBase);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
     const file = path.join(workdir, "build", "sfx.wav");
     if (checks?.sfx_hash === sfxHash(doc) && checks.speech_hash === timeline.speech_hash && existsSync(file)) sfxFile = file;
@@ -488,6 +499,10 @@ async function dub(args, ctx) {
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   requireStorySpeechLexicon(project, workdir);
+  // Refuse unusable required sound inputs before buying speech or creating a dub cache/journal.
+  // dubSound checks again at mix time, so sources changed during speech cannot enter the track.
+  if (resolveMusic(doc)) await dubMusic(doc, timeline, workdir, workBase);
+  if (resolveSfx(doc)) await dubSfx(doc, workBase);
   const credentials = requireCredentials(ctx);
   const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);

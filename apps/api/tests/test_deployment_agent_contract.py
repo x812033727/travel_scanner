@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import json
+import re
 import sys
 import time
 from collections.abc import Callable, Mapping
@@ -14,6 +15,7 @@ import pytest
 
 from deployment_agent import server as agent_server
 from deployment_agent.config import AgentConfig
+from deployment_agent.executor import DeploymentExecutor
 from deployment_agent.server import AgentApplication
 from deployment_agent.store import AgentStore
 
@@ -323,3 +325,57 @@ def test_agent_application_persists_host_lock_contention_as_terminal_failure(
     assert job["status"] == "failed"
     assert job["failure_code"] == expected_code
     assert job["finished_at"] is not None
+
+
+def test_forward_and_rollback_start_unprofiled_compose_services_without_rerunning_migrate(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    compose_source = (Path(__file__).resolve().parents[3] / "docker-compose.prod.yml").read_text(
+        encoding="utf-8"
+    )
+    services_source = compose_source.split("\nnetworks:", 1)[0].split("\nvolumes:", 1)[0]
+    sections = re.split(r"(?m)^  ([a-z0-9-]+):\s*$", services_source)
+    required_services = {
+        sections[index]
+        for index in range(1, len(sections), 2)
+        if not re.search(r"(?m)^    profiles:", sections[index + 1])
+        and not re.search(r'(?m)^    restart: *["\']?no["\']? *$', sections[index + 1])
+    }
+    assert "community-sweeper" in required_services
+    assert "migrate" not in required_services
+
+    config = contract_config(tmp_path)
+    store = AgentStore(config.state_path)
+    target_sha = "b" * 40
+    previous_sha = "a" * 40
+    job_id = str(uuid4())
+    store.create_job(job_id, target_sha)
+    executor = DeploymentExecutor(config, store)
+    calls: list[tuple[str, ...]] = []
+
+    def compose(release: Path, sha: str, *args: str, timeout: int = 900) -> str:
+        calls.append(args)
+        return ""
+
+    health_results = iter([False, True])
+    monkeypatch.setattr(executor, "_current_sha", lambda: previous_sha)
+    monkeypatch.setattr(executor, "_target", lambda: (target_sha, "Service contract"))
+    monkeypatch.setattr(executor, "_ci", lambda _sha: ("success", None))
+    monkeypatch.setattr(executor, "_release", lambda sha: config.releases_path / sha)
+    monkeypatch.setattr(executor, "_compose", compose)
+    monkeypatch.setattr(executor, "_backup", lambda *_args: "verified.dump")
+    monkeypatch.setattr(executor, "_verify_three_times", lambda: next(health_results))
+    monkeypatch.setattr(executor, "_cleanup", lambda: None)
+
+    executor._deploy_locked(job_id, target_sha)
+
+    job = store.get_job(job_id)
+    assert job is not None
+    assert job["status"] == "rolled_back"
+    forward, rollback = [call for call in calls if call[:2] == ("up", "-d")]
+    for call in (forward, rollback):
+        assert required_services <= set(call)
+        assert "migrate" not in call
+    assert "--no-deps" not in forward
+    assert "--no-deps" in rollback
+    assert sum(call[:3] == ("run", "--rm", "migrate") for call in calls) == 1

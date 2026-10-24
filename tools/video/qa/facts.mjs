@@ -5,11 +5,14 @@
 // tools/video/automation/prompts.mjs and .agents/skills/youtube-video). NOT FOUND means the number
 // or the sentence was dropped, so its claim id (claims.md's c-numbers, which the scenes list in
 // `claims`) must no longer be cited anywhere. The table may use ASCII or full-width bars, and the
-// id column may read 12, c12 or #12: all are compared without the prefix.
+// id column may read 12, c12 or #12: numeric ids require an explicit claim-id header,
+// while a c-number identifies itself. Ordinary verifier row numbers are not claim ids.
 export const VERIFY_FILE = /^verify-(\d+)\.md$/;
 // The verdict as the prompts spell it, upper-case: a claim that begins "Not found on the page" is a claim.
 const NOT_FOUND = /^NOT[ _]FOUND\b/;
 const SEPARATOR = /^[\s:|｜-]+$/;
+const CLAIM_ID_HEADER = /^(?:claim[ _-]*(?:id|number|no\.?|#)|(?:主張|聲明|事實)\s*(?:編號|id))$/i;
+const VERDICT_HEADER = /^(?:verdict|result|判定|結論|結果)$/i;
 
 /** The report of the last round among some file names, or null when there was no round. */
 export function lastVerifyReport(names) {
@@ -27,14 +30,25 @@ export const normalizeClaimId = (id) => String(id ?? "").trim().replace(/^[#`*\s
 /** The rows of a report's claim table whose verdict is NOT FOUND: [{ id, cells }]. */
 export function notFoundClaims(markdown) {
   const rows = [];
+  let claimColumn = null;
   for (const line of String(markdown).replace(/\r\n/g, "\n").split("\n")) {
-    if (!/[|｜]/.test(line) || SEPARATOR.test(line)) continue;
+    if (!/[|｜]/.test(line)) { claimColumn = null; continue; }
+    if (SEPARATOR.test(line)) continue;
     const cells = line.split(/[|｜]/).map((cell) => cell.trim());
     if (cells[0] === "") cells.shift();
     if (cells.at(-1) === "") cells.pop();
-    if (cells.length < 3 || !cells.some((cell) => NOT_FOUND.test(cell))) continue;
-    const id = normalizeClaimId(cells[0]);
-    if (id) rows.push({ id, cells });
+    if (cells.length < 3) continue;
+    const notFound = cells.some((cell) => NOT_FOUND.test(cell));
+    const header = cells.findIndex((cell) => CLAIM_ID_HEADER.test(cell));
+    if (!notFound) {
+      if (header !== -1) claimColumn = header;
+      else if (cells.some((cell) => VERDICT_HEADER.test(cell))) claimColumn = null;
+      continue;
+    }
+    const raw = String(cells[claimColumn ?? 0] ?? "").trim().replace(/^[#`*\s]+|[`*\s]+$/g, "");
+    if (claimColumn === null && !/^c\d[\w-]*$/i.test(raw)) continue;
+    const id = normalizeClaimId(raw);
+    if (/^\d[\w-]*$/.test(id)) rows.push({ id, cells });
   }
   return rows;
 }

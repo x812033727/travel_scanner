@@ -68,13 +68,14 @@ export function imageStatus(status, series) {
     if (typeof entry.usd_per_image !== "number" || !Number.isFinite(entry.usd_per_image) || entry.usd_per_image <= 0) {
       throw new MediaError(`the series image model ${model} has no usable image price; refresh the site's media catalog before generating`, { code: "video_media_price_unavailable", who: "owner" });
     }
-    // Status reports credentials only for its three selected vendors. A different vendor
+    // Status reports credentials for the selected drama, slides, clip and music vendors. A different vendor
     // can be unknown; let the server check it before submitting to the paid provider.
-    const known = [status.image, status.clip, status.music].find((choice) => choice?.provider === provider && typeof choice.configured === "boolean");
-    // The 2K price on the settings' choice belongs to the settings' model, and the catalog rows
-    // carry none: an overridden model is drawn and priced at 1K rather than asked for a 2K
-    // picture it may not sell (the server answers that with 422).
-    const own2k = status.image && Object.hasOwn(status.image, "usd_per_image_2k") ? { usd_per_image_2k: null } : {};
+    const known = [status.image, status.slides_image, status.clip, status.music].find((choice) => choice?.provider === provider && typeof choice.configured === "boolean");
+    // The size price belongs to this catalog model. An older server that omits it keeps
+    // the 1K behavior; never inherit another selected model's 2K price.
+    const own2k = Object.hasOwn(entry, "usd_per_image_2k")
+      ? { usd_per_image_2k: entry.usd_per_image_2k }
+      : status.image && Object.hasOwn(status.image, "usd_per_image_2k") ? { usd_per_image_2k: null } : {};
     return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null, ...own2k } };
   }
   throw new MediaError(`the series image model ${model} is unavailable or retired; change the series model or clear its override`, { code: "video_media_model_not_allowed", who: "owner" });

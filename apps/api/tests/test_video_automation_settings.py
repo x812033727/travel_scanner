@@ -103,6 +103,20 @@ def _view_extras() -> dict[str, Any]:
     }
 
 
+def test_media_options_expose_each_image_models_own_2k_price() -> None:
+    options = service.media_options_view()
+    gemini = {model.value: model for model in options.images["gemini"]}
+    assert gemini["gemini-3-pro-image"].usd_per_image_2k == 0.134
+    assert gemini["gemini-3.1-flash-image"].usd_per_image_2k == 0.101
+    assert gemini["gemini-3.1-flash-image"].usd_per_image == 0.067
+    minimax = {model.value: model for model in options.images["minimax"]}
+    assert minimax["image-01"].usd_per_image_2k is None
+    payload = options.model_dump(mode="json")
+    assert {
+        model["value"]: model["usd_per_image_2k"] for model in payload["images"]["gemini"]
+    } == {key: model.usd_per_image_2k for key, model in gemini.items()}
+
+
 @pytest.mark.asyncio
 async def test_saving_slides_updates_the_mapped_columns_and_audits_each_field(
     monkeypatch: pytest.MonkeyPatch,

@@ -7,7 +7,7 @@ const ASCII = `# verify-2: slug
 
 ## Claim table
 
-| # | claim | where | URL | HTTP | verdict | before → after |
+| Claim ID | claim | where | URL | HTTP | verdict | before → after |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | The price is NT$270 | hook k7p2 | https://openai.com/a | 200 | CONFIRMED | - |
 | c7 | Launched in May | event-two 4bzz | https://openai.com/b | 200 | NOT FOUND | dropped the month |
@@ -48,4 +48,20 @@ test("the facts item passes when no scene cites a dropped claim, and names the s
   const none = factsChecks({ report: { name: "verify-1.md", markdown: "| 1 | x | y | z | CONFIRMED |" }, doc });
   assert.deepEqual(none, { ok: true, detail: "verify-1.md marks no claim NOT FOUND" });
   assert.match(factsChecks({ report: null, doc }).detail, /has not been fact-checked/);
+});
+
+test("a verifier's row number is not a claim id, while explicit claim ids still fail", () => {
+  const doc = { scenes: [{ id: "research", claims: ["c19"] }] };
+  const rows = "| # | 主張 | 位置 | 判定 |\n| --- | --- | --- | --- |\n| 19 | Removed detail in a source card | card.source | NOT FOUND |";
+  assert.equal(factsChecks({ report: { name: "verify-1.md", markdown: rows }, doc }).ok, true);
+  assert.deepEqual(notFoundClaims(rows), []);
+  const explicit = rows.replace("| 19 |", "| c19 |");
+  assert.equal(factsChecks({ report: { name: "verify-1.md", markdown: explicit }, doc }).ok, false);
+  const named = rows.replace("| # |", "| Claim ID |");
+  assert.equal(factsChecks({ report: { name: "verify-1.md", markdown: named }, doc }).ok, false);
+});
+
+test("an explicitly labelled claim-id column may follow row numbers and does not leak to the next table", () => {
+  const report = "| # | Claim ID | verdict |\n| --- | --- | --- |\n| 1 | c19 | NOT FOUND |\n| 2 | 20 | NOT FOUND |\n\n| # | detail | verdict |\n| --- | --- | --- |\n| 21 | source-card detail | NOT FOUND |";
+  assert.deepEqual(notFoundClaims(report).map((row) => row.id), ["19", "20"]);
 });

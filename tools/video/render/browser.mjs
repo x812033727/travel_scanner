@@ -12,6 +12,7 @@ import { ASSET_ROOTS, ORIGIN, SIZE } from "../templates/templates.mjs";
 import { TERMINAL_MAX_TRANSITION_FRAMES } from "../templates/terminal/terminal.mjs";
 import { FONT_PACKAGES, fontDir, SLIDE_FAMILY } from "./fonts.mjs";
 import { THEME_FILE } from "./plan.mjs";
+import { UsageError } from "../core/paths.mjs";
 
 export const FPS = 30;
 
@@ -108,6 +109,39 @@ async function loadFaces(fontFamily) {
   return failed;
 }
 
+// Runs in the page before screenshots. A flex-shrunk word can clip a line while the
+// card's outer box still fits; compare its natural line-box height at the same width.
+export function bigCardLayoutProblems() {
+  const problems = [];
+  for (const card of document.querySelectorAll(".t-big")) {
+    const word = card.querySelector(".word");
+    if (word && !word.closest("[data-hidden]")) {
+      const box = word.getBoundingClientRect();
+      if (box.width > 0 && box.height > 0) {
+        const natural = word.cloneNode(true);
+        Object.assign(natural.style, { position: "absolute", visibility: "hidden", width: `${box.width}px`, height: "auto", maxHeight: "none", minHeight: "0", flexShrink: "0", animation: "none", transform: "none" });
+        word.parentElement.appendChild(natural);
+        try {
+          if (natural.getBoundingClientRect().height > box.height + 1) problems.push("the big card's text is clipped; shorten it, remove the icon or give the text more room");
+        } finally { natural.remove(); }
+      }
+    }
+    // A numeral row contains the word, so compare the row as one slot, not with its child.
+    const slots = [["kicker", card.querySelector(".kicker")], ["icon", card.querySelector(".ic")], ["text", card.querySelector(".numeral-row") ?? word], ["sub", card.querySelector(".sub")]]
+      .filter(([, element]) => element && !element.closest("[data-hidden]"))
+      .map(([name, element]) => ({ name, box: element.getBoundingClientRect() }))
+      .filter(({ box }) => box.width > 0 && box.height > 0);
+    for (let i = 0; i < slots.length; i++) for (let j = i + 1; j < slots.length; j++) {
+      const left = slots[i];
+      const right = slots[j];
+      if (Math.min(left.box.right, right.box.right) - Math.max(left.box.left, right.box.left) > 1 && Math.min(left.box.bottom, right.box.bottom) - Math.max(left.box.top, right.box.top) > 1) {
+        problems.push(`the big card's ${left.name} overlaps its ${right.name}; shorten the text, remove the icon or adjust the layout`);
+      }
+    }
+  }
+  return problems;
+}
+
 // Runs in the page: what still does not fit once fitText has done what it can.
 function layoutProblems(fontFamily) {
   const problems = [];
@@ -184,8 +218,8 @@ export function seekAnimations(time) {
  * Open the renderer. `channel` picks an installed browser (e.g. "msedge", which runs natively on
  * Windows ARM64 where Playwright's bundled Chromium is emulated); the default is the bundled one.
  */
-export async function openRenderer({ root, workdir, channel }) {
-  const { chromium } = await import("@playwright/test");
+export async function openRenderer({ root, workdir, channel, browserType = null }) {
+  const chromium = browserType ?? (await import("@playwright/test")).chromium;
   let browser;
   try {
     browser = await chromium.launch({ headless: true, args: LAUNCH_ARGS, ...(channel ? { channel } : {}) });
@@ -239,6 +273,9 @@ export async function openRenderer({ root, workdir, channel }) {
       const refusedBefore = refused.length;
       const { family, unloadable } = await load(key, html, size);
       const end = await page.evaluate(pauseAnimations);
+      await page.evaluate(seekAnimations, end + 1);
+      const bigCardProblems = await page.evaluate(bigCardLayoutProblems);
+      if (bigCardProblems.length) throw new UsageError(bigCardProblems.join("; "));
       const frames = [];
       if (transition && end > 0) {
         const count = Math.min(Math.ceil(end / (1000 / FPS)), maxFrames);

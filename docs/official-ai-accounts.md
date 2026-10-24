@@ -2,6 +2,27 @@
 
 Last verified: 2026-10-10
 
+2026-10-24 20:47（Asia/Taipei）補驗正式站掃描器；本次沒有重驗 X 帳號。
+主機版本為 `7f5cc659471e8881ecea581c55e6f71fb3c306bf`，唯讀查詢的八個新增來源均啟用，
+`consecutive_failures=0`，最新掃描為 `succeeded` 或 `not_modified`：
+
+| 來源 | 累計候選數 | 最後掃描（UTC，2026-10-24） |
+| --- | ---: | --- |
+| Claude blog | 14 | 12:29:30 |
+| Claude developer blog | 6 | 12:29:33 |
+| Claude Code changelog | 14 | 02:53:34 |
+| Anthropic engineering | 26 | 12:29:30 |
+| GitHub Changelog | 14 | 12:29:26 |
+| Cursor changelog | 7 | 12:29:29 |
+| Ollama blog | 8 | 12:29:27 |
+| OpenRouter announcements | 14 | 12:29:27 |
+
+以上是各來源建檔至查詢時的累計候選數，不是單日產量或已發布篇數。
+原 `https://claude.com/blog` 列不存在；五個選題來源的 `video_topics` 都為 `true`，
+無人工退件決定的 rejected 候選數依序為 Claude blog 7、Claude developer blog 6、
+Anthropic engineering 25、GitHub Changelog 7、Cursor changelog 6。
+本次只讀資料，未重載來源、發起選題請求、呼叫模型或改設定。
+
 **沒有任何程式讀 x.com。** 這份清單是給人追蹤用的；新聞自動化與影片選題只讀「官網頁面」那一欄，
 也就是 [`sources.json`](../apps/api/app/news_automation/sources.json) 裡的來源
 （流程見 [`news-automation.md`](news-automation.md)）。站主 2026-09-30 決定不把 X 當來源，

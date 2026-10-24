@@ -109,17 +109,35 @@ export function serializeTask(task) {
   return `${lines.join("\n")}\n\n${body}\n`;
 }
 
-export function loadTasks(root) {
+function taskSnapshot(root, read) {
   const tasks = [];
   for (const folder of ["open", "done"]) {
     const dir = folder === "open" ? openDir(root) : doneDir(root);
     if (!existsSync(dir)) continue;
     for (const name of readdirSync(dir).filter((entry) => entry.endsWith(".md")).sort()) {
       const file = `tasks/${folder}/${name}`;
-      tasks.push({ ...parseTask(readFileSync(path.join(dir, name), "utf8"), file), folder, name, file });
+      let source;
+      try {
+        source = read(path.join(dir, name), "utf8");
+      } catch (error) {
+        if (error.code === "ENOENT") return { missing: { name, error } };
+        throw error;
+      }
+      tasks.push({ ...parseTask(source, file), folder, name, file });
     }
   }
-  return tasks;
+  return { tasks };
+}
+
+export function loadTasks(root, { read = readFileSync } = {}) {
+  const first = taskSnapshot(root, read);
+  if (!first.missing) return first.tasks;
+  // Another agent may have archived a task after readdir. Read a fresh snapshot once,
+  // and require that record to survive; a genuinely lost file must still be reported.
+  const next = taskSnapshot(root, read);
+  if (next.missing) throw next.missing.error;
+  if (!next.tasks.some((task) => task.name === first.missing.name)) throw first.missing.error;
+  return next.tasks;
 }
 
 function normalizeScope(entry) {

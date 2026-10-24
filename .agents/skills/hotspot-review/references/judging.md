@@ -44,4 +44,4 @@
 
 ## 韓國列
 
-`has_exact_map_identity` 對 KR 只認 Naver 精準頁網址。Wikidata 沒有 Naver Map 地點屬性、維基條目幾乎不外連、`map.naver.com` 在內建瀏覽器被政策擋掉、`allSearch` 對未驗證呼叫回 captcha。判斷留或退可以照做，但核准要金鑰或有人手動貼網址；`map.naver.com/p/api/search/instant-search` 曾回純 JSON，能不能拿來批次用是站主的決定（見 `tasks/open/2026-09-06-naver-maps-key.md`）。
+`has_exact_map_identity` 對 KR 只認 Naver 精準頁網址。Wikidata 沒有 Naver Map 地點屬性、維基條目幾乎不外連、`map.naver.com` 在內建瀏覽器被政策擋掉、`allSearch` 對未驗證呼叫回 captcha。判斷留或退可以照做，核准仍需有人提供精準頁。站主於 2026-10-24 封存金鑰與 TourAPI 的供應商擴充研究（見 `tasks/done/2026-09-06-naver-maps-key.md`），先維持人工路線；這不授權繞過 captcha 或改用未核准的搜尋端點，各景點／店家補資料任務保留。

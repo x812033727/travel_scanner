@@ -3,7 +3,7 @@
 // came out different. A frame key promises the same picture every time it is drawn
 // (2026-10-02-video-render-stills-differ-run-to); this is how to check that promise on a machine.
 //
-//   node tools/video/render/repeat.mjs --slug <slug> [--channel msedge] [--runs 2] [--scenes id,id] [--out dir]
+//   node tools/video/render/repeat.mjs --slug <slug> [--workdir <video-workdir>] [--channel msedge] [--runs 2] [--scenes id,id] [--out dir]
 //
 // Nothing is written to the work directory: the frames are compared as bytes in memory (--out
 // keeps each run's PNGs in <dir>/run-<n>/). Exits 0 when every run drew every frame alike, 1 when
@@ -17,18 +17,25 @@ import { parseArgs } from "node:util";
 
 import { ROOT } from "../core/paths.mjs";
 import { loadProject } from "../core/state.mjs";
+import { readWatermarkPin } from "../core/watermark.mjs";
 import { isScreencast } from "../screencast/steps.mjs";
 import { maxTransitionFrames, openRenderer } from "./browser.mjs";
 import { renderPlan, stillFile, themeHash, transitionFile } from "./plan.mjs";
 
 const md5 = (buffer) => createHash("md5").update(buffer).digest("hex");
 
+/** Repeat the pinned video's card plan without adopting or writing a watermark. */
+export function repeatPlan(doc, { root = ROOT, workdir = null } = {}) {
+  const mark = workdir ? readWatermarkPin(workdir) : null;
+  return renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), root, { workdir, watermark: mark });
+}
+
 /**
  * Draw `states` once in a fresh browser: key -> { still, frames } as md5 hashes. With `out`, the
  * PNGs are also written there, named like the frames directory's, to look at what differs.
  */
-export async function drawOnce(states, { channel, root = ROOT, out = null } = {}) {
-  const renderer = await openRenderer({ root, channel });
+export async function drawOnce(states, { channel, root = ROOT, workdir = null, out = null } = {}) {
+  const renderer = await openRenderer({ root, workdir, channel });
   const drawn = new Map();
   if (out) mkdirSync(out, { recursive: true });
   try {
@@ -67,17 +74,19 @@ export function compareRuns(runs) {
 
 async function main() {
   const { values } = parseArgs({
-    options: { slug: { type: "string" }, file: { type: "string" }, channel: { type: "string" }, runs: { type: "string", default: "2" }, scenes: { type: "string" }, out: { type: "string" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, runs: { type: "string", default: "2" }, scenes: { type: "string" }, out: { type: "string" } },
     strict: true,
   });
   const runs = Number(values.runs);
   if ((!values.slug && !values.file) || !(runs >= 2)) {
-    process.stderr.write("usage: repeat.mjs --slug <slug> [--channel msedge] [--runs 2] [--scenes id,id] [--out dir]\n");
+    process.stderr.write("usage: repeat.mjs --slug <slug> [--workdir <video-workdir>] [--channel msedge] [--runs 2] [--scenes id,id] [--out dir]\n");
     return 2;
   }
   const { doc } = loadProject({ slug: values.slug, file: values.file, root: ROOT });
   // The whole video is planned, so the keys are render's; --scenes only picks what is drawn.
-  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ROOT);
+  const workdir = values.workdir ? path.resolve(values.workdir) : null;
+  if (!workdir) process.stdout.write("no --workdir: frames are drawn without the channel mark\n");
+  const plan = repeatPlan(doc, { workdir });
   const only = values.scenes ? new Set(values.scenes.split(",")) : null;
   const picked = plan.scenes.filter((scene) => !only || only.has(scene.id));
   // Each state remembers its scene's template: a terminal's entrance may run longer (maxTransitionFrames).
@@ -86,7 +95,7 @@ async function main() {
   const drawn = [];
   for (let run = 0; run < runs; run++) {
     process.stdout.write(`run ${run + 1}/${runs}: drawing ${states.length} states\n`);
-    drawn.push(await drawOnce(states, { channel, out: values.out ? path.join(values.out, `run-${run + 1}`) : null }));
+    drawn.push(await drawOnce(states, { channel, workdir, out: values.out ? path.join(values.out, `run-${run + 1}`) : null }));
   }
   const result = compareRuns(drawn);
   process.stdout.write(`stills ${result.sameStills}/${result.stills} identical, transition frames ${result.sameFrames}/${result.frames} identical\n`);

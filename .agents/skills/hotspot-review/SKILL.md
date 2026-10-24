@@ -29,7 +29,7 @@ metadata:
 4. **Google 座標永遠不進目錄**。座標要 `DURABLE_COORDINATE_SOURCES`（curated、wikidata、official_tourism、merchant_official、admin_verified）＋ https 來源網址。
 5. **一公尺吻合不是證據**：座標本身錯時候選會跟著錯。每筆核准用 Autocomplete 與 map-candidates 兩個工具對答案，名稱比對 Wikidata 全語言標籤＋別名，不只比存檔名稱。
 6. **不要自己打座標**：漂移檢查只用該列真正存的座標或有來源的座標。
-7. **韓國只認 `https://map.naver.com/p/entry/place/`**（或 `/v5/entry/place/`），永遠不吃 Place ID；Naver 搜尋對未驗證呼叫回 captcha，**不繞**。KR 列靠金鑰（`tasks/open/2026-09-06-naver-maps-key.md`）或人工。
+7. **韓國只認 `https://map.naver.com/p/entry/place/`**（或 `/v5/entry/place/`），永遠不吃 Place ID；Naver 搜尋對未驗證呼叫回 captcha，**不繞**。目前由人工提供精準頁；站主於 2026-10-24 封存金鑰與 TourAPI 供應商擴充（`tasks/done/2026-09-06-naver-maps-key.md`），各景點／店家補資料與原發布守門仍保留。
 8. **編輯 Wikidata 先問站主**（匿名編輯會留下這台機器的 IP，代輸密碼不做）；不動上游也能用 `admin_verified` 解。
 9. **批次寫入要節流**：邊緣層限流會回 429，降並發、每筆間隔 300–450 ms 並重試；`ids` 一次最多 100 筆，Place ID／Naver 網址只能單筆。
 10. 所有對外請求用 UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，不帶任何人的個資。

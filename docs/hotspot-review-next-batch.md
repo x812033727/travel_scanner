@@ -690,3 +690,40 @@ SQL as above, re-run, should then read `ICN / seoul / approved / verified` with 
 - Cross-run exclusion lists are carried forward by hand, or not at all: the morning sweep `d943205e`
   excluded this row and the afternoon sweep `0a194879` carried only 新福宮, which is how it went
   through.
+
+## 2026-10-24：保留公開網址，修正沖繩美國村識別
+
+站主在本輪 open 任務整頓明確選擇「保留現有網址並修正資料」。
+現有管理端刻意禁止替換已填的 QID，本次因此使用限三筆、具精確前態與計畫雜湊的
+一次性維護交易；沒有放寬管理端守門、清掉審核欄位來觸發種子，或刪除景點列。
+
+| 保留的景點列 | 校正前 | 校正後 |
+| --- | --- | --- |
+| `wikidata-q4745722`，ID `af7c0aad-64f6-4b20-83de-d202f7cfbe41` | OKA 列卻是大阪 Q4745722、34.672086 / 135.497960、Amerikamura 與大阪別名 | Q11609171、26.316183 / 127.756668、`chatan`；維持原 ID、slug、approved / verified |
+| `kix-amerikamura` | QID 空白 | Q4745722；既有大阪座標、approved / unverified 均保留 |
+| `wikidata-q11609171` | 已退件的重複列佔用 Q11609171 | 保留同一 rejected 墓碑與原始識別出處，只釋出唯一 QID 給公開存續列 |
+
+座標與識別以當次重新讀取的 [Wikidata Q11609171](https://www.wikidata.org/wiki/Q11609171)
+及已查證的日文維基來源為依據；[Q4745722](https://www.wikidata.org/wiki/Q4745722) 是大阪。
+多語名稱、別名、Wikipedia／來源網址、座標出處與未來 pageview_pages 一併校正。
+既有 Google profile 的地址與官網已是沖繩，保留其 Place ID、快取與審核；只保留舊證據並
+重算目錄座標改正後的距離，沒有偽稱重新呼叫 Google 或改寫其歷史 city_match。
+沖繩原有 13 篇已核准攻略、0 篇 intro 與所有排名紀錄均未刪改。
+
+在實際寫入前完成獨立審查與 8 個 SQLite 故障／唯一鍵／回滾／冪等案例。
+主機完整備份為 `/root/oka-identity-repair-20261024.9Q0j9H/before.dump`，
+537,682,432 bytes，`pg_restore --list` 1,261 行，SHA-256
+`14923e4661dbed258c6baf73618af2de3c49601ec991b117a43c60cc6913146e`；
+目錄 0700、檔案 0600。該目錄另保留 reviewed script、完整前態、套用／讀回與雜湊收據。
+
+2026-10-24 13:33:02 UTC 交易提交，24 欄修正；audit
+`864bb874-7899-43cf-bf3b-c02036e7a515`（`hotspot_identity_reconciled`）。
+前態 SHA `f8509db8876964e36174a971878818f972eccd6f8f7cd7186167497d92dfea1f`、
+計畫 SHA `8f6a3479510f253ea6e93d348a2289104ca10856dd03501efcb41bc0451cf31e`、
+提交後 SHA `8b5c11b1425d2c813128f4f5b95a3ef6ee9588e49d5be3211ad0a46e13125a01`。
+同一 controller 的唯讀冪等讀回通過，所有備份／前態／結果收據再次驗 hash 通過；沒有重送寫入。
+
+公開 API 實際讀回五語各恰一筆原 ID／slug，名稱、北谷區與正確沖繩座標均符合；
+大阪日文查詢亦恰一筆 `kix-amerikamura`，維持原 unverified 地圖狀態。
+公開 API 不曝露原始 source_urls，QID 與出處另以資料庫讀回驗證。
+這次沒有重跑 collector、全站 ranking rebuild、供應商請求或容器部署。
