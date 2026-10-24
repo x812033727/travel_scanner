@@ -11,16 +11,20 @@ tier, so the page never says done for less than the settings ask.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Any, Literal
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import get_settings
 from app.models import AdminAuditLog, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_backup import admin_settings as backup_settings
 from app.video_backup.admin_settings import parse_time
+from app.video_backup.review_files import backup_files
 from app.video_backup.schemas import (
     BackupState,
     BackupView,
@@ -29,6 +33,7 @@ from app.video_backup.schemas import (
     StatusView,
     WorkerConfig,
     WorkerProbe,
+    WorkerReviewFile,
     WorkerVideo,
 )
 from app.video_backup.target import (
@@ -224,6 +229,34 @@ async def video_status(session: AsyncSession, slug: str) -> BackupView:
     return backup_view(project, config, _now())
 
 
+def _held_in(folder: Path) -> Callable[[str], bool]:
+    """Whether the review store still has a file of this video (<store>/<slug>/<sha256>)."""
+
+    def held(sha256: str) -> bool:
+        return (folder / sha256).is_file()
+
+    return held
+
+
+async def _package_reviews(
+    session: AsyncSession, projects: list[VideoProject]
+) -> dict[Any, list[VideoReview]]:
+    """The upload confirmations and languages batches of these videos, by project id."""
+    if not projects:
+        return {}
+    rows = await session.scalars(
+        select(VideoReview).where(
+            VideoReview.project_id.in_([project.id for project in projects]),
+            VideoReview.gate.in_(("publish", "languages")),
+            VideoReview.status.in_(("pending", "approved")),
+        )
+    )
+    found: dict[Any, list[VideoReview]] = {}
+    for review in rows:
+        found.setdefault(review.project_id, []).append(review)
+    return found
+
+
 async def worker_config(session: AsyncSession) -> WorkerConfig:
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
@@ -232,9 +265,25 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
     lock = backup_settings.lock_of(config)
     pending = as_dict(config.get("test")) or None
     requested_at = parse_time(pending.get("requested_at")) if pending else None
+    # The videos not on YouTube yet first: their only copy is on the host.
+    projects = sorted(
+        await _eligible(session),
+        key=lambda project: (
+            project.youtube_video_id is not None,
+            project.created_at,
+            project.slug,
+        ),
+    )
+    reviews = await _package_reviews(session, projects)
+    store = Path(get_settings().video_review_dir)
     videos = []
-    for project in await _eligible(session):
+    for project in projects:
         target = _target(project, config)
+        files = backup_files(
+            reviews.get(project.id, []),
+            full=target.tier == "full",
+            held=_held_in(store / project.slug),
+        )
         videos.append(
             WorkerVideo(
                 slug=project.slug,
@@ -248,6 +297,10 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
                 tier=target.tier,
                 expected=ExpectedParts(**expected_parts(project)),
                 backup=project.backup if isinstance(project.backup, dict) else None,
+                review_files=[
+                    WorkerReviewFile(path=item.path, sha256=item.sha256, size=item.size)
+                    for item in files
+                ],
             )
         )
     return WorkerConfig(
