@@ -1,0 +1,21 @@
+{
+  "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --answers docs/videos/curio-s49/review/r9-official-panel-answers.json",
+  "answer_file": "docs/videos/curio-s49/review/r9-official-panel-answers.json",
+  "answer_file_sha256": "8c1d5650efc6e542e93120e3780888375027e386b38355506d8b57ada7bcd098",
+  "exit_code": 1,
+  "stdout": "curio-s49: the storytelling panel failed; verdict in ../.video-work/curio-s49/review/narrative.json\n  FAIL  no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（讀者一：[moon015 01:30] 標題寫上赫歇爾的名字，就能證明後面的發現嗎？；讀者二：[moon029 03:01] 紙上沒有交出那些文件，卻開始詳述一架巨鏡的來歷。）\n",
+  "stderr": "",
+  "record_file": "/workspace/.video-work/curio-s49/review/narrative.json",
+  "record_file_sha256": "c0dc16e5cbd254ad48ef6cdaab6c8f6d7ba489b3ffbffb8c2a2af4d11f1eb91c",
+  "record": {
+    "round": 1,
+    "passed": false,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "panel_narration_sha256": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "answers_count": 13
+  }
+}

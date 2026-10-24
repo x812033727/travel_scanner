@@ -1,0 +1,21 @@
+# S49 R37｜`moon039` 成年目鏡／單滴水非作者書面覆核
+
+2026-10-22 UTC。**PASS，僅限此精確版 `moon039` 的固定來源與提示詞書面候選。**我不是 R37 作者；重新讀固定原文、R36 退圖原尺寸及 R37 差分，並親跑只讀檢查。本紙審沒有產生新原圖、修改私人圖單／媒體或付費。R36 原圖維持 **HUMAN REJECT**；R37 尚無原圖，不能因此算 storyboard KEEP。
+
+## 固定來源與畫面判斷
+
+- 重新開啟 Locke 名下 **1859 重印本**本地文字 `/tmp/s49-moon-hoax-62779.txt`，SHA-256 `3ca0bc9b6fc5c50b090d61bf2049e925d22dd1cdef2b443a282f7fdc5749e654`，[P05 L390–520](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520)，尤 L423–443。虛構對話拿照明顯微鏡光線穿過一滴含 *gnat* 幼蟲的水、把微物放大到數英尺，**比喻**望遠鏡焦點影像也能如此處理；後面的玻璃與器材實驗也是該虛構文章的敘述。固定 Jacoby 1902 本地文字 `/tmp/s49-jacoby-53396.txt` SHA-256 `f5ab32e64e7ea3735ff90fb000ae8cc82dddea594e0de0c6be30b30f94485029`，[J4083–4125](https://github.com/GITenberg/Practical-Talks-by-an-Astronomer_53396/blob/073dd7dd24b8515dec681441a1cde79477fabf08/53396-0.txt#L4083-L4125)明指 Herschel／Brewster 對話是荒謬的想像光學術語拼貼。旁白與 claims 的「**作者……打比方**」保住來源層級；畫面不可聲稱真實 Herschel 實驗、月面幼蟲或 1835 原報影像。
+- 重看 R36 封存原圖 `/workspace/.video-work/curio-s49/review/r36-next-native/moon039/moon039-1.jpg` **1280×720** SHA-256 `519e856cb4bdc3153ebb8fffec2e9c87cf66f3f5a429375607e2f5dad8876f08`，及機選裁圖 `moon039-1-trim.jpg` **1280×720** SHA-256 `14c8d31fccc474a693de28213bff4c99c594455626c9497b0a5896e361e9fad1`。兩張都像戴帽孩童：圓臉、大眼、紅頰、肩身小；鏡筒在鼻口前而雙眼望向前方；黑點藍水窪橫跨攤開書頁，沒有可辨玻片或顯微鏡下一滴水。裁圖移走主要上下黑邊，**沒有**修好年齡、目鏡和標本。R36 機器 7.88／10 PASS 不推翻兩位原尺寸 HUMAN REJECT，也命中先前 R26 的孩童退件條件。[R36 停批](r36-moon039-native-stop.md)及[庫存](r36-moon039-native-stop-inventory.json) SHA-256 `943c3e01eb3eca8a29633e6a8ce7c41806d154b769a63131b154c14bb7e7fa81` 與所見相符。
+- R37 改為**側面中景、一名明確中年灰髮、有鬢角與面紋且肩型成年的想像讀者**，讓**一眼直接貼小型黃銅桌上顯微鏡目鏡**、嘴在鏡筒下方遠離；物鏡下的**單片透明玻片、唯一小水滴、兩個極小幼蟲形狀**放在裸木桌，並排除書、孩童、白袍、電器、標籤及月面。這清楚針對 R36 三項實際失敗。玻片與桌上顯微鏡是便於觀眾理解的**概念示意**，不能稱為原文已證實的器具配置；提示詞明寫 `plainly imagined` 和 `original conceptual illustration of the article's fictional analogy`，沒有將 1859 文中聲稱的實驗或玻璃承接望遠鏡影像演成史實。極小幼蟲形狀只表現比方的起點；放大到數英尺由旁白交代，畫面不偽裝測量結果。
+
+## 精確改動與檢查
+
+- 基底 Git `d856be5b589815e121e4a8ea07fe3fe14503073d`，R37 [結構差分](r37-moon039-adult-eyepiece-droplet-structured-diff.json) SHA-256 `4cd6999329ca98a4f421bbff979e836d9a7ef961bb42e83e99ae6b059dc7a814`。獨立檢查 `before`／`after` 在各檔恰各命中一次；`after→before` 逐位元還原基底 `video.json` SHA-256 `9b6700ec1d71ac253c1176ca90ac9c2945670c30ad08adb3327ce46190c5b08d` 和 `claims.md` SHA-256 `3a10691415c01c5f067564e04554e5e84f0f28e7e70e3421def2d78cfc04a682`。現稿 SHA-256 分別為 **`b46cba46a708b1f8c2a9e36ed4fd26d94d03532b2594f06c6f6de4f5b27b0535`**、**`9f856f9cccfba14180b5834cf0f6ea00a63e8cd9f5af579070ee77894097efc3`**。
+- JSON 解析深比只有 `scenes[35].data.prompt` 不同；全片 **129 scenes**，其他 **128 scenes**、scene ID／章界、`moon039` 台詞／運鏡／`visual`、所有 **131 lines** 和頂層欄位完全相同。claims 136 行中僅 `moon039` 一行的**畫面欄**改動，主張和 P05 錨點不變。`script.md` SHA-256 `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`、`research.md` SHA-256 `f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750`，均與基底同位元。工具重算 `visual_hash=d6bf4ef8a3456363`、`look_hash=98a370ae40badbaf`。
+- 親跑 `lint --slug curio-s49 --json` exit 0：**0 errors、0 warnings、131 lines**；`keyframes --slug curio-s49 --shot moon039 --takes 1 --dry-run` exit 0：MiniMax `image-01` ready、提示詞 **701／1070** 字元、1 shot／1 take，只讀且未出圖。`npm run test:docs-videos` **236／236 PASS**，`git diff --check` PASS。
+
+## 圖單、費用與後續界線
+
+私人 active `keyframes/manifest.json` SHA-256 **`63d5af31072ecfc57cc476ca34d07a83eed8109b13c7666ff10aa523db35da97`**，仍綁 R36 `visual_hash=3bc0a2cdc3a8c4ce`、相同 `look_hash=98a370ae40badbaf`；只有 **31 KEEP**，沒有 `moon039`。依 R36 庫存逐筆比 selected file、manifest SHA 與實檔 SHA，**31／31 相符**。`STOP` 在位；`media/jobs.json` SHA-256 `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3` 且 jobs 空。`media/ledger.json` SHA-256 **`c406d80bf27fdaaab1d86faebb45837f14c192239398b5c5fe7c964a27d7b139`**；176 筆逐筆費用合計 **US$1.1880**，88 image／88 judge／0 music／0 預約，低於本集委派 **US$5.30** 停畫上限，餘 **US$4.1120**。R37 本紙審 **0 付費呼叫**。
+
+**書面 PASS 的有效範圍止於上述精確 SHA。** 新 `visual_hash` 與私人 manifest 不同；任何受控新圖前須在 STOP/jobs 空與 31 KEEP 實檔核對下，安全離線回綁並重新預檢。若至多試一張 `moon039` 原生圖和一個 judge，仍須看完整 **1280×720** 原圖：人物要明確成年、眼睛實際對目鏡、單一小滴與幼蟲示意應在玻片上物鏡下，不能再出現書上水窪、孩童、現代設備、月面生物、可讀字或顯著黑邊。`cute-mystery` 的大眼卡通風格仍可能使成人看似小孩，紙面指令本身不能保證生成結果；機器 PASS 也不能替代原尺寸驗收。`moon040`、整集 storyboard、站主卡／人耳、成片均未因本紙審放行。

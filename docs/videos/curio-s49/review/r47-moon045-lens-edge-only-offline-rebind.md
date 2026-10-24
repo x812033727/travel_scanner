@@ -1,0 +1,9 @@
+# S49 R47｜`moon045` 無人物雙邊瑕稿 34 KEEP 離線重綁
+
+2026-10-22 UTC。[非作者 R47 來源與畫面紙審](r47-moon045-lens-edge-only-independent-paper.md) SHA-256 **`01b9e3bc4f0e0deb6e5ac68b310750d83b41a93f6c2ae6049240eb0fc8bc646c`** 對凍結文稿 **PAPER PASS**。固定 Locke 1859 重印本只支撐虛構第二次鏡片外緣兩輕瑕；無人物、兩塊素木支撐的整圈鏡片是原創概念圖，不冒充實物。紙審逐字倒填 [R47 差分](r47-moon045-lens-edge-only-structured-diff.json) SHA **`26beb76dd68128899aa47678cfdab1c9a38b15012776a68fb772ad0cd7cc3290`** 至 Git `e2cfe5d46`，只變 `moon045` prompt 與 claims 同列畫面欄，其他 128 景／131 句不動；lint 0／0、乾跑 489／1070，115／128 插圖且最多兩張連卡。
+
+在私人 STOP 存在、jobs 空下，守衛核 `video.json` SHA **`66090e007f217053cbb64833274a368505f76630fa80921d05f6ba6474c59663`**、`claims.md` SHA **`eaac8d83b767c0362002a258cdf13a41b944e58e2e3e64a1b325431ff01400a5`** 和非作者 PASS。重綁前 active manifest SHA **`e336fec9eddba8e1800898d5d31594fb6a80bd236b9d1d8e6bf1f77e7151f09e`**、`visual_hash=ec51d19d14a562b8`，34 KEEP 實檔 SHA 全對，`moon045` 不在圖單；Ledger SHA **`5f06db0ea9a63cd131cf07c5c1c44259acb22a04f55670be0bd74516644d63d8`**，US$1.3365／99 image／99 judge／0 預約。
+
+只將 manifest `visual_hash` 位元串恰好一次換成 **`a40eeda3896b355f`**，在同目錄暫存並原子替換。新 active manifest SHA **`c29797a998b666e119dcb6bd59ee91768e01cee6e0a6e2baf1a5e80bff258ef3`**，完整 JSON 除 `visual_hash` 外、34 個 `shots` 和 `look_hash=98a370ae40badbaf` 完全未改；逐張所選圖 SHA 再驗通過。[機讀逐圖庫存](r47-moon045-lens-edge-only-rebind-inventory.json) SHA **`e715a574248191dbf1bb4ad7f6ca5b6c137613e83439e954970f13219e305172`**。兩張 contact SHA **`583b7495897b6f7921e29676c824d31b07e696d015d31f2e1841cdb1ab8171e8`**／**`2168412565eae3fb9e1291ccb29959e2338094be5e1ea36e4fb265b8d825ffaa`**，帳本位元不變，STOP/jobs 空。前後備份只在私人 `/workspace/.video-work/curio-s49/review/r47-moon045-lens-edge-only-rebind/`；本步零付費。
+
+程式重算 `visualHash=a40eeda3896b355f`、`speechHash=96f0b30e8cb408c7`，圖單已相符；`keyframeProblems` 只有 **81 張缺圖**（第一格 `moon045`），其他 0。這不代表退件圖 KEEP。下一步須新鮮 MiniMax 單價／餘額與全片 US$5.30 守衛，至多再買一張 `moon045`，檢查原尺寸未裁圖及選用裁圖的單一鏡片、兩處可辨外緣小瑕、無人物、畫風／年代／黑邊。任何 HUMAN REJECT 立即停，不連買 `moon046`；整集 storyboard 與成片仍 HOLD。

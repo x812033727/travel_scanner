@@ -1,0 +1,147 @@
+{
+  "slug": "curio-s56",
+  "round": "R11",
+  "status": "HOLD",
+  "inputs_sha256": {
+    "brief.md": "09f731c13f1037c963aa5774b936a43e1a187b5c4ae8d09ba158581a705f1a52",
+    "research.md": "59549e98e6ae258cedfc5b43e6684ecaa1102284d0dee13b0beef6443e4a6fb7",
+    "claims.md": "8edaf18bee138c3dc88dd2e38e7eebd2c27a9e24158dc0bed696fb4e53904a80",
+    "video.json": "297b576499068e12fb937bc6032394cf9408f8543065b762a95c6b26ef89cd72",
+    "script.md": "38ef6dfdbb71bd0b59a441a4d41fc4a89b2b3aed288899a28ec902193b792d2c"
+  },
+  "speech_hash": "9ae33c04c1986d95",
+  "pre_audio_gates": {
+    "source": {
+      "status": "PASS",
+      "file": "../r11-source-independent.md",
+      "sha256": "56b7f10aa9840f0a10b969ade7f326e26fe73b610de4ba78b008a8010e29ae27"
+    },
+    "narrative": {
+      "status": "PASS",
+      "file": "../r11-merge-policy/merged-narrative-cli-receipt.json",
+      "sha256": "3f4c13813515401abd90f2d13462914d0ca9129b53425c44751afccf7ae46a4d"
+    },
+    "policy": {
+      "status": "PASS",
+      "file": "../r11-merge-policy/policy-receipt.json",
+      "sha256": "43847cd11b95bbeb28a4275b74dec72a57977127e3bcd548086e5304fda88e89"
+    }
+  },
+  "tts_runs": [
+    {
+      "log": "tts.txt",
+      "log_sha256": "dfc219d812c3c7448c416887cb80d9860b730438f4c36976d8a2983c90483472",
+      "new_requests": 25,
+      "billable_characters": 559,
+      "reused_requests": 96,
+      "narration_clock": "12:11"
+    },
+    {
+      "log": "retake-1.txt",
+      "log_sha256": "8e15648425d7c99121597da7b65563240b18afb3c771ca0144645bb764c850cb",
+      "new_requests": 9,
+      "billable_characters": 193,
+      "reused_requests": 112,
+      "narration_clock": "12:12"
+    },
+    {
+      "log": "retake-2.txt",
+      "log_sha256": "4f402fb3b8d9bfba1a9dccac3a3a70e681842f0c6860310207b579022bcb7003",
+      "new_requests": 2,
+      "billable_characters": 37,
+      "reused_requests": 119,
+      "narration_clock": "12:11"
+    }
+  ],
+  "total_new_billable_characters": 789,
+  "audio_checks": [
+    {
+      "log": "check-initial.txt",
+      "log_sha256": "bb1bc1b6d79c24cc4edf698ec2e36f339c93bbe273d5de91478ae02156939a1b",
+      "check_json": "check-initial.json",
+      "check_json_sha256": "af3732e88f161a66ece499373c11a856f07dbbc5005106457c0460cd32c6ac37",
+      "flags_json": "check-flags-initial.json",
+      "flags_json_sha256": "a56837203667491b297067bd09ba0b634ae4140fdbd796291a3a7663812af5f7",
+      "checked": 154,
+      "total": 154,
+      "exact": 107,
+      "same_sound_or_filler": 33,
+      "jev_accepted": 5,
+      "flagged": 9,
+      "flag_ids": [
+        "s56026",
+        "s56032",
+        "s56052",
+        "s56071",
+        "s56096",
+        "s56112",
+        "s56156",
+        "s56173",
+        "s56174"
+      ]
+    },
+    {
+      "log": "check-after-retake-1.txt",
+      "log_sha256": "a1141cbed64825bedb5cbb6bcbc6c4ee3fca47ea3fcdd0eee2c9e183d761c336",
+      "check_json": "check-after-retake-1.json",
+      "check_json_sha256": "70fcbcc1e85dd42960f8b42d2776d509584127b495496cd6b470152c9fe1d7dd",
+      "flags_json": "check-flags-after-retake-1.json",
+      "flags_json_sha256": "db16353d15be462c66413876c9bc948360ca05daae708b1f1bef65687539db25",
+      "checked": 154,
+      "total": 154,
+      "exact": 114,
+      "same_sound_or_filler": 33,
+      "jev_accepted": 5,
+      "flagged": 2,
+      "flag_ids": [
+        "s56096",
+        "s56174"
+      ]
+    },
+    {
+      "log": "check-final.txt",
+      "log_sha256": "69ccec9e470324db96aca289851f3b5d56557c3da133b871fa82d5a983774221",
+      "check_json": "check-final.json",
+      "check_json_sha256": "83296accb1e7a2474b08ea3a76afdec78223ef1355e01060f6685da9cbc4391d",
+      "flags_json": "check-flags-final.json",
+      "flags_json_sha256": "e851beafa84ddf2c04b83caabf8dea94e07d134233b742cd41e1ac0fea7d148d",
+      "checked": 154,
+      "total": 154,
+      "exact": 114,
+      "same_sound_or_filler": 33,
+      "jev_accepted": 5,
+      "flagged": 2,
+      "flag_ids": [
+        "s56096",
+        "s56174"
+      ]
+    }
+  ],
+  "retake_scope_audit": [
+    {
+      "file": "retake-1-scope-audit.json",
+      "sha256": "395a23fd9a5e1b6635fb04526c36af2c6bd04c8d30be69aa800448fbf4ff36b4",
+      "unexpected_changes": [],
+      "missing_flag_changes": []
+    },
+    {
+      "file": "retake-2-scope-audit.json",
+      "sha256": "a7fc20e235595965558cb1c6e5d56e75f4aaa71521673a96d91ff0fc6b6bc77f",
+      "unexpected_changes": [],
+      "missing_flag_changes": []
+    }
+  ],
+  "timing": {
+    "fps": 30,
+    "total_frames": 21933,
+    "total_seconds": 731.1,
+    "opening_frames": 1636,
+    "opening_seconds": 54.53333333333333,
+    "body_seconds": 676.5666666666667,
+    "narration_wav_sha256": "966c10cce808330e3ba9c312d01e48a01b05fa246419b3c392200c649106bcaa",
+    "timeline_sha256": "9e1621e60f43c20fc247a86e09dcb792d82ada82475355b5a386578044eaff7a"
+  },
+  "stop_present": true,
+  "human_audio_review": "NOT_RUN",
+  "site_audio_approval": "NOT_CLAIMED"
+}

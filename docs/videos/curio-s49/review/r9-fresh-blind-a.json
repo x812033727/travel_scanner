@@ -1,0 +1,100 @@
+{
+  "panel": "r9-fresh-blind-a",
+  "slug": "curio-s49",
+  "scope": "官方 narrative --json 的旁白與 13 題；未查閱其他製作或審查資料",
+  "hashes": {
+    "script_file_sha256": {
+      "value": "10f912c63ba438c676372469e8e44a52a8252113efc22f3af9fb74f91ae22354",
+      "basis": "docs/videos/curio-s49/script.md 的原始檔案位元組；僅雜湊，未讀取內容"
+    },
+    "narration_sha256": {
+      "value": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8",
+      "basis": "官方 narrative --json 輸出的 narration 欄位解碼後，以 UTF-8 編碼的字串位元組"
+    }
+  },
+  "summary": {
+    "pass": 12,
+    "fail": 1,
+    "failing_question_ids": ["no_recap"]
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon002", "moon003", "moon004"],
+      "reason": "前四句已把時間放在 1835 年八月、地點放在紐約報紙與好望角消息之間；讀者拿到《太陽報》，看到一項署名赫歇爾的發現宣稱。"
+    },
+    {
+      "id": "no_spoiler",
+      "verdict": "pass",
+      "line_ids": ["moon003", "moon004", "moon005", "moon006", "moon007", "moon008"],
+      "reason": "moon003 只交代赫歇爾確實在南方；信件、光學難題、獨立觀測與其他編輯的反應仍以問題留住，沒有揭曉後文結果。"
+    },
+    {
+      "id": "one_line",
+      "verdict": "pass",
+      "line_ids": ["moon009", "moon030", "moon054", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "預告後回到真實南行如何被借用，接著循報導的巨鏡、月面景象、有翼人與火災往前走，最後才進到重印本的報界反應。"
+    },
+    {
+      "id": "no_toc",
+      "verdict": "pass",
+      "line_ids": ["moon032", "moon061", "moon065", "moon098"],
+      "reason": "沒有宣布影片章節安排；moon061 與 moon098 問的是故事下一個畫面或事故，moon065 的「下一頁」指報紙的頁面。"
+    },
+    {
+      "id": "chapters_link",
+      "verdict": "pass",
+      "line_ids": ["moon003", "moon009", "moon030", "moon031", "moon032", "moon055", "moon056", "moon078", "moon079", "moon099", "moon100", "moon111", "moon112"],
+      "reason": "各章首接續前章的赫歇爾真名、沉重鏡筒、鏡中第一幅影像、山崖後的形狀、觀測室煙霧，以及別家編輯的反應；開場後 moon009 明確接回 moon003。"
+    },
+    {
+      "id": "open_loops",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon015", "moon026", "moon038", "moon050", "moon061", "moon073", "moon083", "moon094", "moon104", "moon111", "moon121", "moon128"],
+      "reason": "從開頭到報界反應，未回答的具體疑問持續出現；所列掛鉤的相鄰間隔均短於 90 秒，章尾也把下一個物件或後果留下。"
+    },
+    {
+      "id": "payoffs",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon023", "moon005", "moon034", "moon035", "moon041", "moon006", "moon118", "moon007", "moon113", "moon115", "moon050", "moon051", "moon073", "moon074", "moon098", "moon099", "moon100", "moon128", "moon129", "moon130"],
+      "reason": "遠距掛鉤有具體回收：格蘭特來信仍只是報導角色、光線問題被人工照明方案與其局限回答、第二份獨立觀測在所引選錄中未出現、各報既有稱讚也有質疑。近距問題如運鏡、煙與火災、雅各比引文來源也得到新答案。moon118 的回答明確限於選錄範圍。"
+    },
+    {
+      "id": "no_recap",
+      "verdict": "fail",
+      "line_ids": ["moon014", "moon015"],
+      "reason": "moon014 已說《太陽報》在標題用赫歇爾真名，moon015 緊接著又說「標題寫上赫歇爾的名字」才提問；同一具體事實連續講兩次，也不是隔一段時間的點名回呼。可把 moon015 改成「但一個名字能證明後面的發現嗎？」"
+    },
+    {
+      "id": "chapters_are_events",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "七個章名都指向紙張抵達讀者、真名被借用、巨鏡被寫成工程、月面景象、有翼人、鏡子起火或重印本收錄不同反應，屬事件或揭曉。末章「不一樣的回音」較抽象，但 moon112 的具體重印事件能承接。"
+    },
+    {
+      "id": "outro_no_next",
+      "verdict": "pass",
+      "line_ids": ["moon999a", "moon999b", "moon999c"],
+      "reason": "片尾只問觀眾想查哪個細節、提示原文連結並邀請訂閱，沒有提下一支影片、下一集或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon004", "moon005", "moon006", "moon007"],
+      "reason": "初始報紙場景後依序留下助手的信、光線解法、第二份觀測與別家編輯反應四個具體疑問，答案都在後面。"
+    },
+    {
+      "id": "one_thread",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon009", "moon016", "moon032", "moon056", "moon079", "moon100", "moon112", "moon132"],
+      "reason": "持續追同一份《太陽報》月球報導如何取得觀測外觀：借真名與刊物、編造儀器、逐頁加碼月面生命、製造停報原因，再檢查外界反應與來源。"
+    },
+    {
+      "id": "no_detour",
+      "verdict": "pass",
+      "line_ids": ["moon041", "moon070", "moon108", "moon109", "moon114", "moon125", "moon129", "moon132"],
+      "reason": "光學、月面細節、報界反應與引文來源都在推進開場所問的可信外觀。moon108 的土星只佔一行，接 moon109 的同一寫法分析，未形成岔出去的段落；數字也服務於核對問題。"
+    }
+  ]
+}

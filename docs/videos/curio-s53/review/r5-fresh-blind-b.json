@@ -1,0 +1,151 @@
+{
+  "reviewer": "fresh-blind-b",
+  "round": "S53 R5",
+  "script": "docs/videos/curio-s53/script.md",
+  "script_sha256": "5f944532562e9e6072efe08cd8d1e3c4caa64f380d4497adccf276df50f3a07d",
+  "rubric": "tools/video/core/narrative.mjs NARRATIVE_PANEL (13 questions)",
+  "scope": "Independent blind read of script.md and the local curio-episode skill; rubric identifiers read from NARRATIVE_PANEL. No earlier reviews or source material read before verdict freeze.",
+  "summary": {
+    "pass": 12,
+    "fail": 1,
+    "required_failures": ["chapters_link"]
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "verdict": "PASS",
+      "reason": "The first four narration lines establish June 1907, San Francisco squares, cabins, and the commission's action.",
+      "evidence": [
+        "[s53001] 「一九〇七年六月，舊金山的廣場裡，木造救災小屋還在。」",
+        "[s53002] 「六月，公園委員會要求救濟機構：八月十七日前清空廣場。」"
+      ]
+    },
+    {
+      "id": "no_spoiler",
+      "verdict": "PASS",
+      "reason": "The opening stops at the pending clearance and later inquiry, withholding the survey result.",
+      "evidence": [
+        "[s53008] 「隔年八月，訪查員去找搬出的屋，又會發現什麼？」",
+        "[s53105] 「最後得到六百八十份比較完整的家庭紀錄。」"
+      ]
+    },
+    {
+      "id": "one_line",
+      "verdict": "PASS",
+      "reason": "After the 1907 cold open, the account moves from the 1906 disaster and construction through clearance and the 1908 follow-up, following the same cabins.",
+      "evidence": [
+        "[s53010] 「一九〇六年四月十八日清晨，地震之後又起大火。」",
+        "[s53082] 「洛博斯廣場直到一九〇八年六月三十日才完全結束。」",
+        "[s53101] 「這項訪查從一九〇八年八月開始，持續約三個月。」"
+      ]
+    },
+    {
+      "id": "no_toc",
+      "verdict": "PASS",
+      "reason": "The opening uses concrete unresolved questions, with no spoken announcement of the episode's structure.",
+      "evidence": [
+        "[s53006] 「那些按月繳的錢，究竟是在租屋，還是在買屋？」",
+        "[s53007] 「小屋離開營地時，搬遷費會由誰付？」",
+        "[s53008] 「隔年八月，訪查員去找搬出的屋，又會發現什麼？」"
+      ]
+    },
+    {
+      "id": "chapters_link",
+      "verdict": "FAIL",
+      "reason": "Two chapter openings delay the specific question or turn left by the preceding chapter. The question of where cottages went first receives a count; the address mismatch first receives the survey's date and duration. The answers arrive later, but the rubric explicitly tests each chapter's first sentence.",
+      "evidence": [
+        "[s53083] 「可其他小屋，已經從營地出去；它們去往哪裡？」",
+        "[s53084] 「調查記下，離開官方營地的小屋有五千三百四十三棟。」",
+        "[s53100] 「可是到了訪查時，地址未必還對得上原來那棟屋。」",
+        "[s53101] 「這項訪查從一九〇八年八月開始，持續約三個月。」"
+      ]
+    },
+    {
+      "id": "open_loops",
+      "verdict": "PASS",
+      "reason": "Questions and pending turns recur far more often than the rubric's 90-second limit across the main body.",
+      "evidence": [
+        "[s53023] 「可這些公園廣場，真的能讓救災小屋一直住下去嗎？」",
+        "[s53042] 「工程完工時，留給各戶搬離公地的時間還有多少？」",
+        "[s53090] 「這筆錢，最後都得住戶自己掏嗎？」",
+        "[s53116] 「搬到租地的住戶，若交不起地租，小屋又會怎樣？」"
+      ]
+    },
+    {
+      "id": "payoffs",
+      "verdict": "PASS",
+      "reason": "The larger delayed questions receive specific new answers; the long rent-default loop explicitly returns before its payoff.",
+      "evidence": [
+        "[s53007] 「小屋離開營地時，搬遷費會由誰付？」",
+        "[s53091] 「有人自己付，有人由親友幫忙。」",
+        "[s53092] 「也有房東先墊付，再向住戶收每月地租。」",
+        "[s53129] 「還記得那筆地租嗎？失訪部分留下了什麼結果？」",
+        "[s53130] 「報告另知二十三戶付不起或拒付地租，房屋遭地主取走。」"
+      ]
+    },
+    {
+      "id": "no_recap",
+      "verdict": "PASS",
+      "reason": "The deadline's return is signaled as a callback, while later figures add a distinction rather than restating the same count.",
+      "evidence": [
+        "[s53002] 「六月，公園委員會要求救濟機構：八月十七日前清空廣場。」",
+        "[s53071] 「到了開場那道八月期限，廣場仍未清空。」",
+        "[s53084] 「調查記下，離開官方營地的小屋有五千三百四十三棟。」",
+        "[s53087] 「這是搬出的小屋數，不能等於買到地的家庭數。」"
+      ]
+    },
+    {
+      "id": "chapters_are_events",
+      "verdict": "PASS",
+      "reason": "Chapter headings name events or discoveries, including the change in contract and the missed clearance deadline.",
+      "evidence": [
+        "[chapter] 「租屋的打算，改寫成買屋」",
+        "[s53058] 「救濟機構改用小屋的分期買賣契約。」",
+        "[chapter] 「八月期限到了，廣場沒有立刻空」",
+        "[s53071] 「到了開場那道八月期限，廣場仍未清空。」"
+      ]
+    },
+    {
+      "id": "outro_no_next",
+      "verdict": "PASS",
+      "reason": "The closing reflection and channel subscription contain no tease for another video or file.",
+      "evidence": [
+        "[outro] 「如果是你，會先存搬屋費，還是先找能安放它的地？」",
+        "[outro] 「想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。」"
+      ]
+    },
+    {
+      "id": "opening_hooks",
+      "verdict": "PASS",
+      "reason": "After the initial clearance scene, the opening plants four later questions about ownership, moving cost, the follow-up, and the original location.",
+      "evidence": [
+        "[s53006] 「那些按月繳的錢，究竟是在租屋，還是在買屋？」",
+        "[s53007] 「小屋離開營地時，搬遷費會由誰付？」",
+        "[s53008] 「隔年八月，訪查員去找搬出的屋，又會發現什麼？」",
+        "[s53009] 「他們當初，為何在公園與廣場落腳？」"
+      ]
+    },
+    {
+      "id": "one_thread",
+      "verdict": "PASS",
+      "reason": "The same difficulty persists: owning a movable cabin requires finding land and bearing the costs of moving and staying there.",
+      "evidence": [
+        "[s53060] 「買的是小屋，不是小屋底下的公園土地。」",
+        "[s53069] 「調查說，住戶想搬屋，得先證明已買或租到另一塊地。」",
+        "[s53098] 「從營地到新地點，小屋留下來了，地租卻可能剛開始。」",
+        "[s53130] 「報告另知二十三戶付不起或拒付地租，房屋遭地主取走。」"
+      ]
+    },
+    {
+      "id": "no_detour",
+      "verdict": "PASS",
+      "reason": "The later crowding, water, and repossession details describe what happened to the moved cabins and residents; the script does not switch to an unrelated topic or recite a list.",
+      "evidence": [
+        "[s53118] 「搬出的屋子，有時又在大空地上密密排在一起。」",
+        "[s53125] 「調查時，樣本中只有約四成小屋接上水管。」",
+        "[s53130] 「報告另知二十三戶付不起或拒付地租，房屋遭地主取走。」"
+      ]
+    }
+  ],
+  "editorial_note": "Separate from the 13 verdicts: [s53017] 「雨季接近，它決定在營地蓋分開的小屋。」 uses 它 after 帳棚 in [s53015], making the decision-maker briefly unclear."
+}

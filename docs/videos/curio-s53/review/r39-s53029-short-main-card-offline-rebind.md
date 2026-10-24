@@ -1,0 +1,9 @@
+# S53 R39｜縮短完工來源卡後的安全離線圖單回綁
+
+2026-10-22 UTC。[R39 不同作者來源／書面畫面紙審](r39-s53029-short-main-card-independent-paper.md) **PASS**，SHA `980cb7d15c94adbd7fecab4e26357155a69c1eafc11e6c9adf0739b69e90b9f6`。本步只在私有工作區 STOP 在位、jobs 空時，把正式 18-KEEP manifest 的 `visual_hash` 從 R37 `eb73bd967a3b4a7d` 離線改為 R39 `09c82f30136ccbde`；沒有購圖、judge、配樂或其他媒體，沒有選入前三張 `s53029` 退件圖。R38 中途書面卡片從未回綁；本次直接綁定最終 R39 縮短主標。
+
+事前精確核 R39 `video.json` SHA `7ebd094e7bd89ba3ebf036440385ffb6f54aa3f8bdf746b30bbcc91c7d72ba10`、`claims.md` SHA `7ea2850176e7e8a27e10fa7807db0007358f52868eb3f8bedd87ca8a711820f4`、`script.md` SHA `64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc`、R39 精確差分 SHA `e6c6d950b7ae5faec1b4b8dde8282057266f08384add7fe39704233b929dff24`、固定 1913 Survey 原檔 SHA `d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72`。舊正式 manifest SHA `674e1ca36d3d028ddd120b2c93737b52f55d41ab83d8f644d8835303c5b287d3`，18 筆 KEEP 的所選實檔 SHA 全對且無 `s53029`；獨占備份於私人 `rebind-backups/r37-manifest-before-r39-short-card.json`，同 SHA。
+
+只用相同 canonical JSON 序列化替換 `visual_hash`，寫入前後逐項比對 18 筆完整條目、所選 JPEG 實檔 SHA、無 `s53029`、`contact_sheet` 欄與 sheet。新正式 manifest SHA **`326a87c9208d686eeb1618dbd76f8745f85aac9a48c9eebd60125ade7840d255`**，`visual_hash=09c82f30136ccbde`；18 張 KEEP 舊條目與實檔 SHA 未變，正式 `s53029` 改走日期／數量來源卡。接觸圖 SHA `0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930`、ledger SHA `168c8be9e142222df00780bbee50957126207875d14894aaee0551e1e256e0b5`（US$0.6750／51 image／50 judge／0 預約）、jobs SHA `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3`、STOP 均不變。正文仍 111/123 shot，93 張 illustrated shot 尚缺；最多連續兩張來源卡。
+
+後續只在新一輪正確父工作目錄、`NODE_USE_ENV_PROXY=1` 的 image-01 即時模型／配額、固定來源、18 KEEP、前三張退件證據與 US$4.78 上限預檢通過後，才可對**下一個未畫的 `s53030`** 至多購一張原生圖及一次 judge，原尺寸核成年人、等待／施工概念、1906 年材物、固定 2D 畫風與來源界線。若機器或人眼退件就停，不跳 `s53031` 或把 `s53029` 再畫第四張。本離線回綁本身不驗收任何新圖。

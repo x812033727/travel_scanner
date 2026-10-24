@@ -1,0 +1,25 @@
+# S54 R6 independent blind narrative review B
+
+Frozen script SHA-256: `33ae45c7addd0088918128a5711969c128bbe4b692743b71cc5703f16deb73ef`
+
+Scope: `script.md` and the 13 questions in `tools/video/core/narrative.mjs` lines 266–280 only. Scene references use the script's `s54xxx` IDs. This review makes no source or fact-check judgment.
+
+| # | Criterion | Verdict | Script evidence |
+|---|---|---|---|
+| 1 | `scene_first` | **Yes** | `s54001–03` place a sender and clerk at an 1840-01-10 counter with a letter and scale before explaining the subject. |
+| 2 | `no_spoiler` | **Yes** | The first chapter (`s54001–08`) withholds the diary count, the cash-collection outcome, the missing word, and the old-rate figure. The one-penny rate and absent stamp are the immediate scene's condition. |
+| 3 | `one_line` | **Yes** | After the opening preview, the account moves from old charges (`s54009–25`) to Hill's prepayment idea (`s54026–38`), the 1839 authorization (`s54039–59`), December trial (`s54060–86`), January cash rollout (`s54087–110`), and May stamps (`s54111–48`). The two passages over the August Act are contiguous, so I count them as one developing episode. |
+| 4 | `no_toc` | **Yes** | Transitions pose in-story questions, such as who sets the effective date (`s54044`), where low-rate prepayment starts (`s54059`), and when the paper becomes postage (`s54110`). I found no spoken promise to cover a numbered set or chapters in a stated order. |
+| 5 | `chapters_link` | **Yes** | Each chapter's first line answers or advances the preceding question: `s54008→09` (London charge), `s54025→26` (postman waiting for payment), `s54044→45` (effective-date authority), `s54059→60` (first place), `s54086→87` (cash congestion), `s54110→11` (stamp timing). |
+| 6 | `open_loops` | **Yes** | Questions or withheld outcomes recur throughout, including `s54023/25/31/37/44`, `s54052/55/59/67/74/76/79/86`, `s54093/99/106/110`, and `s54113/20/25/29/35/40/44`. The longest apparent gaps are well under 90 seconds at normal narration pace. |
+| 7 | `payoffs` | **No** | `s54067` asks *how* the uneven December rates are executed at the counter, but `s54068–73` give the reason for the trial and workload observations, not the counter method. `s54106` asks whether preprinted envelopes can relieve the counter; `s54107–10` move to stamp authorization, and `s54125–36` discuss cutting and relative demand without answering that original question. `s54125` asks who will cut the printed envelope sheets; `s54126–28` describe missing machines and a dispute but never identify who ultimately cuts them. |
+| 8 | `no_recap` | **No** | Hill's diary report that cash collection in the hall was inadequate and chaotic appears at `s54087` and again at `s54099`, without a pointed callback or new outcome. Treasury approval of the three forms appears at `s54065` and is restated at `s54079`. The August Act's grant of Treasury rate-setting power appears at `s54039` and `s54046`. |
+| 9 | `chapters_are_events` | **Yes** | Titles name a sender's charged letter and parcel route, Hill's envelope plan, the August Act's three payment routes, the December trial, the January crowd, and May stamp use. `八月法案留下的三種付款路` is the closest to a functional label, but still states what the Act did. |
+| 10 | `outro_no_next` | **Yes** | `outro` mentions source links and subscribing, with no next video, episode, or file. |
+| 11 | `opening_hooks` | **Yes** | After the counter scene, `s54004` withholds Hill's diary count, `s54005` asks about the crowd's payment trouble, and `s54006–07` withhold the omitted word and its effect. `s54008` adds an old-rate question. |
+| 12 | `one_thread` | **Yes** | The same practical problem—how a letter gets prepaid under cheaper postage, first at a crowded counter and later with a stamp—runs through the Hill proposal (`s54026–38`), law (`s54039–59`), cash rollout (`s54077–110`), and stamp availability/use (`s54111–48`). |
+| 13 | `no_detour` | **No** | `s54009–16` deliver a concentrated sequence of four price/weight figures (9d, 18d, 2s 3d, under ¼ oz, then 13½d) before moving the payment problem forward; the Haddington example adds another charge after the London mismatch is established. `s54047–48` pause for Gazette and Parliament filing mechanics with no later narrative consequence. |
+
+**Ambiguity and close calls.** `s54064` raises forgery as a question; the next line says Treasury approved the forms, which may be read as its outcome, but no anti-forgery answer is given. I did not rely on it for the `payoffs` failure. `s54003`'s counter question gets a general answer at `s54089–90` (“cash at the counter”), though the long callback does not explicitly return to the opening clerk and scale. `no_detour` is the most judgment-dependent verdict: the tariff series helps explain demand for reform, but its additional figures and the filing mechanics create a list-like stretch. The first chapter's date/rate premise is treated as scene setup rather than a later-result spoiler.
+
+**Result:** 10 Yes, 3 No. Required failures: `payoffs`, `no_recap`, `no_detour`. Optional criterion `chapters_are_events`: Yes.

@@ -1,0 +1,219 @@
+{
+  "slug": "curio-s54",
+  "round": "R14",
+  "status": "HOLD",
+  "inputs": {
+    "script_sha256": "483558f1617939d109c453ec35f09840ed3de9bcbf0455aa1598433f9b74448f",
+    "video_json_sha256": "ab07d7166dc1141a822747dfd43d46675fa9f5c97ce3cff528875df48764a83b",
+    "brief_sha256": "bedc89ef669f9b64868ff3ccea85adb13ee07d75a1ab2120ab6193079f4623f9",
+    "speech_hash": "5a4cbb450ebf33a5"
+  },
+  "gates": {
+    "merged_narrative": {
+      "passed": true,
+      "answers": 13,
+      "receipt_sha256": "eae6116bcfec5babeb787304ea13e5f7aa4ef0e1e37baa4ded00bbf59d9a2f59"
+    },
+    "policy": {
+      "status": "PASS",
+      "requests_sent": 1,
+      "receipt_sha256": "5ae05e7733ad38d6749fdb015511a7f01879dfce872efe06ac2ff5fbf6734c9a"
+    }
+  },
+  "tts_runs": [
+    {
+      "log": "tts.txt",
+      "log_sha256": "eda127356036bb6c3fb1d80d49d786a4fd8a6f69db747214bd1b88e2c72fd7ad",
+      "synthesized_requests": 141,
+      "billable_characters": 3111,
+      "reused_requests": 5,
+      "narration_clock": "13:44",
+      "approx_wall_seconds": 645
+    },
+    {
+      "log": "retake-1.txt",
+      "log_sha256": "e7c65f5ca63ceb32ff251d214d1fd9ddf1f1444d703f1e730d0cc1973c674740",
+      "synthesized_requests": 30,
+      "billable_characters": 645,
+      "reused_requests": 116,
+      "narration_clock": "13:44",
+      "approx_wall_seconds": 144
+    },
+    {
+      "log": "retake-2.txt",
+      "log_sha256": "018cfee41297a5da0f0c4673210345387aa5d4afe9d105410e04a7d8219c4e1a",
+      "synthesized_requests": 6,
+      "billable_characters": 124,
+      "reused_requests": 140,
+      "narration_clock": "13:45",
+      "approx_wall_seconds": 34
+    }
+  ],
+  "total_new_billable_characters": 3880,
+  "audio_checks": [
+    {
+      "log": "check-audio-first.txt",
+      "log_sha256": "1f649677074bebe472c0d96f1b5968db67f4f7874cdc6d29b09243743fa230b2",
+      "flags_file": "check-flags-initial.json",
+      "flags_sha256": "a90fd303dd953f61ee3b62bba3fd9398253c24414266c18568deb4dd749f63d4",
+      "cache_file": "check-initial.json",
+      "cache_sha256": "7a6fa9741ff4ce82d08d4d2d40b1c1f752973cced69dd49c7f1395e1c76a60ad",
+      "checked": 148,
+      "total": 148,
+      "exact": 89,
+      "alike": 20,
+      "judged_fine": 9,
+      "flagged": 30,
+      "flag_ids": [
+        "s54002",
+        "s54003",
+        "s54004",
+        "s54005",
+        "s54011",
+        "s54013",
+        "s54016",
+        "s54046",
+        "s54061",
+        "s54063",
+        "s54066",
+        "s54067",
+        "s54068",
+        "s54090",
+        "s54092",
+        "s54094",
+        "s54095",
+        "s54097",
+        "s54105",
+        "s54106",
+        "s54109",
+        "s54111",
+        "s54115",
+        "s54116",
+        "s54119",
+        "s54122",
+        "s54125",
+        "s54126",
+        "s54129",
+        "s54138"
+      ],
+      "approx_wall_seconds": 1060
+    },
+    {
+      "log": "check-audio-after-retake-1.txt",
+      "log_sha256": "fa0431b2a2a69ccb9320883e5b2f7bce558cea8a91b72b2b62b975ffa093019a",
+      "flags_file": "check-flags-after-retake-1.json",
+      "flags_sha256": "c25d8881aa3e4d6b6da45c6d6daa0f7d8a84d899f59cd4f41a6071a586007dfa",
+      "cache_file": "check-after-retake-1.json",
+      "cache_sha256": "57641c88e16d001fb9e40159f063a92338555410188930ed6f17280b908b7cb7",
+      "checked": 148,
+      "total": 148,
+      "exact": 97,
+      "alike": 23,
+      "judged_fine": 9,
+      "flagged": 19,
+      "flag_ids": [
+        "s54002",
+        "s54004",
+        "s54005",
+        "s54011",
+        "s54013",
+        "s54046",
+        "s54061",
+        "s54067",
+        "s54068",
+        "s54092",
+        "s54095",
+        "s54105",
+        "s54109",
+        "s54115",
+        "s54119",
+        "s54122",
+        "s54125",
+        "s54126",
+        "s54138"
+      ],
+      "approx_wall_seconds": 219
+    },
+    {
+      "log": "check-audio-after-retake-2.txt",
+      "log_sha256": "d3f7058ae3708f91169e70d071441509bc7f97a769eccafb5dd5624a22a6fd5c",
+      "flags_file": "check-flags-final.json",
+      "flags_sha256": "7e12547ff064f66d739f5b77c4fa827f14a4d18ea9b66f1225de1ae54e03df52",
+      "cache_file": "check-final.json",
+      "cache_sha256": "a4363bd3b16215d6530688bf8dd8dad4e3302235cdc6c0a41f20c899d77109c1",
+      "checked": 148,
+      "total": 148,
+      "exact": 99,
+      "alike": 23,
+      "judged_fine": 9,
+      "flagged": 17,
+      "flag_ids": [
+        "s54002",
+        "s54004",
+        "s54005",
+        "s54011",
+        "s54013",
+        "s54046",
+        "s54061",
+        "s54067",
+        "s54068",
+        "s54092",
+        "s54105",
+        "s54109",
+        "s54115",
+        "s54119",
+        "s54122",
+        "s54125",
+        "s54126"
+      ],
+      "approx_wall_seconds": 55
+    }
+  ],
+  "scope_audits": {
+    "retake_1": {
+      "changed": 30,
+      "extra": [],
+      "missing": [],
+      "sha256": "4b65ba56f0a76ffd85287ae7facdfce52d9956436bf0275b0f912963c4f74f59"
+    },
+    "retake_2": {
+      "changed": 6,
+      "extra": [],
+      "missing": [],
+      "sha256": "20b055d65bbe392e916f273d6bd658d9f32efd283153ef8319778ba075462795"
+    }
+  },
+  "final": {
+    "narration_clock": "13:45",
+    "narration_wav_sha256": "eea813c12eb87f18833b05800025d060325184b2277e33ea06788b67fa554962",
+    "timeline_sha256": "7f35b47a6bebbfbaa346c86d5654035048c7fef078241d6b63352a80880fc4e9",
+    "residual_flags": [
+      "s54002",
+      "s54004",
+      "s54005",
+      "s54011",
+      "s54013",
+      "s54046",
+      "s54061",
+      "s54067",
+      "s54068",
+      "s54092",
+      "s54105",
+      "s54109",
+      "s54115",
+      "s54119",
+      "s54122",
+      "s54125",
+      "s54126"
+    ],
+    "stop_present": true,
+    "human_listening_claimed": false,
+    "independent_second_asr_available": false
+  },
+  "handoff": {
+    "markdown": "oral-wording-handoff.md",
+    "markdown_sha256": "9f8f0e1efedb56100572726194b4fcc75896823ee73d2258d43f449e3dd29201",
+    "proposals_json": "oral-wording-proposals.json",
+    "proposals_sha256": "3ee759120bd3607851b710cbf0695e8fc12f4da858a8fb75b57155a9d5410c44"
+  }
+}

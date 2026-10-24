@@ -1,0 +1,351 @@
+{
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[s53001] puts cottages in a San Francisco square in June 1907; [s53002] has the park commission demand clearance; [s53003] and [s53004] show a resident's immediate land and payment problem within the ",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[s53002] states the clearance order, while [s53008] raises the later visit without revealing its findings. [s53005] identifies a later report's record of the order, not the eventual outcome.",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "The [s53009] question leads back to the 1906 fire at [s53010]; construction [s53028], the payment change [s53057]-[s53060], the clearance deadline [s53071], and the 1908 visit [s53101] then advance th",
+      "yes_readers": 1
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[s53006]-[s53009] pose concrete unanswered questions about ownership, moving costs, a visit, and the original camp. They do not name chapters, count forthcoming items, or announce a presentation order",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "The adjacent chapter bridges are [s53009]->[s53010] (why the parks held residents), [s53027]->[s53028] (work begins), [s53048]->[s53049] (how residents obtain cottages), [s53068]->[s53069] (proof of a",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "Unanswered turns recur through the body, including [s53023], [s53030], [s53056], [s53068], [s53090], [s53104], [s53116], and [s53123]. Their spacing is well under a 90-second narration interval at the",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[s53006] is answered by the forbidden rent and installment sale at [s53057]-[s53060]; [s53007] by the cost and payers at [s53073] and [s53089]-[s53092]; [s53008] by the visit findings at [s53101]-[s53",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated ；讀者二：[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "The headings name events or findings: the fire and tents [s53010], cottage construction [s53028], rent becoming purchase [s53049], the uncleared deadline [s53069]-[s53071], departure [s53084], and the",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[outro] recalls the deadline, asks a viewer question, and invites subscription; it does not mention another film, episode, or file.",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "After the first square scene [s53001], [s53006] holds the rent-or-purchase answer, [s53007] holds the moving-cost payer, [s53008] holds the visit finding, and [s53009] holds the reason people occupied",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "The cottage's need for a place to stand runs from [s53003] through the distinction between buying a cottage and its public land [s53060], proof of new land [s53069], rent at the new site [s53115]-[s53",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "Allocation [s53033]-[s53037], the sale terms [s53049]-[s53063], moving and its cost [s53084]-[s53096], and surveyed conditions on new lots [s53118]-[s53130] all follow the same cottages from public la",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated ；讀者二：[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069",
+      "yes_readers": 0
+    }
+  ],
+  "advisory": [],
+  "problems": [
+    "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（讀者一：[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated ；讀者二：[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069）"
+  ],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53001] puts cottages in a San Francisco square in June 1907; [s53002] has the park commission demand clearance; [s53003] and [s53004] show a resident's immediate land and payment problem within the "
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53002] states the clearance order, while [s53008] raises the later visit without revealing its findings. [s53005] identifies a later report's record of the order, not the eventual outcome."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": true,
+          "evidence": "The [s53009] question leads back to the 1906 fire at [s53010]; construction [s53028], the payment change [s53057]-[s53060], the clearance deadline [s53071], and the 1908 visit [s53101] then advance th"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006]-[s53009] pose concrete unanswered questions about ownership, moving costs, a visit, and the original camp. They do not name chapters, count forthcoming items, or announce a presentation order"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "The adjacent chapter bridges are [s53009]->[s53010] (why the parks held residents), [s53027]->[s53028] (work begins), [s53048]->[s53049] (how residents obtain cottages), [s53068]->[s53069] (proof of a"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "Unanswered turns recur through the body, including [s53023], [s53030], [s53056], [s53068], [s53090], [s53104], [s53116], and [s53123]. Their spacing is well under a 90-second narration interval at the"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006] is answered by the forbidden rent and installment sale at [s53057]-[s53060]; [s53007] by the cost and payers at [s53073] and [s53089]-[s53092]; [s53008] by the visit findings at [s53101]-[s53"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated "
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "The headings name events or findings: the fire and tents [s53010], cottage construction [s53028], rent becoming purchase [s53049], the uncleared deadline [s53069]-[s53071], departure [s53084], and the"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[outro] recalls the deadline, asks a viewer question, and invites subscription; it does not mention another film, episode, or file."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "After the first square scene [s53001], [s53006] holds the rent-or-purchase answer, [s53007] holds the moving-cost payer, [s53008] holds the visit finding, and [s53009] holds the reason people occupied"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "The cottage's need for a place to stand runs from [s53003] through the distinction between buying a cottage and its public land [s53060], proof of new land [s53069], rent at the new site [s53115]-[s53"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "Allocation [s53033]-[s53037], the sale terms [s53049]-[s53063], moving and its cost [s53084]-[s53096], and surveyed conditions on new lots [s53118]-[s53130] all follow the same cottages from public la"
+        }
+      ],
+      "failed": [
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated "
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repeated ）"
+      ]
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53001] [s53002] [s53003] [s53004] The first four spoken scenes place cottages and the park commission's clearing demand in June 1907, then give residents the concrete problem of finding land while p"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53002] [s53006] [s53007] [s53008] [s53071] [s53091] [s53105] The opening states the deadline but withholds whether the squares cleared, whether payments were rent or purchase, who paid moving costs,"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53062] [s53038] [s53039] [s53071] After the installment-sale decision, s53062 jumps ahead to later refunds to land buyers. The next scene returns to the construction completion of 19 March 1907 and "
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006] [s53007] [s53008] [s53048] [s53097] The forward lines pose story questions rather than announce chapters, ordered talking points, or the video's structure."
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53009] [s53010] [s53027] [s53028] [s53048] [s53049] [s53068] [s53069] [s53083] [s53084] [s53100] [s53101] The chapter starts pick up, respectively, the origin of square camps, construction under the"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006] [s53023] [s53032] [s53056] [s53068] [s53079] [s53090] [s53104] [s53116] [s53123] Unanswered questions or reversals recur through the body, including the park permission, allocation, collectio"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006] [s53049] [s53058] [s53007] [s53073] [s53090] [s53091] [s53097] [s53103] [s53105] [s53107] [s53116] [s53129] [s53130] The long opening rent/buy and moving-cost questions receive new answers: i"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[s53001] [s53010] [s53028] [s53049] [s53071] [s53084] [s53101] The seven headings describe occupied squares, tents after fire, cottage construction and allocation, the sale change, a missed clearance,"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[outro] The close asks a question about relocation costs and invites a subscription; it does not advertise another episode or file."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53006] [s53007] [s53008] [s53009] After the June 1907 scene, the opening leaves at least three later reveals pending: rent versus purchase, who pays to move, what the 1908 investigators find, and wh"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53003] [s53025] [s53058] [s53069] [s53084] [s53130] [outro] The identifiable problem is how a family can keep a cottage when the public camp must clear: temporary site permission, cottage ownership,"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s53033] [s53037] [s53048] [s53094a] [s53118] [s53125] The allocation segment identifies camp residents versus people who took cottages directly to other land, setting up the ownership question. The l"
+        }
+      ],
+      "failed": [
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53062] [s53038] [s53039] [s53071] After the installment-sale decision, s53062 jumps ahead to later refunds to land buyers. The next scene returns to the construction completion of 19 March 1907 and "
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[s53062] [s53038] [s53039] [s53071] After the installment-sale decision, s53062 jumps ahead to later refunds to land buyers. The next scene returns to the construction completion of 19 March 1907 and ）",
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s53003] [s53041] [s53069] [s53093] s53003 already says residents must find land to place a cottage; s53041 restates that they must find the next parcel without a named callback to the opening. s53069）"
+      ]
+    }
+  ]
+}

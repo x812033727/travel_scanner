@@ -1,0 +1,266 @@
+{
+  "episode": "curio-s49",
+  "round": "R30",
+  "scope": "safe R30 manifest rebind preserving 27 KEEP then exactly one moon034 image+judge",
+  "creative_sha256": {
+    "video.json": "df908e395da02b427bea4f6ae03c3ca69c834058cff90f881c0ac2139f05dc7b",
+    "claims.md": "c7278022364e16210ac5fbb6d85c4498b0e5a534e3db35ea62736b3d666a64c9",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "bindings": {
+    "visual_hash": "0ec110a386fb0098",
+    "look_hash": "98a370ae40badbaf",
+    "r28_manifest_backup_sha256": "de46aa231b3f4c22633e93b9261fcc0a381051190530ea78b933ace70f74d87f",
+    "r30_manifest_before_native_sha256": "87ebfddeba155e029f3b5dfeb0c9438f68c15b45af0e3ade8481541f8b7a7487",
+    "r30_manifest_after_native_sha256": "5e660a3839c5a51923dfe4f8b36c3e8e988aaf10919a76d19e07bc3ebac3e77b",
+    "active_manifest_sha256": "5e660a3839c5a51923dfe4f8b36c3e8e988aaf10919a76d19e07bc3ebac3e77b"
+  },
+  "prior_kept": [
+    {
+      "id": "moon001",
+      "file": "keyframes/moon001-1-trim.jpg",
+      "manifest_sha256": "0cbf12ec1bbfa115a81b5089f56609d07a9801bf8a0cad2d4c31460824bf2683",
+      "actual_sha256": "0cbf12ec1bbfa115a81b5089f56609d07a9801bf8a0cad2d4c31460824bf2683"
+    },
+    {
+      "id": "moon002",
+      "file": "keyframes/moon002-2.jpg",
+      "manifest_sha256": "cf734518b8d85c1b8e44d13dd0585a7e1a7bf8c070b6832d2d669e6c324f9fcf",
+      "actual_sha256": "cf734518b8d85c1b8e44d13dd0585a7e1a7bf8c070b6832d2d669e6c324f9fcf"
+    },
+    {
+      "id": "moon003",
+      "file": "keyframes/moon003-1.jpg",
+      "manifest_sha256": "c0dc2c827f76dd8b108e1e7b81c42a8ad06aa0f56f46a659ab8e0cedc2ae606d",
+      "actual_sha256": "c0dc2c827f76dd8b108e1e7b81c42a8ad06aa0f56f46a659ab8e0cedc2ae606d"
+    },
+    {
+      "id": "moon004",
+      "file": "keyframes/moon004-1.jpg",
+      "manifest_sha256": "4a2b3b4eaf818e169635fd0c78d0665499032eb4727182b97d73c1dcc65aef36",
+      "actual_sha256": "4a2b3b4eaf818e169635fd0c78d0665499032eb4727182b97d73c1dcc65aef36"
+    },
+    {
+      "id": "moon005",
+      "file": "keyframes/moon005-1.jpg",
+      "manifest_sha256": "0a817bbdac76a92c199f5fb1a554ad44caca2ae468042a92ea0cbfa78f976d17",
+      "actual_sha256": "0a817bbdac76a92c199f5fb1a554ad44caca2ae468042a92ea0cbfa78f976d17"
+    },
+    {
+      "id": "moon006",
+      "file": "keyframes/moon006-1-trim.jpg",
+      "manifest_sha256": "3e271b29be12a1998f87d88cc70116eb074052ef80ffb4904af37563f5c4b01a",
+      "actual_sha256": "3e271b29be12a1998f87d88cc70116eb074052ef80ffb4904af37563f5c4b01a"
+    },
+    {
+      "id": "moon007",
+      "file": "keyframes/moon007-2-trim.jpg",
+      "manifest_sha256": "f2432c7b16cab9be871f23fb947671f52ccca010d382f6b2acd6d18812a0d725",
+      "actual_sha256": "f2432c7b16cab9be871f23fb947671f52ccca010d382f6b2acd6d18812a0d725"
+    },
+    {
+      "id": "moon008",
+      "file": "keyframes/moon008-1-trim.jpg",
+      "manifest_sha256": "8139c040dc4e93058f643cf74ea00008c2177176ad6584459ce4eae7012bedce",
+      "actual_sha256": "8139c040dc4e93058f643cf74ea00008c2177176ad6584459ce4eae7012bedce"
+    },
+    {
+      "id": "moon009",
+      "file": "keyframes/moon009-1-trim.jpg",
+      "manifest_sha256": "6b0149bdaf83cd4f4c4b3cf3e40e7d85c0a915e934b36ec9351ed2779892042e",
+      "actual_sha256": "6b0149bdaf83cd4f4c4b3cf3e40e7d85c0a915e934b36ec9351ed2779892042e"
+    },
+    {
+      "id": "moon010",
+      "file": "keyframes/moon010-1.jpg",
+      "manifest_sha256": "8327f69e15437ade390f9ba2868b6856639871f9f04d91ecbdbda58eb2e5faf5",
+      "actual_sha256": "8327f69e15437ade390f9ba2868b6856639871f9f04d91ecbdbda58eb2e5faf5"
+    },
+    {
+      "id": "moon011",
+      "file": "keyframes/moon011-1.jpg",
+      "manifest_sha256": "5b11bed36bff63ae2038bc447819bf721aa47e8c33324d8a3a00f3ba419ef41e",
+      "actual_sha256": "5b11bed36bff63ae2038bc447819bf721aa47e8c33324d8a3a00f3ba419ef41e"
+    },
+    {
+      "id": "moon012",
+      "file": "keyframes/moon012-2.jpg",
+      "manifest_sha256": "b214a71631577988e3f0fa51257d4c03c6ee24aee96ff52f53da2a111389da9f",
+      "actual_sha256": "b214a71631577988e3f0fa51257d4c03c6ee24aee96ff52f53da2a111389da9f"
+    },
+    {
+      "id": "moon013",
+      "file": "keyframes/moon013-1.jpg",
+      "manifest_sha256": "0bb3d4f08a8bf67d4cdc6df5938cdcc0998c322b1ac0d3abf440b81afe46ad59",
+      "actual_sha256": "0bb3d4f08a8bf67d4cdc6df5938cdcc0998c322b1ac0d3abf440b81afe46ad59"
+    },
+    {
+      "id": "moon014",
+      "file": "keyframes/moon014-1.jpg",
+      "manifest_sha256": "020e38f57cf123818e9aeca8425a9041bc9569d1a7a0887b12630b21351b0fed",
+      "actual_sha256": "020e38f57cf123818e9aeca8425a9041bc9569d1a7a0887b12630b21351b0fed"
+    },
+    {
+      "id": "moon015",
+      "file": "keyframes/moon015-2.jpg",
+      "manifest_sha256": "cbbdbda49a6e499d3d6e8d3d33721c10255389ccd8d428d92d2cbb5a30f92280",
+      "actual_sha256": "cbbdbda49a6e499d3d6e8d3d33721c10255389ccd8d428d92d2cbb5a30f92280"
+    },
+    {
+      "id": "moon017",
+      "file": "keyframes/moon017-1.jpg",
+      "manifest_sha256": "9730cd91949927ff4cce4cc26bb27c0bc89b4a0b3a585250f252ba711b3a2074",
+      "actual_sha256": "9730cd91949927ff4cce4cc26bb27c0bc89b4a0b3a585250f252ba711b3a2074"
+    },
+    {
+      "id": "moon018",
+      "file": "keyframes/moon018-1.jpg",
+      "manifest_sha256": "119fbb94e8b5651e9a053697e9f912bd44a97b081bd8fb6765f4e052a47a6a4b",
+      "actual_sha256": "119fbb94e8b5651e9a053697e9f912bd44a97b081bd8fb6765f4e052a47a6a4b"
+    },
+    {
+      "id": "moon019",
+      "file": "keyframes/moon019-1-trim.jpg",
+      "manifest_sha256": "819423ca5cfe45a55dc903d2604a96044cf077abae5dc0b58a569dd139aac315",
+      "actual_sha256": "819423ca5cfe45a55dc903d2604a96044cf077abae5dc0b58a569dd139aac315"
+    },
+    {
+      "id": "moon020",
+      "file": "keyframes/moon020-1-trim.jpg",
+      "manifest_sha256": "a1ddc846eb0c28a6dc0ee35d3b68210b5436f766f5cb0dcc65364cd5f7e62fe3",
+      "actual_sha256": "a1ddc846eb0c28a6dc0ee35d3b68210b5436f766f5cb0dcc65364cd5f7e62fe3"
+    },
+    {
+      "id": "moon021",
+      "file": "keyframes/moon021-1-trim.jpg",
+      "manifest_sha256": "6a2fb2999c01b33179c75e78c80fbd2a6451c1c76fea71ab3c658c2a2f0d513f",
+      "actual_sha256": "6a2fb2999c01b33179c75e78c80fbd2a6451c1c76fea71ab3c658c2a2f0d513f"
+    },
+    {
+      "id": "moon022",
+      "file": "keyframes/moon022-1.jpg",
+      "manifest_sha256": "6ef0cb929260f1146ec87df088fdce53df3cb4e8999319ece0f75f88f62efc35",
+      "actual_sha256": "6ef0cb929260f1146ec87df088fdce53df3cb4e8999319ece0f75f88f62efc35"
+    },
+    {
+      "id": "moon023",
+      "file": "keyframes/moon023-1-trim.jpg",
+      "manifest_sha256": "999d7fc657a3988807994d0ee4509bda2b27e916cee79d9036cb5e82ca1cbfc4",
+      "actual_sha256": "999d7fc657a3988807994d0ee4509bda2b27e916cee79d9036cb5e82ca1cbfc4"
+    },
+    {
+      "id": "moon024",
+      "file": "keyframes/moon024-1.jpg",
+      "manifest_sha256": "591e47dc7c2996b5460adb979338d3f59207e9bb91f97dbc4a92159fd8a345fb",
+      "actual_sha256": "591e47dc7c2996b5460adb979338d3f59207e9bb91f97dbc4a92159fd8a345fb"
+    },
+    {
+      "id": "moon025",
+      "file": "keyframes/moon025-1.jpg",
+      "manifest_sha256": "a56fc0b0cbba3b51630a50f18e616c54ed28deb6b0a5abdf069465354988cab1",
+      "actual_sha256": "a56fc0b0cbba3b51630a50f18e616c54ed28deb6b0a5abdf069465354988cab1"
+    },
+    {
+      "id": "moon028",
+      "file": "keyframes/moon028-1-trim.jpg",
+      "manifest_sha256": "48c1cf7cc044d3972ca07ecc003e3a1ffe2296e397e83efb95eb2a053b78c8cd",
+      "actual_sha256": "48c1cf7cc044d3972ca07ecc003e3a1ffe2296e397e83efb95eb2a053b78c8cd"
+    },
+    {
+      "id": "moon030",
+      "file": "keyframes/moon030-1.jpg",
+      "manifest_sha256": "5a5862db73081638706379b3a3ea4a279bcce05aefbc155f38973b8ac3e9d62b",
+      "actual_sha256": "5a5862db73081638706379b3a3ea4a279bcce05aefbc155f38973b8ac3e9d62b"
+    },
+    {
+      "id": "moon033",
+      "file": "keyframes/moon033-1-trim.jpg",
+      "manifest_sha256": "64bdacae036eab4549c4a8e28951dfe697a14d2e631ece384449dc84a37bd7aa",
+      "actual_sha256": "64bdacae036eab4549c4a8e28951dfe697a14d2e631ece384449dc84a37bd7aa"
+    }
+  ],
+  "moon034": {
+    "selected_file": "keyframes/moon034-1.jpg",
+    "selected_sha256": "154db591180deec3a39467e16c95a388ca8950911994d5544510d46482eb7e11",
+    "original_file": "keyframes/moon034-1.jpg",
+    "original_sha256": "154db591180deec3a39467e16c95a388ca8950911994d5544510d46482eb7e11",
+    "machine_pass": true,
+    "machine_score": 9.29,
+    "human_verdict": "KEEP",
+    "visible_deviation": "Three unlettered circles, two dark and one pale, rather than the prompted two; central dark circle is pointed to. This is an illustration-only deviation, not a historical measurement or sourced circle count.",
+    "stale_r29_trim_file": "keyframes/moon034-1-trim.jpg",
+    "stale_r29_trim_sha256": "ba8d5ec9f6a01b9d7d422f3c02b0c44ebbc4707805954ac250ce81f6b8b5e8ff",
+    "stale_r29_trim_selected": false
+  },
+  "private_archives": {
+    "moon034-1.jpg": {
+      "sha256": "154db591180deec3a39467e16c95a388ca8950911994d5544510d46482eb7e11",
+      "bytes": 173847
+    },
+    "contact-sheet-01.png": {
+      "sha256": "d5def4241549e8252d270064d99814aba277a683becb612c007bb7b7512ae77a",
+      "bytes": 2824590
+    },
+    "contact-sheet-02.png": {
+      "sha256": "dd28d4d7532117ee4581eea566fdd11047f890f91ea9e381366953bebc1c8374",
+      "bytes": 429032
+    },
+    "manifest-before.json": {
+      "sha256": "87ebfddeba155e029f3b5dfeb0c9438f68c15b45af0e3ade8481541f8b7a7487",
+      "bytes": 56138
+    },
+    "manifest-after.json": {
+      "sha256": "5e660a3839c5a51923dfe4f8b36c3e8e988aaf10919a76d19e07bc3ebac3e77b",
+      "bytes": 58158
+    },
+    "ledger-before.json": {
+      "sha256": "7039c93775ece9c2bb073156b21e32b7678f9d6c830326dd867d99b1fa222c6c",
+      "bytes": 47581
+    },
+    "ledger-after.json": {
+      "sha256": "9258461cc0ef50d2015ac5020def8e734a136d99203a1364bb65158c489e2428",
+      "bytes": 48179
+    },
+    "stdout.log": {
+      "sha256": "f19b348bb09462f7e34c73d6714c20f17e3323a546cf43035783eb7c0b9cb8b3",
+      "bytes": 184
+    },
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    }
+  },
+  "ledger": {
+    "before_sha256": "7039c93775ece9c2bb073156b21e32b7678f9d6c830326dd867d99b1fa222c6c",
+    "after_sha256": "9258461cc0ef50d2015ac5020def8e734a136d99203a1364bb65158c489e2428",
+    "active_sha256": "9258461cc0ef50d2015ac5020def8e734a136d99203a1364bb65158c489e2428",
+    "before_totals": {
+      "usd": 1.0665,
+      "images": 79,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 79,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "after_totals": {
+      "usd": 1.08,
+      "images": 80,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 80,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "episode_cap_usd": 5.3
+  },
+  "stop_present": true,
+  "jobs_empty": true,
+  "kept_after_native": 28,
+  "storyboard_missing_shots": 91,
+  "moon035_039_paid_calls": 0
+}

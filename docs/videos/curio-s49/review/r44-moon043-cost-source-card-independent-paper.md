@@ -1,0 +1,25 @@
+# S49 R44｜`moon043` 七萬英鎊來源字卡非作者紙審
+
+2026-10-22 UTC。**PAPER PASS，僅限本次凍結的 `moon043` 字卡、`moon049` 光線同義詞及兩列 claims 畫面欄。**我不是作者，沒有改作者檔、任務、私人 manifest／媒體／帳本或 STOP，沒有重綁、付費生成、提交 Git 或處理 PR。這不是整集 storyboard、旁白聽審或成片放行。
+
+## 來源與退圖界線
+
+我重讀固定 Locke 名下 **1859 年重印的虛構報導** `/tmp/s49-moon-hoax-62779.txt`，SHA-256 `3ca0bc9b6fc5c50b090d61bf2049e925d22dd1cdef2b443a282f7fdc5749e654`。[P05 L447–463](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L447-L463) 先寫計畫送皇家學會，再稱**所提議儀器**估費 £70,000，並稱國王聽說有助航海後允諾所需金額。書的 L75 載 1859 出版，L164–165 自稱 1835 年先刊於 *New York Sun*；目前固定證據是重印文字，不是 1835 原報影像、存世提案、工程帳冊或真實王室付款紀錄。Jacoby **1902 年後出評論** `/tmp/s49-jacoby-53396.txt`，SHA-256 `f5ab32e64e7ea3735ff90fb000ae8cc82dddea594e0de0c6be30b30f94485029`，[J4083–4125](https://github.com/GITenberg/Practical-Talks-by-an-Astronomer_53396/blob/073dd7dd24b8515dec681441a1cde79477fabf08/53396-0.txt#L4083-L4125)，明稱儀器及光學對話為虛構，只概述作者接著寫籌款；它沒有獨立證實 £70,000 或撥款。
+
+新卡同屏上標「**1859 重印本所載虛構報導**」、主文「**製鏡估價：七萬英鎊**」、下標「**故事還稱國王允諾出資；非真實撥款證據**」。既有旁白仍說「**報導估計**……**還寫**國王允諾」，claims 同列亦標明意譯與非原報、非付款證明。這把金額和允諾留在故事內。主文的「製鏡」承接 `moon042` 的製鏡計畫，應理解為文中**所提議整套儀器**的估費；後續字幕或說明不可把 £70,000 擴寫成單片鏡片實際製造費或已支出的款項。
+
+[R42 首張獨立原圖退件](r42-moon043-first-native-independent-visual.md) SHA-256 `0b3eeb2e03daafba6814b19b764362869c287dea2bdef8d26a7330632e4d8ea7` 記錄可讀的假 “Proposal” 標題；[R43 第二張獨立原圖退件](r43-moon043-second-native-independent-visual.md) SHA-256 `bb92980a95e35b64376ddb456a057ef2f8dec1832131b44b1f6bfc4d40e2c206` 記錄紙／書、疑似現代吊燈及畫風漂移。兩張都是 HUMAN REJECT，均不在 34 張入選圖中。這張文字卡避開兩次退圖的具體誤導物件，並把來源限制直接放到觀眾看見的畫面。
+
+`moon049` 僅把尚未出圖的提示詞及 claims 畫面欄之 `warm window light` 換成 `soft indirect light`。固定重印本 [P05a L501–511](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L501-L511) 說鏡片運到 metropolis 後造顯微鏡與活動框架，沒有指定工坊採光。新提示仍是虛構報導的成年工匠、模型鏡片與無標記活動框架；只撤掉對窗的指示，未新增史實器材聲稱。
+
+## 凍結差分、lint 與原尺寸版面
+
+- 基底 Git `e1203389c6c5c54f1f1889a507b8db857a6c8eb0`。[R44 可逆差分](r44-moon043-cost-source-card-structured-diff.json) SHA-256 **`b96891d9001f30412318ece364c26412cbf74e445d4aef55afa69ffc0cc93b30`**。現 [video.json](../video.json) SHA-256 **`dd2dae850cdf455a01b9c99a01af2d9ef3370d81d11c7349f661d6a6220f8d9c`**、[claims.md](../claims.md) **`70f0d9255397880586c96a49cbda77cf3ca722b68815455f29b6ac9f841c2ebb`**。獨立把現稿 `moon043`、`moon049` 兩個完整 scene 原始位元區塊及兩列 claims 原始行 `after→before` 各倒填一次，**逐位元組還原** Git 的 video SHA `a8ff417f10c16f338e1c54889f2facc1adb667c9e666719e7cb764d8df3b8bbc`、claims SHA `830c773942487158451b16701e3edb85a56210ffbe9572e33dbafebe219ae234`。129 景中只有這兩景變動：`moon043` `shot→big` 並換 `data`，`moon049` 只換提示詞光線短語；其他 127 景及全域設定不變。claims 136 行只第 46、52 行畫面欄變，兩列旁白和來源欄均同位元；新列含換行 SHA 分別為 `182a5efb73b315e9ece651c75ff3ae44e74521f6732f52fe0e2ba41c60b49aab`、`83a7bed040021ab2743d80ebf6d283f9de266d4367fbab0715384cd1fcf2b059`。全部 **131／131** scene lines 不變；[script.md](../script.md) SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`、[research.md](../research.md) SHA `f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750` 與基底同位元。
+- 獨立執行 `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s49 --json`：exit 0，**0 errors／0 warnings／131 lines**；`git diff --check` 通過。把 `moon043` 由圖改卡後，若保留舊 `moon049`，`window` 會占 39／116 張、觸發全域多樣性 warning；改成 `daylight` 又使該詞占 39／116。凍結的 `soft indirect light` 消除兩者。正文 128 景為 **116 shot＋12 big 卡，插圖 90.625%**，高於系列 70% 下限；最長連卡 **2 張**（`moon031–032`），未超過 3 張上限。工具重算 `visualHash=99b36fbfea602f3c`、`lookHash=98a370ae40badbaf`、`speechHash=96f0b30e8cb408c7`。
+- 用專案 `renderPlan`／`openRenderer` 和系統 Chromium `/usr/bin/chromium` 對凍結版 `moon043` 實際擷取 **1920×1080** 畫面；兩途徑 PNG 位元相同，暫存 `/tmp/s49-r44-moon043-card-1920x1080.png` SHA-256 **`109f1f31aabd60a2782ac7626003fe5affba6ac8cd680862ba8cc3d3d6ed255d`**。state key `7c7b84fc37dbcd88`，一個 `big` still，renderer `problems=[]`。我親看原尺寸：上標、分成兩行的主文和下標全在畫框內且可讀，沒有相互遮蓋。DOM `.content` 1728×778 的 scroll/client 尺寸一致，字型已載入、被拒資源 0。兩行主文的冒號落在第一行末端，是目前可接受的換行；後續輸出仍須保留三段同屏。
+
+## STOP 狀態及後續邊界
+
+私人 active `keyframes/manifest.json` SHA-256 **`88bc9a66b04e212418d5261da3faf169fadcebf3a0fbba12f9ddf4c2d7a23ff6`** 仍綁 R43 舊 `visual_hash=cac48ccf7b76a189`、相同 look hash；**尚未綁 R44**。依 [R43 STOP 庫存](r43-moon043-second-native-stop-inventory.json) SHA-256 `b02bf7892cccb267df67bda225ba51baba8090bfca10d28c7c3003e3665c6c7f`，34／34 入選圖的路徑、manifest SHA 與實檔 SHA 全相符；`moon043`、`moon049` 均不在入選圖單。`keyframeProblems` 現只列 **82 張缺圖**，其餘 0。`STOP` 在位；`media/jobs.json` SHA-256 `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3`、jobs 空。`media/ledger.json` SHA-256 **`b6ba6f57fd69c85743396c7eaaf333c80057dc0c633a11d8b7bd663c5b39a850`**，逐筆與 totals 一致：**US$1.2960／96 image／96 judge／0 預約**；本紙審零付費。
+
+**結論：PAPER PASS 僅對上述精確 SHA 的書面與字卡版面。** 後續若要使用現有圖單，須在 STOP/jobs 空下重新核對 34 KEEP 選圖與實檔、帳本，再安全離線重綁新 visualHash；本紙審沒有執行。仍有 82 張缺圖，不能把字卡通過當成全片 storyboard、音訊、網站審核或成片通過；任何後續付費仍受既有預算及原尺寸圖像驗收守衛約束。

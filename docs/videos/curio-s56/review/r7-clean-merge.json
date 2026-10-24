@@ -1,0 +1,66 @@
+{
+  "slug": "curio-s56",
+  "round": "R7",
+  "at": "2026-10-20T22:12:47.079Z",
+  "input_sha256": {
+    "brief.md": "09f731c13f1037c963aa5774b936a43e1a187b5c4ae8d09ba158581a705f1a52",
+    "research.md": "59549e98e6ae258cedfc5b43e6684ecaa1102284d0dee13b0beef6443e4a6fb7",
+    "claims.md": "aa0923707ae19afe2a64906d5e7d208bd675fb0ad364897c76e1d2ec44c07165",
+    "video.json": "451fd61d81b93ba3290d314c5b3b408d4a1b59a7c40287d3d03ad5e6df315f8a",
+    "script.md": "1612cbe85e9add3f1c4b9b4be490a3fe9a6ef23588f080ed4f16d135369d1e2d"
+  },
+  "source_review": {
+    "file": "r7-source-independent.md",
+    "sha256": "5f38b356891a4f198b1ed134011ab66ffc26673aa904752e6496da35287810a8",
+    "verdict": "PASS"
+  },
+  "ballots": [
+    {
+      "file": "r7-clean-blind-a/ballot.json",
+      "sha256": "83d36c6fdaf1f31a81bb0e1f8e1f735ab2faf952e36e1a439133ea31e11e9716",
+      "official_record": "r7-clean-blind-a/official-narrative.json",
+      "official_record_sha256": "bfe262b52de76cb9abd68576e3559bdebdbccd6b938a61bd83640831427a4604",
+      "yes": 12,
+      "no": 1
+    },
+    {
+      "file": "r7-clean-blind-b/narrative-answers.json",
+      "sha256": "9ab100aa9d9ce624c39db4f66f91f026634fac76c4bd3b20849f2884971a1f40",
+      "official_record": "r7-clean-blind-b/narrative-cli-receipt.json",
+      "official_record_sha256": "8ab9c36d7b0b7c02069813b89543627ab5a90fc6a53740795fc08481ba3e6486",
+      "yes": 12,
+      "no": 1
+    }
+  ],
+  "merge_rule": "OR per fixed panel question; both readers no on required no_recap",
+  "citation_validation": "26/26 ballot citations exactly matched frozen R7 video.json narration before official merge",
+  "merged_answers": {
+    "file": "r7-clean-merged-answers.json",
+    "sha256": "501b2a0bc582b4441d326c08fee69c4dd8654f772a66ee3678fabb61b099b545",
+    "yes": 12,
+    "no": 1
+  },
+  "official_cli": {
+    "command": "VIDEO_WORKDIR=/tmp/s56-r7-official-merge NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node tools/video/cli.mjs narrative --slug curio-s56 --answers docs/videos/curio-s56/review/r7-clean-merged-answers.json --json",
+    "exit_code": 1,
+    "raw_stdout_file": "r7-clean-cli-receipt.json",
+    "raw_stdout_sha256": "cda359576e617dff637e327d41ec5c722727f6651335f662cea4aa3b91bd76a9",
+    "passed": false,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": []
+  },
+  "official_record": {
+    "file": "/tmp/s56-r7-official-merge/curio-s56/review/narrative.json",
+    "sha256": "ff4d55e6199f3286844315a878a02df03b6b7ad8800a2b1fccf6f0e2bc370938",
+    "narrative_hash": "0af74e3174cb3b72",
+    "script_hash": "1267f5a8361539a030ae97999cf25ee592c3f8f519798b72d3f4fc06bcf8221f",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "a8ff49844f8b8d7003f0d8aff181115cd464873d720c473a19706a547f108b99",
+    "round": 1,
+    "bindings_match_both_reader_records": true
+  },
+  "verdict": "HOLD",
+  "policy_gate": "NOT_RUN"
+}

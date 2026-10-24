@@ -1,0 +1,58 @@
+{
+  "revision": "R38-s53029-september16-source-card",
+  "reason": "Third/final s53029 native HUMAN REJECT; source-qualified September 16 completion card fallback; no fourth image",
+  "before_sha256": {
+    "video.json": "7df8145a61b6ef66d3c65d75e89ea85aa30b6ec28fec217c114e7a05a81d59b6",
+    "claims.md": "50704b954f87256796a9690ef47b12e0bcd0491633ad2645cf9b3e6e310e07b3",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "212aa5d440e5c6075af9341ab271e40323d81537cd229acf693f17fc3d2bdc31",
+    "claims.md": "e8892539610547dc8e6242b441b1028f6bb5865b2dd25e9c1fc9f05234285fed",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53029",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53029",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Close-up upper-body view from outdoors at one finished plain wooden relief cottage doorway in a San Francisco public square in September 1906: one clearly older bareheaded adult carpenter with short grey hair, thick grey eyebrows and moustache, forehead creases and lined cheeks in a plain dark high-collared work shirt; his face, shoulders, both adult hands, one vertical wooden jamb and the edge of a half-open wooden door fill the frame, cropped below his chest so no legs, full door, roof or house facade are visible; one hand presses the vertical jamb while the other pulls the door edge toward it across a narrow visible gap, and he looks directly at the joint he is testing; only a dark empty interior and one strip of plain plank wall behind, no child, resident, lamp or modern signs, soft overcast daylight",
+          "camera": "push in",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53029",
+        "template": "big",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "text": "9 月 16 日，漢密爾頓廣場 20 棟完工",
+          "kicker": "1906 年｜舊金山漢密爾頓廣場",
+          "sub": "1913 年《舊金山救濟調查》｜英語原文意譯"
+        }
+      }
+    },
+    {
+      "scene": "s53029",
+      "path": "claims.md exact row",
+      "before": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查記 1906 年 9 月 16 日漢密爾頓廣場已有 20 棟小屋完成；其後仍隔至少兩三個月，才有相當數量備妥供難民使用。畫面只作原創概念示意：灰髮、灰眉灰鬍、有額紋面紋、未戴帽的匿名中老年成年木匠在一間已完成小屋門外，胸上特寫，雙手分別按木門柱和半開木門邊，讓縫隙可見；門內暗且空，不畫住戶、孩童或燈，不主張史料記載此人、這間屋型、當日驗框工序或當日已有住戶入住，也不把一個門框當成 20 棟逐棟畫像。 |",
+      "after": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查在 1906 年 9 月 10 日開工後明記 `on the sixteenth 20 cottages in Hamilton Square were completed`；同段另說至少隔兩三個月，才有相當數量的小屋備妥供難民使用。三張 `s53029` 原生圖機器／人審未能交出清楚且不暗示當日入住的完工示意，本景改用「1906 年｜舊金山漢密爾頓廣場」與「9 月 16 日，漢密爾頓廣場 20 棟完工」來源卡；下標明示 1913 年後出調查及英語原文意譯，沒有聲稱 9 月 16 日已入住、全市只有 20 棟、現存施工影像或原始公文。 |"
+    }
+  ]
+}

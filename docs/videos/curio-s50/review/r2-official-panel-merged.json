@@ -1,0 +1,744 @@
+{
+  "date": "2026-10-20",
+  "round": "R2",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "cli_payload_sha256": "5fabb78e84a137064916b175771586145ea08b51bed5e8200fe20de51a64688a",
+  "input_sha256": {
+    "brief.md": "99840a8e85b464e695fce17e57ac8a109f8aec793c803ea7ae59dc46b0f309e6",
+    "research.md": "109557d74963733a6b8b3715739d49ec1d68648f5f34a7c9e10d52a9f940e6c7",
+    "claims.md": "bb93edb6455fc520291dc12fca380afcfdd2cf96a0b721eead8f9966868311bf",
+    "video.json": "e6a88bad3361fbac91f715eb2d1ac9d580c9920a8ebd82840b6429124ed4b69a",
+    "script.md": "4844bc20450470bd32e3bb7027c6105f16058e36bb7757b39030ebeb50edab9e"
+  },
+  "answer_sha256": {
+    "A": "c6a862e50b624602768613441ae29e85856fb9224270b18cd1ec31fa5d650728",
+    "B": "3b8afe78348f5c5c3ce5f25625c0ebf28fdb35b05e33dc4311d62eeb67edc4e7"
+  },
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire001] pins the fire to 1666, September 2, at a Pudding Lane baker's house; [fire003] places the owner walking through the rooms that night."
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again."
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire081] poses the evidentiary question about origin, spread, and ignition; [fire082] continues with the Commons inquiry rather than announcing a sequence of sections."
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer."
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire002], [fire014], [fire019], [fire031], [fire043], [fire055], [fire067], [fire081], [fire090], [fire103], and [fire108] keep questions or turns open at intervals under 90 seconds."
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given."
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and "
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[fire001] establishes the Pudding Lane house catching fire; [fire044] carries the demolition order; [fire066] records a stretch where fire stopped; [fire105] establishes the report's unresolved outcom"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire999a], [fire999b], and [fire999c] close with the unproved spark, a viewer question, and a subscription invitation, without naming a next video, episode, or file."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "After [fire001], [fire002] leaves the first contact unknown; [fire005] asks who gave Pepys the address; [fire006] asks why demolition failed to stop the fire; [fire007] asks whether the owner could ex"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire002] introduces the ignition problem; [fire019] pursues the source of the address; [fire081] distinguishes origin, spread, and ignition; [fire114] and [fire115] resolve what the records do and do"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire029] supplies the reported origin, [fire037] and [fire038] explain spread conditions, [fire049] and [fire050] test the response, and [fire087] and [fire094] present competing ignition testimony; "
+        }
+      ],
+      "failed": [
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again."
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer."
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given."
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and "
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "no_spoiler：開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）（[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses.）",
+        "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again.）",
+        "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer.）",
+        "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given.）",
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and ）"
+      ]
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire001] 1666 年九月二日凌晨，布丁巷一戶麵包師的屋子起火；[fire003] 屋主半夜巡過房間。"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire019] 用天亮後誰報出巷址的問題接向 [fire020] 佩皮斯醒來的場景；[fire031] 用河上的行動接向 [fire032] 的所見，沒有口播後續內容的清單。"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire002] 追問第一團火；[fire019] 追問誰報出巷址；[fire031] 追問河上的屋子；[fire055] 追問飛火落處；[fire067] 追問別處是否安全；[fire082] 追問委員會聽誰；[fire103] 追問證詞能否互證。"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[fire001] 屋子起火、[fire032] 船上發現房子已燒、[fire066] 炸屋使一帶停火、[fire087] 刊本收錄自白、[fire104] 議會未作判斷，都對應具體事件或揭曉的章名。"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire999a] 收束火星證據；[fire999b] 問觀眾想到的畫面；[fire999c] 請觀眾訂閱，均未提下一集或下一份檔案。"
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire005] 預留誰告訴佩皮斯地址；[fire006] 預留拆屋為何未立刻阻火；[fire007] 預留屋主能否說清點火瞬間。"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire002] 開場問起火點的細節；[fire081] 中途明列起點、擴大條件與點火方式這個難題；[fire114] 至 [fire116] 結尾回答其能確定的範圍。"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[fire002] 起火問題，經 [fire039] 河岸可燃物、[fire051] 拆屋阻火困難、[fire103] 證詞可靠性，推進至 [fire116] 的結論。"
+        }
+      ],
+      "failed": [
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "no_spoiler：開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）（[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。）",
+        "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。）",
+        "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。）",
+        "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。）",
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。）"
+      ]
+    }
+  ],
+  "merged": {
+    "passed": false,
+    "answers": [
+      {
+        "id": "scene_first",
+        "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire001] pins the fire to 1666, September 2, at a Pudding Lane baker's house; [fire003] places the owner walking through the rooms that night.",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses.；讀者二：[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。",
+        "yes_readers": 0
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again.；讀者二：[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_toc",
+        "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire081] poses the evidentiary question about origin, spread, and ignition; [fire082] continues with the Commons inquiry rather than announcing a sequence of sections.",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer.；讀者二：[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。",
+        "yes_readers": 0
+      },
+      {
+        "id": "open_loops",
+        "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire002], [fire014], [fire019], [fire031], [fire043], [fire055], [fire067], [fire081], [fire090], [fire103], and [fire108] keep questions or turns open at intervals under 90 seconds.",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given.；讀者二：[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and ；讀者二：[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+        "required": false,
+        "yes": true,
+        "evidence": "[fire001] establishes the Pudding Lane house catching fire; [fire044] carries the demolition order; [fire066] records a stretch where fire stopped; [fire105] establishes the report's unresolved outcom",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire999a], [fire999b], and [fire999c] close with the unproved spark, a viewer question, and a subscription invitation, without naming a next video, episode, or file.",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+        "required": true,
+        "yes": true,
+        "evidence": "After [fire001], [fire002] leaves the first contact unknown; [fire005] asks who gave Pepys the address; [fire006] asks why demolition failed to stop the fire; [fire007] asks whether the owner could ex",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire002] introduces the ignition problem; [fire019] pursues the source of the address; [fire081] distinguishes origin, spread, and ignition; [fire114] and [fire115] resolve what the records do and do",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+        "required": true,
+        "yes": true,
+        "evidence": "[fire029] supplies the reported origin, [fire037] and [fire038] explain spread conditions, [fire049] and [fire050] test the response, and [fire087] and [fire094] present competing ignition testimony; ",
+        "yes_readers": 2
+      }
+    ],
+    "failed": [
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses.；讀者二：[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。",
+        "yes_readers": 0
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again.；讀者二：[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer.；讀者二：[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。",
+        "yes_readers": 0
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given.；讀者二：[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and ；讀者二：[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。",
+        "yes_readers": 0
+      }
+    ],
+    "advisory": [],
+    "problems": [
+      "no_spoiler：開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）（讀者一：[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses.；讀者二：[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。）",
+      "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（讀者一：[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again.；讀者二：[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。）",
+      "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（讀者一：[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer.；讀者二：[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。）",
+      "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（讀者一：[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given.；讀者二：[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。）",
+      "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（讀者一：[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and ；讀者二：[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。）"
+    ],
+    "readers": [
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire001] pins the fire to 1666, September 2, at a Pudding Lane baker's house; [fire003] places the owner walking through the rooms that night."
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses."
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again."
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire081] poses the evidentiary question about origin, spread, and ignition; [fire082] continues with the Commons inquiry rather than announcing a sequence of sections."
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer."
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire002], [fire014], [fire019], [fire031], [fire043], [fire055], [fire067], [fire081], [fire090], [fire103], and [fire108] keep questions or turns open at intervals under 90 seconds."
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given."
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and "
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[fire001] establishes the Pudding Lane house catching fire; [fire044] carries the demolition order; [fire066] records a stretch where fire stopped; [fire105] establishes the report's unresolved outcom"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire999a], [fire999b], and [fire999c] close with the unproved spark, a viewer question, and a subscription invitation, without naming a next video, episode, or file."
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "After [fire001], [fire002] leaves the first contact unknown; [fire005] asks who gave Pepys the address; [fire006] asks why demolition failed to stop the fire; [fire007] asks whether the owner could ex"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire002] introduces the ignition problem; [fire019] pursues the source of the address; [fire081] distinguishes origin, spread, and ignition; [fire114] and [fire115] resolve what the records do and do"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire029] supplies the reported origin, [fire037] and [fire038] explain spread conditions, [fire049] and [fire050] test the response, and [fire087] and [fire094] present competing ignition testimony; "
+          }
+        ],
+        "failed": [
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses."
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again."
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer."
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given."
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and "
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "no_spoiler：開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）（[fire003] and [fire004] disclose the owner's later inquiry testimony; [fire008] gives the later survey total of 13,200 burned houses.）",
+          "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[fire003] jumps months ahead to the owner's testimony before [fire009] returns to the fire's first hours; [fire094] and [fire095] tell that testimony again.）",
+          "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（[fire104] ends a chapter with the report receiving no parliamentary judgment; the next chapter opens by repeating that same conclusion in [fire105], without a new action or answer.）",
+          "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（[fire014] asks whether St Magnus Church stopped the fire toward the riverbank, but [fire015] only describes fire moving west along Thames Street; the church's outcome is never clearly given.）",
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[fire008] gives the surveyor's 13,200-house total, then [fire079] gives the same total again without an explicit callback; [fire003] and [fire004] also preview the testimony repeated at [fire094] and ）"
+        ]
+      },
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire001] 1666 年九月二日凌晨，布丁巷一戶麵包師的屋子起火；[fire003] 屋主半夜巡過房間。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire019] 用天亮後誰報出巷址的問題接向 [fire020] 佩皮斯醒來的場景；[fire031] 用河上的行動接向 [fire032] 的所見，沒有口播後續內容的清單。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire002] 追問第一團火；[fire019] 追問誰報出巷址；[fire031] 追問河上的屋子；[fire055] 追問飛火落處；[fire067] 追問別處是否安全；[fire082] 追問委員會聽誰；[fire103] 追問證詞能否互證。"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[fire001] 屋子起火、[fire032] 船上發現房子已燒、[fire066] 炸屋使一帶停火、[fire087] 刊本收錄自白、[fire104] 議會未作判斷，都對應具體事件或揭曉的章名。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire999a] 收束火星證據；[fire999b] 問觀眾想到的畫面；[fire999c] 請觀眾訂閱，均未提下一集或下一份檔案。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire005] 預留誰告訴佩皮斯地址；[fire006] 預留拆屋為何未立刻阻火；[fire007] 預留屋主能否說清點火瞬間。"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire002] 開場問起火點的細節；[fire081] 中途明列起點、擴大條件與點火方式這個難題；[fire114] 至 [fire116] 結尾回答其能確定的範圍。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[fire002] 起火問題，經 [fire039] 河岸可燃物、[fire051] 拆屋阻火困難、[fire103] 證詞可靠性，推進至 [fire116] 的結論。"
+          }
+        ],
+        "failed": [
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "no_spoiler：開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）（[fire008] 開場已交出一萬三千兩百棟房屋燒毀的統計結果；[fire079] 後章才正式講這個數字。）",
+          "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[fire009] 正文先到 1667 年刊出的證詞集，隨後 [fire020] 回到 1666 年九月二日凌晨佩皮斯的經歷。）",
+          "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（[fire104] 前章已說議會未對報告作出判斷；[fire105] 下一章首句只重述委員會成立、報告送出及判斷未完成。）",
+          "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（[fire002] 第一團火碰到什麼的問題始終沒有可核對的新答案；[fire114] 說烤爐是否點火仍無定論，[fire999a] 再說火星未獲證實。）",
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[fire018] 已說材料沒有點火目擊者；[fire101] 再說沒有點火瞬間可核對；[fire114] 與 [fire999a] 又重述烤爐火星未證實。）"
+        ]
+      }
+    ]
+  }
+}

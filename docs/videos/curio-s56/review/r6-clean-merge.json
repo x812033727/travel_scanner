@@ -1,0 +1,50 @@
+{
+  "slug": "curio-s56",
+  "round": "R6",
+  "at": "2026-10-20T21:52:58.545Z",
+  "script_sha256": "65b7423f682b25f962bc2536a0c96064ea326afbbc64fae5bbaa324816710efb",
+  "source_review": {
+    "file": "r6-source-independent.md",
+    "sha256": "5feec12447c495c65472ceeb31903a4bfba44011cf7435b5ea2b6afe9bc34592",
+    "verdict": "PASS"
+  },
+  "ballots": [
+    {
+      "file": "r6-clean-blind-a.json",
+      "sha256": "a1e153fb91da233e8fd20cad0208d90bf0de8353ad4198593981983179609a39",
+      "yes": 13,
+      "no": 0
+    },
+    {
+      "file": "r6-clean-blind-b.json",
+      "sha256": "51810ff064f7e8d9d59ee9e05ab1d6d096adb3f78bebbf50723af088ea09a590",
+      "yes": 13,
+      "no": 0
+    }
+  ],
+  "merge_rule": "OR per question; each yes requires a cited narration line",
+  "merged_answers": {
+    "file": "r6-clean-merged-answers.json",
+    "sha256": "71241632195fdad34b6b6cc6f0a6b9ae5c226f3e2f7a009f106b52cdda02d6f7",
+    "yes": 13,
+    "no": 0,
+    "evidence_from": "r6-clean-blind-b.json; all 13 lines exactly match video.json narration"
+  },
+  "official_cli": {
+    "command": "VIDEO_WORKDIR=/tmp/s56-r6-official-merge NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node tools/video/cli.mjs narrative --slug curio-s56 --answers docs/videos/curio-s56/review/r6-clean-merged-answers.json --json",
+    "exit_code": 0,
+    "raw_stdout_file": "r6-clean-cli-receipt.json",
+    "raw_stdout_sha256": "a3385d2cdf43ee2da7cb414d5ba285a18816e09d47bbd7b8f5145a259c29044b",
+    "passed": true,
+    "failed": [],
+    "advisory": []
+  },
+  "official_record": {
+    "narrative_hash": "7b0a15391a0bb219",
+    "script_hash": "514dec6dcb38cc13016cbf4fdffe94c6a94e413be98dc1799cba465e93508668",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "567535295bf761603b60fd82545dbd971886a4ee2ef11ec967428e10f31e6b97",
+    "round": 1,
+    "matches_current_doc": true
+  }
+}

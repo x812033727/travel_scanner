@@ -1,0 +1,87 @@
+{
+  "revision": "R23",
+  "stage": "moon031-only-terminal-failure-retry",
+  "at_utc": "2026-10-22T01:32:40.101894+00:00",
+  "creative_sha256": {
+    "video.json": "fb144f9e2af0b6c59b08c477a149b21af6291af8b0b328934d96d87e1c3fe0b8",
+    "claims.md": "0071e502905c7669a6bfb70c406921d52e82d5fa54a3e4c8ffd75240eb157809",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "requested_shots": [
+    "moon031"
+  ],
+  "prior_job": {
+    "at": "2026-10-22T01:23:10.225Z",
+    "stage": "keyframes",
+    "kind": "image",
+    "id": "moon031",
+    "provider": "minimax",
+    "model": "image-01",
+    "key": "ec0b29f821f49b70",
+    "job_id": "9f0ba914-f619-43b7-b27d-7d3f6445089f",
+    "seconds": 0,
+    "cost_usd": 0,
+    "status": "failed",
+    "error": "video_media_upstream_failed"
+  },
+  "resolved_job": {
+    "at": "2026-10-22T01:31:07.106Z",
+    "stage": "keyframes",
+    "kind": "image",
+    "id": "moon031",
+    "provider": "minimax",
+    "model": "image-01",
+    "key": "ec0b29f821f49b70",
+    "job_id": "9f0ba914-f619-43b7-b27d-7d3f6445089f",
+    "seconds": 0,
+    "cost_usd": 0.0035,
+    "status": "ready"
+  },
+  "same_server_job_id": true,
+  "row": {
+    "id": "moon031",
+    "original_file": "keyframes/moon031-1.jpg",
+    "original_sha256": "6bace6550be430b9e0068b13f226121fd4b284c6910694edb633d1435203588c",
+    "original_dimensions": "1280x720",
+    "selected_file": "keyframes/moon031-1-trim.jpg",
+    "selected_sha256": "1c08ed80e1eb60378322ab5e3806dad5068ebaecc4719f657ba2ec3837451e94",
+    "machine_score": 9.29,
+    "machine_passed": true,
+    "machine_problems": [
+      "details: the graphic mark beside the character does not match the specified parallel lines with oval ends → two thin parallel lines joined by small open oval ends"
+    ],
+    "human_decision": "REJECT",
+    "human_reason": "The full original and selected crop show an adult period-style cartoon reader, but the supposed flat hollow telescope-tube contour is an unrelated glyph-like squiggle with underline strokes. It resembles pseudo writing and does not convey the narrated tube claim. There is no physical cylinder, dense faux newspaper print, or black letterbox, but those improvements do not make this requested image useful or source-safe."
+  },
+  "prior_26_accepted_manifest_entries_and_selected_files_unchanged": true,
+  "manifest_before_sha256": "735fcfcac86442900069899bed4d2adc0ae0e4b65d12a888dbda04f47647bcb4",
+  "manifest_after_sha256": "0407c0e6ac63aa6e5d394aecbd2ed9963ccf01a33babd1da015f764105e65b48",
+  "ledger_before_sha256": "d79d5a397d085378aabdcbba7bb68ecba4822b99ac5a4d494b52c497fc25560e",
+  "ledger_after_sha256": "ec7da38adbceaf55dfec5683982791f0cf3084d12d22d23e428d976f8a10c893",
+  "ledger_before": {
+    "usd": 0.9855,
+    "images": 74,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 73,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.999,
+    "images": 74,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 74,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_increment_usd": 0.0135,
+  "jobs_empty_after": true,
+  "stop_present_after": true,
+  "cli_exit": 0,
+  "cli_stdout_sha256": "80c580ed9424d0ab9b1ae7e7dd6ec87bfddbeb1e19a2e06d1855b5ad35312d55",
+  "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "episode_cap_usd": 5.3,
+  "full_storyboard_approved": false
+}

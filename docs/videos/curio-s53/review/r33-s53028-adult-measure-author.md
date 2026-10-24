@@ -1,0 +1,13 @@
+# S53 R33｜`s53028` 成年木匠量板候選
+
+2026-10-22 UTC。[R32 首張原生停線](r32-s53028-wrong-root-native-stop.md)及[非作者原尺寸退件](r32-s53028-native-independent-visual.md)確認機器雖 9.29／10 PASS，原圖卻是童貌人物戴青綠近代硬帽、手攀木板而沒有量測，兩側已完成木屋佔據開工場景。R33 **只修改 `s53028` 的書面 prompt 和 `claims.md` 同列畫面註記**；尚未重綁圖單、購第二張或呼叫 judge。須由不同工作者按本回精確雜湊獨立核固定史料、R32 退件原圖及書面畫面，PASS 後方可安全離線重綁、即時預檢與最多第二張原生圖。
+
+固定 1913 年 *San Francisco Relief Survey* `/tmp/s53-sf-relief/56217-0.txt` SHA `d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72`，[D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870)記 1906 年 8 月公布建屋與發包、**9 月 10 日開始施工**，**9 月 16 日漢密爾頓廣場完成 20 棟**。該來源沒有描述當天某一位木匠、某一塊木板、摺尺或具體帳棚工位，故新畫面和 claims 明列為原創概念示意，不把道具當存世施工紀錄。選帳棚牆是來源同段「建小屋以取代帳棚」的場景脈絡；不在圖中畫成屋，可防止 R32 把開工看成已建好整排小屋，並不斷言 9 月 10 日全市絕無任何完工單屋。
+
+新提示詞縮成**胸口到雙手的近景**：一位有灰髮、面紋且未戴帽的中年成年木匠穿樸素深色工作服，雙手把短木摺尺按在低鋸架上的**一塊**粗木板量長度；背後只留單面帆布牆和裸地，不畫完工住屋、屋頂或屋架。明確成人面貌與真實量測工具對應 R32 童貌／無測量問題，有限背景對應已完工木屋過早出現問題。摺尺是可用於該時代的普通手工工具，但沒有任何來源聲稱畫中摺尺為實物。`camera=pull back`、`visual=still`、既有 `cute-mystery` look 未改；未裁原圖仍須人眼判斷面貌、工具、背景與史料。此提示詞仍可能生成童貌或成屋，機器 PASS 不預先代表人工 KEEP。
+
+[逐字可逆差分](r33-s53028-adult-measure-structured-diff.json) SHA **`24de146b39fac91070f1350a05e17ad4d1258c91ddda16ea167a4ab1bd5fe1b9`** 只含 `scenes[21].data.prompt` 與 claims `s53028` 全行；反填後逐位元組重現 R32 `video.json` SHA `b9ce6cc426d547642ff7f6a7ee8c3a2564aad2439ff4b659c0f337ba19e9fea6` 和 `claims.md` SHA `9be8b979eb0594e9244886811926878d894065872b561262a490c586f05b6e9b`。R33 `video.json` SHA **`b41e032ca0006897cf12328d43a0f1f13383d5645892eb34c89d7ba917ca8cfd`**、`claims.md` SHA **`f0e4d90b916e6676b9b70dc0637412bc29e00e6335abfa298f5f10edb68edbba`**；未變 `script.md` SHA `64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc`。解析 124 景只此一景 prompt 異動，其餘 123 景及 126／126 口播 ID／文字逐項相同；speechHash `05c4d9a79a8708b4` 未變，音訊未重作。
+
+以**正確父目錄** `VIDEO_WORKDIR=/workspace/.video-work` 跑 lint exit 0，**0 errors／0 warnings、126 lines**；新 `visualHash=33aeb288b6ac5808`。私有正式有效 18-KEEP manifest SHA `b080a08e4ddecaf1dfd84ebb67fb436cbecc542e3cf4ff5983fc0b66dc04971b` 仍綁 R31 舊 `visual_hash=63a1d200e63843e2`，沒有 `s53028` 條目，**尚不適用 R33 新稿**；18 筆所選實檔 SHA 正確。正式 ledger SHA `a29940cf76954de8595a3eaacd1a56da94a22a2a2508537dffc96661a384cc8b` 含 R32 錯誤圖庫兩筆已付費，總 **US$0.6075／46 image／45 judge／0 預約**，低於整集 US$4.78。`STOP` 在位，正式 jobs 空。R32 未裁退件與巢狀帳本已存私人備份，禁止把錯誤圖庫的「第一張」重置成免費嘗試。
+
+紙審 PASS 後才可在 STOP 下備份並安全離線更新正式 manifest `visual_hash`，逐筆核 18 KEEP 和新稿；付費 CLI 的 `VIDEO_WORKDIR` 必須是**父目錄** `/workspace/.video-work`，先由 `resolveWorkdir` 確認落在正式 slug 目錄，再做 fresh image-01／額度與 US$4.78 預檢，最多 `s53028` **第二張實際原生圖**一張一審。若再有人眼退件即停在本景，不跳 `s53029`。`s53010/s53018` 禁第四張；網站卡、人耳、其餘圖像、配樂、成片及 Studio 連結仍待。

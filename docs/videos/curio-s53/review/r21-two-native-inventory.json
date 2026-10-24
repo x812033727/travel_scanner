@@ -1,0 +1,82 @@
+{
+  "revision": "R21",
+  "frozen_video_sha256": "4ac9a518d7387ea66918a89946636ee7dd6412f4926fbe7c5ccbb5a5a249f64a",
+  "paper_receipt": "r21-two-prompt-independent-paper.md",
+  "before": {
+    "manifest_sha256": "75c59a8855284a3defe6f2acfd4f0c30bb52f344e1756bc29ef573cadfb5f1b7",
+    "ledger_sha256": "c385ac8815a3ef7e3fa500c79dd1039ee6b9f21fc94bafc2c0c0deebd52c435b",
+    "usd": 0.432,
+    "images": 33,
+    "judge_calls": 32,
+    "reservations": 0
+  },
+  "after": {
+    "manifest_sha256": "72399b433a156ee5064f35ee2da318f2495afea8a0eacd9c7ad8b891d7df5164",
+    "ledger_sha256": "786794fa452fc6049b428726516d86d4e1e7a84aca90fa772658fe26e3081499",
+    "usd": 0.459,
+    "images": 35,
+    "judge_calls": 34,
+    "reservations": 0,
+    "stop_present": true,
+    "jobs_empty": true
+  },
+  "spend_usd": 0.027,
+  "shots": [
+    {
+      "id": "s53010",
+      "decision": "HOLD",
+      "reason": "Third/final actual native original: modern cars and utility-pole street are absent, but original has letterbox bars; crop removes bars, while adult is right placed and not dominant. Machine FAIL remains binding; do not buy fourth image.",
+      "machine": {
+        "score": 9,
+        "passed": false,
+        "problems": [
+          "details: resident does not occupy most of the frame and is placed on the far right → framed centrally occupying most of the composition",
+          "frame: letterboxing bars at top and bottom margins → fill entire frame without black bars"
+        ]
+      },
+      "original": {
+        "file": "keyframes/s53010-1.jpg",
+        "sha256": "d4becbf39847d5fa962a06a9092374cddd4cc5d08fdf1d24287c56a347528c48",
+        "dimensions": "1280x720"
+      },
+      "selected": {
+        "file": "keyframes/s53010-1-trim.jpg",
+        "sha256": "d625c31283a679e56c834fcb306f841964cae3158135730fa34319427d31585a",
+        "dimensions": "1280x720"
+      },
+      "request_key": "4aa8be7f5669458b",
+      "needs_review_in_manifest": true,
+      "cli_exit": 1,
+      "private_log_sha256": "129a0eb440769d935a020c493b535d7985a403457ee44e89c1d15b9d8d501107"
+    },
+    {
+      "id": "s53018",
+      "decision": "REJECT",
+      "reason": "Second actual native original: no high-rises, but canvas background is photographic against cartoon figure; full-body frontal character and passage too wide for the cramped spatial premise.",
+      "machine": {
+        "score": 9,
+        "passed": false,
+        "problems": [
+          "style: realistic photographic background canvas tents clash with the required 2D cartoon style → flat 2D vector illustrated cartoon background",
+          "details: full-body shot with character facing front instead of a close shot turned sideways → close shot, character turned sideways"
+        ]
+      },
+      "original": {
+        "file": "keyframes/s53018-1.jpg",
+        "sha256": "03ff3d435f6ed8b1b8e739e9be96470aec9266b65cde964e938e6ce61e8c210f",
+        "dimensions": "1280x720"
+      },
+      "selected": {
+        "file": "keyframes/s53018-1-trim.jpg",
+        "sha256": "fe22bfaea0abe5c79ff58ea3220080a9b46a5cb5f8c474eb892cf1fba7f1db22",
+        "dimensions": "1280x720"
+      },
+      "request_key": "850c80b4d9ce0fe6",
+      "needs_review_in_manifest": true,
+      "cli_exit": 1,
+      "private_log_sha256": "e2ff1477577ca2c8c55564bc2decdfe044cf83f25362495abc1a6288858a5e86"
+    }
+  ],
+  "previous_14_keep_exact_records_files_keys_unchanged": true,
+  "overall_cli_exit_explanation": "Each per-shot command exited 1 because its machine-judged shot remains needs_review; results are not marked passed by human observation."
+}

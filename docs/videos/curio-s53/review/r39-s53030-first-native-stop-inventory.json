@@ -1,0 +1,217 @@
+{
+  "revision": "R39-s53030-first-native-human-reject-stop",
+  "decision": "HUMAN_REJECT_AFTER_MACHINE_PASS",
+  "frozen": {
+    "video_sha256": "7ebd094e7bd89ba3ebf036440385ffb6f54aa3f8bdf746b30bbcc91c7d72ba10",
+    "claims_sha256": "7ea2850176e7e8a27e10fa7807db0007358f52868eb3f8bedd87ca8a711820f4",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "r39_paper_sha256": "980cb7d15c94adbd7fecab4e26357155a69c1eafc11e6c9adf0739b69e90b9f6",
+    "independent_visual_sha256": "1191a3293b854fa32494522b14ff5fb2fd2227319072a460a9d4f779b225f62f"
+  },
+  "preflight": {
+    "dry_run_exit": 0,
+    "provider": "minimax",
+    "model": "image-01",
+    "correct_cli_env_root": "/workspace/.video-work",
+    "node_proxy_flag": "NODE_USE_ENV_PROXY=1",
+    "browser_preload": "system /usr/bin/chromium for local contact sheet only",
+    "global_images_remaining": 9910,
+    "global_judge_calls_remaining": 8036,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "326a87c9208d686eeb1618dbd76f8745f85aac9a48c9eebd60125ade7840d255",
+    "contact_sheet_sha256": "0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930",
+    "ledger_sha256": "168c8be9e142222df00780bbee50957126207875d14894aaee0551e1e256e0b5",
+    "usd": 0.675,
+    "images": 51,
+    "judge_calls": 50,
+    "keep_count": 18
+  },
+  "shot": {
+    "id": "s53030",
+    "actual_native_attempt_number": 1,
+    "provider": "minimax",
+    "model": "image-01",
+    "original_and_selected": {
+      "file": "rebind-backups/r39-s53030-first-native-rejected-original.jpg",
+      "sha256": "41ce684ead97291c27cc24e1a3b924d7b842ba45e59ce29bdf101546027e3c1f",
+      "dimensions": "1280x720",
+      "trim": null
+    },
+    "request_key": "457afbc153ef36d9",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: missing carpenters working on a wooden house in the background → add chibi carpenters actively constructing the house"
+      ],
+      "notes": "The chibi style matches the requested aesthetic well, but the secondary characters specified in the prompt are omitted."
+    },
+    "machine_needs_review": false,
+    "human_decision": "REJECT",
+    "human_reason": "Childlike lone figure at complete large suburban street house with modern-looking road sign; no carpenters, no work in progress or relief camp, turning waiting question into apparent ready residence."
+  },
+  "rejected_native": {
+    "manifest_sha256": "ba387840f0cbca1d0c1c38afb9e97438e51dbc9b360cc230af0ed382dea1747b",
+    "contact_sheet_sha256": "4f1b156e07965d1f0abfedcd0b4a90f681835d282993b671497049383a845afe",
+    "private_manifest_backup": "rebind-backups/r39-s53030-first-native-rejected-manifest.json",
+    "private_contact_backup": "rebind-backups/r39-s53030-first-native-rejected-contact.png"
+  },
+  "after_restore": {
+    "manifest_sha256": "326a87c9208d686eeb1618dbd76f8745f85aac9a48c9eebd60125ade7840d255",
+    "contact_sheet_sha256": "0c1694a9150059b8656f778562ecaf925b3a4827d88b919d40464912abb0f930",
+    "ledger_sha256": "2c924c6368bd267e1c006e5754666fa071fd270d7c4c0c98195ae7266b7cdace",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "jobs_empty": true,
+    "usd": 0.6885,
+    "images": 52,
+    "judge_calls": 51,
+    "reservations": 0,
+    "keep_count": 18,
+    "active_s53030": false,
+    "total_shot_templates": 111,
+    "missing_shot_images": 93,
+    "accepted_shot_problems": 0
+  },
+  "prior_keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    },
+    {
+      "id": "s53023",
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "f13e14b86dc5717ecfad7ae7b4b2c332fd63daf7ed94a06abf5aff1e15e1503f",
+      "request_key": "31d9deaa1374075e",
+      "unchanged": true
+    },
+    {
+      "id": "s53024",
+      "file": "keyframes/s53024-1-trim.jpg",
+      "sha256": "b297b0078061392271ec4c8c2fdee606469aa87a2397d2850bdad43a754967a5",
+      "request_key": "6d290a6027a337ae",
+      "unchanged": true
+    },
+    {
+      "id": "s53025",
+      "file": "keyframes/s53025-1-trim.jpg",
+      "sha256": "16e9f62963e0cb17c614b0c90ca76e76ee93a4755c85983d8f90962810dea9c3",
+      "request_key": "3ca9726b1ab95a1f",
+      "unchanged": true
+    },
+    {
+      "id": "s53027",
+      "file": "keyframes/s53027-1-trim.jpg",
+      "sha256": "1b1f054057a8fe506086112fe03b8fccc266245833998042d77014f277c49349",
+      "request_key": "ea3586917e242f62",
+      "unchanged": true
+    }
+  ]
+}

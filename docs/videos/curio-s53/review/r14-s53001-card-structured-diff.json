@@ -1,0 +1,21 @@
+{
+  "revision": "R14",
+  "reason": "s53001 native originals R11/R12/R13 human REJECT after two prompt repairs; source-qualified opening date/place card fallback",
+  "file": "video.json",
+  "before_sha256": "8b9c141a39abb6f1d0ef6d815ce80154f5d136168dc90d64659e290f513432d2",
+  "after_sha256": "0cbe40d9189710525bf82627bf21e411c2ea600870ceabc1975873e7b0fe1c19",
+  "replacements": [
+    {
+      "before": "      \"id\": \"s53001\",\n      \"template\": \"shot\",\n      \"lines\": [",
+      "after": "      \"id\": \"s53001\",\n      \"template\": \"big\",\n      \"lines\": ["
+    },
+    {
+      "before": "      \"data\": {\n        \"prompt\": \"Medium close shot inside a San Francisco public-square relief camp in June 1907, one fully grown middle-aged resident with a lined face and broad shoulders in a plain early-1900s wool coat and brimmed hat studies the doorway of one small low single-storey wooden relief cottage beside him; the cottage's simple timber wall and low roof fill the background, a narrow strip of bare ground at his feet, soft overcast light\",\n        \"camera\": \"pan right\",\n        \"visual\": \"still\"\n      }",
+      "after": "      \"data\": {\n        \"text\": \"廣場裡的小屋\",\n        \"kicker\": \"1907 年 6 月｜舊金山\",\n        \"sub\": \"1913 年救濟調查回顧\"\n      }"
+    }
+  ],
+  "changed_scene_ids": [
+    "s53001"
+  ],
+  "paid_calls": 0
+}

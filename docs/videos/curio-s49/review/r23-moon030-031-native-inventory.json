@@ -1,0 +1,74 @@
+{
+  "revision": "R23",
+  "stage": "moon030-031-bounded-first-takes",
+  "at_utc": "2026-10-22T01:23:54.433Z",
+  "creative_sha256": {
+    "video.json": "fb144f9e2af0b6c59b08c477a149b21af6291af8b0b328934d96d87e1c3fe0b8",
+    "claims.md": "0071e502905c7669a6bfb70c406921d52e82d5fa54a3e4c8ffd75240eb157809",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "requested_shots": [
+    "moon030",
+    "moon031"
+  ],
+  "returned_originals": [
+    "moon030"
+  ],
+  "rows": [
+    {
+      "id": "moon030",
+      "original_file": "keyframes/moon030-1.jpg",
+      "original_sha256": "5a5862db73081638706379b3a3ea4a279bcce05aefbc155f38973b8ac3e9d62b",
+      "selected_file": "keyframes/moon030-1.jpg",
+      "selected_sha256": "5a5862db73081638706379b3a3ea4a279bcce05aefbc155f38973b8ac3e9d62b",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Full 1280x720 original has an adult period scholar drawing two separated circles on a blank folded sheet; no real telescope, tripod, readable words, or black bands. A center crease makes the sheet look slightly open-book-like, but this is minor, generic cartoon paper, not a claimed 1835 original or factual instrument."
+    },
+    {
+      "id": "moon031",
+      "new_original_file": null,
+      "new_original_sha256": null,
+      "new_selected_file": null,
+      "old_r22_original_file": "review/r23-moon030-031-pre/r22-moon031-1.jpg",
+      "old_r22_original_sha256": "6e297a01226b76102f58e237b9c7c155932c0d874ee451e9bc21274210b39082",
+      "machine_score": null,
+      "machine_passed": false,
+      "machine_problems": [
+        "no take could be generated: MiniMax unreachable: ReadTimeout"
+      ],
+      "human_decision": "HOLD",
+      "human_reason": "MiniMax job failed with ReadTimeout/video_media_upstream_failed after a zero-cost failed job; no R23 original was returned or judged. R22 image remains on disk for evidence but the new manifest has no selected file and needs_review=true."
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.972,
+    "images": 72,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 72,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.9855,
+    "images": 74,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 73,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "manifest_before_sha256": "29fd2d89b96cb1dc609db00263337db9a46cd06089b462151940c399d0095d06",
+  "manifest_after_sha256": "735fcfcac86442900069899bed4d2adc0ae0e4b65d12a888dbda04f47647bcb4",
+  "ledger_before_sha256": "de005bd134b4668a74c76f8e49262c1b4dbdf21f5e6a19377b4fa148f0887d0a",
+  "ledger_after_sha256": "d79d5a397d085378aabdcbba7bb68ecba4822b99ac5a4d494b52c497fc25560e",
+  "prior_25_keep_entries_and_selected_files_unchanged": true,
+  "stop_present_after": true,
+  "cli_exit": 1,
+  "cli_stdout_sha256": "bd8d5241fc6b089118dd6f14b6e94d9fa8c3c561f5e6a67c2813cbee0cd8a593",
+  "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "full_storyboard_approved": false
+}

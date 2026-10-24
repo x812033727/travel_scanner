@@ -1,0 +1,102 @@
+{
+  "review": "r11-fresh-blind-a",
+  "scope": "Narration and the 13 official narrative questions only; script.md was hashed as raw bytes without reading its prose.",
+  "script_file_sha256": "a9fb4bcc6e271609d79e34d2f4278cdb2c797d0fc8af32b52d4f68b3b1629259",
+  "narration_string_sha256": "9811b993b5264414fec15d02ad36101985cfc856706afd9447baba8168dc9b5c",
+  "overall_pass": false,
+  "failed_questions": ["payoffs", "no_recap"],
+  "answers": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "evidence": ["moon001", "moon002", "moon003", "moon004"],
+      "reason": "The first four sentences place a New York newspaper before readers in August 1835, then show what it claims and the named astronomer behind that claim."
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "evidence": ["moon004", "moon005", "moon006", "moon007", "moon008"],
+      "reason": "The opening poses the letter, optics, independent observation, and editorial response as unresolved questions; it gives none of their later answers."
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "evidence": ["moon009", "moon030", "moon056", "moon079", "moon100", "moon112", "moon132"],
+      "reason": "The Sun report remains the object of inquiry as the narration moves through claimed authority, apparatus, sightings, interruption, reception, and source assessment. Returning to the optics at moon131 adds Jacobi's assessment rather than retelling the earlier scene."
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "evidence": ["moon008", "moon057", "moon065", "moon096"],
+      "reason": "There is no announced plan or list of coming sections. References to another page describe the newspaper's reported sequence, not the video's structure."
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "evidence": ["moon008", "moon009", "moon030", "moon031", "moon032", "moon055", "moon056", "moon078", "moon079", "moon099", "moon100", "moon111", "moon112"],
+      "reason": "Each chapter opening takes up the preceding chapter's concrete object or question: Herschel's name, the tube and optical design, the first image, the shapes past the cliff, smoke in the observatory, and other editors' responses."
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "evidence": ["moon004", "moon018", "moon028", "moon044", "moon055", "moon067", "moon078", "moon098", "moon111", "moon126"],
+      "reason": "Forward questions and turns occur far more often than every 90 seconds across the body."
+    },
+    {
+      "id": "payoffs",
+      "pass": false,
+      "evidence": ["moon006", "moon118", "moon130", "moon104", "moon105", "moon106", "moon107"],
+      "reason": "Most hooks receive concrete answers, but two do not fully match their questions. The opening asks whether the paper can provide a second observation; moon118 establishes only that one selected reprint excerpt contains none, and moon130 establishes only that Jacobi's later quotations add no independent original page. Moon104 asks when new lunar observations can resume; moon105-106 rule out the rest of that month and say to await the phase, then moon107 changes topic without giving a time or outcome."
+    },
+    {
+      "id": "no_recap",
+      "pass": false,
+      "evidence": ["moon010", "moon011", "moon019", "moon112"],
+      "reason": "The purpose of Herschel's Cape trip, studying the southern sky, is stated in adjacent lines moon010-011. The existence and 1859 date of the reprint are stated at moon019 and restated at moon112 without a named callback. Both later lines add details, but the same facts are said twice under the strict question."
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "evidence": ["moon001", "moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "The seven headings describe a paper reaching readers, a name being borrowed, a fictitious mirror being specified, life appearing on the written Moon, winged people appearing, the mirror causing a fire in the tale, and varied reactions preserved in a reprint."
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "evidence": ["moon999a", "moon999b", "moon999c"],
+      "reason": "The outro asks for a detail to check, points to source links, and invites subscription; it does not mention a next video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "evidence": ["moon004", "moon005", "moon006", "moon007"],
+      "reason": "After the initial newspaper scene, four distinct later moments are held open: the assistant's letter, the telescope's light problem, a second observation, and other editors' reactions."
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "evidence": ["moon008", "moon016", "moon041", "moon070", "moon089", "moon110", "moon132"],
+      "reason": "The same concrete difficulty runs throughout: how a newspaper's lunar tale acquired the appearance of verified astronomy and where its checkable evidence is."
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "evidence": ["moon074", "moon089", "moon103", "moon123", "moon125", "moon132"],
+      "reason": "The animal and winged-person scenes test reported observation against inference; the fire and the publication figures test the report's gaps and reception. These sections advance the opening's source-checking question."
+    }
+  ],
+  "opening_hook_payoffs": [
+    {"hook": "moon004", "answer": ["moon022", "moon023"], "assessment": "answered: the purported letter is a role and route in the report, not a verified actual letter"},
+    {"hook": "moon005", "answer": ["moon034", "moon035", "moon038", "moon041"], "assessment": "answered: the report proposes artificial light at the focal image, but this does not recover lunar detail"},
+    {"hook": "moon006", "answer": ["moon118", "moon130", "moon132"], "assessment": "partial: the sources discussed yield no second independent observation, but the answer is confined to the selected reprint and Jacobi's reuse of it"},
+    {"hook": "moon007", "answer": ["moon112", "moon113", "moon115", "moon119", "moon122"], "assessment": "answered: the selected reactions include praise, disbelief, and sarcasm"}
+  ],
+  "chapter_boundary_payoffs": [
+    {"question": "moon008", "next_chapter": "moon009", "assessment": "connects the newspaper's appearance of astronomy to Herschel's real name and trip"},
+    {"question": "moon031", "next_chapter": "moon032", "assessment": "the tube problem leads to the claimed lens and darkroom design"},
+    {"question": "moon055", "next_chapter": "moon056", "assessment": "the first image is specified as rocks, valleys, and crystals"},
+    {"question": "moon078", "next_chapter": "moon079", "assessment": "the shapes past the cliff are winged creatures, later likened to people at moon082"},
+    {"question": "moon099", "next_chapter": "moon100", "assessment": "the smoke becomes a concentrated sunlight fire in the reported observatory"},
+    {"question": "moon111", "next_chapter": "moon112", "assessment": "the reprint's reactions answer the question about other editors"}
+  ]
+}

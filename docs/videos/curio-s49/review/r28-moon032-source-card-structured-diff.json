@@ -1,0 +1,35 @@
+{
+  "revision": "R28",
+  "reason": "R27 moon032 one-shot original misses high-opening-to-dark-room relation; use source-qualified big card, no further paid retake",
+  "files": {
+    "video.json": {
+      "before_sha256": "02fdb0f2ac142634d42ac24f7108bb12424e7a4625756ca559b90d52912552a3",
+      "after_sha256": "a4d00cdc41078cc016247127c5a3676bb8a8ee98699662395bd2cfdc1f4b62a2",
+      "before": "      \"id\": \"moon032\",\n      \"template\": \"shot\",\n      \"data\": {\n        \"prompt\": \"Medium shot in a plainly imagined 1835 British room, one unmistakably mature grey-haired man with sideburns and a moustache, broad adult shoulders in a dark high-collar frock coat, gestures from a high shuttered wall opening toward the shadowed empty lower wall; one narrow daylight beam links the two spaces, a visual metaphor for the proposed focal image entering a dark room; only the man, bare plaster wall, simple wooden chair and wall opening appear, natural daylight fills the frame\",\n        \"camera\": \"drift right\",\n        \"visual\": \"still\"\n      },\n",
+      "after": "      \"id\": \"moon032\",\n      \"template\": \"big\",\n      \"data\": {\n        \"text\": \"物鏡架高處，焦像進暗室\",\n        \"kicker\": \"1835 年報導的虛構構想\",\n        \"sub\": \"1859 重印本所載，非實作紀錄\"\n      },\n"
+    },
+    "claims.md": {
+      "before_sha256": "779a8e22e6e7e202249cf7ec645a91a7ade7139c5c0e6ee2bb70c4fa50f2bd2f",
+      "after_sha256": "b89b557b52bb98dd3e4d654b665e4cd874434784a5850d71044323c7543a44e3",
+      "before": "Medium shot in a plainly imagined 1835 British room, one unmistakably mature grey-haired man with sideburns and a moustache, broad adult shoulders in a dark high-collar frock coat, gestures from a high shuttered wall opening toward the shadowed empty lower wall; one narrow daylight beam links the two spaces, a visual metaphor for the proposed focal image entering a dark room; only the man, bare plaster wall, simple wooden chair and wall opening appear, natural daylight fills the frame。虛構報導的想像畫面，非真實月面或器材。",
+      "after": "大字卡「1835 年報導的虛構構想／物鏡架高處，焦像進暗室／1859 重印本所載，非實作紀錄」；只概述 1859 重印本中冒稱赫歇爾與布魯斯特的虛構對話：高處物鏡把焦像帶進暗室的設想；不是實際光學實驗、存世設計圖、1835 原報影像或赫歇爾設備。"
+    }
+  },
+  "script_sha256": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+  "changed_scene_ids": [
+    "moon032"
+  ],
+  "paid_calls": 0,
+  "reversible": true,
+  "visual_hash_before": "74c5cc0713c7766d",
+  "visual_hash_after": "dfe0bece015e7458",
+  "body_shots": 119,
+  "body_cards": 9,
+  "body_shot_share": 0.9296875,
+  "max_consecutive_cards": 2,
+  "body_spoken_units": 2633,
+  "body_325_cpm_seconds": 486.0923076923077,
+  "no_speech_changes": true,
+  "other_scene_ids_unchanged": true,
+  "claims_only_moon032_visual_row_changed": true
+}

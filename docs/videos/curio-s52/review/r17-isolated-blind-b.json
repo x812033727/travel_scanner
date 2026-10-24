@@ -1,0 +1,38 @@
+{
+  "reviewer": "isolated-blind-b",
+  "slug": "curio-s52",
+  "round": "r17",
+  "basis": "Current script.md and the fixed 13-question narrative questionnaire only",
+  "script_sha256": "767a4b363233dff90f5e933404fa12d885b7ffb92fd950953f2ba1282b55aab6",
+  "questionnaire_command": "VIDEO_WORKDIR=/tmp/s52-r17-blind-b node tools/video/cli.mjs narrative --slug curio-s52 --json",
+  "answers": {
+    "scene_first": true,
+    "no_spoiler": true,
+    "one_line": true,
+    "no_toc": false,
+    "chapters_link": true,
+    "open_loops": true,
+    "payoffs": true,
+    "no_recap": false,
+    "chapters_are_events": true,
+    "outro_no_next": true,
+    "opening_hooks": true,
+    "one_thread": true,
+    "no_detour": true
+  },
+  "evidence": {
+    "scene_first": "script.md:7-21 — the dated Tahiti shore station, Cook, Green, and Solander are already engaged in timing the transit before the opening question.",
+    "no_spoiler": "script.md:19-37 — the opening asks whether times agree and raises later questions without stating their outcomes.",
+    "one_line": "script.md:9-43,119-147,209-263,349-483 — the June 3 preview gives way to the 1768 request, then station setup, observing, the timing discrepancy, and the teams' return.",
+    "no_toc": "script.md:19-37 — five consecutive questions inventory the later motive, away teams, other records, and petition; this functions as a list of later contents even without the word 'next'.",
+    "chapters_link": "script.md:35-43,113-121,139-147,193-213,251-263,345-353,463-471 — each new chapter answers or continues the object or question left at the preceding boundary.",
+    "open_loops": "script.md:65-69,85-99,139-147,157-163,177-185,239-245,255-263,289-299,321-331,345-353,401-425,463-483 — questions, withheld outcomes, and turns recur well within 90 seconds.",
+    "payoffs": "script.md:19-43,65-75,85-121,139-147,193-229,255-267,317-331,345-369,401-425,427-461,463-483 — the specific questions receive answers; the long table callback names the biography and then adds the 1771 report's separate Cook and Solander passages.",
+    "no_recap": "script.md:405-417 — after saying the four-cell biography table omits Cook's and Solander's times, the script restates that the biography did not transcribe all records; script.md:471-483 also repeats that the teams returned successfully.",
+    "chapters_are_events": "script.md:5,39,117,143,209,259,349,467 — headings name waiting, requesting a ship, choosing land, setting up, departures, transit, divergent times, and return.",
+    "outro_no_next": "script.md:485-489 — the outro asks a reflective question and invites subscription, without naming a next video or file.",
+    "opening_hooks": "script.md:9-37 — after the shore scene, later unresolved moments include why the Society sent observers, which two teams left, and whose records exist beyond the four-cell table.",
+    "one_thread": "script.md:17-25,71-79,151-163,183-195,325-369,429-461,477-489 — the problem of assigning and trusting exact contact times carries through the mission, instruments, observers, report, and final takeaway.",
+    "no_detour": "script.md:39-163,165-249,259-483 — site choice, the clock, split observers, visible edges, and source coverage each bear on observing or comparing contact times; the short Jupiter-cloud incident at 131-137 supplies weather stakes rather than a separate storyline."
+  }
+}

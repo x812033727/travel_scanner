@@ -1,0 +1,9 @@
+# S53 R44｜`s53033` 首張原生圖近代車輛退件停線
+
+2026-10-22 UTC。R44 [不同作者 Survey E／官方營地資格紙審](r44-s53033-mature-official-camp-priority-independent-paper.md) **PASS**，20 KEEP 離線安全回綁及即時 MiniMax `image-01`／配額／US$4.78 上限／`s53033 --takes 1 --dry-run` 檢查通過後，只購 `s53033` **第一張**原生圖與一次 judge。CLI exit 0、機器 **9.29／10 PASS**（`details=7`），並自行註記廣景、人物偏左與背景「vehicle-like structure」。未裁原圖 SHA `03395c643975a65c416b43f495c68c9eec2aabeedc7a627987bec7640ca1ef92`；自動裁去上緣 8% 的選用圖 SHA `6362e3900789c2fd3b9c9b427b44c1b8a35d3dcf4cd6f1854169423751f8da94`。
+
+作者與[不同作者原尺寸覆核](r44-s53033-first-native-independent-visual.md)均判 **HUMAN REJECT**；獨立收據 SHA `3829fa0b32295a2dca72fc4e57e8d09ad7d0a2347c5e32e9e5b26f3f145a92c0`。原圖與裁圖的營地中右方皆有明顯近代箱型廂車／露營車正面：圓角封閉車廂、水平擋風窗及多條前格柵／保險桿帶，與 1906 年舊金山營地的年代感實質衝突。人物銀髮、穿長裙但圓臉矮身可能讓年齡曖昧；**年齡不是本次退件依據**。廣景、人物望鏡頭而非屋子也是提示詞偏差，單獨不足退件。退件依系列對 judge-PASS 圖仍須排除**會誤導史料／旁白的年代物件**之規則；裁圖沒有去除該車，不能正式 KEEP。
+
+機器產出的 21 景含退件 manifest SHA `8d6b3bfc624797f961b41bf0776bad7833c41684ebbad441b2a9db7ad37c4244`、contact SHA `bd130254a5420128fd9591ff3378ec0fa1a73017e37af2ed0f437222e82d883e`、原圖與裁圖均在私人 `rebind-backups/r44-s53033-first-native-rejected-*` 以獨占方式封存。有效 manifest 由付費前獨占備份**逐位元組還原**至 **20 KEEP** SHA `72ee1b654a045a952ed78b12373e54f036f003239b2666523e07540a0496fbd1`；有效 contact 同樣逐位元組還原 SHA `7567d866096ae2ae1d8c92a191b8b6aa74ca1b67c56a4e5582ab6fa9cf666a57`。退件兩 JPEG 已移出有效 keyframes 目錄；先前 20 個完整條目、選圖 SHA 全吻合，20 景 `keyframeProblems` 0、110 景插圖仍缺 90。STOP 在位、jobs `{}`，沒有畫 `s53034`。
+
+[逐檔清單](r44-s53033-first-native-stop-inventory.json) SHA `bf8eba3bfe0ed895cc5849877699e0b7a79f13f886e5f9c31b9bfec47768ed4b`。帳本保留真實費用：由 US$0.7290／55 images／54 judges 變 **US$0.7425／56 images／55 judges／0 reservations**，ledger SHA `b30c39d2018dd95c2316e5440f08a641a254dae70c9a5df8db977baf1e6929e2`，仍低於 US$4.78。固定 Survey E 的官方營地優先說法、R44 `video.json`／claims、126 句／音訊與 `visualHash=b664a4a74bbb6d8c` 未改，lint 0／0。下一步只窄修 `s53033` 未收畫面的提示詞／claims 畫面註記，寫可逆差分並交不同作者按新雜湊紙審；PASS 後才可安全離線回綁與最多購第二張。`s53034` 的原版付費前預檢另有 HOLD，也不可直接跳景。

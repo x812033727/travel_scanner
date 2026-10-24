@@ -1,0 +1,89 @@
+{
+  "slug": "curio-s56",
+  "round": "R9",
+  "at": "2026-10-20T22:29:02.109Z",
+  "input_sha256": {
+    "brief.md": "09f731c13f1037c963aa5774b936a43e1a187b5c4ae8d09ba158581a705f1a52",
+    "research.md": "59549e98e6ae258cedfc5b43e6684ecaa1102284d0dee13b0beef6443e4a6fb7",
+    "claims.md": "5c0a21f8540fdc1448c57ee9d75f90fc8c6241b42d9dc1db2d3b1a0fada33d4d",
+    "video.json": "645c8c505f840393b3401c4746896a015da081a4ca6027d25ed1378f9ca4834d",
+    "script.md": "2679f45e2c775e3554ff55896d852f1ae95d9dba9489fd319d2bc15f72c0f0ed"
+  },
+  "source_review": {
+    "file": "r9-source-independent.md",
+    "sha256": "42a504abe79d0511195848bbeddebdccb4b0a87974497392bee42c363d8d61cc",
+    "verdict": "HOLD",
+    "blocking_ids": [
+      "s56061",
+      "s56155"
+    ],
+    "blocking_visuals": [
+      "s56173",
+      "s56174",
+      "s56176"
+    ]
+  },
+  "ballots": [
+    {
+      "file": "r9-clean-blind-a/ballot.json",
+      "sha256": "471f07d68e53058762e224400020ae4136e45a02387a9ece1047080c9b782a3e",
+      "raw_stdout": "r9-clean-blind-a/cli.stdout.json",
+      "raw_stdout_sha256": "edf8df2336cd82e9ae142f287aea944686c8849247528478b34a8f3ca0274ac1",
+      "official_record": "r9-clean-blind-a/narrative-record.json",
+      "official_record_sha256": "c013f0445106962f54e9d38670a29ae88118c782a2290d38d6d41719360fe837",
+      "exit_code": 1,
+      "yes": 11,
+      "no": 2
+    },
+    {
+      "file": "r9-clean-blind-b/ballot.json",
+      "sha256": "b0fa159576ae941e901ab74f205fec15d49589577b7f581e2e70b1f25c06b648",
+      "raw_stdout": "r9-clean-blind-b/cli.stdout.json",
+      "raw_stdout_sha256": "cc61c3f6f1d4fc120c28f456c18ac0b9ec13c1630f1ef30a15c93c1298eb9346",
+      "official_record": "r9-clean-blind-b/cli.recorded-verdict.json",
+      "official_record_sha256": "d9d3ee161deff9e344e911d2ae02dcc271357d32d0bd4c1628dbe8b934903d3e",
+      "exit_code": 1,
+      "yes": 9,
+      "no": 4
+    }
+  ],
+  "merge_rule": "OR per fixed panel question; both readers no on required no_recap and no_detour",
+  "citation_validation": {
+    "ballot_quoted_lines_exact": 33,
+    "ballot_quoted_lines_total": 34,
+    "mismatch": "A open_loops cites [s56091] for 前面的商業區能擋住火嗎？; that exact spoken line is s56092. Original ballot preserved.",
+    "merged_exact": 13,
+    "merged_total": 13,
+    "selection": "One exact quoted line from a yes ballot for each OR yes (B for open_loops); one exact B quote for each shared no. Ballot commentary/multiple citations omitted from merged answer."
+  },
+  "merged_answers": {
+    "file": "r9-clean-merged-answers.json",
+    "sha256": "6831e3bb4ae07aaed0aead844c383a307bfe6d2d1ea27c53e27711434b28b8a1",
+    "yes": 11,
+    "no": 2
+  },
+  "official_cli": {
+    "command": "VIDEO_WORKDIR=/tmp/s56-r9-official-merge NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node tools/video/cli.mjs narrative --slug curio-s56 --answers docs/videos/curio-s56/review/r9-clean-merged-answers.json --json",
+    "exit_code": 1,
+    "raw_stdout_file": "r9-clean-cli-receipt.json",
+    "raw_stdout_sha256": "01ff76d812a7a2e3015e6c1d201a3770e0d5d06e651e146c28a20fe134f46df6",
+    "passed": false,
+    "failed": [
+      "no_recap",
+      "no_detour"
+    ],
+    "advisory": []
+  },
+  "official_record": {
+    "file": "/tmp/s56-r9-official-merge/curio-s56/review/narrative.json",
+    "sha256": "4d08fd9ee57d07c49a0d24a13a4d233280e63908d1e54c7fd4befecdae815c63",
+    "narrative_hash": "22460011c9b90017",
+    "script_hash": "0bd01f20d701ea7e2fe01841fe39b5edc00d03d35afd6bd0e370dc4ebdcbbc6c",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "53bea5ad627f271b5fd80ff08e1ad2acb6eb5000909557e9fc965df967bce9eb",
+    "round": 1,
+    "bindings_match_both_reader_records": true
+  },
+  "verdict": "HOLD",
+  "policy_gate": "NOT_RUN"
+}

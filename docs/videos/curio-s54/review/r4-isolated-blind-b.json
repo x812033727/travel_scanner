@@ -1,0 +1,87 @@
+{
+  "round": "R4",
+  "reader": "isolated-blind-b",
+  "script_sha256": "cef9c47c8a7bc980b327e4753041821a7e35ac2b9fe1ec17581f70441ea40b2d",
+  "basis": "script.md and NARRATIVE_PANEL lines 266-280 only",
+  "verdict": "FAIL",
+  "checks": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "pass": true,
+      "evidence": "[s54001] dates the opening to 10 January 1840 and puts a sender placing a letter on a post-office counter; [s54003] has a clerk weigh it."
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "pass": false,
+      "evidence": "[s54006] already says a one-word instruction left receiving offices without stamps. The later reveal is precisely that shortage and its cause at [s54119]-[s54121]; the opener goes beyond a result-free preview."
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "pass": false,
+      "evidence": "[s54111] advances to 1 May sales and 6 May use, then [s54112]-[s54115] returns to the administrative dispute, [s54116]-[s54117] retells 1 May, and [s54118] returns to 6 May. That body sequence replays the same release dates instead of moving once through them."
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "pass": true,
+      "evidence": "[s54048] asks who sets the actual start date and [s54049] answers it as an event; [s54063]-[s54064] likewise move from where the lower rate begins to Hill's proposal. The narration does not announce a coming section list."
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "pass": true,
+      "evidence": "The opening's old-price question [s54008] is answered at the next chapter's [s54009]. Other seams connect [s54029]-[s54030] (payment plan), [s54048]-[s54049] (effective date), [s54063]-[s54064] (first lower rate), [s54085]-[s54086] (cash congestion), and [s54109]-[s54110] (stamp-use date)."
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "pass": true,
+      "evidence": "Unanswered questions or turns recur through the body, including [s54035] (adhesive versus envelope), [s54059] (reuse), [s54080] (prepay without stamps), [s54109] (when stamps become postage), and [s54138] (preventing reuse). No extended interval of roughly 90 seconds lacks a live question."
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "pass": false,
+      "evidence": "[s54113] asks whether the department would permit direct stamp sales at the three general post offices. [s54114] gives only the initial refusal, [s54115] names the offices, and [s54116] reports sales by the Stamp Office. The final decision for those three offices is never stated."
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "pass": false,
+      "evidence": "[s54058] says attached stamps must be unused, then [s54060] repeats that same unused-stamp requirement. [s54111] states the 1 May sale/6 May use pair, then [s54116]-[s54118] repeats both dates without a named return to an earlier question."
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "pass": true,
+      "evidence": "The headings describe concrete turns: [s54064]-[s54065] introduce the December four-penny trial, [s54086]-[s54087] the January crowd, and [s54110]-[s54111] May authorization. Even the August-law heading points to a specific legal change at [s54057]-[s54062]."
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "pass": true,
+      "evidence": "[outro] asks which original text to check and invites subscription; it promises no next video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "pass": true,
+      "evidence": "After the counter scene [s54001], [s54003] asks how the letter counts as paid, [s54004] teases a mailing number, [s54005] raises the payment trouble, [s54007] withholds the missing word, and [s54008] asks the old London-to-Hill rate."
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "pass": true,
+      "evidence": "The prepaid-letter problem starts at [s54003], leads through Hill's envelope and adhesive options [s54030]-[s54042], temporary cash [s54080]-[s54088], and finally the drop-box advantage of adhesive stamps [s54142]-[s54146]."
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "pass": false,
+      "evidence": "The standalone Wallace committee and advocacy run [s54024]-[s54028] shifts from why a sender needs a payment method to who previously pressed for fare reform. The bridge and border surcharge aside [s54068]-[s54069] adds more rate background without moving the cash-versus-stamp delay forward."
+    }
+  ]
+}

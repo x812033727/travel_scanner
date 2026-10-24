@@ -1,0 +1,181 @@
+{
+  "revision": "R24-s53023-native",
+  "human_decision": "REJECT",
+  "frozen_video_sha256": "07193188815a7b74529761f3a5c7c5656e9f1e954170b0bf71810cd9b17be1e9",
+  "frozen_claims_sha256": "267fdb63c5f2a36f479bdc3903f06e07a93a21a55659e570a7001b2920799dc7",
+  "frozen_script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+  "independent_paper_sha256": "b686b6e932f4cb92ec26cc97417e1c9c4bf02a731bde7f7a3495aca67f95a547",
+  "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+  "before": {
+    "manifest_sha256": "798d0dc76304105bdb48b8217e000474c977df39cf22789024182d1d3fb17acf",
+    "ledger_sha256": "b9a520e5e3a0ac3ccfaab32d4fa1b27e3f2bde332b515f882eff51178ff32cd2",
+    "usd": 0.486,
+    "images": 37,
+    "judge_calls": 36
+  },
+  "offline_rebind": {
+    "old_manifest_sha256": "b8e3159267747d1ea80b70276d79cbf70cfb6c497fdbcd2cd516978e1a4eaca1",
+    "new_manifest_sha256": "798d0dc76304105bdb48b8217e000474c977df39cf22789024182d1d3fb17acf",
+    "visual_hash": "2b988530521f84c1",
+    "keeps": 14,
+    "ledger_unchanged": true
+  },
+  "native": {
+    "manifest_sha256": "8732e36088ceefe5925cb336b5db5d42da77a32288016492fddbad1aba08e71a",
+    "ledger_sha256": "338ed794a92101008aebd588edb6bdb87e513dbe72d31bb3da89fcdf91e8a1e9",
+    "usd": 0.4995,
+    "images": 38,
+    "judge_calls": 37,
+    "spent_usd": 0.0135,
+    "cli_exit": 1
+  },
+  "shot": {
+    "id": "s53023",
+    "take_number": 2,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53023-1.jpg",
+      "sha256": "89933b6bd946a338e219566e0947e0f7518cfcc0a25a36556cb18383409b3345",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53023-1-trim.jpg",
+      "sha256": "37e41ffaf4187b8b9a3465fb7ef60e0746821a05677993bca2a1131a78ebe4a4",
+      "dimensions": "1280x720"
+    },
+    "r23_reject_original_backup": {
+      "file": "rebind-backups/r23-s53023-human-reject-original.jpg",
+      "sha256": "02174ee03ecf99221669a3968b359db4c1418812aef497859d1d2777e4d1d084"
+    },
+    "request_key": "5dbe2ac139fbfa1b",
+    "judge": {
+      "overall": 9,
+      "passed": false,
+      "problems": [
+        "style: realistic photographic background clashes with 2D cartoon subject → flat 2D cartoon background with simple shapes",
+        "details: full body visible instead of waist-up shot → close-up waist-up framing"
+      ]
+    },
+    "human_decision": "REJECT",
+    "reason": "Original and trim show a mature grey-haired worker and two canvas tents, but photoreal tent/ground background clashes with the 2D character and Curio look; the figure is full body instead of close waist-up. The sheet depicts a tall multi-story house rather than two simple low cottage roof outlines. Machine style=0 and details=7, overall 9/10 FAIL."
+  },
+  "after_reject": {
+    "manifest_sha256": "798d0dc76304105bdb48b8217e000474c977df39cf22789024182d1d3fb17acf",
+    "native_manifest_private_backup": "/workspace/.video-work/curio-s53/rebind-backups/r24-s53023-native-before-human-reject.json",
+    "contact_sheet": null,
+    "contact_sheets": [],
+    "thumbnail_source": "keyframes/s53005-1.jpg",
+    "ledger_sha256": "338ed794a92101008aebd588edb6bdb87e513dbe72d31bb3da89fcdf91e8a1e9",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "jobs_empty": true,
+    "stop_present": true,
+    "usd": 0.4995,
+    "images": 38,
+    "judge_calls": 37,
+    "reservations": 0,
+    "accepted_keep_count": 14,
+    "total_shot_scenes": 113,
+    "missing_shot_count": 99
+  },
+  "keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    }
+  ]
+}

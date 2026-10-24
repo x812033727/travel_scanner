@@ -1,0 +1,18 @@
+# S49 R44｜`moon044` 的 R40 非作者紙審適用性
+
+2026-10-22 UTC。**PAPER PASS，僅限現行 R44 `moon044` 的來源、旁白、claims 同列與畫面提示詞。**我不是 R40 作者，也未生成圖片、呼叫付費媒體、改動私人圖單或解除 STOP。此結論不是原圖 KEEP、整集 storyboard、音訊、網站關卡或成片驗收。
+
+## 精確文字與來源
+
+- [R40 非作者紙審](r40-moon044-045-mature-glassworker-independent-paper.md) SHA-256 `ca7696ff6f43632a98e215714fe0d18fd2d913d9a382f034328c51bec48e9d07` 判 `moon044` 畫面 **PAPER PASS**；[R40 作者收據](r40-moon044-045-mature-glassworker-author.md) SHA-256 `350ee63051527f11e16183d3b01358b34e96c912809d2e04711f66df1b88a770` 與[可逆差分](r40-moon044-045-mature-glassworker-structured-diff.json) SHA-256 `3f5eced82e96ae89f8820365c4ff539b036278987a3de22c686382c29c162331` 明定補入成熟成人面貌及年代衣著，不改動動作、物件或旁白。R40 Git `09d0c87a1` 的整檔 SHA-256：`video.json` `7c793e461696644e78e9723e0a2103e40746bf5e0e51c7c587da080d427f5f75`；`claims.md` `93945e1368d357cd4baa178b156a46735f9de0d9b4ac6386c46f81eb60a023c4`。
+- 現行 R44 `video.json` SHA-256 `dd2dae850cdf455a01b9c99a01af2d9ef3370d81d11c7349f661d6a6220f8d9c`、`claims.md` `70f0d9255397880586c96a49cbda77cf3ca722b68815455f29b6ac9f841c2ebb`。我從 R40 Git 與現行檔案各抽出**完整原始 scene 物件位元組**比較：兩者 `scenes[40]`／`moon044` 完全相同，SHA-256 同為 `e326c4549a794f1e7bd02695e45a395a07ed26bbaff659abca159ce17e2ee3bf`；claims **整列含換行**亦完全相同，SHA-256 同為 `0416bd9248e8deb21d4a36740fa7c7f9830ba6e928d7df207e72863ca5ebc81a`。旁白仍是「連費用都有了；紙上的鏡片究竟鑄出來了嗎？」；提示仍是一位想像中的 1830 年代工匠，`visibly middle-aged adult`、灰鬢、面紋、成人寬肩與樸素年代工作衣，在柔和爐光下檢查**空圓形鑄模**。相鄰 `moon045` 的完整 scene／claims 列也與 R40 逐位元相同。
+- R44 對 R43 Git `e1203389c` 的 `video.json`／`claims.md` 差分只改 `moon043` 來源字卡和未畫的 `moon049` 光線措詞，沒有改 `moon044`。R44 [字卡獨立紙審](r44-moon043-cost-source-card-independent-paper.md) SHA-256 `d3547de54716a2e64a3cad9f4f97e6e56b91909107ca10e76b1110c9910672e8` 已處理該卡；`script.md` SHA-256 `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`、`research.md` `f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750` 未變。現行 lint exit 0，0 errors／0 warnings／131 句；正文 116 shot／128 景（90.625%），最長連續字卡 2。
+- 重新讀固定 Locke 名下 1859 年《The Moon Hoax》重印本 `/tmp/s49-moon-hoax-62779.txt` SHA-256 `3ca0bc9b6fc5c50b090d61bf2049e925d22dd1cdef2b443a282f7fdc5749e654`，P05 L435–489 確寫數週試驗、櫥窗玻璃、虛構提案與估價、1833 年一月兩次鑄鏡，第二次兩處近邊緣瑕疵。重新讀 Jacoby 1902 評論 `/tmp/s49-jacoby-53396.txt` SHA-256 `f5ab32e64e7ea3735ff90fb000ae8cc82dddea594e0de0c6be30b30f94485029`，J4083–4125 稱光學對話為 *absurd imaginary conversation*，沒有獨立證實鑄鏡。旁白的「紙上的」及 claims 的「虛構報導的想像畫面，非真實月面或器材」保持必要界線。空模是**概念畫面**，不能作成真實赫歇爾工場或存世鏡片證據。
+
+## 私人檢查點與下一步守衛
+
+- Active manifest SHA-256 `5fe354f8fecc7d0d41922214fe0d0517616bf6ed651c7a07f3f926e8aa2f7a9f`；按現行 `video.json` 重新計算 `visualHash=99b36fbfea602f3c`、`lookHash=98a370ae40badbaf`，皆與 manifest 相同。獨立逐一雜湊 **34／34** 張 active selected 實檔，與各自 manifest SHA 及[R44 逐圖庫存](r44-moon043-cost-source-card-rebind-inventory.json) SHA-256 `b299d5e452fa42ddc9a1c23db5010083fdba0f70cd3448880eb40ff2fa21077a` 完全一致；34 項均無 `needs_review` 或 `incomplete`。`moon043`、`moon044`、`moon049` 都未選圖。`keyframeProblems` 只有 **82 景缺圖**，首個是 `moon044`，其他問題 0。
+- 私人 `STOP` 在位；`media/jobs.json` SHA-256 `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3`，jobs `{}`。`media/ledger.json` SHA-256 `b6ba6f57fd69c85743396c7eaaf333c80057dc0c633a11d8b7bd663c5b39a850`：192 筆逐筆合計 **US$1.2960／96 image／96 judge／0 預約**，距本集委派上限 **US$5.30** 尚有 **US$4.0040**。本紙審未取得即時服務額度或價格；舊價格不得作付費預檢。
+- 若後續只試 `moon044` **一次一張**，須先在 STOP 下重核上述凍結 SHA、34 張選圖實檔、空 jobs／預約、新鮮 MiniMax `image-01` 可用額度與含 judge 單價、整集 US$5.30 上限。只為該次受控呼叫暫解 STOP，退出立即恢復。對原生 **1280×720 全尺寸**及任何入選裁圖做人眼審查：必須看得出一位中年成人的灰鬢、面紋、成人肩寬與 1830 年代樸素工作衣；他只檢查**空**圓形鑄模，柔和爐光是場景照明，畫面符合 `cute-mystery` 平面卡通風格。童貌、完成的鏡片／真赫歇爾器材暗示、現代工具衣著、可讀字、黑邊、3D／照片／油畫漂移或與虛構來源相矛盾者即 HUMAN REJECT 並停在本景，不續買 `moon045`。機器 judge 通過也不代替這個原尺寸判斷。
+
+**結論：R40 的 `moon044` PAPER PASS 精確適用於目前 R44 文字；原圖與整集其餘關卡仍待後續獨立驗收。**

@@ -1,0 +1,64 @@
+{
+  "revision": "R38",
+  "base_revision": "R37",
+  "base_commit": "8e285ae64",
+  "reason": "moon039 first native child/eyepiece/book error; second native extra hand/eye/vessel error; replace a fictional microscope analogy with a source-qualified card after two bounded failed originals",
+  "files": {
+    "video.json": {
+      "before_sha256": "b46cba46a708b1f8c2a9e36ed4fd26d94d03532b2594f06c6f6de4f5b27b0535",
+      "after_sha256": "5d899f4e40c792761e9935345191af3f1f4637532a85c82b6f90e6be776c8d4c"
+    },
+    "claims.md": {
+      "before_sha256": "9f856f9cccfba14180b5834cf0f6ea00a63e8cd9f5af579070ee77894097efc3",
+      "after_sha256": "5bda4ed9c7b7242ae5b3ae3b34c94ed6f70f4b00b3dc6cc08c7a15dfaf9287bc"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon039",
+      "path": "scenes[35]",
+      "before": {
+        "id": "moon039",
+        "template": "shot",
+        "data": {
+          "prompt": "Medium side-profile shot in a plainly imagined 1830s British reading room, one unmistakably middle-aged grey-haired adult reader with thick sideburns, lined face and broad adult shoulders wears a dark high-collar frock coat; he places one eye directly at the eyepiece of a small plain brass tabletop microscope while his mouth stays below and away from the tube; his hand steadies one clear glass slide with a single tiny water droplet and two minuscule curved mosquito-larva silhouettes directly under the objective on a bare wooden table, soft natural daylight; an original conceptual illustration of the article's fictional analogy, no book, child, white coat, electric device, labels or Moon scene",
+          "camera": "tilt down",
+          "visual": "still"
+        },
+        "lines": [
+          {
+            "id": "moon039",
+            "text": "作者還拿一滴有蚊子幼蟲的水打比方，說顯微鏡能把牠們放大到幾英尺。",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "after": {
+        "id": "moon039",
+        "template": "big",
+        "data": {
+          "text": "一滴水，蚊幼蟲放大到幾英尺",
+          "kicker": "1835 年報導的虛構顯微鏡比方",
+          "sub": "1859 重印本所載，非實驗紀錄"
+        },
+        "lines": [
+          {
+            "id": "moon039",
+            "text": "作者還拿一滴有蚊子幼蟲的水打比方，說顯微鏡能把牠們放大到幾英尺。",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "claims_row_before": "| moon039 | 作者還拿一滴有蚊子幼蟲的水打比方，說顯微鏡能把牠們放大到幾英尺。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Medium side-profile shot in a plainly imagined 1830s British reading room, one unmistakably middle-aged grey-haired adult reader with thick sideburns, lined face and broad adult shoulders wears a dark high-collar frock coat; he places one eye directly at the eyepiece of a small plain brass tabletop microscope while his mouth stays below and away from the tube; his hand steadies one clear glass slide with a single tiny water droplet and two minuscule curved mosquito-larva silhouettes directly under the objective on a bare wooden table, soft natural daylight; an original conceptual illustration of the article's fictional analogy, no book, child, white coat, electric device, labels or Moon scene。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon039 | 作者還拿一滴有蚊子幼蟲的水打比方，說顯微鏡能把牠們放大到幾英尺。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | 大字卡「1835 年報導的虛構顯微鏡比方／一滴水，蚊幼蟲放大到幾英尺／1859 重印本所載，非實驗紀錄」；只轉述 1859 重印本所載 1835 虛構報導的水滴與蚊幼蟲條件比方，並非赫歇爾／布魯斯特真的顯微鏡實驗、精確量測、月面發現、存世標本或 1835 原報影像。 |"
+    }
+  ],
+  "unchanged_scene_ids_except_moon039": true,
+  "unchanged_scene_lines_chapter": true,
+  "native_generation": 0,
+  "reversible": true
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "curio-s56",
+  "round": "R10",
+  "at": "2026-10-20T22:42:04.023Z",
+  "input_sha256": {
+    "brief.md": "09f731c13f1037c963aa5774b936a43e1a187b5c4ae8d09ba158581a705f1a52",
+    "research.md": "59549e98e6ae258cedfc5b43e6684ecaa1102284d0dee13b0beef6443e4a6fb7",
+    "claims.md": "4fc2b9887afe5805340c553d7c099658ce5231d8f27b836c621842477f14a172",
+    "video.json": "e54a6dfde678a536e81eac36c13360782e5e1efad6c2c30c694cefc5e01098f8",
+    "script.md": "286b7d50bc21ee8c8c5f61d99a3744f988ca1cbdac2c80bef05237a74f585153"
+  },
+  "source_review": {
+    "file": "r10-source-independent.md",
+    "sha256": "31d6f128b8c4ee62ba13aee71a1a8180133cf10fbdc0be9144cbfaee664bded1",
+    "verdict": "HOLD",
+    "blocking_spoken": [
+      "s56112"
+    ],
+    "blocking_visuals": [
+      "s56011",
+      "s56013"
+    ]
+  },
+  "ballots": [
+    {
+      "file": "r10-clean-blind-a/ballot.json",
+      "sha256": "5d1db05ae8ae82f65915710545ff543cde0b3cf09fbe6aab5d59a9d3b3c8ada2",
+      "raw_stdout": "r10-clean-blind-a/cli.stdout.json",
+      "raw_stdout_sha256": "6bcc830a6570d67be59b6154bd611ca926caef667e51f0cd6ede5b53708d8674",
+      "official_record": "r10-clean-blind-a/narrative-record.json",
+      "official_record_sha256": "c6e884ef46bc925f1686c47847b20d5628ad8632a104ba2a1acd81b37f1e993a",
+      "exit_code": 1,
+      "yes": 12,
+      "no": 1
+    },
+    {
+      "file": "r10-clean-blind-b/narrative-answers.json",
+      "sha256": "df04c534fbf5462f96ba559c97280e86343d8e028d9ee7b1a29b36530c80a812",
+      "raw_stdout": "r10-clean-blind-b/narrative-cli.stdout.json",
+      "raw_stdout_sha256": "c017db4d020b433e266af5832e3cb4b60287eca8d2bd00e0d8615bdfb2e67b35",
+      "official_record": "r10-clean-blind-b/narrative-record.json",
+      "official_record_sha256": "98b0988d6b781e38aa4ed37c86e258d10b197bb6f3590be78660d45985d83a51",
+      "exit_code": 1,
+      "yes": 12,
+      "no": 1
+    }
+  ],
+  "merge_rule": "OR per fixed panel question; both readers no on required no_recap",
+  "citation_validation": {
+    "ballot_quoted_lines_exact": 25,
+    "ballot_quoted_lines_total": 26,
+    "mismatch": "A scene_first cites [s56002] for 他才從西側走過橋，想把烈火留在身後。; that exact spoken line is s56003. Original ballot preserved.",
+    "merged_exact": 13,
+    "merged_total": 13,
+    "selection": "B exact quote for scene_first and shared no_recap; A exact quotes for other 11 yes answers. No vote changed."
+  },
+  "merged_answers": {
+    "file": "r10-clean-merged-answers.json",
+    "sha256": "3b5cb9ef75c0b6ae97a0754d27b35b0cb75844246774693b36c2f03a364e1815",
+    "yes": 12,
+    "no": 1
+  },
+  "official_cli": {
+    "command": "VIDEO_WORKDIR=/tmp/s56-r10-official-merge NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node tools/video/cli.mjs narrative --slug curio-s56 --answers docs/videos/curio-s56/review/r10-clean-merged-answers.json --json",
+    "exit_code": 1,
+    "raw_stdout_file": "r10-clean-cli-receipt.json",
+    "raw_stdout_sha256": "86eaefda354aad670e9bc7ac14e391a2736772061dccb70d97edcc1e84eebe6c",
+    "passed": false,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": []
+  },
+  "official_record": {
+    "file": "/tmp/s56-r10-official-merge/curio-s56/review/narrative.json",
+    "sha256": "2fbbfa5d9fd64487a5e7d0238acec9bf8ec915732a9c01f710a1a7d1d40491d3",
+    "narrative_hash": "1f5f1f43a62d7609",
+    "script_hash": "7b7038dbf17275ea04e8b004f143af72c307405e7e2d8cda116d1e103599cb85",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "4a59f2c7d1496bd9d59c0e8822407cacf30b527e8d579e54b936724402077d40",
+    "round": 1,
+    "bindings_match_both_reader_records": true
+  },
+  "verdict": "HOLD",
+  "policy_gate": "NOT_RUN"
+}

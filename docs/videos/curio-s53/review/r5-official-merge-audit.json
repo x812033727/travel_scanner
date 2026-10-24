@@ -1,0 +1,118 @@
+{
+  "script_sha256": "5f944532562e9e6072efe08cd8d1e3c4caa64f380d4497adccf276df50f3a07d",
+  "rule": "A required question fails only when both independent readers answer no; selected exact narration quote from a yes reader.",
+  "a_fail": [
+    "no_recap",
+    "no_detour"
+  ],
+  "b_fail": [
+    "chapters_link"
+  ],
+  "merged_fail": [],
+  "answers": [
+    {
+      "id": "scene_first",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53002 00:06] 六月，公園委員會要求救濟機構：八月十七日前清空廣場。"
+    },
+    {
+      "id": "no_spoiler",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53008 00:40] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+    },
+    {
+      "id": "one_line",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53041 04:11] 小屋成批建成；搬走時，各戶還得想辦法找下一塊地。"
+    },
+    {
+      "id": "no_toc",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53048 02:35] 可留在營地的人，該怎樣取得自己住的那棟屋？"
+    },
+    {
+      "id": "chapters_link",
+      "a_yes": true,
+      "b_yes": false,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53069 04:34] 調查說，住戶想搬屋，得先證明已買或租到另一塊地。"
+    },
+    {
+      "id": "open_loops",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53116 09:17] 搬到租地的住戶，若交不起地租，小屋又會怎樣？"
+    },
+    {
+      "id": "payoffs",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53130 10:31] 報告另知二十三戶付不起或拒付地租，房屋遭地主取走。"
+    },
+    {
+      "id": "no_recap",
+      "a_yes": false,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "B",
+      "evidence": "[s53002 00:06] 六月，公園委員會要求救濟機構：八月十七日前清空廣場。"
+    },
+    {
+      "id": "chapters_are_events",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53057 03:20] 但市有地上的收租，遭市長反對，並被特別條例禁止。"
+    },
+    {
+      "id": "outro_no_next",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53999 11:00] 想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。"
+    },
+    {
+      "id": "opening_hooks",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53007 00:35] 小屋離開營地時，搬遷費會由誰付？"
+    },
+    {
+      "id": "one_thread",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "A",
+      "evidence": "[s53060 03:35] 買的是小屋，不是小屋底下的公園土地。"
+    },
+    {
+      "id": "no_detour",
+      "a_yes": false,
+      "b_yes": true,
+      "merged_yes": true,
+      "selected_evidence_reader": "B",
+      "evidence": "[s53118 09:29] 搬出的屋子，有時又在大空地上密密排在一起。"
+    }
+  ]
+}

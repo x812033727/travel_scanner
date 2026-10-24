@@ -1,0 +1,44 @@
+{
+  "revision": "R23",
+  "reason": "s53018 third/final native human REJECT; source card fallback; s53085 source-safe distinct undrawn visual clears fractional diversity warning",
+  "before_sha256": {
+    "video.json": "49bdd04e5ebb88ff98cd207c6da0545faf1d1721834a0dc099d514a2daf9fa99",
+    "claims.md": "34f765eee27fb0ff083413e3e209b42d5dd09b5a2a7a89f16d14556ce1cac44b",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "2b5d0bfd85a581cac1e08ac8c155a9e8f89969634cc98e1c5300fe3457c7720e",
+    "claims.md": "a276b8561f713f6160fe8fd4d68c79f0c85640ce0f4db2cf031d81f99e3c278e",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53018",
+      "path": "video.json scenes object",
+      "before": "    {\n      \"id\": \"s53018\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53018\",\n          \"text\": \"南公園面積太小，連這種安排都放不下。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"prompt\": \"Close shot in a 1906 San Francisco relief camp: a grey-haired adult relief worker in a plain high-collared wool coat, framed from the chest up, turns his shoulders sideways and squeezes between two simple canvas tent sides, his coat brushing both walls; his lined face is seen in profile, both tent walls fill the frame edge to edge and overlap behind him, with only a small strip of bare earth visible below, soft overcast daylight\",\n        \"camera\": \"push in\",\n        \"visual\": \"still\"\n      }\n    }",
+      "after": "    {\n      \"id\": \"s53018\",\n      \"template\": \"big\",\n      \"lines\": [\n        {\n          \"id\": \"s53018\",\n          \"text\": \"南公園面積太小，連這種安排都放不下。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"text\": \"「沒有空間安置分開的小屋」\",\n        \"kicker\": \"1906 年｜舊金山南公園\",\n        \"sub\": \"1913 年救濟調查｜英語原文意譯\"\n      }\n    }"
+    },
+    {
+      "scene": "s53018",
+      "path": "claims.md exact row",
+      "before": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 一名成年工作者側身擠過兩道相鄰帳棚牆，是土地不足以安排分開小屋的原創概念示意，非南公園現場照片、實際帳棚間距或平面圖。 |",
+      "after": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 第三／最後原生圖仍畫成寬敞通道；改為南公園來源引句意譯卡。「沒有空間安置分開的小屋」意譯原文 `whose limited area gave no space for separate cottages`，下標明示 1913 年調查為後出記述，沒有重建實景或帳棚間距。 |"
+    },
+    {
+      "scene": "s53085",
+      "path": "video.json scenes object",
+      "before": "    {\n      \"id\": \"s53085\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53085\",\n          \"text\": \"絕大多數搬走後，繼續當住宅使用。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"prompt\": \"Medium shot beside a small wooden house on a rented lot, an anonymous adult stands by a stationary cottage on a new lot, soft overcast light\",\n        \"camera\": \"pan right\",\n        \"visual\": \"still\"\n      }\n    }",
+      "after": "    {\n      \"id\": \"s53085\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53085\",\n          \"text\": \"絕大多數搬走後，繼續當住宅使用。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"prompt\": \"Medium shot on a bare rented lot in San Francisco after the camp moves, one grey-haired, visibly middle-aged resident in a plain high-collared coat opens the door of a small low wooden relief house; bare earth and a simple plank wall fill the rest of the frame, soft overcast light\",\n        \"camera\": \"pan right\",\n        \"visual\": \"still\"\n      }\n    }"
+    },
+    {
+      "scene": "s53085",
+      "path": "claims.md exact row",
+      "before": "| s53085 | 絕大多數搬走後，繼續當住宅使用。 | [I L4998–5033](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4998-L5033) | 5,343 遷屋及慈善機構協助；703 是搬修分組 |",
+      "after": "| s53085 | 絕大多數搬走後，繼續當住宅使用。 | [I L4998–5033](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4998-L5033) | 5,343 遷屋、幾乎全部續作住宅；租地木屋與灰髮成年住戶開門為原創概念示意，非可辨個案；703 僅慈善搬修分組。 |"
+    }
+  ],
+  "reverse_proof": "Replacing all four exact new scene objects/claims rows with the R22 strings reconstructs both R22 files byte-for-byte.",
+  "other_scenes_unchanged": 122,
+  "spoken_lines_unchanged": 126,
+  "paid_calls": 0
+}

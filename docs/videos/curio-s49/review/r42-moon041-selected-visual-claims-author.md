@@ -1,0 +1,11 @@
+# S49 R42｜`moon041` 入選圖畫面註解作者校正與異議
+
+2026-10-22 UTC。**只校正 claims `moon041` 的入選畫面註解；作者候選待非作者對圖與史料重核。**R42 第二張原圖已生成，機器 **9.29／10 PASS**；原 1280×720 原圖 SHA `ac27c84942331b8cfa4138273d9d442b01ee16f409ab7f1711155fba787bfd52` 有上下黑帶，1280×720 入選裁圖 SHA **`8762bbf1c1485437dce80cabef48dd6db7c03293c0ad58eeafb58bf05286fd52`** 去除黑帶。成年灰髮讀者、短蠟燭裸火、桌面小光斑、窗外暗月與可愛平面畫風均可辨。畫面也多了一件**無字小型黃銅色鏡筒道具**，光斑落在桌上的**無字紙**，偏離 prompt 的「no optical instrument」和「直接在裸木桌面」。
+
+一位[非作者原尺寸審查者](r42-moon041-second-native-independent-visual.md)判入選裁圖 **HUMAN KEEP（信心 0.75）**：小鏡筒沒有接收燭光或指向月亮，不是巨型或運作中的赫歇爾鏡，沒有史料標籤；兩個多出細節不改旁白「照亮桌上影像也不替月球送回更多細節」。另一位 S53 工作伙伴獨立判 **HUMAN REJECT**，理由是鏡筒仍可能讓觀眾誤認為文獻記錄的實驗器材；此反對意見**保留**，不歸成機器細節分數。另有一位在**無先前對話**條件下開原圖與裁圖的[獨立判讀者](r42-moon041-second-native-blind-adjudication.md)判裁圖 **HUMAN KEEP（信心 0.91）**：小鏡筒無標籤且閒置，與燭光／紙上亮斑無連接，不呈現建成的赫歇爾器材或真實實驗；原圖黑帶必退，只收裁圖。該盲讀收據 SHA-256 `7bf853e5ebda4ac5877bcabd5f0b649ce81b1f390ca0455e95c67611c7ef4440`。作者依 `curio-episode` **只退實質誤導或畫風漂移**的規則暫採裁圖 KEEP；若本次非作者畫面註解／史料紙審認為小鏡筒仍會冒充真實器材，立即在 STOP 下恢復前輪 32 KEEP，不續買 `moon042`。沒有為完善虛構插畫再買一張。
+
+舊 claims `moon041` 畫面欄逐字照錄提示，錯誤聲稱「no optical instrument」且淡色斑在裸桌上。新欄只描述入選畫面：**灰髮成人指向木桌上無字紙的淡色燭光；短蠟燭有外露火焰，窗外月亮仍暗，旁有無字小型黃銅色鏡筒造型道具**。明說該道具只是概念插畫物件，**不是赫歇爾實際器材、存世圖像或實驗證據**，燭光也不替月球增加資訊。旁白、P05／J 來源欄及 `video.json` 提示詞均不動，最後成片不得把該道具稱作史實器材。
+
+[逐字可逆一行差分](r42-moon041-selected-visual-claims-structured-diff.json) SHA-256 **`111e09557c61baeaa496c512f14b4a54180c9cf80499576a4b757fbaa0c0d0bd`** 對 Git `ab0e617d0` 舊 claims SHA `5aa04589f6ad859c9178247003c2c56caeaf40dc03fab003c5e15f73b4020953`，現 claims SHA **`b51d288b6a2d33e2a976cf054a2b1cb3fdda5109f2845b18b78d81edffbd48af`**；只 `moon041` 畫面欄變，逐位元逆填還原舊檔。`video.json` SHA **`07ca48195b04696375564fdde0295ecf35532e75c2b09db09b61a19ba0038f75`**、全部 129 景／131 句、`script.md` SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a` 皆未變；`visual_hash=d43f3c8a95c29e22` 不變，不需再重綁圖單。Lint 0 errors／0 warnings／131 lines。
+
+私人 active manifest 暫列入選 33 張 SHA **`47a517c2b469ca1e48704643a1def318b59aa6f56131d30d1d4d293c56f0aa44`**：前輪 **32／32 KEEP** 入選紀錄與實檔 SHA 完全不變，本張裁圖檔 SHA 也相符，84 張待畫。真實帳本 SHA `d70880c78ace87406ca881373acfc58c9afd1e736e2decb734d5f86e65f22ae3`、**US$1.2555／93 image／93 judge／0 預約**，低於 US$5.30；STOP 在位、jobs 空。原圖、裁圖、裁前後 manifest／ledger、contact sheets 和 logs 只留私人 `review/r42-moon041-second-native/`，沒有提交媒體。**待非作者紙審這一行畫面註解與異議裁決後才把 33 KEEP 作正式檢查點；此時不購 `moon042`。**

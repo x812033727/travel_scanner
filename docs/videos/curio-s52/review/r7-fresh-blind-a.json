@@ -1,0 +1,99 @@
+{
+  "review": "S52 R7 fresh blind narrative panel A",
+  "input_scope": "Only the output of `NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s52 --json` was read for narrative evidence.",
+  "hashes": {
+    "script_file_sha256": {
+      "basis": "Raw bytes of docs/videos/curio-s52/script.md; prose was not read from this file",
+      "value": "4baf82930dd2b3c4eb48e91d117400775697da91c001ef6a852779209c2c72b5"
+    },
+    "narration_string_sha256": {
+      "basis": "UTF-8 bytes of the parsed JSON `narration` string, not the JSON output bytes",
+      "value": "0d07f9a13fdaa0a4f56b83064209bdb750126692338888b41b7a1c96e1a708cd"
+    }
+  },
+  "summary": {
+    "passed": 12,
+    "failed": 1,
+    "finding": "The opening reveals that the full transit was seen before the later June 3 chapter reaches that result."
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "line_ids": ["s52001", "s52002", "s52003", "s52004"],
+      "reason": "The first four lines place Cook at the Tahiti observation site on June 3, 1769, waiting for and seeing Venus cross the Sun; the contact-time problem follows within the first 16 seconds."
+    },
+    {
+      "id": "no_spoiler",
+      "pass": false,
+      "line_ids": ["s52001", "s52003", "s52081", "s52082", "s52084"],
+      "reason": "The opener states that the sky stayed cloudless all day and Cook saw the entire transit. The later chapter asks what the weather would be, then reveals the good weather and complete observation. In particular, s52003 gives away the observation outcome later stated at s52084."
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "line_ids": ["s52001", "s52009", "s52028", "s52054", "s52069", "s52082", "s52124"],
+      "reason": "After the June 3 opening scene, the account moves from the 1768 request through site choice, preparation, dispatched teams, the transit, and the teams' return. Later-source comments support that sequence rather than starting a second story."
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "line_ids": ["s52005", "s52006", "s52007", "s52008", "s52202"],
+      "reason": "The opening lines pose concrete unresolved story questions. The later question about the afternoon contacts stays inside the observation; neither declares a chapter plan or enumerates the video's structure."
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "line_ids": ["s52004", "s52009", "s52026", "s52028", "s52053", "s52054", "s52067", "s52069", "s52081", "s52082", "s52101", "s52102", "s52123", "s52124"],
+      "reason": "Each later chapter starts with the prior question or action: the contact instant leads to the Society's request; arrival leads to the selected shore; readiness leads to training; the departing party leads to Gore's destination; the weather question leads to June 3 conditions; blurred contact leads to differing times; the return question leads to June 4 news."
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "line_ids": ["s52004", "s52015", "s52021", "s52053", "s52064", "s52078", "s52081", "s52089", "s52202", "s52205", "s52101", "s52110", "s52116", "s52123"],
+      "reason": "Concrete open questions recur across the timed narration at intervals under 90 seconds, including the purpose, destinations, weather, contact times, observation disagreement, and missing readings."
+    },
+    {
+      "id": "payoffs",
+      "pass": true,
+      "line_ids": ["s52004", "s52106", "s52005", "s52016", "s52017", "s52006", "s52069", "s52074", "s52007", "s52117", "s52118", "s52078", "s52128", "s52110", "s52305"],
+      "reason": "The long opening questions receive named answers: the three observers disagreed, the distance estimate motivated the voyage, Gore and Hicks went to separate sites, and the seconds table carries Green's readings without Cook's or Solander's. The separate-site and telescope questions also receive explicit limits or answers."
+    },
+    {
+      "id": "no_recap",
+      "pass": true,
+      "line_ids": ["s52003", "s52082", "s52084", "s52079", "s52128"],
+      "reason": "The return to the June 3 opening moment is identified by date and adds that three observers saw the whole transit. The absence of three timing tables at dispatch and the absence of individual readings in the return journal concern different records. Other repeated references carry the observation forward rather than restating a number."
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "line_ids": ["s52001", "s52009", "s52028", "s52054", "s52069", "s52082", "s52102", "s52124"],
+      "reason": "The eight headings name dated actions or discoveries: seeing Venus, requesting a ship, selecting shore, practicing, dispatching teams, the transit, differing contact times, and returning parties."
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "line_ids": ["s52997", "s52998", "s52999"],
+      "reason": "The close asks viewers how to read historical seconds, poses a personal question, and invites subscription. It names no next video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "line_ids": ["s52004", "s52005", "s52006", "s52007", "s52008"],
+      "reason": "After the dated scene, the opener leaves at least four specific outcomes unresolved: matching contact readings, the voyage's purpose, the two dispatched teams, the absent readings, and the eye judgment needed in clear weather."
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "line_ids": ["s52004", "s52009", "s52028", "s52059", "s52086", "s52106", "s52128"],
+      "reason": "The continuing problem is obtaining comparable contact times for the 1769 transit. The voyage, station, backup observers, four contacts, disagreement, and missing individual readings each advance that same problem."
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "line_ids": ["s52025", "s52028", "s52030", "s52035", "s52036", "s52038", "s52054"],
+      "reason": "The shore and local-encounter passage stays with acquiring and setting up the observation site, which is needed for the later instrument preparation. No separate product, score, or quotation list interrupts the transit account."
+    }
+  ]
+}

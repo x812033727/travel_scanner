@@ -1,0 +1,11 @@
+# S49 R46｜`moon045` 首張原圖人工退件停批
+
+2026-10-22 UTC。R46 [非作者 R40 紙審精確適用性](r46-moon045-r40-paper-applicability.md) **PAPER PASS** 後，只對 `moon045` 做一張付費原圖與一次 judge，未接續 `moon046`。付費前固定 `video.json` SHA **`5df067876b7180dc47d16e1ef9a88b6e1399105abfc8fd6d3f1439eacad1a179`**、`claims.md` SHA **`c699fd4f6ddb91b02ec67d92e3584400a82b4e8e184dcf938afac5122cddecf0`**、active 34-KEEP manifest SHA **`e336fec9eddba8e1800898d5d31594fb6a80bd236b9d1d8e6bf1f77e7151f09e`**；34 張選圖實檔 SHA 全對、`moon045` 未入選、STOP 在位、jobs 空。帳本 US$1.3230／98 image／98 judge／0 預約。
+
+即時 `media-status` 回 MiniMax `image-01` 每圖 **US$0.0035**、圖片餘額 **9,844**、judge 餘額 **7,800**、音樂餘額 **28**；`keyframes --shot moon045 --takes 1 --dry-run` PASS，prompt **233／1070** 字元。以當時 81 張未畫各預留 3 次 image＋judge、音樂 US$0.15 的整集最壞估算 **US$4.7535 < US$5.30**。先備份私人 manifest／ledger／jobs／兩張 contact，暫解 STOP **一次**執行單張 CLI；退出自動恢復 STOP。CLI exit 0，機器 judge **9.29／10、`passed=true`**，但 `details=7` 已指出多餘第二人。生成時的暫時 35 張 manifest SHA **`39a79a353bfa40366a4ab9de8c24623d96c57cfb5be2f82465d09616e1b58e66`**。
+
+我與[另一位非作者原尺寸目視](r46-moon045-first-native-independent-visual.md) SHA-256 **`339b39147778c584d9440a94c8a5847aefcf4fd1c58850ddbd9713b9530d00e4`** 均判 **HUMAN REJECT**：1280×720 未裁原圖 SHA **`02dd4ccfad6d1006d58ca50a9a02f3042ec0f02c35cc8b3f86e03f84e33a9873`** 和選用裁圖 SHA **`c7ba8516a0833b1fd2b0526e2d51e8521bb24e6484fc520b2d55b71e9f472d94`** 顯示兩人，而前方操作者童貌／年代工衣不清；綠色透明圓面雖像鏡片，兩處**邊緣**小瑕疵不可辨。畫風大致相符、沒有全幅黑邊，不足以彌補旁白核心內容缺失。兩張圖與暫時 manifest/contact、CLI log、前後帳本都封存私人 `/workspace/.video-work/curio-s49/review/r46-moon045-first-native/`。
+
+STOP 下把 active manifest 與兩張 contact 從付費前備份原子恢復，現 manifest SHA **`e336fec9eddba8e1800898d5d31594fb6a80bd236b9d1d8e6bf1f77e7151f09e`**、34 張入選項目及實檔 SHA 全對，`moon045` 不在入選圖單；contact SHA **`583b7495897b6f7921e29676c824d31b07e696d015d31f2e1841cdb1ab8171e8`**／**`2168412565eae3fb9e1291ccb29959e2338094be5e1ea36e4fb265b8d825ffaa`**。`keyframeProblems` 僅 **81 張缺圖**、其餘 0。真實帳本 SHA **`9a7d527c0ddc47d557a63379ff99eccd35a5bdf70adef5c6095b2797d444a8d7`** → **`5f06db0ea9a63cd131cf07c5c1c44259acb22a04f55670be0bd74516644d63d8`**，實花 **US$1.3365／99 image／99 judge／0 預約**。STOP 在位、jobs 空；[機讀逐圖庫存](r46-moon045-first-native-stop-inventory.json) SHA-256 **`cc3d88cf0e2956d5848bf36c95f24e107cb0bb8dc2dc7ae04bd6e113662d7dbe`**。
+
+本輪停止購買任何下一景圖片。若重提 `moon045`，先只修此景文字與 claims 畫面欄，交另一人獨立紙審；通過且重新檢查上限後才可考慮單張重試。整集 storyboard、網站人耳和成片仍 HOLD。

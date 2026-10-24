@@ -1,0 +1,102 @@
+{
+  "revision": "R45-s53033-second-native-human-keep",
+  "decision": "HUMAN_KEEP_AFTER_MACHINE_PASS",
+  "frozen": {
+    "video_sha256": "52ae0fe8bd2c5f1774af06fb1b74f4da63231122e2f3a868b2742cdc59965fce",
+    "claims_before_visual_match_sha256": "54ebda69a45ff65becb8fe51650fd0842be8221854ab9d24975b89151f2a4404",
+    "claims_after_visual_match_sha256": "cb950a5cfe810ac1d6e28065e17b80aced461bbaefe53cd07a48bfa869e29b7c",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "source_section": "Survey E L4887-4897",
+    "source_prompt_paper_sha256": "d168ce14a8b0236fa264b708e4a21f821095fe127e6d2ce9c5e326e6ea19ba55",
+    "independent_visual_sha256": "a433e26720871e9fc34b7fa129cb453c08bc988f711eb72d2b6e5b1804a06a3c",
+    "claims_match_diff_sha256": "7bde64b70cb634ff0550e45211951e8f291db1fcc33bce7013804728b7af75a1",
+    "claims_match_independent_paper_sha256": "66f63d236bf406941a68aa149abbf4dd3fc10b61f3c92d9f9e8d907650d904fe",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "provider": "minimax",
+    "model": "image-01",
+    "images_remaining_snapshot": 9825,
+    "judges_remaining_snapshot": 7781,
+    "dry_run_exit": 0,
+    "prompt_chars": 588,
+    "prompt_budget_chars": 1069,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "eef17dc8ac22833bdd73a2129a12eb0459f2e81605f0c6be7902714c980f853d",
+    "contact_sheet_sha256": "7567d866096ae2ae1d8c92a191b8b6aa74ca1b67c56a4e5582ab6fa9cf666a57",
+    "ledger_sha256": "b30c39d2018dd95c2316e5440f08a641a254dae70c9a5df8db977baf1e6929e2",
+    "usd": 0.7425,
+    "images": 56,
+    "judge_calls": 55,
+    "keep_count": 20
+  },
+  "shot": {
+    "id": "s53033",
+    "actual_native_attempt_number": 2,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53033-1.jpg",
+      "sha256": "ed7453c840093f2f5bb4de0034dfbdd9ce70825f8b008c3652785240239bdb06",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53033-1.jpg",
+      "sha256": "ed7453c840093f2f5bb4de0034dfbdd9ce70825f8b008c3652785240239bdb06",
+      "dimensions": "1280x720"
+    },
+    "request_key": "648863beb179aba1",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: full body framing instead of waist-up medium shot and resting hand on a tent rope is missing → waist-up medium shot with hand holding tent rope"
+      ],
+      "notes": "The scene matches the requested art style and subject well. However, the framing is a full-body wide shot rather than waist-up, and the specified rope gesture was replaced with a stick."
+    },
+    "machine_needs_review": false,
+    "human_decision": "KEEP",
+    "prompt_deviations": [
+      "full-body view rather than waist-up medium shot",
+      "left hand at canvas tent flap edge, not confirmed on guy rope",
+      "ambiguous thin grey line extending from right hand to ground; do not identify as cane or rope"
+    ],
+    "source_narration_contradiction": false,
+    "style_drift": false
+  },
+  "after": {
+    "manifest_sha256": "64d3e65e1daf2c296dc6462934bdaf046fe1b094b1f1006704a4e27d659c8bc9",
+    "contact_sheet_sha256": "a2604cc3c1a719f3bd3227a37ac8195ad4d4b6ce5f7b228a09f996a65d3aef7c",
+    "ledger_sha256": "a94e6c9dc54d3a7b8774df6f3ffd8dccb84b18428e47c07995ad33ee01c3c122",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "totals": {
+      "usd": 0.756,
+      "images": 57,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 56,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "keep_count": 21,
+    "previous_20_entries_identical": true,
+    "selected_jpeg_hashes_match": true,
+    "s53034_undrawn": true
+  }
+}

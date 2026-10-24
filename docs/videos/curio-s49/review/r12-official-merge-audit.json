@@ -1,0 +1,134 @@
+{
+  "script_file_bytes_sha256": "ab8e840e2c74b283b60e65e62d62e41d79d6eea0ded323e4888a3940de80ab7e",
+  "panel_a": "r12-fresh-blind-a.json",
+  "panel_b": "r12-fresh-blind-b.json",
+  "questions": [
+    {
+      "id": "scene_first",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon001"
+    },
+    {
+      "id": "no_spoiler",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon005"
+    },
+    {
+      "id": "one_line",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon132"
+    },
+    {
+      "id": "no_toc",
+      "a_yes": false,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 1,
+      "selected_reader": "B",
+      "selected_line": "moon032"
+    },
+    {
+      "id": "chapters_link",
+      "a_yes": false,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 1,
+      "selected_reader": "B",
+      "selected_line": "moon056"
+    },
+    {
+      "id": "open_loops",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon038"
+    },
+    {
+      "id": "payoffs",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon118"
+    },
+    {
+      "id": "no_recap",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon129"
+    },
+    {
+      "id": "chapters_are_events",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon100"
+    },
+    {
+      "id": "outro_no_next",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon133"
+    },
+    {
+      "id": "opening_hooks",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon004"
+    },
+    {
+      "id": "one_thread",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon132"
+    },
+    {
+      "id": "no_detour",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon110"
+    }
+  ],
+  "required_failed": [],
+  "editorial_dissent": {
+    "reader": "A",
+    "ids": [
+      "no_toc",
+      "chapters_link"
+    ],
+    "line_id": "moon112",
+    "note": "Reader A finds the final-chapter opening sounds like a reading-order signpost and delays the direct answer to moon111; reader B passes both; current project rule passes with one yes."
+  }
+}
