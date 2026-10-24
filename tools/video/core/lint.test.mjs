@@ -79,6 +79,22 @@ test("URLs and written language are errors; narrating the checking process is a 
   assert.match(messages(result.warnings), /"經查證" narrates the process/);
 });
 
+test("本文 is written language only when it is not part of 日本文", () => {
+  const cases = [
+    ["原廠說，日本文字的筆畫較密，原來的筆尖留下新的要求。", false],
+    ["日本文化有不同的書寫傳統。", false],
+    ["本文指出原因。", true],
+    ["在本文我們會比較兩種設計。", true],
+    ["日本文字的筆畫較密，本文指出筆尖為何要變細。", true],
+  ];
+  for (const [text, expected] of cases) {
+    const doc = fixture();
+    doc.scenes[0].lines[0].text = text;
+    const found = lintVideo(doc, context()).errors.filter((problem) => problem.message.includes('"本文" is written language'));
+    assert.equal(found.length, expected ? 1 : 0, text);
+  }
+});
+
 test("long sentences and parentheses are warnings", () => {
   const doc = fixture();
   doc.scenes[1].lines[0].text = "第一個問題是你要它做什麼工作，因為寫程式、寫文章、整理資料、翻譯和陪你聊天需要的能力完全不一樣。";
