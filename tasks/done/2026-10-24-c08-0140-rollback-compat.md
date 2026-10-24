@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-c08-0140-rollback-compat
 title: Stage exact C08 0140 rollback compatibility
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-c08-budget-compat
 claimed_at: 2026-10-24T07:45:15Z
 created_at: 2026-10-24T07:45:04Z
-completed_at:
+completed_at: 2026-10-24T08:46:23Z
 branch: codex/c08-0140-compat-20261024
 depends_on:
   - 2026-10-24-c20-0139-held-account
@@ -34,15 +34,15 @@ and paid route are separate later work.
 
 ## Definition of done
 
-- [ ] An 0139 image recognizes only the pinned C08 0140 revision after reading
+- [x] An 0139 image recognizes only the pinned C08 0140 revision after reading
       back the exact 18 accounts, four historical holds, C20 ownership, C08
       ownership, and shared budget schema; unrelated revisions fail closed.
-- [ ] The old Compose migrate command, `/ready`, and host verifier admit that
+- [x] The old Compose migrate command, `/ready`, and host verifier admit that
       one reviewed rollback state while every everyday-story paid reservation
       remains held.
-- [ ] Disposable PostgreSQL integration applies a SHA-pinned synthetic 0140
+- [x] Disposable PostgreSQL integration applies a SHA-pinned synthetic 0140
       migration, tests rollback and damaged contracts, and CI runs it.
-- [ ] No actual 0140 migration/account, paid dispatch, or production change.
+- [x] No actual 0140 migration/account, paid dispatch, or production change.
 
 ## Steps
 
@@ -83,6 +83,11 @@ pytest again passed 17 with one PostgreSQL-only skip, Ruff, mypy app (486
 files), mypy tests (415 files), host verifier tests (3 passed, two local
 awk-dependent skips), Bash syntax and `check:tasks` (2155 files) passed.
 Independent read-only review found no blocker and reconfirmed the fixture SHA,
-old-image rollback boundary and absence of an actual 0140 account. The draft
-PR must remain `no-auto-merge`: real PostgreSQL CI, C20 duration PR #1808
-merging, and a final main rebase/readback precede this task's `done` and merge.
+old-image rollback boundary and absence of an actual 0140 account. C20 duration
+PR #1808 merged as `0f166b266f46da55464a27ed8a83d6d7d43f2db2`; this
+branch was rebased onto that exact main before PR #1820. Its API check on
+head `737c10f95365ad1f4f3d11633e6db548b0c0ec60` ran the disposable
+PostgreSQL and Compose-command rollback test successfully; `api`, `web`, and
+`containers` also passed. `full-stack-smoke` was still running when this task
+was closed. PR #1820 remains draft with `no-auto-merge`; merge requires all
+four checks on the final task-close head and a CLEAN main-base readback.
