@@ -97,4 +97,13 @@ S40's eight languages wait on Codex's workdir, task `2026-10-21-curio-s02-s03-s0
   - Gates: these are hand-pushed reviews, so the owner approves narration, storyboard, final, publish and
     languages on /admin/videos; recording an approval locally on the agent's own word was refused, rightly.
     render waits for the owner's narration and storyboard approval (then `review-pull`).
+  - Card glyphs: render refuses a card character no bundled font has (S12 扨, S24 polytonic εὕρηκα). Changing
+    a card after the storyboard is approved voids that approval, so check every card before the storyboard goes
+    out (`uncovered()` from `tools/video/render/fonts.mjs` over each scene's data and lines).
+  - A shot that fails three takes twice: give it the exact prompt of a passed shot in the same chapter (cache,
+    no cost; lint warns that the two read as a stall). Done for S13 reader-2 and S16 toki-q.
+  - Order: `assemble` inserts the intro after the first chapter, so a dub made before the final cut no longer
+    matches the branding (qa `captions` fails); run `dub` again after `assemble` (it reuses every spoken line).
+  - S12: final cut 9:48, qa 11/11, final submitted 2026-10-24. All eight dubs reviewed: four over-long lines
+    shortened, wrong-meaning lines rewritten (pt sk211 "shots of Ieyasu", es sk416), ja 午の刻/石見/九月 in kana.
 
