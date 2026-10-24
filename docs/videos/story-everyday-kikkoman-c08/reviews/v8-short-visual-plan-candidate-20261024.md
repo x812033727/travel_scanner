@@ -62,7 +62,7 @@
 | 5 | v7be02 | shot | Close shot at the table, one anonymous adult righting a plain teapot as one bead remains near its spout, soft side light. | slow push-in |
 | 5 | v7e03 | card | 自製平面功能示意：下緣內收、上緣在前。只畫相對位置，不標角度或冒充歷史圖紙。 | static |
 | 5 | v7e04 | card | 後年展覽標籤：接近 100 個模型。只呈現館方後年說法，不展示假造模型檔案。 | static |
-| 5 | v7be06 | shot | Medium shot at a dining table, one anonymous adult righting a generic bottle with a simple red cap after pouring into a small dish, soft side light. | gentle pan right |
+| 5 | v7be06 | shot | Medium shot at a dining table, one anonymous adult beginning to right a generic clear bottle with a simple red cap while a thin stream of dark condiment still falls into a small dish, soft side light. | gentle pan right |
 | 5 | v7e07 | shot | Return to the opening table, one anonymous adult moving a generic bottle away from the small dish while a tiny bead remains near the cap, soft window light. | gentle drift left |
 | 5 | v7be08 | shot | Medium shot at a generic filling station, one anonymous worker positioning an empty plain bottle beneath a nozzle, soft overhead light. | slow push-in |
 | 6 | v7n01 | card | 1961｜150 mL 桌上瓶。年份與容量共同指向同一件商品。 | static |
@@ -74,6 +74,6 @@
 
 ## 待審事項
 
-1. 非作者逐句核對 v7d 旁白、來源與同 ID 配鏡，尤其重核本輪 v7i05 的蓋子位置、v7e05 的日常使用場景、v7n04 的開蓋補充口，以及 v7h04、v7e07 的來源邊界。
-2. 兩位只讀 v7d 純旁白的盲讀者各自回答現行完整敘事面板；本表不繼承 v7、v7b、v7c 或舊 84 句稿的結果。
+1. v8 36 句來源與同 ID 配鏡須以本版檔案雜湊獨立覆核；修訂後特別核對 v7be06 同鏡的倒出與扶正、v7n04 的開蓋補充口，以及 v7h04、v7e07 的來源邊界。
+2. 兩位只讀 v8 純旁白的盲讀者各自回答現行完整敘事面板；紙上時間碼只能供候選版的開環估算，不能代替實際 TTS。
 3. 站主審核精確短版旁白與逐鏡方向後，才可另列整支試片張數、嘗試上限與預算；實際生成後仍須驗收畫面與按秒插圖占比。
