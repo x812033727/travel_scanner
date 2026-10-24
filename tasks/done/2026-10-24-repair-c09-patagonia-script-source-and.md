@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-repair-c09-patagonia-script-source-and
 title: Repair C09 Patagonia script source and duration
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T01:25:27Z
 created_at: 2026-10-24T01:25:23Z
-completed_at:
+completed_at: 2026-10-24T06:11:15Z
 branch: codex/c09-patagonia-script-repair-20261024
 depends_on: []
 scope:
@@ -31,16 +31,16 @@ separate.
 
 ## Definition of done
 
-- [ ] Every revised/new sentence and matching shot passes another agent's
+- [x] Every revised/new sentence and matching shot passes another agent's
       final-hash source and visual-delta review, with no unsupported causal
       claim or unstated historical reconstruction.
-- [ ] Two independent readers, seeing only the Traditional Chinese narration,
+- [x] Two independent readers, seeing only the Traditional Chinese narration,
       give final-hash story verdicts against all 12 listener criteria; record
       any shared HOLD and repair before requesting owner script approval.
-- [ ] All narration IDs have exactly one shot/card, the visual precheck and
+- [x] All narration IDs have exactly one shot/card, the visual precheck and
       name/pronunciation risk are recorded, and paper duration remains clearly
       distinguished from actual voice duration.
-- [ ] Submit the reviewable final script/visual direction to the owner; no paid
+- [x] Submit the reviewable final script/visual direction to the owner; no paid
       voice, image, music, upload or publication occurs under this task.
 
 ## Steps
@@ -51,9 +51,9 @@ separate.
 - [x] Revise `c090304` to the 1972 preface's actual Yosemite piton-hole claim;
       add source-backed 1960s production, chock-history, 1970 letter,
       site-damage recognition, British-route contrast and 1977 shop details.
-- [ ] Lock author bytes, run independent source/visual review and two fresh
+- [x] Lock author bytes, run independent source/visual review and two fresh
       narrator-only blind reads. Resolve any HOLD and redo affected reviews.
-- [ ] Run mechanical ID, card streak, source-hash and docs/task hygiene checks;
+- [x] Run mechanical ID, card streak, source-hash and docs/task hygiene checks;
       prepare a PR with final review receipts and request owner approval.
 
 ## How to verify
@@ -161,3 +161,23 @@ HOLD for the stale precheck summary. That line now says 85 IDs, 73 shots,
 only this summary and its dependent hashes changed. A narrow confirmation of
 the new visual hash, two fresh blind reads, and the owner script gate remain
 pending. No paid calls, PR or upload under this revision.
+
+2026-10-24 closure: the separate v8 candidate is now the owner-approved
+77-line/77-scene direction. Exact candidate script SHA-256
+`4445AD74BCAFBAC1DFCA65392199FEC89700C17AB8C01E665AC79DFFFC1AA3F7`,
+narration-only SHA-256 `0E813642E36E7524D55F982BF26D646A1361658DEFFA5310FE6991C7A0A258AD`,
+paired visual JSON SHA-256 `2235EA304C240E78F6473183E45A63502500EE20F931107843C6AF3C5AD0BF5A`.
+Independent source/visual receipt: 77/77 PASS, 67 conceptual illustrations,
+10 postproduction cards, longest card streak 2, `cute-mystery` preset. Signed
+blind A: 11/12 Yes, `natural_spoken=No` at c090302/c090401/c090418; B:
+12/12 Yes, no common required No. The earlier coordinator-reported A 12/12
+is superseded by this signed A receipt. The script's opening notes and
+foreign-name pronunciation risk remain explicit; later voice/listening review
+must determine delivery. Owner approved the exact v8 script and visual
+direction in PR #1806. Canonical `script.md` is copied byte-for-byte from the
+candidate, with a separate approval receipt; the historical 85-line
+`visual-plan.md` is not production safe. Actual narration duration is still
+unmeasured; the 567.633-second body and 88.073% illustrations are paper
+estimates. No paid calls, production import, upload or publication under this
+task. The visual/project, quote, and duration gates are transferred to a
+separate follow-up ticket.
