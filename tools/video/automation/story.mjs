@@ -892,7 +892,7 @@ export function c08ShortPaidProblem({ workdir }) {
       typeof receipt.approved_at !== "string" || !Number.isFinite(Date.parse(receipt.approved_at)) ||
       typeof receipt.quote_source !== "string" || !receipt.quote_source.trim() ||
       !Number.isFinite(receipt.quote_usd) || receipt.quote_usd <= 0 ||
-      !Number.isFinite(receipt.cap_usd) || receipt.cap_usd <= 0 || receipt.cap_usd > 25 ||
+      !Number.isFinite(receipt.cap_usd) || receipt.cap_usd <= 0 ||
       receipt.quote_usd > receipt.cap_usd) {
     return "C08 short-v8 needs the owner's current whole-film supplier quote and cap receipt before any paid media";
   }

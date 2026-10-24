@@ -662,8 +662,10 @@ test("C08 short-v8 adopts only its frozen project and has a separate paid cap re
       quote_source: "reviewed supplier quote", quote_usd: 20, cap_usd: 25 };
     writeFileSync(file, JSON.stringify(receipt));
     assert.equal(c08ShortPaidProblem({ workdir }), null);
-    writeFileSync(file, JSON.stringify({ ...receipt, cap_usd: 26 }));
+    writeFileSync(file, JSON.stringify({ ...receipt, quote_usd: 26 }));
     assert.match(c08ShortPaidProblem({ workdir }), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, quote_usd: 26, cap_usd: 26 }));
+    assert.equal(c08ShortPaidProblem({ workdir }), null, "only C08's own owner cap controls the quote");
   } finally { rmSync(workdir, { recursive: true, force: true }); }
 });
 

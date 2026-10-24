@@ -1,6 +1,7 @@
 // Runtime requirements for the knowledge and nonfiction long-video catalogues. Planning
 // estimates are deliberately not accepted here: QA reads the current TTS timeline and the
 // frame count assemble checked on the finished cut. Channel bookends never count as content.
+import { createHash } from "node:crypto";
 import { FPS } from "./timeline.mjs";
 import { isExplainerPreset, isKnowledgeLongform, shotVisual } from "./drama.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
@@ -10,6 +11,9 @@ export const KNOWLEDGE_TARGET_SECONDS = 600;
 export const A01_COMPACT_BODY_SECONDS = Object.freeze([420, 480]);
 export const C08_SHORT_MIN_BODY_SECONDS = 240;
 export const C08_SHORT_MAX_PRESENTED_SECONDS = 300;
+// Ordered [line ID, approved visible text] pairs of the exact 36-line C08 short-v8.
+// Media references may evolve without granting a different narration the short QA band.
+export const C08_SHORT_NARRATION_SHA256 = "31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9";
 // Which documents these floors hold is decided in drama.mjs (isKnowledgeLongform), where the
 // schema and the timeline can read it too without a cycle; it is re-exported here for its readers.
 export { isKnowledgeLongform };
@@ -49,11 +53,18 @@ export function isC08ShortStory(value) {
 
 /** The per-video target is required; the series itself keeps its ten-minute policy. */
 export function isC08ApprovedShortStory(doc) {
+  if (!Array.isArray(doc?.scenes)) return false;
+  const lines = doc.scenes.flatMap(scene => Array.isArray(scene?.lines) ? scene.lines : []);
+  if (lines.length !== 36) return false;
+  const narrationSha256 = createHash("sha256")
+    .update(JSON.stringify(lines.map(line => [line?.id, line?.text])))
+    .digest("hex");
   return isC08ShortStory(doc)
     && Array.isArray(doc.target_minutes)
     && doc.target_minutes.length === 2
     && doc.target_minutes[0] === 4
-    && doc.target_minutes[1] === 5;
+    && doc.target_minutes[1] === 5
+    && narrationSha256 === C08_SHORT_NARRATION_SHA256;
 }
 
 /**

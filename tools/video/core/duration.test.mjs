@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, C08_SHORT_NARRATION_SHA256, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
 import { EXPLAINER_PRESETS } from "./drama.mjs";
@@ -21,11 +22,7 @@ const a01 = {
   series: { slug: "brand-stories-curio-pilot-v2", episode: 1 },
   look: { preset: "cute-mystery" }, target_minutes: [7, 8],
 };
-const c08Short = {
-  slug: "story-everyday-kikkoman-c08-short-v8", format: "drama", category: "explainer",
-  series: { slug: "brand-stories-everyday-reversals", episode: 8 },
-  look: { preset: "cute-mystery" }, target_minutes: [4, 5],
-};
+const c08Short = JSON.parse(readFileSync(new URL("../../../docs/videos/story-everyday-kikkoman-c08-short-v8/video.json", import.meta.url), "utf8"));
 
 test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
   assert.deepEqual(EXPLAINER_PRESETS, ["flat-explainer", "cute-cartoon", "cute-mystery"]);
@@ -134,6 +131,7 @@ test("A01's shorter floor still needs current narration and checked matching cut
 test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut cap", () => {
   assert.equal(C08_SHORT_MIN_BODY_SECONDS, 240);
   assert.equal(C08_SHORT_MAX_PRESENTED_SECONDS, 300);
+  assert.equal(C08_SHORT_NARRATION_SHA256, "31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9");
   assert.equal(isC08ShortStory(c08Short), true);
   assert.equal(isC08ApprovedShortStory(c08Short), true);
   for (const change of [
@@ -147,6 +145,13 @@ test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut
     assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
   }
   assert.equal(isC08ApprovedShortStory({ ...c08Short, compilation: { episodes: [] } }), false);
+  const changedWords = structuredClone(c08Short);
+  changedWords.scenes[0].lines[0].text += "改";
+  assert.equal(isC08ApprovedShortStory(changedWords), false, "one changed character loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: changedWords }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  const changedPicture = structuredClone(c08Short);
+  changedPicture.scenes[0].data.prompt += " A later media reference may change.";
+  assert.equal(isC08ApprovedShortStory(changedPicture), true, "visual/media updates do not change approved narration");
   assert.deepEqual(knowledgeDurationProblems({ ...cut(270 * 30), doc: c08Short }), []);
   assert.match(knowledgeDurationProblems({ ...cut(240 * 30 - 1, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }).join("; "), /body is 7199 frames.*needs at least 7200 frames \(240 s\), excluding intro and outro/);
   assert.deepEqual(knowledgeDurationProblems({ ...cut(274 * 30, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }), []);
