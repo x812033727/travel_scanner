@@ -82,11 +82,32 @@ visual SHA-256 `394B9968AC3E55DC33A67C524E04E0604FBD07F473E8A442D740532BE6B13960
 evidence SHA-256 `734F4DE54A23D64888E986EA2C0DF23618FC80E42CA1BD830806D34FB7D99B0C`.
 Fresh narration-only projection `reviews/narrator-only-d187ed3c4.txt` SHA-256
 `893A76C399F156D32514E7D7A5A4899979372E9539186A4FB9C19EC7653A29C9`
-awaits two new independent blind reads; final-hash source/visual review also
-awaits a different reviewer. About 2,053 spoken Han yields paper estimates
+received two independent blind reads without shared hard HOLD; both gave a
+soft request to reconnect Patagonia's clothing label before the ending.
+Independent source/visual review found 67 PASS and nine HOLD: five instances
+that treated the report's 1977 publication date as a visit date, two cards
+that treated it as recollection date, one coastal/climbing-area conflation,
+and one company/personal forging ambiguity. Locked receipts are in `reviews/`.
+About 2,053 spoken Han yielded paper estimates
 6:51–7:36 at 300–270 Han/min, so actual 8:00 body duration is a clear risk.
 Do not pad with repeated facts; measure voice only after owner script and
 cost gates. These are not voice evidence. No paid calls. The approved
 treatment and source matrix are unchanged; S4's 1977 business profit quote
 was deliberately excluded because it would expand this story's approved
 factual scope and confuse the 1972 motive.
+
+2026-10-24 third author revision: narrow corrections to all nine HOLD IDs;
+1977 now labels only the report publication, coastal travel and climbing-area
+sales remain distinct, and continued piton manufacture belongs to the
+company. One S4/S7-supported c090609 line reconnects Patagonia's later
+clothing label with the reported shop without claiming the seen jackets had
+that label. Current 77 narration rows and 77 paired visual rows; 65
+illustrations, 12 cards, longest card streak 2. Script SHA-256
+`F55BFB219F3EDE82EB8F6281DD7719B1FB1B178EE1F2CB036C6277D15F27EC64`,
+visual SHA-256 `0F0F4835003ED1EAFE2A9780200FEDC4EEA4FB6CA40697D5FB03F4254AE4108D`,
+evidence SHA-256 `D18F9E8EE78906F5D875E7B2BA9776E4849804D06FCBDB78AB2B7FB503BD5A86`.
+New LF narrator-only projection `reviews/narrator-only-2d8bcb231.txt` SHA-256
+`2D8BCB231475BC94AC1FEB3D873E91E309FDCA3BDE79DC440608E2E9D3D82E4A`
+needs two new blind reads and a new independent final-hash source/visual
+review. About 2,109 spoken Han yields 7:02–7:49 at 300–270 Han/min:
+actual body duration ≥480 seconds remains HOLD. No paid calls.
