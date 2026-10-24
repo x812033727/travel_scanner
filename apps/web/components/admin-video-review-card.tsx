@@ -903,6 +903,12 @@ function PublishBody({ slug, review, mp4Gone }: { slug: string; review: Review; 
   </div>;
 }
 
+/** Seconds into the track as m:ss.s, or "—" when the worker did not know where the line starts. */
+const clock = (value: unknown) => {
+  const seconds = typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
+  return seconds === null ? "—" : `${Math.floor(seconds / 60)}:${(seconds % 60).toFixed(1).padStart(4, "0")}`;
+};
+
 // The file a languages review carries for each part of a language, by role prefix (docs/videos/LANGUAGES.md).
 const PART_ROLES: Record<LocalePart, string> = { metadata: "description_", captions: "captions_", dub: "dub_" };
 
@@ -939,7 +945,11 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
       // The lines of a finished track that kept the take Jev heard differently, because the retake
       // did not fit (the worker sends their ids only, so the card can name them but not quote them).
       const kept = part === "dub" && state === "ready" ? list(entry.kept_lines).map(text).filter(Boolean) : [];
-      return [{ part, state, reason, file, name, kept }];
+      // A dub the check gave up on, sent along for the owner to judge: its track and the lines it failed.
+      const unchecked = part === "dub" && state === "skipped" ? record(record(value).unchecked) : {};
+      const uncheckedFile = fileFor(review, text(unchecked.file_role));
+      const failed = list(unchecked.lines).map(record);
+      return [{ part, state, reason, file, name, kept, uncheckedFile, uncheckedName: text(unchecked.file) || `${locale}.${text(unchecked.format) || "m4a"}`, failed }];
     });
     return { locale, cells };
   });
@@ -947,11 +957,13 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
   return <div className="grid gap-4 text-sm leading-6">
     <ul className="grid gap-2">{rows.map(({ locale, cells }) => <li key={locale} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
       <span className="font-semibold">{t.has(`locales.${locale}`) ? t(`locales.${locale}`) : locale}</span>
-      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name, kept }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
+      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name, kept, uncheckedFile, uncheckedName, failed }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
         <span>{t(`parts.${part}`)}</span>
         <span className="text-[var(--muted)]">{partStateLabel(t, state, reason)}</span>
         {file && <a className="font-semibold text-[var(--teal)] underline" href={fileUrl(slug, file)} download={name}>{t("downloadTrack", { file: name })}</a>}
         {kept.length > 0 && <span className="basis-full text-amber-800">{t("dubKeptLines", { count: kept.length, lines: kept.join("、") })}</span>}
+        {uncheckedFile && <a className="font-semibold text-amber-800 underline" href={fileUrl(slug, uncheckedFile)} download={uncheckedName}>{t("downloadUncheckedTrack", { file: uncheckedName })}</a>}
+        {uncheckedFile && failed.length > 0 && <span className="basis-full text-amber-800">{t("uncheckedLinesTitle")}<ul className="mt-1 grid gap-0.5">{failed.map((line) => <li key={text(line.id)}>{t("uncheckedLine", { time: clock(line.at_seconds), intended: text(line.intended) || text(line.id), heard: text(line.heard) || "—" })}</li>)}</ul></span>}
       </span>)}</span>
     </li>)}</ul>
     {dubReady && <div className="rounded-2xl border border-[var(--line)] p-4">
