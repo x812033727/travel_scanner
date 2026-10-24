@@ -654,18 +654,27 @@ test("C08 short-v8 adopts only its frozen project and has a separate paid cap re
     assert.equal(adopted.story.adopted_c08_short_v8, true);
     assert.equal(adopted.story.lexicon_sha256, pinned.lexicon_sha256);
     assert.equal(readJson(path.join(workdir, "approvals.json")).approvals.at(-1).gate, "outline");
-    assert.match(c08ShortPaidProblem({ workdir }), /needs the owner's current whole-film/);
+    const paidProblem = (root = ROOT) => c08ShortPaidProblem({ root, workdir });
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
     const file = path.join(workdir, "story", "c08-short-v8-paid-authorization.json");
     mkdirSync(path.dirname(file), { recursive: true });
     const receipt = { schema_version: 1, slug: C08_SHORT_SLUG, status: "approved", approved_by: "owner",
       project_video_sha256: C08_SHORT_FILES["video.json"], approved_at: "2026-10-24T00:00:00Z",
-      quote_source: "reviewed supplier quote", quote_usd: 20, cap_usd: 25 };
+      quote_source: "docs/videos/story-everyday-kikkoman-c08-short-v8/production-quote.md",
+      quote_source_sha256: "28f983bc35272c216ce9026855bf881e0b29f03eadd7169f908d1284d2926948",
+      owner_approval_sha256: "54d973ab2c46a1b0caa1a207dba4b390fa04084727810a527bbf3eea67d9c607",
+      quote_usd: 20, cap_usd: 25 };
     writeFileSync(file, JSON.stringify(receipt));
-    assert.equal(c08ShortPaidProblem({ workdir }), null);
+    assert.equal(paidProblem(), null);
+    assert.match(paidProblem(tmpdir()), /needs unchanged owner approval evidence/);
+    writeFileSync(file, JSON.stringify({ ...receipt, owner_approval_sha256: "unreviewed" }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, quote_source_sha256: "unreviewed" }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
     writeFileSync(file, JSON.stringify({ ...receipt, quote_usd: 26 }));
-    assert.match(c08ShortPaidProblem({ workdir }), /needs the owner's current whole-film/);
-    writeFileSync(file, JSON.stringify({ ...receipt, quote_usd: 26, cap_usd: 26 }));
-    assert.equal(c08ShortPaidProblem({ workdir }), null, "only C08's own owner cap controls the quote");
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, cap_usd: 26 }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/, "self-declared USD26 cannot raise the owner's USD25 cap");
   } finally { rmSync(workdir, { recursive: true, force: true }); }
 });
 

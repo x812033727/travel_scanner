@@ -849,6 +849,10 @@ const C08_SHORT_REVIEW_SHA256 = "f3a988efcad84a3d97779f10dd0d5cf34b7ad0d4ccf62db
 const C08_SHORT_LEXICON_SHA256 = "97e2c4582aca65899d66253914a955256a673484a97966f40013d1275fc2e8f2";
 const C08_SHORT_LEXICON_EVENT_SHA256 = "783a192013e5d27bb9e3728c111f4e82bdd04829326830caeeca61285e3aeb17";
 const C08_PAID_AUTH_FILE = path.join(STORY_DIR, "c08-short-v8-paid-authorization.json");
+const C08_OWNER_APPROVAL_FILE = path.join("docs", "videos", C08_SHORT_SLUG, "owner-pilot-approval-20261024.md");
+const C08_OWNER_APPROVAL_SHA256 = "54d973ab2c46a1b0caa1a207dba4b390fa04084727810a527bbf3eea67d9c607";
+const C08_APPROVED_QUOTE_SHA256 = "28f983bc35272c216ce9026855bf881e0b29f03eadd7169f908d1284d2926948";
+const C08_OWNER_CAP_USD = 25;
 
 /** Fail closed before starting the backend request, and again on every worker continuation. */
 export function c08ShortProjectProblem({ root, slug }) {
@@ -881,8 +885,11 @@ export function c08ShortProjectProblem({ root, slug }) {
   return null;
 }
 
-/** A separately written, hash-bound owner cap and supplier quote are required before paid media. */
-export function c08ShortPaidProblem({ workdir }) {
+/** Pin the repo owner approval and require its preapproval quote hash and exact USD25 cap in the workdir receipt. */
+export function c08ShortPaidProblem({ root, workdir }) {
+  if (typeof root !== "string" || sha256OnDisk(path.join(root, C08_OWNER_APPROVAL_FILE)) !== C08_OWNER_APPROVAL_SHA256) {
+    return "C08 short-v8 needs unchanged owner approval evidence before paid media";
+  }
   let receipt;
   try { receipt = readJson(path.join(workdir, C08_PAID_AUTH_FILE), null); }
   catch { return "C08 short-v8 paid authorization receipt is unreadable"; }
@@ -890,9 +897,11 @@ export function c08ShortPaidProblem({ workdir }) {
       receipt.status !== "approved" || receipt.approved_by !== "owner" ||
       receipt.project_video_sha256 !== C08_SHORT_FILES["video.json"] ||
       typeof receipt.approved_at !== "string" || !Number.isFinite(Date.parse(receipt.approved_at)) ||
-      typeof receipt.quote_source !== "string" || !receipt.quote_source.trim() ||
+      receipt.quote_source !== "docs/videos/story-everyday-kikkoman-c08-short-v8/production-quote.md" ||
+      receipt.quote_source_sha256 !== C08_APPROVED_QUOTE_SHA256 ||
+      receipt.owner_approval_sha256 !== C08_OWNER_APPROVAL_SHA256 ||
       !Number.isFinite(receipt.quote_usd) || receipt.quote_usd <= 0 ||
-      !Number.isFinite(receipt.cap_usd) || receipt.cap_usd <= 0 ||
+      receipt.cap_usd !== C08_OWNER_CAP_USD ||
       receipt.quote_usd > receipt.cap_usd) {
     return "C08 short-v8 needs the owner's current whole-film supplier quote and cap receipt before any paid media";
   }
@@ -1168,7 +1177,7 @@ export async function advanceStory(automation, state, next) {
       if (review?.status === "rejected") return automation.block(state, "STOPPED_HOLD: owner sent C08 short-v8 audio back; an exact script revision and new approval are needed before re-recording");
     }
     if (["look generated", "narration synthesized", "keyframes drawn", "clips generated", "music generated"].includes(next)) {
-      const paid = c08ShortPaidProblem({ workdir: automation.workdir(state.slug) });
+      const paid = c08ShortPaidProblem({ root: automation.ctx.root, workdir: automation.workdir(state.slug) });
       if (paid) return automation.block(state, `STOPPED_HOLD: ${paid}`);
     }
     return undefined;
