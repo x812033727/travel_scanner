@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-c07-canonical-video-preflight
 title: Prepare C07 canonical video project without paid calls
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-c-series-integration
 claimed_at: 2026-10-24T02:25:08Z
 created_at: 2026-10-24T02:24:44Z
-completed_at:
+completed_at: 2026-10-24T04:20:27Z
 branch: codex/c07-canonical-video-preflight-20261024
 depends_on: []
 scope:
@@ -52,3 +52,4 @@ C07 已有站主核准的 73 句逐字稿與 73 鏡文字方向，但尚無後�
 - `category: story` 加 `cute-mystery` 時，現行 core/drama.mjs 不允許 stats 字卡；與 C03 相同，C07 以 `category: explainer` 保持字卡 schema 有效，系列身分由 series.json 的 `kind: story` 保留。後台正式匯入時應讀回分類顯示及系列關聯。
 - 五句分段使機器場景和 TTS 片段由原報價 73 增為 78；任何付費請求前需重新核價、部署可歸因預算路由、核對既有費用，並實測片頭後正文純語音至少 480 秒。圖片及成片另外驗收插圖時間至少 70%。
 - `reviews/canonical-video-preflight-20261024.md` 是詳細非付費收據；本票不授權匯入、上傳或發布。
+- 2026-10-24：非付費轉檔 PR #1807 已以 squash commit `319d09595cf04ee7866403c47cddb0e04696eacc` 合併。上方未勾的單集預算路由、實際語音、圖片與成片驗收刻意留給後續製作票；`tasks/open/2026-10-23-reconcile-c-series-prior-charges-and.md` 保留 C07 的費用／路由 HOLD。本票只結案已完成的 canonical 轉檔，不代表影片可上架。

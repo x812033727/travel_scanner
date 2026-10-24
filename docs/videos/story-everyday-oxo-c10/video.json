@@ -1,0 +1,1723 @@
+{
+  "schema_version": 1,
+  "slug": "story-everyday-oxo-c10",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北日常說話語調。以克制的說書節奏講真實設計故事；外文、年份、來源歸因放慢，章末問題留半拍。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "series": {
+    "slug": "brand-stories-everyday-reversals",
+    "episode": 10,
+    "chapter": 1
+  },
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "c100108",
+      "payoff": "c100507",
+      "what": "陌生新握柄如何讓顧客親手試"
+    },
+    {
+      "setup": "c100206",
+      "payoff": "c100401",
+      "what": "舊廚具的形狀如何改"
+    },
+    {
+      "setup": "c100209",
+      "payoff": "c100301",
+      "what": "為何不能只按一雙手設計"
+    },
+    {
+      "setup": "c100214",
+      "payoff": "c100301",
+      "what": "團隊向哪些使用者找答案"
+    },
+    {
+      "setup": "c100314",
+      "payoff": "c100405",
+      "what": "加寬之外還需要什麼形狀和材料"
+    },
+    {
+      "setup": "c100410",
+      "payoff": "c100507",
+      "what": "側邊刻紋如何引出試握機會"
+    },
+    {
+      "setup": "c100416",
+      "payoff": "c100504",
+      "what": "新外形進商店遇到什麼阻力"
+    },
+    {
+      "setup": "c100505",
+      "payoff": "c100507",
+      "what": "零售阻力如何轉成試用展示"
+    },
+    {
+      "setup": "c100514",
+      "payoff": "c100601",
+      "what": "早期邀人試握的刻紋是否一直保留"
+    },
+    {
+      "setup": "c100604",
+      "payoff": "c100605",
+      "what": "量匙選尺寸的問題怎麼改"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "OXO：一支難握的削皮刀，怎麼變成更多人能用的廚具？｜品牌故事",
+    "description": "一支舊削皮刀先卡住了一雙手。OXO 從不同使用者的握持問題出發，改造軟握柄與一系列廚具；到商店後，陌生外形又碰上新的阻力。這集追從研究、設計到讓顧客親手試握的過程。\n\n早期情節依品牌、設計團隊與館方多年後回顧；1989 年是館藏標示的設計年，1990 年是品牌記載的推出年。胡蘿蔔試用展示與 2000 年採訪中的零售回憶不視為同一門市或同日事件。畫面均為匿名原創概念插畫，不重建真人、實物或當年展會。資料查核日期：2026-10-23。",
+    "tags": [
+      "OXO",
+      "Good Grips",
+      "削皮刀",
+      "通用設計",
+      "品牌故事",
+      "日用品的意外轉身"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "細柄刀\n**怎麼變？**",
+      "tag": "品牌故事",
+      "brand": "OXO",
+      "shot": "c10-sc-c100101"
+    }
+  },
+  "sources": [
+    {
+      "title": "OXO, About Us",
+      "url": "https://www.oxo.com/aboutus",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "Cooper Hewitt, Getting a Grip on User-Inspired Design",
+      "url": "https://www.cooperhewitt.org/2018/02/12/getting-a-grip-on-user-inspired-design-2/",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "MoMA, Good Grips Peeler",
+      "url": "https://www.moma.org/collection/works/3758",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "OXO, Behind the Design of OXO’s Iconic Good Grips Handles",
+      "url": "https://www.oxo.com/blog/behind-the-scenes/behind-design-oxos-iconic-good-grips-handles",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "Design Council, OXO Good Grips",
+      "url": "https://www.design-council.org.uk/en/Case-Studies/All-Case-Studies/OXO-Good-Grips/",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "Los Angeles Times, 2000 interview",
+      "url": "https://www.latimes.com/archives/la-xpm-2000-sep-14-cl-20664-story.html",
+      "checked_on": "2026-10-23"
+    },
+    {
+      "title": "Smart Design, OXO Partnership",
+      "url": "https://smartdesignworldwide.com/projects/oxo-partnership/",
+      "checked_on": "2026-10-23"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "c10-sc-c100101",
+      "chapter": "好用的工具，先卡在手上",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 一隻匿名手指剛碰到舊式無標誌細金屬削皮刀的柄，另一端的刀片尚未碰到馬鈴薯，焦點只在握柄與手指。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100101"
+      ],
+      "lines": [
+        {
+          "id": "c100101",
+          "text": "一支削皮刀，刀片還沒碰到馬鈴薯，握柄就先出了問題。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100102",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 普羅旺斯廚房的概念插圖：匿名女性在備菜檯前伸手拿舊式無標誌削皮刀；無可辨認肖像，不作確切歷史現場。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100102"
+      ],
+      "lines": [
+        {
+          "id": "c100102",
+          "text": "八〇年代末的法國普羅旺斯，貝琪・法伯想在廚房用一支舊式削皮刀。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100103",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名手嘗試握住細硬金屬柄，手指略顯費力但不畫病變或疼痛量表；焦點是柄的細度。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100103"
+      ],
+      "lines": [
+        {
+          "id": "c100103",
+          "text": "她有關節炎，細硬的柄讓這個平常的動作變得難做。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 廚房檯邊另一位匿名成人停下動作，看向手邊那支細柄刀；兩人只作不可辨認的概念人物。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100104"
+      ],
+      "lines": [
+        {
+          "id": "c100104",
+          "text": "看見這一幕的丈夫山姆，過去就做過廚具，卻也得重新看這支小工具。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100105",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 一支原創無標誌的削皮刀從畫面暗處轉到光裡，寬厚深色柔軟握柄居中，不複製可辨識實物比例或字樣。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100105"
+      ],
+      "lines": [
+        {
+          "id": "c100105",
+          "text": "後來出現的答案，是一支有寬厚黑色軟柄的削皮刀。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100106",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1990",
+            "label": "商品推出"
+          }
+        ],
+        "source": "OXO 2017 品牌回顧"
+      },
+      "claims": [
+        "c100106"
+      ],
+      "lines": [
+        {
+          "id": "c100106",
+          "text": "可是，一九九〇年帶它走向商店時，新的問題又來了。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念商店貨架前，匿名店家把新形狀的無標誌寬柄刀拿在手裡觀察，空白價籤不生成數字；不是可考店家重建。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100107"
+      ],
+      "lines": [
+        {
+          "id": "c100107",
+          "text": "山姆十年後回想，有些零售商嫌它長得陌生，價錢也比熟悉的工具高。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100108",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 兩雙不同大小的匿名手從左右接近同一支原創寬柄削皮刀，焦點是誰會拿起這個工具。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100108"
+      ],
+      "lines": [
+        {
+          "id": "c100108",
+          "text": "這柄得拿起來才懂，有些店家卻先嫌它怪又貴；山姆怎麼讓顧客有機會親手試？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100201",
+      "chapter": "一個家務動作，撞上老設計",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 法國鄉間廚房的概念遠景，窗邊一張空的備菜檯；不重建真實住所或人物行蹤。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100201"
+      ],
+      "lines": [
+        {
+          "id": "c100201",
+          "text": "先回到那間廚房。山姆當時已離開自己創辦的廚具公司 Copco。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "先回到那間廚房。山姆當時已離開自己創辦的廚具公司 考普寇。",
+          "say_for": "b43da1bb2df9"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100202",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 無字食材與畫筆並列在廚房檯的一角，匿名兩人在背景備菜；只象徵烹飪與藝術愛好。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100202"
+      ],
+      "lines": [
+        {
+          "id": "c100202",
+          "text": "他和身為建築師的貝琪，原本到普羅旺斯享受做菜與藝術。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100203",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 一排常見無標誌廚具中，匿名手獨獨停在細柄削皮刀前；焦點是這件平凡工具。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100203"
+      ],
+      "lines": [
+        {
+          "id": "c100203",
+          "text": "他們並不是第一次拿起廚具；令人停住的，偏偏是最普通的削皮刀。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100204",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 細金屬柄在指腹間只留下狹小接觸面，手仍準備削皮；不做醫療症狀特寫。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100204"
+      ],
+      "lines": [
+        {
+          "id": "c100204",
+          "text": "舊金屬柄要靠手指捏緊，貝琪的手做這個動作並不輕鬆。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100205",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手把細柄刀放回檯上，鏡頭定在工具而非人的手部缺陷；概念比喻，不重演特定動作。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100205"
+      ],
+      "lines": [
+        {
+          "id": "c100205",
+          "text": "要是只說「她的手不方便」，工具的形狀就不用接受檢查了。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100206",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 無字素描紙上只有細柄輪廓，匿名手用鉛筆圈住柄部；概念畫面，不仿製真草圖。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100206"
+      ],
+      "lines": [
+        {
+          "id": "c100206",
+          "text": "山姆想到的卻是另一個問題：為什麼廚具總要人配合它？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100207",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 幾支一般細柄廚具在素色檯面上換了不同顏色，握柄輪廓仍相同；僅作設計問題的概念示意。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100207"
+      ],
+      "lines": [
+        {
+          "id": "c100207",
+          "text": "那時許多常見工具還是細柄；換個顏色，不會讓難握的動作消失。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100208",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一隻較大的匿名手拿起無標誌細柄工具，桌面留另一種手形的淡淡草圖；焦點在眼前這次抓握。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100208"
+      ],
+      "lines": [
+        {
+          "id": "c100208",
+          "text": "這個疑問也不只落在關節炎者身上：手小、手大、力氣不同，握法就不同。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100209",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 單一手形紙模套到不同大小的手形剪影時對不齊，焦點是尺寸差異；純設計比喻，非原型史料。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100209"
+      ],
+      "lines": [
+        {
+          "id": "c100209",
+          "text": "一支只按貝琪的手形訂做的刀，未必能回答其他人在廚房遇到的麻煩。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100210",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 空白廚具設計檯上不只一把削皮刀，還有未完成的其他無標誌工具輪廓；不指定首批數量。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100210"
+      ],
+      "lines": [
+        {
+          "id": "c100210",
+          "text": "山姆沒有留在「替她換一個柄」；他想做一整列一般人也願意用的工具。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100211",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "設計目標",
+            "label": "更廣的使用者"
+          }
+        ],
+        "source": "Design Council 後來訪談"
+      },
+      "claims": [
+        "c100211"
+      ],
+      "lines": [
+        {
+          "id": "c100211",
+          "text": "英國設計協會後來記下他的說法：從一開始，就希望吸引更廣的市場。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100212",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手把一支寬柄刀放進普通廚具抽屜，旁邊是無標誌家用品，焦點是它仍屬日常廚房。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100212"
+      ],
+      "lines": [
+        {
+          "id": "c100212",
+          "text": "這讓題目變難了：要照顧握力有限的人，也要讓廚具看起來仍是廚具。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100213",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1989",
+            "label": "產品設計工作"
+          }
+        ],
+        "source": "Cooper Hewitt／MoMA"
+      },
+      "claims": [
+        "c100213"
+      ],
+      "lines": [
+        {
+          "id": "c100213",
+          "text": "一九八九年，OXO 的產品設計工作已展開；下一步得找出，究竟哪裡難用。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "一九八九年，歐、艾克斯、歐 的產品設計工作已展開；下一步得找出，究竟哪裡難用。",
+          "say_for": "9fa24c0225da"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100214",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 紐約設計工作室的概念空間，無字草圖與工具模型散在一張桌上，匿名團隊看向使用者研究檯；不仿真特定場地。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100214"
+      ],
+      "lines": [
+        {
+          "id": "c100214",
+          "text": "答案不能只問山姆自己。紐約的 Smart Design 團隊，把目光轉向使用者。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "答案不能只問山姆自己。紐約的 史瑪特迪賽恩 團隊，把目光轉向使用者。",
+          "say_for": "2a779f54899c"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100301",
+      "chapter": "不只問一雙手",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一位匿名使用者在概念研究桌旁拿起無標誌削皮刀，設計師在背景觀察；旁白承擔其餘受訪群體，不畫可考訪談會議。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100301"
+      ],
+      "lines": [
+        {
+          "id": "c100301",
+          "text": "團隊找來一般消費者，也向廚師和紐約的關節炎群體了解用工具的困難。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100302",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 設計檯上並列一支生鏽金屬工具與一支裂開塑膠柄工具，匿名手指出不舒服的抓握處；只畫館方描述的類型，不稱同一件原物。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100302"
+      ],
+      "lines": [
+        {
+          "id": "c100302",
+          "text": "他們把現成廚具放到眼前檢查：生鏽的金屬、裂開的塑膠，還有不舒服的握柄。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100303",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手從桌面拿起一般削皮刀，動作停在抓住握柄的一刻；本鏡只表達開始抓握。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100303"
+      ],
+      "lines": [
+        {
+          "id": "c100303",
+          "text": "問題不只是刀能不能削；人得先抓住它、控制它，再把動作做完。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100304",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 兩雙握力與大小不同的匿名手各握一支相同細柄工具，焦點在接觸位置不同；不畫醫療量表。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100304"
+      ],
+      "lines": [
+        {
+          "id": "c100304",
+          "text": "對握力有限的人，這些步驟可能各有阻力；其他人用起來，也未必舒服。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100305",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2000",
+            "label": "參與者回顧早期研究"
+          }
+        ],
+        "source": "Los Angeles Times 2000 採訪"
+      },
+      "claims": [
+        "c100305"
+      ],
+      "lines": [
+        {
+          "id": "c100305",
+          "text": "參與早期設計的派翠西亞・摩爾，十年後談到當時研究過的手部動作。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100306",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 一隻匿名手正在扭轉無標誌廚具的握柄，焦點是手腕旋轉；推拉與擠壓由旁白說明，不合成測試流程。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100306"
+      ],
+      "lines": [
+        {
+          "id": "c100306",
+          "text": "有人要扭轉，有人要推拉，有人得擠壓；同一支柄，會碰上不同的施力方式。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100307",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 匿名設計師手把一個未定型泡棉握柄模型放在桌上，旁邊幾個不同輪廓模型失焦；不重建真原型外形。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100307"
+      ],
+      "lines": [
+        {
+          "id": "c100307",
+          "text": "設計師做了許多泡棉模型，讓握法與手腕動作能被實際試探。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100308",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 概念設計桌上，兩個不同輪廓的無標誌泡棉握柄模型並排，一隻匿名設計師的手用鉛筆圈出形狀差異。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100308"
+      ],
+      "lines": [
+        {
+          "id": "c100308",
+          "text": "模型一個接一個擺上桌；團隊比較的不是外形漂不漂亮，而是換個動作還能不能控制。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100309",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 一個偏窄的泡棉握柄在另一隻較大的匿名手中顯得不合，焦點是形狀與手的差異；概念示意。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100309"
+      ],
+      "lines": [
+        {
+          "id": "c100309",
+          "text": "若某個形狀只適合一種握姿，換一雙手，就可能又回到原來的問題。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100310",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 抽象設計桌上的廚具被放在日常家用品旁，而非醫療場景；焦點是日常消費者使用的工具。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100310"
+      ],
+      "lines": [
+        {
+          "id": "c100310",
+          "text": "摩爾在那篇採訪裡說，她當時把這看成消費者會遇到的問題。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100311",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名手把一支簡潔無標誌廚具放進家用抽屜，背景醫療器具僅作模糊對照；不畫團隊否決任何真版本。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100311"
+      ],
+      "lines": [
+        {
+          "id": "c100311",
+          "text": "她談到的顧慮是：只在醫療用品的樣子裡找答案，可能讓人不想公開拿出來用。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100312",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 普通家庭廚房的概念場景中，無標誌寬柄刀自然放在料理檯上，焦點是融入日常使用。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100312"
+      ],
+      "lines": [
+        {
+          "id": "c100312",
+          "text": "於是，新工具既得讓手能用，也得讓人願意把它放在平常的廚房。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100313",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 桌面上幾支不同工具的未完成握柄草圖指向同一個寬橢圓輪廓，無字無商標；只表達可延用方向。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100313"
+      ],
+      "lines": [
+        {
+          "id": "c100313",
+          "text": "團隊要的不是替每個人訂做一把刀，而是能接到不同廚具上的同一種寬柄。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100314",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 一隻匿名手在純色背景中碰向寬橢圓柄的邊緣，鏡頭停在尚未握緊的一刻，留下形狀問題。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100314"
+      ],
+      "lines": [
+        {
+          "id": "c100314",
+          "text": "但把柄單純加粗，真的就能讓手穩住嗎？接著還要看它的形狀與材料。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100401",
+      "chapter": "握柄不是一塊海綿",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 原創無標誌寬柄工具的橢圓截面立在桌上，旁邊細圓管只作失焦對比；焦點是橢圓形。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100401"
+      ],
+      "lines": [
+        {
+          "id": "c100401",
+          "text": "成形的握柄先變得寬大，截面不是圓管，而是橢圓。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100402",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 匿名手掌包住橢圓握柄，簡化弧線示意它在掌中較不易轉動；非性能測試或精確人體工學圖。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100402"
+      ],
+      "lines": [
+        {
+          "id": "c100402",
+          "text": "摩爾後來回想，團隊把柄做成橢圓，就是不希望它在掌心裡一直打轉。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100403",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 兩隻大小不同的匿名手依序握同一個原創寬柄模型，焦點是不同接觸位置，不畫同時戴在一柄上。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100403"
+      ],
+      "lines": [
+        {
+          "id": "c100403",
+          "text": "寬度和形狀一起工作，才讓不同大小、不同力道的手有可抓的位置。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100404",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 清水一滴落在匿名手旁的廚房檯面，手將碰到寬柄；僅引出潮濕情境，不宣稱畫面實測防滑。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100404"
+      ],
+      "lines": [
+        {
+          "id": "c100404",
+          "text": "可是廚房裡的手還會沾水；只改輪廓，仍少了一層接觸感。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100405",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 匿名設計師把柔軟深色材料片覆在簡化工具握柄芯材上，焦點是材料接合；非原始製程照片。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100405"
+      ],
+      "lines": [
+        {
+          "id": "c100405",
+          "text": "團隊選用一種能做得柔軟、又能包在工具上的熱塑性橡膠。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100406",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 一滴水在原創深色軟柄表面旁滑過，匿名手保持輕握；只作品牌描述的概念插圖，不畫測力或成功率。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100406"
+      ],
+      "lines": [
+        {
+          "id": "c100406",
+          "text": "品牌回顧說，這材料濕了仍不容易滑，還適合和不鏽鋼等部件結合。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100407",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 原創無標誌削皮刀的金屬刀片與深色橡膠握柄清楚分件，焦點是兩種材料相接。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100407"
+      ],
+      "lines": [
+        {
+          "id": "c100407",
+          "text": "握的地方可以軟，削皮的刀刃不能跟著軟；兩種材料，得接在同一支刀上。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100408",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手握住寬柄，金屬刃從馬鈴薯表面削下一小片皮；日常使用概念，不冒充產品性能測試。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100408"
+      ],
+      "lines": [
+        {
+          "id": "c100408",
+          "text": "到了馬鈴薯上，手握著軟柄控制方向，金屬刃才沿著皮走。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100409",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 原創橢圓軟柄側面的細小彈性刻紋被一根匿名手指輕碰，焦點只在刻紋。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100409"
+      ],
+      "lines": [
+        {
+          "id": "c100409",
+          "text": "握柄兩側還有一排細細的彈性刻紋，手指碰上去會感到不同。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100410",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念展示檯前，一隻匿名顧客手伸向有彈性刻紋的無標誌工具；不把伸手畫成購買。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100410"
+      ],
+      "lines": [
+        {
+          "id": "c100410",
+          "text": "品牌多年後說，這些小凸緣也會邀人伸手試握；外形本身成了試用的邀請。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100411",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 設計檯上，一個寬柄模型旁多出幾件尚未完成的廚具輪廓；焦點仍在中央握柄。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100411"
+      ],
+      "lines": [
+        {
+          "id": "c100411",
+          "text": "現在，設計師有了可以抓、可以控的柄；但山姆要賣的不是單獨一個零件。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100412",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot. 一支原創無標誌開罐器擺到設計檯中央，寬橢圓握柄清楚可見，其他工具只作模糊背景；不表示同日同批上市。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100412"
+      ],
+      "lines": [
+        {
+          "id": "c100412",
+          "text": "同一個握柄思路，接到削皮刀，也接到刀具與開罐器。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100413",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名手由削皮刀移到另一件無標誌廚具，鏡頭只追同樣的寬橢圓接觸點。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100413"
+      ],
+      "lines": [
+        {
+          "id": "c100413",
+          "text": "換了工具，手還會認得這個寬厚、柔軟的接觸點。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100414",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手把一件無標誌寬柄工具放進空白包裝盒，焦點只在入盒的一刻；不仿真當年包裝或流程順序。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100414"
+      ],
+      "lines": [
+        {
+          "id": "c100414",
+          "text": "Cooper Hewitt 的回顧提到，設計不只做到原型：材料、製造、包裝都被放進同一個流程。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "庫柏休伊特 的回顧提到，設計不只做到原型：材料、製造、包裝都被放進同一個流程。",
+          "say_for": "bc6e4345072f"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100415",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 普通商店貨架示意裡，匿名顧客先看到一件完整的無標誌寬柄廚具；背景無可讀標價。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100415"
+      ],
+      "lines": [
+        {
+          "id": "c100415",
+          "text": "這很實際。商品到了貨架上，顧客首先看見的常是整個工具，而不是握力研究。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100416",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 陌生形狀的無標誌寬柄刀停在空白貨架邊緣，匿名店家手尚未將它放上去；焦點是上架前一刻。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100416"
+      ],
+      "lines": [
+        {
+          "id": "c100416",
+          "text": "所以，從手上的原型走到商店，還有一道不同的關卡：陌生的外形會不會被接受？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100501",
+      "chapter": "設計通過了手，還要通過貨架",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1989",
+            "label": "MoMA 標示的設計年"
+          }
+        ],
+        "source": "MoMA 館藏頁"
+      },
+      "claims": [
+        "c100501"
+      ],
+      "lines": [
+        {
+          "id": "c100501",
+          "text": "一九八九年，這支削皮刀先在設計桌上有了形狀；上市還要再等一年。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100502",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1990",
+            "label": "品牌稱商品推出"
+          }
+        ],
+        "source": "OXO 2017 品牌回顧"
+      },
+      "claims": [
+        "c100502"
+      ],
+      "lines": [
+        {
+          "id": "c100502",
+          "text": "一九九〇年，商品推出。為手改造的刀，現在得先讓店家願意擺上架。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100503",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 抽象家用品展會入口，一排無字展檯上是原創無標誌廚具；不重建特定歷史展會現場。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100503"
+      ],
+      "lines": [
+        {
+          "id": "c100503",
+          "text": "山姆十年後回想，他們先在舊金山的料理用品展，拿出這批新廚具。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100504",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念展檯邊，匿名店家拿起新形狀的寬柄工具遲疑地端詳，空白價籤在遠處；不是全部零售商。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100504"
+      ],
+      "lines": [
+        {
+          "id": "c100504",
+          "text": "他記得店家的反應並不熱烈：外形太陌生，價錢也比熟悉的工具高。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100505",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 空白商店貨架前，一支原創寬柄刀在店家手中離架面還差一小段距離；不畫成交或拒絕紀錄。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100505"
+      ],
+      "lines": [
+        {
+          "id": "c100505",
+          "text": "對店家來說，這支刀還沒讓顧客削下一片皮，就得先佔貨架上一個位置。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100506",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 深色寬柄上的細小彈性刻紋置於燈下，沒有手碰它，讓觸感成為未知。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100506"
+      ],
+      "lines": [
+        {
+          "id": "c100506",
+          "text": "那排軟軟的刻紋，只有看著它的人，還不知道摸起來如何。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100507",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念店內試用桌：一支無標誌寬柄削皮刀放在一碗胡蘿蔔旁，匿名手準備取用；只是品牌回顧的活動示意，不重建特定門市。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100507"
+      ],
+      "lines": [
+        {
+          "id": "c100507",
+          "text": "品牌後來回顧，山姆曾和店家合作，把削皮刀放在一碗胡蘿蔔旁邊讓人試。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100508",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名顧客手拿起試用桌上的原創寬柄刀，旁邊放一碗胡蘿蔔，焦點在手與柄接觸；不畫購買或銷售數字。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100508"
+      ],
+      "lines": [
+        {
+          "id": "c100508",
+          "text": "店裡的人能走到桌前，拿起刀，當場對著胡蘿蔔試；大黑柄終於不只給眼睛看。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100509",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 另一位匿名店家看著胡蘿蔔試用桌，表情略困惑，焦點是陌生展示方法；非真實人物或確切事件。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100509"
+      ],
+      "lines": [
+        {
+          "id": "c100509",
+          "text": "品牌也說，這種展示一開始讓人看得發愣；拿胡蘿蔔在店裡試刀，實在不像平常的賣法。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100510",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念店內試用桌前，匿名顧客手正伸向無標誌寬柄削皮刀，一碗胡蘿蔔放在旁邊；不畫交易或成效。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100510"
+      ],
+      "lines": [
+        {
+          "id": "c100510",
+          "text": "橢圓形、軟材料和刻紋，只有到了掌心，才可能從陌生外形變成摸得到的差別。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100511",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名顧客在普通商店拿起寬柄工具好奇端詳；概念畫面，不當作當年照片。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100511"
+      ],
+      "lines": [
+        {
+          "id": "c100511",
+          "text": "另在二〇〇〇年的採訪裡，摩爾回想，商品進店後，顧客覺得這個新外形有吸引力。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100512",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2017 品牌回顧",
+            "label": "試用展示延伸"
+          }
+        ],
+        "source": "OXO 2017 品牌回顧"
+      },
+      "claims": [
+        "c100512"
+      ],
+      "lines": [
+        {
+          "id": "c100512",
+          "text": "而品牌二〇一七年回顧：店家很快看見試用的價值；後來，這類展示出現在許多店與產品線。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100513",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot. 原創無標誌寬柄削皮刀放在概念試用桌上，一隻匿名手正準備握住，後方一系列無標誌廚具失焦；不畫成交。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100513"
+      ],
+      "lines": [
+        {
+          "id": "c100513",
+          "text": "這支陌生的刀不必只靠貨架上的樣子說話；顧客多了一張可以親手試的桌子。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100514",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 原創無標誌軟握柄側邊一排細小彈性刻紋居中，一隻匿名手指剛離開刻紋，鏡頭停在這排細節。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100514"
+      ],
+      "lines": [
+        {
+          "id": "c100514",
+          "text": "可是，最初那排請人「摸摸看」的細刻紋，等這種握柄不再陌生，還得一直留下嗎？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100601",
+      "chapter": "把不同的手留在設計裡",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2017 品牌回顧",
+            "label": "新工具不一定留刻紋"
+          }
+        ],
+        "source": "OXO 2017 品牌回顧"
+      },
+      "claims": [
+        "c100601"
+      ],
+      "lines": [
+        {
+          "id": "c100601",
+          "text": "品牌在二〇一七年回顧：當這種防滑握柄已被認得，許多新工具仍保留舒服的握感，側邊卻沒有那排刻紋。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100602",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up. 原創無標誌倒油嘴的小凸緣貼近兩個尺寸不同的空白瓶口輪廓，鏡頭只聚焦凸緣與瓶口接合；非實物產品重建。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100602"
+      ],
+      "lines": [
+        {
+          "id": "c100602",
+          "text": "刻紋也沒完全退場。一種倒油嘴用小凸緣貼合大小不同的瓶口；原本招呼手指的細節，換了工作。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100603",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "刻紋角色",
+            "label": "從招手試握到按用途保留"
+          }
+        ],
+        "source": "OXO 2017 品牌回顧"
+      },
+      "claims": [
+        "c100603"
+      ],
+      "lines": [
+        {
+          "id": "c100603",
+          "text": "品牌說，如今主要在它能發揮功能時才留下刻紋；早期用來吸引試握的外形，不必原封不動傳下去。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100604",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot. 一排原創無標誌量匙整齊放在桌上，匿名手停在選擇其中一支的一刻；刻度區空白，字留後製。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100604"
+      ],
+      "lines": [
+        {
+          "id": "c100604",
+          "text": "再看量匙：除了拿得住，使用者還得在一排尺寸裡挑出要用的那支。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100605",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 一支原創無標誌量匙在桌上，寬柄與彩色識別塊清楚，刻度區保持空白供後製大字；圖片模型不畫字。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100605"
+      ],
+      "lines": [
+        {
+          "id": "c100605",
+          "text": "Cooper Hewitt 記下的解法，是把量匙柄做大、字放大，再用顏色幫忙辨認。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "庫柏休伊特 記下的解法，是把量匙柄做大、字放大，再用顏色幫忙辨認。",
+          "say_for": "5a480365451c"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100606",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名手拿起一支彩色寬柄量匙，鏡頭焦點從手指移到柄旁空白標示區；大字由後製加，不生成可讀文字。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100606"
+      ],
+      "lines": [
+        {
+          "id": "c100606",
+          "text": "這次要改的，不只手碰到的地方，還有眼睛找尺寸的那一刻。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100607",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 園藝工作台前，一隻匿名手拿起無標誌園藝工具試握，烤具只留模糊剪影在背景；不畫件數或性能結論。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100607"
+      ],
+      "lines": [
+        {
+          "id": "c100607",
+          "text": "後來，這套工具也走到花園與烤爐旁；換了場景，手要抓的東西又不一樣。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100608",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot. 匿名手把一件無標誌家用品放進簡化的空白包裝，旁邊少量未使用包材失焦；概念畫面不宣稱量化減廢成效。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100608"
+      ],
+      "lines": [
+        {
+          "id": "c100608",
+          "text": "團隊甚至重新想過外層包裝，試著減少廢棄物與掩埋空間；問題不再只停在握柄。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100609",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一支原創無標誌寬柄削皮刀置於純色展示台，兩側是大小不同的匿名手剪影；不仿製任何館藏圖像或真實展陳。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c100609"
+      ],
+      "lines": [
+        {
+          "id": "c100609",
+          "text": "MoMA 後來收藏那支一九八九年設計的削皮刀，將它放進「通用設計」的脈絡。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍",
+          "say": "莫瑪 後來收藏那支一九八九年設計的削皮刀，將它放進「通用設計」的脈絡。",
+          "say_for": "0140923767cb"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100610",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up. 量匙的彩色寬柄與倒油嘴的小凸緣並列在素色檯面，焦點是兩件工具各有不同的易用細節；皆為原創無標誌示意。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c100610"
+      ],
+      "lines": [
+        {
+          "id": "c100610",
+          "text": "「通用」不是每支工具都長一樣；量匙上的大字，和倒油嘴上的小凸緣，回答的是不同麻煩。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100611",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名手停在細柄削皮刀前，另一支原創寬柄刀放在旁邊，焦點是可被重新設計的握柄而非人物缺陷。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c100611"
+      ],
+      "lines": [
+        {
+          "id": "c100611",
+          "text": "這些變化往前追，起點還是那個提問：手被一件日用品擋住時，究竟該改誰？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100612",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 原創無標誌寬柄削皮刀置於簡化的廚房與店內試用桌交界，一隻匿名手伸向握柄；兩種場景只是主題剪接，不作同日紀錄。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c100612"
+      ],
+      "lines": [
+        {
+          "id": "c100612",
+          "text": "一雙難握的手讓握柄改變；一碗胡蘿蔔，讓那個改變有機會被別人的手親自感覺。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100613",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. 家中普通廚具抽屜拉開，幾件無標誌日用品露出不同難握的柄，留白讓觀眾思考；不指定真品牌。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c100613"
+      ],
+      "lines": [
+        {
+          "id": "c100613",
+          "text": "你家裡有哪件日用品，總像在要求你先學會遷就它？",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c10-sc-c100614",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名手合上廚具抽屜，原創寬柄削皮刀留在乾淨料理檯前景，右側留後製訂閱與片尾連結安全區，模型不畫文字。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c100614"
+      ],
+      "lines": [
+        {
+          "id": "c100614",
+          "text": "留言告訴我們；訂閱奇聞檔案局，下次一起追另一件熟悉物品背後的設計決定。",
+          "emotion": "自然說書；外文、年份和來源歸因放慢，章末問題留半拍"
+        }
+      ]
+    }
+  ]
+}
