@@ -1,0 +1,11 @@
+# R5 B post-freeze binding notes
+
+The raw 13 answers in `r5-isolated-blind-b.raw.md` were frozen before the official prompts or CLI schema were opened. They were independent narrative checks because the isolation task supplied only `script.md`; therefore they are **not** an official blind-panel ballot. I read the official prompts in `tools/video/core/narrative.mjs` only afterward and made `r5-isolated-blind-b.answers.json` as a post-freeze diagnostic mapping. No brief, claims, source dossier, loop table, or prior review was read before the raw freeze. After it, a broad repository search incidentally returned filenames and snippets from prior reviews; that exposure prevents calling the later JSON a pristine official blind review.
+
+The official `payoffs` answer is No: `s61021` asks whether people ashore knew the cargo; `s61022` says the ship failed to warn citizens sufficiently. Warning adequacy is new information, but does not directly establish what people ashore knew. The official `no_recap` answer is No: `s61003` already names the naval yard powder magazine, then `s61035` names it again as the second danger without an explicit callback to the opening. Other opening questions, including safety news and shelter at `s61004`, are paid at `s61066` and `s61081`.
+
+The frozen raw note had a transcription error: its final row cites nonexistent `s61073`; the relevant lines are `s61071` (search areas assigned) and `s61072` (areas marked). The raw file was left unchanged to preserve the freeze. The CLI-rendered outro line ID is `s61999`; `script.md` grouped it under the `outro` heading.
+
+This is a narrative diagnostic while a separate spoken-fact hold requires a later R6. It does not claim R5 formal acceptance.
+
+The official CLI accepted all 13 cited JSON answers and wrote `r5-isolated-blind-b.bound.json`, bound to panel rules SHA-256 `5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75` and rendered narration SHA-256 `d1fff46e4f46c6c6ec7ae68af549112a5270b6fe5c8674d5f9d480ed46892b71`. It exited 1 as expected: **11 Yes / 2 No**, with required failures `payoffs` and `no_recap`; no advisory failure. The script stayed at SHA-256 `f0b56d78a14ca5ccf6c87e0c95cf8947cd5ffbe1cc2c1f70e566f28e42771da5` afterward.
