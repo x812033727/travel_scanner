@@ -1,0 +1,11 @@
+# S38 R8x｜PF015 引句卡及 PF012 運鏡獨立紙審
+
+2026-10-22 UTC。**固定來源／書面畫面 PASS；PF012 新原圖及整集 storyboard 仍待。**非作者獨立核對 R8x `video.json` SHA-256 `23f0662b96ba290494b044f2cdce037ba011b5222a1137d5a38b0a5e25600615`、不變的 `script.md` `e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951`、`claims.md` `f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42`。重開固定 GITenberg Pepys 日記 `4200.txt`，原文 SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`；不是根據作者引文自行轉述。
+
+固定 [1666 年 9 月 2 日日記 L65795–65815](https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65795-L65815)先寫 Jane 聽說三百餘戶被燒，佩皮斯遂穿戴好、走到塔樓；他看見橋邊房屋失火、掛念 Michell 與 Sarah，接著原文 `So down, with my heart full of trouble, to the Lieutenant of the Tower`。因此 PF015 「心裡滿是憂慮」準確譯出其心境，副句「他走下塔樓去找官員・1666．09．02」有日期、移動與官員身分的直接依據，接在 PF014 的橋上熟人之後、PF016 官員口頭說法之前正確。卡片沒有預先宣稱熟人家已燒，沒有把官員轉述畫成或說成佩皮斯目擊。PF015 旁白與原 claims 行未變，問題句仍留到河上的撤離畫面回收。
+
+PF012 的原提示詞仍是 1666 年成年佩皮斯於室內穿衣準備出門；原文 L65804–65808 明說他聽 Jane 報訊後 `made myself ready presently, and walked to the Tower`。唯一改動是靜圖運鏡 `track left → push in`，不增加史實主張或不合年代的物件；新運鏡與人物動作並無書面衝突，但新原圖仍須驗收年齡、服飾、完整手臂及系列畫風。此運鏡改變會改 image key：本機依正式 composed prompt、MiniMax `image-01`、1K、seed 1 實算 PF012 舊 key `288d3959fc175dd9`、新 key `c7125ef4895d1925`；不能把 PF012 舊 9.29／10 verdict 直接移到 R8x。
+
+以[三葉差分](verify-75-r8x-pf015-card-structured-diff.json)比對 R8w→R8x，解析後只 `scenes[11].data.camera` 與 `scenes[14].template/data` 改變，全部 112 句台詞及其餘景不變；把這三葉逆放後，`video.json` **逐位元**恢復 R8w SHA-256 `af739ca32d19df378b942f04118377f8357b6b16d03f07a1e3203b53182c3bc9`。正式 `lint --slug curio-s38 --json` exit 0、0 errors／0 warnings。111 個正文景中 105 張仍是 `shot`（94.6%），6 張卡片；PF013–015 恰好三張連卡，未超過上限。剪輯時仍應看三張卡連續約數秒的節奏，但紙面沒有系列規則阻擋。
+
+私人 STOP 在位、jobs 空；ledger SHA-256 `8532e628f57d01fbbd9eea2e5bedaeac3c65ca22c15107745933801fb682028f`、累計 **US$0.7145／47 image／47 judge／1 music**，另有舊 US$0.0035 reservation，低於整集 US$4.58。舊 manifest SHA-256 `b03173cc2828e80a026509b5eb23628f4215e41893598dc1e8040a9ac0c0364f`、`visual_hash=6d054279b55dfe2c` 綁 R8w；R8x 計算值 `ca70ce11119245ed`，`look_hash=98a370ae40badbaf` 未變。現存 11 個 KEEP 條目及入選檔案 SHA 均核相符；移除已退件 PF015、重驗 PF012 時，其他 **10 個未動的 KEEP** 可在安全離線重綁後保留。下一次僅 PF012 在獨立紙審放行範圍內試一張新原圖加一次正式 judge，先確認即時價格、STOP／jobs、額度與整集剩餘金額，原圖及裁圖逐張目視；PF019 仍未畫。此次紙審沒有 image／judge／music 呼叫，不能稱全片畫面、音訊真人審核或成片完成。

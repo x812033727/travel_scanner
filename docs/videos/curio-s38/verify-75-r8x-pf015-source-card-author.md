@@ -1,0 +1,7 @@
+# S38 R8x｜PF015 史料引句卡與 PF012 運鏡窄修
+
+2026-10-22 UTC。R8w [PF015 快取重用正式 judge](verify-74-r8w-pf015-cache-judge-fail.md) 9.71／10 仍未通過，人物背對火光；此輪不購 PF015 第四張原圖。作者把 PF015 改為日記原文脈絡的引句卡：「心裡滿是憂慮」，副句「他走下塔樓去找官員・1666．09．02」。固定 [1666-09-02 Pepys 日記 L65811–65815](https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65811-L65815)在他登塔看橋邊失火並掛念熟人之後，緊接 `So down, with my heart full of trouble, to the Lieutenant of the Tower`；卡片沒有提前說熟人的房子已燒，也不把塔官轉述寫成親眼所見。PF015 原旁白「剛才的遠處紅光，現在有了街道和人家；他們要往哪裡退？」保持不變，PF016 接著進官員房間。
+
+移除一個 shot 後，PF011／PF012／PF016 的 `drift right`／`track left`／`drift left` 在 lint 都算連續 `drift`，所以**只把 PF012 `camera` 改為 `push in`**。PF012 現有已收原圖仍可作歷史畫面參考，但 image request key 因運鏡變化不再吻合，紙審後須在上限內對 PF012 重新限額試畫並目視原圖，不可擅自保留舊 verdict。PF013–015 恰為連續三張來源卡，仍在系列上限；正文 105／111 張為插圖（94.6%），旁白 112 句及 `script.md`、`claims.md` 不變。現行 `video.json` SHA-256 `23f0662b96ba290494b044f2cdce037ba011b5222a1137d5a38b0a5e25600615`，從 R8w SHA `af739ca32d19df378b942f04118377f8357b6b16d03f07a1e3203b53182c3bc9` 的[三葉可逆差分](verify-75-r8x-pf015-card-structured-diff.json)只有 PF012 `camera` 及 PF015 `template/data` 改變；逐項逆放可還原 R8w。正式 `lint --slug curio-s38 --json` exit 0、0 errors／0 warnings。
+
+**作者提案，待非作者史料／書面畫面紙審；尚未接受圖單。**私人 STOP 在位，jobs 空；ledger 仍 US$0.7145／47 image／47 judge／1 music，另有舊 US$0.0035 reservation，低於整集 US$4.58。舊 manifest 仍綁 R8w 且 PF015 為退件；不得據 R8x 稿推 storyboard。紙審通過後，先安全重綁圖單並核 10 張不變的 KEEP，再對 PF012 受控一張試畫；PF019 另有紙審但原圖仍待。全片尚未完成。

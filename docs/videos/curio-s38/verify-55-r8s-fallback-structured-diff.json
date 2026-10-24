@@ -1,0 +1,60 @@
+{
+  "base_sha256": "f02fdd2bd769e746b2e76206152492593f66cec1ea48e40a07cd7bf236aaf015",
+  "new_sha256": "f3f49ce1fdd64ac11189dbe8b64bb7bc486e4c03566795a500f9f8b636f3de34",
+  "only_changed_fields": [
+    "scenes[8].template",
+    "scenes[8].data",
+    "scenes[12].template",
+    "scenes[12].data",
+    "scenes[13].data.camera"
+  ],
+  "reversal": "Replace these five new field values with old values at the listed paths to restore base_sha256 byte-for-byte; raw-text reconstruction verified.",
+  "changes": [
+    {
+      "path": "scenes[8].template",
+      "id": "pf009",
+      "old": "shot",
+      "new": "big"
+    },
+    {
+      "path": "scenes[8].data",
+      "id": "pf009",
+      "old": {
+        "prompt": "Medium shot in a modest English bedroom before dawn on 2 September 1666, one adult English man in his thirties with mature facial features and a loose 1660s sleeping gown pulls a plain pale blanket over his chest while lying in a narrow wooden bed, mild indoor light on his face",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "new": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我又回到床上睡了」",
+        "sub": "1666．09．02"
+      }
+    },
+    {
+      "path": "scenes[12].template",
+      "id": "pf013",
+      "old": "shot",
+      "new": "big"
+    },
+    {
+      "path": "scenes[12].data",
+      "id": "pf013",
+      "old": {
+        "prompt": "Medium-wide shot on a high stone platform at the Tower of London on the morning of 2 September 1666, one adult English man in his thirties with mature facial features, dark hair, a dark wool doublet and linen collar watches flames among distant riverside house roofs, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "new": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我看見橋那端的房屋全在火中」",
+        "sub": "1666．09．02"
+      }
+    },
+    {
+      "path": "scenes[13].data.camera",
+      "id": "pf014",
+      "old": "drift right",
+      "new": "push in"
+    }
+  ]
+}
