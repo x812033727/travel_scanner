@@ -13,8 +13,6 @@ depends_on: []
 scope:
   - tools/video/automation/flow.mjs
   - tools/video/automation/package-refusal.test.mjs
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Dub retry on a drama-format video (brand stories) is always refused as stale
@@ -50,3 +48,6 @@ brand story or a drama was refused this way.
   page) has to press 「再做一次」 again for each language.
 - The admin button asks `window.confirm`; in a hidden in-app browser pane the dialog answers
   cancel by itself, so a click there sends nothing.
+- 2026-10-24: The owner authorized releasing only `docs/videos/long-form/review.md` and
+  `docs/videos/long-form/review.json` from this ticket for C15's independent duration
+  review binding. The remaining deployment and retry work stays open.

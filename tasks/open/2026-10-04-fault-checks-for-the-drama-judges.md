@@ -20,8 +20,6 @@ scope:
   - docs/videos/DRAMA.md
   - docs/videos/BINGE.md
   - docs/videos/ILLUSTRATED.md
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
 ---
 
 # Fault checks for the drama's judges (sheets, keyframes, clips) and sharper subject and finger checks
@@ -111,3 +109,6 @@ pass, the labelled rejects fail, and the verdict of a take asked about twice doe
 - A candidate system instruction or answer format can only be measured inside the API container
   or after a deploy; the auto-mode classifier refuses a script piped into the container, so it
   needs the owner (skill `deploy`, rule 6).
+- 2026-10-24: The owner authorized releasing only `docs/videos/long-form/review.md` and
+  `docs/videos/long-form/review.json` from this ticket for C15's independent duration
+  review binding. All other scope and unfinished judge work stay here.

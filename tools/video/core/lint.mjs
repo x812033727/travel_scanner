@@ -24,6 +24,8 @@ import { isCompilation } from "./compilation.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
+// `本文` also overlaps the start of 日本文字/日本文化; still catch a real `本文` later in the line.
+const SELF_REFERENTIAL_TEXT = /(?<!日)本文/u;
 // Narrating how the facts were checked belongs in claims.md, not in the viewer's ear.
 export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "查核後", "截至查證"];
 // The same two lists for an English narration (`narration_locale: "en"`), matched without case.
@@ -423,7 +425,11 @@ export function lintVideo(doc, context = {}) {
       error(label, `"say" was written for an older "text"; update it, then set say_for to ${textHash(line.text)}`);
     }
     if (URL.test(line.text) || URL.test(spoken)) error(label, "never read a URL aloud: say it is in the description");
-    for (const phrase of WRITTEN_ONLY) if (line.text.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
+    for (const phrase of WRITTEN_ONLY) {
+      if (phrase === "本文" ? SELF_REFERENTIAL_TEXT.test(line.text) : line.text.includes(phrase)) {
+        error(label, `"${phrase}" is written language; say it the way you would out loud`);
+      }
+    }
     for (const phrase of PROCESS_TALK) if (line.text.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
     if (english) {
       const lower = line.text.toLowerCase();
