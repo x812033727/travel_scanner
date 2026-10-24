@@ -1,7 +1,7 @@
 ---
 id: 2026-10-24-stage-exact-c20-0139-rollback-compatibility
 title: Stage exact C20 0139 rollback compatibility
-status: blocked
+status: review
 priority: P1
 area: api
 owner: codex-c20-budget-compat
@@ -85,8 +85,8 @@ match this source or redo the exact compatibility review and test. Deploy this
 installing 0139. Neither step is authorized by this code-only ticket.
 
 Draft PR #1816 is labeled `no-auto-merge` and targets current main. Task is
-blocked while the explicit CI PostgreSQL result, host verifier path release,
-and independent release review are pending. This is not a completed deployment
+in review while the explicit CI PostgreSQL result and independent release
+review are pending. This is not a completed deployment
 or paid activation.
 
 Independent read-only review confirmed the C20 HOLD, 17-account/4-hold guard,
@@ -105,3 +105,10 @@ ticket `2026-10-24-guard-reviewed-c20-rollback-pairs-in`; normal claim was
 rejected because 2026-10-14's in-progress ticket still owns them. No force
 claim or edit was made. The parent is coordinating a narrow release with the
 site owner. PR #1816 remains draft and not merge/deployment ready.
+
+Subsequently the site owner approved the exact two-path release; old ticket
+scope was narrowed without touching its remaining work. The new ticket was
+claimed normally and now implements/tests the three exact reviewed pairs.
+The earlier blocker is resolved in code, but the new PR head's CI PostgreSQL
+and four required checks are still pending. The `/ready` runtime limitation
+and separate deployment acceptance gate above remain material.

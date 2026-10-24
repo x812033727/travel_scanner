@@ -1,14 +1,14 @@
 ---
 id: 2026-10-24-guard-reviewed-c20-rollback-pairs-in
 title: Guard reviewed C20 rollback pairs in host verification
-status: blocked
+status: review
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-c20-budget-compat
+claimed_at: 2026-10-24T05:53:59Z
 created_at: 2026-10-24T05:47:47Z
 completed_at:
-branch:
+branch: codex/c20-budget-0139-compat-20261024
 depends_on: []
 scope:
   - .agents/skills/deploy/scripts/host-verify.sh
@@ -28,19 +28,19 @@ even after the guard checked the exact account/hold state.
 
 ## Definition of done
 
-- [ ] After scope release, host verification accepts only exact 0132→0133,
+- [x] After scope release, host verification accepts only exact 0132→0133,
       0137→0138, and 0138→0139 pairs when exactly one image head exists,
       guard exit is zero, the guard's expected head equals that image head,
       and its state is `rollback-compatible`.
-- [ ] Unknown, reversed, multiple-head, missing readback and guard-error states
+- [x] Unknown, reversed, multiple-head, missing readback and guard-error states
       still fail; the existing exact-head path remains unchanged.
 
 ## Steps
 
 - [x] Read current script and other verification paths; prepare narrow patch
       and tests without editing the occupied file.
-- [ ] Release the two exact scope paths through task-board coordination.
-- [ ] Add a small exact-pair predicate to `host-verify.sh`; test its positive
+- [x] Release the two exact scope paths through task-board coordination.
+- [x] Add a small exact-pair predicate to `host-verify.sh`; test its positive
       and negative matrix in `tools/deploy-host-verify.test.mjs` and run `bash -n`.
 - [ ] Rerun CI and review before declaring C20 compatibility release-ready.
 
@@ -74,5 +74,18 @@ covers files already being changed by 2026-10-14-recognize-the-video-monthly-dra
 (claude-opus-5-5-video-cloud-backup); run 'next' for a task that is free,
 or pass --force`. That old ticket is status=in-progress, claimed at
 2026-10-22T02:15:08Z; its branch/PR is absent according to the parent audit.
-This ticket is blocked pending the owner's narrow release. No occupied file
-has been edited.
+The site owner later approved releasing only these two scope paths from the
+older ticket. Its other scope, status, owner and pending host acceptance were
+preserved. Ordinary claim of this ticket then succeeded without `--force`.
+The exact case gate and test are now implemented; the outer one-head, guard
+exit 0 and expected=image-head requirements still wrap it. Local Git Bash
+`bash -n` passed. Focused Node test: 3 passed, 2 original awk tests skipped
+because `awk` is unavailable in this PowerShell environment; the new Bash
+pair-matrix test did run. CI on Linux must exercise all tests. No deployment,
+0139 migration or paid dispatch was performed.
+
+An attempted local `npm run test:tools` was stopped after unrelated modules
+failed to load from this deliberately sparse checkout (`@playwright/test`,
+`intl-messageformat`, animation skill files, ops/docs fixtures are absent).
+It is not a valid full-suite result. The focused host verifier test and
+`node --check` passed; full tool tests remain a CI gate on a complete checkout.
