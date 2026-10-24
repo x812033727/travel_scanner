@@ -842,7 +842,7 @@ export const C08_SHORT_FILES = Object.freeze({
   "claims.md": "de832835117bc85592d4159074c746de59dac0a014f8908bb0e2fb83c7e9121d",
   "verify-1.md": "7664a8639bda61135b64dfb951221c03f485db4453b63fa6ffdf1b3b4641c2ba",
   "series.json": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
-  "brief.md": "ff4e3d002fa79670ae081ea3f5886aa0444833e77c02c641efbc95282d063a57",
+  "brief.md": "6af7ebbc1e7874ace553348f82c90d336fac4c748a8ffb0348f0614914034878",
 });
 const C08_SHORT_REVIEW = path.join("story-everyday-kikkoman-c08", "reviews", "v8-short-independent-review-20261024.md");
 const C08_SHORT_REVIEW_SHA256 = "f3a988efcad84a3d97779f10dd0d5cf34b7ad0d4ccf62db12ce357aa771326fb";
