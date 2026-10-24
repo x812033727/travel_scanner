@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-consolidate-x01-x20-brand-story-plans
 title: Consolidate X01-X20 brand-story plans for paused admin import
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-x-series
 claimed_at: 2026-10-23T18:49:17Z
 created_at: 2026-10-23T18:48:42Z
-completed_at:
+completed_at: 2026-10-24T03:47:55Z
 branch: claude/pr-x-series-backend-deploy-9fe314
 depends_on: []
 scope:
@@ -38,7 +38,7 @@ series paused, every episode planned, no worker start and no paid generation.
       builder emits `stories.json` only after all twenty pass.
 - [x] The importer accepts the X letter only for this series and creates it paused with
       planned rows; the C series keeps its behaviour.
-- [ ] Production dry-run, apply and readback: one paused series, twenty planned episodes,
+- [x] Production dry-run, apply and readback: one paused series, twenty planned episodes,
       zero new drama requests. The X PRs are closed with a pointer to the merged package.
 
 ## Steps
@@ -46,8 +46,8 @@ series paused, every episode planned, no worker start and no paid generation.
 - [x] Series folder, X20 topic, twenty episode rows.
 - [x] Independent reviews and build.
 - [x] Generalise the review-only import (JS and Python) with tests.
-- [ ] PR, CI, deploy, production import and readback.
-- [ ] Close the X PRs.
+- [x] PR, CI, deploy, production import and readback.
+- [x] Close the X PRs.
 
 ## How to verify
 
@@ -69,3 +69,13 @@ sources and wrote hash-bound receipts; 18 rows were fixed, 2 passed. The worker 
 X01 has 4 such facts (Adobe 10-Ks), X11 has 6 (FedEx 10-Ks, 3.4–9 MB). X15 Garmin shares its
 subject with the 100-bank C15; only one should be produced. The review-only import is now keyed by
 `REVIEW_ONLY_SERIES` (C everyday reversals, X company turns); the C03 link stays C-only.
+
+2026-10-24 production receipt: #1799 merged as `c9cbf0022` at 03:36Z (main kept moving, so the
+branch was brought up to date three times; the repo's auto-update token is unset). Deployed by hand
+at 03:44Z after a running paid stage job settled; the deploy also carried #1802–#1807 and migration
+0138 (held C-series budget accounts). host-verify 10/11: the one FAIL is disk at 81% (threshold 80),
+all 14 containers up. `stories.json` sha256 prefix `2a4ee2cb3476cf6e` on host matches the repo.
+Dry-run create=20, refuse=0, problems=0; `--apply` wrote the series `paused` with 20 `planned`
+episodes (numbers 1–20, no request_id, not started); a second dry-run reports leave_alone=20.
+Drama requests stayed at 13, the newest from 2026-10-22. The fifteen X PRs (#1619–#1640) were
+closed with a comment pointing here; their branches are kept as the README's source table.
