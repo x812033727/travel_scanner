@@ -295,6 +295,64 @@ def test_a_picture_kept_with_the_judge_s_remarks_does_not_hold_the_storyboard_ba
         ), broken
 
 
+def _remarked(board: dict[str, Any], *remarks: Any, score: float = 7.33) -> dict[str, Any]:
+    """The board with its last shot passed at ``score`` but carrying the judge's ``remarks``."""
+    last = {**board["shots"][-1], "judge": {"overall": score, "problems": list(remarks)}}
+    return {**board, "shots": [*board["shots"][:-1], last]}
+
+
+def test_a_manga_storyboard_passes_with_second_look_remarks_only() -> None:
+    """A manga-tier keyframe is judged with fault checks (keyframes.mjs keyframeChecks): a
+    take that passed may keep a remark from a check that only lowers the score (details,
+    awkward, subtitle_band). With ``second_look_remarks`` such a shot counts as passed; a
+    remark from a redraw-level check, or one that is not a judge's line, still holds it back,
+    and so does everything the strict rule checks."""
+    board = _storyboard("a", "b", score=8)
+    details = _remarked(board, "details: monitor and objects visible on desk top edge → crop")
+    assert not service.storyboard_check_passed(details, 7), "the strict rule is unchanged"
+    assert service.storyboard_check_passed(details, 7, second_look_remarks=True)
+    assert service.storyboard_check_passed(
+        _remarked(board, "awkward: left hand stiff → relax it", "subtitle_band: chin low → raise"),
+        7,
+        second_look_remarks=True,
+    )
+    for remarks in (
+        ["anatomy: six fingers → five"],
+        ["identity_jiang_he: hair is black → silver"],
+        ["text: sign reads OPEN → no lettering"],
+        ["details: cup missing → add it", "frame: blurred side bars → full frame"],
+        ["details"],
+        ["undescribed remark"],
+        [{"details": "cup"}],
+    ):
+        assert not service.storyboard_check_passed(
+            _remarked(board, *remarks), 7, second_look_remarks=True
+        ), remarks
+    assert not service.storyboard_check_passed(
+        {**details, "shots": [details["shots"][0], {**details["shots"][1], "judge": {
+            "overall": 9, "problems": "details: cup missing"}}]}, 7, second_look_remarks=True
+    ), "problems that are not a list"
+    assert not service.storyboard_check_passed(
+        _remarked(board, "details: cup missing → add it", score=6.5), 7, second_look_remarks=True
+    ), "the threshold still applies"
+    shot = details["shots"][1]
+    for broken in (
+        {**shot, "needs_review": True},
+        {**shot, "judge": {**shot["judge"], "passed": False}},
+        {**shot, "complete": False},
+        {**shot, "incomplete": True},
+        {**shot, "file_sha256": None},
+    ):
+        assert not service.storyboard_check_passed(
+            {**details, "shots": [details["shots"][0], broken]}, 7, second_look_remarks=True
+        ), broken
+    assert not service.storyboard_check_passed(
+        {**details, "judge": {"overall": 7.33, "problems": ["details: cup missing → add it"]}},
+        7,
+        second_look_remarks=True,
+    ), "the board lists only shots left for a fix; any there holds it back"
+
+
 def test_the_look_rule_needs_the_suggested_sheet_to_clear_the_threshold_with_no_problems() -> None:
     payload: dict[str, Any] = {
         "options": [
@@ -1200,8 +1258,8 @@ async def test_a_hands_off_series_overrides_the_look_and_storyboard_switches() -
     }
     board = _storyboard("a", score=9)
     off = SimpleNamespace(auto_pick_look=False, auto_approve_storyboard=False, judge_min_score=7)
-    hands_off = SimpleNamespace(hands_off=True, genre="rebirth-revenge")
-    classic = SimpleNamespace(hands_off=False, genre="xianxia-bonds")
+    hands_off = SimpleNamespace(hands_off=True, genre="rebirth-revenge", visual_tier="clips")
+    classic = SimpleNamespace(hands_off=False, genre="xianxia-bonds", visual_tier="clips")
     session = AsyncMock()
     session.scalar = AsyncMock(side_effect=[off, hands_off])
     assert await service.auto_picks_look(session, sheets, "rebirth-20260927-ab12")
@@ -1222,6 +1280,35 @@ async def test_a_hands_off_series_overrides_the_look_and_storyboard_switches() -
     assert not await service.auto_picks_look(session, sheets, "rebirth-20260927-ab12"), (
         "the threshold still applies"
     )
+
+
+@pytest.mark.asyncio
+async def test_only_a_manga_series_storyboard_stands_with_second_look_remarks() -> None:
+    """xitong-shuo-wo-shi-bug-e001 (2026-10-24): a hands-off manga series, 46 shots passed,
+    most with a ``details:`` remark, sat waiting for the owner. Its storyboard now approves
+    itself; a clips-tier drama's, a slides video's and one with no series keep the old rule."""
+    board = _remarked(_storyboard("a", "b", score=8), "details: cup missing → add it")
+    off = SimpleNamespace(
+        auto_approve_storyboard=False, judge_min_score=7, slides_auto_approve_storyboard=True
+    )
+    on = SimpleNamespace(**{**vars(off), "auto_approve_storyboard": True})
+    manga = SimpleNamespace(hands_off=True, visual_tier="manga", production_policy=None)
+    clips = SimpleNamespace(**{**vars(manga), "visual_tier": "clips"})
+    session = AsyncMock()
+    session.scalar = AsyncMock(side_effect=[off, manga])
+    assert await service.auto_approves_storyboard(session, board, "xitong-shuo-wo-shi-bug")
+    session.scalar = AsyncMock(side_effect=[on, manga])
+    assert await service.auto_approves_storyboard(session, board, "xitong-shuo-wo-shi-bug"), (
+        "the owner's switch on: the series is still read for its tier"
+    )
+    session.scalar = AsyncMock(side_effect=[off, clips])
+    assert not await service.auto_approves_storyboard(session, board, "rebirth-20260927-ab12")
+    session.scalar = AsyncMock(return_value=on)
+    assert not await service.auto_approves_storyboard(session, board), "no series, no tier"
+    assert not await service.auto_approves_storyboard(session, board, None, "slides")
+    redraw = _remarked(_storyboard("a", "b", score=8), "anatomy: six fingers → five")
+    session.scalar = AsyncMock(side_effect=[off, manga])
+    assert not await service.auto_approves_storyboard(session, redraw, "xitong-shuo-wo-shi-bug")
 
 
 @pytest.mark.asyncio
