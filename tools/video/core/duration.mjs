@@ -8,6 +8,8 @@ import { ANIME_BODY_TOLERANCE_SECONDS, animeRuntimeContext, hasAnimePolicy, LONG
 export const KNOWLEDGE_MIN_SECONDS = 480;
 export const KNOWLEDGE_TARGET_SECONDS = 600;
 export const A01_COMPACT_BODY_SECONDS = Object.freeze([420, 480]);
+export const C08_SHORT_MIN_BODY_SECONDS = 240;
+export const C08_SHORT_MAX_PRESENTED_SECONDS = 300;
 // Which documents these floors hold is decided in drama.mjs (isKnowledgeLongform), where the
 // schema and the timeline can read it too without a cycle; it is re-exported here for its readers.
 export { isKnowledgeLongform };
@@ -31,6 +33,27 @@ export function isA01CompactStory(doc) {
     && doc.target_minutes.length === 2
     && doc.target_minutes[0] === 7
     && doc.target_minutes[1] === 8;
+}
+
+/** The owner approved a short revision of C08 only, under the existing 20-episode series. */
+export function isC08ShortStory(value) {
+  return value?.slug === "story-everyday-kikkoman-c08-short-v8"
+    && value.format === "drama"
+    && value.category === "story"
+    && !value.compilation
+    && value.series?.slug === "brand-stories-everyday-reversals"
+    && value.series.episode === 8
+    && value.look?.preset === "cute-mystery"
+    && Object.keys(value.look).length === 1;
+}
+
+/** The per-video target is required; the series itself keeps its ten-minute policy. */
+export function isC08ApprovedShortStory(doc) {
+  return isC08ShortStory(doc)
+    && Array.isArray(doc.target_minutes)
+    && doc.target_minutes.length === 2
+    && doc.target_minutes[0] === 4
+    && doc.target_minutes[1] === 5;
 }
 
 /**
@@ -87,7 +110,8 @@ export function knowledgeDurationProblems({ doc, timeline, presented = timeline,
     problems.push("knowledge long-video checked final frame count must match the current presentation timeline at 30 fps; run assemble again");
   }
   const compactA01 = isA01CompactStory(doc);
-  const minimumSeconds = compactA01 ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
+  const shortC08 = isC08ApprovedShortStory(doc);
+  const minimumSeconds = shortC08 ? C08_SHORT_MIN_BODY_SECONDS : compactA01 ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
   const minimumFrames = minimumSeconds * FPS;
   if (timeline.total_frames < minimumFrames) {
     problems.push(`knowledge long-video body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at least ${minimumFrames} frames (${minimumSeconds} s), excluding intro and outro`);
@@ -97,6 +121,9 @@ export function knowledgeDurationProblems({ doc, timeline, presented = timeline,
   }
   if (compactA01 && timeline.total_frames > A01_COMPACT_BODY_SECONDS[1] * FPS) {
     problems.push(`A01 compact story body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at most ${A01_COMPACT_BODY_SECONDS[1] * FPS} frames (${A01_COMPACT_BODY_SECONDS[1]} s), excluding intro and outro`);
+  }
+  if (shortC08 && positiveFrames(frames) && frames > C08_SHORT_MAX_PRESENTED_SECONDS * FPS) {
+    problems.push(`C08 short-v8 final cut is ${frames} frames (${frames / FPS} s); needs at most ${C08_SHORT_MAX_PRESENTED_SECONDS * FPS} frames (${C08_SHORT_MAX_PRESENTED_SECONDS} s), including selected intro and outro; hold for exact edit or renewed owner approval`);
   }
   return problems;
 }

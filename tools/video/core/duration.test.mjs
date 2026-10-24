@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { A01_COMPACT_BODY_SECONDS, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
 import { EXPLAINER_PRESETS } from "./drama.mjs";
@@ -20,6 +20,11 @@ const a01 = {
   slug: "story-rolling-suitcase-v2", format: "drama", category: "story",
   series: { slug: "brand-stories-curio-pilot-v2", episode: 1 },
   look: { preset: "cute-mystery" }, target_minutes: [7, 8],
+};
+const c08Short = {
+  slug: "story-everyday-kikkoman-c08-short-v8", format: "drama", category: "story",
+  series: { slug: "brand-stories-everyday-reversals", episode: 8 },
+  look: { preset: "cute-mystery" }, target_minutes: [4, 5],
 };
 
 test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
@@ -124,6 +129,30 @@ test("A01's shorter floor still needs current narration and checked matching cut
     assert.match(knowledgeDurationProblems({ ...cut(420 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
     assert.deepEqual(knowledgeDurationProblems({ ...cut(480 * 30), doc: other }), []);
   }
+});
+
+test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut cap", () => {
+  assert.equal(C08_SHORT_MIN_BODY_SECONDS, 240);
+  assert.equal(C08_SHORT_MAX_PRESENTED_SECONDS, 300);
+  assert.equal(isC08ShortStory(c08Short), true);
+  assert.equal(isC08ApprovedShortStory(c08Short), true);
+  for (const change of [
+    { slug: "story-everyday-kikkoman-c08" }, { series: { slug: "brand-stories-everyday-reversals", episode: 9 } },
+    { series: { slug: "another-series", episode: 8 } }, { format: "slides" },
+    { category: "explainer" }, { look: { preset: "cute-mystery", style: "extra" } },
+    { target_minutes: [9, 11] },
+  ]) {
+    const other = { ...c08Short, ...change };
+    assert.equal(isC08ApprovedShortStory(other), false, JSON.stringify(change));
+    assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  }
+  assert.equal(isC08ApprovedShortStory({ ...c08Short, compilation: { episodes: [] } }), false);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(270 * 30), doc: c08Short }), []);
+  assert.match(knowledgeDurationProblems({ ...cut(240 * 30 - 1, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }).join("; "), /body is 7199 frames.*needs at least 7200 frames \(240 s\), excluding intro and outro/);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(274 * 30, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }), []);
+  assert.match(knowledgeDurationProblems({ ...cut(274 * 30 + 1, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }).join("; "), /C08 short-v8 final cut.*needs at most 9000 frames \(300 s\)/);
+  const stale = { ...cut(270 * 30), doc: c08Short, timelineCurrent: false };
+  assert.match(knowledgeDurationProblems(stale).join("; "), /current actual narration timeline/);
 });
 
 test("bookends cannot make a short body pass, while a qualifying body may keep its bookends", () => {
