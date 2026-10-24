@@ -6097,6 +6097,18 @@ Ran: `git diff origin/main HEAD -- tools/video/core/lint.mjs tools/video/core/li
 Non-claims: this review addresses source-duration regression risk for the two changed bound files. It does not approve C15 narration length, media, a paid pilot, backend import, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining from this diff: none.
 
+## C08 approved short-v8 duration and lint increment: 4 files (2026-10-24)
+
+Reviewer: codex-root-c08-duration-review. Author: codex-c08-short-backend (source head fe1838515e8c887bdde03aef57d5e6722daf6e05). Scope: DURATION_ONLY for tools/video/core/duration.mjs, duration.test.mjs, lint.mjs and lint.test.mjs. This reviewer did not write those four source files and inspected their diff from main and the frozen C08 short-v8 project.
+
+Baseline: prior report SHA256 f4605f077ee5b6ba796556a5d9da614b1471d470d284377c15d8bd97bf1d9829; 104 of 108 existing bindings matched current files. Before rebinding, the guarded CLI reported exactly these four stale paths. Only their raw-byte SHA256 bindings change below; the other 104 are unchanged.
+
+Findings: the exception requires exact C08 short-v8 slug, explainer drama format, noncompilation, everyday series episode 8, sole cute-mystery look, [4,5] target, 36 ordered line IDs and visible text at SHA256 31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9, and ordered say/say_for values at SHA256 1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c. Changing narration or its speech override returns to the ordinary 480-second measured-body floor; changing an image prompt does not extend the narration approval. The exact source needs a current measured body of at least 240 seconds and a checked final cut of at most 300 seconds including bookends. Lint accepts a four-minute draft floor but retains narrated-story checks. All other series episodes retain their existing policy.
+
+Ran: bundled Node v24.13.0 core duration/lint and QA duration tests, 74 passed, zero failed. Cases include one-frame boundaries, stale timeline, altered identity, text or speech, and unchanged narration with edited media. Guarded CLI and receipt tests run after rebinding. MoMA expanded speech has a paper final estimate of about 301.63 seconds, above the cap; actual speech and final frames remain unmeasured and HOLD. This receipt does not approve paid media, backend import, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY for these four source bytes; no duration-code fix remains from this diff.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -6168,11 +6180,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/branding.test.mjs` | `97a554bdd2a4564e0cef66a3d60088378d92c82f20f22a2859fe2573b0d7efdf` |
 | `tools/video/core/drama.mjs` | `0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1` |
 | `tools/video/core/drama.test.mjs` | `dd57757c7ed3ba058cc45827ac09308dc55404be89f90b696f127af3d98c1272` |
-| `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
-| `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
+| `tools/video/core/duration.mjs` | `6c7fe00c9ac68730bec717f10929eff9bf9e12ddaf7b80a1882f4b7279475111` |
+| `tools/video/core/duration.test.mjs` | `699a9ef5bbce2b8a53ba957937375793eec67a932250776b311188832ec55a6c` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `4a24499dc1d67eeb90fa30c8ccce96d34abd9a246e50963ecdc66644ed0e7689` |
-| `tools/video/core/lint.test.mjs` | `a48389a9d57d5a680f81a65541653f416aff2903c7a9232ae8c68a9f6578772f` |
+| `tools/video/core/lint.mjs` | `c73f2a82f595b258b13576806b1320fd1aa51ac4ba3cf99285aff122c7f46e7c` |
+| `tools/video/core/lint.test.mjs` | `146acef1849fbadfd4e2ed6f3fb52177a74b40b29361d7bfb7eac33dee792f95` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
