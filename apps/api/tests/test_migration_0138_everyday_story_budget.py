@@ -73,7 +73,12 @@ def _prepare_0137(connection: Connection) -> None:
 
 
 def _limits(connection: Connection) -> dict[str, Decimal]:
-    return dict(connection.execute(sa.select(VideoPilotBudget.slug, VideoPilotBudget.limit_usd)))
+    return {
+        slug: limit
+        for slug, limit in connection.execute(
+            sa.select(VideoPilotBudget.slug, VideoPilotBudget.limit_usd)
+        ).all()
+    }
 
 
 def _hold(connection: Connection, slug: str) -> sa.RowMapping | None:
