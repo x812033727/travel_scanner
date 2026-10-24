@@ -39,7 +39,7 @@ export function isA01CompactStory(doc) {
 export function isC08ShortStory(value) {
   return value?.slug === "story-everyday-kikkoman-c08-short-v8"
     && value.format === "drama"
-    && value.category === "story"
+    && value.category === "explainer"
     && !value.compilation
     && value.series?.slug === "brand-stories-everyday-reversals"
     && value.series.episode === 8

@@ -30,16 +30,17 @@ The owner approved the exact C08 short-v8 narration and visual direction in this
 
 ## Definition of done
 
-- [ ] `--slug story-everyday-kikkoman-c08-short-v8` resolves the exact 36-line approved projection; the original 84-line C08 files remain byte-identical.
-- [ ] The reviewed 20-row plan points episode 8 to the short slug, retains its row identity, and leaves the other 19 rows unchanged.
-- [ ] Only the exact C08 project accepts a measured four-to-five-minute route; current timelines and checked frames remain mandatory.
-- [ ] The worker cannot overwrite approved C08 words or visuals with chapter generation or length resizing.
+- [x] `--slug story-everyday-kikkoman-c08-short-v8` resolves the exact 36-line approved projection; the original 84-line C08 files remain byte-identical.
+- [x] The reviewed 20-row plan points episode 8 to the short slug, retains its row identity, and leaves the other 19 rows unchanged.
+- [x] Only the exact C08 project accepts a measured four-to-five-minute route; current timelines and checked frames remain mandatory.
+- [x] The worker cannot overwrite approved C08 words or visuals with chapter generation or length resizing.
 
 ## Steps
 
-- [ ] Project frozen short-v8 files to a top-level slug directory and record source/projection hashes.
-- [ ] Re-certify C08 plan with an independent review, then rebuild `stories.json`.
-- [ ] Add exact C08 duration and worker guards, with focused tests.
+- [x] Project frozen short-v8 files to a top-level slug directory and record source/projection hashes.
+- [x] Re-certify C08 plan with an independent review, then rebuild `stories.json`.
+- [x] Pin the initial C08 pronunciation snapshot before backend start, because the pre-authored `video.json` is not eligible for empty-story genesis.
+- [x] Add exact C08 duration and worker guards, with focused tests.
 
 ## How to verify
 
@@ -48,3 +49,5 @@ Run `node tools/video/cli.mjs lint --slug story-everyday-kikkoman-c08-short-v8`,
 ## Notes
 
 The existing C08 task `2026-10-24-prepare-c08-kikkoman-canonical-video-project` on this branch owns the nested source package. This ticket owns only the paths listed in its scope. The owner approved a C08-only four-to-five-minute rewrite and exact v8 text/visual direction after seeing the 273.97-second paper body / 299.97-second paper total; neither is a measured duration. Current 84-line approvals do not transfer to the new slug. The 20-row series remains paused pending separate import, cost and release gates.
+
+The independent C08 plan reviewer certified the revised source hash `5ccbe2040d8f93e975d5fa25922eee28662ab52f1e9cf007a8dd0f4e44acc839`; the rebuilt batch still has exactly 20 rows, with only C08's story/certification changed. An independent text-only pronunciation reviewer confirmed 36/36 frozen narration texts and the `MoMA` expansion; actual TTS listening stays HOLD. The pinned lexicon is a local immutable genesis of the current shared dictionary plus C08 plan names. `node --test --test-name-pattern='C08 short-v8 adopts' tools/video/automation/story.test.mjs` passed in a temporary ASCII `subst` drive (Windows Node test runner crashes on this Unicode worktree path). The worker adoption test reaches the mocked backend start only with the exact plan, keeps frozen docs, and records the outline gate in a temporary workdir.

@@ -22,7 +22,7 @@ const a01 = {
   look: { preset: "cute-mystery" }, target_minutes: [7, 8],
 };
 const c08Short = {
-  slug: "story-everyday-kikkoman-c08-short-v8", format: "drama", category: "story",
+  slug: "story-everyday-kikkoman-c08-short-v8", format: "drama", category: "explainer",
   series: { slug: "brand-stories-everyday-reversals", episode: 8 },
   look: { preset: "cute-mystery" }, target_minutes: [4, 5],
 };
@@ -139,7 +139,7 @@ test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut
   for (const change of [
     { slug: "story-everyday-kikkoman-c08" }, { series: { slug: "brand-stories-everyday-reversals", episode: 9 } },
     { series: { slug: "another-series", episode: 8 } }, { format: "slides" },
-    { category: "explainer" }, { look: { preset: "cute-mystery", style: "extra" } },
+    { category: "story" }, { look: { preset: "cute-mystery", style: "extra" } },
     { target_minutes: [9, 11] },
   ]) {
     const other = { ...c08Short, ...change };

@@ -162,7 +162,7 @@ const compactA01Story = (slug, info) => isA01PilotStory({
   series: { slug: info?.slug, episode: info?.episode },
 });
 const shortC08Story = (slug, info) => isC08ShortStory({
-  slug, format: "drama", category: "story", look: info?.look,
+  slug, format: "drama", category: "explainer", look: info?.look,
   series: { slug: info?.slug, episode: info?.episode },
 });
 export const effectiveStoryMinutes = (slug, info) => shortC08Story(slug, info) ? 5 : compactA01Story(slug, info) ? 8 : Number(info?.target_minutes) || 13;
@@ -836,7 +836,7 @@ const sha256OnDisk = (file) => existsSync(file) ? createHash("sha256").update(re
 // Never run the ordinary six-chapter writer or prompt fixer against these files.
 export const C08_SHORT_SLUG = "story-everyday-kikkoman-c08-short-v8";
 export const C08_SHORT_FILES = Object.freeze({
-  "video.json": "d6bcd8c818b961fbd2da97ace8a475372dce1a3427d4a4d919158b916b126da3",
+  "video.json": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
   "visual-plan.json": "3bebc4afe361375b5ab3499e20bb63a832fa6bfc703b97d126f508733b695960",
   "script.md": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
   "claims.md": "de832835117bc85592d4159074c746de59dac0a014f8908bb0e2fb83c7e9121d",
@@ -846,6 +846,8 @@ export const C08_SHORT_FILES = Object.freeze({
 });
 const C08_SHORT_REVIEW = path.join("story-everyday-kikkoman-c08", "reviews", "v8-short-independent-review-20261024.md");
 const C08_SHORT_REVIEW_SHA256 = "f3a988efcad84a3d97779f10dd0d5cf34b7ad0d4ccf62db12ce357aa771326fb";
+const C08_SHORT_LEXICON_SHA256 = "97e2c4582aca65899d66253914a955256a673484a97966f40013d1275fc2e8f2";
+const C08_SHORT_LEXICON_EVENT_SHA256 = "783a192013e5d27bb9e3728c111f4e82bdd04829326830caeeca61285e3aeb17";
 const C08_PAID_AUTH_FILE = path.join(STORY_DIR, "c08-short-v8-paid-authorization.json");
 
 /** Fail closed before starting the backend request, and again on every worker continuation. */
@@ -857,6 +859,17 @@ export function c08ShortProjectProblem({ root, slug }) {
   }
   if (sha256OnDisk(path.join(root, "docs", "videos", C08_SHORT_REVIEW)) !== C08_SHORT_REVIEW_SHA256) {
     return "C08 short-v8 independent 36/36 review is absent or changed";
+  }
+  // A pre-authored video.json cannot pass initializeStoryLexicon's unstarted-file guard.
+  // Pin the reviewed project's initial snapshot in source before any backend episode start.
+  try {
+    const lexicon = videoLexicon({ root, slug, requireSnapshot: true });
+    if (lexicon.lexicon_sha256 !== C08_SHORT_LEXICON_SHA256 ||
+        lexicon.head_event_sha256 !== C08_SHORT_LEXICON_EVENT_SHA256) {
+      return "C08 short-v8 pinned pronunciation snapshot changed";
+    }
+  } catch {
+    return "C08 short-v8 pinned pronunciation snapshot is absent or unreadable";
   }
   let video;
   try { video = readJson(path.join(dir, "video.json"), null); }
@@ -1089,6 +1102,7 @@ export async function draftStory(automation, started, job = {}) {
       return automation.block(state, `STOPPED_HOLD: ${frozen}`);
     }
     state.story.adopted_c08_short_v8 = true;
+    state.category = "explainer"; // The approved stats cards use the explainer drama schema.
     state.verified = true; // The frozen 36/36 independent review is the fact-check evidence.
     state.listener_done = true; // The owner approved these exact words; no model listener edits them.
     const workdir = automation.workdir(slug);

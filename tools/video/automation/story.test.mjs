@@ -4,7 +4,8 @@
 // the planned hundred.
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -19,7 +20,7 @@ import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
 import { NARRATIVE_PANEL, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isStory } from "../core/story.mjs";
-import { readJson } from "../core/paths.mjs";
+import { ROOT, readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
@@ -34,6 +35,10 @@ import {
   anchorsFor,
   applyPatch,
   CHAPTER_KEYS,
+  C08_SHORT_FILES,
+  C08_SHORT_SLUG,
+  c08ShortPaidProblem,
+  c08ShortProjectProblem,
   chapterBudgets,
   composeStory,
   effectiveStoryLengthBand,
@@ -57,6 +62,7 @@ import {
   cuteStoryVisualProblems,
   storyLineIds,
   storySeriesFile,
+  startStory,
   yearForms,
 } from "./story.mjs";
 
@@ -604,6 +610,61 @@ test("the two pilot editorial reference hashes still match their independently P
     assert.match(readFileSync(review, "utf8"), new RegExp(`SHA-256 .${hash}.`));
     assert.match(readFileSync(review, "utf8"), /文字事實與敘事 PASS|逐字稿文字事實與敘事 PASS/);
   }
+});
+
+test("C08 short-v8 adopts only its frozen project and has a separate paid cap receipt", async () => {
+  assert.equal(c08ShortProjectProblem({ root: ROOT, slug: C08_SHORT_SLUG }), null);
+  const pinned = videoLexicon({ root: ROOT, slug: C08_SHORT_SLUG, requireSnapshot: true });
+  assert.equal(pinned.mode, "snapshot");
+  assert.equal(pinned.lexicon_sha256, "97e2c4582aca65899d66253914a955256a673484a97966f40013d1275fc2e8f2");
+  const info = { slug: "brand-stories-everyday-reversals", episode: 8, target_minutes: 10, look: { preset: "cute-mystery" } };
+  assert.equal(effectiveStoryMinutes(C08_SHORT_SLUG, info), 5);
+  assert.deepEqual(effectiveStoryLengthBand(C08_SHORT_SLUG, info), [240, 300]);
+  assert.equal(effectiveStoryMinutes("story-everyday-kikkoman-c08", info), 10);
+  assert.equal(effectiveStoryMinutes("story-everyday-other-c09", { ...info, episode: 9 }), 10);
+  let starts = 0;
+  const automation = {
+    ctx: { root: ROOT }, later: (message) => message, block: (_state, message) => message,
+    api: { episodeStart: async () => { starts++; throw new Error("backend start reached"); } },
+  };
+  const job = { series: { slug: info.slug }, episode: { slug: C08_SHORT_SLUG, number: 8, beats: { id: "C08" } } };
+  assert.match(await startStory(automation, { ...job, episode: { ...job.episode, beats: { id: "C09" } } }), /identity/);
+  assert.equal(starts, 0, "wrong identity must not write the backend request");
+  assert.match(await startStory({ ...automation, ctx: { root: tmpdir() } }, job), /held before episode start/);
+  assert.equal(starts, 0, "missing frozen files must not write the backend request");
+  const state = { slug: C08_SHORT_SLUG, target_minutes: 5, series: { slug: info.slug, episode: 8 },
+    story: { id: "C08", adopted_c08_short_v8: true } };
+  assert.match(await advanceStory(automation, state, "script passes lint"), /keep the exact approved files/);
+  const workdir = mkdtempSync(path.join(tmpdir(), "c08-paid-"));
+  try {
+    let adopted;
+    const plan = JSON.parse(readFileSync(path.join(ROOT, "docs/videos/brand-stories-everyday-reversals-20261020/episodes/C08.json"), "utf8"));
+    const series = JSON.parse(readFileSync(path.join(ROOT, "docs/videos/brand-stories-everyday-reversals-20261020/series.json"), "utf8"));
+    const readyAutomation = { ...automation,
+      ctx: { root: ROOT, now: () => new Date("2026-10-24T00:00:00Z") },
+      workdir: () => workdir, persist: (state) => { adopted = state; }, report: async () => {},
+      api: { episodeStart: async () => {
+        starts++;
+        return { request: { slug: C08_SHORT_SLUG }, episode: { number: 8, slug: C08_SHORT_SLUG, title: plan.title, beats: plan } };
+      } },
+    };
+    assert.match(await startStory(readyAutomation, { series, episode: { ...job.episode, beats: plan } }), /adopted the frozen/);
+    assert.equal(starts, 1);
+    assert.equal(adopted.category, "explainer");
+    assert.equal(adopted.story.adopted_c08_short_v8, true);
+    assert.equal(adopted.story.lexicon_sha256, pinned.lexicon_sha256);
+    assert.equal(readJson(path.join(workdir, "approvals.json")).approvals.at(-1).gate, "outline");
+    assert.match(c08ShortPaidProblem({ workdir }), /needs the owner's current whole-film/);
+    const file = path.join(workdir, "story", "c08-short-v8-paid-authorization.json");
+    mkdirSync(path.dirname(file), { recursive: true });
+    const receipt = { schema_version: 1, slug: C08_SHORT_SLUG, status: "approved", approved_by: "owner",
+      project_video_sha256: C08_SHORT_FILES["video.json"], approved_at: "2026-10-24T00:00:00Z",
+      quote_source: "reviewed supplier quote", quote_usd: 20, cap_usd: 25 };
+    writeFileSync(file, JSON.stringify(receipt));
+    assert.equal(c08ShortPaidProblem({ workdir }), null);
+    writeFileSync(file, JSON.stringify({ ...receipt, cap_usd: 26 }));
+    assert.match(c08ShortPaidProblem({ workdir }), /needs the owner's current whole-film/);
+  } finally { rmSync(workdir, { recursive: true, force: true }); }
 });
 
 const pilotAnswers = () => standardAnswers({ "writer:story": (body) => {
