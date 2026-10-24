@@ -14,6 +14,8 @@ export const C08_SHORT_MAX_PRESENTED_SECONDS = 300;
 // Ordered [line ID, approved visible text] pairs of the exact 36-line C08 short-v8.
 // Media references may evolve without granting a different narration the short QA band.
 export const C08_SHORT_NARRATION_SHA256 = "31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9";
+// The approved MoMA `say` is actual TTS input, so it has its own narrow binding.
+export const C08_SHORT_SPOKEN_OVERRIDE_SHA256 = "1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c";
 // Which documents these floors hold is decided in drama.mjs (isKnowledgeLongform), where the
 // schema and the timeline can read it too without a cycle; it is re-exported here for its readers.
 export { isKnowledgeLongform };
@@ -59,12 +61,16 @@ export function isC08ApprovedShortStory(doc) {
   const narrationSha256 = createHash("sha256")
     .update(JSON.stringify(lines.map(line => [line?.id, line?.text])))
     .digest("hex");
+  const spokenOverrideSha256 = createHash("sha256")
+    .update(JSON.stringify(lines.map(line => [line?.id, line?.say ?? null, line?.say_for ?? null])))
+    .digest("hex");
   return isC08ShortStory(doc)
     && Array.isArray(doc.target_minutes)
     && doc.target_minutes.length === 2
     && doc.target_minutes[0] === 4
     && doc.target_minutes[1] === 5
-    && narrationSha256 === C08_SHORT_NARRATION_SHA256;
+    && narrationSha256 === C08_SHORT_NARRATION_SHA256
+    && spokenOverrideSha256 === C08_SHORT_SPOKEN_OVERRIDE_SHA256;
 }
 
 /**

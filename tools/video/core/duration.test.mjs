@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, C08_SHORT_NARRATION_SHA256, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, C08_SHORT_NARRATION_SHA256, C08_SHORT_SPOKEN_OVERRIDE_SHA256, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
 import { EXPLAINER_PRESETS } from "./drama.mjs";
@@ -132,6 +132,7 @@ test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut
   assert.equal(C08_SHORT_MIN_BODY_SECONDS, 240);
   assert.equal(C08_SHORT_MAX_PRESENTED_SECONDS, 300);
   assert.equal(C08_SHORT_NARRATION_SHA256, "31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9");
+  assert.equal(C08_SHORT_SPOKEN_OVERRIDE_SHA256, "1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c");
   assert.equal(isC08ShortStory(c08Short), true);
   assert.equal(isC08ApprovedShortStory(c08Short), true);
   for (const change of [
@@ -149,6 +150,10 @@ test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut
   changedWords.scenes[0].lines[0].text += "改";
   assert.equal(isC08ApprovedShortStory(changedWords), false, "one changed character loses the short policy");
   assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: changedWords }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  const changedSpeech = structuredClone(c08Short);
+  changedSpeech.scenes[27].lines[0].say += "改";
+  assert.equal(isC08ApprovedShortStory(changedSpeech), false, "a changed spoken override loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: changedSpeech }).join("; "), /needs at least 14400 frames \(480 s\)/);
   const changedPicture = structuredClone(c08Short);
   changedPicture.scenes[0].data.prompt += " A later media reference may change.";
   assert.equal(isC08ApprovedShortStory(changedPicture), true, "visual/media updates do not change approved narration");
