@@ -6121,6 +6121,27 @@ Ran independently with bundled Node v24.19: core duration, lint and QA duration 
 
 Verdict: PASS - DURATION_ONLY for these two source bytes; actual C08 TTS duration, final.mp4, paid production, backend import, deployment, upload and publication remain unverified.
 
+## C20 Zippo approved short-v8 measured duration increment: 6 files (2026-10-24)
+
+Reviewer: `codex-c20-duration-independent-review`; author: `codex-c20-short-duration`. Scope: DURATION_ONLY for `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs`, `tools/video/qa/cli.mjs` and `duration.test.mjs`. The reviewer wrote none of these source or test files and read their delta against main `dac5e8331c8312d2fe8c818d0b4bab12ef636281` and the existing C08 exception.
+
+Baseline report SHA256: `926ee0480dc3a8ef51898fa2cf067af1000a75ebbc31fe0218287dbc2e451dc3`. The guarded long-form CLI reported exactly these six stale bindings before renewal; the other 102 of 108 bindings matched. Only the six raw-byte SHA256 bindings below and this report hash change:
+
+| File | Prior SHA256 | Reviewed SHA256 |
+| --- | --- | --- |
+| `tools/video/core/duration.mjs` | `6c7fe00c9ac68730bec717f10929eff9bf9e12ddaf7b80a1882f4b7279475111` | `dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d` |
+| `tools/video/core/duration.test.mjs` | `699a9ef5bbce2b8a53ba957937375793eec67a932250776b311188832ec55a6c` | `2945430037b75c142f4f14f3b07736c102073f85daa6cea984bb1e6ea667a6bd` |
+| `tools/video/core/lint.mjs` | `c73f2a82f595b258b13576806b1320fd1aa51ac4ba3cf99285aff122c7f46e7c` | `6573e87d4b29f786375d8a0f7b56402ee7ae04874c3d4e2020cdb0acd8fb6faf` |
+| `tools/video/core/lint.test.mjs` | `146acef1849fbadfd4e2ed6f3fb52177a74b40b29361d7bfb7eac33dee792f95` | `65b2169c0180dd0850b6e9e3a71304bd0b8245b5f8db7a77b8eac8a38195bf74` |
+| `tools/video/qa/cli.mjs` | `3f88cb712d7658e0ac2659e79ea67b673f4201b50d04b330265d4b620dcd2c32` | `993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33` |
+| `tools/video/qa/duration.test.mjs` | `0dd86e17c7048f1873d86abf4c07219eed41ca756c0e1bf30288527635ceb3d8` | `306d8f2c1f0474b668fb0b7cbb956a2595231ec649dc6cca8124753b43924cf8` |
+
+The exact C20 short-v8 exception requires its slug, noncompilation explainer drama format, everyday series episode 20, sole cute-mystery look, `[5,7]` target and 36 ordered line IDs with visible-text SHA256 `57600d182ae57947e2426e8551b19bc9e660b8808616d7d44b72122a0b666632` and ordered `say`/`say_for` SHA256 `be30d595b6ab35f0d84a5afb56e24b6d20cb079c66536e95c8d85eb5d159faae`. The reviewer recomputed both from `video.json` and independently matched the three approved v8 source-file hashes in the owner receipt. Altering an ID, character, `say` or `say_for` returns the project to the ordinary 480-second measured-body floor. The historical C20 slug and other episodes do not inherit the exception; C08's 240-second body/300-second final rule is unchanged.
+
+The C20 measured narration body must be at least 9,000 frames (300 seconds), excluding intro/outro; the checked presented cut must be at most 12,600 frames (420 seconds), including selected bookends. Lint accepts a five-minute draft floor and still runs narrated-story cadence checks. QA CLI bypasses the redundant generic eight-minute `minMinutes` input only for the same frozen C20 predicate. Shared duration validation still requires a current actual TTS timeline, matching speech hash, correct selected bookend frames and checked final-frame receipt. The reviewer reran bundled Node v24.19 core duration, lint and QA duration tests: 77/77 PASS, including one-frame bounds, changed identity/text/speech/binding, stale evidence and ordinary-length regression. `build.mjs --check` PASS; C20 lint 0 errors/15 warnings; nonpaid preflight PASS for 36 scenes, 33 shots and three cards; task-board check PASS.
+
+Verdict: PASS - DURATION_ONLY for these six reviewed bytes. This confirms the current TTS timeline and assembly's checked frame receipt, not an independent new probe of `final.mp4` during QA; non-anime final bytes are bound later by approval/package. C20 actual TTS, audible pronunciation, final media, budget route, paid generation, backend import, upload and publication remain HOLD.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, then the video review list order increment, then the brand story category increment (main, #1645), then the tutorial flow and hooks increment, then the panel questions increment, then the measurement rule increment, then the PR #1643 merge with main after #1645, then the paper slide look increment, then the stage prompt limit increment, then the manga visual tier increment, then the look gate clean-up grace increment, then the everyday C-series admin script source display increment (main, #1778), then the C-series video safety increment (main), then the listener lines answer increment, then the listener lines branch merge with main after #1778, then the listener lines branch merge with main after the C-series video safety increment, then the dub retry drama clips increment, then the dub retry drama clips branch merge with main after #1780, then the drama Shorts languages increment (main, #1783), then the dub retry drama clips branch merge with main after #1783, and then the manga keyframe fault checks increment, then the language batch thumbnails increment, then the generated music checked loop increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -6192,11 +6213,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/branding.test.mjs` | `97a554bdd2a4564e0cef66a3d60088378d92c82f20f22a2859fe2573b0d7efdf` |
 | `tools/video/core/drama.mjs` | `0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1` |
 | `tools/video/core/drama.test.mjs` | `dd57757c7ed3ba058cc45827ac09308dc55404be89f90b696f127af3d98c1272` |
-| `tools/video/core/duration.mjs` | `6c7fe00c9ac68730bec717f10929eff9bf9e12ddaf7b80a1882f4b7279475111` |
-| `tools/video/core/duration.test.mjs` | `699a9ef5bbce2b8a53ba957937375793eec67a932250776b311188832ec55a6c` |
+| `tools/video/core/duration.mjs` | `dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d` |
+| `tools/video/core/duration.test.mjs` | `2945430037b75c142f4f14f3b07736c102073f85daa6cea984bb1e6ea667a6bd` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `c73f2a82f595b258b13576806b1320fd1aa51ac4ba3cf99285aff122c7f46e7c` |
-| `tools/video/core/lint.test.mjs` | `146acef1849fbadfd4e2ed6f3fb52177a74b40b29361d7bfb7eac33dee792f95` |
+| `tools/video/core/lint.mjs` | `6573e87d4b29f786375d8a0f7b56402ee7ae04874c3d4e2020cdb0acd8fb6faf` |
+| `tools/video/core/lint.test.mjs` | `65b2169c0180dd0850b6e9e3a71304bd0b8245b5f8db7a77b8eac8a38195bf74` |
 | `tools/video/core/narration-locale.test.mjs` | `90acbca039b25ab4b7f0aabf011c5086e29c23ef9d6281a10fcb3601de622804` |
 | `tools/video/core/schema.mjs` | `8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
@@ -6224,8 +6245,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
 | `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
-| `tools/video/qa/cli.mjs` | `3f88cb712d7658e0ac2659e79ea67b673f4201b50d04b330265d4b620dcd2c32` |
-| `tools/video/qa/duration.test.mjs` | `0dd86e17c7048f1873d86abf4c07219eed41ca756c0e1bf30288527635ceb3d8` |
+| `tools/video/qa/cli.mjs` | `993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33` |
+| `tools/video/qa/duration.test.mjs` | `306d8f2c1f0474b668fb0b7cbb956a2595231ec649dc6cca8124753b43924cf8` |
 | `tools/video/qa/qa.test.mjs` | `8c28422af33173c7d19c6e2d9d401247f2007878ffe18ed48989a0a2eeeaab30` |
 | `tools/video/review/sync.mjs` | `c031cfca0a09be601c791c3aa1bcee7e13495a8a6121865679b979b6e98d64eb` |
 | `tools/video/review/sync.test.mjs` | `32d9e0a8408989cc138b8821824d0029a37471b2bb8962a39bff9d8d9ebf0290` |

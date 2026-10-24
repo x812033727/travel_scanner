@@ -264,7 +264,7 @@ test("QA forwards actual body and presentation timelines to its existing assembl
   assert.match((await assemble()).detail, /checked final frame count/, "an unbranded final must match the actual timeline too");
 });
 
-test("QA CLI applies only the frozen C08 short duration band, including one-frame boundaries", async (t) => {
+test("QA CLI applies only the frozen C08 and C20 short duration bands, including one-frame boundaries", async (t) => {
   const before = process.env.VIDEO_MIN_EPISODE_MINUTES;
   process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
   t.after(() => {
@@ -295,7 +295,7 @@ test("QA CLI applies only the frozen C08 short duration band, including one-fram
     const finalFile = path.join(box.workdir, "final.mp4");
     writeFileSync(finalFile, "local fixture, not real media");
     const branding = {
-      schema_version: 1, id: "c08-duration-test",
+      schema_version: 1, id: "short-duration-test",
       intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 },
       outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 630 },
     };
@@ -342,6 +342,12 @@ test("QA CLI applies only the frozen C08 short duration band, including one-fram
   assert.equal((await short.assemble(7_200)).ok, true, "the measured body floor is inclusive");
   assert.equal((await short.assemble(8_220)).ok, true, "8220 body + 780 selected bookend frames is exactly five minutes");
   assert.match((await short.assemble(8_221)).detail, /final cut is 9001 frames.*needs at most 9000 frames/);
+
+  const c20 = prepare("story-everyday-zippo-c20-short-v8");
+  assert.match((await c20.assemble(8_999)).detail, /body is 8999 frames.*needs at least 9000 frames/);
+  assert.equal((await c20.assemble(9_000)).ok, true, "the C20 measured body floor is inclusive");
+  assert.equal((await c20.assemble(11_820)).ok, true, "11820 body + 780 selected bookend frames is exactly seven minutes");
+  assert.match((await c20.assemble(11_821)).detail, /final cut is 12601 frames.*needs at most 12600 frames/);
 
   const historical = prepare("story-everyday-kikkoman-c08", (doc) => {
     // Its original last line is a known pre-existing narrative-lint hold; adjust only this test copy.

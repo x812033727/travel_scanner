@@ -9,7 +9,7 @@ import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
-import { isA01CompactStory, isC08ApprovedShortStory } from "./duration.mjs";
+import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
@@ -486,7 +486,7 @@ export function lintVideo(doc, context = {}) {
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
-  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc);
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
   // A brand story is narrated and opens on the condensation even when its pictures have a cast.
   if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
@@ -500,7 +500,7 @@ export function lintVideo(doc, context = {}) {
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
   // short: qa's assemble item measures the cut.
-  const floor = isC08ApprovedShortStory(doc) ? 4 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
+  const floor = isC08ApprovedShortStory(doc) ? 4 : isC20ApprovedShortStory(doc) ? 5 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
   // Where the floor holds it is the only length rule (owner, 2026-10-04): the upper end of
