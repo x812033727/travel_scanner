@@ -815,6 +815,90 @@ test("a verified generated bed passes preflight, and music changed during speech
   });
 });
 
+async function preparedSfxDub() {
+  const box = sandbox();
+  const doc = { ...geminiDoc(fixture()), sfx: { set: "studio-a" } };
+  const setDir = path.join(box.work, "_sfx", doc.sfx.set);
+  mkdirSync(setDir, { recursive: true });
+  const sounds = {};
+  for (const name of ["stamp", "whoosh", "pop"]) {
+    const file = path.join(setDir, `${name}.wav`);
+    writeFileSync(file, `${name} retained licensed bytes`);
+    sounds[name] = { file: `${name}.wav`, sha256: await sha256File(file) };
+  }
+  const manifestFile = path.join(setDir, "manifest.json");
+  writeFileSync(manifestFile, JSON.stringify({ source: "test", license: "test", sounds }));
+  doc.sfx.sha256 = await sha256File(manifestFile);
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  return { box, doc, setDir, manifestFile, server, ffmpeg };
+}
+
+test("invalid required SFX refuses a dub before speech, status, journal or cache changes", async (t) => {
+  const cases = [
+    ["missing manifest", ({ manifestFile }) => rmSync(manifestFile), /has no manifest.json/],
+    ["malformed manifest", ({ manifestFile }) => writeFileSync(manifestFile, JSON.stringify({ sounds: {} })), /sounds.stamp is missing/],
+    ["missing declared source", ({ setDir }) => rmSync(path.join(setDir, "stamp.wav")), /sound stamp .* is missing/],
+    ["manifest hash mismatch", ({ manifestFile }) => writeFileSync(manifestFile, `${readFileSync(manifestFile, "utf8")}\n`), /does not match sfx.sha256/],
+    ["source hash mismatch", ({ setDir }) => writeFileSync(path.join(setDir, "stamp.wav"), "changed licensed source"), /does not match its sha256/],
+    ["malformed sound hash", ({ manifestFile }) => {
+      const manifest = JSON.parse(readFileSync(manifestFile, "utf8"));
+      manifest.sounds.stamp.sha256 = "not-a-hash";
+      writeFileSync(manifestFile, JSON.stringify(manifest));
+    }, /sounds.stamp.sha256 must be 64 hex characters/],
+  ];
+  for (const [name, invalidate, problem] of cases) await t.test(name, async () => {
+    const prepared = await preparedSfxDub();
+    const { box, setDir, manifestFile, server, ffmpeg } = prepared;
+    invalidate(prepared);
+    const journal = path.join(box.workdir, "audio", "speech-journal");
+    const journalBytes = () => readdirSync(journal).sort().map((file) => [file, readFileSync(path.join(journal, file)).toString("base64")]);
+    const beforeJournal = journalBytes();
+    const retained = [path.join(box.dir, "video.json"), path.join(box.workdir, "state.json"), manifestFile, ...["stamp", "whoosh", "pop"].map((sound) => path.join(setDir, `${sound}.wav`))]
+      .filter(existsSync).map((file) => [file, readFileSync(file)]);
+    const calls = server.calls.length;
+    const run = capture(box, server, ffmpeg);
+    assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx), EXIT.usage, run.out.stdout + run.out.stderr);
+    assert.match(run.out.stderr, problem);
+    assert.equal(server.calls.length, calls, "required SFX is checked before even the speech status read or any vendor POST");
+    assert.equal(existsSync(dubArtifacts(box.workdir, "en").dir), false, "no dub cache, fit, timeline or audio directory was created");
+    assert.deepEqual(journalBytes(), beforeJournal, "retained paid narration history is byte-for-byte unchanged");
+    for (const [file, bytes] of retained) assert.deepEqual(readFileSync(file), bytes, `${file} is unchanged`);
+  });
+});
+
+test("valid SFX needs no assembled effects track, and a source changed during speech still refuses the mix", async (t) => {
+  for (const changed of [false, true]) await t.test(changed ? "source changes after speech starts" : "valid set without build/sfx.wav", async () => {
+    const { box, setDir, server, ffmpeg } = await preparedSfxDub();
+    assert.equal(existsSync(path.join(box.workdir, "build", "sfx.wav")), false);
+    const fetch = server.fetchImpl;
+    let speech = 0;
+    server.fetchImpl = async (url, init) => {
+      const result = await fetch(url, init);
+      if (!url.endsWith("/status") && ++speech === 1 && changed) writeFileSync(path.join(setDir, "stamp.wav"), "source changed during paid speech");
+      return result;
+    };
+    const run = capture(box, server, ffmpeg);
+    const code = await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx);
+    assert.ok(speech > 0, "valid SFX admits the fake speech requests");
+    const files = dubArtifacts(box.workdir, "en");
+    if (changed) {
+      assert.equal(code, EXIT.usage, run.out.stdout + run.out.stderr);
+      assert.match(run.out.stderr, /does not match its sha256/);
+      assert.equal(existsSync(files.track("m4a")), false);
+      assert.ok(existsSync(files.cache), "completed paid speech remains cached for recovery");
+    } else {
+      assert.equal(code, EXIT.ok, run.out.stdout + run.out.stderr);
+      assert.match(run.out.stdout, /no effects track yet: run assemble first/);
+      assert.equal(JSON.parse(readFileSync(files.timeline, "utf8")).sfx_hash, null, "unassembled optional effects remain omitted");
+    }
+  });
+});
+
 test("a dub of an illustrated video carries the music bed and the cut's effects track in its own format, and status marks it stale when they change", async () => {
   const { illustratedFixture, illustratedBrief } = await import("../core/fixtures/load.mjs");
   const { mixHash, sfxHash } = await import("../core/drama.mjs");
