@@ -132,3 +132,27 @@ paper duration is 7:02–7:49 at 300–270 Han/min, below the real 480-second
 body gate. The approved treatment/source matrix still use shorthand "1977
 still sold"; the script confines 1977 to the report publication year, and
 this task does not silently change approved treatment bytes. No paid calls.
+
+2026-10-24 fifth author revision: after the independent locked v4 `c090302`
+delta PASS at commit `7164dcd6b6cae8c145a230f5d1e0c24f7c9bed47`, the
+author read S1, S3 and S4 directly and added eight source-backed narration
+steps: Salathé's earlier axle-steel pitons, Chouinard's 1964 single-sheet
+mail-order price list and shipping warning, Frost's engineering contribution,
+the 1967 article's equipment-ordering efficiency, the 1973 review's 72-page
+catalog, and Chouinard's attributed clothing subsidy/die-cost estimates.
+All old IDs remain; new IDs and matching visual rows use the same table order.
+No new S7 dependence was introduced. Financial statements remain an interview
+subject's estimates, not independently audited results or an explanation of
+the company's piton-sales timeline. Current 85 narration rows pair with 85
+visual rows: 73 illustrations, 12 cards, max card streak 2. About 2,424
+spoken Han gives 8:05–8:59 at 300–270 Han/min, just five paper seconds above
+the 480-second floor at 300 Han/min. Actual TTS body duration remains HOLD.
+Script SHA-256 `CE92A01ED85C1F5C36B2FED977B02E5532E345CC136C0A581EA9F0AFCC4FB2D6`,
+visual SHA-256 `B5833D7D98856A7C8E87CF3FE5A68E531A06B33CE94E104CFF7CC0467365D9BE`,
+evidence SHA-256 `6CDEA423C36DF3D140C8F8C378A6BE869D73CFE838B88A8C89E2F5D61058C67B`.
+New LF narrator-only projection `reviews/narrator-only-ce92a01ed.txt` SHA-256
+`068CC334B2BCE9D9B08973623765548A10F76858E99DC96840429AFA4AE7B8A5`
+requires two independent fresh reads. Prior blind A's precise read was
+`blocked by policy`; no alternate read was attempted and no A verdict exists.
+The complete 85-line final-hash source/visual review and owner script gate
+remain pending. No paid calls, PR or upload under this revision.
