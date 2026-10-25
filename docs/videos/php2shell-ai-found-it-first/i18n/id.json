@@ -1,0 +1,463 @@
+{
+  "title": "PHP2Shell: Celah yang AI Temukan Dulu, Kenapa Situs Sedunia Tutup Sendiri, dan Cara Cek Situsmu",
+  "description": "Pada 21 Oktober 2026 PHP merilis update keamanan darurat; dua celahnya disebut PHP2Shell: celahnya ada di PHP itu sendiri, tanpa login, satu request saja bisa menjalankan program di server; AI menemukannya lebih dulu dua bulan sebelumnya, tapi karena bocor, patch-nya dimajukan sehari, dan situs pemerintah di seluruh dunia, pixiv, serta Wikimedia memilih tutup lebih dulu. Video ini memakai satu perbandingan (recall mobil: cacatnya di mesin, bukan di bodi) untuk menjelaskan apa urusannya denganmu dan apa yang terjadi dalam empat hari, lalu ditutup dengan demo di satu mesin uji Ubuntu: php -v yang menampilkan 8.3.6 bukan berarti belum di-patch; yang harus dilihat adalah catatan perubahan paketnya.\nDitulis untuk kamu yang punya situs sendiri di Taiwan, mengelola WordPress atau toko online untuk perusahaan, atau melihat berita \"situs sedunia offline\" dan ingin tahu harus berbuat apa.\n\nDirekam 25 Oktober 2026. Empat versi aman, \"hanya update yang jadi solusi lengkap\", dan distro yang menerima patch lebih dulu mengikuti pengumuman php.net 21 Oktober; audit 2024, kebocoran, dan waktu rilis yang dimajukan mengikuti blog PHP Foundation; angka 70% situs, model yang dipakai, dan lini waktunya mengikuti riset Wiz; firewall pukul 03:02 UTC mengikuti blog Cloudflare; honeypot 17 Oktober mengikuti AWS Security Blog; sekitar 28.000 situs publik Taiwan, sekitar 200 situs instansi pemerintah, serta urutan patch, WAF, dan penangguhan mengikuti laporan iThome tentang jumpa pers kepala Badan Keamanan Siber 22 Oktober; situs yang offline di tiap negara mengikuti BBC; angka dari PM Jepang dan CEO Cloudflare mengikuti postingan asli di X; layanan Jepang yang berhenti mengikuti Japan Cyber Watch. Tiga perintah lokal dan keluarannya benar-benar dijalankan pada 2026-10-25 di Ubuntu 24.04.5, PHP 8.3.6 (cli), dpkg 1.22.6; versi paket yang sudah diperbaiki untuk 24.04 mengikuti halaman CVE di ubuntu.com. \"Menurutku\" dan \"tak kutemukan\" adalah pendapat pemilik kanal. Video ini tidak mendemonstrasikan serangan.\n\nPerintah dalam video:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\nSitusmu, PHP-nya kamu kelola sendiri atau hosting? Dapat versi berapa? Tulis di komentar.",
+  "tags": [
+    "PHP2Shell",
+    "celah PHP",
+    "PHP 8.3.36",
+    "CVE-2026-109618",
+    "update PHP WordPress",
+    "AI menemukan celah",
+    "Patch the Planet",
+    "update keamanan PHP",
+    "situs offline",
+    "berita AI"
+  ],
+  "thumbnail": {
+    "tag": "Berita AI",
+    "headline": "Nomor versi\n**bisa menipu**",
+    "sub": "PHP2Shell: celah temuan AI, situs sedunia tutup sendiri"
+  },
+  "chapters": {
+    "open": "Apa itu PHP2Shell?",
+    "seventy": "Aku tak menulis PHP, kena?",
+    "audit": "Bagaimana AI menemukannya?",
+    "leak": "Kenapa patch maju sehari?",
+    "ncsc": "Kenapa situs tutup sendiri?",
+    "advisory-page": "Sudah aman? Cukup cek versi?",
+    "my-call": "Menurutku: 3 langkah sekarang"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "367ad8c4efb9",
+      "seventy": "bad6935cfb5d",
+      "audit": "8610e42bc7a0",
+      "leak": "a1a5a24bf238",
+      "ncsc": "f1613fe75309",
+      "advisory-page": "cbde628007c6",
+      "my-call": "986d180524f9"
+    },
+    "title": "18fe3e44a10b",
+    "description": "c99b51d2505d",
+    "tags": "03a30d06d55a",
+    "thumbnail": "5c18572e4c8c"
+  },
+  "lines": {
+    "4649": {
+      "source_hash": "781941164d38",
+      "text": "11 Agustus, peneliti Ryan Austin dengan GPT-5.6 Sol menyerahkan serangan, seperti di awal: satu request langsung masuk."
+    },
+    "9ey5": {
+      "source_hash": "a1c7fd83a276",
+      "text": "21 Oktober, PHP merilis update keamanan darurat; dua celahnya disebut PHP2Shell."
+    },
+    "cdnj": {
+      "source_hash": "f2f4eef69849",
+      "text": "Sejam sebelum rilis, PM Jepang memposting permintaan mendesak di X."
+    },
+    "nc3h": {
+      "source_hash": "0b4150b4fa02",
+      "text": "Mungkin kamu tanya: situsku WordPress, aku tak menulis PHP."
+    },
+    "z783": {
+      "source_hash": "2ce3d6fce853",
+      "text": "Apa urusanku?"
+    },
+    "h7nb": {
+      "source_hash": "5ff945ea0a41",
+      "text": "Ada urusannya: celahnya di PHP itu sendiri."
+    },
+    "3ppu": {
+      "source_hash": "1058e96b67b2",
+      "text": "Tanpa login, satu request bisa menjalankan program di servermu, membaca sandi di memori, atau mengubah situs."
+    },
+    "vwd9": {
+      "source_hash": "e7f9721efd99",
+      "text": "Karena celahnya di dasar, kode serapi apa pun tak menahannya."
+    },
+    "vw9g": {
+      "source_hash": "33afcfc8fbf1",
+      "text": "AI lebih dulu menemukan celahnya, kenapa situs sedunia masih harus tutup sendiri?"
+    },
+    "69ry": {
+      "source_hash": "67389d686d04",
+      "text": "Sepuluh menit lagi, empat hal: cara AI menemukannya dua bulan lalu, kenapa patch maju sehari;"
+    },
+    "hsxu": {
+      "source_hash": "cd8466bddd08",
+      "text": "empat versi aman, dan satu cek yang tak kelihatan dari nomor versi saja."
+    },
+    "9agr": {
+      "source_hash": "c773e83bb426",
+      "text": "Tadi kubilang ada hubungannya, peluangnya berapa? Dari situs yang bahasa servernya terdeteksi, hampir 70% pakai PHP: WordPress, Drupal, Joomla."
+    },
+    "iecr": {
+      "source_hash": "0a662bae1879",
+      "text": "Celah di PHP itu sendiri tadi ibarat recall mobil: cacatnya bukan di cat atau jok, tapi di mesin."
+    },
+    "x493": {
+      "source_hash": "63f2d0bf1c42",
+      "text": "Kode situsmu itu bodi mobil; PHP mesin di bawahnya."
+    },
+    "c633": {
+      "source_hash": "924fd0fcefa4",
+      "text": "Bahkan situs sebaris Hello World bisa kena."
+    },
+    "qy4i": {
+      "source_hash": "d3d750b49dce",
+      "text": "Paling rawan: Apache yang menjalankan PHP sebagai modul."
+    },
+    "byuv": {
+      "source_hash": "a118c2e966a3",
+      "text": "Request masuk, kodemu belum jalan, serangan sudah terjadi dulu."
+    },
+    "86sc": {
+      "source_hash": "ce857ae1d545",
+      "text": "Taiwan? Data awal Badan Keamanan Siber: sekitar 28.000 situs publik di sana pakai PHP,"
+    },
+    "rsu6": {
+      "source_hash": "e35649224f4c",
+      "text": "sekitar 200 situs pemerintah; sampai jumpa pers kepala badan, belum ada laporan diretas."
+    },
+    "gffq": {
+      "source_hash": "76136f0287ec",
+      "text": "Lalu sudah berapa lama celah ini di PHP? Belasan tahun, sejak versi 5.4 tahun 2012."
+    },
+    "2i85": {
+      "source_hash": "85b38333cb16",
+      "text": "Kenapa baru sekarang?"
+    },
+    "v5ur": {
+      "source_hash": "a28af8db890c",
+      "text": "Padahal di audit eksternal pertama PHP setelah bertahun-tahun, 2024, developer inti sudah melihat gejala masalah memori ini."
+    },
+    "92tm": {
+      "source_hash": "8e27db15bd48",
+      "text": "Tak terbukti bisa diserang; tiap solusi ada harga."
+    },
+    "rayj": {
+      "source_hash": "7b1b3232fa38",
+      "text": "Tim kecil harus sepakat; patch mandek, lanjut, tertunda berbulan-bulan."
+    },
+    "daec": {
+      "source_hash": "3bdef73c4105",
+      "text": "PHP Foundation sendiri lalu menulis:"
+    },
+    "uyhr": {
+      "source_hash": "6d3ed62de69f",
+      "text": "Penundaan: kegagalan struktural."
+    },
+    "wavj": {
+      "source_hash": "6564b8976cfa",
+      "text": "Siapa yang mengeluarkannya dari laci?"
+    },
+    "q9ga": {
+      "source_hash": "e26332f96fc0",
+      "text": "Titik balik: musim panas."
+    },
+    "rb3w": {
+      "source_hash": "79caf044b9b5",
+      "text": "30 Juli, perusahaan keamanan Calif, lewat Patch the Planet, program tambal open source OpenAI, mulai mengaudit PHP;"
+    },
+    "jmju": {
+      "source_hash": "7edfcbe913ae",
+      "text": "Akar penyebabnya: masalah tahun 2024 itu."
+    },
+    "i6qv": {
+      "source_hash": "c194f1cf1111",
+      "text": "Dua minggu kemudian Wiz, firma keamanan Google, pakai Gemini generasi 4, Argon, plus GPT-5.6 Sol, menemukan celah yang sama secara terpisah,"
+    },
+    "sqad": {
+      "source_hash": "01d542c1951a",
+      "text": "semuanya tembus di WordPress, Drupal, dan Joomla."
+    },
+    "2eju": {
+      "source_hash": "e3e4a419d9c4",
+      "text": "Sejak serangan Austin diserahkan, perbaikannya prioritas utama tim keamanan PHP Foundation; patch dijadwalkan 22 Oktober."
+    },
+    "26df": {
+      "source_hash": "25c29c5ebb55",
+      "text": "Kata Wiz, dengan model ini, kerja satu peneliti dalam seminggu dulu butuh satu tim ahli terbaik berbulan-bulan."
+    },
+    "gbaz": {
+      "source_hash": "8789e281296c",
+      "text": "Wiz membandingkannya dengan celah Heartbleed 2014: dulu library enkripsi, kini bahasa web itu sendiri."
+    },
+    "j6sz": {
+      "source_hash": "7cd5609465e8",
+      "text": "Ini mungkin titik balik serupa di era AI."
+    },
+    "m35m": {
+      "source_hash": "2a0599697bdf",
+      "text": "Mungkin kamu berpikir, AI menemukan celah itu baik atau buruk? Simpan dulu, lihat empat hari berikutnya."
+    },
+    "dy8w": {
+      "source_hash": "3c4290cbcd7a",
+      "text": "Rahasia dua bulan lebih, bocor dua hari terakhir."
+    },
+    "df33": {
+      "source_hash": "3730e8d12057",
+      "text": "Sore 20 Oktober, muncul postingan di Hacker News: dua celah eksekusi kode jarak jauh di PHP akan datang."
+    },
+    "7t2j": {
+      "source_hash": "496c55db2728",
+      "text": "Postingannya bahkan salah skor: katanya 10 dari 10; PHP sendiri menilainya 9.2."
+    },
+    "d2mf": {
+      "source_hash": "e358f39ee1c3",
+      "text": "Empat jam kemudian, PHP beri pengumuman dini: patch maju sehari."
+    },
+    "p4ua": {
+      "source_hash": "99a78ad44d85",
+      "text": "Digeser ke tanggal 21, jam 2 siang UTC, jam 10 malam waktu Taiwan."
+    },
+    "hafe": {
+      "source_hash": "f08c7a58cd62",
+      "text": "Setengah jam kemudian, penemu Calif keliru unggah video demo serangan; dihapus, tapi sudah menyebar."
+    },
+    "4eea": {
+      "source_hash": "2790ac972270",
+      "text": "Tanggal 21 jam 3 pagi, Cloudflare aktifkan aturan firewall bagi semua, gratis pun."
+    },
+    "pmy2": {
+      "source_hash": "d2824b4dd2f3",
+      "text": "Jam 7.41, firma kontainer Chainguard rilis image berisi patch, 6 jam lebih sebelumnya."
+    },
+    "q6jq": {
+      "source_hash": "e61dd1670bc8",
+      "text": "Penyerang bisa membedah patch-nya."
+    },
+    "ubbs": {
+      "source_hash": "099c87fd3686",
+      "text": "Jam 2 siang sesuai janji, empat versi aman rilis tepat waktu."
+    },
+    "nxcc": {
+      "source_hash": "207682d3ab48",
+      "text": "Secepat apa serangannya? Kata CEO Cloudflare, 10 jam sebelum pengumuman sudah ada ribuan percobaan;"
+    },
+    "2fht": {
+      "source_hash": "1fb782b508e2",
+      "text": "45 menit usai pengumuman jadi puluhan ribu, dua jam ratusan ribu, belum setengah hari sudah jutaan."
+    },
+    "us6i": {
+      "source_hash": "31ca5409e80d",
+      "text": "Ingat empat hari itu?"
+    },
+    "a87y": {
+      "source_hash": "b96991617ccf",
+      "text": "Server umpan Amazon, yakni honeypot, mencatat percobaan serangan tanggal 17, tiga hari sebelum bocor."
+    },
+    "yqd7": {
+      "source_hash": "1c6f7bc6c3a7",
+      "text": "Jadi patch belum ada, serangan sudah di jalan: situs bisa apa?"
+    },
+    "wppc": {
+      "source_hash": "bd79b735bb2f",
+      "text": "NCSC Inggris menulis dengan lugas:"
+    },
+    "vh8a": {
+      "source_hash": "7af177310d88",
+      "text": "Patch, mitigasi telat? Sistem offline dulu."
+    },
+    "bqis": {
+      "source_hash": "75b886dc4e4f",
+      "text": "Badan siber pemerintah Jepang pun bilang, menangguhkan situs efektif menurunkan risiko."
+    },
+    "m52w": {
+      "source_hash": "2084daced992",
+      "text": "Jadi malam sebelum patch rilis, seperti recall baru diumumkan, pemilik mobil menepi dulu."
+    },
+    "kirn": {
+      "source_hash": "5c1e2898c8e9",
+      "text": "Jepang: pixiv dan niconico;"
+    },
+    "s8y2": {
+      "source_hash": "b2edb0bda7a3",
+      "text": "Belanda: situs badan sibernya pun tutup;"
+    },
+    "3hp6": {
+      "source_hash": "8abb43f109c6",
+      "text": "Finlandia stop semua layanan;"
+    },
+    "wnky": {
+      "source_hash": "670527484c52",
+      "text": "32 situs pemerintah Inggris dan sebagian sistem Wikimedia juga offline."
+    },
+    "vrdu": {
+      "source_hash": "cebeef200467",
+      "text": "Masih ingat postingan di awal? Jam 9.55 malam waktu Jepang, satu jam sebelum patch rilis,"
+    },
+    "nauj": {
+      "source_hash": "9425cd0c51e3",
+      "text": "PM Sanae Takaichi menulis di X, sebuah \"permintaan mendesak\":"
+    },
+    "56c5": {
+      "source_hash": "065bafeb4983",
+      "text": "Malam ini juga, cek apakah situsmu memakai PHP."
+    },
+    "khrf": {
+      "source_hash": "c5459d7acfb6",
+      "text": "Taiwan tak minta situs tutup. Urutan: patch;"
+    },
+    "g97x": {
+      "source_hash": "4f79ae8aa3f9",
+      "text": "sistem terlalu tua untuk di-patch, WAF dulu; keduanya tak bisa, baru hentikan layanan publik."
+    },
+    "ksrk": {
+      "source_hash": "41c8710827a5",
+      "text": "Bedanya dari recall satu: recall bisa dijadwalkan, ini tidak; angka tadi tercapai setengah hari."
+    },
+    "42gu": {
+      "source_hash": "8839445525dc",
+      "text": "Patch keluar, bagaimana tahu punyamu sudah aman?"
+    },
+    "fx7j": {
+      "source_hash": "86d238a72d08",
+      "text": "Pengumuman resmi, link di deskripsi; judul berakhir dua kata: update now."
+    },
+    "zq2u": {
+      "source_hash": "ea7e5d563c7a",
+      "text": "Empat versi yang dijanjikan ada di tabel, satu per cabang: versi minor cabangmu harus sama atau lebih dari itu."
+    },
+    "pacb": {
+      "source_hash": "600178722938",
+      "text": "8.1 ke bawah: tak ada rilis resmi, andalkan distro atau hosting."
+    },
+    "53hk": {
+      "source_hash": "ef296bdafc0e",
+      "text": "Aku coba di mesin uji ini: ketik perintah versi, hasilnya 8.3.6."
+    },
+    "2qhy": {
+      "source_hash": "0076973fdf23",
+      "text": "Bandingkan dengan tabel tadi: cabang 8.3 baru aman di versi minor 36;"
+    },
+    "m5s9": {
+      "source_hash": "387ca65e1d75",
+      "text": "Mesinku di versi minor 6, kelihatannya tertinggal 30 versi; berarti kena, kan?"
+    },
+    "p9ke": {
+      "source_hash": "e48a4ed65e9c",
+      "text": "Jangan buru-buru menyimpulkan: mesin ini jalan di Ubuntu, PHP-nya terpasang dari paket distro."
+    },
+    "c8xq": {
+      "source_hash": "d6dfbab098bf",
+      "text": "Pertanyaannya: yang dipasang Ubuntu, versi berapa?"
+    },
+    "57xv": {
+      "source_hash": "1467488220d8",
+      "text": "Ganti pertanyaan: bukan tanya PHP, tanya manajer paket versi apa yang tercatat; perintahnya di deskripsi."
+    },
+    "f5zi": {
+      "source_hash": "683fa0652486",
+      "text": "Yang kembali bukan tiga angka polos itu, di belakangnya ada deretan nomor paket milik distro."
+    },
+    "cffr": {
+      "source_hash": "b0cf5b1d4a17",
+      "text": "Terakhir, buka catatan perubahan paketnya: satu perintah, cukup empat baris pertama, juga ada di deskripsi."
+    },
+    "94he": {
+      "source_hash": "fb9885b9e0f3",
+      "text": "Baris 1: versi paket, lalu kanal update keamanan;"
+    },
+    "eea5": {
+      "source_hash": "3bc119a24515",
+      "text": "Baris 3 tertulis update keamanan, baris 4 nama file patch-nya, berisi dua nomor CVE PHP2Shell itu, nomor identitas celahnya."
+    },
+    "ur3m": {
+      "source_hash": "8071068f8a23",
+      "text": "Ternyata patch sudah lama masuk. Versi aman di halaman CVE Ubuntu persis deretan yang dicetak manajer paket tadi."
+    },
+    "qd3n": {
+      "source_hash": "b408aefede9f",
+      "text": "Versi kok sama?"
+    },
+    "pmmz": {
+      "source_hash": "bfe83187bbff",
+      "text": "Pengumuman resmi PHP sendiri menulis: distro Linux dan vendor LTS dapat patch lebih dulu, dimasukkan ke paket versi lama."
+    },
+    "bvkf": {
+      "source_hash": "06691afbf5f0",
+      "text": "Seperti recall memperbaiki mesin, tahun di STNK tak berubah; yang dicek catatan servis."
+    },
+    "rvnm": {
+      "source_hash": "a1d7e0a40124",
+      "text": "Giliran mesinmu: cek seperti tadi, dalam tiga situasi."
+    },
+    "mm34": {
+      "source_hash": "4c9356c5a366",
+      "text": "Compile sendiri atau Windows: cek versi, minimal 4 versi aman;"
+    },
+    "48dz": {
+      "source_hash": "06432a3a2cdc",
+      "text": "Paket Linux: cek versi paket dan nomor CVE di catatan perubahannya;"
+    },
+    "w9gx": {
+      "source_hash": "e54ef2c175f3",
+      "text": "Kalau dikelola hosting, tanya langsung dua hal: PHP versi berapa, patch masuk tanggal berapa; \"sedang ditangani\" dari CS bukan jawaban."
+    },
+    "emqi": {
+      "source_hash": "b32790219e07",
+      "text": "Tiga salah paham umum: update WordPress bukan update PHP; PHP datang dari hosting atau image kontainer;"
+    },
+    "tgt8": {
+      "source_hash": "117ee82c139b",
+      "text": "Katanya matikan setelan session saja aman; PHP: itu cuma tutup sebagian jalur, bukan ganti update;"
+    },
+    "anbx": {
+      "source_hash": "df4ff64257ac",
+      "text": "Tanggal 23 ada tambahan: masih saran matikan setelannya, tapi tetap mitigasi, bukan patch."
+    },
+    "pcpg": {
+      "source_hash": "58697e1580fd",
+      "text": "Setelah di-patch, restart worker PHP; proses lama masih menjalankan kode lama."
+    },
+    "dv5w": {
+      "source_hash": "464847b8e3ea",
+      "text": "Oke, soal yang kita simpan tadi: AI lebih dulu menemukan celah, baik atau buruk?"
+    },
+    "gx6w": {
+      "source_hash": "0177fdd6e85d",
+      "text": "Menurutku: mencari celah makin cepat, menambalnya tidak; masih harus lewat banyak tangan."
+    },
+    "pmgi": {
+      "source_hash": "70c521a1b4ea",
+      "text": "Maintainer memilih solusi, distro mengemas, hosting menerapkan,"
+    },
+    "v48u": {
+      "source_hash": "1983fd2a68c6",
+      "text": "Langkah paling lambat itulah bocor dua hari tadi."
+    },
+    "duf7": {
+      "source_hash": "f7f15e541d84",
+      "text": "28.000 situs Taiwan itu sudah di-patch berapa, tak kutemukan; Badan Keamanan Siber bilang terus memantau."
+    },
+    "n4we": {
+      "source_hash": "233d569f0566",
+      "text": "Tiga hal: hari ini cek tiga cara tadi; kalau di hosting, tanya hostingnya;"
+    },
+    "7hcv": {
+      "source_hash": "5b2c7fd75eb3",
+      "text": "Minggu ini, situs 8.1 ke bawah jadwalkan ke 8.3 ke atas; dukungan 8.2 juga habis akhir tahun;"
+    },
+    "6k5e": {
+      "source_hash": "d3bae452e752",
+      "text": "Setelahnya, pantau pengumuman keamanan hostingmu."
+    },
+    "eedd": {
+      "source_hash": "032f8c7c8547",
+      "text": "Ingat soal awal? AI duluan temukan celah, kenapa situs tetap tutup sendiri."
+    },
+    "w9rt": {
+      "source_hash": "70d6a99314cc",
+      "text": "Karena patch itu rantai, bukan file; rantai belum tuntas, berhenti dulu paling aman."
+    },
+    "dknd": {
+      "source_hash": "d226477a743c",
+      "text": "Situsmu, PHP-nya kamu kelola sendiri atau hosting? Dapat versi berapa? Tulis di komentar."
+    },
+    "c6mc": {
+      "source_hash": "3a340924a0a9",
+      "text": "Subscribe: tiap video satu keputusan siap pakai usai nonton."
+    }
+  }
+}
