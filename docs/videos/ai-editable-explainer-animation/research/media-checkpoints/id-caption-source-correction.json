@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "slug": "ai-editable-explainer-animation",
+  "locale": "id",
+  "status": "source corrected for CC; native voice still skipped/unattempted",
+  "before_source_sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+  "after_source_sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+  "primary_source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "text_plan_sha256": "6e747daa5477d65c72547c3faed40c8235206a31ab8f7ec8302221e30e6f7bad",
+  "semantic_review_sha256": {
+    "id.three-author-independent-review.json": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a",
+    "id.retry-source-fidelity-options-review.json": "5b991ab06d39c3e05a2b0173cf2fde77fe0741b3113ad405819ffa0035beb9fb",
+    "id.retry-author-fidelity-review.json": "db6f107274a6010b16e0d67f831928d9c0b02dcd2813943f2f3a0b83c32580bb"
+  },
+  "changed_line_ids": [
+    "f576ae",
+    "9e738a",
+    "ed8308"
+  ],
+  "changed_metadata": false,
+  "selected_text_codepoints": {
+    "f576ae": 45,
+    "9e738a": 71,
+    "ed8308": 60
+  },
+  "protected_before_manifest": "/workspace/work/ai-animation-01/source-corrections/id-89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a-6e747daa5477d65c72547c3faed40c8235206a31ab8f7ec8302221e30e6f7bad/protected.before.json",
+  "protected_before_manifest_sha256": "b8a92fdb114a52ef3e33d06adb190c12bd4db4f9f4fe3f2061d168a710255995",
+  "all_protected_file_hashes_unchanged": true,
+  "raw_take_count_unchanged": 101,
+  "all_ID_WAV_count_unchanged": 108,
+  "auto_json_sha256_unchanged": "999923b2643bc7981ae22aed2912e13d38ad1ed7712d2a88c9e6220dcd315f98",
+  "skip_sha256_unchanged": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+  "fit_sha256_unchanged": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b",
+  "cache_sha256_unchanged": "6b9ff1885643a27b77a8b0731b3a1652811186266dcaae675b39366877ab2b33",
+  "counter_state_before": {
+    "en": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "th": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    }
+  },
+  "counter_state_after": {
+    "en": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "th": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    }
+  },
+  "native_voice": {
+    "status": "skipped",
+    "note": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round"
+  },
+  "assembled_ID_track": null,
+  "ID_ASR": null,
+  "corrected_text_audio_attempted": false,
+  "audio_fit_or_QA_approved": false,
+  "owner_retry_requested_or_taken_by_this_script": false,
+  "remote_retry_state": "not read by this offline operation; a real requested/open row and native taken ACK are still required before any paid retry",
+  "native_gates_changed": false,
+  "captions_built": false,
+  "API_calls": 0,
+  "paid_requests": 0,
+  "network_attempts": 0,
+  "historical_failure": {
+    "source_translation_sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+    "skip": {
+      "reason": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round",
+      "at": "2026-10-25T22:06:26.156Z"
+    },
+    "baseline_path": "/workspace/work/ai-animation-01/id-attempt1-before-retry.json",
+    "old_posted_status": "Preserved as history of the original failed attempt; frozen status helpers must not be rerun by bypassing their mismatched canonical-source guards."
+  },
+  "voice_route": "Any actual voice retry still requires the real owner requested/open queue entry and native taken ACK, synthesis/fit/audio checks. This source-only correction is not a shortening-model pass or an audio-fit approval."
+}

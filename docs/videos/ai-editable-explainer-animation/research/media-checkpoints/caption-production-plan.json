@@ -12,7 +12,7 @@
   },
   "work_inspector": {
     "file": "/workspace/work/ai-animation-01/audit-caption-readiness.mjs",
-    "sha256": "f281ed4f8e6b5d75759e30bac43c8457183a20522107ee5e850fed14ec2bdc18",
+    "sha256": "d9d0c4acf3ad8ea34979d9781866e7767f0a95eb239dc73344db4e3d7c18febd",
     "actions": [
       "--help",
       "--inspect"
@@ -42,7 +42,8 @@
     "No package finalization/submission until its existing guard genuinely passes; no EN uncertain paid retry or failed-locale cap reset/skip deletion.",
     "Publishing and Studio confirmation remain owner actions.",
     "The inspector preserves manifest.chapters warnings, rejects caption locales/files beyond the required nine, and compares actual current WAV SHA256 prefixes with saved ASR clip IDs. This remains saved-evidence inspection, not new audio or semantic approval.",
-    "Known ID canonical89edb036...9e738a meaning hold is bound and reported explicitly; successful cue/timing/byte checks do not clear it."
+    "Known ID canonical89edb036...9e738a meaning hold is bound and reported explicitly; successful cue/timing/byte checks do not clear it.",
+    "Current ID261b3cccc source-only correction is inventoried separately from the historical89edb036 meaning hold. Final-caption review is read when present; no actual CC build or voice approval is inferred."
   ],
   "execution_snippet_not_executed": "import fs from 'node:fs';\nimport path from 'node:path';\nimport { main, EXIT } from '/workspace/travel_scanner/tools/video/cli.mjs';\nimport { approvalState } from '/workspace/travel_scanner/tools/video/core/approvals.mjs';\nimport { acquireProjectLease } from '/workspace/travel_scanner/tools/video/core/project-lease.mjs';\nimport { stopRequested } from '/workspace/travel_scanner/tools/video/core/paths.mjs';\nconst root='/workspace/travel_scanner';\nconst slug='ai-editable-explainer-animation';\nconst workdir='/workspace/work/ai-animation-01/media/ai-editable-explainer-animation';\nconst docDir=path.join(root,'docs/videos',slug);\nconst ensure=(ok,note)=>{if(!ok)throw new Error(note);};\nglobalThis.fetch=()=>{throw new Error('Caption-only build forbids network.');};\nensure(!stopRequested(workdir),'STOP holds this project.');\nconst lease=acquireProjectLease(workdir,{owner:'scoped-caption-only'});\ntry {\n  lease.verify();\n  ensure(!stopRequested(workdir),'STOP arrived before caption production.');\n  const final=await approvalState({gate:'final',docDir,workdir});\n  const qa=JSON.parse(fs.readFileSync(path.join(workdir,'review/qa.json'),'utf8'));\n  ensure(final.status==='approved' && final.sha256 && qa.ok===true && qa.final_sha256===final.sha256,'The genuine current primary final+QA must pass.');\n  lease.verify();\n  ensure(!stopRequested(workdir),'STOP arrived before caption production.');\n  const code=await main(['captions','--slug',slug,'--workdir',workdir],{root});\n  lease.verify();\n  ensure(code===EXIT.ok,'Native captions stopped; inspect the actual output.');\n  ensure(!stopRequested(workdir),'STOP arrived; no caption delivery is claimed.');\n  console.log('Actual native captions written; this is NOT a full language package or audio approval. Run the separate read-only inspector and review every warning.');\n} finally { lease.release(); }\n",
   "audit_agent_actions": {
@@ -63,6 +64,20 @@
     "all_addressed": true,
     "final_verdict": "No remaining substantive issue found in actual read-only reinspection. JA/ES101WAVs each match saved ASR; failed/unfinished EN/KO/PT/ID remain unready; eight foreign CC still absent; ID meaning hold retained.",
     "api_requests": 0,
-    "current_media_writes": 0
+    "current_media_writes": 0,
+    "scope_script_sha256_before_inventory_update": "f281ed4f8e6b5d75759e30bac43c8457183a20522107ee5e850fed14ec2bdc18"
+  },
+  "inventory_only_update": {
+    "receipt": "/workspace/work/ai-animation-01/caption-inspector-id-inventory-update.json",
+    "receipt_sha256": "6541dcc7e19739f84ea4b6d8bb39bfc0b26a4e2b0e632a66886a76116715d9e4",
+    "root_review_pending": true,
+    "actual_caption_build_executed": false
+  },
+  "root_review_of_inventory_update": {
+    "reviewed_at_utc": "2026-10-25T23:25:08.007346+00:00",
+    "reviewer": "OpenAI Codex root",
+    "actually_read": "full caption-inspector-id-inventory.diff",
+    "verdict": "allow inventory-only final-caption review and historical/source-correction receipt fields; native/audio/caption QA predicates unchanged",
+    "caption_build_or_audio_approval": false
   }
 }

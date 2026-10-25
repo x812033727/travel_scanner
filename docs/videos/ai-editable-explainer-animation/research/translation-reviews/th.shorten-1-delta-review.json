@@ -1,0 +1,121 @@
+{
+  "locale": "th",
+  "line_id": "291f73",
+  "review_type": "independent_native_shorten_round_1_delta_source_fidelity_checkpoint",
+  "reviewer": {
+    "agent": "/root/review_id_vi_th/review_th",
+    "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+    "human": false,
+    "native_answer_producer": false
+  },
+  "reviewed_at_utc": "2026-10-25T23:13:16.556155+00:00",
+  "verdict": "needsauthorcorrection",
+  "new_tts": "BLOCKED_FOR_SOURCE_FIDELITY",
+  "text_pass": false,
+  "boundary": {
+    "path": "/workspace/work/ai-animation-01/author-review-boundaries/th.shorten.json",
+    "sha256": "add171c6631c8762663993825441287606916729127860a7eb036acc0081b42f",
+    "round": 1,
+    "variant": "shorten",
+    "native_counters": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0
+    },
+    "check_stopped": true,
+    "canonical_sha_matches_boundary": true,
+    "counters_reset": false,
+    "voice_approval_or_flag_clearance": false
+  },
+  "source": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "text": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+    "text_sha256": "291f73fb2e95ec69e81b872b2cb5dabe3505e7224bf1fb0b115d03b49b2c20c8",
+    "scene": "build-ask",
+    "adjacent_context_directly_read": [
+      "build-start: core visual becomes an executable project",
+      "build-ask: shared data source; installation/preview/export instructions; separate checker",
+      "build-config: title, target_sum=7 and locale=zh-TW live in one data file",
+      "976818: title, target and colors centralized for editing"
+    ]
+  },
+  "PRE": {
+    "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/th.json",
+    "exists": true,
+    "sha256": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+    "text": "อ่านหัวเรื่องกับเป้าจากไฟล์ อย่าใส่เลขแยกแต่ละภาพ",
+    "text_sha256": "48c604b59953b2998bf53d1d8cc6ab6961b46dd6e0645ccd16a0c84b55bb779d",
+    "codepoints": 49,
+    "meaning": "Contains explicit per-image scope แต่ละภาพ. It reads title and target from the file and tells the producer not to enter separate numbers for individual images."
+  },
+  "current_canonical": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+    "sha256": "1289b970131bc45a0516acc15ebde2f80e424f2cea5fe2912340f847859a928a",
+    "text": "ให้อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยก",
+    "text_sha256": "f59d864c8656ee416a5cacfa0c8c7ef21c354b06d3f449166458c29cb415e9f1",
+    "codepoints": 43,
+    "native_answer_matches": true,
+    "worksheet_matches": true,
+    "worksheet_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/th.todo.json",
+    "worksheet_sha256": "a9dd24e88b7264cfad8e5435fafe19505a3172c0a6ff417e5362f8a7eb0962f2",
+    "worksheet_max_chars": 57,
+    "worksheet_budget_pass": true
+  },
+  "native_answer": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/th-shorten-round-1-author-review-2026-10-25T23-10-56-939Z.txt",
+    "sha256": "44742bf13867f1c85b34fd642066e66a0a15e5870721e9d2795c669df678d785",
+    "actual_text": "ให้อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยก",
+    "canonical_source_of_truth": "The current canonical th.json was read directly and SHA-verified. The raw answer was used only to verify the accepted native text, never substituted for canonical translation."
+  },
+  "delta": {
+    "changed_line_ids_from_PRE": [
+      "291f73"
+    ],
+    "retained": "Reading title and target from a file and a generic prohibition on entering separate numbers.",
+    "lost": "The explicit per-image/per-screen scope in 畫面不要各寫一套數字 (do not write a separate set of numbers for each image). The accepted shortening removes แต่ละภาพ.",
+    "reason_for_block": "ไม่ใส่เลขแยก says only not to put separate numbers; it does not state which artifacts must share the values. The adjacent source explicitly distinguishes one data source from independently entered numbers in each image. This is meaning-bearing scope, so the shortening does not pass source fidelity.",
+    "clauses_order": "The remaining clauses stay in source order.",
+    "register": "The accepted Thai is grammatical and suitable for the narrator; the blocking problem is the omitted scope, not register or raw character count."
+  },
+  "fit_evidence": {
+    "recorded_original": {
+      "id": "291f73",
+      "chars": 49,
+      "max_chars": 36,
+      "window_over_seconds": 1.17,
+      "seconds": 6.34
+    },
+    "original_audio_seconds": 6.34,
+    "original_window_over_seconds": 1.17,
+    "estimated_36_character_guide": "Adaptive production guide, not a hard acceptance cap. No facts may be dropped merely to meet it.",
+    "current_actual_fit_tested": false,
+    "new_audio_generated": false,
+    "asr_run": false,
+    "fulltrack_run": false
+  },
+  "proposed_author_correction": {
+    "text": "อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยกแต่ละภาพ",
+    "text_sha256": "a5ffb5b7f01cb8446b530ce056e444623235691f14a9d7f40ceeb1b3a68dde12",
+    "codepoints": 48,
+    "adaptive_guide_codepoints": 36,
+    "over_adaptive_guide": true,
+    "within_current_worksheet_max_chars": true,
+    "actual_fit": "untested",
+    "reason": "Restores the explicit per-image scope in natural Thai while keeping the file-source clause first. It is a text proposal only and has not been applied or submitted for another native round."
+  },
+  "actions": {
+    "only_this_delta_review_written": true,
+    "source_edited": false,
+    "canonical_translation_edited": false,
+    "worksheet_edited": false,
+    "native_answer_edited": false,
+    "media_edited": false,
+    "paid_api_calls": 0,
+    "new_take": false,
+    "retry_or_native_round_reset": false,
+    "approval_granted": false,
+    "flags_cleared": false
+  },
+  "producer_state_as_instructed": "Original producer paused, lease absent. Reported remote time 23:11:05Z, KO/PT/ID retry=null, no owner grant; this review neither changes nor independently revalidates remote ownership."
+}
