@@ -1,0 +1,214 @@
+{
+  "scope": "Original finite-domain 8-bit arithmetic specification and guard-only compiled C; SymPy propositional SAT, not SMT, not Rocq, not a vendor-library reproduction. No buffer writes are executed.",
+  "domain": {
+    "input_n": "integer payload byte length 0..255",
+    "input_boolean_bits": 8,
+    "capacity_bytes": 8,
+    "terminator_bytes": 1,
+    "mathematical_requirement": "n+1 <= 8 in unbounded arithmetic"
+  },
+  "c_semantics": "n+1 is promoted to int; converting the total to uint8_t maps 256 to 0. This conversion is defined modulo 256, not undefined signed overflow.",
+  "sample_inputs": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sample_rows": [
+    {
+      "n": 0,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 1,
+      "narrowed_total": 1
+    },
+    {
+      "n": 1,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 2,
+      "narrowed_total": 2
+    },
+    {
+      "n": 2,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 3,
+      "narrowed_total": 3
+    },
+    {
+      "n": 3,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 4,
+      "narrowed_total": 4
+    },
+    {
+      "n": 4,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 5,
+      "narrowed_total": 5
+    }
+  ],
+  "boundary_rows": [
+    {
+      "n": 7,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 8,
+      "narrowed_total": 8
+    },
+    {
+      "n": 8,
+      "bad": 0,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 9,
+      "narrowed_total": 9
+    },
+    {
+      "n": 254,
+      "bad": 0,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 255,
+      "narrowed_total": 255
+    },
+    {
+      "n": 255,
+      "bad": 1,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 256,
+      "narrowed_total": 0
+    }
+  ],
+  "complete_domain_size": 256,
+  "bad_false_accepts": [
+    255
+  ],
+  "bad_false_rejects": [],
+  "widened_false_accepts": [],
+  "widened_false_rejects": [],
+  "full_compiled_c_vs_symbolic_model_comparison": {
+    "rows": 256,
+    "all_match": true
+  },
+  "sat_solver": {
+    "library": "SymPy",
+    "version": "1.14.0",
+    "algorithm": "dpll2",
+    "kind": "propositional SAT",
+    "proof_certificate_exported_or_independently_checked": false,
+    "queries": {
+      "bad_false_accept": {
+        "result": "SAT",
+        "elapsed_seconds": 0.4893766620007227,
+        "input_assignment": {
+          "b1": true,
+          "b3": true,
+          "b0": true,
+          "b6": true,
+          "b4": true,
+          "b2": true,
+          "b5": true,
+          "b7": true
+        },
+        "decoded_n": 255
+      },
+      "bad_false_reject": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.01479929400011315,
+        "raw_result": false
+      },
+      "widened_false_accept": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.004887784998572897,
+        "raw_result": false
+      },
+      "widened_false_reject": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.2549371639979654,
+        "raw_result": false
+      },
+      "reject_everything_false_accept": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.0025910179974744096,
+        "raw_result": false
+      },
+      "reject_everything_false_reject": {
+        "result": "SAT",
+        "elapsed_seconds": 0.0009239549981430173,
+        "input_assignment": {
+          "b3": false,
+          "b7": false,
+          "b5": false,
+          "b6": false,
+          "b4": false
+        },
+        "decoded_n": 0
+      }
+    },
+    "remaining_bad_false_accept_after_excluding_255": "UNSAT"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "gcc_version_first_line": "gcc (Debian 14.2.0-19) 14.2.0",
+    "installed_executables": {
+      "rocq": null,
+      "coqc": null,
+      "lean": null,
+      "lake": null,
+      "z3": null,
+      "cvc5": null,
+      "boolector": null,
+      "gcc": "/usr/bin/gcc"
+    }
+  },
+  "compile": {
+    "command": [
+      "/usr/bin/gcc",
+      "-std=c11",
+      "-O0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wconversion",
+      "-Wshadow",
+      "-pedantic",
+      "/workspace/work/ai-tech-next/formal-demo/guard.c",
+      "-o",
+      "/workspace/work/ai-tech-next/formal-demo/guard-demo"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "source_sha256": "4bfc837e2f17c1ae8326924a926929ee3d8dec29e88ec355b77db591c0d9e799",
+  "runner_sha256": "ca1a40f38cf95c35dfa45830cc6dc7d1fc50f62044a3a8e1cb6f26f84dd90393",
+  "binary_sha256": "0ef154d1c3473e15b68eb181606b646b9e64be8e6f7f968926cc2c6d4055279e",
+  "limitations": [
+    "Only this 0..255 length domain and fixed capacity 8 are checked.",
+    "The model does not execute real buffer writes, parse strings, model concurrency, or check a whole application.",
+    "The SAT solver result is a bounded propositional-model result, not a Rocq theorem or an independently checked proof certificate.",
+    "The C-to-Boolean correspondence is exhaustively checked on this finite domain; it is not a general verified compiler translation.",
+    "No claim is made about the 123 libraries or 239 entry points in the vendor research."
+  ]
+}
