@@ -133,6 +133,16 @@
       "what": "除了陳壽還有誰寫過"
     },
     {
+      "setup": "ce516",
+      "payoff": "ce518",
+      "what": "孫權是不是只送過這一次象"
+    },
+    {
+      "setup": "ce512",
+      "payoff": "ce513",
+      "what": "貢品的路上有沒有象"
+    },
+    {
       "setup": "ce605",
       "payoff": "ce606",
       "what": "兩本書誰抄誰"
@@ -160,9 +170,9 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "稱象\n**是假的？**",
+      "headline": "同一招\n**佛經裡也有**",
       "tag": "歷史名場面",
-      "sub": "472 年的佛經也有這招",
+      "sub": "曹沖死時，孫權還沒有象",
       "shot": "boy-stone"
     }
   },
@@ -280,7 +290,7 @@
       "lines": [
         {
           "id": "ce104",
-          "text": "曹操想知道牠多重，問遍部下，沒人答得出。"
+          "text": "曹操想知道多重，問遍部下沒人答得出。"
         }
       ]
     },
@@ -326,7 +336,7 @@
       "lines": [
         {
           "id": "ce107",
-          "text": "寫下這段的陳壽，寫這頭象只用一個「時」字起頭：那時候。哪一年？他沒寫。",
+          "text": "寫下這段的陳壽，寫這頭象只用一個「時」字：那時候。哪一年？他沒寫。",
           "emotion": "一字一字，最後停一拍"
         }
       ]
@@ -374,7 +384,7 @@
       "lines": [
         {
           "id": "ce110",
-          "text": "這份檔案跟著船邊那道刻痕，從三國一路走到一九三〇年。",
+          "text": "這份檔案跟著那道刻痕，從三國走到一九三〇年。",
           "emotion": "承諾句，篤定"
         },
         {
@@ -396,7 +406,7 @@
       "lines": [
         {
           "id": "ce201",
-          "text": "寫下曹沖這一段的陳壽是晉朝人，西元兩百九十七年過世，書在那之前就寫成了。",
+          "text": "寫下曹沖這一段的陳壽是晉朝人，西元兩百九十七年過世，六十五篇的《三國志》在那之前就寫成了。",
           "emotion": "接住開場，平穩"
         }
       ]
@@ -511,7 +521,7 @@
       "id": "pei-brush",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly scholar's hand in a plain hemp sleeve holding a brush still above an open blank scroll on a low table, an inkstone and a water dropper beside it, soft afternoon light from a paper window",
+        "prompt": "Close-up of an elderly scholar's hand in a plain hemp sleeve holding a brush still above an open blank scroll on a low table, an inkstone and a water dropper beside it, soft morning light from a paper window",
         "camera": "drift",
         "visual": "still"
       },
@@ -587,10 +597,22 @@
         {
           "id": "ce304",
           "text": "照《三國志》，就在同一年，孫權和劉備在赤壁大破曹操。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "cao-retreat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap sitting on a camp stool under a plain tent flap on a grey morning, one hand on his knee, looking out at the camera with a tired frown, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ce305",
-          "text": "曹操這邊的紀錄只寫：軍中大疫，兵士死了很多，退兵。"
+          "text": "曹操這邊的紀錄只寫：軍中大疫，兵士死了很多，退兵。",
+          "emotion": "低一點"
         }
       ]
     },
@@ -605,7 +627,7 @@
       "lines": [
         {
           "id": "ce306",
-          "text": "從這年起兩邊公開打仗，九年後孫權才請降，曹操回信說要修好、結親。"
+          "text": "從這年起兩邊公開打仗，九年後孫權才請降。"
         },
         {
           "id": "ce307",
@@ -618,7 +640,7 @@
       "id": "yeshi-reads",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged scholar in a plain grey robe and a soft black cap sitting by a window on a mild afternoon, closing a string-bound book on his lap with a contented smile toward the camera, soft window light",
+        "prompt": "Medium shot of a middle-aged scholar in a plain grey robe and a soft black cap sitting by a window on a mild morning, closing a string-bound book on his lap with a contented smile toward the camera, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -678,7 +700,18 @@
         {
           "id": "ce312",
           "text": "西元兩百一十年，孫權派人去當交州刺史，交州才服從他。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "jiaozhou-south",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a river mouth among low wooded hills under a hazy sky, a single grey elephant standing in the shallows with a keeper in a straw hat sitting on its neck and looking toward the camera, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ce313",
           "text": "交州最南邊的九真、日南兩個郡，產象。"
@@ -723,7 +756,7 @@
       "lines": [
         {
           "id": "ce315",
-          "text": "所以他說：這件事，是修飾出來的。",
+          "text": "所以他說：這件事，是修飾出來的。這句話，收在四庫全書本《三國志》卷末的考證裡。",
           "emotion": "放慢，像蓋章"
         },
         {
@@ -760,7 +793,7 @@
       "lines": [
         {
           "id": "ce318",
-          "text": "交州歸了孫權以後，那邊年年送來南方的珍物，單子上有明珠、玳瑁、犀角、象牙。"
+          "text": "交州歸了孫權以後，那邊年年送來南方珍物：明珠、玳瑁、犀角、象牙。"
         },
         {
           "id": "ce319",
@@ -773,7 +806,7 @@
       "id": "hezhuo-abacus",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown at a desk in the afternoon, sliding the beads of a wooden abacus with one finger and glancing up at the camera with a half smile, soft window light",
+        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown at a desk at midday, sliding the beads of a wooden abacus with one finger and glancing up at the camera with a half smile, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -796,7 +829,7 @@
       "lines": [
         {
           "id": "ce321",
-          "text": "另一位清朝學者邵晉涵，從一本宋朝的筆記裡翻出來的，是一頭豬。",
+          "text": "另一位清朝學者邵晉涵，從一本宋朝筆記裡翻出一頭豬。",
           "emotion": "帶一點好笑"
         },
         {
@@ -818,7 +851,18 @@
           "id": "ce323",
           "text": "一位國王得到北方人獻的一頭大豬，用秤桿量，壓斷了十根。",
           "emotion": "帶一點好笑"
-        },
+        }
+      ]
+    },
+    {
+      "id": "pig-weighed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump river official in a blue jacket standing on a small wooden boat on a calm river on a hazy morning, holding the rope of a huge pink pig standing beside him and looking straight ahead with a startled face, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ce324",
           "text": "結果呢？最後叫管水的官，用船來量：重一千鈞。"
@@ -907,7 +951,18 @@
         {
           "id": "ce331",
           "text": "何焯自己也猜過：船上刻水，恐怕是算術書裡本來就有的法子。可是在哪一本，他沒說。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "method-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a wooden desk in a reading room at a quiet midday, opening a thick old string-bound book with wide eyes, a desk lamp beside him, soft light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ce332",
           "text": "如果故事是修飾出來的，這個辦法到底是從哪裡來的？",
@@ -947,11 +1002,11 @@
       "lines": [
         {
           "id": "ce403",
-          "text": "文章登在那年六月的《清華學報》，只有四頁，標題就把曹沖和佛教故事寫在一起。"
+          "text": "文章登在那年六月的《清華學報》，只有四頁，標題把曹沖和佛教故事寫在一起。"
         },
         {
           "id": "ce404",
-          "text": "他開頭就說：舉幾件事來證明。"
+          "text": "他開頭就說：舉幾件事來證明。正史的正文裡，本來就常混進佛教故事。"
         }
       ]
     },
@@ -981,7 +1036,7 @@
       "lines": [
         {
           "id": "ce406",
-          "text": "還記得開頭那個躲在地底下的老人嗎？他就在這一篇裡。",
+          "text": "還記得開頭那個躲在地底下的老人嗎？",
           "emotion": "親近，略上揚"
         }
       ]
@@ -997,7 +1052,7 @@
       "lines": [
         {
           "id": "ce407",
-          "text": "他住的國家，就叫棄老國：照那裡的法律，老人都要被送到遠方。",
+          "text": "他就在這一篇裡。他住的國家叫棄老國：照那裡的法律，老人都要被送到遠方。",
           "emotion": "溫和，放慢"
         }
       ]
@@ -1022,7 +1077,7 @@
       "id": "minister-looks-back",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a middle-aged minister in a dull blue court robe and a tall black cap at the top of narrow earthen steps in the late afternoon, glancing over his shoulder toward the camera with a nervous, determined face, warm light from below",
+        "prompt": "Close-up of a middle-aged minister in a dull blue court robe and a tall black cap at the top of narrow earthen steps in the early morning, glancing over his shoulder toward the camera with a nervous, determined face, warm light from below",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1140,6 +1195,22 @@
       ]
     },
     {
+      "id": "water-riddle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a court official in a black cap standing at the edge of a palace pond on an overcast morning, scooping a handful of water and staring at it with a baffled face toward the camera, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ce418b",
+          "text": "後面的題目一道比一道玄，連「一掬水怎麼會比大海多」都有。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
       "id": "king-decree",
       "template": "shot",
       "data": {
@@ -1225,7 +1296,22 @@
         },
         {
           "id": "ce426",
-          "text": "《三國志》成書時，佛教傳進來還不久，印度的故事卻已經傳得這麼廣；連陳壽那樣的眼光，都分辨不出真假。"
+          "text": "《三國志》成書時，佛教傳進來還不久，印度的故事卻已經傳得這麼廣。"
+        }
+      ]
+    },
+    {
+      "id": "chen-shou-squints",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a historian in a dark gown and a black cap at a low table of bamboo slips in a study on a grey morning, holding one slip close to his eyes and squinting at it with a doubtful frown toward the camera, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ce426b",
+          "text": "所以連陳壽那樣的眼光，都分辨不出真假。"
         }
       ]
     },
@@ -1309,7 +1395,7 @@
       "id": "archivist-two-books",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a long reading-room table on a hazy afternoon, laying two open string-bound books side by side and tapping one page with a finger, a small confident nod toward the camera, soft daylight",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a long reading-room table on a hazy morning, laying two open string-bound books side by side and tapping one page with a finger, a small confident nod toward the camera, soft daylight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1483,7 +1569,7 @@
       "lines": [
         {
           "id": "ce510",
-          "text": "有。西元兩百一十九年，孫權向曹操上書稱臣。"
+          "text": "有。西元兩百一十九年，孫權向曹操上書稱臣，還說曹操有天命。"
         }
       ]
     },
@@ -1498,7 +1584,7 @@
       "lines": [
         {
           "id": "ce511",
-          "text": "隔年曹丕當了皇帝，孫權接著稱藩；曹丕自己寫信說，孫權的貢品多到「盈路」，擺滿了路。"
+          "text": "隔年曹丕當了皇帝，孫權稱藩；曹丕自己說，孫權的貢品「盈路」，擺滿了路。"
         },
         {
           "id": "ce512",
@@ -1552,7 +1638,8 @@
       "lines": [
         {
           "id": "ce516",
-          "text": "信上沒寫年份。能確定的只有：那時曹沖已經死了十多年。"
+          "text": "信上沒寫年份。能確定的只有：那時曹沖已經死了十多年。那這是孫權唯一一次送象嗎？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1560,7 +1647,7 @@
       "id": "ivory-request",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern court official in a dark green-free plain brown robe and a black cap standing in a hall on an overcast day, holding a blank letter at arm's length and frowning at it, soft light from a doorway",
+        "prompt": "Medium shot of a southern court official in a plain brown robe and a black cap standing in a hall on an overcast day, holding a blank letter at arm's length and frowning at it, soft light from a doorway",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1582,7 +1669,22 @@
       "lines": [
         {
           "id": "ce518",
-          "text": "類書裡還記著，諸葛亮打完仗回成都，孫權派人慰勞，也送了兩頭馴象給蜀漢的劉禪。"
+          "text": "不是。類書裡還記著，諸葛亮打完仗回成都，孫權派人慰勞，也送了兩頭馴象給劉禪。"
+        }
+      ]
+    },
+    {
+      "id": "luji-writes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain white robe writing at a low desk on an open veranda on a mild morning, pausing with the brush raised and a proud smile toward the camera, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ce518b",
+          "text": "吳國人陸機後來寫文章誇孫權的時代：外國送來的巨象、駿馬，養在廄裡。"
         }
       ]
     },
@@ -1735,7 +1837,7 @@
       "lines": [
         {
           "id": "ce607",
-          "text": "能確定的是，比那部佛經的譯本早，晉朝已經有兩個人寫下這件事。"
+          "text": "能確定的是，比那部佛經的譯本早了快兩百年，晉朝已經有兩個人寫下這件事。"
         }
       ]
     },
@@ -1758,7 +1860,7 @@
       "id": "archivist-sill",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket sitting on a low windowsill of a reading room on an overcast afternoon, palms turned up on his knees, a wry smile toward the camera, soft grey daylight",
+        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket sitting on a low windowsill of a reading room at an overcast noon, palms turned up on his knees, a wry smile toward the camera, soft grey daylight",
         "camera": "tilt up",
         "visual": "still"
       },
