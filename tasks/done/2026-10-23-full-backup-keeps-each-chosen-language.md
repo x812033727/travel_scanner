@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-full-backup-keeps-each-chosen-language
 title: Full backup keeps each chosen language's unpackaged dub track and thumbnail
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-23T07:22:06Z
 created_at: 2026-10-23T07:21:52Z
-completed_at:
+completed_at: 2026-10-24T11:02:46Z
 branch: claude/manual-multilingual-audio-upload-2f97b6
 depends_on: []
 scope:
@@ -48,7 +48,7 @@ backup hold every chosen language's voice track and thumbnail.
 - [x] A work directory made by hand, with `upload/final.mp4` and no `auto.json`
   (`openai-devday-2026-recap`, `free-vs-paid-ai-plans-2026`), is backed up too; before, the
   round skipped any directory without `auto.json`, so these two were never queued.
-- [ ] Deployed, and a full-tier video with an unpackaged track shows it in Drive.
+- [x] Deployed, and a full-tier video with an unpackaged track shows it in Drive. Deployed 2026-10-23 (a9cd80218); A4's full backup (186 files, 2026-10-24 03:13Z) holds `dubs/未進上傳包/ja.m4a` and `ko.m4a`.
 
 ## How to verify
 
