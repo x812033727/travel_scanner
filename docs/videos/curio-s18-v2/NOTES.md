@@ -8,7 +8,7 @@
 - 事實沿用第一版 2026-10-19 的查核 `topic-checks/S18.md`（34 列加獨立覆核），沒有新增查核；每句對照在 [`claims.md`](claims.md)，給 `qa` 讀的表在
   [`verify-1.md`](verify-1.md)。
 - 沒有生圖、沒有配音、沒有花錢。第一版的插圖在主機上（`curio-episode` skill §在雲端環境：S18 十一景改提示詞一輪就過）；第二版 67 景提示詞逐字沿用、31 景是新提示詞。
-- **盲評待跑**：這個環境沒有 Agent 工具（只有 ToolSearch 查得到的 SendMessage、EnterWorktree 等），開不了兩位全新的讀者子代理。
+- **盲評已過**（2026-10-25，主對話開的兩位讀者，第 1 輪就沒有任何一題兩位同否；見〈盲評紀錄〉）。原本的待跑說明留著：這個環境沒有 Agent 工具（只有 ToolSearch 查得到的 SendMessage、EnterWorktree 等），開不了兩位全新的讀者子代理。
   payload 存在 `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s18/payload-round1.json`
   （`narrative --slug curio-s18-v2 --json` 的輸出，`narration` 與 `questions` 原文）。跑法照主機兩位讀者的規則：兩個全新讀者各自只讀 payload，
   回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過，最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，
@@ -44,7 +44,7 @@
 
 ## 盲評紀錄
 
-待跑（見〈狀態〉）。跑了之後把每一輪改了什麼補在這裡。
+- 第 1 輪（2026-10-25，主對話開的兩位全新讀者，各自只讀 payload）：讀者 1 十三題全是；讀者 2 只有 `no_recap` 答否（nb610 與 nb611 把「個子矮所以好鬥」連講兩次）。合併規則是兩位同否才算沒過，所以第 1 輪通過，沒有改稿；兩份答案在 `panel/`，`narrative --answers panel/reader-1.json` 已留紀錄（passed）。讀者 2 點的那兩句可在旁白量過長度時順手合併。
 
 ## 教訓
 
