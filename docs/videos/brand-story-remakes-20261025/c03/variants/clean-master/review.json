@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "review_type": "METADATA_ONLY_CLEAN_MASTER_DERIVATION",
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "scope": "METADATA_DERIVATION_PASS",
+  "verdict": "METADATA_DERIVATION_PASS",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "bindings": {
+    "source_video": {
+      "path": "../../video.json",
+      "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+    },
+    "variant_video": {
+      "path": "video.json",
+      "sha256": "814a229d33801a8a5be37ff9a8d074e54d851b636338e2ce9aac5871f827089e"
+    },
+    "derivation": {
+      "path": "derivation.json",
+      "sha256": "e787a59553acbee7e4b135d6f487aa16f5d6c2b9053b6e970fb44669c869fa6e"
+    },
+    "r3_source_receipt": {
+      "path": "../../reviews/source-r3-delta.json",
+      "sha256": "b4b15def639f0addb280c3cd238de2fdd51d005697fe16a96e22d7ca7725f390",
+      "verdict": "PASS"
+    },
+    "backend_locale_intent_snapshot": {
+      "path": "../../backend-status.json",
+      "sha256": "e05731fa21a4aa7db34443d5251d11558aeadab6f2f5fddcc6ceb04f289d0d7e"
+    },
+    "actual_lexicon_version": {
+      "path": "../../runtime-lexicon/versions/30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe.json",
+      "sha256": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe"
+    }
+  },
+  "full_object_comparison": {
+    "result": "PASS",
+    "only_difference": "subtitles.burn_in: true -> false",
+    "same_new_remake_slug": true,
+    "old_activated_slug_used": false,
+    "all_scenes_narration_voices_pauses_sources_prompts_cards_music_metadata_budget_identity_unchanged": true,
+    "original_zhTW_burned_recipe_preserved": true,
+    "all4_r3_source_bound_inputs_still_exact": true
+  },
+  "native_pure_function_verification": {
+    "method": "直接執行目前repository匯出的screenplay/narrativeHash/speechHash(real lexicon)/picturesHash/lookHash/mixHash/subtitlesHash；未呼叫供應商或渲染。",
+    "screenplay": {
+      "source_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+      "variant_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+      "bytes_identical": true,
+      "matches_backend_approved_screenplay_hash": true
+    },
+    "hashes": {
+      "narrativeHash": {
+        "source": "5cb14d4ecf0bdc3a",
+        "variant": "5cb14d4ecf0bdc3a",
+        "equal": true
+      },
+      "speechHash_with_actual_lexicon": {
+        "source": "37aab4572320064b",
+        "variant": "37aab4572320064b",
+        "equal": true
+      },
+      "picturesHash": {
+        "source": "5905cc7dcd62b707",
+        "variant": "5905cc7dcd62b707",
+        "equal": true
+      },
+      "lookHash": {
+        "source": "98a370ae40badbaf",
+        "variant": "98a370ae40badbaf",
+        "equal": true
+      },
+      "mixHash": {
+        "source": "71ecdd098c551254",
+        "variant": "71ecdd098c551254",
+        "equal": true
+      },
+      "subtitlesHash": {
+        "source": "4b23ded6e41b1e87",
+        "variant": "ec58a1493220a1da",
+        "equal": false
+      }
+    },
+    "module_sha256": {
+      "tools/video/core/screenplay.mjs": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389",
+      "tools/video/core/timeline.mjs": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/core/lexicon.mjs": "b9869497afbbd8dfbfce273e9856fab45beadf7b341aa3da17c6685b4509386d"
+    }
+  },
+  "locale_intent_observed": {
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "metadata_captions_dub_all_true": true,
+    "decision_at": "2026-10-25T14:09:36.202531Z",
+    "proof": "離線backend-status.json選取欄位；不執行新的後台讀寫，不把意向當配音資格。"
+  },
+  "native_eligibility_rule_observed": {
+    "function": "_story_dub_ready",
+    "source_path": "apps/api/app/video_reviews/admin_service.py",
+    "read_mechanism": "git show HEAD:apps/api/app/video_reviews/admin_service.py",
+    "git_commit": "78263c50d06176c1de340d4a9482cfe47de27e5e",
+    "file_sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+    "function_lines": [
+      1305,
+      1324
+    ],
+    "function_sha256": "7d3bb228b8a58da8abbd04c0cfb0bd40b2bddbe7b537e73b7ed47aa062235582",
+    "qa_helper_sha256": "81b87041b9798e8b315dc79c7a0c36cd53dfa25610469ae2a115b1b1350fe7c2",
+    "rule": "必須是_current_final選出的當前final且status=approved；payload.qa或manual_review_qa須為dict、subtitles_burned_in明確False，並通過綁該final.content_sha256的_story_dub_qa_passed（完整QA項目與允許豁免規則）。較新pending/rejected/superseded不承接較早核准。",
+    "preselection_distinguished": "_story_dub_preselectable允許先保存story dub意向；不等於_story_dub_ready。",
+    "actual_native_eligibility_tested": false,
+    "actual_native_eligibility_pass": false
+  },
+  "render_plan_review": {
+    "result": "PASS_AS_UNRENDERED_PLAN",
+    "legitimate_plan": "在主版的新C03音訊/圖片確已付費獲授權且實際驗證後，用同一組素材分別組成zh-TW燒字幕輸出與clean國際底片；variant本身不另買旁白/插圖/provider素材。字幕模式差異須實際重新輸出，不是重新命名或剝改已燒錄影格。",
+    "required_future_evidence": [
+      "兩個實際輸出的不同檔案/字幕模式與cut SHA",
+      "各自適用的render/音畫/字幕QA，綁真實成片SHA",
+      "clean cut成為當前final並獲該cut的成片核准後，才可測native dub ready"
+    ],
+    "no_existing_final_qa_or_approval_inheritance": true,
+    "same_hashes_are_only_input_identity_not_verified_media_reuse": true
+  },
+  "findings": [],
+  "not_claimed": {
+    "actual_clean_master_exists": false,
+    "actual_zhTW_burned_export_rendered_by_this_review": false,
+    "actual_media_qa": false,
+    "final_owner_approval": false,
+    "narrative_review_or_runtime_proof": false,
+    "actual_media_reuse_or_provider_cost_eligibility": false,
+    "dub_ready_or_dubs_completed": false,
+    "funding_or_budget_ledger_reconciled": false
+  },
+  "review_actions": {
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "source_or_recipe_edits": 0,
+    "other_files_written": 0,
+    "only_new_file": "variants/clean-master/review.json",
+    "note": "付費0及guard未變在derivation/本地快照有宣告；本審查未改任何guard，也未重新稽核全帳本。"
+  },
+  "scope_note": "本PASS只核只改字幕旗標的衍生配方、相同已審故事/原生輸入hash與未渲染計畫的誠實性。不簽媒體資格、敘事、時長、音訊、成圖、實際QA、站主成片或發布核准。"
+}

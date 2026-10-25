@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T13:59:52.881858+00:00",
+  "updated_at": "2026-10-25T15:28:24.158693+00:00",
   "user_direction": "從C03開始重製",
   "current_priority": "C03",
   "order": [
@@ -8,9 +8,11 @@
       "episode": 3,
       "original_slug": "story-everyday-moleskine-c03",
       "preferred_revision": "story-everyday-moleskine-c03",
-      "status": "source_and_narrative_pass_owner_and_production_entry_pending",
+      "status": "approved_outline_and_script_tts_pre_dispatch_hold",
       "remake_slug": "story-everyday-moleskine-c03-remake-20261025",
-      "handoff": "c03/production-entry.md"
+      "handoff": "c03/production-entry.md",
+      "text_preparation": "c03/i18n/preparation-status.json",
+      "clean_master_recipe": "c03/variants/clean-master/README.md"
     },
     {
       "episode": 4,
@@ -46,7 +48,7 @@
       "episode": 9,
       "original_slug": "story-everyday-patagonia-c09",
       "preferred_revision": "story-everyday-patagonia-c09",
-      "status": "source_and_narrative_pass_script_pending_production_held"
+      "status": "source_and_narrative_pass_script_approved_production_held"
     },
     {
       "episode": 10,
@@ -90,5 +92,7 @@
   "paid_calls": 0,
   "production_mode": "fresh_remake_from_c03",
   "latest_user_direction": "如果不行你就重新來吧",
-  "old_media_retrieval_required": false
+  "old_media_retrieval_required": false,
+  "language_defaults": "language-defaults.json",
+  "continue_in_order_without_routine_questions": true
 }

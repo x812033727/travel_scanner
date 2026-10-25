@@ -61,6 +61,15 @@ for (const id of projectIds) {
     fs.copyFileSync(path.join(source, file), path.join(target, file));
     files[file] = hash(path.join(target, file));
   }
+  // Carry the native, source-bound text translations; keep review history outside the runtime.
+  for (const locale of ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]) {
+    const file = path.join("i18n", `${locale}.json`);
+    if (!fs.existsSync(path.join(source, file))) continue;
+    JSON.parse(fs.readFileSync(path.join(source, file), "utf8"));
+    fs.mkdirSync(path.join(target, "i18n"), { recursive: true });
+    fs.copyFileSync(path.join(source, file), path.join(target, file));
+    files[file] = hash(path.join(target, file));
+  }
   const screenplay = writeScreenplay(target, doc);
   projects.push({ id, slug: doc.slug, source_files_sha256: files, author_script_sha256: hash(path.join(source, "script.md")), runtime_script_sha256: hash(screenplay), lexicon_sha256: dictionary.lexicon_sha256 });
 }

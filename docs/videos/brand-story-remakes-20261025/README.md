@@ -2,7 +2,7 @@
 
 本批依站主「繼續完成後台未完成影片、用新規則重製，參考 [PR #1844](https://github.com/x812033727/travel_scanner/pull/1844)」的指示建立，原始碼基準為 `2b20c30d3`。目前完成的是新稿與審核準備，**尚未產生本批音訊、插圖、配樂或成片，沒有送出付費請求，也沒有成片核准**。
 
-站主追加「從 C03 開始重製」後，當前製作順序改為 **C03 Moleskine 優先**，再按既有集數接續（見 [execution-order.json](execution-order.json)）。C03 舊版上架包正文約 8 分鐘且未燒字幕；[C03 r3新規則稿](c03/README.md)已通過來源與雙讀者合併、企劃／劇本均已送後台待審；已完成的 C04／C05／C09 新稿及審核紀錄保留。舊 C03 付費素材位於另一台 Windows 工作機，本環境未取得原件；[現有證據](c03/existing-evidence/media-inventory.json)記下可用性與歷史收據差別，依站主後續「如果不行你就重新來吧」指示，新版改按從零製作預檢，舊素材取回不再是前置條件；原件及既有支出仍保留，不宣稱已沿用。
+站主追加「從 C03 開始重製」後，當前製作順序改為 **C03 Moleskine 優先**，再按既有集數接續（見 [execution-order.json](execution-order.json)）。C03 舊版上架包正文約 8 分鐘且未燒字幕；[C03 r3新規則稿](c03/README.md)已通過來源與雙讀者合併、企劃／劇本均已核准並匯入；已完成的 C04／C05／C09 新稿及審核紀錄保留。舊 C03 付費素材位於另一台 Windows 工作機，本環境未取得原件；[現有證據](c03/existing-evidence/media-inventory.json)記下可用性與歷史收據差別，依站主後續「如果不行你就重新來吧」指示，新版改按從零製作預檢，舊素材取回不再是前置條件；原件及既有支出仍保留，不宣稱已沿用。
 
 ## 範圍與目前狀態
 
@@ -12,12 +12,12 @@
 
 | 第一批 | 精確稿件的獨立審查 | 本機檢查 | 後台審稿卡 |
 | --- | --- | --- | --- |
-| [C03 Moleskine](c03/README.md) | [來源／書面配鏡 PASS](c03/reviews/source-r3-delta.json)；[雙讀者合併 PASS](c03/reviews/narrative-final.json) | [lint](c03/lint-final.json)：0 errors、31 warnings | [企劃與劇本均pending](c03/backend-status.json)；[正式入場交接](c03/production-entry.md) |
+| [C03 Moleskine](c03/README.md) | [來源／書面配鏡 PASS](c03/reviews/source-r3-delta.json)；[雙讀者合併 PASS](c03/reviews/narrative-final.json) | [lint](c03/lint-final.json)：0 errors、31 warnings | [企劃與劇本核准已匯入](c03/backend-status.json)；[正式入場交接](c03/production-entry.md) |
 | [C04 泡泡紙](c04/script.md) | [來源／書面配鏡 PASS](c04/reviews/source-r2-delta.json)；[兩位隔離讀者合併 PASS](c04/reviews/narrative-final.json) | [lint](c04/lint-final.json)：0 errors、6 個估計鏡頭時長警告 | [劇本核准已讀回並匯入](c04/backend-status.json)，review ID `4b59f286-1467-4548-b0da-95b5462f682f` |
 | [C05 金鳥蚊香](c05/script.md) | [來源／書面配鏡 PASS](c05/reviews/source-r6-delta.json)；[兩位隔離讀者合併 PASS](c05/reviews/narrative-final.json) | [lint](c05/lint-final.json)：0 errors、0 warnings | [劇本核准已讀回並匯入](c05/backend-status.json)，review ID `398b6b93-0ce6-439a-925e-8ff72a1bc5fd` |
-| [C09 Patagonia](c09/script.md) | [來源／書面配鏡 PASS](c09/reviews/source-r12-delta.json)；[兩位隔離讀者合併 PASS](c09/reviews/narrative-final.json) | [lint](c09/lint-final.json)：0 errors、18 warnings | [已讀回 pending](c09/backend-script-receipt.json)，review ID `5c822c92-3bb6-437e-8b8a-157737a71543` |
+| [C09 Patagonia](c09/script.md) | [來源／書面配鏡 PASS](c09/reviews/source-r12-delta.json)；[兩位隔離讀者合併 PASS](c09/reviews/narrative-final.json) | [lint](c09/lint-final.json)：0 errors、18 warnings | [已核准並匯入](c09/backend-status.json)，review ID `5c822c92-3bb6-437e-8b8a-157737a71543` |
 
-四支的來源／敘事 PASS 僅限收據綁定的文字與書面配鏡。C04、C05 的正式劇本核准已讀回並以官方 `review-pull` 匯入；原始送審時的 pending 收據保留。C09 r12 已送審，尚待站主決定。均未通過成片關卡。兩位讀者依原生合併規則判定：必要題只在兩位都答 no 時失敗；各自答案、保留意見及歷史 HOLD 都保留。C09 一位讀者仍對公平質疑的回收有保留，兩位均提醒 079「同年」跨段距離較長，留供站主審稿，不改寫成一致同意。最新機器狀態見 [status.json](status.json)。
+四支的來源／敘事 PASS 僅限收據綁定的文字與書面配鏡。C03、C04、C05、C09 的正式劇本核准已讀回並以官方 `review-pull` 匯入；C03企劃亦已核准。原始送審時的 pending 收據保留。均未通過成片關卡。兩位讀者依原生合併規則判定：必要題只在兩位都答 no 時失敗；各自答案、保留意見及歷史 HOLD 都保留。C09 一位讀者仍對公平質疑的回收有保留，兩位均提醒 079「同年」跨段距離較長，保留在審查紀錄，不改寫成一致同意。最新機器狀態見 [status.json](status.json)。
 
 ## 本批採用的規格
 
@@ -52,7 +52,7 @@ node docs/videos/brand-story-remakes-20261025/prepare-runtime.mjs "$REMAKE_RUNTI
 node docs/videos/brand-story-remakes-20261025/runtime-cli.mjs "$REMAKE_RUNTIME_ROOT" lint --slug story-everyday-bubble-wrap-c04-remake-20261025
 ```
 
-[runtime-cli.mjs](runtime-cli.mjs)只把明列指令交給既有 CLI；它不解除付費保護，也不代替站主關卡。四支已有上表的新卡，後續先讀回同一筆 review ID／內容雜湊，避免重送或覆蓋。C09 仍待站主核准。C04、C05 已匯入正式決定；不要再用準備程式覆寫已核准的執行目錄，程式遇到 `approvals.json` 會要求先核對。
+[runtime-cli.mjs](runtime-cli.mjs)只把明列指令交給既有 CLI；它不解除付費保護，也不代替站主關卡。四支已有上表的新卡，後續先讀回同一筆 review ID／內容雜湊，避免重送或覆蓋。四份劇本均已匯入正式決定；不要再用準備程式覆寫已核准的執行目錄，程式遇到 `approvals.json` 會要求先核對。
 
 接續順序為：凍結精確稿件與新審核 → 正式入場及全片報價核對 → TTS 實測與逐句聽檢 → 插圖及分鏡驗收 → 正式片頭片尾、配樂、組片、燒錄字幕與 CC → 完整解碼、QA、站主看片及上傳包。來源快取 `source-snapshots/` 由 `.gitignore` 排除；交接保留來源 URL、雜湊與獨立收據，不把原廠全文快取當交付內容。
 
@@ -63,3 +63,7 @@ node docs/videos/brand-story-remakes-20261025/runtime-cli.mjs "$REMAKE_RUNTIME_R
 `npm run test:docs-videos`：236 passed、0 failed、0 skipped；文件測試收集契約另 2 passed。任務檢查通過 2178 份（既有其他任務的 stale／overlap 警告保留），兩個交接 helper 通過語法檢查。四份精確稿 lint 均 0 errors；估計鏡頭時長、長句與用字警告仍依各集日誌保留，須在真實 TTS／圖像階段處理。
 
 C03 從零製作採獨立runtime，明確選集以避免碰到既有核准：`node docs/videos/brand-story-remakes-20261025/prepare-runtime.mjs "$C03_RUNTIME_ROOT" "$C03_MEDIA_BASE" c03`。原生獨立查核檔若存在會核對video SHA後複製，仍不建立owner核准；有既有approval或媒體時會停下要求核對。
+
+## 後續採用的八語設定
+
+依站主「用推薦、不用問、預設八語」接續各集；本次C03也已從後台讀回八語metadata／CC／dub全部選取。英、日、韓、西、葡、印尼、越南、泰文的文字與metadata已完成獨立校對，共1,144句；[語言設定與真實決定來源](language-defaults.json)及[C03文字準備](c03/i18n/README.md)分開記錄選擇、文字與實際媒體就緒。配音仍待真正乾淨核准主片；保留繁中燒錄版，另採已驗一項metadata差分的clean主片配方，不假造QA或語言資格。

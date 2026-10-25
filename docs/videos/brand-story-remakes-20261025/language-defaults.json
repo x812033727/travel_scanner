@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-25T22:17:27.230624+08:00",
+  "scope": "Current C03 remake and subsequent brand-story remakes in this task, in episode order.",
+  "user_authorization": {
+    "source": "Current user message in this conversation",
+    "verbatim": "後續做完後你接著往下做\n用你推薦的就好 不用問我\n預設用八語",
+    "routine_choices": "Use assistant-recommended settings and continue sequentially without asking about routine options."
+  },
+  "narration_locale": "zh-TW",
+  "narration_subtitles": {
+    "burn_in": true,
+    "switchable_cc": true
+  },
+  "additional_locale_order": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ],
+  "additional_languages": 8,
+  "total_languages_including_original": 9,
+  "locale_details": {
+    "en": {
+      "name_zh_TW": "英文",
+      "name": "English",
+      "youtube_language": "en"
+    },
+    "ja": {
+      "name_zh_TW": "日文",
+      "name": "Japanese",
+      "youtube_language": "ja"
+    },
+    "ko": {
+      "name_zh_TW": "韓文",
+      "name": "Korean",
+      "youtube_language": "ko"
+    },
+    "es": {
+      "name_zh_TW": "拉丁美洲西班牙文",
+      "name": "Spanish (Latin America)",
+      "youtube_language": "es-419"
+    },
+    "pt": {
+      "name_zh_TW": "巴西葡萄牙文",
+      "name": "Portuguese (Brazil)",
+      "youtube_language": "pt-BR"
+    },
+    "id": {
+      "name_zh_TW": "印尼文",
+      "name": "Indonesian",
+      "youtube_language": "id"
+    },
+    "vi": {
+      "name_zh_TW": "越南文",
+      "name": "Vietnamese",
+      "youtube_language": "vi"
+    },
+    "th": {
+      "name_zh_TW": "泰文",
+      "name": "Thai",
+      "youtube_language": "th"
+    }
+  },
+  "recommended_selection": {
+    "en": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ja": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ko": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "es": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "pt": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "id": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "vi": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "th": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    }
+  },
+  "selected_parts": [
+    "metadata",
+    "captions",
+    "dub"
+  ],
+  "selection_reason": "Actual authenticated backend choice requests all three parts in all eight languages. Preserve that explicit choice and prepare a real clean international master alongside the burned-in zh-TW export.",
+  "dub_policy": {
+    "default_enabled": true,
+    "intent": "Explicitly selected by the owner in the actual backend; waits for a real eligible clean final and paid admission.",
+    "existing_support": "All eight narrator dubs can be preselected for a story through the authenticated language panel.",
+    "current_incompatibility": "The current story-dub eligibility requires the exact approved final QA to prove subtitles_burned_in:false, while this new-rule C03 source has subtitles.burn_in:true.",
+    "whole_language_round_dependency": "flow.languages waits before even metadata/CC translation when any story dub is selected and storyDubReady is false.",
+    "permitted_resolution": "Keep the new-rule burned-in zh-TW export and prepare a separate clean international master from identical narration/artwork. The backend final used for eight dubs must actually be clean, pass bound QA and be approved; no false clean flag or inherited final approval.",
+    "future_voice_recommendation": "Use the native narrator-only Gemini voice/style defaults and the established per-language regional conventions if dubs are legitimately enabled later."
+  },
+  "backend_application": {
+    "state": "READ_BACK_SELECTED_ALL_EIGHT_PARTS",
+    "applied": true,
+    "locales_decided_at": "2026-10-25T14:09:36.202531Z",
+    "api_method": "PUT",
+    "api_path": "/admin/videos/{slug}/languages",
+    "web_proxy_path": "/api/travel/admin/videos/{slug}/languages",
+    "required_identity": "Authenticated user with content.manage capability, or the existing native service invoked with the real authorized administrator actor on the host.",
+    "request_body_field": "locales",
+    "ordinary_video_tool_token_can_apply": false,
+    "reason": "Actual source is the authenticated backend choice, not a tool-token owner write. Native language-phase synchronization still waits for applicable final eligibility.",
+    "readback_required": [
+      "locales",
+      "locales_decided_at"
+    ],
+    "native_languages_json_written": false,
+    "native_write_phase": "After actual backend selection and the applicable final gate, copy the server locales and its real locales_decided_at through the normal writeLanguages/worker flow.",
+    "readback_file": "c03/backend-language-choice.json",
+    "applied_to": [
+      "story-everyday-moleskine-c03-remake-20261025"
+    ],
+    "future_episodes": "Apply the same full eight-part choice through the ordinary authenticated preselection when each subsequent remake exists; no routine question is needed under the user authorization."
+  },
+  "production_phase": {
+    "preselection": "The authenticated story language panel may store selection before the first final.",
+    "translation_and_cc": "After the exact zh-TW final is approved and normal language production conditions are met.",
+    "paid_admission": "Every selected language operation remains within the film ledger and existing budget admission; this preference does not lift the C-series hold or raise the cap.",
+    "completion": "Create and independently review each translation, render current CC, package the chosen language parts, and submit the real languages manifest.",
+    "publishing": "No YouTube upload, scheduling, or publication authorization is inferred from this language preference."
+  },
+  "paid_requests": 0,
+  "generated_language_media": 0,
+  "source_references": [
+    "docs/videos/LANGUAGES.md: every video supports en,ja,ko,es,pt,id,vi,th metadata/CC; es maps to es-419, pt to pt-BR.",
+    "apps/api/app/video_reviews/admin_api.py:270 set_languages uses ContentManager.",
+    "apps/api/app/video_reviews/admin_service.py:_apply_locales, set_locales, _story_dub_ready and _decide_story_locales.",
+    "tools/video/automation/flow.mjs:storyDubReady and languages; actual backend decision gates the language round.",
+    "tools/video/core/stages.mjs:writeLanguages copies the actual site choice; it is not an alternative owner-choice API."
+  ],
+  "updated_at": "2026-10-25T15:23:07.314639+00:00",
+  "text_preparation": {
+    "source": "c03/i18n/preparation-status.json",
+    "locales": 8,
+    "caption_text_entries": 1144,
+    "independent_text_review": "TEXT_PASS",
+    "timed_srt_ready": false,
+    "dub_audio_ready": false,
+    "native_language_round_started": false
+  }
+}
