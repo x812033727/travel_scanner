@@ -88,7 +88,7 @@
 
 ## 工具端（`tools/video`）
 
-- `video.json` 頂層新增可選 `series: { slug, episode, chapter }`；lint：作品集數的 `characters` 必須是設定集人物表（這一集的，見下面「換裝與變化」）的子集且 `appearance`／`voice`／`sheet_prompt` 逐字相同，角色依 id 排序（`lookHash` 只在 cast 變動時改變）。
+- `video.json` 頂層新增可選 `series: { slug, episode, chapter }`；lint：作品集數的 `characters` 必須是設定集人物表（這一集的，見下面「換裝與變化」）的子集且 `appearance`／`voice`／`sheet_prompt` 逐字相同，角色依 id 排序（`lookHash` 只在 cast 變動時改變）。設定集沒給 `voice`、只有 `voice_note` 的配角（2026-10-25，《系統說我是 BUG》第 5 集的石魔與六個 s01- 配角），工人在 `castFrom`／`settle`（`series.mjs` `castVoices`）依 id 順序從 drama 分頁的 `character_voice_pool`、再從 `SPARE_VOICES`（十二個 Gemini 內建聲音，男女各半）補一個：不跟人物表其他角色或旁白同一個聲音，名字、角色、`voice_note` 裡有「女／姐／娘…」「男／爺／低沉…」就挑同一性別的，`voice_note` 當 Gemini 的 `style`。補的聲音只寫進 `series.json` 與 `video.json`，不改設定集、不改 `lookHash`；lint 對人物表沒有 `voice` 的角色接受工人補的那個（但 `characters[n].voice` 仍不能缺）。要固定某個配角的聲音，在站上設定集給它 `voice` 即可。
 - `DRAMA_STEPS` 在 `fact-checked` 之後加 `script approved`；`GATES.script` 綁 `docDir/script.md`；`REVIEW_GATES`、`STEP_LABELS`、`nextGate`（drama：outline → script → look → audio → storyboard → final）、`scriptSubmission`。
 - **劇本檔** `screenplay(doc)` → `docs/videos/<slug>/script.md`。**關卡雜湊只算敘事**（場景順序、每句的 id／文字／說話者／情緒），不算鏡頭提示詞：look／keyframes／clips 的自動修圖不會讓已核准的劇本變 stale；旁白被退回而改了台詞才要再看。送審 payload：`{scenes:[{id, chapter, lines:[{speaker, name, text, emotion}], prompt}], beats, coverage, continuity_problems, minutes}`。
 - `automation/series.mjs`：`seriesStep()` 排在 `dramaNext()` 之前：`setting`／`outline`／`chapter` 跑企劃模型（`stage("planner", "series-<slug>", payload, 32_000, "drama", variant)`）並 `POST docs`；`episode` 就 `POST episodes/{n}/start` 再走 `draftEpisode`。退回帶 `owner_note` 重寫，超過 `series_doc_rewrites` 停在待審。
