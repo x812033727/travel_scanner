@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "locale": "vi",
+  "review_type": "genuine_native_final_reword_2_text_delta",
+  "reviewed_at_utc": "2026-10-25T23:01:22.016432+00:00",
+  "reviewer_identity": {
+    "provider": "OpenAI",
+    "agent": "Codex",
+    "model_family": "GPT-6",
+    "exact_runtime_model": "not exposed to the agent",
+    "task_name": "/root/review_id_vi_th/review_vi",
+    "is_human": false,
+    "is_claude": false
+  },
+  "independent_of_native_reworder": true,
+  "raw_answer_used_as_canonical": false,
+  "actual_canonical_read_directly": true,
+  "verdict": "pass_text_meaning_naturalness_and_codepoint_budget",
+  "id": "84576e",
+  "source_exact": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+  "source_text_sha256": "84576e7d6b408641d94ab10d019285ae3d342e580b0648f7ed4215846d5620e9",
+  "stored_source_hash": "84576e7d6b40",
+  "stored_source_hash_matches_pre": true,
+  "pre_dub_exact": "Ví dụ chứng minh có thể làm lại sơ đồ ô, không phải AI nào cũng làm xong mọi video trong một lần.",
+  "pre_dub_text_sha256": "4007d63f5370f34dd28c5eb93baa34f0af8b8eef5170218356062ee0ca3bea73",
+  "full_first_reword_before_exact": "Ví dụ này chứng minh sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+  "first_reword_before_text_sha256": "8c2775ab42cae7a2b274eac56cc1b3815d99c7e04a7e49d7467626d6d7779aec",
+  "first_reword_before_codepoints": 123,
+  "current_canonical_exact": "Ví dụ này cho thấy rằng sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+  "current_canonical_text_sha256": "54a5623bb3514cb80715111683d230156b1fef0b9bd0e1eb089fd080b6013ece",
+  "canonical_file_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+  "meaning_analysis": {
+    "before": "The example proves/demonstrates that the grid diagram can be recreated, but does not imply any AI can finish all videos in one attempt.",
+    "after": "The same demonstrated result and the same limitation; cho thấy rằng naturally expresses shows/demonstrates here. It does not turn the statement into a speculative capability claim.",
+    "source_clause_order": "pass: demonstrated grid recreation precedes limitation on generalizing to any AI/all videos/one attempt",
+    "complete_source_meaning": "pass",
+    "natural_standard_Vietnamese": "pass; cho thấy rằng is natural spoken Vietnamese, and the contrast remains clear",
+    "grid_diagram_scope": "retained as sơ đồ ô lưới",
+    "any_AI_condition": "retained as không có nghĩa AI nào cũng",
+    "all_videos_condition": "retained as mọi video",
+    "one_attempt_condition": "retained as chỉ trong một lần",
+    "proper_names": "AI retains official Latin spelling",
+    "numbers_and_other_conditions": "No number, name or condition added, removed or changed.",
+    "register": "No pronoun or politeness shift."
+  },
+  "codepoint_budget": {
+    "actual_unicode_codepoints": 126,
+    "current_worksheet_max_chars": 139,
+    "current_worksheet_text_matches_canonical": true,
+    "verdict": "pass",
+    "count_method": "Python len(str), actual Unicode codepoints including spaces and punctuation",
+    "not_a_duration_or_audio_fit_measurement": true
+  },
+  "adjacent_context_reread": [
+    {
+      "scene": "check-release-note",
+      "id": "c38a5e",
+      "source": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。",
+      "current_translation": "Khi giao, ghi phiên bản này đổi bài, số hay thời gian, để người nhận biết xem đâu trước."
+    },
+    {
+      "scene": "check-source",
+      "id": "a56276",
+      "source": "素材的來源和使用方式寫在交付說明，避免後面的人還得猜。",
+      "current_translation": "Ghi nguồn và cách dùng tư liệu trong hướng dẫn bàn giao, để người sau khỏi phải đoán."
+    },
+    {
+      "scene": "practice-start",
+      "id": "ad1b2c",
+      "source": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。",
+      "current_translation": "Bài xúc xắc đã xong, đổi sang đề của bạn; trước hết chọn khái niệm vẽ được thay đổi trước và sau."
+    },
+    {
+      "scene": "practice-actions",
+      "id": "d8b2ca",
+      "source": "寫下觀眾看完要懂的那一句，刪掉跟這一句無關的內容。",
+      "current_translation": "Viết câu người xem cần hiểu sau khi xem, bỏ nội dung không liên quan."
+    }
+  ],
+  "genuine_updated_boundary": {
+    "round": 2,
+    "recorded_at": "2026-10-25T22:59:36.698Z",
+    "native_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "native_result": {
+      "ids": [
+        "84576e"
+      ],
+      "problems": []
+    },
+    "boundary_translation_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "canonical_hash_matches_boundary": true
+  },
+  "saved_asr_checkpoint": {
+    "saved_flags_exact": [
+      "84576e"
+    ],
+    "remaining_flag_note_exact": "Jev 0.06: heard 「Ví dụ này chúng mình sơ đồ ô lưới có thể làm lại được chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.」",
+    "saved_four_matches": 4,
+    "remaining_saved_mismatch": "chứng minh intended versus chúng mình heard",
+    "saved_checks": [
+      {
+        "id": "79a96a",
+        "clip": "de6e868c3f0903c5",
+        "intended_exact": "Lần này, ta dựa vào một bản yêu cầu để làm video hướng dẫn ngắn và giữ cả cách sửa.",
+        "heard_exact": "Lần này ta dựa vào một bản yêu cầu để làm video hướng dẫn ngắn và giữ cả cách sửa.",
+        "saved_match": true,
+        "saved_match_kind": "exact",
+        "saved_noul": null,
+        "in_saved_flags": false,
+        "evidence_type": "Existing saved ASR result; not a manual audition or a new result for the current reword2 text."
+      },
+      {
+        "id": "7b0c6d",
+        "clip": "7b65d59615bf7b2c",
+        "intended_exact": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video.",
+        "heard_exact": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video.",
+        "saved_match": true,
+        "saved_match_kind": "exact",
+        "saved_noul": null,
+        "in_saved_flags": false,
+        "evidence_type": "Existing saved ASR result; not a manual audition or a new result for the current reword2 text."
+      },
+      {
+        "id": "52cf29",
+        "clip": "5e66d8ce3c6dbef0",
+        "intended_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và các khung hình xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+        "heard_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và các khung hình xem trước, tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+        "saved_match": true,
+        "saved_match_kind": "exact",
+        "saved_noul": null,
+        "in_saved_flags": false,
+        "evidence_type": "Existing saved ASR result; not a manual audition or a new result for the current reword2 text."
+      },
+      {
+        "id": "28a3eb",
+        "clip": "c7f30e1f6528a025",
+        "intended_exact": "Chương trình kiểm tra ô lưới, nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không.",
+        "heard_exact": "Chương trình kiểm tra ô lưới nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không?",
+        "saved_match": true,
+        "saved_match_kind": "exact",
+        "saved_noul": null,
+        "in_saved_flags": false,
+        "evidence_type": "Existing saved ASR result; not a manual audition or a new result for the current reword2 text."
+      },
+      {
+        "id": "84576e",
+        "clip": "d1167af6637e1edd",
+        "intended_exact": "Ví dụ này chứng minh sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+        "heard_exact": "Ví dụ này chúng mình sơ đồ ô lưới có thể làm lại được chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+        "saved_match": false,
+        "saved_match_kind": null,
+        "saved_noul": 0.06,
+        "in_saved_flags": true,
+        "evidence_type": "Existing saved ASR result; not a manual audition or a new result for the current reword2 text."
+      }
+    ],
+    "remaining_mismatch_is_from_full_first_reword_before_text": true,
+    "new_current_reword2_text_not_yet_synthesized_at_review_boundary": true
+  },
+  "approval_limits": {
+    "text_review_only": true,
+    "new_audio_auditioned": false,
+    "voice_approved": false,
+    "actual_audio_fit_approved": false,
+    "saved_flag_cleared_by_reviewer": false,
+    "new_TTS_or_API_called": false,
+    "retry_reset": false,
+    "additional_native_round_requested": false,
+    "native_counters_preserved": true
+  },
+  "sha256": {
+    "source_video_json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation_json": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "worksheet_json": "fa34cfbc26f0843d8a26bb55826e72c6dc64743783ff0e90bb0808169b05e2c7",
+    "pre_translation_json": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+    "first_reword_review_json": "54dbea3e19410151b011ea6e105b64cf349f69c418de5866a7fcfddc12b3dfdb",
+    "updated_native_boundary_json": "1a2c8be72ade5f7f1796ae26cf48eacbd1778e39225b0accf7fbf61e49ee0274",
+    "saved_asr_flags_json": "403ec5f49dbde2d5eba89fa76fa92161d40a49b4ff78acf6b116edd6578bffc2",
+    "saved_asr_check_json": "f3b62ce4b5bfa5a4a796830d3b6e86ba08ac6be5be78125036b39da4041ee853"
+  },
+  "files_modified": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reword-2-delta-review.json"
+  ],
+  "source_canonical_worksheet_audio_state_modified": false
+}
