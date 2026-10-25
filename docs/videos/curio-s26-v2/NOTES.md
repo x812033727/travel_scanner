@@ -8,7 +8,7 @@
 - 事實沿用第一版 2026-10-19 的查核 `topic-checks/S26.md`（40 列加獨立覆核），**沒有新增查核**；每句對照在 [`claims.md`](claims.md)，給 `qa` 讀的表在
   [`verify-1.md`](verify-1.md)（跟第一版的表逐字相同，只改檔頭）。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站。第一版沒有推上主機，第二版用新 slug `curio-s26-v2`，不動第一版資料夾。
-- **盲評待跑（主對話跑）**：這個環境不開兩位讀者子代理。第 1 輪的 payload 存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪讀者 2 十三題全是，讀者 1 只有 no_recap（mb708 不到十三歲）與 opening_hooks（mb109 算第三個預告）答否；兩位同否才算沒過，第 1 輪通過、沒改稿；答案在 panel/，narrative --answers 已留紀錄）。原本的待跑說明：盲評待跑（主對話跑）**：這個環境不開兩位讀者子代理。第 1 輪的 payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s26/payload-r1.json`
   （`node tools/video/cli.mjs narrative --slug curio-s26-v2 --json` 的輸出，對應目前的 `video.json`）。跑法照主機兩位讀者的規則：兩個全新讀者各自只讀 payload 的
   `narration` 與 `questions`，回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過；沒過就改稿（改一句之前先看前一句、不為單一讀者的否改稿、不改事實），
