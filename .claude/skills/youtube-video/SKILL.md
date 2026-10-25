@@ -54,6 +54,7 @@ metadata:
 | AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
 | 動畫製作：source-bound 設計、逐鏡造型、試音、對時animatic、pilot、動態攝製、CC與後續配音 | `.agents/skills/youtube-video/references/animation-production.md` |
 | 動畫美術與導演品質：視覺定調、角色表演、鏡頭吸引力、聲畫小樣，以及粗糙畫面的修正 | `.agents/skills/youtube-video/references/visual-quality.md` |
+| AI／科技時事片：本週的題怎麼從 YouTube 的「群」裡挑、新聞怎麼寫成一個概念的七章、來源怎麼分級、本機實跑的檢查怎麼放 | `.agents/skills/youtube-video/references/news-flow.md`（研究紀錄在 `docs/videos/reference-study-20261025-ai-news/`；接在 `teaching-flow.md` 後面，只管 `ai-news` 的教學卡片短片） |
 | 有角色的漫劇的手藝規格：開場、鏡位與剪點、鏡頭與台詞長度、標題縮圖；分鏡的檢查腳本；怎麼在內建瀏覽器重新量參考片 | `.agents/skills/youtube-video/references/drama-craft.md`（腳本 `.agents/skills/youtube-video/scripts/drama_craft_check.mjs`、`.agents/skills/youtube-video/scripts/yt_shot_probe.js`；量測紀錄在 `docs/videos/drama-craft/`） |
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
