@@ -79,7 +79,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "PHP2Shell：AI 先找到的洞，全球網站為什麼自己關站、你的網站怎麼查",
-    "description": "PHP 在 2026 年 10 月 21 日發了緊急安全更新，兩個漏洞合稱 PHP2Shell：洞在 PHP 本身，不用登入，一個請求就能在伺服器上執行程式；AI 在兩個月前先找到它，修補卻因為走漏提前一天，全球的政府網站、pixiv、維基媒體自己先關站。這支用一個對照（汽車召回：瑕疵在引擎不在車身）講清楚關你什麼事、四天內發生了什麼，最後在一台 Ubuntu 測試機上示範：php -v 看到 8.3.6 不等於沒修，要看套件的更動紀錄。\n寫給在台灣有自己的網站、替公司管 WordPress 或電商、或看到「全球網站下線」想知道要做什麼的人。\n\n錄製日期 2026 年 10 月 25 日。四個安全版本、「只有更新是完整解法」、發行版事先拿到修補，照 php.net 10 月 21 日的公告；2024 年稽核、走漏與提前發布的時間，照 PHP Foundation 的部落格；七成網站、用的模型與時間表，照 Wiz 的研究文；防火牆 03:02 UTC，照 Cloudflare 部落格；10 月 17 日蜜罐，照 AWS 安全部落格；台灣約 2.8 萬個對外網站、約 200 個政府機關網站與修補、WAF、暫停的順序，照資安署 10 月 22 日新聞稿與 iThome 的報導；各國下線、日本首相的貼文與 Cloudflare 執行長的數字，照 BBC；日本停站的服務，照 Japan Cyber Watch。本機的三個指令與輸出是 2026-10-25 在 Ubuntu 24.04.5、PHP 8.3.6 (cli)、dpkg 1.22.6 上真的跑出來的；24.04 修好的套件版本照 ubuntu.com 的 CVE 頁。「我的看法是」「我查不到」是站主的意見。本片不示範攻擊。\n\n片中的指令：\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n你的網站，PHP 是你自己管、還是主機商管？查到的版本是幾？留言告訴我。",
+    "description": "PHP 在 2026 年 10 月 21 日發了緊急安全更新，兩個漏洞合稱 PHP2Shell：洞在 PHP 本身，不用登入，一個請求就能在伺服器上執行程式；AI 在兩個月前先找到它，修補卻因為走漏提前一天，全球的政府網站、pixiv、維基媒體自己先關站。這支用一個對照（汽車召回：瑕疵在引擎不在車身）講清楚關你什麼事、四天內發生了什麼，最後在一台 Ubuntu 測試機上示範：php -v 看到 8.3.6 不等於沒修，要看套件的更動紀錄。\n寫給在台灣有自己的網站、替公司管 WordPress 或電商、或看到「全球網站下線」想知道要做什麼的人。\n\n錄製日期 2026 年 10 月 25 日。四個安全版本、「只有更新是完整解法」、發行版事先拿到修補，照 php.net 10 月 21 日的公告；2024 年稽核、走漏與提前發布的時間，照 PHP Foundation 的部落格；七成網站、用的模型與時間表，照 Wiz 的研究文；防火牆 03:02 UTC，照 Cloudflare 部落格；10 月 17 日蜜罐，照 AWS 安全部落格；台灣約 2.8 萬個對外網站、約 200 個政府機關網站與修補、WAF、暫停的順序，照 iThome 對資安署署長 10 月 22 日記者會的報導；各國下線照 BBC；日本首相與 Cloudflare 執行長的數字照 X 原貼文；日本停站的服務，照 Japan Cyber Watch。本機的三個指令與輸出是 2026-10-25 在 Ubuntu 24.04.5、PHP 8.3.6 (cli)、dpkg 1.22.6 上真的跑出來的；24.04 修好的套件版本照 ubuntu.com 的 CVE 頁。「我的看法是」「我查不到」是站主的意見。本片不示範攻擊。\n\n片中的指令：\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n你的網站，PHP 是你自己管、還是主機商管？查到的版本是幾？留言告訴我。",
     "tags": [
       "PHP2Shell",
       "PHP 漏洞",
@@ -105,7 +105,7 @@
   },
   "sources": [
     {
-      "title": "PHP: News Archive 2026 — Security advisory: Critical remote code execution vulnerabilities, update now (2026-10-21)；Informational advisory: Session upload progress (2026-10-23)",
+      "title": "PHP: News Archive 2026 — Security advisory: update now (2026-10-21)；Informational advisory (2026-10-23)",
       "url": "https://www.php.net/archive/2026.php",
       "checked_on": "2026-10-25"
     },
@@ -130,7 +130,7 @@
       "checked_on": "2026-10-25"
     },
     {
-      "title": "AWS Security Blog: Amazon Threat Intelligence identifies PHP2Shell exploitation prior to public disclosure in MadPot (2026-10-21)",
+      "title": "AWS Security Blog: PHP2Shell exploitation prior to public disclosure in MadPot (2026-10-21)",
       "url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/",
       "checked_on": "2026-10-25"
     },
@@ -160,12 +160,12 @@
       "checked_on": "2026-10-25"
     },
     {
-      "title": "數位發展部資通安全署：網站開發程式語言PHP釋出緊急安全更新 資安署呼籲儘速完成修補（新聞稿 2026-10-22）",
+      "title": "資安署新聞稿：網站開發程式語言PHP釋出緊急安全更新 資安署呼籲儘速完成修補（2026-10-22）",
       "url": "https://moda.gov.tw/ACS/press/news/press/21134",
       "checked_on": "2026-10-25"
     },
     {
-      "title": "iThome：數發部：PHP重大漏洞影響約2.8萬個國內網站，約200個政府機關網站受影響，要求優先修補、必要時暫停服務（2026-10-22）",
+      "title": "iThome：數發部：PHP重大漏洞影響約2.8萬個國內網站，約200個政府機關網站受影響（2026-10-22）",
       "url": "https://www.ithome.com.tw/news/179891",
       "checked_on": "2026-10-25"
     },
@@ -180,7 +180,7 @@
       "checked_on": "2026-10-25"
     },
     {
-      "title": "Japan Cyber Watch: php2shell: PHP Patches Two Critical Flaws as Japan Takes Websites Offline (2026-10-21, updated 10-23)",
+      "title": "Japan Cyber Watch: php2shell: PHP Patches Two Critical Flaws as Japan Takes Websites Offline (2026-10-23)",
       "url": "https://japancyberwatch.com/articles/php2shell-critical-php-flaws-japan-services-pause-2026",
       "checked_on": "2026-10-25"
     },
@@ -192,6 +192,11 @@
     {
       "title": "Greg Brockman on X: php2shell found as part of our Patch the Planet initiative (2026-10-21)",
       "url": "https://x.com/gdb/status/2112921529650688312",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "高市早苗 on X：大至急のお願い（2026-10-21 21:55 JST）",
+      "url": "https://x.com/takaichi_sanae/status/2112890642590564386",
       "checked_on": "2026-10-25"
     }
   ],
@@ -215,7 +220,7 @@
         },
         {
           "id": "cdnj",
-          "text": "前一晚，日本首相在 X 上請全國的網站管理者，當晚就去檢查自己的網站。",
+          "text": "發布前一小時，日本首相在 X 上請全國網站管理者，當晚檢查自己的網站。",
           "emotion": "像在轉述新聞，「當晚」停半拍"
         }
       ]
@@ -385,7 +390,7 @@
         },
         {
           "id": "c633",
-          "text": "連只印一行 Hello World 的網站都有。",
+          "text": "連只印一行 Hello World 的網站都可能中。",
           "emotion": "短句"
         }
       ]
@@ -471,7 +476,7 @@
       "chapter": "AI 怎麼找到的？",
       "template": "big",
       "data": {
-        "kicker": "2024 年，PHP 第一次外部安全稽核",
+        "kicker": "2024 年，PHP 多年來第一次外部安全稽核",
         "text": "看到徵兆，\n卻修不動",
         "sub": "PHP Foundation 2026-10-21：幾種修法各有代價，停了又重啟好幾個月",
         "key": "2024 年就看到徵兆，卻修不動"
@@ -479,7 +484,7 @@
       "lines": [
         {
           "id": "v5ur",
-          "text": "其實 2024 年 PHP 做第一次外部安全稽核時，一位核心開發者就看到了這個記憶體問題的徵兆。",
+          "text": "其實 2024 年 PHP 多年來第一次外部安全稽核時，一位核心開發者就看到這個記憶體問題的徵兆。",
           "emotion": "「其實」亮起來"
         },
         {
@@ -528,11 +533,11 @@
           },
           {
             "title": "原定 10 月 22 日",
-            "detail": "公開修補；從 8/11 起是 PHP 的第一優先",
+            "detail": "公開修補；從 8/11 起是基金會資安團隊的第一優先",
             "icon": "clock"
           }
         ],
-        "source": "thephp.foundation、wiz.io，2026-10-21",
+        "source": "thephp.foundation、wiz.io、BBC、x.com/gdb",
         "keys": [
           "7/30：Calif 開始用 AI 稽核",
           "8/11：一份能用的攻擊",
@@ -570,7 +575,7 @@
         },
         {
           "id": "2eju",
-          "text": "從那天起，這件事變成 PHP 的第一優先，修補定在十月二十二日公開。",
+          "text": "從八月十一日起，這是基金會資安團隊的第一優先，修補定在十月二十二日公開。",
           "reveal": 1,
           "emotion": "收穩"
         }
@@ -737,7 +742,7 @@
       "id": "attempts",
       "template": "stats",
       "data": {
-        "title": "攻擊嘗試（Cloudflare 執行長，10/21）",
+        "title": "攻擊嘗試（Cloudflare 執行長，10/22 01:25 UTC）",
         "stats": [
           {
             "value": "數千次",
@@ -753,13 +758,13 @@
           },
           {
             "value": "數百萬次",
-            "label": "隔天"
+            "label": "不到半天"
           }
         ],
-        "source": "Matthew Prince 在 X 上，BBC 2026-10-23 引述",
+        "source": "Matthew Prince 在 X 上，2026-10-22 01:25 UTC；BBC 2026-10-23 引述",
         "keys": [
           "公告前十小時，數千次",
-          "45 分鐘數萬、兩小時數十萬、隔天數百萬"
+          "45 分鐘數萬、兩小時數十萬、不到半天數百萬"
         ]
       },
       "lines": [
@@ -770,7 +775,7 @@
         },
         {
           "id": "2fht",
-          "text": "公告後 45 分鐘變數萬次，兩小時數十萬次，隔天上百萬次。",
+          "text": "公告後 45 分鐘變數萬次，兩小時數十萬次，不到半天就上百萬次。",
           "reveal": 3,
           "emotion": "數字一個一個加快"
         }
@@ -804,7 +809,7 @@
       "template": "quote",
       "data": {
         "kicker": "英國國家網路安全中心",
-        "quote": "…organisations should consider taking the system offline until it can be fully mitigated",
+        "quote": "…you should consider taking the system offline until it can be fully mitigated",
         "source": "ncsc.gov.uk · 2026-10-21",
         "key": "來不及修，就先下線"
       },
@@ -825,7 +830,7 @@
       "id": "offline",
       "template": "bullets",
       "data": {
-        "title": "10 月 21 日，自己關站的",
+        "title": "10 月 21 日起，自己關站的",
         "items": [
           {
             "text": "日本：pixiv、niconico、BASE、Codmon",
@@ -840,7 +845,7 @@
             "icon": "document"
           },
           {
-            "text": "維基媒體部分系統；Internet Archive",
+            "text": "維基媒體部分系統",
             "icon": "book"
           }
         ],
@@ -849,7 +854,7 @@
           "像召回公告貼出：車先停路邊",
           "荷蘭連資安中心自己的站都關",
           "芬蘭全停；英國 32 個政府網站",
-          "維基媒體、Internet Archive"
+          "維基媒體部分系統"
         ]
       },
       "lines": [
@@ -876,7 +881,7 @@
         },
         {
           "id": "wnky",
-          "text": "維基媒體關了部分系統，Internet Archive 也短暫停機。",
+          "text": "維基媒體也關了部分系統。",
           "reveal": 1,
           "emotion": "收尾放輕"
         }
@@ -886,15 +891,15 @@
       "id": "pm",
       "template": "big",
       "data": {
-        "kicker": "21 日晚上 9 點 55 分，日本首相在 X 上",
+        "kicker": "21 日晚上 9 點 55 分（日本時間），日本首相在 X 上",
         "text": "今晚就確認\n網站有沒有用 PHP",
-        "sub": "「緊急請求」；BBC 2026-10-23、Japan Cyber Watch 2026-10-23",
+        "sub": "「緊急請求」；高市早苗的 X 貼文 2026-10-21；BBC 2026-10-23",
         "key": "首相：今晚就去確認"
       },
       "lines": [
         {
           "id": "vrdu",
-          "text": "晚上九點五十五分，日本首相高市早苗在 X 上發了一則「緊急請求」：",
+          "text": "日本時間晚上九點五十五分，日本首相高市早苗在 X 上發了一則「緊急請求」：",
           "emotion": "轉述，平穩"
         },
         {
@@ -925,7 +930,7 @@
         },
         {
           "id": "ksrk",
-          "text": "召回跟這次只有一點不一樣：召回可以排時間，這次不行，公告當天攻擊就上百萬次。",
+          "text": "召回跟這次只有一點不一樣：召回可以排時間，這次不行，公告後不到半天攻擊就上百萬次。",
           "emotion": "「不一樣」放輕"
         },
         {
@@ -1006,7 +1011,7 @@
         },
         {
           "id": "pacb",
-          "text": "8.1 以前，官方不再出版本，要靠發行版或主機商。",
+          "text": "8.1 以下，官方不再出版本，要靠發行版或主機商。",
           "emotion": "平"
         }
       ]
