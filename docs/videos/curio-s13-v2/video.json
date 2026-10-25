@@ -39,7 +39,6 @@
       "立川文庫",
       "大日本史料",
       "日本史",
-      "戰國",
       "奇聞檔案局"
     ],
     "category_id": 27,
@@ -106,12 +105,12 @@
     },
     {
       "setup": "sv102",
-      "payoff": "sv617",
+      "payoff": "sv618",
       "what": "「幸村」是誰取的、為什麼"
     },
     {
       "setup": "sv104",
-      "payoff": "sv612",
+      "payoff": "sv613",
       "what": "圖版標題為什麼寫「眞田幸村」"
     },
     {
@@ -131,7 +130,7 @@
     },
     {
       "setup": "sv111",
-      "payoff": "sv619",
+      "payoff": "sv620",
       "what": "他自己叫過「幸村」嗎"
     },
     {
@@ -215,12 +214,12 @@
       "what": "被問到幸村時怎麼答"
     },
     {
-      "setup": "sv519",
-      "payoff": "sv520",
+      "setup": "sv520",
+      "payoff": "sv521",
       "what": "有沒有他簽「幸村」的信"
     },
     {
-      "setup": "sv522",
+      "setup": "sv523",
       "payoff": "sv601",
       "what": "名字怎麼變成全國都知道的"
     }
@@ -254,7 +253,7 @@
       "lines": [
         {
           "id": "sv102",
-          "text": "可是「幸村」這兩個字是誰取的、哪一年開始叫的，到今天還沒有人說得準。",
+          "text": "可是「幸村」這兩個字是誰取的、哪一年開始叫的，沒有人說得準。",
           "emotion": "放慢，帶一點挑釁"
         }
       ]
@@ -270,7 +269,7 @@
       "lines": [
         {
           "id": "sv103",
-          "text": "大正六年，東京帝國大學出了一冊史料集，裡面印著一封橫長三尺的舊信。",
+          "text": "大正六年，東京帝國大學出了一冊史料集，印著一封橫長三尺的舊信。",
           "emotion": "沉穩，進場景"
         }
       ]
@@ -324,10 +323,10 @@
       ]
     },
     {
-      "id": "tease-shimazu",
+      "id": "tease-small",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori kneeling over a writing box in a plain chamber on an overcast day, brush raised over a blank sheet and glancing up our way with an eager look, light through a paper screen",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table, holding a magnifying glass over a thick old book whose pages face away from us and leaning in toward the viewer with wide eyes, pale window light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -336,21 +335,10 @@
           "id": "sv107",
           "text": "但這還不是最怪的。",
           "emotion": "升級"
-        }
-      ]
-    },
-    {
-      "id": "tease-small",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table, holding a magnifying glass over a thick old book whose pages face away from us and leaning in toward the viewer with wide eyes, pale window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "sv108",
-          "text": "寫下「日本第一的兵」的那份報告裡，他的名字旁邊，後人用小字補了兩個字。",
+          "text": "寫下「日本第一的兵」的報告裡，他名字旁邊，後人用小字補了兩個字。",
           "emotion": "壓低，停在這裡"
         }
       ]
@@ -360,7 +348,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo kneeling at a low desk in a clan office on an overcast morning, pausing over a blank draft with a thoughtful frown at us, light through a paper screen",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -382,7 +370,7 @@
       "lines": [
         {
           "id": "sv110",
-          "text": "這份檔案，從他親手簽的四封信，翻到三百年後這張圖版。",
+          "text": "這份檔案，從他親手簽的四封信，翻到三百年後的圖版。",
           "emotion": "承諾句，篤定"
         }
       ]
@@ -392,7 +380,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono in a castle room in the afternoon, turning a folded letter over in his hands and tilting his head our way with a curious look, soft daylight",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -409,7 +397,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono kneeling at a writing table in a castle chamber in the afternoon, folding a finished letter shut and looking up toward the viewer with a calm face, soft window light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -425,7 +413,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a long folded letter being tied shut with a paper cord by two steady hands on a low writing table, a brush laid beside it, soft daylight from a paper screen on the left",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -440,7 +428,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an older samurai with a short grey beard in a dark brown haori standing at the gate of a country house on an overcast morning, holding a folded letter to his chest with a worried look to the front",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -471,7 +459,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono sitting by a castle window on a misty afternoon, hands resting on his knees with a gentle, tired smile at us, soft diffused light",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -487,7 +475,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a sweater at a kitchen table on a quiet morning, unfolding a long letter with both hands and reading it with a worried look toward the viewer, soft daylight from a window on the left",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -503,7 +491,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face in a quiet library, resting her chin on one hand with a curious look to the front, soft daylight",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -519,7 +507,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono at a writing table in soft daylight, holding a brush above the back of a folded letter and glancing our way with a steady look",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -534,7 +522,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono at a writing table on a quiet morning, lifting the brush away from the back of a folded letter with a satisfied little nod toward the viewer, mild light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -549,7 +537,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a study-room table in the afternoon, laying out three folded letters in a row and looking up to the front with interest, light from tall windows",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -565,7 +553,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a gentle Edo-period woman in her fifties with her hair tied back and a plain indigo robe kneeling on a veranda on an overcast day, holding a folded letter in both hands and smiling warmly at us",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -584,7 +572,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Edo scribe with a white topknot in a dark robe at a low desk in a plain study at midday, holding up two thick bound books with blank covers, one in each hand, and giving us a baffled smile, light through a paper screen on the left",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -600,7 +588,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a gentle Edo-period woman in her fifties with her hair tied back and a plain indigo robe on a veranda in mild light, pressing the folded letter to her cheek with a fond smile our way",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -631,7 +619,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a quiet country samurai in his forties with a broad face and an ochre work jacket standing under the eaves of a farmhouse on a cloudy morning, holding a folded letter and looking up toward the viewer with a solemn face",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -662,7 +650,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono kneeling at a writing table in pale late-morning light, gently blowing on the back of a folded letter, eyes lifted to the front",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -677,7 +665,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a records-hall table in soft daylight, holding up three fingers beside three folded letters and nodding at us",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -697,7 +685,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono sitting on the veranda of a small mountain house on an overcast day, holding up a small round clay jar with a hopeful grin our way",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -729,7 +717,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono on a mountain veranda in mild light, hugging the small clay jar and chuckling toward the viewer",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -744,7 +732,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, raising one eyebrow and tapping a pencil on her chin to the front, pale window light",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -760,7 +748,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint scar on his forehead and a topknot in a slate-blue kimono standing beside a much taller wooden clothes stand in a castle storeroom on an overcast day, looking up at it and shrugging toward the viewer, pale light from a high window",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -776,7 +764,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a short, middle-aged samurai with a faint scar on his forehead and a topknot in a slate-blue kimono, pointing at the scar with one finger and giving a modest smile to the front, soft grey daylight",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -791,7 +779,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono standing still on a castle walkway on a hazy morning, looking far off with a calm, quiet face, then turning at us",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -807,7 +795,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young Sengoku foot soldier in his twenties in a plain cotton jacket and a cloth headband sitting on a wooden step inside a castle compound on a hazy morning, holding up a small blank wooden tablet shaped like a shogi piece with a proud, shy smile our way",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -822,7 +810,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Sengoku foot soldier in his twenties in a plain cotton jacket and a cloth headband standing by a castle storehouse wall on a hazy morning, cradling the little blank wooden tablet in both hands and beaming toward the viewer",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -838,7 +826,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face in a quiet library, resting her chin on one hand with a curious look to the front, soft daylight",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -855,7 +843,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stern middle-aged daimyo with a small moustache in a dark formal robe seated under a plain canvas awning in a war camp on a grey day, writing on a blank sheet laid on a lap board and glancing up at us, light from the overcast sky on the left",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -871,7 +859,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a folded letter being pressed shut by a hand in a dark sleeve on a lap board, a small ink stone beside it, light from an overcast sky",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -879,7 +867,18 @@
           "id": "sv302",
           "text": "說他立下的，是古今沒有過的大手柄。",
           "emotion": "放慢"
-        },
+        }
+      ]
+    },
+    {
+      "id": "hosokawa-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern middle-aged daimyo with a small moustache in a dark formal robe standing at the flap of a plain canvas tent on a grey day, holding two folded letters up side by side and looking at us, light from the overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv303",
           "text": "四天前的另一封，他把真田和後藤又兵衛兩隊並稱，也說是古今沒有過。"
@@ -914,7 +913,18 @@
         {
           "id": "sv305",
           "text": "報告的日期寫著：慶長廿年六月十一日，離他過世一個多月。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "satsuma-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone mounted messenger in a straw hat on a muddy coastal road under a grey sky, a satchel at his hip, turning in the saddle to glance at the viewer, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv306",
           "text": "也就是說，仗才剛打完，消息還在路上。",
@@ -927,7 +937,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at a cluttered office desk on a rainy morning, frowning at the first page of a thick bound volume that faces away from us toward the viewer, cool window light",
-        "camera": "pan right",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -942,7 +952,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, tapping her pencil on a blank notepad with a frown of curiosity to the front, cool window light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -958,7 +968,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin Edo clan clerk with a narrow face in a charcoal robe kneeling in a storeroom in the morning, laying a folded document into a plain wooden box and looking up at us, pale light from a high window",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -973,14 +983,25 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a thin Edo clan clerk with a narrow face in a charcoal robe in a storeroom in pale light, shrugging with both palms up beside the wooden box our way",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "sv310",
           "text": "可是收在那裡，不等於是家久寫的；寫的人是誰，紙上沒有留下。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "box-3",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1930s historian in a grey suit and round glasses at a crowded study desk on a rainy afternoon, holding a thick volume open toward himself and shaking his head slowly at us, cool window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv311",
           "text": "後來的史家讀它，也只能說：是島津家的武士，從上方寄回薩摩的情報。"
@@ -992,7 +1013,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori over his writing box in mild light, lifting his brush with an excited, wide-eyed look toward the viewer",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1024,7 +1045,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori beside his writing box in mild light, wagging one finger with a sly, knowing smile to the front",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1039,7 +1060,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori kneeling by a paper sliding door in a quiet room on an overcast day, cupping a hand to his ear to catch the talk, eyes sliding at us, soft light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1059,14 +1080,25 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori sitting back on his heels in a quiet chamber on a cloudy day, spreading his hands with a small shrug our way, light through a paper screen",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "sv317",
           "text": "不是；報告最後寫明，這些是照底下人的傳言記下來的。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "hearsay-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori in a quiet chamber on a cloudy day, holding up one finger beside a half-smile as if adding a last remark toward the viewer, light through a paper screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv318",
           "text": "寫的人還留了退路：要是有出入，再補報上來。",
@@ -1079,7 +1111,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a cardigan at a kitchen table on a grey morning, reading a glowing phone with one eyebrow raised, a mug beside her, soft daylight from a window on the left",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1095,7 +1127,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a library alcove, lips pursed and eyes narrowed in thought toward the viewer, pale window light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1111,7 +1143,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori over his writing box on an overcast morning, mouthing a name as he writes on a blank sheet, eyes on us to the front",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1126,7 +1158,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table, holding a magnifying glass over a thick old book whose pages face away from us and leaning in at us with wide eyes, pale window light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1147,7 +1179,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a library table in soft afternoon light, holding up two fingers with a puzzled smile our way",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1162,7 +1194,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin Edo clan clerk with a narrow face in a charcoal robe kneeling at a low desk on a rainy morning, copying from one folded document onto a blank sheet and pausing with a doubtful look toward the viewer, soft cool light",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1177,7 +1209,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a long library table on a grey afternoon, holding the thick old book open toward herself and frowning at one spot on the page with her pencil, pale window light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1193,7 +1225,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, chewing the end of a pencil with a puzzled look to the front, light from tall windows",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1210,7 +1242,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a tall bookcase in an archive in the morning, pulling out a thick old book with a plain cover and smiling at us, soft window light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1226,7 +1258,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim Kyoto scholar in a black robe with a shaved crown and a small topknot kneeling at a low desk in a Kyoto study on a mild spring day, brush poised over a blank sheet and looking up our way with a polite smile, light through a paper screen",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1235,7 +1267,18 @@
           "text": "書前有一篇序，寫在寛文十二年，離大坂之戰五十七年。",
           "say": "書前有一篇序，寫在寬文十二年，離大坂之戰五十七年。",
           "say_for": "adcf89529a8f"
-        },
+        }
+      ]
+    },
+    {
+      "id": "fifty-seven",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man with a white beard and a flat cap sitting on a park bench beside a teenage boy in a hoodie on a grey afternoon, the old man pointing at something far off while the boy looks at the viewer, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv403",
           "text": "五十七年，差不多是你阿公出生到你長大的距離。",
@@ -1264,14 +1307,25 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono kneeling in a castle hall on an overcast day, bowing his head respectfully to someone out of frame, then smiling toward the viewer, light through a paper screen",
-        "camera": "pan left",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "sv405",
           "text": "「幸」這個字，祖父幸隆、父親昌幸有，他的兒子幸昌也有；"
-        },
+        }
+      ]
+    },
+    {
+      "id": "father-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono in a castle hall on an overcast day, lifting one open palm beside his face with a puzzled little smile at us, light through a paper screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv406",
           "text": "可是為什麼叫幸村，這本書一句也沒說。"
@@ -1283,7 +1337,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, eyebrows raised high and one hand over her mouth to the front, pale daylight",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1299,7 +1353,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim Kyoto scholar in a black robe with a shaved crown and a small topknot kneeling in a Kyoto study at midday, holding out a folded sheet with both hands as if presenting it, bowing slightly at us, light through a paper screen",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1314,7 +1368,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an Edo copyist with a long chin in a faded brown robe kneeling at a low desk in a quiet room on an overcast day, tucking extra pages into a thick bound book and glancing up our way, light through a paper screen",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1334,7 +1388,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an Edo copyist with a long chin in a faded brown robe at a low desk on an overcast day, counting bound volumes stacked beside him with one finger and smiling our way, light through a paper screen",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1349,14 +1403,25 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a 1920s typesetter in shirtsleeves, a cloth cap and a dark apron at a plain wooden worktable by a window on a cloudy morning, holding up one small metal type piece between two fingers and grinning toward the viewer, soft window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "sv412",
           "text": "到了昭和三年重新排印，排印的人在例言裡自己寫：倒裝的句子全改成假名混寫，字句也修過。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "typesetter-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a 1920s typesetter in shirtsleeves and a cloth cap at a worktable by a window on a cloudy morning, spreading both inky hands apart with an apologetic shrug toward the viewer, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv413",
           "text": "原本裡有沒有「幸村」，我們沒辦法確定。",
@@ -1369,7 +1434,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses rising from a reading-room chair in the afternoon, one finger raised with a determined look to the front, soft daylight",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1385,7 +1450,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Edo lord with a short white beard and a deep plum haori sitting on a garden veranda on an overcast day, resting both hands on a walking stick with a dignified smile at us",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1402,7 +1467,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged Mito scholar with a neat topknot and a brown robe kneeling at a low desk in a study at midday, writing with a very fine brush on a blank sheet and glancing up our way with a careful little smile, gentle light through a paper screen",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1417,7 +1482,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Edo lord with a short white beard and a deep plum haori kneeling on tatami in a quiet hall in the morning, raising one hand as he tells a story, eyes twinkling toward the viewer, pale light through a paper screen",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1434,7 +1499,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a middle-aged Mito scholar with a neat topknot and a brown robe at a low desk in gentle light, holding a very fine brush close to a blank page with a concentrating squint to the front",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1466,7 +1531,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a middle-aged Mito scholar with a neat topknot and a brown robe in a study in mild afternoon light, pointing at himself with a modest, sheepish smile at us",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1483,7 +1548,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono sitting on a bench outside a tea house under a cloudy sky, telling a tale with a raised folding fan and a big grin our way",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1498,7 +1563,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a middle-aged Mito scholar with a neat topknot and a brown robe holding a page close to his face with narrowed eyes, the back of the page toward us, soft midday light through a paper screen",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1514,7 +1579,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, peering over her glasses with a suspicious little smile toward the viewer, pale light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1534,7 +1599,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Kyoto essayist with a bald head and a pale blue robe kneeling in a small garden pavilion on a cloudy afternoon, writing in a slim notebook with a plain cover and chuckling to the front",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1543,7 +1608,18 @@
           "text": "後來的隨筆《翁草》讀到這裡，又寫成：是光圀親自考證，說幸村不對。",
           "say": "後來的隨筆《翁草》讀到這裡，又寫成：是光國親自考證，說幸村不對。",
           "say_for": "3bca02ab1c38"
-        },
+        }
+      ]
+    },
+    {
+      "id": "essayist-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an elderly Kyoto essayist with a bald head and a pale blue robe in a garden pavilion on a cloudy afternoon, scratching his cheek with the end of a brush and squinting toward the viewer, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "sv426",
           "text": "《翁草》還補了一句：「仍」這個字，不知道該怎麼唸。",
@@ -1801,8 +1877,12 @@
       "lines": [
         {
           "id": "sv515",
-          "text": "說是入大坂以後專用的名字，可是那三封信，簽的是信繁，或者官名左衛門佐；沒有一封寫幸村。",
-          "emotion": "加重"
+          "text": "說是入大坂以後專用的名字，可是那三封信，簽的是信繁，或者官名左衛門佐。"
+        },
+        {
+          "id": "sv516",
+          "text": "沒有一封寫幸村。",
+          "emotion": "加重，短"
         }
       ]
     },
@@ -1816,7 +1896,7 @@
       },
       "lines": [
         {
-          "id": "sv516",
+          "id": "sv517",
           "text": "這就很怪了。",
           "emotion": "自己的反應，短"
         }
@@ -1832,7 +1912,7 @@
       },
       "lines": [
         {
-          "id": "sv517",
+          "id": "sv518",
           "text": "同一份備忘，自己也寫了一句："
         }
       ]
@@ -1847,7 +1927,7 @@
       },
       "lines": [
         {
-          "id": "sv518",
+          "id": "sv519",
           "text": "他改名叫幸村這件事，哪一本書裡都找不到。",
           "emotion": "放慢"
         }
@@ -1863,7 +1943,7 @@
       },
       "lines": [
         {
-          "id": "sv519",
+          "id": "sv520",
           "text": "那有沒有一封信，是他自己簽「幸村」的？",
           "emotion": "問句"
         }
@@ -1879,7 +1959,7 @@
       },
       "lines": [
         {
-          "id": "sv520",
+          "id": "sv521",
           "text": "傳下來的有兩件抄本，正本都不在；研究者判定，兩件都是偽造的。"
         }
       ]
@@ -1894,7 +1974,7 @@
       },
       "lines": [
         {
-          "id": "sv521",
+          "id": "sv522",
           "text": "不只真田家：照史料集編者的注，幕府官修的《寛政重修諸家譜》，寫的也是「幸村，初名信繁」。",
           "say": "不只真田家：照史料集編者的注，幕府官修的《寬政重修諸家譜》，寫的也是「幸村，初名信繁」。",
           "say_for": "e3bc549c64cf"
@@ -1911,7 +1991,7 @@
       },
       "lines": [
         {
-          "id": "sv522",
+          "id": "sv523",
           "text": "一個連家裡都找不到出處的名字，怎麼變成全國都知道的？",
           "emotion": "問句，停一拍"
         }
@@ -1976,8 +2056,13 @@
       "lines": [
         {
           "id": "sv604",
-          "text": "我覺得，你今天在遊戲裡選他，跟明治的讀者花二十五錢買他，是同一件事：先認識的，都是「幸村」。",
+          "text": "我覺得，你今天在遊戲裡選他，跟明治的讀者花二十五錢買他，是同一件事：",
           "emotion": "對觀眾，像聊天"
+        },
+        {
+          "id": "sv605",
+          "text": "先認識的，都是「幸村」。",
+          "emotion": "短"
         }
       ]
     },
@@ -1991,11 +2076,22 @@
       },
       "lines": [
         {
-          "id": "sv605",
-          "text": "就這樣，「真田幸村」成了全國都知道的名字。"
-        },
-        {
           "id": "sv606",
+          "text": "就這樣，「真田幸村」成了全國都知道的名字。"
+        }
+      ]
+    },
+    {
+      "id": "hero-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy Meiji street under a grey sky, a paper-shop front with blank hanging banners, one young clerk in a striped kimono running past with a stack of small books and glancing at the viewer, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sv607",
           "text": "到這裡，名字的來歷還是沒人說得出來，名字已經跑在前面了。",
           "emotion": "自己的看法"
         }
@@ -2006,17 +2102,17 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at a wide oak desk in a university office in the afternoon, holding up a long folded sheet seen from the back and smiling proudly toward the viewer, soft window light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv607",
+          "id": "sv608",
           "text": "還記得開頭那本大正六年的史料集嗎？",
           "emotion": "語氣親近"
         },
         {
-          "id": "sv608",
+          "id": "sv609",
           "text": "它的目次，寫的是「大坂之將真田幸村」；"
         }
       ]
@@ -2026,12 +2122,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at his desk in mild afternoon light, writing a tiny note with a fountain pen in the margin of a book that faces away from us, holding back a laugh to the front",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv609",
+          "id": "sv610",
           "text": "連那封要燒酎的信，頁邊的眉批都寫：幸村要燒酎。",
           "emotion": "帶點好笑"
         }
@@ -2042,17 +2138,29 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a Taisho-era historian's hand in a dark suit sleeve writing a tiny circle mark with a fountain pen in the blank margin of a wide open book on an oak desk, soft window light from the left",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv610",
-          "text": "島津那份報告把日子寫錯了一天，編者加注更正；注裡叫他的，也是幸村。"
-        },
-        {
           "id": "sv611",
-          "text": "連村松那封信的注，編者寫的也是：幸村的姊姊。"
+          "text": "島津那份報告把日子寫錯了一天，編者加注更正；注裡叫他的，也是幸村。"
+        }
+      ]
+    },
+    {
+      "id": "editor-note-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at his oak desk on a grey afternoon, tapping one finger on the margin of an open book that faces away from us and raising his eyebrows at the viewer, pale window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sv612",
+          "text": "連村松那封信的注，編者寫的也是：幸村的姊姊。",
+          "emotion": "帶點好笑"
         }
       ]
     },
@@ -2061,12 +2169,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit standing at a tall bookcase in a university library on a grey afternoon, sliding a thick volume back into its row and nodding to the front, pale light from tall windows",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv612",
+          "id": "sv613",
           "text": "那時候學界用的名字，就是幸村。"
         }
       ]
@@ -2076,16 +2184,27 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly scholar with a white beard in a dark robe at a long table in a library on a grey afternoon, tracing a brush slowly over a sheet whose face is turned away from us, squinting toward the viewer, pale window light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv613",
-          "text": "不只這一本：一本收集花押的書，摹下他的簽名，標題寫「真田幸村」；摹出來的字，還是「信繁」。"
-        },
-        {
           "id": "sv614",
+          "text": "不只這一本：一本收集花押的書，摹下他的簽名，標題寫「真田幸村」；摹出來的字，還是「信繁」。"
+        }
+      ]
+    },
+    {
+      "id": "kao-book-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old sheet on a long library table with a brush resting across its blank back, an elderly hand in a dark sleeve pointing at one corner, pale window light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sv615",
           "text": "摹的，是他寫給石合家的另一封信。"
         }
       ]
@@ -2095,12 +2214,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in soft daylight, resting her cheek on one hand with an amused smile at us",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv615",
+          "id": "sv616",
           "text": "我們覺得，那張圖版的標題，正好記下了那個年代怎麼叫他。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -2111,12 +2230,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a study-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look our way, pale window light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv616",
+          "id": "sv617",
           "text": "那麼，開頭那個問題：他自己，叫過「幸村」嗎？",
           "emotion": "問句"
         }
@@ -2127,12 +2246,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug toward the viewer",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv617",
+          "id": "sv618",
           "text": "開頭說的那件事，翻完這些紀錄還是一樣：誰最先叫的、為什麼，不知道；",
           "emotion": "誠懇"
         }
@@ -2143,12 +2262,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a long library table on a calm overcast day, laying one hand flat on a manila folder with a quiet, sure smile to the front",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv618",
+          "id": "sv619",
           "text": "可是他自己用沒用過，紀錄答得出來。"
         }
       ]
@@ -2158,12 +2277,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling at us, soft window light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv619",
+          "id": "sv620",
           "text": "目前查到的、他那個時代的文件，沒有一件寫「幸村」；這份檔案，存檔。",
           "emotion": "收尾，乾脆"
         }
@@ -2181,17 +2300,17 @@
       },
       "lines": [
         {
-          "id": "sv620",
+          "id": "sv621",
           "text": "好啦，這就是今天的故事。",
           "emotion": "放鬆"
         },
         {
-          "id": "sv621",
+          "id": "sv622",
           "text": "你第一次聽到「真田幸村」這個名字，是在遊戲、大河劇，還是哪一本書？留言告訴我。",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "sv622",
+          "id": "sv623",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
