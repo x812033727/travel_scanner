@@ -743,14 +743,15 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // A brand story's place among the site's videos (/admin/videos filters by it).
     category: "story",
     ...(guide ? { source_guide: guide } : {}),
-    target_minutes: shortC08Story(slug, info) ? [4, 5] : compactA01Story(slug, info) ? [7, 8] : target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
+    target_minutes: shortC08Story(slug, info) ? [4, 5] : compactA01Story(slug, info) ? [7, 8] : target === 10 && isCuteStoryLook(look) ? [9, 11] : target === 13 && isCuteStoryLook(look) ? [12, 14] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
     look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
     series: { slug: info.slug, episode: info.episode, chapter: 1 },
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
-    // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
-    subtitles: { burn_in: false, style: "drama" },
+    // Burned-in zh-TW subtitles, as every high-view story channel does (the owner, 2026-10-25,
+    // trying it after the channel review); other languages stay switchable CC.
+    subtitles: { burn_in: true, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", ...(isText(plan.thumbnail?.brand) ? { brand: plan.thumbnail.brand.trim() } : {}), shot: thumbnail } } } : {}),
     sources: plan.sources
@@ -1093,7 +1094,7 @@ export async function draftStory(automation, started, job = {}) {
     notes: [],
   };
   const problem = planShapeProblem(plan) ?? (isCuteStoryLook(series.look)
-    ? (Number(series.target_minutes) === 10 && series.image_model === "image-01" && series.style_preset === "custom" ? null : "a cute-mystery story needs target_minutes=10, image_model=image-01 and style_preset=custom")
+    ? ([10, 13].includes(Number(series.target_minutes)) && series.image_model === "image-01" && series.style_preset === "custom" ? null : "a cute-mystery story needs target_minutes=10 or 13 (13 since the owner's 2026-10-25 decision), image_model=image-01 and style_preset=custom")
     : (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos"));
   if (problem) {
     automation.persist(state);
