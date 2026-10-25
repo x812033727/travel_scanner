@@ -19,41 +19,62 @@ scope:
 
 ## Why
 
-The owner requested continued AI/tech video production after the DNS episode,
-with decisions delegated to the coordinator or Jev and eight foreign language
-packages by default. ForTy has current first-party research and a real public
-data demonstration that adds more than a translated news summary.
+The owner requested continued AI/tech production with recommended decisions delegated
+and eight foreign languages by default. ForTy uses two real public 2020 Taiwan pixels
+to explain the complete six-class model output.
 
 ## Definition of done
 
 - [ ] A checked zh-TW film of at least eight minutes is delivered to its backend page with an honest QA record.
 - [ ] en, ja, ko, es, pt, id, vi and th each have checked metadata, CC and downloadable dubbing delivered to the backend.
-- [ ] Research, real-data provenance, original production mapping and actual production results are recorded; no unperformed YouTube publication is claimed.
+- [ ] Research, real-data provenance, production mapping and final delivery results are recorded; no unperformed YouTube publication is claimed.
 
 ## Steps
 
-- [x] Check local tasks, branches and open remote PRs for conflicting ForTy production.
-- [x] Obtain real 2020 ForTy COG data for two Taiwan ROIs and independently validate the calculation.
-- [x] Complete the brief and register the selected topic in the backend; follow Jev or the coordinator's documented recommendation.
-- [ ] Write the original script and claims; complete independent facts, listener and narrative reviews.
-- [ ] Produce and check narration, visuals, final film, captions and upload package.
-- [ ] Produce all eight foreign language packages and verify backend delivery.
-- [ ] Record measurements, run affected checks and submit a separate no-auto-merge review PR.
+- [x] Check tasks, branches and open remote PRs for conflicting ForTy production.
+- [x] Obtain the public 2020 COG data and independently validate both Taiwan ROI calculations.
+- [x] Complete the brief and register the selected topic in the backend under the standing delegation.
+- [x] Complete script, claims, independent facts/listener/narrative reviews; preserve the four adopted narrative NOs.
+- [x] Produce/check the current 92-line zh-TW narration, 89 visual states and 512.7667 s full film; native core QA is 11/11 after the official fixed-v1 source-link repair.
+- [x] Complete all eight 92-line translations, metadata, independent reviews and native application of mandatory meaning/budget repairs.
+- [x] Produce VI M4A and fit all 89 windows; complete the first 92-line audio check, honestly retaining its 10 flags.
+- [ ] Complete VI bounded retake1/current-take checking and generate, fit and check the other seven M4A tracks.
+- [ ] Align each language's CC to its actual M4A, retain/review reading-speed advisories, and finish the packages.
+- [ ] Submit the actual final/language assets through native backend review, verify persisted delivery/download readback, then update delivery DOD.
+- [ ] Record final measurements, finish affected checks and submit a separate no-auto-merge review PR.
 
 ## How to verify
 
-Native lint, narrative review, tts/check-audio, render/assemble, captions,
-qa/package and review-push, followed by backend readback. For the data demo,
-independently re-fetch the exact official HTTP ranges and compare decoded pixel
-values, masks, CRS/transform, complement and class scores against the artifacts.
+Use native lint, narrative, tts/check-audio, render/assemble, captions, qa/package
+and review-push plus backend readback. Fit alone is not an audio pass; nine CC drafts
+in core QA are not eight delivered dub packages. Keep the official-data provenance
+and independent ROI checks tied to the published evidence.
 
-## Notes
+## Current snapshot
 
-- The owner explicitly requested eight languages and autonomous recommended decisions; do not ask again for these preferences.
-- Selected topic: ForTy forest types, with a positive worked explanation of six-class outputs from real public data. The 2020 baseline predates this week's 10/21 paper and 10/22 introduction/early annual series; do not conflate their dates.
-- Current research and demo evidence are in /workspace/work/ai-tech-next. The data demo is RUN evidence for the 2020 baseline, not ground truth, a model reproduction, a successful Earth Engine App session or a 2017–2025 change measurement.
-- Independent reviewer re-fetched six official ranges (160,141 bytes), matched hashes and independently decoded the tiles; all 73 reviewed assertions passed. The B pixel was intentionally chosen for low/tied scores, not sampled for accuracy estimation.
-- Existing DNS episode's eight-language completion remains the priority and proceeds independently; do not modify its original video or consume its project lease.
-- Media and credentials stay outside the public repository. Pairing is reused through the normal native client; no key or token is printed or copied into docs.
+As of 2026-10-25T18:42:32Z; see
+[production-result.md](../../docs/videos/forty-forest-map/production-result.md),
+[localization-review.md](../../docs/videos/forty-forest-map/localization-review.md) and
+[production-progress.json](../../docs/videos/forty-forest-map/production-progress.json).
 
-- Narrow scope exception: add only DeepMind, ForTy and AlphaEarth pronunciation entries to this isolated worktree via the native lexicon writer. The only overlapping claim is the 2026-10-11 MCP film (over 337 hours old); its narration is already complete, no matching remote branch/open PR or other worktree exists in the 2026-10-25 collision check. Existing dictionary entries and that task/episode remain untouched. This is routine production under the owner's delegated decisions; all additions are reviewed and actual pronunciation still checked.
+- Current source SHA `450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a`;
+  speech `c6d70ecaef91a15d`; actual 512.7667 s total / 501.0333 s body.
+  Chinese audio is 92/92 passed, zero flags. Final MP4 SHA
+  `b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18`.
+- Native core QA is genuinely 11/11. The initial sole failure was doi.org 403;
+  the fixed official v1 GET200 API and plain DOI retain six CC BY 4.0 credits,
+  with narration/voice/asset/final bytes unchanged. Narrative stays 9/13,
+  `passed:false`, with four documented teaching tradeoffs; no fake full pass.
+- All eight text/metadata packages and independent reviews are complete.
+  Only VI M4A exists; its 89 windows fit, but initial audio check session37621
+  exited 1 with 92 checked / 10 flags. Bounded retake1 is the next paid step.
+  No foreign language package is ready; the other seven M4As remain unproduced.
+- Backend audio review is pending. Final has not been sent, to avoid automatic
+  attachment of VI before it passes. Delivery DOD stays unchecked.
+- The two-pixel demonstration is public 2020 model output, not ground truth,
+  retraining, an official App session or a 2017–2025 change measurement.
+  Independent re-fetch/decode matched all 73 data-review assertions; B was
+  deliberately selected for low/tied scores, not accuracy sampling.
+- Standing authorization covers eight default languages and recommended decisions;
+  do not ask for these again. No YouTube publication, git merge or deployment is
+  claimed. Media and credentials stay outside this public repository.
