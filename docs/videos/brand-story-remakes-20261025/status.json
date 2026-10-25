@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T16:09:19.778607+00:00",
-  "state": "c03_c04_text_ready_c05_translation_c06_rewrite_in_progress_media_held",
+  "updated_at": "2026-10-25T18:40:25.034076+00:00",
+  "state": "c06_source_narrative_pass_translating_c05_c09_revisions_c07_authoring_c08_research_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -9,8 +9,8 @@
     "unuploaded_rows": 19,
     "subjects": 18,
     "first_batch_subjects": 3,
-    "remaining_subjects": 14,
-    "prepared_subjects": 4
+    "remaining_subjects": 13,
+    "prepared_subjects": 5
   },
   "projects": [
     {
@@ -166,7 +166,78 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "backend_checked_at": "2026-10-25T12:30:42.378Z"
+      "backend_checked_at": "2026-10-25T12:30:42.378Z",
+      "baseline_text_translations": "c05/i18n/preparation-status.json",
+      "baseline_text_review": "TEXT_PASS",
+      "source_length_planning_hold": true,
+      "length_extension_candidate": {
+        "path": "c05/candidates/length-extension",
+        "revision": "r4",
+        "video_sha256": "0343a789811397115be03bf3b010cac8f81fd244a6df3e286be8906dca7799e7",
+        "native_lint_errors": 0,
+        "source_delta_and_new_readers": "pending",
+        "adopted": false,
+        "actual_duration_measured": false,
+        "body_units": 2785,
+        "length_risk": "Further effective source material or actual audio measurement needed; no padding or slowdown."
+      },
+      "candidate_approved": false
+    },
+    {
+      "id": "c06",
+      "slug": "story-everyday-play-doh-c06-remake-20261025",
+      "title": "Play-Doh：擦牆膏怎麼變成玩具？｜品牌故事",
+      "video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+      "source_and_written_visual": "PASS",
+      "source_receipt": "c06/reviews/source-r3-independent.json",
+      "narrative_merged": "PASS",
+      "narrative_receipt": "c06/reviews/narrative-final.json",
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "scene_first"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "native_fact_check": "c06/verify-1.md",
+      "lint_errors": 0,
+      "lint_warnings": 15,
+      "body_units": 3229,
+      "total_spoken_units": 3428,
+      "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+      "backend_review_id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
+      "backend_outline_status": "pending",
+      "backend_category": "explainer",
+      "protected_admin_settings": "c06/protected-admin-settings.json",
+      "backend_language_selection_applied": false,
+      "planned_language_locales": [
+        "en",
+        "ja",
+        "ko",
+        "es",
+        "pt",
+        "id",
+        "vi",
+        "th"
+      ],
+      "text_translation_preparation": "in_progress",
+      "clean_master_recipe": "c06/variants/clean-master/derivation.json",
+      "preflight": "c06/preflight-inputs.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     },
     {
       "id": "c09",
@@ -203,13 +274,26 @@
       "media_qa": false,
       "final_approval": false,
       "backend_checked_at": "2026-10-25T15:31:11.206Z",
-      "backend_stage": "outline approved"
+      "backend_stage": "outline approved",
+      "source_length_planning_hold": true,
+      "length_extension_candidate": {
+        "path": "c09/candidates/length-extension",
+        "revision": "r4",
+        "video_sha256": "8fc4ada68f086f68532f3c317606018273f9d291885e2833795bfc14efab1aad",
+        "native_lint_errors": 0,
+        "source_delta_and_new_readers": "pending",
+        "adopted": false,
+        "actual_duration_measured": false
+      },
+      "candidate_approved": false,
+      "baseline_text_translations": "c09/i18n/preparation-status.json",
+      "baseline_text_review": "TEXT_PASS"
     }
   ],
   "paid_requests": 0,
   "new_media_files": 0,
   "original_sources_preserved": {
-    "checked_at": "2026-10-25T16:09:19.778607+00:00",
+    "checked_at": "2026-10-25T18:40:25.034076+00:00",
     "checked_files": 53,
     "changed_original_files": [],
     "status": "PASS",
@@ -230,7 +314,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 492,
+      "files": 697,
       "scope": "tracked and staged source files; ongoing untracked drafts excluded"
     },
     "native_c03_fact_checked": true,
@@ -272,7 +356,7 @@
     "measured TTS narration 720–840 seconds and listening review",
     "illustrations, render, measured music, assembly, burned-in zh-TW subtitles and CC, full decode QA and owner final review",
     "Actual clean international export, its full bound QA/current final approval, and eight-language timed CC/dubs under the selected backend choice",
-    "remaining fourteen subjects require source/media reconciliation before remaking"
+    "remaining thirteen subjects require source/media reconciliation before remaking"
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -312,7 +396,13 @@
     "th"
   ],
   "automatic_continuation_authorized": true,
-  "language_backend_selection_read_back": true,
+  "language_backend_selection_read_back": {
+    "c03": true,
+    "c04": true,
+    "c05": true,
+    "c09": true,
+    "c06": false
+  },
   "selected_language_parts": [
     "metadata",
     "captions",
@@ -321,7 +411,7 @@
   "translation_text_preparation": {
     "receipt": null,
     "locales": 8,
-    "lines": 2024,
+    "lines": 3560,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -335,13 +425,28 @@
         "id": "c04",
         "receipt": "c04/i18n/preparation-status.json",
         "lines": 880
+      },
+      {
+        "id": "c05",
+        "receipt": "c05/i18n/preparation-status.json",
+        "lines": 776
+      },
+      {
+        "id": "c09",
+        "receipt": "c09/i18n/preparation-status.json",
+        "lines": 760
       }
     ],
-    "prepared_projects": 2
+    "prepared_projects": 4,
+    "scope": "Exact unchanged current C03/C04/C05/C09 baseline text only; C05/C09 length candidates and C06 new translations excluded."
   },
   "latest_user_direction": "做完後你繼續下一個不用停",
   "continuation_in_progress": {
-    "c05": "eight_language_translation_and_independent_review",
-    "c06": "source_research_complete_new_narrative_in_progress"
-  }
+    "c05": "r4_frozen_0errors_length_planning_risk_2785_body_no_adoption",
+    "c06": "source_written_visual_and_native_merged_pass_new_pending_reviews_eight_language_text_preparation",
+    "c07": "source_research_complete_new_rules_authoring",
+    "c08": "primary_source_packet_building",
+    "c09": "r4_frozen_native_readers_and_independent_source_delta_pending_base_preserved"
+  },
+  "narration_size_planning": "narration-size-precheck.json"
 }

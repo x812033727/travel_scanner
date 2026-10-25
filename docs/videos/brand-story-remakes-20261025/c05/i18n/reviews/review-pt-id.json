@@ -1,0 +1,50 @@
+{
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "reviewer": "/root/c03_review_vi_th; independent reviewer of PT/ID, did not translate PT/ID",
+  "scope": "text_only",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "20ce05fb051f7d2c820dfb3775de07ff063689bf61d70049d501fe479dafedc2",
+      "translation_sha256": "08d82e0473b64934a1469e7ecdd92abfd2cd7cca313a3f704794a435e8553b68",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 97,
+      "chapters_checked": 6,
+      "findings": [
+        {
+          "target": "lines.c05r055",
+          "required": true,
+          "proposed": "A KINCHO diz que as espirais duplas podem reduzir quebras e custos no transporte; não temos aqui um valor específico de economia.",
+          "reason": "The source says the paired-coil method can reduce breakage and transport costs (能降低). The indicative reduzem makes the reported capability more categorical. Restore podem reduzir while preserving attribution to KINCHO and the absence of a specific savings amount.",
+          "current": "A KINCHO diz que as espirais duplas reduzem quebras e custos no transporte; não temos aqui um valor específico de economia."
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "22e0ffb9bece965e71b50b03b1772a4253eefa8e33554cfdfdd9cf787d3bfa26",
+      "translation_sha256": "80b3563cbffcc10561ff87cd15263089b8e5c5fea43f84ed6b58299fb9e6e067",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 97,
+      "chapters_checked": 6,
+      "findings": [
+        {
+          "target": "lines.c05r004",
+          "required": true,
+          "proposed": "Namun, menurut saya, yang benar-benar aneh adalah bahwa menemukan ide lingkaran ini belum tentu berarti bisa mewujudkannya sebagai produk.",
+          "reason": "The draft leaves yang benar-benar aneh without a clear predicate and follows it with the awkward terpikir bentuk construction. Complete the sentence naturally while retaining the narrator's first-person opinion and the distinction between conceiving the circle and being able to make a saleable product.",
+          "current": "Namun, menurut saya yang benar-benar aneh, terpikir bentuk lingkaran ini belum tentu berarti bisa membuatnya menjadi produk."
+        },
+        {
+          "target": "lines.c05r093",
+          "required": true,
+          "proposed": "Gerakan menggulung dengan tangan yang kamu lihat tadi di sini berganti menjadi pemotongan dengan cetakan; lingkarannya tetap, tetapi cara membuatnya berubah.",
+          "reason": "Menggulung tangan makes tangan the object being rolled. The source means winding the material by hand. Add dengan so the hand-winding/die-cutting contrast is correct, retaining the unchanged circle and changed manufacturing action in the second cue.",
+          "current": "Gerakan menggulung tangan yang kamu lihat tadi di sini berganti menjadi pemotongan dengan cetakan; lingkarannya tetap, tetapi cara membuatnya berubah."
+        }
+      ]
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0
+}

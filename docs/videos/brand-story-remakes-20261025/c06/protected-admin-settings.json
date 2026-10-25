@@ -1,0 +1,33 @@
+{
+  "state": "CONCRETE_SETTINGS_PREPARED_NOT_APPLIED",
+  "slug": "story-everyday-play-doh-c06-remake-20261025",
+  "authorization": "User authorized recommended options, continuing in episode order and eight languages without routine questions.",
+  "observed_backend_category": "explainer",
+  "category_change": {
+    "method": "PUT",
+    "backend_route": "/admin/videos/story-everyday-play-doh-c06-remake-20261025/category",
+    "json": { "category": "story" }
+  },
+  "language_change": {
+    "method": "PUT",
+    "backend_route": "/admin/videos/story-everyday-play-doh-c06-remake-20261025/languages",
+    "json": {
+      "locales": {
+        "en": { "metadata": true, "captions": true, "dub": true },
+        "ja": { "metadata": true, "captions": true, "dub": true },
+        "ko": { "metadata": true, "captions": true, "dub": true },
+        "es": { "metadata": true, "captions": true, "dub": true },
+        "pt": { "metadata": true, "captions": true, "dub": true },
+        "id": { "metadata": true, "captions": true, "dub": true },
+        "vi": { "metadata": true, "captions": true, "dub": true },
+        "th": { "metadata": true, "captions": true, "dub": true }
+      }
+    }
+  },
+  "required_identity": "Authenticated content.manage administrator; existing video tool token cannot call these routes.",
+  "next_verification": "Read the same project back after legitimate authenticated changes; preserve actual locales_decided_at. Do not write native languages.json or infer clean-final dub eligibility.",
+  "clean_story_final_required_before_actual_dubbing": true,
+  "budget_activation_included": false,
+  "media_operations_included": false,
+  "requests_sent": 0
+}

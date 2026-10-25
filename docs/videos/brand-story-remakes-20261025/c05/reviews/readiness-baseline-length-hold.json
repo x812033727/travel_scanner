@@ -1,0 +1,2065 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/c03_review_pt_id",
+  "independent_from_r6_chinese_author": true,
+  "date": "2026-10-25",
+  "slug": "story-everyday-kincho-c05-remake-20261025",
+  "reviewed_revision": "r6",
+  "scope": "independent source recheck of the exact old r6 text; no media, narrative-blind-reader or owner approval",
+  "source_verdict": "PASS",
+  "readiness_verdict": "HOLD_FOR_LENGTH_EXTENSION_CANDIDATE",
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "canonical_script_sha256": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
+  "inputs": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/script.md": "ecf8c21a9ca0aeabed1054a570247a6edb19dfbe5bfe8aaa919d4de59e85d5be",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/claims.md": "48bb9b64d81fda1f757d1e25af7ab4a255939aa6c3d7766bcc091eaea35645b1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narration-only.json": "b7de5b773bb27e00a53776cd29c796aba85db4ff44886d28085df837905e1d0c",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/video.json": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/claims.md": "48bb9b64d81fda1f757d1e25af7ab4a255939aa6c3d7766bcc091eaea35645b1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint-final.json": "c024972e7d8c7beecebd61a1959354c09b945526e39c5b4df925e9c31f63bc93",
+    "/workspace/work/brand-remakes-source/docs/videos/story-everyday-kincho-c05/source-matrix.md": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516"
+  },
+  "source_chain": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-independent-r2.json",
+      "sha256": "28f8193e68a6e72e7b621857d52d47cbf34cd2485c012baa52d8277f5ad00f21",
+      "inputs": {
+        "video.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r2/video.json",
+          "sha256": "db5d57087a2451191026e7b6aa61a2d2e65b03fd29bd704a2c03a5a64f068598",
+          "matches_receipt": true
+        },
+        "narration-only.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r2/narration-only.json",
+          "sha256": "c036a2b592c897ea2b846cbfdd026ab14e7e7d030f1ee95983924d547ad392fe",
+          "matches_receipt": true
+        },
+        "script.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r2/script.md",
+          "sha256": "2a4c3a90e9d557289a9df8eab0369f214a123e655655b6beb530d0d2f730f859",
+          "matches_receipt": true
+        },
+        "claims.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r2/claims.md",
+          "sha256": "37d42bae0b0a2c7374385e5ab78e4b4850a9c5ffe4f1810cf31cfdcaf728358f",
+          "matches_receipt": true
+        },
+        "source-snapshots/source-1.txt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/source-snapshots/source-1.txt",
+          "sha256": "6825f7be6ac8650b7d4e265411185caa805b72213ca0fbf346af4fd256577c28",
+          "matches_receipt": true
+        },
+        "source-snapshots/source-2.txt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/source-snapshots/source-2.txt",
+          "sha256": "007caa06f4f678b853ec030ab474e21f6e0253755bb5a41b9b95f51d66eafd3f",
+          "matches_receipt": true
+        }
+      },
+      "baseline": null
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-r3-delta.json",
+      "sha256": "058d914ee68c9ebf280df23c7756868421af08b91d85e28f3b6a12ac980eec56",
+      "inputs": {
+        "video.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r3/video.json",
+          "sha256": "184ba015b54b9eac5221b10108ec5b757c01ae069577e218f6b932ea72037fbb",
+          "matches_receipt": true
+        },
+        "narration-only.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r3/narration-only.json",
+          "sha256": "1940ced4988c1859df3d1bc0ab7ebe11b6677fccdaa19566ab04d1ce5dc18268",
+          "matches_receipt": true
+        },
+        "script.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r3/script.md",
+          "sha256": "a7a939958fac316e934d2287da8045f097cc39f35aedf96e596e5c7c274e4583",
+          "matches_receipt": true
+        },
+        "claims.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r3/claims.md",
+          "sha256": "0a36923b045d3d968aad785a96c21564d2adf39e0fdb330517ae5ea104c2b1c0",
+          "matches_receipt": true
+        }
+      },
+      "baseline": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-independent-r2.json",
+        "sha256": "28f8193e68a6e72e7b621857d52d47cbf34cd2485c012baa52d8277f5ad00f21",
+        "matches_receipt": true
+      }
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-r4-delta.json",
+      "sha256": "f7610c9e1a75aad78254e2f30060da91e0503116334118b4ade83808128e8498",
+      "inputs": {
+        "video.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r4/video.json",
+          "sha256": "895267b62f16aa74e776175c56905c2f83c946917f1be46049ba1f293f4e5121",
+          "matches_receipt": true
+        },
+        "narration-only.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r4/narration-only.json",
+          "sha256": "581c870c9e86095e3e18d5a29d2326113596dbd9977912aebaae3065ca0d3696",
+          "matches_receipt": true
+        },
+        "script.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r4/script.md",
+          "sha256": "37efb9dff1cab53a9286c76d66d7a893d43e35321dd293491206367796d576c6",
+          "matches_receipt": true
+        },
+        "claims.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r4/claims.md",
+          "sha256": "7633798e87d10fa7aac1d78033894eb58a70ec134766605542cf0ee7e720acd9",
+          "matches_receipt": true
+        }
+      },
+      "baseline": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r3/source-r3-delta.json",
+        "sha256": "058d914ee68c9ebf280df23c7756868421af08b91d85e28f3b6a12ac980eec56",
+        "matches_receipt": true
+      }
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-r5-delta.json",
+      "sha256": "0f45a5368c4cdf596bd2b1280cb47055b87f8fd039731810f6445b48b134ef5c",
+      "inputs": {
+        "video.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r5/video.json",
+          "sha256": "6215cc9c9a3f8ea6dbe0f1a9a49eecd4563340165933a88454fba272ec064f08",
+          "matches_receipt": true
+        },
+        "narration-only.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r5/narration-only.json",
+          "sha256": "70aade2768837a4c467f681eda9c15041944bd018cae263850757f3b5f8bb46c",
+          "matches_receipt": true
+        },
+        "script.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r5/script.md",
+          "sha256": "b1e2811108ec95398f983e6f49964ac3c137b70e4dedd66f739f5efc9f6f5ce3",
+          "matches_receipt": true
+        },
+        "claims.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r5/claims.md",
+          "sha256": "0ca8c98fb7fe3ea32c392d463780258f75623a568dcd90c78e5eab567e3cca67",
+          "matches_receipt": true
+        }
+      },
+      "baseline": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r4/source-r4-delta.json",
+        "sha256": "f7610c9e1a75aad78254e2f30060da91e0503116334118b4ade83808128e8498",
+        "matches_receipt": true
+      }
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/reviews/source-r6-delta.json",
+      "sha256": "4aa9a07e9aa97b15625539d046bb3a10a0b9e814cf9114edcc6372db8cb4d36b",
+      "inputs": {
+        "video.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json",
+          "sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+          "matches_receipt": true
+        },
+        "narration-only.json": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narration-only.json",
+          "sha256": "b7de5b773bb27e00a53776cd29c796aba85db4ff44886d28085df837905e1d0c",
+          "matches_receipt": true
+        },
+        "script.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/script.md",
+          "sha256": "ecf8c21a9ca0aeabed1054a570247a6edb19dfbe5bfe8aaa919d4de59e85d5be",
+          "matches_receipt": true
+        },
+        "claims.md": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/claims.md",
+          "sha256": "48bb9b64d81fda1f757d1e25af7ab4a255939aa6c3d7766bcc091eaea35645b1",
+          "matches_receipt": true
+        }
+      },
+      "baseline": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/r5/source-r5-delta.json",
+        "sha256": "0f45a5368c4cdf596bd2b1280cb47055b87f8fd039731810f6445b48b134ef5c",
+        "matches_receipt": true
+      }
+    }
+  ],
+  "all_chain_input_hashes_match": true,
+  "r6_all_97_line_hashes_match": true,
+  "canonical_and_repo_script_narration_all_97_lines_present_in_order": true,
+  "repo_script_wrapper_sha256": "ecf8c21a9ca0aeabed1054a570247a6edb19dfbe5bfe8aaa919d4de59e85d5be",
+  "source_fetch_manifest": {
+    "path": "/workspace/work/brand-story-20261025/c05-audit/source-check/fetch-manifest.json",
+    "sha256": "954f37188973302b23377c9d61db361515b421a5e50a764bbd9c94a520cc981a"
+  },
+  "sources_reopened": [
+    {
+      "id": "K_M",
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/index.html",
+      "accessed_at_utc": "2026-10-25T16:14:03.854511+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/kaisha/ayumi/index.html",
+      "content_type": "text/html",
+      "bytes": 14268,
+      "raw_sha256": "eddabda90a352b67295de7b73d2fa5db3f7a2fdd03286a5d09bd695288126e30",
+      "text_sha256": "d48d0b56c237742fb4f6e391c974aa8e83fc00caeb78ba31cd1aa5aa3d7899bd",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_T",
+      "url": "https://www.kincho.co.jp/new/tech/",
+      "accessed_at_utc": "2026-10-25T16:14:06.496474+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/new/tech/",
+      "content_type": "text/html",
+      "bytes": 17103,
+      "raw_sha256": "cebcb29151ec2aa5d619c1daed81c735c4d3f97a30db9ff97426bf0e37971354",
+      "text_sha256": "a0eef8be7994e8715048d4397621555178f09a4533ad8578dd58cdd9d83f4115",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_F",
+      "url": "https://www.kincho.co.jp/factory/listen/detail.html",
+      "accessed_at_utc": "2026-10-25T16:14:09.463476+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/factory/listen/detail.html",
+      "content_type": "text/html",
+      "bytes": 20890,
+      "raw_sha256": "98cc42111485595fc062421931adf48851d9a6337933b83bd696152210c2aa9f",
+      "text_sha256": "e58e9201da10b76a516111f3780529fec17d2a6ee5b9d84ec7d8712739a82a36",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_S",
+      "url": "https://www.kincho.co.jp/factory/shiryou/index.html",
+      "accessed_at_utc": "2026-10-25T16:14:11.050476+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/factory/shiryou/index.html",
+      "content_type": "text/html",
+      "bytes": 12023,
+      "raw_sha256": "929fd2ac4b23961eec99c9c4f6ac86ce6f5a33e22c47d399f7355436458bb360",
+      "text_sha256": "cc0f5df129b8a3283e47ea12eb8d7d2bbd17ee1d6eef50a0c1be1917f654a7c0",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_Q",
+      "url": "https://www.kincho.co.jp/seihin/qa/qa_uzumaki.html",
+      "accessed_at_utc": "2026-10-25T16:14:13.122771+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/seihin/qa/qa_uzumaki.html",
+      "content_type": "text/html",
+      "bytes": 21174,
+      "raw_sha256": "1bed4d4030159b7735137cb0184fc4b9a7379073d32b3c1816d7c52137dee018",
+      "text_sha256": "70be74946f111566d2d8df8364d5c515475a736c98c59f398238d5d973165005",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_40",
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi03.html",
+      "accessed_at_utc": "2026-10-25T16:14:15.536726+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi03.html",
+      "content_type": "text/html",
+      "bytes": 12338,
+      "raw_sha256": "d0a829a2144cf40a4607ad776e9193b7e059beb5dbc27ccc47162d75303a8827",
+      "text_sha256": "2f7cf0ac2c548c9a3557063d5c7ca1e4f4b9c5c5e79e7b54b52e9f3fd4836411",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_57",
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi04.html",
+      "accessed_at_utc": "2026-10-25T16:14:17.172363+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi04.html",
+      "content_type": "text/html",
+      "bytes": 13045,
+      "raw_sha256": "c45e061c5c72e3f4a2ba201e6949998a946d2746a7539d8bf98aa1fac8002a5e",
+      "text_sha256": "f0c484f37484b4d250796ecec82f5c2dd0215eaa804921e446fd8c2e52beec36",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "NM",
+      "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180001",
+      "accessed_at_utc": "2026-10-25T16:14:17.714221+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180001",
+      "content_type": "text/html",
+      "bytes": 34769,
+      "raw_sha256": "a2fca3d0e1e0cd8a761b5df97d06eb945317b8aa0c098872f508061b04c87b0b",
+      "text_sha256": "84d62409f8ab987b10d0eac6af4eb187d5c1017ee39bcfa9626acba8d58af6bf",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "NA",
+      "url": "https://www.archives.go.jp/exhibition/digital/hatsumei/contents/42.html?m=42&pm=01&ps=01&pt=03",
+      "accessed_at_utc": "2026-10-25T16:14:19.233305+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.archives.go.jp/exhibition/digital/hatsumei/contents/42.html?m=42&pm=01&ps=01&pt=03",
+      "content_type": "text/html",
+      "bytes": 8917,
+      "raw_sha256": "6d89e2070b761fcf3e3561642ff7a2268a4a591b3d6a68deab63113e737c38b0",
+      "text_sha256": "af603eee2ca6b5d8771ce47659f463e438a2c500b4b8dfb6420f43e6801ad98d",
+      "encoding_detected": "shift_jis"
+    },
+    {
+      "id": "NM_SEARCH",
+      "url": "https://sts.kahaku.go.jp/sts/result.php?word=%E8%9A%8A%E5%8F%96%E7%B7%9A%E9%A6%99",
+      "accessed_at_utc": "2026-10-25T16:15:29.508136+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://sts.kahaku.go.jp/sts/result.php?word=%E8%9A%8A%E5%8F%96%E7%B7%9A%E9%A6%99",
+      "content_type": "text/html",
+      "bytes": 41329,
+      "raw_sha256": "e3c9fd2b4c4d6739bb74863a10c03b9799061bce0be8ee6e8f234de529cc7db1",
+      "text_sha256": "5c10fcf4724c291febe477a869125f6ef8b28bd6318c908a496f04474b7082a8",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "NM_MACHINE",
+      "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180004",
+      "accessed_at_utc": "2026-10-25T16:16:57.478486+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180004",
+      "content_type": "text/html",
+      "bytes": 34726,
+      "raw_sha256": "5c4b6188a27dd36e6d325968e3aee9c157a9019fb3f740daa03132efcbdf3f43",
+      "text_sha256": "15e79e8df905f979992af67132cbd7a7f68986ef843afd0e7390026b6b3d6279",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "NM_STICK",
+      "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180005",
+      "accessed_at_utc": "2026-10-25T16:16:59.788394+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180005",
+      "content_type": "text/html",
+      "bytes": 34797,
+      "raw_sha256": "b7de12c6b05f0e015c3c9b7f82faf9c88816312d23e31c9d1861ff0be7542bf4",
+      "text_sha256": "2b68b93aaebcc936607935d8a70225b322fac7e31b1005488bc4a89b5c387423",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "NM_COIL",
+      "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180006",
+      "accessed_at_utc": "2026-10-25T16:17:01.383334+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180006",
+      "content_type": "text/html",
+      "bytes": 34852,
+      "raw_sha256": "ad84546af83ce5e60a2795cf44257be9df81e9a4936386d9d48503e381216c75",
+      "text_sha256": "225ba0e3653a2a8b0b7b60425562330ef978af53613f7c87f5e4c2b6b940a5e0",
+      "encoding_detected": "utf-8"
+    },
+    {
+      "id": "K_PROCESS",
+      "url": "https://www.kincho.co.jp/factory/process/process.html",
+      "accessed_at_utc": "2026-10-25T16:20:36.074986+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/factory/process/process.html",
+      "content_type": "text/html",
+      "bytes": 1046,
+      "raw_sha256": "b9932cf0dc171a6509be09565b42ca054d503ba8bf423da05c60f876136c2b97",
+      "text_sha256": "02b68d7c6aa500042d71d07da4408c9a84b752449ed92f98b57dbe6b7924e030",
+      "encoding_detected": "shift_jis"
+    },
+    {
+      "id": "K_SIMPLE",
+      "url": "https://www.kincho.co.jp/factory/listen/index.html",
+      "accessed_at_utc": "2026-10-25T16:20:39.002233+00:00",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "final_url": "https://www.kincho.co.jp/factory/listen/index.html",
+      "content_type": "text/html",
+      "bytes": 13316,
+      "raw_sha256": "3a7b1b40fa7ac80d4dd5cba0e3ca9bc4bb46b02c04c54e50fa207b00209dc844",
+      "text_sha256": "027f862e16a6ea64d6e35718672d0a3c526b035d92ef86a53e64d58185614b50",
+      "encoding_detected": "utf-8"
+    }
+  ],
+  "critical_checks": [
+    {
+      "id": "S01",
+      "lines": [
+        "c05r008",
+        "c05r009",
+        "c05r010",
+        "c05r012",
+        "c05r013",
+        "c05r018",
+        "c05r019",
+        "c05r021"
+      ],
+      "sources": [
+        "K_M",
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "1885約定、1886種子、1887收成及製粉、1888舶來除蚤粉／竹筒試作及1890直條上市均見原廠年表。1888配方不明不補成確定除蟲菊粉；文中的花粉由種花、收花、磨花的上下文明定為乾花磨粉，不是pollen。"
+    },
+    {
+      "id": "S02",
+      "lines": [
+        "c05r001",
+        "c05r023",
+        "c05r025"
+      ],
+      "sources": [
+        "K_T",
+        "K_F",
+        "K_S",
+        "NM_STICK"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "40分鐘、20公分及運輸易折是原廠歷史回顧；技術遺產頁與資料館／館藏登錄可交叉核。1911–1914留存實物不當作1890那一根。未做本集燃燒或運輸試驗。"
+    },
+    {
+      "id": "S03",
+      "lines": [
+        "c05r003",
+        "c05r027",
+        "c05r028",
+        "c05r029",
+        "c05r034",
+        "c05r036",
+        "c05r038"
+      ],
+      "sources": [
+        "K_M",
+        "K_T",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "木模登錄為1895試作品；填料後推出螺旋是設計方案。原廠明說不適合大量生產且沒有採用。妻子發案仍限定為公司後年記述，未升成同時期獨立見證。"
+    },
+    {
+      "id": "S04",
+      "lines": [
+        "c05r043",
+        "c05r045",
+        "c05r046",
+        "c05r047",
+        "c05r048"
+      ],
+      "sources": [
+        "K_M",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "年表1900為專利出願；1902另列上市。1895→1902為七年。本輪沒有取得原始申請書或核准文件，不能補成核發；現有來源也不提供逐年試作帳，稿未捏造每年失敗。"
+    },
+    {
+      "id": "S05",
+      "lines": [
+        "c05r005",
+        "c05r050",
+        "c05r051",
+        "c05r052",
+        "c05r053",
+        "c05r069"
+      ],
+      "sources": [
+        "K_T",
+        "NM_MACHINE"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "保存的手卷押出機約1910／明治末期起用至約1957。原料成長條後由人將兩根合起手卷；原件不證機器同時擠出兩條，不把保存設備倒放成1902上市當天工法或全廠換線。"
+    },
+    {
+      "id": "S06",
+      "lines": [
+        "c05r055",
+        "c05r057"
+      ],
+      "sources": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "雙卷減少運輸折損／成本是原廠主張，沒有額度或損率。雙卷保形與單卷內部孔隙／氧氣接觸的慢燃機制分開，沒有把雙卷本身當慢燃充分原因。"
+    },
+    {
+      "id": "S07",
+      "lines": [
+        "c05r059",
+        "c05r060",
+        "c05r061",
+        "c05r062",
+        "c05r063",
+        "c05r064"
+      ],
+      "sources": [
+        "K_S",
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "資料館大正8年頃=約1919、58公分／6小時；大正11年頃=約1922、手卷商品／12小時。不同商品分列，不倒寫1895／1902規格，不由時間比值推殺蚊效力倍數。"
+    },
+    {
+      "id": "S08",
+      "lines": [
+        "c05r068",
+        "c05r069",
+        "c05r070",
+        "c05r076"
+      ],
+      "sources": [
+        "K_40",
+        "K_57",
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "昭和15=1940自動輪轉打型機完成；昭和32=1957改良高效率機完成。手卷設備仍記到約1957，完成機器不等於全廠同日替代；稿未補全廠切換事件。"
+    },
+    {
+      "id": "S09",
+      "lines": [
+        "c05r073",
+        "c05r074",
+        "c05r075",
+        "c05r090"
+      ],
+      "sources": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "減少除蟲菊栽培、約1955開發實用化アレスリン、所述現行產品使用合成擬除蟲菊酯均明依原廠回顧／產品說明；未主張全世界首次合成或所有蚊香同年換配方。"
+    },
+    {
+      "id": "S10",
+      "lines": [
+        "c05r080",
+        "c05r081",
+        "c05r082",
+        "c05r088",
+        "c05r089"
+      ],
+      "sources": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "現行Q&A：先輕按中央、捏厚中心拆為單卷；存放保持成對。一般規格約75公分／7小時，另有短長規格且環境會影響時數。這是現行規格，不倒寫早期產品。"
+    },
+    {
+      "id": "S11",
+      "lines": [
+        "c05r085",
+        "c05rx001",
+        "c05rx002",
+        "c05rx003",
+        "c05rx004"
+      ],
+      "sources": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "原廠以孔隙少、氧氣較難接觸內部解釋慢燃，並提出外形／材料／粗細／長度相同、只有重量較輕的條件比較；密度低應燃較快仍是公司假設性解釋，非本集已做的對照實驗。"
+    },
+    {
+      "id": "S12",
+      "lines": [
+        "c05r091",
+        "c05rx005",
+        "c05rx007",
+        "c05rx008",
+        "c05r092",
+        "c05r093"
+      ],
+      "sources": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "assessment": "現行所述製法含植物性粉末／木粉、取走有效成分後殘粉、黏結粉及澱粉，混和後成片、打型、乾燥。有效成分改變不等於植物材料全消失；沒有把此配方／工序倒寫1902。"
+    },
+    {
+      "id": "S13",
+      "lines": [
+        "c05rx009",
+        "c05rx010",
+        "c05rx011"
+      ],
+      "sources": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "燃燒時以極細微粒子形式讓有效成分進入空氣，是原廠對作用方式的說明。稿未增加粒徑、毒理、安全性、暴露或療效保證。"
+    },
+    {
+      "id": "S14",
+      "lines": [
+        "c05r015",
+        "c05r016"
+      ],
+      "sources": [
+        "K_S"
+      ],
+      "verdict": "ATTRIBUTED",
+      "assessment": "蚊遣火燻燒草木及旺燃時增煙的生活回顧見原廠資料館；沒有把假想室內場景變成特定年份某戶實錄或現代使用建議。"
+    }
+  ],
+  "line_results": [
+    {
+      "line_id": "c05r001",
+      "scene_id": "c05r001",
+      "text": "你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S02"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r002",
+      "scene_id": "c05r002",
+      "text": "想像桌邊只剩一截灰，窗外仍暗著；你得再拿一根，夜晚才剛開始。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r003",
+      "scene_id": "c05r003",
+      "text": "一八九五年留下的螺旋木模，像是替長香找到了一個藏身的圓。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r004",
+      "scene_id": "c05r004",
+      "text": "但我覺得真正奇怪的，是想得出這個圓，還不一定做得成商品。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r005",
+      "scene_id": "c05r005",
+      "text": "後來保存的另一台工具，又把兩根長條交到工人手裡，問題還沒結束。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r006",
+      "scene_id": "c05r006",
+      "text": "金鳥這一條香，我們從桌邊追到工廠，看一個形狀怎麼撐過製造和運送。",
+      "source_ids": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r007",
+      "scene_id": "c05r007",
+      "text": "為什麼把香盤成螺旋，還不夠讓它久燃、完整地走上貨架？",
+      "source_ids": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r008",
+      "scene_id": "c05r008",
+      "text": "得先讓材料變成能交到人手上的東西；上山英一郎起初拿到的，只是種子。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r009",
+      "scene_id": "c05r009",
+      "text": "金鳥後來整理的年表，從一八八五年的種苗交換約定開始記這段路。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r010",
+      "scene_id": "c05r010",
+      "text": "隔年，美國植物商寄來的種子裡，有了除蟲菊；新的材料這才到手。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r011",
+      "scene_id": "c05r011",
+      "text": "但你把一包種子放到櫃台上，買家不會因此得到一根能用的蚊香。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r012",
+      "scene_id": "c05r012",
+      "text": "先得種出花、收下花；可是一碗磨好的粉，要靠什麼變成能點燃的商品？",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r013",
+      "scene_id": "c05r013",
+      "text": "一八八七年，年表記下首次收成和試磨；花被磨成粉，商品還沒成形。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r014",
+      "scene_id": "c05r014",
+      "text": "我讀到這裡才發現，熟悉的螺旋離這張工作桌，還隔著好幾個步驟。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r015",
+      "scene_id": "c05r015",
+      "text": "更早怎麼對付蚊子？金鳥資料館回顧，人們曾燻燒草木，靠煙來驅蚊。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S14"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r016",
+      "scene_id": "c05r016",
+      "text": "資料館還說，草木燒旺時得設法增煙；煙多了，屋裡也可能跟著煙霧瀰漫。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S14"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r017",
+      "scene_id": "c05r017",
+      "text": "那包花種接下來面對的新難題，是能不能替粉料找到另一種商品形狀？",
+      "source_ids": [
+        "K_S",
+        "K_M"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r018",
+      "scene_id": "c05r018",
+      "text": "一八八八年，上山與一位線香商人在東京同住，開始另一種試做。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r019",
+      "scene_id": "c05r019",
+      "text": "公司年表寫，他用舶來除蚤粉和竹筒做蚊香；那包粉的配方，紀錄沒交代。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r020",
+      "scene_id": "c05r020",
+      "text": "線香的做法給了一條路：把粉料變成細條，讓材料有可以持續燃燒的形狀。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [],
+      "assessment": "上下文銜接或既有物件／製法的敘述；已對本輪相應原件核對，未新增原件沒有的年份、金額、效力或流程。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r021",
+      "scene_id": "c05r021",
+      "text": "到一八九〇年，年表裡終於出現直條產品上市，種苗變成可以出售的東西。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S01"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r022",
+      "scene_id": "c05r022",
+      "text": "可是商品到了桌上，問題來了：單根撐不久，把它做得更長有用嗎？",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r023",
+      "scene_id": "c05r023",
+      "text": "公司回顧，這種直條約二十公分長，當時往往得同時用上數根。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S02"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r024",
+      "scene_id": "c05r024",
+      "text": "你多點幾根，可以讓眼前多幾個燃點，卻沒有把其中一根的路徑拉長。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r025",
+      "scene_id": "c05r025",
+      "text": "另一個麻煩在送達以前：原廠工廠說明回顧，細直條在運送途中容易折。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S02"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r026",
+      "scene_id": "c05r026",
+      "text": "要把一根香做長，又不讓桌面跟著拉長，手裡這條細線，能往哪裡走？",
+      "source_ids": [
+        "K_T",
+        "K_F",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r027",
+      "scene_id": "c05r027",
+      "text": "把它往圓裡盤。依金鳥後來的記述，這個構想出自上山的妻子。",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r028",
+      "scene_id": "c05r028",
+      "text": "公司年表把提出構想和開始試作記在那一年；這是公司的後年歸屬。",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r029",
+      "scene_id": "c05r029",
+      "text": "還記得開頭那塊木模嗎？國立科學博物館在登錄裡，將它列為試作品。",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r030",
+      "scene_id": "c05r030",
+      "text": "你可以拿一條線想像：直直擺，線有多長，桌面就得讓出多長的距離。",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r031",
+      "scene_id": "c05r031",
+      "text": "把它一圈圈往裡收，路徑仍沿著線走，占用的平面卻縮小了。",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r032",
+      "scene_id": "c05r032",
+      "text": "我覺得這個轉身很漂亮；但盤得進小桌面，就等於工廠能夠交貨了嗎？",
+      "source_ids": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r033",
+      "scene_id": "c05r033",
+      "text": "難題換了位置：桌上盤出一件，工廠要交出的，卻是一件接著一件的商品。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r034",
+      "scene_id": "c05r034",
+      "text": "那塊木模的方案，是把原料填進去，再推出螺旋；形狀已經落成工具。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r035",
+      "scene_id": "c05r035",
+      "text": "你若只看展示品，很容易以為它就是後來大量生產的起點；它真的走進產線了嗎？",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r036",
+      "scene_id": "c05r036",
+      "text": "金鳥技術遺產頁明說，這種木模不適合大量生產，最後沒有被採用。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r038",
+      "scene_id": "c05r038",
+      "text": "能證明構想存在的物件，不能直接替它證明，商品已經源源不絕地做出來。",
+      "source_ids": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S03"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r042",
+      "scene_id": "c05r042",
+      "text": "我們能繼續追的，反而是那個沒解掉的生產問題：圖畫成圓了，商品在哪裡？",
+      "source_ids": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r043",
+      "scene_id": "c05r043",
+      "text": "公司年表再往下，有一個專利申請節點；申請能不能直接當作上市？",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S04"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r044",
+      "scene_id": "c05r044",
+      "text": "你站在櫃台前要買一卷，等的是商品交得出來，還是紙上先多一筆紀錄？",
+      "source_ids": [
+        "K_M",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r045",
+      "scene_id": "c05r045",
+      "text": "不能。金鳥年表把螺旋蚊香的專利申請，記在一九〇〇年。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S04"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r046",
+      "scene_id": "c05r046",
+      "text": "目前沒有原始申請文件可核對，所以這裡只說申請，不替它補成已經獲准。",
+      "source_ids": [
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S04"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r047",
+      "scene_id": "c05r047",
+      "text": "真正的上市節點，是一九〇二年；從提出螺旋構想到市售，隔了七年。",
+      "source_ids": [
+        "K_M",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S04"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r048",
+      "scene_id": "c05r048",
+      "text": "這七年最勾人好奇，可惜資料沒有逐年試作帳，不能替每一年安排一次失敗。",
+      "source_ids": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S04"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r049",
+      "scene_id": "c05r049",
+      "text": "我寧可跟著下一件留存工具走：後來的人，究竟怎麼讓長條盤成形？",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r050",
+      "scene_id": "c05r050",
+      "text": "那是手卷用的擠出設備，原廠標示約從一九一〇年起使用，晚於上市。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r051",
+      "scene_id": "c05r051",
+      "text": "和把原料填進木模不同，它先把材料擠成像麵條的長條，再交給人的雙手。",
+      "source_ids": [
+        "K_T",
+        "NM"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r052",
+      "scene_id": "c05r052",
+      "text": "注意工人接到什麼：兩根已擠出的長條，合在一起，才用手順著圓周盤卷。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r053",
+      "scene_id": "c05r053",
+      "text": "原頁沒有說機器同時擠出兩條；能確認的是，手卷這一步把兩根放到一起。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r054",
+      "scene_id": "c05r054",
+      "text": "你看到的兩個螺旋，為什麼非得靠在一起，才被送往貨架？",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r055",
+      "scene_id": "c05r055",
+      "text": "金鳥說，雙卷方式能降低運送中的折損與運輸成本；這裡沒有具體省下的金額。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S06"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r056",
+      "scene_id": "c05r056",
+      "text": "我覺得有意思的是，同一個圓開始回答另一道題：做得長以後，還得送得完整。",
+      "source_ids": [
+        "K_T",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r057",
+      "scene_id": "c05r057",
+      "text": "不過，運送時彼此相連，跟單卷點燃後燒得多慢，並不是同一個機制。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S06"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r058",
+      "scene_id": "c05r058",
+      "text": "那麼，這些較晚的商品，到底留下多長、燒多久的明確紀錄？",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r059",
+      "scene_id": "c05r059",
+      "text": "金鳥資料館列出約一九一九年的一款螺旋，約五十八公分，燃燒約六小時。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r060",
+      "scene_id": "c05r060",
+      "text": "這是資料館對那款較晚商品的標示，不能把它塞回試作木模或最早上市的那一天。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r061",
+      "scene_id": "c05r061",
+      "text": "資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r062",
+      "scene_id": "c05r062",
+      "text": "你看到不同時期、不同商品的刻度，這些時數能不能直接換算成殺蚊本領？",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r063",
+      "scene_id": "c05r063",
+      "text": "所以也不能把開場的短香與較晚螺旋相除，說成殺蚊本領增加了幾倍。",
+      "source_ids": [
+        "K_T",
+        "K_F",
+        "K_S"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r064",
+      "scene_id": "c05r064",
+      "text": "時數說的是燃燒持續多久；把它聽成效果有多強，就已經替資料加了一句話。",
+      "source_ids": [
+        "K_S"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S07"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r067",
+      "scene_id": "c05r067",
+      "text": "靠雙手盤出的圓，接下來碰上打型機；機器一完成，人的雙手就立刻退場了嗎？",
+      "source_ids": [
+        "K_T",
+        "K_40"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [],
+      "assessment": "上下文銜接或既有物件／製法的敘述；已對本輪相應原件核對，未新增原件沒有的年份、金額、效力或流程。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r068",
+      "scene_id": "c05r068",
+      "text": "沒有這麼整齊。公司年表記一九四〇年，自動輪轉打型式螺旋蚊香製造機完成。",
+      "source_ids": [
+        "K_T",
+        "K_40"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S08"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r069",
+      "scene_id": "c05r069",
+      "text": "可剛才那套手卷設備的留存介紹，使用期還一路記到約一九五七年。",
+      "source_ids": [
+        "K_T"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S05",
+        "S08"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r070",
+      "scene_id": "c05r070",
+      "text": "一條紀錄寫新機器完成，另一條寫舊設備仍在使用；它們並不要求同一天交棒。",
+      "source_ids": [
+        "K_T",
+        "K_40"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S08"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r071",
+      "scene_id": "c05r071",
+      "text": "我覺得這才像生產史：一個發明的年份，往往放不下每條產線後來的生活。",
+      "source_ids": [
+        "K_T",
+        "K_40"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r072",
+      "scene_id": "c05r072",
+      "text": "工法之外，這種形狀也得靠原料撐住；花田和材料，後來又發生了什麼事？",
+      "source_ids": [
+        "K_T",
+        "K_40"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r073",
+      "scene_id": "c05r073",
+      "text": "這段歲月，材料也在變；金鳥工廠回顧，為了增加糧食生產，除蟲菊栽培縮小。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S09"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r074",
+      "scene_id": "c05r074",
+      "text": "同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S09"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r075",
+      "scene_id": "c05r075",
+      "text": "這說的是原廠回顧的材料進展，不能說所有蚊香在同一年就一起換了配方。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S09"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r076",
+      "scene_id": "c05r076",
+      "text": "接著，公司年表記改良型高效率自動打型機完成，工廠回顧也把機械打型放在這時。",
+      "source_ids": [
+        "K_57",
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S08"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r080",
+      "scene_id": "c05r080",
+      "text": "時間拉回你今天拿到的雙卷，兩卷相連著出貨，使用前該從哪裡分開？",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S10"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r081",
+      "scene_id": "c05r081",
+      "text": "原廠的現行問答說，從中間輕按，再捏住比較厚的中心，拆成各自的一卷。",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S10"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r082",
+      "scene_id": "c05r082",
+      "text": "如果從外緣硬拉，就可能折斷；暫時不用，反而要保持相連，才不容易變形。",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S10"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r083",
+      "scene_id": "c05r083",
+      "text": "你大概遇過這種心情：東西還沒開始用，先擔心自己的手把它弄壞了。",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r084",
+      "scene_id": "c05r084",
+      "text": "但分開只是讓每一卷成為自己的路徑；火為什麼能在那條路上慢慢走？",
+      "source_ids": [
+        "K_Q",
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r085",
+      "scene_id": "c05r085",
+      "text": "金鳥工廠給的解釋在香體斷面：空隙少，氧氣不容易進去，於是慢慢燃燒。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S11"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx001",
+      "scene_id": "c05rx001",
+      "text": "原廠還提出一個具體比較：外形、材料、粗細和長度都不變，只把重量減輕。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S11"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx002",
+      "scene_id": "c05rx002",
+      "text": "外面看起來一樣，裡面比較鬆，空氣會不會更容易碰到材料？",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [
+        "S11"
+      ],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx003",
+      "scene_id": "c05rx003",
+      "text": "照公司的解釋，密度較小，內外更容易接觸空氣，就應該燒得比較快。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S11"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx004",
+      "scene_id": "c05rx004",
+      "text": "這讓你分清一件事：原廠標示的時數，該跟著螺旋外形走，還是跟著每款產品看？",
+      "source_ids": [
+        "K_F",
+        "K_Q"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [
+        "S11"
+      ],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r087",
+      "scene_id": "c05r087",
+      "text": "我覺得最容易想錯的就在這裡：把形狀的本事，一口氣算成材料的本事。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r088",
+      "scene_id": "c05r088",
+      "text": "現行一般尺寸，金鳥標示單卷約七十五公分，燃燒約七小時，已經是另一代規格。",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S10"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r089",
+      "scene_id": "c05r089",
+      "text": "原廠還列短時與長時尺寸，環境也會影響時數；可香體裡面，還是當年的花粉嗎？",
+      "source_ids": [
+        "K_Q"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S10"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r090",
+      "scene_id": "c05r090",
+      "text": "材料也沒有停在早年的花粉：原廠說明所述產品，使用合成擬除蟲菊酯有效成分。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S09"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r091",
+      "scene_id": "c05r091",
+      "text": "植物性粉末、木粉與黏結材料仍參與混合；有效成分換了，不等於植物材料都不見。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx005",
+      "scene_id": "c05rx005",
+      "text": "工廠說，植物粉末裡還包括取走除蟲菊有效成分後留下的粉，材料並非只剩藥劑。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx006",
+      "scene_id": "c05rx006",
+      "text": "但粉末一倒就散；這樣的材料，要靠什麼留住可以拿在手裡的螺旋？",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx007",
+      "scene_id": "c05rx007",
+      "text": "原廠列出黏結用的粉料和澱粉，與植物粉、有效成分一起混合，才得到可加工的原料。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx008",
+      "scene_id": "c05rx008",
+      "text": "所以形狀背後還有材料的配合：你拿的是一個圓，工廠得先處理怎麼把粉料做成形。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r092",
+      "scene_id": "c05r092",
+      "text": "把混合料加工成片，再打出螺旋並乾燥，這是工廠頁描述的另一種製法。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx009",
+      "scene_id": "c05rx009",
+      "text": "你以為把粉料黏成圓就結束了？燃燒時，它還要把什麼交到空氣裡？",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [
+        "S13"
+      ],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx010",
+      "scene_id": "c05rx010",
+      "text": "燃燒時，有效成分會以極細微粒子的形式進入空氣，這也是原廠描述的工作方式。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S13"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05rx011",
+      "scene_id": "c05rx011",
+      "text": "所以粉料既要能成形，也得能持續燃燒；形狀、材料與時間，到這裡才真正接上。",
+      "source_ids": [
+        "K_F"
+      ],
+      "verdict": "ATTRIBUTED",
+      "check_ids": [
+        "S13"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r093",
+      "scene_id": "c05r093",
+      "text": "你剛才看過的手盤動作，在這裡換成打型；圓留下來了，做出圓的動作卻變了。",
+      "source_ids": [
+        "K_T",
+        "K_F"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [
+        "S12"
+      ],
+      "assessment": "按列出的本輪原件核對；年代、歸屬與限制如critical_checks。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r101",
+      "scene_id": "c05r-outro",
+      "text": "回到那塊沒進產線的木模：螺旋只是構想起點，還得把材料、製造和送達一起做成，才是商品。",
+      "source_ids": [
+        "K_T",
+        "NM",
+        "K_F",
+        "EDITORIAL"
+      ],
+      "verdict": "CONFIRMED",
+      "check_ids": [],
+      "assessment": "上下文銜接或既有物件／製法的敘述；已對本輪相應原件核對，未新增原件沒有的年份、金額、效力或流程。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r102",
+      "scene_id": "c05r-outro",
+      "text": "如果你曾把相連的雙卷拆斷，留言告訴我，你當時先抓的是中心，還是外緣？",
+      "source_ids": [
+        "K_T",
+        "NM",
+        "K_Q"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    },
+    {
+      "line_id": "c05r103",
+      "scene_id": "c05r-outro",
+      "text": "想看懂日用品背後這些不只靠一個好點子的選擇，歡迎訂閱這個頻道。",
+      "source_ids": [
+        "EDITORIAL",
+        "PROJECT"
+      ],
+      "verdict": "OUT OF SCOPE",
+      "check_ids": [],
+      "assessment": "假想、明示第一人稱反應、提問、幾何說明或CTA；未新增具體歷史事件／測試數值。",
+      "text_changed": false
+    }
+  ],
+  "metadata_review": {
+    "verdict": "CONFIRMED_OR_EDITORIAL",
+    "fields": {
+      "youtube.title": "金鳥蚊香：四十分鐘就燒完，盤成螺旋為何還不夠？｜品牌故事",
+      "youtube.description": "金鳥的早期直條蚊香，原廠回顧一根約四十分鐘就燒完。把它盤成螺旋，為什麼還不夠？沿著留下的木模、手卷擠出設備和後來的打型機，追一卷蚊香如何面對久燃、製造與運送的難題。歷史場景為原創情境插畫，數字與製程依來源所屬年代說明。\n\n參考資料\n金鳥公司年表（明治）\nhttps://www.kincho.co.jp/kaisha/ayumi/index.html\n金鳥公司年表（戰前）\nhttps://www.kincho.co.jp/kaisha/ayumi/ayumi03.html\n金鳥公司年表（戰後）\nhttps://www.kincho.co.jp/kaisha/ayumi/ayumi04.html\n金鳥技術遺產頁\nhttps://www.kincho.co.jp/new/tech/\n金鳥資料館\nhttps://www.kincho.co.jp/factory/shiryou/index.html\n金鳥工廠說明\nhttps://www.kincho.co.jp/factory/listen/detail.html\n金鳥產品 Q&A\nhttps://www.kincho.co.jp/seihin/qa/qa_uzumaki.html\n國立科學博物館木模登錄\nhttps://sts.kahaku.go.jp/sts/detail.php?no=910191180001\n國立公文書館檔案介紹\nhttps://www.archives.go.jp/exhibition/digital/hatsumei/contents/42.html?m=42&pm=01&ps=01&pt=03",
+      "youtube.tags": [
+        "金鳥",
+        "KINCHO",
+        "蚊香",
+        "螺旋蚊香",
+        "品牌故事",
+        "日用品的意外轉身",
+        "製造史"
+      ],
+      "thumbnail.data": {
+        "headline": "盤圓還不夠",
+        "sub": "四十分鐘後怎麼辦",
+        "brand": "金鳥",
+        "tag": "品牌故事",
+        "shot": "c05r001"
+      },
+      "chapter:c05r001": "一根香燒完了，夜還很長",
+      "chapter:c05r008": "先有花種，卻還沒有能賣的形狀",
+      "chapter:c05r027": "長條盤進圓，木模卻停住了",
+      "chapter:c05r045": "上市後，工人把兩條合在一起",
+      "chapter:c05r068": "新機器完成，舊手卷沒有立刻消失",
+      "chapter:c05r085": "路徑在外面，速度藏在香體裡",
+      "scene.data:c05r-outro": {
+        "title": "螺旋、香體、雙卷各解一題",
+        "cta": "參考資料在說明欄"
+      }
+    },
+    "assessment": "標題／縮圖40分鐘是歷史短香數字；說明欄明歸原廠回顧，原創情境插畫與年代限定保留。6章、片尾文字與tags沒有新增超出正文的具體事實。"
+  },
+  "findings": [],
+  "advisories": [
+    {
+      "id": "A01",
+      "source_id": "NM_COIL",
+      "assessment": "補查的910191180006登錄在明治28及明治35後的西元括號出現1890／1903，與紀年換算及木模登錄／原廠年表不一致。本輪不採用其括號日期；原稿1895／1902依木模910191180001及公司明治年表，未更動。此新增交叉資料不作唯一年代依據。"
+    }
+  ],
+  "native_verify_file_written": false,
+  "native_verify_withheld_reason": "Coordinator requested no verify-1.md while preparing a longer candidate; this report binds only old r6 and does not transfer to any candidate.",
+  "native_factchecked_marker_created": false,
+  "fact_changes": 0,
+  "unresolved_source_claims": 0,
+  "existing_lint_receipt": {
+    "errors": 0,
+    "warnings": 0,
+    "total_spoken_units": 2792,
+    "estimated_minutes": 12.796111111111111,
+    "actual_duration_verified": false
+  },
+  "length_handoff": {
+    "coordinator_reported_body_spoken_units": 2609,
+    "target_candidate_body_spoken_units": [
+      3300,
+      3550
+    ],
+    "old_current_inputs_preserved": true,
+    "source_check_is_not_length_acceptance": true
+  },
+  "candidate_source_leads": [
+    {
+      "sources": [
+        "NM_MACHINE"
+      ],
+      "use": "加水使粉與黏結粉成黏土狀，再擠成長條；補足手卷前材料從散粉到可拿取長條的具體動作，不加配比／含水率。"
+    },
+    {
+      "sources": [
+        "K_F",
+        "NM_MACHINE"
+      ],
+      "use": "舊機擠長條交手卷；現代原廠敘述混和機揉合、擠片、刀型打出雙卷再乾燥，區分擠出與盤卷並非同一動作。"
+    },
+    {
+      "sources": [
+        "K_Q"
+      ],
+      "use": "厚中心的捏取、上下面輕按、成對保管與單卷使用可作同一卷產品從搬運支撐到使用分離的取捨；避免重複既有Q&A。"
+    }
+  ],
+  "actual_timing_verified": false,
+  "generated_media_reviewed": false,
+  "owner_approval": false,
+  "paid_calls": 0,
+  "backend_writes": 0
+}

@@ -8,16 +8,20 @@
 
 [盤點快照](batch.json)記錄 22 筆後台品牌故事，其中 19 筆沒有 YouTube ID 且未放棄，合計 18 個題目。龜甲萬原版與 `short-v8` 是同題兩版，兩筆舊紀錄均保留；不得當成兩個新題目重複製作。[原稿保全檢查](original-preservation.json)確認所引用的 53 份舊來源檔雜湊全數未變；這不是舊媒體驗收。
 
-先前首批完成 C04、C05、C09 的新稿，現依追加指示先推進 C03；目前共四題已備新稿。其餘14題仍在原始[佇列快照](queue.csv)，執行狀態以 [execution-order.json](execution-order.json) 為準：Zippo、龜甲萬、Seven Bank、哆啦A夢、FriXion、CamelBak、UCC、OXO、Dr. Martens、Play-Doh、Seiko、Garmin、Dyson、輪子行李箱。
+先前首批完成 C04、C05、C09 的新稿，現依追加指示先推進 C03；加上C06已通過來源／敘事的新稿，目前共五題已備稿；C05／C09增補候選仍另行審查。其餘13題仍在原始[佇列快照](queue.csv)，執行狀態以 [execution-order.json](execution-order.json) 為準：Zippo、龜甲萬、Seven Bank、哆啦A夢、FriXion、CamelBak、UCC、OXO、Dr. Martens、Seiko、Garmin、Dyson、輪子行李箱。
 
 | 第一批 | 精確稿件的獨立審查 | 本機檢查 | 後台審稿卡 |
 | --- | --- | --- | --- |
 | [C03 Moleskine](c03/README.md) | [來源／書面配鏡 PASS](c03/reviews/source-r3-delta.json)；[雙讀者合併 PASS](c03/reviews/narrative-final.json) | [lint](c03/lint-final.json)：0 errors、31 warnings | [企劃與劇本核准已匯入](c03/backend-status.json)；[正式入場交接](c03/production-entry.md) |
 | [C04 泡泡紙](c04/README.md) | [來源／書面配鏡 PASS](c04/reviews/source-r2-delta.json)；[兩位隔離讀者合併 PASS](c04/reviews/narrative-final.json) | [lint](c04/lint-final.json)：0 errors、6 個估計鏡頭時長警告 | [劇本核准已讀回並匯入](c04/backend-status.json)，review ID `4b59f286-1467-4548-b0da-95b5462f682f` |
-| [C05 金鳥蚊香](c05/script.md) | [來源／書面配鏡 PASS](c05/reviews/source-r6-delta.json)；[兩位隔離讀者合併 PASS](c05/reviews/narrative-final.json) | [lint](c05/lint-final.json)：0 errors、0 warnings | [劇本核准已讀回並匯入](c05/backend-status.json)，review ID `398b6b93-0ce6-439a-925e-8ff72a1bc5fd` |
-| [C09 Patagonia](c09/script.md) | [來源／書面配鏡 PASS](c09/reviews/source-r12-delta.json)；[兩位隔離讀者合併 PASS](c09/reviews/narrative-final.json) | [lint](c09/lint-final.json)：0 errors、18 warnings | [已核准並匯入](c09/backend-status.json)，review ID `5c822c92-3bb6-437e-8b8a-157737a71543` |
+| [C05 金鳥蚊香：保留核准基底，增補候選未採用](c05/README.md) | [來源／書面配鏡 PASS](c05/reviews/source-r6-delta.json)；[兩位隔離讀者合併 PASS](c05/reviews/narrative-final.json) | [lint](c05/lint-final.json)：0 errors、0 warnings | [劇本核准已讀回並匯入](c05/backend-status.json)，review ID `398b6b93-0ce6-439a-925e-8ff72a1bc5fd` |
+| [C09 Patagonia：保留核准基底，增補候選未採用](c09/script.md) | [來源／書面配鏡 PASS](c09/reviews/source-r12-delta.json)；[兩位隔離讀者合併 PASS](c09/reviews/narrative-final.json) | [lint](c09/lint-final.json)：0 errors、18 warnings | [已核准並匯入](c09/backend-status.json)，review ID `5c822c92-3bb6-437e-8b8a-157737a71543` |
 
 四支的來源／敘事 PASS 僅限收據綁定的文字與書面配鏡。C03、C04、C05、C09 的正式劇本核准已讀回並以官方 `review-pull` 匯入；C03企劃亦已核准。原始送審時的 pending 收據保留。均未通過成片關卡。兩位讀者依原生合併規則判定：必要題只在兩位都答 no 時失敗；各自答案、保留意見及歷史 HOLD 都保留。C09 一位讀者仍對公平質疑的回收有保留，兩位均提醒 079「同年」跨段距離較長，保留在審查紀錄，不改寫成一致同意。最新機器狀態見 [status.json](status.json)。
+
+[C06 Play-Doh](c06/README.md) r3另已通過獨立來源／書面配鏡、兩位全新讀者原生合併與正式字典機械檢查（0errors／15warnings），企劃／劇本已免費送後台並讀回pending；八語文字正在準備，尚無正式語言選擇。新卡沿用explainer分類的修正及八語設定已寫成[具體管理交接](c06/protected-admin-settings.json)，未以工具token冒充管理員。C07已開始改寫，C08接續原始來源研究。
+
+C05／C09現有基底八語文字亦已全部獨立TEXT_PASS，分別776／760句，與C03／C04合計3560句；這個數字排除增補候選與C06。C05／C09的r4候選已經刪除共同指出的重述／支線，均原生0errors，但來源差分／新讀者或有效正文容量尚待確認，因此current仍是舊基底。C09 r2曾於本機採用預檢發現4項機械錯誤，已在任何後台／供應商呼叫前回復原基底；錯誤、rollback及後續修正全數留存，未把當次內容PASS誤算為製片入場。
 
 ## 本批採用的規格
 
