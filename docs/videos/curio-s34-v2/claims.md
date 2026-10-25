@@ -52,11 +52,11 @@ e109、e203、e208、e212、e214、e304 後半、e307、e313、e321、e404、e40
 | e403 | 從離開南喬治亞島算起，一年四個多月沒踩過陸地 | #14 | WP〈Ernest Shackleton〉497 天；算術 | 確認（二手）；不取同句的 346（回收 e212） |
 | e415 e405 e406 | 薛克頓寫：象島第一次有人登陸，光榮該給最年輕的人；偷渡的少年第一個跳；腳已凍傷、一屁股坐下；第一個「坐」上這座島 | #13 #4 | 「the first landing ever made on Elephant Island … the honour should belong to the youngest member … told Blackborrow to jump over … the first man to sit on Elephant Island」 | 覆核：「第一次」掛在薛克頓名下；凍傷只提、不畫 |
 | e407 | 上岸的人抓起石頭，讓小石子從指縫裡漏下去 | #13 | 「letting handfuls of pebbles trickle between their fingers」 | 確認 |
-| e409 e411 | 島上沒有別人；兩艘小艇倒扣過來當屋頂 | #15 #6 | 序「the other two … twenty-two of my comrades eked out a bare existence」（倒扣的小艇）；寶萊島才是最近可能有補給的地方 | 確認 |
+| e409 e411 | 島上沒有別人；兩艘小艇倒扣過來當屋頂 | #15 #13 | 序「the other two … twenty-two of my comrades eked out a bare existence」（倒扣的小艇）；「the first landing ever made on Elephant Island」 | 確認 |
 | e412 | 薛克頓決定坐第三艘凱爾德號回南喬治亞島找人 | #16 | SOUTH 第 IX 章 | 確認 |
 | e413 | 到南喬治亞島，薛克頓寫：八百英里，大約一千三百公里 | #17 | 「South Georgia was over 800 miles away」；WP 約 1,300 公里 | 覆核：說「約一千三百」 |
 | e501 | 04-24 早上帶五個人出發，導航的是沃斯利 | #16 #20 | 六人名單「on the following morning」；WOR 六分儀 | 確認 |
-| e502 | 其他二十二人留在象島，由懷爾德帶著 | #16 #26 | 備註「懷爾德留下帶島上 22 人」 | 確認 |
+| e502 | 其他二十二人留在象島，由懷爾德帶著 | #16 | 備註「懷爾德留下帶島上 22 人」 | 確認 |
 | e503 | 出發時的二十四個天文鐘，還能走的只剩一個；就看沃斯利能不能量到太陽 | #20 | WOR「the sole survivor in working order of twenty-four」 | 確認（**第二版新加**，同一列備註） |
 | e504 | 跪在橫板上，左右各一個水手抱住他 | #20 | WOR p. 108「kneel on the thwart to use my sextant, with two seamen holding me up」 | 確認 |
 | e505 e506 | 出發後六天沒量到；整趟只量到四次 | #20 | SOUTH「six days out without an observation」；WOR「only four observations」 | 確認（回收 e106） |

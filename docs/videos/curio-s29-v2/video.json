@@ -119,7 +119,7 @@
     },
     {
       "setup": "ce434",
-      "payoff": "ce522",
+      "payoff": "ce521",
       "what": "象到不到得了曹家"
     },
     {
@@ -395,8 +395,24 @@
       ]
     },
     {
-      "id": "chen-shou",
+      "id": "who-wrote-first",
       "chapter": "陳壽的正文裡沒有石頭，裴松之也沒加注",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing on a wooden riverside dock on a calm morning, looking out at the viewer with a puzzled tilt of his head, an empty wooden boat tied up behind him, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ce200",
+          "text": "誰先想到的，得從誰先寫下來查起。",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "chen-shou",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a historian in a dark gown and a black cap kneeling at a low table piled with bamboo slips in a study on a mild morning, writing with a brush and looking up straight ahead with a calm face, soft light from a paper window",
@@ -423,6 +439,22 @@
         {
           "id": "ce202",
           "text": "而且這一段寫在他的正文裡，不是後來的注，是陳壽自己下的筆。"
+        }
+      ]
+    },
+    {
+      "id": "two-kinds-of-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open blank bamboo-slip book on a low table on an overcast day, one slip lifted slightly by a young hand, a second thinner bundle of slips lying beside it, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ce202b",
+          "text": "翻開這本書你會看到兩種字：陳壽的正文，和後來補進去的注。",
+          "emotion": "對觀眾"
         }
       ]
     },
@@ -532,7 +564,7 @@
         },
         {
           "id": "ce211b",
-          "text": "這一點我覺得很要緊：第一個有機會懷疑的人，沒有懷疑。",
+          "text": "這一點我覺得很要緊：替它加注的人，手上有書，卻沒有懷疑。",
           "emotion": "自己的看法"
         }
       ]
@@ -616,7 +648,7 @@
       "lines": [
         {
           "id": "ce305",
-          "text": "曹操這邊的紀錄只寫：軍中大疫，兵士死了很多，退兵。",
+          "text": "曹操這邊的紀錄寫得簡單：打得不順，軍中大疫，兵士死了很多，退兵。",
           "emotion": "低一點"
         }
       ]
@@ -719,7 +751,7 @@
       "lines": [
         {
           "id": "ce313",
-          "text": "交州最南邊的九真、日南兩個郡，產象。"
+          "text": "交州南部的九真、日南兩個郡，產象。"
         }
       ]
     },
@@ -766,7 +798,7 @@
         },
         {
           "id": "ce316",
-          "text": "開頭陳壽沒寫的那個年份，何焯就是這樣倒推回來的。那正史裡，孫權送象給曹操，還有別的紀錄嗎？",
+          "text": "開頭那個陳壽沒寫的年份，何焯就是這樣用別的年份把它夾住的。那正史裡，孫權送象給曹操，還有別的紀錄嗎？",
           "emotion": "問句"
         }
       ]
@@ -834,7 +866,7 @@
       "lines": [
         {
           "id": "ce321",
-          "text": "另一位清朝學者邵晉涵，從一本宋朝筆記裡翻出一頭豬。",
+          "text": "另一位清朝學者邵晉涵，從別人書裡的引文翻出一頭豬。",
           "emotion": "帶一點好笑"
         },
         {
@@ -1011,7 +1043,7 @@
         },
         {
           "id": "ce404",
-          "text": "他開頭就說：舉幾件事來證明。正史的正文裡，本來就常混進佛教故事。"
+          "text": "他開頭就說：舉幾件事來證明。《三國志》的正文裡，本來就常混進佛教故事。"
         }
       ]
     },
@@ -1089,8 +1121,8 @@
       "lines": [
         {
           "id": "ce409",
-          "text": "你要是那位大臣，敢不敢？",
-          "emotion": "問句，對觀眾"
+          "text": "換成你是那位大臣，大概也會這樣做吧。",
+          "emotion": "對觀眾，輕輕的"
         }
       ]
     },
@@ -1105,7 +1137,8 @@
       "lines": [
         {
           "id": "ce410",
-          "text": "後來天神出了九道難題。"
+          "text": "問題來了：後來天神出了九道難題。",
+          "emotion": "升級"
         },
         {
           "id": "ce411",
@@ -1124,8 +1157,7 @@
       "lines": [
         {
           "id": "ce412",
-          "text": "稱象是第三道：這頭大白象有多重？",
-          "emotion": "問句"
+          "text": "稱象是第三道：天神問，這頭大白象有幾斤幾兩。"
         },
         {
           "id": "ce413",
@@ -1144,7 +1176,7 @@
       "lines": [
         {
           "id": "ce413b",
-          "text": "注意，這一題在佛經裡是天神問國王的，沒有誰送來一頭象。"
+          "text": "注意，這一題在佛經裡是天神出的，沒有誰送來一頭象。"
         }
       ]
     },
@@ -1422,7 +1454,7 @@
       "lines": [
         {
           "id": "ce431",
-          "text": "他舉了個例子：同一部經裡的另一篇故事，在更早譯出的另一部經裡就有。"
+          "text": "他舉了個例子：同一部經裡的另一篇故事，別的佛經譯本裡也有。"
         }
       ]
     },
@@ -1665,21 +1697,6 @@
       ]
     },
     {
-      "id": "ivory-request",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a southern court official in a plain brown robe and a black cap standing in a hall on an overcast day, holding a blank letter at arm's length and frowning at it, soft light from a doorway",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ce517",
-          "text": "反過來，曹丕也向孫權要過象牙、犀角、孔雀這類東西，吳國的大臣說這不合禮，不該給。"
-        }
-      ]
-    },
-    {
       "id": "shu-elephant",
       "template": "shot",
       "data": {
@@ -1751,7 +1768,7 @@
       "lines": [
         {
           "id": "ce521",
-          "text": "所以我們覺得，陳寅恪那句話，說得太滿了。",
+          "text": "所以我們覺得，陳寅恪那句話說得太滿了：象，是到得了北方的。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
@@ -1766,12 +1783,8 @@
       },
       "lines": [
         {
-          "id": "ce522",
-          "text": "只是象走到北方的那幾趟，曹沖都已經不在了。"
-        },
-        {
           "id": "ce523",
-          "text": "那稱象這件事，除了陳壽，還有誰寫過？",
+          "text": "那稱象這件事本身，除了陳壽，還有誰寫過？",
           "emotion": "問句"
         }
       ]
