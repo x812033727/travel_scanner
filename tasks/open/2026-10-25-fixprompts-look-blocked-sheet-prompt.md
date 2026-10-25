@@ -54,7 +54,7 @@ e002-redo1 起「系統」的設定圖審核送上來的是空白光板；若站
 - 看法在 `host_redo_status.js`（scratchpad）：`docker exec -i travel_scanner-video-worker-1 node -` 讀 `/var/lib/mokaair/video-work/<slug>/auto.json`（`blocked`、`prompt_fixes`、`notes`）、`characters/manifest.json`、`state.json`。
 - 相關：票 `2026-10-25-judge-7-judge`（judge 沒推薦時的備援選法，#1850 已部署）只處理「沒推薦」，不處理「退件後沒重畫」。
 
-## 做了什麼（2026-10-25，PR 見 branch）
+## 做了什麼（2026-10-25，PR https://github.com/x812033727/travel_scanner/pull/1855）
 
 - 真正的根因多一層：作品集的每集 `settle()` 會把寫手改過的角色換回設定集的 cast（逐字），所以 look 的提示詞修正根本動不了 `lookHash`，manifest 留著、seed 用完就什麼都不畫。
 - `look.mjs`：新 `resetSheets(manifest, targets, { picks, now })`：被退（或 judge 兩輪都沒及格）的角色 candidates 清空、`redraws` 加一、退件備註／judge 修法記在 `sent_back`；其他角色不動，站主同一輪選過的（`picks`）寫成 `owner_pick` 與 `suggested`。seed 改為 `redraws × 1000 + (round−1) × 100 + index`（`sheetSeed`），每張重畫的提示詞都附 `sent_back` 的修法當 `Corrections`。
