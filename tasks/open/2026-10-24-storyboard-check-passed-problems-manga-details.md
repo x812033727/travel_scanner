@@ -33,7 +33,7 @@ scope:
 
 - [x] 決定判準：工人送的 shot 已有 `needs_review` 與 `judge.overall`；manga 是非題時可以改看「分數 ≥ 門檻且 needs_review false」，或由工人在 payload 標出哪些 problems 是重畫級（`keyframeChecks` 的 `cost: 10`）。
 - [x] 改 `storyboard_check_passed`，補測試，跑 `uv run pytest`、`ruff`、`mypy`。
-- [ ] 部署後 e001 的分鏡若還 pending，由站主核准或重送。
+- [x] 部署後 e001 的分鏡若還 pending，由站主核准或重送。（站主 2026-10-24 08:00Z 已在後台核准 e001 的分鏡，見票 2026-10-24-bug-1-4。）
 
 ## How to verify
 

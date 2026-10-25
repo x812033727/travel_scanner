@@ -18,11 +18,13 @@ test("the channel wording never names the accent the owner heard as too heavy", 
   assert.equal(CHANNEL_ACCENT, "標準國語，咬字清楚，台北人平常說話的語調");
 });
 
-test("the retired storyteller style becomes the owner's A1 wording, which is the new default", () => {
-  assert.equal(channelAccent(RETIRED_STORY), STORY_VOICE_STYLE);
+test("the retired storyteller style becomes the owner's A1 wording; the default adds the conversational pace of 2026-10-25", () => {
+  const a1 = "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。";
+  assert.equal(channelAccent(RETIRED_STORY), a1);
+  // The owner (2026-10-25) tries the pace of the high-view story channels (about 5 characters a second against our 3.3).
   assert.equal(
     STORY_VOICE_STYLE,
-    "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
   );
 });
 

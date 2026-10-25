@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-drama-policy-questions
 title: 漫劇成片的立場檢查仍問「有示範」
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-28T13:07:50Z
-completed_at:
+completed_at: 2026-10-24T16:22:54Z
 branch:
 depends_on: []
 scope:
@@ -27,15 +27,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 站主決定漫劇的成片要問哪些題（例如沿用故事版的五題，或另寫一組：照立場、沒有建議、沒有業配、沒有貶損，不問示範與觀察），門檻寫成常數。
-- [ ] 題組仍由伺服器從影片所屬的作品或格式決定（`judge.policy_questions_for`），工人不能指定；教學影片的四題一字不動，有測試。
-- [ ] `ruff`、`mypy`、`pytest` 通過。
+- [x] 站主決定漫劇的成片要問哪些題（例如沿用故事版的五題，或另寫一組：照立場、沒有建議、沒有業配、沒有貶損，不問示範與觀察），門檻寫成常數。
+- [x] 題組仍由伺服器從影片所屬的作品或格式決定（`judge.policy_questions_for`），工人不能指定；教學影片的四題一字不動，有測試。
+- [x] `ruff`、`mypy`、`pytest` 通過。
 
 ## Steps
 
-- [ ] 先問站主漫劇的成片要不要自動核准、要問哪些題。
-- [ ] `judge.py`：漫劇的題組與規則；`policy_questions_for` 依影片的格式（`video_projects.format`）或作品選題組。
-- [ ] 測試：漫劇、故事、教學各自問到自己的題組。
+- [x] 先問站主漫劇的成片要不要自動核准、要問哪些題。
+- [x] `judge.py`：漫劇的題組與規則；`policy_questions_for` 依影片的格式（`video_projects.format`）或作品選題組。
+- [x] 測試：漫劇、故事、教學各自問到自己的題組。
 
 ## How to verify
 
@@ -47,3 +47,4 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/tes
 
 - 2026-09-28 開票（claude-opus-5-5-video-story-policy）：在做故事版題組時看到的。題組的選擇在 `judge.py` 的 `policy_questions_for(session, slug)`，現在只分 `story` 與其他；回應的 `PolicyVerdict.questions` 說明問了哪一組。
 - Jev 只讀文字、不會算數也讀不準日期（`apps/api/app/ai/jev.py` 開頭）：題目只能問措辭，不能問事實對不對。
+- 2026-10-25 結案（claude-fable-5-1-drama-policy）：站主的決定由票 `2026-10-24-policy-qa-asks-a-drama-for` 帶來——《系統說我是 BUG》免關卡作品的成片因「有示範 0.08」卡住，漫劇一律用 explainer 的三題（符合立場、沒有建議、沒有業配，門檻同教學片），不另寫一組。做法在那張票：`policy_questions_for` 讀 `VideoProject.format`，`NO_DEMO_FORMATS = {"drama"}`；教學片四題不動，測試在 `tests/test_video_automation_judge.py`。

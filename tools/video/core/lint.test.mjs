@@ -356,6 +356,16 @@ test("different valid runtime budgets still fail the approved anime snapshot bin
   assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /series' setting book/.test(error.message)));
 });
 
+test("a character the setting book gives no voice carries the worker's cast; one it names is copied", () => {
+  const casting = animeEpisode();
+  delete casting.series.characters[0].voice;
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "the book names none: the episode's pick stands");
+  casting.doc.characters[0].voice = { provider: "gemini", name: "Puck" };
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "whichever valid voice the worker cast");
+  delete casting.doc.characters[0].voice;
+  assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /provider and name/.test(error.message)), "but every character still needs one");
+});
+
 test("an anime episode cannot lose its policy and fall back to ordinary drama", () => {
   const current = animeEpisode();
   delete current.doc.production_policy;
@@ -1013,4 +1023,29 @@ test("a tutorial's promise sentence is not a table of contents; sections and ord
   assert.deepEqual(opening("接下來分成三段，帶你學會怎麼用。", "tutorial"), ["scenes[0]"], "sections named as such");
   assert.deepEqual(opening("第一，先看價格。第二，再看額度。最後，教你怎麼選。", "tutorial"), ["scenes[0]"], "an ordinal run");
   assert.deepEqual(opening("接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題。", "tutorial"), ["scenes[0]"], "an announcement with no promise verb");
+});
+
+test("a manga shot held past 4 seconds on one picture is warned, as an estimate; the other tiers are not read (docs/videos/BINGE.md §畫面等級)", async () => {
+  const { MANGA_SHOT_MAX_SECONDS, mangaShotLengthProblems } = await import("./lint.mjs");
+  const { isShot } = await import("./drama.mjs");
+  assert.equal(MANGA_SHOT_MAX_SECONDS, 4);
+  // The drama fixture's opening shot narrates two sentences, about nine estimated seconds on one picture.
+  const manga = episode();
+  manga.series.visual_tier = "manga";
+  for (const scene of manga.doc.scenes) if (isShot(scene)) scene.data.visual = "still";
+  const warned = lintVideo(manga.doc, manga.context);
+  assert.deepEqual(warned.errors, []);
+  const held = warned.warnings.filter((warning) => /holds one picture for about/.test(warning.message));
+  assert.ok(held.length >= 1, "a long manga shot is warned");
+  assert.match(held[0].message, /^shot opening holds one picture for about \d+\.\d s; the manga tier cuts every 2 to 3.5 s, at most 4: give the shot one line and move the rest to a new picture \(docs\/videos\/BINGE.md §畫面等級\) \(estimated; the synthesized timeline decides\)$/);
+  assert.equal(held[0].path, "scenes[0]");
+  // One short line a shot, as the tier's rule asks, and nothing is warned.
+  const brisk = structuredClone(manga.doc);
+  for (const scene of brisk.scenes) if (isShot(scene)) scene.lines = [{ ...scene.lines[0], text: "叮。是否安裝？" }];
+  assert.deepEqual(mangaShotLengthProblems(brisk, estimateTimeline(brisk)), []);
+  // The clips tier plays the same long shots as clips, and no shot length is read.
+  const clips = episode();
+  clips.series.visual_tier = "clips";
+  assert.deepEqual(lintVideo(clips.doc, clips.context).warnings.filter((warning) => /holds one picture/.test(warning.message)), []);
+  assert.deepEqual(mangaShotLengthProblems(clips.doc, null), []);
 });

@@ -11,6 +11,10 @@ type Draft = { title: string; description: string; video_id: string | null };
 // `files` is the upload confirmation's, with the newest approved language batch's over them: a
 // language added after the upload has its captions, description and thumbnail only there.
 type Package = { project: Project; review: Review; languages: Review | null; files: ReviewFile[]; metadata: Record<string, unknown>; metadataFailed: boolean };
+const DUB = "dub_";
+const UNCHECKED_DUB = "dub_unchecked_";
+// The dub formats the review store takes (docs/videos/DUBS.md: m4a, mp3 or wav).
+const AUDIO_EXTENSIONS: Record<string, string> = { "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/wav": "wav" };
 const strings = (value: unknown) => list(value).filter((item): item is string => typeof item === "string");
 const canonical = (locale: string) => {
   const key = locale.toLowerCase().replaceAll("_", "-");
@@ -74,9 +78,32 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   const studio = id ? `https://studio.youtube.com/video/${id}/edit` : "https://studio.youtube.com";
   const requestTime = previous?.visibility === "scheduled" ? previous.publish_at : project.youtube_publish_at;
   const stepClass = "grid min-w-0 gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4";
+  const captionName = (file: ReviewFile) => `${canonical(file.role.slice("captions_".length))}.${file.content_type === "text/vtt" ? "vtt" : "srt"}`;
+  const descriptionName = (file: ReviewFile) => `description.${canonical(file.role.slice("description_".length))}.txt`;
+  // Every file the steps below offer one by one, under the same names, as one archive.
+  const archive = new Map<string, ReviewFile>();
+  if (!id && final) archive.set("final.mp4", final);
+  if (thumbnail) archive.set(thumbnail.content_type === "image/png" ? "thumbnail.png" : "thumbnail.jpg", thumbnail);
+  for (const file of localeThumbnails) archive.set(`thumbnail.${canonical(file.role.slice("thumbnail_".length))}.${file.content_type === "image/png" ? "png" : "jpg"}`, file);
+  for (const file of captionFiles) archive.set(captionName(file), file);
+  for (const file of descriptionFiles) archive.set(descriptionName(file), file);
+  // Dub tracks: dub_<locale> is a ready track, dub_unchecked_<locale> one the check gave up on.
+  const uncheckedDubs = files.filter((file) => file.role.startsWith(UNCHECKED_DUB));
+  const readyDubs = files.filter((file) => file.role.startsWith(DUB) && !file.role.startsWith(UNCHECKED_DUB));
+  const dubLocale = (file: ReviewFile) => canonical(file.role.slice((file.role.startsWith(UNCHECKED_DUB) ? UNCHECKED_DUB : DUB).length));
+  const dubName = (file: ReviewFile) => `dub.${dubLocale(file)}${file.role.startsWith(UNCHECKED_DUB) ? ".unchecked" : ""}.${AUDIO_EXTENSIONS[file.content_type] ?? "m4a"}`;
+  for (const file of [...readyDubs, ...uncheckedDubs]) archive.set(dubName(file), file);
+  const metadataFile = files.find((file) => file.role === "metadata");
+  if (metadataFile) archive.set("metadata.json", metadataFile);
+  const archiveUrl = `/api/admin-video-package/${project.slug}?${new URLSearchParams([...archive].map(([name, file]) => ["file", `${file.sha256}:${name}`]))}`;
 
   return <div className="grid min-w-0 gap-4">
     <p className="text-sm leading-6 text-[var(--muted)]">{t("intro")}</p>
+    {archive.size > 0 && <div className="grid gap-2 rounded-xl border border-[var(--teal)] p-4">
+      <div><a href={archiveUrl} download={`${project.slug}-upload.zip`} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white"><Download aria-hidden size={16} />{t("downloadAll", { count: archive.size })}</a></div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("downloadAllHelp")}</p>
+      {!id && !final && project.compilation && project.download_available && <p className="text-sm text-amber-900">{t("downloadAllNoVideo")}</p>}
+    </div>}
     {metadataFailed && <p role="alert" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">{t("metadataFailed")}</p>}
     <section className={stepClass} aria-label={t("videoStep")}>
       <h3 className="font-bold">{t("videoStep")}</h3>
@@ -114,7 +141,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       <p className="text-sm leading-6 text-[var(--muted)]">{t("captionsHelp")}</p>
       <ul className="flex flex-wrap gap-2">{captionFiles.map((file) => {
         const locale = canonical(file.role.slice("captions_".length));
-        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadCaption", { language: localeName(locale) })} name={`${locale}.${file.content_type === "text/vtt" ? "vtt" : "srt"}`} /></li>;
+        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadCaption", { language: localeName(locale) })} name={captionName(file)} /></li>;
       })}</ul>
       {captionFiles.length === 0 && <p className="text-sm text-amber-900">{t("captionsMissing")}</p>}
       {id && <a href={`https://studio.youtube.com/video/${id}/translations`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--teal)] underline"><ExternalLink aria-hidden size={16} />{t("openCaptions")}</a>}
@@ -131,10 +158,22 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       {requestTime && <p className="text-sm">{t("requestedTime", { time: when(requestTime) })}</p>}
       <p className="text-sm leading-6 text-[var(--muted)]">{t("statusHelp")}</p>
     </section>
+    {readyDubs.length + uncheckedDubs.length > 0 && <section className={stepClass} aria-label={t("dubStep")}>
+      <h3 className="font-bold">{t("dubStep")}</h3>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dubHelp")}</p>
+      <ul className="flex flex-wrap gap-2">{readyDubs.map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadDub", { language: localeName(dubLocale(file)) })} name={dubName(file)} /></li>)}</ul>
+      {uncheckedDubs.length > 0 && <>
+        <ul className="flex flex-wrap gap-2">{uncheckedDubs.map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadUncheckedDub", { language: localeName(dubLocale(file)) })} name={dubName(file)} /></li>)}</ul>
+        <p className="text-sm leading-6 text-amber-900">{t("uncheckedDubHelp")}</p>
+      </>}
+    </section>}
     <details className="rounded-xl border border-[var(--line)] p-4">
       <summary className="cursor-pointer text-sm font-semibold">{t("backupTitle")}</summary>
       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("backupHelp")}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...files.filter((file) => file.role === "metadata")].map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} name={file.role === "metadata" ? "metadata.json" : `description.${canonical(file.role.slice("description_".length))}.txt`} /></li>)}</ul>
+      <ul className="mt-3 flex flex-wrap gap-2">{[...descriptionFiles, ...(metadataFile ? [metadataFile] : [])].map((file) => {
+        const name = file.role === "metadata" ? "metadata.json" : descriptionName(file);
+        return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={name} name={name} /></li>;
+      })}</ul>
     </details>
   </div>;
 }
@@ -159,7 +198,11 @@ function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft;
         // One older than the confirmation belongs to an earlier package, whose own files are newer.
         const newestLanguages = project.reviews.find((item) => item.gate === "languages" && !item.subject && item.status === "approved");
         const languages = newestLanguages && Date.parse(newestLanguages.created_at) > Date.parse(review.created_at) ? newestLanguages : null;
-        const files = [...new Map([...review.files, ...(languages?.files ?? [])].map((file) => [file.role, file])).values()];
+        // Dub tracks wait on a card the owner approves only after uploading them in Studio, so they
+        // also come from the newest languages or dubs card not sent back, pending ones included.
+        const newestDubs = project.reviews.find((item) => (item.gate === "languages" || item.gate === "dubs") && !item.subject && (item.status === "approved" || item.status === "pending"));
+        const dubFiles = newestDubs && Date.parse(newestDubs.created_at) > Date.parse(review.created_at) ? newestDubs.files.filter((file) => file.role.startsWith(DUB)) : [];
+        const files = [...new Map([...review.files, ...(languages?.files ?? []), ...dubFiles].map((file) => [file.role, file])).values()];
         // Its metadata.json is the package's own, written again with every language translated since.
         const metadataUrl = fileUrl(slug, (languages && fileFor(languages, "metadata")) || fileFor(review, "metadata"));
         let metadata: Record<string, unknown> = {};
