@@ -1,0 +1,464 @@
+{
+  "title": "Verificação formal com Claude: o que um programa garante, explicado com 255",
+  "description": "Se a capacidade é de só 8 bytes, por que um comprimento de 255 é aceito? Definimos as condições e corrigimos dois exemplos reais em C, conferindo os resultados.\nPara você que quer entender provas de programas com AI e pede à AI para alterar código: deixamos registros reproduzíveis da aceitação de entradas válidas e da terminação.\n\nEm 2026-10-22, Anthropic e Theorem publicaram sua pesquisa conjunta. O relatório abrange 239 pontos de entrada de 123 bibliotecas; a versão pública citada neste vídeo abrange 60 pontos de entrada de 25 bibliotecas. A afirmação de que faltam provas da proposição halts se limita a essa versão pública; não se estende à pesquisa inteira.\n\nNosso teste de aceitação original e local limita n a 0..255, com capacidade de 8 bytes, reservando 1 byte dessa capacidade para o terminador; ele só decide se aceita. Outro programa independente verifica o retorno após contar. Os métodos são execução real em C, enumeração completa, SAT proposicional no teste de aceitação e grafo de controle finito no laço. Não executamos o verificador Rocq do fornecedor.\n\nCódigo C original, resultados de execução e pacote completo de fontes: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nOs SVGs originais foram redesenhados para este vídeo a partir dos resultados do código e do fluxo oficial; não se passam por telas de uso do produto.",
+  "tags": [
+    "Claude",
+    "verificação formal",
+    "provas de programas",
+    "Theorem",
+    "Rocq",
+    "programação em C",
+    "tecnologia AI"
+  ],
+  "thumbnail": {
+    "tag": "Claude: verificação formal",
+    "headline": "**255**\nPassou?",
+    "sub": "Só cabem 8, mas passou"
+  },
+  "chapters": {
+    "capacity-accepts-255": "Teste local aceita 255",
+    "research-published": "Anotar comprimentos aceitos",
+    "which-line-to-fix": "Total 256: agora rejeitado",
+    "deny-all-two-directions": "Rejeitar tudo exclui válidos",
+    "independent-counter": "Um ciclo impede o retorno",
+    "fix-proof-object": "Condições da prova formal",
+    "completed-repair-record": "Registre seus requisitos"
+  },
+  "source_hashes": {
+    "chapters": {
+      "capacity-accepts-255": "1edec6460faf",
+      "research-published": "b9cbfb707fc5",
+      "which-line-to-fix": "f262b006fc8b",
+      "deny-all-two-directions": "674fcccac2dc",
+      "independent-counter": "cc8b520b8c1e",
+      "fix-proof-object": "3a178f11392d",
+      "completed-repair-record": "e9b10d121112"
+    },
+    "title": "a5726411c90f",
+    "description": "b51dff023429",
+    "tags": "b9a93e92a3ea",
+    "thumbnail": "4a13ca08da95"
+  },
+  "lines": {
+    "zfgp": {
+      "source_hash": "51ad6a8effbf",
+      "text": "25 de outubro de 2026: meu programa só comporta 8 bytes, mas aceita comprimento 255?"
+    },
+    "z9dp": {
+      "source_hash": "11c849209e8c",
+      "text": "Se só proíbo aceitar inválidos, rejeitar tudo basta?"
+    },
+    "bpnn": {
+      "source_hash": "d5b6e86e4a26",
+      "text": "Falta anotar retorno: outro programa contador sai mesmo?"
+    },
+    "c8r2": {
+      "source_hash": "d08593484c6f",
+      "text": "A AI cria prova do mesmo requisito. Quem confere?"
+    },
+    "qwaw": {
+      "source_hash": "87ec5f62a39d",
+      "text": "O registro responde dúvidas de verificação do estudo de Claude de 22 de outubro."
+    },
+    "4rff": {
+      "source_hash": "1043928fb4f5",
+      "text": "Requisitos de teste viram proposições verificáveis."
+    },
+    "5i5d": {
+      "source_hash": "c91a6afcaf84",
+      "text": "Com meu código C, preencho primeiro a linha de aceitação."
+    },
+    "jeaj": {
+      "source_hash": "061da398672e",
+      "text": "A entrada é o tamanho dos dados: 0 a 255."
+    },
+    "fzz5": {
+      "source_hash": "f8a3ef316a7b",
+      "text": "Cabem 8 bytes; reserve 1 byte ao terminador."
+    },
+    "kkef": {
+      "source_hash": "613b93ef6e5d",
+      "text": "Aceite só se o tamanho mais 1 não superar 8."
+    },
+    "m7xu": {
+      "source_hash": "beccf431c07d",
+      "text": "Tamanho 7 mais 1 dá 8: cabe; tamanho 8 mais 1 dá 9: rejeite."
+    },
+    "axkg": {
+      "source_hash": "81fdf48fed5f",
+      "text": "0 é válido: com terminador ocupa 1 byte."
+    },
+    "r79s": {
+      "source_hash": "fc014520652f",
+      "text": "Registro: faixa aceita de 0 a 7."
+    },
+    "p2uy": {
+      "source_hash": "195732bdedff",
+      "text": "Por que então o 255 do início passou?"
+    },
+    "vwiq": {
+      "source_hash": "21a409869e52",
+      "text": "Veja o cálculo do total: 255 mais 1 primeiro dá 256."
+    },
+    "5iky": {
+      "source_hash": "6a0926451df1",
+      "text": "A soma é promovida a int; não vira zero direto."
+    },
+    "zfmi": {
+      "source_hash": "1261dadf89b8",
+      "text": "A errada reconverte o total a 8 bits sem sinal."
+    },
+    "3mpx": {
+      "source_hash": "d42e2f0ee585",
+      "text": "Esse tipo só guarda números de 0 a 255."
+    },
+    "tew5": {
+      "source_hash": "d9d811112416",
+      "text": "Reconvertido, 256 é armazenado como 0."
+    },
+    "femu": {
+      "source_hash": "220318e06cd5",
+      "text": "Compara 0 à capacidade 8 e aceita."
+    },
+    "64pm": {
+      "source_hash": "c7c9badc100f",
+      "text": "8 bits é o tipo; 8 bytes é a capacidade."
+    },
+    "2yfh": {
+      "source_hash": "5416bd8e701a",
+      "text": "Erro ao converter e guardar: os dois oitos são distintos."
+    },
+    "mvnc": {
+      "source_hash": "6c298111610c",
+      "text": "Há um contraexemplo. Que linha guarda o total inteiro?"
+    },
+    "936d": {
+      "source_hash": "ae981efaab7e",
+      "text": "Cálculo completo; total salvo: inteiro de 16 bits sem sinal."
+    },
+    "s57e": {
+      "source_hash": "79e31dd724e4",
+      "text": "Se reduzir a 8 bits e guardar na variável mais larga, 0 segue 0."
+    },
+    "yavq": {
+      "source_hash": "e66bc8925e43",
+      "text": "Mude a linha toda: cálculo e conversão ao salvar o total"
+    },
+    "ij57": {
+      "source_hash": "0c80420a8b4f",
+      "text": "Com entrada 255, somar 1 ainda preserva 256."
+    },
+    "mfag": {
+      "source_hash": "1a6522a29e00",
+      "text": "Supera a capacidade 8: rejeita corretamente."
+    },
+    "vkym": {
+      "source_hash": "e673cce257c4",
+      "text": "E o comprimento válido 7? Mais 1 dá 8 e segue aceito."
+    },
+    "84hx": {
+      "source_hash": "3b26fcf9b4a7",
+      "text": "Dois casos descartam outros erros na faixa?"
+    },
+    "wunt": {
+      "source_hash": "ecba87fb6974",
+      "text": "Escolhi 0, 1, 2, 3 e 4: os 5 deram certo."
+    },
+    "a7te": {
+      "source_hash": "e578ae9a58a1",
+      "text": "Enumerar de 0 a 255 permite conferir toda a faixa."
+    },
+    "dfhy": {
+      "source_hash": "2671499a63a4",
+      "text": "A errada só aceita 255 a mais; a ampliada aceita apenas de 0 a 7."
+    },
+    "zgkb": {
+      "source_hash": "371c593fcf07",
+      "text": "Registro um modelo de solução: mesma entrada em 8 bits booleanos."
+    },
+    "5waf": {
+      "source_hash": "458b210e1f7d",
+      "text": "O solucionador busca: aceita algum comprimento inválido?"
+    },
+    "unr8": {
+      "source_hash": "617c2e811777",
+      "text": "Ver se condições booleanas valem juntas se chama SAT proposicional."
+    },
+    "gtuj": {
+      "source_hash": "e037da4e41bb",
+      "text": "Acha 255 na errada; na ampliada não acha tal caso."
+    },
+    "56e4": {
+      "source_hash": "df688c85d423",
+      "text": "Rejeita tamanhos válidos? A corrigida tampouco acha."
+    },
+    "tksv": {
+      "source_hash": "b2fd3228b90d",
+      "text": "Comparei cada resultado do modelo à execução real em C: os 256 coincidem."
+    },
+    "2zma": {
+      "source_hash": "e8e85c6af839",
+      "text": "Faixa pequena: dá para testar tudo; solver não dá nova resposta."
+    },
+    "4bqi": {
+      "source_hash": "252be5155496",
+      "text": "Se o registro só veta inválidos, posso entregar rejeitando tudo?"
+    },
+    "xfvp": {
+      "source_hash": "4b6db1295170",
+      "text": "Regra de mão única: rejeitar tudo barra inválidos."
+    },
+    "cabc": {
+      "source_hash": "d956e6235b37",
+      "text": "Mas nenhum comprimento de 0 a 7 entra."
+    },
+    "jhkm": {
+      "source_hash": "a9f687dfe5f3",
+      "text": "Calculado no modelo simbólico, não em outro código C."
+    },
+    "e6wk": {
+      "source_hash": "f81aaebebd68",
+      "text": "São 0 aceitações falsas, mas 8 rejeições falsas."
+    },
+    "7d4v": {
+      "source_hash": "61b2cb398b62",
+      "text": "Se só veta inválidos, cumpre rejeitando tudo."
+    },
+    "6a2b": {
+      "source_hash": "9ae03adb435e",
+      "text": "Teste também: deve aceitar entradas válidas."
+    },
+    "4akm": {
+      "source_hash": "2f806baf75ba",
+      "text": "Juntas, exigem aceitar de 0 a 7 e rejeitar todo outro comprimento."
+    },
+    "w9b4": {
+      "source_hash": "46ba75e0d185",
+      "text": "Registro inicial unilateral: agora exige aceitar válidas."
+    },
+    "dkjy": {
+      "source_hash": "5173b4f1b49d",
+      "text": "Decisão de aceitar; código não grava no buffer de dados."
+    },
+    "8ywa": {
+      "source_hash": "a0c466fb0042",
+      "text": "Anoto 0 e 0: a ampliada não aceita nem rejeita por erro."
+    },
+    "xh98": {
+      "source_hash": "fe37ccbc7c85",
+      "text": "Aceitação pronta; outra linha pede checar o retorno."
+    },
+    "idga": {
+      "source_hash": "ae8256662823",
+      "text": "Como pôr um requisito verificável na coluna de retorno?"
+    },
+    "u2xw": {
+      "source_hash": "7c424d942fba",
+      "text": "Uso outro programa contador independente para o retorno; entra o limite."
+    },
+    "p4u6": {
+      "source_hash": "ec08985f14bf",
+      "text": "Limite ainda de 0 a 255; contador começa em 0."
+    },
+    "v9sd": {
+      "source_hash": "836ec578fb98",
+      "text": "Se o contador não superar o limite, soma 1; senão, sai."
+    },
+    "riuf": {
+      "source_hash": "db172bc80117",
+      "text": "Incrementos e retorno devem ser o limite mais 1."
+    },
+    "cgit": {
+      "source_hash": "c76f55e16961",
+      "text": "Com 0, espero 1 incremento e retorno 1."
+    },
+    "y326": {
+      "source_hash": "b9fcf61439c5",
+      "text": "Entrada 7: espero 8 incrementos e retorno 8."
+    },
+    "qmcd": {
+      "source_hash": "9920f81d6dfc",
+      "text": "A errada usa contador de 8 bits; com limite 254, sai ao chegar a 255."
+    },
+    "b3r9": {
+      "source_hash": "92d99ed278ce",
+      "text": "Limite 255: a ferramenta parou a execução após 0,25 segundo."
+    },
+    "ijcq": {
+      "source_hash": "9ca16efd3147",
+      "text": "Nunca termina ou esperamos pouco?"
+    },
+    "ihny": {
+      "source_hash": "2b1076d364b1",
+      "text": "O tempo acabou; só isso não prova que o programa nunca termina."
+    },
+    "4jzv": {
+      "source_hash": "2cc53f409e78",
+      "text": "Veja cada estado e como passa ao próximo."
+    },
+    "kfft": {
+      "source_hash": "a8d29d4c4a87",
+      "text": "Limite fixo; ninguém mais muda o contador."
+    },
+    "58rm": {
+      "source_hash": "8061c9874100",
+      "text": "Contador de 8 bits: de 0 a 255; ao somar de novo volta a 0."
+    },
+    "mjsr": {
+      "source_hash": "8fc664ffa3ea",
+      "text": "Condição válida, limite igual: o mesmo ciclo se repete."
+    },
+    "kq36": {
+      "source_hash": "507103f421d2",
+      "text": "Grafo de controle inteiro: ciclo 256 passos; modelo não sai"
+    },
+    "qjaw": {
+      "source_hash": "6943c6c30477",
+      "text": "Timeout é o observado; ciclo no grafo de controle é a razão."
+    },
+    "h6n5": {
+      "source_hash": "76b3d1c35566",
+      "text": "Onde falta espaço para acabar de contar e sair?"
+    },
+    "p8te": {
+      "source_hash": "1f31f5bf394f",
+      "text": "Contador e conversão: use inteiros de 16 bits sem sinal"
+    },
+    "ghs2": {
+      "source_hash": "44c693ffa379",
+      "text": "Ao somar 1 a 255, agora consegue guardar 256."
+    },
+    "9mxr": {
+      "source_hash": "f9c3102691d9",
+      "text": "256 passa do limite: condição falsa; sai e retorna 256."
+    },
+    "ey22": {
+      "source_hash": "ab81b657c3e3",
+      "text": "Retorno registrado: para toda entrada, sai e retorna o limite mais 1."
+    },
+    "5feu": {
+      "source_hash": "77c4be3bf068",
+      "text": "Retorno e condição de saída: colunas na mesma linha."
+    },
+    "rsx8": {
+      "source_hash": "703de6633c3c",
+      "text": "Separei aceitação e retorno. Provas do estudo de Claude checam o mesmo?"
+    },
+    "zg4q": {
+      "source_hash": "a7b37d0a21b6",
+      "text": "Ao ligar o registro à prova formal, fixe versão do programa, proposição e modelo operacional."
+    },
+    "wzn2": {
+      "source_hash": "0e7058e63ce9",
+      "text": "A versão pública trata de binários RISC-V compilados."
+    },
+    "cawx": {
+      "source_hash": "f47af9bb57ae",
+      "text": "Ao compilar, o núcleo Rocq checa provas criadas pela AI."
+    },
+    "uqde": {
+      "source_hash": "9df86b875f32",
+      "text": "A ferramenta coteja resultado e proposição fixa; lista hipóteses usadas."
+    },
+    "5fga": {
+      "source_hash": "3037ed1a4bcf",
+      "text": "As hipóteses usadas devem passar na auditoria da lista permitida."
+    },
+    "wi26": {
+      "source_hash": "f1b584773e69",
+      "text": "Dúvida inicial: núcleo Rocq e ferramentas checam tese e hipóteses."
+    },
+    "nzaz": {
+      "source_hash": "c5297adfa2e6",
+      "text": "Compilar não cumpre a meta. O que deve ser provado?"
+    },
+    "7ip9": {
+      "source_hash": "2091612eccbf",
+      "text": "A pública compara o mesmo programa normal e com verificação de erros, não antes e depois da correção."
+    },
+    "6x7t": {
+      "source_hash": "a130679b15cc",
+      "text": "No modelo do sistema, a entrada deve manter a versão normal no orçamento de memória fixado."
+    },
+    "5u3j": {
+      "source_hash": "4178cb1c03d9",
+      "text": "Sob a premissa, ambas evitam erros-alvo."
+    },
+    "cnnu": {
+      "source_hash": "c0ffe8d60c16",
+      "text": "Traços finitos podem incluir texto que o programa já emitiu."
+    },
+    "fwc2": {
+      "source_hash": "f9564955e189",
+      "text": "Ambas devem permitir os mesmos traços observáveis."
+    },
+    "e7pc": {
+      "source_hash": "b42411054a81",
+      "text": "Comportamentos iguais também garantem a terminação?"
+    },
+    "3jaw": {
+      "source_hash": "aae859832b95",
+      "text": "Não. Esta versão pública não prova a terminação."
+    },
+    "e2mj": {
+      "source_hash": "23946a0cdb79",
+      "text": "Garantir o fim exige provar terminação à parte."
+    },
+    "4nfp": {
+      "source_hash": "5fbfa4be8c60",
+      "text": "É só esta versão pública; não generalize à pesquisa."
+    },
+    "cr5k": {
+      "source_hash": "3bbfdf53bd0b",
+      "text": "Informe oficial: 123 bibliotecas e 239 pontos de entrada."
+    },
+    "b7jg": {
+      "source_hash": "75b294425df2",
+      "text": "A versão pública atual lista 60 pontos de entrada de 25 bibliotecas."
+    },
+    "i2pt": {
+      "source_hash": "cb96d246e7c3",
+      "text": "Anote versão: total da pesquisa e versão pública atual separados."
+    },
+    "te3s": {
+      "source_hash": "7ebd5fca5887",
+      "text": "Some métodos ao registro: veja o que cada um entrega."
+    },
+    "iest": {
+      "source_hash": "4db58281622c",
+      "text": "Aceitação: enumeração total e SAT; retorno: grafo de controle finito."
+    },
+    "3u2q": {
+      "source_hash": "0e12f29539db",
+      "text": "Confrontei ambos com C executado; não rodei o verificador Rocq."
+    },
+    "ucn4": {
+      "source_hash": "11074012ccac",
+      "text": "Meus resultados: só 2 casos locais; não certificam todo o app."
+    },
+    "bt2j": {
+      "source_hash": "3662e46316cc",
+      "text": "Separo correções do total e do contador: declaração e atualização."
+    },
+    "mj65": {
+      "source_hash": "934a8f87c333",
+      "text": "Ao repetir, confira versão; esperado e real na mesma linha."
+    },
+    "edry": {
+      "source_hash": "8446fe5f59b9",
+      "text": "Não coteje código corrigido e respostas de outro antigo."
+    },
+    "mhjn": {
+      "source_hash": "e31cafa64480",
+      "text": "Fixe critérios claros de aceite."
+    },
+    "87s6": {
+      "source_hash": "fc5be78815da",
+      "text": "Comente como você usa AI para programar."
+    },
+    "22tu": {
+      "source_hash": "7102028b107c",
+      "text": "Inscreva-se: entendamos pesquisa de AI com resultados reais."
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "kind": "narrow-independent-scope-followup",
+  "id": "4nfp",
+  "source": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+  "old": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด",
+  "max_chars": 57,
+  "withdrawn_prior_candidate": "ข้อสรุปนี้ใช้เฉพาะฉบับสาธารณะนี้ ไม่ใช่ทั้งงานวิจัย",
+  "withdrawal_reason": "The immediately preceding e2mj states the general need for a separate termination proof. 'This conclusion' can attach to that general rule, and the abbreviated denial of whole-research scope does not repeat the missing-termination-study predicate. That is a real anaphoric scope risk; the previous 51-character recommendation is withdrawn.",
+  "context": [
+    {
+      "id": "e7pc",
+      "source": "可是，行為相符會不會順便保證一定結束？",
+      "text": "แต่พฤติกรรมตรงกัน จะรับประกันว่าต้องจบด้วยไหม?"
+    },
+    {
+      "id": "3jaw",
+      "source": "不會。這份公開版本沒有提供終止命題的證明。",
+      "text": "ไม่ ฉบับสาธารณะนี้ไม่มีบทพิสูจน์ประพจน์การสิ้นสุด"
+    },
+    {
+      "id": "e2mj",
+      "source": "要保證執行會結束，得另外證明終止命題。",
+      "text": "จะรับประกันว่าจบ ต้องแยกพิสูจน์ประพจน์การสิ้นสุด"
+    },
+    {
+      "id": "4nfp",
+      "source": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+      "text": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด"
+    },
+    {
+      "id": "cr5k",
+      "source": "官方研究報告涵蓋一百二十三個函式庫、二百三十九個入口。",
+      "text": "รายงานวิจัยทางการครอบคลุม 123 ไลบรารี 239 จุดเข้า"
+    },
+    {
+      "id": "b7jg",
+      "source": "目前公開版本則列六十個入口，來自二十五個函式庫。",
+      "text": "ฉบับสาธารณะปัจจุบันระบุ 60 จุดเข้า จาก 25 ไลบรารี"
+    }
+  ],
+  "worksheet_sha256": "bb3a489d2305de9bf9d923d7492e6fde5ba54d89eac51c0e89b380d5f0f8c01e",
+  "old_chars": 67,
+  "tested_candidates": [
+    {
+      "text": "แค่ฉบับนี้ ไม่ได้แปลว่าทั้งงานวิจัยไม่ศึกษาการสิ้นสุด",
+      "chars": 53,
+      "max_chars": 57,
+      "within_static_budget": true
+    },
+    {
+      "text": "เฉพาะฉบับนี้ ไม่ได้แปลว่าทั้งงานวิจัยไม่ศึกษาการสิ้นสุด",
+      "chars": 55,
+      "max_chars": 57,
+      "within_static_budget": true
+    },
+    {
+      "text": "เฉพาะฉบับนี้ ไม่ได้แปลว่าทั้งงานวิจัยไม่พิจารณาการสิ้นสุด",
+      "chars": 57,
+      "max_chars": 57,
+      "within_static_budget": true
+    },
+    {
+      "text": "นี่เฉพาะฉบับนี้ ไม่ได้แปลว่าทั้งงานวิจัยไม่ศึกษาการสิ้นสุด",
+      "chars": 58,
+      "max_chars": 57,
+      "within_static_budget": false
+    }
+  ],
+  "recommended": "เฉพาะฉบับนี้ ไม่ได้แปลว่าทั้งงานวิจัยไม่พิจารณาการสิ้นสุด",
+  "recommended_chars": 57,
+  "recommended_max_chars": 57,
+  "recommended_back_translation_zh_TW": "僅就這份版本而言，這不代表整項研究沒有考慮終止。",
+  "recommendation_reason": "Use this release to refer back to the public release explicitly named in 3jaw. Keep the complete negative inference: it does not mean that the entire research did not address termination. The words for considering termination remain identical to the original Thai, so the predicate is explicit rather than a bare exclusion of whole-research scope. This does not limit e2mj's general requirement to prove termination separately, and does not assert that the wider research proved termination.",
+  "shortenings": [
+    {
+      "from": "นี่เฉพาะฉบับสาธารณะ",
+      "to": "เฉพาะฉบับนี้",
+      "reason": "The already named public release is this release; the publication qualifier is recovered from 3jaw."
+    },
+    {
+      "from": "งานวิจัยทั้งหมด",
+      "to": "ทั้งงานวิจัย",
+      "reason": "Both mean the entire research; no scope is removed."
+    }
+  ],
+  "explicit_scope_checks": {
+    "this_release": "ฉบับนี้",
+    "does_not_mean": "ไม่ได้แปลว่า",
+    "entire_research": "ทั้งงานวิจัย",
+    "did_not_address": "ไม่พิจารณา",
+    "termination": "การสิ้นสุด",
+    "separate_termination_proof_rule_unchanged": true,
+    "does_not_assert_research_proved_halting": true
+  },
+  "status": "recommend_exact_57_character_candidate; withdraw_prior_51_character_candidate",
+  "unresolved_static_budget": false,
+  "actual_audio_or_window_fit": "not_tested",
+  "applied_to_worksheet": false,
+  "other_candidates_and_original_reports": "Not changed. This followup only addresses th:4nfp.",
+  "writes": [
+    "/workspace/work/ai-tech-next/formal-th-4nfp-scope-followup.json"
+  ]
+}

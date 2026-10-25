@@ -9,7 +9,7 @@
 
 本片主題：Claude形式驗證研究，用兩個本片自寫的C程式與255邊界，完成接受／拒絕／返回條件的可重跑紀錄。官方239/123、public release60/25與本地各256輸入分列；不聲稱重現Rocq或vendor checker。
 
-正式交付為繁中主片加en、ja、ko、es、pt、id、vi、th各自標題說明、CC和真正檢查完成的可下載M4A，直接送本片後臺後讀回伺服器驗SHA的角色／大小。現階段只有研究、企劃、題目登記及大綱採用；稿件、旁白、畫面、成片及八語媒體仍製作中。沒有執行YouTube上傳／公開、合併或部署。
+正式交付為繁中主片加en、ja、ko、es、pt、id、vi、th各自標題說明、CC和真正檢查完成的可下載M4A，直接送本片後臺後讀回伺服器驗SHA的角色／大小。以下時間段保存各階段原實況；最新23:07快照是繁中主體候選已交、核心QA11／11，正式品牌片頭尾及八語實際音訊未完成，詳[production-result.md](production-result.md)。沒有執行YouTube上傳／公開、合併或部署。
 
 後臺：https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255
 
@@ -32,3 +32,29 @@ verify-2實際PASS，0待修、0未找到；逐句對齊、完整C與SAT查詢�
 協調者依站主持續委派採用此R1進行正常繁中TTS。聲音與風格和ForTy相同；四個原文術語的實際發音仍以最新WAV音檢驗證，不因字典null預先稱已聽過。正文及成片都需實測至少八分鐘，不靠片頭片尾、靜音、慢播補時。音檢有旗只重錄／保義改寫被標take，留存所有原始收據，不能清旗或改轉寫偽造通過。
 
 繁中完成後預設八外語逐語完成CC、metadata與實際音檢M4A，再直接交後臺與讀回驗證；尚未完成的媒體不因這項採用而稱完成，不執行YouTube公開、合併或部署。
+
+
+## 八句音檢修詞後的實測進度
+
+目前source232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15、claims527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6、speech8028c7320d9cab29。僅八句保義改詞，其他97句及所有畫面資料不變；verify-3真正PASS、原有敘事NO保留。只合成八個新WAV、92個request重用，逐WAV對帳確認只有八句SHA變動，97句原檔不變。
+
+目前實際105／105句音檢通過：64 exact、19同音／語助、13 Jev、9實際第二轉寫，0 flags、0 unchecked。獨立唯讀[旁白核驗](narration-reword1-verification.json)以完整原文、spoken form、原生key／裁決及最新WAV的完整SHA綁定105句，沒有清旗或覆寫ASR。全旁白560.4333秒、outro前548.1333秒、扣冷開與outro的正文523.7333秒，均為實測；音檢通過不是成片或八語完成聲明。
+
+正常audio review提交後伺服器仍pending；21:01:22.994Z原生approve依既有委派記錄本機timeline採用，不冒稱遠端核准。正式render首次因未設定既有Playwright路徑在啟動瀏覽器前exit5，指定既有/workspace/work/playwright後重跑，不重合成旁白、不安裝或更換素材。成片與QA尚在製作，八語譯稿同步進行、未交付外語媒體。
+
+
+## 主體候選成片與正式動畫待補
+
+目前版面修正後source e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f。five-small-examples僅把0、1、2、3、4五個相同結果整併成顯式單列表格，沒有減少輸入／輸出，所有105句與聲音／metadata不變。原生render 1個狀態重畫、100重用、零layout問題，修後表格與完整聯絡表已實際檢視；[獨立資料差異與最新旁白核驗](table-layout-independent-review.json)通過。
+
+正式片頭片尾套用在編碼前因本producer沒有已安裝素材而拒絕，沒有因此重合成旁白。後續正常assemble取得的是主體候選，並非完整正式定版：[實際候選驗證](main-body-candidate-verification.json)，SHA c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5，48226281 bytes，16813 frames，容器560.505秒；H264 1920×1080／30fps、AAC 48kHz stereo，−14 LUFS／TP −2.9，93片段及101狀態的原生機械檢查通過。實際編碼5秒、220秒、555秒樣格已打開核對，並未宣稱逐秒播放。
+
+正式頻道片頭片尾素材與綁定尚待補，不能把本片的靜態outro卡或QA對null branding的容許當作已完成動畫。新任務2026-10-25-local-first-build-without-branding保留重現及三支片需核對項；已詢問一次既有素材路徑／下載連結，其他製作照常進行。此段21:37記錄的「尚待文字／CC／縮圖／核心QA」已由下列新收據接續，原候選驗證檔的寫入時狀態不覆寫。
+
+## 主體候選已交與八語文字準備（23:07快照）
+
+22:38原生核心QA完成11／11，stance .84、demo .92、advice .01、sponsor .04；八語各105句／7章、metadata、獨立文字審查及本地化overlay／CC已準備。字幕目前都依繁中narration時間軸，ES／PT／ID共8項速度advisories保留；實際外語M4A、音檢及交付0／8，各語音軌完成後仍須以actual dub timings重產CC。四個手機標題寬度advisories保留，最新native lint為0 errors／7 warnings；沒有為消警告修改i18n。
+
+22:48:50.599Z，正常12段完整1080p上傳完成server assembly SHA／大小驗證，authenticated role metadata讀回`evidence_zh_tw_1080p_mp4`，SHA仍c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5、48226281 bytes。final仍pending，原files／payload／QA及語言選擇完整保留；沒有遠端二進位下載、approval改動或正式language batch。詳[公開交付摘要](main-delivery-verification.json)。
+
+本體已交不等於正式品牌定版或八語完成。官方片頭尾仍missing，靜態outro不替代動畫；敘事9／13、passed=false及教學採用理由保持原記錄，不改NO或捏造新盲讀。root23:06實際看過八語縮圖overlay可讀／無裁切，內嵌guard演示圖仍含繁中文字，不聲稱所有像素均翻譯。最新可機讀狀態見[production-progress.json](production-progress.json)，歷史自審／獨審與原生套用檔已在[收據索引](public-receipt-index.json)保留完整SHA。

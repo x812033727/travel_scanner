@@ -1,0 +1,107 @@
+{
+  "observed_at": "2026-10-25T22:48:19.569Z",
+  "finished_at": "2026-10-25T22:48:50.599Z",
+  "snapshot_prepared_at": "2026-10-25T23:07:06Z",
+  "scope": "繁中主體候選；正式頻道片頭片尾動畫待補，八語製作中，非完整正式定版；成片pending。",
+  "raw_receipt": {
+    "path": "/workspace/work/ai-tech-next/attach-formal-main-download.result.2026-10-25T22-48-19-567Z.json",
+    "bytes": 76503,
+    "sha256": "fed7607d0871f0f5e7db6c267f756c79b7dad3ea42a0befd2a2a0dae81043430",
+    "publication": "Allowlist-only public projection; raw server response/project payload is not copied."
+  },
+  "slug": "claude-formal-verification-255",
+  "ok": true,
+  "stage": "pinned_main1080_evidence_attached",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+  "speech_hash": "8028c7320d9cab29",
+  "main": {
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "bytes": 48226281,
+    "width": 1920,
+    "height": 1080,
+    "seconds": 560.4333333333333,
+    "video_timing": {
+      "video": {
+        "codec": "h264",
+        "width": 1920,
+        "height": 1080,
+        "frames": 16813,
+        "fps": 30,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "start_pts": "0",
+        "start_seconds": 0,
+        "duration_ts": "8608256",
+        "time_base": "1/15360",
+        "exact_duration_seconds": 560.4333333333333,
+        "reported_duration": "560.433333",
+        "native_timeline_frames": 16813,
+        "native_timeline_fps": 30
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "start_seconds": 0,
+        "duration_ts": "26904240",
+        "time_base": "1/48000",
+        "duration_seconds": 560.505,
+        "end_seconds": 560.505
+      },
+      "container": {
+        "bytes": 48226281,
+        "start_time": "0.000000",
+        "duration": "560.505000",
+        "last_actual_stream_endpoint_seconds": 560.505
+      },
+      "aac_end_after_video_seconds": 0.07166666666666667,
+      "timing_scope": "Video duration is exact frames/fps and duration_ts/time_base; container duration follows the actual maximum stream endpoint. Measured AAC tail is reported separately and never called video duration.",
+      "decimal_rounding_only": true
+    }
+  },
+  "server_upload_receipt": {
+    "complete": true,
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "bytes": 48226281,
+    "parts": 12,
+    "parts_sent": 12,
+    "existing_blob_fast_path": false,
+    "sha_validation_scope": "Native server assembly hashes the uploaded bytes and rejects SHA/size mismatches before complete=true."
+  },
+  "evidence_file": {
+    "role": "evidence_zh_tw_1080p_mp4",
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "size": 48226281,
+    "content_type": "video/mp4"
+  },
+  "metadata_readback_verified": true,
+  "verification_kind": "normal_server_upload_assembly_and_authenticated_role_metadata_readback",
+  "streamed_binary_download": {
+    "performed": false,
+    "sha256": null,
+    "bytes": null,
+    "reason": "Normal tool GET project/PUT file parts/POST reviews only; no authenticated binary GET/admin route called."
+  },
+  "final_review_id": "00f2b388-712e-4886-9849-64e12e0f6bec",
+  "final_status": "pending",
+  "all_original_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "qa_preserved_11_of_11": true,
+  "core_qa": {
+    "ok": true,
+    "passed": 11,
+    "total": 11,
+    "receipt": "qa-main-body-initial.json",
+    "receipt_sha256": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852",
+    "scope": "Frozen body candidate and then-current text/thumbnail/CC only; not official channel bookends or future dub-timed CC/packages."
+  },
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "youtube_changed": false,
+  "language_batch_submitted": false,
+  "captions_or_localization_version_claim": false,
+  "foreign_dub_files": 0,
+  "official_channel_bookend_animation_present": false,
+  "overall_production_completed": false
+}

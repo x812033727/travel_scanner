@@ -1,0 +1,464 @@
+{
+  "title": "Verifikasi formal Claude: arti jaminan program lewat angka 255",
+  "description": "Kapasitasnya hanya 8 byte, jadi mengapa panjang 255 diterima? Kita perjelas syaratnya, lalu perbaiki dua contoh C nyata dan cocokkan hasilnya.\nUntuk kamu yang ingin memahami bukti program AI dan meminta AI mengubah kode: kita simpan catatan yang bisa diulang untuk penerimaan input sah dan apakah program berakhir.\n\nPada 2026-10-22, Anthropic dan Theorem menerbitkan riset bersama. Laporan riset mencakup 239 titik masuk dari 123 pustaka; rilis publik yang dikutip video ini mencakup 60 titik masuk dari 25 pustaka. Pernyataan bahwa bukti proposisi halts tidak tersedia hanya berlaku untuk rilis publik itu; kesimpulan ini tidak diperluas ke seluruh riset.\n\nPemeriksa penerimaan lokal orisinal membatasi n=0..255, kapasitas 8 byte, dengan 1 byte dari kapasitas itu dicadangkan untuk terminator; program ini hanya memutuskan penerimaan. Program lain yang terpisah memeriksa return setelah menghitung. Metodenya adalah eksekusi C nyata, enumerasi menyeluruh, SAT proposisional untuk pemeriksa penerimaan, dan graf kontrol berhingga untuk loop. Kami tidak menjalankan pemeriksa Rocq milik penyedia.\n\nKode C orisinal, hasil eksekusi, dan paket sumber lengkap: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nSVG orisinal digambar ulang untuk video ini berdasarkan hasil kode dan alur resmi, tanpa mengaku sebagai tangkapan layar penggunaan produk.",
+  "tags": [
+    "Claude",
+    "verifikasi formal",
+    "bukti program",
+    "Theorem",
+    "Rocq",
+    "pemrograman C",
+    "teknologi AI"
+  ],
+  "thumbnail": {
+    "tag": "Verifikasi formal Claude",
+    "headline": "**255**\nLolos?",
+    "sub": "8 byte, tetap lolos"
+  },
+  "chapters": {
+    "capacity-accepts-255": "Uji lokal menerima 255",
+    "research-published": "Catat panjang yang sah",
+    "which-line-to-fix": "Total 256: kini ditolak",
+    "deny-all-two-directions": "Tolak semua, input sah gagal",
+    "independent-counter": "Siklus di kolom return",
+    "fix-proof-object": "Cocokkan syarat bukti formal",
+    "completed-repair-record": "Catat kebutuhanmu sendiri"
+  },
+  "source_hashes": {
+    "chapters": {
+      "capacity-accepts-255": "1edec6460faf",
+      "research-published": "b9cbfb707fc5",
+      "which-line-to-fix": "f262b006fc8b",
+      "deny-all-two-directions": "674fcccac2dc",
+      "independent-counter": "cc8b520b8c1e",
+      "fix-proof-object": "3a178f11392d",
+      "completed-repair-record": "e9b10d121112"
+    },
+    "title": "a5726411c90f",
+    "description": "b51dff023429",
+    "tags": "b9a93e92a3ea",
+    "thumbnail": "4a13ca08da95"
+  },
+  "lines": {
+    "zfgp": {
+      "source_hash": "51ad6a8effbf",
+      "text": "25 Oktober 2026: kapasitas program saya 8 byte, tetapi menerima panjang 255?"
+    },
+    "z9dp": {
+      "source_hash": "11c849209e8c",
+      "text": "Catatan cuma larang input salah lolos; tolak semua cukup?"
+    },
+    "bpnn": {
+      "source_hash": "d5b6e86e4a26",
+      "text": "Return belum dicatat. Benarkah program penghitung lain keluar?"
+    },
+    "c8r2": {
+      "source_hash": "d08593484c6f",
+      "text": "AI menulis bukti syarat yang sama; siapa memeriksanya?"
+    },
+    "qwaw": {
+      "source_hash": "87ec5f62a39d",
+      "text": "Catatan ini menjawab soal verifikasi dari riset Claude tanggal 22 Oktober."
+    },
+    "4rff": {
+      "source_hash": "1043928fb4f5",
+      "text": "Syarat uji jadi proposisi yang bisa dicek."
+    },
+    "5i5d": {
+      "source_hash": "c91a6afcaf84",
+      "text": "Dengan program C buatan saya, baris penerimaan diisi dulu."
+    },
+    "jeaj": {
+      "source_hash": "061da398672e",
+      "text": "Inputnya panjang data, dibatasi 0 sampai 255."
+    },
+    "fzz5": {
+      "source_hash": "f8a3ef316a7b",
+      "text": "Hanya 8 byte; sisakan 1 byte untuk terminator."
+    },
+    "kkef": {
+      "source_hash": "613b93ef6e5d",
+      "text": "Terima hanya jika panjang tambah 1 tidak melebihi 8."
+    },
+    "m7xu": {
+      "source_hash": "beccf431c07d",
+      "text": "Panjang 7 tambah 1 jadi 8: pas. Panjang 8 tambah 1 jadi 9: tolak."
+    },
+    "axkg": {
+      "source_hash": "81fdf48fed5f",
+      "text": "0 sah: plus terminator hanya memakai 1 byte."
+    },
+    "r79s": {
+      "source_hash": "fc014520652f",
+      "text": "Catatan: rentang diterima 0 sampai 7."
+    },
+    "p2uy": {
+      "source_hash": "195732bdedff",
+      "text": "Mengapa 255 di awal tadi justru lolos?"
+    },
+    "vwiq": {
+      "source_hash": "21a409869e52",
+      "text": "Ikuti hitungan totalnya: 255 ditambah 1 mula-mula menghasilkan 256."
+    },
+    "5iky": {
+      "source_hash": "6a0926451df1",
+      "text": "Penjumlahan dipromosikan ke int, tak langsung menjadi nol."
+    },
+    "zfmi": {
+      "source_hash": "1261dadf89b8",
+      "text": "Versi salah: ubah total ke integer 8 bit tanpa tanda."
+    },
+    "3mpx": {
+      "source_hash": "d42e2f0ee585",
+      "text": "Tipe ini hanya menyimpan angka 0 sampai 255."
+    },
+    "tew5": {
+      "source_hash": "d9d811112416",
+      "text": "Konversi balik 256: nilai tersimpan jadi 0."
+    },
+    "femu": {
+      "source_hash": "220318e06cd5",
+      "text": "Bandingkan 0 dengan kapasitas 8: lolos."
+    },
+    "64pm": {
+      "source_hash": "c7c9badc100f",
+      "text": "8 bit itu tipe; 8 byte itu kapasitas."
+    },
+    "2yfh": {
+      "source_hash": "5416bd8e701a",
+      "text": "Salah saat konversi penyimpanan; kedua angka delapan berbeda."
+    },
+    "mvnc": {
+      "source_hash": "6c298111610c",
+      "text": "Tercatat contoh tandingan. Baris mana menyimpan total utuh?"
+    },
+    "936d": {
+      "source_hash": "ae981efaab7e",
+      "text": "Jaga hasil hitung utuh, simpan total ke integer 16 bit tanpa tanda."
+    },
+    "s57e": {
+      "source_hash": "79e31dd724e4",
+      "text": "Jika dipersempit ke 8 bit lalu disimpan di variabel lebih lebar, 0 tetap 0."
+    },
+    "yavq": {
+      "source_hash": "e66bc8925e43",
+      "text": "Ubah seluruh baris: hitungan dan konversi penyimpanan total."
+    },
+    "ij57": {
+      "source_hash": "0c80420a8b4f",
+      "text": "Input 255 ditambah 1 tetap tersimpan sebagai 256."
+    },
+    "mfag": {
+      "source_hash": "1a6522a29e00",
+      "text": "Di atas kapasitas 8: kini ditolak dengan benar."
+    },
+    "vkym": {
+      "source_hash": "e673cce257c4",
+      "text": "Bagaimana panjang sah 7? Tambah 1 jadi 8, tetap diterima."
+    },
+    "84hx": {
+      "source_hash": "3b26fcf9b4a7",
+      "text": "Hanya dua hasil: bagaimana tahu sisanya tidak salah?"
+    },
+    "wunt": {
+      "source_hash": "ecba87fb6974",
+      "text": "Saya pilih 0, 1, 2, 3, 4; kelimanya sesuai dugaan."
+    },
+    "a7te": {
+      "source_hash": "e578ae9a58a1",
+      "text": "Daftar semua 0 sampai 255 untuk mencocokkan seluruh rentang."
+    },
+    "dfhy": {
+      "source_hash": "2671499a63a4",
+      "text": "Tambahan yang diterima versi salah cuma 255; versi lebar cuma 0 sampai 7."
+    },
+    "zgkb": {
+      "source_hash": "371c593fcf07",
+      "text": "Saya tambahkan model pemecahan: input yang sama ditulis sebagai 8 bit boolean."
+    },
+    "5waf": {
+      "source_hash": "458b210e1f7d",
+      "text": "Pemecah proposisi mencari: ada panjang tidak sah yang diterima?"
+    },
+    "unr8": {
+      "source_hash": "617c2e811777",
+      "text": "Mencari apakah syarat boolean terpenuhi bersama disebut SAT proposisional."
+    },
+    "gtuj": {
+      "source_hash": "e037da4e41bb",
+      "text": "Versi salah: 255; versi lebar tanpa contoh tandingan itu."
+    },
+    "56e4": {
+      "source_hash": "df688c85d423",
+      "text": "Panjang sah ditolak? Versi perbaikan pun tidak menemukannya."
+    },
+    "tksv": {
+      "source_hash": "b2fd3228b90d",
+      "text": "Hasil model dicocokkan satu per satu dengan eksekusi C nyata: seluruh 256 cocok."
+    },
+    "2zma": {
+      "source_hash": "e8e85c6af839",
+      "text": "Rentangnya kecil, bisa diuji semua; pemecah tidak menambah jawaban."
+    },
+    "4bqi": {
+      "source_hash": "252be5155496",
+      "text": "Jika catatan cuma larang input salah lolos, bisa serahkan penolak semua?"
+    },
+    "xfvp": {
+      "source_hash": "4b6db1295170",
+      "text": "Aturan satu arah: tolak semua mencegah input tidak sah lolos."
+    },
+    "cabc": {
+      "source_hash": "d956e6235b37",
+      "text": "Panjang 0 sampai 7 pun tidak ada yang lolos."
+    },
+    "jhkm": {
+      "source_hash": "a9f687dfe5f3",
+      "text": "Dihitung di model simbolis, bukan menjalankan program C lain."
+    },
+    "e6wk": {
+      "source_hash": "f81aaebebd68",
+      "text": "Hasilnya 0 penerimaan salah, tetapi 8 penolakan salah."
+    },
+    "7d4v": {
+      "source_hash": "61b2cb398b62",
+      "text": "Larang input salah lolos saja: program cukup menolak semua."
+    },
+    "6a2b": {
+      "source_hash": "9ae03adb435e",
+      "text": "Tambahkan syarat uji: input sah wajib diterima."
+    },
+    "4akm": {
+      "source_hash": "2f806baf75ba",
+      "text": "Gabung keduanya: semua 0 sampai 7 harus lolos; panjang lain wajib ditolak."
+    },
+    "w9b4": {
+      "source_hash": "46ba75e0d185",
+      "text": "Catatan awal satu arah kini: input sah wajib diterima"
+    },
+    "dkjy": {
+      "source_hash": "5173b4f1b49d",
+      "text": "Baris ini: keputusan penerimaan; kode tidak menulis ke buffer data."
+    },
+    "8ywa": {
+      "source_hash": "a0c466fb0042",
+      "text": "Saya catat dua nol: versi lebar tak salah terima maupun tolak."
+    },
+    "xh98": {
+      "source_hash": "fe37ccbc7c85",
+      "text": "Baris penerimaan selesai; baris lain menunggu uji return."
+    },
+    "idga": {
+      "source_hash": "ae8256662823",
+      "text": "Bagaimana isi kolom return dengan syarat yang bisa dicek?"
+    },
+    "u2xw": {
+      "source_hash": "7c424d942fba",
+      "text": "Saya isi return pakai program hitung terpisah; inputnya batas."
+    },
+    "p4u6": {
+      "source_hash": "ec08985f14bf",
+      "text": "Batas tetap 0 sampai 255; penghitung mulai dari 0."
+    },
+    "v9sd": {
+      "source_hash": "836ec578fb98",
+      "text": "Penghitung tak melebihi batas: tambah 1; jika tidak, keluar."
+    },
+    "riuf": {
+      "source_hash": "db172bc80117",
+      "text": "Jumlah kenaikan dan return harus sebesar batas tambah 1."
+    },
+    "cgit": {
+      "source_hash": "c76f55e16961",
+      "text": "Input 0: harapkan 1 penambahan, return 1."
+    },
+    "y326": {
+      "source_hash": "b9fcf61439c5",
+      "text": "Input 7: harapkan 8 penambahan, return 8."
+    },
+    "qmcd": {
+      "source_hash": "9920f81d6dfc",
+      "text": "Versi salah pakai penghitung 8 bit; batas 254, keluar saat mencapai 255."
+    },
+    "b3r9": {
+      "source_hash": "92d99ed278ce",
+      "text": "Batas diubah ke 255; alat menghentikan eksekusi setelah 0,25 detik."
+    },
+    "ijcq": {
+      "source_hash": "9ca16efd3147",
+      "text": "Tak berakhir, atau belum cukup lama?"
+    },
+    "ihny": {
+      "source_hash": "2b1076d364b1",
+      "text": "Waktu habis saja tidak membuktikan program tak akan pernah berakhir."
+    },
+    "4jzv": {
+      "source_hash": "2cc53f409e78",
+      "text": "Lihat setiap keadaan serta langkah berikutnya."
+    },
+    "kfft": {
+      "source_hash": "a8d29d4c4a87",
+      "text": "Batas tetap; penghitung tidak diubah pihak lain."
+    },
+    "58rm": {
+      "source_hash": "8061c9874100",
+      "text": "Penghitung 8 bit dari 0 ke 255; tambah lagi kembali ke 0."
+    },
+    "mjsr": {
+      "source_hash": "8fc664ffa3ea",
+      "text": "Syarat tetap benar, batas tetap: siklus yang sama terulang."
+    },
+    "kq36": {
+      "source_hash": "507103f421d2",
+      "text": "Graf kontrol lengkap: siklus 256 langkah, model tidak bisa keluar."
+    },
+    "qjaw": {
+      "source_hash": "6943c6c30477",
+      "text": "Waktu habis itu pengamatan; siklus jadi alasan dari graf kontrol."
+    },
+    "h6n5": {
+      "source_hash": "76b3d1c35566",
+      "text": "Di mana perlu ruang agar tuntas menghitung dan keluar?"
+    },
+    "p8te": {
+      "source_hash": "1f31f5bf394f",
+      "text": "Ubah penghitung dan konversinya ke integer 16 bit tanpa tanda."
+    },
+    "ghs2": {
+      "source_hash": "44c693ffa379",
+      "text": "Sesudah 255 ditambah 1, kini 256 bisa tersimpan."
+    },
+    "9mxr": {
+      "source_hash": "f9c3102691d9",
+      "text": "256 di atas batas: syarat gagal; keluar dan mengembalikan 256."
+    },
+    "ey22": {
+      "source_hash": "ab81b657c3e3",
+      "text": "Kolom return terisi: tiap input, program keluar dan mengembalikan batas tambah 1."
+    },
+    "5feu": {
+      "source_hash": "77c4be3bf068",
+      "text": "Nilai return dan syarat keluar: beda kolom, satu baris catatan."
+    },
+    "rsx8": {
+      "source_hash": "703de6633c3c",
+      "text": "Penerimaan dan return terpisah. Apa bukti riset Claude memeriksa syarat yang sama?"
+    },
+    "zg4q": {
+      "source_hash": "a7b37d0a21b6",
+      "text": "Cocokkan bukti formal dengan menetapkan versi program, proposisi, dan model operasi."
+    },
+    "wzn2": {
+      "source_hash": "0e7058e63ce9",
+      "text": "Objek rilis publik: program biner RISC-V hasil kompilasi."
+    },
+    "cawx": {
+      "source_hash": "f47af9bb57ae",
+      "text": "Saat kompilasi, kernel Rocq cek bukti buatan AI."
+    },
+    "uqde": {
+      "source_hash": "9df86b875f32",
+      "text": "Alat cocokkan hasil ke proposisi tetap, catat asumsi terpakai."
+    },
+    "5fga": {
+      "source_hash": "3037ed1a4bcf",
+      "text": "Asumsi terpakai juga harus lolos audit daftar izin."
+    },
+    "wi26": {
+      "source_hash": "f1b584773e69",
+      "text": "Soal di awal dijawab: kernel Rocq dan alat memeriksa proposisi serta asumsi."
+    },
+    "nzaz": {
+      "source_hash": "c5297adfa2e6",
+      "text": "Kompilasi belum menuntaskan target. Apa yang dibuktikan?"
+    },
+    "7ip9": {
+      "source_hash": "2091612eccbf",
+      "text": "Rilis publik: program sama, versi normal dan versi cek galat; bukan sebelum dan sesudah perbaikan."
+    },
+    "6x7t": {
+      "source_hash": "a130679b15cc",
+      "text": "Di model sistem, input harus menjaga versi normal dalam anggaran memori yang ditetapkan."
+    },
+    "5u3j": {
+      "source_hash": "4178cb1c03d9",
+      "text": "Dengan itu, keduanya bebas galat sasaran."
+    },
+    "cnnu": {
+      "source_hash": "c0ffe8d60c16",
+      "text": "Jejak berhingga bisa memuat teks yang sudah keluar."
+    },
+    "fwc2": {
+      "source_hash": "f9564955e189",
+      "text": "Kedua versi: himpunan jejak teramati yang diizinkan sama."
+    },
+    "e7pc": {
+      "source_hash": "b42411054a81",
+      "text": "Apa perilaku yang cocok juga menjamin program berakhir?"
+    },
+    "3jaw": {
+      "source_hash": "aae859832b95",
+      "text": "Tidak. Rilis publik ini tidak punya bukti terminasi."
+    },
+    "e2mj": {
+      "source_hash": "23946a0cdb79",
+      "text": "Agar pasti berakhir, buktikan terminasi secara terpisah."
+    },
+    "4nfp": {
+      "source_hash": "5fbfa4be8c60",
+      "text": "Khusus rilis publik ini, jangan diperluas ke seluruh riset."
+    },
+    "cr5k": {
+      "source_hash": "3bbfdf53bd0b",
+      "text": "Laporan resmi mencakup 123 pustaka dan 239 titik masuk."
+    },
+    "b7jg": {
+      "source_hash": "75b294425df2",
+      "text": "Rilis publik saat ini memuat 60 titik masuk dari 25 pustaka."
+    },
+    "i2pt": {
+      "source_hash": "cb96d246e7c3",
+      "text": "Beri label versi: pisahkan total riset dan rilis publik yang tersedia."
+    },
+    "te3s": {
+      "source_hash": "7ebd5fca5887",
+      "text": "Catat metode uji juga agar beda hasil yang diserahkan jelas."
+    },
+    "iest": {
+      "source_hash": "4db58281622c",
+      "text": "Penerimaan: enumerasi lengkap dan SAT; return: graf kontrol berhingga."
+    },
+    "3u2q": {
+      "source_hash": "0e12f29539db",
+      "text": "Keduanya dicek via eksekusi C; saya tak jalankan pemeriksa Rocq."
+    },
+    "ucn4": {
+      "source_hash": "11074012ccac",
+      "text": "Hasil saya sebatas 2 contoh lokal, bukan sertifikasi seluruh aplikasi."
+    },
+    "bt2j": {
+      "source_hash": "3662e46316cc",
+      "text": "Catatan memisahkan revisi total panjang, deklarasi, dan pembaruan penghitung."
+    },
+    "mj65": {
+      "source_hash": "934a8f87c333",
+      "text": "Saat ulang, cek versi dulu; ekspektasi dan hasil nyata satu baris."
+    },
+    "edry": {
+      "source_hash": "8446fe5f59b9",
+      "text": "Jangan cocokkan revisi ke hasil kode lama lain."
+    },
+    "mhjn": {
+      "source_hash": "e31cafa64480",
+      "text": "Perjelas syarat penerimaan."
+    },
+    "87s6": {
+      "source_hash": "fc5be78815da",
+      "text": "Ceritakan penggunaan AI untuk kodemu di komentar."
+    },
+    "22tu": {
+      "source_hash": "7102028b107c",
+      "text": "Berlangganan: pahami riset AI bersama lewat hasil nyata."
+    }
+  }
+}

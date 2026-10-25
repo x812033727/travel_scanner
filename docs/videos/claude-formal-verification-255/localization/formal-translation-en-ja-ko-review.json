@@ -1,0 +1,224 @@
+{
+  "status": "All requested translations complete. Character-budget blockers remain in JA/KO; no merge or dub run.",
+  "source_path": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/video.json",
+  "translation_start_sourceSHA": "232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15",
+  "current_sourceSHA": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "source_delta": "Root reported only five-small-examples.data.rows layout consolidation; all 105 narration texts, metadata, claims, worksheet sources and budgets unchanged. Final source-to-worksheet 105-line equality checked.",
+  "locales": {
+    "en": {
+      "path": "/workspace/work/videos/claude-formal-verification-255/i18n/en.todo.json",
+      "worksheetSHA": "03bc2d9cc223484a4593ff3f0a97152cc396bd604e5da300f24d95ecb4d8d7e3",
+      "nontext_skeletonSHA": "9460a0ff79854a8689ae264f988a2f880aa2eb9f07771d847e0e301d68a18ff8",
+      "captions": 105,
+      "chapters": 7,
+      "metadata_fields_complete": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees",
+      "title_chars": 66,
+      "description_body_bytes": 1353,
+      "tags_chars_comma_joined": 82,
+      "max_chars_check": "clear",
+      "within_budget_lines": 105,
+      "over_budget": [],
+      "three_passes": {
+        "semantic_source_comparison": "completed",
+        "natural_spoken_register": "completed: plain EN / JAです・ます / KO합니다체",
+        "numeric_C_types_scope_and_character_budgets": "completed; exact remaining excesses reported"
+      },
+      "independent_review": "root independent EN review plus requested fzz5 delta applied"
+    },
+    "ja": {
+      "path": "/workspace/work/videos/claude-formal-verification-255/i18n/ja.todo.json",
+      "worksheetSHA": "8196e242410ad889165878f77a4e620ce5d7f779769ce9556b7fc2027506b64b",
+      "nontext_skeletonSHA": "91ba590ebc63adb97c7d27da078cd0780f318ba68060558741f1190d0a0c8868",
+      "captions": 105,
+      "chapters": 7,
+      "metadata_fields_complete": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "title": "Claudeの形式検証研究：255から分かるプログラムの保証",
+      "title_chars": 30,
+      "description_body_bytes": 1544,
+      "tags_chars_comma_joined": 41,
+      "max_chars_check": "unresolved; full meanings retained",
+      "within_budget_lines": 104,
+      "over_budget": [
+        {
+          "id": "cawx",
+          "text": "Rocqカーネルはコンパイル時にAIの証明を検査します。",
+          "chars": 28,
+          "max_chars": 22,
+          "excess": 6,
+          "reason": "Rocqカーネル、コンパイル時、AIの証明、検査の四要素とです／ます調を保持したため。"
+        }
+      ],
+      "three_passes": {
+        "semantic_source_comparison": "completed",
+        "natural_spoken_register": "completed: plain EN / JAです・ます / KO합니다체",
+        "numeric_C_types_scope_and_character_budgets": "completed; exact remaining excesses reported"
+      },
+      "independent_review": "pending root assignment; this report is translator self-review"
+    },
+    "ko": {
+      "path": "/workspace/work/videos/claude-formal-verification-255/i18n/ko.todo.json",
+      "worksheetSHA": "cfb509d14a94c35fbbc4c7942be416a89abb77bb8d562b8f4f27615eadc3a13c",
+      "nontext_skeletonSHA": "6c98664fc7ef33a6e353971eee7f5358c23e6bc8e110c1eec897929a622963ec",
+      "captions": 105,
+      "chapters": 7,
+      "metadata_fields_complete": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "title": "Claude 형식 검증 연구: 255로 이해하는 프로그램의 보장",
+      "title_chars": 35,
+      "description_body_bytes": 1524,
+      "tags_chars_comma_joined": 47,
+      "max_chars_check": "unresolved; full meanings retained",
+      "within_budget_lines": 97,
+      "over_budget": [
+        {
+          "id": "zfmi",
+          "text": "오류판은 총길이를 8비트 무부호 정수로 되돌립니다.",
+          "chars": 28,
+          "max_chars": 26,
+          "excess": 2,
+          "reason": "총길이·8비트·무부호 정수·되돌리는 변환을 모두 유지했습니다."
+        },
+        {
+          "id": "wunt",
+          "text": "처음 고른 작은 값 0,1,2,3,4는 다섯 개 모두 예상대로였습니다.",
+          "chars": 39,
+          "max_chars": 25,
+          "excess": 14,
+          "reason": "처음 고른 작은 값 0,1,2,3,4, 다섯 개, 예상과 일치했다는 결과를 모두 유지했습니다."
+        },
+        {
+          "id": "cgit",
+          "text": "입력 0은 한 번 더해 1 반환을 기대합니다.",
+          "chars": 25,
+          "max_chars": 22,
+          "excess": 3,
+          "reason": "입력 0, 한 차례 증가, 반환 1, 예상이라는 성격을 모두 유지했습니다."
+        },
+        {
+          "id": "cawx",
+          "text": "Rocq 커널은 컴파일할 때 AI의 증명을 검사합니다.",
+          "chars": 30,
+          "max_chars": 19,
+          "excess": 11,
+          "reason": "Rocq 커널·컴파일 시점·AI가 쓴 증명·검사를 모두 유지했습니다."
+        },
+        {
+          "id": "7ip9",
+          "text": "공개판은 같은 코드의 일반판과 오류 검사판을 비교하며, 방금의 수정 전후는 아닙니다.",
+          "chars": 47,
+          "max_chars": 39,
+          "excess": 8,
+          "reason": "공개판·같은 프로그램·일반판과 오류검사판·방금의 수정 전후와 다르다는 한정을 유지했습니다."
+        },
+        {
+          "id": "6x7t",
+          "text": "모델상 일반판이 지정 메모리 예산 내인 입력이 전제입니다.",
+          "chars": 32,
+          "max_chars": 28,
+          "excess": 4,
+          "reason": "모델·입력 전제·일반판에만 적용되는 지정 메모리 예산을 모두 유지했습니다."
+        },
+        {
+          "id": "4nfp",
+          "text": "이 공개판의 얘기지 연구 전체가 종료를 안 다뤘다는 뜻은 아닙니다.",
+          "chars": 37,
+          "max_chars": 30,
+          "excess": 7,
+          "reason": "이 공개판에만 한정하며 연구 전체의 종료 미처리로 확대하지 않는 부정을 유지했습니다."
+        },
+        {
+          "id": "3u2q",
+          "text": "둘 다 실제 C 실행과 대조, Rocq 검사기는 미실행입니다.",
+          "chars": 34,
+          "max_chars": 33,
+          "excess": 1,
+          "reason": "두 사례 모두 실제 C 실행과 대조했고 Rocq 검사기는 실행하지 않았다는 대비를 유지했습니다."
+        }
+      ],
+      "three_passes": {
+        "semantic_source_comparison": "completed",
+        "natural_spoken_register": "completed: plain EN / JAです・ます / KO합니다체",
+        "numeric_C_types_scope_and_character_budgets": "completed; exact remaining excesses reported"
+      },
+      "independent_review": "pending root assignment; this report is translator self-review"
+    }
+  },
+  "permissions_and_invariants": {
+    "written_only_assigned_worksheet_text_fields_and_this_scratch_report": true,
+    "initial_text_only_assertions_passed_for_each_locale": true,
+    "ids_scenes_sources_todos_glossary_boundaries_max_chars_parts_unchanged": true,
+    "all_105_ids_and_order_match_current_source": true,
+    "all_105_source_strings_match_current_source": true,
+    "full_description_URL_preserved": true,
+    "thumbnail_three_keys_bold255_and_one_newline_preserved": true,
+    "no_merge": true,
+    "no_paid_audio_or_backend_actions": true,
+    "no_git_source_or_claims_edits": true,
+    "actual_dub_audio_fit_not_tested": true
+  },
+  "glossary_renderings": {
+    "AI": "AI",
+    "Anthropic": "Anthropic",
+    "C": "C; JA C言語; KO C 코드／C 프로그래밍 by context",
+    "Claude": "Claude",
+    "RISC-V": "RISC-V",
+    "Rocq": "Rocq",
+    "SAT": "SAT; propositional SAT／命題SAT／명제 SAT",
+    "loop": "loop as the original code identifier in metadata; loop／循環／순환 in narrative context",
+    "source_names": "Anthropic, Theorem, README and C11 remain in their original official spellings. Worksheet glossary strings themselves were not edited."
+  },
+  "critical_semantic_checks": [
+    "Guard input is 0..255; capacity is 8 bytes; 1 terminator byte is reserved within those 8; acceptance iff 0..7.",
+    "255+1 is computed after integer promotion as int 256; only subsequent unsigned 8-bit narrowing stores 0. Eight bits and eight bytes remain distinct.",
+    "Widened guard preserves the complete value in both calculation/casts and storage; widening after a prior narrowing would still retain 0.",
+    "Only the widened guard has no counterexample in both SAT directions; reject-all is a symbolic comparison, not another executed C variant.",
+    "The guard makes only a Boolean acceptance decision and never writes a data buffer.",
+    "The counter is an independent program. Fixed limit and no outside counter writer permit the 256-step cycle argument; 0.25-second timeout alone proves no nontermination claim.",
+    "Counter declaration and update cast are both widened; every 0..255 input exits and returns limit+1.",
+    "Rocq checks AI-written proofs at compilation; tools bind results to the fixed statement and audit listed assumptions against an allowlist.",
+    "Public formal statements compare normal/error-checked builds of the same program under the normal-build specified memory-budget premise, with equal allowed observable finite-record sets.",
+    "No termination proof is supplied in this public release only; no conclusion that the entire study lacks termination work. Study 123 libraries/239 entries versus public release 60 entries/25 libraries retained.",
+    "Both local examples have actual C comparisons; local enumeration/SAT/control-graph methods are not Rocq reproduction or certification of the whole application.",
+    "Full description paragraphs, pinned original-code/results URL, and original-SVG provenance retained; thumbnails retain **255** and the source newline."
+  ],
+  "critique_findings_and_final_fixes": [
+    "EN wunt, 6a2b, w9b4: initial small budget excesses shortened without removing numeric values or the acceptance obligation; final EN 105/105 fit.",
+    "EN description/4nfp: phrasing keeps the absent halts proof restricted to this public release and avoids inferring a study-wide absence.",
+    "EN fzz5: root independently requested “Capacity is 8 bytes; reserve 1 byte for the terminator.” Applied as the sole EN delta after root-reviewed snapshot 24f084fb3e9975f09e1fc60f57818d4eedcade0027f90d659725f4234bb8316c.",
+    "JA/KO fzz5 and local-description paragraph: explicitly reserve the terminator byte within the stated 8-byte capacity.",
+    "JA qmcd: explicitly names the 8-bit counter; kq36 explicitly says 256 steps; Rocqカーネル terminology kept consistent.",
+    "JA wunt: retained 0,1,2,3,4 and five small selected values while shortening to 29 characters.",
+    "KO: own spoken/semantic shortening reduced initial 61 budget excesses to 8; complete assumptions, numbers, negations and release scope retained in the remaining over-budget lines.",
+    "No independent review of JA/KO was commissioned; root will assign cross-review."
+  ],
+  "root_EN_independent_review": {
+    "path": "/workspace/work/ai-tech-next/formal-en-root-independent-review.json",
+    "fileSHA": "6bddd13b785ce12fea9fc7144f77a1b360c59b2d5465f957c71f54af6d2705ee",
+    "reviewed_snapshotSHA": "24f084fb3e9975f09e1fc60f57818d4eedcade0027f90d659725f4234bb8316c",
+    "requested_final_delta": "fzz5 text only, applied exactly",
+    "final_worksheetSHA": "03bc2d9cc223484a4593ff3f0a97152cc396bd604e5da300f24d95ecb4d8d7e3",
+    "status": "complete per root instruction, bound to the reviewed snapshot plus the requested delta"
+  },
+  "unresolved_count": 9
+}

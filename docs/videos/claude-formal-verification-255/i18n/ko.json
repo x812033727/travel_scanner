@@ -1,0 +1,464 @@
+{
+  "title": "Claude 형식 검증 연구: 255로 이해하는 프로그램의 보장",
+  "description": "용량이 8바이트뿐인데 왜 길이 255를 허용할까요? 조건을 명확히 쓰고, 실제 C 예제 두 개를 수정해 결과를 대조합니다.\nAI가 작성한 프로그램 증명을 이해하고 싶거나 AI에 코드 수정을 맡기는 분을 위해, 유효 입력의 허용과 실행 종료를 구분해 재실행 가능한 기록으로 남깁니다.\n\n2026-10-22, Anthropic과 Theorem이 공동 연구를 공개했습니다. 연구 보고는 진입점 239개／라이브러리 123개를 다루며, 이 영상이 인용하는 공개 release는 진입점 60개／라이브러리 25개입니다. halts 명제의 증명이 없다는 설명은 해당 공개 release에만 한정하며, 연구 전체로 확대하지 않습니다.\n\n이 영상의 독자적인 로컬 guard는 n=0..255, 용량 8바이트 중 종료자용 1바이트를 남겨야 합니다. 허용 판정만 실행합니다. 별도의 독립 프로그램으로 계수 후 반환을 검사합니다. 실제 C 실행, 전수 열거, guard의 명제 SAT, loop의 유한 제어 그래프를 사용했으며, 공급자의 Rocq checker는 실행하지 않았습니다.\n\n직접 작성한 C 코드, 실행 결과 및 전체 출처 자료 묶음: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n직접 만든 SVG는 프로그램 결과와 공식 절차를 바탕으로 이 영상용으로 다시 그렸습니다. 제품 조작 화면을 가장한 것이 아닙니다.",
+  "tags": [
+    "Claude",
+    "형식 검증",
+    "프로그램 증명",
+    "Theorem",
+    "Rocq",
+    "C 프로그래밍",
+    "AI 기술"
+  ],
+  "thumbnail": {
+    "tag": "Claude 형식 검증",
+    "headline": "**255**\n통과?",
+    "sub": "용량 8인데 허용"
+  },
+  "chapters": {
+    "capacity-accepts-255": "로컬 판정이 255를 허용하다",
+    "research-published": "허용할 길이를 기록하다",
+    "which-line-to-fix": "256을 보존해 제대로 거부하다",
+    "deny-all-two-directions": "전부 거부하면 유효 입력도 막힌다",
+    "independent-counter": "반환란에서 만난 순환",
+    "fix-proof-object": "기록을 형식적 증명 조건과 맞추다",
+    "completed-repair-record": "나의 요구를 기록하다"
+  },
+  "source_hashes": {
+    "chapters": {
+      "capacity-accepts-255": "1edec6460faf",
+      "research-published": "b9cbfb707fc5",
+      "which-line-to-fix": "f262b006fc8b",
+      "deny-all-two-directions": "674fcccac2dc",
+      "independent-counter": "cc8b520b8c1e",
+      "fix-proof-object": "3a178f11392d",
+      "completed-repair-record": "e9b10d121112"
+    },
+    "title": "a5726411c90f",
+    "description": "b51dff023429",
+    "tags": "b9a93e92a3ea",
+    "thumbnail": "4a13ca08da95"
+  },
+  "lines": {
+    "zfgp": {
+      "source_hash": "51ad6a8effbf",
+      "text": "2026년 10월 25일, 제 프로그램은 용량이 8바이트인데 길이 255를 허용합니까?"
+    },
+    "z9dp": {
+      "source_hash": "11c849209e8c",
+      "text": "기록엔 오허용 금지뿐, 전부 거부해도 완료일까요?"
+    },
+    "bpnn": {
+      "source_hash": "d5b6e86e4a26",
+      "text": "기록엔 반환도 필요합니다. 다른 계수 코드는 종료할까요?"
+    },
+    "c8r2": {
+      "source_hash": "d08593484c6f",
+      "text": "같은 요구로 AI가 쓴 증명, 누가 검수합니까?"
+    },
+    "qwaw": {
+      "source_hash": "87ec5f62a39d",
+      "text": "이 기록은 10월 22일 Claude 연구의 검수 문제에 답합니다."
+    },
+    "4rff": {
+      "source_hash": "1043928fb4f5",
+      "text": "시험 요구를 검증할 명제로 만듭니다."
+    },
+    "5i5d": {
+      "source_hash": "c91a6afcaf84",
+      "text": "자작 C 코드로 먼저 허용 판정 행을 채웁니다."
+    },
+    "jeaj": {
+      "source_hash": "061da398672e",
+      "text": "입력은 데이터 길이로, 0~255입니다."
+    },
+    "fzz5": {
+      "source_hash": "f8a3ef316a7b",
+      "text": "8바이트 용량 중 종료자용 1바이트를 남깁니다."
+    },
+    "kkef": {
+      "source_hash": "613b93ef6e5d",
+      "text": "입력 길이 더하기 1이 8 이하여야 허용합니다."
+    },
+    "m7xu": {
+      "source_hash": "beccf431c07d",
+      "text": "길이 7+1=8은 허용, 길이 8+1=9는 거부합니다."
+    },
+    "axkg": {
+      "source_hash": "81fdf48fed5f",
+      "text": "0도 종료자 포함 1바이트라 유효합니다."
+    },
+    "r79s": {
+      "source_hash": "fc014520652f",
+      "text": "기록상 허용 범위는 0~7입니다."
+    },
+    "p2uy": {
+      "source_hash": "195732bdedff",
+      "text": "그럼 처음의 255는 왜 통과했을까요?"
+    },
+    "vwiq": {
+      "source_hash": "21a409869e52",
+      "text": "총길이 계산을 보면 255 더하기 1은 먼저 256입니다."
+    },
+    "5iky": {
+      "source_hash": "6a0926451df1",
+      "text": "int 승격 후 더하며, 바로 0이 되진 않습니다."
+    },
+    "zfmi": {
+      "source_hash": "1261dadf89b8",
+      "text": "오류판은 합계를 8비트 무부호 정수로 돌립니다."
+    },
+    "3mpx": {
+      "source_hash": "d42e2f0ee585",
+      "text": "이 자료형은 0~255만 저장할 수 있습니다."
+    },
+    "tew5": {
+      "source_hash": "d9d811112416",
+      "text": "256을 다시 변환하면 저장값은 0입니다."
+    },
+    "femu": {
+      "source_hash": "220318e06cd5",
+      "text": "0과 용량 8을 비교해 통과로 봅니다."
+    },
+    "64pm": {
+      "source_hash": "c7c9badc100f",
+      "text": "8비트는 자료형, 8바이트는 용량입니다."
+    },
+    "2yfh": {
+      "source_hash": "5416bd8e701a",
+      "text": "변환·저장이 문제입니다. 두 8은 다릅니다."
+    },
+    "mvnc": {
+      "source_hash": "6c298111610c",
+      "text": "반례를 적었습니다. 어느 줄이 총길이를 온전히 남길까요?"
+    },
+    "936d": {
+      "source_hash": "ae981efaab7e",
+      "text": "계산값을 보존하고 총길이를 16비트 무부호 정수로 저장합니다."
+    },
+    "s57e": {
+      "source_hash": "79e31dd724e4",
+      "text": "먼저 8비트로 줄여 넓은 형에 저장해도, 0은 여전히 0입니다."
+    },
+    "yavq": {
+      "source_hash": "e66bc8925e43",
+      "text": "이 줄 전체의 계산과 총길이 저장 변환을 함께 고칩니다."
+    },
+    "ij57": {
+      "source_hash": "0c80420a8b4f",
+      "text": "입력 255에 1을 더해도 256이 유지됩니다."
+    },
+    "mfag": {
+      "source_hash": "1a6522a29e00",
+      "text": "용량 8을 넘어 이제 거부를 반환합니다."
+    },
+    "vkym": {
+      "source_hash": "e673cce257c4",
+      "text": "유효 길이 7은요? 1 더한 8은 여전히 허용합니다."
+    },
+    "84hx": {
+      "source_hash": "3b26fcf9b4a7",
+      "text": "두 사례만으로 중간 오류도 없다고 알까요?"
+    },
+    "wunt": {
+      "source_hash": "ecba87fb6974",
+      "text": "처음 고른 작은 0,1,2,3,4 다섯 값은 다 예상대로입니다."
+    },
+    "a7te": {
+      "source_hash": "e578ae9a58a1",
+      "text": "0~255를 전부 나열해야 전체 범위를 대조합니다."
+    },
+    "dfhy": {
+      "source_hash": "2671499a63a4",
+      "text": "오류판이 더 허용한 값은 255뿐, 확장판은 0~7만 허용합니다."
+    },
+    "zgkb": {
+      "source_hash": "371c593fcf07",
+      "text": "같은 입력을 8개 불리언 비트로 나타내는 풀이 모델을 기록에 더합니다."
+    },
+    "5waf": {
+      "source_hash": "458b210e1f7d",
+      "text": "명제 풀이기로 부적합한 길이를 허용하는 반례를 찾습니다."
+    },
+    "unr8": {
+      "source_hash": "617c2e811777",
+      "text": "참·거짓 조건들이 동시에 성립하는지 찾는 방법이 명제 SAT입니다."
+    },
+    "gtuj": {
+      "source_hash": "e037da4e41bb",
+      "text": "오류판은 255, 확장판엔 그런 반례가 없습니다."
+    },
+    "56e4": {
+      "source_hash": "df688c85d423",
+      "text": "유효 길이 거부도 묻지만 수정판엔 반례가 없습니다."
+    },
+    "tksv": {
+      "source_hash": "b2fd3228b90d",
+      "text": "모델과 실제 C 실행 결과를 하나씩 대조하니 256개가 모두 일치합니다."
+    },
+    "2zma": {
+      "source_hash": "e8e85c6af839",
+      "text": "범위가 작아 전수 시험도 되며, 풀이기가 답을 더하진 않습니다."
+    },
+    "4bqi": {
+      "source_hash": "252be5155496",
+      "text": "기록이 부적합 입력만 막으면 전부 거부해도 납품되나요?"
+    },
+    "xfvp": {
+      "source_hash": "4b6db1295170",
+      "text": "단방향 조건상 전부 거부하면 부적합 입력은 막습니다."
+    },
+    "cabc": {
+      "source_hash": "d956e6235b37",
+      "text": "하지만 길이 0~7도 하나도 못 통과합니다."
+    },
+    "jhkm": {
+      "source_hash": "a9f687dfe5f3",
+      "text": "비교는 기호 모델 계산이며 별도 C 실행은 아닙니다."
+    },
+    "e6wk": {
+      "source_hash": "f81aaebebd68",
+      "text": "잘못 허용한 건 0개, 잘못 거부한 건 8개입니다."
+    },
+    "7d4v": {
+      "source_hash": "61b2cb398b62",
+      "text": "잘못 허용만 막으면 코드는 전부 거부로 때웁니다."
+    },
+    "6a2b": {
+      "source_hash": "9ae03adb435e",
+      "text": "유효 입력 허용 의무도 검사 조건에 넣으세요."
+    },
+    "4akm": {
+      "source_hash": "2f806baf75ba",
+      "text": "양방향 조건은 0~7 전부 허용, 다른 길이는 전부 거부입니다."
+    },
+    "w9b4": {
+      "source_hash": "46ba75e0d185",
+      "text": "첫 단방향 기록엔 유효 입력 허용도 필수입니다."
+    },
+    "dkjy": {
+      "source_hash": "5173b4f1b49d",
+      "text": "납품은 허용 판정이며 코드는 데이터 버퍼에 안 씁니다."
+    },
+    "8ywa": {
+      "source_hash": "a0c466fb0042",
+      "text": "확장판의 오허용·오거부 두 결과를 0으로 적습니다."
+    },
+    "xh98": {
+      "source_hash": "fe37ccbc7c85",
+      "text": "허용 판정 완료, 다른 행엔 반환 검수가 남았습니다."
+    },
+    "idga": {
+      "source_hash": "ae8256662823",
+      "text": "반환란을 어떻게 대조 가능한 요구로 채울까요?"
+    },
+    "u2xw": {
+      "source_hash": "7c424d942fba",
+      "text": "독립 계수 코드로 반환란을 채우며 입력은 상한입니다."
+    },
+    "p4u6": {
+      "source_hash": "ec08985f14bf",
+      "text": "상한은 계속 0~255, 카운터는 0부터입니다."
+    },
+    "v9sd": {
+      "source_hash": "836ec578fb98",
+      "text": "카운터가 상한 이하면 1을 더하고, 아니면 나갑니다."
+    },
+    "riuf": {
+      "source_hash": "db172bc80117",
+      "text": "횟수는 상한 더하기 1, 반환값도 같아야 합니다."
+    },
+    "cgit": {
+      "source_hash": "c76f55e16961",
+      "text": "0은 1씩 1회 더해 1 반환 예상입니다"
+    },
+    "y326": {
+      "source_hash": "b9fcf61439c5",
+      "text": "입력7은 1씩 8번 더해 8 반환 예상입니다."
+    },
+    "qmcd": {
+      "source_hash": "9920f81d6dfc",
+      "text": "오류판은 8비트 카운터로, 상한 254면 255에서 나갑니다."
+    },
+    "b3r9": {
+      "source_hash": "92d99ed278ce",
+      "text": "상한이 255면 도구가 0.25초 뒤 실행을 중단했습니다."
+    },
+    "ijcq": {
+      "source_hash": "9ca16efd3147",
+      "text": "안 끝날까요, 덜 기다린 걸까요?"
+    },
+    "ihny": {
+      "source_hash": "2b1076d364b1",
+      "text": "이번 대기 상한 초과만으론 영원히 안 끝난다고 단정 못 합니다."
+    },
+    "4jzv": {
+      "source_hash": "2cc53f409e78",
+      "text": "매 상태와 다음 이동도 봐야 합니다."
+    },
+    "kfft": {
+      "source_hash": "a8d29d4c4a87",
+      "text": "상한은 고정, 카운터 외부 변경도 없습니다."
+    },
+    "58rm": {
+      "source_hash": "8061c9874100",
+      "text": "8비트 카운터는 0~255까지 간 뒤 다시 0이 됩니다."
+    },
+    "mjsr": {
+      "source_hash": "8fc664ffa3ea",
+      "text": "조건은 성립하고 상한도 그대로라, 같은 순환을 반복합니다."
+    },
+    "kq36": {
+      "source_hash": "507103f421d2",
+      "text": "전체 제어 그래프의 256단계 순환으로 모델은 못 나갑니다."
+    },
+    "qjaw": {
+      "source_hash": "6943c6c30477",
+      "text": "시간 초과는 실행 관찰, 제어 그래프의 근거는 순환입니다."
+    },
+    "h6n5": {
+      "source_hash": "76b3d1c35566",
+      "text": "다 세고 나가려면 어디에 한 칸 더 필요할까요?"
+    },
+    "p8te": {
+      "source_hash": "1f31f5bf394f",
+      "text": "카운터와 해당 변환을 16비트 무부호 정수로 바꿉니다."
+    },
+    "ghs2": {
+      "source_hash": "44c693ffa379",
+      "text": "255에 1을 더해도 이번엔 256을 보존합니다."
+    },
+    "9mxr": {
+      "source_hash": "f9c3102691d9",
+      "text": "256이 상한 넘어 조건 불성립, 나가며 이를 반환합니다."
+    },
+    "ey22": {
+      "source_hash": "ab81b657c3e3",
+      "text": "반환란의 결과입니다. 모든 입력에서 종료하고 상한 더하기 1을 반환합니다."
+    },
+    "5feu": {
+      "source_hash": "77c4be3bf068",
+      "text": "반환값과 종료 조건은 같은 행에 칸을 나눠 적습니다."
+    },
+    "rsx8": {
+      "source_hash": "703de6633c3c",
+      "text": "허용·반환을 나눈 기록, Claude 연구 증명도 같은 요구를 검사하나요?"
+    },
+    "zg4q": {
+      "source_hash": "a7b37d0a21b6",
+      "text": "기록을 형식적 증명과 대조할 땐 코드 버전, 명제, 실행 모델을 고정합니다."
+    },
+    "wzn2": {
+      "source_hash": "0e7058e63ce9",
+      "text": "공개판의 대상은 컴파일된 RISC-V 바이너리입니다."
+    },
+    "cawx": {
+      "source_hash": "f47af9bb57ae",
+      "text": "Rocq 커널은 컴파일할 때 AI의 증명을 검사합니다."
+    },
+    "uqde": {
+      "source_hash": "9df86b875f32",
+      "text": "도구는 결과·고정 명제를 대조하고 쓴 가정을 나열합니다."
+    },
+    "5fga": {
+      "source_hash": "3037ed1a4bcf",
+      "text": "사용한 가정도 허용 목록 감사를 통과해야 합니다."
+    },
+    "wi26": {
+      "source_hash": "f1b584773e69",
+      "text": "첫 검수 문제는 Rocq 커널과 도구의 명제·가정 검사에 달렸습니다."
+    },
+    "nzaz": {
+      "source_hash": "c5297adfa2e6",
+      "text": "컴파일된다고 목표 달성은 아닙니다. 뭘 증명할까요?"
+    },
+    "7ip9": {
+      "source_hash": "2091612eccbf",
+      "text": "공개판은 같은 코드의 일반·오류 검사판 비교이며 수정 전후는 아닙니다."
+    },
+    "6x7t": {
+      "source_hash": "a130679b15cc",
+      "text": "모델상 일반판이 지정 메모리 한도를 지킬 입력만 봅니다."
+    },
+    "5u3j": {
+      "source_hash": "4178cb1c03d9",
+      "text": "그 전제면 양쪽에 지정 오류가 없습니다."
+    },
+    "cnnu": {
+      "source_hash": "c0ffe8d60c16",
+      "text": "유한한 동작 기록에는 이미 출력한 글도 포함됩니다."
+    },
+    "fwc2": {
+      "source_hash": "f9564955e189",
+      "text": "두 판의 관찰 기록 허용 집합은 같아야 합니다."
+    },
+    "e7pc": {
+      "source_hash": "b42411054a81",
+      "text": "동작이 같으면 반드시 종료한다는 보장도 될까요?"
+    },
+    "3jaw": {
+      "source_hash": "aae859832b95",
+      "text": "아니요. 이 공개판엔 종료 명제 증명이 없습니다."
+    },
+    "e2mj": {
+      "source_hash": "23946a0cdb79",
+      "text": "종료 보장엔 종료 명제를 따로 증명해야 합니다."
+    },
+    "4nfp": {
+      "source_hash": "5fbfa4be8c60",
+      "text": "이 공개판 한정이지 연구 전체가 종료를 안 다뤘단 뜻은 아닙니다."
+    },
+    "cr5k": {
+      "source_hash": "3bbfdf53bd0b",
+      "text": "공식 보고는 123개 라이브러리·239개 진입점입니다."
+    },
+    "b7jg": {
+      "source_hash": "75b294425df2",
+      "text": "현재 공개판은 진입점 60개로, 라이브러리 25개에서 나왔습니다."
+    },
+    "i2pt": {
+      "source_hash": "cb96d246e7c3",
+      "text": "기록에는 버전도 적고 연구 총량과 현재 공개판은 따로 적습니다."
+    },
+    "te3s": {
+      "source_hash": "7ebd5fca5887",
+      "text": "기록에 검사법도 더해 납품물의 차이를 봅니다."
+    },
+    "iest": {
+      "source_hash": "4db58281622c",
+      "text": "허용은 전수 열거·명제 풀이, 반환은 유한 제어 그래프로 검사합니다."
+    },
+    "3u2q": {
+      "source_hash": "0e12f29539db",
+      "text": "둘 다 실제 C 실행과 대조, Rocq 검사는 안 했습니다."
+    },
+    "ucn4": {
+      "source_hash": "11074012ccac",
+      "text": "제 결과는 이 로컬 두 예제뿐, 앱 전체 인증은 아닙니다."
+    },
+    "bt2j": {
+      "source_hash": "3662e46316cc",
+      "text": "기록에는 총길이 수정과 카운터 선언·갱신식 수정을 나눠 표시합니다."
+    },
+    "mj65": {
+      "source_hash": "934a8f87c333",
+      "text": "재실행은 버전 확인 뒤 예상·실측을 같은 행에 둡니다."
+    },
+    "edry": {
+      "source_hash": "8446fe5f59b9",
+      "text": "수정판을 다른 구판 답과 대조하지 않습니다."
+    },
+    "mhjn": {
+      "source_hash": "e31cafa64480",
+      "text": "검수 조건을 명시합니다."
+    },
+    "87s6": {
+      "source_hash": "fc5be78815da",
+      "text": "AI로 코딩하는 상황을 댓글로 나눠 주세요."
+    },
+    "22tu": {
+      "source_hash": "7102028b107c",
+      "text": "구독하고 실제 결과로 AI 연구를 함께 이해합시다."
+    }
+  }
+}

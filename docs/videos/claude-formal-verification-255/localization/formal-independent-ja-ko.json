@@ -1,0 +1,400 @@
+{
+  "kind": "independent review by non-translator; fixes only; no worksheet/source edits",
+  "at": "2026-10-25T21:41:00.695298+00:00",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+  "speech_hash": "8028c7320d9cab29",
+  "read_scope": "all105 source/caption pairs per locale,7chapters,title,full description,tags,3thumbnail fields,worksheet glossary/boundary and original translator self-report",
+  "passes": [
+    "meaning/number/name/negation/condition/scope comparison",
+    "naturalness and formal terminology",
+    "static max_chars and read-only native metadata composition; no actual dub-fit claim"
+  ],
+  "locales": {
+    "ja": {
+      "worksheet_sha256": "8196e242410ad889165878f77a4e620ce5d7f779769ce9556b7fc2027506b64b",
+      "lines_read": 105,
+      "chapters_read": 7,
+      "metadata_all_read": true,
+      "original_over": [
+        {
+          "id": "cawx",
+          "chars": 28,
+          "max_chars": 22
+        }
+      ],
+      "fixes": [
+        {
+          "id": "bpnn",
+          "kind": "meaning",
+          "proposed": "記録の戻り欄も埋めます。別の計数プログラムは本当に終了しますか？",
+          "reason": "原文要填的是返回行為/欄位，不只返回值。現譯戻り値把紀錄縮成值；改回戻り欄並保留另一支計數程式是否真的退出。",
+          "current": "記録には戻り値も必要です。別の計数プログラムは終了しますか？",
+          "source": "紀錄還要填返回，另一個計數程式真的會離開嗎？",
+          "current_chars": 30,
+          "proposed_chars": 32,
+          "max_chars": 37,
+          "fits_static": true
+        },
+        {
+          "id": "c8r2",
+          "kind": "meaning",
+          "proposed": "同じ要件の証明をAIが書いた後、誰が検収しますか？",
+          "reason": "AI寫出待驗收證明，不等於要件已被AI成功證明。保留同一要件、AI作者、之後誰驗收，避免先宣稱證明成立。",
+          "current": "同じ要件をAIが証明した後、誰が検収しますか？",
+          "source": "同一個要求，AI寫出證明後，又交給誰驗收？",
+          "current_chars": 23,
+          "proposed_chars": 25,
+          "max_chars": 33,
+          "fits_static": true
+        },
+        {
+          "id": "cgit",
+          "kind": "numeric_step",
+          "proposed": "入力0は1を1回足し、1を返す想定です。",
+          "reason": "原句明說輸入0、加1一次、預期返回1。1回加算只保留次數，補回每次增量1；不是修改原規則。",
+          "current": "入力0では1回加算し、1を返す想定です。",
+          "source": "輸入零，預期做一次加一，返回一。",
+          "current_chars": 20,
+          "proposed_chars": 20,
+          "max_chars": 25,
+          "fits_static": true
+        },
+        {
+          "id": "y326",
+          "kind": "numeric_step",
+          "proposed": "入力7は1を8回足し、8を返す想定です。",
+          "reason": "原句明說輸入7、加1八次、預期返回8。補回每次增量1，保留8次和返回8。",
+          "current": "入力7では8回加算し、8を返す想定です。",
+          "source": "輸入七，預期做八次加一，返回八。",
+          "current_chars": 20,
+          "proposed_chars": 20,
+          "max_chars": 29,
+          "fits_static": true
+        },
+        {
+          "id": "zg4q",
+          "kind": "glossary",
+          "proposed": "記録と形式的な証明を照合するには、コードの版、命題、動作モデルを固定します。",
+          "reason": "此處是formal proof。正式な偏正式/官方身分，形式的な對齊形式驗證語境；程式版、命題、模型全部保留。",
+          "current": "記録と正式な証明を照合するには、コードの版、命題、動作モデルを固定します。",
+          "source": "把紀錄對回正式證明時，程式版本、命題和運作模型都要固定。",
+          "current_chars": 37,
+          "proposed_chars": 38,
+          "max_chars": 49,
+          "fits_static": true
+        },
+        {
+          "id": "chapter:fix-proof-object",
+          "kind": "metadata_glossary",
+          "proposed": "記録を形式的な証明の条件と照合",
+          "reason": "章名同樣採形式的な証明，與標題形式検証及zg4q一致。",
+          "current": "記録を正式な証明の条件と照合",
+          "source": "紀錄對上正式證明的條件",
+          "current_chars": 14,
+          "proposed_chars": 15,
+          "max_chars": null,
+          "fits_static": true
+        },
+        {
+          "id": "cawx",
+          "kind": "budget",
+          "proposed": "Rocqカーネルはコンパイル時にAIの証明を検査します。",
+          "reason": "現句28/22，完整保留Rocq/kernel/compile/AI證明/檢查。沒有找到在22字內同時自然ですます且保留全部條件的可靠候選；保全文，靜態預算未解。",
+          "unresolved": true,
+          "alternative": "Rocqカーネルはコンパイル時にAI作の証明を検査します。",
+          "current": "Rocqカーネルはコンパイル時にAIの証明を検査します。",
+          "source": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "current_chars": 28,
+          "proposed_chars": 28,
+          "max_chars": 22,
+          "fits_static": false,
+          "alternative_chars": 29
+        }
+      ],
+      "unresolved_after_proposals": [
+        "cawx"
+      ],
+      "no_source_latin_names_missing": true,
+      "url_emphasis_boundary_check": "exact pinned source URL retained; **255** and newline retained; date clause first",
+      "native_metadata_check": {
+        "description_bytes": 3107,
+        "credit_lines": 10,
+        "chapters": 7,
+        "field_limits": []
+      },
+      "verdict": "ready after semantic/terminology fixes and remaining static-budget conflicts are resolved; no dub or M4A ready claim"
+    },
+    "ko": {
+      "worksheet_sha256": "cfb509d14a94c35fbbc4c7942be416a89abb77bb8d562b8f4f27615eadc3a13c",
+      "lines_read": 105,
+      "chapters_read": 7,
+      "metadata_all_read": true,
+      "original_over": [
+        {
+          "id": "zfmi",
+          "chars": 28,
+          "max_chars": 26
+        },
+        {
+          "id": "wunt",
+          "chars": 39,
+          "max_chars": 25
+        },
+        {
+          "id": "cgit",
+          "chars": 25,
+          "max_chars": 22
+        },
+        {
+          "id": "cawx",
+          "chars": 30,
+          "max_chars": 19
+        },
+        {
+          "id": "7ip9",
+          "chars": 47,
+          "max_chars": 39
+        },
+        {
+          "id": "6x7t",
+          "chars": 32,
+          "max_chars": 28
+        },
+        {
+          "id": "4nfp",
+          "chars": 37,
+          "max_chars": 30
+        },
+        {
+          "id": "3u2q",
+          "chars": 34,
+          "max_chars": 33
+        }
+      ],
+      "fixes": [
+        {
+          "id": "zfgp",
+          "kind": "naturalness",
+          "proposed": "2026년 10월 25일, 제 프로그램은 용량이 8바이트인데 길이 255를 허용합니까?",
+          "reason": "保留完整日期、我的程式、容量8byte、長度255及驚訝問句；허용합니다?是陳述尾加問號，改正式自然疑問尾허용합니까。",
+          "current": "2026년 10월 25일, 제 프로그램은 용량이 8바이트인데 길이 255를 허용합니다?",
+          "source": "二〇二六年十月二十五日，我的程式容量八位元組，卻接受長度二百五十五？",
+          "current_chars": 48,
+          "proposed_chars": 48,
+          "max_chars": 53,
+          "fits_static": true
+        },
+        {
+          "id": "c8r2",
+          "kind": "meaning",
+          "proposed": "같은 요구로 AI가 쓴 증명, 누가 검수합니까?",
+          "reason": "把AI가 증명한 뒤已證明改為AI가 쓴 증명寫出的證明；保留同一要求、AI作者、驗收者，不先宣稱候選已成立。",
+          "current": "같은 요구를 AI가 증명한 뒤, 누가 검수할까요?",
+          "source": "同一個要求，AI寫出證明後，又交給誰驗收？",
+          "current_chars": 27,
+          "proposed_chars": 26,
+          "max_chars": 28,
+          "fits_static": true
+        },
+        {
+          "id": "84hx",
+          "kind": "meaning_clarity",
+          "proposed": "두 사례만으로 중간 오류도 없다고 알까요?",
+          "reason": "保留只看兩筆的限制與是否足以知道中間沒有錯的提問。現句두 사례로...배제할까요容易像建議排除錯誤，且少了只的限制。",
+          "current": "두 사례로 사이의 다른 오류도 배제할까요?",
+          "source": "但只看這兩筆，怎麼確認中間沒有別的錯？",
+          "current_chars": 23,
+          "proposed_chars": 23,
+          "max_chars": 26,
+          "fits_static": true
+        },
+        {
+          "id": "s57e",
+          "kind": "type_clarity",
+          "proposed": "먼저 8비트로 줄여 넓은 형에 저장해도, 0은 여전히 0입니다.",
+          "reason": "큰 변수容易理解為數值很大；改넓은 형明指加寬型別。先縮8bit、再存入較寬型別、0仍為0的順序全保留。",
+          "current": "먼저 8비트로 줄여 큰 변수에 저장해도, 0은 여전히 0입니다.",
+          "source": "如果先把結果縮回八位元，再存進加寬的變數，零仍然是零。",
+          "current_chars": 35,
+          "proposed_chars": 35,
+          "max_chars": 37,
+          "fits_static": true
+        },
+        {
+          "id": "cgit",
+          "kind": "numeric_step_budget",
+          "proposed": "0은 1씩 1회 더해 1 반환 예상입니다",
+          "reason": "補明每次+1、1次、預期返回1。0作本段已定義輸入值的主題，並非刪除輸入條件；保留예상。完整합니다體，無句末句號，22/22。",
+          "current": "입력 0은 한 번 더해 1 반환을 기대합니다.",
+          "source": "輸入零，預期做一次加一，返回一。",
+          "current_chars": 25,
+          "proposed_chars": 22,
+          "max_chars": 22,
+          "fits_static": true
+        },
+        {
+          "id": "y326",
+          "kind": "numeric_step",
+          "proposed": "입력7은 1씩 8번 더해 8 반환 예상입니다.",
+          "reason": "保留輸入7、每次+1、8次、預期返回8，25/25；原句只寫8次加算未明說增量1。",
+          "current": "입력 7은 8회 더해 8 반환을 예상합니다.",
+          "source": "輸入七，預期做八次加一，返回八。",
+          "current_chars": 24,
+          "proposed_chars": 25,
+          "max_chars": 25,
+          "fits_static": true
+        },
+        {
+          "id": "zg4q",
+          "kind": "glossary",
+          "proposed": "기록을 형식적 증명과 대조할 땐 코드 버전, 명제, 실행 모델을 고정합니다.",
+          "reason": "用형식적 증명對齊formal proof，不是정식的正式身分；完整保留版號/命題/模型，42/42。",
+          "current": "기록을 정식 증명과 대조할 땐 코드 버전, 명제, 실행 모델을 고정합니다.",
+          "source": "把紀錄對回正式證明時，程式版本、命題和運作模型都要固定。",
+          "current_chars": 41,
+          "proposed_chars": 42,
+          "max_chars": 42,
+          "fits_static": true
+        },
+        {
+          "id": "chapter:fix-proof-object",
+          "kind": "metadata_glossary",
+          "proposed": "기록을 형식적 증명 조건과 맞추다",
+          "reason": "章名與標題형식 검증及zg4q的formal術語一致。",
+          "current": "기록을 정식 증명 조건과 맞추다",
+          "source": "紀錄對上正式證明的條件",
+          "current_chars": 17,
+          "proposed_chars": 18,
+          "max_chars": null,
+          "fits_static": true
+        },
+        {
+          "id": "zfmi",
+          "kind": "budget",
+          "proposed": "오류판은 합계를 8비트 무부호 정수로 돌립니다.",
+          "reason": "합계承接前文總長，保留錯版、轉回8bit無號整數。只縮總長的同義稱呼與動詞，26/26。",
+          "current": "오류판은 총길이를 8비트 무부호 정수로 되돌립니다.",
+          "source": "錯版卻把總長，轉回八位元無號整數。",
+          "current_chars": 28,
+          "proposed_chars": 26,
+          "max_chars": 26,
+          "fits_static": true
+        },
+        {
+          "id": "wunt",
+          "kind": "budget",
+          "proposed": "처음 고른 작은 0,1,2,3,4 다섯 값은 다 예상대로입니다.",
+          "reason": "保留最初選取、五個小值、0/1/2/3/4、全符合預期；35/25仍超10，不能靠刪列舉、五個、小值或初選資訊硬塞。",
+          "unresolved": true,
+          "current": "처음 고른 작은 값 0,1,2,3,4는 다섯 개 모두 예상대로였습니다.",
+          "source": "我原先選零、一、二、三、四，五個小值都符合預期。",
+          "current_chars": 39,
+          "proposed_chars": 35,
+          "max_chars": 25,
+          "fits_static": false
+        },
+        {
+          "id": "cawx",
+          "kind": "budget",
+          "proposed": "Rocq 커널은 컴파일할 때 AI의 증명을 검사합니다.",
+          "reason": "現句30/19。保留Rocq/kernel/編譯時/AI證明/檢查，未找到19字內自然且完整候選；保留全文，不用刪AI或編譯條件換取字數。",
+          "unresolved": true,
+          "alternative": "컴파일 시 Rocq 커널이 AI가 쓴 증명을 검사합니다.",
+          "current": "Rocq 커널은 컴파일할 때 AI의 증명을 검사합니다.",
+          "source": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "current_chars": 30,
+          "proposed_chars": 30,
+          "max_chars": 19,
+          "fits_static": false,
+          "alternative_chars": 31
+        },
+        {
+          "id": "7ip9",
+          "kind": "budget",
+          "proposed": "공개판은 같은 코드의 일반·오류 검사판 비교이며 수정 전후는 아닙니다.",
+          "reason": "保留公開版、同一程式、一般與錯誤檢查兩建置、不是修正前後；39/39。只省同段已明白的剛才回呼，沒有把兩建置說成兩份相同binary。",
+          "current": "공개판은 같은 코드의 일반판과 오류 검사판을 비교하며, 방금의 수정 전후는 아닙니다.",
+          "source": "公開版比較同一程式的一般版與錯誤檢查版，並非剛才的修正前後。",
+          "current_chars": 47,
+          "proposed_chars": 39,
+          "max_chars": 39,
+          "fits_static": true
+        },
+        {
+          "id": "6x7t",
+          "kind": "budget",
+          "proposed": "모델상 일반판이 지정 메모리 한도를 지킬 입력만 봅니다.",
+          "reason": "完整保留模型、一般版、指定記憶體預算及限制於讓一般版不超預算的輸入；31/28仍超3。不得縮成輸入大小本身低於記憶體上限。",
+          "unresolved": true,
+          "current": "모델상 일반판이 지정 메모리 예산 내인 입력이 전제입니다.",
+          "source": "在系統模型內，輸入須讓一般版不超過指定記憶體預算。",
+          "current_chars": 32,
+          "proposed_chars": 31,
+          "max_chars": 28,
+          "fits_static": false
+        },
+        {
+          "id": "4nfp",
+          "kind": "budget",
+          "proposed": "이 공개판 한정이지 연구 전체가 종료를 안 다뤘단 뜻은 아닙니다.",
+          "reason": "保留這份公開版限定、不代表、整個研究、沒處理終止；36/30仍超6。未改成研究整體缺少終止證明或完全沒終止工作。",
+          "unresolved": true,
+          "current": "이 공개판의 얘기지 연구 전체가 종료를 안 다뤘다는 뜻은 아닙니다.",
+          "source": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+          "current_chars": 37,
+          "proposed_chars": 36,
+          "max_chars": 30,
+          "fits_static": false
+        },
+        {
+          "id": "3u2q",
+          "kind": "budget",
+          "proposed": "둘 다 실제 C 실행과 대조, Rocq 검사는 안 했습니다.",
+          "reason": "保留兩者、實際C執行對照及沒執行Rocq檢查；33/33。檢查而非檢查器的同義表達不新增供應商執行。",
+          "current": "둘 다 실제 C 실행과 대조, Rocq 검사기는 미실행입니다.",
+          "source": "兩者都有實際C執行對照，沒有跑過新聞中的Rocq檢查器。",
+          "current_chars": 34,
+          "proposed_chars": 33,
+          "max_chars": 33,
+          "fits_static": true
+        }
+      ],
+      "unresolved_after_proposals": [
+        "wunt",
+        "cawx",
+        "6x7t",
+        "4nfp"
+      ],
+      "no_source_latin_names_missing": true,
+      "url_emphasis_boundary_check": "exact pinned source URL retained; **255** and newline retained; date clause first",
+      "native_metadata_check": {
+        "description_bytes": 3063,
+        "credit_lines": 10,
+        "chapters": 7,
+        "field_limits": []
+      },
+      "verdict": "ready after semantic/terminology fixes and remaining static-budget conflicts are resolved; no dub or M4A ready claim"
+    }
+  },
+  "writes": "only formal-independent-ja-ko.md/json; no todo/merge/source/media/paid/git changes",
+  "remaining_other_semantics": [
+    "Input0..255,8byte capacity with1byte terminator within8,0..7iff and other8..255 rejection retained.",
+    "int promotion256 then uint8 narrowing0;8bit vs8byte;16bit full expression and counter/update cast retained.",
+    "Reject-all symbolic only, not a separate compiledC;widened-guard two-direction solver findings preserved, no second SAT study claimed.",
+    "Independent counter not downstream of fixedguard;0.25sec observation vs256-step model cycle;all repaired inputs returnn+1.",
+    "Official compile/kernel then wrapper/fixedtype/PrintAssumptions thenallowlist not replaced by modelself-claim.",
+    "Plain build specified-memory premise,finite observable-record set equality,release-only nohalts and no studywide inference retained.",
+    "Official123libraries239entries vs public60entries25libraries remain correctly attributed;no fabricated Claude toy experiment/full-app certificate.",
+    "All metadata URLs/4paragraph blocks/originalSVG provenance/thumb numbers retained; no additional price/view/date claim."
+  ],
+  "rejected_shortcut": {
+    "ko_6x7t": "A28char phrase meaning input itself lies inside a memory limit is not offered: it may lose the premise about plain BUILD runtime memory usage.31chars full candidate remains unresolved."
+  },
+  "scope_limitations": [
+    "Current words are not modified. Candidates need coordinator adoption and later independent/native checks as appropriate.",
+    "No actual dub, pronunciation, audio hash,rendered thumbnail or whole-window fit has been reviewed here.",
+    "Static fits do not guarantee speech fit; current source105 and old individual actualaudio checked earlier remain separate gates.",
+    "The reviewer read all105 per locale; this is not a re-run of vendor proofs or paid translations."
+  ]
+}

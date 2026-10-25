@@ -1,0 +1,133 @@
+{
+  "reviewed_at": "2026-10-25T21:09:33.610678+00:00",
+  "verdict": "PASS_TABLE_DELTA_AND_CURRENT_NARRATION_ONLY",
+  "scope": "Independent layout-data/source delta and completed current narration-only audit. Not film/assembly/final QA approval.",
+  "before_source_sha256": "232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15",
+  "current_source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "changed_json_paths": [
+    "/scenes/29/data/rows"
+  ],
+  "scene": "five-small-examples",
+  "before_rows": [
+    [
+      "0",
+      "接受",
+      "是"
+    ],
+    [
+      "1",
+      "接受",
+      "是"
+    ],
+    [
+      "2",
+      "接受",
+      "是"
+    ],
+    [
+      "3",
+      "接受",
+      "是"
+    ],
+    [
+      "4",
+      "接受",
+      "是"
+    ]
+  ],
+  "after_rows": [
+    [
+      "0、1、2、3、4",
+      "全部接受",
+      "全部符合"
+    ]
+  ],
+  "semantic_expansion": [
+    [
+      "0",
+      "接受",
+      "符合"
+    ],
+    [
+      "1",
+      "接受",
+      "符合"
+    ],
+    [
+      "2",
+      "接受",
+      "符合"
+    ],
+    [
+      "3",
+      "接受",
+      "符合"
+    ],
+    [
+      "4",
+      "接受",
+      "符合"
+    ]
+  ],
+  "meaning_check": "The explicit list 0,1,2,3,4 with universal 全部接受/全部符合 expands to the same five accepted inputs and affirmative conformity results. No input value, result, quantifier domain, table columns, source/key or caveat changed.",
+  "source_lines": 105,
+  "all_105_raw_text_voice_style_emotion_ids_order_same": true,
+  "all_other_scene_data_metadata_and_claim_references_same": true,
+  "external_claims_file": {
+    "path": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/claims.md",
+    "actual_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+    "before_copy_available": false,
+    "limit": "Before archive contains video.json only; external claims.md byte identity cannot be independently proved from that archive. All source claim references are byte-for-byte equal."
+  },
+  "helper": {
+    "original": "/workspace/work/ai-tech-next/verify-formal-narration.reword1.mjs",
+    "original_sha256": "6f928071e8673904e619089d74d344ca8c49319b8d2d2638c54d8440cac2f6a8",
+    "new": "/workspace/work/ai-tech-next/verify-formal-narration.table-layout.mjs",
+    "new_sha256": "1b1aa09ce203c23f4557b81dc4f7796b6307e6afbaf171730ea22e35390a6356",
+    "only_change": "CFG.source old source SHA to current source SHA; all matcher thresholds/native checks/tests and other configuration unchanged.",
+    "reverse_replacement_exactly_equals_original": true
+  },
+  "root_render_report": {
+    "reported_exit_code": 0,
+    "reported_new_states": 1,
+    "reported_reused_states": 100,
+    "reported_layout_problems": 0,
+    "reported_log": "/workspace/work/ai-tech-next/formal-render-table-compact.log",
+    "independent_view_or_native_render_performed_by_this_reviewer": false
+  },
+  "narration_audit_pending": false,
+  "paid_or_media_actions": false,
+  "native_plan_delta": {
+    "before_speech_hash": "8028c7320d9cab29",
+    "current_speech_hash": "8028c7320d9cab29",
+    "entire_native_plan_requests_identical": true,
+    "requests": 100,
+    "lines": 105
+  },
+  "narration_audit": {
+    "file": "/workspace/work/ai-tech-next/formal-narration-audit.table-layout.json",
+    "sha256": "e8642a047159aaf53584bd6e54de2ab62f24b3acb9fc1d6f1f74d8945289545e",
+    "ready": true,
+    "scope": "Current MAIN narration audio only; no film/final QA, backend delivery, or eight-language readiness claim",
+    "checked_current_wavs": 105,
+    "current_transcripts": 105,
+    "accepted_current_bindings": 105,
+    "flags": [],
+    "unchecked": 0,
+    "problems": [],
+    "narration_sha256": "19ae93ed8c07850bf0b53363401cad31d656d646d4539c0ecced7fbc81cb7373",
+    "in_memory_reconstruction_sha256": "19ae93ed8c07850bf0b53363401cad31d656d646d4539c0ecced7fbc81cb7373",
+    "duration": {
+      "fps": 30,
+      "total_frames": 16813,
+      "total_seconds": 560.4333333333333,
+      "opening_frames": 732,
+      "opening_seconds": 24.4,
+      "outro_start_frame": 16444,
+      "body_before_outro_seconds": 548.1333333333333,
+      "body_excluding_opening_and_outro_seconds": 523.7333333333333,
+      "minimum_body_seconds": 480
+    },
+    "lease_observed": null
+  }
+}

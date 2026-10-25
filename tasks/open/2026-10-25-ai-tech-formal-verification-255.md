@@ -23,8 +23,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 正式稿、每項主張、完整RUN產物與原創圖互相對應；Jev／敘事／事實結果如實保存。
-- [ ] 繁中主片及正文均至少八分鐘，自然旁白每句音檢、畫面與成片QA完成。
+- [x] 正式稿、每項主張、完整RUN產物與原創圖互相對應；Jev／敘事／事實結果如實保存。
+- [ ] 正式含頻道片頭尾的繁中定版及正文均至少八分鐘；主體旁白／畫面／核心QA已完成，品牌片頭尾仍待補。
 - [ ] en、ja、ko、es、pt、id、vi、th各有標題說明、CC、真正完成音檢與實測的可下載M4A；後臺讀回驗證。
 - [ ] 交接未完成項與後臺實際核准狀態，沒有YouTube公開、合併或部署。
 
@@ -34,7 +34,10 @@ scope:
 - [x] 六官方來源、七項YT文字參考及兩個真實GCC／SAT／有限控制圖例子落地。
 - [x] 登記後臺並用正常Jev選大綱，依站主委派採用與記錄。
 - [x] 正式稿／claims與獨立事實verify-2 PASS、原創圖及14張樣卡觀看；兩份新敘事各9/13未過，教學採用理由與NO保留。
-- [ ] 正常TTS／音檢／渲染／合成／字幕／成片QA。
+- [x] 繁中主體完成正常TTS、105／105當前音檢、101狀態渲染、合成、narration-timed CC與核心QA11／11。
+- [x] 正常12段上傳主體候選完整1080p，server assembly驗SHA／大小並authenticated讀回evidence角色；保留pending及原payload／QA。
+- [x] 八語105句／7章、metadata、縮圖overlay／獨立文字審稿及native修正完成；歷史自審／獨審與application已封存。
+- [ ] 補齊合法官方品牌片頭尾與guard／採用；若時間軸或bytes改變，重新綁定成片及各語媒體依賴。
 - [ ] 八語翻譯獨立審查、逐語合成與音檢、上架包及後臺檔案讀回。
 
 ## How to verify
@@ -51,4 +54,16 @@ scope:
 字典窄範圍例外（2026-10-25 19:11 UTC）：正常who-is-on-it再次核對lexicon.json。MCP教學舊claim已342小時，無本機／遠端／PR工作蹤跡；不釋放或改動他人票。唯一相關open PR #1851是同一協調者的ForTy，字典三個null新增已完成並推送a2a79e495，當前唯一producer只做既定八語I18N／音訊，不再改字典。第三片在635父的獨立worktree以原生mergeSharedLexicon及原生writer lease，只追加C／SAT／Rocq／RISC-V四個null原文詞，不更換任何既有發音值、不改ForTy或原repo字典。此為同一站主授權製作所需的例行發音處理，按明示範圍碰撞例外執行；不強制接手舊MCP任務。
 
 
-20:07實際繁中TTS完成100 requests／105句／2423 billable chars。新speech c6d33c74584faac1，timeline16800/30=560.0s；片尾前547.7s、再排開場後522.7333s，都超過8分鐘。ASR初檢根session13610正在執行，沒有把完成TTS當音檢PASS或影片完成；最新nativecheck及強WAV對帳後再做定向修正。
+20:07歷史紀錄：初次繁中TTS完成100 requests／105句／2423 billable chars；當時speech c6d33c74584faac1、16800 frames，ASR初檢尚在執行。此段不作當前成功證據；下列是修詞、音檢、版面及交付後的實況。
+
+## Current body-candidate delivery snapshot
+
+2026-10-25T23:07:06Z。Source e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f、claims527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6、speech8028c7320d9cab29。當前105／105 WAV及完整原文／裁決核對完成，0 flags／unchecked；影片16813／30＝560.4333秒，正文扣冷開／outro後523.7333秒。AAC／容器560.505秒另列，不能當影片時間。
+
+主體候選c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5，48226281 bytes，1080p／30fps，−14 LUFS／TP−2.9。核心QA真11／11，並不證明official bookends或後續外語音訊／CC／package完成；敘事仍9／13、false，原三NO及advisory保留。
+
+22:48:50正常12段完整上傳完成server組裝SHA／大小驗證，authenticated role metadata讀回完整1080p的evidence角色。遠端final仍pending，未改approval、語言選擇、原payload／QA；沒有remote binary下載或正式language batch。主體候選已交，正式頻道片頭尾仍缺，追蹤[branding task](2026-10-25-local-first-build-without-branding.md)。
+
+八語文字各105句／7章、metadata與本地化overlay已準備，但內嵌guard仍含繁中演示字，不能稱全部像素均翻譯。實際外語M4A／音檢／交付0／8，CC目前全用narration timing；ES／PT／ID共8速度advisories保留，actual dub timings完成後重產。最新native lint0 errors／7 warnings，含四語手機title寬度；未改i18n消警告。全八語及overall DOD仍未完成。
+
+見[production-result](../../docs/videos/claude-formal-verification-255/production-result.md)、[production-progress](../../docs/videos/claude-formal-verification-255/production-progress.json)、[localization-review](../../docs/videos/claude-formal-verification-255/localization-review.md)與[public receipts](../../docs/videos/claude-formal-verification-255/public-receipt-index.json)。未提交YouTube公開、合併或部署。

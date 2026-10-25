@@ -1,0 +1,464 @@
+{
+  "title": "Nghiên cứu kiểm chứng hình thức của Claude: số 255 nói gì về bảo đảm của chương trình?",
+  "description": "Dung lượng chỉ 8 byte, vì sao vẫn chấp nhận độ dài 255? Viết rõ điều kiện, rồi sửa và kiểm kết quả bằng hai ví dụ C chạy thật.\nDành cho bạn muốn hiểu chứng minh chương trình của AI và thường nhờ AI sửa mã; lưu riêng bản ghi có thể chạy lại về nhận đầu vào hợp lệ và khả năng kết thúc.\n\nNgày 22/10/2026, Anthropic và Theorem công bố nghiên cứu hợp tác. Báo cáo nêu 239 điểm vào/123 thư viện; bản công khai được video trích dẫn có 60 điểm vào/25 thư viện. Chỉ bản công khai này chưa cung cấp chứng minh mệnh đề halts; không suy rộng ra cả nghiên cứu.\n\nGuard tự viết cục bộ chỉ xét nhận hay từ chối với n=0..255, sức chứa 8 byte và thêm 1 byte kết thúc; chương trình độc lập khác kiểm tra việc trả về sau khi đếm. Phương pháp: chạy C thật, liệt kê hết, SAT mệnh đề cho guard và đồ thị điều khiển hữu hạn cho vòng lặp; chưa chạy bộ kiểm Rocq của bên nghiên cứu.\n\nMã C tự viết, kết quả chạy và bộ dữ liệu nguồn đầy đủ: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nSVG tự vẽ cho video dựa trên kết quả chương trình và quy trình chính thức, không giả làm cảnh thao tác sản phẩm.",
+  "tags": [
+    "Claude",
+    "kiểm chứng hình thức",
+    "chứng minh chương trình",
+    "Theorem",
+    "Rocq",
+    "lập trình C",
+    "công nghệ AI"
+  ],
+  "thumbnail": {
+    "tag": "Claude kiểm chứng hình thức",
+    "headline": "**255**\nLọt qua?",
+    "sub": "Chỉ chứa 8, vẫn lọt"
+  },
+  "chapters": {
+    "capacity-accepts-255": "Kiểm tra cục bộ nhận cả 255",
+    "research-published": "Ghi rõ độ dài được chấp nhận",
+    "which-line-to-fix": "Giữ tổng 256, kiểm lại từ chối",
+    "deny-all-two-directions": "Từ chối hết cả đầu vào hợp lệ",
+    "independent-counter": "Ô trả về gặp vòng lặp",
+    "fix-proof-object": "Đối chiếu điều kiện chứng minh",
+    "completed-repair-record": "Ghi yêu cầu của bạn vào phiếu"
+  },
+  "source_hashes": {
+    "chapters": {
+      "capacity-accepts-255": "1edec6460faf",
+      "research-published": "b9cbfb707fc5",
+      "which-line-to-fix": "f262b006fc8b",
+      "deny-all-two-directions": "674fcccac2dc",
+      "independent-counter": "cc8b520b8c1e",
+      "fix-proof-object": "3a178f11392d",
+      "completed-repair-record": "e9b10d121112"
+    },
+    "title": "a5726411c90f",
+    "description": "b51dff023429",
+    "tags": "b9a93e92a3ea",
+    "thumbnail": "4a13ca08da95"
+  },
+  "lines": {
+    "zfgp": {
+      "source_hash": "51ad6a8effbf",
+      "text": "Ngày 25/10/2026, chương trình của tôi chỉ chứa 8 byte mà vẫn nhận độ dài 255?"
+    },
+    "z9dp": {
+      "source_hash": "11c849209e8c",
+      "text": "Phiếu chỉ ghi không nhận sai; từ chối hết có tính là xong không?"
+    },
+    "bpnn": {
+      "source_hash": "d5b6e86e4a26",
+      "text": "Phiếu còn ô trả về: chương trình đếm khác có thoát không?"
+    },
+    "c8r2": {
+      "source_hash": "d08593484c6f",
+      "text": "Cùng yêu cầu ấy, AI viết chứng minh rồi ai nghiệm thu?"
+    },
+    "qwaw": {
+      "source_hash": "87ec5f62a39d",
+      "text": "Phiếu này trả lời câu hỏi nghiệm thu từ nghiên cứu Claude ngày 22/10."
+    },
+    "4rff": {
+      "source_hash": "1043928fb4f5",
+      "text": "Nghiên cứu đổi yêu cầu kiểm thử ra mệnh đề kiểm tra được."
+    },
+    "5i5d": {
+      "source_hash": "c91a6afcaf84",
+      "text": "Tôi dùng chương trình C tự viết để điền dòng xét chấp nhận trước."
+    },
+    "jeaj": {
+      "source_hash": "061da398672e",
+      "text": "Đầu vào là độ dài dữ liệu, giới hạn 0 đến 255."
+    },
+    "fzz5": {
+      "source_hash": "f8a3ef316a7b",
+      "text": "Chỉ có 8 byte, vẫn phải dành 1 byte cho ký tự kết thúc."
+    },
+    "kkef": {
+      "source_hash": "613b93ef6e5d",
+      "text": "Vì vậy, độ dài cộng 1 không quá 8 thì mới được nhận."
+    },
+    "m7xu": {
+      "source_hash": "beccf431c07d",
+      "text": "7+1=8 nên vừa đủ để nhận; 8+1=9 nên phải từ chối."
+    },
+    "axkg": {
+      "source_hash": "81fdf48fed5f",
+      "text": "0 cũng hợp lệ: thêm ký tự kết thúc chỉ tốn 1 byte."
+    },
+    "r79s": {
+      "source_hash": "fc014520652f",
+      "text": "Vậy phiếu ghi khoảng được chấp nhận là 0 đến 7."
+    },
+    "p2uy": {
+      "source_hash": "195732bdedff",
+      "text": "Vậy vì sao 255 ở đầu video lại lọt qua?"
+    },
+    "vwiq": {
+      "source_hash": "21a409869e52",
+      "text": "Xem phép tính tổng độ dài: 255 cộng 1 trước hết ra 256."
+    },
+    "5iky": {
+      "source_hash": "6a0926451df1",
+      "text": "Phép cộng nâng kiểu lên số nguyên thường, chưa biến thẳng thành 0."
+    },
+    "zfmi": {
+      "source_hash": "1261dadf89b8",
+      "text": "Nhưng phiên bản sai ép tổng độ dài về số nguyên không dấu 8 bit."
+    },
+    "3mpx": {
+      "source_hash": "d42e2f0ee585",
+      "text": "Kiểu này chỉ lưu được các số từ 0 đến 255."
+    },
+    "tew5": {
+      "source_hash": "d9d811112416",
+      "text": "Ép 256 về kiểu đó thì giá trị lưu thành 0."
+    },
+    "femu": {
+      "source_hash": "220318e06cd5",
+      "text": "So 0 với sức chứa 8, chương trình trả về kết quả đạt."
+    },
+    "64pm": {
+      "source_hash": "c7c9badc100f",
+      "text": "8 bit là kiểu dữ liệu; 8 byte là sức chứa."
+    },
+    "2yfh": {
+      "source_hash": "5416bd8e701a",
+      "text": "Lỗi ở ép kiểu khi lưu; không thể đánh đồng hai số 8 ấy."
+    },
+    "mvnc": {
+      "source_hash": "6c298111610c",
+      "text": "Phiếu đã có phản ví dụ; sửa dòng nào để giữ trọn tổng độ dài?"
+    },
+    "936d": {
+      "source_hash": "ae981efaab7e",
+      "text": "Giữ đủ giá trị khi tính, rồi lưu tổng bằng số nguyên không dấu 16 bit."
+    },
+    "s57e": {
+      "source_hash": "79e31dd724e4",
+      "text": "Ép về 8 bit trước rồi lưu vào biến rộng hơn thì 0 vẫn là 0."
+    },
+    "yavq": {
+      "source_hash": "e66bc8925e43",
+      "text": "Sửa cả dòng: phép tính lẫn ép kiểu để lưu tổng đều phải đổi."
+    },
+    "ij57": {
+      "source_hash": "0c80420a8b4f",
+      "text": "Nhập 255, cộng 1 vẫn giữ được 256."
+    },
+    "mfag": {
+      "source_hash": "1a6522a29e00",
+      "text": "Nó vượt sức chứa 8; lần này trả về kết quả từ chối đúng."
+    },
+    "vkym": {
+      "source_hash": "e673cce257c4",
+      "text": "Còn độ dài hợp lệ 7? Cộng 1 ra 8, vẫn được nhận."
+    },
+    "84hx": {
+      "source_hash": "3b26fcf9b4a7",
+      "text": "Nhưng chỉ xem hai kết quả này, sao biết ở giữa không còn lỗi?"
+    },
+    "wunt": {
+      "source_hash": "ecba87fb6974",
+      "text": "Tôi chọn 0, 1, 2, 3, 4 trước; cả năm số nhỏ đều đúng dự kiến."
+    },
+    "a7te": {
+      "source_hash": "e578ae9a58a1",
+      "text": "Liệt kê hết từ 0 đến 255 mới đối chiếu được toàn miền."
+    },
+    "dfhy": {
+      "source_hash": "2671499a63a4",
+      "text": "Bản sai chỉ cho qua thêm 255; bản dùng kiểu rộng chỉ nhận 0 đến 7."
+    },
+    "zgkb": {
+      "source_hash": "371c593fcf07",
+      "text": "Phiếu thêm mô hình giải: cùng đầu vào được biểu diễn bằng 8 bit đúng/sai."
+    },
+    "5waf": {
+      "source_hash": "458b210e1f7d",
+      "text": "Nhờ bộ giải mệnh đề tìm xem: độ dài không hợp lệ có được nhận không?"
+    },
+    "unr8": {
+      "source_hash": "617c2e811777",
+      "text": "Tìm xem các điều kiện đúng/sai có thể đồng thời thỏa mãn: đó là SAT mệnh đề."
+    },
+    "gtuj": {
+      "source_hash": "e037da4e41bb",
+      "text": "Bản sai tìm ra 255; bản dùng kiểu rộng không tìm ra phản ví dụ ấy."
+    },
+    "56e4": {
+      "source_hash": "df688c85d423",
+      "text": "Hỏi tiếp có độ dài hợp lệ bị từ chối không; phiên bản sửa cũng không tìm ra."
+    },
+    "tksv": {
+      "source_hash": "b2fd3228b90d",
+      "text": "Đối chiếu từng kết quả mô hình với kết quả chạy thật của chương trình C: cả 256 dòng đều khớp."
+    },
+    "2zma": {
+      "source_hash": "e8e85c6af839",
+      "text": "Miền này nhỏ, thử từng giá trị cũng được; bộ giải không cho thêm đáp án."
+    },
+    "4bqi": {
+      "source_hash": "252be5155496",
+      "text": "Nhưng phiếu chỉ cấm nhận sai thì từ chối hết có giao được không?"
+    },
+    "xfvp": {
+      "source_hash": "4b6db1295170",
+      "text": "Theo điều kiện một chiều, từ chối hết đúng là chặn mọi đầu vào không hợp lệ."
+    },
+    "cabc": {
+      "source_hash": "d956e6235b37",
+      "text": "Nhưng độ dài 0 đến 7 cũng không giá trị nào qua được."
+    },
+    "jhkm": {
+      "source_hash": "a9f687dfe5f3",
+      "text": "Đối chiếu này tính trong mô hình ký hiệu, không chạy thêm chương trình C."
+    },
+    "e6wk": {
+      "source_hash": "f81aaebebd68",
+      "text": "Kết quả: 0 lần nhận sai, nhưng 8 lần từ chối sai."
+    },
+    "7d4v": {
+      "source_hash": "61b2cb398b62",
+      "text": "Chỉ cấm nhận sai thì chương trình có thể từ chối hết để giao bài."
+    },
+    "6a2b": {
+      "source_hash": "9ae03adb435e",
+      "text": "Ghi thêm điều kiện cần kiểm: đầu vào hợp lệ phải được nhận."
+    },
+    "4akm": {
+      "source_hash": "2f806baf75ba",
+      "text": "Gộp hai chiều: 0 đến 7 đều phải qua, độ dài khác đều bị từ chối."
+    },
+    "w9b4": {
+      "source_hash": "46ba75e0d185",
+      "text": "Phiếu một chiều ban đầu giờ thêm yêu cầu phải nhận đầu vào hợp lệ."
+    },
+    "dkjy": {
+      "source_hash": "5173b4f1b49d",
+      "text": "Dòng này chỉ đưa kết quả chấp nhận; chương trình không ghi vào bộ đệm dữ liệu."
+    },
+    "8ywa": {
+      "source_hash": "a0c466fb0042",
+      "text": "Tôi ghi hai kết quả bản dùng kiểu rộng là 0: không nhận sai, không từ chối sai."
+    },
+    "xh98": {
+      "source_hash": "fe37ccbc7c85",
+      "text": "Dòng chấp nhận đã xong; phiếu còn dòng khác chờ nghiệm thu việc trả về."
+    },
+    "idga": {
+      "source_hash": "ae8256662823",
+      "text": "Ô trả về trên phiếu nên ghi yêu cầu thế nào để kiểm được?"
+    },
+    "u2xw": {
+      "source_hash": "7c424d942fba",
+      "text": "Tôi dùng chương trình đếm độc lập khác cho ô trả về; đầu vào là giới hạn đếm."
+    },
+    "p4u6": {
+      "source_hash": "ec08985f14bf",
+      "text": "Giới hạn vẫn từ 0 đến 255; bộ đếm bắt đầu ở 0."
+    },
+    "v9sd": {
+      "source_hash": "836ec578fb98",
+      "text": "Bộ đếm còn nhỏ hơn hoặc bằng giới hạn thì cộng 1; nếu không thì thoát."
+    },
+    "riuf": {
+      "source_hash": "db172bc80117",
+      "text": "Ghi số lần cần là giới hạn cộng 1; giá trị trả về cũng phải bằng số ấy."
+    },
+    "cgit": {
+      "source_hash": "c76f55e16961",
+      "text": "Nhập 0: dự kiến cộng 1 một lần, trả về 1."
+    },
+    "y326": {
+      "source_hash": "b9fcf61439c5",
+      "text": "Nhập 7: dự kiến cộng 1 tám lần, trả về 8."
+    },
+    "qmcd": {
+      "source_hash": "9920f81d6dfc",
+      "text": "Phiên bản sai dùng bộ đếm 8 bit; giới hạn 254 thì đến 255 đã thoát được."
+    },
+    "b3r9": {
+      "source_hash": "92d99ed278ce",
+      "text": "Đổi giới hạn thành 255, công cụ dừng lần chạy sau ngưỡng 0,25 giây."
+    },
+    "ijcq": {
+      "source_hash": "9ca16efd3147",
+      "text": "Nó chạy mãi, hay ta đợi chưa đủ lâu?"
+    },
+    "ihny": {
+      "source_hash": "2b1076d364b1",
+      "text": "Lần này chờ quá giới hạn; chỉ vậy chưa thể kết luận chương trình không bao giờ dừng."
+    },
+    "4jzv": {
+      "source_hash": "2cc53f409e78",
+      "text": "Muốn xem từng trạng thái, cần biết bước kế tiếp đi đâu."
+    },
+    "kfft": {
+      "source_hash": "a8d29d4c4a87",
+      "text": "Giới hạn cố định; không có ai khác sửa bộ đếm."
+    },
+    "58rm": {
+      "source_hash": "8061c9874100",
+      "text": "Bộ đếm 8 bit từ 0 tăng đến 255, lần tiếp theo lại về 0."
+    },
+    "mjsr": {
+      "source_hash": "8fc664ffa3ea",
+      "text": "Điều kiện vẫn đúng, giới hạn không đổi, nên sau đó lại lặp đúng vòng ấy."
+    },
+    "kq36": {
+      "source_hash": "507103f421d2",
+      "text": "Đồ thị điều khiển đầy đủ có chu trình 256 bước, nên mô hình này không thoát."
+    },
+    "qjaw": {
+      "source_hash": "6943c6c30477",
+      "text": "Quá giờ là quan sát lần chạy; chu trình mới là lý do từ đồ thị điều khiển."
+    },
+    "h6n5": {
+      "source_hash": "76b3d1c35566",
+      "text": "Muốn đếm xong rồi thoát, chỗ nào cần thêm một vị trí?"
+    },
+    "p8te": {
+      "source_hash": "1f31f5bf394f",
+      "text": "Đổi bộ đếm lẫn phép ép kiểu tương ứng sang số nguyên không dấu 16 bit."
+    },
+    "ghs2": {
+      "source_hash": "44c693ffa379",
+      "text": "Đến 255 cộng thêm 1, lần này giữ được 256."
+    },
+    "9mxr": {
+      "source_hash": "f9c3102691d9",
+      "text": "256 lớn hơn giới hạn, điều kiện sai; chương trình thoát và trả về nó."
+    },
+    "ey22": {
+      "source_hash": "ab81b657c3e3",
+      "text": "Ô trả về có kết quả: với mọi đầu vào, chương trình thoát và trả về giới hạn cộng 1."
+    },
+    "5feu": {
+      "source_hash": "77c4be3bf068",
+      "text": "Giá trị trả về và điều kiện thoát được ghi ở hai cột trên cùng một dòng."
+    },
+    "rsx8": {
+      "source_hash": "703de6633c3c",
+      "text": "Phiếu đã tách chấp nhận và trả về; chứng minh trong nghiên cứu Claude kiểm cùng loại yêu cầu sao?"
+    },
+    "zg4q": {
+      "source_hash": "a7b37d0a21b6",
+      "text": "Đối chiếu phiếu với chứng minh hình thức: cố định phiên bản chương trình, mệnh đề và mô hình vận hành."
+    },
+    "wzn2": {
+      "source_hash": "0e7058e63ce9",
+      "text": "Phiên bản công khai xét chương trình nhị phân RISC-V đã biên dịch."
+    },
+    "cawx": {
+      "source_hash": "f47af9bb57ae",
+      "text": "Khi biên dịch, nhân Rocq xét chứng minh AI viết."
+    },
+    "uqde": {
+      "source_hash": "9df86b875f32",
+      "text": "Công cụ đối chiếu kết quả với mệnh đề cố định, liệt kê các giả định đã dùng."
+    },
+    "5fga": {
+      "source_hash": "3037ed1a4bcf",
+      "text": "Các giả định đã dùng cũng phải qua kiểm tra danh sách cho phép."
+    },
+    "wi26": {
+      "source_hash": "f1b584773e69",
+      "text": "Câu hỏi nghiệm thu mở đầu nằm ở việc nhân Rocq và công cụ kiểm tra mệnh đề, giả định."
+    },
+    "nzaz": {
+      "source_hash": "c5297adfa2e6",
+      "text": "Biên dịch được chưa có nghĩa đạt mục tiêu; rốt cuộc cần chứng minh gì?"
+    },
+    "7ip9": {
+      "source_hash": "2091612eccbf",
+      "text": "Bản công khai so sánh bản thường với bản kiểm lỗi của cùng chương trình, không phải trước/sau sửa."
+    },
+    "6x7t": {
+      "source_hash": "a130679b15cc",
+      "text": "Mô hình hệ thống: đầu vào phải giữ bản thường trong mức bộ nhớ đã định."
+    },
+    "5u3j": {
+      "source_hash": "4178cb1c03d9",
+      "text": "Thỏa tiền đề ấy, cả hai bản không gặp lỗi đã chỉ định."
+    },
+    "cnnu": {
+      "source_hash": "c0ffe8d60c16",
+      "text": "Bản ghi hành vi hữu hạn có thể chứa văn bản chương trình đã xuất."
+    },
+    "fwc2": {
+      "source_hash": "f9564955e189",
+      "text": "Tập các bản ghi quan sát được mà hai bản cho phép phải giống nhau."
+    },
+    "e7pc": {
+      "source_hash": "b42411054a81",
+      "text": "Nhưng hành vi khớp có tự bảo đảm chương trình sẽ kết thúc không?"
+    },
+    "3jaw": {
+      "source_hash": "aae859832b95",
+      "text": "Không. Bản công khai này chưa có chứng minh mệnh đề kết thúc."
+    },
+    "e2mj": {
+      "source_hash": "23946a0cdb79",
+      "text": "Muốn bảo đảm chạy xong, phải chứng minh riêng mệnh đề kết thúc."
+    },
+    "4nfp": {
+      "source_hash": "5fbfa4be8c60",
+      "text": "Chỉ nói bản công khai này; không có nghĩa cả nghiên cứu không xét kết thúc."
+    },
+    "cr5k": {
+      "source_hash": "3bbfdf53bd0b",
+      "text": "Báo cáo nghiên cứu chính thức có 123 thư viện, 239 điểm vào."
+    },
+    "b7jg": {
+      "source_hash": "75b294425df2",
+      "text": "Bản công khai hiện liệt kê 60 điểm vào từ 25 thư viện."
+    },
+    "i2pt": {
+      "source_hash": "cb96d246e7c3",
+      "text": "Phiếu còn cần phiên bản; tổng nghiên cứu và bản công khai đang có phải ghi riêng."
+    },
+    "te3s": {
+      "source_hash": "7ebd5fca5887",
+      "text": "Thêm cách kiểm tra vào phiếu sẽ thấy rõ khác biệt giữa các phần bàn giao."
+    },
+    "iest": {
+      "source_hash": "4db58281622c",
+      "text": "Xét chấp nhận dùng liệt kê hết và giải mệnh đề; điều kiện trả về dùng đồ thị điều khiển hữu hạn."
+    },
+    "3u2q": {
+      "source_hash": "0e12f29539db",
+      "text": "Cả hai đều đối chiếu với C chạy thật; chưa chạy bộ kiểm Rocq của nghiên cứu."
+    },
+    "ucn4": {
+      "source_hash": "11074012ccac",
+      "text": "Kết quả tôi làm chỉ bao phủ hai ví dụ cục bộ, không chứng nhận toàn ứng dụng."
+    },
+    "bt2j": {
+      "source_hash": "3662e46316cc",
+      "text": "Phiếu ghi riêng sửa tổng độ dài, và sửa khai báo cùng phép cập nhật của bộ đếm."
+    },
+    "mj65": {
+      "source_hash": "934a8f87c333",
+      "text": "Chạy lại: trước hết kiểm phiên bản, rồi đặt kết quả dự kiến và thực tế cùng dòng."
+    },
+    "edry": {
+      "source_hash": "8446fe5f59b9",
+      "text": "Tránh lấy mã đã sửa so với đáp án của một mã cũ khác."
+    },
+    "mhjn": {
+      "source_hash": "e31cafa64480",
+      "text": "Ghi rõ yêu cầu nghiệm thu."
+    },
+    "87s6": {
+      "source_hash": "fc5be78815da",
+      "text": "Hãy bình luận tình huống bạn dùng AI để viết chương trình."
+    },
+    "22tu": {
+      "source_hash": "7102028b107c",
+      "text": "Đăng ký kênh, cùng đọc hiểu nghiên cứu AI qua kết quả thật."
+    }
+  }
+}
