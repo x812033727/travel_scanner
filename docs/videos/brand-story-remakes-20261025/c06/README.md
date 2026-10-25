@@ -6,6 +6,6 @@
 
 [後台新卡](https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-play-doh-c06-remake-20261025)已有精確企劃與劇本審核，均為pending；[正式讀回](backend-status.json)保存ID及實際內容hash。沒有站主核准或自動續跑。現行新卡沿用source的explainer分類，需管理連線改為story；[受保護設定交接](protected-admin-settings.json)保存具體待設定值。八語是已授權的製作預設，這張新卡尚未存入正式語言選擇，不能宣稱已套用。
 
-八語文字準備已開始，與真實SRT、配音和語言輪分開。clean-master資料夾只有[未執行配方](variants/clean-master/derivation.json)，沒有乾淨影片或實際配音資格。繁中燒錄來源保持不變。
+八語文字共1,304句與48章已完成原生合併、非譯者全量校對及19處必修後重查，全部TEXT_PASS；仍與真實SRT、配音和語言輪分開。clean-master資料夾只有[未執行配方](variants/clean-master/derivation.json)，沒有乾淨影片或實際配音資格。繁中燒錄來源保持不變。
 
-正式製片入場仍依[C03交接](../c03/production-entry.md)：精確新slug獨立預算帳戶、歷史帳本與全片報價、受保護啟用、正式v4身分及實體素材均須成立。既有US$25停線、C系列hold與舊集帳戶保持原狀。尚無新音訊、插圖、配樂、影片、媒體QA、成片核准或YouTube變更。
+[C06續做交接](production-entry.md)已綁定本版；正式製片入場仍依[C03交接](../c03/production-entry.md)：精確新slug獨立預算帳戶、歷史帳本與全片報價、受保護啟用、正式v4身分及實體素材均須成立。既有US$25停線、C系列hold與舊集帳戶保持原狀。尚無新音訊、插圖、配樂、影片、媒體QA、成片核准或YouTube變更。

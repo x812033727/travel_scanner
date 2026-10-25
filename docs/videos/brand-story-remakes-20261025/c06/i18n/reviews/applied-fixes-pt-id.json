@@ -1,0 +1,54 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "review_file_sha256": "232bae8741427f1bbf1d7473d961e419c226320f7d596c4a49fcead65ce45966",
+  "locales": [
+    {
+      "locale": "pt",
+      "previous_worksheet_sha256": "efb48f35580bb826acf07407bce01caefd1dd01de074cdb1c415fd66b7d879b4",
+      "previous_translation_sha256": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+      "new_worksheet_sha256": "59570ad17f88754c7ba05af6f3ee03e6b55ef82c3035581febe4ae6958229d00",
+      "changes": [
+        {
+          "target": "thumbnail.sub",
+          "before": "Hasbro (2024): >500 mi de potes",
+          "after": "Hasbro 2024: mais de 500 mi de potes",
+          "reason": "副標含 >，違反原生縮圖 no angle brackets，且本次 native translation 因此未帶入 thumbnail。改用自然葡文 mais de，保留 Hasbro／2024、逾五億及容器單位，修後須重新原生合併；手機可讀性仍需實際render。"
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "previous_worksheet_sha256": "72bdaba29864612cf9af642d6ac123e3d738d46433aecc9de617107c0571ced8",
+      "previous_translation_sha256": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+      "new_worksheet_sha256": "4b24311dc76e6caf3a9f1876d0ffef55e9f6bbfe66a49b8f5f5fe98587255661",
+      "changes": [
+        {
+          "target": "thumbnail.sub",
+          "before": "Klaim 2024: >500 jt wadah",
+          "after": "Klaim 2024: lebih dari 500 jt wadah",
+          "reason": "副標含 >，違反原生縮圖 no angle brackets，且本次 native translation 因此未帶入 thumbnail。改用印尼文 lebih dari，保留2024的聲稱、逾五億與容器單位；jt為juta縮寫，修後須原生合併，實際手機字級仍待render。"
+        },
+        {
+          "target": "lines.c6sh001",
+          "before": "Kalau bentuk yang kamu buat langsung ambruk begitu tanganmu dilepas, apa kamu masih mau mengambil wadah ini lagi?",
+          "after": "Kalau bentuk yang kamu buat langsung ambruk begitu kamu melepasnya, apa kamu masih mau mengambil wadah ini lagi?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        },
+        {
+          "target": "lines.c6st071",
+          "before": "Ingat pertanyaan di pembuka, tentang bentuk yang ambruk setelah tanganmu dilepas?",
+          "after": "Ingat pertanyaan di pembuka, tentang bentuk yang ambruk begitu kamu melepasnya?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        },
+        {
+          "target": "lines.c6sn091",
+          "before": "Kalau kamu meletakkannya di meja sendiri, apakah pekerjaan bahan itu berhenti saat tanganmu dilepas?",
+          "after": "Kalau kamu meletakkannya di meja sendiri, apakah pekerjaan bahan itu berhenti saat kamu melepasnya?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

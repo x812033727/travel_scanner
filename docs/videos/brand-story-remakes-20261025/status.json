@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T18:48:02.792412+00:00",
-  "state": "c06_source_narrative_pass_translating_c05_c09_revisions_c07_authoring_c08_research_media_held",
+  "updated_at": "2026-10-25T19:13:17.033326+00:00",
+  "state": "five_baseline_eight_language_text_PASS_c05_c07_c09_new_revisions_c08_authoring_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -172,16 +172,18 @@
       "source_length_planning_hold": true,
       "length_extension_candidate": {
         "path": "c05/candidates/length-extension",
-        "revision": "r4",
-        "video_sha256": "0343a789811397115be03bf3b010cac8f81fd244a6df3e286be8906dca7799e7",
-        "native_lint_errors": 0,
-        "source_delta_and_new_readers": "pending",
-        "adopted": false,
-        "actual_duration_measured": false,
-        "body_units": 2785,
-        "length_risk": "Further effective source material or actual audio measurement needed; no padding or slowdown.",
+        "current_revision": "r6_authoring_not_frozen",
+        "last_frozen_revision": "c05/candidates/length-extension/history/r5",
+        "last_frozen_video_sha256": "7634de38aec03e756ebd19b6e9eac3fed97af5d350c48338d2b5515caf364761",
         "source_delta": "PASS",
-        "source_receipt": "c05/candidates/length-extension/reviews/source-r4-independent.json"
+        "native_merged": "HOLD",
+        "merged_failed": [
+          "no_recap"
+        ],
+        "native_lint_errors": 0,
+        "last_frozen_body_units": 2804,
+        "adopted": false,
+        "actual_duration_measured": false
       },
       "candidate_approved": false
     },
@@ -232,9 +234,40 @@
         "vi",
         "th"
       ],
-      "text_translation_preparation": "in_progress",
+      "text_translation_preparation": "TEXT_PASS",
       "clean_master_recipe": "c06/variants/clean-master/derivation.json",
       "preflight": "c06/preflight-inputs.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "text_translations": "c06/i18n/preparation-status.json",
+      "text_translation_entries": 1304,
+      "required_translation_fixes_resolved": 19,
+      "localized_runtime_lint_errors": 0,
+      "localized_runtime_lint_warnings": 17,
+      "stale_or_missing_translation_warnings": 0,
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "production_handoff": "c06/production-entry.md"
+    },
+    {
+      "id": "c07",
+      "state": "r2_structural_rewrite_in_progress_not_frozen",
+      "last_frozen_revision": "c07/history/r1",
+      "last_frozen_video_sha256": "246607e69585bcf4e28377e3a1215062407d68bb901fc9841163af1c9a796372",
+      "last_frozen_source_and_written_visual": "PASS",
+      "last_frozen_source_receipt": "c07/history/r1/reviews/source-r1-independent.json",
+      "last_frozen_native_merged": "HOLD",
+      "last_frozen_native_failed": [
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "last_frozen_native_receipt": "c07/history/r1/reviews/narrative-r1.json",
+      "last_frozen_lint_errors": 0,
+      "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
       "illustrations_generated": false,
@@ -325,8 +358,8 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 864,
-      "scope": "tracked and staged source files; ongoing untracked drafts excluded"
+      "files": 1017,
+      "scope": "Git index bytes only, including staged artifacts; active unstaged author files excluded"
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -357,6 +390,14 @@
         "id": "c04",
         "status": "PASS",
         "lines": 880
+      },
+      {
+        "id": "c06",
+        "status": "PASS",
+        "lines": 1304,
+        "lint_errors": 0,
+        "stale_or_missing_translation_warnings": 0,
+        "other_soft_warnings": 17
       }
     ]
   },
@@ -422,7 +463,7 @@
   "translation_text_preparation": {
     "receipt": null,
     "locales": 8,
-    "lines": 3560,
+    "lines": 4864,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -446,18 +487,23 @@
         "id": "c09",
         "receipt": "c09/i18n/preparation-status.json",
         "lines": 760
+      },
+      {
+        "id": "c06",
+        "receipt": "c06/i18n/preparation-status.json",
+        "lines": 1304
       }
     ],
-    "prepared_projects": 4,
-    "scope": "Exact unchanged current C03/C04/C05/C09 baseline text only; C05/C09 length candidates and C06 new translations excluded."
+    "prepared_projects": 5,
+    "scope": "Exact current C03/C04/C05/C09 baselines and C06 source. C05/C09 new candidates and C07/C08 rewrites excluded."
   },
   "latest_user_direction": "做完後你繼續下一個不用停",
   "continuation_in_progress": {
-    "c05": "r4_frozen_0errors_length_planning_risk_2785_body_no_adoption",
-    "c06": "source_written_visual_and_native_merged_pass_new_pending_reviews_eight_language_text_preparation",
-    "c07": "source_research_complete_new_rules_authoring",
-    "c08": "primary_source_research_frozen_38_claims_no_new_script",
-    "c09": "r4_source_written_visual_PASS_native_HOLD_r5_structural_rewrite_in_progress"
+    "c05": "r6_authoring_prior_r5_source_PASS_native_HOLD_no_recap",
+    "c06": "source_written_visual_native_merged_and_8locale_1304text_TEXT_PASS_media_held",
+    "c07": "r2_structural_rewrite_prior_r1_source_PASS_native_HOLD",
+    "c08": "source_research_frozen_new_rules_authoring",
+    "c09": "r5_structural_rewrite_with_new_first_person_1974_source_in_progress"
   },
   "narration_size_planning": "narration-size-precheck.json"
 }

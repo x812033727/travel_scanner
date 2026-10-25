@@ -82,3 +82,6 @@ scope:
 - C05／C09 r4增補候選原生均0errors；C05刪除煙燻/花期/時數警語支線後正文2785，仍有規劃容量風險；C09刪除型錄尺寸清單後正文3325，來源差分與新讀者正在做。兩者未採用，原BASE/核准/基底八語保留。C09 r2本機fullcontext預檢4errors後已於任何外部呼叫前rollback，失敗與修正鏈存history。
 
 - C08研究包已凍結38主張／120舊句盤點，取得2011後期200mL產品對應的JP5727888B2完整原專利，1961原專利仍列缺口，沒有新旁白或SOURCE PASS。C09r4來源／書面配鏡PASS但兩讀者共同HOLD one_line/no_recap/no_detour，保留history/r4並開始R5實質重編；原已核准BASE仍未換稿。
+
+- C06八語1304句／48章及metadata已全量交叉校對，19處必修後獨立重查全TEXT_PASS；8語原生縮圖均真正合併，runtime0errors／無過期缺漏譯文，17個其餘soft warnings保留。五份current基底共4864句，不含C05/C09未採候選或C07/C08新改寫。clean配方獨立METADATA_DERIVATION_PASS，實際媒體仍0。
+- C07r1來源與書面配鏡PASS（15原件／144句／141插圖+outro）但native兩讀者共同HOLD chapters_link/payoffs/no_recap/no_detour，完整history/r1後重編r2，不假裝sourcePASS就是敘事批准。C05r5來源PASS但native只共享no_recap，保留history/r5再做r6；C09r5補當事人1974AAJ原刊中的1973攀登場景實質重編；C08新稿接續中。
