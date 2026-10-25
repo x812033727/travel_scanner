@@ -4,7 +4,7 @@
 
 - 稿子：[`video.json`](video.json)（122 景：插圖 109、卡片 12、片尾 1；正文插圖占 90%，連續卡片最多 1 張；旁白 144 句、約 2,900 字；lint 估 13.7 分鐘）與它產生的 [`script.md`](script.md)。
 - lint：0 錯誤、0 警告。
-- **盲評**：主對話跑（這個環境沒有 Agent 工具）。第 1 輪跑完、照否題改了開場；第 2 輪的 payload 存在
+- **盲評已過**：第 2 輪（2026-10-25）兩位全新讀者十三題全是，沒有改稿；答案在 `panel/`，`narrative --answers panel/reader-1.json` 已留紀錄 passed。經過：主對話跑（這個環境沒有 Agent 工具）。第 1 輪跑完、照否題改了開場；第 2 輪的 payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s14/payload-r2.json`
   （`narrative --json` 的輸出，`narration` 與 `questions` 原文），待主對話跑。`panel/` 還沒有檔案。
 - 沒有生圖、沒有配音、沒有花錢、沒有 commit。第一版（`../curio-s14/`）沒上過主機，第二版用新 slug，不動第一版。
