@@ -29,27 +29,27 @@
   "loops": [
     {
       "setup": "cj102",
-      "payoff": "cj712",
+      "payoff": "cj713",
       "what": "船頭換過的三個人"
     },
     {
-      "setup": "cj108",
+      "setup": "cj107",
       "payoff": "cj419",
       "what": "正史裡找不到借箭兩個字"
     },
     {
-      "setup": "cj109",
+      "setup": "cj108",
       "payoff": "cj302",
       "what": "說書本子裡喊謝箭的是誰"
     },
     {
-      "setup": "cj110",
+      "setup": "cj109",
       "payoff": "cj415",
       "what": "那艘被射得快翻的大船"
     },
     {
-      "setup": "cj112",
-      "payoff": "cj713",
+      "setup": "cj111",
+      "payoff": "cj714",
       "what": "草船借箭其實不是諸葛亮嗎"
     },
     {
@@ -108,7 +108,7 @@
       "what": "裴松之為什麼不挑一個"
     },
     {
-      "setup": "cj519",
+      "setup": "cj520",
       "payoff": "cj601",
       "what": "後來的史家信了哪一邊"
     },
@@ -118,8 +118,13 @@
       "what": "建安十八年諸葛亮人在哪裡"
     },
     {
-      "setup": "cj710",
-      "payoff": "cj711",
+      "setup": "cj705",
+      "payoff": "cj709",
+      "what": "赤壁那一仗諸葛亮做了什麼"
+    },
+    {
+      "setup": "cj711",
+      "payoff": "cj712",
       "what": "平話裡的周瑜後來怎麼了"
     }
   ],
@@ -200,7 +205,7 @@
       "chapter": "第三天四更，二十隻草船開進江上大霧",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt slouched on a sofa in a small living room on a rainy afternoon, holding a thick paperback half open on his knee and grinning straight at the camera, a window with rain streaks behind him, soft daylight from the window",
+        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt slouched on a sofa in a small living room at midday, holding a thick paperback half open on his knee and grinning straight at the camera, a window with rain streaks behind him, soft daylight from the window",
         "camera": "push in",
         "visual": "still"
       },
@@ -257,23 +262,7 @@
       "lines": [
         {
           "id": "cj104",
-          "text": "二十隻快船開向曹營，兩邊綁滿草綑，罩著青布。"
-        }
-      ]
-    },
-    {
-      "id": "cao-orders",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stout middle-aged warlord with a trimmed grey beard in a black robe and a tall dark cap standing on a wooden lookout platform on a misty riverbank, pointing out toward the river with one arm and a suspicious frown straight ahead, soft cloudy light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cj105",
-          "text": "曹營看不清，只叫弓弩手往江心亂射。",
-          "emotion": "緊一點"
+          "text": "二十隻快船開向曹營，兩邊綁滿草綑。"
         }
       ]
     },
@@ -287,8 +276,8 @@
       },
       "lines": [
         {
-          "id": "cj106",
-          "text": "箭像雨一樣落下；船隊忽然掉頭，換另一面受箭。",
+          "id": "cj105",
+          "text": "曹營看不清，只往江心亂射；船隊忽然掉頭，換另一面受箭。",
           "emotion": "放慢，這是重點"
         }
       ]
@@ -303,7 +292,7 @@
       },
       "lines": [
         {
-          "id": "cj107",
+          "id": "cj106",
           "text": "霧散時，船上的軍士齊聲喊：謝丞相箭！",
           "emotion": "熱鬧，帶笑"
         }
@@ -313,14 +302,14 @@
       "id": "arc-nobook",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a long reading table in an archive on an overcast afternoon, a thick string-bound history closed under one flat hand, shaking his head slowly at the onlooker, tall shelves behind him, soft daylight from a side window",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a long reading table in an archive in late morning, a thick string-bound history closed under one flat hand, shaking his head slowly straight ahead, tall shelves behind him, soft daylight from a side window",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj108",
-          "text": "可是你去翻正史《三國志》，連注解一起翻，找不到「借箭」兩個字。",
+          "id": "cj107",
+          "text": "可是正史《三國志》，連注解一起翻，找不到「借箭」兩個字。",
           "emotion": "轉折，放慢"
         }
       ]
@@ -335,8 +324,8 @@
       },
       "lines": [
         {
-          "id": "cj109",
-          "text": "但這還不是最怪的。七百年前的說書本子裡，喊「謝箭」的，另有其人。",
+          "id": "cj108",
+          "text": "但這還不是最怪的。七百年前的說書本子裡，喊謝箭的另有其人。",
           "emotion": "升級，收著"
         }
       ]
@@ -351,7 +340,7 @@
       },
       "lines": [
         {
-          "id": "cj110",
+          "id": "cj109",
           "text": "再往前一千多年，一本書寫到一艘大船，被箭射得快翻了。",
           "emotion": "停在這裡"
         }
@@ -367,12 +356,12 @@
       },
       "lines": [
         {
-          "id": "cj111",
-          "text": "這份檔案，我們把那一下掉頭，從小說一路翻回一千八百年前。",
+          "id": "cj110",
+          "text": "這份檔案，把那一下掉頭從小說一路翻回一千八百年前。",
           "emotion": "承諾句，語氣篤定"
         },
         {
-          "id": "cj112",
+          "id": "cj111",
           "text": "草船借箭，其實不是諸葛亮？",
           "emotion": "問句上揚，停一拍"
         }
@@ -408,7 +397,18 @@
           "id": "cj202",
           "text": "故事裡，周瑜嚇了一跳，說了一句：此人決不可留。",
           "emotion": "壓低"
-        },
+        }
+      ]
+    },
+    {
+      "id": "zhou-task",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a handsome commander in a dark red tunic and light leather armour standing in a large army tent at midday, holding up ten fingers with a thin, polite smile straight ahead, a long table with a blank scroll behind him, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "cj203",
           "text": "他想找個說得過去的理由除掉他，就請他在十天之內，造出開頭說的那十萬枝箭。"
@@ -439,14 +439,14 @@
       "id": "you-arrows",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt sitting at a kitchen table in the afternoon, counting on his fingers with a worried frown straight ahead, a mug and a notepad with a blank page in front of him, soft daylight from a window on the right",
+        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt sitting at a kitchen table on an overcast noon, counting on his fingers with a worried frown straight ahead, a mug and a notepad with a blank page in front of him, soft daylight from a window on the right",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cj206",
-          "text": "換成你，三天要交十萬枝箭，你會先去哪裡找材料？",
+          "text": "換成你，三天要交這麼多箭，你會先去哪裡找材料？",
           "emotion": "問句，對觀眾"
         }
       ]
@@ -470,7 +470,7 @@
       "id": "lusu-boats",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a round-faced adviser with a thin beard in a dust-brown gown and a flat cap standing on a wooden pier on a dull afternoon, pointing along a row of small moored boats with one hand and glancing back at the onlooker with a nervous smile, mild light",
+        "prompt": "Medium shot of a round-faced adviser with a thin beard in a dust-brown gown and a flat cap standing on a wooden pier on a rainy morning, pointing along a row of small moored boats with one hand and glancing back toward the camera with a nervous smile, mild light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -505,7 +505,7 @@
       "id": "fog-ode",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a novelist with a short moustache in a dark grey gown and a soft cap at a writing table in a study in the late afternoon, brush raised, gazing out at a misty river through an open window with a dreamy smile, soft light from the window",
+        "prompt": "Medium shot of a novelist with a short moustache in a dark grey gown and a soft cap at a writing table in a study in dusk-grey light, brush raised, gazing out at a misty river through an open window with a dreamy smile, soft light from the window",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -521,7 +521,7 @@
       "id": "zhuge-array",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a line of small wooden boats with straw bundles along their sides spread across a misty river at dawn, one drummer in a short jacket beating a drum on the nearest deck and looking at the onlooker, soft pale light",
+        "prompt": "Wide shot of a line of small wooden boats with straw bundles along their sides spread across a misty river at dawn, one drummer in a short jacket beating a drum on the nearest deck and looking out at the viewer, soft pale light",
         "camera": "drift",
         "visual": "still"
       },
@@ -733,7 +733,18 @@
         {
           "id": "cj225",
           "text": "沒想到，這個本子裡，這一段的標題叫「諸葛亮計伏周瑜」，"
-        },
+        }
+      ]
+    },
+    {
+      "id": "arc-cover-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with short hair in a cotton shirt and a knitted vest at a window seat in an archive at midday, running one finger down the spine of a closed string-bound book with a puzzled frown, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "cj226",
           "text": "整卷連「借箭」這個說法都還沒出現；它要到通行本的回目才有。"
@@ -855,14 +866,14 @@
       "id": "teller-big",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a lively storyteller with a thin moustache in a brown jacket, a folding fan in one hand on a teahouse stage on a drizzly afternoon, spreading both arms wide with an exaggerated gasp at the onlooker, the folding fan flung open in one hand, soft light through paper windows",
+        "prompt": "Medium close-up of a lively storyteller with a thin moustache in a brown jacket, a folding fan in one hand on a teahouse stage on a drizzly afternoon, spreading both arms wide with an exaggerated gasp straight ahead, the folding fan flung open in one hand, soft light through paper windows",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cj307",
-          "text": "你聽聽這個數字，幾百萬枝；後來小說裡的十萬枝，反而算客氣的了。",
+          "text": "你聽聽這個數字，幾百萬枝；後來小說裡那個數字，反而算客氣的了。",
           "emotion": "好笑，對觀眾"
         }
       ]
@@ -982,7 +993,7 @@
       "id": "opera-unread",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest crouching in front of a low shelf in an archive at midday, peering into an empty slot between two rows of thin volumes with a rueful look at the onlooker, mild light from a side window",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest crouching in front of a low shelf in an archive at midday, peering into an empty slot between two rows of thin volumes with a rueful look toward the camera, mild light from a side window",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1050,7 +1061,7 @@
       "id": "generals-feet",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a burly general in dark lacquered armour sitting on the edge of a wooden jetty on a mild afternoon, one bare foot dangling over the river and a dismissive grin at the onlooker, a moored war boat behind him, soft daylight",
+        "prompt": "Medium shot of a burly general in dark lacquered armour sitting on the edge of a wooden jetty in late morning, one bare foot dangling over the river and a dismissive grin out at the viewer, a moored war boat behind him, soft daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1256,7 +1267,7 @@
       "id": "arc-word",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table on an overcast afternoon, tapping one fingertip on the closed cover of a thick book and raising his eyebrows at the onlooker, soft daylight from a side window",
+        "prompt": "Close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table on an overcast noon, tapping one fingertip on the closed cover of a thick book and raising his eyebrows at the onlooker, soft daylight from a side window",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1362,7 +1373,7 @@
       "id": "arc-proto",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing by a window in an archive on a dull afternoon, holding a small wooden model boat up beside his face and tilting his head at the onlooker, soft daylight",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing by a window in an archive on a rainy morning, holding a small wooden model boat up beside his face and tilting his head straight ahead, soft daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -1457,7 +1468,7 @@
       "id": "arc-reread",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table on a cloudy afternoon, flipping back a few pages with one hand and frowning in disbelief at the onlooker, soft light from a side window",
+        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table in dusk-grey light, flipping back a few pages with one hand and frowning in disbelief toward the camera, soft light from a side window",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1519,7 +1530,7 @@
       "id": "cao-dogs",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout middle-aged warlord with a trimmed grey beard in a black robe and a tall dark cap on a riverside platform on an overcast afternoon, pointing a riding whip across the water with a mocking smirk at the onlooker, soft light",
+        "prompt": "Medium close-up of a stout middle-aged warlord with a trimmed grey beard in a black robe and a tall dark cap on a riverside platform on an overcast afternoon, pointing a riding whip across the water with a mocking smirk out at the viewer, soft light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1528,7 +1539,18 @@
           "id": "cj509",
           "text": "這句話你一定聽過；後半句比較少人引：劉景升的兒子，像豬狗一樣。",
           "emotion": "帶一點壞笑，對觀眾"
-        },
+        }
+      ]
+    },
+    {
+      "id": "cao-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged warlord with a trimmed grey beard in a black robe and a tall dark cap and no one else, standing at a camp gate on a dull midday, hands clasped behind his back and a wistful look straight ahead, a river beyond the palisade, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "cj510",
           "text": "說這句話的曹操快六十歲，孫權才三十出頭。"
@@ -1573,7 +1595,7 @@
       "id": "you-editor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt sitting cross-legged on a rug in the afternoon with two closed books, one in each hand, weighing them against each other and looking up at the onlooker in mock despair, soft daylight from a window",
+        "prompt": "Medium shot of a man in his twenties in a hooded sweatshirt sitting cross-legged on a rug at midday with two closed books, one in each hand, weighing them against each other and looking up at the onlooker in mock despair, soft daylight from a window",
         "camera": "drift",
         "visual": "still"
       },
@@ -1636,14 +1658,29 @@
       "id": "pei-critic",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly scholar with thin white whiskers in a plain undyed linen gown and a gauze cap seated at a low desk in a wooden hall on an overcast afternoon, holding up one closed book and wagging a finger at it with a disapproving look, light from a side door",
+        "prompt": "Medium shot of an elderly scholar with thin white whiskers in a plain undyed linen gown and a gauze cap seated at a low desk in a wooden hall in late morning, holding up one closed book and wagging a finger at it with a disapproving look, light from a side door",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cj518",
-          "text": "他在別的地方還批評過胡沖，說他的書寫得乖僻；可是這一條注裡，兩邊照抄，一句評語都沒加。"
+          "text": "他在別的地方還批評過胡沖，說他的書寫得乖僻；"
+        }
+      ]
+    },
+    {
+      "id": "pei-copies",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly scholar with thin white whiskers in a plain undyed linen gown and a gauze cap at a low desk in a wooden hall at midday, brush moving down a page whose writing faces away from the camera, his eyes calm and lowered, soft daylight from a side door",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cj519",
+          "text": "可是這一條注裡，兩邊照抄，一句評語都沒加。"
         }
       ]
     },
@@ -1657,7 +1694,7 @@
       },
       "lines": [
         {
-          "id": "cj519",
+          "id": "cj520",
           "text": "那後來的史家，又信了哪一邊？",
           "emotion": "問句"
         }
@@ -1761,7 +1798,7 @@
       "id": "novel-61",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a novelist with a short moustache in a dark grey gown and a soft cap at a writing table in a study on a dull afternoon, leafing forward through a thick stack of manuscript pages with their backs to the camera and a knowing smile at the onlooker, soft light through a paper screen",
+        "prompt": "Medium shot of a novelist with a short moustache in a dark grey gown and a soft cap at a writing table in a study on an overcast noon, leafing forward through a thick stack of manuscript pages with their backs to the camera and a knowing smile straight ahead, soft light through a paper screen",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1778,7 +1815,7 @@
       "id": "novel-61-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lord in his early thirties with a short auburn beard in a deep blue coat and a small gold crown seated under a round silk parasol on the deck of a large war boat on a cloudy river, hands on his knees and a composed smile at the onlooker, soft light",
+        "prompt": "Medium shot of a lord in his early thirties with a short auburn beard in a deep blue coat and a small gold crown seated under a round silk parasol on the deck of a large war boat on a cloudy river, hands on his knees and a composed smile toward the camera, soft light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1793,7 +1830,7 @@
       "id": "novel-61-c",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a riverbank with a row of archers in dark lacquered armour kneeling behind reeds, bows lowered, one officer in front raising a hand and looking at the onlooker, a camp with banners far across the water, overcast light",
+        "prompt": "Wide shot of a riverbank with a row of archers in dark lacquered armour kneeling behind reeds, bows lowered, one officer in front raising a hand and looking out at the viewer, a camp with banners far across the water, overcast light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1809,7 +1846,7 @@
       "id": "novel-move",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing beside a tall shelf in an archive on an overcast afternoon, lifting a small wooden model boat from one shelf and setting it onto a higher one, glancing at the onlooker, soft daylight",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing beside a tall shelf in an archive on a rainy morning, lifting a small wooden model boat from one shelf and setting it onto a higher one, glancing at the onlooker, soft daylight",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1820,7 +1857,18 @@
           "say": "看起來像是，那艘船被小說從如需搬走了，搬進第四十六回。",
           "say_for": "02c94b84fdab",
           "emotion": "放慢"
-        },
+        }
+      ]
+    },
+    {
+      "id": "novel-move-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest beside a tall archive shelf at midday, holding up one open palm with a candid shrug straight ahead, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "cj613",
           "text": "我說「看起來像是」，因為沒有直接的證據。",
@@ -1832,14 +1880,14 @@
       "id": "novel-hook",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing at the bow of a small boat on a misty river, lowering the feather fan and looking at the onlooker with a quiet, unreadable expression, soft diffused light",
+        "prompt": "Medium close-up of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing at the bow of a small boat on a misty river, lowering the feather fan and looking straight ahead with a quiet, unreadable expression, soft diffused light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cj614",
-          "text": "不管是誰搬的，到了小說裡，船頭上站的是諸葛亮。"
+          "text": "不管是誰搬的，到了小說裡，船頭上是諸葛亮。"
         },
         {
           "id": "cj615",
@@ -1871,7 +1919,7 @@
       "id": "zhuge-age",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing on a city wall walkway on an overcast afternoon, resting both hands on the parapet and looking out at the onlooker with a patient smile, a long river valley behind him, mild light",
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing on a city wall walkway in dusk-grey light, resting both hands on the parapet and looking out toward the camera with a patient smile, a long river valley behind him, mild light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1901,7 +1949,7 @@
       "id": "liu-plans",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a warlord with long earlobes and a short beard in a pale brown robe in a hill fort hall on a dull afternoon, stroking his short beard with a faraway, calculating look at the onlooker, a folded map with its blank back on the table before him, soft daylight",
+        "prompt": "Medium close-up of a warlord with long earlobes and a short beard in a pale brown robe in a hill fort hall on a dull afternoon, stroking his short beard with a faraway, calculating look out at the viewer, a folded map with its blank back on the table before him, soft daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -1910,6 +1958,22 @@
           "id": "cj704",
           "text": "盟友在四川另有盤算，最後也沒有來。",
           "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "zhuge-chibi-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing on a riverbank in a rainy morning, the feather fan held over his head like a small roof, looking out at the viewer with a mild, questioning smile, soft grey-white light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cj705",
+          "text": "那他最有名的赤壁呢？正史裡，他在那一仗做了什麼？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1923,8 +1987,8 @@
       },
       "lines": [
         {
-          "id": "cj705",
-          "text": "就連赤壁那一仗，正史寫放火燒船的是周瑜的部將黃蓋；"
+          "id": "cj706",
+          "text": "放火燒船的，正史寫的是周瑜的部將黃蓋；"
         }
       ]
     },
@@ -1938,7 +2002,7 @@
       },
       "lines": [
         {
-          "id": "cj706",
+          "id": "cj707",
           "text": "幾十隻船裝滿柴草、澆上油，先寫信假裝投降，再點火。"
         }
       ]
@@ -1947,13 +2011,13 @@
       "id": "arc-straw",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table on an overcast afternoon, holding up a single dry straw between two fingers and raising an eyebrow at the onlooker, soft daylight from a side window",
+        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest at a reading table at midday, holding up a single dry straw between two fingers and raising an eyebrow straight ahead, soft daylight from a side window",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj707",
+          "id": "cj708",
           "text": "你注意到沒有？正史裡赤壁的草，是拿來燒的，不是拿來接箭的。",
           "emotion": "對觀眾，帶笑"
         }
@@ -1963,17 +2027,28 @@
       "id": "zhuge-envoy-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing in a riverside hall on a cloudy afternoon, bowing slightly with the feather fan held to his chest toward a seated figure out of frame, a polite smile at the onlooker, soft window light",
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing in a riverside hall in late morning, bowing slightly with the feather fan held to his chest toward a seated figure out of frame, a polite smile toward the camera, soft window light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj708",
-          "text": "諸葛亮呢，是去談聯盟的使者：劉備退到夏口，他說事情急了，自己請命去見孫權；"
-        },
-        {
           "id": "cj709",
+          "text": "諸葛亮，是去談聯盟的使者：劉備退到夏口，他說事情急了，自己請命去見孫權。"
+        }
+      ]
+    },
+    {
+      "id": "sun-sends",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lord in his early thirties with a short auburn beard in a deep blue coat and a small gold crown standing in a riverside hall at midday, extending one arm toward the door with a decisive nod straight ahead, three officers' helmets on a rack behind him, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cj710",
           "text": "談成之後，孫權派周瑜、程普、魯肅帶三萬水軍，跟他回去。"
         }
       ]
@@ -1988,12 +2063,12 @@
       },
       "lines": [
         {
-          "id": "cj710",
+          "id": "cj711",
           "text": "那平話裡借到箭的周瑜呢？",
           "emotion": "問句"
         },
         {
-          "id": "cj711",
+          "id": "cj712",
           "text": "三年前，他就病逝在巴丘，三十六歲。"
         }
       ]
@@ -2002,13 +2077,13 @@
       "id": "three-men",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a long table in an archive on an overcast afternoon, lining up three small wooden model boats in a row with one finger and looking up at the onlooker, soft daylight from a side window",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a long table in an archive on an overcast noon, lining up three small wooden model boats in a row with one finger and looking up out at the viewer, soft daylight from a side window",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj712",
+          "id": "cj713",
           "text": "開頭說，這一下掉頭的船頭換過三個人：小說裡的諸葛亮、平話裡的周瑜，和注解裡的孫權。",
           "emotion": "回收，放慢"
         }
@@ -2024,7 +2099,7 @@
       },
       "lines": [
         {
-          "id": "cj713",
+          "id": "cj714",
           "text": "所以這份檔案存檔：草船借箭那一下掉頭，目前查到最早的紀錄，",
           "emotion": "收尾，乾脆"
         }
@@ -2040,7 +2115,7 @@
       },
       "lines": [
         {
-          "id": "cj714",
+          "id": "cj715",
           "text": "不在諸葛亮的船上，在孫權的船上。",
           "emotion": "收尾，乾脆"
         }
@@ -2059,12 +2134,12 @@
       },
       "lines": [
         {
-          "id": "cj715",
+          "id": "cj716",
           "text": "如果由你來寫這一幕，你會讓誰站在船頭？留言告訴我。",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "cj716",
+          "id": "cj717",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
