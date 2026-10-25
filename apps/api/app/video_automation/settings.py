@@ -61,7 +61,7 @@ MODEL_CAPABILITY: dict[ApiProviderName, Capability] = {
     "gemini": "gemini_structured",
 }
 AUTO_APPROVED_NOTE = "Jev 判斷每一句都唸對了，依設定自動核准"
-AUTO_APPROVED_STORYBOARD_NOTE = "judge 給每一鏡的分數都達到門檻、沒有列出問題，依設定自動核准"
+AUTO_APPROVED_STORYBOARD_NOTE = "judge 給每一鏡的分數都達到門檻、沒有要重畫的問題，依設定自動核准"
 AUTO_PICKED_LOOK_NOTE = "judge 給 {key} {score:g}/10、沒有列出問題，依設定自動選"
 
 
@@ -442,7 +442,16 @@ async def auto_approves_audio(
     return enabled and audio_check_passed(payload)
 
 
-def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
+# The fault checks a manga-tier keyframe can fail on a second look and still pass (tools/video/
+# media/keyframes.mjs keyframeChecks, a cost of 6 or less), by the key the judge starts each of
+# its problem lines with (app/video_media/judge.py _line). Every other check costs 10, which
+# fails the take and sends the shot as needs_review.
+SECOND_LOOK_CHECKS = frozenset({"details", "awkward", "subtitle_band"})
+
+
+def storyboard_check_passed(
+    payload: dict[str, Any], min_score: int, *, second_look_remarks: bool = False
+) -> bool:
     """Whether every expected picture is complete and clears the owner's judge threshold.
 
     New submissions attest the selected files' hashes after checking local bytes and list
@@ -454,7 +463,26 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
     owner decides on it at the final gate, which that video's worker sends for manual review,
     so its score and problems do not hold the storyboard back here. The board's ``overall`` is
     then the lowest score among the other shots, and null when every shot was accepted.
+
+    ``second_look_remarks`` is for a manga-tier drama, whose keyframes are judged with fault
+    checks: a take that passed may still carry a remark from one of ``SECOND_LOOK_CHECKS``,
+    which only lowered its score, and such a shot counts as passed when it clears the
+    threshold. A remark under any other key still holds the storyboard back.
     """
+
+    def second_look(line: Any) -> bool:
+        if not isinstance(line, str):
+            return False
+        key, separator, _ = line.partition(": ")
+        return bool(separator) and key in SECOND_LOOK_CHECKS
+
+    def remarks_allowed(remarks: Any) -> bool:
+        if remarks in (None, []):
+            return True
+        return second_look_remarks and isinstance(remarks, list) and all(
+            second_look(line) for line in remarks
+        )
+
     judge = payload.get("judge")
     shots = payload.get("shots")
     if not isinstance(judge, dict) or not isinstance(shots, list) or not shots:
@@ -506,7 +534,7 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
             return False
         score = verdict.get("overall")
         if (not isinstance(score, int | float) or isinstance(score, bool)
-                or not min_score <= score <= 10 or verdict.get("problems") not in (None, [])
+                or not min_score <= score <= 10 or not remarks_allowed(verdict.get("problems"))
                 or verdict.get("passed") is False):
             return False
     if overall is None:
@@ -550,15 +578,24 @@ async def auto_approves_storyboard(
         if not slides_values(row).slides_auto_approve_storyboard:
             return False
         return storyboard_check_passed(payload, row.judge_min_score)
+    series: VideoDramaSeries | None = None
     if row.auto_approve_storyboard and series_slug:
         series = await session.scalar(
             select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug)
         )
         if series is not None and is_long_anime(series):
             return False
-    if not row.auto_approve_storyboard and await hands_off_series(session, series_slug) is None:
-        return False
-    return storyboard_check_passed(payload, row.judge_min_score)
+    if not row.auto_approve_storyboard:
+        series = await hands_off_series(session, series_slug)
+        if series is None:
+            return False
+    # A manga-tier series' keyframes are judged with fault checks (docs/videos/DRAMA.md §manga
+    # 等級的關鍵影格用是非題), so a shot that passed may carry a second-look remark.
+    return storyboard_check_passed(
+        payload,
+        row.judge_min_score,
+        second_look_remarks=series is not None and series.visual_tier == "manga",
+    )
 
 
 def _suggested_sheet(payload: dict[str, Any]) -> tuple[str, float] | None:

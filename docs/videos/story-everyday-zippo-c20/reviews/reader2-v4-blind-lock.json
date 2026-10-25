@@ -1,0 +1,37 @@
+{
+  "reader": "B",
+  "review_kind": "narrator_only_blind",
+  "locked_at_utc": "2026-10-23T07:07:15Z",
+  "input_path": "c20-zippo-narration-v4-only.txt",
+  "input_sha256": "0AB3EE39F253B19604618BDF70424DBEEDA51711561673B3120A06563697F761",
+  "line_count": 64,
+  "author_context_seen_before_lock": false,
+  "overall": "HOLD",
+  "rule": "Any HOLD item makes the overall verdict HOLD.",
+  "items": {
+    "scene_first": {"verdict": "PASS", "ids": ["c200101", "c200103"], "reason": "從有磨痕的維修桌小盒與專利圖開場，有可見場景。"},
+    "no_spoiler": {"verdict": "HOLD", "ids": ["c200105", "c200502", "c200503"], "reason": "開場已說想取回原內膽須在表上註明，提前洩漏第五段才要揭示的內膽更換結果。"},
+    "one_line": {"verdict": "PASS", "ids": ["c200106", "c200107", "c200514"], "reason": "主問題始終是免費修復究竟保住小盒的哪些部分。"},
+    "no_toc": {"verdict": "PASS", "ids": ["c200101", "c200107", "c200201"], "reason": "開場從場景與疑問入故事，沒有逐章預告。"},
+    "chapters_link": {"verdict": "PASS", "ids": ["c200213", "c200301", "c200311", "c200401", "c200412", "c200501", "c200515", "c200601"], "reason": "專利、製造年代與當前保證各由前段問題接入，末段新內膽問題緊接回答。"},
+    "open_loops": {"verdict": "PASS", "ids": ["c200106", "c200209", "c200213", "c200412", "c200515"], "reason": "有維修結果、專利共同發明人、當今服務及新內膽保固等待回答的問題。"},
+    "payoffs": {"verdict": "PASS", "ids": ["c200301", "c200406", "c200501", "c200514", "c200601"], "reason": "共同發明人、日期碼、換內膽與保證範圍均得到明確回應。"},
+    "outro_no_next": {"verdict": "PASS", "ids": ["c200609", "c200610"], "reason": "收尾只問觀眾選擇並邀請訂閱，沒有預告指定下一集。"},
+    "opening_hooks": {"verdict": "PASS", "ids": ["c200101", "c200102", "c200106", "c200107"], "reason": "磨損實物、終身承諾及修後保留什麼形成開場張力。"},
+    "one_thread": {"verdict": "PASS", "ids": ["c200107", "c200209", "c200412", "c200514"], "reason": "核心敘事仍沿著可拆的打火機與維修承諾前進。"},
+    "no_detour": {"verdict": "HOLD", "ids": ["c200401", "c200402", "c200403", "c200404", "c200405", "c200410"], "reason": "四句戰時供應與材料史沒有導出送修規則；旁白自己說公司史未交代戰時維修，另有博物館一句繞路。"},
+    "no_recap": {"verdict": "HOLD", "ids": ["c200508", "c200509", "c200514", "c200607", "c200608"], "reason": "結尾連續重述鉸鏈與刮痕的區別，以及傳統款功能承諾；新內膽揭示後缺少新的結局動作。"}
+  },
+  "hook_cadence_30_45s": {
+    "assessment": "HOLD_ON_PAPER",
+    "ids": ["c200106", "c200209", "c200213", "c200412", "c200515"],
+    "reason": "明示的提問分布不均；c200106 至 c200209 間約 397 個旁白字元，c200412 至 c200515 間約 576 個旁白字元，後段雖有答案與轉折，仍不能從文字確認每 30 至 45 秒有新鉤子。需聽實際配音檢查。",
+    "actual_tts_runtime_claimed": false
+  },
+  "oral_one_pass": {
+    "assessment": "PASS_WITH_NOTE",
+    "ids": ["c200501", "c200505", "c200512", "c200601"],
+    "reason": "英國、美國和雙電弧內膽均有明確標示；但第五段服務條款密集，讀速及停頓仍需實際口播確認。",
+    "actual_tts_runtime_claimed": false
+  }
+}

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import hashlib
+import os
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, cast
@@ -130,6 +132,36 @@ def test_only_files_a_live_review_shows_are_kept(tmp_path: Path) -> None:
     assert admin_service.kept_files(reviews) == {names[1], names[2]}
     assert store.keep_only("v", admin_service.kept_files(reviews)) == [names[0]]
     assert store.path("v", names[1]) is not None and store.path("v", names[0]) is None
+
+
+def _aged(store: ReviewStore, slug: str, sha: str, hours: float) -> None:
+    path = store.path(slug, sha)
+    assert path is not None
+    then = time.time() - hours * 3600
+    os.utime(path, (then, then))
+
+
+def test_a_submission_s_clean_up_spares_what_just_arrived(tmp_path: Path) -> None:
+    """A file nothing refers to yet may belong to the next review of the same gate (a
+    character sheet each, sync.mjs lookSubmissions): within UPLOAD_GRACE it stays."""
+    store = _store(tmp_path)
+    names = []
+    for body in (b"sheet", b"early", b"stale"):
+        sha = hashlib.sha256(body).hexdigest()
+        store.put_part("v", sha, index=0, count=1, size=len(body), data=body)
+        names.append(sha)
+    sheet, early, stale = names
+    _aged(store, "v", stale, 2)
+    grace = admin_service.UPLOAD_GRACE
+    assert store.keep_only("v", {sheet}, older_than=grace) == [stale]
+    assert store.path("v", early) is not None and store.path("v", stale) is None
+    # A file the store already has counts as arriving again when it is uploaded again.
+    _aged(store, "v", early, 2)
+    body = b"early"
+    assert store.put_part("v", early, index=0, count=1, size=len(body), data=body).complete
+    assert store.keep_only("v", {sheet}, older_than=grace) == []
+    # Without a grace (a dropped video, a published preview) everything unnamed goes.
+    assert store.keep_only("v", {sheet}) == [early]
 
 
 def _review(
@@ -982,7 +1014,12 @@ async def _drama_on_site(site: Site) -> VideoProject:
         return project
 
 
-def _look(subject: str, name: str, sha: str = "c" * 64) -> ReviewIn:
+def _look(
+    subject: str,
+    name: str,
+    sha: str = "c" * 64,
+    files: list[dict[str, Any]] | None = None,
+) -> ReviewIn:
     return ReviewIn(
         gate="look",
         subject=subject,
@@ -994,7 +1031,46 @@ def _look(subject: str, name: str, sha: str = "c" * 64) -> ReviewIn:
             "options": [{"key": "A", "index": 1}, {"key": "B", "index": 2}],
             "suggested": "A",
         },
+        files=files or [],
     )
+
+
+def _sheet(site: Site, body: bytes, role: str) -> dict[str, Any]:
+    sha = hashlib.sha256(body).hexdigest()
+    site.store.put_part(SITE_SLUG, sha, index=0, count=1, size=len(body), data=body)
+    return {"role": role, "sha256": sha, "size": len(body), "content_type": "image/png"}
+
+
+@pytest.mark.asyncio
+async def test_every_character_s_sheets_survive_the_first_look_review_s_clean_up(
+    site: Site, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """review-push uploads every character's sheets, then submits one look review per
+    character; the first submission used to delete the files of the ones not yet submitted,
+    and the second answered 409 video_review_files_missing (ticket 2026-10-22-409)."""
+    monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "spend_by_slug", AsyncMock(return_value={}))
+    await _drama_on_site(site)
+    cast = (("bride", "新娘"), ("groom", "新郎"), ("guest", "賓客"))
+    sheets = {
+        subject: [_sheet(site, f"{subject} {n}".encode(), f"candidate_{n}") for n in "ab"]
+        for subject, _ in cast
+    }
+    # A sheet from an earlier round that no review ever named: it alone is cleaned up.
+    stray = _sheet(site, b"stray", "candidate_c")
+    _aged(site.store, SITE_SLUG, stray["sha256"], 2)
+
+    reviews = [
+        await _submit(site, _look(subject, name, files=sheets[subject])) for subject, name in cast
+    ]
+    assert [(review.subject, review.status) for review in reviews] == [
+        (subject, "pending") for subject, _ in cast
+    ]
+    assert len({review.id for review in reviews}) == 3
+    for files in sheets.values():
+        for item in files:
+            assert site.store.path(SITE_SLUG, item["sha256"]) is not None
+    assert site.store.path(SITE_SLUG, stray["sha256"]) is None
 
 
 @pytest.mark.asyncio

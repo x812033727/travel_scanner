@@ -1,0 +1,1758 @@
+{
+  "schema_version": 1,
+  "slug": "story-everyday-seven-bank-c19",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北日常說話語調。以克制的說書節奏講真實銀行網路故事；年份、公司歸因和財務單位放慢，章末留半拍。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "series": {
+    "slug": "brand-stories-everyday-reversals",
+    "episode": 19,
+    "chapter": 1
+  },
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "c190103",
+      "payoff": "c190608",
+      "what": "他行卡可提款的條件"
+    },
+    {
+      "setup": "c190104",
+      "payoff": "c190602",
+      "what": "交易如何連回發卡機構"
+    },
+    {
+      "setup": "c190105",
+      "payoff": "c190605",
+      "what": "提款機如何維持有鈔"
+    },
+    {
+      "setup": "c190106",
+      "payoff": "c190505",
+      "what": "顧客端免費時誰付網路費"
+    },
+    {
+      "setup": "c190208",
+      "payoff": "c190312",
+      "what": "既有超商 ATM 先例之後這家銀行做什麼"
+    },
+    {
+      "setup": "c190305",
+      "payoff": "c190306",
+      "what": "銀行開業後機器何時開始服務"
+    },
+    {
+      "setup": "c190407",
+      "payoff": "c190411",
+      "what": "何時接受海外發卡"
+    },
+    {
+      "setup": "c190508",
+      "payoff": "c190510",
+      "what": "網路費用收入的可核年度數字"
+    },
+    {
+      "setup": "c190518",
+      "payoff": "c190605",
+      "what": "附近營業款怎樣納入現金管理"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Seven Bank：超商裡的 ATM，怎麼成了一家銀行的網路？｜品牌故事",
+    "description": "夜裡，一位想像中的顧客拿著他行卡站在超商提款機前。這集從便利商店代收帳單、2001 年銀行與 ATM 網起步，追到後來跨機構服務如何維持機器、現金與費用。\n\n片中顧客、晚餐與提款結果均為明示的假想情境。1987 年顧客需求據公司後來回顧；2001–2007 的設點與服務日期依公司沿革及同期公告。2010 年報的合作機構、費用與現金管理僅指當年模型，不能當今天逐卡費率、個別機器紀錄或每台利潤。畫面均是匿名原創概念插畫，不重建真實店面、提款機、卡片、操作介面或交易。資料查核日期：2026-10-24。",
+    "tags": [
+      "Seven Bank",
+      "便利商店",
+      "ATM",
+      "銀行",
+      "品牌故事",
+      "日用品的意外轉身"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "超商\n**開銀行？**",
+      "tag": "品牌故事",
+      "brand": "SEVEN BANK",
+      "shot": "c19-sc-c190101"
+    }
+  },
+  "sources": [
+    {
+      "title": "Seven Bank, ATM 20th anniversary history",
+      "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "Seven Bank, company history",
+      "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "Seven Bank, Annual Report 2010",
+      "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "Seven Bank, Integrated Report 2024",
+      "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "IY Bank, 2005 name change announcement",
+      "url": "https://www.sevenbank.co.jp/corp/news/2005/060801.html",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "IY Bank, Disclosure 2002",
+      "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "IY Bank, 2001 ATM expansion announcement",
+      "url": "https://www.sevenbank.co.jp/corp/news/2001/1109_1.html",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "title": "IY Bank, Disclosure 2005",
+      "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
+      "checked_on": "2026-10-24"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "c19-sc-c190101",
+      "chapter": "超商貨架旁，這台機器通往哪裡？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，夜晚的泛用小店中，一位穿深藍外套的匿名成年顧客從收銀台走向貨架旁素面提款機，室內暖光，畫內無字。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190101"
+      ],
+      "lines": [
+        {
+          "id": "c190101",
+          "text": "想像一個夜裡：超商還亮著燈。一位客人走過收銀台，在貨架旁的提款機前停下來。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190102",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，同一深藍外套顧客持完全空白的銀行卡和無字餐費單，旁邊一只空餐盤；窗外無字銀行建築已暗，沒有真實交易畫面。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190102"
+      ],
+      "lines": [
+        {
+          "id": "c190102",
+          "text": "她正要用現金付晚餐，卻只帶著別家銀行的卡；銀行櫃台已經關了。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，同一深藍外套顧客把完全空白的卡停在素面提款機讀卡口前，螢幕全空白，沒有受理或拒絕結果。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190103"
+      ],
+      "lines": [
+        {
+          "id": "c190103",
+          "text": "別家銀行的卡，要具備什麼條件，才可能在這台機器提款？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念中景，同一深藍外套顧客只看見素面提款口，遠處兩個無字銀行節點與封閉現金盒尚未連到她手中空白卡；無真實路由或受理結果。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190104"
+      ],
+      "lines": [
+        {
+          "id": "c190104",
+          "text": "她看得到提款口，卻看不到這張卡的交易怎麼接回自己的銀行，也看不到整張網如何讓機器保持有鈔票。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190105",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，同一顧客在未啟用的泛用機器前停步，透明概念鈔盒空著；明確為假設畫面，無警告文字。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190105"
+      ],
+      "lines": [
+        {
+          "id": "c190105",
+          "text": "如果它只是多買來的一個箱子，夜裡沒鈔可領，她仍然白跑一趟。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視素面桌面，空白費用紙與兩條分開的不同色抽象線，旁放泛用機器模型，無人物、數字或可讀字。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190106"
+      ],
+      "lines": [
+        {
+          "id": "c190106",
+          "text": "假如顧客端寫著免手續費，這張網的經營與維護又由誰付帳？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 夜晚泛用小店遠景，同一深藍外套顧客拿完全空白的卡停在素面提款機前；機器尚未顯示任何交易結果，背景無品牌和文字。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190107"
+      ],
+      "lines": [
+        {
+          "id": "c190107",
+          "text": "一家賣日用品的零售集團，怎麼讓別家銀行的客人，在超商裡找到一個有機會提款的入口？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190201",
+      "chapter": "店比銀行晚關，需求先來了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，同一深藍外套顧客回頭看仍亮著的泛用小店收銀台，提款機在背景；這是現在的概念景，不冒充一九八七年店面。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190201"
+      ],
+      "lines": [
+        {
+          "id": "c190201",
+          "text": "她身後的收銀台還亮著；早在提款機進店前，這個零售集團就用收銀台回應銀行關門後的需求。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190202",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 舊式氛圍的概念小店，匿名店員接過完全空白的水電帳單，無真實年代招牌。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190202"
+      ],
+      "lines": [
+        {
+          "id": "c190202",
+          "text": "公司回顧，一九八七年起，超商收銀台開始代收水電等公共事業費。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190203",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 分割中景，無字銀行櫃台關燈，一側泛用小店收銀台仍接過空白帳單，不描真實事件。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190203"
+      ],
+      "lines": [
+        {
+          "id": "c190203",
+          "text": "銀行櫃台關了，帳單還有地方能交；零售店替這段時間差開了門。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190204",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，泛用小店收銀台旁，一位深藍外套顧客凝視手中的空白卡；檯面放著空白帳單，畫內無其他人或字。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190204"
+      ],
+      "lines": [
+        {
+          "id": "c190204",
+          "text": "她今晚要的是現金。光靠收銀台代收，答不了她要提款的問題。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190205",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視近景，多張完全空白意見紙旁放一台素面機器小模型，不畫票數或排名。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190205"
+      ],
+      "lines": [
+        {
+          "id": "c190205",
+          "text": "公司後來說，顧客調查裡，店內 ATM 長年是常被提出的需求。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "公司後來說，顧客調查裡，店內 A T M 長年是常被提出的需求。",
+          "say_for": "400f2eadacf3"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190206",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，空白卡片與封閉鈔盒分放在素面機器模型兩側，匿名手尚未把兩者接上。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190206"
+      ],
+      "lines": [
+        {
+          "id": "c190206",
+          "text": "把需求寫在意見紙上容易；讓銀行的卡和店裡的鈔票對得起來，才難。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190207",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 遠景，兩間不同的泛用小店各有素面提款機，道路與招牌全無字，不比較市占。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190207"
+      ],
+      "lines": [
+        {
+          "id": "c190207",
+          "text": "但「超商裡有提款機」，不是它的獨門點子。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190208",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1999",
+            "label": "超商 ATM 已有先例"
+          }
+        ],
+        "source": "Seven Bank ATM 20 周年年表"
+      },
+      "claims": [
+        "c190208"
+      ],
+      "lines": [
+        {
+          "id": "c190208",
+          "text": "一九九九年，別家超商與銀行已有合作；這個集團還得回答更難的一題：誰來經營整張網？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190211",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 深藍外套顧客持空白卡看向泛用機器，遠處無字銀行建築與店面分離。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190211"
+      ],
+      "lines": [
+        {
+          "id": "c190211",
+          "text": "回到她那張卡：她的銀行不是店主，機器卻得能替它完成交易。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190212",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，泛用小店模型只有貨架與插座，桌上另放未完成的無字網路圖和素面機器模型。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190212"
+      ],
+      "lines": [
+        {
+          "id": "c190212",
+          "text": "貨架與插座不會替她連銀行；後面還要有人承擔整張網。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190213",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視近景，匿名工作者把一個全空白銀行資料夾放在未啟用的機器模型旁。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190213"
+      ],
+      "lines": [
+        {
+          "id": "c190213",
+          "text": "二〇〇一年，這個看不見的經營者先在文件上成形。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190301",
+      "chapter": "先開銀行，再接上機器",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，匿名工作者將空白預備文件放進素面資料夾，未啟用的機器模型在遠處。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190301"
+      ],
+      "lines": [
+        {
+          "id": "c190301",
+          "text": "四月六日，零售集團的銀行計畫先拿到預備牌照。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190302",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2001",
+            "label": "4/6 預備牌照 → 4/10 成立 → 4/25 營業牌照"
+          }
+        ],
+        "source": "Seven Bank 公司沿革"
+      },
+      "claims": [
+        "c190302"
+      ],
+      "lines": [
+        {
+          "id": "c190302",
+          "text": "四天後，IY Bank 成立；正式營業牌照在四月下旬到手。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "四天後，I Y 銀行 成立；正式營業牌照在四月下旬到手。",
+          "say_for": "c63e1bde945c"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190303",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 夜間泛用小店的深藍外套顧客與仍關閉的素面提款機為現在概念景，遠處另以無字銀行資料夾表示較早成立。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190303"
+      ],
+      "lines": [
+        {
+          "id": "c190303",
+          "text": "讓她今晚能用的那張網，在銀行成立那天還沒有亮起來。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190304",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名銀行櫃台人員遞出完全空白開戶文件，背景沒有真實標誌或操作介面。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190304"
+      ],
+      "lines": [
+        {
+          "id": "c190304",
+          "text": "五月七日，銀行先開業，受理自己的帳戶申請。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190305",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 概念雙景，無字銀行櫃台亮起，泛用小店內素面提款機仍關閉，無真實首日畫面。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190305"
+      ],
+      "lines": [
+        {
+          "id": "c190305",
+          "text": "銀行先開門，店裡的機器又等了八天。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190306",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2001-05-15",
+            "label": "東京 23 區 · 59 地點／66 台 ATM"
+          }
+        ],
+        "source": "IY Bank 2001-11-09 設點公告"
+      },
+      "claims": [
+        "c190306"
+      ],
+      "lines": [
+        {
+          "id": "c190306",
+          "text": "五月十五日，東京五十九個地點的六十六台機器才開始服務。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190307",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 空白東京概念地圖只有少量素面機器棋子，另一位匿名成年人停在地圖外緣，不冒充首日顧客。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190307"
+      ],
+      "lines": [
+        {
+          "id": "c190307",
+          "text": "首批機器只在東京幾十個點；身在別處的顧客，當時還得找別的路。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190308",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視空白概念地圖，素面機器棋子逐漸變多，旁邊沒有現金或預測曲線，不畫真實設點。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190308"
+      ],
+      "lines": [
+        {
+          "id": "c190308",
+          "text": "到了七月，設置台數已超過一千；最初的東京名單，幾個月就得重寫。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190309",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，一名匿名職員指著素面帳戶資料夾；旁邊放著無字機器地圖，畫內無其他人物。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190309"
+      ],
+      "lines": [
+        {
+          "id": "c190309",
+          "text": "同年公告還記下自家帳戶陸續開出；這家銀行不只是替別人的卡擺機器。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190310",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名店員把封閉營業款盒放在泛用 ATM 的存款入口旁；提款口在另一側，沒有畫入金直接進提款鈔匣。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190310"
+      ],
+      "lines": [
+        {
+          "id": "c190310",
+          "text": "同年十二月，銀行開始為集團旗下的超商店舖提供營業款入金；",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190310a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 匿名店員把封閉營業款盒放在泛用 ATM 的存款入口旁；提款口在另一側，沒有畫入金直接進提款鈔匣。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190310"
+      ],
+      "lines": [
+        {
+          "id": "c190310a",
+          "text": "現金除了從提款口出去，也有從 ATM 存進來的入口。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "現金除了從提款口出去，也有從 A T M 存進來的入口。",
+          "say_for": "42e83e19aeb9"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190311",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2002",
+            "label": "首次揭露誌"
+          }
+        ],
+        "source": "IY Bank 2002 首次揭露誌"
+      },
+      "claims": [
+        "c190311"
+      ],
+      "lines": [
+        {
+          "id": "c190311",
+          "text": "次年，第一份揭露誌把這家公司要做的工作分成兩條。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190312",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視近景，素面帳戶資料夾與連向多個無字機構的機器網圖並排，兩種用途清楚分開。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190312"
+      ],
+      "lines": [
+        {
+          "id": "c190312",
+          "text": "它替自己的存戶辦存提款，也把機器網開給合作金融機構的客戶。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190313",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 深藍外套顧客持空白卡站在素面提款機前，遠處幾座無字金融機構以抽象線相連。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190313"
+      ],
+      "lines": [
+        {
+          "id": "c190313",
+          "text": "她手裡若是合作銀行的卡，門就可能打開；紙上兩門業務還得長成有鈔可領的網。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190314",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視空白東京概念地圖，一隻匿名手把素面機器棋子往地圖外緣放，不標真實地點或合作銀行。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190314"
+      ],
+      "lines": [
+        {
+          "id": "c190314",
+          "text": "要讓更多合作機構的顧客找到入口，銀行還得把最初那幾十個東京點繼續往外鋪。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190401",
+      "chapter": "一萬台機器，還得補得上鈔",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2005",
+            "label": "ATM 設置超過 10,000 台"
+          }
+        ],
+        "source": "Seven Bank 公司沿革"
+      },
+      "claims": [
+        "c190401"
+      ],
+      "lines": [
+        {
+          "id": "c190401",
+          "text": "到了二〇〇五年四月，這張網已經超過一萬台機器。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190402",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 空白概念地圖新增一枚素面機器棋子，旁邊一只封閉鈔盒仍與它分開，無人物或實際運輸路線。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190402"
+      ],
+      "lines": [
+        {
+          "id": "c190402",
+          "text": "地圖上新增一個點，鈔票卻不會自己進入機器。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190403",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，一名匿名經營者檢視封閉鈔盒與全空白維護資料夾，旁有素面機器模型，無其他人物或可讀字。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190403"
+      ],
+      "lines": [
+        {
+          "id": "c190403",
+          "text": "顧客只看見一個提款口；經營者還得處理各地機器的現金與維護。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190404",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 假設式分割畫面，匿名顧客停在一台未亮的素面機器前，另一側遠景是許多無字機器棋子。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190404"
+      ],
+      "lines": [
+        {
+          "id": "c190404",
+          "text": "一台若停住，對遠處的人只是眾多設備之一；對站在它前面的人，就是今晚領不到錢。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190405",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名工程員在工桌前扶著新一代原創素面機器外殼模型，不描真實機型。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190405"
+      ],
+      "lines": [
+        {
+          "id": "c190405",
+          "text": "同年七月，第二代 ATM 開始進場。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "同年七月，第二代 A T M 開始進場。",
+          "say_for": "0256590908a8"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190406",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，匿名工程員比較大小不同的封閉鈔票處理盒，旁邊是原創機器模型，不畫量測數字。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190406"
+      ],
+      "lines": [
+        {
+          "id": "c190406",
+          "text": "公司說，新設計著眼於更快、更多的鈔票處理，希望提高運送與交易效率。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190407",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，同一深藍外套顧客手持完全空白的卡停在原創素面機器模型前，封閉鈔盒留在背景，未顯示任何卡已被受理。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190407"
+      ],
+      "lines": [
+        {
+          "id": "c190407",
+          "text": "二代機器先對付鈔票；下一道邊界，落在顧客手裡的卡。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190408",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2005",
+            "label": "IY Bank → Seven Bank"
+          }
+        ],
+        "source": "Seven Bank 公司沿革"
+      },
+      "claims": [
+        "c190408"
+      ],
+      "lines": [
+        {
+          "id": "c190408",
+          "text": "十月，IY Bank 正式改名 Seven Bank。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "十月，I Y 銀行 正式改名 賽文銀行。",
+          "say_for": "7466561b5ffa"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190409",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，完全空白的卡與無字旅行冊並排置於素面機器模型旁，無人物，不顯示海外卡已在二〇〇五年可用。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190409"
+      ],
+      "lines": [
+        {
+          "id": "c190409",
+          "text": "這個新名字接下來要面對的，還有日本以外發出的卡。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190410",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視全空白概念地圖，最初一角有泛用小店模型，幾枚素面機器棋子往其他空白區域延伸；不畫車站、機場或真實設點。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190410"
+      ],
+      "lines": [
+        {
+          "id": "c190410",
+          "text": "但這張網後來不只留在最初的東京店角。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190411",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名旅人持完全空白卡站在素面提款機前，旁邊是無字旅行袋，螢幕全空白。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190411"
+      ],
+      "lines": [
+        {
+          "id": "c190411",
+          "text": "二〇〇七年，海外發的卡也開始能在這張網提款、查餘額。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190412",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2007",
+            "label": "47 都道府縣有設點"
+          }
+        ],
+        "source": "Seven Bank 公司沿革"
+      },
+      "claims": [
+        "c190412"
+      ],
+      "lines": [
+        {
+          "id": "c190412",
+          "text": "到年底，四十七個都道府縣已有設點。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190413",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 分割中景，無字車站與機場各有一台素面提款機，匿名旅人走過，不描真實站點。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190413"
+      ],
+      "lines": [
+        {
+          "id": "c190413",
+          "text": "二〇一〇年報連車站和機場都列了進去；貨架不是它唯一的入口。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190414",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2010-03",
+            "label": "555 家合作金融機構"
+          }
+        ],
+        "source": "Seven Bank Annual Report 2010"
+      },
+      "claims": [
+        "c190414"
+      ],
+      "lines": [
+        {
+          "id": "c190414",
+          "text": "那年三月，合作金融機構已有五百五十五家。她眼前一台機器，背後卻接著許多銀行。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190415",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視概念桌面，兩座無字支援中心模型旁各有全空白的狀態螢幕，抽象細線通向數台素面 ATM 模型；無實際監控介面或地理座標。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190415"
+      ],
+      "lines": [
+        {
+          "id": "c190415",
+          "text": "二〇一〇年報記下，東京與大阪的支援中心二十四小時監看各地 ATM 的狀況，也接聽顧客詢問。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "二〇一〇年報記下，東京與大阪的支援中心二十四小時監看各地 A T M 的狀況，也接聽顧客詢問。",
+          "say_for": "35f3f5e09f27"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190416",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一位匿名支援人員在全空白螢幕前伸手操作無字控制台；保全與維修以遠處封閉工具箱暗示，不畫真實事故或第二個人。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190416"
+      ],
+      "lines": [
+        {
+          "id": "c190416",
+          "text": "機器出問題，中心先以遠端方式處理；必要時再協調保全和維修公司，店角這一台才有人能在夜裡接手。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190417",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一位匿名分析員看著沒有數字的使用趨勢紙，旁有封閉鈔盒與素面機器模型作靜物，不重製報告圖。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190417"
+      ],
+      "lines": [
+        {
+          "id": "c190417",
+          "text": "報告還說，缺鈔、故障、例行檢查與現金裝填都會影響服務，銀行因此逐台分析使用趨勢。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190418",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 夜晚泛用小店裡，一台亮著的素面 ATM 旁放封閉維修工具箱；遠處僅有抽象監看細線，不畫百分之百在線保證。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190418"
+      ],
+      "lines": [
+        {
+          "id": "c190418",
+          "text": "它想把停機時間壓短，卻不能保證任何一台永遠在線；機器越多，這些看不見的工作越不能少。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190501",
+      "chapter": "螢幕上的費，和年報裡的收入",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名銀行職員比較單獨一台素面機器模型與共用無字機器網圖，沒有合約金額。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190501"
+      ],
+      "lines": [
+        {
+          "id": "c190501",
+          "text": "二〇一〇年報把合作的帳說得很實際：借這張網，銀行可少扛自有 ATM 的維護與資金成本。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "二〇一〇年報把合作的帳說得很實際：借這張網，銀行可少扛自有 A T M 的維護與資金成本。",
+          "say_for": "505cabba2844"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190502",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 深藍外套顧客拿完全空白的卡走向素面提款機，螢幕全空白；以姿態表現準備操作，不重製合作銀行介面。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190502"
+      ],
+      "lines": [
+        {
+          "id": "c190502",
+          "text": "她若拿合作銀行的卡來，在店裡也能照熟悉的畫面操作。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190503",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 同一深藍外套顧客站在泛用小店素面 ATM 前，一條抽象線連向遠處無字銀行建築；不畫真實網路路由或銀行介面。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190503"
+      ],
+      "lines": [
+        {
+          "id": "c190503",
+          "text": "於是，她在深夜多了一個提款入口；合作銀行也把服務伸進了超商。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190504",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，一名匿名銀行職員端詳完全空白費率紙；遠處是一台素面提款機，畫內無其他人物、數字或箭頭。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190504"
+      ],
+      "lines": [
+        {
+          "id": "c190504",
+          "text": "她若看見顧客端的費用，定價的是持有她帳戶的銀行，不等於機器經營者全拿。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190505",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2010 模型",
+            "label": "合作金融機構付 ATM 使用費"
+          }
+        ],
+        "source": "Seven Bank Annual Report 2010"
+      },
+      "claims": [
+        "c190505"
+      ],
+      "lines": [
+        {
+          "id": "c190505",
+          "text": "Seven Bank 另外向合作金融機構收 ATM 網路使用費。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "賽文銀行 另外向合作金融機構收 A T M 網路使用費。",
+          "say_for": "fa4091ca39a5"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190506",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視概念桌面，顧客端與機器網端各有一條不同顏色的素面費用線，互不重疊。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190506"
+      ],
+      "lines": [
+        {
+          "id": "c190506",
+          "text": "同一次提款，眼前的顧客費和背後的網路費，是兩條不同的路。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190507",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 深藍外套顧客看向全空白螢幕，遠處無字銀行建築與機器網仍有抽象線連接。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190507"
+      ],
+      "lines": [
+        {
+          "id": "c190507",
+          "text": "所以她看到免費，也不能只看螢幕就斷定這張網沒收入。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190508",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 匿名工作者合上全空白合約資料夾，旁邊只見兩條分開的抽象費用線。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190508"
+      ],
+      "lines": [
+        {
+          "id": "c190508",
+          "text": "每家合作到底付多少，公開年報沒有逐筆拆；但錢的方向已經清楚。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190510",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "年度至 2010-03",
+            "label": "ATM 費收入約 ¥853 億"
+          }
+        ],
+        "source": "Seven Bank Annual Report 2010 財務附註"
+      },
+      "claims": [
+        "c190510"
+      ],
+      "lines": [
+        {
+          "id": "c190510",
+          "text": "二〇一〇年的年報，記下這張 ATM 網一年的相關費收入，約八百五十三億日圓。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "二〇一〇年的年報，記下這張 A T M 網一年的相關費收入，約八百五十三億日圓。",
+          "say_for": "3512d780841a"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190511",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視一份完全無字的年度資料夾和數台素面 ATM 小模型，無個人收據、人物、可讀數字或成功交易介面。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190511"
+      ],
+      "lines": [
+        {
+          "id": "c190511",
+          "text": "那是整張網的費用收入，不能當成她這一筆的收據。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190512",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視一台素面 ATM 模型與兩個大小不同的封閉現金盒，旁有一張全空白資金紙；不畫最佳現金量或成本數字。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190512"
+      ],
+      "lines": [
+        {
+          "id": "c190512",
+          "text": "但夜裡要能提款，機器就得有鈔。多放一些，錢會被占住。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190513",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一名匿名補鈔員提著封閉現金盒走向素面機器，背景僅有無字外包服務車剪影；不畫逐台頻率或收費。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190513"
+      ],
+      "lines": [
+        {
+          "id": "c190513",
+          "text": "少放一些，補鈔車又得多跑幾趟。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190514",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 素面 ATM 放在泛用小店角落，旁有無字工具盒與全空白成本資料夾；不畫具體安裝程序、費用數字或真實店面。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190514"
+      ],
+      "lines": [
+        {
+          "id": "c190514",
+          "text": "光把機器放進店裡，也有自己的費用。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190515",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一張無字收入卡旁，另放全空白的設置、資金、系統與行政資料夾，沒有相減算式或單機利潤數字。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190515"
+      ],
+      "lines": [
+        {
+          "id": "c190515",
+          "text": "還得付系統、資金和行政。單看收入，算不出每台賺多少。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190516",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一名匿名分析員檢視全空白使用趨勢紙，旁放一台素面 ATM 模型和封閉現金盒；不畫統一庫存規則。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190516"
+      ],
+      "lines": [
+        {
+          "id": "c190516",
+          "text": "公司也得看機器的使用趨勢，安排放鈔與補鈔。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190517",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 泛用小店內，一位匿名店員把封閉營業款盒拿向素面 ATM 的存款入口，背景沒有顧客操作或提款結果；不畫入金直入提款鈔匣。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190517"
+      ],
+      "lines": [
+        {
+          "id": "c190517",
+          "text": "她想提款；附近店家做完生意，也有營業款要存進銀行。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190518",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視靜物：素面 ATM 模型兩側各放封閉營業款盒與封閉補鈔盒，中間沒有直接運輸箭頭、現金去向或數字。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190518"
+      ],
+      "lines": [
+        {
+          "id": "c190518",
+          "text": "這些存進來的營業款，也會被納入整張 ATM 網的現金管理嗎？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "這些存進來的營業款，也會被納入整張 A T M 網的現金管理嗎？",
+          "say_for": "8a28eedcf169"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190601",
+      "chapter": "櫃台關了，這個入口還在",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 同一深藍外套顧客把空白卡停在素面提款機讀卡口前，螢幕全空白，卡未插入，無交易結果。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190601"
+      ],
+      "lines": [
+        {
+          "id": "c190601",
+          "text": "她的卡還停在讀卡口前；眼前只有一台機器，看不出後面有多少連線。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190602",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 俯視抽象概念圖，素面提款機模型以無字線條分別通向兩個備援中繼節點，再接多座無字金融機構模型；不畫真實網路拓樸。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190602"
+      ],
+      "lines": [
+        {
+          "id": "c190602",
+          "text": "二〇一〇年報記錄，ATM 與合作金融機構的交易，會經過橫濱與大阪的中繼系統。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "二〇一〇年報記錄，A T M 與合作金融機構的交易，會經過橫濱與大阪的中繼系統。",
+          "say_for": "4bca4e4a6292"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190603",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 兩座相同的無字中繼節點模型並排，各有一條獨立抽象線通向素面提款機模型，無實際切換事件或百分百保證。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190603"
+      ],
+      "lines": [
+        {
+          "id": "c190603",
+          "text": "兩套系統同時運作；其中一邊停了，另一邊有能力接下全部交易。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190604",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 近景，無字資料線接到素面 ATM 模型一側，另一側封閉鈔盒與它分開，沒有紙鈔沿線移動。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190604"
+      ],
+      "lines": [
+        {
+          "id": "c190604",
+          "text": "訊息可以從遠處送到，鈔票卻不能只靠網路線傳來。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190605",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一位匿名店員把封閉營業款盒拿向泛用 ATM 的存款入口，螢幕全空白；不畫入金紙鈔直入提款鈔匣。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190605"
+      ],
+      "lines": [
+        {
+          "id": "c190605",
+          "text": "公司說，附近超商與其他企業把營業款存進 ATM，也被納入整張網路的現金管理。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍",
+          "say": "公司說，附近超商與其他企業把營業款存進 A T M，也被納入整張網路的現金管理。",
+          "say_for": "7eca68b0505b"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190606",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 夜晚泛用小店的素面提款機與一只封閉現金盒分置畫面兩側，兩者沒有直接路線或具體鈔票來源。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190606"
+      ],
+      "lines": [
+        {
+          "id": "c190606",
+          "text": "這是整張網的一種現金管理辦法；她眼前這台的鈔票，不能因此說成來自這間店。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190607",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 一位匿名補鈔員提著封閉現金盒走向素面 ATM，背景有無字月曆但沒有數字，不畫個別機器的確切次數。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190607"
+      ],
+      "lines": [
+        {
+          "id": "c190607",
+          "text": "年報還記下，當時每台每月補鈔的頻率約一點七次；這是整體營運數字，不是對今晚的保證。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190608",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 同一深藍外套顧客仍握著空白卡停在素面提款機前，螢幕全空白，無受理、拒絕或出鈔結果。",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c190608"
+      ],
+      "lines": [
+        {
+          "id": "c190608",
+          "text": "至於她手裡的卡，合作關係、服務時段，還有這台機器此刻能否運作、是否有鈔，才一起決定能不能提款。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190609",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 同一深藍外套顧客把完全空白的卡推入素面讀卡口；旁邊手機螢幕全空白，不顯示銀行、時段或受理結果。",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c190609"
+      ],
+      "lines": [
+        {
+          "id": "c190609",
+          "text": "她低頭用手機查合作銀行與服務時段；確認符合，才把手上的卡推進讀卡口。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190610",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 明確是假想情境：同一深藍外套顧客的一隻手從素面 ATM 出鈔口拿起幾張完全無字紙鈔，另一手夾著無字餐費單；螢幕全空白，無品牌、收據、真實交易或現金來源路線。",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c190610"
+      ],
+      "lines": [
+        {
+          "id": "c190610",
+          "text": "想像她的銀行核准了這筆提款，機器也正常有鈔。她拿到錢，晚餐的帳有了著落。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190610a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up. 明確是假想情境：同一深藍外套顧客的一隻手從素面 ATM 出鈔口拿起幾張完全無字紙鈔，另一手夾著無字餐費單；螢幕全空白，無品牌、收據、真實交易或現金來源路線。",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c190610"
+      ],
+      "lines": [
+        {
+          "id": "c190610a",
+          "text": "這個提款口背後，是零售集團建起並維持的合作網。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190611",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 中景，深藍外套顧客指向泛用小店內另一台素面日常機器，背景有幾條抽象機構連線。",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c190611"
+      ],
+      "lines": [
+        {
+          "id": "c190611",
+          "text": "你在店裡見過哪台看似『只是方便』的機器，背後也需要幾家公司一起撐著？",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    },
+    {
+      "id": "c19-sc-c190612",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot. 夜色泛用小店門外，同一深藍外套顧客側身望向店內素面機器；柔和光線收束，無頻道文字或交易結果。",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "claims": [
+        "c190612"
+      ],
+      "lines": [
+        {
+          "id": "c190612",
+          "text": "留言告訴我；想繼續拆開日用品背後的決定，歡迎訂閱。",
+          "emotion": "自然說書；年份、公司歸因和財務單位放慢，章末問題留半拍"
+        }
+      ]
+    }
+  ]
+}

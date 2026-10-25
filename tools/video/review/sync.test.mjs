@@ -1066,6 +1066,49 @@ async function pushLanguages(box, site) {
   return { code: await main(["review-push", "--slug", box.slug, "--gate", "languages"], run.ctx), ...run.out };
 }
 
+test("a dub the check gave up on goes along as an unchecked track with the lines it failed, only while it is the current take", async (t) => {
+  const reason = "Jev still hears l1 wrong after 2 retakes and 2 rewording rounds";
+  const { box, site } = await confirmedVideo({ chosen: { ko: { metadata: true, captions: true, dub: true } }, skippedDubs: { ko: reason }, readyDubs: { ko: "m4a" } });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const dub = JSON.parse(readFileSync(path.join(box.workdir, "dubs", "ko", "timeline.json"), "utf8"));
+  const [first] = dub.lines;
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "check-flags.ko.json"), JSON.stringify({ speech_hash: dub.speech_hash, translation_hash: dub.translation_hash, flags: [first.id] }));
+  writeFileSync(path.join(box.workdir, "review", "check.ko.json"), JSON.stringify({ lines: { [first.id]: { intended: "625×880mm", heard: "620×880mm" } } }));
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  const track = readFileSync(path.join(box.workdir, "dubs", "ko.m4a"));
+  assert.deepEqual(batch.files.find((file) => file.role === "dub_unchecked_ko"), { role: "dub_unchecked_ko", sha256: sha(track), size: track.length, content_type: "audio/mp4" });
+  assert.ok(!batch.files.some((file) => file.role === "dub_ko"), "never sent as a ready track");
+  assert.deepEqual(batch.payload.locales.ko.dub, {
+    status: "skipped", reason,
+    unchecked: { file: "ko.m4a", format: "m4a", file_role: "dub_unchecked_ko", sha256: sha(track), lines: [{ id: first.id, at_seconds: Math.round((first.start_frame / 30) * 10) / 10, intended: "625×880mm", heard: "620×880mm" }] },
+  });
+  assert.equal(batch.status, "approved", "a skipped dub, unchecked track or not, needs nothing from the owner");
+
+  // A take made for older words is not this video's track any more: it stays home.
+  writeFileSync(path.join(box.workdir, "dubs", "ko", "timeline.json"), JSON.stringify({ ...dub, translation_hash: "0".repeat(16) }));
+  appendFileSync(path.join(box.workdir, "dubs", "ko", "skipped.json"), " ");
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const again = site.newest("languages");
+  assert.ok(!again.files.some((file) => file.role === "dub_unchecked_ko"));
+  assert.deepEqual(again.payload.locales.ko.dub, { status: "skipped", reason });
+});
+
+test("a language batch carries each chosen language's own thumbnail from the package, never an unchosen one's", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const thumbnails = path.join(box.workdir, "upload", "thumbnails");
+  mkdirSync(thumbnails, { recursive: true });
+  for (const locale of ["en", "ko", "th"]) writeFileSync(path.join(thumbnails, `${locale}.jpg`), `jpeg ${locale}`);
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "thumbnail_en", "captions_ja", "description_ko", "captions_ko", "thumbnail_ko", "metadata", "languages_manifest"]);
+  assert.deepEqual(batch.files.find((file) => file.role === "thumbnail_en"), { role: "thumbnail_en", sha256: sha(Buffer.from("jpeg en")), size: 7, content_type: "image/jpeg" });
+  assert.deepEqual(Object.keys(batch.payload.locales.en), ["metadata", "captions"], "a thumbnail is not a part the owner chooses");
+  assert.ok(JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"))).files.some((file) => file.role === "thumbnail_ko"), "the manifest the approval binds to names it");
+});
+
 test("a language batch names the upload confirmation, final cut and choice it belongs to, and review-pull records it by that manifest", async (t) => {
   const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
@@ -1375,6 +1418,108 @@ test("the look goes up as one review per character, and the owner's picks come b
   const again = context(box, server.fetchImpl);
   await main(["review-pull", "--slug", box.slug], again.ctx);
   assert.match(again.out.stdout, /already recorded/);
+});
+
+/** A site that, as the live one does on every submission, drops the files no review names. */
+function tidySite() {
+  const server = site();
+  const fetchImpl = async (url, init = {}) => {
+    const response = await server.fetchImpl(url, init);
+    if (init.method === "POST" && new URL(url).pathname.endsWith("/reviews") && response.status === 201) {
+      const named = new Set(server.state.reviews.flatMap((review) => (review.files ?? []).map((file) => file.sha256)));
+      for (const hash of [...server.state.files.keys()]) if (!named.has(hash)) server.state.files.delete(hash);
+    }
+    return response;
+  };
+  return { state: server.state, fetchImpl };
+}
+
+/** The site's log of a push, its routes relative to the video and every file named <sha>. */
+const routes = (server, slug) => server.state.calls.map((call) => `${call.method} ${call.pathname.replace(`/api/video/reviews/${slug}`, "").replace(/[0-9a-f]{64}/, "<sha>") || "/"}`);
+
+test("the look uploads one character's sheets and submits it before the next character's go up: a site that tidies on every submission keeps them all", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = tidySite();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(routes(server, box.slug), ["PUT /", "PUT /files/<sha>", "PUT /files/<sha>", "POST /reviews", "PUT /files/<sha>", "PUT /files/<sha>", "POST /reviews"]);
+  assert.deepEqual([...server.state.reviews].reverse().map((review) => review.subject), ["jingwei", "yandi"]);
+  assert.equal(server.state.files.size, 4, "every sheet is still on the site");
+  assert.doesNotMatch(push.out.stdout, /uploading them again/);
+});
+
+test("a look review the site answers 409 files-missing for goes up again once the sheets it names are uploaded again", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "yandi" && !refused) {
+      // The site lost the sheets between their upload and this submission (ticket 2026-10-22-409).
+      refused += 1;
+      for (const file of body.files) server.state.files.delete(file.sha256);
+      return Response.json({ code: "video_review_files_missing", detail: `這些檔案還沒上傳完：${body.files.map((file) => file.sha256).join(", ")}` }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.equal(refused, 1);
+  assert.deepEqual([...server.state.reviews].reverse().map((review) => [review.subject, review.status]), [["jingwei", "pending"], ["yandi", "pending"]]);
+  assert.equal(server.state.files.size, 4, "the sheets the site lost went up again");
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 6, "yandi's two sheets went up twice");
+  assert.match(push.out.stdout, /look \(yandi\): the site no longer has 2 of the review's files \(這些檔案還沒上傳完：[0-9a-f]{64}, [0-9a-f]{64}\); uploading them again and resending/);
+  assert.match(push.out.stdout, /look \(yandi\) submitted for review \(pending\)/);
+});
+
+test("a look review the site refuses twice for missing files fails as a service failure after one resend, so the worker's next round pushes again", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "yandi") {
+      refused += 1;
+      // A detail that names no file: every file of the review goes up again, once.
+      return Response.json({ code: "video_review_files_missing", detail: "新版審核附件尚未上傳完" }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.external, push.out.stderr);
+  assert.equal(refused, 2, "one resend, then the error stands");
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 6, "every sheet of the refused review went up again");
+  assert.match(push.out.stdout, /look \(yandi\): the site no longer has 2 of the review's files \(新版審核附件尚未上傳完\); uploading them again and resending/);
+  assert.match(push.out.stderr, /新版審核附件尚未上傳完/);
+  assert.deepEqual(server.state.reviews.map((review) => review.subject), ["jingwei"], "the first character's review stands");
+});
+
+test("a files-missing answer for a file this push did not upload is not resent: the error stands", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  lookManifest(box, lookHash(doc));
+  const server = site();
+  let refused = 0;
+  const fetchImpl = async (url, init = {}) => {
+    const body = init.method === "POST" && new URL(url).pathname.endsWith("/reviews") ? JSON.parse(init.body) : null;
+    if (body?.subject === "jingwei") {
+      refused += 1;
+      return Response.json({ code: "video_review_files_missing", detail: `這些檔案還沒上傳完：${"f".repeat(64)}` }, { status: 409 });
+    }
+    return server.fetchImpl(url, init);
+  };
+  const push = context(box, fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.external);
+  assert.equal(refused, 1);
+  assert.equal(routes(server, box.slug).filter((route) => route === "PUT /files/<sha>").length, 2, "nothing went up again");
+  assert.doesNotMatch(push.out.stdout, /uploading them again/);
+  assert.equal(server.state.reviews.length, 0);
 });
 
 test("the storyboard goes up with every keyframe and the judge's lowest score, and its approval is recorded", async () => {

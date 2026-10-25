@@ -166,6 +166,40 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   assert.ok(!full.some((item) => /^(segments|build|frames|audio|review|media)\//.test(item)));
 });
 
+test("planFiles: the full tier keeps each chosen language's unpackaged dub track, captions and thumbnail, never an unchosen one", () => {
+  const box = sandbox();
+  const languages = { locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: false, dub: false } } };
+  const dir = video(box.work, "story-a4", {
+    "languages.json": JSON.stringify(languages),
+    "upload/dubs/en.m4a": "packaged",
+    "upload/thumbnails/en.jpg": "jpg",
+    "upload/captions/en.srt": "packaged",
+    "captions/en.srt": "packaged",
+    "captions/ja.srt": "not approved yet",
+    "captions/ko.srt": "not chosen",
+    "captions/manifest.json": "{}",
+    "dubs/en.m4a": "packaged",
+    "dubs/ja.m4a": "given up",
+    "dubs/ko.m4a": "not chosen",
+    "dubs/ja/audio/l1.wav": "never",
+    "thumbnails/en.jpg": "jpg",
+    "thumbnails/ja.jpg": "jpg",
+    "thumbnails/ko.jpg": "jpg",
+    "thumbnails/th.jpg": "not chosen",
+  });
+  const basic = planFiles(dir, "basic").map((item) => item.path);
+  assert.ok(!basic.some((item) => item.includes("未進上傳包/") || item === "thumbnails/ja.jpg"), "the basic tier is the package alone");
+  const full = planFiles(dir, "full");
+  assert.deepEqual(full.map((item) => item.path).filter((item) => !basic.includes(item)), ["captions/未進上傳包/ja.srt", "dubs/未進上傳包/ja.m4a", "thumbnails/ja.jpg", "thumbnails/ko.jpg"]);
+  assert.equal(full.find((item) => item.path === "thumbnails/en.jpg").source, path.join(dir, "upload", "thumbnails", "en.jpg"), "the package's own copy wins");
+  assert.deepEqual(contentsOf(full.map((item) => item.path)).dubs, ["en"], "an unpackaged track is not counted as a packaged dub");
+  assert.deepEqual(contentsOf(full.map((item) => item.path)).captions, ["en", "zh-TW"], "nor an unpackaged caption file as packaged captions");
+
+  rmSync(path.join(dir, "languages.json"));
+  const unchosen = planFiles(dir, "full").map((item) => item.path);
+  assert.ok(unchosen.includes("dubs/未進上傳包/ko.m4a") && unchosen.includes("captions/未進上傳包/ko.srt"), "without a choice every track and caption file is kept");
+});
+
 test("contentsOf: what the site counts, a Short's caption beside its cut, and the parts skipped with a reason", () => {
   const contents = contentsOf(
     ["final.mp4", "metadata.json", "thumbnail.jpg", "descriptions/en.txt", "captions/en.srt", "dubs/en.m4a", "zh-TW.srt", "clips/manifest.json", "clips/a.mp4"],
@@ -203,6 +237,18 @@ test("a round copies the package into the series folder, checks it, uploads back
   assert.match(lines.at(-1), /curio-h01: 5 files/);
 });
 
+test("a work directory made by hand, with no auto.json, is backed up from its upload package; an empty one is not", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "free-vs-paid-ai-plans-2026");
+  rmSync(path.join(dir, "auto.json"));
+  put(path.join(box.work, "not-a-video"), "notes.txt");
+  const site = fakeSite({ videos: [target("free-vs-paid-ai-plans-2026"), target("not-a-video")] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  assert.ok(listing(path.join(box.drive, "奇聞檔案局", "free-vs-paid-ai-plans-2026")).includes("final.mp4"));
+  assert.deepEqual(gate.verdicts.get("free-vs-paid-ai-plans-2026"), { ok: true, why: "in Drive" });
+  assert.ok(!gate.verdicts.has("not-a-video") && !existsSync(path.join(box.work, "not-a-video", STATE_FILE)));
+});
+
 test("a file added after the backup queues it again, copies only that, and keeps the overwritten version", async () => {
   const box = sandbox();
   const dir = video(box.work, "curio-h02");
@@ -220,6 +266,33 @@ test("a file added after the backup queues it again, copies only that, and keeps
   assert.equal(readFileSync(path.join(episode, "_舊版", "20261020T031000Z", "descriptions", "zh-TW.txt"), "utf8"), "說明");
   assert.ok(again.gate.verdicts.get("curio-h02").ok);
   assert.deepEqual(site.reports.at(-1).contents.dubs, ["en"]);
+});
+
+test("a video ready to upload is backed up before YouTube; a revision is copied over it only once it is ready again", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-h13");
+  const ready = target("curio-h13", { youtube_video_id: null });
+  const site = fakeSite({ videos: [ready] });
+  await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  const episode = path.join(box.drive, "奇聞檔案局", "curio-h13");
+  const manifest = () => JSON.parse(readFileSync(path.join(episode, MANIFEST_FILE), "utf8"));
+  assert.equal(manifest().youtube_video_id, null);
+  assert.equal(stateOf(dir).site_state, "done");
+  // A renewed cut: the site drops the video from its list until the owner confirms it again.
+  put(dir, "upload/final.mp4", "a new cut");
+  site.client.config = ((config) => async () => ({ ...(await config()), videos: [] }))(site.client.config);
+  const revising = fakeRclone(box.drive);
+  await backupRound(ctxFor(box, { now: later(5) }), { client: site.client, rclone: revising.run });
+  assert.deepEqual(revising.calls, [], "nothing is copied mid-revision");
+  const again = fakeSite({ videos: [ready] });
+  await backupRound(ctxFor(box, { now: later(10) }), { client: again.client, rclone: fakeRclone(box.drive).run });
+  assert.equal(readFileSync(path.join(episode, "final.mp4"), "utf8"), "a new cut");
+  assert.notEqual(readFileSync(path.join(episode, "_舊版", "20261020T031000Z", "final.mp4"), "utf8"), "a new cut");
+  // Uploaded: nothing new to copy, but backup.json is sent again with the YouTube id.
+  const uploaded = fakeSite({ videos: [target("curio-h13")] });
+  await backupRound(ctxFor(box, { now: later(15) }), { client: uploaded.client, rclone: fakeRclone(box.drive).run });
+  assert.equal(manifest().youtube_video_id, "dQw4w9WgXcQ");
+  assert.equal(uploaded.reports.at(-1).state, "done");
 });
 
 test("nothing changed: a done video is not copied again", async () => {

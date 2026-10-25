@@ -1,21 +1,23 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { locateFfmpeg, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { LEASE_FILE } from "../core/project-lease.mjs";
 import { approve } from "../core/approvals.mjs";
 import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
-import { readJobs } from "./cache.mjs";
+import { cacheFile, readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
 import { FIX_ARROW } from "./keyframes.mjs";
-import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
+import { importedTotals, ledgerFile, readLedger, reserve, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -26,6 +28,20 @@ const TOKEN = `mkv_${"c".repeat(43)}`;
 const SHA = (data) => createHash("sha256").update(data).digest("hex");
 const PNG = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);
 const MP4 = (text) => Buffer.concat([Buffer.from("\x00\x00\x00\x18ftypisom", "binary"), Buffer.from(text)]);
+let fixtureMusicBytes;
+async function musicFixture() {
+  if (fixtureMusicBytes) return fixtureMusicBytes;
+  const { ffmpeg } = await locateFfmpeg();
+  const result = spawnSync(ffmpeg, ["-nostdin", "-v", "error", "-f", "lavfi", "-i", "sine=frequency=220:duration=1", "-c:a", "libmp3lame", "-f", "mp3", "pipe:1"], { maxBuffer: 2 * 1024 * 1024 });
+  if (result.status !== 0) throw new Error(`fixture MP3 could not be encoded: ${String(result.stderr)}`);
+  fixtureMusicBytes = result.stdout;
+  return fixtureMusicBytes;
+}
+
+async function musicFixtureOrSkip(t) {
+  try { await musicFixture(); return true; }
+  catch (error) { if (error instanceof ToolMissing) { t.skip(error.message); return false; } throw error; }
+}
 
 const STATUS = {
   enabled: true,
@@ -73,7 +89,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
     if (init.method === "POST" && route === "music") {
       const request = JSON.parse(init.body);
       state.music.push(request);
-      const bytes = Buffer.from(`ID3music|${request.prompt}|${request.seconds}`);
+      const bytes = await musicFixture();
       state.files.set(SHA(bytes), bytes);
       return Response.json({ id: `music${state.music.length}`, status: "ready", file: { sha256: SHA(bytes), size: bytes.length, content_type: "audio/mpeg" }, error: null, retry_after_seconds: 0, usd_estimate: 0.08 });
     }
@@ -696,7 +712,8 @@ test("a still shot buys no clip: its keyframe goes into the manifest, a clip may
   assert.match(flagged.out.stderr, /shots sea-storm have no passed keyframe; run keyframes first/);
 });
 
-test("music is generated a little longer than the video and cached, or the owner's own track is checked", async () => {
+test("short generated music is measured, held and cached; the owner's own track is checked", async (t) => {
+  if (!(await musicFixtureOrSkip(t))) return;
   const { box, doc, timeline } = prepared();
   const site = mediaSite();
   const dry = context(box, site.fetchImpl);
@@ -704,19 +721,43 @@ test("music is generated a little longer than the video and cached, or the owner
   assert.match(dry.out.stdout, new RegExp(`music: ${trackSeconds(timeline.total_frames)} s for a`));
   assert.match(dry.out.stdout, /gemini lyria-3\.5 ready; about US\$0\.08/);
   const run = context(box, site.fetchImpl);
-  assert.equal(await main(["music", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(await main(["music", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr);
   assert.equal(site.state.music.length, 1);
   assert.deepEqual(site.state.music[0], { slug: "fixture-drama", prompt: doc.music.prompt, seconds: trackSeconds(timeline.total_frames) });
   const manifest = manifestOf(box, "music");
-  assert.equal(manifest.mix_hash, mixHash(doc));
   assert.equal(manifest.source, "generated");
+  assert.equal(manifest.mix_hash, null, "a duration hold cannot pass the music checklist");
+  assert.equal(manifest.requested_mix_hash, mixHash(doc));
+  assert.equal(manifest.requested_seconds, trackSeconds(timeline.total_frames));
+  assert.ok(manifest.actual_seconds > 0.9 && manifest.actual_seconds < 1.1);
+  assert.equal(manifest.duration_hold, true);
+  assert.match(run.out.stderr, /music needs the owner/);
+  assert.equal((await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "music generated").done, false);
   assert.match(manifest.file, /^music\/[0-9a-f]{16}\.mp3$/);
   assert.ok(existsSync(path.join(box.workdir, manifest.file)));
   assert.equal(readLedger(box.workdir).totals.music, 1);
   const again = context(box, site.fetchImpl);
-  assert.equal(await main(["music", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(await main(["music", "--slug", box.slug], again.ctx), EXIT.owner, again.out.stderr);
   assert.equal(site.state.music.length, 1, "the same prompt and length are not paid for twice");
   assert.match(again.out.stdout, /reused/);
+  const paidFile = path.join(box.workdir, manifest.file);
+  const retainedBytes = readFileSync(paidFile);
+  rmSync(cacheFile(box.workdir));
+  const noCache = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], noCache.ctx), EXIT.owner, noCache.out.stderr);
+  assert.equal(site.state.music.length, 1, "an intact manifest remeasures without a cache entry or purchase");
+  writeFileSync(paidFile, "changed bytes");
+  const corrupt = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], corrupt.ctx), EXIT.owner, corrupt.out.stderr);
+  assert.match(corrupt.out.stderr, /restore or reconcile the paid file/);
+  assert.equal(site.state.music.length, 1, "a corrupt paid file cannot trigger a replacement request");
+  writeFileSync(paidFile, retainedBytes);
+  const timelineFile = path.join(box.workdir, ARTIFACTS.timeline);
+  writeFileSync(timelineFile, JSON.stringify({ ...timeline, total_frames: timeline.total_frames + 300 }));
+  const changedCut = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], changedCut.ctx), EXIT.owner, changedCut.out.stderr);
+  assert.match(changedCut.out.stderr, /review the changed prompt, model or cut length/);
+  assert.equal(site.state.music.length, 1, "a new request key after a short hold requires a separate decision");
 
   // The owner's own file: checked against music.sha256 when given, refused when missing.
   const file = path.join(box.dir, "video.json");
@@ -739,6 +780,30 @@ test("music is generated a little longer than the video and cached, or the owner
   const wrong = context(box, site.fetchImpl);
   assert.equal(await main(["music", "--slug", box.slug], wrong.ctx), EXIT.owner);
   assert.match(wrong.out.stderr, /not music\.sha256/);
+});
+
+test("a missing manifest and damaged cache cannot silently re-buy paid music", async (t) => {
+  if (!(await musicFixtureOrSkip(t))) return;
+  const { box } = prepared();
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], first.ctx), EXIT.owner, first.out.stderr);
+  const manifest = manifestOf(box, "music");
+  rmSync(path.join(box.workdir, ARTIFACTS.music));
+  writeFileSync(path.join(box.workdir, manifest.file), "changed bytes");
+  const second = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], second.ctx), EXIT.owner, second.out.stderr);
+  assert.match(second.out.stderr, /restore or reconcile the paid file/);
+  assert.equal(site.state.music.length, 1);
+  assert.equal(readLedger(box.workdir).totals.music, 1);
+  rmSync(cacheFile(box.workdir));
+  const ledger = readLedger(box.workdir);
+  ledger.entries.find((row) => row.kind === "music").status = "failed";
+  writeFileSync(ledgerFile(box.workdir), JSON.stringify(ledger));
+  const third = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], third.ctx), EXIT.owner, third.out.stderr);
+  assert.match(third.out.stderr, /already paid or reserved/);
+  assert.equal(site.state.music.length, 1, "a charged job later marked failed still forbids silent repurchase");
 });
 
 test("music under illustrated slides comes from the owner's track, with no drama guard", async () => {

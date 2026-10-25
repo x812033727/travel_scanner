@@ -18,12 +18,13 @@ import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash,
 import { emptyLexicon } from "./lexicon.mjs";
 import { videoLexicon } from "./lexicon-store.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
+import { loopCovers } from "./music-loop.mjs";
 import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
-import { speechHash, visualHash } from "./timeline.mjs";
+import { FPS, speechHash, visualHash } from "./timeline.mjs";
 
 /**
  * Files each stage leaves in <VIDEO_WORKDIR>/<slug>/, and the hash fields they must carry.
@@ -491,6 +492,19 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const assembledSound = compilation || (!audioProblems.length && checks?.narration_sha256 === timeline?.audio_evidence?.narration_sha256 && (!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
   const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
   const productionClips = productionClipProblems(doc, project?.series, timeline, clips);
+  let musicDone = Boolean(mix) && music?.mix_hash === mix;
+  if (musicDone && music.source === "generated") {
+    const requiredSeconds = timeline?.total_frames / FPS;
+    const file = typeof music.file === "string" && music.file ? path.resolve(workdir, music.file) : null;
+    musicDone = Boolean(speech) && timeline?.speech_hash === speech &&
+      Number.isFinite(requiredSeconds) && requiredSeconds > 0 &&
+      music.duration_measurement === "ffmpeg_full_decode" &&
+      // A short track counts once its loop is recorded for this cut (music --loop).
+      ((!music.duration_hold && Number.isFinite(music.actual_seconds) && music.actual_seconds >= requiredSeconds) || loopCovers(music, requiredSeconds)) &&
+      typeof music.sha256 === "string" && /^[0-9a-f]{64}$/.test(music.sha256) &&
+      Boolean(file) && isInside(file, workdir) && existsSync(file) && statSync(file).isFile() &&
+      (await sha256File(file)) === music.sha256;
+  }
 
   const definitions = {
     brief: { done: existsSync(path.join(dir, "brief.md")), todo: `the planner agent writes docs/videos/${slug}/brief.md` },
@@ -548,7 +562,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
       detail: clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow ? importedClips(clips) : undefined,
       todo: cli("clips", slug),
     },
-    "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },
+    "music generated": { done: musicDone, todo: cli("music", slug) },
     "video assembled": {
       done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : anime && !runtimeCurrent ? "the current body, runtime policy and final-file evidence need assemble again" : undefined,

@@ -88,6 +88,16 @@ export function narratedLong(doc, series = null) {
 export const defaultIntroAt = (doc, series = null) => (narratedLong(doc, series) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START);
 
 /**
+ * An episode of a binge series that ends in a compilation (series.json `compilation: true`,
+ * docs/videos/BINGE.md §合集). The owner watches the compilation, which plays the channel's intro
+ * and outro once around every episode's retained body; the episode's own final is its body, so
+ * nothing is wrapped per episode and the final-cut review shows the body itself. The compilation
+ * video (`isCompilation`) is the one that carries the bookends.
+ */
+export const episodeOfCompilation = (doc, series = null) => series?.compilation === true && !isCompilation(doc);
+const EPISODE_OF_COMPILATION = "an episode of a compilation series carries no channel bookends; the compilation plays one intro and outro around all its episodes";
+
+/**
  * The body frame the intro is inserted before. An applied record (checks.branding) names it; a
  * pin or package placed after the first chapter takes the timeline's second chapter start, which
  * is a scene start and so a hard cut between two sentences.
@@ -147,8 +157,9 @@ export function remakingApprovedCut(workdir) {
   return cut > 0 && newest((gate) => CONTENT_GATES.has(gate)) > cut;
 }
 
-export function adoptionRefusal({ doc, workdir }) {
+export function adoptionRefusal({ doc, workdir, series = null }) {
   if (!LONG_FORMATS.has(doc?.format)) return "channel bookends apply to long videos only; Shorts stay unchanged";
+  if (episodeOfCompilation(doc, series)) return EPISODE_OF_COMPILATION;
   const state = readJson(path.join(workdir, "auto.json"), null);
   if (doc.youtube?.video_id || state?.youtube_video_id || ["done", "dropped"].includes(state?.status)) return "this video is already uploaded or finished; its branding stays unchanged";
   const remaking = remakingApprovedCut(workdir);
@@ -168,6 +179,7 @@ function previouslyBuilt(workdir) {
  * and any upload package of the old cut stop matching it and are asked for again.
  */
 export function replacementRefusal({ doc, workdir, series = null }) {
+  if (episodeOfCompilation(doc, series)) return EPISODE_OF_COMPILATION;
   if (!narratedLong(doc, series)) return "only a narrated long video plays its intro after the condensation; dramas with a cast, compilations and Shorts keep it at the start";
   const state = readJson(path.join(workdir, "auto.json"), null);
   if (doc.youtube?.video_id || state?.youtube_video_id || ["done", "dropped"].includes(state?.status)) return "this video is already uploaded or finished; its intro stays where it was";
@@ -190,16 +202,19 @@ export async function selectBrandingForBuild({ doc, workdir, workBase, adoptCurr
     return placeBranding(chosen, INTRO_AFTER_FIRST_CHAPTER);
   }
   if (adoptCurrent) {
-    const refusal = adoptionRefusal({ doc, workdir });
+    const refusal = adoptionRefusal({ doc, workdir, series });
     if (refusal) throw new UsageError(refusal);
     const current = readDefaultBranding(workBase, doc);
     if (!current) throw new UsageError("no current branding package is installed for this video");
     return placeBranding(current, defaultIntroAt(doc, series));
   }
   if (!LONG_FORMATS.has(doc?.format)) return null;
+  // Decided before the pin: an episode of a compilation series is never wrapped, so its final
+  // stays the body the compilation is made from, whatever an earlier build of it pinned.
+  if (episodeOfCompilation(doc, series)) return null;
   const pinned = readBranding(workdir);
   if (pinned) return pinned;
-  if (adoptionRefusal({ doc, workdir }) || previouslyBuilt(workdir)) return null;
+  if (adoptionRefusal({ doc, workdir, series }) || previouslyBuilt(workdir)) return null;
   return placeBranding(readDefaultBranding(workBase, doc), defaultIntroAt(doc, series));
 }
 
@@ -256,8 +271,12 @@ export function presentationTimeline(timeline, branding) {
 export function shiftBrandingCues(cues, branding, direction = 1) {
   if (!branding) return cues;
   const offset = frameToMs(branding.intro_frames);
-  const atMs = frameToMs(introAtFrame(branding));
-  const moved = (cue) => (direction > 0 ? cue.start_ms >= atMs : cue.start_ms >= atMs + (atMs > 0 ? offset : 0));
+  // Caption timestamps are rounded to whole milliseconds before reaching this helper. Compare
+  // against that same rounded boundary, including on the reverse path, or the first cue after an
+  // intro at a non-whole-millisecond frame can be mistaken for a cue before it.
+  const atMs = Math.round(frameToMs(introAtFrame(branding)));
+  const shiftedAtMs = Math.round(atMs + offset);
+  const moved = (cue) => (direction > 0 ? cue.start_ms >= atMs : cue.start_ms >= shiftedAtMs);
   return cues.map((cue) => {
     const by = moved(cue) ? offset * direction : 0;
     return { ...cue, start_ms: Math.round(cue.start_ms + by), end_ms: Math.round(cue.end_ms + by) };

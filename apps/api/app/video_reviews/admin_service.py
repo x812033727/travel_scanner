@@ -6,7 +6,9 @@ submitting the same content again returns the review that exists, whatever its s
 rejected cut cannot come back as a fresh pending one without changing. Shorts final reviews
 also bind the complete QA receipt; changed evidence creates a new review revision before
 upload, and its publish review must name that approved final review. Files no live or decided
-review refers to are deleted from the store. A video the owner dropped takes no more
+review refers to are deleted from the store once they are UPLOAD_GRACE old: a gate with a
+review per character uploads every sheet first and submits one review at a time, so a file
+the next review will name is still there. A video the owner dropped takes no more
 submissions or decisions.
 
 Once the owner has uploaded a video themselves and pasted its YouTube address (HANDS-OFF.md
@@ -79,6 +81,7 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
+from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews import dub_retry
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
@@ -138,6 +141,12 @@ BROWSE_QUERY_MAX = 80
 # later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
 # thumbnail, captions and descriptions are small and stay.
 PREVIEW_RETENTION = timedelta(days=7)
+# How long a file no review refers to survives a submission's clean-up, counted from when it
+# arrived. The look gate sends one review per character after uploading every character's
+# sheets (tools/video/review/sync.mjs lookSubmissions), so the first review's clean-up must
+# not take the next one's files (ticket 2026-10-22-409). Dropping a video and pruning a
+# published preview still delete at once.
+UPLOAD_GRACE = timedelta(hours=1)
 YOUTUBE_ID = re.compile(YOUTUBE_VIDEO_ID_PATTERN)
 YOUTUBE_HOSTS = frozenset(
     {"youtu.be", "youtube.com", "www.youtube.com", "m.youtube.com", "studio.youtube.com"}
@@ -1331,9 +1340,13 @@ def _dub_allowed(
 
     The series kind comes from the server's episode row, so recategorising a brand story as
     an explainer does not unlock an older cut. The category also catches a standalone story.
+
+    A drama Short is cut from an episode, and its dubs are that episode's tracks cut to the
+    same span (``import --languages``): nothing is made for it, so it may carry them. A lab or
+    cut Short has a narrator the worker never dubs.
     """
     if project.shorts_line is not None:
-        return False
+        return project.shorts_line == "drama"
     if (project.format or "slides") != "drama":
         return True
     if _story_dub_preselectable(project, series_kind):
@@ -1863,7 +1876,7 @@ async def submit_review(
         await _short_approved(session, project, review, now)
     project.last_synced_at = now
     await session.commit()
-    store.keep_only(slug, kept_files([*reviews, review]))
+    store.keep_only(slug, kept_files([*reviews, review]), older_than=UPLOAD_GRACE)
     return _review_out(review)
 
 
@@ -2476,6 +2489,16 @@ async def file_for_admin(
                     break
                 return path, str(item["content_type"])
     raise AppError(404, "video_review_file_not_found", "這個檔案已經不在審核區")
+
+
+async def package_files_for_admin(
+    session: AsyncSession, store: ReviewStore, slug: str, entries: list[tuple[str, str]]
+) -> list[tuple[str, Path]]:
+    """The files of a manual upload package, each under the name the page gives it in the zip;
+    only files some review of this video shows."""
+    project = await _project(session, slug)
+    shown = [list(review.files or []) for review in await _reviews(session, project)]
+    return package_zip.resolve_entries(store, slug, shown, entries)
 
 
 # --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------

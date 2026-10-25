@@ -229,6 +229,20 @@ the close says nothing about the next video. "lint_warnings", when the payload c
 are the storytelling checks on this draft: fix what they name with wording alone, never by
 adding or dropping a fact, a scene or a line id.`;
 
+/**
+ * How the listener answers (flow.mjs listen): the whole edited script, or, for a long one, only
+ * the lines it changed, which the tool writes onto the script by id. A manga drama's fifty-odd
+ * shots made the listener answer lines when only the whole script was asked for, and two such
+ * answers blocked the video (ticket 2026-10-23-lines-video).
+ */
+export const LISTENER_ANSWER = `Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}; or,
+when the script is long (a drama of dozens of shots, any script whose whole video.json would
+crowd your answer), {"lines": [{"id": "<line id>", "text": "<the edited line>", "emotion":
+"<optional: a short direction for the voice>"}, …], "notes": "<one line on what you changed>"}
+with only the lines you changed. The tool writes each onto the script by its id and leaves out
+an id the script does not have, so this shape edits lines and cannot drop one. Prefer "lines"
+for a long script.`;
+
 export const INSTRUCTIONS = {
   planner: `${WRITING_COMMON}
 
@@ -437,7 +451,7 @@ arrives without 「其實」, a run of same-length sentences); the tool sets the
 words. Wording and rhythm are yours; the facts, the scenes, the pictures' prompts, the pauses and
 the line ids are not.
 
-Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}.
+${LISTENER_ANSWER}
 
 ${REGISTER_RULES}`,
 
@@ -790,7 +804,9 @@ finding ｜ verdict ｜ before → after", counts, and what you suspected but di
   listener: `${LISTENER_BASE}
 
 This is a drama: every line has a "speaker" and a character's line may have an "emotion"; keep both
-exactly, and keep a character's line in that character's voice (short, spoken, in the moment).`,
+exactly, and keep a character's line in that character's voice (short, spoken, in the moment).
+
+${LISTENER_ANSWER}`,
 };
 
 /** What the settings tab adds under the skill's text: the owner's standing instructions for the stage. */
@@ -959,6 +975,10 @@ export const HOOK_TYPES = ["question", "danger", "image", "line", "reversal"];
 export const LEAD_ARCS = ["wins", "suffers", "mixed"];
 export const MIN_SATISFACTION = 2;
 export const VISUAL_TIERS = ["clips", "hybrid", "stills", "manga"];
+// The manga tier's narration direction, the owner's words of 2026-10-22: what the writer plans the
+// "performance" from, and what the narrator's TTS style carries when the drama tab names no
+// voice (flow.mjs settle; ticket 2026-10-24-manga-sticker-drama-pace-visible-camera).
+export const MANGA_NARRATION_PERFORMANCE = "說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事";
 export const TIER_CLIP_SHARE = { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 };
 
 const COMMON_SATISFACTIONS = Object.keys(SATISFACTION_TYPES);
@@ -1068,7 +1088,7 @@ export const VISUAL_TIER_RULES = {
   // narrator reads the story over still pictures, as the 漫画解说 channels do, and no clip is
   // bought at all. The second face in a two-shot is the one the image model loses (it takes one
   // character reference), so the rule keeps people apart.
-  manga: 'Visual tier "manga": a motion comic read by the narrator. Every shot is "visual": "still" with a "camera" move; never "visual": "clip" (the tool refuses the script). A new picture every 3 to 5 seconds, so a shot carries one or two short lines and a long narration is split over several shots. The narrator tells the story and carries its speed; a character speaks only a short, sharp line, never a speech. Prefer one character per picture: when two must share a frame, put the second one small, turned away or out of focus, since only the first face holds across shots. Alternate the camera move between neighbouring shots, and write each prompt as one clear picture: shot size, place and time, what is happening, where the eye lands. The narration\'s "performance" plan is the storyteller\'s, as the owner chose on 2026-10-22: 說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事. Every 20 to 30 seconds a line lands a hook, in the narration\'s own words so the check can see it: a question left hanging, a forward hook (等一下／先記住／之後會), an escalation (但這還不是／更怪的是／問題來了), a reveal or a reversal; the lint warns on any stretch over 30 seconds without one (the owner, 2026-10-22: this is the sticker drama\'s rule, not the animated dramas\').',
+  manga: `Visual tier "manga": a motion comic read by the narrator. Every shot is "visual": "still" with a "camera" move; never "visual": "clip" (the tool refuses the script). A new picture every 2 to 3.5 seconds, one line per shot: a shot carries one short line, a long narration is split over several shots, and the lint warns on any shot over 4 seconds (the popular motion comics cut every 1.75 to 3.25 s; a picture held longer reads as slow). The narrator tells the story and carries its speed; a character speaks only a short, sharp line, never a speech. Prefer one character per picture: when two must share a frame, put the second one small, turned away or out of focus, since only the first face holds across shots. Alternate the camera move between neighbouring shots, and write each prompt as one clear picture: shot size, place and time, what is happening, where the eye lands. The narration's "performance" plan is the storyteller's, as the owner chose on 2026-10-22: ${MANGA_NARRATION_PERFORMANCE}. Leave a beat where the picture or a sound takes over, as the popular motion comics do (silent 37 to 45% of the time, fast inside a line): write every 「叮」 as a line of its own ("text": "叮。", "pause_after_ms": 500) so the panel's words land after the chime, and give the line before a reveal or a reversal "pause_after_ms": 800. Every 20 to 30 seconds a line lands a hook, in the narration's own words so the check can see it: a question left hanging, a forward hook (等一下／先記住／之後會), an escalation (但這還不是／更怪的是／問題來了), a reveal or a reversal; the lint warns on any stretch over 30 seconds without one (the owner, 2026-10-22: this is the sticker drama's rule, not the animated dramas').`,
 };
 
 /**

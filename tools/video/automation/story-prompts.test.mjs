@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { NARRATIVE_RULES } from "./register.mjs";
+import { NARRATIVE_RULES, STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { STORY_HOOK_RULES, STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const writer = STORY_INSTRUCTIONS["writer:story"];
@@ -30,4 +30,14 @@ test("a story's hooks stand on facts, keep the shared limits, and the loops tabl
 test("the explainer videos' shared rules keep their own cadence", () => {
   assert.match(NARRATIVE_RULES, /Every 60 to 90 seconds of the body/);
   assert.ok(!NARRATIVE_RULES.includes("30 to 45 seconds"), "the story cadence stays in the story's prompt");
+});
+
+test("a story's writer opens on the stakes and one promise sentence and talks to one viewer, after the hook rules (2026-10-25)", () => {
+  assert.ok(writer.includes(STORY_OPENING_RULE) && writer.includes(TOLD_TO_ONE_VIEWER), "both series rules are in what the worker sends");
+  assert.ok(writer.indexOf(STORY_OPENING_RULE) > writer.indexOf(STORY_HOOK_RULES), "the opening follows the cadence it refines");
+  assert.match(STORY_OPENING_RULE, /At most two teasers of later moments/);
+  assert.match(STORY_OPENING_RULE, /One promise sentence naming the subject and the scale/);
+  assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
+  assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);
+  assert.ok(!NARRATIVE_RULES.includes("promise sentence"), "the explainers keep the condensation as it was");
 });

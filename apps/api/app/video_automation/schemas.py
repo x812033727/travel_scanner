@@ -883,12 +883,12 @@ class SeriesIn(StrictModel):
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
             if isinstance(self.look, StoryPresetLook) and (
-                self.target_minutes != 10
+                self.target_minutes not in (10, 13)
                 or self.image_model != "image-01"
                 or self.style_preset != "custom"
             ):
                 raise ValueError(
-                    'a cute-mystery story needs target_minutes=10, image_model="image-01" '
+                    'a cute-mystery story needs target_minutes=10 or 13, image_model="image-01" '
                     'and style_preset="custom"'
                 )
         else:

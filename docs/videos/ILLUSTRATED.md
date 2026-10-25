@@ -63,7 +63,13 @@
 
 ## 配樂與音效
 
-配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。這一節寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
+配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。
+
+**生成配樂比影片短：明確、檢查過的循環（2026-10-24）。** 每一次混音（`assemble` 與 `dub`）都用 `-stream_loop -1` 把配樂接到影片長度（`assemble/drama.mjs` 的 `soundGraph`）。2026-10 的品牌故事配樂都只有 3 分鐘左右，成片約 10 分鐘，就是這樣循環出來的。2026-10-23 起生成配樂要有完整解碼量到的長度，比影片短就擋下，因此已上架影片的配音也被擋住。`node tools/video/cli.mjs music --slug <slug> --loop` 是站主同意讓這首配樂循環的那一步：不打任何供應商、不花錢；確認留存的檔還是 manifest 記的 SHA-256、manifest 是為這套配樂設定買的（短的配樂記在 `requested_mix_hash`，其他記在 `mix_hash`）、`timeline.json` 是現在的劇本做的（`speech_hash`）、用 ffmpeg 完整解碼量長度（至少 30 秒），再把 `loop`（檔案雜湊、配樂秒數、成片秒數、播幾次、`basis`、`decided_by`、決定時間）寫進 `music/manifest.json`。成片秒數一律是時間軸的長度，混音本來就照它剪配樂；`basis` 只記當時有沒有一支用這套設定組好的成片：已上架影片的配音是 `assembled_cut`（沿用成片當初的循環），新影片是 `timeline`。新影片的組片要先有循環紀錄（`musicInputs`），所以 `--loop` 不要求先組片；舊的、用別的配樂設定組的成片也不擋。`musicInputs` 與 `status` 只在循環紀錄指向同一個檔、同一個量到的長度、成片不比當時長時才接受它；換了檔或成片變長，就要再記一次（`core/music-loop.mjs`）。
+
+**誰決定循環（2026-10-24，票 `2026-10-24-music-loop`）：免關卡的漫劇作品由檢查決定，其他由站主下指令。** 免關卡的作品（[`BINGE.md`](BINGE.md)：每一關由查核與伺服器規則決定）在 `music` 這一步自己記錄循環，`decided_by: "hands_off"`：配樂比成片短、但至少 30 秒，而且最多播兩次（`HANDS_OFF_MAX_PLAYS`，配樂至少蓋住成片的一半，循環只補尾巴）就記下並放行，工人接著組片；檢查跟 `--loop` 一模一樣，不買新的配樂。播三次以上、或不到 30 秒，代表回來的配樂離要的差太多，照舊停下來等站主（`music needs the owner`，訊息帶 `--loop` 指令）。旗標讀這一集的 `series.json`（工人開集時從作品寫入的 `series.hands_off`，媒體階段本來就讀這份），是開集當時的快照：作品頁之後關掉「免關卡」，只管之後開的集，跟工人自己的劇本關卡一樣。品牌故事（`series.json` 的 `kind: "story"`）的作品也標著免關卡，但這條保留是為它們寫的（#1669：要 600 秒、解碼只有 174 秒），它們的配樂在成片下要播三次以上，所以仍由站主跑 `--loop`。長篇動畫（`production_policy: "long-anime-v1"`）跟網站的 `hands_off_series` 一樣，旗標怎麼寫都照站主的關卡走；沒有 `series.json` 的影片（手做的單支）與關卡開著的作品，也由站主決定。重跑 `music` 時，同一個檔、同一個長度、成片沒變長的循環紀錄會留著，不會被洗掉（誰記的都一樣）。2026-10-24《系統說我是 BUG》第 1 集（`xitong-shuo-wo-shi-bug-e001`）就是這個情況：lyria-3.5 要 177 秒、解碼 164.8 秒、成片 171.833 秒，播兩次；部署後這一集再跑一次 `music`（後台重試）就會自己記下，或站主先跑 `--loop`。
+
+這一節接下來寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
 
 **manifest 第 2 版**（上表的範例）：
 
@@ -241,7 +247,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 不管要它給分數、等級還是扣分，這個模型都縮在中間的預設值，文字怎麼定義都拉不動兩端；只有低分端對明寫的數字聽話（可讀文字、四隻手臂落到 3）。問「有沒有可讀的字」「有沒有哪隻手超過五指」這種是非題，它才肯表態：乾淨的圖一題都不答有，瑕疵點名點得具體。所以做法是**模型只回答是非，分數由伺服器算**（延續 `verdict()`「overall 由程式重算」）：
 
-- 伺服器：`JudgeCriterion` 多一個 `cost`。rubric 的每一題都帶 `cost` 時，這次呼叫改用 `CHECK_INSTRUCTIONS`、回答是每題一個布林值，該項分數＝沒有瑕疵 10、有瑕疵 10 − `cost`；沒回答或不是 `false` 一律算有瑕疵。overall 仍是加權平均，過關規則不變（overall ≥ 站主門檻、每項 ≥ 4）。不帶 `cost` 的 rubric 和以前逐字相同，漫劇的設定圖、關鍵影格、片段都不受影響。`GET /api/video/media/status` 的 `limits.judge_checks` 告訴工具伺服器會這樣問（`apps/api/app/video_media/judge.py`、`schemas.py`）。
+- 伺服器：`JudgeCriterion` 多一個 `cost`。rubric 的每一題都帶 `cost` 時，這次呼叫改用 `CHECK_INSTRUCTIONS`、回答是每題一個布林值，該項分數＝沒有瑕疵 10、有瑕疵 10 − `cost`；沒回答或不是 `false` 一律算有瑕疵。overall 仍是加權平均，過關規則不變（overall ≥ 站主門檻、每項 ≥ 4）。不帶 `cost` 的 rubric 和以前逐字相同，漫劇的設定圖、關鍵影格、片段都不受影響（2026-10-24 起例外：`manga` 等級的關鍵影格也送是非題，[`DRAMA.md`](DRAMA.md) §manga 等級的關鍵影格用是非題）。`GET /api/video/media/status` 的 `limits.judge_checks` 告訴工具伺服器會這樣問（`apps/api/app/video_media/judge.py`、`schemas.py`）。
 - 工具：插圖投影片在伺服器宣告 `judge_checks` 時改送 `keyframeChecks`（`media/keyframes.mjs`），九題：
 
 | 題 | 問什麼 | 權重／`cost` | 有的話 |

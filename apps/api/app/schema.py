@@ -53,10 +53,20 @@ def schema_is_current(current_revision: str | None) -> bool:
     expected = expected_schema_revision()
     if current_revision == expected:
         return True
-    # This 0132 release is the rollback target for the reviewed, additive 0133
-    # story-budget migration. Production migrates before switching application
-    # containers and does not downgrade the database when rolling them back.
+    # Production migrates before switching application containers. This is a
+    # revision check only: migration_guard must read back budget accounts and
+    # holds before an image can start on a later reviewed revision.
     return (
-        expected == "0132_video_pilot_budget"
-        and current_revision == "0133_story_followon_budget"
+        (expected == "0132_video_pilot_budget" and current_revision == "0133_story_followon_budget")
+        or (
+            expected == "0137_video_manga_tier" and current_revision == "0138_story_everyday_budget"
+        )
+        or (
+            expected == "0138_story_everyday_budget"
+            and current_revision == "0139_c20_zippo_pilot_budget"
+        )
+        or (
+            expected == "0139_c20_zippo_pilot_budget"
+            and current_revision == "0140_c08_kikkoman_pilot_budget"
+        )
     )

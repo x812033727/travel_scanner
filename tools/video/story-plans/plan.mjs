@@ -36,6 +36,9 @@ export const PREFIXES = {
   T: { category: "asia-brand", region: "tw" },
   C: { category: "tech", region: null },
 };
+export const EVERYDAY_REVERSALS_SLUG = "brand-stories-everyday-reversals";
+// The X letter belongs to this one series of company turns; its stories may be any category.
+export const COMPANY_TURNS_SLUG = "brand-stories-company-turns";
 // `headline` is the channel's thumbnail limit (templates.mjs THUMB_HEADLINE_MAX), counted the way
 // the qa stage counts it (headlineCount: a CJK glyph one, a Latin word or a number one, at most
 // THUMB_HEADLINE_WORDS_MAX of those); a story over it is a warning (storyWarnings), since the
@@ -47,7 +50,7 @@ export const LIMITS = { title: 60, logline: 120, question: 120, takeaway: 120, s
 // The fields of a story file, in the order the files are written in.
 export const STORY_KEYS = ["id", "slug", "category", "region", "subject", "title", "logline", "question", "chapters", "takeaway", "must_verify", "sources", "names", "cast", "image_notes", "sensitivity", "related_guide", "thumbnail"];
 
-const ID = /^[ABKTC][0-9]{2}$/;
+const ID = /^[ABKTCX][0-9]{2}$/;
 const SLUG = /^story-[a-z0-9](?:[a-z0-9-]{0,52}[a-z0-9])?$/;
 const SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
@@ -105,14 +108,17 @@ export function claimSupported(claim, sources) {
 }
 
 /** Everything wrong with one story, as a list of sentences; empty when it is sound. */
-export function storyProblems(story, fileId = story?.id) {
+export function storyProblems(story, fileId = story?.id, { seriesSlug } = {}) {
   const problems = [];
   if (!isObject(story)) return ["the file is not a JSON object"];
   for (const key of Object.keys(story)) if (!STORY_KEYS.includes(key)) problems.push(`unknown field "${key}"`);
-  if (typeof story.id !== "string" || !ID.test(story.id)) problems.push(`id "${story.id}" is not a letter A, B, K, T or C and two digits`);
+  if (typeof story.id !== "string" || !ID.test(story.id)) problems.push(`id "${story.id}" is not a letter A, B, K, T, C or X and two digits`);
   else if (story.id !== fileId) problems.push(`id "${story.id}" does not match the file name ${fileId}.json`);
+  else if (story.id.startsWith("X") && seriesSlug !== COMPANY_TURNS_SLUG) problems.push(`id ${story.id}: X stories belong to the ${COMPANY_TURNS_SLUG} series`);
   if (typeof story.slug !== "string" || !SLUG.test(story.slug)) problems.push(`slug "${story.slug}" must be story-<lowercase letters, digits, hyphens>, at most 60 characters`);
-  const prefix = PREFIXES[String(story.id ?? "")[0]];
+  const prefix = seriesSlug === EVERYDAY_REVERSALS_SLUG && String(story.id ?? "").startsWith("C")
+    ? { category: "everyday", region: null }
+    : PREFIXES[String(story.id ?? "")[0]];
   if (!CATEGORIES.includes(story.category)) problems.push(`category must be one of ${CATEGORIES.join(", ")}`);
   else if (prefix && story.category !== prefix.category) problems.push(`category "${story.category}" does not fit id ${story.id} (${prefix.category})`);
   if (!REGIONS.includes(story.region)) problems.push(`region must be one of ${REGIONS.join(", ")}`);
@@ -397,7 +403,8 @@ export function seriesProblems(series) {
   if (series.hands_off !== true) problems.push("series.hands_off must be true");
   const cute = isObject(series.look) && Object.keys(series.look).length === 1 && series.look.preset === "cute-mystery";
   if (cute) {
-    if (series.target_minutes !== 10) problems.push("series.target_minutes must be 10 for the cute-mystery look");
+    // 13 since the owner's 2026-10-25 decision (docs/videos/channel-review-20261025-story-series/README.md); 10 for the batches before it.
+    if (![10, 13].includes(series.target_minutes)) problems.push("series.target_minutes must be 10 or 13 for the cute-mystery look");
     if (series.image_model !== "image-01") problems.push('series.image_model must be "image-01" for the cute-mystery look');
     if (series.style_preset !== "custom") problems.push('series.style_preset must be "custom" for a story with the cute-mystery look');
   } else if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
@@ -542,7 +549,7 @@ export function planProblems(plan, { expected = { everyday: 40, "asia-brand": 40
       problems.push(`${entry.id}: not valid JSON (${entry.error})`);
       continue;
     }
-    for (const problem of storyProblems(entry.story, entry.id)) problems.push(`${entry.id}: ${problem}`);
+    for (const problem of storyProblems(entry.story, entry.id, { seriesSlug: plan.series?.slug })) problems.push(`${entry.id}: ${problem}`);
     for (const [seen, key] of [[slugs, "slug"], [titles, "title"]]) {
       const value = entry.story[key];
       if (typeof value !== "string") continue;

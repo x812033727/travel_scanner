@@ -16,6 +16,8 @@ const review: Review = {
     { role: "metadata", sha256: hash(5), size: 800, content_type: "application/json" },
     ...["zh_tw", "zh-CN", "en", "ja", "ko"].map((locale, i) => ({ role: `captions_${locale}`, sha256: hash(i + 5), size: 100, content_type: locale === "ja" ? "text/vtt" : "text/plain" })),
     { role: "description_en", sha256: hash(9), size: 100, content_type: "text/plain" },
+    { role: "thumbnail-b", sha256: "b".repeat(64), size: 500, content_type: "image/jpeg" },
+    ...["en", "ja"].map((locale) => ({ role: `thumbnail_${locale}`, sha256: (locale === "en" ? "e" : "f").repeat(64), size: 500, content_type: "image/jpeg" })),
   ],
   choice: null, note: null, created_at: "2026-09-28T00:00:00Z", decided_at: "2026-09-28T00:00:00Z",
 };
@@ -69,6 +71,9 @@ describe("manual YouTube upload", () => {
     expect(screen.getByRole("link", { name: "下載中文（台灣）字幕" }).getAttribute("download")).toBe("zh-TW.srt");
     expect(screen.getByRole("link", { name: "下載日文字幕" }).getAttribute("download")).toBe("ja.vtt");
     expect(screen.getByRole("link", { name: "下載縮圖" }).getAttribute("download")).toBe("thumbnail.png");
+    expect(screen.getByRole("link", { name: "縮圖 英文" }).getAttribute("download")).toBe("thumbnail.en.jpg");
+    expect(screen.getByRole("link", { name: "縮圖 日文" }).getAttribute("href")).toBe(`/api/admin-video-files/test-video/${"f".repeat(64)}`);
+    expect(screen.queryByRole("link", { name: /縮圖 B/ })).toBeNull();
     expect(screen.getByText(/原本的「失敗／等待」可能仍保留/)).toBeTruthy();
     for (const [url, init] of vi.mocked(fetch).mock.calls) {
       expect(String(url).startsWith("/api/")).toBe(true);
@@ -94,6 +99,30 @@ describe("manual YouTube upload", () => {
     expect(screen.getByText("是，這是兒童專屬的影片")).toBeTruthy();
     expect(screen.getByText("科學與技術（28）")).toBeTruthy();
     expect(screen.getByRole("link", { name: "description.en.txt" }).getAttribute("download")).toBe("description.en.txt");
+  });
+
+  it("offers one zip of every listed file under the names the single downloads use", async () => {
+    stub();
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    const link = screen.getByRole("link", { name: "下載整包 zip（11 個檔案）" });
+    expect(link.getAttribute("download")).toBe("test-video-upload.zip");
+    const url = new URL(link.getAttribute("href") ?? "", "https://mokaair.com");
+    expect(url.pathname).toBe("/api/admin-video-package/test-video");
+    expect(url.searchParams.getAll("file")).toEqual([
+      `${hash(2)}:final.mp4`, `${hash(4)}:thumbnail.png`, `${"e".repeat(64)}:thumbnail.en.jpg`, `${"f".repeat(64)}:thumbnail.ja.jpg`,
+      `${hash(5)}:zh-TW.srt`, `${hash(6)}:zh-CN.srt`, `${hash(7)}:en.srt`, `${hash(8)}:ja.vtt`, `${hash(9)}:ko.srt`,
+      `${hash(9)}:description.en.txt`, `${hash(5)}:metadata.json`,
+    ]);
+    expect(screen.queryByText(/不在審核區/)).toBeNull();
+  });
+
+  it("says the compilation video is outside the zip", async () => {
+    stub({ ...project, compilation: true, download_available: true, reviews: [{ ...review, files: review.files.filter((file) => file.role !== "final") }] });
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    expect(screen.getByRole("link", { name: "下載整包 zip（10 個檔案）" })).toBeTruthy();
+    expect(screen.getByText(/1080p 影片不在審核區/)).toBeTruthy();
   });
 
   it("switches the publish form to manual mode without sending and preserves edits on return", async () => {
@@ -144,6 +173,37 @@ describe("manual YouTube upload", () => {
     render(<YoutubeManualUpload slug={project.slug} />);
     await open();
     expect(screen.getByRole("link", { name: /下載影片/ }).getAttribute("href")).toBe("/api/admin-video-download/test-video");
+  });
+
+  it("reads a language added after the upload from the newest approved language batch, and never an older batch", async () => {
+    const later = (seconds: number) => new Date(Date.parse(review.created_at) + seconds * 1000).toISOString();
+    const batch = (id: string, created: string, metadataHash: string, locale: string): Review => ({
+      ...review, id, gate: "languages", created_at: created, decided_at: created, payload: { locales: { [locale]: { metadata: "ready", captions: "ready" } } },
+      files: [
+        { role: `description_${locale}`, sha256: hash(6), size: 100, content_type: "text/plain" },
+        { role: `captions_${locale}`, sha256: "a".repeat(64), size: 100, content_type: "text/plain" },
+        { role: `thumbnail_${locale}`, sha256: "c".repeat(64), size: 500, content_type: "image/jpeg" },
+        { role: "metadata", sha256: metadataHash, size: 900, content_type: "application/json" },
+      ],
+    });
+    const translated = { ...metadata, localizations: { ...metadata.localizations, th: { title: "ชื่อไทย", description: "คำอธิบาย" } } };
+    // Newest first, as the API orders them: the Thai batch, then the publish review, then a batch older than it.
+    const value = { ...project, reviews: [batch("thai", later(60), "d".repeat(64), "th"), review, batch("older", later(-60), hash(7), "vi")] };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url === "/api/travel/admin/videos/test-video") return Promise.resolve(Response.json(value));
+      if (url === `/api/admin-video-files/test-video/${"d".repeat(64)}`) return Promise.resolve(Response.json(translated));
+      throw new Error(`Unexpected request: ${url}`);
+    }));
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    fireEvent.change(screen.getByRole("combobox", { name: "語言" }), { target: { value: "th" } });
+    expect(screen.getByLabelText("標題")).toHaveProperty("value", "ชื่อไทย");
+    expect(screen.getByRole("link", { name: "縮圖 泰文" }).getAttribute("download")).toBe("thumbnail.th.jpg");
+    expect(screen.getByRole("link", { name: "下載泰文字幕" }).getAttribute("href")).toBe(`/api/admin-video-files/test-video/${"a".repeat(64)}`);
+    expect(screen.getByRole("link", { name: "下載日文字幕" })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "縮圖 越南文" })).toBeNull();
+    expect(screen.queryByRole("option", { name: "越南文" })).toBeNull();
   });
 
   it("explains missing final files and does not offer a preview as an upload", async () => {

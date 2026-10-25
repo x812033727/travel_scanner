@@ -8,6 +8,11 @@ before it is used. Nothing here is served without an admin session.
 
 Layout: ``<root>/<slug>/<sha256>`` for a finished file, ``<root>/<slug>/.parts/<sha256>/<n>``
 while it arrives.
+
+A finished file's mtime says when it last arrived (a repeated upload of a file the store has
+touches it), so ``keep_only`` can spare what just came in: the pipeline uploads every file of
+a gate before it submits, and a gate with several reviews (a character sheet each) submits
+them one after another, so a file no review refers to yet is not abandoned, only early.
 """
 
 from __future__ import annotations
@@ -16,7 +21,9 @@ import hashlib
 import os
 import re
 import shutil
+import time
 from dataclasses import dataclass
+from datetime import timedelta
 from pathlib import Path
 
 PART_BYTES = 4 * 1024 * 1024
@@ -83,6 +90,8 @@ class ReviewStore:
         """Store part ``index`` of ``count``; assemble and verify when the last one is in."""
         target = self._checked(slug, sha256)
         if target.is_file():
+            # Asked for again: the file is as fresh as a new upload to whoever submits next.
+            os.utime(target)
             return PartResult(received=list(range(count)), complete=True)
         if not 0 < size <= self.max_file_bytes:
             raise StorageRefused(
@@ -129,16 +138,26 @@ class ReviewStore:
             )
         os.replace(assembling, target)
 
-    def keep_only(self, slug: str, keep: set[str]) -> list[str]:
-        """Delete the project's finished files that no live review refers to; return their names."""
+    def keep_only(
+        self, slug: str, keep: set[str], *, older_than: timedelta | None = None
+    ) -> list[str]:
+        """Delete the project's finished files that no live review refers to; return their names.
+
+        With ``older_than``, a file that arrived more recently than that stays even when
+        nothing refers to it yet: a submission in progress may still name it.
+        """
         folder = self._project(slug)
         if not folder.is_dir():
             return []
+        cutoff = time.time() - older_than.total_seconds() if older_than is not None else None
         removed = []
         for file in folder.iterdir():
-            if file.is_file() and valid_sha256(file.name) and file.name not in keep:
-                file.unlink(missing_ok=True)
-                removed.append(file.name)
+            if not (file.is_file() and valid_sha256(file.name)) or file.name in keep:
+                continue
+            if cutoff is not None and file.stat().st_mtime > cutoff:
+                continue
+            file.unlink(missing_ok=True)
+            removed.append(file.name)
         return sorted(removed)
 
     def delete_project(self, slug: str) -> None:
