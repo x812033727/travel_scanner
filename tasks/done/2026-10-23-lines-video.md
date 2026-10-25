@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-lines-video
 title: 漫劇聽眾修訂常回 lines 清單而不是 video 物件，兩次就把整集擋住：工人要接受逐句修訂
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5.1
 claimed_at: 2026-10-23T09:53:24Z
 created_at: 2026-10-23T09:50:00Z
-completed_at:
+completed_at: 2026-10-23T14:20:08Z
 branch: claude/eloquent-williams-d2633d
 depends_on: []
 scope:
@@ -30,7 +30,7 @@ scope:
 - [x] 回 `{"video": …}` 的舊形狀照常。
 - [x] 提示詞告訴聽眾兩種回法都可以、長劇本優先回 lines（或乾脆只要 lines）。
 - [x] `automation.test.mjs` 有兩個案例：lines 形狀套回成功；id 不存在時不壞檔。
-- [ ] 部署後在後台對 e002–e004 按「重試」，三集都過聽眾階段。
+- [x] 部署後在後台對 e002–e004 按「重試」，三集都過聽眾階段。
 
 ## Steps
 
@@ -52,3 +52,4 @@ scope:
   - `automation.test.mjs`：三個案例——lines 套回成功（x9fe 只改 emotion、p5vs 改字並掉 say、zzzz 不存在記 log、`listener edit, 2 changes`、verified 變 false）；全部 id 不存在時 `0 changes`、video.json 與聽眾前一致；`listenerEdits` 對舊形狀原樣回傳、不動原稿。
   - 認領時 `scope` 跟 `2026-10-14-ai-and-tech-videos-tell-one`、`2026-10-20-tutorial-flow-and-hooks-rules-learned` 在 `prompts.mjs` 重疊（分別認領 9 天與 3 天），用 `--force` 認領；這條只動聽眾的 Return 句與新常數，不碰 register／narrative。
   - 沒部署。部署後對 e002–e004 按「重試」由站主決定；重試後工人 log 應是 `listener edit, N changes`，不再出現「the answer has no video object」。
+- 2026-10-23 結果：PR #1780 於 13:15Z 併入（`a1d9570bb`），13:17Z 部署上線（host-verify 13/13，含工人容器的 `listenerEdits`／`LISTENER_ANSWER` 兩項）。13:19Z 後台對 e002–e004 按「重試」，14:12–14:17Z 主機工人 log：e002「listener edit, 1 changes」、e003「4 changes」、e004「3 changes」，三集都從 blocked 回到 active、往查核走；沒再出現「the answer has no video object」。PR 期間 main 兩度碰收據，各由審查代理（`claude-pr-review-lines-video-merge-20261023`、`…-merge2-20261023`）從三個 blob 重建聯集重綁。
