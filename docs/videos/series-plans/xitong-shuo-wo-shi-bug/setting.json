@@ -83,20 +83,20 @@
       "name": "江河",
       "role": "男主，穿越來的程式設計師，九域唯一的撿垃圾玩家",
       "age": "26",
-      "appearance": "a young East Asian man of 26 in a 2D anime manhua style: slightly messy jet-black hair with a few strands over the forehead, sharp tired eyes with dark grey irises, a thin pale scar through the left eyebrow, lean build; he wears a worn dark-green hooded traveller's jacket over a grey shirt, fingerless gloves and a patched satchel; a translucent pale-blue system panel floats beside him with no readable text",
+      "appearance": "a young East Asian man of 26 in a 2D anime manhua style: slightly messy jet-black hair with a few strands over the forehead, sharp tired eyes with dark grey irises, lean build; he wears a worn dark-green hooded traveller's jacket over a grey shirt, fingerless gloves and a patched satchel",
       "voice": "疲憊但吐槽精準，一緊張就講程式術語；念面板時像在讀 log",
       "tts": {
         "voice": "gemini:Charon",
         "style": "標準國語，咬字清楚，台北人平常說話的語調。疲倦的年輕男聲，語速偏快，吐槽時語氣平，認真時壓低。"
       },
-      "arc": "從只想在異世界活下來的廢人，到懂得這個系統是有人寫的、也懂得自己可以改寫它的人。"
+      "arc": "從只想在異世界活下來的廢人，到懂得這個系統是有人寫的；再到把撿來的一切還給九域、自己成了回收桶裡最後一件，被一千二百三十七個人認領回來的人。"
     },
     {
       "id": "xitong",
       "name": "系統",
       "role": "面板的聲音，只有江河聽得到",
       "age": "—",
-      "appearance": "no character picture: the system is a translucent pale-blue panel with a soft glow and no readable text, drawn beside whoever reads it",
+      "appearance": "no character picture: the system is drawn only when a shot prompt asks for it, as a blank pane of pale-blue light with a soft glow, completely empty, beside whoever reads it",
       "voice": "平板、機械、沒有情緒，偶爾出現一句不該出現的人話",
       "tts": {
         "voice": "gemini:Schedar",
@@ -109,7 +109,7 @@
       "name": "千凜",
       "role": "女主，被白鹿公會「勸捨」掉主技能的前劍士",
       "age": "22",
-      "appearance": "a young East Asian woman of 22 in a 2D anime manhua style: long straight ash-black hair tied in a high ponytail with a red cord, sharp light-amber eyes, a small mole under the left eye, slim athletic build; she wears a fitted dark-red short jacket with black trim over a high-collared black top, a sword belt with an empty scabbard, and fingerless leather gloves",
+      "appearance": "a young East Asian woman of 22 in a 2D anime manhua style: long straight ash-black hair tied in a high ponytail with a red cord, sharp light-amber eyes, slim athletic build; she wears a fitted dark-red short jacket with black trim over a high-collared black top, a sword belt with an empty scabbard, and fingerless leather gloves",
       "voice": "冷、短句、不解釋；笑的時候只有一聲",
       "tts": {
         "voice": "gemini:Kore",
@@ -128,7 +128,7 @@
         "voice": "gemini:Algieba",
         "style": "標準國語，咬字清楚。溫和沉穩的中年男聲，語速慢，句尾微微上揚帶著客氣，從不提高音量。"
       },
-      "arc": "從看穿所有人面板的神，到第一次看不懂一個人的面板。"
+      "arc": "從看穿所有人面板的神，到第一次看不懂一個人的面板；十年前他在垃圾坑邊看著上一個回收程序被清空、什麼都沒按，十年後又坐在同一個位置，還是沒按。"
     },
     {
       "id": "lao-niang",
@@ -167,7 +167,7 @@
         "voice": "gemini:Puck",
         "style": "標準國語，咬字清楚。尖細的年輕男聲，語速快，帶著嘲諷的笑。"
       },
-      "arc": "第一個當眾叫他廢人的人，也是第一個被他的廢技打臉的人。"
+      "arc": "第一個當眾叫他廢人的人，也是第一個被他的廢技打臉的人；第 33 集拿回十六歲丟掉的「臉紅」，從此一說謊就臉紅，最後當眾替江河作證。"
     },
     {
       "id": "shi-mo",
@@ -213,8 +213,8 @@
       "id": "m05",
       "question": "面板為什麼會當機？",
       "setup_season": 1,
-      "reveal_season": 2,
-      "answer": "技能槽沒有上限，但面板的載入有：第一季末三十個技能讓它當機三秒，第二季他學會「卸載」。"
+      "reveal_season": 1,
+      "answer": "技能槽沒有上限，面板的載入有：上限三十，多一個就當機（第 21 集三秒，第 32 集多了管理員變十秒）。第 33 集他從管理員的日誌裡找到「卸載」——不是捨棄，是把技能送到指定的面板；原主認領後，那個技能就移出清空名單。"
     },
     {
       "id": "m06",

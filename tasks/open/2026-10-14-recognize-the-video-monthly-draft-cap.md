@@ -11,9 +11,7 @@ completed_at:
 branch: claude/video-backup-verify-lines
 depends_on: []
 scope:
-  - .agents/skills/deploy/scripts/host-verify.sh
   - .agents/skills/deploy/references/post-deploy.md
-  - tools/deploy-host-verify.test.mjs
   - tasks/open/2026-10-14-recognize-the-video-monthly-draft-cap.md
 ---
 
@@ -57,6 +55,15 @@ monthly cap, a read-only host verification should pass the worker-health gate
 while visibly reporting the cap; it must still fail for an unrelated exit 3.
 
 ## Notes
+
+### 2026-10-24 owner-approved narrow scope release
+
+The site owner approved releasing only `.agents/skills/deploy/scripts/host-verify.sh`
+and `tools/deploy-host-verify.test.mjs` from this stale claim so the C20
+rollback-verifier task can claim and edit them normally. The existing worker-cap
+implementation, this ticket's status and owner, `post-deploy.md` scope, and
+remaining deployment acceptance work are preserved. No deployment is part of
+this scope change.
 
 The #1498 deploy reached live SHA e8d8a8fa18fc2974bab5aa4ada426eadb709fd8d,
 returned DEPLOY_EXIT=0 and health 3/3, and loaded the new API code. The generic

@@ -92,6 +92,16 @@ test("C everyday ids belong only to the exact everyday reversals series", () => 
   assert.match(planProblems(plan, { expected: null }).join("\n"), /C03: category "everyday" does not fit id C03 \(tech\)/);
 });
 
+test("X ids belong only to the company turns series, in any category", () => {
+  const seriesSlug = "brand-stories-company-turns";
+  const everyday = story({ id: "X06", slug: "story-everyday-wd40-x06" });
+  const tech = { ...everyday, category: "tech" };
+  assert.deepEqual(storyProblems(everyday, "X06", { seriesSlug }), []);
+  assert.deepEqual(storyProblems(tech, "X06", { seriesSlug }), []);
+  assert.match(storyProblems(everyday, "X06").join("\n"), /X stories belong to the brand-stories-company-turns series/);
+  assert.match(storyProblems(everyday, "X06", { seriesSlug: "brand-stories-everyday-reversals" }).join("\n"), /X stories belong/);
+});
+
 test("the six chapters come in order and say something", () => {
   const swapped = story();
   [swapped.chapters[0], swapped.chapters[1]] = [swapped.chapters[1], swapped.chapters[0]];
@@ -221,7 +231,8 @@ test("the series row is a hands-off stills story series", () => {
 test("a ten-minute MiniMax brand story accepts only the exact cute-mystery look", () => {
   const cute = series({ target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } });
   assert.deepEqual(seriesProblems(cute), []);
-  assert.match(seriesProblems({ ...cute, target_minutes: 13 }).join("\n"), /must be 10 for the cute-mystery look/);
+  assert.match(seriesProblems({ ...cute, target_minutes: 11 }).join("\n"), /must be 10 or 13 for the cute-mystery look/);
+  assert.deepEqual(seriesProblems({ ...cute, target_minutes: 13 }), [], "13 since the owner's 2026-10-25 decision");
   assert.match(seriesProblems({ ...cute, image_model: "gemini-3.1-flash-image" }).join("\n"), /must be "image-01"/);
   assert.match(seriesProblems({ ...cute, style_preset: "cinematic-3d" }).join("\n"), /style_preset must be "custom"/);
   assert.match(seriesProblems({ ...cute, look: { preset: "cute-mystery", style: "extra" } }).join("\n"), /look needs a style and a negative prompt/);
@@ -235,7 +246,7 @@ test("the five selected brand stories' series file uses the supported cute route
   const actual = JSON.parse(readFileSync(path.join(dir, "series.json"), "utf8"));
   const episodes = readdirSync(path.join(dir, "episodes")).filter((name) => name.endsWith(".json")).map((name) => JSON.parse(readFileSync(path.join(dir, "episodes", name), "utf8")));
   assert.deepEqual(seriesProblems(actual), []);
-  assert.deepEqual([actual.target_minutes, actual.image_model, actual.style_preset, actual.look], [10, "image-01", "custom", { preset: "cute-mystery" }]);
+  assert.deepEqual([actual.target_minutes, actual.image_model, actual.style_preset, actual.look], [13, "image-01", "custom", { preset: "cute-mystery" }]);
   assert.deepEqual(episodes.map((episode) => episode.number).sort((a, b) => a - b), [1, 2, 3, 4, 5]);
 });
 

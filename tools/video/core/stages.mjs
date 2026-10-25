@@ -135,6 +135,8 @@ export function currentDub(project, workdir, locale, speech) {
 
 /** The review file role of a locale's dub track: `dub_en`, `dub_ko` (roles are lower-case words; an older package's zh-CN track reads as `dub_zh_cn`). */
 export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_")}`;
+/** The role of a track the check gave up on, sent for the owner to judge: `dub_unchecked_ja`. Sync never takes it. */
+export const uncheckedDubRole = (locale) => `dub_unchecked_${locale.toLowerCase().replace(/-/g, "_")}`;
 
 /**
  * The current dub track of every locale asked for (the owner's dub choice, or every other locale
@@ -144,17 +146,44 @@ export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_"
 export function dubsForUpload(project, workdir, speech, locales = defaultDubLocales(project.doc)) {
   const dubs = [];
   const skipped = {};
+  const unchecked = [];
   for (const locale of locales) {
     const gaveUp = readJson(dubArtifacts(workdir, locale).skipped, null);
     if (gaveUp) {
       skipped[locale] = gaveUp.reason ?? "";
+      // A track given up because the check heard lines wrong is still the current one: the owner
+      // may listen and upload it by hand, so it goes along unchecked, with the lines it failed.
+      const dub = currentDub(project, workdir, locale, speech);
+      if (dub && !dub.stale) unchecked.push({ locale, file: dub.file, format: dub.format, lines: failedLines(workdir, locale, dub) });
       continue;
     }
     const dub = currentDub(project, workdir, locale, speech);
     // `kept`: the lines whose retake did not fit, so the track carries their earlier take (dubs/cli.mjs --keep-fitting).
     if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}), ...(Array.isArray(dub.kept) && dub.kept.length ? { kept: dub.kept.map(String) } : {}) });
   }
-  return { dubs, skipped };
+  return { dubs, skipped, unchecked };
+}
+
+// A card names at most this many failed lines; the rest are counted.
+const MAX_FAILED_LINES = 20;
+
+/**
+ * The lines check-audio flagged in a dub track (review/check-flags.<locale>.json, written for
+ * this very speech), each with where it starts in the track, the line as written and what the
+ * transcript heard (review/check.<locale>.json). Empty when the flags belong to another take.
+ */
+function failedLines(workdir, locale, dub) {
+  const flags = readJson(path.join(workdir, "review", `check-flags.${locale}.json`), null);
+  if (!flags || !Array.isArray(flags.flags) || flags.speech_hash !== dub.speech_hash || (flags.translation_hash && flags.translation_hash !== dub.translation_hash)) return [];
+  const heard = readJson(path.join(workdir, "review", `check.${locale}.json`), null)?.lines ?? {};
+  const starts = new Map((dub.lines ?? []).map((line) => [line.id, line.start_frame]));
+  const fps = dub.fps ?? 30;
+  return flags.flags.slice(0, MAX_FAILED_LINES).map((id) => ({
+    id: String(id),
+    at_seconds: starts.has(id) ? Math.round((starts.get(id) / fps) * 10) / 10 : null,
+    intended: typeof heard[id]?.intended === "string" ? heard[id].intended : null,
+    heard: typeof heard[id]?.heard === "string" ? heard[id].heard : null,
+  }));
 }
 
 /**

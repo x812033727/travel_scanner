@@ -24,7 +24,7 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } 
 import { isCompilation } from "../core/compilation.mjs";
 import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages, uncheckedDubRole } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
 import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
@@ -860,7 +860,7 @@ async function languagesSubmission({ request, project, workdir, slug }) {
   if (!chosen.length) throw new ReviewError("the owner chose Traditional Chinese only; there is no language batch to send", { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const narration = narrationLocale(project.doc);
-  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub").filter((locale) => locale !== narration));
+  const { dubs, skipped, unchecked } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub").filter((locale) => locale !== narration));
   const files = [];
   const locales = {};
   for (const [locale, choice] of chosen) {
@@ -875,6 +875,13 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
       entry.captions = "ready";
     }
+    // The language's own thumbnail, for Studio's language page: a video whose languages came
+    // after its upload confirmation has it only here, and the manual upload guide reads it from
+    // the newest approved batch. Not a part the owner chooses, so the payload does not list it.
+    const thumbnail = path.join(workdir, UPLOAD_DIR, "thumbnails", `${locale}.jpg`);
+    if ((choice.metadata || choice.captions || choice.dub) && locale !== narration && existsSync(thumbnail)) {
+      files.push(await upload(request, slug, thumbnail, `thumbnail_${locale}`, "image/jpeg"));
+    }
     // The narration is the video's own audio: no dub of it is made, and YouTube would take a
     // second track of it as a duplicate, so the batch says so instead of leaving the part open.
     if (choice.dub && locale === narration) entry.dub = { status: "skipped", reason: NARRATION_DUB_SKIP };
@@ -888,6 +895,14 @@ async function languagesSubmission({ request, project, workdir, slug }) {
         Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file), ...(dub.kept ? { kept_lines: dub.kept } : {}) });
       } else if (skipped[locale] !== undefined) {
         entry.dub = { status: "skipped", reason: skipped[locale] };
+        // The track the check gave up on, still current: the owner can listen to it and upload it
+        // by hand. `uncheckedDubRole` keeps it apart from a ready track, which sync would send.
+        const track = unchecked.find((each) => each.locale === locale);
+        const role = track && DUB_TYPES[track.format] ? uncheckedDubRole(locale) : null;
+        if (role) {
+          files.push(await upload(request, slug, track.file, role, DUB_TYPES[track.format]));
+          entry.dub.unchecked = { file: path.basename(track.file), format: track.format, file_role: role, sha256: await sha256File(track.file), lines: track.lines };
+        }
       }
     }
     locales[locale] = entry;

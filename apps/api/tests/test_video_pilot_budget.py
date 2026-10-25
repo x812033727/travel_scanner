@@ -25,6 +25,11 @@ from app.models import User, VideoToolToken
 from app.problems import AppError
 from app.video_budget import recovery, service
 from app.video_budget.models import (
+    ACTIVATED_STORY_SLUGS,
+    C03_ACTIVATED_SLUG,
+    C03_HISTORY_CLOSED_RECEIPT,
+    C_SERIES_PILOT_LIMITS_USD,
+    C_SERIES_PRE_LEDGER_OPERATION_ID,
     FOLLOWON_LIMIT_USD,
     FOLLOWON_SLUGS,
     PENDING_PILOT_LIMITS_USD,
@@ -366,7 +371,12 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
     sessions: async_sessionmaker[AsyncSession],
     slug: str,
 ) -> None:
-    assert PREPRODUCTION_HOLD_SLUGS == UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
+    assert ACTIVATED_STORY_SLUGS == {C03_ACTIVATED_SLUG}
+    assert PREPRODUCTION_HOLD_SLUGS == (
+        UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
+    ) - ACTIVATED_STORY_SLUGS
+    assert set(C_SERIES_PILOT_LIMITS_USD) == PREPRODUCTION_HOLD_SLUGS | ACTIVATED_STORY_SLUGS
+    assert C_SERIES_PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
     if slug in PENDING_PILOT_SLUGS:
         assert PENDING_PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
     assert slug not in PILOT_SLUGS
@@ -379,9 +389,22 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
         with pytest.raises(AppError) as refused:
             await _reserve(sessions, "first-paid-call", "0.15", slug=slug)
         assert refused.value.code == "video_budget_preproduction_hold"
-        with pytest.raises(AppError) as unreadable:
-            await _summary(sessions, slug)
-        assert unreadable.value.code == "video_budget_preproduction_hold"
+        if not account_exists:
+            with pytest.raises(AppError) as missing:
+                await _summary(sessions, slug)
+            assert missing.value.code == "video_budget_missing_account"
+        else:
+            view = await _summary(sessions, slug)
+            assert view is not None
+            assert (view.limit_usd, view.reserved_usd, view.remaining_usd) == (
+                PILOT_LIMIT_USD,
+                Decimal("0"),
+                PILOT_LIMIT_USD,
+            )
+            async with sessions() as session:
+                report = await recovery.inspect(session, slug=slug)
+            assert report["admission_held"] is True
+            assert report["remaining_usd"] == "25.000000"
     async with sessions() as session:
         operations = (
             await session.scalars(
@@ -389,6 +412,157 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
             )
         ).all()
     assert operations == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("slug", sorted(UNRECONCILED_STORY_SLUGS))
+async def test_historical_uncertain_operation_consumes_full_c_series_ceiling(
+    sessions: async_sessionmaker[AsyncSession],
+    slug: str,
+) -> None:
+    assert C_SERIES_PRE_LEDGER_OPERATION_ID == "pre-ledger-history"
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD))
+        session.add(
+            VideoPilotBudgetOperation(
+                slug=slug,
+                operation_id=C_SERIES_PRE_LEDGER_OPERATION_ID,
+                category="historical",
+                provider="unattributed",
+                model="unattributed",
+                max_usd=PILOT_LIMIT_USD,
+                status="uncertain",
+                attempts=1,
+            )
+        )
+        await session.commit()
+    view = await _summary(sessions, slug)
+    assert view is not None
+    assert (
+        view.limit_usd,
+        view.reserved_usd,
+        view.settled_usd,
+        view.remaining_usd,
+        view.uncertain_operations,
+    ) == (PILOT_LIMIT_USD, PILOT_LIMIT_USD, Decimal("0"), Decimal("0"), 1)
+    with pytest.raises(AppError) as refused:
+        await _reserve(sessions, "first-paid-call", "0.01", slug=slug)
+    # An activated film is refused by its exhausted balance, a held one by the hold;
+    # either way the uncertain history keeps the account closed.
+    assert refused.value.code == (
+        "video_budget_exhausted"
+        if slug in ACTIVATED_STORY_SLUGS
+        else "video_budget_preproduction_hold"
+    )
+    assert (await _summary(sessions, slug)).uncertain_operations == 1  # type: ignore[union-attr]
+
+
+async def _seed_c03_history(
+    sessions: async_sessionmaker[AsyncSession],
+    *,
+    status: str,
+    actual: Decimal | None,
+    receipt: str | None,
+) -> None:
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=C03_ACTIVATED_SLUG, limit_usd=PILOT_LIMIT_USD))
+        session.add(
+            VideoPilotBudgetOperation(
+                slug=C03_ACTIVATED_SLUG,
+                operation_id=C_SERIES_PRE_LEDGER_OPERATION_ID,
+                category="historical",
+                provider="unattributed",
+                model="unattributed",
+                max_usd=PILOT_LIMIT_USD,
+                actual_usd=actual,
+                status=status,
+                attempts=1,
+                receipt_ref=receipt,
+            )
+        )
+        await session.commit()
+
+
+@pytest.mark.asyncio
+async def test_c03_spends_only_after_the_owner_closed_its_history_at_the_full_ceiling(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    assert not service.is_preproduction_held(C03_ACTIVATED_SLUG)
+    assert service.is_pilot(C03_ACTIVATED_SLUG)
+    await _seed_c03_history(
+        sessions, status="settled", actual=PILOT_LIMIT_USD, receipt=C03_HISTORY_CLOSED_RECEIPT
+    )
+    view = await _summary(sessions, C03_ACTIVATED_SLUG)
+    assert view is not None
+    assert (
+        view.reserved_usd,
+        view.settled_usd,
+        view.remaining_usd,
+        view.historical_closed_usd,
+    ) == (Decimal("0"), Decimal("0"), PILOT_LIMIT_USD, PILOT_LIMIT_USD)
+    receipt = await _reserve(sessions, "c031202-tts", "0.151552", slug=C03_ACTIVATED_SLUG)
+    assert receipt is not None and receipt.dispatch_allowed
+    async with sessions() as session:
+        report = await recovery.inspect(session, slug=C03_ACTIVATED_SLUG)
+    assert report["admission_held"] is False
+    assert report["historical_closed_usd"] == "25.000000"
+    assert report["remaining_usd"] == "24.848448"
+    # The closed row is still on the ledger, untouched.
+    async with sessions() as session:
+        history = await session.scalar(
+            sa.select(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.slug == C03_ACTIVATED_SLUG,
+                VideoPilotBudgetOperation.operation_id == C_SERIES_PRE_LEDGER_OPERATION_ID,
+            )
+        )
+    assert history is not None and history.status == "settled"
+    assert history.actual_usd == PILOT_LIMIT_USD
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("status", "actual", "receipt"),
+    [
+        ("uncertain", None, None),
+        ("settled", Decimal("25"), "invoice-2026-10-row-1"),
+        ("settled", Decimal("1.713"), C03_HISTORY_CLOSED_RECEIPT),
+    ],
+)
+async def test_c03_stays_exhausted_until_the_exact_owner_settlement_is_applied(
+    sessions: async_sessionmaker[AsyncSession],
+    status: str,
+    actual: Decimal | None,
+    receipt: str | None,
+) -> None:
+    await _seed_c03_history(sessions, status=status, actual=actual, receipt=receipt)
+    view = await _summary(sessions, C03_ACTIVATED_SLUG)
+    assert view is not None
+    assert view.historical_closed_usd == Decimal("0")
+    if status == "uncertain" or actual == PILOT_LIMIT_USD:
+        assert view.remaining_usd == Decimal("0")
+        with pytest.raises(AppError) as refused:
+            await _reserve(sessions, "c031202-tts", "0.01", slug=C03_ACTIVATED_SLUG)
+        assert refused.value.code == "video_budget_exhausted"
+    else:
+        # A settlement below the ceiling with the owner's receipt is not the decision
+        # the activation names: it is an ordinary settled charge and counts as one.
+        assert view.settled_usd == Decimal("1.713")
+
+
+@pytest.mark.asyncio
+async def test_known_c_series_account_wrong_limit_is_not_readable_or_spendable(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    slug = "story-everyday-oxo-c10"
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=slug, limit_usd=Decimal("5")))
+        await session.commit()
+    with pytest.raises(AppError) as invalid:
+        await _summary(sessions, slug)
+    assert invalid.value.code == "video_budget_invalid_account"
+    with pytest.raises(AppError) as refused:
+        await _reserve(sessions, "first-paid-call", "0.01", slug=slug)
+    assert refused.value.code == "video_budget_preproduction_hold"
 
 
 @pytest.mark.asyncio
@@ -546,6 +720,7 @@ async def test_recovery_inspection_is_read_only_and_links_media_job(
     async with sessions() as session:
         report = await recovery.inspect(session, slug=SLUG, operation_id="media-pending")
     assert report["reserved_usd"] == "2.000000"
+    assert report["admission_held"] is False
     assert report["remaining_usd"] == "23.000000"
     assert report["total_over_limit"] is False
     assert report["over_limit_usd"] == "0.000000"

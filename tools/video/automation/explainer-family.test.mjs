@@ -31,7 +31,7 @@ test("a flat-explainer request settles to the look, look hash and visual hash it
 // Until the cute presets have prompts of their own, their writer is told to answer
 // look.preset "flat-explainer". The request's preset is the owner's choice and decides which
 // series the video is, so settle() writes it back whatever came.
-test("a cute request keeps its own preset whatever look the writer answered, with no cast and no burnt-in subtitles", () => {
+test("a cute request keeps its own preset whatever look the writer answered, with no cast; 奇聞檔案局 alone burns its subtitles in (the owner, 2026-10-25)", () => {
   for (const preset of ["cute-cartoon", "cute-mystery"]) {
     for (const options of [{}, ONE_OFF_EPISODE]) {
       for (const video of writerLooks()) {
@@ -39,7 +39,7 @@ test("a cute request keeps its own preset whatever look the writer answered, wit
         assert.equal(saved.look.preset, preset);
         assert.deepEqual(saved.characters, []);
         assert.deepEqual(saved.assets, []);
-        assert.equal(saved.subtitles.burn_in, false);
+        assert.equal(saved.subtitles.burn_in, preset === "cute-mystery");
         assert.notEqual(lookHash(saved), "bd2b3b49af8e9623", "another look than flat-explainer's");
       }
     }

@@ -64,18 +64,37 @@ UNRECONCILED_STORY_SLUGS = frozenset(
         "story-everyday-play-doh-c06",
     )
 )
-# These approved ceilings are still preproduction holds. They have no account;
-# even an accidentally inserted account must never activate them.
+# These approved ceilings remain preproduction holds even after 0138 creates
+# accounts for reconciliation. An account alone must never activate dispatch.
 PENDING_PILOT_LIMITS_USD = {
     "story-everyday-dr-martens-c07": PILOT_LIMIT_USD,
     "story-everyday-oxo-c10": PILOT_LIMIT_USD,
     "story-everyday-frixion-c15": PILOT_LIMIT_USD,
 }
 PENDING_PILOT_SLUGS = frozenset(PENDING_PILOT_LIMITS_USD)
+# Owner decision 2026-10-24 (PR for C03 Moleskine): C03's pre-ledger exposure is
+# closed at the full USD 25 ceiling. On the host its ``pre-ledger-history`` row is
+# settled at USD 25 with this receipt reference, and the film is activated for
+# the work that finishes it (one narration line, its transcription and judge,
+# then unpaid clips, assembly, captions and packaging). The closed row stays on
+# the ledger for every readback and rollback verification, but it no longer
+# consumes the ceiling that guards post-activation work. Only that exact
+# settlement unlocks the balance: an uncertain or differently settled row still
+# counts in full, so the account is exhausted until the host applies it.
+C03_ACTIVATED_SLUG = "story-everyday-moleskine-c03"
+C03_HISTORY_CLOSED_RECEIPT = "owner-decision-20261024-c03-full-ceiling"
+ACTIVATED_STORY_SLUGS = frozenset((C03_ACTIVATED_SLUG,))
 # Historical reconciliation alone would not prove the current voice, model,
 # supplier account, region, or prices. A separate reviewed change must lift
 # these holds before any new paid request can be admitted.
-PREPRODUCTION_HOLD_SLUGS = UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
+PREPRODUCTION_HOLD_SLUGS = (UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS) - ACTIVATED_STORY_SLUGS
+# This separate 0138 account set is recorded for read-only reconciliation while
+# paid admission remains held. Keep PILOT_LIMITS_USD as the reviewed 0133 set.
+C_SERIES_PILOT_LIMITS_USD = {
+    **{slug: PILOT_LIMIT_USD for slug in UNRECONCILED_STORY_SLUGS},
+    **PENDING_PILOT_LIMITS_USD,
+}
+C_SERIES_PRE_LEDGER_OPERATION_ID = "pre-ledger-history"
 PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 

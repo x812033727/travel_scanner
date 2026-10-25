@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
@@ -77,6 +78,22 @@ test("URLs and written language are errors; narrating the checking process is a 
   assert.match(messages(result.errors), /never read a URL aloud/);
   assert.match(messages(result.errors), /"綜上所述" is written language/);
   assert.match(messages(result.warnings), /"經查證" narrates the process/);
+});
+
+test("本文 is written language only when it is not part of 日本文", () => {
+  const cases = [
+    ["原廠說，日本文字的筆畫較密，原來的筆尖留下新的要求。", false],
+    ["日本文化有不同的書寫傳統。", false],
+    ["本文指出原因。", true],
+    ["在本文我們會比較兩種設計。", true],
+    ["日本文字的筆畫較密，本文指出筆尖為何要變細。", true],
+  ];
+  for (const [text, expected] of cases) {
+    const doc = fixture();
+    doc.scenes[0].lines[0].text = text;
+    const found = lintVideo(doc, context()).errors.filter((problem) => problem.message.includes('"本文" is written language'));
+    assert.equal(found.length, expected ? 1 : 0, text);
+  }
 });
 
 test("long sentences and parentheses are warnings", () => {
@@ -337,6 +354,16 @@ test("different valid runtime budgets still fail the approved anime snapshot bin
   const casting = animeEpisode();
   casting.series.characters[0].voice.name = "Puck";
   assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /series' setting book/.test(error.message)));
+});
+
+test("a character the setting book gives no voice carries the worker's cast; one it names is copied", () => {
+  const casting = animeEpisode();
+  delete casting.series.characters[0].voice;
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "the book names none: the episode's pick stands");
+  casting.doc.characters[0].voice = { provider: "gemini", name: "Puck" };
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "whichever valid voice the worker cast");
+  delete casting.doc.characters[0].voice;
+  assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /provider and name/.test(error.message)), "but every character still needs one");
 });
 
 test("an anime episode cannot lose its policy and fall back to ordinary drama", () => {
@@ -703,6 +730,67 @@ test("A01 retains the narrated episode and open-loop lint at seven minutes; B18 
   assert.ok(!other.warnings.some((warning) => /the outro asks for no subscription|the opening chapter runs about/.test(warning.message)
     || warning.kind === "narrative"), "a B18 draft under eight minutes does not get the A01-only narrative exception");
 });
+
+test("only the frozen C08 short-v8 identity uses a four-minute draft floor", () => {
+  const dir = new URL("../../../docs/videos/story-everyday-kikkoman-c08-short-v8/", import.meta.url);
+  const video = JSON.parse(readFileSync(new URL("video.json", dir), "utf8"));
+  const series = JSON.parse(readFileSync(new URL("series.json", dir), "utf8"));
+  const brief = readFileSync(new URL("brief.md", dir), "utf8");
+  const oldFloor = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
+  try {
+    const result = lintVideo(video, context({ series, brief }));
+    assert.ok(!result.errors.some((error) => error.path === "target_minutes" || /every episode but a drama's runs at least/.test(error.message)),
+      messages(result.errors));
+    assert.ok(result.warnings.some((warning) => /no open loop between/.test(warning.message)),
+      "the C08 short route still receives narrated-story checks");
+    for (const changed of [
+      { slug: "story-everyday-kikkoman-c08" },
+      { series: { ...video.series, episode: 9 } },
+      { target_minutes: [9, 11] },
+    ]) {
+      const other = lintVideo({ ...video, ...changed }, context({ series, brief }));
+      assert.ok(other.errors.some((error) => /every episode but a drama's runs at least 8/.test(error.message)),
+        messages(other.errors));
+    }
+  } finally {
+    if (oldFloor === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = oldFloor;
+  }
+});
+
+test("only the frozen C20 short-v8 identity uses a five-minute draft floor", () => {
+  const dir = new URL("../../../docs/videos/story-everyday-zippo-c20-short-v8/", import.meta.url);
+  const video = JSON.parse(readFileSync(new URL("video.json", dir), "utf8"));
+  const series = JSON.parse(readFileSync(new URL("series.json", dir), "utf8"));
+  const brief = readFileSync(new URL("brief.md", dir), "utf8");
+  const oldFloor = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "8";
+  try {
+    const result = lintVideo(video, context({ series, brief }));
+    assert.ok(!result.errors.some((error) => error.path === "target_minutes" || /every episode but a drama's runs at least/.test(error.message)),
+      messages(result.errors));
+    assert.ok(result.warnings.some((warning) => warning.kind === "narrative" && /no open loop between/.test(warning.message)),
+      "the C20 short route still receives narrated-story checks");
+    const changedWords = structuredClone(video);
+    changedWords.scenes[0].lines[0].text += "改";
+    const changedSpeech = structuredClone(video);
+    changedSpeech.scenes[1].lines[0].say += "改";
+    for (const other of [
+      { ...video, slug: "story-everyday-zippo-c20" },
+      { ...video, series: { ...video.series, episode: 19 } },
+      { ...video, target_minutes: [6, 7] },
+      changedWords, changedSpeech,
+    ]) {
+      const check = lintVideo(other, context({ series, brief }));
+      assert.ok(check.errors.some((error) => /every episode but a drama's runs at least 8/.test(error.message)),
+        messages(check.errors));
+    }
+  } finally {
+    if (oldFloor === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = oldFloor;
+  }
+});
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
 // a subscribe invitation with a reason.
 const THREE_SENTENCES = [
@@ -935,4 +1023,29 @@ test("a tutorial's promise sentence is not a table of contents; sections and ord
   assert.deepEqual(opening("接下來分成三段，帶你學會怎麼用。", "tutorial"), ["scenes[0]"], "sections named as such");
   assert.deepEqual(opening("第一，先看價格。第二，再看額度。最後，教你怎麼選。", "tutorial"), ["scenes[0]"], "an ordinal run");
   assert.deepEqual(opening("接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題。", "tutorial"), ["scenes[0]"], "an announcement with no promise verb");
+});
+
+test("a manga shot held past 4 seconds on one picture is warned, as an estimate; the other tiers are not read (docs/videos/BINGE.md §畫面等級)", async () => {
+  const { MANGA_SHOT_MAX_SECONDS, mangaShotLengthProblems } = await import("./lint.mjs");
+  const { isShot } = await import("./drama.mjs");
+  assert.equal(MANGA_SHOT_MAX_SECONDS, 4);
+  // The drama fixture's opening shot narrates two sentences, about nine estimated seconds on one picture.
+  const manga = episode();
+  manga.series.visual_tier = "manga";
+  for (const scene of manga.doc.scenes) if (isShot(scene)) scene.data.visual = "still";
+  const warned = lintVideo(manga.doc, manga.context);
+  assert.deepEqual(warned.errors, []);
+  const held = warned.warnings.filter((warning) => /holds one picture for about/.test(warning.message));
+  assert.ok(held.length >= 1, "a long manga shot is warned");
+  assert.match(held[0].message, /^shot opening holds one picture for about \d+\.\d s; the manga tier cuts every 2 to 3.5 s, at most 4: give the shot one line and move the rest to a new picture \(docs\/videos\/BINGE.md §畫面等級\) \(estimated; the synthesized timeline decides\)$/);
+  assert.equal(held[0].path, "scenes[0]");
+  // One short line a shot, as the tier's rule asks, and nothing is warned.
+  const brisk = structuredClone(manga.doc);
+  for (const scene of brisk.scenes) if (isShot(scene)) scene.lines = [{ ...scene.lines[0], text: "叮。是否安裝？" }];
+  assert.deepEqual(mangaShotLengthProblems(brisk, estimateTimeline(brisk)), []);
+  // The clips tier plays the same long shots as clips, and no shot length is read.
+  const clips = episode();
+  clips.series.visual_tier = "clips";
+  assert.deepEqual(lintVideo(clips.doc, clips.context).warnings.filter((warning) => /holds one picture/.test(warning.message)), []);
+  assert.deepEqual(mangaShotLengthProblems(clips.doc, null), []);
 });

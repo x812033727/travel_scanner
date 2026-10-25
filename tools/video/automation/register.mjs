@@ -191,6 +191,56 @@ The close:
   「下一份檔案」 in the close): YouTube's end screen points at the next video.
 `.trim();
 
+/**
+ * How the two story series open (奇聞檔案局 and the brand stories; 2026-10-25). Measured against
+ * the channels that reach hundreds of thousands of views with the same kind of story
+ * (docs/videos/channel-review-20261025-story-series/README.md): 黑猫研究院's Seiko episode
+ * (785,000 views) spends its first 26 seconds on what the story nearly changed, told to the
+ * viewer, gives the number at 40 seconds (九萬人 → 三萬人) and names the subject and the scale at
+ * 66 seconds (「今天我們就來聊聊 Seiko 當年到底有多瘋狂」); it teases nothing. Our openings
+ * followed CONDENSATION_RULE's three or four teasers and read as a list of clues the viewer has
+ * no context for (劍、酒精、小說、礁石 in 30 seconds). So in these two series the teaser list
+ * gives way to the stakes and one promise sentence; the rest of CONDENSATION_RULE stands.
+ */
+export const STORY_OPENING_RULE = `Opening of a 奇聞檔案局 episode or a brand story (in place of the three or four teaser
+  moments of the condensation rule above; the rest of that rule stands: first spoken line at 0:00,
+  no greeting, the intro bumper after the chapter, no table of contents, no later chapter's result):
+  1. The stakes first, in one or two sentences told to the viewer: the biggest thing this story
+     changed or nearly changed, with its number where the sources carry one (「一家公司差點把稱霸
+     幾百年的瑞士錶業逼到關門，九萬人剩三萬人」「一艘船完好無缺，十個人全部不見」), in the
+     viewer's world where it can be (「你今天戴的錶」「你每天用的那張紙」).
+  2. Then the scene: a year or a place, somebody doing one concrete thing, told in order up to the
+     first fact that makes no sense (15 to 25 seconds), and stop there without telling why.
+  3. At most two teasers of later moments, each cut off before its result and each the setup of a
+     loop; never a list of clues the viewer has no context for yet.
+  4. One promise sentence naming the subject and the scale of what is coming (「今天我們就來看
+     Seiko 當年到底有多瘋狂」「這份檔案從頭翻一遍，九個空桶會回來」): the thing and one number,
+     never 「接下來分三段」 and never a list of chapters.
+  5. The last sentence is the question the episode answers.`;
+
+/**
+ * Told to one viewer (the same two series, 2026-10-25). The Seiko episode says 「你」 26 times and
+ * 「我」 18 times in 20 minutes and runs 5.1 spoken characters a second; our H01 said 「你」 once
+ * and 「我」 twice in 11 minutes at 3.3 a second, and read as a file being recited. The facts stay
+ * the sources' facts; what changes is who the narrator is talking to.
+ */
+export const TOLD_TO_ONE_VIEWER = `Told to one viewer (奇聞檔案局 and the brand stories):
+  - The narrator talks to one person, not to a file: in every chapter at least one sentence turns to
+    the viewer with 「你」 (what they use, own, have heard, would have done: 「你今天戴的錶」「你手上
+    這張 A4」「換成你站在那片甲板上」), and the stakes are told as the viewer's (「你每天用的東西，
+    差一點就不存在」), never as 「值得注意的是」. Lint warns under two 「你」 a thousand characters.
+  - The narrator is somebody: one reaction of their own in every chapter (「這聽起來像科幻小說」
+    「這就很怪了」「我第一次讀到這裡也以為看錯」), an opinion marked as one (「我覺得」「我們覺得」),
+    and once or twice an episode a joke on an experience the viewer shares. One sentence each; a
+    reaction never changes a fact.
+  - The pace of a conversation: sentences run on with connectives (那麼、結果、然後、但是、沒想到、
+    這時候), a fact is followed by what it meant for somebody, a number by what it bought or cost,
+    and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body
+    (the reference channels run about 5; ours ran 3.3), so 13 minutes is about 3,500 characters.
+  - The close is a conversation too: the answer, then 「如果你…，留言告訴我」 on something the
+    viewer owns or does, then the subscribe reason; it may say 「好啦，這就是今天的故事」 and it
+    still never names the next video.`;
+
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
 export const TEACHING_RULES = `
@@ -711,7 +761,7 @@ ${NARRATIVE_RULES}
 
 /** The Gemini `voice.style` the owner pastes on the settings tab for this register (≤ 400 characters). */
 export const STORY_VOICE_STYLE =
-  `${CHANNEL_ACCENT}。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。`;
+  `${CHANNEL_ACCENT}。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。`;
 
 const QUESTION = /[？?]\s*$/;
 const GREETING = /大家好|今天(要|來)?跟大家|歡迎(回到|來到)|接下來我們來看/;

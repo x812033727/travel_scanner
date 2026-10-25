@@ -660,6 +660,15 @@ export const THUMB_SERIES_LAYOUTS = ["left", "right"];
  * slug, in place of the ring and dot the theme used to draw for all eleven of the first batch.
  */
 export const THUMB_LAYOUTS = ["a", "b", "c"];
+/**
+ * The bold layout the two story series wear by default (2026-10-25, the owner trying the look of
+ * the story channels with hundreds of thousands of views): the picture fills the frame, the
+ * headline is yellow with a black outline, the second line white with the same outline, no label
+ * pill. A curio- or story- slug takes it unless data.layout names another; it is not in the
+ * rotation, so no other series' thumbnail moves.
+ */
+export const THUMB_BOLD_LAYOUT = "d";
+export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
 export const THUMB_TONES = ["teal", "plum", "navy", "forest"];
 /** The subject's sources, in the order render prefers them (render/plan.mjs drawThumbnail). */
 export const THUMB_SUBJECTS = ["capture", "shot"];
@@ -784,7 +793,7 @@ function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   const own = THUMB_SERIES[series];
-  const layouts = own ? THUMB_SERIES_LAYOUTS : THUMB_LAYOUTS;
+  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
@@ -853,7 +862,7 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
   const own = THUMB_SERIES[series] ?? null;
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   const rotation = thumbnailRotation(slug, offset);
-  const layout = THUMB_LAYOUTS.includes(data.layout) ? data.layout : rotation.layout;
+  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
   const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];

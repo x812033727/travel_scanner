@@ -107,10 +107,12 @@ async def inspect(
     rows = await _rows(session, slug, operation_id)
     return {
         "slug": slug,
+        "admission_held": service.is_preproduction_held(slug),
         "limit_usd": str(account.limit_usd),
         "reserved_usd": str(account.reserved_usd),
         "settled_usd": str(account.settled_usd),
         "remaining_usd": str(account.remaining_usd),
+        "historical_closed_usd": str(account.historical_closed_usd),
         "total_over_limit": account.total_over_limit,
         "over_limit_usd": str(account.over_limit_usd),
         "uncertain_operations": account.uncertain_operations,

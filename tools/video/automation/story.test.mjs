@@ -4,7 +4,8 @@
 // the planned hundred.
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -16,10 +17,10 @@ import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture
 import { validateLexicon } from "../core/lexicon.mjs";
 import { reviseStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
-import { NARRATIVE_PANEL, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { NARRATIVE_PANEL, panelRulesSha256 } from "../core/narrative.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isStory } from "../core/story.mjs";
-import { readJson } from "../core/paths.mjs";
+import { ROOT, readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
@@ -34,6 +35,10 @@ import {
   anchorsFor,
   applyPatch,
   CHAPTER_KEYS,
+  C08_SHORT_FILES,
+  C08_SHORT_SLUG,
+  c08ShortPaidProblem,
+  c08ShortProjectProblem,
   chapterBudgets,
   composeStory,
   effectiveStoryLengthBand,
@@ -57,6 +62,7 @@ import {
   cuteStoryVisualProblems,
   storyLineIds,
   storySeriesFile,
+  startStory,
   yearForms,
 } from "./story.mjs";
 
@@ -606,6 +612,72 @@ test("the two pilot editorial reference hashes still match their independently P
   }
 });
 
+test("C08 short-v8 adopts only its frozen project and has a separate paid cap receipt", async () => {
+  assert.equal(c08ShortProjectProblem({ root: ROOT, slug: C08_SHORT_SLUG }), null);
+  const pinned = videoLexicon({ root: ROOT, slug: C08_SHORT_SLUG, requireSnapshot: true });
+  assert.equal(pinned.mode, "snapshot");
+  assert.equal(pinned.lexicon_sha256, "97e2c4582aca65899d66253914a955256a673484a97966f40013d1275fc2e8f2");
+  const info = { slug: "brand-stories-everyday-reversals", episode: 8, target_minutes: 10, look: { preset: "cute-mystery" } };
+  assert.equal(effectiveStoryMinutes(C08_SHORT_SLUG, info), 5);
+  assert.deepEqual(effectiveStoryLengthBand(C08_SHORT_SLUG, info), [240, 300]);
+  assert.equal(effectiveStoryMinutes("story-everyday-kikkoman-c08", info), 10);
+  assert.equal(effectiveStoryMinutes("story-everyday-other-c09", { ...info, episode: 9 }), 10);
+  let starts = 0;
+  const automation = {
+    ctx: { root: ROOT }, later: (message) => message, block: (_state, message) => message,
+    api: { episodeStart: async () => { starts++; throw new Error("backend start reached"); } },
+  };
+  const job = { series: { slug: info.slug }, episode: { slug: C08_SHORT_SLUG, number: 8, beats: { id: "C08" } } };
+  assert.match(await startStory(automation, { ...job, episode: { ...job.episode, beats: { id: "C09" } } }), /identity/);
+  assert.equal(starts, 0, "wrong identity must not write the backend request");
+  assert.match(await startStory({ ...automation, ctx: { root: tmpdir() } }, job), /held before episode start/);
+  assert.equal(starts, 0, "missing frozen files must not write the backend request");
+  const state = { slug: C08_SHORT_SLUG, target_minutes: 5, series: { slug: info.slug, episode: 8 },
+    story: { id: "C08", adopted_c08_short_v8: true } };
+  assert.match(await advanceStory(automation, state, "script passes lint"), /keep the exact approved files/);
+  const workdir = mkdtempSync(path.join(tmpdir(), "c08-paid-"));
+  try {
+    let adopted;
+    const plan = JSON.parse(readFileSync(path.join(ROOT, "docs/videos/brand-stories-everyday-reversals-20261020/episodes/C08.json"), "utf8"));
+    const series = JSON.parse(readFileSync(path.join(ROOT, "docs/videos/brand-stories-everyday-reversals-20261020/series.json"), "utf8"));
+    const readyAutomation = { ...automation,
+      ctx: { root: ROOT, now: () => new Date("2026-10-24T00:00:00Z") },
+      workdir: () => workdir, persist: (state) => { adopted = state; }, report: async () => {},
+      api: { episodeStart: async () => {
+        starts++;
+        return { request: { slug: C08_SHORT_SLUG }, episode: { number: 8, slug: C08_SHORT_SLUG, title: plan.title, beats: plan } };
+      } },
+    };
+    assert.match(await startStory(readyAutomation, { series, episode: { ...job.episode, beats: plan } }), /adopted the frozen/);
+    assert.equal(starts, 1);
+    assert.equal(adopted.category, "explainer");
+    assert.equal(adopted.story.adopted_c08_short_v8, true);
+    assert.equal(adopted.story.lexicon_sha256, pinned.lexicon_sha256);
+    assert.equal(readJson(path.join(workdir, "approvals.json")).approvals.at(-1).gate, "outline");
+    const paidProblem = (root = ROOT) => c08ShortPaidProblem({ root, workdir });
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    const file = path.join(workdir, "story", "c08-short-v8-paid-authorization.json");
+    mkdirSync(path.dirname(file), { recursive: true });
+    const receipt = { schema_version: 1, slug: C08_SHORT_SLUG, status: "approved", approved_by: "owner",
+      project_video_sha256: C08_SHORT_FILES["video.json"], approved_at: "2026-10-24T00:00:00Z",
+      quote_source: "docs/videos/story-everyday-kikkoman-c08-short-v8/production-quote.md",
+      quote_source_sha256: "28f983bc35272c216ce9026855bf881e0b29f03eadd7169f908d1284d2926948",
+      owner_approval_sha256: "54d973ab2c46a1b0caa1a207dba4b390fa04084727810a527bbf3eea67d9c607",
+      quote_usd: 20, cap_usd: 25 };
+    writeFileSync(file, JSON.stringify(receipt));
+    assert.equal(paidProblem(), null);
+    assert.match(paidProblem(tmpdir()), /needs unchanged owner approval evidence/);
+    writeFileSync(file, JSON.stringify({ ...receipt, owner_approval_sha256: "unreviewed" }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, quote_source_sha256: "unreviewed" }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, quote_usd: 26 }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/);
+    writeFileSync(file, JSON.stringify({ ...receipt, cap_usd: 26 }));
+    assert.match(paidProblem(), /needs the owner's current whole-film/, "self-declared USD26 cannot raise the owner's USD25 cap");
+  } finally { rmSync(workdir, { recursive: true, force: true }); }
+});
+
 const pilotAnswers = () => standardAnswers({ "writer:story": (body) => {
   const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
   chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
@@ -991,7 +1063,7 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   const video = composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, root: "." });
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
-  assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+  assert.deepEqual(video.subtitles, { burn_in: true, style: "drama" }, "new brand stories burn zh-TW subtitles in (the owner, 2026-10-25)");
 });
 
 test("only A01 writes to an eight-minute budget while the shared pilot series stays ten", async () => {
@@ -1062,7 +1134,7 @@ test("a ten-minute story carries the exact MiniMax cute look from series to vide
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.equal(video.category, "story");
-  assert.equal(video.subtitles.burn_in, false, "the merged script keeps zh-TW captions switchable");
+  assert.equal(video.subtitles.burn_in, true, "the merged script keeps the burned-in zh-TW subtitles");
   assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
 });
 
@@ -1180,7 +1252,8 @@ test("a story goes from the site's job to its first media step: started from its
 
   // No script gate for a story: approved here with the reason; nothing went to the owner.
   assert.match(await automation.step(), /a story has no script gate; the screenplay is approved here/);
-  assert.equal(readJson(panelFile).panel_rules_sha256, PANEL_RULES_SHA256);
+  // A brand story (a story- slug) is read in the story-series wording (2026-10-25), so its contract hash is its own.
+  assert.equal(readJson(panelFile).panel_rules_sha256, panelRulesSha256(world.video()));
   assert.equal(readApprovals(workdir).approvals.find((entry) => entry.gate === "script").note, SCRIPT_NOTE);
   assert.ok(existsSync(path.join(dir, "script.md")));
   assert.equal(world.runs.length, 0, "no media command and no review before the script is approved");

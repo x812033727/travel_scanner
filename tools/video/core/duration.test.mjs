@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { A01_COMPACT_BODY_SECONDS, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, C08_SHORT_MAX_PRESENTED_SECONDS, C08_SHORT_MIN_BODY_SECONDS, C08_SHORT_NARRATION_SHA256, C08_SHORT_SPOKEN_OVERRIDE_SHA256, C20_SHORT_MAX_PRESENTED_SECONDS, C20_SHORT_MIN_BODY_SECONDS, C20_SHORT_NARRATION_SHA256, C20_SHORT_SPOKEN_OVERRIDE_SHA256, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isC08ApprovedShortStory, isC08ShortStory, isC20ApprovedShortStory, isC20ShortStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
 import { EXPLAINER_PRESETS } from "./drama.mjs";
@@ -21,6 +22,8 @@ const a01 = {
   series: { slug: "brand-stories-curio-pilot-v2", episode: 1 },
   look: { preset: "cute-mystery" }, target_minutes: [7, 8],
 };
+const c08Short = JSON.parse(readFileSync(new URL("../../../docs/videos/story-everyday-kikkoman-c08-short-v8/video.json", import.meta.url), "utf8"));
+const c20Short = JSON.parse(readFileSync(new URL("../../../docs/videos/story-everyday-zippo-c20-short-v8/video.json", import.meta.url), "utf8"));
 
 test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
   assert.deepEqual(EXPLAINER_PRESETS, ["flat-explainer", "cute-cartoon", "cute-mystery"]);
@@ -124,6 +127,88 @@ test("A01's shorter floor still needs current narration and checked matching cut
     assert.match(knowledgeDurationProblems({ ...cut(420 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
     assert.deepEqual(knowledgeDurationProblems({ ...cut(480 * 30), doc: other }), []);
   }
+});
+
+test("only C08 short-v8 gets a 240-second body floor and 300-second finished-cut cap", () => {
+  assert.equal(C08_SHORT_MIN_BODY_SECONDS, 240);
+  assert.equal(C08_SHORT_MAX_PRESENTED_SECONDS, 300);
+  assert.equal(C08_SHORT_NARRATION_SHA256, "31041c60a61f7612878e07417aaf7b7b914a70e04ad49ab395de6e8918c6d7d9");
+  assert.equal(C08_SHORT_SPOKEN_OVERRIDE_SHA256, "1f3d6939b2d5dcf8983bda60ffd5a48b9a753ca2a9f5e0f6ed55453e4ef7079c");
+  assert.equal(isC08ShortStory(c08Short), true);
+  assert.equal(isC08ApprovedShortStory(c08Short), true);
+  for (const change of [
+    { slug: "story-everyday-kikkoman-c08" }, { series: { slug: "brand-stories-everyday-reversals", episode: 9 } },
+    { series: { slug: "another-series", episode: 8 } }, { format: "slides" },
+    { category: "story" }, { look: { preset: "cute-mystery", style: "extra" } },
+    { target_minutes: [9, 11] },
+  ]) {
+    const other = { ...c08Short, ...change };
+    assert.equal(isC08ApprovedShortStory(other), false, JSON.stringify(change));
+    assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  }
+  assert.equal(isC08ApprovedShortStory({ ...c08Short, compilation: { episodes: [] } }), false);
+  const changedWords = structuredClone(c08Short);
+  changedWords.scenes[0].lines[0].text += "改";
+  assert.equal(isC08ApprovedShortStory(changedWords), false, "one changed character loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: changedWords }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  const changedSpeech = structuredClone(c08Short);
+  changedSpeech.scenes[27].lines[0].say += "改";
+  assert.equal(isC08ApprovedShortStory(changedSpeech), false, "a changed spoken override loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(270 * 30), doc: changedSpeech }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  const changedPicture = structuredClone(c08Short);
+  changedPicture.scenes[0].data.prompt += " A later media reference may change.";
+  assert.equal(isC08ApprovedShortStory(changedPicture), true, "visual/media updates do not change approved narration");
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(270 * 30), doc: c08Short }), []);
+  assert.match(knowledgeDurationProblems({ ...cut(240 * 30 - 1, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }).join("; "), /body is 7199 frames.*needs at least 7200 frames \(240 s\), excluding intro and outro/);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(274 * 30, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }), []);
+  assert.match(knowledgeDurationProblems({ ...cut(274 * 30 + 1, { intro_frames: 150, outro_frames: 630 }), doc: c08Short }).join("; "), /C08 short-v8 final cut.*needs at most 9000 frames \(300 s\)/);
+  const stale = { ...cut(270 * 30), doc: c08Short, timelineCurrent: false };
+  assert.match(knowledgeDurationProblems(stale).join("; "), /current actual narration timeline/);
+});
+
+test("only the frozen C20 short-v8 gets a 300-second body floor and 420-second finished-cut cap", () => {
+  assert.equal(C20_SHORT_MIN_BODY_SECONDS, 300);
+  assert.equal(C20_SHORT_MAX_PRESENTED_SECONDS, 420);
+  assert.equal(C20_SHORT_NARRATION_SHA256, "57600d182ae57947e2426e8551b19bc9e660b8808616d7d44b72122a0b666632");
+  assert.equal(C20_SHORT_SPOKEN_OVERRIDE_SHA256, "be30d595b6ab35f0d84a5afb56e24b6d20cb079c66536e95c8d85eb5d159faae");
+  assert.equal(isC20ShortStory(c20Short), true);
+  assert.equal(isC20ApprovedShortStory(c20Short), true);
+  for (const change of [
+    { slug: "story-everyday-zippo-c20" }, { series: { slug: "brand-stories-everyday-reversals", episode: 19 } },
+    { series: { slug: "another-series", episode: 20 } }, { format: "slides" },
+    { category: "story" }, { look: { preset: "cute-mystery", style: "extra" } },
+    { target_minutes: [6, 7] },
+  ]) {
+    const other = { ...c20Short, ...change };
+    assert.equal(isC20ApprovedShortStory(other), false, JSON.stringify(change));
+    assert.match(knowledgeDurationProblems({ ...cut(333 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  }
+  assert.equal(isC20ApprovedShortStory({ ...c20Short, compilation: { episodes: [] } }), false);
+  const changedWords = structuredClone(c20Short);
+  changedWords.scenes[0].lines[0].text += "改";
+  assert.equal(isC20ApprovedShortStory(changedWords), false, "one changed character loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(333 * 30), doc: changedWords }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  const changedSpeech = structuredClone(c20Short);
+  changedSpeech.scenes[1].lines[0].say += "改";
+  assert.equal(isC20ApprovedShortStory(changedSpeech), false, "a changed TTS reading loses the short policy");
+  assert.match(knowledgeDurationProblems({ ...cut(333 * 30), doc: changedSpeech }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  for (const [name, change] of [
+    ["say_for binding", doc => { doc.scenes[1].lines[0].say_for += "0"; }],
+    ["line ID", doc => { doc.scenes[0].lines[0].id += "x"; }],
+  ]) {
+    const other = structuredClone(c20Short);
+    change(other);
+    assert.equal(isC20ApprovedShortStory(other), false, `${name} change loses the short policy`);
+    assert.match(knowledgeDurationProblems({ ...cut(333 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
+  }
+  const changedPicture = structuredClone(c20Short);
+  changedPicture.scenes[0].data.prompt += " A later media reference may change.";
+  assert.equal(isC20ApprovedShortStory(changedPicture), true, "visual/media updates do not change approved narration");
+  assert.match(knowledgeDurationProblems({ ...cut(8_999, { intro_frames: 150, outro_frames: 630 }), doc: c20Short }).join("; "), /body is 8999 frames.*needs at least 9000 frames \(300 s\), excluding intro and outro/);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(9_000, { intro_frames: 150, outro_frames: 630 }), doc: c20Short }), []);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(11_820, { intro_frames: 150, outro_frames: 630 }), doc: c20Short }), []);
+  assert.match(knowledgeDurationProblems({ ...cut(11_821, { intro_frames: 150, outro_frames: 630 }), doc: c20Short }).join("; "), /C20 short-v8 final cut.*needs at most 12600 frames \(420 s\)/);
+  assert.match(knowledgeDurationProblems({ ...cut(333 * 30), doc: c20Short, timelineCurrent: false }).join("; "), /current actual narration timeline/);
 });
 
 test("bookends cannot make a short body pass, while a qualifying body may keep its bookends", () => {

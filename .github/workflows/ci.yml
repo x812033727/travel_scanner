@@ -72,6 +72,14 @@ jobs:
         env:
           RUN_INTEGRATION_TESTS: "1"
           RUN_MIGRATION_TESTS: "1"
+      - name: Validate C20 0139-on-0138 rollback with PostgreSQL and Compose command
+        run: uv run pytest tests/test_c20_budget_rollback_integration.py -q -p no:cacheprovider
+        env:
+          RUN_INTEGRATION_TESTS: "1"
+      - name: Validate C08 0140-on-0139 rollback with PostgreSQL and Compose command
+        run: uv run pytest tests/test_c08_budget_rollback_integration.py -q -p no:cacheprovider
+        env:
+          RUN_INTEGRATION_TESTS: "1"
   # The main pytest run took 23 of the old api job's 25 minutes (run 37111019702). Each
   # shard is its own job with its own PostgreSQL, Redis and S3 companion, so no two tests
   # running at once share a database. TOTAL in the pytest line must match the matrix.

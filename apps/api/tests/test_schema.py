@@ -76,6 +76,55 @@ def test_only_the_reviewed_next_budget_revision_is_accepted_by_0132_rollback(
     assert not schema_is_current("0132_video_pilot_budget")
 
 
+def test_only_the_reviewed_c_series_budget_revision_is_accepted_by_0137_rollback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(schema_module, "expected_schema_revision", lambda: "0137_video_manga_tier")
+    assert schema_is_current("0137_video_manga_tier")
+    assert schema_is_current("0138_story_everyday_budget")
+    assert not schema_is_current("0138_unreviewed_change")
+    assert not schema_is_current("0139_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0138_story_everyday_budget"
+    )
+    assert schema_is_current("0138_story_everyday_budget")
+    assert not schema_is_current("0137_video_manga_tier")
+
+
+def test_only_the_exact_c20_budget_revision_is_accepted_by_0138_rollback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0138_story_everyday_budget"
+    )
+    assert schema_is_current("0138_story_everyday_budget")
+    assert schema_is_current("0139_c20_zippo_pilot_budget")
+    assert not schema_is_current("0139_other_budget")
+    assert not schema_is_current("0140_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0139_c20_zippo_pilot_budget"
+    )
+    assert schema_is_current("0139_c20_zippo_pilot_budget")
+    assert not schema_is_current("0138_story_everyday_budget")
+
+
+def test_only_the_exact_c08_budget_revision_is_accepted_by_0139_rollback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0139_c20_zippo_pilot_budget"
+    )
+    assert schema_is_current("0139_c20_zippo_pilot_budget")
+    assert schema_is_current("0140_c08_kikkoman_pilot_budget")
+    assert not schema_is_current("0140_other_budget")
+    assert not schema_is_current("0141_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0140_c08_kikkoman_pilot_budget"
+    )
+    assert schema_is_current("0140_c08_kikkoman_pilot_budget")
+    assert not schema_is_current("0139_c20_zippo_pilot_budget")
+
+
 def _script(revision: str, down_revision: str) -> types.SimpleNamespace:
     return types.SimpleNamespace(
         revision=revision,

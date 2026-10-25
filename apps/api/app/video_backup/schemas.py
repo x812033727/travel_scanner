@@ -140,13 +140,13 @@ class BackupView(BaseModel):
 class StatusView(BaseModel):
     enabled: bool
     path: str
-    # Every video with a YouTube id, by state; "all_backed_up" is true only when backups are on
-    # and each of them is done (series set to off aside).
+    # Every video with a YouTube id or ready to upload, by state; "all_backed_up" is true only
+    # when backups are on and each of them is done (series set to off aside).
     uploaded: int
     counts: dict[BackupState, int]
     all_backed_up: bool
     overdue_hours: int
-    # Those not complete, oldest first; every uploaded video with ?all=true.
+    # Those not complete, oldest first; every one of them with ?all=true.
     videos: list[BackupView]
 
 
@@ -177,7 +177,8 @@ class ExpectedParts(BaseModel):
 
 class WorkerVideo(BaseModel):
     slug: str
-    youtube_video_id: str
+    # None for a video ready to upload and not on YouTube yet.
+    youtube_video_id: str | None
     category: str | None
     series_key: str
     series_slug: str | None
