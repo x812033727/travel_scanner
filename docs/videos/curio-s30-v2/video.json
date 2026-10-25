@@ -135,7 +135,7 @@
       "lines": [
         {
           "id": "x007",
-          "text": "但這還不是最驚險的。幾天後，烽火台下，一支箭朝他飛了過來。",
+          "text": "但這還不是最驚險的。關外烽火台下，一支箭朝他飛了過來。",
           "emotion": "升級，收著"
         }
       ]
@@ -310,8 +310,24 @@
       "lines": [
         {
           "id": "x020",
-          "text": "他趁這個機會往西去了涼州。那年他二十六歲。問題來了：出了長安，第一關不是沙漠，是人。",
-          "emotion": "數字放慢，收著"
+          "text": "他趁這個機會往西去了涼州。《慈恩傳》寫，那年他二十六歲。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "frost-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn straw sandals stepping onto a frost-white road, the hem of a grey robe, pale dawn light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x021",
+          "text": "問題來了：出了長安，第一關不是沙漠，是人。",
+          "emotion": "收著"
         }
       ]
     },
@@ -320,12 +336,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two scrolls lying side by side on a reading desk, one tied with red cord and one with blue, a hand resting between them, warm lamp light",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x021",
+          "id": "x022",
           "text": "而且很快，就有人要抓他。",
           "emotion": "收著"
         }
@@ -337,12 +353,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a Tang garrison courtyard with high walls and a watchtower, soldiers in leather armour at a gate, one figure in grey being led across the yard, grey daylight",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x022",
+          "id": "x023",
           "text": "他在涼州撞上的第一個人，是都督李大亮。",
           "emotion": "接住上一章"
         }
@@ -353,12 +369,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a Tang military governor in lamellar armour frowning over a dispatch, a brazier glowing beside him, warm light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x023",
+          "id": "x024",
           "text": "傳記寫，唐朝那時才剛建國，邊境禁止百姓出境；李大亮剛接到嚴令，看得特別緊。"
         }
       ]
@@ -368,13 +384,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin young man with a shaved head in a grey robe seated on a raised mat speaking to a hall of listeners, one hand raised, soft light from high windows",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x024",
-          "text": "他在涼州停了一個多月，講經。聽的人越來越多，消息也就傳開了。"
+          "id": "x025",
+          "text": "他在涼州停了一個多月，公開講經。"
         }
       ]
     },
@@ -383,13 +399,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a row of listeners in Tang robes sitting on mats, faces turned up, soft light from a high window",
-        "camera": "pan right",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x025",
-          "text": "傳開了，會傳到誰的耳朵裡？",
+          "id": "x026",
+          "text": "一個長安來的和尚講了一個多月，會傳到誰的耳朵裡？",
           "emotion": "問句，收著"
         }
       ]
@@ -399,12 +415,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a nervous informer in a brown tunic whispering to a seated governor in armour, cupping a hand beside his mouth, lamp light from the left",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x026",
+          "id": "x027",
           "text": "有人向李大亮報：一個長安來的和尚，要去西方。",
           "emotion": "像在打小報告"
         }
@@ -415,12 +431,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a governor's hand slamming flat on a dispatch on a desk, a brazier glowing, warm light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x027",
+          "id": "x028",
           "text": "李大亮把他追來問。和尚說：要去西方求法。李大亮聽完，逼他回長安。",
           "emotion": "語氣一沉"
         }
@@ -431,14 +447,14 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a desert road under a crescent moon, one figure in grey leading a thin horse along the edge of a dune, cool blue night light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x028",
-          "text": "他回去了嗎？沒有。涼州一位法師暗中派兩個弟子，偷偷送他往西。",
-          "emotion": "問句接答"
+          "id": "x029",
+          "text": "他回去了嗎？",
+          "emotion": "問句"
         }
       ]
     },
@@ -447,12 +463,28 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two pairs of sandalled feet and a horse's hooves on a moonlit sand track, cool blue light",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x029",
+          "id": "x030",
+          "text": "沒有。涼州一位法師暗中派兩個弟子，偷偷送他往西。",
+          "emotion": "接答"
+        }
+      ]
+    },
+    {
+      "id": "night-walk-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young shaven-headed traveller in a plain grey robe crouched behind a low wall in daylight, hood up, eyes watching a road where two riders pass, hard noon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x031",
           "text": "從此他不敢公開走，白天躲、夜裡趕路，就這樣到了瓜州。",
           "emotion": "放慢"
         }
@@ -468,7 +500,7 @@
       },
       "lines": [
         {
-          "id": "x030",
+          "id": "x032",
           "text": "瓜州刺史獨孤達對他很客氣。他打聽到：往西一定要過玉門關。"
         }
       ]
@@ -478,12 +510,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a hand-drawn map on cloth showing a river, a gate and five small towers in a line, a finger tracing the line, lamp light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x031",
+          "id": "x033",
           "text": "關外還有五座烽火台，各隔一百里，中間沒有水也沒有草。",
           "emotion": "數字放慢"
         }
@@ -494,12 +526,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Tang clerk in a dark robe reading a dispatch at a desk and looking up sharply, a stamp and ink stone beside him, grey daylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x032",
+          "id": "x034",
           "text": "沒想到，涼州的通緝公文追到了瓜州。",
           "emotion": "壓低"
         }
@@ -510,12 +542,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Tang clerk in a dark robe walking down a temple corridor with a paper held tight in both hands, grey daylight",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x033",
+          "id": "x035",
           "text": "還記得開場那個州吏嗎？他叫李昌。那一天，和尚把實話說了。",
           "emotion": "回呼"
         }
@@ -531,12 +563,12 @@
       },
       "lines": [
         {
-          "id": "x034",
+          "id": "x036",
           "text": "李昌聽了，說：師父真能做到，我替你毀了這份文書。",
           "emotion": "佩服"
         },
         {
-          "id": "x035",
+          "id": "x037",
           "text": "他當著和尚的面把公文撕了，還交代：師父，要早點走。",
           "emotion": "揭曉，俐落"
         }
@@ -547,12 +579,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man at a kitchen table holding a torn sheet of paper in two hands, eyebrows raised, morning light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x036",
+          "id": "x038",
           "text": "換成你是李昌，一個通緝犯坐在你面前，你會撕嗎？",
           "emotion": "對觀眾，問句"
         }
@@ -564,12 +596,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry Central Asian man in a felt cap and belted tunic kneeling before a seated figure in grey in a temple courtyard, mild daylight",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x037",
+          "id": "x039",
           "text": "玉門關還擋在前面。帶路的，是一個來寺裡禮佛的胡人，姓石，叫槃陀。"
         }
       ]
@@ -579,12 +611,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a wiry Central Asian man in a felt cap with hands pressed together, eyes closed, mild daylight",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x038",
+          "id": "x040",
           "text": "他求和尚給他授戒，然後答應：送師父過前面那幾座烽火台。"
         }
       ]
@@ -594,12 +626,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a very old Central Asian man with a white beard holding the reins of a thin red horse, talking earnestly to a young man in grey, soft daylight",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x039",
+          "id": "x041",
           "text": "他還帶來一位老翁。老翁勸：西路險惡，從來沒人走得過去。",
           "emotion": "蒼老，勸告"
         }
@@ -615,7 +647,7 @@
       },
       "lines": [
         {
-          "id": "x040",
+          "id": "x042",
           "text": "勸不動，老翁就把自己的老紅馬換給他：來回伊吾走過十五趟，認得路。先記住這匹馬。",
           "emotion": "前向鉤子"
         }
@@ -631,12 +663,12 @@
       },
       "lines": [
         {
-          "id": "x041",
+          "id": "x043",
           "text": "三更天，他們摸到河邊，遠遠看得見玉門關。",
           "emotion": "壓低"
         },
         {
-          "id": "x042",
+          "id": "x044",
           "text": "石槃陀在關的上游十里，砍樹搭橋，鋪草填沙，趕著馬過了河。"
         }
       ]
@@ -651,12 +683,12 @@
       },
       "lines": [
         {
-          "id": "x043",
+          "id": "x045",
           "text": "照後來的唐律，沒公文從關門過，徒刑一年；不走關門，罪加一等。",
           "emotion": "放慢"
         },
         {
-          "id": "x044",
+          "id": "x046",
           "text": "他出關那時的律文沒有留下來，但你大概猜得到，這不是小事。那這筆帳，後來有人算嗎？",
           "emotion": "對觀眾，問句"
         }
@@ -667,12 +699,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry man in a felt cap standing in the dark with one hand on a sheathed knife at his belt, hesitating, moonlight on his face",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x045",
+          "id": "x047",
           "text": "過河沒多久，石槃陀忽然拔刀起身，走向和尚，不到十步又折回去。",
           "emotion": "緊張，放慢"
         }
@@ -683,12 +715,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin young man with a shaved head in a grey robe sitting upright on the sand at night with eyes open, a small fire beside him, cool moonlight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x046",
+          "id": "x048",
           "text": "傳記寫，和尚看不出他的意思。第二天，他說：我不去了，家裡人口多，王法不能犯。",
           "emotion": "像在推託"
         }
@@ -699,12 +731,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a lone figure in grey leading a thin horse into an endless yellow desert under a huge pale sky, tiny in the frame, flat midday haze",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x047",
+          "id": "x049",
           "text": "和尚發誓：就算被抓，也絕不供出他。兩人就此分手。",
           "emotion": "堅定"
         }
@@ -715,12 +747,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a thin horse's rump and a swinging bundle walking away into yellow haze, flat midday light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x048",
+          "id": "x050",
           "text": "從這裡起，他一個人牽著那匹老馬，走進沙漠。一個人，走得出去嗎？",
           "emotion": "問句，收著"
         }
@@ -732,12 +764,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a mud watchtower at night with a small dark pool at its foot, one figure crouching at the water's edge, cool moonlight",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x049",
+          "id": "x051",
           "text": "第一座烽火台。夜裡，他摸到水邊，蹲下喝水。"
         }
       ]
@@ -747,12 +779,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a hand lowering a leather waterskin into a dark pool at night, moonlight on the ripples",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x050",
+          "id": "x052",
           "text": "剛拿出皮囊要裝水，黑暗裡，有東西飛了過來。",
           "emotion": "斷在這裡"
         }
@@ -768,12 +800,12 @@
       },
       "lines": [
         {
-          "id": "x051",
+          "id": "x053",
           "text": "還記得開場那支箭嗎？就是這一支，差一點射中他的膝蓋。",
           "emotion": "回呼，急促"
         },
         {
-          "id": "x052",
+          "id": "x054",
           "text": "第二支又來了。他大喊：我是京城來的和尚，別射我！",
           "emotion": "喊出來"
         }
@@ -784,13 +816,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Tang beacon officer in leather armour standing at a tower door holding a lamp, looking down at a kneeling figure with a troubled face, warm light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x053",
-          "text": "守烽火台的軍官王祥看了他馬上的奏章和名字，勸他：我是敦煌人，送你去敦煌吧。"
+          "id": "x055",
+          "text": "守烽火台的軍官王祥問清楚了他是誰，勸他：我是敦煌人，送你去敦煌吧。"
         }
       ]
     },
@@ -804,7 +836,7 @@
       },
       "lines": [
         {
-          "id": "x054",
+          "id": "x056",
           "text": "他會跟著回敦煌嗎？",
           "emotion": "問句"
         }
@@ -815,12 +847,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a leather-armoured arm barring a tower doorway, a lamp hanging behind, warm light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x055",
+          "id": "x057",
           "text": "他回答：要扣就扣，要判刑就判刑，我絕不往東走一步。",
           "emotion": "堅定，一字一頓"
         }
@@ -831,12 +863,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the same officer in leather armour wiping his eyes with the back of his hand as he points west along the tower wall, dawn light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x056",
+          "id": "x058",
           "text": "王祥反倒送他水和乾糧，哭著拜別，指他直接去第四座。",
           "emotion": "動容"
         }
@@ -847,12 +879,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a leather-armoured arm pointing west along a mud wall at dawn, a tear track on a weathered cheek, pale light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x057",
+          "id": "x059",
           "text": "第四座的守將王伯隴是王祥的親人，勸他別去第五座，改去百里外的野馬泉取水。"
         }
       ]
@@ -862,12 +894,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a worn leather boot stepping onto a sand track that runs west toward a far tower, dawn light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x058",
+          "id": "x060",
           "text": "五座烽火台，他其實只進了兩座。那最難的一段呢？",
           "emotion": "問句，收著"
         }
@@ -878,12 +910,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of the edge of an enormous flat desert at midday, one rider on a thin horse looking out at nothing, heat haze, pale light",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x059",
+          "id": "x061",
           "text": "再往前是莫賀延磧：八百多里，天上沒有鳥，地上沒有獸，也沒有水草。",
           "emotion": "放慢，空曠"
         }
@@ -894,12 +926,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a cracked leather waterskin hanging from a saddle, heat haze behind, pale washed-out light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x060",
+          "id": "x062",
           "text": "你有沒有想過，一個人牽一匹馬，要怎麼走那麼遠？",
           "emotion": "對觀眾，問句"
         }
@@ -911,12 +943,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a shaven-headed pilgrim in a dusty grey robe on his knees in the sand staring at an overturned leather waterskin, mouth open in dismay, harsh midday light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x061",
+          "id": "x063",
           "text": "偏偏走了一百多里，他迷了路，找不到野馬泉。",
           "emotion": "不安"
         }
@@ -932,7 +964,7 @@
       },
       "lines": [
         {
-          "id": "x062",
+          "id": "x064",
           "text": "下馬要喝水，水袋太重，一失手，整袋打翻了。傳記說：千里路的本錢，一下子全沒了。",
           "emotion": "一下子掉下去"
         }
@@ -948,12 +980,12 @@
       },
       "lines": [
         {
-          "id": "x063",
+          "id": "x065",
           "text": "他掉頭往東走了十幾里，停下來，對自己說：寧可往西死在路上，也不往東回去活命。",
           "emotion": "一字一字，有力"
         },
         {
-          "id": "x064",
+          "id": "x066",
           "text": "他掉轉馬頭，再往西北走。",
           "emotion": "堅定"
         }
@@ -964,12 +996,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a figure in grey lying face down on a dune beside a standing horse, the sun a white disc overhead, no shade anywhere",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x065",
+          "id": "x067",
           "text": "這一走，四夜五天，他一滴水也沒喝到，走不動，躺倒在沙上。",
           "emotion": "低沉，放慢"
         }
@@ -980,12 +1012,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an open hand lying on hot sand, a string of prayer beads slipped from the fingers, harsh light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x066",
+          "id": "x068",
           "text": "傳記說，那幾天他一路默念觀音。這一次，誰來救他？",
           "emotion": "問句"
         }
@@ -996,12 +1028,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a horse's muzzle nudging a limp shoulder on the sand, cool night light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x067",
+          "id": "x069",
           "text": "第五天半夜，忽然吹來一陣涼風，冷得像泡進冷水裡。",
           "emotion": "鬆一口氣"
         }
@@ -1012,13 +1044,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an old thin red horse drinking from a small clear pool surrounded by a patch of green grass in the desert, a figure kneeling beside it, soft dawn light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x068",
-          "text": "還記得那匹認得路的老紅馬嗎？傳記寫，牠忽然自己轉了方向，他攔都攔不住。",
+          "id": "x070",
+          "text": "還記得那匹認得路的老紅馬嗎？他爬起來，牠也站起來，繼續往前走。",
           "emotion": "回呼，親近"
         }
       ]
@@ -1028,13 +1060,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a small clear pool in the sand reflecting a pink dawn sky, a few blades of green grass at its edge",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x069",
-          "text": "牠帶著他走到一片青草，旁邊還有一池清水。",
+          "id": "x071",
+          "text": "然後他眼前出現幾畝青草，旁邊還有一池清水。",
           "emotion": "鬆一口氣"
         }
       ]
@@ -1044,12 +1076,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a shaven head bent over a pool, two cupped hands lifting water, soft dawn light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x070",
+          "id": "x072",
           "text": "一個人走不走得出去？走出去了。又走兩天，出了沙漠，到了伊吾。",
           "emotion": "輕快起來"
         }
@@ -1061,12 +1093,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a desert oasis city with tall mud-brick walls and a grand gate, a line of riders in bright robes coming out to meet a lone traveller, warm afternoon light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x071",
+          "id": "x073",
           "text": "高昌國王麴文泰派人，把他接到高昌。"
         }
       ]
@@ -1081,7 +1113,7 @@
       },
       "lines": [
         {
-          "id": "x072",
+          "id": "x074",
           "text": "國王要留他當國師；他不肯，絕食三天，連水都不喝。國王會放人嗎？",
           "emotion": "問句，收著"
         }
@@ -1097,12 +1129,12 @@
       },
       "lines": [
         {
-          "id": "x073",
+          "id": "x075",
           "text": "第四天，國王讓步了。兩人在佛前、當著王母的面，結為兄弟。",
           "emotion": "揭曉"
         },
         {
-          "id": "x074",
+          "id": "x076",
           "text": "那小說裡那位御弟的義兄，怎麼變成了皇帝？",
           "emotion": "問句"
         }
@@ -1113,12 +1145,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Ming dynasty storyteller in a long gown at a teahouse table slapping a wooden block, listeners leaning in, warm lamp light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x075",
+          "id": "x077",
           "text": "還記得開場那句御弟和通關文牒嗎？",
           "emotion": "回呼，問句"
         }
@@ -1129,12 +1161,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a printed Ming dynasty book open on a table, a picture page of a traveller on a horse with no readable text, warm lamp light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x076",
+          "id": "x078",
           "text": "那是明朝小說《西遊記》寫的：太宗在佛前跟他拜了四拜，親自送出城。",
           "emotion": "帶一點好笑"
         }
@@ -1145,12 +1177,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a paper travel permit with a large red seal held up by a hand in a yellow sleeve, warm light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x077",
+          "id": "x079",
           "text": "小說裡那趟路走了十四年；史書裡，他出發時連文牒都沒有。"
         }
       ]
@@ -1182,12 +1214,12 @@
       },
       "lines": [
         {
-          "id": "x078",
+          "id": "x080",
           "text": "國王給他夠用二十年的盤纏、二十四封介紹信，還寫信給西突厥的可汗：法師是我弟弟。",
           "emotion": "親切"
         },
         {
-          "id": "x079",
+          "id": "x081",
           "text": "臨走前，他答應國王：回程時，在高昌住三年。這個約，他守住了嗎？",
           "emotion": "問句"
         }
@@ -1198,12 +1230,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of the same oasis city walls at dusk with the gate shut and no banners, a single crow on the wall, cold grey-orange light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x080",
+          "id": "x082",
           "text": "沒守成。早在貞觀十四年，唐朝就滅了高昌。",
           "emotion": "語氣一沉"
         }
@@ -1214,12 +1246,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a torn silk banner lying in the dust at the foot of a mud wall, cold grey light",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x081",
+          "id": "x083",
           "text": "等他回程走到西域，那座城已經不是一個國了。",
           "emotion": "放慢"
         }
@@ -1231,12 +1263,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an older shaven-headed traveller with lines on his face writing a long letter at a low desk in a mud-brick room, a camel visible through the doorway, warm light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x082",
+          "id": "x084",
           "text": "回程走到于闐，他寫了一份奏章給太宗。它收在《慈恩傳》裡。"
         }
       ]
@@ -1246,12 +1278,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a brush writing on a long paper scroll, the characters left blank, a grey sleeve beside it, lamp light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x083",
+          "id": "x085",
           "text": "裡面有八個字，我們覺得是整份檔案最重要的八個字。",
           "emotion": "放慢，準備揭曉"
         }
@@ -1267,12 +1299,12 @@
       },
       "lines": [
         {
-          "id": "x084",
+          "id": "x086",
           "text": "冒越憲章，私往天竺：違犯了國家的法令，私自去了天竺。",
           "emotion": "一字一字唸清楚"
         },
         {
-          "id": "x085",
+          "id": "x087",
           "text": "偷渡這件事，是他自己認的。",
           "emotion": "短句，落地"
         }
@@ -1288,7 +1320,7 @@
       },
       "lines": [
         {
-          "id": "x086",
+          "id": "x088",
           "text": "同一份奏章裡，他寫自己走了五萬多里，又照例寫：一路靠皇帝的威德，走到哪裡都沒阻礙。",
           "emotion": "帶一點好笑"
         }
@@ -1299,12 +1331,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the same long scroll on the desk, a finger pointing further down the text, lamp light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x087",
+          "id": "x089",
           "text": "這樣一份奏章送到長安，皇帝會怎麼回？",
           "emotion": "問句"
         }
@@ -1315,13 +1347,13 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long caravan of horses loaded with wrapped bundles entering a city gate, crowds on both sides of the road, bright daylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x088",
-          "text": "七八個月後，使者回來了。太宗說：快來跟朕見面，還命房玄齡到長安城外迎接。"
+          "id": "x090",
+          "text": "七八個月後，使者回來了。太宗說：聽說法師訪道遠方，現在回來了，快來跟朕見面。"
         }
       ]
     },
@@ -1330,12 +1362,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a crowd of Tang townspeople in bright robes lining a city road, craning to see, bright daylight",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x089",
+          "id": "x091",
           "text": "貞觀十九年正月，他回到長安，二十匹馬馱著六百五十七部經。",
           "emotion": "數字放慢"
         }
@@ -1347,12 +1379,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a Tang palace hall with red pillars and a long carpet, an emperor in a yellow robe seated on a dais leaning forward, a figure in grey standing before him, soft light through lattice",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x090",
+          "id": "x092",
           "text": "偏偏那時皇帝不在長安，在洛陽準備出兵遼東。"
         }
       ]
@@ -1362,12 +1394,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an emperor's hand in a yellow sleeve resting on the arm of a carved throne, fingers tapping, soft light",
-        "camera": "pull out",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x091",
+          "id": "x093",
           "text": "二月，他在洛陽宮的儀鸞殿見到太宗。還記得開場的問題嗎？皇帝的第一句話是：",
           "emotion": "回呼，停一拍"
         }
@@ -1383,12 +1415,12 @@
       },
       "lines": [
         {
-          "id": "x092",
+          "id": "x094",
           "text": "師父走的時候，怎麼不說一聲？",
           "emotion": "問句，帶一點埋怨"
         },
         {
-          "id": "x093",
+          "id": "x095",
           "text": "他回答：我遞了兩三次奏章，都沒獲准，只好自己走了。擅自出國，是專擅的罪。",
           "emotion": "誠懇，低一點"
         }
@@ -1404,12 +1436,12 @@
       },
       "lines": [
         {
-          "id": "x094",
+          "id": "x096",
           "text": "太宗說：出家人能捨命求法，造福眾生，朕很讚許，也不必慚愧了。",
           "emotion": "寬厚，帶笑"
         },
         {
-          "id": "x095",
+          "id": "x097",
           "text": "還記得玉門關那筆帳嗎？照《慈恩傳》，就這一句，皇帝當面把它勾銷了。",
           "emotion": "回呼，鬆一口氣"
         }
@@ -1421,12 +1453,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly shaven-headed scholar in a grey robe comparing two scrolls at a desk, one in each hand, squinting, soft daylight",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x096",
+          "id": "x098",
           "text": "赦免歸赦免，有一個數字，唐朝的書自己對不上：他是哪一年出關的？",
           "emotion": "問句"
         }
@@ -1437,12 +1469,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two scrolls unrolled side by side on a desk, a finger on each, soft daylight",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x097",
+          "id": "x099",
           "text": "還記得開場那個貞觀三年嗎？《慈恩傳》、《續高僧傳》、《大唐西域記》寫的都是它。",
           "emotion": "回呼，放慢"
         }
@@ -1472,21 +1504,21 @@
       },
       "lines": [
         {
-          "id": "x098",
+          "id": "x100",
           "text": "只有一篇掛在他名下、收在《廣弘明集》的奏章，寫的是貞觀元年。",
           "emotion": "語氣一轉"
         },
         {
-          "id": "x099",
+          "id": "x101",
           "text": "那正史怎麼寫？",
           "emotion": "問句"
         },
         {
-          "id": "x100",
+          "id": "x102",
           "text": "《舊唐書》更乾脆，只寫「貞觀初」，連通緝都沒提。"
         },
         {
-          "id": "x101",
+          "id": "x103",
           "text": "這兩個年份，後來的學者也爭論過。我們覺得，紀錄多的那一邊比較站得住，但不敢替他定案。",
           "emotion": "意見標成意見"
         }
@@ -1502,7 +1534,7 @@
       },
       "lines": [
         {
-          "id": "x102",
+          "id": "x104",
           "text": "回到開場的問題：他是偷渡出國的嗎？",
           "emotion": "答案前停一拍"
         }
@@ -1513,12 +1545,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a red wax seal pressed onto a folded document, a brush laid beside it, warm afternoon light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x103",
+          "id": "x105",
           "text": "所以這份檔案：私自出國這一頁，存檔；哪一年出發，未結。",
           "emotion": "收尾，乾脆，分清楚兩頁"
         }
@@ -1533,12 +1565,12 @@
       },
       "lines": [
         {
-          "id": "x104",
+          "id": "x106",
           "text": "如果你是瓜州的李昌，那份公文，你會撕嗎？留言告訴我。",
           "emotion": "親近"
         },
         {
-          "id": "x105",
+          "id": "x107",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "乾脆"
         }
@@ -1548,72 +1580,72 @@
   "loops": [
     {
       "setup": "x007",
-      "payoff": "x051",
+      "payoff": "x053",
       "what": "烽火台下的那支箭"
     },
     {
       "setup": "x008",
-      "payoff": "x090",
+      "payoff": "x092",
       "what": "皇帝的第一句話"
     },
     {
       "setup": "x009",
-      "payoff": "x084",
+      "payoff": "x086",
       "what": "他自己寫的奏章會回來"
     },
     {
-      "setup": "x021",
-      "payoff": "x022",
+      "setup": "x022",
+      "payoff": "x023",
       "what": "很快就有人要抓他"
     },
     {
-      "setup": "x024",
-      "payoff": "x026",
+      "setup": "x025",
+      "payoff": "x027",
       "what": "消息會傳到誰耳朵裡"
     },
     {
       "setup": "x004",
-      "payoff": "x032",
+      "payoff": "x034",
       "what": "開場那個州吏與公文"
     },
     {
-      "setup": "x039",
-      "payoff": "x068",
+      "setup": "x041",
+      "payoff": "x070",
       "what": "認得路的老紅馬"
     },
     {
-      "setup": "x047",
-      "payoff": "x068",
+      "setup": "x049",
+      "payoff": "x070",
       "what": "一個人走不走得出去"
     },
     {
-      "setup": "x044",
-      "payoff": "x095",
+      "setup": "x046",
+      "payoff": "x097",
       "what": "出關的罪，後來有人算嗎"
     },
     {
-      "setup": "x071",
-      "payoff": "x073",
+      "setup": "x073",
+      "payoff": "x075",
       "what": "國王會不會放人"
     },
     {
-      "setup": "x079",
-      "payoff": "x080",
+      "setup": "x081",
+      "payoff": "x082",
       "what": "三年之約守住了嗎"
     },
     {
-      "setup": "x082",
-      "payoff": "x084",
+      "setup": "x084",
+      "payoff": "x086",
       "what": "最重要的八個字"
     },
     {
-      "setup": "x086",
-      "payoff": "x088",
+      "setup": "x088",
+      "payoff": "x090",
       "what": "皇帝會怎麼回"
     },
     {
-      "setup": "x096",
-      "payoff": "x098",
+      "setup": "x098",
+      "payoff": "x100",
       "what": "哪一年出關"
     }
   ],
