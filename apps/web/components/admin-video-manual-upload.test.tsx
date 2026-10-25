@@ -117,6 +117,37 @@ describe("manual YouTube upload", () => {
     expect(screen.queryByText(/不在審核區/)).toBeNull();
   });
 
+  it("offers the dub tracks of the newest card not sent back, pending included, and puts them in the zip", async () => {
+    const later = (seconds: number) => new Date(Date.parse(review.created_at) + seconds * 1000).toISOString();
+    const card = (id: string, status: Review["status"], seconds: number, files: Review["files"]): Review => ({
+      ...review, id, gate: "languages", status, created_at: later(seconds), decided_at: status === "pending" ? null : later(seconds), payload: { locales: {} }, files,
+    });
+    const pending = card("waiting-for-studio", "pending", 60, [
+      { role: "dub_en", sha256: "1a".repeat(32), size: 9000, content_type: "audio/mp4" },
+      { role: "dub_unchecked_ja", sha256: "2b".repeat(32), size: 9000, content_type: "audio/wav" },
+      { role: "captions_th", sha256: "3c".repeat(32), size: 100, content_type: "text/plain" },
+    ]);
+    const rejected = card("sent-back", "rejected", 120, [{ role: "dub_ko", sha256: "4d".repeat(32), size: 9000, content_type: "audio/mpeg" }]);
+    stub({ ...project, reviews: [rejected, pending, review] });
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    const step = screen.getByRole("region", { name: "6. 逐語言上傳配音音軌" });
+    expect(within(step).getByRole("link", { name: "下載英文配音" }).getAttribute("download")).toBe("dub.en.m4a");
+    expect(within(step).getByRole("link", { name: "下載日文配音（沒過自動檢查）" }).getAttribute("download")).toBe("dub.ja.unchecked.wav");
+    expect(within(step).getByText(/上傳前請整條聽一遍/)).toBeTruthy();
+    expect(screen.queryByRole("link", { name: /韓文配音/ })).toBeNull();
+    expect(screen.queryByRole("link", { name: "下載泰文字幕" })).toBeNull();
+    const zip = new URL(screen.getByRole("link", { name: "下載整包 zip（13 個檔案）" }).getAttribute("href") ?? "", "https://mokaair.com");
+    expect(zip.searchParams.getAll("file").slice(-3)).toEqual([`${"1a".repeat(32)}:dub.en.m4a`, `${"2b".repeat(32)}:dub.ja.unchecked.wav`, `${hash(5)}:metadata.json`]);
+  });
+
+  it("has no dub step when the package has no dub track", async () => {
+    stub();
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    expect(screen.queryByRole("region", { name: /配音音軌/ })).toBeNull();
+  });
+
   it("says the compilation video is outside the zip", async () => {
     stub({ ...project, compilation: true, download_available: true, reviews: [{ ...review, files: review.files.filter((file) => file.role !== "final") }] });
     render(<YoutubeManualUpload slug={project.slug} />);
