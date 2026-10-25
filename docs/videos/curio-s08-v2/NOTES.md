@@ -11,7 +11,7 @@
 - 事實沿用第一版的查核（`research.md` 七列加〈交叉轉錄與來源層次〉、第一版 claims 已對到的列、第一版固定文本抽核），**沒有新增查核**；
   每句對照在 [`claims.md`](claims.md)（新加的事實句標「第二版新加」），給 `qa` 讀的表在 [`verify-1.md`](verify-1.md)。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站、沒有開 session。第一版的 82 景提示詞逐字沿用（站上那一版已經畫過，將來吃快取），23 景是新提示詞。
-- **盲評待跑（主對話跑）**：這個代理照規則不跑盲評。payload 存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪讀者 1 十三題全是，讀者 2 只有 scene_first 答否（利害句的數字是時間距離不是後果）；兩位同否才算沒過，第 1 輪通過、沒改稿；答案在 panel/）。原本的待跑說明：盲評待跑（主對話跑）**：這個代理照規則不跑盲評。payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s08/payload-r1.json`
   （`narrative --slug curio-s08-v2 --json` 的輸出，`narration` 與 `questions` 原文，13 題是系列版 `STORY_SERIES_PANEL_QUESTIONS`）。跑法照主機兩位讀者的規則：兩個全新讀者各自只讀 payload，
   回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過、才改稿；最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，
