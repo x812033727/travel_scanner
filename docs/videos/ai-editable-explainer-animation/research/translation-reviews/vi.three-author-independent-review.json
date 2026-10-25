@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "locale": "vi",
+  "review_type": "Independent source-fidelity review of three new root-authored, unapplied reword proposals after actual native first-reword boundary",
+  "reviewed_at_utc": "2026-10-25T22:56:28.663851+00:00",
+  "reviewer_identity": {
+    "provider": "OpenAI",
+    "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+    "agent": "/root/review_id_vi_th",
+    "human": false,
+    "independent_of_author": true,
+    "author": "OpenAI Codex root"
+  },
+  "second_independent_text_read": {
+    "agent": "/root/review_id_vi_th/review_vi",
+    "method": "Fresh direct read of exact proposal file, Chinese source and actual current adjacent Vietnamese context; no writes or audio calls",
+    "result": "All three exact strings pass meaning, source clause order and naturalness; no corrections needed. Exact counts 83/136/90 independently confirmed."
+  },
+  "overall_verdict": "approved_for_text_merge_only; actual new TTS and audio/fit checks still required",
+  "per_line": [
+    {
+      "id": "79a96a",
+      "source_exact": "所以這次從一份需求做出教學短片，連修改的方法一起留下。",
+      "source_text_sha256": "1e28b1f36cfb3bc0e09eefbafb08107177126f92fcfd060a11aa9bbc69eb058a",
+      "source_hash": "1e28b1f36cfb",
+      "canonical_before_exact": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "canonical_before_text_sha256": "9f9ded27025c2b801c3ea3e23124bd762c841d1822e5ed052e666da3e44e1f54",
+      "proposed_after_exact": "Lần này, ta dựa vào một bản yêu cầu để làm video hướng dẫn ngắn và giữ cả cách sửa.",
+      "proposed_after_text_sha256": "e7cbc9fbbd725eecbca77609d6c733c766d3dfa5c9cb1738abb8a6e5f4535fd6",
+      "unicode_codepoints": 83,
+      "max_chars_from_current_worksheet": 101,
+      "within_current_text_budget": true,
+      "verdict": "approved_source_fidelity_and_naturalness_text_only",
+      "needs_author_correction": false,
+      "source_clause_order": "pass",
+      "number_name_condition_changes": [],
+      "source_components_checked": [
+        "this time and the requirements basis",
+        "one requirements brief",
+        "make a short teaching video",
+        "retain the editing method along with the result"
+      ],
+      "meaning_review": "Lần này, ta dựa vào một bản yêu cầu preserves this episode using one requirements brief; video hướng dẫn ngắn is a short teaching/tutorial video; giữ cả cách sửa retains the editing method. ta is an ordinary contextual narrator/we, consistent with the existing Vietnamese script. No clause or condition omitted.",
+      "naturalness_review": "Natural concise standard Vietnamese. dựa vào một bản yêu cầu makes the requirements relationship explicit, without promising automatic one-product success.",
+      "original_saved_ASR_heard": "Lần này tớ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa",
+      "audio_rationale_limitation": "Avoids the former isolated từ construction which saved ASR heard as tớ. New pronunciation/ASR reliability has not been tested.",
+      "adjacent_context_reread": [
+        {
+          "scene": "hook-question",
+          "id": "c5a4b1",
+          "source": "如果你把題目換掉，亮起來的格子會一起改嗎？",
+          "canonical": "Nếu bạn đổi bài toán, các ô sáng có đổi theo không?"
+        },
+        {
+          "scene": "hook-timing",
+          "id": "74eeac",
+          "source": "旁白換成另一種語言，畫面會不會已經跳走？",
+          "canonical": "Đổi ngôn ngữ lời dẫn, hình ảnh đã chuyển mất chưa?"
+        },
+        {
+          "scene": "hook-acceptance",
+          "id": "79a96a",
+          "source": "所以這次從一份需求做出教學短片，連修改的方法一起留下。",
+          "canonical": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa."
+        },
+        {
+          "scene": "hook-stakes",
+          "id": "aa0639",
+          "source": "你要的不是再抽一個好畫面，而是把錯字真的改掉。",
+          "canonical": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự."
+        },
+        {
+          "scene": "route-begin",
+          "id": "c2d378",
+          "source": "那到底要跟 AI 要什麼，它才不會只交出一段做好的影片？",
+          "canonical": "Vậy cần xin AI những gì để nó không chỉ giao một video làm sẵn?"
+        }
+      ],
+      "root_author_proposal_not_native_output": true,
+      "applied": false,
+      "native_accepted_this_wording": false,
+      "audio_fit_approved": false
+    },
+    {
+      "id": "52cf29",
+      "source_exact": "渲染會讀取同一份資料，輸出無聲影片和預覽影格；輸出名稱就是畫面上的設定，旁白要另外加。",
+      "source_text_sha256": "659765acd649916f100832a4fc7174a6024b02691a5740237e5ebbb67edc947f",
+      "source_hash": "659765acd649",
+      "canonical_before_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "canonical_before_text_sha256": "790ec942252c4220fd690f89ea814862d2e38216cf37d033d02e933ecbedfc25",
+      "proposed_after_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và các khung hình xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "proposed_after_text_sha256": "a772780fc1217bc9ce39eae80718521b7fa67aeedfb9823f8274723033e06d05",
+      "unicode_codepoints": 136,
+      "max_chars_from_current_worksheet": 156,
+      "within_current_text_budget": true,
+      "verdict": "approved_source_fidelity_and_naturalness_text_only",
+      "needs_author_correction": false,
+      "source_clause_order": "pass",
+      "number_name_condition_changes": [],
+      "source_components_checked": [
+        "render reads the same data",
+        "outputs a silent video",
+        "outputs preview frames",
+        "output name follows the on-screen setting",
+        "narration must be added separately"
+      ],
+      "meaning_review": "The same-data relation, silent output, plural preview frames, on-screen output naming and separate narration are all explicit and in source order. các khung hình xem trước clarifies actual preview frames rather than losing the frames noun.",
+      "naturalness_review": "Acceptable concise technical Vietnamese in the established rendering-command context. Kết xuất đọc cùng dữ liệu denotes the rendering process reading the same data; the same opening already appears in PRE and is not a blocking naturalness issue.",
+      "original_saved_ASR_heard": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và không xem trước, tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "audio_rationale_limitation": "Naming full plural khung hình is a text clarification intended to avoid the saved ASR khung→không substitution; it is not evidence that new audio is correct.",
+      "adjacent_context_reread": [
+        {
+          "scene": "build-display",
+          "id": "1de727",
+          "source": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+          "canonical": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không."
+        },
+        {
+          "scene": "build-handoff",
+          "id": "0dd30b",
+          "source": "這時才請它輸出影片，別把等待完整轉檔當成驗證內容。",
+          "canonical": "Lúc này mới xuất video; đừng coi chờ chuyển đổi cả tệp là kiểm chứng nội dung."
+        },
+        {
+          "scene": "run-render",
+          "id": "52cf29",
+          "source": "渲染會讀取同一份資料，輸出無聲影片和預覽影格；輸出名稱就是畫面上的設定，旁白要另外加。",
+          "canonical": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng."
+        },
+        {
+          "scene": "run-preview-stills",
+          "id": "005752",
+          "source": "如果只是想檢查圖形，使用只產生影格的選項，先看圖再做完整影片。",
+          "canonical": "Nếu chỉ kiểm tra hình, dùng tùy chọn chỉ tạo khung hình; xem hình rồi mới làm video đầy đủ."
+        },
+        {
+          "scene": "revise-start",
+          "id": "7bf8fb",
+          "source": "影片能播了，那麼開場那個問題來了：只改一個數字，畫面會跟著改嗎？",
+          "canonical": "Video phát được rồi. Trở lại câu hỏi đầu: chỉ đổi một số, hình có đổi theo không?"
+        }
+      ],
+      "root_author_proposal_not_native_output": true,
+      "applied": false,
+      "native_accepted_this_wording": false,
+      "audio_fit_approved": false
+    },
+    {
+      "id": "28a3eb",
+      "source_exact": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+      "source_text_sha256": "55c13b8f6a34bcd90c12b485dbbe848bbf5027b3fdf7faae567d29183b9ffeff",
+      "source_hash": "55c13b8f6a34",
+      "canonical_before_exact": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "canonical_before_text_sha256": "9de3e064c1b1fec23bb83047b55f28bbacb4fb2fd08fb564f1840e6ced0968e5",
+      "proposed_after_exact": "Chương trình kiểm tra ô lưới, nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không.",
+      "proposed_after_text_sha256": "275476ceba2371cc62933d9f9f0c84ff47c3d602749b7ecbee5d33775be44dbe",
+      "unicode_codepoints": 90,
+      "max_chars_from_current_worksheet": 98,
+      "within_current_text_budget": true,
+      "verdict": "approved_source_fidelity_and_naturalness_text_only",
+      "needs_author_correction": false,
+      "source_clause_order": "pass",
+      "number_name_condition_changes": [],
+      "source_components_checked": [
+        "program can check grid cells",
+        "contrast with explanation clarity",
+        "does not judge on the viewer behalf",
+        "whether this explanatory sentence is easy to understand"
+      ],
+      "meaning_review": "Chương trình kiểm tra ô lưới preserves program checking of grid cells; nhưng không đánh giá hộ bạn preserves the limit on judging for the viewer; câu giải thích có dễ hiểu không retains clarity of the explanatory sentence. The indicative program capability phrasing does not add a guarantee.",
+      "naturalness_review": "Natural standard Vietnamese with established bạn register. ô lưới is consistent with the grid-cell wording in the accepted native changes.",
+      "original_saved_ASR_heard": "Chương trình kiểm tra được rồi, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "audio_rationale_limitation": "The fuller ô lưới term is intended to disambiguate the isolated ô saved ASR heard as rồi. Only actual new audio/ASR can establish whether that worked.",
+      "adjacent_context_reread": [
+        {
+          "scene": "check-levels",
+          "id": "481fba",
+          "source": "最後確認影片能播放，聲音、字幕和原始檔都在交付包裡。",
+          "canonical": "Cuối cùng kiểm tra video phát được, gói bàn giao có tiếng, phụ đề và tệp gốc."
+        },
+        {
+          "scene": "check-distribution",
+          "id": "18691a",
+          "source": "檢查程式從點數組合重算答案，不讀畫面自己宣告的數字。",
+          "canonical": "Chương trình kiểm tra tính lại từ tổ hợp mặt xúc xắc, không đọc số hình tự nêu."
+        },
+        {
+          "scene": "check-no-guarantee",
+          "id": "28a3eb",
+          "source": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+          "canonical": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không."
+        },
+        {
+          "scene": "check-firstlast",
+          "id": "203f1e",
+          "source": "你要看最前面和最後面，避免切到一半，或者還留著空白尾巴。",
+          "canonical": "Xem phần đầu và cuối để tránh cắt ngang hoặc còn đuôi trống."
+        },
+        {
+          "scene": "check-real-modify",
+          "id": "7311eb",
+          "source": "你可能會問，修改版還要檢查嗎？也要重新輸出，確認修改流程走得通。",
+          "canonical": "Phiên bản đã sửa cũng phải kiểm tra sao? Cũng xuất lại để chắc quy trình sửa chạy được."
+        }
+      ],
+      "root_author_proposal_not_native_output": true,
+      "applied": false,
+      "native_accepted_this_wording": false,
+      "audio_fit_approved": false
+    }
+  ],
+  "current_canonical_verified_sha256": "2d33beea26135bc6e3bb3abb6af49c02d78d5749c247dac95811620dcab02a5f",
+  "proposal_hash_matches_author_provenance": true,
+  "canonical_before_matches_actual_current": true,
+  "metadata_proposals": null,
+  "native_boundary_state": {
+    "native_rounds_observed": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "native_accepted_ids_in_separate_delta_review": [
+      "7b0c6d",
+      "84576e"
+    ],
+    "native_rejected_three_problem_strings": [
+      "79a96a: over its budget (107 characters, at most 101)",
+      "52cf29: over its budget (166 characters, at most 156)",
+      "28a3eb: over its budget (117 characters, at most 98)"
+    ],
+    "rejected_three_current_texts_unchanged": true,
+    "this_author_review_changes_native_counters": false,
+    "native_counter_reset_or_extra_round_requested": false,
+    "separate_native_accepted_two_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reword-1-delta-review.json"
+  },
+  "audio_scope": {
+    "text_only": true,
+    "proposals_unapplied": true,
+    "no_new_synthesis_or_audio_listening": true,
+    "no_audio_fit_approval": true,
+    "codepoint_budget_pass_is_not_voice_fit": true,
+    "no_claim_saved_ASR_errors_are_fixed_in_audio": true,
+    "no_paid_or_API_calls": true,
+    "no_source_canonical_worksheet_metadata_native_audio_state_edits": true
+  },
+  "sha256": {
+    "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation_before_unapplied_revision": "2d33beea26135bc6e3bb3abb6af49c02d78d5749c247dac95811620dcab02a5f",
+    "worksheet": "bff2d48d9d990d765367c30bcb68202ff722a6c7490cb122f6c58a60ee124228",
+    "proposals": "bc170d1da6565db052a027939a8ed77f1131a55fbfc143362d9bf5d6441a3027",
+    "author_provenance": "eb9ff945d91ad31bb337742161723ad2d6d9c5867adc6ee3f4123da2822153f4",
+    "pre_dub_translation": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+    "reword_boundary": "0cbeb246e845d554232e1bbf8d5e5f77a01470788dff27e437e936c6b466559a",
+    "original_saved_ASR_check": "4c345f58476320ce58bbaa12a154c9523a1614925c2a1757dbcab009e9dce442",
+    "original_five_ASR_flags": "253fc9c19e97052f9c94e9865e12b9793b6034c3b06ab8a3d884948f13490257",
+    "native_accepted_two_delta_review": "54dbea3e19410151b011ea6e105b64cf349f69c418de5866a7fcfddc12b3dfdb"
+  },
+  "files_modified": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.three-author-independent-review.json"
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "locale": "vi",
+  "review_type": "genuine_native_first_reword_delta",
+  "reviewed_at_utc": "2026-10-25T22:54:55.000572+00:00",
+  "reviewer_identity": {
+    "provider": "OpenAI",
+    "agent": "Codex",
+    "model_family": "GPT-6",
+    "exact_runtime_model": "not exposed to the agent",
+    "task_name": "/root/review_id_vi_th/review_vi",
+    "is_human": false,
+    "is_claude": false
+  },
+  "independent_of_native_reworder": true,
+  "raw_answer_used_as_canonical": false,
+  "actual_canonical_read_directly": true,
+  "overall_verdict": "pass_for_two_accepted_text_changes_only",
+  "accepted_native_ids": [
+    "7b0c6d",
+    "84576e"
+  ],
+  "accepted_native_line_reviews": [
+    {
+      "id": "7b0c6d",
+      "verdict": "pass_text_meaning_order_and_naturalness",
+      "source_exact": "先請它畫出格子上色那一幕，別一開始就要求整支完成。",
+      "source_text_sha256": "7b0c6de91eafbd04915f065aaa6357bdb1e51907c5218513aebe8ee03c288b4c",
+      "stored_source_hash": "7b0c6de91eaf",
+      "stored_source_hash_matches_pre": true,
+      "pre_exact": "Xin cảnh tô màu ô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.",
+      "pre_text_sha256": "f10cf69761df03b029a5d3a09a196fe0a8e6704f83498d09e6fcc22cd8e787bf",
+      "current_canonical_exact": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video.",
+      "canonical_text_sha256": "881a937e9621a32891bfdb644326b467b211b87d915f36b8141d226faa555896",
+      "canonical_file_sha256": "2d33beea26135bc6e3bb3abb6af49c02d78d5749c247dac95811620dcab02a5f",
+      "unicode_codepoints": 92,
+      "analysis": {
+        "before_semantics": "Request the grid-cell-coloring scene first; do not request completion of the entire video at the start.",
+        "after_semantics": "Same full instruction. AI is the contextually explicit addressee; vẽ and các ô lưới explicitly retain drawing the grid-cell-coloring scene, followed by the prohibition on requesting the whole completed video at the start.",
+        "meaning": "pass; no omitted clause, added condition or changed scope",
+        "source_clause_order": "pass; request pilot cell-coloring scene first, then forbid requesting the entire completed video initially",
+        "naturalness": "Natural standard Vietnamese. Hãy nhờ AI and the emphatic đừng ngay từ đầu đã yêu cầu suit spoken instruction.",
+        "terms_conditions_names_numbers": "AI retains official Latin spelling. Grid cells, first-scene restriction and whole-video restriction are retained. No number or product claim is introduced."
+      },
+      "adjacent_context_reread": [
+        {
+          "scene": "brief-second-prompt",
+          "id": "76fc63",
+          "source": "然後說明觀眾沒學過機率，先看組合，不要一開始就丟公式。",
+          "current_translation": "Sau đó nói người xem chưa học xác suất: xem tổ hợp trước, đừng đưa công thức ngay."
+        },
+        {
+          "scene": "brief-dimension",
+          "id": "066452",
+          "source": "如果主要給手機看，就說明文字要大，圖例不要靠邊。",
+          "current_translation": "Nếu chủ yếu xem trên điện thoại, yêu cầu chữ to, chú giải không sát mép."
+        },
+        {
+          "scene": "build-start",
+          "id": "1f3f10",
+          "source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+          "current_translation": "Có hình cốt lõi rồi, nhờ AI gom thành dự án chạy được."
+        },
+        {
+          "scene": "build-ask",
+          "id": "291f73",
+          "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+          "current_translation": "Đọc tiêu đề, mục tiêu từ tệp; đừng ghi số riêng từng hình."
+        }
+      ],
+      "new_audio_auditioned": false,
+      "duration_or_fit_approved": false
+    },
+    {
+      "id": "84576e",
+      "verdict": "pass_text_meaning_order_and_naturalness",
+      "source_exact": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+      "source_text_sha256": "84576e7d6b408641d94ab10d019285ae3d342e580b0648f7ed4215846d5620e9",
+      "stored_source_hash": "84576e7d6b40",
+      "stored_source_hash_matches_pre": true,
+      "pre_exact": "Ví dụ chứng minh có thể làm lại sơ đồ ô, không phải AI nào cũng làm xong mọi video trong một lần.",
+      "pre_text_sha256": "4007d63f5370f34dd28c5eb93baa34f0af8b8eef5170218356062ee0ca3bea73",
+      "current_canonical_exact": "Ví dụ này chứng minh sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+      "canonical_text_sha256": "8c2775ab42cae7a2b274eac56cc1b3815d99c7e04a7e49d7467626d6d7779aec",
+      "canonical_file_sha256": "2d33beea26135bc6e3bb3abb6af49c02d78d5749c247dac95811620dcab02a5f",
+      "unicode_codepoints": 123,
+      "analysis": {
+        "before_semantics": "This example proves the grid diagram can be recreated; it does not prove any AI can complete every video in one attempt.",
+        "after_semantics": "Same example-versus-general-guarantee distinction. ô lưới clarifies grid cells, chứ không có nghĩa makes the negative inference explicit, and chỉ trong một lần retains one attempt.",
+        "meaning": "pass; no omitted clause, added condition or product guarantee",
+        "source_clause_order": "pass; demonstrated example capability precedes the limitation on generalizing to any AI/all videos/one attempt",
+        "naturalness": "Natural standard Vietnamese with a clear spoken contrast; no register shift.",
+        "terms_conditions_names_numbers": "AI is unchanged. Grid-diagram scope, any-AI scope, all-video scope and one-attempt condition are retained."
+      },
+      "adjacent_context_reread": [
+        {
+          "scene": "check-release-note",
+          "id": "c38a5e",
+          "source": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。",
+          "current_translation": "Khi giao, ghi phiên bản này đổi bài, số hay thời gian, để người nhận biết xem đâu trước."
+        },
+        {
+          "scene": "check-source",
+          "id": "a56276",
+          "source": "素材的來源和使用方式寫在交付說明，避免後面的人還得猜。",
+          "current_translation": "Ghi nguồn và cách dùng tư liệu trong hướng dẫn bàn giao, để người sau khỏi phải đoán."
+        },
+        {
+          "scene": "practice-start",
+          "id": "ad1b2c",
+          "source": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。",
+          "current_translation": "Bài xúc xắc đã xong, đổi sang đề của bạn; trước hết chọn khái niệm vẽ được thay đổi trước và sau."
+        },
+        {
+          "scene": "practice-actions",
+          "id": "d8b2ca",
+          "source": "寫下觀眾看完要懂的那一句，刪掉跟這一句無關的內容。",
+          "current_translation": "Viết câu người xem cần hiểu sau khi xem, bỏ nội dung không liên quan."
+        }
+      ],
+      "new_audio_auditioned": false,
+      "duration_or_fit_approved": false
+    }
+  ],
+  "original_five_asr_flags_and_actual_heard": [
+    {
+      "id": "79a96a",
+      "original_flag_note": "Jev 0.10: heard 「Lần này tớ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa」",
+      "original_asr_intended_exact": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "original_asr_spoken_form_exact": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "original_asr_heard_exact": "Lần này tớ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa",
+      "original_clip": "eef75565c75702ba",
+      "original_match": false,
+      "original_match_kind": null,
+      "original_noul": 0.1,
+      "evidence_type": "saved ASR transcription; not a manual audition",
+      "accepted_in_native_first_reword": false
+    },
+    {
+      "id": "7b0c6d",
+      "original_flag_note": "Jev 0.10: heard 「Xin cảnh tô màu thô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.」",
+      "original_asr_intended_exact": "Xin cảnh tô màu ô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.",
+      "original_asr_spoken_form_exact": "Xin cảnh tô màu ô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.",
+      "original_asr_heard_exact": "Xin cảnh tô màu thô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.",
+      "original_clip": "6af6d0cb21844f15",
+      "original_match": false,
+      "original_match_kind": null,
+      "original_noul": 0.1,
+      "evidence_type": "saved ASR transcription; not a manual audition",
+      "accepted_in_native_first_reword": true
+    },
+    {
+      "id": "52cf29",
+      "original_flag_note": "Jev 0.05: heard 「Kết xuất đọc cùng dữ liệu, tạo video không tiếng và không xem trước, tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.」",
+      "original_asr_intended_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "original_asr_spoken_form_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "original_asr_heard_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và không xem trước, tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "original_clip": "ba4ef868affdea57",
+      "original_match": false,
+      "original_match_kind": null,
+      "original_noul": 0.05,
+      "evidence_type": "saved ASR transcription; not a manual audition",
+      "accepted_in_native_first_reword": false
+    },
+    {
+      "id": "28a3eb",
+      "original_flag_note": "Jev 0.16: heard 「Chương trình kiểm tra được rồi, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.」",
+      "original_asr_intended_exact": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "original_asr_spoken_form_exact": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "original_asr_heard_exact": "Chương trình kiểm tra được rồi, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "original_clip": "9cc6f6c0fac89982",
+      "original_match": false,
+      "original_match_kind": null,
+      "original_noul": 0.16,
+      "evidence_type": "saved ASR transcription; not a manual audition",
+      "accepted_in_native_first_reword": false
+    },
+    {
+      "id": "84576e",
+      "original_flag_note": "Jev 0.11: heard 「Ví dụ chứng minh có thể làm lại sơ đồ. Ồ, không phải AI nào cũng làm xong mọi video trong một lần.」",
+      "original_asr_intended_exact": "Ví dụ chứng minh có thể làm lại sơ đồ ô, không phải AI nào cũng làm xong mọi video trong một lần.",
+      "original_asr_spoken_form_exact": "Ví dụ chứng minh có thể làm lại sơ đồ ô, không phải A I nào cũng làm xong mọi video trong một lần.",
+      "original_asr_heard_exact": "Ví dụ chứng minh có thể làm lại sơ đồ. Ồ, không phải AI nào cũng làm xong mọi video trong một lần.",
+      "original_clip": "b7b46f64648b163a",
+      "original_match": false,
+      "original_match_kind": null,
+      "original_noul": 0.11,
+      "evidence_type": "saved ASR transcription; not a manual audition",
+      "accepted_in_native_first_reword": true
+    }
+  ],
+  "rejected_native_three_unchanged": [
+    {
+      "id": "79a96a",
+      "status": "native_candidate_rejected_unchanged_pending_separate_author_reword",
+      "native_rejection": "107 characters exceeds 101",
+      "native_rejected_candidate_characters": 107,
+      "native_max_characters": 101,
+      "source_exact": "所以這次從一份需求做出教學短片，連修改的方法一起留下。",
+      "source_text_sha256": "1e28b1f36cfb3bc0e09eefbafb08107177126f92fcfd060a11aa9bbc69eb058a",
+      "stored_source_hash": "1e28b1f36cfb",
+      "pre_exact": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "current_canonical_exact": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "pre_and_current_exactly_equal": true,
+      "current_canonical_text_sha256": "9f9ded27025c2b801c3ea3e23124bd762c841d1822e5ed052e666da3e44e1f54",
+      "current_unicode_codepoints": 71,
+      "native_accepted": false,
+      "rejected_draft_not_treated_as_canonical": true,
+      "resynthesized_in_native_first_reword": false,
+      "resynthesis_evidence_scope": "Parent states producer paused before further synthesis; boundary excludes this ID from native accepted IDs. This reviewer performed no synthesis and does not claim a new audio check.",
+      "invented_author_fix_reviewed": false
+    },
+    {
+      "id": "52cf29",
+      "status": "native_candidate_rejected_unchanged_pending_separate_author_reword",
+      "native_rejection": "166 characters exceeds 156",
+      "native_rejected_candidate_characters": 166,
+      "native_max_characters": 156,
+      "source_exact": "渲染會讀取同一份資料，輸出無聲影片和預覽影格；輸出名稱就是畫面上的設定，旁白要另外加。",
+      "source_text_sha256": "659765acd649916f100832a4fc7174a6024b02691a5740237e5ebbb67edc947f",
+      "stored_source_hash": "659765acd649",
+      "pre_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "current_canonical_exact": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "pre_and_current_exactly_equal": true,
+      "current_canonical_text_sha256": "790ec942252c4220fd690f89ea814862d2e38216cf37d033d02e933ecbedfc25",
+      "current_unicode_codepoints": 127,
+      "native_accepted": false,
+      "rejected_draft_not_treated_as_canonical": true,
+      "resynthesized_in_native_first_reword": false,
+      "resynthesis_evidence_scope": "Parent states producer paused before further synthesis; boundary excludes this ID from native accepted IDs. This reviewer performed no synthesis and does not claim a new audio check.",
+      "invented_author_fix_reviewed": false
+    },
+    {
+      "id": "28a3eb",
+      "status": "native_candidate_rejected_unchanged_pending_separate_author_reword",
+      "native_rejection": "117 characters exceeds 98",
+      "native_rejected_candidate_characters": 117,
+      "native_max_characters": 98,
+      "source_exact": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+      "source_text_sha256": "55c13b8f6a34bcd90c12b485dbbe848bbf5027b3fdf7faae567d29183b9ffeff",
+      "stored_source_hash": "55c13b8f6a34",
+      "pre_exact": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "current_canonical_exact": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "pre_and_current_exactly_equal": true,
+      "current_canonical_text_sha256": "9de3e064c1b1fec23bb83047b55f28bbacb4fb2fd08fb564f1840e6ced0968e5",
+      "current_unicode_codepoints": 90,
+      "native_accepted": false,
+      "rejected_draft_not_treated_as_canonical": true,
+      "resynthesized_in_native_first_reword": false,
+      "resynthesis_evidence_scope": "Parent states producer paused before further synthesis; boundary excludes this ID from native accepted IDs. This reviewer performed no synthesis and does not claim a new audio check.",
+      "invented_author_fix_reviewed": false
+    }
+  ],
+  "native_rounds_observed": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true
+  },
+  "native_problems_exact": [
+    "79a96a: over its budget (107 characters, at most 101)",
+    "52cf29: over its budget (166 characters, at most 156)",
+    "28a3eb: over its budget (117 characters, at most 98)"
+  ],
+  "native_counters_preserved": true,
+  "counter_reset_or_extra_round_requested": false,
+  "audio_fit_and_approval": {
+    "new_audio_auditioned": false,
+    "saved_ASR_treated_as_manual_hearing": false,
+    "asr_flags_cleared": false,
+    "voice_approval": false,
+    "duration_or_fit_approval": false,
+    "accepted_changes_need_actual_subsequent_audio_check": true,
+    "rejected_three_need_separate_author_action": true
+  },
+  "scope_limitations": "Only the two accepted native changes receive a fresh text meaning/order/naturalness verdict. The original five ASR observations are saved transcription evidence, not proof of what a listener hears. No root-authored fixes for the rejected three were invented or reviewed.",
+  "sha256": {
+    "source_video_json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation_json": "2d33beea26135bc6e3bb3abb6af49c02d78d5749c247dac95811620dcab02a5f",
+    "pre_translation_json": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+    "author_boundary_json": "0cbeb246e845d554232e1bbf8d5e5f77a01470788dff27e437e936c6b466559a",
+    "original_asr_flags_json": "253fc9c19e97052f9c94e9865e12b9793b6034c3b06ab8a3d884948f13490257",
+    "original_asr_check_json": "4c345f58476320ce58bbaa12a154c9523a1614925c2a1757dbcab009e9dce442"
+  },
+  "canonical_matches_requested_and_boundary_hash": true,
+  "files_modified": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reword-1-delta-review.json"
+  ],
+  "source_canonical_state_worksheet_audio_modified": false,
+  "api_or_paid_calls_used": false
+}
