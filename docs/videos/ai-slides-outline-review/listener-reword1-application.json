@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-25T23:20:47.842Z",
+  "scope": "Listener lexical repair1 only after completed 2 original-text retakes; no new narrative/scoring override",
+  "source_before_sha256": "5c762406b378be00cfad56936a634399954185aabce05d4b95287fb40e632490",
+  "source_after_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_before_sha256": "848a55932e1e62fb5dbaedb40e62823f764c83a1c3906efe398b0bd76e0f10df",
+  "claims_after_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "speech_before": "0f1e427877b23e0e",
+  "speech_after": "a8055d3edb90bcda",
+  "completed_retake2_exit_code": 1,
+  "completed_retake2": {
+    "stage": "check-audio",
+    "at": "2026-10-25T23:18:43.205Z",
+    "lines": 118,
+    "exact": 82,
+    "alike": 14,
+    "judged": 22,
+    "cleared": 13,
+    "flagged": 3,
+    "unchecked": 0,
+    "transcribed": 5,
+    "jev_calls": 1
+  },
+  "eligible_ids": [
+    "nm8j",
+    "h58h",
+    "j47b"
+  ],
+  "applied_ids": [
+    "nm8j",
+    "h58h",
+    "j47b"
+  ],
+  "unmodified_source_lines": 115,
+  "all_other_source_fields_unchanged": true,
+  "claims_changes_only_exact_quoted_text": true,
+  "claims_rows": 131,
+  "claims_column_shape_preserved": true,
+  "independent_review_sha256": "bd6979d321973e4bcadcb1718d5230903d07d3e9d72289be91806966350941c4",
+  "changes": [
+    {
+      "id": "nm8j",
+      "old": "如果大綱少填資料年，這時要改哪裡？",
+      "text": "大綱如果漏了資料年份，要在哪裡補上？",
+      "claims_quote_replacements": 1
+    },
+    {
+      "id": "h58h",
+      "old": "我把自己寫的初稿和集中修改，一起留在範例紀錄裡。",
+      "text": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+      "claims_quote_replacements": 1
+    },
+    {
+      "id": "j47b",
+      "old": "它留在註記欄，沒有混進已採用的五項數值主張。",
+      "text": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+      "claims_quote_replacements": 1
+    }
+  ],
+  "archive": "/workspace/work/ai-tech-next/fourth-audio-archives/before-listener-reword1",
+  "tts_done": false,
+  "audio_pass": false,
+  "narrative_raw_results_preserved": true
+}

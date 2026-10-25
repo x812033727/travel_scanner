@@ -1,0 +1,2725 @@
+{
+  "schema_version": 1,
+  "slug": "ai-slides-outline-review",
+  "format": "slides",
+  "theme": "paper",
+  "category": "ai-news",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "AI簡報先審大綱：公開PDF變成4頁有來源的成品",
+    "description": "把公開PDF變成4頁簡報，生成之前的大綱要先決定什麼？\n給需要交付可修改、可回查簡報的一般工作者。\n\n本地原創示例於2026-10-25完成：作者需求、兩頁初稿、集中修改與修訂階段在同一次生成中保存，並非Notebook產品回應或真實互動停等審查。官方2026-10-19消息作為流程背景；未登入或實測產品。\n\n資料是Stanford 2026 AI Index經濟章中的2025統計。金額為Quid投資範圍：企業總額包含私人子集，兩者不相加；地區比較限定私人AI投資。88%為受訪者自述其組織至少一項業務使用AI；70%／79%問法與分母對齊未解，只留註記。\n\n引用清單中，第1頁是作者問題總覽；第2至4頁列出原報告位置。\n\n交付PDF由頁面圖片構成；PPTX保留原生文字與形狀，已重新開啟檢查結構，未在PowerPoint原生渲染。\n\n可複用完整提示：\n請只用我提供的這份公開PDF，替一般同事做四頁簡報。簡報目標約三分鐘。先給大綱，先不要生成投影片。\n每頁只回答一個問題，列出要用的數字、資料年、單位。列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。把投資金額和使用比例分開。總額與其中一部分，不要相加。\n來源若有未對齊處，列成待確認，不要替我挑一個數字。等我一次回覆全部修改後，再產出四頁簡報。同時交可編輯檔、PDF和逐頁引用清單。未確認的數字只作註記，不畫成確定結論。\n\n四頁PDF／可編輯PPTX／逐頁引用與作者需求資料包：https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data",
+    "tags": [
+      "AI簡報",
+      "Gemini Notebook",
+      "大綱審查",
+      "PDF轉簡報",
+      "可編輯PPTX",
+      "Stanford AI Index",
+      "簡報來源",
+      "AI工具"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**先審**\n再做",
+      "tag": "AI簡報大綱",
+      "sub": "大綱到可編輯成品",
+      "asset": "docs/videos/ai-slides-outline-review/assets/thumbnail-outline-review.png"
+    }
+  },
+  "sources": [
+    {
+      "title": "Google：生成前共同審大綱與製作筆記",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Workspace：Review流程與推出範圍",
+      "url": "https://workspaceupdates.googleblog.com/2026/10/gain-more-creative-control-over-slide-Decks-and-Video-Overviews-in-Gemini-Notebook.html",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Notebook：簡報共同製作與修改說明",
+      "url": "https://support.google.com/gemininotebook/answer/16757456?hl=en",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Notebook：影片製作筆記說明",
+      "url": "https://support.google.com/gemininotebook/answer/16454555?hl=en",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Stanford：2026 AI Index經濟章",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "McKinsey：2025自述調查",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/ai-slides-outline-review/data/s1.svg",
+      "source": "Mokaair原創簡報第1頁；數據引自Stanford AI Index 2026",
+      "license": "本片原創排版；報告資料依來源引用",
+      "author": "Mokaair",
+      "url": "https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/data/s2.svg",
+      "source": "Mokaair原創簡報第2頁；數據引自Stanford AI Index 2026",
+      "license": "本片原創排版；報告資料依來源引用"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/data/s3.svg",
+      "source": "Mokaair原創簡報第3頁；數據引自Stanford AI Index 2026",
+      "license": "本片原創排版；報告資料依來源引用"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/data/s4.svg",
+      "source": "Mokaair原創簡報第4頁；數據引自Stanford AI Index 2026",
+      "license": "本片原創排版；報告資料依來源引用"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/data/s1.png",
+      "source": "Mokaair原創簡報第1頁預覽；來源同SVG",
+      "license": "本片原創排版；報告資料依來源引用"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/assets/four-page-overview.svg",
+      "source": "Mokaair原創四頁縮覽；嵌入原s1–s4，不改圖值",
+      "license": "本片原創編排；原始圖表來源同本地四頁簡報"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/assets/four-page-overview.png",
+      "source": "Mokaair原創四頁縮覽；嵌入原s1–s4，不改圖值",
+      "license": "本片原創編排；原始圖表來源同本地四頁簡報"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/assets/thumbnail-outline-review.svg",
+      "source": "Mokaair原創作者兩頁大綱到四頁成品構圖；非產品UI",
+      "license": "本片原創編排；原始圖表來源同本地四頁簡報"
+    },
+    {
+      "path": "docs/videos/ai-slides-outline-review/assets/thumbnail-outline-review.png",
+      "source": "Mokaair原創作者兩頁大綱到四頁成品構圖；非產品UI",
+      "license": "本片原創編排；原始圖表來源同本地四頁簡報"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "four-page-local-output",
+      "chapter": "我從公開報告寫下簡報需求",
+      "template": "big",
+      "data": {
+        "text": "公開報告\n簡報需求",
+        "kicker": "2026-10-25｜本地原創示例",
+        "sub": "從同一份來源開始寫需求",
+        "key": "先寫需求，尚未宣告成品完成",
+        "icon": "document"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "tirg",
+          "text": "二〇二六年十月二十五日，我打開報告，寫下簡報需求。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "sum-question",
+      "template": "big",
+      "data": {
+        "text": "兩筆投資\n能相加？",
+        "sub": "同一份簡報的金額頁",
+        "key": "先留下這個加總問題"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "iihc",
+          "text": "兩筆投資放在一起，能直接相加嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "two-to-four-question",
+      "template": "big",
+      "data": {
+        "text": "材料怎麼分頁？",
+        "sub": "每一頁該負責回答什麼",
+        "key": "把分頁的答案留在修改之後"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "dgy5",
+          "text": "這份大綱裡的材料，要怎麼分頁才各有任務？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "handoff-question",
+      "template": "big",
+      "data": {
+        "text": "能改字\n能追來源？",
+        "sub": "同一份簡報的交付問題",
+        "key": "成品要能修改，也能回查"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "dfj8",
+          "text": "交出去以後，能改字、也能追來源嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "dated-news-hook",
+      "template": "big",
+      "data": {
+        "text": "生成前\n**先審大綱**",
+        "sub": "Gemini Notebook｜2026-10-19",
+        "key": "消息日期：2026-10-19"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "3vx9",
+          "text": "十月十九日，Gemini Notebook介紹生成前先審大綱。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "local-authored-scope",
+      "template": "big",
+      "data": {
+        "text": "先填投資範圍",
+        "sub": "兩筆金額，先回到同一份來源紀錄",
+        "key": "加總前先看數字代表什麼",
+        "icon": "checklist"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "7ya8",
+          "text": "要決定兩筆能不能相加，我先填來源紀錄裡的投資範圍。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ],
+      "chapter": "來源紀錄把金額與使用比例分開"
+    },
+    {
+      "id": "source-record-start",
+      "template": "big",
+      "data": {
+        "text": "本地原創示例",
+        "sub": "受Google公告啟發；沒有試用Notebook",
+        "key": "原創需求與成品，非產品操作"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "jyx8",
+          "text": "這份本地原創範例受Google公告啟發，沒有試用Notebook。"
+        }
+      ]
+    },
+    {
+      "id": "source-report",
+      "template": "table",
+      "data": {
+        "title": "指定公開來源",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "來源",
+            "Stanford AI Index"
+          ],
+          [
+            "報告",
+            "2026｜經濟章"
+          ]
+        ],
+        "source": "AI Index 2026｜2025資料",
+        "key": "來源限定同一份公開PDF"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "sk7r",
+          "text": "輸入是Stanford AI指數報告的經濟章。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "sixty-source-pages",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "60頁",
+            "label": "公開PDF",
+            "note": "本例選取相關頁面"
+          }
+        ],
+        "source": "AI Index 2026｜2025資料",
+        "key": "長報告只取本次需要的資料"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "45g3",
+          "text": "這份公開PDF有六十頁，簡報只需要其中的相關資料。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "briefing-audience-and-target",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "一般同事",
+            "detail": "讀懂AI投資與組織使用",
+            "icon": "person"
+          },
+          {
+            "title": "按用途取捨",
+            "detail": "先決定哪些內容該留下",
+            "icon": "checklist"
+          }
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "keys": [
+          "給一般同事的團隊簡報",
+          "聽眾與用途決定內容取捨"
+        ]
+      },
+      "claims": [
+        "c10",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "fskd",
+          "text": "我給它的任務，是讓一般同事讀懂AI投資和組織使用。",
+          "reveal": 1
+        },
+        {
+          "id": "vvp9",
+          "text": "先填聽眾和用途，才知道哪些內容該留下。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "report-and-data-year",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "報告年份",
+          "points": [
+            "2026年"
+          ],
+          "icon": "book"
+        },
+        "right": {
+          "heading": "資料年份",
+          "points": [
+            "本例採用2025年"
+          ],
+          "icon": "clock"
+        },
+        "source": "AI Index 2026｜2025資料",
+        "keys": [
+          "報告年與資料年分成兩欄",
+          "2026報告，不改寫成2026調查"
+        ]
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "k3s9",
+          "text": "來源紀錄裡，報告年份和資料年份分成兩欄。",
+          "reveal": 1
+        },
+        {
+          "id": "immj",
+          "text": "報告是二〇二六年，這次採用的資料則是二〇二五年。",
+          "emotion": "數字與名稱清楚，句尾自然收住",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "year-label-consequence",
+      "template": "big",
+      "data": {
+        "text": "年份分開填",
+        "sub": "新報告標題，不會替資料更新年份",
+        "key": "數字旁邊保留資料年",
+        "icon": "clock"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "p9da",
+          "text": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "two-metric-question",
+      "template": "big",
+      "data": {
+        "text": "同一張圖？",
+        "sub": "投資金額／使用比例",
+        "key": "先判斷是不是同一種量"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "8gv2",
+          "text": "同樣寫AI，投資金額和使用比例能共用一張圖嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "money-versus-respondents",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "投資金額",
+          "points": [
+            "地區／投資類型",
+            "美元單位"
+          ],
+          "icon": "globe"
+        },
+        "right": {
+          "heading": "使用比例",
+          "points": [
+            "誰受訪",
+            "回報什麼使用情況"
+          ],
+          "icon": "person"
+        },
+        "source": "本地原創示例｜2026-10-25",
+        "keys": [
+          "金額需要投資範圍與美元單位",
+          "比例需要受訪者與回報範圍"
+        ]
+      },
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "sxfi",
+          "text": "金額這邊要記地區、投資類型，還有美元單位。",
+          "reveal": 1
+        },
+        {
+          "id": "b4kb",
+          "text": "比例這邊要記誰受訪，以及他回報的是什麼使用情況。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "split-metric-record",
+      "template": "big",
+      "data": {
+        "text": "拆開記錄",
+        "sub": "兩種指標回答不同問題",
+        "key": "把投資與使用分開",
+        "icon": "checklist"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "rrvd",
+          "text": "它們回答不同問題，我把兩種指標拆開記。"
+        }
+      ]
+    },
+    {
+      "id": "two-page-number-introduction",
+      "template": "big",
+      "data": {
+        "text": "兩種頁碼",
+        "sub": "報告紙面號碼／PDF檔案位置",
+        "key": "保留兩種不同的頁碼",
+        "icon": "book"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "ghds",
+          "text": "來源紀錄還留了兩種頁碼，它們負責不同的定位。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "two-page-number-fields",
+      "template": "table",
+      "data": {
+        "title": "同一來源的定位欄位",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "印刷頁碼",
+            "報告紙面標示"
+          ],
+          [
+            "PDF頁序",
+            "檔案內由第1頁起算"
+          ]
+        ],
+        "source": "AI Index 2026｜2025資料",
+        "keys": [
+          "印刷頁碼是紙面上的號碼",
+          "PDF頁序是檔案裡的位置"
+        ]
+      },
+      "claims": [
+        "c21",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "pt7x",
+          "text": "印刷頁碼，是報告紙面上標的號碼。",
+          "reveal": 1
+        },
+        {
+          "id": "q2hz",
+          "text": "PDF頁序，則是這個檔案從第一頁開始數的位置。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "locate-and-identify-figure",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "PDF頁序",
+            "detail": "跳到同一份檔案的原頁",
+            "icon": "file"
+          },
+          {
+            "title": "圖號",
+            "detail": "定位該頁採用的圖",
+            "icon": "search"
+          }
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "keys": [
+          "先找到檔案內的位置",
+          "再對到原頁上的圖號"
+        ]
+      },
+      "claims": [
+        "c23",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "5s9a",
+          "text": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        },
+        {
+          "id": "9c7v",
+          "text": "原頁上還有圖號，能繼續對到同頁的那張圖。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prompt-field-question",
+      "template": "big",
+      "data": {
+        "text": "不只要摘要",
+        "sub": "怎樣讓大綱帶著這些欄位回來？",
+        "key": "把可以審的內容寫進需求"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "hpdz",
+          "text": "把這些條件放進需求，怎樣避免只收到一段摘要？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "reusable-full-prompt",
+      "template": "big",
+      "data": {
+        "text": "完整需求",
+        "sub": "可複用寫法｜不是貼入產品的歷史",
+        "key": "依自己的來源與聽眾改寫",
+        "kicker": "三張連續提示卡"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "g7uh",
+          "text": "我把這次需求整理成完整提示，你可以照這個格式改。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ],
+      "chapter": "完整需求交出後，作者初稿仍擠在兩頁"
+    },
+    {
+      "id": "prompt-card-one",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "請只用我提供的這份公開PDF，",
+            "detail": "替一般同事做四頁簡報。"
+          },
+          {
+            "title": "簡報目標約三分鐘。"
+          },
+          {
+            "title": "先給大綱，先不要生成投影片。"
+          }
+        ],
+        "source": "本次需求整理｜可複用提示1／3",
+        "keys": [
+          "指定來源、聽眾與頁數",
+          "約三分鐘是需求目標",
+          "先要可審的大綱"
+        ]
+      },
+      "claims": [
+        "c27",
+        "c28",
+        "c29",
+        "c130"
+      ],
+      "lines": [
+        {
+          "id": "2ai4",
+          "text": "請只用我提供的這份公開PDF，替一般同事做四頁簡報。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "zny3",
+          "text": "簡報目標約三分鐘。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "kh9k",
+          "text": "先給大綱，先不要生成投影片。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prompt-card-two",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "每頁只回答一個問題，",
+            "detail": "列出要用的數字、資料年、單位。"
+          },
+          {
+            "title": "列出受訪母體或統計範圍、",
+            "detail": "報告印刷頁碼和PDF頁序。"
+          },
+          {
+            "title": "把投資金額和使用比例分開。"
+          },
+          {
+            "title": "總額與其中一部分，不要相加。"
+          }
+        ],
+        "source": "本次需求整理｜可複用提示2／3",
+        "keys": [
+          "每頁問題、數字、年、單位",
+          "保留母體或範圍與兩種頁碼",
+          "不同指標分開處理",
+          "總額和子集不能相加"
+        ]
+      },
+      "claims": [
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c130"
+      ],
+      "lines": [
+        {
+          "id": "zibg",
+          "text": "每頁只回答一個問題，列出要用的數字、資料年、單位。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "uqnr",
+          "text": "列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "r3y9",
+          "text": "把投資金額和使用比例分開。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "bd3z",
+          "text": "總額與其中一部分，不要相加。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prompt-card-three",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "來源若有未對齊處，列成待確認，",
+            "detail": "不要替我挑一個數字。"
+          },
+          {
+            "title": "等我一次回覆全部修改後，",
+            "detail": "再產出四頁簡報。"
+          },
+          {
+            "title": "同時交可編輯檔、PDF",
+            "detail": "和逐頁引用清單。"
+          },
+          {
+            "title": "未確認的數字只作註記，",
+            "detail": "不畫成確定結論。"
+          }
+        ],
+        "source": "本次需求整理｜可複用提示3／3",
+        "keys": [
+          "未對齊的資料先留待確認",
+          "一次集中回覆全部修改",
+          "成品和引用清單一起交",
+          "未確認數字只放註記"
+        ]
+      },
+      "claims": [
+        "c34",
+        "c35",
+        "c36",
+        "c37",
+        "c130"
+      ],
+      "lines": [
+        {
+          "id": "y3nk",
+          "text": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "7g33",
+          "text": "等我一次回覆全部修改後，再產出四頁簡報。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "2knx",
+          "text": "同時交可編輯檔、PDF和逐頁引用清單。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        },
+        {
+          "id": "cht8",
+          "text": "未確認的數字只作註記，不畫成確定結論。",
+          "emotion": "像示範一句可以直接說的要求，清楚而自然",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "missing-year-question",
+      "template": "big",
+      "data": {
+        "text": "少填資料年？",
+        "sub": "這時能改一個具體欄位",
+        "key": "修改的對象是明確內容"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "nm8j",
+          "text": "大綱如果漏了資料年份，要在哪裡補上？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "specific-field-feedback",
+      "template": "table",
+      "data": {
+        "title": "可以這樣改一欄",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "對象",
+            "該頁的資料年欄位"
+          ],
+          [
+            "修改",
+            "補上數字的資料年份"
+          ]
+        ],
+        "source": "編輯示例｜沿用本次需求欄位",
+        "key": "這是需求解讀，不是假模型輸出"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "9h68",
+          "text": "就在該頁的資料年欄，直接要求補上年份。"
+        }
+      ]
+    },
+    {
+      "id": "outline-usability-question",
+      "template": "big",
+      "data": {
+        "text": "需求完整\n就合用？",
+        "sub": "同一份簡報仍要分配每頁的問題",
+        "key": "需求和初稿要對起來審"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "fx3e",
+          "text": "有了完整需求，第一份大綱就一定合用嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "author-initial-outline",
+      "template": "table",
+      "data": {
+        "title": "作者初稿｜尚未渲染",
+        "columns": [
+          "頁",
+          "初稿標題"
+        ],
+        "rows": [
+          [
+            "1",
+            "AI投資和採用概況"
+          ],
+          [
+            "2",
+            "整理成一張總覽圖"
+          ]
+        ],
+        "source": "作者初稿｜outline-before-review.json",
+        "keys": [
+          "兩頁作者初稿，尚未排成投影片",
+          "兩個標題還沒有分配內容任務"
+        ]
+      },
+      "claims": [
+        "c41",
+        "c42",
+        "c129"
+      ],
+      "lines": [
+        {
+          "id": "wy6f",
+          "text": "我設計的初稿範例，只有兩頁，還沒有排成投影片。",
+          "reveal": 1
+        },
+        {
+          "id": "kwf8",
+          "text": "一頁叫AI投資和採用概況，另一頁叫整理成一張總覽圖。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "same-material-both-pages",
+      "template": "table",
+      "data": {
+        "title": "初稿的內容配置",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "第1頁",
+            "全球／地區／使用／待確認"
+          ],
+          [
+            "第2頁",
+            "同一組材料再列一次"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "兩頁都塞進同一組指標"
+      },
+      "claims": [
+        "c43",
+        "c129"
+      ],
+      "lines": [
+        {
+          "id": "aces",
+          "text": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。"
+        }
+      ]
+    },
+    {
+      "id": "material-list-not-page-question",
+      "template": "big",
+      "data": {
+        "text": "材料齊了",
+        "sub": "每頁要回答的問題仍未分配",
+        "key": "大綱要決定每頁的分工",
+        "icon": "checklist"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "gy4m",
+          "text": "它列出了材料，卻沒有替每頁分配一個讀者問題。"
+        }
+      ]
+    },
+    {
+      "id": "author-written-stages",
+      "template": "big",
+      "data": {
+        "text": "作者編寫初稿",
+        "sub": "集中修改也保留在同一份範例紀錄",
+        "key": "作者示例，不是假造模型犯錯",
+        "icon": "document"
+      },
+      "claims": [
+        "c45",
+        "c129"
+      ],
+      "lines": [
+        {
+          "id": "h58h",
+          "text": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "no-product-conversation",
+      "template": "big",
+      "data": {
+        "text": "同一次產出保存",
+        "sub": "各階段是作者安排，沒有真實停等回覆",
+        "key": "不冒稱互動式審稿被實測"
+      },
+      "claims": [
+        "c46",
+        "c129"
+      ],
+      "lines": [
+        {
+          "id": "z84y",
+          "text": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。"
+        }
+      ]
+    },
+    {
+      "id": "what-decision-to-change",
+      "template": "big",
+      "data": {
+        "text": "改哪個決定？",
+        "sub": "每頁還沒有自己的內容分工",
+        "key": "修改要落到每頁的問題"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "yrg5",
+          "text": "既然每頁沒有分工，要修改的到底是哪個決定？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "change-page-question",
+      "template": "big",
+      "data": {
+        "text": "把問題拆開",
+        "sub": "從材料列表，改成每頁的內容分工",
+        "key": "開頭的分頁問題，落到具體修改",
+        "icon": "checklist"
+      },
+      "claims": [
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "j4eq",
+          "text": "開頭問材料怎麼分頁，我把每頁要回答的問題寫進修改。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ],
+      "chapter": "集中修改讓四頁各自有了任務"
+    },
+    {
+      "id": "concentrated-feedback-a",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "照需求分頁，",
+            "detail": "把投資金額和使用比例分成不同的問題。"
+          },
+          {
+            "title": "全球企業投資及其中私人投資",
+            "detail": "不可相加。"
+          },
+          {
+            "title": "國別頁只比較私人融資，",
+            "detail": "別叫全國AI總支出。"
+          }
+        ],
+        "source": "作者集中修改｜review-feedback.json",
+        "keys": [
+          "按需求分頁，讓問題各有位置",
+          "總額與其中私人投資不相加",
+          "國別頁限定同一私人融資口徑"
+        ]
+      },
+      "claims": [
+        "c49",
+        "c50",
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "kmts",
+          "text": "照需求分頁，把投資金額和使用比例分成不同的問題。",
+          "reveal": 1
+        },
+        {
+          "id": "vyp5",
+          "text": "全球企業投資及其中私人投資不可相加。",
+          "reveal": 1
+        },
+        {
+          "id": "jzkh",
+          "text": "國別頁只比較私人融資，別叫全國AI總支出。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "concentrated-feedback-b",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "資料頁留資料年、單位、母體或範圍，",
+            "detail": "以及兩種頁碼。"
+          },
+          {
+            "title": "未對齊的生成式AI比例，",
+            "detail": "保留為兩處來源註記。"
+          },
+          {
+            "title": "最後按剛才的交付清單，",
+            "detail": "把成品和引用紀錄一起交齊。"
+          }
+        ],
+        "source": "作者集中修改｜review-feedback.json",
+        "keys": [
+          "資料頁保留範圍與兩種頁碼",
+          "未對齊資料保留註記",
+          "按既有交付清單一起交齊"
+        ]
+      },
+      "claims": [
+        "c52",
+        "c53",
+        "c54"
+      ],
+      "lines": [
+        {
+          "id": "nx2z",
+          "text": "資料頁保留先前的資料年、單位、母體或範圍，以及兩種頁碼。",
+          "reveal": 1
+        },
+        {
+          "id": "b7sd",
+          "text": "未對齊的生成式AI比例，保留為兩處來源註記。",
+          "reveal": 1
+        },
+        {
+          "id": "i8qv",
+          "text": "最後按剛才的交付清單，把成品和引用紀錄一起交齊。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "visible-change-question",
+      "template": "big",
+      "data": {
+        "text": "改到哪裡？",
+        "sub": "每一條修改都要落到成品",
+        "key": "用四頁檢查修改結果"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "8k94",
+          "text": "集中修改要落到哪裡，才算真的改好了？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "page-one-metric-separation",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-slides-outline-review/data/s1.svg",
+        "caption": "本地原創成品｜簡報第1頁；資料見逐頁引用紀錄",
+        "key": "第1頁先把金額和比例分開"
+      },
+      "claims": [
+        "c56",
+        "c57",
+        "c121"
+      ],
+      "lines": [
+        {
+          "id": "6frs",
+          "text": "第一頁把讀者的問題分成投入多少錢、多少人回報使用。"
+        },
+        {
+          "id": "esm2",
+          "text": "金額對應投資範圍，比例對應受訪者和組織。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "global-page-relationship",
+      "template": "big",
+      "data": {
+        "text": "全球金額",
+        "sub": "簡報第2頁｜把包含關係留下",
+        "key": "用同一頁說清總額與子集",
+        "kicker": "資料年2025"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "x5tu",
+          "text": "第二頁把全球金額，做成能看出包含關係的圖。"
+        }
+      ]
+    },
+    {
+      "id": "global-corporate-value",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "581.69",
+            "label": "全球企業AI投資",
+            "note": "2025｜十億美元"
+          }
+        ],
+        "source": "AI Index p178／PDF8｜Quid，2025",
+        "key": "總額包含多種融資活動"
+      },
+      "claims": [
+        "c59",
+        "c122"
+      ],
+      "lines": [
+        {
+          "id": "fpqu",
+          "text": "全球企業AI投資是五百八十一點六九，以十億美元計。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "global-private-subset-value",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "581.69",
+            "label": "全球企業AI投資"
+          },
+          {
+            "value": "344.66",
+            "label": "其中私人AI投資",
+            "note": "2025｜同為十億美元"
+          }
+        ],
+        "source": "AI Index p178／PDF8｜Quid，2025",
+        "key": "私人投資是企業總額的子集"
+      },
+      "claims": [
+        "c60",
+        "c122"
+      ],
+      "lines": [
+        {
+          "id": "uyre",
+          "text": "其中私人AI投資，按相同單位是三百四十四點六六。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "sum-question-payoff",
+      "template": "big",
+      "data": {
+        "text": "不能相加",
+        "sub": "總額已經包含其中的私人投資",
+        "key": "開頭那兩筆，是總額與子集"
+      },
+      "claims": [
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "8ddn",
+          "text": "開頭問能不能相加，這裡的關係是總額包含其中一部分。"
+        }
+      ]
+    },
+    {
+      "id": "double-count-reason",
+      "template": "big",
+      "data": {
+        "text": "會重複算",
+        "sub": "再加私人投資，會重算已包含的部分",
+        "key": "不能把子集再加進總額",
+        "icon": "checklist"
+      },
+      "claims": [
+        "c62"
+      ],
+      "lines": [
+        {
+          "id": "rzc3",
+          "text": "再加一次私人投資，就把已包含的部分重複算了。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "page-two-subset-output",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-slides-outline-review/data/s2.svg",
+        "caption": "本地原創成品｜簡報第2頁；資料見逐頁引用紀錄",
+        "key": "第2頁用「其中」留下包含關係"
+      },
+      "claims": [
+        "c63",
+        "c121",
+        "c122"
+      ],
+      "lines": [
+        {
+          "id": "tjqp",
+          "text": "所以我在短的那條旁邊加上其中，頁面留下包含關係。"
+        }
+      ]
+    },
+    {
+      "id": "national-total-question",
+      "template": "big",
+      "data": {
+        "text": "全部AI支出？",
+        "sub": "地區比較能直接擴大成這個標題嗎？",
+        "key": "先固定比較的統計範圍"
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "zhzm",
+          "text": "那地區比較，能直接改叫各國AI總支出嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "regional-private-scope",
+      "template": "table",
+      "data": {
+        "title": "簡報第3頁的範圍",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "資料",
+            "報告整理的Quid統計"
+          ],
+          [
+            "比較",
+            "私人AI投資"
+          ]
+        ],
+        "source": "AI Index p182／PDF12｜Quid，2025",
+        "key": "同一套私人融資口徑"
+      },
+      "claims": [
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "qa92",
+          "text": "第三頁沿用報告整理的Quid私人AI投資口徑。"
+        }
+      ]
+    },
+    {
+      "id": "us-private-value",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "285.88",
+            "label": "美國私人AI投資",
+            "note": "2025｜十億美元"
+          }
+        ],
+        "source": "AI Index p182／PDF12｜Quid，2025",
+        "key": "資料年、單位與投資類型固定"
+      },
+      "claims": [
+        "c66",
+        "c123"
+      ],
+      "lines": [
+        {
+          "id": "f6fw",
+          "text": "同為二〇二五年，以十億美元計，美國是二百八十五點八八。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "china-private-value",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "285.88",
+            "label": "美國私人AI投資"
+          },
+          {
+            "value": "12.41",
+            "label": "中國私人AI投資",
+            "note": "2025｜同為十億美元"
+          }
+        ],
+        "source": "AI Index p182／PDF12｜Quid，2025",
+        "key": "同一範圍，才把兩個地區並列"
+      },
+      "claims": [
+        "c67",
+        "c123"
+      ],
+      "lines": [
+        {
+          "id": "hxni",
+          "text": "中國是十二點四一，統計範圍和單位相同。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "private-not-national-spend",
+      "template": "big",
+      "data": {
+        "text": "私人融資",
+        "sub": "不改稱兩國全部公私AI支出",
+        "key": "圖表標題不能擴大統計範圍"
+      },
+      "claims": [
+        "c68"
+      ],
+      "lines": [
+        {
+          "id": "frra",
+          "text": "這裡比較同一套私人融資統計，不是兩國全部公私支出。"
+        }
+      ]
+    },
+    {
+      "id": "page-three-same-scope-output",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-slides-outline-review/data/s3.svg",
+        "caption": "本地原創成品｜簡報第3頁；資料見逐頁引用紀錄",
+        "key": "第3頁同年、同單位、同投資類型"
+      },
+      "claims": [
+        "c69",
+        "c121",
+        "c123"
+      ],
+      "lines": [
+        {
+          "id": "2bm9",
+          "text": "圖上兩條長度，對應的是同一年、同單位、同類投資。"
+        }
+      ]
+    },
+    {
+      "id": "usage-page-new-unit",
+      "template": "big",
+      "data": {
+        "text": "換成使用比例",
+        "sub": "簡報第4頁｜不沿用美元單位",
+        "key": "金額和比例使用不同的單位",
+        "icon": "person"
+      },
+      "claims": [
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "a4ys",
+          "text": "第四頁換成使用情況，金額的美元單位就不能帶過來。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "survey-reported-ai-use",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "88%",
+            "label": "受訪者回報其組織",
+            "note": "2025｜至少一項業務使用AI"
+          }
+        ],
+        "source": "AI Index p193／PDF23｜2025",
+        "key": "分母是受訪者，內容是組織使用"
+      },
+      "claims": [
+        "c71",
+        "c72",
+        "c124"
+      ],
+      "lines": [
+        {
+          "id": "9xhq",
+          "text": "這份調查中，百分之八十八的受訪者回報，",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        },
+        {
+          "id": "iswb",
+          "text": "自己的組織至少有一項業務使用AI。"
+        }
+      ]
+    },
+    {
+      "id": "survey-not-census",
+      "template": "big",
+      "data": {
+        "text": "受訪者自述",
+        "sub": "不是全球所有公司的普查結果",
+        "key": "保留調查的受訪範圍",
+        "icon": "person"
+      },
+      "claims": [
+        "c73"
+      ],
+      "lines": [
+        {
+          "id": "dp4j",
+          "text": "這是受訪者自述，不能寫成全球所有公司的普查結果。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "unresolved-block-delivery-question",
+      "template": "big",
+      "data": {
+        "text": "未解的一格",
+        "sub": "其餘確認頁面，要一起停下來嗎？",
+        "key": "把未確認資料另外標清楚"
+      },
+      "claims": [
+        "c74"
+      ],
+      "lines": [
+        {
+          "id": "gy6e",
+          "text": "生成式AI有一格未解，簡報要因此卡住嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "two-source-observations",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "70%",
+            "label": "摘要：組織使用",
+            "note": "生成式AI｜至少一項業務"
+          },
+          {
+            "value": "79%",
+            "label": "詳文：組織經常使用",
+            "note": "受訪者回報"
+          }
+        ],
+        "source": "AI Index p173、193／PDF3、23",
+        "key": "兩處來源觀察，尚未對齊問項"
+      },
+      "claims": [
+        "c75",
+        "c125"
+      ],
+      "lines": [
+        {
+          "id": "g84b",
+          "text": "摘要列百分之七十，描述組織在至少一項業務使用。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "wording-needs-alignment",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "摘要",
+          "points": [
+            "組織使用",
+            "至少一項業務"
+          ]
+        },
+        "right": {
+          "heading": "詳文",
+          "points": [
+            "受訪者回報其組織",
+            "經常使用"
+          ]
+        },
+        "source": "AI Index p173、193／PDF3、23",
+        "key": "對齊問法和分母前，保留差異"
+      },
+      "claims": [
+        "c76",
+        "c125"
+      ],
+      "lines": [
+        {
+          "id": "e9xt",
+          "text": "詳文列百分之七十九，描述受訪者回報組織經常使用。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "both-2025-unresolved",
+      "template": "big",
+      "data": {
+        "text": "仍待確認",
+        "sub": "同為2025；問法與分母是否一致待對齊",
+        "key": "年份相同，不足以視為同一問項"
+      },
+      "claims": [
+        "c77",
+        "c125"
+      ],
+      "lines": [
+        {
+          "id": "cwpj",
+          "text": "都指二〇二五年，問法和分母是否一致仍待確認。"
+        }
+      ]
+    },
+    {
+      "id": "do-not-adopt-either-rate",
+      "template": "big",
+      "data": {
+        "text": "不當成定論",
+        "sub": "兩個值都不當成已確認的採用率",
+        "key": "保留未解，不判定報告寫錯"
+      },
+      "claims": [
+        "c78",
+        "c125"
+      ],
+      "lines": [
+        {
+          "id": "iek7",
+          "text": "不把這兩個值當成已確認的採用率，也不因此判定報告寫錯。"
+        }
+      ]
+    },
+    {
+      "id": "page-four-annotation-output",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-slides-outline-review/data/s4.svg",
+        "caption": "本地原創成品｜簡報第4頁；資料見逐頁引用紀錄",
+        "key": "第4頁把未確認的兩處來源留作註記"
+      },
+      "claims": [
+        "c79",
+        "c121",
+        "c124",
+        "c125"
+      ],
+      "lines": [
+        {
+          "id": "aywh",
+          "text": "兩處留註記，其餘確認內容繼續交付。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "citation-record-connects-pages",
+      "template": "big",
+      "data": {
+        "text": "第2至4頁\n接回原頁",
+        "sub": "第1頁保留作者的問題總覽",
+        "key": "作者總覽與原報告定位分開",
+        "icon": "search"
+      },
+      "claims": [
+        "c80"
+      ],
+      "lines": [
+        {
+          "id": "8arj",
+          "text": "引用紀錄把第二到第四頁接回原報告，第一頁則是作者問題總覽。"
+        }
+      ],
+      "chapter": "第二到第四頁接回原報告"
+    },
+    {
+      "id": "find-original-figure-question",
+      "template": "big",
+      "data": {
+        "text": "怎麼找回原圖？",
+        "sub": "從簡報第2頁的引用紀錄開始",
+        "key": "用第2頁的全球金額走一遍"
+      },
+      "claims": [
+        "c81"
+      ],
+      "lines": [
+        {
+          "id": "5ytw",
+          "text": "開頭問怎麼追來源，拿到這份簡報後，要怎樣找回原圖？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "page-two-citation-filled",
+      "template": "table",
+      "data": {
+        "title": "簡報第2頁｜來源紀錄",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "印刷頁碼",
+            "178"
+          ],
+          [
+            "PDF頁序",
+            "8"
+          ],
+          [
+            "圖號",
+            "4.2.1"
+          ]
+        ],
+        "source": "AI Index p178／PDF8｜Quid，2025",
+        "keys": [
+          "第2頁：印刷178／PDF8",
+          "圖4.2.1包含兩個金額"
+        ]
+      },
+      "claims": [
+        "c82",
+        "c83"
+      ],
+      "lines": [
+        {
+          "id": "cuw5",
+          "text": "簡報第二頁對應印刷第一百七十八頁，PDF第八頁。",
+          "emotion": "數字與名稱清楚，句尾自然收住",
+          "reveal": 2
+        },
+        {
+          "id": "u7s7",
+          "text": "圖號是四點二點一，兩個金額都出自這張圖。",
+          "emotion": "數字與名稱清楚，句尾自然收住",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "follow-the-citation",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "PDF第8頁",
+            "detail": "先跳到原頁",
+            "icon": "file"
+          },
+          {
+            "title": "圖4.2.1",
+            "detail": "核對數值與單位",
+            "icon": "search"
+          },
+          {
+            "title": "報告印刷p178",
+            "detail": "引述時一起保留",
+            "icon": "book"
+          }
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "keys": [
+          "PDF頁序到頁，圖號對到圖",
+          "對同事保留報告印刷頁碼"
+        ]
+      },
+      "claims": [
+        "c84",
+        "c85"
+      ],
+      "lines": [
+        {
+          "id": "2622",
+          "text": "核對時先用PDF頁序到原頁，再看圖號、數值和單位。",
+          "reveal": 2
+        },
+        {
+          "id": "a9g4",
+          "text": "你要引述給同事，也能把報告印刷頁碼一起留下。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "page-three-citation-filled",
+      "template": "table",
+      "data": {
+        "title": "簡報第3頁｜來源紀錄",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "印刷頁碼／PDF頁序",
+            "182／12"
+          ],
+          [
+            "圖與範圍",
+            "4.2.8｜私人AI投資"
+          ]
+        ],
+        "source": "AI Index p182／PDF12｜Quid，2025",
+        "keys": [
+          "第3頁：印刷182／PDF12",
+          "兩個地區接到同一張私人投資圖"
+        ]
+      },
+      "claims": [
+        "c86",
+        "c87"
+      ],
+      "lines": [
+        {
+          "id": "thhi",
+          "text": "簡報第三頁對應印刷第一百八十二頁，PDF第十二頁。",
+          "emotion": "數字與名稱清楚，句尾自然收住",
+          "reveal": 1
+        },
+        {
+          "id": "z3rg",
+          "text": "這頁的來源標記，把同一張私人投資圖和兩個地區連在一起。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "page-four-citation-filled",
+      "template": "table",
+      "data": {
+        "title": "簡報第4頁｜來源紀錄",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "印刷頁碼",
+            "193"
+          ],
+          [
+            "PDF頁序",
+            "23"
+          ],
+          [
+            "圖號",
+            "4.3.1"
+          ]
+        ],
+        "source": "AI Index p193／PDF23｜2025",
+        "key": "第4頁：印刷193／PDF23"
+      },
+      "claims": [
+        "c88"
+      ],
+      "lines": [
+        {
+          "id": "buwe",
+          "text": "簡報第四頁對應印刷第一百九十三頁，PDF第二十三頁。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "annotation-source-position",
+      "template": "table",
+      "data": {
+        "title": "第4頁註記｜摘要位置",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "印刷頁碼",
+            "173"
+          ],
+          [
+            "PDF頁序",
+            "3"
+          ]
+        ],
+        "source": "AI Index p173、193／PDF3、23",
+        "key": "另外留下摘要的來源位置"
+      },
+      "claims": [
+        "c89"
+      ],
+      "lines": [
+        {
+          "id": "m5bu",
+          "text": "待確認註記另連到摘要的印刷第一百七十三頁，PDF第三頁。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "adopted-versus-annotation",
+      "template": "table",
+      "data": {
+        "title": "引用紀錄分開兩種狀態",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "採用數值",
+            "5項｜C1至C5"
+          ],
+          [
+            "待確認註記",
+            "C6｜不作採用率結論"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "註記不混進已採用的數值"
+      },
+      "claims": [
+        "c90",
+        "c128"
+      ],
+      "lines": [
+        {
+          "id": "j47b",
+          "text": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "editable-handoff-question",
+      "template": "big",
+      "data": {
+        "text": "只交圖片夠嗎？",
+        "sub": "同事拿到簡報，還需要改字",
+        "key": "觀看和修改是不同需求"
+      },
+      "claims": [
+        "c91"
+      ],
+      "lines": [
+        {
+          "id": "uhev",
+          "text": "但同事要改字時，交一張排好的圖片就夠嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "handoff-two-uses",
+      "template": "big",
+      "data": {
+        "text": "觀看／修改",
+        "sub": "同一份內容，分成兩種用途",
+        "key": "同一內容，分成觀看與修改交付",
+        "icon": "folder"
+      },
+      "claims": [
+        "c92"
+      ],
+      "lines": [
+        {
+          "id": "mgin",
+          "text": "我把同一份內容，分成觀看用和修改用兩種交付。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "pdf-and-pptx-handoff",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "PDF觀看檔",
+          "points": [
+            "4頁圖片",
+            "沒有可抽取文字"
+          ],
+          "icon": "file"
+        },
+        "right": {
+          "heading": "PPTX修改檔",
+          "points": [
+            "原生文字與形狀",
+            "可編輯格式"
+          ],
+          "icon": "document"
+        },
+        "source": "本地原創示例｜2026-10-25",
+        "keys": [
+          "PDF能看版面，不是可抽取文字",
+          "PPTX保留可修改的原生物件"
+        ]
+      },
+      "claims": [
+        "c93",
+        "c94",
+        "c131"
+      ],
+      "lines": [
+        {
+          "id": "eeiu",
+          "text": "PDF是四張頁面圖片，能打開看版面，沒有可抽取的文字。",
+          "reveal": 1
+        },
+        {
+          "id": "hj8r",
+          "text": "開頭問能不能改字，這次也交付了PPTX可編輯檔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "pptx-native-object-evidence",
+      "template": "table",
+      "data": {
+        "title": "PPTX結構紀錄",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "非空文字物件",
+            "40"
+          ],
+          [
+            "空文字形狀",
+            "11"
+          ],
+          [
+            "原生物件合計",
+            "51"
+          ],
+          [
+            "影像物件",
+            "0"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "原生文字、形狀分開保存"
+      },
+      "claims": [
+        "c95",
+        "c126"
+      ],
+      "lines": [
+        {
+          "id": "t5vz",
+          "text": "其中的文字和形狀分開保存，沒有嵌入頁面圖片。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "editable-unit-text",
+      "template": "table",
+      "data": {
+        "title": "一個可修改的位置",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "簡報頁",
+            "第2頁｜全球金額"
+          ],
+          [
+            "原生文字",
+            "單位：十億美元｜企業總額包含多種融資活動"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "投資頁單位保留在文字方塊裡"
+      },
+      "claims": [
+        "c96",
+        "c127"
+      ],
+      "lines": [
+        {
+          "id": "xxcb",
+          "text": "像投資頁的單位，也留在原生文字方塊裡。"
+        }
+      ]
+    },
+    {
+      "id": "powerpoint-test-boundary",
+      "template": "big",
+      "data": {
+        "text": "結構已重開",
+        "sub": "尚未在PowerPoint裡原生渲染",
+        "key": "不把檔案結構當作播放測試"
+      },
+      "claims": [
+        "c97"
+      ],
+      "lines": [
+        {
+          "id": "aetd",
+          "text": "檔案已重新開啟檢查結構，尚未在PowerPoint裡原生渲染。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "before-presenting-in-your-app",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "正式播放前",
+            "detail": "在自己的簡報程式開檔",
+            "icon": "document"
+          },
+          {
+            "title": "確認字型和換行",
+            "detail": "再用該環境呈現",
+            "icon": "checklist"
+          }
+        ],
+        "source": "編輯建議｜未代替原生程式播放測試",
+        "key": "在實際播放環境檢查版面"
+      },
+      "claims": [
+        "c98"
+      ],
+      "lines": [
+        {
+          "id": "du2s",
+          "text": "如果你要在那裡正式播放，先打開確認字型和換行。"
+        }
+      ]
+    },
+    {
+      "id": "completed-delivery-package",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-slides-outline-review/assets/four-page-overview.svg",
+        "caption": "本地四頁成品｜第1頁作者總覽；第2至4頁列原報告位置",
+        "key": "同一份交付包：觀看、修改與來源"
+      },
+      "claims": [
+        "c99",
+        "c131",
+        "c121",
+        "c133"
+      ],
+      "lines": [
+        {
+          "id": "kjrf",
+          "text": "簡報、可編輯檔與逐頁來源，現在是一份能核對的交付包。"
+        }
+      ]
+    },
+    {
+      "id": "news-workflow-connection-question",
+      "template": "big",
+      "data": {
+        "text": "接上哪個位置？",
+        "sub": "這份本地流程和Google的新功能",
+        "key": "同一份四頁，對回生成前的決定"
+      },
+      "claims": [
+        "c100"
+      ],
+      "lines": [
+        {
+          "id": "yu7f",
+          "text": "那這份本地流程，和Google的新功能到底接在哪裡？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "review-position-connection",
+      "template": "big",
+      "data": {
+        "text": "生成前的內容決定",
+        "sub": "大綱先確定每頁要回答什麼",
+        "key": "官方設計與本地示例在這裡相接"
+      },
+      "claims": [
+        "c101"
+      ],
+      "lines": [
+        {
+          "id": "3eg2",
+          "text": "新聞裡的審稿位置，正是這份簡報決定每頁內容的地方。"
+        }
+      ],
+      "chapter": "Google公告新增生成前的大綱審查"
+    },
+    {
+      "id": "official-format-and-review",
+      "template": "table",
+      "data": {
+        "title": "官方功能介紹",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "工具",
+            "Gemini Notebook"
+          ],
+          [
+            "偏好",
+            "形式與風格"
+          ],
+          [
+            "選項",
+            "Review"
+          ]
+        ],
+        "source": "Google產品公告｜2026-10-19",
+        "key": "官方功能引用，非本次產品操作"
+      },
+      "claims": [
+        "c102"
+      ],
+      "lines": [
+        {
+          "id": "vufg",
+          "text": "Gemini Notebook可以先選形式和風格，再開啟Review。"
+        }
+      ]
+    },
+    {
+      "id": "official-review-objects",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "簡報",
+          "points": [
+            "審大綱"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "影片",
+          "points": [
+            "審製作筆記"
+          ],
+          "icon": "checklist"
+        },
+        "source": "Workspace公告｜2026-10-21",
+        "key": "本片只完成四頁簡報的本地示例"
+      },
+      "claims": [
+        "c103"
+      ],
+      "lines": [
+        {
+          "id": "8ikq",
+          "text": "做簡報時審的是大綱，做影片時則是製作筆記。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "official-feedback-then-proceed",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "集中一次回覆修改",
+            "icon": "chat"
+          },
+          {
+            "title": "Proceed",
+            "detail": "進入生成",
+            "icon": "arrow"
+          }
+        ],
+        "source": "Notebook說明頁｜2026-10-25",
+        "key": "回覆完修改，再進入生成"
+      },
+      "claims": [
+        "c104"
+      ],
+      "lines": [
+        {
+          "id": "w72f",
+          "text": "把修改集中一次寫完，再按Proceed進入生成。"
+        }
+      ]
+    },
+    {
+      "id": "review-is-optional",
+      "template": "big",
+      "data": {
+        "text": "也可直接生成",
+        "sub": "Review是可選步驟",
+        "key": "不要求每次都先審大綱",
+        "kicker": "Workspace公告｜2026-10-21"
+      },
+      "claims": [
+        "c105"
+      ],
+      "lines": [
+        {
+          "id": "8u6s",
+          "text": "產品也保留直接生成的選擇，審查步驟不是強制。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "outline-lock-after-proceed",
+      "template": "big",
+      "data": {
+        "text": "Proceed之後",
+        "sub": "不能繼續修改這份大綱",
+        "key": "先確認要生成的內容",
+        "kicker": "Notebook說明頁｜2026-10-25"
+      },
+      "claims": [
+        "c106"
+      ],
+      "lines": [
+        {
+          "id": "p3j7",
+          "text": "按Proceed後，就不能繼續改這份大綱。"
+        }
+      ]
+    },
+    {
+      "id": "review-this-deck-content",
+      "template": "table",
+      "data": {
+        "title": "這份簡報值得先改的內容",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "第2頁",
+            "總額與其中一部分"
+          ],
+          [
+            "第3頁",
+            "私人投資的比較範圍"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "改到頁面內容，再生成成品"
+      },
+      "claims": [
+        "c107"
+      ],
+      "lines": [
+        {
+          "id": "63mu",
+          "text": "因此像其中一部分、私人投資這些內容，值得在這時確認。"
+        }
+      ]
+    },
+    {
+      "id": "account-availability-question",
+      "template": "big",
+      "data": {
+        "text": "帳號都看得到？",
+        "sub": "新功能的公告範圍與說明頁",
+        "key": "可用範圍集中在這裡核對"
+      },
+      "claims": [
+        "c108"
+      ],
+      "lines": [
+        {
+          "id": "k3y5",
+          "text": "這個選項，現在每個帳號都看得到嗎？",
+          "emotion": "問句微揚，像在等對方一起判斷"
+        }
+      ]
+    },
+    {
+      "id": "announced-gradual-rollout",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "10/16",
+            "label": "開始分批推出",
+            "note": "2026年"
+          },
+          {
+            "value": "最長15天",
+            "label": "公告推出節奏"
+          }
+        ],
+        "source": "Workspace公告｜2026-10-21",
+        "key": "公告日期不等於每個帳號開通日"
+      },
+      "claims": [
+        "c109",
+        "c132"
+      ],
+      "lines": [
+        {
+          "id": "cgtw",
+          "text": "Workspace公告列十月十六日起分批推出，最長十五天。",
+          "emotion": "數字與名稱清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "announcement-versus-help",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Workspace公告",
+          "points": [
+            "列多類帳號"
+          ]
+        },
+        "right": {
+          "heading": "共同製作說明",
+          "points": [
+            "列Google AI Ultra"
+          ]
+        },
+        "source": "10/21公告／10/25說明頁",
+        "key": "兩份官方說明尚未以帳號操作對齊"
+      },
+      "claims": [
+        "c110",
+        "c132"
+      ],
+      "lines": [
+        {
+          "id": "yw8i",
+          "text": "公告列多類帳號，說明頁卻把共同製作列為Ultra功能。"
+        }
+      ]
+    },
+    {
+      "id": "no-account-result-to-resolve",
+      "template": "big",
+      "data": {
+        "text": "尚未對齊",
+        "sub": "沒有帳號操作結果能保證免費可用",
+        "key": "不要把公告範圍當成實測結果"
+      },
+      "claims": [
+        "c111",
+        "c132"
+      ],
+      "lines": [
+        {
+          "id": "qtzp",
+          "text": "我沒有帳號操作結果能對齊這個差異，不能保證免費可用。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "check-your-option",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "確認自己的方案",
+            "icon": "person"
+          },
+          {
+            "title": "確認審大綱選項",
+            "detail": "再決定是否使用這項產品功能",
+            "icon": "checklist"
+          }
+        ],
+        "source": "依官方公告／說明整理的使用前選擇",
+        "key": "用當時帳號畫面確認可用範圍"
+      },
+      "claims": [
+        "c112"
+      ],
+      "lines": [
+        {
+          "id": "skdk",
+          "text": "你要用產品時，先確認自己的方案和審大綱選項。"
+        }
+      ]
+    },
+    {
+      "id": "goal-not-tied-to-menu",
+      "template": "big",
+      "data": {
+        "text": "沿用同一份需求",
+        "sub": "確認帳號選項後，改成你的聽眾與篇幅",
+        "key": "從帳號確認接到自己的交付需求",
+        "icon": "document"
+      },
+      "claims": [
+        "c114"
+      ],
+      "lines": [
+        {
+          "id": "p2we",
+          "text": "確認自己帳號的審大綱選項後，用同一份需求改寫聽眾和篇幅。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    },
+    {
+      "id": "adapt-the-same-brief",
+      "template": "table",
+      "data": {
+        "title": "換成你的報告",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "聽眾",
+            "一般同事 → 你的實際聽眾"
+          ],
+          [
+            "範圍",
+            "頁數／講述時間 → 你的交付需求"
+          ],
+          [
+            "回交大綱",
+            "每頁問題＋來源欄位"
+          ]
+        ],
+        "source": "可複用需求改法｜未宣稱產品必定輸出",
+        "keys": [
+          "把聽眾改成自己的實際對象",
+          "把頁數與講述時間改成實際範圍",
+          "讓大綱帶著可修改的內容回來"
+        ]
+      },
+      "claims": [
+        "c115",
+        "c116",
+        "c117"
+      ],
+      "lines": [
+        {
+          "id": "cesj",
+          "text": "把其中的一般同事，改成你的實際聽眾。",
+          "reveal": 1
+        },
+        {
+          "id": "tkzk",
+          "text": "再把頁數和講述時間，改成你要交付的範圍。",
+          "reveal": 1
+        },
+        {
+          "id": "teri",
+          "text": "讓大綱帶著問題與來源交回來，你就有具體內容可以修改。",
+          "emotion": "承接前句，輕輕帶出新的進度",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "write-your-first-page",
+      "template": "outro",
+      "data": {
+        "title": "沿用需求，寫出第一頁",
+        "cta": "訂閱｜用真實成品讀懂AI工具",
+        "key": "寫下第一頁要回答的問題"
+      },
+      "claims": [
+        "c118",
+        "c119",
+        "c120"
+      ],
+      "lines": [
+        {
+          "id": "8udr",
+          "text": "沿用這份需求，寫下你第一頁要回答的問題。"
+        },
+        {
+          "id": "yf5s",
+          "text": "留言分享，你要把什麼做成簡報。"
+        },
+        {
+          "id": "umdp",
+          "text": "訂閱，用真實成品讀懂AI工具。",
+          "emotion": "承接前句，輕輕帶出新的進度"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "iihc",
+      "payoff": "8ddn",
+      "what": "兩筆投資能否相加"
+    },
+    {
+      "setup": "dgy5",
+      "payoff": "j4eq",
+      "what": "大綱材料如何按讀者問題分頁"
+    },
+    {
+      "setup": "dfj8",
+      "payoff": "hj8r",
+      "what": "交付後能否改字並追來源"
+    },
+    {
+      "setup": "8gv2",
+      "payoff": "rrvd",
+      "what": "投資金額與使用比例是否放同一圖"
+    },
+    {
+      "setup": "hpdz",
+      "payoff": "2ai4",
+      "what": "把來源條件寫進完整需求"
+    },
+    {
+      "setup": "nm8j",
+      "payoff": "9h68",
+      "what": "少資料年時修改哪裡"
+    },
+    {
+      "setup": "fx3e",
+      "payoff": "gy4m",
+      "what": "完整需求不等於初稿已分頁"
+    },
+    {
+      "setup": "yrg5",
+      "payoff": "kmts",
+      "what": "沒有分工的大綱要改哪個決定"
+    },
+    {
+      "setup": "8k94",
+      "payoff": "6frs",
+      "what": "集中修改落到成品何處"
+    },
+    {
+      "setup": "zhzm",
+      "payoff": "frra",
+      "what": "地區私人投資能否改稱全部支出"
+    },
+    {
+      "setup": "gy6e",
+      "payoff": "aywh",
+      "what": "未解的一格是否阻止整份交付"
+    },
+    {
+      "setup": "5ytw",
+      "payoff": "cuw5",
+      "what": "由簡報第2頁找到原始頁面"
+    },
+    {
+      "setup": "uhev",
+      "payoff": "hj8r",
+      "what": "圖片之外怎麼交可編輯成品"
+    },
+    {
+      "setup": "yu7f",
+      "payoff": "3eg2",
+      "what": "本地流程對應哪個官方功能位置"
+    },
+    {
+      "setup": "k3y5",
+      "payoff": "qtzp",
+      "what": "是否保證每個免費帳號可用"
+    }
+  ]
+}

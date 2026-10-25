@@ -1,0 +1,76 @@
+{
+  "observed_at": "2026-10-25T23:30:48Z",
+  "scope": "Current TTS timing and native stage history only; not current audio-check/strict-audit PASS.",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "speech_hash": "a8055d3edb90bcda",
+  "timeline_sha256": "c8186ce9b4edd85e26c4266a93382f60256e056d89dc9aa199298faf02f6d7d2",
+  "fps": 30,
+  "total_frames": 18106,
+  "total_seconds": 603.5333333333333,
+  "opening_frames": 757,
+  "outro_start_frame": 17741,
+  "body_before_outro_seconds": 591.3666666666667,
+  "body_excluding_cold_open_and_outro_seconds": 566.1333333333333,
+  "narration_sha256": "4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+  "latest_tts_stage": {
+    "stage": "tts",
+    "at": "2026-10-25T23:22:54.155Z",
+    "requests": 103,
+    "synthesized": 3,
+    "fallbacks": [],
+    "billable": 67,
+    "voice": "Sulafat",
+    "voices": [
+      "gemini:Sulafat"
+    ]
+  },
+  "high_level_reused_requests": 100,
+  "request_scope": "103 is high-level planned request count for118 lines; initial grouped fallback means this is not an exact claim of paid HTTP calls.",
+  "completed_original_text_checks": [
+    {
+      "stage": "check-audio",
+      "at": "2026-10-25T22:50:17.961Z",
+      "lines": 118,
+      "exact": 79,
+      "alike": 14,
+      "judged": 25,
+      "cleared": 13,
+      "flagged": 7,
+      "unchecked": 0,
+      "transcribed": 118,
+      "jev_calls": 2
+    },
+    {
+      "stage": "check-audio",
+      "at": "2026-10-25T23:06:01.819Z",
+      "lines": 118,
+      "exact": 81,
+      "alike": 14,
+      "judged": 23,
+      "cleared": 13,
+      "flagged": 5,
+      "unchecked": 0,
+      "transcribed": 7,
+      "jev_calls": 1
+    },
+    {
+      "stage": "check-audio",
+      "at": "2026-10-25T23:18:43.205Z",
+      "lines": 118,
+      "exact": 82,
+      "alike": 14,
+      "judged": 22,
+      "cleared": 13,
+      "flagged": 3,
+      "unchecked": 0,
+      "transcribed": 5,
+      "jev_calls": 1
+    }
+  ],
+  "current_reworded_take_check_complete": false,
+  "current_strict_audio_audit_complete": false,
+  "current_audio_ready": false,
+  "no_audio_cache_or_flags_modified": true,
+  "current_take_WAVs_not_independently_audited_here": true
+}

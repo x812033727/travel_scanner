@@ -1,0 +1,111 @@
+{
+  "at": "2026-10-25T23:28:20.985738+00:00",
+  "kind": "Informed lexical-delta review; not blind reader, not a new native score",
+  "reviewer": "news_verify, previously read R2 and conditional candidates",
+  "source_before_sha256": "5c762406b378be00cfad56936a634399954185aabce05d4b95287fb40e632490",
+  "current_source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "changed_ids": [
+    "nm8j",
+    "h58h",
+    "j47b"
+  ],
+  "changed_lines": [
+    {
+      "id": "nm8j",
+      "before": "如果大綱少填資料年，這時要改哪裡？",
+      "current": "大綱如果漏了資料年份，要在哪裡補上？"
+    },
+    {
+      "id": "h58h",
+      "before": "我把自己寫的初稿和集中修改，一起留在範例紀錄裡。",
+      "current": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。"
+    },
+    {
+      "id": "j47b",
+      "before": "它留在註記欄，沒有混進已採用的五項數值主張。",
+      "current": "這個差異只放在註記欄，不列入已採用的五項數值主張。"
+    }
+  ],
+  "raw_reader_receipts": [
+    {
+      "reader": 1,
+      "raw_answers": {
+        "path": "narrative-r2/reader1-answers.json",
+        "sha256": "91b3e557acb0e8c0c6e5715f521bbc7ccacb5f84872a2800e1de496a4f804306",
+        "yes": 12,
+        "total": 13
+      },
+      "original_native": {
+        "path": "narrative-r2/reader1-native-original-result.json",
+        "sha256": "5bb9cadef3db89a0fc9339eba7408d3586aa7858f4641fd597d8b040c8caa8ca",
+        "yes": 11,
+        "passed": false
+      },
+      "citation_repaired_native": {
+        "path": "narrative-r2/reader1-native-citation-repair-result.json",
+        "sha256": "dbe387b7f0a9879b8e6836b5fbad14877c2325be7f42fa899a3ca50fa2e4699b",
+        "yes": 12,
+        "total": 13,
+        "exit_code": 1,
+        "passed": false,
+        "failed": [
+          "no_recap"
+        ]
+      }
+    },
+    {
+      "reader": 2,
+      "raw_answers": {
+        "path": "narrative-r2/reader2-answers.json",
+        "sha256": "a5f961a06eb1641ba4c44cbcb4bf955140dd3c86b9afd174dd1a112abef3a72a",
+        "yes": 12,
+        "total": 13
+      },
+      "original_native": {
+        "path": "narrative-r2/reader2-native-original-result.json",
+        "sha256": "dc2f4946dc1fb2516f5aeb3830b377408fa7083a2dd547f8e84bb9c48c1d589b",
+        "yes": 11,
+        "passed": false
+      },
+      "citation_repaired_native": {
+        "path": "narrative-r2/reader2-native-citation-repair-result.json",
+        "sha256": "1e09e302191119a709a618d660399108894a54cc22af96c9b9e16b420c0e22a9",
+        "yes": 12,
+        "total": 13,
+        "exit_code": 1,
+        "passed": false,
+        "failed": [
+          "no_recap"
+        ]
+      }
+    }
+  ],
+  "informed_findings": [
+    {
+      "id": "nm8j",
+      "finding": "Same conditional missing-data-year question; same next-line field answer. No new chapter, question or payoff."
+    },
+    {
+      "id": "h58h",
+      "finding": "Same author-written initial draft and batch-feedback record; clearer request wording, same same-build/no-live-pause boundary."
+    },
+    {
+      "id": "j47b",
+      "finding": "Same C6 annotation exclusion from C1–C5; negative scope and five adopted claims preserved."
+    }
+  ],
+  "unmodified_original_no_recap_evidence": [
+    "rrvd",
+    "r3y9",
+    "jzkh",
+    "frra"
+  ],
+  "new_narrative_semantic_issues_from_three_changes": 0,
+  "new_blind_run": false,
+  "new_score": null,
+  "retained_native_gate": "Both original citation-repaired R2 receipts remain 12/13, passed:false, no_recap NO. They are not a new score for current source.",
+  "timing_limit": "Prior narrative panels used estimated timings; no new actual 90-second spacing/audio/film assessment here.",
+  "source_or_original_answers_modified": false,
+  "audio_or_media_ready_claim": false
+}

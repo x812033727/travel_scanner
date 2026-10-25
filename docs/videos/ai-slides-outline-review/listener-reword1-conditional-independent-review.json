@@ -1,0 +1,472 @@
+{
+  "observed_at": "2026-10-25T23:17:34.783Z",
+  "status": "CONDITIONAL_TEXT_REVIEW_ONLY_NOT_APPLIED_NOT_AUDIO_PASS",
+  "reviewer": "news_verify; did not write the fourth film or draft candidates",
+  "source_sha256": "5c762406b378be00cfad56936a634399954185aabce05d4b95287fb40e632490",
+  "claims_sha256": "848a55932e1e62fb5dbaedb40e62823f764c83a1c3906efe398b0bd76e0f10df",
+  "conditional_draft_sha256": "32048ca1b919282b921e7cfed00c60951c85bba500de90bacf32e62674bb228b",
+  "lexicon_sha256": "378f875ef4daf76e4aadee22bae0aa3c523dd39528ca48f69f139c2a70843b0c",
+  "source_lines_read": 118,
+  "read_scope": "All118 current spoken lines, five full scene data objects, claims bindings and local original demo records. No media/ASR eligibility inspected or asserted.",
+  "originals_exact": true,
+  "proposals": [
+    {
+      "id": "8gv2",
+      "scene": "two-metric-question",
+      "original": "同樣寫AI，投資金額和使用比例能共用一張圖嗎？",
+      "draft_candidate": "都在談AI，投資金額與使用比例，可以畫在同一張圖裡嗎？",
+      "recommended_candidate": "都在談AI，投資金額與使用比例，可以畫在同一張圖裡嗎？",
+      "decision": "ACCEPT_DRAFT_IF_LATER_ELIGIBLE",
+      "reason": "保留AI、投資金額／使用比例兩種量、是否共用一圖的問句；不把問句升格成絕對不能同圖的通則。後續sxfi／b4kb／rrvd仍分記投資範圍與受訪者回報。",
+      "characters": {
+        "original": 23,
+        "draft": 27,
+        "recommended": 27
+      },
+      "static_guard": {
+        "draft_problems": [],
+        "recommended_problems": [],
+        "original_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "draft_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "recommended_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "original_latin_terms": [
+          "AI"
+        ],
+        "recommended_latin_terms": [
+          "AI"
+        ],
+        "recommended_unknown_latin": [],
+        "under40": true
+      },
+      "manual_numeric_and_scope": {
+        "digits_dates_versions_changed": false,
+        "Chinese_five_preserved": "not applicable",
+        "single_unresolved_item_preserved": "not applicable",
+        "no_new_UI_or_product_execution": true
+      },
+      "context_before": [
+        {
+          "id": "immj",
+          "text": "報告是二〇二六年，這次採用的資料則是二〇二五年。"
+        },
+        {
+          "id": "p9da",
+          "text": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。"
+        }
+      ],
+      "context_after": [
+        {
+          "id": "sxfi",
+          "text": "金額這邊要記地區、投資類型，還有美元單位。"
+        },
+        {
+          "id": "b4kb",
+          "text": "比例這邊要記誰受訪，以及他回報的是什麼使用情況。"
+        }
+      ],
+      "scene_data": {
+        "text": "同一張圖？",
+        "sub": "投資金額／使用比例",
+        "key": "先判斷是不是同一種量"
+      },
+      "claim_ids": [
+        "c16"
+      ],
+      "changes_applied": false
+    },
+    {
+      "id": "nm8j",
+      "scene": "missing-year-question",
+      "original": "如果大綱少填資料年，這時要改哪裡？",
+      "draft_candidate": "大綱漏了資料年份，要回到哪裡補上？",
+      "recommended_candidate": "大綱如果漏了資料年份，要在哪裡補上？",
+      "decision": "PREFER_REVISED_DRAFT_IF_LATER_ELIGIBLE",
+      "reason": "保留明示如果與資料年，不把缺欄位直接敘述為已發生的產品結果；在哪裡補上銜接9h68的該頁資料年欄。避免回到哪裡被理解為新UI導覽。原候選的條件可由中文語境推知，但明示更精確。",
+      "characters": {
+        "original": 17,
+        "draft": 17,
+        "recommended": 18
+      },
+      "static_guard": {
+        "draft_problems": [],
+        "recommended_problems": [],
+        "original_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "draft_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "recommended_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "original_latin_terms": [],
+        "recommended_latin_terms": [],
+        "recommended_unknown_latin": [],
+        "under40": true
+      },
+      "manual_numeric_and_scope": {
+        "digits_dates_versions_changed": false,
+        "Chinese_five_preserved": "not applicable",
+        "single_unresolved_item_preserved": "not applicable",
+        "no_new_UI_or_product_execution": true
+      },
+      "context_before": [
+        {
+          "id": "2knx",
+          "text": "同時交可編輯檔、PDF和逐頁引用清單。"
+        },
+        {
+          "id": "cht8",
+          "text": "未確認的數字只作註記，不畫成確定結論。"
+        }
+      ],
+      "context_after": [
+        {
+          "id": "9h68",
+          "text": "就在該頁的資料年欄，直接要求補上年份。"
+        },
+        {
+          "id": "fx3e",
+          "text": "有了完整需求，第一份大綱就一定合用嗎？"
+        }
+      ],
+      "scene_data": {
+        "text": "少填資料年？",
+        "sub": "這時能改一個具體欄位",
+        "key": "修改的對象是明確內容"
+      },
+      "claim_ids": [
+        "c38"
+      ],
+      "changes_applied": false
+    },
+    {
+      "id": "h58h",
+      "scene": "author-written-stages",
+      "original": "我把自己寫的初稿和集中修改，一起留在範例紀錄裡。",
+      "draft_candidate": "我寫的初稿和整批修正的內容，都保存在範例紀錄裡。",
+      "recommended_candidate": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+      "decision": "PREFER_REVISED_DRAFT_IF_LATER_ELIGIBLE",
+      "reason": "明示作者撰寫初稿及這批feedback要求，而非把整批修正的內容聽成修訂後成品。整批保留集中一次修改；下一句z84y仍限定同一次產出保存、無真實停等。",
+      "characters": {
+        "original": 24,
+        "draft": 24,
+        "recommended": 24
+      },
+      "static_guard": {
+        "draft_problems": [],
+        "recommended_problems": [],
+        "original_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "draft_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "recommended_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "original_latin_terms": [],
+        "recommended_latin_terms": [],
+        "recommended_unknown_latin": [],
+        "under40": true
+      },
+      "manual_numeric_and_scope": {
+        "digits_dates_versions_changed": false,
+        "Chinese_five_preserved": "not applicable",
+        "single_unresolved_item_preserved": "not applicable",
+        "no_new_UI_or_product_execution": true
+      },
+      "context_before": [
+        {
+          "id": "aces",
+          "text": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。"
+        },
+        {
+          "id": "gy4m",
+          "text": "它列出了材料，卻沒有替每頁分配一個讀者問題。"
+        }
+      ],
+      "context_after": [
+        {
+          "id": "z84y",
+          "text": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。"
+        },
+        {
+          "id": "yrg5",
+          "text": "既然每頁沒有分工，要修改的到底是哪個決定？"
+        }
+      ],
+      "scene_data": {
+        "text": "作者編寫初稿",
+        "sub": "集中修改也保留在同一份範例紀錄",
+        "key": "作者示例，不是假造模型犯錯",
+        "icon": "document"
+      },
+      "claim_ids": [
+        "c45",
+        "c129"
+      ],
+      "changes_applied": false
+    },
+    {
+      "id": "gy6e",
+      "scene": "unresolved-block-delivery-question",
+      "original": "生成式AI有一格未解，簡報要因此卡住嗎？",
+      "draft_candidate": "生成式AI那一欄還沒釐清，這份簡報要因此停下來嗎？",
+      "recommended_candidate": "生成式AI這個欄位還沒釐清，這份簡報要因此停下來嗎？",
+      "decision": "REVISE_DRAFT_WORDING_IF_LATER_ELIGIBLE",
+      "reason": "原候選那一欄是script-writing明列的近音風險，改這個欄位；保留AI、一個未釐清欄位與是否卡住其餘交付的問句。不得把C6待確認口徑說成生成式AI完全未知、模型幻覺或已證實報告錯誤。",
+      "characters": {
+        "original": 20,
+        "draft": 25,
+        "recommended": 26
+      },
+      "static_guard": {
+        "draft_problems": [],
+        "recommended_problems": [],
+        "original_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "draft_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "recommended_fact_tokens": {
+          "numbers": [],
+          "words": [
+            "AI"
+          ]
+        },
+        "original_latin_terms": [
+          "AI"
+        ],
+        "recommended_latin_terms": [
+          "AI"
+        ],
+        "recommended_unknown_latin": [],
+        "under40": true
+      },
+      "manual_numeric_and_scope": {
+        "digits_dates_versions_changed": false,
+        "Chinese_five_preserved": "not applicable",
+        "single_unresolved_item_preserved": "這個欄位 remains singular C6",
+        "no_new_UI_or_product_execution": true
+      },
+      "context_before": [
+        {
+          "id": "iswb",
+          "text": "自己的組織至少有一項業務使用AI。"
+        },
+        {
+          "id": "dp4j",
+          "text": "這是受訪者自述，不能寫成全球所有公司的普查結果。"
+        }
+      ],
+      "context_after": [
+        {
+          "id": "g84b",
+          "text": "摘要列百分之七十，描述組織在至少一項業務使用。"
+        },
+        {
+          "id": "e9xt",
+          "text": "詳文列百分之七十九，描述受訪者回報組織經常使用。"
+        }
+      ],
+      "scene_data": {
+        "text": "未解的一格",
+        "sub": "其餘確認頁面，要一起停下來嗎？",
+        "key": "把未確認資料另外標清楚"
+      },
+      "claim_ids": [
+        "c74"
+      ],
+      "changes_applied": false
+    },
+    {
+      "id": "j47b",
+      "scene": "adopted-versus-annotation",
+      "original": "它留在註記欄，沒有混進已採用的五項數值主張。",
+      "draft_candidate": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+      "recommended_candidate": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+      "decision": "ACCEPT_DRAFT_IF_LATER_ELIGIBLE",
+      "reason": "前句m5bu明講待確認註記，cwpj／iek7已保留問法／分母未解、不判定報告錯誤。因此這個差異在此回指C6兩處來源觀察，並保留只作annotation、排除於C1–C5五項採用值的否定。五字及五項範圍完整保留。",
+      "characters": {
+        "original": 22,
+        "draft": 25,
+        "recommended": 25
+      },
+      "static_guard": {
+        "draft_problems": [],
+        "recommended_problems": [],
+        "original_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "draft_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "recommended_fact_tokens": {
+          "numbers": [],
+          "words": []
+        },
+        "original_latin_terms": [],
+        "recommended_latin_terms": [],
+        "recommended_unknown_latin": [],
+        "under40": true
+      },
+      "manual_numeric_and_scope": {
+        "digits_dates_versions_changed": false,
+        "Chinese_five_preserved": "五 remains 五; C1–C5 only",
+        "single_unresolved_item_preserved": "not applicable",
+        "no_new_UI_or_product_execution": true
+      },
+      "context_before": [
+        {
+          "id": "buwe",
+          "text": "簡報第四頁對應印刷第一百九十三頁，PDF第二十三頁。"
+        },
+        {
+          "id": "m5bu",
+          "text": "待確認註記另連到摘要的印刷第一百七十三頁，PDF第三頁。"
+        }
+      ],
+      "context_after": [
+        {
+          "id": "uhev",
+          "text": "但同事要改字時，交一張排好的圖片就夠嗎？"
+        },
+        {
+          "id": "mgin",
+          "text": "我把同一份內容，分成觀看用和修改用兩種交付。"
+        }
+      ],
+      "scene_data": {
+        "title": "引用紀錄分開兩種狀態",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "採用數值",
+            "5項｜C1至C5"
+          ],
+          [
+            "待確認註記",
+            "C6｜不作採用率結論"
+          ]
+        ],
+        "source": "本地原創示例｜2026-10-25",
+        "key": "註記不混進已採用的數值"
+      },
+      "claim_ids": [
+        "c90",
+        "c128"
+      ],
+      "changes_applied": false
+    }
+  ],
+  "known_listener_risk": {
+    "id": "gy6e",
+    "rejected_phrase": "那一欄",
+    "preferred_phrase": "這個欄位",
+    "source": "/workspace/work/travel-scanner-slides/.agents/skills/youtube-video/references/script-writing.md:308",
+    "note": "Known example in current instructions, not proof this specific future take would be misheard."
+  },
+  "eligibility": {
+    "completed_original_text_retake2_ASR_supplied": false,
+    "eligible_ids_now": null,
+    "eligibility_established": false,
+    "allowed_later_subset_rule": "Only exact IDs still flagged by a genuinely completed original-text retake2 check for current WAVs may be considered. Intersect that actual flag set with these five; do not apply all five automatically or rewrite already equivalent/accepted lines.",
+    "normal_guard_and_application_required": true,
+    "new_TTS_or_ASR_authorized_by_this_review": false
+  },
+  "dependencies": {
+    "author_initial_outline": "data/outline-before-review.json",
+    "author_batch_feedback": "data/review-feedback.json",
+    "revised_slides": "data/outline-after-review.json",
+    "annotation_policy": "data/page-citation-manifest.json C6 annotation_only_not_adopted_rate; adopted C1–C5 exactly five values",
+    "product_scope": "Local assistant-authored same-build example; no Notebook login/API/UI or real interactive pause. z84y and jyx8 remain essential."
+  },
+  "limitations": [
+    "Pure rewriteProblems checks digits/Latin/dictionary occurrence preservation, not meaning or Chinese-number semantics; those were separately reviewed.",
+    "Static length and plain wording do not predict real TTS/ASR/fit success.",
+    "No rewrite-eligibility or audio PASS claim; no source/claims/lexicon/media/paid/backend/git actions."
+  ],
+  "actions": {
+    "only_written": [
+      "/workspace/work/ai-tech-next/fourth-listener-reword1-conditional-independent-review.json",
+      "/workspace/work/ai-tech-next/fourth-listener-reword1-conditional-independent-review.md"
+    ],
+    "source_modified": false,
+    "claims_modified": false,
+    "lexicon_modified": false,
+    "media_or_ASR_read_or_run": false,
+    "paid_calls": 0
+  },
+  "local_dependency_hashes": [
+    {
+      "path": "data/outline-before-review.json",
+      "sha256": "f9fd4e12f0828f141d49eb7fd927c14732b7bf3ab0481d8d58ce7d1470770765"
+    },
+    {
+      "path": "data/review-feedback.json",
+      "sha256": "8436788b48a9ee8be339a4e7db4037c623832aa1e01cc136b44acb466b465c5d"
+    },
+    {
+      "path": "data/outline-after-review.json",
+      "sha256": "fb601c222786cb9854df9b58c3c66465582bc4d4b705bec7a9e9a11d5ac1db62"
+    },
+    {
+      "path": "data/page-citation-manifest.json",
+      "sha256": "7dba29045b5a94e69eb1b6a629fabafa0061bd64f796ae9417931d622b41b125"
+    },
+    {
+      "path": "data/input-brief.json",
+      "sha256": "0fed576d0952fe0f8497162ecc5c048d36cc0062709afd27715df83b1709c815"
+    },
+    {
+      "path": "data/results.json",
+      "sha256": "eb728d9813cb3a746fd7077873e33fa9ee5bcedc72b6edd4f6fe0eda0b1bf4a1"
+    },
+    {
+      "path": "data/build_demo.py",
+      "sha256": "a02950f15d45c5a81762d643cf8e8792bc20803efd2258e82006bd02d98cbf82"
+    },
+    {
+      "path": "data/s1.svg",
+      "sha256": "9d84823a494ff291c1b94b91c4e1e838663d88652d7635f33c8639cd605175b8"
+    },
+    {
+      "path": "data/s4.svg",
+      "sha256": "a158019cdc137928c79f958f54f66c84dc76be04627f9c35ed31afb01aa2598f"
+    }
+  ]
+}
