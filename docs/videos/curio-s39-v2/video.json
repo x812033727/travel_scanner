@@ -1462,8 +1462,8 @@
       "lines": [
         {
           "id": "et710",
-          "text": "我第一次讀到這裡也愣住了：最有名的那一句，竟然不是最後一句。",
-          "emotion": "旁白自己的反應"
+          "text": "我第一次讀到這裡，還回頭把那一行又看了一遍。",
+          "emotion": "旁白自己的反應，帶笑"
         }
       ]
     },
@@ -1718,17 +1718,34 @@
       ]
     },
     {
-      "id": "cs082",
+      "id": "cs084",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a book editor comparing two differently folded completely blank slips beside a closed book, desk light",
+        "prompt": "Wide shot of an ancient copyist closing an unmarked scroll beside a small lamp",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "et810",
-          "text": "腳註也提到手稿裡有希臘文字樣的異文，卻沒提出寫著拉丁名句的古抄本。"
+          "text": "那前面你可能會問的古代出處，腳註裡有嗎？",
+          "emotion": "點名，問句"
+        }
+      ]
+    },
+    {
+      "id": "cs082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a book editor comparing two differently folded completely blank slips beside a closed book, desk light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et811",
+          "text": "腳註只提到手稿裡有希臘文字樣的異文，卻沒提出寫著拉丁名句的古抄本。",
+          "emotion": "放慢"
         }
       ]
     },
@@ -1737,46 +1754,14 @@
       "template": "shot",
       "data": {
         "prompt": "Close shot of a reader setting a closed unmarked book apart from a completely blank rolled ancient scroll, daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et811",
-          "text": "所以會看錯的，就是這一層：那是編者的推理，不能放回蘇埃托尼烏斯的嘴裡。",
-          "emotion": "篤定"
-        }
-      ]
-    },
-    {
-      "id": "cs084",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of an ancient copyist closing an unmarked scroll beside a small lamp",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "et812",
-          "text": "還記得那段拉丁文段尾的三個希臘詞嗎？",
-          "emotion": "回呼"
-        }
-      ]
-    },
-    {
-      "id": "roll-up",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an elderly Roman biographer with a short grey beard rolling up a completely blank scroll and shaking his head slightly, soft lamp light from the left",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et813",
-          "text": "蘇埃托尼烏斯的原文裡，找不到編者猜的那句拉丁問話。",
-          "emotion": "放慢，篤定"
+          "text": "所以會看錯的，就是這一層：那是編者的推理，不能放回蘇埃托尼烏斯的嘴裡。",
+          "emotion": "篤定"
         }
       ]
     },
@@ -1785,30 +1770,14 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a reader holding a completely blank stage booklet beside a rolled unmarked scroll, daylight",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "et814",
+          "id": "et813",
           "text": "回到開場的問題：凱撒臨死前，真的說了這句話嗎？",
           "emotion": "答案前停一拍"
-        }
-      ]
-    },
-    {
-      "id": "cs998",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a thoughtful actor in a simple white toga costume standing alone on a plain wooden stage in the evening, holding a blank script to his chest and looking out at the empty seats, soft lamp light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et815",
-          "text": "還記得開頭那三篇傳記嗎？沒有一篇讓凱撒說出那句拉丁話。",
-          "emotion": "回呼，篤定"
         }
       ]
     },
@@ -1822,7 +1791,7 @@
       },
       "lines": [
         {
-          "id": "et816",
+          "id": "et814",
           "text": "他臨死前到底說了什麼，這份檔案只能寫：未結。",
           "emotion": "收尾，乾脆"
         }
@@ -1833,12 +1802,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close shot of a curious reader arranging a completely blank rolled scroll, a closed unmarked book and a plain stage mask, soft light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "et817",
+          "id": "et815",
           "text": "下次你再聽到一句歷史名言，可以先問：它在古文正文、譯本腳註，還是舞台上？",
           "emotion": "親近"
         }
@@ -1849,12 +1818,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a curious young student in a hoodie sitting at a desk in the afternoon, looking up from a textbook with a thoughtful frown and tapping a pencil on her chin, soft window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "et818",
+          "id": "et816",
           "text": "你第一次聽到這句話，是在課本、電影，還是戲劇裡？留言告訴我。",
           "emotion": "親近"
         }
@@ -1870,7 +1839,7 @@
       },
       "lines": [
         {
-          "id": "et819",
+          "id": "et817",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "乾脆"
         }
@@ -1900,7 +1869,7 @@
     },
     {
       "setup": "et107",
-      "payoff": "et816",
+      "payoff": "et814",
       "what": "全片的問題"
     },
     {
@@ -1965,12 +1934,12 @@
     },
     {
       "setup": "et717",
-      "payoff": "et811",
+      "payoff": "et812",
       "what": "讀者會看錯哪一層"
     },
     {
       "setup": "et716",
-      "payoff": "et813",
+      "payoff": "et811",
       "what": "拉丁話的古代出處"
     },
     {
