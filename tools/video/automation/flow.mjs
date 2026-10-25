@@ -44,6 +44,7 @@ import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
+import { resetSheets } from "../media/look.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { policyRequest } from "../qa/policy.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
@@ -3139,7 +3140,7 @@ export class Automation {
    * Hand failed sheets, keyframes or clips (or a gate the owner sent back) to the writer as a
    * prompt fix, at most MAX_PROMPT_FIX_ROUNDS times per kind; then the video waits for a person.
    */
-  async fixPrompts(state, kind, { targets = null, ownerNote = null }) {
+  async fixPrompts(state, kind, { targets = null, ownerNote = null, picks = null }) {
     // A story's fix is a patch of the named shots alone (story.mjs).
     if (state.story) return fixStoryPrompts(this, state, kind, { targets, ownerNote });
     this.fence(state.slug, `the ${kind} prompt fix`);
@@ -3174,7 +3175,24 @@ export class Automation {
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), [kind]: rounds + 1 };
     if (ownerNote) state.notes.push(`${kind} sent back: ${ownerNote}`);
     saveState(workdir, state);
-    return `${state.slug}: ${kind} prompts fixed (round ${rounds + 1}) for ${found.map((target) => target.id).join(", ") || what}; ${kind} runs again next`;
+    // The sheets the fix is for are drawn again on the next seeds, or a fix that could not change
+    // the prompt (an episode's cast is the setting book's) left every seed drawn and nothing to draw.
+    const redrawn = kind === "look" ? this.redrawSheets(state, found, picks) : [];
+    return `${state.slug}: ${kind} prompts fixed (round ${rounds + 1}) for ${found.map((target) => target.id).join(", ") || what}; ${kind} runs again next${redrawn.length ? ` (the sheets of ${redrawn.join(", ")} are drawn again on new seeds)` : ""}`;
+  }
+
+  /**
+   * The sheets of the characters a look fix is for leave characters/manifest.json for the next
+   * look run to draw again, and the characters the owner approved keep their pick as the
+   * suggestion of the review sent again (media/look.mjs resetSheets). Returns the ids reset.
+   */
+  redrawSheets(state, targets, picks) {
+    const file = path.join(this.workdir(state.slug), ARTIFACTS.characters);
+    const manifest = readJson(file, null);
+    if (!manifest?.characters) return [];
+    const reset = resetSheets(manifest, targets, { picks: picks ?? {}, now: this.ctx.now() });
+    atomicWrite(file, `${JSON.stringify(manifest, null, 2)}\n`);
+    return reset;
   }
 
   /**
@@ -3212,7 +3230,9 @@ export class Automation {
   /**
    * The look gate: one review per character. Nothing sent yet for these sheets: send them. Every
    * character approved: record the choice and the approval. One sent back: the writer rewrites
-   * that character and the sheets are drawn again.
+   * that character and its sheets are drawn again on new seeds (fixPrompts, redrawSheets), while
+   * the characters approved in the same round keep the owner's pick as the suggestion of the
+   * review sent again with the new manifest.
    */
   async lookGate(state) {
     const workdir = this.workdir(state.slug);
@@ -3230,7 +3250,15 @@ export class Automation {
     const rejected = reviews.filter((review) => review.status === "rejected");
     if (rejected.length) {
       const targets = rejected.map((review) => ({ id: review.subject, problems: review.note ? [review.note] : [] }));
-      return this.fixPrompts(state, "look", { targets, ownerNote: rejected.map((review) => `${review.subject}: ${review.note ?? ""}`).join("; ") });
+      // The owner's picks of this round (the chosen option, or the suggestion when approved
+      // without one), so the sheets sent again with the new manifest suggest them.
+      const picks = {};
+      for (const review of reviews.filter((each) => each.status === "approved" && manifest.characters[each.subject])) {
+        const option = (review.payload?.options ?? []).find((each) => each.key === review.choice);
+        const pick = option?.index ?? (review.choice ? review.choice.charCodeAt(0) - 64 : null) ?? manifest.characters[review.subject].suggested;
+        if (Number.isInteger(pick)) picks[review.subject] = pick;
+      }
+      return this.fixPrompts(state, "look", { targets, ownerNote: rejected.map((review) => `${review.subject}: ${review.note ?? ""}`).join("; "), picks });
     }
     const approved = new Set(reviews.filter((review) => review.status === "approved").map((review) => review.subject));
     if (Object.keys(manifest.characters).every((id) => approved.has(id))) {
