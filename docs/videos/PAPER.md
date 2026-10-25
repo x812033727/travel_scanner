@@ -63,7 +63,7 @@ node tools/video/render/repeat.mjs --file tools/video/templates/fixtures/paper/v
 
 ## 英文卡片的實測上限（2026-10-24，google-ai-search-ads-exception）
 
-`ai-news`／`ai-terms` 的卡片字改成英文（SKILL.md 規矩 14）之後，這幾個上限 `render` 的版面檢查抓不到，要自己看聯絡表：
+字卡主語言是 zh-TW（SKILL.md 規矩 14），但英文名詞、引文本來就多，國際題也可逐支選全英文卡；英文字一多，，這幾個上限 `render` 的版面檢查抓不到，要自己看聯絡表：
 
 | 卡片 | 上限 | 沒守會怎樣 |
 | --- | --- | --- |
