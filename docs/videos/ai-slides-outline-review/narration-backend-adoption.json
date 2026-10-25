@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-10-25T23:44:21.321Z",
+  "slug": "ai-slides-outline-review",
+  "remote_stage": "narration approved",
+  "remote_reviews": [
+    {
+      "id": "9f214396-aae3-49b1-9dfb-b56236836045",
+      "gate": "audio",
+      "status": "pending",
+      "content_sha256": "c8186ce9b4edd85e26c4266a93382f60256e056d89dc9aa199298faf02f6d7d2",
+      "created_at": "2026-10-25T23:38:06.272931Z",
+      "decided_at": null
+    },
+    {
+      "id": "06005e5d-91a5-4074-9654-92519f010f9d",
+      "gate": "script",
+      "status": "pending",
+      "content_sha256": "0a3a538a4eeaf72d12b4ca64b95f02441d97a6c7abb8ca11a0af33753f5caaad",
+      "created_at": "2026-10-25T23:35:42.687309Z",
+      "decided_at": null
+    }
+  ],
+  "local_delegated_adoptions": [
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "0a3a538a4eeaf72d12b4ca64b95f02441d97a6c7abb8ca11a0af33753f5caaad",
+      "approved_at": "2026-10-25T23:37:21.345Z",
+      "note": "站主明確委派依推薦或Jev決定、不再逐項詢問。採verify5 PASS之當前296f稿；只改3句聽感，R2原始12/13 false及必要no_recap NO保留，採已記錄教學取捨。這是本機委派採用，不是遠端或站主UI核准。"
+    },
+    {
+      "gate": "audio",
+      "file": "timeline.json",
+      "sha256": "c8186ce9b4edd85e26c4266a93382f60256e056d89dc9aa199298faf02f6d7d2",
+      "approved_at": "2026-10-25T23:39:02.845Z",
+      "note": "依站主委派採用實際118/118當前音檔零旗標音檢與獨立strict audit b9ba45c3eeca003fc4e862eae7126e73d39d89ae6de66b22a55f4e4ce32f6d87；source296f/speecha805固定，未手動清旗。僅本機旁白採用，遠端pending且官方片頭尾缺，組片僅本體候選。"
+    }
+  ],
+  "scope": "Authenticated normal project GET plus native local approvals. Local coordinator adoption is not remote/user UI approval; official bookends still missing and body assembly in progress.",
+  "approval_changed_on_remote": false
+}

@@ -1,0 +1,21 @@
+{
+  "self_test": true,
+  "cases": [
+    "native exact",
+    "native same-sound characters",
+    "native filler",
+    "different ASR with native Jev acceptance",
+    "truncated raw intended rejected",
+    "manufactured match rejected",
+    "missing confidence rejected",
+    "undefined second match_kind rejected",
+    "native second exact accepted",
+    "different secondary ASR with valid native Jev acceptance",
+    "unused old second does not veto exact",
+    "native leaked word overrides Jev",
+    "raw source stays raw while native spoken aliases differ",
+    "alias replacing raw intended is rejected"
+  ],
+  "writes": 0,
+  "paid_calls": 0
+}
