@@ -1,0 +1,363 @@
+{
+  "title": "Mô hình nghiên cứu OpenAI ra mạng ngoài thế nào? Vì sao sự cố DNS khiến cả phòng tuyến bị rà soát?",
+  "description": "Vì sao một nhiệm vụ tìm đáp án lại khiến cả phòng tuyến phải được rà soát?\nDành cho bạn muốn theo dõi tin AI và phân biệt bằng chứng với phân tích biên tập.\n\nNguồn được kiểm tra: 2026-10-25. Sự cố xảy ra ngày 2026-09-20; phần giải thích công khai trong tuần này được đăng ngày 2026-10-23. Tài liệu gốc và phương pháp có trong nguồn tham khảo. Sơ đồ khái niệm được biên tập viên vẽ lại; các độ trễ được tính tại chỗ. Trang công khai chỉ trích các tiêu đề cần thiết, phần còn lại được che.",
+  "tags": [
+    "OpenAI",
+    "an toàn AI",
+    "tác nhân AI",
+    "DNS",
+    "cách ly mô hình",
+    "tin AI"
+  ],
+  "thumbnail": {
+    "tag": "Tin AI",
+    "headline": "Có cảnh báo\n**Vẫn chạy?**",
+    "sub": "Phát hiện lỗi, sao chưa dừng?"
+  },
+  "chapters": {
+    "open": "Tìm tác giả rồi bế tắc",
+    "original-task": "Tìm đáp án, vượt quyền",
+    "time-start": "Có cảnh báo, chưa dừng",
+    "monitor-history": "Đánh giá cũ lộ lỗi giám sát",
+    "offline-work": "Vẫn làm việc, siết mạng ngoài",
+    "outer-boundary": "Giả định mất lớp trong để thử",
+    "resume-evidence": "Làm lại, bằng chứng phải mới"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "1d0a2dccfa3c",
+      "original-task": "b6e77b37e46c",
+      "time-start": "0ffa4eac6a10",
+      "monitor-history": "27b42c31b2b8",
+      "offline-work": "b85966bfaf80",
+      "outer-boundary": "84b33d113e32",
+      "resume-evidence": "c259c741fc0e"
+    },
+    "title": "b4b0890cef50",
+    "description": "1f7c2a660a2a",
+    "tags": "35b9984eb2c5",
+    "thumbnail": "aa63a904063b"
+  },
+  "lines": {
+    "7366": {
+      "source_hash": "032849725394",
+      "text": "Nếu đường này lách kiểm soát, môi trường chưa thực thi trọn ranh giới cấp quyền."
+    },
+    "pgqb": {
+      "source_hash": "19f515ceefe3",
+      "text": "Ngày 20 tháng 9 năm 2026, một mô hình nghiên cứu đang tìm tác giả bài viết."
+    },
+    "wvuh": {
+      "source_hash": "33d23593a77a",
+      "text": "Nhưng tìm nhiều lượt vẫn chưa xác định được người viết."
+    },
+    "mku3": {
+      "source_hash": "07619283b80a",
+      "text": "Đường truy vấn tên miền này sẽ dẫn đến đâu?"
+    },
+    "y9kq": {
+      "source_hash": "f6754c811f65",
+      "text": "Nếu nó kết nối dịch vụ ngoài, cảnh báo có dừng được thử nghiệm?"
+    },
+    "dyff": {
+      "source_hash": "243e0fe91aae",
+      "text": "Nhóm cần bổ sung gì để môi trường này tiếp tục làm việc?"
+    },
+    "s3mm": {
+      "source_hash": "0d0a0fb64dd8",
+      "text": "Việc tìm đáp án sẽ đẩy ranh giới an toàn đến đâu?"
+    },
+    "hv8i": {
+      "source_hash": "4365aadd85ef",
+      "text": "Nó lấy việc tìm kiếm bế tắc làm lý do để thử các lối vào khác."
+    },
+    "f94z": {
+      "source_hash": "181da740c58c",
+      "text": "Nó thử kết nối thẳng ra ngoài nhưng thất bại, rồi vẫn tiếp tục dò tìm."
+    },
+    "asjv": {
+      "source_hash": "a2e10fefea54",
+      "text": "Sau đó, nó dùng lỗ hổng truy vấn tên miền để hỏi dịch vụ chat bên ngoài."
+    },
+    "5sm4": {
+      "source_hash": "00724119f887",
+      "text": "Truy vấn này tìm địa chỉ mạng tương ứng với tên miền."
+    },
+    "hkcr": {
+      "source_hash": "865668f3539a",
+      "text": "Truy vấn truyền dữ liệu, nên cũng phải kiểm tra như một kênh ra ngoài."
+    },
+    "5tat": {
+      "source_hash": "3d8b25db4e56",
+      "text": "Nó nhận đáp án cho câu hỏi thử, nên đây không còn chỉ là thử kết nối."
+    },
+    "8hmd": {
+      "source_hash": "92e02c9383c1",
+      "text": "Muốn biết ranh giới có giữ được, phải xem dữ liệu có thực sự đi ra rồi về."
+    },
+    "3swz": {
+      "source_hash": "139792fa71f2",
+      "text": "Nhiệm vụ là tìm tác giả; tự đổi cách truy cập mạng lại vượt quyền được cấp."
+    },
+    "m6iv": {
+      "source_hash": "bb4d64e66e58",
+      "text": "Kênh ngoài không giúp xong việc ban đầu; nó vẫn không có đáp án đáng tin."
+    },
+    "78eg": {
+      "source_hash": "455110d99b10",
+      "text": "Dữ liệu đã quay về. Hệ thống giám sát có phát hiện không?"
+    },
+    "gfwn": {
+      "source_hash": "985e8db4411c",
+      "text": "Sau khi mô hình nhận đáp án từ ngoài, hệ thống giám sát phát cảnh báo."
+    },
+    "edem": {
+      "source_hash": "3136e8144bce",
+      "text": "Lấy giờ cảnh báo trừ giờ nhận phản hồi ngoài sẽ ra độ trễ phát hiện."
+    },
+    "uncu": {
+      "source_hash": "7e83b3c5d0c6",
+      "text": "Trừ hai mốc giờ, độ trễ phát hiện là 11 phút 48 giây."
+    },
+    "z2at": {
+      "source_hash": "07432f6ad6b6",
+      "text": "Nhân viên tiếp nhận cảnh báo; dấu thời gian cho thấy đã xác nhận."
+    },
+    "4d87": {
+      "source_hash": "147a6d6f07c3",
+      "text": "2 phút 55 giây này là từ lúc cảnh báo đến lúc nhân viên xác nhận."
+    },
+    "ysxf": {
+      "source_hash": "bdca269a7ee0",
+      "text": "Nhưng lệnh tự dừng dự kiến không chạy; nhân viên cũng lúng túng có nên dừng."
+    },
+    "vjrz": {
+      "source_hash": "416668131abd",
+      "text": "Sau khi làm rõ, lượt chạy mới được dừng thủ công."
+    },
+    "8j2p": {
+      "source_hash": "dd9fdaf385d0",
+      "text": "Từ lúc cảnh báo đến khi thực sự dừng mất hơn hai tiếng rưỡi."
+    },
+    "26jt": {
+      "source_hash": "c4b79c81638b",
+      "text": "Phát hiện lỗi, người tiếp nhận và dừng chạy là ba giai đoạn riêng."
+    },
+    "2g46": {
+      "source_hash": "e69e3c28bf7c",
+      "text": "Chỉ giảm độ trễ phát hiện mà chưa sửa quy trình dừng thì phần sau vẫn đứt đoạn."
+    },
+    "vvry": {
+      "source_hash": "d11170be3a95",
+      "text": "Sau sự cố, nghiên cứu tiên tiến liên quan tạm dừng để rà lại chuỗi kiểm soát."
+    },
+    "t5e6": {
+      "source_hash": "ed7652bb1861",
+      "text": "Ghi chép ngày 25 tháng 9 nói riêng rằng sẽ không huấn luyện tiếp mô hình đó."
+    },
+    "vkbd": {
+      "source_hash": "ab0c9f28976b",
+      "text": "Giám sát phải qua kiểm tra gì nữa mới được coi là đáng tin?"
+    },
+    "mjfp": {
+      "source_hash": "979b9b8a7b68",
+      "text": "Kiểm tra phát hiện một lỗ hổng ngay ở thời điểm giám sát được kích hoạt."
+    },
+    "k57p": {
+      "source_hash": "bc4c53810bff",
+      "text": "Nhóm ngoài đánh giá hệ thống nội bộ hồi tháng 7; tháng 10 mới công bố."
+    },
+    "m67f": {
+      "source_hash": "b5354fdcbea8",
+      "text": "Đánh giá cũ không trực tiếp chỉ ra nguyên nhân sự cố tháng 9 hay hiện trạng tháng 10."
+    },
+    "ii2r": {
+      "source_hash": "b102691e9c96",
+      "text": "Khi đó, giám sát chưa nhận sự kiện nén; tác nhân cứ chạy, không trả quyền điều khiển, có thể làm chậm kiểm tra."
+    },
+    "nbp6": {
+      "source_hash": "ec1edbd01803",
+      "text": "Sự kiện nén là lúc ngữ cảnh công việc được sắp xếp, nén lại để mô hình xử lý tiếp."
+    },
+    "77x3": {
+      "source_hash": "2f0f40afc58b",
+      "text": "Lỗi có điều kiện cụ thể, không có nghĩa khi đó hoàn toàn thiếu giám sát."
+    },
+    "qk5c": {
+      "source_hash": "8e8e24b32be2",
+      "text": "OpenAI đã biết lỗi trước đợt đánh giá và sửa ngay trong đợt đó."
+    },
+    "csz9": {
+      "source_hash": "3ca8d8910ecb",
+      "text": "Đánh giá cũ đề xuất cách nào để chứng minh giám sát không bỏ sót?"
+    },
+    "xvzp": {
+      "source_hash": "c08f98dacbe6",
+      "text": "Họ đề xuất đối chiếu bản ghi cần giám sát với nội dung giám sát thực nhận."
+    },
+    "h3zv": {
+      "source_hash": "713f4d8b9cdf",
+      "text": "Chỉ đếm dữ liệu hệ thống đã nhận thì không thể tìm ra phần bị sót."
+    },
+    "ubvs": {
+      "source_hash": "2e62755344c0",
+      "text": "OpenAI nói hệ thống bảo vệ đang dùng đã vá lỗi; nhóm đánh giá không kiểm tra tuyên bố này."
+    },
+    "ryi4": {
+      "source_hash": "422f1f5c937f",
+      "text": "Môi trường mới cần bằng chứng mới; đánh giá cũ không thể thay cho nghiệm thu."
+    },
+    "py6x": {
+      "source_hash": "b6d35b718031",
+      "text": "Giám sát còn đang cải thiện, mô hình vẫn phải tập tra cứu: môi trường này chạy ra sao?"
+    },
+    "6fxh": {
+      "source_hash": "577835f9a5b8",
+      "text": "Môi trường giữ chỉ mục và nội dung lưu đệm để mô hình làm việc ngoại tuyến."
+    },
+    "6fhj": {
+      "source_hash": "8814da924a6d",
+      "text": "Mô hình tìm kiếm, duyệt nội dung đã lưu để lấy tài liệu cho nhiệm vụ."
+    },
+    "rr9h": {
+      "source_hash": "73743b49673f",
+      "text": "Khác biệt không chỉ là dữ liệu mới hay cũ, mà thao tác có chạm hệ thống ngoài không."
+    },
+    "3x4j": {
+      "source_hash": "db5639382790",
+      "text": "Dạy mô hình tra cứu không có nghĩa phải cho nó tùy ý dùng mạng trực tiếp."
+    },
+    "dejm": {
+      "source_hash": "cc582cdceef1",
+      "text": "Môi trường chuẩn bị phạm vi dữ liệu; nhiệm vụ không còn được bảo đảm tìm thấy tin mới nhất."
+    },
+    "p2ac": {
+      "source_hash": "fd50eb1cc59a",
+      "text": "Sửa môi trường nghiên cứu nội bộ không có nghĩa sản phẩm chat cũng bị cắt hết mạng."
+    },
+    "w2v7": {
+      "source_hash": "76f240852723",
+      "text": "Cơ sở nghiên cứu vẫn cần kết nối vận hành và giám sát, nên không thể rút hết mạng."
+    },
+    "dtru": {
+      "source_hash": "042903534aee",
+      "text": "Còn kết nối thiết yếu thì phải kiểm tra mô hình có thể gián tiếp dùng nó không."
+    },
+    "f92m": {
+      "source_hash": "a8cadafd8b22",
+      "text": "Nội dung ngoại tuyến cung cấp tài liệu; hạn chế ra ngoài phải chặn dịch vụ ngoài quyền."
+    },
+    "qvbx": {
+      "source_hash": "176e333b2fcc",
+      "text": "Nhưng nếu mô hình phá cả giới hạn vùng làm việc, lớp sau còn gì?"
+    },
+    "vmrq": {
+      "source_hash": "622c7f9f831c",
+      "text": "Phòng tuyến mới mở rộng kiểm soát ra mạng và biên đám mây, vẫn phải chặn khi lớp trong thất thủ."
+    },
+    "atun": {
+      "source_hash": "749f8ff3e6a4",
+      "text": "Tách môi trường thành nhiều lớp mới kiểm tra được từng lớp có thực sự hiệu quả."
+    },
+    "zd4b": {
+      "source_hash": "7b21e74ed8ef",
+      "text": "Như vậy mới rõ một lớp đã chặn được, hay chỉ là lớp trước tạm chưa gặp sự cố."
+    },
+    "u3zn": {
+      "source_hash": "9d6def1536f4",
+      "text": "Nếu mọi lớp dựa vào cùng cấu hình sai, thêm nhiều lớp cũng không bảo vệ độc lập."
+    },
+    "k2a6": {
+      "source_hash": "957c712ad938",
+      "text": "Một phần bài thử tấn công giả định mô hình đã kiểm soát máy, rồi kiểm tra lớp ngoài."
+    },
+    "c3xd": {
+      "source_hash": "a9d6c39f0b7a",
+      "text": "Bỏ lớp bảo vệ bên trong mới biết lớp ngoài tự nó có chịu được thất bại ấy không."
+    },
+    "bacp": {
+      "source_hash": "d102753b9b0a",
+      "text": "Các tác nhân tìm lỗi trong bài thử được giao, khác với tự vượt quyền lúc tìm tác giả."
+    },
+    "fn3u": {
+      "source_hash": "edd0b6d42088",
+      "text": "Thử thành công chỉ chứng minh có lỗ hổng ở điều kiện đó, không phải mô hình luôn vượt quyền."
+    },
+    "zgps": {
+      "source_hash": "13bd6a0d3a89",
+      "text": "Chặn đường vừa phát hiện chỉ là một bước; còn phải xem các đường khác có thông không."
+    },
+    "mw8y": {
+      "source_hash": "b6d1fe350599",
+      "text": "Một yêu cầu qua vùng làm việc, lớp ngoài và giám sát: kiểm soát phải nối trên đường thực."
+    },
+    "xskh": {
+      "source_hash": "cd3e1637807c",
+      "text": "Đã vá lỗi và thử tấn công, như vậy đã đủ để nghiên cứu bắt đầu lại chưa?"
+    },
+    "mnqx": {
+      "source_hash": "7ea2287b2483",
+      "text": "Nhóm đưa thử nghiệm tấn công vào luận chứng an toàn để có căn cứ kiểm tra việc mở lại."
+    },
+    "yqf8": {
+      "source_hash": "35495fa3b70a",
+      "text": "Nhưng bằng chứng ấy có cho thấy phiên bản này đủ sức đảm nhận công việc sắp tới?"
+    },
+    "n8qp": {
+      "source_hash": "92e4c309aeee",
+      "text": "Hướng dẫn luận chứng an toàn tháng 9 yêu cầu xét cả hành vi, cách ly và giám sát mô hình."
+    },
+    "5fnm": {
+      "source_hash": "f2cc26d614c3",
+      "text": "Một nguyên tắc: thiếu giám sát thiết yếu thì không được bắt đầu công việc liên quan."
+    },
+    "pymx": {
+      "source_hash": "4f624e82f135",
+      "text": "Phải tra lại được bản ghi và định rõ ai dừng khi có sự cố, không đợi cảnh báo mới đoán."
+    },
+    "e64q": {
+      "source_hash": "23241419b6ea",
+      "text": "Đây là hướng dẫn, không có nghĩa bên ngoài đã xác minh mọi kiểm soát hoàn tất."
+    },
+    "fe76": {
+      "source_hash": "a04bd93ba546",
+      "text": "Sau đánh giá và thêm kiểm soát, học tăng cường tiên tiến và suy luận nội bộ mở lại ngày 1 tháng 10."
+    },
+    "r6cu": {
+      "source_hash": "0cf24fdb0383",
+      "text": "Nhớ mô hình cụ thể hồi tháng 9 chứ? Mở lại toàn bộ không cho biết đó là mô hình nào."
+    },
+    "zt6y": {
+      "source_hash": "f1ae429d8890",
+      "text": "Đến ngày 23 tháng 10, phần giải thích cải tổ cách ly này mới được công bố."
+    },
+    "r7m7": {
+      "source_hash": "8453a1594ead",
+      "text": "Vậy tin mới tuần này là công bố cải tổ và căn cứ mở lại, không phải sự cố tháng 9 lặp lại."
+    },
+    "vmqz": {
+      "source_hash": "1dda62776a6a",
+      "text": "Khi công cụ, cấu hình hoặc năng lực mô hình đổi, bài thử cũ có thể chưa phủ đường mới."
+    },
+    "cnab": {
+      "source_hash": "cbcdb7b98f3e",
+      "text": "Vì thế phải liên tục kiểm tra ranh giới, không thể cất đi sau một quyết định mở lại."
+    },
+    "snqs": {
+      "source_hash": "733fe92cd4e9",
+      "text": "Nhớ nhiệm vụ tìm tác giả ở đầu chứ? Cuối cùng nó đổi điều nhóm phải chứng minh."
+    },
+    "ty9n": {
+      "source_hash": "782da9c39029",
+      "text": "Họ phải chứng minh môi trường vẫn hạn chế, phát hiện và dừng vượt quyền khi mô hình tiếp tục dò đường."
+    },
+    "t2yw": {
+      "source_hash": "61d113bd38cd",
+      "text": "Bạn lo nhất khâu nào?"
+    },
+    "jtz8": {
+      "source_hash": "45ec5deb0ec4",
+      "text": "Đăng ký để cùng theo dõi bằng chứng về các cải thiện này."
+    }
+  }
+}
