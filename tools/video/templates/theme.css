@@ -264,7 +264,7 @@ em { font-style: normal; color: var(--orange); }
  */
 .thumb-subject.layout-d { width: 100%; }
 .thumb-subject.layout-d::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 70%, rgba(0, 0, 0, 0.7) 100%); }
-.thumb.column.layout-d { right: 0; padding: 48px 72px 64px 56px; justify-content: flex-end; gap: 14px; }
+.thumb.column.layout-d { right: 0; padding: 48px 72px 100px 56px; justify-content: flex-end; gap: 14px; }
 .thumb.column.layout-d .tag { display: none; }
 .thumb.column.layout-d h1 { color: #ffd60a; font-size: 150px; max-height: 340px; letter-spacing: 0.02em; -webkit-text-stroke: 7px #000; paint-order: stroke fill; text-shadow: 0 6px 0 #000, 0 0 28px rgba(0, 0, 0, 0.6); }
 .thumb.column.layout-d .sub { color: #fff; font-size: 66px; font-weight: 900; max-height: 96px; -webkit-text-stroke: 5px #000; paint-order: stroke fill; text-shadow: 0 4px 0 #000; }

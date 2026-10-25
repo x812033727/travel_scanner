@@ -1,0 +1,2115 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h24",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾像在跟一個朋友講這份檔案：開場兩句對著觀眾講、帶一點挑釁；蠟燭那一段壓低放慢，「看得到，很棒」停一拍；報社那一段加快、帶一點看熱鬧；伯爵過世那幾句收乾、不煽情；柯雷莉與道爾那一段像在轉述八卦，「第幾個了」收著；名單那一章一個名字一個名字唸清楚，「第九個」放慢；活到老那一章語氣越來越輕鬆；論文數字一個一個放慢，P 值那句像在解釋給朋友聽；黴菌那段帶一點好笑；結尾乾脆，「存檔」兩個字落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "一句「看得到什麼嗎」，開始了一百年的詛咒",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa at night holding a glowing phone, eyes wide, a small lamp beside her, soft warm lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過：打開法老的墓，會被詛咒。",
+          "emotion": "對觀眾說，壓低，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glowing phone screen in a dark room showing only a blank dark rectangle, a thumb hovering over it, cool screen light on the thumb",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "光是這一座墓，報紙就替它數了九條人命。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-candle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged archaeologist with a moustache holding a candle up to a small hole in a plaster wall, his face lit from the flame, eyes wide, dark passage around him",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "一九二二年十一月二十六日下午，帝王谷，一個男人把蠟燭伸進牆上剛挖開的小洞。",
+          "emotion": "沉穩進場景，壓低放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall older gentleman in a tweed suit standing in a dim stone corridor behind another man, leaning forward anxiously, lamp light from below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "伯爵在後面等不及了：看得到什麼嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t005",
+          "text": "他回頭說：看得到，很棒。",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-ninth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly man in round glasses at a wooden table holding a magnifying glass over a newspaper, frowning as he reads, lamp light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "但這還不是最怪的。",
+          "emotion": "升級"
+        },
+        {
+          "id": "t007",
+          "text": "七年後，報紙上印出一句據說刻在墓裡的詛咒。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged doctor in a cardigan at a desk at night, sliding a long paper list under a desk lamp with one finger, his expression calm and curious",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "七十二年後，一位醫師把當年在埃及的四十四個西方人，一個一個算了壽命。",
+          "emotion": "清楚，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "44 個人",
+        "kicker": "開墓那幾年在埃及的西方人",
+        "sub": "進過墓的 25 個，活了多久？"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "這份檔案，我們把四十四條命算給你看。",
+          "emotion": "承諾句，語氣篤定"
+        },
+        {
+          "id": "t010",
+          "text": "進過圖坦卡門墓的人，真的活得比別人短嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "steps-first",
+      "chapter": "十六級台階底下，封泥還在",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rocky desert valley at dawn, a workman in a long robe brushing sand off one cut stone step at the bottom of a shallow trench, soft pink morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "那根蠟燭之前，先有十六級台階：三個禮拜前，沙裡掃出了第一級。",
+          "emotion": "接住開場，輕快"
+        }
+      ]
+    },
+    {
+      "id": "steps-sixteen",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow stone stairway cut into bedrock going down into shadow, one man in a khaki jacket standing at the top counting with a pointed finger, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "一級、兩級，掃到第十六級，底下是一道封起來的門。",
+          "emotion": "數數的節奏"
+        }
+      ]
+    },
+    {
+      "id": "steps-sixteen-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plaster-sealed doorway at the bottom of a rock-cut stairway, a lantern held up to a row of oval seal impressions, warm light from the lantern",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "門上的封泥，完好無缺。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "steps-carter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged archaeologist with a moustache in a dusty khaki jacket standing at the bottom of a stone stairway, hand flat on a sealed plaster door, looking up, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "那個男人叫卡特，替一位伯爵工作了十幾年，在這個山谷找了五個冬天，幾乎什麼都沒找到。"
+        }
+      ]
+    },
+    {
+      "id": "steps-carter-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the moustached archaeologist's face in the shade of a hat brim, eyes narrowed at something below the frame, dusty overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "換成你，門就在眼前，你會怎麼做？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "steps-telegram",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a small telegraph office handing a paper slip across a wooden counter to a man in a dusty jacket, a ceiling fan above, warm indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "他做了一件你大概不會做的事：把台階埋回去，拍電報回英國。",
+          "emotion": "帶一點佩服"
+        }
+      ]
+    },
+    {
+      "id": "steps-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same archaeologist sitting alone on a camp stool outside a tent at dusk, hat in his lap, staring at the ground, soft blue evening light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "因為付錢的人不在。他坐在沙漠裡等了兩個多禮拜，等誰？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "steps-lord",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall thin gentleman in a light suit and a wide hat stepping off a river steamer onto a wooden pier, a porter with a trunk behind him, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "付錢的人是卡納文伯爵，五十六歲，英國貴族。"
+        }
+      ]
+    },
+    {
+      "id": "steps-lord-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a desert camp with two canvas tents and a camel at dusk, one man in a khaki jacket carrying a bucket between them, soft blue light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "是他的錢讓卡特待在這片沙漠裡，一年一年挖空氣。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "steps-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small group of people in 1920s travelling clothes walking down a desert path toward a stairway in the ground, one young woman in a cloche hat in front, afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "他帶著女兒伊芙琳趕來，才有了開場那根蠟燭。",
+          "emotion": "回呼，親近"
+        }
+      ]
+    },
+    {
+      "id": "steps-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young workman in a long robe holding a lamp up to a plaster wall with a small dark hole, peering at it nervously, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "洞裡有什麼，等一下帶你進去看。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "steps-hook-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the rocky desert valley at sunset, a line of small figures in hats walking up a path away from a stairway in the ground, long shadows",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "因為接下來三個月，比墓裡的金子更先出問題的，是墓外面的人。",
+          "emotion": "收著，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "times-office",
+      "chapter": "一月，整座墓賣給了一家報社",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1920s newspaper editor in shirtsleeves and braces standing at a tall desk, reading a contract with raised eyebrows, green shaded lamp, warm indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "先出問題的那個人，是伯爵自己。",
+          "emotion": "意味深長"
+        }
+      ]
+    },
+    {
+      "id": "times-office-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands shaking across a desk, one in a tweed sleeve and one in a dark suit sleeve, a fountain pen and an inkwell between them, grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "一月九日，他回到倫敦，跟《泰晤士報》簽了一份合約：墓裡的消息，只給他們一家。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "times-dust",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dozen reporters in rumpled suits and straw hats sitting on rocks outside a roped-off stairway in a desert valley, one wiping his brow, harsh midday haze softened by dust",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "可是你換個位置想：另外幾十家報社的記者，大老遠跑到埃及，",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "times-dust-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reporter's notebook on a knee with a pencil resting on a blank page, a dusty shoe beside it, hazy daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "每天坐在洞口外的石頭上，什麼都看不到，什麼都寫不到。你會怎麼辦？",
+          "emotion": "帶一點同情，問句"
+        }
+      ]
+    },
+    {
+      "id": "times-angry",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frustrated reporter in a straw hat scribbling hard in a notebook, teeth clenched, a telegraph form sticking out of his pocket, dusty daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "一位研究這段歷史的埃及學者說得很直白：那份獨家，讓一大群記者坐在塵土裡。"
+        }
+      ]
+    },
+    {
+      "id": "times-angry-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a straw hat whispering to a local boy at a desert camp, slipping him a coin, dusty afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "坐在塵土裡的人，會想別的辦法寫稿。",
+          "emotion": "意味深長，收著"
+        }
+      ]
+    },
+    {
+      "id": "times-chamber",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a group of officials in suits and fezzes standing in a cramped stone chamber, one man in a khaki jacket chipping at a sealed doorway with a small chisel, lamp light from below",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "二月中，墓室正式打開。這一次，門後是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "times-chamber-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small chisel and a hammer in a man's hands against a plaster wall, flakes falling, light from a lamp below",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "卡特鑿開第三道門，門後是一面金色的牆。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "times-shrine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a khaki jacket standing in a cramped chamber with his mouth open in awe, facing a huge gilded wall covered in raised patterns that fills the background, lamp light from below",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "還記得開場那個小洞嗎？它後面是堆滿東西的前室，真正的墓室在更裡面。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "times-shrine-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cramped stone chamber almost filled by a huge gilded box, three men in suits pressed against the wall staring at it, lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "這面金牆藏在更裡面：一座包著石棺的鍍金神龕，大到幾乎塞滿整個房間。",
+          "emotion": "驚嘆"
+        }
+      ]
+    },
+    {
+      "id": "times-crowd",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd of tourists in 1920s dress pressing against a rope above a stone stairway, a policeman in a tall hat holding them back, bright hazy daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "全世界的報紙都在等墓裡的消息。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "times-crowd-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a 1920s coat talking excitedly to a man at a hotel breakfast table, a newspaper between them, morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "結果呢，其他報紙只能寫墓外面的事：誰進去了，誰吵架了，誰生病了。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "times-mosquito",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small mosquito resting on the back of a man's hand in the shade of a canvas awning, a glass of water beside it on a table, soft diffused light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "三月，帝王谷的一隻蚊子，叮了伯爵的臉。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "bite-shave",
+      "chapter": "三月的一隻蚊子，四月的一張病床",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall thin older gentleman in a dressing gown shaving in front of a small mirror in a hotel room, a straight razor in his hand, wincing, morning light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "被叮本來沒什麼。後來刮鬍子，他把那個包刮破了。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "bite-fever",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same older gentleman lying in a hotel bed with a cold cloth on his forehead, a doctor in a dark suit holding his wrist, shuttered window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "傷口發炎，接著是丹毒、敗血症，再併發肺炎。",
+          "emotion": "一項一項，加快"
+        },
+        {
+          "id": "t038",
+          "text": "你要記得，那是一九二三年。",
+          "emotion": "對觀眾，放慢"
+        }
+      ]
+    },
+    {
+      "id": "bite-daughter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a cloche hat sitting at a bedside holding a letter, eyes lowered, soft light from a shuttered window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "女兒伊芙琳守在床邊。還來得及嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bite-death",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet 1920s hotel corridor with a tall window at the end, a nurse walking away carrying a basin, pale early light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "四月五日，卡納文伯爵在開羅過世。",
+          "emotion": "收乾，不煽情"
+        },
+        {
+          "id": "t041",
+          "text": "從看到那面金牆算起，不到七個禮拜。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "bite-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hotel receptionist in a fez standing in a dark lobby holding a candle, looking up at a dead chandelier, faint light from the candle only",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "流傳的版本裡，這一刻開羅全城停電，他在英國的狗同一時間嚎叫倒地。",
+          "emotion": "轉述傳聞"
+        }
+      ]
+    },
+    {
+      "id": "bite-legend-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small dog lying on a rug in a grand English hall, head on its paws, a long window with grey light behind",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "這兩件事都只有「據說」。而開羅那時候，本來就三天兩頭停電。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "bite-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in his thirties reading a newspaper at a kitchen table, one hand over his mouth in surprise, morning light through a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "可是你想想：一個剛打開法老墓的人，幾個月後就死了。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "bite-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a press worker in an apron pulling a lever on a large printing press, printed sheets sliding out, warm light from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "這個故事，哪家報社會放過？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bite-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stack of newspapers on a doorstep, the top one folded to a blank headline, a cat sniffing the corner, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "更何況，有人早在他死前兩個禮拜，就寫好了一封信。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "curse-corelli",
+      "chapter": "一封小說家的信，一位偵探作家的回答",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a lace collar and pearls writing at an ornate desk, a quill pen poised, a stern expression, soft window light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "寫信的人叫柯雷莉，曾經是英國最暢銷的小說家之一。"
+        }
+      ]
+    },
+    {
+      "id": "curse-corelli-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an envelope being sealed with a thumb on a desk, a quill laid beside it, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "三月二十四日，她投書報社。"
+        }
+      ]
+    },
+    {
+      "id": "curse-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old leather-bound book lying open on a desk, a woman's hand resting on a blank page, a candle beside it, warm light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "她說她手上有一本古書，寫著法老的墓裡藏了「裝在盒子裡的毒藥」。",
+          "emotion": "神祕"
+        }
+      ]
+    },
+    {
+      "id": "curse-book-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small carved wooden box on a dark table with its lid slightly open, a woman's hand pulling back, candle light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "闖進國王安息之地的人，是在冒險。先記住這些毒藥盒，等一下它們會回來。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "curse-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy 1920s newsroom with rows of desks and typewriters, one editor standing and waving a sheet of paper, overhead lamps",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "伯爵一死，這封信被翻出來大登特登。"
+        }
+      ]
+    },
+    {
+      "id": "curse-paper-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a newspaper boy's bundle of fresh papers tied with string on a wet pavement, dawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "那些坐在塵土裡的記者，終於有東西可以寫了。",
+          "emotion": "回呼，帶一點諷刺"
+        }
+      ]
+    },
+    {
+      "id": "curse-doyle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout older gentleman with a large moustache in a three-piece suit seated in a leather armchair holding a teacup, one eyebrow raised, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "四月六日，報紙登出福爾摩斯的作者柯南·道爾的說法。"
+        }
+      ]
+    },
+    {
+      "id": "curse-doyle-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reporter's notebook in a train station, a hand writing fast, a steam cloud behind, soft glass-roof light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "他說，可能是一個邪惡的「元素靈」害死了伯爵。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "curse-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in a 1920s cloche hat reading a newspaper on a tram, mouth slightly open, light from the tram window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "你想，連寫出福爾摩斯的人都這樣講，讀者還會懷疑嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "curse-canary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a yellow canary in a small brass cage hanging in a tent doorway, a man in a khaki jacket looking at it with a half smile, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "接著是那隻金絲雀。"
+        },
+        {
+          "id": "t057",
+          "text": "故事說，卡特帶了一隻金絲雀到帝王谷，",
+          "emotion": "說故事的語氣"
+        }
+      ]
+    },
+    {
+      "id": "curse-cobra",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cobra with its hood spread coiled at the foot of a tent pole, an empty brass cage above it, dim lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "開墓那天，一條眼鏡蛇鑽進籠子，把牠咬死了。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "curse-cobra-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold cobra ornament on the brow of a carved stone head, dust on it, lamp light from one side",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "你一聽就懂這個故事想說什麼。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "curse-magazine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a waistcoat at a cluttered writing desk typing on a typewriter, a second man in a khaki jacket leaning over his shoulder, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "這個故事的出處，是一篇雜誌文章，署名卡特，",
+          "emotion": "揭曉前停一拍"
+        },
+        {
+          "id": "t061",
+          "text": "和一位小說家合寫。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "curse-nodiary",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open diary on a camp table with a brass compass on top, no writing visible, afternoon light through canvas",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "這個故事，不是出自卡特自己的日記。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "curse-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper boy on a street corner holding up a paper and shouting, a man in a bowler hat reaching for a coin, grey city light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "從這一年起，每一個跟這座墓沾上邊的人過世，報紙都會替他算一筆。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "curse-count-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a bowler hat marking tally strokes in a newspaper margin with a pencil, tongue between his teeth, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "第幾個了？",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "list-evelynwhite",
+      "chapter": "一九三〇年，報紙數到了「第九個」",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young scholar in round glasses sitting alone on a bench in a grey English park, a closed book on his knee, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "接著被算進去的，有一位一九二四年在英國自殺的學者。"
+        }
+      ]
+    },
+    {
+      "id": "list-evelynwhite-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded letter on a park bench, a pair of round glasses laid on top, grey overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "他的死，很可能跟一位好友剛過世有關。但報紙不管這些。",
+          "emotion": "沉"
+        }
+      ]
+    },
+    {
+      "id": "list-mace",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin man in a tweed jacket coughing into a handkerchief on a bench outside a brick cottage, a folded map on his knee, grey English daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "四年後，卡特的同事梅斯過世。但這還不是報紙最想要的那一個。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "list-mace-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded map and a small brush on a windowsill, rain on the glass outside, grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "他早就因為身體不好離開了埃及。報紙照樣把他算一個。"
+        }
+      ]
+    },
+    {
+      "id": "list-bethell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a bow tie carrying a wooden crate through a museum storeroom, shelves of pottery behind him, soft skylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "一九二九年，卡特的助手貝瑟爾在倫敦過世，四十六歲。"
+        }
+      ]
+    },
+    {
+      "id": "list-bethell-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern elderly man in a top hat standing alone at a cemetery gate in the rain, holding an umbrella, grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "這一次，被算進去的不只他。還有誰？",
+          "emotion": "收著，問句"
+        }
+      ]
+    },
+    {
+      "id": "list-westbury",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall London townhouse at dawn, an elderly man in a dressing gown standing at an open seventh-floor window, the street empty below, pale blue light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "三個月後，貝瑟爾的父親威斯特伯里勳爵，從住處七樓的窗口跳了下去。",
+          "emotion": "沉"
+        }
+      ]
+    },
+    {
+      "id": "list-westbury-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a housemaid in a 1930s uniform standing beside a bedside table holding a folded note, head bowed, pale dawn light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "遺書寫著：我再也受不了更多恐怖的事。報紙會怎麼寫？",
+          "emotion": "放慢，問句"
+        }
+      ]
+    },
+    {
+      "id": "list-ninth",
+      "template": "big",
+      "data": {
+        "text": "第 9 個",
+        "kicker": "1930 年 2 月 28 日，一份美國報紙",
+        "sub": "「死亡將乘著翅膀，迅速降臨…」"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "還記得開場報紙數的那九條人命嗎？二月二十八日，一份美國報紙報導這件事，文中寫：這是第九個。",
+          "emotion": "回呼，數字放慢"
+        },
+        {
+          "id": "t074",
+          "text": "開場那句據說刻在墓裡的話，也印在這篇報導裡。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "list-inscription",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archaeologist in round glasses holding a lamp close to a bare stone wall, running one finger along it with a frown, warm light from the lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "「死亡將乘著翅膀，迅速降臨打擾法老安寧的人。」",
+          "emotion": "低沉，像唸碑文"
+        }
+      ]
+    },
+    {
+      "id": "list-inscription-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a magnifying glass held over a blank carved stone surface, an archaeologist's eye enlarged behind the lens, warm lamp light from one side",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "問題是，墓裡從來沒有找到這句話。",
+          "emotion": "問題來了"
+        }
+      ]
+    },
+    {
+      "id": "list-ritner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archaeologist in round glasses crouching with a lamp in a painted tomb chamber, running a finger along the wall, mild warm light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "埃及學家翻遍了墓裡的每一面牆、每一件東西，沒有任何一句詛咒。那它從哪裡來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "list-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1930 newspaper page on a table with a blank headline block, a cup of tea beside it, morning light through a window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "能查到最早出現的地方，就是這份報紙。",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "t079",
+          "text": "在墓打開七年之後。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "list-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a desk at home with a calculator and a notepad, scratching his head, lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "你可能會想：就算詛咒是編的，死九個人總是真的吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "list-winlock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum curator in a bow tie at a desk writing numbers on a sheet, a small statue beside him, soft daylight from a tall window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "一九三四年，一位博物館館長也這樣想，他算了一遍：",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "list-winlock-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum curator in a bow tie holding up one hand with fingers spread as he counts, a small statue on the desk, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "開墓時在場的二十幾個人，十二年間死了六個。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "list-six",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sheet of paper with six pencil tally marks beside a row of blank name lines, a fountain pen at the edge, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "六個，多不多？這要跟誰比？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t084",
+          "text": "這個問題，要再等六十八年才有人認真回答。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "long-carter",
+      "chapter": "最該被詛咒的人，活到了六十四歲",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly man with a grey moustache in a cardigan sitting in an armchair in a London flat, a cat on his lap, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "在那之前，有一個人的壽命，報紙一直假裝沒看到。",
+          "emotion": "意味深長"
+        }
+      ]
+    },
+    {
+      "id": "long-carter-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet London street of brick terraces at dusk, one elderly man in a cardigan and hat walking slowly with a cane, soft blue light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "卡特，第一個把頭伸進洞裡的人，之後還在墓裡工作了好多年。"
+        }
+      ]
+    },
+    {
+      "id": "long-carter2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a housekeeper in a dark dress and apron laying a single white flower on a London doorstep, head bowed, grey morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "他一九三九年在倫敦過世，六十四歲，淋巴瘤。"
+        }
+      ]
+    },
+    {
+      "id": "long-carter2-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small group of mourners in dark coats standing at a cemetery path under bare trees, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "從打開墓室算起，又活了十六年。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "long-derry",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a doctor in a white coat bending over a long wooden table under a hanging lamp, holding a magnifying glass, a tray of instruments beside him",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "那位在一九二五年把法老的木乃伊一層一層拆開檢查的解剖學家德里呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "long-derry-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a linen-wrapped shape on a long wooden table under a hanging lamp, a gloved hand lifting one strip of cloth with tweezers, warm light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "活到一九六一年，八十六歲。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "long-evelyn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a wool coat and headscarf walking a small dog along a garden path, smiling slightly, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "那位跟著父親第一批進墓的女兒伊芙琳呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t092",
+          "text": "她活到一九八〇年，七十八歲。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "long-years",
+      "template": "stats",
+      "data": {
+        "title": "進得最深的幾個人",
+        "stats": [
+          {
+            "value": "64",
+            "label": "卡特，1939"
+          },
+          {
+            "value": "86",
+            "label": "德里，1961"
+          },
+          {
+            "value": "84",
+            "label": "加德納，1963"
+          },
+          {
+            "value": "78",
+            "label": "伊芙琳，1980"
+          }
+        ],
+        "source": "Griffith Institute 人物頁；伊芙琳：Wikipedia；查核 2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "你看，在墓裡待最久、碰最多東西的人，一個一個都活到了老。",
+          "emotion": "對觀眾，輕鬆"
+        },
+        {
+          "id": "t094",
+          "text": "可是這幾個人，還是我們挑出來的。",
+          "emotion": "轉折，收著"
+        }
+      ]
+    },
+    {
+      "id": "long-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a doctor's hand sliding a long printed list onto a desk under a lamp, a pencil beside it, late afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "要讓詛咒無處可躲，得把當年每一個人都排進同一張表。"
+        }
+      ]
+    },
+    {
+      "id": "study-nelson",
+      "chapter": "二〇〇二年，四十四個名字排成一張表",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged doctor in a cardigan at a desk at night with a computer screen and a stack of old books, typing with two fingers, lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "二〇〇二年，澳洲一位醫師尼爾森，真的這麼做了。"
+        }
+      ]
+    },
+    {
+      "id": "study-nelson-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same doctor in a cardigan holding up an old cloth-bound book and squinting at its spine, a desk lamp behind him, night",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "他用的不是報紙的名單，是卡特自己留下的名單。",
+          "emotion": "強調"
+        }
+      ]
+    },
+    {
+      "id": "study-list",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged doctor in a cardigan pinning small blank cards onto a corkboard in two separate groups, grey daylight from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "還記得開場那四十四個人嗎？那是卡特記下的、開墓那幾年在埃及的西方人。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "study-list-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same doctor in a cardigan sorting index cards into two piles on a desk, tongue between his teeth in concentration, grey daylight from a window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "其中二十五個，進過墓室、開過石棺，或者在場看過木乃伊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "study-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same doctor holding up two sheets of paper side by side, squinting from one to the other, daylight from a window behind him",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "另外十九個，人在埃及，但沒進去。"
+        },
+        {
+          "id": "t101",
+          "text": "兩組人放在一起比：誰死得早？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "study-age",
+      "template": "compare",
+      "data": {
+        "title": "平均死亡年齡",
+        "left": {
+          "heading": "進過墓的 25 人",
+          "points": [
+            "平均 70 歲",
+            "暴露後再活 20.8 年"
+          ]
+        },
+        "right": {
+          "heading": "沒進墓的（19 人，11 人有資料）",
+          "points": [
+            "平均 75 歲",
+            "再活 28.9 年"
+          ]
+        },
+        "verdict": "統計上沒有差別",
+        "source": "Nelson, BMJ 2002;325:1482"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "進過墓的那一組，平均活到七十歲。沒進墓的，七十五歲。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "t103",
+          "text": "看起來差五歲？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "study-noise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the doctor leaning back in his chair with hands behind his head, looking at the ceiling, a half smile, morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "但人數太少、每個人落差太大，統計上等於沒差。"
+        }
+      ]
+    },
+    {
+      "id": "study-noise-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glass jar of mixed coloured marbles on a desk, a hand reaching in with eyes closed, morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "論文裡那個數字叫 P 值，零點八七。意思是：這種差距，閉著眼睛抽也抽得到。",
+          "emotion": "像解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "study-women",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a 1950s dress knitting in an armchair by a window, a cat asleep on the rug, soft indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "那名單上到底什麼東西真的影響壽命？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "study-women-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a 1950s dress laughing at a kitchen table while a younger man across from her counts on his fingers, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "不是墓，是性別。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "study-women-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a 1950s dress laughing at a kitchen table while a younger man across from her counts on his fingers, soft indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "名單上的女人比男人多活十七年。而進過墓的那一組裡，二十四個是男的。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "study-conclusion",
+      "template": "big",
+      "data": {
+        "text": "沒有證據",
+        "kicker": "《英國醫學期刊》2002 年 12 月 21 日",
+        "sub": "進過墓與壽命之間，沒有顯著關聯"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "論文的最後一句話：沒有證據支持木乃伊詛咒的存在。",
+          "emotion": "放慢，落地"
+        },
+        {
+          "id": "t110",
+          "text": "這份研究登在十二月二十一日、聖誕節的那一期。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "study-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a kitchen table pointing at a phone screen and laughing with a friend across the table, warm evening light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "所以下次有人跟你說法老詛咒，你可以問他：",
+          "emotion": "對觀眾，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "study-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman holding up one finger and grinning across a kitchen table, a phone face-down beside her, warm evening light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "讓人活到老的詛咒，算哪門子詛咒？",
+          "emotion": "問句，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "mould-letter",
+      "chapter": "二〇〇三年，有人說兇手是黴菌",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a doctor in a white coat reading a thin medical journal by a window, one eyebrow raised, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "等一下，你可能聽過另一個版本：墓裡有黴菌，伯爵是吸了孢子才死的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "mould-letter-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old leather-bound book and a modern petri dish side by side on a desk, a doctor's hand between them, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "還記得柯雷莉那本古書裡的毒藥盒嗎？這是它的現代版。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "mould-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a petri dish with a fuzzy grey-green colony on a laboratory bench, a gloved hand holding it up to the light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "這個說法最正式的出處，是二〇〇三年《刺胳針》上的一封讀者來信。"
+        }
+      ]
+    },
+    {
+      "id": "mould-source-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two doctors in white coats bent over a yellowed newspaper on a desk, one tapping a paragraph with a pen, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "兩位醫師看了當年報紙上「臉部疼痛」的描述，推測是麴菌感染。證據呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "mould-reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman scientist in a lab coat writing a letter at a desk, shaking her head slightly, lab shelves behind her",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "同一本期刊，馬上有人回信反駁。"
+        },
+        {
+          "id": "t118",
+          "text": "而這個說法，到今天都還只是推測。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "mould-others",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the moustached archaeologist in a khaki jacket kneeling in a dusty chamber brushing an object, sweat on his brow, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "更何況，還記得在墓裡吸了最多灰塵的卡特活了多久嗎？",
+          "emotion": "回呼，問句"
+        }
+      ]
+    },
+    {
+      "id": "mould-others-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cobra-shaped gold ornament on a dusty shelf, a man's sleeve brushing past it, lamp light from below",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "黴菌要詛咒人，也該先挑他。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "close-museum",
+      "chapter": "二〇二五年，五千三百件東西排隊給人看",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a vast modern museum hall with a glass wall and a huge stone statue, a small crowd of visitors looking up, bright even daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "推測歸推測，有一件事是確定的：一百年後，大家還是搶著要進去看。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "close-museum-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a father lifting a small child to see a gold mask behind thick glass in a bright museum hall, both wide-eyed, even daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "二〇二五年十一月一日，開羅郊外的大埃及博物館正式開幕。"
+        }
+      ]
+    },
+    {
+      "id": "close-museum-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long queue of visitors' shoes on a polished museum floor, one child's sneakers at the front, bright even daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "這座墓裡五千三百多件東西，都在那裡展出。進去看的人，會被詛咒嗎？",
+          "emotion": "問句，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "close-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the moustached archaeologist in a khaki jacket standing at the top of the stone stairway at dusk, hat in hand, looking back down, soft blue light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "回到開場的問題：進過這座墓的人，活得比別人短嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "close-answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a doctor's hand drawing two short vertical bars of different heights on a blank notepad with a pencil, late afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "還記得那張表嗎？進過墓的那一組，平均七十；沒進去的，多五歲；統計上，沒有差別。",
+          "emotion": "答案，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a manila folder on a desk being closed by a man's hand, a rubber stamp beside it, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "這份檔案，存檔。詛咒在報紙裡，不在墓裡。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "進過墓的 25 人，平均活到 70 歲",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "你第一次聽到法老的詛咒，是哪一部電影？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t128",
+          "text": "這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t073",
+      "what": "報紙數的九條人命"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t078",
+      "what": "那句詛咒第一次印在報紙上"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t096",
+      "what": "一位醫師算 44 個人的壽命"
+    },
+    {
+      "setup": "t021",
+      "payoff": "t031",
+      "what": "洞裡到底有什麼"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t051",
+      "what": "坐在塵土裡的記者會想別的辦法寫稿"
+    },
+    {
+      "setup": "t046",
+      "payoff": "t047",
+      "what": "死前兩個禮拜就有人寫了一封信"
+    },
+    {
+      "setup": "t049",
+      "payoff": "t113",
+      "what": "古書裡的毒藥盒"
+    },
+    {
+      "setup": "t063",
+      "payoff": "t073",
+      "what": "第幾個了"
+    },
+    {
+      "setup": "t075",
+      "payoff": "t078",
+      "what": "墓裡找不到那句詛咒，它從哪來"
+    },
+    {
+      "setup": "t084",
+      "payoff": "t096",
+      "what": "六個多不多，要跟誰比"
+    },
+    {
+      "setup": "t094",
+      "payoff": "t098",
+      "what": "這幾個人還是挑出來的"
+    },
+    {
+      "setup": "t103",
+      "payoff": "t104",
+      "what": "差五歲算不算差"
+    },
+    {
+      "setup": "t069",
+      "payoff": "t071",
+      "what": "連他父親都被算進去"
+    }
+  ],
+  "youtube": {
+    "title": "報紙說圖坦卡門的詛咒殺了 9 個人？醫師算完 44 個人的答案｜奇聞檔案局",
+    "description": "一九二二年十一月二十六日下午，帝王谷。卡特從牆上的小洞往裡看，卡納文伯爵問：看得到什麼嗎？四個多月後，問那句話的人死了。\n\n這一集從卡特的日誌講起：台階底下的封泥、《泰晤士報》一月簽下的獨家、二月中打開的墓室、三月那隻蚊子與四月五日的病床；然後是詛咒怎麼被寫出來的——小說家柯雷莉三月二十四日那封信、柯南·道爾說的「元素靈」、那隻金絲雀其實出自一篇和小說家合寫的雜誌文章，以及一九三〇年報紙上最早能查到的「死亡將乘著翅膀」。最後是二〇〇二年《英國醫學期刊》那份研究：卡特名單上的四十四個西方人，進過墓的二十五個平均活到七十歲，沒進的七十五歲，統計上沒有差別。\n\n流傳的版本一律標明是流傳的版本；查不到出處的（開羅停電、狗的嚎叫、墓裡的銘文）照實說查不到。每個數字、日期與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；過世未滿七十年的人物不入畫。\n\n資料截至 2026-10-25",
+    "tags": [
+      "圖坦卡門",
+      "法老的詛咒",
+      "木乃伊詛咒",
+      "卡特",
+      "卡納文",
+      "帝王谷",
+      "歷史懸案",
+      "英國醫學期刊",
+      "奇聞檔案局",
+      "Tutankhamun"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "詛咒\n**沒證據**",
+      "tag": "歷史懸案",
+      "sub": "進過墓的 25 人，活到 70",
+      "shot": "open-candle"
+    }
+  },
+  "sources": [
+    {
+      "title": "Griffith Institute：Howard Carter 日記 1922 年 11 月（Tutankhamun Archive I.2.21）",
+      "url": "https://archive.griffith.ox.ac.uk/index.php/tutankhamun-archive-i-2-21",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Tutankhamun: Anatomy of an Excavation — Lord Carnarvon",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/lord-carnarvon",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Howard Carter",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/howard-carter",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Douglas E. Derry",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/douglas-e-derry",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Arthur C. Mace",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/arthur-c-mace",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Richard Bethell",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/richard-bethell",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Harry Burton",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/harry-burton",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Alfred Lucas",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/alfred-lucas",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Griffith Institute：Sir Alan H. Gardiner",
+      "url": "https://tutankhamun.griffith.ox.ac.uk/people/sir-alan-h-gardiner",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Nelson MR. The mummy's curse: historical cohort study. BMJ 2002;325:1482（PMC 全文）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC139048",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "BMJ 2002;325:1482 論文頁",
+      "url": "https://www.bmj.com/content/325/7378/1482",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "University of Manchester：90th anniversary of the curse of Tutankhamen — how a modern myth was born（Tyldesley）",
+      "url": "https://www.manchester.ac.uk/about/news/90th-anniversary-of-the-curse-of-tutankhamen--how-a-modern-myth-was-born/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "The Arthur Conan Doyle Encyclopedia：An Evil Elemental（Glasgow Herald 1923-04-06）",
+      "url": "https://www.arthur-conan-doyle.com/wiki/An_Evil_Elemental",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "University of Birmingham：Howard Carter and the curse of Tutankhamun（金絲雀文章的出處）",
+      "url": "https://www.birmingham.ac.uk/news/2023/howard-carter-and-the-curse-of-tutankhamun",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Camden Chronicle 1930-02-28 第 5 版（「the ninth」與 swift wings）",
+      "url": "https://historicnewspapers.sc.edu/lccn/sn86063785/1930-02-28/ed-1/seq-5/ocr/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "University of Leeds Special Collections：Hugh Evelyn-White papers",
+      "url": "https://library.leeds.ac.uk/special-collections/collection/1482",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Museum of Hoaxes：King Tut's Curse（溫洛克 1934 年的統計、開羅停電）",
+      "url": "https://hoaxes.org/archive/permalink/king_tuts_curse",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Aspergillus Website：Lord Carnarvon's death: the curse of aspergillosis?（Lancet 2003 讀者來信）",
+      "url": "https://www.aspergillus.org.uk/article_database/lord-carnarvons-death-the-curse-of-aspergillosis/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Penn Engineering：Penn engineers turn toxic fungus into anti-cancer drug（2025）",
+      "url": "https://blog.seas.upenn.edu/penn-engineers-turn-toxic-fungus-into-anti-cancer-drug/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "NBC News：Grand Egyptian Museum opens（2025-11-01）",
+      "url": "https://www.nbcnews.com/world/africa/egypt-ancient-pharaoh-tutankhamun-grand-museum-giza-pyramids-rcna240005",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Wikipedia（索引）：Discovery of the tomb of Tutankhamun",
+      "url": "https://en.wikipedia.org/wiki/Discovery_of_the_tomb_of_Tutankhamun",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": []
+}
