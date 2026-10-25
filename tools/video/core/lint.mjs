@@ -279,7 +279,10 @@ function seriesProblems(doc, series, error, warn) {
     for (const key of ["appearance", "sheet_prompt"]) {
       if ((character[key] ?? null) !== (known[key] ?? null)) error(`characters[${index}].${key}`, "differs from the series' setting book; copy it as written so the character sheets are reused");
     }
-    if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
+    // A voice the book names is copied as written; a character the book leaves without one (a
+    // voice_note alone) is cast by the worker (automation/series.mjs castVoices), and that pick is
+    // video.json's to carry; the drama schema still wants one on every character.
+    if (known.voice !== undefined && known.voice !== null && JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
     if (JSON.stringify(character.shot_looks ?? []) !== JSON.stringify(known.shot_looks ?? [])) error(`characters[${index}].shot_looks`, "differs from the series' approved look catalog; copy it as written");
   });
   // A binge series (docs/videos/BINGE.md) buys clips by tier: the worker copies the series'
