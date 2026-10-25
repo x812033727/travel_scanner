@@ -8,12 +8,14 @@ C03企劃與劇本已核准並匯入。正式TTS曾執行，但在供應商派�
 | --- | --- | --- |
 | [C03 Moleskine](c03/README.md) | 來源PASS、原生兩讀者合併PASS | 企劃／劇本核准已匯入；1144句TEXT_PASS |
 | [C04 泡泡紙](c04/README.md) | 來源PASS、原生合併PASS | 劇本核准、企劃pending；880句TEXT_PASS |
-| [C05 金鳥](c05/README.md) | 核准基底保留；材料旅程R9待來源差分；原生合併HOLD時間線 | 基底776句TEXT_PASS，排除未採用候選 |
+| [C05 金鳥](c05/README.md) | 核准基底保留；材料旅程R11已凍結待新審核；[R10來源PASS、敘事HOLD](c05/candidates/length-extension/history/r10/) | 基底776句TEXT_PASS，排除未採用候選 |
 | [C06 Play-Doh](c06/README.md) | R3來源PASS、原生合併PASS | 新企劃／劇本pending；1304句TEXT_PASS；[分類及正式八語設定待管理權限](c06/protected-admin-settings.json) |
-| [C07 Dr. Martens](c07/script.md) | R3修窄來源並刪物流支線，待新審核 | 未送新卡、未翻譯 |
-| [C08 龜甲萬](c08/script.md) | R4待來源差分；原生合併仍HOLD重述 | 未送新卡、未翻譯；正文容量風險保留 |
+| [C07 Dr. Martens](c07/script.md) | R4修窄來源並刪物流支線，正文偏短，補查新材料 | 未送新卡、未翻譯 |
+| [C08 龜甲萬](c08/history/r5/script.md) | R6加入有來源的新事件；R5來源PASS、敘事HOLD | 未送新卡、未翻譯；正文容量風險保留 |
 | [C09 Patagonia](c09/README.md) | R7來源PASS、兩位全新讀者合併PASS，已採用 | **新的企劃／劇本均pending**；新版824句TEXT_PASS |
-| [C10 OXO](c10/history/r1/script.md) | R1來源／書面配鏡PASS；原生合併HOLD開場及重述 | 未送新卡、未翻譯 |
+| [C10 OXO](c10/history/r3/script.md) | R4修稿中；R3來源PASS、敘事只共享重述HOLD | 未送新卡、未翻譯 |
+
+C11 UCC及C14 CamelBak正在原始來源研究，尚無新稿或來源PASS。
 
 C03／C04／C05基底／C06／C09當前稿共 **4928句八語文字**已完成獨立校對及官方合併；數字排除候選和草稿。這些是未定時文字，沒有SRT、配音、語言輪、媒體QA或上傳資格。各集原始答案、必修、精確修正及獨立重查均保存。兩讀者依原生規則合併：必要項只有兩位皆答no才失敗；單人保留意見不刪、不改成一致同意。
 
@@ -21,7 +23,7 @@ C09當前video SHA `aed95981…`、官方劇本SHA `02f091ca…`，新劇本revi
 
 原始[盤點](batch.json)為22筆品牌故事、19筆未上YouTube、18個題目。龜甲萬原版與short-v8為同題，均保留；[53份舊來源雜湊](original-preservation.json)全數未變。當前已有五題來源及敘事合併PASS，其餘13題含正在寫稿／審核的C07、C08、C10，詳見[接續順序](execution-order.json)。不為集數缺號新增題目，非C系列仍保留在原佇列。
 
-製作規格依[10/25決定](../channel-review-20261025-story-series/README.md)、[品牌故事流程](../../../.agents/skills/brand-story/SKILL.md)與[PR1844](https://github.com/x812033727/travel_scanner/pull/1844)：目標13分鐘，**實聲正文須720–840秒**；開場具觀眾利害、有來源數字及具體場景；每章對觀眾說話、有旁白反應；30–45秒實質鉤子、至少8組有實際新答案的回收。字數、估計時間線和dry-run均不算時長通過；偏短稿不得靠慢播、停頓或警語填長。
+製作規格依[10/25決定](../channel-review-20261025-story-series/README.md)、[品牌故事流程](../../../.agents/skills/brand-story/SKILL.md)與[PR1844](https://github.com/x812033727/travel_scanner/pull/1844)：目標13分鐘，**實聲正文須720–840秒**；開場具觀眾利害、有來源數字及具體場景；每章對觀眾說話、有旁白反應；30–45秒實質鉤子、至少8組有實際新答案的回收。[原生計時口徑](duration-measurement-scope.json)包含冷開場及有聲CTA，只排額外片頭片尾；排開場／strict字數只是規劃分項。字數、估計時間線和dry-run均不算時長通過；偏短稿不得靠慢播、停頓或警語填長。
 
 插畫用image-01與唯一look `{"preset":"cute-mystery"}`，正文至少70%內容相關插畫、最多連續3張必要字卡；英語匿名概念prompt不得有品牌／真人名、logo或可讀文字。台灣說書旁白、繁中燒錄及CC、濃縮開場後5秒正式片頭、21秒正式v4片尾；layout d縮圖採黃字黑邊主標與白副標。書面配鏡PASS不等於生成圖驗收。
 

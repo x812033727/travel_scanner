@@ -1,23 +1,32 @@
 {
-  "scope": "author read-only native lint in actual initialized canonical context; not verify or independent approval",
+  "scope": "R4 author native lint in existing normally initialized canonical context; candidate substituted in memory only; not verify or independent approval",
   "input_sha256": {
-    "video.json": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
-    "script.md": "4be3167ad1af4deed03280ab6806d80e31dbb39fe574ee32ceb78d44c2a7b7c9",
-    "narration-only.json": "195731d668c75ce6d2cf27cc8bb954b340c87e9faaee20c1ba548fbd8d436f37",
-    "claims.json": "9ca2ab7682cb5a929eee11ddccdfbfa07705802a696bbea8f8831c6a54aa3aa9",
-    "claims.md": "3646d5315c9a4f9e212f35e280fef2d0be113bdb284dd28b91f411648f9d7501",
-    "brief.md": "7c70bc3b35f4318bc732113fd5a7250e10bb0894c968369717c41e7d486174e7",
-    "series.json": "f66c66aaa3a807f6e79c64bff36310d1bd46ab098d47ca4f55e599cbd083ab1d",
-    "build-candidate.py": "1fb3602f46c6d998adb6b6d22bc574a1f4ef679d08814d86fab8b4a8868681cb"
+    "video.json": "6c54f169c32f41e85931367d7b94b2257bc2c3afbb5a951e685e46005ae8e74f",
+    "script.md": "fccf5cf07db47621ff70ffd83d0bf84586fad854f9e2acd854db84109a9025c7",
+    "narration-only.json": "b5922c7d0fb66dfe47821c4802d555ab2be0a8375927ac0c7ab4aef4e6a0e1a7",
+    "claims.json": "23d362f2fbea5cd9615ceba68464bb16feaee5f8fe6cc45a0d0060e0f6f1b39b",
+    "claims.md": "a1d121d4fc1901332f4835535f4f9dfa3078a53956fc9c15b7ab99d895d0734f",
+    "brief.md": "ac476c313a3882a7c49a0f4d978d841aab58ceb3a8051e71640c46f8e3d92974",
+    "series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+    "build-candidate.py": "9e76b94a4394d2f00d9b61c03b73951197f12e78165911e9e794734ecf475ab2",
+    "author-data-r4.json": "1babc3c1af9bb017090e10a606f6246ab786d09d595a1a2772f3d989cbee3a3f"
   },
   "context_binding": {
     "root": "/workspace/work/brand-story-20261025/c07-submission-root",
     "slug": "story-everyday-dr-martens-c07-remake-20261025",
     "canonical_file": "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/video.json",
-    "canonical_sha256": "d229d4cd77d92c9906bf921423baa474db433472efe307ae58c6668cb1a75b0c",
+    "canonical_sha256": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
     "initialized_terms": 314,
     "lexicon_sha256": "f2b0c5ea5ad9a2fe57f1f94a2ee408cad204846bec3ead9fa9384ab993fb8fc7",
     "shelf_lexicon_sha256": "f2b0c5ea5ad9a2fe57f1f94a2ee408cad204846bec3ead9fa9384ab993fb8fc7",
+    "story_lexicon_mode": "snapshot",
+    "story_lexicon_raw_sha256": "e8990680a85d2020b40fbdee7a2554793623ab465019f2f43a6881355fa6e87d",
+    "story_lexicon_event_sha256": "07ee31b7c9e9c80ca6ef3dea7b46ff5b56e76ca32ad672a1c249ed597e9dc582",
+    "immutable_file_sha256": {
+      "story-lexicon/current.json": "3b6d8f6a2dab3ba4ac3166c6e9b9ce7747da01cfafdf3d9ec879cb43e1989add",
+      "story-lexicon/versions/e8990680a85d2020b40fbdee7a2554793623ab465019f2f43a6881355fa6e87d.json": "e8990680a85d2020b40fbdee7a2554793623ab465019f2f43a6881355fa6e87d",
+      "story-lexicon/events/07ee31b7c9e9c80ca6ef3dea7b46ff5b56e76ca32ad672a1c249ed597e9dc582.json": "07ee31b7c9e9c80ca6ef3dea7b46ff5b56e76ca32ad672a1c249ed597e9dc582"
+    },
     "preserved_fields": [
       "lexicon",
       "shelfLexicon",
@@ -28,28 +37,30 @@
       "dir"
     ]
   },
+  "immutable_dictionary_unchanged": true,
+  "canonical_bytes_unchanged": true,
   "voice_exact_native_story_style": true,
   "native_units": {
-    "total": 2903,
-    "opening": 151,
-    "body_after_opening": 2752,
-    "closing_card": 98,
-    "body_excluding_opening_and_closing": 2654,
+    "total": 2668,
+    "opening": 142,
+    "body_after_opening": 2526,
+    "closing_card": 96,
+    "body_excluding_opening_and_closing": 2430,
     "chapters": [
       {
         "name": "刀伸進了舊靴的鞋邊",
         "lines": 6,
-        "spoken_units": 151
+        "spoken_units": 142
       },
       {
-        "name": "鞋邊先替它找到修理方式",
-        "lines": 24,
-        "spoken_units": 591
+        "name": "選好的靴子裝進了鞋盒",
+        "lines": 21,
+        "spoken_units": 511
       },
       {
         "name": "舊底拆走，新線繞上鞋面",
-        "lines": 22,
-        "spoken_units": 583
+        "lines": 20,
+        "spoken_units": 530
       },
       {
         "name": "熱刀把新底接了回來",
@@ -63,14 +74,14 @@
       },
       {
         "name": "紙箱把這一雙送回去",
-        "lines": 22,
-        "spoken_units": 576
+        "lines": 18,
+        "spoken_units": 483
       }
     ]
   },
   "native_estimate": {
     "default_cpm": 250,
-    "minutes": 13.493333333333334,
+    "minutes": 12.401666666666667,
     "not_actual_audio": true
   },
   "scene_estimates": [
@@ -83,8 +94,8 @@
       "seconds": 7.266666666666667
     },
     {
-      "id": "c07r2-01-03",
-      "seconds": 7.5
+      "id": "c07r4-01-07",
+      "seconds": 6.3
     },
     {
       "id": "c07r2-01-04",
@@ -92,19 +103,11 @@
     },
     {
       "id": "c07r2-01-05",
-      "seconds": 7.733333333333333
+      "seconds": 6.766666666666667
     },
     {
       "id": "c07r2-01-06",
       "seconds": 6.066666666666666
-    },
-    {
-      "id": "c07r2-02-01",
-      "seconds": 7.5
-    },
-    {
-      "id": "c07r2-02-02",
-      "seconds": 5.566666666666666
     },
     {
       "id": "c07r2-02-03",
@@ -143,16 +146,8 @@
       "seconds": 7.733333333333333
     },
     {
-      "id": "c07r2-02-13",
-      "seconds": 7.966666666666667
-    },
-    {
       "id": "c07r2-02-14",
       "seconds": 7.266666666666667
-    },
-    {
-      "id": "c07r2-02-15",
-      "seconds": 8.7
     },
     {
       "id": "c07r2-02-16",
@@ -177,6 +172,10 @@
     {
       "id": "c07r2-02-21",
       "seconds": 8.2
+    },
+    {
+      "id": "c07r2-01-03",
+      "seconds": 7.5
     },
     {
       "id": "c07r2-02-31",
@@ -251,10 +250,6 @@
       "seconds": 7.733333333333333
     },
     {
-      "id": "c07r2-03-15",
-      "seconds": 8.2
-    },
-    {
       "id": "c07r2-03-16",
       "seconds": 4.866666666666666
     },
@@ -273,10 +268,6 @@
     {
       "id": "c07r2-03-20",
       "seconds": 7.966666666666667
-    },
-    {
-      "id": "c07r2-03-21",
-      "seconds": 6.533333333333333
     },
     {
       "id": "c07r2-03-22",
@@ -447,10 +438,6 @@
       "seconds": 7
     },
     {
-      "id": "c07r2-06-04",
-      "seconds": 7.733333333333333
-    },
-    {
       "id": "c07r2-06-05",
       "seconds": 8.2
     },
@@ -499,20 +486,8 @@
       "seconds": 8.7
     },
     {
-      "id": "c07r2-06-17",
-      "seconds": 8.2
-    },
-    {
-      "id": "c07r2-06-18",
-      "seconds": 3.6666666666666665
-    },
-    {
-      "id": "c07r2-06-19",
-      "seconds": 6.3
-    },
-    {
       "id": "c07r2-outro",
-      "seconds": 25.966666666666665
+      "seconds": 25.5
     }
   ],
   "result": {
@@ -520,33 +495,33 @@
     "warnings": [
       {
         "path": "scenes",
-        "message": "\"adult\" is in 109 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"adult\" is in 100 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "\"boot\" is in 58 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"boot\" is in 54 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "\"table\" is in 46 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"table\" is in 43 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
-        "path": "scenes[102] (c07r2-06-13)",
+        "path": "scenes[96] (c07r2-06-13)",
         "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
       }
     ],
     "summary": {
-      "minutes": 13.493333333333334,
-      "lines": 112,
-      "spoken_units": 2903,
-      "billable_characters": 9525,
+      "minutes": 12.401666666666667,
+      "lines": 103,
+      "spoken_units": 2668,
+      "billable_characters": 8754,
       "chapters": [
         "00:00 刀伸進了舊靴的鞋邊",
-        "00:42 鞋邊先替它找到修理方式",
-        "03:28 舊底拆走，新線繞上鞋面",
-        "06:10 熱刀把新底接了回來",
-        "08:14 新鞋底被修整，舊鞋面被擦亮",
-        "10:49 紙箱把這一雙送回去"
+        "00:40 選好的靴子裝進了鞋盒",
+        "03:04 舊底拆走，新線繞上鞋面",
+        "05:31 熱刀把新底接了回來",
+        "07:35 新鞋底被修整，舊鞋面被擦亮",
+        "10:10 紙箱把這一雙送回去"
       ]
     }
   },

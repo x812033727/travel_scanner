@@ -1,36 +1,34 @@
-# C07 r3｜逐句來源、時間段與書面分鏡索引
+# C07 R4｜逐句來源與書面概念配鏡索引
 
-作者映射，全部待新獨立來源／書面配鏡QA及兩位新讀者；不繼承R1判定。
+作者映射，待另一位獨立來源reviewer及兩位新讀者；不繼承R3 PASS。
 
 ## 原件來源
 
-- R2_CUSTOMER_6870：[Like new! — public repair self-report](https://uk.trustpilot.com/reviews/6870ffa65d1e329686a3886f)；attributed_public_first_person_account；raw SHA c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694。
-- T7_repairs_resole：[Resole and Welt - Classic DMS Sole (Per Pair) – Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/resole-and-welt-classic-dms-sole-per-pair)；authorised_service_partner_current_account；raw SHA 96bf02e38a6214615de13b38a3dd6b0c0fa8ffa234286e8787274df44803a8ec。
-- T3_plc_product：[Product - Dr. Martens plc](https://www.drmartensplc.com/sustainability/product/)；corporate_current_technical_account；raw SHA 42cf77198a9d4f84e767d84591fbc15e4e97c3adff134ec44237c271c61bea07。
-- T8_repairs_welted：[WELTED FOOTWEAR REPAIRS | Customise my Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs)；authorised_service_partner_current_account；raw SHA f5a9b5d72bdcd018da2ad179afeb1162ddfee36e1de990c615611c412919f51a。
-- R2_REPAIR_VIDEO：[Authorised partner original repair demonstration](https://drmartensrepairs.com/pages/how-it-works)；authorised_partner_original_demonstration_video；raw SHA f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74。
-- TEACH_T：[Dr. Martens Product teach-in webcast transcript](https://www.drmartensplc.com/application/files/8716/9520/5561/Dr._Martens_plc__Product_teach-in_transcript.pdf)；first_party_named_management_statement；raw SHA e1b2da48e5c699f7c3b8a8d53310ec939f831b9f6e84235362c4df9aff279189。
-- R2_UPPER：[Upper Repair — Welted Footwear — Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/upper-repair)；authorised_service_partner_current_account；raw SHA 2fe41aeeec2a78ca493e6a02bac3e9d45cbe2e215e741571a72dd20e9943e65d。
-- R2_CLEAN：[Cleaning and Conditioning — Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/cleaning-and-conditioning)；authorised_service_partner_current_account；raw SHA 29301046adcd7840a7330b30ce6074b3fae8f5d0e89ddc2c46f5e36aa0d20e57。
-- T5_repairs：[Dr. Martens Repairs | Official repairs of boots, shoes and bags](https://www.drmartens.com/uk/en_gb/boots-shoes-repair-service)；authorised_service_partner_current_account；raw SHA 57c6c6823ed2980891d39de482f2a5399ac4df1d83709db5f1dfd04cef3fc367。
-- AR26：[Dr. Martens plc Annual Report 2026](https://www.drmartensplc.com/application/files/5417/8038/8372/DOCs-AR26-web2.pdf)；issuer_annual_report；raw SHA d4d494022fa39959df66353d0bbf0a03508a0fc9f365fef09f713f70ab74d373。
-- R2_HOW：[How It Works — Dr. Martens Repairs](https://drmartensrepairs.com/pages/how-it-works)；authorised_service_partner_current_account；raw SHA ebfee4953a69c8dae32c6a56aed94a5bb53e37462be52303895e920f5a6f03a2。
-- R2_CUSTOMER_677e：[Brilliant service & quality of repair — public reaction](https://uk.trustpilot.com/reviews/677eccb811974350caefee64)；attributed_public_first_person_account；raw SHA c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694。
-- T6_repairs_faq：[FREQUENTLY ASKED QUESTIONS | Dr. Martens Repairs](https://drmartensrepairs.com/pages/faqs)；authorised_service_partner_current_account；raw SHA b3fa94767a663d418b10a25a1c641592e00cb2c68b9b5b040ad9e97ec5d5a48c。
-- R2_CARE：[Caring for your pair — Dr. Martens Repairs](https://drmartensrepairs.com/pages/caring-for-your-pair)；authorised_service_partner_current_account；raw SHA 503216f4e35bc2a29b5adf448ea7f2235e73a7bdf9afb64537be3f151270eff3。
+- R2_CUSTOMER_6870：[Like new! — public repair self-report](https://uk.trustpilot.com/reviews/6870ffa65d1e329686a3886f)；attributed_public_first_person_account；raw SHA `c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694`。
+- T7_repairs_resole：[Resole and Welt - Classic DMS Sole (Per Pair) – Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/resole-and-welt-classic-dms-sole-per-pair)；authorised_service_partner_current_account；raw SHA `96bf02e38a6214615de13b38a3dd6b0c0fa8ffa234286e8787274df44803a8ec`。
+- T8_repairs_welted：[WELTED FOOTWEAR REPAIRS | Customise my Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs)；authorised_service_partner_current_account；raw SHA `f5a9b5d72bdcd018da2ad179afeb1162ddfee36e1de990c615611c412919f51a`。
+- R2_REPAIR_VIDEO：[Authorised partner original repair demonstration](https://drmartensrepairs.com/pages/how-it-works)；authorised_partner_original_demonstration_video；raw SHA `f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74`。
+- T3_plc_product：[Product - Dr. Martens plc](https://www.drmartensplc.com/sustainability/product/)；corporate_current_technical_account；raw SHA `42cf77198a9d4f84e767d84591fbc15e4e97c3adff134ec44237c271c61bea07`。
+- TEACH_T：[Dr. Martens Product teach-in webcast transcript](https://www.drmartensplc.com/application/files/8716/9520/5561/Dr._Martens_plc__Product_teach-in_transcript.pdf)；first_party_named_management_statement；raw SHA `e1b2da48e5c699f7c3b8a8d53310ec939f831b9f6e84235362c4df9aff279189`。
+- R2_UPPER：[Upper Repair — Welted Footwear — Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/upper-repair)；authorised_service_partner_current_account；raw SHA `2fe41aeeec2a78ca493e6a02bac3e9d45cbe2e215e741571a72dd20e9943e65d`。
+- R2_CLEAN：[Cleaning and Conditioning — Dr. Martens Repairs](https://drmartensrepairs.com/collections/welted-footwear-repairs/products/cleaning-and-conditioning)；authorised_service_partner_current_account；raw SHA `29301046adcd7840a7330b30ce6074b3fae8f5d0e89ddc2c46f5e36aa0d20e57`。
+- T5_repairs：[Dr. Martens Repairs | Official repairs of boots, shoes and bags](https://www.drmartens.com/uk/en_gb/boots-shoes-repair-service)；authorised_service_partner_current_account；raw SHA `57c6c6823ed2980891d39de482f2a5399ac4df1d83709db5f1dfd04cef3fc367`。
+- AR26：[Dr. Martens plc Annual Report 2026](https://www.drmartensplc.com/application/files/5417/8038/8372/DOCs-AR26-web2.pdf)；issuer_annual_report；raw SHA `d4d494022fa39959df66353d0bbf0a03508a0fc9f365fef09f713f70ab74d373`。
+- R2_HOW：[How It Works — Dr. Martens Repairs](https://drmartensrepairs.com/pages/how-it-works)；authorised_service_partner_current_account；raw SHA `ebfee4953a69c8dae32c6a56aed94a5bb53e37462be52303895e920f5a6f03a2`。
+- R2_CUSTOMER_677e：[Brilliant service & quality of repair — public reaction](https://uk.trustpilot.com/reviews/677eccb811974350caefee64)；attributed_public_first_person_account；raw SHA `c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694`。
+- T6_repairs_faq：[FREQUENTLY ASKED QUESTIONS | Dr. Martens Repairs](https://drmartensrepairs.com/pages/faqs)；authorised_service_partner_current_account；raw SHA `b3fa94767a663d418b10a25a1c641592e00cb2c68b9b5b040ad9e97ec5d5a48c`。
+- R2_CARE：[Caring for your pair — Dr. Martens Repairs](https://drmartensrepairs.com/pages/caring-for-your-pair)；authorised_service_partner_current_account；raw SHA `503216f4e35bc2a29b5adf448ea7f2235e73a7bdf9afb64537be3f151270eff3`。
 
 ## 逐句錨點
 
-| ID | 旁白 | 原件 | 定位 |
-| --- | --- | --- | --- |
+| ID | 旁白 | 來源 | 定位 |
+|---|---|---|---|
 | c7r20101 | 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？ | R2_CUSTOMER_6870 | first paragraph, explicitly attributed in next line |
 | c7r20102 | 二〇二五年七月，一位馬汀靴送修者在公開評論裡，寫下這個難題。 | R2_CUSTOMER_6870 | publishedDate 2025-07-11; four years, upper fine, sole almost worn through |
-| c7r20103 | 星期四，對方把鞋放進舊鞋盒，印好郵寄標籤；隔天，郵差收走了盒子。 | R2_CUSTOMER_6870 | Thursday packed old shoebox and printed prepaid label; next-day collection |
+| c7r20107 | 選修理時，對方還能挑鞋底和縫線的顏色，覺得很有趣。 | R2_CUSTOMER_6870 | Public July review: choose colour of sole/weld/stitching, which was fun; choice appears before parcel packing in original account. No exact selected palette or invented click action. |
 | c7r20104 | 我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？ | T7_repairs_resole, R2_CUSTOMER_6870 | teardown scope; laces surprise withheld |
-| c7r20105 | 今天沿著一雙馬汀靴的三個接合部件，走一趟拆開、接回、送回的旅程。 | T7_repairs_resole, T3_plc_product | sole welt stitching; current construction |
+| c7r20105 | 我們就看這一雙馬汀靴，能不能把主人穿慣的鞋面留下來。 | T7_repairs_resole, R2_CUSTOMER_6870 | One-pair promise and retained-upper question, not a list of future chapters or three components; current repair scope and attributed public case. |
 | c7r20106 | 為了留下你穿慣的鞋面，換掉的到底會有哪些東西？ | T7_repairs_resole, R2_CUSTOMER_6870 | central question |
-| c7r20201 | 鞋盒離手以前，這位送修者已經在網站選過修理，也選了新的配色。 | R2_CUSTOMER_6870 | choose colour of sole/welt/stitching before posting |
-| c7r20202 | 對方說，能挑鞋底和縫線的顏色，這件事很有趣。 | R2_CUSTOMER_6870 | customer opinion choosing colours was fun; weld is review's wording |
 | c7r20203 | 選項裡有一條沿條，可是它在鞋上的哪裡？ | T7_repairs_resole, T8_repairs_welted | identification |
 | c7r20204 | 你順著鞋面往下看，鞋邊有一條繞著鞋身的帶子，上面可以看見縫線。 | T8_repairs_welted, R2_REPAIR_VIDEO | identification paragraph; 2–4s |
 | c7r20205 | 維修方說，有沿條的鞋，會在這個部位露出細小的縫隙。 | T8_repairs_welted | small visible gap |
@@ -40,15 +38,14 @@
 | c7r20209 | 那條帶子叫做沿條，縫在鞋面下緣；網站把換底和換沿條列成同一項修理。 | T7_repairs_resole, T3_plc_product | service name and construction |
 | c7r20234 | 要把這一雙交出去修，現在頁面標出的費用是多少？ | T7_repairs_resole | current listed £79.99 per pair; not reviewer's historical payment |
 | c7r20210 | 目前網站的經典換底加換沿條，標價是一雙七十九英鎊九十九便士。 | T7_repairs_resole | current listed per-pair price £79.99 at retrieval; no claim this was the reviewer's 2025 payment |
-| c7r20212 | 這雙鞋要換的不只有顏色，還得把穿過的部件，換成能重新接合的部件。 | T7_repairs_resole | fresh welt new stitching and chosen sole; editorial description |
-| c7r20213 | 這位送修者選擇修理。評論裡說，在對方看來，這比買二手還便宜。 | R2_CUSTOMER_6870 | customer's personal price judgment, not market-wide comparison |
-| c7r20214 | 四年來穿著的上半部還好，腳下的底卻幾乎磨穿，這才把一雙鞋送上兩種去留。 | R2_CUSTOMER_6870 | upper fine sole almost worn through; editorial description |
+| c7r20213 | 那位評論者則覺得，自己的這次修理，比另買一雙二手鞋還便宜。 | R2_CUSTOMER_6870 | Public review personal price judgment only; not current listing, representative market comparison, or a replay of deciding to send the parcel. |
 | c7r20215 | 品牌在二〇二三年的說明會，談到過什麼樣的舊鞋？ | TEACH_T | repair section p13–14 |
 | c7r20216 | 主管梅基克當時說，有人珍惜用了二十年的舊靴，底磨壞了，皮鞋面卻還很好。 | TEACH_T | attributed 20-year consumer example; not the 2025 reviewer |
 | c7r20217 | 鞋面還好，把靴口翻開，後跟內裡若已磨穿，要把外皮也換掉嗎？ | R2_UPPER | conditional viewer inspection; heel lining described separately from upper |
 | c7r20218 | 若後跟內裡已磨穿，維修方可以修補，或換上新的皮內裡。 | R2_UPPER | HEEL LINING REPAIR only: repair or replace worn/damaged heel lining with new leather; not all lining. |
 | c7r20219 | 照他們的說法，處理後跟內裡能恢復舒適，也減少上層鞋面進一步受磨。 | R2_UPPER | restores comfort and prevents further wear to upper, attributed |
 | c7r20220 | 你要留下的外皮，和腳在裡面碰到的內裡，在這裡成了能分開處理的部位。 | R2_UPPER | explanation of inner lining repair as distinct component; not condition of either filmed or reviewed pair |
+| c7r20103 | 星期四，對方把鞋放進舊鞋盒，印好郵寄標籤；隔天，郵差收走了盒子。 | R2_CUSTOMER_6870 | Thursday packed old shoebox and printed prepaid label; next-day collection |
 | c7r20230 | 鞋送出去，穿著者會先等到什麼消息？ | R2_CUSTOMER_6870 | first receipt update |
 | c7r20231 | 這位送修者說，維修方收到靴子後，先發來通知，鞋已經到站了。 | R2_CUSTOMER_6870 | update once received boots |
 | c7r20232 | 通知讓主人知道包裹到了；工作檯上，接著輪到人把舊接合拆開。 | R2_CUSTOMER_6870, R2_REPAIR_VIDEO | editorial transition from reported receipt to separate authorised demonstration |
@@ -67,13 +64,11 @@
 | c7r20312 | 車線先把沿條和上半部連在一起，整塊貼地的外底，還沒有跟著進來。 | T3_plc_product, R2_REPAIR_VIDEO | product joining paragraph; 8–12s |
 | c7r20313 | 示範裡，師傅讓靴子沿著機針轉動，新的縫線一段接一段，繞回鞋邊。 | R2_REPAIR_VIDEO | 8–12s |
 | c7r20314 | 機器往前車，他的手也跟著調整位置，帶著這隻立體的靴子走過機針。 | R2_REPAIR_VIDEO | 8–12s |
-| c7r20315 | 鞋底朝上，靴筒朝下，一隻手握住鞋身，另一隻手在靠近針的位置扶住邊緣。 | R2_REPAIR_VIDEO | 8–12s |
 | c7r20316 | 舊線既然拆掉，新線還一定得是黃色嗎？ | T7_repairs_resole | stitching choices |
 | c7r20317 | 這項服務也能選黑色縫線，配的沿條顏色也可以改。 | T7_repairs_resole | black stitching and welt choices |
 | c7r20318 | 你可以把穿皺的皮留下，再決定新接縫的顏色；這兩個部位，這次能分開作選擇。 | T7_repairs_resole, TEACH_T | rebuilt with fresh welt/stitching; old upper retained |
 | c7r20319 | 沿條車好，師傅再把靴底朝向修整工具，轉著鞋身處理邊緣。 | R2_REPAIR_VIDEO | 13.15–14.7s; contact at tool beneath right machine head, belt contact not established; independent r2 13.6s frame readback. |
 | c7r20320 | 淺色的底層朝外，黑色鞋邊靠近機器；新外底還沒接上，就先處理這一圈。 | R2_REPAIR_VIDEO | 13.15–14.7s; contact at tool beneath right machine head, belt contact not established; independent r2 13.6s frame readback. |
-| c7r20321 | 現在沿條和鞋面已經連在一起，新外底仍是另一個部件。 | T3_plc_product, R2_REPAIR_VIDEO | welt first stitched; 13–17s |
 | c7r20322 | 它會怎麼接上去，讓這隻還露著底層的靴子重新能走路？ | T3_plc_product | joining procedure |
 | c7r20401 | 輪到熱接了。師傅拿起新外底，放到已縫好沿條的鞋面下方。 | T3_plc_product, R2_REPAIR_VIDEO | joining paragraph; 15–18s |
 | c7r20402 | 公司說，今天多數外底用的是聚氯乙烯合金，也就是常叫PVC的塑膠。 | T3_plc_product | majority of outsoles alloy of PVC |
@@ -116,7 +111,6 @@
 | c7r20601 | 師傅把靴子收進紙箱，再把箱蓋折好；拆修的示範，最後停在一個能寄走的包裹。 | R2_REPAIR_VIDEO | 29–34s |
 | c7r20602 | 而那位在七月留下評論的送修者，也等到了修理完成的通知。 | R2_CUSTOMER_6870 | few days after receipt, completion notification |
 | c7r20603 | 對方說，維修方收到鞋後幾天，又傳來消息：鞋已修好，正在回程。 | R2_CUSTOMER_6870 | completion and return update |
-| c7r20604 | 星期四裝進盒子的那一雙，經過取件、收鞋和修理，重新離開了維修方。 | R2_CUSTOMER_6870 | sequence Thursday packing, next-day collection, receipt and completion |
 | c7r20605 | 這位送修者寫，從皇家郵政取走包裹起算，一個星期後，快遞把鞋送了回來。 | R2_CUSTOMER_6870 | one week after Royal Mail collection delivered by UPS; individual account |
 | c7r20622 | 打開包裹，除了修好的鞋，你還會看見什麼？ | R2_CUSTOMER_6870 | personal account new pair of laces; opening preview callback |
 | c7r20606 | 對方在評論裡稱讚接合和外底。 | R2_CUSTOMER_6870 | Public review praises welding and sole; no sequence of looking, opening or discovery claimed. |
@@ -129,11 +123,8 @@
 | c7r20613 | 現在送修，網站預估要等多久？ | R2_HOW | expected turnaround up to 3 weeks; current service, not historical review deadline |
 | c7r20614 | 目前網站預估最長約三週，這項服務只受理英國客戶。 | T6_repairs_faq, R2_HOW | Current expected turnaround up to 3 weeks; FAQ only UK customers. Not the reviewer's historical duration. |
 | c7r20615 | 鞋回來以後，維修方還提醒，先清掉泥土，再按鞋面材料選保養品，定期重新照料。 | R2_CARE | Remove dirt; choose right care products; reapply regularly |
-| c7r20616 | 原廠在年報裡說，替舊鞋延長使用時間，也有助於加強顧客對品牌的忠誠。 | AR26 | printed p63 extending life helps strengthen loyalty, issuer attribution |
-| c7r20617 | 這類修復在英國做了多少？ | AR26 | FY26 4287 UK pairs |
-| c7r20618 | 年報列出，二〇二六財年，英國修復了四千兩百八十七雙。 | AR26 | Printed p63 Pairs repaired (UK), FY26 4,287; fiscal year explicitly scoped. |
-| c7r20619 | 回到開場想留下的上半部：新外底接上去，縫線重新車過，穿慣的鞋面又能跟著走。 | T7_repairs_resole, R2_CUSTOMER_6870, R2_REPAIR_VIDEO | specific narrative callback and attributed example outcome |
+| c7r20619 | 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。 | R2_CUSTOMER_6870, T7_repairs_resole | Explicit callback to opening retained-upper stake and reported returned pair; no recap of cutting/stitching/joining sequence, no universal outcome guarantee. |
 | c7r20620 | 如果是你，會把一雙穿出折痕的鞋留下來換底，還是重新穿一雙新鞋？留言告訴我。 |  | 觀眾邀請 |
 | c7r20621 | 訂閱品牌故事，我們繼續看熟悉的日用品，是怎麼被人做出、用過，再留在生活裡。 |  | 觀眾邀請 |
 
-完整來源層級、原始bytes、文字快取、短摘句、評論ID與平台驗證狀態、影片時間段及每句prompt在claims.json。評論是具歸屬自述，原片是另一段授權示範，不冒稱同一實鞋。
+評論是not-verified公共自述，來源示範是另一雙鞋的獨立工序展示，匿名prompt不冒充真實顧客或歷史原件。所有原件／cache SHA、短錨點、日期性質與逐句prompt在claims.json。

@@ -10,10 +10,10 @@ import { writeScreenplay } from "../../../tools/video/core/screenplay.mjs";
 const batch = path.dirname(fileURLToPath(import.meta.url));
 const repository = path.resolve(batch, "../../..");
 const [runtimeArgument, mediaArgument, ...requestedProjects] = process.argv.slice(2);
-const allowedProjects = new Set(["c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10"]);
+const allowedProjects = new Set(["c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11"]);
 const projectIds = requestedProjects.length ? requestedProjects : ["c04", "c05", "c09"];
 if (!runtimeArgument || !mediaArgument || !path.isAbsolute(runtimeArgument) || !path.isAbsolute(mediaArgument)) {
-  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base> [c03|c04|c05|c06|c07|c08|c09|c10 ...]");
+  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base> [c03|c04|c05|c06|c07|c08|c09|c10|c11 ...]");
 }
 if (new Set(projectIds).size !== projectIds.length || projectIds.some(id => !allowedProjects.has(id))) {
   throw new Error("Choose each supported project at most once; preparing C03 must not overwrite an approved earlier runtime.");

@@ -103,11 +103,6 @@
       "what": "押出長條"
     },
     {
-      "setup": "c05le004",
-      "payoff": "c05le005",
-      "what": "加水成黏土狀"
-    },
-    {
       "setup": "c05r051",
       "payoff": "c05r052",
       "what": "木片作芯兩條手盤"
@@ -163,11 +158,6 @@
       "what": "指痕作柔軟尺度"
     },
     {
-      "setup": "c05le010",
-      "payoff": "c05le023",
-      "what": "刀模打出雙螺旋"
-    },
-    {
       "setup": "c5r5a07",
       "payoff": "c5r5a08",
       "what": "成形後等兩天乾燥"
@@ -206,11 +196,6 @@
       "setup": "c05le012",
       "payoff": "c05le013",
       "what": "前方六至八毫米揮散"
-    },
-    {
-      "setup": "c05le014",
-      "payoff": "c05le015",
-      "what": "燃燒中持續釋放"
     },
     {
       "setup": "c07u05",
@@ -350,14 +335,14 @@
       "id": "c05r002",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an adult placing an unlit straight incense stick beside a small pile of ash with soft lamp light from the right.",
+        "prompt": "Medium shot of one anonymous adult presenting a plain bundle of thin straight incense sticks against a simple neutral background, soft diffused light.",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "c05r002",
-          "text": "想像桌邊只剩一截灰，窗外仍暗著；你得再拿一根，夜晚才剛開始。",
+          "text": "一八九〇年，上山英一郎推出棒狀蚊香，把除蟲菊粉做成了能點燃的細條。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
       ]
@@ -503,7 +488,7 @@
         {
           "id": "c07d02",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "我讀到上山英一郎出版的《除虫菊栽培書》，才發現花採下來以後，還有一場趕工。"
+          "text": "我讀到上山英一郎後來出版的《除虫菊栽培書》，才發現花採下來以後，還有一場趕工。"
         }
       ]
     },
@@ -519,7 +504,7 @@
         {
           "id": "c07d03",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "一八九七年的第五版，寫的是把鮮花充分乾燥，再做成殺蟲粉；碰到天氣不配合呢？"
+          "text": "這本書的第五版，寫的是把鮮花充分乾燥，再做成殺蟲粉；碰到天氣不配合呢？"
         }
       ]
     },
@@ -584,22 +569,6 @@
           "id": "c07d05",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
           "text": "書裡說，有人主張陰乾，但花量一多，這套手續難以負荷，所以改求日曬的方便。"
-        }
-      ]
-    },
-    {
-      "id": "c07d06",
-      "template": "shot",
-      "data": {
-        "camera": "pull out",
-        "visual": "still",
-        "prompt": "Wide shot of full flower baskets waiting beside occupied drying mats under a cloudy sky."
-      },
-      "lines": [
-        {
-          "id": "c07d06",
-          "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "種得多，乾燥的位置和天氣卻得跟得上；我覺得這比有沒有種活，更像一道生產難題。"
         }
       ]
     },
@@ -796,23 +765,6 @@
       ]
     },
     {
-      "id": "c05r019",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a craftsman placing a plain bamboo tube beside an unmarked powder bowl under an overcast sky.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "c05r019",
-          "text": "公司年表記，一八八八年的蚊香試作，用的是舶來除蚤粉和竹筒。",
-          "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
-        }
-      ],
-      "chapter": "粉成了長條，還得盤得出來"
-    },
-    {
       "id": "c05r020",
       "template": "shot",
       "data": {
@@ -823,10 +775,11 @@
       "lines": [
         {
           "id": "c05r020",
-          "text": "線香的做法給了一條路：把粉料變成細條，讓材料有可以持續燃燒的形狀。",
+          "text": "開場那種細條，借用的是佛壇線香的製法。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
-      ]
+      ],
+      "chapter": "粉成了長條，還得盤得出來"
     },
     {
       "id": "c05r021",
@@ -839,7 +792,7 @@
       "lines": [
         {
           "id": "c05r021",
-          "text": "到一八九〇年，直條產品上市了。這根細香，能不能完整地送到你手上？",
+          "text": "可這種細香，能不能完整地送到你手上？",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
       ]
@@ -855,7 +808,7 @@
       "lines": [
         {
           "id": "c05r023",
-          "text": "公司回顧，這種直條約二十公分長，當時往往得同時用上數根。",
+          "text": "原廠留存的一款直條商品，約二十公分長；資料還說，使用時會同時用上數根。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
       ]
@@ -1069,22 +1022,6 @@
       ]
     },
     {
-      "id": "c05le004",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of one anonymous worker holding a soft lump beside a plain extrusion inlet and a separate bowl of loose powder, soft workshop light.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "c05le004",
-          "text": "你若站在這台機器前，送進去的不是一把乾粉。粉一倒就散，怎麼變成能被擠出去的那一塊？",
-          "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
-        }
-      ]
-    },
-    {
       "id": "c05le005",
       "template": "shot",
       "data": {
@@ -1209,22 +1146,6 @@
           "id": "c05r061",
           "text": "資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
-        }
-      ]
-    },
-    {
-      "id": "c07s06",
-      "template": "shot",
-      "data": {
-        "camera": "push in",
-        "visual": "still",
-        "prompt": "Medium shot of an anonymous adult examining two plain historical spiral coils on a small table at dusk."
-      },
-      "lines": [
-        {
-          "id": "c07s06",
-          "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "我看這些留下的商品，最有感的是，長夜終於有了不同的時間刻度；你要等多久，選擇開始不一樣。"
         }
       ]
     },
@@ -1567,22 +1488,6 @@
       ]
     },
     {
-      "id": "c07m01",
-      "template": "shot",
-      "data": {
-        "camera": "pan left",
-        "visual": "still",
-        "prompt": "Medium close-up of an anonymous worker studying a plain green coil beside bowls of plant powder and a small vial, soft workshop light."
-      },
-      "lines": [
-        {
-          "id": "c07m01",
-          "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "你手上的香體，有負責成形的材料，也有負責殺蟲的成分；我覺得它像一個分工很細的載具。"
-        }
-      ]
-    },
-    {
       "id": "c05r092",
       "template": "shot",
       "data": {
@@ -1593,7 +1498,7 @@
       "lines": [
         {
           "id": "c05r092",
-          "text": "原廠另一份製程解說，把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
+          "text": "我沒想到，原廠的製程解說還把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
       ]
@@ -1682,30 +1587,14 @@
       "id": "c05le010",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a plain interlocking spiral cutting die above a flat sheet of soft material, neutral factory light.",
+        "prompt": "Close-up of an unmarked interlocking spiral die cutting a soft sheet carried by a plain conveyor, diffuse factory light.",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "c05le010",
-          "text": "科博館把現在的打型比作餅乾模。料片交到巴形的渦卷刃型下，這回還需要工人一圈圈盤嗎？",
-          "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
-        }
-      ]
-    },
-    {
-      "id": "c05le023",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a plain interlocking spiral cutting die pressing a soft flat sheet on a conveyor, neutral factory light.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "c05le023",
-          "text": "接著，輸送帶把料片交給打型機，刀模打出兩個組合在一起的螺旋。",
+          "text": "原廠製程裡，料片沿輸送帶進入打型機，像餅乾模那樣，切出相連的雙卷。",
           "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
         }
       ]
@@ -1771,22 +1660,6 @@
           "id": "c5r5a09",
           "text": "之後還有品質檢查，核對重量、燃燒時間與有效成分量，再包裝、檢查、裝箱出貨。",
           "emotion": "對一位觀眾自然說書；工序前後相接，數字清楚，不拖長停頓"
-        }
-      ]
-    },
-    {
-      "id": "c07m02",
-      "template": "shot",
-      "data": {
-        "camera": "push in",
-        "visual": "still",
-        "prompt": "Close-up of an anonymous adult opening a plain unmarked box containing joined spiral coils, gentle evening light."
-      },
-      "lines": [
-        {
-          "id": "c07m02",
-          "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚",
-          "text": "裝箱讓材料離開工廠，等你拆封時，最後一道交接，卻還在自己的手指上。"
         }
       ]
     },
@@ -2026,7 +1899,7 @@
       "lines": [
         {
           "id": "c05rx010",
-          "text": "燃燒時，有效成分會以極細微粒子的形式進入空氣，這也是原廠描述的工作方式。",
+          "text": "原廠說，燃燒期間，有效成分會持續以極細微粒子的形式進入空氣。",
           "emotion": "對一個朋友說書，自然起伏；意見用自己的反應，數字清楚"
         }
       ]
@@ -2075,38 +1948,6 @@
         {
           "id": "c05le013",
           "text": "那個位置離前端約六到八毫米，溫度約攝氏二百五十度，還沒有變成你眼前的灰。",
-          "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
-        }
-      ]
-    },
-    {
-      "id": "c05le014",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a plain coil showing an intact section beside a short ash segment, with faint wisps above the dish, quiet evening light.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "c05le014",
-          "text": "有效成分是只放出那一下，還是會一直釋放？",
-          "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
-        }
-      ]
-    },
-    {
-      "id": "c05le015",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of one anonymous adult watching a plain coil smolder steadily in a shallow dish beside an open blank notebook, soft evening window light.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "c05le015",
-          "text": "原廠說，有效成分會在燃燒期間持續釋放。",
           "emotion": "對一位觀眾自然說書；工序清楚，問句上揚，反應保留第一人稱"
         }
       ]
