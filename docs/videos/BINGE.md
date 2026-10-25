@@ -152,6 +152,16 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 - `act(session, actor, slug, "compile")`：站主在完結、沒設定合集的作品上按「做合集」；把 `compilation` 設真，工人下一輪開始。一部作品只有一部合集（工人固定叫它 `<作品>-full`，slug 被第一部占著，清掉 `compilation_slug` 也會讓第一部的下載失效）：正在做時 409 `video_series_compiling`，做過了 409 `video_series_compiled`；要重做，改的是那支合集影片本身（重跑它的步驟）。
 - 工人路由：`POST /video/automation/series/{slug}/compilation/start`（body `{slug: "<作品>-full"}`）、`…/compilation/done`；網站轉送在 `apps/web/app/api/video/automation/series/[slug]/compilation/`。
 
+### 重做一集
+
+站主 2026-10-24 看《系統說我是 BUG》第 1 集說單調，三個修正部署後要第 1–4 集也用新規則重做。作品的集照核准的篇章細綱做，重做同一集的節拍不會讓後面接不上，所以 `redo_episode`（`can_redo`：品牌故事，或非單集、非長篇動畫的製作作品）也收作品的集：
+
+- 作品頁的集列表對 `done`／`started`（有影片）或影片已放棄的集有「重做」（`POST /admin/video-automation/series/{slug}/episodes/{n}/redo`）。影片還在的，伺服器先照站主在影片頁放棄的方式放棄它（`drop_project`，備註「站主重做」`REDO_DROP_NOTE`：審核區預覽清掉，工作區與已付費素材不動，請求列做完的留 `done`、做到一半的標 `cancelled`），集回 `ready`、`started_at`／`finished_at`／`request_id` 清掉，slug 改 `redo_slug(<planned>, n)`（`<作品>-e001-redo1`）。
+- 工人下一輪 `series/next` 拿到這一集，照舊用 `<作品>-e001` 叫 `episodes/{n}/start`；`start_episode` 看到集的 slug 是它的重做（`is_redo_of`）就改用集的 slug 開工，工人從回來的 request 讀 slug，工作區與影片都叫 `-redo1`。重做從劇本開始：新卡司快照、新規則（manga 運鏡、不包片頭片尾、policy 不問示範）。
+- 每集最多 `STORY_REDO_LIMIT` 次（409 `video_series_redo_limit`）；合集已經開始做就不能重做（409 `video_series_compiled`，一部作品只有一部合集）；單集漫劇與長篇動畫 409 `video_series_redo_story_only`；沒做過影片的集 409 `video_series_episode_not_dropped`。重做完結作品的最後一集會把作品設回 `active`，做完再完結一次。
+- `start_compilation` 列每一集目前的 `done` 影片（集的 slug 就是最新一支），已放棄的不進：站主直接在影片頁放棄一支 `done` 的集的影片，集仍是 `done`，但不進合集。
+- 測試：`apps/api/tests/test_video_drama_redo.py`、`apps/web/components/admin-video-series.test.tsx`。
+
 ### 下載
 
 `GET /admin/videos/{slug}/download`（`apps/api/app/video_reviews/admin_api.py`，content.manage）：只給合集影片；`FileResponse` 串流 `<VIDEO_WORK_DIR>/<slug>/upload/final.mp4`（`config.py` 的 `video_work_dir`，預設 `/var/lib/mokaair/video-work`），`Content-Disposition: attachment; filename=<slug>.mp4`、`Cache-Control: private, no-store`、支援 Range。不是合集、檔案還不在、或 API 沒掛載都是 404 `video_download_not_found`（訊息說明是哪一種）。`ProjectSummary`／`ProjectOut` 多 `compilation` 與 `download_available`。BFF `apps/web/app/api/admin-video-download/[slug]/route.ts` 比照 `admin-video-files` 串流並傳 Range。

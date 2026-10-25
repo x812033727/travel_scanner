@@ -6,13 +6,14 @@ import test from "node:test";
 
 import { runtimePolicyHash, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { readApprovals } from "../core/approvals.mjs";
-import { dramaFixture, explainerFixture, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { dramaBrief, dramaFixture, explainerFixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { readJson } from "../core/paths.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-store.mjs";
 import { shotPrompt } from "../media/keyframes.mjs";
 import { sheetPrompt } from "../media/look.mjs";
-import { resolveLook } from "../core/drama.mjs";
+import { lookHash, resolveLook } from "../core/drama.mjs";
+import { validateVoice } from "../core/schema.mjs";
 import { planRequests } from "../tts/requests.mjs";
 import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
@@ -25,7 +26,7 @@ import { craftChecks } from "../core/craft.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
-import { castFrom, chapterRange, documentInputs, documentKey, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, LOST_DOCS, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, castVoices, chapterRange, documentInputs, documentKey, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, LOST_DOCS, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { checkBrief } from "../core/lint.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -733,6 +734,52 @@ test("approved shot-look catalogs survive cast preparation and replace writer-in
   assert.deepEqual(settled.scenes[1].data.character_looks, { jingwei: "present" });
   assert.equal(documentProblem("setting", { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], shot_looks: variants }] } }, job("setting")), null);
   assert.match(documentProblem("setting", { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], shot_looks: [{ id: "bad", appearance: "x", voice: {} }] }] } }, job("setting")), /only id/);
+});
+
+test("a character the setting book gives no voice is cast from the pool, then the spare voices, and the look hash stands", async () => {
+  const extras = [
+    { id: "s01-a-zhu", name: "阿朱", role: "配角", appearance: "a girl of fourteen in a green apron", voice_note: "少女，清脆" },
+    { id: "shi-mo", name: "石魔", role: "配角", appearance: "a stone golem three metres tall", voice_note: "低沉、緩慢" },
+    { id: "s01-lao-qi", name: "老七", role: "配角", appearance: "a wiry porter of fifty", voice_note: "急促" },
+  ];
+  const book = { characters: [...CAST, ...extras] };
+  const pool = [{ provider: "gemini", name: "Zephyr", hint: "女聲，明亮", style: "明亮" }, { provider: "gemini", name: "Kore", hint: "女聲" }];
+  const narrator = { provider: "gemini", name: "Charon" };
+  const cast = castFrom(book, 1, { voices: pool, narrator });
+  const by = Object.fromEntries(cast.map((character) => [character.id, character]));
+  assert.deepEqual(by["shen-lan"].voice, CAST[0].voice, "a voice the book names is copied as written");
+  assert.deepEqual(by["s01-a-zhu"].voice, { provider: "gemini", name: "Zephyr", style: "配角，少女，清脆" }, "the pool first, by register; the note is the style");
+  // Cast in id order: 老七 (s01-lao-qi) before 石魔 (shi-mo); Charon is the narrator's, Kore the lead's.
+  assert.deepEqual(by["s01-lao-qi"].voice, { provider: "gemini", name: "Algenib", style: "配角，急促" }, "no register asked for: the next free voice");
+  assert.deepEqual(by["shi-mo"].voice, { provider: "gemini", name: "Orus", style: "配角，低沉、緩慢" }, "低沉 asks for a man's voice: the next free one");
+  for (const character of cast) {
+    const errors = [];
+    validateVoice(character.voice, errors, `${character.id}.voice`);
+    assert.deepEqual(errors, [], character.id);
+  }
+  assert.deepEqual(castFrom(book, 2, { voices: pool, narrator }), cast, "the same book and settings cast every episode alike");
+  assert.ok(castFrom(book).every((character) => character.voice?.provider === "gemini"), "without settings the spare voices alone cast the rest");
+  const unvoiced = (characters) => characters.map(({ voice, ...rest }) => rest);
+  assert.equal(lookHash({ look: { preset: "cinematic-3d" }, characters: cast }), lookHash({ look: { preset: "cinematic-3d" }, characters: unvoiced(cast) }), "a voice redraws no sheet");
+
+  // An episode drafted before the worker cast them carries a series.json cast without those
+  // voices: settle casts them the same way, and lint takes the worker's pick where the book names none.
+  const example = dramaFixture();
+  const stale = [...example.characters, ...unvoiced(cast).filter((character) => extras.some((extra) => extra.id === character.id))];
+  const writer = { ...example, characters: [...example.characters, { ...unvoiced(cast).find((character) => character.id === "shi-mo") }] };
+  const settled = settle(writer, { slug: "wenjian-e001", root: ".", settings: { voice: example.voice, drama: { character_voice_pool: pool } }, format: "drama", series: { slug: "wenjian", episode: 1, chapter: 1 }, cast: stale });
+  const golem = settled.characters.find((character) => character.id === "shi-mo");
+  assert.equal(golem.voice.provider, "gemini");
+  assert.ok(golem.voice.name && golem.voice.name !== example.voice.name, "a voice, and not the narrator's");
+  assert.deepEqual(settled.characters.filter((character) => character.id !== "shi-mo"), example.characters, "the book's voiced characters are copied as written");
+  assert.deepEqual(castVoices(stale, { voices: pool, narrator: example.voice }).find((character) => character.id === "shi-mo").voice, golem.voice, "the whole series.json cast is cast, so every episode of it picks alike, whichever characters the writer used");
+  const { lintVideo } = await import("../core/lint.mjs");
+  const snapshot = { slug: "wenjian", episode: 1, chapter: 1, characters: stale };
+  settled.series = { slug: "wenjian", episode: 1, chapter: 1 };
+  assert.deepEqual(lintVideo(settled, { brief: dramaBrief(), lexicon: fixtureLexicon(), series: snapshot }).errors.filter((error) => error.path.startsWith("characters[")), []);
+  const differing = structuredClone(settled);
+  differing.characters.find((character) => character.id === "jingwei").voice.name = "Puck";
+  assert.ok(lintVideo(differing, { brief: dramaBrief(), lexicon: fixtureLexicon(), series: snapshot }).errors.some((error) => /^characters\[\d+\]\.voice$/.test(error.path)), "a voice the book names still has to be copied");
 });
 
 test("production settle preserves canonical local readings for every speaker while retaining the episode's injury voice", () => {
