@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-dub-retry-on-a-drama-format
 title: Dub retry on a drama-format video (brand stories) is always refused as stale
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-23T13:15:32Z
 created_at: 2026-10-23T13:15:24Z
-completed_at:
+completed_at: 2026-10-24T11:02:57Z
 branch: claude/dub-retry-drama-clips
 depends_on: []
 scope:
@@ -34,7 +34,7 @@ brand story or a drama was refused this way.
 - [x] `packageRefusal` reads `clips/manifest.json` for a drama, as `package` does.
 - [x] A test fails with the old call and passes with the fix (`package-refusal.test.mjs`).
 - [x] Duration review increment for `flow.mjs` by an independent reviewer (`claude-pr-review-dub-retry-clips-20261023`, PASS).
-- [ ] Merged and deployed; the owner presses 「再做一次」 for A4's ja/ko/es/id again and the worker takes them.
+- [x] Merged and deployed; the owner presses 「再做一次」 for A4's ja/ko/es/id again and the worker takes them. Deployed 5e30a0f37; the worker took A4's ja retry at 14:57Z and ko/es/id after the music loop.
 
 ## How to verify
 
