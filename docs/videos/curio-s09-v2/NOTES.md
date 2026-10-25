@@ -18,7 +18,7 @@
 - lint：`node tools/video/cli.mjs lint --slug curio-s09-v2` **0 錯誤、0 警告**。過程中修掉的：`voice.performance` 超過 200 字；十個鏡頭超過 12 秒（各拆成兩景）；
   開場 66 秒（剪到約 60 秒）；六段超過 45 秒沒有懸念（各補一個問句或「結果／沒想到／更怪的是／問題來了」的升級句）。
 - 「還記得」整支 4 句（n011、n059、n086、n096），其餘回呼用「前面」「開頭」「剛剛」；同一個數字沒有在三句以上出現（兩千、兩萬五千、三百、三千各兩次）。
-- **盲評待跑（主對話跑）**：這個環境沒有 Agent 工具，兩位讀者由主對話開。payload 在
+- **盲評已過**（2026-10-25，主對話開的兩位全新讀者各自只讀 payload：第 1 輪讀者 1 十三題全是，讀者 2 只有 `no_recap` 答否（n093 甫庵的書一版接一版，覺得跟前面講過的刊本重複）；兩位同否才算沒過，所以第 1 輪通過、沒有改稿。兩份答案在 `panel/`，`narrative --answers panel/reader-1.json` 已留紀錄 passed）。原本的待跑說明留著：這個環境沒有 Agent 工具，兩位讀者由主對話開。payload 在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s09/payload-r1.json`
   （`narrative --slug curio-s09-v2 --json` 的輸出，narration 與 questions 原文）。合併規則照主機：同一題兩位都答否才算沒過；沒過就改稿
   （改一句之前先看前一句、不為單一讀者的否改稿、不改事實）、重跑 lint、再開新一輪；最後一輪的兩份答案存進 `panel/reader-1.json`、`panel/reader-2.json`，
