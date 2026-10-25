@@ -8,7 +8,7 @@
 - 事實沿用第一版 2026-10-19 的查核 `topic-checks/S34.md`（39 列加覆核新增的第 41 列），沒有新增查核、沒有連網站；每句對照在 [`claims.md`](claims.md)，給 `qa` 讀的表在
   [`verify-1.md`](verify-1.md)（第一版的表照抄，檔頭改成第二版）。
 - 沒有生圖、沒有配音、沒有花錢。第一版的插圖在雲端工作區（`curio-episode` skill §在雲端環境）；第二版 74 景提示詞逐字沿用、22 景是新提示詞。
-- **盲評待跑（主對話跑）**：這個子代理不開讀者。payload 存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪兩位十三題全是，沒改稿；答案在 panel/，narrative --answers 已留紀錄）。原本的待跑說明：盲評待跑（主對話跑）**：這個子代理不開讀者。payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s34/payload-r1.json`
   （`narrative --slug curio-s34-v2 --json` 的輸出，`narration` 與 `questions` 原文，13 題是系列版 `STORY_SERIES_PANEL_QUESTIONS`）。跑法照主機兩位讀者的規則：
   兩個全新讀者各自只讀 payload，回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過，最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，
