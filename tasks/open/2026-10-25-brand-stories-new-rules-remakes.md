@@ -80,3 +80,5 @@ scope:
 
 - 本輪C06 r3 163句／137插畫景、全片3428／正文3229 units，原生0errors15warnings；來源與書面配鏡PASS、雙讀者合併PASS（個別scene_first/no_recap保留）。精確企劃cf42c3a1-f54b-4295-934e-f4d6fa0ee163、劇本3d8ed292-ea12-4bfd-98b8-097acda4a828已讀回pending，canonical e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e，沒有新批准。八語文字開始；新卡分類/正式八語選擇須有content.manage連線，具體資料已存c06/protected-admin-settings.json。C07改寫及C08來源查核同步接續。
 - C05／C09 r4增補候選原生均0errors；C05刪除煙燻/花期/時數警語支線後正文2785，仍有規劃容量風險；C09刪除型錄尺寸清單後正文3325，來源差分與新讀者正在做。兩者未採用，原BASE/核准/基底八語保留。C09 r2本機fullcontext預檢4errors後已於任何外部呼叫前rollback，失敗與修正鏈存history。
+
+- C08研究包已凍結38主張／120舊句盤點，取得2011後期200mL產品對應的JP5727888B2完整原專利，1961原專利仍列缺口，沒有新旁白或SOURCE PASS。C09r4來源／書面配鏡PASS但兩讀者共同HOLD one_line/no_recap/no_detour，保留history/r4並開始R5實質重編；原已核准BASE仍未換稿。

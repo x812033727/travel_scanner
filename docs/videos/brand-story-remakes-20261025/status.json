@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T18:40:25.034076+00:00",
+  "updated_at": "2026-10-25T18:48:02.792412+00:00",
   "state": "c06_source_narrative_pass_translating_c05_c09_revisions_c07_authoring_c08_research_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
@@ -179,7 +179,9 @@
         "adopted": false,
         "actual_duration_measured": false,
         "body_units": 2785,
-        "length_risk": "Further effective source material or actual audio measurement needed; no padding or slowdown."
+        "length_risk": "Further effective source material or actual audio measurement needed; no padding or slowdown.",
+        "source_delta": "PASS",
+        "source_receipt": "c05/candidates/length-extension/reviews/source-r4-independent.json"
       },
       "candidate_approved": false
     },
@@ -283,7 +285,16 @@
         "native_lint_errors": 0,
         "source_delta_and_new_readers": "pending",
         "adopted": false,
-        "actual_duration_measured": false
+        "actual_duration_measured": false,
+        "frozen_revision": "c09/candidates/length-extension/history/r4",
+        "source_delta": "PASS",
+        "native_merged": "HOLD",
+        "merged_failed": [
+          "one_line",
+          "no_recap",
+          "no_detour"
+        ],
+        "next_revision": "r5_structural_rewrite_in_progress"
       },
       "candidate_approved": false,
       "baseline_text_translations": "c09/i18n/preparation-status.json",
@@ -314,7 +325,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 697,
+      "files": 864,
       "scope": "tracked and staged source files; ongoing untracked drafts excluded"
     },
     "native_c03_fact_checked": true,
@@ -445,8 +456,8 @@
     "c05": "r4_frozen_0errors_length_planning_risk_2785_body_no_adoption",
     "c06": "source_written_visual_and_native_merged_pass_new_pending_reviews_eight_language_text_preparation",
     "c07": "source_research_complete_new_rules_authoring",
-    "c08": "primary_source_packet_building",
-    "c09": "r4_frozen_native_readers_and_independent_source_delta_pending_base_preserved"
+    "c08": "primary_source_research_frozen_38_claims_no_new_script",
+    "c09": "r4_source_written_visual_PASS_native_HOLD_r5_structural_rewrite_in_progress"
   },
   "narration_size_planning": "narration-size-precheck.json"
 }
