@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from datetime import UTC, datetime
 
 import pytest
 from pydantic import ValidationError
 
 from app.video_automation.models import VideoDramaSeries
-from app.video_automation.schemas import SeriesIn, SeriesPatch
-from app.video_automation.series import patch_problem, series_values
+from app.video_automation.schemas import SeriesDocSubmitIn, SeriesIn, SeriesPatch
+from app.video_automation.series import (
+    SHEET_PROMPT_CHARS,
+    doc_problem,
+    patch_problem,
+    series_values,
+)
 
 
 def _cute_payload(**changes: object) -> dict[str, object]:
@@ -124,3 +130,76 @@ def test_patch_checks_the_complete_route_when_switching_looks() -> None:
         original,
         {"look": cute_look, "target_minutes": 10, "image_model": "image-01"},
     ) is None
+
+
+# A setting book's cast may give a character its own sheet prompt (docs/videos/SERIES.md
+# §人物表的 sheet_prompt): the sentence the worker's look stage draws the design sheet from, for
+# a character with no human form (系統說我是 BUG's 系統, a pane of light, 2026-10-25).
+def _series_row(**changes: object) -> VideoDramaSeries:
+    values: dict[str, object] = {
+        "slug": "xitong-shuo-wo-shi-bug",
+        "kind": "series",
+        "title": "系統說我是 BUG",
+        "premise": "一個被系統判定為 BUG 的人",
+        "style_preset": "cinematic-3d",
+        "target_minutes": 3,
+        "planned_episodes": 50,
+        "episodes_per_chapter": 10,
+        "open_ended": True,
+        "status": "active",
+    }
+    values.update(changes)
+    return VideoDramaSeries(**values)
+
+
+def _setting_with_cast(*characters: Mapping[str, object]) -> SeriesDocSubmitIn:
+    return SeriesDocSubmitIn(
+        kind="setting", body_md="# x", body_json={"characters": [dict(c) for c in characters]}
+    )
+
+
+def _problem(*characters: Mapping[str, object]) -> str | None:
+    return doc_problem(_series_row(), _setting_with_cast(*characters))
+
+
+PANE_PROMPT = (
+    "a single blank pane of pale-blue light floating in darkness, soft glow at its edges, "
+    "nothing else in the picture, no person, no face, no text"
+)
+HERO: Mapping[str, object] = {
+    "id": "a-zhu",
+    "name": "阿竹",
+    "appearance": "a thin young man in a grey hoodie",
+}
+SYSTEM: Mapping[str, object] = {
+    "id": "xitong",
+    "name": "系統",
+    "appearance": "a blank pane of pale-blue light",
+}
+
+
+def test_a_setting_book_character_may_carry_its_own_sheet_prompt() -> None:
+    assert _problem(HERO, SYSTEM) is None, "as before"
+    assert _problem(HERO, {**SYSTEM, "sheet_prompt": PANE_PROMPT}) is None
+    assert _problem(HERO, {**SYSTEM, "sheet_prompt": None}) is None, "null: as if left out"
+    assert _problem({**SYSTEM, "sheet_prompt": "x" * SHEET_PROMPT_CHARS}) is None
+    one_off = _series_row(kind="one-off", planned_episodes=1, episodes_per_chapter=1)
+    bible = SeriesDocSubmitIn(
+        kind="bible",
+        body_md="# x",
+        body_json={
+            "characters": [{**SYSTEM, "sheet_prompt": PANE_PROMPT}],
+            "acts": [{"title": "一"}],
+            "outline": {"title": "x"},
+        },
+    )
+    assert doc_problem(one_off, bible) is None, "a story bible's cast takes it too"
+
+
+@pytest.mark.parametrize(
+    "sheet_prompt",
+    ["", "   ", 12, ["a pane of light"], "x" * (SHEET_PROMPT_CHARS + 1)],
+)
+def test_a_sheet_prompt_that_is_not_short_text_is_refused(sheet_prompt: object) -> None:
+    problem = _problem(HERO, {**SYSTEM, "sheet_prompt": sheet_prompt})
+    assert problem == "character xitong: sheet_prompt must be text of at most 600 characters"
