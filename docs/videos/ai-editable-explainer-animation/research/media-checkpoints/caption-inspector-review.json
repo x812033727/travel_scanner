@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-25T22:37:10.609960+00:00",
+  "work_script": "/workspace/work/ai-animation-01/audit-caption-readiness.mjs",
+  "work_script_sha256": "f281ed4f8e6b5d75759e30bac43c8457183a20522107ee5e850fed14ec2bdc18",
+  "plan": "/workspace/work/ai-animation-01/caption-only-native-plan.json",
+  "plan_sha256": "115daa3c1d4e7294924d532fc5a8a185c82f63b9581ed9b7886f592955181c1c",
+  "actual_baseline_report": "/workspace/work/ai-animation-01/caption-audit-before-build.json",
+  "actual_baseline_sha256": "a17e91edc570f615c82d8be5e27946c7db2b89e4ff8febcad13c0f23f8a976e8",
+  "independent_review": {
+    "reviewer": "OpenAI Codex agent /root/audit_caption_package/review_validator",
+    "initial_findings": [
+      "Check extra manifest/CC locales (already present when final review ran).",
+      "Preserve old manifest.chapters warnings.",
+      "Strengthen observed voice evidence by comparing actual WAV SHA256 prefix16 to ASR clip ID, not cache key."
+    ],
+    "all_addressed": true,
+    "final_verdict": "No remaining substantive issue found in actual read-only reinspection. JA/ES101WAVs each match saved ASR; failed/unfinished EN/KO/PT/ID remain unready; eight foreign CC still absent; ID meaning hold retained.",
+    "api_requests": 0,
+    "current_media_writes": 0
+  },
+  "scope": "Read-only native caption mechanics and saved audio-evidence inspection; no source/media/API/approval mutations. Build snippet remains NOT EXECUTED."
+}
