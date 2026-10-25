@@ -1,0 +1,55 @@
+{
+  "review_type": "independent_post_native_dub_fit_delta_reread",
+  "reviewed_at_utc": "2026-10-25T19:25:46.227446+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "translator_of_original_locale": false
+  },
+  "locale": "en",
+  "scope": {
+    "only_line_reviewed": "60d6c7",
+    "source_scene": "build-ask",
+    "other_lines_rereviewed": false
+  },
+  "verdict": "ready",
+  "additional_translation_fix_needed": false,
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+    "current_worksheet_sha256": "c568795c6412340ce4e2c724d86245134e29a207170feecf0be1bb8d6f64e491",
+    "accepted_pre_dub_snapshot_sha256": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb"
+  },
+  "actual_texts_read": {
+    "source": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+    "accepted_pre_dub": "Include commands to install, preview and export, and explain what each file does.",
+    "current_translation": "Ask for install, preview, export commands and file explanations.",
+    "current_worksheet": "Ask for install, preview, export commands and file explanations."
+  },
+  "semantic_checks": {
+    "ask_AI_to_supply_commands": "pass: Ask for retains the requested deliverable",
+    "installation_commands": "pass: install retained first",
+    "preview_commands": "pass: preview retained second",
+    "export_commands": "pass: export retained third",
+    "file_explanations": "pass: compressed plural file explanations retains the request for documentation of what the files do in this runnable-project context",
+    "clause_sequence": "pass: commands precede file explanations, matching source and pre-dub snapshot",
+    "numbers_conditions_names": "pass: none in this line; none added or changed",
+    "no_added_product_or_feature_claims": "pass",
+    "natural_concise_English": "pass: a comprehensible spoken checklist in the build instructions"
+  },
+  "mechanical_checks": {
+    "current_chars": 64,
+    "pre_dub_chars": 81,
+    "current_max_chars": 110,
+    "budget_pass": true,
+    "worksheet_matches_translation": true,
+    "source_hash_unchanged_from_snapshot": true
+  },
+  "media_fit": {
+    "status": "root reports native measured fit passes",
+    "measured_fit_independently_rerun_by_this_reviewer": false,
+    "note": "This record accepts the translation delta semantically; it does not rerun synthesis or claim an independent timing measurement."
+  },
+  "side_effects": "Only this review JSON was written. No paid or network calls; no source, worksheet, or translation edits."
+}

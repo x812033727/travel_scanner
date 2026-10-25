@@ -18,7 +18,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "用 AI 做教學動畫：從一句話到能改字、改數字的成片",
-    "description": "從一個問題，做出能修改的教學動畫。用兩顆骰子的原創圖解，練習寫需求、要求可修改檔案、預覽、改參數、對旁白和驗收。\n\n本集使用 AI 協作撰寫的 Python 繪圖與 FFmpeg 範例，並非 Claude Motion 操作實錄，也未宣稱任何單一產品能一次完成。隨片教材包含資料檔、程式、可複製提示詞與檢查方法。\n\n資料與製作確認日：2026-10-25。示範為本次實際產出的原創專案；公開參考影片只作選題與呈現研究。\n\n教材注意：骰子範例的資料欄位只支援 zh-TW；範例 MP4 刻意無聲，範例 SRT 是分鏡設計時間，並非旁白實測對齊。主教學影片的旁白、CC 與八語配音走獨立製作流程。\n\n完整教材與可複製提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/7c08317fda4647ae74ccd46248afb19b308e99a8/docs/videos/ai-editable-explainer-animation/materials",
+    "description": "從一個問題，做出能修改的教學動畫。用兩顆骰子的原創圖解，練習寫需求、要求可修改檔案、預覽、改參數、對旁白和驗收。\n\n本集使用 AI 協作撰寫的 Python 繪圖與 FFmpeg 範例，並非 Claude Motion 操作實錄，也未宣稱任何單一產品能一次完成。隨片教材包含資料檔、程式、可複製提示詞與檢查方法。\n\n資料與製作確認日：2026-10-25。示範為本次實際產出的原創專案；公開參考影片只作選題與呈現研究。\n\n教材注意：骰子範例的資料欄位只支援 zh-TW；範例 MP4 刻意無聲，範例 SRT 是分鏡設計時間，並非旁白實測對齊。主教學影片的旁白、CC 與八語配音走獨立製作流程。\n\n完整教材與可複製提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
     "tags": [
       "AI 教學",
       "AI 動畫",
@@ -38,7 +38,9 @@
     "data": {
       "headline": "**改得動**",
       "tag": "AI 教學動畫",
-      "sub": "原始檔一起留下"
+      "sub": "原始檔一起留下",
+      "layout": "a",
+      "asset": "docs/videos/ai-editable-explainer-animation/diagrams/thumbnail-editable.png"
     }
   },
   "sources": [
@@ -48,9 +50,9 @@
       "checked_on": "2026-10-25"
     },
     {
-      "title": "FFmpeg documentation",
-      "url": "https://ffmpeg.org/documentation.html",
-      "checked_on": "2026-10-25"
+      "title": "FFmpeg 官方原始碼文件（GitHub 鏡像）",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/master/doc/ffmpeg.texi",
+      "checked_on": "2026-10-26"
     },
     {
       "title": "Python itertools.product",
@@ -97,6 +99,11 @@
     {
       "path": "docs/videos/ai-editable-explainer-animation/diagrams/distribution.svg",
       "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/thumbnail-editable.png",
+      "source": "本次AI協作原創向量圖解；來源thumbnail-editable.svg；2026-10-25",
       "license": "Original Mokaair teaching material"
     }
   ],
@@ -236,7 +243,7 @@
       "lines": [
         {
           "id": "c2d378",
-          "text": "那到底要跟 AI 要什麼，它才不會只交一段成片？"
+          "text": "那到底要跟 AI 要什麼，它才不會只交出一段做好的影片？"
         }
       ],
       "chapter": "為什麼先要原始檔？"
@@ -325,7 +332,7 @@
       "lines": [
         {
           "id": "de0fb5",
-          "text": "先做一個能看的版本，確定它真的講懂了，再加細節。"
+          "text": "先做一個能看的版本，確定它真的講清楚了，再加細節。"
         }
       ]
     },
@@ -1373,7 +1380,7 @@
       "lines": [
         {
           "id": "cab285",
-          "text": "先把說明亮格的那一句對準，再把同樣的方法用到其他段落。"
+          "text": "先把解釋亮起格子的那句話對準，再把同樣的方法用到其他段落。"
         }
       ]
     },
@@ -1388,7 +1395,7 @@
       "lines": [
         {
           "id": "a6c28e",
-          "text": "然後靜音播一次，你應該看得出現在比較的是什麼，而不只是裝飾。"
+          "text": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。"
         }
       ]
     },
@@ -1706,7 +1713,7 @@
       "lines": [
         {
           "id": "f576ae",
-          "text": "交片時，記得把能重做影片的原始檔一起交出去。"
+          "text": "把影片傳給別人時，也請附上能重新產生動畫的專案檔。"
         },
         {
           "id": "9e738a",

@@ -1,0 +1,449 @@
+{
+  "title": "AI Teaching Animations: From One Prompt to Editable Text and Numbers",
+  "description": "Turn a question into an editable teaching animation. Use an original two-dice diagram to practice writing a brief, requesting editable files, previewing, changing parameters, aligning narration and checking the deliverables.\n\nThis episode uses a Python drawing and FFmpeg example written with AI assistance. It is not a recording of Claude Motion in use, nor does it claim that any single product can finish everything in one pass. The accompanying materials include data files, code, copyable prompts and checking methods.\n\nInformation and production verified on: 2026-10-25. The demonstration is an original project actually produced for this episode; public reference videos were used only to research the topic and presentation.\n\nMaterials note: the dice example's data fields support only zh-TW. Its MP4 is intentionally silent, and its SRT follows storyboard design timings, not alignment measured from narration. The main tutorial's narration, CC and dubs in eight languages follow a separate production process.\n\nFull materials and copyable prompts:\nhttps://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
+  "tags": [
+    "AI tutorial",
+    "AI animation",
+    "teaching video",
+    "animation with code",
+    "editable animation",
+    "video production"
+  ],
+  "chapters": {
+    "opening": "Can you edit the animation?",
+    "route-begin": "Why ask for source files?",
+    "brief-goal": "Write an animation brief",
+    "build-start": "How to use AI-generated files",
+    "revise-start": "What if you change one number?",
+    "audio-start": "Sync narration and visuals",
+    "check-start": "Is the video ready to deliver?",
+    "practice-start": "Start with your own topic"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "610db70db83f",
+      "route-begin": "ba5cb23adc34",
+      "brief-goal": "f65d0ddccb91",
+      "build-start": "c276889fde4d",
+      "revise-start": "4552419aaf8d",
+      "audio-start": "f30bb42b979a",
+      "check-start": "721afa938b5b",
+      "practice-start": "45adfe913a3b"
+    },
+    "title": "4730c6b16c99",
+    "description": "203828ce423b",
+    "tags": "2faecd1e2eb8",
+    "thumbnail": "753fc0c73bc9"
+  },
+  "lines": {
+    "801093": {
+      "source_hash": "909ad2e6a076",
+      "text": "It checks the data file read-only; pass the expected cell count. Proceed only if correct."
+    },
+    "976818": {
+      "source_hash": "9768186346e6",
+      "text": "This data file keeps title, target and colors together, so they're easy to edit."
+    },
+    "e8b327": {
+      "source_hash": "e8b3275841a3",
+      "text": "AI teaching animations can have editable text and numbers."
+    },
+    "00aeec": {
+      "source_hash": "39d3dceaa345",
+      "text": "In this dice chart, code calculates every highlighted cell."
+    },
+    "c5a4b1": {
+      "source_hash": "c5a4b186e71f",
+      "text": "If the question changes, do highlighted cells change too?"
+    },
+    "74eeac": {
+      "source_hash": "74eeac02adc3",
+      "text": "New language: will scenes move on before speech ends?"
+    },
+    "79a96a": {
+      "source_hash": "1e28b1f36cfb",
+      "text": "We'll turn a brief into a teaching short and keep instructions for editing it."
+    },
+    "aa0639": {
+      "source_hash": "aa06395c5889",
+      "text": "You need to fix the typo, not roll again for another pretty image."
+    },
+    "c2d378": {
+      "source_hash": "b38dfc83a70a",
+      "text": "What should you ask AI for besides just a finished video?"
+    },
+    "47c7d2": {
+      "source_hash": "47c7d244cfd7",
+      "text": "Keep text and values in a data file, easy to find and edit."
+    },
+    "5a37fc": {
+      "source_hash": "5a37fc4af4f2",
+      "text": "Have a separate program read the data and arrange the visuals and their timing."
+    },
+    "56c197": {
+      "source_hash": "56c197a80bcd",
+      "text": "The video is only the output. Keep the files needed to recreate it too."
+    },
+    "56ccfa": {
+      "source_hash": "d97745bb69a7",
+      "text": "We need precise cells and numbers, so we chose animation made with code."
+    },
+    "1712ce": {
+      "source_hash": "2d49ec6ed918",
+      "text": "But this grid example won't suit character performances."
+    },
+    "de0fb5": {
+      "source_hash": "98fa2d14fe2c",
+      "text": "Make a preview, check that it explains clearly, then add detail."
+    },
+    "2c063b": {
+      "source_hash": "2c063b151123",
+      "text": "Just say: deliver an editable project, with text and values in a data file."
+    },
+    "5e5629": {
+      "source_hash": "3170e97467c8",
+      "text": "Copy it before editing, so you don't overwrite the version you got right."
+    },
+    "4a14bd": {
+      "source_hash": "4a14bd9a0197",
+      "text": "The file format is set, but you still need to decide what it should show."
+    },
+    "ea140a": {
+      "source_hash": "ea140aed008f",
+      "text": "This short answers just one question: why aren't dice sums equally likely?"
+    },
+    "21c1bc": {
+      "source_hash": "87e293632e89",
+      "text": "Start with two independent, fair dice: one on the horizontal axis, one on the vertical."
+    },
+    "8f5f2e": {
+      "source_hash": "8f5f2e46e80e",
+      "text": "Count one plus six and six plus one separately: two dice have ordered outcomes."
+    },
+    "6b1614": {
+      "source_hash": "6b16140f2bd5",
+      "text": "Write the conditions first. Don't let AI guess facts while drawing."
+    },
+    "1832d2": {
+      "source_hash": "1832d20fd272",
+      "text": "Show the full grid. Don't omit outcomes just to look good."
+    },
+    "c141fc": {
+      "source_hash": "c141fc78970c",
+      "text": "Sum both dice in each cell; color only those that qualify."
+    },
+    "c5a99d": {
+      "source_hash": "c5a99df6d3f7",
+      "text": "Use real text for titles and legends, so you can edit them later."
+    },
+    "719e7c": {
+      "source_hash": "719e7cc8c4c9",
+      "text": "Write this prompt: show all ordered outcomes for two fair dice."
+    },
+    "f2c1f3": {
+      "source_hash": "f2c1f3e153d2",
+      "text": "Show a grid and color the cells that match the target sum."
+    },
+    "475bb2": {
+      "source_hash": "475bb2cd6284",
+      "text": "Show all, then the target; finally compare the two results."
+    },
+    "8a3f5b": {
+      "source_hash": "69ff2f26b4d0",
+      "text": "A timeline reveals points one by one, instead of cramming all charts together."
+    },
+    "520a3b": {
+      "source_hash": "520a3be4c068",
+      "text": "Start with an off-white background, dark text and one accent color to guide the eye."
+    },
+    "9dd115": {
+      "source_hash": "8e0d4a5b1c3b",
+      "text": "You may ask: does it need lots of motion? Cells light up one by one to clarify combinations."
+    },
+    "0c086d": {
+      "source_hash": "f52349faae8e",
+      "text": "If motion doesn't aid understanding, ask AI to remove it."
+    },
+    "76fc63": {
+      "source_hash": "65be90259a60",
+      "text": "Say the audience is new to probability: show combinations first, not formulas up front."
+    },
+    "066452": {
+      "source_hash": "066452e5805d",
+      "text": "If mainly for phones, request large text and legends away from the edges."
+    },
+    "7b0c6d": {
+      "source_hash": "7b0c6de91eaf",
+      "text": "Ask for the cell-highlighting scene first, not the entire finished video."
+    },
+    "1f3f10": {
+      "source_hash": "1f3f1035868f",
+      "text": "With the key scene ready, ask AI to make it a runnable project."
+    },
+    "291f73": {
+      "source_hash": "291f73fb2e95",
+      "text": "Read title and target from a file; don't duplicate values."
+    },
+    "60d6c7": {
+      "source_hash": "60d6c7382915",
+      "text": "Ask for install, preview, export commands and file explanations."
+    },
+    "d27bc5": {
+      "source_hash": "d27bc5332ae2",
+      "text": "Write a separate checker that recalculates the correct answer from all outcomes."
+    },
+    "b22122": {
+      "source_hash": "1c08968692ef",
+      "text": "This example draws frames with a graphics library, then joins them with a video tool."
+    },
+    "182fcd": {
+      "source_hash": "182fcdc8a235",
+      "text": "After downloading, unzip the materials and check that data and code share a folder."
+    },
+    "a2d3d8": {
+      "source_hash": "a2d3d89f20c8",
+      "text": "Install the graphics library as shown; check the video tool and Chinese font."
+    },
+    "b13c3e": {
+      "source_hash": "b13c3efb91c3",
+      "text": "Language field: Traditional Chinese only; a new code won't auto-translate it."
+    },
+    "5f446c": {
+      "source_hash": "66f8cc7b60b8",
+      "text": "It reads and writes files, so limit it to this practice project. Keep important files out."
+    },
+    "f37b7f": {
+      "source_hash": "f37b7f74705b",
+      "text": "Wonder what this command does? Ask AI to explain what it reads and writes."
+    },
+    "9aa7fd": {
+      "source_hash": "7ec50ea81a42",
+      "text": "Success means this check passed; it doesn't mean the video is finished."
+    },
+    "2a7dbb": {
+      "source_hash": "2a7dbb6accb8",
+      "text": "On error, paste the message and ask it to fix only what's needed for a preview."
+    },
+    "d6ecd3": {
+      "source_hash": "d6ecd3e2aac3",
+      "text": "Does a passed check mean it's ready to deliver? First, look at the key frames."
+    },
+    "5d4f54": {
+      "source_hash": "1e1132806ccb",
+      "text": "Every highlighted cell should be a dice pair that matches the target sum."
+    },
+    "cbba85": {
+      "source_hash": "cbba85933a61",
+      "text": "To compare another sum, keep both cell size and the grid's full range fixed."
+    },
+    "1de727": {
+      "source_hash": "1de727b378d5",
+      "text": "Shrink to phone width. Is the title readable? Can you spot the main point?"
+    },
+    "0dd30b": {
+      "source_hash": "0dd30b51e2a5",
+      "text": "Only now export the video. Waiting for a full render doesn't verify the content."
+    },
+    "52cf29": {
+      "source_hash": "659765acd649",
+      "text": "Rendering reads the same data, exports silent video and preview frames; names match shown settings. Add narration separately."
+    },
+    "005752": {
+      "source_hash": "0057524ad324",
+      "text": "To check just the graphics, use the frames-only option. Review them before making the full video."
+    },
+    "7bf8fb": {
+      "source_hash": "79e29f08b614",
+      "text": "Now it plays. Back to our opening question: change just one number, and will the visuals follow?"
+    },
+    "a1f88a": {
+      "source_hash": "a1f88a5878fb",
+      "text": "Set the data's target sum to six; keep other settings unchanged."
+    },
+    "07771e": {
+      "source_hash": "07771e44e3fb",
+      "text": "Tell AI: change only the target sum; recalculate highlighted cells and text."
+    },
+    "8eb4eb": {
+      "source_hash": "8eb4ebe2e681",
+      "text": "Add: keep the colors, fonts and scene order."
+    },
+    "05bc8a": {
+      "source_hash": "dc7ba812bb7f",
+      "text": "The new target moves the highlights; the count beside them must update too."
+    },
+    "f6f6be": {
+      "source_hash": "39ab63b6c885",
+      "text": "Remember our opening question? The highlights did change: now five cells match."
+    },
+    "7a42ba": {
+      "source_hash": "a911455415a1",
+      "text": "If the chart changes but its title keeps the old number, ask it to find duplicate hardcoded values."
+    },
+    "8c2bc9": {
+      "source_hash": "8c2bc98e7627",
+      "text": "Ask for changed files and reasons, so you'll know if anything else was changed too."
+    },
+    "de08dd": {
+      "source_hash": "de08ddd609ec",
+      "text": "Save before and after copies. Avoid another 'really final version two'."
+    },
+    "c7b43e": {
+      "source_hash": "c7b43e868697",
+      "text": "Reword the title yourself, preview again, and check that longer text still fits."
+    },
+    "7e3f75": {
+      "source_hash": "7e3f75e8a4f7",
+      "text": "If a title is too long, ask for sensible line breaks; don't shrink all text till unreadable."
+    },
+    "594e82": {
+      "source_hash": "00bc69ca66bf",
+      "text": "The numbers update together. Will the layout still fit in another language?"
+    },
+    "c30642": {
+      "source_hash": "c30642208449",
+      "text": "After translating, check actual narration length, then set scene durations."
+    },
+    "1b4829": {
+      "source_hash": "1b48298c8391",
+      "text": "Use short, self-contained sentences, one point per sentence."
+    },
+    "a49833": {
+      "source_hash": "a49833a85725",
+      "text": "After synthesis or recording, time the actual audio. Don't rely on estimates."
+    },
+    "1faa10": {
+      "source_hash": "1faa1096aa9b",
+      "text": "Keep the scene until the sentence ends, plus some time to read the chart."
+    },
+    "b4de26": {
+      "source_hash": "b4de2640745f",
+      "text": "Light cells only when narration mentions matching results, so sound and action align."
+    },
+    "4df2bf": {
+      "source_hash": "d6fdd018eeef",
+      "text": "If it won't fit, simplify narration first; don't speed it all up."
+    },
+    "c41135": {
+      "source_hash": "c4113583e176",
+      "text": "Keep key titles onscreen; put full narration in captions you can toggle."
+    },
+    "802a26": {
+      "source_hash": "802a2616273d",
+      "text": "Preserve the meaning, but check text length, pauses and pronunciation for each language."
+    },
+    "bf54ca": {
+      "source_hash": "bf54ca1ecbe3",
+      "text": "Replay numbers and proper names on their own. Correct written text isn't enough."
+    },
+    "ba0179": {
+      "source_hash": "ba017974575f",
+      "text": "Sample captions use planned timing; align them to the audio once narration is ready."
+    },
+    "cab285": {
+      "source_hash": "040ee865a72e",
+      "text": "Align the sentence on highlighted cells first; use that method for other parts."
+    },
+    "a6c28e": {
+      "source_hash": "c125c333ada5",
+      "text": "Mute the video, then see if the visuals explain what's being compared."
+    },
+    "0b06d1": {
+      "source_hash": "5baee97982b1",
+      "text": "Finally turn sound on. Check that narration explains the visuals without competing for attention."
+    },
+    "b919e0": {
+      "source_hash": "b919e084249d",
+      "text": "After watching, check each item in the original brief, one by one."
+    },
+    "ee8b7c": {
+      "source_hash": "ee8b7c92ac39",
+      "text": "Check conditions and counts first; smooth motion can't excuse math errors."
+    },
+    "b69ae1": {
+      "source_hash": "b69ae171f159",
+      "text": "Check text fits and cells and colors are easy to distinguish."
+    },
+    "481fba": {
+      "source_hash": "481fba412023",
+      "text": "Check it plays, and the package has audio, captions and all source files."
+    },
+    "18691a": {
+      "source_hash": "18691a3312cf",
+      "text": "The checker recalculates from dice combinations, not numbers claimed on screen."
+    },
+    "28a3eb": {
+      "source_hash": "55c13b8f6a34",
+      "text": "Code can check the grid, but can't judge whether your explanation is clear."
+    },
+    "203f1e": {
+      "source_hash": "203f1ef738b1",
+      "text": "Watch the start and end for abrupt cuts or a leftover blank ending."
+    },
+    "7311eb": {
+      "source_hash": "7311eb218600",
+      "text": "Does the edited version need checking too? Yes: export it again to verify the editing process works."
+    },
+    "75368c": {
+      "source_hash": "75368c340bf4",
+      "text": "For unsupported inputs, stop and explain why; don't silently draw a different problem."
+    },
+    "9d8939": {
+      "source_hash": "9d8939ad1e6a",
+      "text": "Give AI the error and your edited data. Ask it to explain which condition isn't accepted."
+    },
+    "c38a5e": {
+      "source_hash": "c38a5ea1a53b",
+      "text": "At handoff, note changes to the question, values or timing, so others know where to look first."
+    },
+    "a56276": {
+      "source_hash": "a56276207b17",
+      "text": "Put asset sources and uses in the handoff notes, so others won't have to guess."
+    },
+    "84576e": {
+      "source_hash": "84576e7d6b40",
+      "text": "This proves the grid can be recreated, not that any AI can make every video in one go."
+    },
+    "ad1b2c": {
+      "source_hash": "054729100069",
+      "text": "The dice example is done. Try your own topic: start with a concept you can show changing before and after."
+    },
+    "d8b2ca": {
+      "source_hash": "d8b2cae88a9d",
+      "text": "State the learning goal in one line; cut unrelated content."
+    },
+    "c90844": {
+      "source_hash": "c90844b472ac",
+      "text": "Pick a key diagram; ask AI for an editable preview first."
+    },
+    "f9399e": {
+      "source_hash": "f9399e7f8738",
+      "text": "Then change one parameter. Do the graphics, text and counts all update together?"
+    },
+    "2506eb": {
+      "source_hash": "2506ebb02002",
+      "text": "Before handoff, have someone follow the guide to recreate it and find missing steps."
+    },
+    "f064e3": {
+      "source_hash": "f064e36f242e",
+      "text": "The materials keep the brief, prompts and code; start with the original, then swap in your own content."
+    },
+    "f576ae": {
+      "source_hash": "7449bd375c8e",
+      "text": "When sharing the video, include the project to recreate it."
+    },
+    "9e738a": {
+      "source_hash": "9e738a72de6e",
+      "text": "What hard topic do you most want to animate? Comment."
+    },
+    "ed8308": {
+      "source_hash": "ed83087a94a1",
+      "text": "Subscribe and follow along to make AI projects you can proudly show."
+    }
+  },
+  "thumbnail": {
+    "tag": "AI teaching animation",
+    "headline": "**EDITABLE**",
+    "sub": "Keep source files"
+  }
+}

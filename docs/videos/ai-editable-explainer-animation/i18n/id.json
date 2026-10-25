@@ -1,0 +1,449 @@
+{
+  "title": "Buat Animasi Pembelajaran dengan AI: Teks dan Angka Bisa Diedit",
+  "description": "Dari satu pertanyaan, buat animasi pembelajaran yang bisa diedit. Lewat diagram orisinal dua dadu, latih penulisan kebutuhan, permintaan berkas yang bisa diedit, pratinjau, perubahan parameter, penyelarasan narasi, dan pemeriksaan hasil.\n\nEpisode ini memakai contoh gambar Python dan FFmpeg yang ditulis bersama AI, bukan rekaman penggunaan Claude Motion, dan tidak mengklaim satu produk bisa menyelesaikan semuanya sekali jalan. Materi pendamping mencakup berkas data, program, prompt yang bisa disalin, dan cara pemeriksaan.\n\nTanggal konfirmasi data dan produksi: 2026-10-25. Demo ini adalah proyek orisinal yang benar-benar dibuat untuk episode ini; video referensi publik hanya dipakai untuk riset topik dan penyajian.\n\nCatatan materi: kolom data contoh dadu hanya mendukung zh-TW; contoh MP4 sengaja tanpa suara, dan waktu pada contoh SRT adalah rancangan adegan, bukan hasil penyelarasan dengan narasi yang diukur. Narasi, CC, dan sulih suara delapan bahasa pada video utama dibuat lewat alur produksi tersendiri.\n\nMateri lengkap dan prompt yang bisa disalin:\nhttps://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
+  "tags": [
+    "tutorial AI",
+    "animasi AI",
+    "video pembelajaran",
+    "animasi program",
+    "animasi bisa diedit",
+    "produksi video"
+  ],
+  "thumbnail": {
+    "tag": "Animasi ajar AI",
+    "headline": "**Bisa diedit**",
+    "sub": "Simpan berkas sumber"
+  },
+  "chapters": {
+    "opening": "Animasi bisa diedit?",
+    "route-begin": "Mengapa minta berkas sumber?",
+    "brief-goal": "Menulis kebutuhan animasi",
+    "build-start": "Memakai berkas dari AI",
+    "revise-start": "Apa akibat mengubah angka?",
+    "audio-start": "Menyelaraskan narasi dan gambar",
+    "check-start": "Kapan video siap diserahkan?",
+    "practice-start": "Mulai topikmu sendiri"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "610db70db83f",
+      "route-begin": "ba5cb23adc34",
+      "brief-goal": "f65d0ddccb91",
+      "build-start": "c276889fde4d",
+      "revise-start": "4552419aaf8d",
+      "audio-start": "f30bb42b979a",
+      "check-start": "721afa938b5b",
+      "practice-start": "45adfe913a3b"
+    },
+    "title": "4730c6b16c99",
+    "description": "203828ce423b",
+    "tags": "2faecd1e2eb8",
+    "thumbnail": "753fc0c73bc9"
+  },
+  "lines": {
+    "801093": {
+      "source_hash": "909ad2e6a076",
+      "text": "Cek data tanpa mengubah sumber; parameter: jumlah sel yang diharapkan. Lanjut jika cocok."
+    },
+    "976818": {
+      "source_hash": "9768186346e6",
+      "text": "Judul, target, dan warna ada di satu berkas data agar mudah kamu ubah."
+    },
+    "e8b327": {
+      "source_hash": "e8b3275841a3",
+      "text": "Animasi ajar AI pun bisa diubah teks dan angkanya."
+    },
+    "00aeec": {
+      "source_hash": "39d3dceaa345",
+      "text": "Di diagram dadu ini, tiap sel menyala dihitung program."
+    },
+    "c5a4b1": {
+      "source_hash": "c5a4b186e71f",
+      "text": "Jika soal diganti, apakah sel menyala ikut berubah?"
+    },
+    "74eeac": {
+      "source_hash": "74eeac02adc3",
+      "text": "Narasi berganti bahasa, gambar sudah beralih?"
+    },
+    "79a96a": {
+      "source_hash": "1e28b1f36cfb",
+      "text": "Kali ini, buat video ajar dari kebutuhan, sertakan cara mengeditnya."
+    },
+    "aa0639": {
+      "source_hash": "aa06395c5889",
+      "text": "Bukan mengundi gambar bagus lagi; kamu mau betul-betul membetulkan salah ketik."
+    },
+    "c2d378": {
+      "source_hash": "b38dfc83a70a",
+      "text": "Minta apa ke AI agar hasilnya bukan cuma video jadi?"
+    },
+    "47c7d2": {
+      "source_hash": "47c7d244cfd7",
+      "text": "Teks, angka di berkas data mudah dicari saat edit."
+    },
+    "5a37fc": {
+      "source_hash": "5a37fc4af4f2",
+      "text": "Program lain membaca data, lalu menata gambar dan waktunya di layar."
+    },
+    "56c197": {
+      "source_hash": "56c197a80bcd",
+      "text": "Video hanya hasil ekspor; simpan juga berkas untuk membuatnya ulang."
+    },
+    "56ccfa": {
+      "source_hash": "d97745bb69a7",
+      "text": "Kita perlu sel dan angka presisi, jadi pilih animasi program."
+    },
+    "1712ce": {
+      "source_hash": "2d49ec6ed918",
+      "text": "Tapi jika perlu akting tokoh, contoh kisi ini tidak cocok."
+    },
+    "de0fb5": {
+      "source_hash": "98fa2d14fe2c",
+      "text": "Buat versi awal, pastikan jelas, baru tambah detail."
+    },
+    "2c063b": {
+      "source_hash": "2c063b151123",
+      "text": "Kamu bisa bilang: beri proyek bisa diedit, teks dan angka di berkas data."
+    },
+    "5e5629": {
+      "source_hash": "3170e97467c8",
+      "text": "Salin sebelum edit agar versi yang sudah benar tak ikut berubah."
+    },
+    "4a14bd": {
+      "source_hash": "4a14bd9a0197",
+      "text": "Format berkas dipilih, tapi kamu tetap tentukan apa yang digambar."
+    },
+    "ea140a": {
+      "source_hash": "ea140aed008f",
+      "text": "Video hanya menjawab mengapa peluang total mata dadu berbeda."
+    },
+    "21c1bc": {
+      "source_hash": "87e293632e89",
+      "text": "Susun dua dadu adil independen: satu di sumbu X, satu di sumbu Y."
+    },
+    "8f5f2e": {
+      "source_hash": "8f5f2e46e80e",
+      "text": "1+6 dan 6+1 dihitung terpisah: urutan hasil dadu penting."
+    },
+    "6b1614": {
+      "source_hash": "6b16140f2bd5",
+      "text": "Tulis syarat dulu, jangan AI tebak fakta sambil menggambar."
+    },
+    "1832d2": {
+      "source_hash": "1832d20fd272",
+      "text": "Minta kisi utuh, jangan buang hasil demi estetika."
+    },
+    "c141fc": {
+      "source_hash": "c141fc78970c",
+      "text": "Cek jumlah dua dadu tiap sel, warnai jika cocok."
+    },
+    "c5a99d": {
+      "source_hash": "c5a99df6d3f7",
+      "text": "Minta judul dan legenda berupa teks agar bisa langsung diedit."
+    },
+    "719e7c": {
+      "source_hash": "719e7cc8c4c9",
+      "text": "Prompt: gambar semua pasangan berurutan dari dua dadu adil."
+    },
+    "f2c1f3": {
+      "source_hash": "f2c1f3e153d2",
+      "text": "Tampilkan kisi, warnai sel dengan jumlah yang dituju."
+    },
+    "475bb2": {
+      "source_hash": "475bb2cd6284",
+      "text": "Lihat semua, target, lalu bandingkan dua hasil."
+    },
+    "8a3f5b": {
+      "source_hash": "69ff2f26b4d0",
+      "text": "Linimasa bukan menjejali semua gambar; fokus muncul satu per satu."
+    },
+    "520a3b": {
+      "source_hash": "520a3be4c068",
+      "text": "Pilih latar putih gading, teks gelap, satu warna aksen agar mata terarah."
+    },
+    "9dd115": {
+      "source_hash": "8e0d4a5b1c3b",
+      "text": "Harus banyak gerakan? Sel menyala berurutan agar kombinasinya terlihat jelas."
+    },
+    "0c086d": {
+      "source_hash": "f52349faae8e",
+      "text": "Jika gerakan tak membantu pemahaman, minta AI hapus."
+    },
+    "76fc63": {
+      "source_hash": "65be90259a60",
+      "text": "Jelaskan: penonton belum belajar peluang; lihat kombinasi dulu, bukan rumus."
+    },
+    "066452": {
+      "source_hash": "066452e5805d",
+      "text": "Untuk ponsel, minta teks besar dan legenda jauh dari tepi."
+    },
+    "7b0c6d": {
+      "source_hash": "7b0c6de91eaf",
+      "text": "Minta adegan pewarnaan sel dulu, jangan langsung minta video utuh."
+    },
+    "1f3f10": {
+      "source_hash": "1f3f1035868f",
+      "text": "Gambar inti ada, minta AI kemas jadi proyek siap jalan."
+    },
+    "291f73": {
+      "source_hash": "291f73fb2e95",
+      "text": "Baca judul, target dari data; jangan hardcode angka."
+    },
+    "60d6c7": {
+      "source_hash": "60d6c7382915",
+      "text": "Minta perintah instalasi, pratinjau, ekspor, serta penjelasan fungsi tiap berkas."
+    },
+    "d27bc5": {
+      "source_hash": "d27bc5332ae2",
+      "text": "Tulis juga program pemeriksa yang menghitung ulang jawaban dari semua hasil."
+    },
+    "b22122": {
+      "source_hash": "1c08968692ef",
+      "text": "Contoh ini memakai paket gambar untuk bingkai, lalu alat video merangkainya."
+    },
+    "182fcd": {
+      "source_hash": "182fcdc8a235",
+      "text": "Unduh materi, ekstrak folder, pastikan data dan program berada di tempat sama."
+    },
+    "a2d3d8": {
+      "source_hash": "a2d3d89f20c8",
+      "text": "Ikuti panduan pasang paket gambar; cek alat video dan font Mandarin ada."
+    },
+    "b13c3e": {
+      "source_hash": "b13c3efb91c3",
+      "text": "Kolom bahasa hanya Mandarin Tradisional; ganti kode tak otomatis terjemah."
+    },
+    "5f446c": {
+      "source_hash": "66f8cc7b60b8",
+      "text": "Ia baca dan tulis berkas; batasi ke proyek latihan ini, jangan campur berkas penting."
+    },
+    "f37b7f": {
+      "source_hash": "f37b7f74705b",
+      "text": "Apa fungsi baris ini? Minta AI jelaskan apa yang dibaca dan ditulis."
+    },
+    "9aa7fd": {
+      "source_hash": "7ec50ea81a42",
+      "text": "Tanda sukses hanya berarti pemeriksaan lolos, bukan video selesai."
+    },
+    "2a7dbb": {
+      "source_hash": "2a7dbb6accb8",
+      "text": "Tempel galat, minta perbaiki hanya agar contoh bisa dipratinjau."
+    },
+    "d6ecd3": {
+      "source_hash": "d6ecd3e2aac3",
+      "text": "Cek lolos berarti siap dikirim? Lihat dulu bingkai kunci."
+    },
+    "5d4f54": {
+      "source_hash": "1e1132806ccb",
+      "text": "Tiap sel menyala seharusnya satu pasangan angka yang sesuai target."
+    },
+    "cbba85": {
+      "source_hash": "cbba85933a61",
+      "text": "Saat membandingkan jumlah lain, ukuran sel dan cakupan tetap sama."
+    },
+    "1de727": {
+      "source_hash": "1de727b378d5",
+      "text": "Perkecil selebar ponsel; cek judul terbaca, fokus terlihat."
+    },
+    "0dd30b": {
+      "source_hash": "0dd30b51e2a5",
+      "text": "Baru ekspor video; menunggu konversi penuh bukan verifikasi isi."
+    },
+    "52cf29": {
+      "source_hash": "659765acd649",
+      "text": "Render baca data sama, hasilkan video bisu dan bingkai pratinjau; nama sesuai layar, tambah narasi terpisah."
+    },
+    "005752": {
+      "source_hash": "0057524ad324",
+      "text": "Untuk cek gambar saja, pilih opsi bingkai saja; lihat gambarnya sebelum membuat video utuh."
+    },
+    "7bf8fb": {
+      "source_hash": "79e29f08b614",
+      "text": "Video bisa diputar. Kembali ke soal awal: jika satu angka diubah, apakah gambar ikut berubah?"
+    },
+    "a1f88a": {
+      "source_hash": "a1f88a5878fb",
+      "text": "Ubah jumlah target di data jadi enam, pengaturan lain tetap."
+    },
+    "07771e": {
+      "source_hash": "07771e44e3fb",
+      "text": "AI: ubah jumlah target saja, hitung ulang sel menyala dan teks."
+    },
+    "8eb4eb": {
+      "source_hash": "8eb4ebe2e681",
+      "text": "Tambahkan: pertahankan warna, font, dan urutan adegan."
+    },
+    "05bc8a": {
+      "source_hash": "dc7ba812bb7f",
+      "text": "Target baru: sel menyala berganti, angka samping wajib diperbarui."
+    },
+    "f6f6be": {
+      "source_hash": "39ab63b6c885",
+      "text": "Ingat soal awal? Sel menyala ikut berubah, kini lima sel memenuhi syarat."
+    },
+    "7a42ba": {
+      "source_hash": "a911455415a1",
+      "text": "Jika gambar berubah tapi judul masih angka lama, minta cari angka tetap yang duplikat."
+    },
+    "8c2bc9": {
+      "source_hash": "8c2bc98e7627",
+      "text": "Minta daftar berkas yang diubah dan alasannya untuk cek perubahan lain."
+    },
+    "de08dd": {
+      "source_hash": "de08ddd609ec",
+      "text": "Simpan sebelum dan sesudah, jangan ada lagi 'final sungguhan v2'."
+    },
+    "c7b43e": {
+      "source_hash": "c7b43e868697",
+      "text": "Ganti judul pakai pertanyaanmu; pratinjau, cek teks panjang tak meluap."
+    },
+    "7e3f75": {
+      "source_hash": "7e3f75e8a4f7",
+      "text": "Judul panjang, minta ganti baris wajar; jangan perkecil teks hingga tak terbaca."
+    },
+    "594e82": {
+      "source_hash": "00bc69ca66bf",
+      "text": "Angka terbukti ikut berubah. Kalau ganti bahasa, apakah tata letaknya muat?"
+    },
+    "c30642": {
+      "source_hash": "c30642208449",
+      "text": "Usai ganti bahasa, dengar durasi narasi jadi, baru atur lama gambar."
+    },
+    "1b4829": {
+      "source_hash": "1b48298c8391",
+      "text": "Bagi narasi: tiap kalimat pendek, mandiri, satu fokus."
+    },
+    "a49833": {
+      "source_hash": "a49833a85725",
+      "text": "Usai sintesis atau rekaman, ukur audio asli, bukan perkiraan detik."
+    },
+    "1faa10": {
+      "source_hash": "1faa1096aa9b",
+      "text": "Tahan gambar sampai kalimat usai, tambah waktu membaca gambar."
+    },
+    "b4de26": {
+      "source_hash": "b4de2640745f",
+      "text": "Sel baru menyala saat hasil yang cocok disebut, agar suara dan gerakan selaras."
+    },
+    "4df2bf": {
+      "source_hash": "d6fdd018eeef",
+      "text": "Tak muat? Ringkas narasi dulu, jangan buru-buru percepat."
+    },
+    "c41135": {
+      "source_hash": "c4113583e176",
+      "text": "Judul penting di layar; narasi utuh di takarir bisa dimatikan."
+    },
+    "802a26": {
+      "source_hash": "802a2616273d",
+      "text": "Terjemahan jaga makna; panjang teks, jeda, dan pelafalan tiap bahasa harus dicek sendiri."
+    },
+    "bf54ca": {
+      "source_hash": "bf54ca1ecbe3",
+      "text": "Dengarkan ulang angka dan nama khusus; jangan hanya memastikan tulisannya benar."
+    },
+    "ba0179": {
+      "source_hash": "ba017974575f",
+      "text": "Takarir dipotong sesuai desain waktu; narasi jadi, selaraskan ke audio."
+    },
+    "cab285": {
+      "source_hash": "040ee865a72e",
+      "text": "Selaraskan kalimat soal sel menyala, lalu terapkan ke bagian lain."
+    },
+    "a6c28e": {
+      "source_hash": "c125c333ada5",
+      "text": "Bisukan video, lihat apakah gambar menjelaskan yang dibandingkan."
+    },
+    "0b06d1": {
+      "source_hash": "5baee97982b1",
+      "text": "Nyalakan lagi suara; pastikan narasi menjelaskan gambar tanpa berebut perhatian."
+    },
+    "b919e0": {
+      "source_hash": "b919e084249d",
+      "text": "Video usai diputar, cocokkan kebutuhan awal satu per satu."
+    },
+    "ee8b7c": {
+      "source_hash": "ee8b7c92ac39",
+      "text": "Cek syarat, hitungan; animasi mulus tak membenarkan salah hitung."
+    },
+    "b69ae1": {
+      "source_hash": "b69ae171f159",
+      "text": "Cek teks tak meluap, sel dan warna mudah dikenali."
+    },
+    "481fba": {
+      "source_hash": "481fba412023",
+      "text": "Cek video bisa diputar; audio, takarir, dan sumber ada dalam paket."
+    },
+    "18691a": {
+      "source_hash": "18691a3312cf",
+      "text": "Program cek hitung ulang dari kombinasi dadu, bukan angka klaim pada gambar."
+    },
+    "28a3eb": {
+      "source_hash": "55c13b8f6a34",
+      "text": "Program cek sel, tapi tak menilai apakah penjelasan mudah dipahami."
+    },
+    "203f1e": {
+      "source_hash": "203f1ef738b1",
+      "text": "Cek awal dan akhir agar tak terpotong atau ada sisa bagian kosong."
+    },
+    "7311eb": {
+      "source_hash": "7311eb218600",
+      "text": "Versi edit perlu dicek lagi? Ekspor ulang juga, pastikan alur revisi berjalan."
+    },
+    "75368c": {
+      "source_hash": "75368c340bf4",
+      "text": "Syarat tak didukung: jelaskan lalu berhenti, jangan diam-diam ganti soal."
+    },
+    "9d8939": {
+      "source_hash": "9d8939ad1e6a",
+      "text": "Beri AI pesan galat dan data editanmu; minta jelaskan syarat yang ditolak."
+    },
+    "c38a5e": {
+      "source_hash": "c38a5ea1a53b",
+      "text": "Catat revisi soal, nilai, atau waktu agar penerima tahu bagian yang dicek dulu."
+    },
+    "a56276": {
+      "source_hash": "a56276207b17",
+      "text": "Catat sumber aset dan cara pakai di panduan serah terima agar tak perlu ditebak."
+    },
+    "84576e": {
+      "source_hash": "84576e7d6b40",
+      "text": "Contoh ini membuktikan kisi bisa dibuat ulang, bukan semua AI bisa sekali jadi membuat semua video."
+    },
+    "ad1b2c": {
+      "source_hash": "054729100069",
+      "text": "Soal dadu usai. Ganti topikmu, pilih konsep yang bisa digambar sebagai perubahan sebelum-sesudah."
+    },
+    "d8b2ca": {
+      "source_hash": "d8b2cae88a9d",
+      "text": "Tulis pesan yang harus dipahami, hapus isi tak terkait."
+    },
+    "c90844": {
+      "source_hash": "c90844b472ac",
+      "text": "Pilih gambar wajib; minta AI pratinjau bisa diedit."
+    },
+    "f9399e": {
+      "source_hash": "f9399e7f8738",
+      "text": "Ubah satu parameter, cek apakah gambar, teks, hitungan ikut berubah."
+    },
+    "2506eb": {
+      "source_hash": "2506ebb02002",
+      "text": "Sebelum serahkan, minta ia ulangi sesuai panduan, cek langkah terlewat."
+    },
+    "f064e3": {
+      "source_hash": "f064e36f242e",
+      "text": "Materi menyimpan kebutuhan, prompt, program; mulai dari aslinya, lalu ganti dengan isimu."
+    },
+    "f576ae": {
+      "source_hash": "7449bd375c8e",
+      "text": "Kirim video bersama proyek pembuat ulang animasinya."
+    },
+    "9e738a": {
+      "source_hash": "9e738a72de6e",
+      "text": "Soal apa sukar dijelaskan? Mau animasi? Komentar."
+    },
+    "ed8308": {
+      "source_hash": "ed83087a94a1",
+      "text": "Langganan kanal ini; ikuti cara memakai AI untuk karya layak tampil."
+    }
+  }
+}

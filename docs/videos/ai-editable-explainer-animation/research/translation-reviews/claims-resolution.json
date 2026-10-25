@@ -1,0 +1,158 @@
+{
+  "review_type": "claims_conflict_resolution_actual_read",
+  "reviewed_at_utc": "2026-10-25T17:21:57.363691+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false
+  },
+  "verdict": "resolved",
+  "supersedes": "Historical upstream c10/005752 source-versus-claims warning in en/es/pt review reports and ES/PT post-fix reviews. Original reports are preserved as historical records.",
+  "actual_reads": [
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/claims.md",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/frames-only-verification.json",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/en.json",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/es.json",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json"
+  ],
+  "hashes": {
+    "claims_md_sha256": "62ac7dc0e0f3d7cfd870cc80ba49b87f17c7356edaf2d27553387e6e2d43175d",
+    "frames_only_verification_sha256": "922f91d34a0c8620a25bb3dc1918db6405e3bb692483ac05fc939aea3330c015",
+    "video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "verify_1_historical_sha256_read_only": "551a48ac8652c865615a3ffe95820312944e36b34f6dcd7e0f6d8048cf0bd7a8"
+  },
+  "current_claim_c10": "CONFIRMED: existing --frames-only option is supported by recorded actual execution; no primary narration rewrite needed.",
+  "proof_record": {
+    "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python /workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py /workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json --frames-only --frames-dir /workspace/work/ai-animation-01/ledger-frames-only/frames --output /workspace/work/ai-animation-01/ledger-frames-only/sum6-preview.mp4 --summary",
+    "test_exit_code": 0,
+    "reported_png_count": 6,
+    "reported_mp4_count": 0,
+    "reported_summary": "OK: exported preview frames\n1280x720 24fps duration=54s audio=none (planned; frames only)\ntarget_sum=6 highlighted_count=5\n",
+    "passed": true,
+    "test_executed_by_this_reviewer": false
+  },
+  "independent_read_only_artifact_checks": {
+    "all_five_current_source_hashes_match_proof": true,
+    "source_hashes": {
+      "render_lesson.py": {
+        "expected_sha256": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+        "actual_sha256": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+        "matches": true
+      },
+      "check_lesson.py": {
+        "expected_sha256": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+        "actual_sha256": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+        "matches": true
+      },
+      "lesson-sum6.json": {
+        "expected_sha256": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+        "actual_sha256": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+        "matches": true
+      },
+      "requirements.txt": {
+        "expected_sha256": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
+        "actual_sha256": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
+        "matches": true
+      },
+      "install.txt": {
+        "expected_sha256": "0181a0147ec51b596b0b29d67feab75b7887b0fa6ee2e2560b75e61a54b5d608",
+        "actual_sha256": "0181a0147ec51b596b0b29d67feab75b7887b0fa6ee2e2560b75e61a54b5d608",
+        "matches": true
+      }
+    },
+    "all_six_PNG_hashes_sizes_and_1280x720_headers_match": true,
+    "pngs": [
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/comparison.png",
+        "sha256": "ee5c8ce4ade3e0b4ee68df376ff4e077e0a771f6fdcb2c529a423c2dbbcfdb2a",
+        "matches_recorded_sha256": true,
+        "bytes": 68017,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      },
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/grid-all.png",
+        "sha256": "710f2ca2109deb38d2149519847a87723cfe25d6c7bc4b661338fe8d44391882",
+        "matches_recorded_sha256": true,
+        "bytes": 76967,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      },
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/grid-target.png",
+        "sha256": "2f5900b07aeb359c07933b4ea48d8508004fe6a556a202441d7da5c6c7b4114d",
+        "matches_recorded_sha256": true,
+        "bytes": 79840,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      },
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/opening.png",
+        "sha256": "26e2b3f22a634d47ec2cfff3303087a5efc9f41d1ec209ef0df1e6622c70eca1",
+        "matches_recorded_sha256": true,
+        "bytes": 65132,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      },
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/sum-six.png",
+        "sha256": "bc58f53580b26992d419b7c65b9b602b203c2f11fc376051a129ca4fa94cd123",
+        "matches_recorded_sha256": true,
+        "bytes": 85100,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      },
+      {
+        "path": "/workspace/work/ai-animation-01/ledger-frames-only/frames/sum-twelve.png",
+        "sha256": "448a678be9b6618d9a4823198db82343facb111c7f1c0ec148b53e6c6e01b942",
+        "matches_recorded_sha256": true,
+        "bytes": 75488,
+        "matches_recorded_size": true,
+        "width": 1280,
+        "height": 720,
+        "is_1280x720": true
+      }
+    ],
+    "actual_mp4_files": []
+  },
+  "source_line_005752": "如果只是想檢查圖形，使用只產生影格的選項，先看圖再做完整影片。",
+  "locale_checks": {
+    "en": {
+      "translation_sha256_at_resolution_review": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+      "line_005752_actual_text_read": "To check just the graphics, use the frames-only option. Review them before making the full video.",
+      "semantic_verdict": "pass",
+      "translation_change_needed": false
+    },
+    "es": {
+      "translation_sha256_at_resolution_review": "a51751666a4fe1a237a53feef9901856d1003171cf9755e709a7cd5e72033dd3",
+      "line_005752_actual_text_read": "Para revisar figuras, usa solo fotogramas: mira las imágenes antes de hacer el video completo.",
+      "semantic_verdict": "pass",
+      "translation_change_needed": false
+    },
+    "pt": {
+      "translation_sha256_at_resolution_review": "eb6129c3f5e71202b3f722b5b2ad8ecc2138c8962dc7726702418f280719ed0e",
+      "line_005752_actual_text_read": "Para checar só as formas, gere só quadros; veja as imagens antes do vídeo completo.",
+      "semantic_verdict": "pass",
+      "translation_change_needed": false
+    }
+  },
+  "translation_changes_needed_for_005752": false,
+  "limits": [
+    "This reviewer read the completed test evidence and independently checked current source hashes, existing PNG file hashes/sizes/dimensions, and absence of MP4; the renderer was not rerun.",
+    "The 54 seconds in the frames-only summary is planned scene timing, not a measured MP4 duration.",
+    "No Claude operation/live product test is established; this is the original Python/Pillow materials example.",
+    "Historical verify-1.md was read-only and not rewritten.",
+    "No paid API calls, TTS, source edits, worksheet edits, or translation edits were made."
+  ]
+}

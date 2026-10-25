@@ -1,0 +1,449 @@
+{
+  "title": "Animação didática com AI: texto e números editáveis",
+  "description": "Parta de uma pergunta e crie uma animação didática editável. Com um diagrama original de dois dados, pratique escrever requisitos, pedir arquivos editáveis, fazer prévias, mudar parâmetros, alinhar a narração e conferir a entrega.\n\nEste episódio usa um exemplo de desenho em Python e FFmpeg escrito em colaboração com AI. Não é um registro de uso do Claude Motion, nem afirma que um único produto faça tudo de uma vez. O material inclui arquivos de dados, código, prompts para copiar e métodos de verificação.\n\nData de confirmação das informações e da produção: 2026-10-25. A demonstração é um projeto original realmente produzido nesta ocasião; os vídeos públicos de referência serviram apenas para pesquisar o tema e a apresentação.\n\nAviso sobre o material: os campos de dados do exemplo com dados só aceitam zh-TW; o MP4 do exemplo é intencionalmente sem som, e o SRT usa tempos planejados no storyboard, sem alinhamento medido com a narração. A narração, o CC e as dublagens em oito idiomas do vídeo didático principal seguem um processo de produção independente.\n\nMaterial completo e prompts para copiar:\nhttps://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
+  "tags": [
+    "tutorial de AI",
+    "animação com AI",
+    "vídeo didático",
+    "animação por código",
+    "animação editável",
+    "produção de vídeo"
+  ],
+  "thumbnail": {
+    "tag": "Animação didática AI",
+    "headline": "**EDITÁVEL**",
+    "sub": "Guarde os originais"
+  },
+  "chapters": {
+    "opening": "Animação editável?",
+    "route-begin": "Por que pedir os originais?",
+    "brief-goal": "Como escrever requisitos?",
+    "build-start": "Como usar arquivos da AI?",
+    "revise-start": "Mudando um número",
+    "audio-start": "Alinhar narração e imagem",
+    "check-start": "Como conferir a entrega?",
+    "practice-start": "Começar com seu próprio tema"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "610db70db83f",
+      "route-begin": "ba5cb23adc34",
+      "brief-goal": "f65d0ddccb91",
+      "build-start": "c276889fde4d",
+      "revise-start": "4552419aaf8d",
+      "audio-start": "f30bb42b979a",
+      "check-start": "721afa938b5b",
+      "practice-start": "45adfe913a3b"
+    },
+    "title": "4730c6b16c99",
+    "description": "203828ce423b",
+    "tags": "2faecd1e2eb8",
+    "thumbnail": "753fc0c73bc9"
+  },
+  "lines": {
+    "801093": {
+      "source_hash": "909ad2e6a076",
+      "text": "Checa dados sem editar; parâmetro: total de células esperado. Avance só se bater."
+    },
+    "976818": {
+      "source_hash": "9768186346e6",
+      "text": "Título, alvo e cores no mesmo arquivo de dados facilitam a edição."
+    },
+    "e8b327": {
+      "source_hash": "e8b3275841a3",
+      "text": "Animações didáticas com AI: edite texto e números."
+    },
+    "00aeec": {
+      "source_hash": "39d3dceaa345",
+      "text": "Na grade dos dados, o código calcula cada célula acesa."
+    },
+    "c5a4b1": {
+      "source_hash": "c5a4b186e71f",
+      "text": "Mude a pergunta: as células acesas mudam juntas?"
+    },
+    "74eeac": {
+      "source_hash": "74eeac02adc3",
+      "text": "Narração traduzida: a cena já passou?"
+    },
+    "79a96a": {
+      "source_hash": "1e28b1f36cfb",
+      "text": "Do pedido ao curta didático, deixamos também como editar."
+    },
+    "aa0639": {
+      "source_hash": "aa06395c5889",
+      "text": "Você quer corrigir erros de texto, não sortear outra imagem bonita."
+    },
+    "c2d378": {
+      "source_hash": "b38dfc83a70a",
+      "text": "O que pedir à AI para não ter só um vídeo pronto?"
+    },
+    "47c7d2": {
+      "source_hash": "47c7d244cfd7",
+      "text": "Texto e valores à mão no arquivo de dados."
+    },
+    "5a37fc": {
+      "source_hash": "5a37fc4af4f2",
+      "text": "Outro programa lê os dados e organiza formas e tempos na tela."
+    },
+    "56c197": {
+      "source_hash": "56c197a80bcd",
+      "text": "O vídeo é só a saída; guarde também os arquivos para refazê-lo."
+    },
+    "56ccfa": {
+      "source_hash": "d97745bb69a7",
+      "text": "Grades e números exatos: optamos por animação por código."
+    },
+    "1712ce": {
+      "source_hash": "2d49ec6ed918",
+      "text": "Para personagens atuando, este exemplo de grade não serve."
+    },
+    "de0fb5": {
+      "source_hash": "98fa2d14fe2c",
+      "text": "Faça uma prévia; veja se explica bem, só então detalhe."
+    },
+    "2c063b": {
+      "source_hash": "2c063b151123",
+      "text": "Peça projeto editável: texto e valores num arquivo de dados."
+    },
+    "5e5629": {
+      "source_hash": "3170e97467c8",
+      "text": "Antes de editar, copie: preserve a versão que já deu certo."
+    },
+    "4a14bd": {
+      "source_hash": "4a14bd9a0197",
+      "text": "Definido o formato, ainda cabe a você decidir o que desenhar."
+    },
+    "ea140a": {
+      "source_hash": "ea140aed008f",
+      "text": "Só explica por que somas de dados têm chances diferentes."
+    },
+    "21c1bc": {
+      "source_hash": "87e293632e89",
+      "text": "Dois dados justos e independentes: um no eixo X, outro no eixo Y."
+    },
+    "8f5f2e": {
+      "source_hash": "8f5f2e46e80e",
+      "text": "Conte um mais seis e seis mais um à parte: a ordem importa."
+    },
+    "6b1614": {
+      "source_hash": "6b16140f2bd5",
+      "text": "Defina condições; AI não deve supor fatos ao desenhar."
+    },
+    "1832d2": {
+      "source_hash": "1832d20fd272",
+      "text": "Grade completa: não omita casos por estética."
+    },
+    "c141fc": {
+      "source_hash": "c141fc78970c",
+      "text": "Some ambos por célula; pinte só se bater."
+    },
+    "c5a99d": {
+      "source_hash": "c5a99df6d3f7",
+      "text": "Título e legenda em texto real, para edição direta."
+    },
+    "719e7c": {
+      "source_hash": "719e7cc8c4c9",
+      "text": "Prompt: todos os pares ordenados de dois dados justos."
+    },
+    "f2c1f3": {
+      "source_hash": "f2c1f3e153d2",
+      "text": "Use grade e pinte células que somem o valor-alvo."
+    },
+    "475bb2": {
+      "source_hash": "475bb2cd6284",
+      "text": "Veja tudo, o alvo; compare os dois resultados."
+    },
+    "8a3f5b": {
+      "source_hash": "69ff2f26b4d0",
+      "text": "Na linha do tempo, mostre pontos um a um, sem juntar imagens."
+    },
+    "520a3b": {
+      "source_hash": "520a3be4c068",
+      "text": "Fundo creme, texto escuro e uma cor de destaque guiam o olhar."
+    },
+    "9dd115": {
+      "source_hash": "8e0d4a5b1c3b",
+      "text": "Precisa de tanto movimento? Células acendem em sequência para mostrar os pares."
+    },
+    "0c086d": {
+      "source_hash": "f52349faae8e",
+      "text": "Peça à AI tirar ações que não ajudem a entender."
+    },
+    "76fc63": {
+      "source_hash": "65be90259a60",
+      "text": "Avise: público leigo em probabilidade; pares antes de fórmulas."
+    },
+    "066452": {
+      "source_hash": "066452e5805d",
+      "text": "Para celular: texto grande, legenda longe das bordas."
+    },
+    "7b0c6d": {
+      "source_hash": "7b0c6de91eaf",
+      "text": "Peça a cena da grade colorida antes de exigir o vídeo inteiro."
+    },
+    "1f3f10": {
+      "source_hash": "1f3f1035868f",
+      "text": "Com a cena central, peça à AI um projeto executável."
+    },
+    "291f73": {
+      "source_hash": "291f73fb2e95",
+      "text": "Título e alvo vêm dos dados, não de cada cena."
+    },
+    "60d6c7": {
+      "source_hash": "60d6c7382915",
+      "text": "Peça comandos de instalação, prévia e saída, e a função de cada arquivo."
+    },
+    "d27bc5": {
+      "source_hash": "d27bc5332ae2",
+      "text": "Faça outro código de checagem: recalcule a resposta com todos os casos."
+    },
+    "b22122": {
+      "source_hash": "1c08968692ef",
+      "text": "A biblioteca gráfica faz quadros; a ferramenta de vídeo os une."
+    },
+    "182fcd": {
+      "source_hash": "182fcdc8a235",
+      "text": "Baixe e extraia a pasta; confira dados e código no mesmo lugar."
+    },
+    "a2d3d8": {
+      "source_hash": "a2d3d89f20c8",
+      "text": "Guia: instale biblioteca; ache ferramenta de vídeo e fonte chinesa."
+    },
+    "b13c3e": {
+      "source_hash": "b13c3efb91c3",
+      "text": "Idioma: só chinês tradicional por ora; mudar o código não traduz."
+    },
+    "5f446c": {
+      "source_hash": "66f8cc7b60b8",
+      "text": "Lê e grava arquivos; use só este projeto de treino, sem arquivos importantes."
+    },
+    "f37b7f": {
+      "source_hash": "f37b7f74705b",
+      "text": "O que faz esta linha? Peça à AI explicar o que lê e grava."
+    },
+    "9aa7fd": {
+      "source_hash": "7ec50ea81a42",
+      "text": "Sucesso só diz que o teste passou; não que o vídeo está pronto."
+    },
+    "2a7dbb": {
+      "source_hash": "2a7dbb6accb8",
+      "text": "Cole o erro; peça só o reparo necessário à prévia do exemplo."
+    },
+    "d6ecd3": {
+      "source_hash": "d6ecd3e2aac3",
+      "text": "Passou no teste: já dá para entregar? Veja antes os quadros-chave."
+    },
+    "5d4f54": {
+      "source_hash": "1e1132806ccb",
+      "text": "Cada célula acesa deve ter dois valores cuja soma bate o alvo."
+    },
+    "cbba85": {
+      "source_hash": "cbba85933a61",
+      "text": "Compare outra soma com mesmo tamanho de célula e escala."
+    },
+    "1de727": {
+      "source_hash": "1de727b378d5",
+      "text": "Reduza à largura do celular: título legível? Foco claro?"
+    },
+    "0dd30b": {
+      "source_hash": "0dd30b51e2a5",
+      "text": "Só agora exporte: esperar a conversão não valida o conteúdo."
+    },
+    "52cf29": {
+      "source_hash": "659765acd649",
+      "text": "Lê os mesmos dados; gera vídeo mudo e quadros de prévia; nomes como na tela. Narração à parte."
+    },
+    "005752": {
+      "source_hash": "0057524ad324",
+      "text": "Para checar só as formas, gere só quadros; veja as imagens antes do vídeo completo."
+    },
+    "7bf8fb": {
+      "source_hash": "79e29f08b614",
+      "text": "O vídeo já toca. Eis a pergunta inicial: mudar só um número muda também a imagem?"
+    },
+    "a1f88a": {
+      "source_hash": "a1f88a5878fb",
+      "text": "Mude nos dados a soma-alvo para seis; mantenha o resto."
+    },
+    "07771e": {
+      "source_hash": "07771e44e3fb",
+      "text": "Diga à AI: mude só a soma-alvo, recalcule células e texto."
+    },
+    "8eb4eb": {
+      "source_hash": "8eb4ebe2e681",
+      "text": "E mantenha cores, fontes e ordem das cenas."
+    },
+    "05bc8a": {
+      "source_hash": "dc7ba812bb7f",
+      "text": "Outro alvo: muda o padrão aceso; atualize a contagem ao lado."
+    },
+    "f6f6be": {
+      "source_hash": "39ab63b6c885",
+      "text": "Lembra da pergunta inicial? O realce mudou: cinco células válidas."
+    },
+    "7a42ba": {
+      "source_hash": "a911455415a1",
+      "text": "Grade mudou, título tem número antigo? Ache números fixos repetidos."
+    },
+    "8c2bc9": {
+      "source_hash": "8c2bc98e7627",
+      "text": "Liste arquivos alterados e motivos; veja se algo mais mudou."
+    },
+    "de08dd": {
+      "source_hash": "de08ddd609ec",
+      "text": "Guarde antes e depois; evite “final de verdade, versão 2”."
+    },
+    "c7b43e": {
+      "source_hash": "c7b43e868697",
+      "text": "Título do seu jeito: reveja se o texto maior cabe no quadro."
+    },
+    "7e3f75": {
+      "source_hash": "7e3f75e8a4f7",
+      "text": "Título longo? Peça quebras de linha, sem encolher tudo até ficar ilegível."
+    },
+    "594e82": {
+      "source_hash": "00bc69ca66bf",
+      "text": "Números já sincronizados; outro idioma ainda cabe no layout?"
+    },
+    "c30642": {
+      "source_hash": "c30642208449",
+      "text": "Novo idioma: meça a fala real; só então fixe o tempo da cena."
+    },
+    "1b4829": {
+      "source_hash": "1b48298c8391",
+      "text": "Frases curtas autônomas: uma ideia por frase."
+    },
+    "a49833": {
+      "source_hash": "a49833a85725",
+      "text": "Gerou ou gravou? Meça o áudio real, sem usar estimativas."
+    },
+    "1faa10": {
+      "source_hash": "1faa1096aa9b",
+      "text": "Cena até o fim da frase, mais tempo para ler a figura."
+    },
+    "b4de26": {
+      "source_hash": "b4de2640745f",
+      "text": "As células acendem ao citar pares válidos, alinhando som e movimento."
+    },
+    "4df2bf": {
+      "source_hash": "d6fdd018eeef",
+      "text": "Não cabe? Simplifique a fala antes de acelerar tudo."
+    },
+    "c41135": {
+      "source_hash": "c4113583e176",
+      "text": "Títulos na tela; narração toda em legendas desligáveis."
+    },
+    "802a26": {
+      "source_hash": "802a2616273d",
+      "text": "Mantenha o sentido; revise tamanho, pausas e pronúncia em cada idioma."
+    },
+    "bf54ca": {
+      "source_hash": "bf54ca1ecbe3",
+      "text": "Reouça números e nomes próprios à parte; texto certo não basta."
+    },
+    "ba0179": {
+      "source_hash": "ba017974575f",
+      "text": "Legendas do material: tempo planejado; alinhe ao áudio pronto."
+    },
+    "cab285": {
+      "source_hash": "040ee865a72e",
+      "text": "Alinhe a fala das células acesas; faça igual nas outras cenas."
+    },
+    "a6c28e": {
+      "source_hash": "c125c333ada5",
+      "text": "Desligue o som; a imagem explica o que está sendo comparado?"
+    },
+    "0b06d1": {
+      "source_hash": "5baee97982b1",
+      "text": "Por fim, ligue o som: a narração explica a imagem sem disputar sua atenção?"
+    },
+    "b919e0": {
+      "source_hash": "b919e084249d",
+      "text": "Acabou o vídeo: retome o pedido e confira item por item."
+    },
+    "ee8b7c": {
+      "source_hash": "ee8b7c92ac39",
+      "text": "Condições e contagem: fluidez não salva erro matemático."
+    },
+    "b69ae1": {
+      "source_hash": "b69ae171f159",
+      "text": "Texto cabe? Células e cores se distinguem bem?"
+    },
+    "481fba": {
+      "source_hash": "481fba412023",
+      "text": "Confira: vídeo toca? Áudio, legendas e originais no pacote?"
+    },
+    "18691a": {
+      "source_hash": "18691a3312cf",
+      "text": "O teste recalcula pelos pares dos dados, sem ler o número da tela."
+    },
+    "28a3eb": {
+      "source_hash": "55c13b8f6a34",
+      "text": "Código confere células, mas não julga se a explicação é clara."
+    },
+    "203f1e": {
+      "source_hash": "203f1ef738b1",
+      "text": "Veja começo e fim: evite cortes no meio e sobra em branco."
+    },
+    "7311eb": {
+      "source_hash": "7311eb218600",
+      "text": "E a versão editada? Exporte de novo para confirmar que o fluxo de edição funciona."
+    },
+    "75368c": {
+      "source_hash": "75368c340bf4",
+      "text": "Condição sem suporte: pare, explique; não mude a questão em silêncio."
+    },
+    "9d8939": {
+      "source_hash": "9d8939ad1e6a",
+      "text": "Dê à AI erro e dados editados; peça que diga qual condição rejeitou."
+    },
+    "c38a5e": {
+      "source_hash": "c38a5ea1a53b",
+      "text": "Na entrega, diga se mudou tema, valores ou tempos, para orientar quem receber."
+    },
+    "a56276": {
+      "source_hash": "a56276207b17",
+      "text": "Anote fontes e uso dos materiais na entrega, para ninguém adivinhar."
+    },
+    "84576e": {
+      "source_hash": "84576e7d6b40",
+      "text": "O exemplo prova que dá para refazer a grade, não que toda AI faça todo vídeo de uma vez."
+    },
+    "ad1b2c": {
+      "source_hash": "054729100069",
+      "text": "Feito o exemplo dos dados, use seu tema; comece com um conceito com antes e depois."
+    },
+    "d8b2ca": {
+      "source_hash": "d8b2cae88a9d",
+      "text": "Anote a lição numa frase; tire o que não se liga."
+    },
+    "c90844": {
+      "source_hash": "c90844b472ac",
+      "text": "Escolha cena-chave; peça à AI prévia editável."
+    },
+    "f9399e": {
+      "source_hash": "f9399e7f8738",
+      "text": "Mude um parâmetro: formas, texto e contagem mudam juntos?"
+    },
+    "2506eb": {
+      "source_hash": "2506ebb02002",
+      "text": "Antes de entregar, peça que refaçam pelo guia para achar omissões."
+    },
+    "f064e3": {
+      "source_hash": "f064e36f242e",
+      "text": "O pacote tem pedido, prompts e código; parta do original e use seu conteúdo."
+    },
+    "f576ae": {
+      "source_hash": "7449bd375c8e",
+      "text": "Envie o vídeo e o projeto que recria a animação."
+    },
+    "9e738a": {
+      "source_hash": "9e738a72de6e",
+      "text": "Que tema difícil mais quer animar? Comente."
+    },
+    "ed8308": {
+      "source_hash": "ed83087a94a1",
+      "text": "Inscreva-se; vamos usar AI para criar algo apresentável."
+    }
+  }
+}

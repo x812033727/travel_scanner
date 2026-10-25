@@ -1,0 +1,116 @@
+{
+  "verification": "Published materials/lab source executed locally; no AI service called.",
+  "date": "2026-10-26",
+  "timezone": "Asia/Taipei",
+  "started_at_utc": "2026-10-25T17:18:08.346054+00:00",
+  "finished_at_utc": "2026-10-25T17:18:08.816469+00:00",
+  "elapsed_seconds": 0.470407,
+  "runtime": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0"
+  },
+  "cwd": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python /workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py /workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json --frames-only --frames-dir /workspace/work/ai-animation-01/ledger-frames-only/frames --output /workspace/work/ai-animation-01/ledger-frames-only/sum6-preview.mp4 --summary",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json",
+    "--frames-only",
+    "--frames-dir",
+    "/workspace/work/ai-animation-01/ledger-frames-only/frames",
+    "--output",
+    "/workspace/work/ai-animation-01/ledger-frames-only/sum6-preview.mp4",
+    "--summary"
+  ],
+  "exit_code": 0,
+  "stdout": "OK: exported preview frames\n1280x720 24fps duration=54s audio=none (planned; frames only)\ntarget_sum=6 highlighted_count=5\n",
+  "stderr": "",
+  "source_sha256": {
+    "render_lesson.py": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+    "check_lesson.py": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+    "lesson-sum6.json": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+    "requirements.txt": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
+    "install.txt": "0181a0147ec51b596b0b29d67feab75b7887b0fa6ee2e2560b75e61a54b5d608"
+  },
+  "output_directory": "/workspace/work/ai-animation-01/ledger-frames-only",
+  "output_directory_created_empty_for_run": true,
+  "png_count": 6,
+  "pngs": [
+    {
+      "file": "frames/comparison.png",
+      "bytes": 68017,
+      "sha256": "ee5c8ce4ade3e0b4ee68df376ff4e077e0a771f6fdcb2c529a423c2dbbcfdb2a",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "frames/grid-all.png",
+      "bytes": 76967,
+      "sha256": "710f2ca2109deb38d2149519847a87723cfe25d6c7bc4b661338fe8d44391882",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "frames/grid-target.png",
+      "bytes": 79840,
+      "sha256": "2f5900b07aeb359c07933b4ea48d8508004fe6a556a202441d7da5c6c7b4114d",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "frames/opening.png",
+      "bytes": 65132,
+      "sha256": "26e2b3f22a634d47ec2cfff3303087a5efc9f41d1ec209ef0df1e6622c70eca1",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "frames/sum-six.png",
+      "bytes": 85100,
+      "sha256": "bc58f53580b26992d419b7c65b9b602b203c2f11fc376051a129ca4fa94cd123",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "frames/sum-twelve.png",
+      "bytes": 75488,
+      "sha256": "448a678be9b6618d9a4823198db82343facb111c7f1c0ec148b53e6c6e01b942",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "mp4_count": 0,
+  "mp4_files": [],
+  "sidecars": [
+    {
+      "file": "sum6-preview.narration.txt",
+      "bytes": 582,
+      "sha256": "3a3c859bd43e6b0e1a5371cc3f0e373a59fd147c93be49f31292f76237753bc5"
+    },
+    {
+      "file": "sum6-preview.srt",
+      "bytes": 779,
+      "sha256": "1f19caf68e50b2dff41f9e51b79491a3d0985f0137926c80f099c2d4486e5bf1"
+    },
+    {
+      "file": "sum6-preview.timeline.json",
+      "bytes": 1265,
+      "sha256": "4d5bb4b1a2fbf740ca42abc4f9beae6a783bee022f01853d6c022cdf735c3922"
+    }
+  ],
+  "checks": {
+    "exit_zero": true,
+    "png_count_six": true,
+    "expected_png_names": true,
+    "all_pngs_1280x720": true,
+    "no_mp4_created": true,
+    "summary_target_sum6_count5": true
+  },
+  "passed": true,
+  "limits": [
+    "Six preview PNGs, one contact-sheet JPEG and draft narration/SRT/timeline are generated; no MP4 is encoded.",
+    "The reported 54 seconds is planned scene timing in this frames-only run, not a measured media duration.",
+    "Original AI-assisted Python/Pillow example; no Claude execution or Claude Motion demonstration.",
+    "Full-render silent media evidence remains in verification.json; main-film audio and translations are separate."
+  ]
+}

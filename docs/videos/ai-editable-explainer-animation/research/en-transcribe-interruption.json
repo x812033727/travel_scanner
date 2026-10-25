@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "slug": "ai-editable-explainer-animation",
+  "observed_at": "2026-10-25T19:26:54Z",
+  "audit": {
+    "reviewer": "OpenAI Codex agent /root/resume_evidence_audit",
+    "independent_static_confirmation": "OpenAI Codex agent /root/resume_evidence_audit/translation_snapshot_diff",
+    "scope": "Read local artifacts and native source code. No credential files, network requests, paid calls, journal changes, lease changes, retry-counter changes or source-video changes were made by these audit agents. This report is an observation, not an audio acceptance or provider billing receipt."
+  },
+  "interrupted_operation": {
+    "locale": "en",
+    "route": "POST /api/video/speech/transcribe",
+    "journal_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json",
+    "journal_status": "sent",
+    "request_sha256": "0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9",
+    "audio_sha256": "ef4fff56e18a9b19b893bd007cb647cbf81748c5d9956821d980a3ac06c170d8",
+    "audio_bytes": 145644,
+    "sent_at": "2026-10-25T17:30:30.393Z",
+    "producer_pid": 25131,
+    "producer_pid_present_at_audit": false,
+    "producer_host": "3544bbb9952a",
+    "producer_boot_id": "23550415-c6db-4332-9c64-b81f6ab2bdb2",
+    "local_generation": "34478095-11ba-4517-811a-b6b044a33da6",
+    "line_id": "cbba85",
+    "scene_id": "build-twelve",
+    "line_identification": "The first uncached English timeline line is cbba85. Downsampling its native WAV to 16 kHz with the same native functions used by check-audio reproduced the exact journal audio SHA256 and 145644-byte length. Rebuilding the native transcribeBody with language=en also reproduced the exact request SHA256. No audio was written or submitted.",
+    "charge_confirmed": false,
+    "no_charge_confirmed": false,
+    "usable_result_confirmed": false,
+    "outcome": "Unknown. The request may have reached Gemini and been charged. PID absence and elapsed time do not prove a no-charge refusal.",
+    "local_answer_recovery": {
+      "canonical_confirmed_answer_present": false,
+      "staged_answer_present": false,
+      "other_files_in_speech_journal_present": false,
+      "finding": "The journal directory contained only this sent JSON entry. No matching .answer.json, WAV, temporary confirmation or recovery directory was available. Native staged-answer recovery therefore has no saved answer to reuse."
+    }
+  },
+  "english_progress": {
+    "state_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/auto.json",
+    "project_status_observed": "done",
+    "warning": "This status belongs to the completed primary film and is not proof that the eight-language delivery or English audio check is complete.",
+    "rounds": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "native_audio_cache_lines": 101,
+    "native_timeline_lines": 101,
+    "native_fit_windows": 99,
+    "native_fit_over_windows": 0,
+    "native_fit_tempo_max": 1.15,
+    "transcript_cache_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.en.json",
+    "transcript_cache_lines": 49,
+    "exact_matches_cached": 46,
+    "cached_mismatches_not_yet_judged": ["5a37fc", "2c063b", "8f5f2e"],
+    "audio_check_complete": false,
+    "durable_model_run": {
+      "receipt_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/run-receipts/93014f706c10653f85f2e1e20fd4a1849e4ceee287140b34d510a2d8626cad70.json",
+      "job_id": "ac63261f-41af-4245-9124-9e3b33f391a8",
+      "status": "succeeded",
+      "purpose": "Shorten English line 60d6c7. This completed model-stage job is separate from the unconfirmed speech/transcribe request."
+    }
+  },
+  "api_recovery_findings": {
+    "operation_id_sent": false,
+    "idempotency_key_sent": false,
+    "server_job_id_for_transcription_present": false,
+    "reason": "isBudgetedSlug only includes the listed story pilots and story-everyday-* slugs. This tutorial is not included, so postPaid sends the ordinary audio/language request without video_slug or operation_id. The journal SHA identifies exact local request bytes; its generation UUID is a local concurrency marker, not a provider operation handle.",
+    "result_fetch_endpoint_found": false,
+    "per_transcription_status_endpoint_found": false,
+    "ordinary_status_endpoint": "GET /api/video/speech/status reports configuration and aggregate narration synthesis character quotas. It cannot reconcile this transcription's charge or retrieve its text.",
+    "server_behavior": "The ordinary transcribe handler calls Gemini and returns TranscribeOut(text). It does not persist this nonpilot transcription's result or per-call usage. The durable automation run/jobs endpoints cover model stages and do not cover this speech/transcribe request.",
+    "sources": [
+      "tools/video/tts/client.mjs:16-39",
+      "tools/video/tts/client.mjs:195-207",
+      "tools/video/tts/speech-journal.mjs:402-409",
+      "apps/api/app/video_speech/admin_api.py:143-170",
+      "apps/api/app/video_speech/admin_api.py:444-470",
+      "apps/api/app/video_speech/admin_api.py:706-809",
+      "apps/api/app/video_speech/schemas.py:59-74",
+      "apps/api/app/video_speech/schemas.py:152-153"
+    ]
+  },
+  "pending_protection": {
+    "journal_guard_preserved": true,
+    "journal_forgotten_or_deleted_by_audit": false,
+    "retry_counters_reset_by_audit": false,
+    "expected_native_behavior": "The same request meets its sent journal entry and raises video_speech_uncertain unless native validation finds a complete saved answer. makeDub keeps check_stopped until a genuine completed check or truthful locale skip. Do not mark English checked, finalize the complete batch or resubmit this request based on this report.",
+    "sources": [
+      "tools/video/tts/speech-journal.mjs:402-409",
+      "tools/video/automation/flow.mjs:4369-4380",
+      "tools/video/automation/flow.mjs:4512-4514",
+      "docs/videos/DUBS.md:139"
+    ]
+  },
+  "other_locales": {
+    "locales": ["ja", "ko", "es", "pt", "id", "vi", "th"],
+    "english_journal_is_per_request": true,
+    "finding": "journaled computes a SHA256 for each exact request body and consults only that entry. The English transcription body includes language=en; other locale transcription bodies include their own language and synthesis requests have their own content/style hashes. An unrelated locale does not consume, clear or resend this English entry. Native release removes only confirmed entries handed to that invocation.",
+    "supported_independent_work": "Subject to the normal current-final, remote-choice, budget, STOP and project-lease checks, explicitly selecting one other locale can proceed while the English journal remains intact. All locales must still use the same shared project lease sequentially. The generic language step selects unfinished English first, so it is not an appropriate command while English remains unresolved.",
+    "state_preservation": "makeDub merges its selected locale's counters into state.languages and removes only that locale at successful completion; the English counters and check_stopped flag remain.",
+    "sources": [
+      "tools/video/tts/speech-journal.mjs:506-565",
+      "tools/video/tts/speech-journal.mjs:252-255",
+      "tools/video/automation/flow.mjs:4369-4372",
+      "tools/video/automation/flow.mjs:4528",
+      "/workspace/work/ai-animation-01/languages.mjs"
+    ]
+  },
+  "translation_snapshot_comparison": {
+    "snapshot_directory": "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations",
+    "comparison_scope": "Translation text at audit, before concurrent controller metadata-only title changes are treated as a new snapshot.",
+    "all_locale_line_counts": 101,
+    "non_english_translation_text_changes": 0,
+    "english_changes": [
+      {
+        "id": "60d6c7",
+        "source_hash_unchanged": "60d6c7382915",
+        "before": "Include commands to install, preview and export, and explain what each file does.",
+        "after": "Ask for install, preview, export commands and file explanations.",
+        "origin": "Actual succeeded native shortening job recorded above.",
+        "review_limit": "The older 101-line English reviewer receipt predates this change. No fresh dedicated review receipt for this changed line was present at the initial audit. The shortening preserves the instruction's core meaning; that observation is not an audio acceptance."
+      }
+    ]
+  },
+  "next_required_action": "Needs owner/provider confirmation of the unconfirmed transcription's outcome and billing, or authentic recoverable answer evidence, before an explicit journal resolution. No retry authorization is assumed. Preserve the sent entry and English retry counters while reconciling production/provider evidence for the exact 2026-10-25T17:30:30.393Z request."
+}
