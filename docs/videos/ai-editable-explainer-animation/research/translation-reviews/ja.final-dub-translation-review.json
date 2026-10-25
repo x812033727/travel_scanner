@@ -1,0 +1,304 @@
+{
+  "locale": "ja",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "reviewed_at_utc": "2026-10-25T20:02:24.514345+00:00",
+  "verdict": "ready",
+  "scope": "Final actual independent meaning re-read of all seven narration changes against the accepted pre-dub base and zh-TW source, including the five native first-reword changes and final 719e7c 32-character refinement. Prior complete review applies to unchanged content. Fit, timeline and native check artifacts inspected; no audio listening or provider calls performed.",
+  "meaning_fixes_needed": 0,
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "accepted_base_translation_sha256": "ff49c9a91960201182c6b40099557e60f986e33f572ca137d057726944747300",
+  "current_translation_sha256": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+  "input_sha256": {
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ja.json": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ja.json": "ff49c9a91960201182c6b40099557e60f986e33f572ca137d057726944747300",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ja.todo.json": "3d165b5fb4a2194528f7c05e71a4053ade6af260e9ac9c2a406a73221f759962",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/fit.json": "14d1b0f69cb6b41b4aaddffe974989dd940eec37ce3cfc0230fe9ce73a01b4a0",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/timeline.json": "933ead4161566cfb4245ab2e3b8c44c9f5d17d3aa5edf4dc77aba6df69bcf967",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.ja.json": "c7b53b273ff4c3b94886d7c9510394c258baf47a308c9e9cafbb8cc83947a50d",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.ja.json": "41b10ec4a41173f4139edfb0555bddeb4d601cb79f23225ac839804db2bac026"
+  },
+  "changed_lines": [
+    {
+      "id": "6b1614",
+      "source": "你先把要講的條件寫好，不要讓 AI 邊猜事實邊畫圖。",
+      "before": "条件は先に書き、AIに事実を推測しながら描かせないでください。",
+      "after": "条件は先に書き、AIに事実を推測しながら作図させないでください。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "Writing conditions first and preventing the AI from guessing facts while drawing both remain explicit; 作図 is an accurate diagram-drawing verb.",
+      "chars": 32,
+      "worksheet_max_chars": 32,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "brief-reference",
+        "state": 0,
+        "start_frame": 3150,
+        "end_frame": 3307,
+        "lines": [
+          "6b1614"
+        ],
+        "tempo": 1,
+        "slack_frames": 18,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "6b1614",
+        "scene": "brief-reference",
+        "start_frame": 3150,
+        "end_frame": 3286,
+        "audio_samples": 216480,
+        "tempo": 1
+      },
+      "native_window_seconds": 5.233333333333333,
+      "actual_audio_seconds": 4.51
+    },
+    {
+      "id": "719e7c",
+      "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+      "before": "指示は「偏りのない2個のサイコロの全ての順序付き結果を描いて」です。",
+      "after": "指示は「偏らない2個のサイコロの順序付き全結果を作図して」です。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "The final 32-character refinement preserves unbiased/fair dice through 偏らない, two dice, the complete set of ordered outcomes, and the instruction to draw them through 作図. No mathematical condition or totality clause is lost.",
+      "chars": 32,
+      "worksheet_max_chars": 32,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "brief-prompt-one",
+        "state": 0,
+        "start_frame": 3725,
+        "end_frame": 3882,
+        "lines": [
+          "719e7c"
+        ],
+        "tempo": 1,
+        "slack_frames": 5,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "719e7c",
+        "scene": "brief-prompt-one",
+        "start_frame": 3725,
+        "end_frame": 3874,
+        "audio_samples": 237600,
+        "tempo": 1
+      },
+      "native_window_seconds": 5.233333333333333,
+      "actual_audio_seconds": 4.95
+    },
+    {
+      "id": "8a3f5b",
+      "source": "時間軸不是把所有圖擠在一起，而是讓重點一個一個出現。",
+      "before": "時間軸では全図を詰め込まず、要点を1つずつ出します。",
+      "after": "時間軸ではすべての図を詰め込まず、要点を1つずつ出します。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "すべての図 conveys all diagrams more explicitly; avoiding cramming them together and showing one point at a time are retained.",
+      "chars": 29,
+      "worksheet_max_chars": 36,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "brief-timeline",
+        "state": 0,
+        "start_frame": 4155,
+        "end_frame": 4328,
+        "lines": [
+          "8a3f5b"
+        ],
+        "tempo": 1,
+        "slack_frames": 36,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "8a3f5b",
+        "scene": "brief-timeline",
+        "start_frame": 4155,
+        "end_frame": 4289,
+        "audio_samples": 213600,
+        "tempo": 1
+      },
+      "native_window_seconds": 5.766666666666667,
+      "actual_audio_seconds": 4.45
+    },
+    {
+      "id": "291f73",
+      "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+      "before": "題名と目標はデータから読み、画面ごとに数値を直書きさせません。",
+      "after": "題名と目標はデータから読み、数値を画面ごとに書かせません。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "Retains reading the title and target from data, followed by avoiding separate numbers written for each screen. Dropping the technical specificity of 直書き does not drop a source clause: the source itself says not to write a separate set of numbers on every screen.",
+      "chars": 29,
+      "worksheet_max_chars": 27,
+      "within_worksheet_max_chars": false,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "build-ask",
+        "state": 0,
+        "start_frame": 5534,
+        "end_frame": 5668,
+        "lines": [
+          "291f73"
+        ],
+        "tempo": 1,
+        "slack_frames": 5,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "291f73",
+        "scene": "build-ask",
+        "start_frame": 5534,
+        "end_frame": 5660,
+        "audio_samples": 201120,
+        "tempo": 1
+      },
+      "native_window_seconds": 4.466666666666667,
+      "actual_audio_seconds": 4.19
+    },
+    {
+      "id": "1b4829",
+      "source": "把旁白分成可以單獨理解的短句，每句只推進一個重點。",
+      "before": "ナレーションは単独で分かる短文に分け、1文1要点にします。",
+      "after": "ナレーションは単独で分かる短文にし、1文1要点にします。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "Making the narration independently understandable short sentences entails the original split into those sentences, while 1文1要点 retains exactly one point per sentence.",
+      "chars": 28,
+      "worksheet_max_chars": 28,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "audio-order",
+        "state": 0,
+        "start_frame": 11654,
+        "end_frame": 11792,
+        "lines": [
+          "1b4829"
+        ],
+        "tempo": 1,
+        "slack_frames": 1,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "1b4829",
+        "scene": "audio-order",
+        "start_frame": 11654,
+        "end_frame": 11788,
+        "audio_samples": 213120,
+        "tempo": 1
+      },
+      "native_window_seconds": 4.6,
+      "actual_audio_seconds": 4.44
+    },
+    {
+      "id": "a6c28e",
+      "source": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。",
+      "before": "まず動画を消音し、画面だけで比較内容が伝わるか確認します。",
+      "after": "まず動画を消音し、画面だけで何を比べているか伝わるか確認します。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "Retains muting the video first and checking whether the visuals alone communicate what is being compared.",
+      "chars": 32,
+      "worksheet_max_chars": 34,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "audio-silent",
+        "state": 0,
+        "start_frame": 13393,
+        "end_frame": 13560,
+        "lines": [
+          "a6c28e"
+        ],
+        "tempo": 1.04,
+        "slack_frames": 0,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "a6c28e",
+        "scene": "audio-silent",
+        "start_frame": 13393,
+        "end_frame": 13557,
+        "audio_samples": 262295,
+        "tempo": 1.04
+      },
+      "native_window_seconds": 5.566666666666666,
+      "actual_audio_seconds": 5.464479166666667
+    },
+    {
+      "id": "84576e",
+      "source": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+      "before": "この作例が示すのはマス図の再生成です。どんなAIでも全動画を一度で作れる、とは言っていません。",
+      "after": "この作例が示すのは格子状の図の再生成です。どんなAIでも全動画を一度で作れる、とは言っていません。",
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "register": "です・ます maintained",
+      "reason": "格子状の図 accurately describes the grid diagram. Regeneration remains the sole demonstrated capability, with the unchanged disclaimer against any AI finishing every video in one go.",
+      "chars": 49,
+      "worksheet_max_chars": 50,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_final": true,
+      "native_fit_window": {
+        "scene": "check-scope",
+        "state": 0,
+        "start_frame": 15949,
+        "end_frame": 16183,
+        "lines": [
+          "84576e"
+        ],
+        "tempo": 1.08,
+        "slack_frames": 0,
+        "over": false
+      },
+      "native_timeline_line": {
+        "id": "84576e",
+        "scene": "check-scope",
+        "start_frame": 15949,
+        "end_frame": 16180,
+        "audio_samples": 368356,
+        "tempo": 1.08
+      },
+      "native_window_seconds": 7.8,
+      "actual_audio_seconds": 7.674083333333333
+    }
+  ],
+  "budget_assessment": {
+    "all_worksheet_character_caps_pass": false,
+    "worksheet_estimate_excesses": [
+      {
+        "id": "291f73",
+        "actual_chars": 29,
+        "worksheet_max_chars": 27
+      }
+    ],
+    "all_changed_native_windows_fit": true,
+    "native_fit_over": [],
+    "note": "291f73 exceeds the approximate worksheet character estimate by two characters. Its actual native window is 134 frames at 30 fps, over:false, tempo1, slack_frames5. The actual timeline line is126frames and201120samples at48000Hz. This is recorded rather than presented as a character-budget pass. All six other changed lines fit their current worksheet character caps."
+  },
+  "native_qa_artifacts": {
+    "native_flags_count": 0,
+    "flag_translation_hash": "0be7de66f2f7278f",
+    "fit_translation_hash": "0be7de66f2f7278f",
+    "timeline_translation_hash": "0be7de66f2f7278f",
+    "check_line_count": 101,
+    "raw_asr_exact_match_count": 77,
+    "raw_asr_nonexact_count": 24,
+    "note": "Observed zero unresolved native flags. Raw ASR exact/nonexact counts are reported as stored; a nonexact transcript alone is not asserted to be a semantic or pronunciation failure."
+  },
+  "suggested_corrections": [],
+  "mutations": "Only this review JSON. No source, worksheet, translation, state, audio, merge, git or paid API calls."
+}

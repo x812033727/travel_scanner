@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-25T20:03:25.646964+00:00",
+  "locale": "ja",
+  "status": "current dub and actual audio checks complete; not a Studio upload or publication",
+  "native_status": {
+    "locale": "ja",
+    "translation_ready": true,
+    "dub_status": "current",
+    "dub_note": "ja.m4a",
+    "dub_check_unfinished": false
+  },
+  "translation_file_sha256": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+  "track_sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+  "track_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja.m4a",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ],
+    "format": {
+      "duration": "589.600000",
+      "size": "16883589"
+    }
+  },
+  "native_translation_hash": "0be7de66f2f7278f",
+  "native_speech_hash": "ab16df144b09176b",
+  "checked_lines": 101,
+  "unresolved_flags": [],
+  "over_windows": [],
+  "tempo_max": 1.17,
+  "independent_meaning_review": "research/translation-reviews/ja.final-dub-translation-review.json",
+  "existing_native_small_overrun_rules": "tools/video/dubs/plan.mjs MAX_TEMPO_OVERRUN=1.25; actual native fitting accepted this track without changing configuration"
+}
