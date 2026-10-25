@@ -1,0 +1,64 @@
+{
+  "reader": "r4-isolated-blind-a",
+  "slug": "curio-s63",
+  "official_panel": {
+    "path": "/tmp/curio-official-13-panel-20261022.json",
+    "sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad"
+  },
+  "blind_script_packet": {
+    "path": "/tmp/s63-r4-blind-packet.json",
+    "sha256": "ebd4da24fcfa7ffaa740c13eed220d17ecc7baa8f503f6c973ef903ad6ffd057"
+  },
+  "frozen_raw_ballot": {
+    "path": "docs/videos/curio-s63/review/r4-isolated-blind-a.raw.json",
+    "sha256": "1d4bdc35bdcdb411a24ca63563c0efbb355c5e6e984c9fbd526a7a1e2875b7b3"
+  },
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "docs/videos/curio-s63/review/r4-isolated-blind-a.raw.json",
+    "--workdir",
+    "/tmp/s63-r4-blind-a-isolated",
+    "--json"
+  ],
+  "command_cwd": "/tmp/travel_scanner_curio_s63",
+  "exit_code": 1,
+  "cli_binding": {
+    "script_hash": "70604c2503a83892b525c58479a50bb89be91cafed60442aa52e18a613c2a6dd",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "694a7018a75f9835914737db6928a0ffab52b80b4530f0bba66fc76e96fdcbef",
+    "narrative_hash": "156a0992c86d3126",
+    "round": 1
+  },
+  "outputs": {
+    "bound_record": {
+      "source": "/tmp/s63-r4-blind-a-isolated/curio-s63/review/narrative.json",
+      "preserved_path": "docs/videos/curio-s63/review/r4-isolated-blind-a.bound.json",
+      "sha256": "55415965a3a8c9a55573fc157202a72d7761d0ab715dc683d313fe333f9f766c"
+    },
+    "stdout": {
+      "path": "docs/videos/curio-s63/review/r4-isolated-blind-a.stdout.json",
+      "sha256": "4af6ac55e98da8c9fea9af121a9ef731f3e76c284b018d1dfff5a509397c2f96"
+    },
+    "stderr": {
+      "path": "docs/videos/curio-s63/review/r4-isolated-blind-a.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit": {
+      "path": "docs/videos/curio-s63/review/r4-isolated-blind-a.exit.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    }
+  },
+  "result": {
+    "passed": false,
+    "failed_required": [
+      "payoffs",
+      "no_recap"
+    ],
+    "advisory": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "recorded_at_utc": "2026-10-22T03:47:02+00:00",
+  "reader": "s63-r6-isolated-blind-a",
+  "sequence": "Read only official 13-question panel and blind packet; froze raw ballot and its SHA256 before inspecting the CLI/schema/prior material; then ran official narrative CLI.",
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.raw.json",
+    "--workdir",
+    "/tmp/s63-r6-blind-a-isolated",
+    "--json"
+  ],
+  "cwd": "/tmp/travel_scanner_curio_s63",
+  "exit_code": 1,
+  "passed": false,
+  "failed_required_ids": [
+    "no_spoiler",
+    "no_recap"
+  ],
+  "advisory_ids": [
+    "chapters_are_events"
+  ],
+  "bound_record_metadata": {
+    "round": 1,
+    "narrative_hash": "e5d40ef2c6f982bf",
+    "panel_narration_sha256": "551804c24f535ddbfe327476a70b1eae0436ff8039c518d882d08cd7d9d1c2df",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "script_hash": "30df37763fdccb2723e7df3d1318d2d776d6b93dc2ef7b1f2ebf80f29dad4241"
+  },
+  "sha256": {
+    "official_13_panel": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad",
+    "blind_packet": "da5236c9da70cbf9c8669aee25e5f586c67954327aa733139ad555326bda03de",
+    "script": "dfafdb178646575cc4cefab9c14621284835299caf1c75f3eea86e7835d82bd9",
+    "cli": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+    "raw_ballot": "27f5a271795a550b43df74301be35a53b57ab5997d57fbe87af0aa2c07ee7ab7",
+    "bound_record_source": "67a55db33706a91cb6cd435b105271537fc8b24eb7ad80273b3d646c99517218",
+    "bound_record_copy": "67a55db33706a91cb6cd435b105271537fc8b24eb7ad80273b3d646c99517218",
+    "cli_stdout": "b6a848ed34d84bdc4c0ee4170ea675cd63d2410da1a5d1d127c02853921a00cb",
+    "cli_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cli_exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  "paths": {
+    "official_13_panel": "/tmp/curio-official-13-panel-20261022.json",
+    "blind_packet": "/tmp/s63-r6-blind-packet.json",
+    "script": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/script.md",
+    "cli": "/tmp/travel_scanner_curio_s63/tools/video/cli.mjs",
+    "raw_ballot": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.raw.json",
+    "bound_record_source": "/tmp/s63-r6-blind-a-isolated/curio-s63/review/narrative.json",
+    "bound_record_copy": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.bound.json",
+    "cli_stdout": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.cli.stdout.json",
+    "cli_stderr": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.cli.stderr.txt",
+    "cli_exit": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-a.cli.exit.txt"
+  }
+}
