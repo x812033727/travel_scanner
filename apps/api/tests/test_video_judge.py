@@ -4,10 +4,11 @@
 The first history episode, told from court records, scored 0.16-0.18 three times on "walks the
 viewer through a demonstration they can follow along with" while every other check passed, so
 its final cut could not approve itself. A video the site's own row files as an explainer or a
-story is asked the other three; a video the site does not know or has not categorised is asked
-all four as before, and so is a drama, whose questions are the owner's to decide (ticket
-2026-09-28-video-drama-policy-questions). The rows live in an in-memory SQLite database built
-from the models, so this runs on every machine.
+story is asked the other three, and so is a drama (format ``drama``) whatever its category, since
+2026-10-24 (ticket 2026-10-24-policy-qa-asks-a-drama-for: a hands-off series' first episode
+failed on the demonstration alone); a video the site does not know or has not categorised is
+asked all four as before. The rows live in an in-memory SQLite database built from the models,
+so this runs on every machine.
 """
 
 from __future__ import annotations
@@ -170,10 +171,12 @@ async def test_an_explainer_and_a_story_are_not_asked_for_a_demonstration(
         assert answer.json() == EXPLAINER_VERDICT
 
 
-async def test_a_drama_is_still_asked_for_a_demonstration_unless_its_category_says_otherwise(
+async def test_a_drama_is_not_asked_for_a_demonstration_whatever_its_category(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    # The format alone exempts nothing: which questions a drama is asked is the owner's call.
+    # The format exempts the drama by itself (ticket 2026-10-24-policy-qa-asks-a-drama-for): a
+    # hands-off series' first episode, category null, was asked the tutorial's four and failed
+    # on 「有示範 0.08」, so its final never approved itself.
     await _projects(
         db,
         ("saga-one", "drama", None),
@@ -183,8 +186,10 @@ async def test_a_drama_is_still_asked_for_a_demonstration_unless_its_category_sa
     )
     asked = _jev(monkeypatch)
     answers = await _judge(db, "saga-one", "saga-two", "saga-three", "saga-told")
-    assert asked == [TUTORIAL_ASKED, TUTORIAL_ASKED, TUTORIAL_ASKED, EXPLAINER_ASKED]
-    assert [answer.json() for answer in answers] == [TUTORIAL_VERDICT] * 3 + [EXPLAINER_VERDICT]
+    assert asked == [EXPLAINER_ASKED] * 4
+    for answer in answers:
+        assert answer.status_code == 200, answer.text
+        assert answer.json() == EXPLAINER_VERDICT
 
 
 async def test_a_tutorial_an_uncategorised_video_and_one_the_site_never_saw_are_still_asked(

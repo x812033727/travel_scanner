@@ -101,6 +101,30 @@ describe("manual YouTube upload", () => {
     expect(screen.getByRole("link", { name: "description.en.txt" }).getAttribute("download")).toBe("description.en.txt");
   });
 
+  it("offers one zip of every listed file under the names the single downloads use", async () => {
+    stub();
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    const link = screen.getByRole("link", { name: "下載整包 zip（11 個檔案）" });
+    expect(link.getAttribute("download")).toBe("test-video-upload.zip");
+    const url = new URL(link.getAttribute("href") ?? "", "https://mokaair.com");
+    expect(url.pathname).toBe("/api/admin-video-package/test-video");
+    expect(url.searchParams.getAll("file")).toEqual([
+      `${hash(2)}:final.mp4`, `${hash(4)}:thumbnail.png`, `${"e".repeat(64)}:thumbnail.en.jpg`, `${"f".repeat(64)}:thumbnail.ja.jpg`,
+      `${hash(5)}:zh-TW.srt`, `${hash(6)}:zh-CN.srt`, `${hash(7)}:en.srt`, `${hash(8)}:ja.vtt`, `${hash(9)}:ko.srt`,
+      `${hash(9)}:description.en.txt`, `${hash(5)}:metadata.json`,
+    ]);
+    expect(screen.queryByText(/不在審核區/)).toBeNull();
+  });
+
+  it("says the compilation video is outside the zip", async () => {
+    stub({ ...project, compilation: true, download_available: true, reviews: [{ ...review, files: review.files.filter((file) => file.role !== "final") }] });
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    expect(screen.getByRole("link", { name: "下載整包 zip（10 個檔案）" })).toBeTruthy();
+    expect(screen.getByText(/1080p 影片不在審核區/)).toBeTruthy();
+  });
+
   it("switches the publish form to manual mode without sending and preserves edits on return", async () => {
     stub();
     const connection = { linked: true, audited: true, channel_title: "Mokaair" } as YoutubeConnection;

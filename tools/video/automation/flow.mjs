@@ -55,7 +55,7 @@ import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
-import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
+import { instructionsFor, MANGA_NARRATION_PERFORMANCE, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
@@ -525,6 +525,14 @@ const SERIES_MUSIC = Object.freeze({ [CURIO_PRESET]: CURIO_MUSIC });
  */
 export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null, production = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
+  // The sticker drama's narrator (the manga tier, docs/videos/BINGE.md §畫面等級): the storyteller's
+  // direction the writer plans from reaches the TTS too, unless the owner named a narrator voice
+  // on the drama tab, whose style then stands. Until 2026-10-24 an empty drama_voice fell back
+  // to the tutorial's relaxed-explainer style, and the first 系統說我是 BUG episode was read at
+  // 3.0 characters a second with one second of pauses in 172 s (the ticket's measurement).
+  if (format === "drama" && series?.visual_tier === "manga" && !settings.drama?.drama_voice && settled.voice.provider === "gemini") {
+    settled.voice = { ...settled.voice, style: `${CHANNEL_ACCENT}。${MANGA_NARRATION_PERFORMANCE}`.slice(0, 400) };
+  }
   if (format === "drama" && production?.profile?.phases?.primary?.locale === "zh-TW") {
     const narrator = production.narrator;
     if (typeof narrator?.voice_name !== "string" || !narrator.voice_name.trim() || typeof narrator.performance !== "string" || !narrator.performance.trim()) {
@@ -564,8 +572,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in like every
+    // high-view story channel (the owner, 2026-10-25, trying it after the channel review).
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set

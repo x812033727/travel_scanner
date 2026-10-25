@@ -1,19 +1,20 @@
 ---
 id: 2026-10-24-episodes-of-a-compilation-series-carry
 title: 合集作品的每一集不放頻道片頭片尾，只有合集放：站主 10-24「一集一集做，每集不用片頭片尾，合集先合再加片頭片尾、分章節」
-status: open
+status: review
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable
+claimed_at: 2026-10-24T15:54:58Z
 created_at: 2026-10-24T15:30:00Z
 completed_at:
-branch:
+branch: claude/interesting-cerf-519b43
 depends_on: []
 scope:
   - tools/video/core/branding.mjs
   - tools/video/core/branding.test.mjs
   - docs/videos/BINGE.md
+  - docs/videos/BRANDING.md
 ---
 
 # 合集作品的每一集不放頻道片頭片尾，只有合集放
@@ -28,16 +29,16 @@ scope:
 
 ## Definition of done
 
-- [ ] `series.json` 的 `compilation` 為真、而且不是合集影片本身（`isCompilation(doc)` 為假）的集：`selectBrandingForBuild` 回 null，成片＝本體；`checks.json` 沒有 `branding`，`compile` 走「沒有 branding 就用 final」那條（已存在）。
-- [ ] 合集影片、單集漫劇、品牌故事、教學片、解說的品牌行為不變。
-- [ ] 已經做好的集（e001–e004）不重做；它們的 body 已留存，compile 照舊用 body。
-- [ ] BINGE.md §合集寫明：集沒有頻道片頭片尾，合集包一次。
+- [x] `series.json` 的 `compilation` 為真、而且不是合集影片本身（`isCompilation(doc)` 為假）的集：`selectBrandingForBuild` 回 null，成片＝本體；`checks.json` 沒有 `branding`，`compile` 走「沒有 branding 就用 final」那條（已存在）。
+- [x] 合集影片、單集漫劇、品牌故事、教學片、解說的品牌行為不變。
+- [x] 已經做好的集（e001–e004）不重做；它們的 body 已留存，compile 照舊用 body。
+- [x] BINGE.md §合集寫明：集沒有頻道片頭片尾，合集包一次。
 
 ## Steps
 
-- [ ] `branding.mjs selectBrandingForBuild`：在 `LONG_FORMATS` 檢查之後加 `if (series?.compilation && !isCompilation(doc)) return null`；`--adopt-branding` 對這種集也拒絕（adoptionRefusal 加一句）。
-- [ ] 測試：合集作品的集 → null；合集本身 → 預設品牌；單集 → 預設品牌。
-- [ ] 時長收據增量（改到 core 檔）。
+- [x] `branding.mjs selectBrandingForBuild`：在 `LONG_FORMATS` 檢查之後加 `if (series?.compilation && !isCompilation(doc)) return null`；`--adopt-branding` 對這種集也拒絕（adoptionRefusal 加一句）。
+- [x] 測試：合集作品的集 → null；合集本身 → 預設品牌；單集 → 預設品牌。
+- [x] 時長收據增量（改到 core 檔）。
 
 ## How to verify
 
@@ -47,3 +48,8 @@ e005 起（部署後組的集）`checks.json` 沒有 `branding`、成片秒數�
 
 - 合集的章節卡要不要留：參考片（花影、桃桃）都沒有卡，但站主只說「分章節就好」，`chapter_cards` 預設 true 先保留；要關就在合集 video.json 的 `compilation.chapter_cards: false`。
 - 發現於票 2026-10-24-bug-1-4。
+- 2026-10-25 claude-fable：認領用了 `--force`，因為 `2026-10-04-fault-checks-for-the-drama-judges`（claude-fable-5.1-elated-lamarr，10-23 認領）的範圍也列了 `docs/videos/BINGE.md`；那條分支不在 origin 上，這裡只在 §合集加一段，合併時若衝突以兩段都留為準。
+- 做法：`episodeOfCompilation(doc, series)` ＝ `series?.compilation === true && !isCompilation(doc)`，放在 `LONG_FORMATS` 檢查之後、**讀 pin 之前**：e001–e004 的工作區已有 `branding.json`，若日後 `--force` 重組也不會把片頭片尾帶回來。`adoptionRefusal` 與 `replacementRefusal` 多收 `series`，對這種集回同一句拒絕；`compile/cli.mjs` 呼叫時不傳 series，合集影片本身不受影響（`isCompilation` 為真）。
+- `compile` 已能混用：沒有 `checks.branding` 的集直接用 `final.mp4`（核准雜湊），有的照舊用 `build/body.mp4`。沒改 compile。
+- 範圍多加 `docs/videos/BRANDING.md`（片頭位置表多一列）。
+- PR：https://github.com/x812033727/travel_scanner/pull/1835（2026-10-25）。

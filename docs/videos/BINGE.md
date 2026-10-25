@@ -218,16 +218,21 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 | `clips` | 1 | 30 | 每鏡都是片段；`visual` 可省 | 1.0 |
 | `hybrid` | 0.4 | 12（`ceil(0.4 × 30)`） | 最多四成 `visual: "clip"`，留給每個節拍的高潮：那一巴掌、揭露、出手、變臉；其餘 `visual: "still"` 並寫 `camera` | 0.4 |
 | `stills` | 0.1 | 3 | 最多一成 clip（無條件進位，30 鏡 3 個），先給最大的高潮；其餘 still | 0.1 |
-| `manga` | 0 | 0 | 動態漫畫（2026-10-22，票 `2026-10-22-manga-image-01`）：旁白說書、每 3–5 秒一張新圖、角色只講短句、每鏡都是 still 加運鏡且相鄰鏡頭輪替、同框盡量一個人（圖片模型只收一張臉的參考）；任何一鏡寫成 clip 都是 lint 錯誤 | 0 |
+| `manga` | 0 | 0 | 動態漫畫（2026-10-22，票 `2026-10-22-manga-image-01`）：旁白說書、每 2–3.5 秒一張新圖、一鏡一句（2026-10-24 起，原本 3–5 秒；超過 `MANGA_SHOT_MAX_SECONDS` 4 秒的鏡頭 lint 警告）、角色只講短句、每鏡都是 still 加看得見的運鏡且相鄰鏡頭輪替、同框盡量一個人（圖片模型只收一張臉的參考）；任何一鏡寫成 clip 都是 lint 錯誤 | 0 |
 
 - **`manga` 等級是單集也能選的**（「新的漫劇」表單的「畫面做法」，`DramaRequestIn.visual_tier`，預設 `clips`）：單集的 series.json 原本不帶任何合集欄位，工人在它不是 `clips` 時才把 `visual_tier` 寫進去，所以舊的單集一個位元組都不變；提示詞的題材段落在沒有題材時也會單獨送出等級規則（`prompts.mjs` 的 `genreBlock`）。
 - **`manga` 等級每 30 秒要有一個鉤子**（站主 2026-10-22：這是貼圖漫劇的規矩，動畫漫劇的規格不動）：撰稿規則要求每 20–30 秒用旁白的話落一個鉤子（懸著的問題、前向鉤子、升級、揭露或反轉）；lint 用 `core/narrative.mjs` 的 `shotHookProblems` 照旁白片同一套字樣（問號、等一下／先記住／之後會、但這還不是／更怪的是／問題來了）在整集鏡頭的時間軸上量，超過 `MANGA_HOOK_GAP_SECONDS` 30 秒沒有一個就警告（`lint.mjs` 只對 `series.visual_tier === "manga"` 量；動畫漫劇不量）。
 - **`manga` 等級的關鍵影格四邊各裁 4%**（`media/trim.mjs` 的 `EDGE_INSET_SHARE`，`keyframes.mjs` 跟紙邊裁切同一條路，裁完放回原尺寸）：image-01 大約三成的圖會在邊緣長出小字或假簽名（2026-10-22 的 20 張樣張），寫 negative 擋不住，裁掉最穩。2026-10-24 起 manga 等級先裁、把裁過的檔放進媒體庫、再問 judge（原本判原圖，image-01 的上下黑邊讓《系統說我是 BUG》第 1 集 42／46 鏡被判沒填滿畫框）；manifest 與之後的運鏡用裁過的檔。judge 的問法也改成是非題，見 [`DRAMA.md`](DRAMA.md) §manga 等級的關鍵影格用是非題。
+- **`manga` 等級的節奏照兩支十萬點閱的參考片改**（2026-10-24，票 `2026-10-24-manga-sticker-drama-pace-visible-camera`）：站主看《系統說我是 BUG》第 1 集說「單調、節奏慢」。用同一把尺（成片轉 96×54 灰階、每 0.25 秒一幀的相鄰幀平均差；差 ≥45 算硬切、切點以外的中位差＝鏡內動量、差 <3 的幀比例＝靜止比）量兩支參考（桃桃爱漫画 `0r9ZmCt-BtQ`、花影漫剧 `zH9N0JXvhlQ`）與我們的 e001 body：鏡長中位 1.75–3.25 秒對我們 3.75 秒；鏡內動量 7.8–12.5 對 1.2；靜止幀比 0–15% 對 80%；語速句內 5 字/秒、37–45% 時間沒人說話，對我們 3.0 字/秒、172 秒只有 1 秒空檔。三處改法，全部只對 `series.visual_tier === "manga"`：
+  - **看得見的運鏡**（`assemble/drama.mjs`）：`layoutDrama` 由 `assemble/cli.mjs` 傳 `tier`，manga 的 still 運鏡帶 `profile: "manga"`，`zoompanExpr`／`motionTravel` 改讀 `MANGA_MOTION`：push／pull 20%（原 10%）、pan／tilt 1.12 倍（原 1.08，且 3 秒內走完整段，原本 3 秒只走一半）、drift 10% 加 30% 橫移（原 4%、15%），travel 3 秒內走完（原 6 秒）、最少六成。segment key 多 `MOTION_MANGA_VERSION`，沒有 profile 的 key 一個位元組不變（測試釘 main 的 key 值），所以其他等級、插圖投影片、Shorts 與舊片都不重算。常數是量出來的：本機用 ffmpeg 對一張柔化的 1080p 圖組 3 秒段、用同一把尺量，舊常數 push 3.8、pan 11、tilt 5.6、drift 1.7（e001 幾乎全是 drift／push，整集 1.2），新常數 push 13.5、pan 29、tilt 16、drift 10、靜止幀 0%；票上一開始例舉的 0.25／1.25／0.12 會把 pan 推到 45，量尺會把它數成硬切（表與腳本在票）。
+  - **切法**：提示詞「每 2–3.5 秒一張、一鏡一句」，lint 的 `mangaShotLengthProblems` 對估計超過 4 秒的 manga 鏡頭警告（估計值；真正的時間軸在 tts 後）。每集圖數約 +40%（e001 46 鏡／172 秒 → 約 65 鏡）；`binge_quote` 的 `SHOTS_PER_MINUTE` 10 本來就低估 manga（實際 16/分 → 約 22/分），報價沒改，看 §成本與吞吐。
+  - **旁白**：drama 分頁 `drama_voice` 空時，manga 的旁白 `voice.style` 由 `flow.mjs` `settle` 填成頻道口音＋`MANGA_NARRATION_PERFORMANCE`（`prompts.mjs`，站主 2026-10-22 的說書指示），不再退回教學片的聲音指示；站主在 drama 分頁選了聲音就以那個為準（正式站 2026-10-24 已設 Sulafat＋說書式）。撰稿規則多兩拍：每個「叮」自成一句（`"text": "叮。"`、`pause_after_ms` 500），揭曉或反轉前一句 `pause_after_ms` 800。
+  - 沒做：音效。主機沒有 `_sfx` 音效組，要站主放授權檔進 `<work base>/_sfx/<set>/` 並寫 manifest（[`ILLUSTRATED.md`](ILLUSTRATED.md) §音效）後，寫手才為每個「叮」放 cue。e001–e004 不重做；部署後第一集新組的片（e005 起）用票裡的尺量，目標鏡內動量中位 ≥ 6、靜止幀比 ≤ 20%、鏡長中位 ≤ 3.5 秒。
 
 - **`visual` 欄位**：鏡頭 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`，預設 `clip`（`shotVisual`）。`clipShotScenes`／`stillShotScenes` 分兩堆；`clipsHash` 只算 clip 鏡頭。
 - **lint**（`core/lint.mjs`）從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（`draftEpisode` 從作品寫進去；沒有就不檢查）：超過上限是錯誤（`visualTierProblems`），`clips` 等級裡出現 still 只警告。合集模式（`series.json` 的 `compilation` 為真）第一個場景是 `title` 卡也是錯誤：冷開場。
 - **`clips`**（`media/clips.mjs`）只為 clip 鏡頭生成；still 鏡頭在 manifest 記 `{ still: true, file, sha256 }` 指向它的關鍵影格（要通過 judge，`needs_review` 的不收），什麼都不買；`--dry-run` 分開印兩堆。全部是 still 也寫 manifest。
-- **`assemble`**（`assemble/drama.mjs`）：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`、關鍵影格與 `move: motionMove(data)`。`motionSegmentArgs`：`-loop 1 -framerate 30 -t <秒> -i keyframe` → `scale` 放大 1.25 倍（`MOTION_SOURCE_SCALE`，裁切窗永遠不小於輸出）→ `zoompan=z=…:x=…:y=…:d=1:s=1920x1080:fps=30`（表達式用 `on`／(frames−1)，最後一格剛好到位）→ `scale=1920:1080:out_color_matrix=bt709:out_range=tv,format=yuv420p`（關鍵影格是 RGB 的 PNG，沒有色彩描述；這一步指明用 BT.709 矩陣轉 YUV，跟投影片路線一樣，否則 swscale 預設用 BT.601 轉、再被標成 BT.709，still 會比旁邊的片段偏色）→ `trim=end_frame` → 字幕條、溶接、`COLOUR` 與片段段完全相同，x264 參數相同（2026-10-04 起運鏡段多一個 `-maxrate 8M -bufsize 16M` 的位元率上限，見 `ILLUSTRATED.md` §成片大小），所以 `-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`（寫這一節時是 `"x264-high-crf18-film-g60-bf2-bt709-motion-v2"`，現值看 `assemble/drama.mjs`）；`motionSegmentKey` 含關鍵影格雜湊、運鏡、字幕、溶接。幅度刻意小：push／pull 10%（`MOTION_ZOOM`）、pan／tilt 固定 1.08 倍（`MOTION_PAN_ZOOM`）、drift 4%（`MOTION_DRIFT_ZOOM`）——still 要像有生命的持鏡，不像運鏡。
+- **`assemble`**（`assemble/drama.mjs`）：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`、關鍵影格與 `move: motionMove(data)`。`motionSegmentArgs`：`-loop 1 -framerate 30 -t <秒> -i keyframe` → `scale` 放大 1.25 倍（`MOTION_SOURCE_SCALE`，裁切窗永遠不小於輸出）→ `zoompan=z=…:x=…:y=…:d=1:s=1920x1080:fps=30`（表達式用 `on`／(frames−1)，最後一格剛好到位）→ `scale=1920:1080:out_color_matrix=bt709:out_range=tv,format=yuv420p`（關鍵影格是 RGB 的 PNG，沒有色彩描述；這一步指明用 BT.709 矩陣轉 YUV，跟投影片路線一樣，否則 swscale 預設用 BT.601 轉、再被標成 BT.709，still 會比旁邊的片段偏色）→ `trim=end_frame` → 字幕條、溶接、`COLOUR` 與片段段完全相同，x264 參數相同（2026-10-04 起運鏡段多一個 `-maxrate 8M -bufsize 16M` 的位元率上限，見 `ILLUSTRATED.md` §成片大小），所以 `-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`（寫這一節時是 `"x264-high-crf18-film-g60-bf2-bt709-motion-v2"`，現值看 `assemble/drama.mjs`）；`motionSegmentKey` 含關鍵影格雜湊、運鏡、字幕、溶接。幅度刻意小：push／pull 10%（`MOTION_ZOOM`）、pan／tilt 固定 1.08 倍（`MOTION_PAN_ZOOM`）、drift 4%（`MOTION_DRIFT_ZOOM`）——still 要像有生命的持鏡，不像運鏡。`manga` 等級例外（2026-10-24）：運鏡帶 `profile: "manga"` 時讀 `MANGA_MOTION`（20%／1.12 倍／10% 加 30% 橫移，3 秒內走完），key 多 `MOTION_MANGA_VERSION`，見上面 §畫面等級的節奏那一條。
 - **運鏡關鍵字**（`motionMove`：只讀 `camera`，整字比對，照 `MOVES` 的順序第一個命中的算，都沒有就 `drift`；`motion` 是畫面裡發生的事，不讀，2026-10-03 起）。運鏡以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反、tilt 保留攝影機用語：
 
 | 運鏡 | 命中的字（小寫） | 第 0 格是原圖 |
@@ -257,6 +262,8 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 ```
 
 合集是「有卡片與縮圖的漫劇」：不能有 `characters`、`look`、`music`、`series`、鏡頭場景，不能 `burn_in`（沿用每集畫面，另產合集 CC）；場景由 `compilation` 區塊推出（每集一張 `chapter` 卡 `card-<N>`「第 N 集 〈標題〉」，最後一張 `outro`），`numbers` 讓跳過的集數留空號。章節卡 2 秒（`CARD_FRAMES = 60`）、片尾 4 秒（`OUTRO_FRAMES = 120`）；`chapter_cards: false`／`outro: false` 就不放。`category_id` 是 24（娛樂），不是教學片的 28。`lintCompilation` 對佔位標題只警告（工人先建文件再由企劃命名；`status` 會等）。
+
+**頻道片頭片尾只在合集放一次**（站主 2026-10-24：「一集一集製作，但每一集就不用放片頭跟片尾；用一個合集把所有的先合再一起加片頭片尾，合集分章節就好，我每次看合集就好」）：`series.json` 的 `compilation` 為真的作品，每一集 `assemble` 時 `core/branding.mjs` 的 `selectBrandingForBuild` 回 null（`episodeOfCompilation`：`series.compilation === true` 且不是 `isCompilation` 的文件），成片＝本體、秒數＝`timeline.json`、`checks.json` 沒有 `branding`，成片審核看到的就是本體；`--adopt-branding` 與 `--intro-after-condensation` 對這種集都拒絕（`adoptionRefusal`／`replacementRefusal`），之前成片留下的 `branding.json` pin 也不會把片頭片尾帶回來。合集影片本身（`<作品>-full`）照 [`BRANDING.md`](BRANDING.md) 包一次頻道片頭（最前面）與片尾；`compile` 對沒有 `branding` 的集直接用它的 `final.mp4`（已核准的雜湊），對 2026-10-24 前帶片頭片尾做好的集（如《系統說我是 BUG》e001–e004）照舊用留存的 `build/body.mp4`，兩種集可以混在同一部合集裡。沒有 `compilation` 的作品、單集漫劇、品牌故事、教學片、解說的品牌行為不變。
 
 **步驟** `COMPILATION_STEPS`（`core/state.mjs` 的 `stepsFor(doc)`；後台標籤在 `review/sync.mjs` 的 `STEP_LABELS`）：
 
@@ -324,6 +331,8 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 | `clips` | 10,800 | 約 US$1,900（片段 1,620、圖片 211、judge 24、其餘 40） | 12,000 | 2–4 天 |
 | **`hybrid`（選定）** | 4,320 | 約 US$916（片段 648、圖片 211、judge 17、其餘 40） | 6,000 | 1–2 天 |
 | `stills` | 1,080 | 約 US$430（片段 162、圖片 211、judge 13、其餘 40） | 現有 3,000 夠 | 約 1 天 |
+
+`manga` 不買片段，費用在圖：報價用每分鐘 10 鏡算圖數，而貼圖漫劇 2026-10-24 改成每 2–3.5 秒一張後實際約每分鐘 22 鏡（e001 是 16），圖數比報價多約一倍、比改之前多約四成；單價照 `video_media/catalog.py` 設定的圖片模型（image-01）算，每集 3 分鐘約 65 鏡 × 1.3 取樣。
 
 站主按按鈕前要在設定分頁調（報價會把不足的項目標紅）：
 

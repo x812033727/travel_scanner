@@ -14,11 +14,12 @@ import httpx
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.ai.jev import ChoiceAnswer, JevClient, JevError, JevRequestInvalid, NoulAnswer
 from app.config import Settings
-from app.db import get_session
-from app.models import VideoToolToken
+from app.db import Base, get_session
+from app.models import VideoProject, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation import admin_api
 from app.video_automation import judge as judging
@@ -32,10 +33,12 @@ from app.video_automation.judge import (
     outline_pick_passed,
     outline_questions,
     pick_reason,
+    policy_questions_for,
     publish_package_passed,
     read_outline_answers,
     read_policy_answers,
 )
+from app.video_automation.models import VideoDramaEpisode, VideoDramaSeries
 from app.video_budget import service as pilot_budget
 from app.video_speech import admin_api as speech_api
 from app.video_speech.checking import CheckUnavailable
@@ -128,6 +131,159 @@ def test_the_policy_answers_become_a_verdict() -> None:
         {"stance": _noul(0.8), "demo": _noul(0.7), "advice": _noul(0.1), "sponsored": _noul(0.6)}
     )
     assert not sold.passed and sold.note.endswith("沒過（業配高於 0.3）")
+
+
+def _drama_series(slug: str, kind: str) -> VideoDramaSeries:
+    return VideoDramaSeries(
+        id=uuid4(),
+        slug=slug,
+        kind=kind,
+        title=slug,
+        premise="一個被系統判定是 BUG 的人",
+        aspects=[],
+        tone="dual-male-leads-subtext",
+        style_preset="cinematic-3d",
+        target_minutes=3,
+        planned_episodes=50,
+        episodes_per_chapter=10,
+        open_ended=False,
+        status="active",
+        requested_chapter=None,
+        force_next=False,
+    )
+
+
+def _drama_episode(series: VideoDramaSeries, slug: str) -> VideoDramaEpisode:
+    return VideoDramaEpisode(
+        id=uuid4(),
+        series_id=series.id,
+        number=1,
+        chapter_number=1,
+        title="第 1 集",
+        logline="",
+        beats={},
+        status="started",
+        slug=slug,
+        state_json={},
+    )
+
+
+async def test_the_question_set_follows_the_video_s_row_and_a_drama_is_asked_no_demonstration() -> (
+    None
+):
+    """A drama's format, not its category, keeps the demonstration out of its policy item: the
+    live case was a hands-off series' first episode (category null) asked the tutorial's four
+    and failing on 「有示範 0.08」 (ticket 2026-10-24-policy-qa-asks-a-drama-for)."""
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    VideoProject.__table__,
+                    VideoDramaSeries.__table__,
+                    VideoDramaEpisode.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    binge = _drama_series("xitong-shuo-wo-shi-bug", "series")
+    brand = _drama_series("heimao", "story")
+    async with factory() as session:
+        session.add_all(
+            [
+                binge,
+                brand,
+                _drama_episode(binge, "xitong-shuo-wo-shi-bug-e001"),
+                _drama_episode(brand, "heimao-e001"),
+                VideoProject(slug="tutorial-slides", title="教", stage="final", format="slides"),
+                VideoProject(
+                    slug="explainer-slides", title="解", stage="final", category="explainer"
+                ),
+                VideoProject(
+                    slug="cut-short",
+                    title="精華",
+                    stage="final",
+                    format="shorts",
+                    shorts_line="cut",
+                ),
+                VideoProject(
+                    slug="xitong-shuo-wo-shi-bug-e001",
+                    title="第 1 集",
+                    stage="final",
+                    format="drama",
+                    series_slug="xitong-shuo-wo-shi-bug",
+                    episode_number=1,
+                ),
+                VideoProject(
+                    slug="xitong-shuo-wo-shi-bug-full",
+                    title="合集",
+                    stage="final",
+                    format="drama",
+                    series_slug="xitong-shuo-wo-shi-bug",
+                ),
+                VideoProject(slug="one-off-drama", title="單集", stage="final", format="drama"),
+                VideoProject(
+                    slug="drama-short",
+                    title="豎版",
+                    stage="final",
+                    format="drama",
+                    shorts_line="drama",
+                ),
+                VideoProject(
+                    slug="heimao-e001",
+                    title="品牌故事",
+                    stage="final",
+                    format="drama",
+                    category="story",
+                ),
+            ]
+        )
+        await session.commit()
+    async with factory() as session:
+        asked = {
+            slug: await policy_questions_for(session, slug)
+            for slug in (
+                "tutorial-slides",
+                "explainer-slides",
+                "cut-short",
+                "xitong-shuo-wo-shi-bug-e001",
+                "xitong-shuo-wo-shi-bug-full",
+                "one-off-drama",
+                "drama-short",
+                "heimao-e001",
+                "nobody-filed-this",
+            )
+        }
+    await engine.dispose()
+    assert asked == {
+        "tutorial-slides": "tutorial",
+        "explainer-slides": "explainer",
+        "cut-short": "cut",
+        "xitong-shuo-wo-shi-bug-e001": "explainer",
+        "xitong-shuo-wo-shi-bug-full": "explainer",
+        "one-off-drama": "explainer",
+        "drama-short": "explainer",
+        "heimao-e001": "story",
+        "nobody-filed-this": "tutorial",
+    }
+
+
+async def test_a_drama_s_policy_verdict_is_read_without_the_demonstration(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(judging, "policy_questions_for", AsyncMock(return_value="explainer"))
+    asked = AsyncMock(
+        return_value={"stance": _noul(0.71), "advice": _noul(0.01), "sponsored": _noul(0.02)}
+    )
+    monkeypatch.setattr(judging, "_ask", asked)
+    unused: Any = SimpleNamespace()
+    verdict = await judging.judge_policy(
+        unused, unused, "立場", "", "旁白全文", session=unused, slug="xitong-shuo-wo-shi-bug-e001"
+    )
+    assert set(asked.await_args.args[3]) == {"stance", "advice", "sponsored"}
+    assert verdict.questions == "explainer" and verdict.demo is None and verdict.passed
+    assert verdict.note == "Jev：符合立場 0.71、有示範：不適用（解說）、建議 0.01、業配 0.02，通過"
 
 
 def _pick_payload(**changes: Any) -> dict[str, Any]:
@@ -322,9 +478,10 @@ async def test_pilot_jev_reserves_before_dispatch_settles_usage_and_rejects_exac
     assert first.choice == "B"
     assert reserve.await_args_list[0].kwargs["max_usd"] == Decimal("0.002688")
     assert settle.await_args.kwargs["actual_usd"] == Decimal("0.000016464")
-    assert reserve.await_args_list[0].kwargs["operation_id"] == settle.await_args.kwargs[
-        "operation_id"
-    ]
+    assert (
+        reserve.await_args_list[0].kwargs["operation_id"]
+        == settle.await_args.kwargs["operation_id"]
+    )
     with pytest.raises(AppError) as replay:
         await admin_api._pilot_jev_call(
             session,
@@ -335,9 +492,10 @@ async def test_pilot_jev_reserves_before_dispatch_settles_usage_and_rejects_exac
             invoke=invoke,
         )
     assert replay.value.code == "video_budget_operation_reused"
-    assert reserve.await_args_list[0].kwargs["operation_id"] == reserve.await_args_list[1].kwargs[
-        "operation_id"
-    ]
+    assert (
+        reserve.await_args_list[0].kwargs["operation_id"]
+        == reserve.await_args_list[1].kwargs["operation_id"]
+    )
     assert sent == 1
     uncertain.assert_not_awaited()
     release.assert_not_awaited()
@@ -472,8 +630,15 @@ async def test_pilot_policy_route_uses_the_shared_budget_before_jev(
         assert reserve.await_count == 1, "the dollar hold was committed before the model call"
         await on_usage({"input_tokens": 1000})
         return PolicyVerdict(
-            stance=0.9, demo=None, advice=0.1, sponsored=0.1, passed=True, note="ok",
-            questions="story", observation=0.8, disparage=0.1,
+            stance=0.9,
+            demo=None,
+            advice=0.1,
+            sponsored=0.1,
+            passed=True,
+            note="ok",
+            questions="story",
+            observation=0.8,
+            disparage=0.1,
         )
 
     monkeypatch.setattr(admin_api, "judge_policy", judged)
@@ -849,9 +1014,9 @@ def test_a_short_is_held_to_its_own_thirteen_and_a_long_video_s_report_never_pas
     failed["items"][5]["ok"] = False
     assert not judging.shorts_qa_passed({"qa": failed}, sha)
     assert judging.failed_items(failed) == ["facts"]
-    assert not judging.shorts_qa_passed(
-        {"qa": _report(judging.SHORTS_QA_ITEMS, sha)}, sha
-    ), "a report that does not say it is a Short's is not one"
+    assert not judging.shorts_qa_passed({"qa": _report(judging.SHORTS_QA_ITEMS, sha)}, sha), (
+        "a report that does not say it is a Short's is not one"
+    )
     assert not judging.shorts_qa_passed(
         {"qa": _report(judging.QA_ITEMS, sha, kind="shorts")}, sha
     ), "the eleven of a long video are not the thirteen"

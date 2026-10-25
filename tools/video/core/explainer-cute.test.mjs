@@ -67,8 +67,8 @@ test("a cute-mystery script wears the channel's thumbnail: valid as the writer i
   }
   // 奇聞檔案局's own pillar letters are no id the thumbnail knows: the refusal names So That's Why's four.
   assert.deepEqual(renderProblems(withData({ pillar: "H" })).map((problem) => problem.message), ["thumbnail.data.pillar must be one of business, science, travel, tech"]);
-  // So That's Why's "right" layout is refused: the channel's layouts are a, b and c.
-  assert.deepEqual(renderProblems(withData({ layout: "right" })).map((problem) => problem.message), ["thumbnail.data.layout must be one of a, b, c"]);
+  // So That's Why's "right" layout is refused: the channel's layouts are a, b, c and the bold d.
+  assert.deepEqual(renderProblems(withData({ layout: "right" })).map((problem) => problem.message), ["thumbnail.data.layout must be one of a, b, c, d"]);
   // cute-cartoon is So That's Why redrawn and keeps that series' thumbnail.
   assert.equal(thumbnailSeries(withCards("cute-cartoon")), "sothatswhy");
   assert.deepEqual(renderProblems(withCards("cute-cartoon")), []);

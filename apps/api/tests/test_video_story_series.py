@@ -47,7 +47,7 @@ def test_create_payload_stores_the_exact_preset_while_story_writer_stays_custom(
 @pytest.mark.parametrize(
     "changes",
     [
-        {"target_minutes": 13},
+        {"target_minutes": 11},
         {"image_model": "gemini-3.1-flash-image"},
         {"style_preset": "cinematic-3d"},
         {"look": {"preset": "cute-mystery", "style": "extra"}},
