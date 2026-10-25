@@ -200,9 +200,18 @@ export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
   const said = comparable(heard, locale);
   if (forms.some((form) => comparable(form, locale) === said)) return "exact";
-  // Same-sound characters and filler particles are Mandarin's; in another language, whatever
-  // differs beyond spelling is Jev's to judge.
-  if (!CHINESE.has(locale)) return null;
+  // Same-sound characters and filler particles are Mandarin's. In another language a transcript
+  // that differs only where it spells a loanword in Latin letters says the same words
+  // ("spelling", sameWordsSpelledOtherwise); whatever else differs is Jev's to judge.
+  if (!CHINESE.has(locale)) {
+    const heardUnits = units(heard, locale);
+    return forms.some((form) => {
+      const { missed, added } = lineUp(units(form, locale), heardUnits, locale);
+      return missed.size === 0 && added.size === 0;
+    })
+      ? "spelling"
+      : null;
+  }
   const bare = (text) => comparable(text).replace(FILLERS, "");
   // A closing particle comes off what was heard only, so a script ending in 氣餒 still needs it.
   const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, ""), bare(String(heard).replace(CLAUSE_CLOSING_PARTICLES, ""))];
@@ -237,14 +246,59 @@ export function leakedWord(heard, line) {
 
 // The units a script and its transcripts are lined up in: words where the language spaces them
 // (LATIN_SCRIPT_LOCALES), characters elsewhere (Chinese, Japanese, Korean syllables, Thai).
+// Thai number words up to 99 and Thai digits, as the digits a transcriber writes for them: the
+// Thai dub reads ตีสาม and หกชั่วโมง, and both transcribers write "ตี 3" and "6 ชั่วโมง". The value
+// is kept, so a wrong number still differs. ฯ only marks an abbreviation (นายกฯ), read as the
+// word or not at all.
+const THAI_ONES = { หนึ่ง: 1, เอ็ด: 1, สอง: 2, สาม: 3, สี่: 4, ห้า: 5, หก: 6, เจ็ด: 7, แปด: 8, เก้า: 9 };
+const THAI_ONE = "หนึ่ง|เอ็ด|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า";
+const THAI_NUMBER = new RegExp(`(ยี่|${THAI_ONE})?สิบ(${THAI_ONE})?|(${THAI_ONE})`, "gu");
+export function thaiNumbers(text) {
+  return String(text)
+    .replace(/[\u0E50-\u0E59]/gu, (digit) => String(digit.charCodeAt(0) - 0x0e50))
+    .replace(/\u0E2F/gu, "")
+    .replace(THAI_NUMBER, (match, tens, ones, single) => {
+      if (single) return String(THAI_ONES[single]);
+      const ten = tens === undefined ? 1 : tens === "ยี่" ? 2 : THAI_ONES[tens];
+      return String(ten * 10 + (ones ? THAI_ONES[ones] : 0));
+    });
+}
+
 function units(text, locale) {
+  if (locale === "th") return [...comparable(thaiNumbers(text), locale)];
   if (!LATIN_SCRIPT_LOCALES.has(locale)) return [...comparable(text, locale)];
   const folded = locale === "vi" ? foldVietnameseTones(text) : String(text);
   return folded.normalize("NFKC").toLowerCase().split(/[\p{P}\p{S}\p{Z}\s]+/u).filter(Boolean);
 }
 
-/** The indexes of `script`'s units that a longest common subsequence with `heard` leaves out. */
-function missedUnits(script, heard) {
+const ASCII_RUN = /^[a-z0-9.+#'_-]+$/;
+const HAS_ASCII_LETTER = /[a-z]/;
+
+/**
+ * Whether a stretch of the script and the stretch of a transcript heard in its place are the same
+ * word written another way: the transcriber wrote a loanword in Latin letters that the script
+ * spells in its own letters (Thai ล็อกอิน as "login", เซิร์ฟเวอร์ as "server"), as the transcription
+ * prompt asks it to, or the other way round. Only outside the languages written in Latin letters,
+ * where a Latin word heard as another Latin word is another word. Numbers are not counted here:
+ * "3" against a number word could be the wrong number, which is Jev's to judge.
+ */
+function sameWordsSpelledOtherwise(script, heard, locale) {
+  if (LATIN_SCRIPT_LOCALES.has(locale) || !script.length || !heard.length) return false;
+  const a = script.join("");
+  const b = heard.join("");
+  // A Latin run in one, none in the other, of a length a transliteration could have (a Thai or
+  // kana spelling of a word runs to about twice the Latin one).
+  const latinFor = (latin, own) => ASCII_RUN.test(latin) && HAS_ASCII_LETTER.test(latin) && !/[a-z0-9]/.test(own) && own.length <= latin.length * 2 + 2 && latin.length <= own.length * 2 + 2;
+  return latinFor(b, a) || latinFor(a, b);
+}
+
+/**
+ * How a transcript lines up with a script, unit by unit (a longest common subsequence): the
+ * script's units it leaves out and the transcript's units it adds, once each stretch between two
+ * matched units that is only the same words spelled otherwise (sameWordsSpelledOtherwise) counts
+ * as matched.
+ */
+function lineUp(script, heard, locale) {
   const n = script.length;
   const m = heard.length;
   const table = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
@@ -252,16 +306,34 @@ function missedUnits(script, heard) {
     for (let j = m - 1; j >= 0; j--) table[i][j] = script[i] === heard[j] ? table[i + 1][j + 1] + 1 : Math.max(table[i + 1][j], table[i][j + 1]);
   }
   const missed = new Set();
+  const added = new Set();
   let i = 0;
   let j = 0;
-  while (i < n) {
-    if (j < m && script[i] === heard[j]) {
+  let gap = { i, j };
+  const closeGap = () => {
+    const scriptGap = script.slice(gap.i, i);
+    const heardGap = heard.slice(gap.j, j);
+    if (!sameWordsSpelledOtherwise(scriptGap, heardGap, locale)) {
+      for (let k = gap.i; k < i; k++) missed.add(k);
+      for (let k = gap.j; k < j; k++) added.add(k);
+    }
+  };
+  while (i < n || j < m) {
+    if (i < n && j < m && script[i] === heard[j]) {
+      closeGap();
       i += 1;
       j += 1;
-    } else if (j < m && table[i][j + 1] >= table[i + 1][j]) j += 1;
-    else missed.add(i++);
+      gap = { i, j };
+    } else if (j < m && (i >= n || table[i][j + 1] >= table[i + 1][j])) j += 1;
+    else i += 1;
   }
-  return missed;
+  closeGap();
+  return { missed, added };
+}
+
+/** The indexes of `script`'s units a transcript leaves out (lineUp). */
+function missedUnits(script, heard, locale) {
+  return lineUp(script, heard, locale).missed;
 }
 
 /**
@@ -278,8 +350,8 @@ export function missedInDifferentPlaces(first, second, line, lexicon, locale = N
   return forms.some((form) => {
     const script = units(form, locale);
     if (!script.length) return false;
-    const a = missedUnits(script, units(first, locale));
-    const b = missedUnits(script, units(second, locale));
+    const a = missedUnits(script, units(first, locale), locale);
+    const b = missedUnits(script, units(second, locale), locale);
     return ![...a].some((index) => b.has(index));
   });
 }
@@ -555,7 +627,7 @@ export async function checkAudio(args, ctx, options) {
   const clearedText = cleared.length ? `, ${cleared.length} cleared by a second transcript` : "";
   const leakText = leaks.size ? `, ${leaks.size} of them for a leaked word` : "";
   ctx.stdout.write(
-    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
+    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters, filler words or a loanword's spelling, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
