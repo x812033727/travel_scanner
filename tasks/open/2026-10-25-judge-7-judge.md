@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-judge-7-judge
 title: 免關卡作品的設定圖在 judge 沒有推薦時仍要自動選：門檻 7 高過 judge 的天花板，每個新角色都等人
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-fable-5.1
@@ -55,6 +55,8 @@ judge 列的問題裡有兩類是真要擋的：`no_text`（角落長字，image
 - 同一角色各集設定圖不同（e002 江河 C、e003 E、e004 D、e005 A）會漂：`reuseSheets` 只沿用 `sheetKey`（id＋appearance＋sheet_prompt＋look）相同、且 `keepSheets` 存進 `<workBase>/series/<slug>/characters` 的圖；改外貌文字就會重畫。這張票不處理漂移，先讓關卡不停。
 
 ## 做法（2026-10-25，claude-fable-5.1）
+
+PR：https://github.com/x812033727/travel_scanner/pull/1850
 
 - `settings.py`：前置條件抽成 `_look_pick_threshold(session, series_slug) -> judge_min_score | None`
   （開關或免關卡、非長篇動畫），`auto_picks_look` 照舊回 bool；新的 `auto_look_fallback` 用同一個
