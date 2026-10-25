@@ -1,0 +1,2096 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s40-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆一個大家都看過的畫面：開場兩句對觀眾、帶點挑釁；鄉下人與衛兵安靜，信送到時加快；梯子、匕首緊張；管家頭髮帶點好笑；「他看錯了」壓低；多拉貝拉像說祕密；「門關上了」停一拍；幾種說法分開講、不演成真的；「沒有人知道」「被認為」一字一字；結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "亞歷山卓，一籃無花果被衛兵攔下",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting cross-legged on a sofa in a plain living room in the evening, hugging a cushion and grinning at us as if hearing a story he already knows, a bookshelf beside him, warm evening light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp101",
+          "text": "你一定看過那個畫面：埃及豔后抱著一條毒蛇，就這樣死去。",
+          "emotion": "對觀眾說，像在講大家都知道的事"
+        }
+      ]
+    },
+    {
+      "id": "open-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt on a sofa leaning forward with narrowed eyes, a cushion held under his chin, warm evening light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp102",
+          "text": "可是那扇門關上時，裡面只有她和兩個侍女，",
+          "emotion": "放慢"
+        },
+        {
+          "id": "kp103",
+          "text": "沒有一個人留下來說出門裡發生了什麼。",
+          "emotion": "帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-tomb",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pale limestone tomb on a quiet square, a sentry in a bronze helmet standing at its closed wooden door with a spear, the only shapes are the tomb, the door and the sentry, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp104",
+          "text": "亞歷山卓，女王被羅馬人看守在一座陵墓裡。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-basket",
+      "template": "shot",
+      "data": {
+        "prompt": "Rear three-quarter medium shot at a limestone mausoleum in 30 BCE Alexandria: an adult rural man in plain linen walks toward an adult Roman sentry at the stone entrance. The man's shoulders and bare forearms fill the near foreground; he carries a small wicker basket heaped with purple figs at waist height. The sentry wears a plain late Republican tunic beside the doorway, soft daylight.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp105",
+          "text": "一個鄉下人提著一小籃無花果，走到門口；"
+        },
+        {
+          "id": "kp106",
+          "text": "衛兵攔下他：籃子裡裝什麼？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a commander in his early thirties, clean-shaven with short dark hair, in a draped grey mantle rising from a stone bench in a plain room, a folded sealed letter in one hand, pointing urgently toward a doorway with a worried frown, soft daylight from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp107",
+          "text": "籃子進門沒多久，一封封好的信送到屋大維手上；"
+        },
+        {
+          "id": "kp108",
+          "text": "他一讀，立刻派人趕過去。信裡寫了什麼？",
+          "emotion": "問句，緊張"
+        }
+      ]
+    },
+    {
+      "id": "open-statue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stone avenue on a parade day, an attendant in a short cloak walking beside a wooden float that carries a grey carved statue of a crowned woman with a small carved snake curled on its forearm, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp109",
+          "text": "但這還不是最怪的：後來的凱旋隊伍裡，抬出了一尊帶蛇的女王像。",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "3 位古代作者，1 扇門",
+        "kicker": "普魯塔克、蘇埃托尼烏斯、狄奧",
+        "sub": "她最後幾天，誰寫了什麼"
+      },
+      "lines": [
+        {
+          "id": "kp110",
+          "text": "這份檔案，把三位古代作者寫的最後幾天翻一遍：三本書，一扇門。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown looking out of a high stone window with a thoughtful, unreadable expression, soft overcast light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp111",
+          "text": "克麗奧佩脫拉，真的是被毒蛇咬死的嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "treasure",
+      "chapter": "門不開，負傷的安東尼被拉上高窗",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown standing in a lamp-lit stone chamber stacked with closed wooden chests, pointing where an attendant should set down one more chest, lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp201",
+          "text": "衛兵來之前，那座陵墓的門是從裡面關著的：她早先把財寶都搬了進去，人也待在裡面。",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "antony-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium-wide shot at the foot of a Ptolemaic Alexandrian limestone mausoleum, 30 BCE: a fully shut ancient timber door with continuous planks fills the doorway; one wounded mature adult Roman general with short dark hair and a modest beard sits low against the stone beside it, clearly a separate figure, while exactly two adult Roman attendants in plain late-Republican tunics kneel apart on his left and right, one lightly steadying a shoulder; soft daylight.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp202",
+          "text": "這時，負傷的安東尼被人抬到了門下。"
+        }
+      ]
+    },
+    {
+      "id": "rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an Egyptian queen pulling a thick rope at a high stone opening, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp203",
+          "text": "門還是關著。她和侍女從高處的窗口放下繩子，把他往上拉。"
+        }
+      ]
+    },
+    {
+      "id": "rope-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a closed stone monument with a high narrow window and a coiled rope visible within, muted soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp204",
+          "text": "你想像一下：幾個女人，拉著一個受了傷的大男人，一路往上拖。",
+          "emotion": "對觀眾，放慢"
+        }
+      ]
+    },
+    {
+      "id": "antony-dies",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a grieving queen leaning beside a covered figure in a stone chamber, dim lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp205",
+          "text": "普魯塔克寫，安東尼最後死在她身邊。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "queen-chests",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown sitting on the floor of a dim stone chamber with her back against a closed wooden chest, staring at the shut door with tired eyes, lamp light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp206",
+          "text": "我讀到這裡會想：她身邊只剩一座陵墓、一堆財寶，和一扇門。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "octavian-chests",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a commander in his early thirties, clean-shaven with short dark hair, in a draped grey mantle in a stone courtyard, one hand on his chin as he studies a row of closed wooden chests, soft daylight from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp207",
+          "text": "那門外的羅馬人，想要的是什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "kp208",
+          "text": "普魯塔克說，屋大維怕失去那些財寶，想活捉女王。"
+        }
+      ]
+    },
+    {
+      "id": "alive",
+      "template": "big",
+      "data": {
+        "text": "要**活的**女王",
+        "kicker": "普魯塔克《安東尼傳》／蘇埃托尼烏斯《奧古斯都傳》",
+        "sub": "為了財寶，也為了凱旋式"
+      },
+      "lines": [
+        {
+          "id": "kp209",
+          "text": "蘇埃托尼烏斯也寫，他想留她活著，好在凱旋式上帶出來展示。"
+        },
+        {
+          "id": "kp210",
+          "text": "說白了，照這兩位作者的寫法，活著的女王，對他最有用。",
+          "emotion": "意見，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "envoy-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Alexandria, 30 BCE: an adult late Republican Roman envoy in a plain tunic and short muted mantle pauses outside a tightly closed barred limestone tomb doorway.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp211",
+          "text": "他派一個叫普羅庫勒尤斯的人，去門口談。"
+        }
+      ]
+    },
+    {
+      "id": "envoy-grille",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot from outside a tightly shut wooden tomb door in Ptolemaic Alexandria, 30 BCE: an adult Roman envoy in a plain tunic and short muted mantle stands on the near side with his back to the viewer; beyond a narrow barred speaking grille in the upper door, only an adult queen’s dark-bobbed face with narrow plain diadem appears inside, soft side light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp212",
+          "text": "她隔著門跟他說話，就是不開門。他有辦法嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "envoy-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: Outside an Alexandrian stone tomb, an adult Roman envoy in a late Republican tunic and short mantle tilts his head upward toward a small high window above the still closed door. Show the high window clearly.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp213",
+          "text": "有。他抬起頭，看見了那扇高窗：就是剛剛拉安東尼進去的那一扇。",
+          "emotion": "發現"
+        }
+      ]
+    },
+    {
+      "id": "gallus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Roman envoy pointing discreetly toward a ladder beneath a high stone window, muted daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp214",
+          "text": "另一個叫加盧斯的使者留在門口，繼續跟她說話；"
+        }
+      ]
+    },
+    {
+      "id": "ladder",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide exterior shot of an Alexandrian limestone mausoleum in 30 BCE: a full-length wooden ladder leans up to a high narrow window well above an adult Roman envoy’s head; the envoy in plain tunic and muted mantle climbs halfway up, both feet on the high rungs and one hand reaching the window sill, soft overcast light.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp215",
+          "text": "普羅庫勒尤斯帶著兩個人架起梯子，從窗口爬進去，直奔她身邊。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "dagger",
+      "template": "big",
+      "data": {
+        "text": "她摸到了**匕首**",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "使者已經從高窗進來"
+      },
+      "lines": [
+        {
+          "id": "kp216",
+          "text": "她一轉身，摸到了一把匕首。",
+          "emotion": "緊張"
+        },
+        {
+          "id": "kp217",
+          "text": "你猜，她來得及嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "chapter": "匕首被奪下，屋大維下令：不准她死",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: Late Republican Roman envoy in a plain tunic holds a confiscated short dagger while checking a folded Ptolemaic queen's linen robe on a table in a stone room, lamplight from a clay oil lamp.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp301",
+          "text": "沒來得及。普羅庫勒尤斯奪下匕首，還搜了她的衣服，看裡面有沒有藏毒。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "search-robe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an envoy in a short grey cloak frowning as he turns a folded linen robe inside out over a stone table, a small clay oil lamp beside it, lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp302",
+          "text": "你先記住：羅馬人一開始防的，就是毒。",
+          "emotion": "對觀眾，前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "guard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Roman freedman standing watch beside the doorway of a guarded stone tomb, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp303",
+          "text": "屋大維再派一個叫以巴弗提的人看守她，"
+        },
+        {
+          "id": "kp304",
+          "text": "命令是：客氣對待，但絕對不能讓她自殺。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "fasting",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a bare Ptolemaic limestone chamber, 30 BCE: an adult Alexandrian queen with straight dark bob and narrow plain diadem in a Greek-style linen gown pushes aside an untouched shallow clay food bowl on a low stone table, small clay oil lamp nearby.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp305",
+          "text": "可是普魯塔克又記下一件事：她開始不吃東西。",
+          "emotion": "語氣一轉"
+        }
+      ]
+    },
+    {
+      "id": "olympus",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: Ancient Greek biographer in a plain chiton and draped himation reads a blank papyrus scroll at a low wooden desk in lamplight from a clay oil lamp.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp306",
+          "text": "普魯塔克說，這段來自她的醫師奧林帕斯的記述。"
+        },
+        {
+          "id": "kp307",
+          "text": "屋大維會讓她這樣餓下去嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "eating",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot in a bare Ptolemaic Alexandrian limestone chamber, 30 BCE: an adult queen with loose straight dark bob ending at the jaw and a narrow plain diadem wears a sleeveless draped Greek linen chiton pinned at the shoulders; with a reluctant expression she brings a small piece of flatbread from a shallow clay plate toward her mouth, beginning to eat again at a low stone table, small clay oil lamp nearby.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp308",
+          "text": "不會。他拿她孩子的安危來逼她，她只好又開始吃。"
+        },
+        {
+          "id": "kp309",
+          "text": "這一招很冷，可是你不得不承認，有效。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "visit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Ptolemaic Alexandria, 30 BCE: an adult queen with straight dark bob, narrow plain diadem and Greek-style linen gown rises from a low ancient wooden bed with folded plain linen bedding before an adult late Republican Roman commander in his early thirties, clean-shaven with short dark hair, in a tunic and draped mantle; bare stone room.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp310",
+          "text": "後來屋大維親自來看她。她從床上起身，向他懇求。"
+        }
+      ]
+    },
+    {
+      "id": "plea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an adult Ptolemaic queen with straight dark bob, narrow plain diadem and Greek-style linen gown anxiously explaining herself to an adult late Republican Roman commander in his early thirties, clean-shaven with short dark hair, wearing a plain tunic and draped mantle, across a low stone table.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp311",
+          "text": "她說自己當初是怕安東尼，替以前的選擇辯解；屋大維一條一條駁回去。"
+        }
+      ]
+    },
+    {
+      "id": "plea-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an adult late Republican Roman commander in his early thirties, clean-shaven with short dark hair, plain tunic and draped mantle, cautiously studying the plea of an adult Ptolemaic queen with straight dark bob, narrow plain diadem and simple Greek-style linen gown across a low stone-room table.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp312",
+          "text": "她換了口氣開始求情，聽起來，像是想多活一陣子。",
+          "emotion": "放輕"
+        },
+        {
+          "id": "kp313",
+          "text": "屋大維信了嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "inventory",
+      "chapter": "財寶清單上，少了幾樣東西",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Ptolemaic limestone chamber, 30 BCE: one adult palace steward in a plain Greek-style linen chiton points to a blank unrolled papyrus inventory on a low wooden table beside closed wooden treasure boxes, clay oil lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp401",
+          "text": "他還在看她，她交出了一份財寶清單；"
+        },
+        {
+          "id": "kp402",
+          "text": "旁邊一個管家卻跳出來說：有東西沒列上去。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "hair",
+      "template": "big",
+      "data": {
+        "text": "她抓住**管家的頭髮**",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "清單被當場拆穿"
+      },
+      "lines": [
+        {
+          "id": "kp403",
+          "text": "她氣得抓住那個管家的頭髮。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "viewer-wince",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt at a dining table at home in the evening, wincing and laughing with one hand on his forehead, a plain wall behind him, warm evening light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp404",
+          "text": "你應該也遇過，被同事當場拆台的那種火大吧？她那一下，我完全懂。",
+          "emotion": "像在聊天，笑"
+        }
+      ]
+    },
+    {
+      "id": "steward-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a palace steward in a plain grey robe holding up a small closed wooden jewellery box with a nervous, guilty look, closed chests behind him, lamp light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp405",
+          "text": "可是，清單上漏掉的東西，是要留給誰的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "gifts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot inside a Ptolemaic Alexandrian stone chamber, 30 BCE: an adult queen with loose straight dark bob, narrow plain diadem and draped Greek linen chiton keeps a small closed wooden jewelry box close beside her while gesturing as she speaks to an adult clean-shaven Roman commander around thirty-two with short cropped dark hair, plain tunic and draped mantle; he listens with his hands resting at his sides.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp406",
+          "text": "她說，只是想留幾件小禮物，請屋大維的家人替她說情。"
+        }
+      ]
+    },
+    {
+      "id": "granted",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot in a bare Alexandrian stone room, 30 BCE: an adult late Republican Roman commander in his early thirties with a clearly smooth clean-shaven mature face and short cropped dark hair above his ears, plain tunic and short draped mantle, extends an open palm toward a small closed wooden jewelry box on a low stone table while an adult Greek-dressed queen with straight dark bob watches beside him, soft light.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp407",
+          "text": "屋大維准她留下那些東西，還答應會更好地待她。"
+        }
+      ]
+    },
+    {
+      "id": "leaves-satisfied",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a commander in his early thirties, clean-shaven with short dark hair, in a draped grey mantle walking out through a stone doorway into daylight with a small satisfied smile, one hand resting on his mantle, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp408",
+          "text": "他離開時認定：她終於想活了。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "deceived",
+      "template": "big",
+      "data": {
+        "text": "他以為她想活，**卻是他看錯了**",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "所據英譯：was himself deceived"
+      },
+      "lines": [
+        {
+          "id": "kp409",
+          "text": "普魯塔克卻在這裡加了一句：他看錯了。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "queen-lamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown sitting alone beside a small clay oil lamp in a stone chamber, hands folded, a calm and unreadable expression, lamp light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp410",
+          "text": "我讀到這句，背後有點發涼。",
+          "emotion": "旁白自己的反應，壓低"
+        },
+        {
+          "id": "kp411",
+          "text": "那她心裡打算的，到底是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "dolabella",
+      "chapter": "多拉貝拉捎來消息：三天內就要被送走",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close portrait of one young adult Roman male companion in a plain late Republican tunic and short draped mantle beside a Ptolemaic Alexandrian stone pillar in 30 BCE; his mature clean-shaven face and short cropped dark hair are seen as he listens intently, soft overcast daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp501",
+          "text": "她早就在屋大維身邊，託了一個年輕人。",
+          "emotion": "接住，壓低"
+        }
+      ]
+    },
+    {
+      "id": "dolabella-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one young Roman companion discreetly speaking through the guarded stone tomb doorway, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp502",
+          "text": "他叫多拉貝拉，這時照她的請求，偷偷捎來消息。"
+        }
+      ]
+    },
+    {
+      "id": "dolabella-hush",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a short grey mantle glancing over his shoulder down an empty stone corridor with one finger raised to his lips, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp503",
+          "text": "我覺得整份檔案最像諜報片的，就是這一段。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an Egyptian queen listening tensely to private news inside a guarded stone tomb, empty hands and soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp504",
+          "text": "消息說：屋大維要經敘利亞回去，她和孩子，三天內就會被送走。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "tomb-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in Alexandria, 30 BCE: an adult Ptolemaic queen with straight dark bob, narrow plain diadem and simple Greek-style linen gown looks from a guarded stone monument toward the distant plain limestone tomb of a fallen Roman general, soft overcast afternoon light.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp505",
+          "text": "換成你是她，剩下三天，第一件想做的是什麼？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bare Alexandrian stone chamber, 30 BCE: an adult Ptolemaic queen with straight dark bob, narrow plain diadem and simple Greek-style linen gown speaks to an adult late Republican Roman commander in his early thirties, clean-shaven with short dark hair, in a plain tunic and draped mantle, requesting a visit to a fallen Roman general's tomb.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp506",
+          "text": "她要求去安東尼的墓前獻祭。這一次，屋大維准了。"
+        }
+      ]
+    },
+    {
+      "id": "to-tomb",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an Egyptian queen approaching a stone tomb with attendants in the distance, muted daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp507",
+          "text": "她被送到墓前，女伴陪在一旁。"
+        }
+      ]
+    },
+    {
+      "id": "tomb-plea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a fallen Roman general's plain limestone tomb in Alexandria, 30 BCE: an adult Ptolemaic queen with straight dark bob in a simple Greek-style linen gown and narrow unadorned headband rests one hand on the stone wall near a laurel wreath, sorrowful expression, soft morning light.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp508",
+          "text": "傳記寫她在墓前訴說：不想被遠遠帶走，想跟安東尼葬在一起。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot at a plain Alexandrian limestone tomb in 30 BCE: a real circular wreath of fresh flowers rests against the tomb stone; an adult Ptolemaic queen with straight dark bob, narrow plain diadem and sleeveless draped Greek linen chiton pinned at the shoulders leans close to the stone with one hand touching the offered wreath, soft morning light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp509",
+          "text": "可是人都要被帶離埃及了，這個願望，誰能替她保證？",
+          "emotion": "問句"
+        },
+        {
+          "id": "kp510",
+          "text": "她放上花環，親吻墓石，然後回去。"
+        }
+      ]
+    },
+    {
+      "id": "bath",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Ptolemaic Alexandrian limestone chamber, 30 BCE: an adult queen with a straight dark bob and narrow plain diadem wears a simple draped Greek linen chiton, gesturing for one adult attendant in a plain Greek linen dress to prepare a shallow ancient terracotta wash basin on a low stone stand, soft afternoon light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp511",
+          "text": "回去以後，她先吩咐準備洗澡；"
+        }
+      ]
+    },
+    {
+      "id": "meal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown seated at a low stone table laid with bread, olives and bowls of grapes, lifting a cup with a faint smile, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp512",
+          "text": "洗完，又吃了一頓豐盛的飯。"
+        }
+      ]
+    },
+    {
+      "id": "sentry-relaxed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sentry in a bronze helmet and short cloak leaning on his spear beside a limestone tomb doorway, relaxed and stifling a yawn, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp513",
+          "text": "如果你是門口的衛兵，大概會鬆一口氣：洗澡、吃飯，像是要好好過日子。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "carrier-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a country carrier in rough homespun clothes walking up a dusty lane toward a limestone tomb, a small wicker basket on his arm, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp514",
+          "text": "偏偏就在這時，門外來了一個人。",
+          "emotion": "升級"
+        },
+        {
+          "id": "kp515",
+          "text": "還記得開頭被攔下的那籃無花果嗎？就是這時候到的。",
+          "emotion": "點名回呼"
+        }
+      ]
+    },
+    {
+      "id": "praise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up shot at a Ptolemaic Alexandrian limestone tomb doorway in 30 BCE: an adult Roman sentinel in a plain tunic and bronze helmet smiles while a separate adult rural visitor in rough undyed linen holds a wicker basket of clearly pear-shaped purple figs with short stems toward him; matte colors and clean ink outlines, soft afternoon light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp516",
+          "text": "鄉下人自己撥開葉子給衛兵看：滿滿的無花果。"
+        },
+        {
+          "id": "kp517",
+          "text": "衛兵還誇果子又大又好，卻一顆也沒拿。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "basket-in",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Ptolemaic Alexandria, 30 BCE: an adult country carrier in rough linen passes a wicker fig basket through a limestone tomb doorway while an adult Roman sentinel in a plain tunic and bronze helmet remains outside, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp518",
+          "text": "籃子進了門，衛兵留在外面。門裡，她接下來做了什麼？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "seal",
+      "chapter": "一封信送出，門從裡面關上",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown pressing a small seal onto a folded blank letter at a low stone table, a clay oil lamp beside her, lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp601",
+          "text": "她寫好開頭那封信、封好，託人送去給屋大維。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "send-away",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown standing at a heavy wooden tomb door with one hand raised, sending someone off frame away, two female attendants in plain pale dresses waiting quietly behind her, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp602",
+          "text": "然後讓其他人都出去，只留下伊拉斯和卡爾米翁。"
+        }
+      ]
+    },
+    {
+      "id": "shut",
+      "template": "big",
+      "data": {
+        "text": "「她**關上了門**」",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "所據英譯：she shut the doors"
+      },
+      "lines": [
+        {
+          "id": "kp603",
+          "text": "門關上了。",
+          "emotion": "短句，停一拍"
+        },
+        {
+          "id": "kp604",
+          "text": "從這一刻起，你我讀到的每一個字，都是事後別人寫下的。",
+          "emotion": "對觀眾，壓低"
+        }
+      ]
+    },
+    {
+      "id": "letter-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a late Republican Roman chamber, 30 BCE: an adult Roman commander in his early thirties, clean-shaven with short dark hair, in a plain Roman tunic and draped mantle, unties a sealed unlettered papyrus letter beside a small clay oil lamp, daylight.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp605",
+          "text": "屋大維拆開信：她請求跟安東尼葬在一起。"
+        },
+        {
+          "id": "kp606",
+          "text": "他一讀，就猜到出事了。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "letter-alarm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a commander in his early thirties, clean-shaven with short dark hair, in a draped grey mantle lowering a folded letter with wide, alarmed eyes, a stone wall behind him, soft daylight from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp607",
+          "text": "你想想，一封求合葬的信，還能是什麼意思？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "sent-others",
+      "template": "big",
+      "data": {
+        "text": "他改了主意，**派別人去看**",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "所據英譯：changing his mind, he sent others to see"
+      },
+      "lines": [
+        {
+          "id": "kp608",
+          "text": "他起身要親自過去，又改了主意，派別人去看。",
+          "emotion": "加快"
+        },
+        {
+          "id": "kp609",
+          "text": "門口的衛兵，什麼都還沒發覺。來得及嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "found",
+      "template": "big",
+      "data": {
+        "text": "門一開，她已經**死去**",
+        "kicker": "普魯塔克《安東尼傳》·敘事",
+        "sub": "身上穿著王室的裝束"
+      },
+      "lines": [
+        {
+          "id": "kp610",
+          "text": "門一開，她已經死了，身上穿著王室的裝束。",
+          "emotion": "放慢，掉下去"
+        }
+      ]
+    },
+    {
+      "id": "diadem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a female attendant in a plain pale dress kneeling beside a low couch, carefully straightening a narrow gold diadem that rests on a small cushion, her face pale and tired, dim lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp611",
+          "text": "伊拉斯倒在床腳，快不行了；卡爾米翁還扶著她頭上的冠飾。"
+        }
+      ]
+    },
+    {
+      "id": "charmion",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot in a plain Ptolemaic Alexandrian limestone chamber, 30 BCE: one exhausted adult female attendant with loose dark hair and a plain draped Greek linen chiton is slumping against the stone wall, one hand braced on its surface and mouth slightly open toward a visitor just outside the frame, soft clay oil-lamp light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp612",
+          "text": "普魯塔克寫，卡爾米翁回了來人一句話，接著也倒下了。"
+        }
+      ]
+    },
+    {
+      "id": "quiet-lamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small clay oil lamp burning low on a stone ledge beside a folded cloth, the only shapes are the lamp, the cloth and the stone wall, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp613",
+          "text": "這一段我每次讀，都覺得安靜得可怕。",
+          "emotion": "旁白自己的反應，輕"
+        }
+      ]
+    },
+    {
+      "id": "messenger-report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Ptolemaic Alexandria, 30 BCE: an adult late Republican Roman commander in his early thirties, clean-shaven with short dark hair, plain tunic and draped mantle, listens gravely to an adult Roman messenger beside a guarded limestone tomb doorway, soft afternoon light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp614",
+          "text": "至於她在墓前求的那件事：屋大維後來准她跟安東尼葬在一起，",
+          "emotion": "點名回收"
+        }
+      ]
+    },
+    {
+      "id": "burial",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Ptolemaic Alexandria, 30 BCE: an adult Roman official in a plain tunic gives burial instructions beside two simple linen-wrapped biers under a stone colonnade, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp615",
+          "text": "也下令安葬她的女伴。我覺得，這是整個故事裡，她唯一確定拿到的東西。",
+          "emotion": "意見，輕"
+        }
+      ]
+    },
+    {
+      "id": "messenger-doorway",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a messenger in a short grey cloak standing in an open limestone tomb doorway, looking back toward the street with a stunned expression, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp616",
+          "text": "使者看見的，只有結果。那她到底是怎麼死的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "figs-scroll",
+      "chapter": "無花果、器皿、髮簪：普魯塔克收集的說法",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot: Ancient Mediterranean storyteller in a plain Greek chiton studies a blank papyrus scroll beside a wicker fig basket in a stone room lit only by a small clay oil lamp.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp701",
+          "text": "最有名的說法，就跟那籃無花果有關。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "asp-figs",
+      "template": "big",
+      "data": {
+        "text": "有人說：蛇藏在**無花果**底下",
+        "kicker": "普魯塔克《安東尼傳》·轉述",
+        "sub": "她撥開果子，伸出手臂"
+      },
+      "lines": [
+        {
+          "id": "kp702",
+          "text": "有人說，蛇就藏在無花果底下；"
+        },
+        {
+          "id": "kp703",
+          "text": "她撥開果子看見蛇，就伸出手臂讓牠咬。"
+        }
+      ]
+    },
+    {
+      "id": "viewer-point",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in the evening, pointing at us knowingly with one raised eyebrow, a cushion on his lap, warm evening light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp704",
+          "text": "你從小看到的那一幕，大概就是這一版。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "figs-blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a wicker basket filled with purple figs and a blank rolled papyrus placed side by side on a rough ancient stone table, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp705",
+          "text": "可是你注意，普魯塔克用的是「有人說」，不是「衛兵看見」。",
+          "emotion": "篤定"
+        },
+        {
+          "id": "kp706",
+          "text": "衛兵看見的，只有無花果。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "vessel",
+      "template": "big",
+      "data": {
+        "text": "另一說：器皿裡的蛇、**金紡錘**",
+        "kicker": "普魯塔克《安東尼傳》·轉述",
+        "sub": "連那籃無花果都用不上"
+      },
+      "lines": [
+        {
+          "id": "kp707",
+          "text": "也有人說，蛇本來關在一個器皿裡，她拿一根金色的紡錘去逗牠。"
+        },
+        {
+          "id": "kp708",
+          "text": "這一版，連籃子都用不上。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "bodkin",
+      "template": "big",
+      "data": {
+        "text": "**中空髮簪**裡藏毒",
+        "kicker": "普魯塔克《安東尼傳》·轉述",
+        "sub": "所據英譯：poison in a hollow bodkin"
+      },
+      "lines": [
+        {
+          "id": "kp709",
+          "text": "還記得羅馬人搜她的衣服、找毒嗎？",
+          "emotion": "點名回呼"
+        },
+        {
+          "id": "kp710",
+          "text": "有一版說，毒不在衣服裡，藏在她盤起的頭髮上：一根中空的髮簪。"
+        }
+      ]
+    },
+    {
+      "id": "couch",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight waist-up shot in a 30 BCE Alexandrian limestone tomb: one motionless adult Hellenistic woman lies on a low wooden couch. A sleeveless white Greek linen chiton is fastened at both shoulders, leaving one entire bare forearm and relaxed open palm visible against a linen cushion. Her straight dark bob and thin undecorated diadem are visible, with clay-lamp light across face, shoulder and arm.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp711",
+          "text": "幾種說法擺在一起，她身上的痕跡，能幫我們選一個嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "search-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Ptolemaic Egyptian limestone chamber, 30 BCE: an adult Roman envoy in a plain tunic carefully surveys an uncluttered stone room beside a low couch covered with linen, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp712",
+          "text": "普魯塔克說：看不出明顯的中毒症狀，陵墓裡也沒人找到那條蛇。"
+        }
+      ]
+    },
+    {
+      "id": "sand",
+      "template": "big",
+      "data": {
+        "text": "**有人說**，海邊沙地似有蛇跡",
+        "kicker": "普魯塔克《安東尼傳》·轉述",
+        "sub": "同一段：陵墓裡沒有見到蛇"
+      },
+      "lines": [
+        {
+          "id": "kp713",
+          "text": "有人說，在靠海的沙地上看到像蛇爬過的痕跡；"
+        }
+      ]
+    },
+    {
+      "id": "dots",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an ancient Greek biographer's desk: two faint ink dots drawn on blank papyrus beside a slender reed pen and clay oil lamp, warm desk light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp714",
+          "text": "也有人說，她手臂上有兩個不明顯的小點。"
+        },
+        {
+          "id": "kp715",
+          "text": "這兩條，他都只當成「有人說」記下來。"
+        }
+      ]
+    },
+    {
+      "id": "plutarch-pen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe, holding a reed pen above a blank scroll and hesitating, lamp light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp716",
+          "text": "那普魯塔克自己，相信哪一個？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "no-one",
+      "template": "big",
+      "data": {
+        "text": "真正發生了什麼，**沒有人知道**",
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "sub": "所據英譯：what really took place is known to no one"
+      },
+      "lines": [
+        {
+          "id": "kp717",
+          "text": "他一個都沒選，只寫了一句：真正發生了什麼，沒有人知道。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "closed-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a heavy closed wooden door in a limestone tomb wall at dusk, a sentry in a bronze helmet standing beside it and staring at the door with a puzzled frown, cool grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp718",
+          "text": "還記得開頭那扇門嗎？門裡的人沒有一個留下來說話，",
+          "emotion": "點名回收"
+        }
+      ]
+    },
+    {
+      "id": "plutarch-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe, setting down his reed pen and lifting both palms in a small honest shrug, lamp light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp719",
+          "text": "寫最多細節的這位作者，也只能這樣承認。老實說，我第一次讀到這句，有點傻眼。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "three-scrolls-aside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an adult ancient Roman-era reader in a simple draped linen robe setting aside three blank papyrus scrolls before a closed limestone chamber door, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp720",
+          "text": "可是我要講清楚：沒找到蛇，不等於沒有蛇。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "dio-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a later Roman plaster-and-stone writing room: one adult historian in a simple draped Roman tunic compares two blank papyrus scrolls at a low stone desk, clay oil lamp and soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp721",
+          "text": "那另一位寫羅馬史的狄奧，能替他補上答案嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "dio-look",
+      "chapter": "狄奧筆下，她被帶進了王宮",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older historian with a short grey beard in a plain draped robe looking up from an open blank scroll with raised eyebrows, a clay oil lamp beside him, soft morning light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp801",
+          "text": "補不上。狄奧一開頭也寫：沒有人清楚知道，她是怎麼死的。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "dio-frown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an older historian with a short grey beard in a plain draped robe running a finger down a blank scroll and frowning, a clay oil lamp beside him, soft morning light from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp802",
+          "text": "更怪的是，他連她被關在哪裡，都跟普魯塔克不一樣。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "dio-palace",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Ptolemaic palace corridor of Alexandria, 30 BCE: an adult queen with straight dark bob, narrow plain diadem and simple Greek-style linen dress walks into a stone hall while two adult attendants in plain linen stand back along the columns, soft overcast daylight.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp803",
+          "text": "狄奧說，她被帶進王宮，平常的侍從也跟著。"
+        }
+      ]
+    },
+    {
+      "id": "ornaments",
+      "template": "shot",
+      "data": {
+        "prompt": "Full-bleed medium shot in a plain 30 BCE Alexandrian stone palace room: one adult Hellenistic queen with a straight dark bob and thin undecorated diadem wears a sleeveless Greek linen chiton fastened at both shoulders. She arranges a small set of plain gold ornaments on a low stone table, her mature face and hands visible, with soft daylight from an open stone doorway.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp804",
+          "text": "他還寫，她拿珍貴的飾物送人，說自己願意搭船走，看守就鬆了戒心。"
+        }
+      ]
+    },
+    {
+      "id": "ornaments-guard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a palace guard in a bronze helmet turning a small gold bracelet over in his palm with a pleased, off-guard smile, a stone colonnade behind him, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp805",
+          "text": "這跟普魯塔克筆下那個被搜身、被盯緊的她，差得很遠。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "dio-agree",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older historian with a short grey beard in a plain draped robe nodding slowly as he rolls up a blank scroll, a clay oil lamp beside him, soft morning light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp806",
+          "text": "也有對得上的地方：狄奧也寫了那封封好的信，和她最後換上的那身衣服。"
+        }
+      ]
+    },
+    {
+      "id": "viewer-books",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a cardigan at a kitchen table with two closed books side by side, tilting her head in confusion at us, warm evening light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp807",
+          "text": "你看，同一個故事換一本書，連她待在哪裡都變了。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "faint",
+      "template": "big",
+      "data": {
+        "text": "手臂上只有**淺痕**",
+        "kicker": "狄奧《羅馬史》·意譯",
+        "sub": "同一段：死法無人確知"
+      },
+      "lines": [
+        {
+          "id": "kp808",
+          "text": "狄奧也寫到遺體：手臂上，只有淺淺的痕跡。"
+        },
+        {
+          "id": "kp809",
+          "text": "光看這個，分得出是蛇牙，還是一根針嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "jar-flowers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an ancient Roman-era historian's stone table: adult hands compare a plain clay water jar and a small bunch of fresh flowers beside blank papyrus, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp810",
+          "text": "分不出來。他也只是列出說法：有人說，蛇藏在水罐裡，或藏在花裡；"
+        }
+      ]
+    },
+    {
+      "id": "needle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an ancient Roman-era historian's desk: adult hands lay a plain bronze hair needle beside blank papyrus, neutral daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp811",
+          "text": "也有人說，針上抹了毒，她先在手臂劃一道小口，再讓針碰到血。"
+        }
+      ]
+    },
+    {
+      "id": "pin-compare",
+      "template": "compare",
+      "data": {
+        "title": "同一根髮簪，兩種寫法",
+        "left": {
+          "heading": "普魯塔克",
+          "points": [
+            "中空的髮簪",
+            "毒藏在裡面"
+          ]
+        },
+        "right": {
+          "heading": "狄奧",
+          "points": [
+            "抹了毒的髮針",
+            "先劃一道小口"
+          ]
+        },
+        "verdict": "兩位都只當成「有人說」",
+        "source": "《安東尼傳》、《羅馬史》英譯"
+      },
+      "lines": [
+        {
+          "id": "kp812",
+          "text": "注意到了嗎？普魯塔克說毒藏在空心的髮簪裡，狄奧說毒抹在針上。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "kp813",
+          "text": "連同一種說法，兩本書都講得不一樣。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "octavian-still",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a commander in his early thirties, clean-shaven with short dark hair, in a draped grey mantle standing very still in a stone doorway with a grave, troubled expression, dim daylight from behind",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp814",
+          "text": "那屋大維自己趕到，看見遺體，他是怎麼想的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "healer",
+      "chapter": "屋大維找人吸毒，凱旋隊伍抬出一尊像",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot over the shoulder of one adult late-Republican Roman commander in a plain knee-length tunic and short draped mantle, his short cropped dark hair visible from behind, as his open hand beckons one separate adult healer in undyed Greek linen toward a low ancient wooden couch; a motionless adult Ptolemaic queen with closed eyes, straight dark bob and simple draped Greek linen is partly visible on the couch in a bare Alexandrian limestone chamber, 30 BCE, dim daylight.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp901",
+          "text": "狄奧寫，他叫人來救。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "psylli",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in Ptolemaic Alexandria, 30 BCE: an adult Roman official in a plain tunic beckons an adult healer in undyed linen toward a guarded limestone tomb doorway, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp902",
+          "text": "第三位作者蘇埃托尼烏斯寫得更具體：屋大維找來普西利人，試著把毒吸出來；"
+        }
+      ]
+    },
+    {
+      "id": "supposed",
+      "template": "big",
+      "data": {
+        "text": "她「**被認為**」被毒蛇咬死",
+        "kicker": "蘇埃托尼烏斯《奧古斯都傳》·意譯",
+        "sub": "所據英譯：supposed"
+      },
+      "lines": [
+        {
+          "id": "kp903",
+          "text": "原因是，她「被認為」是被毒蛇咬死的。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "healer-bowl",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a healer in an undyed homespun robe kneeling on a stone floor and holding a small clay bowl in both hands, a solemn, focused face, dim daylight from a doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp904",
+          "text": "狄奧也寫了這些普西利人，把他們的本事寫得很神奇；那是古代人的相信，不是醫學。"
+        }
+      ]
+    },
+    {
+      "id": "viewer-nod",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa nodding confidently with his arms crossed, a bookshelf beside him, warm evening light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp905",
+          "text": "你聽到這裡可能會想：都找人吸蛇毒了，那就是蛇吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "suetonius",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a writer in a plain white toga at a wooden table, pausing with a stylus raised over a blank wax tablet, a cautious expression, soft window light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp906",
+          "text": "可是「被認為」這三個字，是他自己的保留；",
+          "emotion": "放慢"
+        },
+        {
+          "id": "kp907",
+          "text": "派人去吸，只說明當時有人這樣想。"
+        }
+      ]
+    },
+    {
+      "id": "suetonius-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a writer in a plain white toga resting his chin on one hand beside a blank wax tablet, eyes narrowed in doubt, soft window light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp908",
+          "text": "他的書裡，也沒有寫屋大維親眼看到蛇。"
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a late Republican Roman stone avenue: an adult procession attendant in a plain Roman tunic checks an empty raised wooden display platform before the triumphal parade, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp909",
+          "text": "屋大維沒能把她活著帶進凱旋式。那凱旋式上，就少了她嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "statue-parade",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stone avenue on a parade day, an attendant in a short cloak walking beside a wooden float that carries a grey carved statue of a crowned woman with a small carved snake curled on its forearm, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp910",
+          "text": "沒有。還記得開頭那尊帶蛇的女王像嗎？普魯塔克記下，它就在這支隊伍裡。",
+          "emotion": "點名回收"
+        }
+      ]
+    },
+    {
+      "id": "effigy-figs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an illustrative ancient writer's bare wooden table: at left a wicker basket filled with large pear-shaped purple figs and fig leaves; at right a small uniformly grey carved queen effigy with one clearly carved snake curled around its stone forearm, spaced apart as two different reported images, matte 2D illustrated surfaces, soft overcast light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp911",
+          "text": "它證明了一件事：蛇的版本，已經變成羅馬勝利的公開畫面。"
+        }
+      ]
+    },
+    {
+      "id": "statue-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a grey carved statue of a crowned woman on a wooden float, a small carved snake curled on its stone forearm, her carved face calm, soft overcast light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp912",
+          "text": "可是，雕出一條蛇，不等於有人看見蛇咬。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "three-scrolls",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an ancient historian's bare low wooden table: exactly three physically separate tightly rolled blank papyrus scrolls lie side by side with clear gaps of exposed wood between each, each scroll showing two cylindrical rolled ends; one squat clay oil lamp at the far edge, soft daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp913",
+          "text": "三本書放在一起，你看到的不是三個目擊者，是一個傳說怎麼分了岔。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "parade-crowd",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd lining a stone avenue on a parade day, a woman in a plain shawl at the front pointing at a passing float that carries a grey statue, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp914",
+          "text": "我的看法是：大家記住的，常常是被抬出來展示的那一個版本。",
+          "emotion": "意見標成意見"
+        }
+      ]
+    },
+    {
+      "id": "final-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman with a straight dark bob and a narrow plain diadem in a simple pale Greek-style gown standing in a stone doorway at dusk, looking straight at us with a calm, knowing half-smile, cool grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kp915",
+          "text": "那她到底是不是被毒蛇咬死的？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "蛇咬：可能。一定：沒有確證",
+        "kicker": "普魯塔克、蘇埃托尼烏斯、狄奧",
+        "sub": "沒有一位說自己親眼看見"
+      },
+      "lines": [
+        {
+          "id": "kp916",
+          "text": "所以這份檔案：蛇咬，有可能；說她一定死於毒蛇，紀錄撐不起來。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "蛇咬：可能。一定：沒有確證",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "kp917",
+          "text": "你原本腦中那個畫面，是籃子裡的蛇，還是凱旋隊伍裡那尊像？留言告訴我。",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "kp918",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "kp102",
+      "payoff": "kp718",
+      "what": "門裡發生了什麼，沒有人留下來說"
+    },
+    {
+      "setup": "kp106",
+      "payoff": "kp516",
+      "what": "衛兵攔下的籃子裡裝什麼"
+    },
+    {
+      "setup": "kp108",
+      "payoff": "kp605",
+      "what": "那封信裡寫了什麼"
+    },
+    {
+      "setup": "kp109",
+      "payoff": "kp910",
+      "what": "凱旋隊伍裡那尊帶蛇的女王像"
+    },
+    {
+      "setup": "kp111",
+      "payoff": "kp916",
+      "what": "全片的問題：一定是毒蛇嗎"
+    },
+    {
+      "setup": "kp207",
+      "payoff": "kp208",
+      "what": "門外的羅馬人想要什麼"
+    },
+    {
+      "setup": "kp212",
+      "payoff": "kp213",
+      "what": "她不開門，使者有沒有辦法"
+    },
+    {
+      "setup": "kp217",
+      "payoff": "kp301",
+      "what": "匕首來不來得及用"
+    },
+    {
+      "setup": "kp302",
+      "payoff": "kp710",
+      "what": "羅馬人防的是毒"
+    },
+    {
+      "setup": "kp307",
+      "payoff": "kp308",
+      "what": "屋大維會不會讓她餓下去"
+    },
+    {
+      "setup": "kp313",
+      "payoff": "kp408",
+      "what": "屋大維信了沒有"
+    },
+    {
+      "setup": "kp405",
+      "payoff": "kp406",
+      "what": "漏列的東西要留給誰"
+    },
+    {
+      "setup": "kp411",
+      "payoff": "kp508",
+      "what": "她心裡打算的是什麼"
+    },
+    {
+      "setup": "kp509",
+      "payoff": "kp614",
+      "what": "合葬的願望誰能保證"
+    },
+    {
+      "setup": "kp518",
+      "payoff": "kp601",
+      "what": "籃子進門後她做了什麼"
+    },
+    {
+      "setup": "kp609",
+      "payoff": "kp610",
+      "what": "使者來不來得及"
+    },
+    {
+      "setup": "kp616",
+      "payoff": "kp702",
+      "what": "她到底是怎麼死的"
+    },
+    {
+      "setup": "kp711",
+      "payoff": "kp712",
+      "what": "身上的痕跡能不能分出說法"
+    },
+    {
+      "setup": "kp721",
+      "payoff": "kp801",
+      "what": "狄奧能不能補上答案"
+    },
+    {
+      "setup": "kp809",
+      "payoff": "kp810",
+      "what": "淺痕分不分得出蛇牙或針"
+    },
+    {
+      "setup": "kp814",
+      "payoff": "kp901",
+      "what": "屋大維看見遺體怎麼想"
+    },
+    {
+      "setup": "kp716",
+      "payoff": "kp717",
+      "what": "普魯塔克自己相信哪一個"
+    },
+    {
+      "setup": "kp909",
+      "payoff": "kp910",
+      "what": "凱旋式上少了她嗎"
+    }
+  ],
+  "youtube": {
+    "title": "埃及豔后真的被毒蛇咬死？三位古代作者沒有一個看見｜奇聞檔案局",
+    "description": "埃及豔后抱著毒蛇死去，你一定看過這個畫面。這一集只講紀錄裡找得到的：照普魯塔克《安東尼傳》寫的最後幾天往下走——負傷的安東尼被繩子拉上陵墓的高窗、屋大維為了財寶和凱旋式想活捉她、使者從窗口爬進去奪下匕首、她一度不吃東西、財寶清單被管家拆穿、多拉貝拉捎來「三天內送走」的消息、墓前獻祭、洗澡吃飯、衛兵看過的那籃無花果、一封密封信、關上的門。普魯塔克把蛇藏在無花果底下、器皿裡的蛇、中空髮簪都寫成「有人說」，並直說真正發生了什麼沒有人知道；狄奧《羅馬史》也說沒有人清楚知道，只記下手臂上的淺痕、水罐或花裡的蛇、抹毒的髮針；蘇埃托尼烏斯《奧古斯都傳》寫她「被認為」遭蛇咬，屋大維才找普西利人試著吸毒。凱旋隊伍裡那尊帶蛇的女王像，證明蛇的版本成了公開的勝利圖像，不證明有人看見蛇咬。蛇咬可能，沒有確證。\n\n界線：三位作者都在事件之後寫作，不是陵墓裡的目擊者；本集依 Project Gutenberg 的英譯，片中引文是意譯，沒有核對希臘文或拉丁文原文。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；不畫毒蛇咬到女王，也不把任何一種說法畫成確定的死亡現場。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "克麗奧佩脫拉",
+      "埃及豔后",
+      "毒蛇",
+      "屋大維",
+      "普魯塔克",
+      "卡西烏斯狄奧",
+      "蘇埃托尼烏斯",
+      "羅馬史",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "毒蛇？\n**沒人看見**",
+      "tag": "歷史名場面",
+      "sub": "三位作者，兩位說沒人知道",
+      "shot": "praise"
+    }
+  },
+  "sources": [
+    {
+      "title": "Plutarch, Antony, final chapters, English translation",
+      "url": "https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L61323-L61659",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Suetonius, Augustus XVII, English translation",
+      "url": "https://github.com/GITenberg/The-Lives-of-the-Twelve-Caesars-Complete_6400/blob/bb5afc956095e248b2287cce2a4d3ebe394e5d31/6400.txt#L2801-L2811",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Cassius Dio, Roman History LI.8–15, English translation",
+      "url": "https://github.com/GITenberg/Dio-s-Rome-Volume-3--13-An-Historical-Narrative-Originally-Composed-in-Greek-During-The-Reign__10162/blob/06d7e6a6f7fd5f45fbaacc3ade5397085290113b/10162.txt#L7320-L7534",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

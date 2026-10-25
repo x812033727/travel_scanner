@@ -1,0 +1,1989 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s08-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友拆一個大家都聽過的發明：開場兩句對著觀眾講、帶一點挑釁；祁山那幾句沉穩，「軍糧吃完」壓低；兩個預告一句一停。搬家、一年吃多少米、說書人的速度、家具零件這幾句帶笑；古文原句一字一字唸清楚；「畢」「運」兩個字分開放慢；小說那段輕快活潑，扭舌頭那句停一拍；結尾乾脆，分清楚「存檔」與「未結」。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "二三一年春天，木牛跟著大軍上了祁山",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting cross-legged on a sofa in a plain living room in the evening, hugging a cushion and grinning at us as if hearing a story he already knows, a lit floor lamp beside him, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn101",
+          "text": "你一定聽過木牛流馬：會自己走的木頭牛馬，替諸葛亮的大軍運糧。",
+          "emotion": "對觀眾說，像在講大家都知道的事"
+        }
+      ]
+    },
+    {
+      "id": "wood-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day archive, one historian studying a modern facsimile of the later annotated Three Kingdoms history, blurred print columns beside separate loose wooden samples, soft desk lamp",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn102",
+          "text": "可是將近一千八百年過去，《三國志》替它留下的是尺寸，不是圖。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "wood-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm strategist with a long black beard, a cloth headwrap and a white feather fan standing at a tent opening in a mountain camp in the afternoon, pointing toward the distant mountains, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn103",
+          "text": "西元二三一年春天，諸葛亮再次出兵，圍向祁山。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "wood-012",
+      "template": "big",
+      "data": {
+        "text": "始以木牛運",
+        "kicker": "《三國志》卷三十三〈後主傳〉",
+        "sub": "建興九年 · 231"
+      },
+      "lines": [
+        {
+          "id": "mn104",
+          "text": "〈後主傳〉寫了五個字：「始以木牛運」，開始用木牛運糧。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "wood-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Shu Han supply post in June 231 CE, one officer in a plain cross-collar robe pulling shut the mouth of a nearly empty hemp grain sack, pale afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn105",
+          "text": "到了夏天六月，記載說：軍糧吃完，退兵。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "wood-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a third-century Shu Han grain depot, one quartermaster in a dark cross-collar robe looking at a shrinking pile of hemp grain sacks, pale daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn106",
+          "text": "新的運糧工具才上路，糧就斷了？",
+          "emotion": "問句，停住"
+        }
+      ]
+    },
+    {
+      "id": "wood-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day reconstruction workshop, one researcher comparing a detached wooden support with a facsimile passage on the table, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn107",
+          "text": "但這還不是最怪的。後來的文字說木牛「一腳四足」，它會走路嗎？",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "wood-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day storytelling desk, one reader touching a detached wooden tab beside a plain closed later Romance of the Three Kingdoms volume, gentle lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn108",
+          "text": "更晚的小說裡，有人扭了一下它嘴裡的舌頭。",
+          "emotion": "停在這裡，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "3 個年份 → 1 張圖？",
+        "kicker": "建興九年、十年、十二年",
+        "sub": "史書留下的字，拼不拼得出它的樣子"
+      },
+      "lines": [
+        {
+          "id": "mn109",
+          "text": "這份檔案跟著它在史書裡的三個年份，看那串尺寸拼不拼得出一張圖。",
+          "emotion": "承諾句，篤定"
+        },
+        {
+          "id": "mn110",
+          "text": "照史書的字，畫得出木牛流馬真正的樣子嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-018",
+      "chapter": "祁山撤軍，史書沒記木牛運了多少",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a Shu Han mountain camp in 231 CE, one soldier in a short belted tunic folding a small cloth banner beside packed grain bundles, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn201",
+          "text": "這一仗，同一部書的〈諸葛亮傳〉也記了：木牛和撤軍，寫在同一段裡。",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "wood-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a Shu Han grain stack, one quartermaster in a cloth headwrap weighing two small grain bags in his hands, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn202",
+          "text": "那這能證明，木牛根本沒用嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a third-century Shu Han grain store, one clerk in a belted robe holding a plain unmarked bamboo tally beside sacks, soft ambient light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn203",
+          "text": "不能。史書沒說一共造了幾台，也沒說每一台載多少。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "wood-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Shu Han army cook tent, one cook in a simple right-closing tunic pouring grain from a woven basket into a plain clay bowl, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn204",
+          "text": "前線要吃飯的，不是一個人，而是一整支軍隊。"
+        }
+      ]
+    },
+    {
+      "id": "move-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt in a half-empty apartment hallway in the afternoon, carrying a tall wobbling stack of cardboard boxes and grinning wryly at us, a plain door behind him, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn205",
+          "text": "你搬過家就知道：車子再好，趟數不夠，東西一樣搬不完。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Shu Han mountain supply camp, one porter in a rough hemp tunic setting a lone grain sack beside a much larger waiting stack, grey sky light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn206",
+          "text": "同一場仗，一邊用木牛，一邊缺糧；差的到底是哪個數字？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day historian desk, one researcher leaving a modern route diagram and quantity columns blank while studying a facsimile history volume, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn207",
+          "text": "再加上路有多遠也沒寫，就算不出它一共運得動多少。"
+        }
+      ]
+    },
+    {
+      "id": "wood-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a third-century Shu Han mountain trail, one porter in a coarse cross-collar hemp tunic resting his hand on a timber load fully hidden by rough woven hemp cloth tied with fiber rope, grey sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn208",
+          "text": "換成你是當年管糧的官，你最想要的，大概就是一張寫著一趟幾袋、一天幾趟的表。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Shu Han supply station in 231 CE, one clerk in a plain cross-collar robe counting hemp grain sacks beside a wooden load fully hidden by coarse undyed hemp cloth tied with fiber rope, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn209",
+          "text": "說老實話，我第一次讀到這裡，有點洩氣。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "wood-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious reader in a cardigan at an archive desk in the morning, holding two blank sheets of paper side by side and frowning, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn210",
+          "text": "偏偏隔了一年，史書又寫了一句話，把事情弄得更亂。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "wood-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a fork in a Shu Han mountain trail, one messenger in a short cross-collar tunic turning toward a distant pass, hazy daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn211",
+          "text": "木牛前一年就上過山路，為什麼這一句又說它「做好了」？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-025",
+      "chapter": "隔年在黃沙，史書寫流馬木牛「做好了」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Shu Han work area near Huangsha in 232 CE, one officer in a plain right-closing robe standing beside an entirely rough-hemp-cloth-covered completed load, ploughed fields in the distance, soft cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn301",
+          "text": "差別在一個字。祁山那年記的是「運」，是上路；隔年這一句記的是「畢」，是做完。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "wood-026",
+      "template": "big",
+      "data": {
+        "text": "作流馬木牛畢",
+        "kicker": "《三國志》卷三十三〈後主傳〉",
+        "sub": "建興十年 · 232"
+      },
+      "lines": [
+        {
+          "id": "mn302",
+          "text": "建興十年，原文是：「作流馬木牛畢，教兵講武。」",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "wood-027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Huangsha field of Shu Han China, 232 CE, one soldier in a belted hemp tunic turning soil with a plain wooden hoe beside a grain sack, diffuse daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn303",
+          "text": "那一年，諸葛亮在黃沙讓士兵休整，也鼓勵耕種；"
+        }
+      ]
+    },
+    {
+      "id": "hoe-and-load",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with round glasses in a cotton shirt and a knitted vest at a reading desk on a mild afternoon, holding a tiny wooden hoe in one hand and a tiny cloth-wrapped wooden block in the other, raising both toward us with a knowing smile, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn304",
+          "text": "你看，他一手造運糧的工具，一手叫兵去種田，還要練兵，全寫在同一行。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modern history desk, one researcher setting two plain wooden date tokens apart beside a facsimile of the short 232 record, soft desk light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn305",
+          "text": "那這一回做完的，是改良舊的、添造新的，還是哪一批收尾？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an illustrative third-century Shu Han workshop, one craftsperson in a rolled-sleeve hemp tunic laying loose timber parts beside a frame fully hidden by rough undyed hemp cloth, muted afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn306",
+          "text": "原文沒列台數，沒寫工序，也沒說流馬和木牛是不是一樣大。"
+        }
+      ]
+    },
+    {
+      "id": "arc-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist with round glasses in a cotton shirt and a knitted vest beside a tall archive shelf on an overcast afternoon, shrugging with both palms up and a small apologetic smile at us, soft light from a high window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn307",
+          "text": "三種猜法，原文都擋不住；我的看法是，一個「畢」字，撐不起更多。",
+          "emotion": "意見，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "horse-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest at a reading desk under a desk lamp, pointing at one spot on a blank printed page with raised eyebrows as if spotting something new, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn308",
+          "text": "這一句還多了一個名字：流馬；前一年的祁山，記的還只有木牛。"
+        }
+      ]
+    },
+    {
+      "id": "wood-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a Shu Han mountain ridge in 231 CE, one porter in a coarse hemp tunic shouldering a grain sack toward a small timber camp, thin morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn309",
+          "text": "名字有了；可是流馬什麼時候，才真的跟一個「運」字寫在一起？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-001",
+      "chapter": "建興十二年，流馬走出斜谷",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the Xie Valley mountain track with a Shu Han supply caravan in 234 CE, one supply officer in a plain right-closing cross-collar robe watching hemp grain sacks pass beside a wooden load fully hidden by coarse undyed hemp cloth tied with fiber rope, soft morning haze",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn401",
+          "text": "答案又等了兩年。建興十二年春天二月，諸葛亮的大軍走出斜谷。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "wood-037",
+      "template": "big",
+      "data": {
+        "text": "始以流馬運",
+        "kicker": "《三國志》卷三十三〈後主傳〉",
+        "sub": "建興十二年 · 234"
+      },
+      "lines": [
+        {
+          "id": "mn402",
+          "text": "〈後主傳〉寫：「始以流馬運。」開始用流馬運糧。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "wood-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an illustrative Shu Han timber yard, one craftsperson in a coarse hemp tunic brushing dust from an older separate wooden beam, quiet daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn403",
+          "text": "這也不等於世上第一台流馬，就是那個月才造出來的。"
+        }
+      ]
+    },
+    {
+      "id": "sofa-relief",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt on a sofa in the evening, leaning back with both hands behind his head and a relaxed grin, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn404",
+          "text": "你大概以為，有了流馬，這一回糧食總該接得上了吧？",
+          "emotion": "對觀眾，故意輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "wood-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Shu Han field camp at Wuzhang Plains near the Wei River in 234 CE, one sentry in plain lamellar armor watching rows of low woven-cloth tents on timber poles, pale morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn405",
+          "text": "〈諸葛亮傳〉接著寫，大軍佔住了武功的五丈原。"
+        }
+      ]
+    },
+    {
+      "id": "wood-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at the Shu Han camp in 234 CE, one mature adult Shu Han Chinese commander with tied dark hair, a plain right-closing robe and cloth headwrap touching an empty clay grain bowl, low oil-lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn406",
+          "text": "可是同一段又寫，諸葛亮「每患糧不繼」，常常苦惱糧食接不上。",
+          "emotion": "語氣一沉"
+        }
+      ]
+    },
+    {
+      "id": "wood-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a field by the Wei River in 234 CE, one Shu Han soldier in a belted hemp tunic turning soil with a plain wooden hoe, mild cloudy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn407",
+          "text": "於是他分兵屯田，替長久駐紮打底。"
+        }
+      ]
+    },
+    {
+      "id": "wood-100",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside the Wei River fields in third-century China, one Shu Han soldier in a short cross-collar tunic sowing grain near a plain village house, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn408",
+          "text": "種田的兵，跟渭水邊的居民混在一起住，田就開在前線附近。"
+        }
+      ]
+    },
+    {
+      "id": "wood-108",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by the Wuzhang Plains camp in 234 CE, one Shu Han soldier in a cloth headwrap looking across growing grain rows toward low army tents, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn409",
+          "text": "兩軍相持了一百多天；這麼長的對峙，每一天都要吃飯。"
+        }
+      ]
+    },
+    {
+      "id": "wood-101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a Wei River grain field in third-century China, one Shu Han quartermaster in a right-closing robe carrying a small grain sack toward distant low woven-cloth army shelters on timber poles, calm afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn410",
+          "text": "一面對峙，一面耕種，前線試著自己補上一部分糧食。"
+        }
+      ]
+    },
+    {
+      "id": "wood-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a field path at Wuzhang Plains, one Shu Han supply porter in a rough hemp tunic carrying a grain sack past furrowed soil, pale daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn411",
+          "text": "那流馬跟屯田，到底哪一個扛住了全軍？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Shu Han clerk table, one quartermaster in a cross-collar robe turning over a plain unmarked bamboo tally beside grain sacks, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn412",
+          "text": "流馬運了多少，紀錄沒給總數；"
+        }
+      ]
+    },
+    {
+      "id": "wood-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modest Wei River field in 234 CE, one Shu Han soldier in a belted hemp tunic tending young grain rows beside a simple timber shelter, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn413",
+          "text": "屯田收了多少，這一段也沒有收成表。"
+        }
+      ]
+    },
+    {
+      "id": "wood-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day history desk, one researcher placing a facsimile of the grain shortage passage beside a blank modern supply chart, even desk lamp",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn414",
+          "text": "所以不能拿「糧不繼」說流馬失敗，也不能說它解決了一切。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "wood-049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired porter in a coarse tunic on a mountain road in grey daylight, stopping to wipe his brow beside a heavy grain sack, soft grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn415",
+          "text": "我覺得，這不是神奇機器突然失靈的故事；是補給從頭到尾都很吃緊。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "sofa-books",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in the evening, frowning at three closed plain books stacked on the cushion beside him and scratching his head, lamp light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn416",
+          "text": "你發現了吧：翻到這裡，我們連它有沒有輪子都還不知道。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modern archive, one researcher reaching for a later annotated critical edition beside a separate unillustrated Three Kingdoms history volume, quiet daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn417",
+          "text": "連運糧的工具都寫進去了，它的樣子，會不會藏在另一頁？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-051",
+      "chapter": "陳壽只誇一句，裴松之的註裡翻出方肚子的木牛",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day archive, one historian reading a modern facsimile of Chen Shou’s Three Kingdoms history, blurred print columns under a soft desk lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn501",
+          "text": "還真有另一頁：〈諸葛亮傳〉的正文，寫到他的巧思時，提到了它。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "chen-shou",
+      "template": "big",
+      "data": {
+        "text": "損益連弩，木牛流馬，皆出其意",
+        "kicker": "《三國志》卷三十五〈諸葛亮傳〉陳壽正文",
+        "sub": "亮性長於巧思"
+      },
+      "lines": [
+        {
+          "id": "mn502",
+          "text": "陳壽寫他天性擅長巧思：改良連弩，還有木牛流馬，都出自他的構想。"
+        }
+      ]
+    },
+    {
+      "id": "crossbow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm strategist with a long black beard, a cloth headwrap and a long plain robe sitting at a camp table on an overcast afternoon, turning a small wooden crossbow model in his hands with a pleased look, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn503",
+          "text": "你注意，這一句把木牛流馬跟連弩擺在一起；我讀起來，它誇的是人，不是車。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot over a modern historian’s shoulder, one hand resting on the unillustrated facsimile page of Chen Shou’s main text, warm desk lamp",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn504",
+          "text": "可是正文就到這裡，它長什麼樣，一筆也沒描。那些細節去哪了？"
+        }
+      ]
+    },
+    {
+      "id": "wood-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day archive desk, one reader pointing from softly blurred main-text columns to a visibly separate annotation margin in a modern printed critical edition, steady daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn505",
+          "text": "還記得開頭說的那串尺寸：它不在陳壽的正文裡，在裴松之的註裡。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "wood-055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day archive, one historian opening a modern printed annotated Three Kingdoms history to softly blurred commentary columns beside the main text, soft desk lamp",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn506",
+          "text": "裴注引了《諸葛亮集》，開頭寫的是「作木牛流馬法」。"
+        }
+      ]
+    },
+    {
+      "id": "wood-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day research desk, one scholar holding a facsimile of Pei Songzhi’s quotation above an empty workbench with loose sample timbers, calm light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn507",
+          "text": "這是註家引用另一份文字，不等於裴松之親眼量過這件器具。"
+        }
+      ]
+    },
+    {
+      "id": "wood-057",
+      "template": "big",
+      "data": {
+        "text": "一腳四足",
+        "kicker": "裴注引《諸葛亮集》",
+        "sub": "原文部件詞，不等於四條會走的腿"
+      },
+      "lines": [
+        {
+          "id": "mn508",
+          "text": "開頭那句「一腳四足」，就在木牛這一段；前面還寫著「方腹曲頭」。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "wood-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day hand-tool reconstruction workshop, one craftsperson comparing a detached curved timber piece with a separate square block as possible shapes on a plain bench, muted window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn509",
+          "text": "方方的肚子、彎彎的頭，聽起來確實像一頭牛。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day hand-tool research bench, one craftsperson in a plain work apron holding two separate wooden supports with visible space between them, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn510",
+          "text": "可是「足」是哪一塊木頭？又怎麼接到身上？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful carpenter in an apron at a workbench in the afternoon, holding up two long wooden poles side by side, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn511",
+          "text": "原文還說牛「仰雙轅」，雙轅是另一個部件的名字。"
+        }
+      ]
+    },
+    {
+      "id": "wood-102",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modern carpentry bench, one researcher holding a loose wooden tab beside a separate square timber block, gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn512",
+          "text": "木牛這一段還寫「舌著於腹」：舌頭，貼在肚子上。等一下，舌頭？",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "wood-103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modern archive, one scholar pointing to softly blurred columns in a modern printed annotated history while a detached wooden tab lies separately on the desk, steady desk light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn513",
+          "text": "古文只說有這麼一個部件，貼在腹部；扭它會怎樣，這一段一個字都沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "wood-061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day research desk, one historian placing a facsimile of the leg-and-foot terms beside several loose unassembled timbers, even light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn514",
+          "text": "至於那四隻足，原文沒說哪個部件會前後屈伸；光憑這四個字，判定不了它會走路。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "wood-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along an illustrative Shu Han mountain road, one walker in a belted hemp tunic pacing beside a distant supply load fully hidden by coarse undyed hemp cloth, overcast morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn515",
+          "text": "偏偏下一句更像在說它會走：「人行六尺，牛行四步。」",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "wood-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a third-century Shu Han road, one curious porter in a cloth headwrap looking toward a timber load fully hidden by rough woven hemp cloth with its construction concealed, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn516",
+          "text": "把人和牛並排算步子，難道它真的會自己走？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day hand-tool carpentry study, one artisan examining a detached plain wooden piece on a bare bench while other pieces remain apart, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn517",
+          "text": "我的讀法是：「行」說的是走了多遠，沒畫出每個接點怎麼動。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "toy-car",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in the evening, holding up a small toy car with its underside cupped in his palm and raising one eyebrow at us, lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn518",
+          "text": "就像有人跟你說「這台車跑得很快」，你還是不知道它有幾個輪子。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a winding Shu Han hillside road, one porter in a coarse cross-collar tunic hoisting a hemp grain sack beside a supply load fully hidden by rough woven hemp cloth, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn519",
+          "text": "原文接著說，木牛「載一歲糧」；這能換成今天的公斤嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-068",
+      "chapter": "木牛載「一歲糧」，流馬的孔量到幾寸",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modern study, one researcher setting an old-style grain measure beside an unused digital scale and a facsimile passage, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn601",
+          "text": "不能。它沒說這是幾個人的口糧，公斤數就沒有可靠的換算起點。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "rice-bowl",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt at a small kitchen table in the evening, staring at a bowl of rice with a puzzled frown, chopsticks paused in one hand, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn602",
+          "text": "老實說，你自己一年吃多少米，大概也說不出來吧。",
+          "emotion": "對觀眾，開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-104",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a long third-century Chinese mountain path, one porter in a belted hemp tunic pausing beside a timber load fully hidden by coarse undyed woven cloth tied with fiber rope, grey morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn603",
+          "text": "它還說，一天走二十里，「而人不大勞」，人不太累。"
+        }
+      ]
+    },
+    {
+      "id": "wood-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day archive table, one scholar turning a printed facsimile page beside an empty modern staffing chart, warm desk lamp",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn604",
+          "text": "可是要幾個人押著走？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mn605",
+          "text": "這一段沒交代。"
+        }
+      ]
+    },
+    {
+      "id": "wood-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a rough third-century Shu Han pass, one supply porter in a cloth headwrap looking along the long winding track beside grain sacks, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn606",
+          "text": "另一句把走法分開：單獨走的，能走幾十里；成群走的，也是二十里。"
+        }
+      ]
+    },
+    {
+      "id": "wood-105",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day research desk, one researcher placing two separate blank distance markers beside a modern printed source facsimile, an unopened plain map resting farther away, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn607",
+          "text": "兩種走法分開記；那是在什麼路上量的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mn608",
+          "text": "原文沒說。"
+        }
+      ]
+    },
+    {
+      "id": "wood-067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a present-day research desk, one historian holding a plainly modern replica of an old-style grain measure beside an empty modern test form, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn609",
+          "text": "它留下的是古人對載運的描述，不是一份照著做就能重來的試驗表。"
+        }
+      ]
+    },
+    {
+      "id": "wood-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modern critical-edition desk, one reader turning from the wood-ox passage to the distinct flowing-horse measurements section, blurred print under a warm desk lamp",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn610",
+          "text": "接著，文字換了一個標題：「流馬尺寸之數」。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "carp-relief",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a carpenter in a canvas apron at a workbench on a mild morning, reading a blank printed page with a relieved smile, loose plain timber pieces beside him, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn611",
+          "text": "你如果是想照著做的工匠，讀到這裡大概會鬆一口氣：終於有數字了。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day hand-tool carpentry study, one artisan lining up separate plain timber ribs and a drilled block as unjoined possible parts on a simple bench, diffused daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn612",
+          "text": "流馬這一段，一個孔一個孔寫出位置；這些孔，到底要裝什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day hand-tool research bench, one artisan peering through a single drilled hole in a detached plain timber block, even daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn613",
+          "text": "孔分成軸孔、腳孔、杠孔，至少看得出各對應哪一類部件。"
+        }
+      ]
+    },
+    {
+      "id": "wood-092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modern research desk, one historian pointing to a detached plain timber piece with a single drilled axle hole beside an unmarked traditional-length ruler, soft desk lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn614",
+          "text": "比方前軸孔，原文說離頭四寸，孔徑二寸。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "wood-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot over a present-day hand-tool test bench, one craftsperson arranging separate unassembled plain timber ribs, a drilled block and a loose beam with visible gaps between them, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn615",
+          "text": "名字和數字像一張工匠的清單，卻不是一件組好的成品。"
+        }
+      ]
+    },
+    {
+      "id": "wood-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day history desk, one researcher placing separate markers on two different facsimile passages for wood ox and flowing horse, quiet daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn616",
+          "text": "流馬這一段也有腳，寫的是「前後四腳」；跟木牛那四足，是同一種零件嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a puzzled reader in a cardigan at a study desk in the afternoon, holding two small plain wooden pieces apart and raising her eyebrows, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn617",
+          "text": "不能確定。兩段分開寫木牛和流馬，沒交代兩組腳是不是同一種東西。"
+        }
+      ]
+    },
+    {
+      "id": "wood-077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a Shu Han supply bundle in a tentative workshop illustration, one clerk in a cross-collar robe lifting two plain square grain pouches, muted daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn618",
+          "text": "流馬還有兩個方形的袋子，叫方囊，每個裝米二斛三斗。"
+        }
+      ]
+    },
+    {
+      "id": "wood-079",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a present-day hand-tool reconstruction workshop, one researcher examining separate loose timber pieces on a bare workbench before a plain plaster wall, grey window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn619",
+          "text": "換成你拿著這段文字要把流馬組起來，第一個接點，該放在哪裡？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day archive shelf, one reader reaching for a later Romance of the Three Kingdoms storybook beside a separate history edition, warm desk lamp",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn620",
+          "text": "還有那條舌頭：古文裡，它只是貼在肚子上的一個部件。"
+        }
+      ]
+    },
+    {
+      "id": "where-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day storytelling desk, one reader touching a detached wooden tab beside a plain closed later Romance of the Three Kingdoms volume, gentle lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn621",
+          "text": "開頭那隻伸過去扭它的手，是哪一本書裡的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-082",
+      "chapter": "小說裡，蜀兵扭了一下木牛的舌頭",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one modern reader opening a plain printed Romance of the Three Kingdoms volume on a desk, with a separately framed imagined mountain supply vignette behind the reader, gentle lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn701",
+          "text": "是後來的小說《三國演義》第一百零二回；書裡的木牛流馬，像活的一樣上山下嶺。",
+          "emotion": "接住上一章，語氣變活潑"
+        }
+      ]
+    },
+    {
+      "id": "sofa-novel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in the evening, reading a thick plain-covered novel with a delighted grin, lamp light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn702",
+          "text": "我猜，你從小聽到那個會自己走的版本，跟這一回最像。",
+          "emotion": "意見，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wood-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a clearly illustrated later-novel workshop vignette, one mature adult Wei commander in plain period lamellar armor inspecting loose cut timber pieces beside a captured load fully hidden by rough hemp cloth, soft oil-lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn703",
+          "text": "故事裡，司馬懿叫人把搶來的器具拆開，照著尺寸仿造。"
+        },
+        {
+          "id": "mn704",
+          "text": "仿得出來嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-109",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an illustrated Romance of the Three Kingdoms vignette, one Wei carpenter in a belted cross-collar tunic counting a row of indistinct supply loads fully hidden by coarse undyed woven cloth in a plain workshop, mild oil-lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn705",
+          "text": "小說寫得像一場軍備競賽：不到半個月，魏軍就仿出兩千多件，派去隴西搬糧。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "arc-laugh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest at a reading desk under a warm lamp, laughing softly behind one hand, a plain closed storybook in front of him, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn706",
+          "text": "這種速度，你一聽就知道，是說書人在講了。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside an illustrated later-novel mountain-pass vignette, one disguised Shu soldier in Wei-style plain lamellar armor guiding a supply load fully hidden by rough woven hemp cloth, thin moonlight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn707",
+          "text": "蜀軍扮成魏兵，混進魏軍的運糧隊。"
+        }
+      ]
+    },
+    {
+      "id": "wood-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside an illustrated Romance story vignette, one adult disguised Shu soldier in a plain Wei-style lamellar sleeve twisting a small wooden tongue-shaped tab while the rest of a fictional wooden load remains hidden beneath coarse hemp cloth, soft dawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn708",
+          "text": "然後就是開頭那一幕：他們把器具嘴裡的舌頭，扭了一下。",
+          "emotion": "回呼，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-stuck",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an illustrated later-novel road vignette at dawn, one Wei guard in plain period lamellar armor blinking in surprise at a wooden supply load fully hidden by coarse undyed woven cloth tied with fiber rope that stands motionless on a dirt road, pale dawn light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn709",
+          "text": "器具就停住，不動了。魏兵能把它拖走嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an illustrated later-novel road, one Wei guard in plain period lamellar armor straining at a wooden load fully hidden by coarse undyed woven cloth tied with fiber rope, pale dawn light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn710",
+          "text": "魏兵追上來，牽不動，也扛不走，正好掉進小說安排的計。"
+        }
+      ]
+    },
+    {
+      "id": "wood-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot within an illustrated later-novel road scene, one Wei guard in simple lamellar armor stepping back in surprise from a supply load fully hidden by rough woven hemp cloth, pale morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn711",
+          "text": "等舌頭扭回來，器具又能走了。"
+        }
+      ]
+    },
+    {
+      "id": "wood-107",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside an illustrated Romance of the Three Kingdoms valley episode, one disguised Shu soldier in period lamellar armor raising a smoking bundle of reeds with small sparks to deceive the distant Wei camp, muted twilight light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn712",
+          "text": "蜀軍還扮成神兵，放起煙火，讓魏兵疑心真有鬼神。"
+        }
+      ]
+    },
+    {
+      "id": "novel-hay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an illustrated later-novel camp vignette in the evening, one Shu soldier in a cross-collar tunic holding out a handful of hay toward a wooden supply load fully hidden by coarse undyed woven cloth tied with fiber rope and grinning, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn713",
+          "text": "小說還多寫了四個字：「牛馬不食」，牛馬不用吃東西。",
+          "emotion": "帶笑"
+        },
+        {
+          "id": "mn714",
+          "text": "這四個字，古文裡有嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "arc-two-books",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest at a reading desk on a mild afternoon, holding a plain printed history volume in one hand and a plain novel in the other at arm's length, eyebrows raised, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn715",
+          "text": "剛剛古文那句只說人不太累；牛馬不吃東西，那一段裡找不到。"
+        }
+      ]
+    },
+    {
+      "id": "wood-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day archive table, one reader setting an illustrated later novel apart from a separate critical edition of the Three Kingdoms history, even daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn716",
+          "text": "這些機關屬於小說；《三國志》有器具運糧的紀錄，沒寫這套奪糧的計。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "arc-hug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist with round glasses in a cotton shirt and a knitted vest beside an archive shelf in the evening, hugging a plain closed novel to his chest with a fond smile, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn717",
+          "text": "老實說，我也喜歡小說這一版；它比史書好看太多了。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "wood-089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modern archive doorway, one historian holding a modern conjectural sketch sheet showing two separate plain timber blocks and a short dotted connector beside a closed critical history volume, daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn718",
+          "text": "可是如果有人拿一張號稱「完全照古文」的復原圖給你，你第一個該問什麼？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-090",
+      "chapter": "有人拿出一張「完全照古文」的復原圖",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day archive, one researcher pointing from Pei Songzhi’s annotation quoting Zhuge Liang Ji to a single unconnected timber joint, Chen Shou’s main text volume set apart, soft ambient light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn801",
+          "text": "問它圖上任何一條接線：這條線，出自哪一句古文？",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "carp-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a carpenter in a canvas apron at a workbench on a mild afternoon, holding two loose plain timber pieces up against each other and squinting at the gap between them, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn802",
+          "text": "還記得前面那個問題：流馬的第一個接點，該放在哪裡？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "wood-094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a present-day hand-tool workbench, one scholar holding a modern printed source facsimile above separate plain timbers with visible gaps between them, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn803",
+          "text": "孔名有了，間距也有了，這段引文卻沒把接的順序交代完整。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "flatpack",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt kneeling on a living-room floor in the evening among flat wooden furniture boards, holding up a blank instruction sheet with a bewildered face, lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn804",
+          "text": "就像你拿到一盒家具零件，說明書只寫了每塊板子多長，沒有組裝圖。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wood-095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a present-day hand-tool test bench, one researcher checking a plainly hypothetical assembled wooden demonstration model bearing one hemp grain sack, its lower mechanism fully concealed by coarse cloth, quiet afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn805",
+          "text": "那要是有人照它試做出一台能運糧的模型呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wood-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Shu Han supply path, one porter in a plain hemp tunic checking the fiber rope on a timber load entirely hidden by coarse undyed hemp cloth beside grain sacks, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn806",
+          "text": "也只證明那套接法行得通，不能說那就是當年布底下的樣子。"
+        }
+      ]
+    },
+    {
+      "id": "two-carts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a carpenter in a canvas apron at a workbench on an overcast afternoon, standing between two different small cloth-covered wooden models and looking from one to the other with a curious smile, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn807",
+          "text": "所以兩個人照同一段古文，做出兩台長得不一樣的器具，都不算違背原文。"
+        }
+      ]
+    },
+    {
+      "id": "arc-calm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist with round glasses in a cotton shirt and a knitted vest at a reading desk on a mild afternoon, laying a blank sheet of paper on top of a closed book and smiling calmly at us, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn808",
+          "text": "我覺得這樣反而誠實：古書沒寫的，不該由我們替它畫滿。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "wood-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a modern archive, one researcher setting a critical edition of the Three Kingdoms history apart from an illustrated later novel, even daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn809",
+          "text": "回到開場的問題：照史書的字，畫得出它真正的樣子嗎？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand laying a plain manila folder on a wooden desk beside a small cloth-wrapped wooden block, a red seal stamp resting next to it, warm afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mn810",
+          "text": "所以這份檔案：木牛、流馬確實運過糧，存檔；它們真正長什麼樣，未結。",
+          "emotion": "收尾，乾脆，分清楚兩頁"
+        },
+        {
+          "id": "mn811",
+          "text": "要是哪天真有人找到當年的實物，這一頁，我很樂意重開。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "運過糧：存檔。長什麼樣：未結",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "mn812",
+          "text": "如果你能替那段古文補一張圖，你最想先看清哪一個部件？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "mn813",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "mn101",
+      "payoff": "mn702",
+      "what": "會自己走的木頭牛馬從哪裡來"
+    },
+    {
+      "setup": "mn102",
+      "payoff": "mn505",
+      "what": "那串尺寸在哪裡"
+    },
+    {
+      "setup": "mn106",
+      "payoff": "mn203",
+      "what": "新工具上路糧卻斷了"
+    },
+    {
+      "setup": "mn107",
+      "payoff": "mn514",
+      "what": "一腳四足會不會走路"
+    },
+    {
+      "setup": "mn108",
+      "payoff": "mn708",
+      "what": "扭舌頭那一幕"
+    },
+    {
+      "setup": "mn110",
+      "payoff": "mn810",
+      "what": "畫不畫得出真正的樣子"
+    },
+    {
+      "setup": "mn202",
+      "payoff": "mn203",
+      "what": "木牛是不是沒用"
+    },
+    {
+      "setup": "mn206",
+      "payoff": "mn207",
+      "what": "差的是哪個數字"
+    },
+    {
+      "setup": "mn211",
+      "payoff": "mn301",
+      "what": "用過了為何又說做好"
+    },
+    {
+      "setup": "mn305",
+      "payoff": "mn306",
+      "what": "這回做完的是哪一批"
+    },
+    {
+      "setup": "mn309",
+      "payoff": "mn402",
+      "what": "流馬何時跟運字寫在一起"
+    },
+    {
+      "setup": "mn404",
+      "payoff": "mn406",
+      "what": "有了流馬糧接得上嗎"
+    },
+    {
+      "setup": "mn411",
+      "payoff": "mn414",
+      "what": "流馬與屯田哪個扛住全軍"
+    },
+    {
+      "setup": "mn417",
+      "payoff": "mn501",
+      "what": "樣子藏在另一頁嗎"
+    },
+    {
+      "setup": "mn510",
+      "payoff": "mn514",
+      "what": "足是哪塊木頭"
+    },
+    {
+      "setup": "mn516",
+      "payoff": "mn517",
+      "what": "人行六尺牛行四步會走嗎"
+    },
+    {
+      "setup": "mn519",
+      "payoff": "mn601",
+      "what": "一歲糧能換成公斤嗎"
+    },
+    {
+      "setup": "mn612",
+      "payoff": "mn613",
+      "what": "這些孔裝什麼"
+    },
+    {
+      "setup": "mn616",
+      "payoff": "mn617",
+      "what": "兩種腳是不是同一種"
+    },
+    {
+      "setup": "mn619",
+      "payoff": "mn803",
+      "what": "第一個接點放哪裡"
+    },
+    {
+      "setup": "mn621",
+      "payoff": "mn701",
+      "what": "扭舌頭出自哪本書"
+    },
+    {
+      "setup": "mn709",
+      "payoff": "mn710",
+      "what": "魏兵拖得走嗎"
+    },
+    {
+      "setup": "mn718",
+      "payoff": "mn801",
+      "what": "看到復原圖先問什麼"
+    },
+    {
+      "setup": "mn704",
+      "payoff": "mn705",
+      "what": "魏軍仿得出來嗎"
+    },
+    {
+      "setup": "mn805",
+      "payoff": "mn806",
+      "what": "試做模型能證明什麼"
+    },
+    {
+      "setup": "mn714",
+      "payoff": "mn715",
+      "what": "牛馬不食在古文裡嗎"
+    }
+  ],
+  "youtube": {
+    "title": "木牛流馬真的會自己走？古文寫著「一腳四足」，卻沒附一張圖｜奇聞檔案局",
+    "description": "會自己走的木頭牛馬，替諸葛亮的大軍運糧，你一定聽過。這一集只講紀錄裡找得到的，跟著木牛流馬在《三國志》裡的三個年份走一遍：建興九年（231）春二月圍祁山，〈後主傳〉寫「始以木牛運」，夏六月糧盡退軍；建興十年（232）在黃沙「作流馬木牛畢，教兵講武」；建興十二年（234）春二月出斜谷，「始以流馬運」，到了五丈原，諸葛亮仍「每患糧不繼」，分兵屯田。陳壽的正文只說「損益連弩，木牛流馬，皆出其意」；尺寸在裴松之注引的《諸葛亮集》：木牛「方腹曲頭，一腳四足」「舌著於腹」「人行六尺，牛行四步」「載一歲糧」，流馬的軸孔、腳孔、杠孔、前後四腳與兩個方囊。這些是部件的名字與孔位，沒有附圖，也沒有把接的順序交代完整，所以不能單憑這些字定出會走路的腿或輪子的數量。扭舌頭讓器具停住、司馬懿半個月仿出兩千多件、「牛馬不食」，出自後來的小說《三國演義》第一百零二回。\n\n界線：運過糧，存檔；原本長什麼樣，未結。古代量詞不換算成公斤。出處列在下方參考資料（固定版本的古籍轉錄）。\n\n本集插圖由 AI 生成，是故事輔助插畫，不是機械復原；畫中的運糧器具一律蓋著布。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫）",
+    "tags": [
+      "木牛流馬",
+      "諸葛亮",
+      "三國志",
+      "三國演義",
+      "蜀漢",
+      "古代科技",
+      "運糧",
+      "歷史謎團",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "四隻腳？\n**沒有圖**",
+      "tag": "三國史料",
+      "sub": "長相只剩尺寸和孔位",
+      "shot": "wood-076"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》卷三十三〈後主傳〉（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/033.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國志》卷三十五〈諸葛亮傳〉及裴松之注（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》第一百二回（固定轉錄；僅作小說對照）",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/481.html",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": []
+}

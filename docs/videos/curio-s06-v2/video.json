@@ -1,0 +1,2174 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s06-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友拆一個大家都看過的畫面：開場兩句對著觀眾講、帶一點挑釁；樊城軍帳那段像講戲，馬良那句帶笑；陳壽原文一字一字唸，「找不到」乾脆；年份那段清楚；查勤紅豆的笑話輕鬆；華佗燒書放輕；後悔的話放慢；結尾篤定。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "樊城外的軍營，一位醫生報上了姓名",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting cross-legged on a sofa in a plain living room in the evening, holding a closed paperback novel against his chest and grinning at us as if about to tell a story everyone knows, a lit floor lamp beside him, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg101",
+          "text": "你一定看過這一幕：關羽一邊下棋，一邊讓華佗刮骨，眉頭都不皺。",
+          "emotion": "對觀眾說，像在講大家都知道的事"
+        }
+      ]
+    },
+    {
+      "id": "open-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt on a sofa raising both eyebrows in surprise at us, holding up one finger as if counting, warm lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg102",
+          "text": "可是正史只用八十五個字，你熟悉的畫面，好幾樣不在裡面。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-arrow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a seasoned Eastern-Han general with a long dark beard and tied hair in a cross-collar robe and simple lamellar vest holding his wrapped right arm on an earthen field outside a distant late-Han rammed-earth city wall with a wooden gate, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg103",
+          "text": "《三國演義》裡，關羽在樊城右臂中了毒箭。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic standing in a small wooden boat approaching a bare riverbank, blue-green cloth medicine satchel over one arm, cloudy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg104",
+          "text": "江東來了一條小船，船上的醫生說：我姓華，名佗。"
+        }
+      ]
+    },
+    {
+      "id": "open-cao",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an adult Han Chinese physician with a small bare topknot in a plain wide-sleeved tunic walking along a palace corridor of red pillars on a mild morning, carrying a plain wooden medicine box in both hands and glancing at the camera with an uneasy smile, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg105",
+          "text": "奇怪的是，正史裡的華佗，是曹操身邊的醫生；",
+          "emotion": "壓低，像發現不對勁"
+        }
+      ]
+    },
+    {
+      "id": "open-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a seasoned Eastern-Han general with a long dark beard and tied hair in a cross-collar robe and simple lamellar vest looking along an earthen path through plain canvas camp tents toward a distant late-Han rammed-earth city wall with a timber gate, grey sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg106",
+          "text": "而關羽這時候，正在打曹操那一邊的樊城。"
+        }
+      ]
+    },
+    {
+      "id": "open-regret",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature Han Chinese warlord with tied hair under a plain cloth headwrap and a simple cross-collar robe looking downward in private regret beside an unlettered scroll on a low timber table, muted lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg107",
+          "text": "但這還不是最怪的：曹操一句後悔的話裡，有華佗，也有一個孩子。",
+          "emotion": "升級，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "open-teller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly storyteller with a thin grey beard in a plain long gown sitting on a low stool in a plain teahouse in the evening, raising a folded fan and leaning toward the camera with wide, delighted eyes as if reaching the best part of a tale, a lamp on the table beside him, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg108",
+          "text": "而比小說更早的說書本子，早就替他編好了來歷。",
+          "emotion": "停在這裡，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "三世紀 → 明朝",
+        "kicker": "寫過這場刮骨的書",
+        "sub": "正史、說書本子、小說，一本一本對"
+      },
+      "lines": [
+        {
+          "id": "kg109",
+          "text": "這份檔案，就把寫過這場刮骨的書，從三世紀的正史對到明朝小說。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature Han Chinese general with a long dark beard and tied hair in a wrapped cross-collar robe lifting his fully bandaged right sleeve beside an indistinct tabletop game on a low timber table, lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg110",
+          "text": "替關羽刮骨的，真的是華佗嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-tai",
+      "chapter": "關羽一邊和馬良下棋，一邊把右臂伸給華佗",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a young adult Han Chinese officer wearing a plain linen headwrap in a layered tunic listening with surprise toward a physician just beyond the frame at an earthen camp entrance, mild light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg201",
+          "text": "小說自己的答案是肯定的：關平一聽就問，你就是替周泰治過傷的那位？",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "zhou-tai-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic speaking at an earthen riverside camp gate, cloth medicine satchel over one arm and plain canvas tents behind him, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg202",
+          "text": "他點頭。小說前面真的寫過：華佗替孫策的部將周泰治傷，一個月就好了。"
+        }
+      ]
+    },
+    {
+      "id": "enter-tent",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic entering a plain canvas military tent, an indistinct tabletop game on a low timber table deeper inside, lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg203",
+          "text": "關平領他進帳，關羽正在跟馬良下棋。"
+        }
+      ]
+    },
+    {
+      "id": "right-arm-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a seasoned Eastern-Han general with a long dark beard and tied hair in a wrapped cross-collar robe extending his fully covered right arm inside a plain canvas military tent, an indistinct tabletop game on a low timber table behind him, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg204",
+          "text": "關羽伸出右臂。換成你是病人，你最想聽到哪一句？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "diagnose",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic examining a fully cloth-covered right sleeve beside a plain tied fabric medicine satchel on a low timber stool inside a plain canvas tent, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg205",
+          "text": "華佗說：這是帶烏頭藥的弩箭，毒已經透進骨頭；再不治，這隻手恐怕就不能用了。"
+        }
+      ]
+    },
+    {
+      "id": "pole-ring",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic gesturing with empty hands toward a tall timber tent pole fitted with a plain iron ring, a folded cloth head covering on a low wooden stool beside it, lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg206",
+          "text": "他的辦法是：立一根柱子，釘上鐵環，把手臂穿進去綁好，"
+        },
+        {
+          "id": "kg207",
+          "text": "再拿被子蒙住頭，才動刀。"
+        }
+      ]
+    },
+    {
+      "id": "wave-away",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature late-Han general with a long dark beard and tied hair in a wrapped cross-collar robe smiling as he waves away a folded cloth, his fully covered right sleeve extended inside a plain canvas tent, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg208",
+          "text": "關羽笑了：這麼容易，要什麼柱子跟環？",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wine-game",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a seasoned Eastern-Han general with a long dark beard and tied hair in a wrapped cross-collar robe seated at a low wooden table with an indistinct tabletop game, his fully covered right arm held still and his free hand near a blurred game piece, warm canvas-tent light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg209",
+          "text": "他叫人擺酒，喝了幾杯，一邊跟馬良下棋，一邊把手臂伸給華佗。"
+        }
+      ]
+    },
+    {
+      "id": "onlookers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young soldier in a plain linen headwrap and layered tunic standing at a canvas tent flap, covering his eyes with both hands and peeking between his fingers at us, warm canvas-tent light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg210",
+          "text": "小說寫，帳裡帳外看的人，全都掩著臉、變了臉色。那關羽呢？",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "eat-meat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han general with a long dark beard and tied hair in a wrapped cross-collar robe calmly lifting a slice of meat with his free left hand from a low wooden meal table, his fully draped right sleeve resting beside him and an indistinct game farther back, soft canvas-tent light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg211",
+          "text": "他照樣喝酒吃肉，棋也沒停。"
+        }
+      ]
+    },
+    {
+      "id": "ma-liang",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young scholar-officer with neat white eyebrows in a plain dark gown seated at a low table in a canvas tent, holding a small game piece in mid-air and glancing sideways with a nervous smile, warm canvas-tent light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg212",
+          "text": "說真的，我每次讀到這裡，都比較同情對面下棋的馬良。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "flex-arm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han general with a long dark beard and tied hair in a wrapped cross-collar robe cautiously bending his fully covered right arm inside a plain canvas military tent, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg213",
+          "text": "治完了，關羽站起來伸一伸右臂，說：先生真是神醫。"
+        }
+      ]
+    },
+    {
+      "id": "amazed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic looking amazed toward a calm patient just beyond the frame, low timber camp table and plain canvas tent behind him, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg214",
+          "text": "華佗也說：我行醫一輩子，從沒見過這樣的病人。"
+        }
+      ]
+    },
+    {
+      "id": "warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old physician with a long grey beard in a plain robe inside a canvas army tent, raising one finger in a gentle warning with a serious face, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg215",
+          "text": "他還交代：一百天才會好，這段時間千萬別動怒。"
+        }
+      ]
+    },
+    {
+      "id": "gold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot the mature general's plain cross-collar robe sleeve as he offers a plain covered pouch beside a simple bowl on a low timber camp table, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg216",
+          "text": "關羽送上一百兩金子。他收了嗎？"
+        }
+      ]
+    },
+    {
+      "id": "leave",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic walking away from a plain canvas camp tent along an earthen path, cloth medicine satchel over one arm, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg217",
+          "text": "不收，留下一帖藥就走了。"
+        }
+      ]
+    },
+    {
+      "id": "your-picture",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting on a sofa in the evening, holding an open paperback novel with blank pages up beside his face and nodding at us knowingly, a lit floor lamp beside him, warm lamp light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg218",
+          "text": "你腦中那一幕，幾乎每個細節都在這一回裡。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "how-much",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged researcher in understated modern clothes opening an unlettered old chronicle beside a closed storybook, soft lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg219",
+          "text": "可是陳壽的正史裡，這一幕還剩下多少？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "chen-shou",
+      "chapter": "陳壽的八十五個字：左臂、陰雨天，和一桌酒菜",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an adult researcher wearing a simple present-day shirt pointing to a blank chronicle page beside a separate flat modern illustrative sketch of an unmarked arrow, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg301",
+          "text": "剩下多少，得回到開頭那八十五個字：陳壽《三國志》的〈關羽傳〉。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "liushi",
+      "template": "big",
+      "data": {
+        "text": "羽嘗為流矢所中，貫其左臂",
+        "kicker": "陳壽《三國志》〈關羽傳〉",
+        "sub": "關羽曾經被一支流箭，射穿左臂"
+      },
+      "lines": [
+        {
+          "id": "kg302",
+          "text": "第一句是：羽嘗為流矢所中，貫其左臂。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "kg303",
+          "text": "流箭，就是不知道誰射的箭；陳壽也沒寫是在哪一仗。"
+        }
+      ]
+    },
+    {
+      "id": "left-arm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature Han Chinese general with a long dark beard and tied hair in a wrapped cross-collar robe resting his right hand on his fully cloth-covered left upper arm, diffused light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg304",
+          "text": "射穿的是左臂。開頭小說裡中箭的是右臂，到這裡就換了一隻。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "rain-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a seasoned Eastern-Han general with a long dark beard and tied hair in a cross-collar robe resting his right hand on his fully covered sore left upper arm beside a timber lattice window as grey rain falls outside, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg305",
+          "text": "更怪的是，這不是剛中的箭：傷口早就好了，只是每到陰雨天，骨頭就痛。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "knee-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt standing at a rainy window in a plain apartment on an overcast afternoon, rubbing one knee with a pained grin at us, grey rain on the glass, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg306",
+          "text": "你身邊大概也有人一下雨就喊膝蓋痠；關羽痠的，是那隻手臂。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "poison",
+      "template": "big",
+      "data": {
+        "text": "矢鏃有毒，毒入於骨",
+        "kicker": "〈關羽傳〉：醫曰",
+        "sub": "當破臂作創，刮骨去毒，然後此患乃除耳"
+      },
+      "lines": [
+        {
+          "id": "kg307",
+          "text": "一個醫生說：箭頭有毒，毒進了骨頭。"
+        }
+      ]
+    },
+    {
+      "id": "doctor-explain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an unnamed adult late-Han physician with a bare tied topknot and plain wide-sleeved tunic explaining pain beside a patient's fully cloth-covered left arm inside a timber chamber, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg308",
+          "text": "要把手臂剖開，把骨頭上的毒刮掉，這毛病才會斷根。"
+        }
+      ]
+    },
+    {
+      "id": "doctor-point",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an unnamed adult Han Chinese physician with a bare tied topknot and plain wide-sleeved tunic pointing toward a patient's fully cloth-covered left arm inside a timber chamber, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg309",
+          "text": "換成是你，聽到這種處方，會怎麼做？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "left-arm-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a calm mature late-Han general with a long dark beard and tied hair in a wrapped cross-collar robe extending his fully covered left arm inside a timber dining hall, soft lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg310",
+          "text": "關羽二話不說，把手臂伸了出去，讓醫生剖開。"
+        }
+      ]
+    },
+    {
+      "id": "no-ring",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged researcher in understated modern clothes at a desk in the evening, holding a plain iron ring up beside an unlettered old chronicle and shaking her head with a small smile at us, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg311",
+          "text": "原文沒有柱子，沒有鐵環，也沒有蒙頭的被子。"
+        }
+      ]
+    },
+    {
+      "id": "invite",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a seasoned Eastern-Han general with a long dark beard and tied hair in a wrapped cross-collar robe inviting companions just beyond the frame to a modest meal at a low wooden table set with simple bowls and a plain cup inside a wooden hall, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg312",
+          "text": "那時他剛好請了將領們吃飯；原文用的「適」字，是剛好，不是特地擺給人看。"
+        }
+      ]
+    },
+    {
+      "id": "eat-laugh",
+      "template": "big",
+      "data": {
+        "text": "割炙引酒，言笑自若",
+        "kicker": "陳壽《三國志》〈關羽傳〉",
+        "sub": "切著烤肉、喝著酒，有說有笑"
+      },
+      "lines": [
+        {
+          "id": "kg313",
+          "text": "原文寫他：割炙引酒，言笑自若；切著烤肉、喝著酒，有說有笑。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "cup",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature late-Han general with a long dark beard and tied hair in a wrapped cross-collar robe lifting a plain cup with his right hand at a low timber meal table set with simple bowls and sliced meat, his left arm covered and relaxed, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg314",
+          "text": "開頭說你熟悉的畫面有好幾樣不在裡面，這裡就看得到：沒有棋盤，也沒有馬良。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "search-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an adult archive reader in plain present-day clothes searching an unlettered chronicle beside a blank name card, lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg315",
+          "text": "那最要緊的一樣呢？醫生叫什麼名字？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "blank-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a blank name card set beside an unlettered history book, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg316",
+          "text": "找不到。醫生在這段出現兩次，兩次都只寫一個「醫」字。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "missed-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged researcher in understated modern clothes at a reading desk on an overcast afternoon, running a finger back up a blank page with her eyebrows raised in disbelief at us, soft light from a skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg317",
+          "text": "我第一次讀到這裡，還以為自己漏看了一行。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "pei-songzhi",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly scholar with a long white beard in a plain grey gown writing small notes beside a blank scroll at a low desk in a quiet study on a mild morning, pausing with his brush lifted and looking at us with a puzzled frown, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg318",
+          "text": "南朝的裴松之替《三國志》加了很多注，關羽傳裡也有好幾條；這一段，他一個字都沒補。"
+        }
+      ]
+    },
+    {
+      "id": "which-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a middle-aged researcher in understated modern clothes turning a blank calendar card beside an unlettered chronicle, lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg319",
+          "text": "沒有名字，那總該有年份吧？這次刮骨，是哪一年的事？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "no-season",
+      "chapter": "下一段才有年份：建安二十四年，關羽圍樊城",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult researcher wearing a simple present-day shirt checking an unlettered old chronicle beside a blank calendar card, diffused light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg401",
+          "text": "這一段一個年份都沒有，連季節都沒寫。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "chang",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded scholar in a plain robe at a study desk in the evening, pointing at a line in an open blank book with a thoughtful look, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg402",
+          "text": "第一句那個「嘗」字，是「曾經有一次」，是陳壽回頭插進來講的。"
+        }
+      ]
+    },
+    {
+      "id": "ma-chao",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a seasoned Eastern-Han general with a long dark beard and a topknot in a wrapped cross-collar coat sitting at a low desk in a timber hall on a mild morning, folding a blank letter with a curious, eager look toward the camera, a brush and inkstone beside him, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg403",
+          "text": "插在哪裡？前面剛講完關羽寫信給諸葛亮，打聽新投降的馬超有多少本事。"
+        }
+      ]
+    },
+    {
+      "id": "ma-chao-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged reader in plain contemporary clothes arranging two blank date cards on a table, warm lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg404",
+          "text": "馬超來投降，是建安十九年、西元二一四年的事。"
+        }
+      ]
+    },
+    {
+      "id": "order-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged researcher wearing a simple contemporary shirt separating two plain parchment sheets on a desk, lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg405",
+          "text": "問題來了：排在後面，就是發生在後面嗎？",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "order-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious bearded scholar in a plain robe at a wooden desk in the evening, holding a blank card up to the lamp and squinting at it, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg406",
+          "text": "不一定。位置只說明陳壽在哪裡講這件事，不說明它發生在哪一年。"
+        }
+      ]
+    },
+    {
+      "id": "found-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded scholar in a plain robe at a wooden desk in the afternoon, tapping a blank page with his brush and nodding as if he has found something, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg407",
+          "text": "緊接著的下一段，陳壽才寫下「二十四年」。"
+        }
+      ]
+    },
+    {
+      "id": "year-219",
+      "template": "big",
+      "data": {
+        "text": "建安二十四年（219）",
+        "kicker": "〈關羽傳〉的下一段",
+        "sub": "劉備為漢中王；關羽率眾攻曹仁於樊"
+      },
+      "lines": [
+        {
+          "id": "kg408",
+          "text": "建安二十四年，也就是西元二一九年：劉備當上漢中王，封關羽為前將軍。"
+        }
+      ]
+    },
+    {
+      "id": "fancheng",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a mature Han Chinese general with a long dark beard and tied hair in a wrapped cross-collar robe and simple lamellar vest facing a distant late-Han rammed-earth city wall with a wooden gate from an earthen field, plain canvas camp tents behind him, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg409",
+          "text": "同一年，關羽帶兵去打曹仁守的樊城。結果呢？"
+        }
+      ]
+    },
+    {
+      "id": "flood",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot an adult late-Han Chinese soldier wearing a plain linen headwrap, layered tunic and simple lamellar vest watching a river rise in autumn rain outside a distant earth-walled city, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg410",
+          "text": "秋天下起大雨，漢水暴漲，曹操派來援救的七支軍隊，全被水淹了。"
+        }
+      ]
+    },
+    {
+      "id": "same-rain-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt at a dining table in the evening, holding two blank cards side by side and squinting at them with a doubtful half-smile toward the camera, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg411",
+          "text": "如果你只看排版，很容易以為刮骨就在這一年；我第一次讀，也差點這樣以為。",
+          "emotion": "對觀眾，自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "two-rains",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a middle-aged reader in plain contemporary clothes placing two separate plain rain-scene sketches on either side of an unlettered old chronicle, soft study light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg412",
+          "text": "可是前一段那個陰雨天，原文沒說就是這場大雨。"
+        }
+      ]
+    },
+    {
+      "id": "pang-de",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single arrow in mid-flight over an empty earthen field outside a distant rammed-earth city wall on an overcast day, the only shapes are the arrow, the field and the wall, soft grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg413",
+          "text": "更巧的是，樊城那一年，關羽真的中過一箭。射在哪裡？",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "forehead",
+      "template": "big",
+      "data": {
+        "text": "射羽中額",
+        "kicker": "《三國志》〈龐悳傳〉",
+        "sub": "曹操那邊的龐德跟關羽交手，一箭射中額頭"
+      },
+      "lines": [
+        {
+          "id": "kg414",
+          "text": "曹操那邊的龐德跟他交手，一箭射中的是額頭。",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "kg415",
+          "text": "不是手臂，跟刮骨沒有關係。"
+        }
+      ]
+    },
+    {
+      "id": "novel-move",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult archive reader in plain present-day clothes pointing to a clearly modern simplified physician illustration on an unlettered storybook page with a simplified late-Han rammed-earth wall and timber gate behind the drawn figure, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg416",
+          "text": "可是小說偏偏把醫生和刮骨，一起搬進了樊城這一年。那一年，華佗還在嗎？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "hua-bio",
+      "chapter": "曹操身邊的醫生請假回家，再也沒有回去",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an unlettered physician biography beside an empty calendar, warm light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg501",
+          "text": "〈華佗傳〉沒寫他死在哪一年，卻把他的死，跟另一個人的病接在一起。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "mafei",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an adult Han Chinese physician with a small bare topknot in a plain wide-sleeved tunic in a plain clinic room on a mild morning, holding out a small bowl of medicine toward the camera with a calm, reassuring smile, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg502",
+          "text": "說到華佗，你可能會想到麻沸散：喝下去，人就像醉死一樣，沒有知覺，他才動刀。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "best-surgeon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an adult Han Chinese physician with a small bare topknot in a plain wide-sleeved tunic closing a plain wooden medicine box on a low table, looking up at the camera with a quiet, confident look, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg503",
+          "text": "正史裡最會開刀的醫生就是他，所以把他填進刮骨，看起來很合理；可是原文沒交代為什麼。",
+          "emotion": "這是看法，語氣放輕"
+        }
+      ]
+    },
+    {
+      "id": "needle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an adult Han Chinese physician with a small bare topknot in a plain wide-sleeved tunic standing in a timber chamber in the evening, holding up a single thin needle and studying it with a focused frown, a lamp on a low table beside him, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg504",
+          "text": "開頭說他是曹操身邊的醫生：曹操有頭風，一發作就心亂眼花，華佗一針下去，隨手就好。"
+        }
+      ]
+    },
+    {
+      "id": "cao-ill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature Han Chinese warlord with a plain cloth headwrap and a dark cross-collar coat lying propped on cushions on a low couch in a timber chamber on an overcast day, a blanket over his knees, beckoning toward the camera with one tired hand, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg505",
+          "text": "後來曹操病得更重，要華佗專門替他一個人看病。"
+        }
+      ]
+    },
+    {
+      "id": "homesick",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult Han Chinese physician with a bare tied topknot and plain wide-sleeved tunic walking out of a late-Han earthen official compound through a heavy timber gate with a plain cloth satchel along an earthen path, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg506",
+          "text": "可是華佗想家。他說收到家書，想回去一趟；到了家，就推說妻子病了，一再延期。"
+        }
+      ]
+    },
+    {
+      "id": "inspector",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern official in a dark cross-collar coat and black cap riding a plain brown horse along an earthen road on an overcast day, looking straight ahead with narrowed eyes, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg507",
+          "text": "曹操派人去查。結果呢？",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "beans",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a court messenger in a plain linen headwrap carrying a bulging cloth sack of small beans on one shoulder along an earthen lane on a mild day, grinning at the camera, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg508",
+          "text": "他交代：妻子真病了，就送四十斛小豆，假期放寬；要是假的，就抓回來。"
+        }
+      ]
+    },
+    {
+      "id": "boss-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting at a desk in a plain office on an overcast afternoon, holding a phone to his ear with a guilty grin at us, soft grey light from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg509",
+          "text": "換成今天，大概就是請病假被老闆查勤；只是查到是真的，還送你四十斛紅豆。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "prison",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult Han Chinese physician with a bare tied topknot and plain wide-sleeved tunic walking toward a heavy timber prison door in a late-Han earthen compound yard, a distant guard in a simple lamellar vest by the gate, grey sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg510",
+          "text": "結果查出是假的。華佗被押進許縣的牢裡。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "xun-yu",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult late-Han Chinese adviser wearing a plain linen headwrap and cross-collar robe raising one hand to argue beside a folded unlettered scroll on a low wooden table inside a council hall, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg511",
+          "text": "荀彧替他求情：他的醫術確實高明，又關係著人命，該寬恕他。"
+        }
+      ]
+    },
+    {
+      "id": "rat",
+      "template": "big",
+      "data": {
+        "text": "不憂，天下當無此鼠輩耶？",
+        "kicker": "曹操，《三國志》〈華佗傳〉",
+        "sub": "怕什麼，天下難道少了這種鼠輩？"
+      },
+      "lines": [
+        {
+          "id": "kg512",
+          "text": "曹操回他：怕什麼，天下難道少了這種鼠輩？",
+          "emotion": "冷"
+        }
+      ]
+    },
+    {
+      "id": "four-words",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a plain cloth medicine satchel on the earthen floor beside a closed heavy timber prison door in a late-Han earthen compound, muted light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg513",
+          "text": "傳記只用四個字寫結局：遂考竟佗，華佗被拷問到死。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "give-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an adult Han Chinese physician with a small bare topknot in a plain wide-sleeved tunic sitting on straw in a plain timber cell in grey morning light, holding out a closed scroll with both hands toward the camera with a tired, gentle look, soft grey light from a high window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg514",
+          "text": "臨死前，他拿出一卷書交給獄吏：這可以救人。獄吏敢收嗎？"
+        }
+      ]
+    },
+    {
+      "id": "burn-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed bamboo scroll lying in a small clay brazier as warm flame curls around it, the only shapes are the scroll, the brazier and the stone floor, soft orange light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg515",
+          "text": "不敢，怕犯法。他也不勉強，要了火，自己燒了。"
+        }
+      ]
+    },
+    {
+      "id": "pity",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged researcher in understated modern clothes at a reading desk in the evening, resting her chin on one hand and looking at us with a sad little sigh, a closed old chronicle under her other hand, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg516",
+          "text": "這一段，我每次讀都覺得可惜。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "headache",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature Han Chinese warlord with tied hair under a plain cloth headwrap and a simple cross-collar robe pressing fingers to his forehead beside a low wooden table in a quiet chamber, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg517",
+          "text": "華佗死後，曹操的頭風還是沒好。"
+        }
+      ]
+    },
+    {
+      "id": "excuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a mature Han Chinese warlord with tied hair under a plain cloth headwrap and a simple cross-collar robe touching his forehead as he speaks toward someone beyond the frame inside a timber chamber, soft lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg518",
+          "text": "曹操嘴上還硬：他明明治得好，卻故意留著病根，好抬高自己；就算不殺他，他也不會替我斷根。"
+        }
+      ]
+    },
+    {
+      "id": "excuse-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature Han Chinese warlord with a plain cloth headwrap and a dark cross-collar coat standing by a lattice window in a timber chamber on an overcast afternoon, waving one hand dismissively with a stubborn frown at the camera, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg519",
+          "text": "這是曹操的說法，不是傳記替華佗下的結論。"
+        }
+      ]
+    },
+    {
+      "id": "curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a mature Han Chinese warlord and father with tied hair under a plain cloth headwrap and a simple cross-collar robe lifting a woven curtain outside his child's room in a timber residence, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg520",
+          "text": "可是過了一陣子，這番硬話變成了後悔。為了誰？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "cangshu",
+      "chapter": "倉舒病危那年，曹操後悔殺了華佗",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a mature Han Chinese warlord with tied hair under a plain cloth headwrap and a simple cross-collar robe looking downward in private regret beside an unlettered scroll on a low timber table, muted lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg601",
+          "text": "為了他最疼的兒子倉舒。開頭說的那句後悔的話，就是這時候說的：",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "regret-quote",
+      "template": "big",
+      "data": {
+        "text": "吾悔殺華佗，令此兒強死也",
+        "kicker": "曹操，《三國志》〈華佗傳〉",
+        "sub": "我後悔殺了華佗，害這孩子白白送命"
+      },
+      "lines": [
+        {
+          "id": "kg602",
+          "text": "我後悔殺了華佗，害這孩子白白送命。",
+          "emotion": "一字一字，放慢"
+        }
+      ]
+    },
+    {
+      "id": "who-cangshu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a middle-aged researcher in understated modern clothes turning from one unlettered biography to another beside a blank date card, lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg603",
+          "text": "倉舒是誰？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "elephant",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small boy in a plain tunic standing on a wooden river pier on a mild morning, pointing excitedly at a line he has scratched on the side of a large boat carrying an elephant, looking back at the camera with a proud grin, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg604",
+          "text": "你一定聽過他：曹沖，那個把大象趕上大船、在船身刻下水痕來秤重的孩子。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "chong-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult researcher wearing a simple present-day shirt aligning two unlettered blank cards beside an old chronicle, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg605",
+          "text": "〈曹沖傳〉開頭就寫：曹沖，字倉舒。"
+        }
+      ]
+    },
+    {
+      "id": "chong-ill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sad bearded father in a dark robe sitting beside a low wooden bed in a quiet room, looking down at a small empty cushion, muted window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg606",
+          "text": "他十三歲那年，建安十三年，生了重病，曹操親自替他請命。"
+        }
+      ]
+    },
+    {
+      "id": "tears",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grieving bearded lord in a dark robe sitting in a quiet room in the evening, wiping a tear from his eye with his sleeve, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg607",
+          "text": "孩子還是走了。曹操哀痛得很，一說起來就流淚。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "year-208",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot two blank date cards set far apart on a desk, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg608",
+          "text": "建安十三年，換成西元，是二〇八年。"
+        }
+      ]
+    },
+    {
+      "id": "death-year-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged reader in plain contemporary clothes placing one plain tied-cloth medicine satchel silhouette before a small empty woven floor cushion on a timeline, lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg609",
+          "text": "那華佗死在哪一年？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "before-chong",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a middle-aged researcher wearing a simple contemporary shirt holding an empty date card between two unlettered books, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg610",
+          "text": "〈華佗傳〉先寫「佗死後」，再寫倉舒病危；所以華佗死在倉舒之前，最晚就是那一年。"
+        }
+      ]
+    },
+    {
+      "id": "gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a timeline with two blank markers separated by a long gap, muted light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg611",
+          "text": "再把樊城那一年擺上來：二一九年，離倉舒過世，已經十一年。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "timeline",
+      "template": "compare",
+      "data": {
+        "title": "小說那一幕，對上正史的年表",
+        "left": {
+          "heading": "《三國演義》",
+          "points": [
+            "樊城之戰（219）",
+            "華佗進帳刮骨"
+          ]
+        },
+        "right": {
+          "heading": "《三國志》",
+          "points": [
+            "倉舒病逝（208）",
+            "華佗死在這之前"
+          ]
+        },
+        "verdict": "小說帳裡的華佗，至少晚了 11 年",
+        "source": "〈關羽傳〉〈華佗傳〉〈鄧哀王沖傳〉；《三國演義》第七十五回"
+      },
+      "lines": [
+        {
+          "id": "kg612",
+          "text": "照這條年表，小說軍帳裡的那位華佗，根本趕不到樊城。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "author-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a middle-aged researcher in understated modern clothes at a reading desk in the evening, tapping a closed storybook with one finger and tilting her head at us with a curious smile, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg613",
+          "text": "老實說，讀到這裡，我很好奇寫小說的人有沒有發現。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "death-move",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult archive reader in plain present-day clothes placing a blank physician name card outside the edge of a plain storybook drawing of a canvas military tent, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg614",
+          "text": "更妙的是，小說乾脆把華佗的死也往後搬了。搬到哪裡？",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "novel-cao",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature Han Chinese warlord with a plain cloth headwrap and a dark cross-collar coat sitting on a low couch in a dim palace chamber in the evening, clutching his head with both hands and wincing, a lamp on a low table beside him, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg615",
+          "text": "搬到關羽死後。小說裡，曹操頭痛，華佗說要替他開腦治病。"
+        }
+      ]
+    },
+    {
+      "id": "novel-hua",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic standing in a palace chamber with a cloth medicine satchel over one arm, raising one hand as he explains earnestly toward the camera, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg616",
+          "text": "華佗還拿關羽當例子：我替他刮骨療毒，他一點也不怕。"
+        }
+      ]
+    },
+    {
+      "id": "novel-suspect",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mature Han Chinese warlord with a plain cloth headwrap and a dark cross-collar coat narrowing his eyes and leaning forward with a suspicious scowl, one hand still pressed to his temple, a dim palace chamber behind him, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg617",
+          "text": "通行的本子寫，曹操一聽就起疑：你跟關公交情好，想趁機替他報仇吧？",
+          "emotion": "冷，帶懷疑"
+        }
+      ]
+    },
+    {
+      "id": "novel-jail",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult Han Chinese physician with a bare tied topknot and plain wide-sleeved tunic walking toward a heavy timber prison door in a late-Han earthen compound yard, a distant guard in a simple lamellar vest by the gate, grey sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg618",
+          "text": "華佗就這樣被關進牢裡，死在獄中。"
+        }
+      ]
+    },
+    {
+      "id": "novel-irony",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in the evening, leaning forward with his elbows on his knees and a wry, surprised smile at us, a closed paperback beside him, warm lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg619",
+          "text": "你看，在小說裡害死華佗的，反而是替關羽刮骨這件事。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "undated-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged researcher in understated modern clothes leaving an old timeline marker unplaced, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg620",
+          "text": "年表排除了小說那一幕。那陳壽那次沒有年份的手術呢？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "undated-a",
+      "chapter": "一千多年後，說書人替醫生填上了名字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot an adult researcher wearing a simple present-day shirt closing an unlettered old chronicle beside a separate plain sketch of a cloth-covered left sleeve, diffused light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg701",
+          "text": "單靠年表，排除不了：那次手術沒有年份，年表抓不到它。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "no-mention",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a middle-aged reader in plain contemporary clothes comparing two blank manuscript pages with a plain magnifying glass on the desk, soft study light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg702",
+          "text": "〈華佗傳〉記了很多病人，沒有關羽；〈關羽傳〉也沒有華佗。兩篇傳記，誰也沒提到誰。"
+        }
+      ]
+    },
+    {
+      "id": "not-proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged researcher in understated modern clothes at a desk in the evening, holding a blank card out at arm's length toward the camera with a firm but friendly look, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg703",
+          "text": "所以要是有人跟你說，正史證明那不是華佗，那也說過頭了：正史只是沒寫。",
+          "emotion": "對觀眾，這是看法"
+        }
+      ]
+    },
+    {
+      "id": "who-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a middle-aged researcher wearing a simple contemporary shirt comparing a clearly modern simplified illustration of a physician with a plain square cloth headwrap on an unlettered storybook page with a separate unlettered old chronicle, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg704",
+          "text": "那「華佗」這個名字，最早是誰寫進這個故事的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "stele",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an official in a dark gown with a short grey beard standing beside a tall blank stone stele in a quiet hillside graveyard on an overcast morning, resting one hand on the stone and looking at the camera with a solemn nod, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg705",
+          "text": "不是陳壽。北周有一塊神道碑，誇一位將軍刮骨上藥的次數，比關羽還多。"
+        }
+      ]
+    },
+    {
+      "id": "stele-quote",
+      "template": "big",
+      "data": {
+        "text": "刮骨傅藥，事多關羽",
+        "kicker": "庾信〈周柱國大將軍紇干弘神道碑〉",
+        "sub": "刮骨上藥的事，比關羽還多"
+      },
+      "lines": [
+        {
+          "id": "kg706",
+          "text": "那時刮骨已經是關羽的招牌，醫生卻還是沒有名字。"
+        }
+      ]
+    },
+    {
+      "id": "yuan-scholar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar with a long black beard in a plain dark gown copying from one blank scroll onto another at a desk in a plain guest room on a mild morning, glancing up at the camera with a calm, steady look, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg707",
+          "text": "到了元朝初年，還有史家把這一段整個重寫一遍。這一次，醫生有名字了嗎？"
+        },
+        {
+          "id": "kg708",
+          "text": "照樣沒有。"
+        }
+      ]
+    },
+    {
+      "id": "teller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly storyteller with a thin grey beard in a plain long gown sitting on a low stool in a plain teahouse in the evening, raising a folded fan and leaning toward the camera with wide, delighted eyes as if reaching the best part of a tale, a lamp on the table beside him, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg709",
+          "text": "現在找得到最早寫出這個名字的，是元朝至治年間刊印的說書本子《三國志平話》。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "teller-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly storyteller with a thin grey beard in a plain long gown in a plain teahouse in the evening, tapping his folded fan into his palm and winking at the camera, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg710",
+          "text": "開頭那個怪地方，曹操的醫生怎麼會替關羽治傷，平話有一套說法："
+        }
+      ]
+    },
+    {
+      "id": "pinghua-quote",
+      "template": "big",
+      "data": {
+        "text": "華陀者，曹賊手中人",
+        "kicker": "《三國志平話》卷下",
+        "sub": "見曹不仁，來荊州見關公"
+      },
+      "lines": [
+        {
+          "id": "kg711",
+          "text": "華陀本來是曹操手下的人，看不慣曹操，就跑到荊州投奔關公。"
+        }
+      ]
+    },
+    {
+      "id": "pinghua-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mature late-Han Chinese physician wearing a plain square cloth headwrap and wide-sleeved tunic walking alone along an earthen road toward a distant walled town on an overcast morning, a cloth medicine satchel over one arm, glancing back over his shoulder at the camera with a determined look, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg712",
+          "text": "平話裡的關公，也是陰天手臂痛，跟陳壽寫的一樣；"
+        }
+      ]
+    },
+    {
+      "id": "han-fu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a separate flat modern illustrative sketch of an unmarked arrow beside an open unlettered old chronicle, soft study light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg713",
+          "text": "沒想到，那支沒人知道是誰射的箭，在這裡有了射手：吳國的韓甫。"
+        }
+      ]
+    },
+    {
+      "id": "pinghua-ring",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a seasoned Eastern-Han general with a long dark beard and a topknot in a wrapped cross-collar coat standing beside a tall timber post fitted with an empty iron ring in a plain hall on a mild day, laughing heartily toward the camera with his hands on his hips, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg714",
+          "text": "前面小說裡那根柱子和鐵環，平話就有了；關公大笑：我是大丈夫，怎麼會怕這種事！"
+        }
+      ]
+    },
+    {
+      "id": "pinghua-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded scholar in a plain robe at a wooden desk in the afternoon, holding up two blank sheets of paper side by side and comparing them with raised eyebrows, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg715",
+          "text": "而且平話把刮骨排在單刀會之前，跟陳壽的位置一樣，跟樊城沒有關係。"
+        }
+      ]
+    },
+    {
+      "id": "who-moved",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot an adult archive reader in plain present-day clothes holding a blank card above an older chronicle and a novel, lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg716",
+          "text": "那是誰把它搬進樊城的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "printer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in a plain apron at a wooden workbench in a print shop on a mild morning, lifting a freshly inked blank sheet off a carved woodblock and showing it to the camera with a proud smile, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg717",
+          "text": "就是開頭那一幕的出處，明朝的《三國演義》；現存最早的刊本，帶著一五二二年的序。"
+        }
+      ]
+    },
+    {
+      "id": "back-to-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded scholar in a plain robe at a wooden desk in the afternoon, setting a closed storybook down on the desk with a firm nod, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "kg718",
+          "text": "回到開頭的問題：替關羽刮骨的，是華佗嗎？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "小說的華佗，趕不上樊城",
+        "kicker": "正史那位醫生：沒有名字",
+        "sub": "《三國志》〈華佗傳〉〈鄧哀王沖傳〉；《三國演義》第七十五回"
+      },
+      "lines": [
+        {
+          "id": "kg719",
+          "text": "還記得那十一年嗎？小說帳裡的華佗，照正史的年表根本趕不上；",
+          "emotion": "篤定"
+        },
+        {
+          "id": "kg720",
+          "text": "陳壽筆下那位醫生，到今天還沒有名字。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "小說的華佗趕不上樊城；正史的醫生沒有名字",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "kg721",
+          "text": "你最先想到的關羽刮骨，是飯桌，還是棋盤？留言告訴我。",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "kg722",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "kg102",
+      "payoff": "kg314",
+      "what": "正史八十五字裡少了哪些"
+    },
+    {
+      "setup": "kg103",
+      "payoff": "kg304",
+      "what": "小說右臂、正史哪一隻"
+    },
+    {
+      "setup": "kg105",
+      "payoff": "kg711",
+      "what": "曹操的醫生怎麼替關羽治傷"
+    },
+    {
+      "setup": "kg107",
+      "payoff": "kg601",
+      "what": "曹操那句後悔的話"
+    },
+    {
+      "setup": "kg108",
+      "payoff": "kg709",
+      "what": "更早的說書本子"
+    },
+    {
+      "setup": "kg110",
+      "payoff": "kg719",
+      "what": "真的是華佗嗎"
+    },
+    {
+      "setup": "kg204",
+      "payoff": "kg205",
+      "what": "小說的華佗怎麼說"
+    },
+    {
+      "setup": "kg210",
+      "payoff": "kg211",
+      "what": "看的人掩面，關羽呢"
+    },
+    {
+      "setup": "kg219",
+      "payoff": "kg301",
+      "what": "正史剩下多少"
+    },
+    {
+      "setup": "kg309",
+      "payoff": "kg310",
+      "what": "聽到處方怎麼做"
+    },
+    {
+      "setup": "kg315",
+      "payoff": "kg316",
+      "what": "醫生叫什麼名字"
+    },
+    {
+      "setup": "kg319",
+      "payoff": "kg401",
+      "what": "刮骨是哪一年"
+    },
+    {
+      "setup": "kg405",
+      "payoff": "kg406",
+      "what": "排在後面就是發生在後面嗎"
+    },
+    {
+      "setup": "kg413",
+      "payoff": "kg414",
+      "what": "樊城那一箭射在哪裡"
+    },
+    {
+      "setup": "kg416",
+      "payoff": "kg612",
+      "what": "樊城那年華佗還在嗎"
+    },
+    {
+      "setup": "kg507",
+      "payoff": "kg510",
+      "what": "派人去查的結果"
+    },
+    {
+      "setup": "kg216",
+      "payoff": "kg217",
+      "what": "百兩金子收不收"
+    },
+    {
+      "setup": "kg514",
+      "payoff": "kg515",
+      "what": "獄吏收不收那卷書"
+    },
+    {
+      "setup": "kg707",
+      "payoff": "kg708",
+      "what": "元初史家有沒有寫名字"
+    },
+    {
+      "setup": "kg520",
+      "payoff": "kg601",
+      "what": "硬話為誰變成後悔"
+    },
+    {
+      "setup": "kg603",
+      "payoff": "kg604",
+      "what": "倉舒是誰"
+    },
+    {
+      "setup": "kg609",
+      "payoff": "kg610",
+      "what": "華佗死在哪一年"
+    },
+    {
+      "setup": "kg614",
+      "payoff": "kg615",
+      "what": "小說把華佗的死搬到哪裡"
+    },
+    {
+      "setup": "kg620",
+      "payoff": "kg701",
+      "what": "沒有年份的手術能不能排除華佗"
+    },
+    {
+      "setup": "kg704",
+      "payoff": "kg709",
+      "what": "誰最早寫進華佗的名字"
+    },
+    {
+      "setup": "kg716",
+      "payoff": "kg717",
+      "what": "誰把刮骨搬進樊城"
+    }
+  ],
+  "youtube": {
+    "title": "關羽刮骨，華佗根本趕不上？小說那一幕晚了至少 11 年｜奇聞檔案局",
+    "description": "關羽一邊下棋、一邊讓華佗刮骨，你一定看過。這一集把寫過這場刮骨的書攤開來對。陳壽《三國志》〈關羽傳〉只用八十五個字：「羽嘗為流矢所中，貫其左臂」，傷好了卻每到陰雨天骨頭痛，醫生說「矢鏃有毒，毒入於骨」，關羽伸臂讓醫生剖開，當時剛好請將領們吃飯，「割炙引酒，言笑自若」。原文是左臂，沒有棋盤、沒有馬良，醫生出現兩次都只寫「醫」，沒有年份；裴松之也沒有加注。下一段才寫建安二十四年（219）關羽攻樊城；那一年龐德「射羽中額」，射的是額頭。正史裡的華佗是曹操身邊的醫生，推說妻子生病不回，被押進許縣的牢，「遂考竟佗」；曹操後來在愛子倉舒（曹沖）病危時說「吾悔殺華佗，令此兒強死也」，而曹沖死在建安十三年（208），所以華佗最晚 208 年已死，《三國演義》放在樊城的華佗場景至少晚了 11 年。兩人的傳裡誰也沒提到誰，所以正史那次沒有年份的手術，不能說醫生一定不是華佗。北周的碑文寫「刮骨傅藥，事多關羽」，元初的史家照抄，醫生都沒有名字；現在找得到最早寫上名字的是元朝至治年間的《三國志平話》：華陀是「曹賊手中人」，投奔荊州。明朝的《三國演義》把這一幕搬到樊城、換成右臂、加上馬良的棋局，通行本還讓華佗因為提起刮骨，被曹操下獄而死。\n\n正史依固定版的數位轉錄與殆知閣、維基文庫；平話依殆知閣轉錄本，嘉靖本依維基文庫轉錄（未對掃描頁），通行本依 Project Gutenberg；金元雜劇沒有查，也不談醫學上的解釋。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "關羽",
+      "刮骨療毒",
+      "華佗",
+      "曹操",
+      "曹沖",
+      "三國志",
+      "三國志平話",
+      "三國演義",
+      "樊城",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "早死了？\n**11 年**",
+      "tag": "三國名場面",
+      "sub": "小說右臂，正史左臂",
+      "shot": "amazed"
+    }
+  },
+  "sources": [
+    {
+      "title": "陳壽《三國志》〈關羽傳〉",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L17",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "陳壽《三國志》〈華佗傳〉",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/029.htm#L30",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "陳壽《三國志》〈曹沖傳〉",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/020.htm#L19",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》第七十五回金聖歎評本",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/451.html#L29-L39",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：三國志（四庫本；關羽傳、華佗傳、鄧哀王沖傳、荀彧傳、龐悳傳）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E4%B8%89%E5%9B%BD%E5%BF%97.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：三國志／卷36（關羽傳）",
+      "url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E5%BF%97/%E5%8D%B736",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：三國志／卷29（華佗傳）",
+      "url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E5%BF%97/%E5%8D%B729",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：三國志／卷20（鄧哀王沖傳）",
+      "url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E5%BF%97/%E5%8D%B720",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：全後周文／卷十四（庾信〈周柱國大將軍紇干弘神道碑〉）",
+      "url": "https://zh.wikisource.org/wiki/%E5%85%A8%E5%BE%8C%E5%91%A8%E6%96%87/%E5%8D%B7%E5%8D%81%E5%9B%9B",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：郝氏續後漢書（四庫本，卷十六關羽傳）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E5%88%AB%E5%8F%B2/%E9%83%9D%E6%B0%8F%E7%BB%AD%E5%90%8E%E6%B1%89%E4%B9%A6.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：三國志平話（卷下，刮骨一段）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E9%9B%86%E8%97%8F/%E8%AF%9D%E6%9C%AC/%E4%B8%89%E5%9B%BD%E5%BF%97%E5%B9%B3%E8%AF%9D.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：嘉靖本三國志通俗演義／卷15（關雲長刮骨療毒）",
+      "url": "https://zh.wikisource.org/wiki/%E5%98%89%E9%9D%96%E6%9C%AC%E4%B8%89%E5%9C%8B%E5%BF%97%E9%80%9A%E4%BF%97%E6%BC%94%E7%BE%A9/%E5%8D%B715",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Project Gutenberg #23950《三國志演義》（第 74、75、78 回）",
+      "url": "https://www.gutenberg.org/cache/epub/23950/pg23950.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "中文維基百科〈三國演義〉（嘉靖本與平話的書誌，二手）",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

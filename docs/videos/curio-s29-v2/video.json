@@ -29,8 +29,8 @@
   "loops": [
     {
       "setup": "ce102",
-      "payoff": "ce406",
-      "what": "開頭那個答題的老人是誰"
+      "payoff": "ce316",
+      "what": "開頭說故事裡對不上的那個地方"
     },
     {
       "setup": "ce107",
@@ -96,6 +96,11 @@
       "setup": "ce328",
       "payoff": "ce330",
       "what": "豬那個前例靠不靠得住"
+    },
+    {
+      "setup": "ce405",
+      "payoff": "ce406",
+      "what": "佛經裡答出稱象的是誰"
     },
     {
       "setup": "ce332",
@@ -253,17 +258,17 @@
       ]
     },
     {
-      "id": "oldman-room",
+      "id": "open-history-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a straw mat in a small underground room with earthen walls, looking up toward the camera with a gentle, curious face, a small clay oil lamp beside him, warm lamp light",
-        "camera": "tilt up",
+        "prompt": "Close-up of a thick string-bound book lying open on a wooden desk on a cloudy day, a small paper bookmark sticking out and a round magnifying glass resting across one blank page, a tiny paper boat folded beside it, soft grey light from a window",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ce102",
-          "text": "可是同一招，一千五百多年前的一部佛經裡也有，答的是一個老人。",
+          "text": "可是這段寫進史書一千七百多年的故事，有一個地方對不上。",
           "emotion": "放慢，帶一點挑釁"
         }
       ]
@@ -570,22 +575,6 @@
       ]
     },
     {
-      "id": "archivist-taps-scroll",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a tall reading-room desk on a windy day, one finger resting on an open blank scroll beside a stack of string-bound books, brows drawn together in thought, cool light from a tall window behind him",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ce211b",
-          "text": "這一點我覺得很要緊：替它加注的人，手上有書，卻沒有懷疑。",
-          "emotion": "自己的看法"
-        }
-      ]
-    },
-    {
       "id": "boy-window",
       "template": "shot",
       "data": {
@@ -815,7 +804,7 @@
         },
         {
           "id": "ce316",
-          "text": "開頭那個陳壽沒寫的年份，何焯就是這樣用別的年份把它夾住的。"
+          "text": "開頭說對不上的就在這裡：陳壽沒寫的年份，被何焯用別的年份夾住了。"
         },
         {
           "id": "ce316b",
@@ -1079,7 +1068,8 @@
       "lines": [
         {
           "id": "ce405",
-          "text": "那部佛經叫《雜寶藏經》，裡面有一篇〈棄老國緣〉。"
+          "text": "那部佛經叫《雜寶藏經》，裡面有一篇〈棄老國緣〉，也有人答出了稱象。答題的是誰？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1094,7 +1084,7 @@
       "lines": [
         {
           "id": "ce406",
-          "text": "還記得開頭那個躲在地底下的老人嗎？",
+          "text": "不是孩子，是一個躲在地底下的老人。",
           "emotion": "親近，略上揚"
         }
       ]
@@ -1110,7 +1100,7 @@
       "lines": [
         {
           "id": "ce407",
-          "text": "他就在這一篇裡。他住的國家叫棄老國：照那裡的法律，老人都要被送到遠方。",
+          "text": "他住的國家叫棄老國：照那裡的法律，老人都要被送到遠方。",
           "emotion": "溫和，放慢"
         }
       ]

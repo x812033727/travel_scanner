@@ -1,0 +1,2042 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s39-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友拆一句大家都會說的話：開場兩句對著觀眾講、帶一點挑釁；舞台那兩句停住。出門那段加快，遺囑那句放慢；會議廳等人那段壓低、緊張；「這是暴力」喊出來；三個希臘詞一字一字、停一拍；舞台名句放慢，「竟然不是最後一句」帶笑；腳註那段清楚；結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "舞台上的凱撒，在開口前停住了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa in a plain living room in the evening, pressing one hand to his chest and wincing at us as if a friend just let him down, a lit floor lamp beside him, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et101",
+          "text": "你大概聽過，有人被朋友出賣的時候，學凱撒說一句：連你也，布魯圖斯？",
+          "emotion": "對觀眾說，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-you-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt on a sofa raising one eyebrow at us with a knowing half smile, a cushion under his arm, warm lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et102",
+          "text": "這大概是全世界最常被借用的遺言；它背後，是一場超過六十人參與的密謀。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "cs001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an actor in Roman costume sitting on a simple wooden stage chair, soft stage light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et103",
+          "text": "木造舞台上，扮凱撒的人剛坐下，旁邊的演員靠了過來。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "cs002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an actor in a Roman cloak raising a plain prop dagger on a wooden stage, soft stage light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et104",
+          "text": "扮布魯圖斯的人舉起道具刀，畫面就停在凱撒開口之前。",
+          "emotion": "停住"
+        }
+      ]
+    },
+    {
+      "id": "cs005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a worried copyist separating two unmarked wax tablets on a desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et105",
+          "text": "而在歷史上，那一天有兩個布魯圖斯：一個勸凱撒出門，另一個會站在哪裡？",
+          "emotion": "收著，問句"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "3 篇傳記，1 句台詞",
+        "kicker": "兩位古代作者寫的凱撒之死",
+        "sub": "這一句，到底從哪裡來"
+      },
+      "lines": [
+        {
+          "id": "et106",
+          "text": "這份檔案，就翻開兩位古代作者寫的三篇傳記，看這一句到底從哪裡來。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "cs006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stage actor in a Roman cloak pausing beside a wooden chair, muted stage light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et107",
+          "text": "歷史上的凱撒，臨死前真的說了這句話嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "leaders",
+      "chapter": "密謀的人挑了三月十五日，龐培的會議廳",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly Roman biographer with a short grey beard in a long-sleeved pale tunic writing on a completely blank scroll at a wooden desk, soft window light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et201",
+          "text": "台上那把道具刀，在歷史上，是從一份密謀名單開始的。",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "leaders-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly Roman biographer with a short grey beard running one finger down a completely blank wax tablet, eyes narrowed, soft window light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et202",
+          "text": "傳記作者蘇埃托尼烏斯，記下了帶頭的人，卡西烏斯是其中一個。"
+        }
+      ]
+    },
+    {
+      "id": "cs007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ancient copyist placing two unmarked tablets side by side, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et203",
+          "text": "開場那兩個布魯圖斯，也都在裡面：馬爾庫斯，和德奇姆斯。",
+          "emotion": "點名"
+        }
+      ]
+    },
+    {
+      "id": "cs008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a nervous senator in a plain toga waiting beside a stone column, overcast daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et204",
+          "text": "同一個姓，站在同一邊；我第一次讀的時候，也得停下來分清楚誰是誰。",
+          "emotion": "旁白自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "cs009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Roman planner moving a small stone marker across an unmarked tabletop, window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et205",
+          "text": "那要在哪裡動手？",
+          "emotion": "問句"
+        },
+        {
+          "id": "et206",
+          "text": "他們考慮過好幾個下手的地方，最後挑了元老院開會的時候。"
+        }
+      ]
+    },
+    {
+      "id": "cs010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an official in a plain toga approaching a stone portico, grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et207",
+          "text": "三月十五日，元老們要在龐培的會議廳聚集。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "cs011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a lone senator looking toward an ancient stone theatre portico, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et208",
+          "text": "這個會議廳靠著龐培的劇場，普魯塔克也記下了這個位置。"
+        }
+      ]
+    },
+    {
+      "id": "guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Roman man in a plain grey cloak counting on his fingers beside a stone column, lips pressed together in thought, overcast daylight from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et209",
+          "text": "我猜他們的算盤很簡單：開會的日子，凱撒總得到場吧？",
+          "emotion": "意見，壓低"
+        }
+      ]
+    },
+    {
+      "id": "cs012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a city worker looking up at a plain stone statue of a Roman statesman above an entirely unlettered pedestal in an ancient square, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et210",
+          "text": "另一邊，凱撒雕像的下面，出現了諷刺他像國王的字句。"
+        }
+      ]
+    },
+    {
+      "id": "cs013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean-shaven senator with a round bronze brooch finding an unmarked slip on a wooden tribunal, morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et211",
+          "text": "馬爾庫斯自己的審判席上，也被放了催他行動的匿名字條。"
+        }
+      ]
+    },
+    {
+      "id": "cs014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a thoughtful clean-shaven senator with a round bronze brooch standing alone before a stone portico, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et212",
+          "text": "普魯塔克說，其他密謀者想借馬爾庫斯的聲望，讓這件事更有分量。"
+        }
+      ]
+    },
+    {
+      "id": "brand",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean-shaven senator with a round bronze brooch standing on a stone step and looking uneasy, a hand from outside the frame resting on his shoulder, soft daylight from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et213",
+          "text": "你可以把他想成，整個計畫掛出來的招牌。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "cs015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a different senator in a plain toga with a short beard near a household doorway, morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et214",
+          "text": "德奇姆斯也加入了密謀，可是凱撒對他，仍然信任。有多信任？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "will",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Roman scribe pressing a wax seal onto a rolled completely blank document at a wooden desk, lamp light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et215",
+          "text": "蘇埃托尼烏斯寫到凱撒的遺囑：德奇姆斯被列在後順位的繼承人裡。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "will-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old Roman lawyer in a long-sleeved tunic tying a ribbon around a sealed completely blank scroll and frowning, lamp light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et216",
+          "text": "同一份遺囑，還把幾個刺殺他的人，指定為他將來若有兒子時的監護人。"
+        }
+      ]
+    },
+    {
+      "id": "cs016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toga-clad leader hesitating in a quiet courtyard, grey morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et217",
+          "text": "那麼兩個布魯圖斯裡，哪一個會親自把凱撒帶出家門？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "cs017",
+      "chapter": "三月十五日早上，凱撒本來想留在家裡",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a toga-clad leader pausing beside an ancient household doorway, grey morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et301",
+          "text": "要帶他出門，還真得有人去勸：那天早上，凱撒一度考慮留在家裡。",
+          "emotion": "接住上一章，轉折"
+        }
+      ]
+    },
+    {
+      "id": "cs018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Roman household official waiting beside a quiet courtyard altar, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et302",
+          "text": "蘇埃托尼烏斯提到，他身體不舒服，祭祀的兆頭也不好。"
+        }
+      ]
+    },
+    {
+      "id": "cs019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried woman in a plain ancient tunic looking toward a closed door, pale daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et303",
+          "text": "普魯塔克寫，妻子卡爾普尼亞還勸丈夫，把會議改天。"
+        }
+      ]
+    },
+    {
+      "id": "you-morning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in pyjamas sitting on the edge of a bed in the morning holding her forehead, a mug on the bedside table, soft grey light from a window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et304",
+          "text": "你一定也有過那種早上：人不舒服，家裡又有人叫你今天別出門。",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "cs020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of an ancient biographer reading an unmarked scroll in a lamplit room",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et305",
+          "text": "夢和兆頭，都是傳記裡的故事；它們最後攔得住凱撒嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cs021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a senator with a short beard gesturing toward the street from a courtyard, grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et306",
+          "text": "攔不住。這時，有一位布魯圖斯來勸他：元老們都在等，別讓整場會議落空。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "cs022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toga-clad leader walking through a stone street arch, overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et307",
+          "text": "凱撒聽了他的話，走出家門。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "cs023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a lone senator with a short beard stepping through a household doorway, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et308",
+          "text": "這個勸他出門的布魯圖斯，就是德奇姆斯，遺囑裡的那一位。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "et309",
+          "text": "這一段，我每次讀都覺得發冷。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "cs024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone passerby extending an unmarked folded paper toward someone outside the frame, daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et310",
+          "text": "路上，有人把一份陰謀警告交給凱撒。"
+        }
+      ]
+    },
+    {
+      "id": "cs004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toga-clad statesman reaching toward a folded unmarked paper, grey morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et311",
+          "text": "他讀了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cs025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hand slipping an unmarked paper among plain folded documents, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et312",
+          "text": "他把紙放進手上其他文件的中間，打算稍後再讀。"
+        }
+      ]
+    },
+    {
+      "id": "you-letters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a cardigan at a desk in a kitchen in the morning tucking an envelope into a thick stack of flyers and shrugging, soft light from a window on the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et313",
+          "text": "你應該也做過這種事：一封重要的信，跟一疊廣告單疊在一起，想說晚點再看。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "cs026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a toga-clad leader trying to unfold a completely blank note amid indistinct crowd shadows, grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et314",
+          "text": "普魯塔克也寫了那張警告，但他說，擠上來的人太多，凱撒沒能讀完。"
+        }
+      ]
+    },
+    {
+      "id": "cs027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a toga-clad statesman holding closed papers before a stone entrance, diffused daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et315",
+          "text": "警告到了手上，卻沒把他攔下；會議廳裡，又有誰在等？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "cs028",
+      "chapter": "會議廳裡，密謀的人以為事情洩了底",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous senator in a plain toga waiting beside a stone portico, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et401",
+          "text": "等著的，是密謀的人自己：他們早就到了龐培的廊廳。",
+          "emotion": "接住上一章"
+        },
+        {
+          "id": "et402",
+          "text": "凱撒遲遲沒來，他們越等越緊張。"
+        }
+      ]
+    },
+    {
+      "id": "you-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a jacket at a café table checking his wristwatch and jiggling one knee, an untouched cup in front of him, soft afternoon light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et403",
+          "text": "你一定等過遲到的人；換成你等的是這種事，每一分鐘大概都很長。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "cs029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a clean-shaven senator with a round bronze brooch listening anxiously beside a column, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et404",
+          "text": "這時，一位元老悄悄對馬爾庫斯和卡西烏斯說，希望他們快些辦完。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "cs030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a worried senator gripping the edge of his toga near a stone doorway, muted light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et405",
+          "text": "他們一度以為，事情洩了底。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "petition-talk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly senator in a plain toga bowing slightly as he speaks to someone just out of frame, both palms open, grey daylight from a high window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et406",
+          "text": "偏偏那個人接著轉身，去跟凱撒說話。他要告密嗎？",
+          "emotion": "問句，緊張"
+        }
+      ]
+    },
+    {
+      "id": "cs031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean-shaven senator with a round bronze brooch studying a distant conversation near a portico, daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et407",
+          "text": "馬爾庫斯盯著那人的臉色看，才判斷：他只是在向凱撒陳情。"
+        },
+        {
+          "id": "et408",
+          "text": "讀到這裡，我手心都有點出汗。",
+          "emotion": "旁白自己的反應，鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "cs032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a consul in a plain toga waiting outside a stone meeting hall, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et409",
+          "text": "另一邊，安東尼被另一名同謀留在門外談話。"
+        }
+      ]
+    },
+    {
+      "id": "cs033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone petitioner stepping toward the edge of a plain meeting chair, daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et410",
+          "text": "凱撒進門坐下，馬上有人帶著請願走近。他會先說什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cs034",
+      "chapter": "辛伯抓住了凱撒的袍子",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a petitioner in a plain toga holding an unmarked wax tablet before a plain chair, window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et501",
+          "text": "先開口的，是請願的人：提利烏斯辛伯，要替被放逐的兄弟求情。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "cs035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a desperate bearded Roman senator in a white toga in a marble hall in daylight, reaching out and clutching at someone's sleeve just out of frame, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et502",
+          "text": "凱撒沒有答應，辛伯就抓住了他的袍子。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "ista",
+      "template": "big",
+      "data": {
+        "text": "「Ista quidem vis est!」",
+        "kicker": "蘇埃托尼烏斯《神聖的凱撒》82.1",
+        "sub": "這是暴力！"
+      },
+      "lines": [
+        {
+          "id": "et503",
+          "text": "蘇埃托尼烏斯記下，凱撒先喊了一聲：這是暴力！",
+          "emotion": "喊出來"
+        }
+      ]
+    },
+    {
+      "id": "cs037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ancient copyist pausing over a completely blank unmarked scroll, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et504",
+          "text": "你注意一下：這一聲在第一刀之前，不是那句有名的臨終問話。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "cs038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a nervous Roman senator in a plain toga lunging with a short dagger toward someone outside the frame in a stone meeting hall, grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et505",
+          "text": "接著，一個叫卡斯卡的人出手；凱撒還來得及還擊嗎？",
+          "emotion": "問句，緊張"
+        }
+      ]
+    },
+    {
+      "id": "cs039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a toga-clad leader gripping a small metal writing stylus, window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et506",
+          "text": "來得及。他抓住對方的手，蘇埃托尼烏斯說，他還拿寫字的筆反擊。"
+        }
+      ]
+    },
+    {
+      "id": "stylus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain metal writing stylus lying on a stone floor beside the hem of a white toga, soft grey light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et507",
+          "text": "老實說，讀到這支筆的時候，我愣了一下。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "cs040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toga-clad statesman turning to address someone beyond the frame, indoor daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et508",
+          "text": "普魯塔克的《凱撒傳》則寫，他受了第一刀之後，用拉丁語質問卡斯卡。"
+        }
+      ]
+    },
+    {
+      "id": "cs042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a senator in a plain toga calling toward a distant doorway, soft hall light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et509",
+          "text": "卡斯卡隨即向兄弟求救；普魯塔克說，他喊的是希臘語。"
+        }
+      ]
+    },
+    {
+      "id": "cs043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a careful reader pointing between two completely unmarked wax tablets, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et510",
+          "text": "所以這段希臘話是卡斯卡的；那凱撒自己，後來有沒有說希臘語？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cs044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a frightened senator standing still beside a stone column, grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et511",
+          "text": "附近的元老嚇得動不了，不逃，也沒上前幫忙。"
+        }
+      ]
+    },
+    {
+      "id": "you-frozen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a senator in a plain toga sitting rigid on a stone bench with both hands gripping his knees and eyes wide, muted light from a high window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et512",
+          "text": "換成你在現場，我猜也只會僵在那裡。",
+          "emotion": "對觀眾，意見"
+        }
+      ]
+    },
+    {
+      "id": "cs045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a toga-clad statesman turning toward a stone doorway, several drawn short daggers in the hands of cropped figures around him, muted light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et513",
+          "text": "凱撒想往外移動，四周卻全是拔出來的短刀。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "brooch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch on the shoulder of a pale toga, a hand gripping the cloth beside it, muted hall light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et514",
+          "text": "開場問的另一個布魯圖斯，就在這裡。",
+          "emotion": "點名，收著"
+        }
+      ]
+    },
+    {
+      "id": "cs046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lone clean-shaven senator with a round bronze brooch holding a plain dagger beside a stone column, pale daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et515",
+          "text": "普魯塔克的《布魯圖斯傳》寫，馬爾庫斯拿著刀，站到他眼前。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "cs047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a toga-clad leader drawing a plain cloak across his head, indoor daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et516",
+          "text": "凱撒於是鬆開卡斯卡的手，拉起袍子蓋住了頭。"
+        }
+      ]
+    },
+    {
+      "id": "cs048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ancient scholar leaning over an unmarked scroll beside a small lamp",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et517",
+          "text": "眼前的人是馬爾庫斯；古代作者，有替他寫下最後一句嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cs049",
+      "chapter": "蘇埃托尼烏斯在同一段裡，寫了兩種聲音",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ancient biographer holding open a long unmarked scroll, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et601",
+          "text": "蘇埃托尼烏斯先寫：二十三次刺擊之間，凱撒沒有說出一句完整的話。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "cs050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a toga-clad leader pulling his plain robe close, muted hall light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et602",
+          "text": "他只記下，凱撒在第一刀時，發出了一聲呻吟。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "you-close-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a cardigan at a desk in the afternoon about to close a book, pausing with one finger still holding the page and eyebrows raised, soft window light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et603",
+          "text": "如果你覺得故事就停在這裡，我一開始也這麼想。",
+          "emotion": "對觀眾，放輕"
+        }
+      ]
+    },
+    {
+      "id": "cs051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a copyist following the lower edge of an unmarked scroll, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et604",
+          "text": "可是，這段拉丁文沒有在呻吟那裡結束。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "cs052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful old Roman scholar in a plain tunic at a wooden desk in the evening, holding up one rolled scroll and raising a finger, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et605",
+          "text": "作者接著寫：雖然，有些人傳下了另一種話。"
+        }
+      ]
+    },
+    {
+      "id": "cs053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a thoughtful biographer examining an unmarked scroll beside a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et606",
+          "text": "他沒列出那些人是誰，也沒說自己在場聽見。"
+        }
+      ]
+    },
+    {
+      "id": "cs054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone clean-shaven senator with a round bronze brooch striding into a stone hall, grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et607",
+          "text": "在那個說法裡，馬爾庫斯衝上前來，凱撒對他開了口，說的正是希臘語。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "greek-card",
+      "template": "big",
+      "data": {
+        "text": "「καὶ σὺ τέκνον」",
+        "kicker": "蘇埃托尼烏斯《神聖的凱撒》82.2：「有些人傳說」",
+        "sub": "連你也是嗎，孩子？"
+      },
+      "lines": [
+        {
+          "id": "et608",
+          "text": "三個希臘詞，大致是：連你也是嗎，孩子？",
+          "emotion": "一字一字，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cs056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a copyist holding an unmarked tablet apart from a completely blank rolled scroll, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et609",
+          "text": "這句話裡沒有布魯圖斯的名字；名字在作者介紹這個傳聞的句子裡。"
+        }
+      ]
+    },
+    {
+      "id": "cs057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ancient scholar closing a family register with completely blank visible pages and a blank cover on a desk, lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et610",
+          "text": "「孩子」這兩個字，也不能拿來證明兩人有血緣。"
+        }
+      ]
+    },
+    {
+      "id": "you-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in a T-shirt on a sofa tilting his head and smiling at us, one finger raised as if making a point, warm lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et611",
+          "text": "就像你叫晚輩一聲孩子，不代表他是你親生的。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "cs058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader aligning two completely blank ancient scrolls on a desk, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et612",
+          "text": "那另一位作者普魯塔克，會替這三個希臘詞補上證據嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cs059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a single stylized Caesar figurine tipping beside the pedestal of a small unpainted standing statue in a miniature story diorama, pale lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et613",
+          "text": "普魯塔克的《凱撒傳》轉述一說：凱撒倒在龐培像的腳邊。"
+        }
+      ]
+    },
+    {
+      "id": "cs060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an elderly scholar viewing the lower end of an unmarked scroll, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et614",
+          "text": "那一段，也沒有給他一句對馬爾庫斯的遺言。"
+        }
+      ]
+    },
+    {
+      "id": "cs061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly scholar putting a second blank scroll beside a completely blank first scroll, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et615",
+          "text": "換到《布魯圖斯傳》：凱撒倒下後，馬爾庫斯想解釋，元老們卻逃散了，沒人聽。"
+        }
+      ]
+    },
+    {
+      "id": "cs062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious reader in a cardigan at a desk in the afternoon, holding two rolled scrolls together in both hands and smiling knowingly, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et616",
+          "text": "而且這兩篇是同一位作者寫的，不能算兩個獨立的現場證人。"
+        }
+      ]
+    },
+    {
+      "id": "overlooked",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in a cardigan at a desk tapping a pencil against her temple with a small knowing smile, two closed books stacked beside her, soft lamp light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et617",
+          "text": "這一點，我覺得最容易被忽略。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "cs063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an actor waiting beside a simple wooden stage curtain, warm light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et618",
+          "text": "當然，沒寫，不等於絕對沒發生。"
+        }
+      ]
+    },
+    {
+      "id": "quill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a playwright in a plain doublet at a candlelit desk pausing with a quill raised in the air, a completely blank sheet of paper in front of him, warm candle light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et619",
+          "text": "那這句拉丁名言，又是誰明明白白寫進劇本的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cs064",
+      "chapter": "舞台上的凱撒，終於開口",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an actor in Roman costume at a wooden stage chair, soft stage light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et701",
+          "text": "就是開場那個停住的舞台。現在，扮凱撒的演員繼續說下去。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "cs065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a proud actor in Roman costume standing beside a stage chair, theatrical light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et702",
+          "text": "莎士比亞先讓請願的人圍上來，凱撒宣稱，自己像北極星一樣堅定。"
+        }
+      ]
+    },
+    {
+      "id": "puff",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an actor in Roman costume on a wooden stage puffing out his chest with his chin raised high, soft stage light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et703",
+          "text": "你看戲看多了應該懂：角色把話說得這麼滿，通常就要出事了。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "cs066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a costumed stage actor lifting one open hand beside a plain prop dagger, stage light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et704",
+          "text": "卡斯卡喊：讓雙手說話！舞台指示，讓他和其他人一起動刀。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "cs067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a costumed actor stepping onto a wooden stage from a simple curtain, warm light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et705",
+          "text": "劇本還特別寫明，馬爾庫斯布魯圖斯也參與了刺殺。"
+        },
+        {
+          "id": "et706",
+          "text": "那凱撒看見他，會說什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "play-card",
+      "template": "big",
+      "data": {
+        "text": "「Et tu, Brute? — Then fall, Caesar!」",
+        "kicker": "莎士比亞《凱撒大帝》第三幕第一場",
+        "sub": "連你也，布魯圖斯？——那就倒下吧，凱撒！"
+      },
+      "lines": [
+        {
+          "id": "et707",
+          "text": "那句名台詞終於出來了；可是只有「連你也，布魯圖斯？」這半句是拉丁語。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "cs069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stage actor slowly lowering his head beside a simple wooden chair, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et708",
+          "text": "後面那句「那就倒下吧，凱撒！」，在這個版本是英文。"
+        }
+      ]
+    },
+    {
+      "id": "cs070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stage performer kneeling under a focused theatre lamp, warm light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et709",
+          "text": "那才是劇本給凱撒的最後一句台詞；接著，才是一行舞台指示：死。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "you-stare",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in a cardigan at a desk staring at an open book with completely blank pages, her mouth slightly open, soft lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et710",
+          "text": "我第一次讀到這裡也愣住了：最有名的那一句，竟然不是最後一句。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "liberty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a costumed stage actor raising both arms on a wooden stage with a plain prop dagger in one hand, warm stage light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et711",
+          "text": "他一倒下，戲裡的密謀者就高喊自由。"
+        }
+      ]
+    },
+    {
+      "id": "calm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a costumed actor with a round brooch on his cloak holding out both open hands to calm someone off stage, soft stage light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et712",
+          "text": "還記得普魯塔克筆下，那個想解釋卻沒人聽的馬爾庫斯嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "calm-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a costumed actor with a round brooch on his cloak standing at the front of a wooden stage with one hand on his heart, speaking earnestly, warm stage light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et713",
+          "text": "在戲裡，布魯圖斯安撫旁人，說凱撒的野心受了懲罰。"
+        }
+      ]
+    },
+    {
+      "id": "cs073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a playwright setting an unmarked script beside a completely blank rolled ancient scroll, daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et714",
+          "text": "所以這齣戲證明的，是莎士比亞寫了它，不是凱撒說了它。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "cs074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a cautious reader turning an entirely blank book page in a quiet study, daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et715",
+          "text": "也不能因為戲裡有這句，就說莎士比亞一定是第一個寫它的人。"
+        }
+      ]
+    },
+    {
+      "id": "you-objection",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt on a sofa leaning forward with his elbows on his knees and frowning in thought, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et716",
+          "text": "你可能會想：那這句拉丁話，總該有個古代的出處吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "cs075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a later-era book editor pointing to the lower margin of an open book with entirely blank visible pages, desk light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et717",
+          "text": "後來一份《十二凱撒傳》的英譯本，還把一個拉丁語的猜測放進腳註；讀的人會看錯哪一層？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "translator",
+      "chapter": "一份英譯本的腳註，替凱撒換了一種語言",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bespectacled translator in a waistcoat writing at a desk beside an oil lamp, an open book with completely blank pages next to his hand, warm lamp light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et801",
+          "text": "那份英譯的正文，倒是照樣保留了「有些作者說」。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "cs076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a careful reader opening a book to entirely blank pages at a desk, window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et802",
+          "text": "只是它把稱呼寫成「我的兒子」，不是莎劇裡的「布魯圖斯」。"
+        }
+      ]
+    },
+    {
+      "id": "cs077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a translator touching a plain blank paper marker attached to an open book with completely blank pages, desk light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et803",
+          "text": "這句後面掛著第九十七號註；一翻到腳註，就會看見另一種語言。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "you-skip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a student in a hoodie at a library table flipping quickly past the bottom of a page in a thick book with completely blank pages, grinning sheepishly, soft afternoon light from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et804",
+          "text": "你讀書的時候，大概也跳過不少腳註；偏偏這一次，關鍵就藏在那裡。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "cs078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a book editor holding a pencil above the lower margin of an open book with entirely blank visible pages, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et805",
+          "text": "後來的編者在那裡才猜：凱撒大概會用拉丁語說那句話。"
+        }
+      ]
+    },
+    {
+      "id": "cs079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful editor pinching a plain blank slip beside a closed book, desk light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et806",
+          "text": "那裡沒有現場的逐字紀錄；「很可能」這幾個字，說明這是編者的推測。"
+        }
+      ]
+    },
+    {
+      "id": "cs080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a later-era editor measuring a completely blank long paper strip against a completely blank short strip on a desk, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et807",
+          "text": "編者還嫌英譯那一串呼語太長，不像緊急時刻會說的話。"
+        }
+      ]
+    },
+    {
+      "id": "cs081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a later-era scholar holding a closed book with a completely blank cover beside a desk lamp, warm light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et808",
+          "text": "他的理由是：都這種時候了，凱撒何必改用希臘語？",
+          "emotion": "學他的口氣"
+        }
+      ]
+    },
+    {
+      "id": "you-nod",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in a cardigan at a desk resting her chin on one hand and nodding slowly, soft lamp light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et809",
+          "text": "說實話，這個疑問我也有過；可是有疑問，不等於有證據。",
+          "emotion": "意見，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "cs082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a book editor comparing two differently folded completely blank slips beside a closed book, desk light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et810",
+          "text": "腳註也提到手稿裡有希臘文字樣的異文，卻沒提出寫著拉丁名句的古抄本。"
+        }
+      ]
+    },
+    {
+      "id": "cs083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a reader setting a closed unmarked book apart from a completely blank rolled ancient scroll, daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et811",
+          "text": "所以會看錯的，就是這一層：那是編者的推理，不能放回蘇埃托尼烏斯的嘴裡。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "cs084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ancient copyist closing an unmarked scroll beside a small lamp",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et812",
+          "text": "還記得那段拉丁文段尾的三個希臘詞嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "roll-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly Roman biographer with a short grey beard rolling up a completely blank scroll and shaking his head slightly, soft lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et813",
+          "text": "蘇埃托尼烏斯的原文裡，找不到編者猜的那句拉丁問話。",
+          "emotion": "放慢，篤定"
+        }
+      ]
+    },
+    {
+      "id": "cs085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader holding a completely blank stage booklet beside a rolled unmarked scroll, daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et814",
+          "text": "回到開場的問題：凱撒臨死前，真的說了這句話嗎？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cs998",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful actor in a simple white toga costume standing alone on a plain wooden stage in the evening, holding a blank script to his chest and looking out at the empty seats, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et815",
+          "text": "還記得開頭那三篇傳記嗎？沒有一篇讓凱撒說出那句拉丁話。",
+          "emotion": "回呼，篤定"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "未結",
+        "kicker": "三篇古代傳記，沒有一篇讓凱撒說出那句拉丁話",
+        "sub": "劇本怎麼寫能確定；凱撒說了什麼，紀錄給不出答案"
+      },
+      "lines": [
+        {
+          "id": "et816",
+          "text": "他臨死前到底說了什麼，這份檔案只能寫：未結。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "cs086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a curious reader arranging a completely blank rolled scroll, a closed unmarked book and a plain stage mask, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et817",
+          "text": "下次你再聽到一句歷史名言，可以先問：它在古文正文、譯本腳註，還是舞台上？",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "cs997",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious young student in a hoodie sitting at a desk in the afternoon, looking up from a textbook with a thoughtful frown and tapping a pencil on her chin, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et818",
+          "text": "你第一次聽到這句話，是在課本、電影，還是戲劇裡？留言告訴我。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "一句話，兩種出處",
+        "sub": "舞台與古文要分開",
+        "cta": "訂閱奇聞檔案局"
+      },
+      "lines": [
+        {
+          "id": "et819",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "et102",
+      "payoff": "et203",
+      "what": "六十多人的密謀，帶頭的是誰"
+    },
+    {
+      "setup": "et104",
+      "payoff": "et701",
+      "what": "停在開口前的舞台"
+    },
+    {
+      "setup": "et311",
+      "payoff": "et312",
+      "what": "那張警告讀了沒"
+    },
+    {
+      "setup": "et105",
+      "payoff": "et515",
+      "what": "另一個布魯圖斯站在哪裡"
+    },
+    {
+      "setup": "et107",
+      "payoff": "et816",
+      "what": "全片的問題"
+    },
+    {
+      "setup": "et209",
+      "payoff": "et301",
+      "what": "開會的日子凱撒一定會到嗎"
+    },
+    {
+      "setup": "et214",
+      "payoff": "et215",
+      "what": "凱撒有多信任德奇姆斯"
+    },
+    {
+      "setup": "et217",
+      "payoff": "et308",
+      "what": "哪個布魯圖斯帶他出門"
+    },
+    {
+      "setup": "et305",
+      "payoff": "et306",
+      "what": "夢和兆頭攔不攔得住"
+    },
+    {
+      "setup": "et315",
+      "payoff": "et401",
+      "what": "會議廳裡誰在等"
+    },
+    {
+      "setup": "et406",
+      "payoff": "et407",
+      "what": "那個元老要告密嗎"
+    },
+    {
+      "setup": "et410",
+      "payoff": "et503",
+      "what": "凱撒先說了什麼"
+    },
+    {
+      "setup": "et505",
+      "payoff": "et506",
+      "what": "凱撒來不來得及還擊"
+    },
+    {
+      "setup": "et510",
+      "payoff": "et608",
+      "what": "凱撒自己有沒有說希臘語"
+    },
+    {
+      "setup": "et517",
+      "payoff": "et601",
+      "what": "古代作者有沒有寫下最後一句"
+    },
+    {
+      "setup": "et612",
+      "payoff": "et614",
+      "what": "普魯塔克能不能補上證據"
+    },
+    {
+      "setup": "et619",
+      "payoff": "et707",
+      "what": "誰把拉丁名言寫進劇本"
+    },
+    {
+      "setup": "et717",
+      "payoff": "et811",
+      "what": "讀者會看錯哪一層"
+    },
+    {
+      "setup": "et716",
+      "payoff": "et813",
+      "what": "拉丁話的古代出處"
+    },
+    {
+      "setup": "et205",
+      "payoff": "et206",
+      "what": "要在哪裡動手"
+    },
+    {
+      "setup": "et706",
+      "payoff": "et707",
+      "what": "戲裡的凱撒看見布魯圖斯說什麼"
+    }
+  ],
+  "youtube": {
+    "title": "凱撒真說了「連你也，布魯圖斯」？六十多人的密謀，誰聽見了這句｜奇聞檔案局",
+    "description": "「連你也，布魯圖斯？」大概是全世界最常被借用的一句遺言。這一集跟著這句話，從三月十五日龐培的會議廳一路翻回舞台：蘇埃托尼烏斯《神聖的凱撒》先寫凱撒在二十三次刺擊之間沒有說出完整的話，只在第一刀時呻吟，再保留「有些人傳說」的希臘語版本 καὶ σὺ τέκνον（連你也是嗎，孩子？），原句裡沒有布魯圖斯的名字；普魯塔克的《凱撒傳》與《布魯圖斯傳》沒有替那句拉丁語作證，而且是同一位作者，不算兩個獨立證人。莎士比亞《凱撒大帝》第三幕讓凱撒先說拉丁語「Et tu, Brute?」，再說英文「Then fall, Caesar!」，接著才是「死」的舞台指示。後來一份《十二凱撒傳》英譯本的腳註，才猜凱撒大概會用拉丁語說那句話；那是編者的推測，不是古代原文。我們能確定劇本怎麼寫；凱撒有沒有說那句拉丁話，紀錄給不出確定的答案，也不能反過來說他絕對沒說過類似的話。\n\n蘇埃托尼烏斯依 PerseusDL 的 Rolfe 拉丁文本與英譯；普魯塔克依 GITenberg 的 Clough 英譯（未對讀希臘原文）；莎士比亞依 GITenberg 全文。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似，不是歷史現場影像。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "凱撒",
+      "布魯圖斯",
+      "Et tu Brute",
+      "莎士比亞",
+      "十二凱撒傳",
+      "普魯塔克",
+      "三月十五日",
+      "羅馬共和",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "連你也？\n**誰聽見**",
+      "tag": "歷史名場面",
+      "sub": "傳記裡是三個希臘詞",
+      "shot": "cs002"
+    }
+  },
+  "sources": [
+    {
+      "title": "Suetonius, Divus Iulius 80–85 (Rolfe Latin, PerseusDL pinned text)",
+      "url": "https://github.com/PerseusDL/canonical-latinLit/blob/128a05afa9cc7179ab18f8d05f78a9f1dd50e415/data/phi1348/abo011/phi1348.abo011.rolfe-lat1.xml#L587-L638",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Suetonius, Divus Iulius 82 (Rolfe English, PerseusDL pinned text)",
+      "url": "https://github.com/PerseusDL/canonical-latinLit/blob/128a05afa9cc7179ab18f8d05f78a9f1dd50e415/data/phi1348/abo011/phi1348.abo011.rolfe-eng1.xml#L2009-L2037",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Plutarch, Caesar and Brutus (GITenberg pinned text)",
+      "url": "https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L46821-L46946",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Shakespeare, Julius Caesar III.i (GITenberg pinned text)",
+      "url": "https://github.com/GITenberg/Julius-Caesar_1120/blob/61f9979ce377707e385fdd4e0b48b0383b857524/1120.txt#L1670-L1694",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Thomson/Forester Suetonius translation, footnote 97 (later editorial conjecture)",
+      "url": "https://github.com/GITenberg/The-Lives-of-the-Twelve-Caesars-Complete_6400/blob/bb5afc956095e248b2287cce2a4d3ebe394e5d31/6400.txt#L18375-L18392",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}
