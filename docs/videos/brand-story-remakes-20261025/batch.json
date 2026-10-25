@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-25T10:31:00Z",
+  "timezone": "Asia/Taipei",
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "reference_pr": 1844,
+  "request": "繼續完成後台的品牌故事未完成的影片，並且用新規則重製；可以參考1844。",
+  "counts": {
+    "backend_brand_stories": 22,
+    "no_youtube_and_not_dropped": 19,
+    "unique_subjects": 18,
+    "duplicate_originals_preserved": 1
+  },
+  "new_rules": {
+    "target_minutes": 13,
+    "measured_narration_seconds": [
+      720,
+      840
+    ],
+    "opening": [
+      "stakes_to_viewer_with_sourced_number",
+      "concrete_scene",
+      "at_most_two_teasers",
+      "named_promise",
+      "central_question"
+    ],
+    "viewer_address_each_chapter": true,
+    "narrator_reaction_each_chapter": true,
+    "max_hook_gap_seconds": 45,
+    "min_resolved_loops": 8,
+    "illustration_min_body_fraction": 0.7,
+    "consecutive_cards_max": 3,
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "subtitle_burn_in": true,
+    "thumbnail_layout": "d",
+    "intro_seconds": 5,
+    "intro_placement": "after_condensation",
+    "outro_seconds": 21,
+    "source_bound_facts": true
+  },
+  "paid_entry": {
+    "status": "blocked_by_existing_everyday_preproduction_hold_and_missing_remake_accounts",
+    "no_paid_requests_sent": true,
+    "no_backend_writes": false,
+    "accounting_note": "PR 1844 demonstrates the media workflow; it does not create C-series remake budget accounts. Do not rename outside the everyday prefix or bypass the hold.",
+    "backend_draft_projects_created": 3,
+    "backend_script_reviews_submitted": 3,
+    "original_episodes_rebound": 0,
+    "youtube_changes": false
+  },
+  "videos": [
+    {
+      "slug": "story-everyday-zippo-c20-short-v8",
+      "title": "一個承諾能用多久？Zippo 的維修故事",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 20,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-24T10:36:57.762721Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-zippo-c20-short-v8/script.md": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "docs/videos/story-everyday-zippo-c20-short-v8/video.json": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "docs/videos/story-everyday-zippo-c20-short-v8/series.json": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb"
+      }
+    },
+    {
+      "slug": "story-everyday-kikkoman-c08-short-v8",
+      "title": "龜甲萬：醬油瓶怎麼走上餐桌？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 8,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-24T10:36:52.262231Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-kikkoman-c08-short-v8/script.md": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "docs/videos/story-everyday-kikkoman-c08-short-v8/video.json": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "docs/videos/story-everyday-kikkoman-c08-short-v8/series.json": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db"
+      }
+    },
+    {
+      "slug": "story-everyday-patagonia-c09",
+      "title": "Patagonia：為何勸攀岩者少用自家岩釘？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 9,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-24T09:53:34.579054Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "source_and_narrative_pass_script_pending_production_held",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-patagonia-c09/script.md": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "docs/videos/story-everyday-patagonia-c09/video.json": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "docs/videos/story-everyday-patagonia-c09/series.json": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "docs/videos/story-everyday-patagonia-c09/source-matrix.md": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c"
+      },
+      "remake_slug": "story-everyday-patagonia-c09-remake-20261025",
+      "remake_status_receipt": "c09/backend-status.json"
+    },
+    {
+      "slug": "story-everyday-seven-bank-c19",
+      "title": "Seven Bank：超商裡的 ATM，怎麼成了一家銀行的網路？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 19,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T18:16:37.539176Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-seven-bank-c19/script.md": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "docs/videos/story-everyday-seven-bank-c19/video.json": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "docs/videos/story-everyday-seven-bank-c19/series.json": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "docs/videos/story-everyday-seven-bank-c19/source-matrix.md": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe"
+      }
+    },
+    {
+      "slug": "story-adapt-doraemon-after-fujiko",
+      "title": "作者走了30年，哆啦A夢的新故事是誰寫的？",
+      "series_slug": "brand-stories-adapt",
+      "episode_number": 5,
+      "observed_stage": "blocked",
+      "last_synced_at": "2026-10-23T15:28:50.818115Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": true,
+      "current_block": "卡住，需要人處理：music needs the owner: music needs the owner: decoded track is shorter than the 539.833 s cut. Keep this paid f",
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {}
+    },
+    {
+      "slug": "story-everyday-frixion-c15",
+      "title": "先會變色、後來才會『擦掉』：FriXion 的三十年轉身",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 15,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:57.479716Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-frixion-c15/script.md": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "docs/videos/story-everyday-frixion-c15/video.json": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "docs/videos/story-everyday-frixion-c15/series.json": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "docs/videos/story-everyday-frixion-c15/source-matrix.md": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09"
+      }
+    },
+    {
+      "slug": "story-everyday-camelbak-c14",
+      "title": "為了騎車不用拿瓶，CamelBak 為何後來又賣水瓶？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 14,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:56.960518Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-camelbak-c14/script.md": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "docs/videos/story-everyday-camelbak-c14/video.json": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "docs/videos/story-everyday-camelbak-c14/series.json": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "docs/videos/story-everyday-camelbak-c14/source-matrix.md": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e"
+      }
+    },
+    {
+      "slug": "story-everyday-ucc-c11",
+      "title": "UCC 奶咖能帶上車，為何還得拿工具開罐？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 11,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:56.452638Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-ucc-c11/script.md": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "docs/videos/story-everyday-ucc-c11/video.json": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "docs/videos/story-everyday-ucc-c11/series.json": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "docs/videos/story-everyday-ucc-c11/source-matrix.md": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b"
+      }
+    },
+    {
+      "slug": "story-everyday-oxo-c10",
+      "title": "OXO：為一雙難握的手改削皮刀，為何走進更多廚房？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 10,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:55.934129Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-oxo-c10/script.md": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "docs/videos/story-everyday-oxo-c10/video.json": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "docs/videos/story-everyday-oxo-c10/series.json": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "docs/videos/story-everyday-oxo-c10/source-matrix.md": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6"
+      }
+    },
+    {
+      "slug": "story-everyday-kikkoman-c08",
+      "title": "龜甲萬：醬油瓶怎麼走上餐桌？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 8,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:55.103038Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "duplicate_original_preserved",
+      "preferred_existing_revision": "story-everyday-kikkoman-c08-short-v8",
+      "original_files_sha256": {
+        "docs/videos/story-everyday-kikkoman-c08/script.md": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "docs/videos/story-everyday-kikkoman-c08/video.json": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "docs/videos/story-everyday-kikkoman-c08/series.json": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "docs/videos/story-everyday-kikkoman-c08/source-matrix.md": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32"
+      }
+    },
+    {
+      "slug": "story-everyday-dr-martens-c07",
+      "title": "Dr. Martens：工作靴怎麼變成青年文化符號？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 7,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:53.898507Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-dr-martens-c07/script.md": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "docs/videos/story-everyday-dr-martens-c07/video.json": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "docs/videos/story-everyday-dr-martens-c07/series.json": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "docs/videos/story-everyday-dr-martens-c07/source-matrix.md": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a"
+      }
+    },
+    {
+      "slug": "story-everyday-play-doh-c06",
+      "title": "Play-Doh：壁紙清潔膏怎麼走進玩具箱？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 6,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:52.987363Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-play-doh-c06/script.md": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "docs/videos/story-everyday-play-doh-c06/video.json": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "docs/videos/story-everyday-play-doh-c06/series.json": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "docs/videos/story-everyday-play-doh-c06/source-matrix.md": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2"
+      }
+    },
+    {
+      "slug": "story-everyday-kincho-c05",
+      "title": "金鳥蚊香：一條蚊香為何盤成螺旋？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 5,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:52.131135Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "source_and_narrative_pass_script_approved_production_held",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-kincho-c05/script.md": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "docs/videos/story-everyday-kincho-c05/video.json": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "docs/videos/story-everyday-kincho-c05/source-matrix.md": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516"
+      },
+      "remake_slug": "story-everyday-kincho-c05-remake-20261025",
+      "remake_status_receipt": "c05/backend-status.json"
+    },
+    {
+      "slug": "story-everyday-bubble-wrap-c04",
+      "title": "Bubble Wrap：泡泡紙原本想貼牆，為何走進包裹？",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 4,
+      "observed_stage": "script review",
+      "last_synced_at": "2026-10-23T11:08:50.835739Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": null,
+      "current_block": null,
+      "remake_status": "source_and_narrative_pass_script_approved_production_held",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-bubble-wrap-c04/script.md": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "docs/videos/story-everyday-bubble-wrap-c04/video.json": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "docs/videos/story-everyday-bubble-wrap-c04/series.json": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "docs/videos/story-everyday-bubble-wrap-c04/source-matrix.md": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756"
+      },
+      "remake_slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "remake_status_receipt": "c04/backend-status.json"
+    },
+    {
+      "slug": "story-everyday-moleskine-c03",
+      "title": "Moleskine：新品牌如何把老式筆記本變成全球生意？｜品牌故事",
+      "series_slug": "brand-stories-everyday-reversals",
+      "episode_number": 3,
+      "observed_stage": "outline approved",
+      "last_synced_at": "2026-10-22T02:00:14.230682Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": false,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {
+        "docs/videos/story-everyday-moleskine-c03/script.md": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "docs/videos/story-everyday-moleskine-c03/video.json": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "docs/videos/story-everyday-moleskine-c03/series.json": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "docs/videos/story-everyday-moleskine-c03/source-matrix.md": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb"
+      }
+    },
+    {
+      "slug": "story-adapt-seiko-quartz-astron",
+      "title": "比一台車還貴的石英錶，真的打垮了瑞士錶業嗎？",
+      "series_slug": "brand-stories-adapt",
+      "episode_number": 1,
+      "observed_stage": "blocked",
+      "last_synced_at": "2026-10-21T23:59:28.245002Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": true,
+      "current_block": "卡住，需要人處理：check-audio th needs the owner: POST /api/video/speech/transcribe is held in the speech journal since 2026-10-2",
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {}
+    },
+    {
+      "slug": "story-garmin-smartphone-pivot-worker-2026",
+      "title": "導航機不再好賣，Garmin 怎麼把生意做得更大？",
+      "series_slug": "brand-stories-garmin-worker-20261021",
+      "episode_number": 1,
+      "observed_stage": "blocked",
+      "last_synced_at": "2026-10-21T05:41:28.710599Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": false,
+      "current_block": "卡住，需要人處理：story-garmin-smartphone-pivot-worker-2026: chapter 1/6 (hook) written: 6 shots, 176 characters; pronunciation p",
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {}
+    },
+    {
+      "slug": "story-dyson-japan-first-20261021",
+      "title": "英國發明的吸塵器，為什麼要繞道日本？ | 品牌故事",
+      "series_slug": null,
+      "episode_number": null,
+      "observed_stage": "final video approved",
+      "last_synced_at": "2026-10-21T04:27:50.203509Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": false,
+      "current_block": null,
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {}
+    },
+    {
+      "slug": "story-rolling-suitcase-v2",
+      "title": "輪子行李箱：有了輪子，為什麼還等了這麼久？",
+      "series_slug": "brand-stories-curio-pilot-v2",
+      "episode_number": 1,
+      "observed_stage": "blocked",
+      "last_synced_at": "2026-10-21T03:54:25.639327Z",
+      "youtube_video_id": null,
+      "reviewed_final_checklist": false,
+      "current_block": "卡住，需要人處理：STOPPED_HOLD: story/reviews/script-review.json is missing; an independent reader must review the current six-ch",
+      "remake_status": "queued_for_source_and_media_reconciliation",
+      "preferred_existing_revision": null,
+      "original_files_sha256": {}
+    }
+  ],
+  "updated_at": "2026-10-25T12:33:58.277Z",
+  "current_status": "partial_preproduction_complete_production_blocked"
+}

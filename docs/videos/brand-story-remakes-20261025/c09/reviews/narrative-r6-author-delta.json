@@ -1,0 +1,35 @@
+{
+  "type": "author_narrative_delta",
+  "independent": false,
+  "basis": "Both r5 readers declined no_recap, naming two repeated facts; root selected true explicit callbacks only",
+  "old_video_sha256": "a751f2fb01be75e701efcca640c9e4a8538b92af885ab907adcfce53abcbeff4",
+  "new_video_sha256": "54842c50b8da3636847fe52593967e4905f78a1f64b832cd059c372ef1b37bf0",
+  "new_panel_payload_sha256": "c00d052055a9d211a3bf390e841a3aa5ca0db9e62d7824e44e2c1382cd4f4ba9",
+  "changes": [
+    {
+      "id": "c09r046",
+      "before": "照他後來說的，原以為攀岩不傷岩石，卻看見裂縫越來越寬；那他把新想法放到哪裡？",
+      "after": "還記得剛才變寬的岩縫嗎？他說自己原以為攀岩不傷岩石；這個發現，他寫到了哪裡？",
+      "source": "S4"
+    },
+    {
+      "id": "c09r070",
+      "before": "賣著岩釘，卻又勸你少敲；你會相信這個賣家，還是覺得他說一套、做一套？",
+      "after": "回到開場那本型錄：讀到這份勸告，你會相信賣家，還是覺得他說一套、做一套？",
+      "source": "S3"
+    }
+  ],
+  "facts_added": false,
+  "source_labels_unchanged": true,
+  "visuals_unchanged": true,
+  "loop_payoffs_unchanged": true,
+  "retained_failed_readers": [
+    "history-r5/reader-a.json",
+    "history-r5/reader-b.json"
+  ],
+  "callback_targets": {
+    "c09r046": "c09r034 widened crack, then the new attributed prior misconception",
+    "c09r070": "c09r004 product catalogue and its advice, now viewed as a buyer trust problem"
+  },
+  "note": "Only these two spoken strings change; fresh independent readers still required."
+}

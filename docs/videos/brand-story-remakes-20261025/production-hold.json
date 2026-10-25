@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-25T12:28:26.074Z",
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "paid_requests": 0,
+  "media_generated": false,
+  "policy_files_sha256": {
+    "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93",
+    "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+    "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf"
+  },
+  "projects": [
+    {
+      "id": "c04",
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "local_preproduction_hold": true,
+      "protected_live_budget_ledger_readback": "unavailable_with_tool_token",
+      "remake_account_activation": "not_established",
+      "music_quote": "blocked_until_actual_tts_timeline",
+      "actual_narration_seconds": null
+    },
+    {
+      "id": "c05",
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "local_preproduction_hold": true,
+      "protected_live_budget_ledger_readback": "unavailable_with_tool_token",
+      "remake_account_activation": "not_established",
+      "music_quote": "blocked_until_actual_tts_timeline",
+      "actual_narration_seconds": null
+    },
+    {
+      "id": "c09",
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "local_preproduction_hold": true,
+      "protected_live_budget_ledger_readback": "unavailable_with_tool_token",
+      "remake_account_activation": "not_established",
+      "music_quote": "blocked_until_actual_tts_timeline",
+      "actual_narration_seconds": null
+    }
+  ],
+  "blockers": [
+    "Protected C-series history reconciliation and remake-account activation remain required; no slug or guard changes made.",
+    "No operable administrator or production-host session is available in this environment. The existing tool token supports draft review submission.",
+    "The available branding registry identifies a candidate package; owner-selected v4 provenance is not verified."
+  ],
+  "branding_observed": {
+    "id": "curio-archive-original-candidate-20261020-v1",
+    "registry_hash": "1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801",
+    "intro": {
+      "file": "1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/intro.mp4",
+      "sha256": "a5ae205fcf6fa7c92998ac4991225e54206fff482cf03493a60cfb2519e8fcef",
+      "frames": 150
+    },
+    "outro": {
+      "file": "1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/outro.mp4",
+      "sha256": "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee",
+      "frames": 630
+    },
+    "formal_v4_verified": false
+  },
+  "quote_scope": "TTS and keyframes dry-runs are provider/configuration and image-stage estimates only; music waits for the actual timeline. No whole-film quote or spend authorization is inferred from the generic USD200 display.",
+  "final_approval": false,
+  "script_approvals": [
+    {
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "status": "approved",
+      "review_id": "4b59f286-1467-4548-b0da-95b5462f682f",
+      "imported": true
+    },
+    {
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "status": "approved",
+      "review_id": "398b6b93-0ce6-439a-925e-8ff72a1bc5fd",
+      "imported": true
+    },
+    {
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "status": "pending",
+      "review_id": "5c822c92-3bb6-437e-8b8a-157737a71543",
+      "imported": false
+    }
+  ]
+}

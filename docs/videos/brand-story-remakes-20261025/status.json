@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-25T12:36:20.358Z",
+  "state": "first_batch_preproduction_ready_production_blocked",
+  "reference_pr": 1844,
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "original_inventory": {
+    "snapshot_at": "2026-10-25T10:31:00Z",
+    "unuploaded_rows": 19,
+    "subjects": 18,
+    "first_batch_subjects": 3,
+    "remaining_subjects": 15
+  },
+  "projects": [
+    {
+      "id": "c04",
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "title": "泡泡紙怎麼救包裹？1957 年它還想貼牆｜品牌故事",
+      "video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "PASS",
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "narrative_receipt": "c04/reviews/narrative-final.json",
+      "source_receipt": "c04/reviews/source-r2-delta.json",
+      "lint_errors": 0,
+      "lint_warnings": 6,
+      "backend_script_status": "approved",
+      "backend_review_id": "4b59f286-1467-4548-b0da-95b5462f682f",
+      "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+      "script_approval_imported": true,
+      "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-bubble-wrap-c04-remake-20261025",
+      "preflight": "c04/preflight-inputs.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_checked_at": "2026-10-25T12:30:38.660Z"
+    },
+    {
+      "id": "c05",
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "title": "金鳥蚊香：四十分鐘就燒完，盤成螺旋為何還不夠？｜品牌故事",
+      "video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "PASS",
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap",
+            "no_detour"
+          ]
+        }
+      ],
+      "narrative_receipt": "c05/reviews/narrative-final.json",
+      "source_receipt": "c05/reviews/source-r6-delta.json",
+      "lint_errors": 0,
+      "lint_warnings": 0,
+      "backend_script_status": "approved",
+      "backend_review_id": "398b6b93-0ce6-439a-925e-8ff72a1bc5fd",
+      "canonical_script_sha256": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
+      "script_approval_imported": true,
+      "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-kincho-c05-remake-20261025",
+      "preflight": "c05/preflight-inputs.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_checked_at": "2026-10-25T12:30:42.378Z"
+    },
+    {
+      "id": "c09",
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "title": "Patagonia憑什麼勸你少用？1972年的岩釘難題｜品牌故事",
+      "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "PASS",
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "payoffs"
+          ]
+        }
+      ],
+      "narrative_receipt": "c09/reviews/narrative-final.json",
+      "source_receipt": "c09/reviews/source-r12-delta.json",
+      "lint_errors": 0,
+      "lint_warnings": 18,
+      "backend_script_status": "pending",
+      "backend_review_id": "5c822c92-3bb6-437e-8b8a-157737a71543",
+      "canonical_script_sha256": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1",
+      "script_approval_imported": false,
+      "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-patagonia-c09-remake-20261025",
+      "preflight": "c09/preflight-inputs.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_checked_at": "2026-10-25T12:35:44.061Z"
+    }
+  ],
+  "paid_requests": 0,
+  "new_media_files": 0,
+  "original_sources_preserved": {
+    "checked_at": "2026-10-25T12:29:08.579Z",
+    "checked_files": 53,
+    "changed_original_files": [],
+    "status": "PASS",
+    "scope": "original version sources only; not media QA"
+  },
+  "production_hold": "production-hold.json",
+  "verification": {
+    "docs_videos_suite": {
+      "passed": 236,
+      "failed": 0,
+      "skipped": 0
+    },
+    "docs_test_discovery_contracts": {
+      "passed": 2,
+      "failed": 0
+    },
+    "tasks_validated": 2178,
+    "helper_syntax": "PASS",
+    "json_parse": {
+      "status": "PASS",
+      "files": 301
+    }
+  },
+  "remaining": [
+    "protected budget-history readback, whole-film quote and remake account activation",
+    "operable production-host or administrator connection",
+    "owner-selected formal v4 branding identity readback",
+    "measured TTS narration 720–840 seconds and listening review",
+    "illustrations, render, measured music, assembly, burned-in zh-TW subtitles and CC, full decode QA and owner final review",
+    "remaining fifteen subjects require source/media reconciliation before remaking"
+  ],
+  "limitations": [
+    "Written visual review is not generated-image acceptance.",
+    "Narrative PASS follows the native two-reader merge policy; individual failed answers and reader notes remain intact.",
+    "Image dry-run costs are not whole-film quotes; generic USD200 display is not authorization.",
+    "Original episodes have not been rebound or automatically resumed."
+  ]
+}
