@@ -144,17 +144,17 @@
   "scenes": [
     {
       "id": "open",
-      "chapter": "Will Google ads read my Gmail?",
+      "chapter": "廣告會不會看我的 Gmail？",
       "template": "title",
       "claims": [
         "c1",
         "c7"
       ],
       "data": {
-        "tag": "AI NEWS",
-        "title": "One sentence changed in\nGoogle's **Privacy Policy**",
-        "subtitle": "Effective October 16, 2026 · policies.google.com/privacy",
-        "key": "Oct 16: one new clause"
+        "tag": "AI 新聞",
+        "title": "Google **隱私權政策**\n改了一句話",
+        "subtitle": "2026 年 10 月 16 日生效 · policies.google.com/privacy",
+        "key": "10 月 16 日：多了一句話"
       },
       "lines": [
         {
@@ -176,9 +176,10 @@
         "c11"
       ],
       "data": {
-        "kicker": "You may ask",
-        "text": "Do ads read\nmy **Gmail**?",
-        "key": "Do ads read my Gmail?"
+        "kicker": "你可能會問",
+        "text": "廣告會看我的**信**？",
+        "key": "廣告會看我的 Gmail 嗎？",
+        "icon": "document"
       },
       "lines": [
         {
@@ -195,9 +196,10 @@
         "c11"
       ],
       "data": {
-        "kicker": "Short answer",
-        "text": "Summaries,\nnot **letters**",
-        "key": "Not your mail: summaries"
+        "kicker": "簡短回答",
+        "text": "拿**摘要**，不拿信",
+        "key": "拿摘要，不會交出你的信",
+        "icon": "file"
       },
       "lines": [
         {
@@ -215,9 +217,10 @@
         "c9"
       ],
       "data": {
-        "kicker": "Only one kind of user",
-        "text": "Those who\npressed **Connect**",
-        "key": "Only if you hit Connect"
+        "kicker": "只管一種人",
+        "text": "按過 **Connect** 的人",
+        "key": "只管自己按過 Connect 的人",
+        "icon": "person"
       },
       "lines": [
         {
@@ -236,25 +239,25 @@
         "c17"
       ],
       "data": {
-        "title": "Eight minutes from now",
+        "title": "八分鐘之後",
         "items": [
           {
-            "text": "The sentence, both versions",
+            "text": "那一句，兩個版本並排",
             "icon": "document"
           },
           {
-            "text": "The switch, three levels deep",
+            "text": "那個開關，要點三層",
             "icon": "gear"
           },
           {
-            "text": "Which one keeps AI Mode yours",
+            "text": "關哪一個不丟 AI 搜尋個人化",
             "icon": "search"
           }
         ],
         "keys": [
-          "Find the one sentence",
-          "A switch 3 levels deep",
-          "Turn off the right one"
+          "找到政策裡那一句",
+          "開關藏在第三層",
+          "關對的那一個"
         ]
       },
       "lines": [
@@ -280,17 +283,17 @@
     },
     {
       "id": "date",
-      "chapter": "What changed on October 16?",
+      "chapter": "10 月 16 日改了什麼？",
       "template": "big",
       "claims": [
         "c1"
       ],
       "data": {
-        "kicker": "Effective",
+        "kicker": "2026 年 10 月生效",
         "numeral": "16",
-        "text": "October",
-        "sub": "Google Privacy Policy · Provide personalized services, including content and ads",
-        "key": "Effective Oct 16, 2026"
+        "text": "日",
+        "sub": "Google 隱私權政策 · 個人化服務與廣告那一段，廣告三條規矩的第二條",
+        "key": "2026 年 10 月 16 日生效"
       },
       "lines": [
         {
@@ -307,10 +310,11 @@
         "c2"
       ],
       "data": {
-        "kicker": "Effective October 1, 2026",
+        "kicker": "2026 年 10 月 1 日生效的版本",
         "quote": "We don’t show you personalized ads based on your content from Drive, Gmail, or Photos.",
         "source": "policies.google.com/privacy/archive/20261001 · 2026-10-24",
-        "key": "Oct 1: ends at “Photos.”"
+        "key": "10 月 1 日：到 Photos 句點",
+        "translation": "我們不會根據你 Drive、Gmail 或 Photos 的內容投放個人化廣告。"
       },
       "lines": [
         {
@@ -327,10 +331,11 @@
         "c1"
       ],
       "data": {
-        "kicker": "October 16: the same bullet now ends",
+        "kicker": "10 月 16 日：同一條現在的結尾",
         "quote": "…available to other Google services that support personalized ads.",
         "source": "policies.google.com/privacy · 2026-10-24",
-        "key": "Now: “unless you choose”"
+        "key": "現在接著 unless 你自己選擇",
+        "translation": "…開放給其他會投個人化廣告的 Google 服務。"
       },
       "lines": [
         {
@@ -354,27 +359,27 @@
         "c4"
       ],
       "data": {
-        "title": "The same bullet, two versions",
+        "title": "同一條，兩個版本",
         "left": {
-          "heading": "October 1",
+          "heading": "10 月 1 日",
           "icon": "document",
           "points": [
-            "Ends at “…or Photos.”",
-            "Ads: interests and activity"
+            "講到 Photos 就句點",
+            "廣告：只看興趣和活動"
           ]
         },
         "right": {
-          "heading": "October 16",
+          "heading": "10 月 16 日",
           "icon": "lightning",
           "points": [
-            "Adds “unless you choose…”",
-            "Ads: + personalized content"
+            "多了 unless 你選擇…",
+            "廣告：加上個人化內容"
           ]
         },
         "source": "policies.google.com/privacy vs archive/20261001",
         "keys": [
-          "Oct 1: ends at Photos",
-          "Oct 16: adds two phrases"
+          "10 月 1 日：到 Photos 句點",
+          "10 月 16 日：多了一項依據"
         ]
       },
       "lines": [
@@ -399,10 +404,11 @@
         "c3"
       ],
       "data": {
-        "kicker": "Also new on October 16",
+        "kicker": "10 月 16 日也新增的例子",
         "quote": "…the data that you allow Search to access to personalize content, including ads.",
         "source": "policies.google.com/privacy · 2026-10-24",
-        "key": "“…including ads.”"
+        "key": "多了一個例子：包括廣告",
+        "translation": "…你允許搜尋存取的資料，用來個人化內容，包括廣告。"
       },
       "lines": [
         {
@@ -419,10 +425,10 @@
         "c3"
       ],
       "data": {
-        "title": "New paragraph: who you may let in",
+        "title": "新的一段：你可以讓誰進來",
         "items": [
           {
-            "text": "Search",
+            "text": "搜尋",
             "icon": "search"
           },
           {
@@ -430,18 +436,18 @@
             "icon": "chat"
           },
           {
-            "text": "…to Google Photos, Gmail, Drive",
+            "text": "…拿 Google Photos、Gmail、Drive 的資料",
             "icon": "file"
           },
           {
-            "text": "Under the accessing service's rules",
+            "text": "規矩照拿資料那個服務的設定",
             "icon": "gear"
           }
         ],
         "source": "policies.google.com/privacy · 2026-10-24",
         "keys": [
-          "Search or Gemini Apps…",
-          "…to Photos, Gmail, Drive"
+          "點名搜尋和 Gemini Apps…",
+          "…拿 Photos、Gmail、Drive"
         ]
       },
       "lines": [
@@ -468,8 +474,8 @@
         "c6"
       ],
       "data": {
-        "title": "Google Privacy Policy",
-        "caption": "policies.google.com/privacy · the three ads bullets · captured 2026-10-24",
+        "title": "Google 隱私權政策",
+        "caption": "policies.google.com/privacy · 廣告三條規矩 · 2026-10-24 截圖",
         "steps": [
           {
             "action": "goto",
@@ -485,7 +491,7 @@
             "zoom": 1.3
           }
         ],
-        "key": "Bullet two of three"
+        "key": "三條規矩的第二條"
       },
       "lines": [
         {
@@ -502,15 +508,16 @@
     },
     {
       "id": "connect",
-      "chapter": "What does “you choose” mean?",
+      "chapter": "「你選擇」是哪個動作？",
       "template": "big",
       "claims": [
         "c13"
       ],
       "data": {
-        "kicker": "“You choose” =",
-        "text": "Pressing **Connect**",
-        "key": "“You choose” = Connect"
+        "kicker": "「你選擇」＝",
+        "text": "按下 **Connect**",
+        "key": "「你選擇」就是按 Connect",
+        "icon": "arrow"
       },
       "lines": [
         {
@@ -527,9 +534,9 @@
         "c25"
       ],
       "data": {
-        "kicker": "You may ask: why would anyone?",
-        "text": "AI Mode answers from\n**your** mail and photos",
-        "key": "Why connect at all?"
+        "kicker": "你可能會問：為什麼有人想連？",
+        "text": "AI Mode 用**你的**信\n和照片回答",
+        "key": "那為什麼會有人想連？"
       },
       "lines": [
         {
@@ -555,28 +562,28 @@
         "title": "Connected Content Apps",
         "items": [
           {
-            "text": "Workspace: Gmail, Google Calendar",
+            "text": "Google Workspace：Gmail、Google Calendar",
             "icon": "file"
           },
           {
-            "text": "Google Photos (not all regions)",
+            "text": "Google Photos（不是每個地區都開）",
             "icon": "globe"
           },
           {
-            "text": "Opt-in, users 18 and older",
+            "text": "自己開的：十八歲以上",
             "icon": "person"
           },
           {
-            "text": "Connect or disconnect any time",
+            "text": "隨時可以 Connect 或 Disconnect",
             "icon": "gear"
           }
         ],
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Gmail + Google Calendar",
-          "Photos: not all regions",
-          "Opt-in, 18 and older",
-          "Disconnect any time"
+          "Gmail 和 Google Calendar",
+          "Photos：不是每個地區都開",
+          "自己開的，十八歲以上",
+          "隨時可以斷開"
         ]
       },
       "lines": [
@@ -622,21 +629,21 @@
         "c22"
       ],
       "data": {
-        "title": "Before Photos can personalize",
+        "title": "Photos 要先開兩個設定",
         "items": [
           {
-            "text": "Turn on Face Groups, pick your face",
+            "text": "開臉部分組，選出哪張臉是你",
             "icon": "person"
           },
           {
-            "text": "Turn on Estimate missing locations",
+            "text": "開估算缺少位置",
             "icon": "globe"
           }
         ],
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Photos needs Face Groups",
-          "And estimated locations"
+          "Photos 要先開臉部分組",
+          "還要開估算缺少位置"
         ]
       },
       "lines": [
@@ -661,9 +668,10 @@
         "c21"
       ],
       "data": {
-        "kicker": "Like a loyalty card",
-        "text": "You hand the card\nto the **cashier**",
-        "key": "You hand over the card"
+        "kicker": "像會員卡",
+        "text": "你把卡交給**店員**刷",
+        "key": "把會員卡交給店員刷",
+        "icon": "person"
       },
       "lines": [
         {
@@ -687,8 +695,9 @@
       ],
       "data": {
         "kicker": "Connect",
-        "text": "= handing\nthe card **over**",
-        "key": "Connect = hand it over"
+        "text": "＝把會員卡**交出去**",
+        "key": "Connect ＝ 把會員卡交出去",
+        "icon": "arrow"
       },
       "lines": [
         {
@@ -705,9 +714,9 @@
         "c10"
       ],
       "data": {
-        "kicker": "Where the card stops",
-        "text": "Not one receipt:\n**all** of Gmail, Photos",
-        "key": "All of Gmail and Photos"
+        "kicker": "會員卡不像的地方",
+        "text": "不是一封信，\n是**所有**搜尋服務",
+        "key": "所有搜尋服務都能存取"
       },
       "lines": [
         {
@@ -729,29 +738,29 @@
         "c10"
       ],
       "data": {
-        "title": "“All Search services” means",
+        "title": "「所有搜尋服務」是指",
         "items": [
           {
-            "text": "Search: AI Mode, Discover",
+            "text": "搜尋：AI Mode、Discover",
             "icon": "search"
           },
           {
-            "text": "Maps: Ask Maps",
+            "text": "地圖：問問 Google 地圖",
             "icon": "globe"
           },
           {
-            "text": "Shopping, Flights, Hotels",
+            "text": "購物、航班、飯店",
             "icon": "checklist"
           },
           {
-            "text": "Translate, News",
+            "text": "翻譯、新聞",
             "icon": "book"
           }
         ],
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Search and Maps get in",
-          "Shopping to News, all in"
+          "搜尋和地圖都算",
+          "購物到新聞，門一起開"
         ]
       },
       "lines": [
@@ -776,9 +785,9 @@
         "c11"
       ],
       "data": {
-        "kicker": "So",
-        "text": "Does an advertiser\nsee my **inbox**?",
-        "key": "Do advertisers see it?"
+        "kicker": "那",
+        "text": "廣告商看得到\n我的**信**嗎？",
+        "key": "廣告商真的看得到我的信嗎？"
       },
       "lines": [
         {
@@ -790,7 +799,7 @@
     },
     {
       "id": "table",
-      "chapter": "Does an advertiser see my inbox?",
+      "chapter": "廣告商看得到我的信嗎？",
       "template": "table",
       "claims": [
         "c6",
@@ -798,30 +807,30 @@
         "c12"
       ],
       "data": {
-        "title": "After you press Connect",
+        "title": "按下 Connect 之後",
         "columns": [
-          "Search may use",
-          "Advertisers get"
+          "搜尋可能用到",
+          "廣告商拿到"
         ],
         "rows": [
           [
-            "Summaries of your mail",
-            "No inbox"
+            "信件和照片的摘要",
+            "拿不到信箱"
           ],
           [
-            "Excerpts and inferences",
-            "No Photos library"
+            "摘錄和推論",
+            "拿不到相簿"
           ],
           [
-            "The same info, for ads",
-            "No name, no email"
+            "同一份摘要，拿去選廣告",
+            "拿不到名字和信箱地址"
           ]
         ],
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Search reads summaries",
-          "Excerpts and inferences",
-          "Advertisers get no inbox"
+          "搜尋拿到的是摘要",
+          "還有摘錄和推論",
+          "廣告商連名字都拿不到"
         ]
       },
       "lines": [
@@ -851,10 +860,11 @@
         "c11"
       ],
       "data": {
-        "kicker": "Google's own words",
+        "kicker": "Google 自己的話",
         "quote": "Ads will not be based directly on your Gmail inbox or your Google Photos library.",
         "source": "support.google.com/websearch/answer/16859283",
-        "key": "Directly? No. Summaries."
+        "key": "重點在「直接」兩個字",
+        "translation": "廣告不會直接根據你的 Gmail 信箱或 Google Photos 相簿。"
       },
       "lines": [
         {
@@ -876,27 +886,27 @@
         "c23"
       ],
       "data": {
-        "title": "The same summaries also go to",
+        "title": "同一份摘要還會拿去",
         "left": {
-          "heading": "Training AI models",
+          "heading": "訓練 AI 模型",
           "icon": "lightning",
           "points": [
-            "Summaries, excerpts, inferences",
-            "Not the inbox or library itself"
+            "摘要、片段和推論",
+            "不是整個信箱或相簿"
           ]
         },
         "right": {
-          "heading": "Human review",
+          "heading": "人工審核",
           "icon": "person",
           "points": [
-            "A subset; steps such as detaching",
-            "Don't connect confidential mail"
+            "一小部分；先做保護，例如脫鉤",
+            "不想被看到的信就不要連"
           ]
         },
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Trained on summaries",
-          "Reviewers see a subset"
+          "訓練用的是摘要",
+          "一小部分給審核員看"
         ]
       },
       "lines": [
@@ -926,9 +936,10 @@
         "c23"
       ],
       "data": {
-        "kicker": "You may ask",
-        "text": "How short is\na **summary**?",
-        "key": "Short mail: all of it"
+        "kicker": "你可能會問",
+        "text": "**摘要**有多短？",
+        "key": "太短的信，摘要就是整封",
+        "icon": "file"
       },
       "lines": [
         {
@@ -945,27 +956,27 @@
         "c5"
       ],
       "data": {
-        "title": "Never used for personalized ads",
+        "title": "不管連不連都不投",
         "items": [
           {
-            "text": "Race",
+            "text": "種族",
             "icon": "person"
           },
           {
-            "text": "Religion",
+            "text": "宗教",
             "icon": "book"
           },
           {
-            "text": "Sexual orientation",
+            "text": "性傾向",
             "icon": "lock"
           },
           {
-            "text": "Health",
+            "text": "健康",
             "icon": "warning"
           }
         ],
         "source": "policies.google.com/privacy · both versions",
-        "key": "No sensitive categories"
+        "key": "敏感類別一律不投"
       },
       "lines": [
         {
@@ -987,9 +998,9 @@
         "c4"
       ],
       "data": {
-        "kicker": "The example in both versions",
-        "text": "“mountain bikes” →\n**YouTube** sports ads",
-        "key": "Bikes → ads on YouTube"
+        "kicker": "兩版都有的例子",
+        "text": "搜過**登山車** →\nYouTube 給運動廣告",
+        "key": "登山車 → YouTube 運動廣告"
       },
       "lines": [
         {
@@ -1011,11 +1022,11 @@
         "c20"
       ],
       "data": {
-        "kicker": "What ads use about you",
+        "kicker": "廣告用了你哪些資料",
         "text": "My Ad Center",
-        "sub": "myadcenter.google.com · your ad settings, in both versions",
+        "sub": "myadcenter.google.com · 廣告設定，兩版都有",
         "icon": "gear",
-        "key": "Check it in My Ad Center"
+        "key": "到 My Ad Center 看得到、關得掉"
       },
       "lines": [
         {
@@ -1027,15 +1038,16 @@
     },
     {
       "id": "am-i",
-      "chapter": "Am I connected right now?",
+      "chapter": "我現在有沒有連？",
       "template": "big",
       "claims": [
         "c13"
       ],
       "data": {
-        "kicker": "So…",
-        "text": "Am I connected\nright now?",
-        "key": "Am I connected now?"
+        "kicker": "所以…",
+        "text": "我到底有沒有連？",
+        "key": "打開帳戶看一眼就知道",
+        "icon": "search"
       },
       "lines": [
         {
@@ -1055,32 +1067,32 @@
       "data": {
         "steps": [
           {
-            "title": "Open the page",
+            "title": "打開這一頁",
             "detail": "Search Services Personalization",
             "icon": "gear"
           },
           {
-            "title": "Switch on",
+            "title": "必須是開著",
             "detail": "Personalized Recommendations",
             "icon": "search"
           },
           {
-            "title": "One level down",
+            "title": "再往下一層",
             "detail": "Connected Content Apps",
             "icon": "arrow"
           },
           {
-            "title": "Connect?",
+            "title": "Connect 了沒？",
             "detail": "Google Workspace · Google Photos",
             "icon": "lock"
           }
         ],
         "source": "support.google.com/websearch/answer/16859283",
         "keys": [
-          "Step 1: open the page",
-          "Step 2: switch it on",
-          "Step 3: Connected Apps",
-          "Step 4: Connect or not"
+          "第一步：打開設定頁",
+          "第二步：開關要開著",
+          "第三步：Connected Apps",
+          "第四步：還寫 Connect＝沒連"
         ]
       },
       "lines": [
@@ -1127,8 +1139,8 @@
         "c13"
       ],
       "data": {
-        "title": "Google Search Help",
-        "caption": "support.google.com/websearch/answer/16859283 · On your computer · captured 2026-10-24",
+        "title": "Google 搜尋說明中心",
+        "caption": "support.google.com/websearch/answer/16859283 · 電腦版步驟 · 2026-10-24 截圖",
         "steps": [
           {
             "action": "goto",
@@ -1144,7 +1156,7 @@
             "zoom": 1.3
           }
         ],
-        "key": "Four steps, as written"
+        "key": "四個步驟，照說明頁"
       },
       "lines": [
         {
@@ -1161,9 +1173,10 @@
         "c15"
       ],
       "data": {
-        "kicker": "Disconnect keeps",
-        "text": "Search Services\n**History**",
-        "key": "Disconnect keeps History"
+        "kicker": "斷開之後，Search Services History",
+        "text": "紀錄**不會**跟著刪",
+        "key": "斷開之後紀錄不會跟著刪",
+        "icon": "clock"
       },
       "lines": [
         {
@@ -1185,10 +1198,10 @@
         "c15"
       ],
       "data": {
-        "kicker": "Those records",
-        "text": "Delete them yourself\nat **myactivity**",
+        "kicker": "那些紀錄",
+        "text": "要清，去搜尋紀錄那一頁\n**自己刪**",
         "sub": "myactivity.google.com/search-services/settings",
-        "key": "Delete history by hand"
+        "key": "紀錄要清得自己去刪"
       },
       "lines": [
         {
@@ -1205,7 +1218,7 @@
     },
     {
       "id": "steps-off",
-      "chapter": "What do I lose if I turn it all off?",
+      "chapter": "全部關掉會失去什麼？",
       "template": "steps",
       "claims": [
         "c16"
@@ -1213,26 +1226,26 @@
       "data": {
         "steps": [
           {
-            "title": "Google Account",
+            "title": "進 Google 帳戶",
             "detail": "myaccount.google.com",
             "icon": "person"
           },
           {
-            "title": "Data & privacy",
-            "detail": "Personalization settings",
+            "title": "資料和隱私權",
+            "detail": "Data & privacy · 個人化設定",
             "icon": "lock"
           },
           {
-            "title": "Switch off",
+            "title": "關掉",
             "detail": "Personalized Recommendations",
             "icon": "gear"
           }
         ],
         "source": "support.google.com/websearch/answer/17026260",
         "keys": [
-          "Step 1: Google Account",
-          "Step 2: Data & privacy",
-          "Step 3: switch it off"
+          "第一步：進 Google 帳戶",
+          "第二步：資料和隱私權",
+          "第三步：把它關掉"
         ]
       },
       "lines": [
@@ -1262,25 +1275,25 @@
         "c24"
       ],
       "data": {
-        "title": "Off still keeps",
+        "title": "關掉之後還是會",
         "items": [
           {
-            "text": "Current location and language",
+            "text": "用你現在的位置和語言",
             "icon": "globe"
           },
           {
-            "text": "Saved places and watchlists",
+            "text": "存的地點、追蹤的股票都在",
             "icon": "checklist"
           },
           {
-            "text": "Your Search Services History",
+            "text": "搜尋紀錄不會關也不會刪",
             "icon": "clock"
           }
         ],
         "source": "support.google.com/websearch/answer/17026260",
         "keys": [
-          "Off: location still used",
-          "Off: history stays too"
+          "關掉：位置和語言照用",
+          "關掉：搜尋紀錄還在"
         ]
       },
       "lines": [
@@ -1307,25 +1320,25 @@
       ],
       "data": {
         "left": {
-          "heading": "All off",
+          "heading": "全部關掉",
           "icon": "lock",
           "points": [
-            "No Personal Intelligence in AI Mode",
-            "No personalized recommendations"
+            "AI Mode 沒有 Personal Intelligence",
+            "沒有個人化推薦"
           ]
         },
         "right": {
-          "heading": "On, nothing connected",
+          "heading": "開著，一個都不連",
           "icon": "search",
           "points": [
-            "AI Mode still learns from your searches",
-            "Gmail and Photos stay out"
+            "AI Mode 照樣從你的搜尋學",
+            "信和照片不碰"
           ]
         },
         "source": "answer/17212611 · answer/16859283",
         "keys": [
-          "Off: AI Mode forgets you",
-          "On, nothing connected"
+          "關掉：AI Mode 不記得你",
+          "開著，一個都不連"
         ]
       },
       "lines": [
@@ -1355,10 +1368,11 @@
         "c18"
       ],
       "data": {
-        "kicker": "A separate switch",
-        "text": "Search Services\n**History**",
+        "kicker": "Search Services History",
+        "text": "**另一頁**的開關",
         "sub": "myactivity.google.com/search-services/settings",
-        "key": "History is a 2nd switch"
+        "key": "History 是另一個開關",
+        "icon": "gear"
       },
       "lines": [
         {
@@ -1380,9 +1394,9 @@
         "c19"
       ],
       "data": {
-        "kicker": "Still rolling out",
-        "text": "You may still see\n**Web & App Activity**",
-        "key": "Rolling out over months"
+        "kicker": "還在分批推出",
+        "text": "你看到的可能還是\n**Web & App Activity**",
+        "key": "還在分批推出，照帳戶上的走"
       },
       "lines": [
         {
@@ -1399,15 +1413,15 @@
     },
     {
       "id": "my-call-1",
-      "chapter": "My call: keep one switch, connect nothing",
+      "chapter": "我的選法：留一個開關，一個都不連",
       "template": "big",
       "claims": [
         "c21"
       ],
       "data": {
-        "kicker": "My call",
-        "text": "Keep **Personalized**\n**Recommendations** on",
-        "key": "I keep the switch on"
+        "kicker": "我的看法",
+        "text": "留著 **Personalized**\n**Recommendations**",
+        "key": "我會留著這個開關"
       },
       "lines": [
         {
@@ -1429,9 +1443,10 @@
         "c21"
       ],
       "data": {
-        "kicker": "But",
-        "text": "Connected Apps:\n**none**",
-        "key": "Connected apps: none"
+        "kicker": "Connected Content Apps",
+        "text": "一個都**不連**",
+        "key": "Connected Apps 一個都不連",
+        "icon": "lock"
       },
       "lines": [
         {
@@ -1453,9 +1468,9 @@
         "c21"
       ],
       "data": {
-        "kicker": "Taiwan",
-        "text": "Most of us never\npressed **Connect**",
-        "key": "First: look at that page"
+        "kicker": "台灣",
+        "text": "大多數人\n還沒按過 **Connect**",
+        "key": "先去看那一頁，不用急著關"
       },
       "lines": [
         {
@@ -1473,9 +1488,9 @@
         "c11"
       ],
       "data": {
-        "kicker": "The question at the top",
-        "text": "Connect is **your** press;\nthe ads follow it",
-        "key": "You press; ads follow"
+        "kicker": "開頭那個問題",
+        "text": "Connect 是**你**按的，\n廣告跟著那一下",
+        "key": "Connect 你按的，廣告跟著"
       },
       "lines": [
         {
@@ -1492,9 +1507,9 @@
         "c21"
       ],
       "data": {
-        "kicker": "Tell me in the comments",
-        "text": "Would you connect\n**Gmail** to AI Mode?",
-        "key": "Would you press Connect?"
+        "kicker": "留言告訴我",
+        "text": "你會把 **Gmail**\n連到 AI Mode 嗎？",
+        "key": "你會按 Connect 嗎？"
       },
       "lines": [
         {
@@ -1512,12 +1527,12 @@
         "c21"
       ],
       "data": {
-        "title": "Connect is your press;\nthe ads **follow**",
+        "title": "Connect 是你按的，\n廣告**跟著**那一下",
         "lines": [
-          "Keep Personalized Recommendations · connect nothing"
+          "留著 Personalized Recommendations · 一個都不連"
         ],
-        "cta": "Subscribe: one decision you can make, every video",
-        "key": "One decision per video"
+        "cta": "訂閱頻道，每一支給你一個看完就能做的判斷",
+        "key": "每一支一個判斷"
       },
       "lines": [
         {
