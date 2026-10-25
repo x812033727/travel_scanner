@@ -60,3 +60,18 @@ node tools/video/render/repeat.mjs --file tools/video/templates/fixtures/paper/v
 - 打字：`templates/terminal/terminal.mjs` `HUMAN_KEY_MS`、`HUMAN_LINE_MS`、`terminalSeconds(scene, state)`；
   轉場格上限只對 `terminal` 放寬到 360 格（`render/browser.mjs` `maxTransitionFrames`），其他卡片仍 18。
 - `screencast` 景也畫帶子與主題（`screencast/scene.mjs`）。
+
+## 英文卡片的實測上限（2026-10-24，google-ai-search-ads-exception）
+
+`ai-news`／`ai-terms` 的卡片字改成英文（SKILL.md 規矩 14）之後，這幾個上限 `render` 的版面檢查抓不到，要自己看聯絡表：
+
+| 卡片 | 上限 | 沒守會怎樣 |
+| --- | --- | --- |
+| `big` 有 `icon` | `text` 一行、≤ 16 字元 | 190px 的英文超過約 16 字元自動折兩行，第二行壓進關鍵句帶；一行帶圖示時下伸字母也被切 |
+| `big` 沒 `icon` | 最多兩行（手動 `\n`），每行 ≤ 22 字元 | 三行時最後一行在帶子下面 |
+| `big` 的 `**` | 不能跨 `\n` | 跨行時 `**` 原樣印出來 |
+| `quote` | 三行 100px，約 85 字元 | 第四行被來源膠囊蓋住；長句只引帶事實的子句，前面加 `…` |
+| `steps`、`compare` 帶關鍵句帶 | 不寫卡片 `title` | 636px 的內容區放不下，`render` 這時才會報「text does not fit even at 60% size」 |
+| `keys`／`key` | 24 字元 | 英文約四到五個字 |
+
+三支時事片的範例：`docs/videos/google-ai-search-ads-exception/video.json`（全英文卡片、八語）。
