@@ -9,7 +9,7 @@
 - 產生器：`video.json` 由暫存目錄的 `build_v2.py`（`/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s02/build_v2.py`）寫出；
   行號照章重編，`claims.md` 與 `loops` 用的是重編後的號碼。第一版畫面相同的 66 景提示詞逐字沿用（含 `camera`，吃快取）；新景 39 張；
   `say`／`say_for` 由產生器照 `SAY` 表（濡須 → 如需、魚豢 → 魚換、四更 → 四庚）自動產生。
-- 沒有生圖、沒有配音、沒有花錢、沒有推上主機；**盲評待跑（主對話跑）**：這個環境沒有 Agent 工具，第 1 輪的 payload 已存在
+- 沒有生圖、沒有配音、沒有花錢、沒有推上主機；**盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪讀者 2 十三題全是，讀者 1 只有 no_recap 答否（cj514 換成你是編書的人那句，覺得把魏吳兩邊說法重述）；兩位同否才算沒過，第 1 輪通過、沒改稿；答案在 panel/，narrative --answers 已留紀錄）。原本的待跑說明：盲評待跑（主對話跑）**：這個環境沒有 Agent 工具，第 1 輪的 payload 已存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s02/payload-r1.json`（`narrative --json` 的輸出，`narration` 與 `questions` 原文），
   由主對話交給兩位讀者；兩位都答否的題才改稿，改完重跑 `lint`、`script`，再存下一輪 payload。`panel/` 目前是空的，等最後一輪的兩份答案。
 
