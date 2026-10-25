@@ -624,3 +624,26 @@ test("tts and check-audio run by hand while another producer holds the project s
   assert.equal(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"), timeline);
   assert.equal(existsSync(path.join(box.workdir, "review", "check.json")), false);
 });
+
+test("two transcripts that miss a line in different places clear it; a place both miss keeps it flagged", async () => {
+  const { missedInDifferentPlaces } = await import("./check.mjs");
+  const lexicon = { schema_version: 1, terms: {} };
+  const ja = { id: "pmmz", text: "PHP公式告知にこうあります。Linuxディストリと長期サポートベンダーは事前に修正を受け取り、各自、旧バージョンのパッケージに当てたと。" };
+  assert.equal(missedInDifferentPlaces(
+    "PHP公式告知にこうあります。Linuxディストリ等長期サポートベンダーは事前に修正を受け取り、各自旧バージョンのパッケージに当てたと。",
+    "PHP公式告知に甲斐ありますLinuxディストリと長期サポートベンダーは事前に修正を受け取り各自9バージョンのパッケージに当てたと",
+    ja, lexicon, "ja"), true, "Gemini missed と, Whisper missed こう and 旧: no place both missed");
+  const id = { id: "byuv", text: "Request masuk, kodemu belum jalan, serangan sudah terjadi dulu." };
+  assert.equal(missedInDifferentPlaces("Request masuk, kodemu belum jalan, serangan udah terjadi dulu.", "Request masuk, kode mu belum jalan, serangan udah terjadi dulu.", id, lexicon, "id"), false, "both heard udah: the voice said it");
+  const id2 = { id: "4649", text: "11 Agustus, peneliti Ryan Austin dengan GPT-5.6 Sol menyerahkan serangan, seperti di awal: satu request langsung masuk." };
+  assert.equal(missedInDifferentPlaces(
+    "11 Agustus, peneliti Ryan Austin dengan GPT-5.6 Sol, mengarahkan serangan seperti di awal. Satu request langsung masuk.",
+    "11 Agustus peneliti Ryan、Austin dengan GPT-5.6 Solar menyerahkan serangan seperti di awal. Satu request langsung masuk.",
+    id2, lexicon, "id"), true);
+  const es = { id: "7t2j", text: "El post hasta erró el puntaje: dijo un 10 perfecto; PHP la evaluó en 9.2." };
+  assert.equal(missedInDifferentPlaces("El juez hasta erró el puntaje. Dijo un 10 perfecto. PHP la evaluó en 9.2.", "El PUSTA hasta erró el puntaje. Dijo un 10 perfecto. PHP la evaluó en 9.2.", es, lexicon, "es"), false, "both missed post");
+  assert.equal(missedInDifferentPlaces("anything", "", es, lexicon, "es"), false, "an empty second transcript clears nothing");
+  const zh = { id: "z1", text: "修補發布前的那個晚上" };
+  assert.equal(missedInDifferentPlaces("修補發布前的那個完上", "修補發佈前的那個晚上", zh, lexicon), true);
+  assert.equal(missedInDifferentPlaces("修補發布前的這個晚上", "修補發布前的哪個晚上", zh, lexicon), false, "both missed 那");
+});

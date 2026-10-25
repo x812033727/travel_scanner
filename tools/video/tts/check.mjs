@@ -235,6 +235,55 @@ export function leakedWord(heard, line) {
   return null;
 }
 
+// The units a script and its transcripts are lined up in: words where the language spaces them
+// (LATIN_SCRIPT_LOCALES), characters elsewhere (Chinese, Japanese, Korean syllables, Thai).
+function units(text, locale) {
+  if (!LATIN_SCRIPT_LOCALES.has(locale)) return [...comparable(text, locale)];
+  const folded = locale === "vi" ? foldVietnameseTones(text) : String(text);
+  return folded.normalize("NFKC").toLowerCase().split(/[\p{P}\p{S}\p{Z}\s]+/u).filter(Boolean);
+}
+
+/** The indexes of `script`'s units that a longest common subsequence with `heard` leaves out. */
+function missedUnits(script, heard) {
+  const n = script.length;
+  const m = heard.length;
+  const table = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) table[i][j] = script[i] === heard[j] ? table[i + 1][j + 1] + 1 : Math.max(table[i + 1][j], table[i][j + 1]);
+  }
+  const missed = new Set();
+  let i = 0;
+  let j = 0;
+  while (i < n) {
+    if (j < m && script[i] === heard[j]) {
+      i += 1;
+      j += 1;
+    } else if (j < m && table[i][j + 1] >= table[i + 1][j]) j += 1;
+    else missed.add(i++);
+  }
+  return missed;
+}
+
+/**
+ * Whether two transcripts that each differ from a line miss it in different places, so neither
+ * mistake is in the recording: DUBS.md's rule that a line was said wrong only when both
+ * transcribers hear the same place wrong. Each transcript is lined up with the line as written,
+ * as spoken and in its dictionary form; the line passes when, in one of those forms, no unit of
+ * the script is missed by both. A unit both miss (the voice said "udah" for "sudah", or slurred
+ * a word both heard as something else) keeps the line flagged.
+ */
+export function missedInDifferentPlaces(first, second, line, lexicon, locale = NARRATION_LOCALE) {
+  if (typeof first !== "string" || typeof second !== "string" || !first.trim() || !second.trim()) return false;
+  const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
+  return forms.some((form) => {
+    const script = units(form, locale);
+    if (!script.length) return false;
+    const a = missedUnits(script, units(first, locale));
+    const b = missedUnits(script, units(second, locale));
+    return ![...a].some((index) => b.has(index));
+  });
+}
+
 export function matches(heard, line, lexicon, locale) {
   return matchKind(heard, line, lexicon, locale) !== null;
 }
@@ -449,7 +498,14 @@ export async function checkAudio(args, ctx, options) {
       }
     }
   }
-  const clearedBySecond = (entry) => Boolean(entry.second) && (entry.second.match_kind !== null || (typeof entry.second.noul === "number" && entry.second.noul >= threshold));
+  // A second transcript clears a line when it matches the script, when Jev passes it, or when it
+  // misses the line in other places than Gemini did (missedInDifferentPlaces): each transcriber
+  // erred somewhere, but no word was heard wrong by both.
+  const clearedBySecond = (entry, id) =>
+    Boolean(entry.second) &&
+    (entry.second.match_kind !== null ||
+      (typeof entry.second.noul === "number" && entry.second.noul >= threshold) ||
+      missedInDifferentPlaces(entry.heard, entry.second.heard, byLine.get(id), lexicon, locale));
 
   const entries = Object.entries(results);
   const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
@@ -460,10 +516,10 @@ export async function checkAudio(args, ctx, options) {
     const word = leakedWord(entry.heard, byLine.get(id));
     return word ? [[id, word]] : [];
   }));
-  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry) && !leaks.has(id));
+  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry, id) && !leaks.has(id));
   const doubtedIds = new Set(doubted.map(([id]) => id));
   const leakedOnly = entries.filter(([id]) => leaks.has(id) && !doubtedIds.has(id));
-  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry) || leaks.has(id)), ...leakedOnly]
+  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry, id) || leaks.has(id)), ...leakedOnly]
     .sort(([a], [b]) => order.get(a) - order.get(b));
   const judgedFine = entries.length - exact - alike - doubted.length - leakedOnly.length;
   const flagsFile = path.join(workdir, files.flags);
@@ -507,7 +563,11 @@ export async function checkAudio(args, ctx, options) {
     ctx.stdout.write(`  ${id}  is longer than Jev takes: it judged the first ${MAX_INTENDED_CHARACTERS} characters of the script and ${MAX_HEARD_CHARACTERS} of the transcript\n`);
   }
   for (const [id, entry] of cleared) {
-    const how = entry.second.match_kind !== null ? "matches the script" : `Jev ${entry.second.noul.toFixed(2)}`;
+    const how = entry.second.match_kind !== null
+      ? "matches the script"
+      : typeof entry.second.noul === "number" && entry.second.noul >= threshold
+        ? `Jev ${entry.second.noul.toFixed(2)}`
+        : "the two transcripts miss it in different places";
     ctx.stdout.write(`  ${id}  cleared by ${entry.second.by} (${how}); Gemini heard 「${entry.heard}」, ${entry.second.by} heard 「${entry.second.heard}」\n`);
   }
   if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
