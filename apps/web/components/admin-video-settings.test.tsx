@@ -76,7 +76,7 @@ function merged(body: Record<string, unknown>) {
 
 const backupSettings = {
   enabled: false, path: "AI/備份", lock_path: null, lock_reported_at: null, problem: null, tiers: {}, folder_names: {}, default_folder_names: {},
-  full_categories: [], updated_at: null, test: { pending_id: null, requested_at: null, status: null, message: null, tested_at: null },
+  updated_at: null, test: { pending_id: null, requested_at: null, status: null, message: null, tested_at: null },
   space: { free_bytes: null, total_bytes: null, at: null },
 };
 const backupStatus = { enabled: false, path: "AI/備份", uploaded: 0, counts: {}, all_backed_up: false, overdue_hours: 24, videos: [] };

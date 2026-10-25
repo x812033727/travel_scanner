@@ -1066,6 +1066,49 @@ async function pushLanguages(box, site) {
   return { code: await main(["review-push", "--slug", box.slug, "--gate", "languages"], run.ctx), ...run.out };
 }
 
+test("a dub the check gave up on goes along as an unchecked track with the lines it failed, only while it is the current take", async (t) => {
+  const reason = "Jev still hears l1 wrong after 2 retakes and 2 rewording rounds";
+  const { box, site } = await confirmedVideo({ chosen: { ko: { metadata: true, captions: true, dub: true } }, skippedDubs: { ko: reason }, readyDubs: { ko: "m4a" } });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const dub = JSON.parse(readFileSync(path.join(box.workdir, "dubs", "ko", "timeline.json"), "utf8"));
+  const [first] = dub.lines;
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "check-flags.ko.json"), JSON.stringify({ speech_hash: dub.speech_hash, translation_hash: dub.translation_hash, flags: [first.id] }));
+  writeFileSync(path.join(box.workdir, "review", "check.ko.json"), JSON.stringify({ lines: { [first.id]: { intended: "625×880mm", heard: "620×880mm" } } }));
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  const track = readFileSync(path.join(box.workdir, "dubs", "ko.m4a"));
+  assert.deepEqual(batch.files.find((file) => file.role === "dub_unchecked_ko"), { role: "dub_unchecked_ko", sha256: sha(track), size: track.length, content_type: "audio/mp4" });
+  assert.ok(!batch.files.some((file) => file.role === "dub_ko"), "never sent as a ready track");
+  assert.deepEqual(batch.payload.locales.ko.dub, {
+    status: "skipped", reason,
+    unchecked: { file: "ko.m4a", format: "m4a", file_role: "dub_unchecked_ko", sha256: sha(track), lines: [{ id: first.id, at_seconds: Math.round((first.start_frame / 30) * 10) / 10, intended: "625×880mm", heard: "620×880mm" }] },
+  });
+  assert.equal(batch.status, "approved", "a skipped dub, unchecked track or not, needs nothing from the owner");
+
+  // A take made for older words is not this video's track any more: it stays home.
+  writeFileSync(path.join(box.workdir, "dubs", "ko", "timeline.json"), JSON.stringify({ ...dub, translation_hash: "0".repeat(16) }));
+  appendFileSync(path.join(box.workdir, "dubs", "ko", "skipped.json"), " ");
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const again = site.newest("languages");
+  assert.ok(!again.files.some((file) => file.role === "dub_unchecked_ko"));
+  assert.deepEqual(again.payload.locales.ko.dub, { status: "skipped", reason });
+});
+
+test("a language batch carries each chosen language's own thumbnail from the package, never an unchosen one's", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const thumbnails = path.join(box.workdir, "upload", "thumbnails");
+  mkdirSync(thumbnails, { recursive: true });
+  for (const locale of ["en", "ko", "th"]) writeFileSync(path.join(thumbnails, `${locale}.jpg`), `jpeg ${locale}`);
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "thumbnail_en", "captions_ja", "description_ko", "captions_ko", "thumbnail_ko", "metadata", "languages_manifest"]);
+  assert.deepEqual(batch.files.find((file) => file.role === "thumbnail_en"), { role: "thumbnail_en", sha256: sha(Buffer.from("jpeg en")), size: 7, content_type: "image/jpeg" });
+  assert.deepEqual(Object.keys(batch.payload.locales.en), ["metadata", "captions"], "a thumbnail is not a part the owner chooses");
+  assert.ok(JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"))).files.some((file) => file.role === "thumbnail_ko"), "the manifest the approval binds to names it");
+});
+
 test("a language batch names the upload confirmation, final cut and choice it belongs to, and review-pull records it by that manifest", async (t) => {
   const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
   t.after(() => rmSync(box.base, { recursive: true, force: true }));

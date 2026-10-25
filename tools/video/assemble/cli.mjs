@@ -180,10 +180,10 @@ async function measureSfxSet(values, ctx, { locateFfmpeg, runTool }) {
  * format: the music and the sound effects it names. Returns { problem } with what to run first
  * when something is missing, else the inputs (null when the video needs nothing extra).
  */
-async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
+async function mediaInputs(doc, workdir, workBase, manifest, speech, visual, requiredSeconds) {
   const drama = isDrama(doc);
   const pictures = illustrated(doc);
-  const sound = await musicInputs(doc, workdir, workBase);
+  const sound = await musicInputs(doc, workdir, workBase, { requiredSeconds });
   if (sound.problem) return sound;
   const effects = await sfxInputs(doc, workBase);
   if (effects.problem) return effects;
@@ -284,7 +284,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   const mark = resolveWatermark(manifest.watermark);
   const drama = isDrama(doc);
   const pictures = illustrated(doc);
-  const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual);
+  const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual, timeline.total_frames / FPS);
   if (inputs?.problem) {
     ctx.stderr.write(`${inputs.problem}\n`);
     return EXIT.usage;
@@ -316,7 +316,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     // under their camera moves, single-state cards drifting, dissolves between pictures and a
     // hard cut into every chapter card.
     layout = drama
-      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes)
+      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: project.series?.visual_tier ?? null })
       : pictures
         ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true })
         : layoutScenes(timeline, manifest);

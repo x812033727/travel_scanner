@@ -13,7 +13,7 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import AwareDatetime
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -24,6 +24,7 @@ from app.infra import get_redis
 from app.models import User
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
+from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
 from app.video_reviews import dub_retry
 from app.video_reviews.schemas import (
@@ -295,6 +296,29 @@ async def download_final(slug: str, user: ContentManager, session: Session) -> F
         media_type="video/mp4",
         filename=f"{slug}.mp4",
         headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
+    )
+
+
+@admin_router.get("/{slug}/package.zip")
+async def package_zip(
+    slug: str,
+    file: Annotated[list[str], Query()],
+    user: ContentManager,
+    session: Session,
+) -> StreamingResponse:
+    """A manual upload package as one stored zip, each entry named by the page
+    (``file=<sha256>:<name>``), streamed straight from the review store."""
+    _ = user
+    entries = package_zip_module.parse_entries(file)
+    files = await service.package_files_for_admin(session, await _store(session), slug, entries)
+    return StreamingResponse(
+        package_zip_module.stream_zip(files),
+        media_type="application/zip",
+        headers={
+            "Content-Disposition": f'attachment; filename="{slug}-upload.zip"',
+            "Cache-Control": "private, no-store",
+            "X-Content-Type-Options": "nosniff",
+        },
     )
 
 

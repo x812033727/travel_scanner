@@ -371,6 +371,34 @@ describe("AdminVideoReviews", () => {
     for (const premise of ["女媧補天", "后羿射日"]) expect(queue.textContent).not.toContain(premise);
   });
 
+  it("offers a dub the check gave up on as an unchecked download, with the lines it failed", async () => {
+    const languages = {
+      id: "57575757-5757-4575-8575-575757575757", gate: "languages", content_sha256: "5".repeat(64), summary: "語言：ko 標題說明、CC、配音跳過",
+      payload: { locales: { ko: { metadata: "ready", captions: "ready", dub: {
+        status: "skipped", reason: "Jev still hears 6h4n wrong after 2 retakes and 2 rewording rounds",
+        unchecked: { file: "ko.m4a", format: "m4a", file_role: "dub_unchecked_ko", sha256: "4".repeat(64), lines: [{ id: "6h4n", at_seconds: 333.6, intended: "625×880mm", heard: "620×880mm" }, { id: "x9", at_seconds: null, intended: null, heard: null }] },
+      } } } },
+      files: [{ role: "dub_unchecked_ko", sha256: "4".repeat(64), size: 10, content_type: "audio/mp4" }],
+      status: "approved", choice: null, note: null, decided_at: "2026-10-24T01:51:00Z", created_at: "2026-10-24T01:51:00Z",
+    };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({ ...summary, ready_to_upload: false, locales_decided_at: "2026-10-18T08:47:00Z", locales: { ko: { metadata: true, captions: true, dub: true } }, reviews: [languages] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "語言" });
+    const link = within(card).getByRole("link", { name: "下載 ko.m4a（沒過自動檢查）" });
+    expect(link.getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"4".repeat(64)}`);
+    expect(link.getAttribute("download")).toBe("ko.m4a");
+    expect(card.textContent).toContain("自動檢查判錯的句子，聽過再決定要不要上傳：");
+    expect(card.textContent).toContain("5:33.6 應該是「625×880mm」，聽到「620×880mm」");
+    expect(card.textContent).toContain("— 應該是「x9」，聽到「—」");
+    // Nothing to upload as a passed track, so no Studio steps for it.
+    expect(within(card).queryByText("配音要在 Studio 上傳")).toBeNull();
+  });
+
   it("shows a languages batch with each part's state and file and the Studio steps, and approves it as uploaded", async () => {
     // The payload and files are what the worker sends (docs/videos/LANGUAGES.md): a state per part
     // per language, the worker's reason when it gave one up, and a file per finished part.
@@ -668,6 +696,22 @@ describe("AdminVideoReviews", () => {
     const reader = await screen.findByRole("region", { name: "這支影片的語言" });
     expect(within(reader).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
     expect(within(reader).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", true);
+  });
+
+  it("shows a drama Short its language panel with dubs open, and a narrated Short none", async () => {
+    const approvedFinal = { ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" };
+    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, pending: 0, reviews: [approvedFinal], ...fields })));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    vi.stubGlobal("fetch", detail({ format: "drama", shorts_line: "drama", shorts_series: "zhong-tian-qu-qi", dub_allowed: true }));
+    const drama = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(panel).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", false);
+    drama.unmount();
+
+    vi.stubGlobal("fetch", detail({ format: "shorts", shorts_line: "lab", shorts_series: "daily", dub_allowed: false }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { level: 2 });
+    expect(screen.queryByRole("region", { name: "這支影片的語言" })).toBeNull();
   });
 
   it("waits for the final cut before offering languages, greys out a drama's dub unless the narrator tells it alone, and lets a reader only look", async () => {

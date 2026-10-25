@@ -16,7 +16,7 @@ import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy }
 import { craftGateProblems } from "../core/craft.mjs";
 import { isExplainerPreset, shotLooksProblem } from "../core/drama.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
-import { eachLine } from "../core/schema.mjs";
+import { eachLine, VOICE_PROVIDERS } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { explainerProfile, explainerVariants } from "./explainer-series.mjs";
@@ -379,13 +379,79 @@ export function lookFor(character, episode) {
 }
 
 /**
+ * Gemini's prebuilt voices a character is cast from when the setting book names none for it and
+ * the drama tab's pool has nothing left (docs/videos/SERIES.md, 人物表). The planner casts the
+ * leads; a sticker drama's one-scene guard or shopkeeper filed with only a `voice_note` would
+ * otherwise stop lint, which wants a voice on every character and which the writer cannot fix by
+ * inventing one (系統說我是 BUG episode 5, 2026-10-25). The hints are Google's descriptions of the
+ * voices in the words `registerOf` reads; the channel narrator (Sulafat) is not among them.
+ */
+export const SPARE_VOICES = Object.freeze([
+  { provider: "gemini", name: "Charon", hint: "男聲，低沉穩重" },
+  { provider: "gemini", name: "Algenib", hint: "男聲，粗啞" },
+  { provider: "gemini", name: "Orus", hint: "男聲，硬朗" },
+  { provider: "gemini", name: "Iapetus", hint: "男聲，清楚" },
+  { provider: "gemini", name: "Puck", hint: "男聲，輕快" },
+  { provider: "gemini", name: "Umbriel", hint: "男聲，隨和" },
+  { provider: "gemini", name: "Kore", hint: "女聲，堅定" },
+  { provider: "gemini", name: "Despina", hint: "女聲，柔和" },
+  { provider: "gemini", name: "Gacrux", hint: "女聲，成熟" },
+  { provider: "gemini", name: "Leda", hint: "女聲，年輕" },
+  { provider: "gemini", name: "Erinome", hint: "女聲，清楚" },
+  { provider: "gemini", name: "Laomedeia", hint: "女聲，輕快" },
+].map((voice) => Object.freeze(voice)));
+// The words of a character's name, role and voice note (or a voice's hint) that ask for a
+// woman's or a man's voice; a text with both, or neither, asks for none in particular.
+const FEMALE_REGISTER = /女|婆|姐|妹|娘|母|妻|嬸|姑|媽|奶|嫂|姨|丫頭|清脆|嬌/;
+const MALE_REGISTER = /男|爺|叔|漢|哥|弟|翁|爹|父|兄|伯|郎|先生|老頭|少年|小子|低沉|渾厚|粗啞|沙啞/;
+const registerOf = (text) => {
+  const female = FEMALE_REGISTER.test(text);
+  const male = MALE_REGISTER.test(text);
+  return female === male ? null : female ? "f" : "m";
+};
+const usableVoice = (voice) => isObject(voice) && VOICE_PROVIDERS.includes(voice.provider) && isText(voice.name);
+const voiceKey = (voice) => `${voice.provider}:${voice.name}`;
+
+/**
+ * The cast with a voice on every character. One the setting book names stays as written; one it
+ * leaves without (a `voice_note` alone) is cast here, in id order, from the drama tab's
+ * `character_voice_pool` and then SPARE_VOICES: never a voice the book's other characters or the
+ * narrator have, and a voice whose hint matches the register the character's words ask for when
+ * one is free. The pick depends on the book and the settings alone, so every episode casts the
+ * same minor character the same way; a Gemini pick reads the book's voice note as its style. It
+ * reaches series.json and video.json, never the book, and `lookHash` reads no voice, so the
+ * character sheets stand. `notes` maps a character id to the words its register is read from.
+ */
+export function castVoices(cast, { voices = [], narrator = null, notes = new Map() } = {}) {
+  const taken = new Set(cast.filter((character) => usableVoice(character?.voice)).map((character) => voiceKey(character.voice)));
+  if (usableVoice(narrator)) taken.add(voiceKey(narrator));
+  const candidates = [...(Array.isArray(voices) ? voices.filter(usableVoice) : []), ...SPARE_VOICES];
+  const fits = (voice) => registerOf(`${voice.hint ?? ""} ${voice.style ?? ""}`);
+  return cast.map((character) => {
+    if (!isObject(character) || usableVoice(character.voice)) return character;
+    const note = notes.get(character.id) ?? "";
+    const wanted = registerOf(`${character.name ?? ""} ${note}`);
+    const free = candidates.filter((voice) => !taken.has(voiceKey(voice)));
+    const pick = (wanted && free.find((voice) => fits(voice) === wanted)) || free.find((voice) => fits(voice) === null) || free[0] || candidates[0];
+    taken.add(voiceKey(pick));
+    const voice = { provider: pick.provider, name: pick.name };
+    const style = pick.provider === "gemini" ? (isText(note) ? note : pick.style) : null;
+    if (isText(style)) voice.style = style.slice(0, 400);
+    return { ...character, voice };
+  });
+}
+
+/**
  * The cast as video.json wants it, from the setting book, by id. Given the episode, a character
  * with a look covering it takes the look's appearance, sheet prompt and voice style; everything
  * downstream (the sheet and shot prompts, the series' sheet store, the narration) reads these.
+ * A character the book gives no voice is cast by `castVoices` from the options' pool (the drama
+ * tab's `character_voice_pool`) and narrator.
  */
-export function castFrom(setting, episode = null) {
+export function castFrom(setting, episode = null, options = {}) {
   const characters = Array.isArray(setting?.characters) ? setting.characters : [];
-  return characters
+  const notes = new Map();
+  const cast = characters
     .filter((character) => isObject(character) && isText(character.id))
     .map((character) => {
       const look = lookFor(character, episode);
@@ -394,12 +460,15 @@ export function castFrom(setting, episode = null) {
       if (isObject(character.voice) && isText(character.voice.provider) && isText(character.voice.name)) {
         const style = isText(look?.voice_style) && character.voice.provider === "gemini" ? look.voice_style : character.voice.style;
         entry.voice = { provider: character.voice.provider, name: character.voice.name, ...(isText(style) ? { style: style.slice(0, 400) } : {}) };
+      } else {
+        notes.set(character.id, [character.role, character.voice_note].filter(isText).join("，"));
       }
       const sheetPrompt = isText(look?.sheet_prompt) ? look.sheet_prompt : character.sheet_prompt;
       if (isText(sheetPrompt)) entry.sheet_prompt = sheetPrompt.slice(0, 600);
       return entry;
     })
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  return castVoices(cast, { ...options, notes });
 }
 
 /**

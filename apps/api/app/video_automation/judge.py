@@ -20,10 +20,12 @@ series (``policy_questions_for``). A Short cut from a long video (docs/videos/SH
 "cut") is a highlight too short to hold a demonstration, so it is asked the tutorial's questions
 without that one. The demonstration is a tutorial's rule: a video the site's own row files as an
 explainer or a story (``VideoProject.category``) tells something rather than shows a step to
-follow, so it is asked the same three and its note says the demonstration does not apply. Every
-other video is asked all four as before: one the site does not know or has not categorised, and
-a drama's too, whose questions are the owner's to decide (ticket
-2026-09-28-video-drama-policy-questions).
+follow, so it is asked the same three and its note says the demonstration does not apply. So is
+a drama (``VideoProject.format`` "drama": a one-off, a series episode or a binge compilation,
+docs/videos/DRAMA.md, SERIES.md, BINGE.md), whatever its category: a story has no step to follow,
+and a hands-off series' finals approve themselves only when the policy item passes (ticket
+2026-10-24-policy-qa-asks-a-drama-for). Every other video is asked all four as before: one the
+site does not know or has not categorised included.
 
 Payload contracts the worker writes (tools/video, ticket video-hands-off-worker):
 
@@ -291,11 +293,14 @@ class JudgePolicyIn(StrictModel):
 # Which questions a narration was asked: the tutorial's four, the story's five
 # (docs/videos/STORY.md), a cut Short's three: the tutorial's without the demonstration
 # (docs/videos/SHORTS.md §自動品管), or an explainer's: the same three, for a video whose category
-# says it demonstrates nothing (docs/videos/HANDS-OFF.md §自動品管).
+# or format says it demonstrates nothing (docs/videos/HANDS-OFF.md §自動品管).
 PolicyQuestions = Literal["tutorial", "story", "cut", "explainer"]
 # The categories (app.models.VIDEO_CATEGORIES) that are not asked for a demonstration; every
-# other category, and a video without one, is, whatever its format.
+# other category, and a video without one, is, unless its format is one of NO_DEMO_FORMATS.
 NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})
+# The formats (video_projects.format) that are not asked for a demonstration whatever their
+# category: a drama is a story told, not a step shown. Slides and Shorts go by category and line.
+NO_DEMO_FORMATS = frozenset({"drama"})
 
 
 class PolicyVerdict(BaseModel):
@@ -674,24 +679,27 @@ async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
 async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuestions:
     """The story's questions for an episode of a brand-story series (docs/videos/STORY.md
     §伺服器), a cut Short's for a Short on the "cut" line, an explainer's for a video whose own
-    row says it demonstrates nothing (category ``explainer`` or ``story``), and the tutorial's
-    for every other video: one the site has no row for or has not categorised, a drama's
-    included, is still asked for a demonstration."""
+    row says it demonstrates nothing (category ``explainer`` or ``story``, or format ``drama``:
+    a one-off, a series episode or a compilation, whatever its category), and the tutorial's
+    for every other video: one the site has no row for or has not categorised is still asked
+    for a demonstration."""
     if await video_series_kind(session, slug) == "story":
         return "story"
     row = (
         await session.execute(
-            select(VideoProject.shorts_line, VideoProject.category).where(
+            select(VideoProject.shorts_line, VideoProject.category, VideoProject.format).where(
                 VideoProject.slug == slug
             )
         )
     ).first()
     if row is None:
         return "tutorial"
-    line, category = row
+    line, category, video_format = row
     if line == "cut":
         return "cut"
-    return "explainer" if category in NO_DEMO_CATEGORIES else "tutorial"
+    if video_format in NO_DEMO_FORMATS or category in NO_DEMO_CATEGORIES:
+        return "explainer"
+    return "tutorial"
 
 
 def demo_asked_of(category: str | None) -> bool:
@@ -722,8 +730,9 @@ async def judge_policy(
     """Whether a narration keeps to the stance and sells or advises nothing, asked in one Jev
     call with the questions of the video's own kind (``policy_questions_for``): a tutorial's
     also asks for something shown, a brand story's for an observation left and nobody run
-    down, and a video filed as an explainer or a story is not asked for a demonstration. The server
-    looks the video up by ``slug``; the request cannot choose the set."""
+    down, and a video filed as an explainer or a story, or made as a drama, is not asked for a
+    demonstration. The server looks the video up by ``slug``; the request cannot choose the
+    set."""
     state = policy_state(stance, viewpoint, script)
     kind = await policy_questions_for(session, slug)
     questions = (

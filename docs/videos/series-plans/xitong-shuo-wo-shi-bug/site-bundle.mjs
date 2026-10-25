@@ -1,12 +1,13 @@
 // 把企劃包變成站上作品要的三份文件：`node site-bundle.mjs > bundle.json`。
 //
-// 輸出 `{ series, docs }`：`series` 是「新的作品」的 SeriesIn（30 集、每篇 10 集、題材系統遊戲、
+// 輸出 `{ series, docs }`：`series` 是「新的作品」的 SeriesIn（50 集、每篇 10 集、題材系統遊戲、
 // 男主、anime-2d、3 分鐘、畫面做法 manga、先不免關卡、做合集）；`docs` 是設定集（kind setting）、
-// 總綱（outline，三篇各十集）與第 1 篇細綱（chapter 1 ＝ 第 1–10 集）的 `{ body_md, body_json }`，
+// 總綱（outline，五篇各十集）與第 1–5 篇細綱（chapter N ＝ 第 10N−9 到 10N 集）的 `{ body_md, body_json }`，
 // 形狀照 apps/api/app/video_automation/series.py 的 doc_problem 與 tools/video/automation/series.mjs
 // 的 documentProblem。站上的做法：作品建好後工人先寫出每份文件的第一版，站主在後台把那一版換成
 // 這裡的版本並核准（PUT …/docs/<kind>[/<chapter>]，帶 body_json、approve: true），三份都換完再打開
-// 免關卡與設定分頁的「自動開下一集」。票：tasks/open/2026-10-22-bug-30.md。
+// 免關卡與設定分頁的「自動開下一集」。票：tasks/open/2026-10-22-bug-30.md；2026-10-24 延長到 50 集：
+// tasks/open/2026-10-24-bug-120min.md（作品改成 50 集，再依序換設定集、總綱、第 1–5 篇）。
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,7 +23,7 @@ const outlineMd = read("outline.md");
 const seasonMd = read("season-01.md");
 
 export const SLUG = "xitong-shuo-wo-shi-bug";
-export const PLANNED = 30;
+export const PLANNED = 50;
 export const PER_CHAPTER = 10;
 
 // 工人的 castFrom 讀的是 voice: { provider, name, style }；企劃包寫的是 tts.voice "gemini:Charon"。
@@ -95,16 +96,20 @@ export function buildBundle() {
     },
   };
 
-  const chapterDocs = siteChapters.slice(0, 1).map((chapter) => {
+  // 第 1 篇照舊從季的開頭（客串、短線）切起；之後每篇從自己的第一個企劃篇章切起。
+  const chapterDocs = siteChapters.map((chapter) => {
     const first = chapter.episodes[0].number;
     const last = chapter.episodes[chapter.episodes.length - 1].number;
     const next = s1.chapters.find((pc) => pc.episodes[0] === last + 1);
     const cut = next ? seasonMd.indexOf(`## 篇章 ${next.number}`) : seasonMd.length;
     if (cut < 0) throw new Error(`season-01.md: heading of chapter ${next.number} not found`);
+    const start = chapter.number === 1 ? 0 : seasonMd.indexOf(`## 篇章 ${chapter.plan_chapters[0].number}`);
+    if (start < 0) throw new Error(`season-01.md: heading of chapter ${chapter.plan_chapters[0].number} not found`);
+    const head = chapter.number === 1 ? "" : `# 第 ${s1.number} 季《${s1.title}》逐集細綱：${chapter.title}\n\n`;
     return {
       kind: "chapter",
       chapter: chapter.number,
-      body_md: seasonMd.slice(0, cut).trimEnd() + "\n",
+      body_md: head + seasonMd.slice(start, cut).trimEnd() + "\n",
       body_json: {
         chapter: chapter.number,
         title: chapter.title,

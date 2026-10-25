@@ -303,6 +303,39 @@ async def test_pilot_text_calls_require_a_durable_subscription_job_before_any_mo
     assert stage["provider"].calls == []
 
 
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "slug", ["story-everyday-bubble-wrap-c04", "story-everyday-kikkoman-c08"]
+)
+async def test_everyday_stage_stops_before_queue_or_queued_job_dispatch(
+    stage: dict[str, Any], monkeypatch: pytest.MonkeyPatch, slug: str
+) -> None:
+    subscription = AsyncMock()
+    monkeypatch.setattr(ai, "run_on_subscription", subscription)
+    session = _session()
+    row = VideoAutomationSettings(
+        stage_models={"writer": {"provider": "claude_code", "model": "claude-opus-5-5"}},
+        enabled=True,
+    )
+    request = _request("writer", slug)
+    with pytest.raises(ai.StageFailed) as new_job:
+        await ai.prepare_stage(session, AGENT, row, request)
+    assert new_job.value.code == "video_budget_preproduction_hold"
+
+    # The same check must hold a job that was already queued by the old API.
+    job = VideoStageJob(
+        id=uuid4(), status="running", provider="claude_code", model="claude-opus-5-5"
+    )
+    with pytest.raises(ai.StageFailed) as old_job:
+        await ai.run_stage(session, AGENT, row, request, None, job=job)
+    assert old_job.value.code == "video_budget_preproduction_hold"
+    assert job.dispatched_at is None
+    session.scalar.assert_not_called()
+    session.commit.assert_not_called()
+    subscription.assert_not_called()
+    assert stage["provider"].calls == []
+
+
 @pytest.mark.parametrize(
     ("error", "status", "code", "retry"),
     [

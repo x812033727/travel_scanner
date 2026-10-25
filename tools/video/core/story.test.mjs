@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 
 import { fixture, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
-import { isStory, MEAN_SHOT_SECONDS, MIN_STORY_SOURCES, namePattern, STORY_CHAPTERS, STORY_KIND, STORY_RULES, storyProblems } from "./story.mjs";
+import { isEverydayStory, isStory, MEAN_SHOT_SECONDS, MIN_STORY_SOURCES, namePattern, storyCuteVisualProblems, STORY_CHAPTERS, STORY_KIND, STORY_RULES, storyProblems } from "./story.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: storyBrief(), series: storySeries(), others: [], translations: {}, ...overrides });
@@ -23,6 +24,28 @@ test("the story example is valid and lints clean: five chapters, three sources, 
   assert.equal(storySeries().kind, STORY_KIND);
   assert.ok(isStory(storySeries()));
   assert.ok(!isStory(null) && !isStory({ ...storySeries(), kind: undefined }), "an episode of a plain series is no story");
+});
+
+test("everyday story visual rules share Curio's exact look, 70% shots and three-card limit", () => {
+  const shot = (id) => ({ id, template: "shot" });
+  const card = (id) => ({ id, template: "stats" });
+  const frame = (id, template) => ({ id, template });
+  const look = { preset: "cute-mystery" };
+  const seven = Array.from({ length: 7 }, (_, index) => shot(`s${index}`));
+  const passing = { look, scenes: [frame("title", "title"), ...seven, card("c1"), frame("chapter", "chapter"), card("c2"), card("c3"), frame("outro", "outro")] };
+  assert.deepEqual(storyCuteVisualProblems(passing), []);
+  assert.deepEqual(storyCuteVisualProblems({ ...passing, look: { ...look, negative: "photo" } }).map((problem) => problem.path), ["look"]);
+
+  const sixtyNine = { look, scenes: [...Array.from({ length: 69 }, (_, index) => shot(`s${index}`)), ...Array.from({ length: 31 }, (_, index) => card(`c${index}`))] };
+  assert.match(storyCuteVisualProblems(sixtyNine)[0].message, /69 of 100 body scenes.*69%.*at least 70%/);
+  const fourCards = { look, scenes: [...seven, shot("s7"), shot("s8"), shot("s9"), card("a"), card("b"), frame("chapter", "chapter"), card("c"), card("d")] };
+  assert.match(storyCuteVisualProblems(fourCards)[0].message, /4 cards in a row \(a → b → c → d\)/);
+
+  const c03 = JSON.parse(readFileSync(new URL("../../../docs/videos/story-everyday-moleskine-c03/video.json", import.meta.url), "utf8"));
+  assert.deepEqual(storyCuteVisualProblems(c03), [], "the current 73/21 C03 cut passes");
+  assert.ok(isEverydayStory(c03, { kind: "story" }));
+  assert.ok(!isEverydayStory(c03, { kind: "drama" }));
+  assert.ok(!isEverydayStory({ ...c03, slug: "story-other-episode" }, { kind: "story" }));
 });
 
 test("the rule list the worker quotes to the writer covers every rule, errors first", () => {

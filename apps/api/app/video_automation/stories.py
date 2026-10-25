@@ -25,6 +25,8 @@ run is the default and writes nothing; running ``apply`` twice changes nothing t
 
 from __future__ import annotations
 
+import hashlib
+import json
 import math
 import re
 from dataclasses import dataclass, field
@@ -34,13 +36,14 @@ from urllib.parse import urlsplit
 from uuid import uuid4
 
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject
 from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaEpisode,
+    VideoDramaRequest,
     VideoDramaSeries,
 )
 from app.video_automation.schemas import SeriesIn
@@ -69,6 +72,22 @@ PREFIXES: dict[str, tuple[str, str | None]] = {
     "K": ("asia-brand", "kr"),
     "T": ("asia-brand", "tw"),
     "C": ("tech", None),
+}
+EVERYDAY_REVERSALS_SLUG = "brand-stories-everyday-reversals"
+# The X letter belongs to this one series of company turns; its stories may be any category.
+COMPANY_TURNS_SLUG = "brand-stories-company-turns"
+# Batches imported for review only: the series is created paused, every row stays planned, and
+# the file must carry the builder's independent review certification for its twenty stories,
+# whose ids are the letter here and 01 to 20.
+REVIEW_ONLY_SERIES = {EVERYDAY_REVERSALS_SLUG: "C", COMPANY_TURNS_SLUG: "X"}
+C03_VIDEO_SLUG = "story-everyday-moleskine-c03"
+C08_ORIGINAL_VIDEO_SLUG = "story-everyday-kikkoman-c08"
+C08_SHORT_VIDEO_SLUG = "story-everyday-kikkoman-c08-short-v8"
+C20_ORIGINAL_VIDEO_SLUG = "story-everyday-zippo-c20"
+C20_SHORT_VIDEO_SLUG = "story-everyday-zippo-c20-short-v8"
+APPROVED_REVIEW_ONLY_SLUG_CHANGES = {
+    "C08": (8, C08_ORIGINAL_VIDEO_SLUG, C08_SHORT_VIDEO_SLUG),
+    "C20": (20, C20_ORIGINAL_VIDEO_SLUG, C20_SHORT_VIDEO_SLUG),
 }
 LIMITS = {
     "title": 60,
@@ -124,7 +143,7 @@ CLAIM_KEYS = frozenset(("claim", "sources", *CLAIM_FLAGS))
 COLUMN_KEYS = ("number", "title", "logline", "slug")
 
 # fullmatch throughout: ``$`` would let a trailing newline through, where JavaScript's does not.
-ID = re.compile(r"[ABKTC][0-9]{2}")
+ID = re.compile(r"[ABKTCX][0-9]{2}")
 SLUG = re.compile(r"story-[a-z0-9](?:[a-z0-9-]{0,52}[a-z0-9])?")
 SERIES_SLUG = re.compile(r"[a-z0-9][a-z0-9-]{1,39}")
 GUIDE_SLUG = re.compile(r"[a-z0-9][a-z0-9-]{0,118}[a-z0-9]")
@@ -252,7 +271,7 @@ def claim_supported(claim: dict[str, Any], sources: list[Any]) -> bool:
     return len(publishers) >= 2 and len(hosts) >= 2
 
 
-def story_problems(story: Any) -> list[str]:
+def story_problems(story: Any, *, series_slug: str | None = None) -> list[str]:
     """Everything wrong with one story of the compiled file, as sentences; empty when sound.
 
     ``storyProblems`` of plan.mjs, with the compiled file's additions: a ``number`` from 1, a
@@ -263,7 +282,9 @@ def story_problems(story: Any) -> list[str]:
     problems = [f'unknown field "{key}"' for key in story if key not in FILE_KEYS]
     story_id = story.get("id")
     if not isinstance(story_id, str) or not ID.fullmatch(story_id):
-        problems.append(f'id "{story_id}" is not a letter A, B, K, T or C and two digits')
+        problems.append(f'id "{story_id}" is not a letter A, B, K, T, C or X and two digits')
+    elif story_id.startswith("X") and series_slug != COMPANY_TURNS_SLUG:
+        problems.append(f"id {story_id}: X stories belong to the {COMPANY_TURNS_SLUG} series")
     slug = story.get("slug")
     if not isinstance(slug, str) or not SLUG.fullmatch(slug):
         problems.append(
@@ -271,6 +292,8 @@ def story_problems(story: Any) -> list[str]:
             "at most 60 characters"
         )
     prefix = PREFIXES.get(str(story_id or "")[:1])
+    if series_slug == EVERYDAY_REVERSALS_SLUG and str(story_id or "").startswith("C"):
+        prefix = ("everyday", None)
     category, region = story.get("category"), story.get("region")
     if category not in CATEGORIES:
         problems.append(f"category must be one of {', '.join(CATEGORIES)}")
@@ -477,8 +500,9 @@ def series_problems(series: Any) -> list[str]:
     cute = isinstance(look, dict) and look == {"preset": "cute-mystery"}
     low, high = STORY_MINUTES
     if cute:
-        if not _is_int(minutes) or minutes != 10:
-            problems.append("series.target_minutes must be 10 for the cute-mystery look")
+        # 13 since the owner's 2026-10-25 decision; 10 for the batches planned before it.
+        if not _is_int(minutes) or minutes not in (10, 13):
+            problems.append("series.target_minutes must be 10 or 13 for the cute-mystery look")
         if series.get("image_model") != "image-01":
             problems.append('series.image_model must be "image-01" for the cute-mystery look')
         if series.get("style_preset") != "custom":
@@ -526,6 +550,87 @@ def _label(story: Any, index: int) -> str:
     return story_id if isinstance(story_id, str) and ID.fullmatch(story_id) else f"stories[{index}]"
 
 
+def _json_sha256(value: Any, *, sorted_keys: bool = False) -> str:
+    encoded = json.dumps(
+        value, ensure_ascii=False, separators=(",", ":"), sort_keys=sorted_keys,
+        allow_nan=False,
+    )
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+def _review_certification_problems(
+    document: dict[str, Any], rows: list[Any], series_slug: str
+) -> list[str]:
+    """Bind one reviewed batch (C or X) to the exact authored and compiled episode text.
+
+    This is a workflow consistency gate, not a signature of a reviewer's identity. The builder
+    produces it only after verifying the separate independent source receipts. It also keeps
+    its unreviewed ``stories.draft.json`` out of the production importer.
+    """
+    letter = REVIEW_ONLY_SERIES[series_slug]
+    batch = f"{series_slug} {letter}"
+    certificate = document.get("review_certification")
+    if (
+        not isinstance(certificate, dict)
+        or set(certificate) != {"series_slug", "status", "entries"}
+        or certificate.get("series_slug") != series_slug
+        or certificate.get("status") != "independent-verified"
+    ):
+        return [f"{batch} stories need the builder's independent review certification"]
+    entries = certificate.get("entries")
+    if not isinstance(entries, list) or len(rows) != 20 or len(entries) != 20:
+        return [f"{batch} review certification must match exactly twenty stories"]
+    problems: list[str] = []
+    for index, (story, proof) in enumerate(zip(rows, entries, strict=True), start=1):
+        label = f"{letter}{index:02d}"
+        if not isinstance(story, dict) or not isinstance(proof, dict):
+            problems.append(f"{label}: invalid review certification row")
+            continue
+        expected_keys = {
+            "id", "number", "reviewer", "reviewed", "source_story_sha256",
+            "compiled_story_sha256", "author_caveats", "review_notes",
+        }
+        if (
+            set(proof) != expected_keys or story.get("id") != label
+            or story.get("number") != index or proof.get("id") != label
+            or proof.get("number") != index
+            or not isinstance(proof.get("reviewer"), str) or not proof["reviewer"].strip()
+            or not isinstance(proof.get("reviewed"), str)
+            or re.fullmatch(r"\d{4}-\d{2}-\d{2}", proof["reviewed"]) is None
+            or not isinstance(proof.get("author_caveats"), str)
+            or not isinstance(proof.get("review_notes"), str)
+        ):
+            problems.append(f"{label}: invalid review certification identity or fields")
+            continue
+        author = proof["author_caveats"]
+        notes = proof["review_notes"]
+        combined = (
+            author if author == notes
+            else "\n\n".join(part for part in (author, notes) if part)
+        )
+        if story.get("caveats") != combined:
+            problems.append(
+                f"{label}: compiled caveats differ from reviewed author and reviewer notes"
+            )
+        try:
+            source = {key: story[key] for key in STORY_KEYS if key in story}
+            source["must_verify"] = [
+                {key: value for key, value in claim.items() if key != "reviewer_only"}
+                for claim in source["must_verify"]
+            ]
+            source["caveats"] = author
+            source_digest = _json_sha256(source)
+            compiled_digest = _json_sha256(story, sorted_keys=True)
+        except (AttributeError, KeyError, TypeError, ValueError, OverflowError):
+            problems.append(f"{label}: review certification source is malformed")
+            continue
+        if proof.get("source_story_sha256") != source_digest:
+            problems.append(f"{label}: reviewed source hash differs from the compiled story")
+        if proof.get("compiled_story_sha256") != compiled_digest:
+            problems.append(f"{label}: compiled story changed after independent review")
+    return problems
+
+
 def check_story_file(document: Any, series_slug: str) -> FileCheck:
     """Everything wrong with a compiled stories.json for the series named ``series_slug``.
 
@@ -540,6 +645,7 @@ def check_story_file(document: Any, series_slug: str) -> FileCheck:
         f"{key} (top level)"
         for key in document
         if key not in ("schema_version", "series", "stories")
+        and not (series_slug in REVIEW_ONLY_SERIES and key == "review_certification")
     ]
     version = document.get("schema_version")
     if not _is_int(version) or version != SCHEMA_VERSION:
@@ -553,9 +659,14 @@ def check_story_file(document: Any, series_slug: str) -> FileCheck:
     stories: list[Any] = raw if isinstance(raw, list) else []
     if not stories:
         problems.append("stories must list at least one story")
+    if series_slug in REVIEW_ONLY_SERIES:
+        problems.extend(_review_certification_problems(document, stories, series_slug))
+        if series_object.get("planned_episodes") != 20:
+            letter = REVIEW_ONLY_SERIES[series_slug]
+            problems.append(f"{series_slug} {letter} series.planned_episodes must be 20")
     refused: list[str] = []
     for index, story in enumerate(stories):
-        own = story_problems(story)
+        own = story_problems(story, series_slug=series_slug)
         if own:
             label = _label(story, index)
             refused.append(label)
@@ -691,7 +802,11 @@ def _row_label(row: VideoDramaEpisode) -> str:
 
 
 def plan_rows(
-    stories: list[dict[str, Any]], rows: list[VideoDramaEpisode], *, in_file: set[str]
+    stories: list[dict[str, Any]],
+    rows: list[VideoDramaEpisode],
+    *,
+    in_file: set[str],
+    review_only: bool = False,
 ) -> tuple[list[RowPlan], list[str], list[str]]:
     """What happens to every story imported now, with the problems and notes it raises.
 
@@ -718,6 +833,11 @@ def plan_rows(
     plans: list[RowPlan] = []
     for story in stories:
         values = episode_values(story)
+        # This batch is being imported for owner review. Pausing the series prevents current
+        # dispatch; keeping every row planned also prevents an accidental later unpause from
+        # starting paid work before each episode's own production gates have passed.
+        if review_only:
+            values["status"] = "planned"
         found = by_id.get(story["id"])
         if found is None:
             plans.append(RowPlan(story["id"], "create", values))
@@ -808,16 +928,26 @@ def series_differences(row: VideoDramaSeries, series: dict[str, Any]) -> dict[st
 
 
 async def _slug_conflicts(
-    session: AsyncSession, series: VideoDramaSeries | None, plans: list[RowPlan]
+    session: AsyncSession,
+    series: VideoDramaSeries | None,
+    plans: list[RowPlan],
+    *,
+    linked_video_slugs: frozenset[str] = frozenset(),
 ) -> list[str]:
     """A slug the import would give a row that another series' episode or a video already has.
 
-    Only new slugs are asked about: a created row's, and an updated row's when it changes.
+    New and changed slugs are checked. The linked C03 slug is checked on every import, so a
+    later change to its existing video card cannot silently make the episode runnable.
     """
     wanted = {
         plan.values["slug"]: plan.story_id
         for plan in plans
         if plan.action == "create"
+        or (
+            series is not None
+            and series.slug == EVERYDAY_REVERSALS_SLUG
+            and plan.story_id == "C03"
+        )
         or (
             plan.action == "update"
             and plan.row is not None
@@ -834,7 +964,8 @@ async def _slug_conflicts(
         problems.append(f"{wanted[str(slug)]}: slug {slug} is already an episode of another series")
     videos = select(VideoProject.slug).where(VideoProject.slug.in_(list(wanted)))
     for slug in (await session.scalars(videos)).all():
-        problems.append(f"{wanted[str(slug)]}: slug {slug} is already a video on /admin/videos")
+        if slug not in linked_video_slugs:
+            problems.append(f"{wanted[str(slug)]}: slug {slug} is already a video on /admin/videos")
     return problems
 
 
@@ -850,7 +981,8 @@ async def import_story_rows(
     """Check a compiled stories.json and import its stories into the story series named.
 
     Nothing is written unless ``apply`` and no problem was found. When the series does not
-    exist, ``apply`` creates it from the file's series object (kind ``story``, active); an
+    exist, ``apply`` creates it from the file's series object (kind ``story``, active), except
+    that a review-only series (REVIEW_ONLY_SERIES) is created paused. An
     existing series row is never changed (the owner may have edited it), and the fields that
     differ are reported. ``limit`` imports only the first stories in production order; a later
     run without it adds the rest.
@@ -858,6 +990,7 @@ async def import_story_rows(
     command), the stories created, updated and left alone, and the ``limit`` it ran with.
     """
     report = StoryImportReport(series=series_slug, apply=apply)
+    review_only = series_slug in REVIEW_ONLY_SERIES
     check = check_story_file(document, series_slug)
     report.stories = len(check.stories)
     report.problems.extend(check.problems)
@@ -895,6 +1028,18 @@ async def import_story_rows(
             )
             return report
         report.series_differs = series_differences(series, check.series)
+        if review_only:
+            required = {
+                "target_minutes", "planned_episodes", "image_model", "look",
+                "style_preset", "hands_off", "visual_tier", "compilation",
+            }
+            mismatched = sorted(required.intersection(report.series_differs))
+            if mismatched:
+                report.problems.append(
+                    "review-only series production settings differ from certified plan: "
+                    + ", ".join(mismatched)
+                )
+                return report
         rows = list(
             (
                 await session.scalars(
@@ -904,6 +1049,50 @@ async def import_story_rows(
                 )
             ).all()
         )
+    if review_only and series is not None and series.status != "paused":
+        report.problems.append(f"{series_slug} must have status paused before import")
+        return report
+    if review_only and series is not None:
+        expected_rows = {story["id"]: story for story in check.stories}
+        for row in rows:
+            if row.status != "planned" or row.request_id is not None or row.started_at is not None:
+                report.problems.append(
+                    f"existing review-only episode #{row.number} has advanced beyond planned"
+                )
+            story_id = row.beats.get("id") if isinstance(row.beats, dict) else None
+            expected = expected_rows.get(story_id) if isinstance(story_id, str) else None
+            approved_change = (
+                APPROVED_REVIEW_ONLY_SLUG_CHANGES.get(story_id)
+                if isinstance(story_id, str) else None
+            )
+            approved_slug_change = (
+                series_slug == EVERYDAY_REVERSALS_SLUG
+                and approved_change is not None
+                and expected is not None
+                and row.number == expected["number"] == approved_change[0]
+                and row.slug == approved_change[1]
+                and expected["slug"] == approved_change[2]
+            )
+            if (
+                expected is None or row.number != expected["number"]
+                or (row.slug != expected["slug"] and not approved_slug_change)
+                or row.chapter_number != 1
+            ):
+                report.problems.append(
+                    f"existing review-only episode #{row.number} does not match the certified batch"
+                )
+        existing_requests = list((await session.scalars(
+            select(VideoDramaRequest).where(or_(
+                VideoDramaRequest.series_id == series.id,
+                VideoDramaRequest.slug.in_([story["slug"] for story in check.stories]),
+            ))
+        )).all())
+        for request in existing_requests:
+            report.problems.append(
+                f"{series_slug} has drama request {request.slug}; review-only import refused"
+            )
+        if report.problems:
+            return report
     planned = check.series.get("planned_episodes")
     if _is_int(planned) and planned != report.stories:
         report.notes.append(
@@ -917,12 +1106,47 @@ async def import_story_rows(
             "the drama route is switched off in the settings: no story starts until it is on"
         )
 
+    linked_video_slugs: frozenset[str] = frozenset()
+    c03 = next((story for story in selected if story["id"] == "C03"), None)
+    if series_slug == EVERYDAY_REVERSALS_SLUG and c03 is not None:
+        if c03["number"] != 3 or c03["slug"] != C03_VIDEO_SLUG:
+            report.problems.append(
+                f"C03: this series keeps number 3 and slug {C03_VIDEO_SLUG}"
+            )
+        else:
+            project_query = select(VideoProject).where(VideoProject.slug == C03_VIDEO_SLUG)
+            if apply:
+                project_query = project_query.with_for_update()
+            project = await session.scalar(project_query)
+            existing_request = await session.scalar(
+                select(VideoDramaRequest.id).where(VideoDramaRequest.slug == C03_VIDEO_SLUG)
+            )
+            if existing_request is not None:
+                report.problems.append(
+                    f"C03: slug {C03_VIDEO_SLUG} is already a drama request"
+                )
+            if project is not None and (
+                project.series_slug == series_slug
+                and project.episode_number == 3
+                and project.format == "drama"
+                and project.shorts_line is None
+                and project.dropped_at is None
+                and existing_request is None
+            ):
+                linked_video_slugs = frozenset((C03_VIDEO_SLUG,))
     plans, problems, notes = plan_rows(
-        selected, rows, in_file={story["id"] for story in check.stories}
+        selected,
+        rows,
+        in_file={story["id"] for story in check.stories},
+        review_only=review_only,
     )
     report.problems.extend(problems)
     report.notes.extend(notes)
-    report.problems.extend(await _slug_conflicts(session, series, plans))
+    report.problems.extend(
+        await _slug_conflicts(
+            session, series, plans, linked_video_slugs=linked_video_slugs
+        )
+    )
     for plan in plans:
         getattr(report, plan.action).append(plan.story_id)
         if plan.action == "update" and plan.row is not None:
@@ -940,6 +1164,10 @@ async def import_story_rows(
         if new_series is None:  # its problems were reported above
             return report
         series = await add_series(session, actor, new_series)
+        if review_only:
+            # add_series normally activates a story series. Keep this review-only
+            # batch paused in the same transaction that creates its episode rows.
+            series.status = "paused"
         await session.flush()
     updates = [
         (plan, plan.row) for plan in plans if plan.action == "update" and plan.row is not None

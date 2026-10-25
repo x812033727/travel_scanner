@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
+import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, episodeOfCompilation, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
 
 const preset = (n = "a") => ({ schema_version: 1, id: `mokaair-${n}`, intro: { file: "intro.mp4", sha256: n.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } });
 const doc = { format: "slides", youtube: { video_id: null } };
@@ -282,4 +282,68 @@ test("the intro after chapter 1 moves only what follows it: lines, scenes, windo
   assert.deepEqual(shiftBrandingCues(shown, applied, -1), cues);
   assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 1000, end_frame: 1201 }, { id: "b", start_frame: 1000, end_frame: 1200 }], 1200), ["a"]);
   assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 0, end_frame: 5 }], 0), []);
+});
+
+test("a cue rounded to a fractional-frame intro boundary moves forward and back", () => {
+  // Frame 1357 is 45,233.333 ms. Caption generation has already rounded the chapter-2 cue to
+  // 45,233 ms, so comparing it against the unrounded frame time would leave it over the intro.
+  const cues = [
+    { start_ms: 45000, end_ms: 45232, text: "第一章" },
+    { start_ms: 45233, end_ms: 49283, text: "第二章" },
+  ];
+  for (const [introFrames, secondStart] of [[150, 50233], [151, 50266]]) {
+    const applied = { intro_frames: introFrames, intro_at_frame: 1357 };
+    const shown = shiftBrandingCues(cues, applied);
+    assert.deepEqual(shown.map((cue) => cue.start_ms), [45000, secondStart]);
+    assert.deepEqual(shiftBrandingCues(shown, applied, -1), cues);
+  }
+});
+
+const binge = { slug: "bug", kind: "series", compilation: true, hands_off: true, visual_tier: "manga" };
+const bingeEpisode = { format: "drama", look: { preset: "manga" }, characters: [{ id: "hero" }], series: { slug: "bug", episode: 5 } };
+const bingeCompilation = { format: "drama", compilation: { series: "bug", episodes: ["bug-e001", "bug-e002"] } };
+
+test("an episode of a compilation series carries no channel bookends; the compilation wraps all of them once", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  assert.equal(episodeOfCompilation(bingeEpisode, binge), true);
+  assert.equal(await selectBrandingForBuild({ ...b, doc: bingeEpisode, series: binge }), null, "the episode's final is its body");
+  assert.match(adoptionRefusal({ doc: bingeEpisode, workdir: b.workdir, series: binge }), /compilation plays one intro and outro/);
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: bingeEpisode, series: binge, adoptCurrent: true }), /compilation plays one intro and outro/, "--adopt-branding is refused");
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: bingeEpisode, series: binge, introAfterCondensation: true }), /compilation plays one intro and outro/, "there is no intro to move");
+  assert.equal(readBranding(b.workdir), null, "nothing is pinned for the episode");
+  // An earlier build of the episode that pinned the bookends does not bring them back: the pin
+  // is read only for videos that are wrapped at all.
+  pinBranding(b.workdir, placeBranding(preset(), INTRO_AT_START));
+  assert.equal(await selectBrandingForBuild({ ...b, doc: bingeEpisode, series: binge }), null, "a pinned earlier cut does not re-wrap the episode");
+  // The compilation itself takes the channel default, with or without the series passed (compile passes none).
+  for (const series of [binge, null]) {
+    assert.equal(episodeOfCompilation(bingeCompilation, series), false);
+    const chosen = await selectBrandingForBuild({ ...b, workdir: path.join(b.workBase, `full-${series ? "series" : "none"}`), doc: bingeCompilation, series });
+    assert.deepEqual([chosen.hash, chosen.intro_at], [brandingHash(preset()), undefined], "the compilation plays the intro at the start");
+    assert.equal(adoptionRefusal({ doc: bingeCompilation, workdir: b.workdir, series }), null);
+  }
+});
+
+test("series without a compilation, one-offs, brand stories, tutorials and explainers keep their branding", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  const kept = [
+    ["a one-off drama with a cast", cast, null],
+    ["an episode of a long-running series that is not compiled", bingeEpisode, { ...binge, compilation: false }],
+    ["an episode of a series whose registry predates the flag", bingeEpisode, { slug: "bug", kind: "series" }],
+    ["a brand story", cast, story],
+    ["a tutorial", doc, null],
+    ["an explainer", explainer, null],
+    ["an explainer of a story series", explainer, story],
+  ];
+  for (const [label, source, series] of kept) {
+    assert.equal(episodeOfCompilation(source, series), false, label);
+    const workdir = path.join(b.workBase, label.replace(/\W+/g, "-"));
+    mkdirSync(workdir);
+    const chosen = await selectBrandingForBuild({ ...b, workdir, doc: source, series });
+    assert.equal(chosen?.hash, placeBranding(preset(), defaultIntroAt(source, series)).hash, label);
+    assert.equal(adoptionRefusal({ doc: source, workdir, series }), null, label);
+  }
+  assert.equal(await selectBrandingForBuild({ ...b, doc: { format: "shorts" }, series: binge }), null, "a Short of a binge series is unbranded as every Short is");
 });

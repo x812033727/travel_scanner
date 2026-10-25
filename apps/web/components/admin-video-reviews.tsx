@@ -430,8 +430,10 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
   const pendingFinal = Boolean(currentFinal?.status === "pending"
     && currentFinal.payload.imported && typeof currentFinal.payload.imported === "object" && !Array.isArray(currentFinal.payload.imported)
     && /^[0-9a-f]{64}$/i.test(currentFinal.content_sha256) && currentFinal.files.some((file) => file.role === "preview"));
-  // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's.
+  // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's;
+  // a drama Short, cut from an episode, may carry that episode's languages as its own.
   const short = Boolean(project?.shorts_line);
+  const ownLanguages = !short || project?.shorts_line === "drama";
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
   // only its scheduling waits for the languages (docs/videos/LANGUAGES.md).
   return <section className="mt-6 grid gap-5">
@@ -473,7 +475,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
       </details>}
-      {!dropped && !short && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
+      {!dropped && ownLanguages && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}
       {past.length > 0 && <details className="grid gap-4" open={readyToUpload(project)}><summary className="cursor-pointer font-bold">{t("history")}</summary>

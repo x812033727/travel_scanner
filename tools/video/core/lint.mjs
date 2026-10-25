@@ -9,10 +9,10 @@ import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
-import { isA01CompactStory } from "./duration.mjs";
+import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
-import { isStory, storyProblems } from "./story.mjs";
+import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
@@ -24,6 +24,8 @@ import { isCompilation } from "./compilation.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
+// `本文` also overlaps the start of 日本文字/日本文化; still catch a real `本文` later in the line.
+const SELF_REFERENTIAL_TEXT = /(?<!日)本文/u;
 // Narrating how the facts were checked belongs in claims.md, not in the viewer's ear.
 export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "查核後", "截至查證"];
 // The same two lists for an English narration (`narration_locale: "en"`), matched without case.
@@ -277,7 +279,10 @@ function seriesProblems(doc, series, error, warn) {
     for (const key of ["appearance", "sheet_prompt"]) {
       if ((character[key] ?? null) !== (known[key] ?? null)) error(`characters[${index}].${key}`, "differs from the series' setting book; copy it as written so the character sheets are reused");
     }
-    if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
+    // A voice the book names is copied as written; a character the book leaves without one (a
+    // voice_note alone) is cast by the worker (automation/series.mjs castVoices), and that pick is
+    // video.json's to carry; the drama schema still wants one on every character.
+    if (known.voice !== undefined && known.voice !== null && JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
     if (JSON.stringify(character.shot_looks ?? []) !== JSON.stringify(known.shot_looks ?? [])) error(`characters[${index}].shot_looks`, "differs from the series' approved look catalog; copy it as written");
   });
   // A binge series (docs/videos/BINGE.md) buys clips by tier: the worker copies the series'
@@ -357,6 +362,27 @@ export function episodeScriptProblems(doc, timeline, { outroCount = true } = {})
 }
 
 /**
+ * The sticker drama's cut (the manga tier, docs/videos/BINGE.md §畫面等級): a new picture every
+ * 2 to 3.5 seconds, one line per shot. The two 100k-view 動態漫畫 compilations measured on
+ * 2026-10-24 cut every 1.75 to 3.25 s; our first episode held 3.75 s and read as slow. A shot
+ * past this many seconds on one picture is a warning naming the shot.
+ */
+export const MANGA_SHOT_MAX_SECONDS = 4;
+
+/** Each manga shot whose estimated length passes MANGA_SHOT_MAX_SECONDS, as { path, message }. */
+export function mangaShotLengthProblems(doc, timeline) {
+  const problems = [];
+  for (const scene of timeline?.scenes ?? []) {
+    const index = (doc.scenes ?? []).findIndex((each) => each.id === scene.id);
+    if (index < 0 || !isShot(doc.scenes[index])) continue;
+    const seconds = frameToSeconds(scene.end_frame - scene.start_frame);
+    if (seconds <= MANGA_SHOT_MAX_SECONDS) continue;
+    problems.push({ path: `scenes[${index}]`, message: `shot ${scene.id} holds one picture for about ${seconds.toFixed(1)} s; the manga tier cuts every 2 to 3.5 s, at most ${MANGA_SHOT_MAX_SECONDS}: give the shot one line and move the rest to a new picture (docs/videos/BINGE.md §畫面等級)` });
+  }
+  return problems;
+}
+
+/**
  * The thumbnail's headline held to the channel's rule where the writer sees it, as warnings:
  * the rule the qa stage fails the drawn thumbnail on (qa/thumbnail.mjs thumbnailChecks, visuals.md
  * §縮圖): at most THUMB_HEADLINE_MAX characters where a CJK glyph counts one and a Latin word or
@@ -423,7 +449,11 @@ export function lintVideo(doc, context = {}) {
       error(label, `"say" was written for an older "text"; update it, then set say_for to ${textHash(line.text)}`);
     }
     if (URL.test(line.text) || URL.test(spoken)) error(label, "never read a URL aloud: say it is in the description");
-    for (const phrase of WRITTEN_ONLY) if (line.text.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
+    for (const phrase of WRITTEN_ONLY) {
+      if (phrase === "本文" ? SELF_REFERENTIAL_TEXT.test(line.text) : line.text.includes(phrase)) {
+        error(label, `"${phrase}" is written language; say it the way you would out loud`);
+      }
+    }
     for (const phrase of PROCESS_TALK) if (line.text.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
     if (english) {
       const lower = line.text.toLowerCase();
@@ -471,6 +501,8 @@ export function lintVideo(doc, context = {}) {
     const story = storyProblems(doc, context.series, timeline);
     for (const problem of story.errors) error(problem.path, problem.message);
     for (const problem of story.warnings) warn(problem.path, problem.message);
+    // This story series borrows Curio's visual mix without changing its story identity.
+    if (isEverydayStory(doc, context.series)) for (const problem of storyCuteVisualProblems(doc)) error(problem.path, problem.message);
   }
   const chapters = chapterList(timeline);
   for (const problem of checkChapters(timeline)) {
@@ -478,7 +510,7 @@ export function lintVideo(doc, context = {}) {
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
-  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc);
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
   // A brand story is narrated and opens on the condensation even when its pictures have a cast.
   if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
@@ -492,7 +524,7 @@ export function lintVideo(doc, context = {}) {
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
   // short: qa's assemble item measures the cut.
-  const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
+  const floor = isC08ApprovedShortStory(doc) ? 4 : isC20ApprovedShortStory(doc) ? 5 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
   // Where the floor holds it is the only length rule (owner, 2026-10-04): the upper end of
@@ -521,6 +553,7 @@ export function lintVideo(doc, context = {}) {
   // animated dramas keep their own craft untouched (the owner, 2026-10-22).
   if (context.series?.visual_tier === "manga") {
     for (const problem of shotHookProblems(doc, timeline, MANGA_HOOK_GAP_SECONDS)) warn(problem.path, problem.message, "narrative");
+    for (const problem of mangaShotLengthProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the synthesized timeline decides)`);
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).

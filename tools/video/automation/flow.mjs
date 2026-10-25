@@ -21,7 +21,7 @@ import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs
 import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
+import { hasCast, illustrated, isDrama, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { CURIO_MUSIC, CURIO_PRESET } from "../core/curio.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
@@ -55,12 +55,12 @@ import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
-import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
+import { instructionsFor, MANGA_NARRATION_PERFORMANCE, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
-import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, castVoices, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
@@ -422,6 +422,48 @@ function writeVideo(dir, video) {
 }
 
 /**
+ * A listener's answer as saveAndLint takes it. The listener of a long script (a manga drama runs
+ * fifty-odd shots) tends to answer the rewrite pass's shape, {"lines": [{id, text, emotion?}],
+ * "notes"}, instead of the whole video.json, and two such answers blocked a video (ticket
+ * 2026-10-23-lines-video). Those lines are written onto a copy of the script the listener was
+ * given, by id: the text, and the emotion when one is given; a line whose text changes loses
+ * its spoken form, which was written for the old words. An id the script has no line for is
+ * left out and logged. The result is { video, edits } with one edit per line that changed. An
+ * answer with a video object, or without a lines array, is returned as it is.
+ */
+export function listenerEdits(video, answer, log = () => {}) {
+  if (answer?.video || !Array.isArray(answer?.lines)) return answer;
+  const edited = structuredClone(video);
+  const lines = new Map([...eachLine(edited)].map(({ line }) => [line.id, line]));
+  const edits = [];
+  const unknown = [];
+  const seen = new Set();
+  for (const entry of answer.lines) {
+    const id = String(entry?.id ?? "");
+    const line = lines.get(id);
+    if (!line) {
+      unknown.push(id || "?");
+      continue;
+    }
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const text = typeof entry.text === "string" && entry.text.trim() ? entry.text.trim() : line.text;
+    const emotion = typeof entry.emotion === "string" && entry.emotion.trim() ? entry.emotion.trim() : line.emotion;
+    if (text === line.text && emotion === line.emotion) continue;
+    const before = line.text;
+    if (text !== line.text) {
+      line.text = text;
+      delete line.say;
+      delete line.say_for;
+    }
+    if (emotion !== undefined) line.emotion = emotion;
+    edits.push(`${id}: ${before} → ${text}`);
+  }
+  if (unknown.length) log(`  listener: ${unknown.length} of its lines name no line of the script and are left out: ${unknown.join(", ")}`);
+  return { video: edited, edits, ...(typeof answer.notes === "string" && answer.notes.trim() ? { notes: answer.notes.trim() } : {}) };
+}
+
+/**
  * The writer's lexicon additions into the shared dictionary. A term lint would refuse in the
  * dictionary (isProposableTerm: "8B" starts with a digit) is left out like any other unusable
  * proposal, since one such entry fails lint for every video that shares the file.
@@ -483,6 +525,14 @@ const SERIES_MUSIC = Object.freeze({ [CURIO_PRESET]: CURIO_MUSIC });
  */
 export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null, production = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
+  // The sticker drama's narrator (the manga tier, docs/videos/BINGE.md §畫面等級): the storyteller's
+  // direction the writer plans from reaches the TTS too, unless the owner named a narrator voice
+  // on the drama tab, whose style then stands. Until 2026-10-24 an empty drama_voice fell back
+  // to the tutorial's relaxed-explainer style, and the first 系統說我是 BUG episode was read at
+  // 3.0 characters a second with one second of pauses in 172 s (the ticket's measurement).
+  if (format === "drama" && series?.visual_tier === "manga" && !settings.drama?.drama_voice && settled.voice.provider === "gemini") {
+    settled.voice = { ...settled.voice, style: `${CHANNEL_ACCENT}。${MANGA_NARRATION_PERFORMANCE}`.slice(0, 400) };
+  }
   if (format === "drama" && production?.profile?.phases?.primary?.locale === "zh-TW") {
     const narrator = production.narrator;
     if (typeof narrator?.voice_name !== "string" || !narrator.voice_name.trim() || typeof narrator.performance !== "string" || !narrator.performance.trim()) {
@@ -522,8 +572,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in like every
+    // high-view story channel (the owner, 2026-10-25, trying it after the channel review).
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -545,7 +597,12 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // word, listed by id; a character the book does not have stays for lint to refuse. An
     // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
-    const book = new Map((cast ?? []).map((character) => [character.id, character]));
+    // A character the book gives no voice (a voice_note alone) is cast from the drama tab's pool
+    // and the spare voices, the way castFrom cast it into series.json when the episode was
+    // drafted; a series.json from before the worker did (系統說我是 BUG e005, 2026-10-25) is cast
+    // whole here, so every episode of it picks alike, and lint takes the worker's voice where the
+    // book names none.
+    const book = new Map(castVoices(cast ?? [], { voices: drama.character_voice_pool ?? [], narrator: settled.voice }).map((character) => [character.id, character]));
     settled.characters = isExplainerPreset(settled.look?.preset) ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   // Production authority comes from the approved request, never model-generated metadata.
@@ -814,7 +871,7 @@ function packageChoiceStale(workdir) {
  * its order. Free: no request, nothing written. A dub asked for again is only worth buying when
  * its batch can be built afterwards (takeDubRetry). The sentence is shown on the admin card.
  */
-function packageRefusal(project, workdir) {
+export function packageRefusal(project, workdir) {
   const { doc, lexicon } = project;
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
@@ -829,8 +886,10 @@ function packageRefusal(project, workdir) {
     branded = false;
   }
   if (!branded) return "成片用的片頭片尾和現在選的不一樣";
+  // A drama's cut (a brand story is one) is bound to its clips, as package reads them.
+  const clips = isDrama(doc) ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
   const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
-  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, null, keyframes)) return "成片不在了，或它的檢查記錄比現在的腳本和畫面舊";
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, clips, keyframes)) return "成片不在了，或它的檢查記錄比現在的腳本和畫面舊";
   if (assembledAudioProblems(timeline, checks, workdir).length) return "成片不是用現在這份旁白錄音合成的";
   return null;
 }
@@ -2286,7 +2345,7 @@ export class Automation {
     const oneOff = isOneOff(series);
     // The cast as this episode wears it: a character's look that covers the episode stands in for
     // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
-    const cast = castFrom(context.setting?.body_json, episode.number);
+    const cast = castFrom(context.setting?.body_json, episode.number, { voices: this.settings.drama?.character_voice_pool ?? [], narrator: settingsFor(this.settings, "drama").voice });
     const production = productionForEpisode(context.setting?.body_json, episode.number);
     const visualTier = production?.profile ? "clips" : series.visual_tier ?? "clips";
     const beats = episode.beats ?? {};
@@ -3452,7 +3511,9 @@ export class Automation {
     // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
     const variant = state.format === "drama" ? null : this.variantOf(state);
     const listenPayload = { script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, listenPayload, video, "listener", "listen") : await this.stage("listener", state.slug, { video, ...listenPayload, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, variant);
+    const answered = isLongAnime(state) ? await this.animeRewrite(state, listenPayload, video, "listener", "listen") : await this.stage("listener", state.slug, { video, ...listenPayload, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, variant);
+    // A long script's listener may answer the lines it changed instead of the whole video.json.
+    const answer = listenerEdits(video, answered, (line) => this.log(line));
     const problem = await this.saveAndLint(state, answer);
     const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;

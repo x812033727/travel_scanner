@@ -10,6 +10,7 @@ import { documentDiscussionPayload, documentDiscussVariant, SCRIPT_DISCUSSION_VA
 import { cardRules, EXPLAINER_DISCUSS_VARIANTS, EXPLAINER_SERIES_INSTRUCTIONS, EXPLAINER_SERIES_PROFILES, EXPLAINER_VARIANTS, explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { Automation, DRAFT_LINE_IDS, planProblem, PROFILED_LINE_IDS_PER_MINUTE, settle } from "./flow.mjs";
 import { instructionsFor, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { canonicalJson } from "./run-receipts.mjs";
 import { documentInputs, documentPayload, documentVariant } from "./series.mjs";
 
@@ -122,10 +123,10 @@ const SERIES_TEXT_PINS = {
   "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
   "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
   "planner:bible-explainer-mystery": [9111, "ef9cf2ef25cf3cd54c445e33d25c80fb469d96e53d70044e93ca451d1b9a087b"],
-  "writer:explainer-mystery": [30898, "5616f3107d33d27d29a53800cb08bf3a7d306aef48e1698a1a124a5d81542302"],
+  "writer:explainer-mystery": [33923, "a2618084ebfc82667bfe58b049ea8943aaafcf1f9ca884b5709aa9d1866148af"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
   "planner:discuss-mystery": [9740, "925081165290cf91c680835650ccdd14e8d6f9256b794ec799c628aaf06686cd"],
-  "writer:discuss-mystery": [29444, "4d2d50d6495e995a7591ffb8fa0b60794a3b3fe13925d997dca61d548a126938"],
+  "writer:discuss-mystery": [32469, "7c1a0a0efde27ce5afddde770ea3dacc0983a2d0b01d5e1347b0956dde60e751"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -153,6 +154,15 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.match(mystery, /"loops" lists at least 8 for ten minutes/);
   assert.match(mystery, /ends its last sentence on one concrete, unanswered question/);
   assert.match(mystery, /"music" is never left out/);
+  // 2026-10-25: the two writers also carry the series opening (the stakes, the scene, one promise
+  // sentence, at most two teasers) and the viewer address, after the hook rules they refine.
+  for (const key of ["writer:explainer-mystery", "writer:discuss-mystery"]) {
+    const text = EXPLAINER_SERIES_INSTRUCTIONS[key];
+    assert.ok(text.includes(STORY_OPENING_RULE) && text.includes(TOLD_TO_ONE_VIEWER), key);
+    assert.ok(text.indexOf(STORY_OPENING_RULE) > text.indexOf("No stretch of the body runs longer than 45 seconds"), `${key}: the opening follows the cadence it refines`);
+  }
+  assert.match(mystery, /the name\s+everybody knows in the first six characters/);
+  assert.ok(!EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 keeps its register");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
   const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
   assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);

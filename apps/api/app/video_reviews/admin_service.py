@@ -81,6 +81,7 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
+from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews import dub_retry
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
@@ -1339,9 +1340,13 @@ def _dub_allowed(
 
     The series kind comes from the server's episode row, so recategorising a brand story as
     an explainer does not unlock an older cut. The category also catches a standalone story.
+
+    A drama Short is cut from an episode, and its dubs are that episode's tracks cut to the
+    same span (``import --languages``): nothing is made for it, so it may carry them. A lab or
+    cut Short has a narrator the worker never dubs.
     """
     if project.shorts_line is not None:
-        return False
+        return project.shorts_line == "drama"
     if (project.format or "slides") != "drama":
         return True
     if _story_dub_preselectable(project, series_kind):
@@ -2484,6 +2489,16 @@ async def file_for_admin(
                     break
                 return path, str(item["content_type"])
     raise AppError(404, "video_review_file_not_found", "這個檔案已經不在審核區")
+
+
+async def package_files_for_admin(
+    session: AsyncSession, store: ReviewStore, slug: str, entries: list[tuple[str, str]]
+) -> list[tuple[str, Path]]:
+    """The files of a manual upload package, each under the name the page gives it in the zip;
+    only files some review of this video shows."""
+    project = await _project(session, slug)
+    shown = [list(review.files or []) for review in await _reviews(session, project)]
+    return package_zip.resolve_entries(store, slug, shown, entries)
 
 
 # --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------

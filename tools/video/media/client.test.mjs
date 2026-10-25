@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { judge, locate, pollOnce, submitImage } from "./client.mjs";
+import { PREPRODUCTION_HOLD_SLUGS } from "../core/pending-pilot-budget.mjs";
+import { judge, locate, pollOnce, submitClip, submitImage, submitMusic } from "./client.mjs";
 
 const options = (fetchImpl) => ({ site: "https://example.test", token: "test-token", fetchImpl, sleep: async () => {}, attempts: 3 });
 const judged = { slug: "story-rolling-suitcase-v2", kind: "keyframe", files: [], rubric: [] };
@@ -10,6 +11,25 @@ const FOLLOWON_SLUGS = [
   "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
   "story-five-pringles-vat-case",
 ];
+// No everyday slug is activated; this must stay local even with an older API.
+const UNAPPROVED_EVERYDAY = "story-everyday-kikkoman-c08";
+
+test("held everyday media and judge calls stop locally before transport", async () => {
+  for (const slug of [...PREPRODUCTION_HOLD_SLUGS, UNAPPROVED_EVERYDAY]) {
+    let calls = 0;
+    const fetchImpl = async () => { calls += 1; return Response.json({ id: "unexpected" }); };
+    for (const send of [
+      () => submitImage({ request: { slug, purpose: "shot", prompt: "image" }, ...options(fetchImpl) }),
+      () => submitClip({ request: { slug, shot_id: "s1", prompt: "clip", first_frame: "hash", seconds: 5 }, ...options(fetchImpl) }),
+      () => submitMusic({ request: { slug, prompt: "music", seconds: 30 }, ...options(fetchImpl) }),
+      () => judge({ request: { ...judged, slug }, ...options(fetchImpl) }),
+      () => locate({ request: { slug, sha256: "a".repeat(64) }, ...options(fetchImpl) }),
+    ]) {
+      await assert.rejects(send(), (error) => error.code === "video_budget_preproduction_hold" && error.who === "owner");
+    }
+    assert.equal(calls, 0, slug);
+  }
+});
 
 test("a pilot judge call carries one operation ID and never repeats an uncertain provider answer", async () => {
   let calls = 0;
@@ -25,7 +45,7 @@ test("a pilot judge call carries one operation ID and never repeats an uncertain
   assert.equal(sent.slug, judged.slug);
 });
 
-test("each follow-on judge and locate call carries an operation ID and stops on an uncertain answer", async () => {
+test("each guarded story judge and locate call carries an operation ID and stops on an uncertain answer", async () => {
   for (const slug of FOLLOWON_SLUGS) {
     for (const send of [
       (fetchImpl) => judge({ request: { ...judged, slug }, ...options(fetchImpl) }),
@@ -77,7 +97,7 @@ test("a pilot image submission stops after one ambiguous answer", async () => {
   assert.equal(calls, 1);
 });
 
-test("each follow-on image submission stops after one ambiguous answer", async () => {
+test("each guarded story image submission stops after one ambiguous answer", async () => {
   for (const slug of FOLLOWON_SLUGS) {
     let calls = 0;
     const fetchImpl = async (_url, init) => {

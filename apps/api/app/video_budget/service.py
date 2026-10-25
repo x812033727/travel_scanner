@@ -20,6 +20,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.problems import AppError
 from app.video_budget.models import (
+    ACTIVATED_STORY_SLUGS,
+    C03_HISTORY_CLOSED_RECEIPT,
+    C_SERIES_PILOT_LIMITS_USD,
+    C_SERIES_PRE_LEDGER_OPERATION_ID,
+    EVERYDAY_STORY_PREFIX,
     FOLLOWON_LIMIT_USD,
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
@@ -65,10 +70,49 @@ class BudgetSummary:
     overrun_operations: int
     total_over_limit: bool
     over_limit_usd: Decimal
+    # Pre-ledger exposure the owner closed at the full ceiling (C03, 2026-10-24).
+    # It is on the ledger but outside the balance that guards new work.
+    historical_closed_usd: Decimal = Decimal("0")
 
 
 def is_pilot(slug: str | None) -> bool:
-    return slug in PILOT_SLUGS
+    # Any everyday-object film enters the budget guard. The seven known pilots
+    # are held before activation; an unknown film has no reviewed account.
+    return slug in PILOT_SLUGS or (
+        isinstance(slug, str) and slug.startswith(EVERYDAY_STORY_PREFIX)
+    )
+
+
+def is_preproduction_held(slug: str | None) -> bool:
+    # Every everyday-object film is held except the ones the owner activated
+    # (C03, 2026-10-24). An activated film still needs its 0138 account and the
+    # settled pre-ledger row before anything can be reserved.
+    return (
+        isinstance(slug, str)
+        and slug.startswith(EVERYDAY_STORY_PREFIX)
+        and slug not in ACTIVATED_STORY_SLUGS
+    )
+
+
+def _history_closed_by_owner(slug: str, row: VideoPilotBudgetOperation) -> bool:
+    # The exact settlement the activation names: the full ceiling, settled on the
+    # host with the owner's receipt reference. Anything else keeps counting.
+    return (
+        slug in ACTIVATED_STORY_SLUGS
+        and row.operation_id == C_SERIES_PRE_LEDGER_OPERATION_ID
+        and row.status == "settled"
+        and row.receipt_ref == C03_HISTORY_CLOSED_RECEIPT
+        and row.actual_usd == row.max_usd
+    )
+
+
+def _require_activated(slug: str) -> None:
+    if is_preproduction_held(slug):
+        raise BudgetError(
+            503,
+            "video_budget_preproduction_hold",
+            "本片的舊費用或供應商帳戶、語音與價格尚未核對，不能送出付費請求",
+        )
 
 
 def _amount(value: Decimal | None, *, allow_zero: bool, code: str) -> Decimal:
@@ -92,7 +136,7 @@ def _label(value: str, *, name: str, length: int) -> str:
 def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
     if slug == B18_V2_SLUG:
         return limit_usd in (PILOT_LIMIT_USD, B18_V2_LIMIT_USD)
-    return limit_usd == PILOT_LIMITS_USD.get(slug)
+    return limit_usd == PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
 
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
@@ -120,12 +164,19 @@ async def _operation(
     return operation
 
 
-async def _totals(session: AsyncSession, slug: str) -> tuple[Decimal, Decimal, int, int, int, int]:
-    rows = (
+async def _totals(
+    session: AsyncSession, slug: str
+) -> tuple[Decimal, Decimal, int, int, int, int, Decimal]:
+    all_rows = (
         await session.scalars(
             select(VideoPilotBudgetOperation).where(VideoPilotBudgetOperation.slug == slug)
         )
     ).all()
+    closed = sum(
+        (row.actual_usd or Decimal("0") for row in all_rows if _history_closed_by_owner(slug, row)),
+        Decimal("0"),
+    )
+    rows = [row for row in all_rows if not _history_closed_by_owner(slug, row)]
     reserved = sum((row.max_usd for row in rows if row.status in ACTIVE_STATUSES), Decimal("0"))
     settled = sum(
         (row.actual_usd or Decimal("0") for row in rows if row.status == "settled"),
@@ -138,7 +189,7 @@ async def _totals(session: AsyncSession, slug: str) -> tuple[Decimal, Decimal, i
         row.status == "settled" and row.actual_usd is not None and row.actual_usd > row.max_usd
         for row in rows
     )
-    return reserved, settled, uncertain, settled_count, released, overruns
+    return reserved, settled, uncertain, settled_count, released, overruns, closed
 
 
 async def reserve(
@@ -160,6 +211,7 @@ async def reserve(
     """
     if not is_pilot(slug):
         return None
+    _require_activated(slug)
     operation_id = _label(operation_id, name="operation_id", length=160)
     category = _label(category, name="category", length=40)
     provider = _label(provider, name="provider", length=40)
@@ -214,7 +266,7 @@ async def reserve(
         if slug == B18_V2_SLUG and account.limit_usd != B18_V2_LIMIT_USD:
             raise BudgetError(503, "video_budget_missing_account", "B18 v2 的 5 美元帳戶尚未就緒")
 
-        reserved, settled, _, _, _, overruns = await _totals(session, slug)
+        reserved, settled, _, _, _, overruns, _ = await _totals(session, slug)
         if overruns:
             raise BudgetError(
                 503,
@@ -346,15 +398,22 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     """Read the aggregate ledger for a pilot without exposing account credentials."""
     if not is_pilot(slug):
         return None
+    # A known held C-series account may be inspected after 0138 seeds it.
+    # Unknown everyday slugs stay hidden even if someone inserts a row.
+    if is_preproduction_held(slug) and slug not in C_SERIES_PILOT_LIMITS_USD:
+        _require_activated(slug)
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
     if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
     if not _account_limit_is_valid(slug, account.limit_usd):
         raise BudgetError(503, "video_budget_invalid_account", "試作影片的費用帳戶上限不符")
-    reserved, settled, uncertain, settled_count, released, overruns = await _totals(session, slug)
+    reserved, settled, uncertain, settled_count, released, overruns, closed = await _totals(
+        session, slug
+    )
     # Show the intended ceiling even before 0133 lowers B18's persisted row.
     # This is a read-only transitional state; reserve stays held at USD 25.
-    effective_limit = PILOT_LIMITS_USD[slug]
+    effective_limit = PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
+    assert effective_limit is not None
     remaining = effective_limit - reserved - settled
     return BudgetSummary(
         slug=slug,
@@ -368,4 +427,5 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
         overrun_operations=overruns,
         total_over_limit=remaining < 0,
         over_limit_usd=max(-remaining, Decimal("0.000000")),
+        historical_closed_usd=closed,
     )

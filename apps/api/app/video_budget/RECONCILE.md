@@ -1,6 +1,6 @@
 # Pilot budget reconciliation
 
-This is a host-only operator procedure for the four A01/B18 original and v2 slugs. The
+This is a host-only operator procedure for every budgeted slug in `models.py`. The
 ledger counts `reserved` and `uncertain` at their full ceiling until a real provider record
 settles the charge or proves no charge. A timeout, failed job, missing output, old age, or
 empty wallet screen is not no-charge evidence. Do not manually update the database or
@@ -71,3 +71,62 @@ evidence that the film stayed within budget.
 If a provider invoice contradicts an automatically released operation, this CLI cannot
 correct that release. Stop pilot spending and acceptance, retain the invoice, and open a
 separate controlled correction. Never ignore a charge because the local row says `released`.
+
+## Everyday-object stories awaiting a ledger
+
+The current guard creates no new account or operation. C03–C06, C07, C10 and
+C15 are held for attributed API requests and at the current local paid-client
+boundary. Legacy speech clients can omit attribution entirely; the server
+cannot infer a C-series slug from such a request. Keep old workers stopped and
+verify the current client on every C-series worker before a production rollout.
+That client also holds every other `story-everyday-*` slug before contacting an
+older API that may not recognize the series. The current API holds new and
+previously queued model stages, including subscription models, before dispatch.
+A provider bill alone does not activate paid work. Any other
+`story-everyday-` slug gets `video_budget_preproduction_hold` until a reviewed
+activation opens its account;
+the local TTS, media and automation clients hold the entire series before send.
+
+C03–C06 called TTS, transcription, Jev and (C03) media before they had accounts.
+Until a future migration seeds a full USD 25 uncertain `pre-ledger-history`
+operation for each, they have no newly spendable balance. Their local STOP files
+stay under separate owner control. What the local workdirs showed on 2026-10-23
+(empty speech journals do not establish the provider's charge or request state):
+
+| Slug | Recorded paid requests | Worst case from the server's per-request ceilings |
+| --- | --- | --- |
+| `story-everyday-moleskine-c03` | 94 TTS, 94 transcriptions, Jev for 27 lines, plus a media ledger of USD 1.713 (118 MiniMax images, 122 Gemini judges, one Lyria track, 2026-10-21 15:51Z to 2026-10-22 01:50Z) | about USD 113 |
+| `story-everyday-bubble-wrap-c04` | One `tts` run refused by Gemini (HTTP 429); no WAV, cache, timeline or media | none recorded |
+| `story-everyday-kincho-c05` | 79 TTS, 79 transcriptions, one Jev call (34 lines) | about USD 93.5 |
+| `story-everyday-play-doh-c06` | 94 TTS after one 429-refused run, 71 transcriptions from an unfinished `check-audio`, no Jev | about USD 87.5 |
+
+The ceilings are `PILOT_GEMINI_TTS_MAX_USD` (USD 0.151552 per TTS) and, because the
+pre-ledger transcription route set no output limit, the full model bound of USD 1.032192
+per transcription. Those exceed USD 25, so request counts alone cannot clear the exposure.
+Only provider billing can show the actual charge.
+
+Before creating or settling a historical hold, read each provider's usage for its billing project over the
+window from the film's first paid call to its STOP. Read AI Studio / Cloud Billing at least
+48 hours after the last call, because that bar lags. The window's whole project total is an
+upper bound for any single film even when several films shared the key: settling at that
+total (plus the film's MiniMax and Jev totals for the same window) over-counts and never
+under-counts. Record the evidence in the private store. Only after a separately
+reviewed migration has seeded a durable hold may an operator preview settlement
+with `reconcile_cli`, using the exact billed upper bound and private evidence
+reference as described above. The current guard has no such operation to settle.
+
+The film stays stopped after settlement until the separate account, voice,
+model, region and price review lifts its API and client hold. C04's run shows a
+provider refusal and no recorded take. A
+release with `--no-charge-reason` still needs the provider's usage or invoice for that
+window showing no charge, since a refused run alone is not no-charge evidence under the
+rules above. Removing a STOP file is a separate owner decision after the readback, and
+neither action calls a provider.
+
+## 2026-10-24: C03 closed and activated by owner decision
+
+C03's `pre-ledger-history` row is settled at the full USD 25 with receipt
+`owner-decision-20261024-c03-full-ceiling` (no provider billing was read; the owner chose
+the full ceiling over reconciliation). The film is activated; the closed row is reported
+separately as `historical_closed_usd` and no longer consumes the ceiling. See
+`PENDING_EVERYDAY.md` §C03 Moleskine activation. C04–C06 are unchanged.
