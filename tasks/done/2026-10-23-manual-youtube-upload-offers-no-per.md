@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-manual-youtube-upload-offers-no-per
 title: Manual YouTube upload offers no per-language thumbnails
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-10-23T14:28:00Z
 created_at: 2026-10-23T14:27:39Z
-completed_at:
+completed_at: 2026-10-24T11:03:01Z
 branch: claude/manual-upload-locale-thumbnails
 depends_on: []
 scope:
@@ -31,7 +31,7 @@ could not get the language thumbnails there (2026-10-23).
   `thumbnail.<locale>.jpg`; Test & compare variants (`thumbnail-b`) are not shown as languages.
 - [x] No new strings: it reuses `admin.videoReviews.downloadLocaleThumbnail` with the guide's
   language names, so the five `admin.json` files (bound by the duration review) are untouched.
-- [ ] Merged and deployed.
+- [x] Merged and deployed. Deployed 749a07dad.
 
 ## How to verify
 
