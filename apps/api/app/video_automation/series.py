@@ -23,6 +23,8 @@ like the explainer, not a schedule: there is no daily count (the owner's decisio
 A skipped story that never started can be brought
 back (``restore_episode``); one whose video was dropped can be made again, a limited number of
 times, under a new video slug (``redo_episode``); a skipped episode of the other kinds cannot.
+An episode of a drama series that was made, or is being made, can be made again the same way:
+its video is dropped first and the worker remakes it from the chapter outline (``can_redo``).
 
 The router turns ``SeriesRefused`` into the API's problem response; nothing here raises
 ``AppError``.
@@ -32,7 +34,7 @@ from __future__ import annotations
 
 import calendar
 import re
-from collections.abc import Sequence
+from collections.abc import Awaitable, Callable, Sequence
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from itertools import pairwise
@@ -93,7 +95,9 @@ from app.video_automation.schemas import (
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
-from app.video_reviews.admin_service import _cancel_started_request, list_projects
+from app.video_reviews.admin_service import _cancel_started_request, drop_project, list_projects
+from app.video_reviews.schemas import DropIn
+from app.video_reviews.storage import ReviewStore
 
 # The episode fields a chapter outline must give every episode, in the order the owner reads
 # them: the hook, the conflict, the turn, the cliffhanger (docs/videos/SERIES.md).
@@ -125,6 +129,9 @@ STORY_PREMISE_FIELDS = ("question",)
 STORY_REDO_LIMIT = 1
 REDO_SUFFIX = "-redo"
 REDO_NUMBER = re.compile(r"[1-9][0-9]*")
+# The drop note on a drama episode's video the owner redoes (``redo_episode``): the video list
+# and the audit record say why the video went.
+REDO_DROP_NOTE = "站主重做"
 
 # A binge series (docs/videos/BINGE.md). The genre presets the planner writes from: the
 # classic xianxia series keeps today's prompts and rules; the others carry the retention
@@ -2142,42 +2149,92 @@ async def restore_episode(session: AsyncSession, actor: User, slug: str, number:
     return await series_view(session, slug)
 
 
-async def redo_episode(session: AsyncSession, actor: User, slug: str, number: int) -> SeriesOut:
-    """Make a dropped story again: it is ready once more, under a new video slug, and the
-    worker starts it from the beginning when its turn comes.
+def can_redo(series: VideoDramaSeries) -> bool:
+    """Whether an episode of this series may be made again (``redo_episode``).
 
-    A dropped story is one that started and was skipped when its video was dropped
-    (``started_at`` set, the case ``restore_episode`` refuses). The stories of the backlog were
-    checked before they were imported, and a video usually fails on its pictures or its
-    narration, not its story, so the owner may ask for it again; ``STORY_REDO_LIMIT`` times, so
-    one story cannot keep spending. A story series only, for the reason ``restore_episode``
-    gives, and a story that was not dropped has nothing to redo.
+    A brand story, or an episode of a production drama series. An episode of a long series is
+    not improvised after the one before it: its beats come from the approved chapter outline,
+    and its recap is written from that outline and the finished script, so the same beats made
+    again fit the episodes after it. A one-off is its only episode (the request's own drop is
+    its way out), and a long anime has its own production flow.
+    """
+    return is_story(series) or (not is_one_off(series) and not is_long_anime(series))
+
+
+async def redo_episode(
+    session: AsyncSession,
+    actor: User,
+    slug: str,
+    number: int,
+    *,
+    review_store: Callable[[], Awaitable[ReviewStore]] | None = None,
+) -> SeriesOut:
+    """Make an episode again: it is ready once more, under a new video slug, and the worker
+    starts it from the beginning when its turn comes.
+
+    A story is redone once its video was dropped: it started and was skipped when the owner
+    dropped the video (``started_at`` set, the case ``restore_episode`` refuses). The stories
+    of the backlog were checked before they were imported, and a video usually fails on its
+    pictures or its narration, not its story, so the owner may ask for it again;
+    ``STORY_REDO_LIMIT`` times, so one story cannot keep spending. A story that was not
+    dropped has nothing to redo.
+
+    An episode of a drama series (``can_redo``) is redone from a video still in the making or
+    already cleared for upload as well as from a dropped one: the owner found the finished
+    episodes slow after the rules changed (2026-10-24) and wants them made again under the
+    current rules, and the beats of the chapter outline do not change. Such a video is dropped
+    here first, as the owner would drop it on /admin/videos (``drop_project``, with the note
+    ``REDO_DROP_NOTE``): nothing waits on the owner any more, its previews go, and its work
+    directory and the media it paid for stay where they are. ``review_store`` is asked for the
+    review area only then; without it the owner is told to drop the video first. The same
+    limit applies. Once the series' compilation has started the redone episode could never
+    join it (one compilation a series, docs/videos/BINGE.md), so it is refused.
 
     The dropped video keeps everything it had: its project, its request row (cancelled if the
-    drop left it started) and its planned slug. The remake is made under ``redo_slug``: the
-    planned slug, the one the first video was started under, and ``-redo<n>``. The episode
-    lets go of the old start and the old request row, so the next ``start_episode`` files a
-    new row and starts the clock again; the dropped start still counts for its day and its
-    month (``_earlier_videos``), and the remake waits for the day's count, the episodes in the
-    making and the upload buffer like any other story. When the drop had finished the series,
-    the series is active again.
+    drop left it started, done if the video was made) and its planned slug. The remake is made
+    under ``redo_slug``: the planned slug, the one the first video was started under, and
+    ``-redo<n>``; ``start_episode`` makes it under that slug when the worker names the planned
+    one. The episode lets go of the old start and the old request row, so the next
+    ``start_episode`` files a new row and starts the clock again; the dropped start still
+    counts for its day and its month (``_earlier_videos``), and the remake waits for the
+    day's count, the episodes in the making and the upload buffer like any other story. When
+    the drop had finished the series, the series is active again.
     """
     series = await _series(session, slug, lock=True)
     require_production_series(series)
-    if not is_story(series):
+    if not can_redo(series):
         raise SeriesRefused(
             409,
             "video_series_redo_story_only",
-            "只有品牌故事能重做放棄的集數：漫劇一集接著一集寫，後面的劇情已經當這一集不存在，"
-            "重做了會接不上",
+            "只有品牌故事與作品的集數能重做：單集漫劇是它唯一的一集，請放棄那支影片再發起一支；"
+            "長篇動畫有自己的製作流程",
         )
     episode = await _episode(session, series, number)
-    if episode.status != "skipped" or episode.started_at is None or not episode.slug:
-        hint = "；它從沒開始過，用「恢復」讓它回到待做" if episode.status == "skipped" else ""
+    drama = not is_story(series)
+    # A drama episode whose video is live (in the making or cleared for upload) is dropped
+    # below; a dropped one, of either kind, needs nothing more than a new slug.
+    live = (
+        episode.slug
+        if drama
+        and episode.status in ("started", "done")
+        and episode.slug
+        and episode.started_at is not None
+        else None
+    )
+    if live is None and (
+        episode.status != "skipped" or episode.started_at is None or not episode.slug
+    ):
+        if drama:
+            detail = f"第 {number} 集還沒做過影片，不用重做"
+        else:
+            hint = "；它從沒開始過，用「恢復」讓它回到待做" if episode.status == "skipped" else ""
+            detail = f"第 {number} 個故事的影片沒有被放棄，不用重做{hint}"
+        raise SeriesRefused(409, "video_series_episode_not_dropped", detail)
+    if drama and series.compilation_slug is not None:
         raise SeriesRefused(
             409,
-            "video_series_episode_not_dropped",
-            f"第 {number} 個故事的影片沒有被放棄，不用重做{hint}",
+            "video_series_compiled",
+            "合集已經開始做，重做的集不會進合集；要換，改的是那支合集影片本身",
         )
     starts = list(
         (
@@ -2200,7 +2257,7 @@ async def redo_episode(session: AsyncSession, actor: User, slug: str, number: in
             f"第 {number} 個故事已經重做過 {redone} 次，每個故事最多重做 {STORY_REDO_LIMIT} 次；"
             "要再做，請用新的企劃代號與 slug 把它加進企劃清單再匯入",
         )
-    planned = starts[0].slug if starts and starts[0].slug else episode.slug
+    planned = starts[0].slug if starts and starts[0].slug else str(episode.slug)
     new_slug = redo_slug(planned, redone + 1)
     taken = (
         await session.scalar(select(VideoDramaEpisode.id).where(VideoDramaEpisode.slug == new_slug))
@@ -2215,14 +2272,32 @@ async def redo_episode(session: AsyncSession, actor: User, slug: str, number: in
             "video_series_redo_slug_taken",
             f"重做的影片代號 {new_slug} 已經是另一支影片或另一集",
         )
+    if live is not None:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == live))
+        if project is not None and project.dropped_at is None:
+            if review_store is None:
+                raise SeriesRefused(
+                    409,
+                    "video_series_redo_video_live",
+                    f"第 {number} 集的影片 {live} 還在，請先在影片頁放棄它再重做",
+                )
+            # The drop commits and lets go of the locks taken above; the limit and the slug
+            # were checked first, so nothing below can refuse what the drop already did.
+            await drop_project(
+                session, await review_store(), live, actor, DropIn(note=REDO_DROP_NOTE)
+            )
+            series = await _series(session, slug, lock=True)
+            episode = await _episode(session, series, number)
     now = _now()
-    # Dropped before the drop learned to close it (PR #1023), the row may still say started.
+    # Dropped before the drop learned to close it (PR #1023), the row may still say started;
+    # a drama episode started without a project yet has its row closed here too.
     await _cancel_started_request(session, episode, now)
     dropped = episode.slug
     episode.status = "ready"
     episode.slug = new_slug
     episode.request_id = None
     episode.started_at = None
+    episode.finished_at = None
     episode.updated_at = now
     reopened = series.status == "finished"
     if reopened:
@@ -2484,13 +2559,21 @@ async def start_episode(
             if problem:
                 raise SeriesRefused(409, "video_anime_episode_invalid", problem)
     # A story's video slug was planned with it and imported (docs/videos/STORY.md); the video
-    # is made under that name or not at all, so the backlog and the video list stay one.
-    if is_story(series) and episode.slug and video_slug != episode.slug:
-        raise SeriesRefused(
-            409,
-            "video_series_story_slug",
-            f"這個故事的影片代號是 {episode.slug}，不是 {video_slug}",
-        )
+    # is made under that name or not at all, so the backlog and the video list stay one. A
+    # drama episode being made again (``redo_episode``) carries its remake's slug while the
+    # worker names the planned one, ``<series>-e<nnn>`` (tools/video/automation/series.mjs):
+    # the remake is made under the episode's slug, which the worker reads back from the
+    # request row it drafts from.
+    if episode.slug and video_slug != episode.slug:
+        if not is_story(series) and is_redo_of(episode.slug, video_slug):
+            video_slug = episode.slug
+        else:
+            raise SeriesRefused(
+                409,
+                "video_series_story_slug",
+                f"{'這個故事' if is_story(series) else '這一集'}的影片代號是 {episode.slug}，"
+                f"不是 {video_slug}",
+            )
     if is_story(series):
         # GET next only advertised this job. Recheck the current limits while holding the
         # series lock, so a pause or a newly exhausted quota stops a stale or direct start.
@@ -2633,7 +2716,13 @@ async def start_compilation(
     session: AsyncSession, token: VideoToolToken, slug: str, video_slug: str
 ) -> SeriesCompilationStartOut:
     """The worker starts the compilation of a finished series under the video's slug
-    (docs/videos/BINGE.md); the episodes come back in play order."""
+    (docs/videos/BINGE.md); the episodes come back in play order.
+
+    Each done episode's slug is its current video: an episode made again (``redo_episode``)
+    carries its remake's, never the dropped one's. A done episode whose video the owner
+    dropped on /admin/videos stays done (``_skip_abandoned_episode``) but has nothing for
+    upload, so it is left out like a skipped episode.
+    """
     _ = token
     series = await _series(session, slug, lock=True)
     require_production_series(series)
@@ -2653,10 +2742,21 @@ async def start_compilation(
     series.compilation_finished_at = None
     series.updated_at = now
     await session.commit()
-    episodes = [e for e in await _episodes(session, series) if e.status == "done" and e.slug]
+    rows = await _episodes(session, series)
+    done = [e for e in rows if e.status == "done" and e.slug]
+    dropped: set[str] = set()
+    if done:
+        found = await session.scalars(
+            select(VideoProject.slug).where(
+                VideoProject.slug.in_([str(e.slug) for e in done]),
+                VideoProject.dropped_at.is_not(None),
+            )
+        )
+        dropped = set(found.all())
+    episodes = [e for e in done if e.slug not in dropped]
     docs = await _docs(session, series)
     return SeriesCompilationStartOut(
-        series=summary_view(series, docs, await _episodes(session, series)),
+        series=summary_view(series, docs, rows),
         episodes=[episode_view(episode) for episode in episodes],
         context=await context_view(session, series, None),
     )

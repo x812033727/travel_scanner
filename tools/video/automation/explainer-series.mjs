@@ -8,7 +8,7 @@
 import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
 import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
-import { CONDENSATION_RULE, NARRATIVE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -178,11 +178,12 @@ today,`,
   are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: ONE scene of the file, with its
-     year, number or name, told in order up to the first fact that makes no sense, then three
-     or four of the records' strangest moments, each over the picture of the chapter that pays
-     it off and cut off before what explains it, then the question the episode answers. No
-     greeting. The channel intro plays after it.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds, as the series opening rule
+     below says: the stakes told to the viewer with their number, then ONE scene of the file told
+     in order up to the first fact that makes no sense, at most two later moments cut off before
+     what explains them (each over the picture of the chapter that pays it off), one promise
+     sentence naming the file and its scale, then the question the episode answers. No greeting.
+     The channel intro plays after it.
   2. The story goes on from where the condensation stopped, about 1.5 minutes: the version people
      have heard, told as a story and named as the version that circulates.
   3. The records, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
@@ -211,7 +212,13 @@ today,`,
   none); sub: one short line, about 12 characters (the year or the document); shot: <the id of
   the most striking shot: a person's expression before an object>}}. The series wears the
   channel's thumbnail: no "pillar", no "layout", no "tone" and no "variants".`,
-  titleGuide: `youtube.title is the file's question followed by 「｜奇聞檔案局」`,
+  titleGuide: `youtube.title is the file's question followed by 「｜奇聞檔案局」, written the way the
+  history channels with hundreds of thousands of views write theirs (2026-10-25): the name
+  everybody knows in the first six characters (the ship, the place, the person, the event), one
+  stake word that says what was at risk or what nobody expects (消失、不敢、騙過、差點、全部、
+  真相、憑什麼), a number or a year, a question mark; at most 30 characters before the suffix
+  (「十個人全部消失，1872 年這艘船為什麼還在走？」「曹操自己放的火？赤壁真正燒船的人是誰」),
+  never a calm reading question (「燈塔的故事改了哪裡」)`,
   descriptionGuide: `description is the body only, ending on 「資料截至 YYYY-MM-DD」 with "today"'s
   date and one sentence saying that the illustrations are AI-generated and how real people are
   shown`,
@@ -238,7 +245,9 @@ every other hook rule stands):
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
   least 3 of them planted in the condensation, and every one is paid off.
 - The series has a music bed under the whole narration, as the brand stories do: when
-  "drama_settings.music_enabled" is true, "music" is never left out.`,
+  "drama_settings.music_enabled" is true, "music" is never left out.
+${STORY_OPENING_RULE}
+${TOLD_TO_ONE_VIEWER}`,
   shortOne: "Short 1 is the hook and how the file closes (存檔 or 未結) in brief",
   bibleOf: "ONE 奇聞檔案局 file",
   premiseIs: `"premise" is the file (an event, a claim or a legend, or a question about one)`,

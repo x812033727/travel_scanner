@@ -8,11 +8,13 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
+import { isLongAnime } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { mixHash, resolveMusic } from "../core/drama.mjs";
-import { MIN_LOOP_SECONDS } from "../core/music-loop.mjs";
+import { loopCovers, MIN_LOOP_SECONDS } from "../core/music-loop.mjs";
 import { atomicWrite, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
+import { STORY_KIND } from "../core/story.mjs";
 import { FPS, speechHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { mediaKey, readCache, readJobs } from "./cache.mjs";
@@ -82,13 +84,38 @@ async function retainedGeneratedTrack(workdir, key) {
 }
 
 /**
+ * The most times a hands-off series' music stage loops a short track on its own: the track
+ * covers at least half the cut, so the loop only fills a tail. A track shorter than that is far
+ * from what was asked for, and the owner looks at it.
+ */
+export const HANDS_OFF_MAX_PLAYS = 2;
+
+/**
+ * Whether the checks, not the owner, decide a short generated track's loop: an episode of a
+ * hands-off drama series (docs/videos/BINGE.md: its checks decide every gate), from the
+ * episode's series.json. A long anime keeps its owner's gates however the flag reads, as the
+ * site's hands_off_series has it. A brand story's series is hands-off too, but the hold was
+ * written for its beds (#1669, a 174 s track under a 600 s request), which play three or more
+ * times under its cut, so a story's loop stays the owner's `music --loop`.
+ */
+export function loopDecidedByChecks(series) {
+  return Boolean(series) && series.kind !== STORY_KIND && !isLongAnime(series) && !isLongAnime(series.series) && series.series?.hands_off === true;
+}
+
+/** The loop music/manifest.json records (read by core/music-loop.mjs loopCovers). */
+function loopRecord({ sha256, track, cut, basis, decidedBy, now }) {
+  return { method: "stream_loop", sha256, track_seconds: track, cut_seconds: cut, plays: Math.ceil(cut / track), basis, decided_by: decidedBy, decided_at: now.toISOString() };
+}
+
+/**
  * `music --loop`: the owner's decision that a retained generated track shorter than the cut
- * plays looped, as every mix already plays it (assemble/drama.mjs soundGraph, `-stream_loop -1`),
- * so a published video's dubs carry the bed its approved cut was mixed with. Free: no provider
- * request, no credentials. Checked: the file still matches its saved SHA-256, its length comes
- * from a full decode, it is at least MIN_LOOP_SECONDS, and the cut on disk (checks.json) was
- * assembled with these music settings. Writes the loop into music/manifest.json, which
- * musicInputs and status read (core/music-loop.mjs loopCovers).
+ * plays looped, as every mix already plays it (assemble/drama.mjs soundGraph, `-stream_loop -1`).
+ * Free: no provider request, no credentials. Checked: the file still matches its saved SHA-256,
+ * the manifest was made for these music settings, its length comes from a full decode, it is at
+ * least MIN_LOOP_SECONDS, and the cut is the current timeline's (speech_hash). That cut may not be
+ * assembled yet: a new video's assembly needs the loop first (assemble/sound.mjs musicInputs), and
+ * a published video's dubs reuse the bed its cut was mixed with, so `basis` says which it was.
+ * Writes the loop into music/manifest.json, which musicInputs and status read (loopCovers).
  */
 async function recordLoop({ doc, lexicon, workdir, mix, ctx, EXIT }) {
   const manifest = readJson(manifestFile(workdir), null);
@@ -99,20 +126,21 @@ async function recordLoop({ doc, lexicon, workdir, mix, ctx, EXIT }) {
   if (!isInside(file, workdir) || !existsSync(file) || (await sha256File(file)) !== manifest.sha256) {
     throw new UsageError(`retained music ${manifest.file} is missing or differs from its saved SHA-256; restore the paid file before recording a loop`);
   }
+  // A held track keeps its request's hash in requested_mix_hash; a passing or older one in mix_hash.
+  if ((manifest.requested_mix_hash ?? manifest.mix_hash) !== mix) throw new UsageError("music/manifest.json was made for older music settings; run music first, then record the loop of its track");
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline || timeline.speech_hash !== speechHash(doc, lexicon)) throw new UsageError("timeline.json is missing or was built for an older script; the loop is recorded for the current cut");
-  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checks?.ok || checks.mix_hash !== mix || checks.speech_hash !== timeline.speech_hash) {
-    throw new UsageError("no current cut was assembled with these music settings; the loop reuses the bed of an assembled cut, so assemble first");
-  }
   const actualSeconds = await decodedMusicSeconds(file, ctx.env);
   if (actualSeconds < MIN_LOOP_SECONDS) throw new UsageError(`the track decodes to ${actualSeconds.toFixed(3)} s, under the ${MIN_LOOP_SECONDS} s a looped bed needs; choose another licensed track`);
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const assembled = existsSync(path.join(workdir, ARTIFACTS.video)) && Boolean(checks?.ok) && checks.mix_hash === mix && checks.speech_hash === timeline.speech_hash;
   const cutSeconds = timeline.total_frames / FPS;
-  const loop = { method: "stream_loop", sha256: manifest.sha256, track_seconds: actualSeconds, cut_seconds: cutSeconds, plays: Math.ceil(cutSeconds / actualSeconds), decided_at: ctx.now().toISOString() };
+  const loop = loopRecord({ sha256: manifest.sha256, track: actualSeconds, cut: cutSeconds, basis: assembled ? "assembled_cut" : "timeline", decidedBy: "command", now: ctx.now() });
   if (!mayWriteProject(ctx, workdir, "music")) return EXIT.incomplete;
   atomicWrite(manifestFile(workdir), `${JSON.stringify({ ...manifest, mix_hash: mix, actual_seconds: actualSeconds, duration_measurement: "ffmpeg_full_decode", duration_hold: false, loop }, null, 2)}\n`);
   recordStage(workdir, "music", { source: "generated", looped: true, actual_seconds: actualSeconds, cut_seconds: cutSeconds }, ctx.now());
-  ctx.stdout.write(`music: ${manifest.file} (decoded ${actualSeconds.toFixed(3)} s) plays ${loop.plays} times under the ${cutSeconds.toFixed(3)} s cut, as the assembled cut does; recorded in music/manifest.json\n`);
+  ctx.stdout.write(`music: ${manifest.file} (decoded ${actualSeconds.toFixed(3)} s) plays ${loop.plays} times under the ${cutSeconds.toFixed(3)} s cut${assembled ? ", as the assembled cut does" : ""}; recorded in music/manifest.json\n`);
+  if (!assembled) ctx.stdout.write(`next: node tools/video/cli.mjs assemble --slug ${doc.slug}\n`);
   return EXIT.ok;
 }
 
@@ -125,7 +153,8 @@ export async function run(command, args, ctx) {
   if (values.loop) {
     if (!resolveMusic(doc)?.prompt) throw new UsageError(`${doc.slug} has no generated music to loop`);
     const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
-    // Recorded for the cut already made, so the script's lint today does not stand in the way.
+    // A decision about the bed alone, so the script's lint today does not stand in the way;
+    // assemble lints before it mixes.
     return recordLoop({ doc, lexicon, workdir, mix: mixHash(doc), ctx, EXIT });
   }
   const lint = lintProject(project);
@@ -184,14 +213,30 @@ export async function run(command, args, ctx) {
   const actualSeconds = await decodedMusicSeconds(path.join(workdir, track.file), ctx.env, ffmpeg);
   const requiredSeconds = timeline.total_frames / FPS;
   const short = actualSeconds < requiredSeconds;
+  // A short track plays looped only by a recorded decision: the one already made for this file
+  // and cut (a rerun keeps it), or, on a hands-off series, the checks' own (loopDecidedByChecks).
+  const prior = readJson(manifestFile(workdir), null)?.loop;
+  const plays = Math.ceil(requiredSeconds / actualSeconds);
+  const checksDecide = loopDecidedByChecks(project.series);
+  let loop = null;
+  if (short && loopCovers({ sha256: track.sha256, actual_seconds: actualSeconds, loop: prior }, requiredSeconds)) loop = prior;
+  else if (short && checksDecide && actualSeconds >= MIN_LOOP_SECONDS && plays <= HANDS_OFF_MAX_PLAYS) {
+    loop = loopRecord({ sha256: track.sha256, track: actualSeconds, cut: requiredSeconds, basis: "timeline", decidedBy: "hands_off", now: ctx.now() });
+  }
+  const held = short && !loop;
   // An insufficient track retains the requested mix binding for audit, but has no passing mix_hash.
   // This keeps the existing status checklist from marking "music generated" complete.
-  const manifest = { mix_hash: short ? null : mix, requested_mix_hash: mix, source: "generated", file: track.file, sha256: track.sha256, requested_seconds: seconds, actual_seconds: actualSeconds, duration_measurement: "ffmpeg_full_decode", duration_hold: short, prompt: music.prompt, key, model: manifest_model(status), generated_at: ctx.now().toISOString() };
+  const manifest = { mix_hash: held ? null : mix, requested_mix_hash: mix, source: "generated", file: track.file, sha256: track.sha256, requested_seconds: seconds, actual_seconds: actualSeconds, duration_measurement: "ffmpeg_full_decode", duration_hold: held, prompt: music.prompt, key, model: manifest_model(status), generated_at: ctx.now().toISOString(), ...(loop ? { loop } : {}) };
   atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
-  recordStage(workdir, "music", { source: "generated", requested_seconds: seconds, actual_seconds: actualSeconds, duration_hold: short, reused: track.reused, usd: ledgerTotals(workdir).usd }, ctx.now());
+  recordStage(workdir, "music", { source: "generated", requested_seconds: seconds, actual_seconds: actualSeconds, duration_hold: held, ...(loop ? { looped: true } : {}), reused: track.reused, usd: ledgerTotals(workdir).usd }, ctx.now());
   ctx.stdout.write(`music: ${track.file} (decoded ${actualSeconds.toFixed(3)} s; requested ${seconds} s${track.reused ? "; reused" : ""}); this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
-  if (short) {
-    ctx.stderr.write(`music needs the owner: decoded track is shorter than the ${requiredSeconds.toFixed(3)} s cut. Keep this paid file; arrange an explicit checked loop or another licensed track. No replacement was bought.\n`);
+  if (loop) {
+    const by = loop === prior ? "the loop already recorded for this file and cut" : "a hands-off series' checks recorded the loop";
+    ctx.stdout.write(`music: plays ${loop.plays} times under the ${requiredSeconds.toFixed(3)} s cut (${by}; music/manifest.json)\n`);
+  }
+  if (held) {
+    const handsOff = !checksDecide ? "" : actualSeconds < MIN_LOOP_SECONDS ? ` Under ${MIN_LOOP_SECONDS} s it is no bed to loop.` : ` It would play ${plays} times, more than the ${HANDS_OFF_MAX_PLAYS} a hands-off series loops on its own.`;
+    ctx.stderr.write(`music needs the owner: decoded track is shorter than the ${requiredSeconds.toFixed(3)} s cut.${handsOff} Keep this paid file; record a checked loop (node tools/video/cli.mjs music --slug ${doc.slug} --loop) or arrange another licensed track. No replacement was bought.\n`);
     return EXIT.owner;
   }
   ctx.stdout.write(`next: node tools/video/cli.mjs assemble --slug ${doc.slug}\n`);

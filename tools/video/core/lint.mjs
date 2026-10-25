@@ -279,7 +279,10 @@ function seriesProblems(doc, series, error, warn) {
     for (const key of ["appearance", "sheet_prompt"]) {
       if ((character[key] ?? null) !== (known[key] ?? null)) error(`characters[${index}].${key}`, "differs from the series' setting book; copy it as written so the character sheets are reused");
     }
-    if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
+    // A voice the book names is copied as written; a character the book leaves without one (a
+    // voice_note alone) is cast by the worker (automation/series.mjs castVoices), and that pick is
+    // video.json's to carry; the drama schema still wants one on every character.
+    if (known.voice !== undefined && known.voice !== null && JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
     if (JSON.stringify(character.shot_looks ?? []) !== JSON.stringify(known.shot_looks ?? [])) error(`characters[${index}].shot_looks`, "differs from the series' approved look catalog; copy it as written");
   });
   // A binge series (docs/videos/BINGE.md) buys clips by tier: the worker copies the series'
@@ -355,6 +358,27 @@ export function episodeScriptProblems(doc, timeline, { outroCount = true } = {})
     if (!said.some((text) => text.includes(SUBSCRIBE_WORD))) warn(where, `the outro asks for no subscription: its ${OUTRO_SENTENCES} sentences answer the opening question with its number, ask one question the viewer can answer in a comment, and give one reason to subscribe (script-writing.md §結尾)`);
     if (outroCount && said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
   });
+  return problems;
+}
+
+/**
+ * The sticker drama's cut (the manga tier, docs/videos/BINGE.md §畫面等級): a new picture every
+ * 2 to 3.5 seconds, one line per shot. The two 100k-view 動態漫畫 compilations measured on
+ * 2026-10-24 cut every 1.75 to 3.25 s; our first episode held 3.75 s and read as slow. A shot
+ * past this many seconds on one picture is a warning naming the shot.
+ */
+export const MANGA_SHOT_MAX_SECONDS = 4;
+
+/** Each manga shot whose estimated length passes MANGA_SHOT_MAX_SECONDS, as { path, message }. */
+export function mangaShotLengthProblems(doc, timeline) {
+  const problems = [];
+  for (const scene of timeline?.scenes ?? []) {
+    const index = (doc.scenes ?? []).findIndex((each) => each.id === scene.id);
+    if (index < 0 || !isShot(doc.scenes[index])) continue;
+    const seconds = frameToSeconds(scene.end_frame - scene.start_frame);
+    if (seconds <= MANGA_SHOT_MAX_SECONDS) continue;
+    problems.push({ path: `scenes[${index}]`, message: `shot ${scene.id} holds one picture for about ${seconds.toFixed(1)} s; the manga tier cuts every 2 to 3.5 s, at most ${MANGA_SHOT_MAX_SECONDS}: give the shot one line and move the rest to a new picture (docs/videos/BINGE.md §畫面等級)` });
+  }
   return problems;
 }
 
@@ -529,6 +553,7 @@ export function lintVideo(doc, context = {}) {
   // animated dramas keep their own craft untouched (the owner, 2026-10-22).
   if (context.series?.visual_tier === "manga") {
     for (const problem of shotHookProblems(doc, timeline, MANGA_HOOK_GAP_SECONDS)) warn(problem.path, problem.message, "narrative");
+    for (const problem of mangaShotLengthProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the synthesized timeline decides)`);
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).

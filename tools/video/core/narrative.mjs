@@ -6,7 +6,7 @@
 // (NARRATIVE_PANEL) the worker asks after the listener's edit, and sends back to the writer.
 import { createHash } from "node:crypto";
 import { isDrama, isExplainer } from "./drama.mjs";
-import { eachLine } from "./schema.mjs";
+import { eachLine, spokenText } from "./schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "./script-check.mjs";
 import { isStory } from "./story.mjs";
 import { chapterList, estimateTimeline, formatClock, frameToSeconds } from "./timeline.mjs";
@@ -298,13 +298,39 @@ export function outroNextVideoProblems(doc) {
   return problems;
 }
 
+/**
+ * The fewest 「你」 a thousand spoken characters of a story-series script (register.mjs
+ * TOLD_TO_ONE_VIEWER; 2026-10-25): the reference channel's Seiko episode says it 4.2 times a
+ * thousand characters, our H01 0.5 and S01 2.2, and the one that reads as a file recited is the
+ * one that never turns to the viewer.
+ */
+export const VIEWER_ADDRESS_PER_1000 = 2;
+const SPOKEN = /[^\s，。、？！：；「」『』…,.?!（）()\-—]/g;
+
+/** A story-series script that never turns to the viewer: one warning for the writer, none under the floor's scripts. */
+export function viewerAddressProblems(doc) {
+  let characters = 0;
+  let you = 0;
+  for (const { line } of eachLine(doc)) {
+    const text = spokenText(line) ?? "";
+    characters += (text.match(SPOKEN) ?? []).length;
+    you += (text.match(/你/g) ?? []).length;
+  }
+  if (characters < 500) return [];
+  const per1000 = (you / characters) * 1000;
+  if (per1000 >= VIEWER_ADDRESS_PER_1000) return [];
+  return [{ path: "scenes", message: `「你」 ${you} times in ${characters} spoken characters (${per1000.toFixed(1)} a thousand): a story told to one viewer turns to them at least ${VIEWER_ADDRESS_PER_1000} times a thousand characters, about once a chapter (register.mjs TOLD_TO_ONE_VIEWER; what they use, own, have heard or would have done)` }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
   const length = Number.isFinite(minutes) ? minutes : frameToSeconds(timeline?.total_frames ?? 0) / 60;
+  // The two story series (the tight cadence) are told to one viewer; the explainers keep their register.
+  const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc)]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...told]),
   };
 }
 
@@ -355,10 +381,27 @@ export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
   one_thread: "是否有一個例子從開場帶到結尾，每個新概念都先在這個例子裡發生才有名字，每一章都讓它往前走？開場那個問問題的人在片尾回來。一段集中的用途清單可以（每項不超過三句、都走同一個對照、講完主例接手），每章換一個不相干的例子不算。",
   no_detour: "是否沒有岔出去的段落：每一段都在推進開場那個問題；一句話回答「我的工具能不能用」的支援清單可以，念分數、引言或誰說了什麼的對照清單、推銷別支影片的段落不行？",
 });
-/** The panel for a script: the tutorial wording for a tutorial, the story wording for everything else. */
+/**
+ * The checks reworded for the two story series, 奇聞檔案局 (a curio- slug) and the brand stories
+ * (a story- slug), whose opening is the stakes, the scene and one promise sentence instead of
+ * three teasers (register.mjs STORY_OPENING_RULE, 2026-10-25): read against the story wording,
+ * the opening the reference channels use would fail opening_hooks and scene_first. Same ids,
+ * same required flags.
+ */
+export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
+  scene_first: "開頭兩句是否先講了這件事的利害（它改變了什麼、差一點改變什麼，帶一個數字），而且前六句（約 25 秒）內觀眾已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事？打招呼不算；一句點名題目與規模的承諾句（「今天我們就來看 Seiko 當年有多瘋狂」）算是開場的一部分，不算介紹主題。",
+  opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句講給觀眾的利害（帶數字）、一件停在結果之前的時刻、一個問題、或一句點名題目與規模的承諾句？（「接下來我們會看到」這種空宣告不算；超過兩個預告時刻、像在念線索清單，也算沒做到。）",
+  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句承諾句：點名題目和一個數字或規模，整支片只一次。",
+  chapters_link: "每一章第一句是否接住上一章留下的具體疑問、動作或物件，或轉向觀眾（「換成你站在那裡」「你大概也會這樣想」），讓事情往前走？標籤、總結、重述剛問過的話不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+});
+/** Whether a script belongs to one of the two story series the viewer wording reads. */
+export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");
+
+/** The panel for a script: the tutorial wording for a tutorial, the viewer wording for a story series, the story wording for everything else. */
 export function panelQuestions(doc) {
-  if (doc?.category !== "tutorial") return NARRATIVE_PANEL;
-  return NARRATIVE_PANEL.map((question) => (TUTORIAL_PANEL_QUESTIONS[question.id] ? { ...question, question: TUTORIAL_PANEL_QUESTIONS[question.id] } : question));
+  const words = doc?.category === "tutorial" ? TUTORIAL_PANEL_QUESTIONS : isStorySeries(doc) ? STORY_SERIES_PANEL_QUESTIONS : null;
+  if (!words) return NARRATIVE_PANEL;
+  return NARRATIVE_PANEL.map((question) => (words[question.id] ? { ...question, question: words[question.id] } : question));
 }
 
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */
@@ -390,7 +433,7 @@ const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify
 /** The story panel's contract hash (every script that is not a tutorial). */
 export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
 /** The contract hash of the panel this script is read against. */
-export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || isStorySeries(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.

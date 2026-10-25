@@ -255,6 +255,21 @@ em { font-style: normal; color: var(--orange); }
 /* b with a page still: the still keeps to the right 60%, so its top left corner (the product's name) is not under the scrim, which fades out over the tone before the picture starts. */
 .thumb-subject.layout-b.from-capture img { width: 60%; margin-left: 40%; }
 .thumb-subject.layout-b.from-capture::after { background: linear-gradient(90deg, rgba(14, 38, 39, 0.97) 0%, rgba(14, 38, 39, 0.92) 34%, rgba(14, 38, 39, 0) 40%); }
+/*
+ * d: the bold look of the story channels with hundreds of thousands of views (2026-10-25; the
+ * default for a curio- or story- slug, templates.mjs THUMB_BOLD_LAYOUT). The picture fills the
+ * frame under a scrim that darkens towards the bottom; the words sit bottom left across the
+ * whole width: the headline yellow with a black outline, the second line white with the same
+ * outline, no label pill. The brand's company name (marque) keeps its place above.
+ */
+.thumb-subject.layout-d { width: 100%; }
+.thumb-subject.layout-d::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 70%, rgba(0, 0, 0, 0.7) 100%); }
+.thumb.column.layout-d { right: 0; padding: 48px 72px 64px 56px; justify-content: flex-end; gap: 14px; }
+.thumb.column.layout-d .tag { display: none; }
+.thumb.column.layout-d h1 { color: #ffd60a; font-size: 150px; max-height: 340px; letter-spacing: 0.02em; -webkit-text-stroke: 7px #000; paint-order: stroke fill; text-shadow: 0 6px 0 #000, 0 0 28px rgba(0, 0, 0, 0.6); }
+.thumb.column.layout-d .sub { color: #fff; font-size: 66px; font-weight: 900; max-height: 96px; -webkit-text-stroke: 5px #000; paint-order: stroke fill; text-shadow: 0 4px 0 #000; }
+.thumb.column.layout-d .brand { color: var(--paper); opacity: 0.85; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8); }
+.thumb.column.layout-d .marque { text-shadow: 0 4px 0 #000, 0 0 20px rgba(0, 0, 0, 0.6); }
 /* c: a hard split; the text column is the tone block, the subject's area the dark ground. */
 .thumb-subject.layout-c { background: var(--ground-2); }
 .thumb.column.layout-c { background: var(--tone); }

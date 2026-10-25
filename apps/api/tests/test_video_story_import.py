@@ -171,7 +171,7 @@ def test_compiled_story_accepts_only_the_matching_ten_minute_cute_route() -> Non
     assert stories.series_problems(document["series"]) == []
 
     for changes, expected in (
-        ({"target_minutes": 13}, "series.target_minutes must be 10"),
+        ({"target_minutes": 11}, "series.target_minutes must be 10 or 13"),
         ({"image_model": "gemini-3.1-flash-image"}, 'series.image_model must be "image-01"'),
         ({"style_preset": "cinematic-3d"}, 'series.style_preset must be "custom"'),
         ({"look": {"preset": "cute-mystery", "negative": "extra"}}, "series.look needs a style"),
@@ -180,7 +180,7 @@ def test_compiled_story_accepts_only_the_matching_ten_minute_cute_route() -> Non
             "series.look needs a style",
         ),
         (
-            {"look": {"style": "a custom look", "negative": "logos"}},
+            {"look": {"style": "a custom look", "negative": "logos"}, "target_minutes": 10},
             "series.target_minutes must be 12 to 15",
         ),
     ):
@@ -849,7 +849,7 @@ async def test_import_creates_the_cute_story_series_without_rewriting_look(
         series = await session.scalar(select(VideoDramaSeries))
         assert series is not None
         assert (series.target_minutes, series.image_model, series.style_preset) == (
-            10,
+            13,
             "image-01",
             "custom",
         )

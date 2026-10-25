@@ -8,7 +8,7 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, MANGA_NARRATION_PERFORMANCE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
 import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
@@ -717,7 +717,13 @@ test("the manga tier's rule reaches a one-off without a genre, and the default t
   assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills", "manga"]);
   assert.deepEqual(TIER_CLIP_SHARE, { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 });
   assert.match(VISUAL_TIER_RULES.manga, /never "visual": "clip"/);
-  assert.match(VISUAL_TIER_RULES.manga, /new picture every 3 to 5 seconds/);
+  // The cut of 2026-10-24 (ticket 2026-10-24-manga-sticker-drama-pace-visible-camera): 2 to 3.5 s a picture, one line a shot, lint at 4 s.
+  assert.match(VISUAL_TIER_RULES.manga, /new picture every 2 to 3\.5 seconds, one line per shot[^.]*the lint warns on any shot over 4 seconds/);
+  assert.doesNotMatch(VISUAL_TIER_RULES.manga, /3 to 5 seconds/);
+  // The beats the references leave: a chime on its own line, a breath before a reveal.
+  assert.match(VISUAL_TIER_RULES.manga, /write every 「叮」 as a line of its own \("text": "叮。", "pause_after_ms": 500\)[^.]*the line before a reveal or a reversal "pause_after_ms": 800/);
+  assert.equal(MANGA_NARRATION_PERFORMANCE, "說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事");
+  assert.ok(VISUAL_TIER_RULES.manga.includes(`2026-10-22: ${MANGA_NARRATION_PERFORMANCE}.`));
   assert.match(VISUAL_TIER_RULES.manga, /one character per picture/);
   // The owner's narrator choice of 2026-10-22 (Sulafat, the storyteller's register) rides in the tier's rule.
   assert.match(VISUAL_TIER_RULES.manga, /"performance" plan is the storyteller's[^.]*說書人的語氣，節奏快/);

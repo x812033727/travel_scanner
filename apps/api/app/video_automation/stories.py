@@ -500,8 +500,9 @@ def series_problems(series: Any) -> list[str]:
     cute = isinstance(look, dict) and look == {"preset": "cute-mystery"}
     low, high = STORY_MINUTES
     if cute:
-        if not _is_int(minutes) or minutes != 10:
-            problems.append("series.target_minutes must be 10 for the cute-mystery look")
+        # 13 since the owner's 2026-10-25 decision; 10 for the batches planned before it.
+        if not _is_int(minutes) or minutes not in (10, 13):
+            problems.append("series.target_minutes must be 10 or 13 for the cute-mystery look")
         if series.get("image_model") != "image-01":
             problems.append('series.image_model must be "image-01" for the cute-mystery look')
         if series.get("style_preset") != "custom":

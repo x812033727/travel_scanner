@@ -126,6 +126,7 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 | --- | --- |
 | 有旁白的長片：slides、screencast、解說漫劇（`isExplainer`，含「原來如此」357 格系列片頭）、品牌故事（即使畫面有角色） | `after_first_chapter` |
 | 有角色的漫劇、合集、Shorts | `start`（維持原樣） |
+| 合集作品的每一集（`series.json` `compilation: true`，不是合集影片本身） | 不包：成片＝本體，片頭片尾只在合集放一次（[`BINGE.md`](BINGE.md) §合集；2026-10-24） |
 
 位置記在 pin：`branding.json` 的 `intro_at` 是 `"start"` 或 `"after_first_chapter"`。
 2026-10-13 前寫的 pin 沒有這個欄位，一律讀成 `"start"`，hash 不變，所以舊片重建得到
