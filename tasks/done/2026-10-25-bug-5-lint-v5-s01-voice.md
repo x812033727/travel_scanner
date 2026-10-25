@@ -1,13 +1,13 @@
 ---
 id: 2026-10-25-bug-5-lint-v5-s01-voice
 title: 《系統說我是 BUG》第 5 集卡在 lint：設定集 v5 的石魔與六個 s01- 配角沒有 voice，重做的第 1–4 集可能一樣
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-goofy-curie
 claimed_at: 2026-10-25T06:20:00Z
 created_at: 2026-10-25T05:52:41Z
-completed_at:
+completed_at: 2026-10-25T08:07:38Z
 branch: claude/goofy-curie-35eda8
 depends_on: []
 scope:
@@ -44,7 +44,8 @@ scope:
 - [x] 決定補聲音的位置：工人端。站上改設定集會把總綱、細綱退回待審、ready 集退回 planned，代價大；而且 e005 與 e001-redo1 的 `series.json` 已在起草時抄好（沒有 voice），改站上也救不了它們，所以 `settle` 也補、lint 放行人物表沒 voice 的角色。
 - [x] 改法（PR）：`series.mjs` 新增 `SPARE_VOICES`、`castVoices(cast, { voices, narrator, notes })`，`castFrom(setting, episode, options)` 多收 `{ voices, narrator }`；`flow.mjs` `draftEpisode` 傳 drama 分頁的 `character_voice_pool` 與旁白聲音，`settle` 在抄完人物表後呼叫 `castVoices`；`lint.mjs` `seriesProblems` 只在人物表有 `voice` 時比對；`docs/videos/SERIES.md` 寫規則；測試 `series.test.mjs`、`lint.test.mjs` 各一個。`schema.mjs` 沒動。
 - [x] 時長收據：flow.mjs、series.mjs、series.test.mjs、lint.mjs、lint.test.mjs 五個綁定檔由獨立代理做 DURATION_ONLY 增量（見 review.md 最後一節）。
-- [ ] **部署後**（照 skill `deploy`）：後台對 `xitong-shuo-wo-shi-bug-e005` 按「重試」——如果 auto.json 有 `deferred_until`（退避中），「重試」會回 409，要先在主機清掉 `auto.json` 的 `deferred_until`（10-24 19:5xZ 用過的做法，`docker compose … exec -T video-worker node -` 改 `/opt/mokaair/docs/videos/<slug>/auto.json`，改前確認工人 log 沒有「writer is still running」）。重做的 `e001-redo1`～`e004-redo1` 若也卡在同一個 lint，一樣重試；還沒起草的會直接走新 `castFrom`。重試後寫手重跑一輪（答案在 `run-receipts/`），`settle` 補上六個配角的聲音，lint 應 0 errors；確認方式：後台檢查清單不再有「lint still fails … voice」，主機 `video.json` 裡 shi-mo／s01-* 各有 `voice {provider: "gemini", name, style}`。
+- [x] **結果（2026-10-25 08:05Z）**：PR #1842 合併後 main（98aa2dea6，含 #1843）在 07:39–07:41Z 由別的 session 部署；`host-verify.sh` 14/14 PASS，含三項專屬檢查（video-worker 裡 `castVoices` 存在且 `castVoices([{id:"a",name:"x"}])` 回 Charon、lint 的 `known.voice !== undefined` 在）。e005 的重試請求（`retry_request_id 4db98e3f…`）部署後被工人接下：日誌「script fixed and passes lint」→ 事實查核四輪 → 分鏡劇本送審 → 站上自動核准；後台 stage「script approved」。video.json 七個角色都有 Gemini 聲音：`s01-lao-qi` 拿到 Zubenelgenubi（drama 分頁的 `character_voice_pool` 先用，備用聲音沒輪到）、lao-niang Gacrux、其餘照設定集。`e001-redo1` 也過 lint、查核七輪、劇本送審（script review pending，hands_off 下等站上判）；e002–e004 redo1 還是 ready、沒起草，起草時直接走新 `castFrom`。沒看到 characters[3] 的收據，但問題已不存在。
+- [x] **部署後**（照 skill `deploy`）：後台對 `xitong-shuo-wo-shi-bug-e005` 按「重試」——如果 auto.json 有 `deferred_until`（退避中），「重試」會回 409，要先在主機清掉 `auto.json` 的 `deferred_until`（10-24 19:5xZ 用過的做法，`docker compose … exec -T video-worker node -` 改 `/opt/mokaair/docs/videos/<slug>/auto.json`，改前確認工人 log 沒有「writer is still running」）。重做的 `e001-redo1`～`e004-redo1` 若也卡在同一個 lint，一樣重試；還沒起草的會直接走新 `castFrom`。重試後寫手重跑一輪（答案在 `run-receipts/`），`settle` 補上六個配角的聲音，lint 應 0 errors；確認方式：後台檢查清單不再有「lint still fails … voice」，主機 `video.json` 裡 shi-mo／s01-* 各有 `voice {provider: "gemini", name, style}`。
 - [ ] 部署後想固定某個配角的聲音：站上設定集給它 `voice`（會退回文件待審，代價見上）；不固定就照工人挑的。
 
 ## Notes
