@@ -1,6 +1,6 @@
 {
   "title": "PHP2Shell: la IA halló la falla primero, por qué los sitios cerraron solos y cómo revisar el tuyo",
-  "description": "El 21 de octubre de 2026 PHP lanzó un parche de seguridad de emergencia por dos fallas llamadas PHP2Shell: la falla está en PHP mismo; sin login, una petición ejecuta código en el servidor. La IA lo halló dos meses antes, una filtración adelantó el parche un día, y sitios de gobierno del mundo, pixiv y Wikimedia cerraron solos. Con un recall de autos (el defecto está en el motor, no en la carrocería) explico por qué te afecta y qué pasó en cuatro días; al final, en Ubuntu: 8.3.6 en php -v no significa sin parche; mira el changelog del paquete.\nPara quien tiene sitio propio en Taiwán, administra el WordPress o la tienda de su empresa, o vio \"sitios caídos en el mundo\" y quiere saber qué hacer.\n\nGrabado el 25 de octubre de 2026. Cuatro versiones seguras, \"solo actualizar es la solución completa\", distros con el parche antes: aviso de php.net del 21 de octubre; auditoría de 2024, filtración y adelanto: blog de la PHP Foundation; 70 % de los sitios, modelos y cronología: post de Wiz; firewall 03:02 UTC: blog de Cloudflare; honeypot del 17 de octubre: AWS Security Blog; unos 28 mil sitios en Taiwán, 200 de gobierno, el orden parchar, WAF, suspender: iThome, conferencia de la agencia de ciberseguridad del 22 de octubre; cierres por país: BBC; cifras de la premier de Japón y del CEO de Cloudflare: sus posts en X; servicios japoneses en pausa: Japan Cyber Watch. Los tres comandos y su salida se corrieron el 2026-10-25 en Ubuntu 24.04.5, PHP 8.3.6 (cli) y dpkg 1.22.6; versión corregida del paquete 24.04: página CVE de ubuntu.com. \"Mi opinión\" y \"no lo pude averiguar\" son opinión del autor. El video no demuestra el ataque.\n\nComandos:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n¿PHP lo administras tú o el hosting? ¿Qué versión hallaste? Cuéntame en comentarios.",
+  "description": "El 21 de octubre de 2026 PHP lanzó un parche de seguridad de emergencia por dos fallas llamadas PHP2Shell: la falla está en PHP mismo; sin login, una petición ejecuta código en el servidor. La IA la halló dos meses antes, una filtración adelantó el parche un día, y sitios de gobierno del mundo, pixiv y Wikimedia cerraron solos. Con un recall de autos (el defecto está en el motor, no en la carrocería) explico por qué te afecta y qué pasó en cuatro días; al final, en Ubuntu: 8.3.6 en php -v no significa sin parche; mira el changelog del paquete.\nPara quien tiene sitio propio en Taiwán, administra el WordPress o la tienda de su empresa, o vio \"sitios caídos en el mundo\" y quiere saber qué hacer.\n\nGrabado el 25 de octubre de 2026. Cuatro versiones seguras, \"solo actualizar es la solución completa\", distros con el parche antes: aviso de php.net del 21 de octubre; auditoría de 2024, filtración y adelanto: blog de la PHP Foundation; 70 % de los sitios, modelos y cronología: post de Wiz; firewall 03:02 UTC: blog de Cloudflare; honeypot del 17 de octubre: AWS Security Blog; unos 28 mil sitios en Taiwán, 200 de gobierno, el orden parchar, WAF, suspender: iThome, conferencia de la agencia de ciberseguridad del 22 de octubre; cierres por país: BBC; cifras de la premier de Japón y del CEO de Cloudflare: sus posts en X; servicios japoneses en pausa: Japan Cyber Watch. Los tres comandos y su salida se corrieron el 2026-10-25 en Ubuntu 24.04.5, PHP 8.3.6 (cli) y dpkg 1.22.6; versión corregida del paquete 24.04: página CVE de ubuntu.com. \"Mi opinión\" y \"no lo pude averiguar\" son opinión del autor. El video no demuestra el ataque.\n\nComandos:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n¿PHP lo administras tú o el hosting? ¿Qué versión hallaste? Cuéntame en comentarios.",
   "tags": [
     "PHP2Shell",
     "vulnerabilidad PHP",
@@ -22,8 +22,8 @@
     "open": "¿Qué es PHP2Shell?",
     "seventy": "¿Me afecta si no escribo PHP?",
     "audit": "¿Cómo la halló la IA?",
-    "leak": "¿Por qué el parche llegó antes?",
-    "ncsc": "¿Por qué sitios cerraron solos?",
+    "leak": "¿Por qué el parche llegó un día antes?",
+    "ncsc": "¿Por qué los sitios cerraron solos?",
     "advisory-page": "¿Parchado? ¿Basta la versión?",
     "my-call": "Mi opinión: qué hacer ahora"
   },
@@ -45,7 +45,7 @@
   "lines": {
     "4649": {
       "source_hash": "781941164d38",
-      "text": "el 11 de agosto, el investigador Ryan Austin presentó un ataque con GPT-5.6 Sol, el del inicio: una petición y entra."
+      "text": "el 11 de agosto, el investigador Ryan Austin presentó un ataque con GPT-5.6 Sol, como el del inicio: una petición y entra."
     },
     "9ey5": {
       "source_hash": "a1c7fd83a276",
@@ -89,7 +89,7 @@
     },
     "9agr": {
       "source_hash": "c773e83bb426",
-      "text": "¿Qué tan probable es? De los sitios con lenguaje de servidor detectable, casi el 70 % usa PHP: WordPress, Drupal y Joomla incluidos."
+      "text": "Dije que sí: ¿qué tan probable es? De los sitios con lenguaje de servidor detectable, casi el 70 % usa PHP: WordPress, Drupal y Joomla incluidos."
     },
     "iecr": {
       "source_hash": "0a662bae1879",
@@ -105,7 +105,7 @@
     },
     "qy4i": {
       "source_hash": "d3d750b49dce",
-      "text": "Más riesgo: servidores con PHP como módulo de Apache."
+      "text": "El mayor riesgo: servidores con PHP como módulo de Apache."
     },
     "byuv": {
       "source_hash": "a118c2e966a3",
@@ -113,11 +113,11 @@
     },
     "86sc": {
       "source_hash": "ce857ae1d545",
-      "text": "¿Y Taiwán? La agencia de ciberseguridad cuenta unos 28 mil sitios públicos con PHP,"
+      "text": "¿Y Taiwán? La agencia de ciberseguridad cuenta unos 28 mil sitios en internet con PHP,"
     },
     "rsu6": {
       "source_hash": "e35649224f4c",
-      "text": "unos 200 son del gobierno; hasta la conferencia del director, sin reportes de intrusión."
+      "text": "unos 200 son del gobierno; hasta la rueda de prensa del director, sin reportes de intrusión."
     },
     "gffq": {
       "source_hash": "76136f0287ec",
@@ -125,11 +125,11 @@
     },
     "2i85": {
       "source_hash": "85b38333cb16",
-      "text": "¿Por qué recién ahora?"
+      "text": "¿Por qué solo ahora?"
     },
     "v5ur": {
       "source_hash": "a28af8db890c",
-      "text": "En 2024, en la primera auditoría externa de PHP en años, un desarrollador clave ya vio señales del problema de memoria."
+      "text": "En 2024, en la primera auditoría externa de PHP en años, un desarrollador del núcleo ya vio señales del problema de memoria."
     },
     "92tm": {
       "source_hash": "8e27db15bd48",
@@ -157,7 +157,7 @@
     },
     "rb3w": {
       "source_hash": "79caf044b9b5",
-      "text": "El 30 de julio, la firma Calif empezó a auditar PHP en Patch the Planet, el plan de OpenAI para parchar código abierto;"
+      "text": "El 30 de julio, la firma Calif, en el plan de OpenAI para parchar código abierto, Patch the Planet, empezó a auditar PHP;"
     },
     "jmju": {
       "source_hash": "7edfcbe913ae",
@@ -173,7 +173,7 @@
     },
     "2eju": {
       "source_hash": "e3e4a419d9c4",
-      "text": "Tras el ataque de Austin, fue prioridad uno del equipo de seguridad de la fundación; el parche saldría el 22 de octubre."
+      "text": "Desde el informe de Austin, fue prioridad uno del equipo de seguridad de la fundación; el parche saldría el 22 de octubre."
     },
     "26df": {
       "source_hash": "25c29c5ebb55",
@@ -185,7 +185,7 @@
     },
     "j6sz": {
       "source_hash": "7cd5609465e8",
-      "text": "Un punto de inflexión así en la era de la IA."
+      "text": "Quizá un punto de inflexión en la era de la IA."
     },
     "m35m": {
       "source_hash": "2a0599697bdf",
@@ -221,7 +221,7 @@
     },
     "pmy2": {
       "source_hash": "d2824b4dd2f3",
-      "text": "A las 7:41, Chainguard, de contenedores, lanzó imágenes parchadas más de 6 h antes."
+      "text": "A las 7:41, Chainguard, de contenedores, sacó imágenes parchadas más de 6 horas antes."
     },
     "q6jq": {
       "source_hash": "e61dd1670bc8",
@@ -257,7 +257,7 @@
     },
     "vh8a": {
       "source_hash": "7af177310d88",
-      "text": "No puedes parchar ni mitigar: desconéctalo."
+      "text": "Tarde para parchar o mitigar: evalúa bajarlo."
     },
     "bqis": {
       "source_hash": "75b886dc4e4f",
@@ -265,15 +265,15 @@
     },
     "m52w": {
       "source_hash": "2084daced992",
-      "text": "La noche antes del parche, como al salir el aviso de recall, los dueños pararon a un lado."
+      "text": "La noche antes del parche, como al salir el aviso de recall, los dueños orillaron el auto."
     },
     "kirn": {
       "source_hash": "5c1e2898c8e9",
-      "text": "pixiv y niconico pararon;"
+      "text": "En Japón, pixiv y niconico;"
     },
     "s8y2": {
       "source_hash": "b2edb0bda7a3",
-      "text": "Holanda cerró hasta su centro cibernético;"
+      "text": "Holanda: hasta su centro de ciberseguridad;"
     },
     "3hp6": {
       "source_hash": "8abb43f109c6",
@@ -301,7 +301,7 @@
     },
     "g97x": {
       "source_hash": "4f79ae8aa3f9",
-      "text": "si es muy viejo para parchar, un firewall web; si ninguna de las dos, recién ahí pausar."
+      "text": "si es muy viejo para parchar, un firewall web; si no puedes hacer ninguna, solo entonces pausar."
     },
     "ksrk": {
       "source_hash": "41c8710827a5",
@@ -317,7 +317,7 @@
     },
     "zq2u": {
       "source_hash": "ea7e5d563c7a",
-      "text": "Las cuatro versiones, en esta tabla, una por rama: en la tuya, la versión menor debe ser igual o mayor."
+      "text": "Las cuatro versiones, en esta tabla, una por rama: en la tuya, la menor debe ser igual o mayor que la de la tabla."
     },
     "pacb": {
       "source_hash": "600178722938",
@@ -329,7 +329,7 @@
     },
     "2qhy": {
       "source_hash": "0076973fdf23",
-      "text": "Según la tabla, la rama 8.3 queda arreglada recién en la menor 36;"
+      "text": "Según la tabla, la rama 8.3 solo queda arreglada desde la menor 36;"
     },
     "m5s9": {
       "source_hash": "387ca65e1d75",
@@ -445,7 +445,7 @@
     },
     "eedd": {
       "source_hash": "032f8c7c8547",
-      "text": "La pregunta del inicio: la IA la halló primero, ¿por qué cerraron solos?"
+      "text": "Lo del inicio: la IA la halló primero, ¿por qué los sitios cerraron solos?"
     },
     "w9rt": {
       "source_hash": "70d6a99314cc",
