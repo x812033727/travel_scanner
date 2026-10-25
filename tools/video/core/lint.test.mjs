@@ -356,6 +356,16 @@ test("different valid runtime budgets still fail the approved anime snapshot bin
   assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /series' setting book/.test(error.message)));
 });
 
+test("a character the setting book gives no voice carries the worker's cast; one it names is copied", () => {
+  const casting = animeEpisode();
+  delete casting.series.characters[0].voice;
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "the book names none: the episode's pick stands");
+  casting.doc.characters[0].voice = { provider: "gemini", name: "Puck" };
+  assert.ok(!lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice"), "whichever valid voice the worker cast");
+  delete casting.doc.characters[0].voice;
+  assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /provider and name/.test(error.message)), "but every character still needs one");
+});
+
 test("an anime episode cannot lose its policy and fall back to ordinary drama", () => {
   const current = animeEpisode();
   delete current.doc.production_policy;
