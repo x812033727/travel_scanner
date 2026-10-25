@@ -1,5 +1,5 @@
 {
-  "title": "PHP2Shell: a IA achou a falha antes, por que sites pelo mundo fecharam sozinhos e como checar o seu",
+  "title": "PHP2Shell: a IA achou a falha antes; por que sites fecharam sozinhos e como checar o seu",
   "description": "Em 21 de outubro de 2026 o PHP lançou um patch de emergência para duas falhas chamadas PHP2Shell: a falha é no próprio PHP, sem login, uma requisição roda código no servidor. A IA a achou dois meses antes, mas um vazamento adiantou o patch um dia, e sites de governo pelo mundo, o pixiv e a Wikimedia fecharam sozinhos. O vídeo compara a um recall de carro (defeito no motor, não na carroceria), explica por que afeta você e o que houve em quatro dias, e fecha num teste no Ubuntu: 8.3.6 no php -v não prova correção; leia o changelog do pacote.\nPara quem tem site em Taiwan, cuida do WordPress ou e-commerce da empresa, ou viu “sites do mundo todo fora do ar” e quer saber o que fazer.\n\nGravado em 25 de outubro de 2026. Fontes: quatro versões seguras, “só a atualização é a solução completa” e patch prévio às distros: aviso do php.net, 21 de outubro; auditoria de 2024, vazamento e hora do adiantamento: blog da PHP Foundation; 70% dos sites, modelos e cronologia: pesquisa da Wiz; firewall às 03:02 UTC: blog da Cloudflare; honeypot de 17 de outubro: AWS Security Blog; uns 28 mil sites na web e uns 200 de governo em Taiwan, e a ordem patch, WAF, pausa: iThome, coletiva de 22 de outubro do diretor da agência de cibersegurança; sites fora do ar por país: BBC; números da premiê do Japão e do CEO da Cloudflare: posts no X; serviços japoneses pausados: Japan Cyber Watch. Os três comandos e saídas rodaram mesmo em 2026-10-25 no Ubuntu 24.04.5, PHP 8.3.6 (cli), dpkg 1.22.6; pacote corrigido no 24.04: página CVE do ubuntu.com. “Minha opinião” e “não achei” são opinião do autor. O vídeo não mostra o ataque.\n\nComandos do vídeo:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\nQuem cuida do PHP do seu site: você ou a hospedagem? Que versão achou? Conta nos comentários.",
   "tags": [
     "PHP2Shell",
@@ -16,7 +16,7 @@
   "thumbnail": {
     "tag": "Notícias de IA",
     "headline": "A versão\n**engana**",
-    "sub": "PHP2Shell: a IA achou a falha, sites fecharam sozinhos"
+    "sub": "PHP2Shell: a IA achou, sites fecharam sozinhos"
   },
   "chapters": {
     "open": "O que é o PHP2Shell?",
