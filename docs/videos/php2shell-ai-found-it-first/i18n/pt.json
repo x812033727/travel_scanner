@@ -1,6 +1,6 @@
 {
   "title": "PHP2Shell: a IA achou a falha primeiro, por que sites do mundo saíram do ar e como checar o seu",
-  "description": "Em 21 de outubro de 2026, o PHP lançou uma atualização de segurança de emergência para duas falhas conhecidas juntas como PHP2Shell: a falha está no próprio PHP, não exige login e uma única requisição executa código no servidor. A IA a encontrou dois meses antes, mas um vazamento fez o patch sair um dia mais cedo, e sites de governos do mundo todo, o pixiv e a Wikimedia se tiraram do ar por conta própria. Este vídeo usa uma comparação (um recall de carros: o defeito está no motor, não na carroceria) para explicar por que isso afeta você e o que aconteceu em quatro dias, e termina com uma demonstração em uma máquina de teste com Ubuntu: ver 8.3.6 no php -v não significa que não foi corrigido; é preciso olhar o changelog do pacote.\nFeito para quem tem site próprio em Taiwan, cuida do WordPress ou do e-commerce da empresa, ou viu a notícia de “sites do mundo todo fora do ar” e quer saber o que fazer.\n\nGravado em 25 de outubro de 2026. As quatro versões seguras, “só a atualização é a solução completa” e o fato de as distribuições terem recebido o patch com antecedência seguem o aviso do php.net de 21 de outubro; a auditoria de 2024, o vazamento e o horário da publicação antecipada seguem o blog da PHP Foundation; os 70% dos sites, os modelos usados e a cronologia seguem a pesquisa da Wiz; o firewall às 03:02 UTC segue o blog da Cloudflare; o honeypot de 17 de outubro segue o AWS Security Blog; os cerca de 28 mil sites públicos e cerca de 200 sites de órgãos públicos de Taiwan, e a ordem patch, WAF, pausa, seguem a cobertura do iThome da coletiva do diretor da agência de cibersegurança em 22 de outubro; os sites fora do ar em cada país seguem a BBC; os números da primeira-ministra do Japão e do CEO da Cloudflare seguem os posts originais no X; os serviços japoneses pausados seguem o Japan Cyber Watch. Os três comandos locais e suas saídas foram executados de verdade em 2026-10-25 no Ubuntu 24.04.5, PHP 8.3.6 (cli), dpkg 1.22.6; a versão corrigida do pacote no 24.04 segue a página de CVE do ubuntu.com. “Minha opinião” e “não consegui apurar” são opiniões do autor. Este vídeo não demonstra o ataque.\n\nComandos do vídeo:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\nNo seu site, quem cuida do PHP: você ou a hospedagem? Que versão você encontrou? Me conta nos comentários.",
+  "description": "Em 21 de outubro de 2026, o PHP lançou uma atualização de segurança de emergência para duas falhas conhecidas juntas como PHP2Shell: a falha está no próprio PHP, não exige login e uma única requisição executa código no servidor. A IA a encontrou dois meses antes, mas um vazamento fez o patch sair um dia mais cedo, e sites de governos do mundo todo, o pixiv e a Wikimedia saíram do ar por decisão própria. Este vídeo usa uma comparação (um recall de carros: o defeito está no motor, não na carroceria) para explicar por que isso afeta você e o que aconteceu em quatro dias, e termina com uma demonstração em uma máquina de teste com Ubuntu: ver 8.3.6 no php -v não significa que não foi corrigido; é preciso olhar o changelog do pacote.\\nFeito para quem tem site próprio em Taiwan, cuida do WordPress ou do e-commerce da empresa, ou viu a notícia de “sites do mundo todo fora do ar” e quer saber o que fazer.\\n\\nGravado em 25 de outubro de 2026. As quatro versões seguras, “só a atualização é a solução completa” e o fato de as distribuições terem recebido o patch com antecedência seguem o aviso do php.net de 21 de outubro; a auditoria de 2024, o vazamento e o horário da publicação antecipada seguem o blog da PHP Foundation; os 70% dos sites, os modelos usados e a cronologia seguem a pesquisa da Wiz; o firewall às 03:02 UTC segue o blog da Cloudflare; o honeypot de 17 de outubro segue o AWS Security Blog; os cerca de 28 mil sites na web e cerca de 200 sites de órgãos públicos de Taiwan, e a ordem patch, WAF, pausa, seguem a cobertura do iThome da coletiva do diretor da agência de cibersegurança em 22 de outubro; os sites fora do ar em cada país seguem a BBC; os números da primeira-ministra do Japão e do CEO da Cloudflare seguem os posts originais no X; os serviços japoneses pausados seguem o Japan Cyber Watch. Os três comandos locais e suas saídas foram executados de verdade em 2026-10-25 no Ubuntu 24.04.5, PHP 8.3.6 (cli), dpkg 1.22.6; a versão corrigida do pacote no 24.04 segue a página de CVE do ubuntu.com. “Minha opinião” e “não achei” são opiniões do autor. Este vídeo não demonstra o ataque.\\n\\nComandos do vídeo:\\nphp -v\\ndpkg-query -W -f='${Package} ${Version}\\\\n' php8.3-cli\\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\\n\\nNo seu site, quem cuida do PHP: você ou a hospedagem? Que versão você encontrou? Me conta nos comentários.",
   "tags": [
     "PHP2Shell",
     "vulnerabilidade PHP",
@@ -16,14 +16,14 @@
   "thumbnail": {
     "tag": "Notícias de IA",
     "headline": "A versão\n**engana**",
-    "sub": "PHP2Shell: a IA achou a falha, sites saíram do ar"
+    "sub": "PHP2Shell: a IA achou a falha, sites fecharam sozinhos"
   },
   "chapters": {
     "open": "O que é o PHP2Shell?",
     "seventy": "Não escrevo PHP, me afeta?",
     "audit": "Como a IA achou a falha?",
     "leak": "Por que o patch adiantou um dia?",
-    "ncsc": "Por que os sites saíram do ar?",
+    "ncsc": "Por que os sites fecharam sozinhos?",
     "advisory-page": "Corrigido? Basta ver a versão?",
     "my-call": "Minha opinião: o que fazer agora"
   },
@@ -77,7 +77,7 @@
     },
     "vw9g": {
       "source_hash": "33afcfc8fbf1",
-      "text": "Se a IA achou a falha antes, por que sites do mundo todo se tiraram do ar?"
+      "text": "Se a IA achou a falha antes, por que sites do mundo todo fecharam sozinhos?"
     },
     "69ry": {
       "source_hash": "67389d686d04",
@@ -113,7 +113,7 @@
     },
     "86sc": {
       "source_hash": "ce857ae1d545",
-      "text": "E Taiwan? A agência de cibersegurança contou uns 28 mil sites públicos com PHP,"
+      "text": "E Taiwan? A agência de cibersegurança contou uns 28 mil sites na web com PHP,"
     },
     "rsu6": {
       "source_hash": "e35649224f4c",
@@ -157,7 +157,7 @@
     },
     "rb3w": {
       "source_hash": "79caf044b9b5",
-      "text": "30 de julho: a empresa Calif, no Patch the Planet, programa open source da OpenAI, começa a auditar o PHP;"
+      "text": "30 de julho: a empresa Calif, no programa open source da OpenAI, Patch the Planet, começa a auditar o PHP;"
     },
     "jmju": {
       "source_hash": "7edfcbe913ae",
@@ -233,7 +233,7 @@
     },
     "nxcc": {
       "source_hash": "207682d3ab48",
-      "text": "Rápido quanto? O CEO da Cloudflare: 10 horas antes do aviso, milhares de tentativas;"
+      "text": "Quão rápido? O CEO da Cloudflare: 10 horas antes do aviso, milhares de tentativas;"
     },
     "2fht": {
       "source_hash": "1fb782b508e2",
@@ -265,7 +265,7 @@
     },
     "m52w": {
       "source_hash": "2084daced992",
-      "text": "Na véspera do patch, como num recall recém-anunciado, os donos encostaram o carro."
+      "text": "Na noite antes do patch, como num recall recém-anunciado, o dono encostou o carro."
     },
     "kirn": {
       "source_hash": "5c1e2898c8e9",
@@ -277,7 +277,7 @@
     },
     "3hp6": {
       "source_hash": "8abb43f109c6",
-      "text": "a Finlândia pausou tudo;"
+      "text": "governo finlandês: tudo;"
     },
     "wnky": {
       "source_hash": "670527484c52",
@@ -321,7 +321,7 @@
     },
     "pacb": {
       "source_hash": "600178722938",
-      "text": "Abaixo da 8.1 não há versão oficial: distro ou hospedagem."
+      "text": "Até a 8.1 não há versão oficial: distro ou hospedagem."
     },
     "53hk": {
       "source_hash": "ef296bdafc0e",
@@ -437,7 +437,7 @@
     },
     "7hcv": {
       "source_hash": "5b2c7fd75eb3",
-      "text": "esta semana, mova sites abaixo da 8.1 para 8.3 ou mais; 8.2: suporte só até dezembro;"
+      "text": "esta semana, sites em 8.1 ou menos: para 8.3 ou mais; 8.2: suporte só até dezembro;"
     },
     "6k5e": {
       "source_hash": "d3bae452e752",
