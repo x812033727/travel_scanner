@@ -1,0 +1,67 @@
+可修改的骰子解說動畫 — 安裝與操作
+
+需求
+Python 3.10 以上、Pillow、可由命令列呼叫的 ffmpeg，以及支援繁體中文的字型。
+這次實際測試：Linux、Python 3.12.14、Pillow 12.3.0、ffmpeg 7.1.5。
+
+安裝 Pillow
+python -m pip install -r requirements.txt
+
+安裝 ffmpeg
+從官方下載頁選擇適合自己系統的版本，並確認 ffmpeg 在 PATH 中。
+ffmpeg -version
+https://ffmpeg.org/download.html
+
+準備繁體中文字型
+本例建議 Noto Sans CJK TC。從官方維護的專案下載 TC Regular 與 Bold OTF 字型：
+https://github.com/notofonts/noto-cjk/tree/main/Sans/OTF/TraditionalChinese
+授權與安裝資訊：
+https://github.com/notofonts/noto-cjk
+Pillow 官方安裝文件：
+https://pillow.readthedocs.io/en/stable/installation/basic-installation.html
+Python 官方下載：
+https://www.python.org/downloads/
+
+字型自動尋找順序
+Linux 的 NotoSansCJK 系統字型、lab/fonts/ 裡的 NotoSansCJKtc-Regular.otf 與
+NotoSansCJKtc-Bold.otf、Windows 的 Microsoft JhengHei、macOS 的 PingFang TC。
+若沒有找到中文字型，程式會清楚停止，不會把中文畫成方塊。
+Linux 預設仍使用原來測試的字型與 TC face index 3，因此原成片不會因這次修改改變。
+不同字型可能影響字寬；請重新看聯絡表，確認沒有超出畫面。
+
+執行（在本資料夾）
+python check_lesson.py lesson.json --expect-count 6
+python render_lesson.py lesson.json --output demo.mp4
+
+影片示範用的精簡輸出（計算與成片不變）
+python check_lesson.py lesson.json --expect-count 6 --summary
+python render_lesson.py lesson.json --output demo.mp4 --summary
+
+指定自己下載的 OTF 字型
+python render_lesson.py lesson.json --output demo.mp4 --font fonts/NotoSansCJKtc-Regular.otf --font-bold fonts/NotoSansCJKtc-Bold.otf
+若使用 TTC 字型集合，可加 --font-index 3，數字要對應該字型的 face。
+
+先只出靜態圖，檢查字型與版面
+python render_lesson.py lesson.json --frames-only --frames-dir preview
+preview/grid-target.png 是依目前 target_sum 重新產生的主示範格子圖。
+
+修改練習
+用純文字編輯器，把 lesson.json 的 target_sum 從 7 改成 6，另存 lesson-sum6.json。
+python check_lesson.py lesson-sum6.json --expect-count 5
+python render_lesson.py lesson-sum6.json --output demo-sum6.mp4 --frames-dir frames-sum6
+
+負面案例
+python check_lesson.py lesson-invalid.json
+預期結束碼 1，拒絕 target_sum=13。此案例不能用來渲染。
+
+範圍與限制
+這份練習程式目前只接受 zh-TW；完整教學影片的八種外語配音是另一條產線。
+demo.mp4 與 demo-sum6.mp4 是刻意不含音訊的 54 秒動畫範例。
+narration_zh.txt、narration.json 與 subtitles.srt 是預設 target_sum=7 範例的原始草稿。
+每次 render 會另產生與輸出 MP4 同名的 .narration.txt、.srt 與 .timeline.json，
+其中的目標與數量會依 lesson.json 更新。這些仍是草稿，時間對齊設計的場景，尚未與實際旁白音檔對時。
+修改 target_sum 後，請使用新產生的對應稿件；合成旁白後還要量測時長、檢查字幕與口語。
+最後一幕固定是總和六的練習，這與可修改的主要示範目標分開。
+目前只有 target_sum 及配色/標題供修改；骰子面數與場景順序是這份教學範本的固定內容。
+程式與圖表是在這次 AI 協作中製作，實際執行的是 Python 與 ffmpeg；沒有聲稱呼叫 Claude 實測。
+程式檢查輸入與組合數，不會替任何其他生成內容保證正確。

@@ -11,7 +11,7 @@ Use one learning question and one concrete example. Agree on the expected result
 
 1. Separate the supplied facts, editorial choices and missing information. Keep the actual source notes with the project.
 2. Write a short visual sequence. Each state explains one thing and can be checked without relying on attractive motion.
-3. Keep editable content in a data file and rendering behavior in source code. Deliver both. For the bundled dice example, see `../lab/lesson.json`, `../lab/render_lesson.py` and `../lab/install.txt`; its renderer supports only the documented dice case and zh-TW.
+3. Keep editable content in a data file and rendering behavior in source code. Deliver both. For the bundled dice example, see `references/dice-lab/lesson.json`, `references/dice-lab/render_lesson.py` and `references/dice-lab/install.txt`; its renderer supports only the documented dice case and zh-TW.
 4. Validate data before rendering. Use an independent known answer, not merely the renderer's own count. Run a valid case, a modification and an invalid input. Preserve real output and exit codes.
 5. Render still previews first. Check labels, clipping and the intended small-screen viewing size. Then render the actual video and measure its duration, dimensions and audio streams.
 6. Change a meaningful parameter. Inspect every affected title, graphic, count, narration draft and subtitle draft. A parameter shown in the opening can also become stale.
