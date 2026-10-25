@@ -55,7 +55,7 @@
       "lines": [
         {
           "id": "lf102",
-          "text": "一六六六年，倫敦大火第三天，火逼近一個人的家；他藏的是酒和一塊起司。",
+          "text": "一六六六年，倫敦大火第三天，火逼近一個人的家；他藏的，是你想不到的東西。",
           "emotion": "放慢，帶一點挑釁"
         }
       ]
@@ -117,8 +117,8 @@
       "lines": [
         {
           "id": "lf106",
-          "text": "日記裡寫的是：我的帕瑪森起司。",
-          "emotion": "一字一字"
+          "text": "日記寫著：我的帕瑪森起司。",
+          "emotion": "一字一字，揭曉"
         }
       ]
     },
@@ -149,7 +149,7 @@
       "lines": [
         {
           "id": "lf108",
-          "text": "但這還不是最驚險的。隔天凌晨大約兩點，他的妻子把他叫醒。",
+          "text": "但這還不是最驚險的。隔天凌晨大約兩點，妻子把他叫醒。",
           "emotion": "升級，停在這裡"
         }
       ]
@@ -2191,23 +2191,8 @@
       "lines": [
         {
           "id": "lf809",
-          "text": "那麼，埋在院子裡的那塊起司呢？",
+          "text": "那埋在院子裡的那塊起司，後來挖出來了嗎？",
           "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "no-word",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a man's hand in a linen cuff turning the page of a blank open notebook on a plain wooden desk, a candle beside it, soft candle light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lf810",
-          "text": "這幾天的日記，沒有一個字交代它後來有沒有被挖出來。"
         }
       ]
     },
@@ -2216,19 +2201,14 @@
       "template": "shot",
       "data": {
         "prompt": "Close shot a worried householder looking from a garden pit toward packed household crates, muted evening light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lf811",
-          "text": "回到開頭的問題：他為什麼要把起司埋進土裡？",
+          "id": "lf810",
+          "text": "還有開頭那個問題：他為什麼要把它埋進土裡？",
           "emotion": "答案前停一拍"
-        },
-        {
-          "id": "lf812",
-          "text": "日記沒有寫原因。",
-          "emotion": "乾脆"
         }
       ]
     },
@@ -2237,12 +2217,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a round-faced gentleman in a curly brown wig and a dark knee-length jacket standing in a walled garden at evening, leaning on a spade beside a filled patch of fresh earth and looking at us with a tired, thoughtful face, soft lamp light",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lf813",
+          "id": "lf811",
           "text": "我的推測是：車和船都用過一輪，搬不走的酒和那塊起司，就交給了泥土。",
           "emotion": "意見標成意見"
         }
@@ -2258,8 +2238,8 @@
       },
       "lines": [
         {
-          "id": "lf814",
-          "text": "所以這份檔案：埋起司，存檔；為什麼埋、後來怎麼了，未結。",
+          "id": "lf812",
+          "text": "所以這份檔案：埋起司，存檔；為什麼埋、後來有沒有挖出來，日記都沒寫，未結。",
           "emotion": "收尾，乾脆"
         }
       ]
@@ -2273,12 +2253,12 @@
       },
       "lines": [
         {
-          "id": "lf815",
+          "id": "lf813",
           "text": "如果你在那座院子裡，那個坑，你會放進什麼？留言告訴我。",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "lf816",
+          "id": "lf814",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
@@ -2288,13 +2268,13 @@
   "loops": [
     {
       "setup": "lf101",
-      "payoff": "lf813",
+      "payoff": "lf811",
       "what": "你會藏什麼"
     },
     {
       "setup": "lf102",
-      "payoff": "lf610",
-      "what": "酒和一塊起司"
+      "payoff": "lf106",
+      "what": "他藏的想不到的東西"
     },
     {
       "setup": "lf104",
@@ -2408,7 +2388,7 @@
     },
     {
       "setup": "lf809",
-      "payoff": "lf810",
+      "payoff": "lf812",
       "what": "起司後來的下落"
     }
   ],
