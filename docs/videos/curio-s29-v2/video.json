@@ -83,7 +83,12 @@
       "what": "何焯翻出的兩個年份"
     },
     {
-      "setup": "ce316",
+      "setup": "ce312",
+      "payoff": "ce313",
+      "what": "為什麼偏偏是交州"
+    },
+    {
+      "setup": "ce316b",
       "payoff": "ce317",
       "what": "正史裡還有沒有別的送象紀錄"
     },
@@ -561,7 +566,18 @@
         {
           "id": "ce211",
           "text": "他在這一段一個注都沒加，只挑了另一本書的文筆毛病，看不出起過疑。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "archivist-taps-scroll",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a tall reading-room desk on a windy day, one finger resting on an open blank scroll beside a stack of string-bound books, brows drawn together in thought, cool light from a tall window behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ce211b",
           "text": "這一點我覺得很要緊：替它加注的人，手上有書，卻沒有懷疑。",
@@ -721,7 +737,7 @@
       "lines": [
         {
           "id": "ce311",
-          "text": "西元兩百年，孫策死了，孫權才剛接手；那時曹操還上表替他討了個將軍的名號。"
+          "text": "西元兩百年，孫策死了，孫權才剛接手；那時曹操還遞了奏章，替他討了個將軍的名號。"
         }
       ]
     },
@@ -736,7 +752,8 @@
       "lines": [
         {
           "id": "ce312",
-          "text": "西元兩百一十年，孫權派人去當交州刺史，交州才服從他。"
+          "text": "西元兩百一十年，孫權派人去當交州刺史，交州才服從他。為什麼偏偏是交州？",
+          "emotion": "問句"
         }
       ]
     },
@@ -751,7 +768,7 @@
       "lines": [
         {
           "id": "ce313",
-          "text": "交州南部的九真、日南兩個郡，產象。"
+          "text": "因為交州南部的九真、日南兩個郡，產象。"
         }
       ]
     },
@@ -798,7 +815,11 @@
         },
         {
           "id": "ce316",
-          "text": "開頭那個陳壽沒寫的年份，何焯就是這樣用別的年份把它夾住的。那正史裡，孫權送象給曹操，還有別的紀錄嗎？",
+          "text": "開頭那個陳壽沒寫的年份，何焯就是這樣用別的年份把它夾住的。"
+        },
+        {
+          "id": "ce316b",
+          "text": "那正史裡，孫權送象給曹操，還有別的紀錄嗎？",
           "emotion": "問句"
         }
       ]
@@ -1161,7 +1182,7 @@
         },
         {
           "id": "ce413",
-          "text": "滿朝大臣不知道，向全國徵求，也沒人答得出。"
+          "text": "滿朝大臣答不出，向全國徵求也沒人會。"
         }
       ]
     },
