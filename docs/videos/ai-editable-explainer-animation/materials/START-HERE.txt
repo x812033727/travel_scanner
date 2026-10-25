@@ -1,0 +1,22 @@
+教材：AI 協作的可修改骰子動畫
+
+1. 先讀 prompts.txt 和 lesson-brief.json，知道要交什麼、要教懂什麼。
+2. lab/ 是完整原創練習專案。先讀 lab/install.txt，準備 Python、Pillow、FFmpeg 和支援繁中的字型；不同系統請照該檔調整。所有指令從 lab/ 資料夾執行。
+3. 先檢查：
+   python check_lesson.py lesson.json --expect-count 6 --summary
+4. 只做預覽影格：
+   python render_lesson.py lesson.json --frames-only
+5. 輸出原版樣片：
+   python render_lesson.py lesson.json --output demo.mp4 --summary
+6. 開啟 lesson-sum6.json，比對 target_sum 的修改，再檢查：
+   python check_lesson.py lesson-sum6.json --expect-count 5 --summary
+7. 依相同方式輸出修改版：
+   python render_lesson.py lesson-sum6.json --output demo-sum6.mp4 --summary
+
+實測記錄：lab/verification.json 和 summary-*.log。主影片上的終端卡使用確實執行過的原版輸出與檢查命令。上面第7行是不帶另存影格選項的簡化使用指令，與實際紀錄中多帶 --frames-dir 的指令用途相同，但不把它說成當時逐字輸入。
+
+可修改欄位：title、target_sum、colors。locale 目前只接受 zh-TW；不會只改語言代碼就自動翻譯。範例固定54秒、1280×720、24fps；改其他時長和尺寸需要修改程式並重新驗證。
+
+MP4 刻意無聲。隨程式輸出的 .narration.txt 是旁白文字；.srt 和 .timeline.json 是設計分鏡時間。等實際旁白製作完成，請重新量音長、排畫面和字幕。不要把無聲樣片當成八語旁白成片。
+
+範例總和模型假設兩顆公平、互相獨立的六面骰。7有6種、12有1種、6有5種；最後固定6的場景是練習。數學檢查只核對本範例，不保證任意 AI 生成的程式或解釋都正確。

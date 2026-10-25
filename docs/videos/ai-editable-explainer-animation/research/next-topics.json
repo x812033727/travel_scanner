@@ -1,0 +1,220 @@
+{
+  "created": "2026-10-25",
+  "timezone": "Asia/Taipei",
+  "status": "research_queue_only",
+  "current_episode_unchanged": "ai-editable-explainer-animation",
+  "authorization": "User explicitly said: 做完後持續下一個新的影片 不用問我",
+  "primary_language": "zh-TW",
+  "foreign_languages": ["en", "ja", "ko", "es", "pt", "id", "vi", "th"],
+  "decision": {
+    "next_topic_id": "ai-pdf-quote-comparison",
+    "start_condition": "After the current episode's deliverable package is complete, start this original episode without asking the user again.",
+    "reason": "A broadly useful office task with a concrete spreadsheet outcome. It can be reproduced with self-authored text PDFs and local file tools, without another provider login. It moves beyond both animation and the repository's many coding/Skill overviews.",
+    "evidence_limit": "Recent high-view videos establish demand for practical AI document/file workflows. The exact narrowed quotation-comparison topic was not independently verified as a current breakout. This is an editorial choice from an adjacent validated category, not a predicted view guarantee."
+  },
+  "ranking_rules": [
+    "One practical problem, an actual useful output, and a meaningful revision or variation.",
+    "Prefer locally reproducible original materials with no account login or external sending.",
+    "Avoid repeating SKILL.md anatomy, CLAUDE.md, basic websites, coding-tool comparisons, source-link checking, or the current animation episode.",
+    "Use an 8–10 minute single-concept teaching arc under teaching-flow sections 10–12.",
+    "Do not claim a named provider was tested if the run was performed by the current Codex assistant."
+  ],
+  "shared_sources": [
+    {
+      "id": "metics-claude-files-20260810",
+      "title": "The Ultimate Beginner’s Guide to Claude AI",
+      "channel": "Metics Media",
+      "video_url": "https://www.youtube.com/watch?v=9oJySubZRSA",
+      "published": "2026-08-10",
+      "relevance": "The indexed description covers document analysis, uploaded files/images, and Excel/Word/interactive-page creation.",
+      "metric": {"views": 787642, "type": "indexed YouTube snapshot", "retrieved": "2026-10-25", "observation_timestamp": "not exposed"},
+      "later_third_party_snapshot": {"views": 1705513, "source_url": "https://www.fableguide.com/videos/", "source_reported_refresh": "2026-10-21"},
+      "caveat": "Snapshots are from different collection times. Do not call either a live count or calculate growth from them. Broad beginner coverage does not prove that our narrowed task is independently trending."
+    },
+    {
+      "id": "kevin-cowork-20260817",
+      "title": "Claude Cowork Tutorial for Beginners",
+      "channel": "Kevin Stratvert",
+      "video_url": "https://www.youtube.com/watch?v=YYr7hw5EAtk",
+      "published": "2026-08-17",
+      "relevance": "Practical file and data work from a beginner's perspective.",
+      "metric": {"views": 219368, "type": "third-party reported YouTube Data API snapshot", "observed": "2026-10-21", "source_url": "https://www.fableguide.com/videos/"},
+      "creator_confirmation_url": "https://kevinstratvert.com/free-tutorials/",
+      "caveat": "The API read is reported by the chart's author, not independently repeated here. Not a current view count."
+    },
+    {
+      "id": "kevin-artifacts-20260903",
+      "title": "How to Use Claude Artifacts (Full Tutorial)",
+      "channel": "Kevin Stratvert",
+      "video_url": "https://www.youtube.com/watch?v=1PRcdCu8n6M",
+      "published": "2026-09-03",
+      "duration": "12:42",
+      "relevance": "Upload actual data, create a dashboard, customize it, and use/share the resulting artifact.",
+      "metric": {"views": 93065, "type": "indexed YouTube snapshot", "retrieved": "2026-10-25", "observation_timestamp": "not exposed"},
+      "later_third_party_snapshot": {"views": 139957, "observed": "2026-10-21", "source_url": "https://www.fableguide.com/videos/"},
+      "caveat": "Use one clearly labeled snapshot. Our local HTML example is not a test of official Claude Dashboards or Artifacts UI."
+    },
+    {
+      "id": "futurepedia-gemini-skills-20261002",
+      "title": "Gemini Skills Are Finally Here (Master in 9 Minutes)",
+      "channel": "Futurepedia",
+      "published": "2026-10-02",
+      "creator_catalog_url": "https://www.futurepedia.io/videos",
+      "workflow_summary_url": "https://frontiermodels.cc/video/gemini-skills-are-finally-here-master-in-9-minutes/",
+      "metric": {"views_approx": 88600, "type": "third-party indexed snapshot", "retrieved": "2026-10-25", "source_url": "https://rereview.co/creators/futurepedia", "observation_timestamp": "not exposed"},
+      "relevance": "The summarized worked example turns a meeting recap into decisions, action items, owners/dates, and open questions.",
+      "caveat": "Original YouTube ID was not recovered in this research pass. Cite the creator catalog and supporting summary rather than inventing a watch URL. The proposed episode does not require Gemini Skills."
+    },
+    {
+      "id": "kevin-design-20260915",
+      "title": "Claude Design Tutorial for Beginners",
+      "channel": "Kevin Stratvert",
+      "video_url": "https://www.youtube.com/watch?v=e55YEhUBATw",
+      "published": "2026-09-15",
+      "duration": "8:32",
+      "metric": {"views": 47393, "type": "third-party indexed snapshot", "retrieved": "2026-10-25", "source_url": "https://www.speakrj.com/audit/report/UCfJT_eYDTmDE-ovKaxVE1ig/youtube/media-stats", "observation_timestamp": "not exposed"},
+      "workflow_summary_url": "https://glasp.co/youtube/e55YEhUBATw",
+      "relevance": "Design/edit an actual slide or document instead of discussing features abstractly.",
+      "caveat": "Moderate view signal compared with the larger tutorials above; do not describe it as a breakout."
+    },
+    {
+      "id": "claude-academy-files",
+      "title": "Create and edit files with Claude to eliminate hours of busy work",
+      "url": "https://academy.claude.com/tutorials/create-and-edit-files-with-claude-to-eliminate-hours-of-busy-work",
+      "type": "official capability/workflow reference, not popularity evidence",
+      "checked": "2026-10-25",
+      "relevance": "Combines multiple document sources, converts PDF information to spreadsheets, coordinates CSV-derived slides/reports/workbooks, and consolidates meeting notes with a tracker.",
+      "caveat": "Use as a primary workflow reference only. Do not copy its examples or imply our locally executed workflow used the Claude product."
+    }
+  ],
+  "candidates": [
+    {
+      "priority": 1,
+      "id": "ai-pdf-quote-comparison",
+      "title": "用 AI 比較三份 PDF 報價：做出同規格、可追查的比價表",
+      "audience": "Occasional purchasers, office administrators, event organizers, and small-business operators who receive differently formatted quotes.",
+      "one_problem": "Three supplier PDFs use different quantity, tax, shipping, and product-specification conventions. Produce an apples-to-apples comparison without silently filling missing terms.",
+      "source_ids": ["metics-claude-files-20260810", "kevin-cowork-20260817", "claude-academy-files"],
+      "trend_evidence_strength": "adjacent broad file-workflow demand; exact quotation subtopic not trend-validated",
+      "novelty": "ai-citation-check checks whether a link supports a claim. This episode performs extraction, normalization, calculation, and a procurement comparison from local PDFs. Existing event-folder examples clean participant names, not quotations with incompatible units and terms.",
+      "feasibility": "High. Self-authored text PDFs, local pypdf extraction, current AI assistant reasoning, Python calculations, and openpyxl workbook creation. No additional provider account, connectors, or messages to suppliers.",
+      "original_demo": {
+        "job": "200 copies of a 12-page A4 double-sided color handout with binding; all suppliers and prices are fictional teaching fixtures.",
+        "supplier_a": "Matching specification. Per-copy price42; goods8400, explicit tax420, explicit shipping200, explicit total9020.",
+        "supplier_b": "Visibly lower quoted total but a nonmatching specification, such as black-and-white or only100copies. Keep the price but mark not comparable; do not infer an unquoted color upgrade or extrapolate a quantity discount.",
+        "supplier_c": "Matching specification. Per-copy price45 including tax, shipping included, total9000.",
+        "intrinsic_teaching_result": "The lower headline unit price is not necessarily the lower comparable delivered total. The apparently cheapest quote may be ineligible because it does not meet the requested specification. This is a designed arithmetic case, not a claimed model failure.",
+        "variation": "A revised supplier PDF adds a shipping fee or clarifies quantity. Rebuild the table from the revision, preserve source-page references, and show the comparable ranking update."
+      },
+      "required_outputs": [
+        "comparison.xlsx with original extracted fields, normalized terms, comparable-status and delivered-total columns",
+        "comparison.csv and a human-readable one-page comparison using the same calculated values",
+        "questions.txt containing only genuinely missing specifications or terms, with supplier/page references",
+        "updated workbook after one revised quote, plus a short change log"
+      ],
+      "verification": [
+        "Every extracted material value maps to an original filename and page; unsupported fields stay empty or unresolved.",
+        "Recompute totals independently from explicit fixture values. Use Decimal or integer cents, not model mental arithmetic.",
+        "Do not present incompatible specifications as a ranked winner.",
+        "Check extraction coverage by reading all fixture pages. Text-PDF demonstration does not establish scan/OCR support.",
+        "If formulas are written with openpyxl, calculate/export values independently or actually run a spreadsheet engine; openpyxl itself does not evaluate formulas."
+      ],
+      "initial_prompt": "請比較這三份報價是否符合 requirements.txt。先列原文規格、數量、含稅狀態、運費與原報價總額，每一項附檔名和頁碼。只有規格與數量可對齊的才計算可比較總價；沒寫的填待確認，不猜。原檔不修改，交付可編輯比價表與待問問題清單。",
+      "production_note": "Before writing narration, perform one real AI-assisted run from the exact prompt to the actual files and preserve the transcript/tool run. Do not pre-claim that an ordinary prompt fails or that the refined one always succeeds."
+    },
+    {
+      "priority": 2,
+      "id": "ai-survey-dashboard",
+      "title": "用 AI 把問卷做成互動報表：選條件，數字也要一起重算",
+      "audience": "Teachers, team leads and event organizers with survey exports.",
+      "one_problem": "A survey summary shows attractive charts, but category filters, denominators and missing answers must remain consistent.",
+      "source_ids": ["kevin-artifacts-20260903", "metics-claude-files-20260810", "claude-academy-files"],
+      "trend_evidence_strength": "direct adjacent dashboard example plus broad data-workflow evidence",
+      "novelty": "vibe-coding-first-website-2026 teaches a static personal site and hosting. This teaches analysis from a CSV and correct linked filtering; no hosting, provider UI or account connection is needed.",
+      "feasibility": "High. Original synthetic questionnaire CSV; AI-assisted analysis and a self-contained local HTML/SVG dashboard. Verify computations separately and use available authorized browser runtime for the interactive preview.",
+      "feasible_demo": "A60-response fictional workshop survey has missing ratings and a small department subgroup. Filter a department: respondent count, valid-rating count and rating percentages update together. Add5new responses and regenerate without editing chart labels manually.",
+      "outputs": ["offline dashboard.html", "analysis.csv with explicit denominators", "updated dashboard from a second batch"],
+      "checks": ["All displayed totals match independent CSV calculations", "Missing responses are not silently counted aszero", "Empty-filter state is clear", "No unsupported claims of causal impact from a small subgroup"],
+      "fallback": "If actual interactive browser verification is unavailable, defer this candidate rather than presenting static screenshots as tested interaction."
+    },
+    {
+      "priority": 3,
+      "id": "ai-meeting-notes-action-list",
+      "title": "用 AI 把會議筆記變成待辦：改過的期限，不要留下兩個答案",
+      "audience": "Anyone who leaves a meeting with scattered notes and unclear responsibilities.",
+      "one_problem": "Turn a transcript containing a corrected deadline, a rejected idea, and an unassigned action into a usable action list without turning every suggestion into a decision.",
+      "source_ids": ["futurepedia-gemini-skills-20261002", "claude-academy-files", "metics-claude-files-20260810"],
+      "trend_evidence_strength": "meeting-recap worked example inside a recent moderately viewed skills tutorial; exact subtopic unvalidated",
+      "novelty": "The repository's event-folder workflow sorts registrations and files; this follows statements, corrections and commitments across one meeting. It is not another Skill installation lesson.",
+      "feasibility": "High. Self-authored timestamped transcript as a text file; no live recording, transcription service, meeting bot, email, calendar connection, or sending is required.",
+      "feasible_demo": "A fictional team first proposes Friday, later explicitly agrees Monday; one action lacks an owner and remains unassigned. The final list links each action to the final confirming lines, distinguishes decisions from proposals, and keeps open questions separate.",
+      "outputs": ["actions.csv with owner, due date, state and line references", "decision-log.txt", "updated action list after one follow-up note"],
+      "checks": ["Only explicit commitments become actions", "Corrected dates replace superseded dates with traceability", "No invented owners", "Any relative date resolves against the stated meeting date/timezone, or remains unresolved"],
+      "limit": "This demonstrates processing an existing transcript. Do not call it audio transcription or claim speaker-recognition accuracy."
+    },
+    {
+      "priority": 4,
+      "id": "ai-data-to-editable-slides",
+      "title": "用 AI 做五頁簡報：圖表、數字和結論要對得起同一份資料",
+      "audience": "Office workers and educators who need a short decision deck rather than a long report.",
+      "one_problem": "Create an editable five-slide report from one supplied dataset and update it after the dataset changes, without leaving stale numbers in titles, charts or notes.",
+      "source_ids": ["kevin-design-20260915", "metics-claude-files-20260810", "claude-academy-files"],
+      "trend_evidence_strength": "moderate direct slides/design signal and high-view broad file workflows",
+      "novelty": "The current episode produces a narrated animation. This produces a concise editable presentation with a conclusion, evidence, and a documented decision; it does not repeat animation rendering or basic website construction.",
+      "feasibility": "Medium-high. AI-assisted outline, local calculations, python-pptx, and rendered previews if a supported local office engine exists. No presentation-site login or publishing is needed.",
+      "feasible_demo": "A fictional customer-support dataset produces five slides: the question, workload, response-time distribution, limitation, and next action. Replace one week's data and regenerate titles/charts/notes from the same aggregate values.",
+      "outputs": ["editable report.pptx", "five-slide preview PDF/PNG if actually rendered", "updated deck from revised data"],
+      "checks": ["Slide text and chart values share one computed source", "No causal claims unsupported by the data", "Editable shapes/text are verified in the PPTX rather than a flattened screenshot", "Preview geometry is inspected, not inferred from successful file creation"],
+      "limit": "Do not claim visible PowerPoint rendering or editability in a product UI without opening it. If the renderer is missing, defer this behind the fully local candidates."
+    }
+  ],
+  "next_brief": {
+    "topic_id": "ai-pdf-quote-comparison",
+    "working_slug": "ai-pdf-quotes-to-comparison",
+    "target_minutes": 9,
+    "category": "tutorial",
+    "format": "teaching cards with real source-page excerpts and actual output previews",
+    "opening": "Show the three quote amounts and the comparison's eligible totals; ask why the cheapest headline is not the result you can actually compare. The footage must come from the original fixtures and completed run, not a fake model conversation.",
+    "learning_outcomes": [
+      "Extract each quotation into a consistent field table, preserving missing terms and source-page references.",
+      "Compare the requested specification and explicit all-in costs rather than sorting headline prices.",
+      "Update the comparison from one revised PDF and identify what changed."
+    ],
+    "materials_to_prepare": [
+      "requirements.txt describing the fictional print job",
+      "three original two-page text PDFs, each with a different layout and clearly labeled fictional supplier",
+      "one revised version of a supplier PDF",
+      "fixture-truth.json kept separate from the AI extraction workflow for independent checking",
+      "the exact starting prompt, actual run transcript and tool versions"
+    ],
+    "arc": [
+      {"time":"00:00–00:45","beat":"Three prices are not yet three comparable offers. One promise: an editable comparison and a list of what still needs asking."},
+      {"time":"00:45–01:45","beat":"Write the requested quantity/specification before asking AI to compare. Keep the originals and create an output folder."},
+      {"time":"01:45–03:10","beat":"Give the complete extraction prompt; show the actual source-to-row mapping. Missing terms stay unresolved."},
+      {"time":"03:10–04:40","beat":"Normalize explicit tax, shipping, units and quantity. Show the workbook's calculation and source fields; do not read out a scoring log."},
+      {"time":"04:40–05:50","beat":"Mark the nonmatching offer. Explain what would need clarification rather than guessing its upgraded price."},
+      {"time":"05:50–07:10","beat":"Replace one quote with the revision, rerun, and inspect the changed comparison and questions."},
+      {"time":"07:10–08:30","beat":"Open the exported table, trace two important values back to source pages, and check the complete delivered totals. One short limitation: this example uses text PDFs, not scanned-image OCR."},
+      {"time":"08:30–09:00","beat":"Three actions for the viewer's own quotes; answer the opening problem and ask about their usual quote format. No next-video announcement."}
+    ],
+    "minimum_real_execution_before_script": [
+      "Extract all pages of the original PDFs and confirm the source text is available.",
+      "Have the current AI actually produce the normalized table and files from the documented prompt; save that execution.",
+      "Independently recompute the eligible totals against fixture truth.",
+      "Process the revised PDF and verify changed and preserved fields.",
+      "Render and visually inspect at least the important PDF excerpts and the output table."
+    ],
+    "primary_tools_references": [
+      {"title":"pypdf: Extract Text from a PDF","url":"https://pypdf.readthedocs.io/en/stable/user/extract-text.html","checked":"2026-10-25","supports":"Page-level extraction from text PDFs; cautions about PDF tables and absent semantic structure.","limit":"pypdf is not OCR and cannot extract text from images."},
+      {"title":"openpyxl: Using formulae","url":"https://openpyxl.readthedocs.io/en/stable/simple_formulae.html","checked":"2026-10-25","supports":"Write Excel formulas into a workbook.","limit":"openpyxl never evaluates formulas; use independent values or a real spreadsheet calculation engine."},
+      {"title":"Claude Academy: File creation workflow","url":"https://academy.claude.com/tutorials/create-and-edit-files-with-claude-to-eliminate-hours-of-busy-work","checked":"2026-10-25","supports":"An official example of combining document inputs and producing coordinated files.","limit":"Inspiration and capability reference, not evidence of this episode's actual model/provider execution."}
+    ],
+    "publication_state": "Plan only. No production, upload, publishing, scheduling or account actions performed by this research agent."
+  },
+  "not_selected": [
+    {"topic":"NotebookLM or Gemini Notebook end-to-end tutorial","reason":"No connected account for a genuine workflow demo; terminology and UI need fresh official checking. A local source-table workflow is a feasible different topic, not a test of NotebookLM."},
+    {"topic":"Another basic Skill/CLAUDE.md lesson","reason":"Already covered by several repository episodes."},
+    {"topic":"AI signup CSV cleaning","reason":"Already the core worked example in claude-code-beginner-event-folder and claude-skill-manual-event-folder."},
+    {"topic":"Live email/calendar automation","reason":"Requires connected accounts and external action scope; local draft and file work can deliver the educational result without them."}
+  ]
+}

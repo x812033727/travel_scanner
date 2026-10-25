@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-25",
+  "authorship": "Original code and diagrams produced in this AI-assisted session; no Claude model execution was claimed or performed.",
+  "runtime": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0",
+    "ffmpeg": "7.1.5-0+deb13u1"
+  },
+  "math_checks": [
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check_lesson.py --self-test",
+      "exit_code": 0,
+      "stdout": "{\"ok\":true,\"self_test\":true,\"distribution\":[1,2,3,4,5,6,5,4,3,2,1],\"invalid_cases_rejected\":[\"out_of_range_13\",\"boolean_target\",\"invalid_hex\"]}"
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check_lesson.py lesson.json --expect-count 6",
+      "exit_code": 0,
+      "stdout": "{\"ok\":true,\"target_sum\":7,\"outcomes\":36,\"highlighted_count\":6,\"highlighted_pairs\":[[1,6],[2,5],[3,4],[4,3],[5,2],[6,1]],\"probability\":\"1/6\"}"
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check_lesson.py lesson-sum6.json --expect-count 5",
+      "exit_code": 0,
+      "stdout": "{\"ok\":true,\"target_sum\":6,\"outcomes\":36,\"highlighted_count\":5,\"highlighted_pairs\":[[1,5],[2,4],[3,3],[4,2],[5,1]],\"probability\":\"5/36\"}"
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check_lesson.py lesson-invalid.json",
+      "exit_code": 1,
+      "stdout": "{\"ok\":false,\"error\":\"target_sum must be an integer from 2 to 12\"}"
+    }
+  ],
+  "media": [
+    {
+      "file": "demo.mp4",
+      "bytes": 645184,
+      "sha256": "c02bc93e447237e873c20492bf9cd55b75d2300fbad4b092d3539ca469d8c7a8",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "24/1",
+            "nb_frames": "1296"
+          }
+        ],
+        "format": {
+          "duration": "54.000000"
+        }
+      }
+    },
+    {
+      "file": "demo-sum6.mp4",
+      "bytes": 635534,
+      "sha256": "09e43843e34bd4f1829598affe44c8a1e24d34965be326c494a9b90b06ada8a0",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "24/1",
+            "nb_frames": "1296"
+          }
+        ],
+        "format": {
+          "duration": "54.000000"
+        }
+      }
+    }
+  ],
+  "visual_review": "Contact sheet visually checked: each numeric header is separated from its axis label, badge fits, sum7 highlights6 cells,sum12 highlights1,sum6 highlights5.",
+  "limits": [
+    "MP4 is intentionally silent.",
+    "Per-output narration and SRT update target values but use planned scene windows; no audio has been generated or aligned.",
+    "Legacy narration_zh.txt and subtitles.srt are for target_sum=7 only.",
+    "The final scene is intentionally a fixed sum6 exercise.",
+    "Lab currently accepts zh-TW only; eight-language main-film production is separate.",
+    "No photorealistic footage, third-party video clips, logos or music are used."
+  ],
+  "portability": {
+    "optional_args": [
+      "--font",
+      "--font-bold",
+      "--font-index"
+    ],
+    "default_pngs_unchanged": true,
+    "checks": [
+      {
+        "file": "opening.png",
+        "identical": true
+      },
+      {
+        "file": "grid-all.png",
+        "identical": true
+      },
+      {
+        "file": "sum-seven.png",
+        "identical": true
+      },
+      {
+        "file": "sum-twelve.png",
+        "identical": true
+      },
+      {
+        "file": "comparison.png",
+        "identical": true
+      },
+      {
+        "file": "sum-six.png",
+        "identical": true
+      }
+    ],
+    "platform_execution": "Only Linux actually executed; macOS and Windows discovery are implemented but not executed here."
+  },
+  "parameter_consistency": {
+    "opening_dice": "First matched ordered pair from current target_sum",
+    "opening_question": "Current target_sum versus12 (special wording for target12)",
+    "primary_grid": "Current target_sum",
+    "fraction_and_comparison": "Computed matching count",
+    "last_scene": "Intentionally fixed sum6 practice",
+    "current_target_frame": "grid-target.png",
+    "narration_assets": "Generated per output filename using current target/count; planned timings only"
+  },
+  "summary_commands": {
+    "base_render": "python render_lesson.py lesson.json --output demo.mp4 --summary",
+    "base_render_stdout": "OK: rendered demo.mp4\n1280x720 24fps duration=54s audio=none\ntarget_sum=7 highlighted_count=6",
+    "base_check": "python check_lesson.py lesson.json --expect-count 6 --summary",
+    "base_check_stdout": "OK\ntarget_sum=7 outcomes=36\nhighlighted_count=6 probability=1/6"
+  }
+}
