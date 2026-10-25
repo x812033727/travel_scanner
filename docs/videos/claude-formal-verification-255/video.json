@@ -1,0 +1,2746 @@
+{
+  "schema_version": 1,
+  "slug": "claude-formal-verification-255",
+  "format": "slides",
+  "theme": "paper",
+  "category": "ai-news",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude形式驗證研究：用255看懂程式保證",
+    "description": "容量只有8byte，為什麼長度255會被接受？把條件寫清楚，再用兩個真實C範例修正並核對結果。\n給想看懂AI程式證明、會請AI改程式的你；接受合法輸入和能否結束，分別留下可重跑紀錄。\n\n2026-10-22，Anthropic與Theorem公開合作研究。研究報告239個入口／123個函式庫；本片引用的公開release為60個入口／25個函式庫。僅該公開release未提供halts命題的證明，不外推整個研究。\n\n本地原創guard限定n=0..255、容量8byte、另需1byte結尾，只執行接受判斷；另一支獨立程式檢查計數後的返回。方法是實際C執行、完整列舉、guard命題SAT與loop有限控制圖，未執行供應商Rocq checker。\n\n原創C、執行結果及完整來源資料包：https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n原創SVG為本片依程式結果與官方流程重繪，沒有冒充產品操作畫面。",
+    "tags": [
+      "Claude",
+      "形式驗證",
+      "程式證明",
+      "Theorem",
+      "Rocq",
+      "C程式",
+      "AI科技"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**255**\n過了？",
+      "tag": "Claude形式驗證",
+      "sub": "容量8，卻放行",
+      "asset": "docs/videos/claude-formal-verification-255/assets/thumbnail-guard.png"
+    }
+  },
+  "sources": [
+    {
+      "title": "Anthropic：Claude形式驗證研究",
+      "url": "https://www.anthropic.com/research/formal-verification",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Theorem公開proof：README",
+      "url": "https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Theorem：證明來源與固定命題",
+      "url": "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Theorem：實際checker流程",
+      "url": "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Theorem：agreement與halts命題",
+      "url": "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "C11委員會草案：整數提升與無號轉型",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "本片原創C程式與完整結果",
+      "url": "https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d0-opening-guard.svg",
+      "source": "Mokaair原創概念圖1",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d1-guard-narrowing-and-fix.svg",
+      "source": "Mokaair原創概念圖2",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d2-full-domain-and-two-directions.svg",
+      "source": "Mokaair原創概念圖3",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d4-independent-loop-cycle.svg",
+      "source": "Mokaair原創概念圖4",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d4-independent-loop-exit.svg",
+      "source": "Mokaair原創概念圖5",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/d5-official-proof-and-local-scope.svg",
+      "source": "Mokaair原創概念圖6",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/thumbnail-guard.png",
+      "source": "Mokaair原創專用縮圖：接受判斷",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/data/guard.c",
+      "source": "Mokaair原創C：guard.c",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/data/loop.c",
+      "source": "Mokaair原創C：loop.c",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    },
+    {
+      "path": "docs/videos/claude-formal-verification-255/assets/thumbnail-guard.svg",
+      "source": "Mokaair原創專用縮圖SVG",
+      "license": "原創；保留權利",
+      "author": "Mokaair"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "capacity-accepts-255",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d0-opening-guard.svg",
+        "key": "容量8byte，結果卻接受255",
+        "caption": "本次原創guard｜只判斷接受，不寫入buffer"
+      },
+      "lines": [
+        {
+          "id": "zfgp",
+          "text": "二〇二六年十月二十五日，我的程式容量八位元組，卻接受長度二百五十五？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c1"
+      ],
+      "chapter": "本地檢查竟接受255"
+    },
+    {
+      "id": "deny-all-preview",
+      "template": "big",
+      "data": {
+        "text": "全部拒絕\n算修好嗎？",
+        "key": "驗收紀錄，缺少接受方向",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "z9dp",
+          "text": "紀錄上只寫不收錯的，全部拒絕能算修好嗎？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c2"
+      ]
+    },
+    {
+      "id": "counter-preview",
+      "template": "big",
+      "data": {
+        "text": "數到255\n會離開嗎？",
+        "key": "驗收紀錄，返回欄還待填",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "bpnn",
+          "text": "紀錄還要填返回，另一個計數程式真的會離開嗎？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c3"
+      ]
+    },
+    {
+      "id": "proof-preview",
+      "template": "big",
+      "data": {
+        "text": "證明交給誰驗收？",
+        "key": "同一個要求，如何驗收證明",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "c8r2",
+          "text": "同一個要求，AI寫出證明後，又交給誰驗收？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c4"
+      ]
+    },
+    {
+      "id": "research-published",
+      "template": "title",
+      "data": {
+        "tag": "2026-10-22｜Anthropic × Theorem",
+        "title": "Claude程式證明研究公開",
+        "subtitle": "從本地255反例，讀懂保證對象",
+        "key": "研究消息，對回可驗收的條件"
+      },
+      "lines": [
+        {
+          "id": "qwaw",
+          "text": "這份紀錄，要回答十月二十二日Claude研究帶來的驗收問題。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c5"
+      ],
+      "chapter": "紀錄先寫下能收哪些長度"
+    },
+    {
+      "id": "tests-to-fixed-statement",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "測試要求",
+            "detail": "把原來要檢查的條件寫清楚",
+            "icon": "checklist"
+          },
+          {
+            "title": "可檢查命題",
+            "detail": "固定要證明的目標",
+            "icon": "document"
+          }
+        ],
+        "key": "研究把測試要求寫成命題",
+        "source": "Anthropic研究公告｜2026-10-22"
+      },
+      "lines": [
+        {
+          "id": "4rff",
+          "text": "研究把測試要求，寫成可檢查的命題。",
+          "reveal": 2,
+          "emotion": "簡短接起新聞與眼前的例子"
+        }
+      ],
+      "claims": [
+        "c6"
+      ]
+    },
+    {
+      "id": "start-contract",
+      "template": "table",
+      "data": {
+        "title": "同一份程式保證紀錄",
+        "columns": [
+          "對象",
+          "先填什麼"
+        ],
+        "rows": [
+          [
+            "接受判斷",
+            "輸入範圍與接受條件"
+          ],
+          [
+            "獨立計數返回",
+            "尚待填寫"
+          ]
+        ],
+        "key": "同一份紀錄，先填接受判斷",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "5i5d",
+          "text": "這裡用我自己寫的C程式，先填接受判斷這一列。"
+        }
+      ],
+      "claims": [
+        "c7"
+      ]
+    },
+    {
+      "id": "length-domain",
+      "template": "stats",
+      "data": {
+        "title": "輸入代表資料長度",
+        "stats": [
+          {
+            "value": "0–255",
+            "label": "無號8位元輸入"
+          }
+        ],
+        "key": "先固定這次要檢查的範圍",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "jeaj",
+          "text": "輸入是資料長度，限定零到二百五十五。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c8"
+      ]
+    },
+    {
+      "id": "capacity-and-terminator",
+      "template": "steps",
+      "data": {
+        "title": "容量與結尾",
+        "steps": [
+          {
+            "title": "資料容量",
+            "detail": "8byte",
+            "icon": "document"
+          },
+          {
+            "title": "結尾需求",
+            "detail": "額外1byte",
+            "icon": "arrow"
+          }
+        ],
+        "key": "容量8byte，結尾也要占空間",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "fzz5",
+          "text": "容量只有八個位元組，還得替結尾留一個位元組。"
+        }
+      ],
+      "claims": [
+        "c9"
+      ]
+    },
+    {
+      "id": "mathematical-contract",
+      "template": "code",
+      "data": {
+        "title": "應接受的條件",
+        "code": "n + 1 <= 8",
+        "highlight": [],
+        "key": "先算完整總長，再比較容量",
+        "caption": "本片數學契約；非C轉型運算"
+      },
+      "lines": [
+        {
+          "id": "kkef",
+          "text": "所以輸入長度加一，不超過八，才應該接受。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "id": "seven-versus-eight",
+      "template": "table",
+      "data": {
+        "title": "對回接受條件",
+        "columns": [
+          "長度n",
+          "完整總長",
+          "應有結果"
+        ],
+        "rows": [
+          [
+            "7",
+            "7+1=8",
+            "接受"
+          ],
+          [
+            "8",
+            "8+1=9",
+            "拒絕"
+          ]
+        ],
+        "key": "7能收，8就超出容量",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "m7xu",
+          "text": "長度七加一等於八，剛好能收；長度八加一等於九，就該拒絕。"
+        }
+      ],
+      "claims": [
+        "c11"
+      ]
+    },
+    {
+      "id": "valid-interval",
+      "template": "table",
+      "data": {
+        "title": "零也需要保留",
+        "columns": [
+          "輸入",
+          "加結尾",
+          "應有結果"
+        ],
+        "rows": [
+          [
+            "0",
+            "1byte",
+            "接受"
+          ],
+          [
+            "0–7",
+            "1–8byte",
+            "全部接受"
+          ]
+        ],
+        "key": "應且只應接受0–7",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "axkg",
+          "text": "零也合法，因為加上結尾，只占一個位元組。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        },
+        {
+          "id": "r79s",
+          "text": "所以紀錄上的接受區間，是零到七。"
+        }
+      ],
+      "claims": [
+        "c12",
+        "c13"
+      ]
+    },
+    {
+      "id": "why-255-accepted",
+      "template": "big",
+      "data": {
+        "text": "255怎麼進來的？",
+        "key": "回到開頭的誤接受",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "p2uy",
+          "text": "那為什麼開頭的二百五十五，竟然進來了？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c14"
+      ]
+    },
+    {
+      "id": "promoted-addition",
+      "template": "steps",
+      "data": {
+        "title": "先算加法",
+        "steps": [
+          {
+            "title": "資料長度",
+            "detail": "255",
+            "icon": "document"
+          },
+          {
+            "title": "加上結尾",
+            "detail": "255+1=256",
+            "icon": "arrow"
+          }
+        ],
+        "key": "先得到完整的256",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "vwiq",
+          "text": "沿著總長的計算看：二百五十五加一，先得到二百五十六。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "id": "integer-promotion",
+      "template": "code",
+      "data": {
+        "title": "加法先做整數提升",
+        "code": "static bool guard_bad(uint8_t n) {\n    uint8_t total = (uint8_t)(n + 1);\n    return total <= CAPACITY;\n}",
+        "highlight": [
+          2
+        ],
+        "key": "加法得到int的256",
+        "caption": "guard.c原式｜提升後加法，之後才轉型"
+      },
+      "lines": [
+        {
+          "id": "5iky",
+          "text": "加法先提升成一般整數計算，並沒有直接變成零。"
+        }
+      ],
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "id": "narrowing-assignment",
+      "template": "code",
+      "data": {
+        "title": "錯在轉回窄型別",
+        "code": "static bool guard_bad(uint8_t n) {\n    uint8_t total = (uint8_t)(n + 1);\n    return total <= CAPACITY;\n}",
+        "highlight": [
+          2
+        ],
+        "key": "轉回uint8_t，才丟掉完整值",
+        "caption": "guard_bad連續節錄｜右側8bit轉型"
+      },
+      "lines": [
+        {
+          "id": "zfmi",
+          "text": "錯版卻把總長，轉回八位元無號整數。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c17"
+      ]
+    },
+    {
+      "id": "eight-bit-range",
+      "template": "stats",
+      "data": {
+        "title": "八位元無號整數",
+        "stats": [
+          {
+            "value": "0–255",
+            "label": "可保存的整數"
+          }
+        ],
+        "key": "型別的可存範圍，與容量分開",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "3mpx",
+          "text": "這個型別能保存的數字，只有零到二百五十五。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "id": "narrow-256-to-zero",
+      "template": "steps",
+      "data": {
+        "title": "轉型後留下什麼",
+        "steps": [
+          {
+            "title": "轉型前",
+            "detail": "256",
+            "icon": "document"
+          },
+          {
+            "title": "轉回8bit",
+            "detail": "0",
+            "icon": "arrow"
+          }
+        ],
+        "key": "256窄化成0",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "tew5",
+          "text": "二百五十六轉回去，儲存值就成了零。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c19"
+      ]
+    },
+    {
+      "id": "zero-passes-capacity",
+      "template": "steps",
+      "data": {
+        "title": "比較看到的是零",
+        "steps": [
+          {
+            "title": "比較",
+            "detail": "0 <= 8",
+            "icon": "document"
+          },
+          {
+            "title": "錯版結果",
+            "detail": "接受255",
+            "icon": "arrow"
+          }
+        ],
+        "key": "比較看到的總長已變0",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "femu",
+          "text": "拿零和容量八比較，它於是回傳接受。"
+        }
+      ],
+      "claims": [
+        "c20"
+      ]
+    },
+    {
+      "id": "bits-versus-bytes",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "型別",
+          "points": [
+            "8 bit",
+            "保存0–255"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "容量",
+          "points": [
+            "8 byte",
+            "結尾也占1byte"
+          ],
+          "icon": "checklist"
+        },
+        "key": "八位元是型別，八位元組是容量",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "64pm",
+          "text": "八位元是型別，八位元組是容量。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c21"
+      ]
+    },
+    {
+      "id": "conversion-location",
+      "template": "big",
+      "data": {
+        "text": "錯在轉型儲存",
+        "key": "不要把兩種八混在一起",
+        "icon": "gear",
+        "sub": "加法本身沒有變成0"
+      },
+      "lines": [
+        {
+          "id": "2yfh",
+          "text": "這次的錯在轉型儲存，不能把兩種八當成同一件事。"
+        }
+      ],
+      "claims": [
+        "c22"
+      ]
+    },
+    {
+      "id": "which-line-to-fix",
+      "template": "big",
+      "data": {
+        "text": "完整總長\n存在哪裡？",
+        "key": "紀錄已有反例，修改總長那一行",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "mvnc",
+          "text": "紀錄已找到反例，哪一行能把完整總長留下？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c23"
+      ],
+      "chapter": "總長留下256，檢查改判拒絕"
+    },
+    {
+      "id": "wide-total",
+      "template": "code",
+      "data": {
+        "title": "總長計算與儲存都加寬",
+        "code": "static bool guard_widened(uint8_t n) {\n    uint16_t total = (uint16_t)((uint16_t)n + 1u);\n    return total <= CAPACITY;\n}",
+        "highlight": [
+          2
+        ],
+        "key": "完整值先保留下來",
+        "caption": "guard_widened原式｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "936d",
+          "text": "讓計算保留完整值，再用十六位元無號整數儲存總長。"
+        }
+      ],
+      "claims": [
+        "c24"
+      ]
+    },
+    {
+      "id": "lhs-only-cannot-recover",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "右側仍窄化",
+          "points": [
+            "256先轉成0"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "左側再加寬",
+          "points": [
+            "只能保存已經變成的0"
+          ],
+          "icon": "checklist"
+        },
+        "key": "先縮成0，加寬後仍是0",
+        "source": "依原C運算推演｜非新增編譯對照"
+      },
+      "lines": [
+        {
+          "id": "s57e",
+          "text": "如果先把結果縮回八位元，再存進加寬的變數，零仍然是零。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c25"
+      ]
+    },
+    {
+      "id": "complete-wide-expression",
+      "template": "code",
+      "data": {
+        "title": "整行一起對照",
+        "code": "static bool guard_widened(uint8_t n) {\n    uint16_t total = (uint16_t)((uint16_t)n + 1u);\n    return total <= CAPACITY;\n}",
+        "highlight": [
+          2,
+          3
+        ],
+        "key": "右側轉型也要一起改",
+        "caption": "實際修正版整行；不是只換左側宣告"
+      },
+      "lines": [
+        {
+          "id": "yavq",
+          "text": "修正版這一整行，計算和存放總長的轉型都要一起改。"
+        }
+      ],
+      "claims": [
+        "c26"
+      ]
+    },
+    {
+      "id": "fixed-255-total",
+      "template": "steps",
+      "data": {
+        "title": "修正版處理255",
+        "steps": [
+          {
+            "title": "輸入與結尾",
+            "detail": "255+1",
+            "icon": "document"
+          },
+          {
+            "title": "保存完整值",
+            "detail": "256",
+            "icon": "arrow"
+          }
+        ],
+        "key": "十六位元保存256",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "ij57",
+          "text": "輸入二百五十五，加一後仍保存二百五十六。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c27"
+      ]
+    },
+    {
+      "id": "fixed-255-rejects",
+      "template": "stats",
+      "data": {
+        "title": "對回原來的容量",
+        "stats": [
+          {
+            "value": "256 > 8",
+            "label": "正確拒絕255"
+          }
+        ],
+        "key": "容量沒有增加，只修總長",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "mfag",
+          "text": "它大於容量八，這次正確回傳拒絕。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c28"
+      ]
+    },
+    {
+      "id": "wide-fix-and-valid-seven",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d1-guard-narrowing-and-fix.svg",
+        "key": "修掉255反例，保留原有合法輸入",
+        "caption": "本次guard原式與結果｜7仍接受；容量8byte不變"
+      },
+      "lines": [
+        {
+          "id": "vkym",
+          "text": "原本合法的長度七呢？加一得到八，仍然接受。",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c29"
+      ]
+    },
+    {
+      "id": "how-check-the-middle",
+      "template": "big",
+      "data": {
+        "text": "中間還會有錯嗎？",
+        "key": "把整個輸入範圍對回條件",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "84hx",
+          "text": "但只看這兩筆，怎麼確認中間沒有別的錯？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c30"
+      ]
+    },
+    {
+      "id": "five-small-examples",
+      "template": "table",
+      "data": {
+        "title": "原先看的五個小值",
+        "columns": [
+          "輸入",
+          "錯版結果",
+          "是否符合"
+        ],
+        "rows": [
+          [
+            "0",
+            "接受",
+            "是"
+          ],
+          [
+            "1",
+            "接受",
+            "是"
+          ],
+          [
+            "2",
+            "接受",
+            "是"
+          ],
+          [
+            "3",
+            "接受",
+            "是"
+          ],
+          [
+            "4",
+            "接受",
+            "是"
+          ]
+        ],
+        "key": "小值都對，還不足以涵蓋完整範圍",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "wunt",
+          "text": "我原先選零、一、二、三、四，五個小值都符合預期。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c31"
+      ]
+    },
+    {
+      "id": "enumerate-entire-domain",
+      "template": "table",
+      "data": {
+        "title": "完整0–255範圍",
+        "columns": [
+          "範圍",
+          "錯版",
+          "加寬版"
+        ],
+        "rows": [
+          [
+            "0–7",
+            "接受",
+            "接受"
+          ],
+          [
+            "8–254",
+            "拒絕",
+            "拒絕"
+          ],
+          [
+            "255",
+            "接受",
+            "拒絕"
+          ]
+        ],
+        "key": "把所有範圍都列進同一表",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "a7te",
+          "text": "把零到二百五十五全部列出來，才能對回完整範圍。"
+        }
+      ],
+      "claims": [
+        "c32"
+      ]
+    },
+    {
+      "id": "only-extra-accepted-value",
+      "template": "table",
+      "data": {
+        "title": "對回應接受集合",
+        "columns": [
+          "版本",
+          "接受哪些值"
+        ],
+        "rows": [
+          [
+            "錯版",
+            "0–7，以及255"
+          ],
+          [
+            "加寬版",
+            "0–7"
+          ]
+        ],
+        "key": "唯一誤接受值是255",
+        "source": "原創guard｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "dfhy",
+          "text": "錯版多接受的只有二百五十五；加寬版則接受零到七。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c33"
+      ]
+    },
+    {
+      "id": "boolean-input-model",
+      "template": "steps",
+      "data": {
+        "title": "把同一判斷寫成模型",
+        "steps": [
+          {
+            "title": "輸入",
+            "detail": "8個布林位元",
+            "icon": "document"
+          },
+          {
+            "title": "算式",
+            "detail": "完整加法與轉型規則",
+            "icon": "arrow"
+          }
+        ],
+        "key": "同一個輸入，轉成真假位元模型",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "zgkb",
+          "text": "這份紀錄另加一個求解模型，把同一輸入寫成八個真假位元。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c34"
+      ]
+    },
+    {
+      "id": "false-accept-query",
+      "template": "big",
+      "data": {
+        "text": "不合格卻被接受？",
+        "key": "尋找誤接受的反例",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "5waf",
+          "text": "讓命題求解器找：有沒有不合格的長度，卻得到接受？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c35"
+      ]
+    },
+    {
+      "id": "sat-meaning",
+      "template": "steps",
+      "data": {
+        "title": "命題SAT在找什麼",
+        "steps": [
+          {
+            "title": "條件",
+            "detail": "真假約束",
+            "icon": "document"
+          },
+          {
+            "title": "求解",
+            "detail": "能否同時成立",
+            "icon": "arrow"
+          }
+        ],
+        "key": "求解器找得到一組輸入嗎",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "unr8",
+          "text": "這種尋找真假條件能否同時成立的方法，叫命題SAT。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c36"
+      ]
+    },
+    {
+      "id": "sat-bad-versus-fixed",
+      "template": "stats",
+      "data": {
+        "title": "相同誤接受查詢",
+        "stats": [
+          {
+            "value": "255",
+            "label": "錯版有解"
+          },
+          {
+            "value": "無解",
+            "label": "加寬版UNSAT"
+          }
+        ],
+        "key": "同一查詢，對回修改前後",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "gtuj",
+          "text": "錯版找到二百五十五；加寬版找不到這種反例。",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c37"
+      ]
+    },
+    {
+      "id": "sat-false-reject",
+      "template": "stats",
+      "data": {
+        "title": "合法卻遭拒絕？",
+        "stats": [
+          {
+            "value": "無解",
+            "label": "加寬版誤拒絕查詢"
+          }
+        ],
+        "key": "接受方向，也單獨查一次",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "56e4",
+          "text": "再問合法長度會不會遭拒絕，修正版也找不到。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c38"
+      ]
+    },
+    {
+      "id": "symbolic-versus-compiled",
+      "template": "stats",
+      "data": {
+        "title": "模型逐值對回C",
+        "stats": [
+          {
+            "value": "256/256",
+            "label": "輸入逐列相符"
+          }
+        ],
+        "key": "用實際C結果交叉核對模型",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "tksv",
+          "text": "模型的結果，還逐值對回實際C程式，二百五十六列全相符。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "small-domain-enumeration",
+      "template": "big",
+      "data": {
+        "text": "這裡逐個測也夠",
+        "key": "SAT沒有額外變出另一個答案",
+        "icon": "checklist",
+        "sub": "同一個0–255有限域"
+      },
+      "lines": [
+        {
+          "id": "2zma",
+          "text": "這個範圍很小，逐個測也做得到，求解器沒有多變出一個答案。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c40"
+      ]
+    },
+    {
+      "id": "deny-all-question",
+      "template": "big",
+      "data": {
+        "text": "全部拒絕\n又會怎樣？",
+        "key": "只要求零誤接受，夠嗎",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "4bqi",
+          "text": "但如果紀錄上只留不准收錯的，全部拒絕能不能交付？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c41"
+      ]
+    },
+    {
+      "id": "deny-all-two-directions",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "不合格輸入",
+          "points": [
+            "全部拒絕",
+            "沒有誤接受"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "合法輸入0–7",
+          "points": [
+            "也全被拒絕",
+            "功能消失"
+          ],
+          "icon": "checklist"
+        },
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25",
+        "keys": [
+          "不合格輸入，全被拒絕",
+          "合法輸入，也全被拒絕"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xfvp",
+          "text": "照這個單向條件，永遠拒絕確實沒讓不合格輸入通過。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        },
+        {
+          "id": "cabc",
+          "text": "可是長度零到七，也一個都進不來。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c42",
+        "c43"
+      ],
+      "chapter": "全部拒絕，也拒了合法輸入"
+    },
+    {
+      "id": "symbolic-contrast-only",
+      "template": "table",
+      "data": {
+        "title": "一律拒絕對照的證據",
+        "columns": [
+          "這個對照",
+          "方法"
+        ],
+        "rows": [
+          [
+            "永遠拒絕",
+            "符號模型／命題SAT"
+          ],
+          [
+            "另編譯C版本",
+            "此臂沒有執行"
+          ]
+        ],
+        "key": "分清符號對照與實際C執行",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "jhkm",
+          "text": "這個對照是在符號模型裡計算，不是另跑一支C程式。"
+        }
+      ],
+      "claims": [
+        "c44"
+      ]
+    },
+    {
+      "id": "deny-all-error-counts",
+      "template": "stats",
+      "data": {
+        "title": "同一個接受契約",
+        "stats": [
+          {
+            "value": "0",
+            "label": "誤接受"
+          },
+          {
+            "value": "8",
+            "label": "誤拒絕"
+          }
+        ],
+        "key": "合法的0–7，八個全損失",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "e6wk",
+          "text": "結果是零誤接受，卻有八個誤拒絕。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c45"
+      ]
+    },
+    {
+      "id": "rejection-as-delivery",
+      "template": "big",
+      "data": {
+        "text": "全拒絕來交差？",
+        "key": "只寫不准收錯，還少一個方向",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "7d4v",
+          "text": "只寫不准收錯的，程式就能用拒絕所有人來交差。"
+        }
+      ],
+      "claims": [
+        "c46"
+      ]
+    },
+    {
+      "id": "complete-acceptance-contract",
+      "template": "steps",
+      "data": {
+        "title": "把要求寫成雙向",
+        "steps": [
+          {
+            "title": "不能誤收",
+            "detail": "不合格就拒絕",
+            "icon": "document"
+          },
+          {
+            "title": "必須能用",
+            "detail": "0–7就接受",
+            "icon": "arrow"
+          }
+        ],
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25",
+        "keys": [
+          "補上合法輸入必須接受",
+          "兩個方向，合成完整接受契約"
+        ]
+      },
+      "lines": [
+        {
+          "id": "6a2b",
+          "text": "請把合法輸入必須接受，也寫成另一個要檢查的條件。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        },
+        {
+          "id": "4akm",
+          "text": "兩個方向合起來，就是應且只應接受零到七。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c47",
+        "c48"
+      ]
+    },
+    {
+      "id": "full-domain-and-functional-result",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d2-full-domain-and-two-directions.svg",
+        "key": "單向紀錄，補上該接受就接受",
+        "caption": "同域結果｜錯版9／加寬版8／全拒絕0接受"
+      },
+      "lines": [
+        {
+          "id": "w9b4",
+          "text": "開頭那份單向紀錄，現在補上合法輸入必須接受。"
+        }
+      ],
+      "claims": [
+        "c49"
+      ]
+    },
+    {
+      "id": "guard-object",
+      "template": "big",
+      "data": {
+        "text": "交付接受判斷",
+        "key": "這段程式沒有寫入資料緩衝區",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "dkjy",
+          "text": "這一列可以交付的是接受判斷，程式裡沒有寫入資料緩衝區。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c50"
+      ]
+    },
+    {
+      "id": "save-two-error-columns",
+      "template": "table",
+      "data": {
+        "title": "接受判斷這一列填好了",
+        "columns": [
+          "誤接受",
+          "誤拒絕"
+        ],
+        "rows": [
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "key": "加寬版：誤接受0，誤拒絕0",
+        "source": "原創guard｜完整256列｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "8ywa",
+          "text": "我把加寬版的兩項結果填成零：沒有誤接受，也沒有誤拒絕。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c51"
+      ]
+    },
+    {
+      "id": "return-row-unfilled",
+      "template": "table",
+      "data": {
+        "title": "同一份紀錄的下一個空白",
+        "columns": [
+          "紀錄列",
+          "目前狀態"
+        ],
+        "rows": [
+          [
+            "接受判斷",
+            "條件與結果已填"
+          ],
+          [
+            "獨立計數返回",
+            "待填要求與結果"
+          ]
+        ],
+        "key": "完成接受判斷，返回欄仍待填",
+        "source": "本片原創驗收紀錄｜非同一支程式"
+      },
+      "lines": [
+        {
+          "id": "xh98",
+          "text": "接受判斷這一列完成了；紀錄還有另一列，等著驗收返回。"
+        }
+      ],
+      "claims": [
+        "c52"
+      ]
+    },
+    {
+      "id": "return-contract-question",
+      "template": "big",
+      "data": {
+        "text": "數完就返回\n要怎麼寫？",
+        "key": "把返回欄，填成可核對的條件",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "idga",
+          "text": "這張紀錄的返回欄，要怎麼填成可核對的要求？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c53"
+      ]
+    },
+    {
+      "id": "independent-counter",
+      "template": "code",
+      "data": {
+        "title": "用獨立計數程式填返回欄",
+        "code": "static unsigned bad(uint8_t n) {\n    volatile uint8_t i = 0;\n    while (i <= n) {\n        i = (uint8_t)(i + 1);\n    }\n    return i;\n}",
+        "highlight": [
+          2,
+          3
+        ],
+        "key": "獨立案例B；不是接受判斷的下游",
+        "caption": "loop.c原式｜獨立案例B；非guard下游"
+      },
+      "lines": [
+        {
+          "id": "u2xw",
+          "text": "我用另一支獨立計數程式填返回欄；輸入是計數上限。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c54"
+      ],
+      "chapter": "返回欄遇到一個循環"
+    },
+    {
+      "id": "counter-start-and-rule",
+      "template": "steps",
+      "data": {
+        "title": "固定上限，從零開始",
+        "steps": [
+          {
+            "title": "範圍與起點",
+            "detail": "n=0–255；i=0",
+            "icon": "document"
+          },
+          {
+            "title": "繼續條件",
+            "detail": "i <= n時加1",
+            "icon": "arrow"
+          }
+        ],
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25",
+        "keys": [
+          "上限固定，計數器從0開始",
+          "條件成立加1，不成立離開"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p4u6",
+          "text": "上限仍是零到二百五十五，計數器從零開始。",
+          "reveal": 1
+        },
+        {
+          "id": "v9sd",
+          "text": "只要計數器小於等於上限，就加一，否則離開。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c55",
+        "c56"
+      ]
+    },
+    {
+      "id": "counter-expectation",
+      "template": "table",
+      "data": {
+        "title": "把預期也寫成數字",
+        "columns": [
+          "要求",
+          "應有結果"
+        ],
+        "rows": [
+          [
+            "加1的次數",
+            "n+1"
+          ],
+          [
+            "返回值",
+            "n+1"
+          ]
+        ],
+        "key": "次數與返回值，都對回上限加一",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "riuf",
+          "text": "把所需次數寫成上限加一，返回值也要等於這個數。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c57"
+      ]
+    },
+    {
+      "id": "counter-zero",
+      "template": "stats",
+      "data": {
+        "title": "上限0的預期",
+        "stats": [
+          {
+            "value": "1",
+            "label": "加1次數／返回值"
+          }
+        ],
+        "key": "從0開始，做一次加1",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "cgit",
+          "text": "輸入零，預期做一次加一，返回一。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c58"
+      ]
+    },
+    {
+      "id": "counter-seven",
+      "template": "stats",
+      "data": {
+        "title": "上限7的預期",
+        "stats": [
+          {
+            "value": "8",
+            "label": "加1次數／返回值"
+          }
+        ],
+        "key": "數到7，再加一次就離開",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "y326",
+          "text": "輸入七，預期做八次加一，返回八。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c59"
+      ]
+    },
+    {
+      "id": "counter-254-exits",
+      "template": "steps",
+      "data": {
+        "title": "錯版也能處理254",
+        "steps": [
+          {
+            "title": "上限",
+            "detail": "254",
+            "icon": "document"
+          },
+          {
+            "title": "計數器",
+            "detail": "255 > 254，離開",
+            "icon": "arrow"
+          }
+        ],
+        "key": "還沒到型別的盡頭",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "qmcd",
+          "text": "錯版用八位元計數器；上限二百五十四時，到二百五十五能離開。"
+        }
+      ],
+      "claims": [
+        "c60"
+      ]
+    },
+    {
+      "id": "counter-255-timeout",
+      "template": "stats",
+      "data": {
+        "title": "上限改成255",
+        "stats": [
+          {
+            "value": "0.25秒",
+            "label": "這次逾時後被中止"
+          }
+        ],
+        "key": "這是一筆逾時觀察",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "b3r9",
+          "text": "但上限改成二百五十五，執行在零點二五秒後被工具中止。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c61"
+      ]
+    },
+    {
+      "id": "timeout-not-enough",
+      "template": "big",
+      "data": {
+        "text": "真的不會結束？",
+        "key": "單靠一次逾時，還不能判定",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "ijcq",
+          "text": "它真的不會結束，還是我們等得不夠久？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        },
+        {
+          "id": "ihny",
+          "text": "單靠這次逾時，還不能判定。"
+        }
+      ],
+      "claims": [
+        "c62",
+        "c63"
+      ]
+    },
+    {
+      "id": "inspect-transitions",
+      "template": "steps",
+      "data": {
+        "title": "檢查狀態如何移動",
+        "steps": [
+          {
+            "title": "目前狀態",
+            "detail": "固定n與目前i",
+            "icon": "document"
+          },
+          {
+            "title": "下一步",
+            "detail": "依相同規則更新i",
+            "icon": "arrow"
+          }
+        ],
+        "key": "狀態與規則，一起看",
+        "source": "獨立loop控制圖｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "4jzv",
+          "text": "要看每一步狀態，還得知道下一步會怎麼走。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c64"
+      ]
+    },
+    {
+      "id": "fixed-counter-model",
+      "template": "table",
+      "data": {
+        "title": "控制模型的條件",
+        "columns": [
+          "保持不變",
+          "會變動"
+        ],
+        "rows": [
+          [
+            "n=255；無外部寫入者",
+            "本地volatile計數器i"
+          ]
+        ],
+        "key": "上限固定，只有計數器往下走",
+        "source": "獨立loop控制圖｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "kfft",
+          "text": "這裡上限固定，沒有其他執行者改計數器。"
+        }
+      ],
+      "claims": [
+        "c65"
+      ]
+    },
+    {
+      "id": "cycle-turns-to-zero",
+      "template": "steps",
+      "data": {
+        "title": "走到八位元的盡頭",
+        "steps": [
+          {
+            "title": "累加",
+            "detail": "0…255",
+            "icon": "document"
+          },
+          {
+            "title": "再加1",
+            "detail": "轉回0",
+            "icon": "arrow"
+          }
+        ],
+        "key": "255之後，回到原來的0",
+        "source": "獨立loop控制圖｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "58rm",
+          "text": "八位元計數器從零加到二百五十五，下一次卻轉回零。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c66"
+      ]
+    },
+    {
+      "id": "same-state-same-next-step",
+      "template": "steps",
+      "data": {
+        "title": "回到同一控制狀態",
+        "steps": [
+          {
+            "title": "狀態相同",
+            "detail": "n=255；i=0",
+            "icon": "document"
+          },
+          {
+            "title": "規則相同",
+            "detail": "條件成立，重走同一圈",
+            "icon": "arrow"
+          }
+        ],
+        "key": "上限沒變，後續就重複",
+        "source": "獨立loop控制圖｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "mjsr",
+          "text": "條件仍然成立，上限也沒變，後面就會重走同一圈。"
+        }
+      ],
+      "claims": [
+        "c67"
+      ]
+    },
+    {
+      "id": "full-control-cycle",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d4-independent-loop-cycle.svg",
+        "key": "固定上限，形成256步循環",
+        "caption": "獨立loop控制圖｜逾時不是單獨的循環證明"
+      },
+      "lines": [
+        {
+          "id": "kq36",
+          "text": "完整控制圖有二百五十六步的環，這個模型因此不能離開。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c68"
+      ]
+    },
+    {
+      "id": "timeout-versus-cycle",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "實際執行",
+          "points": [
+            "0.25秒逾時觀察"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "有限控制圖",
+          "points": [
+            "256步後重複狀態"
+          ],
+          "icon": "checklist"
+        },
+        "key": "觀察與不能離開的理由分開",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "qjaw",
+          "text": "逾時是這次執行的觀察；循環，才是控制圖給的理由。"
+        }
+      ],
+      "claims": [
+        "c69"
+      ]
+    },
+    {
+      "id": "counter-needs-room",
+      "template": "code",
+      "data": {
+        "title": "哪裡需要保留256？",
+        "code": "static unsigned bad(uint8_t n) {\n    volatile uint8_t i = 0;\n    while (i <= n) {\n        i = (uint8_t)(i + 1);\n    }\n    return i;\n}",
+        "highlight": [
+          2,
+          4
+        ],
+        "key": "宣告與更新式，都有8bit型別",
+        "caption": "loop.c錯版｜兩處都要對照"
+      },
+      "lines": [
+        {
+          "id": "h6n5",
+          "text": "那要讓它數完離開，哪裡得多留一個位置？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c70"
+      ]
+    },
+    {
+      "id": "counter-complete-repair",
+      "template": "code",
+      "data": {
+        "title": "宣告與更新式一起加寬",
+        "code": "static unsigned repaired(uint8_t n) {\n    volatile uint16_t i = 0;\n    while (i <= n) {\n        i = (uint16_t)(i + 1u);\n    }\n    return i;\n}",
+        "highlight": [
+          2,
+          4
+        ],
+        "key": "計數器和轉型，都能保留256",
+        "caption": "loop.c實際修正版；不可殘留uint8_t更新轉型"
+      },
+      "lines": [
+        {
+          "id": "p8te",
+          "text": "把計數器和對應轉型，改成十六位元無號整數。"
+        }
+      ],
+      "claims": [
+        "c71"
+      ]
+    },
+    {
+      "id": "counter-preserves-256",
+      "template": "steps",
+      "data": {
+        "title": "修正版更新最後一步",
+        "steps": [
+          {
+            "title": "目前計數器",
+            "detail": "255",
+            "icon": "document"
+          },
+          {
+            "title": "下一步",
+            "detail": "255+1=256",
+            "icon": "arrow"
+          }
+        ],
+        "key": "這次完整值留得住",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "ghs2",
+          "text": "到二百五十五再加一，這次能保存二百五十六。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c72"
+      ]
+    },
+    {
+      "id": "counter-condition-fails",
+      "template": "steps",
+      "data": {
+        "title": "256成為出口",
+        "steps": [
+          {
+            "title": "條件",
+            "detail": "256 > 255",
+            "icon": "document"
+          },
+          {
+            "title": "結果",
+            "detail": "離開，返回256",
+            "icon": "arrow"
+          }
+        ],
+        "key": "大於上限，條件就不成立",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "9mxr",
+          "text": "二百五十六大於上限，條件不成立，程式離開並返回它。"
+        }
+      ],
+      "claims": [
+        "c73"
+      ]
+    },
+    {
+      "id": "counter-full-domain-exit",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d4-independent-loop-exit.svg",
+        "key": "返回欄已填：全部輸入都離開並返回",
+        "caption": "同一0–255域｜256個實際C呼叫均符合預期"
+      },
+      "lines": [
+        {
+          "id": "ey22",
+          "text": "紀錄的返回欄有結果了：每個輸入都離開，並返回上限加一。"
+        }
+      ],
+      "claims": [
+        "c74"
+      ]
+    },
+    {
+      "id": "counter-record-fields",
+      "template": "table",
+      "data": {
+        "title": "第二列分開保留兩種結果",
+        "columns": [
+          "欄位",
+          "要核對什麼"
+        ],
+        "rows": [
+          [
+            "返回值",
+            "是否等於n+1"
+          ],
+          [
+            "是否離開",
+            "是否在n+1次增量後離開"
+          ]
+        ],
+        "key": "把值和離開條件，填進同一列",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "5feu",
+          "text": "我把返回值和離開條件，分開填進同一列紀錄。"
+        }
+      ],
+      "claims": [
+        "c75"
+      ]
+    },
+    {
+      "id": "formal-proof-question",
+      "template": "big",
+      "data": {
+        "text": "和正式證明\n差在哪裡？",
+        "key": "紀錄的要求，對回新聞中的正式命題",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "rsx8",
+          "text": "紀錄已分出接受與返回；Claude研究的證明，也驗同一種要求嗎？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c76"
+      ]
+    },
+    {
+      "id": "fix-proof-object",
+      "template": "table",
+      "data": {
+        "title": "正式證明固定什麼",
+        "columns": [
+          "對象",
+          "要固定的內容"
+        ],
+        "rows": [
+          [
+            "程式",
+            "編譯版本"
+          ],
+          [
+            "要求",
+            "待證命題"
+          ],
+          [
+            "語義",
+            "運作模型"
+          ]
+        ],
+        "key": "紀錄對回正式證明，先固定對象",
+        "source": "公開proof README｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "zg4q",
+          "text": "把紀錄對回正式證明時，程式版本、命題和運作模型都要固定。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c77"
+      ],
+      "chapter": "紀錄對上正式證明的條件"
+    },
+    {
+      "id": "binary-object",
+      "template": "big",
+      "data": {
+        "text": "固定編譯產物",
+        "key": "公開版本：靜態RISC-V Linux程式",
+        "icon": "terminal"
+      },
+      "lines": [
+        {
+          "id": "wzn2",
+          "text": "公開版本的對象，是編譯好的RISC-V二進位程式。"
+        }
+      ],
+      "claims": [
+        "c78"
+      ]
+    },
+    {
+      "id": "actual-proof-checking",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Rocq編譯",
+            "detail": "核心檢查證明項",
+            "icon": "document"
+          },
+          {
+            "title": "工具wrapper",
+            "detail": "固定命題；列出假設",
+            "icon": "arrow"
+          },
+          {
+            "title": "允許清單",
+            "detail": "稽核列出的假設",
+            "icon": "arrow"
+          }
+        ],
+        "source": "公開checking流程｜2026-10-25",
+        "keys": [
+          "核心在編譯時檢查證明項",
+          "對固定命題，列出所用假設",
+          "所用假設，也要通過稽核"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cawx",
+          "text": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        },
+        {
+          "id": "uqde",
+          "text": "工具再把結果對到固定命題，列出它使用的假設。",
+          "reveal": 1
+        },
+        {
+          "id": "5fga",
+          "text": "使用的假設，也必須通過允許清單的稽核。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c79",
+        "c80",
+        "c81"
+      ]
+    },
+    {
+      "id": "proof-preview-payoff",
+      "template": "big",
+      "data": {
+        "text": "核心與工具\n驗收同一命題",
+        "key": "核心查證明；工具對命題與假設",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "wi26",
+          "text": "開頭的驗收問題，落在Rocq核心與工具對命題、假設的檢查。"
+        }
+      ],
+      "claims": [
+        "c82"
+      ]
+    },
+    {
+      "id": "what-is-proved",
+      "template": "big",
+      "data": {
+        "text": "究竟要證明什麼？",
+        "key": "能編譯，還不等於目標已完成",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "nzaz",
+          "text": "檔案能編譯，還不等於目標完成；究竟要證明什麼？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c83"
+      ]
+    },
+    {
+      "id": "agreement-builds",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "一般版",
+          "points": [
+            "固定編譯程式"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "錯誤檢查版",
+          "points": [
+            "加入sanitizer檢查"
+          ],
+          "icon": "checklist"
+        },
+        "key": "同一程式的兩種建置，並非修正前後",
+        "source": "公開proof README｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "7ip9",
+          "text": "公開版比較同一程式的一般版與錯誤檢查版，並非剛才的修正前後。"
+        }
+      ],
+      "claims": [
+        "c84"
+      ]
+    },
+    {
+      "id": "agreement-premise-and-errors",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "模型與前提",
+            "detail": "一般版不超指定記憶體預算",
+            "icon": "document"
+          },
+          {
+            "title": "符合前提的輸入",
+            "detail": "兩版均不出現指定錯誤",
+            "icon": "arrow"
+          }
+        ],
+        "source": "公開proof README｜2026-10-25",
+        "keys": [
+          "記憶體預算前提，特指一般版",
+          "在此前提內，排除指定錯誤"
+        ]
+      },
+      "lines": [
+        {
+          "id": "6x7t",
+          "text": "在系統模型內，輸入須讓一般版不超過指定記憶體預算。",
+          "emotion": "自然清楚，重要數字稍作強調",
+          "reveal": 1
+        },
+        {
+          "id": "5u3j",
+          "text": "符合這個前提，兩版都不會出現指定錯誤。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c85",
+        "c86"
+      ]
+    },
+    {
+      "id": "finite-observable-traces",
+      "template": "big",
+      "data": {
+        "text": "有限紀錄\n例如已輸出的文字",
+        "key": "有限紀錄，可以包含已輸出的文字",
+        "icon": "terminal"
+      },
+      "lines": [
+        {
+          "id": "cnnu",
+          "text": "有限的行為紀錄，可以包含程式已經輸出的文字。"
+        }
+      ],
+      "claims": [
+        "c87"
+      ]
+    },
+    {
+      "id": "same-observable-records",
+      "template": "big",
+      "data": {
+        "text": "允許的集合\n要相同",
+        "key": "比較兩版可觀察的有限紀錄",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "fwc2",
+          "text": "兩版可觀察的這些紀錄，允許的集合要相同。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c88"
+      ]
+    },
+    {
+      "id": "agreement-versus-halting-question",
+      "template": "big",
+      "data": {
+        "text": "相符，就會結束嗎？",
+        "key": "行為要求，和終止要求",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "e7pc",
+          "text": "可是，行為相符會不會順便保證一定結束？",
+          "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c89"
+      ]
+    },
+    {
+      "id": "this-release-no-halts",
+      "template": "quote",
+      "data": {
+        "quote": "No proof in this release proves a halts statement.",
+        "translation": "這份公開版本沒有已證的終止命題。",
+        "source": "公開proof README｜2026-10-25",
+        "key": "只說這份公開版本"
+      },
+      "lines": [
+        {
+          "id": "3jaw",
+          "text": "不會。這份公開版本沒有提供終止命題的證明。"
+        }
+      ],
+      "claims": [
+        "c90"
+      ]
+    },
+    {
+      "id": "separate-halting-statement",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "要保證結束",
+          "points": [
+            "另外證明終止命題"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "範圍限定",
+          "points": [
+            "此公開release未提供",
+            "不外推整個研究"
+          ],
+          "icon": "checklist"
+        },
+        "source": "公開proof README｜2026-10-25",
+        "keys": [
+          "要求結束，就另看終止命題",
+          "公開版本的結論，留在此版本"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2mj",
+          "text": "要保證執行會結束，得另外證明終止命題。",
+          "reveal": 1
+        },
+        {
+          "id": "4nfp",
+          "text": "這說的是這份公開版本，不能推成整個研究都沒處理終止。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c91",
+        "c92"
+      ]
+    },
+    {
+      "id": "research-versus-public-release",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "官方研究報告",
+          "points": [
+            "123個函式庫",
+            "239個入口"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "本次公開版本",
+          "points": [
+            "60個入口",
+            "25個函式庫"
+          ],
+          "icon": "checklist"
+        },
+        "source": "公開proof README｜2026-10-25",
+        "keys": [
+          "官方報告的研究總量",
+          "本次公開release的交付範圍"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cr5k",
+          "text": "官方研究報告涵蓋一百二十三個函式庫、二百三十九個入口。",
+          "reveal": 1
+        },
+        {
+          "id": "b7jg",
+          "text": "目前公開版本則列六十個入口，來自二十五個函式庫。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c93",
+        "c94"
+      ]
+    },
+    {
+      "id": "separate-release-column",
+      "template": "table",
+      "data": {
+        "title": "找得到要驗的那份交付",
+        "columns": [
+          "欄位",
+          "用途"
+        ],
+        "rows": [
+          [
+            "研究報告",
+            "研究所報告的總量"
+          ],
+          [
+            "公開版本",
+            "對回可取得的proof與binary"
+          ]
+        ],
+        "key": "把對象分清楚，才接得上實際檔案",
+        "source": "公開proof README｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "i2pt",
+          "text": "這份紀錄還得標版本；研究總量和手上公開版本，要分開填。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c95"
+      ]
+    },
+    {
+      "id": "official-and-local-methods",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-formal-verification-255/assets/d5-official-proof-and-local-scope.svg",
+        "key": "同一份紀錄，補齊檢查方法",
+        "caption": "引用官方流程與本地方法對照；本片未執行官方checker"
+      },
+      "lines": [
+        {
+          "id": "te3s",
+          "text": "把我們那份紀錄的檢查方法也補上，就能看清交付的差別。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c96"
+      ]
+    },
+    {
+      "id": "local-methods",
+      "template": "table",
+      "data": {
+        "title": "本地兩列的檢查方法",
+        "columns": [
+          "紀錄",
+          "方法"
+        ],
+        "rows": [
+          [
+            "接受判斷",
+            "完整列舉＋命題SAT"
+          ],
+          [
+            "獨立計數",
+            "有限控制圖完整探索"
+          ]
+        ],
+        "key": "各自的方法，寫在各自的結果旁",
+        "source": "guard命題SAT｜SymPy1.14｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "iest",
+          "text": "接受判斷用完整列舉與命題求解，返回條件用有限控制圖。"
+        }
+      ],
+      "claims": [
+        "c97"
+      ]
+    },
+    {
+      "id": "actual-c-and-no-rocq-reproduction",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "本地兩例",
+          "points": [
+            "均有實際C結果對照"
+          ],
+          "icon": "document"
+        },
+        "right": {
+          "heading": "官方Rocq檢查",
+          "points": [
+            "本片沒有執行"
+          ],
+          "icon": "checklist"
+        },
+        "key": "不把本地方法換成官方證明",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "3u2q",
+          "text": "兩者都有實際C執行對照，沒有跑過新聞中的Rocq檢查器。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c98"
+      ]
+    },
+    {
+      "id": "local-scope",
+      "template": "big",
+      "data": {
+        "text": "兩個本地範例",
+        "key": "不是整個應用程式的安全認證",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "ucn4",
+          "text": "我做的結果只涵蓋這兩個本地範例，不是整個應用程式的認證。"
+        }
+      ],
+      "claims": [
+        "c99"
+      ]
+    },
+    {
+      "id": "complete-modification-record",
+      "template": "table",
+      "data": {
+        "title": "把修改留在正確版本",
+        "columns": [
+          "紀錄",
+          "改動位置"
+        ],
+        "rows": [
+          [
+            "A｜guard.c",
+            "total計算與儲存保留完整值"
+          ],
+          [
+            "B｜loop.c",
+            "i宣告與更新轉型都保留256"
+          ]
+        ],
+        "key": "兩份程式，各自完整修正",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "bt2j",
+          "text": "紀錄裡分開標出總長的修正，和計數器宣告、更新式的修正。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c100"
+      ]
+    },
+    {
+      "id": "expected-versus-observed-delivery",
+      "template": "table",
+      "data": {
+        "title": "把預期對回實際",
+        "columns": [
+          "紀錄",
+          "預期",
+          "實際"
+        ],
+        "rows": [
+          [
+            "接受判斷",
+            "接受0–7",
+            "接受0–7；兩種誤差0"
+          ],
+          [
+            "獨立計數",
+            "離開並返回n+1",
+            "全部輸入均符合"
+          ]
+        ],
+        "key": "先對版本，再對同一列結果",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "mj65",
+          "text": "重跑時先對版本，再把預期和實際結果放在同一列。"
+        }
+      ],
+      "claims": [
+        "c101"
+      ]
+    },
+    {
+      "id": "version-bindings",
+      "template": "table",
+      "data": {
+        "title": "這份結果對應哪份程式",
+        "columns": [
+          "原始檔",
+          "版本SHA前8碼"
+        ],
+        "rows": [
+          [
+            "guard.c",
+            "4bfc837e"
+          ],
+          [
+            "loop.c",
+            "b1d18170"
+          ]
+        ],
+        "key": "修改與結果，留在同一份可重跑紀錄",
+        "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+      },
+      "lines": [
+        {
+          "id": "edry",
+          "text": "這樣才不會拿改好的程式，去對另一份舊程式的答案。",
+          "emotion": "自然清楚，重要數字稍作強調"
+        }
+      ],
+      "claims": [
+        "c102"
+      ]
+    },
+    {
+      "id": "completed-repair-record",
+      "template": "outro",
+      "data": {
+        "title": "把自己的要求寫進紀錄",
+        "cta": "訂閱，用真實結果讀AI研究",
+        "lines": [
+          "自己的要求，對回自己的結果"
+        ],
+        "key": "條件與結果，留在同一份紀錄"
+      },
+      "lines": [
+        {
+          "id": "mhjn",
+          "text": "把驗收條件寫成明確要求。",
+          "emotion": "像邀請朋友實作與分享，簡短自然收尾"
+        },
+        {
+          "id": "87s6",
+          "text": "留言分享你用AI寫程式的情境。",
+          "emotion": "像邀請朋友實作與分享，簡短自然收尾"
+        },
+        {
+          "id": "22tu",
+          "text": "訂閱，一起用真實結果讀懂AI研究。"
+        }
+      ],
+      "claims": [
+        "c103",
+        "c104",
+        "c105"
+      ],
+      "chapter": "把自己的要求寫進紀錄"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "zfgp",
+      "payoff": "femu",
+      "what": "容量8byte，為何255被接受"
+    },
+    {
+      "setup": "z9dp",
+      "payoff": "w9b4",
+      "what": "全部拒絕是否算修好"
+    },
+    {
+      "setup": "bpnn",
+      "payoff": "ey22",
+      "what": "獨立計數程式能否離開"
+    },
+    {
+      "setup": "c8r2",
+      "payoff": "wi26",
+      "what": "AI寫的證明由誰驗收"
+    },
+    {
+      "setup": "ijcq",
+      "payoff": "kq36",
+      "what": "逾時能否判定永不結束"
+    },
+    {
+      "setup": "e7pc",
+      "payoff": "3jaw",
+      "what": "行為相符是否也保證終止"
+    }
+  ]
+}

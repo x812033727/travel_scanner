@@ -1,0 +1,52 @@
+{
+  "reviewed_on": "2026-10-25",
+  "method": "All six diagrams were actually viewed previously. This pass changed only D5 human-readable labels; D5 was rasterized with ffmpeg/librsvg and actually viewed again at original resolution. The other five SVGs and five PNGs are byte-for-byte unchanged.",
+  "all_six_actually_viewed": true,
+  "observations": [
+    {
+      "file": "d0-opening-guard.png",
+      "sha256": "7a5febbd506f165c03fe3874a55ca1470dcc5eccd4d72b572faa4f123f9564e0",
+      "note": "已實際看圖；只255接受/8byte容量，無算式修法劇透。"
+    },
+    {
+      "file": "d1-guard-narrowing-and-fix.png",
+      "sha256": "93a9736238308706c52d68233e87b2b0866b7f1b5dcdd6707eb68c6deeabda90",
+      "note": "已看最新版；完整uint16 RHS、計算儲存256、原版int256轉uint8為0均清楚。"
+    },
+    {
+      "file": "d2-full-domain-and-two-directions.png",
+      "sha256": "905db20e9a13ebb1a7d1dca832cff1dde669b8104a90bd3e95793d828cdc8c6e",
+      "note": "已實際看圖；3卡9/8/0與誤接受/誤拒絕可讀，非巨大表格。"
+    },
+    {
+      "file": "d4-independent-loop-cycle.png",
+      "sha256": "b3cc4840a4bef8a35ee9788cb3461b1a4f28db9ebe8354c7d479909a76ec5699",
+      "note": "已實際看圖；單一0狀態，255回邊到0，不增加假的0到0轉移。"
+    },
+    {
+      "file": "d4-independent-loop-exit.png",
+      "sha256": "6ccd75f0c96a3a0f507ff7846a500b75a8a229fcd33cf2f41c2f02b6a046d055",
+      "note": "已實際看圖；宣告和更新轉型兩處皆展示，出口256和全域結果可讀。"
+    },
+    {
+      "file": "d5-official-proof-and-local-scope.png",
+      "sha256": "f677838a5aa22b3000f47b0611eb2d4740604538201b75ce5680ee3f6091f28a",
+      "note": "已實際重看中文標籤版：待證命題/運作模型/候選證明/驗收檔/列出假設/本片實跑均可讀，無擠壓或裁切；核心查項→驗收檔對型別列假設→允許清單的事實順序不變。"
+    }
+  ],
+  "layout": "No observed clipping or text overlap. 1600x900, paper palette, all SVG text >=36px.",
+  "scope": "Source-bound local arithmetic/control diagrams; cited official workflow was not executed.",
+  "latest_revision": "D5 Chinese labels only; workflow, mathematical facts and teaching C code unchanged",
+  "unchanged_other_diagram_sha256": {
+    "d2-full-domain-and-two-directions.svg": "dd43dea6a6e295f1a42c967e39f21769c085abd611c3fa64764d622d6fbbf882",
+    "d4-independent-loop-exit.png": "6ccd75f0c96a3a0f507ff7846a500b75a8a229fcd33cf2f41c2f02b6a046d055",
+    "d4-independent-loop-cycle.svg": "ca174abcba7bc651ac610f2e6eba903452bae6a947dac0cfffd5f89e5d3570e6",
+    "d1-guard-narrowing-and-fix.png": "93a9736238308706c52d68233e87b2b0866b7f1b5dcdd6707eb68c6deeabda90",
+    "d0-opening-guard.png": "7a5febbd506f165c03fe3874a55ca1470dcc5eccd4d72b572faa4f123f9564e0",
+    "d1-guard-narrowing-and-fix.svg": "2b5f0973be04976624db9ef1f15776b4181d0cf1f7a855ab4eb0777c5a147885",
+    "d4-independent-loop-cycle.png": "b3cc4840a4bef8a35ee9788cb3461b1a4f28db9ebe8354c7d479909a76ec5699",
+    "d0-opening-guard.svg": "c163f7cd867e337ce0029f11c5659022965270368fb0c40ecf14545e11344943",
+    "d4-independent-loop-exit.svg": "b786794f4df5f6d6bb46942ef29ba94aa61b316c443eb1ec98d60e71a575982c",
+    "d2-full-domain-and-two-directions.png": "905db20e9a13ebb1a7d1dca832cff1dde669b8104a90bd3e95793d828cdc8c6e"
+  }
+}

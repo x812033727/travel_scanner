@@ -20,7 +20,7 @@
 ## 觀眾看完能做到的事
 
 - **寫出可驗收的輸入／接受契約**：對n∈0..255、容量8byte、另需1byte結尾，寫出應且只應接受0..7；用接受／誤接受／誤拒絕表核對結果，能抓到一律拒絕的8個功能損失。證據：guard完整256例、命題SAT查詢與本片填好的契約卡，RUN。
-- **改對兩個具體型別位置並看懂重跑成果**：總長暫存改用uint16_t，255不再誤放行；第二個獨立計數程式把i改用uint16_t，255能走到256並離開。畫面逐行指出改哪裡、為何改及同域實際輸出。證據：兩份實際GCC程式、before／after欄、全256結果，RUN。
+- **改對兩個具體型別位置並看懂重跑成果**：總長計算與儲存都改用uint16_t，移除舊uint8_t窄化，255不再誤放行；第二個獨立計數程式把i與更新式轉型都改用uint16_t，255能走到256並離開。畫面逐行指出改哪裡、為何改及同域實際輸出。證據：兩份實際GCC程式、before／after欄、全256結果，RUN。
 - **完成一份不混用保證的程式紀錄**：把域、應接受／拒絕／返回、反例、修改、檢查方法與未涵蓋範圍填進同一表；再對公開README辨認agreement與halts的差別，不把本地方法、研究總量與公開release混成一個認證。證據：前兩次RUN完成表＋官方statement／README的CITED文字。
 
 這三項是本片實作與閱讀成果，不是「了解名詞」或一行價格查詢。最終寫稿若未完整口述輸入、修改與結果，不能以畫面有一張表取代教學。
@@ -71,7 +71,7 @@
 | D2 | n=0..255接受區間，錯版多接受255、修正版只接受0..7；9／8／0個接受的對照。 | 完整256 JSON；`table`／`compare`，數量是本例程式行為，不是AI準確率。 |
 | D3 | 「誤接受」與「誤拒絕」雙欄驗收；一律拒絕的功能損失8。 | 實際SAT及契約算術；`compare`逐步填表。 |
 | D4 | 獨立迴圈的0…255→0控制環；加寬後256出口。 | loop-all-256.json的完整狀態探索；`steps`／原創diagram。0.25秒只標本次timeout觀察。 |
-| D5 | 上層官方binary＋statement＋LPS→AI proof→assumption audit／Rocq；下層本地GCC表／SAT／控制圖，方法不混。 | 公開README／origin.md／statements.md及本地run；`steps`／`compare`，不用假成功截圖。 |
+| D5 | 上層官方binary＋statement＋LPS→AI候選proof→Rocq編譯（核心查term）→wrapper固定型別／列出假設→允許假設稽核；下層本地GCC表／SAT／控制圖，方法不混。 | 公開README／origin.md／statements.md／checking.md及本地run；`steps`／`compare`，不用假成功截圖。 |
 | D6 | 兩列填好的保證紀錄：域、接受／拒絕／返回、修改、結果、檢查方法、未涵蓋範圍。 | 前面RUN與CITED欄位回收；`table`，只在需要時展示本地hash／版本，不逐字唸路徑。 |
 
 若正式採diagram，root在新worktree建立真SVG、登記source／license後才寫入video.json；此稿不虛構已存在的圖檔或capture selector。可先用現有steps／compare／code／table完成狀態。畫面每個有意義狀態目標5–8秒，上限15秒；所有時長均待真正旁白與render檢查。
@@ -163,6 +163,7 @@
 | https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md | 本日公開目錄60入口／25函式庫，表格已實數核對；這份release是特定binary／LPS中的agreement證明，**沒有halts證明**。不能外推所有239研究都未處理終止，也不以239減60算未公開覆蓋率。 |
 | https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md | 固定statement type、允許assumptions稽核、proof由Rocq kernel檢查；一個skeleton能compile不等於已完成目標證明。 |
 | https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md | 不同命題的具體定義；公開proof交付依statement解讀，不能用我們的例子補上vendor沒證的命題。 |
+| https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md | Rocq編譯時kernel檢查proof term；wrapper核對固定型別並Print Assumptions，最後稽核假設允許清單。不能把kernel畫成型別／假設稽核後最後才執行。 |
 
 三個數字層級必須一直分開：**官方研究239／123；公開release60／25；本地兩個獨立案例各256輸入。** 不說共512個不同輸入，不把模型狀態數當軟體入口數，不把接受8個當AI準確率。
 

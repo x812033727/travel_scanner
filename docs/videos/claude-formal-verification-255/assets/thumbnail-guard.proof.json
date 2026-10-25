@@ -1,0 +1,87 @@
+{
+  "kind": "original_thumbnail_subject_not_final_media_qa",
+  "created_on": "2026-10-25",
+  "dimensions": [
+    1440,
+    1360
+  ],
+  "visible_labels": [
+    "容量8byte",
+    "255",
+    "接受"
+  ],
+  "minimum_text_px": 138,
+  "content_bounds_including_strokes": [
+    115,
+    115,
+    1325,
+    1245
+  ],
+  "requested_safe_margin_px": 80,
+  "actual_minimum_margin_px": 115,
+  "native_panel_reference": [
+    700,
+    638
+  ],
+  "cover_scale": 0.4861111111111111,
+  "center_crop_source_y_each_side_px": 23.7714285714286,
+  "minimum_margin_after_reference_crop_source_px": 91.2285714285714,
+  "meaning": "Original guard-only conceptual input/result; no buffer writing, no vendor checker or proof seal.",
+  "spoilers": "No 256, narrowed zero, repair or valid-input answer.",
+  "source": {
+    "capacity_bytes": 8,
+    "n": 255,
+    "bad_guard_accepts": true,
+    "row_file_sha256": "e957484d742ea0b6fc39c9f5c8bdb80f91d5299ef13fad574a55c1d534d5c1d8",
+    "summary_sha256": "724d32d699601eb523dafaa04a1165bf77a32459b8b4641c8ed102e7316a272c"
+  },
+  "render": {
+    "command": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-y",
+      "-c:v",
+      "librsvg",
+      "-i",
+      "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/assets/thumbnail-guard.svg",
+      "-frames:v",
+      "1",
+      "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/assets/thumbnail-guard.png"
+    ],
+    "returncode": 0,
+    "renderer": "ffmpeg explicit librsvg decoder"
+  },
+  "files": {
+    "generate_thumbnail_guard.py": {
+      "sha256": "9e74f5b6ac40c745ffab74005ab625dd3e53174e9764f9a26e152de2c2026a93",
+      "bytes": 5166
+    },
+    "thumbnail-guard.svg": {
+      "sha256": "2540deb577aebcea4bf1be355397c1d535a3a29dc7f54533e00939b295a7117a",
+      "bytes": 1543
+    },
+    "thumbnail-guard.png": {
+      "sha256": "4e7c25da9943ead0edc28909c164a20c816639837d48d1fb3522d3b68134d2b9",
+      "bytes": 78508
+    }
+  },
+  "unchanged_source_sha256": {
+    "video.json": "2b3db9fee9a06de42e2cbaf5367f2012f07f716e3077985ff679ba19dd1d9b93",
+    "claims.md": "e0de07ac6406345410ed04bb6ff60b91e1c9feda330bc5bd27412bb281091f51"
+  },
+  "actual_visual_review": {
+    "reviewed_at": "2026-10-25T19:36:10.352775+00:00",
+    "method": "view_image actually opened standalone PNG and native cloned-document PNG",
+    "result": "PASS for this static subject/layout only",
+    "observed": [
+      "容量8byte、255、接受完整且可讀",
+      "概念箭頭連到接受結果；沒有buffer寫入圖示",
+      "沒有256/0修法機制或冒充官方proof seal",
+      "原生1280x720右側cover無裁字，副標單行無孤字"
+    ],
+    "native_preview_file": "thumbnail-guard.preview.png",
+    "source_mutation": "video.json/claims.md unchanged; candidate asset/sub were in-memory only"
+  }
+}

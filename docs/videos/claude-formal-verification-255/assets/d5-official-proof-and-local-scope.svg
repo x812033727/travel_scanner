@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">官方證明驗收與本片本地檢查分開</title><desc id="desc">官方公開檢查器的順序：固定執行檔、待證命題及運作模型版本；AI產生候選證明；Rocq編譯時由核心檢查證明項；驗收檔核對指定型別並列出假設；最後以允許清單稽核假設。核心也檢查驗收檔的編譯。本片沒有執行官方檢查器。下方另列本片C程式實跑、命題SAT與獨立計數程式的有限控制圖。</desc>
+<defs><marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 Z" fill="#1f2a44"/></marker>
+<marker id="red-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 Z" fill="#d8452f"/></marker></defs>
+<rect width="1600" height="900" fill="#f6efe3"/>
+<text x="80" y="80" fill="#d8452f" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="700" text-anchor="start">官方來源｜公開檢查流程</text>
+<text x="80" y="155" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="60" font-weight="800" text-anchor="start">先固定命題，再驗收交回的證明</text>
+<path d="M80 186 H1520" stroke="#c8bfaf" stroke-width="2"/>
+<rect x="80" y="245" width="264" height="245" rx="18" fill="#fffdf8" stroke="#1f2a44" stroke-width="3"/>
+<text x="212" y="307" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="800" text-anchor="middle">固定對象</text>
+<text x="212" y="377" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">固定執行檔</text>
+<text x="212" y="426" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">待證命題</text>
+<text x="212" y="475" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">運作模型版本</text>
+<path d="M350 360 L368 360" fill="none" stroke="#1f2a44" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="374" y="245" width="264" height="245" rx="18" fill="#fffdf8" stroke="#1f2a44" stroke-width="3"/>
+<text x="506" y="307" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="800" text-anchor="middle">AI 產生</text>
+<text x="506" y="377" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">候選證明</text>
+<text x="506" y="426" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">仍須通過檢查</text>
+<path d="M644 360 L662 360" fill="none" stroke="#1f2a44" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="668" y="245" width="264" height="245" rx="18" fill="#fffdf8" stroke="#1f2a44" stroke-width="3"/>
+<text x="800" y="307" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="800" text-anchor="middle">Rocq 編譯</text>
+<text x="800" y="377" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">核心查證明項</text>
+<text x="800" y="426" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">編譯時進行</text>
+<path d="M938 360 L956 360" fill="none" stroke="#1f2a44" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="962" y="245" width="264" height="245" rx="18" fill="#fffdf8" stroke="#1f2a44" stroke-width="3"/>
+<text x="1094" y="307" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="800" text-anchor="middle">驗收檔</text>
+<text x="1094" y="377" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">對指定型別</text>
+<text x="1094" y="426" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">列出假設</text>
+<path d="M1232 360 L1250 360" fill="none" stroke="#1f2a44" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1256" y="245" width="264" height="245" rx="18" fill="#fffdf8" stroke="#1f2a44" stroke-width="3"/>
+<text x="1388" y="307" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="800" text-anchor="middle">假設稽核</text>
+<text x="1388" y="377" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">核對允許清單</text>
+<text x="1388" y="426" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="middle">全通過才接受</text>
+<text x="80" y="552" fill="#d8452f" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="40" font-weight="700" text-anchor="start">此公開版本：保證指定行為相符；未證明一定結束</text>
+<text x="80" y="610" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">候選證明與驗收檔編譯時，核心都檢查證明項；本片未執行官方檢查器</text>
+<rect x="80" y="655" width="460" height="118" rx="18" fill="#f0dfd0" stroke="#c8bfaf" stroke-width="2"/>
+<text x="104" y="704" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">本片實跑：GCC</text>
+<text x="104" y="750" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">各 256 個輸入</text>
+<rect x="570" y="655" width="460" height="118" rx="18" fill="#f0dfd0" stroke="#c8bfaf" stroke-width="2"/>
+<text x="594" y="704" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">本片實跑：命題 SAT</text>
+<text x="594" y="750" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">接受判斷的兩方向查詢</text>
+<rect x="1060" y="655" width="460" height="118" rx="18" fill="#f0dfd0" stroke="#c8bfaf" stroke-width="2"/>
+<text x="1084" y="704" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">本片實跑：控制圖</text>
+<text x="1084" y="750" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">獨立計數程式返回</text>
+<text x="80" y="821" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">官方來源：README／origin／checking／statements，2026-10-25查核</text>
+<text x="80" y="875" fill="#1f2a44" font-family="Noto Sans CJK TC, Noto Sans TC, sans-serif" font-size="36" font-weight="500" text-anchor="start">本片原創教學程式／2026-10-25本地實跑</text>
+</svg>

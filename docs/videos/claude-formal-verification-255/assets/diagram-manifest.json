@@ -1,0 +1,137 @@
+{
+  "created_on": "2026-10-25",
+  "original": true,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "minimum_text_px": 36,
+  "palette": {
+    "paper": "#f6efe3",
+    "ink": "#1f2a44",
+    "accent": "#d8452f"
+  },
+  "renderer": "ffmpeg librsvg",
+  "opening_spoilers": "D0 contains only the observed acceptance of n255 and capacity8; no256/no0/no repair",
+  "local_source": "本片原創教學程式／2026-10-25本地實跑",
+  "input_sha256": {
+    "guard.c": {
+      "sha256": "4bfc837e2f17c1ae8326924a926929ee3d8dec29e88ec355b77db591c0d9e799"
+    },
+    "loop.c": {
+      "sha256": "b1d181702c61b152724eeeb693891f45005e7ca0c7dfa583cb5378a6fc68f0a2"
+    },
+    "all-256-cases.json": {
+      "sha256": "e957484d742ea0b6fc39c9f5c8bdb80f91d5299ef13fad574a55c1d534d5c1d8"
+    },
+    "loop-all-256.json": {
+      "sha256": "2523d7e0650d3a89b8d90987c300b5a3d588f50ad5137262be9916167920a86c"
+    },
+    "results.json": {
+      "sha256": "724d32d699601eb523dafaa04a1165bf77a32459b8b4641c8ed102e7316a272c"
+    },
+    "loop-results.json": {
+      "sha256": "c710013a94fd45f34c90d6a40454e9691e2cf5ff078e6e8c199632b9ee4ab434"
+    },
+    "sat-output.json": {
+      "sha256": "6faee1dfe1437ae212f5f13eeb6f95571edef9a2a8d9374927895ef7e8495078"
+    }
+  },
+  "files": {
+    "check_diagrams.py": {
+      "sha256": "26b21d536850c322a013b6e9868b10c9f50551ed08877ccff761aa8677a2f80a",
+      "bytes": 3414
+    },
+    "d0-opening-guard.png": {
+      "sha256": "7a5febbd506f165c03fe3874a55ca1470dcc5eccd4d72b572faa4f123f9564e0",
+      "bytes": 98009
+    },
+    "d0-opening-guard.svg": {
+      "sha256": "c163f7cd867e337ce0029f11c5659022965270368fb0c40ecf14545e11344943",
+      "bytes": 2947
+    },
+    "d1-guard-narrowing-and-fix.png": {
+      "sha256": "93a9736238308706c52d68233e87b2b0866b7f1b5dcdd6707eb68c6deeabda90",
+      "bytes": 131496
+    },
+    "d1-guard-narrowing-and-fix.svg": {
+      "sha256": "2b5f0973be04976624db9ef1f15776b4181d0cf1f7a855ab4eb0777c5a147885",
+      "bytes": 3922
+    },
+    "d2-full-domain-and-two-directions.png": {
+      "sha256": "905db20e9a13ebb1a7d1dca832cff1dde669b8104a90bd3e95793d828cdc8c6e",
+      "bytes": 135692
+    },
+    "d2-full-domain-and-two-directions.svg": {
+      "sha256": "dd43dea6a6e295f1a42c967e39f21769c085abd611c3fa64764d622d6fbbf882",
+      "bytes": 4929
+    },
+    "d4-independent-loop-cycle.png": {
+      "sha256": "b3cc4840a4bef8a35ee9788cb3461b1a4f28db9ebe8354c7d479909a76ec5699",
+      "bytes": 114020
+    },
+    "d4-independent-loop-cycle.svg": {
+      "sha256": "ca174abcba7bc651ac610f2e6eba903452bae6a947dac0cfffd5f89e5d3570e6",
+      "bytes": 3914
+    },
+    "d4-independent-loop-exit.png": {
+      "sha256": "6ccd75f0c96a3a0f507ff7846a500b75a8a229fcd33cf2f41c2f02b6a046d055",
+      "bytes": 124682
+    },
+    "d4-independent-loop-exit.svg": {
+      "sha256": "b786794f4df5f6d6bb46942ef29ba94aa61b316c443eb1ec98d60e71a575982c",
+      "bytes": 4327
+    },
+    "d5-official-proof-and-local-scope.png": {
+      "sha256": "f677838a5aa22b3000f47b0611eb2d4740604538201b75ce5680ee3f6091f28a",
+      "bytes": 173100
+    },
+    "d5-official-proof-and-local-scope.svg": {
+      "sha256": "f7a7f86000d1cfb9df95497fd09c589f8cb7e8d605e2b8d62c379e784acdfd82",
+      "bytes": 7427
+    },
+    "diagram-check.json": {
+      "sha256": "9ae895523a0145e2dfc210dd917d99420dfae2ac30c6cb2079b5d22b461f8039",
+      "bytes": 335
+    },
+    "diagram-facts.json": {
+      "sha256": "d7a15421cfb16a655b0c18909ecea49853584e25660baf6cc03bbbec753a60cf",
+      "bytes": 3641
+    },
+    "generate_diagrams.py": {
+      "sha256": "befe2c25e10d1cbc6148924d829cf28820f2ae6284f75528caa4962d64ca4988",
+      "bytes": 18845
+    },
+    "visual-review.json": {
+      "sha256": "84e844dfdea0ecddad900defc8146e324e04484810972ca19927e34b2c658ebd",
+      "bytes": 3357
+    }
+  },
+  "map": {
+    "D0": [
+      "d0-opening-guard.svg"
+    ],
+    "D1": [
+      "d1-guard-narrowing-and-fix.svg"
+    ],
+    "D2+D3": [
+      "d2-full-domain-and-two-directions.svg"
+    ],
+    "D4": [
+      "d4-independent-loop-cycle.svg",
+      "d4-independent-loop-exit.svg"
+    ],
+    "D5": [
+      "d5-official-proof-and-local-scope.svg"
+    ],
+    "D6": "root can reuse the native record table; no seventh SVG"
+  },
+  "reveal_notes": {
+    "d0-opening-guard.svg": "Opening-safe: no solution, no n+1 value and no valid acceptance interval.",
+    "d1-guard-narrowing-and-fix.svg": "Contains both the counterexample and the repair; show the complete diagram only after the repair is narrated.",
+    "d2-full-domain-and-two-directions.svg": "Contains deny-all false rejection 8; use after the functional direction is revealed. Earlier 9/8-only results can use native cards.",
+    "d4-independent-loop-cycle.svg": "A different, independent program. Do not draw an incoming arrow from the guard.",
+    "d4-independent-loop-exit.svg": "Both the counter declaration and update cast change; never present declaration-only repair.",
+    "d5-official-proof-and-local-scope.svg": "Cited official workflow, not a vendor rerun. Kernel checks terms in both proof and wrapper compilation; allowlist audit follows Print Assumptions."
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "kind": "one_bounded_story_R1_not_review_pass",
+  "baseline_video_sha256": "2b3db9fee9a06de42e2cbaf5367f2012f07f716e3077985ff679ba19dd1d9b93",
+  "baseline_claims_sha256": "e0de07ac6406345410ed04bb6ff60b91e1c9feda330bc5bd27412bb281091f51",
+  "baseline_verify1_sha256": "343ae6c16019587edb5b1da34a9cfbe835671c281300db43c40cefda2ace3be8",
+  "changed_lines": [
+    {
+      "id": "zfgp",
+      "before": "容量八位元組，我執行的程式卻接受長度二百五十五？",
+      "after": "二〇二六年十月二十五日，我的程式容量八位元組，卻接受長度二百五十五？"
+    },
+    {
+      "id": "z9dp",
+      "before": "把輸入全拒絕，能算修好嗎？",
+      "after": "紀錄上只寫不收錯的，全部拒絕能算修好嗎？"
+    },
+    {
+      "id": "bpnn",
+      "before": "另一個計數程式，數到這裡真的會離開嗎？",
+      "after": "紀錄還要填返回，另一個計數程式真的會離開嗎？"
+    },
+    {
+      "id": "c8r2",
+      "before": "AI寫出的證明，又交給誰驗收？",
+      "after": "同一個要求，AI寫出證明後，又交給誰驗收？"
+    },
+    {
+      "id": "qwaw",
+      "before": "十月二十二日，Claude的程式證明研究公開。",
+      "after": "這份紀錄，要回答十月二十二日Claude研究帶來的驗收問題。"
+    },
+    {
+      "id": "5i5d",
+      "before": "我用自己寫的兩個小程式，把要求和結果填進同一份紀錄。",
+      "after": "這裡用我自己寫的C程式，先填接受判斷這一列。"
+    },
+    {
+      "id": "mvnc",
+      "before": "要讓比較看到完整總長，應該改哪一行？",
+      "after": "紀錄已找到反例，哪一行能把完整總長留下？"
+    },
+    {
+      "id": "936d",
+      "before": "計算與儲存都保留完整值，改用十六位元無號整數。",
+      "after": "讓計算保留完整值，再用十六位元無號整數儲存總長。"
+    },
+    {
+      "id": "yavq",
+      "before": "請對照修正版整行，連同右側的轉型一起改。",
+      "after": "修正版這一整行，計算和存放總長的轉型都要一起改。"
+    },
+    {
+      "id": "zgkb",
+      "before": "另外把輸入拆成八個真假位元，建立同一判斷的模型。",
+      "after": "這份紀錄另加一個求解模型，把同一輸入寫成八個真假位元。"
+    },
+    {
+      "id": "4bqi",
+      "before": "但如果要求只剩零誤接受，全部拒絕會得到什麼結果？",
+      "after": "但如果紀錄上只留不准收錯的，全部拒絕能不能交付？"
+    },
+    {
+      "id": "xfvp",
+      "before": "把判斷換成永遠拒絕，確實沒有不合格的輸入能通過。",
+      "after": "照這個單向條件，永遠拒絕確實沒讓不合格輸入通過。"
+    },
+    {
+      "id": "w9b4",
+      "before": "開場那個全部拒絕的答案，因此不能算修好。",
+      "after": "開頭那份單向紀錄，現在補上合法輸入必須接受。"
+    },
+    {
+      "id": "8ywa",
+      "before": "保存結果時，兩個零要分成誤接受和誤拒絕。",
+      "after": "我把加寬版的兩項結果填成零：沒有誤接受，也沒有誤拒絕。"
+    },
+    {
+      "id": "xh98",
+      "before": "不要只留一個通過，否則功能消失也會被藏起來。",
+      "after": "接受判斷這一列完成了；紀錄還有另一列，等著驗收返回。"
+    },
+    {
+      "id": "idga",
+      "before": "如果任務換成數完就返回，要求又該怎麼寫？",
+      "after": "這張紀錄的返回欄，要怎麼填成可核對的要求？"
+    },
+    {
+      "id": "u2xw",
+      "before": "換另一支獨立程式，這次輸入代表計數上限。",
+      "after": "我用另一支獨立計數程式填返回欄；輸入是計數上限。"
+    },
+    {
+      "id": "ey22",
+      "before": "開頭那個計數程式，全部輸入都返回上限加一。",
+      "after": "紀錄的返回欄有結果了：每個輸入都離開，並返回上限加一。"
+    },
+    {
+      "id": "5feu",
+      "before": "把返回值和是否離開，分成紀錄的兩個欄位。",
+      "after": "我把返回值和離開條件，分開填進同一列紀錄。"
+    },
+    {
+      "id": "rsx8",
+      "before": "這些結果，和新聞裡的正式證明，究竟差在哪裡？",
+      "after": "紀錄已分出接受與返回；Claude研究的證明，也驗同一種要求嗎？"
+    },
+    {
+      "id": "zg4q",
+      "before": "正式證明還要固定程式版本、待證命題和它依據的運作模型。",
+      "after": "把紀錄對回正式證明時，程式版本、命題和運作模型都要固定。"
+    },
+    {
+      "id": "i2pt",
+      "before": "把研究總量和公開版本分欄，才找得到自己要核對的那份交付。",
+      "after": "這份紀錄還得標版本；研究總量和手上公開版本，要分開填。"
+    },
+    {
+      "id": "wi26",
+      "before": "所以開場問誰來驗收，答案是固定命題下的證明檢查。",
+      "after": "開頭的驗收問題，落在Rocq核心與工具對命題、假設的檢查。"
+    },
+    {
+      "id": "7ip9",
+      "before": "公開版本檢查一般版與加上錯誤檢查的版本，行為是否相符。",
+      "after": "公開版比較同一程式的一般版與錯誤檢查版，並非剛才的修正前後。"
+    },
+    {
+      "id": "cnnu",
+      "before": "先看有限的行為紀錄，像是程式輸出的文字。",
+      "after": "有限的行為紀錄，可以包含程式已經輸出的文字。"
+    },
+    {
+      "id": "mhjn",
+      "before": "二百五十五的反例，已留下修正紀錄。",
+      "after": "把驗收條件寫成明確要求。"
+    },
+    {
+      "id": "87s6",
+      "before": "你請AI改程式時，會先寫什麼要求？",
+      "after": "留言分享你用AI寫程式的情境。"
+    }
+  ],
+  "removed_lines": [
+    {
+      "id": "v5rj",
+      "text": "容量沒有增加，輸入範圍也沒有換，只修總長的處理。"
+    },
+    {
+      "id": "cksq",
+      "text": "完整重跑後，修正版的誤接受和誤拒絕，都是零。"
+    },
+    {
+      "id": "sqkw",
+      "text": "同一條件也能直接寫成，長度小於八。"
+    },
+    {
+      "id": "94yz",
+      "text": "這個版本也接受零到七，兩種錯誤同樣都是零。"
+    },
+    {
+      "id": "96jf",
+      "text": "總長加寬的版本，兩種錯誤都沒有，合法區間也保住了。"
+    },
+    {
+      "id": "7sfu",
+      "text": "加寬後的控制圖，也都在預期次數內走到出口。"
+    },
+    {
+      "id": "akpt",
+      "text": "只填答案應該是多少，還沒說清楚程式是否會把答案交回來。"
+    }
+  ],
+  "new_lines": [],
+  "new_scene_ids": [
+    "return-row-unfilled"
+  ],
+  "moved_scene_ids": [
+    "guard-object",
+    "research-versus-public-release",
+    "separate-release-column"
+  ],
+  "chapter_changes": [
+    {
+      "scene": "capacity-accepts-255",
+      "before": "容量八，255卻通過",
+      "after": "本地檢查竟接受255"
+    },
+    {
+      "scene": "research-published",
+      "before": "先寫條件，再追總長",
+      "after": "紀錄先寫下能收哪些長度"
+    },
+    {
+      "scene": "which-line-to-fix",
+      "before": "總長保留256，再重跑",
+      "after": "總長留下256，檢查改判拒絕"
+    },
+    {
+      "scene": "deny-all-two-directions",
+      "before": "合法輸入，也必須接受",
+      "after": "全部拒絕，也拒了合法輸入"
+    },
+    {
+      "scene": "independent-counter",
+      "before": "計數器走到256的出口",
+      "after": "返回欄遇到一個循環"
+    },
+    {
+      "scene": "fix-proof-object",
+      "before": "把交付對回正式命題",
+      "after": "紀錄對上正式證明的條件"
+    },
+    {
+      "scene": "completed-repair-record",
+      "before": "把要求寫成能驗收的答案",
+      "after": "把自己的要求寫進紀錄"
+    }
+  ],
+  "claims_fact_correction": "Only widened_false_accept/widened_false_reject queried UNSAT; guard_bound has compiled-C full-domain results, no separate SAT queries.",
+  "thumbnail_adoption": {
+    "template": "thumb",
+    "data": {
+      "headline": "**255**\n過了？",
+      "tag": "Claude形式驗證",
+      "sub": "容量8，卻放行",
+      "asset": "docs/videos/claude-formal-verification-255/assets/thumbnail-guard.png"
+    }
+  },
+  "voice_unchanged": true,
+  "subtitles_unchanged": true,
+  "old_verify1_unchanged": true,
+  "old_narrative_answers_unchanged": true,
+  "counts": {
+    "scenes": 93,
+    "lines": 105,
+    "chapters": 7
+  },
+  "current_video_sha256": "a77c48e48131a2a17196cbddf2bf192f33c02c9d5defc3953a543155e441514d",
+  "current_claims_sha256": "134e8e888f6aba07ed4da185b8d97f26e0ef65877c542684fe0433ed08e1b1d8",
+  "checks": "native lint zero errors; all current105 claims matched; queued for actual facts2/fresh narrative; no claim of review pass",
+  "native_checks": {
+    "lint": {
+      "errors": 0,
+      "warnings": 3,
+      "retained_warning_reasons": [
+        "25-second cold open follows explicit short-opening direction",
+        "255/256 repeated as required full arithmetic inputs/intermediates/results; no synonym trick"
+      ]
+    },
+    "estimated_only": true,
+    "total_seconds": 602.4,
+    "body_excluding_coldopen_outro_seconds": 565.6999999999999,
+    "coldopen_seconds": 24.666666666666668,
+    "outro_seconds": 12.033333333333333,
+    "states": 101,
+    "max_state": {
+      "scene": "completed-repair-record",
+      "seconds": 12.033333333333333
+    },
+    "spoken_units": 2099,
+    "emotion_lines": 57,
+    "chapters": [
+      {
+        "title": "本地檢查竟接受255",
+        "scene": "capacity-accepts-255",
+        "start": 0,
+        "seconds": 24.666666666666668
+      },
+      {
+        "title": "紀錄先寫下能收哪些長度",
+        "scene": "research-published",
+        "start": 24,
+        "seconds": 95.73333333333333
+      },
+      {
+        "title": "總長留下256，檢查改判拒絕",
+        "scene": "which-line-to-fix",
+        "start": 120,
+        "seconds": 113.33333333333333
+      },
+      {
+        "title": "全部拒絕，也拒了合法輸入",
+        "scene": "deny-all-two-directions",
+        "start": 233,
+        "seconds": 69.26666666666667
+      },
+      {
+        "title": "返回欄遇到一個循環",
+        "scene": "independent-counter",
+        "start": 303,
+        "seconds": 129.7
+      },
+      {
+        "title": "紀錄對上正式證明的條件",
+        "scene": "fix-proof-object",
+        "start": 432,
+        "seconds": 157.66666666666666
+      },
+      {
+        "title": "把自己的要求寫進紀錄",
+        "scene": "completed-repair-record",
+        "start": 590,
+        "seconds": 12.033333333333333
+      }
+    ],
+    "description_bytes": 2536,
+    "claims_rows_match": 105,
+    "source_blocks_exact_match": "previously checked after R1; unchanged since then",
+    "baseline_verify1_sha256": "343ae6c16019587edb5b1da34a9cfbe835671c281300db43c40cefda2ace3be8"
+  },
+  "freeze": true
+}
