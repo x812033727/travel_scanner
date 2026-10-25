@@ -74,4 +74,4 @@ node tools/video/render/repeat.mjs --file tools/video/templates/fixtures/paper/v
 | `steps`、`compare` 帶關鍵句帶 | 不寫卡片 `title` | 636px 的內容區放不下，`render` 這時才會報「text does not fit even at 60% size」 |
 | `keys`／`key` | 24 字元 | 英文約四到五個字 |
 
-三支時事片的範例：`docs/videos/google-ai-search-ads-exception/video.json`（全英文卡片、八語）。
+這些數字量自 `google-ai-search-ads-exception` 2026-10-24 的全英文卡版本（PR #1833 的歷史）；那支片 10-25 重製成 zh-TW 卡（英文名詞、引文保留，`quote` 加 `translation`），所以 repo 裡現在的 video.json 是 zh-TW 卡的範例。
