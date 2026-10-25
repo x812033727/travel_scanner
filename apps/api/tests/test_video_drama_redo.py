@@ -9,7 +9,9 @@ asserted: a cleared and an in-the-making video are dropped the way the owner dro
 the episode is ready under ``-redo1``; an already dropped video is not dropped twice; the worker
 starts the remake under the episode's slug although it names the planned one; the limit; the
 compilation lists each episode's current video and never a dropped one; and the episodes and
-the series that are refused.
+the series that are refused. A one-off (a 奇聞檔案局 explainer the owner's form filed, cleared
+for upload before the rules of 2026-10-25) is remade the same way from its approved story
+bible, and the remake travels as a new request row that repeats the owner's form.
 """
 
 from __future__ import annotations
@@ -17,6 +19,7 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
@@ -27,7 +30,7 @@ from app.video_automation import admin_api
 from app.video_automation import series as service
 from app.video_automation import settings as settings_service
 from app.video_automation.anime_policy import LONG_ANIME_POLICY
-from app.video_automation.models import VideoDramaDoc, VideoDramaSeries
+from app.video_automation.models import VideoDramaDoc, VideoDramaRequest, VideoDramaSeries
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.schemas import DropIn
 from app.video_reviews.storage import ReviewStore
@@ -45,6 +48,16 @@ SLUG = "bug-story"
 REDO = f"{BASE}/{SLUG}/episodes/{{number}}/redo"
 PLANNED = f"{SLUG}-e001"
 REMADE = f"{SLUG}-e001-redo1"
+# The one-off the owner's form filed (create_one_off): the series slug is the request's id.
+ONE_OFF = "one-off-1a2b3c4d"
+ONE_OFF_PLANNED = f"{ONE_OFF}-e001"
+ONE_OFF_REMADE = f"{ONE_OFF}-e001-redo1"
+ONE_OFF_FORM = {
+    "premise": "1923 年資助挖掘的卡納文伯爵死了，報紙說是法老的詛咒；2002 年一位醫師把進過墓室的人的壽命算了一遍。",
+    "title": "H24 圖坦卡門的詛咒",
+    "source_guide": "tutankhamun-curse",
+    "note": "只講紀錄與數字，不評論信仰",
+}
 
 
 @pytest.fixture
@@ -94,6 +107,53 @@ async def _drama(
     return series
 
 
+async def _one_off(factory: async_sessionmaker[AsyncSession], owner_id: Any) -> VideoDramaSeries:
+    """A 奇聞檔案局 one-off as the owner's form filed it (``create_one_off``) once its story
+    bible was approved: the series active, its one episode ready, its request row queued."""
+    series = _series(
+        slug=ONE_OFF,
+        kind="one-off",
+        title="圖坦卡門的詛咒",
+        premise=ONE_OFF_FORM["premise"],
+        note=ONE_OFF_FORM["note"],
+        style_preset="cute-mystery",
+        hands_off=False,
+        compilation=False,
+        visual_tier="clips",
+        target_minutes=10,
+        planned_episodes=1,
+        episodes_per_chapter=1,
+        look=None,
+        image_model="image-01",
+    )
+    async with factory() as session:
+        session.add(series)
+        await session.flush()
+        bible = _doc("bible")
+        bible.series_id = series.id
+        session.add(bible)
+        episode = _episode(1, "ready")
+        episode.series_id = series.id
+        episode.title = series.title
+        session.add(episode)
+        session.add(
+            VideoDramaRequest(
+                id=uuid4(),
+                **ONE_OFF_FORM,
+                style_preset="cute-mystery",
+                target_minutes=10,
+                status="queued",
+                series_id=series.id,
+                episode_number=1,
+                created_by_user_id=owner_id,
+                created_at=NOON,
+                updated_at=NOON,
+            )
+        )
+        await session.commit()
+    return series
+
+
 async def _start(
     factory: async_sessionmaker[AsyncSession],
     token: VideoToolToken,
@@ -101,11 +161,12 @@ async def _start(
     video_slug: str,
     *,
     project: bool = True,
+    series_slug: str = SLUG,
 ) -> str:
     """The worker starts the episode under the slug it names and, usually, files its project;
     the slug the site made it under comes back."""
     async with factory() as session:
-        started = await service.start_episode(session, token, SLUG, number, video_slug)
+        started = await service.start_episode(session, token, series_slug, number, video_slug)
         made = str(started.request.slug)
         if project:
             session.add(
@@ -115,7 +176,7 @@ async def _start(
                     stage="outline",
                     checklist=[],
                     format="drama",
-                    series_slug=SLUG,
+                    series_slug=series_slug,
                     episode_number=number,
                 )
             )
@@ -123,9 +184,11 @@ async def _start(
     return made
 
 
-async def _finish(factory: async_sessionmaker[AsyncSession], number: int) -> None:
+async def _finish(
+    factory: async_sessionmaker[AsyncSession], number: int, *, series_slug: str = SLUG
+) -> None:
     async with factory() as session:
-        await service.finish_episode(session, SLUG, number)
+        await service.finish_episode(session, series_slug, number)
 
 
 async def _project(factory: async_sessionmaker[AsyncSession], slug: str) -> VideoProject:
@@ -135,16 +198,16 @@ async def _project(factory: async_sessionmaker[AsyncSession], slug: str) -> Vide
         return project
 
 
-async def _status(factory: async_sessionmaker[AsyncSession]) -> str:
+async def _status(factory: async_sessionmaker[AsyncSession], series_slug: str = SLUG) -> str:
     async with factory() as session:
-        return (await service.series_view(session, SLUG)).status
+        return (await service.series_view(session, series_slug)).status
 
 
-def test_an_episode_of_a_drama_series_may_be_redone_but_not_a_one_off_or_a_long_anime() -> None:
+def test_an_episode_of_a_drama_series_and_a_one_off_may_be_redone_but_not_a_long_anime() -> None:
     drama = _series(kind="series", look=None, image_model=None)
     assert service.can_redo(drama)
     assert service.can_redo(_series(kind="story"))
-    assert not service.can_redo(_series(kind="one-off", look=None, image_model=None))
+    assert service.can_redo(_series(kind="one-off", look=None, image_model=None))
     anime = _series(kind="series", production_policy=LONG_ANIME_POLICY, look=None, image_model=None)
     assert not service.can_redo(anime)
 
@@ -395,12 +458,93 @@ async def test_an_episode_is_not_redone_once_the_compilation_started(
     assert (await _episode_row(db, 1)).status == "done"
 
 
-@pytest.mark.parametrize("kind", ["one-off", "long-anime"])
-async def test_a_one_off_and_a_long_anime_are_refused(
-    db: async_sessionmaker[AsyncSession], store: ReviewStore, kind: str
+async def test_a_one_off_cleared_for_upload_is_dropped_and_made_again_from_its_bible(
+    db: async_sessionmaker[AsyncSession],
+    clock: dict[str, datetime],
+    store: ReviewStore,
 ) -> None:
     owner = await _user(db, "owner")
-    slug = "one-off-1a2b3c4d" if kind == "one-off" else "dawn"
+    token = await _token(db)
+    await _one_off(db, owner.id)
+    # The one-off travels as the row its form filed (start_episode): started under the slug the
+    # worker names, <series>-e001; cleared for upload, it finishes its one-episode series.
+    assert await _start(db, token, 1, ONE_OFF_PLANNED, series_slug=ONE_OFF) == ONE_OFF_PLANNED
+    assert await _requests(db) == [(ONE_OFF_PLANNED, "started")]
+    await _finish(db, 1, series_slug=ONE_OFF)
+    assert await _status(db, ONE_OFF) == "finished"
+
+    async with _client(db, owner) as client:
+        redone = await client.post(f"{BASE}/{ONE_OFF}/episodes/1/redo")
+    assert redone.status_code == 200, redone.text
+    body = redone.json()
+    assert body["status"] == "active", "the finished one-off is active again"
+    first = body["episodes"][0]
+    assert (first["status"], first["slug"], first["started_at"], first["finished_at"]) == (
+        "ready",
+        ONE_OFF_REMADE,
+        None,
+        None,
+    )
+    project = await _project(db, ONE_OFF_PLANNED)
+    assert (project.dropped_note, project.dropped_by_user_id) == (service.REDO_DROP_NOTE, owner.id)
+    # The form's row stays done, since the video was made.
+    assert await _requests(db) == [(ONE_OFF_PLANNED, "done")]
+    [record] = await _audits(db, "video_series_episode_redone")
+    assert (record.metadata_json["video"], record.metadata_json["reopened"]) == (ONE_OFF_REMADE, True)
+
+    # The worker is handed the one-off again (its bible is still approved), names the planned
+    # slug, and the remake is made under -redo1 as a new request row that repeats the owner's
+    # form; the length and the style are the series' current ones.
+    async with db() as session:
+        settings = await settings_service.settings_row(session)
+        job = (await service.next_job(session, settings)).job
+        assert job is not None and job.episode is not None
+        assert (job.series.slug, job.episode.number, job.episode.slug) == (ONE_OFF, 1, ONE_OFF_REMADE)
+    assert await _start(db, token, 1, ONE_OFF_PLANNED, series_slug=ONE_OFF) == ONE_OFF_REMADE
+    async with db() as session:
+        remake = await session.scalar(
+            select(VideoDramaRequest).where(VideoDramaRequest.slug == ONE_OFF_REMADE)
+        )
+        assert remake is not None
+        assert {key: getattr(remake, key) for key in ONE_OFF_FORM} == ONE_OFF_FORM
+        assert (remake.style_preset, remake.target_minutes, remake.status) == (
+            "cute-mystery",
+            10,
+            "started",
+        )
+        assert (remake.series_id, remake.episode_number) == (job.series.id, 1)
+    assert await _requests(db) == [(ONE_OFF_PLANNED, "done"), (ONE_OFF_REMADE, "started")]
+    row = await _episode_row(db, 1)
+    assert (row.status, row.slug, row.started_at) == ("started", ONE_OFF_REMADE, NOON)
+    await _finish(db, 1, series_slug=ONE_OFF)
+    assert await _status(db, ONE_OFF) == "finished"
+
+    # Once: the second redo is refused like a story's.
+    async with _client(db, owner) as client:
+        refused = await client.post(f"{BASE}/{ONE_OFF}/episodes/1/redo")
+    assert refused.status_code == 409
+    assert refused.json()["code"] == "video_series_redo_limit"
+    assert (await _project(db, ONE_OFF_REMADE)).dropped_at is None
+
+
+async def test_a_one_off_that_never_made_a_video_is_not_redone(
+    db: async_sessionmaker[AsyncSession], store: ReviewStore
+) -> None:
+    owner = await _user(db, "owner")
+    await _one_off(db, owner.id)
+    async with _client(db, owner) as client:
+        refused = await client.post(f"{BASE}/{ONE_OFF}/episodes/1/redo")
+    assert refused.status_code == 409
+    assert refused.json()["code"] == "video_series_episode_not_dropped"
+    assert "這支單集還沒做過影片" in refused.json()["detail"]
+    assert await _requests(db) == [(None, "queued")]
+
+
+async def test_a_long_anime_is_refused(
+    db: async_sessionmaker[AsyncSession], store: ReviewStore
+) -> None:
+    owner = await _user(db, "owner")
+    slug = "dawn"
     async with db() as session:
         # A long anime is what its CHECK constraints allow and nothing else (models.py).
         anime: dict[str, Any] = {
@@ -427,7 +571,7 @@ async def test_a_one_off_and_a_long_anime_are_refused(
             episodes_per_chapter=1,
             look=None,
             image_model=None,
-            **(anime if kind == "long-anime" else {"kind": "one-off", "target_minutes": 3}),
+            **anime,
         )
         session.add(series)
         await session.flush()

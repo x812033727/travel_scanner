@@ -79,7 +79,7 @@
 | 後台（content.manage） | `PUT …/series/{slug}/docs/{kind}[/{chapter}]` | 站主自己改文件（新版本） |
 | 後台（content.manage） | `PUT …/series/{slug}/episodes/{n}` | 開始前改集名、一句話、細綱欄位 |
 | 後台（content.manage） | `POST …/series/{slug}/actions/{plan-next-chapter\|start-next\|skip/{n}}` | 手動推進 |
-| 後台（content.manage） | `POST …/series/{slug}/episodes/{n}/redo` | 把做過的一集用現在的規則重做：舊影片放棄、集回 `ready`、slug 加 `-redo<n>`（[BINGE.md](BINGE.md) §重做一集） |
+| 後台（content.manage） | `POST …/series/{slug}/episodes/{n}/redo` | 把做過的一集（作品的集，或單集的那一集）用現在的規則重做：舊影片放棄、集回 `ready`、slug 加 `-redo<n>`（[BINGE.md](BINGE.md) §重做一集） |
 | 工人（VideoTool） | `GET /video/automation/series/next` | 下一件作品層的工作：`{kind: setting\|outline\|chapter\|episode, series, chapter_number?, episode?, context}` |
 | 工人 | `POST …/series/{slug}/docs`、`POST …/episodes/{n}/start`、`POST …/episodes/{n}/recap`、`POST …/episodes/{n}/done` | 寫回 |
 | 工人 | `GET …/series/{slug}/context?episode=n` | 提示詞的脈絡：設定集、總綱、該篇細綱、前 3 集前情全文與所有集的一句話、謎團狀態 |

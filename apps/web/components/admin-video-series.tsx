@@ -808,9 +808,12 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   };
   // An episode made again under the current rules (redo_episode in the API's series.py): the server
   // drops its video, the episode is ready again under <planned>-redo<n>, and the worker remakes it
+  // from the chapter outline, or a one-off from its approved story bible (the owner's remake of the
+  // 奇聞檔案局 explainers cleared for upload before the rules of 2026-10-25). A long anime has its
+  // own production flow and no redo.
   // from the chapter outline. Offered for a video in the making or cleared, and for one already dropped.
   const redo = (number: number) => {
-    if (!window.confirm(t("redoConfirm", { n: number }))) return;
+    if (!window.confirm(t(series?.kind === "one-off" ? "redoConfirmOneOff" : "redoConfirm", { n: number }))) return;
     void act(`redo-${number}`, () => api(`/admin/video-automation/series/${slug}/episodes/${number}/redo`, { method: "POST" }));
   };
   const redoable = (episode: SeriesEpisode) => Boolean(episode.slug) && (episode.status === "started" || episode.status === "done" || (episode.status === "skipped" && episode.started_at !== null));
@@ -898,7 +901,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
               <td className="px-3 py-2"><span className="flex flex-wrap gap-2">
                 {!planningOnly && episode.slug && <Button secondary onClick={() => onOpenVideo(episode.slug as string)}>{t("openVideo")}</Button>}
                 {canProduce && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={busy === `skip-${episode.number}`} onClick={() => skip(episode.number)}>{t("skip")}</Button>}
-                {canProduce && !oneOff && !longAnime && redoable(episode) && <Button secondary disabled={busy === `redo-${episode.number}`} onClick={() => redo(episode.number)}>{t("redo")}</Button>}
+                {canProduce && !longAnime && redoable(episode) && <Button secondary disabled={busy === `redo-${episode.number}`} onClick={() => redo(episode.number)}>{t("redo")}</Button>}
               </span></td>
             </tr>;
           })}</tbody>

@@ -24,7 +24,9 @@ A skipped story that never started can be brought
 back (``restore_episode``); one whose video was dropped can be made again, a limited number of
 times, under a new video slug (``redo_episode``); a skipped episode of the other kinds cannot.
 An episode of a drama series that was made, or is being made, can be made again the same way:
-its video is dropped first and the worker remakes it from the chapter outline (``can_redo``).
+its video is dropped first and the worker remakes it from the chapter outline (``can_redo``);
+a one-off too, from its approved story bible, under a new request row that says what the
+owner's form said.
 
 The router turns ``SeriesRefused`` into the API's problem response; nothing here raises
 ``AppError``.
@@ -2152,13 +2154,15 @@ async def restore_episode(session: AsyncSession, actor: User, slug: str, number:
 def can_redo(series: VideoDramaSeries) -> bool:
     """Whether an episode of this series may be made again (``redo_episode``).
 
-    A brand story, or an episode of a production drama series. An episode of a long series is
-    not improvised after the one before it: its beats come from the approved chapter outline,
-    and its recap is written from that outline and the finished script, so the same beats made
-    again fit the episodes after it. A one-off is its only episode (the request's own drop is
-    its way out), and a long anime has its own production flow.
+    A brand story, a one-off, or an episode of a production drama series. An episode of a long
+    series is not improvised after the one before it: its beats come from the approved chapter
+    outline, and its recap is written from that outline and the finished script, so the same
+    beats made again fit the episodes after it. A one-off is its only episode, written from its
+    approved story bible, so the same bible made again is the same video under the current
+    rules (the owner asked for the 奇聞檔案局 explainers cleared for upload before the rules of
+    2026-10-25 to be made again, 2026-10-25). A long anime has its own production flow.
     """
-    return is_story(series) or (not is_one_off(series) and not is_long_anime(series))
+    return is_story(series) or not is_long_anime(series)
 
 
 async def redo_episode(
@@ -2182,7 +2186,10 @@ async def redo_episode(
     An episode of a drama series (``can_redo``) is redone from a video still in the making or
     already cleared for upload as well as from a dropped one: the owner found the finished
     episodes slow after the rules changed (2026-10-24) and wants them made again under the
-    current rules, and the beats of the chapter outline do not change. Such a video is dropped
+    current rules, and the beats of the chapter outline do not change. A one-off is redone the
+    same way from its approved story bible: the worker writes the script again under the
+    current rules, and the new request row it travels as repeats the owner's form
+    (``start_episode``). Such a video is dropped
     here first, as the owner would drop it on /admin/videos (``drop_project``, with the note
     ``REDO_DROP_NOTE``): nothing waits on the owner any more, its previews go, and its work
     directory and the media it paid for stay where they are. ``review_store`` is asked for the
@@ -2206,8 +2213,7 @@ async def redo_episode(
         raise SeriesRefused(
             409,
             "video_series_redo_story_only",
-            "只有品牌故事與作品的集數能重做：單集漫劇是它唯一的一集，請放棄那支影片再發起一支；"
-            "長篇動畫有自己的製作流程",
+            "只有品牌故事、單集與作品的集數能重做：長篇動畫有自己的製作流程",
         )
     episode = await _episode(session, series, number)
     drama = not is_story(series)
@@ -2225,7 +2231,11 @@ async def redo_episode(
         episode.status != "skipped" or episode.started_at is None or not episode.slug
     ):
         if drama:
-            detail = f"第 {number} 集還沒做過影片，不用重做"
+            detail = (
+                "這支單集還沒做過影片，不用重做"
+                if is_one_off(series)
+                else f"第 {number} 集還沒做過影片，不用重做"
+            )
         else:
             hint = "；它從沒開始過，用「恢復」讓它回到待做" if episode.status == "skipped" else ""
             detail = f"第 {number} 個故事的影片沒有被放棄，不用重做{hint}"
@@ -2609,24 +2619,52 @@ async def start_episode(
         request.started_at = now
         request.updated_at = now
     else:
-        beats = episode.beats or {}
-        fields = STORY_PREMISE_FIELDS if is_story(series) else BEAT_FIELDS
-        premise = "\n".join(
-            part
-            for part in (
-                f"{series.title} 第 {number} 集：{episode.title}",
-                episode.logline,
-                *(f"{key}: {beats[key]}" for key in fields if isinstance(beats.get(key), str)),
+        # A one-off made again (``redo_episode``) has no queued row any more: its first row,
+        # the owner's form, is done or cancelled with the dropped video. The remake travels as a
+        # new row that says what the form said (the premise, the title, the article it adapts,
+        # the note), since a one-off has no beats to say it from; the length and the style are
+        # the series' current ones, as for every episode.
+        form = (
+            await session.scalar(
+                select(VideoDramaRequest)
+                .where(
+                    VideoDramaRequest.series_id == series.id,
+                    VideoDramaRequest.episode_number == number,
+                )
+                .order_by(VideoDramaRequest.created_at.desc())
+                .limit(1)
             )
-            if part
-        )[:4000]
+            if is_one_off(series)
+            else None
+        )
+        if form is not None:
+            premise = form.premise
+            title = form.title
+            source_guide = form.source_guide
+            note = form.note
+        else:
+            beats = episode.beats or {}
+            fields = STORY_PREMISE_FIELDS if is_story(series) else BEAT_FIELDS
+            premise = "\n".join(
+                part
+                for part in (
+                    f"{series.title} 第 {number} 集：{episode.title}",
+                    episode.logline,
+                    *(f"{key}: {beats[key]}" for key in fields if isinstance(beats.get(key), str)),
+                )
+                if part
+            )[:4000]
+            title = f"{series.title} 第 {number} 集 {episode.title}"[:200]
+            source_guide = None
+            note = series.note
         request = VideoDramaRequest(
             id=uuid4(),
             premise=premise or episode.title,
-            title=f"{series.title} 第 {number} 集 {episode.title}"[:200],
+            title=title,
+            source_guide=source_guide,
             style_preset=series.style_preset,
             target_minutes=series.target_minutes,
-            note=series.note,
+            note=note,
             status="started",
             slug=video_slug,
             series_id=series.id,

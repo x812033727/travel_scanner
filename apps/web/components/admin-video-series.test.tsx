@@ -513,12 +513,18 @@ describe("AdminVideoSeries", () => {
     confirm.mockRestore();
   });
 
-  it("offers no redo on a one-off: the request's own drop is its way out", async () => {
-    stubFetch();
+  it("redoes a one-off from its story bible: the owner confirms in the one-off's words, then the page posts the redo", async () => {
+    const { calls } = stubFetch();
     window.history.replaceState(null, "", "/?series=one-off-1a2b3c4d");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
     await screen.findByRole("heading", { name: /精衛填海/ });
-    expect(screen.queryByRole("button", { name: "重做" })).toBeNull();
+    // Its one episode is in the making, so it can be made again under the current rules.
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    fireEvent.click(screen.getByRole("button", { name: "重做" }));
+    expect(confirm.mock.calls[0]?.[0]).toContain("重做這支單集");
+    expect(confirm.mock.calls[0]?.[0]).toContain("故事聖經");
+    await waitFor(() => expect(calls.some((call) => call.method === "POST" && call.url.endsWith("/admin/video-automation/series/one-off-1a2b3c4d/episodes/1/redo"))).toBe(true));
+    confirm.mockRestore();
   });
 
   it("discusses a chapter outline: the owner's line waits for the model, and the thread stays when the model answers with a new version", async () => {

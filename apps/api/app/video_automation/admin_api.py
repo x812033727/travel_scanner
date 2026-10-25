@@ -886,8 +886,8 @@ async def redo_video_series_episode(
     slug: str, number: int, user: ContentManager, session: Session
 ) -> SeriesOut:
     """Make an episode again under a new video slug: a story whose video was dropped (the way
-    back that ``/restore`` refuses), or an episode of a drama series, whose live video is
-    dropped first; ``STORY_REDO_LIMIT`` times an episode (``redo_episode`` says why)."""
+    back that ``/restore`` refuses), or an episode of a drama series or a one-off, whose live
+    video is dropped first; ``STORY_REDO_LIMIT`` times an episode (``redo_episode`` says why)."""
     try:
         return await drama_series.redo_episode(
             session, user, slug, number, review_store=lambda: _review_store(session)
