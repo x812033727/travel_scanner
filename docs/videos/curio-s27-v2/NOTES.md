@@ -7,7 +7,7 @@
   3,237 字加卡片停頓約 12.5–13 分鐘，等旁白量過再決定要不要補一段）。開場估 58 秒。
 - 事實沿用第一版 2026-10-20 的查核 `topic-checks/S27.md`（47 列加獨立覆核），沒有新增查核；每句對照在 [`claims.md`](claims.md)，給 `qa` 讀的表在 [`verify-1.md`](verify-1.md)（跟第一版逐字相同，只改檔頭）。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站、沒有 git commit。第一版只到稿子，沒有推上主機，所以第二版沒有快取可吃：110 景全部要畫（77 景提示詞跟第一版逐字相同，第一版若日後先畫了就吃快取；33 景是新寫的）。
-- **盲評待跑（主對話跑）**：這個環境不開子代理，兩位全新讀者由主對話開。第 1 輪的 payload 存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪讀者 2 十三題全是，讀者 1 只有 no_recap 答否（vk318「買得起的不多」跟 vk221 同一件事沒點名）；兩位同否才算沒過，第 1 輪通過、沒改稿；答案在 panel/，narrative --answers 已留紀錄。旁白量長度時可順手把 vk318 改成點名回呼）。原本的待跑說明：盲評待跑（主對話跑）**：這個環境不開子代理，兩位全新讀者由主對話開。第 1 輪的 payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s27/payload-r1.json`（`node tools/video/cli.mjs narrative --slug curio-s27-v2 --json` 的輸出，`narration` 與 `questions` 原文，對應目前的 `video.json`）。
   跑法照主機兩位讀者的規則：兩個全新讀者各自只讀 payload，回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過；沒過就改稿（改一句之前先看前一句、不為單一讀者的否改稿、不改事實），
   重跑 lint、`script`，再開新一輪；最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，用 `narrative --slug curio-s27-v2 --answers panel/reader-1.json` 留紀錄。`panel/` 先不建，不放沒跑過的答案。
