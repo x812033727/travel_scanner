@@ -93,3 +93,4 @@ scope:
 
 - 最新採用：C05作者R12／原生panel11及來源／配鏡PASS，採用後新劇本4a1620bc-1036-47f0-acf1-f62df23ec197、新企劃00e14875-adef-47e0-b91f-e5f764a3dcfb均實讀pending；舊批准不適用新稿。新版八語864句全TEXT_PASS，葡／印各1處化學轉化語意修正後獨立重查；runtime0errors、7soft、0stale。五份現行稿合計5016句，舊776句封存。C08 R9來源及原生合併PASS，保留兩讀者各自不同意見；C07 R6共享no_recap、C10 R6共享payoffs、C14 R3共享payoffs/no_recap仍HOLD。C11 R3新讀者進行中，C15原件研究已完成，接續新稿；實際媒體及付費仍0。
 - C11 R3已真實合併新雙讀者，僅共享no_recap，準備保留原件後最小修稿；沒有因source PASS直接送審。最新index差異保留一行歷史作者空白（c10/history/r5/build-candidate.py），不為格式改寫已綁定封存原件。
+- 最新正式讀回 2026-10-25T23:46:08.984Z：C06分類已由外部改story，八語三部分全選（原決定時間 2026-10-25T23:42:39.755660Z）；精確script 3d8ed292-ea12-4bfd-98b8-097acda4a828已approved，官方review-pull已匯入，企劃仍pending。沒有自授管理權限或將語言旗標當dub資格，未重試付費TTS。C05／C09當前新卡仍pending。

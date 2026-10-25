@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T23:39:58.384432+00:00",
+  "updated_at": "2026-10-25T23:49:19.208873+00:00",
   "state": "five_current_eight_language_text_PASS_C05_R12_C09_R7_reviews_pending_other_source_verified_drafts_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
@@ -242,13 +242,13 @@
       "total_spoken_units": 3428,
       "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
       "backend_review_id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
-      "backend_script_status": "pending",
-      "script_approval_imported": false,
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
       "backend_outline_review_id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
       "backend_outline_status": "pending",
-      "backend_category": "explainer",
+      "backend_category": "story",
       "protected_admin_settings": "c06/protected-admin-settings.json",
-      "backend_language_selection_applied": false,
+      "backend_language_selection_applied": true,
       "planned_language_locales": [
         "en",
         "ja",
@@ -275,11 +275,13 @@
       "stale_or_missing_translation_warnings": 0,
       "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
       "production_handoff": "c06/production-entry.md",
-      "after_cold_open_spoken_units": 3229
+      "after_cold_open_spoken_units": 3229,
+      "backend_checked_at": "2026-10-25T23:46:08.984Z",
+      "backend_stage": "outline approved"
     },
     {
       "id": "c07",
-      "state": "r6_source_written_visual_PASS_native_HOLD_media_held",
+      "state": "r7_source_check_in_progress_native_PENDING_media_held",
       "last_frozen_revision": "c07/history/r3",
       "last_frozen_video_sha256": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
       "last_frozen_source_and_written_visual": "PASS",
@@ -299,34 +301,22 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "current_revision": "r6",
-      "video_sha256": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
-      "source_and_written_visual": "PASS",
-      "narrative_merged": "HOLD",
-      "narrative_receipt": "c07/reviews/narrative-r6.json",
-      "native_merged_failed": [
-        "no_recap"
-      ],
+      "current_revision": "r7",
+      "video_sha256": "7c1a3a4de87fc06f177f7947676c19b98d0d4fcb85ec06f8ed7362b4e31c9dea",
+      "source_and_written_visual": "PENDING",
+      "narrative_merged": "PENDING",
+      "narrative_receipt": null,
+      "native_merged_failed": [],
       "source_length_planning_hold": true,
-      "whole_narration_spoken_units": 2360,
-      "source_receipt": "c07/reviews/source-r6-independent.json",
-      "native_fact_check": "c07/verify-1.md",
-      "actual_native_panel": 6,
-      "narrative_readers": [
-        {
-          "passed": false,
-          "failed": [
-            "no_recap"
-          ]
-        },
-        {
-          "passed": false,
-          "failed": [
-            "no_recap",
-            "no_detour"
-          ]
-        }
-      ]
+      "whole_narration_spoken_units": 2310,
+      "source_receipt": null,
+      "native_fact_check": null,
+      "actual_native_panel": 7,
+      "previous_source_review": {
+        "video_sha256": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
+        "receipt": "c07/reviews/source-r6-independent.json",
+        "status": "PASS"
+      }
     },
     {
       "id": "c08",
@@ -334,13 +324,13 @@
       "current_revision": "r9",
       "source_and_written_visual": "PASS",
       "narrative_merged": "PASS",
-      "backend_submitted": false,
+      "backend_submitted": true,
       "actual_narration_seconds": null,
       "audio_generated": false,
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "source_length_planning_hold": true,
+      "source_length_planning_hold": false,
       "last_frozen_revision": "c08/history/r5",
       "last_frozen_source_receipt": "c08/history/r5/reviews/source-r5-independent.json",
       "last_frozen_source_and_written_visual": "PASS",
@@ -373,7 +363,21 @@
             "no_recap"
           ]
         }
-      ]
+      ],
+      "slug": "story-everyday-kikkoman-c08-remake-20261025",
+      "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+      "backend_review_id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+      "backend_script_status": "pending",
+      "backend_outline_review_id": "294c49b6-b310-426e-8422-a64827717bff",
+      "backend_outline_status": "pending",
+      "backend_category": "story",
+      "backend_language_selection_applied": false,
+      "backend_checked_at": "2026-10-25T23:44:02.698Z",
+      "production_handoff": "c08/production-entry.md",
+      "preflight": "c08/preflight-inputs.json",
+      "clean_master_recipe": "c08/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "text_translation_preparation": "SOURCE_WORKSHEETS_READY_TRANSLATION_IN_PROGRESS"
     },
     {
       "id": "c09",
@@ -443,10 +447,10 @@
     },
     {
       "id": "c10",
-      "state": "r6_source_written_visual_PASS_native_hold_media_held",
-      "current_revision": "r6",
-      "source_and_written_visual": "PASS",
-      "narrative_merged": "HOLD",
+      "state": "r7_source_check_in_progress_native_PASS_media_held",
+      "current_revision": "r7",
+      "source_and_written_visual": "PENDING",
+      "narrative_merged": "PASS",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -464,19 +468,34 @@
       ],
       "last_frozen_native_receipt": "c10/history/r3/reviews/narrative-r3.json",
       "last_frozen_after_cold_open_spoken_units": 3155,
-      "video_sha256": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
-      "whole_narration_spoken_units": 2658,
-      "source_receipt": "c10/reviews/source-r6-independent.json",
-      "native_fact_check": "c10/verify-1.md",
-      "actual_native_panel": 5,
-      "narrative_receipt": "c10/reviews/narrative-r5.json",
-      "native_merged_failed": [
-        "payoffs"
+      "video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+      "whole_narration_spoken_units": 2670,
+      "source_receipt": null,
+      "native_fact_check": null,
+      "actual_native_panel": 6,
+      "narrative_receipt": "c10/reviews/narrative-r6.json",
+      "native_merged_failed": [],
+      "previous_source_review": {
+        "video_sha256": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+        "receipt": "c10/reviews/source-r6-independent.json",
+        "status": "PASS"
+      },
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
       ]
     },
     {
       "id": "c11",
-      "state": "r3_source_written_visual_PASS_native_HOLD_media_held",
+      "state": "r4_source_check_in_progress_native_PENDING_media_held",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -485,39 +504,41 @@
       "final_approval": false,
       "research_receipt": "c11/research-original.claims.json",
       "research_verification_is_source_PASS": false,
-      "current_revision": "r3",
-      "video_sha256": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
-      "whole_narration_spoken_units": 2468,
-      "source_and_written_visual": "PASS",
-      "source_receipt": "c11/reviews/source-r3-independent.json",
-      "native_fact_check": "c11/verify-1.md",
-      "narrative_merged": "HOLD",
-      "actual_native_panel": 3,
-      "narrative_receipt": "c11/reviews/narrative-r3.json",
-      "native_merged_failed": [
-        "no_recap"
-      ]
+      "current_revision": "r4",
+      "video_sha256": "04064206ab45552b6138872a17817e47d6aa176497583533aac2e4a0e6a4dd48",
+      "whole_narration_spoken_units": 2428,
+      "source_and_written_visual": "PENDING",
+      "source_receipt": null,
+      "native_fact_check": null,
+      "narrative_merged": "PENDING",
+      "actual_native_panel": 4,
+      "narrative_receipt": null,
+      "native_merged_failed": [],
+      "previous_source_review": {
+        "video_sha256": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
+        "receipt": "c11/reviews/source-r3-independent.json",
+        "status": "PASS"
+      }
     },
     {
       "id": "c14",
-      "state": "r3_source_written_visual_PASS_native_HOLD_media_held",
+      "state": "r4_source_check_in_progress_native_HOLD_media_held",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "current_revision": "r3",
-      "video_sha256": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
-      "whole_narration_spoken_units": 2663,
-      "source_and_written_visual": "PASS",
-      "source_receipt": "c14/reviews/source-r3-independent.json",
-      "native_fact_check": "c14/verify-1.md",
+      "current_revision": "r4",
+      "video_sha256": "ab3d5ae2987e1f6c753dd49d5df67624325dee12255001c981fe53ef9430417f",
+      "whole_narration_spoken_units": 2571,
+      "source_and_written_visual": "PENDING",
+      "source_receipt": null,
+      "native_fact_check": null,
       "narrative_merged": "HOLD",
-      "actual_native_panel": 2,
-      "narrative_receipt": "c14/reviews/narrative-r2.json",
+      "actual_native_panel": 3,
+      "narrative_receipt": "c14/reviews/narrative-r3.json",
       "native_merged_failed": [
-        "payoffs",
         "no_recap"
       ],
       "author_revision": 3,
@@ -525,22 +546,25 @@
         {
           "passed": false,
           "failed": [
-            "payoffs",
             "no_recap"
           ]
         },
         {
           "passed": false,
           "failed": [
-            "payoffs",
             "no_recap"
           ]
         }
-      ]
+      ],
+      "previous_source_review": {
+        "video_sha256": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
+        "receipt": "c14/reviews/source-r3-independent.json",
+        "status": "PASS"
+      }
     },
     {
       "id": "c15",
-      "state": "primary_source_research_complete_draft_next",
+      "state": "r1_author_in_progress_unreviewed",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -575,7 +599,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 2643,
+      "files": 2654,
       "scope": "Git index bytes only, including staged artifacts; active unstaged author files excluded"
     },
     "native_c03_fact_checked": true,
@@ -639,9 +663,8 @@
       "scope": "Exact hash-bound C09 claims.md source quotations and immutable EOF blanks preserved; all other staged whitespace checked."
     },
     "latest_checkpoint_whitespace": {
-      "status": "PASS_WITH_IMMUTABLE_HISTORY_EXCEPTION",
-      "scope": "New staged diff; immutable historical EOF blanks and one existing whitespace-only line in c10/history/r5/build-candidate.py retained without changing the archived author bytes.",
-      "preserved_history_lines": 1
+      "status": "PASS",
+      "scope": "Latest staged checkpoint only; prior bound quote and historical author whitespace exceptions remain in their immutable commits."
     }
   },
   "remaining": [
@@ -696,7 +719,7 @@
     "c04": true,
     "c05": true,
     "c09": true,
-    "c06": false
+    "c06": true
   },
   "selected_language_parts": [
     "metadata",
@@ -744,13 +767,13 @@
   "continuation_in_progress": {
     "c05": "R12_source_native_and_8locale_864_TEXT_PASS_new_backend_reviews_pending",
     "c06": "source_written_visual_native_merged_and_8locale_1304text_TEXT_PASS_media_held",
-    "c07": "r6_source_written_visual_PASS_native_HOLD_media_held",
-    "c08": "r9_source_written_visual_PASS_native_PASS_media_held",
+    "c07": "r7_source_check_in_progress_native_PENDING_media_held",
+    "c08": "R9_source_native_PASS_new_backend_reviews_pending_8locale_translation_in_progress",
     "c09": "r7_source_native_PASS_adopted_new_backend_reviews_pending_8locale_824text_TEXT_PASS",
-    "c10": "R6_source_PASS_actual_native5_shared_payoffs_HOLD",
-    "c11": "r3_source_written_visual_PASS_native_HOLD_media_held",
-    "c14": "r3_source_written_visual_PASS_native_HOLD_media_held",
-    "c15": "primary_source_research_complete_R1_author_next"
+    "c10": "r7_source_check_in_progress_native_PASS_media_held",
+    "c11": "r4_source_check_in_progress_native_PENDING_media_held",
+    "c14": "r4_source_check_in_progress_native_HOLD_media_held",
+    "c15": "r1_author_in_progress_unreviewed"
   },
   "narration_size_planning": "narration-size-precheck.json",
   "new_media_files_scope": "Generated production media only; downloaded public reference media and source-page renders are excluded.",

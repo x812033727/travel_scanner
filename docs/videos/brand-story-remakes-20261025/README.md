@@ -9,15 +9,15 @@ C03企劃與劇本已核准並匯入。正式TTS曾執行，但在供應商派�
 | [C03 Moleskine](c03/README.md) | 來源PASS、原生兩讀者合併PASS | 企劃／劇本核准已匯入；1144句TEXT_PASS |
 | [C04 泡泡紙](c04/README.md) | 來源PASS、原生合併PASS | 劇本核准、企劃pending；880句TEXT_PASS |
 | [C05 金鳥](c05/README.md) | R12來源／書面配鏡及原生合併PASS，已採用 | 新的企劃／劇本pending；864句TEXT_PASS，舊776封存 |
-| [C06 Play-Doh](c06/README.md) | R3來源PASS、原生合併PASS | 新企劃／劇本pending；1304句TEXT_PASS；[分類及正式八語設定待管理權限](c06/protected-admin-settings.json) |
-| [C07 Dr. Martens](c07/script.md) | R6來源／書面配鏡PASS，敘事HOLD重述 | 未送新卡、未翻譯，實聲未測 |
-| [C08 龜甲萬](c08/script.md) | R9來源／書面配鏡及原生合併PASS | 未送新卡、未翻譯，實聲未測 |
+| [C06 Play-Doh](c06/README.md) | R3來源PASS、原生合併PASS | 劇本核准已匯入、企劃pending；1304句TEXT_PASS；story／八語實際讀回 |
+| [C07 Dr. Martens](c07/script.md) | R7凍結，新來源／敘事查核中 | 未送新卡、未翻譯，實聲未測 |
+| [C08 龜甲萬](c08/script.md) | R9來源／書面配鏡及原生合併PASS | 新企劃／劇本pending，八語翻譯中，實聲未測 |
 | [C09 Patagonia](c09/README.md) | R7來源PASS、兩位全新讀者合併PASS，已採用 | **新的企劃／劇本均pending**；新版824句TEXT_PASS |
-| [C10 OXO](c10/script.md) | R6來源／書面配鏡PASS；敘事仍HOLD未回收 | 未送新卡、未翻譯，實聲未測 |
-| [C11 UCC](c11/script.md) | R3來源／書面配鏡PASS，敘事HOLD重述 | 未送新卡、未翻譯，實聲未測 |
-| [C14 CamelBak](c14/script.md) | R3來源／書面配鏡PASS，敘事HOLD回收與重述 | 未送新卡、未翻譯，實聲未測 |
+| [C10 OXO](c10/script.md) | R7敘事合併PASS，來源差分查核中 | 未送新卡、未翻譯，實聲未測 |
+| [C11 UCC](c11/script.md) | R4凍結，新來源／敘事查核中 | 未送新卡、未翻譯，實聲未測 |
+| [C14 CamelBak](c14/script.md) | R4新來源查核中，敘事仍HOLD重述 | 未送新卡、未翻譯，實聲未測 |
 
-C11與C14已完成新稿及來源／書面配鏡審核；C15 FriXion已完成原始來源研究，接續新稿。
+C07／C10／C11／C14修訂稿正做新來源及敘事查核，歷史PASS與HOLD保留；C15 FriXion已完成原始來源研究，正在寫R1。
 
 C03／C04／C05 R12／C06／C09當前稿共 **5016句八語文字**已完成獨立校對及官方合併；數字排除歷史基底、候選和草稿。這些是未定時文字，沒有SRT、配音、語言輪、媒體QA或上傳資格。各集原始答案、必修、精確修正及獨立重查均保存。兩讀者依原生規則合併：必要項只有兩位皆答no才失敗；單人保留意見不刪、不改成一致同意。
 
