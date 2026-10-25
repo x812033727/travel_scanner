@@ -355,3 +355,100 @@ manifest：key `9dbee6d0b776b2eb`、captured_at `2026-10-25T10:10:36.847Z`、pro
 實讀一致性檢查：77場／80句；script無漏句，claims無漏句，每場video既存ID與scene.claims一致；mjfp證據類別已明列monitoring，shorts.json仍不存在。未發現新事實錯誤或未結來源問題。
 
 native lint再次為零errors、零warnings；1862 spoken units、6315計費字元，估算8.7738889分鐘（526.43秒，約8:46.4），仍是文字估時。四時間點、四差值、9/20／9/25／10/1／10/23、METR歷史與當期修正／後續未再驗證、特定模型身分與正式產品範圍均未更改；先前獨立原文證據與算術覆核繼續適用。**最新77場快照的事實、來源範圍、引用及文件同步PASS；不代替音訊、字幕或正式成片QA。**
+
+
+## 音檢措辭修正delta與第二次實際轉寫（2026-10-25）
+
+### 文字事實與引用：PASS
+
+協調者依第一次音檢，只修改12句措辭及其清晰度emotion，穩定line id不變；另外的6處data斷行屬排版，未更動旁白主張。此次依實際 `/workspace/work/ai-tech-dns-containment/audio-wording-changes.json` 核對，並非直接採用查核者的建議稿。video SHA-256：`97133cf8b266a6290710d8b6acec130e70277808b30d8fbde7e10f61e212b377`，新speech_hash：`4b18fd9cbb9b8c84`。沒有增加日期、數字、產品功能、實測或新的安全保證。
+
+| line id | 最新措辭 | 事實涵義覆核 |
+| --- | --- | --- |
+| `mku3` | 這條查詢網域的路徑，接著會通往哪裡？ | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `y9kq` | 如果它連上外部服務，警報能讓這次實驗停下嗎？ | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `5sm4` | 這種查詢，負責找出名稱所對應的網路位址。 | PASS；DNS的一般白話定義不變；不把網路位址換成網址，也未聲稱所有DNS紀錄只查IP。 |
+| `78eg` | 資訊已經傳回來，監控系統有沒有發現這件事？ | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `gfwn` | 模型拿到外部回答後，監控系統發出了警報。 | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `26jt` | 發現異常、人員接手、停止執行，各是不同階段。 | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `vkbd` | 監控要判定可靠，還得通過哪些檢查？ | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `77x3` | 這個問題有特定條件，不代表當時完全沒有監控。 | PASS；保留有特定條件，沒有把compaction期間漏監控擴張成當時完全無監控。 |
+| `csz9` | 要證明監控沒有漏接，舊評估提出了什麼檢查方式？ | PASS；舊評估確有交叉核對監控紀錄的建議，下一場回答，未新增另一項檢查結果。 |
+| `h3zv` | 只數系統收到的資料，無法發現沒送進來的資料。 | PASS；同一事件或原創控制推理的縮句，證據層級未提高。 |
+| `ubvs` | OpenAI 說正式防護的漏洞已修補，評估團隊沒有檢查這項聲明。 | PASS；正式防護漏洞修補是OpenAI自述；評估團隊沒有檢查這項聲明，並非正在驗證。指本段已發現的相關漏洞，不是所有未知漏洞。 |
+| `r6cu` | 還記得九月那個特定模型嗎？整體工作重開，不能推定是哪個模型。 | PASS；回指九月特定模型後，明說不能由整體重開推定具體模型，未猜型號或宣稱該模型重訓。 |
+
+
+引用等義重新累計為incident **194**、containment **196**、monitoring **87**、safety **44** words；其餘項與上一節相同。變更項如下，不因措辭改為白話就自動排除來源：
+
+- gfwn取代為11-word「The model received an external answer, then monitoring raised an alert.」（原8）。
+- r6cu第一段以5-word「Recall that particular September model.」取代原11-word回指不續訓句；第二段為9-word「Overall workloads restarting does not establish which model resumed.」（原7）。
+- ubvs改為14-word「OpenAI says production-safeguard vulnerabilities are patched; the assessment team has not checked that statement.」（原18）。
+- 原創控制問題、算術判讀及一般DNS定義的主張未新增來源專有情節；兩SVG26／30及9-word標題繼續計入。四頁仍≤200。
+
+### 第二次actual音檢：尚未PASS，餘3句旗標
+
+實際執行一次cache增量check-audio，沒有force、沒有second-opinion。最新native記錄2026-10-25T10:47:31.774Z：80/80句checked，66 exact、9同音／語助詞、2 Jev通過、3 flagged、unchecked=0；只新轉寫12個take、1次Jev。逐一核對check.json的clip hash與目前80個wav，**全部一致**；沒有把舊12旗標或舊cache文字直接當新take通過。speech journal當前無未結JSON。
+
+| line id | 最新預期 | 最新ASR | Jev | 狀態 |
+| --- | --- | --- | --- | --- |
+| 5sm4 | 這種查詢，負責找出名稱所對應的網路位址。 | 這種查詢負責找出名稱所對應的網路位置 | 0.10 | flagged；位址／位置仍混淆 |
+| h3zv | 只數系統收到的資料，無法發現沒送進來的資料。 | 只輸系統收到的資料，無法發現沒送進來的資料。 | 0.09 | flagged；數／輸可能多音字或ASR誤識 |
+| ubvs | OpenAI 說正式防護的漏洞已修補，評估團隊沒有檢查這項聲明。 | OpenAI 說，證實防護的漏洞已修補，評估團隊沒有檢查這項聲明。 | 0.06 | flagged；正式／證實仍混淆；重要否定「沒有檢查這項聲明」已完整被轉寫 |
+
+此處判讀的是ASR與Jev的實際結果，未獨立聆聽，不將差字逕稱實際clip必然唸錯。77句目前通過、3句仍需處理或獨立聆聽／轉寫；查核者沒有自行再重錄、付費重跑、approve或送審。**文字facts PASS不等於音訊PASS**。正式字幕、成片與上架包仍需後續native關卡；script／claims待最終音檢措辭定稿後同步，不沿用前一hash收據稱已同步。
+
+
+## 最後三句定向改寫與第三次actual音檢delta（2026-10-25）
+
+文字fact delta **PASS**；音訊仍有**1句未通過**。此節綁video SHA-256 `eb25733a8eda28df0a8213b625c0109189ea4a01b17746c0b62d44ec1fbfa6e0`，speech_hash `76cd6105601e80a5`。依實際 `/workspace/work/ai-tech-dns-containment/audio-wording-changes-round2.json` 及current video重新核對，未替協調者套用或重錄。
+
+| line id | 最新文字 | 意義與來源範圍 |
+| --- | --- | --- |
+| 5sm4 | 這種查詢，會找出網域名稱對應的網路地址。 | PASS；網路地址為網路位址的白話詞，沒有換成網址或地理地址，也未擴張成所有DNS紀錄只有一種功能。 |
+| h3zv | 只統計系統收到的資料量，無法發現遺漏的那部分。 | PASS-E；保留「只看實收而無預期基準，無法看見漏送部分」的原創推理；沒有新產品實測或第一人稱經驗。 |
+| ubvs | OpenAI 說正式系統的防護漏洞已修補，評估團隊沒有檢查這項聲明。 | PASS；production safeguards的範圍仍保留；OpenAI修補自述與評估團隊沒有驗證該聲明分開；沒有說正在驗證或已完成外部認證。 |
+
+引用等義帳目為incident **194**、containment **196**、monitoring **91**、safety **44** words。只有ubvs的英文等義由上一節14-word項改為18-word「OpenAI says the safeguards vulnerabilities in production systems are patched; the assessment team has not checked that statement.」；其餘來源內容不增。一般DNS定義及原創監控推理沒有新增獨特來源情節，兩SVG、r6cu及9-word標題的既有計數繼續保留。四頁仍≤200。
+
+第三次native check-audio為不force、不second-opinion的cache增量。實際run記錄 `2026-10-25T10:54:17.767Z`：80/80 checked，68 exact、9同音／語助詞、2 Jev通過、1 flagged，unchecked=0；僅新轉寫3個take、1次Jev。再次逐一對比80個wav與cache clip hash，全部吻合；journal未結JSON=0。
+
+- 5sm4最新clip `50d22e7f3bf9e1f5`，ASR「這種查詢會找出網域名稱對應的網路地址」，exact，**這次新take通過**。
+- h3zv最新clip `63a0904f4269ee47`，ASR與新稿逐字一致，exact，**這次新take通過**。
+- ubvs最新clip `155d268166a262a5`，ASR「OpenAI說，證實系統的防護漏洞已修補，評估團隊沒有檢查這項聲明。」；Jev0.06，**仍flagged**。差異僅剩正式／證實；重要否定句完整聽對。沒有獨立聆聽，不將ASR差字當成已確認的真實唸錯，也不能擅自把flag清掉。
+
+timeline實際fps=30、total_frames=15003，因此旁白時間軸500.1秒（8:20.1）；此數字來自當前TTS時間軸，不是估算片長，也不代替成片音量或字幕同步檢查。沒有自行第四次重錄、重跑或approve；已回報協調者，如需下一步，應針對剩餘ubvs做一次獨立第二轉寫／盲聽，而非反覆重錄。**此快照文字及引用PASS；目前音訊79句通過、ubvs尚未通過。**
+
+
+## 最後單句清晰化與音訊完整通過收據（2026-10-25）
+
+**最新結論：文字facts／引用PASS；原生音檢80／80 PASS。** 此節覆蓋前節「ubvs仍flagged」的舊take狀態，僅適用下列文字與音訊hash，不把先前失敗紀錄抹去。
+
+- video SHA-256：`95589bbde407087acbe7ed1b37ffc45f61850e139ae73d94b22da9befa32fcf3`。
+- current speech_hash：`5b325d9c66864a50`。
+- ubvs最新clip：`14418ce209fd1136`。
+- native check-audio記錄：`2026-10-25T11:00:55.455Z`。
+
+最後ubvs改為：「OpenAI 說正在使用的防護系統已修補漏洞，評估團隊沒有檢查這項聲明。」在本段METR歷史評估及修補聲明脈絡中，「正在使用的防護系統」是production safeguards的白話表達；仍是OpenAI修補自述，評估團隊**沒有檢查這項聲明**，未聲稱正在／已完成驗證，也未擴張到未知漏洞皆修妥。沒有更動已核實日期、數值、模型身分或研究／正式產品範圍。此單句fact delta PASS。
+
+引用等義：該句為19-word「OpenAI says vulnerabilities in safeguards currently in use have been patched; the assessment team has not checked that statement.」，取代前版18-word項。最終累計incident **194**、containment **196**、monitoring **92**、safety **44** words；兩SVG及必要標題照計，四來源均≤200。
+
+這次實際執行不force、不second-opinion的native增量檢查，**只新轉寫1個ubvs take**；其餘79句使用已驗證cache。逐一重算80個wav的clip hash與check.json全部吻合。結果：
+
+| 項目 | 實際結果 |
+| --- | --- |
+| checked／total | 80／80 |
+| exact | 69 |
+| 同音／語助詞差異 | 9 |
+| Jev通過（沿用既有判讀） | 2 |
+| flags | **0** |
+| unchecked | **0** |
+| 此次新ASR／新增Jev | 1／0 |
+| native exit code | **0** |
+| speech journal未結JSON | 0 |
+
+ubvs的最新ASR為「OpenAI說，正在使用的防護系統已修補漏洞，評估團隊沒有檢查這項聲明。」；只差空白及標點，native match_kind=exact，沒有靠低分覆核、改門檻、清cache或人工清旗。check-flags.json綁當前speech_hash，flags=[]、notes={}。因此本次是**新take的完整工具通過**，不是把舊12／3／1旗當作已解決。
+
+第二轉寫處理紀錄：原生`--second-opinion`型別為外部程式命令字串，不能不帶值當布林旗。曾在work準備faster-whisper依賴，安裝完成後協調者取消該方向；沒有啟動模型下載、沒有執行Whisper、沒有生成第二轉寫結果，也沒有因此新增Jev呼叫。取消後檢查無相關殘留process。本次音檢通過不冒稱曾有第二轉寫佐證。
+
+當前timeline為fps30、total_frames15018，即500.6秒（8:20.6）；音量、字幕同步及成片畫面仍以協調者的各原生關卡為準。查核者沒有執行approve、review-push或發布；script／claims須以最終文字同步，不能沿用修改前hash稱已同步。
