@@ -1,0 +1,800 @@
+{
+  "verdict": "ready",
+  "review_type": "independent_final_post_native_dub_translation_delta_review",
+  "locale": "es",
+  "reviewed_at_utc": "2026-10-25T21:13:04.710301+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "translator_of_original_locale": false
+  },
+  "actual_translation_sha256": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+    "current_worksheet_sha256": "d1ee111f75845e38e8eb739690b62a163f8501c793e22af517e4570114ce56c2",
+    "accepted_pre_dub_snapshot_sha256": "a51751666a4fe1a237a53feef9901856d1003171cf9755e709a7cd5e72033dd3"
+  },
+  "scope": {
+    "all_changes_from_accepted_pre_dub_compared": true,
+    "narration_lines_changed": [
+      "719e7c"
+    ],
+    "metadata_fields_changed": [
+      "title"
+    ],
+    "all_101_current_character_budgets_checked": true,
+    "all_101_current_worksheet_texts_match_canonical": true,
+    "prior_full_translation_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.reviewer.json",
+    "prior_post_fix_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.post-fix-review.json",
+    "scope_limit": "Final semantic reread covers all narration and metadata deltas; unchanged lines retain prior independent full-review coverage."
+  },
+  "narration_delta": {
+    "id": "719e7c",
+    "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+    "before": "Prompt: dibuja todo par ordenado de dos dados justos.",
+    "after": "Pide dibujar cada par ordenado de dos dados justos.",
+    "chars": 51,
+    "max_chars": 84,
+    "semantic_verdict": "pass",
+    "meaning_checks": {
+      "request_and_drawing_action": "Pide dibujar preserves the instruction to ask for the drawing.",
+      "exhaustive_ordered_results": "cada par ordenado preserves every ordered pair; no outcome is omitted.",
+      "two_fair_dice": "dos dados justos retains both the number and fairness condition.",
+      "sequence": "Request comes first, drawing follows, then exhaustive ordered pairs and dice conditions. This line has no split-boundary entry.",
+      "numbers_names_conditions": "No added or changed numbers, names, or conditions."
+    },
+    "register": "Natural neutral Latin American Spanish; Pide is the standard tú imperative; no voseo or vosotros."
+  },
+  "metadata_deltas": {
+    "title": {
+      "before": "Animaciones educativas con AI: de una idea a un video con texto y cifras editables",
+      "after": "Animaciones educativas con AI: texto y números editables"
+    }
+  },
+  "title_review": {
+    "actual": "Animaciones educativas con AI: texto y números editables",
+    "chars": 56,
+    "max_chars": 72,
+    "preferred_max_chars": 70,
+    "passes_required_and_preferred_caps": true,
+    "semantic_verdict": "pass: retains AI teaching animations with editable text and numbers; omits only the from-one-phrase setup; adds no claims.",
+    "worksheet_title": null,
+    "worksheet_note": "Current dub-stage worksheet has title null; canonical title was reread directly and exactly matches the accepted and previously reviewed short-title proposal.",
+    "no_channel_name": true
+  },
+  "unchanged_metadata_against_snapshot": {
+    "description": true,
+    "tags": true,
+    "chapters": true,
+    "thumbnail": true
+  },
+  "budget_checks": {
+    "actual_line_count": 101,
+    "actual_source_line_count": 101,
+    "actual_budgeted_line_count": 101,
+    "passing_line_count": 101,
+    "over_budget_line_count": 0,
+    "worksheet_match_count": 101,
+    "all_pass": true,
+    "per_line": [
+      {
+        "id": "e8b327",
+        "chars": 53,
+        "max_chars": 74,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "00aeec",
+        "chars": 63,
+        "max_chars": 87,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c5a4b1",
+        "chars": 54,
+        "max_chars": 73,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "74eeac",
+        "chars": 47,
+        "max_chars": 63,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "79a96a",
+        "chars": 72,
+        "max_chars": 95,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "aa0639",
+        "chars": 75,
+        "max_chars": 106,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c2d378",
+        "chars": 51,
+        "max_chars": 76,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "47c7d2",
+        "chars": 52,
+        "max_chars": 69,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "5a37fc",
+        "chars": 80,
+        "max_chars": 121,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "56c197",
+        "chars": 77,
+        "max_chars": 104,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "56ccfa",
+        "chars": 64,
+        "max_chars": 88,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1712ce",
+        "chars": 61,
+        "max_chars": 85,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "de0fb5",
+        "chars": 57,
+        "max_chars": 81,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "2c063b",
+        "chars": 69,
+        "max_chars": 102,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "5e5629",
+        "chars": 66,
+        "max_chars": 87,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "4a14bd",
+        "chars": 63,
+        "max_chars": 96,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "ea140a",
+        "chars": 64,
+        "max_chars": 87,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "21c1bc",
+        "chars": 79,
+        "max_chars": 103,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "8f5f2e",
+        "chars": 71,
+        "max_chars": 94,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "6b1614",
+        "chars": 59,
+        "max_chars": 84,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1832d2",
+        "chars": 49,
+        "max_chars": 68,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c141fc",
+        "chars": 52,
+        "max_chars": 69,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c5a99d",
+        "chars": 58,
+        "max_chars": 81,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "719e7c",
+        "chars": 51,
+        "max_chars": 84,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f2c1f3",
+        "chars": 52,
+        "max_chars": 74,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "475bb2",
+        "chars": 51,
+        "max_chars": 68,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "8a3f5b",
+        "chars": 71,
+        "max_chars": 93,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "520a3b",
+        "chars": 73,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "9dd115",
+        "chars": 88,
+        "max_chars": 117,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "0c086d",
+        "chars": 51,
+        "max_chars": 72,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "76fc63",
+        "chars": 66,
+        "max_chars": 101,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "066452",
+        "chars": 65,
+        "max_chars": 86,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "7b0c6d",
+        "chars": 75,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1f3f10",
+        "chars": 54,
+        "max_chars": 77,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "291f73",
+        "chars": 52,
+        "max_chars": 69,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "60d6c7",
+        "chars": 84,
+        "max_chars": 113,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "d27bc5",
+        "chars": 71,
+        "max_chars": 105,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "976818",
+        "chars": 72,
+        "max_chars": 100,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "b22122",
+        "chars": 71,
+        "max_chars": 103,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "182fcd",
+        "chars": 70,
+        "max_chars": 102,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "a2d3d8",
+        "chars": 73,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "b13c3e",
+        "chars": 75,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "5f446c",
+        "chars": 87,
+        "max_chars": 119,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f37b7f",
+        "chars": 68,
+        "max_chars": 98,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "801093",
+        "chars": 85,
+        "max_chars": 119,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "9aa7fd",
+        "chars": 72,
+        "max_chars": 95,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "2a7dbb",
+        "chars": 68,
+        "max_chars": 93,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "d6ecd3",
+        "chars": 72,
+        "max_chars": 103,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "5d4f54",
+        "chars": 69,
+        "max_chars": 92,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "cbba85",
+        "chars": 69,
+        "max_chars": 90,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1de727",
+        "chars": 61,
+        "max_chars": 85,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "0dd30b",
+        "chars": 71,
+        "max_chars": 96,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "52cf29",
+        "chars": 110,
+        "max_chars": 147,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "005752",
+        "chars": 94,
+        "max_chars": 135,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "7bf8fb",
+        "chars": 90,
+        "max_chars": 123,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "a1f88a",
+        "chars": 60,
+        "max_chars": 81,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "07771e",
+        "chars": 66,
+        "max_chars": 88,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "8eb4eb",
+        "chars": 58,
+        "max_chars": 77,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "05bc8a",
+        "chars": 69,
+        "max_chars": 92,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f6f6be",
+        "chars": 75,
+        "max_chars": 107,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "7a42ba",
+        "chars": 85,
+        "max_chars": 115,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "8c2bc9",
+        "chars": 70,
+        "max_chars": 97,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "de08dd",
+        "chars": 66,
+        "max_chars": 90,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c7b43e",
+        "chars": 71,
+        "max_chars": 96,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "7e3f75",
+        "chars": 83,
+        "max_chars": 109,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "594e82",
+        "chars": 66,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c30642",
+        "chars": 64,
+        "max_chars": 95,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1b4829",
+        "chars": 54,
+        "max_chars": 72,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "a49833",
+        "chars": 68,
+        "max_chars": 90,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "1faa10",
+        "chars": 61,
+        "max_chars": 85,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "b4de26",
+        "chars": 79,
+        "max_chars": 103,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "4df2bf",
+        "chars": 53,
+        "max_chars": 76,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c41135",
+        "chars": 63,
+        "max_chars": 84,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "802a26",
+        "chars": 81,
+        "max_chars": 127,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "bf54ca",
+        "chars": 80,
+        "max_chars": 109,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "ba0179",
+        "chars": 72,
+        "max_chars": 99,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "cab285",
+        "chars": 71,
+        "max_chars": 94,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "a6c28e",
+        "chars": 66,
+        "max_chars": 90,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "0b06d1",
+        "chars": 87,
+        "max_chars": 122,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "b919e0",
+        "chars": 55,
+        "max_chars": 84,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "ee8b7c",
+        "chars": 63,
+        "max_chars": 85,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "b69ae1",
+        "chars": 55,
+        "max_chars": 73,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "481fba",
+        "chars": 69,
+        "max_chars": 95,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "18691a",
+        "chars": 72,
+        "max_chars": 104,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "28a3eb",
+        "chars": 71,
+        "max_chars": 93,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "203f1e",
+        "chars": 61,
+        "max_chars": 87,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "7311eb",
+        "chars": 89,
+        "max_chars": 123,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "75368c",
+        "chars": 79,
+        "max_chars": 103,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "9d8939",
+        "chars": 76,
+        "max_chars": 106,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c38a5e",
+        "chars": 84,
+        "max_chars": 118,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "a56276",
+        "chars": 79,
+        "max_chars": 107,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "84576e",
+        "chars": 89,
+        "max_chars": 131,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "ad1b2c",
+        "chars": 98,
+        "max_chars": 128,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "d8b2ca",
+        "chars": 52,
+        "max_chars": 72,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "c90844",
+        "chars": 53,
+        "max_chars": 70,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f9399e",
+        "chars": 68,
+        "max_chars": 94,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "2506eb",
+        "chars": 65,
+        "max_chars": 98,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f064e3",
+        "chars": 91,
+        "max_chars": 119,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "f576ae",
+        "chars": 55,
+        "max_chars": 72,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "9e738a",
+        "chars": 46,
+        "max_chars": 64,
+        "pass": true,
+        "matches_current_worksheet": true
+      },
+      {
+        "id": "ed8308",
+        "chars": 64,
+        "max_chars": 91,
+        "pass": true,
+        "matches_current_worksheet": true
+      }
+    ]
+  },
+  "natural_register_verdict": "ready: the sole narration delta retains neutral Latin American tú, and the final title is natural Spanish. Unchanged narration retains the prior independent full review.",
+  "native_audio_status": {
+    "root_report": "Native complete: 101 passed, zero flags, 589.600 seconds.",
+    "independently_remeasured_by_this_text_reviewer": false,
+    "note": "This final record reviews translation deltas, source fidelity and actual character caps; it does not invent an independent audio test."
+  },
+  "additional_text_fixes_needed": 0,
+  "upstream_c10_warning": "Resolved in claims-resolution.json; no translation change to005752 required.",
+  "side_effects": "Only this final review JSON was written; no source edits, worksheet edits, translation edits, paid calls, network calls, or retry-counter changes."
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-25T21:16:45.366888+00:00",
+  "locale": "es",
+  "status": "Current dub with actual native audio checks and independent final text review; not a Studio upload or publication",
+  "native_status": {
+    "locale": "es",
+    "translation_ready": true,
+    "dub_status": "current",
+    "dub_note": "es.m4a",
+    "dub_check_unfinished": false
+  },
+  "translation_file_sha256": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+  "track_sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+  "track_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es.m4a",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ],
+    "format": {
+      "duration": "589.600000",
+      "size": "13757029"
+    }
+  },
+  "native_translation_hash": "890af2b238ef16e8",
+  "native_speech_hash": "ab16df144b09176b",
+  "checked_lines": 101,
+  "unresolved_flags": [],
+  "over_windows": [],
+  "tempo_max": 1.13,
+  "independent_meaning_review": "research/translation-reviews/es.final-dub-translation-review.json",
+  "native_small_overrun_rule": "Existing tools/video/dubs/plan.mjs MAX_TEMPO_OVERRUN=1.25 with its bounded small-overrun rules; configuration unchanged"
+}

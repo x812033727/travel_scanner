@@ -1,0 +1,64 @@
+{
+  "review_type": "independent_author_prompt_refinement_semantic_review",
+  "reviewed_at_utc": "2026-10-25T21:09:09.165643+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "translator_of_original_locale": false
+  },
+  "locale": "es",
+  "line_id": "719e7c",
+  "verdict": "ready_for_author_text_refinement",
+  "semantic_review_pass": true,
+  "tts_approval": false,
+  "audio_quality_or_measured_fit_reviewed": false,
+  "additional_fix_needed": false,
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "a9ccad0ab1a661f8f3e5ebe9c774e555aee5976f3e64ebcbb0468a88d90b74a6",
+    "current_worksheet_sha256": "0f90234a0010277e0501e62cd892ac035aa643bd24aa2e316e6a357b41930dc0",
+    "actual_reword_job_poll_sha256": "9909e3c9c00c16dfd72a62bff4bb42d5fdbe2472a3af3e70113fe3fcb3da2ba4",
+    "proposed_text_sha256": "e4b999b56dcc42266c0a7bcecaba3e80d7f04657d653c5896e2ae19e2c218658"
+  },
+  "actual_texts_read": {
+    "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+    "current_canonical_before": "Prompt: dibuja todo par ordenado de dos dados justos.",
+    "current_worksheet_before": "Prompt: dibuja todo par ordenado de dos dados justos.",
+    "author_proposed_exact": "Pide dibujar cada par ordenado de dos dados justos."
+  },
+  "budget": {
+    "current_chars": 53,
+    "proposed_chars": 51,
+    "worksheet_max_chars": 84,
+    "proposed_pass": true
+  },
+  "semantic_checks": {
+    "prompt_instruction": "pass: Pide turns the metaprefix into a direct request, retaining the instruction to formulate a drawing request",
+    "draw_action": "pass: dibujar explicitly retains drawing",
+    "all_ordered_results": "pass: cada par ordenado means every ordered pair and preserves exhaustive ordered results",
+    "two_dice": "pass: dos dados retained",
+    "fairness": "pass: justos retained",
+    "no_added_numbers_names_or_conditions": "pass",
+    "clause_action_order": "pass: request first, drawing next, exhaustive ordered outcomes and dice conditions together; no boundary entry exists, so this is one cue",
+    "natural_neutral_Latin_American_Spanish": "pass: Pide is a standard tú imperative; dibujar cada par ordenado is natural and mathematically clear",
+    "no_voseo_or_vosotros": "pass"
+  },
+  "worksheet_boundary_for_line": null,
+  "reword_job_evidence": {
+    "id": "e5c34719-a6df-496d-8f21-ed913c899fd0",
+    "observed_method": "GET",
+    "status_as_recorded": "succeeded",
+    "exact_returned_text": "Escribe el prompt así: dibuja todos los resultados ordenados que pueden salir con dos dados justos.",
+    "returned_text_chars": 99,
+    "worksheet_cap": 84,
+    "returned_text_budget_pass": false,
+    "interpretation": "The recorded job succeeded, but its text is over the current cap and cannot be accepted as the locale line. This read-only review verifies the over-budget condition; it does not claim to have executed native receipt recovery or changed counters.",
+    "canonical_receipt_unchanged_as_recorded": true
+  },
+  "limits": [
+    "This is acceptance of the author-proposed text for fidelity, register, sequence and character budget only; it is not approval of TTS, timing, or paid execution.",
+    "No source, worksheet, translation, native job receipt, retry counter, or paid call was changed.",
+    "The existing narration has not been independently listened to in this text review."
+  ]
+}
