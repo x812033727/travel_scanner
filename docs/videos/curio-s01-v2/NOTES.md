@@ -8,7 +8,7 @@
   事實沿用第一版查核 `topic-checks/S01.md`（32 列加獨立覆核），沒有新的查核；新加的句子只用表裡有的列（清單在 [`brief.md`](brief.md) 檔頭），
   對照在 [`claims.md`](claims.md)。
 - 第一版 `curio-s01` 在主機停在「成片核准、八語等站主、可以上架、未上架」（票 `2026-10-20-remake-ten-curio-episodes-in-the`）；第二版用新 slug，不動第一版。
-- **盲評由主對話跑**（這個環境沒有 Agent 工具）：第 1 輪 payload `payload-r1.json`、第 2 輪 `payload-r2.json`，都在
+- **盲評已過**：第 2 輪（2026-10-25）兩位全新讀者十三題全是，沒有改稿；答案在 `panel/`，`narrative --answers panel/reader-1.json` 已留紀錄 passed。經過：盲評由主對話跑（這個環境沒有 Agent 工具）：第 1 輪 payload `payload-r1.json`、第 2 輪 `payload-r2.json`，都在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s01/`（`narrative --slug curio-s01-v2 --json`）。合併規則照主機：同一題兩位都答否才算沒過；沒過才改稿、改一句之前先看前一句、不為單一讀者的否改稿、不改事實；
   每一輪的答案留在 scratchpad，最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，再用 `narrative --answers panel/reader-1.json` 留紀錄。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站。
