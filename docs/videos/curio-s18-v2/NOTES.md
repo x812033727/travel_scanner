@@ -59,3 +59,4 @@
 - 旁白：第一次合成 123 句 12:07；聽檢 18 句低於 0.5，重配兩輪後剩 4 句，都是聽寫同音（洛迪／落地、那一張／那場、漫畫／萬化、工匠量／工匠輛），交站主在旁白關卡聽。旁白 12:06。
 - 插圖：98 張 cute-mystery，第一輪 7 張沒過 judge（尺上有字、主體缺、3D、黑邊），改提示詞後重畫全過；整集插圖花 US$2.04。
 - `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos（容器做的片沒有 auto.json，每一關都由站主決定）。
+- 成片：配樂 175 秒循環五次（US$0.08，整集累計 US$2.12）；render 要把容器預裝的 headless shell 1243 接成 Playwright 要的 1248（`PLAYWRIGHT_BROWSERS_PATH`）。qa 10/11：links 8 個 403，全是 loc.gov／doi.org 的 Cloudflare 驗證頁（瀏覽器也是「Just a moment...」），其中 4 個 loc.gov 頁在 Wayback 有存檔、DOI 的 handle API 回 200。2026-10-25 23:20 `review-push --gate final` 已送審。

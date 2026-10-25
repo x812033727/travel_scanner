@@ -21,3 +21,4 @@
 - 旁白：122 句 12:19；聽檢第一次 43 句低於 0.5，重配兩輪後剩 18 句（多是聽寫同音），交站主在旁白關卡聽。
 - 插圖：97 張 cute-mystery，第一輪兩張沒過 judge（count-barrels 道具畫成木桶、pace-field 人站著不動），改提示詞後重畫全過；整集插圖花 US$1.65。
 - `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos。
+- 成片：配樂 177 秒循環五次（整集累計 US$1.73）。qa 10/11：links 只有德川美術館〈長篠合戰圖屏風〉頁 Node fetch 失敗（curl 走同一個代理回 200，不是壞連結）。2026-10-25 23:40 `review-push --gate final` 已送審。
