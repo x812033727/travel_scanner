@@ -9,9 +9,14 @@ import { writeScreenplay } from "../../../tools/video/core/screenplay.mjs";
 
 const batch = path.dirname(fileURLToPath(import.meta.url));
 const repository = path.resolve(batch, "../../..");
-const [runtimeArgument, mediaArgument] = process.argv.slice(2);
+const [runtimeArgument, mediaArgument, ...requestedProjects] = process.argv.slice(2);
+const allowedProjects = new Set(["c03", "c04", "c05", "c09"]);
+const projectIds = requestedProjects.length ? requestedProjects : ["c04", "c05", "c09"];
 if (!runtimeArgument || !mediaArgument || !path.isAbsolute(runtimeArgument) || !path.isAbsolute(mediaArgument)) {
-  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base>");
+  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base> [c03|c04|c05|c09 ...]");
+}
+if (new Set(projectIds).size !== projectIds.length || projectIds.some(id => !allowedProjects.has(id))) {
+  throw new Error("Choose each supported project at most once; preparing C03 must not overwrite an approved earlier runtime.");
 }
 const runtime = path.resolve(runtimeArgument);
 const media = path.resolve(mediaArgument);
@@ -29,7 +34,7 @@ if (fs.existsSync(sharedFile) && !fs.readFileSync(sharedFile).equals(shared)) {
 if (!fs.existsSync(sharedFile)) fs.writeFileSync(sharedFile, shared);
 const hash = file => createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const projects = [];
-for (const id of ["c04", "c05", "c09"]) {
+for (const id of projectIds) {
   const source = path.join(batch, id);
   const doc = JSON.parse(fs.readFileSync(path.join(source, "video.json")));
   const context = JSON.parse(fs.readFileSync(path.join(source, "series.json")));
@@ -44,7 +49,15 @@ for (const id of ["c04", "c05", "c09"]) {
   fs.mkdirSync(target, { recursive: true });
   const dictionary = initializeStoryLexicon({ root: runtime, slug: doc.slug, workdir, names: context.names ?? [] });
   const files = {};
-  for (const file of ["video.json", "brief.md", "series.json", "claims.md"]) {
+  const sourceFiles = ["video.json", "brief.md", "series.json", "claims.md"];
+  const verification = path.join(source, "verify-1.md");
+  if (fs.existsSync(verification)) {
+    if (!fs.readFileSync(verification, "utf8").includes(hash(path.join(source, "video.json")))) {
+      throw new Error(`${id}: independent verification does not name this exact video; stop and review the changed source`);
+    }
+    sourceFiles.push("verify-1.md");
+  }
+  for (const file of sourceFiles) {
     fs.copyFileSync(path.join(source, file), path.join(target, file));
     files[file] = hash(path.join(target, file));
   }

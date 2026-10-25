@@ -30,12 +30,13 @@ scope:
 
 ## Steps
 
+- [x] 依追加指示優先完成 C03 Moleskine 的新規則劇本／文字分鏡、獨立來源、雙讀者合併、免費預檢及企劃／劇本送審；成片仍待正式製片入場。
 - [x] 讀取 #1844、10/25 頻道報告與現行品牌故事規則，保留正式清單快照。
 - [x] 確認 22 筆品牌故事，19 筆未有 YouTube ID 且未放棄；其中龜甲萬原版與 short-v8 是同題兩版，保留舊版避免重複製作。
-- [x] 完成首批 C04 泡泡紙、C05 金鳥、C09 Patagonia 的新規則劇本／書面分鏡，來源覆核與兩位隔離讀者原生合併通過；其餘 15 題仍排隊。
-- [x] 三份精確稿 lint 均 0 errors，tts／keyframes dry-run 完成並綁輸入雜湊；music dry-run 因缺真實 timeline 正常停下。
+- [x] 完成先前首批 C04 泡泡紙、C05 金鳥、C09 Patagonia 的新規則劇本／書面分鏡；加上優先 C03 共四題備稿，其餘14題仍待來源／媒體核對。
+- [x] 四份精確稿 lint 均 0 errors，tts／keyframes dry-run 完成並綁輸入雜湊；music dry-run 因缺真實 timeline 正常停下。
 - [ ] 實際 TTS 後重估分鏡及配樂，補齊含歷史費用、轉寫、Jev 與重試的全片最壞預留。
-- [x] 三份新稿以新 slug 送後台；C04、C05 劇本核准已讀回並匯入，C09 r12 待審。未重綁原 episode。
+- [x] 四份新稿以新 slug 送後台；C03企劃／劇本待審，C04、C05 劇本核准已讀回並匯入，C09 r12 待審。未重綁原 episode。
 - [ ] 取得可操作正式後台／主機的管理連線，核對並建立符合既有硬停線的 remake 預算帳戶。
 - [ ] 實際合成、逐句聽檢、插圖、render、配樂、assemble、字幕、qa、package 與後台 readback。
 
@@ -45,6 +46,14 @@ scope:
 
 ## Notes
 
+- C03 r3已通過獨立來源／書面配鏡（143句、110景）及雙讀者原生合併（讀者一13 yes、讀者二12 yes，個別保留意見未刪）。真實r1／r2 HOLD及來源鏈在`c03/history/`；`c03/verify-1.md`由獨立查核代理撰寫，已綁SHA複製至canonical，並非owner核准。
+- C03新版`story-everyday-moleskine-c03-remake-20261025`：outline review `3b0480b5-0ca4-4337-b743-0db04dfb4106`、script review `c90d3492-7efe-4385-bdcc-ccd6664205d1`，均讀回pending。新稿video SHA `65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005`；後台canonical script SHA `4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f`。未復用舊核准或新建auto.json。
+- C03從零預檢：120個TTS請求／4194計費字元，100個插畫景、每景含首次最多3次，圖像與評審目錄估價約US$4.05；不是全片報價。原生保守語音／轉寫預留、價格可見性與未完成全片入場核對見`c03/pricing-and-entry.json`。付費請求／新媒體仍為0，正文12–14分鐘未量測。
+- C03獨立執行根目錄`/workspace/work/brand-story-20261025/c03-submission-root`，媒體根目錄仍為`/workspace/work/brand-story-20261025/media`。續做請先讀`c03/production-entry.md`：精確新版預算帳戶與受保護啟用、正式v4素材仍需有正式連線的操作方處理；從零製作不再等舊C03插圖／音訊。原集帳本與既有US$25停線未變。
+- 站主追加順序指示後已復工，當前優先 C03；`execution-order.json` 記錄 C03 起的既有未完成集數，不為缺號新增題目。C04／C05／C09 已完成的新稿與審核紀錄保留。
+- 站主後續回覆「如果不行你就重新來吧」，因此 C03 改採全新製作／從零估價，舊素材取回改為可選的歷史保全，不再擋住新稿或新製作準備。新生成仍須使用精確新版帳戶與現行付費入場保護，不借原集帳戶放行繞路。
+- C03 舊版雖有 10/25 本機上架包收據，正文約 481.02 秒、總長約 633.6 秒、未燒字幕，仍是 9–11 分鐘舊規格，不能當作新規則版本。舊 73 張付費插圖、配樂與 v4 素材在原 Windows 工作機，本環境無原件；已詢問可讀共享路徑／工作機連線，先做新稿、來源與可沿用圖片對照。
+- C03 原 slug 的付費放行針對 10/24 完成舊片的一句重錄等工作；新的 `story-everyday-moleskine-c03-remake-20261025` 仍受完整前綴 hold。歷史剩餘額不是即時讀值，不借原 slug 的放行替新版繞過帳戶啟用。最小化後台讀回、媒體可用性與 admission 差異保存在 `c03/existing-evidence/`。
 - Worktree：`/workspace/work/brand-remakes-source`，分支 `codex/brand-remakes-20261025`，根代理負責。一次共享 checkout，讀者只拿隔離文字，未為每位讀者複製 repo。
 - 2026-10-25 正式唯讀盤點：104 筆漫劇中品牌故事 22 筆；19 筆未上 YouTube，含 14 筆 everyday、4 筆 blocked 及 Dyson 1 筆。已上傳的 A4／米其林／杜比保留。everyday 劇本多已獲舊規格核准，新改寫須重新審。
 - 10/25 media/status 可連通；MiniMax image-01、Gemini 頻道旁白與 Lyria 設定可用。音樂月額度只剩 8 首，不能不查額度就同時為 18 題購買配樂。

@@ -46,10 +46,11 @@
     "no_paid_requests_sent": true,
     "no_backend_writes": false,
     "accounting_note": "PR 1844 demonstrates the media workflow; it does not create C-series remake budget accounts. Do not rename outside the everyday prefix or bypass the hold.",
-    "backend_draft_projects_created": 3,
-    "backend_script_reviews_submitted": 3,
+    "backend_draft_projects_created": 4,
+    "backend_script_reviews_submitted": 4,
     "original_episodes_rebound": 0,
-    "youtube_changes": false
+    "youtube_changes": false,
+    "backend_outline_reviews_submitted": 1
   },
   "videos": [
     {
@@ -326,14 +327,16 @@
       "youtube_video_id": null,
       "reviewed_final_checklist": false,
       "current_block": null,
-      "remake_status": "queued_for_source_and_media_reconciliation",
+      "remake_status": "source_and_narrative_pass_outline_and_script_pending_production_held",
       "preferred_existing_revision": null,
       "original_files_sha256": {
         "docs/videos/story-everyday-moleskine-c03/script.md": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
         "docs/videos/story-everyday-moleskine-c03/video.json": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
         "docs/videos/story-everyday-moleskine-c03/series.json": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
         "docs/videos/story-everyday-moleskine-c03/source-matrix.md": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb"
-      }
+      },
+      "remake_slug": "story-everyday-moleskine-c03-remake-20261025",
+      "remake_status_receipt": "c03/backend-status.json"
     },
     {
       "slug": "story-adapt-seiko-quartz-astron",
@@ -392,6 +395,8 @@
       "original_files_sha256": {}
     }
   ],
-  "updated_at": "2026-10-25T12:33:58.277Z",
-  "current_status": "partial_preproduction_complete_production_blocked"
+  "updated_at": "2026-10-25T13:59:52.881858+00:00",
+  "current_status": "partial_preproduction_complete_production_blocked",
+  "current_priority": "C03",
+  "fresh_remake_mode": true
 }

@@ -1,0 +1,29 @@
+{
+  "performed_at": "2026-10-25T13:38:14.184Z",
+  "video_sha256": "00578bbd133f588978f0b13327310a355b2f834b85691394059b4253b36e0737",
+  "canonical_script_sha256": "5555832a033ebf64c48a6af20aee8378d92bb4e2ed3063a6120de74dc35db067",
+  "lexicon_current_sha256": "b73c0395dbd2e00e85cffc57ca67ce521999afaa6fab1a98faa7c784c785177f",
+  "paid_calls": 0,
+  "duration_measured": false,
+  "lint": {
+    "log": "lint-final.json",
+    "log_sha256": "63a39a9a9c61afddb885d6d4b0b946530dbf28a1d020cd7c503c7a1551296926",
+    "exit_code": 0
+  },
+  "tts": {
+    "log": "tts-dry-run.txt",
+    "log_sha256": "0013b5bd3b29225c66137ffe228fbe0e80dc8379cb3ac6a6e65bb3879b1f538d",
+    "exit_code": 0
+  },
+  "keyframes": {
+    "log": "keyframes-dry-run.txt",
+    "log_sha256": "cb5c4bfcb0780ce845f14b41539866af600346e8f9d80172c4ad2455edc5e25f",
+    "exit_code": 0
+  },
+  "music": {
+    "log": "music-preflight-hold.txt",
+    "log_sha256": "8da0452f87c98e1b9b529df1565e2fe097ee61780f108ef811f0ab178ee6d017",
+    "exit_code": 2,
+    "status": "expected_missing_measured_timeline_hold"
+  }
+}
