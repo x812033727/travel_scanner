@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-language-cards-offer-a-given-up
 title: Language cards offer a given-up dub's current track as an unchecked download
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-24T10:25:56Z
 created_at: 2026-10-24T10:25:07Z
-completed_at:
+completed_at: 2026-10-24T11:03:15Z
 branch: claude/unchecked-dub-downloads
 depends_on: []
 scope:
@@ -42,7 +42,7 @@ file. The owner wants every dub downloadable, and the right version, to judge an
 - [x] YouTube sync's `compose` accepts it for a skipped dub (audio only) and never sends it.
 - [x] The card offers 「下載 <file>（沒過自動檢查）」 and lists the failed lines.
 - [x] Duration review increment for the bound files (`claude-pr-review-unchecked-dubs-20261024`, PASS).
-- [ ] Merged, deployed; A4's language batch sent again and its card checked.
+- [x] Merged, deployed; A4's language batch sent again and its card checked. Deployed 413a4b3e4; A4's batch of 2026-10-24 11:01Z offers en, ja, ko, pt, vi, th unchecked and id ready, 23 failed lines; downloaded ja/ko hashes match the host.
 
 ## How to verify
 
