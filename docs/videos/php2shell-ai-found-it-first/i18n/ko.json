@@ -1,0 +1,463 @@
+{
+  "title": "PHP2Shell: AI가 먼저 찾은 PHP 취약점, 전 세계 사이트가 스스로 문을 닫은 이유와 내 사이트 확인법",
+  "description": "PHP는 2026년 10월 21일 긴급 보안 업데이트를 냈습니다. 두 취약점을 합쳐 PHP2Shell이라 부릅니다. 구멍은 PHP 자체에 있어 로그인 없이 요청 하나로 서버에서 코드를 실행할 수 있습니다. AI가 두 달 전에 먼저 찾아냈지만 패치는 유출 때문에 하루 앞당겨졌고, 전 세계의 정부 사이트와 pixiv, 위키미디어가 먼저 스스로 문을 닫았습니다. 이 영상은 자동차 리콜(결함은 차체가 아니라 엔진에 있다)이라는 비유 하나로 이 일이 왜 여러분과 관계있는지, 4일 동안 무슨 일이 있었는지 설명하고, 마지막으로 Ubuntu 테스트 머신에서 보여 드립니다. php -v에 8.3.6이 나와도 안 고쳐진 게 아니며, 패키지의 변경 기록을 봐야 합니다.\n대만에 자기 사이트가 있거나, 회사의 WordPress나 쇼핑몰을 관리하거나, '전 세계 사이트 다운' 소식을 보고 무엇을 해야 할지 알고 싶은 분을 위해 썼습니다.\n\n녹화일 2026년 10월 25일. 보안 버전 네 개, '업데이트만이 완전한 해법', 배포판이 패치를 미리 받았다는 내용은 php.net의 10월 21일 공고를 따랐습니다. 2024년 감사, 유출과 조기 발표 시각은 PHP Foundation 블로그, 70% 사이트와 사용한 모델과 타임라인은 Wiz 연구 글, 방화벽 03:02 UTC는 Cloudflare 블로그, 10월 17일 허니팟은 AWS 보안 블로그, 대만의 약 2만 8천 개 공개 사이트와 약 200개 정부 기관 사이트, 패치·WAF·중단의 순서는 iThome이 보도한 사이버보안 당국 수장의 10월 22일 기자회견, 각국 사이트 다운은 BBC, 일본 총리와 Cloudflare CEO의 숫자는 X 원문, 일본에서 멈춘 서비스는 Japan Cyber Watch를 따랐습니다. 로컬 명령 세 개와 출력은 2026-10-25에 Ubuntu 24.04.5, PHP 8.3.6 (cli), dpkg 1.22.6에서 실제로 실행한 결과이며, 24.04의 수정 패키지 버전은 ubuntu.com의 CVE 페이지를 따랐습니다. '제 생각은', '찾지 못했습니다'는 채널 운영자의 의견입니다. 이 영상은 공격을 시연하지 않습니다.\n\n영상 속 명령:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n여러분 사이트의 PHP는 직접 관리합니까, 호스팅사가 관리합니까? 확인한 버전은 몇입니까? 댓글로 알려 주세요.",
+  "tags": [
+    "PHP 취약점",
+    "PHP 보안 업데이트",
+    "PHP2Shell 취약점",
+    "WordPress PHP 업데이트",
+    "AI 취약점 발견",
+    "PHP 긴급 패치",
+    "PHP 버전 확인",
+    "사이트 다운",
+    "PHP 원격 코드 실행",
+    "AI 뉴스"
+  ],
+  "thumbnail": {
+    "tag": "AI 뉴스",
+    "headline": "버전 번호가\n**속인다**",
+    "sub": "PHP2Shell: AI가 찾은 구멍, 세계 사이트 자진 폐쇄"
+  },
+  "chapters": {
+    "open": "PHP2Shell이란?",
+    "seventy": "PHP 안 쓰는 나도 해당될까?",
+    "audit": "AI는 어떻게 찾았나?",
+    "leak": "패치가 하루 앞당겨진 이유",
+    "ncsc": "사이트들이 스스로 문을 닫은 이유",
+    "advisory-page": "수정됐나? 버전 번호만 보면 될까?",
+    "my-call": "제 생각: AI가 찾은 뒤 지금 할 일"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "367ad8c4efb9",
+      "seventy": "bad6935cfb5d",
+      "audit": "8610e42bc7a0",
+      "leak": "a1a5a24bf238",
+      "ncsc": "f1613fe75309",
+      "advisory-page": "cbde628007c6",
+      "my-call": "986d180524f9"
+    },
+    "title": "18fe3e44a10b",
+    "description": "c99b51d2505d",
+    "tags": "03a30d06d55a",
+    "thumbnail": "5c18572e4c8c"
+  },
+  "lines": {
+    "4649": {
+      "source_hash": "781941164d38",
+      "text": "8월 11일 Ryan Austin이 GPT-5.6 Sol로 공격을 냈고, 서두의 그것, 요청 하나로 뚫립니다."
+    },
+    "9ey5": {
+      "source_hash": "a1c7fd83a276",
+      "text": "10월 21일 PHP 긴급 보안 업데이트, 두 취약점 PHP2Shell."
+    },
+    "cdnj": {
+      "source_hash": "f2f4eef69849",
+      "text": "발표 한 시간 전, 일본 총리가 X에 긴급 요청을 올렸습니다."
+    },
+    "nc3h": {
+      "source_hash": "0b4150b4fa02",
+      "text": "내 사이트는 WordPress, PHP는 안 짜는데,"
+    },
+    "z783": {
+      "source_hash": "2ce3d6fce853",
+      "text": "무슨 상관일까요?"
+    },
+    "h7nb": {
+      "source_hash": "5ff945ea0a41",
+      "text": "상관있습니다. PHP 자체의 구멍입니다."
+    },
+    "3ppu": {
+      "source_hash": "1058e96b67b2",
+      "text": "로그인 없이 요청 하나로 서버에서 코드를 실행하고, 메모리의 비밀번호를 읽거나 사이트를 바꿉니다."
+    },
+    "vwd9": {
+      "source_hash": "e7f9721efd99",
+      "text": "구멍이 밑에 있어 코드가 아무리 깨끗해도 못 막습니다."
+    },
+    "vw9g": {
+      "source_hash": "33afcfc8fbf1",
+      "text": "AI가 구멍을 먼저 찾았는데 왜 전 세계 사이트가 스스로 닫아야 했을까요?"
+    },
+    "69ry": {
+      "source_hash": "67389d686d04",
+      "text": "10분 뒤 얻는 네 가지: AI가 두 달 전 찾은 방법, 패치가 하루 당겨진 이유,"
+    },
+    "hsxu": {
+      "source_hash": "cd8466bddd08",
+      "text": "보안 버전 번호 네 개, 버전 번호만 봐선 모르는 점검 하나입니다."
+    },
+    "9agr": {
+      "source_hash": "c773e83bb426",
+      "text": "상관있을 확률은? 서버 언어가 확인된 사이트의 70% 가까이가 PHP입니다. WordPress, Drupal, Joomla도."
+    },
+    "iecr": {
+      "source_hash": "0a662bae1879",
+      "text": "PHP 자체의 구멍은 자동차 리콜 같습니다. 결함은 도장이나 시트가 아니라 엔진입니다."
+    },
+    "x493": {
+      "source_hash": "63f2d0bf1c42",
+      "text": "사이트 코드는 차체, PHP는 그 밑의 엔진입니다."
+    },
+    "c633": {
+      "source_hash": "924fd0fcefa4",
+      "text": "Hello World만 찍어도 위험합니다."
+    },
+    "qy4i": {
+      "source_hash": "d3d750b49dce",
+      "text": "Apache 모듈형 PHP 서버가 가장 위험합니다."
+    },
+    "byuv": {
+      "source_hash": "a118c2e966a3",
+      "text": "요청이 들어오면 코드가 돌기도 전에 공격부터 일어납니다."
+    },
+    "86sc": {
+      "source_hash": "ce857ae1d545",
+      "text": "대만은? 보안 당국 초기 집계로 공개 사이트 약 2만 8천 개가 PHP를 쓰고,"
+    },
+    "rsu6": {
+      "source_hash": "e35649224f4c",
+      "text": "그중 정부 기관이 약 200개, 당국 기자회견 날까지 침해 신고는 없었습니다."
+    },
+    "gffq": {
+      "source_hash": "76136f0287ec",
+      "text": "이 구멍은 PHP에 얼마나 있었을까요? 십몇 년, 2012년 5.4부터입니다."
+    },
+    "2i85": {
+      "source_hash": "85b38333cb16",
+      "text": "이제야 찾은 이유는?"
+    },
+    "v5ur": {
+      "source_hash": "a28af8db890c",
+      "text": "2024년 PHP의 수년 만의 첫 외부 보안 감사 때, 핵심 개발자 한 명이 이 메모리 문제 징후를 봤습니다."
+    },
+    "92tm": {
+      "source_hash": "8e27db15bd48",
+      "text": "공격 증명 없이 수정법마다 대가가 있었습니다."
+    },
+    "rayj": {
+      "source_hash": "7b1b3232fa38",
+      "text": "작은 팀의 합의도 필요해 패치는 멈췄다 재개되며 몇 달 끌렸습니다."
+    },
+    "daec": {
+      "source_hash": "3bdef73c4105",
+      "text": "PHP 재단이 나중에 직접 쓴 말:"
+    },
+    "uyhr": {
+      "source_hash": "6d3ed62de69f",
+      "text": "이 지연은 구조적 실패였다."
+    },
+    "wavj": {
+      "source_hash": "6564b8976cfa",
+      "text": "그럼 누가 서랍에서 꺼냈을까요?"
+    },
+    "q9ga": {
+      "source_hash": "e26332f96fc0",
+      "text": "전환점은 올여름입니다."
+    },
+    "rb3w": {
+      "source_hash": "79caf044b9b5",
+      "text": "7월 30일 보안업체 Calif가 OpenAI의 Patch the Planet 사업에서 PHP 감사를 시작해,"
+    },
+    "jmju": {
+      "source_hash": "7edfcbe913ae",
+      "text": "근본 원인은 2024년 그 문제입니다."
+    },
+    "i6qv": {
+      "source_hash": "c194f1cf1111",
+      "text": "2주 뒤 Google 산하 Wiz가 4세대 Gemini, 즉 Argon과 GPT-5.6 Sol로 같은 구멍을 따로 찾아냈고,"
+    },
+    "sqad": {
+      "source_hash": "01d542c1951a",
+      "text": "WordPress·Drupal·Joomla 뚫림"
+    },
+    "2eju": {
+      "source_hash": "e3e4a419d9c4",
+      "text": "Austin이 공격을 낸 날부터 수정이 재단 보안팀 최우선이 됐고, 패치 공개는 10월 22일로 잡혔습니다."
+    },
+    "26df": {
+      "source_hash": "25c29c5ebb55",
+      "text": "Wiz에 따르면 이 모델들로 연구원 한 명이 일주일에 끝낸 일이, 예전엔 최정예 팀 전체가 몇 달 걸렸습니다."
+    },
+    "gbaz": {
+      "source_hash": "8789e281296c",
+      "text": "Wiz는 2014년 Heartbleed에 견줍니다. 그땐 암호 라이브러리, 이번엔 웹 언어 자체."
+    },
+    "j6sz": {
+      "source_hash": "7cd5609465e8",
+      "text": "AI 시대의 비슷한 전환점일 수 있습니다."
+    },
+    "m35m": {
+      "source_hash": "2a0599697bdf",
+      "text": "AI가 구멍을 찾은 건 좋은 일일까요, 나쁜 일일까요? 이건 잠시 두고 다음 4일을 봅시다."
+    },
+    "dy8w": {
+      "source_hash": "3c4290cbcd7a",
+      "text": "두 달 넘긴 비밀이 마지막 이틀에 샜습니다."
+    },
+    "df33": {
+      "source_hash": "3730e8d12057",
+      "text": "10월 20일 오후 Hacker News에 글이 떴습니다. PHP 원격 실행 취약점 둘이 온다고."
+    },
+    "7t2j": {
+      "source_hash": "496c55db2728",
+      "text": "점수까지 틀렸습니다. 만점 10점이라 했지만 PHP 자체 평가는 9.2입니다."
+    },
+    "d2mf": {
+      "source_hash": "e358f39ee1c3",
+      "text": "4시간 뒤 PHP가 예고했습니다. 패치를 하루 앞당긴다고."
+    },
+    "p4ua": {
+      "source_hash": "99a78ad44d85",
+      "text": "21일 오후 2시 UTC, 대만 시간 밤 10시로 바뀌었습니다."
+    },
+    "hafe": {
+      "source_hash": "f08c7a58cd62",
+      "text": "30분 뒤 발견자 Calif가 실수로 공격 시연 영상을 올렸고, 지웠지만 이미 퍼졌습니다."
+    },
+    "4eea": {
+      "source_hash": "2790ac972270",
+      "text": "21일 새벽 3시 Cloudflare가 무료 플랜까지 방화벽 규칙 적용."
+    },
+    "pmy2": {
+      "source_hash": "d2824b4dd2f3",
+      "text": "7시 41분 Chainguard가 패치 이미지를 6시간 넘게 일찍 냈습니다."
+    },
+    "q6jq": {
+      "source_hash": "e61dd1670bc8",
+      "text": "공격자는 뭘 고쳤는지 압니다."
+    },
+    "ubbs": {
+      "source_hash": "099c87fd3686",
+      "text": "약속한 오후 2시에 보안 버전 넷이 정시에 나왔습니다."
+    },
+    "nxcc": {
+      "source_hash": "207682d3ab48",
+      "text": "공격 속도는? Cloudflare CEO 말로는 공고 10시간 전 수천 번 시도가 보였고,"
+    },
+    "2fht": {
+      "source_hash": "1fb782b508e2",
+      "text": "공고 45분 뒤 수만 번, 2시간 뒤 수십만 번, 반나절도 안 돼 수백만 번이 됐습니다."
+    },
+    "us6i": {
+      "source_hash": "31ca5409e80d",
+      "text": "4일 기억나십니까?"
+    },
+    "a87y": {
+      "source_hash": "b96991617ccf",
+      "text": "Amazon의 유인 서버 허니팟은 17일에 공격 시도를 잡았습니다. 유출보다 사흘 전."
+    },
+    "yqd7": {
+      "source_hash": "1c6f7bc6c3a7",
+      "text": "패치 전에 공격이 먼저 오면 사이트는 뭘 해야 할까요?"
+    },
+    "wppc": {
+      "source_hash": "bd79b735bb2f",
+      "text": "영국 국가사이버보안센터는 직설적으로:"
+    },
+    "vh8a": {
+      "source_hash": "7af177310d88",
+      "text": "패치도 완화도 늦으면 시스템부터 내려라."
+    },
+    "bqis": {
+      "source_hash": "75b886dc4e4f",
+      "text": "일본 사이버보안 당국도 사이트 중단이 위험을 줄이는 효과적 방법이라 했습니다."
+    },
+    "m52w": {
+      "source_hash": "2084daced992",
+      "text": "패치 발표 전날 밤, 리콜 공고가 붙자 차주가 먼저 갓길에 차를 세우듯 했습니다."
+    },
+    "kirn": {
+      "source_hash": "5c1e2898c8e9",
+      "text": "pixiv·niconico"
+    },
+    "s8y2": {
+      "source_hash": "b2edb0bda7a3",
+      "text": "네덜란드는 사이버보안센터 사이트도 닫고,"
+    },
+    "3hp6": {
+      "source_hash": "8abb43f109c6",
+      "text": "핀란드 정부는 전면 중단,"
+    },
+    "wnky": {
+      "source_hash": "670527484c52",
+      "text": "영국 정부 사이트 32개와 위키미디어 일부 시스템도 내려갔습니다."
+    },
+    "vrdu": {
+      "source_hash": "cebeef200467",
+      "text": "서두의 그 글 기억나십니까? 일본 시간 밤 9시 55분, 패치 발표까지 한 시간 남았을 때,"
+    },
+    "nauj": {
+      "source_hash": "9425cd0c51e3",
+      "text": "다카이치 사나에 총리가 X에 쓴 '긴급 요청':"
+    },
+    "56c5": {
+      "source_hash": "065bafeb4983",
+      "text": "오늘 밤 바로 사이트가 PHP를 쓰는지 확인하십시오."
+    },
+    "khrf": {
+      "source_hash": "c5459d7acfb6",
+      "text": "대만은 폐쇄 요구 없음. 순서는 패치부터,"
+    },
+    "g97x": {
+      "source_hash": "4f79ae8aa3f9",
+      "text": "시스템이 낡아 못 고치면 웹 방화벽 먼저, 둘 다 안 되면 대외 서비스를 중단합니다."
+    },
+    "ksrk": {
+      "source_hash": "41c8710827a5",
+      "text": "리콜과 다른 점은 하나, 일정입니다. 이번엔 못 잡습니다. 그 숫자가 반나절에 왔으니."
+    },
+    "42gu": {
+      "source_hash": "8839445525dc",
+      "text": "패치는 나왔고, 내 건 어떻게 확인할까요?"
+    },
+    "fx7j": {
+      "source_hash": "86d238a72d08",
+      "text": "공식 공고, 링크는 설명란에. 제목 끝은 update now."
+    },
+    "zq2u": {
+      "source_hash": "ea7e5d563c7a",
+      "text": "약속한 네 버전이 이 표에 브랜치마다 하나씩. 내 브랜치의 마이너 버전이 표 숫자 이상이면 됩니다."
+    },
+    "pacb": {
+      "source_hash": "600178722938",
+      "text": "8.1 이하는 공식 버전 없음, 배포판·호스팅사 몫입니다."
+    },
+    "53hk": {
+      "source_hash": "ef296bdafc0e",
+      "text": "제 테스트 머신에서 버전 명령을 치니 8.3.6이 나왔습니다."
+    },
+    "2qhy": {
+      "source_hash": "0076973fdf23",
+      "text": "아까 표를 보면 8.3 브랜치는 마이너 36부터 고쳐진 거고,"
+    },
+    "m5s9": {
+      "source_hash": "387ca65e1d75",
+      "text": "제 건 마이너 6, 보기엔 버전 30개 차이니 당첨된 거 아닐까요?"
+    },
+    "p9ke": {
+      "source_hash": "e48a4ed65e9c",
+      "text": "결론은 잠깐. 이 머신은 Ubuntu고 PHP는 배포판 패키지로 설치했습니다."
+    },
+    "c8xq": {
+      "source_hash": "d6dfbab098bf",
+      "text": "그럼 Ubuntu가 설치한 건 어느 버전일까요?"
+    },
+    "57xv": {
+      "source_hash": "1467488220d8",
+      "text": "질문을 바꿔, PHP 대신 패키지 관리자에게 묻습니다. 등록된 버전은? 명령은 설명란에."
+    },
+    "f5zi": {
+      "source_hash": "683fa0652486",
+      "text": "돌아온 건 맨 숫자 세 개가 아니라, 뒤에 배포판 자체 패키지 번호가 길게 붙습니다."
+    },
+    "cffr": {
+      "source_hash": "b0cf5b1d4a17",
+      "text": "마지막으로 이 패키지의 변경 기록을 봅니다. 명령 하나로, 맨 앞 네 줄만 보면 됩니다. 역시 설명란에."
+    },
+    "94he": {
+      "source_hash": "fb9885b9e0f3",
+      "text": "첫 줄, 패키지 버전 뒤에 보안 업데이트 채널,"
+    },
+    "eea5": {
+      "source_hash": "3bc119a24515",
+      "text": "셋째 줄엔 보안 업데이트, 넷째 줄은 패치 파일명입니다. 거기에 PHP2Shell의 CVE 번호 두 개, 취약점의 주민번호가 있습니다."
+    },
+    "ur3m": {
+      "source_hash": "8071068f8a23",
+      "text": "사실 패치는 진작 들어갔습니다. Ubuntu CVE 페이지의 수정 버전이 패키지 관리자가 찍은 그 줄입니다."
+    },
+    "qd3n": {
+      "source_hash": "b408aefede9f",
+      "text": "왜 안 바뀔까?"
+    },
+    "pmmz": {
+      "source_hash": "bfe83187bbff",
+      "text": "PHP 공식 공고 그대로: Linux 배포판과 장기 지원 업체는 패치를 미리 받아 옛 버전 패키지에 넣었다."
+    },
+    "bvkf": {
+      "source_hash": "06691afbf5f0",
+      "text": "리콜로 엔진을 고쳐도 등록증의 연식은 바뀌지 않듯, 봐야 할 건 정비 기록입니다."
+    },
+    "rvnm": {
+      "source_hash": "a1d7e0a40124",
+      "text": "여러분 머신에서는 아까처럼 세 경우로 나눠 확인합니다."
+    },
+    "mm34": {
+      "source_hash": "4c9356c5a366",
+      "text": "직접 빌드나 Windows판은 네 보안 버전 이상인지,"
+    },
+    "48dz": {
+      "source_hash": "06432a3a2cdc",
+      "text": "Linux 패키지는 버전과 변경 기록에 CVE 번호가 있는지,"
+    },
+    "w9gx": {
+      "source_hash": "e54ef2c175f3",
+      "text": "호스팅에 맡겼으면 호스팅사에 두 가지를 묻습니다. PHP 몇 버전인지, 패치는 언제인지. '처리 중'은 답이 아닙니다."
+    },
+    "emqi": {
+      "source_hash": "b32790219e07",
+      "text": "오해 셋. WordPress 업데이트로 PHP는 안 바뀝니다. PHP는 호스팅·컨테이너 이미지 몫."
+    },
+    "tgt8": {
+      "source_hash": "117ee82c139b",
+      "text": "세션 설정 끄면 안전하다는 설, PHP는 일부 경로만 막아 업데이트 대체는 안 된다고,"
+    },
+    "anbx": {
+      "source_hash": "df4ff64257ac",
+      "text": "23일 추가 공지도 설정부터 끄라 했지만 말은 같습니다. 완화지 패치가 아니라고."
+    },
+    "pcpg": {
+      "source_hash": "58697e1580fd",
+      "text": "고친 뒤 PHP 워커를 재시작하십시오. 옛 프로세스엔 옛 코드가 돕니다."
+    },
+    "dv5w": {
+      "source_hash": "464847b8e3ea",
+      "text": "자, 미뤄둔 질문: AI가 구멍을 먼저 찾은 건 좋을까요, 나쁠까요?"
+    },
+    "gx6w": {
+      "source_hash": "0177fdd6e85d",
+      "text": "제 생각엔 구멍 찾기는 빨라졌지만 고치기는 아닙니다. 여전히 여러 손을 거칩니다."
+    },
+    "pmgi": {
+      "source_hash": "70c521a1b4ea",
+      "text": "메인테이너는 수정법, 배포판은 패키징, 호스팅사는 배포,"
+    },
+    "v48u": {
+      "source_hash": "1983fd2a68c6",
+      "text": "가장 느린 단계가 그 이틀의 유출이었습니다."
+    },
+    "duf7": {
+      "source_hash": "f7f15e541d84",
+      "text": "대만 2만 8천 개 사이트가 얼마나 고쳐졌는지 저는 못 찾았습니다. 당국은 계속 파악한다고."
+    },
+    "n4we": {
+      "source_hash": "233d569f0566",
+      "text": "할 일 셋. 오늘은 세 경우대로 확인하고, 호스팅은 호스팅사에 묻기."
+    },
+    "7hcv": {
+      "source_hash": "5b2c7fd75eb3",
+      "text": "이번 주 8.1 이하는 8.3 이상으로 옮길 일정 잡기. 8.2 보안 지원도 연말까지."
+    },
+    "6k5e": {
+      "source_hash": "d3bae452e752",
+      "text": "이후엔 호스팅사 보안 공지를 늘 보는 곳에 추가하기."
+    },
+    "eedd": {
+      "source_hash": "032f8c7c8547",
+      "text": "서두의 질문, 기억나십니까? AI가 먼저 찾았는데 왜 스스로 닫았나."
+    },
+    "w9rt": {
+      "source_hash": "70d6a99314cc",
+      "text": "패치는 파일 아닌 사슬이라서. 사슬이 끝나기 전엔 멈춰야 가장 안전합니다."
+    },
+    "dknd": {
+      "source_hash": "d226477a743c",
+      "text": "사이트 PHP는 직접 관리합니까, 호스팅사입니까? 버전은? 댓글로 알려 주세요."
+    },
+    "c6mc": {
+      "source_hash": "3a340924a0a9",
+      "text": "구독하세요. 매 편 보고 바로 쓸 판단 하나를 드립니다."
+    }
+  }
+}

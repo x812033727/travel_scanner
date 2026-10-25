@@ -1,6 +1,6 @@
 {
-  "title": "PHP2Shell: AI Found the PHP Flaw First. Why Sites Worldwide Went Offline, and How to Check Yours",
-  "description": "On October 21, 2026, PHP issued an emergency security update for two flaws known together as PHP2Shell: the flaw is in PHP itself, and with no login, a single request can run code on the server. AI found it two months earlier, but a leak pushed the patch forward by a day, and government sites worldwide, pixiv and Wikimedia took themselves offline first. This video uses one comparison (a car recall: the defect is in the engine, not the body) to explain why it concerns you and what happened in those four days, then demonstrates on an Ubuntu test machine: seeing 8.3.6 in php -v does not mean unpatched; you have to read the package's changelog.\nFor anyone in Taiwan with their own website, anyone managing WordPress or an online store for a company, or anyone who saw \"websites down worldwide\" and wants to know what to do.\n\nRecorded October 25, 2026. The four security releases, \"only updating is the complete fix\" and distributions receiving the patches in advance follow php.net's October 21 advisory; the 2024 audit, the leak and the timing of the early release follow the PHP Foundation's blog; the 70% of websites, the models used and the timeline follow Wiz's research post; the 03:02 UTC firewall follows the Cloudflare blog; the October 17 honeypot follows the AWS Security Blog; Taiwan's roughly 28,000 public-facing sites, roughly 200 government agency sites, and the order of patch, WAF, suspend follow iThome's report on the October 22 press conference by the director-general of the Administration for Cyber Security; the shutdowns by country follow the BBC; the Japanese prime minister's and the Cloudflare CEO's figures follow their original posts on X; the Japanese services that paused follow Japan Cyber Watch. The three local commands and their output were really run on 2026-10-25 on Ubuntu 24.04.5, PHP 8.3.6 (cli) and dpkg 1.22.6; the fixed package version for 24.04 follows ubuntu.com's CVE page. \"My take is\" and \"I can't find out\" are the owner's opinions. This video does not demonstrate the attack.\n\nCommands in the video:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\nOn your site, who manages PHP, you or your host? What version did you find? Tell me in the comments.",
+  "title": "PHP2Shell: AI Found the Flaw First. Why Sites Worldwide Shut Themselves Down, and How to Check Yours",
+  "description": "On October 21, 2026, PHP issued an emergency security update for two flaws known together as PHP2Shell: the flaw is in PHP itself, and with no login, a single request can run code on the server. AI found it two months earlier, but a leak moved the patch up a day, and government sites worldwide, pixiv and Wikimedia took themselves offline first. This video uses one comparison (a car recall: the defect is in the engine, not the body) to explain why it concerns you and what happened in those four days, then demonstrates on an Ubuntu test machine: seeing 8.3.6 in php -v does not mean unpatched; you have to read the package's changelog.\nFor anyone in Taiwan with their own website, anyone managing WordPress or an online store for a company, or anyone who saw \"websites down worldwide\" and wants to know what to do.\n\nRecorded October 25, 2026. The four security releases, \"only updating is the complete fix\" and distributions receiving the patches in advance follow php.net's October 21 advisory; the 2024 audit, the leak and the timing of the early release follow the PHP Foundation's blog; the 70% of websites, the models used and the timeline follow Wiz's research post; the 03:02 UTC firewall follows the Cloudflare blog; the October 17 honeypot follows the AWS Security Blog; Taiwan's roughly 28,000 public-facing sites, roughly 200 government agency sites, and the order of patch, WAF, suspend follow iThome's report on the October 22 press conference by the director-general of the Administration for Cyber Security; the shutdowns by country follow the BBC; the Japanese prime minister's and the Cloudflare CEO's figures follow their original posts on X; the Japanese services that paused follow Japan Cyber Watch. The three local commands and their output were really run on 2026-10-25 on Ubuntu 24.04.5, PHP 8.3.6 (cli) and dpkg 1.22.6; the fixed package version for 24.04 follows ubuntu.com's CVE page. \"My take is\" and \"I can't find out\" are the owner's opinions. This video does not demonstrate the attack.\n\nCommands in the video:\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\nOn your site, who manages PHP, you or your host? What version did you find? Tell me in the comments.",
   "tags": [
     "PHP2Shell",
     "PHP vulnerability",
@@ -24,7 +24,7 @@
     "audit": "How did AI find it?",
     "leak": "Why the patch came a day early",
     "ncsc": "Why sites shut themselves down",
-    "advisory-page": "How to check if PHP is patched",
+    "advisory-page": "Patched? Is the version number enough?",
     "my-call": "My take: what to do now"
   },
   "source_hashes": {
@@ -65,7 +65,7 @@
     },
     "h7nb": {
       "source_hash": "5ff945ea0a41",
-      "text": "It does: the flaw is in PHP itself."
+      "text": "It concerns you: the flaw is in PHP itself."
     },
     "3ppu": {
       "source_hash": "1058e96b67b2",
@@ -113,11 +113,11 @@
     },
     "86sc": {
       "source_hash": "ce857ae1d545",
-      "text": "And Taiwan? Early tally from the digital ministry's cyber agency: about 28,000 public sites run PHP,"
+      "text": "Taiwan? Early tally from the digital ministry's cyber agency: about 28,000 public-facing sites run PHP,"
     },
     "rsu6": {
       "source_hash": "e35649224f4c",
-      "text": "about 200 government sites among them; as of the director's press conference, no breach reported."
+      "text": "about 200 government sites among them; as of the agency chief's press conference, no breach reported."
     },
     "gffq": {
       "source_hash": "76136f0287ec",
@@ -165,7 +165,7 @@
     },
     "i6qv": {
       "source_hash": "c194f1cf1111",
-      "text": "Two weeks later, Google-owned security firm Wiz used the fourth-generation Gemini, that is Argon, plus GPT-5.6 Sol, and independently found the same flaw,"
+      "text": "Two weeks later, Google-owned security firm Wiz used the fourth-generation Gemini, called Argon, plus GPT-5.6 Sol, and independently found the same flaw,"
     },
     "sqad": {
       "source_hash": "01d542c1951a",
@@ -173,7 +173,7 @@
     },
     "2eju": {
       "source_hash": "e3e4a419d9c4",
-      "text": "From the day Austin handed in the exploit, fixing it became the Foundation security team's top priority; patch set for October 22."
+      "text": "From the day Austin handed in the exploit, fixing it became the Foundation security team's top priority; the patch was set for October 22."
     },
     "26df": {
       "source_hash": "25c29c5ebb55",
@@ -253,7 +253,7 @@
     },
     "wppc": {
       "source_hash": "bd79b735bb2f",
-      "text": "The UK's cyber security centre was blunt:"
+      "text": "UK's National Cyber Security Centre was blunt:"
     },
     "vh8a": {
       "source_hash": "7af177310d88",
@@ -277,7 +277,7 @@
     },
     "3hp6": {
       "source_hash": "8abb43f109c6",
-      "text": "Finland paused all its services;"
+      "text": "Finland paused all state services"
     },
     "wnky": {
       "source_hash": "670527484c52",
@@ -301,7 +301,7 @@
     },
     "g97x": {
       "source_hash": "4f79ae8aa3f9",
-      "text": "if it's too old to patch, a web firewall first; only when neither works, suspend public services."
+      "text": "if it's too old to patch, a web firewall first; only when neither works, suspend public-facing services."
     },
     "ksrk": {
       "source_hash": "41c8710827a5",
@@ -333,7 +333,7 @@
     },
     "m5s9": {
       "source_hash": "387ca65e1d75",
-      "text": "Mine ends in 6, which looks thirty versions behind, so I must be hit, right?"
+      "text": "Mine ends in 6, which looks thirty versions behind, so I must be vulnerable, right?"
     },
     "p9ke": {
       "source_hash": "e48a4ed65e9c",
@@ -381,11 +381,11 @@
     },
     "rvnm": {
       "source_hash": "a1d7e0a40124",
-      "text": "On your own machine, do the same check by one of three cases."
+      "text": "On your own machine, do the same check; there are three cases."
     },
     "mm34": {
       "source_hash": "4c9356c5a366",
-      "text": "Self-built or Windows: version at or above the four fixed releases;"
+      "text": "Self-built or Windows: version at or above the four security versions;"
     },
     "48dz": {
       "source_hash": "06432a3a2cdc",
@@ -445,7 +445,7 @@
     },
     "eedd": {
       "source_hash": "032f8c7c8547",
-      "text": "Recall the opening question? AI found it first; so why did sites shut themselves down?"
+      "text": "Remember the opening question? AI found it first; so why did sites shut themselves down?"
     },
     "w9rt": {
       "source_hash": "70d6a99314cc",
