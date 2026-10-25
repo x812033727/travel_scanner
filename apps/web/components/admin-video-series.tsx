@@ -806,6 +806,14 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     if (!window.confirm(t("skipConfirm", { n: number }))) return;
     void act(`skip-${number}`, () => api(`/admin/video-automation/series/${slug}/episodes/${number}/skip`, { method: "POST" }));
   };
+  // An episode made again under the current rules (redo_episode in the API's series.py): the server
+  // drops its video, the episode is ready again under <planned>-redo<n>, and the worker remakes it
+  // from the chapter outline. Offered for a video in the making or cleared, and for one already dropped.
+  const redo = (number: number) => {
+    if (!window.confirm(t("redoConfirm", { n: number }))) return;
+    void act(`redo-${number}`, () => api(`/admin/video-automation/series/${slug}/episodes/${number}/redo`, { method: "POST" }));
+  };
+  const redoable = (episode: SeriesEpisode) => Boolean(episode.slug) && (episode.status === "started" || episode.status === "done" || (episode.status === "skipped" && episode.started_at !== null));
   const order = (doc: SeriesDoc) => (doc.kind === "setting" || doc.kind === "bible" ? 0 : doc.kind === "outline" ? 1 : 1 + doc.chapter_number);
   // A one-off is one episode planned from its bible: no chapters to plan, no episode count worth showing.
   const oneOff = series?.kind === "one-off";
@@ -890,6 +898,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
               <td className="px-3 py-2"><span className="flex flex-wrap gap-2">
                 {!planningOnly && episode.slug && <Button secondary onClick={() => onOpenVideo(episode.slug as string)}>{t("openVideo")}</Button>}
                 {canProduce && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={busy === `skip-${episode.number}`} onClick={() => skip(episode.number)}>{t("skip")}</Button>}
+                {canProduce && !oneOff && !longAnime && redoable(episode) && <Button secondary disabled={busy === `redo-${episode.number}`} onClick={() => redo(episode.number)}>{t("redo")}</Button>}
               </span></td>
             </tr>;
           })}</tbody>
