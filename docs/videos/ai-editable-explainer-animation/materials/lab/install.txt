@@ -5,7 +5,7 @@ Python 3.10 以上、Pillow、可由命令列呼叫的 ffmpeg，以及支援繁�
 這次實際測試：Linux、Python 3.12.14、Pillow 12.3.0、ffmpeg 7.1.5。
 
 安裝 Pillow
-python -m pip install Pillow
+python -m pip install -r requirements.txt
 
 安裝 ffmpeg
 從官方下載頁選擇適合自己系統的版本，並確認 ffmpeg 在 PATH 中。

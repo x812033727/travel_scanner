@@ -1,0 +1,1722 @@
+{
+  "schema_version": 1,
+  "slug": "ai-editable-explainer-animation",
+  "format": "slides",
+  "category": "tutorial",
+  "theme": "paper",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "用 AI 做教學動畫：從一句話到能改字、改數字的成片",
+    "description": "從一個問題，做出能修改的教學動畫。用兩顆骰子的原創圖解，練習寫需求、要求可修改檔案、預覽、改參數、對旁白和驗收。\n\n本集使用 AI 協作撰寫的 Python 繪圖與 FFmpeg 範例，並非 Claude Motion 操作實錄，也未宣稱任何單一產品能一次完成。隨片教材包含資料檔、程式、可複製提示詞與檢查方法。\n\n資料與製作確認日：2026-10-25。示範為本次實際產出的原創專案；公開參考影片只作選題與呈現研究。\n\n教材注意：骰子範例的資料欄位只支援 zh-TW；範例 MP4 刻意無聲，範例 SRT 是分鏡設計時間，並非旁白實測對齊。主教學影片的旁白、CC 與八語配音走獨立製作流程。\n\n完整教材與可複製提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/7c08317fda4647ae74ccd46248afb19b308e99a8/docs/videos/ai-editable-explainer-animation/materials",
+    "tags": [
+      "AI 教學",
+      "AI 動畫",
+      "教學影片",
+      "程式動畫",
+      "可修改動畫",
+      "影片製作",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**改得動**",
+      "tag": "AI 教學動畫",
+      "sub": "原始檔一起留下"
+    }
+  },
+  "sources": [
+    {
+      "title": "Pillow documentation",
+      "url": "https://pillow.readthedocs.io/en/stable/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "FFmpeg documentation",
+      "url": "https://ffmpeg.org/documentation.html",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Python itertools.product",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/grid-all.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/grid-seven.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/grid-twelve.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/grid-six.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/ordered-pairs.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/timeline.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/audio-timeline.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    },
+    {
+      "path": "docs/videos/ai-editable-explainer-animation/diagrams/distribution.svg",
+      "source": "本次 AI 協作原創圖解，依隨片程式產生或編輯製作",
+      "license": "Original Mokaair teaching material"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "c5a4b1",
+      "payoff": "f6f6be",
+      "what": "改目標後格子與計數會不會一起更新"
+    },
+    {
+      "setup": "74eeac",
+      "payoff": "c30642",
+      "what": "換語言後如何依實際音長排畫面"
+    },
+    {
+      "setup": "79a96a",
+      "payoff": "976818",
+      "what": "觀眾要拿到什麼檔案才能修改"
+    },
+    {
+      "setup": "4a14bd",
+      "payoff": "ea140a",
+      "what": "動畫到底要證明哪一句話"
+    },
+    {
+      "setup": "594e82",
+      "payoff": "802a26",
+      "what": "語言變長後如何檢查版面與發音"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "動畫能不能改得動？",
+      "template": "title",
+      "data": {
+        "tag": "AI 教學動畫｜可下載原始檔",
+        "title": "用 AI 做教學動畫",
+        "subtitle": "字能改，數字也能一起改",
+        "key": "做出能修改的教學動畫"
+      },
+      "lines": [
+        {
+          "id": "e8b327",
+          "text": "用 AI 做的教學動畫，也能改字和改數字。",
+          "pause_after_ms": 900
+        }
+      ]
+    },
+    {
+      "id": "hook-grid",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/grid-seven.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "這張格子圖可以重新計算"
+      },
+      "lines": [
+        {
+          "id": "00aeec",
+          "text": "像這張骰子圖，每一個亮起來的格子，都是程式算出來的。"
+        }
+      ],
+      "claims": [
+        "c2"
+      ]
+    },
+    {
+      "id": "hook-question",
+      "template": "big",
+      "data": {
+        "text": "只改一個數字呢？",
+        "key": "改完，畫面也要跟著變",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "c5a4b1",
+          "text": "如果你把題目換掉，亮起來的格子會一起改嗎？"
+        }
+      ]
+    },
+    {
+      "id": "hook-timing",
+      "template": "big",
+      "data": {
+        "text": "字改了，時間夠嗎？",
+        "key": "講完之前，畫面不能先走",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "74eeac",
+          "text": "旁白換成另一種語言，畫面會不會已經跳走？"
+        }
+      ]
+    },
+    {
+      "id": "hook-acceptance",
+      "template": "big",
+      "data": {
+        "text": "成品要留得住",
+        "key": "交出影片，也留下可修改的檔案",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "79a96a",
+          "text": "所以這次從一份需求做出教學短片，連修改的方法一起留下。"
+        }
+      ]
+    },
+    {
+      "id": "hook-stakes",
+      "template": "big",
+      "data": {
+        "text": "先把規則講清楚",
+        "key": "漂亮以外，還得能改、能對",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "aa0639",
+          "text": "你要的不是再抽一個好畫面，而是把錯字真的改掉。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "route-begin",
+      "template": "big",
+      "data": {
+        "text": "先問它交什麼",
+        "key": "交付格式決定修改方式",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "c2d378",
+          "text": "那到底要跟 AI 要什麼，它才不會只交一段成片？"
+        }
+      ],
+      "chapter": "為什麼先要原始檔？"
+    },
+    {
+      "id": "delivery-three",
+      "template": "bullets",
+      "data": {
+        "title": "這次交付的是一個小專案",
+        "items": [
+          {
+            "text": "可修改的資料",
+            "icon": "document"
+          },
+          {
+            "text": "負責畫圖的程式",
+            "icon": "gear"
+          },
+          {
+            "text": "可以播放的影片",
+            "icon": "folder"
+          }
+        ],
+        "keys": [
+          "文字與數值集中管理",
+          "程式讀資料、畫出動畫",
+          "成片和原始檔一起留"
+        ]
+      },
+      "lines": [
+        {
+          "id": "47c7d2",
+          "text": "把文字和數值放在資料檔，你修改時才找得到。",
+          "reveal": 1
+        },
+        {
+          "id": "5a37fc",
+          "text": "讓另一份程式讀取資料，把圖形和時間排進畫面。",
+          "reveal": 1
+        },
+        {
+          "id": "56c197",
+          "text": "影片只是輸出成果，能重做它的檔案也要一起保留。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "route-choice",
+      "template": "big",
+      "data": {
+        "text": "數字圖解，選程式動畫",
+        "key": "這是本片的製作選擇",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "56ccfa",
+          "text": "因為這次要的是精確的格子和數字，所以我們選程式動畫。"
+        }
+      ]
+    },
+    {
+      "id": "route-other",
+      "template": "big",
+      "data": {
+        "text": "先說清楚畫面需求",
+        "key": "不同畫面，採用不同做法",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "1712ce",
+          "text": "但是如果你要的是人物表演，這份格子範例就不適合。"
+        }
+      ]
+    },
+    {
+      "id": "route-handoff",
+      "template": "big",
+      "data": {
+        "text": "先交一個可預覽版本",
+        "key": "先確認講法，再增加製作量",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "de0fb5",
+          "text": "先做一個能看的版本，確定它真的講懂了，再加細節。"
+        }
+      ]
+    },
+    {
+      "id": "route-prompt",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "請交可修改的專案，文字與數值放資料檔。"
+          }
+        ],
+        "key": "把交付格式說進要求"
+      },
+      "lines": [
+        {
+          "id": "2c063b",
+          "text": "你可以直接說，請交可修改的專案，文字與數值放資料檔。"
+        }
+      ]
+    },
+    {
+      "id": "route-control",
+      "template": "big",
+      "data": {
+        "text": "先保留起始版本",
+        "key": "先留一份，再讓它修改",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "5e5629",
+          "text": "開始修改之前先複製一份，免得好不容易對的版本也被改掉。"
+        }
+      ]
+    },
+    {
+      "id": "route-next",
+      "template": "big",
+      "data": {
+        "text": "畫面要證明哪句話？",
+        "key": "需求從學習成果開始",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "4a14bd",
+          "text": "檔案形式決定了，但它應該畫出什麼，還得由你決定。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "brief-goal",
+      "template": "big",
+      "data": {
+        "text": "只教懂一件事",
+        "key": "先寫下觀眾要懂的那一句",
+        "icon": "book"
+      },
+      "lines": [
+        {
+          "id": "ea140a",
+          "text": "這份短片只回答，為什麼骰子總和的機率不一樣。"
+        }
+      ],
+      "chapter": "需求要怎麼寫才畫得出來？"
+    },
+    {
+      "id": "brief-all",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/grid-all.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "每格是一種有順序的結果"
+      },
+      "lines": [
+        {
+          "id": "21c1bc",
+          "text": "那麼先擺好兩顆互不影響的公平骰子，一顆在橫軸，一顆在直軸。"
+        }
+      ],
+      "claims": [
+        "c1"
+      ]
+    },
+    {
+      "id": "brief-ordered",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/ordered-pairs.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "先固定計算對象"
+      },
+      "lines": [
+        {
+          "id": "8f5f2e",
+          "text": "一加六和六加一分開算，因為兩顆骰子的結果有順序。"
+        }
+      ],
+      "claims": [
+        "c1"
+      ]
+    },
+    {
+      "id": "brief-reference",
+      "template": "big",
+      "data": {
+        "text": "先給正確的資料",
+        "key": "先準備內容，再請它畫",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "6b1614",
+          "text": "你先把要講的條件寫好，不要讓 AI 邊猜事實邊畫圖。"
+        }
+      ]
+    },
+    {
+      "id": "brief-constraints",
+      "template": "bullets",
+      "data": {
+        "title": "把限制寫成畫面規則",
+        "items": [
+          {
+            "text": "固定所有可能結果",
+            "icon": "checklist"
+          },
+          {
+            "text": "依條件亮出格子",
+            "icon": "gear"
+          },
+          {
+            "text": "保留說明文字",
+            "icon": "document"
+          }
+        ],
+        "keys": [
+          "格子不能省略",
+          "顏色由條件計算",
+          "文字保留成文字"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1832d2",
+          "text": "要求畫出完整的格子，不能為了好看省掉某些結果。",
+          "reveal": 1
+        },
+        {
+          "id": "c141fc",
+          "text": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+          "reveal": 1
+        },
+        {
+          "id": "c5a99d",
+          "text": "要求標題和圖例用真正的文字，之後能直接修改。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "brief-prompt-one",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "畫出兩顆公平骰子的所有有序結果。"
+          }
+        ],
+        "key": "先交代主題與條件"
+      },
+      "lines": [
+        {
+          "id": "719e7c",
+          "text": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。"
+        }
+      ]
+    },
+    {
+      "id": "brief-prompt-two",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "用格子呈現，符合目標總和的格子上色。"
+          }
+        ],
+        "key": "把數字變成看得見的動作"
+      },
+      "lines": [
+        {
+          "id": "f2c1f3",
+          "text": "用格子呈現，符合目標總和的格子上色。"
+        }
+      ]
+    },
+    {
+      "id": "brief-prompt-three",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "先看全體，再看目標，最後比較兩個結果。"
+          }
+        ],
+        "key": "安排觀眾看圖的順序"
+      },
+      "lines": [
+        {
+          "id": "475bb2",
+          "text": "先看全體，再看目標，最後比較兩個結果。"
+        }
+      ]
+    },
+    {
+      "id": "brief-timeline",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/timeline.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "一段時間只推進一個重點"
+      },
+      "lines": [
+        {
+          "id": "8a3f5b",
+          "text": "時間軸不是把所有圖擠在一起，而是讓重點一個一個出現。"
+        }
+      ]
+    },
+    {
+      "id": "brief-style",
+      "template": "big",
+      "data": {
+        "text": "先固定一套外觀",
+        "key": "先求一致，再加裝飾",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "520a3b",
+          "text": "先指定米白底、深色字和一個強調色，讓視線有地方停。"
+        }
+      ]
+    },
+    {
+      "id": "brief-motion",
+      "template": "big",
+      "data": {
+        "text": "動作要有解釋的用途",
+        "key": "動作跟著概念，不只跟著節拍",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "9dd115",
+          "text": "你可能會問，一定要加很多動作嗎？格子依序亮起，是為了看清組合。"
+        }
+      ]
+    },
+    {
+      "id": "brief-remove-motion",
+      "template": "big",
+      "data": {
+        "text": "沒有幫助，就拿掉",
+        "key": "少一個無關動作，少一次分心",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "0c086d",
+          "text": "所以一個動作如果沒有幫助理解，就請 AI 把它刪掉。"
+        }
+      ]
+    },
+    {
+      "id": "brief-second-prompt",
+      "template": "big",
+      "data": {
+        "text": "告訴它誰是新手",
+        "key": "同一個概念，要配合觀眾的程度",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "76fc63",
+          "text": "然後說明觀眾沒學過機率，先看組合，不要一開始就丟公式。"
+        }
+      ]
+    },
+    {
+      "id": "brief-dimension",
+      "template": "big",
+      "data": {
+        "text": "先說播放情境",
+        "key": "手機上的小字，電腦看不出來",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "066452",
+          "text": "如果主要給手機看，就說明文字要大，圖例不要靠邊。"
+        }
+      ]
+    },
+    {
+      "id": "brief-pilot",
+      "template": "big",
+      "data": {
+        "text": "先畫最難的那一幕",
+        "key": "先證明核心畫面做得到",
+        "icon": "lightning"
+      },
+      "lines": [
+        {
+          "id": "7b0c6d",
+          "text": "先請它畫出格子上色那一幕，別一開始就要求整支完成。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "build-start",
+      "template": "big",
+      "data": {
+        "text": "讓它產生檔案",
+        "key": "要求能執行的專案與說明",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "1f3f10",
+          "text": "核心畫面有了，就請 AI 把它整理成能執行的專案。"
+        }
+      ],
+      "chapter": "AI 產生的檔案怎麼用？"
+    },
+    {
+      "id": "build-ask",
+      "template": "bullets",
+      "data": {
+        "title": "把製作要求接在資料後面",
+        "items": [
+          {
+            "text": "使用資料檔",
+            "icon": "document"
+          },
+          {
+            "text": "附執行說明",
+            "icon": "terminal"
+          },
+          {
+            "text": "附獨立檢查",
+            "icon": "checklist"
+          }
+        ],
+        "keys": [
+          "同一個資料來源",
+          "步驟要能照著執行",
+          "答案另外算一次"
+        ]
+      },
+      "lines": [
+        {
+          "id": "291f73",
+          "text": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+          "reveal": 1
+        },
+        {
+          "id": "60d6c7",
+          "text": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+          "reveal": 1
+        },
+        {
+          "id": "d27bc5",
+          "text": "另外寫一個檢查程式，從所有結果重新算出正確答案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "build-config",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"title\": \"兩顆骰子的總和，機率一樣嗎？\",\n  \"target_sum\": 7,\n  \"locale\": \"zh-TW\"\n}",
+        "caption": "lesson.json 節錄｜其餘色彩設定保留",
+        "key": "先找得到要改的資料"
+      },
+      "lines": [
+        {
+          "id": "976818",
+          "text": "這份資料檔把標題、目標和色彩集中在同一處，方便你修改。"
+        }
+      ]
+    },
+    {
+      "id": "build-dependencies",
+      "template": "big",
+      "data": {
+        "text": "先看需要裝什麼",
+        "key": "知道用途，再執行安裝",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "b22122",
+          "text": "這份範例先用繪圖套件畫出影格，再用影片工具把影格接起來。"
+        }
+      ],
+      "claims": [
+        "c5"
+      ]
+    },
+    {
+      "id": "build-unzip",
+      "template": "big",
+      "data": {
+        "text": "先解開教材資料夾",
+        "key": "不要只下載最後的影片",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "182fcd",
+          "text": "下載教材後先解開資料夾，確認資料檔和程式放在同一處。"
+        }
+      ]
+    },
+    {
+      "id": "build-environment",
+      "template": "big",
+      "data": {
+        "text": "按自己的系統準備環境",
+        "key": "先確認工具與字型都找得到",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "a2d3d8",
+          "text": "照隨片說明安裝繪圖套件，確認影片工具和中文字型都找得到。"
+        }
+      ]
+    },
+    {
+      "id": "build-local-language",
+      "template": "big",
+      "data": {
+        "text": "範例先固定繁中",
+        "key": "這份範例只支援繁體中文",
+        "icon": "globe"
+      },
+      "lines": [
+        {
+          "id": "b13c3e",
+          "text": "範例的語言欄位目前只接受繁中，不能改代碼就自動完成翻譯。"
+        }
+      ],
+      "claims": [
+        "c7"
+      ]
+    },
+    {
+      "id": "build-security",
+      "template": "big",
+      "data": {
+        "text": "只給範例資料夾",
+        "key": "先在練習資料夾確認流程",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "5f446c",
+          "text": "因為它會讀檔案、寫檔案，先讓它只處理這份練習專案，別混進你的重要檔案。"
+        }
+      ]
+    },
+    {
+      "id": "build-readme",
+      "template": "big",
+      "data": {
+        "text": "不懂指令，也可以追問",
+        "key": "請它說清楚，改了哪些地方",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "f37b7f",
+          "text": "你可能會問，這行到底做了什麼？請 AI 解釋會讀什麼、寫什麼。"
+        }
+      ]
+    },
+    {
+      "id": "run-check",
+      "template": "terminal",
+      "data": {
+        "title": "先核對資料與答案",
+        "command": "python check_lesson.py lesson.json --expect-count 6 --summary",
+        "output": [
+          "OK\ntarget_sum=7 outcomes=36\nhighlighted_count=6 probability=1/6"
+        ],
+        "ran_on": "2026-10-25",
+        "tool_version": "Python 3.12.14",
+        "typing": "human",
+        "key": "先檢查，再預覽"
+      },
+      "lines": [
+        {
+          "id": "801093",
+          "text": "這條只讀取資料檔來檢查，不改原始檔；參數是預期的格子數，對了才往下做。"
+        }
+      ]
+    },
+    {
+      "id": "run-check-read",
+      "template": "big",
+      "data": {
+        "text": "讀懂回報的重點",
+        "key": "先看是否成功，再看對應條件",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "9aa7fd",
+          "text": "結果裡的成功標記，只表示這份檢查通過，不表示影片已經完成。"
+        }
+      ]
+    },
+    {
+      "id": "build-error-prompt",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "解釋這段錯誤，只修讓範例能預覽的部分。"
+          }
+        ],
+        "key": "把錯誤和原本目標一起給它"
+      },
+      "lines": [
+        {
+          "id": "2a7dbb",
+          "text": "出錯時貼上錯誤內容，請它只修讓範例能預覽的部分。"
+        }
+      ]
+    },
+    {
+      "id": "build-preview",
+      "template": "big",
+      "data": {
+        "text": "先看畫面，不急著輸出",
+        "key": "先看關鍵影格是否合理",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "d6ecd3",
+          "text": "到這裡你可能會想，檢查成功就能交片嗎？先看關鍵影格。"
+        }
+      ]
+    },
+    {
+      "id": "build-seven",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/grid-seven.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "數字和顏色要對應"
+      },
+      "lines": [
+        {
+          "id": "5d4f54",
+          "text": "這時候你看到的每個亮格，都應該是符合目標的一組點數。"
+        }
+      ],
+      "claims": [
+        "c2"
+      ]
+    },
+    {
+      "id": "build-twelve",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/grid-twelve.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "比較畫面要用同一個基準"
+      },
+      "lines": [
+        {
+          "id": "cbba85",
+          "text": "比較另一個總和時，格子大小和整體範圍都要維持一致。"
+        }
+      ],
+      "claims": [
+        "c2"
+      ]
+    },
+    {
+      "id": "build-display",
+      "template": "big",
+      "data": {
+        "text": "先檢查你會看的地方",
+        "key": "讀得到，才有教學效果",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "1de727",
+          "text": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。"
+        }
+      ]
+    },
+    {
+      "id": "build-handoff",
+      "template": "big",
+      "data": {
+        "text": "預覽對了，再輸出影片",
+        "key": "先確認內容，再等待完整轉檔",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "0dd30b",
+          "text": "這時才請它輸出影片，別把等待完整轉檔當成驗證內容。"
+        }
+      ]
+    },
+    {
+      "id": "run-render",
+      "template": "terminal",
+      "data": {
+        "title": "輸出可以播放的影片",
+        "command": "python render_lesson.py lesson.json --output demo.mp4 --summary",
+        "output": [
+          "OK: rendered demo.mp4\n1280x720 24fps duration=54s audio=none\ntarget_sum=7 highlighted_count=6"
+        ],
+        "ran_on": "2026-10-25",
+        "tool_version": "Python 3.12.14",
+        "typing": "human",
+        "key": "這份樣片刻意沒有聲音"
+      },
+      "lines": [
+        {
+          "id": "52cf29",
+          "text": "渲染會讀取同一份資料，輸出無聲影片和預覽影格；輸出名稱就是畫面上的設定，旁白要另外加。"
+        }
+      ],
+      "claims": [
+        "c4",
+        "c7"
+      ]
+    },
+    {
+      "id": "run-preview-stills",
+      "template": "big",
+      "data": {
+        "text": "只看圖，可以先不合成",
+        "key": "用影格預覽縮短修改迴圈",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "005752",
+          "text": "如果只是想檢查圖形，使用只產生影格的選項，先看圖再做完整影片。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "revise-start",
+      "template": "big",
+      "data": {
+        "text": "現在真的改一次",
+        "key": "修改才看得出檔案有沒有留對",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "7bf8fb",
+          "text": "影片能播了，那麼開場那個問題來了：只改一個數字，畫面會跟著改嗎？"
+        }
+      ],
+      "chapter": "改一個數字會怎樣？"
+    },
+    {
+      "id": "revise-config",
+      "template": "code",
+      "data": {
+        "code": "\"target_sum\": 6",
+        "caption": "lesson.json｜只改這個欄位",
+        "key": "只改目標，不改其他條件"
+      },
+      "lines": [
+        {
+          "id": "a1f88a",
+          "text": "把資料裡的目標總和改成六，其他設定先保持原樣。"
+        }
+      ]
+    },
+    {
+      "id": "revise-prompt",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "只改目標總和，重新計算亮格與文字。"
+          }
+        ],
+        "key": "把會連動的地方說清楚"
+      },
+      "lines": [
+        {
+          "id": "07771e",
+          "text": "跟 AI 說，只改目標總和，重新計算亮格與文字。"
+        }
+      ]
+    },
+    {
+      "id": "revise-lock-prompt",
+      "template": "chat",
+      "data": {
+        "title": "可複製的要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你的要求",
+            "text": "保留配色、字體和片段順序。"
+          }
+        ],
+        "key": "先限制這次修改的範圍"
+      },
+      "lines": [
+        {
+          "id": "8eb4eb",
+          "text": "再補一句，保留配色、字體和片段順序。"
+        }
+      ]
+    },
+    {
+      "id": "revise-six",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/grid-six.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "改資料，圖形跟著變"
+      },
+      "lines": [
+        {
+          "id": "05bc8a",
+          "text": "結果目標一換，亮格的位置就變了，旁邊的計數也必須跟著更新。"
+        }
+      ],
+      "claims": [
+        "c3"
+      ]
+    },
+    {
+      "id": "revise-five",
+      "template": "big",
+      "data": {
+        "text": "畫面不能留舊答案",
+        "key": "這次要看見五個符合的格子",
+        "numeral": "5"
+      },
+      "lines": [
+        {
+          "id": "f6f6be",
+          "text": "還記得開頭那個問題嗎？亮格真的跟著改了，符合條件的變成五個格子。"
+        }
+      ],
+      "claims": [
+        "c3"
+      ]
+    },
+    {
+      "id": "revise-stale",
+      "template": "big",
+      "data": {
+        "text": "把數字藏在別處會漏改",
+        "key": "同一個數值只保留一個來源",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "7a42ba",
+          "text": "但是如果圖改了、標題還留著舊數字，就請它找出重複寫死的地方。"
+        }
+      ]
+    },
+    {
+      "id": "revise-what",
+      "template": "big",
+      "data": {
+        "text": "請它列修改摘要",
+        "key": "先知道它動了什麼",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "8c2bc9",
+          "text": "請它列出修改的檔案和理由，你才能知道有沒有順便改到別的。"
+        }
+      ]
+    },
+    {
+      "id": "revise-version",
+      "template": "big",
+      "data": {
+        "text": "保留可以回去的版本",
+        "key": "用清楚的檔名區分修改前後",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "de08dd",
+          "text": "修改前後分別留一份，不要又出現真的最終版第二版。"
+        }
+      ]
+    },
+    {
+      "id": "revise-caption-text",
+      "template": "big",
+      "data": {
+        "text": "再改一次標題",
+        "key": "確認真正的文字可以直接改",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "c7b43e",
+          "text": "把標題改成自己的問法，重新預覽，確認字變長也沒有超出範圍。"
+        }
+      ]
+    },
+    {
+      "id": "revise-width",
+      "template": "big",
+      "data": {
+        "text": "長標題先換行",
+        "key": "不要把整個畫面一起縮小",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "7e3f75",
+          "text": "標題太長時請它合理換行，別為了塞進去，把所有字都縮得看不見。"
+        }
+      ]
+    },
+    {
+      "id": "revise-next",
+      "template": "big",
+      "data": {
+        "text": "文字改長了怎麼辦？",
+        "key": "數學對了，還得容得下文字",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "594e82",
+          "text": "數字連動確認了，那換成另一種語言，版面還裝得下嗎？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "audio-start",
+      "template": "big",
+      "data": {
+        "text": "先量旁白，再排畫面",
+        "key": "別用文字長度猜音檔長度",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "c30642",
+          "text": "換語言後，先聽實際旁白有多長，再決定畫面停多久。"
+        }
+      ],
+      "chapter": "旁白和畫面怎麼對上？"
+    },
+    {
+      "id": "audio-order",
+      "template": "bullets",
+      "data": {
+        "title": "先用聲音建立時間軸",
+        "items": [
+          {
+            "text": "每段一個重點",
+            "icon": "document"
+          },
+          {
+            "text": "聽得到完整句子",
+            "icon": "clock"
+          },
+          {
+            "text": "畫面再接下一段",
+            "icon": "person"
+          }
+        ],
+        "keys": [
+          "短句對應一個重點",
+          "以音檔量到的時間為準",
+          "留空間讓觀眾讀圖"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1b4829",
+          "text": "把旁白分成可以單獨理解的短句，每句只推進一個重點。",
+          "reveal": 1
+        },
+        {
+          "id": "a49833",
+          "text": "合成或錄完後，從實際音檔量時間，不拿預估秒數當結果。",
+          "reveal": 1
+        },
+        {
+          "id": "1faa10",
+          "text": "畫面至少留到這句話說完，再加一點讀圖的空間。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "audio-timeline",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/audio-timeline.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "聲音和圖形對齊同一個重點"
+      },
+      "lines": [
+        {
+          "id": "b4de26",
+          "text": "說到符合條件的結果時，格子才亮起來，聲音和動作才對得上。"
+        }
+      ]
+    },
+    {
+      "id": "audio-no-stretch",
+      "template": "big",
+      "data": {
+        "text": "太擠就改句子",
+        "key": "先縮短句子，再調整時間",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "4df2bf",
+          "text": "如果塞不下，先把旁白改簡單一點，別急著把整段加速。"
+        }
+      ]
+    },
+    {
+      "id": "audio-cc",
+      "template": "big",
+      "data": {
+        "text": "字幕要能關掉",
+        "key": "關鍵字卡和逐字字幕分開",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "c41135",
+          "text": "畫面保留必要的標題，完整旁白放在可開關的字幕裡。"
+        }
+      ]
+    },
+    {
+      "id": "audio-language",
+      "template": "big",
+      "data": {
+        "text": "每種語言各看一次",
+        "key": "同樣的意思，不同的字長",
+        "icon": "globe"
+      },
+      "lines": [
+        {
+          "id": "802a26",
+          "text": "翻譯要維持意思，但每種語言的字長、停頓和發音都得另看。"
+        }
+      ]
+    },
+    {
+      "id": "audio-proper",
+      "template": "big",
+      "data": {
+        "text": "數字與名稱，另外聽",
+        "key": "小錯會影響整段理解",
+        "icon": "search"
+      },
+      "lines": [
+        {
+          "id": "bf54ca",
+          "text": "尤其是數字和專有名稱，單獨重聽一次，別只看文字沒錯。"
+        }
+      ]
+    },
+    {
+      "id": "audio-sample",
+      "template": "big",
+      "data": {
+        "text": "無聲樣片不是旁白成片",
+        "key": "樣片字幕只是設計時間",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "ba0179",
+          "text": "教材裡的字幕先按設計時間切段，等旁白做好，還要再用音檔對齊。"
+        }
+      ],
+      "claims": [
+        "c4",
+        "c7"
+      ]
+    },
+    {
+      "id": "audio-staging",
+      "template": "big",
+      "data": {
+        "text": "先把一句對準",
+        "key": "先做好一段，再鋪開整條",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "cab285",
+          "text": "先把說明亮格的那一句對準，再把同樣的方法用到其他段落。"
+        }
+      ]
+    },
+    {
+      "id": "audio-silent",
+      "template": "big",
+      "data": {
+        "text": "靜音看一次",
+        "key": "不用聲音，也能找到重點",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "a6c28e",
+          "text": "然後靜音播一次，你應該看得出現在比較的是什麼，而不只是裝飾。"
+        }
+      ]
+    },
+    {
+      "id": "audio-background",
+      "template": "big",
+      "data": {
+        "text": "再把聲音打開",
+        "key": "聲音應該幫忙解釋畫面",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "0b06d1",
+          "text": "最後把聲音打開，確認旁白在解釋畫面，沒有跟畫面搶注意力。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "check-start",
+      "template": "big",
+      "data": {
+        "text": "檔案完成，不等於能交",
+        "key": "驗收要看你原本承諾的事情",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "b919e0",
+          "text": "影片播完了，現在拿回一開始的需求，一條一條對。"
+        }
+      ],
+      "chapter": "怎麼知道影片可以交了？"
+    },
+    {
+      "id": "check-levels",
+      "template": "bullets",
+      "data": {
+        "title": "分開檢查內容和成品",
+        "items": [
+          {
+            "text": "內容是否正確",
+            "icon": "checklist"
+          },
+          {
+            "text": "畫面是否好讀",
+            "icon": "person"
+          },
+          {
+            "text": "檔案是否完整",
+            "icon": "folder"
+          }
+        ],
+        "keys": [
+          "內容先對，再看外觀",
+          "縮到手機，也得讀得到",
+          "可播放，也要可重做"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ee8b7c",
+          "text": "內容先看條件和計數，不能因為動畫很順就把數學錯誤放過去。",
+          "reveal": 1
+        },
+        {
+          "id": "b69ae1",
+          "text": "畫面再看字有沒有超框，格子和顏色是不是容易辨認。",
+          "reveal": 1
+        },
+        {
+          "id": "481fba",
+          "text": "最後確認影片能播放，聲音、字幕和原始檔都在交付包裡。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check-distribution",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/ai-editable-explainer-animation/diagrams/distribution.svg",
+        "caption": "原創教學示意｜資料與結果可重做",
+        "key": "用獨立計算核對格子"
+      },
+      "lines": [
+        {
+          "id": "18691a",
+          "text": "檢查程式從點數組合重算答案，不讀畫面自己宣告的數字。"
+        }
+      ]
+    },
+    {
+      "id": "check-no-guarantee",
+      "template": "big",
+      "data": {
+        "text": "檢查也有看不到的地方",
+        "key": "工具過關，還要有人看",
+        "icon": "person"
+      },
+      "lines": [
+        {
+          "id": "28a3eb",
+          "text": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。"
+        }
+      ]
+    },
+    {
+      "id": "check-firstlast",
+      "template": "big",
+      "data": {
+        "text": "看頭，也看尾",
+        "key": "最後一秒也算成品",
+        "icon": "clock"
+      },
+      "lines": [
+        {
+          "id": "203f1e",
+          "text": "你要看最前面和最後面，避免切到一半，或者還留著空白尾巴。"
+        }
+      ]
+    },
+    {
+      "id": "check-real-modify",
+      "template": "big",
+      "data": {
+        "text": "拿修改版再跑一次",
+        "key": "別只保證原始範例能用",
+        "icon": "gear"
+      },
+      "lines": [
+        {
+          "id": "7311eb",
+          "text": "你可能會問，修改版還要檢查嗎？也要重新輸出，確認修改流程走得通。"
+        }
+      ]
+    },
+    {
+      "id": "check-boundary",
+      "template": "big",
+      "data": {
+        "text": "錯誤也要有說明",
+        "key": "資料不能用時，要清楚停下來",
+        "icon": "warning"
+      },
+      "lines": [
+        {
+          "id": "75368c",
+          "text": "輸入不支援的條件時，應該說明原因停下來，不能悄悄畫成別題。"
+        }
+      ],
+      "claims": [
+        "c6"
+      ]
+    },
+    {
+      "id": "check-error-help",
+      "template": "big",
+      "data": {
+        "text": "看不懂錯誤，就連資料一起問",
+        "key": "把原因對回你的資料",
+        "icon": "chat"
+      },
+      "lines": [
+        {
+          "id": "9d8939",
+          "text": "把錯誤訊息和你改過的資料交給 AI，請它說清楚是哪個條件不被接受。"
+        }
+      ]
+    },
+    {
+      "id": "check-release-note",
+      "template": "big",
+      "data": {
+        "text": "寫清楚這版改了什麼",
+        "key": "別讓接手的人只能猜",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "c38a5e",
+          "text": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。"
+        }
+      ]
+    },
+    {
+      "id": "check-source",
+      "template": "big",
+      "data": {
+        "text": "把素材來歷留下",
+        "key": "原創、引用與生成，寫得清楚",
+        "icon": "document"
+      },
+      "lines": [
+        {
+          "id": "a56276",
+          "text": "素材的來源和使用方式寫在交付說明，避免後面的人還得猜。"
+        }
+      ]
+    },
+    {
+      "id": "check-scope",
+      "template": "big",
+      "data": {
+        "text": "這是可修改的圖解範例",
+        "key": "範例能力，不延伸成產品保證",
+        "icon": "checklist"
+      },
+      "lines": [
+        {
+          "id": "84576e",
+          "text": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "practice-start",
+      "template": "big",
+      "data": {
+        "text": "換成你的那個問題",
+        "key": "先挑能畫成前後變化的主題",
+        "icon": "book"
+      },
+      "lines": [
+        {
+          "id": "ad1b2c",
+          "text": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。"
+        }
+      ],
+      "chapter": "換成自己的題目怎麼開始？"
+    },
+    {
+      "id": "practice-actions",
+      "template": "bullets",
+      "data": {
+        "title": "先做一個小練習",
+        "items": [
+          {
+            "text": "寫一句學習成果",
+            "icon": "document"
+          },
+          {
+            "text": "挑一幕最重要的圖",
+            "icon": "search"
+          },
+          {
+            "text": "改一個參數重做",
+            "icon": "gear"
+          }
+        ],
+        "keys": [
+          "先固定要教懂的事",
+          "先做關鍵畫面",
+          "用修改驗證能不能重做"
+        ]
+      },
+      "lines": [
+        {
+          "id": "d8b2ca",
+          "text": "寫下觀眾看完要懂的那一句，刪掉跟這一句無關的內容。",
+          "reveal": 1
+        },
+        {
+          "id": "c90844",
+          "text": "挑一幕非畫不可的圖，先讓 AI 交出可以修改的預覽。",
+          "reveal": 1
+        },
+        {
+          "id": "f9399e",
+          "text": "再改一個參數，觀察圖形、文字和計數是否一起更新。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "practice-handoff",
+      "template": "big",
+      "data": {
+        "text": "把專案一起交出去",
+        "key": "讓別人不問你，也能重做",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "2506eb",
+          "text": "交給別人之前，請他照說明重做一次，看看有沒有漏掉某個步驟。"
+        }
+      ]
+    },
+    {
+      "id": "practice-download",
+      "template": "big",
+      "data": {
+        "text": "完整範例放在教材包",
+        "key": "提示詞、資料、程式都能留下",
+        "icon": "folder"
+      },
+      "lines": [
+        {
+          "id": "f064e3",
+          "text": "教材包保留了需求、提示詞和程式，你可以從原樣開始，再換自己的內容。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "換你做一版",
+        "cta": "教材與提示詞在說明欄",
+        "key": "你想把哪個問題畫成動畫？"
+      },
+      "lines": [
+        {
+          "id": "f576ae",
+          "text": "交片時，記得把能重做影片的原始檔一起交出去。"
+        },
+        {
+          "id": "9e738a",
+          "text": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。"
+        },
+        {
+          "id": "ed8308",
+          "text": "訂閱這個頻道，跟著把 AI 用成拿得出來的作品。"
+        }
+      ]
+    }
+  ]
+}
