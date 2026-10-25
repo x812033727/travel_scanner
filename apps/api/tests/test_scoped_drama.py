@@ -89,6 +89,8 @@ async def case(tmp_path, runner, monkeypatch):
     factory = async_sessionmaker(engine, class_=runner.ScopedSession, expire_on_commit=False)
     provider = Provider()
     monkeypatch.setattr(jobs, "provider_for", lambda *_: provider)
+    # These scoped-runner checks exercise media job behavior, not the host cutover gate.
+    monkeypatch.setattr(jobs, "enforce_paid_intake", AsyncMock())
     redis = fakeredis.aioredis.FakeRedis()
     root = tmp_path / "artifacts"
     root.mkdir()
