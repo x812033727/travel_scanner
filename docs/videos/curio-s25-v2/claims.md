@@ -41,7 +41,7 @@ nw008、nw009、nw101、nw105（牛頓的自問，列在 nw104）、nw109、nw11
 | nw210 | 這位外甥女，替牛頓管過家；她說的是「果子」，連蘋果都沒指名 | #13 | 第 13 列備註（WP：凱瑟琳・巴頓，替牛頓管家）；「這裡寫的是『fruits』（果子），沒說蘋果」 | 二手（管家）；「連蘋果都沒指名」第二版新加（同一列備註） |
 | nw301 | 外甥女的丈夫康杜特，是牛頓在造幣廠的副手 | #9 | 第 9 列備註「康杜特娶了牛頓的外甥女凱瑟琳・巴頓，又是牛頓在造幣廠的副手」 | 確認 |
 | nw302 | 牛頓過世以後，他著手替牛頓寫傳記，留下了好幾份草稿 | #9 #10 | COND 三份（Keynes Ms. 130.04 c. 1727–8；129.01、129.02 mid-1727） | 確認 |
-| nw303 | 草稿說，瘟疫讓劍橋停課，牛頓回到林肯郡的老家；那時他二十三、四歲，前後在鄉下待了將近兩年 | #9 #19 #21 | COND 130.04「retired again from Cambridge on acct of the plague to his mother at Boothby in Lincolnshire」；NT「two extended trips back to Woolsthorpe Manor between the summer of 1665 and spring of 1667」；族譜 1642 年聖誕節生、NT「before he was 24」 | 確認；「二十三、四歲」「前後待了將近兩年」第二版新加（第 19、21 列的建議措辭；掛在旁白，不掛在草稿） |
+| nw303 nw321 | 草稿說，瘟疫讓劍橋停課，牛頓回到林肯郡的老家；那時他二十三、四歲，前後在鄉下待了將近兩年 | #9 #19 #21 | COND 130.04「retired again from Cambridge on acct of the plague to his mother at Boothby in Lincolnshire」；NT「two extended trips back to Woolsthorpe Manor between the summer of 1665 and spring of 1667」；族譜 1642 年聖誕節生、NT「before he was 24」 | 確認；「二十三、四歲」「前後待了將近兩年」第二版新加（第 19、21 列的建議措辭；掛在旁白，不掛在草稿） |
 | nw304 nw320 | 有一份寫他在花園裡沉思，想到讓蘋果落地的那股力；另一份寫他看見一顆蘋果，從樹上掉下來 | #9 #10 | COND 130.04「whilst he was musing in a garden it came into his thought that the same power of gravity (wch made an apple fall from the tree to the ground)」；129.01「observing an apple fall from a tree」 | 確認；兩份稿子的不同寫法第二版新加（同兩列的引文） |
 | nw306 | 同一個人的稿子，有的寫一六六五年，有的寫一六六六年 | #9 #10 | COND 130.04「1666 {sic}」；129.01、129.02「in the year 1665」 | 確認（年份互相矛盾）；不說死某一年 |
 | nw308 | 不管哪一年，這些人寫的，都沒有說它打到頭 | #24 | 第 24 列（伏爾泰、康杜特的引文都沒有打到頭） | 確認 |
