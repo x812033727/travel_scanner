@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-brand-stories-new-rules-remakes
 title: 依 1844 與 10-25 規則重製後台未完成品牌故事
-status: blocked
+status: in-progress
 priority: P1
 area: docs
 owner: codex-brand-remakes
@@ -50,6 +50,7 @@ scope:
 - C03新版`story-everyday-moleskine-c03-remake-20261025`：outline review `3b0480b5-0ca4-4337-b743-0db04dfb4106`、script review `c90d3492-7efe-4385-bdcc-ccd6664205d1`，均已讀回正式 approved 並匯入精確雜湊。新稿video SHA `65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005`；後台canonical script SHA `4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f`。未復用舊核准或新建auto.json。
 - C03從零預檢：120個TTS請求／4194計費字元，100個插畫景、每景含首次最多3次，圖像與評審目錄估價約US$4.05；不是全片報價。原生保守語音／轉寫預留、價格可見性與未完成全片入場核對見`c03/pricing-and-entry.json`。付費請求／新媒體仍為0，正文12–14分鐘未量測。
 - C03獨立執行根目錄`/workspace/work/brand-story-20261025/c03-submission-root`，媒體根目錄仍為`/workspace/work/brand-story-20261025/media`。續做請先讀`c03/production-entry.md`：精確新版預算帳戶與受保護啟用、正式v4素材仍需有正式連線的操作方處理；從零製作不再等舊C03插圖／音訊。原集帳本與既有US$25停線未變。
+- 站主再指示「做完後你繼續下一個不用停」，已接續C04八語文字與製片準備，並查C06原始資料。C03媒體仍優先；沒有宣稱跳過其預算入場。C04後台既有八語三部分全選已讀回，時間`2026-10-25T11:30:25.950439Z`；單一選項A企劃已免費送審，首卡`57a05583-f61e-4a74-88c9-274d00b163ee`已superseded；補齊原生三必填段落後重送，現行review `b82ea00f-85da-4cc9-92d8-a654e08ea09b`為pending，原劇本核准不變。C05/C09原生八語工作表亦已先建，尚無翻譯完成宣稱。
 - 站主已授權本集做完按集數繼續、採建議選項且預設八語，不再為例行製片選項提問。C03正式後台讀回英／日／韓／西／葡／印尼／越南／泰全部 metadata、CC、dub=true，原始決定時間為 `2026-10-25T14:09:36.202531Z`；後續各新集依此預設走正常身分驗證設定，未宣稱已替其他集套用。
 - C03八語共1,144句文字、48章及標題說明完成原生合併與非譯者獨立校對，修正後重查全部 TEXT_PASS；初次 FIXES_REQUIRED、原檔與撤回意見保留。隔離 runtime 搬入演練0 lint errors、無缺漏或過期翻譯警告。沒有實際時間軸／SRT／配音或語言輪啟動。
 - C03原繁中燒錄稿不變，另備 clean-master 衍生配方，只有字幕旗標不同，官方劇本／旁白／圖像／混音輸入hash相同，獨立判定 METADATA_DERIVATION_PASS。須用真實已驗主素材分別輸出、clean成片重作QA及final審核後才符合原生配音關卡，不是已有乾淨影片或可以沿用另一輸出的成片核准。
@@ -70,3 +71,6 @@ scope:
 - 隔離執行根目錄 `/workspace/work/brand-story-20261025/submission-root`，素材根目錄 `/workspace/work/brand-story-20261025/media`。三支的 canonical `script.md` 由官方 `writeScreenplay` 產生，與作者附來源稿分開。C03、C04、C05 已有 `approvals.json`，不可再以準備程式覆寫核准輸入；既有 source／runtime／字典及研究快取保留待續。
 - 驗證：236 項 `test:docs-videos` 全過，0 skipped；文件測試收集契約另 2 項全過；2178 份任務檢查通過（其他既有任務警告未改）；兩 helper 與主機唯讀腳本語法通過；12項原生i18n測試全過，八語runtime搬入演練0錯誤／無缺漏過期。53 份舊稿雜湊複核未變。三支 lint 0 errors，C04／C05／C09 各 6／0／18 個警告仍留原紀錄，須待真實聲音與圖像處理。
 - 交接已推送至草稿 PR https://github.com/x812033727/travel_scanner/pull/1849 ，已讀回 open／draft／未合併及 `no-auto-merge` 標籤。純文字成果先保留待正式製片入場，任務維持 blocked。
+
+- 接續C04已完成八語880句／48章及metadata原生合併、完整獨立文字校對與14處精確修正後重查，全數TEXT_PASS；歷史與譯者自校保留。另重開原件獨立來源／書面配鏡PASS，verify-1已綁精確SHA進canonical並以原生report-only同步後台。新runtime搬入演練0errors／無缺漏過期翻譯，沒有造SRT／配音或語言輪。C04／C05／C09 clean配方均獨立METADATA_DERIVATION_PASS，尚無實際輸出。
+- C05八語作者／交叉覆核正在接續；C06已完成11份官方或原始來源、39項主張查核，來源研究在work/c06-audit，正寫新規則候選。沒有將C06來源研究當新稿PASS或舊核准沿用。任務本輪持續in-progress，成片DoD仍未完成。

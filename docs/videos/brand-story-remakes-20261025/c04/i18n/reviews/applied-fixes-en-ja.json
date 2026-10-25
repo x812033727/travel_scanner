@@ -1,0 +1,54 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "review_file_sha256": "ec2fb1928557614a0eb02fb630bd3ec1bc5a336f0dbd23e3e3b2d306b59f9068",
+  "locales": [
+    {
+      "locale": "en",
+      "previous_worksheet_sha256": "fffb8a76a177b46067c41147ca040460f19684c0da3fafff9c177e7458b69b54",
+      "previous_translation_sha256": "5efec8b37807696cdf3d22142cbc2ec06f9a30020fc0da446d2f8b17f4565a40",
+      "new_worksheet_sha256": "a061fc11684eaa183dff92ed529b7a7ecfc42194f136b2f71a32e72ab246c638",
+      "changes": [
+        {
+          "target": "lines.c04re151",
+          "before": "This is the granted patent's technical claim; not every bubble has this shape. The film itself also cushions.",
+          "after": "This is the granted patent's technical claim; it does not mean every bubble has this shape. The film itself also cushions.",
+          "reason": "原文「不代表每種泡泡都長這樣」限制這份專利技術主張的推論範圍；current 的「not every bubble has this shape」改成直接斷言實際並非所有泡泡都如此。保留 does not mean 的限定，並保留薄膜也緩衝的子句。"
+        },
+        {
+          "target": "lines.c04re171",
+          "before": "These details appear in a text filed in 1959 and granted in 1964.",
+          "after": "These details appear in the text of a patent filed in 1959 and granted in 1964.",
+          "reason": "申請及核發的主體是專利。current 把 text 寫成 filed／granted 的主體，尤其 text was granted 不自然且模糊法律程序。明確為1959年申請、1964年核發的專利本文，兩年份及先後不變。"
+        },
+        {
+          "target": "lines.c04rt121",
+          "before": "Years later, the company recalled bubble cushioning protecting IBM 1401 computers in shipment soon after its founding.",
+          "after": "Years later, the company recalled that soon after its founding, bubble cushioning was used to protect IBM 1401 computers during shipment.",
+          "reason": "worksheet.boundaries 的第一段先說公司後年回顧、創辦後不久，第二段才說氣泡片保護出貨中的IBM 1401。current 把 soon after its founding 放到機型及出貨之後，與原cue子句順序不符。將該時間限定移回案例之前，同時保留公司回顧歸屬。"
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "previous_worksheet_sha256": "355dbb5d63380f1a82f08e30aa538318d9407b8bc1ccc7382c1c60d7e0cacce7",
+      "previous_translation_sha256": "f202513d7adec1508b428cdbcc5e8986c24a6df43c50502b41d00bbf9f3b90d1",
+      "new_worksheet_sha256": "c087c3c3ad713ed2d63002ee790b943eb45ce3f8f5e4ff43804c4640a64e9bf8",
+      "changes": [
+        {
+          "target": "lines.c04ri131",
+          "before": "製造時には、別の問題もありました。2枚のフィルムを封じたばかりなのに、高温の装置を離れると、凸部が縮むことがあったのです。",
+          "after": "製造時には、別の問題もありました。2枚のフィルムを封じたばかりでも、高温の装置を離れると、凸部が縮んでしまう可能性がありました。",
+          "reason": "原文是離開高溫設備後「可能」縮下去，屬製程風險。current 的「縮むことがあったのです」敘述實際曾發生的事例，將可能性提高成既定歷史事實。恢復可能性，保留剛封好、離開高溫設備及凸部縮下去的順序。"
+        },
+        {
+          "target": "lines.c04re161",
+          "before": "壁の模様が荷物の力を受けるようになりました。ですが、この転換が特許に記された時点で、その会社はすでに設立されていたのでしょうか。",
+          "after": "壁の模様が荷物の代わりに力を受けるようになりました。ですが、この転換が特許に記された時点で、その会社はすでに設立されていたのでしょうか。",
+          "reason": "「替貨物承力」是代替／為貨物承受力，current 的「荷物の力を受ける」會讀成力來自貨物，也不自然。改為「荷物の代わりに力を受ける」，保留後半公司成立與專利時間的問句。"
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

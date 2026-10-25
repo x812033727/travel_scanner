@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T15:31:41.713954+00:00",
-  "state": "c03_approved_eight_language_text_ready_paid_admission_blocked",
+  "updated_at": "2026-10-25T16:09:19.778607+00:00",
+  "state": "c03_c04_text_ready_c05_translation_c06_rewrite_in_progress_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -106,7 +106,30 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "backend_checked_at": "2026-10-25T12:30:38.660Z"
+      "backend_checked_at": "2026-10-25T15:58:38.068Z",
+      "backend_outline_status": "pending",
+      "backend_outline_review_id": "b82ea00f-85da-4cc9-92d8-a654e08ea09b",
+      "outline_approval_imported": false,
+      "language_choice_readback": "c04/backend-language-choice.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "clean_master_recipe": "c04/variants/clean-master/derivation.json",
+      "native_fact_check": "c04/verify-1.md",
+      "text_translations": "c04/i18n/preparation-status.json",
+      "language_locales": [
+        "en",
+        "ja",
+        "ko",
+        "es",
+        "pt",
+        "id",
+        "vi",
+        "th"
+      ],
+      "language_parts": [
+        "metadata",
+        "captions",
+        "dub"
+      ]
     },
     {
       "id": "c05",
@@ -186,7 +209,7 @@
   "paid_requests": 0,
   "new_media_files": 0,
   "original_sources_preserved": {
-    "checked_at": "2026-10-25T15:29:50.094057+00:00",
+    "checked_at": "2026-10-25T16:09:19.778607+00:00",
     "checked_files": 53,
     "changed_original_files": [],
     "status": "PASS",
@@ -207,7 +230,8 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 438
+      "files": 492,
+      "scope": "tracked and staged source files; ongoing untracked drafts excluded"
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -227,7 +251,19 @@
       "negative_checks": 3,
       "host_executed": false,
       "receipt": "c03/host-readback-local-check.json"
-    }
+    },
+    "eight_language_runtime_rehearsals": [
+      {
+        "id": "c03",
+        "status": "PASS",
+        "lines": 1144
+      },
+      {
+        "id": "c04",
+        "status": "PASS",
+        "lines": 880
+      }
+    ]
   },
   "remaining": [
     "protected budget-history readback, whole-film quote and remake account activation",
@@ -258,7 +294,7 @@
     "old_media_access": "optional_historical_recovery_not_a_prerequisite",
     "actual_new_audio_seconds": null,
     "production_mode": "fresh_remake",
-    "latest_user_direction": "如果不行你就重新來吧",
+    "latest_user_direction": "做完後你繼續下一個不用停",
     "slug": "story-everyday-moleskine-c03-remake-20261025",
     "handoff": "c03/production-entry.md",
     "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-moleskine-c03-remake-20261025",
@@ -283,11 +319,29 @@
     "dub"
   ],
   "translation_text_preparation": {
-    "receipt": "c03/i18n/preparation-status.json",
+    "receipt": null,
     "locales": 8,
-    "lines": 1144,
+    "lines": 2024,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
-    "dub_audio": false
+    "dub_audio": false,
+    "projects": [
+      {
+        "id": "c03",
+        "receipt": "c03/i18n/preparation-status.json",
+        "lines": 1144
+      },
+      {
+        "id": "c04",
+        "receipt": "c04/i18n/preparation-status.json",
+        "lines": 880
+      }
+    ],
+    "prepared_projects": 2
+  },
+  "latest_user_direction": "做完後你繼續下一個不用停",
+  "continuation_in_progress": {
+    "c05": "eight_language_translation_and_independent_review",
+    "c06": "source_research_complete_new_narrative_in_progress"
   }
 }

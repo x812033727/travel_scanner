@@ -142,9 +142,18 @@
     "native_write_phase": "After actual backend selection and the applicable final gate, copy the server locales and its real locales_decided_at through the normal writeLanguages/worker flow.",
     "readback_file": "c03/backend-language-choice.json",
     "applied_to": [
-      "story-everyday-moleskine-c03-remake-20261025"
+      "story-everyday-moleskine-c03-remake-20261025",
+      "story-everyday-bubble-wrap-c04-remake-20261025",
+      "story-everyday-kincho-c05-remake-20261025",
+      "story-everyday-patagonia-c09-remake-20261025"
     ],
-    "future_episodes": "Apply the same full eight-part choice through the ordinary authenticated preselection when each subsequent remake exists; no routine question is needed under the user authorization."
+    "future_episodes": "The four existing remakes already have actual full eight-part selections; for subsequent episodes preserve or apply the same ordinary authenticated choice under the user authorization, without a routine question.",
+    "readback_files": [
+      "c03/backend-language-choice.json",
+      "c04/backend-language-choice.json",
+      "c05/backend-language-choice.json",
+      "c09/backend-language-choice.json"
+    ]
   },
   "production_phase": {
     "preselection": "The authenticated story language panel may store selection before the first final.",
@@ -162,7 +171,7 @@
     "tools/video/automation/flow.mjs:storyDubReady and languages; actual backend decision gates the language round.",
     "tools/video/core/stages.mjs:writeLanguages copies the actual site choice; it is not an alternative owner-choice API."
   ],
-  "updated_at": "2026-10-25T15:23:07.314639+00:00",
+  "updated_at": "2026-10-25T16:00:18.940139+00:00",
   "text_preparation": {
     "source": "c03/i18n/preparation-status.json",
     "locales": 8,

@@ -13,7 +13,7 @@
 | 第一批 | 精確稿件的獨立審查 | 本機檢查 | 後台審稿卡 |
 | --- | --- | --- | --- |
 | [C03 Moleskine](c03/README.md) | [來源／書面配鏡 PASS](c03/reviews/source-r3-delta.json)；[雙讀者合併 PASS](c03/reviews/narrative-final.json) | [lint](c03/lint-final.json)：0 errors、31 warnings | [企劃與劇本核准已匯入](c03/backend-status.json)；[正式入場交接](c03/production-entry.md) |
-| [C04 泡泡紙](c04/script.md) | [來源／書面配鏡 PASS](c04/reviews/source-r2-delta.json)；[兩位隔離讀者合併 PASS](c04/reviews/narrative-final.json) | [lint](c04/lint-final.json)：0 errors、6 個估計鏡頭時長警告 | [劇本核准已讀回並匯入](c04/backend-status.json)，review ID `4b59f286-1467-4548-b0da-95b5462f682f` |
+| [C04 泡泡紙](c04/README.md) | [來源／書面配鏡 PASS](c04/reviews/source-r2-delta.json)；[兩位隔離讀者合併 PASS](c04/reviews/narrative-final.json) | [lint](c04/lint-final.json)：0 errors、6 個估計鏡頭時長警告 | [劇本核准已讀回並匯入](c04/backend-status.json)，review ID `4b59f286-1467-4548-b0da-95b5462f682f` |
 | [C05 金鳥蚊香](c05/script.md) | [來源／書面配鏡 PASS](c05/reviews/source-r6-delta.json)；[兩位隔離讀者合併 PASS](c05/reviews/narrative-final.json) | [lint](c05/lint-final.json)：0 errors、0 warnings | [劇本核准已讀回並匯入](c05/backend-status.json)，review ID `398b6b93-0ce6-439a-925e-8ff72a1bc5fd` |
 | [C09 Patagonia](c09/script.md) | [來源／書面配鏡 PASS](c09/reviews/source-r12-delta.json)；[兩位隔離讀者合併 PASS](c09/reviews/narrative-final.json) | [lint](c09/lint-final.json)：0 errors、18 warnings | [已核准並匯入](c09/backend-status.json)，review ID `5c822c92-3bb6-437e-8b8a-157737a71543` |
 
@@ -66,4 +66,6 @@ C03 從零製作採獨立runtime，明確選集以避免碰到既有核准：`no
 
 ## 後續採用的八語設定
 
-依站主「用推薦、不用問、預設八語」接續各集；本次C03也已從後台讀回八語metadata／CC／dub全部選取。英、日、韓、西、葡、印尼、越南、泰文的文字與metadata已完成獨立校對，共1,144句；[語言設定與真實決定來源](language-defaults.json)及[C03文字準備](c03/i18n/README.md)分開記錄選擇、文字與實際媒體就緒。配音仍待真正乾淨核准主片；保留繁中燒錄版，另採已驗一項metadata差分的clean主片配方，不假造QA或語言資格。
+依站主「用推薦、不用問、預設八語」「下一個不用停」接續各集；C03／C04／C05／C09均已讀回後台八語metadata／CC／dub全選及各自原始時間。C03與C04的英、日、韓、西、葡、印尼、越南、泰文文字與metadata已完成獨立校對，共2,024句；[語言設定與真實決定來源](language-defaults.json)及[C03](c03/i18n/README.md)／[C04文字準備](c04/i18n/README.md)分開記錄選擇、文字與實際媒體就緒。配音仍待真正乾淨核准主片；保留繁中燒錄版，另採已驗一項metadata差分的clean主片配方，不假造QA或語言資格。
+
+C04已補原生獨立查核，企劃格式修正後原生lint0errors並免費重送，當前outline pending見[現行收據](c04/backend-outline-receipt.json)；舊卡已superseded並保留歷史。C05八語翻譯與C06依11份來源重寫正在接續，未宣稱成片完成。C04／C05／C09的clean配方均有獨立metadata-only review，仍無實際媒體／QA或配音資格。

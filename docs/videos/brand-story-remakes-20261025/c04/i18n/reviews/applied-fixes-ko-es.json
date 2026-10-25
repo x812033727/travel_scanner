@@ -1,0 +1,42 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "review_file_sha256": "7ae6555afea8c50642ad7c450276da944ab7520a0526edb0b690136d8fde1605",
+  "locales": [
+    {
+      "locale": "ko",
+      "previous_worksheet_sha256": "97f607fb4104089e69fba4274c4e2f5b4f74ba1bb40a935c37b983551c63e5af",
+      "previous_translation_sha256": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+      "new_worksheet_sha256": "d780d43b1e29a70bf1eea77d0aacf46df923f7307c6bfc602684fbd7a8f7bf2b",
+      "changes": [
+        {
+          "target": "lines.c04re121",
+          "before": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 한 번 더 막아 줄까요?",
+          "after": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 충격으로부터 한 번 더 보호해 줄까요?",
+          "reason": "The source asks what else can shield the goods from impact. In “무엇이 화물을 … 막아 줄까요?”, 화물을 becomes the thing being blocked, so the Korean can mean stopping the cargo itself. Make protection from impact explicit while retaining the near-flattening condition and source clause order."
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "previous_worksheet_sha256": "bf15040f904098897126bee6a06376cb39a6cc8146900569051ca7985fd609ea",
+      "previous_translation_sha256": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+      "new_worksheet_sha256": "0f13728c668fcaf64316c5bd07d12293875409c20d15e34e8b48b250f95a41c8",
+      "changes": [
+        {
+          "target": "lines.c04re161",
+          "before": "El relieve de pared empieza a recibir fuerzas por la carga; cuando la patente recogió este giro, ¿ya existía la empresa?",
+          "after": "El relieve de pared empieza a absorber los golpes para proteger la carga; cuando la patente recogió este giro, ¿ya existía la empresa?",
+          "reason": "“Recibir fuerzas por la carga” is unnatural and leaves por la carga open to a causal reading: forces caused by the cargo. The source says that the former wall pattern now takes force on the cargo’s behalf. State that protective purpose clearly, keeping the company-founding question second."
+        },
+        {
+          "target": "lines.c04rna1",
+          "before": "Si llevas la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos.",
+          "after": "Si estás a cargo de la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos.",
+          "reason": "“Si llevas la mesa de embalaje” can mean carrying the packing table and is not a natural way to assign responsibility for a packing station. The source condition is that the viewer is in charge of that station; retain the added inflation step and its coordination with shipment pace."
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}
