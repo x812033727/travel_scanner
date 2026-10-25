@@ -60,7 +60,7 @@ import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
-import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, castVoices, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
@@ -597,7 +597,12 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // word, listed by id; a character the book does not have stays for lint to refuse. An
     // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
-    const book = new Map((cast ?? []).map((character) => [character.id, character]));
+    // A character the book gives no voice (a voice_note alone) is cast from the drama tab's pool
+    // and the spare voices, the way castFrom cast it into series.json when the episode was
+    // drafted; a series.json from before the worker did (系統說我是 BUG e005, 2026-10-25) is cast
+    // whole here, so every episode of it picks alike, and lint takes the worker's voice where the
+    // book names none.
+    const book = new Map(castVoices(cast ?? [], { voices: drama.character_voice_pool ?? [], narrator: settled.voice }).map((character) => [character.id, character]));
     settled.characters = isExplainerPreset(settled.look?.preset) ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   // Production authority comes from the approved request, never model-generated metadata.
@@ -2340,7 +2345,7 @@ export class Automation {
     const oneOff = isOneOff(series);
     // The cast as this episode wears it: a character's look that covers the episode stands in for
     // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
-    const cast = castFrom(context.setting?.body_json, episode.number);
+    const cast = castFrom(context.setting?.body_json, episode.number, { voices: this.settings.drama?.character_voice_pool ?? [], narrator: settingsFor(this.settings, "drama").voice });
     const production = productionForEpisode(context.setting?.body_json, episode.number);
     const visualTier = production?.profile ? "clips" : series.visual_tier ?? "clips";
     const beats = episode.beats ?? {};
