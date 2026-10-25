@@ -322,10 +322,12 @@ async def test_the_last_story_remade_brings_a_finished_series_back(
     assert record.metadata_json["reopened"] is True
 
 
-@pytest.mark.parametrize("kind", ["series", "one-off"])
+@pytest.mark.parametrize("kind", ["one-off"])
 async def test_the_other_kinds_of_series_are_refused(
     db: async_sessionmaker[AsyncSession], kind: str
 ) -> None:
+    """A one-off is its only episode. An episode of a drama series is redone since 2026-10-25
+    (test_video_drama_redo.py); a long anime is refused there."""
     owner = await _user(db, "owner")
     slug = "xianxia" if kind == "series" else "one-off-1a2b3c4d"
     async with db() as session:

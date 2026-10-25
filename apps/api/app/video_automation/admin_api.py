@@ -110,8 +110,9 @@ from app.video_automation.stories import import_story_rows
 from app.video_automation.topics import gather_topics
 from app.video_budget import service as pilot_budget
 from app.video_media.jobs import MediaJobFailed, key_for, series_image_vendor
-from app.video_reviews.admin_service import LIST_LIMIT, list_projects
+from app.video_reviews.admin_service import LIST_LIMIT, list_projects, review_store
 from app.video_reviews.schemas import ProjectSummary, VideoFormat
+from app.video_reviews.storage import ReviewStore
 from app.video_shorts.schemas import ShortsFilter, ShortsState
 from app.video_speech.admin_api import VideoTool, jev_outcome_uncertain_response
 from app.video_speech.checking import CheckUnavailable
@@ -884,13 +885,20 @@ async def restore_video_series_episode(
 async def redo_video_series_episode(
     slug: str, number: int, user: ContentManager, session: Session
 ) -> SeriesOut:
-    """Make a story whose video was dropped again, under a new video slug: the way back that
-    ``/restore`` refuses, for a story series only and ``STORY_REDO_LIMIT`` times a story
-    (``redo_episode`` says why)."""
+    """Make an episode again under a new video slug: a story whose video was dropped (the way
+    back that ``/restore`` refuses), or an episode of a drama series, whose live video is
+    dropped first; ``STORY_REDO_LIMIT`` times an episode (``redo_episode`` says why)."""
     try:
-        return await drama_series.redo_episode(session, user, slug, number)
+        return await drama_series.redo_episode(
+            session, user, slug, number, review_store=lambda: _review_store(session)
+        )
     except SeriesRefused as error:
         raise _series_refused(error) from error
+
+
+async def _review_store(session: AsyncSession) -> ReviewStore:
+    """The review area a redo drops the old video's previews from; read only when it drops."""
+    return review_store(await load_runtime_settings(session))
 
 
 # The brand-story backlog (docs/videos/STORY.md §企劃清單與集數列): the admin page's way to what
