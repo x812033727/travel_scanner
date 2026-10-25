@@ -152,6 +152,17 @@ test("hintTerms lists each English word a line says once, as the script spells i
   assert.equal(hintTerms(many).length, MAX_HINT_TERMS);
 });
 
+test("hintTerms gives a dub written in Latin letters only the dictionary's terms, never fragments of accented words", () => {
+  const lexicon = { schema_version: 1, terms: { PHP: "P H P", Wiz: null, Google: null, Gemini: null, Argon: null, GPT: null, Sol: null, Ryan: null, Austin: null } };
+  const vi = { id: "i6qv", text: "Hai tuần sau, Wiz, công ty bảo mật thuộc Google, dùng Gemini thế hệ 4, tức Argon, cộng thêm GPT-5.6 Sol, độc lập tìm ra cùng lỗ hổng đó," };
+  assert.deepEqual(hintTerms(vi, { locale: "vi", lexicon }), ["Wiz", "Google", "Gemini", "Argon", "GPT-5.6", "Sol"], "Sol is no longer pushed past the 20-word cap");
+  assert.deepEqual(hintTerms({ id: "w9gx", text: "Dùng hosting: hỏi thẳng nhà cung cấp hai điều: PHP bản nào" }, { locale: "vi", lexicon }), ["PHP"], "no D, ng, h, i fragments");
+  const es = { id: "4649", text: "el investigador Ryan Austin presentó un ataque con GPT-5.6 Sol, como el del inicio: una petición y entra." };
+  assert.deepEqual(hintTerms(es, { locale: "es", lexicon }), ["Ryan", "Austin", "GPT-5.6", "Sol"], "Spanish words are not English words");
+  for (const locale of ["pt", "id"]) assert.deepEqual(hintTerms({ id: "x1", text: "a Wiz achou com o Gemini, também" }, { locale, lexicon }), ["Wiz", "Gemini"], locale);
+  assert.deepEqual(hintTerms({ id: "x2", text: "PHP公式告知にこうあります。Linuxディストリと" }, { locale: "ja", lexicon }), ["PHP", "Linux"], "a script without Latin words keeps every Latin word");
+});
+
 test("--locale takes a dub's locale and nothing else", () => {
   assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]);
   for (const locale of DUB_LOCALES) assert.equal(parseDubLocale(locale), locale);

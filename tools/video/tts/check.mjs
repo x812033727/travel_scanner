@@ -48,7 +48,7 @@ import { speechLexicon } from "../dubs/plan.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
-import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
+import { SECOND_OPINION_ENV, secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
@@ -145,6 +145,15 @@ const CLOSING_PARTICLES = /[耶餒馁]+$/u;
 const CLAUSE_CLOSING_PARTICLES = /(?<=[\p{L}\p{N}])(?:(?<!好)耶|(?<![氣气])[餒馁])(?=\s*(?:\p{P}|$))/gu;
 // Latin-script words, as the transcriber's hint list takes them: one word each.
 const LATIN_WORD = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*/g;
+// The words of a language written in Latin letters with its own accents ("Dùng", "petición"),
+// joined the way LATIN_WORD joins them, so an accented word is one word and not "D" and "ng".
+const ANY_WORD = /[\p{L}\p{N}][\p{L}\p{N}.+#'_-]*/gu;
+const ASCII_WORD = /^[A-Za-z0-9][A-Za-z0-9.+#'_-]*$/;
+// Languages written in Latin letters: every word of theirs is Latin, so only the dictionary's
+// terms are hinted. In vi, es, pt and id the whole sentence (cut into fragments at each accented
+// letter) went to the transcriber as "English words" until 2026-10-25; the 20-word list filled
+// up before the product names, and Gemini wrote GPT-5.6 Sol as GPT-3.5 and Soho.
+export const LATIN_SCRIPT_LOCALES = new Set(["en", "es", "pt", "id", "vi"]);
 // Mirrors TranscribeIn.terms' max_length in apps/api/app/video_speech/schemas.py.
 export const MAX_HINT_TERMS = 20;
 
@@ -157,15 +166,18 @@ function dictionaryTerm(word, lexicon) {
 }
 
 /**
- * The English words a line says, spelled as the script spells them, for the transcriber. In an
- * English dub every word is Latin, so only the dictionary's terms (the acronyms and product
- * names a transcriber spells its own way) are hinted there.
+ * The English words a line says, spelled as the script spells them, for the transcriber. In a
+ * dub written in Latin letters (LATIN_SCRIPT_LOCALES) every word is Latin, so only the
+ * dictionary's terms (the acronyms and product names a transcriber spells its own way) are
+ * hinted there.
  */
 export function hintTerms(line, { locale = NARRATION_LOCALE, lexicon } = {}) {
-  const words = (spokenText(line).match(LATIN_WORD) ?? [])
+  const latin = LATIN_SCRIPT_LOCALES.has(locale);
+  const found = latin ? (spokenText(line).match(ANY_WORD) ?? []).filter((word) => ASCII_WORD.test(word)) : (spokenText(line).match(LATIN_WORD) ?? []);
+  const words = found
     .map((word) => word.replace(/[.'_-]+$/, ""))
     .filter((word) => /[A-Za-z]/.test(word) && word.length <= 40)
-    .filter((word) => locale !== "en" || dictionaryTerm(word, lexicon));
+    .filter((word) => !latin || dictionaryTerm(word, lexicon));
   return [...new Set(words)].slice(0, MAX_HINT_TERMS);
 }
 
@@ -499,6 +511,10 @@ export async function checkAudio(args, ctx, options) {
     ctx.stdout.write(`  ${id}  cleared by ${entry.second.by} (${how}); Gemini heard 「${entry.heard}」, ${entry.second.by} heard 「${entry.second.heard}」\n`);
   }
   if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
+  // Without a second transcriber, a word Gemini alone mishears (a product name it "corrects", a
+  // loanword it spells in Latin letters) stays flagged: on 2026-10-25 a hand run without one
+  // flagged 7 of 8 dub tracks for transcript noise the voice did not make.
+  if (!second && flagged.length) ctx.stdout.write(`no second transcriber checked these lines (set ${SECOND_OPINION_ENV} or pass --second-opinion, docs/videos/DUBS.md); Gemini's own mishearings stay flagged\n`);
   for (const [id, entry] of flagged) {
     const other = entry.second ? `\n    ${entry.second.by}: ${entry.second.heard}` : "";
     const why = leaks.has(id) ? `leaked word 「${leaks.get(id)}」, ${jevNote(entry)}` : jevNote(entry);
