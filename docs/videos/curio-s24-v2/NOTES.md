@@ -7,7 +7,7 @@
   估 12.3 分鐘（lint 用舊語速 250 字／分估的，目標 12–14；新 style 寫 4.5 字／秒，3,000 字加卡片停頓約 12–13 分鐘，S18 第二版 3,060 字估 12.6）。
 - 事實沿用第一版 2026-10-20 的查核 `topic-checks/S24.md`（44 列加獨立覆核），**沒有新增查核**；每句對照在 [`claims.md`](claims.md)（新加的事實句標「第二版新加」），給 `qa` 讀的表在 [`verify-1.md`](verify-1.md)。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站。第一版只到稿子，沒有畫過圖，所以兩版都沒有快取；第二版 75 景提示詞仍逐字沿用第一版，25 景是新提示詞，將來一次畫整集。
-- **盲評待跑（主對話跑）**：這個代理照規則不跑盲評。payload 存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪兩位十三題全是，沒改稿；答案在 panel/，narrative --answers 已留紀錄）。原本的待跑說明：盲評待跑（主對話跑）**：這個代理照規則不跑盲評。payload 存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s24/payload-r1.json`
   （`narrative --slug curio-s24-v2 --json` 的輸出，`narration` 與 `questions` 原文，13 題是系列版 `STORY_SERIES_PANEL_QUESTIONS`）。跑法照主機兩位讀者的規則：兩個全新讀者各自只讀 payload，
   回 `{"answers":[{"id","yes","evidence"}]}`，同一題兩位都答否才算沒過、才改稿；最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，
