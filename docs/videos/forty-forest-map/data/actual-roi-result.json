@@ -1,0 +1,1201 @@
+{
+  "retrieved_utc": "2026-10-25T14:48:03.792042+00:00",
+  "dataset": "Forest Typology 2020 (v1)",
+  "baseline_year": 2020,
+  "not_the_2017_2025_early_annual_series": true,
+  "source": {
+    "object_url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+    "object_bytes": 7293206,
+    "gcs_generation": "1777582191968217",
+    "gcs_md5Hash": "/+qFVW6EBHvCe15/Zjd1SA==",
+    "metadata_url": "https://api.figshare.com/v2/articles/32288616",
+    "doi": "10.25452/figshare.plus.32288616.v1",
+    "license": "CC BY 4.0"
+  },
+  "method": "bounded HTTP Range header + exact compressed full-resolution tile offsets; sparse local TIFF; rasterio 10x10 window; no synthetic score data",
+  "metadata": {
+    "crs": "EPSG:32651",
+    "width": 3072,
+    "height": 4512,
+    "count": 5,
+    "dtypes": [
+      "uint8",
+      "uint8",
+      "uint8",
+      "uint8",
+      "uint8"
+    ],
+    "nodata": 255.0,
+    "transform": [
+      10.0,
+      0.0,
+      317440.0,
+      0.0,
+      10.0,
+      2692000.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "block_shapes": [
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        512,
+        512
+      ]
+    ],
+    "source_row": 4067,
+    "source_col": 2070,
+    "window": {
+      "col_off": 2065,
+      "row_off": 4062,
+      "width": 10,
+      "height": 10
+    },
+    "point_projected": {
+      "x": 338140.85130410385,
+      "y": 2732674.378122254
+    },
+    "pixel_center_projected": {
+      "x": 338145.0,
+      "y": 2732675.0
+    },
+    "window_transform": [
+      10.0,
+      0.0,
+      338090.0,
+      0.0,
+      10.0,
+      2732620.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "tiff_layout": {
+      "tile_width": 512,
+      "tile_height": 512,
+      "planar_configuration": 2,
+      "tile_indices": [
+        46,
+        100,
+        154,
+        208,
+        262
+      ],
+      "compressed_tiles_total": 270,
+      "compression": "50000",
+      "predictor": "2"
+    }
+  },
+  "network": {
+    "data_bytes_received": 160141,
+    "whole_cog_downloaded": false,
+    "whole_figshare_zip_downloaded": false,
+    "requests": [
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=0-65535",
+        "status": 206,
+        "content_range": "bytes 0-65535/7293206",
+        "bytes_received": 65536,
+        "sha256": "67f858ed4a840e7433ccb5cdcd85b95cf86aa0be433a126a75a4ffcda24484af",
+        "retrieved_utc": "2026-10-25T14:48:00.436517+00:00"
+      },
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=4416787-4449437",
+        "status": 206,
+        "content_range": "bytes 4416787-4449437/7293206",
+        "bytes_received": 32651,
+        "sha256": "a2cb24199d8d561ca85b694ae7cfdcb46465f30e209855e57313e139409750b1",
+        "retrieved_utc": "2026-10-25T14:48:01.238045+00:00"
+      },
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=6384356-6435997",
+        "status": 206,
+        "content_range": "bytes 6384356-6435997/7293206",
+        "bytes_received": 51642,
+        "sha256": "125bca7d6028168605a350425525102cf019a0ad15a70706dd5f75c88c9a2e8f",
+        "retrieved_utc": "2026-10-25T14:48:02.080520+00:00"
+      },
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=6803030-6803185",
+        "status": 206,
+        "content_range": "bytes 6803030-6803185/7293206",
+        "bytes_received": 156,
+        "sha256": "8e9329964025a6447d7ecedca5f4bfa399634778962f807bf710823981a5e291",
+        "retrieved_utc": "2026-10-25T14:48:02.566892+00:00"
+      },
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=6936849-6937609",
+        "status": 206,
+        "content_range": "bytes 6936849-6937609/7293206",
+        "bytes_received": 761,
+        "sha256": "e768dfb8f2eb20ad4e6dcecb8499005aea491591c1ed449192e17487bbee2f12",
+        "retrieved_utc": "2026-10-25T14:48:03.124165+00:00"
+      },
+      {
+        "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "requested_range": "bytes=7143959-7153353",
+        "status": 206,
+        "content_range": "bytes 7143959-7153353/7293206",
+        "bytes_received": 9395,
+        "sha256": "8509481e57cc5c8711de560fa24b51011644fa773a93bbd6ab36bf03587ee84d",
+        "retrieved_utc": "2026-10-25T14:48:03.721442+00:00"
+      }
+    ]
+  },
+  "sample": {
+    "target_requested": {
+      "longitude": 121.4,
+      "latitude": 24.7
+    },
+    "actual_pixel_center": {
+      "longitude": 121.40004092613184,
+      "latitude": 24.700006051424293
+    },
+    "source_pixel": {
+      "row": 4067,
+      "col": 2070
+    },
+    "roi_pixel": {
+      "row": 5,
+      "col": 5
+    },
+    "stored_five_values": [
+      0,
+      248,
+      0,
+      0,
+      0
+    ],
+    "derived_other": 2,
+    "all_six_scores": {
+      "PrimaryForest": 0.0,
+      "NaturallyRegeneratingForest": 0.992,
+      "PlantedForest": 0.0,
+      "PlantationForest": 0.0,
+      "TreeCropsAndAgroforestry": 0.0,
+      "OtherLand": 0.008
+    },
+    "argmax_class_id": 2,
+    "argmax_class_name": "NaturallyRegeneratingForest",
+    "argmax_tied_class_count": 1
+  },
+  "roi": {
+    "width": 10,
+    "height": 10,
+    "nominal_pixel_size_m": 10,
+    "valid_pixels": 100,
+    "stored_five_bands_row_major": [
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          248,
+          249,
+          249,
+          248,
+          248,
+          248,
+          248,
+          248,
+          248,
+          248
+        ],
+        [
+          249,
+          249,
+          249,
+          249,
+          248,
+          248,
+          249,
+          248,
+          248,
+          248
+        ],
+        [
+          249,
+          249,
+          249,
+          249,
+          248,
+          249,
+          249,
+          249,
+          248,
+          248
+        ],
+        [
+          248,
+          249,
+          249,
+          249,
+          249,
+          249,
+          248,
+          248,
+          248,
+          248
+        ],
+        [
+          249,
+          248,
+          249,
+          248,
+          249,
+          248,
+          249,
+          249,
+          248,
+          248
+        ],
+        [
+          249,
+          249,
+          249,
+          249,
+          249,
+          248,
+          249,
+          248,
+          249,
+          248
+        ],
+        [
+          249,
+          248,
+          248,
+          248,
+          249,
+          249,
+          248,
+          249,
+          249,
+          248
+        ],
+        [
+          249,
+          248,
+          248,
+          248,
+          248,
+          249,
+          248,
+          249,
+          248,
+          248
+        ],
+        [
+          249,
+          249,
+          249,
+          249,
+          249,
+          248,
+          249,
+          248,
+          248,
+          248
+        ],
+        [
+          249,
+          248,
+          248,
+          248,
+          249,
+          248,
+          249,
+          249,
+          248,
+          249
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "derived_other_row_major": [
+      [
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1
+      ]
+    ],
+    "class_ids_row_major": [
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "valid_mask_row_major": [
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    ],
+    "class_counts": {
+      "NaturallyRegeneratingForest": 100
+    },
+    "max_score_range": [
+      0.992,
+      0.996
+    ]
+  },
+  "interpretation_limits": [
+    "Real published model outputs, not ground-truth land labels.",
+    "Scores are not post-hoc calibrated per-pixel correctness probabilities.",
+    "A 2020 baseline crop cannot establish changes in the 2017–2025 early annual series.",
+    "The south-up source transform is preserved in the GeoTIFF; display must orient from its transform.",
+    "Sparse TIFF intermediate contains only fetched header and touched tiles; use the complete 10x10 ROI artifact for reuse."
+  ]
+}
