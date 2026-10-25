@@ -1,0 +1,53 @@
+{
+  "slug": "curio-s58",
+  "round": "R4",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s58 --answers /workspace/travel_scanner/docs/videos/curio-s58/review/r4-merge/merged-answers.json --workdir /tmp/curio-s58-r4-merge-formal-TWX8IH --json",
+  "workdir": "/tmp/curio-s58-r4-merge-formal-TWX8IH",
+  "official_record_path": "/tmp/curio-s58-r4-merge-formal-TWX8IH/curio-s58/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "0adab42902bd00393a4b7c945a4b37a9eae4f61e79cbbd2710085713f8643132",
+    "brief.md": "8d0d42c6c5cf1de97ee8b497db3d298540b9fc21e1fe3bcee024b749c8960e08",
+    "claims.md": "f0e340870fa7389224932ca732950fb990b4bdebcf4baaabf2d93fa3d994edc1",
+    "video.json": "78960f72a00a5fcc245896d680bc18f9481cef6c472dd9fc94d82ad80ae7e547",
+    "script.md": "b9451d33643dccd8ffc84f4a6f93074f4500adb50855f7a5529d9620eeaa8d0c"
+  },
+  "creative_sha256_after": {
+    "research.md": "0adab42902bd00393a4b7c945a4b37a9eae4f61e79cbbd2710085713f8643132",
+    "brief.md": "8d0d42c6c5cf1de97ee8b497db3d298540b9fc21e1fe3bcee024b749c8960e08",
+    "claims.md": "f0e340870fa7389224932ca732950fb990b4bdebcf4baaabf2d93fa3d994edc1",
+    "video.json": "78960f72a00a5fcc245896d680bc18f9481cef6c472dd9fc94d82ad80ae7e547",
+    "script.md": "b9451d33643dccd8ffc84f4a6f93074f4500adb50855f7a5529d9620eeaa8d0c"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "965de7b59b68e381db7486aa3d79071de7a058d34f4b05ce5c59aa0190e071b1",
+    "b": "f0380deb62cd71f4ea66d1ac11d9c7fd1f11c049dfbe98b34139f2337a7f4be0"
+  },
+  "merged_answers_sha256": "63279bd72dd43b78e3e3c6477a194492521da2a78228aae0ea71362c50e3ed4e",
+  "stdout_sha256": "d8f9ebb4c480450382b6d79bb1c8f09339c3004cee5ffe3327fa6016913f6f45",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "43b9d65e5b82d67f8dd6addc6ab277454dfcc52e7bdfe2a6b1f90832267c382a",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58108] 達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？；讀者二：[s58108] 達格隆說一片能拍進十二或十六頁；一隻鳥能帶幾片？"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58080] 達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？；讀者二：[s58080] 達格隆抵達圖爾，手裡已有薄膜樣本；郵務電文仍在用什麼拍？"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "2d770c8433427323dcf262cf1743e84ab06f0cdd951ae1ff6e8207247ed0d174",
+  "narrative_hash": "47b3ce24d3bb651f",
+  "official_round": 1
+}

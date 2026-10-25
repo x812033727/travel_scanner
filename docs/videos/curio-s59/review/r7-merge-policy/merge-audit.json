@@ -1,0 +1,147 @@
+{
+  "slug": "curio-s59",
+  "round": "R7",
+  "rule": "fixed OR: a cited yes from either independent reader passes a question",
+  "creative_sha256": {
+    "research.md": "39a48f08ca01dfa18009e9c1819684d03b92c52656952affd3266a574d88067d",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "73711de13ce73791e409118b923eceb9d35425a84a63b6fc8b20ddba816e1c58",
+    "video.json": "c78a0329f901d05450440ac7244345e5a375ebbacf361c187cec1036bfcc767e",
+    "script.md": "d024ba3a7fed6c94b90320097de6289273278b65c7e1ebaef727b86ec861e57f"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "ac45ffc4535910cf809372115d0e8102302b47ff29e756a7334d0cadd4bad536",
+  "readers": [
+    {
+      "label": "A",
+      "answers_sha256": "ad5f94534dba4be428b4b609fb132ec0700300ef75f9a1bc2f70bc1e672ad68b",
+      "review_sha256": "bab1b2ac8058910fa82caef1a7d647aef6bc46a9de5c5a510c7fc0ab3cfc766d",
+      "official_sha256": "279b1dadb01c0aa2f81b2fe736091597e61dd9822289a91a991dd0572024e488",
+      "stdout_sha256": "2ee08cbcc0a60e8b7ddc87d9da98698907f1450f254dfb53686413441cefc2b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "yes": 10,
+      "failed": [
+        "no_toc",
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "label": "B",
+      "answers_sha256": "b33d080fa1e7d6c110bc57012404c36d63dce055496fd9c45bf0a9dd1051c3f0",
+      "review_sha256": "b931d1036132b34b3c3c2e7d17aa459856fa9959b68c323950c1fe6b8172e510",
+      "official_sha256": "31183160c081994d7864853ffcac400e813b6611501665895b3ddc8d5c564ed0",
+      "stdout_sha256": "8b08d336f3851cb18a040b478d6e8a6687a7d79a615684e762f350307e5f4007",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "yes": 11,
+      "failed": [
+        "payoffs",
+        "no_recap"
+      ]
+    }
+  ],
+  "merged_answers_sha256": "8fe915f386e9759dd40c9e14e4b84aa37c373ecd150b36569322f009cfeca493",
+  "result": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59070] 開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59017] 可這種壓痕已經告訴他：一次動作，能被留下來，讓機器再走一遍。",
+        "yes_readers": 1
+      },
+      {
+        "id": "chapters_link",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59067] 愛迪生說，他走到編輯比奇的桌前拆開包裹，放好機器，再唸一次、放一次。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59082] 他錄音時的嘴離話筒有多近？這個關鍵距離，得等杜蒙塞爾自己重練才知道。",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59096] 他承認第一次站太遠，嘴唇沒有貼到話筒的邊。",
+        "yes_readers": 1
+      },
+      {
+        "id": "no_recap",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s59030] 他於是畫了一台小機器，草圖上還標了給工匠的十八美元。；讀者二：[s59078] 科學院於是請杜蒙塞爾自己動手；若換人仍有聲音，疑問就少了一層。",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "required": false,
+        "yes": true,
+        "evidence": "[s59080] 開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59110] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59007] 愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59077] 難題其實變得更窄：人聲究竟留在錫箔上，還是有人趁著搖柄替喇叭口補聲？",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59065] 所以第一次奏效，還不能保證換一個房間、換一隻手也一樣。",
+        "yes_readers": 1
+      }
+    ]
+  }
+}

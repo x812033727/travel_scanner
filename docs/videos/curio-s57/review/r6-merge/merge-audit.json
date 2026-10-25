@@ -1,0 +1,307 @@
+{
+  "slug": "curio-s57",
+  "round": "R6",
+  "rule": "fixed OR across two independent blind readers",
+  "creative_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "48f287375b22a77929130046c15c55079c78d9376996a033709dc7a1d625b933",
+    "claims.md": "71b0f3405bd254e7be0d464d34d81c98fb78b08951e046b331ec79a34af03919",
+    "video.json": "e766dbe4ac40932abfa5bea1a89713604b2fbb64158bf3523376bde0aa0131cc",
+    "script.md": "f2d8c42f6b71698121199d7c3c26ddde958eddf1d25be96783356c8ef404ef87"
+  },
+  "rule_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "source": "r6-blind-a.md",
+      "source_sha256": "2eaf9b5d83b8a18bad1af7ce4681fac84a57f499c10b5a84efc09760de707204",
+      "raw_copy_sha256": "2eaf9b5d83b8a18bad1af7ce4681fac84a57f499c10b5a84efc09760de707204",
+      "answers_sha256": "cde2506f4331ba251a2cb5a37a03cd479a4d9249345e93ed3a827395c69a8990",
+      "yes": 11,
+      "no": [
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "reader": "b",
+      "source": "r6-blind-b.md",
+      "source_sha256": "b8e61b198ad7bc14981a2ec47df16aaa120a5e92f929856c1405e7ba25673f7a",
+      "raw_copy_sha256": "b8e61b198ad7bc14981a2ec47df16aaa120a5e92f929856c1405e7ba25673f7a",
+      "answers_sha256": "eff17c6c91ff4ea71dc6575af1872fe7297c11528eb9f866709ff8e50e28160a",
+      "yes": 12,
+      "no": [
+        "no_recap"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "reader": "a",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "前四句把觀眾放在 1872 年 3 月的封日記、託付、啟程現場；有人與物件正在行動（9–21）。",
+      "script_line_number": 9,
+      "scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_spoiler",
+      "vote": "YES",
+      "raw_reason": "開場停在日記要走、人會去哪裡的疑問（9–21）；補給與勸歸的結果仍未說出（33–45）。",
+      "script_line_number": 21,
+      "scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "預告式開場後，正文由 1871 年烏吉吉相遇，依序走到勸歸、湖上查訪、東行找貨、1872 年告別（51、153、251、325、419、505、603–671）。",
+      "script_line_number": 51,
+      "scene_id": "s57011",
+      "exact_spoken_line": "一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "提問都指向故事內的下一個動作或結果，例如「會把人帶回去嗎」「先往哪裡去」（205、319）；沒有宣告影片的講述順序。",
+      "script_line_number": 205,
+      "scene_id": "s57052",
+      "exact_spoken_line": "找人已經成功；接下來會把人帶回去嗎？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "章末疑問由下一章首句接續：報信者→蘇西（147→153）、勸歸問題→史丹利發問（245→251）、同行去向→湖的北端（319→325）、舊布未取回先到什麼→新援助（499→505）。開場的去向問題也由回到烏吉吉找續行補給接住（45→51）。",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "正文持續留具體懸念，從誰先報信、是否返國，到舊箱是否完整、同行人手何處來，間隔均短（147、205、241、393、435、463、483、537、597、643、675）。",
+      "script_line_number": 147,
+      "scene_id": "s57035",
+      "exact_spoken_line": "第一個把消息帶到屋前的，會是誰？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "主要提問有新答案：蘇西報信（147→153）、不先返國而先完成考察（241→279）、舊箱短少（393→491）、人手要從海岸來（537→549）、最後未能返家（675→679）。",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "同一個「補給到手後仍要繼續考察、不返家」決定在同章反覆說出：541、545、557；後兩處沒有作為遠距回呼的新事實。",
+      "script_line_number": 557,
+      "scene_id": "s57153",
+      "exact_spoken_line": "他並未把返家休養排進這次路線。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "章名指向可見事件或揭曉，如「蘇西跑來報信」「史丹利把貨交給他」「日記走了，人留下」（149、501、599）。",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "a",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "片尾止於去世及回看日記，沒有提下一集或下一份檔案（675–687）。",
+      "script_line_number": 679,
+      "scene_id": "s57187",
+      "exact_spoken_line": "一八七三年五月初，他在內陸去世。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "a",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "首個封日記場景後，開場另留至少三個待揭問題：補給回來會否改變決定、勸返家會怎樣回答、兩人為何分路（37、41、45）。",
+      "script_line_number": 37,
+      "scene_id": "s57008",
+      "exact_spoken_line": "如果物資回來，他就會改變主意嗎？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "李文斯頓是否隨史丹利返家，貫穿失去補給、勸歸、繼續查水路、補給到手後的計畫及告別（45、95、251–315、337、505–557、647–687）。",
+      "script_line_number": 541,
+      "scene_id": "s57148",
+      "exact_spoken_line": "史丹利仍盼他返家，他卻盤算另一次出發。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "a",
+      "panel": "no_detour",
+      "vote": "NO",
+      "raw_reason": "回烏吉吉後的美國領事來信、亞丁舊電報、李沒有同類信件，連續三拍沒有改變找貨、勸歸或查水源的行動，也未在後文回收（377–389）。",
+      "script_line_number": 377,
+      "scene_id": "s57101",
+      "exact_spoken_line": "十二月十三日回村時，史丹利收到美國領事從海岸寄來的信。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "The first four spoken lines place us in March 1872 with Livingston sealing and handing over a diary as Stanley's party prepares to leave (9–21).",
+      "script_line_number": 9,
+      "scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_spoiler",
+      "vote": "YES",
+      "raw_reason": "The first chapter raises where Livingston will go and whether supplies or persuasion will change his mind (21, 37–45); it does not reveal the decision or the ending.",
+      "script_line_number": 21,
+      "scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "After the dated diary preview (9–21), the story starts in late 1871 (51) and proceeds through meeting, persuasion, lake trip, eastward trip, resupply, and March departure (153–671). The repeated persuasion is presented as later distinct encounters (251, 397, 647).",
+      "script_line_number": 51,
+      "scene_id": "s57011",
+      "exact_spoken_line": "一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "Forward phrases describe actions within the story, such as asking where the two will travel (319–325); no line announces a chapter list or presentation plan.",
+      "script_line_number": 319,
+      "scene_id": "s57083",
+      "exact_spoken_line": "不過兩人接著同路；他們先往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "The opening's missing supplies connect to the return to Ujiji (33–37, 51). Later transitions answer the prior question directly: Susie's identity (147, 153), return proposal (245, 251), lake direction (319, 325), the eastward obstacle (413, 419), aid delivered (499, 505), and the completed letter (597, 603).",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "Unresolved questions appear throughout at intervals comfortably below 90 seconds, including 75, 147, 225, 275, 345, 435, 499, 537, and 643.",
+      "script_line_number": 75,
+      "scene_id": "s57017",
+      "exact_spoken_line": "市場就在眼前，下一段路的貨在哪裡？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "Key questions receive new answers: Susie brings news (147→153), the diary records his decision to finish the inquiry (275→279), the lake claim reverses (345→349), the old boxes are short (393→491), labor must come from the coast (537→549), and he dies inland (675→679).",
+      "script_line_number": 491,
+      "scene_id": "s57136",
+      "exact_spoken_line": "一核對，李文斯頓原有貨物仍然短少；舊箱沒有完整等著他。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "The same decision to finish the investigation before going home is restated at 279, 405, 545–557, and 687. In particular, 545 already says the new goods will support continued investigation, then 557 repeats that home leave is absent from the plan without a new event.",
+      "script_line_number": 557,
+      "scene_id": "s57153",
+      "exact_spoken_line": "他並未把返家休養排進這次路線。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "The headings name concrete actions or discoveries: Susie brings news (149), they head north (321), Stanley hands over goods (501), and the diary leaves while Livingston stays (599). “第一個分岔” (247) names their consequential decision point.",
+      "script_line_number": 505,
+      "scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "The closing lines address his death and the meaning of the diary (675–687), with no next video or episode.",
+      "script_line_number": 679,
+      "scene_id": "s57187",
+      "exact_spoken_line": "一八七三年五月初，他在內陸去世。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "After the sealed diary scene, the opening poses at least three later questions: whether returned supplies change his mind, how he answers persuasion, and why they take different routes (37–45).",
+      "script_line_number": 37,
+      "scene_id": "s57008",
+      "exact_spoken_line": "如果物資回來，他就會改變主意嗎？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "Livingston's choice between returning home and continuing his inquiry stays central from the opening questions (37–45), through persuasion and resupply (251–315, 505–557), to the diary handoff and final outcome (647–687).",
+      "script_line_number": 251,
+      "scene_id": "s57063",
+      "exact_spoken_line": "史丹利說，抵達後第二天就問他想不想返國。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_detour",
+      "vote": "YES",
+      "raw_reason": "The lake trip tests the unfinished water inquiry (325–357), and the eastward travel leads to the goods he needs to continue it (419–545). These sequences advance the opening's return-or-stay question rather than opening a separate story.",
+      "script_line_number": 325,
+      "scene_id": "s57084",
+      "exact_spoken_line": "他們先朝坦干依喀湖的北端去。",
+      "reason_mentions_line_number": true
+    }
+  ],
+  "merged_answers_sha256": "380539f388a93472bd23dcd29aca9c6a70dfc29bf7b257964beb08e13258fab2",
+  "merged_yes": 12,
+  "merged_failed": [
+    "no_recap"
+  ],
+  "source_receipt": "r6-source-independent.md",
+  "source_receipt_sha256": "73fa156e831cdd3ed1d8c42992f0a841c254d9b6e2e2a5e0c7ddf92e3fb34774"
+}

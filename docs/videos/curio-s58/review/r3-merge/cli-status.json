@@ -1,0 +1,53 @@
+{
+  "slug": "curio-s58",
+  "round": "R3",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s58 --answers /workspace/travel_scanner/docs/videos/curio-s58/review/r3-merge/merged-answers.json --workdir /tmp/curio-s58-r3-merge-formal-nPmPoh --json",
+  "workdir": "/tmp/curio-s58-r3-merge-formal-nPmPoh",
+  "official_record_path": "/tmp/curio-s58-r3-merge-formal-nPmPoh/curio-s58/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "27bebfb771aa8a901cf69528fb23401d351dcc35bdf584ab5e70c2163bfa0ea7",
+    "brief.md": "49a1bd7cf68e2db074cc128bd08f60739da9ce85f63aa1ba4f7abab9f044e0d4",
+    "claims.md": "73dcedbcbf30d5abd2db92fd34b789718e61938e8b4a86fe528d109851d332ec",
+    "video.json": "7283ea2a7e444e2e58e83bb52a40da9548a1dddc1c2d74740971100f33936c48",
+    "script.md": "6fd7c0585ebb1a47f518d70d769a1094deb54dc90404362df0ce0ed821ef1816"
+  },
+  "creative_sha256_after": {
+    "research.md": "27bebfb771aa8a901cf69528fb23401d351dcc35bdf584ab5e70c2163bfa0ea7",
+    "brief.md": "49a1bd7cf68e2db074cc128bd08f60739da9ce85f63aa1ba4f7abab9f044e0d4",
+    "claims.md": "73dcedbcbf30d5abd2db92fd34b789718e61938e8b4a86fe528d109851d332ec",
+    "video.json": "7283ea2a7e444e2e58e83bb52a40da9548a1dddc1c2d74740971100f33936c48",
+    "script.md": "6fd7c0585ebb1a47f518d70d769a1094deb54dc90404362df0ce0ed821ef1816"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "568b28a0e0501f02420d5d83c1a00c93c6019a66858ab10e4629dfd7fba3ee9a",
+    "b": "91c1f5019202cb827291bf1522764a455c8a57defae3011de64ee5041693efbc"
+  },
+  "merged_answers_sha256": "540114fd64f8222c139069fc3c464e62fabe1bbd932ebc2be8ff1cf24fa4a026",
+  "stdout_sha256": "428f955ad764d4e53586741277175f3588d11a49ebe2eeda2e60b7a85560542b",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "a714bb4d9aac287dd78069a6085d1fea78b1097eb9fcaca479892b0a6bda17a9",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58131] 同一片訊息有些寄六次；其他片還得寄幾輪？；讀者二：[s58042] 被俘的球帶著郵件、鴿子，也帶著他一部分的機器。"
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58055] 一個沉重箱子幾乎撞上達格隆的頭，他伸手把它推開。；讀者二：[s58055] 一個沉重箱子幾乎撞上達格隆的頭，他伸手把它推開。"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "7aff34106a561026e2f2155a890918cc7ef652f6201de533ac48b4660f91bbdb",
+  "narrative_hash": "fbe53f255da25ff5",
+  "official_round": 1
+}

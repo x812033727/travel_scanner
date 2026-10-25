@@ -1,0 +1,146 @@
+{
+  "slug": "curio-s59",
+  "round": "R8",
+  "rule": "fixed OR: a cited yes from either independent reader passes a question",
+  "creative_sha256": {
+    "research.md": "39a48f08ca01dfa18009e9c1819684d03b92c52656952affd3266a574d88067d",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "aeb0cd64b8ddeb992e70c3daa813f42d475718e707e82e62f0da4a7684d95f95",
+    "video.json": "f29d9f55dbea7ee52a19e6c885ed36f26f51b30fc7fe0fa4caa87b7ea9d3a33b",
+    "script.md": "f0fd2a6069844fe99e994367f3fa8d27b36928231dc0695fd816762c18faf07b"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "f9ea9519a2d9b2ebdfd46ef6760e9d86f6547b36d8296dfa5d2dbc80ed244e44",
+  "readers": [
+    {
+      "label": "A",
+      "answers_sha256": "3d6f382a8fa806337f03044da5b6f34d6abac1810c29826e45b1fb9b6a863f74",
+      "review_sha256": "971524fe74b0a0112edc208ee5504be206b04a48af9679c4edefdd8c8f4380f6",
+      "official_sha256": "2f51ec8673baee73146883b40c547fcbb2fd90d1fd6ec827e35f5eb8dd411504",
+      "stdout_sha256": "265396daa5c48467bbc8d50444c915029f5b3229c1a647866c73ade14c44d676",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "yes": 12,
+      "failed": [
+        "payoffs"
+      ]
+    },
+    {
+      "label": "B",
+      "answers_sha256": "62f2cec3480e3650778dbb9ba57eb791b391211fceed72a725440c7fb90c54f0",
+      "review_sha256": "c1333ad2f4b37cb439f0b7d1d3168384f3d7080daf1d60f282946cb3b49dd2b0",
+      "official_sha256": "d0ed013ba9c0c0f658ee51219ae2252331bf50b0f1ec8304c77dc92e17c1b903",
+      "stdout_sha256": "9ba1a7de6c855fa50c20a46804cc7fb430546cf2eefe308cbf2f846227d0eff3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "yes": 10,
+      "failed": [
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ]
+    }
+  ],
+  "merged_answers_sha256": "036bfac98c508c9121fa0bd3c41159c03b4ec6abcc23c143ec86aab0dafcce5f",
+  "result": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "payoffs"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59070] 開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59009] 這隻手轉出的人聲，要怎麼證明不是那張嘴偷偷發出來的？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59080] 他真的試了，卻沒做出剛才那個效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59077] 難題其實變得更窄：人聲究竟留在錫箔上，還是有人趁著搖柄替喇叭口補聲？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s59059] 杜蒙塞爾說，錫箔反覆播放後壓痕會漸淺，聲音也逐漸模糊；這會不會妨礙旁人重聽？；讀者二：[s59059] 杜蒙塞爾說，錫箔反覆播放後壓痕會漸淺，聲音也逐漸模糊；這會不會妨礙旁人重聽？",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_recap",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59030] 還記得開場那張十八美元的草圖嗎？愛迪生就在這時把小機器畫了下來。",
+        "yes_readers": 1
+      },
+      {
+        "id": "chapters_are_events",
+        "required": false,
+        "yes": true,
+        "evidence": "[s59090] 秘書室裡，普斯卡斯照要求重新讓機器發聲。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59110] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59007] 愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59108] 那個說話者的嘴，終於能和喇叭裡的聲音分開看：箔上的壓痕自己推動薄片。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59064] 杜蒙塞爾另記，規律的鐘錶機構讓二重唱重播得較好；可巴黎院士要查的，仍是那台手搖機。",
+        "yes_readers": 1
+      }
+    ]
+  }
+}

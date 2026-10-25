@@ -1,0 +1,134 @@
+{
+  "slug": "curio-s59",
+  "round": "R4",
+  "rule": "fixed OR: a question passes when at least one reader has a cited yes",
+  "creative_sha256": {
+    "research.md": "d0077504f3dbe828363158a25c7e7dade955089f49dbb03a734893739e12467e",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "e19a8aa75c7d61bbba54b4d747db3b7025ac34599964ac0c4c115fbacd8d8c0b",
+    "video.json": "108db5d8ae5b540e396b1e9add3490c7ac8761e1aaa7dfd76b172edbadaba226",
+    "script.md": "5b18eb40b5c3434599abbd939d3231fc30837e360bfaff0ea00d23cdca89cf48"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "8525c51f6baa78ff61793f954574f8ae26e2f3fa091d4b1eef9b8622a4a1b1fe",
+  "readers": [
+    {
+      "reader": "a",
+      "answers_sha256": "62a38b963d75660afdc4a9c8c0bcb9e627f5a28dddad420bbea923d3639ee943",
+      "review_sha256": "d5f1d9ff858ba0cbbfd0a26d9d52118652f8d0e7997e1b56ad025c0d4aa75a06",
+      "receipt_sha256": "2a9ecd16b5879e8169f77751430d69716fad7d36ff9853bef4bcdc4888e42d4a",
+      "yes": 13,
+      "no": [],
+      "advisory_no": []
+    },
+    {
+      "reader": "b",
+      "answers_sha256": "e19b677fa2c06b5786177efd6e5b548e4224222711ae87888da7a014be826e8b",
+      "review_sha256": "48acf90cc70c41cb13457708ae7d37c549caaaa534eb354b5aa19f46a2fbddb3",
+      "receipt_sha256": "444709aac88824bb9cfa7ea4bbb90cf8eb47583eb12c6b1461f02577528b4b90",
+      "yes": 13,
+      "no": [],
+      "advisory_no": []
+    }
+  ],
+  "merged_answers_sha256": "62a38b963d75660afdc4a9c8c0bcb9e627f5a28dddad420bbea923d3639ee943",
+  "merged": {
+    "passed": true,
+    "yes": 13,
+    "failed": [],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59006] 一個沒有練過的人，真能讓這台機器說話嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59070] 開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59077] 難題其實變得更窄：人聲究竟留在錫箔上，還是有人趁著搖柄替喇叭口補聲？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59080] 開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59029] 但紙盤上的概念還不能回答：真的要用什麼東西承接那根針？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59096] 他承認第一次站太遠，嘴唇沒有貼到話筒的邊。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59070] 開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_are_events",
+        "required": false,
+        "yes": true,
+        "evidence": "[s59090] 秘書室裡，普斯卡斯照要求重新讓機器發聲。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59110] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59055] 機器若真的說話，聲音應該從這道痕跡走出來，而不是從操作員喉嚨來。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59106] 如果要另外檢查是否有人代替機器發聲，杜蒙塞爾還提出把留聲機接到電話的辦法。",
+        "yes_readers": 2
+      }
+    ]
+  }
+}

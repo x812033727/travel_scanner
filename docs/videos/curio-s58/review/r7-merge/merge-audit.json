@@ -1,0 +1,265 @@
+{
+  "slug": "curio-s58",
+  "round": "R7",
+  "rule": "official fixed OR: a cited YES from either reader passes a criterion",
+  "creative_sha256": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "fbb902e05bede6a4a88b108aae725667b41058c979ff7a69dea339a188c19e87",
+    "video.json": "ad330abbe8f0919987c01de2c3227e025af8d1d93cc7f2e3557875d5d7b629ec",
+    "script.md": "d32bea9d5cc33125cf9b41f1288a8faf78765d96dcd3ed2002abe4ad97f20957"
+  },
+  "creative_matches_at_transcription": true,
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "original_path": "../r7-blind-a.md",
+      "original_sha256": "ec1a47dda76f6606c0fce4fc2b49861ed9254a6015587f84b15633f562c015cc",
+      "raw_copy_sha256": "ec1a47dda76f6606c0fce4fc2b49861ed9254a6015587f84b15633f562c015cc",
+      "answer_sha256": "3a09b41ca94b32157138e2342084fadeaba7d99e68adb0af37fb826fdf3d4c95",
+      "yes": 8,
+      "no": [
+        "no_spoiler",
+        "one_line",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s58001] [s58001, L9] 「一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。」 The first sentence places a dated physical action in Paris."
+        },
+        {
+          "id": "no_spoiler",
+          "yes": false,
+          "evidence": "[s58005] [s58005, L25] 「大球也升起了；能越過軍線嗎？」 is followed inside the opening by [s58006, L29] 「郵袋跟著氣球出城」. The opening announces the departure result before the later chapter narrates the tether release and flight [s58011, L51; s58016, L71]."
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[s58006] [s58006, L29] 「郵袋跟著氣球出城」 is followed by [s58010, L45] 「大球還被地面拉住」 and only then [s58011, L51] 「才敢放開拴住的繩子」. The chronology backs up and tells the launch again."
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s58030] [s58030, L127] 「這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？」 raises the next story problem without announcing a chapter plan or list."
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s58033] [s58033, L139] 「兩球已把他的機器分開裝載」 leads directly into the next chapter's [s58034, L145] 「達蓋爾號帶著郵袋、鴿子和剩下的機器，與達格隆同時升空。」 The other chapter boundaries likewise carry an object or answer forward."
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s58055] Questions recur through the body: [s58055, L229] 「第一步怎麼避開搜查？」, [s58080, L331] 「當地郵務仍用什麼拍？」, [s58107, L441] 「一隻鴿子一次能帶幾片？」, and [s58125, L515] 「城裡要怎樣讀出這卷薄膜上的訊息？」"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[s58043] [s58043, L181] 「但另一球上的人究竟如何，這份報告沒有交代清楚。」 raises the concrete fate of the other balloon's occupants, then leaves it without a later new answer. Saying the report is unclear limits the evidence, but does not pay off that question."
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s58034] [s58034, L145] names 達蓋爾號 and [s58035, L149] names 尼埃普斯號, then [s58037, L157] repeats 「達格隆那球叫尼埃普斯號，另一球叫達蓋爾號。」 There is no marked callback, and no new fact in the repeated naming."
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s58025] The chapter 「一張回報被綁上鴿腿」 names the event spoken at [s58025, L107] 「主管把紙卷繫在一隻鴿子的腿上，還藏在翅膀下。」 Other chapter titles similarly name a happening or reveal."
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s58146] The final spoken line [s58146, L601] 「那是他報告的一段鳥程，沒有量出每封私信多久抵達。」 closes the subject without mentioning any next video or file."
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s58007] After the initial scene, the first chapter plants at least three later questions: [s58007, L33] 「消息要怎麼繫到鳥身上？」, [s58008, L37] 「會先朝哪個方向找路？」, and [s58009, L41] 「成批的信又怎麼塞得下？」"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s58030] The transition preserves the concrete carrying problem: [s58030, L127] asks if one bird can bear many replies; [s58031, L131] brings in Dagron's shrinking equipment; [s58032, L135] states its task is to make mail film for pigeons to carry into the city. The narration does not claim the October passenger caused Dagron's assignment."
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[s58043] [s58043, L181] 「但另一球上的人究竟如何，這份報告沒有交代清楚。」 turns to a separate, unresolvable fate question. The next sentence [s58044, L185] returns to Dagron's ballast bags; the aside does not move the opening mail-carriage problem forward."
+        }
+      ]
+    },
+    {
+      "reader": "b",
+      "original_path": "../r7-blind-b.md",
+      "original_sha256": "37a697113f8e29558498e4b6e41e5019254668b7f05eb739f697db9d618cb610",
+      "raw_copy_sha256": "37a697113f8e29558498e4b6e41e5019254668b7f05eb739f697db9d618cb610",
+      "answer_sha256": "2b8944b5bfcae23736552f84258295d31f5318fe901bb079adb242b685a9f140",
+      "yes": 12,
+      "no": [
+        "no_recap"
+      ],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s58001] script.md:9「一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。」"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s58005] script.md:25「風向有利，大球也升起了；能越過軍線嗎？」開場停在過軍線的結果之前。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[s58030] script.md:127「這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？」從十月單張回報接到後來的批量回信難題。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s58033] script.md:139「任務還沒開始，兩球已把他的機器分開裝載。」這句推進當時事件，沒有宣告敘事章節或清單。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s58056] script.md:235「附近村民帶來衣帽，讓他們換掉飛行裝束，好避開普軍搜查。」直接回答上一章末句如何避開搜查；其餘章首亦接前章動作或問題。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s58068] script.md:283「剩下的器材能先藏進什麼東西運離村子？」全文密集維持具體未解問題，沒有超過九十秒的空窗。"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s58126] script.md:519「達格隆提過在巴黎用電燈光把透明底片放大。」點名巴黎與透明底片，具體回答前面的薄膜如何閱讀。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s58042] script.md:177「被俘的球帶著郵件、鴿子，也帶著他一部分的機器。」重述 [s58034] script.md:145 已列的同一球郵袋、鴿子和機器；沒有點名回呼。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s58034] script.md:145「達蓋爾號帶著郵袋、鴿子和剩下的機器，與達格隆同時升空。」該章與其他章名都指向發生的動作或揭曉。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s58146] script.md:601「那是他報告的一段鳥程，沒有量出每封私信多久抵達。」片尾停在本篇事實界線，沒有提下集。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s58007] script.md:33「如果乘客想從空中回報，消息要怎麼繫到鳥身上？」開場另有 [s58005] 過軍線、[s58008] 鳥的方向、[s58009] 成批裝信三個未揭曉鉤子。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s58030] script.md:127「這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？」同一個返城通信難題把單張鴿信推向達格隆的縮拍方案。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s58097] script.md:401「因為路上沒保住多少器材，工作間得改成較快也較省成本的流程。」逃離佔領區的器材段落直接導向後面的製片方法。"
+        }
+      ]
+    }
+  ],
+  "merged_answer_sha256": "49afc66390948ef91d446d6277f6aa2493a24058040f18bd7bc1fd507ce53f31",
+  "merged": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[s58001] [s58001, L9] 「一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。」 The first sentence places a dated physical action in Paris.",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[s58005] script.md:25「風向有利，大球也升起了；能越過軍線嗎？」開場停在過軍線的結果之前。",
+        "yes_readers": 1
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[s58030] script.md:127「這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？」從十月單張回報接到後來的批量回信難題。",
+        "yes_readers": 1
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[s58030] [s58030, L127] 「這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？」 raises the next story problem without announcing a chapter plan or list.",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "yes": true,
+        "evidence": "[s58033] [s58033, L139] 「兩球已把他的機器分開裝載」 leads directly into the next chapter's [s58034, L145] 「達蓋爾號帶著郵袋、鴿子和剩下的機器，與達格隆同時升空。」 The other chapter boundaries likewise carry an object or answer forward.",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[s58055] Questions recur through the body: [s58055, L229] 「第一步怎麼避開搜查？」, [s58080, L331] 「當地郵務仍用什麼拍？」, [s58107, L441] 「一隻鴿子一次能帶幾片？」, and [s58125, L515] 「城裡要怎樣讀出這卷薄膜上的訊息？」",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[s58126] script.md:519「達格隆提過在巴黎用電燈光把透明底片放大。」點名巴黎與透明底片，具體回答前面的薄膜如何閱讀。",
+        "yes_readers": 1
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "讀者一：[s58034] [s58034, L145] names 達蓋爾號 and [s58035, L149] names 尼埃普斯號, then [s58037, L157] repeats 「達格隆那球叫尼埃普斯號，另一球叫達蓋爾號。」 There is no marked callback, and no new fact in the repeated naming.；讀者二：[s58042] script.md:177「被俘的球帶著郵件、鴿子，也帶著他一部分的機器。」重述 [s58034] script.md:145 已列的同一球郵袋、鴿子和機器；沒有點名回呼。",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": true,
+        "evidence": "[s58025] The chapter 「一張回報被綁上鴿腿」 names the event spoken at [s58025, L107] 「主管把紙卷繫在一隻鴿子的腿上，還藏在翅膀下。」 Other chapter titles similarly name a happening or reveal.",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[s58146] The final spoken line [s58146, L601] 「那是他報告的一段鳥程，沒有量出每封私信多久抵達。」 closes the subject without mentioning any next video or file.",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[s58007] After the initial scene, the first chapter plants at least three later questions: [s58007, L33] 「消息要怎麼繫到鳥身上？」, [s58008, L37] 「會先朝哪個方向找路？」, and [s58009, L41] 「成批的信又怎麼塞得下？」",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[s58030] The transition preserves the concrete carrying problem: [s58030, L127] asks if one bird can bear many replies; [s58031, L131] brings in Dagron's shrinking equipment; [s58032, L135] states its",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[s58097] script.md:401「因為路上沒保住多少器材，工作間得改成較快也較省成本的流程。」逃離佔領區的器材段落直接導向後面的製片方法。",
+        "yes_readers": 1
+      }
+    ]
+  }
+}
