@@ -49,7 +49,7 @@
     },
     {
       "setup": "n010",
-      "payoff": "n123",
+      "payoff": "n124",
       "what": "他到底走的是哪一條路"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "setup": "n079",
-      "payoff": "n114",
+      "payoff": "n115",
       "what": "信長拿走的那把刀"
     },
     {
@@ -208,7 +208,7 @@
       "lines": [
         {
           "id": "n002",
-          "text": "可是最早寫下那一天的書，跟你聽到的差了一條路。",
+          "text": "可是最早寫下那一天的書，跟你聽到的差一條路。",
           "emotion": "放慢，帶一點挑釁"
         }
       ]
@@ -240,7 +240,7 @@
       "lines": [
         {
           "id": "n004",
-          "text": "家臣都在等二十七歲的城主說，明天怎麼打。"
+          "text": "家臣都等著二十七歲的城主說明天怎麼打。"
         }
       ]
     },
@@ -271,7 +271,7 @@
       "lines": [
         {
           "id": "n006",
-          "text": "有家老出門時笑他：運氣到頭，連智慧的鏡子都蒙了。"
+          "text": "出門時有家老笑他：運氣到頭，智慧的鏡子都蒙了。"
         }
       ]
     },
@@ -302,7 +302,7 @@
       "lines": [
         {
           "id": "n008",
-          "text": "三百多年後，日本陸軍參謀本部替這一仗畫了一張地圖。",
+          "text": "三百多年後，日本陸軍參謀本部替這一仗畫了地圖。",
           "emotion": "收著，不揭曉"
         }
       ]
@@ -577,7 +577,7 @@
       "lines": [
         {
           "id": "n026",
-          "text": "還記得開頭那兩個數字嗎？最早的紀錄寫得更懸殊：今川，四萬五千；他這邊，不到兩千。",
+          "text": "開頭那兩個數字，最早的紀錄寫得更懸殊：今川，四萬五千；他這邊，不到兩千。",
           "emotion": "數字放慢",
           "reveal": 1
         },
@@ -1086,7 +1086,7 @@
       "lines": [
         {
           "id": "n065",
-          "text": "還記得義元說，天魔鬼神也擋不住他嗎？"
+          "text": "義元前面才說，天魔鬼神也擋不住他。"
         },
         {
           "id": "n066",
@@ -1726,7 +1726,7 @@
       "lines": [
         {
           "id": "n107",
-          "text": "從甫庵到參謀本部，這條路一路傳下來；軍方的書出版後，又當了八十多年的標準答案。"
+          "text": "軍方的書出版後，這條路又當了八十多年的標準答案。"
         }
       ]
     },
@@ -1822,18 +1822,34 @@
       ]
     },
     {
-      "id": "sword-on-stand",
-      "chapter": "刀莖上的金字，署名對不上",
+      "id": "one-thing-left",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Japanese sword resting on a black lacquered stand in a quiet room, a samurai in a dark kosode kneeling before it with a thoughtful face, soft window light",
+        "prompt": "Close-up of a Japanese sword in a plain black scabbard resting on a folded cloth inside a wooden box, the lid half open beside it, soft window light from the left",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "n114",
-          "text": "前面說過，信長拿走了義元那把刀。那把刀今天還在，收在一座神社裡，是重要文化財。"
+          "text": "吵歸吵，有一樣東西沒得吵：它今天還在。",
+          "emotion": "收著，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "sword-on-stand",
+      "chapter": "刀莖上的金字，署名對不上",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese sword resting on a black lacquered stand in a quiet room, a samurai in a dark kosode kneeling before it with a thoughtful face, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "n115",
+          "text": "前面那把刀，信長拿走以後一直佩著的那一把，今天收在一座神社裡，是重要文化財。"
         }
       ]
     },
@@ -1842,12 +1858,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a wide-eyed sword appraiser in a plain robe holding a bare sword tang up to his face with both hands, a thin line of gold inlay glinting on the dark steel, soft light from the left",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n115",
+          "id": "n116",
           "text": "刀柄裡那一段刀莖上，用金子嵌了一行字，署名織田尾張守信長。"
         }
       ]
@@ -1862,7 +1878,7 @@
       },
       "lines": [
         {
-          "id": "n116",
+          "id": "n117",
           "text": "永祿三年五月十九日，討取義元。",
           "emotion": "一字一字唸清楚"
         }
@@ -1873,12 +1889,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of the bare tang of a Japanese sword lying on a dark cloth, a thin line of gold inlay glinting along it, a magnifying glass resting beside it, soft light from the left",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n117",
+          "id": "n118",
           "text": "可是有研究者指出，那一年的信長自稱上總介，還沒用尾張守；"
         }
       ]
@@ -1888,12 +1904,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an old hand-copied book open on a desk, a finger pointing at a blank line, a magnifying glass beside it, soft light from the left",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n118",
+          "id": "n119",
           "text": "《信長公記》寫這一仗時，也叫他上總介。",
           "emotion": "放慢，帶疑問"
         }
@@ -1904,12 +1920,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a museum curator in white gloves holding up a plain short sword near a window in a quiet storeroom, squinting at it with a puzzled frown, soft daylight",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n119",
+          "id": "n120",
           "text": "文化廳的解說說，是信長得刀時嵌的。可是名號對不上：這行字，會不會也是後來才加的？",
           "emotion": "問句，再收住"
         }
@@ -1920,13 +1936,13 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a small grassy park with a stone marker and a low hedge in mild daylight, a father holding a child's hand and pointing at the marker, a quiet residential street behind, soft overcast light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n120",
-          "text": "如果你今天去找桶狹間，你猜會找到幾個地方？",
+          "id": "n121",
+          "text": "紀錄沒有答案。連地點也一樣：如果你今天去找桶狹間，你猜會找到幾個？",
           "emotion": "對觀眾，問句"
         }
       ]
@@ -1936,13 +1952,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of two bronze statues of armoured warriors on a stone base in a small park, a tourist in a cap taking a photo of them with a camera, mild daylight",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n121",
-          "text": "兩個。豐明市那一處，一九三七年就被指定為史跡；名古屋綠區的公園裡，立著信長和義元的銅像。"
+          "id": "n122",
+          "text": "兩個。豐明市那一處，一九三七年就是史跡；名古屋綠區的公園裡，立著兩個人的銅像。"
         }
       ]
     },
@@ -1956,7 +1972,7 @@
       },
       "lines": [
         {
-          "id": "n122",
+          "id": "n123",
           "text": "我們覺得，繞路偷襲之所以好聽，是因為它替以少勝多，找了一個聰明的理由。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1967,12 +1983,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n123",
+          "id": "n124",
           "text": "所以這份檔案：繞到山後那一頁，最早的紀錄裡沒有，是後來的書加的。",
           "emotion": "收尾，乾脆"
         }
@@ -1983,12 +1999,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plain manila folder closed on a wooden desk with a red stamp mark on its cover, a pen beside it, light from a desk lamp on the left",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "n124",
+          "id": "n125",
           "text": "他那一天到底怎麼衝到義元面前：未結。",
           "emotion": "分清楚兩頁"
         }
@@ -2003,12 +2019,12 @@
       },
       "lines": [
         {
-          "id": "n125",
+          "id": "n126",
           "text": "你最早是從大河劇、遊戲，還是課本知道桶狹間的？留言告訴我。",
           "emotion": "親近"
         },
         {
-          "id": "n126",
+          "id": "n127",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "乾脆"
         }
