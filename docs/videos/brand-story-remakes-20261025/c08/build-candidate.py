@@ -193,6 +193,22 @@ for pid,filename in patent_source_names.items():
  finding=next(f for f in patents['findings'] if f['id']==pid)
  anchors[pid]={'id':pid,'claim':finding.get('safe_scope'),'limits':finding.get('limitation',finding.get('safe_scope')),'evidence':[{'source':pid,'locator':json.dumps(finding['precise_locators'],ensure_ascii=False),'short_quote':finding.get('title',filename),'raw_sha256':raw['sha256']}]}
 
+# Frozen research expansion is evidence material, never an inherited SOURCE PASS.
+EXPANSION_SHA={
+ 'research.md':'5b90d34f0c6733c0f9cacda16f1dd5be77092309208723db90cd2e331efe6610',
+ 'claims.json':'e51b59d2b54e53fce834853963c89f762b2ca0653ae53f2fc6cd1dd32fa299ff',
+ 'source-receipts.json':'867f5a58592a5350beacf0adebe92b980993eeb096e84afa0e16c8f23a701bc5',
+}
+for filename,expected in EXPANSION_SHA.items():assert sha(OUT/'research-expansion'/filename)==expected,filename
+expansion=json.loads((OUT/'research-expansion/claims.json').read_text())
+expansion_receipts=json.loads((OUT/'research-expansion/source-receipts.json').read_text())
+for source in expansion_receipts['sources']:
+ if source['id'] not in catalog:
+  catalog[source['id']]={'id':source['id'],'title':'JP5053463B2 applicant-reported soft-film prototype tests' if source['id']=='P505' else source.get('title',source['id']),'url':source.get('article_url',source['url']),'raw_path':source['raw_path'],'sha256':source['sha256'],'source_type':source['source_type'],'publication_date_scope':source['publication_date_scope']}
+for material in expansion['claims']:
+ anchors[material['id']]={'id':material['id'],'claim':material['claim'],'limits':material['product_and_time_scope']+' '+json.dumps(material['not_supported'],ensure_ascii=False),'evidence':[{'source':e['source_id'],'locator':e['locator'],'short_quote':e['exact_short_quote'],'raw_sha256':e['raw_sha256'],'quote_sha256':e['quote_sha256'],'extracted_page_sha256':e['extracted_page_sha256'],'actual_original_path':e['raw_path']} for e in material['evidence']]}
+anchors['A05']={'id':'A05','claim':'Company interview describes the sealed bottle as adjustable by hand pressure in one-drop units; opening uses one drop as the viewer desired quantity, not a universal measured guarantee.','limits':'K7 PDF p3 retrospective company feature description. Opening glass action is an anonymous viewer scene; do not transfer the sealed-bottle mechanism to1961glass.','evidence':[{'source':'K7','locator':'PDFp3 first two paragraphs; author directly read actual page text','short_quote':'押す力の加減で、1 滴単位で好きな分量を出せる','raw_sha256':catalog['K7']['sha256'],'page_text_path':'/workspace/work/brand-story-20261025/c08-audit/length-research/K7-p3.txt','page_text_sha256':'d2b91cd078796467c35a9f53d267c8f65213b27d8e3c6252926710d49bf5ce58'}]}
+
 scenes=[]
 claims=[]
 lines=[]
@@ -357,6 +373,189 @@ for scene in scenes:
   lines.append({'id':line['id'],'text':line['text']})
   chapters[-1]['line_ids'].append(line['id'])
 
+# r5 is limited to the shared no_recap observations. Keep the current-product
+# condition and the concrete visibility obstacle; the capacity was already named.
+R4_INPUTS={
+ 'video.json':'1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f',
+ 'script.md':'2222d15b789379c1742890a881d63c1b2aeb2822b269d46dce82213da8a1308f',
+ 'narration-only.json':'a55cf360762f776658082e4dc079f44273fd8172287360e2f673d253a0e9ee04',
+ 'claims.json':'b647932b55eaa1465ccbefd90dd202e7c16a489781a190b14f57c283b1e1a809',
+}
+for filename,expected in R4_INPUTS.items():assert sha(OUT/'history/r4'/filename)==expected,filename
+R5_DELETE={'c8r10320'}
+R5_TEXT={'c8r10601':'你拿起現行這款密封瓶，透明瓶身裡卻一時看不出那個內袋。'}
+scenes=[s for s in scenes if not any(l['id'] in R5_DELETE for l in s['lines'])]
+claim_map={c['id']:c for c in claims}
+claims=[]
+lines=[]
+chapters=[]
+for scene in scenes:
+ if scene.get('chapter'):chapters.append({'title':scene['chapter'],'line_ids':[]})
+ for line in scene['lines']:
+  if line['id'] in R5_TEXT:line['text']=R5_TEXT[line['id']]
+  record=claim_map[line['id']]
+  record['text']=line['text']
+  claims.append(record)
+  lines.append({'id':line['id'],'text':line['text']})
+  chapters[-1]['line_ids'].append(line['id'])
+
+# r6 restores substantive action/results from a separately identified prototype
+# case and current use guidance, while repairing only the shared opening/recap.
+R5_INPUTS={
+ 'video.json':'aa4141c8ba7589ec6e6084b77e9f8cb6740fe7b35bc6ef2c790f84697f727232',
+ 'script.md':'de9dfcd98a527b5a689b4dd71dc56d49100a94fcb9a11414a35c0657cf1b299e',
+ 'narration-only.json':'94c280be06a865135651846829d9d4b02452686be4744379d10aa4114589cf7e',
+ 'claims.json':'cb58a45cfc8e594b6f3f311c9e2cb6f008d06b0c5e1c4245a4fed171705625ba',
+}
+for filename,expected in R5_INPUTS.items():assert sha(OUT/'history/r5'/filename)==expected,filename
+r6=json.loads((OUT/'r6-materials.json').read_text())
+R6_DELETE=set(r6['delete'])
+scenes=[s for s in scenes if not any(l['id'] in R6_DELETE for l in s['lines'])]
+claim_map={c['id']:c for c in claims}
+for scene in scenes:
+ for line in scene['lines']:
+  if line['id'] in r6['texts']:
+   line['text']=r6['texts'][line['id']]
+   claim_map[line['id']]['text']=line['text']
+  if line['id'] in ['c8r10101','c8r10102']:
+   record=claim_map[line['id']]
+   ids=['A05'] if line['id']=='c8r10101' else ['C08R16']
+   record['anchor_ids']=ids
+   record['source_ids']=list(dict.fromkeys(e['source'] for a in ids for e in anchors[a]['evidence']))
+   record['evidence']=[{'anchor_id':a,'claim_scope':anchors[a]['claim'],'limits':anchors[a]['limits'],'source_locator':e,'original':{k:catalog[e['source']].get(k) for k in ['id','title','url','raw_path','sha256','source_type','publication_date_scope']}} for a in ids for e in anchors[a]['evidence']]
+   if line['id']=='c8r10101':record['narrative_mode']='viewer wants one drop; question, not measured historical accident or universal glass-bottle dispensing claim'
+  if line['id']=='c8r10103':claim_map[line['id']]['narrative_mode']='bounded viewer handling scene for the explicitly dated1961glass object, not a recorded historical user or a filmed experiment'
+for block in r6['blocks']:
+ at=next(i for i,s in enumerate(scenes) if any(l['id']==block['target'] for l in s['lines']))
+ chapter=next(s['chapter'] for s in reversed(scenes[:at+1]) if s.get('chapter'))
+ added=[]
+ for index,row in enumerate(block['rows']):
+  sid='c08r6-'+row['id'][4:]
+  line={'id':row['id'],'text':row['text'],'emotion':'對一個人說書，自然有起伏，問句上揚'}
+  scene={'id':sid,'template':'shot','data':{'prompt':row['prompt'],'visual':'still','camera':cameras[index%len(cameras)]},'lines':[line]}
+  ids=row['anchor_ids'];source_ids=list(dict.fromkeys(e['source'] for a in ids for e in anchors[a]['evidence']))
+  evidence=[{'anchor_id':a,'claim_scope':anchors[a]['claim'],'limits':anchors[a]['limits'],'source_locator':e,'original':{k:catalog[e['source']].get(k) for k in ['id','title','url','raw_path','sha256','source_type','publication_date_scope']}} for a in ids for e in anchors[a]['evidence']]
+  record={'id':line['id'],'scene':sid,'chapter':chapter,'text':line['text'],'anchor_ids':ids,'source_ids':source_ids,'evidence':evidence,'narrative_mode':'source-bound action/result or forward viewer question; applicant-reported prototype and current product lineages remain separate','not_source_pass':True,'written_visual':{'scene':sid,'prompt':row['prompt'],'mode':'anonymous conceptual illustration; prototype bench is separate from marketed2010/2011/current containers, not an exact product cutaway or performed experiment','review_state':'NOT_REVIEWED'}}
+  claim_map[line['id']]=record
+  added.append(scene)
+ scenes[at+1:at+1]=added
+claims=[]
+lines=[]
+chapters=[]
+for scene in scenes:
+ if scene.get('chapter'):chapters.append({'title':scene['chapter'],'line_ids':[]})
+ for line in scene['lines']:
+  record=claim_map[line['id']]
+  claims.append(record)
+  lines.append({'id':line['id'],'text':line['text']})
+  chapters[-1]['line_ids'].append(line['id'])
+
+# r7 keeps the original test-results block intact. The opening quantity now
+# describes a handling burden, and the small-cruet action is moved, not repeated.
+R6_INPUTS={
+ 'video.json':'7d81e3fd3578d2885df7df2ea3bab930c7b865025e3719ce701bf89fccf6c623',
+ 'script.md':'2b62a3ebad0abe655617477bb4c60280d44b7012030c1039a722556f761c9fc0',
+ 'narration-only.json':'3b75bbd4aba27d0ee6ae9d5cef2089d2c08039b379b34719e98d0b34fee4579b',
+ 'claims.json':'668a17b43e61b58c8cc6ef08836f31fab9766e96bfe40e6e50da1452b62d7e97',
+}
+for filename,expected in R6_INPUTS.items():assert sha(OUT/'history/r6'/filename)==expected,filename
+r7=json.loads((OUT/'r7-edits.json').read_text())
+e1quote='依頼のあった1958年当時、しょうゆは多くの家庭で流し台の下に一升瓶に入って置かれていました。'
+k4quote='当時のご家庭では、買ってきたしょうゆを小さなしょうゆ差しに移し替えて使っていたのですが、注ぐたびにしょうゆが垂れ、容器やテーブルを汚してしまっていました。'
+for sid,quote in [('E1',e1quote),('K4',k4quote)]:
+ assert sha(catalog[sid]['raw_path'])==catalog[sid]['sha256']
+ assert quote in pathlib.Path(catalog[sid]['raw_path']).read_text()
+anchors['A06']={'id':'A06','claim':'Ekuan retrospectively locates the commission in1958 and describes soy sauce stored in large one-sho bottles under sinks in many households. The opening uses a bounded handling scenario, not a named family or particular day.','limits':'2009 first-person retrospective, not a1958 household survey. The1.8L quantity is separately explicit in GK p23/A01. Do not turn the source lumbar-pain wording into a medical injury claim or invent personal family details.','evidence':[{'source':'E1','locator':'paragraph0025; full actual HTML and paragraph cache directly checked by author','short_quote':e1quote,'quote_sha256':hashlib.sha256(e1quote.encode()).hexdigest(),'raw_sha256':catalog['E1']['sha256'],'excerpt_text_path':'/workspace/work/brand-story-20261025/c08-audit/source-cache/E1.paragraphs.txt'}]}
+anchors['A07']={'id':'A07','claim':'Company staff retrospectively describe bought sauce transferred into a small cruet, with pouring drips soiling the vessel and table; the later tabletop product was intended to avoid this transfer/use problem.','limits':'2014 unnamed company communications staff retrospective; no actual household, specific day, universal drip rate, or injury cause claimed. Anonymous small ceramic cruet illustration is a bounded composite with GK p23.','evidence':[{'source':'K4','locator':'paragraph0018; actual HTML and paragraph cache directly checked by author','short_quote':k4quote,'quote_sha256':hashlib.sha256(k4quote.encode()).hexdigest(),'raw_sha256':catalog['K4']['sha256'],'excerpt_text_path':'/workspace/work/brand-story-20261025/c08-audit/source-cache/K4.paragraphs.txt'}]}
+scenes=[s for s in scenes if not any(l['id'] in r7['delete'] for l in s['lines'])]
+claim_map={c['id']:c for c in claims}
+moved=next(s for s in scenes if s['lines'][0]['id']=='c8r10204')
+scenes.remove(moved)
+chapter_name=moved.pop('chapter')
+next(s for s in scenes if s['lines'][0]['id']=='c8r10201')['chapter']=chapter_name
+at=next(i for i,s in enumerate(scenes) if s['lines'][0]['id']=='c8r10102')
+scenes.insert(at+1,moved)
+oldr5=json.loads((OUT/'history/r5/video.json').read_text())
+restored=next(s for s in oldr5['scenes'] if s['lines'][0]['id']=='c8r10220')
+at=next(i for i,s in enumerate(scenes) if s['lines'][0]['id']=='c8r10221')
+scenes.insert(at,restored)
+claim_map['c8r10220']=next(c for c in json.loads((OUT/'history/r5/claims.json').read_text())['narration_claims'] if c['id']=='c8r10220')
+claims=[]
+lines=[]
+chapters=[]
+for scene in scenes:
+ if scene.get('chapter'):chapters.append({'title':scene['chapter'],'line_ids':[]})
+ for line in scene['lines']:
+  lid=line['id'];record=claim_map[lid]
+  if lid in r7['texts']:line['text']=r7['texts'][lid]
+  if lid in r7['prompts']:
+   scene['data']['prompt']=r7['prompts'][lid]
+   record['written_visual']['prompt']=r7['prompts'][lid]
+   record['written_visual']['mode']='anonymous composite kitchen-handling scene from attributed historical accounts; not a named person, particular day or medical injury reconstruction'
+  record['text']=line['text'];record['chapter']=chapters[-1]['title']
+  if lid in ['c8r10101','c8r10102','c8r10104']:
+   ids={'c8r10101':['A01','A06'],'c8r10102':['A06'],'c8r10104':['A07']}[lid]
+   record['anchor_ids']=ids;record['source_ids']=list(dict.fromkeys(e['source'] for a in ids for e in anchors[a]['evidence']))
+   record['evidence']=[{'anchor_id':a,'claim_scope':anchors[a]['claim'],'limits':anchors[a]['limits'],'source_locator':e,'original':{k:catalog[e['source']].get(k) for k in ['id','title','url','raw_path','sha256','source_type','publication_date_scope']}} for a in ids for e in anchors[a]['evidence']]
+   record['narrative_mode']='one-drop viewer need and large-bottle handling burden, then expressly attributed1958kitchen recollection and bounded anonymous pouring scene; no actual household or new experiment'
+  claims.append(record);lines.append({'id':lid,'text':line['text']});chapters[-1]['line_ids'].append(lid)
+
+# r8 removes the capacity side branch, orders the raw-soy case before its modern
+# pouch, and answers the visible-inner-bag question at the next chapter opening.
+# This is an author edit, never an independent source or narrative verdict.
+R7_INPUTS={
+ 'video.json':'7c65e8cf79a9518741e5431865df469f5d8fefcaba219c4d93395f32d030f82b',
+ 'script.md':'4825e10b2e9c8faa33be384a6f1592625f2e5d351e5035c4ee6536fdca983712',
+ 'narration-only.json':'0cc35be215547b8ce77393f89a05dfb528b58c395396dc3f35bff270bb3c81b4',
+ 'claims.json':'497f251a28ff79c4998c6e0b56f81d3dd166ee008780f7b0723fb373d9f0bd98',
+}
+for filename,expected in R7_INPUTS.items():assert sha(OUT/'history/r7'/filename)==expected,filename
+r8=json.loads((OUT/'r8-edits.json').read_text())
+chapter_names={s['lines'][0]['id']:s['chapter'] for s in scenes if s.get('chapter')}
+claim_map={c['id']:c for c in claims}
+scenes=[s for s in scenes if not any(l['id'] in r8['delete'] for l in s['lines'])]
+for scene in scenes:
+ for line in scene['lines']:
+  if line['id'] in r8['texts']:line['text']=r8['texts'][line['id']]
+ordered=[next(s for s in scenes if s['lines'][0]['id']==lid) for lid in r8['chapter4_order']]
+at=min(scenes.index(s) for s in ordered)
+scenes=[s for s in scenes if s not in ordered]
+scenes[at:at]=ordered
+for scene in scenes:
+ if scene['lines'][0]['id']=='c8r10401':scene.pop('chapter',None)
+for first,oldfirst in [(r8['chapter2_first'],'c8r10201'),(r8['chapter4_first'],'c8r10401'),(r8['chapter6_first'],'c8r10601')]:
+ next(s for s in scenes if s['lines'][0]['id']==first)['chapter']=chapter_names[oldfirst]
+claims=[];lines=[];chapters=[]
+for scene in scenes:
+ if scene.get('chapter'):chapters.append({'title':scene['chapter'],'line_ids':[]})
+ for line in scene['lines']:
+  record=claim_map[line['id']]
+  record['text']=line['text'];record['chapter']=chapters[-1]['title']
+  claims.append(record);lines.append({'id':line['id'],'text':line['text']});chapters[-1]['line_ids'].append(line['id'])
+
+# r9 deletes the unproductive historical aside rather than shifting its date.
+# Keep only the new half-used visibility threshold at the chapter6 answer.
+R8_INPUTS={
+ 'video.json':'213288299cdd5d4cef9a08172e1b1aa4c2b4a6a419ed766dc02d45a6b9de2e69',
+ 'script.md':'8fb8f52ba53704739a632ec74a12aaa6907030cedb2ab90a9ffe2bd08733493d',
+ 'narration-only.json':'65b2d46e1fd3b058f5759fe35629f08c16e5374c742cd44cbb58023e3d4ac5a5',
+ 'claims.json':'975993d111637bd4a4b8acf646e1154681a94ba7a575f0e4c8d8302b61ced182',
+}
+for filename,expected in R8_INPUTS.items():assert sha(OUT/'history/r8'/filename)==expected,filename
+r9=json.loads((OUT/'r9-edits.json').read_text())
+chapter4=next(s['chapter'] for s in scenes if s['lines'][0]['id']=='c8r6h01')
+claim_map={c['id']:c for c in claims}
+scenes=[s for s in scenes if not any(l['id'] in r9['delete'] for l in s['lines'])]
+next(s for s in scenes if s['lines'][0]['id']==r9['chapter4_first'])['chapter']=chapter4
+claims=[];lines=[];chapters=[]
+for scene in scenes:
+ if scene.get('chapter'):chapters.append({'title':scene['chapter'],'line_ids':[]})
+ for line in scene['lines']:
+  if line['id'] in r9['texts']:line['text']=r9['texts'][line['id']]
+  record=claim_map[line['id']]
+  record['text']=line['text'];record['chapter']=chapters[-1]['title']
+  claims.append(record);lines.append({'id':line['id'],'text':line['text']});chapters[-1]['line_ids'].append(line['id'])
+
 closing=scenes[-3:]
 scenes=scenes[:-3]
 outro={'id':'c08r1-outro','template':'outro','data':{'title':'想留下哪一滴？','cta':'你會拆開密封、改放冰箱嗎？'},'lines':[l for s in closing for l in s['lines']]}
@@ -373,7 +572,6 @@ LOOP_TEXTS=[
  ('嘴尖那一點褐色','把上下緣的關係反過來','倒完收手時的滴液難題'),
  ('連進入瓶裡的空氣','空氣進入外瓶和內袋之間','進氣究竟被安排到哪裡'),
  ('整座瓶蓋還藏著一個選擇','這個動作也會切斷密封','取最後一點的保存代價'),
- ('一公升為什麼還不夠','買回來便能直接放上桌','商品瓶要接下哪一段轉裝工作'),
  ('它該長成什麼樣子','把頸部做細','瓶子拿起和放回的外形'),
  ('手要抓哪裡','把頸部做細','手與瓶子細頸的配合'),
  ('嘴尖怎麼辦','讓上緣比較突出','瓶身完成後嘴尖的改動'),
@@ -388,11 +586,18 @@ LOOP_TEXTS=[
  ('只把通往內袋的路關住','擴大的空間能把嘴端殘液','內袋關閉後出口殘液仍須另處理'),
  ('這一點移動，要怎麼管到嘴尖','擴大的空間能把嘴端殘液','液閥回移擴大蓋內空間的作用'),
  ('外蓋已關上時，液閥還需要管嗎','外蓋內側的密封部','含外蓋的專利構造如何限制液閥'),
- ('裡面的內袋，一眼就看得出來嗎','約用到半瓶，內袋縮小','現行透明內袋何時較易辨別'),
+ ('裡面的內袋，一眼就看得出來嗎','約用到半瓶，兩層之間的差別','現行透明內袋何時較易辨別'),
  ('難道又是外面漏進去了','內袋還封入了氮氣','目前密封瓶內袋可見氣層的官方解釋'),
  ('為什麼又覺得比較難擠','手的力就逐漸隔著層間空氣','內袋變小後的傳力取捨'),
  ('瓶蓋能不能立刻按回去','用完先直立放幾秒','現行瓶關蓋前的動作'),
- ('還有沒有別的拿法','往右轉動整座蓋子','末段殘液的取出方法'),
+ ('還有沒有別的拿法','往右轉','末段殘液的取出方法'),
+ ('閥擋住了空氣，就一定還倒得出來嗎','醬油不再自然流出','另案原型的密封觀察與出液分歧'),
+ ('這扇小門會只往外翻','小蓋可能被衝擊擠進筒內','另案小蓋衝擊陷入的原始問題'),
+ ('你想要的兩件事','前兩天的幾個觀察點','原型初期靜置觀察的進氣與出液結果'),
+ ('等到五天呢','醬油不再自然流出','原型五天觀察的固化與出液結果'),
+ ('外面沒有漏出醬油','文件都沒有觀察到內容物漏到外面','原型外部無漏與內部失效分別觀察'),
+ ('再抬高呢','一百六十公分那組','另案表列較高落下測點的失效'),
+ ('瓶身卻還凹著','堵住空氣閥','現行系列瓶身不回復的可能條件'),
 ]
 known=[l['id'] for l in lines]
 loops=[]
@@ -404,8 +609,9 @@ for a,b,what in LOOP_TEXTS:
 style='標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。'
 used_now=list(dict.fromkeys(s for record in claims for s in record['source_ids']))
 r1_source_order=[s['id'] for s in json.loads((OUT/'history/r1/claims.json').read_text())['source_catalog']]
-assert set(used_now)<=set(r1_source_order), 'r3 adds no source or fact branch'
-used=[s for s in r1_source_order if s in used_now]
+source_order=r1_source_order+['P505','F10_coldstorage']
+assert set(used_now)<=set(source_order), 'only the frozen expansion sources are added'
+used=[s for s in source_order if s in used_now]
 sources=[{'title':catalog[s].get('title',s),'url':catalog[s]['url'],'checked_on':'2026-10-25'} for s in used]
 doc={'schema_version':1,'slug':SLUG,'format':'drama','category':'story','narration_locale':'zh-TW','target_minutes':[12,14],
  'voice':{'provider':'gemini','name':'Sulafat','style':style,'performance':'跟著倒出、放回、用到最後的動作，向一個人講瓶子如何分配液體和空氣。回憶與原廠功能保留歸屬，不把示意變成假實驗。'},
@@ -413,6 +619,7 @@ doc={'schema_version':1,'slug':SLUG,'format':'drama','category':'story','narrati
  'music':{'prompt':'light, curious, a little mysterious, no vocals','gain_db':-20,'duck_db':-10},'loops':loops,'scenes':scenes,
  'youtube':{'category_id':27,'made_for_kids':False,'default_language':'zh-TW','title':TITLE,'description':'從1961可再填的150mL玻璃桌上瓶，走到2011的200mL內袋密封瓶，再看現行450mL PET瓶用到最後的力道、關蓋與拆開密封後的保存取捨。設計者本人回述、公司原公告、博物館標籤、後期專利原件和完整官方FAQ，分清不同年代和瓶型。後期閥門專利不當早年玻璃瓶原設計；匿名插圖是概念示意，非每款量產剖面。\n\n原件來源（查閱2026-10-25）\n'+'\n'.join(s['title']+'\n'+s['url'] for s in sources),'tags':['龜甲萬','Kikkoman','醬油瓶','品牌故事','工業設計','包裝','日用品的意外轉身','密封瓶'],'video_id':None},
  'thumbnail':{'template':'thumb','data':{'layout':'d','headline':'空氣別進錯！','sub':'一滴醬油改了瓶子','brand':'龜甲萬','tag':'品牌故事','shot':'c08r1-01-04'}},'sources':sources,'assets':[]}
+doc['youtube']['description']=doc['youtube']['description'].replace('再看現行450mL PET瓶用到最後的力道、關蓋與拆開密封後的保存取捨。','另讀公開文件中500mL軟膜原型的靜置與落下試驗，再看現行450mL PET瓶用到最後的力道、關蓋與拆開密封後的保存取捨。原型試驗與上市瓶型分開，沒有把原型當成量產款履歷。')
 names=['Kikkoman','龜甲萬','榮久庵憲司','Kenji Ekuan','GK','GK Design Group','MoMA','紐約現代美術館','恩田友貴','Tomotaka Onda','KFE','PET','PE','FAQ','吉野工業所','Yoshino Kogyosho','INPIT','JPAA']
 series={'kind':'story','slug':'brand-stories-everyday-reversals','episode':8,'chapter':1,'title':TITLE,'logline':'跟著一滴醬油的倒出、瓶子的放回與最後取用，追三代容器如何安排液體、空氣和使用者的手。','names':names,'characters':[],'visual_tier':'stills','compilation':False,'target_minutes':13,'image_model':'image-01','look':{'preset':'cute-mystery'}}
 
@@ -422,6 +629,13 @@ write_json('video.json',doc)
 write_json('series.json',series)
 write_json('narration-only.json',{'slug':SLUG,'scope':'new author narration only; no verdicts or source discussion','chapters':chapters,'lines':lines})
 claimdoc={'schema_version':1,'episode':'C08 Kikkoman remake r4','status':'AUTHOR_CANDIDATE_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_AND_TWO_READERS','protected_research_files_sha256':PROTECTED,'previous_revision_input_sha256':R3_INPUTS,'source_catalog':[catalog[s] for s in used],'omitted_from_narration_research_only':{'C08R35':'Same-PET/disassembly/recycling branch omitted entirely; full evidence remains in the protected original research.','C08R27':'Keep only the dated PE-to-PET product-generation fact; omit label-peeling and end-of-life branch from narration.'},'author_additional_original_anchors':{k:anchors[k] for k in ['A01','A02','A03','A04','P1','P2','P7']},'narration_claims':claims,'source_pass_issued':False,'owner_approval_issued':False,'actual_runtime_measured':False,'paid_calls':0,'backend_writes':0}
+claimdoc.update({'episode':'C08 Kikkoman remake r7','previous_revision_input_sha256':R6_INPUTS,'frozen_research_expansion_sha256':EXPANSION_SHA,'prototype_scope':'JP5053463B2 applicant-reported500mLsoft-film prototype; trial event dates not stated, distinct from2010commercial pouch,2011commercial200mL bottle,2015P1axial valve and current450mLPET.','duration_scope':'Official actual narration body is the full unwrapped voiced timeline including coldopen and CTA; only separate5secondintro/21secondoutro excluded. After-opening/strict counters are planning breakdowns, not the runtime gate.'})
+claimdoc['author_additional_original_anchors'].update({k:anchors[k] for k in ['A06','A07']})
+claimdoc['omitted_from_narration_research_only']['C08X02']='Current grip/child-sightline branch removed inR7; original frozen expansion research preserved.'
+claimdoc.update({'episode':'C08 Kikkoman remake r8','previous_revision_input_sha256':R7_INPUTS})
+claimdoc['omitted_from_narration_research_only']['C08R07']='1955 one-litre/small-household branch removed inR8; original frozen research remains unchanged.'
+claimdoc.update({'episode':'C08 Kikkoman remake r9','previous_revision_input_sha256':R8_INPUTS})
+claimdoc['omitted_from_narration_research_only']['C08X01']='1966 raw-soy sale/stop aside removed inR9; original frozen expansion research preserved.'
 write_json('claims.json',claimdoc)
 brief='''# C08 龜甲萬｜一滴醬油，瓶子替手作了什麼？
 
@@ -453,8 +667,14 @@ MiniMax image-01，look只用cute-mystery preset；匿名英文概念插圖無�
 
 設計者2009回述、公司後代容器史、匿名職員2014訪談和GK2018刊物保留來源層級。近百模型不升格精確101或逐次原型台帳；不報瓶嘴角度、零黏度或永遠零滴。1961原功能專利未取得，2015後期閥門原件及官方產品橋不當1961設計或每個現售SKU的剖面。2011公告是當年功能與預定上市主張；現行FAQ依指定產品範圍。右旋整蓋後密封已破，須冷藏，不作可再填／重封保鮮建議。原版84句與short36句、六份研究文件均保留；新稿須獨立來源、書面配鏡與兩位全新讀者。預設八語於中文稿核對後接續，尚未翻譯／配音／造SRT或套後台選項。
 '''
+brief=brief.replace('收束在取餘量與保存的真實選擇，回收和標籤研究留在查核資料，不另開一條產品線。','收束在取餘量與保存的真實選擇，回收和標籤研究留在查核資料，不另開一條產品線。另一份公開文件所載500mL軟膜原型只回答「擋住空氣，等過之後是否仍能倒出、跌落後裡外是否仍正常」，明說申請人原型試驗，不冒稱2010上市袋、2011瓶或現行450mL剖面，也不把文獻公開年當試驗發生年。')
+brief=brief.replace('實際旁白正文需720–840秒，自然4–5 units/秒。','原生duration的實際旁白body需720–840秒，含coldopen與有聲CTA，僅排另加5秒片頭／21秒片尾；after-opening／strict只作規劃分項。自然4–5 units/秒。')
+brief=brief.replace('開場鉤子：你只想倒一點醬油，卻還得看著嘴尖；後來瓶子連空氣進哪裡、整蓋何時拆，都替手多設一道選擇。','開場鉤子：你只想添一滴，卻先搬1.8公升大瓶、分裝小壺；榮久庵回述1958家庭水槽下的大瓶，將負擔落在具體廚房動作，再追瓶嘴與後來進氣／拆蓋的選擇。')
+brief=brief.replace('原件及官方產品橋不當1961設計或每個現售SKU的剖面。','原件及官方產品橋不當1961設計或每個現售SKU的剖面。另案JP5053463B2之500mL軟膜原型保留每條件五樣品、目視進氣、不同有無外蓋落下程序；表列140/160cm與靜置五天結果只限該試驗，不作市售產品耐摔／零氧／食品安全保證。現行系列的冷藏可能症狀及擦嘴動作，與拆整蓋後需冷藏分開。')
 (OUT/'brief.md').write_text(brief)
 md=['# C08 r4｜作者逐句來源與書面配鏡索引','','這是本版作者主張表，尚未獲新的獨立SOURCE／配鏡／敘事審核，不是verify或owner核准。r1／r2／r3歷史來源及共同敘事HOLD保留，不替本版授權。六份原研究和兩舊版不變。回收及剝標籤等未進新旁白的研究，仍在凍結原件內。','','## 使用原件','']
+md[0]='# C08 r9｜作者逐句來源與書面配鏡索引'
+md[2]=md[2].replace('r1／r2／r3歷史','r1／r2／r3／r4／r5／r6／r7／r8歷史')
 for s in used:md.append(f"- {s}: [{catalog[s].get('title',s)}]({catalog[s]['url']})；actual raw SHA `{catalog[s]['sha256']}`；{catalog[s].get('source_type')}")
 md+=['','## 逐句索引','','| ID | 旁白 | 來源anchor | 實際原件 |','|---|---|---|---|']
 for r in claims:md.append('| '+r['id']+' | '+r['text']+' | '+','.join(r['anchor_ids'])+' | '+','.join(r['source_ids'])+' |')
@@ -467,6 +687,10 @@ for chapter,_ in CHAPTERS:
   if r['chapter']==chapter:script += ['['+r['id']+'] '+r['text'],'來源：'+(', '.join(r['source_ids']) or '觀眾問題／訂閱邀請')+'；anchors：'+(', '.join(r['anchor_ids']) or '無事實主張'),'']
 (OUT/'script.md').write_text('\n'.join(script)+'\n')
 notes={'schema_version':1,'revision':'C08 r4','status':'HOLD_PENDING_INDEPENDENT_SOURCE_AND_TWO_NEW_ISOLATED_READERS','author':'/root/c07_author','new_slug':SLUG,'source_category':'story','old_episode_or_series_not_rebound':True,'protected_research_files_sha256':PROTECTED,'previous_revision_input_sha256':R3_INPUTS,'editorial_delta':{'changed_retained_lines':{},'deleted_lines':sorted(R4_DELETE),'first_function_delivery_retained':'c8r10419; pressing action in original written illustration, no duplicate sentence added','deleted_line_is_loop_endpoint':False,'loop_changes':0,'current_K7_role_claim_scope_corrections':R4_ROLE_SCOPES,'mandatory_targets':['no_recap'],'single_reader_no_not_targeted':['one_line'],'current450mL_90day_exception':'Evidence only; narration says guide120days and some products excepted, not the complete exception table. Historical2011 90day company feature claim is a distinct retained statement.','PET_same_material_and_bag_disassembly_narration_occurrences':0,'new_sources_added':False,'new_fact_or_unverified_psychology_added':False},'source_files_sha256':{f:sha(OUT/f) for f in ['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json']},'counts':{'narration_lines':len(lines),'scenes':len(scenes),'illustration_shots':sum(s['template']=='shot' for s in scenes),'chapters':len(chapters),'loops':len(loops)},'actual_runtime_measured':False,'source_pass_issued':False,'written_visual_pass_issued':False,'narrative_pass_issued':False,'verify_written':False,'owner_approval_issued':False,'eight_language_text_written':False,'paid_calls':0,'backend_writes':0,'mechanical_lint':'PENDING_NATIVE_INITIALIZED_CONTEXT','narrative_scope':'one use problem across explicitly different bottle generations; not one physical bottle surviving unchanged for sixty years','native_target':'13 minutes; future actual narration body720–840 seconds, no padding or slowed speech'}
+notes.update({'revision':'C08 r6','previous_revision_input_sha256':R5_INPUTS,'frozen_research_expansion_sha256':EXPANSION_SHA,'editorial_delta':{'changed_retained_lines':r6['texts'],'deleted_lines':sorted(R6_DELETE),'new_lines':[r['id'] for b in r6['blocks'] for r in b['rows']],'mandatory_targets':['scene_first','no_recap','substantive_length_extension'],'single_reader_no_not_targeted':['one_line'],'opening':'One-drop viewer stake;1961/150mL sourced object in line2;physical viewer tilt/upright action in line3;at most2unresolvedpreviews;named60yearpromise and centralquestion retained. No shipment count narrated.','prototype_case':'Distinct applicant-reported500mLsoftfilm prototype case, not commercial product lineage; no unverified test year, oxygen assay, mechanism causality or market outcome.','recap_fix':'1961/150mL appears only at opening; remove advancewholecap summary10617 and repeated10622; one actual removal/remaining-liquid delivery at10621.','normal_seal_and_removed_wholecap_conditions_distinct':True,'new_sources_added':['P505','F10_coldstorage'],'new_unverified_fact_or_psychology_added':False,'new_research_extension_added':True},'native_target':'13minutes target; official actual narration body720–840seconds includes fullcoldopen+voicedCTA, excludes onlyseparate5secondintro/21secondoutro. after-opening/strict counters planning only; no padding or slowed speech.'})
+notes.update({'revision':'C08 r7','previous_revision_input_sha256':R6_INPUTS,'editorial_delta':{'changed_retained_lines':r7['texts'],'deleted_lines':r7['delete'],'moved_line':'c8r10204 moved to openingafter10102; text/prompt/camera/emotion unchanged','restored_line':'c8r10220 original1961/150mL fact restored only at historicalreleasepoint','changed_prompts':r7['prompts'],'new_author_anchors':['A06','A07'],'mandatory_targets':['scene_first','no_recap','no_detour'],'single_reader_no_not_targeted':['one_line1966','chapters_link10601'],'prototype_all21_lines_and_complete_scenes_unchanged':True,'removed_loop':'c8r6g01→c8r6g02 only; all other30values retained','new_sources_added':False,'new_unverified_fact_or_psychology_added':False,'no_specific_family_day_or_medical_injury_invented':True,'whole_runtime_not_measured':True}})
+notes.update({'revision':'C08 r8','previous_revision_input_sha256':R7_INPUTS,'editorial_delta':{'changed_retained_lines':r8['texts'],'deleted_lines':r8['delete'],'chapter4_order':r8['chapter4_order'],'chapter2_first':r8['chapter2_first'],'chapter4_first':r8['chapter4_first'],'chapter6_first':r8['chapter6_first'],'mandatory_targets':['one_line','chapters_link','no_recap'],'opening_first_four_complete_scenes_unchanged':True,'capacity_branch':'Remove1955one-litre event and its dependent/repeatedcapacitybridges; existingdirect-to-table goal nowopenschapter2. Keep narratorcuriosity in theexistinghandlingquestion.','raw_soy_sequence':'Explicit1966companycase before2010commercialpouch; nextuse/rawsauce explanation follows that pouch;2011announcementresearchduration follows without changingitsdate/scope.','chapter6_answer':'10604 half-usedinnerbag visibility answers10526 immediately;10601 duplicate removed.','all_prompts_camera_emotion_unchanged':True,'all_retained_source_anchor_and_evidence_bindings_unchanged':True,'prototype_all21_lines_source_records_and_complete_scenes_unchanged':True,'removed_loop':'c8r10203→c8r10208 only; all other29values retained','new_sources_added':False,'new_unverified_fact_or_psychology_added':False,'whole_runtime_not_measured':True}})
+notes.update({'revision':'C08 r9','previous_revision_input_sha256':R8_INPUTS,'editorial_delta':{'changed_retained_lines':r9['texts'],'deleted_lines':r9['delete'],'mandatory_targets':['one_line','chapters_link','no_recap'],'chapter4_first':r9['chapter4_first'],'retained_relative_order_unchanged':True,'historical_aside_removed':'1966sale/stop h01/h02 removed completely, not moved or redated. Existing10406sealquestion→10408explicit2010pouch now directly follows10321freshnessquestion. Fullpersonalname restored in10402asfirstintroduction.','chapter6_answer':'10604 retains only the approximatelyhalf-usedvisibilitythreshold; repeatedinnerbagshrinking clause removed. Half-bottlethresholdoccurs onlyhere.','opening_first_four_complete_scenes_unchanged':True,'prototype_all21_lines_source_records_and_complete_scenes_unchanged':True,'all_29_loop_objects_unchanged':True,'all_prompts_camera_emotion_unchanged':True,'all_retained_source_anchor_and_evidence_bindings_unchanged':True,'new_sources_added':False,'new_unverified_fact_or_psychology_added':False,'whole_runtime_not_measured':True}})
 write_json('author-notes.json',notes)
 for filename,expected in PROTECTED.items():assert sha(OUT/filename)==expected
 print(json.dumps(notes['counts'],ensure_ascii=False))

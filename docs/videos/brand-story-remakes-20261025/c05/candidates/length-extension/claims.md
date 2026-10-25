@@ -1,6 +1,6 @@
-# C05 R11逐句主張與來源錨點
+# C05 R12逐句主張與來源錨點
 
-全部PENDING_INDEPENDENT_REVIEW；R10收據不自動成為R11判定，無作者SOURCE／敘事PASS。
+全部PENDING_INDEPENDENT_REVIEW；R11收據不自動成為R12判定，無作者SOURCE／敘事PASS。
 
 | ID | 類型 | 旁白 | 來源 | 定位 |
 | --- | --- | --- | --- | --- |
@@ -58,11 +58,11 @@
 | c05r061 | FACT_OR_FORWARD_QUESTION | 資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。 | K_S | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c05r067 | FACT_OR_FORWARD_QUESTION | 如果把盤卷交給機器，手卷就會立刻停下嗎？ | K_T, K_40 | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c05r068 | FACT_OR_FORWARD_QUESTION | 公司年表記一九四〇年，自動輪轉打型式螺旋蚊香製造機完成。 | K_T, K_40 | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
-| c05r069 | FACT_OR_FORWARD_QUESTION | 手卷設備的留存介紹，將使用期記到約一九五七年。 | K_T | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c05r071 | AUTHOR_FORWARD_QUESTION | 我想知道，這時候工廠的原料，也正跟著改變嗎？ | K_T, K_40 | 明示想像、幾何示意、作者反應或向前問題；不主張新增歷史事實。 |
 | c05r073 | FACT_OR_FORWARD_QUESTION | 這段歲月，材料也在變；金鳥工廠回顧，為了增加糧食生產，除蟲菊栽培縮小。 | K_F | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c05r074 | FACT_OR_FORWARD_QUESTION | 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。 | K_F | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c05r076 | FACT_OR_FORWARD_QUESTION | 一九五七年，公司年表再記下，改良型高效率自動打型機完成。 | K_57, K_F | K_57.txt 56–57：1957年 昭和32／改良型打ち抜き式高能率自動渦巻線香製造機完成；非所有手卷設備同日停止。 |
+| c05r069 | FACT_OR_FORWARD_QUESTION | 手卷設備的留存介紹，將使用期記到約一九五七年。 | K_T | 本句source_anchors所列原文快取精確行號與excerpt SHA；舊審查不繼承。 |
 | c07a01 | FACT_OR_FORWARD_QUESTION | 你可能會想，從花裡取出有效成分，跟把整朵乾花磨成粉，到底差在哪裡？ | NSM_FULL | 乾花原料與抽出製品的角色差異，非當前成品濃度。 |
 | c07a02 | FACT_OR_FORWARD_QUESTION | 國立科學博物館的技術報告，列乾花含約百分之一到一點五的除蟲菊素。 | NSM_FULL | p27乾燥花約1–1.5%；不重報1.3%，不當當前配方。 |
 | c07a03 | FACT_OR_FORWARD_QUESTION | 同一段寫，用溶劑抽出後，得到的製品可含約百分之二十；被處理的材料，已經不只是乾花。 | NSM_FULL | p27石油系溶劑抽出製品約20%；無效力倍率或操作處方。 |
@@ -302,10 +302,6 @@
 
 - {"source_id":"K_40","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_40.txt","text_cache_sha256":"2f7cf0ac2c548c9a3557063d5c7ca1e4f4b9c5c5e79e7b54b52e9f3fd4836411","line_start":64,"line_end":65,"exact_excerpt":"1940年 昭和15\n自動輪転打ち抜き式渦巻型蚊取り線香製造機完成","excerpt_sha256":"f090bfdce5f50277fa1e83c493eb43265a6c54b0c050e00ab6608ca1cab83741"}
 
-## c05r069
-
-- {"source_id":"K_T","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_T.txt","text_cache_sha256":"a0eef8be7994e8715048d4397621555178f09a4533ad8578dd58cdd9d83f4115","line_start":52,"line_end":52,"exact_excerpt":"製作年：1910年頃（明治末期）～1957（昭和32）年頃まで使用","excerpt_sha256":"a74bd9d9d64bf59b25c9de633e68d80525947ebee0b64817ca4ee413c8ab424e"}
-
 ## c05r073
 
 - {"source_id":"K_F","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.txt","text_cache_sha256":"e58e9201da10b76a516111f3780529fec17d2a6ee5b9d84ec7d8712739a82a36","line_start":59,"line_end":59,"exact_excerpt":"しかしながら、戦前戦後の食糧増産のため、日本の除虫菊の栽培面積は、はなはだしく減少していき、又、一方では戦後まもなくの化学合成品の開発とあいまって、現在ではほとんど栽培されておりません。シロバナムシヨケギク（除虫菊）中に含まれる天然の殺虫成分（ピレトリン）に似た合成されたピレトリン類似化合物（ピレスロイド）が開発され、その後、数々の合成ピレスロイドが発表、実用化されて、今や日本では「蚊取線香」をはじめ、家庭用殺虫剤のほとんどがこの合成ピレスロイドが使用されている状況です。","excerpt_sha256":"cebb5f6a12e7b16f54fc62ca5952f0786d24a07ab47b3cef882edda4d4a0d95c"}
@@ -317,6 +313,10 @@
 ## c05r076
 
 - {"source_id":"K_57","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_57.txt","text_cache_sha256":"f0c484f37484b4d250796ecec82f5c2dd0215eaa804921e446fd8c2e52beec36","line_start":56,"line_end":57,"exact_excerpt":"1957年 昭和32\n改良型打ち抜き式高能率自動渦巻線香製造機完成","excerpt_sha256":"2f87ce9cf0fd67d33cf3375b5799eb2bfe7ebf5ad3b70dc1430e7f4de19c7b20"}
+
+## c05r069
+
+- {"source_id":"K_T","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_T.txt","text_cache_sha256":"a0eef8be7994e8715048d4397621555178f09a4533ad8578dd58cdd9d83f4115","line_start":52,"line_end":52,"exact_excerpt":"製作年：1910年頃（明治末期）～1957（昭和32）年頃まで使用","excerpt_sha256":"a74bd9d9d64bf59b25c9de633e68d80525947ebee0b64817ca4ee413c8ab424e"}
 
 ## c07a01
 
@@ -512,41 +512,26 @@
 
 - {"source_id":"K_Q","text_cache":"/workspace/work/brand-story-20261025/c05-audit/source-check/K_Q.txt","text_cache_sha256":"70be74946f111566d2d8df8364d5c515475a736c98c59f398238d5d973165005","line_start":66,"line_end":66,"exact_excerpt":"蚊取り線香をお部屋などの室内で使用する際は、必ず窓を開け、風通しの良い状態にして風上に置いてお使い下さい。部屋を閉め切ると、煙がこもって目やのどに刺激を感じることがあります。","excerpt_sha256":"8096902197d261ca16cb77a0ff393f63e89d08f88c792f77412da87273c3acc2"}
 
-## R11時間與回呼範圍
+## R12最小順序修正
 
 {
-  "opening_event": {
-    "year": 1890,
-    "person": "上山英一郎",
-    "action": "推出棒狀蚊香",
-    "sources": [
-      "K_M",
-      "K_F"
-    ],
-    "imagined_contemporaneous_event": false
-  },
-  "surviving_straight_product": {
-    "source": "K_T",
-    "catalogue_manufacture_years": [
-      1911,
-      1914
-    ],
-    "length_cm": 20,
-    "same_1890_artifact_claimed": false
-  },
-  "handbook": {
-    "source_id": "NDL1897",
-    "title": "除虫菊栽培書 5版",
-    "publication_year": 1897,
-    "spoken_attribution": [
-      "c07d02",
-      "c07d03"
-    ],
-    "scope": "The narrator consults a later-published handbook to explain its stated material procedures. These are not an 1886/1887 factory batch or proof that the 1890 product used every step."
-  },
-  "r10_omitted_1888_trial_not_restored": true,
-  "same_batch_across_sources_claimed": false,
-  "modern_stamping_assigned_to_1940_machine": false,
+  "moved_scene_id": "c05r069",
+  "after": "c05r076",
+  "before": "c07a01",
+  "dated_fact_order": [
+    "1940 machine completed",
+    "circa 1955 allethrin developed and put into practical use, attributed to K_F",
+    "1957 improved machine completed",
+    "hand-rolling equipment use endpoint circa 1957",
+    "1958 stereochemical identification, attributed to the 2017 retrospective"
+  ],
+  "crop_reduction_given_no_new_exact_year": true,
+  "extraction_or_earlier_identity_work_given_no_new_exact_year": true,
+  "retrospective_publication_year_2017_not_a_research_event_year": true,
+  "notebook_caption_stays_approximately_1958": true,
+  "same_day_or_industry_wide_handrolling_stop_claimed": false,
+  "claim_1958_caused_1955": false,
+  "all_source_ids_sources_and_anchors_exact": true,
   "status": "AUTHOR_SCOPE_PENDING_INDEPENDENT_REVIEW"
 }
 

@@ -8,20 +8,22 @@ C03企劃與劇本已核准並匯入。正式TTS曾執行，但在供應商派�
 | --- | --- | --- |
 | [C03 Moleskine](c03/README.md) | 來源PASS、原生兩讀者合併PASS | 企劃／劇本核准已匯入；1144句TEXT_PASS |
 | [C04 泡泡紙](c04/README.md) | 來源PASS、原生合併PASS | 劇本核准、企劃pending；880句TEXT_PASS |
-| [C05 金鳥](c05/README.md) | 核准基底保留；材料旅程R11已凍結待新審核；[R10來源PASS、敘事HOLD](c05/candidates/length-extension/history/r10/) | 基底776句TEXT_PASS，排除未採用候選 |
+| [C05 金鳥](c05/README.md) | R12來源／書面配鏡及原生合併PASS，已採用 | 新的企劃／劇本pending；864句TEXT_PASS，舊776封存 |
 | [C06 Play-Doh](c06/README.md) | R3來源PASS、原生合併PASS | 新企劃／劇本pending；1304句TEXT_PASS；[分類及正式八語設定待管理權限](c06/protected-admin-settings.json) |
-| [C07 Dr. Martens](c07/script.md) | R4修窄來源並刪物流支線，正文偏短，補查新材料 | 未送新卡、未翻譯 |
-| [C08 龜甲萬](c08/history/r5/script.md) | R6加入有來源的新事件；R5來源PASS、敘事HOLD | 未送新卡、未翻譯；正文容量風險保留 |
+| [C07 Dr. Martens](c07/script.md) | R6來源／書面配鏡PASS，敘事HOLD重述 | 未送新卡、未翻譯，實聲未測 |
+| [C08 龜甲萬](c08/script.md) | R9來源／書面配鏡及原生合併PASS | 未送新卡、未翻譯，實聲未測 |
 | [C09 Patagonia](c09/README.md) | R7來源PASS、兩位全新讀者合併PASS，已採用 | **新的企劃／劇本均pending**；新版824句TEXT_PASS |
-| [C10 OXO](c10/history/r3/script.md) | R4修稿中；R3來源PASS、敘事只共享重述HOLD | 未送新卡、未翻譯 |
+| [C10 OXO](c10/script.md) | R6來源／書面配鏡PASS；敘事仍HOLD未回收 | 未送新卡、未翻譯，實聲未測 |
+| [C11 UCC](c11/script.md) | R3來源／書面配鏡PASS，敘事HOLD重述 | 未送新卡、未翻譯，實聲未測 |
+| [C14 CamelBak](c14/script.md) | R3來源／書面配鏡PASS，敘事HOLD回收與重述 | 未送新卡、未翻譯，實聲未測 |
 
-C11 UCC及C14 CamelBak正在原始來源研究，尚無新稿或來源PASS。
+C11與C14已完成新稿及來源／書面配鏡審核；C15 FriXion已完成原始來源研究，接續新稿。
 
-C03／C04／C05基底／C06／C09當前稿共 **4928句八語文字**已完成獨立校對及官方合併；數字排除候選和草稿。這些是未定時文字，沒有SRT、配音、語言輪、媒體QA或上傳資格。各集原始答案、必修、精確修正及獨立重查均保存。兩讀者依原生規則合併：必要項只有兩位皆答no才失敗；單人保留意見不刪、不改成一致同意。
+C03／C04／C05 R12／C06／C09當前稿共 **5016句八語文字**已完成獨立校對及官方合併；數字排除歷史基底、候選和草稿。這些是未定時文字，沒有SRT、配音、語言輪、媒體QA或上傳資格。各集原始答案、必修、精確修正及獨立重查均保存。兩讀者依原生規則合併：必要項只有兩位皆答no才失敗；單人保留意見不刪、不改成一致同意。
 
 C09當前video SHA `aed95981…`、官方劇本SHA `02f091ca…`，新劇本review `6a441762-8d88-45b7-adff-78b5c3ef1260`、新企劃 `5199b233-c1ee-4970-ae11-af9115cbbde9` 均已真實讀回pending。舊核准基底、760句舊譯文和失敗採用／rollback鏈在[基底封存](c09/history/baseline-before-length/)及候選history，舊批准不適用新稿。後台stage欄表示下一關名稱，不能用它推定核准或媒體完成。
 
-原始[盤點](batch.json)為22筆品牌故事、19筆未上YouTube、18個題目。龜甲萬原版與short-v8為同題，均保留；[53份舊來源雜湊](original-preservation.json)全數未變。當前已有五題來源及敘事合併PASS，其餘13題含正在寫稿／審核的C07、C08、C10，詳見[接續順序](execution-order.json)。不為集數缺號新增題目，非C系列仍保留在原佇列。
+原始[盤點](batch.json)為22筆品牌故事、19筆未上YouTube、18個題目。龜甲萬原版與short-v8為同題，均保留；[53份舊來源雜湊](original-preservation.json)全數未變。當前已有六題來源及敘事合併PASS，其餘12題含正在寫稿／審核的C07、C10、C11、C14、C15，詳見[接續順序](execution-order.json)。不為集數缺號新增題目，非C系列仍保留在原佇列。
 
 製作規格依[10/25決定](../channel-review-20261025-story-series/README.md)、[品牌故事流程](../../../.agents/skills/brand-story/SKILL.md)與[PR1844](https://github.com/x812033727/travel_scanner/pull/1844)：目標13分鐘，**實聲正文須720–840秒**；開場具觀眾利害、有來源數字及具體場景；每章對觀眾說話、有旁白反應；30–45秒實質鉤子、至少8組有實際新答案的回收。[原生計時口徑](duration-measurement-scope.json)包含冷開場及有聲CTA，只排額外片頭片尾；排開場／strict字數只是規劃分項。字數、估計時間線和dry-run均不算時長通過；偏短稿不得靠慢播、停頓或警語填長。
 
@@ -29,7 +31,7 @@ C09當前video SHA `aed95981…`、官方劇本SHA `02f091ca…`，新劇本revi
 
 各集 `video.json` 是機器稿；作者 `script.md` 與 `claims.md` 保留逐句來源，官方 `writeScreenplay` 另產生runtime劇本；後台實收投影保存在 `backend-script.md` 並有SHA。禁止混用作者與官方劇本雜湊，也不以產生投影為由覆寫查核原件。
 
-[prepare-runtime.mjs](prepare-runtime.mjs)可明列選集在倉庫外初始化正常不可變字典及官方劇本，不產生owner核准、不帶舊auto.json。已有核准的C03／C04／C05／C09執行目錄不可用它覆寫；C09換稿採精確來源、查核、原生合併及0error預檢的獨立採用程序。runtime helper遇既有批准會停止以便核對。[runtime-cli.mjs](runtime-cli.mjs)只交給官方CLI，不解除保護。
+[prepare-runtime.mjs](prepare-runtime.mjs)可明列選集在倉庫外初始化正常不可變字典及官方劇本，不產生owner核准、不帶舊auto.json。已有核准的C03／C04／C05／C09執行目錄不可用它覆寫；C05／C09換稿採精確來源、查核、原生合併及0error預檢的獨立採用程序。runtime helper遇既有批准會停止以便核對。[runtime-cli.mjs](runtime-cli.mjs)只交給官方CLI，不解除保護。
 
 接續關卡：精確稿件審核 → 正式全片帳戶與報價 → TTS實測和聽檢 → 插畫驗收 → 正式片頭片尾、配樂、組片及字幕 → 完整解碼QA與站主看片 → 上傳包。各集clean-master只有[衍生配方與metadata檢查](c09/variants/clean-master/README.md)，須另有實際clean輸出、全片QA和當前final批准才符合配音入場，不能借燒字幕版本的批准。
 

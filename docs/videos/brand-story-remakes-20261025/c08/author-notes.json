@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "C08 r4",
+  "revision": "C08 r9",
   "status": "HOLD_PENDING_INDEPENDENT_SOURCE_AND_TWO_NEW_ISOLATED_READERS",
   "author": "/root/c07_author",
   "new_slug": "story-everyday-kikkoman-c08-remake-20261025",
@@ -15,50 +15,56 @@
     "README.md": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145"
   },
   "previous_revision_input_sha256": {
-    "video.json": "1ff4baebc7feb689ee45c240a9b3d9417e3a37b121b2fdcd698cc87c6a8e2af0",
-    "script.md": "dc31efca261f3eb1019f3bf385822aa602e05a8acf998c080f5e10e0a5a176da",
-    "narration-only.json": "7b5005f8d8ef66fefd0b3e5fd2084b304c68ce9e0814a3113634d301fbbc640d",
-    "claims.json": "06580afc5485f2da824f8bb36c4de443d42675e9f04b37fbd4a485d490a07463"
+    "video.json": "213288299cdd5d4cef9a08172e1b1aa4c2b4a6a419ed766dc02d45a6b9de2e69",
+    "script.md": "8fb8f52ba53704739a632ec74a12aaa6907030cedb2ab90a9ffe2bd08733493d",
+    "narration-only.json": "65b2d46e1fd3b058f5759fe35629f08c16e5374c742cd44cbb58023e3d4ac5a5",
+    "claims.json": "975993d111637bd4a4b8acf646e1154681a94ba7a575f0e4c8d8302b61ced182"
   },
   "editorial_delta": {
-    "changed_retained_lines": {},
-    "deleted_lines": [
-      "c8r10421"
-    ],
-    "first_function_delivery_retained": "c8r10419; pressing action in original written illustration, no duplicate sentence added",
-    "deleted_line_is_loop_endpoint": false,
-    "loop_changes": 0,
-    "current_K7_role_claim_scope_corrections": {
-      "C08R24": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋",
-      "C08R25": "2025商品開發人員說與容器廠合作十個月商品化，首200mL外觀沿舊紅蓋線索",
-      "C08R26": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
+    "changed_retained_lines": {
+      "c8r10402": "龜甲萬的產品開發人員恩田友貴後來解釋，這款醬油省去火入加熱，改用特殊過濾去除微生物。",
+      "c8r10604": "約用到半瓶，兩層之間的差別才比較看得出來。"
     },
+    "deleted_lines": [
+      "c8r6h01",
+      "c8r6h02"
+    ],
     "mandatory_targets": [
+      "one_line",
+      "chapters_link",
       "no_recap"
     ],
-    "single_reader_no_not_targeted": [
-      "one_line"
-    ],
-    "current450mL_90day_exception": "Evidence only; narration says guide120days and some products excepted, not the complete exception table. Historical2011 90day company feature claim is a distinct retained statement.",
-    "PET_same_material_and_bag_disassembly_narration_occurrences": 0,
+    "chapter4_first": "c8r10406",
+    "retained_relative_order_unchanged": true,
+    "historical_aside_removed": "1966sale/stop h01/h02 removed completely, not moved or redated. Existing10406sealquestion→10408explicit2010pouch now directly follows10321freshnessquestion. Fullpersonalname restored in10402asfirstintroduction.",
+    "chapter6_answer": "10604 retains only the approximatelyhalf-usedvisibilitythreshold; repeatedinnerbagshrinking clause removed. Half-bottlethresholdoccurs onlyhere.",
+    "opening_first_four_complete_scenes_unchanged": true,
+    "prototype_all21_lines_source_records_and_complete_scenes_unchanged": true,
+    "all_29_loop_objects_unchanged": true,
+    "all_prompts_camera_emotion_unchanged": true,
+    "all_retained_source_anchor_and_evidence_bindings_unchanged": true,
     "new_sources_added": false,
-    "new_fact_or_unverified_psychology_added": false
+    "new_unverified_fact_or_psychology_added": false,
+    "whole_runtime_not_measured": true
   },
   "source_files_sha256": {
-    "video.json": "1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f",
-    "script.md": "2222d15b789379c1742890a881d63c1b2aeb2822b269d46dce82213da8a1308f",
-    "narration-only.json": "a55cf360762f776658082e4dc079f44273fd8172287360e2f673d253a0e9ee04",
-    "claims.json": "b647932b55eaa1465ccbefd90dd202e7c16a489781a190b14f57c283b1e1a809",
-    "claims.md": "e5f8a152f3ed38619d847132d8a7eb0eff55b151dc454492838b69be7935017b",
-    "brief.md": "b6ce716ff1526fabcd478eeaea3432a1c88d15d949e7dc1b39f462d20dfc12a0",
-    "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8"
+    "video.json": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+    "script.md": "54dd6134884285511a2cafadb240d5b10b7c1ecfa70166f08a4e188e3f701278",
+    "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+    "claims.json": "0000c5cd24273e13b39e7ffe77bddd53951b0d3284026c549517a87599a9cb38",
+    "claims.md": "815955bb3792fba469529ba274427df513189ea27b686d3dbd612da006366e16",
+    "brief.md": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+    "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+    "r9-edits.json": "3fdee2885a3808fe6db0512cc710523dc421349a7153e8d17f5132d0ece3fa63",
+    "build-candidate.py": "88d248136c9708b85ac3d1bae660cb5db41e440aab67e76d90163f468ebc42bf",
+    "native-initialized-lint.json": "16821db0bb5c6cf82b2ff1782f5f756a313fe6261f0a25342bcebd2e00dc354b"
   },
   "counts": {
-    "narration_lines": 114,
-    "scenes": 112,
-    "illustration_shots": 111,
+    "narration_lines": 127,
+    "scenes": 125,
+    "illustration_shots": 124,
     "chapters": 6,
-    "loops": 23
+    "loops": 29
   },
   "actual_runtime_measured": false,
   "source_pass_issued": false,
@@ -69,250 +75,89 @@
   "eight_language_text_written": false,
   "paid_calls": 0,
   "backend_writes": 0,
-  "mechanical_lint": "0_ERRORS_0_NARRATIVE_WARNINGS_IN_NATIVE_INITIALIZED_CONTEXT",
+  "mechanical_lint": "NATIVE_INITIALIZED_CONTEXT_ZERO_ERRORS_ZERO_CADENCE_WARNINGS; NO_INDEPENDENT_VERDICT",
   "narrative_scope": "one use problem across explicitly different bottle generations; not one physical bottle surviving unchanged for sixty years",
-  "native_target": "13 minutes; future actual narration body720–840 seconds, no padding or slowed speech",
-  "native_initialized_lint_receipt": "native-initialized-lint.json",
+  "native_target": "13minutes target; official actual narration body720–840seconds includes fullcoldopen+voicedCTA, excludes onlyseparate5secondintro/21secondoutro. after-opening/strict counters planning only; no padding or slowed speech.",
+  "frozen_research_expansion_sha256": {
+    "research.md": "5b90d34f0c6733c0f9cacda16f1dd5be77092309208723db90cd2e331efe6610",
+    "claims.json": "e51b59d2b54e53fce834853963c89f762b2ca0653ae53f2fc6cd1dd32fa299ff",
+    "source-receipts.json": "867f5a58592a5350beacf0adebe92b980993eeb096e84afa0e16c8f23a701bc5"
+  },
+  "mechanical_check_report": "/workspace/work/brand-story-20261025/c08-audit/r9-delta-check.json",
+  "four_input_sha256": {
+    "video.json": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+    "script.md": "54dd6134884285511a2cafadb240d5b10b7c1ecfa70166f08a4e188e3f701278",
+    "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+    "claims.json": "0000c5cd24273e13b39e7ffe77bddd53951b0d3284026c549517a87599a9cb38"
+  },
   "native_units": {
-    "total": 2644,
-    "opening": 158,
-    "body_after_opening": 2486,
+    "total": 3005,
+    "opening": 174,
+    "body_after_opening": 2831,
     "closing_card": 103,
-    "body_excluding_opening_and_closing": 2383,
+    "body_excluding_opening_and_closing": 2728,
     "chapters": [
       {
         "name": "倒完後，手還不能收回去",
         "lines": 8,
-        "spoken_units": 158
+        "spoken_units": 174
       },
       {
         "name": "大瓶先讓出了餐桌",
-        "lines": 22,
-        "spoken_units": 519
+        "lines": 14,
+        "spoken_units": 335
       },
       {
         "name": "嘴尖收住了，瓶口還得打開",
-        "lines": 19,
-        "spoken_units": 434
+        "lines": 18,
+        "spoken_units": 408
       },
       {
         "name": "保鮮袋碰到了放手的問題",
         "lines": 20,
-        "spoken_units": 471
+        "spoken_units": 472
       },
       {
         "name": "空氣改走了外面那一層",
-        "lines": 23,
-        "spoken_units": 532
+        "lines": 44,
+        "spoken_units": 1059
       },
       {
         "name": "最後一點，換了保存方式",
-        "lines": 22,
-        "spoken_units": 530
+        "lines": 23,
+        "spoken_units": 557
       }
     ]
   },
-  "lint_errors": 0,
-  "lint_warnings": 4,
-  "dictionary_sha256": "3186c568c970ed7a3efba2c32599bda6b117ad541c1d890371938e36b033c59d",
-  "voice_exact_native_story_style": true,
-  "exact_delta_validation": {
-    "revision": "C08 r4",
-    "scope": "author mechanical and exact-delta check only; not independent source/narrative/media acceptance",
-    "four_input_sha256": {
-      "video.json": "1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f",
-      "script.md": "2222d15b789379c1742890a881d63c1b2aeb2822b269d46dce82213da8a1308f",
-      "narration-only.json": "a55cf360762f776658082e4dc079f44273fd8172287360e2f673d253a0e9ee04",
-      "claims.json": "b647932b55eaa1465ccbefd90dd202e7c16a489781a190b14f57c283b1e1a809"
+  "native_total_delta_vs_r8": -49,
+  "native_errors": 0,
+  "native_narrative_or_cadence_warnings": 0,
+  "native_soft_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"kitchen\" is in 57 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
     },
-    "narration_delta": {
-      "deleted_lines": {
-        "c8r10421": "你要少一點，就調整手裡的力；醬油不再只跟著瓶子傾斜而出。"
-      },
-      "retained_line_changes": 0,
-      "added_lines": 0,
-      "deleted_scenes": [
-        "c08r1-04-21"
-      ],
-      "retained_scene_objects_equal_r3": true,
-      "all_non_scene_video_fields_equal_r3": true
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 53 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
     },
-    "claim_scope_changes": [
-      {
-        "line": "c8r10321",
-        "anchor_id": "C08R26",
-        "before": "2025主管解釋生醬油省火入，特殊過濾除微生物，空氣改色香",
-        "after": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
-      },
-      {
-        "line": "c8r10401",
-        "anchor_id": "C08R26",
-        "before": "2025主管解釋生醬油省火入，特殊過濾除微生物，空氣改色香",
-        "after": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
-      },
-      {
-        "line": "c8r10402",
-        "anchor_id": "C08R26",
-        "before": "2025主管解釋生醬油省火入，特殊過濾除微生物，空氣改色香",
-        "after": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
-      },
-      {
-        "line": "c8r10403",
-        "anchor_id": "C08R26",
-        "before": "2025主管解釋生醬油省火入，特殊過濾除微生物，空氣改色香",
-        "after": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
-      },
-      {
-        "line": "c8r10406",
-        "anchor_id": "C08R26",
-        "before": "2025主管解釋生醬油省火入，特殊過濾除微生物，空氣改色香",
-        "after": "2025公司訪談中的商品開發人員恩田友貴解釋生醬油省火入，特殊過濾除微生物，空氣改色香"
-      },
-      {
-        "line": "c8r10409",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      },
-      {
-        "line": "c8r10410",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      },
-      {
-        "line": "c8r10411",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      },
-      {
-        "line": "c8r10412",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      },
-      {
-        "line": "c8r10413",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      },
-      {
-        "line": "c8r10414",
-        "anchor_id": "C08R25",
-        "before": "2025主管說與容器廠合作十個月商品化，首200mL外觀沿舊紅蓋線索",
-        "after": "2025商品開發人員說與容器廠合作十個月商品化，首200mL外觀沿舊紅蓋線索"
-      },
-      {
-        "line": "c8r10416",
-        "anchor_id": "C08R25",
-        "before": "2025主管說與容器廠合作十個月商品化，首200mL外觀沿舊紅蓋線索",
-        "after": "2025商品開發人員說與容器廠合作十個月商品化，首200mL外觀沿舊紅蓋線索"
-      },
-      {
-        "line": "c8r10417",
-        "anchor_id": "C08R24",
-        "before": "2025具名主管回述軟袋內容減少不自立，使用者希望單手開蓋",
-        "after": "2025具名商品開發人員回述軟袋內容減少不自立，使用者希望單手開蓋"
-      }
-    ],
-    "claims_other_than_revision_previous_binding_deleted_line_and_role_scopes_equal_r3": true,
-    "loop_endpoints_changed": 0,
-    "all_23_loops_equal_r3_and_ordered": true,
-    "all_chapters_have_viewer_and_narrator": true,
-    "brief_byte_identical_to_r3": true,
-    "brief_not_byte_identical_to_r2": true,
-    "series_byte_identical_to_r3": true,
-    "counts": {
-      "narration_lines": 114,
-      "scenes": 112,
-      "illustration_shots": 111,
-      "chapters": 6,
-      "loops": 23
+    {
+      "path": "scenes",
+      "message": "\"bottle\" is in 50 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
     },
-    "native_units": {
-      "total": 2644,
-      "opening": 158,
-      "body_after_opening": 2486,
-      "closing_card": 103,
-      "body_excluding_opening_and_closing": 2383,
-      "chapters": [
-        {
-          "name": "倒完後，手還不能收回去",
-          "lines": 8,
-          "spoken_units": 158
-        },
-        {
-          "name": "大瓶先讓出了餐桌",
-          "lines": 22,
-          "spoken_units": 519
-        },
-        {
-          "name": "嘴尖收住了，瓶口還得打開",
-          "lines": 19,
-          "spoken_units": 434
-        },
-        {
-          "name": "保鮮袋碰到了放手的問題",
-          "lines": 20,
-          "spoken_units": 471
-        },
-        {
-          "name": "空氣改走了外面那一層",
-          "lines": 23,
-          "spoken_units": 532
-        },
-        {
-          "name": "最後一點，換了保存方式",
-          "lines": 22,
-          "spoken_units": 530
-        }
-      ]
+    {
+      "path": "scenes[43] (c08r1-04-02)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
     },
-    "native_units_delta_vs_r3": -25,
-    "native_errors": 0,
-    "native_narrative_or_cadence_warnings": 0,
-    "native_soft_warnings": [
-      {
-        "path": "scenes",
-        "message": "\"adult\" is in 61 of 111 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-      },
-      {
-        "path": "scenes",
-        "message": "\"kitchen\" is in 61 of 111 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-      },
-      {
-        "path": "scenes",
-        "message": "\"bottle\" is in 57 of 111 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-      },
-      {
-        "path": "scenes[50] (c08r1-04-02)",
-        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
-      }
-    ],
-    "max_estimated_illustration_seconds": 10.366666666666667,
-    "all_illustrations_estimated_at_most_12_seconds": true,
-    "actual_used_original_sources_sha_checked": 20,
-    "protected_history_review_research_files_unchanged": 110,
-    "legacy_input_files_unchanged": 8,
-    "source_advisories_preserved": [
-      "Current450mL extra-low-salt90day exception remains evidence-only; narration retains120dayguide/someexceptions, not the full exception table. Historical2011 90day company claim remains separate.",
-      "C08R24/25/26 active claim scopes use supported product-development role; protected research/history labels stay byteexact.",
-      "R4 brief byteexact toR3 only; R3 brief had real changes fromR2."
-    ],
-    "current_verify_absent": true,
-    "actual_runtime_measured": false,
-    "runtime_risk": "STRONG_SHORT_LENGTH_RISK: body2486 units incl closing,2383 excluding closing. Actual720–840seconds not measured. No slowdown, pauses, recap or unrelated facts added.",
-    "new_sources_or_branches_added": false,
-    "paid_calls": 0,
-    "backend_writes": 0,
-    "status": "HOLD_PENDING_INDEPENDENT_SOURCE_AND_TWO_NEW_ISOLATED_READERS"
-  },
-  "native_unit_delta_vs_r3": {
-    "r3_total": 2669,
-    "r4_total": 2644,
-    "net": -25
-  },
-  "actual_runtime_gate": "STRONG_SHORT_LENGTH_RISK: body2486 units incl closing,2383 excluding closing. Actual720–840seconds not measured. No slowdown, pauses, recap or unrelated facts added."
+    {
+      "path": "scenes",
+      "message": "about 14.2 minutes; the target is 12-14"
+    }
+  ],
+  "max_estimated_illustration_seconds": 10.366666666666667,
+  "all_six_chapters_have_viewer_and_narrator": true,
+  "protected_files_unchanged": 429,
+  "two_legacy_versions_input_files_unchanged": 8,
+  "actual_duration_gate": "HOLD_PENDING_ACTUAL_TTS_720_TO840SECONDS; full3005spokenUnits includescoldopenandvoicedCTA. No actualdurationverdictfromtextunitsorCPMestimate.",
+  "independent_source_and_two_fresh_readers": "PENDING; author does not issue source/written-visual/narrative PASS"
 }

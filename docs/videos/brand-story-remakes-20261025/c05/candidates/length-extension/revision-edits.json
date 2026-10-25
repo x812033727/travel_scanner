@@ -1,156 +1,97 @@
 {
-  "revision": 11,
-  "author_revision_label": "R11",
-  "next_actual_native_panel_round": 10,
-  "prior_video_sha256": "3cf768c449dc875e8fefbc04001879e0f6eacd3ad746de9a2146b4c844c6044c",
+  "revision": 12,
+  "author_revision_label": "R12",
+  "next_actual_native_panel_round": 11,
+  "prior_video_sha256": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
   "prior_core_four_sha256": {
-    "video.json": "3cf768c449dc875e8fefbc04001879e0f6eacd3ad746de9a2146b4c844c6044c",
-    "brief.md": "0694de8fa1a910344934b8c5084e53d3db219dcfa8453111f015d4c9309e30f6",
-    "series.json": "a50d508be0af86d51636b5fd8437cd0eb0cf9dd4b085a92ff1e914f3266f9de7",
-    "claims.json": "99325f782ccb4fc55901b009c1215805a231b2a5cc8bb44afc7325a21e1a2ee9"
+    "video.json": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+    "brief.md": "f8fd8a0ecce1e9df4c58df49b3c03673192dd0d2d7bf2110c32d7eb2df5b6942",
+    "series.json": "ef4509d119a692baa5cafc4d8a7958cde1c44500ed5eb658ce512f2844876360",
+    "claims.json": "924da252b6b474f24466b4ac0f1c33230ac98980aac345e060fce62e9fb168ce"
   },
   "role_delta": {
-    "scope": "R10 shared scene_first/no_recap: replace the imagined opening with a sourced event and remove recap throughout; keep the passed R10 chronology correction.",
-    "narration_changed": [
+    "scope": "Only the actual R11 circa-1957→1955 interleave. In the frozen R11, 1955 was already before the 1958 research.",
+    "moved_scene_id": "c05r069",
+    "from_zero_based_scene_index": 54,
+    "to_zero_based_scene_index": 58,
+    "previous_location": {
+      "after": "c05r068",
+      "before": "c05r071"
+    },
+    "new_location": {
+      "after": "c05r076",
+      "before": "c07a01"
+    },
+    "chapter_before": [
+      "c05r068",
+      "c05r069",
+      "c05r071",
+      "c05r073",
+      "c05r074",
+      "c05r076",
+      "c07a01",
+      "c07a02",
+      "c07a03",
+      "c07a04",
+      "c07a05",
+      "c07a11",
+      "c07a06",
+      "c07a07",
+      "c07a08",
+      "c07a09",
+      "c07a10"
+    ],
+    "chapter_after": [
+      "c05r068",
+      "c05r071",
+      "c05r073",
+      "c05r074",
+      "c05r076",
+      "c05r069",
+      "c07a01",
+      "c07a02",
+      "c07a03",
+      "c07a04",
+      "c07a05",
+      "c07a11",
+      "c07a06",
+      "c07a07",
+      "c07a08",
+      "c07a09",
+      "c07a10"
+    ],
+    "narration_changed": [],
+    "narration_added": [],
+    "narration_deleted": [],
+    "prompt_changed": [],
+    "all108_complete_line_objects_exact": true,
+    "all106_complete_scene_objects_exact": true,
+    "all_non_scene_video_fields_exact": true,
+    "all36_loops_exact": true,
+    "loop_context": [
       {
-        "id": "c05r002",
-        "before": "想像桌邊只剩一截灰，窗外仍暗著；你得再拿一根，夜晚才剛開始。",
-        "after": "一八九〇年，上山英一郎推出棒狀蚊香，把除蟲菊粉做成了能點燃的細條。",
-        "spoken_unit_delta": 3
+        "setup": "c05r067",
+        "payoff": "c05r069",
+        "scope": "The 1940 machine leaves the hand-rolling question open; the unchanged circa-1957 equipment-use endpoint answers it after the dated 1955 and 1957 developments."
       },
       {
-        "id": "c05r020",
-        "before": "線香的做法給了一條路：把粉料變成細條，讓材料有可以持續燃燒的形狀。",
-        "after": "開場那種細條，借用的是佛壇線香的製法。",
-        "spoken_unit_delta": -13
+        "setup": "c05r071",
+        "payoff": "c05r074",
+        "scope": "The materials question now follows 1940; the crop account and circa-1955 synthetic development supply the new result before 1957."
       },
       {
-        "id": "c05r021",
-        "before": "到一八九〇年，直條產品上市了。這根細香，能不能完整地送到你手上？",
-        "after": "可這種細香，能不能完整地送到你手上？",
-        "spoken_unit_delta": -11
-      },
-      {
-        "id": "c05r023",
-        "before": "公司回顧，這種直條約二十公分長，當時往往得同時用上數根。",
-        "after": "原廠留存的一款直條商品，約二十公分長；資料還說，使用時會同時用上數根。",
-        "spoken_unit_delta": 6
-      },
-      {
-        "id": "c05r092",
-        "before": "原廠另一份製程解說，把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
-        "after": "我沒想到，原廠的製程解說還把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
-        "spoken_unit_delta": 3
-      },
-      {
-        "id": "c05le010",
-        "before": "科博館把現在的打型比作餅乾模。料片交到巴形的渦卷刃型下，這回還需要工人一圈圈盤嗎？",
-        "after": "原廠製程裡，料片沿輸送帶進入打型機，像餅乾模那樣，切出相連的雙卷。",
-        "spoken_unit_delta": -9
-      },
-      {
-        "id": "c05rx010",
-        "before": "燃燒時，有效成分會以極細微粒子的形式進入空氣，這也是原廠描述的工作方式。",
-        "after": "原廠說，燃燒期間，有效成分會持續以極細微粒子的形式進入空氣。",
-        "spoken_unit_delta": -6
+        "setup": "c07a10",
+        "payoff": "c05rx005",
+        "scope": "The chapter-ending carrier question and next-chapter result stay exact."
       }
     ],
-    "narration_deleted": [
-      {
-        "id": "c07d06",
-        "text": "種得多，乾燥的位置和天氣卻得跟得上；我覺得這比有沒有種活，更像一道生產難題。",
-        "spoken_units": 34,
-        "reason": "刪除對乾燥位置、天氣與產量的抽象小結，讓陰乾負荷直接走向連雨備案。"
-      },
-      {
-        "id": "c07s06",
-        "text": "我看這些留下的商品，最有感的是，長夜終於有了不同的時間刻度；你要等多久，選擇開始不一樣。",
-        "spoken_units": 39,
-        "reason": "刪除對剛說過六小時、十二小時商品選擇的總結，不再重講長夜有不同刻度。"
-      },
-      {
-        "id": "c05le004",
-        "text": "你若站在這台機器前，送進去的不是一把乾粉。粉一倒就散，怎麼變成能被擠出去的那一塊？",
-        "spoken_units": 37,
-        "reason": "刪除乾粉會散、再問如何成塊的重啟；直接給加水成黏土狀的新工序。"
-      },
-      {
-        "id": "c07m01",
-        "text": "你手上的香體，有負責成形的材料，也有負責殺蟲的成分；我覺得它像一個分工很細的載具。",
-        "spoken_units": 37,
-        "reason": "刪除剛列過的成形材料／有效成分分工小結；第一人稱反應併入有三十分鐘工序事實的r092。"
-      },
-      {
-        "id": "c05le023",
-        "text": "接著，輸送帶把料片交給打型機，刀模打出兩個組合在一起的螺旋。",
-        "spoken_units": 27,
-        "reason": "將輸送帶、打型、相連雙卷合併進le010，只講一次現行打型動作。"
-      },
-      {
-        "id": "c07m02",
-        "text": "裝箱讓材料離開工廠，等你拆封時，最後一道交接，卻還在自己的手指上。",
-        "spoken_units": 29,
-        "reason": "刪除剛裝箱又說材料離廠的過門，直接讓雙卷分開問題接到使用章。"
-      },
-      {
-        "id": "c05le014",
-        "text": "有效成分是只放出那一下，還是會一直釋放？",
-        "spoken_units": 18,
-        "reason": "將持續釋放的時間尺度併入rx010，不在位置揭露後重啟一次釋放問答。"
-      },
-      {
-        "id": "c05le015",
-        "text": "原廠說，有效成分會在燃燒期間持續釋放。",
-        "spoken_units": 17,
-        "reason": "持續釋放事實已完整併入rx010，本句刪除。"
-      }
-    ],
-    "prompts_changed": [
-      {
-        "id": "c05r002",
-        "before": "Close-up of an adult placing an unlit straight incense stick beside a small pile of ash with soft lamp light from the right.",
-        "after": "Medium shot of one anonymous adult presenting a plain bundle of thin straight incense sticks against a simple neutral background, soft diffused light."
-      },
-      {
-        "id": "c05le010",
-        "before": "Close-up of a plain interlocking spiral cutting die above a flat sheet of soft material, neutral factory light.",
-        "after": "Close-up of an unmarked interlocking spiral die cutting a soft sheet carried by a plain conveyor, diffuse factory light."
-      }
-    ],
-    "loops_deleted": [
-      {
-        "setup": "c05le004",
-        "payoff": "c05le005",
-        "what": "加水成黏土狀"
-      },
-      {
-        "setup": "c05le010",
-        "payoff": "c05le023",
-        "what": "刀模打出雙螺旋"
-      },
-      {
-        "setup": "c05le014",
-        "payoff": "c05le015",
-        "what": "燃燒中持續釋放"
-      }
-    ],
-    "all_other_narration_exact": true,
-    "all_other_retained_scene_objects_exact": true,
-    "all_non_scene_video_fields_except_loops_exact": true,
-    "added_narration_lines": [],
-    "deleted_narration_lines": [
-      "c07d06",
-      "c07s06",
-      "c05le004",
-      "c07m01",
-      "c05le023",
-      "c07m02",
-      "c05le014",
-      "c05le015"
-    ],
-    "net_total_unit_delta": -265,
-    "net_effective_body_unit_delta": -268,
-    "new_historical_experiment_or_psychology_claim": false,
+    "net_total_unit_delta": 0,
+    "net_after_opening_unit_delta": 0,
+    "net_strict_subdivision_unit_delta": 0,
+    "dates_removed_or_changed": false,
+    "undated_research_given_new_exact_year": false,
+    "claim_1958_caused_1955": false,
+    "opening_and_no_recap_work_retained": true,
     "padding_added": false
   },
   "loops": [

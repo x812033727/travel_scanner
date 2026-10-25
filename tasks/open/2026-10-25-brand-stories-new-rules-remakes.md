@@ -90,3 +90,6 @@ scope:
 - C05材料旅程R9已凍結待來源差分／actualpanel8，BASE與776句未變；C07R3修窄來源並刪物流教程待新查；C08R4兩讀者仍共享no_recap；C10R1來源／書面配鏡PASS但兩讀者共享scene_first/no_recap。完整各輪history與真正投票保留，不抽取未改稿重投。原53檔本輪再次核對未變。持續下一題準備，不將任一文字PASS宣稱影片完成。
 - 後續凍結紀錄：C05作者R10來源／配鏡PASS，actualpanel9共享scene_first/no_recap；C08R5來源／配鏡PASS但共享開場及重述，完整封存後R6納入另份原型實測與現行FAQ新材料；C10R2來源／配鏡PASS，敘事只共享no_recap，封存後R3修稿。C07R4刪支線後正文2526，先補查真正修理案例材料；不拿短稿先當13min-ready。C11與C14原始研究接續。新後台唯讀讀回21:29Z確認C03仍雙核准、C04/C05企劃待審、C06與C09新卡待審；沒有新owner批准，付費仍0。
 - 計時口徑校正：已核原生duration.mjs，body為整份unwrapped實聲timeline，含冷開場與有聲CTA，只排另外加的5s/21s頻道bookends。歷史作者標為body/strict的字量實為排開場等額外規劃分項，不能當官方時長或已知實聲不足；保留綁定歷史原件，現行解釋見duration-measurement-scope.json。所有實聲仍未知，未改時長guard或將紙上估算冒充PASS。
+
+- 最新採用：C05作者R12／原生panel11及來源／配鏡PASS，採用後新劇本4a1620bc-1036-47f0-acf1-f62df23ec197、新企劃00e14875-adef-47e0-b91f-e5f764a3dcfb均實讀pending；舊批准不適用新稿。新版八語864句全TEXT_PASS，葡／印各1處化學轉化語意修正後獨立重查；runtime0errors、7soft、0stale。五份現行稿合計5016句，舊776句封存。C08 R9來源及原生合併PASS，保留兩讀者各自不同意見；C07 R6共享no_recap、C10 R6共享payoffs、C14 R3共享payoffs/no_recap仍HOLD。C11 R3新讀者進行中，C15原件研究已完成，接續新稿；實際媒體及付費仍0。
+- C11 R3已真實合併新雙讀者，僅共享no_recap，準備保留原件後最小修稿；沒有因source PASS直接送審。最新index差異保留一行歷史作者空白（c10/history/r5/build-candidate.py），不為格式改寫已綁定封存原件。

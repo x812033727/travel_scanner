@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T21:54:50.142171+00:00",
-  "state": "five_current_eight_language_text_PASS_related_material_and_frozen_revision_reviews_media_held",
+  "updated_at": "2026-10-25T23:39:58.384432+00:00",
+  "state": "five_current_eight_language_text_PASS_C05_R12_C09_R7_reviews_pending_other_source_verified_drafts_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -134,8 +134,8 @@
     {
       "id": "c05",
       "slug": "story-everyday-kincho-c05-remake-20261025",
-      "title": "金鳥蚊香：四十分鐘就燒完，盤成螺旋為何還不夠？｜品牌故事",
-      "video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+      "title": "金鳥蚊香憑什麼撐過長夜？一卷香的百年材料難關｜品牌故事",
+      "video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
       "source_and_written_visual": "PASS",
       "narrative_merged": "PASS",
       "narrative_readers": [
@@ -146,19 +146,18 @@
         {
           "passed": false,
           "failed": [
-            "no_recap",
-            "no_detour"
+            "no_recap"
           ]
         }
       ],
       "narrative_receipt": "c05/reviews/narrative-final.json",
-      "source_receipt": "c05/reviews/source-r6-delta.json",
+      "source_receipt": "c05/reviews/source-length-r12-independent.json",
       "lint_errors": 0,
-      "lint_warnings": 0,
-      "backend_script_status": "approved",
-      "backend_review_id": "398b6b93-0ce6-439a-925e-8ff72a1bc5fd",
-      "canonical_script_sha256": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
-      "script_approval_imported": true,
+      "lint_warnings": 7,
+      "backend_script_status": "pending",
+      "backend_review_id": "4a1620bc-1036-47f0-acf1-f62df23ec197",
+      "canonical_script_sha256": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321",
+      "script_approval_imported": false,
       "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-kincho-c05-remake-20261025",
       "preflight": "c05/preflight-inputs.json",
       "actual_narration_seconds": null,
@@ -166,25 +165,23 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "backend_checked_at": "2026-10-25T12:30:42.378Z",
-      "baseline_text_translations": "c05/i18n/preparation-status.json",
-      "baseline_text_review": "TEXT_PASS",
+      "backend_checked_at": "2026-10-25T22:46:50.111Z",
       "source_length_planning_hold": true,
       "length_extension_candidate": {
         "path": "c05/candidates/length-extension",
-        "current_revision": "r11_frozen_source_delta_and_actual_panel10_pending",
+        "current_revision": "r12_adopted",
         "last_frozen_revision": "c05/candidates/length-extension/history/r10",
         "last_frozen_video_sha256": "3cf768c449dc875e8fefbc04001879e0f6eacd3ad746de9a2146b4c844c6044c",
-        "source_delta": "PENDING",
-        "native_merged": "PENDING",
-        "last_actual_native_panel": 9,
+        "source_delta": "PASS",
+        "native_merged": "PASS",
+        "last_actual_native_panel": 11,
         "merged_failed": [],
         "native_lint_errors": 0,
-        "adopted": false,
+        "adopted": true,
         "actual_duration_measured": false,
-        "source_receipt": null,
+        "source_receipt": "c05/candidates/length-extension/reviews/source-r12-independent.json",
         "last_frozen_after_cold_open_spoken_units": 3154,
-        "video_sha256": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+        "video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
         "current_whole_narration_spoken_units": 3041,
         "current_after_cold_open_spoken_units": 2886,
         "last_frozen_source_delta": "PASS",
@@ -195,7 +192,26 @@
           "no_recap"
         ]
       },
-      "candidate_approved": false
+      "candidate_approved": false,
+      "native_fact_check": "c05/verify-1.md",
+      "backend_outline_review_id": "00e14875-adef-47e0-b91f-e5f764a3dcfb",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "text_translation_preparation": "TEXT_PASS",
+      "text_translations": "c05/i18n/preparation-status.json",
+      "historical_baseline": "c05/history/baseline-before-length",
+      "historical_approval_applies_to_current": false,
+      "whole_narration_spoken_units": 3041,
+      "after_cold_open_spoken_units": 2886,
+      "production_handoff": "c05/production-entry.md",
+      "lint_scope": "Current R12 eight-language isolated runtime; original adoption lint-final.json remains a 48-warning pre-translation snapshot.",
+      "localized_runtime_lint_errors": 0,
+      "localized_runtime_lint_warnings": 7,
+      "stale_or_missing_translation_warnings": 0,
+      "text_translation_entries": 864,
+      "required_translation_fixes_resolved": 2,
+      "clean_master_recipe": "c05/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS"
     },
     {
       "id": "c06",
@@ -263,7 +279,7 @@
     },
     {
       "id": "c07",
-      "state": "r4_frozen_short_length_HOLD_related_primary_material_research",
+      "state": "r6_source_written_visual_PASS_native_HOLD_media_held",
       "last_frozen_revision": "c07/history/r3",
       "last_frozen_video_sha256": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
       "last_frozen_source_and_written_visual": "PASS",
@@ -283,21 +299,41 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "current_revision": "r4",
-      "video_sha256": "6c54f169c32f41e85931367d7b94b2257bc2c3afbb5a951e685e46005ae8e74f",
-      "source_and_written_visual": "PENDING",
-      "narrative_merged": "PENDING",
-      "narrative_receipt": null,
-      "native_merged_failed": [],
+      "current_revision": "r6",
+      "video_sha256": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "HOLD",
+      "narrative_receipt": "c07/reviews/narrative-r6.json",
+      "native_merged_failed": [
+        "no_recap"
+      ],
       "source_length_planning_hold": true,
-      "after_cold_open_spoken_units": 2526
+      "whole_narration_spoken_units": 2360,
+      "source_receipt": "c07/reviews/source-r6-independent.json",
+      "native_fact_check": "c07/verify-1.md",
+      "actual_native_panel": 6,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap",
+            "no_detour"
+          ]
+        }
+      ]
     },
     {
       "id": "c08",
-      "state": "r6_authoring_not_frozen",
-      "current_revision": "r6_authoring",
-      "source_and_written_visual": "PENDING_NEW_SOURCE",
-      "narrative_merged": "PENDING_NEW_NARRATION",
+      "state": "r9_source_written_visual_PASS_native_PASS_media_held",
+      "current_revision": "r9",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "PASS",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -316,7 +352,28 @@
         "no_recap"
       ],
       "last_frozen_native_receipt": "c08/history/r5/reviews/narrative-r5.json",
-      "last_frozen_after_cold_open_spoken_units": 2453
+      "last_frozen_after_cold_open_spoken_units": 2453,
+      "video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+      "whole_narration_spoken_units": 3005,
+      "source_receipt": "c08/reviews/source-r9-independent.json",
+      "native_fact_check": "c08/verify-1.md",
+      "actual_native_panel": 9,
+      "narrative_receipt": "c08/reviews/narrative-r9.json",
+      "native_merged_failed": [],
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "chapters_link"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ]
     },
     {
       "id": "c09",
@@ -386,10 +443,10 @@
     },
     {
       "id": "c10",
-      "state": "r4_authoring_not_frozen",
-      "current_revision": "r4_authoring",
-      "source_and_written_visual": "PENDING_NEW_SOURCE",
-      "narrative_merged": "PENDING_NEW_NARRATION",
+      "state": "r6_source_written_visual_PASS_native_hold_media_held",
+      "current_revision": "r6",
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "HOLD",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -406,11 +463,20 @@
         "no_recap"
       ],
       "last_frozen_native_receipt": "c10/history/r3/reviews/narrative-r3.json",
-      "last_frozen_after_cold_open_spoken_units": 3155
+      "last_frozen_after_cold_open_spoken_units": 3155,
+      "video_sha256": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+      "whole_narration_spoken_units": 2658,
+      "source_receipt": "c10/reviews/source-r6-independent.json",
+      "native_fact_check": "c10/verify-1.md",
+      "actual_native_panel": 5,
+      "narrative_receipt": "c10/reviews/narrative-r5.json",
+      "native_merged_failed": [
+        "payoffs"
+      ]
     },
     {
       "id": "c11",
-      "state": "original_primary_research_frozen_r1_authoring",
+      "state": "r3_source_written_visual_PASS_native_HOLD_media_held",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
@@ -418,17 +484,71 @@
       "media_qa": false,
       "final_approval": false,
       "research_receipt": "c11/research-original.claims.json",
-      "research_verification_is_source_PASS": false
+      "research_verification_is_source_PASS": false,
+      "current_revision": "r3",
+      "video_sha256": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
+      "whole_narration_spoken_units": 2468,
+      "source_and_written_visual": "PASS",
+      "source_receipt": "c11/reviews/source-r3-independent.json",
+      "native_fact_check": "c11/verify-1.md",
+      "narrative_merged": "HOLD",
+      "actual_native_panel": 3,
+      "narrative_receipt": "c11/reviews/narrative-r3.json",
+      "native_merged_failed": [
+        "no_recap"
+      ]
     },
     {
       "id": "c14",
-      "state": "original_primary_source_research_in_progress_no_new_script",
+      "state": "r3_source_written_visual_PASS_native_HOLD_media_held",
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
       "illustrations_generated": false,
       "media_qa": false,
-      "final_approval": false
+      "final_approval": false,
+      "current_revision": "r3",
+      "video_sha256": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
+      "whole_narration_spoken_units": 2663,
+      "source_and_written_visual": "PASS",
+      "source_receipt": "c14/reviews/source-r3-independent.json",
+      "native_fact_check": "c14/verify-1.md",
+      "narrative_merged": "HOLD",
+      "actual_native_panel": 2,
+      "narrative_receipt": "c14/reviews/narrative-r2.json",
+      "native_merged_failed": [
+        "payoffs",
+        "no_recap"
+      ],
+      "author_revision": 3,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "payoffs",
+            "no_recap"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "payoffs",
+            "no_recap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c15",
+      "state": "primary_source_research_complete_draft_next",
+      "backend_submitted": false,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "research_receipt": "c15/research-original.claims.json",
+      "research_verification_is_source_PASS": false
     }
   ],
   "paid_requests": 0,
@@ -455,7 +575,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 1833,
+      "files": 2643,
       "scope": "Git index bytes only, including staged artifacts; active unstaged author files excluded"
     },
     "native_c03_fact_checked": true,
@@ -503,6 +623,14 @@
         "lint_errors": 0,
         "stale_or_missing_translation_warnings": 0,
         "other_soft_warnings": 12
+      },
+      {
+        "id": "c05",
+        "status": "PASS",
+        "lines": 864,
+        "lint_errors": 0,
+        "stale_or_missing_translation_warnings": 0,
+        "other_soft_warnings": 7
       }
     ],
     "whitespace": {
@@ -511,8 +639,9 @@
       "scope": "Exact hash-bound C09 claims.md source quotations and immutable EOF blanks preserved; all other staged whitespace checked."
     },
     "latest_checkpoint_whitespace": {
-      "status": "PASS",
-      "scope": "New staged diff; immutable historical EOF blanks preserved"
+      "status": "PASS_WITH_IMMUTABLE_HISTORY_EXCEPTION",
+      "scope": "New staged diff; immutable historical EOF blanks and one existing whitespace-only line in c10/history/r5/build-candidate.py retained without changing the archived author bytes.",
+      "preserved_history_lines": 1
     }
   },
   "remaining": [
@@ -577,7 +706,7 @@
   "translation_text_preparation": {
     "receipt": null,
     "locales": 8,
-    "lines": 4928,
+    "lines": 5016,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -595,32 +724,33 @@
       {
         "id": "c05",
         "receipt": "c05/i18n/preparation-status.json",
-        "lines": 776
-      },
-      {
-        "id": "c09",
-        "receipt": "c09/i18n/preparation-status.json",
-        "lines": 824
+        "lines": 864
       },
       {
         "id": "c06",
         "receipt": "c06/i18n/preparation-status.json",
         "lines": 1304
+      },
+      {
+        "id": "c09",
+        "receipt": "c09/i18n/preparation-status.json",
+        "lines": 824
       }
     ],
     "prepared_projects": 5,
-    "scope": "Exact current C03/C04/C05 baseline/C06 and newly adopted C09 R7 source. C05 candidate and C07/C08/C10 drafts excluded."
+    "scope": "Exact current C03/C04/C06 plus adopted C05 R12 and C09 R7 source. Historical baselines and unreviewed drafts excluded."
   },
   "latest_user_direction": "做完後你繼續下一個不用停",
   "continuation_in_progress": {
-    "c05": "r11_frozen_new_source_delta_and_actual_panel10_pending",
+    "c05": "R12_source_native_and_8locale_864_TEXT_PASS_new_backend_reviews_pending",
     "c06": "source_written_visual_native_merged_and_8locale_1304text_TEXT_PASS_media_held",
-    "c07": "r4_short_length_HOLD_related_primary_material_research",
-    "c08": "r6_authoring_new_primary_material_after_R5_source_PASS_native_HOLD",
+    "c07": "r6_source_written_visual_PASS_native_HOLD_media_held",
+    "c08": "r9_source_written_visual_PASS_native_PASS_media_held",
     "c09": "r7_source_native_PASS_adopted_new_backend_reviews_pending_8locale_824text_TEXT_PASS",
-    "c10": "r4_global_redundancy_edit_after_r3_source_PASS_shared_no_recap_HOLD",
-    "c11": "r1_authoring_from_frozen_original_primary_research",
-    "c14": "original_primary_source_research_in_progress_no_new_script"
+    "c10": "R6_source_PASS_actual_native5_shared_payoffs_HOLD",
+    "c11": "r3_source_written_visual_PASS_native_HOLD_media_held",
+    "c14": "r3_source_written_visual_PASS_native_HOLD_media_held",
+    "c15": "primary_source_research_complete_R1_author_next"
   },
   "narration_size_planning": "narration-size-precheck.json",
   "new_media_files_scope": "Generated production media only; downloaded public reference media and source-page renders are excluded.",

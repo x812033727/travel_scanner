@@ -1,100 +1,189 @@
 {
   "schema_version": 1,
-  "review_type": "METADATA_ONLY_CLEAN_MASTER_DERIVATION",
-  "reviewer": "/root/c04_readiness",
-  "independent": true,
-  "checked_at": "2026-10-25T15:52:53.814Z",
-  "slug": "story-everyday-kincho-c05-remake-20261025",
   "verdict": "METADATA_DERIVATION_PASS",
-  "bindings": {
-    "source_video": {
-      "path": "../../video.json",
-      "sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a"
+  "reviewer": "/root/c05_r11_author",
+  "independent_from_derivation_author": true,
+  "reviewer_disclosure": "I authored earlier C05 Chinese revisions and EN/JA worksheets, but did not create or edit the root-authored clean-master recipe. This is an independent metadata-derivation check only, not independent source, narrative, translation or media approval.",
+  "reviewed_at_utc": "2026-10-25T22:41:04.728Z",
+  "scope": "Exact one-flag derivation; actual immutable dictionary; five shared native hashes and changed subtitle hash; actual native screenplay file bytes.",
+  "inputs": {
+    "source": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json",
+      "bytes": 71238,
+      "sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87"
     },
-    "variant_video": {
-      "path": "video.json",
-      "sha256": "14fa073627a82b98af2e9cdc734a7159482e44bd2730b6eb850c2f469b4e4b89"
+    "variant": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/video.json",
+      "bytes": 71239,
+      "sha256": "76799ed4020009d15ec82988f2934cfd712c7b02c20a3e5e8b49835d280953f2"
     },
     "derivation": {
-      "path": "derivation.json",
-      "sha256": "eb6d86786611eff22b140ab18e9bd79a715ac466960b7abb81a532bd5f7559c6"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/derivation.json",
+      "bytes": 1740,
+      "sha256": "8d1c653a9d9450ccc6080f7704b2280d921a329b02085f8ff9b72e5cda59490a"
     },
-    "source_receipt": {
-      "path": "../../reviews/source-r6-delta.json",
-      "sha256": "4aa9a07e9aa97b15625539d046bb3a10a0b9e814cf9114edcc6372db8cb4d36b"
+    "stored_lint": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/lint.json",
+      "bytes": 13369,
+      "sha256": "2bb276a6e3ee9d1d7dbc4a68066bc37d5c7e50f984310633ae9019fbadec1f0e"
+    },
+    "readme": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/README.md",
+      "bytes": 640,
+      "sha256": "4cd152b100db7639319737fe1581c875f629de8bc1ac10f5b5eefdf8fe687158"
+    },
+    "canonical_video": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/video.json",
+      "bytes": 71238,
+      "sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87"
+    },
+    "canonical_official_script": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md",
+      "bytes": 22729,
+      "sha256": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321"
+    },
+    "dictionary_pointer": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/current.json",
+      "bytes": 287,
+      "sha256": "7b1b9b47222332183d952019ab560df14ddad343c5ccd7131f56b0f91c39a105"
+    },
+    "derivation_program": {
+      "path": "/workspace/work/brand-story-20261025/derive-clean-recipe.mjs",
+      "bytes": 3713,
+      "sha256": "619ecea42cd857fc2c7836a7bd41ee7da5a55242d4e70ec5f6b0d24607274564"
+    },
+    "actual_dictionary": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/versions/1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3.json",
+      "bytes": 6336,
+      "sha256": "1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3"
+    },
+    "dictionary_head_event": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/events/e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7.json",
+      "bytes": 298,
+      "sha256": "e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7"
     }
   },
-  "full_object_comparison": {
-    "only_difference": "subtitles.burn_in: true -> false",
-    "same_new_remake_slug": true,
-    "old_activated_slug_used": false,
-    "all_other_input_fields_identical": true
+  "deep_difference": [
+    {
+      "path": "$.subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "full_scene_and_line_equality": {
+    "scenes": 106,
+    "lines": 108,
+    "all_full_scene_objects_equal": true,
+    "line_ids_text_speakers_emotions_and_order_equal": true,
+    "prompts_cameras_and_visuals_equal": true,
+    "voice_music_thumbnail_characters_loops_and_metadata_equal": true,
+    "slug_equal": true
   },
-  "native_pure_function_verification": {
-    "screenplay_bytes_identical": true,
-    "canonical_script_sha256": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
-    "hashes": {
-      "narrativeHash": {
-        "source": "8f080d30dbab88c9",
-        "variant": "8f080d30dbab88c9",
-        "equal": true
-      },
-      "speechHash": {
-        "source": "8cb6b284e186abd7",
-        "variant": "8cb6b284e186abd7",
-        "equal": true
-      },
-      "picturesHash": {
-        "source": "786b15f6b125054c",
-        "variant": "786b15f6b125054c",
-        "equal": true
-      },
-      "lookHash": {
-        "source": "98a370ae40badbaf",
-        "variant": "98a370ae40badbaf",
-        "equal": true
-      },
-      "mixHash": {
-        "source": "71ecdd098c551254",
-        "variant": "71ecdd098c551254",
-        "equal": true
-      },
-      "subtitlesHash": {
-        "source": "4b23ded6e41b1e87",
-        "variant": "ec58a1493220a1da",
-        "equal": false
-      }
+  "dictionary": {
+    "mode": "snapshot",
+    "slug": "story-everyday-kincho-c05-remake-20261025",
+    "sequence": 1,
+    "lexicon_sha256": "1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3",
+    "head_event_sha256": "e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7",
+    "actual_dictionary_bytes_sha256": "1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3",
+    "native_voice_filtered_dictionary_object_sha256": "384e1fddd5e934c4fb972b9e1db553e28c7504a527d5c0af8569e25df8de0734",
+    "same_dictionary_used_for_source_and_variant": true,
+    "shared_or_other_episode_dictionary_used": false,
+    "default_dictionary_used": false
+  },
+  "native_hashes": {
+    "narrativeHash": {
+      "source": "fb763c6179192a65",
+      "variant": "fb763c6179192a65",
+      "equal": true
     },
-    "lint_errors": 0,
-    "real_immutable_project_lexicon_used": true
+    "speechHash": {
+      "source": "31150c9d271d5744",
+      "variant": "31150c9d271d5744",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "31a6d6e510e9b263",
+      "variant": "31a6d6e510e9b263",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
   },
-  "render_plan_review": {
-    "verdict": "PASS_AS_UNRENDERED_PLAN",
-    "same_ledger": true,
-    "required_future_evidence": [
-      "Legal paid admission for this exact remake; actual verified narration/images/music and corresponding receipts.",
-      "Two actually rendered outputs and their distinct MP4 SHA values; real burned/clean subtitle evidence.",
-      "Each applicable bound QA, with the clean cut becoming the current approved final before native dub eligibility."
-    ],
-    "no_duplicate_provider_purchase": true,
-    "no_existing_MP4_final_approval_or_QA_inheritance": true
+  "official_screenplay": {
+    "native_function": "writeScreenplay(dir, doc)",
+    "actual_return_type": "string",
+    "return_is_path_not_screenplay_content": true,
+    "source_returned_path": "/tmp/c05-clean-metadata-review-5Xergl/source/script.md",
+    "variant_returned_path": "/tmp/c05-clean-metadata-review-5Xergl/variant/script.md",
+    "source_written_sha256": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321",
+    "variant_written_sha256": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321",
+    "official_script_sha256": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321",
+    "all_three_actual_file_bytes_equal": true,
+    "pure_screenplay_function_bytes_also_equal": true,
+    "temporary_native_outputs_removed": true
   },
-  "not_claimed": {
-    "actual_clean_master_exists": false,
-    "actual_burned_export_exists": false,
-    "media_qa": false,
-    "final_owner_approval": false,
-    "actual_dub_eligibility": false,
-    "dubs_completed": false,
-    "source_reopened_for_c05_or_c09": false,
-    "budget_activation": false
+  "native_schema_errors": {
+    "source": [],
+    "variant": []
   },
-  "review_actions": {
-    "provider_calls": 0,
-    "paid_calls": 0,
-    "backend_actions": 0,
-    "source_or_recipe_edits": 0
+  "stored_lint_scope": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/lint.json",
+    "sha256": "2bb276a6e3ee9d1d7dbc4a68066bc37d5c7e50f984310633ae9019fbadec1f0e",
+    "errors": 0,
+    "warnings": 48,
+    "scope": "Historical post-adoption, pre-eight-language-update snapshot only; bytes preserved. It is not current runtime full-i18n lint.",
+    "current_full_runtime_i18n_lint_run": false
   },
-  "findings": [],
-  "scope_note": "PASS is limited to the complete-object metadata difference, source receipt/native input identity and an unrendered plan. Input identity is not verified media reuse, actual duration, sound/image QA, MP4 approval, dubbing eligibility or publication approval."
+  "all_reviewed_inputs_unchanged_after_reproduction": true,
+  "reproduction": {
+    "command": "node --input-type=module <<'NODE'\n\nimport fs from 'node:fs';import path from 'node:path';import os from 'node:os';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';\nimport {screenplay,writeScreenplay,narrativeHash} from 'file:///workspace/work/brand-remakes-source/tools/video/core/screenplay.mjs';\nimport {speechHash} from 'file:///workspace/work/brand-remakes-source/tools/video/core/timeline.mjs';\nimport {picturesHash,lookHash,mixHash,subtitlesHash} from 'file:///workspace/work/brand-remakes-source/tools/video/core/drama.mjs';\nimport {videoLexicon} from 'file:///workspace/work/brand-remakes-source/tools/video/core/lexicon-store.mjs';\nimport {speechLexicon} from 'file:///workspace/work/brand-remakes-source/tools/video/dubs/plan.mjs';\nimport {validateVideo} from 'file:///workspace/work/brand-remakes-source/tools/video/core/schema.mjs';\nconst root='/workspace/work/brand-story-20261025/submission-root',slug='story-everyday-kincho-c05-remake-20261025',parent='/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05',dir=path.join(root,'docs/videos',slug),vdir=path.join(parent,'variants/clean-master');\nconst expected={source:'1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87',variant:'76799ed4020009d15ec82988f2934cfd712c7b02c20a3e5e8b49835d280953f2',script:'67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321'};\nconst sha=x=>createHash('sha256').update(x).digest('hex'),read=f=>JSON.parse(fs.readFileSync(f,'utf8')),fileSha=f=>sha(fs.readFileSync(f));\nconst paths={source:path.join(parent,'video.json'),variant:path.join(vdir,'video.json'),derivation:path.join(vdir,'derivation.json'),stored_lint:path.join(vdir,'lint.json'),readme:path.join(vdir,'README.md'),canonical_video:path.join(dir,'video.json'),canonical_official_script:path.join(dir,'script.md'),dictionary_pointer:path.join(dir,'story-lexicon/current.json'),derivation_program:'/workspace/work/brand-story-20261025/derive-clean-recipe.mjs'};\nconst pointer=read(paths.dictionary_pointer);\npaths.actual_dictionary=path.join(dir,'story-lexicon/versions',pointer.lexicon_sha256+'.json');paths.dictionary_head_event=path.join(dir,'story-lexicon/events',pointer.head_event_sha256+'.json');\nconst inputs=Object.fromEntries(Object.entries(paths).map(([k,f])=>[k,{path:f,bytes:fs.statSync(f).size,sha256:fileSha(f)}]));\nassert.equal(inputs.source.sha256,expected.source);assert.equal(inputs.variant.sha256,expected.variant);assert.equal(inputs.canonical_video.sha256,expected.source);assert.equal(inputs.canonical_official_script.sha256,expected.script);\nconst source=read(paths.source),variant=read(paths.variant),derivation=read(paths.derivation),lint=read(paths.stored_lint),differences=[];\nfunction diff(a,b,p='$'){assert.equal(typeof a,typeof b,p);if(a===null||b===null||typeof a!=='object'){if(a!==b)differences.push({path:p,source:a,variant:b});return;}assert.deepEqual(Object.keys(a),Object.keys(b),p);for(const k of Object.keys(a))diff(a[k],b[k],p+'.'+k);}\ndiff(source,variant);assert.deepEqual(differences,[{path:'$.subtitles.burn_in',source:true,variant:false}]);assert.equal(source.slug,slug);assert.equal(variant.slug,slug);\nfor(const k of ['voice','characters','scenes','music','thumbnail','loops','youtube','sources','assets'])assert.deepEqual(source[k],variant[k],k);\nassert.deepEqual(validateVideo(source),[]);assert.deepEqual(validateVideo(variant),[]);\nconst snapshot=videoLexicon({root,slug,dir,requireSnapshot:true});assert.equal(snapshot.mode,'snapshot');assert.equal(snapshot.lexicon_sha256,pointer.lexicon_sha256);assert.equal(sha(snapshot.bytes),inputs.actual_dictionary.sha256);assert.equal(inputs.actual_dictionary.sha256,pointer.lexicon_sha256);assert(snapshot.bytes.equals(fs.readFileSync(paths.actual_dictionary)));\nconst lexicon=speechLexicon(snapshot.lexicon,source.narration_locale);assert.deepEqual(lexicon,snapshot.lexicon);\nconst hashes={};for(const [name,fn]of Object.entries({narrativeHash,speechHash:d=>speechHash(d,lexicon),picturesHash,lookHash,mixHash,subtitlesHash})){const a=fn(source),b=fn(variant);hashes[name]={source:a,variant:b,equal:a===b};assert.equal(a===b,name!=='subtitlesHash',name);assert.deepEqual(hashes[name],derivation.hashes[name],name+' recorded derivation');}\nassert.equal(derivation.source_video_sha256,expected.source);assert.equal(derivation.variant_video_sha256,expected.variant);assert.equal(derivation.canonical_script_sha256,expected.script);\nconst official=fs.readFileSync(paths.canonical_official_script),a=screenplay(source),b=screenplay(variant);assert.equal(typeof a,'string');assert.equal(a,b);assert.equal(sha(a),expected.script);assert(Buffer.from(a).equals(official));\nconst temporary=fs.mkdtempSync(path.join(os.tmpdir(),'c05-clean-metadata-review-'));let written;\ntry{const sd=path.join(temporary,'source'),vd=path.join(temporary,'variant');fs.mkdirSync(sd);fs.mkdirSync(vd);const sp=writeScreenplay(sd,source),vp=writeScreenplay(vd,variant);assert.equal(typeof sp,'string');assert.equal(typeof vp,'string');assert.equal(sp,path.join(sd,'script.md'));assert.equal(vp,path.join(vd,'script.md'));const sb=fs.readFileSync(sp),vb=fs.readFileSync(vp);assert.equal(sha(sb),expected.script);assert.equal(sha(vb),expected.script);assert(sb.equals(vb));assert(sb.equals(official));written={native_function:'writeScreenplay(dir, doc)',actual_return_type:'string',return_is_path_not_screenplay_content:true,source_returned_path:sp,variant_returned_path:vp,source_written_sha256:sha(sb),variant_written_sha256:sha(vb),official_script_sha256:sha(official),all_three_actual_file_bytes_equal:true,pure_screenplay_function_bytes_also_equal:true};}finally{fs.rmSync(temporary,{recursive:true,force:false});}\nassert(!fs.existsSync(temporary));written.temporary_native_outputs_removed=true;\nfor(const input of Object.values(inputs))assert.equal(fileSha(input.path),input.sha256,input.path);\nassert.equal(lint.errors.length,0);assert.equal(lint.warnings.length,48);\nconst result={inputs,deep_difference:differences,full_scene_and_line_equality:{scenes:source.scenes.length,lines:source.scenes.reduce((n,s)=>n+(s.lines?.length??0),0),all_full_scene_objects_equal:true,line_ids_text_speakers_emotions_and_order_equal:true,prompts_cameras_and_visuals_equal:true,voice_music_thumbnail_characters_loops_and_metadata_equal:true,slug_equal:true},dictionary:{mode:snapshot.mode,slug,sequence:snapshot.sequence,lexicon_sha256:snapshot.lexicon_sha256,head_event_sha256:snapshot.head_event_sha256,actual_dictionary_bytes_sha256:sha(snapshot.bytes),native_voice_filtered_dictionary_object_sha256:sha(JSON.stringify(lexicon)),same_dictionary_used_for_source_and_variant:true,shared_or_other_episode_dictionary_used:false,default_dictionary_used:false},native_hashes:hashes,official_screenplay:written,native_schema_errors:{source:validateVideo(source),variant:validateVideo(variant)},stored_lint_scope:{path:paths.stored_lint,sha256:inputs.stored_lint.sha256,errors:lint.errors.length,warnings:lint.warnings.length,scope:'Historical post-adoption, pre-eight-language-update snapshot only; bytes preserved. It is not current runtime full-i18n lint.',current_full_runtime_i18n_lint_run:false},all_reviewed_inputs_unchanged_after_reproduction:true};\nexport default result;\n\nNODE\n",
+    "actual_exit_code": 0,
+    "native_writeScreenplay_used": true,
+    "persistent_recipe_or_runtime_write": false,
+    "only_persistent_output": "variants/clean-master/review.json",
+    "earlier_attempts": [
+      {
+        "exit_code": 1,
+        "error": "ERR_UNSUPPORTED_RESOLVE_REQUEST: absolute filesystem imports from a data URL; corrected to file URLs.",
+        "inputs_or_outputs_mutated": false
+      },
+      {
+        "exit_code": 1,
+        "error": "Outer JavaScript string replacement expanded a dollar-sign replacement token; corrected by using a replacement callback.",
+        "inputs_or_outputs_mutated": false
+      }
+    ]
+  },
+  "actual_media_created_or_reviewed": false,
+  "media_QA": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "owner_approval_granted": false,
+  "approval_inherited_from_other_MP4": false,
+  "source_zh_TW_burned_recipe_preserved": true,
+  "same_remake_slug_preserved": true,
+  "budget_authorization_or_paid_admission_granted": false,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "api_writes": 0,
+  "git_commands": 0,
+  "limitations": [
+    "Recipe equality does not create a clean MP4 or verify timing, SRT alignment or dub fit.",
+    "Each actual clean export needs its own current media QA and matching final approval; another MP4 approval cannot substitute.",
+    "Stored 48-warning lint is an unchanged historical snapshot, not current full-i18n runtime lint."
+  ]
 }
