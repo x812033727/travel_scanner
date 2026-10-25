@@ -93,3 +93,4 @@ c33｜Brockman（OpenAI）：「one of the most severe bugs in open source softw
 - 41 景、92 句全部寫完；撰稿時記 lint 0 錯誤、1 條有意保留的警告（outro 一句）。
 - 查核 1（2026-10-25）：原稿 lint 其實有 1 個錯誤（說明欄合成後 5034 bytes，上限 5000），查核把五個 sources 標題縮短後 0 錯誤、2 條警告（92tm 41 單位、outro 一句）。事實改動超過三處，需要第二輪（verify-1.md）。
 - 查核 2（2026-10-25）：34 列重查，CONFIRMED 31、CHANGED 1（ncsc 中譯與 vh8a）、NOT FOUND 1（Internet Archive，維持刪除）、OUT OF SCOPE 1；lint 0 錯誤、2 條警告；不需要第三輪（verify-2.md）。
+- 節奏與盲讀 4（2026-10-25，查核後）：qa 的 pace 項報 8 個狀態超過 15 秒，各拆成自己的卡（audit-stall、pm-words、recall-limit、recall-record、hands、score、priority；2eju 與 sqad 移到 priority 卡，7t2j 移到 score 卡），四句超過 40 單位的旁白各拆成兩句（vwd9／vw9g、92tm／rayj、d2mf／p4ua、us6i／a87y），旁白順序與文字不變。盲讀 4（10/13）點名的重複改成回呼：ubbs「說好的下午兩點一到」、p9ke「先別急著下結論」、anbx「但說法沒變」、rvnm「照剛剛那樣分三種情況查」（拆出 mm34）、2eju「從 Austin 交出攻擊那天起」（仍是 8/11，查核 1 #18 的事實不變，只是不再重念日期）。事實沒有改動；卡片 score 的 CVSS 兩個數字同 #22，priority 卡同 #17／#18。
