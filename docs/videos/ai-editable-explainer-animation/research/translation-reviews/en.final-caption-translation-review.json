@@ -1,0 +1,844 @@
+{
+  "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+  "translation_sha256": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "pre_dub_translation_sha256": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+  "review_type": "fresh_final_English_caption_and_metadata_all_delta_source_review",
+  "reviewed_at_utc": "2026-10-25T23:30:01.970989+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "original_English_translator": false
+  },
+  "approval_scope": [
+    "Current canonical English caption text",
+    "Current canonical English title, description, tags, chapters, thumbnail words"
+  ],
+  "approval_binding": "This text-only acceptance binds the exact current translation SHA and source SHA above. A subsequent source or translation change requires corresponding review. It is not an audio, full-package, publication or upload approval.",
+  "scope": {
+    "all_delta_fields_against_pre_dub_snapshot_compared": true,
+    "changed_caption_ids_actually_reread": [
+      "60d6c7"
+    ],
+    "changed_metadata_fields": [],
+    "all_current_metadata_freshly_reread_against_Chinese": true,
+    "Chinese_adjacent_scene_context_actually_reread": true,
+    "all_101_line_source_hashes_match_actual_Chinese": true,
+    "all_101_line_source_hashes_unchanged_from_pre_dub": true,
+    "all_101_current_caps_checked": true,
+    "unchanged_caption_texts_retain_prior_full_independent_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.reviewer.json"
+  },
+  "caption_delta": {
+    "id": "60d6c7",
+    "source": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+    "source_text_sha256": "60d6c73829157e3e65da1ea1b05e0a18512b2046fc11cdc953049cf6ce79c399",
+    "stored_source_hash": "60d6c7382915",
+    "before": "Include commands to install, preview and export, and explain what each file does.",
+    "after": "Ask for install, preview, export commands and file explanations.",
+    "chars": 64,
+    "semantic_verdict": "pass",
+    "concrete_source_points": {
+      "ask_AI_to_provide_commands": "Ask for explicitly preserves requesting the executable-project documentation.",
+      "installation": "install is retained first.",
+      "preview": "preview is retained second.",
+      "output": "export is retained third.",
+      "file_purposes": "file explanations is a concise request for explanations of what the files do in this immediately adjacent runnable-project/data/checker context; it retains the source documentation requirement.",
+      "sequence": "The three command purposes precede file explanations, matching the Chinese and snapshot.",
+      "numbers_names_conditions": "No numbers, names, or conditions are present or added.",
+      "cue_boundaries": "No split-boundary entry for this line; no clause crosses a separate cue."
+    },
+    "adjacent_context": [
+      {
+        "scene": "build-start",
+        "slide_data": {
+          "text": "讓它產生檔案",
+          "key": "要求能執行的專案與說明",
+          "icon": "folder"
+        },
+        "lines": [
+          {
+            "id": "1f3f10",
+            "source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+            "current_English": "With the key scene ready, ask AI to make it a runnable project."
+          }
+        ]
+      },
+      {
+        "scene": "build-ask",
+        "slide_data": {
+          "title": "把製作要求接在資料後面",
+          "items": [
+            {
+              "text": "使用資料檔",
+              "icon": "document"
+            },
+            {
+              "text": "附執行說明",
+              "icon": "terminal"
+            },
+            {
+              "text": "附獨立檢查",
+              "icon": "checklist"
+            }
+          ],
+          "keys": [
+            "同一個資料來源",
+            "步驟要能照著執行",
+            "答案另外算一次"
+          ]
+        },
+        "lines": [
+          {
+            "id": "291f73",
+            "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+            "current_English": "Read title and target from a file; don't duplicate values."
+          },
+          {
+            "id": "60d6c7",
+            "source": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+            "current_English": "Ask for install, preview, export commands and file explanations."
+          },
+          {
+            "id": "d27bc5",
+            "source": "另外寫一個檢查程式，從所有結果重新算出正確答案。",
+            "current_English": "Write a separate checker that recalculates the correct answer from all outcomes."
+          }
+        ]
+      },
+      {
+        "scene": "build-config",
+        "slide_data": {
+          "code": "{\n  \"title\": \"兩顆骰子的總和，機率一樣嗎？\",\n  \"target_sum\": 7,\n  \"locale\": \"zh-TW\"\n}",
+          "caption": "lesson.json 節錄｜其餘色彩設定保留",
+          "key": "先找得到要改的資料"
+        },
+        "lines": [
+          {
+            "id": "976818",
+            "source": "這份資料檔把標題、目標和色彩集中在同一處，方便你修改。",
+            "current_English": "This data file keeps title, target and colors together, so they're easy to edit."
+          }
+        ]
+      }
+    ],
+    "meaning_issues": []
+  },
+  "metadata_comparison": {
+    "all_metadata_deltas": {},
+    "source_hashes_unchanged_from_snapshot": true,
+    "field_equality_to_snapshot": {
+      "title": true,
+      "description": true,
+      "tags": true,
+      "chapters": true,
+      "thumbnail": true
+    }
+  },
+  "fresh_metadata_source_review": {
+    "title": {
+      "source": "用 AI 做教學動畫：從一句話到能改字、改數字的成片",
+      "current": "AI Teaching Animations: From One Prompt to Editable Text and Numbers",
+      "chars": 68,
+      "max_review_cap": 72,
+      "pass": true,
+      "fidelity": "AI teaching animation, one prompt, editable text and numbers retained; no channel name.",
+      "meaning_issues": []
+    },
+    "description": {
+      "verdict": "pass",
+      "concrete_source_points": [
+        "Question to editable teaching animation and original two-dice diagram retained.",
+        "Brief, editable files, preview, changed parameters, narration alignment and delivery checks retained.",
+        "Python drawing and FFmpeg example written with AI assistance retained.",
+        "Explicitly not a Claude Motion operation recording; no one-product, one-pass completion claim.",
+        "Data files, code, copyable prompts and checking methods retained.",
+        "Verification date2026-10-25, original produced project and reference-video research-only scope retained.",
+        "Example data fields only support zh-TW, sample MP4 intentionally silent, sample SRT storyboard timing rather than measured narration alignment retained.",
+        "Main tutorial narration/CC/eight-language dubs follow a separate production process; this does not assert those audio products are complete.",
+        "Pinned materials URL exactly retained."
+      ],
+      "meaning_issues": []
+    },
+    "tags": {
+      "count": 6,
+      "verdict": "pass: six topic tags preserve the tutorial/animation/video/code/editability/production topics; channel tag intentionally omitted as required.",
+      "channel_name_absent": true
+    },
+    "chapters": {
+      "count": 8,
+      "verdict": "pass: all eight chapter topics retain editing, source files, writing a brief, using AI files, changing a number, narration sync, acceptance and starting a personal topic.",
+      "actual_source_chapters_read": {
+        "opening": "動畫能不能改得動？",
+        "route-begin": "為什麼先要原始檔？",
+        "brief-goal": "需求要怎麼寫才畫得出來？",
+        "build-start": "AI 產生的檔案怎麼用？",
+        "revise-start": "改一個數字會怎樣？",
+        "audio-start": "旁白和畫面怎麼對上？",
+        "check-start": "怎麼知道影片可以交了？",
+        "practice-start": "換成自己的題目怎麼開始？"
+      }
+    },
+    "thumbnail": {
+      "source_words_read": {
+        "tag": "AI 教學動畫",
+        "headline": "**改得動**",
+        "sub": "原始檔一起留下"
+      },
+      "current_words_read": {
+        "tag": "AI teaching animation",
+        "headline": "**EDITABLE**",
+        "sub": "Keep source files"
+      },
+      "verdict": "pass: teaching animation, editability and keeping source files retained; short words with ** emphasis intact."
+    }
+  },
+  "budget_checks": {
+    "actual_line_count": 101,
+    "pass_count": 101,
+    "over_budget_count": 0,
+    "per_line": [
+      {
+        "id": "e8b327",
+        "chars": 58,
+        "max_chars": 72,
+        "pass": true
+      },
+      {
+        "id": "00aeec",
+        "chars": 59,
+        "max_chars": 84,
+        "pass": true
+      },
+      {
+        "id": "c5a4b1",
+        "chars": 57,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "74eeac",
+        "chars": 53,
+        "max_chars": 61,
+        "pass": true
+      },
+      {
+        "id": "79a96a",
+        "chars": 78,
+        "max_chars": 92,
+        "pass": true
+      },
+      {
+        "id": "aa0639",
+        "chars": 66,
+        "max_chars": 103,
+        "pass": true
+      },
+      {
+        "id": "c2d378",
+        "chars": 57,
+        "max_chars": 74,
+        "pass": true
+      },
+      {
+        "id": "47c7d2",
+        "chars": 59,
+        "max_chars": 67,
+        "pass": true
+      },
+      {
+        "id": "5a37fc",
+        "chars": 79,
+        "max_chars": 118,
+        "pass": true
+      },
+      {
+        "id": "56c197",
+        "chars": 71,
+        "max_chars": 101,
+        "pass": true
+      },
+      {
+        "id": "56ccfa",
+        "chars": 72,
+        "max_chars": 85,
+        "pass": true
+      },
+      {
+        "id": "1712ce",
+        "chars": 56,
+        "max_chars": 83,
+        "pass": true
+      },
+      {
+        "id": "de0fb5",
+        "chars": 64,
+        "max_chars": 79,
+        "pass": true
+      },
+      {
+        "id": "2c063b",
+        "chars": 75,
+        "max_chars": 99,
+        "pass": true
+      },
+      {
+        "id": "5e5629",
+        "chars": 73,
+        "max_chars": 85,
+        "pass": true
+      },
+      {
+        "id": "4a14bd",
+        "chars": 73,
+        "max_chars": 93,
+        "pass": true
+      },
+      {
+        "id": "ea140a",
+        "chars": 74,
+        "max_chars": 84,
+        "pass": true
+      },
+      {
+        "id": "21c1bc",
+        "chars": 87,
+        "max_chars": 100,
+        "pass": true
+      },
+      {
+        "id": "8f5f2e",
+        "chars": 79,
+        "max_chars": 91,
+        "pass": true
+      },
+      {
+        "id": "6b1614",
+        "chars": 67,
+        "max_chars": 81,
+        "pass": true
+      },
+      {
+        "id": "1832d2",
+        "chars": 58,
+        "max_chars": 66,
+        "pass": true
+      },
+      {
+        "id": "c141fc",
+        "chars": 58,
+        "max_chars": 67,
+        "pass": true
+      },
+      {
+        "id": "c5a99d",
+        "chars": 65,
+        "max_chars": 79,
+        "pass": true
+      },
+      {
+        "id": "719e7c",
+        "chars": 63,
+        "max_chars": 81,
+        "pass": true
+      },
+      {
+        "id": "f2c1f3",
+        "chars": 58,
+        "max_chars": 72,
+        "pass": true
+      },
+      {
+        "id": "475bb2",
+        "chars": 59,
+        "max_chars": 66,
+        "pass": true
+      },
+      {
+        "id": "8a3f5b",
+        "chars": 78,
+        "max_chars": 91,
+        "pass": true
+      },
+      {
+        "id": "520a3b",
+        "chars": 84,
+        "max_chars": 96,
+        "pass": true
+      },
+      {
+        "id": "9dd115",
+        "chars": 92,
+        "max_chars": 113,
+        "pass": true
+      },
+      {
+        "id": "0c086d",
+        "chars": 57,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "76fc63",
+        "chars": 87,
+        "max_chars": 98,
+        "pass": true
+      },
+      {
+        "id": "066452",
+        "chars": 73,
+        "max_chars": 84,
+        "pass": true
+      },
+      {
+        "id": "7b0c6d",
+        "chars": 73,
+        "max_chars": 97,
+        "pass": true
+      },
+      {
+        "id": "1f3f10",
+        "chars": 63,
+        "max_chars": 75,
+        "pass": true
+      },
+      {
+        "id": "291f73",
+        "chars": 58,
+        "max_chars": 67,
+        "pass": true
+      },
+      {
+        "id": "60d6c7",
+        "chars": 64,
+        "max_chars": 110,
+        "pass": true
+      },
+      {
+        "id": "d27bc5",
+        "chars": 80,
+        "max_chars": 102,
+        "pass": true
+      },
+      {
+        "id": "976818",
+        "chars": 80,
+        "max_chars": 97,
+        "pass": true
+      },
+      {
+        "id": "b22122",
+        "chars": 85,
+        "max_chars": 100,
+        "pass": true
+      },
+      {
+        "id": "182fcd",
+        "chars": 83,
+        "max_chars": 99,
+        "pass": true
+      },
+      {
+        "id": "a2d3d8",
+        "chars": 77,
+        "max_chars": 96,
+        "pass": true
+      },
+      {
+        "id": "b13c3e",
+        "chars": 77,
+        "max_chars": 96,
+        "pass": true
+      },
+      {
+        "id": "5f446c",
+        "chars": 90,
+        "max_chars": 116,
+        "pass": true
+      },
+      {
+        "id": "f37b7f",
+        "chars": 74,
+        "max_chars": 95,
+        "pass": true
+      },
+      {
+        "id": "801093",
+        "chars": 89,
+        "max_chars": 116,
+        "pass": true
+      },
+      {
+        "id": "9aa7fd",
+        "chars": 71,
+        "max_chars": 92,
+        "pass": true
+      },
+      {
+        "id": "2a7dbb",
+        "chars": 79,
+        "max_chars": 90,
+        "pass": true
+      },
+      {
+        "id": "d6ecd3",
+        "chars": 78,
+        "max_chars": 100,
+        "pass": true
+      },
+      {
+        "id": "5d4f54",
+        "chars": 73,
+        "max_chars": 89,
+        "pass": true
+      },
+      {
+        "id": "cbba85",
+        "chars": 76,
+        "max_chars": 88,
+        "pass": true
+      },
+      {
+        "id": "1de727",
+        "chars": 74,
+        "max_chars": 83,
+        "pass": true
+      },
+      {
+        "id": "0dd30b",
+        "chars": 80,
+        "max_chars": 94,
+        "pass": true
+      },
+      {
+        "id": "52cf29",
+        "chars": 125,
+        "max_chars": 143,
+        "pass": true
+      },
+      {
+        "id": "005752",
+        "chars": 97,
+        "max_chars": 131,
+        "pass": true
+      },
+      {
+        "id": "7bf8fb",
+        "chars": 96,
+        "max_chars": 119,
+        "pass": true
+      },
+      {
+        "id": "a1f88a",
+        "chars": 64,
+        "max_chars": 79,
+        "pass": true
+      },
+      {
+        "id": "07771e",
+        "chars": 76,
+        "max_chars": 85,
+        "pass": true
+      },
+      {
+        "id": "8eb4eb",
+        "chars": 44,
+        "max_chars": 75,
+        "pass": true
+      },
+      {
+        "id": "05bc8a",
+        "chars": 75,
+        "max_chars": 89,
+        "pass": true
+      },
+      {
+        "id": "f6f6be",
+        "chars": 79,
+        "max_chars": 104,
+        "pass": true
+      },
+      {
+        "id": "7a42ba",
+        "chars": 99,
+        "max_chars": 112,
+        "pass": true
+      },
+      {
+        "id": "8c2bc9",
+        "chars": 83,
+        "max_chars": 94,
+        "pass": true
+      },
+      {
+        "id": "de08dd",
+        "chars": 71,
+        "max_chars": 88,
+        "pass": true
+      },
+      {
+        "id": "c7b43e",
+        "chars": 80,
+        "max_chars": 94,
+        "pass": true
+      },
+      {
+        "id": "7e3f75",
+        "chars": 92,
+        "max_chars": 105,
+        "pass": true
+      },
+      {
+        "id": "594e82",
+        "chars": 75,
+        "max_chars": 96,
+        "pass": true
+      },
+      {
+        "id": "c30642",
+        "chars": 75,
+        "max_chars": 92,
+        "pass": true
+      },
+      {
+        "id": "1b4829",
+        "chars": 60,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "a49833",
+        "chars": 77,
+        "max_chars": 87,
+        "pass": true
+      },
+      {
+        "id": "1faa10",
+        "chars": 73,
+        "max_chars": 82,
+        "pass": true
+      },
+      {
+        "id": "b4de26",
+        "chars": 85,
+        "max_chars": 100,
+        "pass": true
+      },
+      {
+        "id": "4df2bf",
+        "chars": 65,
+        "max_chars": 74,
+        "pass": true
+      },
+      {
+        "id": "c41135",
+        "chars": 72,
+        "max_chars": 82,
+        "pass": true
+      },
+      {
+        "id": "802a26",
+        "chars": 88,
+        "max_chars": 123,
+        "pass": true
+      },
+      {
+        "id": "bf54ca",
+        "chars": 80,
+        "max_chars": 105,
+        "pass": true
+      },
+      {
+        "id": "ba0179",
+        "chars": 84,
+        "max_chars": 97,
+        "pass": true
+      },
+      {
+        "id": "cab285",
+        "chars": 79,
+        "max_chars": 91,
+        "pass": true
+      },
+      {
+        "id": "a6c28e",
+        "chars": 70,
+        "max_chars": 87,
+        "pass": true
+      },
+      {
+        "id": "0b06d1",
+        "chars": 97,
+        "max_chars": 119,
+        "pass": true
+      },
+      {
+        "id": "b919e0",
+        "chars": 66,
+        "max_chars": 81,
+        "pass": true
+      },
+      {
+        "id": "ee8b7c",
+        "chars": 74,
+        "max_chars": 83,
+        "pass": true
+      },
+      {
+        "id": "b69ae1",
+        "chars": 61,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "481fba",
+        "chars": 73,
+        "max_chars": 92,
+        "pass": true
+      },
+      {
+        "id": "18691a",
+        "chars": 79,
+        "max_chars": 101,
+        "pass": true
+      },
+      {
+        "id": "28a3eb",
+        "chars": 75,
+        "max_chars": 90,
+        "pass": true
+      },
+      {
+        "id": "203f1e",
+        "chars": 67,
+        "max_chars": 85,
+        "pass": true
+      },
+      {
+        "id": "7311eb",
+        "chars": 100,
+        "max_chars": 120,
+        "pass": true
+      },
+      {
+        "id": "75368c",
+        "chars": 86,
+        "max_chars": 100,
+        "pass": true
+      },
+      {
+        "id": "9d8939",
+        "chars": 89,
+        "max_chars": 103,
+        "pass": true
+      },
+      {
+        "id": "c38a5e",
+        "chars": 95,
+        "max_chars": 114,
+        "pass": true
+      },
+      {
+        "id": "a56276",
+        "chars": 79,
+        "max_chars": 104,
+        "pass": true
+      },
+      {
+        "id": "84576e",
+        "chars": 86,
+        "max_chars": 127,
+        "pass": true
+      },
+      {
+        "id": "ad1b2c",
+        "chars": 106,
+        "max_chars": 124,
+        "pass": true
+      },
+      {
+        "id": "d8b2ca",
+        "chars": 59,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "c90844",
+        "chars": 57,
+        "max_chars": 68,
+        "pass": true
+      },
+      {
+        "id": "f9399e",
+        "chars": 80,
+        "max_chars": 91,
+        "pass": true
+      },
+      {
+        "id": "2506eb",
+        "chars": 84,
+        "max_chars": 95,
+        "pass": true
+      },
+      {
+        "id": "f064e3",
+        "chars": 103,
+        "max_chars": 116,
+        "pass": true
+      },
+      {
+        "id": "f576ae",
+        "chars": 59,
+        "max_chars": 70,
+        "pass": true
+      },
+      {
+        "id": "9e738a",
+        "chars": 53,
+        "max_chars": 62,
+        "pass": true
+      },
+      {
+        "id": "ed8308",
+        "chars": 68,
+        "max_chars": 88,
+        "pass": true
+      }
+    ]
+  },
+  "meaning_issues_found": [],
+  "audio_verdict": "held_not_approved",
+  "audio_limits": {
+    "root_report": "EN has101 takes but the ASR round is held at49 with an unknown sent request0bff... .",
+    "audio_quality_timing_or_completion_verified_by_this_review": false,
+    "new_provider_call_or_journal_action": false,
+    "note": "This report is limited to current caption/metadata text. It does not approve English audio, clear a journal, resolve an unknown provider request, claim full-pack readiness, or authorize sending English audio."
+  },
+  "partial_materials_scope": "Text-only independent caption/metadata acceptance can accompany a partial-materials handoff; it does not label that handoff a full package.",
+  "provider_calls": 0,
+  "source_edits": 0,
+  "media_edits": 0,
+  "journal_changes": 0,
+  "input_hash_stability": {
+    "before_review": {
+      "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "pre_dub_translation": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+      "current_translation": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+      "current_worksheet": "c568795c6412340ce4e2c724d86245134e29a207170feecf0be1bb8d6f64e491"
+    },
+    "after_review_before_write": {
+      "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "pre_dub_translation": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+      "current_translation": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+      "current_worksheet": "c568795c6412340ce4e2c724d86245134e29a207170feecf0be1bb8d6f64e491"
+    },
+    "after_output_write": {
+      "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "pre_dub_translation": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+      "current_translation": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+      "current_worksheet": "c568795c6412340ce4e2c724d86245134e29a207170feecf0be1bb8d6f64e491"
+    },
+    "all_stable": true
+  },
+  "side_effects": "Only en.final-caption-translation-review.json is written. No provider/network calls; no source/canonical/worksheet/media edits; no audio or upload action."
+}
