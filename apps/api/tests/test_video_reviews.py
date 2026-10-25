@@ -1049,6 +1049,7 @@ async def test_every_character_s_sheets_survive_the_first_look_review_s_clean_up
     character; the first submission used to delete the files of the ones not yet submitted,
     and the second answered 409 video_review_files_missing (ticket 2026-10-22-409)."""
     monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_look_fallback", AsyncMock(return_value=None))
     monkeypatch.setattr(admin_service, "spend_by_slug", AsyncMock(return_value={}))
     await _drama_on_site(site)
     cast = (("bride", "新娘"), ("groom", "新郎"), ("guest", "賓客"))
@@ -1081,6 +1082,7 @@ async def test_each_character_keeps_its_own_look_review_of_one_shared_manifest(
     (tools/video/review/sync.mjs lookSubmissions), so the reviews share a hash and differ by
     subject; a second character must not be handed the first one's review."""
     monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_look_fallback", AsyncMock(return_value=None))
     monkeypatch.setattr(admin_service, "spend_by_slug", AsyncMock(return_value={}))
     await _drama_on_site(site)
 
