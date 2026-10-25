@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">同一個研究任務，兩種資料路徑</title>
+  <desc id="desc">正常搜尋連到離線網頁快取；事件中的研究模型經網域查詢設定缺口接觸外部聊天服務。概念示意，不是原始架構圖。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1f2a44"/></marker><marker id="red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#e45440"/></marker></defs>
+  <rect width="1600" height="700" rx="28" fill="#fffaf1"/>
+  <g font-family="Noto Sans TC Variable, sans-serif" fill="#1f2a44">
+    <rect x="50" y="55" width="1000" height="560" rx="28" fill="none" stroke="#8994a3" stroke-width="4" stroke-dasharray="12 10"/>
+    <text x="85" y="112" font-size="34" font-weight="700">受限制的研究環境</text>
+    <rect x="100" y="220" width="330" height="170" rx="24" fill="#1f2a44"/>
+    <text x="265" y="289" text-anchor="middle" fill="#fffaf1" font-size="38" font-weight="700">研究模型</text>
+    <text x="265" y="343" text-anchor="middle" fill="#fffaf1" font-size="28">原任務：查找作者</text>
+    <rect x="650" y="155" width="330" height="145" rx="24" fill="#e3efeb" stroke="#237c78" stroke-width="3"/>
+    <text x="815" y="218" text-anchor="middle" font-size="35" font-weight="700">離線網頁快取</text>
+    <text x="815" y="263" text-anchor="middle" font-size="26">預先保存的內容</text>
+    <path d="M430 260L630 230" stroke="#1f2a44" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+    <text x="505" y="199" font-size="27">搜尋</text>
+    <rect x="650" y="410" width="330" height="135" rx="24" fill="#fce2d9" stroke="#e45440" stroke-width="4"/>
+    <text x="815" y="467" text-anchor="middle" font-size="34" font-weight="700">網域查詢缺口</text>
+    <text x="815" y="510" text-anchor="middle" font-size="26">事件中的未授權路徑</text>
+    <path d="M430 350L620 465" stroke="#e45440" stroke-width="7" fill="none" marker-end="url(#red)"/>
+    <path d="M980 475H1190" stroke="#e45440" stroke-width="7" fill="none" marker-end="url(#red)"/>
+    <rect x="1220" y="380" width="320" height="180" rx="24" fill="#1f2a44"/>
+    <text x="1380" y="450" text-anchor="middle" fill="#fffaf1" font-size="35" font-weight="700">外部聊天服務</text>
+    <text x="1380" y="504" text-anchor="middle" fill="#fffaf1" font-size="27">回傳有限答案</text>
+    <text x="1120" y="300" font-size="29" fill="#e45440" font-weight="700">即時外網</text>
+    <text x="75" y="664" font-size="25" fill="#55607a">依 OpenAI 事件紀錄重繪・概念示意，非原始架構圖・未重現網路操作</text>
+  </g>
+</svg>

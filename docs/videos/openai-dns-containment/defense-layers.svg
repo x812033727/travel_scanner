@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">工作區之外仍有防線</title>
+  <desc id="desc">由內至外呈現代理與工具、容器與虛擬機、研究基礎設施及網路外圍限制。這是依公開文章製作的分層概念圖，不是實際拓樸或已通過驗證的證明。</desc>
+  <rect width="1600" height="700" rx="28" fill="#fffaf1"/>
+  <g font-family="Noto Sans TC Variable, sans-serif" fill="#1f2a44">
+    <rect x="70" y="65" width="1170" height="555" rx="35" fill="#fce2d9" stroke="#e45440" stroke-width="6"/>
+    <text x="110" y="125" font-size="35" font-weight="700">網路外圍：阻止未授權的即時連網</text>
+    <rect x="135" y="170" width="1000" height="385" rx="30" fill="#e3efeb" stroke="#237c78" stroke-width="4"/>
+    <text x="175" y="230" font-size="34" font-weight="700">研究基礎設施與服務</text>
+    <rect x="215" y="275" width="820" height="220" rx="26" fill="#fffaf1" stroke="#1f2a44" stroke-width="4"/>
+    <text x="255" y="332" font-size="32" font-weight="700">容器／虛擬機隔離</text>
+    <rect x="390" y="370" width="460" height="85" rx="18" fill="#1f2a44"/>
+    <text x="620" y="426" fill="#fffaf1" font-size="33" font-weight="700" text-anchor="middle">代理與被授權的工具</text>
+    <path d="M1035 400H1375" fill="none" stroke="#e45440" stroke-width="8" stroke-dasharray="15 12"/>
+    <circle cx="1240" cy="400" r="38" fill="#e45440"/>
+    <path d="M1217 400H1263" stroke="#fffaf1" stroke-width="8"/>
+    <text x="1310" y="300" font-size="34" font-weight="700">即使內層失效</text>
+    <text x="1310" y="350" font-size="31">外層仍需攔阻</text>
+    <text x="1310" y="490" font-size="29" fill="#e45440">未授權連線</text>
+    <text x="75" y="669" font-size="25" fill="#55607a">依 OpenAI 2026-10-23 文章重繪・分層概念示意，非實際拓樸與安全認證</text>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+{
+  "kind": "editorial_calculation_from_published_timestamps",
+  "checked_on": "2026-10-25",
+  "source": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
+  "event_date": "2026-09-20",
+  "timezone": null,
+  "note": "原文未標時區，保留原始時間；計算是編輯實算，沒有重現網路事件。",
+  "events": {
+    "external_response": "09:50:23",
+    "monitor_alert": "10:02:11",
+    "human_review": "10:05:06",
+    "manual_stop": "12:34:30"
+  },
+  "calculations": [
+    {
+      "id": "response_to_alert",
+      "start": "09:50:23",
+      "end": "10:02:11",
+      "seconds": 708,
+      "display": "00:11:48"
+    },
+    {
+      "id": "alert_to_review",
+      "start": "10:02:11",
+      "end": "10:05:06",
+      "seconds": 175,
+      "display": "00:02:55"
+    },
+    {
+      "id": "alert_to_stop",
+      "start": "10:02:11",
+      "end": "12:34:30",
+      "seconds": 9139,
+      "display": "02:32:19"
+    },
+    {
+      "id": "response_to_stop",
+      "start": "09:50:23",
+      "end": "12:34:30",
+      "seconds": 9847,
+      "display": "02:44:07"
+    }
+  ]
+}
