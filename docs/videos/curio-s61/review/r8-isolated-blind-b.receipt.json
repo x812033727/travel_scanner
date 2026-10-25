@@ -1,0 +1,39 @@
+{
+  "reader": "isolated-blind-b",
+  "round": "R8",
+  "scope": "narration-only",
+  "source_order": [
+    "/tmp/curio-official-13-panel-20261022.json",
+    "docs/videos/curio-s61/script.md"
+  ],
+  "official_panel_sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad",
+  "script_md_sha256": "00f9734108f68b0093a3c7791fe4b0974a376cb963cbc772c1ed92cc61c11b04",
+  "raw_frozen_before_cli": true,
+  "raw_frozen_utc": "2026-10-22T02:46:28.807973+00:00",
+  "raw_sha256": "e17706e2bf2107b0ece05043c842ae16416f2528917b021156cf9c8b62b0807a",
+  "official_command": "node tools/video/cli.mjs narrative --slug curio-s61 --answers /tmp/s61-r8-blind-b/raw.json --workdir /tmp/s61-r8-blind-b --json",
+  "exit_code": 1,
+  "passed": false,
+  "yes_count": 10,
+  "question_count": 13,
+  "failed": [
+    "one_line",
+    "payoffs",
+    "no_recap"
+  ],
+  "binding": {
+    "narrative_hash": "0eb01daae10fefd9",
+    "script_hash": "75668f4a8fc7c929acf0cdafc2e55092eeabcead667042204c937facfacaa7e9",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "a5d60c9e07653a406c2ed6960cbf3a2acf60f9df0e9229e5aea6c2df4415b030",
+    "round": 1
+  },
+  "files_sha256": {
+    "r8-isolated-blind-b.raw.json": "e17706e2bf2107b0ece05043c842ae16416f2528917b021156cf9c8b62b0807a",
+    "r8-isolated-blind-b.answers.json": "e17706e2bf2107b0ece05043c842ae16416f2528917b021156cf9c8b62b0807a",
+    "r8-isolated-blind-b.bound.json": "994cf112c31e6d69b9e9cce6ef17b93d7dfb5328ece7c155020b9b452fd6c026",
+    "r8-isolated-blind-b.cli-stdout.json": "4ba7c72bb3968d6fb65fad6537b1b8368e1634e814e9dba17119bb0d1c2b1208",
+    "r8-isolated-blind-b.cli-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "r8-isolated-blind-b.cli-exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  }
+}
