@@ -56,3 +56,4 @@ scope:
 - 本批送出的是免費劇本審核，不是音訊或影片。付費請求 0；新音訊、插圖、配樂、成片均 0；無實測 12–14 分鐘、無媒體 QA、無成片核准、無 YouTube 上傳。正式 v4 來源身分尚待主機核對，候選秒數相符不能代替身分驗收。
 - 隔離執行根目錄 `/workspace/work/brand-story-20261025/submission-root`，素材根目錄 `/workspace/work/brand-story-20261025/media`。三支的 canonical `script.md` 由官方 `writeScreenplay` 產生，與作者附來源稿分開。C04、C05 已有 `approvals.json`，不可再以準備程式覆寫核准輸入；既有 source／runtime／字典及研究快取保留待續。
 - 驗證：236 項 `test:docs-videos` 全過，0 skipped；文件測試收集契約另 2 項全過；2178 份任務檢查通過（其他既有任務警告未改）；兩 helper 語法通過。53 份舊稿雜湊複核未變。三支 lint 0 errors，C04／C05／C09 各 6／0／18 個警告仍留原紀錄，須待真實聲音與圖像處理。
+- 交接已推送至草稿 PR https://github.com/x812033727/travel_scanner/pull/1849 ，已讀回 open／draft／未合併及 `no-auto-merge` 標籤。純文字成果先保留待正式製片入場，任務維持 blocked。
