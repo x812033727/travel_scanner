@@ -1,0 +1,73 @@
+{
+  "applied_at_utc": "2026-10-25T21:51:12.732Z",
+  "author": "OpenAI Codex /root/compact_pt_five",
+  "applier": "OpenAI Codex root",
+  "reviewer": "OpenAI Codex /root/review_latin",
+  "proposal_sha256": "b5d7fd260a6163eb31b09d5e33be795d585fcff20a16049e5ab819ebe0c5b2a1",
+  "changes": [
+    {
+      "kind": "line",
+      "id_or_field": "8f5f2e",
+      "before": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+      "after": "Na contagem, separe um mais seis de seis mais um: a ordem dos dois dados importa.",
+      "max_chars": 84,
+      "chars": 81,
+      "source": "一加六和六加一分開算，因為兩顆骰子的結果有順序。",
+      "reason": "Keeps one-plus-six and six-plus-one as separate counted outcomes, followed by the reason that the two dice are ordered. Replaces the opening Conte, heard as Conta, with the clear você imperative separe; retains all numeric values and the counting condition."
+    },
+    {
+      "kind": "line",
+      "id_or_field": "9aa7fd",
+      "before": "Sucesso só diz que o teste passou; não que o vídeo está pronto.",
+      "after": "A marca de sucesso só indica que o teste passou, não que o vídeo ficou pronto.",
+      "max_chars": 85,
+      "chars": 78,
+      "source": "結果裡的成功標記，只表示這份檢查通過，不表示影片已經完成。",
+      "reason": "Keeps the result success marker, limits it to this test passing, and preserves the denial that the video is finished. The full opening A marca de sucesso identifies the marker; ficou pronto avoids repeating está, actually heard as tá."
+    },
+    {
+      "kind": "line",
+      "id_or_field": "1de727",
+      "before": "Reduza à largura do celular: título legível? Foco claro?",
+      "after": "Reduza a prévia à largura do celular: veja se lê o título e encontra o foco.",
+      "max_chars": 77,
+      "chars": 76,
+      "source": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+      "reason": "Makes a prévia the explicit object to shrink, preserving phone width, title readability, and finding the focus in that order. Full request veja se lê o título e encontra o foco replaces clipped fragments and reduces the ambiguity in the actual hearing Reduza a largura do celular."
+    },
+    {
+      "kind": "line",
+      "id_or_field": "a6c28e",
+      "before": "Desligue o som; a imagem explica o que está sendo comparado?",
+      "after": "Silencie o vídeo. Depois veja se a imagem explica o que se compara.",
+      "max_chars": 81,
+      "chars": 67,
+      "source": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。",
+      "reason": "Keeps the sequence mute video playback, then check whether the image explains the content being compared. Uses the direct você imperatives Silencie and veja, with o que se compara replacing está sendo comparado, actually heard with tá. Independent reviewer flagged Tire o som as potentially implying audio-track removal, so the author selected Silencie before applying or generating anything."
+    },
+    {
+      "kind": "line",
+      "id_or_field": "9e738a",
+      "before": "Que tema difícil mais quer animar? Comente.",
+      "after": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "max_chars": 58,
+      "chars": 57,
+      "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+      "reason": "Restores the source qualifier difícil de explicar, keeps the question about the idea the viewer most wants to animate, and leaves the comment request last. The inserted qualifier separates difícil from mais, which was previously misheard as mas; contextual você omission keeps a natural question within 58 characters."
+    }
+  ],
+  "native_counters_before": {
+    "shorten": 0,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true
+  },
+  "native_counters_after": {
+    "shorten": 0,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true
+  },
+  "translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+  "note": "Actual author revisions merged before new takes; native audio quality remains unfinished until new synthesis and checks pass."
+}

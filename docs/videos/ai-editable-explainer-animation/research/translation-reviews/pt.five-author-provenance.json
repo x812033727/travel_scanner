@@ -1,0 +1,107 @@
+{
+  "created_at": "2026-10-25T21:48:09.335Z",
+  "author": {
+    "agent": "/root/compact_pt_five",
+    "role": "Brazilian Portuguese compact-line proposal author",
+    "method": "Direct source-meaning and actual-hearing review by the current Codex author; no external model/API generation or audio audition"
+  },
+  "locale": "pt-BR",
+  "slug": "ai-editable-explainer-animation",
+  "purpose": "Five proposal-only text revisions for independent source review before any new reworded takes or final round",
+  "proposal_file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.five-author-proposals.json",
+  "proposal_sha256": "b5d7fd260a6163eb31b09d5e33be795d585fcff20a16049e5ab819ebe0c5b2a1",
+  "source_files": [
+    {
+      "role": "repository_source_video",
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+      "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806"
+    },
+    {
+      "role": "repository_canonical_translation",
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json",
+      "sha256": "70cb1d1c1ab0f411ecc13e06a6db13772bb76ef1e792ee7f9c1abf4ae59da6d4"
+    },
+    {
+      "role": "worksheet",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/pt.todo.json",
+      "sha256": "2179db53a9589991b6190b6c0180e80da538fb4703d8a557e12ed2a881610315"
+    },
+    {
+      "role": "actual_audio_check",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.pt.json",
+      "sha256": "0181a386ff74205de6795b6242c84d3172b13863d12f142baefacf5b5b6f1873"
+    },
+    {
+      "role": "actual_check_flags",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.pt.json",
+      "sha256": "da8cde3338cf05d0d315c6d0e13af085e2ec19756bbb3638577867e21c2f9de7"
+    },
+    {
+      "role": "actual_fit",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/fit.json",
+      "sha256": "9ee79e52d8a7aec55ab6d27a4d70f28117b36ed964459ed5c51594c22eee208a"
+    },
+    {
+      "role": "native_first_reword_answer",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/pt-first-reword-author-review-2026-10-25T21-41-27-140Z.txt",
+      "sha256": "4263855fe6762a1d9a9cf903cb2af03e846805078e0ae5b15fdaa9b477745c0e"
+    },
+    {
+      "role": "author_review_boundary",
+      "path": "/workspace/work/ai-animation-01/author-review-boundaries/pt.json",
+      "sha256": "53e16e708e576a944aba5ad06f0bd61d1f0f791f53a9698892b3bca8d09cbebf"
+    }
+  ],
+  "source_line_hashes": {
+    "8f5f2e": "8f5f2e46e80e",
+    "9aa7fd": "7ec50ea81a42",
+    "1de727": "1de727b378d5",
+    "a6c28e": "c125c333ada5",
+    "9e738a": "9e738a72de6e"
+  },
+  "actual_misheard_evidence": {
+    "8f5f2e": {
+      "heard": "Conta um mais seis e seis mais um à parte, a ordem importa.",
+      "intended": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+      "clip": "d3548b19f75c82e2"
+    },
+    "9aa7fd": {
+      "heard": "Sucesso só diz que o teste passou, não que o vídeo tá pronto.",
+      "intended": "Sucesso só diz que o teste passou; não que o vídeo está pronto.",
+      "clip": "9f3d5abf0bbd6d2a"
+    },
+    "1de727": {
+      "heard": "Reduza a largura do celular. Título legível, foco claro.",
+      "intended": "Reduza à largura do celular: título legível? Foco claro?",
+      "clip": "b11e66179430b935"
+    },
+    "a6c28e": {
+      "heard": "Desligue o som. A imagem explica o que tá sendo comparado?",
+      "intended": "Desligue o som; a imagem explica o que está sendo comparado?",
+      "clip": "8581a7929b8de4bc"
+    },
+    "9e738a": {
+      "heard": "Que tema difícil, mas quer animar? Comente.",
+      "intended": "Que tema difícil mais quer animar? Comente.",
+      "clip": "1f5fded25a5e08a9"
+    }
+  },
+  "native_state_read": {
+    "shorten": 0,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true,
+    "pause": "Before new reworded takes or final round",
+    "five_overbudget_native_proposals": "Rejected; the five before strings remain canonical",
+    "canonical_application": false
+  },
+  "independent_review": {
+    "reviewer_agent": "/root/review_latin",
+    "status": "Requested; no approval represented in this author provenance",
+    "author_response": "Adopted reviewer recommendation to use Silencie for unambiguous playback muting on a6c28e. Exact saved five remain pending separate reviewer acceptance."
+  },
+  "audio_approval": false,
+  "audio_status": "No new audio generated or auditioned for these proposals. Text proposals do not certify pronunciation, fit, or final audio readiness.",
+  "scope": "Only pt.five-author-proposals.json and pt.five-author-provenance.json written by this author. No source, worksheet, auto/skip state, retry counters, or receipts edited; no paid calls or commits.",
+  "revised_at": "2026-10-25T21:48:22.042Z"
+}

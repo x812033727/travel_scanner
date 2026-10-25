@@ -1,0 +1,108 @@
+{
+  "locale": "id",
+  "line_id": "719e7c",
+  "reviewer": {
+    "provider": "OpenAI",
+    "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+    "agent": "/root/review_id_vi_th",
+    "independent_of_root_authored_candidate": true,
+    "human": false
+  },
+  "review_type": "Independent source and Indonesian text review before the first Indonesian TTS",
+  "verdict": "approved_text_only_for_pre_tts_merge",
+  "current_text": "Prompt: gambar semua pasangan berurutan dari dua dadu adil.",
+  "recommended_text": "Minta AI menggambar semua pasangan berurutan dari dua dadu adil.",
+  "recommended_codepoints": 64,
+  "max_chars": 64,
+  "source_text": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+  "checks": {
+    "source_fidelity": "The source introduces what to ask in the prompt, then asks for a drawing of every ordered outcome of two fair dice. Minta AI menggambar expresses the spoken request naturally in the established AI-instruction context.",
+    "all_outcomes": "semua retains every outcome; no outcome or condition is removed.",
+    "ordered_pairs": "pasangan berurutan retains the explicit mathematical ordered-pair term; prior 8f5f2e distinguishes 1+6 from 6+1.",
+    "dice_count_and_fairness": "dua dadu adil retains exactly two fair dice; no extra fairness/independence claim is introduced.",
+    "drawing_action": "menggambar explicitly asks for drawing; this remains before the ordered-pair object.",
+    "AI_actor_context": "AI is explicit in the nearby instruction 6b1614 and throughout the request sequence. Naming AI here makes the existing addressee explicit and adds no product capability claim.",
+    "cue_order": "The source request comes first, then drawing, then all ordered outcomes/two fair dice. The active candidate preserves that sequence. Worksheet has no additional multi-cue boundary for this line.",
+    "register": "Natural everyday standard Indonesian, compatible with the established kamu register through an ordinary omitted subject in a viewer instruction. No slang, unfamiliar grammatical compression or foreign-script text is introduced.",
+    "budget": "64 actual Unicode codepoints, including spaces and final period; within the existing hard maximum of 64.",
+    "metadata": "Title, description, tags, chapters and thumbnail were not changed or proposed for change."
+  },
+  "candidates_considered": [
+    {
+      "text": "Minta AI menggambar semua pasangan berurutan dari dua dadu adil.",
+      "codepoints": 64,
+      "assessment": "Recommended. Active, explicit and natural; retains all ordered pairs, two fair dice and drawing in source order."
+    },
+    {
+      "text": "Minta agar semua pasangan berurutan dua dadu adil digambar.",
+      "codepoints": 59,
+      "assessment": "Within budget, but the passive puts drawing after the objects and makes the pair-to-dice relationship less explicit. No reason to prefer it over the complete active candidate."
+    },
+    {
+      "text": "Minta AI menggambar semua pasangan berurutan dua dadu adil.",
+      "codepoints": 59,
+      "assessment": "Shorter active option, but omitting dari creates a compressed noun chain. The full candidate is more natural and already fits."
+    },
+    {
+      "text": "Minta gambar semua pasangan berurutan dari dua dadu adil.",
+      "codepoints": 57,
+      "assessment": "Shorter, but minta gambar can be read as requesting an image noun rather than asking the AI to draw. The explicit action and addressee are preferable."
+    }
+  ],
+  "audio_scope": {
+    "text_review_only": true,
+    "proactive_refinement_before_first_id_tts": true,
+    "id_synthesis_run_or_heard_by_reviewer": false,
+    "id_prompt_prefix_failure_tested": false,
+    "audio_approval": false,
+    "basis": "The controller reported Spanish/Portuguese issues with a literal Prompt: prefix. No Indonesian audio failure has been tested or is claimed here; this receipt approves the text only."
+  },
+  "sha256": {
+    "source_video_current": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "translation_current_before_refinement": "469789a451ce7867a55b72ba130123e352420bddff22718a8d8c835d3765b7a9",
+    "worksheet_current_before_refinement": "e3426b069a973bf10f5f1edd4fecc6d8984b3d01cc566d8b6acc7ca4148daac1"
+  },
+  "context_reread": [
+    {
+      "id": "8f5f2e",
+      "source": "一加六和六加一分開算，因為兩顆骰子的結果有順序。",
+      "translation": "1+6 dan 6+1 dihitung terpisah: urutan hasil dadu penting."
+    },
+    {
+      "id": "6b1614",
+      "source": "你先把要講的條件寫好，不要讓 AI 邊猜事實邊畫圖。",
+      "translation": "Tulis syarat dulu, jangan AI tebak fakta sambil menggambar."
+    },
+    {
+      "id": "1832d2",
+      "source": "要求畫出完整的格子，不能為了好看省掉某些結果。",
+      "translation": "Minta kisi utuh, jangan buang hasil demi estetika."
+    },
+    {
+      "id": "c141fc",
+      "source": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+      "translation": "Cek jumlah dua dadu tiap sel, warnai jika cocok."
+    },
+    {
+      "id": "c5a99d",
+      "source": "要求標題和圖例用真正的文字，之後能直接修改。",
+      "translation": "Minta judul dan legenda berupa teks agar bisa langsung diedit."
+    },
+    {
+      "id": "719e7c",
+      "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+      "translation": "Prompt: gambar semua pasangan berurutan dari dua dadu adil."
+    },
+    {
+      "id": "f2c1f3",
+      "source": "用格子呈現，符合目標總和的格子上色。",
+      "translation": "Tampilkan kisi, warnai sel dengan jumlah yang dituju."
+    },
+    {
+      "id": "475bb2",
+      "source": "先看全體，再看目標，最後比較兩個結果。",
+      "translation": "Lihat semua, target, lalu bandingkan dua hasil."
+    }
+  ],
+  "mutations": "Only this review receipt was written. Source, canonical translation, worksheet and metadata remain unchanged; no audio synthesis or paid API call performed."
+}

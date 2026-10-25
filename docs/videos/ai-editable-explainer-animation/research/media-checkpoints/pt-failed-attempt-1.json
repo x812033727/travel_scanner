@@ -1,0 +1,72 @@
+{
+  "observed_at_utc": "2026-10-25T22:06:17.171027+00:00",
+  "status": "FAILED native PT attempt, not approved; no retry or new source take after native skip",
+  "native_history": {
+    "shorten": 0,
+    "retakes": 2,
+    "reword": 2,
+    "counter_entry_now": null,
+    "entry_cleared_by_native_give_up_not_by_controller": true
+  },
+  "source": {
+    "translation_path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json",
+    "translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857"
+  },
+  "skipped_marker": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/skipped.json",
+    "sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+    "exact_text": "{\n  \"reason\": \"Jev still hears 9e738a wrong after 2 retakes and 2 rewording rounds\",\n  \"at\": \"2026-10-25T21:54:23.854Z\"\n}\n"
+  },
+  "timeline": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/timeline.json",
+    "sha256": "c38ef501c1ed6b0bc6293a4a0cac33847214cf4634a86f88aa5e59f0482b5d21",
+    "speech_hash": "ab16df144b09176b",
+    "translation_hash": "ed315838b4a2fab5",
+    "speech_fingerprint": "bcb9728e6c870340",
+    "tempo_max": 1.07
+  },
+  "flags_file": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.pt.json",
+    "sha256": "3b79896bb0b9ced87ed3e05eebd989f16b236e3ddcfde0cb3d4c496f16451091"
+  },
+  "flags": [
+    "9e738a"
+  ],
+  "lines": [
+    {
+      "id": "9e738a",
+      "wav_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/audio/9e738a.wav",
+      "wav_sha256": "866d91868c6e7759f96b38a1f9bae64012849cd55037937e4f9fa4eeaa2ec1c9",
+      "wav_bytes": 340844,
+      "native_cache_key": "39621e22d039c2b5",
+      "last_check": {
+        "scene": "outro",
+        "clip": "866d91868c6e7759",
+        "terms": [
+          "Qual",
+          "ideia",
+          "dif",
+          "cil",
+          "de",
+          "explicar",
+          "mais",
+          "quer",
+          "animar",
+          "Comente"
+        ],
+        "heard": "Qual ideia difícil de explicar mais quer animar? Comenta.",
+        "noul": 0.31,
+        "intended": "Qual ideia difícil de explicar mais quer animar? Comente.",
+        "spoken_form": "Qual ideia difícil de explicar mais quer animar? Comente.",
+        "match_kind": null,
+        "match": false
+      }
+    }
+  ],
+  "track": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt.m4a",
+    "bytes": 13722865,
+    "sha256": "a9f06e392ad9bb04f5d53b1a8a6a7b6ecceb857f2535c1a93db5b4a296d148c1"
+  },
+  "no_new_paid_request": true
+}

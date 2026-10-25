@@ -1,0 +1,62 @@
+{
+  "verdict": "ready_for_author_text_refinement",
+  "semantic_review_pass": true,
+  "review_type": "independent_Brazilian_Portuguese_author_prompt_refinement_review",
+  "reviewed_at_utc": "2026-10-25T21:30:13.053907+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "translator_of_original_locale": false
+  },
+  "locale": "pt",
+  "line_id": "719e7c",
+  "actual_texts_read": {
+    "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+    "current_canonical_before": "Prompt: todos os pares ordenados de dois dados justos.",
+    "current_worksheet_before": "Prompt: todos os pares ordenados de dois dados justos.",
+    "author_candidate_exact": "Peça que desenhe cada par ordenado de dois dados justos."
+  },
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "14096d86881d0a7661d2e54ee581df8ce36befd16d67c0cbd3fc6bfd2d47f7c5",
+    "current_worksheet_sha256": "7761b88760dbc3b08f656acf28f19e23f7a82b442b8e01d0fa3f952aef5f9351",
+    "candidate_utf8_sha256": "aa90afd57ed35dbbc939903df5ba434b5c006fa6e8f734637ea5bca40a0c32d5"
+  },
+  "budget": {
+    "before_chars": 54,
+    "candidate_chars": 56,
+    "current_worksheet_max_chars": 57,
+    "pass": true,
+    "remaining_characters": 1
+  },
+  "source_fidelity_checks": {
+    "drawing_action": "pass: desenhe explicitly restores the drawing verb omitted from the current line.",
+    "prompt_instruction": "pass: Peça que converts the metaprefix into an actionable request while preserving the source instruction to formulate a drawing request.",
+    "all_ordered_results": "pass: cada par ordenado requires every ordered pair, preserving exhaustive ordered outcomes.",
+    "two_dice": "pass: dois dados preserves the number of dice.",
+    "fairness": "pass: justos preserves the fairness condition and the established term in this translation.",
+    "cue_action_order": "pass: request first, draw second, every ordered pair and dice conditions next. There is no split-boundary entry for this line.",
+    "no_added_numbers_names_or_conditions": "pass"
+  },
+  "natural_Brazilian_Portuguese_review": {
+    "verdict": "pass",
+    "você_register": "Peça is the standard você imperative. Peça que desenhe is natural Brazilian Portuguese; the drawing agent is understood from the surrounding AI request context.",
+    "terminology": "par ordenado and dados justos are clear and consistent with the existing mathematical vocabulary.",
+    "metaprefix_Prompt_absent": true,
+    "more_compact_option_needed": false
+  },
+  "current_source_fidelity_issue": {
+    "issue": "Current text lacks an explicit drawing action.",
+    "resolution": "The author candidate restores drawing without exceeding the current cap.",
+    "prior_review_note": "This specific omission was not identified in the earlier full PT review; this record corrects that coverage gap."
+  },
+  "audio_and_production_limits": {
+    "tts_approval": false,
+    "audio_quality_or_measured_fit_independently_reviewed": false,
+    "root_report": "Root reports that the current metaprefix was transcribed as Prontinho and the producer paused at first ASR; this reviewer has not independently checked that audio.",
+    "retry_or_paid_execution_authorized_by_this_record": false,
+    "note": "This record accepts text fidelity, register, cue order and character budget only. It is not proof of pronunciation, synthesis quality, or measured duration."
+  },
+  "side_effects": "Only this review JSON was written. No source, worksheet, translation, paid job, network call, receipt or retry counter was changed."
+}

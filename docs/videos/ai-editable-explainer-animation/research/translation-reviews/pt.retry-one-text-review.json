@@ -1,0 +1,90 @@
+{
+  "verdict": "text_proposal_acceptable_for_owner_retry",
+  "production_verdict": "not_ready_native_audio_failed",
+  "review_type": "independent_PT_single_owner_retry_text_proposal_review",
+  "reviewed_at_utc": "2026-10-25T22:05:58.109344+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "original_locale_translator": false
+  },
+  "locale": "pt",
+  "line_id": "9e738a",
+  "current_translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+    "current_worksheet_sha256": "2f71f083671213feefa613823e0278d412c519eeabfc5097f02ec2cf5b810f34",
+    "actual_check_flags_sha256": "3b79896bb0b9ced87ed3e05eebd989f16b236e3ddcfde0cb3d4c496f16451091",
+    "actual_audio_check_sha256": "fe33814d352f0c64329b199d893a918aed66899457a3e16d623cd228a023de7d",
+    "owner_candidate_utf8_sha256": "99a92fd8a6333086bd6c0201858a4882ecd4cc34f349c020fc0b283f8ae49906"
+  },
+  "actual_texts_read": {
+    "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+    "canonical_before": "Qual ideia difícil de explicar mais quer animar? Comente.",
+    "worksheet_before": "Qual ideia difícil de explicar mais quer animar? Comente.",
+    "owner_proposed_exact": "Qual ideia difícil de explicar mais quer animar? Comenta."
+  },
+  "proposal_applied": false,
+  "tts_approval": false,
+  "new_audio_generated_or_approved": false,
+  "budget": {
+    "before_chars": 57,
+    "proposal_chars": 57,
+    "current_worksheet_max_chars": 58,
+    "proposal_pass": true
+  },
+  "fidelity_review": {
+    "verdict": "pass",
+    "hard_to_explain": "difícil de explicar explicitly retains the source qualifier; it does not merely call the problem difficult.",
+    "most_wanted_animation": "mais quer animar preserves asking which idea the viewer most wants to animate.",
+    "comment_request": "Comenta directly retains the request to leave a comment.",
+    "cue_order": "The question about the hard-to-explain idea and desired animation precedes the comment request, matching the source; one cue, no boundary entry.",
+    "names_numbers_conditions": "None added or changed."
+  },
+  "Brazilian_register_review": {
+    "verdict": "acceptable_for_relaxed_spoken_Brazilian_você_register",
+    "distinction": "Comente is the prescriptive imperative associated with você. Comenta is formally associated with tu, but colloquial Brazilian speech widely uses this imperative form when addressing você. This approval does not relabel Comenta as the prescriptive você form.",
+    "application": "For this relaxed, conversational video voice, standalone Comenta is a natural and clear viewer invitation; it does not introduce an explicit tu pronoun or a regional voseo/plural register.",
+    "recommendation": "Accept the exact owner candidate as a concrete text proposal; no alternative is needed for this conversational register."
+  },
+  "failed_audio_evidence_actually_read": {
+    "line": {
+      "scene": "outro",
+      "clip": "866d91868c6e7759",
+      "terms": [
+        "Qual",
+        "ideia",
+        "dif",
+        "cil",
+        "de",
+        "explicar",
+        "mais",
+        "quer",
+        "animar",
+        "Comente"
+      ],
+      "heard": "Qual ideia difícil de explicar mais quer animar? Comenta.",
+      "noul": 0.31,
+      "intended": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "spoken_form": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "match_kind": null,
+      "match": false
+    },
+    "flag_ids": [
+      "9e738a"
+    ],
+    "flag_note": "Jev 0.31: heard 「Qual ideia difícil de explicar mais quer animar? Comenta.」",
+    "entry_count": 101,
+    "failure_retained": true,
+    "note": "The existing checked clip remains failed because its intended text says Comente and its recorded hearing says Comenta. Identical wording between the proposed text and old ASR does not convert that historical failed clip into a new passing result."
+  },
+  "native_status": {
+    "root_report": "PT native SKIPPED after retakes2/rewords2; the final native reword exceeded cap; 9e738a remains the sole flag.",
+    "not_cleared_or_reset_by_reviewer": true,
+    "root_retry_marker_or_counters_edited": false
+  },
+  "later_retry_requirements": "Any later execution must follow the real owner retry path and produce/check the proposed text under that path. This proposal is not a caption-only acceptance/recheck of the old WAV, not removal of a skip marker, not a counter reset, and not approval of a new TTS result.",
+  "side_effects": "Only this text-review JSON was written; no canonical, worksheet, source, native state, old audio, flags, receipts or retry counters were changed, and no paid/network call was made."
+}

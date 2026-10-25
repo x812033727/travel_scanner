@@ -1,0 +1,98 @@
+{
+  "verdict": "ready",
+  "review_type": "independent_PT_native_reword_1_accepted_text_delta_review",
+  "reviewed_at_utc": "2026-10-25T21:46:18.210323+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "translator_of_original_locale": false
+  },
+  "locale": "pt",
+  "line_id": "1712ce",
+  "current_translation_sha256": "70cb1d1c1ab0f411ecc13e06a6db13772bb76ef1e792ee7f9c1abf4ae59da6d4",
+  "hashes": {
+    "video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "70cb1d1c1ab0f411ecc13e06a6db13772bb76ef1e792ee7f9c1abf4ae59da6d4",
+    "current_worksheet_sha256": "2179db53a9589991b6190b6c0180e80da538fb4703d8a557e12ed2a881610315",
+    "pre_dub_snapshot_sha256": "eb6129c3f5e71202b3f722b5b2ad8ecc2138c8962dc7726702418f280719ed0e",
+    "actual_first_reword_raw_answer_sha256": "4263855fe6762a1d9a9cf903cb2af03e846805078e0ae5b15fdaa9b477745c0e"
+  },
+  "actual_texts_read": {
+    "source": "但是如果你要的是人物表演，這份格子範例就不適合。",
+    "pre_dub_before": "Para personagens atuando, este exemplo de grade não serve.",
+    "current_canonical": "Se você quer personagens atuando, este exemplo de grade não serve.",
+    "current_worksheet": "Se você quer personagens atuando, este exemplo de grade não serve.",
+    "actual_raw_answer_first_JSON_block": "Se você quer personagens atuando, este exemplo de grade não serve."
+  },
+  "budget": {
+    "chars": 66,
+    "max_chars": 77,
+    "pass": true
+  },
+  "semantic_checks": {
+    "conditional": "pass: Se você quer preserves the if-you-want condition",
+    "character_performance": "pass: personagens atuando preserves the requested character/people performance",
+    "this_grid_example": "pass: este exemplo de grade preserves the scope of the limitation",
+    "unsuitable": "pass: não serve preserves the conclusion that this grid example is unsuitable for that request",
+    "numbers_names_and_added_claims": "pass: no numbers/names added and no claim extends to all animation or AI products",
+    "cue_order": "pass: requested character performance before the grid example limitation, matching source; one cue with no boundary entry",
+    "Brazilian_voce_register": "pass: explicit você, natural Brazilian phrasing",
+    "source_connective": "The source contrastive but is carried by context; the substantive condition and restriction remain explicit."
+  },
+  "other_first_reword_texts": {
+    "scope": "Not accepted or semantically approved by this record. First raw JSON block was mechanically inspected to verify the five reported over-cap cases; a separate author is preparing replacements.",
+    "first_block_budget_checks": [
+      {
+        "id": "8f5f2e",
+        "first_block_text": "Some um mais seis e seis mais um separadamente, porque a ordem dos dois dados importa.",
+        "chars": 86,
+        "cap": 84,
+        "over_cap": true,
+        "not_canonical": true
+      },
+      {
+        "id": "9aa7fd",
+        "first_block_text": "A marca de sucesso significa só que essa verificação passou; o vídeo ainda não está finalizado.",
+        "chars": 95,
+        "cap": 85,
+        "over_cap": true,
+        "not_canonical": true
+      },
+      {
+        "id": "1de727",
+        "first_block_text": "Diminua a prévia até a largura do celular e veja se o título dá para ler e o foco aparece.",
+        "chars": 90,
+        "cap": 77,
+        "over_cap": true,
+        "not_canonical": true
+      },
+      {
+        "id": "a6c28e",
+        "first_block_text": "Primeiro, silencie o vídeo; depois veja se a imagem explica o que está sendo comparado.",
+        "chars": 87,
+        "cap": 81,
+        "over_cap": true,
+        "not_canonical": true
+      },
+      {
+        "id": "9e738a",
+        "first_block_text": "Qual problema difícil de explicar você quer transformar em animação? Comente.",
+        "chars": 77,
+        "cap": 58,
+        "over_cap": true,
+        "not_canonical": true
+      }
+    ],
+    "all_five_first_block_proposals_over_current_caps": true,
+    "raw_answer_multiple_JSON_blocks": "The raw answer contains a first JSON block followed by prose and a second JSON block; this review preserves that evidence and does not relabel the second block as the native accepted result."
+  },
+  "audio_limits": {
+    "text_only": true,
+    "tts_approval": false,
+    "ASR_or_measured_duration_independently_verified": false,
+    "native_retry_state": "Root reports safely paused after native reword1 with retakes2/reword1; this reviewer did not mutate or independently execute the native state machine."
+  },
+  "additional_text_fix_needed_for_1712ce": false,
+  "side_effects": "Only this review JSON was written; no source, worksheet, translation, paid calls, receipts or retry counters were edited."
+}
