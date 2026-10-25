@@ -1,0 +1,152 @@
+{
+  "locale": "id",
+  "reviewer": {
+    "provider": "OpenAI",
+    "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+    "agent": "/root/review_id_vi_th",
+    "human": false,
+    "independent_of_proposal_author": true,
+    "proposal_author_agent": "/root/compact_id_three"
+  },
+  "review_type": "Independent source-fidelity and Unicode-budget text review of three unapplied proposals after the saved native ID fit failure",
+  "reviewed_at_utc": "2026-10-25T22:22:34.614380+00:00",
+  "verdict": "not_ready_to_apply_all_three: 9e738a source-meaning condition unresolved",
+  "line_reviews": [
+    {
+      "id": "f576ae",
+      "source": "把影片傳給別人時，也請附上能重新產生動畫的專案檔。",
+      "current_text": "Kirim video bersama proyek pembuat ulang animasinya.",
+      "author_text": "Kirim video dan proyek pembuat ulang animasi.",
+      "author_codepoints": 45,
+      "hard_cap": 48,
+      "verdict": "approved_text_only",
+      "recommended_text": "Kirim video dan proyek pembuat ulang animasi.",
+      "recommended_codepoints": 45,
+      "meaning_checks": {
+        "send_the_video": "Kirim video retains the video-sending action; recipient others is ordinary implicit context.",
+        "include_project_files": "dan proyek retains sending the project along with the video; in this handoff context proyek denotes the project files, not only a finished MP4.",
+        "regenerate_animation": "pembuat ulang animasi retains producing the animation again, not merely replaying the exported video.",
+        "clause_order": "Sending the video comes before the accompanying regenerating project.",
+        "register": "Everyday standard Indonesian viewer instruction with an implicit kamu; no slang introduced."
+      }
+    },
+    {
+      "id": "9e738a",
+      "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+      "current_text": "Soal apa sukar dijelaskan? Mau animasi? Komentar.",
+      "author_text": "Soal rumit apa paling mau dianimasi? Komen.",
+      "author_codepoints": 43,
+      "hard_cap": 46,
+      "verdict": "rejected_source_drift_no_faithful_in_cap_recommendation_found",
+      "recommended_text": null,
+      "recommended_codepoints": null,
+      "meaning_checks": {
+        "which_problem": "Soal ... apa retains which problem.",
+        "most_wanted_animation": "paling mau dianimasi explicitly restores the strongest preference for animation.",
+        "hard_to_explain": "FAIL: rumit means complex or complicated. A complicated problem is not necessarily a problem that is difficult to explain. The source explicitly qualifies explanation difficulty, so context does not justify silently replacing that condition.",
+        "comment_request": "Komen preserves a comment request but is more colloquial than the established Komentar; this is secondary to the meaning failure.",
+        "current_canonical_limitation": "The prior 49-codepoint canonical text preserves explanation difficulty and comments but omits explicit most-wanted preference. Prior ready acceptance missed that omission; this review does not treat it as satisfying the present full-fidelity requirement."
+      },
+      "unapproved_alternative": {
+        "text": "Sulit dijelaskan? Paling mau animasi apa? Komentar.",
+        "codepoints": 51,
+        "over_cap_by": 5,
+        "status": "unapproved: exceeds hard cap; supplied only to show the retained hard-to-explain, strongest preference, animation and comment concepts. Not a proposed cap change or approved retry text."
+      },
+      "search_result": "Reviewer and a separate text-only brainstorming agent found no natural standard Indonesian wording retaining every required concept within 46 codepoints. This is a search result, not a proof of impossibility. No candidate is approved by dropping the source condition."
+    },
+    {
+      "id": "ed8308",
+      "source": "訂閱這個頻道，跟著把 AI 用成拿得出來的作品。",
+      "current_text": "Langganan kanal ini; ikuti cara memakai AI untuk karya layak tampil.",
+      "author_text": "Langganan kanal ini; ikut pakai AI untuk karya layak tampil.",
+      "author_codepoints": 60,
+      "hard_cap": 63,
+      "author_verdict": "approved_text_only",
+      "verdict": "approved_text_only_with_equally_short_explicit_creation_recommendation",
+      "recommended_text": "Langganan kanal ini; ikut pakai AI, buat karya layak tampil.",
+      "recommended_codepoints": 60,
+      "meaning_checks": {
+        "subscribe_this_channel": "Langganan kanal ini explicitly retains subscribing to this channel.",
+        "follow_along": "ikut retains the invitation to follow along/join the channel instruction.",
+        "use_AI": "pakai AI retains using AI; the acronym is unchanged.",
+        "produce_presentable_work": "The author purpose phrase untuk karya layak tampil conveys work fit to show. Recommended buat karya layak tampil makes the creation action explicit at the same 60-codepoint count.",
+        "clause_order": "Subscribe to this channel, follow along using AI, then make presentable work; sequence is retained.",
+        "register": "Natural everyday Indonesian kamu-register instruction; no slang or extra product capability promise."
+      }
+    }
+  ],
+  "budget_method": "Python len of actual decoded Unicode strings, including spaces and punctuation; caps 48/46/63 are line-specific review ceilings supplied by controller, not a change to any global shortening setting.",
+  "source_and_provenance_checks": {
+    "canonical_sha256_matches_requested_89edb": true,
+    "proposals_match_actual_current_before_texts": true,
+    "worksheet_before_texts_match_canonical": true,
+    "source_texts_match_actual_video": true,
+    "provenance_hash_checks": [
+      {
+        "role": "repository_source_video",
+        "matches_recorded_sha256": true,
+        "actual_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806"
+      },
+      {
+        "role": "repository_canonical_translation",
+        "matches_recorded_sha256": true,
+        "actual_sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a"
+      },
+      {
+        "role": "actual_failed_attempt_baseline",
+        "matches_recorded_sha256": true,
+        "actual_sha256": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae"
+      },
+      {
+        "role": "native_skipped_marker",
+        "matches_recorded_sha256": true,
+        "actual_sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c"
+      },
+      {
+        "role": "actual_native_fit",
+        "matches_recorded_sha256": true,
+        "actual_sha256": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b"
+      }
+    ]
+  },
+  "native_state": {
+    "status": "FAILED native ID fit attempt; no assembled checked track or ASR; no retry performed",
+    "shortening_rounds_observed": 1,
+    "shortening_result": "All three returned unchanged; native notes explicitly drop them as not shorter, then native give-up skips the locale.",
+    "native_notes": [
+      "id shortening dropped: f576ae: not shorter (52 characters, was 52)",
+      "id shortening dropped: 9e738a: not shorter (49 characters, was 49)",
+      "id shortening dropped: ed8308: not shorter (68 characters, was 68)",
+      "id dub skipped: f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round"
+    ],
+    "one_round_is_not_global_cap_mutation": true,
+    "native_give_up_preserved": true,
+    "no_assembled_checked_track": true,
+    "no_ASR": true,
+    "no_retry_performed_by_reviewer": true
+  },
+  "application_and_audio_scope": {
+    "all_proposals_unapplied_by_reviewer": true,
+    "canonical_and_worksheet_unmodified": true,
+    "failed_native_ID_state_unmodified": true,
+    "source_and_metadata_unmodified": true,
+    "no_API_calls": true,
+    "text_only": true,
+    "audio_not_heard_or_approved": true,
+    "text_count_is_not_measured_audio_fit": true,
+    "no_owner_retry_taken": true,
+    "no_native_counters_or_skip_changed": true
+  },
+  "sha256": {
+    "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation_before_review": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+    "worksheet": "8b3c6b84e22af3c10720756caf331cb8b9d4e4015b18b54e097c10778f92b32f",
+    "proposals": "394e85262278a1c2d6aa1675a077bd7008651257bd1687c21c2442d635d30731",
+    "author_provenance": "ebcc82d6ee2d582b605a2c682afce68155c0ad38d086a87db6c53680af71278e",
+    "failed_native_attempt_baseline": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae",
+    "native_skip_marker": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "native_fit": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b"
+  },
+  "mutations": "Only id.three-author-independent-review.json written; no source, canonical translation, worksheet, metadata, native failure artifacts, counters, audio or ASR changes."
+}

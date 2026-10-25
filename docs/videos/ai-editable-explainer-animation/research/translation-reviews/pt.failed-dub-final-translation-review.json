@@ -1,0 +1,971 @@
+{
+  "verdict": "text_fidelity_pass_audio_QA_failed",
+  "text_meaning_verdict": "pass_for_current_canonical_deltas",
+  "audio_QA_verdict": "failed",
+  "production_verdict": "native_skipped_not_ready",
+  "review_type": "independent_final_failed_PT_dub_canonical_translation_delta_review",
+  "reviewed_at_utc": "2026-10-25T22:19:30.198251+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "original_locale_translator": false
+  },
+  "locale": "pt",
+  "actual_current_translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+  "hashes": {
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "current_translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+    "accepted_pre_dub_snapshot_sha256": "eb6129c3f5e71202b3f722b5b2ad8ecc2138c8962dc7726702418f280719ed0e",
+    "current_worksheet_sha256": "2f71f083671213feefa613823e0278d412c519eeabfc5097f02ec2cf5b810f34",
+    "current_check_flags_sha256": "3b79896bb0b9ced87ed3e05eebd989f16b236e3ddcfde0cb3d4c496f16451091",
+    "current_audio_check_sha256": "fe33814d352f0c64329b199d893a918aed66899457a3e16d623cd228a023de7d"
+  },
+  "scope": {
+    "all_delta_fields_compared_against_snapshot": true,
+    "changed_narration_lines_actually_source_reread": [
+      "1712ce",
+      "8f5f2e",
+      "719e7c",
+      "9aa7fd",
+      "1de727",
+      "a6c28e",
+      "9e738a"
+    ],
+    "changed_metadata_fields_actually_source_reread": [
+      "title"
+    ],
+    "unchanged_lines_have_prior_full_independent_review": true,
+    "all_101_current_budgets_and_worksheet_texts_mechanically_checked": true,
+    "audio_not_auditioned_or_approved_in_this_text_review": true
+  },
+  "narration_deltas": [
+    {
+      "id": "1712ce",
+      "actual_source_read": "但是如果你要的是人物表演，這份格子範例就不適合。",
+      "source_text_sha256": "2d49ec6ed91882acbd28f3ea9f746a973ac1c77aef151b6d8e96b4f537d97e63",
+      "stored_source_hash": "2d49ec6ed918",
+      "computed_source_hash_matches": true,
+      "before": "Para personagens atuando, este exemplo de grade não serve.",
+      "after": "Se você quer personagens atuando, este exemplo de grade não serve.",
+      "after_text_sha256": "703678385fb93f3c52dbfcf26a149d8f94dc756a77dbef9cf2cdde9e403573bb",
+      "chars": 66,
+      "current_max_chars": 77,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "The conditional wish for character performance is explicit, followed by the limitation that this grid example is unsuitable; scope does not extend to all AI animation. Natural explicit você.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "8f5f2e",
+      "actual_source_read": "一加六和六加一分開算，因為兩顆骰子的結果有順序。",
+      "source_text_sha256": "8f5f2e46e80eb039a1a729d6a23e1f80e2a70653ba8112a735f55033896958b6",
+      "stored_source_hash": "8f5f2e46e80e",
+      "computed_source_hash_matches": true,
+      "before": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+      "after": "Na contagem, separe um mais seis de seis mais um: a ordem dos dois dados importa.",
+      "after_text_sha256": "f0f9f1b3a607b8fd96826ca6376cdd7219d03c6c6214b59f146df70405a28f38",
+      "chars": 81,
+      "current_max_chars": 85,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "Separate counting of one-plus-six and six-plus-one remains explicit, in that order, followed by why the order of the two dice matters. Both numbers and ordered-outcome condition are preserved.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "719e7c",
+      "actual_source_read": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+      "source_text_sha256": "719e7cc8c4c9f545342f21ae4f1daa3b4ad344c10198cbc8c64561830072db1f",
+      "stored_source_hash": "719e7cc8c4c9",
+      "computed_source_hash_matches": true,
+      "before": "Prompt: todos os pares ordenados de dois dados justos.",
+      "after": "Peça que desenhe cada par ordenado de dois dados justos.",
+      "after_text_sha256": "aa90afd57ed35dbbc939903df5ba434b5c006fa6e8f734637ea5bca40a0c32d5",
+      "chars": 56,
+      "current_max_chars": 75,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "Peça que desenhe explicitly restores drawing, absent from the snapshot. cada par ordenado preserves every ordered outcome, and dois dados justos retains two fair dice. The instruction is request first, draw next; no extra claim.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "9aa7fd",
+      "actual_source_read": "結果裡的成功標記，只表示這份檢查通過，不表示影片已經完成。",
+      "source_text_sha256": "7ec50ea81a429c9beef48258a4f32f1231a6e9b1fbeb318c0bc892143edaaafd",
+      "stored_source_hash": "7ec50ea81a42",
+      "computed_source_hash_matches": true,
+      "before": "Sucesso só diz que o teste passou; não que o vídeo está pronto.",
+      "after": "A marca de sucesso só indica que o teste passou, não que o vídeo ficou pronto.",
+      "after_text_sha256": "d2f1bda5f3ddb93ba4dcf2fef5ddc9ed6eb3b47ae5b858d8a2a5a4a68a5a0a33",
+      "chars": 78,
+      "current_max_chars": 85,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "The success marker only signals this test passed and does not establish video completion. só and não preserve both limits.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "1de727",
+      "actual_source_read": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+      "source_text_sha256": "1de727b378d539155b6866f586808f03aa8df2e7535311ef9d03329054bdb3ee",
+      "stored_source_hash": "1de727b378d5",
+      "computed_source_hash_matches": true,
+      "before": "Reduza à largura do celular: título legível? Foco claro?",
+      "after": "Reduza a prévia à largura do celular: veja se lê o título e encontra o foco.",
+      "after_text_sha256": "367f0d54f340b1be787c7761f42b188a521c5d935cf00cd871a96cd14af21005",
+      "chars": 76,
+      "current_max_chars": 77,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "The preview is explicitly the object reduced to phone width. The next checks retain title legibility and finding the main focus, in source order.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "a6c28e",
+      "actual_source_read": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。",
+      "source_text_sha256": "c125c333ada56cddb497060764858a6134da7a997fb1ba80bfad2b75bc513e91",
+      "stored_source_hash": "c125c333ada5",
+      "computed_source_hash_matches": true,
+      "before": "Desligue o som; a imagem explica o que está sendo comparado?",
+      "after": "Silencie o vídeo. Depois veja se a imagem explica o que se compara.",
+      "after_text_sha256": "d42c0b8912b022eeea6ab1367e50da17b3f6436150424d4fa572b5bdead38a12",
+      "chars": 67,
+      "current_max_chars": 81,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "Muting the video is explicit, then reviewing whether the visual explains the current comparison. Silencie preserves muting playback without suggesting deletion of an audio track.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    },
+    {
+      "id": "9e738a",
+      "actual_source_read": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+      "source_text_sha256": "9e738a72de6ee996b023a0ed7ecde9a62e80ea77fcdef86558218a90466bf533",
+      "stored_source_hash": "9e738a72de6e",
+      "computed_source_hash_matches": true,
+      "before": "Que tema difícil mais quer animar? Comente.",
+      "after": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "after_text_sha256": "c8d8a66218b99b7880bdbd7f6f5b0e3d94781560827abee090f077d5b85780d7",
+      "chars": 57,
+      "current_max_chars": 58,
+      "budget_pass": true,
+      "canonical_matches_current_worksheet": true,
+      "boundary": null,
+      "source_meaning_verdict": "pass",
+      "source_meaning_note": "The hard-to-explain qualifier is explicit, along with which idea the viewer most wants to animate and the final request to comment. Comente remains canonical and is the standard você imperative.",
+      "cue_order_verdict": "pass: source actions and core clauses retain sequence; no split-boundary entry for this line",
+      "register_verdict": "natural Brazilian Portuguese in the established você/direct-viewer register",
+      "meaning_issues": []
+    }
+  ],
+  "metadata_deltas": {
+    "title": {
+      "before": "Animação didática com AI: de uma frase a vídeos com texto e números editáveis",
+      "after": "Animação didática com AI: texto e números editáveis"
+    }
+  },
+  "title_delta_review": {
+    "actual_source_title_read": "用 AI 做教學動畫：從一句話到能改字、改數字的成片",
+    "source_title_text_sha256": "4730c6b16c995104ddddff4de2110ee0bca3c8118419e80ae4ffcd418d676422",
+    "stored_source_title_hash": "4730c6b16c99",
+    "before": "Animação didática com AI: de uma frase a vídeos com texto e números editáveis",
+    "after": "Animação didática com AI: texto e números editáveis",
+    "chars": 51,
+    "max_chars": 72,
+    "preferred_max_chars": 70,
+    "budget_pass": true,
+    "meaning_verdict": "pass: preserves AI teaching animation and editable text/numbers; omits only the from-one-phrase setup; no added facts.",
+    "naturalness": "Natural Brazilian Portuguese.",
+    "meaning_issues": []
+  },
+  "unchanged_metadata_checks": {
+    "description": true,
+    "tags": true,
+    "chapters": true,
+    "thumbnail": true
+  },
+  "source_hashes_unchanged_against_snapshot": true,
+  "meaning_issues_found_in_current_deltas": [],
+  "meaning_issue_count": 0,
+  "budget_checks": {
+    "source_line_count": 101,
+    "translation_line_count": 101,
+    "budgeted_line_count": 101,
+    "pass_count": 101,
+    "over_budget_count": 0,
+    "worksheet_match_count": 101,
+    "per_line": [
+      {
+        "id": "e8b327",
+        "chars": 50,
+        "max_chars": 66,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "00aeec",
+        "chars": 55,
+        "max_chars": 78,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c5a4b1",
+        "chars": 48,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "74eeac",
+        "chars": 37,
+        "max_chars": 56,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "79a96a",
+        "chars": 57,
+        "max_chars": 86,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "aa0639",
+        "chars": 67,
+        "max_chars": 95,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c2d378",
+        "chars": 49,
+        "max_chars": 69,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "47c7d2",
+        "chars": 42,
+        "max_chars": 62,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "5a37fc",
+        "chars": 62,
+        "max_chars": 109,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "56c197",
+        "chars": 63,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "56ccfa",
+        "chars": 57,
+        "max_chars": 79,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1712ce",
+        "chars": 66,
+        "max_chars": 77,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "de0fb5",
+        "chars": 55,
+        "max_chars": 73,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "2c063b",
+        "chars": 60,
+        "max_chars": 92,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "5e5629",
+        "chars": 59,
+        "max_chars": 79,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "4a14bd",
+        "chars": 61,
+        "max_chars": 86,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "ea140a",
+        "chars": 57,
+        "max_chars": 78,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "21c1bc",
+        "chars": 65,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "8f5f2e",
+        "chars": 81,
+        "max_chars": 85,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "6b1614",
+        "chars": 54,
+        "max_chars": 75,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1832d2",
+        "chars": 45,
+        "max_chars": 61,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c141fc",
+        "chars": 41,
+        "max_chars": 62,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c5a99d",
+        "chars": 51,
+        "max_chars": 73,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "719e7c",
+        "chars": 56,
+        "max_chars": 75,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f2c1f3",
+        "chars": 49,
+        "max_chars": 66,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "475bb2",
+        "chars": 46,
+        "max_chars": 61,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "8a3f5b",
+        "chars": 61,
+        "max_chars": 84,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "520a3b",
+        "chars": 62,
+        "max_chars": 89,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "9dd115",
+        "chars": 79,
+        "max_chars": 105,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "0c086d",
+        "chars": 48,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "76fc63",
+        "chars": 63,
+        "max_chars": 91,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "066452",
+        "chars": 53,
+        "max_chars": 77,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "7b0c6d",
+        "chars": 62,
+        "max_chars": 90,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1f3f10",
+        "chars": 52,
+        "max_chars": 69,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "291f73",
+        "chars": 46,
+        "max_chars": 63,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "60d6c7",
+        "chars": 72,
+        "max_chars": 102,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "d27bc5",
+        "chars": 71,
+        "max_chars": 94,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "976818",
+        "chars": 66,
+        "max_chars": 90,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "b22122",
+        "chars": 63,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "182fcd",
+        "chars": 63,
+        "max_chars": 92,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "a2d3d8",
+        "chars": 67,
+        "max_chars": 89,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "b13c3e",
+        "chars": 65,
+        "max_chars": 89,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "5f446c",
+        "chars": 77,
+        "max_chars": 107,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f37b7f",
+        "chars": 58,
+        "max_chars": 88,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "801093",
+        "chars": 81,
+        "max_chars": 107,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "9aa7fd",
+        "chars": 78,
+        "max_chars": 85,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "2a7dbb",
+        "chars": 61,
+        "max_chars": 83,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "d6ecd3",
+        "chars": 66,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "5d4f54",
+        "chars": 62,
+        "max_chars": 83,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "cbba85",
+        "chars": 56,
+        "max_chars": 81,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1de727",
+        "chars": 76,
+        "max_chars": 77,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "0dd30b",
+        "chars": 60,
+        "max_chars": 87,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "52cf29",
+        "chars": 94,
+        "max_chars": 132,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "005752",
+        "chars": 83,
+        "max_chars": 121,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "7bf8fb",
+        "chars": 81,
+        "max_chars": 110,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "a1f88a",
+        "chars": 55,
+        "max_chars": 73,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "07771e",
+        "chars": 58,
+        "max_chars": 79,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "8eb4eb",
+        "chars": 43,
+        "max_chars": 69,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "05bc8a",
+        "chars": 61,
+        "max_chars": 83,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f6f6be",
+        "chars": 66,
+        "max_chars": 96,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "7a42ba",
+        "chars": 68,
+        "max_chars": 104,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "8c2bc9",
+        "chars": 60,
+        "max_chars": 87,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "de08dd",
+        "chars": 58,
+        "max_chars": 81,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c7b43e",
+        "chars": 60,
+        "max_chars": 87,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "7e3f75",
+        "chars": 74,
+        "max_chars": 98,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "594e82",
+        "chars": 60,
+        "max_chars": 89,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c30642",
+        "chars": 61,
+        "max_chars": 86,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1b4829",
+        "chars": 45,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "a49833",
+        "chars": 57,
+        "max_chars": 81,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "1faa10",
+        "chars": 54,
+        "max_chars": 76,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "b4de26",
+        "chars": 69,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "4df2bf",
+        "chars": 52,
+        "max_chars": 69,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c41135",
+        "chars": 55,
+        "max_chars": 76,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "802a26",
+        "chars": 70,
+        "max_chars": 114,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "bf54ca",
+        "chars": 63,
+        "max_chars": 98,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "ba0179",
+        "chars": 62,
+        "max_chars": 90,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "cab285",
+        "chars": 62,
+        "max_chars": 85,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "a6c28e",
+        "chars": 67,
+        "max_chars": 81,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "0b06d1",
+        "chars": 75,
+        "max_chars": 110,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "b919e0",
+        "chars": 56,
+        "max_chars": 75,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "ee8b7c",
+        "chars": 56,
+        "max_chars": 77,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "b69ae1",
+        "chars": 46,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "481fba",
+        "chars": 59,
+        "max_chars": 86,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "18691a",
+        "chars": 66,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "28a3eb",
+        "chars": 62,
+        "max_chars": 83,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "203f1e",
+        "chars": 58,
+        "max_chars": 79,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "7311eb",
+        "chars": 82,
+        "max_chars": 111,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "75368c",
+        "chars": 69,
+        "max_chars": 93,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "9d8939",
+        "chars": 68,
+        "max_chars": 95,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c38a5e",
+        "chars": 78,
+        "max_chars": 106,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "a56276",
+        "chars": 68,
+        "max_chars": 96,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "84576e",
+        "chars": 88,
+        "max_chars": 118,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "ad1b2c",
+        "chars": 83,
+        "max_chars": 115,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "d8b2ca",
+        "chars": 49,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "c90844",
+        "chars": 46,
+        "max_chars": 63,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f9399e",
+        "chars": 57,
+        "max_chars": 85,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "2506eb",
+        "chars": 66,
+        "max_chars": 88,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f064e3",
+        "chars": 76,
+        "max_chars": 107,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "f576ae",
+        "chars": 48,
+        "max_chars": 65,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "9e738a",
+        "chars": 57,
+        "max_chars": 58,
+        "pass": true,
+        "worksheet_matches": true
+      },
+      {
+        "id": "ed8308",
+        "chars": 56,
+        "max_chars": 82,
+        "pass": true,
+        "worksheet_matches": true
+      }
+    ]
+  },
+  "current_audio_failure_actually_read": {
+    "sole_flag_ids": [
+      "9e738a"
+    ],
+    "flag_note": "Jev 0.31: heard 「Qual ideia difícil de explicar mais quer animar? Comenta.」",
+    "line": {
+      "scene": "outro",
+      "clip": "866d91868c6e7759",
+      "terms": [
+        "Qual",
+        "ideia",
+        "dif",
+        "cil",
+        "de",
+        "explicar",
+        "mais",
+        "quer",
+        "animar",
+        "Comente"
+      ],
+      "heard": "Qual ideia difícil de explicar mais quer animar? Comenta.",
+      "noul": 0.31,
+      "intended": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "spoken_form": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "match_kind": null,
+      "match": false
+    },
+    "failed_status_retained": true,
+    "note": "Text fidelity passing does not change match:false or the failed native audio outcome. The existing intended Comente versus heard Comenta remains unresolved in the canonical production."
+  },
+  "owner_retry_proposal": {
+    "text": "Qual ideia difícil de explicar mais quer animar? Comenta.",
+    "canonical_application_status": "unapplied",
+    "prior_text_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.retry-one-text-review.json",
+    "not_audio_approval": true,
+    "note": "A text-only colloquial owner retry proposal exists; no real owner retry, marker clearing, counter reset, new synthesis, or old-WAV recheck was performed by this review."
+  },
+  "native_status_attribution": "Root reports native SKIPPED after capped retakes2/rewords2. This review independently read the actual failing line/check flags; it did not execute or alter the native state machine.",
+  "historical_fidelity_note": "The snapshot prompt719 omitted the drawing verb; current canonical explicitly repairs it. Earlier review coverage gap remains documented in pt.author-prompt-refinement-review.json.",
+  "upstream_c10_warning": "Resolved separately in claims-resolution.json; it does not imply audio approval.",
+  "side_effects": "Only pt.failed-dub-final-translation-review.json was written. No repository/source/canonical/worksheet edits, paid or network calls, audio approval, state reset, or retry-counter changes."
+}
