@@ -154,7 +154,7 @@
       "what": "「好白」是哪來的名字"
     },
     {
-      "setup": "sv230",
+      "setup": "sv228",
       "payoff": "sv301",
       "what": "別人怎麼寫他"
     },
@@ -253,7 +253,7 @@
       "lines": [
         {
           "id": "sv102",
-          "text": "可是「幸村」這兩個字是誰取的、哪一年開始叫的，沒有人說得準。",
+          "text": "可是「幸村」這兩個字是誰取的、哪一年開始叫的，三百年的紀錄翻下來，沒有一本說得準。",
           "emotion": "放慢，帶一點挑釁"
         }
       ]
@@ -370,7 +370,7 @@
       "lines": [
         {
           "id": "sv110",
-          "text": "這份檔案，從他親手簽的四封信，翻到三百年後的圖版。",
+          "text": "這份檔案，從他親手簽的四封信，一路翻到那張圖版。",
           "emotion": "承諾句，篤定"
         }
       ]
@@ -757,47 +757,16 @@
       ]
     },
     {
-      "id": "looks",
+      "id": "rampart",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a short, middle-aged samurai with a faint scar on his forehead and a topknot in a slate-blue kimono standing beside a much taller wooden clothes stand in a castle storeroom on an overcast day, looking up at it and shrugging toward the viewer, pale light from a high window",
+        "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono standing still on a castle walkway on a hazy morning, looking far off with a calm, quiet face, then turning at us",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "sv225",
-          "text": "順便說一句：你想像中的他，是不是遊戲裡那種高大的武將？",
-          "emotion": "對觀眾，帶笑"
-        }
-      ]
-    },
-    {
-      "id": "looks-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a short, middle-aged samurai with a faint scar on his forehead and a topknot in a slate-blue kimono, pointing at the scar with one finger and giving a modest smile to the front, soft grey daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sv226",
-          "text": "一本叫《長澤聞書》的見聞錄寫的是：看起來四十四五歲，額頭上一道疤，個子不高。"
-        }
-      ]
-    },
-    {
-      "id": "rampart",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono standing still on a castle walkway on a hazy morning, looking far off with a calm, quiet face, then turning at us",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sv227",
           "text": "寫給姊夫那封信之後不到兩個月，慶長二十年五月七日，他在大坂戰死。",
           "emotion": "低，平靜，一句帶過"
         }
@@ -808,12 +777,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young Sengoku foot soldier in his twenties in a plain cotton jacket and a cloth headband sitting on a wooden step inside a castle compound on a hazy morning, holding up a small blank wooden tablet shaped like a shogi piece with a proud, shy smile our way",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv228",
+          "id": "sv226",
           "text": "研究者指出，戰死前一天，他發給六名部下的獎狀，寫在像將棋棋子的小木片上；"
         }
       ]
@@ -823,12 +792,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Sengoku foot soldier in his twenties in a plain cotton jacket and a cloth headband standing by a castle storehouse wall on a hazy morning, cradling the little blank wooden tablet in both hands and beaming toward the viewer",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv229",
+          "id": "sv227",
           "text": "上面簽的，還是信繁。",
           "emotion": "短"
         }
@@ -839,12 +808,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face in a quiet library, resting her chin on one hand with a curious look to the front, soft daylight",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "sv230",
+          "id": "sv228",
           "text": "他自己寫的名字，就到這裡；那別人，怎麼寫他？",
           "emotion": "問句，停一拍"
         }
@@ -856,7 +825,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stern middle-aged daimyo with a small moustache in a dark formal robe seated under a plain canvas awning in a war camp on a grey day, writing on a blank sheet laid on a lap board and glancing up at us, light from the overcast sky on the left",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -872,7 +841,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a folded letter being pressed shut by a hand in a dark sleeve on a lap board, a small ink stone beside it, light from an overcast sky",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -888,7 +857,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stern middle-aged daimyo with a small moustache in a dark formal robe standing at the flap of a plain canvas tent on a grey day, holding two folded letters up side by side and looking at us, light from the overcast sky",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -903,7 +872,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori kneeling over a writing box in a plain chamber on an overcast day, brush raised over a blank sheet and glancing up at us with an eager look, light through a paper screen",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -919,7 +888,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori in a plain chamber on a cloudy day, folding a finished report shut with a serious nod our way, light through a paper screen",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -934,7 +903,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a lone mounted messenger in a straw hat on a muddy coastal road under a grey sky, a satchel at his hip, turning in the saddle to glance at the viewer, soft overcast light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -950,7 +919,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at a cluttered office desk on a rainy morning, frowning at the first page of a thick bound volume that faces away from us toward the viewer, cool window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -965,7 +934,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, tapping her pencil on a blank notepad with a frown of curiosity to the front, cool window light",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -981,7 +950,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin Edo clan clerk with a narrow face in a charcoal robe kneeling in a storeroom in the morning, laying a folded document into a plain wooden box and looking up at us, pale light from a high window",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -996,7 +965,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a thin Edo clan clerk with a narrow face in a charcoal robe in a storeroom in pale light, shrugging with both palms up beside the wooden box our way",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1011,7 +980,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a 1930s historian in a grey suit and round glasses at a crowded study desk on a rainy afternoon, holding a thick volume open toward himself and shaking his head slowly at us, cool window light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1026,7 +995,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori over his writing box in mild light, lifting his brush with an excited, wide-eyed look toward the viewer",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1058,7 +1027,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori beside his writing box in mild light, wagging one finger with a sly, knowing smile to the front",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1073,7 +1042,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori kneeling by a paper sliding door in a quiet room on an overcast day, cupping a hand to his ear to catch the talk, eyes sliding at us, soft light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1093,7 +1062,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori sitting back on his heels in a quiet chamber on a cloudy day, spreading his hands with a small shrug our way, light through a paper screen",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1108,7 +1077,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori in a quiet chamber on a cloudy day, holding up one finger beside a half-smile as if adding a last remark toward the viewer, light through a paper screen",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1124,7 +1093,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a cardigan at a kitchen table on a grey morning, reading a glowing phone with one eyebrow raised, a mug beside her, soft daylight from a window on the left",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1140,7 +1109,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a library alcove, lips pursed and eyes narrowed in thought toward the viewer, pale window light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1156,7 +1125,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stocky Satsuma retainer with thick eyebrows and a dark indigo haori over his writing box on an overcast morning, mouthing a name as he writes on a blank sheet, eyes on us to the front",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1171,7 +1140,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table, holding a magnifying glass over a thick old book whose pages face away from us and leaning in at us with wide eyes, pale window light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1192,7 +1161,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a library table in soft afternoon light, holding up two fingers with a puzzled smile our way",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1207,7 +1176,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin Edo clan clerk with a narrow face in a charcoal robe kneeling at a low desk on a rainy morning, copying from one folded document onto a blank sheet and pausing with a doubtful look toward the viewer, soft cool light",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1222,7 +1191,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a long library table on a grey afternoon, holding the thick old book open toward herself and frowning at one spot on the page with her pencil, pale window light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1238,7 +1207,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, chewing the end of a pencil with a puzzled look to the front, light from tall windows",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1255,7 +1224,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a tall bookcase in an archive in the morning, pulling out a thick old book with a plain cover and smiling at us, soft window light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1271,7 +1240,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim Kyoto scholar in a black robe with a shaved crown and a small topknot kneeling at a low desk in a Kyoto study on a mild spring day, brush poised over a blank sheet and looking up our way with a polite smile, light through a paper screen",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1288,7 +1257,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an old man with a white beard and a flat cap sitting on a park bench beside a teenage boy in a hoodie on a grey afternoon, the old man pointing at something far off while the boy looks at the viewer, soft overcast light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1320,7 +1289,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono kneeling in a castle hall on an overcast day, bowing his head respectfully to someone out of frame, then smiling toward the viewer, light through a paper screen",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1335,7 +1304,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono in a castle hall on an overcast day, lifting one open palm beside his face with a puzzled little smile at us, light through a paper screen",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1350,7 +1319,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, eyebrows raised high and one hand over her mouth to the front, pale daylight",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1371,7 +1340,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim Kyoto scholar in a black robe with a shaved crown and a small topknot kneeling in a Kyoto study at midday, holding out a folded sheet with both hands as if presenting it, bowing slightly at us, light through a paper screen",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1386,7 +1355,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an Edo copyist with a long chin in a faded brown robe kneeling at a low desk in a quiet room on an overcast day, tucking extra pages into a thick bound book and glancing up our way, light through a paper screen",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1406,7 +1375,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an Edo copyist with a long chin in a faded brown robe at a low desk on an overcast day, counting bound volumes stacked beside him with one finger and smiling our way, light through a paper screen",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1421,7 +1390,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a 1920s typesetter in shirtsleeves, a cloth cap and a dark apron at a plain wooden worktable by a window on a cloudy morning, holding up one small metal type piece between two fingers and grinning toward the viewer, soft window light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1436,7 +1405,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a 1920s typesetter in shirtsleeves and a cloth cap at a worktable by a window on a cloudy morning, spreading both inky hands apart with an apologetic shrug toward the viewer, soft window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1452,7 +1421,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses rising from a reading-room chair in the afternoon, one finger raised with a determined look to the front, soft daylight",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1468,7 +1437,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Edo lord with a short white beard and a deep plum haori sitting on a garden veranda on an overcast day, resting both hands on a walking stick with a dignified smile at us",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1485,7 +1454,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged Mito scholar with a neat topknot and a brown robe kneeling at a low desk in a study at midday, writing with a very fine brush on a blank sheet and glancing up our way with a careful little smile, gentle light through a paper screen",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1500,7 +1469,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Edo lord with a short white beard and a deep plum haori kneeling on tatami in a quiet hall in the morning, raising one hand as he tells a story, eyes twinkling toward the viewer, pale light through a paper screen",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1517,7 +1486,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a middle-aged Mito scholar with a neat topknot and a brown robe at a low desk in gentle light, holding a very fine brush close to a blank page with a concentrating squint to the front",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1549,7 +1518,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a middle-aged Mito scholar with a neat topknot and a brown robe in a study in mild afternoon light, pointing at himself with a modest, sheepish smile at us",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1566,7 +1535,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono sitting on a bench outside a tea house under a cloudy sky, telling a tale with a raised folding fan and a big grin our way",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1581,7 +1550,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a middle-aged Mito scholar with a neat topknot and a brown robe holding a page close to his face with narrowed eyes, the back of the page toward us, soft midday light through a paper screen",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1597,7 +1566,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, peering over her glasses with a suspicious little smile toward the viewer, pale light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1617,7 +1586,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly Kyoto essayist with a bald head and a pale blue robe kneeling in a small garden pavilion on a cloudy afternoon, writing in a slim notebook with a plain cover and chuckling to the front",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1634,7 +1603,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an elderly Kyoto essayist with a bald head and a pale blue robe in a garden pavilion on a cloudy afternoon, scratching his cheek with the end of a brush and squinting toward the viewer, soft daylight",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1650,7 +1619,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a study-room table in the afternoon, arms folded with a wry smile at us, gentle daylight",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1666,7 +1635,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face at a records-hall table, tapping a pencil against her lips with a thoughtful look our way, light from tall windows",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1683,7 +1652,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo kneeling at a low desk in a clan office in the late morning, opening a thick bound book whose pages face away from us and nodding toward the viewer, light through a paper screen",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1699,7 +1668,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo's hand running one finger down the back of a thick bound book on a low desk, a small brush beside it, pale light through a paper screen",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1714,7 +1683,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono sitting on the veranda of a small mountain house on an overcast day, holding up a small round clay jar with a hopeful grin to the front",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1745,7 +1714,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stern Edo inspector with heavy brows in a stiff black kamishimo standing at the gate of a clan residence on a cool overcast morning, hands behind his back and frowning at us",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1760,7 +1729,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a stern Edo inspector with heavy brows in a stiff black kamishimo in a reception room in pale light, raising one finger with a stern questioning look our way",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1776,7 +1745,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo at a low desk on an overcast morning, chin on his fist and eyes rolled upward in thought toward the viewer, light through a paper screen",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1792,7 +1761,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo kneeling at a low desk in a clan office on an overcast morning, pausing over a blank draft with a thoughtful frown toward the viewer, light through a paper screen",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1807,7 +1776,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo at a low desk on a cool morning, holding up two fingers with a cautious look to the front, pale light through a paper screen",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1822,7 +1791,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo at his desk in mild morning light, brush lifted and lips pressed together in worry at us",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1854,7 +1823,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo in a clan office on an overcast day, nodding firmly with his hands folded in his lap our way",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1873,7 +1842,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono kneeling at a writing table in a castle chamber in the afternoon, folding a finished letter shut and looking up toward the viewer with a calm face, soft window light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1889,7 +1858,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a short, middle-aged samurai with a faint thin scar on his forehead, a neat topknot and a slate-blue kimono in a castle chamber in mild light, holding a folded letter against his chest and giving a firm little nod to the front",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1904,7 +1873,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses at a study-room table on a grey afternoon, pressing two fingers to her temple with her eyes shut and a small frown, pale window light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1925,7 +1894,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a careful Edo clan retainer with a thin moustache in a slate-grey kamishimo at his desk in soft daylight, scratching his head with a sheepish grin at us",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1956,7 +1925,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, leaning forward with narrowed, curious eyes our way, pale window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1972,7 +1941,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a library table on an overcast afternoon, holding two folded papers side by side and shaking her head toward the viewer, soft daylight",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1987,7 +1956,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bakufu clerk in a black kamishimo kneeling before a tall stack of bound volumes in a government archive on a grey morning, running one finger down a blank page and nodding at us, pale light from a high window",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2004,7 +1973,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses standing at a tall shelf in an archive on a grey afternoon, holding one small pocket book and one thick bound volume side by side with a puzzled tilt of the head toward the viewer, pale window light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -2021,7 +1990,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Meiji street storyteller in a striped kimono standing on a low wooden stage under a cloth awning on an overcast day, one arm raised mid-tale and grinning at a crowd that is out of frame, soft daylight",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -2037,7 +2006,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young Meiji shop clerk in his twenties in a striped kimono and a canvas apron on the shop bench in mild light, holding the little pocket book up with an excited grin at us",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -2058,7 +2027,7 @@
       "lines": [
         {
           "id": "sv603",
-          "text": "定價二十五錢；同一份廣告上，第一編是《一休禪師》，第四編是《荒木又右衛門》，還有水戶黃門的故事。",
+          "text": "定價二十五錢；同一份廣告上，排在第一編的，是《一休禪師》。",
           "emotion": "輕快"
         }
       ]
@@ -2068,7 +2037,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man in a hoodie on a sofa on a grey afternoon, holding a small pocket book in one hand and a game controller in the other and laughing toward the viewer, soft daylight from a window on the left",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -2089,7 +2058,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Meiji shop clerk in his twenties in a striped kimono and a canvas apron walking down a busy Meiji street on an overcast day, the pocket book tucked under his arm, waving cheerfully our way",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -2104,7 +2073,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a busy Meiji street under a grey sky, a paper-shop front with blank hanging banners, one young clerk in a striped kimono running past with a stack of small books and glancing at the viewer, soft daylight",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2120,7 +2089,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at a wide oak desk in a university office in the afternoon, holding up a long folded sheet seen from the back and smiling proudly toward the viewer, soft window light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2140,7 +2109,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at his desk in mild afternoon light, writing a tiny note with a fountain pen in the margin of a book that faces away from us, holding back a laugh to the front",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -2156,7 +2125,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a Taisho-era historian's hand in a dark suit sleeve writing a tiny circle mark with a fountain pen in the blank margin of a wide open book on an oak desk, soft window light from the left",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -2177,7 +2146,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit at his oak desk on a grey afternoon, tapping one finger on the margin of an open book that faces away from us and raising his eyebrows at the viewer, pale window light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -2193,7 +2162,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a Taisho-era historian with round spectacles and a neat moustache in a dark three-piece suit standing at a tall bookcase in a university library on a grey afternoon, sliding a thick volume back into its row and nodding to the front, pale light from tall windows",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -2208,7 +2177,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly scholar with a white beard in a dark robe at a long table in a library on a grey afternoon, tracing a brush slowly over a sheet whose face is turned away from us, squinting toward the viewer, pale window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -2223,7 +2192,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an old sheet on a long library table with a brush resting across its blank back, an elderly hand in a dark sleeve pointing at one corner, pale window light from the left",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2238,7 +2207,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in soft daylight, resting her cheek on one hand with an amused smile at us",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2254,7 +2223,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a study-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look our way, pale window light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -2270,7 +2239,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug toward the viewer",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -2286,7 +2255,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a long library table on a calm overcast day, laying one hand flat on a manila folder with a quiet, sure smile to the front",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -2301,7 +2270,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling at us, soft window light",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
