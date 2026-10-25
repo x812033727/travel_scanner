@@ -44,7 +44,7 @@ metadata:
 | 情況 | 路線 | 怎麼做 |
 | --- | --- | --- |
 | **新的一集** | 主機可愛解說路線（預設） | 後台「影片審核 → 漫劇 → 新的漫劇」，風格選奇聞檔案局（`cute-mystery`），圖片模型自動是 `image-01`，長度 10 分鐘。工人照 `tools/video/automation/explainer-series.mjs` 的 MYSTERY 系列檔案寫聖經與稿子；`settle()` 會丟掉撰稿模型加的 `style`／`negative`；每張圖九題是非題評審；畫面多樣性 lint 也管。設計在 `docs/videos/explainer-route/DESIGN.md` |
-| **主機做的一集要用新規則重做**（站主在後台建立的 cute-mystery 單集，已可以上架或做到一半；2026-10-25 的開場五步、說給一個人聽等新規則） | 後台單集頁「重做」 | 伺服器放棄舊影片（工作區與已付費素材留著）、那一集回 `ready`、slug 加 `-redo1`，工人照核准的故事聖經、用現在的撰稿規則重寫劇本做一支新的（`docs/videos/BINGE.md` §重做一集）。要 13 分鐘先把單集的 `target_minutes` 改成 13。**本機做、`review-push` 推上站的集（S01–S40 這類有 `docs/videos/curio-*` 稿子的）沒有作品列，沒有這顆鈕**：用新規則整支重做走下一列（第一批是 PR #1844 的 `curio-h24` 與 `curio-s30-v2`） |
+| **主機做的一集要用新規則重做**（站主在後台建立的 cute-mystery 單集，已可以上架或做到一半；2026-10-25 的開場五步、說給一個人聽等新規則） | 後台單集頁「重做」 | 伺服器放棄舊影片（工作區與已付費素材留著）、那一集回 `ready`、slug 加 `-redo1`，工人照核准的故事聖經、用現在的撰稿規則重寫劇本做一支新的（`docs/videos/BINGE.md` §重做一集）。要 13 分鐘先把單集的 `target_minutes` 改成 13。**本機做、`review-push` 推上站的集（S01–S40 這類在 `docs/videos/` 底下有自己稿子資料夾的）沒有作品列，沒有這顆鈕**：用新規則整支重做走下一列（第一批是 PR #1844 的 `curio-h24` 與 `curio-s30-v2`） |
 | **重製本機做的一集**（改稿、改開場、換片頭片尾；或照 2026-10-25 新規則整支重寫 `video.json` 再重跑旁白與插圖） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
 | **主機不能用、要在本機從零做** | 本機漫劇格式 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`；`node tools/video/cli.mjs keyframes --slug <SLUG> --takes 3` 一次畫整集（不是一次三張） |
 
