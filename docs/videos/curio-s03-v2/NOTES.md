@@ -9,7 +9,7 @@
 - 產生器：`video.json` 由暫存目錄的 `build_s03_v2.py` 寫出（`/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s03/`）；
   改稿就改那份表再重跑，或直接改 `video.json`，再跑 `script --slug curio-s03-v2`。
 - 沒有生圖、沒有配音、沒有花錢、沒有連網站、沒有 commit。
-- **盲評待跑（主對話跑）**：這個環境沒有 Agent 工具，兩位讀者由主對話開；payload 已存在
+- **盲評已過（2026-10-25 主對話開兩位全新讀者各自只讀 payload：第 1 輪讀者 2 十三題全是，讀者 1 只有 no_recap 答否（sc096「你再看一次，就是沒有他」）；兩位同否才算沒過，第 1 輪通過、沒改稿；答案在 panel/，narrative --answers 已留紀錄）。原本的待跑說明：盲評待跑（主對話跑）**：這個環境沒有 Agent 工具，兩位讀者由主對話開；payload 已存在
   `/tmp/claude-0/-home-user-travel-scanner/da8d724d-688a-5de8-b279-1942feab337d/scratchpad/s03/payload-r1.json`
   （`narrative --slug curio-s03-v2 --json`）。合併規則照主機：同一題兩位都答否才算沒過；每一輪的答案留在同一個暫存目錄，最後一輪存進 `panel/`。
 
