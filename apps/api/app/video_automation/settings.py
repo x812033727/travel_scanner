@@ -50,6 +50,7 @@ from app.video_automation.schemas import (
 )
 from app.video_automation.usage import usage_view
 from app.video_media.catalog import MEDIA_VENDORS, MediaKind, find_model, media_options
+from app.video_media.judge import UNDESCRIBED
 from app.video_speech.gemini import GEMINI_TTS_MODELS, PREBUILT_VOICES
 
 # The stages run through the same vendor adapters as the news writer and verifier
@@ -74,6 +75,9 @@ AUTO_PICKED_LOOK_FALLBACK_NOTE = (
 LOOK_FALLBACK_SLACK = 2
 # A sheet with one of these faults is never picked: text on a sheet is carried into every
 # keyframe drawn from it (subject_reference), and a duplicated figure or broken hands too.
+# Only a described fault counts: when the judge failed the criterion without saying what or
+# where, app.video_media.judge writes its ``UNDESCRIBED`` placeholder into the line, and on
+# 2026-10-25 every sheet of a character carried such a ``clean:`` line, so none was eligible.
 LOOK_BLOCKING_PROBLEMS = ("no_text:", "clean:")
 LOOK_NOTHING_SKIPPED = "沒有略過任何一張"
 
@@ -660,7 +664,8 @@ def look_fallback_pick(
     """The sheet to pick when the judge suggested none (ticket 2026-10-25-judge-7-judge).
 
     Among ``payload["options"]`` the sheets whose ``judge.problems`` list nothing starting with
-    ``no_text:`` or ``clean:`` (``LOOK_BLOCKING_PROBLEMS``) are eligible; the highest
+    ``no_text:`` or ``clean:`` (``LOOK_BLOCKING_PROBLEMS``) are eligible, a placeholder line
+    the judge left undescribed (``UNDESCRIBED``) not counting; the highest
     ``judge.overall`` among them is picked when it is at least ``min_score`` less
     ``LOOK_FALLBACK_SLACK``. Returns ``(key, score, skipped)``, where ``skipped`` says which
     sheets were passed over and why, or None when no sheet qualifies and the owner decides.
@@ -685,7 +690,9 @@ def look_fallback_pick(
         blocking = [
             _fault(line)
             for line in (problems if isinstance(problems, list) else [])
-            if isinstance(line, str) and line.startswith(LOOK_BLOCKING_PROBLEMS)
+            if isinstance(line, str)
+            and line.startswith(LOOK_BLOCKING_PROBLEMS)
+            and UNDESCRIBED not in line
         ]
         if blocking:
             skipped.append(f"{key}（{'；'.join(blocking)}）")
