@@ -77,11 +77,11 @@ c33｜Brockman（OpenAI）：「one of the most severe bugs in open source softw
 - 事實：ncsc 引文改成 N 頁原句「…you should consider taking the system offline until it can be fully mitigated」。
 - 刪除：offline 卡與旁白 wnky 的 Internet Archive（查不到官方或可信來源）；卡片標題「10 月 21 日」→「10 月 21 日起」。
 - 措辭：engine c633「都有」→「都可能中」（W：can be vulnerable）；versions pacb「8.1 以前」→「8.1 以下」。
-- 標註：pm 卡片與旁白加「日本時間」；found 卡片 source 加 BBC 與 Brockman 的 X；說明欄的台灣數字改標 iThome 記者會報導、首相與 Prince 的數字改標 X 原貼文；sources 多兩筆（TX、PX）。
+- 標註：pm 卡片與旁白加「日本時間」；found 卡片 source 加 BBC 與 Brockman 的 X；說明欄的台灣數字改標 iThome 記者會報導、首相與 Prince 的數字改標 X 原貼文；sources 多一筆（TX；PX 只記在這裡，因為說明欄合成後有 5000 bytes 上限）。
 - 沒動：「Google 旗下的 Wiz」（wiz.io「Now part of Google Cloud」、收購 2026-03-11 完成）、「Ryan Austin 用 GPT-5.6 Sol」（Brockman 的 X＋F＋B2）、「十七日就記錄到一次攻擊嘗試」（AWS 原句）。
 - 與企劃不同：brief 寫「第一次外部安全稽核」與「前一晚日本首相…」，官方來源相反，照來源改；站主決定大綱是否仍成立。
 
 ## 進度
 
-- 41 景、92 句全部寫完；lint 0 錯誤、1 條有意保留的警告（outro 一句）。
-- 查核 1（2026-10-25）完成，事實改動超過三處，需要第二輪（verify-1.md）。
+- 41 景、92 句全部寫完；撰稿時記 lint 0 錯誤、1 條有意保留的警告（outro 一句）。
+- 查核 1（2026-10-25）：原稿 lint 其實有 1 個錯誤（說明欄合成後 5034 bytes，上限 5000），查核把五個 sources 標題縮短後 0 錯誤、2 條警告（92tm 41 單位、outro 一句）。事實改動超過三處，需要第二輪（verify-1.md）。
