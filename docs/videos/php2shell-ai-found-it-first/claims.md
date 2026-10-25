@@ -42,7 +42,7 @@ c20｜10/21 03:02 UTC 起 Cloudflare 的 WAF 對免費與付費方案預設保�
 c21｜10/21 07:41 UTC Chainguard 提前發布含修補的映像檔，比協調發布早六小時以上；「attacker could now study the fix in binary form」｜F｜2026-10-25｜timeline
 c22｜10/21 14:00 UTC 發布四個版本（AWS「The actual release of the embargo window was 2026-10-21 1400 UTC」；M「10 月 21 日晚間 10 時（台灣時間）」；J 引 Codmon：22:38 日本時間略早）｜AWS、M、WT、J｜2026-10-25｜timeline
 c23｜Cloudflare 執行長 Matthew Prince：公告前 10 小時數千次、45 分鐘後數萬次、兩小時內數十萬次、「millions now」；原貼文（PX）時間戳 2026-10-22 01:25:51 UTC，即發布後 11 小時 26 分、台灣時間 10/22 早上 9:25，所以「數百萬」是**不到半天**，不是「隔天」也不是「公告當天」（卡片、2fht、ksrk 已改）｜PX、B2、TT｜2026-10-25｜attempts, tw-order
-c24｜NCSC 頁本身的原句：「If you are unable to apply the temporary mitigations, or applying them would take too long, you should consider taking the system offline until it can be fully mitigated」；「Where immediate remediation is not feasible, organisations should consider…」是 B1 引述的版本，N 頁（2026-10-25 存檔）沒有這句，卡片引文已改成 N 頁原句；日本國家網路統括室：若來不及修補，暫停網站是降低風險的有效做法之一｜N、B1、J｜2026-10-25｜ncsc
+c24｜NCSC 頁本身的原句：「If you are unable to apply the temporary mitigations, or applying them would take too long, you should consider taking the system offline until it can be fully mitigated」；「Where immediate remediation is not feasible, organisations should consider…」是 B1 引述的版本，N 頁（2026-10-25 存檔）沒有這句，卡片引文已改成 N 頁原句；N 頁的順序是「更新 → 不能更新的用 PHP Foundation 的暫時緩解措施 → 無法套用暫時緩解措施、或套用要太久的，才考慮下線」，所以中譯與改寫句 vh8a 不能寫成「無法立即修補就下線」（查核 2 已改）；日本國家網路統括室：若來不及修補，暫停網站是降低風險的有效做法之一｜N、B1、J｜2026-10-25｜ncsc
 c25｜10/21 起自己停站：pixiv、DMM.com、niconico、BASE、Codmon、Shadowverse、Sakura Internet（J）；荷蘭 DigiD、國會下院 Tweede Kamer、國家資安中心自己的網站（B1；TT 只寫 Dutch websites）；芬蘭政府對外服務全部暫停（B1）；英國 32 個政府網站（B2：英國政府 10/22 週四公布「had been taken down」，下線日期不明，卡片標題改「10 月 21 日起」）；維基媒體多個系統（B1、B2、CNN）；**Internet Archive 短暫停機只在 Wikipedia，它引的 CNN 文（2026-10-25 抓）沒有這句，blog.archive.org 也沒有，已從卡片與旁白 wnky 刪掉**｜J、B1、B2、TT｜2026-10-25｜offline
 c26｜台灣資安署的順序：優先修補；無法立即升級先部署 WAF 等緩解；兩者都做不到才暫停對外服務（署長記者會）；新聞稿同樣呼籲儘速修補、無法修補時採取緩解措施｜I、M｜2026-10-25｜tw-order
 c27｜RUN：`php -v` → `PHP 8.3.6 (cli) (built: Oct 19 2026 15:16:58) (NTS)` 等四行；`dpkg-query` → `php8.3-cli 8.3.6-0ubuntu0.24.04.13`；changelog 前四行如卡片｜本機 2026-10-25｜2026-10-25｜phpv, dpkg, changelog
@@ -81,7 +81,15 @@ c33｜Brockman（OpenAI）：「one of the most severe bugs in open source softw
 - 沒動：「Google 旗下的 Wiz」（wiz.io「Now part of Google Cloud」、收購 2026-03-11 完成）、「Ryan Austin 用 GPT-5.6 Sol」（Brockman 的 X＋F＋B2）、「十七日就記錄到一次攻擊嘗試」（AWS 原句）。
 - 與企劃不同：brief 寫「第一次外部安全稽核」與「前一晚日本首相…」，官方來源相反，照來源改；站主決定大綱是否仍成立。
 
+## 查核 2（2026-10-25）改了什麼
+
+- 重查第 1 輪 CHANGED／NOT FOUND 的每一列、隨機三分之一的 CONFIRMED（種子 20261025：#5、#6、#11、#13、#14、#17、#20、#31、#32、#34、#37、#39、#48、#54）、三張 terminal 卡（本機重跑逐 byte 相同）、四句新旁白與三個 `translation`；第 1 輪的結論沒有一條被推翻（verify-2.md）。
+- 事實：ncsc 卡的 `translation`「無法立即修補的，應考慮先把系統下線…」→「無法套用暫時緩解措施、或套用要花太久的，應考慮先把系統下線，直到能完整緩解。」；旁白 vh8a「來不及修，就考慮先把系統下線。」→「修補、緩解都來不及，就考慮先把系統下線。」；keys[1] 同改。N 頁原句的條件是暫時緩解措施套不上或太慢，前一句把暫時緩解措施留給不能更新的人。
+- 沒動：Internet Archive 維持刪除（CNN、blog.archive.org、網搜都沒有）；其餘同第 1 輪的「沒動」清單。
+- lint 0 錯誤、2 條有意保留的警告；事實改動 1 處，不需要第三輪。
+
 ## 進度
 
 - 41 景、92 句全部寫完；撰稿時記 lint 0 錯誤、1 條有意保留的警告（outro 一句）。
 - 查核 1（2026-10-25）：原稿 lint 其實有 1 個錯誤（說明欄合成後 5034 bytes，上限 5000），查核把五個 sources 標題縮短後 0 錯誤、2 條警告（92tm 41 單位、outro 一句）。事實改動超過三處，需要第二輪（verify-1.md）。
+- 查核 2（2026-10-25）：34 列重查，CONFIRMED 31、CHANGED 1（ncsc 中譯與 vh8a）、NOT FOUND 1（Internet Archive，維持刪除）、OUT OF SCOPE 1；lint 0 錯誤、2 條警告；不需要第三輪（verify-2.md）。
