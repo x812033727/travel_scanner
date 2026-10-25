@@ -1,0 +1,2068 @@
+{
+  "schema_version": 1,
+  "slug": "forty-forest-map",
+  "format": "slides",
+  "theme": "paper",
+  "category": "ai-news",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Google ForTy 森林地圖：兩個台灣像素，算出六類結果",
+    "description": "兩個台灣真實像素，算出ForTy的六類土地結果；六類包含OtherLand（其他土地）。\n給想讀懂AI地圖輸出、沒讀過遙測檔案的你，跟著完整值、補數與除法完成像素紀錄。\n\n實算使用Forest Typology 2020 (v1)。2026年10月研究介紹分享的2017–2025早期年度序列另行區分；B是刻意挑選的低分閱讀例，不是精度抽樣。\n\n資料：Neumann等（2026），Forest Typology 2020 (v1)。\nDOI：https://api.figshare.com/v2/articles/32288616/versions/1\nDOI：10.25452/figshare.plus.32288616.v1\n授權CC BY 4.0：https://creativecommons.org/licenses/by/4.0/\n本片改作：裁切、補數推導、取首分類與重繪。圖表沒有使用衛星底圖。\n\n本片資料包（原始值、座標與選樣規則）：https://github.com/x812033727/travel_scanner/tree/e0c70c899/docs/videos/forty-forest-map/data",
+    "tags": [
+      "ForTy",
+      "Google AI",
+      "森林地圖",
+      "AlphaEarth",
+      "衛星資料",
+      "AI 科技",
+      "自然更新林"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**綠色**\n還藏什麼",
+      "tag": "ForTy 真實像素",
+      "sub": "五個值，六類結果",
+      "asset": "docs/videos/forty-forest-map/assets/thumbnail-grid.png"
+    }
+  },
+  "sources": [
+    {
+      "title": "DeepMind：Beyond tree cover",
+      "url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "ForTy 2020 v1.0 官方資料目錄",
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/projects_nature-trace_assets_forest_typology_forest_typology_2020_v1_0_collection",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Forest Typology 2020 v1：資料metadata",
+      "url": "https://api.figshare.com/v2/articles/32288616",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Scientific Data：出版metadata與摘要",
+      "url": "https://www.nature.com/articles/s41597-026-08299-5",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "本次兩ROI的公開原始COG",
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/forty-forest-map/assets/roi-a-grid.svg",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair衍生圖",
+      "license": "CC BY 4.0；改作：裁切、補數、取首分類、重繪",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    },
+    {
+      "path": "docs/videos/forty-forest-map/assets/roi-b-grid.svg",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair衍生圖",
+      "license": "CC BY 4.0；改作：裁切、補數、取首分類、重繪",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    },
+    {
+      "path": "docs/videos/forty-forest-map/assets/roi-a-scores.svg",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair衍生圖",
+      "license": "CC BY 4.0；改作：裁切、補數、取首分類、重繪",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    },
+    {
+      "path": "docs/videos/forty-forest-map/assets/roi-b-scores.svg",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair衍生圖",
+      "license": "CC BY 4.0；改作：裁切、補數、取首分類、重繪",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    },
+    {
+      "path": "docs/videos/forty-forest-map/assets/pixel-comparison.svg",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair衍生圖",
+      "license": "CC BY 4.0；改作：裁切、補數、取首分類、重繪",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    },
+    {
+      "path": "docs/videos/forty-forest-map/assets/thumbnail-grid.png",
+      "source": "Neumann等（2026），Forest Typology 2020 (v1)；Mokaair縮圖資料圖",
+      "license": "CC BY 4.0；改作：兩處取樣裁切、補數、取首分類、重繪與透明排版",
+      "author": "Neumann et al. (2026); Mokaair衍生圖",
+      "url": "https://api.figshare.com/v2/articles/32288616/versions/1"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "first-grid",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/roi-a-grid.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "2020模型輸出，從這一格開始"
+      },
+      "lines": [
+        {
+          "id": "8aw6",
+          "text": "我從二〇二〇年的台灣資料，取出這個ForTy綠格。",
+          "emotion": "像帶觀眾看手邊剛取出的資料，自然清楚"
+        }
+      ],
+      "claims": [
+        "c1"
+      ],
+      "chapter": "讀出一個台灣綠格"
+    },
+    {
+      "id": "first-label",
+      "template": "big",
+      "data": {
+        "text": "六類，只有五個值？",
+        "key": "第六類的值，放在哪裡"
+      },
+      "lines": [
+        {
+          "id": "gngj",
+          "text": "地圖分六類，為什麼只存五個值？",
+          "emotion": "真有疑問，尾音輕輕上揚"
+        }
+      ],
+      "claims": [
+        "c2"
+      ]
+    },
+    {
+      "id": "viewer-question",
+      "template": "big",
+      "data": {
+        "text": "248是什麼單位？",
+        "key": "先不替數字補上意義"
+      },
+      "lines": [
+        {
+          "id": "ep85",
+          "text": "裡面的兩百四十八，到底是什麼單位？",
+          "emotion": "對著一個具體數字問，不故作懸疑"
+        }
+      ],
+      "claims": [
+        "c3"
+      ]
+    },
+    {
+      "id": "read-more",
+      "template": "big",
+      "data": {
+        "text": "同樣綠，結果相同？",
+        "key": "同一份資料裡的另一個實際輸出"
+      },
+      "lines": [
+        {
+          "id": "jw6i",
+          "text": "另一個像素同樣是綠色，讀出的結果也會一樣嗎？",
+          "emotion": "保持好奇，停在問句"
+        }
+      ],
+      "claims": [
+        "c4"
+      ]
+    },
+    {
+      "id": "one-promise",
+      "template": "big",
+      "data": {
+        "text": "本週ForTy研究消息",
+        "key": "從兩個真實格子讀起",
+        "kicker": "DeepMind｜2026-10-22介紹"
+      },
+      "lines": [
+        {
+          "id": "5ur9",
+          "text": "本週DeepMind介紹ForTy，就從這兩格讀起。",
+          "emotion": "短短接上新聞，立刻回到手邊的格子"
+        }
+      ],
+      "claims": [
+        "c5"
+      ]
+    },
+    {
+      "id": "label-meaning",
+      "template": "big",
+      "data": {
+        "text": "樹怎麼長成，用來做什麼",
+        "key": "六類分的，是形成方式與用途"
+      },
+      "lines": [
+        {
+          "id": "m2p6",
+          "text": "這個綠格要讀的不只有樹，還有它們如何長成、用來做什麼。",
+          "emotion": "接著手邊的格子，像把問題說白"
+        }
+      ],
+      "claims": [
+        "c6"
+      ],
+      "chapter": "把綠色對回六種類型"
+    },
+    {
+      "id": "primary-definition",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "形成與歷史"
+        ],
+        "rows": [
+          [
+            "1",
+            "原始林",
+            "原生樹種；無可見人為干擾"
+          ]
+        ],
+        "key": "PrimaryForest",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "自然形成的兩種類別"
+      },
+      "lines": [
+        {
+          "id": "erqz",
+          "text": "先看原始林，它要求原生樹種，沒有可見人為干擾。"
+        }
+      ],
+      "claims": [
+        "c7"
+      ]
+    },
+    {
+      "id": "regeneration-definition",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "形成與歷史"
+        ],
+        "rows": [
+          [
+            "2",
+            "自然更新林",
+            "自然長回；包括恢復中的次生林"
+          ]
+        ],
+        "key": "自然更新林，以自然長回為主",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "自然形成的兩種類別"
+      },
+      "lines": [
+        {
+          "id": "t4w3",
+          "text": "自然更新林則以自然長回來為主，也含恢復中的次生林。",
+          "emotion": "和上一類拉出差別，自然地說"
+        }
+      ],
+      "claims": [
+        "c8"
+      ]
+    },
+    {
+      "id": "planted-question",
+      "template": "big",
+      "data": {
+        "text": "人種的，又怎麼分？",
+        "key": "分類還要讀經營方式"
+      },
+      "lines": [
+        {
+          "id": "66nz",
+          "text": "如果森林是人種的，又要怎麼放進這張表？",
+          "emotion": "疑問上揚，讓觀眾跟著想"
+        }
+      ],
+      "claims": [
+        "c9"
+      ]
+    },
+    {
+      "id": "planted-origin",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "建立方式"
+        ],
+        "rows": [
+          [
+            "3",
+            "人工栽植林",
+            "栽植或播種；輪伐期>40年"
+          ]
+        ],
+        "key": "人工建立；本資料採超過40年條件",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "人工建立的森林"
+      },
+      "lines": [
+        {
+          "id": "3pse",
+          "text": "人工栽植林主要靠栽植或播種，這份資料的輪伐期條件是超過四十年。"
+        }
+      ],
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "id": "rotation-meaning",
+      "template": "big",
+      "data": {
+        "text": "輪伐期，看經營週期",
+        "key": "種植到再次採收的安排"
+      },
+      "lines": [
+        {
+          "id": "v9fh",
+          "text": "輪伐期說的是從種下、經營到再次採收的安排，和這棵樹現在幾歲不同。",
+          "emotion": "用白話拆開術語，語氣放鬆"
+        }
+      ],
+      "claims": [
+        "c11"
+      ]
+    },
+    {
+      "id": "plantation-pattern",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "常見特徵"
+        ],
+        "rows": [
+          [
+            "4",
+            "林木種植園",
+            "少數樹種；同齡；規則間距"
+          ]
+        ],
+        "key": "PlantationForest",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "集約經營的類型"
+      },
+      "lines": [
+        {
+          "id": "7id9",
+          "text": "林木種植園的經營更密集，常有少數樹種、同齡和規則間距。"
+        }
+      ],
+      "claims": [
+        "c12"
+      ]
+    },
+    {
+      "id": "plantation-cycle",
+      "template": "big",
+      "data": {
+        "text": "40年或以下",
+        "key": "同一套資料，另一側的輪伐條件",
+        "kicker": "林木種植園"
+      },
+      "lines": [
+        {
+          "id": "2vcb",
+          "text": "它採用的輪伐期條件，是四十年或以下。",
+          "emotion": "平穩強調或以下"
+        }
+      ],
+      "claims": [
+        "c13"
+      ]
+    },
+    {
+      "id": "tree-crop-definition",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "例子"
+        ],
+        "rows": [
+          [
+            "5",
+            "樹木作物與農林複合",
+            "油棕等；生產非木材農產品"
+          ]
+        ],
+        "key": "TreeCropsAndAgroforestry",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "有樹的農業系統"
+      },
+      "lines": [
+        {
+          "id": "yiya",
+          "text": "樹木作物與農林複合，包含油棕、橡膠、果園，生產的是非木材農產品。",
+          "emotion": "像補上大家熟悉的一類"
+        }
+      ],
+      "claims": [
+        "c14"
+      ]
+    },
+    {
+      "id": "other-definition",
+      "template": "table",
+      "data": {
+        "columns": [
+          "ID",
+          "類名",
+          "包含範圍"
+        ],
+        "rows": [
+          [
+            "6",
+            "其他土地",
+            "城市樹木、稀疏木本等"
+          ]
+        ],
+        "key": "OtherLand",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "最後一類也可能有樹"
+      },
+      "lines": [
+        {
+          "id": "rrgq",
+          "text": "剩下的其他土地，也可能包括城市樹木或稀疏木本。",
+          "emotion": "其他兩字別唸成沒有"
+        }
+      ],
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "id": "keep-order",
+      "template": "big",
+      "data": {
+        "text": "把六類順序固定",
+        "key": "後面每個數，都要對回類名"
+      },
+      "lines": [
+        {
+          "id": "fbc5",
+          "text": "這六類各有固定位置，讀數值時要連著名稱一起看。"
+        }
+      ],
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "id": "signal-question",
+      "template": "big",
+      "data": {
+        "text": "衛星看得出差別？",
+        "key": "模型需要哪些可觀測線索"
+      },
+      "lines": [
+        {
+          "id": "gsa7",
+          "text": "可是隔著衛星影像，模型能從哪裡讀出這些差別？",
+          "emotion": "帶好奇，稍微放慢問句"
+        }
+      ],
+      "claims": [
+        "c17"
+      ]
+    },
+    {
+      "id": "alphaearth-input",
+      "template": "big",
+      "data": {
+        "text": "多年觀測的表示",
+        "key": "AlphaEarth｜重要輸入之一",
+        "sub": "重要輸入之一：把多年觀測整理為模型可用特徵"
+      },
+      "lines": [
+        {
+          "id": "9wmz",
+          "text": "AlphaEarth先把多年衛星觀測整理成一組數字。"
+        }
+      ],
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "id": "signal-chain",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "衛星觀測",
+            "detail": "結構、季節與生長線索"
+          },
+          {
+            "title": "ForTy分類",
+            "detail": "利用表示推測類型"
+          }
+        ],
+        "key": "觀測線索，走向類別分數",
+        "source": "DeepMind研究介紹｜2026-10-22"
+      },
+      "lines": [
+        {
+          "id": "jkby",
+          "text": "ForTy使用這些數字，辨認種植形狀、季節和生長週期的線索。",
+          "emotion": "順著因果往前說",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c19"
+      ]
+    },
+    {
+      "id": "training-reference",
+      "template": "big",
+      "data": {
+        "text": "線索需要參考答案",
+        "key": "標註地點，把訊號對回類型"
+      },
+      "lines": [
+        {
+          "id": "5nt9",
+          "text": "訓練還要搭配專家與區域資料標記的地點，讓觀測線索對回土地類型。"
+        }
+      ],
+      "claims": [
+        "c20"
+      ]
+    },
+    {
+      "id": "stored-question",
+      "template": "big",
+      "data": {
+        "text": "分數藏在五個整數裡",
+        "key": "同一格，開始拆開資料"
+      },
+      "lines": [
+        {
+          "id": "m8cb",
+          "text": "這個綠格的五個整數，就裝著這些類別的模型分數。"
+        }
+      ],
+      "claims": [
+        "c21"
+      ]
+    },
+    {
+      "id": "pixel-record",
+      "template": "table",
+      "data": {
+        "columns": [
+          "欄位",
+          "A格輸入"
+        ],
+        "rows": [
+          [
+            "資料年",
+            "2020 v1"
+          ],
+          [
+            "位置",
+            "121.4°E，24.7°N"
+          ]
+        ],
+        "key": "年份與位置，和數值一起保存",
+        "source": "2020公開資料實算｜2026-10-25｜A格",
+        "title": "先把位置留在紀錄"
+      },
+      "lines": [
+        {
+          "id": "p2ry",
+          "text": "要找對這五個值，得先確認資料年份和位置。",
+          "emotion": "直接接著找這一格的值"
+        }
+      ],
+      "claims": [
+        "c22"
+      ],
+      "chapter": "找到指定格的五個值"
+    },
+    {
+      "id": "requested-coordinate",
+      "template": "big",
+      "data": {
+        "text": "121.4°E，24.7°N",
+        "key": "定位A格的請求座標",
+        "kicker": "A格｜真實輸入"
+      },
+      "lines": [
+        {
+          "id": "u5js",
+          "text": "位置用東經一百二十一點四、北緯二十四點七。"
+        }
+      ],
+      "claims": [
+        "c23"
+      ]
+    },
+    {
+      "id": "a-window",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/roi-a-grid.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "紅框是指定格，並非整個窗口"
+      },
+      "lines": [
+        {
+          "id": "7732",
+          "text": "指定格周圍取十乘十格，紅框只標出我們要算的那一格。",
+          "emotion": "紅框處稍作強調"
+        }
+      ],
+      "claims": [
+        "c24"
+      ]
+    },
+    {
+      "id": "grid-scale",
+      "template": "big",
+      "data": {
+        "text": "10公尺網格",
+        "key": "這是輸出格網的名目尺度"
+      },
+      "lines": [
+        {
+          "id": "yi97",
+          "text": "十公尺網格是輸出尺度，不是每棵樹的定位清單。"
+        }
+      ],
+      "claims": [
+        "c25"
+      ]
+    },
+    {
+      "id": "band-order",
+      "template": "table",
+      "data": {
+        "columns": [
+          "位置",
+          "對應類別"
+        ],
+        "rows": [
+          [
+            "1／2",
+            "原始林／自然更新林"
+          ],
+          [
+            "3／4",
+            "人工栽植林／林木種植園"
+          ],
+          [
+            "5",
+            "樹木作物與農林複合"
+          ]
+        ],
+        "key": "先固定順序，再讀五個值",
+        "source": "官方資料目錄｜2026-10-25",
+        "title": "前五類依序對應"
+      },
+      "lines": [
+        {
+          "id": "2k27",
+          "text": "讀值時把固定類別名放在旁邊，數字就不會換到其他類。"
+        }
+      ],
+      "claims": [
+        "c26"
+      ]
+    },
+    {
+      "id": "valid-or-missing",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "0–250",
+          "points": [
+            "有效儲存值",
+            "零也有意義"
+          ]
+        },
+        "right": {
+          "heading": "255",
+          "points": [
+            "無資料記號",
+            "排除後再計算"
+          ]
+        },
+        "key": "零是有效值；255是無資料",
+        "source": "2020公開資料實算｜2026-10-25｜A格"
+      },
+      "lines": [
+        {
+          "id": "vk36",
+          "text": "六類的值合計兩百五十，兩百五十五另作無資料記號。",
+          "emotion": "總量與無資料兩種角色分清楚",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c27"
+      ]
+    },
+    {
+      "id": "missing-action",
+      "template": "big",
+      "data": {
+        "text": "無資料就先停下",
+        "key": "不要把255帶進補數算式"
+      },
+      "lines": [
+        {
+          "id": "gfes",
+          "text": "遇到無資料記號就先排除那一格，不把它當成分數。"
+        }
+      ],
+      "claims": [
+        "c28"
+      ]
+    },
+    {
+      "id": "a-valid",
+      "template": "big",
+      "data": {
+        "text": "五個值都有資料",
+        "key": "指定格可以進入實算"
+      },
+      "lines": [
+        {
+          "id": "e826",
+          "text": "這一格的五個值都有效，可以補出其他土地，然後比較六類。",
+          "emotion": "輕快地確認，可以往下走"
+        }
+      ],
+      "claims": [
+        "c29"
+      ]
+    },
+    {
+      "id": "keep-value-label",
+      "template": "big",
+      "data": {
+        "text": "數字和欄位一起讀",
+        "key": "不要把248移到別的類別"
+      },
+      "lines": [
+        {
+          "id": "svhy",
+          "text": "欄位名稱要跟著值走，單看一串數字分不出是哪一類。",
+          "emotion": "像提醒手邊的操作，別嚴肅訓話"
+        }
+      ],
+      "claims": [
+        "c30"
+      ]
+    },
+    {
+      "id": "sixth-value-question",
+      "template": "big",
+      "data": {
+        "text": "第六類在哪裡？",
+        "key": "表有六類，檔案只存五值"
+      },
+      "lines": [
+        {
+          "id": "3gwz",
+          "text": "開頭少掉的第六類，要怎麼補回這張表？",
+          "emotion": "點名開頭的缺口，接著要動手算"
+        }
+      ],
+      "claims": [
+        "c31"
+      ]
+    },
+    {
+      "id": "residual-rule",
+      "template": "big",
+      "data": {
+        "text": "250−前五類總和",
+        "key": "其他土地，用補數取得"
+      },
+      "lines": [
+        {
+          "id": "7iv8",
+          "text": "第六類留在總量裡，用兩百五十扣回來。",
+          "emotion": "像解開剛才的問題，語氣亮一點"
+        }
+      ],
+      "claims": [
+        "c32"
+      ],
+      "chapter": "補出第六類，選出最高"
+    },
+    {
+      "id": "a-five-input",
+      "template": "table",
+      "data": {
+        "columns": [
+          "原始林",
+          "自然更新",
+          "人工栽植",
+          "種植園",
+          "樹作農林"
+        ],
+        "rows": [
+          [
+            "0",
+            "248",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "key": "五個儲存值，依官方順序",
+        "source": "2020公開資料實算｜2026-10-25｜A格",
+        "title": "A格的五個真實值"
+      },
+      "lines": [
+        {
+          "id": "bxdi",
+          "text": "這格五個值依序是零、兩百四十八、零、零、零。"
+        }
+      ],
+      "claims": [
+        "c33"
+      ]
+    },
+    {
+      "id": "stored-value-meaning",
+      "template": "big",
+      "data": {
+        "text": "248是縮放儲存的分數值",
+        "key": "不是棵數，也不是平方公尺"
+      },
+      "lines": [
+        {
+          "id": "anxa",
+          "text": "兩百四十八是縮放儲存的分數值，不是樹木棵數，也不是平方公尺。",
+          "emotion": "把單位說清楚，像解開開頭那個數字"
+        }
+      ],
+      "claims": [
+        "c34"
+      ]
+    },
+    {
+      "id": "a-sum",
+      "template": "big",
+      "data": {
+        "text": "0+248+0+0+0=248",
+        "key": "先把A格的五個值相加",
+        "kicker": "A格｜加總"
+      },
+      "lines": [
+        {
+          "id": "up9r",
+          "text": "其中兩百四十八是自然更新林，其餘四類為零，總和就是兩百四十八。"
+        }
+      ],
+      "claims": [
+        "c35"
+      ]
+    },
+    {
+      "id": "a-other",
+      "template": "big",
+      "data": {
+        "text": "250−248=2",
+        "key": "A格的其他土地，補回2",
+        "kicker": "A格｜補數"
+      },
+      "lines": [
+        {
+          "id": "3p97",
+          "text": "兩百五十減兩百四十八，其他土地得到二。",
+          "emotion": "算式均勻說，答案二稍加重"
+        }
+      ],
+      "claims": [
+        "c36"
+      ]
+    },
+    {
+      "id": "six-value-check",
+      "template": "big",
+      "data": {
+        "text": "補完，再檢查總量",
+        "key": "六值有效，而且加總回到250"
+      },
+      "lines": [
+        {
+          "id": "4av2",
+          "text": "補完後先檢查，六個值都要在零到兩百五十之間，總和也要回到兩百五十。"
+        }
+      ],
+      "claims": [
+        "c37"
+      ]
+    },
+    {
+      "id": "normalization-rule",
+      "template": "big",
+      "data": {
+        "text": "每一項÷250",
+        "key": "把儲存值放到0–1刻度"
+      },
+      "lines": [
+        {
+          "id": "8hpb",
+          "text": "這些儲存值，要怎麼換成零到一的模型分數？",
+          "emotion": "帶著觀眾的下一個疑問，尾音上揚"
+        }
+      ],
+      "claims": [
+        "c38"
+      ]
+    },
+    {
+      "id": "a-regeneration-score",
+      "template": "big",
+      "data": {
+        "text": "248÷250=0.992",
+        "key": "A格｜自然更新林"
+      },
+      "lines": [
+        {
+          "id": "ywu9",
+          "text": "每一項都除以兩百五十；自然更新的森林這一類，兩百四十八就得到零點九九二。",
+          "emotion": "小數逐位清楚，結尾輕落"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "a-other-score",
+      "template": "big",
+      "data": {
+        "text": "2÷250=0.008",
+        "key": "A格｜其他土地"
+      },
+      "lines": [
+        {
+          "id": "u362",
+          "text": "其他土地的二，除完是零點零零八。"
+        }
+      ],
+      "claims": [
+        "c40"
+      ]
+    },
+    {
+      "id": "a-zero-scores",
+      "template": "table",
+      "data": {
+        "columns": [
+          "類別",
+          "分數"
+        ],
+        "rows": [
+          [
+            "原始林",
+            "0"
+          ],
+          [
+            "人工栽植林",
+            "0"
+          ],
+          [
+            "林木種植園",
+            "0"
+          ],
+          [
+            "樹木作物與農林複合",
+            "0"
+          ]
+        ],
+        "key": "這一格，其餘四類都是零",
+        "source": "2020公開資料實算｜2026-10-25｜A格",
+        "title": "A格的其餘四類"
+      },
+      "lines": [
+        {
+          "id": "eym7",
+          "text": "其餘四類的儲存值是零，換成分數也都是零。",
+          "emotion": "類名穩定，不唸成趕清單"
+        }
+      ],
+      "claims": [
+        "c41"
+      ]
+    },
+    {
+      "id": "a-total",
+      "template": "big",
+      "data": {
+        "text": "0.992+0.008=1",
+        "key": "六類分數，共用同一總量"
+      },
+      "lines": [
+        {
+          "id": "k3i2",
+          "text": "把六項分數加起來，剛好是一。"
+        }
+      ],
+      "claims": [
+        "c42"
+      ]
+    },
+    {
+      "id": "shared-total",
+      "template": "big",
+      "data": {
+        "text": "一個總量的拆分",
+        "key": "類別之間，要一起讀"
+      },
+      "lines": [
+        {
+          "id": "p9sg",
+          "text": "這是同一個總量的拆分，不是六次互不相關的打分。",
+          "emotion": "拆分兩字稍加重"
+        }
+      ],
+      "claims": [
+        "c43"
+      ]
+    },
+    {
+      "id": "a-unique",
+      "template": "big",
+      "data": {
+        "text": "唯一最高：自然更新林",
+        "key": "A格的分數，只有一個最大者"
+      },
+      "lines": [
+        {
+          "id": "dkq3",
+          "text": "比較這六項，只有自然更新的森林這一類，分數最高。",
+          "emotion": "結果乾脆，不拖尾"
+        }
+      ],
+      "claims": [
+        "c44"
+      ]
+    },
+    {
+      "id": "a-score-result",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/roi-a-scores.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "取最大值，得到A格的衍生類別"
+      },
+      "lines": [
+        {
+          "id": "w86h",
+          "text": "選最大值來畫分類，紅框格就呈現它的綠色。"
+        }
+      ],
+      "claims": [
+        "c45"
+      ]
+    },
+    {
+      "id": "argmax-action",
+      "template": "big",
+      "data": {
+        "text": "選出類別，留下分數",
+        "key": "取最大值是顯示時的一個選擇"
+      },
+      "lines": [
+        {
+          "id": "wh49",
+          "text": "這個動作叫取最大值，選的是類別，不會留下所有分數。",
+          "emotion": "先把選擇講明，不加神祕感"
+        }
+      ],
+      "claims": [
+        "c46"
+      ]
+    },
+    {
+      "id": "a-annotation",
+      "template": "table",
+      "data": {
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "結果",
+            "自然更新林唯一最高"
+          ],
+          [
+            "分數",
+            "0.992；完整六分數附後"
+          ]
+        ],
+        "key": "類名、最高者、完整分數一起留",
+        "source": "2020公開資料實算｜2026-10-25｜A格",
+        "title": "把A格寫成可用紀錄"
+      },
+      "lines": [
+        {
+          "id": "6ybg",
+          "text": "所以紀錄上要寫，自然更新的森林這一類單獨最高，並附上完整六個分數。"
+        }
+      ],
+      "claims": [
+        "c47"
+      ]
+    },
+    {
+      "id": "a-simple-expanded",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "只看色塊",
+          "points": [
+            "讀到一個類名"
+          ]
+        },
+        "right": {
+          "heading": "展開同一格的值",
+          "points": [
+            "讀到六類分數分布"
+          ]
+        },
+        "key": "同一個輸入，展開被色塊省略的資訊",
+        "source": "2020公開資料實算｜2026-10-25｜A格"
+      },
+      "lines": [
+        {
+          "id": "xxju",
+          "text": "只看綠格能讀類名，展開數值才知道這格的分布。",
+          "emotion": "像告訴觀眾現在多拿到了什麼",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c48"
+      ]
+    },
+    {
+      "id": "b-forward",
+      "template": "big",
+      "data": {
+        "text": "另一格，也這麼明確？",
+        "key": "同一份資料，換一個實際輸出"
+      },
+      "lines": [
+        {
+          "id": "endc",
+          "text": "另一個同來源格子，也能這樣乾脆地選出來嗎？",
+          "emotion": "好奇上揚，停在問句"
+        }
+      ],
+      "claims": [
+        "c49"
+      ]
+    },
+    {
+      "id": "b-selected-grid",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/roi-b-grid.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "B格｜刻意選低最大分數的閱讀例"
+      },
+      "lines": [
+        {
+          "id": "appe",
+          "text": "換到同一區塊的另一格，這次刻意挑最高分最低的位置。",
+          "emotion": "刻意挑清楚說，維持輕鬆口吻"
+        }
+      ],
+      "claims": [
+        "c50"
+      ],
+      "chapter": "換一格，再算六類分數"
+    },
+    {
+      "id": "b-selection-purpose",
+      "template": "big",
+      "data": {
+        "text": "刻意選樣，練習讀分數",
+        "key": "B不是隨機精度樣本"
+      },
+      "lines": [
+        {
+          "id": "beg8",
+          "text": "這是閱讀練習，不是拿隨機樣本估整張圖的精度。"
+        }
+      ],
+      "claims": [
+        "c51"
+      ]
+    },
+    {
+      "id": "b-pixel-center",
+      "template": "table",
+      "data": {
+        "title": "B指定像素中心",
+        "columns": [
+          "座標",
+          "格心位置"
+        ],
+        "rows": [
+          [
+            "東經",
+            "121.42234°"
+          ],
+          [
+            "北緯",
+            "24.69528°"
+          ]
+        ],
+        "keys": [
+          "指定像素中心，非窗口幾何中心",
+          "用座標，對回B格的紅框"
+        ],
+        "source": "2020公開資料實算｜2026-10-25｜B格"
+      },
+      "lines": [
+        {
+          "id": "fe8z",
+          "text": "第二格的像素中心在東經一百二十一點四二二三四。",
+          "emotion": "座標逐位清楚，自然說明，不趕數字",
+          "reveal": 1
+        },
+        {
+          "id": "ymf8",
+          "text": "北緯二十四點六九五二八，用這個位置對回紅框。",
+          "emotion": "小數逐位清楚，最後接回紅框的操作",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c86",
+        "c87"
+      ]
+    },
+    {
+      "id": "b-five-input",
+      "template": "table",
+      "data": {
+        "columns": [
+          "原始林",
+          "自然更新",
+          "人工栽植",
+          "種植園",
+          "樹作農林"
+        ],
+        "rows": [
+          [
+            "0",
+            "86",
+            "0",
+            "1",
+            "77"
+          ]
+        ],
+        "key": "沿用同一類別順序，讀B格",
+        "source": "2020公開資料實算｜2026-10-25｜B格",
+        "title": "B格的五個真實值"
+      },
+      "lines": [
+        {
+          "id": "54sx",
+          "text": "五個值依序是零、八十六、零、一、七十七。",
+          "emotion": "數列逐項，不把零吞掉"
+        }
+      ],
+      "claims": [
+        "c52"
+      ]
+    },
+    {
+      "id": "b-sum",
+      "template": "big",
+      "data": {
+        "text": "86+1+77=164",
+        "key": "零不改變加總，總和164",
+        "kicker": "B格｜加總"
+      },
+      "lines": [
+        {
+          "id": "mfsh",
+          "text": "自然更新林八十六、林木種植園一、樹作七十七，合計一百六十四。"
+        }
+      ],
+      "claims": [
+        "c53"
+      ]
+    },
+    {
+      "id": "b-other",
+      "template": "big",
+      "data": {
+        "text": "250−164=86",
+        "key": "B格的其他土地，補回86",
+        "kicker": "B格｜補數"
+      },
+      "lines": [
+        {
+          "id": "578j",
+          "text": "兩百五十減一百六十四，其他土地得到八十六。",
+          "emotion": "答案清楚，稍留半拍"
+        }
+      ],
+      "claims": [
+        "c54"
+      ]
+    },
+    {
+      "id": "b-regeneration-score",
+      "template": "big",
+      "data": {
+        "text": "自然更新林＝其他土地＝86",
+        "key": "B格兩項並列最高，沒有唯一最高者"
+      },
+      "lines": [
+        {
+          "id": "97h6",
+          "text": "自然更新林和其他土地同為八十六，這次有兩項並列最高。",
+          "emotion": "發現並列，清楚點名兩個類別"
+        }
+      ],
+      "claims": [
+        "c55"
+      ]
+    },
+    {
+      "id": "b-scale",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/roi-b-scores.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "兩個最高分，同為0.344"
+      },
+      "lines": [
+        {
+          "id": "8mtz",
+          "text": "兩項都除以兩百五十，得到相同的零點三四四。",
+          "emotion": "同一算式算兩項，清楚說小數"
+        }
+      ],
+      "claims": [
+        "c56"
+      ]
+    },
+    {
+      "id": "b-plantation-score",
+      "template": "big",
+      "data": {
+        "text": "1÷250=0.004",
+        "key": "B格｜林木種植園"
+      },
+      "lines": [
+        {
+          "id": "4amm",
+          "text": "林木種植園的一，變成零點零零四。",
+          "emotion": "零點後的兩個零要清楚"
+        }
+      ],
+      "claims": [
+        "c57"
+      ]
+    },
+    {
+      "id": "b-crop-score",
+      "template": "big",
+      "data": {
+        "text": "77÷250=0.308",
+        "key": "B格｜樹木作物與農林複合"
+      },
+      "lines": [
+        {
+          "id": "ux8j",
+          "text": "樹木作物與農林複合的七十七，變成零點三零八。"
+        }
+      ],
+      "claims": [
+        "c58"
+      ]
+    },
+    {
+      "id": "b-zero-scores",
+      "template": "table",
+      "data": {
+        "columns": [
+          "類別",
+          "分數"
+        ],
+        "rows": [
+          [
+            "原始林",
+            "0"
+          ],
+          [
+            "人工栽植林",
+            "0"
+          ]
+        ],
+        "key": "另外兩類，在這一格都是零",
+        "source": "2020公開資料實算｜2026-10-25｜B格",
+        "title": "B格的另外兩類"
+      },
+      "lines": [
+        {
+          "id": "y64h",
+          "text": "原始森林和人工栽植的森林，分數都等於零。"
+        }
+      ],
+      "claims": [
+        "c59"
+      ]
+    },
+    {
+      "id": "b-sumcheck-open",
+      "template": "big",
+      "data": {
+        "text": "六項加總",
+        "key": "填入紀錄前，檢查總量"
+      },
+      "lines": [
+        {
+          "id": "afyy",
+          "text": "把第二格填進紀錄前，這六個分數也能加回一嗎？"
+        }
+      ],
+      "claims": [
+        "c88"
+      ]
+    },
+    {
+      "id": "b-sumcheck-pair",
+      "template": "big",
+      "data": {
+        "text": "0.344+0.344=0.688",
+        "key": "自然更新林＋其他土地"
+      },
+      "lines": [
+        {
+          "id": "f2ze",
+          "text": "兩個零點三四四相加，得到零點六八八。"
+        }
+      ],
+      "claims": [
+        "c89"
+      ]
+    },
+    {
+      "id": "b-sumcheck-crops",
+      "template": "big",
+      "data": {
+        "text": "0.688+0.308=0.996",
+        "key": "再加樹木作物與農林複合"
+      },
+      "lines": [
+        {
+          "id": "ckag",
+          "text": "再加零點三零八，得到零點九九六。"
+        }
+      ],
+      "claims": [
+        "c90"
+      ]
+    },
+    {
+      "id": "b-sumcheck-finish",
+      "template": "big",
+      "data": {
+        "text": "0.996+0.004=1.000",
+        "key": "林木種植園；另兩類為0"
+      },
+      "lines": [
+        {
+          "id": "n37p",
+          "text": "最後加零點零零四，剛好是一，另外兩類的零不改變總和。"
+        }
+      ],
+      "claims": [
+        "c91"
+      ]
+    },
+    {
+      "id": "b-sumcheck-repair",
+      "template": "table",
+      "data": {
+        "title": "總和不對，回查抄錄",
+        "columns": [
+          "項目",
+          "檢查動作"
+        ],
+        "rows": [
+          [
+            "六個分數",
+            "有沒有漏項"
+          ],
+          [
+            "小數位",
+            "是否抄在正確位置"
+          ],
+          [
+            "類別名稱",
+            "仍須逐項對回"
+          ]
+        ],
+        "key": "加總是算術檢查；名稱也要對齊",
+        "source": "2020公開資料衍生實算｜2026-10-25｜B格"
+      },
+      "lines": [
+        {
+          "id": "ecb8",
+          "text": "總和不對，就檢查漏項和小數位，類別名稱仍要逐項對回。"
+        }
+      ],
+      "claims": [
+        "c92"
+      ]
+    },
+    {
+      "id": "one-color-question",
+      "template": "big",
+      "data": {
+        "text": "只能塗一色，選誰？",
+        "key": "顯示需要再做一個選擇"
+      },
+      "lines": [
+        {
+          "id": "8k4a",
+          "text": "如果只能塗一種顏色，畫面會選哪一個？",
+          "emotion": "替觀眾問，尾音抬起"
+        }
+      ],
+      "claims": [
+        "c60"
+      ]
+    },
+    {
+      "id": "label-compression",
+      "template": "big",
+      "data": {
+        "text": "顯示一類，不會解開並列",
+        "key": "六分數縮成一個標籤時的選擇"
+      },
+      "lines": [
+        {
+          "id": "z33x",
+          "text": "只選一個顯示，是把六項分數壓成一個標籤；並列者不會因此自動分出高低。",
+          "emotion": "像把機制講通，稍微放慢"
+        }
+      ],
+      "claims": [
+        "c61"
+      ]
+    },
+    {
+      "id": "local-tie-rule",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "保留並列者",
+            "detail": "第2類與第6類同高"
+          },
+          {
+            "title": "本圖取首",
+            "detail": "按類別順序，顯示第2類"
+          }
+        ],
+        "key": "本圖取首顯示；並列仍要保留",
+        "source": "2020公開資料實算｜2026-10-25｜B格"
+      },
+      "lines": [
+        {
+          "id": "wnrz",
+          "text": "我們這張衍生圖，用類別順序取第一個最高者。",
+          "emotion": "講清這張圖的規則，不泛指所有地圖",
+          "reveal": 2
+        }
+      ],
+      "claims": [
+        "c62"
+      ]
+    },
+    {
+      "id": "b-green-label",
+      "template": "big",
+      "data": {
+        "text": "仍顯示自然更新林",
+        "key": "這是本圖的取首規則"
+      },
+      "lines": [
+        {
+          "id": "ywz8",
+          "text": "所以這個像素，也塗成自然更新的森林這一類的顏色。"
+        }
+      ],
+      "claims": [
+        "c63"
+      ]
+    },
+    {
+      "id": "a-b-comparison",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/forty-forest-map/assets/pixel-comparison.svg",
+        "caption": "ForTy 2020｜公開模型輸出；本片裁切與計算",
+        "key": "兩個綠格，分數資訊不同"
+      },
+      "lines": [
+        {
+          "id": "ww8v",
+          "text": "還記得開頭那個綠格嗎，它的最高者只有一個。",
+          "emotion": "像認出熟悉的位置，帶一點笑意"
+        },
+        {
+          "id": "mx7g",
+          "text": "把這兩個像素擺在一起，同樣的顏色就不再是同樣的資訊。"
+        }
+      ],
+      "claims": [
+        "c64",
+        "c65"
+      ]
+    },
+    {
+      "id": "b-annotation",
+      "template": "table",
+      "data": {
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "最高者",
+            "第2類／第6類並列"
+          ],
+          [
+            "分數",
+            "0.344／0.344"
+          ],
+          [
+            "顯示選擇",
+            "本圖取首，顯示第2類"
+          ]
+        ],
+        "key": "並列與顯示規則，分開寫",
+        "source": "2020公開資料實算｜2026-10-25｜B格",
+        "title": "把B格的資訊寫完整"
+      },
+      "lines": [
+        {
+          "id": "7qfx",
+          "text": "你的紀錄要留下自然更新林和其他土地並列，再註明取首顯示。",
+          "emotion": "像帶著觀眾把紀錄補好"
+        }
+      ],
+      "claims": [
+        "c66"
+      ]
+    },
+    {
+      "id": "use-annotation",
+      "template": "big",
+      "data": {
+        "text": "比較時，讀完整註記",
+        "key": "不要讓單一顏色省略並列者"
+      },
+      "lines": [
+        {
+          "id": "hbci",
+          "text": "需要比較結果時，就讀這條註記，而不是讓顏色替你省略答案。"
+        }
+      ],
+      "claims": [
+        "c67"
+      ]
+    },
+    {
+      "id": "annual-forward",
+      "template": "big",
+      "data": {
+        "text": "分數，是正確機率嗎？",
+        "key": "兩個實際輸出，接著讀清楚分數"
+      },
+      "lines": [
+        {
+          "id": "sbkg",
+          "text": "兩個綠格讀完後，這些分數能不能直接當作正確機率？",
+          "emotion": "是觀眾剛好會冒出的疑問"
+        }
+      ],
+      "claims": [
+        "c68"
+      ]
+    },
+    {
+      "id": "score-question",
+      "template": "big",
+      "data": {
+        "text": "模型分數與實際正確率",
+        "key": "先讀分數語義，再接年度資料"
+      },
+      "lines": [
+        {
+          "id": "upmh",
+          "text": "要用這些分數，得先分清模型分數和實際正確率。",
+          "emotion": "接住問題，語氣平穩"
+        }
+      ],
+      "claims": [
+        "c69"
+      ],
+      "chapter": "把分數和年份寫進紀錄"
+    },
+    {
+      "id": "uncalibrated-score",
+      "template": "big",
+      "data": {
+        "text": "未做事後機率校準",
+        "key": "它是模型的類別分數"
+      },
+      "lines": [
+        {
+          "id": "vb62",
+          "text": "它是模型分數，還沒有做事後的機率校準。"
+        }
+      ],
+      "claims": [
+        "c70"
+      ]
+    },
+    {
+      "id": "calibration-reference",
+      "template": "big",
+      "data": {
+        "text": "用獨立參考檢查對應",
+        "key": "分數與真實結果，需要另外比較"
+      },
+      "lines": [
+        {
+          "id": "8m2e",
+          "text": "要把分數當成正確機率，還得用獨立參考，檢查分數和真實結果是否相符。",
+          "emotion": "像回答觀眾怎麼判斷，別念警語"
+        }
+      ],
+      "claims": [
+        "c71"
+      ]
+    },
+    {
+      "id": "not-correctness",
+      "template": "big",
+      "data": {
+        "text": "分數≠實際正確率",
+        "key": "0.992不能直接當99.2%判對"
+      },
+      "lines": [
+        {
+          "id": "bs4s",
+          "text": "所以不能直接說，這格有百分之九十九點二的機率判對。",
+          "emotion": "平實清楚，不加危機感"
+        }
+      ],
+      "claims": [
+        "c72"
+      ]
+    },
+    {
+      "id": "reference-needed",
+      "template": "big",
+      "data": {
+        "text": "線索要對照參考資料",
+        "key": "地面歷史與經營用途，另有證據"
+      },
+      "lines": [
+        {
+          "id": "ci5j",
+          "text": "模型看見的是觀測線索，土地歷史和經營用途還要對照參考資料。"
+        }
+      ],
+      "claims": [
+        "c73"
+      ]
+    },
+    {
+      "id": "year-in-record",
+      "template": "big",
+      "data": {
+        "text": "每一列，保留資料年",
+        "key": "從一個像素走向年度紀錄"
+      },
+      "lines": [
+        {
+          "id": "6ss6",
+          "text": "分數讀清楚後，再替同一列紀錄保留位置和資料年。",
+          "emotion": "把工作往下一步推進"
+        }
+      ],
+      "claims": [
+        "c74"
+      ]
+    },
+    {
+      "id": "baseline-release",
+      "template": "big",
+      "data": {
+        "text": "五月已公開",
+        "key": "2020 v1是本片實算的資料",
+        "kicker": "資料公開時間"
+      },
+      "lines": [
+        {
+          "id": "rume",
+          "text": "二〇二〇基準資料在五月公開，描述的是那一年的土地狀態。"
+        }
+      ],
+      "claims": [
+        "c75"
+      ]
+    },
+    {
+      "id": "paper-date",
+      "template": "big",
+      "data": {
+        "text": "2026年10月21日",
+        "key": "正式資料論文出版；日期不自補時區"
+      },
+      "lines": [
+        {
+          "id": "pvkj",
+          "text": "正式資料論文在十月二十一日出版。",
+          "emotion": "日期清楚，語調自然"
+        }
+      ],
+      "claims": [
+        "c76"
+      ]
+    },
+    {
+      "id": "annual-release",
+      "template": "big",
+      "data": {
+        "text": "2017–2025早期序列",
+        "key": "10月22日研究介紹另外分享",
+        "kicker": "新增的年度維度"
+      },
+      "lines": [
+        {
+          "id": "ncx4",
+          "text": "那次介紹也分享二〇一七到二〇二五年的早期年度序列。"
+        }
+      ],
+      "claims": [
+        "c77"
+      ]
+    },
+    {
+      "id": "time-dimension",
+      "template": "big",
+      "data": {
+        "text": "同一位置，不同資料年",
+        "key": "類型可以沿時間展開"
+      },
+      "lines": [
+        {
+          "id": "j5kv",
+          "text": "一個位置可以多出不同年份的輸出，分類問題也能沿時間展開。",
+          "emotion": "帶出用途，語氣亮起"
+        }
+      ],
+      "claims": [
+        "c78"
+      ]
+    },
+    {
+      "id": "annual-reading-fields",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "固定位置",
+            "detail": "比較同一處的輸出"
+          },
+          {
+            "title": "保留資料年",
+            "detail": "每年分開記錄"
+          },
+          {
+            "title": "對齊六類",
+            "detail": "保留順序和完整分數"
+          }
+        ],
+        "key": "同位置、資料年、六分數一起保存",
+        "source": "編輯判讀｜同一份真實輸出"
+      },
+      "lines": [
+        {
+          "id": "nqyj",
+          "text": "要比較同一處，先固定位置，再保留每年的類別順序和六分數。",
+          "reveal": 3
+        }
+      ],
+      "claims": [
+        "c79"
+      ]
+    },
+    {
+      "id": "color-change-reading",
+      "template": "big",
+      "data": {
+        "text": "比較的不只顏色",
+        "key": "同一套註記，帶進每個年份"
+      },
+      "lines": [
+        {
+          "id": "wfb2",
+          "text": "只換顏色，會把剛才看到的並列和分數差距藏起來。",
+          "emotion": "像說出一個實用的選擇理由"
+        }
+      ],
+      "claims": [
+        "c80"
+      ]
+    },
+    {
+      "id": "baseline-scope",
+      "template": "big",
+      "data": {
+        "text": "2020版本的真實輸出",
+        "key": "A／B兩格的證據範圍"
+      },
+      "lines": [
+        {
+          "id": "88pk",
+          "text": "同樣地，二〇二〇的兩格，只能回答這個版本的輸出長什麼樣。",
+          "emotion": "貼著手上的例子，語氣收穩"
+        }
+      ],
+      "claims": [
+        "c81"
+      ]
+    },
+    {
+      "id": "annual-next-input",
+      "template": "big",
+      "data": {
+        "text": "把一列像素紀錄寫完整",
+        "key": "年份、位置、六分數、所有最高者"
+      },
+      "lines": [
+        {
+          "id": "bu6j",
+          "text": "把年份、位置、六個分數和所有最高者，寫進同一列像素紀錄。",
+          "emotion": "交代一個現在能完成的動作，語氣落穩"
+        }
+      ],
+      "claims": [
+        "c82"
+      ]
+    },
+    {
+      "id": "complete-pixel-record",
+      "template": "outro",
+      "data": {
+        "title": "把色塊讀完整",
+        "cta": "留下年份、類別與完整分數",
+        "lines": [
+          "兩個真實例子，對回自己的地圖問題"
+        ],
+        "key": "六類輸出，比單一顏色多一步"
+      },
+      "lines": [
+        {
+          "id": "hr4b",
+          "text": "這一列紀錄，就保住了單一綠色省略的資訊。",
+          "emotion": "收在已完成的動作，不重算一遍"
+        },
+        {
+          "id": "4w7g",
+          "text": "你常用地圖看哪種環境？",
+          "emotion": "像聊天問觀眾，不像考試"
+        },
+        {
+          "id": "39nc",
+          "text": "訂閱，一起讀懂AI的真實輸出。",
+          "emotion": "帶笑意，簡短邀請"
+        }
+      ],
+      "claims": [
+        "c83",
+        "c84",
+        "c85"
+      ],
+      "chapter": "完成一列像素紀錄"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "gngj",
+      "payoff": "3p97",
+      "what": "六個類別，只有五個儲存值的缺口怎麼補"
+    },
+    {
+      "setup": "ep85",
+      "payoff": "anxa",
+      "what": "248究竟是什麼單位"
+    },
+    {
+      "setup": "jw6i",
+      "payoff": "mx7g",
+      "what": "另一格同綠，完整結果是否相同"
+    },
+    {
+      "setup": "endc",
+      "payoff": "97h6",
+      "what": "另一格是否也能選出唯一最高者"
+    },
+    {
+      "setup": "sbkg",
+      "payoff": "vb62",
+      "what": "類別分數是否就是實際正確機率"
+    }
+  ]
+}

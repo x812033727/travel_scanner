@@ -1,0 +1,412 @@
+{
+  "title": "Google ForTy 산림 지도: 대만 픽셀 2개로 6개 유형 계산",
+  "description": "대만의 실제 픽셀 2개로 ForTy의 6개 토지 범주를 계산합니다. 6개 범주에는 OtherLand(기타 토지)가 포함됩니다.\nAI 지도 출력을 이해하고 싶지만 원격탐사 파일은 처음인 분도 전체 값, 나머지 값 계산과 나눗셈을 따라 픽셀 기록을 완성할 수 있습니다.\n\n실제 계산에는 Forest Typology 2020 (v1)을 사용했습니다. 2026년 10월 연구 소개에서 공유한 2017–2025년 초기 연도별 시계열과는 구분합니다. B는 낮은 점수 읽기 연습을 위해 일부러 고른 예이며, 정확도 평가용 표본이 아닙니다.\n\n자료: Neumann 외(2026), Forest Typology 2020 (v1).\nDOI: https://api.figshare.com/v2/articles/32288616/versions/1\nDOI: 10.25452/figshare.plus.32288616.v1\n라이선스 CC BY 4.0: https://creativecommons.org/licenses/by/4.0/\n이 영상의 수정: 자르기, 나머지 값 도출, 최고 범주 중 순서상 첫 범주로 분류, 다시 그리기. 도표에는 위성 배경지도를 쓰지 않았습니다.\n\n영상 자료 묶음(원시 값·좌표·선정 규칙): https://github.com/x812033727/travel_scanner/tree/e0c70c899/docs/videos/forty-forest-map/data",
+  "tags": [
+    "ForTy",
+    "Google AI",
+    "산림 지도",
+    "AlphaEarth",
+    "위성 자료",
+    "AI 기술",
+    "자연갱신림"
+  ],
+  "chapters": {
+    "first-grid": "대만의 녹색 격자 읽기",
+    "label-meaning": "녹색을 6개 유형과 연결하기",
+    "pixel-record": "지정 격자의 값 5개 찾기",
+    "residual-rule": "6번째 범주를 구해 최댓값 선택",
+    "b-selected-grid": "다른 격자의 6개 점수 계산",
+    "score-question": "점수와 연도를 기록하기",
+    "complete-pixel-record": "픽셀 기록 1행 완성"
+  },
+  "source_hashes": {
+    "chapters": {
+      "first-grid": "d2ec37c4047d",
+      "label-meaning": "14bcf64205a3",
+      "pixel-record": "cb394302d85a",
+      "residual-rule": "f3f49f822fbd",
+      "b-selected-grid": "17c6a0c4e962",
+      "score-question": "904d583e031e",
+      "complete-pixel-record": "d90396cd34a3"
+    },
+    "title": "bb370a30ffb7",
+    "description": "fc828ccf69df",
+    "tags": "4a0aef16d319",
+    "thumbnail": "0dbe591a2468"
+  },
+  "lines": {
+    "7732": {
+      "source_hash": "9b436683233d",
+      "text": "지정 칸 주변 10×10칸, 계산할 1칸만 빨간 틀입니다."
+    },
+    "8aw6": {
+      "source_hash": "a20b19f15f64",
+      "text": "저는 2020년 대만 자료에서 이 ForTy 녹색 격자를 추출했습니다."
+    },
+    "gngj": {
+      "source_hash": "6a9e5db9b529",
+      "text": "6종인데 왜 값은 5개만 저장합니까?"
+    },
+    "ep85": {
+      "source_hash": "afd1aa823264",
+      "text": "이 248은 무슨 단위입니까?"
+    },
+    "jw6i": {
+      "source_hash": "a9469681da1f",
+      "text": "다른 녹색 칸도 결과가 같습니까?"
+    },
+    "5ur9": {
+      "source_hash": "157c05af86c0",
+      "text": "이번 주 DeepMind가 소개한 ForTy, 이 2개 격자부터 읽습니다."
+    },
+    "m2p6": {
+      "source_hash": "f192ea50797e",
+      "text": "이 녹색 격자는 나무뿐 아니라 자란 방식과 쓰임도 알려 줍니다."
+    },
+    "erqz": {
+      "source_hash": "7b43ad4f9cc6",
+      "text": "원시림 조건은 자생 수종·가시적 인위 교란 없음입니다."
+    },
+    "t4w3": {
+      "source_hash": "463c4175fdb1",
+      "text": "자연갱신림은 주로 자연 재생하며 회복기 이차림도 포함합니다."
+    },
+    "66nz": {
+      "source_hash": "6f430b4ae5c1",
+      "text": "사람이 심은 숲은 표에서 어떻게 나눕니까?"
+    },
+    "3pse": {
+      "source_hash": "77f30f79a91a",
+      "text": "식재림은 주로 식재·파종으로 조성하며, 자료상 벌채 주기는 40년 초과입니다."
+    },
+    "v9fh": {
+      "source_hash": "4cffec66e250",
+      "text": "벌채 주기는 식재·관리부터 재수확까지의 계획이며, 현재 수령과 다릅니다."
+    },
+    "7id9": {
+      "source_hash": "86d3a4a25712",
+      "text": "집약 조림지는 관리가 더 집약적이며 대개 수종은 적고 나이·간격은 일정합니다."
+    },
+    "2vcb": {
+      "source_hash": "0f139e163572",
+      "text": "벌채 주기 조건은 40년 이하입니다."
+    },
+    "yiya": {
+      "source_hash": "10ec9a8094c7",
+      "text": "수목 작물·혼농임업은 기름야자·고무·과수원 등으로, 비목재 농산물을 생산합니다."
+    },
+    "rrgq": {
+      "source_hash": "2a0041eeda2c",
+      "text": "기타 토지엔 도시 수목·성긴 목본도 있을 수 있습니다."
+    },
+    "fbc5": {
+      "source_hash": "442655cde31b",
+      "text": "6개 범주는 위치가 고정되니 값과 이름을 함께 읽습니다."
+    },
+    "gsa7": {
+      "source_hash": "f3920569cf3b",
+      "text": "위성 영상에서 모델은 어떤 단서로 차이를 구분합니까?"
+    },
+    "9wmz": {
+      "source_hash": "753e1d60f35a",
+      "text": "AlphaEarth는 먼저 다년간 위성 관측을 숫자 묶음으로 정리합니다."
+    },
+    "jkby": {
+      "source_hash": "8891440b374a",
+      "text": "ForTy는 수치로 식재 형태·계절·생장주기 단서를 봅니다."
+    },
+    "5nt9": {
+      "source_hash": "fdcabf287920",
+      "text": "학습엔 전문가·지역 자료의 표기 지점도 써 단서와 토지 유형을 연결합니다."
+    },
+    "m8cb": {
+      "source_hash": "63db17e31a5e",
+      "text": "녹색 칸의 정수 5개에 범주별 모델 점수가 담깁니다."
+    },
+    "p2ry": {
+      "source_hash": "8b1ba845b6a6",
+      "text": "5개 값은 자료 연도·위치를 확인해 찾습니다."
+    },
+    "u5js": {
+      "source_hash": "c513c81a1051",
+      "text": "위치는 동경 121.4도, 북위 24.7도를 사용합니다."
+    },
+    "yi97": {
+      "source_hash": "2ee1a3341f4d",
+      "text": "10m 출력 격자지, 나무별 위치표는 아닙니다."
+    },
+    "2k27": {
+      "source_hash": "d339ed359da4",
+      "text": "값 옆의 고정 범주명이 범주 혼동을 막습니다."
+    },
+    "vk36": {
+      "source_hash": "4e8d9e2dcea0",
+      "text": "6개 범주의 합은 250이고, 255는 자료 없음 표시입니다."
+    },
+    "gfes": {
+      "source_hash": "8a2ba9d3426e",
+      "text": "무자료 표시 칸은 제외하며 점수로 안 봅니다."
+    },
+    "e826": {
+      "source_hash": "70b0c02a6562",
+      "text": "5개 값은 유효해 기타 토지값 보충 후 6종을 비교합니다."
+    },
+    "svhy": {
+      "source_hash": "1670f3daf02a",
+      "text": "필드명도 붙입니다. 숫자만으론 범주를 모릅니다."
+    },
+    "3gwz": {
+      "source_hash": "2bcb10651c3b",
+      "text": "처음에 빠져 있던 6번째 범주는 표에 어떻게 채웁니까?"
+    },
+    "7iv8": {
+      "source_hash": "bedeb009e520",
+      "text": "6번째=250−저장값 합입니다."
+    },
+    "bxdi": {
+      "source_hash": "c7ce3516b2aa",
+      "text": "이 격자의 5개 값은 순서대로 0, 248, 0, 0, 0입니다."
+    },
+    "anxa": {
+      "source_hash": "c77038507e33",
+      "text": "248은 환산해 저장한 점수로, 나무 수·㎡가 아닙니다."
+    },
+    "up9r": {
+      "source_hash": "2ca68b83ed91",
+      "text": "자연갱신림이 248, 나머지 4개가 0이므로 합은 248입니다."
+    },
+    "3p97": {
+      "source_hash": "a96976409357",
+      "text": "250에서 248을 빼면, 기타 토지는 2입니다."
+    },
+    "4av2": {
+      "source_hash": "59067461efc6",
+      "text": "보충 후 6개 값이 모두 0~250인지, 합이 250인지 확인합니다."
+    },
+    "8hpb": {
+      "source_hash": "28a5a7ef2da6",
+      "text": "저장값을 0~1 범위의 모델 점수로 어떻게 바꿉니까?"
+    },
+    "ywu9": {
+      "source_hash": "c6abda92d346",
+      "text": "각 값을 250으로 나누면, 자연갱신림의 248은 0.992가 됩니다."
+    },
+    "u362": {
+      "source_hash": "9dbdbe4f8b5c",
+      "text": "기타 토지의 2를 나누면 0.008입니다."
+    },
+    "eym7": {
+      "source_hash": "3e186d0579d1",
+      "text": "나머지 4개는 저장값 0, 점수도 0입니다."
+    },
+    "k3i2": {
+      "source_hash": "d8b2e0012cf1",
+      "text": "6개 점수의 합은 딱 1입니다."
+    },
+    "p9sg": {
+      "source_hash": "a3b98fb0723e",
+      "text": "한 총량의 분할이지 별개로 6번 채점한 게 아닙니다."
+    },
+    "dkq3": {
+      "source_hash": "a7a1dfda496a",
+      "text": "6개 중 자연갱신림만 최고입니다."
+    },
+    "w86h": {
+      "source_hash": "82bf922d9b5e",
+      "text": "최댓값 분류면 빨간 틀 속은 그 녹색입니다."
+    },
+    "wh49": {
+      "source_hash": "4d4b5eb47bf0",
+      "text": "최댓값 선택은 범주만 고르고 모든 점수는 안 남깁니다."
+    },
+    "6ybg": {
+      "source_hash": "7bc2276e4b7d",
+      "text": "자연갱신림이 단독 최고라고 기록하고, 6개 점수를 모두 첨부합니다."
+    },
+    "xxju": {
+      "source_hash": "136abf8ee820",
+      "text": "녹색은 범주명만, 값은 펼쳐야 분포를 압니다."
+    },
+    "endc": {
+      "source_hash": "888b58acfc41",
+      "text": "같은 출처의 다른 칸도 명확히 고를 수 있습니까?"
+    },
+    "appe": {
+      "source_hash": "af327d0012d2",
+      "text": "같은 블록에서 일부러 최댓값이 최저인 다른 칸을 고릅니다."
+    },
+    "beg8": {
+      "source_hash": "beecd17e1562",
+      "text": "읽기 연습이지, 무작위 표본으로 지도 전체의 정확도를 추정하는 것이 아닙니다."
+    },
+    "fe8z": {
+      "source_hash": "2ce4642ce9d5",
+      "text": "2번째 칸 중심은 동경 121.42234도입니다."
+    },
+    "ymf8": {
+      "source_hash": "7a91180c8e87",
+      "text": "북위 24.69528도로 빨간 틀을 찾습니다."
+    },
+    "54sx": {
+      "source_hash": "33135fa4be3c",
+      "text": "5개 값은 순서대로 0, 86, 0, 1, 77입니다."
+    },
+    "mfsh": {
+      "source_hash": "346e7529302c",
+      "text": "자연갱신림 86, 집약 조림지 1, 수목 작물·혼농임업 77, 합 164입니다."
+    },
+    "578j": {
+      "source_hash": "70c759c7ba61",
+      "text": "250에서 164를 빼면, 기타 토지는 86입니다."
+    },
+    "97h6": {
+      "source_hash": "f00ffe55434f",
+      "text": "자연갱신림·기타 토지 모두 86, 2개가 공동 최고입니다."
+    },
+    "8mtz": {
+      "source_hash": "f92b1012d4af",
+      "text": "2개 ÷250은 모두 0.344입니다."
+    },
+    "4amm": {
+      "source_hash": "21955d851fa3",
+      "text": "집약 조림지의 1은 0.004가 됩니다."
+    },
+    "ux8j": {
+      "source_hash": "79bf1af49fc6",
+      "text": "수목 작물·혼농임업의 77은 0.308이 됩니다."
+    },
+    "y64h": {
+      "source_hash": "0408d1712090",
+      "text": "원시림과 식재림은 모두 0입니다."
+    },
+    "afyy": {
+      "source_hash": "9902ddfcb5ec",
+      "text": "2번째 칸 기록 전, 이 6개 점수도 합이 1입니까?"
+    },
+    "f2ze": {
+      "source_hash": "434f81a337c3",
+      "text": "0.344 2개를 더하면 0.688입니다."
+    },
+    "ckag": {
+      "source_hash": "fd071e4fce68",
+      "text": "여기에 0.308을 더하면 0.996입니다."
+    },
+    "n37p": {
+      "source_hash": "e98f210a7177",
+      "text": "끝에 +0.004=1, 다른 2개의 0은 합을 안 바꿉니다."
+    },
+    "ecb8": {
+      "source_hash": "090d9f9cbcc9",
+      "text": "합 오류면 누락·소수 자릿수, 값별 범주명을 확인합니다."
+    },
+    "8k4a": {
+      "source_hash": "f90dd80873cb",
+      "text": "1색뿐이면 화면은 뭘 고릅니까?"
+    },
+    "z33x": {
+      "source_hash": "8040671f0803",
+      "text": "1개 표시는 6개 점수를 1개 라벨로 줄일 뿐, 동점 우열이 생기진 않습니다."
+    },
+    "wnrz": {
+      "source_hash": "b2b55892c547",
+      "text": "우리 파생도는 범주 순 첫 최고 범주를 고릅니다."
+    },
+    "ywz8": {
+      "source_hash": "694ef01d2949",
+      "text": "그래서 또 자연갱신림 색입니다."
+    },
+    "ww8v": {
+      "source_hash": "b674a6d8e760",
+      "text": "첫 녹색 칸의 최고는 1개뿐이었습니다."
+    },
+    "mx7g": {
+      "source_hash": "54c30e4f5c87",
+      "text": "나란한 2칸, 색은 같아도 정보는 다릅니다."
+    },
+    "7qfx": {
+      "source_hash": "5848d6f8a077",
+      "text": "자연갱신림·기타 토지 공동 최고, 그중 순서상 첫 표시를 기록합니다."
+    },
+    "hbci": {
+      "source_hash": "e218c30a9dd6",
+      "text": "비교 땐 이 주석을 읽고 색으로 답을 생략하지 않습니다."
+    },
+    "sbkg": {
+      "source_hash": "32f5702cdbf7",
+      "text": "녹색 2칸을 읽고, 점수는 곧 정답 확률입니까?"
+    },
+    "upmh": {
+      "source_hash": "1ac3b0d3f953",
+      "text": "쓸 때는 모델 점수·실제 정확도부터 구분합니다."
+    },
+    "vb62": {
+      "source_hash": "5562650f79c2",
+      "text": "모델 점수며 사후 확률 보정 전입니다."
+    },
+    "8m2e": {
+      "source_hash": "b7766cdd2582",
+      "text": "정답 확률로 쓰려면 독립 참조 자료로 점수와 실제 결과가 맞는지 확인해야 합니다."
+    },
+    "bs4s": {
+      "source_hash": "cd96a342fedc",
+      "text": "이 칸이 맞을 확률이 99.2%라 단정 못 합니다."
+    },
+    "ci5j": {
+      "source_hash": "c7359b572078",
+      "text": "모델은 관측 단서를 봅니다. 토지 이력·용도는 참조로 대조합니다."
+    },
+    "6ss6": {
+      "source_hash": "6f02ea0220be",
+      "text": "점수를 읽고 같은 행에 위치·자료 연도도 남깁니다."
+    },
+    "rume": {
+      "source_hash": "a6e204dddec5",
+      "text": "2020 기준은 5월 공개돼 그해 토지 상태를 보입니다."
+    },
+    "pvkj": {
+      "source_hash": "6083843cf088",
+      "text": "정식 자료 논문은 10월21일 나왔습니다."
+    },
+    "ncx4": {
+      "source_hash": "aa1ea920be41",
+      "text": "그 소개는 2017~2025 초기 연도별 자료도 나눴습니다."
+    },
+    "j5kv": {
+      "source_hash": "a3a6340e86e1",
+      "text": "같은 곳에 여러 해 출력이 가능해 시간별 분류도 볼 수 있습니다."
+    },
+    "nqyj": {
+      "source_hash": "cf82f093a01f",
+      "text": "같은 곳은 위치를 고정하고 매년 범주 순서와 점수 6개를 남깁니다."
+    },
+    "wfb2": {
+      "source_hash": "80b5c3c18692",
+      "text": "색만 바꾸면 본 동점·점수 차이가 가려집니다."
+    },
+    "88pk": {
+      "source_hash": "14cbc0dae702",
+      "text": "2020년 2칸도 이 버전의 출력만 보여 줍니다."
+    },
+    "bu6j": {
+      "source_hash": "867a8d8ace33",
+      "text": "연도·위치·6개 점수·모든 최고 범주를 같은 픽셀 기록 행에 적습니다."
+    },
+    "hr4b": {
+      "source_hash": "37a3fd66c2b2",
+      "text": "이 행은 녹색만으론 놓칠 정보를 보존합니다."
+    },
+    "4w7g": {
+      "source_hash": "7b9bf55b4843",
+      "text": "여러분은 지도로 주로 어떤 환경을 살펴보십니까?"
+    },
+    "39nc": {
+      "source_hash": "0c4caad74bac",
+      "text": "구독하고 AI의 실제 출력을 함께 읽어 봅시다."
+    }
+  },
+  "thumbnail": {
+    "tag": "ForTy 실제 픽셀",
+    "headline": "**녹색**\n그 안에는?",
+    "sub": "5개 값, 6개 유형"
+  }
+}

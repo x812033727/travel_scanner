@@ -1,0 +1,412 @@
+{
+  "title": "Google ForTy Forest Map: 2 Taiwan Pixels, 6 Class Scores",
+  "description": "Calculate scores for ForTy's 6 land classes from 2 real pixels in Taiwan; these include OtherLand (other land).\nFor anyone who wants to understand AI map outputs but has never read remote sensing files: use all the values, the remainder calculation and division to complete a pixel record.\n\nCalculations use Forest Typology 2020 (v1). The early-release 2017–2025 annual series shared in the October 2026 research introduction is treated separately; B is a deliberately selected low-score reading example, not an accuracy sample.\n\nData: Neumann et al. (2026), Forest Typology 2020 (v1).\nDOI: https://api.figshare.com/v2/articles/32288616/versions/1\nDOI: 10.25452/figshare.plus.32288616.v1\nLicense CC BY 4.0: https://creativecommons.org/licenses/by/4.0/\nAdaptations in this video: cropping, remainder calculations, classification using the first maximum, and redrawing. The charts do not use a satellite basemap.\n\nVideo data pack (raw values, coordinates and selection rules): https://github.com/x812033727/travel_scanner/tree/e0c70c899/docs/videos/forty-forest-map/data",
+  "tags": [
+    "ForTy",
+    "Google AI",
+    "forest map",
+    "AlphaEarth",
+    "satellite data",
+    "AI technology",
+    "naturally regenerating forest"
+  ],
+  "thumbnail": {
+    "tag": "Real ForTy Pixels",
+    "headline": "GREEN\n**SECRETS**",
+    "sub": "5 values → 6 classes"
+  },
+  "chapters": {
+    "first-grid": "Read a Green Cell in Taiwan",
+    "label-meaning": "Match Colors to 6 Classes",
+    "pixel-record": "Find the Cell's 5 Values",
+    "residual-rule": "Recover Class 6, Pick the Top",
+    "b-selected-grid": "Recalculate a Second Cell",
+    "score-question": "Record Scores and Data Year",
+    "complete-pixel-record": "Complete a Pixel Record"
+  },
+  "source_hashes": {
+    "chapters": {
+      "first-grid": "d2ec37c4047d",
+      "label-meaning": "14bcf64205a3",
+      "pixel-record": "cb394302d85a",
+      "residual-rule": "f3f49f822fbd",
+      "b-selected-grid": "17c6a0c4e962",
+      "score-question": "904d583e031e",
+      "complete-pixel-record": "d90396cd34a3"
+    },
+    "title": "bb370a30ffb7",
+    "description": "fc828ccf69df",
+    "tags": "4a0aef16d319",
+    "thumbnail": "0dbe591a2468"
+  },
+  "lines": {
+    "7732": {
+      "source_hash": "9b436683233d",
+      "text": "Take 10×10 cells around the target; red marks just the cell we'll calculate."
+    },
+    "8aw6": {
+      "source_hash": "a20b19f15f64",
+      "text": "I took this green ForTy cell from Taiwan's 2020 data."
+    },
+    "gngj": {
+      "source_hash": "6a9e5db9b529",
+      "text": "The map has 6 classes. Why are only 5 values stored?"
+    },
+    "ep85": {
+      "source_hash": "afd1aa823264",
+      "text": "What unit is that 248 stored in?"
+    },
+    "jw6i": {
+      "source_hash": "a9469681da1f",
+      "text": "Another cell is green too. Will it give the same results?"
+    },
+    "5ur9": {
+      "source_hash": "157c05af86c0",
+      "text": "DeepMind showed ForTy this week. Read these 2 cells."
+    },
+    "m2p6": {
+      "source_hash": "f192ea50797e",
+      "text": "Read not just the trees in this green cell, but how they grew and their use."
+    },
+    "erqz": {
+      "source_hash": "7b43ad4f9cc6",
+      "text": "Primary forest: native tree species, no visible human disturbance."
+    },
+    "t4w3": {
+      "source_hash": "463c4175fdb1",
+      "text": "Naturally regenerating forest: mostly natural regrowth; secondary included."
+    },
+    "66nz": {
+      "source_hash": "6f430b4ae5c1",
+      "text": "Where do forests planted by people fit in this table?"
+    },
+    "3pse": {
+      "source_hash": "77f30f79a91a",
+      "text": "Planted forest is mainly planted or sown; this data requires rotations over 40 years."
+    },
+    "v9fh": {
+      "source_hash": "4cffec66e250",
+      "text": "A rotation covers planting, management and reharvest, not a tree's current age."
+    },
+    "7id9": {
+      "source_hash": "86d3a4a25712",
+      "text": "Plantation forest has more intensive management, often few species, even ages and regular spacing."
+    },
+    "2vcb": {
+      "source_hash": "0f139e163572",
+      "text": "Its rotation criterion is 40 years or less."
+    },
+    "yiya": {
+      "source_hash": "10ec9a8094c7",
+      "text": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products."
+    },
+    "rrgq": {
+      "source_hash": "2a0041eeda2c",
+      "text": "Lastly, other land may include urban trees or sparse woody plants."
+    },
+    "fbc5": {
+      "source_hash": "442655cde31b",
+      "text": "Each of these 6 classes has a fixed position. Read each value with its name."
+    },
+    "gsa7": {
+      "source_hash": "f3920569cf3b",
+      "text": "But how can a model tell these differences from satellite images?"
+    },
+    "9wmz": {
+      "source_hash": "753e1d60f35a",
+      "text": "AlphaEarth first turns years of satellite readings into numbers."
+    },
+    "jkby": {
+      "source_hash": "8891440b374a",
+      "text": "ForTy uses them for clues to planting patterns, seasons and growth cycles."
+    },
+    "5nt9": {
+      "source_hash": "fdcabf287920",
+      "text": "Training also uses sites labeled by experts and regional data to link clues to land types."
+    },
+    "m8cb": {
+      "source_hash": "63db17e31a5e",
+      "text": "This green cell stores the model's class scores in 5 integers."
+    },
+    "p2ry": {
+      "source_hash": "8b1ba845b6a6",
+      "text": "Find the right 5 values: first check data year and place."
+    },
+    "u5js": {
+      "source_hash": "c513c81a1051",
+      "text": "Use 121.4°E, 24.7°N."
+    },
+    "yi97": {
+      "source_hash": "2ee1a3341f4d",
+      "text": "10 m is the output grid scale, not a list of tree locations."
+    },
+    "2k27": {
+      "source_hash": "d339ed359da4",
+      "text": "Keep fixed class names beside values so numbers stay with their class."
+    },
+    "vk36": {
+      "source_hash": "4e8d9e2dcea0",
+      "text": "The 6 class values total 250. The value 255 is reserved for no data."
+    },
+    "gfes": {
+      "source_hash": "8a2ba9d3426e",
+      "text": "Exclude any no-data cell; don't count its marker as a score."
+    },
+    "e826": {
+      "source_hash": "70b0c02a6562",
+      "text": "5 values are valid; derive other land's value, then compare 6 classes."
+    },
+    "svhy": {
+      "source_hash": "1670f3daf02a",
+      "text": "Keep field names with values; numbers alone don't identify a class."
+    },
+    "3gwz": {
+      "source_hash": "2bcb10651c3b",
+      "text": "How do we fill the opening's class-6 gap here?"
+    },
+    "7iv8": {
+      "source_hash": "bedeb009e520",
+      "text": "Class 6 is 250 minus the other 5 values' sum."
+    },
+    "bxdi": {
+      "source_hash": "c7ce3516b2aa",
+      "text": "This cell's 5 values, in order, are 0, 248, 0, 0, 0."
+    },
+    "anxa": {
+      "source_hash": "c77038507e33",
+      "text": "248 is a stored, scaled score, not a tree count or square meters."
+    },
+    "up9r": {
+      "source_hash": "2ca68b83ed91",
+      "text": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248."
+    },
+    "3p97": {
+      "source_hash": "a96976409357",
+      "text": "250 minus 248 gives 2 for other land."
+    },
+    "4av2": {
+      "source_hash": "59067461efc6",
+      "text": "Then check that all 6 values are between 0 and 250, and their sum is 250."
+    },
+    "8hpb": {
+      "source_hash": "28a5a7ef2da6",
+      "text": "How do we turn these stored values into model scores from 0 to 1?"
+    },
+    "ywu9": {
+      "source_hash": "c6abda92d346",
+      "text": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992."
+    },
+    "u362": {
+      "source_hash": "9dbdbe4f8b5c",
+      "text": "Other land's 2 becomes 0.008 after division."
+    },
+    "eym7": {
+      "source_hash": "3e186d0579d1",
+      "text": "The other 4 stored values are 0, so their scores are also 0."
+    },
+    "k3i2": {
+      "source_hash": "d8b2e0012cf1",
+      "text": "The 6 scores add up to exactly 1."
+    },
+    "p9sg": {
+      "source_hash": "a3b98fb0723e",
+      "text": "This splits one total; it isn't 6 unrelated ratings."
+    },
+    "dkq3": {
+      "source_hash": "a7a1dfda496a",
+      "text": "Of all 6, only naturally regenerating forest scores highest."
+    },
+    "w86h": {
+      "source_hash": "82bf922d9b5e",
+      "text": "Use the top-scoring class; the red-boxed cell turns green."
+    },
+    "wh49": {
+      "source_hash": "4d4b5eb47bf0",
+      "text": "This is argmax: it chooses a class and doesn't retain all the scores."
+    },
+    "6ybg": {
+      "source_hash": "7bc2276e4b7d",
+      "text": "Record naturally regenerating forest as the sole top class, with all 6 scores."
+    },
+    "xxju": {
+      "source_hash": "136abf8ee820",
+      "text": "Green gives a class name; values reveal its score distribution."
+    },
+    "endc": {
+      "source_hash": "888b58acfc41",
+      "text": "Can we choose as clearly for another cell from the same source?"
+    },
+    "appe": {
+      "source_hash": "af327d0012d2",
+      "text": "Now another cell in this block, chosen for the lowest maximum score."
+    },
+    "beg8": {
+      "source_hash": "beecd17e1562",
+      "text": "Reading practice, not random sampling for overall map accuracy"
+    },
+    "fe8z": {
+      "source_hash": "2ce4642ce9d5",
+      "text": "The second cell's pixel center is at 121.42234°E."
+    },
+    "ymf8": {
+      "source_hash": "7a91180c8e87",
+      "text": "24.69528°N. Use this location to find the red-boxed cell."
+    },
+    "54sx": {
+      "source_hash": "33135fa4be3c",
+      "text": "The 5 values in order are 0, 86, 0, 1, 77."
+    },
+    "mfsh": {
+      "source_hash": "346e7529302c",
+      "text": "Naturally regenerating forest 86, plantation forest 1, tree crops 77: total 164."
+    },
+    "578j": {
+      "source_hash": "70c759c7ba61",
+      "text": "250 minus 164 gives 86 for other land."
+    },
+    "97h6": {
+      "source_hash": "f00ffe55434f",
+      "text": "Naturally regenerating forest and other land both have 86, tying for highest."
+    },
+    "8mtz": {
+      "source_hash": "f92b1012d4af",
+      "text": "Divide both by 250 to get the same score, 0.344."
+    },
+    "4amm": {
+      "source_hash": "21955d851fa3",
+      "text": "Plantation forest's 1 becomes 0.004."
+    },
+    "ux8j": {
+      "source_hash": "79bf1af49fc6",
+      "text": "Tree crops and agroforestry's 77 becomes 0.308."
+    },
+    "y64h": {
+      "source_hash": "0408d1712090",
+      "text": "Primary forest and planted forest are 0."
+    },
+    "afyy": {
+      "source_hash": "9902ddfcb5ec",
+      "text": "Before recording the second cell, do these 6 scores also add up to 1?"
+    },
+    "f2ze": {
+      "source_hash": "434f81a337c3",
+      "text": "Add the 2 scores of 0.344 to get 0.688."
+    },
+    "ckag": {
+      "source_hash": "fd071e4fce68",
+      "text": "Add 0.308 to get 0.996."
+    },
+    "n37p": {
+      "source_hash": "e98f210a7177",
+      "text": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged."
+    },
+    "ecb8": {
+      "source_hash": "090d9f9cbcc9",
+      "text": "Wrong sum? Check missed terms and decimal places; match each class name."
+    },
+    "8k4a": {
+      "source_hash": "f90dd80873cb",
+      "text": "If only one color is shown, which class is chosen?"
+    },
+    "z33x": {
+      "source_hash": "8040671f0803",
+      "text": "Showing one class compresses 6 scores into one label; it doesn't break the tie."
+    },
+    "wnrz": {
+      "source_hash": "b2b55892c547",
+      "text": "Our map picks the first top-scoring class in class order."
+    },
+    "ywz8": {
+      "source_hash": "694ef01d2949",
+      "text": "So it gets the naturally regenerating forest color too."
+    },
+    "ww8v": {
+      "source_hash": "b674a6d8e760",
+      "text": "Remember the first green cell: just one top class"
+    },
+    "mx7g": {
+      "source_hash": "54c30e4f5c87",
+      "text": "Put both side by side: same color, different information."
+    },
+    "7qfx": {
+      "source_hash": "5848d6f8a077",
+      "text": "Record the tie: naturally regenerating forest and other land; note first-in-order display."
+    },
+    "hbci": {
+      "source_hash": "e218c30a9dd6",
+      "text": "To compare results, read the note; don't let color hide the answer."
+    },
+    "sbkg": {
+      "source_hash": "32f5702cdbf7",
+      "text": "After 2 green cells, can scores directly mean chances of being right?"
+    },
+    "upmh": {
+      "source_hash": "1ac3b0d3f953",
+      "text": "To use scores, first separate model scores from real accuracy."
+    },
+    "vb62": {
+      "source_hash": "5562650f79c2",
+      "text": "These scores lack post-hoc probability calibration."
+    },
+    "8m2e": {
+      "source_hash": "b7766cdd2582",
+      "text": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes."
+    },
+    "bs4s": {
+      "source_hash": "cd96a342fedc",
+      "text": "So you can't directly say this cell has a 99.2% chance of being correct."
+    },
+    "ci5j": {
+      "source_hash": "c7359b572078",
+      "text": "The model sees clues; check land history and management use against reference data."
+    },
+    "6ss6": {
+      "source_hash": "6f02ea0220be",
+      "text": "Once scores are clear, keep location and data year in the same row."
+    },
+    "rume": {
+      "source_hash": "a6e204dddec5",
+      "text": "Released in May, the baseline describes land conditions in 2020."
+    },
+    "pvkj": {
+      "source_hash": "6083843cf088",
+      "text": "The formal data paper was published on October 21."
+    },
+    "ncx4": {
+      "source_hash": "aa1ea920be41",
+      "text": "That introduction also shared an early-release annual series for 2017–2025."
+    },
+    "j5kv": {
+      "source_hash": "a3a6340e86e1",
+      "text": "One location can have yearly outputs, extending classification over time."
+    },
+    "nqyj": {
+      "source_hash": "cf82f093a01f",
+      "text": "Compare one place: fix location; keep each year's class order and all 6 scores."
+    },
+    "wfb2": {
+      "source_hash": "80b5c3c18692",
+      "text": "Changing only colors hides the ties and score gaps we just saw."
+    },
+    "88pk": {
+      "source_hash": "14cbc0dae702",
+      "text": "These two 2020 cells only show what this version's output looks like."
+    },
+    "bu6j": {
+      "source_hash": "867a8d8ace33",
+      "text": "Log year, location, 6 scores and all top-scoring classes in one pixel record."
+    },
+    "hr4b": {
+      "source_hash": "37a3fd66c2b2",
+      "text": "This row keeps what a single green color leaves out."
+    },
+    "4w7g": {
+      "source_hash": "7b9bf55b4843",
+      "text": "What environments do you usually view on maps?"
+    },
+    "39nc": {
+      "source_hash": "0c4caad74bac",
+      "text": "Subscribe, and let's understand real AI outputs together."
+    }
+  }
+}

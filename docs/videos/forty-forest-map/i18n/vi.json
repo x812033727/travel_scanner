@@ -1,0 +1,412 @@
+{
+  "title": "Bản đồ rừng Google ForTy: tính điểm 6 loại từ 2 điểm ảnh Đài Loan",
+  "description": "2 điểm ảnh thật tại Đài Loan cho kết quả 6 loại đất của ForTy, gồm OtherLand (đất khác).\nDành cho bạn muốn hiểu đầu ra bản đồ AI dù chưa đọc tệp viễn thám: dùng đủ giá trị, tính bù và phép chia để hoàn thành ghi chép điểm ảnh.\n\nPhép tính dùng Forest Typology 2020 (v1). Phân biệt với chuỗi dữ liệu hằng năm sơ bộ 2017–2025 được chia sẻ trong phần giới thiệu nghiên cứu tháng 10 năm 2026; B là ví dụ có điểm thấp được cố ý chọn để tập đọc, không phải mẫu đánh giá độ chính xác.\n\nDữ liệu: Neumann và cộng sự (2026), Forest Typology 2020 (v1).\nDOI: https://api.figshare.com/v2/articles/32288616/versions/1\nDOI: 10.25452/figshare.plus.32288616.v1\nGiấy phép CC BY 4.0: https://creativecommons.org/licenses/by/4.0/\nCác sửa đổi trong video: cắt vùng, tính bù, chọn loại cao nhất đầu tiên và vẽ lại. Biểu đồ không dùng bản đồ nền vệ tinh.\n\nGói dữ liệu video (giá trị gốc, tọa độ và quy tắc chọn mẫu): https://github.com/x812033727/travel_scanner/tree/e0c70c899/docs/videos/forty-forest-map/data",
+  "tags": [
+    "ForTy",
+    "Google AI",
+    "bản đồ rừng",
+    "AlphaEarth",
+    "dữ liệu vệ tinh",
+    "công nghệ AI",
+    "rừng tái sinh tự nhiên"
+  ],
+  "chapters": {
+    "first-grid": "Đọc ô xanh Đài Loan",
+    "label-meaning": "6 loại sau màu xanh",
+    "pixel-record": "Tìm đúng 5 giá trị",
+    "residual-rule": "Bù loại thứ 6, chọn cao nhất",
+    "b-selected-grid": "Đổi ô, tính điểm 6 loại",
+    "score-question": "Ghi điểm số và năm dữ liệu",
+    "complete-pixel-record": "Hoàn tất một dòng điểm ảnh"
+  },
+  "source_hashes": {
+    "chapters": {
+      "first-grid": "d2ec37c4047d",
+      "label-meaning": "14bcf64205a3",
+      "pixel-record": "cb394302d85a",
+      "residual-rule": "f3f49f822fbd",
+      "b-selected-grid": "17c6a0c4e962",
+      "score-question": "904d583e031e",
+      "complete-pixel-record": "d90396cd34a3"
+    },
+    "title": "bb370a30ffb7",
+    "description": "fc828ccf69df",
+    "tags": "4a0aef16d319",
+    "thumbnail": "0dbe591a2468"
+  },
+  "lines": {
+    "7732": {
+      "source_hash": "9b436683233d",
+      "text": "Lấy vùng 10 nhân 10 ô quanh ô chỉ định; khung đỏ chỉ ô ta sẽ tính."
+    },
+    "8aw6": {
+      "source_hash": "a20b19f15f64",
+      "text": "Tôi lấy ô xanh ForTy này từ dữ liệu Đài Loan năm 2020."
+    },
+    "gngj": {
+      "source_hash": "6a9e5db9b529",
+      "text": "Bản đồ có 6 loại, sao chỉ lưu 5 giá trị?"
+    },
+    "ep85": {
+      "source_hash": "afd1aa823264",
+      "text": "Số 248 trong đó dùng đơn vị gì?"
+    },
+    "jw6i": {
+      "source_hash": "a9469681da1f",
+      "text": "Ô khác cũng xanh, kết quả đọc ra có giống nhau không?"
+    },
+    "5ur9": {
+      "source_hash": "157c05af86c0",
+      "text": "Tuần này DeepMind giới thiệu ForTy; ta bắt đầu từ 2 ô này."
+    },
+    "m2p6": {
+      "source_hash": "f192ea50797e",
+      "text": "Ô xanh không chỉ cho biết có cây, mà còn cách cây mọc và được dùng làm gì."
+    },
+    "erqz": {
+      "source_hash": "7b43ad4f9cc6",
+      "text": "Rừng nguyên sinh cần cây bản địa, không thấy dấu hiệu tác động của con người."
+    },
+    "t4w3": {
+      "source_hash": "463c4175fdb1",
+      "text": "Rừng tái sinh tự nhiên chủ yếu tự mọc lại, gồm cả rừng thứ sinh đang phục hồi."
+    },
+    "66nz": {
+      "source_hash": "6f430b4ae5c1",
+      "text": "Nếu rừng do con người trồng thì xếp vào bảng này ra sao?"
+    },
+    "3pse": {
+      "source_hash": "77f30f79a91a",
+      "text": "Rừng trồng chủ yếu do trồng cây hoặc gieo hạt; dữ liệu này yêu cầu chu kỳ khai thác trên 40 năm."
+    },
+    "v9fh": {
+      "source_hash": "4cffec66e250",
+      "text": "Chu kỳ khai thác là lịch trồng, quản lý đến thu hoạch lại, khác với tuổi hiện tại của cây."
+    },
+    "7id9": {
+      "source_hash": "86d3a4a25712",
+      "text": "Rừng trồng thâm canh có cường độ quản lý cao hơn, thường ít loài, đồng tuổi, khoảng cách đều."
+    },
+    "2vcb": {
+      "source_hash": "0f139e163572",
+      "text": "Điều kiện chu kỳ khai thác của loại này là 40 năm trở xuống."
+    },
+    "yiya": {
+      "source_hash": "10ec9a8094c7",
+      "text": "Cây trồng thân gỗ và nông lâm kết hợp gồm cọ dầu, cao su, vườn quả, cho nông sản ngoài gỗ."
+    },
+    "rrgq": {
+      "source_hash": "2a0041eeda2c",
+      "text": "Đất khác có thể gồm cây đô thị hay thực vật thân gỗ thưa."
+    },
+    "fbc5": {
+      "source_hash": "442655cde31b",
+      "text": "6 loại có vị trí cố định; đọc giá trị phải kèm tên loại."
+    },
+    "gsa7": {
+      "source_hash": "f3920569cf3b",
+      "text": "Nhưng chỉ qua ảnh vệ tinh, mô hình lấy đâu ra các khác biệt ấy?"
+    },
+    "9wmz": {
+      "source_hash": "753e1d60f35a",
+      "text": "AlphaEarth gom quan sát vệ tinh nhiều năm thành một bộ số."
+    },
+    "jkby": {
+      "source_hash": "8891440b374a",
+      "text": "ForTy dùng bộ số ấy tìm dấu hiệu về bố trí trồng cây, mùa và chu kỳ sinh trưởng."
+    },
+    "5nt9": {
+      "source_hash": "fdcabf287920",
+      "text": "Huấn luyện còn dùng điểm do chuyên gia và dữ liệu vùng gắn nhãn, ghép dấu hiệu với loại đất."
+    },
+    "m8cb": {
+      "source_hash": "63db17e31a5e",
+      "text": "5 số nguyên trong ô xanh chứa điểm mô hình cho các loại này."
+    },
+    "p2ry": {
+      "source_hash": "8b1ba845b6a6",
+      "text": "Để tìm đúng 5 giá trị, cần xác định năm dữ liệu và vị trí trước."
+    },
+    "u5js": {
+      "source_hash": "c513c81a1051",
+      "text": "Vị trí dùng kinh độ Đông 121.4, vĩ độ Bắc 24.7."
+    },
+    "yi97": {
+      "source_hash": "2ee1a3341f4d",
+      "text": "Lưới 10 mét là độ phân giải đầu ra, không phải danh sách vị trí từng cây."
+    },
+    "2k27": {
+      "source_hash": "d339ed359da4",
+      "text": "Đặt tên loại theo thứ tự cố định bên cạnh để không gán số sang loại khác."
+    },
+    "vk36": {
+      "source_hash": "4e8d9e2dcea0",
+      "text": "Tổng giá trị 6 loại là 250; số 255 được dùng riêng để báo thiếu dữ liệu."
+    },
+    "gfes": {
+      "source_hash": "8a2ba9d3426e",
+      "text": "Gặp dấu thiếu dữ liệu thì loại ô đó trước, không coi nó là điểm số."
+    },
+    "e826": {
+      "source_hash": "70b0c02a6562",
+      "text": "Cả 5 giá trị ở ô này đều hợp lệ; có thể tính bù đất khác rồi so sánh 6 loại."
+    },
+    "svhy": {
+      "source_hash": "1670f3daf02a",
+      "text": "Tên trường phải đi cùng giá trị; một dãy số riêng không cho biết loại nào."
+    },
+    "3gwz": {
+      "source_hash": "2bcb10651c3b",
+      "text": "Bổ sung loại thứ 6 thiếu ban đầu vào bảng thế nào?"
+    },
+    "7iv8": {
+      "source_hash": "bedeb009e520",
+      "text": "Loại thứ 6 nằm trong tổng; lấy 250 trừ đi để tính bù."
+    },
+    "bxdi": {
+      "source_hash": "c7ce3516b2aa",
+      "text": "5 giá trị ô này lần lượt là 0, 248, 0, 0, 0."
+    },
+    "anxa": {
+      "source_hash": "c77038507e33",
+      "text": "248 là điểm được đổi thang để lưu, không phải số cây hay mét vuông."
+    },
+    "up9r": {
+      "source_hash": "2ca68b83ed91",
+      "text": "248 thuộc rừng tái sinh tự nhiên, 4 loại còn lại bằng 0; tổng là 248."
+    },
+    "3p97": {
+      "source_hash": "a96976409357",
+      "text": "250 trừ 248 cho đất khác giá trị 2."
+    },
+    "4av2": {
+      "source_hash": "59067461efc6",
+      "text": "Tính bù xong, kiểm tra cả 6 giá trị đều từ 0 đến 250; tổng cũng phải về 250."
+    },
+    "8hpb": {
+      "source_hash": "28a5a7ef2da6",
+      "text": "Đổi các giá trị lưu trữ thành điểm mô hình từ 0 đến 1 thế nào?"
+    },
+    "ywu9": {
+      "source_hash": "c6abda92d346",
+      "text": "Chia từng giá trị cho 250; 248 của rừng tái sinh tự nhiên thành 0.992."
+    },
+    "u362": {
+      "source_hash": "9dbdbe4f8b5c",
+      "text": "Đất khác có giá trị 2, chia ra được 0.008."
+    },
+    "eym7": {
+      "source_hash": "3e186d0579d1",
+      "text": "4 loại còn lại lưu giá trị 0, đổi sang điểm cũng đều là 0."
+    },
+    "k3i2": {
+      "source_hash": "d8b2e0012cf1",
+      "text": "Cộng điểm cả 6 loại lại được đúng 1."
+    },
+    "p9sg": {
+      "source_hash": "a3b98fb0723e",
+      "text": "Đây là chia cùng một tổng, không phải 6 lần chấm điểm độc lập."
+    },
+    "dkq3": {
+      "source_hash": "a7a1dfda496a",
+      "text": "So cả 6 điểm, chỉ rừng tái sinh tự nhiên cao nhất."
+    },
+    "w86h": {
+      "source_hash": "82bf922d9b5e",
+      "text": "Tô màu theo loại có điểm cao nhất; ô khung đỏ mang màu xanh của loại đó."
+    },
+    "wh49": {
+      "source_hash": "4d4b5eb47bf0",
+      "text": "Đó là phép lấy giá trị lớn nhất: chọn loại, không giữ lại toàn bộ điểm."
+    },
+    "6ybg": {
+      "source_hash": "7bc2276e4b7d",
+      "text": "Vì thế, ghi: chỉ rừng tái sinh tự nhiên đạt điểm cao nhất; kèm đủ 6 điểm."
+    },
+    "xxju": {
+      "source_hash": "136abf8ee820",
+      "text": "Ô xanh chỉ cho biết tên loại; mở các giá trị mới thấy phân bố của ô."
+    },
+    "endc": {
+      "source_hash": "888b58acfc41",
+      "text": "Ô khác cùng nguồn có chọn được rõ ràng như vậy không?"
+    },
+    "appe": {
+      "source_hash": "af327d0012d2",
+      "text": "Sang ô khác trong cùng vùng; lần này cố ý chọn nơi có điểm cao nhất thấp nhất."
+    },
+    "beg8": {
+      "source_hash": "beecd17e1562",
+      "text": "Bài tập đọc, không dùng mẫu ngẫu nhiên ước tính độ chính xác cả bản đồ."
+    },
+    "fe8z": {
+      "source_hash": "2ce4642ce9d5",
+      "text": "Tâm điểm ảnh thứ 2 có kinh độ Đông 121.42234."
+    },
+    "ymf8": {
+      "source_hash": "7a91180c8e87",
+      "text": "Vĩ độ Bắc 24.69528; dùng vị trí này đối chiếu khung đỏ."
+    },
+    "54sx": {
+      "source_hash": "33135fa4be3c",
+      "text": "5 giá trị lần lượt là 0, 86, 0, 1, 77."
+    },
+    "mfsh": {
+      "source_hash": "346e7529302c",
+      "text": "Rừng tái sinh tự nhiên 86, rừng trồng thâm canh 1, cây trồng thân gỗ 77: tổng 164."
+    },
+    "578j": {
+      "source_hash": "70c759c7ba61",
+      "text": "250 trừ 164 cho đất khác giá trị 86."
+    },
+    "97h6": {
+      "source_hash": "f00ffe55434f",
+      "text": "Rừng tái sinh tự nhiên và đất khác cùng 86; có 2 loại đồng điểm cao nhất."
+    },
+    "8mtz": {
+      "source_hash": "f92b1012d4af",
+      "text": "Chia cả 2 cho 250, đều được 0.344."
+    },
+    "4amm": {
+      "source_hash": "21955d851fa3",
+      "text": "Giá trị 1 của rừng trồng thâm canh thành 0.004."
+    },
+    "ux8j": {
+      "source_hash": "79bf1af49fc6",
+      "text": "77 của cây trồng thân gỗ và nông lâm kết hợp thành 0.308."
+    },
+    "y64h": {
+      "source_hash": "0408d1712090",
+      "text": "Rừng nguyên sinh và rừng trồng đều bằng 0."
+    },
+    "afyy": {
+      "source_hash": "9902ddfcb5ec",
+      "text": "Trước khi ghi ô thứ 2, cộng 6 điểm này cũng được 1 chứ?"
+    },
+    "f2ze": {
+      "source_hash": "434f81a337c3",
+      "text": "Cộng 2 giá trị 0.344, được 0.688."
+    },
+    "ckag": {
+      "source_hash": "fd071e4fce68",
+      "text": "Thêm 0,308, ra 0,996."
+    },
+    "n37p": {
+      "source_hash": "e98f210a7177",
+      "text": "Cộng nốt 0.004 được đúng 1; số 0 của 2 loại kia không đổi tổng."
+    },
+    "ecb8": {
+      "source_hash": "090d9f9cbcc9",
+      "text": "Nếu tổng sai, kiểm tra mục sót và chữ số thập phân; vẫn đối chiếu từng tên loại."
+    },
+    "8k4a": {
+      "source_hash": "f90dd80873cb",
+      "text": "Nếu chỉ tô được một màu, hình sẽ chọn loại nào?"
+    },
+    "z33x": {
+      "source_hash": "8040671f0803",
+      "text": "Chỉ hiện một loại là nén 6 điểm thành một nhãn; các loại đồng hạng không tự phân cao thấp."
+    },
+    "wnrz": {
+      "source_hash": "b2b55892c547",
+      "text": "Hình dẫn xuất của chúng tôi chọn loại cao nhất đầu tiên theo thứ tự loại."
+    },
+    "ywz8": {
+      "source_hash": "694ef01d2949",
+      "text": "Vậy nó cũng mang màu rừng tái sinh tự nhiên."
+    },
+    "ww8v": {
+      "source_hash": "b674a6d8e760",
+      "text": "Nhớ ô xanh lúc mở màn chứ? Nó chỉ có 1 loại cao nhất."
+    },
+    "mx7g": {
+      "source_hash": "54c30e4f5c87",
+      "text": "Đặt 2 ô cạnh nhau, cùng màu không còn mang cùng thông tin."
+    },
+    "7qfx": {
+      "source_hash": "5848d6f8a077",
+      "text": "Ghi lại rừng tái sinh tự nhiên và đất khác đồng hạng, rồi chú thích chọn loại đầu để hiện."
+    },
+    "hbci": {
+      "source_hash": "e218c30a9dd6",
+      "text": "Khi cần so kết quả, hãy đọc chú thích này, đừng để màu sắc lược mất câu trả lời."
+    },
+    "sbkg": {
+      "source_hash": "32f5702cdbf7",
+      "text": "Đọc xong 2 ô xanh, có thể coi thẳng các điểm này là xác suất đúng không?"
+    },
+    "upmh": {
+      "source_hash": "1ac3b0d3f953",
+      "text": "Trước khi dùng điểm, cần phân biệt điểm mô hình với tỷ lệ đúng thực tế."
+    },
+    "vb62": {
+      "source_hash": "5562650f79c2",
+      "text": "Đây là điểm mô hình, chưa hiệu chuẩn xác suất sau khi tạo điểm."
+    },
+    "8m2e": {
+      "source_hash": "b7766cdd2582",
+      "text": "Muốn coi điểm là xác suất đúng, cần tham chiếu độc lập, kiểm tra điểm có khớp thực tế không."
+    },
+    "bs4s": {
+      "source_hash": "cd96a342fedc",
+      "text": "Vì thế không thể nói thẳng ô này có 99.2% xác suất phân loại đúng."
+    },
+    "ci5j": {
+      "source_hash": "c7359b572078",
+      "text": "Mô hình thấy dấu hiệu quan sát; lịch sử và cách sử dụng đất còn phải đối chiếu tài liệu."
+    },
+    "6ss6": {
+      "source_hash": "6f02ea0220be",
+      "text": "Đọc rõ điểm rồi, giữ cả vị trí và năm dữ liệu trong cùng dòng ghi chép."
+    },
+    "rume": {
+      "source_hash": "a6e204dddec5",
+      "text": "Dữ liệu mốc 2020 công bố tháng 5, mô tả hiện trạng đất của năm đó."
+    },
+    "pvkj": {
+      "source_hash": "6083843cf088",
+      "text": "Bài báo dữ liệu chính thức xuất bản ngày 21 tháng 10."
+    },
+    "ncx4": {
+      "source_hash": "aa1ea920be41",
+      "text": "Phần giới thiệu đó còn chia sẻ chuỗi dữ liệu hằng năm sơ bộ từ 2017 đến 2025."
+    },
+    "j5kv": {
+      "source_hash": "a3a6340e86e1",
+      "text": "Một vị trí có thể có đầu ra của nhiều năm, để đọc phân loại theo thời gian."
+    },
+    "nqyj": {
+      "source_hash": "cf82f093a01f",
+      "text": "Muốn so cùng nơi, cố định vị trí rồi giữ thứ tự loại và đủ 6 điểm của mỗi năm."
+    },
+    "wfb2": {
+      "source_hash": "80b5c3c18692",
+      "text": "Chỉ đổi màu sẽ che mất các loại đồng hạng và chênh lệch điểm vừa thấy."
+    },
+    "88pk": {
+      "source_hash": "14cbc0dae702",
+      "text": "Tương tự, 2 ô năm 2020 chỉ cho biết đầu ra của phiên bản này trông ra sao."
+    },
+    "bu6j": {
+      "source_hash": "867a8d8ace33",
+      "text": "Ghi năm, vị trí, 6 điểm và mọi loại cao nhất vào cùng một dòng ghi điểm ảnh."
+    },
+    "hr4b": {
+      "source_hash": "37a3fd66c2b2",
+      "text": "Dòng ghi ấy giữ được thông tin mà một màu xanh đã lược bỏ."
+    },
+    "4w7g": {
+      "source_hash": "7b9bf55b4843",
+      "text": "Hay xem môi trường gì qua bản đồ?"
+    },
+    "39nc": {
+      "source_hash": "0c4caad74bac",
+      "text": "Đăng ký để cùng đọc hiểu đầu ra thực tế của AI."
+    }
+  },
+  "thumbnail": {
+    "tag": "Ô ForTy thật",
+    "headline": "**Xanh lá**\nGiấu gì?",
+    "sub": "5 giá trị, 6 loại"
+  }
+}
