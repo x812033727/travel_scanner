@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T19:13:17.033326+00:00",
-  "state": "five_baseline_eight_language_text_PASS_c05_c07_c09_new_revisions_c08_authoring_media_held",
+  "updated_at": "2026-10-25T21:20:21.848162+00:00",
+  "state": "five_current_eight_language_text_PASS_c09_r7_adopted_c05_c07_c08_c10_reviews_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -172,18 +172,21 @@
       "source_length_planning_hold": true,
       "length_extension_candidate": {
         "path": "c05/candidates/length-extension",
-        "current_revision": "r6_authoring_not_frozen",
-        "last_frozen_revision": "c05/candidates/length-extension/history/r5",
-        "last_frozen_video_sha256": "7634de38aec03e756ebd19b6e9eac3fed97af5d350c48338d2b5515caf364761",
+        "current_revision": "r9_frozen_source_delta_pending_actual_panel8_HOLD",
+        "last_frozen_revision": "c05/candidates/length-extension/history/r8",
+        "last_frozen_video_sha256": "821196689581188053a483819a01facd851502e370721b7ab8d52ef9ba165709",
         "source_delta": "PASS",
         "native_merged": "HOLD",
+        "last_actual_native_panel": 8,
         "merged_failed": [
-          "no_recap"
+          "one_line"
         ],
         "native_lint_errors": 0,
-        "last_frozen_body_units": 2804,
+        "last_frozen_body_units": 3186,
         "adopted": false,
-        "actual_duration_measured": false
+        "actual_duration_measured": false,
+        "video_sha256": "627eb73b3756529308800a1091ca0a8dfc3a5b3374aeb13084df30291b280e51",
+        "current_body_units": 3180
       },
       "candidate_approved": false
     },
@@ -253,32 +256,63 @@
     },
     {
       "id": "c07",
-      "state": "r2_structural_rewrite_in_progress_not_frozen",
-      "last_frozen_revision": "c07/history/r1",
-      "last_frozen_video_sha256": "246607e69585bcf4e28377e3a1215062407d68bb901fc9841163af1c9a796372",
-      "last_frozen_source_and_written_visual": "PASS",
-      "last_frozen_source_receipt": "c07/history/r1/reviews/source-r1-independent.json",
+      "state": "r3_frozen_source_delta_and_new_readers_pending",
+      "last_frozen_revision": "c07/history/r2",
+      "last_frozen_video_sha256": "d229d4cd77d92c9906bf921423baa474db433472efe307ae58c6668cb1a75b0c",
+      "last_frozen_source_and_written_visual": "HOLD",
+      "last_frozen_source_receipt": "c07/history/r2/reviews/source-r2-independent.json",
       "last_frozen_native_merged": "HOLD",
       "last_frozen_native_failed": [
-        "chapters_link",
-        "payoffs",
-        "no_recap",
-        "no_detour"
+        "one_line",
+        "no_recap"
       ],
-      "last_frozen_native_receipt": "c07/history/r1/reviews/narrative-r1.json",
+      "last_frozen_native_receipt": "c07/history/r2/reviews/narrative-r2.json",
       "last_frozen_lint_errors": 0,
       "backend_submitted": false,
       "actual_narration_seconds": null,
       "audio_generated": false,
       "illustrations_generated": false,
       "media_qa": false,
-      "final_approval": false
+      "final_approval": false,
+      "current_revision": "r3",
+      "video_sha256": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
+      "body_units": 2752,
+      "source_and_written_visual": "PENDING",
+      "narrative_merged": "HOLD",
+      "narrative_receipt": "c07/reviews/narrative-r3.json",
+      "native_merged_failed": [
+        "one_line",
+        "no_toc",
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "id": "c08",
+      "state": "r4_source_PASS_native_HOLD_no_recap",
+      "current_revision": "r4",
+      "video_sha256": "1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f",
+      "body_units": 2486,
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "HOLD",
+      "backend_submitted": false,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "narrative_receipt": "c08/reviews/narrative-r4.json",
+      "native_merged_failed": [
+        "no_recap"
+      ],
+      "source_receipt": "c08/history/r4/reviews/source-r4-independent.json",
+      "native_fact_check": "c08/history/r4/verify-1.md"
     },
     {
       "id": "c09",
       "slug": "story-everyday-patagonia-c09-remake-20261025",
-      "title": "Patagonia憑什麼勸你少用？1972年的岩釘難題｜品牌故事",
-      "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+      "title": "Patagonia勸少敲，1973年自己敢嗎？｜品牌故事",
+      "video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
       "source_and_written_visual": "PASS",
       "narrative_merged": "PASS",
       "narrative_readers": [
@@ -287,20 +321,18 @@
           "failed": []
         },
         {
-          "passed": false,
-          "failed": [
-            "payoffs"
-          ]
+          "passed": true,
+          "failed": []
         }
       ],
       "narrative_receipt": "c09/reviews/narrative-final.json",
-      "source_receipt": "c09/reviews/source-r12-delta.json",
+      "source_receipt": "c09/reviews/source-length-r7-independent.json",
       "lint_errors": 0,
-      "lint_warnings": 18,
-      "backend_script_status": "approved",
-      "backend_review_id": "5c822c92-3bb6-437e-8b8a-157737a71543",
-      "canonical_script_sha256": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1",
-      "script_approval_imported": true,
+      "lint_warnings": 12,
+      "backend_script_status": "pending",
+      "backend_review_id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+      "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+      "script_approval_imported": false,
       "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-patagonia-c09-remake-20261025",
       "preflight": "c09/preflight-inputs.json",
       "actual_narration_seconds": null,
@@ -308,36 +340,69 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "backend_checked_at": "2026-10-25T15:31:11.206Z",
+      "backend_checked_at": "2026-10-25T20:07:43.827Z",
       "backend_stage": "outline approved",
       "source_length_planning_hold": true,
       "length_extension_candidate": {
         "path": "c09/candidates/length-extension",
-        "revision": "r4",
-        "video_sha256": "8fc4ada68f086f68532f3c317606018273f9d291885e2833795bfc14efab1aad",
+        "revision": "r7",
+        "video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
         "native_lint_errors": 0,
-        "source_delta_and_new_readers": "pending",
-        "adopted": false,
-        "actual_duration_measured": false,
-        "frozen_revision": "c09/candidates/length-extension/history/r4",
         "source_delta": "PASS",
-        "native_merged": "HOLD",
-        "merged_failed": [
-          "one_line",
-          "no_recap",
-          "no_detour"
-        ],
-        "next_revision": "r5_structural_rewrite_in_progress"
+        "native_merged": "PASS",
+        "merged_failed": [],
+        "adopted": true,
+        "actual_duration_measured": false,
+        "old_approval_applies_to_new_script": false
       },
       "candidate_approved": false,
-      "baseline_text_translations": "c09/i18n/preparation-status.json",
-      "baseline_text_review": "TEXT_PASS"
+      "native_fact_check": "c09/verify-1.md",
+      "backend_outline_review_id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_category": "story",
+      "text_translations": "c09/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "text_translation_entries": 824,
+      "required_translation_fixes_resolved": 3,
+      "stale_or_missing_translation_warnings": 0,
+      "body_units": 2737,
+      "total_spoken_units": 2916,
+      "clean_master_recipe": "c09/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "production_handoff": "c09/production-entry.md",
+      "historical_baseline": "c09/history/baseline-before-length",
+      "historical_approval_applies_to_current": false
+    },
+    {
+      "id": "c10",
+      "state": "r2_authoring_after_r1_source_PASS_native_HOLD",
+      "current_revision": "r1",
+      "video_sha256": "5c85945061cd8398f291fe6dc27ca55048ed65fe84a4d416fc7d22b050c3e91a",
+      "body_units": 3261,
+      "source_and_written_visual": "PASS",
+      "narrative_merged": "HOLD",
+      "backend_submitted": false,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "source_receipt": "c10/history/r1/reviews/source-r1-independent.json",
+      "native_fact_check": "c10/history/r1/verify-1.md",
+      "narrative_receipt": "c10/history/r1/reviews/narrative-r1.json",
+      "native_merged_failed": [
+        "scene_first",
+        "no_recap"
+      ],
+      "last_frozen_revision": "c10/history/r1",
+      "last_frozen_video_sha256": "5c85945061cd8398f291fe6dc27ca55048ed65fe84a4d416fc7d22b050c3e91a"
     }
   ],
   "paid_requests": 0,
   "new_media_files": 0,
   "original_sources_preserved": {
-    "checked_at": "2026-10-25T18:40:25.034076+00:00",
+    "checked_at": "2026-10-25T21:20:21.848162+00:00",
     "checked_files": 53,
     "changed_original_files": [],
     "status": "PASS",
@@ -358,7 +423,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "files": 1017,
+      "files": 1575,
       "scope": "Git index bytes only, including staged artifacts; active unstaged author files excluded"
     },
     "native_c03_fact_checked": true,
@@ -398,8 +463,21 @@
         "lint_errors": 0,
         "stale_or_missing_translation_warnings": 0,
         "other_soft_warnings": 17
+      },
+      {
+        "id": "c09",
+        "status": "PASS",
+        "lines": 824,
+        "lint_errors": 0,
+        "stale_or_missing_translation_warnings": 0,
+        "other_soft_warnings": 12
       }
-    ]
+    ],
+    "whitespace": {
+      "status": "PASS_WITH_BOUND_SOURCE_QUOTE_EXCEPTIONS",
+      "preserved_quote_lines": 93,
+      "scope": "Exact hash-bound C09 claims.md source quotations and immutable EOF blanks preserved; all other staged whitespace checked."
+    }
   },
   "remaining": [
     "protected budget-history readback, whole-film quote and remake account activation",
@@ -463,7 +541,7 @@
   "translation_text_preparation": {
     "receipt": null,
     "locales": 8,
-    "lines": 4864,
+    "lines": 4928,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -486,7 +564,7 @@
       {
         "id": "c09",
         "receipt": "c09/i18n/preparation-status.json",
-        "lines": 760
+        "lines": 824
       },
       {
         "id": "c06",
@@ -495,15 +573,17 @@
       }
     ],
     "prepared_projects": 5,
-    "scope": "Exact current C03/C04/C05/C09 baselines and C06 source. C05/C09 new candidates and C07/C08 rewrites excluded."
+    "scope": "Exact current C03/C04/C05 baseline/C06 and newly adopted C09 R7 source. C05 candidate and C07/C08/C10 drafts excluded."
   },
   "latest_user_direction": "做完後你繼續下一個不用停",
   "continuation_in_progress": {
-    "c05": "r6_authoring_prior_r5_source_PASS_native_HOLD_no_recap",
+    "c05": "r9_source_delta_pending_actual_panel8_one_line_HOLD",
     "c06": "source_written_visual_native_merged_and_8locale_1304text_TEXT_PASS_media_held",
-    "c07": "r2_structural_rewrite_prior_r1_source_PASS_native_HOLD",
-    "c08": "source_research_frozen_new_rules_authoring",
-    "c09": "r5_structural_rewrite_with_new_first_person_1974_source_in_progress"
+    "c07": "r3_source_delta_pending_native_HOLD",
+    "c08": "r4_source_PASS_native_HOLD_no_recap",
+    "c09": "r7_source_native_PASS_adopted_new_backend_reviews_pending_8locale_824text_TEXT_PASS",
+    "c10": "r2_authoring_after_r1_source_PASS_native_HOLD_scene_first_no_recap"
   },
-  "narration_size_planning": "narration-size-precheck.json"
+  "narration_size_planning": "narration-size-precheck.json",
+  "new_media_files_scope": "Generated production media only; downloaded public reference media and source-page renders are excluded."
 }

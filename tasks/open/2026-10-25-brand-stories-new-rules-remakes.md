@@ -85,3 +85,6 @@ scope:
 
 - C06八語1304句／48章及metadata已全量交叉校對，19處必修後獨立重查全TEXT_PASS；8語原生縮圖均真正合併，runtime0errors／無過期缺漏譯文，17個其餘soft warnings保留。五份current基底共4864句，不含C05/C09未採候選或C07/C08新改寫。clean配方獨立METADATA_DERIVATION_PASS，實際媒體仍0。
 - C07r1來源與書面配鏡PASS（15原件／144句／141插圖+outro）但native兩讀者共同HOLD chapters_link/payoffs/no_recap/no_detour，完整history/r1後重編r2，不假裝sourcePASS就是敘事批准。C05r5來源PASS但native只共享no_recap，保留history/r5再做r6；C09r5補當事人1974AAJ原刊中的1973攀登場景實質重編；C08新稿接續中。
+
+- 當前更新：C09 R7已通過獨立來源／書面配鏡、兩全新讀者各13yes及0error實際canonical預檢後採用。新video aed95981…／官方劇本02f091ca…；新script 6a441762-8d88-45b7-adff-78b5c3ef1260、outline 5199b233-c1ee-4970-ae11-af9115cbbde9真實讀回pending。舊BASE／批准／760句完整封存，新稿不沿用其批准。新版八語824句全部TEXT_PASS，3處必修後獨立重查；五份current共4928句。clean新配方另獨立METADATA_DERIVATION_PASS，仍無實際媒體。
+- C05材料旅程R9已凍結待來源差分／actualpanel8，BASE與776句未變；C07R3修窄來源並刪物流教程待新查；C08R4兩讀者仍共享no_recap；C10R1來源／書面配鏡PASS但兩讀者共享scene_first/no_recap。完整各輪history與真正投票保留，不抽取未改稿重投。原53檔本輪再次核對未變。持續下一題準備，不將任一文字PASS宣稱影片完成。

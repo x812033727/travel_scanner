@@ -1,38 +1,96 @@
 {
-  "checked_at": "2026-10-25T16:21:13.914Z",
-  "method": "Native timeline.spokenUnits and schema.eachLine on line.text; body starts at the second chapter. Planning only, not an audio/runtime measurement.",
+  "checked_at": "2026-10-25T21:25:40.081Z",
+  "method": "Native timeline.spokenUnits on scene.lines[].text; body starts at second chapter, includes narrated closing. No audio or duration PASS.",
   "projects": [
     {
       "id": "c03",
+      "path": "c03/video.json",
+      "scope": "current Chinese source (not media readiness)",
       "video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
       "total_spoken_units": 3406,
       "after_cold_open_units": 3222,
       "actual_narration_seconds": null,
-      "decision": "Actual TTS measurement remains required; no duration pass is inferred."
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
     },
     {
       "id": "c04",
+      "path": "c04/video.json",
+      "scope": "current Chinese source (not media readiness)",
       "video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
       "total_spoken_units": 3166,
       "after_cold_open_units": 2981,
       "actual_narration_seconds": null,
-      "decision": "Actual TTS measurement remains required; no duration pass is inferred."
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
     },
     {
       "id": "c05",
+      "path": "c05/video.json",
+      "scope": "current Chinese source (not media readiness)",
       "video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
       "total_spoken_units": 2792,
       "after_cold_open_units": 2609,
       "actual_narration_seconds": null,
-      "decision": "Develop sourced length-extension candidate before paid production; preserve approved baseline and source-bound translations."
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
+    },
+    {
+      "id": "c06",
+      "path": "c06/video.json",
+      "scope": "current Chinese source (not media readiness)",
+      "video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+      "total_spoken_units": 3428,
+      "after_cold_open_units": 3229,
+      "actual_narration_seconds": null,
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
+    },
+    {
+      "id": "c07",
+      "path": "c07/video.json",
+      "scope": "current Chinese source (not media readiness)",
+      "video_sha256": "5b610a91b3a6d37a1a2f388be16035270c70ed43bf4fe3821987ef2da1a4d907",
+      "total_spoken_units": 2903,
+      "after_cold_open_units": 2752,
+      "actual_narration_seconds": null,
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
+    },
+    {
+      "id": "c08",
+      "path": "c08/video.json",
+      "scope": "current Chinese source (not media readiness)",
+      "video_sha256": "1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f",
+      "total_spoken_units": 2644,
+      "after_cold_open_units": 2486,
+      "actual_narration_seconds": null,
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
     },
     {
       "id": "c09",
-      "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
-      "total_spoken_units": 2802,
-      "after_cold_open_units": 2603,
+      "path": "c09/video.json",
+      "scope": "current Chinese source (not media readiness)",
+      "video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+      "total_spoken_units": 2916,
+      "after_cold_open_units": 2737,
       "actual_narration_seconds": null,
-      "decision": "Develop sourced length-extension candidate before paid production; preserve approved baseline and source-bound translations."
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
+    },
+    {
+      "id": "c05-candidate",
+      "path": "c05/candidates/length-extension/video.json",
+      "scope": "R9 unadopted candidate",
+      "video_sha256": "627eb73b3756529308800a1091ca0a8dfc3a5b3374aeb13084df30291b280e51",
+      "total_spoken_units": 3332,
+      "after_cold_open_units": 3180,
+      "actual_narration_seconds": null,
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
+    },
+    {
+      "id": "c10-r1",
+      "path": "c10/history/r1/video.json",
+      "scope": "Archived R1 while authoring R2",
+      "video_sha256": "5c85945061cd8398f291fe6dc27ca55048ed65fe84a4d416fc7d22b050c3e91a",
+      "total_spoken_units": 3415,
+      "after_cold_open_units": 3261,
+      "actual_narration_seconds": null,
+      "decision": "Planning only. Measured narration body must be 720–840 seconds; do not pad, slow playback or stretch pauses to meet it."
     }
   ],
   "paid_calls": 0,

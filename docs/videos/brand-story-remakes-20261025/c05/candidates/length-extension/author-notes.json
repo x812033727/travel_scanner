@@ -1,217 +1,105 @@
 {
-  "status": "UNAPPROVED_LENGTH_EXTENSION_CANDIDATE",
-  "candidate_revision": "length-r4",
-  "author": "/root/c05_r4_author",
+  "status": "HOLD_PENDING_INDEPENDENT_DELTA_AND_TWO_FRESH_READERS",
+  "candidate_revision": "length-r9",
+  "author": "/root/c05_material_author",
+  "next_actual_native_panel_round": 8,
   "parent_source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
-  "parent_candidate_video_sha256": "dbd1677d7c04ae4bc62634b910b37e06ea96c5dcef591a02fa3909b1eee0d05c",
-  "history_directory": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3",
-  "review_inputs": {
-    "source": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/source-r3-independent.json",
-      "sha256": "946c6d93e7fcd138ac9f36d4466952c03bc273030a83a8e6c8c3b14a34bd87fa"
-    },
-    "native_panel": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3.json",
-      "sha256": "9bb6d16368b86b27bf3b2c1591800d50dabe5069f2918518f9f70913f284e90c"
-    }
+  "parent_candidate_video_sha256": "821196689581188053a483819a01facd851502e370721b7ab8d52ef9ba165709",
+  "prior_core_four_sha256": {
+    "video.json": "821196689581188053a483819a01facd851502e370721b7ab8d52ef9ba165709",
+    "brief.md": "f0566e0304f807e27dfe1975a451c8b4ed79d695e231b3721c3d6fef096bfe95",
+    "series.json": "91e4c5d9022ec84cdf3c17f874539d2d71c0631f1e604712c63d4d957534793f",
+    "claims.json": "4725f6591b230d2b90c9009f36b716dc3073581ce100de834050b0d0c6291153"
   },
-  "response_to_required_feedback": [
-    {
-      "id": "no_recap",
-      "action": "刪時數/效力的三句警語，釋出問題直接向前，不先重述慢燃意義。",
-      "author_claim": "作者修訂意圖，待新讀者判定。"
+  "prior_source_receipt": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r8-independent.json",
+    "sha256": "5c8adc0632d9599dbe3c579e4be70af940a019d9e781db73a43f6985c2569838",
+    "source_video_sha256": "821196689581188053a483819a01facd851502e370721b7ab8d52ef9ba165709",
+    "reported_source_verdict": "PASS",
+    "reported_written_visual_verdict": "PASS",
+    "applies_to_r9": false
+  },
+  "independent_source_delta_review": "PENDING_OTHER_REVIEWER",
+  "narrative_review": "PENDING_TWO_FRESH_READERS",
+  "verify_written": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "role_delta": {
+    "scope": "Only the jointly failed payoffs item at c07d11. Single-reader one_line was not pursued.",
+    "narration_changed": [
+      {
+        "id": "c07d11",
+        "before": "換成你，整批花等著乾，會先搶處理速度，還是照顧書中在意的功能？",
+        "after": "乾花接著要怎麼處理，才能製成書裡出售的殺蟲粉？",
+        "spoken_unit_delta": -6,
+        "reason": "撤去無史料可決定的觀眾取捨問句，改為下一句現有搗碎/過篩動作即可回答的材料問題。"
+      }
+    ],
+    "prompt_changed": [
+      {
+        "id": "c07d11",
+        "before": "Wide shot of an anonymous worker considering baskets of fresh flowers beside available drying trays, cloudy daylight.",
+        "after": "Close-up of dried daisy flowers waiting beside a plain mortar and fine sieve on a wooden workbench, soft side light.",
+        "reason": "由開放取捨的思考場景窄為粉製動作前的準備場景。"
+      }
+    ],
+    "loop_added": {
+      "setup": "c07d11",
+      "payoff": "c07d12",
+      "what": "乾花如何成為書中出售的殺蟲粉：下一句搗碎、過篩形成細粉。"
     },
-    {
-      "id": "no_detour",
-      "action": "移除花期含量與遠古草木燻煙支線；乾花材料選擇僅留與磨粉相接的一次說明。",
-      "author_claim": "作者修訂意圖，待新讀者判定。"
-    }
-  ],
-  "single_reader_one_line_not_pursued": true,
-  "delta_from_r3": {
-    "added_lines": [],
-    "changed_lines": [
-      {
-        "id": "c05rx009",
-        "before": "不過，燒得慢只說明時間。燃燒往前走時，有效成分怎麼離開香體，交到空氣裡？",
-        "after": "燃燒往前走時，有效成分怎麼離開香體，交到空氣裡？",
-        "reason": "刪「燒得慢只說明時間」回看句，直接推進原廠釋出機制的新問題；未加入新事實。"
-      }
-    ],
-    "deleted_lines": [
-      {
-        "id": "c05le022",
-        "text": "可是，收下同一種花，含量就都一樣嗎？",
-        "spoken_units": 15,
-        "reason": "刪同種花含量的花期支線提問，從材料選擇直接回到成形。"
-      },
-      {
-        "id": "c05le003",
-        "text": "花朵展開的程度也會影響含量，盛開時最多。你手上那碗粉，前面先有了採什麼、何時採的差別。",
-        "spoken_units": 38,
-        "reason": "刪盛開程度與含量的旁支；不影響種苗、收成、磨粉與製造主線。"
-      },
-      {
-        "id": "c05r015",
-        "text": "更早怎麼對付蚊子？金鳥資料館回顧，人們曾燻燒草木，靠煙來驅蚊。",
-        "spoken_units": 27,
-        "reason": "刪遠古草木燻煙支線，避免從眼前粉料退回另一種驅蚊方法。"
-      },
-      {
-        "id": "c05r016",
-        "text": "資料館還說，草木燒旺時得設法增煙；煙多了，屋裡也可能跟著煙霧瀰漫。",
-        "spoken_units": 29,
-        "reason": "刪草木增煙與屋內煙霧支線，不用另一個問題撐長。"
-      },
-      {
-        "id": "c05r062",
-        "text": "你看到不同時期、不同商品的刻度，這些時數能不能直接換算成殺蚊本領？",
-        "spoken_units": 30,
-        "reason": "刪燃燒時數能否換算殺蚊本領的查核問答，較晚商品直接推向製造工序換代。"
-      },
-      {
-        "id": "c05r063",
-        "text": "所以也不能把開場的短香與較晚螺旋相除，說成殺蚊本領增加了幾倍。",
-        "spoken_units": 29,
-        "reason": "刪時數相除不等於殺蚊倍數的重述；稿中本來沒有作這項換算。"
-      },
-      {
-        "id": "c05r064",
-        "text": "時數說的是燃燒持續多久；把它聽成效果有多強，就已經替資料加了一句話。",
-        "spoken_units": 31,
-        "reason": "刪燃燒時間不等於效果強度的再次說明；來源界線留作者claims。"
-      }
-    ],
-    "deleted_spoken_units": 199,
-    "changed_spoken_unit_delta": -10,
-    "net_spoken_unit_delta": -209,
-    "changed_scene_object_ids": [
-      "c05rx009"
-    ],
-    "unchanged_scene_objects_exact": 98,
-    "all_retained_prompt_data_exact": true,
+    "all_other_scene_objects_exact": true,
+    "all_other_narration_exact": true,
     "all_non_scene_and_loop_video_fields_exact": true,
-    "loops_removed": [
-      {
-        "setup": "c05r062",
-        "payoff": "c05r063",
-        "what": "燃燒時數不等同殺蚊本領"
-      },
-      {
-        "setup": "c05le022",
-        "payoff": "c05le003",
-        "what": "同一種花的開花程度如何影響含量"
-      }
-    ],
-    "metadata_changes": [],
-    "opening_lines_exact": true
-  },
-  "author_self_check": {
-    "draft": "刪兩條支線與一段查核問答，縮短釋出機制的橋句。",
-    "critique": "花期及草木煙燻沒有繼續推進同一條香的製造；三句時數/效力警語又在末章被提起。",
-    "final": "材料進工具、工具交人手、人手換刀型、商品再進使用與燃燒；沒有新補事實或湊字。"
+    "all_prior_38_loops_exact": true,
+    "added_narration_lines": [],
+    "deleted_narration_lines": [],
+    "new_historical_choice_or_experiment_claim": false,
+    "net_total_unit_delta": -6,
+    "net_effective_body_unit_delta": -6
   },
   "native_units": {
     "counter": "spokenUnits(spokenText(line))",
-    "r3_total": 3177,
-    "candidate_total": 2968,
-    "candidate_opening": 183,
-    "candidate_body_excluding_opening": 2785,
-    "candidate_outro": 96,
-    "candidate_body_excluding_opening_and_outro": 2689,
+    "r8_total": 3338,
+    "r8_body_excluding_opening": 3186,
+    "r8_effective_body_excluding_opening_and_outro": 3087,
+    "r9_total": 3332,
+    "opening": 152,
+    "outro": 99,
+    "body_excluding_opening": 3180,
+    "effective_body_excluding_opening_and_outro": 3081,
+    "added_units": 0,
+    "deleted_units": 0,
+    "changed_unit_delta": -6,
+    "net_total_delta": -6,
+    "net_effective_body_delta_from_r8": -6,
     "target_actual_body_seconds": [
       720,
       840
     ],
+    "normal_4_to_5_units_per_second_body_seconds_range": [
+      616.2,
+      770.25
+    ],
+    "at_4_5_units_per_second": 684.6666666666666,
     "actual_tts_seconds": null,
     "actual_duration_verified": false,
-    "may_require_adjustment_after_actual_voice": true,
-    "planning_length_decision": "優先刪重述與支線，rough3500非硬湊字；真實聲音時長未驗收。"
+    "length_hold": true,
+    "range_is_arithmetic_not_measured_tts": true
   },
-  "planned_visuals": {
-    "scenes": 99,
-    "lines": 101,
+  "counts": {
+    "lines": 117,
+    "scenes": 115,
     "chapters": 6,
-    "illustration_scenes": 98,
+    "illustrations": 114,
     "cards": 1,
-    "planned_illustration_unit_share": 0.967654986522911,
-    "planning_basis": "spoken-unit share only, actual screen time unavailable",
-    "look_exact": true,
-    "voice_exact": true,
-    "burn_in": true,
-    "all_retained_prompt_data_exact": true,
-    "all_shots_static_stills": true,
-    "actual_generated_media_reviewed": false
-  },
-  "loop_audit": {
-    "total_declared_loops": 30,
-    "concrete_pairs_for_fresh_blind_review": [
-      {
-        "setup": "c05r003",
-        "payoff": "c05r036",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r005",
-        "payoff": "c05r052",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r025",
-        "payoff": "c05r055",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r043",
-        "payoff": "c05r045",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r067",
-        "payoff": "c05r069",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r080",
-        "payoff": "c05r081",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r084",
-        "payoff": "c05r085",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05r090",
-        "payoff": "c05r091",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05le001",
-        "payoff": "c05le002",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05le004",
-        "payoff": "c05le005",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05le010",
-        "payoff": "c05r093",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      },
-      {
-        "setup": "c05le012",
-        "payoff": "c05le013",
-        "status": "AUTHOR_INTENT_PENDING_NEW_INDEPENDENT_READERS"
-      }
-    ],
-    "opening_previews": 2,
-    "actual_30_to_45_second_cadence_verified": false
+    "loops": 39,
+    "added_lines": 0,
+    "changed_lines": 1,
+    "deleted_lines": 0,
+    "prompts_changed": 1
   },
   "native_initialized_context_lint": {
-    "scope": "read-only candidate mechanical lint, not independent verification",
     "context": {
       "canonical_root": "/workspace/work/brand-story-20261025/submission-root",
       "canonical_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
@@ -222,51 +110,51 @@
         "brief",
         "series"
       ],
-      "canonical_files_written": false,
-      "old_translation_staleness_warnings_preserved": true
+      "canonical_files_written": false
     },
+    "scope": "author mechanical validation, not independent source/narrative/runtime approval",
     "result": {
       "errors": [],
       "warnings": [
         {
-          "path": "scenes[70].lines[0] (c05r090)",
-          "message": "42 spoken units; split sentences longer than 40"
+          "path": "scenes[55] (c07s06)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
         },
         {
-          "path": "scenes[94].lines[0] (c05le013)",
-          "message": "42 spoken units; split sentences longer than 40"
+          "path": "scenes[69] (c07a06)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
         },
         {
-          "path": "scenes[70] (c05r090)",
-          "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+          "path": "scenes[72] (c07a09)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
         },
         {
-          "path": "scenes[74] (c05le010)",
+          "path": "scenes[84] (c05le010)",
           "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
         },
         {
-          "path": "scenes[94] (c05le013)",
-          "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
-        },
-        {
-          "path": "scenes[95] (c05le014)",
-          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
-        },
-        {
-          "path": "scenes[96] (c05le015)",
-          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+          "path": "scenes[97] (c07u03)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
         },
         {
           "path": "i18n/en.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/en.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/en.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "youtube/en",
@@ -274,15 +162,23 @@
         },
         {
           "path": "i18n/ja.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/ja.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/ja.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "youtube/ja",
@@ -290,27 +186,43 @@
         },
         {
           "path": "i18n/ko.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/ko.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/ko.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "i18n/es.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/es.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/es.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "youtube/es",
@@ -318,15 +230,23 @@
         },
         {
           "path": "i18n/pt.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/pt.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/pt.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "youtube/pt",
@@ -334,15 +254,23 @@
         },
         {
           "path": "i18n/id.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/id.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/id.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "youtube/id",
@@ -350,231 +278,208 @@
         },
         {
           "path": "i18n/vi.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/vi.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/vi.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         },
         {
           "path": "i18n/th.json",
-          "message": "12 lines not translated: c05le001, c05le002, c05le004, c05le005, c05le006, c05le009, c05le010, c05le023, c05le012, c05le013, c05le014, c05le015"
+          "message": "70 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d06, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le004, c05le005, c07s06, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c07m01, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c05le023, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m02, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c05le014, c05le015, c07u05, c07u07, c07u08"
         },
         {
           "path": "i18n/th.json",
-          "message": "8 translations older than the zh-TW line: c05r052, c05r090, c05r091, c05r092, c05r093, c05r080, c05r089, c05rx009"
+          "message": "25 translations older than the zh-TW line: c05r013, c05r019, c05r021, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r069, c05r071, c05r076, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05r101"
         },
         {
           "path": "i18n/th.json",
-          "message": "translations older than the zh-TW text: description"
+          "message": "not translated: chapter c07d01, chapter c05r019, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
         }
       ],
       "summary": {
-        "minutes": 13.568888888888889,
-        "lines": 101,
-        "spoken_units": 2968,
-        "billable_characters": 9315,
+        "minutes": 15.293333333333333,
+        "lines": 117,
+        "spoken_units": 3332,
+        "billable_characters": 10592,
         "chapters": [
-          "00:00 一根香燒完了，夜還很長",
-          "00:51 先有花種，卻還沒有能賣的形狀",
-          "03:16 長條盤進圓，木模卻停住了",
-          "05:04 上市後，工人把兩條合在一起",
-          "07:55 新機器完成，舊手卷沒有立刻消失",
-          "11:01 路徑在外面，速度藏在香體裡"
+          "00:00 一根香燒完，夜還很長",
+          "00:42 花採下來，先跟天氣搶時間",
+          "03:50 粉成了長條，還得盤得出來",
+          "07:25 機器在換，花裡的成分也被拆開",
+          "09:43 粉要揉得起來，圓還不能馬上出貨",
+          "11:59 火走向前，成分先離開"
         ]
       }
     },
-    "maximum_estimated_shot_seconds": 11.1,
-    "actual_audio_measured": false
+    "errors": 0,
+    "cadence_warnings": [],
+    "maximum_estimated_shot_seconds": 10.6,
+    "all_estimated_shots_at_most_12_seconds": true
   },
-  "independent_source_delta_review": "PENDING_OTHER_REVIEWER",
-  "narrative_review": "PENDING_TWO_FRESH_ISOLATED_READERS",
-  "verify_file_written": false,
-  "owner_approval": false,
-  "file_sha256": {
-    "video.json": "0343a789811397115be03bf3b010cac8f81fd244a6df3e286be8906dca7799e7",
-    "script.md": "d0b002e48af767b5e5e50cce4c819bfd8d1b88d7dc4e309d95b77cbc4f8dbde1",
-    "narration-only.json": "8d6a514eba8e892dece04dbeac8d8c93451668b71816adbbbcda42549976bad9",
-    "claims.json": "658c8c4f47c5e744c84899b2f8070a5167b61a6e98fa6a032e2a7042414a0abe",
-    "claims.md": "f801c6f81db7d16d1d96146d8b1bf409e5b46173ff3de6bf6b077bc69c52b968",
-    "brief.md": "1abcd8fccf8aad2fb5fdf1748117922b0fdf5eea8e4ec14efd6bc0f8e31ef4b4",
-    "series.json": "c5446d2cb255c6ebe0af6bfa38a43225226fc6e0fd10c3ef6d1522f667b4d2a1",
-    "build-candidate.mjs": "1a8ee33b1933efad4e260dd49203d4acb42d40edaccd27eb775164274c6b8a10"
+  "visual_spec": {
+    "image_model": "image-01",
+    "look_exact": true,
+    "voice_exact": true,
+    "stillmotion": true,
+    "illustration_unit_share": 0.9702881152460985,
+    "planned_branding": {
+      "intro_seconds": 5,
+      "outro_seconds": 21,
+      "outro_version": "formal-v4",
+      "executed": false
+    },
+    "thumbnail": {
+      "layout": "d",
+      "brand": "金鳥",
+      "headline_style": "yellow with black outline",
+      "subtitle_style": "short white"
+    },
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "actual_generated_media_reviewed": false
   },
-  "protected_parent_history_review_i18n_and_canonical_files_unchanged": {
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/README.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/author-notes.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-language-choice.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-outline-receipt.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script-receipt.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-status.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/brief.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/build-candidate.py": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/claims.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/keyframes-dry-run.txt": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint-final.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/music-preflight-hold.txt": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narration-only.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r4.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r5.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r6.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/preflight-inputs.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r3.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r4.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r5.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r6.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/script.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series-context.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/tts-dry-run.txt": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/README.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/en.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/en.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/ja.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/ko.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/pt.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/th.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/history/round-1/vi.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/ja.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/ko.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/preparation-status.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/pt.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/applied-fixes-ko-es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/applied-fixes-pt-id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-en.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-ja.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-ko.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-pt.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-th.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/native-merge-vi.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/recheck-ko-es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/recheck-pt-id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/review-en-ja.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/review-ko-es.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/review-pt-id.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/review-vi-th.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/translator-reports/en-ja.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/translator-reports/ko-es.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/translator-reports/pt-id.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/reviews/translator-reports/vi-th.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/th.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/i18n/vi.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/brief.md": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/claims.md": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/en.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/es.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/id.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ja.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ko.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/pt.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/th.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/vi.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/series.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/current.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/events/e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/versions/1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3.json": true,
-    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/video.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/author-notes.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/brief.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/build-candidate.mjs": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/narration-only.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/source-r1-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/script.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/series.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/video.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/author-notes.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/brief.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/build-candidate.mjs": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/claims.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/claims.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/narration-only.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/source-r1-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/source-r2-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/script.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/series.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/video.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/author-notes.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/brief.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/build-candidate.mjs": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/claims.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/claims.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/narration-only.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/canonical-lint-r3.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r1-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r1-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r1-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r1-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r1.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r2-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r2-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r2-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r2-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r2.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/narrative-r3.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/source-r1-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/source-r2-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/reviews/source-r3-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/script.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/series.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/verify-1.md": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r3/video.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/canonical-lint-r3.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r3-a.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r3-b.raw.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r3-binding.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r3-input.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r3.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r1-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r2-independent.json": true,
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r3-independent.json": true
-  },
+  "opening_native_units": 152,
+  "opening_arithmetic_seconds_at_4_to_5": [
+    30.4,
+    38
+  ],
+  "at_least_eight_concrete_action_payoffs_for_fresh_review": [
+    {
+      "setup": "c07d19",
+      "payoff": "c07d20",
+      "what": "等花心乾才收起，避免書中磨粉後變色問題",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d07",
+      "payoff": "c07d08",
+      "what": "連雨用竹簾熱源",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d09",
+      "payoff": "c07d10",
+      "what": "切細快乾的書中代價",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d14",
+      "payoff": "c07d15",
+      "what": "餘粉密閉保存",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r032",
+      "payoff": "c05r036",
+      "what": "木模未採量產",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05le004",
+      "payoff": "c05le005",
+      "what": "加水成黏土狀",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r051",
+      "payoff": "c05r052",
+      "what": "木片作芯兩條手盤",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r054",
+      "payoff": "c05r055",
+      "what": "雙卷運送理由",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a01",
+      "payoff": "c5r5a02",
+      "what": "少水用重滾筒揉壓",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a03",
+      "payoff": "c5r5a04",
+      "what": "指痕作柔軟尺度",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a07",
+      "payoff": "c5r5a08",
+      "what": "成形後等兩天乾燥",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07m03",
+      "payoff": "c05r080",
+      "what": "按中心拆卷",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07u01",
+      "payoff": "c07u03",
+      "what": "保留白墊及金屬奪熱熄火",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05le012",
+      "payoff": "c05le013",
+      "what": "前方六至八毫米揮散",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d11",
+      "payoff": "c07d12",
+      "what": "乾花如何成為書中出售的殺蟲粉：下一句搗碎、過篩形成細粉。",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    }
+  ],
+  "metadata_changed_from_r8": [],
+  "protected_files_unchanged": true,
   "paid_calls": 0,
+  "provider_calls": 0,
   "backend_writes": 0,
   "git_commands": 0,
-  "canonical_written": false
+  "canonical_written": false,
+  "author_ready_for_independent_review": true,
+  "frozen_at_utc": "2026-10-25T21:19:28.669Z",
+  "file_sha256": {
+    "video.json": "627eb73b3756529308800a1091ca0a8dfc3a5b3374aeb13084df30291b280e51",
+    "script.md": "cba89894df595cd79d506697c63b236dfa2088e5ccb82d2e1b50cb66b56a31e2",
+    "narration-only.json": "a00382b6db8531c140fcb9ca81f193b3e74d8f3c3b3baf8ccf8aced949a3db3c",
+    "claims.json": "fbcc96591a68724c17517738c9f44d4e865fe825fa14951fbb5597af771d47c4",
+    "claims.md": "cf5970b60c5ee41c3ab90e860f1326dc719d74a326cf6d67812ccad957ba6b9d",
+    "brief.md": "a1a05dc37b9b5fc7fff5d5442e83b0bf68c3420e835d012640501b0b6b82117a",
+    "series.json": "3b11cbb951850d3d1ce8b51497c2758604ff4e1c15898217231b118d2e7c8b9e",
+    "build-candidate.mjs": "7588914bf8e40e1d413f96f2a9b5934829c4e4a08e67589283eb6088a8f726cf",
+    "revision-edits.json": "31295c8846c3954985c2aab0528ac892ecd1b205a5c8642d3783d702a89d6453"
+  },
+  "core_four_sha256": {
+    "video.json": "627eb73b3756529308800a1091ca0a8dfc3a5b3374aeb13084df30291b280e51",
+    "brief.md": "a1a05dc37b9b5fc7fff5d5442e83b0bf68c3420e835d012640501b0b6b82117a",
+    "series.json": "3b11cbb951850d3d1ce8b51497c2758604ff4e1c15898217231b118d2e7c8b9e",
+    "claims.json": "fbcc96591a68724c17517738c9f44d4e865fe825fa14951fbb5597af771d47c4"
+  }
 }
