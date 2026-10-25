@@ -203,7 +203,7 @@ describe("AdminVideoSeries", () => {
     const readFull = within(docPanels[0] as HTMLElement).getByText("看全文", { selector: "summary" });
     fireEvent.click(readFull);
     expect(readFull.closest("details")).toHaveProperty("open", true);
-    for (const name of ["繼續", "暫停", "先規劃下一篇", "現在開始下一集", "做合集", "核准", "退回", "跳過", "送出", "請 AI 同步製作資料"]) expect(screen.queryByRole("button", { name })).toBeNull();
+    for (const name of ["繼續", "暫停", "先規劃下一篇", "現在開始下一集", "做合集", "核准", "退回", "跳過", "重做", "送出", "請 AI 同步製作資料"]) expect(screen.queryByRole("button", { name })).toBeNull();
     expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
     expect(screen.queryByText("自己改", { selector: "summary" })).toBeNull();
     expect(screen.queryByRole("textbox", { name: "給模型的話" })).toBeNull();
@@ -493,6 +493,32 @@ describe("AdminVideoSeries", () => {
     confirm.mockRestore();
     fireEvent.click(screen.getByRole("button", { name: "先規劃下一篇" }));
     await waitFor(() => expect(calls.some((call) => call.url.endsWith("/actions/plan-next-chapter"))).toBe(true));
+  });
+
+  it("redoes an episode that was made or is in the making: the owner confirms, then the page posts the redo", async () => {
+    const { calls } = stubFetch();
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /問劍/ });
+    // Episode 1 is done and episode 2 in the making; episode 3 has no video to redo.
+    const buttons = screen.getAllByRole("button", { name: "重做" });
+    expect(buttons).toHaveLength(2);
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    fireEvent.click(buttons[0]);
+    expect(confirm.mock.calls[0]?.[0]).toContain("重做第 1 集");
+    expect(calls.some((call) => call.url.endsWith("/redo"))).toBe(false);
+    confirm.mockReturnValue(true);
+    fireEvent.click(buttons[1]);
+    await waitFor(() => expect(calls.some((call) => call.method === "POST" && call.url.endsWith("/admin/video-automation/series/wenjian/episodes/2/redo"))).toBe(true));
+    confirm.mockRestore();
+  });
+
+  it("offers no redo on a one-off: the request's own drop is its way out", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/?series=one-off-1a2b3c4d");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /精衛填海/ });
+    expect(screen.queryByRole("button", { name: "重做" })).toBeNull();
   });
 
   it("discusses a chapter outline: the owner's line waits for the model, and the thread stays when the model answers with a new version", async () => {
