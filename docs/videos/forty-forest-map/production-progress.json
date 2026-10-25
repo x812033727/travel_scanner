@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-25T19:34:15Z",
+  "observed_at": "2026-10-25T21:02:27Z",
   "status": "in-progress",
-  "stage": "zh-TW_main_delivered_VI_current_audio_passed_EN_native_production_running",
+  "stage": "zh-TW_main_VI_EN_direct_backend_audio_delivered_JA_retake1_in_progress",
   "current_video_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
   "final_current_narration": {
     "speech_hash": "c6d70ecaef91a15d",
@@ -58,8 +58,9 @@
       "advice": 0.01,
       "sponsor": 0.04
     },
-    "caption_scope": "VI CC regenerated against the current dub timeline at 19:22; the other seven remain pre-dub drafts. Reading-speed advisories retained; core QA is not proof that all eight dubs are ready.",
-    "public_receipt": "qa-after-verified-vi.json"
+    "caption_scope": "Historical frozen-main QA11/11 and then-current nine CC files; not a readiness claim for later EN/JA dubs, CC or packages. VI CC was regenerated at 19:22; after all eight audio tracks complete, regenerate/review each CC against actual language timing and retain advisories.",
+    "public_receipt": "qa-after-verified-vi.json",
+    "historical_main_qa": true
   },
   "source_link_fix": {
     "receipt": "source-link-fix.json",
@@ -135,20 +136,18 @@
       "/workspace/work/ai-tech-next/forty-vi-fit1-application.json",
       "/workspace/work/ai-tech-next/forty-vi-reword1-application.json"
     ],
-    "foreign_m4a_files_produced": 1,
-    "foreign_m4a_initial_audio_checks_completed": 1,
-    "foreign_m4a_audio_passed": 1,
-    "foreign_language_packages_ready": 1,
+    "foreign_m4a_files_produced": 3,
+    "foreign_m4a_initial_audio_checks_completed": 3,
+    "foreign_m4a_audio_passed": 2,
+    "foreign_language_packages_ready": 0,
     "unproduced_m4a_locales": [
-      "en",
-      "ja",
       "ko",
       "es",
       "pt",
       "id",
       "th"
     ],
-    "cc_status": "VI regenerated on its current dub timeline; other seven pending per-M4A realignment; reading-speed advisories retained",
+    "cc_status": "Historical VI CC exists; no final all-eight regeneration/review yet. EN checked audio/download does not certify full English metadata/CC/dub package.",
     "vi": {
       "initial_synthesized_lines": 92,
       "initial_billable_characters": 5822,
@@ -225,29 +224,141 @@
       "language_batch_submitted": false
     },
     "foreign_audio_ready_locales": [
-      "vi"
+      "vi",
+      "en"
     ],
-    "foreign_language_packages_ready_scope": "VI checked downloadable audio plus current metadata/CC only; eight-language batch not submitted",
+    "foreign_language_packages_ready_scope": "Complete CC/metadata/dub packages and language-batch delivery remain pending; two checked M4A downloads are delivered independently.",
     "all_eight_ready": false,
     "producer": {
       "state": "/workspace/work/ai-tech-next/forty-language-production.json",
-      "state_sha256_at_observation": "5f2e5198f16dc21d56e204080714d222fc7d1b295ae3c72712007e7c2def17c5",
-      "updated_at": "2026-10-25T19:28:17.308Z",
-      "phase": "en_dub_running",
+      "state_sha256_at_observation": "de9a86503ca15e46bef6ec1c5ecc69794612ba8bafda29f6ccbed9d7215465a1",
+      "updated_at": "2026-10-25T21:02:20.158Z",
+      "phase": "ja_dub_running",
       "owner": "/root/forty_r1_listener",
-      "active_locale": "en",
-      "active_started_at": "2026-10-25T19:28:17.300Z",
-      "active_log": "/workspace/work/ai-tech-next/forty-dub-en-2026-10-25T19-28-17-298Z.log",
+      "active_locale": "ja",
+      "active_started_at": "2026-10-25T21:00:20.110Z",
+      "active_log": "/workspace/work/ai-tech-next/forty-dub-ja-2026-10-25T21-00-20-108Z.log",
       "remaining_released_at": "2026-10-25T19:28:16.470838+00:00"
     },
     "en": {
-      "status": "native_dub_running",
-      "started_at": "2026-10-25T19:28:17.300Z",
+      "status": "current_audio_passed_and_direct_backend_delivered",
+      "current_audio_passed": true,
+      "retake_rounds": 2,
+      "meaning_reword_rounds": 2,
+      "shorten_rounds": 2,
+      "m4a": {
+        "path": "/workspace/work/videos/forty-forest-map/dubs/en.m4a",
+        "seconds": 512.805,
+        "bytes": 13547232,
+        "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+        "codec": "aac",
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "integrated_lufs": -14,
+        "true_peak_dbtp": -2.8
+      },
+      "fit": {
+        "windows": 89,
+        "over": 0,
+        "tempo_max": 1.21,
+        "skipped": 0,
+        "kept": 0,
+        "absorbed_windows": [
+          {
+            "scene": "b-pixel-center",
+            "state": 0,
+            "start_frame": 8545,
+            "end_frame": 8708,
+            "lines": [
+              "fe8z"
+            ],
+            "tempo": 1.21,
+            "slack_frames": 0,
+            "over": false,
+            "absorbed": "tempo",
+            "overrun_seconds": 0.3
+          }
+        ]
+      },
+      "audio_check": {
+        "exit_code": 0,
+        "checked": 92,
+        "accepted": 92,
+        "flags": 0,
+        "unchecked": 0,
+        "completed_at": "2026-10-25T20:30:29.293Z",
+        "native_log": "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log",
+        "independent_receipt": "/workspace/work/ai-tech-next/forty-en-independent-media-audit.json",
+        "independent_receipt_sha256": "c02f9097a75b672f6965fd94a046fa649cfb523b85e81bef83cbeb0ff0552e10",
+        "accepted_routes": {
+          "exact": 54,
+          "Jev": 30,
+          "second_exact": 6,
+          "second_Jev": 2
+        }
+      },
+      "speech_hash": "c6d70ecaef91a15d",
+      "translation_hash": "bfff4c39fe664d8e",
+      "speech_fingerprint": "438272ab2d0b0b8f",
+      "delivered": true,
+      "delivery_scope": "Checked M4A only; no full English CC/metadata/dub-package or language-batch readiness claim",
+      "delivered_at": "2026-10-25T20:52:20.469Z",
+      "backend_roles": [
+        {
+          "role": "dub_en",
+          "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+          "size": 13547232,
+          "content_type": "audio/mp4"
+        },
+        {
+          "role": "evidence_en_m4a",
+          "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+          "size": 13547232,
+          "content_type": "audio/mp4"
+        }
+      ],
+      "receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json",
+      "receipt_sha256": "3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc",
+      "cc_status": "Pending regeneration/review on actual dub timing in final all-eight caption pass",
+      "language_batch_submitted": false
+    },
+    "foreign_audio_downloads_delivered": 2,
+    "foreign_audio_backend_locales": [
+      "vi",
+      "en"
+    ],
+    "ja": {
+      "status": "ja_dub_running",
       "current_audio_passed": false,
-      "delivered": false
+      "retake_rounds": 1,
+      "active_native_log": "/workspace/work/ai-tech-next/forty-dub-ja-2026-10-25T21-00-20-108Z.log",
+      "initial_audio_check": {
+        "completed_at": "2026-10-25T21:00:08.456Z",
+        "exit_code": 1,
+        "checked": 92,
+        "accepted": 83,
+        "flags": 9,
+        "unchecked": 0,
+        "flagged_ids": [
+          "m2p6",
+          "2vcb",
+          "gfes",
+          "u362",
+          "endc",
+          "4amm",
+          "ywz8",
+          "nqyj",
+          "bu6j"
+        ],
+        "native_log": "/workspace/work/ai-tech-next/forty-check-ja-2026-10-25T20-45-34-241Z.log"
+      },
+      "current_take_audio_check_complete": false,
+      "m4a_initial_produced": true,
+      "delivered": false,
+      "note": "Initial check truly finished with 9 flags; bounded retake1 is active. No claim that current takes have passed."
     }
   },
-  "foreign_dub_files_produced": 1,
+  "foreign_dub_files_produced": 3,
   "audio_review_remote_status": "pending",
   "local_audio_adoption": "Normal native approve under standing delegated decisions at2026-10-25T17:49:34.187Z; this is not a remote owner UI approval.",
   "backend": {
@@ -262,14 +373,15 @@
     "main_upload_server_assembly_sha_and_size_validated": true,
     "authenticated_role_metadata_readback_verified": true,
     "remote_binary_stream_download_performed": false,
-    "verification_scope": "Normal review POST, server-validated upload assembly and authenticated role SHA/size readback; no remote binary stream verification.",
+    "verification_scope": "Normal checked-audio-only review POST, native server assembly SHA/size validation and authenticated role metadata readback. No remote binary stream/download SHA verification. Historical main QA11/11 preserved; final pending and choices unchanged.",
     "local_final_adopted_at": "2026-10-25T19:26:40.105Z",
     "local_final_adoption_authority": "Standing owner delegation; normal local final gate adoption, not remote UI approval.",
     "remote_approval_changed": false,
     "language_batch_submitted": false,
     "language_delivery_verified": false,
     "checked_downloadable_foreign_locales": [
-      "vi"
+      "vi",
+      "en"
     ],
     "main_delivery_dod_complete": true,
     "all_eight_delivery_dod_complete": false,
@@ -284,14 +396,28 @@
       {
         "path": "/workspace/work/ai-tech-next/forty-main-and-vi-downloads.json",
         "sha256": "33dee9e3a2f55887b3fa0d636372b3f665aa048a5f2fc5383c46a741ed0224e2"
+      },
+      {
+        "path": "/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json",
+        "sha256": "3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc"
       }
-    ]
+    ],
+    "checked_downloadable_foreign_audio_count": 2,
+    "en_download_roles": [
+      "dub_en",
+      "evidence_en_m4a"
+    ],
+    "en_delivered_at": "2026-10-25T20:52:20.469Z",
+    "en_delivery_receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json",
+    "en_delivery_receipt_sha256": "3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc",
+    "all_old_files_and_payload_qa_preserved_after_en": true,
+    "standard_dubs_payload_changed_by_en": false
   },
   "pending": [
-    "Finish active EN native production, then generate/fit/current-take check JA, KO, ES, PT, ID and TH.",
-    "Regenerate each remaining CC against its actual M4A and review retained reading-speed advisories.",
-    "Finish the eight-language packages and native backend languages submission/readback before checking the all-eight delivery DOD.",
-    "Record final measurements and affected checks; remote final remains pending unless genuinely changed by the server."
+    "Finish JA bounded retake1 and current-take audio recheck following genuine flags.",
+    "Produce/fit/check KO, ES, PT, ID and TH; independently audit each current 92-line PASS and incrementally deliver only that checked M4A.",
+    "After all eight audio tracks complete, regenerate/review CC on actual language timing and retain reading-speed advisories; finish metadata/package checks.",
+    "Submit/read back the formal eight-language batch before checking all-eight delivery DOD. Remote final remains pending unless genuinely changed by the server."
   ],
   "youtube_publication_performed": false,
   "git_merge_performed": false,
