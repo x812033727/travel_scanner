@@ -40,9 +40,9 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 - [x] Sources fetched 2026-10-25 and saved under the scratchpad (php.net archive and supported-versions, PHP Foundation post, Wiz, Cloudflare, AWS, watchTowr, Ubuntu CVE, Debian tracker, W3Techs, NCSC, CSA Singapore, 資安署 新聞稿 21134, iThome 179861/179870/179889/179891, BBC ×3, Japan Cyber Watch, TechTarget, Wikipedia, Brockman on X, HN Algolia timestamp). openai.com/index/php2shell, nsa.gov and cisa.gov answer 403 to curl and WebFetch.
 - [x] The three terminal commands run on this machine 2026-10-25 06:52 UTC and copied byte for byte into the cards.
 - [x] brief.md written (eight sections, 先搜 table, three outlines); video.json generated (41 scenes, 92 lines, est. 10.6 min, 86 of 92 lines cued, 11 loops); claims.md with 33 claims; lint 0 errors / 1 intentional warning.
-- [ ] Verifier round 1 (independent agent, running `php -v` etc. itself) → verify-1.md; round 2 if more than three fact changes.
-- [ ] Blind listener/panel read on the narration only → `narrative --answers`; reword what it flags.
-- [ ] Quotes get `translation` (owner 2026-10-25: zh-TW cards, English quotes with a translation).
+- [x] Verifier round 1 (independent agent, re-ran the three commands here, byte-identical): 58 claims, 45 confirmed, 11 changed (the Japanese PM's X post was 64 minutes before the 14:00 UTC release, not the night before; the 2024 audit was the first 「in years」; Prince's millions came within half a day; NCSC's own wording; 8.1 以下), one not found (Internet Archive, dropped) → verify-1.md. Round 2 (a second agent): 34 rows re-checked, one change (the NCSC offline advice follows the temporary mitigations) → verify-2.md.
+- [x] Blind read round 1 (narration only): 9/13 (no_spoiler and no_toc are the five-sentence teaching opening by design; no_recap and no_detour fixed: four repeats became named callbacks, three names fewer read aloud, the 8.3.36 vs 8.3.6 contrast spoken as 小版本 36 對 6, first-hearing terms get a clause, the 10/23 advisory tied back to 緩解不是修補). Listener pass applied 22 rewordings and 4 splits (100 lines). Round 2 blind read recorded with `narrative --answers` (see Notes).
+- [x] Quotes get `translation` on the three quote cards, revealed on the sentence that says it in Chinese.
 - [ ] Commit and push to `claude/focused-hopper-zq70n8`; open the PR; the owner runs the gates from a machine with the video token.
 
 ## How to verify
@@ -55,6 +55,9 @@ npm run check:tasks
 ```
 
 ## Notes
+
+- Outline gate: `review-push --gate outline` 2026-10-25 07:3x; Jev picked B (0.74, 有示範 0.15, below 0.6, so not auto-approved); the owner approved the card on /admin/videos with Jev's pre-selected B. Asked in chat the same hour, the owner chose **A** (the script as written); the site's record still says B and a re-push shows 「approved」 unchanged, so the decision is recorded here and in claims.md, not on the site.
+- Pairing: `login --name cloud-php2shell-20261025` allowed by the owner 2026-10-25 07:33 UTC (token in this container only); tts dry-run 3,185 characters; first synthesis 96 lines, 3,232 characters, narration 10:45; re-synthesis after the listener pass reuses the unchanged lines.
 
 - Claimed with `--force`: `docs/videos/lexicon.json` is append-only and shared with four stale video tickets; `.agents/skills/youtube-video/SKILL.md` is also in the scope of PR #1843's ticket (`2026-10-25-record-the-english-card-eight-language`, rule 14) and of stale `2026-10-14-ai-and-tech-videos-tell-one` / `2026-10-20-tutorial-flow-and-hooks-rules-learned`; this ticket only adds one row to the reference table and a new reference file, so a later merge should not collide.
 - References live only under `.agents/skills/youtube-video/references/` (the skills test refuses copies under `.claude/`); the SKILL.md row names the file by repository-root path.
