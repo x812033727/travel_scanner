@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "locale": "vi",
+  "review_type": "native_first_shortening_delta_and_unapplied_author_candidates",
+  "reviewed_at_utc": "2026-10-25T22:33:15.790964+00:00",
+  "reviewer_identity": {
+    "provider": "OpenAI",
+    "agent": "Codex",
+    "model_family": "GPT-6",
+    "exact_runtime_model": "not exposed to the agent",
+    "task_name": "/root/review_id_vi_th/review_vi",
+    "is_human": false,
+    "is_claude": false
+  },
+  "independent_of_native_shortener": true,
+  "raw_answer_not_used": true,
+  "canonical_read_directly": true,
+  "overall_verdict": "needs_author_correction",
+  "reason": "Current canonical b69ae1 omits the explicit grid-cell recognition check. Current canonical 291f73 preserves its PRE source meaning.",
+  "per_line": [
+    {
+      "id": "291f73",
+      "source_exact": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+      "source_text_sha256": "291f73fb2e95ec69e81b872b2cb5dabe3505e7224bf1fb0b115d03b49b2c20c8",
+      "canonical_stored_source_hash": "291f73fb2e95",
+      "source_hash_unchanged_from_pre": true,
+      "pre_exact": "Đọc tiêu đề, mục tiêu từ dữ liệu, đừng ghi số riêng ở từng hình.",
+      "pre_text_sha256": "7e4c312e7a0ed21334e3098f5160c0974115d3b6e8525357c9b893d0790bf404",
+      "pre_unicode_codepoints": 64,
+      "current_canonical_exact": "Đọc tiêu đề, mục tiêu từ dữ liệu, đừng ghi số riêng từng hình.",
+      "canonical_text_sha256": "bbb739e8534dfc5dd83fb77449e62d2ffe62b70eb2ff69ec92503b23964f0b91",
+      "current_unicode_codepoints": 62,
+      "canonical_file_sha256": "837704fabe1b23125520a678734fbfe7cd7d549ace1bdc5a7a14a379ced73c4b",
+      "adjacent_context_reread": [
+        {
+          "scene": "brief-pilot",
+          "id": "7b0c6d",
+          "source": "先請它畫出格子上色那一幕，別一開始就要求整支完成。",
+          "current_translation": "Xin cảnh tô màu ô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu."
+        },
+        {
+          "scene": "build-start",
+          "id": "1f3f10",
+          "source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+          "current_translation": "Có hình cốt lõi rồi, nhờ AI gom thành dự án chạy được."
+        },
+        {
+          "scene": "build-ask",
+          "id": "60d6c7",
+          "source": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+          "current_translation": "Xin lệnh cài đặt, xem trước, xuất video, và giải thích công dụng từng tệp."
+        },
+        {
+          "scene": "build-ask",
+          "id": "d27bc5",
+          "source": "另外寫一個檢查程式，從所有結果重新算出正確答案。",
+          "current_translation": "Viết thêm chương trình kiểm tra, tính lại đáp án đúng từ mọi kết quả."
+        }
+      ],
+      "before_semantics": "Read title and target from the data, and do not maintain separate numbers in each visual.",
+      "after_semantics": "Same content as PRE; removing ở only compresses the location phrase. từng hình still explicitly scopes the independent number-writing prohibition to each visual.",
+      "source_clause_order": "pass: data-read instruction precedes per-visual prohibition",
+      "naturalness_and_register": "Acceptable concise spoken-caption Vietnamese; no pronoun or politeness shift.",
+      "conditions_names_numbers": "No source condition, name or number altered by this shortening.",
+      "meaning_verdict": "pass",
+      "needs_author_correction": false
+    },
+    {
+      "id": "b69ae1",
+      "source_exact": "畫面再看字有沒有超框，格子和顏色是不是容易辨認。",
+      "source_text_sha256": "b69ae171f15971ad5699ad68ae2f2b24850f7abf9acbab28160d0cc27e4729d4",
+      "canonical_stored_source_hash": "b69ae171f159",
+      "source_hash_unchanged_from_pre": true,
+      "pre_exact": "Xem chữ có tràn khung, ô và màu có dễ phân biệt không.",
+      "pre_text_sha256": "8648656edb16dbdb5d8b41ab43c0073ac1abed6c71a5e002f0b5175faf720b0a",
+      "pre_unicode_codepoints": 54,
+      "current_canonical_exact": "Xem chữ có tràn khung, màu có dễ phân biệt.",
+      "canonical_text_sha256": "f60988d037c5ad140f184cb63df6bf2ab590b9cd2e5d98a90654b32de3a35fb8",
+      "current_unicode_codepoints": 43,
+      "canonical_file_sha256": "837704fabe1b23125520a678734fbfe7cd7d549ace1bdc5a7a14a379ced73c4b",
+      "adjacent_context_reread": [
+        {
+          "scene": "check-start",
+          "id": "b919e0",
+          "source": "影片播完了，現在拿回一開始的需求，一條一條對。",
+          "current_translation": "Video phát xong, lấy yêu cầu ban đầu ra đối chiếu từng mục."
+        },
+        {
+          "scene": "check-levels",
+          "id": "ee8b7c",
+          "source": "內容先看條件和計數，不能因為動畫很順就把數學錯誤放過去。",
+          "current_translation": "Kiểm tra điều kiện và số đếm, đừng bỏ lỗi toán chỉ vì hoạt hình mượt."
+        },
+        {
+          "scene": "check-levels",
+          "id": "481fba",
+          "source": "最後確認影片能播放，聲音、字幕和原始檔都在交付包裡。",
+          "current_translation": "Cuối cùng kiểm tra video phát được, gói bàn giao có tiếng, phụ đề và tệp gốc."
+        },
+        {
+          "scene": "check-distribution",
+          "id": "18691a",
+          "source": "檢查程式從點數組合重算答案，不讀畫面自己宣告的數字。",
+          "current_translation": "Chương trình kiểm tra tính lại từ tổ hợp mặt xúc xắc, không đọc số hình tự nêu."
+        }
+      ],
+      "before_semantics": "Check whether text overflows the frame and whether both grid cells and colors are easy to distinguish.",
+      "after_semantics": "Checks text overflow and distinguishable colors only. ô (grid cells) has been deleted.",
+      "source_clause_order": "Remaining clauses retain source order, but the grid-cell check is absent.",
+      "naturalness_and_register": "The clipped indirect question can be understood, but content omission prevents approval.",
+      "conditions_names_numbers": "No name or number changed; source check on 格子 (grid cells) is omitted.",
+      "meaning_verdict": "needs_author_correction",
+      "needs_author_correction": true,
+      "actual_omission": {
+        "source_fragment": "格子和顏色是不是容易辨認",
+        "pre_fragment": "ô và màu có dễ phân biệt không",
+        "current_fragment": "màu có dễ phân biệt",
+        "missing_check": "whether grid cells are easy to distinguish"
+      }
+    }
+  ],
+  "unapplied_author_candidate_reviews": [
+    {
+      "id": "b69ae1",
+      "author": "root agent; text only and unapplied",
+      "exact": "Chữ tràn khung? Ô và màu dễ phân biệt?",
+      "meaning_verdict": "pass",
+      "naturalness": "Natural concise Vietnamese checklist questions. The first question checks text overflowing the frame; the second checks both grid cells and colors being easy to distinguish.",
+      "source_clause_order": "pass",
+      "recommended_for_author_correction": true,
+      "unicode_codepoints": 38,
+      "applied": false,
+      "native_approved": false,
+      "duration_or_fit_approval": false
+    },
+    {
+      "id": "291f73",
+      "author": "root agent; text only and unapplied",
+      "exact": "Đọc tiêu đề, mục tiêu từ dữ liệu; đừng ghi số riêng.",
+      "meaning_verdict": "needs_author_correction",
+      "naturalness": "Natural phrasing, but the per-visual scope is no longer stated.",
+      "source_clause_order": "retained for the remaining concepts",
+      "specific_issue": "đừng ghi số riêng prohibits separate numbers without saying in each visual. The adjacent lines concern packaging a runnable project and supplying installation/preview/output commands and a checker; they do not restore the missing per-image qualifier.",
+      "recommended_for_author_correction": false,
+      "unicode_codepoints": 52,
+      "applied": false,
+      "native_approved": false,
+      "duration_or_fit_approval": false
+    },
+    {
+      "id": "291f73",
+      "author": "independent reviewer suggestion; text only and unapplied",
+      "exact": "Đọc tiêu đề, mục tiêu từ tệp; đừng ghi số riêng từng hình.",
+      "meaning_verdict": "pass",
+      "naturalness": "Natural concise Vietnamese. tệp denotes the data file being read in this project context; title and target are both retained, followed by the explicit per-visual separate-number prohibition.",
+      "source_clause_order": "pass",
+      "recommended_for_author_correction": true,
+      "limitation": "58 codepoints exceeds the previous adaptive 53-character target. This is a complete text alternative, with no claim about duration or measured fit.",
+      "unicode_codepoints": 58,
+      "applied": false,
+      "native_approved": false,
+      "duration_or_fit_approval": false
+    }
+  ],
+  "native_rounds_observed": {
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "shorten_counter_preserved": 1,
+  "no_retry_reset": true,
+  "fit_review": {
+    "status": "not_performed",
+    "actual_duration_after_shortening": "not_measured_by_this_review",
+    "meaning_review_is_audio_approval": false,
+    "candidate_codepoint_counts_are_not_measured_fit": true
+  },
+  "sha256": {
+    "source_video_json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation_json": "837704fabe1b23125520a678734fbfe7cd7d549ace1bdc5a7a14a379ced73c4b",
+    "pre_translation_json": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+    "author_review_boundary_json": "76f8d166e7a2239a7963b25dd2a9ae1b204b086c7f68fffc20d76d01f145c31f",
+    "worksheet_json": "aa40e365c375e15316195d7e4445dfe07174b0d4e850306d2344cebfd6e63822"
+  },
+  "canonical_matches_boundary_translation_hash": true,
+  "files_modified": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.shorten-1-delta-review.json"
+  ],
+  "source_canonical_worksheet_audio_state_modified": false,
+  "api_or_paid_calls_used": false
+}
