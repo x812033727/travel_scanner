@@ -1,13 +1,13 @@
 ---
 id: 2026-10-24-produce-video-google-s-new-ads
 title: Produce video: Google's new ads exception for Gmail, Drive and Photos connected to AI search (google-ai-search-ads-exception)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1-news-video
 claimed_at: 2026-10-24T11:27:35Z
 created_at: 2026-10-24T11:26:58Z
-completed_at:
+completed_at: 2026-10-25T07:21:25Z
 branch: claude/ai-tech-news-video-aa3500 (PR #1833)
 depends_on: []
 scope:
@@ -50,6 +50,7 @@ Route: teaching-card short (teaching-flow §十 one concept, §十二 picture ru
 
 ## Notes
 
+- Closed 2026-10-25: every gate the tooling owns is done (narration, final e0c1a868, package 71e8ad4e5963, publish and languages pushed; the site lists all eight languages ready). Still with the owner on /admin/videos at closing time: the publish card submitted 07:18Z and the languages card 07:19Z were still pending (the 07:14Z publish card of the old package had been approved instead); the YouTube URL is not pasted yet (`youtube_video_id` null), so `youtube-sync --video-id <id>` runs once it is. The site keeps old and new cards side by side; approve by submission time.
 - The Verge cannot be fetched from this machine (host refuses); the site article and Google's pages carry everything needed.
 - `KEY_MAX_CHARS` is 24 characters, so English keys are about four short words; the lint length estimate counts a Latin word as two units, a CJK character as one.
 - Paper `quote` cards hold three lines of 100px type; longer quotes ran their last line under the source pill (render did not flag it): keep the clause that carries the fact. A one-line `big` with an icon still clipped descenders, so the only bigs that keep an icon are the numeral one and `ad-center`.
