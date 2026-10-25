@@ -25,7 +25,7 @@ to explain the complete six-class model output.
 
 ## Definition of done
 
-- [x] A checked zh-TW film of at least eight minutes is delivered to its backend page with an honest QA record.
+- [x] The checked zh-TW body-only film of at least eight minutes is delivered to its backend page with an honest historical QA record; this does not complete the later branding requirement.
 - [ ] en, ja, ko, es, pt, id, vi and th each have checked metadata, CC and downloadable dubbing delivered to the backend.
 - [ ] Research, real-data provenance, production mapping and final delivery results are recorded; no unperformed YouTube publication is claimed.
 
@@ -40,7 +40,9 @@ to explain the complete six-class model output.
 - [x] Finish VI two original-text retakes and one four-line meaning-preserving reword; current audio 92/92 PASS, zero flags/unchecked, 89/89 windows fit.
 - [x] Submit the actual main final and checked VI; verify the server-validated 1080p upload and authenticated main/VI role SHA/size readback.
 - [x] Finish EN current 92/92 audio check and independent audit; directly deliver dub_en plus evidence_en_m4a while preserving main/VI and old payload/QA.
-- [ ] Finish JA bounded retake1/current-take checking, then produce/fit/check KO, ES, PT, ID and TH; independently audit and incrementally deliver each passed M4A.
+- [x] Finish JA current 92/92 audio check and independent audit; directly deliver dub_ja plus evidence_ja_m4a while preserving main/EN/VI and old payload/QA.
+- [ ] Finish KO retake2 current-take recheck after the shared ASR slot is released, then produce/fit/check ES, PT, ID and TH; independently audit and incrementally deliver each passed M4A.
+- [ ] Complete formal branding/bookends with legally usable official assets under the guard; the delivered b293 body-only film and historical QA11/11 do not satisfy it.
 - [ ] After all eight tracks complete, regenerate/review CC on actual language timing, retain reading-speed advisories, and finish metadata/package checks.
 - [ ] Submit the eight-language batch through native backend review and verify persisted delivery readback before checking the all-eight DOD.
 - [ ] Record final measurements, finish affected checks and submit a separate no-auto-merge review PR.
@@ -55,7 +57,7 @@ Keep the official-data provenance and independent ROI checks tied to the evidenc
 
 ## Current snapshot
 
-As of 2026-10-25T21:02:27Z; see
+As of 2026-10-25T22:35:44Z; see
 [production-result.md](../../docs/videos/forty-forest-map/production-result.md),
 [localization-review.md](../../docs/videos/forty-forest-map/localization-review.md) and
 [production-progress.json](../../docs/videos/forty-forest-map/production-progress.json).
@@ -76,7 +78,7 @@ As of 2026-10-25T21:02:27Z; see
   512.805 s, 12076524 bytes, AAC 48 kHz stereo, -14 LUFS / TP -2.9 dBTP;
   92/92 PASS after two original-text retakes and one four-line equivalent reword.
   Current CC regenerated on its dub timing, speed advisories retained, download
-  alias `evidence_vi_m4a` read back. VI and EN are the only two checked/audio-delivered foreign tracks; all-eight DOD remains unchecked.
+  alias `evidence_vi_m4a` read back. VI, EN and JA are the three checked/audio-delivered foreign tracks; all-eight DOD remains unchecked.
 - EN native current-take check exited 0 at 20:30:29, 92/92 accepted and zero flags/unchecked.
   M4A SHA `6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63`,
   13547232 bytes, 512.805 s, AAC48k stereo, -14 LUFS / TP -2.8; 89 fit windows,
@@ -84,13 +86,35 @@ As of 2026-10-25T21:02:27Z; see
   At 20:52:20 normal server-SHA-validated upload and authenticated role metadata
   readback attached dub_en and evidence_en_m4a to the same pending final, preserving
   old roles/payload/QA. This is audio delivery, not full English CC/metadata/batch readiness.
-- Producer observed at `2026-10-25T21:02:20.158Z` is `ja_dub_running`.
-  JA initial check truly finished at 21:00:08 with 92 checked/9 flags, exit1;
-  bounded retake1 is ongoing and current takes have not passed yet. KO/ES/PT/ID/TH
-  await production. Genuine checked audio is 2/8; all_eight_ready=false.
-  After all eight tracks, CC will be regenerated/reviewed; no language batch submitted.
+- JA native check exited 0 at 21:50:50, 92/92 PASS, zero flags/unchecked, independently
+  audited: 62 exact / 20 Jev / 7 second exact / 3 second Jev; zero skipped/kept.
+  M4A SHA `a4af09e0a4e5be06f1469c66caa43fb7b7380296103d7159e0b73acb2a53972e`,
+  14775477 bytes / 512.805 s / AAC 48 kHz stereo / -14 LUFS / TP -2.9;
+  89 fit windows, max tempo 1.19. At 21:54:49 normal four-part upload completed
+  server SHA/size assembly validation;
+  authenticated role metadata readback attached dub_ja and evidence_ja_m4a, preserving
+  main/EN/VI, old files/payload/QA, pending and choices. No remote binary download,
+  approval change, standard dubs payload change or formal language batch occurred.
+- Producer observed at `2026-10-25T22:34:59.053831Z` is
+  `ko_waiting_shared_asr_slot_after_retake2`. KO's previous native check at 22:29:17
+  exited 1 with 92 checked / 82 accepted / 10 flags / 0 unchecked. Retake2 and fit/measure
+  are complete; new takes have not completed checking and wait for root release of
+  the shared Whisper slot. ES/PT/ID/TH remain pending. Checked/delivered audio is 3/8
+  (VI/EN/JA); all_eight_ready=false. CC will be regenerated/reviewed after all eight
+  tracks; no language batch submitted.
 - EN delivery receipt `/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json`,
   SHA `3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc`. No remote binary stream verification was performed.
+- JA independent proof `/workspace/work/ai-tech-next/forty-ja-independent-media-audit.json`,
+  SHA `1de81cac0e64939a322b0963a9a651093d8c5c88eb29dbe3fbaf5794576fd8e8`;
+  incremental delivery receipt `/workspace/work/ai-tech-next/deliver-checked-forty-ja.result.2026-10-25T21-54-35-658Z.json`,
+  SHA `ba21ef011b4dab323777485bb85d265e31ca96a1129e62e80f7cd1e78d70ff04`.
+- Branding is incomplete: this producer has no formal brand bookend package/default,
+  and neither the ForTy repo episode nor media workdir has branding.json. Delivered
+  b293 is body-only; historical QA11/11 and the static outro do not certify all later
+  branding rules. Legal official assets and the guard must precede a separate repair;
+  source/media/approval are unchanged. Tracking task ID
+  `2026-10-25-local-first-build-without-branding` is in the third-film branch;
+  no broken cross-branch relative link is created here. Overall delivery is false.
 - The demonstration is public 2020 model output, not ground truth, retraining,
   an official App session or a 2017–2025 change measurement. Independent re-fetch/
   decode matched all 73 data assertions; B was selected for low/tied scores.
