@@ -355,6 +355,3 @@ manifest：key `9dbee6d0b776b2eb`、captured_at `2026-10-25T10:10:36.847Z`、pro
 實讀一致性檢查：77場／80句；script無漏句，claims無漏句，每場video既存ID與scene.claims一致；mjfp證據類別已明列monitoring，shorts.json仍不存在。未發現新事實錯誤或未結來源問題。
 
 native lint再次為零errors、零warnings；1862 spoken units、6315計費字元，估算8.7738889分鐘（526.43秒，約8:46.4），仍是文字估時。四時間點、四差值、9/20／9/25／10/1／10/23、METR歷史與當期修正／後續未再驗證、特定模型身分與正式產品範圍均未更改；先前獨立原文證據與算術覆核繼續適用。**最新77場快照的事實、來源範圍、引用及文件同步PASS；不代替音訊、字幕或正式成片QA。**
-
-
-
