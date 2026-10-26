@@ -29,16 +29,33 @@ python3 docs/videos/ai-pdf-quotes-to-comparison/materials/generate_lab.py \
 觀眾複製的 `viewer-prompt.txt`，執行時序及輸入雜湊記在 AI 代理自己的
 `ai-analysis-execution.json`；不能由產檔程式冒造 AI 執行收據。
 
-`request.json` 只有本次情境與數量。先用 10 張重做，再把副本的 quantity 改成 20。
-原報價與修訂報價都明示單價、運費在 10–20 張內適用，所以這個變更有原文依據。
-超出書面範圍（例如 21）會拒絕，不會猜測新單價或運費。
+本次 AI 抽取實際一次讀取四份文件的八頁文字：甲、乙、丙原版與丙修訂版。
+沒有在影片每一章重新呼叫 AI，也沒有宣稱模型當時只看到原版。
+教學依序檢視 `original-10` → `revised-10` → `revised-20` 三個情境：
+先用丙原版保留缺漏，收到修訂條件後才選丙修訂版，最後再變更數量。
+`viewer-prompt.txt` 保留本次 AI 真正讀過的七行全文；其中第5行是**待收到修訂版才套用**的規則，
+不是要求初始三份原版比較時就把未知運費填進去。此處沒有改寫已使用的提示詞或 AI 執行收據。
+
+`request-original-10.json` 明確使用 `{ "scenario": "original", "quantity": 10 }`，
+才會以 `cedar.pdf` 作為丙的本次請求來源：丙送達總價為空值、待確認、不參與總價排名。
+既有 `materials/request.json` 及生成器的 `lab/requests/request-10.json` 都是
+`{ "scenario": "revised", "quantity": 10 }`，是**修訂版十張**，不是初始原版；它們保留原樣。
+檢查 `selected-comparison.json` 的 `request.scenario` 與每列 `source_file`，不要只看檔名中的10。
+原報價與修訂報價都明示單價、運費在10–20張內適用，所以修訂版10改20有原文依據。
+超出書面範圍（例如21）會拒絕，不會猜測新單價或運費。
 
 ```bash
 python3 docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py \
   --analysis /workspace/work/ai-pdf-01/lab/normalized-quotes.json \
   --extracted /workspace/work/ai-pdf-01/lab/extracted-pages.json \
+  --request docs/videos/ai-pdf-quotes-to-comparison/materials/request-original-10.json \
+  --out /workspace/work/ai-pdf-01/lab/results-original-10
+
+python3 docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py \
+  --analysis /workspace/work/ai-pdf-01/lab/normalized-quotes.json \
+  --extracted /workspace/work/ai-pdf-01/lab/extracted-pages.json \
   --request /workspace/work/ai-pdf-01/lab/requests/request-10.json \
-  --out /workspace/work/ai-pdf-01/lab/results-request-10
+  --out /workspace/work/ai-pdf-01/lab/results-revised-10
 
 python3 docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py \
   --analysis /workspace/work/ai-pdf-01/lab/normalized-quotes.json \
@@ -76,9 +93,36 @@ python3 docs/videos/ai-pdf-quotes-to-comparison/materials/render_results.py \
 
 ## 已解壓教材的簡短重跑指令
 
-教材解壓目錄把 `materials/` 與 `research/` 放在同一層。以下相對指令已在
-本次 `/workspace/work/ai-pdf-01/repro-package/materials` 真正執行成功，輸出只在 repo 外。
-先進入 `materials`，`request-20.json` 已是 `{ "scenario": "revised", "quantity": 20 }`。
+教材解壓目錄把 `materials/` 與 `research/` 放在同一層。本節相對指令使用已保存的 AI 抽取資料，
+不是重新呼叫 AI；原版十張指令另已從更新 ZIP 全新解壓後實際重跑，收據保留真實執行目錄。
+先進入 `materials`。第一步先明確選原版十張，不能用既有修訂情境的 `request.json` 代替。
+
+```bash
+python3 build_comparison.py \
+  --analysis ../research/lab-ai-extraction.json \
+  --extracted ../research/lab-extracted-pages.json \
+  --request request-original-10.json \
+  --out comparison-original-10
+```
+
+打開 `comparison-original-10/selected-comparison.json`：`request.scenario` 應為 `original`，
+甲 `2100.00`、乙 `2050.00`、丙 `delivered_total: null`，且丙來源為 `cedar.pdf`、`comparable: false`。
+試算表「本次請求10張」同樣保留丙總價空白。檔案仍會另附固定三個教學情境，
+所以請依章節開對工作表，不要把「修訂報價10張」的完整運費誤當成原版已知。
+`research/original-scenario-execution.json` 與新的教材重播收據保存這一步真正執行的結果；沒有重新呼叫 AI。
+
+到修訂版章節才執行既有 `request.json`：
+
+```bash
+python3 build_comparison.py \
+  --analysis ../research/lab-ai-extraction.json \
+  --extracted ../research/lab-extracted-pages.json \
+  --request request.json \
+  --out comparison-revised-10
+```
+
+此時 `request.scenario` 為 `revised`，丙來源改成 `cedar-revised.pdf`，送達總價 `2100.00`。
+再做數量變更，`request-20.json` 已是 `{ "scenario": "revised", "quantity": 20 }`：
 
 ```bash
 python3 build_comparison.py \
