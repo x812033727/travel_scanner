@@ -1,0 +1,41 @@
+{
+  "reviewed_at": "2026-10-26T00:12:55.351664+00:00",
+  "reviewer": "root independent from EN producer",
+  "proposal_sha256": "f0798cf96a72adb953dacdc83d2da6a2e1871d33725075b2f904fefcd076ec28",
+  "decision": "ADOPT_EXACT_REVIEWED_ALTERNATIVE_TEXT_ONLY",
+  "id": "cgit",
+  "accepted_text": "On input zero, expect 1 increment and a return of 1.",
+  "characters": 52,
+  "native_current_max_chars": 54,
+  "source": "輸入零，預期做一次加一，返回一。",
+  "old_text": "Input 0: expect one increment, returning 1.",
+  "numeric_equivalence": [
+    {
+      "before": "0",
+      "after": "zero",
+      "value": 0,
+      "role": "input limit"
+    },
+    {
+      "before": "one",
+      "after": "1",
+      "value": 1,
+      "role": "increment count"
+    },
+    {
+      "before": "1",
+      "after": "1",
+      "value": 1,
+      "role": "returned value"
+    }
+  ],
+  "meaning_review": [
+    "On input zero sets input as condition, not the object performing increments.",
+    "expect scopes two coordinated noun phrases: 1 increment and a return of 1.",
+    "Both increment count and returned value remain expected outputs, not a claim this case was formally proven or a new observed run.",
+    "Spelled-out zero separates the omitted/misheard input0 from the following one-increment phrase; all numeric values and order preserved.",
+    "Neighboring zero-based counter, <=limit rule and input7 example remain unchanged."
+  ],
+  "bounds": "Only actual residual cgit after completed2 original-text retakes; listener reword1, one changed text/WAV. Not audio PASS.",
+  "next": "Normal native i18n merge,1new/104raw unchanged, fixed fit/meter; no ASR until explicit shared-slot release."
+}

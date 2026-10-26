@@ -1,5 +1,11 @@
 # 第三片八語文字與媒體快照
 
+截至2026-10-26T01:05:03.510145Z，英文105／105嚴格音檢通過並已正常送達後臺，已驗收音訊交付1／8；JA初次ASR仍在跑、未通過，其餘六語未完成。完整現況見[languages-result.md](languages-result.md)。下方23:07表格與39項靜態超額是原文字準備的歷史快照，沒有倒改原判定；不是目前配音fit或交付數量。
+
+[EN嚴格proof](localization/en-audio-audit.rich-stage-pass.json)、[EN交付讀回摘要](localization/en-delivery-verification.json)及[原始付費／重錄／listener階段](localization/en-production-history-snapshot.json)另存。本次未重產CC，原有narration-timed草稿不冒稱已對齊當前EN／JA譯文或實際配音時間軸。all_eight_ready與overall仍false。
+
+## 2026-10-25T23:07:06Z 文字準備歷史快照
+
 截至2026-10-25T23:07:06Z，八語文字、7章、title／description／tags／縮圖三欄已原生merge，翻譯自審與獨立審稿收據已封存；外語完整M4A、音檢與後臺交付均為0／8。這份記錄不宣稱配音fit或八語整包完成。
 
 | 語言 | 當前句數／章 | 自審／獨審與必要文字修正 | 當前暫定字數超額 | 當前CC | 實際M4A／音檢／交付 |

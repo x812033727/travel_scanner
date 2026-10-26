@@ -37,6 +37,7 @@ scope:
 - [x] 繁中主體完成正常TTS、105／105當前音檢、101狀態渲染、合成、narration-timed CC與核心QA11／11。
 - [x] 正常12段上傳主體候選完整1080p，server assembly驗SHA／大小並authenticated讀回evidence角色；保留pending及原payload／QA。
 - [x] 八語105句／7章、metadata、縮圖overlay／獨立文字審稿及native修正完成；歷史自審／獨審與application已封存。
+- [x] EN105／105真音檢與嚴格當前proof完成，正常4段server組SHA／大小並authenticated讀回dub_en／evidence_en_m4a；全八語DOD仍未勾。
 - [ ] 補齊合法官方品牌片頭尾與guard／採用；若時間軸或bytes改變，重新綁定成片及各語媒體依賴。
 - [ ] 八語翻譯獨立審查、逐語合成與音檢、上架包及後臺檔案讀回。
 
@@ -56,7 +57,7 @@ scope:
 
 20:07歷史紀錄：初次繁中TTS完成100 requests／105句／2423 billable chars；當時speech c6d33c74584faac1、16800 frames，ASR初檢尚在執行。此段不作當前成功證據；下列是修詞、音檢、版面及交付後的實況。
 
-## Current body-candidate delivery snapshot
+## Historical body-candidate delivery snapshot（2026-10-25T23:07:06Z）
 
 2026-10-25T23:07:06Z。Source e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f、claims527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6、speech8028c7320d9cab29。當前105／105 WAV及完整原文／裁決核對完成，0 flags／unchecked；影片16813／30＝560.4333秒，正文扣冷開／outro後523.7333秒。AAC／容器560.505秒另列，不能當影片時間。
 
@@ -67,3 +68,12 @@ scope:
 八語文字各105句／7章、metadata與本地化overlay已準備，但內嵌guard仍含繁中演示字，不能稱全部像素均翻譯。實際外語M4A／音檢／交付0／8，CC目前全用narration timing；ES／PT／ID共8速度advisories保留，actual dub timings完成後重產。最新native lint0 errors／7 warnings，含四語手機title寬度；未改i18n消警告。全八語及overall DOD仍未完成。
 
 見[production-result](../../docs/videos/claude-formal-verification-255/production-result.md)、[production-progress](../../docs/videos/claude-formal-verification-255/production-progress.json)、[localization-review](../../docs/videos/claude-formal-verification-255/localization-review.md)與[public receipts](../../docs/videos/claude-formal-verification-255/public-receipt-index.json)。未提交YouTube公開、合併或部署。
+
+
+## Current EN incremental delivery snapshot（2026-10-26T01:05:03.510145Z）
+
+英文音訊已驗收及後臺交付1／8；JA初次ASR進行中、未通過，其餘六語未完成。原生EN初檢99／105接受、6旗；兩輪原句retake為103／105、2旗與104／105、1旗，一次listener修詞後105／105、0 flags／unchecked。80 exact／21 Jev／4 second exact，cgit為Jev .89。原始付費階段、2 retake、1 listener及最初stage schema錯誤REVISE均另檔保留。
+
+EN M4A94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699、14552825 bytes、560.505秒、−14 LUFS／TP−2.0。PCM560.433333秒與AAC tail0.071667秒分列。00:47:37正常4段server組SHA／大小並authenticated角色metadata讀回dub_en／evidence_en_m4a；不是remote binary GET。final仍pending，main c8f4與歷史QA11不變，未改approval、語言選擇或提交正式language batch。
+
+原23:07快照是歷史狀態，0／8沒有被倒改成當時已完成。當前仍缺正式品牌片頭尾，其餘七語音檢／交付、actual-dub-timed CC、metadata／package及正式批次；all_eight_ready=false／overall=false。CC仍為原narration草稿，不能用主體QA11冒稱後續語言完成。見[languages-result](../../docs/videos/claude-formal-verification-255/languages-result.md)、[EN嚴格proof](../../docs/videos/claude-formal-verification-255/localization/en-audio-audit.rich-stage-pass.json)及[EN後臺摘要](../../docs/videos/claude-formal-verification-255/localization/en-delivery-verification.json)。

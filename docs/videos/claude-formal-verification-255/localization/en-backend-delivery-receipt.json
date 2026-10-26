@@ -1,0 +1,1105 @@
+{
+  "observed_at": "2026-10-26T00:47:20.921Z",
+  "slug": "claude-formal-verification-255",
+  "locale": "en",
+  "mode": "explicit_root_execute_checked_audio_only",
+  "ok": true,
+  "stage": "checked_locale_audio_roles_attached",
+  "upload_started": true,
+  "review_post_attempted": true,
+  "part_receipts": [
+    {
+      "part": 0,
+      "bytes": 4194304,
+      "received": [
+        0
+      ],
+      "complete": false
+    },
+    {
+      "part": 1,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1
+      ],
+      "complete": false
+    },
+    {
+      "part": 2,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1,
+        2
+      ],
+      "complete": false
+    },
+    {
+      "part": 3,
+      "bytes": 1969913,
+      "received": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "complete": true
+    }
+  ],
+  "http_errors": [],
+  "all_eight_ready": false,
+  "cc_metadata_language_batch_ready": false,
+  "remote_binary_stream_verification": {
+    "performed": false,
+    "reason": "Normal tool GET project, PUT file parts and POST reviews only. Verification uses server upload assembly and authenticated role SHA/size metadata; no authenticated binary GET route is exposed or called."
+  },
+  "remote_compare_and_swap_available": false,
+  "concurrency_guard_scope": "Exact owner-choice and every-review GET snapshots compared immediately before POST; endpoint has no conditional/CAS parameter. Post-readback must preserve all old fields/roles and decisions.",
+  "preflight": {
+    "locale": "en",
+    "checked": 105,
+    "flags": 0,
+    "skipped": 0,
+    "kept": 0,
+    "file": "/workspace/work/videos/claude-formal-verification-255/dubs/en.m4a",
+    "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+    "bytes": 14552825,
+    "speech_hash": "8028c7320d9cab29",
+    "translation_hash": "92e6309bd9211052",
+    "speech_fingerprint": "76a76f4bbbc0c4ba",
+    "duration": 560.505,
+    "timing": {
+      "errors": [],
+      "timeline_seconds": 560.4333333333333,
+      "pcm_samples": 26900800,
+      "pcm_seconds": 560.4333333333333,
+      "encoded_samples": 26904240,
+      "encoded_seconds": 560.505,
+      "encoded_start": 0,
+      "encoded_end": 560.505,
+      "container_seconds": 560.505,
+      "aac_tail_seconds": 0.07166666666671517,
+      "native_short_allowance_seconds": 0.03333333333333333,
+      "native_long_allowance_seconds": 0.09733333333333333,
+      "native_rule": "assemble/plan.mjs checkProbe; AAC_PADDING_SECONDS=(3*1024)/48000"
+    },
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated_lufs": -14,
+    "true_peak_dbtp": -2,
+    "fit_windows": 101,
+    "fit_tempo_max": 1.15,
+    "proof_file": "/workspace/work/ai-tech-next/formal-language-audio-audit.en-rich-stage-pass.json",
+    "proof_sha256": "a80eed3e56c18f7f400f7bae25fb1fdaee8197ecad0681cebfc1b115abea763d",
+    "native_completed_at": "2026-10-26T00:27:20.776Z",
+    "native_log": "/workspace/work/ai-tech-next/formal-check-en-reword1-2026-10-26T00-27-13-856Z.log",
+    "lines": [
+      {
+        "id": "zfgp",
+        "wav_sha256": "c800ba728885e90bbe9946ec39be5475b4425c8daca3ce471d4e0bb106f24946",
+        "raw_intended": "On October 25, 2026, my program has 8 bytes of capacity, yet accepts length 255?",
+        "full_spoken_form": "On October 25, 2026, my program has 8 bytes of capacity, yet accepts length 255?",
+        "entry_sha256": "5f13dc8343bcd0581cf33763e8b6d26d0196809a461243cfb2afe45aa0eb1578",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "z9dp",
+        "wav_sha256": "a6ea1b9c13f595f84a602f05f771752b66af725ec76e1130bd1a0d74f39311e8",
+        "raw_intended": "The record only bans bad inputs. Does rejecting all count as done?",
+        "full_spoken_form": "The record only bans bad inputs. Does rejecting all count as done?",
+        "entry_sha256": "0a5610005b86a19b3a98398c9ba4779c279c7f16cb250baac66695a8e744695a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "bpnn",
+        "wav_sha256": "f320d8c3cd5a7d78525691b46ba04d0a68b2724e05cc282b7064b82e2511077e",
+        "raw_intended": "The record needs a return result. Will the other counter program exit?",
+        "full_spoken_form": "The record needs a return result. Will the other counter program exit?",
+        "entry_sha256": "af37cbf782b4060d4abfbf92931591804fddc94b03b02c70a33141c1e019589b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "c8r2",
+        "wav_sha256": "cacfc1f64439e181273b5b8be2eb0118d1dd78dfae3257e2fb3ea7dbc574160c",
+        "raw_intended": "For the same requirement, who checks the proof AI writes?",
+        "full_spoken_form": "For the same requirement, who checks the proof A I writes?",
+        "entry_sha256": "ed56daa29ce81aeafeca60b2b4e64f086e56779276543ea0111871180736daa5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "qwaw",
+        "wav_sha256": "cfccf00e3b6703e63f476fd31d5ca477a212340f166d12a68f547ee55f0db2a4",
+        "raw_intended": "This record addresses checks raised by Claude's October 22 study.",
+        "full_spoken_form": "This record addresses checks raised by Claude's October 22 study.",
+        "entry_sha256": "d78fd6922c7df95aefa3f4bf48ca8877b50d5c0dd0b99112bdb248a272c45b37",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4rff",
+        "wav_sha256": "9f5ac7f4491887cad1e26d4e72799fb33ee585c756b755c9d5cd582e4ecbe437",
+        "raw_intended": "It turns test requirements into checkable claims.",
+        "full_spoken_form": "It turns test requirements into checkable claims.",
+        "entry_sha256": "9a06568945c82eb8397f94bb8b449d7a1afbd399b5597e212e21d9deba38648e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5i5d",
+        "wav_sha256": "59708ed6d7e03ff8e2b8c5010c25cd450125ba9fb9e5ad6cce11d47d20afcbb4",
+        "raw_intended": "I use my own C program to first fill the acceptance-decision row.",
+        "full_spoken_form": "I use my own C program to first fill the acceptance-decision row.",
+        "entry_sha256": "10f912ed764b82e161919ab6de148160e9d7cb4075345b545be9ded0cef352b8",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jeaj",
+        "wav_sha256": "ff7585afdabe672223610d4d9e01a8afc567518b4bac054644cea7641b87c02e",
+        "raw_intended": "The input is a data length from 0 to 255.",
+        "full_spoken_form": "The input is a data length from 0 to 255.",
+        "entry_sha256": "3189b64a9a019c6ee0fe52d2310575d2cc16f802ccb83a6827a6b09808ae9cd4",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "fzz5",
+        "wav_sha256": "27ba9d6f90d84ac133cddaf059eb1333e39957ec8ec6411bdeabbbb1de70207f",
+        "raw_intended": "Capacity is 8 bytes; reserve 1 byte for the terminator.",
+        "full_spoken_form": "Capacity is 8 bytes; reserve 1 byte for the terminator.",
+        "entry_sha256": "c4c34dc29a22b159920f38eed4c280f49e87afd9f6ee1affc0c83ea387534c2c",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "kkef",
+        "wav_sha256": "332eafc059e0144ebba63aacc49b6803447a57da6ad4ce62e2c723d8de59d8cf",
+        "raw_intended": "Accept only if input length plus 1 is at most 8.",
+        "full_spoken_form": "Accept only if input length plus 1 is at most 8.",
+        "entry_sha256": "6336120e7b5a8947f5150b184938f5f82f340aaaef6400ba0960ece1df79355e",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "m7xu",
+        "wav_sha256": "a6bb839ec1676be5676ce5947b9eecf5bedf5352e88b684860993fb749ceb6b5",
+        "raw_intended": "Length 7 plus 1 is 8: accept. Length 8 plus 1 is 9: reject.",
+        "full_spoken_form": "Length 7 plus 1 is 8: accept. Length 8 plus 1 is 9: reject.",
+        "entry_sha256": "45acf48e6b31d94dbc5b28f9b8af3e713a28bf336423aa4deff515c4b73ae9da",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "axkg",
+        "wav_sha256": "1e3c8d040df41a9154fcd3dcfef2c395145e86602bb89561c2ff9ac686af1593",
+        "raw_intended": "0 is valid: with its terminator, it takes 1 byte.",
+        "full_spoken_form": "0 is valid: with its terminator, it takes 1 byte.",
+        "entry_sha256": "4edd0f0953e9317e32f2be63c6582a16771256a21a79cdccb0e88bd0008d5ecb",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "r79s",
+        "wav_sha256": "5fbe97dabf7aeeb64e8b7b8e0b4d2a31a6538d30e6c8a79ff9d150232f30af5a",
+        "raw_intended": "So the record's accepted range is 0 to 7.",
+        "full_spoken_form": "So the record's accepted range is 0 to 7.",
+        "entry_sha256": "08ba7bb5c25c62f4c2e1f7b5f5f18360a12fb06dcdcba81a0f83b5fde47fb77d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "p2uy",
+        "wav_sha256": "ca31e15eaa2d86b5e7002909286b211995b40f5250d8ab8dce6ae321353504a7",
+        "raw_intended": "Then why did the opening's 255 get through?",
+        "full_spoken_form": "Then why did the opening's 255 get through?",
+        "entry_sha256": "cae6e8fa180781e1798d7bda7c7c670bba9331e5289461254a76d535fe190289",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "vwiq",
+        "wav_sha256": "1b2fb3cc38bee121ee5fc9388f798318937b8f388a9fb446af4a3e53df1d6d47",
+        "raw_intended": "Follow the total-length calculation: 255 plus 1 first gives 256.",
+        "full_spoken_form": "Follow the total-length calculation: 255 plus 1 first gives 256.",
+        "entry_sha256": "ee98be94b4d1bb3c3238823b72c1d27b411966a66ce4d25d4eb6866470a68c19",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "5iky",
+        "wav_sha256": "935c65fbaec1793328a92e6a7b0bd0dae4ea8bda01669337a68442a22033d5d0",
+        "raw_intended": "Addition first promotes to int; it doesn't directly become 0.",
+        "full_spoken_form": "Addition first promotes to int; it doesn't directly become 0.",
+        "entry_sha256": "02ca15152f2bc2af1c858f125d5319fc954262fc4e4b06be390ec82087b99ae0",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "zfmi",
+        "wav_sha256": "b8a77ed80c6c1a39f6129da1b1489e321ec46ec4cd6ecc67d20007b28349afbc",
+        "raw_intended": "Buggy code casts the total to an unsigned 8-bit integer.",
+        "full_spoken_form": "Buggy code casts the total to an unsigned 8-bit integer.",
+        "entry_sha256": "1fc66612a106689e857813291feeb8831f31e31fe61148772ef8786a141a70a6",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3mpx",
+        "wav_sha256": "60ed2965d7bfb5acc7d6e92255a7cb1717fc58eece34850c9e94711550c5dda8",
+        "raw_intended": "This type can store only 0 to 255.",
+        "full_spoken_form": "This type can store only 0 to 255.",
+        "entry_sha256": "5256cd78d72b8843795527e2480f857999a9e1a7d059dba65fa7355fe9c09d8b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "tew5",
+        "wav_sha256": "de38d0cea157405fe9b5e2875929657a3a6dfab5640cb4dc81fd9fff72c9ba6e",
+        "raw_intended": "Casting 256 back makes the stored value 0.",
+        "full_spoken_form": "Casting 256 back makes the stored value 0.",
+        "entry_sha256": "3d339a98df3ee1d7d0e576b56744432b07e67022a3bc2a75cbacc49ca53c4fec",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "femu",
+        "wav_sha256": "e424f3d6f840a14b53517928acc2fbb85363e35e4b21c40b6d559239952f6a50",
+        "raw_intended": "Comparing 0 with capacity 8, it returns a pass.",
+        "full_spoken_form": "Comparing 0 with capacity 8, it returns a pass.",
+        "entry_sha256": "c389b2103e13d62fee917de56eb450b1a971e980f1d8b0eba9f6ac50a0b5f4cc",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "64pm",
+        "wav_sha256": "73d464881f28840cd7b4a690b4c7dbdc7c665a076f9187ee67eeb9b8cc7a6654",
+        "raw_intended": "8 bits is the type's width; 8 bytes is the capacity.",
+        "full_spoken_form": "8 bits is the type's width; 8 bytes is the capacity.",
+        "entry_sha256": "e404eb11e30eb337d9d60c5e211b4631e11cc5965ae25ae8166b8239f8505c48",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "2yfh",
+        "wav_sha256": "618c69e4bf1494570f5765c7c90957becbd86e4050db273476096e1572df0b23",
+        "raw_intended": "The bug is in cast and storage. Don't confuse the two eights.",
+        "full_spoken_form": "The bug is in cast and storage. Don't confuse the two eights.",
+        "entry_sha256": "ed7f49d829d05b821101ad3a891ef90dc4192a054370b171d85afda5ee6163fc",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mvnc",
+        "wav_sha256": "24bc2132297e6a5961245d4dc05f30bb6f9c8a6f3d48af9484cb6205a708d338",
+        "raw_intended": "A counterexample is recorded. Which line can keep the full total?",
+        "full_spoken_form": "A counterexample is recorded. Which line can keep the full total?",
+        "entry_sha256": "381142179ada92ed64dfbd3f2938766fc84eceba109ddea7e45099061d5795e9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "936d",
+        "wav_sha256": "ab2e598020824ffa2eb529768ca3714f329472e13487569e06649af086fbe9fb",
+        "raw_intended": "Keep the full value, then store the total as an unsigned 16-bit integer.",
+        "full_spoken_form": "Keep the full value, then store the total as an unsigned 16-bit integer.",
+        "entry_sha256": "f48866ec1fa01cd53f31bb629ed66503d209e1ff3a23956cc3b72b4461c69b39",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "s57e",
+        "wav_sha256": "6097a16d5a2cd4598655820e19ad0c8ad025e48afbc11acebbaed66d96385b5c",
+        "raw_intended": "Narrow the result to 8 bits first, then store it wider, and 0 is still 0.",
+        "full_spoken_form": "Narrow the result to 8 bits first, then store it wider, and 0 is still 0.",
+        "entry_sha256": "cc243e1f542212715303bcb42595299f3b48b05eb777b2d80387139114ddc4f2",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "yavq",
+        "wav_sha256": "03545d0f886f3007886dcbdcb7613216ce8bc10e2b5245552d54861c2af86413",
+        "raw_intended": "Fix the whole line: both calculation and the cast storing the total.",
+        "full_spoken_form": "Fix the whole line: both calculation and the cast storing the total.",
+        "entry_sha256": "a1dfc5b588e101d41e4e120ac79a723a3abe82264d7d87884ec4232097b62279",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ij57",
+        "wav_sha256": "29e55662206438cb0b3144f04dd23820c72a6f58b2404a9fca08eb76caf830e8",
+        "raw_intended": "Input 255 plus 1 now stays 256.",
+        "full_spoken_form": "Input 255 plus 1 now stays 256.",
+        "entry_sha256": "c7080725a9910d28f44accd44a186f13eb5d69a88c9d51025a3d14f01998fccf",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "mfag",
+        "wav_sha256": "3304b2507f84e357a4eef9e75d73d8f33ae4f5545aac0e7f6e49c021970c6a9f",
+        "raw_intended": "It exceeds capacity 8, so now it correctly rejects.",
+        "full_spoken_form": "It exceeds capacity 8, so now it correctly rejects.",
+        "entry_sha256": "0d838141c380fc05551af0b038fab1248caf9956088a7359678366afe0593ce5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "vkym",
+        "wav_sha256": "98c59f4a9db9df9d101cecb047ca57c86ed613d06b24b8690cd68f5dcf528e8a",
+        "raw_intended": "What about valid length 7? Plus 1 gives 8; it's still accepted.",
+        "full_spoken_form": "What about valid length 7? Plus 1 gives 8; it's still accepted.",
+        "entry_sha256": "e0db634a28593a2a593eee4539e1170dd5fae8b2a1d6d421f5ab73b3222466b5",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "84hx",
+        "wav_sha256": "975a0106caab4967d5665d8ae1405c1d60c2e77610114ce70658a5c38abd6c08",
+        "raw_intended": "But how do two cases rule out errors in between?",
+        "full_spoken_form": "But how do two cases rule out errors in between?",
+        "entry_sha256": "de6ce58ce16502026d871a54291b8befeda615bc81d9e2ced550a045452a0a12",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "wunt",
+        "wav_sha256": "78a821527ce28782544b66105e20172cdb0925537dafa8e95843c8e2e829655a",
+        "raw_intended": "I first chose 0,1,2,3,4; all met expectations.",
+        "full_spoken_form": "I first chose 0,1,2,3,4; all met expectations.",
+        "entry_sha256": "e72fcca042ea84e3b62b3f0f948c39a29cad9569d9052b8962ff01f35ccfe356",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "a7te",
+        "wav_sha256": "40a6aebfa565413d449eb63166cd3b7ea39e3ab9507a5117a8ea175e87347989",
+        "raw_intended": "Listing all values from 0 to 255 checks the full range.",
+        "full_spoken_form": "Listing all values from 0 to 255 checks the full range.",
+        "entry_sha256": "d98ad6b82e5c65f75529f199c24f460d478d6117041c3788f927537cbbef643d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "dfhy",
+        "wav_sha256": "8e8e0e76d4a8b9db069ae47449f5f861d793069256a3d95cb4ab6db004f9ea82",
+        "raw_intended": "The buggy code's only extra acceptance is 255; widened code accepts only 0 to 7.",
+        "full_spoken_form": "The buggy code's only extra acceptance is 255; widened code accepts only 0 to 7.",
+        "entry_sha256": "4fbe31f750398455746d223ef01172f8f2869e414d7460b2f269263c92830f3b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "zgkb",
+        "wav_sha256": "52fbf27cab8ca417298bafbc4cba4e28ca5ebd967224df474367888a93733876",
+        "raw_intended": "I add a solver model to the record, encoding the same input as 8 Boolean bits.",
+        "full_spoken_form": "I add a solver model to the record, encoding the same input as 8 Boolean bits.",
+        "entry_sha256": "57db87085b494a0e8fece2f113d8b82899c1b26bab8e1621cddce0eb62d5aadf",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "5waf",
+        "wav_sha256": "7e4193aff2c76424f44865c2a0509cbe4f71557d4410a296fac4b56ec0bcc4e3",
+        "raw_intended": "Ask the propositional solver: can an invalid length be accepted?",
+        "full_spoken_form": "Ask the propositional solver: can an invalid length be accepted?",
+        "entry_sha256": "07b9b6b051f5acbab4f3e66d56ba8adf187a391faa948e130a6a9ef7ce625e15",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "unr8",
+        "wav_sha256": "0ae3fb209c15ee46797c02951f005ac5c829a08aa937ce15aba1319ebf00782e",
+        "raw_intended": "Finding whether Boolean conditions can all hold at once is called propositional SAT.",
+        "full_spoken_form": "Finding whether Boolean conditions can all hold at once is called propositional SAT.",
+        "entry_sha256": "6b3b132e90dc1993d9160f1c711eea5c3290a4bcd2cde1af6e0c40fb0324d9a5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "gtuj",
+        "wav_sha256": "cf2fc7a6b9ef0a36ae0e3b463e43e8c1edbfd4d8a418ddc9c93f6dd888349f9e",
+        "raw_intended": "It finds 255 in buggy code, but no such case in widened code.",
+        "full_spoken_form": "It finds 255 in buggy code, but no such case in widened code.",
+        "entry_sha256": "aab8eb67c5c3b873f3d57b60855610dec1f6ad389780e01ff6c209b4e5f935f8",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "56e4",
+        "wav_sha256": "54518b01aba2413a885cfaff3a5c232edd3963d853a447da3ccf1201529fc805",
+        "raw_intended": "Ask if valid lengths are rejected: none in the fixed version either.",
+        "full_spoken_form": "Ask if valid lengths are rejected: none in the fixed version either.",
+        "entry_sha256": "ca3d3c5b78d1423d2481efb8d0c58030f85253128b9923c39d81de309e553339",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "tksv",
+        "wav_sha256": "f61eefcf6600463a951f8062779fa198adbf3847bd780877416950802ca17137",
+        "raw_intended": "Match model results to actual C runs, one by one: all 256 results agree.",
+        "full_spoken_form": "Match model results to actual C runs, one by one: all 256 results agree.",
+        "entry_sha256": "64cd45be1d4719d60513e033b92e4b6757a12d1fe4b1f6db2759732ea7871a1f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "2zma",
+        "wav_sha256": "7b1e03db9f2a32faa80ac4c8e212301934dc69b11a56c7e902a07d6610587d52",
+        "raw_intended": "This range is small enough to test each value; the solver adds no new answer.",
+        "full_spoken_form": "This range is small enough to test each value; the solver adds no new answer.",
+        "entry_sha256": "95049074ee8e1835618795955c9b82fa9f839c66ea1d74422246bf650a4f854f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4bqi",
+        "wav_sha256": "7400dd192cc894d8030881607b4b4339d02bd8442fa2919244db08b1bea32f39",
+        "raw_intended": "But if the record only bans invalid inputs, can reject-all be delivered?",
+        "full_spoken_form": "But if the record only bans invalid inputs, can reject-all be delivered?",
+        "entry_sha256": "79bd6f853cfb236c7a804891526ee5d224a14dd1970992a57b4d7675f1cacc1e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "xfvp",
+        "wav_sha256": "3701923a50a5a8115a2472153f9a97e2e1224321976d94884b0dc809f6c0b0e6",
+        "raw_intended": "Under that one-way rule, reject-all does block every invalid input.",
+        "full_spoken_form": "Under that one-way rule, reject-all does block every invalid input.",
+        "entry_sha256": "dc8b1d91838698776bd5d6ea35b3745341bd90ee0069b61bdfade806c626122c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "cabc",
+        "wav_sha256": "226ef991a9662d6d489cbcd81b17e405c8df3cc0a8fd741142cc89f2e9136976",
+        "raw_intended": "But it also blocks every length from 0 to 7.",
+        "full_spoken_form": "But it also blocks every length from 0 to 7.",
+        "entry_sha256": "5a5854e53bfd67d7adc10d03017b09f68f6a4888bdb310b0aadeffa2847ec8de",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jhkm",
+        "wav_sha256": "a784b66f641b668df0e68a16c19c8138f1eabd18db3605e7a16ed0e17ec179e6",
+        "raw_intended": "This comparison uses a symbolic model, not another C program run.",
+        "full_spoken_form": "This comparison uses a symbolic model, not another C program run.",
+        "entry_sha256": "c63f01bbd09ac767e66c57c71efc090878c2c23125eb093b613fa1ff3ac9fd4d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "e6wk",
+        "wav_sha256": "404541d34c962cf43aa9bb66da72232540ceed05c02bd6fae8f9596e2fc3cf8e",
+        "raw_intended": "That's 0 false acceptances, but 8 false rejections.",
+        "full_spoken_form": "That's 0 false acceptances, but 8 false rejections.",
+        "entry_sha256": "fb34f726ebfcf0d51169b7173d30c6b311398489eee7467c61addf513fca2ab1",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "7d4v",
+        "wav_sha256": "5474183cfe91f5ee0acdfb80efce0a16106efe1aed0e4f645e1c6a47aaf51939",
+        "raw_intended": "Just ban invalid inputs: code can comply by rejecting everyone.",
+        "full_spoken_form": "Just ban invalid inputs: code can comply by rejecting everyone.",
+        "entry_sha256": "7bc8dcaa5bdd3ce2c10cb1ddac08ac561ea2c7d9aeb6814059157996df60c73a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6a2b",
+        "wav_sha256": "be6462d5ac68c8e80c17c43b496a25acc9149ee8f230968f8e63b1dd662064c3",
+        "raw_intended": "Also require and check that valid inputs must be accepted.",
+        "full_spoken_form": "Also require and check that valid inputs must be accepted.",
+        "entry_sha256": "b5d32ff4765c229b1264de499199876ff54b910efc2614173019a497151ec8aa",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4akm",
+        "wav_sha256": "3703453eb0ed6768e83b3ceaf4c44b0274153ab67bf277e4c79ed4702f693cac",
+        "raw_intended": "Together: every length 0 to 7 must pass; all other lengths must be rejected.",
+        "full_spoken_form": "Together: every length 0 to 7 must pass; all other lengths must be rejected.",
+        "entry_sha256": "8758cdc3743edc15bf8e8c3171ca3f36a0f0949e51f922b0088e983d8bf1ab4d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "w9b4",
+        "wav_sha256": "df1cd4aea24cdcaeb51ac7bc36ffea981d247f1182019fc3e30d310ba0b14daf",
+        "raw_intended": "The opening's one-way record adds: valid inputs must pass.",
+        "full_spoken_form": "The opening's one-way record adds: valid inputs must pass.",
+        "entry_sha256": "7039f1a794d4de90a15f0afc8c96dce622801d6b870383611dab50c68a44bbb3",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "dkjy",
+        "wav_sha256": "3bde5b464c95bbd2b3682664f013552b31da549a12160c14141814790dde2890",
+        "raw_intended": "This row delivers acceptance decisions; the code never writes a data buffer.",
+        "full_spoken_form": "This row delivers acceptance decisions; the code never writes a data buffer.",
+        "entry_sha256": "50389c3fe10e3eea1358bdab18ce3a197bae3a34883715c2ffdddf5a2a62b47c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8ywa",
+        "wav_sha256": "f8eaf04fe957d3509305813051034b19aca3e27360de87e54ffe7b1de21ac535",
+        "raw_intended": "I enter two zeros for widened code: no false acceptances or rejections.",
+        "full_spoken_form": "I enter two zeros for widened code: no false acceptances or rejections.",
+        "entry_sha256": "592028746ee781ddcdb91f9aa2f4393cddaee2928e00db62788b3182ea444f8f",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "xh98",
+        "wav_sha256": "cef671ceadaefe21c04065e54e1ce1a9b0b74f16cbca5bb7ebcc6583b4275ab3",
+        "raw_intended": "Acceptance is done; another record row awaits return checks.",
+        "full_spoken_form": "Acceptance is done; another record row awaits return checks.",
+        "entry_sha256": "8162b4d686c43505e73cade173acd1b4cd1ff7228b19e087c6b8cb28adb0d225",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "idga",
+        "wav_sha256": "7e8ca79fd15bc29efeb547dafa0614ffe03e6460818d5df68bd27f558c851795",
+        "raw_intended": "How do we make the return field a requirement we can check?",
+        "full_spoken_form": "How do we make the return field a requirement we can check?",
+        "entry_sha256": "8b850a3417c83063b510d7de25f6e97eeac9a7e0eeaef2b98a5a254b90f86707",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "u2xw",
+        "wav_sha256": "8f2088ad5cb56f4020ba8ffe72e4e7e76eab73fa5897b20a5d35dc740c8758fd",
+        "raw_intended": "I use a separate counter program for returns; its input is the limit.",
+        "full_spoken_form": "I use a separate counter program for returns; its input is the limit.",
+        "entry_sha256": "8b1eb2fd69f01852a4a102bd472813b68760a50c0b421d3ef1623dd84378b4cb",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "p4u6",
+        "wav_sha256": "209b1869cd3e62964b5b93d3e02cc3ff3982292d7e77d37b241a93f7554c72fb",
+        "raw_intended": "The limit is still 0 to 255; the counter starts at 0.",
+        "full_spoken_form": "The limit is still 0 to 255; the counter starts at 0.",
+        "entry_sha256": "ab2944a64c911c8a9aa2c10ccee07d6bd24a5bc0b0a9a75090d84b4c67ce6e09",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "v9sd",
+        "wav_sha256": "90f793af439b7962dd27b705b8d35347a8a47580345af5a2ad418fcfce02979b",
+        "raw_intended": "While the counter is at most the limit, add 1; otherwise, exit.",
+        "full_spoken_form": "While the counter is at most the limit, add 1; otherwise, exit.",
+        "entry_sha256": "695fb2c40b07757015994044f778a4a8dfc2dc041303095459bdf4dcfb8a312b",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "riuf",
+        "wav_sha256": "9a8589a31bfc59e38e517fff789ee98e64dd6af896dfeb402bd09a098f79d720",
+        "raw_intended": "The count required is limit plus 1; the return must equal it too.",
+        "full_spoken_form": "The count required is limit plus 1; the return must equal it too.",
+        "entry_sha256": "15f3ef10dd521a2eb829c2d8a47d04fdb78d76d1ab4be7eea903c169626e6cff",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "cgit",
+        "wav_sha256": "c5394ea7eba222656724790fce84eb7a0284b8406f0b27675130e734e5835d8a",
+        "raw_intended": "On input zero, expect 1 increment and a return of 1.",
+        "full_spoken_form": "On input zero, expect 1 increment and a return of 1.",
+        "entry_sha256": "fa1b99a1df33e90d37f9e2b84403def6445d0a21895e68ce7b80b96461626129",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "y326",
+        "wav_sha256": "8615f6b4b0f57fc1f9e8bb1485e921ec726406a19ce82b3d73e7de92b7bc5be7",
+        "raw_intended": "Input 7: expect eight increments, returning 8.",
+        "full_spoken_form": "Input 7: expect eight increments, returning 8.",
+        "entry_sha256": "7fc5ccfe1db93504463d71f769fc5dbd40135da5630f3e0c252bca1750bba766",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "qmcd",
+        "wav_sha256": "a3e4290cc37187e9c22e14aa0e0d6d8ee0cab96636d92313d8be5e0b3a311122",
+        "raw_intended": "The buggy counter is 8-bit; at limit 254, it reaches 255 and exits.",
+        "full_spoken_form": "The buggy counter is 8-bit; at limit 254, it reaches 255 and exits.",
+        "entry_sha256": "5dcae5b92e6bac46f890f682e189f7a46928c65dffb15c9262fc8d4494914c8a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "b3r9",
+        "wav_sha256": "aefb7c7748809f2d117d9fa6b1115241635b13de9f2c8306c4474cb22e0c6d5b",
+        "raw_intended": "But at limit 255, the tool stops the run after 0.25 seconds.",
+        "full_spoken_form": "But at limit 255, the tool stops the run after 0.25 seconds.",
+        "entry_sha256": "6c8ac9eba1642c8363254ed58e1e54eba130af1328585540af4dbc2fd54f5108",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ijcq",
+        "wav_sha256": "1cf210f7c27d138fc167ef8d7945360859f4f2c08385b9e45fbbd6b1c1945684",
+        "raw_intended": "Does it never end, or did we stop too soon?",
+        "full_spoken_form": "Does it never end, or did we stop too soon?",
+        "entry_sha256": "314b1134a3fa42e71d13e832b476a1b3ef57a76325bc9279a204d4dc91074c02",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ihny",
+        "wav_sha256": "02389ff67b1ce80186216b31056a8eaa48ead481ef83ae0b49db48770eb4ad9b",
+        "raw_intended": "It timed out; that alone cannot prove the program will never end.",
+        "full_spoken_form": "It timed out; that alone cannot prove the program will never end.",
+        "entry_sha256": "9f9fbc08a3613f73bc17a528a45378c6d7ea0925d0510b654a4caeedb140ad8f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4jzv",
+        "wav_sha256": "b1d34ca87fc2fe85bfe34ebaed1b642670769b84a61d88263380b68f07ea8d6d",
+        "raw_intended": "Check each state, and how it moves to the next.",
+        "full_spoken_form": "Check each state, and how it moves to the next.",
+        "entry_sha256": "b22d248226a0f4db684a96e50193c6cfa4807eb90083196e8eeebc9130fa40d5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "kfft",
+        "wav_sha256": "a87dfcb400e79ddd22a1af2d5cc0d5410112d39199be1a7bbd6ab591b7ac067d",
+        "raw_intended": "The limit is fixed; no other actor changes the counter.",
+        "full_spoken_form": "The limit is fixed; no other actor changes the counter.",
+        "entry_sha256": "89e1572d5455c3624038b71faeab014c98bbb9ada83c9349e966b25e442022e5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "58rm",
+        "wav_sha256": "7e66d1912e5dacb01d2451e14e5d0a0dcf66a8b760684621995dfc362258f22e",
+        "raw_intended": "The 8-bit counter goes from 0 to 255, then wraps back to 0.",
+        "full_spoken_form": "The 8-bit counter goes from 0 to 255, then wraps back to 0.",
+        "entry_sha256": "40042e52d235fe9de07804895b587e146386d7fbe387d77287cfac91d1b5f049",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mjsr",
+        "wav_sha256": "6e3553c9609eb7a3191f9d5a6c7b637d8d03294b99abc22ab029a5df67582eb7",
+        "raw_intended": "The condition holds, the limit is unchanged, so the same cycle repeats.",
+        "full_spoken_form": "The condition holds, the limit is unchanged, so the same cycle repeats.",
+        "entry_sha256": "597f17b2716f5b6e40e4c3283f008fa289850ad20fdf488363bdf78b154c6c91",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "kq36",
+        "wav_sha256": "f56933fabb78a4f77b4b59bb378f28ee59cf399d75cd060e53fc3180a9c5a509",
+        "raw_intended": "The full control graph has a 256-step cycle, so this model cannot exit.",
+        "full_spoken_form": "The full control graph has a 256-step cycle, so this model cannot exit.",
+        "entry_sha256": "ef524d346e63890469a9d25cca2df607ca4fddce0021694eb6d31480e2555748",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "qjaw",
+        "wav_sha256": "7bb9447a8328ccc00c2146c6f3802b84d0dbb50edb13efcb7b32c58a6933cda6",
+        "raw_intended": "Timeout is this run's observation; the cycle is the control graph's reason.",
+        "full_spoken_form": "Timeout is this run's observation; the cycle is the control graph's reason.",
+        "entry_sha256": "e30dd305bd0a6d7cd7be433f0b94fb2422d2f2636814bcf1830ac4585bc806ff",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "h6n5",
+        "wav_sha256": "cb590644094fec0f4fa75b2ee8b272551bfed5e7bcf1ffb64ca9684f1a038115",
+        "raw_intended": "To finish counting and exit, where must we make more room?",
+        "full_spoken_form": "To finish counting and exit, where must we make more room?",
+        "entry_sha256": "ff6b1e979ac76b5ddb80143ec3b9baa49330dbe66d1f91ecc50ab3c369451593",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "p8te",
+        "wav_sha256": "3de5fe3b562c385af8c26be24075b154fd0b6cd422bd32a0cd46f02f70f79287",
+        "raw_intended": "Make the counter and its cast unsigned 16-bit integers.",
+        "full_spoken_form": "Make the counter and its cast unsigned 16-bit integers.",
+        "entry_sha256": "19666238de51ad212ec51bf632a0ab3aa745d08c9f2e773693156a0f43242f0e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ghs2",
+        "wav_sha256": "d1ac5be2aca1ae86a288dcebeb28c932f2457bacb929a9c9f1f47b93d6eb98d1",
+        "raw_intended": "At 255, adding 1 now preserves 256.",
+        "full_spoken_form": "At 255, adding 1 now preserves 256.",
+        "entry_sha256": "e4b22184971b3bc8f0499a214f292d49b572668afd2db70441e7ccc792a8a8e7",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "9mxr",
+        "wav_sha256": "e5f015f545e25cd10b8055f0bc77fdeffd28e04142bc0ad3055cceb28345c7ae",
+        "raw_intended": "256 exceeds the limit; the condition fails. It exits, returning 256.",
+        "full_spoken_form": "256 exceeds the limit; the condition fails. It exits, returning 256.",
+        "entry_sha256": "0170857477158a21bfc1e5862e62dad747ca73203db05d3bcea78f395890f36c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ey22",
+        "wav_sha256": "1923fc836e3790a5468f145ea7c740bb0adcc75e96675995a057a65d482a54ff",
+        "raw_intended": "The return field now has a result: every input exits and returns limit plus 1.",
+        "full_spoken_form": "The return field now has a result: every input exits and returns limit plus 1.",
+        "entry_sha256": "49bd3ff146924ae96ae015b60cf2d16c2cea7611b91ffa076ec882c3104b0c30",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "5feu",
+        "wav_sha256": "5bbe0333445e18688f0a66bb1a54c0e63f4beb099606a9b98709d3da80833a7b",
+        "raw_intended": "Return value and exit condition go in separate fields of the same row.",
+        "full_spoken_form": "Return value and exit condition go in separate fields of the same row.",
+        "entry_sha256": "6239a7e7f50a8f573ff87f0d043137fe761d843eb331d88e24fa3f1cff733202",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "rsx8",
+        "wav_sha256": "45022e65c43026d0894591fb1e8d1d06ebc8be35baa693cd5dcbe449e42f3068",
+        "raw_intended": "The record separates acceptance and return. Do Claude's proofs check the same requirements?",
+        "full_spoken_form": "The record separates acceptance and return. Do Claude's proofs check the same requirements?",
+        "entry_sha256": "088f26d63ec56f163424f70a2e9d4389533f2c58cf58328663089adcc77fbf49",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "zg4q",
+        "wav_sha256": "32929ba4d7e1a277c0aa27d92bc07048c979d35ccfd51a2325bda1db974aaa41",
+        "raw_intended": "To match the record to a formal proof, fix the program version, statement, and execution model.",
+        "full_spoken_form": "To match the record to a formal proof, fix the program version, statement, and execution model.",
+        "entry_sha256": "3e90711419d5c1f1bbdc3d79f1a559f8f47ca0a08aa40969d103dadb38bc2924",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "wzn2",
+        "wav_sha256": "88c3b903f196e67b63f284f59231f71f80931d9070f704642b1349ad61961e56",
+        "raw_intended": "The public release targets compiled RISC-V binaries.",
+        "full_spoken_form": "The public release targets compiled RISC-V binaries.",
+        "entry_sha256": "98d8955284b9e2724b42c954c51d2f21fe808d1409bbadb81c567a2c5530884e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "cawx",
+        "wav_sha256": "3521b742c9ca6e220ae4f85e5bdb2e7800d29955d791a9f4997b2a43be111f35",
+        "raw_intended": "Rocq kernel checks AI proofs at compilation.",
+        "full_spoken_form": "Rocq kernel checks A I proofs at compilation.",
+        "entry_sha256": "c4bec8dd1b3027fe436bf5e720202ba3e05ee8ab569076da459ebd6d587efbad",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "uqde",
+        "wav_sha256": "512f6f438eb20ca9f3d13f850f6c624e1c2867fe117331ec95484e6dd7a8fcb4",
+        "raw_intended": "Tools match the result to the fixed claim and list assumptions used.",
+        "full_spoken_form": "Tools match the result to the fixed claim and list assumptions used.",
+        "entry_sha256": "c2cbf1fc2da21db9ebf959d79d69b90a1907c6e3b9a5aeeaf3c807f8ccc98eaf",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5fga",
+        "wav_sha256": "592db4c53d2328eed77bc2bb36170d013c76b65264a53662926a663b34230c9f",
+        "raw_intended": "Those assumptions must also pass an allowlist audit.",
+        "full_spoken_form": "Those assumptions must also pass an allowlist audit.",
+        "entry_sha256": "fefb9e871c9d6697bc7ae22d2fad4981031009dad2c2978a794fa461dc513eb1",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "wi26",
+        "wav_sha256": "77d4762b2d3f3964c3137fbf0040926d828c8a01d3b16d543a38ee1c9d28c4bc",
+        "raw_intended": "The opening's checks rest on Rocq's kernel and tools checking claims and assumptions.",
+        "full_spoken_form": "The opening's checks rest on Rocq's kernel and tools checking claims and assumptions.",
+        "entry_sha256": "dfa9a4c5dfa3994e7ffea7a9ca183bb8cb3fdaa9fbbd3d09de963f93e5687d9f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "nzaz",
+        "wav_sha256": "b8c8b21d314d759cabb5eb9e6442bc6625c3c417a41ccaa416fc17cf102b7691",
+        "raw_intended": "Compiling a file isn't the goal achieved. What must be proved?",
+        "full_spoken_form": "Compiling a file isn't the goal achieved. What must be proved?",
+        "entry_sha256": "eab19bbebc13a458618e19ba8b5a5c07014957c16afcd1aab5796302331eabcb",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "7ip9",
+        "wav_sha256": "4ff18c36d0bbab96a10ec0c130fa24defef3e6b0dba64e3b9971390585a0bf73",
+        "raw_intended": "It compares normal and error-checked builds of one program, not before and after fixes.",
+        "full_spoken_form": "It compares normal and error-checked builds of one program, not before and after fixes.",
+        "entry_sha256": "0cd5b42518a50f09eb255a0609f35d535bba8c2b3b62f0beed7f379f2b11e2c0",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6x7t",
+        "wav_sha256": "1af1d7be0c7ff3ff352d9358a7563a89fc9caacfa38c663a43b88e058d3a6bfe",
+        "raw_intended": "Model inputs must keep the normal build within its memory budget.",
+        "full_spoken_form": "Model inputs must keep the normal build within its memory budget.",
+        "entry_sha256": "55535296974021a6c05087390baf96fea73995b3c56cd67238befe060d30484d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5u3j",
+        "wav_sha256": "81ec0693ecf9ade07c43ae8030371989f479ec377005ad9f0fb1f3c2466d4bbe",
+        "raw_intended": "Given that, neither build has the specified errors.",
+        "full_spoken_form": "Given that, neither build has the specified errors.",
+        "entry_sha256": "dd3fc64851edaa6a549db852a4af2de96115a15e072a0f6eb9b933a38a5beb25",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "cnnu",
+        "wav_sha256": "3d561cb71d26d1042f574be8f158f599a5ff1eb27fc4c58b4048e13172065373",
+        "raw_intended": "Finite behavior records can include text already output.",
+        "full_spoken_form": "Finite behavior records can include text already output.",
+        "entry_sha256": "b430bf3cdcda8d84eaa7e5eedab7bfaca2827737fa5637210582ba0debe0e1e4",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "fwc2",
+        "wav_sha256": "128a3b2adf828aeda222ed98ee34679e40c490579ed82f12c6f86e559958f2e1",
+        "raw_intended": "Both builds must allow the same set of observable records.",
+        "full_spoken_form": "Both builds must allow the same set of observable records.",
+        "entry_sha256": "4a17051f35998451b05d6a0a53b8a5779248059082eb2e9266471dc54a1f7274",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "e7pc",
+        "wav_sha256": "a6cd62d7182f5fb5cba6337604897494583c623252f87de922bd63c82ab24296",
+        "raw_intended": "But does matching behavior also guarantee termination?",
+        "full_spoken_form": "But does matching behavior also guarantee termination?",
+        "entry_sha256": "394dea915e6d242dd0f0df64b24ae1e50c88cea1c26e385d86c4c7d5236673c6",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3jaw",
+        "wav_sha256": "63044022e85260e1862f135fb358182ef6e2b4c2b2d833a9a44d0a660c11ca06",
+        "raw_intended": "No. This release provides no proof of a termination statement.",
+        "full_spoken_form": "No. This release provides no proof of a termination statement.",
+        "entry_sha256": "4dbe7ac24520c33af85ce05acbeb156e0acd60239d46fc1937f2933a50576a5a",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "e2mj",
+        "wav_sha256": "ff68e161ff7f6a7f5c568a6132e527484693770a836981b12161a37702cda59e",
+        "raw_intended": "To guarantee execution ends, prove termination separately.",
+        "full_spoken_form": "To guarantee execution ends, prove termination separately.",
+        "entry_sha256": "6f72139f27cb7cd7ad84ae92946c1ff5c3371b0786c67985e85efcb313d8b29c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4nfp",
+        "wav_sha256": "9437acaa6db2cc45c436467b52870fb5568c2465675bf873626bb49d9d08c617",
+        "raw_intended": "This release doesn't mean the whole study left termination out.",
+        "full_spoken_form": "This release doesn't mean the whole study left termination out.",
+        "entry_sha256": "b6daa5bf6694b20813234fd3399842cd526806f74759ddd5bc0bef8fe8061008",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "cr5k",
+        "wav_sha256": "50cb9679068380e40bd314540768d01549fc0d9fb7320a9644bd39eb289656e5",
+        "raw_intended": "The official study covers 123 libraries and 239 entry points.",
+        "full_spoken_form": "The official study covers 123 libraries and 239 entry points.",
+        "entry_sha256": "fcaa817ed52ab0d00bcf8204a4bd9942481a3a6b64a82c3c69a4c415730f2357",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "b7jg",
+        "wav_sha256": "17fb234bea5214362a5650eb3a8a687187d6ed6d307141f3f9ded0cbcafe2baf",
+        "raw_intended": "The current public release lists 60 entry points from 25 libraries.",
+        "full_spoken_form": "The current public release lists 60 entry points from 25 libraries.",
+        "entry_sha256": "ec19c9d5e01c8783726a2e3e3725f20720c12a353efecdc2f3fbc6743fd86855",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "i2pt",
+        "wav_sha256": "4166cc41dc886147374f13e1875c912d49f370726a8ac3a9aeb592e1e11e7f5c",
+        "raw_intended": "Label the version too; record study totals and the available release separately.",
+        "full_spoken_form": "Label the version too; record study totals and the available release separately.",
+        "entry_sha256": "52a4071162d667d2808afc16999480170bd2f2edd7518b099a1a91512e81f291",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "te3s",
+        "wav_sha256": "a3516efd88b9aa20b35f1bd54da6db12c7bf102af5e1d40341f0e851e9daf0ae",
+        "raw_intended": "Add our check methods to the record to compare the deliverables.",
+        "full_spoken_form": "Add our check methods to the record to compare the deliverables.",
+        "entry_sha256": "acac203a6d078f706efe33a7f3d4fce9e720df09b0a77cbb1feec59294cfbb85",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "iest",
+        "wav_sha256": "33e6019f35be1c81e54c6f311f9648b6bad2dcf5cfd8760fa4c7c529dd7e8472",
+        "raw_intended": "Acceptance uses enumeration and SAT; returns use a finite control graph.",
+        "full_spoken_form": "Acceptance uses enumeration and SAT; returns use a finite control graph.",
+        "entry_sha256": "ed5eada219741cf749afef6b03774fb4649df0d479fd46bb1ba33a092a776d06",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3u2q",
+        "wav_sha256": "3867f63f61f8785b5be203801d4e753fef8ab2fd55460686fc513a38c4457574",
+        "raw_intended": "Both have actual C run comparisons; I didn't run the study's Rocq checker.",
+        "full_spoken_form": "Both have actual C run comparisons; I didn't run the study's Rocq checker.",
+        "entry_sha256": "4622f95b11a060d67079f6fbe2ac703d2d0b546d8041defd7d2377c8f981147d",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ucn4",
+        "wav_sha256": "6f0ba16ac4a22ddbcae8b4768e091e820374daa02746c4bacb4c8d015a7e578d",
+        "raw_intended": "My results cover only these two local examples, not a whole-app certification.",
+        "full_spoken_form": "My results cover only these two local examples, not a whole-app certification.",
+        "entry_sha256": "8b8db510bab85cfc4fd19d89c2a0ee06b14d9681e4193a3dd1a336a9a1abd0c9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "bt2j",
+        "wav_sha256": "c5415b29adcefce64c99035daa943c8177d12e2d700d0221cc166d589d9cae37",
+        "raw_intended": "The record separates fixes to total length from the counter declaration and update.",
+        "full_spoken_form": "The record separates fixes to total length from the counter declaration and update.",
+        "entry_sha256": "eee880e9506adeb42cf63353b59fe7326f82275e3645263b4391f856b41fda76",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mj65",
+        "wav_sha256": "c9d344efe277d57d40113acb014eb3137729d41c2e318e050cf633e3658c90c4",
+        "raw_intended": "For reruns, check versions first; put expected and actual results in one row.",
+        "full_spoken_form": "For reruns, check versions first; put expected and actual results in one row.",
+        "entry_sha256": "c045e8d17e32836289b7430004df108f2ce88a80d231ecf717276e5df3cdd148",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "edry",
+        "wav_sha256": "aeaff3b3e86d5e17521391d20ab4dccdf2c26b881aa43c20e436dea7f0e42005",
+        "raw_intended": "Fixed code won't be checked against old code's answers.",
+        "full_spoken_form": "Fixed code won't be checked against old code's answers.",
+        "entry_sha256": "3fc998e411eb9e698782143b35dfc52512defb033c6b2edd5cbb2803ce046738",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mhjn",
+        "wav_sha256": "a549765d7eef09f9dd1ab5465d619758486c2ab5b949828cdaf77838f90e78e8",
+        "raw_intended": "Write clear acceptance criteria.",
+        "full_spoken_form": "Write clear acceptance criteria.",
+        "entry_sha256": "002721c841b6f7d1ed1fa1423e8045c8cef8db66bd0335d00bd5b31f6222ca30",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "87s6",
+        "wav_sha256": "60c579c2709913d73ae2320875e0692f46f78f18eac49899b5cb2c4c3a11a333",
+        "raw_intended": "Comment with how you use AI to write code.",
+        "full_spoken_form": "Comment with how you use A I to write code.",
+        "entry_sha256": "ca9ceb2312851c88dbf960f05eac7cf40b221fab5783811ec02f75d0092f1ac8",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "22tu",
+        "wav_sha256": "ccbb57ad005dbf51a679b33abceb4149fa21aff09ab39d4bd10a91ab1e3d8625",
+        "raw_intended": "Subscribe to explore AI research through real results.",
+        "full_spoken_form": "Subscribe to explore A I research through real results.",
+        "entry_sha256": "7e4b42f6e6ec69fad3dbc238d25f37455df419b18339909f047496f1464c6ab3",
+        "accepted_by": "native_exact"
+      }
+    ],
+    "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "main_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "main_qa_sha256": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852",
+    "input_sha256": {
+      "/workspace/work/ai-tech-next/formal-language-audio-audit.en-rich-stage-pass.json": "a80eed3e56c18f7f400f7bae25fb1fdaee8197ecad0681cebfc1b115abea763d",
+      "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/video.json": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+      "/workspace/work/travel-scanner-formal-255/docs/videos/lexicon.json": "676a16faa053336894bd0461018ffdfd4582c3f68fce53571a2325c7b5faaf69",
+      "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/i18n/en.json": "2c01a9b4bf57687a9d455bc425af7f7467239c36e0c1b6ddde164e559c8a95da",
+      "/workspace/work/videos/claude-formal-verification-255/timeline.json": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+      "/workspace/work/videos/claude-formal-verification-255/final.mp4": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+      "/workspace/work/videos/claude-formal-verification-255/review/qa.json": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852",
+      "/workspace/work/ai-tech-next/formal-check-en-reword1-2026-10-26T00-27-13-856Z.log": "b67abacfa703f2b22cfd13b538f05ffacf12699d373009cbcec829164b9d5c17",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/timeline.json": "06c04b755b7f2df109f7c0ae0ff5b6001fef07d633640baef8990a4bb788842b",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/fit.json": "3be6c68795996d97698761180de2e41f1a591d64dc674a177893561cd9dd1ce5",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cache.json": "b6f7dbea2e474c1f991940967a90edaaaccf5558348c3f4d45f607e3b3e3ea5f",
+      "/workspace/work/videos/claude-formal-verification-255/review/check.en.json": "3117cebfea6a4c94a36a203744fd345dc2dfed98129019a08550dd9bfbef6dfe",
+      "/workspace/work/videos/claude-formal-verification-255/review/check-flags.en.json": "ecdb338f98a96f24a16c26978a8d8fc75b40213e8166003920d3ecbc2b352431",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/delivery-measurement.json": "6eac854238f3b52c2996d96955b36182e54044a0fb4452156b7a7299cea9fc66",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/zfgp.wav": "c800ba728885e90bbe9946ec39be5475b4425c8daca3ce471d4e0bb106f24946",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/z9dp.wav": "a6ea1b9c13f595f84a602f05f771752b66af725ec76e1130bd1a0d74f39311e8",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/bpnn.wav": "f320d8c3cd5a7d78525691b46ba04d0a68b2724e05cc282b7064b82e2511077e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/c8r2.wav": "cacfc1f64439e181273b5b8be2eb0118d1dd78dfae3257e2fb3ea7dbc574160c",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/qwaw.wav": "cfccf00e3b6703e63f476fd31d5ca477a212340f166d12a68f547ee55f0db2a4",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/4rff.wav": "9f5ac7f4491887cad1e26d4e72799fb33ee585c756b755c9d5cd582e4ecbe437",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5i5d.wav": "59708ed6d7e03ff8e2b8c5010c25cd450125ba9fb9e5ad6cce11d47d20afcbb4",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/jeaj.wav": "ff7585afdabe672223610d4d9e01a8afc567518b4bac054644cea7641b87c02e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/fzz5.wav": "27ba9d6f90d84ac133cddaf059eb1333e39957ec8ec6411bdeabbbb1de70207f",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/kkef.wav": "332eafc059e0144ebba63aacc49b6803447a57da6ad4ce62e2c723d8de59d8cf",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/m7xu.wav": "a6bb839ec1676be5676ce5947b9eecf5bedf5352e88b684860993fb749ceb6b5",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/axkg.wav": "1e3c8d040df41a9154fcd3dcfef2c395145e86602bb89561c2ff9ac686af1593",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/r79s.wav": "5fbe97dabf7aeeb64e8b7b8e0b4d2a31a6538d30e6c8a79ff9d150232f30af5a",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/p2uy.wav": "ca31e15eaa2d86b5e7002909286b211995b40f5250d8ab8dce6ae321353504a7",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/vwiq.wav": "1b2fb3cc38bee121ee5fc9388f798318937b8f388a9fb446af4a3e53df1d6d47",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5iky.wav": "935c65fbaec1793328a92e6a7b0bd0dae4ea8bda01669337a68442a22033d5d0",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/zfmi.wav": "b8a77ed80c6c1a39f6129da1b1489e321ec46ec4cd6ecc67d20007b28349afbc",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/3mpx.wav": "60ed2965d7bfb5acc7d6e92255a7cb1717fc58eece34850c9e94711550c5dda8",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/tew5.wav": "de38d0cea157405fe9b5e2875929657a3a6dfab5640cb4dc81fd9fff72c9ba6e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/femu.wav": "e424f3d6f840a14b53517928acc2fbb85363e35e4b21c40b6d559239952f6a50",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/64pm.wav": "73d464881f28840cd7b4a690b4c7dbdc7c665a076f9187ee67eeb9b8cc7a6654",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/2yfh.wav": "618c69e4bf1494570f5765c7c90957becbd86e4050db273476096e1572df0b23",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/mvnc.wav": "24bc2132297e6a5961245d4dc05f30bb6f9c8a6f3d48af9484cb6205a708d338",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/936d.wav": "ab2e598020824ffa2eb529768ca3714f329472e13487569e06649af086fbe9fb",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/s57e.wav": "6097a16d5a2cd4598655820e19ad0c8ad025e48afbc11acebbaed66d96385b5c",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/yavq.wav": "03545d0f886f3007886dcbdcb7613216ce8bc10e2b5245552d54861c2af86413",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ij57.wav": "29e55662206438cb0b3144f04dd23820c72a6f58b2404a9fca08eb76caf830e8",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/mfag.wav": "3304b2507f84e357a4eef9e75d73d8f33ae4f5545aac0e7f6e49c021970c6a9f",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/vkym.wav": "98c59f4a9db9df9d101cecb047ca57c86ed613d06b24b8690cd68f5dcf528e8a",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/84hx.wav": "975a0106caab4967d5665d8ae1405c1d60c2e77610114ce70658a5c38abd6c08",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/wunt.wav": "78a821527ce28782544b66105e20172cdb0925537dafa8e95843c8e2e829655a",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/a7te.wav": "40a6aebfa565413d449eb63166cd3b7ea39e3ab9507a5117a8ea175e87347989",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/dfhy.wav": "8e8e0e76d4a8b9db069ae47449f5f861d793069256a3d95cb4ab6db004f9ea82",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/zgkb.wav": "52fbf27cab8ca417298bafbc4cba4e28ca5ebd967224df474367888a93733876",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5waf.wav": "7e4193aff2c76424f44865c2a0509cbe4f71557d4410a296fac4b56ec0bcc4e3",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/unr8.wav": "0ae3fb209c15ee46797c02951f005ac5c829a08aa937ce15aba1319ebf00782e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/gtuj.wav": "cf2fc7a6b9ef0a36ae0e3b463e43e8c1edbfd4d8a418ddc9c93f6dd888349f9e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/56e4.wav": "54518b01aba2413a885cfaff3a5c232edd3963d853a447da3ccf1201529fc805",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/tksv.wav": "f61eefcf6600463a951f8062779fa198adbf3847bd780877416950802ca17137",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/2zma.wav": "7b1e03db9f2a32faa80ac4c8e212301934dc69b11a56c7e902a07d6610587d52",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/4bqi.wav": "7400dd192cc894d8030881607b4b4339d02bd8442fa2919244db08b1bea32f39",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/xfvp.wav": "3701923a50a5a8115a2472153f9a97e2e1224321976d94884b0dc809f6c0b0e6",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cabc.wav": "226ef991a9662d6d489cbcd81b17e405c8df3cc0a8fd741142cc89f2e9136976",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/jhkm.wav": "a784b66f641b668df0e68a16c19c8138f1eabd18db3605e7a16ed0e17ec179e6",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/e6wk.wav": "404541d34c962cf43aa9bb66da72232540ceed05c02bd6fae8f9596e2fc3cf8e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/7d4v.wav": "5474183cfe91f5ee0acdfb80efce0a16106efe1aed0e4f645e1c6a47aaf51939",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/6a2b.wav": "be6462d5ac68c8e80c17c43b496a25acc9149ee8f230968f8e63b1dd662064c3",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/4akm.wav": "3703453eb0ed6768e83b3ceaf4c44b0274153ab67bf277e4c79ed4702f693cac",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/w9b4.wav": "df1cd4aea24cdcaeb51ac7bc36ffea981d247f1182019fc3e30d310ba0b14daf",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/dkjy.wav": "3bde5b464c95bbd2b3682664f013552b31da549a12160c14141814790dde2890",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/8ywa.wav": "f8eaf04fe957d3509305813051034b19aca3e27360de87e54ffe7b1de21ac535",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/xh98.wav": "cef671ceadaefe21c04065e54e1ce1a9b0b74f16cbca5bb7ebcc6583b4275ab3",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/idga.wav": "7e8ca79fd15bc29efeb547dafa0614ffe03e6460818d5df68bd27f558c851795",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/u2xw.wav": "8f2088ad5cb56f4020ba8ffe72e4e7e76eab73fa5897b20a5d35dc740c8758fd",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/p4u6.wav": "209b1869cd3e62964b5b93d3e02cc3ff3982292d7e77d37b241a93f7554c72fb",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/v9sd.wav": "90f793af439b7962dd27b705b8d35347a8a47580345af5a2ad418fcfce02979b",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/riuf.wav": "9a8589a31bfc59e38e517fff789ee98e64dd6af896dfeb402bd09a098f79d720",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cgit.wav": "c5394ea7eba222656724790fce84eb7a0284b8406f0b27675130e734e5835d8a",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/y326.wav": "8615f6b4b0f57fc1f9e8bb1485e921ec726406a19ce82b3d73e7de92b7bc5be7",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/qmcd.wav": "a3e4290cc37187e9c22e14aa0e0d6d8ee0cab96636d92313d8be5e0b3a311122",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/b3r9.wav": "aefb7c7748809f2d117d9fa6b1115241635b13de9f2c8306c4474cb22e0c6d5b",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ijcq.wav": "1cf210f7c27d138fc167ef8d7945360859f4f2c08385b9e45fbbd6b1c1945684",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ihny.wav": "02389ff67b1ce80186216b31056a8eaa48ead481ef83ae0b49db48770eb4ad9b",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/4jzv.wav": "b1d34ca87fc2fe85bfe34ebaed1b642670769b84a61d88263380b68f07ea8d6d",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/kfft.wav": "a87dfcb400e79ddd22a1af2d5cc0d5410112d39199be1a7bbd6ab591b7ac067d",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/58rm.wav": "7e66d1912e5dacb01d2451e14e5d0a0dcf66a8b760684621995dfc362258f22e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/mjsr.wav": "6e3553c9609eb7a3191f9d5a6c7b637d8d03294b99abc22ab029a5df67582eb7",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/kq36.wav": "f56933fabb78a4f77b4b59bb378f28ee59cf399d75cd060e53fc3180a9c5a509",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/qjaw.wav": "7bb9447a8328ccc00c2146c6f3802b84d0dbb50edb13efcb7b32c58a6933cda6",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/h6n5.wav": "cb590644094fec0f4fa75b2ee8b272551bfed5e7bcf1ffb64ca9684f1a038115",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/p8te.wav": "3de5fe3b562c385af8c26be24075b154fd0b6cd422bd32a0cd46f02f70f79287",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ghs2.wav": "d1ac5be2aca1ae86a288dcebeb28c932f2457bacb929a9c9f1f47b93d6eb98d1",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/9mxr.wav": "e5f015f545e25cd10b8055f0bc77fdeffd28e04142bc0ad3055cceb28345c7ae",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ey22.wav": "1923fc836e3790a5468f145ea7c740bb0adcc75e96675995a057a65d482a54ff",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5feu.wav": "5bbe0333445e18688f0a66bb1a54c0e63f4beb099606a9b98709d3da80833a7b",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/rsx8.wav": "45022e65c43026d0894591fb1e8d1d06ebc8be35baa693cd5dcbe449e42f3068",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/zg4q.wav": "32929ba4d7e1a277c0aa27d92bc07048c979d35ccfd51a2325bda1db974aaa41",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/wzn2.wav": "88c3b903f196e67b63f284f59231f71f80931d9070f704642b1349ad61961e56",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cawx.wav": "3521b742c9ca6e220ae4f85e5bdb2e7800d29955d791a9f4997b2a43be111f35",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/uqde.wav": "512f6f438eb20ca9f3d13f850f6c624e1c2867fe117331ec95484e6dd7a8fcb4",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5fga.wav": "592db4c53d2328eed77bc2bb36170d013c76b65264a53662926a663b34230c9f",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/wi26.wav": "77d4762b2d3f3964c3137fbf0040926d828c8a01d3b16d543a38ee1c9d28c4bc",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/nzaz.wav": "b8c8b21d314d759cabb5eb9e6442bc6625c3c417a41ccaa416fc17cf102b7691",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/7ip9.wav": "4ff18c36d0bbab96a10ec0c130fa24defef3e6b0dba64e3b9971390585a0bf73",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/6x7t.wav": "1af1d7be0c7ff3ff352d9358a7563a89fc9caacfa38c663a43b88e058d3a6bfe",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/5u3j.wav": "81ec0693ecf9ade07c43ae8030371989f479ec377005ad9f0fb1f3c2466d4bbe",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cnnu.wav": "3d561cb71d26d1042f574be8f158f599a5ff1eb27fc4c58b4048e13172065373",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/fwc2.wav": "128a3b2adf828aeda222ed98ee34679e40c490579ed82f12c6f86e559958f2e1",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/e7pc.wav": "a6cd62d7182f5fb5cba6337604897494583c623252f87de922bd63c82ab24296",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/3jaw.wav": "63044022e85260e1862f135fb358182ef6e2b4c2b2d833a9a44d0a660c11ca06",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/e2mj.wav": "ff68e161ff7f6a7f5c568a6132e527484693770a836981b12161a37702cda59e",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/4nfp.wav": "9437acaa6db2cc45c436467b52870fb5568c2465675bf873626bb49d9d08c617",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/cr5k.wav": "50cb9679068380e40bd314540768d01549fc0d9fb7320a9644bd39eb289656e5",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/b7jg.wav": "17fb234bea5214362a5650eb3a8a687187d6ed6d307141f3f9ded0cbcafe2baf",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/i2pt.wav": "4166cc41dc886147374f13e1875c912d49f370726a8ac3a9aeb592e1e11e7f5c",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/te3s.wav": "a3516efd88b9aa20b35f1bd54da6db12c7bf102af5e1d40341f0e851e9daf0ae",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/iest.wav": "33e6019f35be1c81e54c6f311f9648b6bad2dcf5cfd8760fa4c7c529dd7e8472",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/3u2q.wav": "3867f63f61f8785b5be203801d4e753fef8ab2fd55460686fc513a38c4457574",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/ucn4.wav": "6f0ba16ac4a22ddbcae8b4768e091e820374daa02746c4bacb4c8d015a7e578d",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/bt2j.wav": "c5415b29adcefce64c99035daa943c8177d12e2d700d0221cc166d589d9cae37",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/mj65.wav": "c9d344efe277d57d40113acb014eb3137729d41c2e318e050cf633e3658c90c4",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/edry.wav": "aeaff3b3e86d5e17521391d20ab4dccdf2c26b881aa43c20e436dea7f0e42005",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/mhjn.wav": "a549765d7eef09f9dd1ab5465d619758486c2ab5b949828cdaf77838f90e78e8",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/87s6.wav": "60c579c2709913d73ae2320875e0692f46f78f18eac49899b5cb2c4c3a11a333",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/audio/22tu.wav": "ccbb57ad005dbf51a679b33abceb4149fa21aff09ab39d4bd10a91ab1e3d8625",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en.m4a": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+      "/workspace/work/videos/claude-formal-verification-255/dubs/en/narration.wav": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84"
+    },
+    "snapshot_signature": "a13a4713488aa4116e8904e3fac4da00600e996b931e09bd561a7993a48048a2",
+    "meter_scope": "Existing actual encoded M4A measurement, SHA-bound to the actual bytes; no fresh loudness scan.",
+    "readiness_scope": "Checked requested M4A only; no CC/metadata/batch readiness or all-eight claim"
+  },
+  "final_review_id": "00f2b388-712e-4886-9849-64e12e0f6bec",
+  "before_review_sha256": "fd0e6b7b6ad38c62c320043c1b6680d523764839959b51353b07529df7046685",
+  "server_upload_receipt": {
+    "complete": true,
+    "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+    "bytes": 14552825,
+    "parts": 4,
+    "parts_sent": 4,
+    "existing_blob_fast_path": false,
+    "sha_validation_scope": "Native assembly hashes uploaded parts and rejects SHA/size mismatches before complete=true."
+  },
+  "final_status": "pending",
+  "download_roles": [
+    {
+      "role": "dub_en",
+      "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+      "size": 14552825,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "evidence_en_m4a",
+      "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+      "size": 14552825,
+      "content_type": "audio/mp4"
+    }
+  ],
+  "metadata_readback_verified": true,
+  "all_old_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "historical_main_qa_preserved_11_of_11": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "language_batch_submitted": false,
+  "standard_dubs_payload_changed": false,
+  "finished_at": "2026-10-26T00:47:37.352Z"
+}

@@ -1,0 +1,193 @@
+{
+  "at": "2026-10-26T00:10:28.487762+00:00",
+  "scope": "Producer listener-reword1 proposal for the sole actual residual after normaltwo unchanged retakes. No text applied, no newpaid or ASR.",
+  "round": 1,
+  "retake_rounds_preserved": 2,
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "speech_hash": "8028c7320d9cab29",
+  "English_before_sha256": "dfa76cd6e53bf90e0dc85ce5c7691b2faafff7208dc85d1d0016ffbefc76ac98",
+  "actual_check_flags_sha256": "204f2e2b16cdd2751988535b6023d0e5e5a6cac72662a82fc6036adaad960733",
+  "actual_check_sha256": "59cc34155e449456605774637be8a02e4f6e6e227f3673adb65e25dd09af71cb",
+  "actual_completed_check": {
+    "at": "2026-10-26T00:07:48.667Z",
+    "event": "native_step_finished",
+    "phase": "check",
+    "locale": "en",
+    "round": "retake2",
+    "code": 1,
+    "signal": null,
+    "log": "/workspace/work/ai-tech-next/formal-check-en-retake2-2026-10-26T00-05-52-065Z.log",
+    "log_sha256": "be7ed692cc44c0eaa04fcc1642940f996371b214ecf046746b52553c34a26725",
+    "stage": {
+      "stage": "check-audio",
+      "at": "2026-10-26T00:07:48.605Z",
+      "locale": "en",
+      "lines": 105,
+      "exact": 80,
+      "alike": 0,
+      "judged": 25,
+      "cleared": 4,
+      "flagged": 1,
+      "unchecked": 0,
+      "transcribed": 2,
+      "jev_calls": 2
+    },
+    "evidence_sha256": {
+      "review/check-flags.en.json": "204f2e2b16cdd2751988535b6023d0e5e5a6cac72662a82fc6036adaad960733",
+      "review/check.en.json": "59cc34155e449456605774637be8a02e4f6e6e227f3673adb65e25dd09af71cb",
+      "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+      "dubs/en/fit.json": "54a765d44bb0d64c852a01bef59004e277bd4a8d89bcb72898bf04efb58f2979",
+      "dubs/en/timeline.json": "5b5f918baaee1de95d08461481d51b427ef54791145314452f5b2e5c63627a71",
+      "dubs/en/narration.wav": "3ea3311fe28ac2154980f8ed04a7626414b78255ffcf34b3e47c4a0e094eb23d",
+      "dubs/en.m4a": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+      "dubs/en/delivery-measurement.json": "9b6baff0414fa7b13386b606e1e6fe2bb61b8f585710894206a1f4ea1d21bc94"
+    },
+    "capture": "/workspace/work/ai-tech-next/formal-check-en-retake2-2026-10-26T00-05-52-065Z.capture.json",
+    "capture_sha256": "46852c65d75093c7537ecb77f45bb109e1f6c015feff969f42a331cddc471c36"
+  },
+  "archive": "/workspace/work/ai-tech-next/formal-language-archives/en-before-reword1-2026-10-26T00-10-28.487762Z",
+  "archive_manifest_sha256": "a2bb86341a11f180bb7cfd5a6a6a2ec688e3596dbc9d54e36520774acd84190c",
+  "full_source_scene": {
+    "id": "counter-zero",
+    "template": "stats",
+    "data": {
+      "title": "上限0的預期",
+      "stats": [
+        {
+          "value": "1",
+          "label": "加1次數／返回值"
+        }
+      ],
+      "key": "從0開始，做一次加1",
+      "source": "獨立loop｜GCC14.2.0｜2026-10-25"
+    },
+    "lines": [
+      {
+        "id": "cgit",
+        "text": "輸入零，預期做一次加一，返回一。",
+        "reveal": 1
+      }
+    ],
+    "claims": [
+      "c58"
+    ]
+  },
+  "context": [
+    {
+      "scene": "counter-start-and-rule",
+      "id": "p4u6",
+      "source": "上限仍是零到二百五十五，計數器從零開始。",
+      "english": "The limit is still 0 to 255; the counter starts at 0."
+    },
+    {
+      "scene": "counter-start-and-rule",
+      "id": "v9sd",
+      "source": "只要計數器小於等於上限，就加一，否則離開。",
+      "english": "While the counter is at most the limit, add 1; otherwise, exit."
+    },
+    {
+      "scene": "counter-expectation",
+      "id": "riuf",
+      "source": "把所需次數寫成上限加一，返回值也要等於這個數。",
+      "english": "The count required is limit plus 1; the return must equal it too."
+    },
+    {
+      "scene": "counter-zero",
+      "id": "cgit",
+      "source": "輸入零，預期做一次加一，返回一。",
+      "english": "Input 0: expect one increment, returning 1."
+    },
+    {
+      "scene": "counter-seven",
+      "id": "y326",
+      "source": "輸入七，預期做八次加一，返回八。",
+      "english": "Input 7: expect eight increments, returning 8."
+    },
+    {
+      "scene": "counter-254-exits",
+      "id": "qmcd",
+      "source": "錯版用八位元計數器；上限二百五十四時，到二百五十五能離開。",
+      "english": "The buggy counter is 8-bit; at limit 254, it reaches 255 and exits."
+    },
+    {
+      "scene": "counter-255-timeout",
+      "id": "b3r9",
+      "source": "但上限改成二百五十五，執行在零點二五秒後被工具中止。",
+      "english": "But at limit 255, the tool stops the run after 0.25 seconds."
+    }
+  ],
+  "lines": [
+    {
+      "id": "cgit",
+      "source": "輸入零，預期做一次加一，返回一。",
+      "old_text": "Input 0: expect one increment, returning 1.",
+      "old_characters": 43,
+      "text": "For input 0, expect one increment and a return of 1.",
+      "characters": 52,
+      "max_chars": 54,
+      "actual_latest_dual_ASR": {
+        "scene": "counter-zero",
+        "clip": "aa4633225073938e",
+        "terms": [],
+        "heard": "input one increment returning one",
+        "noul": 0.07,
+        "intended": "Input 0: expect one increment, returning 1.",
+        "spoken_form": "Input 0: expect one increment, returning 1.",
+        "match_kind": null,
+        "match": false,
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "input one increment, returning one.",
+          "match_kind": null,
+          "noul": 0.33
+        }
+      },
+      "current_WAV_sha256": "aa4633225073938ebc86749e995c3df7a9910affa342846948527b28e625f310",
+      "current_raw_duration_seconds": 2.96,
+      "native_fixed_window": {
+        "scene": "counter-zero",
+        "state": 0,
+        "start_frame": 9042,
+        "end_frame": 9162,
+        "lines": [
+          "cgit"
+        ],
+        "tempo": 1,
+        "slack_frames": 28,
+        "over": false
+      },
+      "numeric_strings": {
+        "before": [
+          "0",
+          "1"
+        ],
+        "after": [
+          "0",
+          "1"
+        ],
+        "unchanged": true
+      },
+      "meaning_check": "For input0, expect exactlyone increment and return value1. For adds a clear conditional lead-in; expect scopes both coordinated noun phrases one increment and a return of1. The input is not itself said to increment; the counter program does. This stays an expected result and makes no new observed-run or proof claim. Prior0..255 domain, counter-start0, <=limit rule and nextinput7 remain untouched.",
+      "asr_reason": "After initial andtwo unchanged retakes, both actual ASRs still omit/misread input0. Do not accept input1 as equivalent. Add an ordinary conditional lead-in and separate expected increment from returned value; no threshold or transcript edit.",
+      "critique": [
+        {
+          "pass": "draft",
+          "result": "Retain exact numeric strings0 then1 and wordone increment; no extra value or arithmetic shortcut."
+        },
+        {
+          "pass": "critique",
+          "result": "A full conditional prepositional phrase is clearer than the clipped Input0 colon; coordination retains expectation rather than imperative returning instruction or assertion about input mutating."
+        },
+        {
+          "pass": "final",
+          "result": "52codepoints<=native sheet54; semantically complete and natural plainEN. Genuine same-window fit and native audio acceptance remain unresolved until independent review and normal paid synthesis."
+        }
+      ]
+    }
+  ],
+  "apply_now": false,
+  "requires_independent_review_before_paid": true,
+  "ASR_slot_held": true,
+  "all_eight_ready": false
+}

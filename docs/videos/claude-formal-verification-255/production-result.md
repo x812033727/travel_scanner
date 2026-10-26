@@ -1,6 +1,6 @@
 # 第三片製作與交付快照
 
-截至2026-10-25T23:07:06Z，繁中主體候選的完整1080p已送達[後臺影片頁](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)，核心QA真實11／11，遠端final仍pending。正式頻道片頭尾尚缺，已完成外語音訊為0／8，整體製作未完成。
+截至2026-10-26T01:05:03.510145Z，繁中主體候選的完整1080p與已核驗英文M4A均已送達[後臺影片頁](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)。英文音檢及下載交付為1／8，日文正在初次ASR、尚未通過；其餘六語未完成。主體核心QA歷史11／11與final pending不變，正式頻道片頭尾仍缺，整體製作未完成。
 
 ## 凍結版本與實測
 
@@ -25,11 +25,23 @@
 
 本producer沒有已安裝正式品牌bookend package／default；正式頻道片頭尾動畫及branding.json仍缺。靜態outro及QA對null branding的容許不能當成品牌完成。待合法官方素材、驗證及guard後另行處理，追蹤[品牌缺件任務](../../../tasks/open/2026-10-25-local-first-build-without-branding.md)。若換版改時間軸或bytes，所有受影響CC／M4A／package／交付讀回都要重新綁定；此快照沒有改媒體或核准。
 
+## 英文增量交付（2026-10-26T01:05:03.510145Z快照）
+
+2026-10-26T00:27:20.776Z，英文原生音檢真正105／105、0 flags／unchecked；嚴格當前音訊核驗於00:41完成，80 exact、21 native Jev、4實際第二轉寫exact。cgit是Jev .89採認，不能改稱exact。101個實測視窗皆fit、最大tempo 1.15，沒有skipped或kept take。見[當前EN嚴格proof](localization/en-audio-audit.rich-stage-pass.json)。
+
+英文M4A SHA94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699，14552825 bytes，AAC 48kHz stereo，560.505秒，−14 LUFS／TP −2.0 dBTP。PCM為26900800 samples／48000＝560.433333秒；AAC尾端0.071667秒另列，不稱影片變長。
+
+00:47:37.352Z，正常4段server assembly驗SHA／大小，再authenticated讀回dub_en與evidence_en_m4a。原files／payload欄位與歷史主片QA保留，新增英文補充下載；standard dubs payload、站主選擇、approval及final pending不改，未送正式語言批次。這不是遠端binary GET或下載後重算雜湊。見[公開白名單摘要](localization/en-delivery-verification.json)與[安全的完整helper交付收據](localization/en-backend-delivery-receipt.json)。
+
+英文經歷初檢6旗、原句retake1剩2旗、retake2剩1旗、一次listener修詞後零旗；原始付費階段／失敗／capture未刪。最初嚴格auditor對stage字串的假設不符合實際rich object，因此第一次REVISE照存；修正的是checker的metadata契約，不是改stage／cache／轉寫迎合checker。見[原REVISE](localization/en-audio-audit.first-pass-revise.json)、[階段快照](localization/en-production-history-snapshot.json)與[八語交付狀態](languages-result.md)。
+
+這次只交英文音訊，不宣稱八語或字幕整包完成。CC仍為narration時間軸草稿，必須按actual dub timings重產／核對；官方品牌片頭尾與整體DOD仍未完成。
+
 ## 八語與待辦
 
 en、ja、ko、es、pt、id、vi、th各105句、7章、metadata及縮圖三欄已準備，三輪自審、獨立審稿及原生修正收據見[localization-review.md](localization-review.md)與[收據索引](public-receipt-index.json)。所有歷史review的待修／預算未解原文保留，以後續application說明已採用內容，不把文字審稿當音檢。
 
-- 實際外語M4A、音檢PASS與交付均0／8；全八語整包ready為false。
+- 已通過嚴格音檢並送達後臺的外語為1／8（en）。JA有未驗收M4A候選、初次ASR進行中；其餘六語待完成。產生檔案與完成交付分列，全八語整包ready仍為false。
 - 九語CC目前都使用繁中narration時間軸。ES四項、PT兩項、ID兩項，共8個閱讀速度advisories照實保留；完成各語實際配音fit／音檢後，須按各語真實時間軸重產與審查。
 - 八張本地化縮圖由root於23:06實際查看contact；各語overlay及數字可讀、無裁切。原創guard內嵌圖仍含「容量8byte／接受」等繁中文字；正常native只翻tag／headline／sub，不能說所有像素內文字均已翻譯。
 - 本輪唯讀native lint為0 errors／7 warnings：短冷開、255／256必要重現，加ES／PT／VI／TH手機標題寬度advisories；沒有為消警告改i18n。

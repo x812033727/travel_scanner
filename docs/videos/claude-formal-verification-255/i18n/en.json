@@ -10,11 +10,6 @@
     "C programming",
     "AI technology"
   ],
-  "thumbnail": {
-    "tag": "Claude Verification",
-    "headline": "**255**\nPassed?",
-    "sub": "8 bytes. Still passes."
-  },
   "chapters": {
     "capacity-accepts-255": "Local check accepts 255",
     "research-published": "Record the valid lengths",
@@ -162,7 +157,7 @@
     },
     "wunt": {
       "source_hash": "ecba87fb6974",
-      "text": "I first chose 0,1,2,3,4. All five small values matched."
+      "text": "I first chose 0,1,2,3,4; all met expectations."
     },
     "a7te": {
       "source_hash": "e578ae9a58a1",
@@ -270,7 +265,7 @@
     },
     "cgit": {
       "source_hash": "c76f55e16961",
-      "text": "Input 0: expect one increment, returning 1."
+      "text": "On input zero, expect 1 increment and a return of 1."
     },
     "y326": {
       "source_hash": "b9fcf61439c5",
@@ -460,5 +455,10 @@
       "source_hash": "7102028b107c",
       "text": "Subscribe to explore AI research through real results."
     }
+  },
+  "thumbnail": {
+    "tag": "Claude Verification",
+    "headline": "**255**\nPassed?",
+    "sub": "8 bytes. Still passes."
   }
 }
