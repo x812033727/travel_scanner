@@ -42,15 +42,16 @@ const named = (branding) => (branding ? `${branding.id} (${branding.hash.slice(0
  * null when they are the same. It never throws and never stops the build.
  */
 export async function siteBrandingNotice({ doc, local, ctx, timeoutMs = COMPARE_TIMEOUT_MS }) {
-  const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
-  if (!token) return "branding: not compared with the site's worker (no video tool token; run `node tools/video/cli.mjs login`)";
-  const fetchImpl = ctx.fetch ?? globalThis.fetch;
-  const client = {
-    site, token, attempts: 1, sleep: async () => {},
-    fetchImpl: (url, init) => fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs) }),
-  };
   let remote;
   try {
+    // Inside the try: a credentials file that does not parse must not stop a build either.
+    const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
+    if (!token) return "branding: not compared with the site's worker (no video tool token; run `node tools/video/cli.mjs login`)";
+    const fetchImpl = ctx.fetch ?? globalThis.fetch;
+    const client = {
+      site, token, attempts: 1, sleep: async () => {},
+      fetchImpl: (url, init) => fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs) }),
+    };
     remote = await sitePackage(doc, client);
   } catch (error) {
     return `branding: could not compare with the site's worker (${error.message}); check with \`node tools/video/cli.mjs branding --pull --dry-run\``;

@@ -83,3 +83,15 @@ package installed (`branding --install`), run `compile --slug <series>-full --dr
   (status review) already landed as #1836 and only its ticket was never closed.
 - On the host the worker asks about its own volume, so it always matches and prints nothing; it
   costs one request per first build within the video tool token's per-minute window.
+- Duration receipt rebound by an independent reviewer (`claude-pr-review-branding-site-check-20261026`,
+  "Branding site check increment: 4 files" in docs/videos/long-form/review.md): PASS, the change
+  moves no length and no bookend choice. Its out-of-scope notes: (1) `readCredentials` ran
+  outside the try, so a credentials file that does not parse threw out of assemble; fixed (moved
+  inside, with a test). (2) "Could equal packages warn?": no, the host's current.json `hash` is
+  written by `installPackage` from `validateBranding` with the intro at the start, the same hash
+  `readDefaultBranding` recomputes and checks here; pull.test and the compile test assert the
+  equality. (3) The first `pinsDefault` assertion's message says "even with nothing installed"
+  though the test installs a package first; `pinsDefault` reads no package, so the result is the
+  same. Left as is: core/branding.test.mjs is a bound file and a message-only edit would need
+  another receipt increment; fix it with the next change that touches that file.
+

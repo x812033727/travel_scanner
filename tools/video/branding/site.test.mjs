@@ -1,4 +1,7 @@
 import assert from "node:assert/strict";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import test from "node:test";
 
 import { siteBrandingNotice, sitePackage } from "./site.mjs";
@@ -72,4 +75,14 @@ test("no token, no site or a failing site only says the comparison was not made"
   assert.equal(down.calls.length, 1, "one try: a build does not wait out retries");
   const broken = fakeSite({ branding: [503, { code: "video_branding_broken", detail: "current.json is not JSON" }] });
   assert.match(await siteBrandingNotice({ doc: curio, local: V4, ctx: ctxFor(broken) }), /could not compare .*current\.json is not JSON/);
+});
+
+test("a credentials file that does not parse only says the comparison was not made", async (t) => {
+  const home = mkdtempSync(path.join(os.tmpdir(), "video-site-home-"));
+  t.after(() => rmSync(home, { recursive: true, force: true }));
+  mkdirSync(path.join(home, ".mokaair"));
+  writeFileSync(path.join(home, ".mokaair", "video-tool.json"), "{not json");
+  const site = fakeSite({ branding: [200, V4] });
+  assert.match(await siteBrandingNotice({ doc: curio, local: V4, ctx: { env: {}, home, fetch: site.fetch } }), /^branding: could not compare with the site's worker \(/);
+  assert.equal(site.calls.length, 0);
 });
