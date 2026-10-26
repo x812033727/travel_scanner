@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "revision": "rolling-suitcase-r2",
+  "revision": "rolling-suitcase-r4",
   "author": "/root/rolling_visual_r2_author",
   "status": "HOLD_CAPACITY_SOURCE_VISUAL_AND_FRESH_READERS",
   "counts": {
-    "lines": 112,
+    "lines": 104,
     "chapters": 7,
-    "scenes": 110,
-    "shots": 109,
+    "scenes": 102,
+    "shots": 101,
     "cards": 0,
     "outro": 1,
-    "loops": 27
+    "loops": 26
   },
   "capacity": {
-    "whole_raw_spoken_units": 2687,
-    "coldopen": 166,
+    "whole_raw_spoken_units": 2462,
+    "coldopen": 169,
     "voiced_CTA": 58,
     "planning_target": 3500,
-    "planning_units_gap": 813,
+    "planning_units_gap": 1038,
     "planning_arithmetic_at_4_to_5_units_per_second": [
-      537.4,
-      671.75
+      492.4,
+      615.5
     ],
-    "planning_at_4_5": 597.1111111111111,
+    "planning_at_4_5": 547.1111111111111,
     "actual_body_seconds": null,
     "actual_audio_tested": false,
     "actual_duration_verdict": "PENDING_NO_TTS",
@@ -44,8 +44,8 @@
   "new_source_anchors": 5,
   "source_pass_claimed": false,
   "native_input_prepared": false,
-  "native_reader_calls": 0,
-  "actual_native_round_count": 0,
+  "native_reader_calls": 4,
+  "actual_native_round_count": 2,
   "narrative_pass_claimed": false,
   "pronunciation_review": "PENDING_OTHER_REVIEWER",
   "owner_approval_created": false,
@@ -55,7 +55,20 @@
   "paid_calls": 0,
   "backend_mutations": 0,
   "git_mutations": 0,
-  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
-  "media_base": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
-  "image_reuse_plan_sha256": "7a4377b4721faaa1c616f945212402791618042bd4d0510920474ea8de86c36d"
+  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+  "media_base": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media",
+  "image_reuse_plan_sha256": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3",
+  "prior_native_round_2_verdict": "HOLD_NO_RECAP_NO_DETOUR",
+  "current_revision_native_reader_calls": 0,
+  "r4_edit_scope": "Defer the handle retraction result from rs0045 to its existing mechanism action at rs0071; delete rs0083 recap; exclude rs0091-rs0095 pocket detour and its one loop, retaining its original claim research appendix. All retained shot data/cameras stay unchanged.",
+  "nonnarrated_research_ids": [
+    "rs0091",
+    "rs0092",
+    "rs0093",
+    "rs0094",
+    "rs0095"
+  ],
+  "nonnarrated_research_source_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+  "unused_verified_work_nodes_not_added": [],
+  "unused_verified_work_nodes_note": "No new historical claim or unused-source expansion is mixed into this narrow revision; material capacity remains HOLD."
 }

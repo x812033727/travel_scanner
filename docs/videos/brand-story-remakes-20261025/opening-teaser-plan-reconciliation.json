@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-26T04:58:56.827Z",
-  "scope": "Current 12 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
+  "checked_at": "2026-10-26T06:53:56.930Z",
+  "scope": "Current 13 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
   "frozen_prior_audit": {
     "path": "opening-teaser-image-audit.json",
     "sha256": "4ed8bdb3afb401bf6cb3c773309b729dc8e8216110b292887fa98b853162fbfd"
@@ -667,7 +667,7 @@
       "id": "c19",
       "slug": "story-everyday-seven-bank-c19-remake-20261025",
       "author_revision": 8,
-      "state": "source_native_PASS_eight_language_translation_in_progress_media_held",
+      "state": "source_native_and_eight_language_text_PASS_media_held",
       "video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
       "source_receipt": "c19/reviews/source-r8-independent.json",
       "source_receipt_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
@@ -711,8 +711,8 @@
       "backend_language_selection_applied": false,
       "production_handoff": "c19/production-entry.md",
       "text_translations": "c19/i18n/preparation-status.json",
-      "text_translation_preparation": "TRANSLATION_AUTHOR_IN_PROGRESS",
-      "eight_language_text_entries": 0,
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 904,
       "preflight": "c19/preflight-inputs.json",
       "clean_master_recipe": "c19/variants/clean-master/derivation.json",
       "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
@@ -723,10 +723,71 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "seiko",
+      "slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+      "author_revision": 4,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "source_receipt": "seiko/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "e29f28a7f1b607d0a7ee84ac3b9837eeba33385e70b4ec8c61dca69c99791925",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "seiko/verify-1.md",
+      "narrative_receipt": "seiko/reviews/narrative-r4.json",
+      "narrative_receipt_sha256": "a0b12381fd1a0c3c46ab05a38f0458a54ea6a0add59ae492112247a5a301264a",
+      "actual_native_panel": 4,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_spoiler",
+            "one_line",
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "seiko/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "f41f4244f91e199804c2a468d99a4904adf795154c1743668578f9d8ee8b185d",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T05:54:29.016Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "seiko/production-entry.md",
+      "text_translations": "seiko/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1160,
+      "preflight": "seiko/production-preflight-r4.json",
+      "clean_master_recipe": "seiko/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "seiko/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     }
   ],
-  "episodes": 12,
-  "event_teasers": 22,
+  "episodes": 13,
+  "event_teasers": 24,
   "current_missing_written_plans": 0,
   "actual_same_asset_verified": false,
   "paid_requests": 0

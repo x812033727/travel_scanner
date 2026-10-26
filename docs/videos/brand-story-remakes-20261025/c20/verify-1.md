@@ -1,13 +1,13 @@
-# verify-1: C20 R6 independent source and written visual review
+# verify-1: C20 R8 independent source and written visual review
 
-SOURCE PASS / WRITTEN VISUAL PASS。R5僅刪o16整景，其餘110列按精確獨立R5完整來源/書面配鏡QA繼承；沒有假稱110列全新重讀。非敘事、owner、實聲、實圖或成片批准。
+SOURCE PASS / WRITTEN VISUAL PASS。107列完整R7獨立來源/配鏡QA精確繼承，僅t01新回呼親核。非全新重讀，非敘事/owner/實聲/實圖/成片批准。
 
-- `video.json` SHA256 `c132258339157a5f1bcb4f120de10714d0967aba9e734cca1cf2edd794d1af81`
-- `script.md` SHA256 `166b4e8043e094996bf633514b1048d4f80e11cb6dff1460922d9033d8118227`
-- `narration-only.json` SHA256 `928d74815f3a834cea95563769c50f0f0ef5782fd667a3c946592349daa2efa3`
-- `claims.json` SHA256 `f0429709633dbc81dd92f5a0319cf9029a5af9efcca1d00fc1b2801d8d853f9b`
+- `video.json` SHA256 `abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e`
+- `script.md` SHA256 `8918964646c918bfe2168688fa59cdce0fe361ea3af065e9cb5cf7525671e61c`
+- `narration-only.json` SHA256 `9f96b11a6695c62db4e327ea7e4e9388673a05212dd684feef0bc8e936e70967`
+- `claims.json` SHA256 `b65cc601f2b6e097769eb7581ea4796f5e5acab1402d622a9a05ef08c93bb46e`
 
-110真列，107存留shot prompt/camera、27loops與兩共圖完整輸入不變。
+108真列，所有105 shot prompt/camera與26loops不變，兩完整共圖key重新純算。
 
 | ID | 主張 | Scene | Evidence anchors | Verdict |
 | --- | --- | --- | --- | --- |
@@ -68,9 +68,7 @@ SOURCE PASS / WRITTEN VISUAL PASS。R5僅刪o16整景，其餘110列按精確獨
 | c20r3e03 | 小環是怎麼留下來的？他的觀察是，看來只換了那根彎成環的插銷。 | c20r3e03 | D04-Q1, E11-Q1 | ATTRIBUTED |
 | c20r3e04 | 他用的是「看來」，這是拆包後的觀察，不是廠內逐步怎麼修的紀錄。 | c20r3e04 | D04-Q1 | CONFIRMED |
 | c20r3e05 | 同包裡那只要接回上蓋的普通舊款，回來時，又有什麼不同？ | c20r3e05 | E14-Q1, E17-Q1 | CONFIRMED |
-| c20r3e06 | 他說，這只換上的鉸鏈接得很乾淨，先前擔心的粗糙感，這回沒有出現。 | c20r3e06 | E17-Q1 | ATTRIBUTED |
-| c20r3e07 | 他又怎麼判斷，這個換上的鉸鏈，接得整不整齊？ | c20r3e07 | E17-Q1 | CONFIRMED |
-| c20r3e08 | 他的比較很具體：接點看起來，跟自己近期見過的新打火機一樣整齊。 | c20r3e08 | E17-Q1 | ATTRIBUTED |
+| c20r3e08 | 喬瑟夫說，這只換上的鉸鏈，接點看起來，像他近期見過的新打火機一樣整齊。 | c20r3e08 | E17-Q1 | ATTRIBUTED |
 | c20r3e09 | 而這只外殼上，原先的表面磨損，也跟著回來了。 | c20r3e09 | D05-Q1 | ATTRIBUTED |
 | c20r3e10 | 你若以為免費修，就是把它的外觀全部變新，這次的回件，給的是另一種結果。 | c20r3e10 | D05-Q1 | CONFIRMED |
 | c20r3e11 | 不過包裹裡的擺法，反而讓他又擔心起，殼上留下的顏色。 | c20r3e11 | E12-Q1 | CONFIRMED |
@@ -85,7 +83,7 @@ SOURCE PASS / WRITTEN VISUAL PASS。R5僅刪o16整景，其餘110列按精確獨
 | c20r3e20 | 傳統款把內膽抽出時，上蓋與鉸鏈仍跟著外殼，點火機件則留在抽出的內套裡。 | c20r3e20 | O04-Q1, P04-Q1 | CONFIRMED |
 | c20r3e21 | 同一個「修」字，可以落在外殼的連接，也可以碰到內部整組機件。 | c20r3e21 | O04-Q1, U03-Q1, D04-Q1 | CONFIRMED |
 | c20r3e22 | 但如果壞的是內膽，廠商會修原來那組，還是乾脆換一組新的？ | c20r3e22 | J17-Q1, U03-Q1 | CONFIRMED |
-| c20r3t01 | 兩年後，日本另一只粉紅色禮物，正因內部機件的問題，進了寄修包裹。 | c20r3t01 | J03-Q1, J09-Q1, J14-Q1 | ATTRIBUTED |
+| c20r3t01 | 兩年後在日本，開頭預告的那只粉紅小盒，因內部機件問題，進了寄修包裹。 | c20r3t01 | J03-Q1, J09-Q1, J14-Q1 | ATTRIBUTED |
 | c20r3t02 | 這是收到的禮物，他估計已用約三到四年，期間曾換火石，也換過裡面的填料。 | c20r3t02 | J01-Q1, J02-Q1 | ATTRIBUTED |
 | c20r3t04 | 開合太鬆之後，他在裡面，看見了什麼問題？ | c20r3t04 | J03-Q1 | CONFIRMED |
 | c20r3t05 | 他看到凸輪彈簧裂了，也說曾用產品結構圖，查故障部位的名字。 | c20r3t05 | J03-Q1, E18-Q1 | ATTRIBUTED |
@@ -122,8 +120,8 @@ SOURCE PASS / WRITTEN VISUAL PASS。R5僅刪o16整景，其餘110列按精確獨
 | c20r3n17 | 如果是你的舊物，你會特別要求留下哪一部分，還是只想讓它繼續陪你？ | c20r3outro |  | OUT OF SCOPE |
 | c20r3n18 | 想繼續看日用品一句承諾，怎麼變成具體的選擇，歡迎訂閱品牌故事。 | c20r3outro |  | OUT OF SCOPE |
 
-US同包兩件與JP2024粉紅禮物分開；Camden看來換pin/無新焊痕與普通款換hinge各有對象。JP47天是全旅程，非工時或現行保證時限；新舊內膽返還不代表成功點火，未見完成表/退舊要求/原因。UK2026及US當代條款不回推兩案。
+t01的開頭粉紅小盒即h06日本2024預告與同一JP原文「修理はピンクの方」，t02禮物/約三四年來源不變；兩年後只是2022美國與2024日本兩個獨立案例的年份銜接，不增性別、相互啟發、修理工序或廠方診斷。Camden與普通銀色款及JP物件/部件不混。JP47天是往返旅程，不是工時/現行時限；無返還後點火、完成表/退舊申請/原因證據。
 
-兩同圖完整原生key只屬書面純算；實做仍要真設定讀回、cache miss停線、兩端正常judge及原檔/最終trim檔/assembly同素材SHA。actual_same_asset_verified=false。13分鐘目標及2794units的MATERIAL_CAPACITY_RISK保留，實聲/成片秒數未知，不作duration PASS或實聲FAIL。
+同圖key僅書面純算；真實製片仍需設定讀回、cache miss停線、兩端正常judge及原檔/最終trim檔/assembly同素材SHA。actual_same_asset_verified=false。13分鐘/720–840秒與2752units薄稿風險保留；實聲/成片秒數未知，不判duration PASS或實聲FAIL。
 
-完整獨立收據：`reviews/source-r6-independent.json`，SHA256 `bb7758da84b2ff64330f26bebe4875a79714dde4a3b5f67038db4503ac5c7c7f`。
+完整獨立收據：`reviews/source-r8-independent.json`，SHA256 `ac8272f4db625751536dd063d3f175e84de150e29114dcc92532d8939b3b1856`。

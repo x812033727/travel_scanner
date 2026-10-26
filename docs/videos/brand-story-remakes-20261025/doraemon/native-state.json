@@ -1,15 +1,22 @@
 {
   "schema_version": 1,
-  "revision": "doraemon-r2",
-  "fresh_native_state": "NOT_PREPARED_NOT_READ",
-  "actualcount": 0,
-  "fresh_native_input_prepared": false,
-  "fresh_native_readers_run": 0,
-  "native_1_hold_exists": false,
-  "source_delta_review": "PENDING_OTHER_REVIEWER",
-  "previous_source_state": "R1_HOLD",
-  "previous_source_receipt_sha256": "af898fce98bc61e139a08157da755f0af5b87798b1a4fc0b14e57c9b904c8999",
-  "ordinary_free_author_lint_is_not_a_fresh_native_read": true,
-  "verify_1_exists": false,
+  "revision": "doraemon-r4",
+  "actualcount": 2,
+  "last_actual_native_round": 2,
+  "last_actual_native_result": "HOLD",
+  "last_actual_native_shared_required_holds": [
+    "payoffs"
+  ],
+  "last_actual_native_binding": {
+    "source_video_sha256": "811e22425335dcfc63712d77a05583aceaeac476a30e24a8b30be1f8c50a3700",
+    "receipt_sha256": "717113863edbea397ce6dde0e60f28ee6830f74b8171cd176b1a664957d6215a"
+  },
+  "current_candidate_native_state": "NOT_PREPARED_NOT_READ",
+  "next_fresh_round_if_root_starts_it": 3,
+  "r4_author_prepared_native_payloads": 0,
+  "r4_author_native_or_blind_calls": 0,
+  "source_r4_delta": "PENDING_OTHER_REVIEWER",
+  "r3_source_pass_is_historical_only": true,
+  "verify_1_for_r4_exists": false,
   "owner_approval": false
 }

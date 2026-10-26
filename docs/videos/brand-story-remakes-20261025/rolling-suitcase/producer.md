@@ -1,10 +1,10 @@
-# 輪子行李箱 R1 製作交接
+# 輪子行李箱 R4 製作交接
 
 exact新slug story-rolling-suitcase-v2-remake-20261025，保原family，video無series重綁。只source preparation；provider/paid/backend/Git/owner批准0，不借舊帳戶或不可讀舊媒體。
 
-可重播：node docs/videos/brand-story-remakes-20261025/rolling-suitcase/build-candidate.mjs；然後正常prepare-runtime.mjs /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media rolling-suitcase，僅首次新immutable lex init；正常runtime-cli lint。後續已有snapshot時只檢讀，不重建。失敗免費前檢放外部audit，不當native輪次。
+可重播：node docs/videos/brand-story-remakes-20261025/rolling-suitcase/build-candidate.mjs；然後正常prepare-runtime.mjs /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media rolling-suitcase，僅首次新immutable lex init；正常runtime-cli lint。後續已有snapshot時只檢讀，不重建。失敗免費前檢放外部audit，不當native輪次。
 
-R1 2687 raw spokenUnits，planning 4–5/s 537.4–671.75秒，容量不足目標有風險；未實TTS，未判實聲FAIL/PASS。正文真實720–840秒含coldopen＋有聲CTA，排26秒bookends。不靠停頓/慢播/重述或分支百科湊。
+R4 2462 raw spokenUnits，planning 4–5/s 492.4–615.50秒，容量不足目標有風險；未實TTS，未判實聲FAIL/PASS。正文真實720–840秒含coldopen＋有聲CTA，排26秒bookends。不靠停頓/慢播/重述或分支百科湊。
 
 來源、書面配鏡、fresh native、念法、實聲、owner皆pending。exact新slug US25獨立帳戶、wholequote、protectedadmission未建立，free init不准付費，禁止真TTS/圖/音樂/轉寫。八語預設，未翻譯／配音／CC。
 

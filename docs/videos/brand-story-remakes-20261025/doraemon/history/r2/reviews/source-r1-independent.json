@@ -1,0 +1,2592 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r1",
+  "reviewed_at_utc": "2026-10-26T04:59:16.069816+00:00",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW_NOT_AUTHOR_NOT_NATIVE_READER",
+  "reviewer": "codex-doraemon-r1-source-independent",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "status": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS_WRITTEN_PROMPTS_ONLY",
+  "summary": "全149句、124鏡、35研究主張＋7新增anchors、12工作節點與23 loops已核。唯一必改是d1b011把2019電影／訪談年放成收鼓勵郵件的事件年；來源沒有證明寄信年。其餘事實在其明示歸屬與版本限制內可接受。書面圖像及三端重用計畫可接受，但不代表實圖／實聲／站主／預算核准。",
+  "independence": {
+    "author_or_researcher": false,
+    "input_isolation": "只讀指定R1及來源原件；未讀其他native/blind或作者審讀結論；作者mapping與freeze只作待核輸入。",
+    "contacted_author": false,
+    "spawned_agents": false,
+    "fresh_native_review_calls": 0
+  },
+  "binding": {
+    "author_freeze_path": "docs/videos/brand-story-remakes-20261025/doraemon/author-freeze-r1.json",
+    "author_freeze_sha256": "28a98b4c74a08886e7f6fc6a57619564b3c72b8c4f8a5c648d718be65cf0a80a",
+    "core_four_sha256": {
+      "video.json": "302df1b46756e91cc3a41162771be3df69d386f83acf4281df93ca1427f27c83",
+      "script.md": "8f59f5c761eb9bdb0a049a1e14cdafa5c492bfafb26a26d7746aabe52c2af3fc",
+      "narration-only.json": "01920c1aad6cb1356d3df186609311eeb6aaaf74ab16c7f2a2099820c7394739",
+      "claims.json": "fb5e1efb75059f3da6596447005bef5ffd50b77dd5be0f69594e876f2b271288"
+    },
+    "all_21_frozen_file_hashes_match": true,
+    "file_sha256": {
+      "video.json": "302df1b46756e91cc3a41162771be3df69d386f83acf4281df93ca1427f27c83",
+      "script.md": "8f59f5c761eb9bdb0a049a1e14cdafa5c492bfafb26a26d7746aabe52c2af3fc",
+      "narration-only.json": "01920c1aad6cb1356d3df186609311eeb6aaaf74ab16c7f2a2099820c7394739",
+      "claims.json": "fb5e1efb75059f3da6596447005bef5ffd50b77dd5be0f69594e876f2b271288",
+      "claims.md": "15ad7d5bd9a73c10a8bbbbc833c539cb3251ab3b756b2b09466f343c29fe5580",
+      "brief.md": "356d8a713df24e3287297b65de628e52cd96db1635dbb69e2d3b933bc53961ae",
+      "series.json": "90640e2789fc496933e2b306443c9bcf2b5aca3a3d480ccfae0a0229c881cd79",
+      "rows-r1.json": "53feaa84b13fd899ac151db416791a52c1b8fcd179531a8525d7ec52344f172d",
+      "build-candidate.py": "86e70a08f81d53604dcc97b7a646fca4bf53878371e3d6ff54c8ccf0af737fcf",
+      "build-image-reuse-plan.mjs": "d99b2a7c504aab2120e6b39a177f741b192f0a7bef46f7fe7ad4bca38f04df37",
+      "image-reuse-plan.json": "58307cd1229b655377ec01f4d5c977bdf3ffb2200bb219ca5dfd007ff0e2b522",
+      "source-anchors-r1.json": "0ee7d09b71bf38e61435f28f991e01dd0f78b1ebb5cfce5e994c8c46a155a29f",
+      "row-index-r1.json": "adeb6c154e60cecf366f60679e0dbb65302a22be8df617e288607f4470c4f2ff",
+      "producer-notes.json": "f950690fdb8cda3833c98a5e9c2bfe9a9240bd8929428f1b4e9ef7f70ca85216",
+      "protected-inputs.json": "621a7c90de24047b97569e2ca5a8de6b14ddc4caf2119419c6bc4e8196183e37",
+      "native-author-lint-r1.json": "1552379aad2e6edb8a924ebe02e4246d137fd088ff37e8c2cb67115c8f485756",
+      "README.md": "a22ebb99e4cd2b92ca084ed28fc6f850a216e2ab686fc40935c1b14cbc38bb8a",
+      "freeze-author.py": "1659eb103f15391d9737e65ff61df8f25ce016da5532b79e0ace9151c5103902",
+      "research-original.md": "79728c6932d9b6305899a0ffafdcf7f21094b9f4b994101382932bcf3bf2e218",
+      "research-original.claims.json": "47b0eb3803241e3ec057eed11a62dd02a1a1d04bf45c0a62575198f294f5c39c",
+      "original-preservation.json": "ec235af1f086d9bc3fb1e49e67d6c93a335725aaba8d46e3141207d1ba4ca730"
+    },
+    "code_dependencies_read_sha256": {
+      "tools/video/cli.mjs": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+      "tools/video/core/state.mjs": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/qa/facts.mjs": "96f2ee519a096b6509ce9f652e1e300a467936ea3d139279d85001fc40c3a462",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs": "2106a2be30a89a67fb81aa4149f93e07e35be7c30c1206f5d919540f868ea80e"
+    }
+  },
+  "must_fix": [
+    {
+      "id": "DORAEMON-R1-SOURCE-01",
+      "severity": "FACT_DATE_SCOPE",
+      "line_ids": [
+        "d1b011"
+      ],
+      "scene_ids": [
+        "dr1-b01-p1"
+      ],
+      "current_text": "二〇一九年，接下《大雄的月球探測記》腳本的辻村深月，收到むぎわら的鼓勵。",
+      "problem": "句首「二〇一九年」直接修飾「收到むぎわら的鼓勵」，把影片／訪談標籤年當成收信事件年。D10只證2019版電影署名；D11/D12的原件只回顧寫腳本時得到鼓勵，沒有郵件日期。",
+      "evidence": [
+        {
+          "source_id": "TSUJNEWS",
+          "lines_1based": [
+            21,
+            22
+          ],
+          "quote": "こんなメールをいただきました",
+          "meaning": "回顧收到email及心境改變，不給寄送年。"
+        },
+        {
+          "source_id": "FILM2019SCRIPT",
+          "lines_1based": [
+            2,
+            4
+          ],
+          "quote": "緊張とプレッシャーでガチガチになっていた時に",
+          "meaning": "以承接腳本的過程定位事件，沒有2019寄送日。"
+        },
+        {
+          "source_id": "TSUJINTERVIEW",
+          "lines_1based": [
+            7,
+            7
+          ],
+          "quote": "それから１年半をかけ",
+          "meaning": "腳本完成後仍持續製片；更不能由2019上映年自動推出信件年。"
+        }
+      ],
+      "requested_change": "把2019明確限定為電影上映／版本年，例如「替二〇一九年上映的《大雄的月球探測記》寫腳本時，辻村深月收到むぎわら的鼓勵。」或移除收信年份。同步重建受影響的四檔及claims映射、凍結新SHA，再獨立重核。",
+      "asserted_actual_email_year": null
+    }
+  ],
+  "coverage": {
+    "spoken_lines_total": 149,
+    "spoken_lines_inspected": 149,
+    "line_ids_unique": 149,
+    "candidate_rows_total": 72,
+    "rows_reviewed": 72,
+    "projections_equal": [
+      "video.json flat lines",
+      "script.md id/text rows",
+      "narration-only.json",
+      "claims.json lines"
+    ],
+    "all_scene_links_exact": true,
+    "chapters": 6,
+    "shots": 124,
+    "cards": 0,
+    "generated_outro_or_bookends_inspected": false,
+    "outro_note": "R1 video.json只有124正文shot；新增5秒片頭＋21秒片尾是後續製作要求，沒有把不存在的已生成片尾算進本輪圖像PASS。",
+    "anchors_total": 42,
+    "research_claims": 35,
+    "author_additional_anchors": 7,
+    "working_nodes": 12,
+    "loops": 23,
+    "line_groups": [
+      {
+        "row": "h01",
+        "line_ids": [
+          "d1h011",
+          "d1h012"
+        ],
+        "kind": "mixed",
+        "anchors": [
+          "D01",
+          "D02"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "h02",
+        "line_ids": [
+          "d1h021",
+          "d1h022"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D04"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "h03",
+        "line_ids": [
+          "d1h031"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D04"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "h04",
+        "line_ids": [
+          "d1h041",
+          "d1h042"
+        ],
+        "kind": "teaser",
+        "anchors": [
+          "D14"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "h05",
+        "line_ids": [
+          "d1h051"
+        ],
+        "kind": "editorial",
+        "anchors": [
+          "D02",
+          "D27"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "h06",
+        "line_ids": [
+          "d1h061"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D10",
+          "D27"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a01",
+        "line_ids": [
+          "d1a011",
+          "d1a012"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D04",
+          "D05"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a02",
+        "line_ids": [
+          "d1a021",
+          "d1a022",
+          "d1a023"
+        ],
+        "kind": "opinion",
+        "anchors": [
+          "D04",
+          "D05"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a03",
+        "line_ids": [
+          "d1a031",
+          "d1a032",
+          "d1a033"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D01",
+          "D03"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT",
+        "note": "旁白已明確以當事人回顧歸屬；第三回起不外推逐頁墨線分工。"
+      },
+      {
+        "row": "a04",
+        "line_ids": [
+          "d1a041"
+        ],
+        "kind": "boundary",
+        "anchors": [
+          "D03",
+          "D32"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT",
+        "note": "旁白已明確以當事人回顧歸屬；第三回起不外推逐頁墨線分工。"
+      },
+      {
+        "row": "a04b",
+        "line_ids": [
+          "d1a04b1",
+          "d1a04b2"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "A05"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a05",
+        "line_ids": [
+          "d1a051"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D06",
+          "D07"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a06",
+        "line_ids": [
+          "d1a061",
+          "d1a062"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D06",
+          "D07"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a06b",
+        "line_ids": [
+          "d1a06b1"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D09"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a07",
+        "line_ids": [
+          "d1a071",
+          "d1a072"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D08",
+          "D09"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a08",
+        "line_ids": [
+          "d1a081",
+          "d1a082",
+          "d1a083"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D09",
+          "D32"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "a09",
+        "line_ids": [
+          "d1a091",
+          "d1a092"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D05",
+          "D10"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b01",
+        "line_ids": [
+          "d1b011",
+          "d1b012"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D10",
+          "D11",
+          "D12"
+        ],
+        "verdict": "HOLD_DATE_SCOPE",
+        "note": "只有d1b011的2019收信年未獲來源支持；d1b012所說的email形式可確認。"
+      },
+      {
+        "row": "b02",
+        "line_ids": [
+          "d1b021",
+          "d1b022"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D12"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b03",
+        "line_ids": [
+          "d1b031"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D12"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b04",
+        "line_ids": [
+          "d1b041",
+          "d1b042"
+        ],
+        "kind": "mixed",
+        "anchors": [
+          "D10",
+          "D17",
+          "D18"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b05",
+        "line_ids": [
+          "d1b051"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D13"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b06",
+        "line_ids": [
+          "d1b061",
+          "d1b062"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D13",
+          "A01"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b07",
+        "line_ids": [
+          "d1b071",
+          "d1b072",
+          "d1b073"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D13",
+          "D15"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b08",
+        "line_ids": [
+          "d1b081",
+          "d1b082"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D14"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b09",
+        "line_ids": [
+          "d1b091",
+          "d1b092"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D13",
+          "D14"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "b10",
+        "line_ids": [
+          "d1b101",
+          "d1b102"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D15"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c01",
+        "line_ids": [
+          "d1c011",
+          "d1c012"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D15"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c02",
+        "line_ids": [
+          "d1c021",
+          "d1c022"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D15"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c02b",
+        "line_ids": [
+          "d1c02b1",
+          "d1c02b2"
+        ],
+        "kind": "question",
+        "anchors": [
+          "A06"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c02c",
+        "line_ids": [
+          "d1c02c1",
+          "d1c02c2",
+          "d1c02c3"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A06"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c02d",
+        "line_ids": [
+          "d1c02d1",
+          "d1c02d2"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "A06"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c03",
+        "line_ids": [
+          "d1c031",
+          "d1c032"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A02"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c04",
+        "line_ids": [
+          "d1c041",
+          "d1c042",
+          "d1c043"
+        ],
+        "kind": "opinion",
+        "anchors": [
+          "A02"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c05",
+        "line_ids": [
+          "d1c051",
+          "d1c052"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D16"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c06",
+        "line_ids": [
+          "d1c061",
+          "d1c062",
+          "d1c063",
+          "d1c064"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D16"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c07",
+        "line_ids": [
+          "d1c071",
+          "d1c072",
+          "d1c073"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D16"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c08",
+        "line_ids": [
+          "d1c081",
+          "d1c082"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D16"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "c09",
+        "line_ids": [
+          "d1c091",
+          "d1c092"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D18",
+          "D19"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d01",
+        "line_ids": [
+          "d1d011",
+          "d1d012"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D18"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d02",
+        "line_ids": [
+          "d1d021",
+          "d1d022",
+          "d1d023"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D18"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d03",
+        "line_ids": [
+          "d1d031",
+          "d1d032"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D19"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d04",
+        "line_ids": [
+          "d1d041",
+          "d1d042"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D19"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d05",
+        "line_ids": [
+          "d1d051",
+          "d1d052",
+          "d1d053"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D19"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d06",
+        "line_ids": [
+          "d1d061",
+          "d1d062",
+          "d1d063"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D21",
+          "A03"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d07",
+        "line_ids": [
+          "d1d071",
+          "d1d072"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D21"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d08",
+        "line_ids": [
+          "d1d081",
+          "d1d082"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "D20"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d09",
+        "line_ids": [
+          "d1d091",
+          "d1d092"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D20",
+          "A03"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d10",
+        "line_ids": [
+          "d1d101",
+          "d1d102"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A03"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d11",
+        "line_ids": [
+          "d1d111",
+          "d1d112",
+          "d1d113"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A03"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d12",
+        "line_ids": [
+          "d1d121",
+          "d1d122",
+          "d1d123"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A04"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d12b",
+        "line_ids": [
+          "d1d12b1",
+          "d1d12b2"
+        ],
+        "kind": "question",
+        "anchors": [
+          "A07"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d12c",
+        "line_ids": [
+          "d1d12c1",
+          "d1d12c2",
+          "d1d12c3"
+        ],
+        "kind": "attributed",
+        "anchors": [
+          "A07"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d13",
+        "line_ids": [
+          "d1d131",
+          "d1d132",
+          "d1d133"
+        ],
+        "kind": "opinion",
+        "anchors": [
+          "A04"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d14",
+        "line_ids": [
+          "d1d141",
+          "d1d142"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D22",
+          "D23"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d14b",
+        "line_ids": [
+          "d1d14b1",
+          "d1d14b2"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D10",
+          "D22"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "d15",
+        "line_ids": [
+          "d1d151"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D23"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e01",
+        "line_ids": [
+          "d1e011",
+          "d1e012"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D23"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e02",
+        "line_ids": [
+          "d1e021",
+          "d1e022",
+          "d1e023"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D24"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e03",
+        "line_ids": [
+          "d1e031",
+          "d1e032",
+          "d1e033"
+        ],
+        "kind": "reasoning",
+        "anchors": [
+          "D23",
+          "D24"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e04",
+        "line_ids": [
+          "d1e041"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D25",
+          "D26"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e05",
+        "line_ids": [
+          "d1e051",
+          "d1e052"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D25",
+          "D26"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e06",
+        "line_ids": [
+          "d1e061",
+          "d1e062"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D27"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e06b",
+        "line_ids": [
+          "d1e06b1"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D28"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e07",
+        "line_ids": [
+          "d1e071",
+          "d1e072",
+          "d1e073"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D28"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e07b",
+        "line_ids": [
+          "d1e07b1",
+          "d1e07b2"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D29"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e07c",
+        "line_ids": [
+          "d1e07c1"
+        ],
+        "kind": "question",
+        "anchors": [
+          "D30"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e08",
+        "line_ids": [
+          "d1e081",
+          "d1e082"
+        ],
+        "kind": "fact",
+        "anchors": [
+          "D30"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e09",
+        "line_ids": [
+          "d1e091",
+          "d1e092"
+        ],
+        "kind": "opinion",
+        "anchors": [
+          "D04",
+          "D05",
+          "D16",
+          "D19"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e10",
+        "line_ids": [
+          "d1e101",
+          "d1e102"
+        ],
+        "kind": "answer",
+        "anchors": [
+          "D10",
+          "D25",
+          "D27"
+        ],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e11",
+        "line_ids": [
+          "d1e111"
+        ],
+        "kind": "cta",
+        "anchors": [],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      },
+      {
+        "row": "e12",
+        "line_ids": [
+          "d1e121"
+        ],
+        "kind": "cta",
+        "anchors": [],
+        "verdict": "ACCEPTABLE_IN_CONTEXT"
+      }
+    ],
+    "anchor_results": [
+      {
+        "id": "D01",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "PROFILE",
+            "lines_1based": [
+              8,
+              8
+            ],
+            "short_original_quote": "本名、藤本弘",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "PROFILE",
+            "lines_1based": [
+              14,
+              14
+            ],
+            "short_original_quote": "1996年9月23日",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D02",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "PROFILE",
+            "lines_1based": [
+              14,
+              14
+            ],
+            "short_original_quote": "1996年9月23日",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D03",
+        "verdict": "SUPPORTED_WITH_RECORDED_CACHE_ATTRIBUTION_LIMIT",
+        "evidence": [
+          {
+            "source": "CORO2019A_CACHE",
+            "lines_1based": [
+              2,
+              2
+            ],
+            "short_original_quote": "連載第3回から執筆",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D04",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FSTORY",
+            "lines_1based": [
+              50,
+              50
+            ],
+            "short_original_quote": "別の原稿用紙に写して",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D05",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FSTORY",
+            "lines_1based": [
+              51,
+              51
+            ],
+            "short_original_quote": "そのまま残しました",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D06",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "BOOK2017COMIC",
+            "lines_1based": [
+              10,
+              10
+            ],
+            "short_original_quote": "2017/08/28",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "BOOK2017COMIC",
+            "lines_1based": [
+              16,
+              16
+            ],
+            "short_original_quote": "130頁",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D07",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "BOOK2017NEWS",
+            "lines_1based": [
+              8,
+              8
+            ],
+            "short_original_quote": "下絵を初公開",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D08",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "ANIM1997HIST",
+            "lines_1based": [
+              4,
+              4
+            ],
+            "short_original_quote": "97年3月公開",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D09",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "BOOK17",
+            "lines_1based": [
+              11,
+              11
+            ],
+            "short_original_quote": "1997/08/28",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "BOOK17",
+            "lines_1based": [
+              22,
+              22
+            ],
+            "short_original_quote": "2016/02/12",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D10",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "ANIM2019",
+            "lines_1based": [
+              42,
+              42
+            ],
+            "short_original_quote": "脚本：辻村深月",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "ANIM2019",
+            "lines_1based": [
+              41,
+              41
+            ],
+            "short_original_quote": "監督：八鍬新之介",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D11",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FILM2019SCRIPT",
+            "lines_1based": [
+              3,
+              3
+            ],
+            "short_original_quote": "楽しんでください",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D12",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJNEWS",
+            "lines_1based": [
+              21,
+              21
+            ],
+            "short_original_quote": "メール",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D13",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A",
+            "lines_1based": [
+              20,
+              20
+            ],
+            "short_original_quote": "まず先にあった",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D14",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A",
+            "lines_1based": [
+              32,
+              32
+            ],
+            "short_original_quote": "5、6冊",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D15",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A",
+            "lines_1based": [
+              28,
+              28
+            ],
+            "short_original_quote": "アイデアメモ",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "MW2019A",
+            "lines_1based": [
+              33,
+              33
+            ],
+            "short_original_quote": "提案してくれた",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D16",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A2",
+            "lines_1based": [
+              16,
+              16
+            ],
+            "short_original_quote": "ルカって何ですか",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D17",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A2",
+            "lines_1based": [
+              15,
+              15
+            ],
+            "short_original_quote": "少しお手伝い",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D18",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019",
+            "lines_1based": [
+              19,
+              19
+            ],
+            "short_original_quote": "『尺』",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "MW2019",
+            "lines_1based": [
+              22,
+              22
+            ],
+            "short_original_quote": "最終稿",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D19",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              10,
+              10
+            ],
+            "short_original_quote": "このひと言で大丈夫",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D20",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              6,
+              6
+            ],
+            "short_original_quote": "小説も書いて",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D21",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              7,
+              7
+            ],
+            "short_original_quote": "１年半",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D22",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJNEWS",
+            "lines_1based": [
+              31,
+              31
+            ],
+            "short_original_quote": "著：辻村深月",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "TSUJNEWS",
+            "lines_1based": [
+              32,
+              32
+            ],
+            "short_original_quote": "2019年2月7日",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D23",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FILMCOMIC2019",
+            "lines_1based": [
+              33,
+              33
+            ],
+            "short_original_quote": "アニメフィルムコミックス",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "FILMCOMIC2019",
+            "lines_1based": [
+              11,
+              11
+            ],
+            "short_original_quote": "2019/07/26",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D24",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MANGA2020NEWS",
+            "lines_1based": [
+              11,
+              11
+            ],
+            "short_original_quote": "まんが：むぎわらしんたろう",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D25",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "ANIM2025",
+            "lines_1based": [
+              42,
+              42
+            ],
+            "short_original_quote": "脚本：伊藤公志",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "ANIM2025",
+            "lines_1based": [
+              41,
+              41
+            ],
+            "short_original_quote": "監督：寺本幸代",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D26",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "NOVEL2025",
+            "lines_1based": [
+              7,
+              7
+            ],
+            "short_original_quote": "著・脚本:",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D27",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FILM2026",
+            "lines_1based": [
+              49,
+              49
+            ],
+            "short_original_quote": "脚本：村山 功",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "FILM2026",
+            "lines_1based": [
+              49,
+              49
+            ],
+            "short_original_quote": "監督：矢嶋哲生",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D28",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "DW2026ANN",
+            "lines_1based": [
+              17,
+              17
+            ],
+            "short_original_quote": "1983年に公開",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "ANN2026BD",
+            "lines_1based": [
+              18,
+              18
+            ],
+            "short_original_quote": "再映画化",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D29",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "ANN2026BD",
+            "lines_1based": [
+              31,
+              31
+            ],
+            "short_original_quote": "本文160P縮刷版シナリオ",
+            "exact_short_and_full_excerpt_match": true
+          },
+          {
+            "source": "ANN2026BD",
+            "lines_1based": [
+              69,
+              69
+            ],
+            "short_original_quote": "2026年2月27日",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D30",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "FILM2026",
+            "lines_1based": [
+              53,
+              53
+            ],
+            "short_original_quote": "製作：",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D31",
+        "verdict": "EXCLUDED_AND_ABSENT_FROM_CANDIDATE_AS_FACT",
+        "evidence": []
+      },
+      {
+        "id": "D32",
+        "verdict": "EXCLUDED_AND_ABSENT_FROM_CANDIDATE_AS_FACT",
+        "evidence": []
+      },
+      {
+        "id": "D33",
+        "verdict": "EXCLUDED_AND_ABSENT_FROM_CANDIDATE_AS_FACT",
+        "evidence": []
+      },
+      {
+        "id": "D34",
+        "verdict": "EXCLUDED_AND_ABSENT_FROM_CANDIDATE_AS_FACT",
+        "evidence": [
+          {
+            "source": "BOOK17",
+            "lines_1based": [
+              22,
+              22
+            ],
+            "short_original_quote": "2016/02/12",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "D35",
+        "verdict": "EXCLUDED_AND_ABSENT_FROM_CANDIDATE_AS_FACT",
+        "evidence": []
+      },
+      {
+        "id": "A01",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019A",
+            "lines_1based": [
+              23,
+              26
+            ],
+            "short_original_quote": "昨日までと違う身近さ",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A02",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019",
+            "lines_1based": [
+              26,
+              26
+            ],
+            "short_original_quote": "先生だったらどうするか",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A03",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              8,
+              11
+            ],
+            "short_original_quote": "映画とは違うアプローチ",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A04",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              12,
+              12
+            ],
+            "short_original_quote": "映画にはないシーン",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A05",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "PROFILE",
+            "lines_1based": [
+              10,
+              12
+            ],
+            "short_original_quote": "1987年のコンビ解消後",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A06",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "MW2019",
+            "lines_1based": [
+              32,
+              33
+            ],
+            "short_original_quote": "わずか数ページ",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      },
+      {
+        "id": "A07",
+        "verdict": "SUPPORTED_WITH_RECORDED_LIMITS",
+        "evidence": [
+          {
+            "source": "TSUJINTERVIEW",
+            "lines_1based": [
+              13,
+              14
+            ],
+            "short_original_quote": "漢字のフリガナもすべてつく",
+            "exact_short_and_full_excerpt_match": true
+          }
+        ]
+      }
+    ],
+    "working_node_coverage": [
+      {
+        "node": "N01",
+        "rows": [
+          "h01",
+          "h06",
+          "e10"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N02",
+        "rows": [
+          "h02",
+          "h03",
+          "a01",
+          "a02"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N03",
+        "rows": [
+          "a03",
+          "a04",
+          "a04b"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N04",
+        "rows": [
+          "a05",
+          "a06",
+          "a06b",
+          "a07",
+          "a08"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N05",
+        "rows": [
+          "b01",
+          "b02",
+          "b03",
+          "b04"
+        ],
+        "verdict": "COVERED_WITH_B01_DATE_HOLD"
+      },
+      {
+        "node": "N06",
+        "rows": [
+          "h04",
+          "b05",
+          "b06",
+          "b07",
+          "b08",
+          "b09"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N07",
+        "rows": [
+          "b10",
+          "c01",
+          "c02",
+          "c02b",
+          "c02c",
+          "c02d",
+          "c03",
+          "c04"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N08",
+        "rows": [
+          "c05",
+          "c06",
+          "c07",
+          "c08",
+          "c09"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N09",
+        "rows": [
+          "d01",
+          "d02",
+          "d03",
+          "d04",
+          "d05"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N10",
+        "rows": [
+          "d06",
+          "d07",
+          "d08",
+          "d09",
+          "d10",
+          "d11",
+          "d12",
+          "d12b",
+          "d12c",
+          "d13"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N11",
+        "rows": [
+          "d14",
+          "d14b",
+          "d15",
+          "e01",
+          "e02",
+          "e03"
+        ],
+        "verdict": "COVERED"
+      },
+      {
+        "node": "N12",
+        "rows": [
+          "e04",
+          "e05",
+          "e06",
+          "e06b",
+          "e07",
+          "e07b",
+          "e07c",
+          "e08",
+          "e09",
+          "e10"
+        ],
+        "verdict": "COVERED"
+      }
+    ]
+  },
+  "source_materials": [
+    {
+      "id": "PROFILE",
+      "url": "https://dora-world.com/manga/profile",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.html",
+      "raw_sha256": "88e76ec049094bcea13172dffbeff86d24711b1f94c86cbc081ac55874194c88",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.paragraphs.txt",
+      "text_sha256": "71815795cb1530002f086316226f3cda13f4790fc52ecc4adc3cd964f0a1de6b",
+      "inspected_line_ranges_1based": [
+        [
+          8,
+          14
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "FSTORY",
+      "url": "https://dora-world.com/sp/f_story/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FSTORY.html",
+      "raw_sha256": "1ed101da22d67e7d7025945db7e55d06c8207502eabaf9f4849d83cd0655ee7a",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FSTORY.paragraphs.txt",
+      "text_sha256": "d8305666e5e6205d3a737bbc2706ad3dd888792b774248c0e0f8ba2b6fbe0a58",
+      "inspected_line_ranges_1based": [
+        [
+          42,
+          59
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "BOOK2017COMIC",
+      "url": "https://shogakukan-comic.jp/book?isbn=9784091424921",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK2017COMIC.html",
+      "raw_sha256": "b9bbb1dd8f0e5a6d4daa463f5b101cbc2174e50c014b645a0ffede99476618b3",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK2017COMIC.paragraphs.txt",
+      "text_sha256": "3e53a505147f295fac627f21ca2a69dbe126b218a7ec44f4f57884cd28464026",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          21
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "BOOK2017NEWS",
+      "url": "https://shogakukan-comic.jp/news/8047",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK2017NEWS.html",
+      "raw_sha256": "307418329be950cc928b0ed10755eb791fd69fc5db6a1c7892fe95d55148414b",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK2017NEWS.paragraphs.txt",
+      "text_sha256": "3fdddec606b0d7828a797f0675a5b5eda2807063d30842caecd0957b5568a173",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          8
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "BOOK17",
+      "url": "https://shogakukan-comic.jp/book?isbn=9784091417572",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK17.html",
+      "raw_sha256": "61a429d1b084f10e542340d4adf90b436362703ed6e3417aefb0da8e13a7720f",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/BOOK17.paragraphs.txt",
+      "text_sha256": "909b2bbc39dba62866b5703c851a34c420bdcaeb98efd56aebd8f0b02deea5ad",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          25
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "ANIM1997HIST",
+      "url": "https://shin-ei-animation.jp/50th/works/54.html",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM1997HIST.html",
+      "raw_sha256": "84a4346fb8efd970f8711b81055309cf70e5d7fd83550cb16a9a85e16837d286",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM1997HIST.paragraphs.txt",
+      "text_sha256": "d4659d2c77b6939a4370e50fd7082ae7b59b492bbb077fbf1577cdeff1902584",
+      "inspected_line_ranges_1based": [
+        [
+          2,
+          7
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "FILM2019SCRIPT",
+      "url": "https://doraeiga.com/2019/screenplay/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILM2019SCRIPT.html",
+      "raw_sha256": "e3e3c706b42ba62b583156d2932bbc5ec86e90f2dc26fb74ae6461d1df64de85",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILM2019SCRIPT.paragraphs.txt",
+      "text_sha256": "04a90544120ced0afc6754bdc3f421472eb5a88b5bcc2727535b391d23547d5d",
+      "inspected_line_ranges_1based": [
+        [
+          1,
+          7
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "ANIM2019",
+      "url": "https://shin-ei-animation.jp/works/movie_doraemon_2019/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2019.html",
+      "raw_sha256": "60871b9fdbd681954a045ca6e61886fc4d077b5f41748e41a67da20b08c75539",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2019.paragraphs.txt",
+      "text_sha256": "bcd99ea612a265c93b748d093b3ac45877b852b94a01f79278ff9a2c23e0cd31",
+      "inspected_line_ranges_1based": [
+        [
+          1,
+          28
+        ],
+        [
+          35,
+          42
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "TSUJNEWS",
+      "url": "https://www.shogakukan.co.jp/news/203871",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJNEWS.html",
+      "raw_sha256": "a2cb8cb86b5130abab53b62412d14bacd5e5ce1ee9629836576c3b389957ee51",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJNEWS.paragraphs.txt",
+      "text_sha256": "3a20998c505bba724b9e8b0f6b678ebf3f7d4b678c7ce4093d4667c038411ad4",
+      "inspected_line_ranges_1based": [
+        [
+          11,
+          12
+        ],
+        [
+          18,
+          34
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "TSUJINTERVIEW",
+      "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
+      "raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
+      "text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
+      "inspected_line_ranges_1based": [
+        [
+          1,
+          18
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "MW2019A",
+      "url": "https://press.moviewalker.jp/news/article/181228/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.html",
+      "raw_sha256": "62c03d82240633f19901d89e9fe3d39f75a5bcfefb0e661ac235317278dcdfe4",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.paragraphs.txt",
+      "text_sha256": "0fc08d1a0491edf625fdcef793a5c1a460c89ef78de4f9fcc3178e120e78c673",
+      "inspected_line_ranges_1based": [
+        [
+          7,
+          7
+        ],
+        [
+          18,
+          33
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "MW2019A2",
+      "url": "https://press.moviewalker.jp/news/article/181228/p2/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
+      "raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
+      "text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
+      "inspected_line_ranges_1based": [
+        [
+          7,
+          7
+        ],
+        [
+          13,
+          17
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "MW2019",
+      "url": "https://press.moviewalker.jp/news/article/181229/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.html",
+      "raw_sha256": "d3a322f015c763611b9f20d0262c18e8ea2b7155252b226ba4c8edf9db7d83e5",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.paragraphs.txt",
+      "text_sha256": "e615581468f1d727cdbe5a23dae26d022725ae260ea5ea1c202e2adbfebc9c7b",
+      "inspected_line_ranges_1based": [
+        [
+          7,
+          7
+        ],
+        [
+          18,
+          33
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "FILMCOMIC2019",
+      "url": "https://shogakukan-comic.jp/book?isbn=9784091430588",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILMCOMIC2019.html",
+      "raw_sha256": "b138e12436dd3d5895b24a6db132fbc17bfb2b67222fadd08b4c8a2f01475a35",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILMCOMIC2019.paragraphs.txt",
+      "text_sha256": "fe4e6ccd9f84a609bb755fd49d2aa831f7000633b15fb7e5c6131e19afaca3c4",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          33
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "MANGA2020NEWS",
+      "url": "https://shogakukan-comic.jp/news/23966",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MANGA2020NEWS.html",
+      "raw_sha256": "1872cd7d807e87bd392343dde1b6c54b5e41faa49e552e06e439a1d136f3c25d",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MANGA2020NEWS.paragraphs.txt",
+      "text_sha256": "6f7e3f045a720f0b3d8f3dee9a37c5fb1496c664b213abd7a6f1e701735bc58a",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          15
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "ANIM2025",
+      "url": "https://shin-ei-animation.jp/works/movie_doraemon_2025/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2025.html",
+      "raw_sha256": "e52e9802623a4077b4213653db17ae8554726b5ce2d7d35d5b7de11fea488750",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2025.paragraphs.txt",
+      "text_sha256": "c1b9c693c1c4c50be56502c9ef8e31d975a97e751392e15fdcf11bff72345edc",
+      "inspected_line_ranges_1based": [
+        [
+          1,
+          28
+        ],
+        [
+          30,
+          45
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "NOVEL2025",
+      "url": "https://shogakukan-comic.jp/book?isbn=9784092315044",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/NOVEL2025.html",
+      "raw_sha256": "40023ff0ec7bf9d2b4affbf293e67cf420e98f4039a31d90867646e220518f06",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/NOVEL2025.paragraphs.txt",
+      "text_sha256": "f0a26f6492a82e0f7286f9e7a3f4b26f84b8569757aa04e61d8348231931aa80",
+      "inspected_line_ranges_1based": [
+        [
+          4,
+          21
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "FILM2026",
+      "url": "https://doraeiga.com/2026/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILM2026.html",
+      "raw_sha256": "3977df5238a7c52a9d905d016fcdda44c4ff2f662a2ce816cdf30a3e7cb4d1a1",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/FILM2026.body.txt",
+      "text_sha256": "176660de2c7a90a49dfb8f121f19c7d25716d31ff59e130c62e9be951e3a0e51",
+      "inspected_line_ranges_1based": [
+        [
+          47,
+          55
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "DW2026ANN",
+      "url": "https://dora-world.com/contents/3995",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/DW2026ANN.html",
+      "raw_sha256": "accf30163ac55dce0d30bc64b121b332cddef75603a852cf437bad3749862b71",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/DW2026ANN.paragraphs.txt",
+      "text_sha256": "8142f28cd43bf343229e974c601a5667a25247d303de71d405f4ef8640f53b06",
+      "inspected_line_ranges_1based": [
+        [
+          12,
+          18
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "ANN2026BD",
+      "url": "https://dora-world.com/contents/4294",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANN2026BD.html",
+      "raw_sha256": "3923412fbb79313b391db0e0884573cfdebafa2aaa98cbcbd240aca1bd0a1e7b",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANN2026BD.paragraphs.txt",
+      "text_sha256": "5284f281ebec6a496d5be4c3644c215553164bf8870e6c9c22b45504003bf4bc",
+      "inspected_line_ranges_1based": [
+        [
+          13,
+          31
+        ],
+        [
+          65,
+          72
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "FROZEN_ORIGIN_HTTP_200",
+      "review_limit": "核對所列網頁段落，非完整書／電影／原始腳本的閱讀。"
+    },
+    {
+      "id": "CORO2019A_CACHE",
+      "url": "https://corocoro-news.jp/news/38190/",
+      "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/CORO.cached-search-tool.json",
+      "raw_sha256": "307b6eae3e4510c78dcb1b32583b0a55857fc03d6b013e20613c3aacd2c6df2b",
+      "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/CORO2019A_CACHE.txt",
+      "text_sha256": "f6fa1d1aeeb570b1f6d9cb99914ab4e03e549f3dea0f3462940f69dd9dfa35cb",
+      "inspected_line_ranges_1based": [
+        [
+          1,
+          2
+        ],
+        [
+          29,
+          37
+        ]
+      ],
+      "raw_and_text_hashes_match": true,
+      "quoted_original_language_present_in_raw": true,
+      "retrieval": "SEARCH_TOOL_CACHE_ONLY_ORIGIN_503",
+      "review_limit": "當事人回顧的快取；沒有取得本輪官方HTML正文，也沒有親看1996連載。"
+    }
+  ],
+  "source_findings": [
+    {
+      "id": "IDENTITY_AND_1996_BOUNDARY",
+      "verdict": "PASS_WITH_ATTRIBUTION_LIMIT",
+      "notes": "藤本弘／藤子F與安孫子素雄分清；1987拆夥來自官方簡介。另紙轉寫與保存以FSTORY署名回顧為來源。第三回接手僅是CORO當事訪談快取，旁白說「後來自述」，並明示不能替每頁線條簽名。沒有補上未證的1996逐頁上墨、ネーム分工、臨終命令或心理。"
+    },
+    {
+      "id": "RELEASE_VS_CREATION",
+      "verdict": "PASS",
+      "notes": "2017/08回憶漫畫130頁、1997/03電影、1997/08紙本與2016/02電子版分開；沒有把2017宣傳／回憶日期改作1996事件日。"
+    },
+    {
+      "id": "2019_CREATIVE_WORK",
+      "verdict": "HOLD_SINGLE_DATE_PHRASE_OTHERWISE_SUPPORTED",
+      "notes": "科學專門誌5、6冊與首次會議、月球舞台、既有短篇道具入口、路卡友情動機追問、角色行為與作者心意分離、時長／台詞／表演／動畫分工均由官方留言或同場當事訪談支持。既有道具的虛構機制未當成真實物理。"
+    },
+    {
+      "id": "MEDIA_AND_CREDITS",
+      "verdict": "PASS",
+      "notes": "小說（2019/02/07）先於電影（2019/03/01）；film comic、2020新恐龍手繪漫畫的原作／腳本／漫畫、2025與2026導演／腳本及製作／配給職責分清。2026明示1983作品再改編，160P只稱附件介紹，未宣稱讀過腳本。"
+    },
+    {
+      "id": "LOCATOR_SUPPLEMENTS",
+      "verdict": "SUPPORTED_BY_NEARBY_ORIGINAL_BODY",
+      "notes": "D18的原短定位MW2019:19是照片圖說，完整時長／節奏自述在21，最終稿在22；本輪讀21–22後確認d01/d02/b04。D26的著・脚本欄名在NOVEL2025:7，伊藤姓名在8；本輪連讀5–10確認，不只靠欄名推斷姓名。h01的2026仍有新作另以FILM2026:47–49和ANN2026BD:18、69–72交叉支持。"
+    }
+  ],
+  "written_visual_review": {
+    "all_124_actual_prompt_texts_read": true,
+    "all_scene_ids": [
+      "dr1-h01-p1",
+      "dr1-h01-p2",
+      "dr1-h02-p1",
+      "dr1-h03-p1",
+      "dr1-h04-p1",
+      "dr1-h05-p1",
+      "dr1-h06-p1",
+      "dr1-a01-p1",
+      "dr1-a01-p2",
+      "dr1-a02-p1",
+      "dr1-a02-p2",
+      "dr1-a03-p1",
+      "dr1-a03-p2",
+      "dr1-a04-p1",
+      "dr1-a04b-p1",
+      "dr1-a05-p1",
+      "dr1-a06-p1",
+      "dr1-a06-p2",
+      "dr1-a06b-p1",
+      "dr1-a07-p1",
+      "dr1-a07-p2",
+      "dr1-a08-p1",
+      "dr1-a08-p2",
+      "dr1-a09-p1",
+      "dr1-a09-p2",
+      "dr1-b01-p1",
+      "dr1-b01-p2",
+      "dr1-b02-p1",
+      "dr1-b02-p2",
+      "dr1-b03-p1",
+      "dr1-b04-p1",
+      "dr1-b04-p2",
+      "dr1-b05-p1",
+      "dr1-b06-p1",
+      "dr1-b07-p1",
+      "dr1-b07-p2",
+      "dr1-b07-p3",
+      "dr1-b08-p1",
+      "dr1-b08-p2",
+      "dr1-b09-p1",
+      "dr1-b09-p2",
+      "dr1-b10-p1",
+      "dr1-c01-p1",
+      "dr1-c01-p2",
+      "dr1-c02-p1",
+      "dr1-c02-p2",
+      "dr1-c02b-p1",
+      "dr1-c02b-p2",
+      "dr1-c02c-p1",
+      "dr1-c02c-p2",
+      "dr1-c02d-p1",
+      "dr1-c03-p1",
+      "dr1-c03-p2",
+      "dr1-c04-p1",
+      "dr1-c04-p2",
+      "dr1-c04-p3",
+      "dr1-c05-p1",
+      "dr1-c05-p2",
+      "dr1-c06-p1",
+      "dr1-c06-p2",
+      "dr1-c07-p1",
+      "dr1-c07-p2",
+      "dr1-c08-p1",
+      "dr1-c08-p2",
+      "dr1-c09-p1",
+      "dr1-c09-p2",
+      "dr1-d01-p1",
+      "dr1-d01-p2",
+      "dr1-d02-p1",
+      "dr1-d02-p2",
+      "dr1-d03-p1",
+      "dr1-d03-p2",
+      "dr1-d04-p1",
+      "dr1-d05-p1",
+      "dr1-d05-p2",
+      "dr1-d06-p1",
+      "dr1-d06-p2",
+      "dr1-d07-p1",
+      "dr1-d07-p2",
+      "dr1-d08-p1",
+      "dr1-d08-p2",
+      "dr1-d09-p1",
+      "dr1-d10-p1",
+      "dr1-d10-p2",
+      "dr1-d11-p1",
+      "dr1-d11-p2",
+      "dr1-d11-p3",
+      "dr1-d12-p1",
+      "dr1-d12-p2",
+      "dr1-d12b-p1",
+      "dr1-d12c-p1",
+      "dr1-d12c-p2",
+      "dr1-d13-p1",
+      "dr1-d13-p2",
+      "dr1-d14-p1",
+      "dr1-d14-p2",
+      "dr1-d14b-p1",
+      "dr1-d14b-p2",
+      "dr1-d15-p1",
+      "dr1-e01-p1",
+      "dr1-e01-p2",
+      "dr1-e02-p1",
+      "dr1-e02-p2",
+      "dr1-e02-p3",
+      "dr1-e03-p1",
+      "dr1-e03-p2",
+      "dr1-e04-p1",
+      "dr1-e05-p1",
+      "dr1-e05-p2",
+      "dr1-e06-p1",
+      "dr1-e06-p2",
+      "dr1-e06b-p1",
+      "dr1-e07-p1",
+      "dr1-e07-p2",
+      "dr1-e07b-p1",
+      "dr1-e07b-p2",
+      "dr1-e07c-p1",
+      "dr1-e08-p1",
+      "dr1-e08-p2",
+      "dr1-e09-p1",
+      "dr1-e10-p1",
+      "dr1-e10-p2",
+      "dr1-e11-p1",
+      "dr1-e12-p1"
+    ],
+    "english_prompts_only": true,
+    "literal_look_exact": true,
+    "anonymous_hands_and_generic_workspaces": true,
+    "no_named_person_or_brand_or_product_in_prompts": true,
+    "no_readable_text_or_logo_requested": true,
+    "no_real_person_likeness": true,
+    "no_recognizable_copyright_character_silhouette_or_signature_prop_requested": true,
+    "generic_objects_checked": [
+      "blank manuscript/grid pages",
+      "unmarked books/magazines/folders/screens",
+      "plain pen/pencils",
+      "ordinary distant moon",
+      "unmarked clock",
+      "film canister/disc case"
+    ],
+    "doraemon_iconic_form_checks": "未要求可辨識角色、藍色貓形剪影、招牌門、頭頂螺旋槳、貓鈴等；blank credit/role cards不是角色道具。",
+    "history_reconstruction_claim": false,
+    "actual_images_reviewed": 0,
+    "limitations": "匿名空白紙桌面可作概念示意；124鏡反覆blank等是lint的風格／節奏soft警告，保留供製作判斷。生成後仍需逐端官方judge，書面PASS不能保證模型不畫字／角色／多手。"
+  },
+  "loops_review": {
+    "all_23_setup_and_payoff_ids_exist": true,
+    "all_setup_precede_payoff": true,
+    "semantics_read_against_lines": true,
+    "all_payoffs_address_their_setup_in_context": true,
+    "sole_forward_event_teaser": "h04 science magazines",
+    "chronological_opening_h02_h03_not_extra_forward_teaser": true,
+    "source_limitation": "N05交接與h06總問題不解除b01收信年份HOLD；本輪不是兩位native聽眾盲評。"
+  },
+  "image_reuse_review": {
+    "verdict": "PASS_PLAN_ONLY",
+    "plan_sha256": "58307cd1229b655377ec01f4d5c977bdf3ffb2200bb219ca5dfd007ff0e2b522",
+    "scene_ids": [
+      "dr1-b08-p1",
+      "dr1-b08-p2",
+      "dr1-h04-p1"
+    ],
+    "stage_imagekey_recomputed_without_generation": true,
+    "complete_composed_request_match": true,
+    "fields_checked": [
+      "raw prompt",
+      "camera",
+      "resolved look",
+      "provider/model",
+      "size alternative",
+      "seed",
+      "image selection version",
+      "references",
+      "cast",
+      "correction list"
+    ],
+    "key_size_null_1920x1080": "65ad6caf0492dab0",
+    "key_size_2K_2048x1152": "08e0d542886f823b",
+    "all_three_keys_equal_within_each_size": true,
+    "size_alternatives_are_not_live_selected_settings": true,
+    "accepted_plan_constraints": [
+      "payoff first with --takes 1 after admissions",
+      "other payoff segment and teaser require exact live cache hit before dispatch; cache miss STOP",
+      "each of all three ends gets its own official judge",
+      "same selected original file SHA in official manifests",
+      "compare selected derived bytes after crop/margin trimming and in assembly"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_selected_file_sha256": null,
+    "live_cache_read": false,
+    "backend_settings_read": false,
+    "paid_generation_calls": 0
+  },
+  "integrity": {
+    "protected_inputs_sha256": "621a7c90de24047b97569e2ca5a8de6b14ddc4caf2119419c6bc4e8196183e37",
+    "protected_213_files_rehashed": 213,
+    "protected_changes": [],
+    "frozen_research_files_unchanged": 3,
+    "raw_inventory_sha256": "407e6a12e56c6ecb04e08a5d414c1cafed1d7d970ffe090391f13719119ff04b",
+    "raw_download_items": 42,
+    "raw_inventory_all_binding_hashes_rechecked": 176,
+    "raw_inventory_hash_errors": 0,
+    "old_related_originals_rehashed": 9,
+    "old_backend_snapshot_rehashed": true,
+    "readonly_preservation_copies_rehashed": 10,
+    "all_preservation_copy_modes_0400": true,
+    "old_paid_media_accessible": false,
+    "old_paid_media_preservation_claim": false,
+    "dictionary_version_count": 1,
+    "dictionary_event_count": 1,
+    "dictionary_version_sha256": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184",
+    "dictionary_current_sha256": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644",
+    "dictionary_rebuilt": false,
+    "runtime_manifest_sha256": "c5174bacfb1d0163925d5064ea0e64f23585d3ad386980c536d7fe8e6e91af96",
+    "canonical_runtime_script_sha256": "225339880a621b480e63d5666431810b8e3c018ab80fa69642a39c1f72db5dcb",
+    "runtime_source_file_hashes_match": true,
+    "author_script_is_distinct_from_canonical_runtime_script": true
+  },
+  "checks": {
+    "ordinary_lint": {
+      "command": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/doraemon-submission-root",
+        "lint",
+        "--slug",
+        "story-adapt-doraemon-after-fujiko-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 19,
+      "narrative_warnings": 0,
+      "spoken_units": 3368,
+      "lines": 149,
+      "estimated_minutes": 15.710555555555555,
+      "warnings_preserved": "3 repetitive prompt terms; 14 estimated shots over10s; 1 adjacent identical prompt; 1 overall estimated duration. No suppression."
+    },
+    "ordinary_facts_function": {
+      "module": "tools/video/qa/facts.mjs",
+      "function": "factsChecks",
+      "report": null,
+      "ok": false,
+      "detail": "no verify-*.md beside video.json: the script has not been fact-checked",
+      "interpretation": "HOLD故沒有產生marker；這個結構檢查不能替代逐句語義查核。"
+    },
+    "verify_1_written": false,
+    "verify_1_must_remain_absent_for_this_HOLD": true
+  },
+  "limits": [
+    "SOURCE HOLD只綁本輪四檔及所列凍結依賴；修改後不得沿用判定。",
+    "2019各頁和2017留言是回顧／出版品資料，非原始email、會議紀錄、完整原稿或逐稿比較；CORO第三回接手是503下的搜尋快取，未偽裝HTML200。",
+    "未審念法、未跑native或blind、未聽實聲；3368/4.5=748.44秒只是算式，約15.7分鐘只是含停頓場景的估計。實際正文仍須含開場及有聲CTA量到720–840秒，片頭尾26秒另計。",
+    "未生成或驗收實圖、未看完整電影／書／160頁腳本、未宣稱舊付費素材可讀或已保存。",
+    "本輪不建立任何站主、後台、exact-slug US$25帳戶／整片報價／protected admission或付費授權。"
+  ],
+  "reviewer_side_effects": {
+    "files_written": [
+      "docs/videos/brand-story-remakes-20261025/doraemon/reviews/source-r1-independent.json"
+    ],
+    "new_raw_downloads": 0,
+    "source_or_vendor_edits": 0,
+    "core_candidate_edits": 0,
+    "dictionary_edits": 0,
+    "backend_calls": 0,
+    "paid_calls": 0,
+    "owner_approvals": 0,
+    "git_commands_or_mutations": 0,
+    "native_or_blind_calls": 0
+  }
+}

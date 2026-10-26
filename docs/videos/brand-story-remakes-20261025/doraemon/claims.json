@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "role": "AUTHOR_MAPPING_NOT_INDEPENDENT_VERDICT",
-  "revision": "doraemon-r2",
+  "revision": "doraemon-r4",
   "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
   "lines": [
     {
@@ -885,66 +885,6 @@
       "limits": [
         "這是當事人的事後說法，原站本次503，正文僅取得搜尋快取。不是本次已看1996原連載原件，也不證前三回所有線條由誰完成。",
         "本次未取得1996原連載、原稿全套或完整2017回憶書逐頁核對。僅可保留當事人第三回起接手與另紙轉寫的有限說法。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1a04b1",
-      "scene_id": "dr1-a04b-p1",
-      "row_key": "a04b",
-      "text": "藤本弘曾和安孫子素雄共用「藤子不二雄」筆名；一九八七年拆夥後，",
-      "kind": "fact",
-      "source_anchors": [
-        "A05"
-      ],
-      "evidence": [
-        {
-          "source_id": "PROFILE",
-          "url": "https://dora-world.com/manga/profile",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.html",
-          "source_raw_sha256": "88e76ec049094bcea13172dffbeff86d24711b1f94c86cbc081ac55874194c88",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.paragraphs.txt",
-          "source_text_sha256": "71815795cb1530002f086316226f3cda13f4790fc52ecc4adc3cd964f0a1de6b",
-          "text_line_1based": 10,
-          "text_line_end_1based": 12,
-          "quote_exact_short": "1987年のコンビ解消後",
-          "full_located_excerpt": "安孫子素雄氏と合作を始め、1951年『天使の玉ちゃん（共著）』でまんが家デビュー。\n“藤子不二雄”名義で本格的に活動する。\n1987年のコンビ解消後、“藤子・Ｆ・不二雄”として、児童漫画の新時代を築く。",
-          "http_status_observed": 200,
-          "retrieval_method": "existing downloaded origin raw; no new network retrieval"
-        }
-      ],
-      "limits": [
-        "Fujimoto Hiroshi and Abiko Motoo are separate people; official biography states shared pen name and later separation."
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1a04b2",
-      "scene_id": "dr1-a04b-p1",
-      "row_key": "a04b",
-      "text": "才以藤子・Ｆ・不二雄活動。",
-      "kind": "fact",
-      "source_anchors": [
-        "A05"
-      ],
-      "evidence": [
-        {
-          "source_id": "PROFILE",
-          "url": "https://dora-world.com/manga/profile",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.html",
-          "source_raw_sha256": "88e76ec049094bcea13172dffbeff86d24711b1f94c86cbc081ac55874194c88",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/PROFILE.paragraphs.txt",
-          "source_text_sha256": "71815795cb1530002f086316226f3cda13f4790fc52ecc4adc3cd964f0a1de6b",
-          "text_line_1based": 10,
-          "text_line_end_1based": 12,
-          "quote_exact_short": "1987年のコンビ解消後",
-          "full_located_excerpt": "安孫子素雄氏と合作を始め、1951年『天使の玉ちゃん（共著）』でまんが家デビュー。\n“藤子不二雄”名義で本格的に活動する。\n1987年のコンビ解消後、“藤子・Ｆ・不二雄”として、児童漫画の新時代を築く。",
-          "http_status_observed": 200,
-          "retrieval_method": "existing downloaded origin raw; no new network retrieval"
-        }
-      ],
-      "limits": [
-        "Fujimoto Hiroshi and Abiko Motoo are separate people; official biography states shared pen name and later separation."
       ],
       "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
     },
@@ -1931,7 +1871,7 @@
       "id": "d1b042",
       "scene_id": "dr1-b04-p2",
       "row_key": "b04",
-      "text": "むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本；腳本署名則是辻村。",
+      "text": "むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本。",
       "kind": "mixed",
       "source_anchors": [
         "D10",
@@ -2371,10 +2311,11 @@
       "id": "d1b082",
       "scene_id": "dr1-b08-p2",
       "row_key": "b08",
-      "text": "辻村記得，大家要一起找：月球上哪裡還有生命能介入的餘地？",
+      "text": "辻村回顧，那次會議用科學資料討論設定；結果，寫腳本還是遇到困難。",
       "kind": "attributed",
       "source_anchors": [
-        "D14"
+        "D14",
+        "D15"
       ],
       "evidence": [
         {
@@ -2391,10 +2332,41 @@
           "http_status_observed": 200,
           "retrieval_method": "downloaded origin response; see frozen source receipt",
           "full_located_excerpt": "辻村「(うなずいて)月は本当に難しいですよね。現実に行こうと思うと遠いけれど、物語の上の嘘をつくにしては近すぎて、もうだいぶ観測が進んでしまっている。この作品が藤子先生の『ドラえもん』である以上、行ってみたらいきなり王国がありました、というわけには絶対にいかないんです。初回の打ち合わせでは、八鍬新之介監督が科学専門誌を5、6冊持ってきてくれて、『月のどこに生命の介在できる余地があるか、みんなで探しましょう』って。私、すごい場所に手を出そうしているな、と気持ちが怯みかけました(笑)。"
+        },
+        {
+          "source_id": "MW2019A",
+          "source_raw_sha256": "62c03d82240633f19901d89e9fe3d39f75a5bcfefb0e661ac235317278dcdfe4",
+          "source_text_sha256": "0fc08d1a0491edf625fdcef793a5c1a460c89ef78de4f9fcc3178e120e78c673",
+          "quote_exact_short": "アイデアメモ",
+          "text_line_1based": 28,
+          "text_line_end_1based": 28,
+          "section": "Mugiwara shows earlier notes",
+          "url": "https://press.moviewalker.jp/news/article/181228/",
+          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.html",
+          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.paragraphs.txt",
+          "http_status_observed": 200,
+          "retrieval_method": "downloaded origin response; see frozen source receipt",
+          "full_located_excerpt": "むぎわらしんたろう(以下、むぎ)「先生が96年に亡くなったあと、僕も何本か映画原作の大長編(『のび太の南海大冒険』『のび太の宇宙漂流記』『のび太の太陽王伝説』)を描いたんですけど、月を舞台にする案は候補として毎回挙がっていました。『道路光線』で月まで行こうとか、月面クレーターの『静かの海』はしずちゃんが由来だ、とか(笑)。こんなふうに(と言いながら、20年近く前にむぎわら先生が書いた当時のアイデアメモが出てくる)」"
+        },
+        {
+          "source_id": "MW2019A",
+          "source_raw_sha256": "62c03d82240633f19901d89e9fe3d39f75a5bcfefb0e661ac235317278dcdfe4",
+          "source_text_sha256": "0fc08d1a0491edf625fdcef793a5c1a460c89ef78de4f9fcc3178e120e78c673",
+          "quote_exact_short": "提案してくれた",
+          "text_line_1based": 33,
+          "text_line_end_1based": 33,
+          "section": "Yakuwa suggests a device already in the original manga",
+          "url": "https://press.moviewalker.jp/news/article/181228/",
+          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.html",
+          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A.paragraphs.txt",
+          "http_status_observed": 200,
+          "retrieval_method": "downloaded origin response; see frozen source receipt",
+          "full_located_excerpt": "案の定、脚本づくりは難航したんですが、監督も私も『原作に登場するひみつ道具のどれかを使って、のび太が冒険に行くきっかけを作りたい』という考えがあって。あるとき監督が、『異説クラブメンバーズバッジはどうですか』と提案してくれたんです。それを聞いた瞬間に『書ける！』と思い、一気に物語が動き出しました。藤子先生の原作の力を借りて、やっと月に行ける準備が整ったんです」"
         }
       ],
       "limits": [
-        "回顧一場會議，未核會議日、刊名或實際書頁；不能演成已讀到會議逐字紀錄。"
+        "回顧一場會議，未核會議日、刊名或實際書頁；不能演成已讀到會議逐字紀錄。",
+        "舊memo的精確製作年/原件版本本次未核；既有設定被借用不等於整部2019電影是舊大長篇重拍。"
       ],
       "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
     },
@@ -3134,38 +3106,7 @@
       "id": "d1c051",
       "scene_id": "dr1-c05-p1",
       "row_key": "c05",
-      "text": "不過，角色熟悉，會不會也讓人太快跳過問題？",
-      "kind": "question",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c052",
-      "scene_id": "dr1-c05-p2",
-      "row_key": "c05",
-      "text": "大雄為新朋友冒險，只要補上「因為是朋友」，你就相信了嗎？",
+      "text": "導演怎麼檢查，這份冒險的動機寫得夠不夠？",
       "kind": "question",
       "source_anchors": [
         "D16"
@@ -3196,8 +3137,8 @@
       "id": "d1c061",
       "scene_id": "dr1-c06-p1",
       "row_key": "c06",
-      "text": "八鍬沒有直接讓這個理由過關。",
-      "kind": "attributed",
+      "text": "辻村說，八鍬要求她交代冒險理由，以及路卡對大雄的意義。",
+      "kind": "attributed_work_requirement",
       "source_anchors": [
         "D16"
       ],
@@ -3227,70 +3168,8 @@
       "id": "d1c062",
       "scene_id": "dr1-c06-p1",
       "row_key": "c06",
-      "text": "辻村記得，他問：大雄他們為什麼能為路卡冒生命危險？",
-      "kind": "attributed",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c063",
-      "scene_id": "dr1-c06-p2",
-      "row_key": "c06",
-      "text": "路卡對大雄究竟是什麼？",
-      "kind": "attributed",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c064",
-      "scene_id": "dr1-c06-p2",
-      "row_key": "c06",
-      "text": "友情又是什麼？",
-      "kind": "attributed",
+      "text": "不能只靠「朋友」這個稱呼帶過。",
+      "kind": "attributed_work_requirement",
       "source_anchors": [
         "D16"
       ],
@@ -3320,8 +3199,8 @@
       "id": "d1c071",
       "scene_id": "dr1-c07-p1",
       "row_key": "c07",
-      "text": "這些問題讓辻村重新處理兩人的具體關係。",
-      "kind": "attributed",
+      "text": "她承認，一開始把為剛認識的客串角色努力，當成理所當然。",
+      "kind": "attributed_work_response",
       "source_anchors": [
         "D16"
       ],
@@ -3351,101 +3230,8 @@
       "id": "d1c072",
       "scene_id": "dr1-c07-p2",
       "row_key": "c07",
-      "text": "她指出，片中有一段要求大雄他們面對為朋友出發的決心；要走到那裡，",
-      "kind": "attributed",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c073",
-      "scene_id": "dr1-c07-p2",
-      "row_key": "c07",
-      "text": "關係本身得先有分量。",
-      "kind": "attributed",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c081",
-      "scene_id": "dr1-c08-p1",
-      "row_key": "c08",
-      "text": "這一回，熟悉的友情沒有替編劇省掉工作，反而是她得重新回答的題目。",
-      "kind": "reasoning",
-      "source_anchors": [
-        "D16"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019A2",
-          "source_raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
-          "source_text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862",
-          "quote_exact_short": "ルカって何ですか",
-          "text_line_1based": 16,
-          "text_line_end_1based": 16,
-          "section": "writer recounts director’s questions about friendship",
-          "url": "https://press.moviewalker.jp/news/article/181228/p2/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "辻村「私は、ゲストキャラのルカとのび太との友情に注目してほしいです。『映画ドラえもん』って友情を描くことが多いので、最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前、と思って書いていたのですが、監督から『のび太たちはどうしてルカたちのために命をかけられるんですか』『のび太にとって、ルカって何ですか』『友情ってなんですか』と、たくさん問いかけを受ける中で、私もただ『友達だから』ではない、のび太とルカだからこその関係性を考えていきました。物語の中盤、そんなのび太たちが友達のために旅立つ決意と覚悟を問われるシーンがあるのですが、そこもぜひ観ていただけたら」"
-        }
-      ],
-      "limits": [
-        "這些是當事人2019說法；不可擴寫為未公開逐稿改動次數、退稿衝突或激烈爭吵。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c082",
-      "scene_id": "dr1-c08-p2",
-      "row_key": "c08",
-      "text": "你可以認識角色很多年，仍要相信他在眼前這一刻作出的選擇。",
-      "kind": "reasoning",
+      "text": "這些追問讓她改從大雄和路卡這一對人物的關係，去思考動機。",
+      "kind": "attributed_work_response",
       "source_anchors": [
         "D16"
       ],
@@ -3475,70 +3261,7 @@
       "id": "d1c091",
       "scene_id": "dr1-c09-p1",
       "row_key": "c09",
-      "text": "我讀到這裡，才覺得新腳本的工作摸得到：選舞台、找入口，還要補足冒險的理由。",
-      "kind": "question",
-      "source_anchors": [
-        "D18",
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "MW2019",
-          "source_raw_sha256": "d3a322f015c763611b9f20d0262c18e8ea2b7155252b226ba4c8edf9db7d83e5",
-          "source_text_sha256": "e615581468f1d727cdbe5a23dae26d022725ae260ea5ea1c202e2adbfebc9c7b",
-          "quote_exact_short": "『尺』",
-          "text_line_1based": 19,
-          "text_line_end_1based": 19,
-          "section": "question on difference between novel and screenplay",
-          "url": "https://press.moviewalker.jp/news/article/181229/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "「『尺』の有無は大きな違い」と明かす辻村撮影/黒羽政士"
-        },
-        {
-          "source_id": "MW2019",
-          "source_raw_sha256": "d3a322f015c763611b9f20d0262c18e8ea2b7155252b226ba4c8edf9db7d83e5",
-          "source_text_sha256": "e615581468f1d727cdbe5a23dae26d022725ae260ea5ea1c202e2adbfebc9c7b",
-          "quote_exact_short": "最終稿",
-          "text_line_1based": 22,
-          "text_line_end_1based": 22,
-          "section": "Mugiwara describes reading final screenplay",
-          "url": "https://press.moviewalker.jp/news/article/181229/",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "むぎわらしんたろう(以下、むぎ)「僕は最終稿で拝読したんですが、辻村先生の脚本は、とても細やかに書かれていて、どういう情景なのかがすぐにイメージできる。八鍬監督も絵にしやすかったと思います」"
-        },
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。",
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1c092",
-      "scene_id": "dr1-c09-p2",
-      "row_key": "c09",
-      "text": "可就算每個理由都想清楚了，把它們全寫成台詞，電影就拍得出來嗎？",
+      "text": "想到角色關係的細節，電影腳本能像小說一樣一直加長嗎？",
       "kind": "question",
       "source_anchors": [
         "D18",
@@ -3696,7 +3419,8 @@
       "text": "如果你在小說裡多留一段，讀者可以停下來慢慢讀；換成電影，",
       "kind": "reasoning",
       "source_anchors": [
-        "D18"
+        "D18",
+        "D19"
       ],
       "evidence": [
         {
@@ -3728,10 +3452,26 @@
           "http_status_observed": 200,
           "retrieval_method": "downloaded origin response; see frozen source receipt",
           "full_located_excerpt": "むぎわらしんたろう(以下、むぎ)「僕は最終稿で拝読したんですが、辻村先生の脚本は、とても細やかに書かれていて、どういう情景なのかがすぐにイメージできる。八鍬監督も絵にしやすかったと思います」"
+        },
+        {
+          "source_id": "TSUJINTERVIEW",
+          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
+          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
+          "quote_exact_short": "このひと言で大丈夫",
+          "text_line_1based": 10,
+          "text_line_end_1based": 10,
+          "section": "screenplay versus novel section",
+          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
+          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
+          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
+          "http_status_observed": 200,
+          "retrieval_method": "downloaded origin response; see frozen source receipt",
+          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
         }
       ],
       "limits": [
-        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。"
+        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。",
+        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
       ],
       "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
     },
@@ -3742,7 +3482,8 @@
       "text": "這段話就佔住所有觀眾同一段時間。",
       "kind": "reasoning",
       "source_anchors": [
-        "D18"
+        "D18",
+        "D19"
       ],
       "evidence": [
         {
@@ -3774,10 +3515,26 @@
           "http_status_observed": 200,
           "retrieval_method": "downloaded origin response; see frozen source receipt",
           "full_located_excerpt": "むぎわらしんたろう(以下、むぎ)「僕は最終稿で拝読したんですが、辻村先生の脚本は、とても細やかに書かれていて、どういう情景なのかがすぐにイメージできる。八鍬監督も絵にしやすかったと思います」"
+        },
+        {
+          "source_id": "TSUJINTERVIEW",
+          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
+          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
+          "quote_exact_short": "このひと言で大丈夫",
+          "text_line_1based": 10,
+          "text_line_end_1based": 10,
+          "section": "screenplay versus novel section",
+          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
+          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
+          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
+          "http_status_observed": 200,
+          "retrieval_method": "downloaded origin response; see frozen source receipt",
+          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
         }
       ],
       "limits": [
-        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。"
+        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。",
+        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
       ],
       "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
     },
@@ -3785,10 +3542,11 @@
       "id": "d1d023",
       "scene_id": "dr1-d02-p2",
       "row_key": "d02",
-      "text": "這是我讀這份訪談時，最能理解她卡住的地方。",
+      "text": "我很好奇，她會怎麼處理那些長台詞？",
       "kind": "reasoning",
       "source_anchors": [
-        "D18"
+        "D18",
+        "D19"
       ],
       "evidence": [
         {
@@ -3820,10 +3578,26 @@
           "http_status_observed": 200,
           "retrieval_method": "downloaded origin response; see frozen source receipt",
           "full_located_excerpt": "むぎわらしんたろう(以下、むぎ)「僕は最終稿で拝読したんですが、辻村先生の脚本は、とても細やかに書かれていて、どういう情景なのかがすぐにイメージできる。八鍬監督も絵にしやすかったと思います」"
+        },
+        {
+          "source_id": "TSUJINTERVIEW",
+          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
+          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
+          "quote_exact_short": "このひと言で大丈夫",
+          "text_line_1based": 10,
+          "text_line_end_1based": 10,
+          "section": "screenplay versus novel section",
+          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
+          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
+          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
+          "http_status_observed": 200,
+          "retrieval_method": "downloaded origin response; see frozen source receipt",
+          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
         }
       ],
       "limits": [
-        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。"
+        "讀最終稿不等於主持全部編劇決策；來源無各版頁數/修改日期，勿自造草稿清單。",
+        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
       ],
       "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
     },
@@ -3864,161 +3638,6 @@
       "row_key": "d03",
       "text": "就足以傳達，只留下較短的一句便可以。",
       "kind": "attributed",
-      "source_anchors": [
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1d041",
-      "scene_id": "dr1-d04-p1",
-      "row_key": "d04",
-      "text": "刪掉話，觀眾會不會反而少懂一點？",
-      "kind": "question",
-      "source_anchors": [
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1d042",
-      "scene_id": "dr1-d04-p1",
-      "row_key": "d04",
-      "text": "還是那些被刪的內容，其實可以交到別人手裡？",
-      "kind": "question",
-      "source_anchors": [
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1d051",
-      "scene_id": "dr1-d05-p1",
-      "row_key": "d05",
-      "text": "這次被接走的，是傳達的工作。",
-      "kind": "reasoning",
-      "source_anchors": [
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1d052",
-      "scene_id": "dr1-d05-p1",
-      "row_key": "d05",
-      "text": "角色怎麼說、畫面怎麼呈現，能把長句原本負責的意思做出來；",
-      "kind": "reasoning",
-      "source_anchors": [
-        "D19"
-      ],
-      "evidence": [
-        {
-          "source_id": "TSUJINTERVIEW",
-          "source_raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
-          "source_text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46",
-          "quote_exact_short": "このひと言で大丈夫",
-          "text_line_1based": 10,
-          "text_line_end_1based": 10,
-          "section": "screenplay versus novel section",
-          "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
-          "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
-          "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
-          "http_status_observed": 200,
-          "retrieval_method": "downloaded origin response; see frozen source receipt",
-          "full_located_excerpt": "小説と脚本の流儀は、まったく違うものでした。たとえば登場人物の長いセリフ。小説では読者に状況や気持ちを伝えるために言葉を尽くしがちですが、映画は違う。「声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です」と監督に指摘されたところが何カ所かありました。その言葉を聞いたとき、小説でできること、そしてアニメでできること、それぞれ得意な部分があるんだなと気が付いたんです。同じアイデアや設定から発信しても、アプローチの仕方がこんなに違うんだと。勉強になることがとてもたくさんありました。"
-        }
-      ],
-      "limits": [
-        "自述媒介改寫的具體動作；本研究沒有拿到修改前後腳本，不可給它們假頁碼或當成逐字對照。"
-      ],
-      "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_SOURCE_REVIEW"
-    },
-    {
-      "id": "d1d053",
-      "scene_id": "dr1-d05-p2",
-      "row_key": "d05",
-      "text": "編劇得替那些表演和畫面空出位置。",
-      "kind": "reasoning",
       "source_anchors": [
         "D19"
       ],
@@ -6839,17 +6458,6 @@
       "actual_image_generated": false
     },
     {
-      "scene_id": "dr1-a04b-p1",
-      "row_key": "a04b",
-      "source_anchors": [
-        "A05"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
       "scene_id": "dr1-a05-p1",
       "row_key": "a05",
       "source_anchors": [
@@ -7335,29 +6943,7 @@
       "actual_image_generated": false
     },
     {
-      "scene_id": "dr1-c05-p2",
-      "row_key": "c05",
-      "source_anchors": [
-        "D16"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
       "scene_id": "dr1-c06-p1",
-      "row_key": "c06",
-      "source_anchors": [
-        "D16"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-c06-p2",
       "row_key": "c06",
       "source_anchors": [
         "D16"
@@ -7390,41 +6976,7 @@
       "actual_image_generated": false
     },
     {
-      "scene_id": "dr1-c08-p1",
-      "row_key": "c08",
-      "source_anchors": [
-        "D16"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-c08-p2",
-      "row_key": "c08",
-      "source_anchors": [
-        "D16"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
       "scene_id": "dr1-c09-p1",
-      "row_key": "c09",
-      "source_anchors": [
-        "D18",
-        "D19"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-c09-p2",
       "row_key": "c09",
       "source_anchors": [
         "D18",
@@ -7461,7 +7013,8 @@
       "scene_id": "dr1-d02-p1",
       "row_key": "d02",
       "source_anchors": [
-        "D18"
+        "D18",
+        "D19"
       ],
       "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
       "written_visual_review": "PENDING_OTHER_REVIEWER",
@@ -7472,7 +7025,8 @@
       "scene_id": "dr1-d02-p2",
       "row_key": "d02",
       "source_anchors": [
-        "D18"
+        "D18",
+        "D19"
       ],
       "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
       "written_visual_review": "PENDING_OTHER_REVIEWER",
@@ -7493,39 +7047,6 @@
     {
       "scene_id": "dr1-d03-p2",
       "row_key": "d03",
-      "source_anchors": [
-        "D19"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-d04-p1",
-      "row_key": "d04",
-      "source_anchors": [
-        "D19"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-d05-p1",
-      "row_key": "d05",
-      "source_anchors": [
-        "D19"
-      ],
-      "kind": "ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_HISTORICAL_RECONSTRUCTION",
-      "written_visual_review": "PENDING_OTHER_REVIEWER",
-      "description": "Only anonymous hands/back views, blank paper/panels, generic tools and unmarked books. No character, silhouette, signature prop, brand/name/logo/readable wording or real likeness. No original art/page/email/film still reproduced.",
-      "actual_image_generated": false
-    },
-    {
-      "scene_id": "dr1-d05-p2",
-      "row_key": "d05",
       "source_anchors": [
         "D19"
       ],
@@ -8093,5 +7614,18 @@
   "research_original_unchanged": true,
   "research_original_claims_sha256": "47b0eb3803241e3ec057eed11a62dd02a1a1d04bf45c0a62575198f294f5c39c",
   "independent_source_review": "PENDING",
+  "unvoiced_background": [
+    {
+      "key": "a04b",
+      "ch": "a",
+      "refs": [
+        "A05"
+      ],
+      "kind": "fact",
+      "text": "藤本弘曾和安孫子素雄共用「藤子不二雄」筆名；一九八七年拆夥後，才以藤子・Ｆ・不二雄活動。",
+      "action": "putting two plain blank author folders into distinct archive slots",
+      "reason": "移出旁白；身份界線保留在claims，原作者已由d1a031指認。"
+    }
+  ],
   "cached_source_notice": "D03 uses the retained official interview SEARCH EXTRACTION, origin HTTP503; no origin HTML200 or 1996 serial pages claimed."
 }

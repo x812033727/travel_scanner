@@ -1,4 +1,4 @@
-# Doraemon R2逐句來源與書面配鏡
+# Doraemon R4逐句來源與書面配鏡
 
 作者建立的待審映射，沒有CONFIRMED/PASS或獨立查核效力。完整原語短引、LF定位、raw/text精確SHA及HTTP層級在source-anchors-r1.json；claims.json將它們逐句展開。
 
@@ -22,8 +22,6 @@
 | d1a032 | D01, D03 | attributed |
 | d1a033 | D01, D03 | attributed |
 | d1a041 | D03, D32 | boundary |
-| d1a04b1 | A05 | fact |
-| d1a04b2 | A05 | fact |
 | d1a051 | D06, D07 | question |
 | d1a061 | D06, D07 | fact |
 | d1a062 | D06, D07 | fact |
@@ -49,7 +47,7 @@
 | d1b072 | D13, D15 | attributed |
 | d1b073 | D13, D15 | attributed |
 | d1b081 | D14 | attributed |
-| d1b082 | D14 | attributed |
+| d1b082 | D14, D15 | attributed |
 | d1b091 | D13, D14 | reasoning |
 | d1b092 | D13, D14 | reasoning |
 | d1b101 | D15 | question |
@@ -71,30 +69,18 @@
 | d1c042 | A02 | opinion |
 | d1c043 | A02 | opinion |
 | d1c051 | D16 | question |
-| d1c052 | D16 | question |
-| d1c061 | D16 | attributed |
-| d1c062 | D16 | attributed |
-| d1c063 | D16 | attributed |
-| d1c064 | D16 | attributed |
-| d1c071 | D16 | attributed |
-| d1c072 | D16 | attributed |
-| d1c073 | D16 | attributed |
-| d1c081 | D16 | reasoning |
-| d1c082 | D16 | reasoning |
+| d1c061 | D16 | attributed_work_requirement |
+| d1c062 | D16 | attributed_work_requirement |
+| d1c071 | D16 | attributed_work_response |
+| d1c072 | D16 | attributed_work_response |
 | d1c091 | D18, D19 | question |
-| d1c092 | D18, D19 | question |
 | d1d011 | D18 | attributed |
 | d1d012 | D18 | attributed |
-| d1d021 | D18 | reasoning |
-| d1d022 | D18 | reasoning |
-| d1d023 | D18 | reasoning |
+| d1d021 | D18, D19 | reasoning |
+| d1d022 | D18, D19 | reasoning |
+| d1d023 | D18, D19 | reasoning |
 | d1d031 | D19 | attributed |
 | d1d032 | D19 | attributed |
-| d1d041 | D19 | question |
-| d1d042 | D19 | question |
-| d1d051 | D19 | reasoning |
-| d1d052 | D19 | reasoning |
-| d1d053 | D19 | reasoning |
 | d1d061 | D21, A03 | attributed |
 | d1d062 | D21, A03 | attributed |
 | d1d063 | D21, A03 | attributed |
@@ -157,6 +143,8 @@
 ## 來源邊界
 
 D03僅取得CoroCoro官方對談的搜尋工具快取，origin本輪HTTP503；不能寫成取得原HTML200，亦不是已讀1996逐頁原件。D04/D05為2017回憶書特設頁的第一人稱留言，不是同期臨終紀錄。D06–D09分清回憶出版、劇場、單行本與電子配信；沒有讀完整130頁回憶書。D29只引用官方附件介紹，沒有讀160頁縮印腳本。角色雖為fiction，本片的製作經歷按非虛構處理。沒有臨終命令、逐頁上墨/ネーム邊界、AI/欺詐代筆或單一總接班人的推斷。
+
+A05身份／筆名沿革只留不口播的背景錨點；原作者已由a03辨認。R3 c05–c07只交代導演工作要求與當事人實際回應，不承諾解答電影友情或補寫電影情節。
 
 A01–A07是本輪作者從已保全原語raw新增的精確定位，未改研究三檔，也不是新增獨立來源判定。所有意見、假設與敘事連接都按kind明列；旁白不冒充當事人未公開心理。
 

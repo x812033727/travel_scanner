@@ -1,9 +1,7 @@
 {
-  "schema_version": 1,
-  "role": "AUTHOR_BYTE_INTEGRITY_ONLY_NOT_INDEPENDENT_SOURCE_VERDICT",
-  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
-  "before_receipt": "/workspace/work/brand-story-20261025/doraemon-audit/author-protected-before.json",
-  "before_receipt_sha256": "a012a9ac3e2c11cd06157d8244497e005d950f5eead787f876296799ef862507",
+  "role": "AUTHOR_BYTE_INTEGRITY_ONLY",
+  "revision": "doraemon-r4",
+  "protected_before_receipt_sha256": "1b0626776503564a89ceabba0739dd7524c44cd63947cb34c9002993f8b809c0",
   "protected_files": [
     {
       "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/research-original.md",
@@ -1271,34 +1269,78 @@
       "kind": "old_backend_snapshot"
     }
   ],
-  "all_existing_protected_bytes_unchanged": true,
-  "protected_file_count": 213,
-  "frozen_research_files": 3,
+  "all_213_unchanged": true,
+  "raw_downloads_unchanged": 42,
+  "research_files_unchanged": 3,
   "old_related_originals_unchanged": 9,
   "old_backend_snapshot_unchanged": true,
-  "download_inventory": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/raw-inventory.json",
-  "download_inventory_sha256": "407e6a12e56c6ecb04e08a5d414c1cafed1d7d970ffe090391f13719119ff04b",
-  "raw_download_inventory_items": 42,
-  "cached_extractions": 3,
-  "recorded_inventory_hash_bindings_checked": 176,
-  "old_readonly_snapshot_modes_0400": true,
-  "old_paid_media_locally_readable": false,
-  "old_paid_media_preserved_claim": false,
-  "dictionary": {
-    "root": "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon",
-    "version_count": 1,
-    "event_count": 1,
-    "version_files_sha256": {
-      "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/versions/90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184.json": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184"
-    },
-    "current_sha256": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644",
-    "normal_initialize_helper": "../prepare-runtime.mjs",
-    "independent_pronunciation_approval": "PENDING"
+  "all_r1_r2_r3_archived_files_hash_checked": true,
+  "previous_external_files": {
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/runtime-manifest.json": "9713e8066de6c0d27b8ac12f6d10d2ca06cb7f8dae6d458ca6c76d4e5976ec37",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/lexicon.json": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/video.json": "aaa7b3a656501a378f8a3630a3e3a103d826afd29d240fab53f6ab0cd7198ad7",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/script.md": "7e6d48f3443c8389f5a73df3a0a35ab937445238da0a3d04c69e2e642718da3d",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/series.json": "90640e2789fc496933e2b306443c9bcf2b5aca3a3d480ccfae0a0229c881cd79",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/brief.md": "e6d82f987cab1fd7ec1f4c6bd7cd882deea069432c6c9260dd8c02124dd83ade",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/claims.md": "0ae2b6592116d4d35bb144481d46c8df2d742d0b124eb25064f187ef74751e54",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/current.json": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/versions/90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184.json": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/events/abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e.json": "abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/ordinary-lint-r3.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/author-freeze-r3.json": "f9c95aea48516867a84e03745c5e12f2353f7d301d62c7dddbc1f39d9e1c8e0d",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/ordinary-free-planner-r3.txt": "3d5c07b41561c23cb92c8009d31f5d9e2929bb17333759ac0f5ed908f25fd09e",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-checks-r3.json": "c8b3a27bdb51494ff63c3d66fb4490984072c6284a53cfab125b37ce033fee9f",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-lint-preflight-01.json": "9a986da50e22abd99b6684648a2f7f461e3dc1c3ef9209502aad319cadce1496",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/speech-request-plan-r3.json": "a0e365b8db3876c2b27c8340fc79b374743d7f9a4415f488562c81fe6e1a50dc",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/protected-before-r3.json": "de139db032ea579c03743b50ce98ef81866b5cab1cc08c5892f340992b281530",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/lexicon.json": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/video.json": "811e22425335dcfc63712d77a05583aceaeac476a30e24a8b30be1f8c50a3700",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/script.md": "1ce1666231c551d7405c4999b5883d2aa8704b6c999a2a0857c5e31b9f062dd4",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/series.json": "90640e2789fc496933e2b306443c9bcf2b5aca3a3d480ccfae0a0229c881cd79",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/brief.md": "2e3124fe8897f367fb87e39e632ea7a0eafa0c3a95e65911cf23c4c2269bdd58",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/claims.md": "e3a934ef6c1209a9aceffc64c40d9e48b9573f05aed9b6db5b75483686ae5864",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/current.json": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/versions/90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184.json": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184",
+    "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/events/abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e.json": "abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/blind-a.raw.json": "ee2ee9f8fc12e509c3bc4b2d8187426357ec7db9b72950a2ba74aaa3b2418558",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/blind-input.json": "dc465349c3c60d146e2b36bbf3765b5537b83a8c10aa672b5a5b7ae5f571a845",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/narrative-r1.json": "1c22ecdc0ad2df2b6ce2bb96496f785bb577986a9cadba4e69a82d2724d508b1",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/blind-binding.json": "3f9a247794115857dee4ddb5776ecd9cd9aafe29e28fd11e24f5a022e329b123",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/blind-instructions.txt": "2a2c87c37aada594ce6766de2a2bc9ef606f8ba539b84a8aad9907b416bfe587",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-1/blind-b.raw.json": "83f1cf585f4bd4f8cfa6b9190b898fb8241c2a4e533cedfc5b8c89b03d9483f3",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/blind-a.raw.json": "115b16eaecb61169d57d434bd5a257d1508a8908d9db4c4fe9e2999d926ed829",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/blind-input.json": "d9694a6a0027c40ce490adbc059a04d80e4655baf3e186c6790ab15136b62e87",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/blind-binding.json": "ba32ed1f158cd087eb6674dae0f4d595d8c89ac52fe932b835440e2be9209152",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/narrative-r2.json": "717113863edbea397ce6dde0e60f28ee6830f74b8171cd176b1a664957d6215a",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/blind-instructions.txt": "2a2c87c37aada594ce6766de2a2bc9ef606f8ba539b84a8aad9907b416bfe587",
+    "/workspace/work/brand-story-20261025/doraemon-audit/round-2/blind-b.raw.json": "03a7e20d476b51ef2fd198eb55f8a271856b0168c990c1e01a06a16062bf828e"
   },
-  "new_network_raw_downloads": 0,
-  "old_raw_rewritten": false,
-  "approvals_created": 0,
-  "backend_calls": 0,
-  "paid_calls": 0,
-  "git_mutations": 0
+  "all_previous_runtime_and_round1_round2_files_unchanged": true,
+  "old_paid_media_readable": false,
+  "old_paid_media_preserved_claim": false,
+  "original_dictionary_versions": 1,
+  "original_dictionary_events": 1,
+  "dictionary_reinitialized": false,
+  "free_runtime_dictionary_copies": [
+    {
+      "source": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/history/r3/runtime-state/docs/videos/lexicon.json",
+      "target": "/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime/docs/videos/lexicon.json",
+      "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+    },
+    {
+      "source": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/history/r3/runtime-state/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/current.json",
+      "target": "/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/current.json",
+      "sha256": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644"
+    },
+    {
+      "source": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/history/r3/runtime-state/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/events/abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e.json",
+      "target": "/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/events/abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e.json",
+      "sha256": "abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e"
+    },
+    {
+      "source": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/history/r3/runtime-state/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/versions/90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184.json",
+      "target": "/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/versions/90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184.json",
+      "sha256": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184"
+    }
+  ]
 }

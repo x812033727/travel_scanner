@@ -1,0 +1,1925 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-garmin-r4-independent-source",
+  "review_role": "Independent SOURCE and written visual delta QA; not author or native blind reader",
+  "reviewed_at_utc": "2026-10-26T06:55:17.417736+00:00",
+  "revision": "garmin-r4",
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "production_readiness": "HOLD_DURATION_CAPACITY_AND_REMAINING_GATES",
+  "input_sha256": {
+    "video.json": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+    "script.md": "11d641fb44ffec1c3d1b68804aa08d448a91f6cf20e6540307331c9b29b4e775",
+    "narration-only.json": "c732c76b9aa0e04425caa98a4ace36f6b89356047c2c8eb48ca1592c4ca39413",
+    "claims.json": "70c18d4aaa5fd5d53d2f82195ebe5bc6afdce16f0a17e59784a3e362b8ba6069",
+    "author-freeze-r4.json": "6634f7b929fadd2e036aa00340fa8aff512060c532cd7a0d455989f990f80d40",
+    "changes-r4.json": "d03deda4716a943fa667c4a58a116747bde15295ba7b24e9c884cced832d92df"
+  },
+  "prior_source_review": {
+    "path": "../history/r3/reviews/source-r3-independent.json",
+    "sha256": "826233023c260ed4ba9f9e7deb1aec899ff259cf81e40bede167fa6ce33f6c60",
+    "verdict": "PASS",
+    "prior_marker_sha256": "4c853badfbe0c350a36be5729c5938646f91b1ac37bb67a7d281c5c125470e65",
+    "inheritance": "133 complete author rows, all retained scene data, all source evidence objects, registry and limits are exact R3. Only the two merged sentences and reordered opening receive new semantic delta review. Unchanged material inherits the hash-bound R3 complete review; this is not represented as a fresh cover-to-cover rereading of every source."
+  },
+  "coverage": {
+    "current_lines": 135,
+    "scenes": 133,
+    "shot_prompts": 132,
+    "outro_scenes": 1,
+    "changed_text_count": 2,
+    "changed_text_ids": [
+      "gr1a15",
+      "gr1d01"
+    ],
+    "removed_narration_count": 2,
+    "removed_narration_ids": [
+      "gr1a16",
+      "gr1d02"
+    ],
+    "new_narration_ids": [],
+    "opening_order_before": [
+      "gr1h01",
+      "gr1h02",
+      "gr1h03",
+      "gr1h04"
+    ],
+    "opening_order_after": [
+      "gr1h01",
+      "gr1h03",
+      "gr1h02",
+      "gr1h04"
+    ],
+    "opening_four_complete_rows_byte_exact_R3": true,
+    "all_other_retained_row_order_exact_R3": true,
+    "unchanged_complete_author_row_count": 133,
+    "unchanged_complete_author_row_ids": [
+      "gr1h01",
+      "gr1h03",
+      "gr1h02",
+      "gr1h04",
+      "gr1h05",
+      "gr1h06",
+      "gr1h07",
+      "gr1h08",
+      "gr1s01",
+      "gr1s02",
+      "gr1s03",
+      "gr1s04",
+      "gr1s05",
+      "gr1s06",
+      "gr1s07",
+      "gr1s08",
+      "gr1s09",
+      "gr1s10",
+      "gr1s11",
+      "gr1s12",
+      "gr1s13",
+      "gr1s14",
+      "gr1s15",
+      "gr1s16",
+      "gr1s17",
+      "gr1s18",
+      "gr1s19",
+      "gr1s20",
+      "gr1s21",
+      "gr1s22",
+      "gr1s23",
+      "gr1s24",
+      "gr1s25",
+      "gr1s26",
+      "gr1s28",
+      "gr1p01",
+      "gr1p02",
+      "gr1p03",
+      "gr1p04",
+      "gr1p05",
+      "gr1p06",
+      "gr1p07",
+      "gr1p08",
+      "gr1p10",
+      "gr1p11",
+      "gr1p12",
+      "gr1p13",
+      "gr1p14",
+      "gr1p15",
+      "gr1p16",
+      "gr1p17",
+      "gr1p18",
+      "gr1p19",
+      "gr1p20",
+      "gr1p22",
+      "gr1p23",
+      "gr1p25",
+      "gr1r01",
+      "gr1r03",
+      "gr1r04",
+      "gr1r06",
+      "gr1r07",
+      "gr1r08",
+      "gr1r09",
+      "gr1r10",
+      "gr1r11",
+      "gr1r12",
+      "gr1r13",
+      "gr1r14",
+      "gr1r15",
+      "gr1r16",
+      "gr1r17",
+      "gr1r18",
+      "gr1r19",
+      "gr1r20",
+      "gr1r22",
+      "gr1a01",
+      "gr1a03",
+      "gr1a04",
+      "gr1a05",
+      "gr1a06",
+      "gr1a07",
+      "gr1a08",
+      "gr1a09",
+      "gr1a11",
+      "gr1a12",
+      "gr1a13",
+      "gr1a14",
+      "gr1a17",
+      "gr1a18",
+      "gr1a19",
+      "gr1a20",
+      "gr1a21",
+      "gr1a23",
+      "gr1a24",
+      "gr1a26",
+      "gr1a27",
+      "gr1d03",
+      "gr1d04",
+      "gr1d06",
+      "gr1d07",
+      "gr1d08",
+      "gr1d09",
+      "gr1d10",
+      "gr1d11",
+      "gr1d12",
+      "gr1d14",
+      "gr1d15",
+      "gr1d16",
+      "gr1d17",
+      "gr1d18",
+      "gr1d19",
+      "gr1d20",
+      "gr1d21",
+      "gr1d24",
+      "gr1v01",
+      "gr1v02",
+      "gr1v03",
+      "gr1v04",
+      "gr1v05",
+      "gr1v06",
+      "gr1v07",
+      "gr1v08",
+      "gr1v09",
+      "gr1v10",
+      "gr1v11",
+      "gr1v12",
+      "gr1v13",
+      "gr1v14",
+      "gr1v15",
+      "gr1f07",
+      "gr1f08",
+      "gr1f09"
+    ],
+    "strict_restore_entire_R3_video_object": true,
+    "all_video_script_narration_claims_json_claims_md_id_text_equal": true,
+    "used_anchor_groups": 35,
+    "used_anchor_ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16",
+      "G17",
+      "G18",
+      "G19",
+      "G20",
+      "G21"
+    ],
+    "historical_anchor_groups_preserved": 38,
+    "retired_from_current_but_preserved": [
+      "G33",
+      "G34",
+      "G35"
+    ],
+    "all_current_source_evidence_objects_and_registry_exact_R3": true,
+    "all40_current_evidence_hash_quote_LF_locator_PDF_page_checks_passed": true,
+    "new_raw_sources": 0,
+    "unreviewed_rows": []
+  },
+  "text_and_source_context_delta_checks": [
+    {
+      "id": "gr1a15",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G19"
+      ],
+      "original": "MAN305 PDF page 7 / printed page 3, LF156; original PDF newly rendered and visually inspected.",
+      "reason": "The manual explicitly says the heart-rate monitor works with Forerunner 305 only. The merged sentence remains limited to this manual's chest strap and the contemporary 205/305 comparison, not all straps or all models. The retained booklet prompt illustrates the attributed manual statement without drawing a branded device."
+    },
+    {
+      "id": "gr1d01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "original": "MAN305 PDF page 50 / printed page 46, LF1281–1286; original PDF newly rendered and visually inspected.",
+      "reason": "Default Smart Recording and key changes of direction, speed or heart rate are explicit in the manual. Merging the two source-supported sentences adds no algorithm or performance guarantee. The unchanged wordless device-button illustration remains illustrative."
+    },
+    {
+      "id": "gr1h01/gr1h03/gr1h02/gr1h04",
+      "verdict": "SUPPORTED_CONTEXT_REORDER",
+      "anchors": [
+        "G07",
+        "G08",
+        "G05"
+      ],
+      "original": "MAN201 original PDF pages 2, 13–14 / printed pages 1–2; PDF14 visually inspected, original PDF extraction newly repeated for pages 13–14.",
+      "reason": "All four texts are byte-exact R3 rows. Moving h03 to second exposes the existing possible first-acquisition 15–30 minute cost; h02 still attributes the sequence to the February 2006 revision (LF33, Rev F), rather than a reported historical runner or launch firmware. The current request remains a manual demonstration. The outdoor-waiting and blank-booklet prompts still match their own line contexts."
+    },
+    {
+      "id": "gr1s13/gr1s14/gr1s21",
+      "verdict": "UNCHANGED_SCOPE_CONFIRMED",
+      "anchors": [
+        "A09",
+        "G07"
+      ],
+      "original": "MAN201 original PDF page 12 / printed page xii, LF269–271; PDF14 LF315–323.",
+      "reason": "Long storage with a fully discharged battery and may/up to 30 minutes remain together in s13/s14. This charging condition is separate from initial 15–30 minute satellite acquisition. s21 still distinguishes subsequent acquisition, usually less than a couple of minutes; no every-power-on half-hour claim appears."
+    },
+    {
+      "id": "gr1d03/gr1d04/gr1d06",
+      "verdict": "UNCHANGED_SCOPE_CONFIRMED",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "original": "MAN305 PDF50 LF1291–1305 versus PDF68 LF1738–1740.",
+      "reason": "The up-to-3.5-hour limit remains detailed-history recording capacity under Every Second. Typical 10-hour battery life remains a separate specification; the merged Smart Recording sentence does not conflate them."
+    },
+    {
+      "id": "gr1v01/gr1v02",
+      "verdict": "UNCHANGED_ATTRIBUTION_CONFIRMED",
+      "anchors": [
+        "A10"
+      ],
+      "original": "Original author-owned DCR2007 HTML/text, body LF72–74 reread; raw 1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4.",
+      "reason": "363 is the named reviewer's runs as of June 2009, separate from 112 rides and 24 swims. The major update is June 25, 2009; the November 2007 publication date does not date all observations. Self-report and historical-software scope remain intact; no controlled test or all-model reception guarantee is claimed."
+    }
+  ],
+  "must_fix": [],
+  "structure_and_written_visual": {
+    "all_global_video_fields_except_scenes_exact_R3": true,
+    "scene_ids_removed": [
+      "gr1a16",
+      "gr1d02"
+    ],
+    "new_scene_ids": [],
+    "scene_membership_changes": [],
+    "all_retained_prompt_camera_data_exact_R3": true,
+    "affected_scene_prompt_contexts_reconciled": [
+      "gr1h01",
+      "gr1h03",
+      "gr1h02",
+      "gr1a15",
+      "gr1d01"
+    ],
+    "written_context_assessment": "The reordered opening keeps anonymous button, waiting and blank-manual illustrations with their own text. The chest-strap compatibility sentence remains an attributed manual/booklet demonstration; the Smart Recording merge remains a wordless button/display illustration. No measured plot, actual product reconstruction, authentic historical scene or named likeness is requested. All other prompts inherit exact R3 written visual review.",
+    "all132_shot_prompts_english_ascii_no_registered_brand_product_person_names": true,
+    "readable_text_logo_real_likeness_or_copyright_character_requested": false,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "cast": [],
+    "all132_shots_still": true,
+    "loops_current": 35,
+    "loops_exact_R3": true,
+    "all_endpoints_exist_and_payoff_follows_setup": true,
+    "all35_loop_setup_payoff_texts_and_what_read_in_current_order": true,
+    "loop_scope": "All current loop endpoints and their source-supported premises remain valid after the two removals. Charging delay, subsequent acquisition, sensor identification/distance, detailed-history capacity, historical-course reuse and named DCR self-report stay within their respective source scopes. No cadence or narrative score is awarded."
+  },
+  "rows": [
+    {
+      "id": "gr1h01",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_WITH_R4_OPENING_CONTEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h01"
+    },
+    {
+      "id": "gr1h03",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_WITH_R4_OPENING_CONTEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h03"
+    },
+    {
+      "id": "gr1h02",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_WITH_R4_OPENING_CONTEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h02"
+    },
+    {
+      "id": "gr1h04",
+      "anchors": [
+        "G05",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_WITH_R4_OPENING_CONTEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h04"
+    },
+    {
+      "id": "gr1h05",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h05"
+    },
+    {
+      "id": "gr1h06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h06"
+    },
+    {
+      "id": "gr1h07",
+      "anchors": [
+        "G01",
+        "G14",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h07"
+    },
+    {
+      "id": "gr1h08",
+      "anchors": [
+        "G06",
+        "G09",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h08"
+    },
+    {
+      "id": "gr1s01",
+      "anchors": [
+        "G01",
+        "G02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s01"
+    },
+    {
+      "id": "gr1s02",
+      "anchors": [
+        "G02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s02"
+    },
+    {
+      "id": "gr1s03",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s03"
+    },
+    {
+      "id": "gr1s04",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s04"
+    },
+    {
+      "id": "gr1s05",
+      "anchors": [
+        "G04",
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s05"
+    },
+    {
+      "id": "gr1s06",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s06"
+    },
+    {
+      "id": "gr1s07",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s07"
+    },
+    {
+      "id": "gr1s08",
+      "anchors": [
+        "G05",
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s08"
+    },
+    {
+      "id": "gr1s09",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s09"
+    },
+    {
+      "id": "gr1s10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s10"
+    },
+    {
+      "id": "gr1s11",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s11"
+    },
+    {
+      "id": "gr1s12",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s12"
+    },
+    {
+      "id": "gr1s13",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s13"
+    },
+    {
+      "id": "gr1s14",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s14"
+    },
+    {
+      "id": "gr1s15",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s15"
+    },
+    {
+      "id": "gr1s16",
+      "anchors": [
+        "G06",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s16"
+    },
+    {
+      "id": "gr1s17",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s17"
+    },
+    {
+      "id": "gr1s18",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s18"
+    },
+    {
+      "id": "gr1s19",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s19"
+    },
+    {
+      "id": "gr1s20",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s20"
+    },
+    {
+      "id": "gr1s21",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s21"
+    },
+    {
+      "id": "gr1s22",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s22"
+    },
+    {
+      "id": "gr1s23",
+      "anchors": [
+        "G06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s23"
+    },
+    {
+      "id": "gr1s24",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s24"
+    },
+    {
+      "id": "gr1s25",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s25"
+    },
+    {
+      "id": "gr1s26",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s26"
+    },
+    {
+      "id": "gr1s28",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s28"
+    },
+    {
+      "id": "gr1p01",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p01"
+    },
+    {
+      "id": "gr1p02",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p02"
+    },
+    {
+      "id": "gr1p03",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p03"
+    },
+    {
+      "id": "gr1p04",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p04"
+    },
+    {
+      "id": "gr1p05",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p05"
+    },
+    {
+      "id": "gr1p06",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p06"
+    },
+    {
+      "id": "gr1p07",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p07"
+    },
+    {
+      "id": "gr1p08",
+      "anchors": [
+        "G10",
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p08"
+    },
+    {
+      "id": "gr1p10",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p10"
+    },
+    {
+      "id": "gr1p11",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p11"
+    },
+    {
+      "id": "gr1p12",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p12"
+    },
+    {
+      "id": "gr1p13",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p13"
+    },
+    {
+      "id": "gr1p14",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p14"
+    },
+    {
+      "id": "gr1p15",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p15"
+    },
+    {
+      "id": "gr1p16",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p16"
+    },
+    {
+      "id": "gr1p17",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p17"
+    },
+    {
+      "id": "gr1p18",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p18"
+    },
+    {
+      "id": "gr1p19",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p19"
+    },
+    {
+      "id": "gr1p20",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p20"
+    },
+    {
+      "id": "gr1p22",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p22"
+    },
+    {
+      "id": "gr1p23",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p23"
+    },
+    {
+      "id": "gr1p25",
+      "anchors": [
+        "G13",
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p25"
+    },
+    {
+      "id": "gr1r01",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r01"
+    },
+    {
+      "id": "gr1r03",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r03"
+    },
+    {
+      "id": "gr1r04",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r04"
+    },
+    {
+      "id": "gr1r06",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r06"
+    },
+    {
+      "id": "gr1r07",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r07"
+    },
+    {
+      "id": "gr1r08",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r08"
+    },
+    {
+      "id": "gr1r09",
+      "anchors": [
+        "G13",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r09"
+    },
+    {
+      "id": "gr1r10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r10"
+    },
+    {
+      "id": "gr1r11",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r11"
+    },
+    {
+      "id": "gr1r12",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r12"
+    },
+    {
+      "id": "gr1r13",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r13"
+    },
+    {
+      "id": "gr1r14",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r14"
+    },
+    {
+      "id": "gr1r15",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r15"
+    },
+    {
+      "id": "gr1r16",
+      "anchors": [
+        "G15",
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r16"
+    },
+    {
+      "id": "gr1r17",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r17"
+    },
+    {
+      "id": "gr1r18",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r18"
+    },
+    {
+      "id": "gr1r19",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r19"
+    },
+    {
+      "id": "gr1r20",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r20"
+    },
+    {
+      "id": "gr1r22",
+      "anchors": [
+        "G06",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r22"
+    },
+    {
+      "id": "gr1a01",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a01"
+    },
+    {
+      "id": "gr1a03",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a03"
+    },
+    {
+      "id": "gr1a04",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a04"
+    },
+    {
+      "id": "gr1a05",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a05"
+    },
+    {
+      "id": "gr1a06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a06"
+    },
+    {
+      "id": "gr1a07",
+      "anchors": [
+        "G16",
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a07"
+    },
+    {
+      "id": "gr1a08",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a08"
+    },
+    {
+      "id": "gr1a09",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a09"
+    },
+    {
+      "id": "gr1a11",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a11"
+    },
+    {
+      "id": "gr1a12",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a12"
+    },
+    {
+      "id": "gr1a13",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a13"
+    },
+    {
+      "id": "gr1a14",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a14"
+    },
+    {
+      "id": "gr1a15",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R4_MERGED_TEXT_ORIGINAL_MANUAL_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a15"
+    },
+    {
+      "id": "gr1a17",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a17"
+    },
+    {
+      "id": "gr1a18",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a18"
+    },
+    {
+      "id": "gr1a19",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a19"
+    },
+    {
+      "id": "gr1a20",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a20"
+    },
+    {
+      "id": "gr1a21",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a21"
+    },
+    {
+      "id": "gr1a23",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a23"
+    },
+    {
+      "id": "gr1a24",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a24"
+    },
+    {
+      "id": "gr1a26",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a26"
+    },
+    {
+      "id": "gr1a27",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a27"
+    },
+    {
+      "id": "gr1d01",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R4_MERGED_TEXT_ORIGINAL_MANUAL_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d01"
+    },
+    {
+      "id": "gr1d03",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d03"
+    },
+    {
+      "id": "gr1d04",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d04"
+    },
+    {
+      "id": "gr1d06",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d06"
+    },
+    {
+      "id": "gr1d07",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d07"
+    },
+    {
+      "id": "gr1d08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d08"
+    },
+    {
+      "id": "gr1d09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d09"
+    },
+    {
+      "id": "gr1d10",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d10"
+    },
+    {
+      "id": "gr1d11",
+      "anchors": [
+        "G20",
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d11"
+    },
+    {
+      "id": "gr1d12",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d12"
+    },
+    {
+      "id": "gr1d14",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d14"
+    },
+    {
+      "id": "gr1d15",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d15"
+    },
+    {
+      "id": "gr1d16",
+      "anchors": [
+        "A08",
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d16"
+    },
+    {
+      "id": "gr1d17",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d17"
+    },
+    {
+      "id": "gr1d18",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d18"
+    },
+    {
+      "id": "gr1d19",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d19"
+    },
+    {
+      "id": "gr1d20",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d20"
+    },
+    {
+      "id": "gr1d21",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d21"
+    },
+    {
+      "id": "gr1d24",
+      "anchors": [
+        "G20",
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d24"
+    },
+    {
+      "id": "gr1v01",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v01"
+    },
+    {
+      "id": "gr1v02",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v02"
+    },
+    {
+      "id": "gr1v03",
+      "anchors": [
+        "A10",
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v03"
+    },
+    {
+      "id": "gr1v04",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v04"
+    },
+    {
+      "id": "gr1v05",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v05"
+    },
+    {
+      "id": "gr1v06",
+      "anchors": [
+        "G11",
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v06"
+    },
+    {
+      "id": "gr1v07",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v07"
+    },
+    {
+      "id": "gr1v08",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v08"
+    },
+    {
+      "id": "gr1v09",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v09"
+    },
+    {
+      "id": "gr1v10",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v10"
+    },
+    {
+      "id": "gr1v11",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v11"
+    },
+    {
+      "id": "gr1v12",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v12"
+    },
+    {
+      "id": "gr1v13",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v13"
+    },
+    {
+      "id": "gr1v14",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v14"
+    },
+    {
+      "id": "gr1v15",
+      "anchors": [
+        "A13",
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v15"
+    },
+    {
+      "id": "gr1f07",
+      "anchors": [
+        "G06",
+        "G09",
+        "G13",
+        "G16",
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    },
+    {
+      "id": "gr1f08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    },
+    {
+      "id": "gr1f09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE_AFTER_HASH_AND_PROJECTION_CHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    }
+  ],
+  "reuse_plan": {
+    "plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+    "complete_pair_tuples_exact_R3": true,
+    "full_Stage_imageKey_recomputed": true,
+    "key_dimensions": "composed prompt, camera, resolved look, cast, provider/model, negative, width/height, seed/offset, references, image selection version, fixes and prompt limit checked; declared plan parameters, not a live backend readback.",
+    "pairs": [
+      {
+        "payoff": "gr1p12",
+        "teaser": "gr1h05",
+        "both_endpoints_key": "6a8adb8315a70678",
+        "composed_prompt_sha256": "3298c402b00e905c067ccc828258c921f83571ef8c0dfa70d468e97c606c4de7"
+      },
+      {
+        "payoff": "gr1a03",
+        "teaser": "gr1h06",
+        "both_endpoints_key": "6ece2406bc7cd130",
+        "composed_prompt_sha256": "597e908835ecee71d0d71939a919fd64594dde461496e9ff168c1ef1ab0f1847"
+      }
+    ],
+    "code_files_sha256_rechecked": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+    },
+    "actual_same_asset_verified": false,
+    "required_execution_after_normal_admission": "Payoff first with takes 1. Before any teaser command, readCache plus official selected manifest and final cropped bytes SHA must confirm the live key and file. Cache miss, missing file, changed request, retake or hash mismatch stops the pair before a paid dispatch. Both endpoints require their ordinary judge and the same final selected file/SHA after trimming. Planned keys are not actual assets.",
+    "production_commands_executed": false
+  },
+  "preservation": {
+    "independent_hash_comparison_set": 503,
+    "mismatches": [],
+    "protected_before_manifest_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r4/protected-before.json",
+    "protected_before_manifest_sha256": "8a73f7387c79d05966ed7522b84de546ab08a15b1b220d9b0879d691c01fe64b",
+    "all484_protected_baseline_files_rehashed_unchanged": true,
+    "all_original328_baseline_files_independently_rehashed_unchanged": true,
+    "original_research_files": 3,
+    "related_originals_and_snapshots": 9,
+    "original_backend_snapshot_rehashed": true,
+    "original_raw_cache_items": 57,
+    "original_raw_inventory_sha256": "6c998e231490357dc55120f2d0d5650c830500e78f5a018cd39043e4357eda8d",
+    "history_r1_all_files_rehashed_and_exact_inventory": 31,
+    "history_r2_all_files_rehashed_and_exact_inventory": 61,
+    "history_r3_all_files_rehashed_and_exact_inventory": 74,
+    "r3_archive_manifest_sha256": "04bb092e86d440df28ab0bb6993dcaca5705556f6565ae866b007c52fe260279",
+    "dictionary_files": 3,
+    "dictionary_sequence": 1,
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "dictionary_rebuilt_or_published": false,
+    "native_and_blind_artifacts_hashed_only": true,
+    "legacy_paid_media_preserved_claim": false
+  },
+  "actual_runtime_binding": {
+    "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+    "path_evidence": "Read from current preflight and independently read back the actual normal runtime files.",
+    "runtime_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+    "canonical_runtime_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+    "immutable_dictionary_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "dictionary_current_sequence": 1,
+    "source_runtime_video_identical": true,
+    "runtime_written_or_rebuilt_by_reviewer": false
+  },
+  "normal_checks": {
+    "lint": {
+      "command": "node docs/videos/brand-story-remakes-20261025/runtime-cli.mjs /workspace/work/brand-story-20261025/garmin-submission-root lint --slug story-garmin-smartphone-pivot-worker-2026-remake-20261025 --json",
+      "exit_code": 0,
+      "errors": 0,
+      "soft_warnings": 4,
+      "spoken_units": 2877,
+      "estimated_minutes": 13.775,
+      "soft_warning_scope": "adult 123, wrist 113, device 100 of 132 pictures; 305 named in five lines. These soft warnings remain visible and do not become source errors or an actual narrative/media finding.",
+      "receipt_sha256": "075b1016b666739799be6518e2651c3a8092d5006e4e946e5206fa22b94ad5fb"
+    },
+    "facts": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND",
+      "rows": 135,
+      "complete_current_line_ids_ordered": true
+    },
+    "marker": {
+      "path": "../verify-1.md",
+      "sha256": "c9e92607a5bd74c434785afb189276d6d3044b622988d7e1e8e6e53f3a78c34e",
+      "rows": 135,
+      "normal_facts_parser_passed": true,
+      "all_current_line_ids_in_order": true
+    }
+  },
+  "duration_and_other_gates": {
+    "target_minutes": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "planning_spoken_units": 2877,
+    "planning_at4_to5_units_per_second": [
+      575.4,
+      719.25
+    ],
+    "planning_at4_5_units_per_second": 639.3333333333334,
+    "planning_is_actual_audio": false,
+    "capacity_risk": "HOLD_FOR_REAL_TIMING_AND_STORY_GATES",
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_failure_claimed": false,
+    "actual_duration_pass_claimed": false,
+    "body_definition": "Whole unwrapped voiced timeline, including cold open and voiced CTA; excludes the separate 5-second intro and 21-second outro. Do not add silence, slow delivery or repeat facts to reach duration.",
+    "actual_native_round_count": 2,
+    "R4_native3_status": "NOT_PREPARED_NOT_EVALUATED_HERE",
+    "prior_native2_HOLD_status_basis": "Parent task and immutable current author/review metadata; original blind input/raw/result content not opened or used for SOURCE judgment. Archived bytes hashed only.",
+    "native_verdict_by_this_reviewer": null,
+    "native_payload_or_result_read": false,
+    "owner_new_account_fullquote_protected_admission": "PENDING_NO_SPEND_AUTHORIZATION",
+    "actual_same_asset_verified": false,
+    "eight_language_actual_status": "Not produced or verified here.",
+    "branding_actual_timeline_or_pin": "Not accepted here."
+  },
+  "independent_audit_artifacts": {
+    "independent-check.py": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/independent-check.py",
+      "sha256": "086c60b226f5b04879fdde8efc92e8adcee0c0ff90174e153de5982818f56e2b"
+    },
+    "structure-and-runtime.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/structure-and-runtime.json",
+      "sha256": "50449fac409996835565068f05ea06fdf889480fed568a944ca3616d1365cb14"
+    },
+    "anchor-integrity.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/anchor-integrity.json",
+      "sha256": "7ba21e4c32c14e3a1dfdf96bc768afe55f71ffe5439b505ee26cafe0fff28933"
+    },
+    "preservation-integrity.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/preservation-integrity.json",
+      "sha256": "857dc788f82e4ce0edc235fc915d68e2779114fb94abcc2155d4ca64a520b603"
+    },
+    "image-key-check.mjs": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/image-key-check.mjs",
+      "sha256": "7d54b1216d7949bdc36f91e6be668ed3555bc504117ba65936e16899b756a91e"
+    },
+    "image-key-check.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/image-key-check.json",
+      "sha256": "00d0e899ea2f8c7d61eb52af26eafc005b668a6864f19625df22548b403f1f48"
+    },
+    "facts-check.mjs": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/facts-check.mjs",
+      "sha256": "f0a5108d8e8f0513ddbbee28fa7b9a121e07f3b9072c271b2dcdb78d77a70664"
+    },
+    "facts-check.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/facts-check.json",
+      "sha256": "37241ae3ee4e89bd2a1d301b7592a75931a41434f88c4bbc887b75db6bc54252"
+    },
+    "normal-lint.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/normal-lint.json",
+      "sha256": "075b1016b666739799be6518e2651c3a8092d5006e4e946e5206fa22b94ad5fb"
+    },
+    "normal-lint-execution.json": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/normal-lint-execution.json",
+      "sha256": "6da102d05f36b40ca442f534acc5ca041de9d6b07d1f50561cf340a9a8d97c16"
+    },
+    "MAN305-p7.txt": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN305-p7.txt",
+      "sha256": "c4c31ffda9139e01a37f82804ee48b7d7a66b723b779ef45f894ddaedab01f86"
+    },
+    "MAN305-p50.txt": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN305-p50.txt",
+      "sha256": "6bc64ad5659900d3b2d02a207ba58abe8501f0c18643d88228729364ce5f6161"
+    },
+    "MAN201-p12.txt": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN201-p12.txt",
+      "sha256": "27b0c7d6503d1288d4e0ba4b88ece5493586454127265ff1b128d449df11f2a7"
+    },
+    "MAN201-p13-14.txt": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN201-p13-14.txt",
+      "sha256": "1fa982e54ba5963fd27d15401ffe5cdf206e763bbb5c4bb07fe87deef56b32ad"
+    },
+    "MAN305-p7.png": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN305-p7.png",
+      "sha256": "b15bb20b469a752808f4f5069d59ee5d3cd91c61dcdb7342e0e6bdf393125bf5"
+    },
+    "MAN305-p50.png": {
+      "path": "/workspace/work/brand-story-20261025/garmin-audit/source-r4/MAN305-p50.png",
+      "sha256": "1dc17bca43a77aa6963c2dd198a7f908a458a361dfe4346939240aa720c7438d"
+    }
+  },
+  "independence_and_actions": {
+    "source_judgment_derived_from_originals_and_verified_R3_source_receipt": true,
+    "native_review_payloads_or_answers_read": false,
+    "native_storytelling_blind_review_performed": false,
+    "source_author_contact_or_subagents": false,
+    "writes": [
+      "reviews/source-r4-independent.json",
+      "verify-1.md"
+    ],
+    "external_audit_writes": "/workspace/work/brand-story-20261025/garmin-audit/source-r4",
+    "core_or_original_edits": 0,
+    "runtime_writes": 0,
+    "dictionary_mutations": 0,
+    "git_mutations": 0,
+    "backend_calls": 0,
+    "owner_writes": 0,
+    "paid_calls": 0,
+    "provider_calls": 0
+  },
+  "limits": [
+    "SOURCE and written visual plan PASS bind only the exact R4 hashes. Source PASS does not grant native storytelling, actual media, pronunciation, owner, account, quote or paid-production approval.",
+    "MAN201 Rev F February 2006 and MAN305 Rev D copyright 2006–2008 are later manuals, not launch-firmware proof. November 2003 is SEC shipping, not an August specification date. The 305 chest strap is not inherited by 205/201; 610 results are not imported.",
+    "The named DCR account is a June 25, 2009 update with 363 self-reported runs; it is not a controlled experiment or a guarantee for all models. Historical software limitations stay historical, no ambiguous pace unit is supplied, and the engineering repost remains excluded.",
+    "2877 spoken units retain thin-script/13-minute capacity HOLD. Actual audio does not exist here, so actual body duration is neither PASS nor FAIL. No real selected-image reuse, final-media QA, eight-language output, formal branding timeline/pin, owner approval or new US$25 account/admission is verified here."
+  ]
+}

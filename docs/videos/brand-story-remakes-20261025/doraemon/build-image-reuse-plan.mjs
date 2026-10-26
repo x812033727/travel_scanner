@@ -16,8 +16,8 @@ const teaser=idx.scenes_by_row.h04;
 const sceneIds=[...payoff,...teaser];
 const look=resolveLook(doc.look);
 const status={image:{provider:'minimax',model:'image-01'}};
-const mediaBase='/workspace/work/brand-story-20261025/doraemon-audit/media';
-const runtime='/workspace/work/brand-story-20261025/doraemon-submission-root';
+const mediaBase='/workspace/work/brand-story-20261025/doraemon-audit/author-r4/media';
+const runtime='/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime';
 const stage=new Stage({slug:doc.slug,workdir:path.join(mediaBase,doc.slug),options:{},status,stage:'keyframes',imageVersion:1,format:doc.format});
 const requests=sceneIds.map(id=>{
   const scene=doc.scenes.find(s=>s.id===id);
@@ -29,7 +29,7 @@ for(const request of requests){
   if(request.prompt!==requests[0].prompt || request.camera!==requests[0].camera || JSON.stringify(request.keys)!==JSON.stringify(requests[0].keys))throw new Error('Full native request/key equality lost; stop and reconcile.');
 }
 const core=Object.fromEntries(['video.json','script.md','narration-only.json','claims.json'].map(name=>[name,hash(name)]));
-const plan={schema_version:1,revision:'doraemon-r2',role:'AUTHOR_PLAN_NOT_MANIFEST_APPROVAL_OR_CACHE_PROOF',slug:doc.slug,pure_local_stage_imagekey_only:true,backend_settings_read_back:false,live_cache_read:false,actual_same_asset_verified:false,actual_generated_media:0,core_four_sha256:core,
+const plan={schema_version:1,revision:'doraemon-r4',role:'AUTHOR_PLAN_NOT_MANIFEST_APPROVAL_OR_CACHE_PROOF',slug:doc.slug,pure_local_stage_imagekey_only:true,backend_settings_read_back:false,live_cache_read:false,actual_same_asset_verified:false,actual_generated_media:0,core_four_sha256:core,
   forward_event_teasers:1,pairs:[{id:'science-magazines-before-story-entry',source_scene_id:payoff[0],source_additional_same_request_scenes:payoff.slice(1),reuse_scene_ids:teaser,requests,all_declared_full_native_keys_equal:true,
     teaser_stops_before_result:'Neutral magazine-opening action; no kingdom, adventure outcome, original character or signature prop is pictured. The story-entry answer is later in c01.',
     actual_source_file:null,actual_source_sha256:null,actual_reused_file:null,actual_reused_sha256:null,actual_same_asset_verified:false,

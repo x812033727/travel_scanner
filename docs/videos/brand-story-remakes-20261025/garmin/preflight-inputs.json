@@ -1,18 +1,19 @@
 {
   "schema_version": 1,
-  "revision": "garmin-r2",
-  "status": "AUTHOR_FREE_PREPARATION_ONLY_ALL_PRODUCTION_GATES_PENDING",
+  "revision": "garmin-r4",
+  "status": "AUTHOR_FREE_PREPARATION_ONLY_R4_PRODUCTION_GATES_PENDING",
   "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
   "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
-  "source_video_sha256": "04431e072927ff0741086673c3390bb74515445a52f7e8b5c984a976d729ac6d",
-  "canonical_runtime_script_sha256": "bb5fdca4347f4dff95a580a1a8830ef18dce62062dd19fd1214e510a4ce7bc4f",
+  "source_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+  "canonical_runtime_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
   "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
-  "previous_source": "R1_SOURCE_HOLD_S1_S2_ARCHIVED",
+  "dictionary_sequence": 1,
+  "previous_source": "R3_SOURCE_AND_WRITTEN_PLAN_PASS_ARCHIVED_FOR_R3_ONLY",
   "independent_source_delta": "PENDING_OTHER_REVIEWER",
   "written_visual_delta": "PENDING_OTHER_REVIEWER",
-  "fresh_native": "NOT_PREPARED_NOT_READ",
-  "actual_native_round_count": 0,
-  "next_native_round_if_prepared": 1,
+  "fresh_native": "R3_NATIVE2_HOLD_ARCHIVED_R4_NATIVE3_NOT_PREPARED",
+  "actual_native_round_count": 2,
+  "next_native_round_if_prepared_by_root": 3,
   "owner_outline_script": "NO_NEW_APPROVAL",
   "exact_new_project_US25_account": "PENDING_PROTECTED_CREATION",
   "all_in_full_film_quote": "PENDING_NO_NEW_AUTHORIZATION",
@@ -68,61 +69,29 @@
       "dub": true
     }
   },
-  "actual_backend_locale_readback": null,
-  "eight_language_actual_status": "Intent only; no backend operation, translations, captions, dubs or language approval.",
+  "eight_language_actual_status": "Intent only; no backend operation, translation, timedcaptions, dubbing, QA or approval.",
   "branding_policy": "../branding-pr1860/required-branding.json",
   "branding_policy_sha256": "b327ff11f96a475eecb7413e176d5b287a5d51d6db28da16fbf4a09433bc9aa5",
-  "branding": "PR1860 formalv4 available; condensed coldopen then5sintro, final21soutro; missingfile/versionmismatch stops assembly. No productionpin/timeline made.",
+  "branding": "PR1860 formalv4 available: coldopen then5sintro, final21soutro; missingfile/versionmismatch stops assembly. No productionpin/timeline made.",
   "actual_body_seconds": null,
   "actual_final_seconds": null,
   "required_body_seconds": [
     720,
     840
   ],
-  "native_estimate_minutes": 16.000555555555554,
-  "soft_warnings": [
-    {
-      "path": "scenes",
-      "message": "\"adult\" is in 137 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-    },
-    {
-      "path": "scenes",
-      "message": "\"wrist\" is in 128 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-    },
-    {
-      "path": "scenes",
-      "message": "\"device\" is in 119 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-    },
-    {
-      "path": "scenes[84] (gr1a03)",
-      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
-    },
-    {
-      "path": "scenes[93] (gr1a12)",
-      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
-    },
-    {
-      "path": "scenes[111] (gr1d04)",
-      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
-    },
-    {
-      "path": "scenes[126] (gr1d20)",
-      "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
-    },
-    {
-      "path": "scenes",
-      "message": "about 16.0 minutes; the target is 12-14"
-    },
-    {
-      "path": "scenes",
-      "message": "「三零五」 is said in 4 lines (gr1a01, gr1a12, gr1a15, gr1v02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
-      "kind": "narrative"
-    }
+  "natural_rate_planning_seconds": [
+    575.4,
+    719.25
   ],
-  "image_plan_sha256": "8766d4ea384201925ba9e8c2068cfc857a1f239fc54c4069a6bd7d803811f43e",
+  "duration_capacity_risk": true,
+  "actual_duration_fail": false,
+  "native_estimate_minutes": 13.775,
+  "native_estimate_is_not_audio": true,
+  "image_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
   "actual_same_asset_verified": false,
   "generated_story_media": 0,
   "paid_calls": 0,
   "backend_calls": 0,
-  "owner_writes": 0
+  "owner_writes": 0,
+  "planning_at4_5_units_per_second": 639.3333333333334
 }

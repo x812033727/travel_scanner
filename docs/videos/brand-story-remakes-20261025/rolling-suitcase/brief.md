@@ -1,4 +1,4 @@
-# 輪子行李箱 R1｜把輪架收進箱子
+# 輪子行李箱 R4｜把輪架收進箱子
 
 ## 問題
 
@@ -26,11 +26,11 @@ exact新slug story-rolling-suitcase-v2-remake-20261025，保原story-rolling-sui
 
 前兩句有兩個包的觀眾利害與一份回憶＋一份專利，前六句落普拉斯在機場拿圖／製作者／拉把與帶子。最多兩個後續預告，停在摩擦鎖與帶長答案前；命名輪箱及從圖到附包的規模承諾後，以中央問題收尾。
 
-7章、112句、27組書面問答；章首為新工具／接觸／機構／附包／請做動作，每章真你我反應均待fresh native。開場交代的拿圖動作不在正文重演第二遍；每個新事實一個位置，問題可接新答案。
+7章、104句、26組書面問答；章首為新工具／接觸／機構／附包／請做動作，每章真你我反應均待fresh native。開場交代的拿圖動作不在正文重演第二遍；每個新事實一個位置，問題可接新答案。
 
 ## 容量與實聲
 
-整份2687 native raw spokenUnits，coldopen 166、有聲CTA 58；比約3500少813。4–5units/s純規劃537.4–671.75秒，4.5約597.1秒，容量風險已實現；未實TTS，不能稱實聲FAIL。真正文仍需720–840秒，含coldopen與有聲CTA、排另加26秒bookends。不能為湊時長慢播、留白、重述／警語或拼另一個發明軼聞。
+整份2462 native raw spokenUnits，coldopen 169、有聲CTA 58；比約3500少1038。4–5units/s純規劃492.4–615.50秒，4.5約547.1秒，容量風險已實現；未實TTS，不能稱實聲FAIL。真正文仍需720–840秒，含coldopen與有聲CTA、排另加26秒bookends。不能為湊時長慢播、留白、重述／警語或拼另一個發明軼聞。
 
 ## 日期與原件邊界
 
@@ -40,13 +40,13 @@ SEA無日曆日期且是2016回憶；不接ABC安檢螺絲樣品先後。公司1
 
 ## 書面圖與同圖計畫
 
-正文109 shot、0字卡、1原生outro；唯一look{preset:cute-mystery}／image-01。prompt為English匿名人、物與具體動作，無品牌／真人名／logo／可讀字，不畫實物原件或歷史場景精確重建。正文插畫規劃100%，仍待生成後逐鏡QA。
+正文101 shot、0字卡、1原生outro；唯一look{preset:cute-mystery}／image-01。prompt為English匿名人、物與具體動作，無品牌／真人名／logo／可讀字，不畫實物原件或歷史場景精確重建。正文插畫規劃100%，仍待生成後逐鏡QA。
 
 兩組完整Stage.imageKey純本地相等，包含camera、composed prompt、look、模型、size、negative、refs、seed與版本；image-reuse-plan只是計畫。正常admission後先payoff takes1，讀正式manifest/judge/readCache/actual bytes SHA，cache miss即停，再做teaser並各judge；trim/crop後final selected同檔SHA必真核。目前actualsameasset=false，fileSHA=null。
 
 ## 正常免費準備與後續停點
 
-runtime /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root；media /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media，均repo外且分開。只正常helper init本新字典一次，不借／重建字典或核准；台灣正常voice object逐值沿本批c06。八語預設en/ja/ko/es/pt/id/vi/th，尚未翻譯／配音／CC／QA。
+runtime /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root；media /workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media，均repo外且分開。只正常helper init本新字典一次，不借／重建字典或核准；台灣正常voice object逐值沿本批c06。八語預設en/ja/ko/es/pt/id/vi/th，尚未翻譯／配音／CC／QA。
 
 exact新slug獨立US25帳戶、wholequote、protectedadmission未建立，free init不許花費。本稿只免費lint；TTS／圖／音樂／轉寫／provider／backend／owner批准均0。SOURCE／書面配鏡／freshnative／念法／實聲／owner皆pending，不寫verify或自PASS。
 
