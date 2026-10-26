@@ -68,3 +68,11 @@
 
 1. 主對話開兩位讀者跑盲評；兩位同否的題才改稿（改一句之前先看前一句），改完重跑 lint、`script`、`narrative --json`，最後一輪的答案存進 `panel/reader-1.json`、`panel/reader-2.json`，並用 `narrative --answers panel/reader-1.json` 留紀錄。
 2. 之後照 `curio-episode` skill：旁白（特別聽「光圀」「寛文」「寛政」「信仍」「好白」「大目付」「慶長廿年」「細川忠興」）→ `check-audio` → 站主聽 → 插圖整集一次報價（114 張，其中 81 張第一版提示詞逐字沿用，若第一版沒畫過就都是新圖）→ 配樂。
+
+## 插圖（2026-10-26）
+
+- 第一輪 keyframes 花 US$2.05，4 個鏡頭三張都沒過 judge，改提示詞重畫：
+  - write-b：只拍兩隻手的特寫會冒出小頭、動作消失 → 改成一個武士跪在矮桌前綁信。
+  - sister：「五十多歲的女人」被畫成小孩 → 寫成圓潤的祖母型、髮有灰絲、眼角笑紋，信放在膝上，只做「對我們微笑」一個動作。
+  - kohaku-pay：「short」讓中年武士變幼童 → 拿掉 short，照 father 過關的寫法加「facial stubble and mature features」。
+  - editor-note：手部特寫被畫成正統動畫風、握筆僵硬 → 改成戴圓眼鏡的大正歷史學者坐在書桌前寫眉批的中景。
