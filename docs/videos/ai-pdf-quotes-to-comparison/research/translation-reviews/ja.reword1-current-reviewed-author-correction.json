@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ja",
+  "scope": "source-meaning-and-naturalness",
+  "passed": true,
+  "reviewer": "Independent Japanese reviews by /root/review_pdf_ja_boundary; exact native author-delta binding by /root",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+  "base_meaning_index": {
+    "schema_version": 1,
+    "slug": "ai-pdf-quotes-to-comparison",
+    "locale": "ja",
+    "scope": "source-meaning-and-naturalness",
+    "passed": true,
+    "reviewer": "OpenAI Codex /root current-source delta reviewer; full translation independently reviewed by {\"agent_id\":\"/root/pdf_author_ko_th\",\"role\":\"independent reviewer of en/ja, final textual delta rereview after original-author revisions\",\"independence\":\"Did not author or edit either en or ja draft. Previously authored ko and coordinated th; those languages were not self-reviewed here.\",\"method\":\"Rounds 1 and 2 manually read all 101 captions and all metadata/actual changes against source79. This round manually reread the sole new caption change against the exact source sentence and scene context. Reconstructing the previous full authored hash proves all other captions, metadata and non-text data exactly match the fully reread second-round file. No draft was edited by the reviewer.\"}",
+    "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "translation_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c",
+    "report_file": "research/translation-reviews/ja.initial-current-source-review.json",
+    "report_sha256": "2dd913db7da60290de1e58d8ad436c8462d2f1413542e3d48e663592b775b0e8",
+    "reviewed_boundaries": []
+  },
+  "native_reword1_review": {
+    "report_file": "research/translation-reviews/ja.reword-round1-independent-meaning-review.json",
+    "sha256": "a6c0c8f7c7f90035e3e707e2bf44e587ffbaa037805e05b1d9c2a63ff53e02d7",
+    "reviewed_translation_sha256": "5356fe3c5cdc38e7f798817bbf1775d0d17dccce6f5f3e7b02001617999313bf"
+  },
+  "independent_author_correction_review": {
+    "report_file": "research/translation-reviews/ja.q7x8-author-correction-independent-review.json",
+    "sha256": "508f1554e5a9eb9d5c849f60a03c1e43b2d2877062f9cbdd34987ea96515c9ac",
+    "proposal_file": "research/translation-reviews/ja.q7x8-author-correction-proposal.json",
+    "proposal_sha256": "be21d07103a4a3b623682ab2fd03901d9ed2abf626621b88540f0a0a9db0d265",
+    "changed_id": "q7x8",
+    "actual_native_merge_changed_only_this_line": true
+  },
+  "reviewed_boundaries": [
+    {
+      "file": "author-review-boundaries/ja.reword.round-1.2026-10-26T17-00-58-659Z.json",
+      "sha256": "f886fbc82399484686aa63263551b598484e563d89431c730ef6cde6fa0ef8d2"
+    }
+  ],
+  "raw_worksheet_budget_passed": false,
+  "raw_worksheet_max_chars": 30,
+  "effective_existing_native_reword_max_chars": 33,
+  "corrected_codepoints": 32,
+  "effective_budget_passed": true,
+  "actual_new_audio_fit_or_ASR_passed": false,
+  "rejected_native_numbers_changed_answer_preserved": true,
+  "native_total_reword_limit_unchanged": 2,
+  "current_round_already_counted": 1,
+  "voice_approved": false
+}
