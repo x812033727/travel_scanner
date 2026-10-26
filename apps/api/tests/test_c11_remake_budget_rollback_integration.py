@@ -2,7 +2,8 @@
 
 The test strips the 0140 migration from a disposable copy of the application,
 upgrades that database with the pinned 0140 source, then runs the old 0139
-migration command. Every everyday-story paid call remains held.
+migration command. The copy is today's application code, which activates the
+C11 remake; the deployed 0139 image (#1870, 2edb6eaab) still held it.
 """
 
 from __future__ import annotations
@@ -205,7 +206,9 @@ def test_reviewed_future_source_is_pinned_and_c11_remake_stays_held() -> None:
         **C_SERIES_PILOT_LIMITS_USD,
         C20_PILOT_SLUG: Decimal("25"),
     }
-    assert is_preproduction_held(C11_REMAKE_PILOT_SLUG)
+    # Activated with its 0140 account (owner decision 2026-10-26).
+    assert not is_preproduction_held(C11_REMAKE_PILOT_SLUG)
+    assert is_preproduction_held(C20_PILOT_SLUG)
 
 
 def _base_url() -> URL:
@@ -469,8 +472,7 @@ def test_real_0140_c11_remake_account_allows_only_reviewed_0139_rollback(
     assert Decimal(str(account[0][1])) == Decimal("25")
     assert c11_owner[0][1] is True and c11_owner[0][2] == account[0][2]
 
-    # The old image must preserve later evidence while continuing to hold paid
-    # requests for both C20 and the C11 remake. This operation is disposable test data.
+    # The old image must preserve later evidence. This operation is disposable test data.
     asyncio.run(
         _execute(
             url,
@@ -524,7 +526,7 @@ def test_real_0140_c11_remake_account_allows_only_reviewed_0139_rollback(
             "import asyncio\nfrom decimal import Decimal\n"
             "from app.db import SessionFactory, engine\n"
             "from app.video_budget import service\n"
-            f"slugs=({C20_PILOT_SLUG!r}, {C11_REMAKE_PILOT_SLUG!r})\n"
+            f"slugs=({C20_PILOT_SLUG!r},)\n"
             "async def check():\n"
             " async with SessionFactory() as session:\n"
             "  for slug in slugs:\n"

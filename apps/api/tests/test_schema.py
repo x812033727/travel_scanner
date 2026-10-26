@@ -125,6 +125,21 @@ def test_only_the_exact_c11_remake_budget_revision_is_accepted_by_0139_rollback(
     assert not schema_is_current("0139_c20_zippo_pilot_budget")
 
 
+def test_only_the_exact_story_remake_budget_revision_is_accepted_by_0140_rollback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0140_c11_ucc_remake_budget"
+    )
+    assert schema_is_current("0141_story_remake_budgets")
+    assert not schema_is_current("0141_other_budget")
+    assert not schema_is_current("0142_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0139_c20_zippo_pilot_budget"
+    )
+    assert not schema_is_current("0141_story_remake_budgets")
+
+
 def _script(revision: str, down_revision: str) -> types.SimpleNamespace:
     return types.SimpleNamespace(
         revision=revision,
