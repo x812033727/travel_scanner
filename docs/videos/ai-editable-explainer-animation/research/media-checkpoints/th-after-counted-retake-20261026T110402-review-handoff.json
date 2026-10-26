@@ -1,0 +1,323 @@
+{
+  "recorded_at_utc": "2026-10-26T11:08:46.263580+00:00",
+  "controller": "OpenAI Codex /root/animation_th_resume",
+  "purpose": "Actual source-review handoff after one native invocation; not a semantic or audio approval",
+  "base_outcome_file": "/workspace/work/ai-animation-01/th-after-counted-retake-20261026T110402-outcome.json",
+  "base_outcome_sha256": "56a2b7156b883c4d5f7bdf162dfb446b3e53bd9f441a470ca8a216735844b196",
+  "flags_ids": [
+    "e8b327",
+    "719e7c",
+    "8eb4eb",
+    "cab285",
+    "ee8b7c",
+    "28a3eb",
+    "c38a5e",
+    "ad1b2c",
+    "f064e3"
+  ],
+  "flag_count": 9,
+  "all_101_raw_WAVs_have_current_saved_transcriptions": true,
+  "checked_raw_count": 101,
+  "current_clip_hash_matches": 101,
+  "cab285_actual_ASR_Jev": {
+    "scene": "audio-staging",
+    "clip": "f662f9a863bdd2cd",
+    "terms": [],
+    "heard": "จัดประโยคอธิบายช่วงสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+    "noul": 0.13,
+    "intended": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+    "spoken_form": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+    "match_kind": null,
+    "match": false
+  },
+  "cab285_still_native_flagged": true,
+  "applied_ids": [
+    "e8b327",
+    "cab285",
+    "ad1b2c"
+  ],
+  "dropped_reasons": [
+    "719e7c: over its budget (72 characters, at most 69)",
+    "8eb4eb: over its budget (64 characters, at most 63)",
+    "ee8b7c: over its budget (90 characters, at most 70)",
+    "28a3eb: over its budget (80 characters, at most 76)",
+    "c38a5e: over its budget (100 characters, at most 97)",
+    "f064e3: over its budget (107 characters, at most 98)"
+  ],
+  "proposals_with_original_Chinese": [
+    {
+      "id": "e8b327",
+      "source_zh_TW": {
+        "scene": "opening",
+        "text": "用 AI 做的教學動畫，也能改字和改數字。",
+        "say": null
+      },
+      "TH_before": "แอนิเมชันสอนจาก AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "actual_model_proposal": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "TH_current": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "applied_by_native": true,
+      "dropped_reason": null,
+      "actual_audio_check": {
+        "scene": "opening",
+        "clip": "2bf60d79202b172a",
+        "terms": [
+          "AI"
+        ],
+        "heard": "แอนิเมชั่นสร้างจาก AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "noul": 0.09,
+        "intended": "แอนิเมชันสอนจาก AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "spoken_form": "แอนิเมชันสอนจาก A I ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.09: heard 「แอนิเมชั่นสร้างจาก AI ก็แก้ข้อความและตัวเลขได้ค่ะ」"
+    },
+    {
+      "id": "719e7c",
+      "source_zh_TW": {
+        "scene": "brief-prompt-one",
+        "text": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+        "say": null
+      },
+      "TH_before": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "actual_model_proposal": "คำสั่งเขียนแบบนี้ ให้วาดผลลัพธ์ทุกแบบที่มีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "TH_current": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "applied_by_native": false,
+      "dropped_reason": "719e7c: over its budget (72 characters, at most 69)",
+      "actual_audio_check": {
+        "scene": "brief-prompt-one",
+        "clip": "b32035227b962233",
+        "terms": [],
+        "heard": "เขียนพร้อมวาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+        "noul": 0.14,
+        "intended": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+        "spoken_form": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.14: heard 「เขียนพร้อมวาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก」"
+    },
+    {
+      "id": "8eb4eb",
+      "source_zh_TW": {
+        "scene": "revise-lock-prompt",
+        "text": "再補一句，保留配色、字體和片段順序。",
+        "say": null
+      },
+      "TH_before": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+      "actual_model_proposal": "เพิ่มอีกประโยคว่า ให้คงสีตัวอักษร รูปแบบตัวอักษร และลำดับช่วงไว้",
+      "TH_current": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+      "applied_by_native": false,
+      "dropped_reason": "8eb4eb: over its budget (64 characters, at most 63)",
+      "actual_audio_check": {
+        "scene": "revise-lock-prompt",
+        "clip": "7b8f82e6a3e43049",
+        "terms": [],
+        "heard": "เพื่อว่าคงสี font และลำดับช่วงไว้",
+        "noul": 0.09,
+        "intended": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+        "spoken_form": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.09: heard 「เพื่อว่าคงสี font และลำดับช่วงไว้」"
+    },
+    {
+      "id": "cab285",
+      "source_zh_TW": {
+        "scene": "audio-staging",
+        "text": "先把解釋亮起格子的那句話對準，再把同樣的方法用到其他段落。",
+        "say": null
+      },
+      "TH_before": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "actual_model_proposal": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "TH_current": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "applied_by_native": true,
+      "dropped_reason": null,
+      "actual_audio_check": {
+        "scene": "audio-staging",
+        "clip": "f662f9a863bdd2cd",
+        "terms": [],
+        "heard": "จัดประโยคอธิบายช่วงสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "noul": 0.13,
+        "intended": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "spoken_form": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.13: heard 「จัดประโยคอธิบายช่วงสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น」"
+    },
+    {
+      "id": "ee8b7c",
+      "source_zh_TW": {
+        "scene": "check-levels",
+        "text": "內容先看條件和計數，不能因為動畫很順就把數學錯誤放過去。",
+        "say": null
+      },
+      "TH_before": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+      "actual_model_proposal": "ตรวจเงื่อนไขและการนับก่อน อย่าปล่อยให้ข้อผิดพลาดทางคณิตศาสตร์ผ่านไป เพราะภาพเคลื่อนไหวลื่น",
+      "TH_current": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+      "applied_by_native": false,
+      "dropped_reason": "ee8b7c: over its budget (90 characters, at most 70)",
+      "actual_audio_check": {
+        "scene": "check-levels",
+        "clip": "07c60e0976dd4950",
+        "terms": [],
+        "heard": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะ animation ลื่น",
+        "noul": 0.23,
+        "intended": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+        "spoken_form": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.23: heard 「ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะ animation ลื่น」"
+    },
+    {
+      "id": "28a3eb",
+      "source_zh_TW": {
+        "scene": "check-no-guarantee",
+        "text": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+        "say": null
+      },
+      "TH_before": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+      "actual_model_proposal": "แต่โปรแกรมตรวจช่องได้ ส่วนจะตัดสินแทนคุณว่าประโยคอธิบายนี้เข้าใจง่ายไหม ทำไม่ได้",
+      "TH_current": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+      "applied_by_native": false,
+      "dropped_reason": "28a3eb: over its budget (80 characters, at most 76)",
+      "actual_audio_check": {
+        "scene": "check-no-guarantee",
+        "clip": "f2357dfbdbffdd0f",
+        "terms": [],
+        "heard": "โปรแกรมตรวจ grammar ได้ แต่ตัดสินแทนคุณไม่ได้ว่า ประโยคเนี้ย เข้าใจง่ายไหม",
+        "noul": 0.07,
+        "intended": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+        "spoken_form": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.07: heard 「โปรแกรมตรวจ grammar ได้ แต่ตัดสินแทนคุณไม่ได้ว่า ประโยคเนี้ย เข้าใจง่ายไหม」"
+    },
+    {
+      "id": "c38a5e",
+      "source_zh_TW": {
+        "scene": "check-release-note",
+        "text": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。",
+        "say": null
+      },
+      "TH_before": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+      "actual_model_proposal": "ตอนส่งมอบ ให้เขียนว่ารุ่นนี้แก้ที่โจทย์ ที่ตัวเลข หรือที่เวลา คนรับช่วงต่อจะได้รู้ว่าควรดูตรงไหนก่อน",
+      "TH_current": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+      "applied_by_native": false,
+      "dropped_reason": "c38a5e: over its budget (100 characters, at most 97)",
+      "actual_audio_check": {
+        "scene": "check-release-note",
+        "clip": "3dc6df1e72298400",
+        "terms": [],
+        "heard": "ตอนส่งระบุว่ารุ่นนี้แก้โจทย์ค่ะ หรือว่าเวลาคนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+        "noul": 0.06,
+        "intended": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+        "spoken_form": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.06: heard 「ตอนส่งระบุว่ารุ่นนี้แก้โจทย์ค่ะ หรือว่าเวลาคนรับจะได้รู้ว่าดูส่วนไหนก่อน」"
+    },
+    {
+      "id": "ad1b2c",
+      "source_zh_TW": {
+        "scene": "practice-start",
+        "text": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。",
+        "say": null
+      },
+      "TH_before": "จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คุณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้",
+      "actual_model_proposal": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "TH_current": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "applied_by_native": true,
+      "dropped_reason": null,
+      "actual_audio_check": {
+        "scene": "practice-start",
+        "clip": "0adb45fcb5464564",
+        "terms": [],
+        "heard": "จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คูณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้",
+        "noul": 0.07,
+        "intended": "จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คุณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้",
+        "spoken_form": "จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คุณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.07: heard 「จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คูณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้」"
+    },
+    {
+      "id": "f064e3",
+      "source_zh_TW": {
+        "scene": "practice-download",
+        "text": "教材包保留了需求、提示詞和程式，你可以從原樣開始，再換自己的內容。",
+        "say": null
+      },
+      "TH_before": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+      "actual_model_proposal": "ชุดสื่อเก็บความต้องการ คำสั่งที่ใช้เขียน และโปรแกรมไว้ให้ คุณเริ่มจากต้นฉบับแล้วเปลี่ยนเป็นเนื้อหาของคุณได้",
+      "TH_current": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+      "applied_by_native": false,
+      "dropped_reason": "f064e3: over its budget (107 characters, at most 98)",
+      "actual_audio_check": {
+        "scene": "practice-download",
+        "clip": "f290de27e913e3cb",
+        "terms": [],
+        "heard": "ชุดสื่อเก็บข้อกำหนดพร้อมโปรแกรมไว้ คุณเริ่มจากต้นแบบแล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+        "noul": 0.19,
+        "intended": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+        "spoken_form": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+        "match_kind": null,
+        "match": false
+      },
+      "native_flag_note": "Jev 0.19: heard 「ชุดสื่อเก็บข้อกำหนดพร้อมโปรแกรมไว้ คุณเริ่มจากต้นแบบแล้วเปลี่ยนเป็นเนื้อหาคุณได้」"
+    }
+  ],
+  "source_before": {
+    "file": "/workspace/work/ai-animation-01/th-after-counted-retake-20261026T110402-before-th.json",
+    "sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+    "provenance": "Reconstructed after completion from exact git 788642378dae3311bdc4a862857f94bd4b72cba9:docs/videos/ai-editable-explainer-animation/i18n/th.json; its bytes equal the SHA actually saved in preflight before the command. Not falsely labeled an earlier-time snapshot."
+  },
+  "source_after": {
+    "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+    "sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93"
+  },
+  "metadata_unchanged": true,
+  "only_three_TH_lines_changed": [
+    "e8b327",
+    "cab285",
+    "ad1b2c"
+  ],
+  "source_zh_TW": {
+    "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806"
+  },
+  "boundary": {
+    "latest_file": "/workspace/work/ai-animation-01/author-review-boundaries/th.reword.json",
+    "latest_sha256": "e85841845060655607166d676ff6a34c1f28764653c0f217f601a75ca28b1b6e",
+    "immutable_file": "/workspace/work/ai-animation-01/author-review-boundaries/th.reword.round-1.2026-10-26T11-05-24-993Z.json",
+    "immutable_sha256": "e85841845060655607166d676ff6a34c1f28764653c0f217f601a75ca28b1b6e",
+    "native_answer_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/th-reword-round-1-author-review-2026-10-26T11-05-24-992Z.txt",
+    "native_answer_sha256": "38056825470d647b80d294fe7c8b18ec695829570accd170c07e79ccec7fbe6d"
+  },
+  "current_state": {
+    "status": "done",
+    "TH_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "defer_count": null,
+    "deferred_until": null,
+    "meaning": "Native moved() cleared finished service-backoff fields after this successful check/reword visit; retakes2/2 were not reset."
+  },
+  "all_9_protected_unchanged": true,
+  "all_101_raw_unchanged": true,
+  "permanent_applied_intent_unchanged": true,
+  "no_new_unknown_speech": true,
+  "native_process_ended": true,
+  "LEASE_present": false,
+  "STOP_present": false,
+  "next": "Remain stopped. Root must independently read all nine raw model proposals, their Chinese sources, the three applied deltas and six rejected proposals before any new paid take. No voice acceptance or complete-language-package claim."
+}
