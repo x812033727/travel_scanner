@@ -1,0 +1,31 @@
+{
+  "kind": "KO_author_three_pass_summary",
+  "author": "/root/branding_restore",
+  "locale": "ko",
+  "source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "speech_hash": "38cf9292f6945199",
+  "native_script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "passes": [
+    {
+      "pass": 1,
+      "receipt": "author-pass1-draft.json",
+      "scope": "Full111 semantic comprehension/drafting plus all6chaptertitles andmetadata"
+    },
+    {
+      "pass": 2,
+      "receipt": "pass2-critique.json",
+      "scope": "All111/metadata reread; ten actual corrections, original v1 preserved"
+    },
+    {
+      "pass": 3,
+      "receipts": [
+        "author-pass3-semantic-ledger.json",
+        "author-pass3-native-pure.json"
+      ],
+      "scope": "All111 author semantic notes and critical invariant assertions, pure native schema/metadata0problems0notes"
+    }
+  ],
+  "root_or_independent_review_complete": false,
+  "media_or_fit_claimed": false,
+  "CLI_auth_API_paid_state_repo_git_actions": 0
+}

@@ -38,7 +38,7 @@ scope:
 - [x] 正常Jev outline分析、保存raw回覆與分數／失敗原因，送正常hand-pushed pending review後做委派local adopt。
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
-- [x] EN與JA各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字2/8，沒有actual CC／M4A／後台交付。
+- [x] EN、JA與KO各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字3/8，沒有actual CC／M4A／後台交付。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
 - [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
@@ -97,3 +97,12 @@ Root另委派/root/formal_branded_main_peer為本輪唯一文件編輯，沿用�
 完整作者21freeze＋root獨審／merge／初次validator錯誤收據已安全複本保存於localization/ja。作者URL分割假設、root sheetTodo型別與freeze.files結構假設三個錯誤各自保存原腳本／真工具診斷，均非音訊或native品質失敗，沒有改輸入或門檻來過。48／44字的文字建議提示保留，無max_chars或實際fit結論。
 
 修改可變文件前，原325證據及EN35freeze／Git blobs全核相同，舊35份文件、freeze、進度／README／result／task／index已逐bytes封存。Source40eb／claimscc38／speech38cf／script7aac／111 source line objects／voice／lexicon／data及兩份敘事12/13 false全不改，EN／JA target不重寫。本分工只準備文件、檢查及freeze，未stage／commit／push；須root獨立review後才另行授權精確scoped commit／pushPR1861，保持no-auto-merge，不合併／部署／YouTube上傳、不開topic6。
+
+
+## KO文字正常採用與增量文件準備
+
+Root指定/root/branding_restore沿既有claim為本輪唯一FIFTH文件編輯。Root已全量獨立讀111組KO／六章／fullmetadata，僅修jd24、g738與description兩處白話用詞；109句及所有source/context不變。正常i18n-merge真exit0，actual KO6b1e等於root修文後nativepurepreview，不等同作者舊df020 preview。這是音訊前文字修訂，不重設native shorten／reword／retake回合。
+
+現為EN＋JA＋KO文字3/8，master paid TTS0／raw0／actual timeline無；全部actual CC／M4A／fit／meter／ASR／後台交付仍0。作者21freeze＋root審查／delta／preview／merge／log安全複本保留；只封存五份實際可變docs/task及三份前輪描述檔，83舊JA檔與31／61／90／171索引原位核對，以Git0d885及重建identity復原全部舊88，沒有遞迴再複製history。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data／ENJA與兩份敘事12/13 false固定。作者13保護輸入加root已採用KO共14檔核對，不改任何targets。只準備新KO index／驗證與精確freeze／path proposal；未stage／commit／push，須root獨立審查後另行授權，不開topic6或啟paid/media/API。

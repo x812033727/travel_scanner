@@ -1,6 +1,6 @@
-# 第五片：當前來源複核與EN／JA文字採用2/8
+# 第五片：當前來源複核與EN／JA／KO文字採用3/8
 
-當前[video.json](video.json)為40eb4df5…ae58aa（僅description追加教材URL，root獨立[verify4](verify-4.md)已PASS／source連續性已綁定）、[claims](claims.md)為cc38，[完整進度](production-progress.json)與[當前安全收據索引](receipts/ja-text-adoption-index.json)記錄實際狀態。Source導入完成不等於音訊、可下載M4A、全片或八語完成。
+當前[video.json](video.json)為40eb4df5…ae58aa（僅description追加教材URL，root獨立[verify4](verify-4.md)已PASS／source連續性已綁定）、[claims](claims.md)為cc38，[完整進度](production-progress.json)與[當前安全收據索引](receipts/ko-text-adoption-index.json)記錄實際狀態。Source導入完成不等於音訊、可下載M4A、全片或八語完成。
 
 - Source SHA：`40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa`；speechHash：`38cf9292f6945199`。
 - 歷史ca1e的[verify3](verify-3.md)確認21項主張的連續證據、三個視覺資料路徑、111完整line物件／voice不變。64state＋縮圖0layout；63個原PNG／keys相同。root已實看全部64contact states、修卡及final thumbnail；獨立fresh static capture亦與frozen bitmap精確相同。
@@ -44,3 +44,16 @@ EN111句完整target、六章、metadata與縮圖詞已current，**文字採用1
 [作者URL抽取器診斷](localization/ja/author/semantic-ledger.initial-local-error.json)、[root sheetTodo診斷](localization/ja/root/root-initial-sheetTodo-type-error.json)與[root freeze結構診斷](localization/ja/root/root-initial-freeze-shape-error.json)分開保存；相關首次腳本也保留。這些是本地validator期望錯誤，修正validator後才真正通過，沒有把它們改寫成音訊失敗，也未改source／targets／網址／native guard。
 
 原325份受保護證據、EN35 freeze及其Git blobs在變更前全量核對，全部舊35檔和當時可變文件先[逐bytes封存](history/before-JA-text-adoption-docs/identity.json)，舊index／freeze不覆寫。兩份敘事12/13 false、verify4、source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data皆未修改；[本輪驗證](receipts/ja-text-adoption-validation.json)與[索引](receipts/ja-text-adoption-index.json)只涵蓋真實文字採用及文件。Commit／push需root獨立freeze審查後另行授權，PR1861維持no-auto-merge。
+
+
+## 韓文已正常採用：外語文字3/8，媒體仍0
+
+Root全量獨立讀完111組source→KO、六章及metadata後，正常原生`i18n-merge`真exit0。[當前KO](i18n/ko.json) SHA `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` 等於root修文後原生pure preview，見[採用證據](localization/ko/actual-native-text-adoption.json)、[獨審](localization/ko/root/root-independent-review.json)與[真merge log](localization/ko/root/native-i18n-merge.log)。
+
+Root只修兩行：`jd24`明示符合條件的完整跟進母體，`g738`縮短問句但保留接手者、相等條件與已驗延遲名單；description另有兩處白話用詞。[原始delta](localization/ko/root/root-wording-delta.json)與作者舊preview都保留，其他109句與source/context未改。這些是音訊生成前文字修訂，不是fit／shorten／reword回合。
+
+[作者21檔freeze](localization/ko/author/FINAL-FREEZE.json)、[完整111對照](localization/ko/author/source-target-complete-111.json)、[作者三輪](localization/ko/author/author-three-pass-review.json)和root完整收據各自原bytes保存。現在EN＋JA＋KO文字3/8，繁中paid TTS0／raw0／actual timeline無；actual CC、M4A、fit／meter／ASR和後台交付全部仍0，沒有配音fit或8語完成宣稱。
+
+本輪只先封存實際修改的五份doc／task與三份前輪描述檔；其餘83個舊JA檔案與歷史31／61／90／171索引留原位逐SHA核對。以Git `0d8852106276bc701e8aae712f4b65fc18b0b6e2` 為完整歷史anchor，[88檔重建映射](history/before-KO-text-adoption-docs/identity.json)可從83原位檔＋5快照精確復原，沒有遞迴複製既有history。當前使用[KO文字採用索引](receipts/ko-text-adoption-index.json)，舊JA171索引保持原文。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data、EN／JA actual targets與兩份敘事12/13 false均不改。只準備文件與精確路徑供root審查；尚未stage／commit／push，不啟媒體／paid／API／approval，也不開topic6。

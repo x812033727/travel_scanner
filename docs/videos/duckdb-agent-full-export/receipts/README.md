@@ -35,3 +35,10 @@ EN文字採用時使用[en-text-adoption-index.json](en-text-adoption-index.json
 當前使用[ja-text-adoption-index.json](ja-text-adoption-index.json)。[JA真實採用](../localization/ja/actual-native-text-adoption.json)綁root逐句獨審、正常merge exit0與actual JA file SHA；[當前驗證](ja-text-adoption-validation.json)核對原325檔、前一輪35檔及其[精確封存](../history/before-JA-text-adoption-docs/identity.json)。舊EN index／freeze與所有舊審查保持原文。
 
 JA作者初次URL抽取錯誤、root sheetTodo型別與freeze結構錯誤的診斷和原腳本各自保存，不混作ASR、音訊或native品質關卡失敗；JA作者純merge／compose無時間軸，root正常CLI merge才構成當前文字採用。文字2/8不是actual CC／M4A／fit／ASR／後台交付，繁中paid TTS及raw仍0。
+
+
+## KO正常文字採用後：EN＋JA＋KO 3/8
+
+當前另用[ko-text-adoption-index.json](ko-text-adoption-index.json)，舊JA171及更早31／61／90索引原位不改。[KO實際採用](../localization/ko/actual-native-text-adoption.json)綁root全111獨審、兩行／description白話修訂、真正常merge exit0與actual KO6b1e；[root完整delta](../localization/ko/root/root-wording-delta.json)不改109句或source/context，不是音訊重寫回合。作者21freeze＋root收據都有[exact copy proof](../localization/ko/copy-identity.json)，作者舊preview與root已採用版本分開保存。
+
+[五檔增量封存及舊88重建](../history/before-KO-text-adoption-docs/identity.json)使用0d885 Git anchor，83未變舊檔留原位，沒有再複製遞迴history。[當前驗證](ko-text-adoption-validation.json)記source／glossary／native lint／tasks／連結與hash。文字3/8不是實際字幕、M4A、fit或後台交付；master paid TTS0／raw0／actual timeline無，兩份敘事12/13 false保持原文。新freeze另列精確proposal，未stage／commit／push。
