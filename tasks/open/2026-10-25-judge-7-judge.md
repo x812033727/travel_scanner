@@ -71,3 +71,11 @@ PR：https://github.com/x812033727/travel_scanner/pull/1850
   沒建這張表），所以各補一行把 `auto_look_fallback` mock 成 None。沒有改其他行為。
 - `judge_min_score` 沒動，關鍵影格門檻不受影響；`ruff format` 對這三個共用檔本來就會重排，CI 只跑
   `ruff check`，所以沒有套用，免得 diff 蓋到別的票。
+
+## 補修（2026-10-26）
+
+#1850 部署後（main 9ada4a4ee）第一次實戰沒有自動選：e001-redo1 15:59Z 重送的江河、唐測每一張候選的
+`judge.problems` 都帶 judge 的佔位句 `clean: the judge found it but did not say what or where (asked: …)
+→ write the correction into the prompt`，`look_fallback_pick` 把 `clean:` 開頭一律當硬傷，六張全被略過。
+改成含 `UNDESCRIBED`（`app.video_media.judge` 寫的佔位句）的 `no_text:`／`clean:` 不算硬傷，只有有具體描述的
+才略過；測試各加一個（全是佔位 clean → 選最高分；具體的 `clean: … duplicated …` 仍略過）。
