@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "episode": "kimi-k31-3d-delivery",
-  "updated_at": "2026-10-26T20:02:55.027555+00:00",
-  "status": "backend_pending_manual_candidate_full1080_CC9_resource_and_three_mobile_thumbnail_binary_verified_audio_held",
+  "updated_at": "2026-10-26T21:27:26.772695+00:00",
+  "status": "backend_pending_full1080_CC9_resource_three_thumbnails_and_metadata9_kit_links_verified_audio_held",
   "owner": "codex-ai-tech-news",
   "branch": "codex/ai-tech-kimi-20261026",
   "backend": {
@@ -14,12 +14,12 @@
     "source_approval": false,
     "raw_stage_field": "narration approved",
     "raw_stage_interpretation": "Name of the next reported checklist stage. narration_approved.done and final_video_approved.done are both false; this text is not an approval.",
-    "last_authenticated_readback_at": "2026-10-26T19:54:31.029Z",
+    "last_authenticated_readback_at": "2026-10-26T21:24:19.971Z",
     "readback_is_historical_snapshot": true,
     "binary_media_readback_completed": true,
     "pending_candidate_submission": "actual completed native manual final review, pending undecided",
     "server_language_choices_saved": false,
-    "readback_snapshot_scope": "Actual normal review-files full17 download; all previous14 and three current EN/KO/ES mobile thumbnail references independently hashed, same pending with old fullfalseQA/metadata/owner choices preserved.",
+    "readback_snapshot_scope": "Actual metadata-only samepending9-description replacement; independent normal projectGET HTTP200 full9values exact, all17 refs/fullfalseQA/manualflags/summary/choices/history preserved. Prior full17 binary download proof retained, not repeated.",
     "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
     "normal_manual_review": true,
     "verified_binary_refs": [
@@ -218,7 +218,10 @@
     "server_approval": false,
     "all13_readback_receipt": "receipts/production/root-final13-binary-readback.json",
     "all13_native_manifest": "receipts/production/backend-final13-review-files.json",
-    "earlier_four_reference_snapshot": "receipts/production/history/backend-four-reference-snapshot.json"
+    "earlier_four_reference_snapshot": "receipts/production/history/backend-four-reference-snapshot.json",
+    "current_metadata9_receipt": "receipts/production/metadata-adoption/current-backend-metadata9.json",
+    "metadata_kit_links_formally_adopted": true,
+    "metadata9_adoption_readback_at": "2026-10-26T21:24:19.971Z"
   },
   "research": {
     "videos": 8,
@@ -233,7 +236,7 @@
     "source_review_in_progress": false,
     "native_lint_first_actual_errors": 1,
     "native_lint_first_actual_warnings": 8,
-    "current_author_source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+    "current_author_source_sha256": "080ae77895d0c85e2e181f9a54972c6390938fd3d363dda982c35e51fd620cc7",
     "scenes": 42,
     "chapters": 6,
     "latest_native_lint": {
@@ -295,7 +298,15 @@
       ],
       "receipt_sha256": "8dc7f58d6957a89f6ce5b7dfd291142fa03df47ddeee880b40f8aaaafd260bb1"
     },
-    "editorial_adoption": "Owner delegated recommendation adopted by ROOT; no result/threshold changed, no all-new-rules-PASS claim."
+    "editorial_adoption": "Owner delegated recommendation adopted by ROOT; no result/threshold changed, no all-new-rules-PASS claim.",
+    "metadata_only_description_adoption": {
+      "at": "2026-10-26T21:27:26.772695+00:00",
+      "prior_full_source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+      "current_full_source_sha256": "080ae77895d0c85e2e181f9a54972c6390938fd3d363dda982c35e51fd620cc7",
+      "only_changed_field": "youtube.description",
+      "all114_narration_lines_and_speech_visual_narrative_hashes_unchanged": true,
+      "receipt": "receipts/production/metadata-adoption/actual-backend-description-adoption.json"
+    }
   },
   "original_demo": {
     "identity": "Deterministic editorial STL fixtures, never Kimi outputs.",
@@ -720,7 +731,18 @@
     "current_metadata_only_correction_hashes": {
       "id": "d29fc0b366b7359c2d7e7343b7db61386f31786e0227c73a014ea3a3071261b5",
       "vi": "b67898011b678bea31e859333c0762042ef93c61cdfe7fcc83158ceabf9e9dcc"
-    }
+    },
+    "current_metadata_adoption_hashes": {
+      "en": "d2e86d887b60896e9937418cab1a7f986f05f772ed50e702a9db55133f2b7473",
+      "ja": "a679ae9ec5e5914fb050a7cd674b60535ab2a0bc4cf26b1f21a06daa4682968a",
+      "ko": "967c85f91070ab8a77633dd62da2f55b055537b3c2d5b38f09baf57af4bf2a15",
+      "es": "18e21b8497a8ee2a59e01d2108cc8d25aca4d266e89b24fdfeb4f9c4156ef42e",
+      "pt": "6338e7c7972f0259b5960eebec1459399fc215198539f412942924075e76ef1b",
+      "id": "44b98646a24df66a002c9413de6be3cbd1c6d861e3e34962f96a233fe710dd0d",
+      "vi": "5e698957933166e81e537f9ac6c6fb84538fc44436bd516dc9a22c3e8d2b8469",
+      "th": "cdd8be53a7d5f07e46788bca589a72acd4d8e505211d697ab4a170bb93b3796d"
+    },
+    "current_metadata_only_correction_hashes_are_pre_description_adoption_snapshot": true
   },
   "render": {
     "first_native_exit": 5,
@@ -754,7 +776,7 @@
       "current_observed_clipping": false
     }
   },
-  "snapshot_notice": "Actual first native manual pending review, full1080 supplement and separate nine-SRT append all truly completed. Normal review-files downloaded13/13 and ROOT verified every full binary hash and size at the recorded timestamp. Metadata9 is exact to nativecompose. Native QA remains10/11 overallfalse/narrationfalse; nativeR4false,47caption+3thumbnail warnings and unknownASR remain. No source/final approval, checked foreignM4A or approved-source package completion.",
+  "snapshot_notice": "Latest actual metadata-only adoption and independentHTTP200 readback keep samepending17, fulloldQAfalse/manualflags/history/choices. All9 descriptions include original teaching-kit URL; titles and all old facts/negations/chapters/sources exact. Earlier13/14/17binary and DRAFT records are historical snapshots. No new wholeQA/audio/source approval, checkedforeignM4A or languagepackage completion.",
   "normal_final_QA": {
     "executed": true,
     "native_return_code": 1,
@@ -1044,8 +1066,8 @@
   "publish_package_remaining": [
     "Complete genuine current audio acceptance; do not replay unknownASR until provider facts support normal continuation.",
     "Deliver eight current checked M4A and their actual dub-timed CC/metadata, then normal approved-source package/language batch tied to approved main.",
-    "Add public original teaching-kit URL in title-description packages via normal metadata update/re-review before publish package; current descriptions lack it.",
-    "Owner source/final approval remains pending; no serverapproval, merge, deploy or YouTube upload."
+    "Owner source/final approval remains pending; no serverapproval, merge, deploy or YouTube upload.",
+    "Original-kit URL is now adopted in actual nine descriptions; regenerate the normal approved-source package after audio/final approvals, then bind languages to the approved film."
   ],
   "continuation_handoff": {
     "recorded_at": "2026-10-26T17:48:43.029305+00:00",
@@ -1226,5 +1248,148 @@
     "no_paid_QA_policy_speech_projectPUT_approval_merge_deploy_YouTube": true,
     "receipt": "receipts/production/thumbnail-mobile/actual-backend-thumbnail-delivery.json",
     "images_and_limits": "receipts/production/thumbnail-mobile/README.md"
+  },
+  "metadata_adoption": {
+    "schema_version": 1,
+    "episode": "kimi-k31-3d-delivery",
+    "kind": "actual_completed_nine_description_original_kit_adoption",
+    "recorded_at": "2026-10-26T21:27:26.772695+00:00",
+    "backend_url": "https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery",
+    "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "status": "pending",
+    "decision": null,
+    "final_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "source_before_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+    "source_after_sha256": "080ae77895d0c85e2e181f9a54972c6390938fd3d363dda982c35e51fd620cc7",
+    "source_change": "youtube.description only; speech/visual/narrative/policy and all eight dub/translation fingerprints unchanged",
+    "locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "metadata_adopted": true,
+    "metadata9_file": "current-backend-metadata9.json",
+    "metadata9_sha256": "f2911babe7cff91d83c1970b59bc9f30c03a9ce16530b62b0866616fa6c9d52a",
+    "measurements": [
+      {
+        "locale": "zh-TW",
+        "description_utf8_bytes": 2566,
+        "description_sha256": "89c6abe464fabd3eda1cdb175409b2ef39190604e4293a797b5f45b600d63576",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "en",
+        "description_utf8_bytes": 2744,
+        "description_sha256": "a12fc11f1472bd2b183a4b663bb1af3e19bfd9c8972878b7ea59e32010a197e6",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "ja",
+        "description_utf8_bytes": 3087,
+        "description_sha256": "a3120cc6f9d5a46e99d76338a213cdfa9a9941c3c7d8cba35f8d5797b535936c",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "ko",
+        "description_utf8_bytes": 2865,
+        "description_sha256": "da1ab0d866338f484147d2535c44bb5538814f4fba254cada76e51398119785f",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "es",
+        "description_utf8_bytes": 2789,
+        "description_sha256": "5991b7155ea8a3eb596e198a0f9db788635a1fd7fb3a4d0cf81f45a2deb31c54",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "pt",
+        "description_utf8_bytes": 2774,
+        "description_sha256": "12215c514a8d080a609a4a8ff7557bc0d0e641031c2e61f3d0aabad7c0607bdb",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "id",
+        "description_utf8_bytes": 2581,
+        "description_sha256": "53f305e8d416b55fc66a55b31b7e40174f0c91e1698633eb9a8ca7a64e133172",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "vi",
+        "description_utf8_bytes": 2935,
+        "description_sha256": "999adbf376075a09e618cc6835725271395532a23032eb7604ea9d31e55b417b",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      },
+      {
+        "locale": "th",
+        "description_utf8_bytes": 3163,
+        "description_sha256": "871db87a0486f497a07149c90e7c55282d7f6f8fdd2acd7e7d4a8bcaf7b327f1",
+        "old_full_description_exact_after_removing_one_new_block": true,
+        "title_unchanged": true
+      }
+    ],
+    "canonical_native_process_exit_code": 0,
+    "canonical_native_session": 65234,
+    "canonical_native_pid": 333598,
+    "native_sheet_calls": 1,
+    "native_single_locale_merge_calls": 8,
+    "canonical_protected_files_independently_verified": 1520,
+    "backend_helper_process_exit_code": 0,
+    "backend_helper_session": 95537,
+    "backend_helper_pid": 333692,
+    "backend_helper_finished_at": "2026-10-26T21:24:07.853Z",
+    "backend_helper_counts": {
+      "auth_reads": 1,
+      "project_GET": 3,
+      "review_POST": 1,
+      "denied": 0
+    },
+    "additional_independent_project_GET_HTTP": 200,
+    "additional_independent_project_GET_at": "2026-10-26T21:24:19.971Z",
+    "all9_actual_values_independently_readback_exact": true,
+    "all17_existing_refs_preserved": true,
+    "prior_full17_binary_proof": "../thumbnail-mobile/root-final17-binary-readback.json",
+    "prior17_full_download_not_repeated_this_phase": true,
+    "full_old_QA_manualflags_summary_history_choices_preserved": true,
+    "foreign_checked_M4A": 0,
+    "QA_ok": false,
+    "QA_passed": 10,
+    "QA_total": 11,
+    "caption_warnings": 47,
+    "historical_foreign_thumbnail_warnings": 3,
+    "R4_false_preserved": true,
+    "parent_audio_status": "blocked",
+    "unknown_ASR_journal_and_both_global_holds_byteexact": true,
+    "existing_DRAFT_resource_attachment_retained_as_history": true,
+    "old_DRAFT_bytes_and_flags_not_rewritten": true,
+    "native_lease_released": true,
+    "no_new_files_or_dubs_uploaded": true,
+    "QA_policy_TTS_ASR_calls": 0,
+    "project_PUT_calls": 0,
+    "server_approval": false,
+    "approved_source_package_or_language_batch_complete": false,
+    "API_has_no_atomic_CAS": true,
+    "deployed_UI_layout_or_publication_not_claimed": true,
+    "no_merge_deploy_or_YouTube": true,
+    "independent_root_trace": "root-independent-backend-readback.json",
+    "canonical_root_review": "root-actual-canonical-review.json",
+    "receipt": "receipts/production/metadata-adoption/actual-backend-description-adoption.json",
+    "successful_one_use_intent_preserved": true,
+    "helper_version_sha256": "c3850b1f8a15e45f14c636e2b4299d6af886a50c3d6d5bcf001e80114bad6402",
+    "helper_profile_sha256": "15c94fd5d3757fbabc7788e7db3d01def8ba2f36d795b10a3897beb777934c92",
+    "helper_intent_id": "kimi-metadata9-adopt-20261026t212335"
   }
 }

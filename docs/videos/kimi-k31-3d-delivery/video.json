@@ -20,7 +20,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "Kimi K3.1 Pro：漂亮3D，怎樣才算能用？",
-    "description": "錄製／查核：2026-10-26（台北）。Kimi K3.1 Pro把3D創作列為主打能力；模型下載後，怎樣才算能交付？\n給想拿AI三維作品做展示、改模型或交接零件的人：用同一枚原創墊圈，比較兩份STL，從外部尺寸、封閉表面走到中央通孔與最小淨空。\n\n兩份檔案都是編輯製作的教具，填孔是刻意反例，不是Kimi生成失誤。名義外徑40 mm、孔徑16 mm、厚5 mm；64段近似圓的實際最小淨空約15.980727 mm。有孔不等於滿足最小淨空至少16 mm的要求。\n\n教材含本地模型檢視頁、原始STL、JSON規格與Python檢查器。解壓至同一資料夾，在demo執行：\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\n本片未試用Kimi帳號、執行其模型、親測匯出或實際列印。官方可下載列印資產的已讀說明未指定STL副檔名；完整模型權重承諾2026-11-04前釋出，本輪未驗證新權重已取得。BenchCAD92.7是with-tools VoxelIoU，不是列印成功率。\n\n本地驗收只涵蓋指定軸向與有限取樣、外形尺寸、網格邊及體積；沒有驗完任意孔、自交、最小壁厚、切片、材料、承重或製造條件。通過不是製造認證。",
+    "description": "錄製／查核：2026-10-26（台北）。Kimi K3.1 Pro把3D創作列為主打能力；模型下載後，怎樣才算能交付？\n給想拿AI三維作品做展示、改模型或交接零件的人：用同一枚原創墊圈，比較兩份STL，從外部尺寸、封閉表面走到中央通孔與最小淨空。\n\n兩份檔案都是編輯製作的教具，填孔是刻意反例，不是Kimi生成失誤。名義外徑40 mm、孔徑16 mm、厚5 mm；64段近似圓的實際最小淨空約15.980727 mm。有孔不等於滿足最小淨空至少16 mm的要求。\n\n教材含本地模型檢視頁、原始STL、JSON規格與Python檢查器。解壓至同一資料夾，在demo執行：\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\n本片未試用Kimi帳號、執行其模型、親測匯出或實際列印。官方可下載列印資產的已讀說明未指定STL副檔名；完整模型權重承諾2026-11-04前釋出，本輪未驗證新權重已取得。BenchCAD92.7是with-tools VoxelIoU，不是列印成功率。\n\n本地驗收只涵蓋指定軸向與有限取樣、外形尺寸、網格邊及體積；沒有驗完任意孔、自交、最小壁厚、切片、材料、承重或製造條件。通過不是製造認證。\n\n原創教具下載（CC0；非Kimi模型輸出）： https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
     "tags": [
       "Kimi K3.1 Pro",
       "Kimi 3D Make",

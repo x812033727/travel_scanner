@@ -1,6 +1,6 @@
 {
   "title": "Kimi K3.1 Pro：きれいな3D、使える条件は？",
-  "description": "収録・確認：2026-10-26（台北）。3D制作を推すKimi K3.1 Pro。ダウンロード後の納品条件は？\nAIの3Dを展示・編集・引き継ぐ人へ。自作ワッシャーのSTL2つで、外形寸法と閉じた表面から、貫通穴と最小クリアランスまで確認します。\n\n両方とも編集部自作の教材です。穴埋めは意図した反例で、Kimiの生成ミスではありません。呼び寸法は外径40 mm、穴径16 mm、厚さ5 mm。64分割の穴の実測最小クリアランスは約15.980727 mm。穴があっても16 mm以上とは限りません。\n\n教材はローカルビューア、元STL、JSON仕様、Python検査器です。同じ場所に展開し、demoで実行：\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nKimiのアカウント利用、モデル実行、書き出し検証、実物のプリントは未実施です。読んだ公式のプリント用アセットの説明はSTLを指定していません。全ウェイトは2026-11-04より前の公開予定で、取得できたとは未確認です。BenchCAD 92.7はwith-tools VoxelIoU（max effort／Claude Code harness、オープンモデル群1,000/17,900無作為抽出）。プリント成功率ではありません。\n\n検査は指定軸の有限サンプル、外形寸法、メッシュの辺、体積に限定。任意の穴、自己交差、最小肉厚、スライス、材料、耐荷重、製造条件は未検証です。合格は製造認証ではありません。最小クリアランス16 mm以上は追加要求で、元の仕様・検査器には未実装です。CC0は自作教材の許諾で、Kimiのアセットの許諾ではありません。",
+  "description": "収録・確認：2026-10-26（台北）。3D制作を推すKimi K3.1 Pro。ダウンロード後の納品条件は？\nAIの3Dを展示・編集・引き継ぐ人へ。自作ワッシャーのSTL2つで、外形寸法と閉じた表面から、貫通穴と最小クリアランスまで確認します。\n\n両方とも編集部自作の教材です。穴埋めは意図した反例で、Kimiの生成ミスではありません。呼び寸法は外径40 mm、穴径16 mm、厚さ5 mm。64分割の穴の実測最小クリアランスは約15.980727 mm。穴があっても16 mm以上とは限りません。\n\n教材はローカルビューア、元STL、JSON仕様、Python検査器です。同じ場所に展開し、demoで実行：\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nKimiのアカウント利用、モデル実行、書き出し検証、実物のプリントは未実施です。読んだ公式のプリント用アセットの説明はSTLを指定していません。全ウェイトは2026-11-04より前の公開予定で、取得できたとは未確認です。BenchCAD 92.7はwith-tools VoxelIoU（max effort／Claude Code harness、オープンモデル群1,000/17,900無作為抽出）。プリント成功率ではありません。\n\n検査は指定軸の有限サンプル、外形寸法、メッシュの辺、体積に限定。任意の穴、自己交差、最小肉厚、スライス、材料、耐荷重、製造条件は未検証です。合格は製造認証ではありません。最小クリアランス16 mm以上は追加要求で、元の仕様・検査器には未実装です。CC0は自作教材の許諾で、Kimiのアセットの許諾ではありません。\n\nオリジナル教材（CC0、Kimiの出力ではありません）： https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
   "tags": [
     "Kimi K3.1 Pro",
     "Kimi 3D Make",
@@ -36,7 +36,7 @@
       "new-use-new-spec": "16ff0f3eba91"
     },
     "title": "952836668e80",
-    "description": "46848a68fd88",
+    "description": "343ab9aa8b2d",
     "tags": "a542d0d7b55c",
     "thumbnail": "d21661b0f36a"
   },

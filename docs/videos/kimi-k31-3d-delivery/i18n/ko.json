@@ -1,6 +1,6 @@
 {
   "title": "Kimi K3.1 Pro: 멋진 3D, 정말 쓸 수 있을까?",
-  "description": "녹화·확인: 2026-10-26(타이베이). Kimi K3.1 Pro의 3D를 다운로드한 뒤, 언제 납품해도 될까요? AI 작품 전시·수정·부품 인수를 위해 같은 와셔의 STL 두 개로 외부 치수, 닫힌 표면, 관통 구멍과 최소 통과 지름을 비교합니다.\n\n두 파일은 Mokaair 자체 제작 교구(CC0)입니다. 채운 구멍은 의도한 반례로, Kimi 오류가 아닙니다. 공칭 외경 40 mm·구멍 16 mm·두께 5 mm. 원을 근사한 64변의 실제 최소 통과 지름은 약 15.980727 mm여서, 16 mm 이상 요구에 못 미칩니다. 새 요구는 기존 검사기에 구현되지 않았습니다.\n\n로컬 뷰어·원본 STL·JSON 규격·Python 검사기를 같은 폴더에 풀고 demo에서 실행:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nKimi 계정·모델 실행·내보내기·실제 출력은 미시험입니다. 읽은 공식 다운로드 설명은 STL 확장자를 명시하지 않습니다. 전체 가중치는 2026-11-04 전 공개 약속이며, 이번에 새 가중치 확보를 확인하지 않았습니다. BenchCAD 92.7은 with-tools VoxelIoU로, 출력 성공률이 아닙니다. 공개 모델군 평가는 17,900개 중 무작위 1,000개로, max effort·Claude Code harness 조건입니다.\n\n로컬 검수는 지정 축·한정 표본·외부 치수·메시 변·부피만 확인합니다. 임의 구멍·자기 교차·최소 벽 두께·슬라이싱·재료·하중·제조 조건은 미검증입니다. 통과는 제조 인증이 아닙니다.",
+  "description": "녹화·확인: 2026-10-26(타이베이). Kimi K3.1 Pro의 3D를 다운로드한 뒤, 언제 납품해도 될까요? AI 작품 전시·수정·부품 인수를 위해 같은 와셔의 STL 두 개로 외부 치수, 닫힌 표면, 관통 구멍과 최소 통과 지름을 비교합니다.\n\n두 파일은 Mokaair 자체 제작 교구(CC0)입니다. 채운 구멍은 의도한 반례로, Kimi 오류가 아닙니다. 공칭 외경 40 mm·구멍 16 mm·두께 5 mm. 원을 근사한 64변의 실제 최소 통과 지름은 약 15.980727 mm여서, 16 mm 이상 요구에 못 미칩니다. 새 요구는 기존 검사기에 구현되지 않았습니다.\n\n로컬 뷰어·원본 STL·JSON 규격·Python 검사기를 같은 폴더에 풀고 demo에서 실행:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nKimi 계정·모델 실행·내보내기·실제 출력은 미시험입니다. 읽은 공식 다운로드 설명은 STL 확장자를 명시하지 않습니다. 전체 가중치는 2026-11-04 전 공개 약속이며, 이번에 새 가중치 확보를 확인하지 않았습니다. BenchCAD 92.7은 with-tools VoxelIoU로, 출력 성공률이 아닙니다. 공개 모델군 평가는 17,900개 중 무작위 1,000개로, max effort·Claude Code harness 조건입니다.\n\n로컬 검수는 지정 축·한정 표본·외부 치수·메시 변·부피만 확인합니다. 임의 구멍·자기 교차·최소 벽 두께·슬라이싱·재료·하중·제조 조건은 미검증입니다. 통과는 제조 인증이 아닙니다.\n\n직접 만든 교육 자료(CC0, Kimi 출력물 아님): https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
   "tags": [
     "Kimi K3.1 Pro",
     "Kimi 3D Make",
@@ -36,7 +36,7 @@
       "new-use-new-spec": "16ff0f3eba91"
     },
     "title": "952836668e80",
-    "description": "46848a68fd88",
+    "description": "343ab9aa8b2d",
     "tags": "a542d0d7b55c",
     "thumbnail": "d21661b0f36a"
   },
