@@ -5,3 +5,4 @@
 - 主機上第一版 curio-s30 停在「成片已核准、未上架」，第二版用新 slug，不動第一版。
 - 2026-10-26 站主要求把第二版做完。原本的工作階段做到旁白在站上核准就停了，工作目錄不在這個容器；`review-files --dry-run` 只取得到 `audio/narration.m4a`，拿不回 tts 的逐句音檔與時間軸，所以重新跑 tts（旁白要站主重新核准），再畫插圖、送分鏡。大綱與稿子照站主 10-25 的指示記下核准。
 - 插圖第一輪 US$1.50，8 個鏡頭三張都沒過 judge。七個是「物件或手的特寫」（two-books、beacon-water-b、spill-b、collapse-b、same-letter、which-year 的手、gaochang-b 的特寫）：可愛畫風會把物件畫成小人頭、在手掌上長出臉。全部改成一個人物的中景、只做一個動作，玄奘統一寫成「shaven-headed pilgrim in a dusty grey robe」；wang-xiang 原本兩個人（跪著的那位）也改成只有烽火台官員一人。
+- 成片 qa 10/11：pace 沒過，gifts（統計卡 18.2 秒）與 yuannian（比較卡 23 秒）超過 15 秒。照站主處理 S01 時的決定（「我修，你再重審」），把 x081 拆成 three-years 鏡頭（國王比三根手指）、x102 拆成 old-history（唐代史官寫史）、x103 拆成 two-years（學者聳肩），重畫三張後分鏡重送，成片在分鏡核准後重做。
