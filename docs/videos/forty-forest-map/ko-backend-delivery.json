@@ -1,0 +1,972 @@
+{
+  "observed_at": "2026-10-25T23:57:27.324Z",
+  "slug": "forty-forest-map",
+  "locale": "ko",
+  "mode": "explicit_root_execute_checked_audio_only",
+  "ok": true,
+  "stage": "checked_locale_audio_roles_attached",
+  "upload_started": true,
+  "review_post_attempted": true,
+  "part_receipts": [
+    {
+      "part": 0,
+      "bytes": 4194304,
+      "received": [
+        0
+      ],
+      "complete": false
+    },
+    {
+      "part": 1,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1
+      ],
+      "complete": false
+    },
+    {
+      "part": 2,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1,
+        2
+      ],
+      "complete": false
+    },
+    {
+      "part": 3,
+      "bytes": 103116,
+      "received": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "complete": true
+    }
+  ],
+  "http_errors": [],
+  "all_eight_ready": false,
+  "cc_metadata_language_batch_ready": false,
+  "remote_binary_stream_verification": {
+    "performed": false,
+    "reason": "Normal tool GET project, PUT file parts and POST reviews only. Verification uses server upload assembly and authenticated role SHA/size metadata; no authenticated binary GET route is exposed or called."
+  },
+  "remote_compare_and_swap_available": false,
+  "concurrency_guard_scope": "Exact owner-choice and every-review GET snapshots compared immediately before POST; endpoint has no conditional/CAS parameter. Post-readback must preserve all old fields/roles and decisions.",
+  "preflight": {
+    "locale": "ko",
+    "checked": 92,
+    "flags": 0,
+    "skipped": 0,
+    "kept": 0,
+    "file": "/workspace/work/videos/forty-forest-map/dubs/ko.m4a",
+    "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+    "bytes": 12686028,
+    "speech_hash": "c6d70ecaef91a15d",
+    "translation_hash": "e76d57184885fec4",
+    "speech_fingerprint": "5da6d39d9b80ae30",
+    "duration": 512.805,
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated_lufs": -14,
+    "true_peak_dbtp": -2.9,
+    "fit_windows": 89,
+    "fit_tempo_max": 1.14,
+    "proof_file": "/workspace/work/ai-tech-next/forty-ko-independent-media-audit.json",
+    "proof_sha256": "d734ba704375d573480dbf708982fbc16a96d242663115c72470107fdb161abe",
+    "native_completed_at": "2026-10-25T23:50:57.346Z",
+    "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-50-47-886Z.log",
+    "lines": [
+      {
+        "id": "8aw6",
+        "wav_sha256": "fcad1c982b76631515a6572a719a1456ba00ed7c5f2b9e6f69d129318e0ff612",
+        "raw_intended": "저는 2020년 대만 자료에서 이 ForTy 녹색 격자를 추출했습니다.",
+        "full_spoken_form": "저는 2020년 대만 자료에서 이 ForTy 녹색 격자를 추출했습니다.",
+        "entry_sha256": "1e257874d7ee28c163c51cab5280bcc70795c45125c352005cb40caa0964844e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "gngj",
+        "wav_sha256": "a89afc6554449957584b2f18f19be8e102ad3f5c3201396d03a7a57edcbd5ab8",
+        "raw_intended": "6종인데 왜 값은 5개만 저장합니까?",
+        "full_spoken_form": "6종인데 왜 값은 5개만 저장합니까?",
+        "entry_sha256": "3a78337aaf81e5e5679feda7fa4c4f2cb2749058030b02cbca600d76bd39f6ba",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ep85",
+        "wav_sha256": "c2d174df8d78ac8cbab6d3f57bd7df773041942f01272daf0d00cd3d95a6d6fe",
+        "raw_intended": "이 248은 무슨 단위입니까?",
+        "full_spoken_form": "이 248은 무슨 단위입니까?",
+        "entry_sha256": "518c5bf0d74092aa6b487abfdd299e17ce66208ab5e5af1d34032de3b5de6fcc",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jw6i",
+        "wav_sha256": "e454998d33621e3cb37dc9279126e46d04866da2c4f1cb635a9053acbc970c8e",
+        "raw_intended": "다른 녹색 칸도 결과가 같습니까?",
+        "full_spoken_form": "다른 녹색 칸도 결과가 같습니까?",
+        "entry_sha256": "f6838a3074d89425368e3deb3a502bd60f45c69edcaa8c9ada27606805b2166a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5ur9",
+        "wav_sha256": "66a9afbc3ed0a71a218b3c8687e0b0c3232712410ca77bbfbcef3aa6607a9cf8",
+        "raw_intended": "이번 주 DeepMind가 소개한 ForTy, 이 2개 격자부터 읽습니다.",
+        "full_spoken_form": "이번 주 DeepMind가 소개한 ForTy, 이 2개 격자부터 읽습니다.",
+        "entry_sha256": "ddc16d42c34d497bec9cc2d001f482c02f992528cad0c7937440a70ec0fcb119",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "m2p6",
+        "wav_sha256": "f2f1021f8ae0ca61c8baab32db6123355b8163f55c147c7e56dd436b0ac79cc2",
+        "raw_intended": "이 녹색 격자는 나무뿐 아니라 자란 방식과 쓰임도 알려 줍니다.",
+        "full_spoken_form": "이 녹색 격자는 나무뿐 아니라 자란 방식과 쓰임도 알려 줍니다.",
+        "entry_sha256": "1fb690d422091fda540f1b9ca35fb4442c265495870ae76a85cb5cf0b71f33fb",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "erqz",
+        "wav_sha256": "4238419ed7353415e53d81060eaa0b2bcdf2ad9f1ff66bb59874cec5481f5561",
+        "raw_intended": "원시림 조건은 자생 수종·가시적 인위 교란 없음입니다.",
+        "full_spoken_form": "원시림 조건은 자생 수종·가시적 인위 교란 없음입니다.",
+        "entry_sha256": "e699fdc3d3eefca2e3a98c81f35d91e49711801b6c30149dbf11a85c88febefc",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "t4w3",
+        "wav_sha256": "52381243d19b8fa4a5b37431733abaa167030b1e46308c377fb4d784ede3c907",
+        "raw_intended": "자연갱신림은 주로 자연 재생하며 회복기 이차림도 포함합니다.",
+        "full_spoken_form": "자연갱신림은 주로 자연 재생하며 회복기 이차림도 포함합니다.",
+        "entry_sha256": "826ef792d91eaedbf2cb555cbc95bc22e1ee3a0edda45344b333057d5aa29c6b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "66nz",
+        "wav_sha256": "527eaf66da5703b99c9323fa6aa7e8a80e7fa71e3332c1c686011658f90a96a6",
+        "raw_intended": "사람이 심은 숲은 표에서 어떻게 나눕니까?",
+        "full_spoken_form": "사람이 심은 숲은 표에서 어떻게 나눕니까?",
+        "entry_sha256": "3d7281d9e73f949156bf8c665245f576fe3e6d11109d966b9f1eec4db8914e07",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3pse",
+        "wav_sha256": "e9d07a4706008aa31fbd0b6840c8d1010d0d47787e354293adf966c8723a8711",
+        "raw_intended": "식재림은 주로 식재·파종으로 조성하며, 자료상 벌채 주기는 40년 초과입니다.",
+        "full_spoken_form": "식재림은 주로 식재·파종으로 조성하며, 자료상 벌채 주기는 40년 초과입니다.",
+        "entry_sha256": "dcb55e42ee9e317ee02cf7911650466c0c0c6f3306a23880d1da34ff72b77ab5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "v9fh",
+        "wav_sha256": "8d769cf660942cd0139cbd8994bfe95b3c127a23851ae0a10b8957a477c43adc",
+        "raw_intended": "벌채 주기는 식재·관리부터 재수확까지의 계획이며, 현재 수령과 다릅니다.",
+        "full_spoken_form": "벌채 주기는 식재·관리부터 재수확까지의 계획이며, 현재 수령과 다릅니다.",
+        "entry_sha256": "ad694e8cf17e73eb21d95f7538f3a96317ebeaa6b54710a98df91f7d6c77ea36",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "7id9",
+        "wav_sha256": "5c81d8e6fec15e683e730cd2c9169c7224b8d720192461a04697388384c37263",
+        "raw_intended": "집약 조림지는 관리가 더 집약적이며 대개 수종은 적고 나이·간격은 일정합니다.",
+        "full_spoken_form": "집약 조림지는 관리가 더 집약적이며 대개 수종은 적고 나이·간격은 일정합니다.",
+        "entry_sha256": "e7d878716d886c3f35914129f8c4ade814d8d8124e60fad731b247ce3d465436",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "2vcb",
+        "wav_sha256": "c1056d2330ff7de5ee5384c88eddf57f06e2099f9a2dd93eddedc03d2f121248",
+        "raw_intended": "벌채 주기 조건은 40년 이하입니다.",
+        "full_spoken_form": "벌채 주기 조건은 40년 이하입니다.",
+        "entry_sha256": "e84d4713c459a588979f7c3c97c5f4307d138bffc4708984530d8fd7a121ff23",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "yiya",
+        "wav_sha256": "45fbe1bf6c9e1567ff72a84b15b0194210c8ffc92a4604db48005c7c923862bd",
+        "raw_intended": "수목 작물·혼농임업은 기름야자·고무·과수원 등으로, 비목재 농산물을 생산합니다.",
+        "full_spoken_form": "수목 작물·혼농임업은 기름야자·고무·과수원 등으로, 비목재 농산물을 생산합니다.",
+        "entry_sha256": "cc82692764de4cbfc594185d6c7416053b99bfef86716dda54cb3199391d7f66",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "rrgq",
+        "wav_sha256": "f12a362240cc544476b2c99a7ac38ce12036c63d3726dd2000201e0eee5455e1",
+        "raw_intended": "기타 토지엔 도시 수목·성긴 목본도 있을 수 있습니다.",
+        "full_spoken_form": "기타 토지엔 도시 수목·성긴 목본도 있을 수 있습니다.",
+        "entry_sha256": "bfad41de8480a52eda0e0230682ea56eee29f36a6e5ac672a2a8280be53f5bf9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "fbc5",
+        "wav_sha256": "337a7e037a80fcd3e910e167c8ef79abc4668c0fa3e7873dde94b3081fd44765",
+        "raw_intended": "6개 범주는 위치가 고정되니 값과 이름을 함께 읽습니다.",
+        "full_spoken_form": "6개 범주는 위치가 고정되니 값과 이름을 함께 읽습니다.",
+        "entry_sha256": "7512dbc12754f2552530f8aa81349c01f583ac833de2b307798877a6e4b20b2b",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "gsa7",
+        "wav_sha256": "b1d456151f1176cf9ce4b3c235dd360527270fae60fecce7f4d8ae03f7a84592",
+        "raw_intended": "위성 영상에서 모델은 어떤 단서로 차이를 구분합니까?",
+        "full_spoken_form": "위성 영상에서 모델은 어떤 단서로 차이를 구분합니까?",
+        "entry_sha256": "9bd7c9cb356459c59bdcf039053454896ea97b0b81eb3e794b2fbdca251d2ed9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "9wmz",
+        "wav_sha256": "eb903fff08e537be64d770043c6ec7ee44a54b6ff990c4ec30d286acb6a96822",
+        "raw_intended": "AlphaEarth는 먼저 다년간 위성 관측을 숫자 묶음으로 정리합니다.",
+        "full_spoken_form": "AlphaEarth는 먼저 다년간 위성 관측을 숫자 묶음으로 정리합니다.",
+        "entry_sha256": "d99e1a711cd6db99e2f184f4d3546fa728a78400bbb73e8e3b50b62b7af84842",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jkby",
+        "wav_sha256": "92f465b844c53fa586d2e49b18451b6d8ac59f6fc3729a276d0838fd81e83c29",
+        "raw_intended": "ForTy는 수치로 식재 형태·계절·생장주기 단서를 봅니다.",
+        "full_spoken_form": "ForTy는 수치로 식재 형태·계절·생장주기 단서를 봅니다.",
+        "entry_sha256": "9169b9c609449969e2fa5fe66b0778695cff574ba4f03997e056ad59fba9887a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5nt9",
+        "wav_sha256": "aa11c04baf5eac642afdcc32d284d523eaf93f61ab34caf07666b629a3857525",
+        "raw_intended": "학습엔 전문가·지역 자료의 표기 지점도 써 단서와 토지 유형을 연결합니다.",
+        "full_spoken_form": "학습엔 전문가·지역 자료의 표기 지점도 써 단서와 토지 유형을 연결합니다.",
+        "entry_sha256": "5f7023672bfa1f58656c82bd466e38bd119ed0661211fe048053ceedfe72e91e",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "m8cb",
+        "wav_sha256": "f4d8447bca9944ee2bdfb5e741d3d8e89905cdb4d5c453ec1dc5feef7f6f9f27",
+        "raw_intended": "녹색 칸의 정수 5개에 범주별 모델 점수가 담깁니다.",
+        "full_spoken_form": "녹색 칸의 정수 5개에 범주별 모델 점수가 담깁니다.",
+        "entry_sha256": "2b667a1fc5d57c72dbac2e85d4b640a75cd02d608bfd68b3b00ef99c9b20cd9b",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "p2ry",
+        "wav_sha256": "8388077142986446fd4a203f987f00bb87df8f149c6a3c422fbdc4d8c7cf7013",
+        "raw_intended": "5개 값은 자료 연도·위치를 확인해 찾습니다.",
+        "full_spoken_form": "5개 값은 자료 연도·위치를 확인해 찾습니다.",
+        "entry_sha256": "74ff793753f418993595d26008b2172651bb89c24b53fdf0b5cd744f467ddf87",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "u5js",
+        "wav_sha256": "4ee7820af80635aece0c8bfd64ecab46cc6f833da8f411b9811027c1dacee2ec",
+        "raw_intended": "위치는 동경 121.4도, 북위 24.7도를 사용합니다.",
+        "full_spoken_form": "위치는 동경 121.4도, 북위 24.7도를 사용합니다.",
+        "entry_sha256": "49a3e748ac7d0b5d6ff55dde1e0bf013a52a196a3eff89df30672e92e1a322c0",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "7732",
+        "wav_sha256": "c41211907379d63b3fe0e831a6a82306991b48d7bad6a548f1cd14a15bda6e93",
+        "raw_intended": "지정 칸 주변 10×10칸, 계산할 1칸만 빨간 틀입니다.",
+        "full_spoken_form": "지정 칸 주변 10×10칸, 계산할 1칸만 빨간 틀입니다.",
+        "entry_sha256": "164e6048e6bc8e6332d6a21b49464845b8ca901d224f963822b69cf781e4756f",
+        "accepted_by": "native_second_Jev"
+      },
+      {
+        "id": "yi97",
+        "wav_sha256": "81557a7bee9da50ae7d946f0ef36e8cb4630d94413b39b2fb8e58d2b743c394a",
+        "raw_intended": "10m 출력 격자지, 나무별 위치표는 아닙니다.",
+        "full_spoken_form": "10m 출력 격자지, 나무별 위치표는 아닙니다.",
+        "entry_sha256": "e8cbe11c1a4bb274ea92cc083c36cec16d6108ffde8a510537691b3c9a601cfa",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "2k27",
+        "wav_sha256": "6573912f3dd5d225a04e7ccc968284e7ff6d4dbe085f577747427fb6b27194af",
+        "raw_intended": "값 옆의 고정 범주명이 범주 혼동을 막습니다.",
+        "full_spoken_form": "값 옆의 고정 범주명이 범주 혼동을 막습니다.",
+        "entry_sha256": "ecb1330041c9577f49b7b9f67df10c49f34191c8d72b29b6f8bcf1a77390fffc",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "vk36",
+        "wav_sha256": "5cf0c85f2bfd5a38f4150267eb68d8def0f03d69e5d0e02cec1947b39f8b830c",
+        "raw_intended": "6개 범주의 합은 250이고, 255는 자료 없음 표시입니다.",
+        "full_spoken_form": "6개 범주의 합은 250이고, 255는 자료 없음 표시입니다.",
+        "entry_sha256": "3d059c3fbb82bc573d07805b53d869c462626dab569e86acb4cefee7c8100fe4",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "gfes",
+        "wav_sha256": "0379137b120ca4fab5955a461c9624731ac6bcfce4f6df95519c44d2b29afa0a",
+        "raw_intended": "무자료 표시 칸은 제외하며 점수로 안 봅니다.",
+        "full_spoken_form": "무자료 표시 칸은 제외하며 점수로 안 봅니다.",
+        "entry_sha256": "722495342240567c2d584f5c9bcbb717dac172b6128afd796de87d408ac4ee51",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "e826",
+        "wav_sha256": "98ab2d865c65fa1c868dab6623fa19149ba86549494fab9a21877efc75abd238",
+        "raw_intended": "5개 값은 유효해 기타 토지값 보충 후 6종을 비교합니다.",
+        "full_spoken_form": "5개 값은 유효해 기타 토지값 보충 후 6종을 비교합니다.",
+        "entry_sha256": "87af6cc56bec19c4dfdd88040207b2ba816c0e80c55af207d12eafc83ce3c1e9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "svhy",
+        "wav_sha256": "d56cb43d424a149ce886601311050a65955e72111add4f09982b4ce80d8e961c",
+        "raw_intended": "필드명도 붙입니다. 숫자만으론 범주를 모릅니다.",
+        "full_spoken_form": "필드명도 붙입니다. 숫자만으론 범주를 모릅니다.",
+        "entry_sha256": "8b274b31eacde97d6e65719e6b0c6a3e560df89ad71776e2e0efa53d96e71496",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "3gwz",
+        "wav_sha256": "b4ff724d91040e07017666e3aaf0c35a7a37769228b441dd89016ea53f3df420",
+        "raw_intended": "처음에 빠져 있던 6번째 범주는 표에 어떻게 채웁니까?",
+        "full_spoken_form": "처음에 빠져 있던 6번째 범주는 표에 어떻게 채웁니까?",
+        "entry_sha256": "cfbdf442d52fef51a27ac20b495306e4ead3e392a350d191ad5903bf1ded041a",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "7iv8",
+        "wav_sha256": "aa96daed809a1f74a1c9246a51917aeb15004ae5947133e196d2cdcdb93bf0c4",
+        "raw_intended": "6번째=250−저장값 합입니다.",
+        "full_spoken_form": "6번째=250−저장값 합입니다.",
+        "entry_sha256": "a2420a05d990131a14d6671d09f6f7faccb3e040955f85259194d69452ad4415",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "bxdi",
+        "wav_sha256": "6016eed58ccd843be230fa6f34d7eeeec6d65a902cfe0c5772e6f79e371afbfc",
+        "raw_intended": "이 격자의 5개 값은 순서대로 0, 248, 0, 0, 0입니다.",
+        "full_spoken_form": "이 격자의 5개 값은 순서대로 0, 248, 0, 0, 0입니다.",
+        "entry_sha256": "f07181bccf84cab0893e58523c6786b79af781f3afaca98728a567a0bcb07f0f",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "anxa",
+        "wav_sha256": "755f53db39f87a77607b2e6d801fc98254ec40bd23536a0e443a235968faac50",
+        "raw_intended": "248은 환산해 저장한 점수로, 나무 수·㎡가 아닙니다.",
+        "full_spoken_form": "248은 환산해 저장한 점수로, 나무 수·㎡가 아닙니다.",
+        "entry_sha256": "e2036933bb102239e95cb767ce4461b7a52d46681fa6672b0067c50be178bc82",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "up9r",
+        "wav_sha256": "3df18505e3e4af768f45985b9de07348f621b2e63dd0d479e93deb3ab35374a0",
+        "raw_intended": "자연 갱신 숲이 248, 나머지 4개가 0이므로 합은 248입니다.",
+        "full_spoken_form": "자연 갱신 숲이 248, 나머지 4개가 0이므로 합은 248입니다.",
+        "entry_sha256": "2bbcd2048e8c5c14e864ae80ed441458750bfd79c8a6cfaf719b8a9f6316832a",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "3p97",
+        "wav_sha256": "90a52d897ba20cfa54d7119557f2d91597ef9d6f47de2e8457f133525844fb51",
+        "raw_intended": "250에서 248을 빼면, 기타 토지는 2입니다.",
+        "full_spoken_form": "250에서 248을 빼면, 기타 토지는 2입니다.",
+        "entry_sha256": "66e1eab28f0c17455ff73848217e97377c2fa1b715697b9919b4c804131df705",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4av2",
+        "wav_sha256": "43ed20c8ce3dbc79473535e21a1a031bcc31f6f9b823747b9e848b3eb9da53fd",
+        "raw_intended": "보충 후 6개 값이 모두 0~250인지, 합이 250인지 확인합니다.",
+        "full_spoken_form": "보충 후 6개 값이 모두 0~250인지, 합이 250인지 확인합니다.",
+        "entry_sha256": "361a9158cda49f495bc007b24cc49561dc6ff8fdbe57d5f59d7f3aed14ea81b9",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "8hpb",
+        "wav_sha256": "2ea3ef0a54743b0eed887c8dc1fa0363817238e923b5af0bd0f5ec8d692f6935",
+        "raw_intended": "저장값을 0~1 범위의 모델 점수로 어떻게 바꿉니까?",
+        "full_spoken_form": "저장값을 0~1 범위의 모델 점수로 어떻게 바꿉니까?",
+        "entry_sha256": "0fd6a5e5627a2a83ce237f00e7dca82f583d4e2b93fe0a15c5ff7d732fa383de",
+        "accepted_by": "native_second_Jev"
+      },
+      {
+        "id": "ywu9",
+        "wav_sha256": "080696bdb492f40ae56dffa1c585ff38d87d8d70b5489fab5b70fc7defc55352",
+        "raw_intended": "각 값을 250으로 나누면, 자연 갱신 숲의 248은 0.992가 됩니다.",
+        "full_spoken_form": "각 값을 250으로 나누면, 자연 갱신 숲의 248은 0.992가 됩니다.",
+        "entry_sha256": "dcd3e5da5fee364d6d4f595d14869bb310cf5f019e6401e0ebd9637c318c5899",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "u362",
+        "wav_sha256": "0c4f7b9e5079ede94001d2b8643f9e3bafa5b61c5d57795991557b50e340fe5f",
+        "raw_intended": "기타 토지의 2를 나누면 0.008입니다.",
+        "full_spoken_form": "기타 토지의 2를 나누면 0.008입니다.",
+        "entry_sha256": "49384ff4cf571ef349090c824e81f3fadb5e5e1311fe95fcc227c5bac162798f",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "eym7",
+        "wav_sha256": "0280d1c5c0e8a0050e4dfb5c3567cbbd4534c4f788e7c27f0f8fbf808c7f7960",
+        "raw_intended": "나머지 4개는 저장값 0, 점수도 0입니다.",
+        "full_spoken_form": "나머지 4개는 저장값 0, 점수도 0입니다.",
+        "entry_sha256": "d8c687d049c91356b3f2bc941ca5a845b9c354864a53ff1064fd998245a590e1",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "k3i2",
+        "wav_sha256": "cdcff5115ad29ea5ad9b7a49bedf9e57e5240e92f740b348623e60dc4f36e949",
+        "raw_intended": "6개 점수의 합은 딱 1입니다.",
+        "full_spoken_form": "6개 점수의 합은 딱 1입니다.",
+        "entry_sha256": "89a827d7f7266c3875e75503ac11199dacdd9819ee4697db147b7a53adb538ed",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "p9sg",
+        "wav_sha256": "ebb13eef06c940e871aaaa85a31e581401e39b96de24b5df319c730f869b5fae",
+        "raw_intended": "한 총량의 분할이지 별개로 6번 채점한 게 아닙니다.",
+        "full_spoken_form": "한 총량의 분할이지 별개로 6번 채점한 게 아닙니다.",
+        "entry_sha256": "fcc8e95ff804bbf713f7272a13aef9cea2b5871442923243421560fac4ee77c1",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "dkq3",
+        "wav_sha256": "1ae1e1e2f6afb52ba4aacb4e248a9636c3da9c43247091bbf02a40503728ac5e",
+        "raw_intended": "여섯 범주 중 자연 갱신 숲 점수만 최고입니다.",
+        "full_spoken_form": "여섯 범주 중 자연 갱신 숲 점수만 최고입니다.",
+        "entry_sha256": "2481dc4ea408bd1b48b2fbeea4245efc2bd41bcb692ce40f03da1ca5f967246a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "w86h",
+        "wav_sha256": "e86530487f003ce310c135732237fea441426b5cea28db9b0bfcaadf7ddd017a",
+        "raw_intended": "최댓값 분류면 빨간 틀 속은 그 녹색입니다.",
+        "full_spoken_form": "최댓값 분류면 빨간 틀 속은 그 녹색입니다.",
+        "entry_sha256": "159f430ad80c1aa62643855855a8b7846dd32ddae8a6f78a1ca664cf26b8c9a1",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "wh49",
+        "wav_sha256": "247512457f2b3c07db110bc30b9dd6dd1a6e6ba323687b4fe2aefbe3745c4a69",
+        "raw_intended": "최댓값 선택은 범주만 고르고 모든 점수는 안 남깁니다.",
+        "full_spoken_form": "최댓값 선택은 범주만 고르고 모든 점수는 안 남깁니다.",
+        "entry_sha256": "0822e7902530250d367c69579f638e2b7adde0cdb5c626a114feb068e54535f8",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6ybg",
+        "wav_sha256": "805c81150b2c33eff27b44be0e701aba0030b46ec5e88e581ab991b91a6bc748",
+        "raw_intended": "자연 갱신 숲이 단독 최고라고 기록하고, 6개 점수를 모두 첨부합니다.",
+        "full_spoken_form": "자연 갱신 숲이 단독 최고라고 기록하고, 6개 점수를 모두 첨부합니다.",
+        "entry_sha256": "442d2e4a93dade4d97d0aab716d5552147d5d614f84db58b44746af2df3f20d7",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "xxju",
+        "wav_sha256": "a5cff53be94eb1493c4012e60ca3dfeaca69a16718c2548a52368f43741c89a2",
+        "raw_intended": "녹색은 범주명만, 값은 펼쳐야 분포를 압니다.",
+        "full_spoken_form": "녹색은 범주명만, 값은 펼쳐야 분포를 압니다.",
+        "entry_sha256": "6f92e78897c7a7510229eb4cb8b8020da56a3555cb557cd111b2dbb8f342b2b4",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "endc",
+        "wav_sha256": "281844521bc613f59d9a2148edb07a7884f91e11edfe8925d5d3b6dbb3c3693a",
+        "raw_intended": "같은 출처의 다른 칸도 명확히 고를 수 있습니까?",
+        "full_spoken_form": "같은 출처의 다른 칸도 명확히 고를 수 있습니까?",
+        "entry_sha256": "f3f2c443e61b4dbbf83b946dbbf4db4aba651cab5b2792b825b5f45f02f0570e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "appe",
+        "wav_sha256": "6e48dc9bd18cd4225779123c1df370e7f0d13466fcca2832dcb3250df8113b85",
+        "raw_intended": "같은 블록에서 일부러 최댓값이 최저인 다른 칸을 고릅니다.",
+        "full_spoken_form": "같은 블록에서 일부러 최댓값이 최저인 다른 칸을 고릅니다.",
+        "entry_sha256": "fdf52bc07efae94388ecf8e526c90d4494caacee38e82809a8e5c278bb56c34e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "beg8",
+        "wav_sha256": "ee98e840ce037b53bdb8ca85203766c67d58550e339123624acafa5cae66dd9f",
+        "raw_intended": "읽기 연습이지, 무작위 표본으로 지도 전체의 정확도를 추정하는 것이 아닙니다.",
+        "full_spoken_form": "읽기 연습이지, 무작위 표본으로 지도 전체의 정확도를 추정하는 것이 아닙니다.",
+        "entry_sha256": "438b47f6ac5a8e7d5bfc9cb9a77461c91ccc763e0e0fc5190bc788c15d23b7b3",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "fe8z",
+        "wav_sha256": "f0a794dfc5120ad483514c0600813053d39943e7c61b36a1444dc39c7ff450ce",
+        "raw_intended": "2번째 칸 중심은 동경 121.42234도입니다.",
+        "full_spoken_form": "2번째 칸 중심은 동경 121.42234도입니다.",
+        "entry_sha256": "9f272246cf80aa0677d14da12e5f385168b56058996a4b79a1023ef14b758513",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ymf8",
+        "wav_sha256": "28eee644929c4ca29d4509460c6e55582da518d7dc06873e46b1697c71a02b81",
+        "raw_intended": "북위 24.69528도로 빨간 틀을 찾습니다.",
+        "full_spoken_form": "북위 24.69528도로 빨간 틀을 찾습니다.",
+        "entry_sha256": "208fed0e32ab97de782d6aded79f7d32ebdfccf9a5d9b40ac10be5a49c5101c9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "54sx",
+        "wav_sha256": "757869fc0536d700a8db2897b8301c5419d2835685d94501d7ff82be483eaf3a",
+        "raw_intended": "5개 값은 순서대로 0, 86, 0, 1, 77입니다.",
+        "full_spoken_form": "5개 값은 순서대로 0, 86, 0, 1, 77입니다.",
+        "entry_sha256": "5ccfc92d9f03db799c468c4f5b6faaa022e74d9c23fa33c73db645dd02475004",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "mfsh",
+        "wav_sha256": "7b47a0ec46eb666e3d5ee87eba98e75cb995b1e69453ba8bd3558c21520f1ede",
+        "raw_intended": "자연갱신림 86, 집약 조림지 1, 수목 작물·혼농임업 77, 합 164입니다.",
+        "full_spoken_form": "자연갱신림 86, 집약 조림지 1, 수목 작물·혼농임업 77, 합 164입니다.",
+        "entry_sha256": "81b6e70b2558504008287b922017dc70b1d457654e1f9e0060b4bb23aa1829a6",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "578j",
+        "wav_sha256": "4caa488c16f116cb2a5e40592b08503311c7894a905b1df4a5c45f8bc3299407",
+        "raw_intended": "250에서 164를 빼면, 기타 토지는 86입니다.",
+        "full_spoken_form": "250에서 164를 빼면, 기타 토지는 86입니다.",
+        "entry_sha256": "a86c28c3f4afc7edb77723c35aea72c2e2a89e8c64a8c29b22e65ca91497b5e6",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "97h6",
+        "wav_sha256": "f0abc6b29956897566aca4e48173587e10364ac9567b8d2e1949369c0e29e4d2",
+        "raw_intended": "자연갱신림·기타 토지 모두 86, 2개가 공동 최고입니다.",
+        "full_spoken_form": "자연갱신림·기타 토지 모두 86, 2개가 공동 최고입니다.",
+        "entry_sha256": "9c7416da198aa440ad82e86b299c2b5dfd4ecd79cfb316f3134993fe07ac6186",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "8mtz",
+        "wav_sha256": "8a80057443c755ad62f8c72d7bfebbbc58b9cd01676e8e042ab9248eb98c78b5",
+        "raw_intended": "2개 ÷250은 모두 0.344입니다.",
+        "full_spoken_form": "2개 ÷250은 모두 0.344입니다.",
+        "entry_sha256": "a623ee4fc74365b0a7d9689114fa010086d7a1e650e03d51def7f3af2806ae5b",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "4amm",
+        "wav_sha256": "4f3a53690af6a6ae999a98f221ca6b912757a48c21ea1cd18c1de8ee9335301a",
+        "raw_intended": "집약 조림지 정수 1은 0.004가 됩니다.",
+        "full_spoken_form": "집약 조림지 정수 1은 0.004가 됩니다.",
+        "entry_sha256": "1f5edb05e7a7df82de7706a9411d6e107b0abfd429e84c5362a98b1a04e7c37c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ux8j",
+        "wav_sha256": "0b2fcd8b0865a54aa866eeb82ac08ffe6468a90b307fe5ec347d8f71f48f0367",
+        "raw_intended": "수목 작물·혼농임업의 77은 0.308이 됩니다.",
+        "full_spoken_form": "수목 작물·혼농임업의 77은 0.308이 됩니다.",
+        "entry_sha256": "804bfe8d57a8b498a3110ea5aae8b747f1d33a7aed6b0cfcda147caf92729299",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "y64h",
+        "wav_sha256": "f460bd93c73b75d83a2bb38f8123f6846bcc8b2cac1ad8aa4f2723a265b1d5f3",
+        "raw_intended": "원시림과 식재림은 모두 0입니다.",
+        "full_spoken_form": "원시림과 식재림은 모두 0입니다.",
+        "entry_sha256": "14d44e11461b270e926df30cf77d701ded776a8f3c7cf0579c9f5034613cd490",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "afyy",
+        "wav_sha256": "ef2b07371fcbfdabfc05992b3bd00688620c293d5095cc37d2a5e71269346e5f",
+        "raw_intended": "2번째 칸 기록 전, 이 6개 점수도 합이 1입니까?",
+        "full_spoken_form": "2번째 칸 기록 전, 이 6개 점수도 합이 1입니까?",
+        "entry_sha256": "b64d671a2fa427284fec8236bf0a8fb34cdf6510b2a7f24f7b1aa9ec1bf1ab28",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "f2ze",
+        "wav_sha256": "d75959998f53d1e0a04a5c1052e1ad52b5085321f2e6ded4bed639be1bf92d3e",
+        "raw_intended": "0.344 2개를 더하면 0.688입니다.",
+        "full_spoken_form": "0.344 2개를 더하면 0.688입니다.",
+        "entry_sha256": "ff6baae3e0d2470d0cc3f5497c1a679669ec83275071b9334999c2e3511396a9",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ckag",
+        "wav_sha256": "dda7ed9a4b4a29a9b5a5a9e273ced4da02471b17cacee61fd6c3875d982cf7e1",
+        "raw_intended": "여기에 0.308을 더하면 0.996입니다.",
+        "full_spoken_form": "여기에 0.308을 더하면 0.996입니다.",
+        "entry_sha256": "c2240feca7e8cecbda477851445b6da689fb9471392b0ea18807b8428944594d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "n37p",
+        "wav_sha256": "f1f61d4a3d69603a60f185ef0f7150544f8b998e066516475109fa8e9e8c9218",
+        "raw_intended": "끝에 0.004 더해 1, 남은 2개의 0은 합을 안 바꿉니다.",
+        "full_spoken_form": "끝에 0.004 더해 1, 남은 2개의 0은 합을 안 바꿉니다.",
+        "entry_sha256": "7c21944dbfcaa86a09ce043914224946561bf7c07516043af5de73b681d3fc81",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ecb8",
+        "wav_sha256": "505c65c1b08b5d888c15ccdfec0d9d2289c961367342e28256cb7c178323dc96",
+        "raw_intended": "합 오류면 누락·소수 자릿수, 값별 범주명을 확인합니다.",
+        "full_spoken_form": "합 오류면 누락·소수 자릿수, 값별 범주명을 확인합니다.",
+        "entry_sha256": "7246fb1a6e702520b8da5f08798c2413cd18870224added00d1a7ad2ed4be6a7",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8k4a",
+        "wav_sha256": "14002431060481addb2650bb2c2c56531ea5372aeb9029be64430ad399ebd664",
+        "raw_intended": "1색뿐이면 화면은 뭘 고릅니까?",
+        "full_spoken_form": "1색뿐이면 화면은 뭘 고릅니까?",
+        "entry_sha256": "60eb1c578f4d03ff6ffa27ffe0cca08bb0516be0f1be6528b1a3ac19b8cc0c2e",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "z33x",
+        "wav_sha256": "d0eba05ad56560f5b2c1c514b85c75b5eb916803673d40c3dd2d00091b0b76b9",
+        "raw_intended": "1개 표시는 6개 점수를 1개 라벨로 줄일 뿐, 동점 우열이 생기진 않습니다.",
+        "full_spoken_form": "1개 표시는 6개 점수를 1개 라벨로 줄일 뿐, 동점 우열이 생기진 않습니다.",
+        "entry_sha256": "cfd3e528c1a70e1f45c606a5bf1c24963e6e6d0300fdd70ea9d7a6e39d9a0a33",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "wnrz",
+        "wav_sha256": "074590723601d0f7f409a0befa53552eaad53f34bb7c358b85b385efb6164c97",
+        "raw_intended": "우리 파생도는 범주 순 첫 최고 범주를 고릅니다.",
+        "full_spoken_form": "우리 파생도는 범주 순 첫 최고 범주를 고릅니다.",
+        "entry_sha256": "3ba1a612509099e67790eda85b4bd82e79fba2ab5218ab501663431fc3c41bd3",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ywz8",
+        "wav_sha256": "d5733a8379f671386b07a50859ce8832fd7c8fe1c610ae258931e147461fd6d5",
+        "raw_intended": "그래서 이 칸도 자연 갱신 숲 색으로 칠합니다.",
+        "full_spoken_form": "그래서 이 칸도 자연 갱신 숲 색으로 칠합니다.",
+        "entry_sha256": "b5c293a0e02da160ba0583b3d9e9ba431a9ec057e072576b4c828cc3e1cb78ce",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ww8v",
+        "wav_sha256": "f1f53f1ab58f3af7f75771064075e42427df4a9a0ba617705f7631ce1ab42205",
+        "raw_intended": "첫 녹색 칸 최고 한 개뿐 기억합니까?",
+        "full_spoken_form": "첫 녹색 칸 최고 한 개뿐 기억합니까?",
+        "entry_sha256": "f957d67bae99a5ee5a64a7bea653e23d70b08a6e519ccabebb34c0fd8e82a9ae",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mx7g",
+        "wav_sha256": "316c98a4f8fc93e8fa17abefe9b87db36e1d8e67ad2aed404c60f31a1e95b79c",
+        "raw_intended": "나란한 2칸, 색은 같아도 정보는 다릅니다.",
+        "full_spoken_form": "나란한 2칸, 색은 같아도 정보는 다릅니다.",
+        "entry_sha256": "0876609abca2a753e486a43d998f3391fc4796011107b920cd2fac9e0c9ac28c",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "7qfx",
+        "wav_sha256": "0a966f258cf406ea220bf30619866230caf5f2b5a439d6ad2859d1555f1ef67d",
+        "raw_intended": "자연갱신림·기타 토지 공동 최고, 그중 순서상 첫 표시를 기록합니다.",
+        "full_spoken_form": "자연갱신림·기타 토지 공동 최고, 그중 순서상 첫 표시를 기록합니다.",
+        "entry_sha256": "1d2249a691e17c3c593caaac9fff45368be1961985f8e5c9199f37e2acbd676f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "hbci",
+        "wav_sha256": "5aaf4bccb1960d2800b3d5661e3ae068867d361d77a8ae64b903d6d020cbb9bf",
+        "raw_intended": "비교 땐 이 주석을 읽고 색으로 답을 생략하지 않습니다.",
+        "full_spoken_form": "비교 땐 이 주석을 읽고 색으로 답을 생략하지 않습니다.",
+        "entry_sha256": "d9cab3d1562b45a1d786564a85acd2f099754bb1cce97924af5d382dc6b6dd9c",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "sbkg",
+        "wav_sha256": "1ecc656407df201407b6cbc3cd4a3a55256c7e97f89fd0774e6267e5f0700379",
+        "raw_intended": "녹색 2칸을 읽고, 점수는 곧 정답 확률입니까?",
+        "full_spoken_form": "녹색 2칸을 읽고, 점수는 곧 정답 확률입니까?",
+        "entry_sha256": "a6d7e4338dbca7ed741c03482ace36262b2b289470fa3ad5f2184af969c9c41e",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "upmh",
+        "wav_sha256": "5750ac0c82435c68406068daf22a785075f3ac175a333521d4d8e813cff4740a",
+        "raw_intended": "쓸 때는 모델 점수·실제 정확도부터 구분합니다.",
+        "full_spoken_form": "쓸 때는 모델 점수·실제 정확도부터 구분합니다.",
+        "entry_sha256": "1ed74a2bacff0a54171709c6cd0143a54be04c315cc6ec261533a80e81c3705f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "vb62",
+        "wav_sha256": "1110c8456c2c921d5e25dd526ba8ceead95c6a0e544edb59cdf03f508e95a920",
+        "raw_intended": "모델 점수며 사후 확률 보정 전입니다.",
+        "full_spoken_form": "모델 점수며 사후 확률 보정 전입니다.",
+        "entry_sha256": "810dc470761619c71830da9e668ff32be79f0e341f82dd9653e4f4f078f4336b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8m2e",
+        "wav_sha256": "242e694f093b6dc1dad11ac1bca5ebd1dd7017def94c1d2f53c44b52ae78015f",
+        "raw_intended": "정답 확률로 쓰려면 독립 참조 자료로 점수와 실제 결과가 맞는지 확인해야 합니다.",
+        "full_spoken_form": "정답 확률로 쓰려면 독립 참조 자료로 점수와 실제 결과가 맞는지 확인해야 합니다.",
+        "entry_sha256": "f4fb9a61b303825ba55d8a1d8361b175ec5c6a16e633318319ead457783828cf",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "bs4s",
+        "wav_sha256": "b08ac5377a7a782ab3303d877e45d5568aeaa3f64db042cdf77fbf9c71a4fee3",
+        "raw_intended": "이 칸이 맞을 확률이 99.2%라 단정 못 합니다.",
+        "full_spoken_form": "이 칸이 맞을 확률이 99.2%라 단정 못 합니다.",
+        "entry_sha256": "867d70a9a2732d50db5aab756997925677e3e75b3dc314976e4edc06b846af87",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ci5j",
+        "wav_sha256": "f9833c7fc99a71f6ddfdfa2359811edce0819178fa5f883599c205c30b80a996",
+        "raw_intended": "모델은 관측 단서를 봅니다. 토지 이력·용도는 참조로 대조합니다.",
+        "full_spoken_form": "모델은 관측 단서를 봅니다. 토지 이력·용도는 참조로 대조합니다.",
+        "entry_sha256": "c22e1079a97356a54f1eade52a00503c1aa739c3797f93c44ec12b28ff94ecf6",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6ss6",
+        "wav_sha256": "44b16fc37cbe42415eb2b65189f27da10ea646e03006ba5ec84b00287a430e63",
+        "raw_intended": "점수를 읽고 같은 행에 위치·자료 연도도 남깁니다.",
+        "full_spoken_form": "점수를 읽고 같은 행에 위치·자료 연도도 남깁니다.",
+        "entry_sha256": "cb4cad6906ee5ee7962a42edf8f9a7a7c33b0905f455c0bdc60a13e113a4814b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "rume",
+        "wav_sha256": "f12316fb725ce2a3e0a34819aa767aa1b2e5f93eabdc0c63846e77401c1d8d15",
+        "raw_intended": "2020 기준은 5월 공개돼 그해 토지 상태를 보입니다.",
+        "full_spoken_form": "2020 기준은 5월 공개돼 그해 토지 상태를 보입니다.",
+        "entry_sha256": "3356781532c578cbb712ef7a42d5615cb3bac42090b39a02748c3f446c444d94",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "pvkj",
+        "wav_sha256": "ab239d4f0917e04b8e259eb3252f6e338cdb3dfe9e86b57af5a559fd2f4d1185",
+        "raw_intended": "정식 자료 논문은 10월21일 나왔습니다.",
+        "full_spoken_form": "정식 자료 논문은 10월21일 나왔습니다.",
+        "entry_sha256": "b192999f5e93d9e0289d32dac19a57d9fc63616711d1f5ec99fe22141451a0c7",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ncx4",
+        "wav_sha256": "ab666748b51fc0215b14e10ecdb4ba26cd71d6b940e4f64c975138968e78b876",
+        "raw_intended": "소개 때 2017년부터 2025년까지 연도별 초기 공개본도 나눴습니다.",
+        "full_spoken_form": "소개 때 2017년부터 2025년까지 연도별 초기 공개본도 나눴습니다.",
+        "entry_sha256": "366ab7aa0d359d5189fbc66efe058e91943953838657fdcdb8d125af8123a3d6",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "j5kv",
+        "wav_sha256": "323e49a7cb555b00e256b379534d0be664e30f93d36fa8e4b6092e620d4b89f2",
+        "raw_intended": "같은 곳에 여러 해 출력이 가능해 시간별 분류도 볼 수 있습니다.",
+        "full_spoken_form": "같은 곳에 여러 해 출력이 가능해 시간별 분류도 볼 수 있습니다.",
+        "entry_sha256": "f479c4b3c3e4ac5665ca4d0f91da9b67e9645c41f607f5098e6ab52b32623b5d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "nqyj",
+        "wav_sha256": "73cc80b46a17c13ecdd880a080663945cd21ce3432ff86551e124338fdb2292f",
+        "raw_intended": "같은 곳은 위치를 고정하고 매년 범주 순서와 점수 6개를 남깁니다.",
+        "full_spoken_form": "같은 곳은 위치를 고정하고 매년 범주 순서와 점수 6개를 남깁니다.",
+        "entry_sha256": "bb0cffa2fb806ae00ce41d35f3044beb36c34430ad5734b6290f623f7c1b8ce1",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "wfb2",
+        "wav_sha256": "7da5765c370a17e86f2769be9886196aa964f924bab59beb21b1ea6b25ad2d1b",
+        "raw_intended": "색만 바꾸면 본 동점·점수 차이가 가려집니다.",
+        "full_spoken_form": "색만 바꾸면 본 동점·점수 차이가 가려집니다.",
+        "entry_sha256": "e0d9f79104b41f41eb9adc6da8cfa0944915bfc8e16da0010937aad85917a39e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "88pk",
+        "wav_sha256": "7795123683f98b5bb16b5b8775022fca78ca4de373e8ee910e0cd8823a56c242",
+        "raw_intended": "2020년의 두 칸도 이 버전의 출력만 보여 줍니다.",
+        "full_spoken_form": "2020년의 두 칸도 이 버전의 출력만 보여 줍니다.",
+        "entry_sha256": "e7540264eea8b8e4699ddc1485c91cedd2871d9804a5fbd32afb58f6ceb7c1f8",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "bu6j",
+        "wav_sha256": "001359d9b24cdfdc691623ef4540576f2519aa58f1089110bef756607e60b0ad",
+        "raw_intended": "연도·위치·6개 점수·모든 최고 범주를 같은 픽셀 기록 행에 적습니다.",
+        "full_spoken_form": "연도·위치·6개 점수·모든 최고 범주를 같은 픽셀 기록 행에 적습니다.",
+        "entry_sha256": "51f08c0418d768c0843f54aa110805967b2ca20f5acb6a283f12833a82840763",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "hr4b",
+        "wav_sha256": "8adb5a7f43ed4bb3eb1d97d99ca1980d192b683c969b988e5db3dd44fcc01bf4",
+        "raw_intended": "이 행은 녹색만으론 놓칠 정보를 보존합니다.",
+        "full_spoken_form": "이 행은 녹색만으론 놓칠 정보를 보존합니다.",
+        "entry_sha256": "682fe0401fc99e9ba20cadd7570763c3a7b54a8d409c8d3b51000bcb29e510e2",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "4w7g",
+        "wav_sha256": "6042fc04df4db60ce4b4cae77bbfb7c9ff82384fc6ee269dc70712055433564b",
+        "raw_intended": "여러분은 지도로 주로 어떤 환경을 살펴보십니까?",
+        "full_spoken_form": "여러분은 지도로 주로 어떤 환경을 살펴보십니까?",
+        "entry_sha256": "3b61413f286ea3375c7ea845908f176efc2255fe5370835bd162da369f8eb848",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "39nc",
+        "wav_sha256": "786fb83a598160aea49439d363d333ee9852d35c2b2153631215dd43af40937f",
+        "raw_intended": "구독하고 AI의 실제 출력을 함께 읽어 봅시다.",
+        "full_spoken_form": "구독하고 A I의 실제 출력을 함께 읽어 봅시다.",
+        "entry_sha256": "559608d1ba8a72d3acd4500ce488eabd50ffa67f3b1bc50f6a01f762c0c71b60",
+        "accepted_by": "native_exact"
+      }
+    ],
+    "source_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+    "main_sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+    "main_qa_sha256": "2996d2954442496ddbe1310832121d540f374aaf65a584f9ba138de07345855e",
+    "input_sha256": {
+      "/workspace/work/ai-tech-next/forty-ko-independent-media-audit.json": "d734ba704375d573480dbf708982fbc16a96d242663115c72470107fdb161abe",
+      "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/video.json": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+      "/workspace/work/travel-scanner-forty/docs/videos/lexicon.json": "aa414e403385008766c93001c7b3fd825da9927b36e893f29f4dd376100ab46a",
+      "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/ko.json": "90a73281396fd1d7a78a94fdb88de798a8e393963e755d2fde8635b6163ce5e0",
+      "/workspace/work/videos/forty-forest-map/timeline.json": "d3df01349e4d85b4755ab81a47d47c2508afea3938262def07d3f16293302d1b",
+      "/workspace/work/videos/forty-forest-map/final.mp4": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+      "/workspace/work/videos/forty-forest-map/review/qa.json": "2996d2954442496ddbe1310832121d540f374aaf65a584f9ba138de07345855e",
+      "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-50-47-886Z.log": "c99d46ffe5423b8c4733f0dc1894889adaa55906a4287c73f17096f536134a24",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/timeline.json": "d026689a7c84b3c323e57548ed6fd5076ea71d2e72a05e51bc3b1052a6bfb669",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/fit.json": "b655459a3ce70e67a179f8fa2329465342fa4c4a7def42f71c5c3b2e62ae815b",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/cache.json": "8b231260f32c9fa568175a26af931097bf672aade706ddba625aff82513c7405",
+      "/workspace/work/videos/forty-forest-map/review/check.ko.json": "1f62948bb0e0dc5840733156ba6efd3d7cdeea6cde4c27c97f059d5eb7d3f413",
+      "/workspace/work/videos/forty-forest-map/review/check-flags.ko.json": "e6bde75e09a5f859b2e0affd24f91df3eb46322961a0ee080f751cceb1b27131",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/delivery-measurement.json": "5feec4d5cdb8839a021e8a2ad047a8a20e87fad5047088c29b28f0b2d19c9d4b",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/8aw6.wav": "fcad1c982b76631515a6572a719a1456ba00ed7c5f2b9e6f69d129318e0ff612",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/gngj.wav": "a89afc6554449957584b2f18f19be8e102ad3f5c3201396d03a7a57edcbd5ab8",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ep85.wav": "c2d174df8d78ac8cbab6d3f57bd7df773041942f01272daf0d00cd3d95a6d6fe",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/jw6i.wav": "e454998d33621e3cb37dc9279126e46d04866da2c4f1cb635a9053acbc970c8e",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/5ur9.wav": "66a9afbc3ed0a71a218b3c8687e0b0c3232712410ca77bbfbcef3aa6607a9cf8",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/m2p6.wav": "f2f1021f8ae0ca61c8baab32db6123355b8163f55c147c7e56dd436b0ac79cc2",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/erqz.wav": "4238419ed7353415e53d81060eaa0b2bcdf2ad9f1ff66bb59874cec5481f5561",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/t4w3.wav": "52381243d19b8fa4a5b37431733abaa167030b1e46308c377fb4d784ede3c907",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/66nz.wav": "527eaf66da5703b99c9323fa6aa7e8a80e7fa71e3332c1c686011658f90a96a6",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/3pse.wav": "e9d07a4706008aa31fbd0b6840c8d1010d0d47787e354293adf966c8723a8711",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/v9fh.wav": "8d769cf660942cd0139cbd8994bfe95b3c127a23851ae0a10b8957a477c43adc",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/7id9.wav": "5c81d8e6fec15e683e730cd2c9169c7224b8d720192461a04697388384c37263",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/2vcb.wav": "c1056d2330ff7de5ee5384c88eddf57f06e2099f9a2dd93eddedc03d2f121248",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/yiya.wav": "45fbe1bf6c9e1567ff72a84b15b0194210c8ffc92a4604db48005c7c923862bd",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/rrgq.wav": "f12a362240cc544476b2c99a7ac38ce12036c63d3726dd2000201e0eee5455e1",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/fbc5.wav": "337a7e037a80fcd3e910e167c8ef79abc4668c0fa3e7873dde94b3081fd44765",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/gsa7.wav": "b1d456151f1176cf9ce4b3c235dd360527270fae60fecce7f4d8ae03f7a84592",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/9wmz.wav": "eb903fff08e537be64d770043c6ec7ee44a54b6ff990c4ec30d286acb6a96822",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/jkby.wav": "92f465b844c53fa586d2e49b18451b6d8ac59f6fc3729a276d0838fd81e83c29",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/5nt9.wav": "aa11c04baf5eac642afdcc32d284d523eaf93f61ab34caf07666b629a3857525",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/m8cb.wav": "f4d8447bca9944ee2bdfb5e741d3d8e89905cdb4d5c453ec1dc5feef7f6f9f27",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/p2ry.wav": "8388077142986446fd4a203f987f00bb87df8f149c6a3c422fbdc4d8c7cf7013",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/u5js.wav": "4ee7820af80635aece0c8bfd64ecab46cc6f833da8f411b9811027c1dacee2ec",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/7732.wav": "c41211907379d63b3fe0e831a6a82306991b48d7bad6a548f1cd14a15bda6e93",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/yi97.wav": "81557a7bee9da50ae7d946f0ef36e8cb4630d94413b39b2fb8e58d2b743c394a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/2k27.wav": "6573912f3dd5d225a04e7ccc968284e7ff6d4dbe085f577747427fb6b27194af",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/vk36.wav": "5cf0c85f2bfd5a38f4150267eb68d8def0f03d69e5d0e02cec1947b39f8b830c",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/gfes.wav": "0379137b120ca4fab5955a461c9624731ac6bcfce4f6df95519c44d2b29afa0a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/e826.wav": "98ab2d865c65fa1c868dab6623fa19149ba86549494fab9a21877efc75abd238",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/svhy.wav": "d56cb43d424a149ce886601311050a65955e72111add4f09982b4ce80d8e961c",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/3gwz.wav": "b4ff724d91040e07017666e3aaf0c35a7a37769228b441dd89016ea53f3df420",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/7iv8.wav": "aa96daed809a1f74a1c9246a51917aeb15004ae5947133e196d2cdcdb93bf0c4",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/bxdi.wav": "6016eed58ccd843be230fa6f34d7eeeec6d65a902cfe0c5772e6f79e371afbfc",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/anxa.wav": "755f53db39f87a77607b2e6d801fc98254ec40bd23536a0e443a235968faac50",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/up9r.wav": "3df18505e3e4af768f45985b9de07348f621b2e63dd0d479e93deb3ab35374a0",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/3p97.wav": "90a52d897ba20cfa54d7119557f2d91597ef9d6f47de2e8457f133525844fb51",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/4av2.wav": "43ed20c8ce3dbc79473535e21a1a031bcc31f6f9b823747b9e848b3eb9da53fd",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/8hpb.wav": "2ea3ef0a54743b0eed887c8dc1fa0363817238e923b5af0bd0f5ec8d692f6935",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ywu9.wav": "080696bdb492f40ae56dffa1c585ff38d87d8d70b5489fab5b70fc7defc55352",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/u362.wav": "0c4f7b9e5079ede94001d2b8643f9e3bafa5b61c5d57795991557b50e340fe5f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/eym7.wav": "0280d1c5c0e8a0050e4dfb5c3567cbbd4534c4f788e7c27f0f8fbf808c7f7960",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/k3i2.wav": "cdcff5115ad29ea5ad9b7a49bedf9e57e5240e92f740b348623e60dc4f36e949",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/p9sg.wav": "ebb13eef06c940e871aaaa85a31e581401e39b96de24b5df319c730f869b5fae",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/dkq3.wav": "1ae1e1e2f6afb52ba4aacb4e248a9636c3da9c43247091bbf02a40503728ac5e",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/w86h.wav": "e86530487f003ce310c135732237fea441426b5cea28db9b0bfcaadf7ddd017a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/wh49.wav": "247512457f2b3c07db110bc30b9dd6dd1a6e6ba323687b4fe2aefbe3745c4a69",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/6ybg.wav": "805c81150b2c33eff27b44be0e701aba0030b46ec5e88e581ab991b91a6bc748",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/xxju.wav": "a5cff53be94eb1493c4012e60ca3dfeaca69a16718c2548a52368f43741c89a2",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/endc.wav": "281844521bc613f59d9a2148edb07a7884f91e11edfe8925d5d3b6dbb3c3693a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/appe.wav": "6e48dc9bd18cd4225779123c1df370e7f0d13466fcca2832dcb3250df8113b85",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/beg8.wav": "ee98e840ce037b53bdb8ca85203766c67d58550e339123624acafa5cae66dd9f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/fe8z.wav": "f0a794dfc5120ad483514c0600813053d39943e7c61b36a1444dc39c7ff450ce",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ymf8.wav": "28eee644929c4ca29d4509460c6e55582da518d7dc06873e46b1697c71a02b81",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/54sx.wav": "757869fc0536d700a8db2897b8301c5419d2835685d94501d7ff82be483eaf3a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/mfsh.wav": "7b47a0ec46eb666e3d5ee87eba98e75cb995b1e69453ba8bd3558c21520f1ede",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/578j.wav": "4caa488c16f116cb2a5e40592b08503311c7894a905b1df4a5c45f8bc3299407",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/97h6.wav": "f0abc6b29956897566aca4e48173587e10364ac9567b8d2e1949369c0e29e4d2",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/8mtz.wav": "8a80057443c755ad62f8c72d7bfebbbc58b9cd01676e8e042ab9248eb98c78b5",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/4amm.wav": "4f3a53690af6a6ae999a98f221ca6b912757a48c21ea1cd18c1de8ee9335301a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ux8j.wav": "0b2fcd8b0865a54aa866eeb82ac08ffe6468a90b307fe5ec347d8f71f48f0367",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/y64h.wav": "f460bd93c73b75d83a2bb38f8123f6846bcc8b2cac1ad8aa4f2723a265b1d5f3",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/afyy.wav": "ef2b07371fcbfdabfc05992b3bd00688620c293d5095cc37d2a5e71269346e5f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/f2ze.wav": "d75959998f53d1e0a04a5c1052e1ad52b5085321f2e6ded4bed639be1bf92d3e",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ckag.wav": "dda7ed9a4b4a29a9b5a5a9e273ced4da02471b17cacee61fd6c3875d982cf7e1",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/n37p.wav": "f1f61d4a3d69603a60f185ef0f7150544f8b998e066516475109fa8e9e8c9218",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ecb8.wav": "505c65c1b08b5d888c15ccdfec0d9d2289c961367342e28256cb7c178323dc96",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/8k4a.wav": "14002431060481addb2650bb2c2c56531ea5372aeb9029be64430ad399ebd664",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/z33x.wav": "d0eba05ad56560f5b2c1c514b85c75b5eb916803673d40c3dd2d00091b0b76b9",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/wnrz.wav": "074590723601d0f7f409a0befa53552eaad53f34bb7c358b85b385efb6164c97",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ywz8.wav": "d5733a8379f671386b07a50859ce8832fd7c8fe1c610ae258931e147461fd6d5",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ww8v.wav": "f1f53f1ab58f3af7f75771064075e42427df4a9a0ba617705f7631ce1ab42205",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/mx7g.wav": "316c98a4f8fc93e8fa17abefe9b87db36e1d8e67ad2aed404c60f31a1e95b79c",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/7qfx.wav": "0a966f258cf406ea220bf30619866230caf5f2b5a439d6ad2859d1555f1ef67d",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/hbci.wav": "5aaf4bccb1960d2800b3d5661e3ae068867d361d77a8ae64b903d6d020cbb9bf",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/sbkg.wav": "1ecc656407df201407b6cbc3cd4a3a55256c7e97f89fd0774e6267e5f0700379",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/upmh.wav": "5750ac0c82435c68406068daf22a785075f3ac175a333521d4d8e813cff4740a",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/vb62.wav": "1110c8456c2c921d5e25dd526ba8ceead95c6a0e544edb59cdf03f508e95a920",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/8m2e.wav": "242e694f093b6dc1dad11ac1bca5ebd1dd7017def94c1d2f53c44b52ae78015f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/bs4s.wav": "b08ac5377a7a782ab3303d877e45d5568aeaa3f64db042cdf77fbf9c71a4fee3",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ci5j.wav": "f9833c7fc99a71f6ddfdfa2359811edce0819178fa5f883599c205c30b80a996",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/6ss6.wav": "44b16fc37cbe42415eb2b65189f27da10ea646e03006ba5ec84b00287a430e63",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/rume.wav": "f12316fb725ce2a3e0a34819aa767aa1b2e5f93eabdc0c63846e77401c1d8d15",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/pvkj.wav": "ab239d4f0917e04b8e259eb3252f6e338cdb3dfe9e86b57af5a559fd2f4d1185",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/ncx4.wav": "ab666748b51fc0215b14e10ecdb4ba26cd71d6b940e4f64c975138968e78b876",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/j5kv.wav": "323e49a7cb555b00e256b379534d0be664e30f93d36fa8e4b6092e620d4b89f2",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/nqyj.wav": "73cc80b46a17c13ecdd880a080663945cd21ce3432ff86551e124338fdb2292f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/wfb2.wav": "7da5765c370a17e86f2769be9886196aa964f924bab59beb21b1ea6b25ad2d1b",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/88pk.wav": "7795123683f98b5bb16b5b8775022fca78ca4de373e8ee910e0cd8823a56c242",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/bu6j.wav": "001359d9b24cdfdc691623ef4540576f2519aa58f1089110bef756607e60b0ad",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/hr4b.wav": "8adb5a7f43ed4bb3eb1d97d99ca1980d192b683c969b988e5db3dd44fcc01bf4",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/4w7g.wav": "6042fc04df4db60ce4b4cae77bbfb7c9ff82384fc6ee269dc70712055433564b",
+      "/workspace/work/videos/forty-forest-map/dubs/ko/audio/39nc.wav": "786fb83a598160aea49439d363d333ee9852d35c2b2153631215dd43af40937f",
+      "/workspace/work/videos/forty-forest-map/dubs/ko.m4a": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b"
+    },
+    "snapshot_signature": "2de6ce56ef157841b7ba6e1107d13e5adf2cc794667a72acc9fbd886ffb4cea4",
+    "meter_scope": "Existing actual encoded M4A measurement, SHA-bound to the actual bytes; no fresh loudness scan.",
+    "readiness_scope": "Checked requested M4A only; no CC/metadata/batch readiness or all-eight claim"
+  },
+  "final_review_id": "56c69b8f-3ee1-4c8d-9050-a507fe972185",
+  "before_review_sha256": "3ecbc8f0f2c2b563a61f04ffbb8808163131ead4e2f5cb1e1e0ff4a6e5e7cd47",
+  "server_upload_receipt": {
+    "complete": true,
+    "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+    "bytes": 12686028,
+    "parts": 4,
+    "parts_sent": 4,
+    "existing_blob_fast_path": false,
+    "sha_validation_scope": "Native assembly hashes uploaded parts and rejects SHA/size mismatches before complete=true."
+  },
+  "final_status": "pending",
+  "download_roles": [
+    {
+      "role": "dub_ko",
+      "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+      "size": 12686028,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "evidence_ko_m4a",
+      "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+      "size": 12686028,
+      "content_type": "audio/mp4"
+    }
+  ],
+  "metadata_readback_verified": true,
+  "all_old_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "historical_main_qa_preserved_11_of_11": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "language_batch_submitted": false,
+  "standard_dubs_payload_changed": false,
+  "finished_at": "2026-10-25T23:57:42.977Z"
+}

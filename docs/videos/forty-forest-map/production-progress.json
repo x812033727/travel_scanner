@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-25T22:35:44Z",
+  "observed_at": "2026-10-26T00:06:32Z",
   "status": "in-progress",
-  "stage": "zh-TW_body_VI_EN_JA_checked_audio_delivered_KO_waits_ASR_branding_and_all_eight_pending",
+  "stage": "zh-TW_body_VI_EN_JA_KO_checked_audio_delivered_branding_and_all_eight_pending",
   "current_video_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
   "final_current_narration": {
     "speech_hash": "c6d70ecaef91a15d",
@@ -59,7 +59,7 @@
       "advice": 0.01,
       "sponsor": 0.04
     },
-    "caption_scope": "Historical frozen-main QA11/11 and then-current nine CC files; not a readiness claim for later EN/JA dubs, CC or packages. VI CC was regenerated at 19:22; after all eight audio tracks complete, regenerate/review each CC against actual language timing and retain advisories.",
+    "caption_scope": "Historical frozen-main QA11/11 and then-current nine CC files; not a readiness claim for later EN/JA/KO dubs, CC or packages. VI CC was regenerated at 19:22; after all eight audio tracks complete, regenerate/review every language CC against its actual timing and retain advisories.",
     "public_receipt": "qa-after-verified-vi.json",
     "historical_main_qa": true
   },
@@ -135,11 +135,14 @@
       "/workspace/work/ai-tech-next/forty-ko-es-pt-id-budget-application.json",
       "/workspace/work/ai-tech-next/forty-vi-th-budget-application.json",
       "/workspace/work/ai-tech-next/forty-vi-fit1-application.json",
-      "/workspace/work/ai-tech-next/forty-vi-reword1-application.json"
+      "/workspace/work/ai-tech-next/forty-vi-reword1-application.json",
+      "/workspace/work/ai-tech-next/forty-ko-reword1-application.json",
+      "/workspace/work/ai-tech-next/forty-ko-reword2-application.json",
+      "/workspace/work/ai-tech-next/forty-ko-reword3-application.json"
     ],
     "foreign_m4a_files_produced": 4,
     "foreign_m4a_initial_audio_checks_completed": 4,
-    "foreign_m4a_audio_passed": 3,
+    "foreign_m4a_audio_passed": 4,
     "foreign_language_packages_ready": 0,
     "unproduced_m4a_locales": [
       "es",
@@ -147,7 +150,7 @@
       "id",
       "th"
     ],
-    "cc_status": "Historical VI CC exists; no final all-eight regeneration/review yet. EN/JA checked audio and downloads do not certify complete metadata/CC/dub packages.",
+    "cc_status": "Historical VI CC exists; all eight language CC files must be regenerated/reviewed on actual audio timing after all eight audio tracks complete. Four checked audio downloads do not certify complete metadata/CC/dub packages.",
     "vi": {
       "initial_synthesized_lines": 92,
       "initial_billable_characters": 5822,
@@ -226,27 +229,28 @@
     "foreign_audio_ready_locales": [
       "vi",
       "en",
-      "ja"
+      "ja",
+      "ko"
     ],
-    "foreign_language_packages_ready_scope": "Complete CC/metadata/dub packages and language-batch delivery remain pending; three checked M4A downloads (VI/EN/JA) are delivered independently.",
+    "foreign_language_packages_ready_scope": "Complete CC/metadata/dub packages and language-batch delivery remain pending; four checked M4A downloads (VI/EN/JA/KO) were delivered independently.",
     "all_eight_ready": false,
     "producer": {
       "state": "/workspace/work/ai-tech-next/forty-language-production.json",
-      "state_sha256_at_observation": "9912fcd3030f4453c8e3c4b9f2683ae961014af44714f5795358396d927b3819",
-      "updated_at": "2026-10-25T22:34:59.053831Z",
-      "phase": "ko_waiting_shared_asr_slot_after_retake2",
+      "state_sha256_at_observation": "eef72bdc512b461150005bd3a40247d91141ce59e709c1ff3523309ab95e4161",
+      "updated_at": "2026-10-26T00:03:09.526Z",
+      "phase": "es_dub_exit_1",
       "owner": "/root/forty_r1_listener",
       "active_locale": null,
-      "waiting_locale": "ko",
       "active_started_at": null,
       "active_log": null,
       "remaining_released_at": "2026-10-25T19:28:16.470838+00:00",
       "asr_coordination": {
         "held": true,
         "requested_by": "root",
-        "at": "2026-10-25T22:30:01.538974Z",
-        "reason": "Fourth film zh-TW initial check needs the sole shared Whisper medium slot. Current KO native check completed22:29:17Z. TTS/fit/measure allowed; next native check waits explicit root release."
-      }
+        "at": "2026-10-25T23:51:28.707718Z",
+        "reason": "KO final native check passed; subsequent language checks require coordinated shared-ASR release. This docs update does not start a check."
+      },
+      "scope": "SHA and fields describe this observation only; the independent producer may continue ES/PT/ID/TH without this document becoming a current live-state claim."
     },
     "en": {
       "status": "current_audio_passed_and_direct_backend_delivered",
@@ -330,11 +334,12 @@
       "cc_status": "Pending regeneration/review on actual dub timing in final all-eight caption pass",
       "language_batch_submitted": false
     },
-    "foreign_audio_downloads_delivered": 3,
+    "foreign_audio_downloads_delivered": 4,
     "foreign_audio_backend_locales": [
       "vi",
       "en",
-      "ja"
+      "ja",
+      "ko"
     ],
     "ja": {
       "status": "current_audio_passed_and_direct_backend_delivered",
@@ -427,61 +432,280 @@
       "note": "Initial 9 flags and genuine retake/reword history remain; current 92 takes truly passed and were independently audited before normal checked-audio-only incremental delivery."
     },
     "ko": {
-      "status": "ko_waiting_shared_asr_slot_after_retake2",
-      "producer_locale_phase": "retake2_fit_meter_pass_waiting_shared_asr",
-      "current_audio_passed": false,
+      "status": "current_audio_passed_and_direct_backend_delivered",
+      "current_audio_passed": true,
       "retake_rounds": 2,
-      "meaning_reword_rounds": 0,
+      "meaning_reword_rounds": 3,
+      "standard_meaning_reword_rounds": 2,
+      "owner_exception_meaning_reword_rounds": 1,
       "shorten_rounds": 0,
       "m4a_initial_produced": true,
-      "retake2_fit_measure_complete": true,
-      "current_take_audio_check_complete": false,
-      "delivered": false,
-      "previous_completed_check": {
-        "stage": "check-audio",
-        "at": "2026-10-25T22:29:17.267Z",
-        "locale": "ko",
-        "lines": 92,
-        "exact": 46,
-        "alike": 0,
-        "judged": 46,
-        "cleared": 6,
-        "flagged": 10,
-        "unchecked": 0,
-        "transcribed": 17,
-        "jev_calls": 2,
-        "native_exit_code": 1,
-        "track_sha256": "8849143480ff7f1ce29c79e91324384cedf9ae1d250456d056ccdf604570a2b7",
-        "log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T22-22-00-701Z.log"
+      "current_take_audio_check_complete": true,
+      "speech_hash": "c6d70ecaef91a15d",
+      "translation_hash": "e76d57184885fec4",
+      "speech_fingerprint": "5da6d39d9b80ae30",
+      "m4a": {
+        "path": "/workspace/work/videos/forty-forest-map/dubs/ko.m4a",
+        "seconds": 512.805,
+        "bytes": 12686028,
+        "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+        "codec": "aac",
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "integrated_lufs": -14,
+        "true_peak_dbtp": -2.9
       },
-      "previous_check_counts": {
+      "fit": {
+        "windows": 89,
+        "over": 0,
+        "absorbed_windows": [],
+        "tempo_max": 1.14,
+        "skipped": 0,
+        "kept": 0
+      },
+      "audio_check": {
+        "passed": true,
+        "exit_code": 0,
         "checked": 92,
-        "accepted": 82,
-        "flags": 10,
+        "accepted": 92,
+        "flags": 0,
         "unchecked": 0,
-        "flagged_ids": [
-          "up9r",
-          "ywu9",
-          "dkq3",
-          "6ybg",
-          "4amm",
-          "n37p",
-          "ywz8",
-          "ww8v",
-          "ncx4",
-          "88pk"
-        ]
+        "flagged_ids": [],
+        "completed_at": "2026-10-25T23:50:57.346Z",
+        "native_stage_at": "2026-10-25T23:50:57.210Z",
+        "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-50-47-886Z.log",
+        "receipt_sha256": "e6bde75e09a5f859b2e0affd24f91df3eb46322961a0ee080f751cceb1b27131",
+        "transcript_receipt_sha256": "1f62948bb0e0dc5840733156ba6efd3d7cdeea6cde4c27c97f059d5eb7d3f413",
+        "independent_receipt": "/workspace/work/ai-tech-next/forty-ko-independent-media-audit.json",
+        "independent_receipt_sha256": "d734ba704375d573480dbf708982fbc16a96d242663115c72470107fdb161abe",
+        "public_verification": "ko-audio-verification.json",
+        "public_verification_sha256": "d734ba704375d573480dbf708982fbc16a96d242663115c72470107fdb161abe",
+        "accepted_routes": {
+          "exact": 52,
+          "Jev": 32,
+          "second_exact": 6,
+          "second_Jev": 2
+        },
+        "manual_transcript_or_cache_edits": false
       },
-      "previous_check_stage_at": "2026-10-25T22:29:17.267Z",
-      "last_native_activity_completed_at": "2026-10-25T22:33:15.646Z",
-      "last_native_activity_completed_scope": "Retake2 dub completion, not a new audio check.",
-      "asr_coordination": {
-        "held": true,
-        "requested_by": "root",
-        "at": "2026-10-25T22:30:01.538974Z",
-        "reason": "Fourth film zh-TW initial check needs the sole shared Whisper medium slot. Current KO native check completed22:29:17Z. TTS/fit/measure allowed; next native check waits explicit root release."
+      "initial_flags_progression": [
+        17,
+        10,
+        10,
+        4,
+        1,
+        0
+      ],
+      "historical_checks_preserved": [
+        {
+          "completed_at": "2026-10-25T22:17:41.440Z",
+          "native_stage_at": "2026-10-25T22:17:41.377Z",
+          "native_exit_code": 1,
+          "checked": 92,
+          "flags": 17,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T22-00-55-735Z.log",
+          "receipt_sha256": "91721d77839761865c5b5f75a4e56584eb24c4d7208c84db8e8103aabff457cf",
+          "track_sha256": "3c88ee2d4b003e6bf4ec178a8a43438c9016bc0df1d9feb42f36b4e723f8da70"
+        },
+        {
+          "completed_at": "2026-10-25T22:29:17.511Z",
+          "native_stage_at": "2026-10-25T22:29:17.267Z",
+          "native_exit_code": 1,
+          "checked": 92,
+          "flags": 10,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T22-22-00-701Z.log",
+          "receipt_sha256": "155ee405e77b4ce85917e4981c911bdfb8b0b80c58df65b24cd9e0997dfa9d5a",
+          "track_sha256": "8849143480ff7f1ce29c79e91324384cedf9ae1d250456d056ccdf604570a2b7"
+        },
+        {
+          "completed_at": "2026-10-25T22:57:56.110Z",
+          "native_stage_at": "2026-10-25T22:57:56.073Z",
+          "native_exit_code": 1,
+          "checked": 92,
+          "flags": 10,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T22-54-13-640Z.log",
+          "receipt_sha256": "e6a8870e1abaf2544b03f21b2e24c1a910ea2c076386377ce78ee67e34748578",
+          "track_sha256": "5dd08a52a3c93c6162b868ba388f384eea7f4b993265a9002d74916a452d03d3"
+        },
+        {
+          "completed_at": "2026-10-25T23:10:41.081Z",
+          "native_stage_at": "2026-10-25T23:10:40.993Z",
+          "native_exit_code": 1,
+          "checked": 92,
+          "flags": 4,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-07-06-138Z.log",
+          "receipt_sha256": "c4be1329dd7a306cf246da79a5e073d2358c684793f42b55f5b299015f085fc1",
+          "track_sha256": "a4226edd014a8432b347b68a8701d8a01a09d663252f986f1b6f9bef60811161"
+        },
+        {
+          "completed_at": "2026-10-25T23:29:47.318Z",
+          "native_stage_at": "2026-10-25T23:29:47.270Z",
+          "native_exit_code": 1,
+          "checked": 92,
+          "flags": 1,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-27-04-092Z.log",
+          "receipt_sha256": "cfff33cf5ff4d35defd708e748ddb04865426388d92db1daab206e0f55737074",
+          "track_sha256": "9386f284382c1febc3cf06e3858d0f74840252ee22d40ace961481a1ddcfec08"
+        },
+        {
+          "completed_at": "2026-10-25T23:50:57.346Z",
+          "native_stage_at": "2026-10-25T23:50:57.210Z",
+          "native_exit_code": 0,
+          "checked": 92,
+          "flags": 0,
+          "unchecked": 0,
+          "native_log": "/workspace/work/ai-tech-next/forty-check-ko-2026-10-25T23-50-47-886Z.log",
+          "receipt_sha256": "e6bde75e09a5f859b2e0affd24f91df3eb46322961a0ee080f751cceb1b27131",
+          "track_sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b"
+        }
+      ],
+      "historical_failure_archives": [
+        {
+          "at": "2026-10-25T22:17:49.921Z",
+          "reason": "before-retake1",
+          "path": "/workspace/work/ai-tech-next/forty-language-archives/ko-before-retake1-2026-10-25T22-17-49-921Z",
+          "flag_ids": [
+            "v9fh",
+            "gfes",
+            "up9r",
+            "ywu9",
+            "dkq3",
+            "w86h",
+            "6ybg",
+            "97h6",
+            "4amm",
+            "afyy",
+            "n37p",
+            "ywz8",
+            "ww8v",
+            "7qfx",
+            "ncx4",
+            "j5kv",
+            "88pk"
+          ]
+        },
+        {
+          "at": "2026-10-25T22:29:57.025Z",
+          "reason": "before-retake2",
+          "path": "/workspace/work/ai-tech-next/forty-language-archives/ko-before-retake2-2026-10-25T22-29-57-025Z",
+          "flag_ids": [
+            "up9r",
+            "ywu9",
+            "dkq3",
+            "6ybg",
+            "4amm",
+            "n37p",
+            "ywz8",
+            "ww8v",
+            "ncx4",
+            "88pk"
+          ]
+        },
+        {
+          "at": "2026-10-25T23:00:40.601Z",
+          "reason": "before-reword1",
+          "path": "/workspace/work/ai-tech-next/forty-language-archives/ko-before-reword1-2026-10-25T23-00-40-601Z",
+          "flag_ids": [
+            "up9r",
+            "ywu9",
+            "dkq3",
+            "6ybg",
+            "4amm",
+            "n37p",
+            "ywz8",
+            "ww8v",
+            "ncx4",
+            "88pk"
+          ]
+        },
+        {
+          "at": "2026-10-25T23:21:30.149Z",
+          "reason": "before-reword2",
+          "path": "/workspace/work/ai-tech-next/forty-language-archives/ko-before-reword2-2026-10-25T23-21-30-149Z",
+          "flag_ids": [
+            "dkq3",
+            "ww8v",
+            "ncx4",
+            "88pk"
+          ]
+        },
+        {
+          "at": "2026-10-25T23:33:05.420Z",
+          "reason": "before-reword3-owner-exception",
+          "path": "/workspace/work/ai-tech-next/forty-language-archives/ko-before-reword3-owner-exception-2026-10-25T23-33-05-420Z",
+          "flag_ids": [
+            "dkq3"
+          ]
+        }
+      ],
+      "owner_exception": {
+        "label": "extra_owner_delegated_one_line_exception",
+        "authorized_by": "root under standing owner instruction: recommended decisions delegated without asking again",
+        "authorized_at": "2026-10-25T23:32:10.482366Z",
+        "round": 3,
+        "prior_original_text_retake_rounds": 2,
+        "prior_standard_reword_rounds": 2,
+        "residual_flags_after_standard_reword2": [
+          "dkq3"
+        ],
+        "changed_ids": [
+          "dkq3"
+        ],
+        "wording_change": "6개 → 여섯 범주; only the highest score is described, preserving the six categories and unique maximum.",
+        "new_requests": 1,
+        "billable_characters": 26,
+        "other91_WAVs_byte_identical": true,
+        "scope_receipt": "/workspace/work/ai-tech-next/forty-ko-owner-exception-wave-scope.json",
+        "scope_receipt_sha256": "f1f5d85e636a480b1b9f17a809521f21940a7990ff5fcc3723475cc85db4e03d",
+        "scope_only_receipt_was_not_ASR_pass": true,
+        "later_current_audio_passed_at": "2026-10-25T23:50:57.210Z",
+        "not_relabelled_as_round2": true
       },
-      "note": "Previous 22:29:17 check belongs to the pre-retake2 track and still had 10 flags. Retake2 and fit/measure are complete, but new takes have not completed native checking; next check waits for explicit shared-ASR release."
+      "delivered": true,
+      "delivered_at": "2026-10-25T23:57:42.977Z",
+      "delivery_scope": "Checked M4A only; no complete Korean CC/metadata/dub-package or formal language-batch readiness claim.",
+      "backend_roles": [
+        {
+          "role": "dub_ko",
+          "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+          "size": 12686028,
+          "content_type": "audio/mp4"
+        },
+        {
+          "role": "evidence_ko_m4a",
+          "sha256": "3ad9e36f26ba139ce4f57676dc699bbf5b52ffbd51a1b8e347971c5dabe9ef3b",
+          "size": 12686028,
+          "content_type": "audio/mp4"
+        }
+      ],
+      "receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-ko.result.2026-10-25T23-57-27-322Z.json",
+      "receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+      "public_delivery_receipt": "ko-backend-delivery.json",
+      "public_delivery_receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+      "cc_status": "Pending regeneration/review on actual dub timing in the final all-eight caption pass.",
+      "language_batch_submitted": false
+    },
+    "es": {
+      "status": "initial_synthesis_complete_fit_not_passed",
+      "current_audio_passed": false,
+      "delivered": false,
+      "initial_synthesis": {
+        "new_requests": 92,
+        "billable_characters": 5605,
+        "completed_at": "2026-10-26T00:00:00.453Z",
+        "native_exit_code": 1,
+        "native_log": "/workspace/work/ai-tech-next/forty-dub-es-2026-10-25T23-52-28-035Z.log",
+        "over": 4,
+        "absorbed": 3,
+        "tempo_max": 1.15,
+        "fit_receipt_sha256": "6d0717b71f2df73da40892ca05e758e6bf0652102c9a7769980c20343127cb38"
+      },
+      "note": "Initial ES synthesis produced 92 takes but exited 1 with 4 over windows and 3 absorbed windows. No ES audio PASS, delivery or final M4A is claimed. Follow-on work remains with the active producer; this docs update does not modify ES."
     }
   },
   "foreign_dub_files_produced": 4,
@@ -508,7 +732,8 @@
     "checked_downloadable_foreign_locales": [
       "vi",
       "en",
-      "ja"
+      "ja",
+      "ko"
     ],
     "main_delivery_dod_complete": true,
     "all_eight_delivery_dod_complete": false,
@@ -531,9 +756,13 @@
       {
         "path": "/workspace/work/ai-tech-next/deliver-checked-forty-ja.result.2026-10-25T21-54-35-658Z.json",
         "sha256": "ba21ef011b4dab323777485bb85d265e31ca96a1129e62e80f7cd1e78d70ff04"
+      },
+      {
+        "path": "/workspace/work/ai-tech-next/deliver-checked-forty-ko.result.2026-10-25T23-57-27-322Z.json",
+        "sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9"
       }
     ],
-    "checked_downloadable_foreign_audio_count": 3,
+    "checked_downloadable_foreign_audio_count": 4,
     "en_download_roles": [
       "dub_en",
       "evidence_en_m4a"
@@ -552,14 +781,24 @@
     "ja_delivery_receipt_sha256": "ba21ef011b4dab323777485bb85d265e31ca96a1129e62e80f7cd1e78d70ff04",
     "all_old_files_and_payload_qa_preserved_after_ja": true,
     "standard_dubs_payload_changed_by_ja": false,
-    "main_delivery_dod_scope": "Historical delivered/check zh-TW body-only version; excludes formal branding bookends and complete all-eight delivery."
+    "main_delivery_dod_scope": "Historical delivered/check zh-TW body-only version; excludes formal branding bookends and complete all-eight delivery.",
+    "ko_download_roles": [
+      "dub_ko",
+      "evidence_ko_m4a"
+    ],
+    "ko_delivered_at": "2026-10-25T23:57:42.977Z",
+    "ko_delivery_receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-ko.result.2026-10-25T23-57-27-322Z.json",
+    "ko_delivery_receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+    "ko_public_delivery_receipt": "ko-backend-delivery.json",
+    "ko_public_delivery_receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+    "all_old_files_and_payload_qa_preserved_after_ko": true,
+    "standard_dubs_payload_changed_by_ko": false
   },
   "pending": [
-    "Recheck current KO retake2 takes after explicit shared-ASR release; retake2 and fit/measure are complete but the previous native check still had 10 flags.",
-    "Produce/fit/check ES, PT, ID and TH; independently audit each current 92-line PASS and incrementally deliver only that checked M4A.",
-    "After all eight audio tracks complete, regenerate/review CC on actual language timing and retain reading-speed advisories; finish metadata/package checks.",
-    "Submit/read back the formal eight-language batch before checking all-eight delivery DOD. Remote final remains pending unless genuinely changed by the server.",
-    "Complete formal branding/bookends only after legally usable official assets and the guard; current delivered b293 is body-only and has no branding.json."
+    "Finish ES fit repairs, then native-check and independently audit its current 92-line audio before incremental M4A delivery; first synthesis exited 1 with 4 over and 3 absorbed windows. PT, ID and TH remain pending.",
+    "After all eight audio tracks complete, regenerate/review every language CC on actual language timing, retain reading-speed advisories and finish metadata/package checks; complete packages remain 0/8.",
+    "Submit/read back the formal eight-language batch before checking all-eight delivery DOD. Remote final and reviews remain pending unless genuinely changed by the server.",
+    "Complete formal official intro/outro bookends only after legally usable official assets and the guard; current delivered b293 is a BODY CANDIDATE with no branding.json."
   ],
   "youtube_publication_performed": false,
   "git_merge_performed": false,
@@ -574,7 +813,7 @@
     "formal_bookend_default_available": false,
     "repo_branding_json_exists": false,
     "media_branding_json_exists": false,
-    "delivered_main_scope": "Body-only b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18; static outro and historical QA11/11 do not establish formal brand bookends or satisfy all later rules.",
+    "delivered_main_scope": "BODY CANDIDATE / body-only b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18; official intro/outro remain missing. Static outro and historical QA11/11 do not establish formal brand bookends or satisfy all later rules.",
     "new_branding_rules_satisfied": false,
     "pending_legal_official_assets_and_guard": true,
     "followup_task_id": "2026-10-25-local-first-build-without-branding",

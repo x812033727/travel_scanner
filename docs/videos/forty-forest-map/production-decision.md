@@ -23,3 +23,16 @@
 ## B總量驗算補充（2026-10-25 16:59 UTC）
 
 初始87句TTS已實際完成：總長478.2秒，片尾前正文466.533秒。未達八分鐘，因此採用撰稿者推薦A，新增先前尚未逐步示範的B六分數總量驗算與抄錄回查，保留原87句及其已合成take、不調慢聲音或增加停頓。`.344+.344=.688 → +.308=.996 → +.004+0+0=1`給出可照做的新中間步驟；名稱仍須對回，不把加總正確當精度或校準證明。新增五句c88–92，證據及原句完整保留的比對另記錄，須經定向查核後正常合成這五句，再量實際正文與總長。初始478.2秒只屬舊87句版本，不冒稱新92句已通過時長或音檢。
+
+
+## 已驗音軌與增量交付採用（2026-10-26）
+
+本節更新目前交付快照；上文87／92句早期製作採用及其當時pending狀態仍是歷史紀錄。協調者延續站主「預設八語都要做」「推薦決定不用問」的委派，只將真實原生音檢及獨立稽核通過的M4A增量交付。
+
+VI、EN、JA、KO共4／8音軌各92／92通過且已送後臺；KO於2026-10-25T23:50:57Z真實exit0、0 flags／unchecked，23:57:42完成四部分上傳、server組裝SHA／大小驗證及登入後兩角色metadata讀回。收據見[KO獨立音訊核驗](ko-audio-verification.json)及[KO增量交付](ko-backend-delivery.json)；這不包括遠端二進位下載。原1080p b293完整bytes、歷史主片QA11／11、全部舊files／payload及遠端pending／語言選擇保留，final及reviews仍pending，未提交正式language batch。
+
+KO歷史修復上限如實保留：兩輪原文retake、兩輪標準等義改詞後，23:29:47仍有dkq3一flag。協調者依持續推薦決策委派採單句owner exception，另記reword3，沒有把計數改回第二輪。只將dkq3的6개改為自然的여섯 범주、只描述最高分，保留六個範疇與唯一最大值；只新合成1句／26字，其他91句raw WAV SHA不變。舊失敗收據及archive保留；byte-scope核對與後來的ASR PASS分開記錄。
+
+ES首次92句合成完成但fit exit1（4 over／3 absorbed），還未音檢通過或交付；PT／ID／TH待製作。全部八語audio完成後，全部語言CC仍需依實際音軌timing重產／核對，保留速度advisory；完整package為0／8，all_eight_ready與overall均false。主片僅BODY CANDIDATE，正式官方intro／outro仍缺漏，須待合法素材與guard另處理。
+
+本次僅整理四份進度文件與兩份安全proof；未變更source／claims／lexicon／i18n／媒體，未操作後臺、付費、YouTube、merge或deploy。詳見[機器可讀進度](production-progress.json)及[製作結果](production-result.md)。
