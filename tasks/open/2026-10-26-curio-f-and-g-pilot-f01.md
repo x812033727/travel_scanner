@@ -1,14 +1,14 @@
 ---
 id: 2026-10-26-curio-f-and-g-pilot-f01
 title: Curio F and G pilot: F01 Cinderella, F14 Pandora, G01 Fox sisters, U17 told as a story
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-storyteller
+claimed_at: 2026-10-26T23:50:45Z
 created_at: 2026-10-26T13:43:57Z
 completed_at:
-branch:
+branch: claude/clever-archimedes-4oqn4s
 depends_on: []
 scope:
   - docs/videos/curio-f01
