@@ -893,8 +893,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
         "video_review_file_not_found": (
-            "This file is not in a pending or approved review of this video. It may have been "
-            "rejected, replaced by a newer cut, or cleared from the review store."
+            "This file is not in a pending, approved or renewal-retained review of this video. "
+            "It may have been rejected, replaced by a newer cut, or cleared from the review store."
         ),
         "catalog_enrichment_nothing_pending": "No pending merchants match the enrichment request.",
         "catalog_source_untrusted": (
@@ -1056,7 +1056,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
         "video_review_file_not_found": (
-            "このファイルは、この動画の審査待ちまたは承認済みのレビューにありません。"
+            "このファイルは、この動画の審査待ち、承認済み、または差し替えで保持されたレビューにありません。"
             "却下されたか、新しい版に置き換えられたか、レビュー領域から削除された可能性があります。"
         ),
         "catalog_enrichment_nothing_pending": "補完対象の審査待ち店舗がありません。",
@@ -1219,7 +1219,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
         "video_review_file_not_found": (
-            "이 파일은 이 영상의 검토 대기 중이거나 승인된 검토에 없습니다. "
+            "이 파일은 이 영상의 검토 대기 중이거나 승인되었거나 교체 시 보존된 검토에 없습니다. "
             "반려되었거나 새 버전으로 대체되었거나 검토 저장소에서 삭제되었을 수 있습니다."
         ),
         "catalog_enrichment_nothing_pending": "보완할 심사 대기 가게가 없습니다.",
@@ -1421,7 +1421,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
         "video_review_file_not_found": (
-            "这个文件不在这支视频待审或已核准的审核里（可能被退回、已被新版取代，或审核区已清掉）"
+            "这个文件不在这支视频待审、已核准或换版保留的审核里（可能被退回、已被新版取代，或审核区已清掉）"
         ),
         "catalog_enrichment_nothing_pending": "目前没有符合条件的待审店家。",
         "catalog_source_untrusted": "旅游局来源必须是可信的官方或政府主机。",

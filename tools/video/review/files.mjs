@@ -44,18 +44,23 @@ const ATTEMPTS = 4;
  * The files to fetch: every file of a pending or approved review, newest review first, one per
  * gate and role, at <gate>/<role><ext> under the output directory. A file the site lists twice
  * (a final the publish gate repeats) is fetched once per place it is named, from the same hash.
+ * The reviews a live owner renewal retains (its old final, publish and languages, superseded but
+ * kept for the rebuild; apps/api/app/video_reviews/tool_files.py) go to retained/<gate>/ so they
+ * never collide with the renewed cut's own files.
  */
 export function liveFiles(project) {
-  const reviews = [...(project?.reviews ?? [])]
-    .filter((review) => LIVE.has(review.status))
-    .sort((a, b) => String(b.created_at ?? "").localeCompare(String(a.created_at ?? "")));
+  const newest = (a, b) => String(b.created_at ?? "").localeCompare(String(a.created_at ?? ""));
+  const all = [...(project?.reviews ?? [])].sort(newest);
+  const live = all.filter((review) => LIVE.has(review.status));
+  const retained = new Set(live.flatMap((review) => review.payload?._final_renewal?.retained_review_ids ?? []).map(String));
+  const kept = all.filter((review) => !LIVE.has(review.status) && retained.has(String(review.id)));
   const seen = new Set();
   const out = [];
-  for (const review of reviews) {
+  for (const [review, prefix] of [...live.map((review) => [review, ""]), ...kept.map((review) => [review, "retained/"])]) {
     if (!/^[a-z]+$/.test(String(review.gate))) continue;
     for (const file of review.files ?? []) {
       if (!SHA256.test(String(file.sha256)) || !ROLE.test(String(file.role))) continue;
-      const key = `${review.gate}/${file.role}`;
+      const key = `${prefix}${review.gate}/${file.role}`;
       if (seen.has(key)) continue;
       seen.add(key);
       const ext = EXTENSIONS[file.content_type] ?? ".bin";

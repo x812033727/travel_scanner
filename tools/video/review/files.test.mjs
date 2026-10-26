@@ -50,6 +50,24 @@ test("only pending and approved reviews count, newest first, one file per gate a
   assert.deepEqual(files.map((f) => [f.file, f.review_id]), [["final/final.mp4", "r3"], ["final/captions_zh-TW.srt", "r3"]]);
 });
 
+test("a live renewal's retained reviews come back under retained/, other superseded ones do not", () => {
+  const renewed = {
+    reviews: [
+      { id: "n1", gate: "final", status: "pending", created_at: "2026-10-26T07:17:00Z", payload: { _final_renewal: { retained_review_ids: ["r3", "r9"] } }, files: [entry("final", Buffer.from("new cut"), "video/mp4")] },
+      { id: "r9", gate: "languages", status: "superseded", created_at: "2026-10-25T14:00:00Z", files: [entry("dub_en", Buffer.from("dub"), "audio/mp4")] },
+      ...project.reviews.map((review) => ({ ...review, status: review.id === "r3" ? "superseded" : review.status })),
+    ],
+  };
+  assert.deepEqual(liveFiles(renewed).map((f) => [f.file, f.review_id]), [
+    ["final/final.mp4", "n1"],
+    ["retained/languages/dub_en.m4a", "r9"],
+    ["retained/final/final.mp4", "r3"],
+    ["retained/final/captions_zh-TW.srt", "r3"],
+  ]);
+  renewed.reviews[0].status = "rejected";
+  assert.deepEqual(liveFiles(renewed).map((f) => f.review_id), ["r1"]);
+});
+
 test("review-files fetches each live file with the token, checks its hash and writes a manifest", async (t) => {
   const h = harness(t);
   assert.equal(await main(["review-files", "--slug", "video-one", "--out", h.out], h.ctx), 0);
