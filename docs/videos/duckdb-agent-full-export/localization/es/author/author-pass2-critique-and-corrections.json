@@ -1,0 +1,144 @@
+{
+  "pass": 2,
+  "kind": "Same-author full source-target critique plus accepted separately attributed independent V1 critique",
+  "at": "2026-10-26T07:44:19.317611+00:00",
+  "full_111_pairs_reread": true,
+  "metadata_and_6chapters_reviewed": true,
+  "independent_critique_path": "/workspace/work/ai-tech-next/fifth-es-translation/independent-v1-critique.json",
+  "independent_critique_sha256": "7d3ee88d5502b6c684cd5f24d75204575141d667db64de5eb2c71997da194c18",
+  "corrections": [
+    {
+      "field": "title",
+      "category": "metadata",
+      "before": "¿Solo ves 40 filas? Exporta la lista completa con DuckDB 2.0",
+      "after": "¿Solo ves 40 filas? Exporta la lista completa de seguimiento con DuckDB 2.0",
+      "reason": "Restore follow-up qualification in the searchable title; complete qualified list is not all1200 input records.",
+      "review_origin": "author_pass2_and_independent_critique"
+    },
+    {
+      "field": "chapters:read-parquet-back",
+      "category": "chapters",
+      "before": "Reabrir el archivo y cotejarlo registro por registro",
+      "after": "Reabrir el archivo y cotejar cada registro con la tabla original",
+      "reason": "Restore the original-table reference from the chapter source.",
+      "review_origin": "independent_critique_accepted"
+    },
+    {
+      "field": "chapters:new-requirement-consequence",
+      "category": "chapters",
+      "before": "Incluir entregas puntuales cambia lo que se pide",
+      "after": "Incluir entregas justo a tiempo cambia lo que se pide",
+      "reason": "Use exact equality wording, avoiding a broader punctual label that can include early arrivals.",
+      "review_origin": "author_pass2_and_independent_critique"
+    },
+    {
+      "field": "lines:ufbq",
+      "category": "lines",
+      "before": "Los días reales de los que siguen en tránsito están vacíos: todavía no hay un plazo de entrega completado.",
+      "after": "En tránsito, los días reales están en NULL: la entrega aún no se ha completado.",
+      "reason": "Describe missing completed actual duration, not a promised deadline; keep NULL instead of inventing zero.",
+      "review_origin": "author_pass2_and_independent_critique"
+    },
+    {
+      "field": "lines:ab37",
+      "category": "lines",
+      "before": "No. Los paquetes puntuales que antes excluimos ahora también deben aparecer.",
+      "after": "No. Los que llegaron justo a tiempo, antes excluidos, ahora deben entrar.",
+      "reason": "Preserve the equality-only addition and the earlier exclusion.",
+      "review_origin": "author_pass2_and_independent_critique"
+    },
+    {
+      "field": "lines:b5i9",
+      "category": "lines",
+      "before": "Esos registros añadidos llegaron justo a tiempo; el archivo completo debe llamarse lista de entregas puntuales o retrasadas.",
+      "after": "Los añadidos llegaron justo a tiempo; la lista es de entregas justo a tiempo o con retraso.",
+      "reason": "Name the variant by its actual >= scope; do not label all720 late or include early deliveries.",
+      "review_origin": "author_pass2_and_independent_critique"
+    },
+    {
+      "field": "lines:fpcm",
+      "category": "lines",
+      "before": "Los que siguen en tránsito se quedan en la tabla original, fuera de este pedido.",
+      "after": "Los que siguen en tránsito quedan en la tabla original, fuera de esta lista.",
+      "reason": "Pedido could suggest a parcel order; this line excludes those rows only from the follow-up requirement.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:4cr9",
+      "category": "lines",
+      "before": "Esa línea distingue el tamaño del resultado de la consulta del espacio que ocupa en pantalla.",
+      "after": "Esa línea distingue el total de filas del resultado de las filas que se muestran.",
+      "reason": "Screen space is not the metric; explicitly distinguish result row count and displayed row count.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:jsui",
+      "category": "lines",
+      "before": "La letra que anuncié al inicio es la que falta al final del campo de días reales.",
+      "after": "Falta la ese final: escribí actual_day en lugar de actual_days.",
+      "reason": "Match the actual slide/code: the author intentionally omits final s, without attributing an AI failure.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:q6db",
+      "category": "lines",
+      "before": "Desde la tabla original hasta esta salida no añadimos un límite a las filas mostradas.",
+      "after": "No añadimos a esta consulta de exportación un límite de filas para la vista previa.",
+      "reason": "Bind the absence of a display-row limit to export SQL, while retaining the filter in surrounding lines.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:3dwp",
+      "category": "lines",
+      "before": "La pregunta inicial sobre el archivo ya tiene respuesta fila por fila: ambas versiones contienen los mismos datos.",
+      "after": "La pregunta inicial sobre el archivo ya tiene respuesta fila por fila: los dos archivos contienen los mismos datos.",
+      "reason": "Avoid software-version ambiguity in ambas versiones; this is CSV versus Parquet readback content.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:5qhj",
+      "category": "lines",
+      "before": "Al leerlo de nuevo, cotejamos el orden de las columnas con la selección, para comprobar que el identificador y la ruta no se intercambiaron.",
+      "after": "Al reabrir, cotejamos el orden de columnas con la selección: el identificador y la ruta no deben intercambiarse.",
+      "reason": "Shorten a140-character entry without losing the ordering comparison or identifier/route check.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:ezfg",
+      "category": "lines",
+      "before": "Además, un programa sencillo lee la tabla original registro por registro y obtiene los identificadores que cumplen la regla original.",
+      "after": "Otro programa lee cada registro original y obtiene los identificadores que cumplen la regla original.",
+      "reason": "Shorten a long clause while preserving row-by-row original-data predicate verification; no AI benchmark.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:g738",
+      "category": "lines",
+      "before": "Pero si ahora también piden los paquetes que llegaron justo a tiempo, ¿podemos entregar sin cambios esta lista de retrasos ya verificada?",
+      "after": "Si ahora piden incluir los que llegaron justo a tiempo, ¿sirve sin cambios la lista de retrasos ya verificada?",
+      "reason": "Shorten the question without dropping changed requirement, exact equality or previously verified late list.",
+      "review_origin": "author_pass2"
+    },
+    {
+      "field": "lines:ha7h",
+      "category": "lines",
+      "before": "Guardamos los nombres de los archivos nuevo y anterior con sus consultas, para que quien los reciba elija el pedido correcto.",
+      "after": "Guardamos ambos nombres de archivo y sus consultas, para elegir la lista que corresponde a lo pedido.",
+      "reason": "Keep old/new filenames and each matching query, while reducing a long relative clause.",
+      "review_origin": "author_pass2"
+    }
+  ],
+  "correction_count": 15,
+  "critical_preservation": [
+    "40total/1200/1160preview distinct from480qualified",
+    "delivered AND actual>promised; NULL notzero",
+    "960/240;4-3=1;3-3=0excluded;R2R3each240",
+    ">=720includes240zero-late and notearly",
+    "2026Oct25research vsOct9intro/Oct21release",
+    "same2.0binary/oldCSVSQLCOPYParquet/noAIbenchmark",
+    "one validJSONline afterstartup, deliberateactual_day missingfinals",
+    "fictionalCC0/MIT/public4106URLs exact"
+  ],
+  "advisory_handling": "Readability counts are not a timed max_chars/fit proof; do not delete facts to fit an unknown slot.",
+  "paid_or_media_or_merge_or_backend_acceptance_claimed": false
+}

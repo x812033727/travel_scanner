@@ -42,3 +42,12 @@ JA作者初次URL抽取錯誤、root sheetTodo型別與freeze結構錯誤的診�
 當前另用[ko-text-adoption-index.json](ko-text-adoption-index.json)，舊JA171及更早31／61／90索引原位不改。[KO實際採用](../localization/ko/actual-native-text-adoption.json)綁root全111獨審、兩行／description白話修訂、真正常merge exit0與actual KO6b1e；[root完整delta](../localization/ko/root/root-wording-delta.json)不改109句或source/context，不是音訊重寫回合。作者21freeze＋root收據都有[exact copy proof](../localization/ko/copy-identity.json)，作者舊preview與root已採用版本分開保存。
 
 [五檔增量封存及舊88重建](../history/before-KO-text-adoption-docs/identity.json)使用0d885 Git anchor，83未變舊檔留原位，沒有再複製遞迴history。[當前驗證](ko-text-adoption-validation.json)記source／glossary／native lint／tasks／連結與hash。文字3/8不是實際字幕、M4A、fit或後台交付；master paid TTS0／raw0／actual timeline無，兩份敘事12/13 false保持原文。新freeze另列精確proposal，未stage／commit／push。
+
+
+## ES正常文字採用後：EN＋JA＋KO＋ES 4/8
+
+當前另用[es-text-adoption-index.json](es-text-adoption-index.json)，舊KO221及更早31／61／90／171索引原位不改。[ES實際採用](../localization/es/actual-native-text-adoption.json)綁root全111獨審、jd24／description修文、真正常merge exit0與actual ES2e8511；[root完整delta](../localization/es/root/root-wording-delta.json)不改110句或source/context，不是音訊重寫回合。作者31freeze＋root六份收據都有[exact copy proof](../localization/es/copy-identity.json)，作者舊preview與root已採用版本分開保存。
+
+[五檔增量封存及舊55重建](../history/before-ES-text-adoption-docs/identity.json)使用be172 Git anchor，50未變舊檔留原位，沒有再複製遞迴history。[當前驗證](es-text-adoption-validation.json)記source／glossary／native lint／tasks／連結與hash。文字4/8不是實際字幕、M4A、fit或後台交付；master paid TTS0／raw0／actual timeline無，兩份敘事12/13 false保持原文。新freeze另列精確proposal，未stage／commit／push。原生lint印出的旁白估時與通用Azure費用估計都不是ES實測、provider選擇或帳單。
+
+原生ES lint真exit0、0 errors／1 warning：標題寬37.5個全形字單位，高於手機清單建議36；此顯示建議如實保留，沒有改標題或native門檻。初次文件checker誤期望零警告而exit1的原腳本／log與診斷另存，修正checker期望後重新實跑，不把原錯誤改寫為成功。

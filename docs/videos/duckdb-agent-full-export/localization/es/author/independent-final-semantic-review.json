@@ -1,0 +1,60 @@
+{
+  "review_type": "Independent final semantic closure; neutral Latin-American Spanish",
+  "reviewed_native_file": "es.draft.reviewed.todo.json",
+  "reviewed_native_sha256": "b4701d2b6693667399f06177286376906a2968c015e723aa4c07b5207551c3ff",
+  "reviewed_complete_mapping_file": "source-target-complete-111.final.json",
+  "reviewed_complete_mapping_sha256": "900b845f0809715ffc016d769572aeb89246114a353bae07a0705837167a8f12",
+  "reviewed_correction_ledger_sha256": "43722673ec2df64d732e28562804f2ad5e1e769aa4f575c914fa8f6c500f0ce9",
+  "canonical_source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "full_read_affirmation": "Reread all 111 final source-to-Spanish pairs, all six chapters, full title, description, tags and thumbnail, and all 15 correction-ledger entries. Unchanged lines were assessed with the prior full-reading context.",
+  "structural_crosschecks": {
+    "all111_native_pairs_match_final_mapping": true,
+    "all111_source_lines_match_canonical": true,
+    "all6_native_chapters_match_final_mapping": true,
+    "all_metadata_match_final_mapping": true,
+    "actual_changed_fields_exactly_match_all15_ledger_entries": true,
+    "line_changes": 12,
+    "chapter_changes": 2,
+    "title_changes": 1,
+    "exact_public_urls_preserved": true
+  },
+  "prior_four_groups": [
+    {
+      "group": "title_followup_scope",
+      "resolved": true,
+      "evidence": "The final title includes lista completa de seguimiento."
+    },
+    {
+      "group": "ufbq_actual_duration",
+      "resolved": true,
+      "evidence": "The final wording explains NULL by an unfinished delivery, without calling actual duration a promised plazo or inventing zero."
+    },
+    {
+      "group": "chapter_original_table_reference",
+      "resolved": true,
+      "evidence": "read-parquet-back now explicitly says con la tabla original."
+    },
+    {
+      "group": "exact_equality_labels",
+      "resolved": true,
+      "evidence": "ab37, b5i9 and new-requirement-consequence now use justo a tiempo; the variant label remains justo a tiempo o con retraso."
+    }
+  ],
+  "correction_regression_assessment": "No semantic regression found in the 15 corrections. The added NULL and actual_day/actual_days final-s distinction are supported by the existing source context. Display-count versus result-count, distinct files versus software versions, row-by-row original-data checking, old/new query retention and the shortened changed-requirement question preserve their intended meaning.",
+  "critical_semantics_preserved": [
+    "2026-10-25 run date versus Oct 9 introduction and Oct 21 release",
+    "40 shown in total out of 1200; 1160 omitted; separate complete 480 qualified result",
+    "960 delivered plus 240 in transit; NULL or blank is not zero",
+    "delivered AND actual_days > promised_days; 4-3=1 included and 3-3=0 excluded",
+    "R2 and R3 each 240 under the original rule",
+    "changed >= requirement yields 720 including 240 zero-late records, with a distinct list purpose",
+    "intentional author typo; startup text followed by one valid JSON line; no bad-JSON, real external incident or AI-error claim",
+    "same 2.0 binary comparison; pre-existing CSV, SQL, COPY and Parquet; no unsupported AI, performance, token or cost benchmark",
+    "fictional original material, CC0-1.0/MIT and exact public 410633ab URLs"
+  ],
+  "new_semantic_findings": [],
+  "semantic_conclusion": "All four prior grouped issues are resolved. No additional semantic changes requested for this exact final worksheet hash.",
+  "timing_or_fit_assessed": false,
+  "approval_or_adoption_or_media_acceptance_claimed": false,
+  "scope": "This is a bounded semantic review only. No native validation CLI, repo, API, media, authentication, network, Git, draft or lease changes. Only this newly created review report was written."
+}

@@ -1,0 +1,892 @@
+{
+  "locale": "es",
+  "slug": "duckdb-agent-full-export",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "表格只顯示40列？用DuckDB 2.0交出完整跟進清單",
+    "text": "¿Solo ves 40 filas? Exporta la lista completa de seguimiento con DuckDB 2.0"
+  },
+  "description": {
+    "todo": true,
+    "source": "從同一份配送練習表，辨識輸出省略並交出完整跟進清單。\n給會用AI協助讀CSV、希望把查詢與完整結果一起交付的人。\n\n原創虛構配送資料與確定性作者程式，非真實公司／客戶／公共統計；沒有AI產品回應或獨立模型前後測。2026-10-25以同一DuckDB2.0.0二進位比較-agent與-no-agent，40列是1200筆輸入的預覽，480筆是明確條件篩選後的完整交付。顯示省略不代表查詢或儲存遺失資料。\n\n錯誤示範由作者故意少寫欄位名稱，agent stderr含啟動文字和一行合法JSON；需要按訊息行解析，不把混合stream誤認成單一JSON文件。沒有聲稱DuckDB產生壞JSON或真實第三方consumer故障。CSV／SQL／COPY／Parquet是既有能力，新特性是代理輸出模式。沒有測token、費用、模型推理、伺服器模式或既有庫升級。\n\n教材含原創輸入、完整SQL、重做腳本、完整480筆CSV／同內容Parquet、HTML報告、精確指令及逐檔SHA。原創資料／程式／報告為CC0-1.0，DuckDB為MIT；官方文字另屬其作者。\n\n公開教材（9條實跑命令）：https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n完整fixtures ZIP：https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+    "text": "Con una misma tabla de práctica de entregas, identifica las filas omitidas en pantalla y entrega una lista completa de seguimiento.\nPara quienes usan IA como apoyo al leer CSV y quieren entregar tanto la consulta como su resultado completo.\n\nLos datos de entregas son ficticios y originales, y los scripts del autor son deterministas. No representan una empresa, clientes ni estadísticas públicas. No se muestran respuestas de un producto de IA ni pruebas independientes de un modelo antes y después. El 25 de octubre de 2026 se compararon -agent y -no-agent con el mismo binario de DuckDB 2.0.0. Las 40 filas son una vista previa de 1200 registros de entrada; los 480 registros entregados son el resultado completo de aplicar condiciones explícitas. Omitir filas en pantalla no significa que la consulta o el almacenamiento hayan perdido datos.\n\nEl autor escribió a propósito un nombre de columna incompleto para demostrar el manejo del error. En esta ejecución, stderr del modo agente contiene texto de inicio y una línea de JSON válida: hay que analizar la línea del mensaje, sin tratar el flujo mixto como un único documento JSON. No se afirma que DuckDB genere JSON inválido ni que haya fallado un programa consumidor real de terceros. CSV, SQL, COPY y Parquet ya existían; la novedad es el modo de salida para agentes. No se probaron tokens, costos, razonamiento de modelos, modo servidor ni la actualización de una base de datos existente.\n\nEl material incluye los datos originales de entrada, el SQL completo, scripts para reproducir el ejercicio, el CSV completo de 480 registros que cumplen la condición, el mismo contenido en Parquet, un informe HTML, comandos exactos y el SHA de cada archivo. Los datos, el código y el informe originales se ofrecen bajo CC0-1.0; DuckDB usa MIT. Los textos oficiales pertenecen a sus autores.\n\nMaterial público (9 comandos ejecutados): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP completo de los datos y archivos del ejercicio: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "DuckDB",
+      "AI資料分析",
+      "代理模式",
+      "CSV",
+      "SQL",
+      "Parquet",
+      "資料查詢",
+      "完整清單"
+    ],
+    "text": [
+      "DuckDB",
+      "análisis de datos con IA",
+      "modo agente",
+      "CSV",
+      "SQL",
+      "Parquet",
+      "consultas de datos",
+      "lista completa"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "tag": "DuckDB2.0",
+      "headline": "還有\n**省略列**",
+      "sub": "預覽到完整交付"
+    },
+    "text": {
+      "tag": "DuckDB2.0",
+      "headline": "Hay más\n**filas omitidas**",
+      "sub": "De la vista previa al archivo completo"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "parcel-table-start",
+      "todo": true,
+      "source": "配送預覽中間少了一大段",
+      "text": "Falta un tramo en la vista previa de entregas"
+    },
+    {
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "原表還在，省略出現在回覆裡",
+      "text": "La tabla sigue completa; la respuesta omite filas"
+    },
+    {
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "三筆包裹，只有一筆入選",
+      "text": "Tres paquetes, solo uno cumple la condición"
+    },
+    {
+      "scene": "human-error",
+      "todo": true,
+      "source": "少一個字母，查詢先停了下來",
+      "text": "Falta una letra y la consulta se detiene"
+    },
+    {
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "檔案重開後，逐筆對回原表",
+      "text": "Reabrir el archivo y cotejar cada registro con la tabla original"
+    },
+    {
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "準時包裹加入，清單換了需求",
+      "text": "Incluir entregas justo a tiempo cambia lo que se pide"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI",
+      "HTML",
+      "JSON",
+      "agent",
+      "duckdb-agent-full-export",
+      "no-agent",
+      "stderr",
+      "token"
+    ],
+    "sources": [
+      "DuckDB2.0正式公告",
+      "DuckDB CLI agent模式",
+      "DuckDB2.0 CLI agent模式文件",
+      "DuckDB2.0遷移條件",
+      "DuckDB2.0正式release與套件"
+    ]
+  },
+  "boundaries": {},
+  "lines": [
+    {
+      "id": "dg2i",
+      "scene": "parcel-table-start",
+      "todo": true,
+      "source": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+      "text": "El 25 de octubre de 2026 consulté una tabla de entregas en esta computadora."
+    },
+    {
+      "id": "c7uh",
+      "scene": "running-followup-task",
+      "todo": true,
+      "source": "查詢要找出需要跟進的包裹，交成一份能重開的清單。",
+      "text": "Buscaba los paquetes que requieren seguimiento, para entregar una lista que se pudiera volver a abrir."
+    },
+    {
+      "id": "x6vr",
+      "scene": "forty-visible",
+      "todo": true,
+      "source": "螢幕只留下前後四十列，中間出現省略標記。",
+      "text": "La pantalla muestra 40 filas en total, entre el principio y el final. En medio aparece una marca de omisión."
+    },
+    {
+      "id": "iaiy",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "這份表真的只剩這些紀錄嗎？",
+      "text": "¿De verdad solo quedan esos registros en la tabla?"
+    },
+    {
+      "id": "zni4",
+      "scene": "typo-question",
+      "todo": true,
+      "source": "實際天數的欄位，等一下會少一個字母。",
+      "text": "En un momento faltará una letra en el nombre del campo de días reales."
+    },
+    {
+      "id": "3zp6",
+      "scene": "export-question",
+      "todo": true,
+      "source": "清單另外存成檔案，又怎麼確認內容完整？",
+      "text": "Y si guardo la lista en otro archivo, ¿cómo compruebo que está completa?"
+    },
+    {
+      "id": "a73b",
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "那份交付檔必須回查原表；原表仍有一千兩百筆紀錄。",
+      "text": "Ese archivo debe poder cotejarse con la tabla original, que sigue teniendo 1200 registros."
+    },
+    {
+      "id": "8ex8",
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "這是原創的虛構配送練習表，可以逐筆回查。",
+      "text": "Es una tabla de práctica con entregas ficticias, creada para este ejercicio y verificable registro por registro."
+    },
+    {
+      "id": "ujmc",
+      "scene": "release-time",
+      "todo": true,
+      "source": "DuckDB的代理模式十月九日介紹，十月二十一日隨二點零正式提供。",
+      "text": "El modo agente de DuckDB se presentó el 9 de octubre y llegó oficialmente con la versión 2.0 el 21 de octubre."
+    },
+    {
+      "id": "m4b3",
+      "scene": "mode-role",
+      "todo": true,
+      "source": "這個新模式把工具回覆排得緊湊，並把省略標記放進結果。",
+      "text": "Este modo nuevo compacta las respuestas de la herramienta e incluye marcas de omisión en el resultado."
+    },
+    {
+      "id": "6i9g",
+      "scene": "mode-role",
+      "todo": true,
+      "source": "對要讀這份回覆的程式，這些標記就是判讀依據。",
+      "text": "Un programa que lea esa respuesta puede usar las marcas para interpretarla."
+    },
+    {
+      "id": "msj7",
+      "scene": "existing-file-tools",
+      "todo": true,
+      "source": "讀CSV、寫SQL和匯出完整檔，則是原本就有的能力。",
+      "text": "Leer CSV, escribir SQL y exportar archivos completos son capacidades que ya existían."
+    },
+    {
+      "id": "x88h",
+      "scene": "bounded-choice",
+      "todo": true,
+      "source": "這次在新練習目錄，用同版的兩種模式處理這張表。",
+      "text": "En una carpeta nueva de práctica comparo los dos modos de la misma versión con esta tabla."
+    },
+    {
+      "id": "pskv",
+      "scene": "bounded-choice",
+      "todo": true,
+      "source": "它不帶AI模型；這個對照也不測模型正確率或使用費用。",
+      "text": "Este modo no incluye un modelo de IA; aquí tampoco medimos la exactitud de un modelo ni el costo de usarlo."
+    },
+    {
+      "id": "yqnx",
+      "scene": "input-columns",
+      "todo": true,
+      "source": "每筆都有包裹代號、路線，以及承諾完成的天數。",
+      "text": "Cada registro tiene un identificador de paquete, una ruta y un plazo de entrega prometido en días."
+    },
+    {
+      "id": "xbqa",
+      "scene": "input-columns",
+      "todo": true,
+      "source": "狀態和實際天數，則是這份跟進需求要用的欄位。",
+      "text": "Para decidir qué paquetes requieren seguimiento usaremos el estado y los días reales de entrega."
+    },
+    {
+      "id": "yy8n",
+      "scene": "force-human",
+      "todo": true,
+      "source": "加上一般模式參數，就能指定原本的顯示方式。",
+      "text": "El parámetro de modo normal permite pedir explícitamente la presentación de siempre."
+    },
+    {
+      "id": "9gdj",
+      "scene": "force-human",
+      "todo": true,
+      "source": "命令使用臨時資料庫，並略過個人的初始化檔。",
+      "text": "El comando usa una base de datos temporal y omite el archivo personal de inicialización."
+    },
+    {
+      "id": "xd25",
+      "scene": "force-agent",
+      "todo": true,
+      "source": "把參數換成代理模式，其他輸入與查詢不變。",
+      "text": "Ahora cambio el parámetro por el modo agente, sin tocar la entrada ni la consulta."
+    },
+    {
+      "id": "c6hy",
+      "scene": "force-agent",
+      "todo": true,
+      "source": "明確選模式，就不會把環境自動偵測混進這個對照。",
+      "text": "Elegir el modo de forma explícita evita mezclar la detección automática del entorno con esta comparación."
+    },
+    {
+      "id": "jm9m",
+      "scene": "find-the-omission",
+      "todo": true,
+      "source": "回到開場的省略標記：這兩份回覆，各把它放在哪裡？",
+      "text": "Volvamos a la marca del inicio: ¿dónde aparece en cada una de estas respuestas?"
+    },
+    {
+      "id": "t4hj",
+      "scene": "same-preview",
+      "todo": true,
+      "source": "這條查詢先建立同一張表，再按包裹代號排列。",
+      "text": "Esta consulta crea la misma tabla y luego ordena los registros por identificador de paquete."
+    },
+    {
+      "id": "zxhz",
+      "scene": "same-preview",
+      "todo": true,
+      "source": "它沒有加只取少數紀錄的條件，所以能用來辨認顯示範圍。",
+      "text": "No lleva una condición para devolver solo unos pocos registros; así podemos distinguir cuánto se muestra."
+    },
+    {
+      "id": "h4gg",
+      "scene": "human-footer",
+      "todo": true,
+      "source": "一般模式底下，已經列出總列數與顯示列數。",
+      "text": "El modo normal ya indica al final cuántas filas hay en total y cuántas se muestran."
+    },
+    {
+      "id": "4cr9",
+      "scene": "human-footer",
+      "todo": true,
+      "source": "這一行把查詢結果大小和畫面大小分開了。",
+      "text": "Esa línea distingue el total de filas del resultado de las filas que se muestran."
+    },
+    {
+      "id": "uj2p",
+      "scene": "agent-omitted",
+      "todo": true,
+      "source": "代理模式則在中間直接標出，一千一百六十列省略。",
+      "text": "El modo agente señala directamente en medio que se omitieron 1160 filas."
+    },
+    {
+      "id": "u5mp",
+      "scene": "agent-omitted",
+      "todo": true,
+      "source": "那是沒有顯示的部分，不是查詢或儲存少掉資料。",
+      "text": "Son filas que no se muestran, no datos perdidos por la consulta o el almacenamiento."
+    },
+    {
+      "id": "jumq",
+      "scene": "same-result-different-view",
+      "todo": true,
+      "source": "開場那段預覽只是讀回覆的入口，還不是可交付的名單。",
+      "text": "La vista previa del inicio sirve para empezar a leer la respuesta; todavía no es la lista para entregar."
+    },
+    {
+      "id": "7npx",
+      "scene": "same-result-different-view",
+      "todo": true,
+      "source": "現在要從完整原表決定，哪些包裹才該留下？",
+      "text": "Ahora, ¿qué paquetes de la tabla original completa deben quedarse en la lista?"
+    },
+    {
+      "id": "v9hh",
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "這份跟進清單，只找已送達而且超過承諾天數的包裹。",
+      "text": "Esta lista de seguimiento solo incluye paquetes ya entregados que tardaron más días de los prometidos."
+    },
+    {
+      "id": "fpcm",
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "仍在途的紀錄先留在原表，不算進這份需求。",
+      "text": "Los que siguen en tránsito quedan en la tabla original, fuera de esta lista."
+    },
+    {
+      "id": "qxv3",
+      "scene": "explicit-input-types",
+      "todo": true,
+      "source": "建立表格時，把代號、路線和狀態讀成文字。",
+      "text": "Al crear la tabla, leemos el identificador, la ruta y el estado como texto."
+    },
+    {
+      "id": "abty",
+      "scene": "explicit-input-types",
+      "todo": true,
+      "source": "兩種天數讀成整數，比較大小時才是在比較天數。",
+      "text": "Leemos ambos campos de días como enteros, para comparar cantidades de días."
+    },
+    {
+      "id": "m3tz",
+      "scene": "inspect-columns",
+      "todo": true,
+      "source": "這條描述命令會列出欄位名稱與型別。",
+      "text": "Este comando de descripción muestra los nombres y los tipos de las columnas."
+    },
+    {
+      "id": "drd5",
+      "scene": "inspect-columns",
+      "todo": true,
+      "source": "另一條查詢按狀態計數，確認這份表有哪些待判斷的紀錄。",
+      "text": "Otra consulta cuenta los registros por estado, para ver cuáles debemos evaluar."
+    },
+    {
+      "id": "6i82",
+      "scene": "input-status-count",
+      "todo": true,
+      "source": "這裡有九百六十筆已送達，兩百四十筆仍在途。",
+      "text": "Aquí hay 960 paquetes entregados y 240 que siguen en tránsito."
+    },
+    {
+      "id": "ufbq",
+      "scene": "input-status-count",
+      "todo": true,
+      "source": "在途的實際天數是空白，意思是還沒有完成天數。",
+      "text": "En tránsito, los días reales están en NULL: la entrega aún no se ha completado."
+    },
+    {
+      "id": "y43c",
+      "scene": "apply-both-conditions",
+      "todo": true,
+      "source": "照剛剛的入選規則，這筆已送達包裹會留下嗎？",
+      "text": "Con la regla que acabamos de definir, ¿este paquete ya entregado se queda en la lista?"
+    },
+    {
+      "id": "jbme",
+      "scene": "read-one-parcel",
+      "todo": true,
+      "source": "這筆包裹已送達，承諾三天，實際用了四天。",
+      "text": "Este paquete ya se entregó. Prometieron tres días y tardó cuatro."
+    },
+    {
+      "id": "8wey",
+      "scene": "read-one-parcel",
+      "todo": true,
+      "source": "它超過承諾，所以要進跟進清單。",
+      "text": "Superó el plazo prometido, así que entra en la lista de seguimiento."
+    },
+    {
+      "id": "wg3d",
+      "scene": "compute-days-late",
+      "todo": true,
+      "source": "用四減三，得到晚一天。",
+      "text": "Cuatro menos tres da un día de retraso."
+    },
+    {
+      "id": "tqeh",
+      "scene": "compute-days-late",
+      "todo": true,
+      "source": "這個計算會寫成新欄位，接手的人能直接看見差了幾天。",
+      "text": "Guardamos ese cálculo en una columna nueva, para que quien reciba la lista vea la diferencia en días."
+    },
+    {
+      "id": "5rfa",
+      "scene": "in-transit-example",
+      "todo": true,
+      "source": "把剛剛的狀態條件，套到這筆在途紀錄。",
+      "text": "Apliquemos la condición de estado a este registro que sigue en tránsito."
+    },
+    {
+      "id": "e77f",
+      "scene": "in-transit-example",
+      "todo": true,
+      "source": "它先被送達條件排除，空白也不能補成零天。",
+      "text": "La condición de entregado ya lo excluye; tampoco podemos sustituir el valor vacío por cero días."
+    },
+    {
+      "id": "ewsi",
+      "scene": "where-is-complete",
+      "todo": true,
+      "source": "把剛剛的入選規則，寫進這一行篩選式。",
+      "text": "Escribimos la regla de selección en esta condición de filtrado."
+    },
+    {
+      "id": "bhcv",
+      "scene": "where-is-complete",
+      "todo": true,
+      "source": "新欄位的相減式放在選欄部分，不會改寫原始天數。",
+      "text": "La resta de la columna nueva va en la selección de columnas, sin modificar los días originales."
+    },
+    {
+      "id": "g52d",
+      "scene": "selection-and-order",
+      "todo": true,
+      "source": "交付欄位留下代號、路線、兩種天數和剛算出的差值。",
+      "text": "La entrega conserva el identificador, la ruta, ambos campos de días y la diferencia calculada."
+    },
+    {
+      "id": "evdb",
+      "scene": "selection-and-order",
+      "todo": true,
+      "source": "最後按包裹代號升冪排列，重開檔案便能用同一順序對照。",
+      "text": "Al final ordenamos por identificador de paquete de menor a mayor, para cotejar el archivo reabierto en el mismo orden."
+    },
+    {
+      "id": "6r94",
+      "scene": "on-time-example",
+      "todo": true,
+      "source": "這筆承諾與實際都是三天，相減得到零。",
+      "text": "En este paquete, tanto lo prometido como lo real son tres días; la resta da cero."
+    },
+    {
+      "id": "s3h7",
+      "scene": "on-time-example",
+      "todo": true,
+      "source": "套回剛剛的大於符號，它不進這張延遲清單。",
+      "text": "Al aplicar el signo mayor que, ese paquete no entra en la lista de retrasos."
+    },
+    {
+      "id": "ntfj",
+      "scene": "field-name-question",
+      "todo": true,
+      "source": "同一套條件已寫好，實際天數欄位少個字母，工具會怎麼回覆？",
+      "text": "Las condiciones ya están listas. ¿Qué responde la herramienta si falta una letra en el campo de días reales?"
+    },
+    {
+      "id": "ak3j",
+      "scene": "human-error",
+      "todo": true,
+      "source": "它先回覆找不到這個欄位，沒有產生查詢結果。",
+      "text": "Primero indica que no encuentra esa columna; no genera un resultado de la consulta."
+    },
+    {
+      "id": "s9ca",
+      "scene": "human-error",
+      "todo": true,
+      "source": "一般模式已經能指出這個名稱問題。",
+      "text": "El modo normal ya puede señalar ese problema con el nombre."
+    },
+    {
+      "id": "jsui",
+      "scene": "intentional-typo",
+      "todo": true,
+      "source": "開場預告少掉的那個字母，就在實際天數的欄位結尾。",
+      "text": "Falta la ese final: escribí actual_day en lugar de actual_days."
+    },
+    {
+      "id": "xj3j",
+      "scene": "intentional-typo",
+      "todo": true,
+      "source": "這條查詢只抽出欄位排錯，錯字是我刻意安排，不是AI失誤。",
+      "text": "Esta consulta solo aísla el error de columna. Yo escribí mal el nombre a propósito; no es un error de la IA."
+    },
+    {
+      "id": "i2fq",
+      "scene": "stderr-contract",
+      "todo": true,
+      "source": "先略過這次啟動文字，只解析後面那行合法JSON。",
+      "text": "Primero omitimos el texto de inicio de esta ejecución y analizamos solo la línea de JSON válida que sigue."
+    },
+    {
+      "id": "yxh7",
+      "scene": "stderr-contract",
+      "todo": true,
+      "source": "整串輸出混有文字，不能當成單一物件。",
+      "text": "Como el flujo completo también contiene texto, no puede tratarse como un solo objeto."
+    },
+    {
+      "id": "jngn",
+      "scene": "valid-json-fields",
+      "todo": true,
+      "source": "從物件取出錯字名稱，再從說明文字找候選欄位。",
+      "text": "Del objeto sacamos el nombre mal escrito y del mensaje explicativo buscamos columnas candidatas."
+    },
+    {
+      "id": "cjm4",
+      "scene": "valid-json-fields",
+      "todo": true,
+      "source": "我把候選名稱對回原表，找到多了結尾字母的正確拼法。",
+      "text": "Cotejo esas candidatas con la tabla original y encuentro el nombre correcto, que lleva una letra más al final."
+    },
+    {
+      "id": "7g26",
+      "scene": "repair-the-name",
+      "todo": true,
+      "source": "把剛剛選出的原表欄位，寫回這份查詢。",
+      "text": "Escribimos en la consulta el nombre de columna que acabamos de confirmar en la tabla original."
+    },
+    {
+      "id": "2d84",
+      "scene": "repair-the-name",
+      "todo": true,
+      "source": "再接回原本的條件、選欄與排序，準備匯出同一張單。",
+      "text": "Después recuperamos las condiciones, la selección de columnas y el orden para exportar la misma lista."
+    },
+    {
+      "id": "rw48",
+      "scene": "copy-limit-question",
+      "todo": true,
+      "source": "欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？",
+      "text": "El nombre ya está corregido. ¿La respuesta que mostraba pocas filas también recortará el archivo guardado?"
+    },
+    {
+      "id": "epd8",
+      "scene": "copy-csv-whole",
+      "todo": true,
+      "source": "把剛剛那份完整查詢，放進COPY的括號裡。",
+      "text": "Ponemos la consulta completa dentro de los paréntesis de COPY."
+    },
+    {
+      "id": "tdtg",
+      "scene": "copy-csv-whole",
+      "todo": true,
+      "source": "括號保留入選規則與排序，後面才指定交付檔的位置。",
+      "text": "Ahí se mantienen la regla de selección y el orden; después indicamos dónde guardar el archivo de entrega."
+    },
+    {
+      "id": "q6db",
+      "scene": "copy-where",
+      "todo": true,
+      "source": "從原表到這個輸出，沒有加入顯示列數限制。",
+      "text": "No añadimos a esta consulta de exportación un límite de filas para la vista previa."
+    },
+    {
+      "id": "n6c9",
+      "scene": "copy-where",
+      "todo": true,
+      "source": "所以要存的是符合條件的結果，不是從回覆上複製幾行。",
+      "text": "Lo que guardamos es el resultado que cumple la condición, no unas cuantas filas copiadas de la respuesta."
+    },
+    {
+      "id": "kabz",
+      "scene": "copy-destination",
+      "todo": true,
+      "source": "這個位置決定CSV寫到哪裡，標題列選項則保留欄名。",
+      "text": "Esta ruta indica dónde escribir el CSV; la opción de encabezado conserva los nombres de las columnas."
+    },
+    {
+      "id": "5qhj",
+      "scene": "copy-destination",
+      "todo": true,
+      "source": "讀回時，把欄位順序對回剛才的選欄，確認代號和路線沒有互換。",
+      "text": "Al reabrir, cotejamos el orden de columnas con la selección: el identificador y la ruta no deben intercambiarse."
+    },
+    {
+      "id": "6e4u",
+      "scene": "copy-parquet-whole",
+      "todo": true,
+      "source": "另一份改存Parquet，只換輸出格式與目的檔名。",
+      "text": "Guardamos otra copia en Parquet y cambiamos solo el formato de salida y el nombre del archivo de destino."
+    },
+    {
+      "id": "nsc3",
+      "scene": "copy-parquet-whole",
+      "todo": true,
+      "source": "同一份選欄與排序仍留在括號內，方便稍後比對。",
+      "text": "La misma selección de columnas y el mismo orden siguen dentro de los paréntesis para poder compararlos después."
+    },
+    {
+      "id": "7b9v",
+      "scene": "run-followup",
+      "todo": true,
+      "source": "用這條命令執行完整查詢，兩種格式就寫到剛才指定的位置。",
+      "text": "Este comando ejecuta la consulta completa y escribe los dos formatos en los destinos indicados."
+    },
+    {
+      "id": "44a2",
+      "scene": "read-exported-count",
+      "todo": true,
+      "source": "要回答存檔有沒有被截短，這裡直接讀回輸出的CSV。",
+      "text": "Para saber si el archivo se recortó, leemos directamente el CSV exportado."
+    },
+    {
+      "id": "j328",
+      "scene": "read-exported-count",
+      "todo": true,
+      "source": "計數對象是檔案中的資料列，不把標題列算成包裹。",
+      "text": "Contamos las filas de datos del archivo; el encabezado no cuenta como un paquete."
+    },
+    {
+      "id": "ubxv",
+      "scene": "actual-export-count",
+      "todo": true,
+      "source": "讀回的完整跟進檔，這次有四百八十筆。",
+      "text": "La lista completa de seguimiento que acabamos de leer tiene 480 registros."
+    },
+    {
+      "id": "ag8z",
+      "scene": "actual-export-count",
+      "todo": true,
+      "source": "剛剛擔心的預覽截短，沒有跟著這條匯出指令進檔案。",
+      "text": "El recorte de la vista previa no se trasladó al archivo con esta orden de exportación."
+    },
+    {
+      "id": "6da2",
+      "scene": "same-version-same-answer",
+      "todo": true,
+      "source": "一般模式執行同一份匯出，也得到相同清單內容。",
+      "text": "Al ejecutar la misma exportación en modo normal, la lista tiene exactamente el mismo contenido."
+    },
+    {
+      "id": "385u",
+      "scene": "same-version-same-answer",
+      "todo": true,
+      "source": "這一步說明新模式改的是回覆，沒有多找出延遲包裹。",
+      "text": "Esto muestra que el modo nuevo cambia la respuesta; no encontró más paquetes retrasados."
+    },
+    {
+      "id": "zdyx",
+      "scene": "handoff-question",
+      "todo": true,
+      "source": "檔案筆數對了就能交嗎，另一種格式也保存同一筆內容嗎？",
+      "text": "¿Basta con que coincida la cantidad de registros para entregar el archivo? ¿El otro formato guarda el mismo contenido?"
+    },
+    {
+      "id": "qgqv",
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "為了核對另一種格式，把Parquet讀回並按相同代號排序。",
+      "text": "Para comprobarlo, volvemos a leer el Parquet y ordenamos por el mismo identificador."
+    },
+    {
+      "id": "ineu",
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "再存成CSV，兩份完整結果就有一致的逐列比較方式。",
+      "text": "Lo guardamos de nuevo como CSV, para comparar ambas listas completas fila por fila de la misma manera."
+    },
+    {
+      "id": "dgc2",
+      "scene": "run-readback",
+      "todo": true,
+      "source": "執行這份讀回查詢，資料來自交付檔，原始配送表不會被改寫。",
+      "text": "Esta consulta lee el archivo de entrega; no modifica la tabla original de paquetes."
+    },
+    {
+      "id": "xqkd",
+      "scene": "first-delivered-late",
+      "todo": true,
+      "source": "還記得剛剛四減三的那筆包裹嗎？",
+      "text": "¿Recuerdas el paquete en el que restamos cuatro menos tres?"
+    },
+    {
+      "id": "xad9",
+      "scene": "first-delivered-late",
+      "todo": true,
+      "source": "完整檔保留了它的路線、原始天數，和晚一天的差值。",
+      "text": "El archivo completo conserva su ruta, los días originales y la diferencia de un día de retraso."
+    },
+    {
+      "id": "6u7e",
+      "scene": "tail-of-output",
+      "todo": true,
+      "source": "沿著代號往後，靠近原表末端的符合紀錄也在完整檔。",
+      "text": "Si seguimos los identificadores, también aparecen los registros que cumplen la condición cerca del final de la tabla original."
+    },
+    {
+      "id": "wznc",
+      "scene": "tail-of-output",
+      "todo": true,
+      "source": "抽頭尾能定位內容；全量比對還要檢查中間每筆。",
+      "text": "Revisar el principio y el final ayuda a ubicar los datos; una comparación completa también debe revisar cada registro intermedio."
+    },
+    {
+      "id": "h579",
+      "scene": "route-summary-query",
+      "todo": true,
+      "source": "要讓接手者先掌握分布，這裡沿用原規則，按路線分組計數。",
+      "text": "Para que quien reciba la lista vea la distribución, mantenemos la regla original y contamos por ruta."
+    },
+    {
+      "id": "jd24",
+      "scene": "route-summary-query",
+      "todo": true,
+      "source": "這個小摘要另列在報告裡，不會取代完整包裹名單。",
+      "text": "Ese resumen va aparte en el informe y no sustituye la lista completa de paquetes."
+    },
+    {
+      "id": "rxjg",
+      "scene": "route-summary-result",
+      "todo": true,
+      "source": "剛剛按原規則分組，路線二和路線三各有兩百四十筆。",
+      "text": "Con la regla original, las rutas R2 y R3 tienen 240 registros cada una."
+    },
+    {
+      "id": "mavj",
+      "scene": "route-summary-result",
+      "todo": true,
+      "source": "加起來是剛才完整檔的四百八十筆，沒有漏在摘要之外。",
+      "text": "Suman los mismos 480 registros del archivo completo; ninguno quedó fuera del resumen."
+    },
+    {
+      "id": "3dwp",
+      "scene": "full-content-comparison",
+      "todo": true,
+      "source": "開場問的存檔完整性，現在有逐列答案：兩份內容一致。",
+      "text": "La pregunta inicial sobre el archivo ya tiene respuesta fila por fila: los dos archivos contienen los mismos datos."
+    },
+    {
+      "id": "dm84",
+      "scene": "full-content-comparison",
+      "todo": true,
+      "source": "比較的不只筆數，還包括每筆代號、欄位數值和排列順序。",
+      "text": "No comparamos solo la cantidad: también el identificador, los valores de las columnas y el orden de cada registro."
+    },
+    {
+      "id": "ezfg",
+      "scene": "source-predicate-check",
+      "todo": true,
+      "source": "另用簡單程式逐筆讀原表，依原規則產生應入選的代號。",
+      "text": "Otro programa lee cada registro original y obtiene los identificadores que cumplen la regla original."
+    },
+    {
+      "id": "ubtk",
+      "scene": "source-predicate-check",
+      "todo": true,
+      "source": "這份代號清單也和匯出結果相符，核對便回到了原始資料。",
+      "text": "Esa lista de identificadores coincide con la exportación, así que la comprobación vuelve a los datos de origen."
+    },
+    {
+      "id": "g738",
+      "scene": "change-the-requirement",
+      "todo": true,
+      "source": "但若接手者改要包含剛好準時，這張核對過的延遲清單能直接交嗎？",
+      "text": "Si ahora piden incluir los que llegaron justo a tiempo, ¿sirve sin cambios la lista de retrasos ya verificada?"
+    },
+    {
+      "id": "ab37",
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "不能，剛才被排除的準時包裹，這次也得留下。",
+      "text": "No. Los que llegaron justo a tiempo, antes excluidos, ahora deben entrar."
+    },
+    {
+      "id": "dyhh",
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "先保留原檔，再把新需求另存一份查詢。",
+      "text": "Conservamos el archivo original y guardamos la consulta del nuevo pedido por separado."
+    },
+    {
+      "id": "7th9",
+      "scene": "due-or-late-rule",
+      "todo": true,
+      "source": "篩選式的大於改成大於等於，剛好相等的紀錄就能通過。",
+      "text": "Cambiamos mayor que por mayor o igual que, para que también pasen los registros con valores iguales."
+    },
+    {
+      "id": "98xj",
+      "scene": "due-or-late-rule",
+      "todo": true,
+      "source": "同時換目的檔名，讓新需求不會蓋掉原本那份清單。",
+      "text": "También cambiamos el nombre de destino, para no sobrescribir la lista anterior."
+    },
+    {
+      "id": "g89b",
+      "scene": "run-variant",
+      "todo": true,
+      "source": "用這條命令執行修改後的檔案，新的交付結果就另外保存。",
+      "text": "Este comando ejecuta el archivo modificado y guarda aparte el nuevo resultado para entregar."
+    },
+    {
+      "id": "u6gp",
+      "scene": "variant-members-question",
+      "todo": true,
+      "source": "剛剛改的符號，究竟多留下多少包裹，又是哪種紀錄？",
+      "text": "¿Cuántos paquetes más dejó pasar ese cambio de signo y qué tipo de registros son?"
+    },
+    {
+      "id": "mkfw",
+      "scene": "variant-result",
+      "todo": true,
+      "source": "新清單有七百二十筆，其中兩百四十筆的晚到天數是零。",
+      "text": "La lista nueva tiene 720 registros; en 240, los días de retraso son cero."
+    },
+    {
+      "id": "b5i9",
+      "scene": "variant-result",
+      "todo": true,
+      "source": "這組新增紀錄剛好準時，所以整份檔要叫剛好準時或晚到。",
+      "text": "Los añadidos llegaron justo a tiempo; la lista es de entregas justo a tiempo o con retraso."
+    },
+    {
+      "id": "fqr6",
+      "scene": "on-time-enters-variant",
+      "todo": true,
+      "source": "還記得三天對三天、被留在清單外的那筆嗎？",
+      "text": "¿Recuerdas el paquete de tres días prometidos y tres reales que habíamos dejado fuera?"
+    },
+    {
+      "id": "me2p",
+      "scene": "on-time-enters-variant",
+      "todo": true,
+      "source": "它現在入選，正是剛才改成包含相等的結果。",
+      "text": "Ahora entra, justamente porque cambiamos la regla para incluir la igualdad."
+    },
+    {
+      "id": "ptfc",
+      "scene": "different-deliveries",
+      "todo": true,
+      "source": "這兩份清單都依各自條件產生，不能互相代交。",
+      "text": "Cada lista responde a sus propias condiciones; no podemos entregar una en lugar de la otra."
+    },
+    {
+      "id": "ha7h",
+      "scene": "different-deliveries",
+      "todo": true,
+      "source": "把新舊檔名和各自查詢一起保留，接手者才能選對需求。",
+      "text": "Guardamos ambos nombres de archivo y sus consultas, para elegir la lista que corresponde a lo pedido."
+    },
+    {
+      "id": "g7bc",
+      "scene": "handoff-pack",
+      "todo": true,
+      "source": "現在交付包裡，有完整資料檔、對應查詢和可讀摘要。",
+      "text": "El paquete de entrega ya incluye los archivos completos, sus consultas y un resumen legible."
+    },
+    {
+      "id": "s9qr",
+      "scene": "handoff-pack",
+      "todo": true,
+      "source": "接手的人能從報告找到全檔，也能修改條件重新產生名單。",
+      "text": "Desde el informe se puede encontrar el archivo completo y cambiar las condiciones para generar otra lista."
+    },
+    {
+      "id": "ddtv",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "開場那段預覽，如今有能對回規則的完整交付檔。",
+      "text": "Aquella vista previa del inicio ahora tiene un archivo completo de entrega que se puede cotejar con la regla."
+    },
+    {
+      "id": "wx5u",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "你最常要交什麼資料清單？",
+      "text": "¿Qué listas de datos entregas con más frecuencia?"
+    },
+    {
+      "id": "v5pw",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "訂閱，用產物讀懂AI工具。",
+      "text": "Suscríbete para entender las herramientas de IA con resultados concretos."
+    }
+  ]
+}

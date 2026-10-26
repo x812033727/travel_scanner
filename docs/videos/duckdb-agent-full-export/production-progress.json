@@ -1,9 +1,9 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-26T07:37:11.644365+00:00",
+  "updated_at_utc": "2026-10-26T08:30:58.030941+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "EN_JA_KO_text_adopted_3of8_master_TTS0_actual_CC_audio_and_backend_pending",
+  "stage": "EN_JA_KO_ES_text_adopted_4of8_master_TTS0_actual_CC_audio_and_backend_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
   "source_video_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
@@ -242,7 +242,15 @@
         "metadata_delivered": false,
         "CC_delivered": false,
         "M4A_delivered": false,
-        "backend_readback": false
+        "backend_readback": false,
+        "metadata_local_current": true,
+        "caption_text_targets_current": true,
+        "dub_text_targets_current": true,
+        "CC_files_generated": false,
+        "fit_complete": false,
+        "meter_complete": false,
+        "ASR_complete": false,
+        "text_adoption_proof": "localization/es/actual-native-text-adoption.json"
       },
       "pt": {
         "metadata_delivered": false,
@@ -308,7 +316,7 @@
     "historical_only_not_current_tree_manifest": true,
     "overwritten": false
   },
-  "receipts_index": "receipts/ko-text-adoption-index.json",
+  "receipts_index": "receipts/es-text-adoption-index.json",
   "task": "2026-10-25-produce-video-duckdb-agent-full-export",
   "task_status": "in-progress",
   "docs_agent_actions": {
@@ -378,9 +386,10 @@
     "adopted_locales": [
       "en",
       "ja",
-      "ko"
+      "ko",
+      "es"
     ],
-    "adopted_count": 3,
+    "adopted_count": 4,
     "required_count": 8,
     "en": {
       "source_current": true,
@@ -398,7 +407,7 @@
       "actual_fit_or_meter_or_ASR_done": false,
       "backend_delivery": false
     },
-    "scope": "EN+JA+KO are3/8 local text adoption only; all actual CC/audio/backend products remain0.",
+    "scope": "EN+JA+KO+ES are4/8 local text adoption only; all actual CC/audio/backend products remain0.",
     "ja": {
       "source_current": true,
       "metadata_local_current": true,
@@ -450,6 +459,38 @@
       "actual_M4A_exists": false,
       "actual_fit_or_meter_or_ASR_done": false,
       "backend_delivery": false
+    },
+    "es": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/es.json",
+      "actual_native_merged_file_sha256": "2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c",
+      "independent_text_review": "localization/es/root/root-independent-review.json",
+      "adoption_proof": "localization/es/actual-native-text-adoption.json",
+      "root_changed_line_ids": [
+        "jd24"
+      ],
+      "other110_targets_unchanged": true,
+      "root_description_token_usage_and_cost_not_measured_wording": true,
+      "changes_before_audio_not_fit_retake_counters": true,
+      "author_over80_character_readability_advisories": 77,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false,
+      "native_lint_title_phone_display_advisory": {
+        "path": "youtube/es",
+        "full_width_characters": 37.5,
+        "recommended_phone_width_limit": 36,
+        "native_errors": 0,
+        "native_warnings": 1,
+        "native_threshold_or_title_edited": false
+      }
     }
   },
   "English_text_documentation_update": {
@@ -491,6 +532,22 @@
     "previous_indexes31_61_90_171_preserved_in_place": true,
     "recursive_previous_history_copies": 0,
     "source_claims_script_voice_lexicon_data_EN_JA_KO_targets_not_edited": true,
+    "paid_media_backend_approval_calls": 0,
+    "stage_commit_push_only_after_root_independent_review": true
+  },
+  "Spanish_text_documentation_update": {
+    "at": "2026-10-26T08:30:58.031146+00:00",
+    "editor": "/root/branding_restore",
+    "root_authorized_same_existing_task_team": true,
+    "immutable_Git_anchor": "be172dcb1454800000a08a73b7ccc8aaae9f2cde",
+    "old_KO55_reconstruction": {
+      "unchanged_in_place": 50,
+      "actual_mutable_archives": 5,
+      "identity": "history/before-ES-text-adoption-docs/identity.json"
+    },
+    "previous_indexes31_61_90_171_221_preserved_in_place": true,
+    "recursive_previous_history_copies": 0,
+    "source_claims_script_voice_lexicon_data_EN_JA_KO_ES_targets_not_edited": true,
     "paid_media_backend_approval_calls": 0,
     "stage_commit_push_only_after_root_independent_review": true
   }

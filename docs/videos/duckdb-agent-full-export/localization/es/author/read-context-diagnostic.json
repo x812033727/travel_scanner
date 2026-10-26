@@ -1,0 +1,8 @@
+{
+  "kind": "Preserved initial context-read path error, not native validation failure",
+  "attempted_path": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/production-progress.md",
+  "actual_shell_exit_code": 2,
+  "failure": "sed could not read production-progress.md because this episode uses production-progress.json.",
+  "sequence": "source-before.json and scratch LEASE had already been written successfully; source/claims reads completed before this final read error.",
+  "resolution": "Read the actual production-progress.json and task file; no source, repo, i18n, workdir, auth or media mutation. Both subsequent native ES pure-builder stages actually exited0."
+}

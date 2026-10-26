@@ -38,7 +38,7 @@ scope:
 - [x] 正常Jev outline分析、保存raw回覆與分數／失敗原因，送正常hand-pushed pending review後做委派local adopt。
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
-- [x] EN、JA與KO各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字3/8，沒有actual CC／M4A／後台交付。
+- [x] EN、JA、KO與ES各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字4/8，沒有actual CC／M4A／後台交付。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
 - [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
@@ -106,3 +106,14 @@ Root指定/root/branding_restore沿既有claim為本輪唯一FIFTH文件編輯�
 現為EN＋JA＋KO文字3/8，master paid TTS0／raw0／actual timeline無；全部actual CC／M4A／fit／meter／ASR／後台交付仍0。作者21freeze＋root審查／delta／preview／merge／log安全複本保留；只封存五份實際可變docs/task及三份前輪描述檔，83舊JA檔與31／61／90／171索引原位核對，以Git0d885及重建identity復原全部舊88，沒有遞迴再複製history。
 
 Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data／ENJA與兩份敘事12/13 false固定。作者13保護輸入加root已採用KO共14檔核對，不改任何targets。只準備新KO index／驗證與精確freeze／path proposal；未stage／commit／push，須root獨立審查後另行授權，不開topic6或啟paid/media/API。
+
+
+## ES文字正常採用與增量文件準備
+
+Root指定/root/branding_restore沿既有claim為本輪唯一FIFTH文件編輯。Root全量讀111組ES／六章／fullmetadata，僅修jd24明示符合條件的完整跟進母體、description說清未量測token使用量與成本；其他110句與所有source/context不變。正常i18n-merge session69401真exit0，actual ES2e8511等於root修文後nativepurepreview，不等同作者舊preview。這是音訊前文字修訂，不重設native shorten／reword／retake回合。
+
+現為EN＋JA＋KO＋ES文字4/8，master paid TTS0／raw0／actual timeline無；全部actual CC／M4A／fit／meter／ASR／後台交付仍0。作者31freeze＋root六份收據安全複本保留；只封存五份實際可變docs/task及三份前輪KO描述檔，50舊KO檔與221及更早索引原位核對，以Git be172及重建identity復原全部舊55，沒有遞迴再複製history。
+
+Source40eb／claimscc38／speech38cf／script7aac／Sulafat voice／lexicon／data／ENJA KO ES與兩份敘事12/13 false固定；15保護輸入全SHA核對，不改任何targets。原生估時／字數建議不是配音fit，dry-run估計不是發票。只準備新ES index／驗證與精確freeze／path proposal，未stage／commit／push；須root獨立審查後另行授權，不開topic6或啟paid/media/auth/API。
+
+ES native lint真exit0，保留37.5／36手機標題寬度建議（0 errors、1 warning）；初次docs checker誤期望0 warnings的exit1及原腳本／log另存，不改譯文／native門檻。

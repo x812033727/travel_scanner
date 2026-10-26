@@ -1,0 +1,487 @@
+{
+  "title": "¿Solo ves 40 filas? Exporta la lista completa de seguimiento con DuckDB 2.0",
+  "description": "Con una misma tabla de práctica de entregas, identifica las filas omitidas en pantalla y entrega una lista completa de seguimiento.\nPara quienes usan IA como apoyo al leer CSV y quieren entregar tanto la consulta como su resultado completo.\n\nLos datos de entregas son ficticios y originales, y los scripts del autor son deterministas. No representan una empresa, clientes ni estadísticas públicas. No se muestran respuestas de un producto de IA ni pruebas independientes de un modelo antes y después. El 25 de octubre de 2026 se compararon -agent y -no-agent con el mismo binario de DuckDB 2.0.0. Las 40 filas son una vista previa de 1200 registros de entrada; los 480 registros entregados son el resultado completo de aplicar condiciones explícitas. Omitir filas en pantalla no significa que la consulta o el almacenamiento hayan perdido datos.\n\nEl autor escribió a propósito un nombre de columna incompleto para demostrar el manejo del error. En esta ejecución, stderr del modo agente contiene texto de inicio y una línea de JSON válida: hay que analizar la línea del mensaje, sin tratar el flujo mixto como un único documento JSON. No se afirma que DuckDB genere JSON inválido ni que haya fallado un programa consumidor real de terceros. CSV, SQL, COPY y Parquet ya existían; la novedad es el modo de salida para agentes. No se probaron tokens, costos, razonamiento de modelos, modo servidor ni la actualización de una base de datos existente.\n\nEl material incluye los datos originales de entrada, el SQL completo, scripts para reproducir el ejercicio, el CSV completo de 480 registros que cumplen la condición, el mismo contenido en Parquet, un informe HTML, comandos exactos y el SHA de cada archivo. Los datos, el código y el informe originales se ofrecen bajo CC0-1.0; DuckDB usa MIT. Los textos oficiales pertenecen a sus autores.\n\nMaterial público (9 comandos ejecutados): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP completo de los datos y archivos del ejercicio: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+  "tags": [
+    "DuckDB",
+    "análisis de datos con IA",
+    "modo agente",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "consultas de datos",
+    "lista completa"
+  ],
+  "thumbnail": {
+    "tag": "DuckDB2.0",
+    "headline": "Hay más\n**filas omitidas**",
+    "sub": "De la vista previa al archivo completo"
+  },
+  "chapters": {
+    "parcel-table-start": "Falta un tramo en la vista previa de entregas",
+    "input-is-still-there": "La tabla sigue completa; la respuesta omite filas",
+    "define-the-followup": "Tres paquetes, solo uno cumple la condición",
+    "human-error": "Falta una letra y la consulta se detiene",
+    "read-parquet-back": "Reabrir el archivo y cotejar cada registro con la tabla original",
+    "new-requirement-consequence": "Incluir entregas justo a tiempo cambia lo que se pide"
+  },
+  "source_hashes": {
+    "chapters": {
+      "parcel-table-start": "5dedc4426054",
+      "input-is-still-there": "89669a63c2e9",
+      "define-the-followup": "02cfab5d51a6",
+      "human-error": "7f6f91d7d5d9",
+      "read-parquet-back": "0844094b2e3e",
+      "new-requirement-consequence": "cb43985eb088"
+    },
+    "title": "d2e2ff81dd4d",
+    "description": "da5af975538b",
+    "tags": "34a54f9c6d96",
+    "thumbnail": "492e00f069aa"
+  },
+  "lines": {
+    "dg2i": {
+      "source_hash": "f647e118cc32",
+      "text": "El 25 de octubre de 2026 consulté una tabla de entregas en esta computadora."
+    },
+    "c7uh": {
+      "source_hash": "2f41d77221a1",
+      "text": "Buscaba los paquetes que requieren seguimiento, para entregar una lista que se pudiera volver a abrir."
+    },
+    "x6vr": {
+      "source_hash": "20f81890cd4e",
+      "text": "La pantalla muestra 40 filas en total, entre el principio y el final. En medio aparece una marca de omisión."
+    },
+    "iaiy": {
+      "source_hash": "957a591d41f7",
+      "text": "¿De verdad solo quedan esos registros en la tabla?"
+    },
+    "zni4": {
+      "source_hash": "75375ec98857",
+      "text": "En un momento faltará una letra en el nombre del campo de días reales."
+    },
+    "3zp6": {
+      "source_hash": "83272417d62d",
+      "text": "Y si guardo la lista en otro archivo, ¿cómo compruebo que está completa?"
+    },
+    "a73b": {
+      "source_hash": "694dc8472b45",
+      "text": "Ese archivo debe poder cotejarse con la tabla original, que sigue teniendo 1200 registros."
+    },
+    "8ex8": {
+      "source_hash": "410123f679f7",
+      "text": "Es una tabla de práctica con entregas ficticias, creada para este ejercicio y verificable registro por registro."
+    },
+    "ujmc": {
+      "source_hash": "936c125e4c95",
+      "text": "El modo agente de DuckDB se presentó el 9 de octubre y llegó oficialmente con la versión 2.0 el 21 de octubre."
+    },
+    "m4b3": {
+      "source_hash": "524b5fdd9c17",
+      "text": "Este modo nuevo compacta las respuestas de la herramienta e incluye marcas de omisión en el resultado."
+    },
+    "6i9g": {
+      "source_hash": "0c99d26d64ab",
+      "text": "Un programa que lea esa respuesta puede usar las marcas para interpretarla."
+    },
+    "msj7": {
+      "source_hash": "cbf6f5260f4f",
+      "text": "Leer CSV, escribir SQL y exportar archivos completos son capacidades que ya existían."
+    },
+    "x88h": {
+      "source_hash": "aadf9e15fade",
+      "text": "En una carpeta nueva de práctica comparo los dos modos de la misma versión con esta tabla."
+    },
+    "pskv": {
+      "source_hash": "813fd8cbbbb5",
+      "text": "Este modo no incluye un modelo de IA; aquí tampoco medimos la exactitud de un modelo ni el costo de usarlo."
+    },
+    "yqnx": {
+      "source_hash": "514f0d49e250",
+      "text": "Cada registro tiene un identificador de paquete, una ruta y un plazo de entrega prometido en días."
+    },
+    "xbqa": {
+      "source_hash": "72b3b050e436",
+      "text": "Para decidir qué paquetes requieren seguimiento usaremos el estado y los días reales de entrega."
+    },
+    "yy8n": {
+      "source_hash": "6e83828c81e1",
+      "text": "El parámetro de modo normal permite pedir explícitamente la presentación de siempre."
+    },
+    "9gdj": {
+      "source_hash": "59a3ba8c7df0",
+      "text": "El comando usa una base de datos temporal y omite el archivo personal de inicialización."
+    },
+    "xd25": {
+      "source_hash": "65a9ba90e4db",
+      "text": "Ahora cambio el parámetro por el modo agente, sin tocar la entrada ni la consulta."
+    },
+    "c6hy": {
+      "source_hash": "6aeb1441c25a",
+      "text": "Elegir el modo de forma explícita evita mezclar la detección automática del entorno con esta comparación."
+    },
+    "jm9m": {
+      "source_hash": "e0b4597a4be5",
+      "text": "Volvamos a la marca del inicio: ¿dónde aparece en cada una de estas respuestas?"
+    },
+    "t4hj": {
+      "source_hash": "0d42e837725d",
+      "text": "Esta consulta crea la misma tabla y luego ordena los registros por identificador de paquete."
+    },
+    "zxhz": {
+      "source_hash": "0519aadfa157",
+      "text": "No lleva una condición para devolver solo unos pocos registros; así podemos distinguir cuánto se muestra."
+    },
+    "h4gg": {
+      "source_hash": "76d69dd44a33",
+      "text": "El modo normal ya indica al final cuántas filas hay en total y cuántas se muestran."
+    },
+    "4cr9": {
+      "source_hash": "7f9c13c4d80d",
+      "text": "Esa línea distingue el total de filas del resultado de las filas que se muestran."
+    },
+    "uj2p": {
+      "source_hash": "7a04836fa956",
+      "text": "El modo agente señala directamente en medio que se omitieron 1160 filas."
+    },
+    "u5mp": {
+      "source_hash": "933529e8d4db",
+      "text": "Son filas que no se muestran, no datos perdidos por la consulta o el almacenamiento."
+    },
+    "jumq": {
+      "source_hash": "fd2192acdeb8",
+      "text": "La vista previa del inicio sirve para empezar a leer la respuesta; todavía no es la lista para entregar."
+    },
+    "7npx": {
+      "source_hash": "c9488745cb64",
+      "text": "Ahora, ¿qué paquetes de la tabla original completa deben quedarse en la lista?"
+    },
+    "v9hh": {
+      "source_hash": "26306fe6e051",
+      "text": "Esta lista de seguimiento solo incluye paquetes ya entregados que tardaron más días de los prometidos."
+    },
+    "fpcm": {
+      "source_hash": "26b7512804ca",
+      "text": "Los que siguen en tránsito quedan en la tabla original, fuera de esta lista."
+    },
+    "qxv3": {
+      "source_hash": "8d3bd93189c3",
+      "text": "Al crear la tabla, leemos el identificador, la ruta y el estado como texto."
+    },
+    "abty": {
+      "source_hash": "2dac16f24b2a",
+      "text": "Leemos ambos campos de días como enteros, para comparar cantidades de días."
+    },
+    "m3tz": {
+      "source_hash": "30c4d95df4eb",
+      "text": "Este comando de descripción muestra los nombres y los tipos de las columnas."
+    },
+    "drd5": {
+      "source_hash": "0fd9ba09bc8d",
+      "text": "Otra consulta cuenta los registros por estado, para ver cuáles debemos evaluar."
+    },
+    "6i82": {
+      "source_hash": "a1c8a0f80a81",
+      "text": "Aquí hay 960 paquetes entregados y 240 que siguen en tránsito."
+    },
+    "ufbq": {
+      "source_hash": "20b27ea07f52",
+      "text": "En tránsito, los días reales están en NULL: la entrega aún no se ha completado."
+    },
+    "y43c": {
+      "source_hash": "47bbddd0a9dc",
+      "text": "Con la regla que acabamos de definir, ¿este paquete ya entregado se queda en la lista?"
+    },
+    "jbme": {
+      "source_hash": "d1bad1852728",
+      "text": "Este paquete ya se entregó. Prometieron tres días y tardó cuatro."
+    },
+    "8wey": {
+      "source_hash": "8cf9a4dcec9f",
+      "text": "Superó el plazo prometido, así que entra en la lista de seguimiento."
+    },
+    "wg3d": {
+      "source_hash": "13f6887ba51e",
+      "text": "Cuatro menos tres da un día de retraso."
+    },
+    "tqeh": {
+      "source_hash": "9a694c58610e",
+      "text": "Guardamos ese cálculo en una columna nueva, para que quien reciba la lista vea la diferencia en días."
+    },
+    "5rfa": {
+      "source_hash": "833cb8b4805b",
+      "text": "Apliquemos la condición de estado a este registro que sigue en tránsito."
+    },
+    "e77f": {
+      "source_hash": "eab4635a6039",
+      "text": "La condición de entregado ya lo excluye; tampoco podemos sustituir el valor vacío por cero días."
+    },
+    "ewsi": {
+      "source_hash": "b2ca94efbf5b",
+      "text": "Escribimos la regla de selección en esta condición de filtrado."
+    },
+    "bhcv": {
+      "source_hash": "473f428008b2",
+      "text": "La resta de la columna nueva va en la selección de columnas, sin modificar los días originales."
+    },
+    "g52d": {
+      "source_hash": "e80a6815c443",
+      "text": "La entrega conserva el identificador, la ruta, ambos campos de días y la diferencia calculada."
+    },
+    "evdb": {
+      "source_hash": "19a4e8a8cb54",
+      "text": "Al final ordenamos por identificador de paquete de menor a mayor, para cotejar el archivo reabierto en el mismo orden."
+    },
+    "6r94": {
+      "source_hash": "06f5d1f25238",
+      "text": "En este paquete, tanto lo prometido como lo real son tres días; la resta da cero."
+    },
+    "s3h7": {
+      "source_hash": "f133fd8c361d",
+      "text": "Al aplicar el signo mayor que, ese paquete no entra en la lista de retrasos."
+    },
+    "ntfj": {
+      "source_hash": "1e728a75dfd6",
+      "text": "Las condiciones ya están listas. ¿Qué responde la herramienta si falta una letra en el campo de días reales?"
+    },
+    "ak3j": {
+      "source_hash": "6ddfa802b081",
+      "text": "Primero indica que no encuentra esa columna; no genera un resultado de la consulta."
+    },
+    "s9ca": {
+      "source_hash": "374b141bdcd3",
+      "text": "El modo normal ya puede señalar ese problema con el nombre."
+    },
+    "jsui": {
+      "source_hash": "89868e15adb6",
+      "text": "Falta la ese final: escribí actual_day en lugar de actual_days."
+    },
+    "xj3j": {
+      "source_hash": "a9dc656d01b0",
+      "text": "Esta consulta solo aísla el error de columna. Yo escribí mal el nombre a propósito; no es un error de la IA."
+    },
+    "i2fq": {
+      "source_hash": "1b2475ec3484",
+      "text": "Primero omitimos el texto de inicio de esta ejecución y analizamos solo la línea de JSON válida que sigue."
+    },
+    "yxh7": {
+      "source_hash": "e14d3a789a15",
+      "text": "Como el flujo completo también contiene texto, no puede tratarse como un solo objeto."
+    },
+    "jngn": {
+      "source_hash": "f35924448505",
+      "text": "Del objeto sacamos el nombre mal escrito y del mensaje explicativo buscamos columnas candidatas."
+    },
+    "cjm4": {
+      "source_hash": "4c9f36b95cc8",
+      "text": "Cotejo esas candidatas con la tabla original y encuentro el nombre correcto, que lleva una letra más al final."
+    },
+    "7g26": {
+      "source_hash": "619ca850aca9",
+      "text": "Escribimos en la consulta el nombre de columna que acabamos de confirmar en la tabla original."
+    },
+    "2d84": {
+      "source_hash": "6555ca795916",
+      "text": "Después recuperamos las condiciones, la selección de columnas y el orden para exportar la misma lista."
+    },
+    "rw48": {
+      "source_hash": "644aec32f389",
+      "text": "El nombre ya está corregido. ¿La respuesta que mostraba pocas filas también recortará el archivo guardado?"
+    },
+    "epd8": {
+      "source_hash": "2b3972dcf131",
+      "text": "Ponemos la consulta completa dentro de los paréntesis de COPY."
+    },
+    "tdtg": {
+      "source_hash": "d642afc081fc",
+      "text": "Ahí se mantienen la regla de selección y el orden; después indicamos dónde guardar el archivo de entrega."
+    },
+    "q6db": {
+      "source_hash": "c0e291da58ad",
+      "text": "No añadimos a esta consulta de exportación un límite de filas para la vista previa."
+    },
+    "n6c9": {
+      "source_hash": "b774867df776",
+      "text": "Lo que guardamos es el resultado que cumple la condición, no unas cuantas filas copiadas de la respuesta."
+    },
+    "kabz": {
+      "source_hash": "768bb934be86",
+      "text": "Esta ruta indica dónde escribir el CSV; la opción de encabezado conserva los nombres de las columnas."
+    },
+    "5qhj": {
+      "source_hash": "c829a73422ad",
+      "text": "Al reabrir, cotejamos el orden de columnas con la selección: el identificador y la ruta no deben intercambiarse."
+    },
+    "6e4u": {
+      "source_hash": "3eef724d4df0",
+      "text": "Guardamos otra copia en Parquet y cambiamos solo el formato de salida y el nombre del archivo de destino."
+    },
+    "nsc3": {
+      "source_hash": "8e1c5a9c127e",
+      "text": "La misma selección de columnas y el mismo orden siguen dentro de los paréntesis para poder compararlos después."
+    },
+    "7b9v": {
+      "source_hash": "32e25cd0dfe3",
+      "text": "Este comando ejecuta la consulta completa y escribe los dos formatos en los destinos indicados."
+    },
+    "44a2": {
+      "source_hash": "b7b6b47bdc06",
+      "text": "Para saber si el archivo se recortó, leemos directamente el CSV exportado."
+    },
+    "j328": {
+      "source_hash": "6c35c9eb3764",
+      "text": "Contamos las filas de datos del archivo; el encabezado no cuenta como un paquete."
+    },
+    "ubxv": {
+      "source_hash": "4981417cffcd",
+      "text": "La lista completa de seguimiento que acabamos de leer tiene 480 registros."
+    },
+    "ag8z": {
+      "source_hash": "93cf981eaefa",
+      "text": "El recorte de la vista previa no se trasladó al archivo con esta orden de exportación."
+    },
+    "6da2": {
+      "source_hash": "b2fbd3bfe2d9",
+      "text": "Al ejecutar la misma exportación en modo normal, la lista tiene exactamente el mismo contenido."
+    },
+    "385u": {
+      "source_hash": "9bfe66d9eddf",
+      "text": "Esto muestra que el modo nuevo cambia la respuesta; no encontró más paquetes retrasados."
+    },
+    "zdyx": {
+      "source_hash": "1daeab325144",
+      "text": "¿Basta con que coincida la cantidad de registros para entregar el archivo? ¿El otro formato guarda el mismo contenido?"
+    },
+    "qgqv": {
+      "source_hash": "046ad96245e4",
+      "text": "Para comprobarlo, volvemos a leer el Parquet y ordenamos por el mismo identificador."
+    },
+    "ineu": {
+      "source_hash": "7c4dd3058f62",
+      "text": "Lo guardamos de nuevo como CSV, para comparar ambas listas completas fila por fila de la misma manera."
+    },
+    "dgc2": {
+      "source_hash": "dfbc0d6cb8fa",
+      "text": "Esta consulta lee el archivo de entrega; no modifica la tabla original de paquetes."
+    },
+    "xqkd": {
+      "source_hash": "3b69934ada6b",
+      "text": "¿Recuerdas el paquete en el que restamos cuatro menos tres?"
+    },
+    "xad9": {
+      "source_hash": "887a876101ff",
+      "text": "El archivo completo conserva su ruta, los días originales y la diferencia de un día de retraso."
+    },
+    "6u7e": {
+      "source_hash": "17a5eede43e7",
+      "text": "Si seguimos los identificadores, también aparecen los registros que cumplen la condición cerca del final de la tabla original."
+    },
+    "wznc": {
+      "source_hash": "11146dca7ec3",
+      "text": "Revisar el principio y el final ayuda a ubicar los datos; una comparación completa también debe revisar cada registro intermedio."
+    },
+    "h579": {
+      "source_hash": "89508c6e8b9b",
+      "text": "Para que quien reciba la lista vea la distribución, mantenemos la regla original y contamos por ruta."
+    },
+    "jd24": {
+      "source_hash": "96bbf548b81e",
+      "text": "Ese resumen va aparte en el informe y no sustituye la lista completa de paquetes."
+    },
+    "rxjg": {
+      "source_hash": "471faa6a1968",
+      "text": "Con la regla original, las rutas R2 y R3 tienen 240 registros cada una."
+    },
+    "mavj": {
+      "source_hash": "225d65c77fea",
+      "text": "Suman los mismos 480 registros del archivo completo; ninguno quedó fuera del resumen."
+    },
+    "3dwp": {
+      "source_hash": "2db721c15c26",
+      "text": "La pregunta inicial sobre el archivo ya tiene respuesta fila por fila: los dos archivos contienen los mismos datos."
+    },
+    "dm84": {
+      "source_hash": "084c04996747",
+      "text": "No comparamos solo la cantidad: también el identificador, los valores de las columnas y el orden de cada registro."
+    },
+    "ezfg": {
+      "source_hash": "b1c6d1ce3355",
+      "text": "Otro programa lee cada registro original y obtiene los identificadores que cumplen la regla original."
+    },
+    "ubtk": {
+      "source_hash": "9af0d830415c",
+      "text": "Esa lista de identificadores coincide con la exportación, así que la comprobación vuelve a los datos de origen."
+    },
+    "g738": {
+      "source_hash": "46eeff176903",
+      "text": "Si ahora piden incluir los que llegaron justo a tiempo, ¿sirve sin cambios la lista de retrasos ya verificada?"
+    },
+    "ab37": {
+      "source_hash": "2705d2459ea3",
+      "text": "No. Los que llegaron justo a tiempo, antes excluidos, ahora deben entrar."
+    },
+    "dyhh": {
+      "source_hash": "23245ab0cc0e",
+      "text": "Conservamos el archivo original y guardamos la consulta del nuevo pedido por separado."
+    },
+    "7th9": {
+      "source_hash": "630ebfcf60fa",
+      "text": "Cambiamos mayor que por mayor o igual que, para que también pasen los registros con valores iguales."
+    },
+    "98xj": {
+      "source_hash": "6f0e39a20550",
+      "text": "También cambiamos el nombre de destino, para no sobrescribir la lista anterior."
+    },
+    "g89b": {
+      "source_hash": "771e378bd7a9",
+      "text": "Este comando ejecuta el archivo modificado y guarda aparte el nuevo resultado para entregar."
+    },
+    "u6gp": {
+      "source_hash": "ae9f917f9585",
+      "text": "¿Cuántos paquetes más dejó pasar ese cambio de signo y qué tipo de registros son?"
+    },
+    "mkfw": {
+      "source_hash": "7507295dd887",
+      "text": "La lista nueva tiene 720 registros; en 240, los días de retraso son cero."
+    },
+    "b5i9": {
+      "source_hash": "8462f9b3960c",
+      "text": "Los añadidos llegaron justo a tiempo; la lista es de entregas justo a tiempo o con retraso."
+    },
+    "fqr6": {
+      "source_hash": "c0084ec6fe90",
+      "text": "¿Recuerdas el paquete de tres días prometidos y tres reales que habíamos dejado fuera?"
+    },
+    "me2p": {
+      "source_hash": "52bcb91fb65b",
+      "text": "Ahora entra, justamente porque cambiamos la regla para incluir la igualdad."
+    },
+    "ptfc": {
+      "source_hash": "4fdc81b585d6",
+      "text": "Cada lista responde a sus propias condiciones; no podemos entregar una en lugar de la otra."
+    },
+    "ha7h": {
+      "source_hash": "bfc426453313",
+      "text": "Guardamos ambos nombres de archivo y sus consultas, para elegir la lista que corresponde a lo pedido."
+    },
+    "g7bc": {
+      "source_hash": "608097864003",
+      "text": "El paquete de entrega ya incluye los archivos completos, sus consultas y un resumen legible."
+    },
+    "s9qr": {
+      "source_hash": "e3e11dde80f6",
+      "text": "Desde el informe se puede encontrar el archivo completo y cambiar las condiciones para generar otra lista."
+    },
+    "ddtv": {
+      "source_hash": "13de3acb0766",
+      "text": "Aquella vista previa del inicio ahora tiene un archivo completo de entrega que se puede cotejar con la regla."
+    },
+    "wx5u": {
+      "source_hash": "906199dfca53",
+      "text": "¿Qué listas de datos entregas con más frecuencia?"
+    },
+    "v5pw": {
+      "source_hash": "e3b99fe15775",
+      "text": "Suscríbete para entender las herramientas de IA con resultados concretos."
+    }
+  }
+}

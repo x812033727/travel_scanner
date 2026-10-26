@@ -1,0 +1,27 @@
+{
+  "kind": "native_pure_ES_metadata_and_sources_preview_UNTIMED",
+  "title": "¿Solo ves 40 filas? Exporta la lista completa con DuckDB 2.0｜CC",
+  "description": "Con una misma tabla de práctica de entregas, identifica las filas omitidas en pantalla y entrega una lista completa de seguimiento.\nPara quienes usan IA como apoyo al leer CSV y quieren entregar tanto la consulta como su resultado completo.\n\nLos datos de entregas son ficticios y originales, y los scripts del autor son deterministas. No representan una empresa, clientes ni estadísticas públicas. No se muestran respuestas de un producto de IA ni pruebas independientes de un modelo antes y después. El 25 de octubre de 2026 se compararon -agent y -no-agent con el mismo binario de DuckDB 2.0.0. Las 40 filas son una vista previa de 1200 registros de entrada; los 480 registros entregados son el resultado completo de aplicar condiciones explícitas. Omitir filas en pantalla no significa que la consulta o el almacenamiento hayan perdido datos.\n\nEl autor escribió a propósito un nombre de columna incompleto para demostrar el manejo del error. En esta ejecución, stderr del modo agente contiene texto de inicio y una línea de JSON válida: hay que analizar la línea del mensaje, sin tratar el flujo mixto como un único documento JSON. No se afirma que DuckDB genere JSON inválido ni que haya fallado un programa consumidor real de terceros. CSV, SQL, COPY y Parquet ya existían; la novedad es el modo de salida para agentes. No se probaron tokens, costos, razonamiento de modelos, modo servidor ni la actualización de una base de datos existente.\n\nEl material incluye los datos originales de entrada, el SQL completo, scripts para reproducir el ejercicio, el CSV completo de 480 registros que cumplen la condición, el mismo contenido en Parquet, un informe HTML, comandos exactos y el SHA de cada archivo. Los datos, el código y el informe originales se ofrecen bajo CC0-1.0; DuckDB usa MIT. Los textos oficiales pertenecen a sus autores.\n\nMaterial público (9 comandos ejecutados): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP completo de los datos y archivos del ejercicio: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip\n\n📚 Fuentes\nDuckDB2.0正式公告: https://duckdb.org/2026/10/21/announcing-duckdb-200\nDuckDB CLI agent模式: https://duckdb.org/2026/10/09/agent-mode.html\nDuckDB2.0 CLI agent模式文件: https://duckdb.org/docs/2.0/clients/cli/agent_mode.html\nDuckDB2.0遷移條件: https://duckdb.org/docs/2.0/operations_manual/migration.html\nDuckDB2.0正式release與套件: https://github.com/duckdb/duckdb/releases/tag/v2.0.0\n\n#DuckDB #análisisdedatosconIA #AI新聞拆解",
+  "tags": [
+    "DuckDB",
+    "análisis de datos con IA",
+    "modo agente",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "consultas de datos",
+    "lista completa"
+  ],
+  "untimed_chapter_titles": {
+    "parcel-table-start": "Falta un tramo en la vista previa de entregas",
+    "input-is-still-there": "La tabla sigue completa; la respuesta omite filas",
+    "define-the-followup": "Tres paquetes, solo uno cumple la condición",
+    "human-error": "Falta una letra y la consulta se detiene",
+    "read-parquet-back": "Reabrir el archivo y cotejarlo registro por registro",
+    "new-requirement-consequence": "Incluir entregas puntuales cambia lo que se pide"
+  },
+  "problems": [],
+  "actual_timeline_used": false,
+  "estimated_timeline_used": false,
+  "CC_or_M4A_or_dub_fit_claimed": false
+}
