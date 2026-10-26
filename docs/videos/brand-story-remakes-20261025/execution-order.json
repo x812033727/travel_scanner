@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T09:09:17.009788+00:00",
+  "updated_at": "2026-10-26T09:21:28.189534+00:00",
   "user_direction": "從C03開始重製",
   "current_priority": "C03",
   "order": [
@@ -268,7 +268,7 @@
     },
     {
       "id": "dyson",
-      "status": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE2_PASS_FREE_OPERATOR_FROZEN_TEXT_NOT_COLLECTED",
+      "status": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE2_PASS_FREE_OPERATOR_FROZEN_TEXT_AUTHORING",
       "source_review": "dyson/reviews/source-r5-independent.json",
       "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
       "source_checkpoint": "dyson/author-freeze-r5.json",
@@ -280,12 +280,12 @@
       "frozen_source_file": "dyson/history/r3/video.json",
       "frozen_author_checkpoint": "dyson/history/r3/author-freeze-r3.json",
       "current_native_state": "ROUND_2_ACTUAL_MERGED_PASS",
-      "text_preparation_state": "NOT_TEXT_PASS",
+      "text_preparation_state": "AUTHORING_IN_PROGRESS_NOT_TEXT_PASS",
       "handoff": "dyson/production-entry-r5-prepared.md"
     },
     {
       "id": "doraemon",
-      "status": "R6_SOURCE_WRITTEN_VISUAL_PASS_NATIVE5_PASS_FREE_OPERATOR_FROZEN_TEXT_NOT_COLLECTED",
+      "status": "source_native_and_eight_language_text_PASS_media_held",
       "source_review": "doraemon/reviews/source-r6-independent.json",
       "source_video_sha256": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
       "source_checkpoint": "doraemon/author-freeze-r6.json",
@@ -293,8 +293,14 @@
       "actual_completed_native_panels": 5,
       "prepared_next_native_panel": null,
       "current_native_state": "ROUND_5_ACTUAL_MERGED_PASS",
-      "text_preparation_state": "NOT_TEXT_PASS",
-      "handoff": "doraemon/production-entry-r6-prepared.md"
+      "text_preparation_state": "TEXT_PASS",
+      "handoff": "doraemon/production-entry-text-r6.md",
+      "current_preparation": "doraemon/preparation-text-completion-r6.json",
+      "text_preparation": "doraemon/i18n/preparation-status.json",
+      "eight_language_text_entries": 1048,
+      "backend_outline_status": "pending",
+      "backend_script_status": "pending",
+      "backend_language_selection_applied": false
     },
     {
       "id": "rolling-suitcase",
@@ -309,7 +315,8 @@
       "text_preparation_state": "NOT_TEXT_PASS",
       "active_author_revision": 8,
       "current_author_work_state": "R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
-      "active_author_source_reviewed": false
+      "active_author_source_reviewed": false,
+      "active_work_note": "R8 SOURCE PASS and fresh native7 blind reading are unpublished, not checkpointed here and excluded from the published source/native17 count. Current published source/native evidence remains history/r7/native6 HOLD."
     }
   ],
   "originals_preserved": true,
@@ -319,5 +326,6 @@
   "old_media_retrieval_required": false,
   "language_defaults": "language-defaults.json",
   "continue_in_order_without_routine_questions": true,
-  "current_source_checkpoint": "source-preparation-checkpoint-20261026.json"
+  "current_source_checkpoint": "source-preparation-checkpoint-20261026.json",
+  "current_preparation_forward": "text-preparation-checkpoint-16.json"
 }
