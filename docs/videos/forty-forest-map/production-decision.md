@@ -25,7 +25,7 @@
 初始87句TTS已實際完成：總長478.2秒，片尾前正文466.533秒。未達八分鐘，因此採用撰稿者推薦A，新增先前尚未逐步示範的B六分數總量驗算與抄錄回查，保留原87句及其已合成take、不調慢聲音或增加停頓。`.344+.344=.688 → +.308=.996 → +.004+0+0=1`給出可照做的新中間步驟；名稱仍須對回，不把加總正確當精度或校準證明。新增五句c88–92，證據及原句完整保留的比對另記錄，須經定向查核後正常合成這五句，再量實際正文與總長。初始478.2秒只屬舊87句版本，不冒稱新92句已通過時長或音檢。
 
 
-## 已驗音軌與增量交付採用（2026-10-26）
+## 歷史主體版已驗音軌與增量交付採用（截至2026-10-26T00:06Z）
 
 本節更新目前交付快照；上文87／92句早期製作採用及其當時pending狀態仍是歷史紀錄。協調者延續站主「預設八語都要做」「推薦決定不用問」的委派，只將真實原生音檢及獨立稽核通過的M4A增量交付。
 
@@ -36,3 +36,13 @@ KO歷史修復上限如實保留：兩輪原文retake、兩輪標準等義改詞
 ES首次92句合成完成但fit exit1（4 over／3 absorbed），還未音檢通過或交付；PT／ID／TH待製作。全部八語audio完成後，全部語言CC仍需依實際音軌timing重產／核對，保留速度advisory；完整package為0／8，all_eight_ready與overall均false。主片僅BODY CANDIDATE，正式官方intro／outro仍缺漏，須待合法素材與guard另處理。
 
 本次僅整理四份進度文件與兩份安全proof；未變更source／claims／lexicon／i18n／媒體，未操作後臺、付費、YouTube、merge或deploy。詳見[機器可讀進度](production-progress.json)及[製作結果](production-result.md)。
+
+## 目前正式官方v4交付與未知結果處置（2026-10-26）
+
+本節取代上節「目前交付」的時間性判斷，舊版本的事實／失敗／上限原樣封存。依站主加片頭片尾及持續推薦委派，正常官方v4的5秒intro在body frame682、21秒outro已建置並交付新主片5648；保留原b293 body完整SHA、舊approved56c69／12角色／QA11及全部原決策。新95bd final是pending／manual candidate、真QA false10／11（ES／PT stale captions失敗），不能以舊QA11或外層review-push exit0稱機器QA已通過。
+
+EN／JA／KO／VI四種目前92句已驗body raw/cache零TTS重封裝，正常cachedcheck與獨立368句全target／WAV／currentM4A／fit／meter核對後才交付。新五語ZH＋四語CC、完整native標題說明也已實際samepending交付，37roles全部登入讀回；35CPS含已交17、ES／PT stale2hard保留。外語三部件交付4／8，正式八語batch及overallfalse。不是只有payload.metadata就聲稱可下載文件，這次15真textblobs／25下載roles均有收據。
+
+PT原文retake1唯一v3 process258624真exit3，無新raw／完成stage但上游計費UNKNOWN。失敗文字與journal有Mokaair HTTP502；root正式更正原driver對HTTP暴露範圍的欄位誤判，未覆寫原270e。新held3cc1/journalb9d12與舊ES9a36/journal3935分開保留，不replay／清旗／forget，07:50過後仍必須先有真實provider每request結果。R1=1、shorten2、reword0不重置；服務忙碌／unknown及修復缺口不以聲音或品質門檻降低處理。
+
+目前事實、來源時間綁定及fullSHA見[製作結果](production-result.md)、[收據索引](receipts/official-v4-20261026/README.md)。此輪只有文件與安全proof副本，沒有變更video、voice、lexicon、data、accepted targets/WAV、i18n/es.json或pt.json，沒有API、付費、原生QA／媒體stage、YouTube、merge或部署。原來源74的文件更新後，交付時的全來源hash proof仍是歷史，不偽稱現在重跑全關卡。

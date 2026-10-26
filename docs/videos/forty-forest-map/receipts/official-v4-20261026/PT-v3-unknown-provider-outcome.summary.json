@@ -1,0 +1,69 @@
+{
+  "kind": "DERIVED_PUBLIC_PT_UNCERTAINTY_SUMMARY_NOT_PROVIDER_RECEIPT",
+  "documented_at": "2026-10-26T07:29:19.902839+00:00",
+  "actual_driver_result": {
+    "file": "/workspace/work/ai-tech-next/forty-pt-branded-R1-once.v3.result.json",
+    "sha256": "270e87da89dcda63898f8ac657294eca7645dba6ad76f1d5e6955163386c7e62",
+    "bytes": 346338
+  },
+  "root_scope_correction": {
+    "file": "/workspace/work/ai-tech-next/forty-pt-branded-R1-v3.root-unknown-outcome-review.json",
+    "sha256": "bdd5318d339910e8428f18bc32833bdf8b7f49e90312b1bb9d91b014e4787648",
+    "bytes": 1443
+  },
+  "series_hold": {
+    "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+    "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384",
+    "bytes": 5127
+  },
+  "actual_facts": {
+    "actual_pid": 258624,
+    "started_at": "2026-10-26T06:50:04.672149+00:00",
+    "finished_at": "2026-10-26T06:50:36.418431+00:00",
+    "actual_exit_code": 3,
+    "native_processes_started": 1,
+    "completed_native_stage": null,
+    "actual_child_exit_waited": true,
+    "raw_SHA_changed_count": 0,
+    "provider_billable_total": "UNKNOWN_NOT_ZERO_CLAIM",
+    "Mokaair_HTTP_status_reported_by_native_failure_text": 502,
+    "provider_HTTP_status_charge_audio_result": "UNKNOWN",
+    "raw92_unchanged": true,
+    "logical_original_retake_round": 1,
+    "shorten_rounds": 2,
+    "reword_rounds": 0,
+    "completed_native_groups_from_log": 0,
+    "actual_native_synthesized": null,
+    "actual_native_billable_characters": null,
+    "held_journal_sha256": "b9d12c0e77dc02ec913bf8f23b82089e5172ae93675b24f39dea14a31203f75d",
+    "fit_complete": false,
+    "audio_checked": false,
+    "new_current_meter_performed": false,
+    "later_ASR_QA_TTS_backend_started": false,
+    "canonical2132_and_source74_core329_unchanged": true,
+    "old_ES_unknown_separate_unchanged": true,
+    "root_original_driver_field_correction": "Native failure text does report HTTP502; this is the Mokaair response indication, not the upstream provider outcome or invoice. Original driver receipt is preserved unchanged."
+  },
+  "hold": {
+    "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384",
+    "held": true,
+    "updated_at": "2026-10-26T07:00:51.807131+00:00",
+    "not_before": "2026-10-26T07:50:36.418431+00:00",
+    "elapsed_not_before_never_resolves_unknown_request": true,
+    "automatic_TTS_replay_authorized": false,
+    "previous_hold_archived_sha256": "e8ac0335a7fb3b324dd93a3e2d5202ab9518807855a43d98108b853073f9b672",
+    "old_ES_unknown_hold_separate": true
+  },
+  "request_body_sha256": "3cc1ce6b7a4c1026cc52686be17962a255277ad86f795c46c88378068c0ee456",
+  "held_journal_sha256": "b9d12c0e77dc02ec913bf8f23b82089e5172ae93675b24f39dea14a31203f75d",
+  "no_raw_journal_copied": true,
+  "no_zero_charge_claim": true,
+  "new_unpaid_replay_authorized": false,
+  "no_paid_replay_even_after_not_before_without_real_provider_outcome": true,
+  "earlier_ES_request_separate_unresolved": true,
+  "same_logical_caps": {
+    "original_retake": 1,
+    "shorten": 2,
+    "reword": 0
+  }
+}
