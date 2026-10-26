@@ -581,9 +581,13 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   const project = loadProject({ slug: box.slug, root: box.root });
   const look = lookHash(project.doc);
   const write = (name, content) => atomicWrite(path.join(box.workdir, name), JSON.stringify(content));
-  write("characters/manifest.json", { look_hash: "stale", characters: { jingwei: { suggested: 1 }, yandi: { suggested: 2 } } });
+  write("characters/manifest.json", { look_hash: "stale", characters: { jingwei: { suggested: 1, candidates: [{ n: 1 }] }, yandi: { suggested: 2, candidates: [{ n: 2 }] } } });
   assert.equal((await status()).next.id, "look generated");
-  write("characters/manifest.json", { look_hash: look, characters: { jingwei: { suggested: 1 }, yandi: {} } });
+  // A character sent back has no candidates until look draws it again (state.mjs undrawnCharacters, 2026-10-26).
+  write("characters/manifest.json", { look_hash: look, characters: { jingwei: { suggested: 1, candidates: [{ n: 1 }] }, yandi: { candidates: [], redraws: 1 } } });
+  assert.equal((await status()).next.id, "look generated");
+  assert.equal((await status()).next.note, "the sheets of yandi were sent back and wait to be drawn again");
+  write("characters/manifest.json", { look_hash: look, characters: { jingwei: { suggested: 1, candidates: [{ n: 1 }] }, yandi: { candidates: [{ n: 3 }] } } });
   assert.equal((await status()).next.id, "look approved");
   await approve({ gate: "look", ...places });
   assert.equal((await status()).next.note, "a character has no chosen sheet");
