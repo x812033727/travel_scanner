@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T07:21:20.748947+00:00",
-  "state": "thirteen_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
+  "updated_at": "2026-10-26T07:35:08.959059+00:00",
+  "state": "fourteen_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -9,11 +9,11 @@
     "unuploaded_rows": 19,
     "subjects": 18,
     "first_batch_subjects": 3,
-    "remaining_subjects": 5,
-    "prepared_subjects": 13,
+    "remaining_subjects": 4,
+    "prepared_subjects": 14,
     "prepared_stage": "source_written_visual_native_merged_and_untimed_eight_language_text_PASS",
     "source_native_pass_subjects": 15,
-    "source_native_pass_scope": "13 TEXT_PASS projects plus Garmin R4 and C20 R8; does not count media completion."
+    "source_native_pass_scope": "14 TEXT_PASS projects plus C20 R8; does not count media completion."
   },
   "projects": [
     {
@@ -795,6 +795,65 @@
       "final_approval": false,
       "current_preparation": "seiko/preparation-text-completion-r4.json",
       "current_text_handoff": "seiko/production-entry-text-r4.md"
+    },
+    {
+      "id": "garmin",
+      "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+      "author_revision": 4,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+      "source_receipt": "garmin/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "6811e6b0fda564ca5dffc07835dcd309a88a400414ca797c35d7ffcf4c096fca",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "garmin/verify-1.md",
+      "narrative_receipt": "garmin/reviews/narrative-r3.json",
+      "narrative_receipt_sha256": "bcbd898a206f9edfc9dca014e4b43b334abb6bf518591fd429a3e165983b0224",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "garmin/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T07:07:54.722Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "garmin/production-entry-r4-prepared.md",
+      "text_translations": "garmin/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1080,
+      "preflight": "garmin/preflight-inputs.json",
+      "clean_master_recipe": "garmin/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "garmin/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "garmin/preparation-text-completion-r4.json",
+      "current_text_handoff": "garmin/production-entry-text-r4.md"
     }
   ],
   "paid_requests": 0,
@@ -821,7 +880,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "git_index_json_files": 6703
+      "git_index_json_files": 6871
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -994,8 +1053,8 @@
     },
     "latest_index_validation": {
       "status": "PASS",
-      "text_files": 8179,
-      "staged_files": 905,
+      "text_files": 8374,
+      "staged_files": 202,
       "scope": "Batch/task only; all indexed UTF8/JSON/scope/credential/binary scans pass."
     },
     "required_assembly_guard": {
@@ -1021,7 +1080,7 @@
     "Actual full-film decode QA, current owner final review and upload package.",
     "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
     "C03 existing token is valid. User chose a read-only Claude host handoff; await its safe exact-old/new-slug budget JSON. Local independent probe passed, host not run; account existence remains unestablished.",
-    "Garmin R4/native3 and C20 R8/native8 PASS have frozen free-operator handoffs and eight-language text authoring in progress, not TEXT_PASS. Doraemon R4 source PASS/native3 actual merged HOLD only no_recap; rolling-suitcase R4 source PASS/native3 HOLD; Dyson frozen R3 source/native unreviewed with capacity HOLD and separate active R4 author work."
+    "C20 R8/native8 PASS has a frozen free-operator handoff and external eight-language text authoring in progress, not TEXT_PASS. Doraemon and rolling-suitcase retain published R4/source-PASS/native3-HOLD checkpoints; R5 authors are active and not checkpointed. Dyson retains frozen R3 source/native-unreviewed capacity-HOLD history; R4 author work remains active and excluded."
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -1076,7 +1135,8 @@
     "c14": false,
     "c15": false,
     "c19": false,
-    "seiko": false
+    "seiko": false,
+    "garmin": false
   },
   "selected_language_parts": [
     "metadata",
@@ -1084,9 +1144,9 @@
     "dub"
   ],
   "translation_text_preparation": {
-    "receipt": "text-preparation-checkpoint-13.json",
+    "receipt": "text-preparation-checkpoint-14.json",
     "locales": 8,
-    "lines": 11608,
+    "lines": 12688,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -1168,11 +1228,17 @@
         "receipt": "seiko/i18n/preparation-status.json",
         "lines": 1160,
         "chapters": 56
+      },
+      {
+        "id": "garmin",
+        "receipt": "garmin/i18n/preparation-status.json",
+        "lines": 1080,
+        "chapters": 56
       }
     ],
-    "prepared_projects": 13,
-    "scope": "All thirteen current source-verified/native-merged-PASS projects. Untimed text only; historical baselines and unreviewed drafts excluded.",
-    "chapters": 640
+    "prepared_projects": 14,
+    "scope": "All fourteen current source-verified/native-merged-PASS projects. Untimed text only; historical baselines and unreviewed drafts excluded.",
+    "chapters": 696
   },
   "latest_user_direction": "要加片頭加片尾，可以參考PR1860；做完繼續下一個，預設八語、不需例行確認",
   "continuation_in_progress": {
@@ -1190,10 +1256,10 @@
     "c19": "source_native_and_eight_language_text_PASS_media_held",
     "c20": "R8_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_EIGHT_LANGUAGE_TEXT_AUTHORING",
     "seiko": "source_native_and_eight_language_text_PASS_media_held",
-    "garmin": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_PASS_EIGHT_LANGUAGE_TEXT_AUTHORING",
+    "garmin": "source_native_and_eight_language_text_PASS_media_held",
     "dyson": "R3_FROZEN_SOURCE_NATIVE_UNREVIEWED_CAPACITY_HOLD_R4_AUTHOR_ACTIVE",
-    "rolling_suitcase": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_CAPACITY_HOLD",
-    "doraemon": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_NO_RECAP"
+    "rolling_suitcase": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_CAPACITY_HOLD_R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
+    "doraemon": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_NO_RECAP_R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED"
   },
   "narration_size_planning": "narration-size-precheck.json",
   "new_media_files_scope": "Generated production story audio/images/music/film only. Two reused formal production bookends are separately recorded; public source research downloads are excluded.",
@@ -1229,8 +1295,8 @@
     "explicit_plan_episodes": 3,
     "explicit_plan_events": 6,
     "current_reconciliation": "opening-teaser-plan-reconciliation.json",
-    "current_source_verified_plan_projects": 13,
-    "current_written_plan_events": 24,
+    "current_source_verified_plan_projects": 14,
+    "current_written_plan_events": 26,
     "current_missing_written_plans": 0
   },
   "production_branding": {
@@ -1312,65 +1378,6 @@
       "actual_clean_master": false
     },
     {
-      "id": "garmin",
-      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_PASS_EIGHT_LANGUAGE_TEXT_AUTHORING",
-      "author_revision": 4,
-      "video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
-      "source_receipt": "garmin/reviews/source-r4-independent.json",
-      "source_receipt_sha256": "6811e6b0fda564ca5dffc07835dcd309a88a400414ca797c35d7ffcf4c096fca",
-      "native_fact_check": "garmin/verify-1.md",
-      "actual_completed_native_panels": 3,
-      "prepared_next_native_panel": null,
-      "actual_narration_seconds": null,
-      "audio_generated": false,
-      "illustrations_generated": false,
-      "media_qa": false,
-      "final_approval": false,
-      "target_minutes": 13,
-      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
-      "narrative_receipt": "garmin/reviews/narrative-r3.json",
-      "narrative_receipt_sha256": "bcbd898a206f9edfc9dca014e4b43b334abb6bf518591fd429a3e165983b0224",
-      "native_merged": "PASS",
-      "native_merged_failed": [],
-      "source_text_fact_gate": "PASS",
-      "source_written_visual_gate": "PASS",
-      "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
-      "backend_review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
-      "backend_script_status": "pending",
-      "backend_outline_review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
-      "backend_outline_status": "pending",
-      "backend_language_selection_applied": false,
-      "actual_backend_locales": {},
-      "eight_language_text_state": "AUTHORING_NOT_COLLECTED",
-      "text_translation_preparation": "NOT_TEXT_PASS",
-      "target_eight_language_text_entries": 1080,
-      "translated_entries_at_operator_freeze": 0,
-      "text_pass_at_operator_freeze": false,
-      "source_operator_snapshot": "garmin/operator-freeze-r4.json",
-      "source_operator_snapshot_sha256": "78bdeca67730e76bc88d8bfd86ffcc54aafdb73543f6eea0a8565f3aaa956dfe",
-      "current_handoff": "garmin/production-entry-r4-prepared.md",
-      "production_handoff": "garmin/production-entry-r4-prepared.md",
-      "frozen_text_config": "/workspace/work/brand-story-20261025/garmin-audit/text-r4/text-current.json",
-      "frozen_text_config_sha256": "b8f2362847ac3d5d717d3835558733ac369429b9a740a23843e6fff38abcbffe",
-      "current_freeze_fields_are_historical": true,
-      "actual_same_asset_verified": false,
-      "narrative_readers": [
-        {
-          "passed": true,
-          "failed": []
-        },
-        {
-          "passed": true,
-          "failed": []
-        }
-      ],
-      "native_review_matches_current_source": true,
-      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
-      "clean_master_metadata_review_receipt": "garmin/variants/clean-master/review.json",
-      "clean_master_metadata_review_receipt_sha256": "2cbff7457f2dda2c143273e3a30159b424925d019b6f9f8213462e00907aadbd",
-      "actual_clean_master": false
-    },
-    {
       "id": "dyson",
       "state": "R3_FROZEN_SOURCE_NATIVE_UNREVIEWED_CAPACITY_HOLD_R4_AUTHOR_ACTIVE",
       "author_revision": 3,
@@ -1447,12 +1454,12 @@
     },
     {
       "id": "doraemon",
-      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_NO_RECAP",
+      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_NO_RECAP_R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
       "author_revision": 4,
       "video_sha256": "c37e8afb0a389f13c2885db0f76f4b583862d9cca1fa0fdd0153e8fc7a80dbb8",
-      "source_receipt": "doraemon/reviews/source-r4-independent.json",
+      "source_receipt": "doraemon/history/r4/reviews/source-r4-independent.json",
       "source_receipt_sha256": "90d0243227c84b7c3b1883d69e282df2bc4dbd18307604268d5f70a0081b51ac",
-      "native_fact_check": "doraemon/verify-1.md",
+      "native_fact_check": "doraemon/history/r4/verify-1.md",
       "actual_completed_native_panels": 3,
       "prepared_next_native_panel": null,
       "actual_narration_seconds": null,
@@ -1464,14 +1471,14 @@
       "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
       "source_text_fact_gate": "PASS",
       "source_written_visual_gate": "PASS",
-      "frozen_author_checkpoint": "doraemon/author-freeze-r4.json",
+      "frozen_author_checkpoint": "doraemon/history/r4/author-freeze-r4.json",
       "frozen_author_checkpoint_sha256": "84196ba7ab00759194ad9a8ca107733c483654dcb8af3b806cd1951263c422f4",
       "current_native_state": "ROUND_3_ACTUAL_MERGED_HOLD",
       "eight_language_text_state": "NOT_PREPARED",
       "whole_narration_spoken_units": 3104,
       "source_lines": 135,
       "actual_same_asset_verified": false,
-      "narrative_receipt": "doraemon/reviews/narrative-r3.json",
+      "narrative_receipt": "doraemon/history/r4/reviews/narrative-r3.json",
       "narrative_receipt_sha256": "94ce02dab7b3a876ee1413216f8f1f81dd358b81d55156dffde152cf3548bed8",
       "native_merged": "HOLD",
       "native_merged_failed": [
@@ -1492,16 +1499,29 @@
         }
       ],
       "native_review_matches_current_source": true,
-      "native_merged_scope": "Current R4 source; only required no_recap fails by both readers. Chapter-name response is advisory only."
+      "native_merged_scope": "Current R4 source; only required no_recap fails by both readers. Chapter-name response is advisory only.",
+      "active_author_revision": 5,
+      "current_author_work_state": "R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
+      "current_author_work": "R5 author work is active and excluded. Source, source/native judgments, counts and hashes below carry forward only the published R4 checkpoint.",
+      "frozen_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_checkpoint_status": "status.json",
+      "frozen_source_file": "doraemon/history/r4/video.json",
+      "frozen_source_file_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_author_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "source_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "narrative_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "native_fact_check_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "native_review_matches_checkpoint_source": true,
+      "active_author_source_reviewed": false
     },
     {
       "id": "rolling-suitcase",
-      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_CAPACITY_HOLD",
+      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_NATIVE3_HOLD_CAPACITY_HOLD_R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
       "author_revision": 4,
       "video_sha256": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
-      "source_receipt": "rolling-suitcase/reviews/source-r4-independent.json",
+      "source_receipt": "rolling-suitcase/history/r4/reviews/source-r4-independent.json",
       "source_receipt_sha256": "f57dd15b6b9fe463793eed8f60e1200da655c53bf5d68c81368d94d32d7dd958",
-      "native_fact_check": "rolling-suitcase/verify-1.md",
+      "native_fact_check": "rolling-suitcase/history/r4/verify-1.md",
       "actual_completed_native_panels": 3,
       "prepared_next_native_panel": null,
       "actual_narration_seconds": null,
@@ -1511,7 +1531,7 @@
       "final_approval": false,
       "target_minutes": 13,
       "actual_same_asset_verified": false,
-      "narrative_receipt": "rolling-suitcase/reviews/narrative-r3.json",
+      "narrative_receipt": "rolling-suitcase/history/r4/reviews/narrative-r3.json",
       "narrative_receipt_sha256": "04f443ef27754ea1d7d61af202c688d56e2be9579eb9b677b00c6b2b91ccfc87",
       "native_merged": "HOLD",
       "native_merged_failed": [
@@ -1521,12 +1541,12 @@
       ],
       "source_text_fact_gate": "PASS",
       "source_written_visual_gate": "PASS",
-      "frozen_author_checkpoint": "rolling-suitcase/author-freeze-r4.json",
+      "frozen_author_checkpoint": "rolling-suitcase/history/r4/author-freeze-r4.json",
       "frozen_author_checkpoint_sha256": "1a4f99427828210211afc4212807213982a286eccdcdd830ff7b84c241e25054",
       "eight_language_text_state": "NOT_PREPARED",
       "whole_narration_spoken_units": 2462,
       "source_lines": 104,
-      "current_author_work": "Subsequent author work is separate from this frozen R4 checkpoint.",
+      "current_author_work": "R5 author work is active and excluded. Source, source/native judgments, counts and hashes below carry forward only the published R4 checkpoint.",
       "narrative_readers": [
         {
           "passed": false,
@@ -1547,7 +1567,19 @@
           ]
         }
       ],
-      "native_review_matches_current_source": true
+      "native_review_matches_current_source": true,
+      "active_author_revision": 5,
+      "current_author_work_state": "R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
+      "frozen_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_checkpoint_status": "status.json",
+      "frozen_source_file": "rolling-suitcase/history/r4/video.json",
+      "frozen_source_file_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_author_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "source_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "narrative_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "native_fact_check_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "native_review_matches_checkpoint_source": true,
+      "active_author_source_reviewed": false
     }
   ],
   "narration_capacity_research": {
@@ -1564,5 +1596,5 @@
       "actual_duration_measured": false
     }
   },
-  "current_text_checkpoint": "text-preparation-checkpoint-13.json"
+  "current_text_checkpoint": "text-preparation-checkpoint-14.json"
 }

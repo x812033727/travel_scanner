@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-26T06:53:56.930Z",
-  "scope": "Current 13 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
+  "checked_at": "2026-10-26T07:29:36.225Z",
+  "scope": "Current 14 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
   "frozen_prior_audit": {
     "path": "opening-teaser-image-audit.json",
     "sha256": "4ed8bdb3afb401bf6cb3c773309b729dc8e8216110b292887fa98b853162fbfd"
@@ -784,10 +784,67 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "garmin",
+      "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+      "author_revision": 4,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+      "source_receipt": "garmin/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "6811e6b0fda564ca5dffc07835dcd309a88a400414ca797c35d7ffcf4c096fca",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "garmin/verify-1.md",
+      "narrative_receipt": "garmin/reviews/narrative-r3.json",
+      "narrative_receipt_sha256": "bcbd898a206f9edfc9dca014e4b43b334abb6bf518591fd429a3e165983b0224",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "garmin/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T07:07:54.722Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "garmin/production-entry-r4-prepared.md",
+      "text_translations": "garmin/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1080,
+      "preflight": "garmin/preflight-inputs.json",
+      "clean_master_recipe": "garmin/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "garmin/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     }
   ],
-  "episodes": 13,
-  "event_teasers": 24,
+  "episodes": 14,
+  "event_teasers": 26,
   "current_missing_written_plans": 0,
   "actual_same_asset_verified": false,
   "paid_requests": 0
