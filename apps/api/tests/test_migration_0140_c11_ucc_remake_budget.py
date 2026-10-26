@@ -65,7 +65,7 @@ def test_0140_matches_reviewed_0139_rollback_contract() -> None:
     }
     assert set(migration.HISTORICAL) == UNRECONCILED_STORY_SLUGS
     # The owner activated this film with the account (2026-10-26).
-    assert REMAKE_PILOT_LIMITS_USD == {SLUG: 25}
+    assert REMAKE_PILOT_LIMITS_USD[SLUG] == 25
     assert not is_preproduction_held(SLUG)
 
 

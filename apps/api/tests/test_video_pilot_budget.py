@@ -26,6 +26,7 @@ from app.problems import AppError
 from app.video_budget import recovery, service
 from app.video_budget.models import (
     ACTIVATED_STORY_SLUGS,
+    BATCH_REMAKE_SLUGS,
     C03_ACTIVATED_SLUG,
     C03_HISTORY_CLOSED_RECEIPT,
     C11_REMAKE_SLUG,
@@ -372,7 +373,7 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
     sessions: async_sessionmaker[AsyncSession],
     slug: str,
 ) -> None:
-    assert ACTIVATED_STORY_SLUGS == {C03_ACTIVATED_SLUG, C11_REMAKE_SLUG}
+    assert ACTIVATED_STORY_SLUGS == {C03_ACTIVATED_SLUG, C11_REMAKE_SLUG, *BATCH_REMAKE_SLUGS}
     assert PREPRODUCTION_HOLD_SLUGS == (
         UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
     ) - ACTIVATED_STORY_SLUGS
@@ -576,12 +577,34 @@ async def test_c11_remake_spends_from_its_own_fresh_account(
     with pytest.raises(AppError) as exhausted:
         await _reserve(sessions, "c11r-too-much", "24.6", slug=C11_REMAKE_SLUG)
     assert exhausted.value.code == "video_budget_exhausted"
-    # Its sibling remake and the dropped original have no account decision and stay held.
-    for sibling in ("story-everyday-kikkoman-c08-remake-20261025", "story-everyday-ucc-c11"):
+    # A remake without an owner decision and the dropped original stay held.
+    for sibling in ("story-everyday-oxo-c10-remake-20261025", "story-everyday-ucc-c11"):
         assert service.is_preproduction_held(sibling)
         with pytest.raises(AppError) as held:
             await _reserve(sessions, "first-paid-call", "0.01", slug=sibling)
         assert held.value.code == "video_budget_preproduction_hold"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("slug", BATCH_REMAKE_SLUGS)
+async def test_batch_remakes_spend_only_from_their_own_account(
+    sessions: async_sessionmaker[AsyncSession],
+    slug: str,
+) -> None:
+    assert not service.is_preproduction_held(slug)
+    assert slug not in C_SERIES_PILOT_LIMITS_USD
+    original = slug.removesuffix("-remake-20261025")
+    assert service.is_preproduction_held(original) != (original == C03_ACTIVATED_SLUG)
+    with pytest.raises(AppError) as missing:
+        await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
+    assert missing.value.code == "video_budget_missing_account"
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+    receipt = await _reserve(sessions, "first-paid-call", "0.5", slug=slug)
+    assert receipt is not None and receipt.dispatch_allowed
+    view = await _summary(sessions, slug)
+    assert view is not None and view.remaining_usd == Decimal("24.5")
 
 
 @pytest.mark.asyncio

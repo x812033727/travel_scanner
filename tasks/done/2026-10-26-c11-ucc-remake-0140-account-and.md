@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-c11-ucc-remake-0140-account-and
 title: C11 UCC remake 0140 account and paid activation
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-brahmagupta
 claimed_at: 2026-10-26T15:07:13Z
 created_at: 2026-10-26T14:06:13Z
-completed_at:
+completed_at: 2026-10-26T15:55:50Z
 branch: claude/happy-brahmagupta-ibjkpd
 depends_on:
   - 2026-10-26-stage-exact-c11-ucc-remake-0140
