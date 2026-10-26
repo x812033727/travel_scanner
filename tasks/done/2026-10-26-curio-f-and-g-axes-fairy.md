@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-curio-f-and-g-axes-fairy
 title: Curio F and G axes: fairy tales, myths, ghost stories, plan and topic bank
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-storyteller
 claimed_at: 2026-10-26T13:31:13Z
 created_at: 2026-10-26T13:30:00Z
-completed_at:
+completed_at: 2026-10-26T16:34:33Z
 branch: claude/clever-archimedes-4oqn4s
 depends_on: []
 scope:
