@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ko",
+  "recorded_at_utc": "2026-10-26T17:18:10.821436+00:00",
+  "reviewer": "OpenAI Codex /root/review_pdf_ko_boundary",
+  "role": "Independent source-meaning-and-naturalness boundary reviewer; not source/translation author, native model answer author or producer",
+  "phase": "context_prepared_waiting_for_actual_boundary",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e",
+  "boundary_read": false,
+  "review_result": null,
+  "boundary_file": null,
+  "reviewed_boundaries": [],
+  "actually_read": {
+    "source_translation_pairs": 101,
+    "source_cards": 62,
+    "chapter_names": 9,
+    "metadata": [
+      "title",
+      "complete description",
+      "all tags",
+      "all chapter names",
+      "thumbnail tag",
+      "thumbnail headline",
+      "thumbnail sub"
+    ],
+    "actual_saved_pdf_extraction_pages": 8,
+    "initial_review_chain": [
+      "initial c7e1 author -> independent failed KO-1..KO-5",
+      "b81d author -> independent round2 failed KO-6; KO-1..KO-5 resolved",
+      "ecb61 author -> independent round3 passed frozen source79",
+      "current-source delta -> current source eac889 / Korean aca0ed"
+    ],
+    "limitations": "claims.md was sampled via a truncated output, not read in full; no claim of an actual Korean audio review or nonexistent shortening/rewording boundary review."
+  },
+  "read_files_sha256": [
+    {
+      "path": "/workspace/travel_scanner_pdf/AGENTS.md",
+      "sha256": "983dfa8599086f4028a3e17e3afa4b36f68b321cdb4c3246dd3693a6a98aa725"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/SKILL.md",
+      "sha256": "38f5479207f523d82fd7ea348134e7b0aba087abe19c6818646d7276e928c516"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/references/prompts/caption-review.md",
+      "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+      "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ko.json",
+      "sha256": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.meaning-review.json",
+      "sha256": "0b46448b208056c917e1261c6059cb29b3715b8f0a9a8e33f698eeb851e36e7b"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.initial-current-source-review.json",
+      "sha256": "be3c026293207499cbcb86af48904765922b29c2890544e1431d08dd3d4e6feb"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.initial-independent-review.json",
+      "sha256": "651ba0f05a24dd9eb1ed50a594d54bf143d80bd95eaab4b8ac948cd0550dd9f8"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/ko.b81d5cb99095e0bf5264c8c8ad0a7803dfa7bc24a66b4a1aece9bc611498cf92.json",
+      "sha256": "3f03dd0e72a3d7e5d1a234b387a3785e43ef7d497073cf084268e006643b61a9"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/ko.c7e1a50b79f215f65d3d43626207966cc329f32b2af6deccd12ebb1f67e35213.json",
+      "sha256": "9c6c202eb0a7e7e02c16258bdf76a158cf389789ea5b1b99f3fb8834f461afd6"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/author-history/ko.c7e1a50b79f215f65d3d43626207966cc329f32b2af6deccd12ebb1f67e35213.json",
+      "sha256": "c7e1a50b79f215f65d3d43626207966cc329f32b2af6deccd12ebb1f67e35213"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/source-79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84.json",
+      "sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/original-revised-chronology-clarification.json",
+      "sha256": "3833322aec74bab63bf31c00f31b3e49515c08480de45d453e6cb7bb70046254"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/lab-extracted-pages.json",
+      "sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/initial-reviewed-eight-native-merge.json",
+      "sha256": "7cad5ce45741e98c16c98a747de306cd6d7b97a1f0348d6abd9cd2764dacd373"
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/ko.authored.json",
+      "sha256": "ecb61e7d640f1cedecdb0c33814b98f193f23157c74f1eca41860e2176be9821"
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/ko.meaning-review-report.json",
+      "sha256": "651ba0f05a24dd9eb1ed50a594d54bf143d80bd95eaab4b8ac948cd0550dd9f8"
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/translation-author-drafts/eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04/ko.reviewed-current.todo.json",
+      "sha256": "30f5ce6aa5d0a8c802389718d5c20a13f376eb6562ee223458f1fb8e79130740"
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/translation-author-drafts/eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04/current-source-delta-review.json",
+      "sha256": "c8545f2392c93bd64348a345d80f53501a30283b57ebdbe166a7bd442c41ab64"
+    }
+  ],
+  "mechanical_context_checks": {
+    "all_101_current_source_line_records_exact_to_source79": true,
+    "all_101_current_ko_texts_exact_to_final_independently_reviewed_author": true,
+    "final_independent_report_exact_to_external_original": true,
+    "korean_boundary_files_present_at_preparation": []
+  },
+  "meaning_constraints_understood": [
+    "Aster=A=甲; Birch=B=乙; Cedar=C=丙; original fictional PDF quotes in TWD",
+    "Goods tax and shipping tax have separate explicit bases; tax-inclusive Birch gets no second goods tax",
+    "Unknown Cedar shipping remains null/confirmation-needed, distinct from explicitly free Birch shipping; incomplete delivered total cannot rank first",
+    "Cedar revised replaces original Cedar, with original retained as evidence; never a fourth supplier; update source version",
+    "Quantity10 original/revised, quantity20 revised, adjacent12/13 revised; only explicitly quoted10–20 range is valid;21 rejected without a new results directory",
+    "Revised10: A2100/B2050/C2100; revised20: A3990/B4100/C3937.50;12: A2478/B2460/C2467.50;13: A2667/B2665/C2651.25",
+    "C minus B crosses +7.50 to -13.75; each extra postcard gains C21.25TWD relative to B",
+    "Originals and output folders remain separate; 10 settings saved under new name before changing to20",
+    "5% is a fictional exercise assumption, not a true taxation determination",
+    "Actual scope is Codex AI document analysis plus pypdf selectable-text extraction and precise decimal calculation; no tested commercial upload UI or OCR claim",
+    "openpyxl only writes calculated static values; changed requirements need regenerated output, not automatic formula recalculation"
+  ],
+  "baseline_findings": [
+    {
+      "id": "BKO-PREP-1",
+      "field": "nxct",
+      "scene": "extract-start",
+      "kind": "meaning-ambiguity",
+      "severity": "medium",
+      "source": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+      "current": "각 견적 2쪽의 원문과 요구를 AI에 줍니다.",
+      "problem": "In Korean, 2쪽의 원문 is ordinarily read as the text on page 2. The source and adjacent card require the text of both pages of every quote. This ambiguity occurs exactly where the tutorial warns against reading only one page.",
+      "suggested_author_direction": "Use the cardinal 두 쪽 (or 두 페이지 전체) to explicitly preserve both pages; for example 각 견적 두 쪽의 원문과 요구를 AI에 줍니다. This is a suggested correction, not an authored or adopted change.",
+      "status": "reported_to_coordinator; no source or worksheet edited"
+    }
+  ],
+  "no_actions_performed": {
+    "repository_writes": true,
+    "task_or_lease_claims": true,
+    "producer_commands": true,
+    "paid_calls": true,
+    "ASR": true,
+    "network_requests": true,
+    "audio_or_captions_changes": true,
+    "auto_or_approvals_changes": true
+  },
+  "approval_claims": {
+    "meaning_boundary_pass": false,
+    "audio_fit": false,
+    "native_voice": false,
+    "final_QA": false,
+    "publication": false
+  },
+  "next": "Wait for coordinator to provide an actual native shortening/rewording boundary; then actually read its raw native answer, before/after and all accepted/rejected proposals, cards and adjacent lines before giving a bounded independent judgment."
+}

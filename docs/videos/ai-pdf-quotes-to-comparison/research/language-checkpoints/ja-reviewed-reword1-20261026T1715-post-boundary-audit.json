@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ja",
+  "recorded_at_utc": "2026-10-26T17:19:55.290269+00:00",
+  "scope": "actual-native-unit-ended-evidence-not-independent-meaning-or-voice-approval",
+  "actual_exit_code": 6,
+  "native_unit_ended_at_utc": "2026-10-26T17:17:54.633113+00:00",
+  "before_file": "/workspace/work/ai-pdf-01/ja-reviewed-reword1-20261026T1715-before.json",
+  "before_sha256": "4b67372a65d44a53e2a6e95aa1f67250e994dcb4f02e5530e0fbf9acc4463245",
+  "actual_outcome_file": "/workspace/work/ai-pdf-01/ja-reviewed-reword1-20261026T1715-actual-outcome.json",
+  "actual_outcome_sha256": "0b2bdd4a74f16013a2c2765afd24782bc448bb1e5679c311439aa7a0d55b926f",
+  "log_file": "/workspace/work/ai-pdf-01/ja-reviewed-reword1-20261026T1715.log",
+  "log_sha256": "200f65c9dcd9ab43b1cd50eed528fdca4cbd7d43e50e70913196a33a3ecbb06a",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "JA_translation_before_and_after_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+  "all_source_translations_unchanged_in_this_unit": {
+    "video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "i18n/pt.json": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+    "i18n/es.json": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+    "i18n/id.json": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+    "i18n/ko.json": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e",
+    "i18n/vi.json": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+    "i18n/en.json": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+    "i18n/th.json": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+    "i18n/ja.json": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351"
+  },
+  "admission_meaning_index_sha256": "e6b55c55cfcd7ba80de277024323757bd6ab10b0f27cf7d552e654a00622d219",
+  "source_model_boundary_file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-2.2026-10-26T17-17-54-336Z.json",
+  "source_model_boundary_sha256": "1ddd3fe401ba7cf13556f47b8b24147be3ad6c8f19f9da6ad7da517c5c95f93c",
+  "native_answer_sha256": "013dd142ff73770788f62364ae24c8d41b88a771f1d0408f9c5f4f6fa9f6dc55",
+  "native_result": {
+    "ids": [],
+    "problems": [
+      "fd27: unchanged"
+    ]
+  },
+  "real_primary_records_current_raw_hash_match_count": 101,
+  "real_primary_records_saved": 101,
+  "actual_secondary_records_saved": 13,
+  "unique_primary_wavs_changed": [
+    "fd27.wav",
+    "pn4i.wav",
+    "q7x8.wav"
+  ],
+  "primary_wavs_unchanged_count": 98,
+  "actual_three_changed_line_results": {
+    "fd27": {
+      "scene": "extract-aster",
+      "clip": "a7e17dfa5fbae4c8",
+      "terms": [
+        "Aster"
+      ],
+      "heard": "Asterの2ページ分の単価と送料を1行にまとめ、出店もそれぞれ残します。",
+      "noul": 0.06,
+      "intended": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "spoken_form": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper_second_opinion.py",
+        "terms": [
+          "Aster"
+        ],
+        "heard": "Asterの2ページ分の単価と送料を1行にまとめ出店もそれぞれ残します",
+        "match_kind": null,
+        "noul": 0.1
+      }
+    },
+    "q7x8": {
+      "scene": "extract-birch",
+      "clip": "410972207a4d3b67",
+      "terms": [
+        "Birch"
+      ],
+      "heard": "Birchの見積書に無料配送ってあるので、送料欄には0を入れます。",
+      "noul": 0.28,
+      "intended": "Birchの見積書に無料配送とあるので、送料欄には0を入れます。",
+      "spoken_form": "Birchの見積書に無料配送とあるので、送料欄には0を入れます。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper_second_opinion.py",
+        "terms": [
+          "Birch"
+        ],
+        "heard": "バーチの見積もり書に無料配送ってあるので送料欄にはゼロを入れます",
+        "match_kind": null,
+        "noul": 0.62
+      }
+    },
+    "pn4i": {
+      "scene": "range21-run",
+      "clip": "dd2845b5baae93f1",
+      "terms": [],
+      "heard": "まず新しい数量を各社が明記した適用範囲と照合します",
+      "noul": null,
+      "intended": "まず新しい数量を、各社が明記した適用範囲と照合します。",
+      "spoken_form": "まず新しい数量を、各社が明記した適用範囲と照合します。",
+      "match_kind": "exact",
+      "match": true
+    }
+  },
+  "actual_fit_over": [],
+  "actual_fit_kept": [],
+  "actual_native_flags": [
+    "fd27"
+  ],
+  "actual_native_rounds": {
+    "shorten": 0,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "actual_offline_native_locale_status": {
+    "locale": "ja",
+    "translation_ready": true,
+    "dub_status": "current",
+    "dub_note": "ja.m4a",
+    "dub_check_unfinished": true,
+    "current_flags_clear": false,
+    "kept_lines": [],
+    "native_rounds": {
+      "shorten": 0,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    }
+  },
+  "current_physical_track": {
+    "file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/ja.m4a",
+    "sha256": "ada824d0b1950492bf210f3dcf4198a01d2865b00c3e91047bd7c5ca43a25e9d",
+    "ffprobe": {
+      "duration": "554.500000",
+      "size": "16118658"
+    }
+  },
+  "primary_and_EN_protected_files_exact": {
+    "final.mp4": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+    "narration.wav": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+    "timeline.json": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+    "checks.json": "77951fc16999068628134157ac6d6566692cc2ae32b747f4e7c79beb3d57a951",
+    "approvals.json": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+    "languages.json": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+    "review/qa.json": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+    "review/check.en.json": "cf1e0f4b64389c1f88a11ea49b60fe0f25d704124da880cdb9f33f36ae7e0c32",
+    "review/check-flags.en.json": "3e9bc6a81ac0f8543f374441506b054c242d1300480e315fd6a1350f9687b62f",
+    "dubs/en.m4a": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+    "dubs/en/fit.json": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+    "dubs/en/timeline.json": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f"
+  },
+  "EN_native_rounds_unchanged": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "native_total_reword_limit_unchanged": 2,
+  "source_meaning_review_of_new_unused_round2_answer_performed": false,
+  "voice_pass_claimed": false,
+  "owner_action_performed": false,
+  "published": false,
+  "no_followup_unit_started": true,
+  "next": "Remain stopped with actual fd27 failure and total reword rounds2 consumed. Root should obtain genuine unused-round2 independent review/index binding without adopting a third rewrite, resetting limits, clearing flags or calling normal helper merely to terminalize. Current-file existence is not voice acceptance."
+}
