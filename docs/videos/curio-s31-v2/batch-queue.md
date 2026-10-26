@@ -41,12 +41,14 @@ S31 本機工作目錄 `~/mokaair-work/videos/curio-s31-v2/`；外部收據與�
 
 `keyframes` 初次session `29556` 因讀取回應 ECONNRESET 中止；bundled Node24.19.0 的續作session `91825` 也已結束（HTTP502），log `keyframes-resume-r6.txt`。v2-add-037 seed1已下載並快取，尚未記下judge，不能重新生成；目前先對帳再續跑。產線實際保留65張舊圖判定，consort-basket三次未過，已在程序停止後改成簡單室內單人prompt；旁白及敘事綁定未變。live全量報價仍US$5.22，總圖片／評審上限US$6。
 
-已發現斷線後重評會改變修正字句、另立請求鍵的工具問題，另開 `2026-10-26-persist-keyframe-take-verdicts-before-network`，不修改別人持有的工具。原先留在jobs中的工作已只做對帳：status=ready、US$0.0035、圖片下載及雜湊核對通過；收據在 `connection-reset-r6/reconciled-job.json`。**不要清掉／重送這筆已完成工作**；待目前keyframes程序釋放鎖後，再依已保存收據對帳cache/ledger/reservation。原始記錄完整保留。再次中斷時先核對現有job與每次judge，不盲重跑。
+已發現斷線後重評會改變修正字句、另立請求鍵的工具問題，另開 `2026-10-26-persist-keyframe-take-verdicts-before-network`，不修改別人持有的工具。舊orphan已用取回的原圖、官方cache helpers及新鮮伺服器唯讀ready／費用收據完成離線對帳，未新增網路、生成或評審請求；`connection-reset-r6/cache-reconcile-complete.json` 綁定恢復的cache檔案，pending已結清，帳本仍US$0.4895。保留全部原始收據。**不要再提交／評審這筆舊圖，也不重複入帳**。再次中斷先核對現有job與每次judge，不盲重跑。
 
-2026-10-27恢復檢查發現私有下載helper把 `readCredentials()` 回傳的 `file` 一起展開，覆蓋了下載目的地，造成圖片寫入本機憑證檔；目前已改為只傳site/token，圖片已取回至原收據所記位置並驗SHA。原權杖無可用備份，官方login配對session `71830` 等站主在管理頁允許；未恢復前不重送付費指令。這是連線帳號斷點，不是生成失敗，不能以重新生圖處理。舊orphan的US$0.0035已在帳本，不重複計費；正常Stage對帳helper已備妥，待配對後取回既有job並寫cache。502處的judge結果未記下，另保守保留US$0.05費用不確定量，仍計入US$6上限管理。
+2026-10-27恢復檢查發現私有下載helper把 `readCredentials()` 回傳的 `file` 一起展開，覆蓋了下載目的地，造成圖片寫入本機憑證檔；目前已改為只傳site/token，圖片已取回至原收據所記位置並驗SHA。原權杖無可用備份，官方login配對session `71830` 已逾時，需站主在新配對管理頁允許；未恢復前不重送付費指令。這是連線帳號斷點，不能以重新生圖處理。伺服器唯讀確認37張ready、1張failed、無pending媒體／stage／budget operation；成功judge帳本36次，但502處judge無逐片操作ID，確切費用無法還原，另保守保留US$0.05不確定量。當前保守總額US$0.5395，仍計入US$6上限管理。
 
 外語沿用原集八語選擇（en/ja/ko/es/pt/id/vi/th），八份212行工作表已全填、獨立覆核、修正及merge，仍是待音畫實測的候選。**不要重跑i18n-sheet覆寫工作表**。en/ja修正12／7項、ko/es修正14／17項、pt/id修正10／8項、vi/th修正4／5項，八語最終delta均已由獨立覆核者讀回，private八份review均有SHA-bound文字ready決定。泰文description另縮至1292 bytes並獨立覆核通過；composed預期4935 bytes，current lint為0 errors/0 warnings。配音等中文版定案後才生成。
 
 每語212行中159行新譯／改譯、53行來源相同仍完整覆核。初始每行max_chars是保守估算，極短窗口無法兼顧完整姓名與自然語言時保留忠實稿並列例外，由實際整個分鏡窗口配音量測處理，不以刪事實換取字數。原始時間軸的zh-TW.srt已由官方captions命令產生212 cues；最終加品牌片頭後須重產偏移。配樂已由原始已付曲目離線交叉淡化6遍、4秒接縫，延長至976秒，current track `curio-s31-v2-bed.m4a` SHA-256 `a00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41`，新購費用0；收據 `music-reuse-r6.json`。
+
+離線預覽render session `7717` 已exit0：644秒、21張字卡＋212段字幕strips＝233 states，無layout錯誤；中文及八語縮圖已逐張看過，字卡聯絡表21張也已查看。只核對預覽版面，沒有完整分鏡、成片或播放器驗收；`render-preview-review.json` 記錄實檔SHA及檢查範圍。全九語原始時間軸CC已產出，其中ja兩句、es三句閱讀速度警告留待實際配音／最終字幕重測。不要把raw CC或這份預覽當作最終上架包。
 
 本聊天的續作 heartbeat 已建立，automation id `s31`，每20分鐘依實際斷點接續；狀態不變時不發通知。七集的完整交付包均驗證完成後停用。
