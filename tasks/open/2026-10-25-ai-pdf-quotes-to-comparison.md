@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T21:49:28Z
+claimed_at: 2026-10-26T22:24:19Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -40,6 +40,19 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Fresh state3 PT continuation admission after completed text assets — 2026-10-26T22:27:02.096490+00:00
+
+- This is a fresh user execution after saved22:03:11.200Z, not an elapsed-clock automatic retry. Original PR1852 actual task22:20 stillblob0ec/latest17:03:40 (>5hours); independent22:21:15GET still approvedoldfinal/publish/pendingmaterials/retries{}/workerunavailable with no actual controller/LEASE/STOP and14unchanged protected files. Source read-only audit `research/language-checkpoints/original-readonly-audit-20261026T2220Z.json` SHAdb053929. Original source/paid/owner state was untouched; no new owner/connection consent is requested.
+- Root actually found clean pushed53810153d16f04d20d31efadce24cfb4437eaf89, draft/no-autoPR1864 and prior explicit writer-return/final checkpointd2c994. Nativeauto60fee1 remains done/defer3/due22:03:11.200Z/PT0-0-0stopped/0WAV0ASR; ENJAfailed limits andKOES2/8checked remain. Current2350runtime files exactly match completed9CC, source production9/formal8meaning/current native archives/PT4b64written baseline are unchanged; journals0/current top-level unadopted model receipts0 and terminal archive836fe preserved. Old state2/CC one-use executions are consumed history.
+- ONE new FREE preflight genuinely completed22:23:38.632Z, actualexit0/session65763 and released22:23:39.484Z with6/6protection checks PASS. ActualbothprojectGETs still originalunchanged andPDFexact346a/934608approved+matching11QA/retries{}/panelundecided. ActualnativePTdryrun95newrequests/6112estimatedchars/monthly5,743,457/14estimateover and existing0.13s/1.18xestimate warning remain; readiness is not realTTSavailability/fit/billing clearance. Receipt02bfc06e/releasedd149a7a6/dryrun17d99e91 and exactnew b303d090 preflight helper are source-copied. All2350runtime/436then-source/core20/CCmarker and immutable28filetext-envelope399c stayed exact, including9CC1002cues/31realwarnings. New source evidence is appended after this dated436tree check.
+- Root ordinary same-owner status/in-progress then claim succeeded withoutforce or native change; this records eligibility for one normalPT attempt only. New source-identical `research/language-checkpoints/remaining-languages-resume-after-PT-defer3-20261026T2220Z.json` SHAb571c105a1ce1eefb098ddea723e9ed561f740c34e86e2f1782ac678a5196be6 inherits fulld5f273 safeguards and names `/root/pdf_pt_resume_2220` prospective sole coordinator. Activation still requires rootfullreview of exactnewstate3driver plusactualcommit/push and explicitGO_PAID. No newpaidunit has started at this checkpoint, and root alone writes source/task/Git until GO.
+- First ONE normalcachedPT; a real newdefer/unknown/globalblock stops thefinitequeue with true newdue, no timer orlanguage workaround. If actual nativeprogress/globaleligibility permit, PT→ID→VI→TH remain serial with currentoriginal/primary/budget/source/unknown guards and genuinely independent actual model-boundary reviews. ENJAordinaryretry/owner/full8/publish/new-movie remain excluded. Preserve completed9CC/textenvelope as dated immutable artifacts; any realnewPTsource/dubtiming requires newcurrent nativecaption/metadata rebuild+QA before its ready claim.
+
+
+- Root personally read the complete new state3 ONE-unit driver `research/production-helpers/run-pt-fresh-user-defer3-20261026T2222Z.py` SHA95d2d05a and pinned it into the unactivated grant before committing; actual Python compilation passed. It verifies every old436source file while permitting only new committed admission evidence, snapshots the then-current full source, and protects canonical2350/core20/existing9CC/text28/CCmarker/adapterf8d076/compatibleenv e973. Its selected-PT change audit preserves real new global speech journals or model receipts for recovery, with no replay or HTTP/billing inference. The grant remained unactivated throughout preparation; no native driver/paid unit has run yet.
+
+- Current source-only admission checks passed tasks2187 and diff; production9source files, all8 meaning/report bindings, native adapter and shared core remain unchanged. Exact log `/workspace/work/ai-pdf-01/pt-fresh-defer3-admission-task-check-20261026T2222Z.log`. Existing unchanged-production docs236/236 and lint0errors/2warnings remain their actual prior results; no repeated unaffected suite/new full-film or voice QA is claimed. Staged current-source/index/report and cached diff are checked before commit.
 
 ### Nine captions and metadata actually delivered; paid voices remain blocked — 2026-10-26T21:58:12.487094+00:00
 

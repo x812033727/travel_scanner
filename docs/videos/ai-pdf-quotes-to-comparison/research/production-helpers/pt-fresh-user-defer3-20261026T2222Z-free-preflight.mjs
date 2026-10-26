@@ -1,0 +1,77 @@
+// ONE root-GO_FREE nonpaid state3 preflight. All paid/non-GET routes are refused.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { isDeepStrictEqual as same } from 'node:util';
+import { acquireProjectLease } from '/workspace/travel_scanner_pdf/tools/video/core/project-lease.mjs';
+import { siteClient } from '/workspace/travel_scanner_pdf/tools/video/shorts/site.mjs';
+import { main, EXIT } from '/workspace/travel_scanner_pdf/tools/video/cli.mjs';
+const HOME='/workspace/work/ai-pdf-01', ROOT='/workspace/travel_scanner_pdf', SLUG='ai-pdf-quotes-to-comparison';
+const WORK=path.join(HOME,'media',SLUG), DOC=path.join(ROOT,'docs/videos',SLUG), ORIGINAL='/workspace/work/ai-animation-01/media/ai-editable-explainer-animation';
+const PREFIX=path.join(HOME,'pt-fresh-user-defer3-20261026T2222Z');
+const TEXT=path.join(HOME,'language-text-delivery-20261026T2154Z');
+const CC=path.join(HOME,'free-caption-preparation-20261026T2144Z/one-use-execution');
+const FOREIGN=['en','ja','ko','es','pt','id','vi','th'];
+const INPUTS=['docs/videos/lexicon.json','tools/video/cli.mjs','tools/video/core/state.mjs','tools/video/core/stages.mjs','tools/video/core/branding.mjs','tools/video/core/captions.mjs','tools/video/core/timeline.mjs','tools/video/core/paths.mjs','tools/video/core/project-lease.mjs','tools/video/core/schema.mjs','tools/video/core/approvals.mjs','tools/video/core/lexicon.mjs','tools/video/core/lexicon-store.mjs','tools/video/core/translations.mjs','tools/video/dubs/plan.mjs','tools/video/qa/checks.mjs','tools/video/review/renewal-handoff.mjs','tools/video/automation/flow.mjs','tools/video/automation/client.mjs','tools/video/automation/run-receipts.mjs'];
+const read=f=>JSON.parse(fs.readFileSync(f,'utf8'));
+const sha=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const insist=(ok,message)=>{if(!ok)throw new Error(message);};
+const save=(suffix,obj)=>fs.writeFileSync(PREFIX+suffix,JSON.stringify(obj,null,2)+'\n',{flag:'wx'});
+const files=dir=>fs.existsSync(dir)?fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{const f=path.join(dir,e.name);if(e.isDirectory())return files(f);insist(e.isFile(),`Nonregular file needs inspection: ${f}`);return[f];}):[];
+const snapshot=(dir,exclude=[])=>Object.fromEntries(files(dir).sort().filter(f=>!exclude.includes(path.relative(dir,f))).map(f=>[path.relative(dir,f),sha(f)]));
+const producers=()=>fs.readdirSync('/proc').filter(n=>/^\d+$/.test(n)&&Number(n)!==process.pid).flatMap(n=>{try{const a=fs.readFileSync(`/proc/${n}/cmdline`,'utf8').split('\0').filter(Boolean),exe=path.basename(a[0]??'');return /^(node|python(?:3(?:\.\d+)?)?|ffmpeg)$/.test(exe)&&a.slice(1).some(s=>/ai-pdf-01|ai-animation-01|whisper_second_opinion/.test(s))?[{pid:Number(n),executable:exe}]:[];}catch{return[];}});
+function idle(){insist(producers().length===0,'Another actual producer/Whisper controller is live');for(const dir of [WORK,ORIGINAL,path.dirname(WORK),path.dirname(ORIGINAL),HOME,'/workspace/work/ai-animation-01'])for(const name of ['LEASE','STOP'])insist(!fs.existsSync(path.join(dir,name)),`${name} exists at ${dir}`);}
+const rawFetch=globalThis.fetch, routes=[];
+globalThis.fetch=async(input,init={})=>{const url=new URL(typeof input==='string'?input:input.url),method=init.method??(typeof input==='object'?input.method:'GET')??'GET';insist(method==='GET'&&url.origin==='https://mokaair.com'&&!url.search&&['/api/video/reviews/ai-editable-explainer-animation','/api/video/reviews/ai-pdf-quotes-to-comparison','/api/video/speech/status'].includes(url.pathname),'Only the exact three nonpaid GET routes are allowed');routes.push(`GET ${url.pathname}`);return rawFetch(input,{...init,redirect:'error',signal:AbortSignal.timeout(30000)});};
+let lease,beforeRuntime,beforeSource,beforeInputs,beforeText,beforeCCMarker,result;
+try{
+  idle();
+  const guard=read(PREFIX+'-original-task.json');
+  insist(guard.owner==='codex-ai-video'&&guard.actual_task_blob==='0ecde69a42861d4f672a0be1105fb2b209829246'&&Date.now()-Date.parse(guard.latest_checkpoint)>7200000,'Original recent/changed owner guard differs');
+  insist(Date.now()-Date.parse(guard.observed_at_utc)>=0&&Date.now()-Date.parse(guard.observed_at_utc)<600000,'Actual original task read is stale/future');
+  const auto=read(path.join(WORK,'auto.json'));
+  insist(auto.status==='done'&&!auto.tidied_at&&auto.defer_count===3&&auto.deferred_until==='2026-10-26T22:03:11.200Z'&&Date.parse(auto.deferred_until)<Date.now(),'Real state3/due eligibility differs');
+  insist(same(auto.languages.pt,{shorten:0,retakes:0,reword:0,check_stopped:true})&&same(auto.languages.en,{shorten:1,retakes:2,reword:2,check_stopped:true})&&same(auto.languages.ja,{shorten:0,retakes:2,reword:2,check_stopped:true}),'Protected native language caps differ');
+  const journals=files(WORK).filter(f=>f.includes('/speech-journal/')),runDir=path.join(WORK,'run-receipts');
+  const unadopted=fs.readdirSync(runDir,{withFileTypes:true}).filter(e=>e.isFile()&&e.name.endsWith('.json')).map(e=>path.join(runDir,e.name)).filter(f=>!read(f).adopted);
+  const archive=path.join(runDir,'archive/4608ed31112bd4b764dbb2da5a5772730eb28d48b7f147edc2b4ae3b7c02e367-d6544532-e2db-4348-9b9d-2f3721dc888f.json');
+  insist(sha(archive)==='836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b'&&read(archive).receipt?.status==='succeeded'&&read(archive).owner_retry?.reason==='inputs changed; the saved run is terminal','Historical terminal writer archive differs');
+  insist(journals.length===0&&unadopted.length===0,'Current unknown/unadopted receipt must be reconciled, never resent');
+  const PRIMARY='346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f',qa=read(path.join(WORK,'review/qa.json'));
+  insist(sha(path.join(WORK,'final.mp4'))===PRIMARY&&qa.ok&&qa.final_sha256===PRIMARY&&qa.items?.length===11&&qa.items.every(r=>r.ok),'Exact primary with matching genuine11QA differs');
+  const wanted=Object.fromEntries(FOREIGN.map(l=>[l,{metadata:true,captions:true,dub:true}])),choice=read(path.join(WORK,'languages.json')),auth=read(path.join(HOME,'local-language-authorization.json'));
+  insist(same(choice.locales,wanted)&&auth.source==='user-chat-authorization'&&auth.final_sha256===PRIMARY&&same(auth.locales,wanted)&&auth.local_choice_recorded_at===choice.decided_at&&auth.plan_sha256===sha(path.join(DOC,'production-plan.json')),'Exact local chat8 choice/receipt is not current');
+  const source=sha(path.join(DOC,'video.json'));
+  insist(source==='eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04','Chinese source differs');
+  const indices=FOREIGN.map(locale=>{const f=path.join(DOC,'research/translation-reviews',locale+'.meaning-review.json'),i=read(f),report=path.resolve(DOC,i.report_file??''),translation=sha(path.join(DOC,'i18n',locale+'.json'));insist(i.schema_version===1&&i.passed&&i.scope==='source-meaning-and-naturalness'&&i.source_video_sha256===source&&i.translation_sha256===translation&&report.startsWith(DOC+path.sep)&&sha(report)===i.report_sha256,`${locale} real current meaning chain differs`);for(const b of files(path.join(HOME,'author-review-boundaries')).filter(b=>new RegExp(`^${locale}\\.(shorten|reword)\\.round-[12]\\..+\\.json$`).test(path.basename(b))))insist((i.reviewed_boundaries??[]).some(r=>r.file===path.relative(HOME,b)&&r.sha256===sha(b)),`${locale} actual native boundary unreviewed`);return{locale,translation_sha256:translation,index_sha256:sha(f),report_sha256:i.report_sha256};});
+  const reportFile=path.join(DOC,'research/translation-reviews/baseline-preflights/pt-exact-current-full-independent-review-20261026T2140Z.json'),ptReport=read(reportFile),ptBaseline=path.join(DOC,'research/translation-reviews/baseline-preflights/pt-exact-current-baseline-20261026T2140Z.json');
+  insist(sha(reportFile)==='4b64e8399bf89c0d15cae25bbaf31cf00e08aa538a42d73376f1c2dea0a0d215'&&ptReport.passed&&ptReport.source_video_sha256===source&&ptReport.translation_sha256===indices.find(r=>r.locale==='pt').translation_sha256&&sha(ptBaseline)===ptReport.baseline_sha256&&ptReport.coverage.all101_source_target_spoken_pairs_personally_semantically_read&&ptReport.coverage.all62_full_card_contexts_personally_semantically_read,'Genuine prior PT full written-source review is not current');
+  const ccOutcome=read(path.join(CC,'actual-outcome.json')),ccManifest=read(path.join(WORK,'captions/manifest.json'));
+  insist(sha(path.join(CC,'actual-outcome.json'))==='0a11723242670635682a5fc7fb4019a6752c34db1e2ac18cb0845125f63654cc'&&ccOutcome.ok&&ccOutcome.caption_component.ok&&ccOutcome.caption_component.warnings.length===31&&same(ccOutcome.actual_checked_foreign_voices,['ko','es']),'Actual9CC proof differs');
+  insist(same(Object.keys(ccManifest.locales).sort(),['zh-TW',...FOREIGN].sort())&&Object.values(ccManifest.locales).reduce((n,r)=>n+r.cues,0)===1002&&Object.values(ccManifest.locales).reduce((n,r)=>n+r.problems.length,0)===31,'Actual9CC manifest/31warnings differs');
+  const textManifest=read(path.join(TEXT,'text-delivery-manifest.json'));
+  insist(sha(path.join(TEXT,'text-delivery-manifest.json'))==='399c80524327e3f1bbbd0422dcd8181973402bd321a20437b5bba6f50bb60220'&&textManifest.ok&&Object.keys(textManifest.content_files).length===28&&Object.entries(textManifest.content_files).every(([f,r])=>sha(path.join(TEXT,f))===r.sha256&&fs.statSync(path.join(TEXT,f)).size===r.bytes),'Immutable actual28-file text envelope differs');
+  beforeRuntime=snapshot(WORK,['LEASE']);beforeSource=snapshot(DOC);beforeInputs=Object.fromEntries(INPUTS.map(f=>[f,sha(path.join(ROOT,f))]));beforeText=snapshot(TEXT);beforeCCMarker=sha(path.join(CC,'ONE_USE.json'));
+  insist(Object.keys(beforeRuntime).length===2350&&same(beforeRuntime,read(path.join(CC,'after-final-audit.json')).runtime_files),'Current2350runtime differs from completed9CC checkpoint');
+  save('-before-free.json',{observed_at_utc:new Date().toISOString(),runtime_files:beforeRuntime,movie_source_files:beforeSource,core_and_shared_inputs:beforeInputs,text_delivery_files:beforeText,consumed_CC_ONE_USE_sha256:beforeCCMarker,native_auto:auto,current_meaning_indices:indices,original_task_guard_sha256:sha(PREFIX+'-original-task.json')});
+  lease=acquireProjectLease(WORK,{owner:'codex-ai-video-pdf-state3-free-preflight'});lease.verify();
+  const api=siteClient({attempts:1}),orig=await api.project('ai-editable-explainer-animation'),pdf=await api.project(SLUG);
+  const oldFinal=orig?.reviews?.find(r=>r.gate==='final'&&(r.subject??null)===null),final=pdf?.reviews?.find(r=>r.gate==='final'&&(r.subject??null)===null);
+  insist(orig&&!orig.dropped_at&&oldFinal?.status==='approved'&&oldFinal.content_sha256==='ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521'&&same(orig.dub_retries??{},{})&&orig.worker_state==='unavailable','Original real project/final/retry state changed');
+  insist(pdf&&!pdf.dropped_at&&final?.status==='approved'&&final.content_sha256===PRIMARY&&same(pdf.dub_retries??{},{}),'PDF current real primary approval/retry state differs');
+  insist((pdf.locales_decided_at==null&&Object.keys(pdf.locales??{}).length===0)||same(pdf.locales,wanted),'Different real owner locale choice exists');
+  let log='';const capture={write:s=>{log+=s;return true;}};
+  const exit=await main(['dub','--slug',SLUG,'--locale','pt','--dry-run'],{root:ROOT,env:{...process.env,VIDEO_WORKDIR:path.join(HOME,'media')},stdout:capture,stderr:capture});
+  fs.writeFileSync(PREFIX+'-dry-run.log',log,{flag:'wx'});
+  const req=log.match(/pt: (\d+) requests, (\d+) to synthesize; about (\d+) billable characters now/),remaining=log.match(/(\d+) characters left this month/),over=log.match(/(\d+) would not fit even at/);
+  insist(exit===EXIT.ok&&req&&remaining&&over&&Number(req[2])===95&&Number(req[3])===6112&&Number(remaining[1])>=Number(req[3])&&log.includes('Gemini ready')&&!log.includes('lines have no current translation'),'Actual current PT dryrun/quota failed; preserve its output');
+  lease.verify();
+  insist(same(beforeRuntime,snapshot(WORK,['LEASE']))&&same(beforeSource,snapshot(DOC))&&same(beforeInputs,Object.fromEntries(INPUTS.map(f=>[f,sha(path.join(ROOT,f))])))&&same(beforeText,snapshot(TEXT))&&beforeCCMarker===sha(path.join(CC,'ONE_USE.json')),'Canonical/source/core/text/control changed during free preflight');
+  result={observed_at_utc:new Date().toISOString(),kind:'one-fresh-user-nonpaid-PT-state3-preflight-after-actual9CC',routes,original_final:{id:oldFinal.id,status:oldFinal.status,sha256:oldFinal.content_sha256},original_retries:orig.dub_retries??{},original_worker_state:orig.worker_state,original_local_controller_LEASE_STOP_absent:true,PDF_final:{id:final.id,status:final.status,sha256:final.content_sha256},matching_QA11:true,PDF_retries:pdf.dub_retries??{},PDF_locales_decided_at:pdf.locales_decided_at??null,actual_dry_run_exit:exit,estimated_new_requests:Number(req[2]),estimated_billable_characters:Number(req[3]),monthly_characters_remaining_at_read:Number(remaining[1]),estimated_over_windows_preserved:Number(over[1]),Gemini_configured_ready_not_synthesis_availability:true,no_fit_or_billing_inference:true,canonical_runtime_files_exact:Object.keys(beforeRuntime).length,whole_movie_source_files_exact:Object.keys(beforeSource).length,production_sources9_exact:true,current_meaning_indices:indices,shared_core_and_lexicon_inputs_exact:INPUTS.length,nine_CC1002cues31warnings_preserved:true,text_delivery28files_and_manifest_exact:true,CC_ONE_USE_preserved:true,native_auto_defer_caps_exact:true,native_defer_count:auto.defer_count,native_due:auto.deferred_until,PT_native_rounds:auto.languages.pt,live_speech_journals:journals.length,current_unadopted_model_receipts:unadopted.length,archived_terminal_first_writer_sha256:sha(archive),actual_prior_PT_full_review_sha256:sha(reportFile),historical_state2_false_archive_failure_preserved:'/workspace/work/ai-pdf-01/pt-fresh-user-defer2-20261026T2138Z-free-preflight-failure.json',native_current_run_scan_top_level:true,dry_run_log_sha256:sha(PREFIX+'-dry-run.log'),helper_sha256:sha(PREFIX+'-free-preflight.mjs'),no_paid_or_owner_operation:true,source_task_Git_not_written:true};
+  save('-free-preflight.json',result);
+}catch(error){save('-free-preflight-failure.json',{recorded_at_utc:new Date().toISOString(),message:error.message,no_paid_or_owner_operation:true,source_task_Git_not_written:true});console.error(error.message);process.exitCode=1;}
+finally{
+  try{lease?.release();}finally{globalThis.fetch=rawFetch;}
+  if(beforeRuntime){const protections={runtime_exact:same(beforeRuntime,snapshot(WORK,['LEASE'])),movie_source_exact:same(beforeSource,snapshot(DOC)),shared_core_exact:same(beforeInputs,Object.fromEntries(INPUTS.map(f=>[f,sha(path.join(ROOT,f))]))),text_delivery_exact:same(beforeText,snapshot(TEXT)),CC_ONE_USE_exact:beforeCCMarker===sha(path.join(CC,'ONE_USE.json')),LEASE_STOP_absent:!fs.existsSync(path.join(WORK,'LEASE'))&&!fs.existsSync(path.join(WORK,'STOP'))};save('-released-free-preflight.json',{observed_at_utc:new Date().toISOString(),protections,no_paid_or_owner_operation:true,source_task_Git_not_written:true});if(!Object.values(protections).every(Boolean))process.exitCode=1;}
+}
+if(result)console.log(JSON.stringify({prefix:PREFIX,...result},null,2));
