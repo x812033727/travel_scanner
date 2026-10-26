@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: in-progress
+status: blocked
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
@@ -39,6 +39,16 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Qualified PT unit genuinely re-deferred; finite queue stopped at count2 — 2026-10-26T20:58Z
+
+- Root explicitly activated the new07851c77 grant after genuinely pushingcc80765; the coordinator read/acknowledged its full inherited d5f safeguards. The ordinary same-owner task reactivation was eligibility for one bounded attempt, not provider health or billing clearance. Old first-failure/stop4d02 and free-preflight204315 files remain immutable. Native PT0/0/0/stopped anddefer1/due20:34:07 were not reset before the qualified unit.
+- The ONE actual new normal PT unit started20:54:13.740Z and genuinely ended20:55:03.652574Z, exit4, with the same literal Gemini busy/usage message. Driver168427/native168429/session60085 have ended andreleasedLEASE/STOP. It produced0WAV/0ASR/no fit/track, no shortening/reword boundary orsource change. Native naturally advanced **defer_count1→2**, newactualdue **2026-10-26T21:05:02.168Z**, withPT0/0/0/check_stoppedtrue intact. This is another real GLOBAL BACKOFF stop: no automatic due-time resume and noID/VI/TH workaround orpaid unit was started. No HTTP/provider code or0billing is inferred from the genericmessage or0output; actual journal/model receipt scans remainempty, without deletion orreplay.
+- Fresh originalbranch read20:52:10 genuinely stillfoundblob0ec/latest17:03:40 (over2hours), andactual original/PDF/Whisper controller/LEASE/STOP checks were clear. Native SDK GET20:52 confirmed originaloldapprovedfinal/retries{}/workerunavailable andPDF primary934608a8/346aapproved withmatching11QA. Exact8current meaning/source/report bindings andcurrentPT3f74/f7index/d143chain/newfff101-pair review matched. New actual native dryrun0 again observed95pendingrequests/6112estimatedchars,5,743,457remaining and14estimatedover warnings, with2334runtime files byte-exact. These free estimates did not predict orwaive the subsequent real busy response.
+- Before that actualunit, a distinct205007Z wrapper failed at Node module parsing because Python converted a quotedJS newline escape. It failed BEFORE any native lease/videoGET/dryrun/TTS/ASR/model; its separate already-read GitHub taskguard and exacterror receipt are retained. The wrapper was corrected to a direct quoted Node heredoc under the SAME qualifiedGO, preserving allnative gates/source/caps; no paidrequest was replayed. Actualnew prefix `/workspace/work/ai-pdf-01/pt-qualified-resume-20261026T205210Z` is distinct and keeps originaltaskguard, truequalifiedpreflight, admission/before/start/log/progress/outcome/post-audit. The oldfailure directory/markers were neither overwritten nor deleted.
+- Actualoutcome SHA `756ca6c0ff2d2df6344bea1170c0cb53c635ad9631efe83396373447f3348b8f`; post-defer auditSHA `0aae93ab2fa5d108ee27cf324b98ba6372dbbd08992a4c68fedc7c217bf29358`. Source-identical JSONs and byte-preserving native/dryrun logs are inresearch/language-checkpoints. New end marker `/workspace/work/ai-pdf-01/finite-controller-stop-after-PT-qualified-defer2-20261026.json` andsourcecopy recordthissecond finite stop. Oldhistory4d02/07851/d5f remains true; no continuouslylive OScontroller or scheduledresume is claimed.
+- Allapprovedprimary/body/branding, EN/JA failedraw/checks/caps, currentKO+ES tracks/raw/flags, eightcheckedthumbnails/framesmanifest andall9source files remain byte-exact. The genuine native/source/raw/check/fit audit still computes **KO+ES2/8 checked voices**; EN3flags/JA1flag remainstopped despitephysicaltracks, PT/ID/VI/THaremissing. No newCCcommand, full8package/push, owner/Studio/upload/publication, originalfilm write ornewmovie occurred. This transientproviderresponse addsno new userpermission/connection question.
+- Next precise step belongs to a fresh authorized execution after saved21:05:02.168Zdue: verify original recent-owner/actualcontroller/lease/retries; verifyPDFnativeidle/unknown/globalstate/currentPTmeaning/primary11QA/choice/quota, then ONLYnormalcachedPT through unchanged `/workspace/work/ai-pdf-01/languages.mjs --execute dub-reviewed pt` withtheexistingcompatibleASR environment. Preservedefer2/caps/receipts; do notforget/replayunknowns, resetstate, changemodels/aliases/thresholds orcall merelytoterminalize. The reactivatedfinitequeue hasstoppednow; no autonomous nextunit fromthischeckpoint. EN/JAordinaryretry/owner/publish/newmovie remainoutside scope.
 
 ### Fresh qualified PT continuation after preserved service due — 2026-10-26T20:46Z
 

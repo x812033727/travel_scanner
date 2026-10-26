@@ -1,0 +1,194 @@
+{
+  "recorded_at_utc": "2026-10-26T20:57:40.368Z",
+  "kind": "actual-second-PT-service-defer-and-reactivated-finite-queue-stop",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "actual_native_exit": 4,
+  "real_ended_at_utc": "2026-10-26T20:55:03.652574+00:00",
+  "native_PID": 168429,
+  "driver_PID": 168427,
+  "LEASE_STOP_absent": true,
+  "PT_WAVs": 0,
+  "PT_ASR": 0,
+  "PT_fit_or_track_present": false,
+  "PT_native_rounds": {
+    "shorten": 0,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "previous_defer_count": 1,
+  "new_defer_count": 2,
+  "previous_due": "2026-10-26T20:34:07.630Z",
+  "new_due": "2026-10-26T21:05:02.168Z",
+  "due_elapsed_at_audit": false,
+  "provider_message": "Gemini 語音暫時忙碌或達到用量上限，請稍後重試",
+  "actual_HTTP_code_or_zero_billing_inferred": false,
+  "current_journal_files": 0,
+  "current_unadopted_durable_model_receipts": 0,
+  "all_source_files_byte_exact": true,
+  "all_primary_EN_JA_KO_ES_raw_checks_caps_thumbnails_protected": true,
+  "true_checked_voice_locales": [
+    "ko",
+    "es"
+  ],
+  "voice_locale_rows": [
+    {
+      "locale": "en",
+      "translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "meaning_index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "en.m4a"
+      },
+      "native_rounds": {
+        "shorten": 1,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "flags": [
+        "hg9m",
+        "fd27",
+        "znv7"
+      ],
+      "matching_current_raw_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ja",
+      "translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "meaning_index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "ja.m4a"
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "flags": [
+        "fd27"
+      ],
+      "matching_current_raw_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ko",
+      "translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "meaning_index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "ko.m4a"
+      },
+      "native_rounds": null,
+      "flags": [],
+      "matching_current_raw_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "meaning_index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "es.m4a"
+      },
+      "native_rounds": null,
+      "flags": [],
+      "matching_current_raw_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "pt",
+      "translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "meaning_index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 0,
+        "reword": 0,
+        "check_stopped": true
+      },
+      "flags": null,
+      "matching_current_raw_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "id",
+      "translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "meaning_index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "matching_current_raw_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "vi",
+      "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "meaning_index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "matching_current_raw_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "th",
+      "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "meaning_index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "matching_current_raw_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    }
+  ],
+  "finite_queue_stopped": true,
+  "automatic_next_unit_or_due_resume_created": false,
+  "ID_VI_TH_paid_units_started": false,
+  "ordinary_EN_JA_retry_original_owner_or_publication_actions": false,
+  "original_task_before_paid": {
+    "observed_at_utc": "2026-10-26T20:52:10Z",
+    "actual_task_blob": "0ecde69a42861d4f672a0be1105fb2b209829246",
+    "owner": "codex-ai-video",
+    "ref": "codex/ai-editable-animation-20261025",
+    "latest_checkpoint": "2026-10-26T17:03:40.579560+00:00",
+    "checkpoint_age_seconds": 13709.421,
+    "under_two_hours": false,
+    "purpose": "Fresh original-source protection check for the one root-GO_REACTIVATE PT attempt; no original action or paid authorization by this file."
+  },
+  "prior_wrapper_parse_failure": {
+    "recorded_at_utc": "2026-10-26T20:51:23.447828+00:00",
+    "actual_exit": 1,
+    "stderr": "PDF_final:{id:fr.id,status:fr.status,content_sha256:fr.content_sha256},matching_QA11:true,PDF_locales_decided_at:p.locales_decided_at,PDF_retries:p.dub_retries,actual_dry_run_exit:res.status,estimated_new_requests:Number(m[2]),estimated_billable_characters:Number(m[3]),monthly_characters_remaining_at_read:Number(rm[1]),Gemini_configured_not_availability:true,estimated_over_windows:Number(fit[4]),project_runtime_byte_exact:true,protected_project_file_count:Object.keys(before).length,native_auto_defer_caps_unchanged:true,no_paid_operation_performed_in_preflight:true,source_task_not_written:true};fs.writeFileSync(prefix+'-qualified-preflight.json',JSON.stringify(r,null,2)+'\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \n\nSyntaxError: Invalid or unexpected token\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\n    at ModuleLoader.createModuleWrap (node:internal/modules/esm/loader:210:12)\n    at ModuleLoader.eval (node:internal/modules/esm/loader:248:23)\n    at node:internal/process/execution:77:24\n    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:11)\n    at Object.runEntryPointWithESMLoader (node:internal/modules/run_main:123:19)\n    at evalModuleEntryPoint (node:internal/process/execution:76:47)\n    at node:internal/main/eval_stdin:34:5\n    at Socket.<anonymous> (node:internal/process/execution:205:5)\n    at Socket.emit (node:events:521:24)\n\nNode.js v24.19.0\n",
+    "paid_unit_started": false
+  },
+  "prior_wrapper_parse_failure_was_before_any_native_lease_GET_dryrun_or_paid_request": true,
+  "reactivation_grant_sha256": "07851c77a2fa0c96a91405885a7ab97b544414b89bdd8ee110e5374fea4e7697",
+  "old_first_stop_marker_sha256": "4d02c4099e1d294118bbe4e5b5ad5bb0e8596776c236e27731d3f27f1ce6fc2a",
+  "actual_outcome_sha256": "756ca6c0ff2d2df6344bea1170c0cb53c635ad9631efe83396373447f3348b8f",
+  "next": "Stop now per GO_REACTIVATE. Preserve actual defer2/due/PT0-0-0 and exact receipts. No timer retry, ID/VI/TH workaround, reset or billing inference. A fresh authorized execution after due must recheck all original/PDF/current-source/primary11QA/budget/unknown gates before a normal cached PT attempt; exhausted EN/JA and owner/publish/new-movie remain outside scope."
+}
