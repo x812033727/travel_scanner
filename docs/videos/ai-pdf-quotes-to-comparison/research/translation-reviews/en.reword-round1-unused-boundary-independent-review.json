@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "scope": "source-meaning-and-naturalness",
+  "review_target": "Unchanged current English source text and an independently read, entirely unused reword1 answer boundary. No rejected proposal is being accepted or adopted.",
+  "locale": "en",
+  "reviewer": {
+    "agent_id": "/root/pdf_author_ko_th",
+    "role": "Original independent English source-text reviewer; not native producer or proposal author",
+    "method": "Actually read all four raw proposals alongside their Chinese source lines, current English and scene data; independently counted their code points and verified every native drop reason. Verified exact whole-file identity with the accepted pre-reword English candidate and read the actual flags and per-English native state."
+  },
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "source_video": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+  },
+  "current_translation": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+    "sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc"
+  },
+  "boundary": {
+    "path": "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.round-1.2026-10-26T13-15-02-577Z.json",
+    "sha256": "6630883c923d5808794642c5166baed338ef48ff7c9231200f93d2628ddedcf7"
+  },
+  "raw_native_answer": {
+    "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-reword-round-1-meaning-review-2026-10-26T13-15-02-576Z.txt",
+    "sha256": "b1103757a32ed6b6192ecc7700f67838ec8d084d19ad4b2f0e353f4293c1de64"
+  },
+  "reviewed_boundaries": [
+    {
+      "file": "author-review-boundaries/en.shorten.round-1.2026-10-26T12-47-12-330Z.json",
+      "sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452"
+    },
+    {
+      "file": "author-review-boundaries/en.reword.round-1.2026-10-26T13-15-02-577Z.json",
+      "sha256": "6630883c923d5808794642c5166baed338ef48ff7c9231200f93d2628ddedcf7"
+    }
+  ],
+  "previous_current_text_review": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-corrected-independent-meaning-review.json",
+    "sha256": "5e8d75b5055bc298b7d0e93b852de910591ef937dd84a332388b5d1b3d2c8176",
+    "passed": true,
+    "same_source_and_translation_hashes": true
+  },
+  "whole_file_no_adoption_proof": {
+    "pre_reword_accepted_translation_copy": "/workspace/work/ai-pdf-01/en-shorten1-author-correction.json",
+    "pre_reword_accepted_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+    "current_bytes_exactly_equal_pre_reword_accepted_bytes": true,
+    "current_line_count": 101,
+    "unchanged_current_line_count": 101,
+    "changed_current_line_ids": [],
+    "all_metadata_and_source_hashes_exact": true,
+    "native_accepted_ids": [],
+    "native_accepted_proposal_count": 0,
+    "rejected_proposal_count": 4,
+    "proposal_text_matches_current_line_ids": []
+  },
+  "lines_reviewed": 4,
+  "unused_proposal_reviews": [
+    {
+      "id": "hg9m",
+      "chinese_source_read": "但空白的運費，能不能直接當成免費？",
+      "scene_context_read": {
+        "key": "待確認不能偷偷變成零",
+        "text": "運費空白，算免費？"
+      },
+      "current_unchanged_text_read": "But can blank shipping just mean free delivery?",
+      "unused_proposal_text_read": "But if the shipping field is left empty, does that really mean it's free?",
+      "proposal_source_meaning_and_naturalness_observation": "The proposal remains a question about whether an empty shipping field can mean free delivery. It does not assert that unknown freight is free. Natural wording; no source-meaning issue found in this unused proposal.",
+      "proposal_source_meaning_or_naturalness_issues_found": [],
+      "native_accepted": false,
+      "proposal_present_in_current_line": false,
+      "proposal_adoption_approved_by_this_report": false,
+      "drop": {
+        "native_drop_reason_verbatim": "hg9m: over its budget (73 characters, at most 58)",
+        "actual_codepoints": 73,
+        "native_max_chars": 58,
+        "over_by": 15
+      }
+    },
+    {
+      "id": "fd27",
+      "chinese_source_read": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "scene_context_read": {
+        "columns": [
+          "欄位",
+          "值",
+          "出處"
+        ],
+        "key": "一張報價的條件跨了兩頁",
+        "rows": [
+          [
+            "單價",
+            "180，未稅",
+            "aster.pdf 第1頁"
+          ],
+          [
+            "商品稅",
+            "5%",
+            "aster.pdf 第1頁"
+          ],
+          [
+            "運費",
+            "200，未稅",
+            "aster.pdf 第2頁"
+          ]
+        ],
+        "source": "原創練習｜aster.pdf 第1–2頁",
+        "title": "甲的單價可以追到哪裡？"
+      },
+      "current_unchanged_text_read": "Join Aster's unit price and shipping from two pages in one row, each sourced.",
+      "unused_proposal_text_read": "Aster's unit price and shipping sit on two separate pages, so the table joins them in one row, each with its own source.",
+      "proposal_source_meaning_and_naturalness_observation": "The proposal preserves Aster, unit price/shipping on two separate pages, joining them in one row and keeping a separate source for each field. Natural wording; no new condition or claim was added.",
+      "proposal_source_meaning_or_naturalness_issues_found": [],
+      "native_accepted": false,
+      "proposal_present_in_current_line": false,
+      "proposal_adoption_approved_by_this_report": false,
+      "drop": {
+        "native_drop_reason_verbatim": "fd27: over its budget (120 characters, at most 93)",
+        "actual_codepoints": 120,
+        "native_max_chars": 93,
+        "over_by": 27
+      }
+    },
+    {
+      "id": "znv7",
+      "chinese_source_read": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "scene_context_read": {
+        "caption": "birch.pdf 第1–2頁｜本練習明示條件",
+        "code": "含稅商品：10 × 205 = 2,050\n送貨費用：0\n送達總價：2,050\n不再重複加一次商品稅",
+        "key": "已含稅的那一欄，別再加一次",
+        "title": "乙的單價已經含稅"
+      },
+      "current_unchanged_text_read": "Birch's tax-inclusive unit price times quantity gives goods cost.",
+      "unused_proposal_text_read": "Birch's unit price already includes goods tax, so multiplying by quantity gives the goods amount.",
+      "proposal_source_meaning_and_naturalness_observation": "The proposal explicitly retains that Birch unit price already includes goods tax and that multiplying by quantity gives the goods amount. It does not add goods tax a second time. Natural and faithful as unused text.",
+      "proposal_source_meaning_or_naturalness_issues_found": [],
+      "native_accepted": false,
+      "proposal_present_in_current_line": false,
+      "proposal_adoption_approved_by_this_report": false,
+      "drop": {
+        "native_drop_reason_verbatim": "znv7: over its budget (97 characters, at most 77)",
+        "actual_codepoints": 97,
+        "native_max_chars": 77,
+        "over_by": 20
+      }
+    },
+    {
+      "id": "xevg",
+      "chinese_source_read": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+      "scene_context_read": {
+        "caption": "aster.pdf 第1–2頁｜實際計算",
+        "code": "商品含稅：20 × 180 × 1.05 = 3,780\n運費含稅：200 × 1.05 = 210\n送達總價：3,990",
+        "key": "固定運費只算一筆",
+        "title": "甲的二十張總價"
+      },
+      "current_unchanged_text_read": "Aster's goods cost rises with quantity; shipping stays a single charge.",
+      "unused_proposal_text_read": "Aster's goods amount grows with quantity, but the shipping is still that one charge.",
+      "proposal_source_meaning_and_naturalness_observation": "The proposal preserves that Aster goods cost grows with quantity while shipping remains one fixed charge in this applicable-range scenario. It does not double shipping or remove the stated shipping condition. Natural wording.",
+      "proposal_source_meaning_or_naturalness_issues_found": [],
+      "native_accepted": false,
+      "proposal_present_in_current_line": false,
+      "proposal_adoption_approved_by_this_report": false,
+      "drop": {
+        "native_drop_reason_verbatim": "xevg: over its budget (84 characters, at most 82)",
+        "actual_codepoints": 84,
+        "native_max_chars": 82,
+        "over_by": 2
+      }
+    }
+  ],
+  "native_drop_reasons": [
+    "hg9m: over its budget (73 characters, at most 58)",
+    "fd27: over its budget (120 characters, at most 93)",
+    "znv7: over its budget (97 characters, at most 77)",
+    "xevg: over its budget (84 characters, at most 82)"
+  ],
+  "current_translation_meaning_pass_retained": true,
+  "remaining_current_source_meaning_or_naturalness_issues": [],
+  "passed": true,
+  "passed_scope": "The actual current translation remains byte-identical to its previously independently accepted source-text version, and this actual unused boundary/raw answer has now been read. It is not acceptance of any rejected proposal, an override of native character rejection, an audio pass or retry authorization.",
+  "proposal_adoption_approved": false,
+  "native_state_read": {
+    "auto_json_path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+    "auto_json_sha256": "229c18cbbc66f62e60f14c5db7f8ade35bdef2ceb2190873653437a3837894c5",
+    "english_state": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "state_matches_actual_boundary": true,
+    "caps_and_counters_untouched": true
+  },
+  "voice_flags": {
+    "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check-flags.en.json",
+    "sha256": "e10ecb27f97f9957b92d00d194a49f21d7d08d81c805676c4c54417527f914e8",
+    "unresolved_ids": [
+      "hg9m",
+      "fd27",
+      "znv7",
+      "xevg"
+    ],
+    "unresolved_count": 4,
+    "existing_native_notes_read": {
+      "hg9m": "Jev 0.10: heard 「But can't blank shipping just mean free delivery?」",
+      "fd27": "Jev 0.04: heard 「Join a store's unit price and shipping from two pages in one row, each sourced.」",
+      "znv7": "Jev 0.03: heard 「Purchase tax-inclusive unit price times quantity gives goods cost.」",
+      "xevg": "Jev 0.05: heard 「As their goods cost rises with quantity, shipping stays a single charge.」"
+    },
+    "resolved_by_this_source_review": false,
+    "note": "These are existing native TTS/ASR flags; their receipts were read, not replaced by new listening, ASR or reviewer voice approval."
+  },
+  "audio_scope": {
+    "audio_approved": false,
+    "audio_fit_approved": false,
+    "new_tts_or_asr_performed_by_reviewer": false,
+    "audio_listened_by_reviewer": false,
+    "flags_remain_unresolved": true
+  },
+  "mutations": "Only this external report and helper were written. Canonical/source text, auto/caps/counters, raw answers, boundaries, index, reviewed_boundaries and native artifacts were not edited. No paid, native, TTS, ASR or network operation was performed.",
+  "next_action_limit": "Root may record that the actual answer boundary was read while leaving all four proposals unused. This report provides no authorization to adopt rejected text, manually bypass native limits, restart stopped checks, run another retake/reword, approve voice, publish or perform owner actions."
+}
