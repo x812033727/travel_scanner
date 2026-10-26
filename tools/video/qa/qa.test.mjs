@@ -277,6 +277,25 @@ test("a blank channel stance and a failed verdict are failed items, exit 1", asy
   assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
 });
 
+test("a film whose site books each Jev request once keeps the last answer: a second send refused as reused repeats it, another request does not", async () => {
+  const { box, workdir } = finishedVideo();
+  const qaFile = path.join(workdir, "review", "qa.json");
+  const note = "Jev：符合立場 0.55、有示範：不適用（解說）、建議 0.01、業配 0.09；沒過（符合立場低於 0.6）";
+  const judged = site({ policy: () => Response.json({ stance: 0.55, demo: null, advice: 0.01, sponsored: 0.09, passed: false, note }) });
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, judged.fetchImpl).ctx), EXIT.lint);
+  const kept = readReport(workdir).policy_judged;
+  assert.deepEqual(kept, { request_sha256: sha(judgeCalls(judged)[0].init.body), ok: false, detail: note });
+  // The pilot ledger refuses the same request again (apps/api/app/video_automation/admin_api.py).
+  const reused = site({ policy: () => Response.json({ code: "video_budget_operation_reused", detail: "同一份 Jev 請求已有收據，不能重複送出" }, { status: 409 }) });
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint, "review-push can post the cut");
+  assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
+  assert.deepEqual(readReport(workdir).policy_judged, kept);
+  // A kept answer for another narration or viewpoint is not this request's verdict.
+  writeFileSync(qaFile, JSON.stringify({ ...readReport(workdir), policy_judged: { ...kept, request_sha256: "0".repeat(64) } }));
+  assert.notEqual(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint);
+  assert.match(readReport(workdir).items.find((item) => item.id === "policy").detail, /^the judge call failed: /);
+});
+
 const fetchFailed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
 const judgeCalls = (server) => server.calls.filter((call) => call.url.endsWith("/judge/policy"));
 const lastLine = (out) => out.stdout.trimEnd().split("\n").at(-1);
@@ -376,7 +395,8 @@ test("a lost policy answer is kept in qa.json and held: the same narration is no
   const released = context(box, passing.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], released.ctx), EXIT.ok, released.out.stdout);
   assert.equal(judgeCalls(passing).length, 1);
-  assert.deepEqual(Object.keys(readReport(workdir)), ["ok", "final_sha256", "items"]);
+  // The hold is gone; the answer is kept for a site that will not take the same request twice.
+  assert.deepEqual(Object.keys(readReport(workdir)), ["ok", "final_sha256", "items", "policy_judged"]);
 });
 
 test("a held policy loss gives way to a different request: asked once, and the old record is dropped or replaced", async () => {
