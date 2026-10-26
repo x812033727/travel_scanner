@@ -1,0 +1,30 @@
+{
+  "started_at_utc": "2026-10-26T19:53:39.067765+00:00",
+  "driver_pid": 165423,
+  "native_pid": 165425,
+  "command": "node --use-env-proxy /workspace/work/ai-pdf-01/languages.mjs --execute dub-reviewed es",
+  "log": "/workspace/work/ai-pdf-01/es-first-unit-20261026T195236Z.log",
+  "one_unit_only": true,
+  "remote_preflight": {
+    "observed_at_utc": "2026-10-26T19:52:38.758Z",
+    "routes": [
+      "GET /api/video/reviews/ai-pdf-quotes-to-comparison"
+    ],
+    "slug": "ai-pdf-quotes-to-comparison",
+    "final_review": {
+      "id": "934608a8-fdce-4e4c-9105-43fdd3e7f1ac",
+      "status": "approved",
+      "content_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f"
+    },
+    "qa_items": 11,
+    "locales_decided_at": null,
+    "dub_retries": {},
+    "youtube_video_id": null
+  },
+  "dry_run_summary": {
+    "estimated_new_requests": 95,
+    "estimated_billable_characters_now": 6407,
+    "monthly_characters_remaining_at_read": 5767612,
+    "estimated_over_windows": 5
+  }
+}

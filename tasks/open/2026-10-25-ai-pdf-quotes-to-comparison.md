@@ -5,7 +5,7 @@ status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T19:14:40Z
+claimed_at: 2026-10-26T20:17:48Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -39,6 +39,14 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Actual ES voice passed; finite controller owns only the remaining queue — 2026-10-26T20:19Z
+
+- Root's finite handoff was genuinely activated after commit/push9f9b911f and explicitGO_HANDOFF; the coordinator `/root/pdf_ko_single_producer` read/acknowledged the full d5f273... grant. Root is quiescent. This coordinator is the sole PDF source/task/Git writer at actual ended/lease-free boundaries; it does not claim a continuously live OS process between stages. The original animation source/media/unknown/skips/failed Thai/bookends and EN/JA ordinary retries remain outside this delegation.
+- The SAME initial ES unit truly ended2026-10-26T20:14:58.154624Z, exit0; driver165423/native165425/session20613 have ended and releasedLEASE/STOP. No restart or duplicate paid unit was used. Real initial95requests/6407billable chars produced101WAVs; first actual62-windowfit over[] differed from the5 estimatedover warnings, which remain preserved. Actual initial check had3flags; ONE native normal retake synthesized onlycxxm/m57n/z8x8 (164billable chars), and the final101current-raw checks/3secondary records haveflags[]/unchecked0. The native success log and stage history preserve1retake/0shorten/0reword; success naturally removed its rounds entry, no manual reset or model rewrite occurred.
+- Current ES track `/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/es.m4a` is truly554.500seconds/13,538,604bytes/SHA `1d06fd65548423013ad69195b8f5616d77ae703763f8458d71f587ca602898f6`; native statuscurrent, matching fit/timeline/source/speech fingerprints, no kept lines. SourceES78503f20 and Chineseeac889 remain exact with their genuine current meaning chain and fresh independent101-pair/62-card report971dd734; no new model boundary exists. This is native voice QA evidence, not a new manual full-track listening claim or complete eight-language package.
+- Exact external prefix `/workspace/work/ai-pdf-01/es-first-unit-20261026T195236Z` holds actual admission/before/GET/dry-run/start/log/progress/first-fit/outcome. Outcome SHA `64036e05c7687fad45aa8008551b6d6378085b9b6009a77b027af1203db88326`, post-success audit SHA `f06113ff7fcfd844e7edb6335a6f33b13d16bf022b8b77deeed62ef0b0b0caa5`. Source copies and byte-preserving actual logs are underresearch/language-checkpoints. Approved primary/body/branding, EN/JA failed checks/raw/caps, current KO proof/audio/raw, eight visually checked thumbnails/framesmanifest and all9source files stayed byte-exact. Nothing was uploaded or published.
+- Real checked foreign voices are nowKO andES (2/8); EN3flags/1-2-2 andJA1flag/0-2-2 remain stopped, PT/ID/VI/TH have not begun paid voice production. Independent exact-current source baselines for those four are being read outside repo while this safe source checkpoint is saved; they are not voice passes. Next: before EACH new paid unit re-read actual PR1852 branch task/freshness plus originalcontroller/LEASE/STOP/production retry state, then real PDF idle/current/approvedprimary+11QA/currentmeaning/authorization/budgetdry-run. Only PT→ID→VI→TH serial production is admitted, with real independent model-boundary reviews and unchanged caps. Any original active/recent holder, unknown/defer/globalblocked/unsupportedowner/budget/semantic failure stops safely with receipts. No next movie/full8finalize/owner/Studio/publication is authorized.
 
 ### Finite language-controller handoff; continue the real ES unit — 2026-10-26T20:11Z
 
