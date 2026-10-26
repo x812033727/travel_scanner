@@ -24,7 +24,7 @@ scope:
 ## Definition of done
 
 - [x] 正式稿、完整提示、五項數字與已RUN四頁成果對齊；不同作者事實／圖卡／敘事結果照實記錄。
-- [x] 繁中正文與本體候選均實測至少八分鐘，當前118句音檢及本體核心QA11/11完成；正式品牌片頭尾另列未完成。
+- [x] 繁中正文與本體候選均實測至少八分鐘，當前118句音檢完成，正式官方片頭尾新版fresh QA11/11與1080p後台下載已完成；八語與遠端final核准另列未完成。
 - [ ] en/ja/ko/es/pt/id/vi/th各有metadata、CC及真正音檢的可下載M4A，直接後臺交付並核對角色／SHA／大小。
 - [x] 後臺實際pending狀態、未完成項與交接清楚，無YouTube公開／合併／部署。
 
@@ -39,7 +39,9 @@ scope:
 - [x] 新speech a805的當前take音檢118/118、嚴格全目標核驗、正常送審／本機委派採用、本體合成／九套CC／核心QA11/11。
 - [x] 本體1080p正常後台下載附件完成：13 parts、server SHA／大小驗證、authenticated metadata角色回讀，final仍pending。
 - [x] 八語metadata及CC草稿經三組獨審必要修正，八語縮圖正常draw／root實看，KO短headline修正亦實看。
-- [ ] 合法官方片頭尾／bookend guard及真正正式定版；缺素材不能由靜態outro或null-branding QA替代。
+- [x] 真官方v4片頭5秒接首章後／片尾21秒；隔離新版本保全舊主體，當前c387 fresh QA11/11與完整1080p正常後台下載／讀回完成。
+- [x] 當前繁中118 cues CC與native標題說明TXT以正常3 blob／5 roles送後台並讀回；第2章00:30，原6refs／payload／QA／history／choices保全。
+- [ ] 八語真媒體與遠端final核准完成後，才可稱整體正式定版。
 - [ ] 八語媒體、包裝及後臺驗證交付。
 
 ## How to verify
@@ -69,3 +71,21 @@ scope:
 見[production-result](../../docs/videos/ai-slides-outline-review/production-result.md)、[production-progress](../../docs/videos/ai-slides-outline-review/production-progress.json)、[receipt index](../../docs/videos/ai-slides-outline-review/production-receipt-index.json)及[informed narrative](../../docs/videos/ai-slides-outline-review/narrative-listener-reword1-informed-review.md)。
 
 正常唯讀GET另確認final payload的9語title／description與本地native compose逐字相符，files目前只有preview、contact_sheet、thumbnail、evidence_zh_tw_1080p_mp4。CC0/9、外語thumb0/8、外語dub0/8附件；本地9CC／8thumb不等於已上傳。checked-only附件由另位agent準備，這次文件更新不POST／repush。native lint0errors／6warnings，taskcheck0；不重跑已完成的236項工具測試。
+
+
+## 2026-10-26 官方v4新版當前進度
+
+站主「要加片頭加片尾，可以參考PR1860」已落到真實新媒體：正常官方來源恢復、hash／frame／size／ffprobe核對後，隔離版c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c／58,584,900 bytes／18886frames／629.533333秒video（AAC629.610秒）。5秒片頭在body frame757，21秒片尾在18256；原body完整SHA仍3cdb，原canonical2096檔逐SHA不變，未改source／claims／字典／i18n／聲音。
+
+真正fresh QA11/11綁新SHA、118個精確相同當前WAV/full intended/ASR仍全部接受。正常main-only流程03:45:25.901Z完成新片14parts＋舊body13＋舊preview4，authenticated角色metadata讀回一致；new final a0e0a6bc-aca6-4182-adf1-00fa8176937e仍manual pending，舊532d superseded metadata/QA保全，兩個live history roles保留舊unique blobs。原ee1 GC風險REVISE及retained修正版94guards／20peer負例／真native GC正反例都保存。無reserved renewal／伺服器核准或遠端binary重取宣稱。
+
+此刻CC下載0/9、外語縮圖0/8、配音0/8；normal final payload9語metadata不等於字幕或獨立語言下載已交付。EN只93/118 raw，兩次known429、第二次0新raw，無M4A／fit／meter／當前音檢PASS。敘事兩份12/13 false與no_recap教學取捨原樣保留。先追加當前繁中CC，再依原流程完成八語；整片票仍in-progress、不done或release。docs-only子分工不stage／commit／push、不網路、付費、QA、POST或媒體操作。
+
+當前證據見docs/videos/ai-slides-outline-review/branding-v4與production-progress.json；更新前BODY-current文件已逐bytes封存production-history/20261026-pre-official-v4-main-doc-update。舊Current snapshot段落為原時點歷史，不再表示最新遠端狀態。
+
+
+## 2026-10-26T04:12:21.363Z 繁中CC與說明下載追加
+
+Root真實checked-only ZH text helper完成當前SRT11,607B／b1375188…88969、VTT11,251B／07a2a11a…6761b及native title空行description TXT3,203B／410f0c49…27e62，3個正常PUT／一次same-a0e append／authenticated5roles回讀。118 cues、0閱讀速度提醒，章二00:30；native標題含CC標記、說明精確對上already-existing payload zh-TW。current final11roles，原6refs、manualQA11、old532d superseded review／history refs、八語選擇全保留；沒有新ASR／聽校／QA／核准或foreign媒體。
+
+CC語言現1/9（繁中）；外語8套仍草稿且未上傳，外語已驗M4A0/8，EN仍93/118 partial429 held。不是八語完成。main-only29檔及freeze90bf在任何本輪文件變更前已逐bytes封存，歷次錯誤count summaries與210個完整guards保留；root授權本docs分工待獨立freeze審核通過後精確stage／commit／push同分支，禁止source／i18n／lexicon／core／canonical／media及node_modules。整片仍in-progress，no-auto-merge，不更新PR或CURRENT、不部署、不合併、不上傳YouTube。

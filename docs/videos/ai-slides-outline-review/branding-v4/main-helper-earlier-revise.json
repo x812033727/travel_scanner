@@ -1,0 +1,40 @@
+{
+  "reviewed_at": "2026-10-26T03:16:30.247657+00:00",
+  "reviewer": "/root/branding_restore",
+  "decision": "REVISE",
+  "helper_file": "/workspace/work/ai-tech-next/attach-slides-branded-v4-main-download.mjs",
+  "helper_sha256": "ee1e271be1f289f95bef7aedbb4b1f122a0b68624265976b702c672e11a806f5",
+  "scope": "Independent code peer and pure fixtures only; no actual localPreflight, no new-media full preflight, no network/POST/paid, no helper mutation.",
+  "passed": [
+    "Reviewed native official package416c vs placed39d separation, cold-open splice757, presentation18886, actualc387 bytes58584900 and exact AAC629.610 contract against producer evidence.",
+    "51 new plus26 original pure negative guards pass.",
+    "Native source/body/copy raw WAV/cache/verdict/fresh manual QA and current pending guards retained.",
+    "Normal 4MiB protocol and exact samepending append/readback preserve old review metadata/payload/choices; no approval/language writes."
+  ],
+  "blocking_finding": {
+    "title": "Same-pending native review POST can prune superseded undecided old BODY physical blobs despite unchanged review metadata.",
+    "service_file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/admin_service.py",
+    "kept_files_line": 554,
+    "cleanup_line": 1879,
+    "upload_grace_line": 149,
+    "storage_file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/storage.py",
+    "storage_keep_only_line": 141,
+    "explanation": "Old BODY is superseded and undecided. Without normal renewal retained references, kept_files excludes its unique full1080 and preview hashes. submit_review calls keep_only with a one-hour upload grace, which deletes old unkept blobs. Metadata-only equality readback does not verify continued physical availability.",
+    "native_pure_fixture": "/workspace/work/videos/_ai-tech-bookend-renewal/fourth-plan-main-helper-prune-peer-proof.json",
+    "native_pure_fixture_sha256": "595b44bf221c2bb0917643bc50fbdb46c8edb8e9c3f34d399e69473ace4daee1",
+    "fixture_deleted_old_blobs": 2,
+    "actual_remote_blob_availability_checked": false,
+    "actual_remote_deletion_claimed": false
+  },
+  "minimal_fix_for_root_scope_decision": "Preserve the two old-only canonical BODY full1080/preview blobs using explicit additional history evidence references in the current live pending review; restore exact old verified local files through normal hash-addressed parts if absent, then append new main. Preserve old review/QApayload/choices and avoid reserved _final_renewal fabrication. Re-review the revised helper full SHA and meaningful cleanup guards before execution.",
+  "artifacts": {
+    "selftest_file": "/workspace/work/videos/_ai-tech-bookend-renewal/fourth-main-helper-peer-selftest.json",
+    "selftest_sha256": "13ed76eac4150a8baeaaad4b8bcee345ca4962e7cba80c8c8aaccc0cb4563974",
+    "subpeer_report": "/workspace/work/videos/_ai-tech-bookend-renewal/fourth-plan-main-helper-code-peer-review.md",
+    "subpeer_report_sha256": "34cb5420705abe4659b880b5e365219eaa43794d59ec09b567187370ad243e6c"
+  },
+  "execution_approved": false,
+  "network_calls": 0,
+  "paid_calls": 0,
+  "actual_preflight": false
+}

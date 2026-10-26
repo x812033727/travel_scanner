@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-10-26T03:14:48.369353+00:00",
+  "scope": "Pure native kept_files function extracted from exact source plus native ReviewStore.keep_only in temporary synthetic scratch fixture; no actual candidate file or remote data/network touched.",
+  "service_file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/admin_service.py",
+  "service_sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+  "storage_file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/storage.py",
+  "storage_sha256": "8eadf5e4f765bcae38f08ae20b163e706cb459165ee2dbe891caada4da7614ce",
+  "normal_pending_same_content_append_prunes_old_superseded_undecided_blob_fixture": true,
+  "old_fixture_blobs_removed": 2,
+  "root_cause": "submit_review always calls keep_only with1h grace; superseded undecided old review files are excluded absent owner renewal retention. JSON review metadata remains unchanged.",
+  "additive_live_review_history_file_refs_preserve_fixture_hashes": true,
+  "new_real_files_read": false,
+  "network_calls": 0,
+  "paid_calls": 0
+}
