@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "checked_on": "2026-10-26",
+  "timezone": "Asia/Taipei",
+  "researcher": "OpenAI Codex /root/pdf_research",
+  "research_mode": "Public web sources and read-only repository inspection; no provider experiment, owner action, paid call or publication performed by this researcher.",
+  "editorial_conclusion": {
+    "topic": "Use AI to turn three original PDF supplier quotations into a comparable table with quantities, tax, shipping, source pages and unresolved questions.",
+    "evidence_strength": "Adjacent practical AI file/document workflows have observable high-view foreign tutorials. The exact quotation-comparison topic was not verified as a recent breakout.",
+    "recency_scope": "The selected reference videos were published within the 90 days preceding this check. They are August/September videos, not October releases.",
+    "originality": "Borrow the teaching sequence of real inputs, useful output and one revision. Use our own supplier fixtures, arithmetic, visuals, prompts and narration; do not reproduce the creators' sales dataset or dialogue.",
+    "forbidden_claims": [
+      "This exact PDF quotation topic is currently viral or guaranteed to earn views.",
+      "The recorded third-party figures are live YouTube counts or our independently queried YouTube Analytics.",
+      "The local Codex/pypdf/openpyxl run is an actual Claude Cowork, Claude Artifacts or ChatGPT Enterprise UI test.",
+      "All AI products are unable to read scanned PDFs."
+    ]
+  },
+  "foreign_video_references": [
+    {
+      "id": "kevin-cowork-20260817",
+      "title_on_creator_site": "Claude Cowork Tutorial for Beginners",
+      "title_on_metric_chart": "How to Use Claude Cowork (Step-by-Step Tutorial)",
+      "channel": "Kevin Stratvert",
+      "published": "2026-08-17",
+      "video_url": "https://www.youtube.com/watch?v=YYr7hw5EAtk",
+      "creator_url": "https://kevinstratvert.com/2026/08/17/claude-cowork-tutorial-for-beginners-2/",
+      "creator_page_checked": true,
+      "public_creator_html_http_status": 200,
+      "video_id_verified_from_creator_page_embed": true,
+      "metric": {
+        "views": 219368,
+        "source_url": "https://www.fableguide.com/videos/",
+        "source_reported_observation_date": "2026-10-21",
+        "retrieved_on": "2026-10-26",
+        "type": "Third-party chart reporting a YouTube Data API snapshot; the researcher did not independently repeat the API query.",
+        "live_count": false
+      },
+      "content_evidence": "The creator's own article describes combining PDF, spreadsheet and text sales inputs into an interactive dashboard, then extending the workflow.",
+      "presentation_to_adapt": "Keep one concrete task visible from input through output. Show the result, then trace the steps and one meaningful revision.",
+      "limits": "The creator article was read; a full video watch was not performed. Its broader file workflow does not prove a supplier-quote feature or our own product execution."
+    },
+    {
+      "id": "kevin-artifacts-20260903",
+      "title_on_creator_site": "How to Use Claude Artifacts (Full Tutorial)",
+      "title_on_metric_chart": "How to Use Claude Artifacts (Beginner Tutorial)",
+      "channel": "Kevin Stratvert",
+      "published": "2026-09-03",
+      "video_url": "https://www.youtube.com/watch?v=1PRcdCu8n6M",
+      "creator_url": "https://kevinstratvert.com/2026/09/03/how-to-use-claude-artifacts-full-tutorial/",
+      "creator_page_checked": true,
+      "public_creator_html_http_status": 200,
+      "video_id_verified_from_creator_page_embed": true,
+      "metric": {
+        "views": 139957,
+        "source_url": "https://www.fableguide.com/videos/",
+        "source_reported_observation_date": "2026-10-21",
+        "retrieved_on": "2026-10-26",
+        "type": "Third-party chart reporting a YouTube Data API snapshot; the researcher did not independently repeat the API query.",
+        "live_count": false
+      },
+      "content_evidence": "The creator's article describes uploading one's own data, making an artifact and customizing the resulting output.",
+      "presentation_to_adapt": "Let the audience inspect an editable useful file and see a subsequent change in the same example.",
+      "limits": "Only the public article and embed identity were checked. Do not copy its Cookie Company sample data or suggest our export is an official Claude Artifact."
+    },
+    {
+      "id": "metics-claude-beginners-20260810",
+      "title": "The Ultimate Beginner’s Guide to Claude AI",
+      "channel": "Metics Media",
+      "published_reported": "2026-08-10",
+      "video_url": "https://www.youtube.com/watch?v=9oJySubZRSA",
+      "date_confirmation": "Date and identity agree in the public FableGuide chart and Zolotube mirror. The opened YouTube page did not expose readable publication metadata, so this is not independent primary metadata verification.",
+      "metric": {
+        "views": 1705513,
+        "source_url": "https://www.fableguide.com/videos/",
+        "source_reported_observation_date": "2026-10-21",
+        "retrieved_on": "2026-10-26",
+        "type": "Third-party reported snapshot",
+        "live_count": false
+      },
+      "supporting_description_url": "https://zolotube.com/watch?v=9oJySubZRSA",
+      "content_evidence": "The indexed description covers uploaded files, document analysis and generating editable office files.",
+      "limits": "Different mirrors and indexers show substantially different counts for this video. Use only the explicitly dated selected snapshot, do not infer growth or ranking. This broad course is supporting context, not a verified quotation-comparison tutorial."
+    }
+  ],
+  "official_documentation": [
+    {
+      "id": "pypdf-text-extraction",
+      "title": "Extract Text from a PDF",
+      "url": "https://pypdf.readthedocs.io/en/stable/user/extract-text.html",
+      "checked_on": "2026-10-26",
+      "page_label_observed": "pypdf 6.21.2 documentation",
+      "supports": [
+        "PdfReader exposes pages and page.extract_text(), including a layout extraction mode.",
+        "PDF text extraction and table reconstruction can be ambiguous; page appearance alone is not a semantic table."
+      ],
+      "limits": "This library is not OCR. Image-only scans can yield little or no text and need an appropriate OCR workflow. This is a limitation of our selected local extraction route, not a claim about all multimodal AI products.",
+      "production_requirement": "Record the actually installed library version separately. Extract and inspect every source page before scripting any successful result."
+    },
+    {
+      "id": "openpyxl-formulas",
+      "title": "Using formulae",
+      "url": "https://openpyxl.readthedocs.io/en/stable/simple_formulae.html",
+      "checked_on": "2026-10-26",
+      "page_label_observed": "openpyxl 3.1.3 documentation",
+      "supports": "A workbook can contain Excel formula strings written by openpyxl.",
+      "limits": "openpyxl does not evaluate those formulas. Do not label blank cached values as calculated spreadsheet results.",
+      "production_requirement": "Verify numeric values independently, and either supply explicit calculated-value columns alongside formulas or use a real spreadsheet engine and record that actual recalculation."
+    },
+    {
+      "id": "claude-academy-file-creation",
+      "title": "Create and edit files with Claude to eliminate hours of busy work",
+      "url": "https://academy.claude.com/tutorials/create-and-edit-files-with-claude-to-eliminate-hours-of-busy-work",
+      "checked_on": "2026-10-26",
+      "supports": "Official examples connect multiple input files with coordinated editable document and spreadsheet outputs.",
+      "limits": "Capability and teaching reference only. Reading this page does not establish that this production ran Claude or its UI."
+    },
+    {
+      "id": "claude-pdf-support",
+      "title": "PDF support",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/pdf-support",
+      "checked_on": "2026-10-26",
+      "supports": "The official API route describes processing extracted PDF text together with rendered page images, subject to platform/model/request requirements.",
+      "limits": "API PDF processing is a different path from the local pypdf text extraction demonstrated here. Do not transpose its limits to a chat UI or imply it was exercised."
+    },
+    {
+      "id": "claude-upload-help",
+      "title": "Upload files to Claude",
+      "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+      "checked_on": "2026-10-26",
+      "supports": "The help page distinguishes PDF visual analysis from text-only processing and recommends PDF-viewer page numbers for references.",
+      "limits": "Do not promise that an arbitrary screenshot or scanned document will work through our local text route. No chat-plan limits are needed in this tutorial; recheck official documentation if adding any numeric limits."
+    }
+  ],
+  "original_presentation": [
+    "Open with three real fixture headline prices and ask whether they buy the same quantity and delivered specification.",
+    "Keep a visible row-to-source-page trail rather than displaying an invented chat conversation.",
+    "Treat not stated as unknown, preserve a nonmatching offer and produce questions for the supplier.",
+    "Show tax and shipping included in a transparent arithmetic basis before sorting eligible offers.",
+    "Revise the requested quantity once and show actual changes and unchanged terms.",
+    "Conclude with the editable comparison, one source trace and the specific limitation of text-PDF extraction."
+  ],
+  "research_integrity": {
+    "full_reference_videos_watched": false,
+    "third_party_view_counts_independently_queried_from_youtube_api": false,
+    "exact_narrow_topic_current_breakout_verified": false,
+    "paid_calls": 0,
+    "owner_actions": 0
+  }
+}

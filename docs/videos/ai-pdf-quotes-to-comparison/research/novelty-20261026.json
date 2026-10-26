@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "checked_on": "2026-10-26",
+  "timezone": "Asia/Taipei",
+  "researcher": "OpenAI Codex /root/pdf_research",
+  "repository": "x812033727/travel_scanner",
+  "worktree": "/workspace/travel_scanner_pdf",
+  "branch": "codex/ai-pdf-comparison-20261026",
+  "inspected_source_head": "f3e31ae6196b0a011dc4de78e1a08f510700b0ea",
+  "question": "Can we compare three supplier PDF quotes on the same requested quantity, specification, tax and delivery basis without inventing missing terms?",
+  "local_checks": [
+    {
+      "method": "Parse docs/videos/*/video.json and search slug/title/description, case-insensitively.",
+      "patterns": ["pdf", "quote", "報價", "比價", "供應商", "document", "文件"],
+      "files_inspected": 155,
+      "matches": [],
+      "scope_limit": "Top-level episode video.json files only; this is not a statement about every nested plan, private production or live site row."
+    },
+    {
+      "method": "Search task front matter for PDF, quotation-comparison and price-comparison terms.",
+      "open_matches": ["2026-10-25-ai-pdf-quotes-to-comparison"],
+      "done_matches": [
+        "2026-09-13-life-ai-batch-03",
+        "2026-09-13-life-ai-batch-09",
+        "2026-09-14-ai-suffix-keywords-backfill"
+      ],
+      "interpretation": "The open match is this already selected episode's own task, which is being reused. Done matches are broader article/content batches and do not establish a completed same-topic video."
+    },
+    {
+      "method": "Targeted rg search for quote comparison, PDF quote, 報價比較, PDF比價 and PDF報價 across docs/videos and tasks.",
+      "relevant_existing_records": [
+        "tasks/open/2026-10-25-ai-pdf-quotes-to-comparison.md",
+        "docs/videos/ai-editable-explainer-animation/research/next-topics.json",
+        "docs/videos/ai-editable-explainer-animation/production-review.md"
+      ],
+      "interpretation": "These record the proposed next topic and prior episode handoff, not an existing completed quotation-comparison film. Unrelated quotation, historical-source PDF and production-budget mentions are not duplicate tutorials."
+    }
+  ],
+  "live_catalogue_check": {
+    "performed_by_this_researcher": false,
+    "required_of_production_controller": "Before admission or paid media, check the actual production catalogue/project endpoint for the slug and semantically similar titles; do not infer live absence solely from local files."
+  },
+  "difference_from_prior_episode": "The prior episode teaches an editable dice explainer animation. This episode teaches a supplier-document comparison and revision workflow, with original PDFs and an evidence-linked workbook.",
+  "local_conclusion": "No completed same-topic video was found within the stated local search scope. This is sufficient to prepare original materials, subject to the controller's live catalogue check before admission.",
+  "producer_conflict_safety": "The new episode uses its own slug/work directory; this research did not alter the previous episode, leases, source, approvals, journals or retry counters."
+}

@@ -1,0 +1,17 @@
+{
+  "purpose": "Independent assertion fixture. Must not be supplied to the AI extraction step.",
+  "expected_rows": {
+    "aster.pdf": {"supplier":"Aster","unit_price":"180.00","unit_tax_mode":"exclusive","goods_tax_rate":"0.05","shipping_amount":"200.00","shipping_tax_mode":"exclusive","shipping_tax_rate":"0.05","quantity_min":10,"quantity_max":20,"lead_business_days":7},
+    "birch.pdf": {"supplier":"Birch","unit_price":"205.00","unit_tax_mode":"inclusive","goods_tax_rate":"0.05","shipping_amount":"0.00","shipping_tax_mode":"inclusive","shipping_tax_rate":"0","quantity_min":10,"quantity_max":20,"lead_business_days":5},
+    "cedar.pdf": {"supplier":"Cedar","unit_price":"175.00","unit_tax_mode":"exclusive","goods_tax_rate":"0.05","shipping_amount":null,"shipping_tax_mode":"unknown","shipping_tax_rate":null,"quantity_min":10,"quantity_max":20,"lead_business_days":7},
+    "cedar-revised.pdf": {"supplier":"Cedar","unit_price":"175.00","unit_tax_mode":"exclusive","goods_tax_rate":"0.05","shipping_amount":"250.00","shipping_tax_mode":"exclusive","shipping_tax_rate":"0.05","quantity_min":10,"quantity_max":20,"lead_business_days":7}
+  },
+  "expected_delivered_totals": {
+    "10": {"aster.pdf":"2100.00","birch.pdf":"2050.00","cedar.pdf":null,"cedar-revised.pdf":"2100.00"},
+    "20": {"aster.pdf":"3990.00","birch.pdf":"4100.00","cedar.pdf":null,"cedar-revised.pdf":"3937.50"}
+  },
+  "expected_winners": {"original-10":["Birch"],"revised-10":["Birch"],"revised-20":["Cedar"]},
+  "known_goods_gross_original_cedar_10":"1837.50",
+  "cedar_original_must_not_have_delivered_total": true,
+  "expected_out_of_range_quantity_21": "rejected"
+}

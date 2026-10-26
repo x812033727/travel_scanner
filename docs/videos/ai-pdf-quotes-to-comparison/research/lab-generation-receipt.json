@@ -1,0 +1,140 @@
+{
+  "generated_at_utc": "2026-10-26T07:02:53.814678+00:00",
+  "method": "Original ReportLab PDFs, extracted with actual installed pypdf; actual Poppler preview rendering",
+  "tools": {
+    "reportlab": "4.4.9",
+    "pypdf": "6.10.0",
+    "openpyxl": "3.1.5",
+    "Pillow": "12.3.0"
+  },
+  "embedded_fonts": [
+    {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+    },
+    {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "sha256": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    }
+  ],
+  "source_inputs": [
+    {
+      "name": "quote-source.json",
+      "sha256": "cdeb47092eb6dadf014aae276c61a62e434aadf2f368adf6577fb3d198bc22f0"
+    },
+    {
+      "name": "requirements.txt",
+      "sha256": "c3c38e75c01b15a10b8fe8540e367fad8eeebbf0a0dcc7f8fcd4d00100759fa3"
+    },
+    {
+      "name": "analysis-prompt.txt",
+      "sha256": "dc159f0d4ad8713e3c7d28cc9a43df823ec20fe2bd25687105f1001c7d29921f"
+    }
+  ],
+  "documents": [
+    {
+      "source_file": "aster.pdf",
+      "sha256": "bce9caf069869382befd06316469df97993648e0163a00cbd71f2f73cacc3b5b",
+      "pages": 2
+    },
+    {
+      "source_file": "birch.pdf",
+      "sha256": "03fd30a530d9c2b0f6930e745f75180dac97c47e1b6a5b64dc1f23f7e2bac173",
+      "pages": 2
+    },
+    {
+      "source_file": "cedar.pdf",
+      "sha256": "bb17821765e31fa26e3b6a82cfdfc63403f56740de4719d67d48fc25850e61f9",
+      "pages": 2
+    },
+    {
+      "source_file": "cedar-revised.pdf",
+      "sha256": "54e8b2bc9943e0707d424e860a10de5cb76d4dc2199c0ea1bfc7d8899401f414",
+      "pages": 2
+    }
+  ],
+  "rendering": [
+    {
+      "command": [
+        "pdftoppm",
+        "-png",
+        "-scale-to",
+        "1400",
+        "/workspace/work/ai-pdf-01/lab/pdfs/aster.pdf",
+        "/workspace/work/ai-pdf-01/lab/previews/aster"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "pdftoppm",
+        "-png",
+        "-scale-to",
+        "1400",
+        "/workspace/work/ai-pdf-01/lab/pdfs/birch.pdf",
+        "/workspace/work/ai-pdf-01/lab/previews/birch"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "pdftoppm",
+        "-png",
+        "-scale-to",
+        "1400",
+        "/workspace/work/ai-pdf-01/lab/pdfs/cedar.pdf",
+        "/workspace/work/ai-pdf-01/lab/previews/cedar"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "pdftoppm",
+        "-png",
+        "-scale-to",
+        "1400",
+        "/workspace/work/ai-pdf-01/lab/pdfs/cedar-revised.pdf",
+        "/workspace/work/ai-pdf-01/lab/previews/cedar-revised"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "previews": [
+    {
+      "name": "aster-1.png",
+      "sha256": "f6c3fde01e6fb15a3cbb485fc5f75dfa6f38957e47659bffd7fcc6034ce8cea1"
+    },
+    {
+      "name": "aster-2.png",
+      "sha256": "9809acc502c8db206ed56973ae3a368c83781f74ece75686883cbd8322f6a781"
+    },
+    {
+      "name": "birch-1.png",
+      "sha256": "6b408f2bd2b7fd173a667d281a4e6224aec492c5ecac18ce817d9f606d815cd9"
+    },
+    {
+      "name": "birch-2.png",
+      "sha256": "383727502a89a059422c9124c87c843dd84986fb4aeb3b15f3197deac0d9b201"
+    },
+    {
+      "name": "cedar-1.png",
+      "sha256": "bc8dedddfe195ff1c57599a53f38c3a381de047b97046a1082d01a3cddff1236"
+    },
+    {
+      "name": "cedar-2.png",
+      "sha256": "4a48ccbdb002210dc7a0513a5abaaf2223729070743c5e02cf38eae523ed00ef"
+    },
+    {
+      "name": "cedar-revised-1.png",
+      "sha256": "6d6aab49751415398cbb7ae235c503ba3e9164d39b60596db3f374ca576d744a"
+    },
+    {
+      "name": "cedar-revised-2.png",
+      "sha256": "df45672e8896f83a094c961912c5ff5ff2e30afbdac0dd2c736b8def9f8268f0"
+    }
+  ],
+  "extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+  "truth_provided_to_ai": false,
+  "ai_extraction_executed": false,
+  "note": "The generator does not create or claim any AI extraction. A separate actual AI agent must read only requirements, prompt, and extracted pages."
+}

@@ -1,0 +1,38 @@
+你是本次實際執行的 AI 文件分析者。請讀 requirements.txt 與 extracted-pages.json
+（原創可選文字 PDF 的逐頁 pypdf 抽文）。不要讀 generator、quote-source.json、
+fixture-truth.json 或其他答案。這不是任一特定商用 AI 介面或 PDF 視覺 OCR 的測試。
+
+請只依提供的逐頁原文抽出 Aster、Birch、Cedar、Cedar 修訂版的下列資料。
+每一個值都附 source_file、page（1 開始）、evidence（原文短句）。
+沒寫的值一律 null，unknown 不等於 0。請分清單價已含稅／未稅與運費是否已含稅；
+不得替原本的 Cedar 編造總價，也不要把舊、新 Cedar 當成兩家不同供應商。
+
+交付 JSON：
+{
+  "analyst": "實際使用的模型/代理身分；不要冒稱另一模型",
+  "input_files": ["檔名"],
+  "quotes": [{
+    "supplier": "Aster|Birch|Cedar",
+    "source_file": "檔名",
+    "revision": "original|revised",
+    "fields": {
+      "specification": {"value":"完整規格字串", "page":1, "evidence":"原句"},
+      "quoted_quantity": {"value":10, "page":1, "evidence":"原句"},
+      "quantity_min": {"value":數字或null, "page":頁碼, "evidence":"原句"},
+      "quantity_max": {"value":數字或null, "page":頁碼, "evidence":"原句"},
+      "currency": {"value":"TWD", "page":頁碼, "evidence":"原句"},
+      "unit_price": {"value":"精確金額字串", "page":頁碼, "evidence":"原句"},
+      "unit_tax_mode": {"value":"exclusive|inclusive|unknown", "page":頁碼, "evidence":"原句"},
+      "goods_tax_rate": {"value":"0.05"或null, "page":頁碼, "evidence":"原句"},
+      "shipping_amount": {"value":"精確金額字串"或null, "page":頁碼, "evidence":"原句"},
+      "shipping_tax_mode": {"value":"exclusive|inclusive|unknown", "page":頁碼, "evidence":"原句"},
+      "shipping_tax_rate": {"value":"0.05"或null, "page":頁碼, "evidence":"原句"},
+      "lead_business_days": {"value":數字或null, "page":頁碼, "evidence":"原句"}
+    },
+    "questions": [{"field":"欄位", "question":"真正待問問題", "page":頁碼}]
+  }],
+  "limitations": ["本次 pypdf 文字抽取不做 OCR；原文缺漏仍需詢問。"]
+}
+
+請先抽欄位，勿用自行心算的總價取代原文欄位。比價表另由 Decimal 計算，
+再由不讀你推理的獨立檢查器對照 fixture truth；試算表內會寫明值的計算方法。
