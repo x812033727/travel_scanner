@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""Offline native exact-byte history retention and nine-blob restoration fixture.
+
+Reads no credentials/config/environment and performs no HTTP/API/native video command.
+Only the exact pinned kept_files AST is compiled. The pinned stdlib-only storage
+module is imported inertly. Every store mutation occurs in a TemporaryDirectory
+under this fixture directory, using independent real-byte copies (never hardlinks).
+"""
+from __future__ import annotations
+
+import ast
+import copy
+from datetime import UTC, datetime, timedelta
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+import tempfile
+import time
+from types import SimpleNamespace
+
+BASE = Path('/workspace/work/ai-tech-next/formal-branded-retention-fixture')
+ROOT = Path('/workspace/work/travel-scanner-formal-255')
+CANON = Path('/workspace/work/videos/claude-formal-verification-255')
+CAND = Path('/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255')
+SNAPSHOT = BASE.parent / 'formal-branded-before-new-final.current-project.json'
+SNAPSHOT_SHA = 'b0dd92ebeb1169c6a4f6d2d6442f34af522b8b3b0d1768d606418e1e3e9d4904'
+SERVICE = ROOT / 'apps/api/app/video_reviews/admin_service.py'
+STORAGE = ROOT / 'apps/api/app/video_reviews/storage.py'
+SERVICE_SHA = '4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c'
+STORAGE_SHA = '8eadf5e4f765bcae38f08ae20b163e706cb459165ee2dbe891caada4da7614ce'
+OLD_ID = '00f2b388-712e-4886-9849-64e12e0f6bec'
+SLUG = 'claude-formal-verification-255'
+NEW_MAIN = 'b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a'
+NEW_EN = 'af7c3d50693e7231513bdb57e4f404b9491d449dddcad9c12d7c5e931c3a799a'
+CHOICE_KEYS = ('locales', 'locales_decided_at', 'languages', 'dub_locales', 'dub_retries', 'dub_retry_blocked', 'stage', 'ready_to_upload', 'youtube_video_id', 'youtube_publish_at', 'publish_approved_at', 'youtube_sync')
+
+
+def digest(b: bytes) -> str:
+    return hashlib.sha256(b).hexdigest()
+
+
+def obj_sha(x) -> str:
+    return digest(json.dumps(x, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode())
+
+
+def checked(f: Path, expected: str) -> bytes:
+    b = f.read_bytes()
+    assert digest(b) == expected, f'Pinned input changed: {f}'
+    return b
+
+
+def file_descriptor(f: Path, sha: str, size: int) -> dict:
+    b = checked(f, sha)
+    assert len(b) == size
+    s = f.stat()
+    return {'file': str(f), 'sha256': sha, 'size': size, 'device': s.st_dev, 'inode': s.st_ino}
+
+
+def source_evidence(text, node):
+    source = ast.get_source_segment(text, node)
+    assert source
+    return {'start_line': node.lineno, 'end_line': node.end_lineno, 'source_sha256': digest(source.encode()), 'ast_sha256': digest(ast.dump(node, include_attributes=False).encode())}
+
+
+def native_contract():
+    source = checked(SERVICE, SERVICE_SHA).decode()
+    tree = ast.parse(source, str(SERVICE))
+    constants = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id in {'LIVE', 'RENEWAL_KEY'}:
+                    constants[target.id] = ast.literal_eval(node.value)
+                if isinstance(target, ast.Name) and target.id == 'UPLOAD_GRACE':
+                    assert ast.unparse(node.value) == 'timedelta(hours=1)'
+    assert constants == {'LIVE': ('pending', 'approved', 'rejected'), 'RENEWAL_KEY': '_final_renewal'}
+    kept_node = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'kept_files')
+    namespace = dict(constants)
+    exec(compile('from __future__ import annotations\n' + ast.get_source_segment(source, kept_node), str(SERVICE) + ':exact-kept_files-only', 'exec'), namespace)
+    submit = next(n for n in tree.body if isinstance(n, ast.AsyncFunctionDef) and n.name == 'submit_review')
+    cleanup = [n for n in ast.walk(submit) if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == 'keep_only']
+    assert len(cleanup) == 1
+    assert ast.unparse(cleanup[0]) == 'store.keep_only(slug, kept_files([*reviews, review]), older_than=UPLOAD_GRACE)'
+    storage_source = checked(STORAGE, STORAGE_SHA).decode()
+    storage_tree = ast.parse(storage_source, str(STORAGE))
+    # Refuse any changed non-stdlib imports even if a future source pin was edited.
+    for node in ast.walk(storage_tree):
+        if isinstance(node, ast.Import):
+            assert all(n.name.split('.')[0] in {'hashlib', 'os', 're', 'shutil', 'time'} for n in node.names)
+        if isinstance(node, ast.ImportFrom):
+            assert node.module in {'__future__', 'dataclasses', 'datetime', 'pathlib'}
+    sys.dont_write_bytecode = True
+    name = 'formal_exact_nine_offline_native_storage'
+    spec = importlib.util.spec_from_file_location(name, STORAGE)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    store_class = next(n for n in storage_tree.body if isinstance(n, ast.ClassDef) and n.name == 'ReviewStore')
+    methods = {n.name: source_evidence(storage_source, n) for n in store_class.body if isinstance(n, ast.FunctionDef) and n.name in {'put_part', '_assemble', 'keep_only'}}
+    return namespace['kept_files'], module, {'service': {'file': str(SERVICE), 'sha256': SERVICE_SHA}, 'storage': {'file': str(STORAGE), 'sha256': STORAGE_SHA}, 'kept_files': source_evidence(source, kept_node), 'LIVE': list(constants['LIVE']), 'submit_review': source_evidence(source, submit), 'actual_native_cleanup_call': ast.get_source_segment(source, cleanup[0]), 'ReviewStore_methods': methods, 'api_service_imported': False, 'reserved_renewal_key_used': False, 'upload_grace_seconds': 3600, 'stdlib_storage_imported_with_bytecode_disabled': True}
+
+
+def derive_map(project):
+    old = next(r for r in project['reviews'] if r['id'] == OLD_ID)
+    assert old['status'] == 'pending' and old['choice'] is None and old['decided_at'] is None
+    assert old['content_sha256'] == 'c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5'
+    assert len(old['files']) == 12 and len({f['sha256'] for f in old['files']}) == 9
+    assert old['payload']['qa']['ok'] is True and old['payload']['qa']['final_sha256'] == old['content_sha256']
+    assert len(old['payload']['qa']['items']) == 11 and all(i['ok'] for i in old['payload']['qa']['items'])
+    files = {r['role']: r for r in old['files']}
+    specs = [('evidence_history_zh_tw_body_mp4', 'evidence_zh_tw_1080p_mp4', CANON/'final.mp4'), ('evidence_history_body_preview_mp4', 'preview', CANON/'review/preview-c8f4bf86b1bfcc66.mp4'), ('evidence_history_en_body_m4a', 'dub_en', CANON/'dubs/en.m4a'), ('evidence_history_en_body_cc_srt', 'captions_en', CANON/'captions/en.srt'), ('evidence_history_en_body_cc_vtt', 'evidence_en_cc_vtt', CANON/'captions/en.vtt'), ('evidence_history_en_body_metadata_txt', 'description_en', BASE.parent/'formal-en-caption-description.txt'), ('evidence_history_en_body_thumbnail', 'thumbnail_en', CANON/'thumbnails/en.jpg')]
+    uploads = []
+    for role, old_role, file in specs:
+        ref = files[old_role]
+        desc = file_descriptor(file, ref['sha256'], ref['size'])
+        uploads.append({'role': role, 'file': str(file), 'sha256': ref['sha256'], 'size': ref['size'], 'content_type': ref['content_type'], 'purpose': 'restore_historical_blob_and_live_alias', 'old_roles': [r['role'] for r in old['files'] if r['sha256'] == ref['sha256']], 'local_file_verified': desc})
+    for role, file, sha, size, content_type in [('evidence_zh_tw_1080p_mp4', CAND/'final.mp4', NEW_MAIN, 54578838, 'video/mp4'), ('evidence_en_m4a', CAND/'dubs/en.m4a', NEW_EN, 15391038, 'audio/mp4')]:
+        uploads.append({'role': role, 'file': str(file), 'sha256': sha, 'size': size, 'content_type': content_type, 'purpose': 'current_branded_download', 'local_file_verified': file_descriptor(file, sha, size)})
+    shared = []
+    for role, file in [('contact_sheet', CANON/'contact-sheet.png'), ('thumbnail', CANON/'thumbnail.jpg')]:
+        ref = files[role]
+        shared.append({**copy.deepcopy(ref), 'file': str(file), 'local_file_verified': file_descriptor(file, ref['sha256'], ref['size']), 'reason': 'unchanged native new-final reference shares old physical hash'})
+    assert len(uploads) == 9 and len({r['sha256'] for r in uploads}) == 9
+    assert all(re.fullmatch('[a-z][A-Za-z0-9_-]{0,39}', r['role']) for r in uploads)
+    assert {x['sha256'] for x in uploads[:7]} == {x['sha256'] for x in old['files']} - {x['sha256'] for x in shared}
+    return old, uploads, shared
+
+
+def refs(rows):
+    return [{k: r[k] for k in ('role', 'sha256', 'size', 'content_type')} for r in rows]
+
+
+def current_review(uploads, shared, aliases):
+    return {'id': 'TEMP_FIXTURE_ONLY_NOT_REAL_PENDING_ID', 'gate': 'final', 'subject': None, 'status': 'pending', 'choice': None, 'note': None, 'decided_at': None, 'content_sha256': NEW_MAIN, 'payload': {'hand_pushed': True, 'manual_review': True, 'manual_review_qa': None, 'new_audio_proof': None, 'fixture_only': True}, 'files': refs(shared) + refs(uploads[7:]) + (refs(uploads[:7]) if aliases else [])}
+
+
+def age_files(folder):
+    aged = time.time() - 7200
+    for f in folder.iterdir():
+        if f.is_file():
+            os.utime(f, (aged, aged))
+            assert time.time() - f.stat().st_mtime > 3600
+
+
+def run():
+    started = datetime.now(UTC).isoformat()
+    snapshot_bytes = checked(SNAPSHOT, SNAPSHOT_SHA)
+    project = json.loads(snapshot_bytes)
+    assert project['slug'] == SLUG
+    original = copy.deepcopy(project)
+    old, uploads, shared = derive_map(project)
+    kept_files, native, contract = native_contract()
+    role_map = {'schema_version': 1, 'type': 'formal_branded_actual_nine_blob_history_restore_map', 'generated_at': started, 'slug': SLUG, 'saved_normal_GET_snapshot': {'file': str(SNAPSHOT), 'sha256': SNAPSHOT_SHA}, 'old_review_id': OLD_ID, 'old_status_before_natural_supersede': 'pending', 'old_status_expected_after_natural_supersede': 'superseded', 'old_decision_is_null': True, 'old_files': old['files'], 'old_refs': 12, 'old_unique_hashes': 9, 'uploads': uploads, 'shared_native_refs': shared, 'upload_unique_hashes': 9, 'history_restore_unique_hashes': 7, 'current_new_unique_hashes': 2, 'normal_upload_part_bytes': native.PART_BYTES, 'root_execution_authorized_by_this_artifact': False, 'new_native_QA': None, 'real_new_pending_review_id': None, 'no_auth_or_network': True}
+    old_hashes = {f['sha256'] for f in old['files']}
+    seven = {f['sha256'] for f in uploads[:7]}
+    all_physical = {r['sha256']: r for r in [*uploads, *shared]}
+    assert len(all_physical) == 11
+    choices = {k: copy.deepcopy(project[k]) for k in CHOICE_KEYS if k in project}
+    cases = []
+    with tempfile.TemporaryDirectory(prefix='exact-real-byte-native-store-', dir=BASE) as temporary:
+        root = Path(temporary)
+        folder = root/SLUG
+        folder.mkdir()
+        original_inodes = {}
+        for sha, row in all_physical.items():
+            src, dst = Path(row['file']), folder/sha
+            shutil.copyfile(src, dst)
+            assert src.stat().st_dev != dst.stat().st_dev or src.stat().st_ino != dst.stat().st_ino
+            assert digest(dst.read_bytes()) == sha and dst.stat().st_size == row['size']
+            original_inodes[sha] = {'source_device': src.stat().st_dev, 'source_inode': src.stat().st_ino, 'temp_device': dst.stat().st_dev, 'temp_inode': dst.stat().st_ino}
+        orphan_value = b'OFFLINE-NATIVE-GC-AGED-UNREFERENCED-ORPHAN'
+        orphan = digest(orphan_value)
+        (folder/orphan).write_bytes(orphan_value)
+        age_files(folder)
+        store = native.ReviewStore(root, max_file_bytes=100_000_000, max_total_bytes=1_000_000_000)
+
+        def gc_case(name, status, aliases):
+            rows = copy.deepcopy(project['reviews'])
+            historical = next(r for r in rows if r['id'] == OLD_ID)
+            historical['status'] = status
+            assert historical['decided_at'] is None
+            current = current_review(uploads, shared, aliases)
+            rows.append(current)
+            assert all('_final_renewal' not in (r.get('payload') or {}) for r in rows)
+            before = copy.deepcopy(rows)
+            keep = kept_files([SimpleNamespace(**r) for r in rows])
+            physical_before = {p.name for p in folder.iterdir() if p.is_file()}
+            removed = store.keep_only(SLUG, keep, older_than=timedelta(hours=1))
+            physical_after = {p.name for p in folder.iterdir() if p.is_file()}
+            assert physical_after == physical_before & keep
+            assert set(removed) == physical_before - keep
+            assert rows == before and project == original
+            for sha in physical_after:
+                assert digest((folder/sha).read_bytes()) == sha
+            return {'case': name, 'passed': True, 'hypothetical_status_used_only_in_temp_fixture': status, 'old_decided_at': None, 'ordinary_live_history_aliases': aliases, 'current_reference_count': len(current['files']), 'keep_hashes': sorted(keep), 'physically_removed_exact_hashes': removed, 'physically_remaining_exact_hashes': sorted(physical_after), 'all_real_bytes_sha256_reverified': True, 'all_review_objects_unchanged_by_GC': True, 'old_payload_QA_and_12refs_unchanged': historical['payload'] == old['payload'] and historical['files'] == old['files'], 'owner_choices_unchanged': True}
+
+        first = gc_case('actual_pending_undecided_old_12refs_remain_live', 'pending', False)
+        assert set(first['physically_removed_exact_hashes']) == {orphan}
+        assert old_hashes <= set(first['physically_remaining_exact_hashes'])
+        cases.append(first)
+        second = gc_case('natural_superseded_undecided_without_live_aliases_prunes_exact_seven', 'superseded', False)
+        assert set(second['physically_removed_exact_hashes']) == seven
+        assert set(second['physically_remaining_exact_hashes']) == set(all_physical) - seven
+        cases.append(second)
+
+        put_receipts = []
+        for row in uploads:
+            data = Path(row['file']).read_bytes()
+            assert digest(data) == row['sha256'] and len(data) == row['size']
+            count = -(-len(data)//native.PART_BYTES)
+            receipts = []
+            for index in range(count):
+                part = data[index*native.PART_BYTES:(index+1)*native.PART_BYTES]
+                answer = store.put_part(SLUG, row['sha256'], index=index, count=count, size=len(data), data=part)
+                receipts.append({'part': index, 'received': answer.received, 'complete': answer.complete})
+                if answer.complete:
+                    break
+            assert answer.complete and answer.received == list(range(count))
+            restored = folder/row['sha256']
+            assert digest(restored.read_bytes()) == row['sha256'] and restored.stat().st_size == row['size']
+            put_receipts.append({'sha256': row['sha256'], 'size': row['size'], 'role': row['role'], 'native_part_receipts': receipts, 'old_historical_restoration': row['sha256'] in seven, 'new_current_existing_blob_fast_path': row['sha256'] not in seven, 'assembled_exact_actual_SHA_and_size': True})
+        assert {p.name for p in folder.iterdir() if p.is_file()} == set(all_physical)
+        age_files(folder)
+        third = gc_case('restored_exact_nine_plan_and_seven_live_aliases_retain_all_eleven_beyond_grace', 'superseded', True)
+        assert not third['physically_removed_exact_hashes']
+        assert set(third['physically_remaining_exact_hashes']) == set(all_physical)
+        cases.append(third)
+    assert not Path(temporary).exists()
+    for row in [*uploads, *shared]:
+        file_descriptor(Path(row['file']), row['sha256'], row['size'])
+    checked(SNAPSHOT, SNAPSHOT_SHA); checked(SERVICE, SERVICE_SHA); checked(STORAGE, STORAGE_SHA)
+    assert project == original and choices == {k: project[k] for k in choices}
+    map_file = BASE/'actual-nine-map.json'
+    with map_file.open('xb') as h:
+        h.write((json.dumps(role_map, ensure_ascii=False, indent=2)+'\n').encode())
+    result = {'kind': 'formal_branded_exact_nine_native_TEMP_GC_fixture', 'verdict': 'PASS_EXACT_ACTUAL_NINE_BLOB_NATIVE_TEMP_GC', 'started_at': started, 'finished_at': datetime.now(UTC).isoformat(), 'runner': {'file': str(Path(__file__).resolve()), 'sha256': digest(Path(__file__).read_bytes())}, 'actual_nine_map': {'file': str(map_file), 'sha256': digest(map_file.read_bytes()), 'bytes': map_file.stat().st_size}, 'native_contract': contract, 'production_media_inputs_read_only': True, 'actual_media_SHA256_verified_before_and_after': True, 'copied_real_bytes_in_temp_not_hash_filename_labels': True, 'no_hardlinks_or_source_utime': True, 'independent_inode_proof': original_inodes, 'old_snapshot': {'file': str(SNAPSHOT), 'sha256': SNAPSHOT_SHA}, 'old_review': {'id': OLD_ID, 'status_before': old['status'], 'status_expected_after_natural_supersede': 'superseded', 'choice': old['choice'], 'note': old['note'], 'decided_at': old['decided_at'], 'refs': 12, 'unique_hashes': 9, 'payload_sha256': obj_sha(old['payload']), 'QA_sha256': obj_sha(old['payload']['qa']), 'entire_row_sha256': obj_sha(old)}, 'cases': cases, 'normal_native_TEMP_put_part_receipts': put_receipts, 'all_nine_actual_hashes_put_through_normal_native_storage': True, 'superseded_undecided_without_aliases_exact_seven_pruned': sorted(seven), 'ordinary_live_history_aliases_prevent_pruning_beyond_one_hour': True, 'reserved_final_renewal_payload_used': False, 'actual_native_submit_review_invoked': False, 'new_current_QA': None, 'real_new_pending_ID': None, 'network_calls': 0, 'API_calls': 0, 'credential_reads': 0, 'native_audio_QA_or_paid_calls': 0, 'production_source_media_state_or_git_writes': 0, 'owner_choices_changed': False, 'temporary_files_removed': True, 'root_execution_authorized': False, 'scope': 'Offline exact real-byte native ReviewStore.put_part/_assemble/keep_only and pinned kept_files AST. Demonstrates restoration plus live history aliases; does not execute final push or prove current remote state/QA/approval.'}
+    output = BASE/'native-gc-exact-nine.result.json'
+    with output.open('xb') as h:
+        h.write((json.dumps(result, ensure_ascii=False, indent=2)+'\n').encode())
+    for f in [map_file, output, Path(__file__).resolve()]:
+        f.chmod(0o444)
+    print(json.dumps({'verdict': result['verdict'], 'map': result['actual_nine_map'], 'result': {'file': str(output), 'sha256': digest(output.read_bytes()), 'bytes': output.stat().st_size}, 'script': result['runner'], 'cases': len(cases), 'temporary_files_removed': True}, indent=2))
+
+
+if __name__ == '__main__':
+    run()

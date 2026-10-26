@@ -1,3 +1,11 @@
+# 第三片當前語言：EN1/8已交，QA10仍未過
+
+新版含官方5秒片頭／21秒片尾，當前main b635、EN af7及ZH／EN字幕／標題說明已送後台並讀回，current pending共23roles。EN105當前音檢PASS，actual-dub108cues；ZH106cues，各105source IDs，兩語selected零CPS，第二章00:29。QA真false10/11只captions，JA14旗與stale harderror、ES4／PT2／ID2共8CPS均保留。見[完整當前結果](production-result.md)、[實交23角色](branding-v4/delivery-summary.json)與[實際字幕收據](branding-v4/CC-title-description-actual-delivery-receipt.json)。
+
+當前EN M4A為af7c…799a／15,391,038B／586.510秒、−14.1LUFS／TP−2.1，原生零新TTS包裝及一次cached105check沒有新ASR／Jev。JA與其他六語未ready／未交；正式languages batch沒有提交。這輪沒有把舊EN縮圖重掛thumbnail_en，只保留其舊review與history引用。原BODY／EN／CC歷史不重寫，以下為02:57的歷史快照，不能當作新版current資料。
+
+## 原文保留：02:57 BODY語言快照
+
 # 第三片語言交付快照
 
 截至2026-10-26T02:57:52.837112+00:00。EN音訊、actual-dub字幕、native標題說明與已看縮圖均已交後臺，音訊驗收1／8；JA R1尚有14旗，其餘六語未完成。official bookends已在隔離base取得但未套用本片c8f，final pending，all_eight_ready=false、overall=false，未送正式language batch。

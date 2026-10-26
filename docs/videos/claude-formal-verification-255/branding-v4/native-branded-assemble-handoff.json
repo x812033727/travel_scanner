@@ -1,0 +1,391 @@
+{
+  "kind": "formal-official-v4-sole-native-assemble-only-handoff",
+  "finished_at": "2026-10-26T04:34:02.189589+00:00",
+  "phase": "assemble_only_complete_no_other_stage_started",
+  "active": false,
+  "native_project_lease_active": false,
+  "native_project_lease_file_exists": false,
+  "actual_native_pid": 231259,
+  "actual_native_code": 0,
+  "source_repo": "/workspace/work/travel-scanner-formal-255",
+  "canonical": "/workspace/work/videos/claude-formal-verification-255",
+  "isolated_base": "/workspace/work/videos/_formal-bookend-candidate",
+  "isolated_candidate": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+  "speech_hash": "8028c7320d9cab29",
+  "body_timeline_sha256": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+  "body_frames": 16813,
+  "new_main": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+    "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+    "bytes": 54578838,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video_frames": 17593,
+    "video_seconds": 586.4333333333333,
+    "encoded_audio_seconds": 586.51,
+    "container_seconds": 586.51,
+    "integrated_lufs": -14.1,
+    "true_peak_dbtp": -2.6
+  },
+  "retained_body": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/build/body.mp4",
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "bytes": 48226281,
+    "equals_canonical_old_entire_movie": true,
+    "source_body_frames": 16813
+  },
+  "branding": {
+    "hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "id": "mokaair-brand-package-v4-endscreen",
+    "intro_frames": 150,
+    "outro_frames": 630,
+    "body_frames": 16813,
+    "intro_at_frame": 732,
+    "body_file": "build/body.mp4",
+    "body_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5"
+  },
+  "official_registry_start_placement_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+  "registry_sha256": "94f5faaed614291353b906fff9a773a4d46692b033054eea0d8a2b4d56d6c94e",
+  "official_bookends_mechanically_present": true,
+  "timing": {
+    "intro_at_body_frame": 732,
+    "intro_end_frame": 882,
+    "first_chapter_offset_frames": 0,
+    "subsequent_offset_frames": 150,
+    "content_end_frame": 16963,
+    "outro_frames": 630,
+    "total_frames": 17593,
+    "fps": 30
+  },
+  "canonical_full_manifest_unchanged": {
+    "files": 1865,
+    "bytes": 623235297,
+    "true": true
+  },
+  "source_native_wrapper_baseline_unchanged": {
+    "files": 609,
+    "true": true
+  },
+  "independent_candidate_original_files": {
+    "unchanged": 1861,
+    "changed": 4,
+    "deleted": 0,
+    "shared_inode_count": 0,
+    "changed_names": [
+      "build/segments.ffconcat",
+      "checks.json",
+      "final.mp4",
+      "state.json"
+    ],
+    "concat_change": "Exactly93 canonical-to-candidate absolute path substitutions, same94-line structure/order; independently verified."
+  },
+  "native_assembly": {
+    "seconds": 725,
+    "new_encoded_scene_segments": 0,
+    "scene_segments": 93,
+    "PSNR": {
+      "samples": 279,
+      "minimum_finite_db": 40.06,
+      "maximum_finite_db": 44.85,
+      "all_native_checks_ok": true
+    },
+    "native_checks_ok": true,
+    "new_QA_executed": false
+  },
+  "preserved_gates": {
+    "canonical_audio": "approved",
+    "candidate_audio": "approved",
+    "canonical_final": "missing",
+    "candidate_final": "missing",
+    "publish": "absent",
+    "approval_file_sha256": "db8ca04b5272eca42f379219f04dff823d606b838c791a7b7156bda0fb731d9f",
+    "source_of_gate_values": "Pure native approvalState reads after true native exit; no approve command or edit."
+  },
+  "preserved_localization": {
+    "EN_original_body_current_checked": 105,
+    "EN_original_flags": 0,
+    "EN_new_branded_audio_ready": false,
+    "JA_checked_original": 105,
+    "JA_original_flags": 14,
+    "JA_R2_started": false,
+    "no_other_foreign_media_work": true,
+    "copied_audio_and_caches_transcripts_flags_hints_journals_CC_unchanged": true,
+    "note": "Existing unbranded EN/JA presentations become stale against new branding; no repack/check/CC run or false readiness. Other6 not completed; eight selections/metadata remain unchanged."
+  },
+  "historical_qa": {
+    "old_body_c8f_report_preserved": true,
+    "old_report_is_not_new_branded_QA": true
+  },
+  "narrative_passed": false,
+  "narrative_score_historical": "9/13 unchanged; no new narrative review claimed",
+  "root_review": {
+    "actual_contact_file": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/formal-nine-splice-contact.png",
+      "sha256": "b605dae9280adfeed6d38d728b12db401feb3543e6749a75df14eb3a7f3c5096",
+      "bytes": 609659,
+      "root_actual_view_completed": false
+    },
+    "audio_extracts": [
+      {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/01-before-intro.sample-trim.wav",
+        "sha256": "4c52498970a34371187db299c0eeb36e2323760284a061aad93745fdf1d6eb4b",
+        "bytes": 1152078,
+        "source_start_sample": 1027200,
+        "source_end_sample": 1315200,
+        "source_start_seconds": 21.4,
+        "seam_frame": 732,
+        "seam_seconds": 24.4,
+        "actual_sample_count": 288000,
+        "duration_seconds": 6,
+        "sample_rate": 48000,
+        "channels": 2,
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-n",
+          "-i",
+          "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-af",
+          "atrim=start_sample=1027200:end_sample=1315200,asetpts=PTS-STARTPTS",
+          "-c:a",
+          "pcm_s16le",
+          "-ar",
+          "48000",
+          "-ac",
+          "2",
+          "/workspace/work/videos/_formal-bookend-candidate/proof/splices/01-before-intro.sample-trim.wav"
+        ]
+      },
+      {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/02-intro-to-body.sample-trim.wav",
+        "sha256": "0704d0b0924a61cdee64c38d84559fa0e2a2fba24e1ffae78d182819b913c3fa",
+        "bytes": 1152078,
+        "source_start_sample": 1267200,
+        "source_end_sample": 1555200,
+        "source_start_seconds": 26.4,
+        "seam_frame": 882,
+        "seam_seconds": 29.4,
+        "actual_sample_count": 288000,
+        "duration_seconds": 6,
+        "sample_rate": 48000,
+        "channels": 2,
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-n",
+          "-i",
+          "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-af",
+          "atrim=start_sample=1267200:end_sample=1555200,asetpts=PTS-STARTPTS",
+          "-c:a",
+          "pcm_s16le",
+          "-ar",
+          "48000",
+          "-ac",
+          "2",
+          "/workspace/work/videos/_formal-bookend-candidate/proof/splices/02-intro-to-body.sample-trim.wav"
+        ]
+      },
+      {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/03-body-to-outro.sample-trim.wav",
+        "sha256": "031293fcc5661bf58d624034ecc0b497afe3acf07e75491f936bf60cc7379701",
+        "bytes": 1152078,
+        "source_start_sample": 26996800,
+        "source_end_sample": 27284800,
+        "source_start_seconds": 562.4333333333333,
+        "seam_frame": 16963,
+        "seam_seconds": 565.4333333333333,
+        "actual_sample_count": 288000,
+        "duration_seconds": 6,
+        "sample_rate": 48000,
+        "channels": 2,
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-n",
+          "-i",
+          "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+          "-map",
+          "0:a:0",
+          "-vn",
+          "-af",
+          "atrim=start_sample=26996800:end_sample=27284800,asetpts=PTS-STARTPTS",
+          "-c:a",
+          "pcm_s16le",
+          "-ar",
+          "48000",
+          "-ac",
+          "2",
+          "/workspace/work/videos/_formal-bookend-candidate/proof/splices/03-body-to-outro.sample-trim.wav"
+        ]
+      }
+    ],
+    "root_actual_splice_view_completed": false,
+    "root_actual_listening_completed": false,
+    "coordinator_view": "Viewed nine actual decoded contact frames only; no full-movie watch or audio listening claimed.",
+    "extractor_initial_error_retained": {
+      "log": "/workspace/work/ai-tech-next/formal-bookend-splice-extraction.log",
+      "log_sha256": "98061efaabf71dbcc354409e0dd900c26024820db98415a8acac667424faef8d",
+      "script": "/workspace/work/ai-tech-next/extract-formal-bookend-splices.py",
+      "script_sha256": "65133d89fd099c40e5ade3d2358aeb914ef6ef8887a782df3f0b57ccedbbd726",
+      "reason": "Initial fast input-seek third excerpt had284321samples/5.923354s rather than the requested288000/6s, causing our extraction-only exact-duration assert. Native movie and all verified production inputs unchanged. Preserve all initial extracts and use new sample-trim clips decoded from actual whole audio without input-seek.",
+      "original_extracts": [
+        {
+          "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/01-before-intro.wav",
+          "sha256": "4c52498970a34371187db299c0eeb36e2323760284a061aad93745fdf1d6eb4b",
+          "frames": 288000,
+          "sample_rate": 48000,
+          "seconds": 6.0
+        },
+        {
+          "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/02-intro-to-body.wav",
+          "sha256": "e063868c8669aa34219c47350ed6869a1751094769ffe97916533c14e80d4218",
+          "frames": 288000,
+          "sample_rate": 48000,
+          "seconds": 6.0
+        },
+        {
+          "file": "/workspace/work/videos/_formal-bookend-candidate/proof/splices/03-body-to-outro.wav",
+          "sha256": "4f0a69ac03dd3114cdbd52f88d440a574b5a481060e7a8250886726728cfb3df",
+          "frames": 284321,
+          "sample_rate": 48000,
+          "seconds": 5.923354166666667
+        }
+      ],
+      "no_native_guard_or_QA_threshold_changed": true
+    }
+  },
+  "new_foreign_audio_ready": false,
+  "new_CC_ready": false,
+  "new_metadata_delivery_ready": false,
+  "backend_new_version_sent": false,
+  "new_final_approved": false,
+  "all_eight_ready": false,
+  "overall_complete": false,
+  "no_actions": [
+    "captions",
+    "dub",
+    "ASR",
+    "TTS",
+    "check-audio",
+    "QA",
+    "POST",
+    "backend",
+    "approve",
+    "git stage",
+    "commit",
+    "merge",
+    "deploy",
+    "publish"
+  ],
+  "paid_calls": 0,
+  "network_calls": 0,
+  "receipt_index": {
+    "copy": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-copy.result.json",
+      "sha256": "dd6cf29a19eb538513b9c96c1eba7185b04f8b8891c8c1f9388ab1b5003a25d0",
+      "bytes": 2648
+    },
+    "canonical_before": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-copy.canonical-before.json",
+      "sha256": "30d281e0784d323673f66ff904ef21573b46a1b4ffe31180db0d9f90cf7c5ca0",
+      "bytes": 472375
+    },
+    "canonical_after_copy": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-copy.canonical-after.json",
+      "sha256": "810fefd31981f093cc9a86c8a26c4be27eb0442d5b70726429fc283d61827ea3",
+      "bytes": 472375
+    },
+    "candidate_initial": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-copy.destination-initial.json",
+      "sha256": "a48c12c5e8e2ce1609ed7bdfaa3a87b6cd8990f088bd9ac76458e214bfdf8aa2",
+      "bytes": 472134
+    },
+    "source_native_baseline": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-source-and-native.baseline.json",
+      "sha256": "81776d17ad7a418ba9544f6f2388d98e6ea66750b7e7af8a0b76581ee6480e8a",
+      "bytes": 128052
+    },
+    "native_completion": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-native-assemble-completion.json",
+      "sha256": "0c39fdf57883b1eead42bc9bcc91a9a43482c7439df56b384500c5b67b89ec33",
+      "bytes": 1350
+    },
+    "canonical_after_assemble": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-canonical-after-assemble.json",
+      "sha256": "b112c01bab9bfe060d5a4d217a0dc6f083e60a7ca52cda412024512981d2b6c5",
+      "bytes": 472375
+    },
+    "candidate_after_assemble": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-candidate-after-assemble.json",
+      "sha256": "990449257be40fa04c17d5bcbd976a87bf9e50eb61c40c95600201849d05aafb",
+      "bytes": 473684
+    },
+    "actual_assembly_verification": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-branded-assemble-only-verification.json",
+      "sha256": "20c7a17e310093e63eed27f55f798d50706da60b6e8362fbf73b027b2158c031",
+      "bytes": 4525
+    },
+    "independent_mechanical_audit": {
+      "file": "/workspace/work/ai-tech-next/formal-bookends-mechanical-audit.json",
+      "sha256": "77b2ab80187bfec6f474c1a34aa10ad79314a9e80e24d70cb83121ffcc4ea7c5",
+      "bytes": 11765
+    },
+    "splice_extracts": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-splice-extraction.json",
+      "sha256": "796a699d51d9e8383e6c908213e84b349b7a26728ca523912d2590f8673f8c2d",
+      "bytes": 8158
+    },
+    "old_qa": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/proof/historical/body-candidate-qa.json",
+      "sha256": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852",
+      "bytes": 2299
+    },
+    "old_checks": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/proof/historical/body-candidate-checks.json",
+      "sha256": "231b80659110f9ab65880e1efb544af74829f0e0623d73623c2d480558a3e71e",
+      "bytes": 55391
+    },
+    "old_approvals": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/proof/historical/local-approvals.json",
+      "sha256": "db8ca04b5272eca42f379219f04dff823d606b838c791a7b7156bda0fb731d9f",
+      "bytes": 1522
+    },
+    "native_assemble_log": {
+      "file": "/workspace/work/ai-tech-next/formal-bookend-assemble-only.log",
+      "sha256": "a8369813e2a0de34b268099885fa43091560c9c1cdf5d61b5ca58e0a5ef6adce",
+      "bytes": 1125
+    },
+    "copy_script": {
+      "file": "/workspace/work/ai-tech-next/prepare-formal-bookend-copy.py",
+      "sha256": "6a369d76ecf0768f8353efe2a270854141efea0e5d9946cc82643f77dfe43496",
+      "bytes": 7130
+    },
+    "bounded_launcher": {
+      "file": "/workspace/work/ai-tech-next/run-formal-bookend-assemble-only.mjs",
+      "sha256": "8a5e0a2713913391e11a558ae569872e61619da283d8c9437db74c57c6041155",
+      "bytes": 4908
+    },
+    "post_audit_script": {
+      "file": "/workspace/work/ai-tech-next/audit-formal-bookend-assemble.py",
+      "sha256": "67bf53e0df78bf224225c6b41380452be1c3e74c07186833e60c6c25f70ca391",
+      "bytes": 8356
+    }
+  },
+  "next_scope": "Root actual splice view/listen, then separately authorized new QA and checked-only source-bound main delivery; no stage starts automatically."
+}

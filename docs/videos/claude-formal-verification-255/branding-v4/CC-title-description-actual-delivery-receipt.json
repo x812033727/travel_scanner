@@ -1,0 +1,488 @@
+{
+  "observed_at": "2026-10-26T06:39:26.843Z",
+  "slug": "claude-formal-verification-255",
+  "mode": "explicit_root_execute_checked6textblobs_only",
+  "ok": true,
+  "stage": "checked_current_zh_tw_and_en_caption_metadata_assets_attached",
+  "upload_started": true,
+  "review_post_attempted": true,
+  "part_receipts": [
+    {
+      "locale": "zh-TW",
+      "kind": "srt",
+      "sha256": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+      "part": 0,
+      "bytes": 10566,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "locale": "zh-TW",
+      "kind": "vtt",
+      "sha256": "42af788d9a8372d3be3f842b525b54715ea6baa4ddab3e81ede77bb36ae2d594",
+      "part": 0,
+      "bytes": 10258,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "locale": "zh-TW",
+      "kind": "description",
+      "sha256": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+      "part": 0,
+      "bytes": 2617,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "locale": "en",
+      "kind": "srt",
+      "sha256": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+      "part": 0,
+      "bytes": 10224,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "locale": "en",
+      "kind": "vtt",
+      "sha256": "80239e6b1db656e997bc00c79c0eb699ab5a5f4b4f4a1c2dee5605386fd03f4f",
+      "part": 0,
+      "bytes": 9908,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "locale": "en",
+      "kind": "description",
+      "sha256": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c",
+      "part": 0,
+      "bytes": 2921,
+      "received": [
+        0
+      ],
+      "complete": true
+    }
+  ],
+  "server_upload_receipts": [
+    {
+      "locale": "zh-TW",
+      "kind": "srt",
+      "sha256": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+      "bytes": 10566,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "locale": "zh-TW",
+      "kind": "vtt",
+      "sha256": "42af788d9a8372d3be3f842b525b54715ea6baa4ddab3e81ede77bb36ae2d594",
+      "bytes": 10258,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "locale": "zh-TW",
+      "kind": "description",
+      "sha256": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+      "bytes": 2617,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "locale": "en",
+      "kind": "srt",
+      "sha256": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+      "bytes": 10224,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "locale": "en",
+      "kind": "vtt",
+      "sha256": "80239e6b1db656e997bc00c79c0eb699ab5a5f4b4f4a1c2dee5605386fd03f4f",
+      "bytes": 9908,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "locale": "en",
+      "kind": "description",
+      "sha256": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c",
+      "bytes": 2921,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    }
+  ],
+  "http_errors": [],
+  "verification_kind": "normal_server_SHA_assembly_and_authenticated_role_metadata_readback",
+  "remote_binary_download_performed": false,
+  "remote_CAS_available": false,
+  "concurrency_limit": "Fresh exact owner-choice/every-review snapshots guard earlier changes. Native normal POST has no atomic CAS.",
+  "all_eight_ready": false,
+  "overall_production_completed": false,
+  "native_qa_ok": false,
+  "ready_to_publish": false,
+  "fresh_ASR": false,
+  "language_batch_submitted": false,
+  "thumbnail_uploaded": false,
+  "preflight": {
+    "profile": "formal105_official_v4_zh_tw_en_checked_captions",
+    "locales": [
+      "zh-TW",
+      "en"
+    ],
+    "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "speech_hash": "8028c7320d9cab29",
+    "main_sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+    "main_pin_file": "/workspace/work/ai-tech-next/formal-branded-main-EN-retained-history.owner-preserved.root-pin.actual.json",
+    "main_pin_sha256": "64ca8edb6f475115ab479d9aa83e716b109df591518032c26c891723c2f1ab7f",
+    "main_delivery_receipt_file": "/workspace/work/ai-tech-next/attach-formal-branded-main-and-checked-en.owner-preserved.root-result.json",
+    "main_delivery_receipt_sha256": "d45fd8917edba4a127065e9d0bf56a9ae514f2004568633a3617ec5d3b1f74b5",
+    "qa_sha256": "a458c1e8cd58c5b847c2d16e39fc83aa66dcebe27ea58d9ae776659a28fedcad",
+    "qa_ok": false,
+    "caption_manifest_sha256": "0baad6c85446922716cb9a5fb53ce8b400f77fce295ea917b0fbaf37cc3a1870",
+    "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "presentation_frames": 17593,
+    "intro_at_frame": 732,
+    "locale_data": {
+      "zh-TW": {
+        "metadata": {
+          "title": "Claude形式驗證研究：用255看懂程式保證｜CC字幕",
+          "description": "容量只有8byte，為什麼長度255會被接受？\n給想看懂AI程式證明、會請AI改程式的你；接受合法輸入和能否結束，分別留下可重跑紀錄。\n\n把條件寫清楚，再用兩個真實C範例修正並核對結果。\n\n2026-10-22，Anthropic與Theorem公開合作研究。研究報告239個入口／123個函式庫；本片引用的公開release為60個入口／25個函式庫。僅該公開release未提供halts命題的證明，不外推整個研究。\n\n本地原創guard限定n=0..255、容量8byte、另需1byte結尾，只執行接受判斷；另一支獨立程式檢查計數後的返回。方法是實際C執行、完整列舉、guard命題SAT與loop有限控制圖，未執行供應商Rocq checker。\n\n原創C、執行結果及完整來源資料包：https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n原創SVG為本片依程式結果與官方流程重繪，沒有冒充產品操作畫面。\n\n📌 章節\n00:00 本地檢查竟接受255\n00:29 紀錄先寫下能收哪些長度\n01:55 總長留下256，檢查改判拒絕\n03:42 全部拒絕，也拒了合法輸入\n04:45 返回欄遇到一個循環\n06:50 紀錄對上正式證明的條件\n09:13 把自己的要求寫進紀錄\n\n📚 參考資料\nAnthropic：Claude形式驗證研究：https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README：https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型：https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 圖片來源\nMokaair原創概念圖1（原創；保留權利）\nMokaair原創概念圖2（原創；保留權利）\nMokaair原創概念圖3（原創；保留權利）\nMokaair原創概念圖4（原創；保留權利）\nMokaair原創概念圖5（原創；保留權利）\nMokaair原創概念圖6（原創；保留權利）\nMokaair原創專用縮圖：接受判斷（原創；保留權利）\nMokaair原創C：guard.c（原創；保留權利）\nMokaair原創C：loop.c（原創；保留權利）\nMokaair原創專用縮圖SVG（原創；保留權利）\n\n#Claude #形式驗證 #AI新聞拆解"
+        },
+        "cues": 106,
+        "reading_speed_advisories": [],
+        "native_caption_timing": "narration",
+        "chapters": [
+          {
+            "at": "00:00",
+            "title": "本地檢查竟接受255"
+          },
+          {
+            "at": "00:29",
+            "title": "紀錄先寫下能收哪些長度"
+          },
+          {
+            "at": "01:55",
+            "title": "總長留下256，檢查改判拒絕"
+          },
+          {
+            "at": "03:42",
+            "title": "全部拒絕，也拒了合法輸入"
+          },
+          {
+            "at": "04:45",
+            "title": "返回欄遇到一個循環"
+          },
+          {
+            "at": "06:50",
+            "title": "紀錄對上正式證明的條件"
+          },
+          {
+            "at": "09:13",
+            "title": "把自己的要求寫進紀錄"
+          }
+        ]
+      },
+      "en": {
+        "metadata": {
+          "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees｜CC Subtitles",
+          "description": "Why does a program with only 8 bytes of capacity accept length 255?\nFor anyone who wants to understand AI-written code proofs or asks AI to edit code: we keep reproducible records of accepting valid inputs and of whether execution ends.\n\nWe make the requirements explicit, then fix two real C examples and check their results.\n\nOn 2026-10-22, Anthropic and Theorem published joint research. The study reports 239 entry points across 123 libraries; the public release cited here contains 60 entry points across 25 libraries. The statement that no halts proof is provided applies only to that public release, not to the entire study.\n\nOur original local guard has n=0..255 and a capacity of 8 bytes, with 1 of those bytes reserved for the terminator. It only decides acceptance. A separate, independent program checks the return after counting. Methods: actual C execution, exhaustive enumeration, propositional SAT for the guard, and a finite control graph for the loop. We did not run the vendor's Rocq checker.\n\nOriginal C code, execution results, and the complete source bundle: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nThe original SVG diagrams were redrawn for this video from program results and the official workflow. They are not presented as product UI footage.\n\n📌 Chapters\n00:00 Local check accepts 255\n00:29 Record the valid lengths\n01:55 Keep 256; reject the input\n03:42 Reject-all rejects valid input\n04:45 A cycle in the return check\n06:50 Match formal proof conditions\n09:13 Record your own requirements\n\n📚 Sources\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Image credits\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #formalverification #AI新聞拆解"
+        },
+        "cues": 108,
+        "reading_speed_advisories": [],
+        "native_caption_timing": "dub",
+        "chapters": [
+          {
+            "at": "00:00",
+            "title": "本地檢查竟接受255"
+          },
+          {
+            "at": "00:29",
+            "title": "紀錄先寫下能收哪些長度"
+          },
+          {
+            "at": "01:55",
+            "title": "總長留下256，檢查改判拒絕"
+          },
+          {
+            "at": "03:42",
+            "title": "全部拒絕，也拒了合法輸入"
+          },
+          {
+            "at": "04:45",
+            "title": "返回欄遇到一個循環"
+          },
+          {
+            "at": "06:50",
+            "title": "紀錄對上正式證明的條件"
+          },
+          {
+            "at": "09:13",
+            "title": "把自己的要求寫進紀錄"
+          }
+        ]
+      }
+    },
+    "assets": [
+      {
+        "locale": "zh-TW",
+        "kind": "srt",
+        "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/zh-TW.srt",
+        "roles": [
+          "captions_zh-TW",
+          "evidence_zh_tw_cc_srt"
+        ],
+        "sha256": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+        "size": 10566,
+        "content_type": "text/plain"
+      },
+      {
+        "locale": "zh-TW",
+        "kind": "vtt",
+        "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/zh-TW.vtt",
+        "roles": [
+          "evidence_zh_tw_cc_vtt"
+        ],
+        "sha256": "42af788d9a8372d3be3f842b525b54715ea6baa4ddab3e81ede77bb36ae2d594",
+        "size": 10258,
+        "content_type": "text/plain"
+      },
+      {
+        "locale": "zh-TW",
+        "kind": "description",
+        "file": "/workspace/work/ai-tech-next/formal-branded-checked-caption-text/zh-TW.txt",
+        "roles": [
+          "description_zh-TW",
+          "evidence_zh_tw_metadata_txt"
+        ],
+        "sha256": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+        "size": 2617,
+        "content_type": "text/plain"
+      },
+      {
+        "locale": "en",
+        "kind": "srt",
+        "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/en.srt",
+        "roles": [
+          "captions_en",
+          "evidence_en_cc_srt"
+        ],
+        "sha256": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+        "size": 10224,
+        "content_type": "text/plain"
+      },
+      {
+        "locale": "en",
+        "kind": "vtt",
+        "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/en.vtt",
+        "roles": [
+          "evidence_en_cc_vtt"
+        ],
+        "sha256": "80239e6b1db656e997bc00c79c0eb699ab5a5f4b4f4a1c2dee5605386fd03f4f",
+        "size": 9908,
+        "content_type": "text/plain"
+      },
+      {
+        "locale": "en",
+        "kind": "description",
+        "file": "/workspace/work/ai-tech-next/formal-branded-checked-caption-text/en.txt",
+        "roles": [
+          "description_en",
+          "evidence_en_metadata_txt"
+        ],
+        "sha256": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c",
+        "size": 2921,
+        "content_type": "text/plain"
+      }
+    ],
+    "global_native_caption_issues": [
+      {
+        "locale": "zh-TW",
+        "timing": "narration",
+        "problems": []
+      },
+      {
+        "locale": "en",
+        "timing": "dub",
+        "problems": []
+      },
+      {
+        "locale": "ja",
+        "timing": "narration",
+        "problems": [
+          "the ja dub track is older than the script or its translation (or how they are pronounced), or does not match the branding; these cues follow the narration, run dub again"
+        ]
+      },
+      {
+        "locale": "ko",
+        "timing": "narration",
+        "problems": []
+      },
+      {
+        "locale": "es",
+        "timing": "narration",
+        "problems": [
+          "cue 7 (4rff): 18.8 characters a second, above 17",
+          "cue 87 (7ip9): 17.7 characters a second, above 17",
+          "cue 89 (6x7t): 20.0 characters a second, above 17",
+          "cue 90 (6x7t): 21.4 characters a second, above 17"
+        ]
+      },
+      {
+        "locale": "pt",
+        "timing": "narration",
+        "problems": [
+          "cue 86 (7ip9): 18.0 characters a second, above 17",
+          "cue 88 (6x7t): 18.8 characters a second, above 17"
+        ]
+      },
+      {
+        "locale": "id",
+        "timing": "narration",
+        "problems": [
+          "cue 87 (7ip9): 18.2 characters a second, above 17",
+          "cue 89 (6x7t): 19.3 characters a second, above 17"
+        ]
+      },
+      {
+        "locale": "vi",
+        "timing": "narration",
+        "problems": []
+      },
+      {
+        "locale": "th",
+        "timing": "narration",
+        "problems": []
+      }
+    ],
+    "checked_foreign_audio": 1,
+    "total_foreign": 8,
+    "all_eight_ready": false,
+    "overall_production_completed": false,
+    "input_sha256": {
+      "/workspace/work/ai-tech-next/attach-formal-branded-main-and-checked-en.retained-history.owner-preserved.mjs": "026f0db92ffebccfb5efc5abf8539a8043a82ff38a7f1e6c7860947f5523d9aa",
+      "/workspace/work/ai-tech-next/deliver-checked-caption-assets.strict-evidence.mjs": "0be5e42a821cecd5bf6495dd2b8cdf59eedd0e4a9e70ec20b8e252fea7232b87",
+      "/workspace/work/ai-tech-next/deliver-checked-formal-locale.mjs": "90a84eb4ef4c43edb0eba8348f5fc994ca72372df47b9e5bcd52641da0c884e8",
+      "/workspace/work/ai-tech-next/formal-branded-main-EN-retained-history.owner-preserved.root-pin.actual.json": "64ca8edb6f475115ab479d9aa83e716b109df591518032c26c891723c2f1ab7f",
+      "/workspace/work/ai-tech-next/attach-formal-branded-main-and-checked-en.owner-preserved.root-result.json": "d45fd8917edba4a127065e9d0bf56a9ae514f2004568633a3617ec5d3b1f74b5",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/manifest.json": "0baad6c85446922716cb9a5fb53ce8b400f77fce295ea917b0fbaf37cc3a1870",
+      "/workspace/work/videos/_formal-bookend-candidate/formal-current-captions.handoff.json": "907cce3cf13f3bc57a7df48fbb2000ea381dfb5d80d46cdebb5cf3d5787a835e",
+      "/workspace/work/ai-tech-next/formal-branded-en-independent.2026-10-26T05-07-19-607Z.proof.json": "742eecb40f8a77af3ce0b56679ae8b93c59bedfdac846b11a9a9b63e43a2a37d",
+      "/workspace/work/ai-tech-next/deliver-formal-branded-checked-caption-assets.mjs": "9ff5f8fc2b7ccc380b3183951e2afcce8ad6ff44a5995204316e5677de544098",
+      "/workspace/work/ai-tech-next/formal-branded-checked-caption-root-pin.actual.json": "693518cb72072454793f06a539b4b72110913ef0c1c87ab34d7d57a1008136e3",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/timeline.json": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/checks.json": "aac88241e4f94df25e8315a1e21b8a4be4e631d8f626b19d9858220e2a3b6cb4",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/zh-TW.srt": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/zh-TW.vtt": "42af788d9a8372d3be3f842b525b54715ea6baa4ddab3e81ede77bb36ae2d594",
+      "/workspace/work/ai-tech-next/formal-branded-checked-caption-text/zh-TW.txt": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/en.srt": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+      "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/captions/en.vtt": "80239e6b1db656e997bc00c79c0eb699ab5a5f4b4f4a1c2dee5605386fd03f4f",
+      "/workspace/work/ai-tech-next/formal-branded-checked-caption-text/en.txt": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c"
+    },
+    "main_snapshot_signature": "6b0c3cb533b6b974e8f3e87cb454746b400f4d05e3eaf5b474bc24ded5ae2a03",
+    "snapshot_signature": "faf57975cfac87076850dc854319082d13755fddf0ec99fecdfde8cb4e807675"
+  },
+  "final_review_id": "e66d6661-c991-42fc-abde-30e942c9fe5b",
+  "before_review_sha256": "3599899e6d88f3a631eae3db67ec7a631c2f9893797f3d6a037103e0f27f8df1",
+  "metadata_readback_verified": true,
+  "download_roles": [
+    {
+      "role": "captions_zh-TW",
+      "sha256": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+      "size": 10566,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_cc_srt",
+      "sha256": "4e42e1ae18bfe49d9570f69e6bd25b1b09582f6450cda6b232b9b17e2d051295",
+      "size": 10566,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_cc_vtt",
+      "sha256": "42af788d9a8372d3be3f842b525b54715ea6baa4ddab3e81ede77bb36ae2d594",
+      "size": 10258,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "description_zh-TW",
+      "sha256": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+      "size": 2617,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_metadata_txt",
+      "sha256": "84f950409f16ac84e042036c45bc7dc8a24dd5b3de5084bd15dfdaa8fa5350ac",
+      "size": 2617,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_en",
+      "sha256": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+      "size": 10224,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_en_cc_srt",
+      "sha256": "24d58873cd98d1b302f0c1edf859b2b498b700efc98396a444673f8fea038fdb",
+      "size": 10224,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_en_cc_vtt",
+      "sha256": "80239e6b1db656e997bc00c79c0eb699ab5a5f4b4f4a1c2dee5605386fd03f4f",
+      "size": 9908,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "description_en",
+      "sha256": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c",
+      "size": 2921,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_en_metadata_txt",
+      "sha256": "678d8b13300fab71d16e4283e7e5e33326450068f646f03bd0750f881625089c",
+      "size": 2921,
+      "content_type": "text/plain"
+    }
+  ],
+  "all_original_13_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "old_superseded_BODY_12_and_seven_live_history_refs_preserved": true,
+  "native_qa_passed": 10,
+  "native_qa_total": 11,
+  "native_qa_failed_items": [
+    "captions"
+  ],
+  "native_all8_cps_and_ja_stale_error_preserved": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "standard_dubs_payload_changed": false,
+  "finished_at": "2026-10-26T06:40:36.548Z"
+}

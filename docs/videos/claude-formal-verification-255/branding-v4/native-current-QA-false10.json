@@ -1,0 +1,71 @@
+{
+  "ok": false,
+  "final_sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+  "items": [
+    {
+      "id": "assemble",
+      "ok": true,
+      "detail": "17593 frames, -14.1 LUFS, 279 frames matched their slides; every check passed"
+    },
+    {
+      "id": "render",
+      "ok": true,
+      "detail": "101 slide states drawn with no layout, glyph or font problem, thumbnail included"
+    },
+    {
+      "id": "narration",
+      "ok": true,
+      "detail": "timeline.json approved at 2026-10-25T21:01:22.994Z"
+    },
+    {
+      "id": "pace",
+      "ok": true,
+      "detail": "101 slide states, the longest 12.3 s; none over 15 s"
+    },
+    {
+      "id": "captions",
+      "ok": false,
+      "detail": "ja: the ja dub track is older than the script or its translation (or how they are pronounced), or does not match the branding; these cues follow the narration, run dub again",
+      "warnings": [
+        "es: cue 7 (4rff): 18.8 characters a second, above 17",
+        "es: cue 87 (7ip9): 17.7 characters a second, above 17",
+        "es: cue 89 (6x7t): 20.0 characters a second, above 17",
+        "es: cue 90 (6x7t): 21.4 characters a second, above 17",
+        "pt: cue 86 (7ip9): 18.0 characters a second, above 17",
+        "pt: cue 88 (6x7t): 18.8 characters a second, above 17",
+        "id: cue 87 (7ip9): 18.2 characters a second, above 17",
+        "id: cue 89 (6x7t): 19.3 characters a second, above 17"
+      ]
+    },
+    {
+      "id": "metadata",
+      "ok": true,
+      "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 7 chapters"
+    },
+    {
+      "id": "facts",
+      "ok": true,
+      "detail": "verify-3.md marks no claim NOT FOUND"
+    },
+    {
+      "id": "links",
+      "ok": true,
+      "detail": "7 links open"
+    },
+    {
+      "id": "thumbnail",
+      "ok": true,
+      "detail": "1280x720 JPEG, 90 KB; the headline is about 34 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th"
+    },
+    {
+      "id": "policy",
+      "ok": true,
+      "detail": "Jev：符合立場 0.83、有示範 0.91、建議 0.01、業配 0.04，通過"
+    },
+    {
+      "id": "disclosure",
+      "ok": true,
+      "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+    }
+  ]
+}

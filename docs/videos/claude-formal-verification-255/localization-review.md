@@ -1,3 +1,13 @@
+# 第三片當前本地化驗收範圍
+
+截至本輪新版實交：EN1/8的M4A、actual-dub108cue／105ID CC及標題說明已在官方片頭尾版b635後台完成；繁中106cue／105ID CC及說明也完成。23roles的[當前證據](branding-v4/delivery-summary.json)與[QAfalse10](branding-v4/native-current-QA-false10.json)須共同閱讀，不能沿用舊BODY QA11作新版全片通過。
+
+JA仍原句R1的91accepted／14flags，新manifest因branding不符跟narration並保留harderror；其餘六語音訊未完成。8CPS保留，沒有skip／keep-fitted、調門檻、手清旗或假server approval。來源e6e／speech8028、原MASTER19ae、EN完整accepted targets／raw／cache／ASR沒有為本次包裝而改寫。只重用當前已驗的EN，不把未驗JA fitted dub自動附帶送出。
+
+以下舊文字／BODY／縮圖與失敗歷史完整保留；當前新片型交付只以上述23roles、current hash與[production-progress](production-progress.json)的明示scope為準。
+
+## 原文保留：02:57以前本地化快照
+
 # 第三片八語文字與媒體快照
 
 截至2026-10-26T02:57:52.837112+00:00，EN105／105音訊已驗收交付，actual-dub108cue／105ID字幕、native標題說明與實際觀看縮圖亦真送後臺並讀回六角色。JA原句R1已105 checked／91 accepted／14 flags／0 unchecked，未ready；其餘六語未完成，all_eight_ready與overall仍false，正式language batch未提交。見[languages-result.md](languages-result.md)。

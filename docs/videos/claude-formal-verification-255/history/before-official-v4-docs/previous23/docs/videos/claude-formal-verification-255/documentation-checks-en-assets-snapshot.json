@@ -1,0 +1,66 @@
+{
+  "observed_at": "2026-10-26T02:59:39.609342+00:00",
+  "scope": "Documentation/proof-only snapshot. No native TTS/ASR/render/captions or backend actions; historical production receipts retain their original scope.",
+  "native_lint": {
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 7,
+    "warnings_detail": [
+      {
+        "path": "scenes[0]",
+        "message": "the opening chapter runs about 25 s; it is the condensation, 30 to 60 s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)"
+      },
+      {
+        "path": "scenes",
+        "message": "「二百五十五」 is said in 13 lines (zfgp, jeaj, vwiq, 3mpx, ij57, a7te, dfhy, gtuj, p4u6, qmcd, b3r9, 58rm, ghs2): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二百五十六」 is said in 7 lines (vwiq, tew5, ij57, tksv, kq36, ghs2, 9mxr): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube/es",
+        "message": "es.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/pt",
+        "message": "pt.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/vi",
+        "message": "vi.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/th",
+        "message": "th.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "raw_output_sha256": "ce430bb4baba74b763ac25597e5bda3617d363c2b47ef1d20d9acf321fefea91"
+  },
+  "task_check": {
+    "exit_code": 0,
+    "task_files_validated": 2185,
+    "preexisting_stale_claim_and_overlap_warnings_retained": true,
+    "log_sha256": "ce4986b8f29629ed2b1d951c1a5be0f21c495e80dab4cc33428f03606419828e"
+  },
+  "relative_links_broken": 0,
+  "proof_index_entries_verified_before_this_check_receipt": 62,
+  "protected_existing_files_verified_unchanged": 2007,
+  "protected_scope": "All existing episode files except current six documentation/index files; all current runtime files; shared producer state. Includes the already-modified JA translation and current EN/JA full WAVs/caches/flags/media/CC/thumbnails.",
+  "EN_current_asset_bindings": [
+    "srt",
+    "vtt",
+    "description",
+    "thumbnail"
+  ],
+  "JA_status": "105 checked /91 accepted /14 flags /0 unchecked; not ready; no R2",
+  "all_eight_ready": false,
+  "overall_production_completed": false,
+  "normal_native_236_tests_repeated": false,
+  "no_git_stage_or_commit": true,
+  "no_media_source_i18n_writes": true,
+  "no_backend_or_network": true,
+  "no_paid_or_ASR": true
+}

@@ -1,0 +1,116 @@
+{
+  "kind": "formal-official-v4-actual-assemble-only-verification",
+  "started_at": "2026-10-26T04:28:37.598286+00:00",
+  "verdict": "PASS_ASSEMBLE_ONLY_NOT_FULL_DELIVERY",
+  "problems": [],
+  "paid_calls": 0,
+  "network_calls": 0,
+  "native_caption_dub_tts_ASR_QA_review_or_approval_run": false,
+  "canonical_mutations": 0,
+  "native_completion": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/formal-native-assemble-completion.json",
+    "sha256": "0c39fdf57883b1eead42bc9bcc91a9a43482c7439df56b384500c5b67b89ec33",
+    "pid": 231259,
+    "started_at": "2026-10-26T04:15:58.484Z",
+    "native_finished_at": "2026-10-26T04:28:06.543Z",
+    "finished_at": "2026-10-26T04:28:06.545Z",
+    "native_code": 0,
+    "lease_active": false,
+    "command": [
+      "assemble",
+      "--slug",
+      "claude-formal-verification-255",
+      "--workdir",
+      "/workspace/work/videos/_formal-bookend-candidate",
+      "--intro-after-condensation"
+    ]
+  },
+  "canonical_all_files_unchanged": true,
+  "canonical_file_count": 1865,
+  "canonical_total_bytes": 623235297,
+  "source_native_wrapper_baseline_unchanged": true,
+  "source_native_wrapper_files": 609,
+  "protected_copied_files": 1673,
+  "protected_copied_files_unchanged": true,
+  "protected_copied_shared_inode_count": 0,
+  "changed_existing_candidates": [
+    "build/segments.ffconcat",
+    "checks.json",
+    "final.mp4",
+    "state.json"
+  ],
+  "deleted_existing_candidates": [],
+  "created_candidate_outputs": [
+    "branding.json",
+    "build/body.mp4",
+    "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/intro.mp4",
+    "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/join.ffconcat",
+    "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/outro.mp4"
+  ],
+  "new_main": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+    "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+    "bytes": 54578838,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video_frames": 17593,
+    "video_seconds": 586.4333333333333,
+    "encoded_audio_seconds": 586.51,
+    "container_seconds": 586.51,
+    "integrated_lufs": -14.1,
+    "true_peak_dbtp": -2.6
+  },
+  "retained_body": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/build/body.mp4",
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "bytes": 48226281,
+    "equals_canonical_old_entire_movie": true,
+    "source_body_frames": 16813
+  },
+  "branding": {
+    "hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "id": "mokaair-brand-package-v4-endscreen",
+    "intro_frames": 150,
+    "outro_frames": 630,
+    "body_frames": 16813,
+    "intro_at_frame": 732,
+    "body_file": "build/body.mp4",
+    "body_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5"
+  },
+  "branding_pin_sha256": "5866411dab3e744457b7fc888ff9165da4af6694a10af810b89c62de9ef06cb3",
+  "checks_sha256": "aac88241e4f94df25e8315a1e21b8a4be4e631d8f626b19d9858220e2a3b6cb4",
+  "native_PSNRes": {
+    "samples": 279,
+    "minimum_finite_db": 40.06,
+    "maximum_finite_db": 44.85,
+    "all_native_checks_ok": true
+  },
+  "native_stage": {
+    "stage": "assemble",
+    "at": "2026-10-26T04:28:06.535Z",
+    "ok": true,
+    "encoded_segments": 0,
+    "seconds": 725
+  },
+  "unchanged_local_approvals_sha256": "db8ca04b5272eca42f379219f04dff823d606b838c791a7b7156bda0fb731d9f",
+  "old_qa_archive": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/proof/historical/body-candidate-qa.json",
+    "sha256": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852",
+    "bound_to_body_c8f_only": true,
+    "new_QA_performed": false
+  },
+  "unchanged_foreign_state": {
+    "EN_flags": 0,
+    "JA_flags": 14,
+    "scope": "All audio/dubs/captions/review/hints/journal inputs covered by protected fullSHA manifest; no new foreign audio stage or acceptance claimed."
+  },
+  "official_bookends_mechanically_applied": true,
+  "root_actual_splice_view_or_listen_completed": false,
+  "new_foreign_audio_ready": false,
+  "new_CC_ready": false,
+  "new_final_approved": false,
+  "all_eight_ready": false,
+  "overall_complete": false,
+  "finished_at": "2026-10-26T04:28:47.018301+00:00"
+}

@@ -1,0 +1,160 @@
+{
+  "kind": "formal-branded-en-readonly-meter",
+  "locale": "en",
+  "candidate": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255",
+  "proposal_only_until_separate_root_review": true,
+  "proposal_sha256": "406337c950311fc42d81245e080e53835336efb5284b1d0944f2faa880147add",
+  "native_rule_source_sha256": "2717fc03bae627df013fdc97af509d1592a92bd94c74b5d5b69f8498314eb986",
+  "actual_completion_evidence": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/formal-en-repack-native-completion.json",
+    "sha256": "ce7e700e0d509ab5416a66635d993e3645b8c417db9fe1a87ff8fceaaf2cdb08",
+    "native_code": 0,
+    "active": false,
+    "phase": "native_EN_repack_exit0_METER_AND_ASR_HELD"
+  },
+  "immutable_preflight_evidence": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/formal-en-zero-tts-repack.preflight.json",
+    "sha256": "9886a8489ae5975c4ecf01d1e53a631ec5abc47b4b6359363f626c690051aae3",
+    "before_inventory": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/formal-en-zero-tts-repack.before-inputs.json",
+      "sha256": "b913d3e16973dd6a594bca38113ba7534fe1512d67839d1372201df566a2f7f5",
+      "canonical_files": 1865,
+      "candidate_files": 1870
+    }
+  },
+  "original_adapter_sha256": "9819a7f184040133c513c6aa81a5f0cc9f9a593ad3f995c5c3a10b960c2c800a",
+  "pins": {
+    "proposal_v1_sha256": "6f67cfd976a974a3bf6c8abca7f07521e125e6f4a5b9f147fc6036d23ba9bf37",
+    "original_adapter_sha256": "9819a7f184040133c513c6aa81a5f0cc9f9a593ad3f995c5c3a10b960c2c800a",
+    "zero_tts_preflight_sha256": "9886a8489ae5975c4ecf01d1e53a631ec5abc47b4b6359363f626c690051aae3",
+    "before_inventory_sha256": "b913d3e16973dd6a594bca38113ba7534fe1512d67839d1372201df566a2f7f5",
+    "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "speech_hash": "8028c7320d9cab29",
+    "translation_hash": "92e6309bd9211052",
+    "speech_fingerprint": "76a76f4bbbc0c4ba",
+    "body_pcm_sha256": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84",
+    "body_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "main_sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+    "body_timeline_sha256": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+    "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "intro_sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+    "outro_sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+    "body_frames": 16813,
+    "presentation_frames": 17593,
+    "intro_at_body_frame": 732,
+    "intro_frames": 150,
+    "outro_frames": 630
+  },
+  "caller_post_exit_m4a_sha256": "af7c3d50693e7231513bdb57e4f404b9491d449dddcad9c12d7c5e931c3a799a",
+  "file": "dubs/en.m4a",
+  "bytes": 15391038,
+  "sha256": "af7c3d50693e7231513bdb57e4f404b9491d449dddcad9c12d7c5e931c3a799a",
+  "duration": 586.51,
+  "codec": "aac",
+  "sample_rate": 48000,
+  "channels": 2,
+  "integrated": -14.1,
+  "truePeak": -2.1,
+  "timing": {
+    "problems": [],
+    "body_timeline_frames": 16813,
+    "body_timeline_seconds": 560.4333333333333,
+    "body_pcm_file": "dubs/en/narration.wav",
+    "body_pcm_samples": 26900800,
+    "body_pcm_codec": "pcm_s16le",
+    "body_pcm_channels": 1,
+    "body_pcm_sample_rate": 48000,
+    "body_pcm_seconds": 560.4333333333333,
+    "presentation_timeline_frames": 17593,
+    "presentation_timeline_seconds": 586.4333333333333,
+    "presentation_grid_samples_derived": 28148800,
+    "presentation_pcm_file": null,
+    "presentation_pcm_measured": false,
+    "presentation_grid_note": "Derived frame-grid sample count only; no branded presentation PCM file was measured or asserted.",
+    "encoded_samples": 28152480,
+    "encoded_seconds": 586.51,
+    "encoded_start": 0,
+    "encoded_end": 586.51,
+    "container_seconds": 586.51,
+    "encoded_minus_presentation_grid_seconds": 0.07666666666671063,
+    "native_short_allowance_seconds": 0.03333333333333333,
+    "native_long_allowance_seconds": 0.09733333333333333,
+    "native_rule": "/workspace/work/travel-scanner-formal-255/tools/video/assemble/plan.mjs:182-203 checkProbe; AAC_PADDING_SECONDS=(3*1024)/48000"
+  },
+  "input_snapshot": {
+    "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/video.json": {
+      "sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+      "bytes": 71559
+    },
+    "/workspace/work/ai-tech-next/measure-formal-dubs.native-timing.mjs": {
+      "sha256": "9819a7f184040133c513c6aa81a5f0cc9f9a593ad3f995c5c3a10b960c2c800a",
+      "bytes": 5757
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/formal-en-repack-native-completion.json": {
+      "sha256": "ce7e700e0d509ab5416a66635d993e3645b8c417db9fe1a87ff8fceaaf2cdb08",
+      "bytes": 1262
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/formal-en-zero-tts-repack.preflight.json": {
+      "sha256": "9886a8489ae5975c4ecf01d1e53a631ec5abc47b4b6359363f626c690051aae3",
+      "bytes": 204395
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/formal-en-zero-tts-repack.before-inputs.json": {
+      "sha256": "b913d3e16973dd6a594bca38113ba7534fe1512d67839d1372201df566a2f7f5",
+      "bytes": 729122
+    },
+    "/workspace/work/ai-tech-next/measure-formal-branded-en.proposed.mjs": {
+      "sha256": "406337c950311fc42d81245e080e53835336efb5284b1d0944f2faa880147add",
+      "bytes": 16509
+    },
+    "/workspace/work/travel-scanner-formal-255/tools/video/assemble/plan.mjs": {
+      "sha256": "2717fc03bae627df013fdc97af509d1592a92bd94c74b5d5b69f8498314eb986",
+      "bytes": 13266
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/intro.mp4": {
+      "sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+      "bytes": 2708408
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/outro.mp4": {
+      "sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+      "bytes": 2054558
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/timeline.json": {
+      "sha256": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+      "bytes": 51649
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/checks.json": {
+      "sha256": "aac88241e4f94df25e8315a1e21b8a4be4e631d8f626b19d9858220e2a3b6cb4",
+      "bytes": 55764
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/branding.json": {
+      "sha256": "5866411dab3e744457b7fc888ff9165da4af6694a10af810b89c62de9ef06cb3",
+      "bytes": 765
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/dubs/en/timeline.json": {
+      "sha256": "44aa0fe5c9f9bd3fcdb2c4c714323f6a530717d77394f40bfa46b02523052470",
+      "bytes": 42192
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4": {
+      "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+      "bytes": 54578838
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/build/body.mp4": {
+      "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+      "bytes": 48226281
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/dubs/en.m4a": {
+      "sha256": "af7c3d50693e7231513bdb57e4f404b9491d449dddcad9c12d7c5e931c3a799a",
+      "bytes": 15391038
+    },
+    "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/dubs/en/narration.wav": {
+      "sha256": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84",
+      "bytes": 53801644
+    }
+  },
+  "production_measurement_written": false,
+  "production_inputs_written": false,
+  "speech_or_QA_or_approval_claim": false,
+  "ok": true,
+  "problems": [],
+  "measured_at": "2026-10-26T04:53:45.549Z"
+}

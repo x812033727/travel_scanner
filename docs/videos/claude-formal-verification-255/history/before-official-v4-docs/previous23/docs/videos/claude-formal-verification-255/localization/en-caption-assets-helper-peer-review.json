@@ -1,0 +1,98 @@
+{
+  "observed_at": "2026-10-26T02:16:50.470670+00:00",
+  "result": "PASS",
+  "scope": "Narrow independent delta peer review of two requested visual-evidence guard fixes and their tests. This does not accept production assets, audio or a backend upload.",
+  "independent_reader": "/root/news_verify",
+  "author": "/root/checked_caption_assets",
+  "module_file": "/workspace/work/ai-tech-next/deliver-checked-caption-assets.strict-evidence.mjs",
+  "module_sha256": "0be5e42a821cecd5bf6495dd2b8cdf59eedd0e4a9e70ec20b8e252fea7232b87",
+  "previous_candidate_sha256": "4b877b7e33013ac68cecf6fbd4db59c3b2c2b72f644efaa938b0f3375e47c5f6",
+  "previous_result": "REVISE",
+  "old_review_file": "caption-assets-peer-review.json",
+  "old_review_sha256": "efaaecbedf2a38b1a9138b3476035bcafda8eae52dba2557f7f7be464f97a31a",
+  "fix_results": [
+    {
+      "id": "R3",
+      "result": "PASS",
+      "finding": "Actual viewed image/contact bytes are now checked after realpath/fullSHA binding by assertVisualImage: PNG signature plus positive IHDR dimensions and matching .png suffix, or JPEG marker signature plus matching .jpg/.jpeg suffix. JSON and text renamed .png/.jpg are rejected. Exact current source/JPEG/root attestation requirements remain."
+    },
+    {
+      "id": "R4",
+      "result": "PASS",
+      "finding": "validatePin rejects nonfinite/future reviewed_at. validateVisualProof independently requires finite ordered dates and review<=Date.now. Therefore view<=review<=now. The actual both2099 fixture, future pin and pastview/futurepin tests reject."
+    }
+  ],
+  "pure_tests": {
+    "receipt_file": "/workspace/work/ai-tech-next/caption-assets-peer-review.strict-evidence-pure-tests.json",
+    "receipt_sha256": "1db07b270c522393cb9f71f2cbce7b008a8b511567d2029e8875483d1c4a6b76",
+    "process_exit": 0,
+    "passed": 137,
+    "original_122_preserved": true,
+    "new": 15,
+    "new_test_names": [
+      "root pin with future reviewed_at refused",
+      "view and pin both in the future refused",
+      "future pin with past view refused by visual validator too",
+      "PNG signature IHDR and matching png suffix accepted",
+      "PNG suffix comparison is case insensitive",
+      "JPEG marker signature and matching jpg suffix accepted",
+      "JPEG marker signature and matching jpeg suffix accepted",
+      "JSON with json suffix cannot stand in for actually viewed PNG/JPEG",
+      "JSON renamed png cannot stand in for actually viewed PNG/JPEG",
+      "JSON renamed jpg cannot stand in for actually viewed PNG/JPEG",
+      "PNG renamed jpg cannot stand in for actually viewed PNG/JPEG",
+      "JPEG renamed png cannot stand in for actually viewed PNG/JPEG",
+      "PNG with unsupported suffix cannot stand in for actually viewed PNG/JPEG",
+      "truncated PNG signature cannot stand in for actually viewed PNG/JPEG",
+      "JPEG without EOI cannot stand in for actually viewed PNG/JPEG"
+    ],
+    "old_51_test_names_order_preserved": true,
+    "imported_original_71_results_identical": true,
+    "side_effect_counts": {
+      "fetch": 0,
+      "subprocess": 0,
+      "credential_reads": 0,
+      "writes": 0
+    },
+    "independent_negative_fixtures_rejected": {
+      "future_pin_rejected": true,
+      "both_future_timestamps_rejected": true,
+      "nonimage_JSON_rejected_as_actual_viewed_evidence": true,
+      "renamed_JSON_png_rejected": true,
+      "renamed_JSON_jpg_rejected": true
+    },
+    "actual_existing_JPEG_signature_accepted": {
+      "file": "/workspace/work/ai-tech-next/formal-eight-thumbnails-contact.jpg",
+      "sha256": "355be1465d5e9ea1e8a5e54895712523eb65710d8d3a40be8e85dcb025e1dd94",
+      "scope": "Signature/suffix validation only; not a new actual image-tool view attestation."
+    }
+  },
+  "diff": {
+    "receipt_file": "/workspace/work/ai-tech-next/caption-assets-peer-review.strict-evidence-diff-proof.json",
+    "receipt_sha256": "38e7190b04db3a7e855d1a840e4388e90533867722bfc2b2f4f654027eee14dc",
+    "reverse_exact_to_old": true,
+    "all_old_protected_files_unchanged": true,
+    "old_file_count": 9,
+    "runtime_families": [
+      "Nonfuture ordered root review/view timestamps",
+      "Actual viewed PNG/JPEG magic plus matching suffix"
+    ],
+    "five_replacement_blocks_exact_unique": true
+  },
+  "unchanged_runtime": "Reverse reconstruction exactly restores 4b. Existing BODY/branding profile bounds, full independent audio proof, native complete CC/metadata reconstruction, pin/role/hash/QA/history/pending safeguards, small-asset-only endpoints and concurrency/idempotency logic are unchanged.",
+  "boundaries": [
+    "PNG/JPEG signature plus suffix is a limited type check, not a full decoder, authenticity test or proof somebody viewed an image. Actual root image-tool-view attestation remains mandatory.",
+    "Frozen BODY profiles remain fixed; no future branded main/source is authorized by this review. A changed main needs a separately reviewed profile and root pin.",
+    "Actual current target pin/preflight and normal authenticated backend readback have not been run by this reviewer. Existing all-eight/overall false and no remote binary download claims remain."
+  ],
+  "actual_local_preflight": false,
+  "actual_audio_audit": false,
+  "credentials_read": false,
+  "network": false,
+  "paid": false,
+  "upload": false,
+  "source_media_i18n_edits": false,
+  "helper_code_edits_by_reviewer": false,
+  "ready_for_root_actual_pin_and_local_preflight": true,
+  "production_or_upload_acceptance": false
+}
