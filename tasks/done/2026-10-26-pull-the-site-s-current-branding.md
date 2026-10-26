@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-pull-the-site-s-current-branding
 title: Pull the site's current branding package over a read-only endpoint (branding --pull)
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-branding-pull
 claimed_at: 2026-10-26T00:23:16Z
 created_at: 2026-10-26T00:21:45Z
-completed_at:
+completed_at: 2026-10-26T00:37:57Z
 branch: claude/gracious-bohr-2mjwx0
 depends_on: []
 scope:
@@ -81,6 +81,9 @@ node tools/video/cli.mjs branding --json`).
 
 ## Notes
 
+- Closed in its own pull request; the unticked step (a real `branding --pull` against
+  mokaair.com) can only run after the deploy, with a token the owner allows. Record it here or in
+  the follow-up ticket when it is done.
 - Claimed with `--force`: the overlapping claims (2026-10-12 outro, 2026-10-14 curio skill,
   2026-10-17 lexicon migrate/revise, 2026-10-18 S-axis pilot, 2026-10-24 compilation episodes)
   are all stale and none has an open pull request on these files. Two week-old Codex drafts
