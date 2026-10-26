@@ -1,0 +1,52 @@
+{
+  "reviewed_at": "2026-10-26T11:22:07.410Z",
+  "actual_native_listener_edits_reported": 6,
+  "actual_listener_output_snapshot": "/workspace/work/ai-pdf-01/source-author-edits/64c1aa6fb9f51b9f4c8dcdc5f6be3b050ae377790ccc3cbc364f468db6d182ba.json",
+  "before_source_sha256": "64c1aa6fb9f51b9f4c8dcdc5f6be3b050ae377790ccc3cbc364f468db6d182ba",
+  "after_source_sha256": "dfb0cbcd07475edcc1a5acc1e4eb00cdc35936e06465fcee672add11a90fb34a",
+  "manual_corrections": [
+    {
+      "id": "fa3t",
+      "before": {
+        "id": "fa3t",
+        "text": "十張最低是乙，二十張換成丙，那這個轉換點到底落在第幾張？"
+      },
+      "after": {
+        "id": "fa3t",
+        "text": "那最低總價是從第幾張開始換人？"
+      },
+      "reason": "Ask the new quantity-threshold question directly, remove the listener-added repetition of prior10/20winner facts."
+    },
+    {
+      "id": "vee5",
+      "before": {
+        "id": "vee5",
+        "text": "比的是送達總價，不是單價；你最常遇到哪個報價欄位沒寫清楚，留言告訴我。"
+      },
+      "after": {
+        "id": "vee5",
+        "text": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。"
+      },
+      "reason": "Restore the actual previously retained comment question; remove listener-added already-explained delivered-total recap."
+    }
+  ],
+  "accepted_listener_changes": [
+    "q7x8 explicitly namesBirch/乙",
+    "6pwe explicitly namesnull/空值",
+    "f5gy clarification ofthe scenario field",
+    "vnaq explicitly returns to20beforeaddingone/askingabout21",
+    "native automatic pause at chapter boundary remains actual"
+  ],
+  "original_artwork_credit_restored": [
+    {
+      "path": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+      "source": "本次原創SVG圖解；來源 diagrams/pdf-quotes-hero.svg；十張實算A2100/B2050/C未知",
+      "license": "Original Mokaair teaching material; no external stock photo"
+    }
+  ],
+  "native_auto_bytes_unchanged": true,
+  "native_verified_remains": false,
+  "native_listener_done_remains": true,
+  "quality_pass_changed": false,
+  "next": "Actual source verification12 must inspect this real current source; no TTS until true gates."
+}

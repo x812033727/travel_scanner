@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "reviewer": "OpenAI Codex /root/pdf_continue_primary/pdf_threshold_evidence_audit",
+  "checked_at_utc": "2026-10-26T11:32:04.716923+00:00",
+  "scope": "Independent source, archived local execution and concrete materials-delivery audit. No paid requests, model invocation, TTS, media/auto changes, owner operation or approval. No audio/media/CC/READY conclusion.",
+  "source_video_sha256_at_read": "968fdef5573ec64c6dfb99b74d3162e5c96e68b862c666dee59637ce91907698",
+  "actual_scenes": 62,
+  "actual_lines": 101,
+  "full_claims_snapshot": {
+    "path": "/workspace/work/ai-pdf-01/source-author-edits/claims-0fa49d8a92613d544e8c88b36ea6e8a600b8b652743f7ac5fbba7220cc5d1e4d.md",
+    "sha256": "0fa49d8a92613d544e8c88b36ea6e8a600b8b652743f7ac5fbba7220cc5d1e4d",
+    "bytes": 82994,
+    "eight_page_texts_and_actual_identity_limits_read": true
+  },
+  "quantity_checks": [
+    {
+      "quantity": 12,
+      "actual_saved_execution_exit": 0,
+      "totals": {
+        "Aster": "2478.00",
+        "Birch": "2460.00",
+        "Cedar": "2467.50"
+      },
+      "independent_Decimal_matches_actual_selected_rows": true,
+      "actual_winner": "Birch",
+      "request_hash_matched": true,
+      "selected_result_hash_matched": true,
+      "card_argv_equals_saved_actual_argv": true,
+      "stdout_scope": "Fixed original10/revised10/revised20 regression summary; request-specific ranking independently verified from selected-comparison.json."
+    },
+    {
+      "quantity": 13,
+      "actual_saved_execution_exit": 0,
+      "totals": {
+        "Aster": "2667.00",
+        "Birch": "2665.00",
+        "Cedar": "2651.25"
+      },
+      "independent_Decimal_matches_actual_selected_rows": true,
+      "actual_winner": "Cedar",
+      "request_hash_matched": true,
+      "selected_result_hash_matched": true,
+      "card_argv_equals_saved_actual_argv": true,
+      "stdout_scope": "Fixed original10/revised10/revised20 regression summary; request-specific ranking independently verified from selected-comparison.json."
+    }
+  ],
+  "margin_independent_Decimal": {
+    "12_cedar_minus_birch": "7.50",
+    "13_cedar_minus_birch": "-13.75",
+    "birch_per_extra_piece": "205.00",
+    "cedar_per_extra_piece": "183.75",
+    "relative_gain": "21.25"
+  },
+  "quantity21_saved_negative_case": {
+    "card_argv_equals_saved_actual_argv": true,
+    "saved_exit_code": 1,
+    "saved_output_directory_created": false,
+    "displayed_error": "ValueError: Quantity outside explicitly quoted range",
+    "saved_error_present": true,
+    "fresh_archive_replay_receipt_also_checked": "research/lab-materials-threshold-archive-replay.json"
+  },
+  "archive": {
+    "path": "/workspace/work/ai-pdf-01/lab/ai-pdf-comparison-materials.zip",
+    "sha256": "89c8076afad3b1bf7606258a0ac118533526bfac8f512739d926d6caa1b0a755",
+    "bytes": 1054957,
+    "members": 84,
+    "crc_passed": true,
+    "embedded_manifest_sha256": "8c159dfe021c8b6bca2b4ad8c112122cf377ce53fbbc10fee016ae2f934addf3",
+    "manifest_entries": 83,
+    "all_83_manifest_hashes_and_lengths_matched": true,
+    "errors": [],
+    "member_set_exact": true,
+    "matches_package_receipt": true,
+    "includes_new_request12_request13": true,
+    "README_matches_current_source": true
+  },
+  "source_manifest": {
+    "source_sha256": "8c159dfe021c8b6bca2b4ad8c112122cf377ce53fbbc10fee016ae2f934addf3",
+    "source_entries": 83,
+    "matches_current_embedded_manifest": true,
+    "mismatching_old_entry_hashes": [],
+    "missing_new_paths": []
+  },
+  "description_link": {
+    "url": "https://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials",
+    "commit": "53e7243ba84b2327f7a7674acc8065f411088d96",
+    "local_git_object_paths": {
+      "request-12.json": {
+        "exists_in_description_commit": true,
+        "exit_code": 0
+      },
+      "request-13.json": {
+        "exists_in_description_commit": true,
+        "exit_code": 0
+      },
+      "request-21-invalid.json": {
+        "exists_in_description_commit": true,
+        "exit_code": 0
+      },
+      "README.md": {
+        "exists_in_description_commit": true,
+        "exit_code": 0
+      }
+    },
+    "actual_public_http_observations": [
+      {
+        "url": "https://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "http_status": 200,
+        "bytes": 333609,
+        "response_sha256": "d9aee976e17753c65a9fa618b135920567135b7509ca9f359ce6466edacf3560",
+        "final_url": "https://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/x812033727/travel_scanner/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials/request-12.json",
+        "http_status": 200,
+        "bytes": 46,
+        "response_sha256": "470f32f0126f80a526165455dabf16195c4895a5f0f46f68638208f401b53dab",
+        "final_url": "https://raw.githubusercontent.com/x812033727/travel_scanner/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials/request-12.json"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/x812033727/travel_scanner/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials/request-13.json",
+        "http_status": 200,
+        "bytes": 46,
+        "response_sha256": "08ebad425a955e34cffc984a7ae131dd9401887cc013a9fa7423f46058c434c1",
+        "final_url": "https://raw.githubusercontent.com/x812033727/travel_scanner/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials/request-13.json"
+      }
+    ]
+  },
+  "originality_and_actual_execution_claims": {
+    "fictional_supplier_prices_tax_rate_disclosed": true,
+    "Codex_text_analysis_identity_matches_execution_record": true,
+    "no_commercial_upload_UI_or_OCR_test_claimed": true,
+    "value_only_editable_workbook_not_live_formula_calculator": true,
+    "inquiry_is_unsent_draft": true
+  },
+  "findings": [
+    {
+      "severity": "nonblocking-clarity",
+      "path": "video.json threshold-results.data.source",
+      "issue": "原報價第1–2頁 is vague for Cedar; table already says丙修訂 and exact source records are correct. 三家報價第1–2頁（丙修訂版） would be clearer at a source-safe boundary. Not a factual mismatch."
+    }
+  ],
+  "arithmetic_and_archived_command_evidence_passed": true,
+  "all_current_delivery_bindings_passed": true,
+  "source_only": true,
+  "audio_approved": false,
+  "media_ready": false,
+  "initial_read_observations": {
+    "source_video_sha256": "dfb0cbcd07475edcc1a5acc1e4eb00cdc35936e06465fcee672add11a90fb34a",
+    "historical_description_commit": "7132d533a9649aebbf3733e58a93bbe68bdddffa",
+    "historical_commit_missing_request12_request13": true,
+    "historical_source_manifest_sha256": "fcb88351134ed6da5301d36d6cf141f5ed13547f7eec896105dc1269497a6894",
+    "historical_source_manifest_entries": 54,
+    "historical_source_manifest_mismatches_against_new_archive": [
+      "START-HERE.txt",
+      "materials/README.md"
+    ],
+    "reported_to_parent_before_final_audit": true,
+    "meaning": "These defects were actually observed earlier in this independent audit. The sole producer corrected source delivery bindings while the audit continued; subsequent actual reads and HTTP requests below establish the corrected current state. This history is not a current failure."
+  },
+  "resolved_delivery_findings": [
+    {
+      "path": "video.json youtube.description",
+      "resolved": true,
+      "evidence": "Current captured source968fdef... pins53e7243ba84b2327f7a7674acc8065f411088d96. All four saved local git object checks succeed; actual public tree/request12/request13 GETs each returned200, and request bodies hash-match bundled/saved actual requests."
+    },
+    {
+      "path": "research/materials-package-manifest.json",
+      "resolved": true,
+      "evidence": "Current source bytes equal actual embedded PACKAGE-MANIFEST.json, SHA8c159dfe021c8b6bca2b4ad8c112122cf377ce53fbbc10fee016ae2f934addf3,83entries; actual archive83entry hashes/lengths match."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "reviewed_at_utc": "2026-10-26T11:15:22.859232+00:00",
+  "reviewer": "OpenAI Codex /root/pdf_pipeline_audit/audit_speech_journal",
+  "scope": "Read new7scenes10lines, actual input files/command argv/selected_result hashes and current8page conditions; independent Decimal arithmetic; no API, no media/voice or native approval",
+  "source_read_initial_sha256": "5edc987883b7e80b8f4b8c28d30450aac955787ddad30d36eef34586c51ef110",
+  "passed": true,
+  "findings": [],
+  "verified": [
+    "12/13are within10–20range",
+    "actual two request SHA/JSON match files",
+    "actual output SHA/JSON match receipts",
+    "two code cards shlex to actual argv",
+    "12 B2460wins by7.50,13 C2651.25wins by13.75",
+    "relative perpiece gain21.25 correct",
+    "new threshold operation differs from10/20 endpoint example"
+  ],
+  "later_changes": "utm2 removes repeated quantity word only; vnaq explicitly returns to the earlier20requirement before21; both are real authored wording requiring native source review, not a claimed prior model pass",
+  "stdout_interpretation": "stdout winners keys describe baseline regression scenarios;12/13ranking evidence is their actual selected_result plus independent Decimal."
+}

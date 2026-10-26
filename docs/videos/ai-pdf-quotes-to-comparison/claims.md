@@ -9,7 +9,7 @@
 
 - 原始完整 ledger 確實存在於 git `a2c088e49e93f1a6c0ccea8730a23da43bde74ee` 的本片 `claims.md`：29857 bytes，SHA-256 `91e1de197b7f157603dc989dd8ff56a195599469cc71211c6802c9c75bec3e3f`。下方 c1–c31 的證據列保留這份真實版本；只在 c15、c29 的既有 URL 後補一個分隔空白，避免原生網址抽取把相鄰全形日期括號黏入網址造成假404，未更動任何事實或來源。內容不從記憶補寫。
 - 被原生後續回答替換成「以前內容全部保留」佔位文字的目前檔案，已逐字保存在 `research/claims-native-history-before-restoration.md`，SHA-256 `8250adb0157038ac0e68175fe352c7f9e31d5e4a167f3eb1204e97f715526249`。該檔只作原生歷史紀錄，佔位句不能證明遺失的內容仍在。
-- 此候選對應實際現行 `video.json` SHA-256 `d990cd49715dcfdc6992e34c1ceff281f12a893d3481e55080fb693c9874c069`；55 scenes／101 narration lines。沒有把舊ledger的場景或句數冒稱成現在的版本。
+- 第8輪實際查核輸入 `video.json` SHA-256 `d990cd49715dcfdc6992e34c1ceff281f12a893d3481e55080fb693c9874c069`；55 scenes／101 narration lines。沒有把舊ledger的場景或句數冒稱成現在的版本。
 - 實際本地教材 `research/lab-ai-extraction.json` SHA-256 `f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8`；八頁抽文 SHA-256 `586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c`。全文直接放在下方，使只收到本 ledger 的查核者也能核對，不能再以未提供本機檔案作為已讀證據。
 
 
@@ -1513,3 +1513,296 @@ c17、c18、c37 的詢問／比較狀態是教學建議與已寫草稿；它們�
 原生 verifier 回答中「CONFIRMED／0 changed」只代表該次回答及其實際收到的資料；若它曾收到佔位ledger，不能追溯聲稱讀到未提供的八頁或stdout。本次把這些證據真正放回來後，仍須以現行source跑真正的獨立查核。原生歷史全文另存於前述 history檔，沒有被刪除，也沒有修改成看似先前已查到全部資料。
 
 本次復原沒有安裝、執行PDF產生／計算、呼叫AI／TTS／Jev、取得站主核准、上傳或發布，也沒有變更影片旁白、auto、付費收據、原始claims canonical。這份候選只讓下一輪查核有完整、可核對的真實文字證據。
+
+## 真正作者批次修訂：新的比較差額與操作
+
+這次移除近義重述並增加核對動作，非新的供應商回覆或模型測試。原生事實查核與聽眾審稿需要重新進行；不沿用先前關卡冒稱新稿已通過。
+
+| ID | 主張 | 實際證據 |
+| --- | --- | --- |
+| c38 | 修訂十張丙2100.00比乙2050.00多50.00；修訂二十張乙4100.00比甲3990.00多110.00，丙3937.50比甲3990.00少52.50 | research/lab-comparison.json 真值的實際 Python Decimal 差額，以下附完整新計算紀錄 |
+
+### revised-ten-price-difference.json
+
+```json
+{
+  "calculated_at_utc": "2026-10-26T09:39:08.624608+00:00",
+  "method": "Actual Python Decimal subtraction of saved real lab output; no model or supplier request",
+  "input": "research/lab-comparison.json",
+  "input_sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab",
+  "scenario": "revised-10",
+  "cedar_delivered_total": "2100.00",
+  "birch_delivered_total": "2050.00",
+  "cedar_minus_birch": "50.00",
+  "meaning": "Revised Cedar remains fifty TWD above Birch for ten cards; fictional exercise currency and conditions only."
+}
+```
+
+### revised-twenty-price-difference.json
+
+```json
+{
+  "calculated_at_utc": "2026-10-26T09:42:58.217461+00:00",
+  "method": "Actual Python Decimal subtraction of saved real lab output; no model or supplier request",
+  "input": "research/lab-comparison.json",
+  "input_sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab",
+  "scenario": "revised-20",
+  "aster_delivered_total": "3990.00",
+  "birch_delivered_total": "4100.00",
+  "birch_minus_aster": "110.00",
+  "meaning": "For twenty cards Birch is 110 TWD above Aster; fictional exercise only."
+}
+```
+
+### revised-twenty-cedar-gap.json
+
+```json
+{
+  "calculated_at_utc": "2026-10-26T09:45:49.134871+00:00",
+  "method": "Actual Python Decimal subtraction of saved real lab output; no model or supplier request",
+  "input": "research/lab-comparison.json",
+  "input_sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab",
+  "scenario": "revised-20",
+  "aster_delivered_total": "3990.00",
+  "cedar_delivered_total": "3937.50",
+  "aster_minus_cedar": "52.50"
+}
+```
+
+修訂後 source SHA256 e4d3825137fde933e6976e9a8c2236ce93e3eaa68f851665e7a4f2b5337b5fc5；55scenes／93lines。
+
+## 實際第10輪來源查核與聽眾用字
+
+原生聽眾審稿只修改7dp4，清楚說先另存新檔名再改數量；實際第10輪查核報告 verify-10.md 為42CONFIRMED、0CHANGED、0NOT_FOUND。查核輸入videoSHA 648ddf2634f2412e7163fd23d5d0f721ba0c6d1f82616ff0396877e43783aee3。所有原生返回claims另存 research/claims-native-round-10-return.md，完整原始證據仍保留。
+
+
+## 正文實測不足後新增的相鄰數量實算（c39–c41）
+
+本片第一版真正錄音正文14024frames/30fps=467.466667秒，未滿480秒；此時才加入同一虛構採購的有用新操作，沒有以片頭片尾、慢播、重述或靜音補時。實際原88個語音請求的快取保留，原始正文與時間軸在repo外 before-threshold 保存。新實算不是AI模型/供應商服務呼叫；用相同已保存的AI抽取結果、同一套原文與實際比較程式執行。
+
+| ID | 精確主張 | 真證據與限制 |
+| --- | --- | --- |
+| c39 | 真正另存request-12.json及request-13.json，各為revised情境，只改數量，完整兩條畫面命令實跑exit0，仍僅三家 | materials兩檔全文＋下方quantity-threshold-12-13-execution actual_runs/stdout/selected_result；都在四份PDF第2頁明示10–20範圍，不是新供應商報價 |
+| c40 | 12張：甲2478.00、乙2460.00、丙2467.50，乙最低；13張：甲2667.00、乙2665.00、丙2651.25，丙最低 | 真正新輸出各selected_result及獨立Decimal公式；12張丙比乙貴7.50，13張丙比乙便宜13.75 |
+| c41 | 丙減乙的送達差額由+7.50變成-13.75；同一固定運費下，乙每多一張商品含稅增加205.00，丙增加183.75，相對每張追回21.25 | 同一實際兩份selected_result goods_gross及delivered_total，用Decimal獨立相減；正負號只是此算式方向，不擴張為真實供應商推薦 |
+
+需求兩檔逐字：
+
+### request-12.json
+```json
+{
+  "scenario": "revised",
+  "quantity": 12
+}
+```
+
+### request-13.json
+```json
+{
+  "scenario": "revised",
+  "quantity": 13
+}
+```
+
+真實兩次執行及獨立核對全文（原始stdout與selected_result皆完整保留）：
+```json
+{
+  "schema_version": 1,
+  "method": "Actual existing comparison program, two changed request files, exact saved AI extraction and eight-page sources; separate Decimal formulas independently check selected outputs; no new AI/provider/supplier call",
+  "reason": "First actual narrated body was measured467.466667seconds, below480; add a new useful threshold-finding operation instead of silence/repetition/slow speech",
+  "input_code_sha256": "35103b82d83b527b897bbc171e8d71e40431ebc0c4412a9c3ce62b898b160ea1",
+  "analysis_sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+  "extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+  "actual_runs": [
+    {
+      "executed_at_utc": "2026-10-26T11:09:38.768031+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/repro-package/materials",
+      "command": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-12.json",
+        "--out",
+        "comparison-12"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-12\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "request_file": "materials/request-12.json",
+      "request_sha256": "470f32f0126f80a526165455dabf16195c4895a5f0f46f68638208f401b53dab",
+      "selected_result": {
+        "request": {
+          "scenario": "revised",
+          "quantity": 12
+        },
+        "request_sha256": "470f32f0126f80a526165455dabf16195c4895a5f0f46f68638208f401b53dab",
+        "rows": [
+          {
+            "supplier": "Aster",
+            "source_file": "aster.pdf",
+            "quantity": 12,
+            "unit_price": "180.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2268.00",
+            "shipping_gross": "210.00",
+            "delivered_total": "2478.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "aster.pdf p.1",
+            "shipping_source": "aster.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Birch",
+            "source_file": "birch.pdf",
+            "quantity": 12,
+            "unit_price": "205.00",
+            "unit_tax_mode": "inclusive",
+            "goods_gross": "2460.00",
+            "shipping_gross": "0.00",
+            "delivered_total": "2460.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 5,
+            "price_source": "birch.pdf p.1",
+            "shipping_source": "birch.pdf p.2",
+            "lowest_comparable": true
+          },
+          {
+            "supplier": "Cedar",
+            "source_file": "cedar-revised.pdf",
+            "quantity": 12,
+            "unit_price": "175.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2205.00",
+            "shipping_gross": "262.50",
+            "delivered_total": "2467.50",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "cedar-revised.pdf p.1",
+            "shipping_source": "cedar-revised.pdf p.2",
+            "lowest_comparable": false
+          }
+        ]
+      },
+      "selected_result_sha256": "69c124266f2d43caf09b60cf1a096e3eb9523bd38e74d742f6dc2611349b3a62",
+      "independent_decimal_totals": {
+        "Aster": "2478.00",
+        "Birch": "2460.00",
+        "Cedar": "2467.50"
+      },
+      "independent_check_passed": true,
+      "winner": "Birch"
+    },
+    {
+      "executed_at_utc": "2026-10-26T11:09:38.941935+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/repro-package/materials",
+      "command": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-13.json",
+        "--out",
+        "comparison-13"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-13\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "request_file": "materials/request-13.json",
+      "request_sha256": "08ebad425a955e34cffc984a7ae131dd9401887cc013a9fa7423f46058c434c1",
+      "selected_result": {
+        "request": {
+          "scenario": "revised",
+          "quantity": 13
+        },
+        "request_sha256": "08ebad425a955e34cffc984a7ae131dd9401887cc013a9fa7423f46058c434c1",
+        "rows": [
+          {
+            "supplier": "Aster",
+            "source_file": "aster.pdf",
+            "quantity": 13,
+            "unit_price": "180.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2457.00",
+            "shipping_gross": "210.00",
+            "delivered_total": "2667.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "aster.pdf p.1",
+            "shipping_source": "aster.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Birch",
+            "source_file": "birch.pdf",
+            "quantity": 13,
+            "unit_price": "205.00",
+            "unit_tax_mode": "inclusive",
+            "goods_gross": "2665.00",
+            "shipping_gross": "0.00",
+            "delivered_total": "2665.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 5,
+            "price_source": "birch.pdf p.1",
+            "shipping_source": "birch.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Cedar",
+            "source_file": "cedar-revised.pdf",
+            "quantity": 13,
+            "unit_price": "175.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2388.75",
+            "shipping_gross": "262.50",
+            "delivered_total": "2651.25",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "cedar-revised.pdf p.1",
+            "shipping_source": "cedar-revised.pdf p.2",
+            "lowest_comparable": true
+          }
+        ]
+      },
+      "selected_result_sha256": "67681c31721565460b7c72a5e4adcd632887ef363dd6dba66da4770f80838dd1",
+      "independent_decimal_totals": {
+        "Aster": "2667.00",
+        "Birch": "2665.00",
+        "Cedar": "2651.25"
+      },
+      "independent_check_passed": true,
+      "winner": "Cedar"
+    }
+  ],
+  "margin_calculation": {
+    "at_12_cedar_minus_birch": "7.50",
+    "at_13_birch_minus_cedar": "13.75",
+    "one_extra_cedar_goods_gross": "183.75",
+    "one_extra_birch_goods_gross": "205.00",
+    "relative_gain_per_extra_piece": "21.25"
+  },
+  "scope": "All quantities stay within the original explicit10–20 range; only same fictional procurement, source versions and shipping conditions. No real supplier recommendation.",
+  "additional_actual_decimal_derivation": {
+    "calculated_at_utc": "2026-10-26T11:13:14.850233+00:00",
+    "method": "Actual Python decimal.Decimal subtraction of both actual selected_result goods_gross/delivered_total strings; fixed shipping unchanged in both outputs",
+    "cedar_goods_increase": "183.75",
+    "birch_goods_increase": "205.00",
+    "relative_gain": "21.25",
+    "cedar_minus_birch_at_12": "7.50",
+    "cedar_minus_birch_at_13": "-13.75"
+  }
+}
+```

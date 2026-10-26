@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-26T11:12:20.760Z",
+  "actual_measured_before_body_frames": 14024,
+  "actual_measured_before_body_seconds": 467.46666666666664,
+  "minimum_body_seconds": 480,
+  "source_before_sha256": "f646ca1f1f0292e4807b3c862a3b610750df5107b0cac3f7d3c3f6d5291846a5",
+  "source_after_sha256": "5edc987883b7e80b8f4b8c28d30450aac955787ddad30d36eef34586c51ef110",
+  "old_all91_line_objects_and55_scenes_exact": false,
+  "added_scene_ids": [
+    "threshold-start",
+    "threshold-request12",
+    "threshold-run12",
+    "threshold-request13",
+    "threshold-run13",
+    "threshold-results",
+    "threshold-margin"
+  ],
+  "added_line_ids": [
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb"
+  ],
+  "actual_program_runs": "research/quantity-threshold-12-13-execution.json",
+  "native_verified_after_edit": false,
+  "native_listener_done_after_edit": false,
+  "native_status_and_caps_preserved": true,
+  "protected_existing_paid_audio_files": 92,
+  "existing_paid_audio_hashes_unchanged": true,
+  "claims_original_full_evidence_retained": true,
+  "next": "Run real source verification/listener/narrative, then native dry-run must show reuse of the existing cache; actual new TTS/ASR/body media will be measured again.",
+  "final_source_after_sha256": "1953ef63df27938ae234a60b8b6d69551c79fb250e6666e5a39b8ed6b1aab1d3",
+  "retained_old_line_objects_exact": 90,
+  "only_old_narration_line_changed": {
+    "before": {
+      "id": "vnaq",
+      "text": "你又多要一張，現在要印二十一張。",
+      "emotion": "清楚帶著觀眾動手，數字前稍停"
+    },
+    "after": {
+      "id": "vnaq",
+      "text": "回到原本二十張的需求，這次再多要一張，就是二十一張。",
+      "emotion": "清楚帶著觀眾動手，數字前稍停"
+    },
+    "reason": "The12/13transfer exercise follows the20card result, so explicitly return to that20card requirement before adding one and testing21; this is genuine new wording, not a cached voice approval."
+  },
+  "new_source_lint": {
+    "errors": 0,
+    "warnings": [
+      "two-sentence outro advisory"
+    ]
+  }
+}

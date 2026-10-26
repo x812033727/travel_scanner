@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "performed_by": "OpenAI Codex /root/pdf_pipeline_audit/audit_speech_journal",
+  "checked_at_utc": "2026-10-26T11:18:43.004564+00:00",
+  "archive": "/workspace/work/ai-pdf-01/lab/ai-pdf-comparison-materials.zip",
+  "archive_sha256": "89c8076afad3b1bf7606258a0ac118533526bfac8f512739d926d6caa1b0a755",
+  "archive_bytes": 1054957,
+  "fresh_extraction_root": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked",
+  "manifest_sha256": "8c159dfe021c8b6bca2b4ad8c112122cf377ce53fbbc10fee016ae2f934addf3",
+  "manifest_entries_verified": 83,
+  "archive_members": 84,
+  "crc_check_passed": true,
+  "all_manifest_names_bytes_hashes_matched": true,
+  "prior_archive_preserved": {
+    "path": "/workspace/work/ai-pdf-01/lab/versions/materials-archives/541234b6bc0f26725e4670339568eb92c122d89caf1b43ea7e2a25ec70fbb1e7.zip",
+    "sha256": "541234b6bc0f26725e4670339568eb92c122d89caf1b43ea7e2a25ec70fbb1e7",
+    "bytes": 1011175,
+    "metadata_snapshot": "/workspace/work/ai-pdf-01/lab/versions/materials-archives/541234b6bc0f26725e4670339568eb92c122d89caf1b43ea7e2a25ec70fbb1e7.package.json",
+    "metadata_sha256": "bca4b05f2c91ad9ffc6f863487724b750d2f0a5607d2be76095e1ad3001773e2"
+  },
+  "python_version": "3.12.14",
+  "installed_versions": {
+    "openpyxl": "3.1.5",
+    "pypdf": "6.10.0",
+    "reportlab": "4.4.9",
+    "Pillow": "12.3.0"
+  },
+  "commands": [
+    {
+      "executed_at_utc": "2026-10-26T11:18:42.487007+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials",
+      "argv": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-12.json",
+        "--out",
+        "comparison-12"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-12\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "bundled_output_moved_before_replay": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/bundled-comparison-12",
+      "output_directory_existed_before": false,
+      "output_directory_created": true,
+      "selected_json_matches_bundled_result": true,
+      "selected_json_matches_actual_execution_receipt": true,
+      "selected_request": {
+        "scenario": "revised",
+        "quantity": 12
+      },
+      "totals": {
+        "Aster": "2478.00",
+        "Birch": "2460.00",
+        "Cedar": "2467.50"
+      },
+      "lowest_candidates": [
+        "Birch"
+      ],
+      "checks": 17,
+      "all_checks_passed": true,
+      "independent_decimal_totals": {
+        "Aster": "2478.00",
+        "Birch": "2460.00",
+        "Cedar": "2467.50"
+      },
+      "independent_check_passed": true,
+      "outputs": [
+        {
+          "path": "baseline-and-normalized-order.json",
+          "bytes": 601,
+          "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+        },
+        {
+          "path": "change-log.json",
+          "bytes": 573,
+          "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+        },
+        {
+          "path": "comparison.json",
+          "bytes": 4304,
+          "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+        },
+        {
+          "path": "comparison.md",
+          "bytes": 1319,
+          "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+        },
+        {
+          "path": "comparison.xlsx",
+          "bytes": 13526,
+          "sha256": "820cbfdd97c5b33a046199a1112e5c9faaa6aed1735dfd12c3afe08c2613be77"
+        },
+        {
+          "path": "headline-unit-sort-baseline.csv",
+          "bytes": 448,
+          "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+        },
+        {
+          "path": "original-10.csv",
+          "bytes": 531,
+          "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+        },
+        {
+          "path": "questions.txt",
+          "bytes": 504,
+          "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+        },
+        {
+          "path": "revised-10.csv",
+          "bytes": 540,
+          "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+        },
+        {
+          "path": "revised-20.csv",
+          "bytes": 540,
+          "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+        },
+        {
+          "path": "selected-comparison.csv",
+          "bytes": 540,
+          "sha256": "837e77622e1cdcefab6d36210d383709ed34bfc9c99bea297a84b28b04fa8f06"
+        },
+        {
+          "path": "selected-comparison.json",
+          "bytes": 1586,
+          "sha256": "69c124266f2d43caf09b60cf1a096e3eb9523bd38e74d742f6dc2611349b3a62"
+        },
+        {
+          "path": "verification.json",
+          "bytes": 5311,
+          "sha256": "bc1667016a0546809ee01b6732910f441606a3fbc92ae9c1e40918a9897d06fc"
+        }
+      ]
+    },
+    {
+      "executed_at_utc": "2026-10-26T11:18:42.669900+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials",
+      "argv": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-13.json",
+        "--out",
+        "comparison-13"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-13\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "bundled_output_moved_before_replay": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/bundled-comparison-13",
+      "output_directory_existed_before": false,
+      "output_directory_created": true,
+      "selected_json_matches_bundled_result": true,
+      "selected_json_matches_actual_execution_receipt": true,
+      "selected_request": {
+        "scenario": "revised",
+        "quantity": 13
+      },
+      "totals": {
+        "Aster": "2667.00",
+        "Birch": "2665.00",
+        "Cedar": "2651.25"
+      },
+      "lowest_candidates": [
+        "Cedar"
+      ],
+      "checks": 17,
+      "all_checks_passed": true,
+      "independent_decimal_totals": {
+        "Aster": "2667.00",
+        "Birch": "2665.00",
+        "Cedar": "2651.25"
+      },
+      "independent_check_passed": true,
+      "outputs": [
+        {
+          "path": "baseline-and-normalized-order.json",
+          "bytes": 601,
+          "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+        },
+        {
+          "path": "change-log.json",
+          "bytes": 573,
+          "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+        },
+        {
+          "path": "comparison.json",
+          "bytes": 4304,
+          "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+        },
+        {
+          "path": "comparison.md",
+          "bytes": 1319,
+          "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+        },
+        {
+          "path": "comparison.xlsx",
+          "bytes": 13525,
+          "sha256": "a98c2ce3f62eca6ca7259110e114e9c6d1c0daab51afdd3438151e9681899cb6"
+        },
+        {
+          "path": "headline-unit-sort-baseline.csv",
+          "bytes": 448,
+          "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+        },
+        {
+          "path": "original-10.csv",
+          "bytes": 531,
+          "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+        },
+        {
+          "path": "questions.txt",
+          "bytes": 504,
+          "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+        },
+        {
+          "path": "revised-10.csv",
+          "bytes": 540,
+          "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+        },
+        {
+          "path": "revised-20.csv",
+          "bytes": 540,
+          "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+        },
+        {
+          "path": "selected-comparison.csv",
+          "bytes": 540,
+          "sha256": "0178ed95157db3b80fe1d2225cd7835bd513d299c1a67ca82ab440c4547a96ff"
+        },
+        {
+          "path": "selected-comparison.json",
+          "bytes": 1586,
+          "sha256": "67681c31721565460b7c72a5e4adcd632887ef363dd6dba66da4770f80838dd1"
+        },
+        {
+          "path": "verification.json",
+          "bytes": 5311,
+          "sha256": "b52f752ab23067b7a54a447f9bac924f0271e7e8d87bf70c629831c0ee15e7be"
+        }
+      ]
+    }
+  ],
+  "preserved_quantity21_replay": {
+    "executed_at_utc": "2026-10-26T11:18:42.862169+00:00",
+    "cwd": "/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials",
+    "argv": [
+      "python3",
+      "build_comparison.py",
+      "--analysis",
+      "../research/lab-ai-extraction.json",
+      "--extracted",
+      "../research/lab-extracted-pages.json",
+      "--request",
+      "request-21-invalid.json",
+      "--out",
+      "comparison-21"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials/build_comparison.py\", line 234, in <module>\n    if __name__ == '__main__': main()\n                               ^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials/build_comparison.py\", line 196, in main\n    selected_rows = make_rows(quote_map, originals if selected_request['scenario']=='original' else revised, selected_request['quantity'])\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials/build_comparison.py\", line 70, in make_rows\n    result = delivered(fields, qty)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-threshold-replay-20261026T111842467042Z/unpacked/materials/build_comparison.py\", line 46, in delivered\n    raise ValueError('Quantity outside explicitly quoted range')\nValueError: Quantity outside explicitly quoted range\n",
+    "output_directory_existed_before": false,
+    "output_directory_created": false,
+    "expected_rejection_observed": true
+  },
+  "passed": true,
+  "scope": "Actual fresh extraction of refreshed ZIP, full manifest/CRC verification, actual two local Python requests with bundled outputs moved aside and unchanged saved AI extraction; retained21 negative case checked again. No API, model, supplier, media-production, native-state or approval operation. Historical execution receipts remain unchanged."
+}

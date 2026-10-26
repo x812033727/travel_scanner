@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-26T11:18:47.003Z",
+  "native_verified": true,
+  "native_listener_done": false,
+  "verify_round": 11,
+  "actual_report": "verify-11.md",
+  "changed_facts": 0,
+  "actual_report_counts": {
+    "confirmed": 43,
+    "changed": 0,
+    "not_found": 0,
+    "out_of_scope": 2
+  },
+  "actual_source_sha256": "1953ef63df27938ae234a60b8b6d69551c79fb250e6666e5a39b8ed6b1aab1d3",
+  "actual_scenes": 62,
+  "actual_lines": 101,
+  "native_report_scene_count_prose": 56,
+  "scene_count_prose_discrepancy_retained_unmodified": true,
+  "narrative_binding": {
+    "narrative_hash": "900f47a83ff039c7",
+    "script_hash": "377c5f8fe6577ad733eae05efd2e4dd0eeda47735d91df398cb0452b4c22f5d1"
+  },
+  "returned_claims_sha256": "11885fff323e2762163cc322504b08e584787f5170a5716bd9361d6833537ef2",
+  "full_claims_preserved_sha256": "0fa49d8a92613d544e8c88b36ea6e8a600b8b652743f7ac5fbba7220cc5d1e4d",
+  "native_auto_bytes_unchanged": true,
+  "meaning": "Preserve actual verifier output separately; it genuinely read complete evidence and changed0facts. Restore the same factual input ledger instead of treating its append-only summary as full replacement. No prior quality verdict is edited.",
+  "next": "Actual listener for genuinely extended source, then any required verification and real narrative."
+}
