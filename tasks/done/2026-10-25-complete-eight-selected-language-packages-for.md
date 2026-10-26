@@ -1,13 +1,13 @@
 ---
 id: 2026-10-25-complete-eight-selected-language-packages-for
 title: Complete eight selected language packages for OpenAI DNS containment video
-status: blocked
+status: done
 priority: P2
 area: docs
 owner: codex-ai-tech-news
 claimed_at: 2026-10-25T11:28:48Z
 created_at: 2026-10-25T11:28:38Z
-completed_at:
+completed_at: 2026-10-26T16:17:00Z
 branch: codex/ai-tech-dns-20261025
 depends_on: []
 scope:
@@ -28,7 +28,7 @@ language batch sent to the backend.
 ## Definition of done
 
 - [x] en, ja, ko, es, pt, id, vi and th each have current metadata, CC, checked dubbing and localized thumbnails delivered through final/publish and verified by backend stored-file readback.
-- [ ] The formal native languages batch is bound to a genuinely approved source final review and submitted successfully; generic final/publish file delivery alone does not satisfy this batch requirement.
+- [x] The formal native languages batch is bound to a genuinely approved source final review and submitted successfully; generic final/publish file delivery alone does not satisfy this batch requirement.
 - [x] The reusable AI/tech skill records eight foreign languages plus the zh-TW original as the default; both existing skill mirrors match.
 - [x] Original QA failures, narration facts and source attribution remain intact; no unperformed YouTube upload is claimed.
 
@@ -38,9 +38,9 @@ language batch sent to the backend.
 - [x] Translate and independently review all eight languages against the final source and timing budgets.
 - [x] Synthesize, fit and check each dub serially; all eight current tracks have actual 80/80 checks (640 lines), with affected takes repaired and prior failures retained.
 - [x] Rebuild nine-language CC and the full package, send updated final/publish files, and verify remote sizes/hashes and eight downloadable M4A evidence aliases.
-- [ ] Send the formal languages batch after genuine source-final approval; the actual native attempt returned exit 3 while remote final remained pending.
+- [x] Send the formal languages batch after genuine source-final approval; the actual native attempt returned exit 3 while remote final remained pending.
 - [x] Record final per-language measurements, localized thumbnail checks, standing eight-language preference and remaining QA warnings.
-- [ ] Finish the task in the existing review PR only after the formal batch has a successful native submission and backend readback.
+- [x] Finish the task in the existing review PR only after the formal batch has a successful native submission and backend readback.
 
 ## How to verify
 
@@ -66,3 +66,15 @@ mirror tests, native lint and task checks before pushing the documentation.
 - Public PR evidence is docs/videos/openai-dns-containment/delivery-verification.json: eight checked tracks, 47 stored-file roles, eight thumbnail checks, download aliases, genuine pending source approval, QA 10/11 and 35 caption-speed advisories. Reviewers do not need private scratch access for these delivery facts.
 
 - New-rule qualification remains incomplete: local `branding.json` is absent and checks have no official bookend binding; the shared package is missing. Preserve the delivered files and pending reviews. Recover canonical assets and follow native version protections before any timeline replacement; no arbitrary bookends or blind paid retries. Cross-project asset recovery is recorded as `2026-10-25-local-first-build-without-branding`.
+
+## Handover 2026-10-26
+
+The missing bookends were added by Claude on the owner's request (Codex's work directory was not
+used): final `3bf18edf…` with the v4 intro and end screen and the opening card's draft label removed,
+the eight dubs wrapped with the same bookend audio, upload package `1a01753e…` and languages batch
+`4291dae0…`, all approved by the owner; the video is on YouTube (`qA7e1VCrwn0`). See
+`docs/videos/openai-dns-containment/finish-20261026.md`.
+- The batch `4291dae0…` was sent by a script against the tool API, not by the native `review-push`
+  (no work directory): it carries `final_review_id`, its manifest names the approved final and the
+  approved publish review, and the site's renewal-free binding accepted it; it was read back and the
+  owner approved it.
