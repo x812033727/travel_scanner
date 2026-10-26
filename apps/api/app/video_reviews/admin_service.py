@@ -157,6 +157,7 @@ YOUTUBE_PATH_KINDS = frozenset({"shorts", "embed", "live", "video", "v"})
 # Gates where approving means choosing one of the offered options (an outline; a character sheet).
 CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
+LOOK_NO_OPTIONS_PROMPT = "這一筆沒有設定圖可選（工人還沒重畫）；退回它，或等新的一筆送上來再選"
 # A languages batch with nothing for the owner to upload is approved as it arrives.
 LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
 # A narrator-only explainer may use the existing drama dub path. A brand story needs additional
@@ -392,6 +393,10 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
     choices = outline_choices(review.payload) if review.gate in CHOICE_GATES else []
     if decision.decision == "approve" and choices and decision.choice not in choices:
         return CHOICE_PROMPTS[review.gate].format("、".join(choices))
+    # A character's sheets sent back and pushed again before the worker drew them (2026-10-26):
+    # an approval with no sheet to choose is never recorded by the worker, so it is refused here.
+    if decision.decision == "approve" and review.gate == "look" and not choices:
+        return LOOK_NO_OPTIONS_PROMPT
     return None
 
 

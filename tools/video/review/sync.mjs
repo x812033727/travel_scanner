@@ -25,7 +25,7 @@ import { isCompilation } from "../core/compilation.mjs";
 import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages, uncheckedDubRole } from "../core/stages.mjs";
-import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
@@ -1099,6 +1099,10 @@ async function lookSubmissions({ request, project, workdir }) {
   const file = path.join(workdir, ARTIFACTS.characters);
   const manifest = readJson(file, null);
   if (!manifest?.characters) throw new ReviewError("characters/manifest.json is missing; run look first", { who: "owner" });
+  // A character sent back has no sheets until look draws it again: a review with nothing to
+  // choose would be approved with no choice and never recorded (e002-redo1, 2026-10-26).
+  const undrawn = undrawnCharacters(manifest);
+  if (undrawn.length) throw new ReviewError(`the sheets of ${undrawn.join(", ")} were sent back and are not drawn again yet; run look first (nothing was sent)`, { who: "owner" });
   const sha = await sha256File(file);
   return Object.entries(manifest.characters).map(([id, entry]) => async () => {
     const character = doc.characters?.find((each) => each.id === id);

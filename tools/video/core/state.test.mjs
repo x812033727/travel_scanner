@@ -16,7 +16,7 @@ import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
-import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, compilationTranslationStale, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, compilationTranslationStale, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete, undrawnCharacters } from "./state.mjs";
 import { buildTimeline, estimateTimeline, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 import { planRequests } from "../tts/requests.mjs";
@@ -481,6 +481,24 @@ test("a picture kept with the judge's remarks is no review need: its failed verd
   assert.deepEqual(await check({ ...failed, needs_review: true, accepted_with_problems: ["awkward: the hand"] }), ["desk keyframe needs review"], "needs_review is the stage's word and stands");
   assert.deepEqual(await check({ ...failed, needs_review: false, accepted_with_problems: "yes" }), ["desk keyframe needs review"], "only the list the stage writes counts");
   assert.deepEqual(await keyframeProblems({ doc, manifest: { shots: { desk: failed } }, workdir: box.workdir, allowNeedsReview: true }), []);
+});
+
+test("a character whose sheets were sent back (no candidates) leaves the look not generated, whatever the manifest's hash says", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = dramaFixture();
+  const candidate = { n: 1, seed: 1, file: "characters/jingwei/001.png", sha256: "1".repeat(64), judge: { overall: 8, passed: true, problems: [] } };
+  const write = (yandi) => atomicWrite(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), characters: { jingwei: { name: "精衛", candidates: [candidate], suggested: 1, needs_review: false }, yandi } }));
+  const status = async () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  write({ name: "炎帝", candidates: [candidate], suggested: 1, needs_review: false });
+  assert.equal(stepOf(await status(), "look generated").done, true);
+  // The worker's look prompt fix emptied 炎帝's candidates (media/look.mjs resetSheets): the
+  // next step draws again; a review pushed now would have nothing to choose (e002-redo1, 2026-10-26).
+  write({ name: "炎帝", candidates: [], suggested: null, needs_review: false, redraws: 1, sent_back: [{ at: "2026-10-26T00:36:48Z", said: ["只要一塊空白的淡藍光板"], fixes: ["只要一塊空白的淡藍光板"] }] });
+  const reset = await status();
+  assert.equal(stepOf(reset, "look generated").done, false);
+  assert.equal(stepOf(reset, "look generated").note, "the sheets of yandi were sent back and wait to be drawn again");
+  assert.deepEqual(undrawnCharacters(JSON.parse(readFileSync(path.join(box.workdir, "characters", "manifest.json"), "utf8"))), ["yandi"]);
+  assert.deepEqual(undrawnCharacters(null), []);
 });
 
 test("a compilation walks its own steps: planned metadata, cards, the join, the translations, then the shared gates", async () => {
