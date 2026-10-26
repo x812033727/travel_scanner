@@ -1,7 +1,7 @@
 ---
 id: 2026-10-26-qa-keeps-jev-policy-answer-for
 title: QA keeps Jev's policy answer for films whose site books each Jev request once
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-opus-5-5-happy-brahmagupta
@@ -32,3 +32,4 @@ scope:
 - `node --test tools/video/qa/*.test.mjs tools/video/review/*.test.mjs tools/video/automation/*.test.mjs`：960 pass。
 - C11 的 qa.json 已被第二次的失敗蓋掉；那次的回答（`Jev：符合立場 0.55、有示範：不適用（解說）、建議 0.01、業配 0.09；沒過（符合立場低於 0.6）`）還在當時的 qa 輸出裡，照新格式以同一份請求的雜湊 `c1bbcd70…` 補回 `policy_judged` 後，`review-push --gate final --manual-review` 送出成片（pending，站主決定）。
 - 認領時與 `2026-10-26-qa-warns-when-a-long-video`（in-progress，scope 含 `tools/video/qa/cli.mjs`）重疊，用 `--force`：那張的 QA 警告已在 #1862（`0b2ce0ab9`）合併，剩下的「重做 PHP2Shell」不碰 `tools/video/qa/`；本票只改 `policyItem` 與 `heldPolicy` 一段。
+- PR：https://github.com/x812033727/travel_scanner/pull/1888
