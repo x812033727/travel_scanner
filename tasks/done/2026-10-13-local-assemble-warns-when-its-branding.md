@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-local-assemble-warns-when-its-branding
 title: Local assemble warns when its branding package is older than the host's
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-branding-pull
 claimed_at: 2026-10-26T00:43:38Z
 created_at: 2026-10-13T13:44:53Z
-completed_at:
+completed_at: 2026-10-26T01:00:50Z
 branch: claude/gracious-bohr-2mjwx0
 depends_on: []
 scope:
@@ -94,4 +94,3 @@ package installed (`branding --install`), run `compile --slug <series>-full --dr
   though the test installs a package first; `pinsDefault` reads no package, so the result is the
   same. Left as is: core/branding.test.mjs is a bound file and a message-only edit would need
   another receipt increment; fix it with the next change that touches that file.
-
