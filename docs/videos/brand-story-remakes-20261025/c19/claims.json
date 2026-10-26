@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_QA",
-  "candidate_revision": "c19-r2",
+  "candidate_revision": "c19-r5",
   "author": "/root/c19_primary_research",
   "video_slug": "story-everyday-seven-bank-c19-remake-20261025",
   "frozen_research_sha256": {
@@ -2115,44 +2115,6 @@
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "c19r1o13",
-      "scene_id": "c19r1o13",
-      "claim": "一邊替自己開戶的人辦事，另一邊，則要讓別家金融機構的客戶也能用機器。",
-      "claim_class": "編輯連接",
-      "claim_kind": "editorial_link",
-      "source_ids": [
-        "S6"
-      ],
-      "research_claim_ids": [
-        "R10"
-      ],
-      "quote_ids": [
-        "R10-Q1"
-      ],
-      "source_evidence": [
-        {
-          "id": "R10-Q1",
-          "research_claim_id": "R10",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF8／印6 事業コンセプトと概要",
-          "original_quote": "こうした普通預金口座取引をはじめとする『金融サービス事業』と、他の金融機関と提携することでより多くのお客さまに当社 ATM をご利用いただく『ATM 事業』",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "bd5c7a1e3fdc10746aa9ecff38aed57b6775c710ecf2ff6f5bdebfdedcfbe39d"
-        }
-      ],
-      "limits": [
-        "不能說完全沒有銀行帳戶、線上服務、員工或其他銀行業務；未採用的共同ATM運用公司構想無決策過程。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Close-up beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, soft interior light from the right.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
       "id": "c19r1o14",
       "scene_id": "c19r1o14",
       "claim": "你手上的卡若來自別家銀行，店裡就得有一條路，把那張卡接回原來的機構。",
@@ -3154,83 +3116,7 @@
     {
       "id": "c19r1a12",
       "scene_id": "c19r1a12",
-      "claim": "機器的畫面，則依各家合作銀行的規格顯示。",
-      "claim_class": "事實",
-      "claim_kind": "fact",
-      "source_ids": [
-        "S6"
-      ],
-      "research_claim_ids": [
-        "R14"
-      ],
-      "quote_ids": [
-        "R14-Q1",
-        "R14-Q2",
-        "R14-Q3",
-        "R14-Q4"
-      ],
-      "source_evidence": [
-        {
-          "id": "R14-Q1",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 アイワイバンク銀行との提携の特長",
-          "original_quote": "当社 ATM はすべて各提携銀行との共同出張所",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "5c564336126526a2a149d4945a5442bb38b04767cfdadf159b5a8b35627ec101"
-        },
-        {
-          "id": "R14-Q2",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 同頁caption",
-          "original_quote": "提携銀行の看板を掲出",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "56e1dc5281068ddd1f16b78c144693850f6d990a4683234cc7ec91c949cdff3a"
-        },
-        {
-          "id": "R14-Q3",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 同頁caption",
-          "original_quote": "ATM 画面・レシート表示は提携銀行ごとの仕様",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "3f9615418d540e2dc9b1e3d4594322346d4c7f0b8adcc33a7d9e8a4a68b1eebc"
-        },
-        {
-          "id": "R14-Q4",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 ATMの代替／効果的な活用",
-          "original_quote": "業務のアウトソーシングによる効率的な事業展開へ",
-          "quote_sha256": "3f82d8823fabe29a8a4abb1a93ea56534f22c6392978dc051f72efa405859995",
-          "scope": "Company explanation of ATM operation outsourcing; no individual negotiation or savings amount established."
-        }
-      ],
-      "limits": [
-        "規格由來源證實，不能畫未核實真實UI/商標；不保證所有後來卡種畫面完全相同；不推隱私心理。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Medium shot beside an unbranded automated teller terminal, an anonymous adult pointing toward a blank screen with simple nonfunctional shapes, soft light from a side window.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "c19r1a13",
-      "scene_id": "c19r1a13",
-      "claim": "假設你拿的是適用的合作卡，畫面便按合作銀行規格顯示，能用的服務仍要另看。",
+      "claim": "如果你拿的是適用合作卡，機器的畫面，就按那家合作銀行的規格顯示。",
       "claim_class": "假設／條件",
       "claim_kind": "hypothetical",
       "source_ids": [
@@ -3326,8 +3212,8 @@
         "規格由來源證實，不能畫未核實真實UI/商標；不保證所有後來卡種畫面完全相同；不推隱私心理。",
         "沒有為任何指定卡當下成功背書；銀行核准、正常有鈔是交易必要前提，不是原件記錄的某一筆成功。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Medium close-up beside an unbranded automated teller terminal, an anonymous adult pointing toward a blank screen with simple nonfunctional shapes, mild overhead light.",
+      "author_context": "R3僅把被刪a13的適用合作卡/你移到a12；畫面規格只說一次，服務差異仍由原a14保留。",
+      "visual_prompt": "Medium shot beside an unbranded automated teller terminal, an anonymous adult pointing toward a blank screen with simple nonfunctional shapes, soft light from a side window.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
@@ -4837,71 +4723,6 @@
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "c19r1e10",
-      "scene_id": "c19r1e10",
-      "claim": "這不是多放幾個按鍵，而是機器每天要接住多少現鈔、如何處理的改動。",
-      "claim_class": "編輯連接",
-      "claim_kind": "editorial_link",
-      "source_ids": [
-        "S2",
-        "S1"
-      ],
-      "research_claim_ids": [
-        "R17"
-      ],
-      "quote_ids": [
-        "R17-Q1",
-        "R17-Q2",
-        "R17-Q3"
-      ],
-      "source_evidence": [
-        {
-          "id": "R17-Q1",
-          "research_claim_id": "R17",
-          "source_id": "S2",
-          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
-          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
-          "locator": "Overall management > 2005 > April 4、July 26",
-          "original_quote": "April 4 Number of ATMs installed exceeded 10,000",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "46c3d5717634ed7fc376063a05d01691053f9bb6aec6bf9ff4ef5579f34a3e11"
-        },
-        {
-          "id": "R17-Q2",
-          "research_claim_id": "R17",
-          "source_id": "S2",
-          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
-          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
-          "locator": "Overall management > 2005 > July 26",
-          "original_quote": "July 26 Second-generation ATM Introduction of second-generation ATMs",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "4c9880e19a5750e3cbedace8f4d1fe09f0b5961fb806eaee6985303b0637ccfa"
-        },
-        {
-          "id": "R17-Q3",
-          "research_claim_id": "R17",
-          "source_id": "S1",
-          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
-          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
-          "locator": "#HistorySevenBank2005 > 7月 正文",
-          "original_quote": "紙幣部の大容量化・高速化を実現することで、お客さまのより快適な操作性を実現するとともに、ＡＴＭ１台毎の現金輸送・取引を効率化することで、さらに安定した運用ができるようになりました。",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "ee7fc1f7b2c0fd13d0e040c62c4c74ded413c94a5f67714a6fb1d4a9234df96c"
-        }
-      ],
-      "limits": [
-        "不把一萬台、改名、二代當同日；不說二代當年全網換完；無成本下降比例或停機率量測。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Wide shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, gentle light from the left.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
       "id": "c19r1e11",
       "scene_id": "c19r1e11",
       "claim": "同年十月，IY銀行改名七銀行；公司說，新名字要讓人更容易想到店內服務。",
@@ -5668,70 +5489,6 @@
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "c19r1t02",
-      "scene_id": "c19r1t02",
-      "claim": "也就是說，你若用合作銀行的卡，向你定價的，是替你保管帳戶的那家機構。",
-      "claim_class": "假設／條件",
-      "claim_kind": "hypothetical",
-      "source_ids": [
-        "S3"
-      ],
-      "research_claim_ids": [
-        "R21"
-      ],
-      "quote_ids": [
-        "R21-Q1",
-        "R21-Q2",
-        "R21-Q3"
-      ],
-      "source_evidence": [
-        {
-          "id": "R21-Q1",
-          "research_claim_id": "R21",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF15／印13 Business Model 圖標",
-          "original_quote": "ATM transaction fees (Decided by the bank holding the account)",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "b28f7ea406a7a9c338b69991b4cf1415b0afc78ee4a2fa0615a243d7fb7ce5d1"
-        },
-        {
-          "id": "R21-Q2",
-          "research_claim_id": "R21",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF15／印13 Business Model 圖標",
-          "original_quote": "ATM usage fees",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "1f4c1e66ace6764acc884a8047152bf56c3bef288b94587017ad5b5141c58387"
-        },
-        {
-          "id": "R21-Q3",
-          "research_claim_id": "R21",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF15／印13 Partner Financial Institutions 正文",
-          "original_quote": "Our partners can set their ATM transaction fees based on their own pricing strategies",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "5d84b7d67b38ba6307f49af3fa7443f30b6058e2465c6e149c7950c50400c3de"
-        }
-      ],
-      "limits": [
-        "不說每筆顧客必付/免費交易必有固定網路費；不說顧客費全部歸Seven Bank；無逐合約/逐筆價格。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, gentle light from the left.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
       "id": "c19r1t03",
       "scene_id": "c19r1t03",
       "claim": "它可以按自己的策略，替顧客定價或給優惠；那機器經營者，又向誰收費？",
@@ -6080,89 +5837,22 @@
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "c19r1t09",
-      "scene_id": "c19r1t09",
-      "claim": "這是七銀行描述的效益；維護機器和準備現鈔，借用入口才有機會減輕這些負擔。",
-      "claim_class": "編輯連接",
-      "claim_kind": "editorial_link",
-      "source_ids": [
-        "S3"
-      ],
-      "research_claim_ids": [
-        "R22"
-      ],
-      "quote_ids": [
-        "R22-Q1"
-      ],
-      "source_evidence": [
-        {
-          "id": "R22-Q1",
-          "research_claim_id": "R22",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF15／印13 Partner Financial Institutions 末段",
-          "original_quote": "our alliance partners can reduce their own maintenance and funding costs compared to having their own ATMs as they make use of Seven Bank’s ATMs. They can use our ATMs as a backup for their own ATM network.",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "04485daf3e9e5a045431f591612b97eec7bfbb62dd46983736b3aff8b405970d"
-        }
-      ],
-      "limits": [
-        "是公司對模型的效益說明，不是每家內部決策紀錄；無節省百分比；備援用途不證曾有災害成功接手。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Medium shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, soft interior light from the right.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
       "id": "c19r1t10",
       "scene_id": "c19r1t10",
-      "claim": "你在店裡多一個入口，合作銀行則少做一部分維運；這樣的合作，接進了多少機構？",
+      "claim": "這樣的合作，當時接進了多少家金融機構？",
       "claim_class": "旁白疑問",
       "claim_kind": "question",
       "source_ids": [
-        "S6",
         "S3"
       ],
       "research_claim_ids": [
-        "R10",
-        "R22",
         "R23"
       ],
       "quote_ids": [
-        "R10-Q1",
-        "R22-Q1",
         "R23-Q1",
         "R23-Q2"
       ],
       "source_evidence": [
-        {
-          "id": "R10-Q1",
-          "research_claim_id": "R10",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF8／印6 事業コンセプトと概要",
-          "original_quote": "こうした普通預金口座取引をはじめとする『金融サービス事業』と、他の金融機関と提携することでより多くのお客さまに当社 ATM をご利用いただく『ATM 事業』",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "bd5c7a1e3fdc10746aa9ecff38aed57b6775c710ecf2ff6f5bdebfdedcfbe39d"
-        },
-        {
-          "id": "R22-Q1",
-          "research_claim_id": "R22",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF15／印13 Partner Financial Institutions 末段",
-          "original_quote": "our alliance partners can reduce their own maintenance and funding costs compared to having their own ATMs as they make use of Seven Bank’s ATMs. They can use our ATMs as a backup for their own ATM network.",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "04485daf3e9e5a045431f591612b97eec7bfbb62dd46983736b3aff8b405970d"
-        },
         {
           "id": "R23-Q1",
           "research_claim_id": "R23",
@@ -6189,11 +5879,9 @@
         }
       ],
       "limits": [
-        "不能說完全沒有銀行帳戶、線上服務、員工或其他銀行業務；未採用的共同ATM運用公司構想無決策過程。",
-        "是公司對模型的效益說明，不是每家內部決策紀錄；無節省百分比；備援用途不證曾有災害成功接手。",
         "不是現在、不是555家全部為銀行；不證每台每卡每時段所有功能都通。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R4只保留尚未回答的合作機構數問題；刪去重述t08的入口/維運減負前半句。",
       "visual_prompt": "Medium close-up beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, soft light from a side window.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
@@ -7171,7 +6859,7 @@
     {
       "id": "c19r1n04",
       "scene_id": "c19r1n04",
-      "claim": "至於照看機器、接客人詢問的支援中心，則在東京與大阪，全天待命。",
+      "claim": "同份年報記載，支援中心位於東京與大阪，全天待命。",
       "claim_class": "事實",
       "claim_kind": "fact",
       "source_ids": [
@@ -7213,7 +6901,7 @@
       "limits": [
         "不是橫濱/大阪relay城市；不編特定夜晚故障、工作人員心理、店員開機接觸現鈔或現金車路線/時刻/匙碼。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R5僅保留該年報列明的東京/大阪地點與全天待命資訊；刪除e02已述接客人詢問功能，不把報告發表日期當建造或首次啟用日期。",
       "visual_prompt": "Close-up in a plain support office, an anonymous headset operator looking toward a blank monitor with abstract status shapes, soft interior light from the right.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
@@ -7998,75 +7686,6 @@
       ],
       "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
       "visual_prompt": "Medium close-up inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, soft light from a side window.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "c19r1n21",
-      "scene_id": "c19r1n21",
-      "claim": "店家存入、顧客提出，兩端的需求都進了管理工作，提款口才不只是出鈔那一刻。",
-      "claim_class": "編輯連接",
-      "claim_kind": "editorial_link",
-      "source_ids": [
-        "S8",
-        "S3"
-      ],
-      "research_claim_ids": [
-        "R11",
-        "R26",
-        "R28"
-      ],
-      "quote_ids": [
-        "R11-Q1",
-        "R26-Q1",
-        "R28-Q1"
-      ],
-      "source_evidence": [
-        {
-          "id": "R11-Q1",
-          "research_claim_id": "R11",
-          "source_id": "S8",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
-          "raw_sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
-          "locator": "PDF26／印24 右欄 ATMの利用状況 最末段",
-          "original_quote": "なお、2001年12月より開始しましたセブン-イレブン店舗向けの売上金入金サービスは、その利便性や安全性から、多くのセブン-イレブン店舗経営者のみなさまにご利用いただいております。また、一般事業会社向けの売上金入金サービスも、2003年度より開始しております。",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "43777dd4bdfda72703b8f06abd391a67bf2281aa21f701760a1e7fdc62c50fa0"
-        },
-        {
-          "id": "R26-Q1",
-          "research_claim_id": "R26",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 第1段",
-          "original_quote": "to minimize temporary stoppages of ATMs for regular inspections and maintenance as well as the insertion and replenishment of cash, we analyze the operating trends of each ATM and manage these units appropriately for how they are being used.",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "0686d067139906230cb31614580be32fcba3356a00c1d248aa2aeff1df7f13ed"
-        },
-        {
-          "id": "R28-Q1",
-          "research_claim_id": "R28",
-          "source_id": "S3",
-          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
-          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
-          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 第2段",
-          "original_quote": "by having Seven-Eleven stores and other businesses in the vicinity of ATMs put their sales proceeds into our ATMs, we are working to achieve much more efficient cash management.",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "4621c65786444895d5c26c5f48dab7aef29763ba2163ecd21a0f49598d75cafa"
-        }
-      ],
-      "limits": [
-        "2001只可稱Seven-Eleven店舖，不能泛稱一般企業；不證同一紙鈔立即進提款匣；無逐店或逐張鈔票流向。",
-        "無逐台分析算法/排程規則；不要推現代AI倒寫2010；來源目的不等於保證永不停機。",
-        "只能說網路現金管理辦法；無同一紙鈔立即再提款、存入匣/提款匣路由、逐店來源、因果降本幅度。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Close-up beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, gentle light from the left.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"

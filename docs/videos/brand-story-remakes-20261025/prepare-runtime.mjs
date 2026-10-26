@@ -10,10 +10,12 @@ import { writeScreenplay } from "../../../tools/video/core/screenplay.mjs";
 const batch = path.dirname(fileURLToPath(import.meta.url));
 const repository = path.resolve(batch, "../../..");
 const [runtimeArgument, mediaArgument, ...requestedProjects] = process.argv.slice(2);
-const allowedProjects = new Set(["c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11", "c14", "c15", "c19", "c20"]);
+// Free source initialization only; these identities do not authorize any production spend.
+const nonCRemakes = { seiko: "story-adapt-seiko-quartz-astron-remake-20261025" };
+const allowedProjects = new Set(["c03", "c04", "c05", "c06", "c07", "c08", "c09", "c10", "c11", "c14", "c15", "c19", "c20", ...Object.keys(nonCRemakes)]);
 const projectIds = requestedProjects.length ? requestedProjects : ["c04", "c05", "c09"];
 if (!runtimeArgument || !mediaArgument || !path.isAbsolute(runtimeArgument) || !path.isAbsolute(mediaArgument)) {
-  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base> [c03|c04|c05|c06|c07|c08|c09|c10|c11|c14|c15|c19|c20 ...]");
+  throw new Error("Usage: node prepare-runtime.mjs <absolute isolated runtime root> <absolute media base> [c03|c04|c05|c06|c07|c08|c09|c10|c11|c14|c15|c19|c20|seiko ...]");
 }
 if (new Set(projectIds).size !== projectIds.length || projectIds.some(id => !allowedProjects.has(id))) {
   throw new Error("Choose each supported project at most once; preparing C03 must not overwrite an approved earlier runtime.");
@@ -38,8 +40,9 @@ for (const id of projectIds) {
   const source = path.join(batch, id);
   const doc = JSON.parse(fs.readFileSync(path.join(source, "video.json")));
   const context = JSON.parse(fs.readFileSync(path.join(source, "series.json")));
-  if (doc.series || !doc.slug.startsWith("story-everyday-") || !doc.slug.endsWith("-remake-20261025")) {
-    throw new Error(`${id}: a new candidate cannot rebind the original episode or evade the C-series budget prefix`);
+  const correctIdentity = nonCRemakes[id] ? doc.slug === nonCRemakes[id] : doc.slug.startsWith("story-everyday-") && doc.slug.endsWith("-remake-20261025");
+  if (doc.series || !correctIdentity) {
+    throw new Error(`${id}: preserve the expected new remake identity and original family; no rebinding or budget-prefix changes`);
   }
   const target = path.join(shelf, doc.slug);
   const workdir = path.join(media, doc.slug);

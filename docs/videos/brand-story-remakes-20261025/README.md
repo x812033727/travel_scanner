@@ -19,8 +19,8 @@ C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hol
 | [C11 UCC](c11/production-entry.md) | R6來源／共圖計畫及實際第5輪合併PASS | 新企劃／劇本pending；八語TEXT_PASS |
 | [C14 CamelBak](c14/production-entry.md) | R6來源／共圖計畫及實際第5輪合併PASS | 新企劃／劇本pending；八語TEXT_PASS |
 | [C15 FriXion](c15/production-entry.md) | R5來源／共圖計畫及實際第3輪合併PASS | 新企劃／劇本pending；八語TEXT_PASS |
-| [C19 Seven Bank](c19/research-original.md) | R2來源PASS；實際native2因重述HOLD，R3修稿中，歷史完整保存 | 未送新卡、未翻譯、未生成媒體 |
-| [C20 Zippo](c20/research-original.md) | 原始資料研究完成，68份舊檔保全 | 新稿待寫；日本個案僅證新舊內膽返還，不聲稱返還後成功點火 |
+| [C19 Seven Bank](c19/research-original.md) | R5來源delta PASS；fresh native5待審，R1–R4完整保存 | 未送新卡、未翻譯、未生成媒體 |
+| [C20 Zippo](c20/research-original.md) | R1來源PASS／敘事HOLD已封存；R2重新整理終身保證主線 | 未送新卡／翻譯，原68檔保全，實際返還點火不作聲稱 |
 
 [原始全批共圖查核](opening-teaser-image-audit.md)保留發現缺口當時的快照；[當前逐稿核對](opening-teaser-plan-reconciliation.json)證明11集20個事件預告已有來源核對的書面共圖計畫。實際圖片尚未生成，不能稱實圖共用已驗收。正常回收圖先做一次，預告呼叫前只讀核對原生cache key與實檔SHA；缺cache停止，不觸發第二次付費生成。每對須獨立驗圖，最終manifest及檔案SHA仍須一致。
 
@@ -35,3 +35,5 @@ C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hol
 畫面採MiniMax image-01、唯一look `{"preset":"cute-mystery"}`，正文至少70%相關插畫、最多連續3張必要字卡；英語匿名prompt不含品牌、真人名、logo、可讀字及版權角色。台灣說書旁白、繁中燒錄及CC，layout d縮圖黃字黑邊主標／白副標。clean-master目前只有[衍生配方及metadata檢查](c09/variants/clean-master/README.md)，每個實際clean輸出仍須自己的完整QA及當前final核准。
 
 [prepare-runtime.mjs](prepare-runtime.mjs)僅初始化明列集數的正常字典及官方劇本；已有批准的執行根不可覆寫。受控採用保留原核准、字典、語意校對及失敗回退鏈。[runtime-cli.mjs](runtime-cli.mjs)只交給官方工具，不解除付費保護。來源快取、公共研究影片與正式branding原件在倉庫外，Git只收文字證據。
+
+[C07容量研究](c07/duration-capacity-research.md)與[C11容量研究](c11/duration-capacity-research.md)已完成，新材料仍不足以在目前敘事範圍自然補足13分鐘；現稿與八語保留，後續須明確重定可證敘事範圍再寫，不降低時長標準。Seiko與Garmin原始研究完成，Seiko R1撰寫中；Dyson、行李箱及Doraemon原始研究已接續。

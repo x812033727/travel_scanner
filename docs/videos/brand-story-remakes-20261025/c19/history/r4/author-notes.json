@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_VISUAL_AND_FRESH_READERS",
+  "candidate_revision": "c19-r4",
+  "author": "/root/c19_primary_research",
+  "counts": {
+    "lines": 116,
+    "scenes": 114,
+    "shots": 113,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 6,
+    "loops": 36
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 3295,
+    "coldopen": 168,
+    "voiced_CTA": 59,
+    "rough_planning_target": 3500,
+    "delta_to_rough_target": -205,
+    "actual_narration_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      659,
+      823.75
+    ],
+    "planning_is_not_actual_time": true,
+    "official_duration_scope": "Whole unwrapped narration including coldopen and voiced CTA; excludes separately added channel bookends."
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "source_research_sha256": {
+    "research-original.md": "2f75f4bb90a470616f461ea17aac864a8f1e58ce46f3d15808be98ac8b01d8d3",
+    "research-original.claims.json": "5864de9d0780140a4c3378ce07fe1185ad2ff7befb646892df24f0c699f7b2cc",
+    "original-preservation.json": "2624d569571d9430774dcec55a67e24018dbf9d7b57c5d7219a8539cb599b4ad"
+  },
+  "protected_old_file_count": 66,
+  "protected_old_and_snapshot_unchanged": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "actual_media_generated": false,
+  "actual_same_image_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/c19-submission-root",
+  "image_reuse_plan_sha256": "05f73bc3afca59722c069431bc1772ba3106185f2cd6bc6386e2bb04c537162f",
+  "independent_source_review": "PENDING_OTHER_REVIEWER",
+  "independent_narrative_review": "PENDING_FRESH_READERS",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"blank\" is in 61 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"closed\" is in 50 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"terminal\" is in 48 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "about 15.1 minutes; the target is 12-14"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇〇二年」 is said in 3 lines (c19r1a11, c19r1a22, c19r1e01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇一〇年」 is said in 5 lines (c19r1e14, c19r1t01, c19r1t14, c19r1n01, c19r1n22): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ],
+    "receipt": "native-author-lint-r4.json",
+    "receipt_sha256": "d2050804c5a1ee462b5ddbbda5a5abfa53866f4e9acd8cdc0f3e2bc5aff36859",
+    "runtime_manifest_sha256": "0836011fa1b3a76eb84d1b260b823fa9bc0afbfaa7a30c95e0ffac7fae5d3461",
+    "lexicon_sha256": "302845192be36f6ec7a3048148c8c280d6b36ccb2e6811c3a950fcfbb8cf80b1"
+  },
+  "prior_review_state": {
+    "r3_source": "PASS_R3_ONLY",
+    "r3_written_visual": "PASS_R3_ONLY",
+    "r3_native3": "HOLD",
+    "archive": "history/r3/review-state.json",
+    "archive_sha256": "ab08c0ca177d7e8ff6669d1c743c36305bb8b37c723e38f3fafb36c2e31b2c87",
+    "r4_source_delta": "PENDING_OTHER_REVIEWER",
+    "r4_native4": "PENDING_FRESH_READERS",
+    "actual_native_round_count": 3,
+    "format_correction_is_not_additional_round": true
+  },
+  "change_receipt": "changes-r4.json",
+  "change_receipt_sha256": "750a9adbc20e61d4db97ff169a9a03dbb640141958e6b3d1439c86e58fb3e62f",
+  "opening_unchanged_from_r3": true,
+  "remaining_visual_requests_unchanged_from_r3": true,
+  "warning_disposition": [
+    "Blank/closed props avoid readable operational UI; automated teller terminal remains the main project subject.",
+    "Year labels belong to distinct events/source periods.",
+    "Legacy estimate about15.1minutes is not actual audio.3295units is139 below R3 solely due to removing adjacent paraphrases; no new examples or pacing padding was added."
+  ],
+  "frozen_at_utc": "2026-10-26T03:21:09.686Z"
+}

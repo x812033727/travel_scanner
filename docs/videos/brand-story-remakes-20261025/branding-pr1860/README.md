@@ -102,3 +102,7 @@ NODE
 `generated_story_media = 0`、`paid_requests = 0`。正式 branding 身份與取得、安裝、格式 QA 已完成。
 真正故事 TTS、正文 measured duration、畫面、配樂、整片 render、final QA、八語成片與送審仍由主批次接續，
 必須先通過各自 admission／budget／內容前提；branding 通過不代表付費製片獲得新授權。
+
+## 合成入口強制檢查
+
+本批 [runtime-cli](../runtime-cli.mjs) 的 `assemble` 現會先執行[必要素材守衛](required-assembly.mjs)：強制使用已驗證的媒體根、在真正assembly前核對正式站與兩個實檔，並補上 `--intro-after-condensation`。錯誤包、缺包、錯媒體根或核對失敗都不呼叫assembly；只有操作方明給 `--adopt-branding` 才傳遞，不自行重綁舊cut。[隔離守衛檢查](assembly-guard-check.json)只使用模擬預檢程序結果，不呼叫供應商或真正組片；真正檔案與正式站核對另有本頁原生收據。這不解除預算、TTS、來源、時長或final關卡。

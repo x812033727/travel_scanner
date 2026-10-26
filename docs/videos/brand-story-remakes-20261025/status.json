@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T02:59:23.300545+00:00",
+  "updated_at": "2026-10-26T03:38:55.359656+00:00",
   "state": "eleven_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
@@ -694,7 +694,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "git_index_json_files": 4795
+      "git_index_json_files": 5005
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -856,9 +856,17 @@
     },
     "latest_index_validation": {
       "status": "PASS",
-      "text_files": 5924,
-      "staged_files": 299,
-      "scope": "Batch/task only; indexed UTF8, JSON, binary and credential scans passed."
+      "text_files": 6175,
+      "staged_files": 270,
+      "scope": "Batch/task only; all indexed UTF8/JSON/scope/credential/binary scans pass."
+    },
+    "required_assembly_guard": {
+      "status": "PASS",
+      "independent_recheck": "branding-pr1860/assembly-guard-recheck.json",
+      "actual_negative_cli_cases": 7,
+      "injected_cases": 33,
+      "actual_readonly_site_bridge": 1,
+      "actual_assembly": false
     }
   },
   "remaining": [
@@ -868,7 +876,7 @@
     "Accepted actual illustrations including one actual identical asset per opening/payoff pair, render, measured music, formal bookends and burned zh-TW/CC.",
     "Actual full-film decode QA, current owner final review and upload package.",
     "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
-    "C19 R3 revision in progress after R2 source PASS/native2 no_recap HOLD; C20 remake being authored; Seiko/Garmin primary research active; Dyson/rolling-suitcase/Doraemon remain queued."
+    "C19 R5 source/fresh-native5 pending; C20 R2 is being restructured after R1 source PASS/native HOLD. Non-C primary research and authorship continue; 13-minute material-capacity risks remain explicit."
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -1006,10 +1014,13 @@
     "c11": "source_native_and_eight_language_text_PASS_media_held",
     "c14": "source_native_and_eight_language_text_PASS_media_held",
     "c15": "source_native_and_eight_language_text_PASS_media_held",
-    "c19": "R2_SOURCE_PASS_NATIVE2_HOLD_NO_RECAP_R3_AUTHOR_IN_PROGRESS",
-    "c20": "PRIMARY_RESEARCH_COMPLETE_AWAITING_AUTHOR",
-    "seiko": "PRIMARY_RESEARCH_IN_PROGRESS",
-    "garmin": "PRIMARY_RESEARCH_IN_PROGRESS"
+    "c19": "R5_SOURCE_DELTA_PASS_FRESH_NATIVE5_PENDING",
+    "c20": "R1_SOURCE_PASS_NATIVE1_HOLD_R2_AUTHOR_RESTRUCTURING",
+    "seiko": "PRIMARY_RESEARCH_COMPLETE_R1_AUTHOR_IN_PROGRESS",
+    "garmin": "PRIMARY_RESEARCH_COMPLETE_AWAITING_AUTHOR",
+    "dyson": "PRIMARY_RESEARCH_IN_PROGRESS",
+    "rolling_suitcase": "PRIMARY_RESEARCH_IN_PROGRESS",
+    "doraemon": "PRIMARY_RESEARCH_IN_PROGRESS"
   },
   "narration_size_planning": "narration-size-precheck.json",
   "new_media_files_scope": "Generated production story audio/images/music/film only. Two reused formal production bookends are separately recorded; public source research downloads are excluded.",
@@ -1060,30 +1071,52 @@
     "outro_seconds": 21,
     "reused_files": 2,
     "actual_episode_assembly": false,
-    "production_pin_created": false
+    "production_pin_created": false,
+    "assembly_entry_enforced": true,
+    "assembly_guard": "branding-pr1860/required-assembly.mjs",
+    "independent_guard_review": "branding-pr1860/assembly-guard-recheck.json",
+    "first_must_fix_preserved": "branding-pr1860/assembly-guard-independent.json"
   },
   "other_drafts": [
     {
       "id": "c19",
-      "checkpoint": "R2_SOURCE_PASS_NATIVE2_HOLD_NO_RECAP",
-      "active_work": "R3_AUTHOR_IN_PROGRESS_EXCLUDED_UNTIL_FROZEN",
-      "source_receipt": "c19/reviews/source-r2-independent.json",
-      "narrative_receipt": "c19/reviews/narrative-r2.json",
-      "actual_native_panel": 2,
+      "checkpoint": "R5_SOURCE_DELTA_PASS_FRESH_NATIVE5_PENDING",
+      "active_work": "INDEPENDENT_NATIVE5_IN_PROGRESS",
+      "source_receipt": "c19/reviews/source-r5-independent.json",
+      "narrative_receipt": "c19/history/r4/reviews/narrative-r4.json",
+      "actual_native_panel": 4,
       "media_qa": false,
-      "video_sha256": "ee3ecc0b38fa986ea69c3f8f6d29fb3ce770b5f031ba3ea8f2c903f3218ea493",
-      "historical_receipts_do_not_apply_to_r2": true
+      "video_sha256": "66195f39be280501c6b6af9e1873fdb58894832a8392a96669c45b6ae77c4fee",
+      "historical_receipts_do_not_apply_to_r2": true,
+      "historical_receipts_do_not_apply_to_r5": false,
+      "native_fact_check": "c19/verify-1.md",
+      "previous_native_only": "c19/history/r4/reviews/narrative-r4.json"
     },
     {
       "id": "c20",
-      "state": "PRIMARY_RESEARCH_COMPLETE_AWAITING_AUTHOR",
+      "state": "R1_SOURCE_PASS_NATIVE1_HOLD_R2_AUTHOR_IN_PROGRESS",
       "research": "c20/research-original.md",
       "old_files_preserved": 68,
-      "media_qa": false
+      "media_qa": false,
+      "frozen_r1": "c20/history/r1/author-freeze-r1.json",
+      "source_receipt": "c20/history/r1/reviews/source-r1-independent.json",
+      "narrative_receipt": "c20/history/r1/reviews/narrative-r1.json",
+      "actual_native_panel": 1,
+      "active_r2_not_checkpointed": true
     }
   ],
-  "narration_capacity_research_in_progress": [
-    "c07",
-    "c11"
-  ]
+  "narration_capacity_research": {
+    "c07": {
+      "state": "INSUFFICIENT_NEW_MATERIAL_FOR_CURRENT_PROMISE",
+      "receipt": "c07/duration-capacity-research.json",
+      "current_source_unchanged": true,
+      "actual_duration_measured": false
+    },
+    "c11": {
+      "state": "INSUFFICIENT_NEW_MATERIAL_FOR_CURRENT_PROMISE",
+      "receipt": "c11/duration-capacity-research.json",
+      "current_source_unchanged": true,
+      "actual_duration_measured": false
+    }
+  }
 }

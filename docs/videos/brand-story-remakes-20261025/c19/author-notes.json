@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "status": "HOLD_PENDING_INDEPENDENT_SOURCE_VISUAL_AND_FRESH_READERS",
-  "candidate_revision": "c19-r2",
+  "candidate_revision": "c19-r5",
   "author": "/root/c19_primary_research",
   "counts": {
-    "lines": 121,
-    "scenes": 119,
-    "shots": 118,
+    "lines": 115,
+    "scenes": 113,
+    "shots": 112,
     "cards": 0,
     "outro": 1,
     "chapters": 6,
     "loops": 36
   },
   "native_units": {
-    "whole_narration_spoken_units": 3456,
+    "whole_narration_spoken_units": 3257,
     "coldopen": 168,
     "voiced_CTA": 59,
     "rough_planning_target": 3500,
-    "delta_to_rough_target": -44,
+    "delta_to_rough_target": -243,
     "actual_narration_seconds": null,
     "actual_final_seconds": null,
     "actual_duration_verified": false,
     "planning_arithmetic_at_4_to_5_units_per_second": [
-      691.2,
-      864
+      651.4,
+      814.25
     ],
     "planning_is_not_actual_time": true,
     "official_duration_scope": "Whole unwrapped narration including coldopen and voiced CTA; excludes separately added channel bookends."
@@ -52,7 +52,7 @@
   "backend_mutations": 0,
   "git_mutations": 0,
   "runtime_root": "/workspace/work/brand-story-20261025/c19-submission-root",
-  "image_reuse_plan_sha256": "494a4e4962f9fb09acff6c3d31886b1d3219a4d76ed4b9754d9b09250df62623",
+  "image_reuse_plan_sha256": "e34374a05e272d06026557cc4fd85b69d9cb0e41ddbd7990947d0e07402856f3",
   "independent_source_review": "PENDING_OTHER_REVIEWER",
   "independent_narrative_review": "PENDING_FRESH_READERS",
   "native_initialized_lint": {
@@ -60,19 +60,19 @@
     "warnings": [
       {
         "path": "scenes",
-        "message": "\"blank\" is in 65 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"blank\" is in 60 of 112 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "\"terminal\" is in 51 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"closed\" is in 50 of 112 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "\"closed\" is in 51 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"terminal\" is in 47 of 112 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "about 15.9 minutes; the target is 12-14"
+        "message": "about 15.0 minutes; the target is 12-14"
       },
       {
         "path": "scenes",
@@ -85,26 +85,31 @@
         "kind": "narrative"
       }
     ],
-    "receipt": "native-author-lint-r2.json",
-    "receipt_sha256": "19ed87df934e7474d43de3ce278ef857f6622ae74a2b873d2eb813b587db0955",
-    "runtime_manifest_sha256": "a00202ba6afce15ba0520558f966821fcd7a708a6ccd5fb6edcc3afe09d13f63",
+    "receipt": "native-author-lint-r5.json",
+    "receipt_sha256": "c42b0965f8d0e8d10189f14ff2592fc56aae8bf0a2d3dc485b0e02c6b3de360f",
+    "runtime_manifest_sha256": "f1548d111648c547fe5da6a5c520c1f01c96dc858ec02dc3cf6d289ed59a107b",
     "lexicon_sha256": "302845192be36f6ec7a3048148c8c280d6b36ccb2e6811c3a950fcfbb8cf80b1"
   },
   "prior_review_state": {
-    "r1_source": "HOLD",
-    "r1_written_visual": "HOLD",
-    "r1_native1": "HOLD",
-    "archive": "history/r1/review-state.json",
-    "archive_state_sha256": "4e797642da7ac6e04e58d886564f11d02a0c53ea55714c4343155073c16149bc",
-    "r2_source": "PENDING_OTHER_REVIEWER",
-    "r2_native2": "PENDING_FRESH_READERS"
+    "r4_source": "PASS_R4_ONLY",
+    "r4_written_visual": "PASS_R4_ONLY",
+    "r4_native4": "HOLD",
+    "archive": "history/r4/review-state.json",
+    "archive_sha256": "7338cc83acf43e13fab95363e7b9f31cf4282d503ed84e6b9640a18331c2c6e9",
+    "r5_source_delta": "PENDING_OTHER_REVIEWER",
+    "r5_native5": "PENDING_FRESH_READERS",
+    "actual_native_round_count": 4,
+    "format_correction_is_not_additional_round": true
   },
-  "change_receipt": "changes-r2.json",
-  "change_receipt_sha256": "e63f0dd60d6e27e157bf8c9bab678ed8d8ade25254bb580a068fbc36c1e33ba3",
+  "change_receipt": "changes-r5.json",
+  "change_receipt_sha256": "850daebc5ae39e1fb51051641c2e8e0fb7193bdc6160832931b536262aae84b4",
+  "opening_unchanged_from_r4": true,
+  "remaining_visual_requests_unchanged_from_r4": true,
+  "source_registry_and_quote_registry_unchanged_from_r4": true,
   "warning_disposition": [
-    "Blank/closed props prevent logos and readable operational UI; the terminal remains the principal project subject.118shot requests have116 unique composed requests: only the two planned teaser/payoff pairs intentionally match.",
-    "Repeated year labels refer to different source events/periods, not a repeated transaction.",
-    "The legacy250-units/min estimate is about16minutes;3456units remains planning for13minutes. No audio exists and no duration has been approved."
+    "Blank/closed props avoid readable operational UI; automated teller terminal remains the main project subject.",
+    "Year labels belong to distinct events/source periods.",
+    "Legacy estimate about15.0minutes is not actual audio.3257units is38 below R4 solely due to the requested two-part deduplication; no new examples or pacing padding was added."
   ],
-  "frozen_at_utc": "2026-10-26T02:37:17.074Z"
+  "frozen_at_utc": "2026-10-26T03:33:31.388Z"
 }
