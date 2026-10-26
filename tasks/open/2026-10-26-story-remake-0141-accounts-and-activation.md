@@ -46,4 +46,4 @@ scope:
 - 2026-10-26：#1875 合併為 `aec3c476a`。這版只能在 #1875 **部署之後**合併：同一次部署連跑 0140→0141 的話，回滾映像（0139）不認 0141。PR 先開草稿。
 - 驗證：ruff、mypy app 489／tests 423；全新 PostgreSQL 16 upgrade 到 head（0141 實跑，`migration_guard --status` exact 0141），預算、migration、四支回滾整合測試與影片相關 242 passed、1 skip。
 - PR（草稿，#1875 部署後才合併）：https://github.com/x812033727/travel_scanner/pull/1876
-- 2026-10-26 CI：`video-tests` 連兩次、`smoke` 一次在「Install ffmpeg」撞 20 分鐘時限（`azure.archive.ubuntu.com` 每秒幾十 KB，13.5 MB 的 libflite1 下載 4–6 分鐘），測試都還沒開始；同時段 #1877 的 CI 過了。每個 job 各重跑一次後，照站主「有問題用建議的做法」把修正帶進這個 PR：`tools/ci/install-ffmpeg.sh`，每次嘗試限時（update 300 秒、install 420 秒），第二、三次改用 `archive.ubuntu.com`；`ci.yml` 的 video-tests 與 `video-tooling.yml` 的 smoke 都改呼叫它，`tools/docs-videos-tests.test.mjs` 改驗腳本。
+- 2026-10-26 CI：`video-tests` 連兩次、`smoke` 一次在「Install ffmpeg」撞 20 分鐘時限（`azure.archive.ubuntu.com` 每秒幾十 KB，13.5 MB 的 libflite1 下載 4–6 分鐘），測試都還沒開始；同時段 #1877 的 CI 過了。每個 job 各重跑一次後，照站主「有問題用建議的做法」把修正帶進這個 PR：`tools/ci/install-ffmpeg.sh`，每次嘗試限時（update 90 秒、install 240 秒，正常安裝不到一分鐘，三次最壞約 17 分鐘仍在 job 的 20 分鐘內），第二、三次改用 `archive.ubuntu.com`；`ci.yml` 的 video-tests 與 `video-tooling.yml` 的 smoke 都改呼叫它，`tools/docs-videos-tests.test.mjs` 改驗腳本。

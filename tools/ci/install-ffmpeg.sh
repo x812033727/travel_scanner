@@ -5,7 +5,8 @@
 # packages at tens of KB/s on some runners (13.5 MB libflite1 in four to six minutes), so one
 # install outlasted the 20-minute video-tests job twice before any test ran, while a sibling
 # job on another runner installed the same packages in under a minute. Each attempt here gets
-# a deadline; the second and third go to archive.ubuntu.com instead.
+# a deadline well inside the job (a healthy install takes under a minute); the second and
+# third go to archive.ubuntu.com instead.
 #
 # The pipeline's ffmpeg lookup (tools/video/assemble/ffmpeg.mjs) wants libx264; a build without
 # it fails here, by name, instead of as six ToolMissing test failures.
@@ -17,8 +18,8 @@ for attempt in 1 2 3; do
     sudo sed -i 's#http://azure\.archive\.ubuntu\.com/ubuntu#http://archive.ubuntu.com/ubuntu#g' \
       /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
   fi
-  if timeout 300 sudo apt-get "${apt_options[@]}" update \
-    && timeout 420 sudo apt-get "${apt_options[@]}" install -y --no-install-recommends ffmpeg; then
+  if timeout 90 sudo apt-get "${apt_options[@]}" update \
+    && timeout 240 sudo apt-get "${apt_options[@]}" install -y --no-install-recommends ffmpeg; then
     break
   fi
   if [ "$attempt" = 3 ]; then exit 1; fi
