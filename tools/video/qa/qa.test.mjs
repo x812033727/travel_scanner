@@ -287,9 +287,19 @@ test("a film whose site books each Jev request once keeps the last answer: a sec
   assert.deepEqual(kept, { request_sha256: sha(judgeCalls(judged)[0].init.body), ok: false, detail: note });
   // The pilot ledger refuses the same request again (apps/api/app/video_automation/admin_api.py).
   const reused = site({ policy: () => Response.json({ code: "video_budget_operation_reused", detail: "同一份 Jev 請求已有收據，不能重複送出" }, { status: 409 }) });
-  assert.equal(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint, "review-push can post the cut");
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint, "the kept failing verdict, not an owner exit for the refused resend");
   assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
   assert.deepEqual(readReport(workdir).policy_judged, kept);
+  // A round that fails another way keeps the answer for the round after it.
+  const down = site({ policy: () => { throw fetchFailed("ECONNREFUSED"); } });
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, down.fetchImpl).ctx), EXIT.external);
+  assert.deepEqual(readReport(workdir).policy_judged, kept);
+  const tokenless = context(box, reused.fetchImpl);
+  tokenless.ctx.env = { VIDEO_WORKDIR: box.work, MOKAAIR_SITE: SITE };
+  assert.equal(await main(["qa", "--slug", box.slug], tokenless.ctx), EXIT.owner);
+  assert.deepEqual(readReport(workdir).policy_judged, kept);
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint);
+  assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
   // A kept answer for another narration or viewpoint is not this request's verdict.
   writeFileSync(qaFile, JSON.stringify({ ...readReport(workdir), policy_judged: { ...kept, request_sha256: "0".repeat(64) } }));
   assert.notEqual(await main(["qa", "--slug", box.slug], context(box, reused.fetchImpl).ctx), EXIT.lint);

@@ -100,34 +100,37 @@ function heldPolicy(file) {
  * twice: a film with a whole-film budget account (every `story-everyday-*`) books each Jev
  * request once and answers a second send with 409 `video_budget_operation_reused`. Then the
  * kept answer for this very request is the verdict, so review-push, which runs qa again, can
- * post the cut (2026-10-26, the C11 UCC remake's final).
+ * post the cut (2026-10-26, the C11 UCC remake's final). A round that fails some other way
+ * (no token, a lost answer, Jev down) keeps that answer too, so the next round can still use it.
  */
 async function policyItem(ctx, request, { held = null, judged = null, finalSha256 = null } = {}) {
   const requestSha256 = createHash("sha256").update(JSON.stringify(request)).digest("hex");
-  if (held?.request_sha256 === requestSha256) return { item: lostItem(held), lost: held };
+  // The kept answer outlives any round that does not replace it, while it names this request.
+  const kept = judged?.request_sha256 === requestSha256 ? { judged } : {};
+  if (held?.request_sha256 === requestSha256) return { item: lostItem(held), lost: held, ...kept };
   let api;
   try {
     api = automationClient(ctx);
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
-    return { item: item("policy", false, error.message), who: error.who };
+    return { item: item("policy", false, error.message), who: error.who, ...kept };
   }
   try {
     const verdict = policyVerdict(await api.judgePolicy(request));
     return { item: item("policy", verdict.ok, verdict.detail), judged: { request_sha256: requestSha256, ok: verdict.ok, detail: verdict.detail } };
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
-    if (error.status === 409 && error.code === "video_budget_operation_reused" && judged?.request_sha256 === requestSha256) {
+    if (error.status === 409 && error.code === "video_budget_operation_reused" && kept.judged) {
       return { item: item("policy", judged.ok, judged.detail), judged };
     }
     // Before the fallback below, which would make it the service's and run qa again next round.
     if (error.code === RUN_UNCERTAIN) {
       const lost = { request_sha256: requestSha256, final_sha256: finalSha256, at: new Date(ctx.now ? ctx.now() : Date.now()).toISOString(), why: error.why ?? error.message };
-      return { item: lostItem(lost), lost };
+      return { item: lostItem(lost), lost, ...kept };
     }
-    if (error.status === 404) return { item: item("policy", false, "judge endpoint not available") };
-    if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against") };
-    return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service" };
+    if (error.status === 404) return { item: item("policy", false, "judge endpoint not available"), ...kept };
+    if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against"), ...kept };
+    return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service", ...kept };
   }
 }
 
