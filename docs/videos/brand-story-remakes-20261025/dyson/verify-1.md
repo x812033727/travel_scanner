@@ -1,164 +1,165 @@
-# verify-1：Dyson R2 獨立來源與書面配鏡查核
+# verify-1：Dyson R5 獨立來源與書面配鏡查核
 
-查核者：`/root/dyson_r1_source`；不是研究者或作者。SOURCE / WRITTEN VISUAL PASS。這是 R1 完整逐句查核加 R2 唯一差異的獨立重查，不是另一次對未改 140 句的新來源研究。
+查核者：`/root/dyson_r1_source`，不是研究者或作者。SOURCE / WRITTEN VISUAL PASS。依 R4 完整 140 句／137 提示詞查核，再對 R5 唯一改句 `btuc` 親讀原件；其餘 139 句按逐字相同關係繼承，不宣稱本輪重新通讀全部來源。
 
-完整基線：[R1 獨立收據](history/r1/reviews/source-r1-independent.json)，SHA-256 `00350b7fccd855790d73665f771fc457eb1cdf32185576a0623379b78772d16c`。R1 的 MF-01 已由 R2 改句解決；R1 原始 HOLD 收據保留。R2 獨立差異收據：[source-r2-independent.json](reviews/source-r2-independent.json)。
+完整基線：[R4 原始獨立 HOLD 收據](history/r4/reviews/source-r4-independent.json)，SHA-256 `5aa2ce010b27ffccca12e22a127feb5259dd1aea546359d0f66cf210f16f86f7`。唯一 MF-R4-01 已由本輪改句解決；原 HOLD 收據保留。R5 差異收據：[source-r5-independent.json](reviews/source-r5-independent.json)。R3 從未有 SOURCE PASS，本標記不繼承不存在的 R3 核准。
 
-R2 author freeze SHA-256：`f1e144f19077d91d8c3ff7c43bcd72c0ddc1700ace9864af4dd430c8e217902f`。精確受查輸入：
+R5 author freeze SHA-256：`ccb3708f69011c4a2154c02cf99b0f5c39d076f5ceafa927eeef4b0970af5b1e`。精確受查輸入：
 
-- `video.json`：`7d4b685214e01fe35c8bc363e49e66573a62823da9b3a884f2d634eff7e6250a`
-- `script.md`：`35fddc43e29952118d58b5c5054189c09cce2ce669f5a58b4e4f3cef8c8feb7e`
-- `narration-only.json`：`711b9c0a1e351b6328659b5d371d6db15712c0240f429456d99acf2583d9cc7b`
-- `claims.json`：`8ec9e8c11b8d20c28bc20b95f9efbf7d8ab121839731c7e439adb44935427ec6`
+- `video.json`：`fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a`
+- `script.md`：`c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda`
+- `narration-only.json`：`c8fb1776fe07ac90b532b3940b9a72934dfc4d3bb59b02d697de739fbbb399a7`
+- `claims.json`：`630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2`
 
-141 句同序逐字對接；138 個英文匿名概念插畫提示詞、25 組鉤子及兩組預告／回收的完整圖片鍵與 R1 相同。R2 的 `swdr` 親讀 Fortune 第 35 段與日文訪談第 46 段，確認是與 Apex 達成授權協議。1986 為本人事後口述年份，不是取得原合同後確立的精確簽約日；凍結研究 D16 的「得到授權」舊 caveat 以 source-correction-r2.json 的方向修正為準。
+`btuc` 現為「前面工廠用氣旋收粉，他在家先做什麼，才能試同一個想法？」。SENRA 原件 L285/287/293 與 DYSON_BIO L263–264 支持工廠氣旋收粉；SENRA L297 與 DYSON_BIO L267 另述家用紙板氣旋接舊機。新句只回指先前工廠事件、前問家用試驗，不再斷言拆換工廠布濾，也不新增歷史間隔。N01＋N02 對位完整。
 
-下表正好 141 列，ID／旁白與受查 video.json 相同。CONFIRMED 對有歸屬敘述只表示原件載有此敘述，保留回憶、館藏與技術說明的限制；OUT OF SCOPE 表示旁白疑問、反應、編輯連接或邀請，其史實前提仍按所列來源核對。原語引文、段落／PDF 頁與 JSON pointer 定位見完整基線及 R2 差異收據。
+下表正好 140 列；ID、順序及旁白與本版 video.json 相同。CONFIRMED 對有歸屬敘述只表示來源載有該說法，保留原件的回憶／研究／館藏等限制；OUT OF SCOPE 是旁白問句、反應、連接或邀請，其史實前提亦納入來源核對。Masters of Scale 是未全校正的官方自動逐字稿，只證實文本所載的歸屬敘述，沒有獨立核定原聲精確字詞、人數／日期或原始人事紀錄。
 
-| ID | 旁白／主張 | 場景 | 來源 | 讀取 | 判定 | 限制／說明 |
+| ID | 旁白／主張 | 場景 | 來源 | 查核鏈 | 判定 | 限制／說明 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 29pe | 你會花約二十五萬日圓，買一台吸塵器嗎？ | 29pe | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| sthq | 這是戴森後來回憶的日本價位；你若回到開發桌，先遇到的卻是未完成樣品。 | sthq | FORTUNE_ORAL、GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| bnk8 | 山本秀夫回憶，Apex社長得設法找工廠，把新的開發工作交給設計師。 | bnk8 | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| r4bz | 一顆一百伏特的馬達換進設計，外殼卻得重畫。 | r4bz | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| qggg | 我好奇的是，一個滿身小孔的罩子，後來怎麼擋住入口的麻煩？ | qggg | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| t39s | 而有了日本的授權收入，英國那副量產模具又得向誰籌錢？ | t39s | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| suy4 | 今天沿著戴森這筆跨國合作，追到一九九三年的自家產線。 | suy4 | GIZMODO_YAMAMOTO、DYSON_CH06_UK | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 728h | 日本這一站，究竟替他完成了什麼？ | 728h | GIZMODO_YAMAMOTO、FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| kget | 山本在二〇一四年的贊助訪談裡回憶，Apex社長看到粉紅吸塵器照片，便聯絡戴森。 | kget | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| ffyv | 他說，照片出自美國一九八四年的設計書，書名直譯是產品設計。 | ffyv | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| qeta | 這位原想進口的社長，必須先決定，要不要接下後續的重新開發。 | qeta | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| mm26 | 換成你原本要進貨，我想你也會問：現在到底是買產品，還是接開發案？ | mm26 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| hytw | 在山本的敘述裡，合作方向就此轉成在日本重新製作，再取得銷售權。 | hytw | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| ji9r | 但先等等，這能說成英國全都拒絕，只有日本願意製造嗎？ | ji9r | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN、SMG_CYCLON | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| hse6 | 戴森自己的回顧裡，在日本這一站之前，已有英國授權商的Cyclon。 | hse6 | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| ux6m | 他把生產時間列在一九八三、八四年，並說只做了五百五十台。 | ux6m | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 4eb7 | 他也說，那次合作在商業上沒有成功。 | 4eb7 | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| xn7i | 你若問這台英國授權的機器在哪裡做，館藏又怎麼寫？ | xn7i | SMG_CYCLON | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| tazj | 館方標明它在義大利製造，為位於英國布里斯托的授權商生產。 | tazj | SMG_CYCLON | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| uzk6 | 英國智慧財產局記錄的本人證詞，還留下一個更早的動作：先做木製外觀模型。 | uzk6 | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| jnux | 他說，到一九八三年八月，已做出帶透明集塵筒的氣旋原型。 | jnux | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| j4ux | 外觀模型、能工作的原型、授權商品，在這段路上已經是不同的物件。 | j4ux | UKIPO_TRANSPARENT_BIN、DYSON_CH05_UK | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| bp5c | 有了授權與成品，為什麼別的合作還是談不下去？ | bp5c | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| pirj | 我反而覺得這比全世界都說不，更接近做產品的難處。 | pirj | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN、SMG_CYCLON | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| g7y5 | 有人答應合作，只是起點；換一個合作方，也不會自動省掉開發。 | g7y5 | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN、GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| iydf | 那麼，其他授權談判，到底是在哪裡停下來？ | iydf | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| eku7 | 戴森在口述裡說，有些公司本來很有興趣，談判也進行了很長一段。 | eku7 | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| ddxp | 有的談到公司內部的專利法律顧問，才被擋下。 | ddxp | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| u8q2 | 也有公司決定不增加產品線，因此停止接洽。 | u8q2 | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| gttr | 這些是他回顧的談判障礙，各家停下的地方並不相同。 | gttr | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| dhb6 | 我想，換成你拿透明筒展示給別家做，會不會先被外觀擋住？ | dhb6 | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| fg73 | 那份官方決定書裡，他還說，八十年代曾向十五家吸塵器製造商展示透明筒機器。 | fg73 | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| hz4k | 透明筒當時不是主要爭點，但他記得，不只一家製造商表達過不喜歡。 | hz4k | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 3f9i | 展示機器的對象、產品線的決定和專利審視，會把合作帶往不同方向。 | 3f9i | UKIPO_TRANSPARENT_BIN、FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 3n7g | Apex接下來找誰，把眼前的樣品變成能做的東西？ | 3n7g | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| upnx | 山本說，這家公司原本擅長進口文具，沒有自家的工程師和工廠。 | upnx | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 7vwv | 找得到生產地點，下一個問題是：現場有沒有人做過吸塵器？ | 7vwv | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| iund | 山本的工作室履歷，也把加入Apex寫在一九八五年。 | iund | OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 8sut | 履歷列出的工作，是和英國團隊共同開發吸塵器。 | 8sut | OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| decj | 山本說，承接製造的原本是一間精密機械工廠，並不專門做吸塵器。 | decj | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| tbv9 | 而他自己在這以前，也沒有設計吸塵器的經驗。 | tbv9 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| qusf | 你找到的是能製造零件的夥伴，還得一起摸索這台工具怎麼用得起來。 | qusf | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| u434 | 你若先照外形開工，原設計遇到的電壓差異，會在哪個零件讓人停下來？ | u434 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| h3qb | 進口公司、設計師和外部工廠，得先把各自的工作接起來。 | h3qb | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| xr9y | 那個馬達，為什麼又會把外殼牽進來？ | xr9y | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| xjwd | 山本說，他們得在日本使用的電壓條件下，找到輸出相近的馬達。 | xjwd | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 3kg3 | 結果找到的馬達，尺寸比原先的大了一截。 | 3kg3 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| d5mc | 你可以把馬達拿在手上比較，問題卻不只在那一顆零件。 | d5mc | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| ttr8 | 我先想到的是，這顆大馬達裝好以後，地毯上的操作會怎麼變？ | ttr8 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| hq3w | 依山本多年後的估計，做出第一台日本試作品，大約花了半年。 | hq3w | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 7ex2 | 之後還有約一年半，都在處理陸續出現的問題。 | 7ex2 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| wja9 | 這是他回顧時的粗略工期，不是一份逐月排好的工程日誌。 | wja9 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| dzxx | 他記得，裝起來才發現，大馬達不只是體積大，也很重。 | dzxx | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| w5x9 | 機器拿到地毯上操作，會吸住地毯，難以前進。 | w5x9 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| dh5b | 硬往前推，還曾經把輪子推裂。 | dh5b | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 3eq3 | 你平常只想把地掃乾淨，我聽到這裡卻先擔心：它能不能順利移動？ | 3eq3 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| fphq | 山本還提到另一種狀況：雜物堵住，馬達過熱，甚至使外殼熔損。 | fphq | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| bz76 | 這些是試作過程裡不同問題的回憶，不能拼成同一台的一場事故。 | bz76 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 4zh9 | 沒有集塵袋，空氣經過的地方，為什麼還是會堵？ | 4zh9 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| mend | 要看懂下一個改件，得先把灰塵走過的路分開。 | mend | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| qfdn | 一份一九八六年核准的美國專利，就把家用雜物的問題寫進說明。 | qfdn | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| 25mq | 它談的是戴森的氣旋設計，遇到粗雜物和細灰時，該怎麼分工。 | 25mq | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| r3q7 | 你也許會問，有了專利，為什麼還會有那麼多樣機工作？ | r3q7 | PATENT_US4373228_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| mrvu | 更早一份美國專利的首頁，已列出一九七九年的英國優先權。 | mrvu | PATENT_US4373228_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| nbq7 | 那份美國申請到一九八三年獲准，摘要寫了氣旋分離和集塵室。 | nbq7 | PATENT_US4373228_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| 3h94 | 文件把方案留下來，地毯卻會讓實際使用的問題跑出來。 | 3h94 | PATENT_US4373228_SCAN、GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| dx7a | 而專利本身也繼續處理細節，並不是一句無袋就把所有工作做完。 | dx7a | PATENT_US4373228_SCAN、PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| m5zm | 你在地上吸起來的，難道每一樣都和細灰一樣小嗎？ | m5zm | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| kizz | 專利指出，高效率氣旋若單獨處理較大的雜物，東西可能滯留、干擾運作。 | kizz | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| m85a | 我覺得這個問題很實在：家裡的地板，不會先替吸塵器把垃圾分好。 | m85a | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| qvxx | 它提出的辦法，是前面先用低效率氣旋，後面再接高效率氣旋。 | qvxx | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| j4z2 | 前段先處理較粗的雜物，細灰再交給後段。 | j4z2 | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| nkjg | 這裡的效率是在講分離工作，並不是說前段可以隨便做。 | nkjg | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| fbwd | 同一份說明裡，最後的氣流仍然可以經過濾網。 | fbwd | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| vc4h | 所以無袋，並不是整台沒有任何濾網，更不是每條通道都不會堵。 | vc4h | PATENT_US4593429_SCAN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| f2i9 | 專利說的是當時提出的方案；日本樣機的入口問題，要回到山本的工作。 | f2i9 | PATENT_US4593429_SCAN、GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| pm6d | 外圍旋轉的氣流，要進到裡面的錐體，入口怎麼辦？ | pm6d | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| g4ww | 山本指著一個有小孔的部件，說那是入口的孔罩。 | g4ww | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 26p7 | 他說，若少了它，雜物容易堵在氣流進入錐體的入口。 | 26p7 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 88z5 | 依他的回憶，他們把這個部件加進去，再試驗孔的大小和形狀。 | 88z5 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| mdxt | 要讓雜物繼續在外圍轉動，空氣則能經過入口往內走。 | mdxt | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| y6p7 | 你看得到的是一圈小孔，我更想知道的是：孔改了，通過的東西會怎麼變？ | y6p7 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| grqj | 山本說，他們靠這些實驗，解決了那個入口的堵塞問題。 | grqj | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| djxd | 這是入口這一件工作的答案，不是輪子、重量與所有過熱情況的通用解方。 | djxd | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| bgmb | 但設計的人分處兩國，這些要改的地方，怎麼送到對方手上？ | bgmb | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| qaxx | 山本說，戴森人在英國時，他們就一再用傳真往返。 | qaxx | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| rvd2 | 那篇訪談也放了工程圖紙和傳真頁的照片。 | rvd2 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| vgrd | 你可以把合作想成這些紙張接著實驗走，不只是一份合約放在抽屜裡。 | vgrd | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 3qh9 | 山本回憶，他和戴森一起到工廠、畫圖，也一起做實驗。 | 3qh9 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| pzz7 | 我喜歡這裡終於看得到工作的樣子：要改的東西，得落到圖面和現物上。 | pzz7 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| p6a5 | 依山本對合作約定的回憶，這些圖面和問題，最後仍由誰負責完成？ | p6a5 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 65q8 | 戴森也負有解決問題、完成圖面的責任。 | 65q8 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 333b | 圖面還得完成，發現的問題要有人接著處理，工廠才能繼續往前做。 | 333b | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 6v32 | 隔著傳真還不夠，他本人有沒有到日本工作？ | 6v32 | GIZMODO_YAMAMOTO、DYSON_CH05_UK | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| v4g4 | 山本說，為了走到能販售的階段，戴森曾數度來日本。 | v4g4 | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 7q3f | 每次停留的時間，依他回憶，大約是一到兩週。 | 7q3f | GIZMODO_YAMAMOTO | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 34kb | 戴森官網還有一張製圖照片，圖說把地點列為東京西麻布。 | 34kb | DYSON_CH05_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| xw4x | 圖說寫的是一九八五年，正在重新設計後來G-Force的吸頭。 | xw4x | DYSON_CH05_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| uuef | 照片裡能看見人坐在製圖板前工作。 | uuef | DYSON_CH05_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| u4nc | 那麼，合作的開始、授權的簽訂、商品推出，是不是同一個時間點？ | u4nc | DYSON_CH05_UK、GIZMODO_YAMAMOTO、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| ebcd | 先別把它們擠進同一格日曆。 | ebcd | DYSON_CH05_UK、GIZMODO_YAMAMOTO、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| swdr | 戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。 | swdr | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD、FORTUNE_ORAL | R2 原件重讀 | CONFIRMED | MF-01 已修；雙方達成授權協議。1986 僅本人回顧，不定精確簽約日。 |
-| wbef | 而官網圖說記的日本改圖工作，更早一年就已經在進行。 | wbef | DYSON_CH05_UK、GIZMODO_YAMAMOTO、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| knep | 能穩妥接起來的，是八十年代中期的合作過程，而不是一個精確簽約日。 | knep | DYSON_CH05_UK、GIZMODO_YAMAMOTO、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| b7xq | 對你來說，最後要等的是櫃台能買到；我也想問：那部商品何時出現？ | b7xq | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| p8mt | 這篇訪談把日本G-Force的發售，放在一九八六年。 | p8mt | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| m5dg | 英國V&A收藏的一件，也記為一九八六年、日本製造。 | m5dg | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| wcwg | 但一件館藏的生產年份，不能直接充當一份完整的首售紀錄。 | wcwg | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD、MPLUS_GFORCE、SMG_GFORCE | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| yzkk | 如果你再找另一家博物館，會拿到完全相同的標籤嗎？ | yzkk | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| uxpi | 香港M+把它的物件日期列為一九八三年。 | uxpi | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| pu45 | 科學博物館群的另一件，則列一九八五到一九九〇年。 | pu45 | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| hfwd | 這些是各館對所藏物件的記錄，不能挑最早的數字，就宣布那年已上市。 | hfwd | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| t4dk | 日期不同之外，製造者是不是也都寫同一家？ | t4dk | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| v5nv | M+另外列出Silver Seiko，其他館則列Apex。 | v5nv | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| hpmb | 我會留住這些不同欄位，免得把進口公司的名字，直接當成它有一座自家工廠。 | hpmb | MPLUS_GFORCE、SMG_GFORCE、VAM_RECORD | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| n6ei | 產品終於走到市場，接下來是不是就成了暢銷故事？ | n6ei | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| inii | 戴森在二〇一七年的口述裡，稱它是小眾商品。 | inii | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| mrr9 | 他還說，Apex賣這台機器，並沒有取得很大的商業成功。 | mrr9 | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| cx76 | 但授權合作，確實替他帶來了一些收入。 | cx76 | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| i27z | 你如果站在開發者那一邊，會先看見收入終於進來。 | i27z | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| yjkh | 可是收得到授權收入，和自己備好量產模具，還是兩件工作。 | yjkh | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| ijpu | 下一步回到英國，誰願意先把模具的錢借給他？ | ijpu | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| jyqr | 戴森回憶，到了一九九三年，銀行經理麥克佩奇替他向萊斯銀行爭取貸款。 | jyqr | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| cddk | 那筆錢要用來準備模具；他說，這才讓自己能投入生產。 | cddk | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| iaph | 他說銀行最後答應借一百萬美元，這是他口述時記下的金額。 | iaph | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| fsvs | 換成你要開始做一批產品，我也會先問：錢到位以後，現場在哪裡？ | fsvs | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 3ag8 | 戴森自傳網站的一張照片，把第一條自家直立式吸塵器產線標在一九九三年。 | 3ag8 | DYSON_CH06_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| i6fq | 地點是英國奇彭納姆的邦帕斯農場。 | i6fq | DYSON_CH06_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| x8ph | 照片裡，多台機器排在工作線上，旁邊有人工作，也有紙箱。 | x8ph | DYSON_CH06_UK | R1 原件全查＋R2 同值繼承 | CONFIRMED | 依原件技術說明、照片可見內容或館藏欄位；不擴作合約／首售證明。 |
-| xxar | 到這裡，設計之外已經有了模具資金，也有一個能組裝、裝箱的生產現場。 | xxar | DYSON_CH06_UK | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 2wtj | 有了產線和箱子，通路就一定願意把機器擺上架嗎？ | 2wtj | FORTUNE_ORAL、UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 3z49 | 英國智慧財產局的一份決定書，記下戴森對一九九三年的回憶。 | 3z49 | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| jtzs | 他說，不少潛在零售商不喜歡透明的集塵筒。 | jtzs | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| f8m7 | 你家吸起來的灰塵，真的要讓人直接看見嗎？我能理解這個猶豫。 | f8m7 | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| kiud | 但他認為，使用者能看見灰塵的位置、理解運作，還能直接看見清掃的效果。 | kiud | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| pwqd | 依這份證詞，他仍選擇保留透明的設計。 | pwqd | UKIPO_TRANSPARENT_BIN | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| hy2v | 在那篇口述裡，他先找到一家郵購目錄買貨，之後再有第二家。 | hy2v | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| uver | 後來，英國百貨公司約翰路易斯開始販售，也才接到更多通路。 | uver | FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | CONFIRMED | 原件載有此自述；保留參與者回憶或來源歸屬。 |
-| 6xye | 日本合作補上的是把樣品推向商品的開發；我看來，它沒有替往後的資金與通路省下工作。 | dyr1outro | GIZMODO_YAMAMOTO、FORTUNE_ORAL | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| sptz | 如果換成你接下這個案子，會先守住哪一步，才敢把產品交出去？留言告訴我。 | dyr1outro | — | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
-| 5qtc | 想繼續看日用品怎麼跨過這些實際難關，就訂閱品牌故事。 | dyr1outro | — | R1 原件全查＋R2 同值繼承 | OUT OF SCOPE | 編輯問句、反應、連接或邀請；史實前提按列示來源核對。 |
+| 29pe | 你只靠四個工程人員，要把新吸塵器交出去，誰來組裝？ | 29pe | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| sthq | 九〇年代初，戴森決定自己製造。 | sthq | FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| xcms | 他回憶，自己和三名工程師，替全部零件畫圖，再去找承包商和模具商。 | xcms | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 57ap | 可是，組裝這一步，他們沒找到人承接。 | 57ap | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| qggg | 我想知道，山本手上那個孔罩，之前又是為哪個入口的麻煩做的？ | qggg | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| t39s | 而量產模具的錢，又得由誰去向銀行爭取？ | t39s | SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| suy4 | 今天跟著戴森，走完一台無袋原型到英國初期接貨的路。 | suy4 | SENRA、DYSON_BIO、MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 728h | 不用集塵袋的想法，中間還要換過多少人的手，才能做成能賣的機器？ | 728h | SENRA、DYSON_BIO、MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 9m2c | 開場那台無袋吸塵器的原理，是從戴森處理的一個工廠故障接過來的。 | 9m2c | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 4paj | 公司官網把時間記在一九七八年：他在工廠替金屬架噴粉。 | 4paj | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| ti4n | 很多粉末沒有留在架子上，抽走餘粉時，又把後面的一大片布濾堵住。 | ti4n | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 8rgv | 換成你要讓生產繼續，我也會問：要把粉末收住，該換哪一種裝置？ | 8rgv | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| edty | 官網還記下，他去看過木材廠的大型氣旋，想把那種分離方式用回工廠。 | edty | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| zmbc | 戴森回憶，問到工業氣旋的報價，他們負擔不起，於是花幾個週末自行製作。 | zmbc | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| nzbe | 他說，做出的裝置很大，頂端構造要穿出屋頂，還得在廠房開孔。 | nzbe | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| acb6 | 這一次，粉末先從空氣裡分離，不再全靠那片布接住。 | acb6 | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 2b6c | 我在意的不是它有多高，而是堵住的地方，讓人換了一種收集辦法。 | 2b6c | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| kdbc | 那麼，這個辦法，能不能縮進你家裡那台吸塵器？ | kdbc | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| xmha | 戴森說，有一次在家清掃，機器顯示集塵袋堵了，他卻找不到替換袋。 | xmha | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 364y | 於是他把袋子倒空，用膠帶封回去，再裝上試。 | 364y | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| qdgd | 袋子裡沒東西了，機器還是吸不動。 | qdgd | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| dkhw | 你大概也會懷疑，問題真在袋子裝滿嗎？我想再問，倒空後，袋裡還留著什麼？ | dkhw | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| uj7b | 他重新打開袋子，看見內壁覆著一層細灰。 | uj7b | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 3v4y | 依他的解釋，空氣必須穿過袋上的氣孔，細灰卻把這些出口堵住了。 | 3v4y | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 9896 | 他買了新袋換上，吸力短暫恢復，之後又往下掉。 | 9896 | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| btuc | 前面工廠用氣旋收粉，他在家先做什麼，才能試同一個想法？ | btuc | SENRA、DYSON_BIO | R5 差異原件重讀 | OUT OF SCOPE | MF-R4-01 已修；工廠收粉與家用接機分開，未主張拆換工廠布濾。 |
+| y5py | 他用紙板和膠帶做了小氣旋，再用一段軟管，接到原來的直立式吸塵器上。 | y5py | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| pd37 | 原本放袋子的地方，換成這個小模型，他推著機器試用。 | pd37 | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 3yk9 | 這只是把分離方式接上舊機驗證，離能賣的完整產品，還有別的工作。 | 3yk9 | SENRA、DYSON_BIO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| c8e9 | 要繼續改形狀，沒錢買大型機床，模型又怎麼做？ | c8e9 | SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| e74a | 戴森回憶，自己在家工作，買不起車床等設備，就用小工具動手。 | e74a | SENRA | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| xpig | 他從舊物店找到金屬滾輪，把材料滾成倒錐形，再焊接起來。 | xpig | SENRA | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| mcug | 工具讓他能把下一個形狀做成實物，拿去試，然後再決定怎麼改。 | mcug | SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 5xeb | 但如果一次改了好幾處，你怎麼知道，哪一項真的有用？ | 5xeb | DESIGN_MATTERS、OU_1993 | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 6nip | 他在另一段訪談裡解釋，試作時一次只改一項，等著看差異。 | 6nip | DESIGN_MATTERS、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 3b3d | 可能變好，也可能變差；看懂這次發生什麼，才決定下一個模型要怎麼做。 | 3b3d | DESIGN_MATTERS、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 59xc | 開放大學的訪談研究，也記錄了他製作、測試黃銅、鋁與透明塑料模型。 | 59xc | DESIGN_MATTERS、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 依原件研究、照片可見內容或文件；限制見 R4 完整收據。 |
+| 5uh4 | 我覺得關鍵在這裡：模型不是擺在架上算數，而是拿來排除一個不知道的地方。 | 5uh4 | DESIGN_MATTERS、OU_1993 | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| azg7 | 能做出工作樣機以後，誰來付模具的錢、把它批量做出來？ | azg7 | SENRA、OU_1993 | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| ysz4 | 戴森回憶，他和合作夥伴原先選擇，把工作放在發明、工程與樣機上。 | ysz4 | SENRA、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| bjhr | 兩人都做過製造，這次希望由取得授權的廠商接下生產。 | bjhr | SENRA、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 2xsw | 那份訪談研究也指出，這種吸塵器的模具支出，是商品化要跨過的一關。 | 2xsw | SENRA、OU_1993 | R4 完整查核＋R5 同值綁定 | CONFIRMED | 依原件研究、照片可見內容或文件；限制見 R4 完整收據。 |
+| pk83 | 真的有人接下授權，把後面的生產做出來了嗎？ | pk83 | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN、SENRA、OU_1993 | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 32ja | 後來，英國一家取得授權的廠商，確實做出Cyclon。 | 32ja | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| shcn | 戴森把生產列在一九八三、八四年，並說一共只做五百五十台，商業上沒有成功。 | shcn | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| xguj | 科學博物館群所藏的一台，標明在義大利製造，為英國的授權商生產。 | xguj | SMG_CYCLON | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| jm77 | 日本之前已經有商品；Apex這次，又是怎麼找到戴森的？ | jm77 | DYSON_CH05_UK、UKIPO_TRANSPARENT_BIN、SMG_CYCLON、GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| kget | 在這段時期，日本Apex社長看見一本設計書上的照片，便聯絡戴森。 | kget | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| ucyp | 山本秀夫在後來的贊助訪談裡說，那是美國一九八四年出版的書。 | ucyp | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| pd7s | 戴森帶著一台樣品來到日本，社長原想進口成品，拿到的卻尚未完成。 | pd7s | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| uih5 | 換成你要進貨，我想你也會問：現在接的是產品，還是一筆開發工作？ | uih5 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| hytw | 在山本的敘述裡，談判改成在日本重新製作，再由戴森交出當地銷售權。 | hytw | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| upnx | 山本說，Apex本業是進口文具，沒有自家的工程師和工廠。 | upnx | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| bnk8 | 社長負責設法找工廠，開發工作，則交給剛轉職的山本。 | bnk8 | GIZMODO_YAMAMOTO、OTTIMO_ABOUT_EN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| iund | 山本自己的工作室履歷，把加入Apex列在一九八五年，參與英國團隊的共同開發。 | iund | OTTIMO_ABOUT_EN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 6aj4 | 工廠找到了，現場就有人做過這種吸塵器嗎？ | 6aj4 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| decj | 依山本回憶，承製者原本做精密機械，並不專門做吸塵器。 | decj | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| tbv9 | 他自己以前，也沒有設計吸塵器的經驗。 | tbv9 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 3tsc | 我覺得，接下來的難處是讓這些人的手接上，不是把樣品交出去就等交貨。 | 3tsc | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| u434 | 你如果想直接沿用原設計，哪個規格差異會先讓人停下來？ | u434 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| xjwd | 山本說，英國和日本的電壓不同，他們得重新找馬達。 | xjwd | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| gnbh | 要找一百伏特、輸出相近的馬達，結果尺寸比原先大。 | gnbh | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| x6bp | 為了把它裝進去，外殼配置也必須重新檢視。 | x6bp | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 5jn4 | 如果我是接案的人，會先問：這樣重做，多久才有第一台能試的機器？ | 5jn4 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| hq3w | 依山本多年後的粗略估計，第一台日本試作品，大約花了半年。 | hq3w | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 4jy3 | 可是，裝得起來，放到地毯上推，又會發生什麼事？ | 4jy3 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| dzxx | 他回憶，那個馬達很重。 | dzxx | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| w5x9 | 機器會吸住地毯，難以前進。 | w5x9 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| dh5b | 硬往前推，還曾把輪子推裂。 | dh5b | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| rs85 | 你大概想問，除了移動，試作還出了哪些狀況？ | rs85 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| fphq | 他也提到雜物堵塞、馬達過熱，甚至使外殼熔損的狀況。 | fphq | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| nqdc | 他估計，第一台試作之後，另有約一年半，都在處理陸續出現的問題。 | nqdc | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| bteg | 山本還指出槽內一個入口，那裡有他參與設計的部件。 | bteg | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 4zh9 | 這個入口，是把外圍的氣流帶往哪裡？ | 4zh9 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| sby4 | 他描述的路徑，是氣流沿著槽外圍轉，再進到內側的錐體。 | sby4 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 88z5 | 開場那個孔罩，山本說，是加在氣流進入錐體的入口，避免雜物堵在那裡。 | 88z5 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| mdxt | 要讓雜物繼續在外圍轉動，空氣則經過入口往內走。 | mdxt | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| jvsi | 加了這個部件，接著要調整的是什麼？ | jvsi | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| n6tt | 山本說，他們試驗不同大小、不同形狀的孔，靠這些實驗解決那個入口的堵塞問題。 | n6tt | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 8fq7 | 孔要改，另一端設計的人，也得知道日本這邊試到了哪裡。 | 8fq7 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| bgmb | 戴森回英國時，這些設計要怎麼繼續接下去？ | bgmb | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| qaxx | 山本說，戴森人在英國時，他們就一再傳真往返。 | qaxx | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| rvd2 | 訪談展示的圖紙和傳真頁，還留下這些合作文件。 | rvd2 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 依原件研究、照片可見內容或文件；限制見 R4 完整收據。 |
+| a57z | 你改完這一端，另一端還得接著做；我看到的，是一份要反覆往返的工作。 | a57z | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 8b48 | 圖面要完成，問題也要有人接手，約定裡由誰負責？ | 8b48 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 65q8 | 依山本回憶，戴森負有解決問題、完成圖面的責任。 | 65q8 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 6v32 | 除了傳真，他本人有沒有到日本一起做？ | 6v32 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| v4g4 | 山本說，為了走到能販售的階段，戴森曾數度來日本。 | v4g4 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 7q3f | 每次停留，大約是一到兩週。 | 7q3f | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 3qh9 | 兩人一起到工廠、畫圖，也一起做實驗。 | 3qh9 | GIZMODO_YAMAMOTO | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 34kb | 你想看他具體動手改什麼，一張官網照片，留下了哪個工作？ | 34kb | DYSON_CH05_UK | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| xw4x | 圖說記為一九八五年東京西麻布，正在重設後來G-Force的吸頭。 | xw4x | DYSON_CH05_UK | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| swdr | 戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。 | swdr | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD、FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| yd8e | 這和前一年的改圖，是不同記錄，不能併成一個精確簽約日。 | yd8e | DYSON_CH05_UK、GIZMODO_YAMAMOTO、VAM_RECORD | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| p8mt | 山本訪談把日本G-Force的發售，也記在一九八六年。 | p8mt | GIZMODO_YAMAMOTO、DYSON_CH05_UK、VAM_RECORD | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| mgmw | 你會以為能上架就會大賣嗎？我想問，這回究竟是多大一門生意？ | mgmw | FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| inii | 戴森在二〇一七年的口述裡，稱它是小眾商品，每台約二十五萬日圓。 | inii | FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| mrr9 | 他說，Apex賣這台機器，沒有取得很大的商業成功。 | mrr9 | FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| cx76 | 但授權合作，確實開始替他帶來收入。 | cx76 | FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 92cn | 要走到開場那批零件圖，還差自家製造需要的資金和場地。 | 92cn | FORTUNE_ORAL、SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| uzwn | 收入進來了，量產模具的錢，就一定借得到嗎？ | uzwn | SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| jyqr | 開場問的模具款，戴森回憶，一位到企業訪問的銀行人員，替他爭取貸款。 | jyqr | SENRA | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 4e3p | 他說，對方的請求先被銀行拒絕，又去找銀行內部的申訴角色，爭取批准。 | 4e3p | SENRA | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| ta4q | 他自己拿房屋作擔保，太太也得在相關表格上簽名。 | ta4q | SENRA | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 6w42 | 如果換成你，要押上住的房子，我會先看清楚，哪一筆風險落在自己身上。 | 6w42 | SENRA | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 7vni | 錢能買模具，開場卻還缺組裝的人；這件事，要先找到哪一個落腳處？ | 7vni | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 3kk2 | 開場那四個人，從成型供應商那裡找到一個機會：對方的工廠，有半邊閒著。 | 3kk2 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 9qqh | 他提出把閒置的半邊租下來，用來組裝，就不必先買一整座廠房。 | 9qqh | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| z8cf | 但模具仍得自己投資，租到空間，沒有把這筆支出一起省掉。 | z8cf | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 2isp | 那麼，空間有了，誰安排組裝線，誰實際上線做？ | 2isp | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| g54y | 他回憶，最初沒有另外設置生產經理和品管專員，只有那個工程團隊。 | g54y | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| mdi5 | 開場問的組裝，最後還得另外聘線長，再聘真正上線組裝的工人。 | mdi5 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| iv83 | 公司另有一張標作一九九三年的產線照，留下的是哪個現場？ | iv83 | MASTERS_SCALE、DYSON_CH06_UK | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| i6fq | 那張照片的地點，是英國奇彭納姆的邦帕斯農場。 | i6fq | DYSON_CH06_UK | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| x8ph | 多台機器排在線上，有人在工作，旁邊也有紙箱。 | x8ph | DYSON_CH06_UK | R4 完整查核＋R5 同值綁定 | CONFIRMED | 依原件研究、照片可見內容或文件；限制見 R4 完整收據。 |
+| dahx | 租下的半廠在哪裡，那段訪談沒有交代，不能把兩份記錄當成同一間廠房。 | dahx | MASTERS_SCALE、DYSON_CH06_UK | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 2wtj | 可是，有了能交的機器，你就一定找得到店家接貨嗎？ | 2wtj | MASTERS_SCALE、UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| zi48 | 戴森記得，面對一名郵購目錄買手時，對方先懷疑配套的乾粉地毯清潔法。 | zi48 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| eamp | 他去加油站買黑醋栗飲料，回來倒在地毯上，再撒上乾洗粉。 | eamp | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| cz2v | 然後才用機器吸除。依他的回憶，這場示範成功了。 | cz2v | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| hp4p | 要看清楚，他示範的是先用配套乾洗粉，不是宣稱機器能直接濕吸飲料。 | hp4p | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| pn7g | 可買手看完，為什麼仍然沒有立刻點頭？ | pn7g | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 2566 | 他還得面對另一個疑問：目錄裡已有知名品牌，為什麼要換成這台陌生產品？ | 2566 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| b4dg | 他回憶，買手最後答應先試一試，成了第一家備貨的郵購目錄。 | b4dg | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 3qra | 換成你要騰出目錄的位置，我想你也不會只問能不能吸，還會問能不能賣。 | 3qra | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| f7dw | 在另一段口述裡，戴森記下，後來又有第二家郵購目錄，再接到約翰路易斯百貨。 | f7dw | MASTERS_SCALE、FORTUNE_ORAL | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| cm6p | 走進店面以後，使用者能看見的灰塵，店家又願不願意展示？ | cm6p | UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| jtzs | 英國智慧財產局的一份決定書，記下他說，不少潛在零售商不喜歡透明集塵筒。 | jtzs | UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| kiud | 但他認為，顧客能看見灰塵的位置、理解運作，也能看見清掃的效果。 | kiud | UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| pwqd | 依這份證詞，他仍選擇保留透明設計。 | pwqd | UKIPO_TRANSPARENT_BIN | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| vmt8 | 我想，買手聽過一次示範，店裡的你卻未必聽過；誰來把差別說清楚？ | vmt8 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| 6m9s | 戴森回憶，他得爭取零售商同意，在機器旁擺上技術和差異的說明資料。 | 6m9s | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| ng27 | 他想讓買家不只比較折扣和價格，也看性能、耐用和使用方式。 | ng27 | MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | CONFIRMED | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| atmg | 但如果通路還要求廣告支持，手邊又沒有現成預算，條件怎麼談？ | atmg | DESIGN_MATTERS | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| cvp5 | 談英國初期通路的另一段回憶裡，戴森說，曾有電器零售商要求廣告支持。 | cvp5 | DESIGN_MATTERS | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| hnrg | 他當時沒錢做廣告，便提議按店家的訂購量，投入約定的電視廣告。 | hnrg | DESIGN_MATTERS | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| r2i6 | 戴森說，雙方是按這個條件達成交易。 | r2i6 | DESIGN_MATTERS | R4 完整查核＋R5 同值綁定 | CONFIRMED | 保留參與者回憶／公司回顧歸屬；不擴作原合同或同期紀錄。 |
+| 6xye | 我對開場問題的答案是：無袋原型解了一段堵塞，交到顧客手上，還得有人接完製造和接貨的工作。 | dyr1outro | SENRA、DYSON_BIO、GIZMODO_YAMAMOTO、MASTERS_SCALE | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 官方未全校正逐字稿所載的歸屬敘述；原聲未獨立聽驗。 |
+| sptz | 如果換成你接案，哪一步沒完成，你就不敢把產品交出去？留言告訴我。 | dyr1outro | — | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
+| 5qtc | 想看日用品怎麼跨過這些實際難關，就訂閱品牌故事。 | dyr1outro | — | R4 完整查核＋R5 同值綁定 | OUT OF SCOPE | 問句、反應、連接或邀請；史實前提依來源。 |
 
-此 PASS 只涵蓋來源與書面配鏡。沒有 native／盲讀判定、念法審查、逐句實聽、實際生成圖評審、裁切後同圖 SHA 或成片 QA；3303 spokenUnits 是字量，正文 720–840 秒尚未實測。`actual_same_asset_verified=false`。兩端須按既定 payoff-first／cache-miss-stop／各自 judge／裁切後終檔同 SHA 計畫執行。
+137 組 prompt／camera 與 35 組 loops 同 R4；兩組預告／回收的完整 Stage.imageKey 重新純算相等，實圖仍未產生。依既定計畫，先 payoff、takes=1，讀 live cache／judge／檔案 SHA，cache miss 即停；兩端各自 judge，裁切後終檔與組片輸入仍須同 SHA。`actual_same_asset_verified=false`。
 
-原研究 3 檔、raw-index 203 檔、32 份 current／FETCH_HEAD 快照、16 份現行關聯檔、原後台快照與 R1 23 檔封存均以 SHA 保全。本標記不代表 owner 批准，也不授權任何 US$25 帳戶啟用、入場或付費。
+原研究、source-cache/index203、新 raw、R1–R4 歷史與同集 immutable sequence1 字典均受保全。本輪 535 項保護清單和 R4 81 檔封存 SHA 全過；capacity baseline.claims_sha256 誤填 claims.md SHA 的技術 notice 原封保留，沒有把它當正確 claims.json 綁定。
+
+此 PASS 不是 native2／盲讀、念法、實聲、實圖、成片或 owner 批准。3316 spokenUnits 與 4–5 units/s 都是規劃，正文 720–840 秒含 coldopen／有聲 CTA、排除另加 26 秒片頭片尾，實聲仍未知。SOURCE 不建立 US$25 帳戶、all-in quote、protected admission 或付費權限。

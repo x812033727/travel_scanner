@@ -1,4 +1,4 @@
-# Doraemon remake｜R4作者候選
+# Doraemon remake｜R6作者候選
 
 ## 問題
 
@@ -14,7 +14,7 @@
 
 ## 單一主線與新答案
 
-從むぎわら把稿轉寫到另紙、保留下原件的動作出發，接到2019年他鼓勵辻村承接腳本，再追到辻村／八鍬如何處理科學資料、原短篇的解釋方法、友情動機、時長、台詞與小說媒介。末段只用具體版次的漫畫／2025／2026署名回應原作與新寫工作如何並存，沒有逐年電影片單。
+從むぎわら把稿轉寫到另紙、保留下原件的動作出發，接到他鼓勵辻村承接二〇一九年上映電影腳本的回顧，再追到辻村／八鍬如何處理科學資料、原短篇的解釋方法、友情動機、時長、台詞與小說媒介。末段只用具體版次的漫畫／2025／2026署名回應原作與新寫工作如何並存，沒有逐年電影片單。
 
 開場前兩句對觀眾說話、帶三十年與可能認錯寫作者的利害；前六句已到具體稿紙、助手、未落筆的動作。只預告一個未來事件：帶著五、六本科學雜誌的會議，停在如何讓冒險成立之前；單一點名與規模的承諾句之後，以全片主問句收束。每章開頭給新的有源動作，每章都有你／我。23個作者loop均列setup/payoff；c05只問導演要求，c06/c07給當事人工作要求與回應，不掛電影友情答案，仍待fresh原生讀者判斷。最後三句依序答案、留言題、訂閱理由，不預告下一支。
 
@@ -32,16 +32,16 @@ MiniMax image-01，look唯一為{"preset":"cute-mystery"}，無style／negative�
 
 ## 製作與交付
 
-series target_minutes固定13。最終3104 native spokenUnits、135行、115個shot、23個有後續新答的作者loop；開場200、voiced CTA56，兩者均包含在3104內。刪相鄰重述後低於約3500的容量目標，保留容量風險；4.5units/s純口播算式689.78秒不是實聲。正常免費lint的完整結果見native-author-lint-r3.json；soft包括14.5分鐘的正常間隔估值、長shot估值、空白紙面概念重複與刻意同圖的相鄰回收。完整收據照保留，不能把機械節奏零警告當fresh讀者通過。
+series target_minutes固定13。最終3002 native spokenUnits、131行、111個shot、23個作者loop；開場195、voiced CTA56，兩者均包含在3002內。真去重後低於約3500容量目標，保留薄稿風險；4.5units/s純口播算式667.11秒不是實聲。正常免費lint的完整結果見native-author-lint-r6.json；所有soft完整保留，不能把機械節奏檢查當fresh讀者通過。
 
-R3已完成SOURCE差分及actual native2；兩位共同required HOLD只剩payoffs，指d1b082的月球生命問題無後續具體答案。R4只改這一句為有原件支持的設定討論與腳本仍難寫，並將原loop說明對準寫作步驟；不編月球科學或電影情節答案。其餘134句、135行總數、115個scene全部非lines欄位與三端完整Stage request保持；A單票scene_first、B單票no_recap與章名advisory不列為本次要求。歷史票及actualcount2保留，SOURCE新差分及fresh native3待root另派，本作者未準備或重抽blind。
+R5已通過SOURCE差分並完成actual native4，兩位共同required HOLD只剩no_recap。R6將a041改為本次取得的是事後回憶、不能憑它確定每頁作畫分工，a033只講一次接手回次；刪c042/c043同義概括，保留c031/c032有源讀者立場與寫作方法。c02b1只加「你把」維持本章對觀眾說話，仍由原有解釋方法的答案收束。其餘129句、111個存活scene非lines欄位、23loops完整原樣；b082工作結果及D14/D15定位、2019上映年修正、三端Stage requests/keys不變。章名advisory不追。R5 core及來源與全部native4 raw/input/binding/merge、外部round4 manifest和runtime封存history/r5，共96檔；actualcount4，SOURCE新差分及fresh native5待root另派，作者未prepare或重抽blind。
 
 實聲body必須720–840秒，包含cold open及voiced CTA，排除新增5秒片頭與21秒v4片尾，共26秒。估算不能代替實聲，不降低13、不慢播、不插空白、不重述補時。聲音沿台灣STORY_VOICE_STYLE與正常Gemini Sulafat object；本片字典已自行走正常immutable初始化，僅1 version，念法仍待獨立審。
 
 繁中主版試燒字幕加CC；預設後續八語en/ja/ko/es/pt/id/vi/th，保留乾淨主片、原圖、dry voice、M&E及source-bound CC/text。語言媒體均待中文成片後正常製作。5秒正式片頭放開場後；21秒正式v4片尾素材與版本待驗，沒有借舊片。
 
-新slug為story-adapt-doraemon-after-fujiko-remake-20261025，作品族群仍為品牌故事，不以改前綴偷借預算。這支nonC新片獨立US$25精確帳戶、全片quote與protected admission均未建立；不借原帳戶、別集帳戶、歷史owner決定或批准。無paid/provider/backend/owner/Git操作。runtime在/workspace/work/brand-story-20261025/doraemon-audit/author-r4/free-runtime，media在repo與runtime外的/workspace/work/brand-story-20261025/doraemon-audit/author-r4/media。
+新slug為story-adapt-doraemon-after-fujiko-remake-20261025，作品族群仍為品牌故事，不以改前綴偷借預算。這支nonC新片獨立US$25精確帳戶、全片quote與protected admission均未建立；不借原帳戶、別集帳戶、歷史owner決定或批准。無paid/provider/backend/owner/Git操作。runtime在/workspace/work/brand-story-20261025/doraemon-audit/author-r6/free-runtime，media在repo與runtime外的/workspace/work/brand-story-20261025/doraemon-audit/author-r6/media。
 
 ## 當前狀態
 
-這是R4作者候選，非獨立QA。SOURCE／fresh native雙讀者／念法／實聲與720–840秒／書面及實圖／owner所有關卡pending；作者沒有verify-1、自PASS、自verify或批准。免費正常lint為機械結構檢查，soft warnings照原樣保留。原舊媒體本機不可讀，不宣稱已保全、沒曾存在或曾獲本輪核准；本次新製作不以取回舊付費媒體為先決條件。
+這是R6作者候選，非獨立QA。SOURCE／fresh native雙讀者／念法／實聲與720–840秒／書面及實圖／owner所有關卡pending；作者沒有verify-1、自PASS、自verify或批准。免費正常lint為機械結構檢查，soft warnings照原樣保留。原舊媒體本機不可讀，不宣稱已保全、沒曾存在或曾獲本輪核准；本次新製作不以取回舊付費媒體為先決條件。

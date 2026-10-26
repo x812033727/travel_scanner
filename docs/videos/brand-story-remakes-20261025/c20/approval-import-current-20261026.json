@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "state": "EXACT_OWNER_DECISIONS_IMPORTED_BY_OFFICIAL_REVIEW_PULL",
+  "checked_at": "2026-10-26T09:00:45.260Z",
+  "project": "c20",
+  "slug": "story-everyday-zippo-c20-remake-20261025",
+  "source_video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+  "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+  "outline_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+  "runtime_root": "/workspace/work/brand-story-20261025/c20-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "preflight_current_root_source_canonical_brief_and_receipt_match": true,
+  "approvals_before_exists": false,
+  "approvals_before_sha256": null,
+  "approvals_before_snapshot": null,
+  "approvals_after_sha256": "db3dc2bab94ae046d106b48d521c1727b2447b6afdb7fed1e5766c6719e1060e",
+  "steps": [
+    {
+      "gate": "outline",
+      "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+      "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+      "actual_remote_status": "approved",
+      "actual_remote_decided_at": "2026-10-26T07:52:29.877975Z",
+      "pre_get_observed_at": "2026-10-26T09:00:42.969Z",
+      "post_get_observed_at": "2026-10-26T09:00:43.721Z",
+      "unique_approved_current_review_id_confirmed": true,
+      "official_argv": [
+        "review-pull",
+        "--slug",
+        "story-everyday-zippo-c20-remake-20261025",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--gate",
+        "outline"
+      ],
+      "cli_review_id_flag_supported": false,
+      "review_id_binding_method": "Pre/post normal authenticated GET verifies the unique approved current gate ID + content SHA + decided_at. Official CLI supports --gate only and independently checks current local file SHA. Imported note carries that exact owner decision timestamp.",
+      "exit_code": 0,
+      "stdout_receipt": "/workspace/work/brand-story-20261025/c20-audit/approval-import-current-20261026/outline-review-pull.stdout.txt",
+      "stdout_sha256": "1519f5040fcaeb41eb395ba7a98b90f31a05b6bc1da9eebcb160d13a4d8784f9",
+      "approval_before_exists": false,
+      "approval_before_sha256": null,
+      "approval_after_sha256": "5b2ffc12e3599adf4700362144b551f20c1063fea28d3db2f899e8deb01ec53d",
+      "approval_after_snapshot": "/workspace/work/brand-story-20261025/c20-audit/approval-import-current-20261026/outline-approvals-after.json",
+      "approval_after_snapshot_sha256": "5b2ffc12e3599adf4700362144b551f20c1063fea28d3db2f899e8deb01ec53d",
+      "local_approval": {
+        "gate": "outline",
+        "file": "brief.md",
+        "sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+        "approved_at": "2026-10-26T09:00:43.459Z",
+        "note": "approved on /admin/videos at 2026-10-26T07:52:29.877975Z; chose outline A"
+      },
+      "owner_approval_created_by_agent": false,
+      "owner_decision_imported_only": true,
+      "backend_changed": false,
+      "paid_requests": 0
+    },
+    {
+      "gate": "script",
+      "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+      "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+      "actual_remote_status": "approved",
+      "actual_remote_decided_at": "2026-10-26T07:52:31.875093Z",
+      "pre_get_observed_at": "2026-10-26T09:00:43.994Z",
+      "post_get_observed_at": "2026-10-26T09:00:44.744Z",
+      "unique_approved_current_review_id_confirmed": true,
+      "official_argv": [
+        "review-pull",
+        "--slug",
+        "story-everyday-zippo-c20-remake-20261025",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--gate",
+        "script"
+      ],
+      "cli_review_id_flag_supported": false,
+      "review_id_binding_method": "Pre/post normal authenticated GET verifies the unique approved current gate ID + content SHA + decided_at. Official CLI supports --gate only and independently checks current local file SHA. Imported note carries that exact owner decision timestamp.",
+      "exit_code": 0,
+      "stdout_receipt": "/workspace/work/brand-story-20261025/c20-audit/approval-import-current-20261026/script-review-pull.stdout.txt",
+      "stdout_sha256": "514813978eddffade047c19c046598d58a1e9f7ab42e852d1b88b1d7e85c7cac",
+      "approval_before_exists": true,
+      "approval_before_sha256": "5b2ffc12e3599adf4700362144b551f20c1063fea28d3db2f899e8deb01ec53d",
+      "approval_after_sha256": "db3dc2bab94ae046d106b48d521c1727b2447b6afdb7fed1e5766c6719e1060e",
+      "approval_after_snapshot": "/workspace/work/brand-story-20261025/c20-audit/approval-import-current-20261026/script-approvals-after.json",
+      "approval_after_snapshot_sha256": "db3dc2bab94ae046d106b48d521c1727b2447b6afdb7fed1e5766c6719e1060e",
+      "local_approval": {
+        "gate": "script",
+        "file": "script.md",
+        "sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+        "approved_at": "2026-10-26T09:00:44.487Z",
+        "note": "approved on /admin/videos at 2026-10-26T07:52:31.875093Z"
+      },
+      "owner_approval_created_by_agent": false,
+      "owner_decision_imported_only": true,
+      "backend_changed": false,
+      "paid_requests": 0
+    }
+  ],
+  "final_get_observed_at": "2026-10-26T09:00:45.038Z",
+  "current_script": {
+    "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+    "status": "approved",
+    "decided_at": "2026-10-26T07:52:31.875093Z",
+    "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+    "approval_imported": true
+  },
+  "current_outline": {
+    "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+    "status": "approved",
+    "decided_at": "2026-10-26T07:52:29.877975Z",
+    "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+    "approval_imported": true
+  },
+  "actual_locales": {
+    "en": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ja": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ko": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "es": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "pt": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "id": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "vi": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "th": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    }
+  },
+  "locales_decided_at": "2026-10-26T07:52:19.988310Z",
+  "language_settings_changed": false,
+  "source_preexisting_files_unchanged": true,
+  "runtime_all_files_unchanged": true,
+  "operator_freeze_and_old_status_entries_unchanged": true,
+  "media_changed_existing_files": [],
+  "media_added_files": [
+    "/workspace/work/brand-story-20261025/media/story-everyday-zippo-c20-remake-20261025/approvals.json"
+  ],
+  "evidence_directory": "/workspace/work/brand-story-20261025/c20-audit/approval-import-current-20261026",
+  "paid_provider_requests": 0,
+  "generated_story_media": 0,
+  "tts_calls": 0,
+  "new_reviews_submitted": 0,
+  "owner_decisions_written": 0,
+  "git_mutations": 0
+}

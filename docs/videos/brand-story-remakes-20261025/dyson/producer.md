@@ -1,13 +1,9 @@
-# Dyson R2 製作交接
+# Dyson R5 製作交接
 
-Source preparation only. 新slug story-dyson-japan-first-20261021-remake-20261025，identifier保原family，不改原後台。paid/provider/backend/Git0；舊帳戶、批准和不可讀付費媒體不繼承。
+唯一MF-R4-01只改btuc的工廠布濾拆換前提，改為明示前文氣旋收粉回呼；N01＋N02對位。其他139句、137 prompts/camera、35 loops及兩組完整Stage keys均精確保留。3316 units／13min／實body720–840秒含coldopen+CTA、排26秒PR1860 bookends；實聲仍未測，快速自然語速可能不足。
 
-只免費prepare-runtime dyson與normal native lint；正常immutable字典在新runtime/init建立，不借他集dictionary/approvals。runtime /workspace/work/brand-story-20261025/dyson-submission-root，media base /workspace/work/brand-story-20261025/dyson-audit/media。來源、書面配鏡、fresh native、owner與本exact slug獨立US$25帳戶／全片quote／protected admission皆pending。禁止真TTS、圖、音樂、轉寫或其他付費。
+R4全core/freeze/完整獨立SOURCE HOLD、書面配鏡PASS、正常runtime與外部receipts逐SHA封history/r4；無R4 marker或native。實際nativecount仍1（R2真merge HOLD），freshnative2未prepare未讀。R5需原checker窄複核；作者不自SOURCE/native PASS。
 
-image-reuse-plan.json是recipe，actualfalse。正常admission後先payoff takes1；再以readCache+普通manifest+actual bytes SHA guard，cache miss即停。兩端各judge；裁切後final selected同檔SHA仍需真核。
+同集字典seq1等bytes免費投影在/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime，media base /workspace/work/brand-story-20261025/dyson-audit/author-r5/media；不重建字典。兩預告payoff先takes1、真cache/manifest/bytesSHA命中後再teaser，miss停、兩端judge、裁切final同檔SHA；actualsameasset=false/null。
 
-正式PR1860 intro5秒放coldopen後；outro21秒放末句後。沿../branding-pr1860/required-branding.json，assembly前fresh read-only檢查缺包/disabled/版本/bytes，不符即停。未建立本題production pin/timeline。
-
-整份正文3303units，比約3500少197；真聲720–840秒含coldopen及有聲CTA，排26秒bookends，未測，不宣稱PASS/FAIL。不靠停頓慢播湊長。八語預設，譯文/配音/CC/成片QA尚未執行。
-
-研究3、原related32+backend快照、raw203的既有SHA全保持；author-source-additions僅為舊原件追加3個作者錨點，非獨立批准。
+exact新slug獨立US25部署帳戶狀態未由本作者核讀；本次未建立quote/protectedadmission/owner/auto，也未授權支出。禁止provider/paid/TTS/圖/音樂/轉寫；八語預設未製作。PR1860 intro5秒在coldopen後、outro21秒在末句後，正式assembly前fresh核版與bytes。原研究、baseline.claims誤欄notice、raw、舊history、字典與所有保護項均原封。

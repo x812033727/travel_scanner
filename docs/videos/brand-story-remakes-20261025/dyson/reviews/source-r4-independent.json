@@ -1,0 +1,2688 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r4",
+  "review_kind": "INDEPENDENT_FULL_SOURCE_AND_WRITTEN_VISUAL_QA",
+  "reviewer": "/root/dyson_r1_source",
+  "completed_at_utc": "2026-10-26T08:20:20.706508+00:00",
+  "independent": true,
+  "not_researcher_or_author": true,
+  "status": "FIXES_REQUIRED",
+  "overall_verdict": "HOLD",
+  "source_verdict": "HOLD_ONE_UNESTABLISHED_COMPONENT_REPLACEMENT",
+  "source_pass": false,
+  "written_visual_verdict": "PASS_WRITTEN_ONLY",
+  "must_fix_count": 1,
+  "verify_marker_created": false,
+  "video_slug": "story-dyson-japan-first-20261021-remake-20261025",
+  "input_sha256": {
+    "video.json": "7fa995a74b89c443748a737864c517334f65e78ad2f3ff797edf8429905ecc80",
+    "script.md": "d54615322ee4ed958ecf3baf2ae03d0ba27fab6f3dddc4ca711a0cee36aad346",
+    "narration-only.json": "6433ffcef6796daff2b0fb80e68e406500fbb1f18c2db7f8f8d5566089ac888a",
+    "claims.json": "8bd77b6c0d4269f7c9d3c7ee331b9c3ab14731de9c37d7eb7a2e44c385676da0"
+  },
+  "author_freeze_sha256": "f31238cde281ac71b3d34ed75e3db127c67c0eaae825d8afda7b6c3805206ea6",
+  "new_anchors_sha256": "f0972c50ea641a1977d6db30fd61deb410b5ca26a6e2aa9dca99c0ba2ef1220d",
+  "image_reuse_plan_sha256": "cb2f10dd2976e6abd0bb9d1274490f0f987ac175c03008bd40e02e8cab8beb74",
+  "review_scope": {
+    "all_140_lines_read": true,
+    "all_137_prompts_read": true,
+    "all_35_loops_read": true,
+    "metadata_title_description_thumbnail_and_source_limits_read": true,
+    "full_R4_review_not_R3_inheritance": true,
+    "R3_state": "UNREVIEWED_NO_SOURCE_PASS; NOT_PREPARED_NOT_READ",
+    "prior_R1_R2_own_source_receipts": "Background context only; current R4 narration, source contexts and prompts independently rechecked.",
+    "narrative_or_blind_or_author_review_conclusions_used": false,
+    "author_contacted": false,
+    "subagents_spawned": 0
+  },
+  "coverage": {
+    "lines": 140,
+    "chapters": 7,
+    "shots": 137,
+    "outro": 1,
+    "content_cards": 0,
+    "loops": 35,
+    "opening_lines": 8,
+    "factual_or_attributed_rows_supported": 85,
+    "other_rows_supported": 54,
+    "question_premise_must_fix": 1,
+    "source_registry_documents_checked": 17,
+    "voiced_research_claim_groups": 30,
+    "metadata_only_evidence_groups": 6,
+    "anchor_instances_including_metadata": 215,
+    "unique_anchors": 46,
+    "new_contexts": 14,
+    "HTML_paragraphs": 29,
+    "PDF_pages_text_reproduced": 5,
+    "short_original_language_quotes_located": 35,
+    "JSON_pointers_resolved": 4
+  },
+  "must_fix": [
+    {
+      "id": "MF-R4-01",
+      "line_id": "btuc",
+      "current_text": "工廠曾換掉布濾，他在家要先做出什麼，才能試同一個想法？",
+      "problem": "The question embeds a physical component-replacement claim: the factory cloth filter had been replaced. The selected originals establish a cloth-clogging problem and cyclone dust separation; they do not say that the cloth filter was physically removed/replaced. SENRA explicitly describes taking off/replacing the domestic bag in a later event, which cannot be projected back onto the factory filter.",
+      "sources": [
+        {
+          "source_id": "SENRA",
+          "line": 285,
+          "quote": "We were sucking it away onto a cloth filter, a huge cloth filter, which clogged all the time."
+        },
+        {
+          "source_id": "SENRA",
+          "line": 293,
+          "quote": "we built at the factory to stop the cloth from getting clogged with dust. Instead, we were spinning it out successfully by centrifugal force."
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "lines": [
+            263,
+            264
+          ],
+          "quote": "building a 25ft cyclone to suck the waste powder away"
+        },
+        {
+          "source_id": "SENRA",
+          "line": 297,
+          "quote": "I took the bag off my upright vacuum cleaner, replaced it with a bit of hose and this cardboard mini version"
+        }
+      ],
+      "suggested_exact_text": "工廠曾用氣旋收粉，他在家要先做出什麼，才能試同一個想法？",
+      "required_next_step": "Author rebuilds all projections and refreezes; independent source delta recheck before a source marker. No frozen research rewrite required."
+    }
+  ],
+  "source_readings": [
+    {
+      "research_claim_id": "N07",
+      "independent_reading": "Official Masters transcript labels DYSON at L147; his answer continues L148–150 with three graduates/four engineers, component drawings, subcontractors/toolmakers, no assembler, half-empty molding supplier factory, rented assembly area, tooling investment and subsequent line manager/workers. This is attributed support from uncorrected official auto transcript, not a verified personnel ledger or exact original-speech certification. No factory place/date or quality-inspection absence inferred.",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "pdf_page": null,
+          "line_start_1based": 145,
+          "line_end_1based": 150,
+          "context_sha256": "3be12e2c23c9d29c041a31df9d64694493558787a78b44dffb882371b47d3033",
+          "short_quote_original_language": "three graduate engineers",
+          "short_quote_sha256": "12dc13eec54c1ce3c55e818d388b21e8eb3c62bd808fc510edf9f52041bb8be9",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "A04",
+      "independent_reading": "Fortune paragraph37 first sentence explicitly places decision to manufacture himself in early1990s. Litigation/Amway remainder is not used.",
+      "anchors": [
+        {
+          "source_id": "FORTUNE_ORAL",
+          "raw_sha256": "cf1ef0528d13f851936d726caa3793bd2067944fb038ae3415e544842d7f51d5",
+          "paragraph_numbers": [
+            37
+          ],
+          "paragraph_text_sha256": {
+            "37": "7a3875239024df94a4fd84d4a2eec1711ae8fb7508b65289fba52807c5ed1724"
+          },
+          "short_quote_original_language": "In the early 1990s I decided to make the machine myself",
+          "short_quote_sha256": "bb126c0d7f672deb835d77a0f6c142f24252907ec9af41a1be635a9f4e23031c",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D14",
+      "independent_reading": "Japanese paragraph58: perforated shroud at cone entrance, debris rotating while air enters, added part and hole size/shape experiments. Script narrows result to this inlet blockage, no universal no-clog claim or measured aperture.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            58
+          ],
+          "paragraph_text_sha256": {
+            "58": "1e0e51944ff063ea78139bad52e34fbf63b457766e207f9195bc7a63733686ee"
+          },
+          "short_quote_original_language": "シュラウド",
+          "short_quote_sha256": "bd0366bc88a57e2c62c03c08106e0f0724ec18b0107383a2fc8aec0e73b169d1",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N06",
+      "independent_reading": "SENRA Dyson L792/798/800 supplies house collateral, spouse signatures, visiting business specialist, initial bank refusal and internal ombudsman persuasion. Narration omits 1992/GBP sums and does not equate it to Fortune 1993/USD story or assign a verified name/job title.",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "pdf_page": null,
+          "line_start_1based": 789,
+          "line_end_1based": 803,
+          "context_sha256": "ffb6af6bceab4de5955627be2b22870dcc26d9dd44ff8bc498fcc9a4da7d6b61",
+          "short_quote_original_language": "ombudsman",
+          "short_quote_sha256": "44990c65cd20d85975756757bf9925a3a0457821911f430e80969dd2e00eb635",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N01",
+      "independent_reading": "SENRA L285/287/293 are Dyson answers about powder missing frames, blocked cloth, unaffordable quote and self-built cyclone. Official bio L262–264 supplies attributed 1978 and timber-mill inspiration. Heights omitted. Installing a cyclone / preventing cloth clogging does not establish physical removal of the cloth filter; see MF-R4-01.",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "pdf_page": null,
+          "line_start_1based": 283,
+          "line_end_1based": 293,
+          "context_sha256": "22087dd6a0a18911995d8e3323cd7232871b9994541f373b82735994d822d52d",
+          "short_quote_original_language": "cloth filter",
+          "short_quote_sha256": "09b87b8d46c2d2258ef4c03d29b84d9ee9bb91a436552eed41aeaba253ad7292",
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "pdf_page": null,
+          "line_start_1based": 262,
+          "line_end_1based": 267,
+          "context_sha256": "9468736971eebbeb23408a52ee9dfde56d43705b6e94f8eb74012c4092cd0b7f",
+          "short_quote_original_language": "powdered paint",
+          "short_quote_sha256": "0187b02fed2aabc241b4ecafa90b799b5aa75fe12efd1d1303a8e9732eb0b2e9",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N09",
+      "independent_reading": "Masters DYSON answer starts L152 and continues through L157; price-discount criticism and point-of-sale display experience are his views, not BERMAN claims at L151/158–160. Script makes no measured sales-uplift or universal retail claim.",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "pdf_page": null,
+          "line_start_1based": 152,
+          "line_end_1based": 157,
+          "context_sha256": "2aeecdb16f70107ccd13038d36f84176073b9db7bec98c172d257c5f422cf682",
+          "short_quote_original_language": "point of sale",
+          "short_quote_sha256": "2c2862a5757281d05ff65b311fdc5f24b11e968d00f565b90b9ec083122a02d4",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N02",
+      "independent_reading": "Dyson answers L290–297 explicitly support emptying and taping bag, fine lining, pore explanation, brief recovery with new bag, cardboard/tape/hose on upright and replacing its bag. This explicit domestic bag removal must not be transferred to the factory cloth filter.",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "pdf_page": null,
+          "line_start_1based": 290,
+          "line_end_1based": 297,
+          "context_sha256": "5866795af871723dba7b4a32dfccc4b4e85fbabffdef1a76adce821e25092f2d",
+          "short_quote_original_language": "gaffer tape",
+          "short_quote_sha256": "495c89e4a6e965a5aafde7b1f84694e006f229b4233f0973199434deb74bcaa0",
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "pdf_page": null,
+          "line_start_1based": 265,
+          "line_end_1based": 267,
+          "context_sha256": "2067e889d7dd032cdc634d6f5286ca13196b78f34ae047320dc30cba35b5bfc1",
+          "short_quote_original_language": "cardboard",
+          "short_quote_sha256": "2fb41c42cec5d64aee374a0bfe78b3146675c6699a2fa63efba52b1d10ceaf0c",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N03",
+      "independent_reading": "Dyson answers L447/449 support home work, no money for lathe, hand tools, junk-store antique metal rollers, upside-down cone and soldering. Script omits tool price, material thickness, dimensions and full-machine handmade counts.",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "pdf_page": null,
+          "line_start_1based": 442,
+          "line_end_1based": 450,
+          "context_sha256": "b9ba859450dd3633399f379e783049de2ba8eec65af5bc9804b6fc1fcb8447a9",
+          "short_quote_original_language": "metal rollers",
+          "short_quote_sha256": "4a792beacee04a818fe3efaa1cff3f9dcf3b83afc16ed1786fc99828f2b2f426",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N04",
+      "independent_reading": "Design Matters labels James Dyson before L136, which describes one change at a time, better/worse results and next prototype. OU original p2 explains interview/archive method and p4 L25–33 describes brass/aluminium/perspex test models; script attributes the latter to the study, not a verbatim Dyson quotation.",
+      "anchors": [
+        {
+          "source_id": "DESIGN_MATTERS",
+          "raw_sha256": "9b6869e2652f03ef3843671dc8ec3f37cd48a0eac98bbcaad97bddf204beb7eb",
+          "pdf_page": null,
+          "line_start_1based": 134,
+          "line_end_1based": 140,
+          "context_sha256": "5f36571c657ad112035655b0fb83276e93618170ac226cef211b910ab2f6b0dc",
+          "short_quote_original_language": "one change",
+          "short_quote_sha256": "fdf32bf69ef5fb36aa80709fa19d510170b8eb806bf1072f3cb43a275d092933",
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "OU_1993",
+          "raw_sha256": "85ead7c89de5eb86eaaa8cbc18b372a4eb15b146515f44f2e441d9efa961a3e7",
+          "pdf_page": 4,
+          "line_start_1based": 25,
+          "line_end_1based": 33,
+          "context_sha256": "709c21c72032552fc7906797994665d44692c8ea1350b3ef6fb294919d978606",
+          "short_quote_original_language": "brass",
+          "short_quote_sha256": "33a28bc4f5826ca76cf88281c79576caea4b0dac560ea32e145e4b1387604558",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N05",
+      "independent_reading": "SENRA host asks licensing route at L386 and Dyson himself answers at L387: both were manufacturers and chose inventors/engineers work. OU p4 L17–24 supports high tooling cost / licensing-commercialisation analysis. No universal rejection restored.",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "pdf_page": null,
+          "line_start_1based": 386,
+          "line_end_1based": 390,
+          "context_sha256": "dd76c56ff7d90bedf04836ee88aa05e673d7c97d9589d12787881cd7c63979f7",
+          "short_quote_original_language": "manufacturers",
+          "short_quote_sha256": "4d2c7ce9716530042a52ac166a499d1815fa04e4225ca183146a7d700c786397",
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "OU_1993",
+          "raw_sha256": "85ead7c89de5eb86eaaa8cbc18b372a4eb15b146515f44f2e441d9efa961a3e7",
+          "pdf_page": 4,
+          "line_start_1based": 17,
+          "line_end_1based": 24,
+          "context_sha256": "4bcbb30db52e048b56fe76adec51495a83db852a182f523c15479c570733af87",
+          "short_quote_original_language": "tooling costs",
+          "short_quote_sha256": "2a5cd0a981485fa8d79f0644d1ab19f39b2746497076cc0120a066e72ba0ec8d",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D01",
+      "independent_reading": "Own caption paragraph246 states Cyclon licensed to UK Rotork, produced1983/84,550 and commercial failure; UKIPO p4 paragraph16 supplies separate first-public CYCLON testimony. Script keeps Japan later and totals attributed.",
+      "anchors": [
+        {
+          "source_id": "DYSON_CH05_UK",
+          "raw_sha256": "c2b66e6c2f2b3ce4b323bbf295260c444f328d917c7af5cb1774c16409e61d97",
+          "paragraph_numbers": [
+            246
+          ],
+          "paragraph_text_sha256": {
+            "246": "226f76da786796a4a5799e0e3277ae9cbcb26800a50339b1ed4162317a3d15cc"
+          },
+          "short_quote_original_language": "Only 550 were made.",
+          "short_quote_sha256": "ba5e7376b0bf53bb9386b73d407ae27ea3375709c3da97c165768e99362bfe59",
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "UKIPO_TRANSPARENT_BIN",
+          "raw_sha256": "435e26843de587972c7b43033b3eea1f0fc2a429bfd14cab4189d70a49db6834",
+          "pdf_page": 4,
+          "printed_location": "paragraph 16",
+          "short_quote_original_language": "CYCLON",
+          "short_quote_sha256": "0af62c122a83fd8536571fffc9cc564582a000b35ec98d38f8dcf631d51bf737",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D02",
+      "independent_reading": "SMG paragraph38: Made in Italy for Kleeneze Rotork Limited, Bristol,1984. Script scopes Italian manufacture to the collection object.",
+      "anchors": [
+        {
+          "source_id": "SMG_CYCLON",
+          "raw_sha256": "97a54d59fcf424f39e3ba78bcbaf0b1f98028b47fe35afcf2d1fd7967696e009",
+          "paragraph_numbers": [
+            35,
+            37,
+            38
+          ],
+          "paragraph_text_sha256": {
+            "35": "4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370",
+            "37": "5a9cf672c8be6b5ab9546a2fb49b06dd81a4e364c86ed023898c49d9bb0605dc",
+            "38": "47e1249cba38c62d0329cd1e26a37dfef04856204febe8f2b8089256bc1cc8d1"
+          },
+          "short_quote_original_language": "Made in Italy",
+          "short_quote_sha256": "41a5b64ebc67b565b0091c952f5ad677a13078ab791c80202dc565391e252719",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D07",
+      "independent_reading": "Named participant Japanese sponsored interview paragraph44 says US1984 Product Design book photo promptedApex contact; book page not independently obtained and statement remains interview-attributed in following sentence.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            44
+          ],
+          "paragraph_text_sha256": {
+            "44": "5bc2c5ce07da1e0f9e088c7eec9d39f50ac43dc7937719f4baecf9bc722521d0"
+          },
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D08",
+      "independent_reading": "Japanese paragraph46 says unfinished sample, rebuilding in Japan and Dyson offering local sales rights. Script correctly identifies licence direction.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            46
+          ],
+          "paragraph_text_sha256": {
+            "46": "736f5bc89ec9f9e8c832e92f9cab824da1a6f9c6fae0c2856be73c3e7921acdf"
+          },
+          "short_quote_original_language": "試作品",
+          "short_quote_sha256": "e63bfa27bec88c1abda43326b358d8228063acbbf8cfd49a334fc8bd520791dc",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D09",
+      "independent_reading": "Japanese paragraphs46/48: stationery importer without engineers/factory, president finding factory and recently transferred Yamamoto assigned work; own biography is not independent second testimony.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            46,
+            48
+          ],
+          "paragraph_text_sha256": {
+            "46": "736f5bc89ec9f9e8c832e92f9cab824da1a6f9c6fae0c2856be73c3e7921acdf",
+            "48": "f0a9231644ca964034c04bc09cedab4fc21d0f6dcff71d1dcf12cdc5575860e9"
+          },
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "OTTIMO_ABOUT_EN",
+          "raw_sha256": "6d7f6b22ecf97a1066a80824e4afe930fe24a78440a296c488fca028706f8e1b",
+          "paragraph_numbers": [
+            24
+          ],
+          "paragraph_text_sha256": {
+            "24": "93ce37cbba8eea29a4ea993d5980449edab63ce7d789a7961c22e05ec316a2a5"
+          },
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D06",
+      "independent_reading": "Yamamoto own studio biography paragraph24: joinedApex1985, UK Prototypes joint development. World-first marketing phrase not adopted.",
+      "anchors": [
+        {
+          "source_id": "OTTIMO_ABOUT_EN",
+          "raw_sha256": "6d7f6b22ecf97a1066a80824e4afe930fe24a78440a296c488fca028706f8e1b",
+          "paragraph_numbers": [
+            12,
+            21,
+            24
+          ],
+          "paragraph_text_sha256": {
+            "12": "1f2537186a24f5cf07a72da15797e80de1dcf52f24610d2c69807d2fcee35976",
+            "21": "9d78123f474081ec8123e955181602b6e863393ca111fb079cc010ee4e379a0f",
+            "24": "93ce37cbba8eea29a4ea993d5980449edab63ce7d789a7961c22e05ec316a2a5"
+          },
+          "short_quote_original_language": "Hideo Yamamoto",
+          "short_quote_sha256": "9d78123f474081ec8123e955181602b6e863393ca111fb079cc010ee4e379a0f",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "A01",
+      "independent_reading": "Japanese paragraph51 explicitly says precision mechanical factory, not vacuum specialist, and Yamamoto had not designed vacuum cleaners. No unnamed factory identity supplied.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            51
+          ],
+          "paragraph_text_sha256": {
+            "51": "8765e5d9ce7ec05f7df479388db73b061341859da48880a566573ea17b773848"
+          },
+          "short_quote_original_language": "精密機械の工場",
+          "short_quote_sha256": "aeb17666459f516cea2d14de680b95b5a7403d61ef2edd735ee780ff4d11b2ee",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D10",
+      "independent_reading": "Japanese paragraph48: UK/Japan voltage, same-power100V larger motor and housing redesign. No motor wattage/model or measured dimensions supplied.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            48
+          ],
+          "paragraph_text_sha256": {
+            "48": "f0a9231644ca964034c04bc09cedab4fc21d0f6dcff71d1dcf12cdc5575860e9"
+          },
+          "short_quote_original_language": "100V",
+          "short_quote_sha256": "f3cc6ab4c072c07f2103523cb3280a51b703445f20eb728087624c9c8ad6f6d4",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D11",
+      "independent_reading": "Same paragraph48: approximate first prototype half-year then further1.5years. Narration says retrospective rough estimate, not exact dated engineering log.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            48
+          ],
+          "paragraph_text_sha256": {
+            "48": "f0a9231644ca964034c04bc09cedab4fc21d0f6dcff71d1dcf12cdc5575860e9"
+          },
+          "short_quote_original_language": "半年",
+          "short_quote_sha256": "6195bdd41495b1bac6386c96a46f55005e487fc93714faac1aae3071d286058d",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D12",
+      "independent_reading": "Japanese paragraph50: heavy motor, carpet grip, split tyre, blockage/overheat/melted housing. Problems are successive recalled conditions; no shared single accident or invented repair solution drawn.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            50
+          ],
+          "paragraph_text_sha256": {
+            "50": "793f1b9a13fbb3c2c5bf8baaeff7022243cc381fc45b6bf9d2f1efa9eaa7c60f"
+          },
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D15",
+      "independent_reading": "Japanese paragraphs54/56/58: fax drawings, several1–2-week visits, factories/drawings/experiments. Photo shows engineering sheets/fax material, not exact send dates.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            54,
+            56,
+            58
+          ],
+          "paragraph_text_sha256": {
+            "54": "b7c1bad8acab864c2de92a09217caeb82c3646ba95b85405177dffed2bbf1fae",
+            "56": "c5a977dc2b33a6815fafb80086ee9d8ad28bb66913fdf9c8425fdf3aad4b86fb",
+            "58": "1e0e51944ff063ea78139bad52e34fbf63b457766e207f9195bc7a63733686ee"
+          },
+          "short_quote_original_language": "FAX",
+          "short_quote_sha256": "6f110978f55b201b5c654097b27fc2920acae9721e6105219e909c792e10d619",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "A02",
+      "independent_reading": "Japanese paragraph56 records Yamamoto recollection of Dyson responsibility for problems and finished drawings. Narration does not claim inspected original contract.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            56
+          ],
+          "paragraph_text_sha256": {
+            "56": "c5a977dc2b33a6815fafb80086ee9d8ad28bb66913fdf9c8425fdf3aad4b86fb"
+          },
+          "short_quote_original_language": "図面を仕上げなくてはなりませんでした",
+          "short_quote_sha256": "aac8195af8c20d7f8969a7cd6cd25e0323d266ffa8b99868082fe2f94cfacaf8",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D13",
+      "independent_reading": "Official caption paragraph240 locates1985Nishiazabu cleaner-head redesign; photo confirms drafting activity. No exact signing date inferred.",
+      "anchors": [
+        {
+          "source_id": "DYSON_CH05_UK",
+          "raw_sha256": "c2b66e6c2f2b3ce4b323bbf295260c444f328d917c7af5cb1774c16409e61d97",
+          "paragraph_numbers": [
+            240
+          ],
+          "paragraph_text_sha256": {
+            "240": "627edeea782e516d3305d94797d6e85a38de1b5845619fc927fb1b88ea6a5b8b"
+          },
+          "short_quote_original_language": "Nishiazabu, Japan in 1985",
+          "short_quote_sha256": "4fde95e303830d2859a304bb16a3b13ba42e8e223daa767908a234139b0548cb",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D16",
+      "independent_reading": "Japanese article paragraph13 reports1986release; V&A records1986Japan-made object and official gallery has1986home photo. No earliest worldwide-market or exact signing date inferred; inherited getting-Apex-licence caveat remains overridden.",
+      "anchors": [
+        {
+          "source_id": "GIZMODO_YAMAMOTO",
+          "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+          "paragraph_numbers": [
+            13
+          ],
+          "paragraph_text_sha256": {
+            "13": "015058f5a9b329c6f44c8d3d22d3e62c8e562e9514e37fec82c5f1f5536e2096"
+          },
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "DYSON_CH05_UK",
+          "raw_sha256": "c2b66e6c2f2b3ce4b323bbf295260c444f328d917c7af5cb1774c16409e61d97",
+          "paragraph_numbers": [
+            248
+          ],
+          "paragraph_text_sha256": {
+            "248": "dbc3679e26b254fa232a1faff254347ba6bf207432fcde764ee1444615d51356"
+          },
+          "raw_and_location_hashes_verified": true
+        },
+        {
+          "source_id": "VAM_RECORD",
+          "raw_sha256": "f100aba273bd7fc954e118f3ef4d4bd088dd4bcaef898730d76373f6ce2b5aa4",
+          "json_pointers": [
+            "/record/productionDates/0/date/text",
+            "/record/artistMakerOrganisations/0",
+            "/record/placesOfOrigin/0",
+            "/record/accessionNumber"
+          ],
+          "values": {
+            "production_date": "1986",
+            "manufacturer": "APEX",
+            "made": "Japan",
+            "accessionNumber": "M.64-1993"
+          },
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D17",
+      "independent_reading": "Fortune paragraph35 supports licensing agreement withApex in1986, niche product/quarter-million yen, Apex not very successful and income. Narration preserves attribution and does not promise commercial rescue.",
+      "anchors": [
+        {
+          "source_id": "FORTUNE_ORAL",
+          "raw_sha256": "cf1ef0528d13f851936d726caa3793bd2067944fb038ae3415e544842d7f51d5",
+          "paragraph_numbers": [
+            35
+          ],
+          "paragraph_text_sha256": {
+            "35": "c71677f03f0554ee6cec891bbd1380d76b541233fe14db5e8f0fe114a5194ad6"
+          },
+          "short_quote_original_language": "niche product",
+          "short_quote_sha256": "c387b3a3e31193bad0ad57cd3ca8ca4cf71b9da2185b7c3b3c9bcda041643acb",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D20",
+      "independent_reading": "Official caption paragraph242 locates firstDC01line atBumpersFarmChippenham1993; original photo shows rows of machines, workers and boxes. Script explicitly refuses to identify the separately recalled rented half-factory with this site.",
+      "anchors": [
+        {
+          "source_id": "DYSON_CH06_UK",
+          "raw_sha256": "642afc26f87483de72ada747c24d22c09212ddc34ea03e3fd36f16d14166a73a",
+          "paragraph_numbers": [
+            242
+          ],
+          "paragraph_text_sha256": {
+            "242": "409730f981b369b92f3c713821f796290900d071537736ba3a2d3c4e3f5c5cbe"
+          },
+          "short_quote_original_language": "Bumpers Farm in Chippenham, 1993",
+          "short_quote_sha256": "113828d51a1616033e778ce0004ccea717186e1533fd1d4f73c9dd2e71d41868",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N08",
+      "independent_reading": "Masters L87–93 begins JAMES DYSON and continues before host BERMAN starts L94. It supplies first stocking mail-order catalogue, Ribena/blackcurrant drink, dry powder applied before vacuuming and buyer trial. Narration and prompts preserve dry-powder sequence, no wet-pickup capability or controlled efficacy test claimed.",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "pdf_page": null,
+          "line_start_1based": 87,
+          "line_end_1based": 93,
+          "context_sha256": "1b874f5f2fa5a2c06ec0a4721eaf3e92099dd17301f12982c95605b8a615c90d",
+          "short_quote_original_language": "powder down",
+          "short_quote_sha256": "6b89062d74e6d0049856bfe544d55a19898c24b74154f243d856805213ab651f",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D22",
+      "independent_reading": "UKIPO p4 paragraph17 records Dyson testimony about many potential retailers disliking clear bin and his stated reasons to retain it. It is not a retail survey or all-retailers rejection.",
+      "anchors": [
+        {
+          "source_id": "UKIPO_TRANSPARENT_BIN",
+          "raw_sha256": "435e26843de587972c7b43033b3eea1f0fc2a429bfd14cab4189d70a49db6834",
+          "pdf_page": 4,
+          "printed_location": "paragraph 17",
+          "short_quote_original_language": "many potential retailers",
+          "short_quote_sha256": "e27d4dfbfb38ae01779d0396d3dd3d15092144e4fd30ad89fa92b8d879d3b98f",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "D18",
+      "independent_reading": "Fortune paragraph40 is used for one mail-order catalogue, another then JohnLewis sequence only. Its1993/USDloan amount is not merged into SENRA banking account.",
+      "anchors": [
+        {
+          "source_id": "FORTUNE_ORAL",
+          "raw_sha256": "cf1ef0528d13f851936d726caa3793bd2067944fb038ae3415e544842d7f51d5",
+          "paragraph_numbers": [
+            40
+          ],
+          "paragraph_text_sha256": {
+            "40": "2a72e14a93aeb146203af14a7f8f0a96b31d432de284caf1d98147122ce76cfe"
+          },
+          "short_quote_original_language": "for tooling",
+          "short_quote_sha256": "8a385f7ee5df3c7f83acc86d877f7e8602db8dec224f3ad333bac7da2d5baba1",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "research_claim_id": "N10",
+      "independent_reading": "Design Matters L175 labels James Dyson; L180 contains the electrical retailer advertising/order deal and uncertain quoted amount. Script omits amounts/ratio, buyer name and date and does not make this the mail-order buyer transaction.",
+      "anchors": [
+        {
+          "source_id": "DESIGN_MATTERS",
+          "raw_sha256": "9b6869e2652f03ef3843671dc8ec3f37cd48a0eac98bbcaad97bddf204beb7eb",
+          "pdf_page": null,
+          "line_start_1based": 174,
+          "line_end_1based": 184,
+          "context_sha256": "a15944bf43edb77c3a92aed60bf4417121e5a76de6f63d823861db069e1c354f",
+          "short_quote_original_language": "television advertising",
+          "short_quote_sha256": "82e5daacc883da3c4ab55be4057f13eecb4e575a45c034f055debed5c6fa2542",
+          "raw_and_location_hashes_verified": true
+        }
+      ]
+    }
+  ],
+  "new_source_provenance": {
+    "capacity_MD_sha256": "9ecd5698f2fefb2dc0879132d0b035c85b23c74f8c229fec38eca1935d004376",
+    "capacity_JSON_sha256": "a1596f6f8326ac9529587ce77474fd252428a5c323f605d242d3455ce833cfbf",
+    "new_raw_index_sha256": "82f984c6a65b59b2821b4b02990c9400ac13612fc1d597e216643ed7fb9cadac",
+    "HTTP_receipts": 10,
+    "usable_primary_documents": 6,
+    "used_new_source_ids": [
+      "SENRA",
+      "DYSON_BIO",
+      "OU_1993",
+      "DESIGN_MATTERS",
+      "MASTERS_SCALE"
+    ],
+    "NPR_HTTP200_pages_not_transcripts": true,
+    "NPR_or_403_or_search_snippets_used_as_evidence": false,
+    "speaker_verification": "SENRA James Dyson labeled answers separated from host questions/book passages; Design Matters Dyson labels at L135/175/179; Masters DYSON/JAMES DYSON answers L87–93,147–150,152–157 separated from BERMAN commentary. OU is Robin Roy interview-based research synthesis, not full verbatim interview. Company biography remains corporate retrospective.",
+    "Masters_auto_transcript_limit": "Published official transcript explicitly says automatically generated, not fully corrected. This review confirms textual support and attributed account only; exact original-speech quotations, headcount/date certification or historical payroll records are not newly established.",
+    "source_audio_download": {
+      "receipt_path": "/workspace/work/brand-story-20261025/dyson-audit/source-r4/MASTERS_SCALE.audio-http.json",
+      "receipt_sha256": "77cc449c8e5c91c699920faa3344dd9101892ed6a2696dc17a0bb2c243306744",
+      "source_audio_sha256": "945c52ba770fb938fff7274d81b63db47466696476d53ecc5a12d0d4b60de321",
+      "status": "Official-site-linked public Art19 MP3 retrieved as source preservation. No reliable independent original-audio listening or exact-word/count validation receipt is claimed or used for the verdict.",
+      "not_generated_episode_audio": true
+    }
+  },
+  "provenance_field_discrepancy": {
+    "status": "RECORDED_NONBLOCKING_FIELD_MISLABEL_NOT_SILENTLY_CORRECTED",
+    "field": "capacity-primary-research-r4.json baseline.claims_sha256",
+    "reported": "7af89ce33b0161facfa661ecabffe4d8b639870319732d672fd233d9736d44c0",
+    "reported_value_actually_hashes": "history/r3/claims.md",
+    "actual_R3_claims_JSON_sha256": "2e2c9f9a9731e529a4838b30105063ae606a7c9d8f89591e89062127115aaad3",
+    "R3_claims_MD_sha256": "7af89ce33b0161facfa661ecabffe4d8b639870319732d672fd233d9736d44c0",
+    "actual_R3_JSON_agrees_with_frozen_author_and_preservation_manifest": true,
+    "capacity_research_original_unchanged": true,
+    "effect": "Do not use mislabeled field to identify R3 claims.json. Current R4 freeze, true R3 bytes and all source raw/context hashes were independently checked; this does not substitute for source verification."
+  },
+  "projection_and_loop_checks": {
+    "projection_exact": true,
+    "script_projection_exact": true,
+    "claims_projection_exact": true,
+    "all_shot_prompts_equal_claim_rows": true,
+    "all_loop_refs_in_order": true,
+    "lines": 140,
+    "shots": 137,
+    "loops": 35,
+    "chapters": 7,
+    "opening_lines": 8,
+    "spoken_units": 3316,
+    "prompts_English_ASCII": true,
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "pairs": [
+      {
+        "pair": "perforated-cup-experiment",
+        "ends": [
+          {
+            "id": "88z5",
+            "camera": "pan right",
+            "composed_prompt_sha256": "6ba15f5c06057a21242bd47ed95357bdb0e65146e03d8c55e1956df981e06eab",
+            "base_key": "8401cae966d37a50",
+            "stage_key": "126df4181a46b30f",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          },
+          {
+            "id": "qggg",
+            "camera": "pan right",
+            "composed_prompt_sha256": "6ba15f5c06057a21242bd47ed95357bdb0e65146e03d8c55e1956df981e06eab",
+            "base_key": "8401cae966d37a50",
+            "stage_key": "126df4181a46b30f",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          }
+        ],
+        "equal_keys": true,
+        "full_rehearsal_equal_r3": true,
+        "camera_equal_r3": true,
+        "matches_declared_key": true
+      },
+      {
+        "pair": "tooling-finance-meeting",
+        "ends": [
+          {
+            "id": "jyqr",
+            "camera": "pull out",
+            "composed_prompt_sha256": "dc1cddc123b343c2d70177052a857ccb83dcf9eb247662dd0269bcdf2bee92cf",
+            "base_key": "981dbcaa421bb1a7",
+            "stage_key": "9a34a2b9fdf6933b",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          },
+          {
+            "id": "t39s",
+            "camera": "pull out",
+            "composed_prompt_sha256": "dc1cddc123b343c2d70177052a857ccb83dcf9eb247662dd0269bcdf2bee92cf",
+            "base_key": "981dbcaa421bb1a7",
+            "stage_key": "9a34a2b9fdf6933b",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          }
+        ],
+        "equal_keys": true,
+        "full_rehearsal_equal_r3": true,
+        "camera_equal_r3": true,
+        "matches_declared_key": true
+      }
+    ],
+    "no_provider_calls": true
+  },
+  "written_visual_checks": {
+    "status": "PASS_WRITTEN_ONLY",
+    "all_prompts_read_in_full": true,
+    "anonymous_English_conceptual_people_and_objects": true,
+    "brand_or_real_person_names_or_logos_or_readable_text_requested": false,
+    "recognizable_living_person_likeness_requested": false,
+    "unseen_specific_repairs_requested": false,
+    "rented_half_factory_not_named_or_equated_with_BumpersFarm": true,
+    "powder_before_vacuum_and_no_liquid_puddle": true,
+    "model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "characters": [],
+    "source_photos_reopened": [
+      "PHOTO_FAX",
+      "PHOTO_SHROUD",
+      "PHOTO_DRAWING",
+      "PHOTO_PRODUCTION"
+    ],
+    "OU_original_page4_visually_read": true,
+    "no_actual_generated_image_acceptance": true
+  },
+  "same_image_written_handoff": {
+    "complete_requests_and_camera_deep_equal_R3": true,
+    "both_ends_full_native_stage_keys_independently_recomputed_equal": true,
+    "payoff_first_takes1": true,
+    "readonly_live_selected_judge_cache_and_byte_SHA_guard": true,
+    "cache_miss_or_request_or_file_mismatch_stops_before_teaser": true,
+    "both_contexts_require_ordinary_judge": true,
+    "post_crop_final_selected_file_SHA_and_assembly_input_equality_required": true,
+    "actual_same_asset_verified": false,
+    "executed": false
+  },
+  "normal_lint": {
+    "argv": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/dyson-audit/author-r4/runtime",
+      "lint",
+      "--slug",
+      "story-dyson-japan-first-20261021-remake-20261025",
+      "--json"
+    ],
+    "exit_code": 0,
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 15.6 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 15.615555555555554,
+        "lines": 140,
+        "spoken_units": 3316,
+        "billable_characters": 11255,
+        "chapters": [
+          "00:00 四個人有圖，卻找不到人組裝",
+          "00:49 布濾堵住，家裡的空袋也吸不動",
+          "04:24 授權有人接，工作還沒結束",
+          "06:51 馬達改了，入口也要動手",
+          "08:55 圖紙跨海，商品走到日本市場",
+          "10:56 圖面之外，還缺資金和組裝的人",
+          "12:49 讓買手看見，也要讓顧客看懂"
+        ]
+      }
+    },
+    "prior_usage_error": "--workdir is not accepted for lint; initial invocation rejected exit 2 before running lint. Correct invocation above completed."
+  },
+  "duration_limit": {
+    "native_spoken_units": 3316,
+    "planning_only_4_to_5_seconds": [
+      663.2,
+      829
+    ],
+    "legacy_lint_estimate_minutes": 15.615555555555554,
+    "actual_audio_seconds": null,
+    "required_body_seconds": [
+      720,
+      840
+    ],
+    "body_includes_coldopen_and_voiced_CTA": true,
+    "added_branding_seconds_excluded": 26,
+    "actual_duration_PASS_or_FAIL_issued": false
+  },
+  "preservation": {
+    "independent_integrity_receipt_path": "/workspace/work/brand-story-20261025/dyson-audit/source-r4/integrity-checks.json",
+    "independent_integrity_receipt_sha256": "ff0969f03758e1dd456b2619ebf93e7ed1c01dc601b071f0506f0bd90a0d6290",
+    "hash_comparisons_not_unique_files": 1126,
+    "all_expected_hashes_passed": true,
+    "protected_manifest_files_checked_before_and_after": 395,
+    "original316_checked_through_37_archived_path_mappings": true,
+    "R3_original_archived_files": 51,
+    "R3_history_manifest_sha256": "676212addaef012f8fa3ff83e1e35839217631bed39465106f39e21fb061631e",
+    "original_research_files": 3,
+    "original_raw_index_files": 203,
+    "related_current_and_FETCH_HEAD_snapshots": 32,
+    "same_episode_immutable_dictionary_sequence": 1,
+    "dictionary_bytes_preserved_in_original_and_R4_copy": true,
+    "dictionary_rebuilt_or_revised": false,
+    "original_runtime_overwritten": false,
+    "HTML_context_note": [
+      {
+        "research_id": "N01",
+        "source": "DYSON_BIO",
+        "reason": "Interleaved site nodes separate extracted paragraphs; every selected nonempty line independently found in raw HTML."
+      }
+    ]
+  },
+  "remaining_limits": [
+    "No native narrative/blind review or freshnative2 payload was prepared/read/executed by this reviewer. Supplied chronology remains one actual R2 panel; R3 had no source/native approval.",
+    "SOURCE/WRITTEN VISUAL review does not establish actual narration audio, pronunciation, timed captions, generated images, same-file crop verification, finished video or owner approval.",
+    "Corporate/participant recollections and official auto-transcript support are not independent original contracts, loan files, test logs or factory payroll. No precise cyclone height, model total, aperture dimensions, motor model or undocumented repair is added.",
+    "Cyclon UK licence/Italy collection object precedes Japan.1985drawing,1986oral agreement/release and distinct museum dates/roles remain separate.15manufacturers is not15stores; current narration does not revive the label.",
+    "SENRA1992GBP versus Fortune1993USD not merged; half-factory location/date unknown; advertising/order transaction is undated and not identified as the first mail-order buyer.",
+    "Exact new US25 account, protected admission, full all-in quote and owner gates remain separate; no permission to spend is created."
+  ],
+  "native_facts_marker": {
+    "created": false,
+    "path": "verify-1.md",
+    "reason": "MF-R4-01 remains in frozen R4 input. No facts marker or native facts PASS is issued."
+  },
+  "native_facts_test_executed": false,
+  "new_generated_story_media": false,
+  "paid_calls": 0,
+  "provider_generation_calls": 0,
+  "public_source_HTTP_downloads_by_reviewer": 1,
+  "backend_mutations": 0,
+  "git_operations": 0,
+  "owner_approval_created": false,
+  "only_repository_file_written": "reviews/source-r4-independent.json",
+  "external_receipts_written_under": "/workspace/work/brand-story-20261025/dyson-audit/source-r4",
+  "rows": [
+    {
+      "id": "29pe",
+      "scene_id": "29pe",
+      "text": "你只靠四個工程人員，要把新吸塵器交出去，誰來組裝？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "77fa30add8c8bb867f05631a9bae4c4b14a117a01bd77bbac5fc779f7e55ddf8",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "sthq",
+      "scene_id": "sthq",
+      "text": "九〇年代初，戴森決定自己製造。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "A04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "31ded2f3774e2813cf115b813804edf0377e37b20dc5f6f1386c6c0547539f9c",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "xcms",
+      "scene_id": "xcms",
+      "text": "他回憶，自己和三名工程師，替全部零件畫圖，再去找承包商和模具商。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "19fcb8a739df02f7a6ac1569aeb9064d8a7771616f807e350dfefa1921af0412",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "57ap",
+      "scene_id": "57ap",
+      "text": "可是，組裝這一步，他們沒找到人承接。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "0320c4842813e78e4f102a4621ee4786d6b5b355f2412f915958e90d515ef0a9",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "qggg",
+      "scene_id": "qggg",
+      "text": "我想知道，山本手上那個孔罩，之前又是為哪個入口的麻煩做的？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e4f676cd7729910ad6d33214941efb5ce20833b46fbba4679ad8405103edcf28",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "t39s",
+      "scene_id": "t39s",
+      "text": "而量產模具的錢，又得由誰去向銀行爭取？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "89ded371521ed14fcd7aadcf230e156f7fc3ad293216b6757c9ad8f4a92642a8",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "suy4",
+      "scene_id": "suy4",
+      "text": "今天跟著戴森，走完一台無袋原型到英國初期接貨的路。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01",
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "dea487bd4d6f822ba638d398ec85128f642a5f26b4b7c9ab5e02fc6446003ffc",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "728h",
+      "scene_id": "728h",
+      "text": "不用集塵袋的想法，中間還要換過多少人的手，才能做成能賣的機器？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01",
+        "N07",
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2c19d2b2046650fffc50da933376ba4816b5aea144c965111fa96a25a6236188",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "9m2c",
+      "scene_id": "9m2c",
+      "text": "開場那台無袋吸塵器的原理，是從戴森處理的一個工廠故障接過來的。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01",
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8436d6b1e3a29e2741dbb3e5c4e4f7872efab4a27c1d2b76a3181bb7d2c0f224",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "4paj",
+      "scene_id": "4paj",
+      "text": "公司官網把時間記在一九七八年：他在工廠替金屬架噴粉。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "fd50baaa16cc7d5a517cf5585d967f0c3ba3e56e30c2550291851207485c156d",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "ti4n",
+      "scene_id": "ti4n",
+      "text": "很多粉末沒有留在架子上，抽走餘粉時，又把後面的一大片布濾堵住。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9578b93fd338deeea6d37630278428a98ae9e27d24acd6115139996a99f42236",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "8rgv",
+      "scene_id": "8rgv",
+      "text": "換成你要讓生產繼續，我也會問：要把粉末收住，該換哪一種裝置？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "54ea46bcd282f6fc6be1287cdf8c30da55b2cf1996aa8dcd09202a4e0bc48b50",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "edty",
+      "scene_id": "edty",
+      "text": "官網還記下，他去看過木材廠的大型氣旋，想把那種分離方式用回工廠。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d855fd90b671b7439719ce3dc087ce500422fd779af6e4a594fab148a13f3214",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "zmbc",
+      "scene_id": "zmbc",
+      "text": "戴森回憶，問到工業氣旋的報價，他們負擔不起，於是花幾個週末自行製作。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "56f173ebef33e1da7930c3a9a4abacfb759cceff914b7cce9a29a374ecfb5736",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "nzbe",
+      "scene_id": "nzbe",
+      "text": "他說，做出的裝置很大，頂端構造要穿出屋頂，還得在廠房開孔。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "3ca3aab467c4fc619c0c84bda7e7f53111a2067f086a687515e282ec44c0b31e",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "acb6",
+      "scene_id": "acb6",
+      "text": "這一次，粉末先從空氣裡分離，不再全靠那片布接住。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "12db899e739975f3af60afe50d5d11843cfec90650f79ef90b1f6499ae18e823",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "2b6c",
+      "scene_id": "2b6c",
+      "text": "我在意的不是它有多高，而是堵住的地方，讓人換了一種收集辦法。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N01",
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "c1595a9758cf1a6180f0a533be07f76ba827dde9e96cedc6cb6bb63edde8697f",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "kdbc",
+      "scene_id": "kdbc",
+      "text": "那麼，這個辦法，能不能縮進你家裡那台吸塵器？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "5577399f80d3c42e30acb6cd438537987c3e9b3700c7087bc2f469d58f5e8d27",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "xmha",
+      "scene_id": "xmha",
+      "text": "戴森說，有一次在家清掃，機器顯示集塵袋堵了，他卻找不到替換袋。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "960829ccd2abddf23226311be84c4344b04667cc18ce98e9c860fccebff06775",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "364y",
+      "scene_id": "364y",
+      "text": "於是他把袋子倒空，用膠帶封回去，再裝上試。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8918ff52d9219b44174c7a887f70a17d85341c27d433322327def443073aacc5",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "qdgd",
+      "scene_id": "qdgd",
+      "text": "袋子裡沒東西了，機器還是吸不動。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "487b46a8149f75013f05e5a63d5742ee3b996d8351d073f889bb6a70cf61e2f2",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "dkhw",
+      "scene_id": "dkhw",
+      "text": "你大概也會懷疑，問題真在袋子裝滿嗎？我想再問，倒空後，袋裡還留著什麼？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d3902d7a2ec89f67c2a996fc3f23a9dcac2cc44a4cfc4ca6a5a873b3e0a59d45",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "uj7b",
+      "scene_id": "uj7b",
+      "text": "他重新打開袋子，看見內壁覆著一層細灰。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "c2bb6cb4280cf97cd2d567087d1db3dbaacfaa70c1be871e59b38be3bf3b5b7b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "3v4y",
+      "scene_id": "3v4y",
+      "text": "依他的解釋，空氣必須穿過袋上的氣孔，細灰卻把這些出口堵住了。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "480fa0665845d844068114a1496aafba321016b6e443197986a16bb12dd89be1",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "9896",
+      "scene_id": "9896",
+      "text": "他買了新袋換上，吸力短暫恢復，之後又往下掉。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "7bb6a3cc1f19c7707ef0a64bcca6c43a08880cd4272041fb87691fa3dda8dd6b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "btuc",
+      "scene_id": "btuc",
+      "text": "工廠曾換掉布濾，他在家要先做出什麼，才能試同一個想法？",
+      "source_verdict": "MUST_FIX",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "08468afbcfdea30ba38163856b4f8e291ae8461fc8480a94b2a3c4b7be17f0ea",
+      "note": "MF-R4-01: historical premise says factory cloth filter was replaced; source establishes cyclone separation, not physical removal."
+    },
+    {
+      "id": "y5py",
+      "scene_id": "y5py",
+      "text": "他用紙板和膠帶做了小氣旋，再用一段軟管，接到原來的直立式吸塵器上。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1a639f00839a65c32f56c63a014fd896fcd58ab02aa6a6bf0b2a434bb1ae8fdb",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "pd37",
+      "scene_id": "pd37",
+      "text": "原本放袋子的地方，換成這個小模型，他推著機器試用。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "bad6e2cc0559caa11f6efe83741ef3936764b412b99b8c8ef122dfdb32819b11",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "3yk9",
+      "scene_id": "3yk9",
+      "text": "這只是把分離方式接上舊機驗證，離能賣的完整產品，還有別的工作。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "6720c7d0619858ead3beddfd67ac475c165befc6eb9e0ad982fd52dbd04aec5b",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "c8e9",
+      "scene_id": "c8e9",
+      "text": "要繼續改形狀，沒錢買大型機床，模型又怎麼做？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N03"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d897d31a81bac335f0653d3b4aa2d1db78f18dd307aced182ef83ad61879ef62",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "e74a",
+      "scene_id": "e74a",
+      "text": "戴森回憶，自己在家工作，買不起車床等設備，就用小工具動手。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N03"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "987188ed529d5a717405b75863aed4d6384f6f4d43b310a2723a4f80d29900f0",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "xpig",
+      "scene_id": "xpig",
+      "text": "他從舊物店找到金屬滾輪，把材料滾成倒錐形，再焊接起來。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N03"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2be0eaba29e2f021bbff90c001b96a34672b8e2fbdd248167d37099e5ba6a3bf",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "mcug",
+      "scene_id": "mcug",
+      "text": "工具讓他能把下一個形狀做成實物，拿去試，然後再決定怎麼改。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N03"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "abb32be9930af31e51cbb937fe4cf59320cdab9dddcfeedcb3893fd842728c70",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "5xeb",
+      "scene_id": "5xeb",
+      "text": "但如果一次改了好幾處，你怎麼知道，哪一項真的有用？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "0fed653783eb586007d599c64fcdfb91c4d0e3387798793efd681b52d2a94126",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "6nip",
+      "scene_id": "6nip",
+      "text": "他在另一段訪談裡解釋，試作時一次只改一項，等著看差異。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9881fb5c592373bd977fa238e925c9deb113126bf6cd992d9136a994a2e023d3",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "3b3d",
+      "scene_id": "3b3d",
+      "text": "可能變好，也可能變差；看懂這次發生什麼，才決定下一個模型要怎麼做。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1955d6b8b1ef698547c9a548203685e62c0267f98818673a829d54bf72f806a0",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "59xc",
+      "scene_id": "59xc",
+      "text": "開放大學的訪談研究，也記錄了他製作、測試黃銅、鋁與透明塑料模型。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1480ad83e22f8da40644af532e091c249d8b5a6b136d7fe39ff0ee74969e2663",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "5uh4",
+      "scene_id": "5uh4",
+      "text": "我覺得關鍵在這裡：模型不是擺在架上算數，而是拿來排除一個不知道的地方。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N04"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "54d3b22a21a4ee0943a4d5904a4a50f8eca903d42c8bd2db1e3f4ffe3dd43f57",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "azg7",
+      "scene_id": "azg7",
+      "text": "能做出工作樣機以後，誰來付模具的錢、把它批量做出來？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N05"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "63d307d2939bd7ac2950ebe456fc3e63d9b58ec54fafc0125c5b2a75ce8174de",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "ysz4",
+      "scene_id": "ysz4",
+      "text": "戴森回憶，他和合作夥伴原先選擇，把工作放在發明、工程與樣機上。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N05"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9c14abaf2390671ac92c161280d24c3a30ceff199f78cc9c4b80acd3478d1dc5",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "bjhr",
+      "scene_id": "bjhr",
+      "text": "兩人都做過製造，這次希望由取得授權的廠商接下生產。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N05"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2287a74b045d94a1d3b7f0478aa0071db2d67fe36584646eae0e6738d83a5893",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "2xsw",
+      "scene_id": "2xsw",
+      "text": "那份訪談研究也指出，這種吸塵器的模具支出，是商品化要跨過的一關。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N05"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "a5115ad83ec035b9dc3798178ae4737dfcb5a12f87d2e4066d307865f6bf9dcf",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "pk83",
+      "scene_id": "pk83",
+      "text": "真的有人接下授權，把後面的生產做出來了嗎？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D01",
+        "N05"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "537b3128ed6a101fc2ec9d9a0f552f4208d2d0657d5aa11afcd5795d3b193ba9",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "32ja",
+      "scene_id": "32ja",
+      "text": "後來，英國一家取得授權的廠商，確實做出Cyclon。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "142330fe550401de21bf472fcabcad539f776e3808f846aa220d67ff7a4fef72",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "shcn",
+      "scene_id": "shcn",
+      "text": "戴森把生產列在一九八三、八四年，並說一共只做五百五十台，商業上沒有成功。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "f07cc54b25cf3b2e7b4baa8f32a8270158d58bc504d30fdf537261263783edc5",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "xguj",
+      "scene_id": "xguj",
+      "text": "科學博物館群所藏的一台，標明在義大利製造，為英國的授權商生產。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "ca87abf29769fb15865776e9417a767fc9d5eeca5506963a74e7916abed223c6",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "jm77",
+      "scene_id": "jm77",
+      "text": "日本之前已經有商品；Apex這次，又是怎麼找到戴森的？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D01",
+        "D02",
+        "D07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "7b873a8f76a973f217c3c61452c5abc54f0b1e72fba9ff4c4a6b20fc65c98041",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "kget",
+      "scene_id": "kget",
+      "text": "在這段時期，日本Apex社長看見一本設計書上的照片，便聯絡戴森。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2ad528f434ec213d3655c342c01534f67f4e696fe1445b0abfb95384992de44b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "ucyp",
+      "scene_id": "ucyp",
+      "text": "山本秀夫在後來的贊助訪談裡說，那是美國一九八四年出版的書。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "bf03f2732480db995d93650dde1303426e8f3e334dd6d8ec96829d7df58ba072",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "pd7s",
+      "scene_id": "pd7s",
+      "text": "戴森帶著一台樣品來到日本，社長原想進口成品，拿到的卻尚未完成。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1f126fd510d33dafd60daee5d763fb3977e94f6fd5db43eb818757d8fac08204",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "uih5",
+      "scene_id": "uih5",
+      "text": "換成你要進貨，我想你也會問：現在接的是產品，還是一筆開發工作？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "41711353e8d2aef1f2e166821cc87bb35099f2bca893af8945f459bd2bc58d82",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "hytw",
+      "scene_id": "hytw",
+      "text": "在山本的敘述裡，談判改成在日本重新製作，再由戴森交出當地銷售權。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "dd24e1faf9511a966c533ed1eeea8f8f11a0f4e95aaa3b1c5a946e803805b056",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "upnx",
+      "scene_id": "upnx",
+      "text": "山本說，Apex本業是進口文具，沒有自家的工程師和工廠。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2438e14da63b40d493109d70d400f0ac8a309d5b560f31e4c1c3fa3538ca1f11",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "bnk8",
+      "scene_id": "bnk8",
+      "text": "社長負責設法找工廠，開發工作，則交給剛轉職的山本。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "58d38d7a8d15758722ed19c9ec1e299fe69ab3c37306773de9431fadf0b263b6",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "iund",
+      "scene_id": "iund",
+      "text": "山本自己的工作室履歷，把加入Apex列在一九八五年，參與英國團隊的共同開發。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "7afab488d18de379a1c7dc2f6240da25e8e13b595552b18aff7baf6522e9ca43",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "6aj4",
+      "scene_id": "6aj4",
+      "text": "工廠找到了，現場就有人做過這種吸塵器嗎？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "A01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "5429da4daec098bea52c049b6a02d3134f388a7df45af23a876582134e60c93c",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "decj",
+      "scene_id": "decj",
+      "text": "依山本回憶，承製者原本做精密機械，並不專門做吸塵器。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "A01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e64030349a4f1f704cd4630b175e9ef400186fbb0e6e83ddbc059a5f20dc563b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "tbv9",
+      "scene_id": "tbv9",
+      "text": "他自己以前，也沒有設計吸塵器的經驗。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "A01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "959b80e22b5b945223f3a0ce707d6ace6c9ff46febc9f5b78e931f086b81e6d4",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "3tsc",
+      "scene_id": "3tsc",
+      "text": "我覺得，接下來的難處是讓這些人的手接上，不是把樣品交出去就等交貨。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "A01"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "b145583d65a108ea54194e99386e107a0e6440b8c2ba8d704611825fe94701d4",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "u434",
+      "scene_id": "u434",
+      "text": "你如果想直接沿用原設計，哪個規格差異會先讓人停下來？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "048bf534e0527d6efdbc6f7caeb8fc4961b4fa47c9032103bd91b41bd1fd2012",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "xjwd",
+      "scene_id": "xjwd",
+      "text": "山本說，英國和日本的電壓不同，他們得重新找馬達。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "626e1a1b3a9a1822a92264e4958580c012a733b5c9a12480e49f5a9e2b824064",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "gnbh",
+      "scene_id": "gnbh",
+      "text": "要找一百伏特、輸出相近的馬達，結果尺寸比原先大。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "28c7c95557c1589aa95530580cf7a4dcb86d295386365378191470f2d028463e",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "x6bp",
+      "scene_id": "x6bp",
+      "text": "為了把它裝進去，外殼配置也必須重新檢視。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "690122cab2ade6292aa42bc69ff24ae2cb478df17680dc52cb26398adda9ca18",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "5jn4",
+      "scene_id": "5jn4",
+      "text": "如果我是接案的人，會先問：這樣重做，多久才有第一台能試的機器？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D10",
+        "D11"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8bb89556e4c944139ddc120274510fd243fb8a8e64582840d7ade8a3660e0954",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "hq3w",
+      "scene_id": "hq3w",
+      "text": "依山本多年後的粗略估計，第一台日本試作品，大約花了半年。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D11"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "ca78371c54ece24db2124b6d6050d15d22d8575a716724700d944385a1611e05",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "4jy3",
+      "scene_id": "4jy3",
+      "text": "可是，裝得起來，放到地毯上推，又會發生什麼事？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "5e11b4334da5271079eaa04fa42774bc33fff4cef47f2b4674ef5916886b44fe",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "dzxx",
+      "scene_id": "dzxx",
+      "text": "他回憶，那個馬達很重。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "974c07d03ef8881823271e88ad03f06fa3320a7309464cd03ed8a61deafa0387",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "w5x9",
+      "scene_id": "w5x9",
+      "text": "機器會吸住地毯，難以前進。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "a5ce152fc8d0334a0ff2668403dadd139b21356082c3114d903507926f426ee2",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "dh5b",
+      "scene_id": "dh5b",
+      "text": "硬往前推，還曾把輪子推裂。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "40477c4a4d9fa529759bcb66a86262feeeef7e42f46e1a80244a7f57ec40df4a",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "rs85",
+      "scene_id": "rs85",
+      "text": "你大概想問，除了移動，試作還出了哪些狀況？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1d94c335a87a098daa445574b423a1c370103d775a07250138b0646377a46360",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "fphq",
+      "scene_id": "fphq",
+      "text": "他也提到雜物堵塞、馬達過熱，甚至使外殼熔損的狀況。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D12"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8c965ec9c77319d0ec57e8fa3eebda385232bfdbe35cb2c0553143106edd0c3b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "nqdc",
+      "scene_id": "nqdc",
+      "text": "他估計，第一台試作之後，另有約一年半，都在處理陸續出現的問題。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D11"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1fc9b57e4d308ce237a61bd4b55e37ecd42bcf921dfc1ff6c578b31dacd7c0cd",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "bteg",
+      "scene_id": "bteg",
+      "text": "山本還指出槽內一個入口，那裡有他參與設計的部件。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "bbbc59e14008477d235b833123b3310bb4645d4c3e326ad9072689b710f4bf2d",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "4zh9",
+      "scene_id": "4zh9",
+      "text": "這個入口，是把外圍的氣流帶往哪裡？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "c4983422465b3977e98d78c0de5673b418d8ff5066556ed8d4c2b2d576f5461c",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "sby4",
+      "scene_id": "sby4",
+      "text": "他描述的路徑，是氣流沿著槽外圍轉，再進到內側的錐體。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "724f0bdfbd83eb22f835024f0bd08f6efc7ac6a1e62382b067cd5f00d1cb056b",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "88z5",
+      "scene_id": "88z5",
+      "text": "開場那個孔罩，山本說，是加在氣流進入錐體的入口，避免雜物堵在那裡。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e4f676cd7729910ad6d33214941efb5ce20833b46fbba4679ad8405103edcf28",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "mdxt",
+      "scene_id": "mdxt",
+      "text": "要讓雜物繼續在外圍轉動，空氣則經過入口往內走。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "c8c42fc5e2eb0d3fc58d088f39d09589514626f70afb23c7f9ba57d0ce295d11",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "jvsi",
+      "scene_id": "jvsi",
+      "text": "加了這個部件，接著要調整的是什麼？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e0f233acbd667b8949f88a3515d3493e007538c6cbe7da7f6f29c44758c1c7f0",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "n6tt",
+      "scene_id": "n6tt",
+      "text": "山本說，他們試驗不同大小、不同形狀的孔，靠這些實驗解決那個入口的堵塞問題。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D14"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8daf93f62f95f724902d9ff6240a1982adca5944707bfa4e919f7c01f14dc938",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "8fq7",
+      "scene_id": "8fq7",
+      "text": "孔要改，另一端設計的人，也得知道日本這邊試到了哪裡。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D14",
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e3bd04a58e5bb3c567c7b1803ff2bba9901ab04304fd7b3d4d9aba538921ef1b",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "bgmb",
+      "scene_id": "bgmb",
+      "text": "戴森回英國時，這些設計要怎麼繼續接下去？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9d91dc92603eaa3c8688f0ceca0068feef402f84ae3c55487dc91fa264cc161b",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "qaxx",
+      "scene_id": "qaxx",
+      "text": "山本說，戴森人在英國時，他們就一再傳真往返。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "46d9a210d1d2f0e9152cde60393eed6edc65b33e818d9d1eea642d15ba3e96fc",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "rvd2",
+      "scene_id": "rvd2",
+      "text": "訪談展示的圖紙和傳真頁，還留下這些合作文件。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "19fcb8a739df02f7a6ac1569aeb9064d8a7771616f807e350dfefa1921af0412",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "a57z",
+      "scene_id": "a57z",
+      "text": "你改完這一端，另一端還得接著做；我看到的，是一份要反覆往返的工作。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "18156b3923f8e482e98868939e86c5eb406678a8034972a8daaa0f496356ca51",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "8b48",
+      "scene_id": "8b48",
+      "text": "圖面要完成，問題也要有人接手，約定裡由誰負責？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "A02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "f60b3cda76e8750349948bb7c2079e06c19582baa01473ebb2c8bc52f76e2e4a",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "65q8",
+      "scene_id": "65q8",
+      "text": "依山本回憶，戴森負有解決問題、完成圖面的責任。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "A02"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "10f6f89d673c19ada136d888215b4606845f9a2255a884dca11ce861571f4ae4",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "6v32",
+      "scene_id": "6v32",
+      "text": "除了傳真，他本人有沒有到日本一起做？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "79d95c78ed3c126527164a32927c05ceebe5b285d334b7503a5af5344c5441de",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "v4g4",
+      "scene_id": "v4g4",
+      "text": "山本說，為了走到能販售的階段，戴森曾數度來日本。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "cc394783b211bfa6ffba4c4b62d16d26a61dc26c59957b001857aebd457680ad",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "7q3f",
+      "scene_id": "7q3f",
+      "text": "每次停留，大約是一到兩週。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "54a831fa0cfb3ad055d8702e4de3a2c171594df49eeff8f743b7118555f91bcc",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "3qh9",
+      "scene_id": "3qh9",
+      "text": "兩人一起到工廠、畫圖，也一起做實驗。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D15"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "ce99ea27e60cd7a80897a11f2e355599c6630c5f3d789e72b4595ca91e44e8fb",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "34kb",
+      "scene_id": "34kb",
+      "text": "你想看他具體動手改什麼，一張官網照片，留下了哪個工作？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D13"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d8549cf260ff9e79268bc9e30d7e5776be572290b425b597210e5e09dc0377f2",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "xw4x",
+      "scene_id": "xw4x",
+      "text": "圖說記為一九八五年東京西麻布，正在重設後來G-Force的吸頭。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D13"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "5cdce1e47c044c6c7b967a1ee79272f528eac1e3787d7526e5141a603e07b486",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "swdr",
+      "scene_id": "swdr",
+      "text": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D16",
+        "D17"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "21133683c87bead5e1197deca3a8f075714a507ac7046eb375c31cbe0ac8953d",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "yd8e",
+      "scene_id": "yd8e",
+      "text": "這和前一年的改圖，是不同記錄，不能併成一個精確簽約日。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D13",
+        "D16"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9ccc6ed6f965dd850321efc31f284812d35ca6d014b10af7026a497a88b8b9ae",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "p8mt",
+      "scene_id": "p8mt",
+      "text": "山本訪談把日本G-Force的發售，也記在一九八六年。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D16"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "b48dcb8c760c6ccb494cff0aa9bc11d0f879f3936ed26b70a56d6326c839ff10",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "mgmw",
+      "scene_id": "mgmw",
+      "text": "你會以為能上架就會大賣嗎？我想問，這回究竟是多大一門生意？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D17"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e569b155c0b9bf2b8fabaef448818e3f1b660790bdc58b0879a2b491efe9e7aa",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "inii",
+      "scene_id": "inii",
+      "text": "戴森在二〇一七年的口述裡，稱它是小眾商品，每台約二十五萬日圓。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D17"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "07028ac899c190481f71aba531d8c17d76205ad824c33ead0e5bf5b195bfae3e",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "mrr9",
+      "scene_id": "mrr9",
+      "text": "他說，Apex賣這台機器，沒有取得很大的商業成功。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D17"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "1c1168ca7020b8d9090d0b9c286287d199d6da7fefd4a10c672fe41825cc1dbb",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "cx76",
+      "scene_id": "cx76",
+      "text": "但授權合作，確實開始替他帶來收入。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D17"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "19fcb8a739df02f7a6ac1569aeb9064d8a7771616f807e350dfefa1921af0412",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "92cn",
+      "scene_id": "92cn",
+      "text": "要走到開場那批零件圖，還差自家製造需要的資金和場地。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "A04",
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2a3be451c4006074795beaf2b499c3b7cb44624a160d7555cca028154817c134",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "uzwn",
+      "scene_id": "uzwn",
+      "text": "收入進來了，量產模具的錢，就一定借得到嗎？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "291f640b8610dddcdd06704d2643da614381263cd827d6da7b52b46efaef8416",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "jyqr",
+      "scene_id": "jyqr",
+      "text": "開場問的模具款，戴森回憶，一位到企業訪問的銀行人員，替他爭取貸款。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "89ded371521ed14fcd7aadcf230e156f7fc3ad293216b6757c9ad8f4a92642a8",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "4e3p",
+      "scene_id": "4e3p",
+      "text": "他說，對方的請求先被銀行拒絕，又去找銀行內部的申訴角色，爭取批准。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "150704160f8f4c414bb9aa204b61799deb3194547e2f59650b6b2566d20d47ca",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "ta4q",
+      "scene_id": "ta4q",
+      "text": "他自己拿房屋作擔保，太太也得在相關表格上簽名。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "f8b17ebc66da55a3780e532edb9cc8366c3aa6bdda798f16790549c5051274f5",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "6w42",
+      "scene_id": "6w42",
+      "text": "如果換成你，要押上住的房子，我會先看清楚，哪一筆風險落在自己身上。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N06"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "530fb9a32b06514c6c3910e8b4adb563dd6cb48d1e4f45ed5ba134de69afecbe",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "7vni",
+      "scene_id": "7vni",
+      "text": "錢能買模具，開場卻還缺組裝的人；這件事，要先找到哪一個落腳處？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "2f6db97df0b9417bdaf4f1a9fdb552fd3f3c50a2192f83a5a8fdd74ce3bcc3c2",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "3kk2",
+      "scene_id": "3kk2",
+      "text": "開場那四個人，從成型供應商那裡找到一個機會：對方的工廠，有半邊閒著。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "cd2552e34ac1c314f22a4a8a695c22d411cd8e37629a4c537f6295b48e43574c",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "9qqh",
+      "scene_id": "9qqh",
+      "text": "他提出把閒置的半邊租下來，用來組裝，就不必先買一整座廠房。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9cb34afb711c23df7d60d86900af56e3eee1f2ad5f3e278506fe36735d614c5f",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "z8cf",
+      "scene_id": "z8cf",
+      "text": "但模具仍得自己投資，租到空間，沒有把這筆支出一起省掉。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "805452424c2b10901469bb6d11e916bb2b2e9d0eb7b898e76a942570e6c616b1",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "2isp",
+      "scene_id": "2isp",
+      "text": "那麼，空間有了，誰安排組裝線，誰實際上線做？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "265c7603107da1d047a07373b84b7df8b6f0d111d62cb9cb81d1d6933c6a9ce3",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "g54y",
+      "scene_id": "g54y",
+      "text": "他回憶，最初沒有另外設置生產經理和品管專員，只有那個工程團隊。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e0bc4fbebd42e0a69d5949822abd97d44a531d75711e8223c1b11336cd6ceaea",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "mdi5",
+      "scene_id": "mdi5",
+      "text": "開場問的組裝，最後還得另外聘線長，再聘真正上線組裝的工人。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N07"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "501c5e07c12e2df7c9cb31b090cf699f17a1cfc5921affa60300b8134a06d90f",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "iv83",
+      "scene_id": "iv83",
+      "text": "公司另有一張標作一九九三年的產線照，留下的是哪個現場？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N07",
+        "D20"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "6ecaa09836ee9bbaba398cee486e64b10f753d0259980f4e9139813e7c120824",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "i6fq",
+      "scene_id": "i6fq",
+      "text": "那張照片的地點，是英國奇彭納姆的邦帕斯農場。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D20"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "4077590e557ad4d7bccb15969bb885e5b02768694b7c7bd04ee16306fd6ad759",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "x8ph",
+      "scene_id": "x8ph",
+      "text": "多台機器排在線上，有人在工作，旁邊也有紙箱。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D20"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "9ab3ad46c436722e31b446a6682242c46362811590aee4bf1d36fa16004dd342",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "dahx",
+      "scene_id": "dahx",
+      "text": "租下的半廠在哪裡，那段訪談沒有交代，不能把兩份記錄當成同一間廠房。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N07",
+        "D20"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "19fdf5f217ca57f7e6d8260005d98eff4f2e5055e361f35f9f0874199fb49dd0",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "2wtj",
+      "scene_id": "2wtj",
+      "text": "可是，有了能交的機器，你就一定找得到店家接貨嗎？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N08",
+        "D22"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "13b91e01b45bcab734c6f33de211fceebab64a4597bdefa8b943faea67d01fd4",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "zi48",
+      "scene_id": "zi48",
+      "text": "戴森記得，面對一名郵購目錄買手時，對方先懷疑配套的乾粉地毯清潔法。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d2cdd9714b3fde2660796ee31247d59cd420672ae606a7dbdc0864d8cd311b44",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "eamp",
+      "scene_id": "eamp",
+      "text": "他去加油站買黑醋栗飲料，回來倒在地毯上，再撒上乾洗粉。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "fec265a3526ee0d58e81c98aae02882e0249e14cca78268124d44bd8f8c75325",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "cz2v",
+      "scene_id": "cz2v",
+      "text": "然後才用機器吸除。依他的回憶，這場示範成功了。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "19a7459a72ca2694e29f5ef2a639c8573a495e2fd573b5602505a535acadab6f",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "hp4p",
+      "scene_id": "hp4p",
+      "text": "要看清楚，他示範的是先用配套乾洗粉，不是宣稱機器能直接濕吸飲料。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "7acceb1dfa8efba4fb9f942101f24b04e86ca3276b7ca9d71fc4f582792ea7ab",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "pn7g",
+      "scene_id": "pn7g",
+      "text": "可買手看完，為什麼仍然沒有立刻點頭？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "55ae2b8fb9291d8bf0e96f0432df707466039d7049718aaa4caae08ac0b8daba",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "2566",
+      "scene_id": "2566",
+      "text": "他還得面對另一個疑問：目錄裡已有知名品牌，為什麼要換成這台陌生產品？",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "77acdf9d8dcdcfc9e377940f0c308a6b6f29411cf27419120901379d33c13747",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "b4dg",
+      "scene_id": "b4dg",
+      "text": "他回憶，買手最後答應先試一試，成了第一家備貨的郵購目錄。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "3e434f3b67a7eec8053de891db935fa9f319cfed63d21381963ebbec2ae3dcca",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "3qra",
+      "scene_id": "3qra",
+      "text": "換成你要騰出目錄的位置，我想你也不會只問能不能吸，還會問能不能賣。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N08"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "845c1f6764dbd2d35a18271c1d01f8288aa8f4bd0c2b6a587fa6f321fd832679",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "f7dw",
+      "scene_id": "f7dw",
+      "text": "在另一段口述裡，戴森記下，後來又有第二家郵購目錄，再接到約翰路易斯百貨。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N08",
+        "D18"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "654c509f30067a540ac6a3121ce71efbce54fdbc26145e4ad41f19deb5bfebc5",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "cm6p",
+      "scene_id": "cm6p",
+      "text": "走進店面以後，使用者能看見的灰塵，店家又願不願意展示？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "D22"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "8fe71fce29fa780f7dcc8cbc893d5a8b95b67f2a3e01032304e60f8233b00d89",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "jtzs",
+      "scene_id": "jtzs",
+      "text": "英國智慧財產局的一份決定書，記下他說，不少潛在零售商不喜歡透明集塵筒。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D22"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "4e19fc176e9baba13ec13344761a111eed4790c1826448b293de436978e14e89",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "kiud",
+      "scene_id": "kiud",
+      "text": "但他認為，顧客能看見灰塵的位置、理解運作，也能看見清掃的效果。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D22"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "cd210509f3e749b7cf34a657da8a0e6d5245e5624e9a11ccdc420060300513c4",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "pwqd",
+      "scene_id": "pwqd",
+      "text": "依這份證詞，他仍選擇保留透明設計。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "D22"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "e66a1fc4e59cf431185b2c0c9c0e099a4b2ca64eed30200204c2b1e62e1ba7c7",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "vmt8",
+      "scene_id": "vmt8",
+      "text": "我想，買手聽過一次示範，店裡的你卻未必聽過；誰來把差別說清楚？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "b38d3bec5b5caaef870a43cce92b14ea7aa0498fe8ec04876eaa0a5389a919f8",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "6m9s",
+      "scene_id": "6m9s",
+      "text": "戴森回憶，他得爭取零售商同意，在機器旁擺上技術和差異的說明資料。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "ba5d91149a26370e54d8253202c8e81837e1402a5c6a20bc15a3fcf023663414",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "ng27",
+      "scene_id": "ng27",
+      "text": "他想讓買家不只比較折扣和價格，也看性能、耐用和使用方式。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "d976bec622f7ad93166d56af454f422b4ce3b9b41b870f61a296d30cda2f5c83",
+      "note": "Checked current narration against original source context and role. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "atmg",
+      "scene_id": "atmg",
+      "text": "但如果通路還要求廣告支持，手邊又沒有現成預算，條件怎麼談？",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "c98eed0ad20aae4883eb0da95b061cffdf45c171b54bc5dd8524c8d754cc71bb",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "cvp5",
+      "scene_id": "cvp5",
+      "text": "談英國初期通路的另一段回憶裡，戴森說，曾有電器零售商要求廣告支持。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "31f04268b404e35f26c1d2c586a93f07189dcd1a63bf20b2d6be269da055eaef",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "hnrg",
+      "scene_id": "hnrg",
+      "text": "他當時沒錢做廣告，便提議按店家的訂購量，投入約定的電視廣告。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "37b0180d9d9903be63c12ccf693f1f436403b36238de49721e5dbc2e54a03530",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "r2i6",
+      "scene_id": "r2i6",
+      "text": "戴森說，雙方是按這個條件達成交易。",
+      "source_verdict": "SUPPORTED_WITH_SOURCE_ATTRIBUTION_AND_LIMITS",
+      "research_claim_ids": [
+        "N10"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "caa23df55875f0f385b87ddf8619202b43b93b73f6ff5ee5a26f0a2606983ebe",
+      "note": "Checked current narration against original source context and role."
+    },
+    {
+      "id": "6xye",
+      "scene_id": "dyr1outro",
+      "text": "我對開場問題的答案是：無袋原型解了一段堵塞，交到顧客手上，還得有人接完製造和接貨的工作。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [
+        "N02",
+        "D08",
+        "N07",
+        "N09"
+      ],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "705bd4da9e86d16a158282e2f09d5386d18e8de761423f27659e5153d76d0607",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim. Official auto transcript is not fully corrected; no certified exact original words/counts/dates or independently listened audio claimed."
+    },
+    {
+      "id": "sptz",
+      "scene_id": "dyr1outro",
+      "text": "如果換成你接案，哪一步沒完成，你就不敢把產品交出去？留言告訴我。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "705bd4da9e86d16a158282e2f09d5386d18e8de761423f27659e5153d76d0607",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    },
+    {
+      "id": "5qtc",
+      "scene_id": "dyr1outro",
+      "text": "想看日用品怎麼跨過這些實際難關，就訂閱品牌故事。",
+      "source_verdict": "EDITORIAL_SUPPORTED_IN_CONTEXT",
+      "research_claim_ids": [],
+      "written_visual_verdict": "PASS_CONCEPTUAL_ONLY",
+      "visual_prompt_sha256": "705bd4da9e86d16a158282e2f09d5386d18e8de761423f27659e5153d76d0607",
+      "note": "Question, reaction, connection or CTA read for factual premises; no additional unsupported historical claim."
+    }
+  ]
+}

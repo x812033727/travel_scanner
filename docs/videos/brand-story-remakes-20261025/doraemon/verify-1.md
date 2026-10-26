@@ -1,154 +1,150 @@
-# verify-1: Doraemon R4 independent SOURCE and written visual delta review
+# verify-1: Doraemon R6 independent SOURCE and written visual delta review
 
-SOURCE PASS for `story-adapt-doraemon-after-fujiko-remake-20261025`. Reviewer: codex-doraemon-r1-source-independent. 135真實原文列；不是native3、念法、實聲／實圖、owner或付費核准。
+SOURCE PASS for `story-adapt-doraemon-after-fujiko-remake-20261025`. Reviewer: codex-doraemon-r1-source-independent. 131真實原文列；不是native5、念法、實聲／實圖、owner或付費核准。
 
-R3完整SOURCE baseline：`history/r3/reviews/source-r3-independent.json` SHA `2b9750b0785022fbfd6dd50331b662b379da770f96bb84e2604e3f700bffb6a1`；歷史verify SHA `51fe48d3b0f367c733839b3088207916f764f3d14903df258f3debd4cd40483f`。R4唯一改句d1b082及一條loop說明已親核MW2019A:L32–33與相鄰段落。其餘134句、135個ID／順序、115 scene非lines欄位及全部23 loop端點逐值相同，依R3完整鏈繼承，不假稱重新研究整集。
+R5完整SOURCE baseline：`history/r5/reviews/source-r5-independent.json` SHA `103852547443871c2596988794f9651b1f5a226b65e8f692ae7de825b174a64f`；歷史verify SHA `5e805143e19d414ce8af55b4e4586309055d20645c677ca0bd560ea2f2fd2732`。R6只改a041材料限制與c02b1觀眾主詞，刪c042/c043；其他129句依全文、ID及過濾後順序逐值無變更繼承R5完整QA，沒有假稱全新研究整集。111存活scene非lines欄位與全部23loops逐值相同。
 
-R4 binding:
-- `video.json` SHA `c37e8afb0a389f13c2885db0f76f4b583862d9cca1fa0fdd0153e8fc7a80dbb8`
-- `script.md` SHA `f2fa5c4ed6c316be91d7837c7bd462c062a9e899713ebba4d5ed33a69db2ef23`
-- `narration-only.json` SHA `f0216f6feba9b9eb1fd2a4155ca63e533dad5daeb1a9e28af52e8369e844358e`
-- `claims.json` SHA `689cc00dd4b88979901e2ccca8e5a634a9ec27a98737c297bdb0f795de55bcdd`
+R6 binding:
+- `video.json` SHA `b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05`
+- `script.md` SHA `71679cc8284fbb97d176d69df18a4ce362e620c15bf0a59a7979f53f39c3e09f`
+- `narration-only.json` SHA `8740addc7a644f7a7287fc2b1a9ca0eb0f31d131494dabecb9b8dfd927b54874`
+- `claims.json` SHA `d73bd50ab1e0aa3bf1e7253b900f3a110b8cf1b78ab70ef5a2f1db9f2f027fe2`
 
-CONFIRMED指原歸屬與相鄰句脈絡內可成立；CHANGED是本輪已重核的改句；OUT OF SCOPE是問句、意見、推論或邀請，其事實前提仍核對來源。L為凍結擷取文字1-based行號；原件SHA及繼承鏈見`reviews/source-r4-independent.json`與R1–R3報告。
+CONFIRMED指原歸屬與相鄰句脈絡內成立；CHANGED是本輪核對的局部材料限制；OUT OF SCOPE是承諾、問句、意見、推論或邀請，其事實前提仍核對來源。L為凍結文字1-based行號；完整原件SHA、D03/D32範圍與繼承鏈見`reviews/source-r6-independent.json`及R1–R5報告。
 
 | id | 逐句原文 | scene | 來源與行號 | 取回狀態 | 判定 | 限制／說明 |
 | --- | --- | --- | --- | --- | --- | --- |
-| d1h011 | 作者離世三十年後，你還能看到新的哆啦Ａ夢；可是，只認「原作」兩個字， | dr1-h01-p1 | PROFILE:L8; PROFILE:L14; FILM2026:L47–49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h012 | 就可能看漏寫這一版故事的人。 | dr1-h01-p2 | PROFILE:L8; PROFILE:L14; FILM2026:L47–49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h021 | 在留下來的原稿前，助手むぎわらしんたろう要接續大長篇， | dr1-h02-p1 | FSTORY:L50 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h022 | 卻沒有直接在那張紙上落筆。 | dr1-h02-p1 | FSTORY:L50 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h031 | 我在這裡先停了一下：要繼續畫，為什麼反而不碰原稿？ | dr1-h03-p1 | FSTORY:L50 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1h041 | 後來，另一位導演帶著五、六本科學雜誌來開會；要讓熟悉的角色出發， | dr1-h04-p1 | MW2019A:L32 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h042 | 編劇先得面對月球上已經知道的事。 | dr1-h04-p1 | MW2019A:L32 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1h051 | 今天就沿著這份跨過三十年的哆啦Ａ夢工作，看看一張紙怎麼交到下一雙手。 | dr1-h05-p1 | PROFILE:L14; FILM2026:L49 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1h061 | 新故事到底是誰在寫，而一直留下來的原作署名，又承擔什麼工作？ | dr1-h06-p1 | ANIM2019:L42; ANIM2019:L41; FILM2026:L49 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a011 | むぎわら換了一張原稿紙，把先生的稿子轉寫過去，再接著工作。 | dr1-a01-p1 | FSTORY:L50; FSTORY:L51 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a012 | 照他在回憶書特設頁的署名留言，原來那份就這樣保留下來。 | dr1-a01-p2 | FSTORY:L50; FSTORY:L51 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a021 | 開場那支懸著的筆，讓我注意到一個很實際的選擇：你要完成眼前的作品， | dr1-a02-p1 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a022 | 也可以替原件留出一個位置。 | dr1-a02-p2 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a023 | 但接續到哪一回，能從這個動作判定嗎？ | dr1-a02-p2 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a031 | 這裡的先生，是本名藤本弘的藤子・Ｆ・不二雄。 | dr1-a03-p1 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a032 | 他在一九九六年九月二十三日過世。 | dr1-a03-p1 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a033 | むぎわら後來自述，自己從《大雄的發條都市冒險記》連載第三回起接手。 | dr1-a03-p2 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a041 | 「第三回起」是他回顧時說的接手範圍，不能替每一頁的線條簽名。 | dr1-a04-p1 | CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a051 | 那你在書店看到二〇一七年的《哆啦Ａ夢物語》，是不是又有另一個接手年份？ | dr1-a05-p1 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a061 | 二〇一七年八月出版的，是むぎわら寫的回憶漫畫，一百三十頁。 | dr1-a06-p1 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a062 | 出版社介紹它收錄信件、下繪等資料；那是回頭講述與展示材料的時間。 | dr1-a06-p2 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a06b1 | 同一個故事，為什麼又能在書目上看到二〇一六年？ | dr1-a06b-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a071 | 《發條都市冒險記》的電影在一九九七年三月公開，單行本在同年八月發售。 | dr1-a07-p1 | ANIM1997HIST:L4; BOOK17:L11; BOOK17:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a072 | 現今書目另有二〇一六年的電子配信日期。 | dr1-a07-p2 | ANIM1997HIST:L4; BOOK17:L11; BOOK17:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1a081 | 把這幾種日期分開，書架就好讀多了：作品上映、整理成書、換成電子版， | dr1-a08-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a082 | 各自可以發生在不同時間。 | dr1-a08-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a083 | 書變新，不會讓當年的創作時間跟著往後移。 | dr1-a08-p2 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a091 | 但你可能還在等真正的難題：舊紙留下來了，下一次遇到它上面沒有的新冒險， | dr1-a09-p1 | FSTORY:L51; ANIM2019:L42; ANIM2019:L41 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1a092 | 誰來決定角色往哪裡走？ | dr1-a09-p2 | FSTORY:L51; ANIM2019:L42; ANIM2019:L41 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
+| d1h011 | 作者離世三十年後，你還能看到新的哆啦Ａ夢；可是，只認「原作」兩個字， | dr1-h01-p1 | PROFILE:L8; PROFILE:L14; FILM2026:L47–49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h012 | 就可能看漏寫這一版故事的人。 | dr1-h01-p2 | PROFILE:L8; PROFILE:L14; FILM2026:L47–49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h021 | 在留下來的原稿前，助手むぎわらしんたろう要接續大長篇， | dr1-h02-p1 | FSTORY:L50 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h022 | 卻沒有直接在那張紙上落筆。 | dr1-h02-p1 | FSTORY:L50 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h031 | 我在這裡先停了一下：要繼續畫，為什麼反而不碰原稿？ | dr1-h03-p1 | FSTORY:L50 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1h041 | 後來，另一位導演帶著五、六本科學雜誌來開會；要讓熟悉的角色出發， | dr1-h04-p1 | MW2019A:L32 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h042 | 編劇先得面對月球上已經知道的事。 | dr1-h04-p1 | MW2019A:L32 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1h051 | 今天就沿著哆啦Ａ夢的創作工作，看看一張紙怎麼交到下一雙手。 | dr1-h05-p1 | PROFILE:L14; FILM2026:L49 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1h061 | 新故事到底是誰在寫，而一直留下來的原作署名，又承擔什麼工作？ | dr1-h06-p1 | ANIM2019:L42; ANIM2019:L41; FILM2026:L49 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a011 | むぎわら換了一張原稿紙，把先生的稿子轉寫過去，再接著工作。 | dr1-a01-p1 | FSTORY:L50; FSTORY:L51 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a012 | 照他在回憶書特設頁的署名留言，原來那份就這樣保留下來。 | dr1-a01-p2 | FSTORY:L50; FSTORY:L51 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a021 | 開場那支懸著的筆，讓我注意到一個很實際的選擇：你要完成眼前的作品， | dr1-a02-p1 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a022 | 也可以替原件留出一個位置。 | dr1-a02-p2 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a023 | 但接續到哪一回，能從這個動作判定嗎？ | dr1-a02-p2 | FSTORY:L50; FSTORY:L51 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a031 | 這裡的先生，是本名藤本弘的藤子・Ｆ・不二雄。 | dr1-a03-p1 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a032 | 他在一九九六年九月二十三日過世。 | dr1-a03-p1 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a033 | むぎわら後來自述，自己從《大雄的發條都市冒險記》連載第三回起接手。 | dr1-a03-p2 | PROFILE:L8; PROFILE:L14; CORO2019A_CACHE:L2 | 200；另含原站503搜尋快取 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a041 | 這次查到的是他的事後回憶，還不能憑它確定每一頁的作畫分工。 | dr1-a04-p1 | CORO2019A_CACHE:L2; CORO2019A_CACHE:L32; research-original.claims.json:D32 limits（本次材料範圍） | 503原站；搜尋快取，非HTML200 | CHANGED | 親核：只限定「這次」「憑它」的事後回憶及本次材料範圍；沒有宣稱世上不存在逐頁分工表。 |
+| d1a051 | 那你在書店看到二〇一七年的《哆啦Ａ夢物語》，是不是又有另一個接手年份？ | dr1-a05-p1 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a061 | 二〇一七年八月出版的，是むぎわら寫的回憶漫畫，一百三十頁。 | dr1-a06-p1 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a062 | 出版社介紹它收錄信件、下繪等資料；那是回頭講述與展示材料的時間。 | dr1-a06-p2 | BOOK2017COMIC:L10; BOOK2017COMIC:L16; BOOK2017NEWS:L8 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a06b1 | 同一個故事，為什麼又能在書目上看到二〇一六年？ | dr1-a06b-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a071 | 《發條都市冒險記》的電影在一九九七年三月公開，單行本在同年八月發售。 | dr1-a07-p1 | ANIM1997HIST:L4; BOOK17:L11; BOOK17:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a072 | 現今書目另有二〇一六年的電子配信日期。 | dr1-a07-p2 | ANIM1997HIST:L4; BOOK17:L11; BOOK17:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1a081 | 把這幾種日期分開，書架就好讀多了：作品上映、整理成書、換成電子版， | dr1-a08-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a082 | 各自可以發生在不同時間。 | dr1-a08-p1 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a083 | 書變新，不會讓當年的創作時間跟著往後移。 | dr1-a08-p2 | BOOK17:L11; BOOK17:L22 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a091 | 但你可能還在等真正的難題：舊紙留下來了，下一次遇到它上面沒有的新冒險， | dr1-a09-p1 | FSTORY:L51; ANIM2019:L42; ANIM2019:L41 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1a092 | 誰來決定角色往哪裡走？ | dr1-a09-p2 | FSTORY:L51; ANIM2019:L42; ANIM2019:L41 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
 | d1b011 | 替二〇一九年上映的《大雄的月球探測記》寫腳本時，辻村深月收到むぎわら的鼓勵。 | dr1-b01-p1 | ANIM2019:L42; ANIM2019:L41; FILM2019SCRIPT:L3; TSUJNEWS:L21; ANIM2019:L27 | 200 | CONFIRMED | R2上映年修正保持；2019不指email日期。 |
-| d1b012 | 她在訪談裡說，那是一封電子郵件。 | dr1-b01-p2 | ANIM2019:L42; ANIM2019:L41; FILM2019SCRIPT:L3; TSUJNEWS:L21 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b021 | 她當時反覆想的是：自己可以替這些角色寫台詞嗎？ | dr1-b02-p1 | TSUJNEWS:L21 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b022 | 她轉述，信裡請她享受這次電影工作，想像角色也正期待新的冒險。 | dr1-b02-p2 | TSUJNEWS:L21 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b031 | 照辻村的說法，她因此開始把自己看成這一次帶大家出發的人，能抬起頭寫台詞了。 | dr1-b03-p1 | TSUJNEWS:L21 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b041 | 我覺得這裡很有意思：接過原稿的人，又幫另一位作者開工。 | dr1-b04-p1 | ANIM2019:L42; ANIM2019:L41; MW2019A2:L15; MW2019:L21; MW2019:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b042 | むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本。 | dr1-b04-p2 | ANIM2019:L42; ANIM2019:L41; MW2019A2:L15; MW2019:L21; MW2019:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b051 | 如果換成你，要寫熟悉角色的新冒險，最先找一個從沒聽過的王國，就能讓故事成立嗎？ | dr1-b05-p1 | MW2019A:L20 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1b061 | 辻村先選的是月球。 | dr1-b06-p1 | MW2019A:L20; MW2019A:L23–26 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b062 | 她想讓觀眾走出戲院，再抬頭看月亮時，覺得那個地方比昨天親近一些。 | dr1-b06-p1 | MW2019A:L20; MW2019A:L23–26 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b071 | 可是月球也太熟悉了。 | dr1-b07-p1 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b072 | むぎわら在對談拿出舊構想便箋，說自己以前也多次試過這個舞台，卻沒讓故事發展開。 | dr1-b07-p2 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b073 | 觀測越多，能隨意安排的空間越少。 | dr1-b07-p3 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b081 | 開場那五、六本科學雜誌，就是八鍬新之介導演在首次討論時帶來的。 | dr1-b08-p1 | MW2019A:L32 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1b082 | 辻村回顧，那次會議用科學資料討論設定；結果，寫腳本還是遇到困難。 | dr1-b08-p2 | MW2019A:L32; MW2019A:L28; MW2019A:L33 | 200 | CHANGED | 親核MW2019A:L32–33；科學資料參與首次設定討論，腳本仍難寫。未稱雜誌造成失敗或找到月球生命答案。 |
-| d1b091 | 你看，資料在這裡變成了寫作的阻力，也讓舞台有了邊界。 | dr1-b09-p1 | MW2019A:L20; MW2019A:L32 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1b092 | 要是只把月球當一塊空白背景，隨手放進王國，這次選它的理由就薄了。 | dr1-b09-p2 | MW2019A:L20; MW2019A:L32 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1b101 | 人已經想出發，資料也攤開了，但入口還沒找到。 | dr1-b10-p1 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1b102 | 要怎麼讓原作的世界，真的接上這個新舞台？ | dr1-b10-p1 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c011 | 八鍬提議，從原作短篇裡借一件已有的道具，讓大雄開始冒險。 | dr1-c01-p1 | MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c012 | 辻村回顧，聽到這個提議，故事才一下子動了起來。 | dr1-c01-p2 | MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c021 | 入口不是把一部舊電影整份搬過來，而是把原來世界的一項設定，用在這次月球故事裡。 | dr1-c02-p1 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c022 | 舊作品在新稿上發揮作用，新的情節仍得有人接著寫。 | dr1-c02-p2 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c02b1 | 但舊設定拿來就能用嗎？ | dr1-c02b-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c02b2 | 要是得花很長時間解釋它怎麼運作，觀眾可能還沒出發，就先被規則攔住了。 | dr1-c02b-p2 | MW2019:L32–33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c02c1 | 辻村說，原短篇已經透過大雄的體驗，用幾頁把那件道具解釋清楚， | dr1-c02c-p1 | MW2019:L32–33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c02c2 | 她才有辦法把它放進電影。 | dr1-c02c-p1 | MW2019:L32–33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c02c3 | むぎわら也談到，藤子先生善用圖解，在少量格子裡讓孩子跟得上複雜概念。 | dr1-c02c-p2 | MW2019:L32–33 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c02d1 | 所以借到的不只是設定的名字，還有一個把設定講懂的方法。 | dr1-c02d-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c02d2 | 至於角色該怎麼說話呢？ | dr1-c02d-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c031 | 辻村也說，她無法站在藤子先生的位置，知道他會怎麼寫；可是長年讀這些角色，她能去想， | dr1-c03-p1 | MW2019:L26 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c032 | 這個角色會說什麼、那個角色會採取什麼行動。 | dr1-c03-p2 | MW2019:L26 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c041 | 我喜歡她把這兩件事分開。 | dr1-c04-p1 | MW2019:L26 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c042 | 作者的位置不能直接繼承，但你可以從作品裡讀到角色的習慣，再拿這些理解， | dr1-c04-p2 | MW2019:L26 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c043 | 檢查新情節走得通不通。 | dr1-c04-p3 | MW2019:L26 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c051 | 導演怎麼檢查，這份冒險的動機寫得夠不夠？ | dr1-c05-p1 | MW2019A2:L16 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1c061 | 辻村說，八鍬要求她交代冒險理由，以及路卡對大雄的意義。 | dr1-c06-p1 | MW2019A2:L16 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c062 | 不能只靠「朋友」這個稱呼帶過。 | dr1-c06-p1 | MW2019A2:L16 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c071 | 她承認，一開始把為剛認識的客串角色努力，當成理所當然。 | dr1-c07-p1 | MW2019A2:L16 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c072 | 這些追問讓她改從大雄和路卡這一對人物的關係，去思考動機。 | dr1-c07-p2 | MW2019A2:L16 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1c091 | 想到角色關係的細節，電影腳本能像小說一樣一直加長嗎？ | dr1-c09-p1 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d011 | 辻村在有限的稿量裡安排台詞，得面對電影的時長。 | dr1-d01-p1 | MW2019:L21; MW2019:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d012 | 她說，小說的篇幅可以自己決定，電影卻更要求台詞有效、節奏夠快。 | dr1-d01-p2 | MW2019:L21; MW2019:L22 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d021 | 如果你在小說裡多留一段，讀者可以停下來慢慢讀；換成電影， | dr1-d02-p1 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d022 | 這段話就佔住所有觀眾同一段時間。 | dr1-d02-p2 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d023 | 我很好奇，她會怎麼處理那些長台詞？ | dr1-d02-p2 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d031 | 她原本會用長台詞交代情況和感受，八鍬在幾個地方提醒她，聲優的表演加上畫面， | dr1-d03-p1 | TSUJINTERVIEW:L10 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d032 | 就足以傳達，只留下較短的一句便可以。 | dr1-d03-p2 | TSUJINTERVIEW:L10 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d061 | 辻村還舉過一個例子：腳本只寫下神祕的月亮，她還不知道它會是什麼顏色， | dr1-d06-p1 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d062 | 動畫團隊卻能把那個月亮做出來。 | dr1-d06-p2 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d063 | 文字交出去了，電影就算完成了嗎？ | dr1-d06-p2 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d071 | 她說，腳本完成後，導演和工作人員還要繼續大約一年半製作電影。 | dr1-d07-p1 | TSUJINTERVIEW:L7 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d072 | 所以你看到的成片，還包含那些接著把文字變成影像的人所做的事。 | dr1-d07-p2 | TSUJINTERVIEW:L7 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d081 | 就在寫腳本期間，藤子プロ又邀她寫同一故事的小說。 | dr1-d08-p1 | TSUJINTERVIEW:L6 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d082 | 她起初沒立刻答應，問的是：已經有漫畫和動畫，為什麼還要用小說來寫？ | dr1-d08-p2 | TSUJINTERVIEW:L6 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d091 | 如果只把電影裡說過的話抄一次，你也可能問，這本書多了什麼？ | dr1-d09-p1 | TSUJINTERVIEW:L6; TSUJINTERVIEW:L8–11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d092 | 她得找出文字本身能接的工作。 | dr1-d09-p1 | TSUJINTERVIEW:L6; TSUJINTERVIEW:L8–11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d101 | 小說第一句寫到月球是人類難以生存的嚴酷世界時，她發現，這跟腳本不同。 | dr1-d10-p1 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d102 | 場景、描寫、甚至演出的方式，都能在文字裡由她自己安排。 | dr1-d10-p2 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d111 | 剛剛能交給動畫團隊的顏色與景象，現在得回到她筆下。 | dr1-d11-p1 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d112 | 她形容，像是自己用小說再拍另一部電影，從另一個角度進入同一個故事。 | dr1-d11-p2 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d113 | 再寫一遍，速度也會跟著變嗎？ | dr1-d11-p3 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d121 | 她也寫角色當時的感受，還寫電影沒有的場景。 | dr1-d12-p1 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d122 | 辻村說，原先以為已有畫面的部分會更快，結果那些要自己從頭描寫的場面， | dr1-d12-p2 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d123 | 反而寫得更有速度。 | dr1-d12-p2 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d12b1 | 那寫給孩子，就得把用詞全部變簡單嗎？ | dr1-d12b-p1 | TSUJINTERVIEW:L13–14 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d12b2 | 到了這裡，辻村又得替讀者作一次選擇。 | dr1-d12b-p1 | TSUJINTERVIEW:L13–14 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d12c1 | 她說，自己後來不再一直按年齡區分讀者，希望大人孩子都能讀。 | dr1-d12c-p1 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d12c2 | 兒童文庫版會為漢字加上讀音，她也就不刻意大量改用平假名；不懂的詞， | dr1-d12c-p2 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d12c3 | 可以從前後文猜意思。 | dr1-d12c-p2 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d131 | 我覺得這才說明了，為什麼同一故事要重新署上寫作者：媒介一換，就有人得重新選擇， | dr1-d13-p1 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d132 | 用什麼方法讓你感覺到它。 | dr1-d13-p2 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d133 | 新出的小說，總是等電影先上映嗎？ | dr1-d13-p2 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1d141 | 二〇一九年的小說，出版社分列原作藤子・Ｆ・不二雄、著者辻村深月。 | dr1-d14-p1 | TSUJNEWS:L31; TSUJNEWS:L32; FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d142 | 同一部電影，另外還有一本全彩的電影漫畫。 | dr1-d14-p2 | TSUJNEWS:L31; TSUJNEWS:L32; FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d14b1 | 小說那年二月七日發售，電影三月一日上映；書甚至比電影先到讀者手上。 | dr1-d14b-p1 | ANIM2019:L42; ANIM2019:L41; TSUJNEWS:L31; TSUJNEWS:L32 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d14b2 | 你若把小說化一律想成電影上映後再找人抄寫，這一版的時間順序就對不上了。 | dr1-d14b-p2 | ANIM2019:L42; ANIM2019:L41; TSUJNEWS:L31; TSUJNEWS:L32 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1d151 | 那你拿起漫畫形式的那一本，又能立刻認定，是某位漫畫家重新手畫了整部故事嗎？ | dr1-d15-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e011 | 《月球探測記》這本全彩電影漫畫，是用電影構成的漫畫形式，也就是動漫電影漫畫。 | dr1-e01-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e012 | 電影裡完成的影像，可以成為這種書的內容，跟重新畫一套漫畫是不同工作。 | dr1-e01-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e021 | 換看《大雄的新恐龍》的漫畫版，出版社就分列： | dr1-e02-p1 | MANGA2020NEWS:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e022 | 原作藤子・Ｆ・不二雄、腳本川村元氣、漫畫むぎわらしんたろう。 | dr1-e02-p2 | MANGA2020NEWS:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e023 | 這一列把寫腳本和畫漫畫的工作攤開了。 | dr1-e02-p3 | MANGA2020NEWS:L11 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e031 | 所以你在書架上看到一個熟悉名字，可以再多找一個欄位：這次是誰寫、誰畫， | dr1-e03-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e032 | 還是把電影整理成書？ | dr1-e03-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e033 | 我現在看這些署名，會先找版本，再找工作。 | dr1-e03-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e041 | 那回到近年的電影，原作欄還在，新腳本的作者是不是也一直固定同一個人？ | dr1-e04-p1 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e051 | 二〇二五年的《大雄的繪畫世界物語》，製作公司列導演寺本幸代、腳本伊藤公志。 | dr1-e05-p1 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e052 | 同名小說再把伊藤列為著者兼腳本，這一版的原作仍是藤子・Ｆ・不二雄。 | dr1-e05-p2 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e061 | 到二〇二六年的《新大雄的海底鬼岩城》，官方網站列的是導演矢嶋哲生、腳本村山功。 | dr1-e06-p1 | FILM2026:L49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e062 | 新一版換了具體工作的人，原作欄仍保留藤子先生。 | dr1-e06-p2 | FILM2026:L49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e06b1 | 但「新的腳本」，就一定是從沒出現過的故事嗎？ | dr1-e06b-p1 | DW2026ANN:L17; ANN2026BD:L18 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e071 | 而且這次連回一九八三年的作品，是把大長篇再拍成電影。 | dr1-e07-p1 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e072 | 新的腳本署名，可以出現在舊故事的新改編裡， | dr1-e07-p2 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e073 | 不能光靠上映年份判斷故事是不是首次出現。 | dr1-e07-p2 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e07b1 | 這一版豪華碟片的附件介紹，還列出村山功一百六十頁的縮印腳本。 | dr1-e07b-p1 | ANN2026BD:L31; ANN2026BD:L69 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e07b2 | 署名能帶你找到一份具體文本，讓感興趣的人有機會往下追問，這一版到底怎麼寫。 | dr1-e07b-p2 | ANN2026BD:L31; ANN2026BD:L69 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e07c1 | 那官網列出的公司名字，能直接告訴你，誰寫了這個腳本嗎？ | dr1-e07c-p1 | FILM2026:L53 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e081 | 同一份二〇二六年官網，也列出製作單位和東寶配給。 | dr1-e08-p1 | FILM2026:L53 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e082 | 這些欄位回答誰參與製作、誰負責配給；找誰寫這份劇本，得讀腳本欄。 | dr1-e08-p2 | FILM2026:L53 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e091 | 我喜歡那個另取一張紙的動作。 | dr1-e09-p1 | FSTORY:L50; FSTORY:L51; MW2019A2:L16; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e092 | 保存讓過去的工作有跡可循，接續的人則得面對今天的新問題。 | dr1-e09-p1 | FSTORY:L50; FSTORY:L51; MW2019A2:L16; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e101 | 哆啦Ａ夢的新故事，由各版本列名的創作者繼續寫，原作署名則把這些新工作， | dr1-e10-p1 | ANIM2019:L42; ANIM2019:L41; ANIM2025:L42; ANIM2025:L41; FILM2026:L49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e102 | 連回藤子・Ｆ・不二雄創造的世界。 | dr1-e10-p2 | ANIM2019:L42; ANIM2019:L41; ANIM2025:L42; ANIM2025:L41; FILM2026:L49 | 200 | CONFIRMED | 依R3完整SOURCE QA及134句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
-| d1e111 | 熟悉的故事換人寫，你最希望保留什麼，願意在留言裡說說嗎？ | dr1-e11-p1 | — | — | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
-| d1e121 | 想繼續看熟悉名字背後，真正讓作品往前走的人和工作，歡迎訂閱這個頻道。 | dr1-e12-p1 | — | — | OUT OF SCOPE | R3無變更繼承；問句／意見／推論／邀請，事實前提已核。 |
+| d1b012 | 她在訪談裡說，那是一封電子郵件。 | dr1-b01-p2 | ANIM2019:L42; ANIM2019:L41; FILM2019SCRIPT:L3; TSUJNEWS:L21 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b021 | 她當時反覆想的是：自己可以替這些角色寫台詞嗎？ | dr1-b02-p1 | TSUJNEWS:L21 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b022 | 她轉述，信裡請她享受這次電影工作，想像角色也正期待新的冒險。 | dr1-b02-p2 | TSUJNEWS:L21 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b031 | 照辻村的說法，她因此開始把自己看成這一次帶大家出發的人，能抬起頭寫台詞了。 | dr1-b03-p1 | TSUJNEWS:L21 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b041 | 我覺得這裡很有意思：接過原稿的人，又幫另一位作者開工。 | dr1-b04-p1 | ANIM2019:L42; ANIM2019:L41; MW2019A2:L15; MW2019:L21; MW2019:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b042 | むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本。 | dr1-b04-p2 | ANIM2019:L42; ANIM2019:L41; MW2019A2:L15; MW2019:L21; MW2019:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b051 | 如果換成你，要寫熟悉角色的新冒險，最先找一個從沒聽過的王國，就能讓故事成立嗎？ | dr1-b05-p1 | MW2019A:L20 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1b061 | 辻村先選的是月球。 | dr1-b06-p1 | MW2019A:L20; MW2019A:L23–26 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b062 | 她想讓觀眾走出戲院，再抬頭看月亮時，覺得那個地方比昨天親近一些。 | dr1-b06-p1 | MW2019A:L20; MW2019A:L23–26 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b071 | 可是月球也太熟悉了。 | dr1-b07-p1 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b072 | むぎわら在對談拿出舊構想便箋，說自己以前也多次試過這個舞台，卻沒讓故事發展開。 | dr1-b07-p2 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b073 | 觀測越多，能隨意安排的空間越少。 | dr1-b07-p3 | MW2019A:L20; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b081 | 開場那五、六本科學雜誌，就是八鍬新之介導演在首次討論時帶來的。 | dr1-b08-p1 | MW2019A:L32 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1b082 | 辻村回顧，那次會議用科學資料討論設定；結果，寫腳本還是遇到困難。 | dr1-b08-p2 | MW2019A:L32; MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R4工作經過與D14/D15映射保持，未增科學或電影情節答案。 |
+| d1b091 | 你看，資料在這裡變成了寫作的阻力，也讓舞台有了邊界。 | dr1-b09-p1 | MW2019A:L20; MW2019A:L32 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1b092 | 要是只把月球當一塊空白背景，隨手放進王國，這次選它的理由就薄了。 | dr1-b09-p2 | MW2019A:L20; MW2019A:L32 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1b101 | 人已經想出發，資料也攤開了，但入口還沒找到。 | dr1-b10-p1 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1b102 | 要怎麼讓原作的世界，真的接上這個新舞台？ | dr1-b10-p1 | MW2019A:L28; MW2019A:L33 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c011 | 八鍬提議，從原作短篇裡借一件已有的道具，讓大雄開始冒險。 | dr1-c01-p1 | MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c012 | 辻村回顧，聽到這個提議，故事才一下子動了起來。 | dr1-c01-p2 | MW2019A:L28; MW2019A:L33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c02b1 | 但你把舊設定拿來，就能用嗎？ | dr1-c02b-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | 只增觀眾主詞；原問答／A06來源前提保持，沒有新增角色動機。 |
+| d1c02b2 | 要是得花很長時間解釋它怎麼運作，觀眾可能還沒出發，就先被規則攔住了。 | dr1-c02b-p2 | MW2019:L32–33 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c02c1 | 辻村說，原短篇已經透過大雄的體驗，用幾頁把那件道具解釋清楚， | dr1-c02c-p1 | MW2019:L32–33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c02c2 | 她才有辦法把它放進電影。 | dr1-c02c-p1 | MW2019:L32–33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c02c3 | むぎわら也談到，藤子先生善用圖解，在少量格子裡讓孩子跟得上複雜概念。 | dr1-c02c-p2 | MW2019:L32–33 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c02d1 | 所以借到的不只是設定的名字，還有一個把設定講懂的方法。 | dr1-c02d-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c02d2 | 至於角色該怎麼說話呢？ | dr1-c02d-p1 | MW2019:L32–33 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c031 | 辻村也說，她無法站在藤子先生的位置，知道他會怎麼寫；可是長年讀這些角色，她能去想， | dr1-c03-p1 | MW2019:L26 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c032 | 這個角色會說什麼、那個角色會採取什麼行動。 | dr1-c03-p2 | MW2019:L26 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c041 | 我喜歡她把這兩件事分開。 | dr1-c04-p1 | MW2019:L26 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c051 | 導演怎麼檢查，這份冒險的動機寫得夠不夠？ | dr1-c05-p1 | MW2019A2:L16 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1c061 | 辻村說，八鍬要求她交代冒險理由，以及路卡對大雄的意義。 | dr1-c06-p1 | MW2019A2:L16 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c062 | 不能只靠「朋友」這個稱呼帶過。 | dr1-c06-p1 | MW2019A2:L16 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c071 | 她承認，一開始把為剛認識的客串角色努力，當成理所當然。 | dr1-c07-p1 | MW2019A2:L16 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c072 | 這些追問讓她改從大雄和路卡這一對人物的關係，去思考動機。 | dr1-c07-p2 | MW2019A2:L16 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1c091 | 想到角色關係的細節，電影腳本能像小說一樣一直加長嗎？ | dr1-c09-p1 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d011 | 辻村在有限的稿量裡安排台詞，得面對電影的時長。 | dr1-d01-p1 | MW2019:L21; MW2019:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d012 | 她說，小說的篇幅可以自己決定，電影卻更要求台詞有效、節奏夠快。 | dr1-d01-p2 | MW2019:L21; MW2019:L22 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d021 | 如果你在小說裡多留一段，讀者可以停下來慢慢讀；換成電影， | dr1-d02-p1 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d022 | 這段話就佔住所有觀眾同一段時間。 | dr1-d02-p2 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d023 | 我很好奇，她會怎麼處理那些長台詞？ | dr1-d02-p2 | MW2019:L21; MW2019:L22; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d031 | 她原本會用長台詞交代情況和感受，八鍬在幾個地方提醒她，聲優的表演加上畫面， | dr1-d03-p1 | TSUJINTERVIEW:L10 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d032 | 就足以傳達，只留下較短的一句便可以。 | dr1-d03-p2 | TSUJINTERVIEW:L10 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d061 | 辻村還舉過一個例子：腳本只寫下神祕的月亮，她還不知道它會是什麼顏色， | dr1-d06-p1 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d062 | 動畫團隊卻能把那個月亮做出來。 | dr1-d06-p2 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d063 | 文字交出去了，電影就算完成了嗎？ | dr1-d06-p2 | TSUJINTERVIEW:L7; TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d071 | 她說，腳本完成後，導演和工作人員還要繼續大約一年半製作電影。 | dr1-d07-p1 | TSUJINTERVIEW:L7 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d072 | 所以你看到的成片，還包含那些接著把文字變成影像的人所做的事。 | dr1-d07-p2 | TSUJINTERVIEW:L7 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d081 | 就在寫腳本期間，藤子プロ又邀她寫同一故事的小說。 | dr1-d08-p1 | TSUJINTERVIEW:L6 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d082 | 她起初沒立刻答應，問的是：已經有漫畫和動畫，為什麼還要用小說來寫？ | dr1-d08-p2 | TSUJINTERVIEW:L6 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d091 | 如果只把電影裡說過的話抄一次，你也可能問，這本書多了什麼？ | dr1-d09-p1 | TSUJINTERVIEW:L6; TSUJINTERVIEW:L8–11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d092 | 她得找出文字本身能接的工作。 | dr1-d09-p1 | TSUJINTERVIEW:L6; TSUJINTERVIEW:L8–11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d101 | 小說第一句寫到月球是人類難以生存的嚴酷世界時，她發現，這跟腳本不同。 | dr1-d10-p1 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d102 | 場景、描寫、甚至演出的方式，都能在文字裡由她自己安排。 | dr1-d10-p2 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d111 | 剛剛能交給動畫團隊的顏色與景象，現在得回到她筆下。 | dr1-d11-p1 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d112 | 她形容，像是自己用小說再拍另一部電影，從另一個角度進入同一個故事。 | dr1-d11-p2 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d113 | 再寫一遍，速度也會跟著變嗎？ | dr1-d11-p3 | TSUJINTERVIEW:L8–11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d121 | 她也寫角色當時的感受，還寫電影沒有的場景。 | dr1-d12-p1 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d122 | 辻村說，原先以為已有畫面的部分會更快，結果那些要自己從頭描寫的場面， | dr1-d12-p2 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d123 | 反而寫得更有速度。 | dr1-d12-p2 | TSUJINTERVIEW:L12 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d12b1 | 那寫給孩子，就得把用詞全部變簡單嗎？ | dr1-d12b-p1 | TSUJINTERVIEW:L13–14 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d12b2 | 到了這裡，辻村又得替讀者作一次選擇。 | dr1-d12b-p1 | TSUJINTERVIEW:L13–14 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d12c1 | 她說，自己後來不再一直按年齡區分讀者，希望大人孩子都能讀。 | dr1-d12c-p1 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d12c2 | 兒童文庫版會為漢字加上讀音，她也就不刻意大量改用平假名；不懂的詞， | dr1-d12c-p2 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d12c3 | 可以從前後文猜意思。 | dr1-d12c-p2 | TSUJINTERVIEW:L13–14 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d131 | 我覺得這才說明了，為什麼同一故事要重新署上寫作者：媒介一換，就有人得重新選擇， | dr1-d13-p1 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d132 | 用什麼方法讓你感覺到它。 | dr1-d13-p2 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d133 | 新出的小說，總是等電影先上映嗎？ | dr1-d13-p2 | TSUJINTERVIEW:L12 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1d141 | 二〇一九年的小說，出版社分列原作藤子・Ｆ・不二雄、著者辻村深月。 | dr1-d14-p1 | TSUJNEWS:L31; TSUJNEWS:L32; FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d142 | 同一部電影，另外還有一本全彩的電影漫畫。 | dr1-d14-p2 | TSUJNEWS:L31; TSUJNEWS:L32; FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d14b1 | 小說那年二月七日發售，電影三月一日上映；書甚至比電影先到讀者手上。 | dr1-d14b-p1 | ANIM2019:L42; ANIM2019:L41; TSUJNEWS:L31; TSUJNEWS:L32 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d14b2 | 你若把小說化一律想成電影上映後再找人抄寫，這一版的時間順序就對不上了。 | dr1-d14b-p2 | ANIM2019:L42; ANIM2019:L41; TSUJNEWS:L31; TSUJNEWS:L32 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1d151 | 那你拿起漫畫形式的那一本，又能立刻認定，是某位漫畫家重新手畫了整部故事嗎？ | dr1-d15-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e011 | 《月球探測記》這本全彩電影漫畫，是用電影構成的漫畫形式，也就是動漫電影漫畫。 | dr1-e01-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e012 | 電影裡完成的影像，可以成為這種書的內容，跟重新畫一套漫畫是不同工作。 | dr1-e01-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e021 | 換看《大雄的新恐龍》的漫畫版，出版社就分列： | dr1-e02-p1 | MANGA2020NEWS:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e022 | 原作藤子・Ｆ・不二雄、腳本川村元氣、漫畫むぎわらしんたろう。 | dr1-e02-p2 | MANGA2020NEWS:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e023 | 這一列把寫腳本和畫漫畫的工作攤開了。 | dr1-e02-p3 | MANGA2020NEWS:L11 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e031 | 所以你在書架上看到一個熟悉名字，可以再多找一個欄位：這次是誰寫、誰畫， | dr1-e03-p1 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e032 | 還是把電影整理成書？ | dr1-e03-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e033 | 我現在看這些署名，會先找版本，再找工作。 | dr1-e03-p2 | FILMCOMIC2019:L33; FILMCOMIC2019:L11; MANGA2020NEWS:L11 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e041 | 那回到近年的電影，原作欄還在，新腳本的作者是不是也一直固定同一個人？ | dr1-e04-p1 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e051 | 二〇二五年的《大雄的繪畫世界物語》，製作公司列導演寺本幸代、腳本伊藤公志。 | dr1-e05-p1 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e052 | 同名小說再把伊藤列為著者兼腳本，這一版的原作仍是藤子・Ｆ・不二雄。 | dr1-e05-p2 | ANIM2025:L42; ANIM2025:L41; NOVEL2025:L5–10 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e061 | 到二〇二六年的《新大雄的海底鬼岩城》，官方網站列的是導演矢嶋哲生、腳本村山功。 | dr1-e06-p1 | FILM2026:L49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e062 | 新一版換了具體工作的人，原作欄仍保留藤子先生。 | dr1-e06-p2 | FILM2026:L49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e06b1 | 但「新的腳本」，就一定是從沒出現過的故事嗎？ | dr1-e06b-p1 | DW2026ANN:L17; ANN2026BD:L18 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e071 | 而且這次連回一九八三年的作品，是把大長篇再拍成電影。 | dr1-e07-p1 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e072 | 新的腳本署名，可以出現在舊故事的新改編裡， | dr1-e07-p2 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e073 | 不能光靠上映年份判斷故事是不是首次出現。 | dr1-e07-p2 | DW2026ANN:L17; ANN2026BD:L18 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e07b1 | 這一版豪華碟片的附件介紹，還列出村山功一百六十頁的縮印腳本。 | dr1-e07b-p1 | ANN2026BD:L31; ANN2026BD:L69 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e07b2 | 署名能帶你找到一份具體文本，讓感興趣的人有機會往下追問，這一版到底怎麼寫。 | dr1-e07b-p2 | ANN2026BD:L31; ANN2026BD:L69 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e07c1 | 那官網列出的公司名字，能直接告訴你，誰寫了這個腳本嗎？ | dr1-e07c-p1 | FILM2026:L53 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e081 | 同一份二〇二六年官網，也列出製作單位和東寶配給。 | dr1-e08-p1 | FILM2026:L53 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e082 | 這些欄位回答誰參與製作、誰負責配給；找誰寫這份劇本，得讀腳本欄。 | dr1-e08-p2 | FILM2026:L53 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e091 | 我喜歡那個另取一張紙的動作。 | dr1-e09-p1 | FSTORY:L50; FSTORY:L51; MW2019A2:L16; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e092 | 保存讓過去的工作有跡可循，接續的人則得面對今天的新問題。 | dr1-e09-p1 | FSTORY:L50; FSTORY:L51; MW2019A2:L16; TSUJINTERVIEW:L10 | 200 | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e101 | 哆啦Ａ夢的新故事，由各版本列名的創作者繼續寫，原作署名則把這些新工作， | dr1-e10-p1 | ANIM2019:L42; ANIM2019:L41; ANIM2025:L42; ANIM2025:L41; FILM2026:L49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e102 | 連回藤子・Ｆ・不二雄創造的世界。 | dr1-e10-p2 | ANIM2019:L42; ANIM2019:L41; ANIM2025:L42; ANIM2025:L41; FILM2026:L49 | 200 | CONFIRMED | R5完整SOURCE QA依129句逐值無變更鏈繼承；保留原歸屬／版本限制。 |
+| d1e111 | 熟悉的故事換人寫，你最希望保留什麼，願意在留言裡說說嗎？ | dr1-e11-p1 | — | — | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
+| d1e121 | 想繼續看熟悉名字背後，真正讓作品往前走的人和工作，歡迎訂閱這個頻道。 | dr1-e12-p1 | — | — | OUT OF SCOPE | R5無變更繼承；問句／意見／推論／邀請，其事實前提已核。 |
 
 來源代碼（原件SHA與原回顧限制保持）：
 
@@ -174,8 +170,8 @@ CONFIRMED指原歸屬與相鄰句脈絡內可成立；CHANGED是本輪已重核�
 - ANN2026BD: https://dora-world.com/contents/4294 — `ANN2026BD.paragraphs.txt`
 - CORO2019A_CACHE: https://corocoro-news.jp/news/38190/ — `CORO2019A_CACHE.txt`；原站503，僅搜尋工具快取，非本輪HTML200。
 
-d1b082只交代科學資料進入設定會議、編劇回顧腳本仍難寫；「結果」按原文緊接的工作經過理解，不擴大為科學雜誌導致失敗、實際否定月球生命或已找到電影情節答案。後續原有b10/c01仍是另一步工作：找原作設定作入口。
+a041承接a033的當事人自述。「這次」「憑它」限定本次已取得的事後回憶；凍結研究D32說明本次未逐頁核1996原連載、全套原稿或完整回憶書，不等於宣稱世界不存在分工表。c031/c032仍是辻村自己的讀者位置與角色行為推想，刪掉概括沒有讓原作作者／新編劇職責混同，也沒有新增角色動機。
 
-115鏡English匿名手部／空白紙與無字通用工作桌完整沿用R3，未要求可辨識角色、剪影、招牌道具、真人長相、商標或可讀字。科學雜誌三端完整request/key純算相同；實圖0、actual_same_asset_verified=false，仍須payoff先takes1、其他端cache miss STOP、每端judge、裁切及組裝後同file SHA。
+111鏡English匿名手部／空白紙與無字通用工作桌完整沿用R5，未要求可辨識角色、剪影、招牌道具、真人長相、商標或可讀字。科學雜誌三端完整request/key純算相同，實圖0、actual_same_asset_verified=false；仍須payoff先takes1、其他端cache miss STOP、每端judge及裁切／組裝後同file SHA。
 
-13分鐘目標及含開場、有聲CTA的720–840秒實測要求保持，新增片頭尾26秒另計。3104/4.5≈689.78秒及估timeline14.48分鐘皆非實TTS；容量風險保持，未判聲音PASS或FAIL。歷史actual native輪次2且結果HOLD，R4未準備／閱讀native3；此SOURCE PASS不改native狀態。實聲、實圖、念法、owner及exact-slug US$25帳戶／整片報價／protected admission仍待完成。
+13分鐘目標及含開場、有聲CTA的720–840秒正文實測要求保持，新增片頭尾26秒另計。3002/4.5≈667.11秒與估timeline14.001分鐘皆非實TTS；薄稿容量風險保持，未判實聲PASS或FAIL。歷史actual native輪次4且結果HOLD，R6未準備／閱讀native5；本SOURCE PASS不改native狀態。念法、實聲實圖、owner、exact-slug US$25帳戶／整片報價／protected admission仍待完成。

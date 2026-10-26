@@ -1,0 +1,62 @@
+{
+  "state": "CONCRETE_LANGUAGE_SETTINGS_PREPARED_NOT_APPLIED",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "authorization": "Prepare eight-language metadata/CC/dub intent only; no management update in this operator task.",
+  "observed_at": "2026-10-26T08:47:41.551Z",
+  "observed_backend_category": "story",
+  "observed_locales": {},
+  "observed_locales_decided_at": null,
+  "language_change": {
+    "method": "PUT",
+    "backend_route": "/admin/videos/story-adapt-doraemon-after-fujiko-remake-20261025/languages",
+    "json": {
+      "locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      }
+    }
+  },
+  "required_identity": "Authenticated content.manage administrator. No management identity was used or setting update attempted in this task.",
+  "next_verification": "After a legitimate authorized management update, GET real project locales and locales_decided_at. Do not invent timestamps, languages.json, a language round or dub eligibility.",
+  "requests_sent": 0,
+  "budget_activation_included": false,
+  "media_operations_included": false
+}

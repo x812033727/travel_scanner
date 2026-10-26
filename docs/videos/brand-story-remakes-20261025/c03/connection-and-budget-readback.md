@@ -29,4 +29,6 @@ wrapper 使用主機既有 `/root/travel_scanner` Compose 的 api 與 video-work
 
 舊 `host-admission-readback.sh` 及其 QA 原樣保留。對未知新 slug，舊 CLI 在讀 DB 前先回 preproduction hold，不能據此判定帳戶不存在。最新 media/status 也未列原／新 C03，僅代表不在該 API 的顯示集合，不能推論 DB 無帳戶。
 
-取得真實摘要後，仍須正常處理精確新版 US$25 帳戶的受審註冊／啟用、歷史帳本及全片報價，才能開始真 TTS。其他集的來源、八語與免費準備繼續；片頭片尾已依 PR1860備妥。
+目前報價判讀見 [唯讀實作稽核](production-quote-gap-audit.md)：service 逐操作檢查「已保留（含 uncertain）＋已結算＋下次 cap ≤ US$25」；未來所有 model-wide caps 的總和 >25，不能單憑此判定所有受審啟用後的合法順序流程都不能開始，也不能保證全片完成。逐筆實耗結算釋放額度，不是全片完成保證，沒有新增 sum-all-caps≤25 的入場 gate。
+
+目前尚未取得已選定 Claude 唯讀 host probe 的安全 JSON，仍不可支出、付費請求0。下一步保留精確新 slug 帳戶／歷史及 operations 帳本讀回、受審註冊／啟用與選定實際 model／supplier account／region／rates 的全片報價；須含八語 dub、ASR、Jev、允許重錄與未明費用，每個 logical shot 跨 prompt／seed／重試累計含首次最多3 take，US$25 不提高。舊 pricing 收據與固定唯讀 handoff 不改；其他集的免費準備繼續，片頭片尾已依 PR1860備妥。

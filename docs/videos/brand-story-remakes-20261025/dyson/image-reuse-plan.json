@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "dyson-r2",
+  "revision": "dyson-r5",
   "status": "WRITTEN_REUSE_PLAN_PENDING_REAL_ASSETS_AND_SHA",
   "not_a_video_schema_extension": true,
   "not_a_keyframes_manifest": true,
@@ -8,14 +8,15 @@
   "actual_same_asset_verified": false,
   "candidate_binding": {
     "core_four_sha256": {
-      "video.json": "7d4b685214e01fe35c8bc363e49e66573a62823da9b3a884f2d634eff7e6250a",
-      "script.md": "35fddc43e29952118d58b5c5054189c09cce2ce669f5a58b4e4f3cef8c8feb7e",
-      "narration-only.json": "711b9c0a1e351b6328659b5d371d6db15712c0240f429456d99acf2583d9cc7b",
-      "claims.json": "8ec9e8c11b8d20c28bc20b95f9efbf7d8ab121839731c7e439adb44935427ec6"
+      "video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "narration-only.json": "c8fb1776fe07ac90b532b3940b9a72934dfc4d3bb59b02d697de739fbbb399a7",
+      "claims.json": "630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2"
     },
-    "claims_md_sha256": "98fc771aac933bb1fba687611db7c2459456397b0a74d13f9f1adbae99a68507",
-    "brief_sha256": "8bee529d9b9acbdbe9c4e58953f7c18e98554ef93cc86ac58ef8220d83d7cd52",
-    "series_sha256": "3af444b9aa6a6a0896f7c2ddf97452a53403194d06fee6eec5c088e57cb5f7f0"
+    "claims_md_sha256": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+    "brief_sha256": "186868c8e21863ad2ce97eb78a0dde44af38cbba1c554a101bf2b19e2ebd5a75",
+    "series_sha256": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+    "outline_sha256": "7d15f28047b648d06c2640bb2522bde9c215192d4eb058d7e86cb6d70eae9602"
   },
   "code_readback": {
     "files_sha256": {
@@ -36,8 +37,8 @@
       "asset_plan_id": "perforated-cup-experiment",
       "source_scene_id": "88z5",
       "reuse_scene_id": "qggg",
-      "narration_setup_text": "我好奇的是，一個滿身小孔的罩子，後來怎麼擋住入口的麻煩？",
-      "narration_payoff_text": "依他的回憶，他們把這個部件加進去，再試驗孔的大小和形狀。",
+      "narration_setup_text": "我想知道，山本手上那個孔罩，之前又是為哪個入口的麻煩做的？",
+      "narration_payoff_text": "開場那個孔罩，山本說，是加在氣流進入錐體的入口，避免雜物堵在那裡。",
       "prompt_exact_match": true,
       "camera_exact_match": true,
       "source_prompt_sha256": "e4f676cd7729910ad6d33214941efb5ce20833b46fbba4679ad8405103edcf28",
@@ -74,14 +75,16 @@
       "actual_reused_file": null,
       "actual_reused_sha256": null,
       "actual_same_asset_verified": false,
-      "actual_same_file_sha_verified": false
+      "actual_same_file_sha_verified": false,
+      "r3_complete_request_and_key_equal_r2": true,
+      "r4_complete_request_and_key_equal_r3": true
     },
     {
       "asset_plan_id": "tooling-finance-meeting",
       "source_scene_id": "jyqr",
       "reuse_scene_id": "t39s",
-      "narration_setup_text": "而有了日本的授權收入，英國那副量產模具又得向誰籌錢？",
-      "narration_payoff_text": "戴森回憶，到了一九九三年，銀行經理麥克佩奇替他向萊斯銀行爭取貸款。",
+      "narration_setup_text": "而量產模具的錢，又得由誰去向銀行爭取？",
+      "narration_payoff_text": "開場問的模具款，戴森回憶，一位到企業訪問的銀行人員，替他爭取貸款。",
       "prompt_exact_match": true,
       "camera_exact_match": true,
       "source_prompt_sha256": "89ded371521ed14fcd7aadcf230e156f7fc3ad293216b6757c9ad8f4a92642a8",
@@ -118,14 +121,18 @@
       "actual_reused_file": null,
       "actual_reused_sha256": null,
       "actual_same_asset_verified": false,
-      "actual_same_file_sha_verified": false
+      "actual_same_file_sha_verified": false,
+      "r3_complete_request_and_key_equal_r2": true,
+      "r4_complete_request_and_key_equal_r3": true
     }
   ],
   "production_handoff": {
     "preconditions": [
-      "Independent SOURCE/visual review and fresh native readers are pending.",
-      "Exact new-project US$25 account, protected admission, complete all-in quote and ordinary owner gates must be established. Free init does not permit any spend.",
-      "Read live provider/model/version/size/negative/refs/seed/fixes/prompt limit and recompute Stage.imageKey. Planned values are not live cache proof."
+      "Independent R5 MF-R4-01 delta recheck and freshnative2 remain pending; R4 full source review was HOLD, not an inherited SOURCE PASS.",
+      "Exact new-project US25 account, all-in quote, protected admission and ordinary owner gates must be real. Free preparation authorizes no spending.",
+      "Read the live runtime/source SHA against the current reviewed freeze before production; prior R4 runtime is historical R4 evidence.",
+      "Actual natural narration must be720–840seconds inclcoldopen+CTA/excl26seconds branding. Planning units are not an audio pass.",
+      "Before image requests read real provider/model/version/size/negative/refs/seed/fixes/prompt limit and require the actual complete native key; declared keys are not cache evidence."
     ],
     "official_command_recipe_only": [
       {
@@ -133,12 +140,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/dyson-submission-root",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
           "keyframes",
           "--slug",
           "story-dyson-japan-first-20261021-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/dyson-audit/media",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/media",
           "--shot",
           "88z5",
           "--takes",
@@ -159,12 +166,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/dyson-submission-root",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
           "keyframes",
           "--slug",
           "story-dyson-japan-first-20261021-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/dyson-audit/media",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/media",
           "--shot",
           "qggg",
           "--takes",
@@ -176,12 +183,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/dyson-submission-root",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
           "keyframes",
           "--slug",
           "story-dyson-japan-first-20261021-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/dyson-audit/media",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/media",
           "--shot",
           "jyqr",
           "--takes",
@@ -202,12 +209,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/dyson-submission-root",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
           "keyframes",
           "--slug",
           "story-dyson-japan-first-20261021-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/dyson-audit/media",
+          "/workspace/work/brand-story-20261025/dyson-audit/author-r5/media",
           "--shot",
           "t39s",
           "--takes",
@@ -225,5 +232,8 @@
     "executed": false
   },
   "provider_calls": 0,
-  "paid_calls": 0
+  "paid_calls": 0,
+  "r3_preserved_complete_requests_and_keys": true,
+  "r4_preserved_complete_requests_and_keys": true,
+  "r5_preserved_complete_requests_and_keys": true
 }

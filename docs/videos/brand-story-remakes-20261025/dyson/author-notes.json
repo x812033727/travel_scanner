@@ -1,49 +1,67 @@
 {
   "schema_version": 1,
-  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_VISUAL_AND_FRESH_READERS",
-  "candidate_revision": "dyson-r2",
+  "status": "HOLD_PENDING_SINGLE_SOURCE_DELTA_NATIVE2_ACTUAL_TTS",
+  "candidate_revision": "dyson-r5",
   "author": "/root/c14_eight_text",
   "counts": {
-    "lines": 141,
-    "scenes": 139,
-    "shots": 138,
+    "lines": 140,
+    "scenes": 138,
+    "shots": 137,
     "cards": 0,
     "outro": 1,
     "chapters": 7,
-    "loops": 25
+    "loops": 35
   },
   "native_units": {
-    "whole_narration_spoken_units": 3303,
-    "coldopen": 182,
-    "voiced_CTA": 55,
-    "rough_planning_target": 3500,
-    "planning_units_gap": 197,
-    "planning_arithmetic_at_4_to_5_units_per_second": [
-      660.6,
-      825.75
+    "status": "PLANNING_RANGE_ONLY_NOT_MEASURED_DURATION_PASS",
+    "whole_spoken_units": 3316,
+    "r3_spoken_units": 1953,
+    "net_narration_delta": 1363,
+    "rough_target_units": 3500,
+    "units_gap_to_3500": 184,
+    "planning_4_to_5_seconds": [
+      663.2,
+      829
     ],
-    "planning_at_4_5": 734,
-    "planning_is_not_actual_time": true,
-    "actual_narration_seconds": null,
-    "actual_final_seconds": null,
+    "planning_4_5_seconds": 736.8888888888889,
+    "target_minutes_unchanged": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_audio_seconds": null,
     "actual_duration_verified": false,
-    "official_scope": "Whole unwrapped spoken narration including coldopen and voiced CTA; excludes added5secondintro+21secondoutro.",
-    "capacity_risk": "Below rough3500 target; natural measured delivery may be short. No invented fixes, recaps, pauses or slower playback used."
+    "is_actual_TTS_fail": false,
+    "no_slow_playback_or_added_pauses": true,
+    "risks": [
+      "Accepted count can shrink under SOURCE QA, especially uncorrected auto transcript.",
+      "Faster natural speech may make the body shorter than720seconds; only actual TTS can settle it after all ordinary production gates.",
+      "No spare factory-transition evidence identifies the rented half-factory with Bumpers Farm."
+    ],
+    "coldopen": 171,
+    "voiced_CTA": 50
   },
   "voice_source": {
-    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
-    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/history/r3/video.json",
+    "file_sha256": "f28f3feb6ea49867acd60157688f9ae675a5d0eddfa711de0cb983f991555969",
     "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
-    "exact_copy": true,
-    "other_episode_dictionary_copied": false
+    "exact_copy": true
   },
   "source_research_sha256": {
     "research-original.md": "b987edf0354a305796cec8e34f40b8208ddf8074c3e2d992ad0fb9dc356f5d90",
     "research-original.claims.json": "57c79dd203cb51382f941bbc597b82584fa60173a3644ab5b7111d8aaf81d986",
     "original-preservation.json": "eace55c33ad3a7360fdd6a5470b797510e836d12d351a1a092b60cf8a062dbcd"
   },
-  "additional_author_anchors": 3,
-  "original_related_files_unchanged": true,
+  "new_primary_nodes": 10,
+  "new_source_ids": [
+    "DYSON_BIO",
+    "SENRA",
+    "OU_1993",
+    "DESIGN_MATTERS",
+    "MASTERS_SCALE"
+  ],
+  "new_raw_fetched_by_author": 0,
+  "masters_audio_listened_by_author": false,
   "source_pass_claimed": false,
   "narrative_pass_claimed": false,
   "owner_approval_created": false,
@@ -53,15 +71,27 @@
   "paid_calls": 0,
   "backend_mutations": 0,
   "git_mutations": 0,
-  "runtime_root": "/workspace/work/brand-story-20261025/dyson-submission-root",
-  "media_base": "/workspace/work/brand-story-20261025/dyson-audit/media",
-  "image_reuse_plan_sha256": "1fb9b59f1930b90c65a3f12fb40ef42ceee3b34115b656fc6805949d044deef3",
-  "independent_source_review": "PENDING_OTHER_REVIEWER",
-  "independent_narrative_review": "NOT_PREPARED_NOT_READ",
+  "runtime_root": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
+  "media_base": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/media",
+  "image_reuse_plan_sha256": "31c6b3028c86bd68a130908ce8d08943583f34d2efa2999d09db33da3dd4f0b9",
+  "actual_native_round_count": 1,
+  "prior_native1": "ACTUAL_R2_MERGED_HOLD",
+  "r3_source_review": "NOT_DONE",
+  "r3_native": "NOT_PREPARED_NOT_READ",
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
   "native_input_prepared": false,
-  "native_reader_calls": 0,
-  "actual_native_round_count": 0,
-  "prior_source_hold_is_not_native_hold": true,
-  "prior_source_report_sha256": "00350b7fccd855790d73665f771fc457eb1cdf32185576a0623379b78772d16c",
-  "source_correction_sha256": "d75f0909bd4dd4f44e484b92ff25caa8620b810a25671507cadb402f93b2a988"
+  "native_reader_calls_this_revision": 0,
+  "source_correction_sha256": "d75f0909bd4dd4f44e484b92ff25caa8620b810a25671507cadb402f93b2a988",
+  "prior_r4_full_QA": {
+    "revision": "dyson-r4",
+    "source_report_path": "history/r4/reviews/source-r4-independent.json",
+    "source_report_sha256": "5aa2ce010b27ffccca12e22a127feb5259dd1aea546359d0f66cf210f16f86f7",
+    "status": "HOLD_MF_R4_01",
+    "full_140_lines_read": true,
+    "full_137_prompts_read": true,
+    "written_visual": "PASS_WRITTEN_ONLY_ON_R4",
+    "current_R5_delta_recheck": "PENDING_NOT_SELF_PASS"
+  },
+  "r5_single_source_fix_sha256": "34feb6f56c64dbf1537563fda88b5dfc7898ce5fbd8cd377ec9f0fb99f40aac7",
+  "r5_spoken_units_delta": 0
 }

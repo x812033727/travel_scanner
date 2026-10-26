@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r2",
+  "review_kind": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_QA",
+  "reviewer": "/root/dyson_r1_source",
+  "completed_at_utc": "2026-10-26T04:39:54.317846+00:00",
+  "independent": true,
+  "not_researcher_or_author": true,
+  "status": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_ONLY",
+  "overall_verdict": "PASS_SOURCE_AND_WRITTEN_VISUAL_ONLY",
+  "source_pass": true,
+  "must_fix": [],
+  "video_slug": "story-dyson-japan-first-20261021-remake-20261025",
+  "input_sha256": {
+    "video.json": "7d4b685214e01fe35c8bc363e49e66573a62823da9b3a884f2d634eff7e6250a",
+    "script.md": "35fddc43e29952118d58b5c5054189c09cce2ce669f5a58b4e4f3cef8c8feb7e",
+    "narration-only.json": "711b9c0a1e351b6328659b5d371d6db15712c0240f429456d99acf2583d9cc7b",
+    "claims.json": "8ec9e8c11b8d20c28bc20b95f9efbf7d8ab121839731c7e439adb44935427ec6"
+  },
+  "author_freeze_sha256": "f1e144f19077d91d8c3ff7c43bcd72c0ddc1700ace9864af4dd430c8e217902f",
+  "baseline": {
+    "path": "history/r1/reviews/source-r1-independent.json",
+    "sha256": "00350b7fccd855790d73665f771fc457eb1cdf32185576a0623379b78772d16c",
+    "original_verdict": "FIXES_REQUIRED / HOLD, MF-01 only",
+    "author_freeze_sha256": "5f175ecb3d8251f0df47fcef37847a36c24e17ef64ab276017e54fc19fd4f105",
+    "history_manifest_sha256": "2566ba63a08fc70d3390f24341c8e92be5e9c176597ac3a32250f03233cdd13b",
+    "archive_original_files_checked": 23,
+    "r1_report_preserved_unchanged": true,
+    "scope_inherited": "R1 independent original-body review of all 141 lines, 138 prompts, 25 loops, 26 research claims, 227 anchor instances / 32 unique anchors, 21 short original-language quotes, 28 HTML paragraphs, 4 PDF pages and 4 JSON pointers. R2 is a delta recheck, not a newly repeated full research round.",
+    "prior_must_fix_resolution": "MF-01 resolved by the exact R2 sentence; R1 HOLD is not rewritten as historical PASS."
+  },
+  "delta": {
+    "line_id": "swdr",
+    "scene_id": "swdr",
+    "old_text": "戴森在後來口述裡，把取得Apex授權放在一九八六年。",
+    "new_text": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。",
+    "source_verdict": "CONFIRMED_WITH_ATTRIBUTION",
+    "visual_verdict": "PASS_WRITTEN_ONLY_UNCHANGED",
+    "independent_reading": "The new sentence says Dyson reached a licensing agreement with Apex, matching Fortune. The Japanese participant explicitly describes Dyson offering sales rights for manufacture in Japan. It no longer suggests Dyson received a licence from Apex. The year 1986 remains attributed to the retrospective oral account and is not asserted as a verified precise contract date.",
+    "original_anchors_reread": [
+      {
+        "source_id": "FORTUNE_ORAL",
+        "raw_sha256": "cf1ef0528d13f851936d726caa3793bd2067944fb038ae3415e544842d7f51d5",
+        "paragraphs_sha256": "b9e3f49e829256ddfcf47f7c4417510d6de9b442b9fb05dd43d221fd4dda0d73",
+        "paragraph": 35,
+        "paragraph_text_sha256": "c71677f03f0554ee6cec891bbd1380d76b541233fe14db5e8f0fe114a5194ad6",
+        "original_quote": "We had a breakthrough in 1986. I got a licensing agreement with a little Japanese company named Apex, so we had some income coming in.",
+        "full_paragraph_read": true,
+        "quote_present_in_frozen_original_raw_HTML": true
+      },
+      {
+        "source_id": "GIZMODO_YAMAMOTO",
+        "raw_sha256": "ed4d6da4626b489bcf3bfeb59c89410fa8bdfd009f81a58f6a32317408c71d25",
+        "paragraphs_sha256": "d579e8a3b1fcd8c58a393b333291dd217149d59935439f7a0e44b60e9f7fdbc4",
+        "paragraph": 46,
+        "paragraph_text_sha256": "736f5bc89ec9f9e8c832e92f9cab824da1a6f9c6fae0c2856be73c3e7921acdf",
+        "original_quote": "日本で作ってくれるなら販売の権利を譲る",
+        "full_paragraph_read": true,
+        "quote_present_in_frozen_original_raw_HTML": true
+      }
+    ],
+    "interpretation_override": {
+      "path": "source-correction-r2.json",
+      "sha256": "d75f0909bd4dd4f44e484b92ff25caa8620b810a25671507cadb402f93b2a988",
+      "accepted": true,
+      "frozen_D16_getting_Apex_licence_caveat_is_not_evidence": true,
+      "frozen_research_unchanged": true
+    }
+  },
+  "delta_identity_checks": {
+    "video_only_one_JSON_leaf_changed": "/scenes/101/lines/0/text",
+    "narration_only_one_JSON_leaf_changed": "/101/text",
+    "claims_only_changes": [
+      "candidate_revision R1 to R2",
+      "rows/101/claim exact replacement",
+      "source_interpretation_override binding"
+    ],
+    "remaining_140_narration_lines_exactly_equal": true,
+    "all_138_prompts_and_cameras_exactly_equal": true,
+    "all_25_loops_exactly_equal": true,
+    "all_8_opening_lines_exactly_equal": true,
+    "all_claim_source_anchors_and_limits_exactly_equal": true,
+    "image_reuse_pairs_and_request_parameters_exactly_equal": true,
+    "series_only_candidate_revision_changed": true,
+    "script_and_claims_markdown_differences": "Exact swdr replacement plus revision/count annotations; no other narration changed."
+  },
+  "projection_checks": {
+    "video_narration_projection_exact": true,
+    "script_narration_projection_exact": true,
+    "claims_narration_projection_exact": true,
+    "all_loop_references_resolve_and_payoffs_follow_setups": true,
+    "lines": 141,
+    "chapters": 7,
+    "shots": 138,
+    "content_cards": 0,
+    "outro": 1,
+    "factual_and_attributed_rows_confirmed": 74,
+    "editorial_question_reaction_and_CTA_rows": 67,
+    "spoken_units_independently_counted": 3303
+  },
+  "written_visual_inheritance": {
+    "r1_all_prompts_read_and_passed": true,
+    "r2_prompts_and_camera_bytes_unchanged": true,
+    "anonymous_English_conceptual_prompts_no_names_logos_readable_text_or_portraits": true,
+    "no_unseen_specific_repair_added": true,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "characters": [],
+    "no_actual_generated_image_verdict_issued": true
+  },
+  "same_image_key_recheck": {
+    "method": "Pure resolveLook + shotCast + shotAppearancePrompt + composeShotPrompt + keyframeKey + Stage.imageKey on both ends, with image selection version 1; no provider, cache or ledger operation.",
+    "request_tuple": {
+      "provider": "minimax",
+      "model": "image-01",
+      "width": 1920,
+      "height": 1080,
+      "size": null,
+      "seed": 1,
+      "negative": "",
+      "references": [],
+      "cast": [],
+      "fixes": [],
+      "takes": 1,
+      "prompt_limit": 1500
+    },
+    "pairs": [
+      {
+        "payoff": "88z5",
+        "teaser": "qggg",
+        "camera": "pan right",
+        "base_key": "8401cae966d37a50",
+        "native_stage_key": "126df4181a46b30f",
+        "composed_prompt_sha256": "6ba15f5c06057a21242bd47ed95357bdb0e65146e03d8c55e1956df981e06eab",
+        "both_ends_match_declared_key": true,
+        "cut_chars": 0
+      },
+      {
+        "payoff": "jyqr",
+        "teaser": "t39s",
+        "camera": "pull out",
+        "base_key": "981dbcaa421bb1a7",
+        "native_stage_key": "9a34a2b9fdf6933b",
+        "composed_prompt_sha256": "dc1cddc123b343c2d70177052a857ccb83dcf9eb247662dd0269bcdf2bee92cf",
+        "both_ends_match_declared_key": true,
+        "cut_chars": 0
+      }
+    ],
+    "written_plan_retained": "Payoff first takes=1; read-only live selected/judge/cache/file SHA guard; cache miss or changed request stops before teaser; both ends ordinary judge; post-crop final selected file and SHA equal; assembly consumes same final image.",
+    "actual_same_asset_verified": false,
+    "actual_final_selected_files": null,
+    "executed": false
+  },
+  "preservation": {
+    "all_316_expected_hash_comparisons_passed_at_end": true,
+    "r2_frozen_files": 20,
+    "r2_freeze": 1,
+    "r1_history_manifest": 1,
+    "r1_original_archive_files": 23,
+    "r1_current_receipt": 1,
+    "frozen_research_files": 3,
+    "raw_index": 1,
+    "raw_files": 203,
+    "related_current_and_fetch_head_snapshots": 32,
+    "current_related_files": 16,
+    "original_backend_file_and_snapshot": 2,
+    "immutable_lexicon_files": 3,
+    "keyframe_code_files": 6,
+    "delta_raw_and_paragraph_indexes": 4,
+    "immutable_dictionary_reinitialized_or_revised": false
+  },
+  "native_facts_marker": {
+    "path": "verify-1.md",
+    "sha256": "03d11b51c5246a6cccd9b9d564eda8f041f0a5ad9853b1d5655d955ab4410a36",
+    "table_rows": 141,
+    "row_ids_order_and_text_match_current_claims_and_narration": true,
+    "confirmed_rows": 74,
+    "out_of_scope_editorial_rows": 67,
+    "not_found_rows": 0,
+    "actual_native_factsChecks_result": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "meaning": "Native facts QA reads the real marker. This is not native narrative-reader acceptance and not evidence of audio, generated images or completed film."
+  },
+  "limits": [
+    "All R1 source limitations remain. Japanese development details are participant recollection in a sponsored interview, Fortune is first-person retrospective and museum dates/roles belong to distinct collection objects.",
+    "1985 Nishiazabu drawing work and 1986 licensing/release accounts remain separate; no precise signing date, executed agreement, retail invoice, tooling loan document or unseen repair is inferred.",
+    "No native/blind or author review conclusions were used. Narrative reader reviews were not performed by this reviewer; the author freeze reports NOT_PREPARED_NOT_READ and actual_native_round_count=0 for both R1 and R2.",
+    "No actual audio listening, pronunciation review, generated image judgement, post-crop same-asset verification, timed subtitles or film QA. Body 720–840 seconds including cold open and voiced CTA remains unmeasured; 3303 units is not an audio-duration PASS.",
+    "No owner approval, exact new US$25 account activation, protected production admission, all-in quote or spending permission is created by SOURCE PASS or native facts marker."
+  ],
+  "native_or_blind_or_author_review_conclusions_used": false,
+  "narrative_reader_review_performed": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "generated_media": false,
+  "git_operations": 0,
+  "backend_mutations": 0,
+  "only_files_written": [
+    "reviews/source-r2-independent.json",
+    "verify-1.md"
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replay the Doraemon R4 author candidate. No network, provider, approval or backend call."""
+"""Replay the Doraemon R6 author candidate. No network, provider, approval or backend call."""
 import hashlib
 import json
 import re
@@ -10,13 +10,13 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 SLUG = 'story-adapt-doraemon-after-fujiko-remake-20261025'
 DATE = '2026-10-26'
-EXTERNAL = Path('/workspace/work/brand-story-20261025/doraemon-audit/author-r4')
+EXTERNAL = Path('/workspace/work/brand-story-20261025/doraemon-audit/author-r6')
 RUNTIME = EXTERNAL / 'free-runtime'
 MEDIA = EXTERNAL / 'media'
 RESEARCH = json.loads((HERE/'research-original.claims.json').read_text())
 SOURCES = {s['id']: s for s in RESEARCH['sources']}
 BASE = {c['id']: c for c in RESEARCH['claims']}
-ROWS = json.loads((HERE/'rows-r4.json').read_text())
+ROWS = json.loads((HERE/'rows-r6.json').read_text())
 CHAPTERS = {'h':'開場濃縮','a':'另取一張紙，留下原件','b':'一封郵件，把作者帶到月球前','c':'舊設定接上新朋友','d':'把說話交給畫面，再重新寫成書','e':'找到這一版真正做工作的人'}
 TITLE = '哆啦Ａ夢：作者走了30年，誰還在寫新故事？｜品牌故事'
 VOICE_STYLE = subprocess.check_output(['node','--input-type=module','-e',"import {STORY_VOICE_STYLE} from './tools/video/automation/register.mjs'; console.log(STORY_VOICE_STYLE);"],cwd=ROOT,text=True).strip()
@@ -96,7 +96,7 @@ def main():
     }.items():
         assert sha(HERE/name)==want, f'Protected research drift: {name}; stop.'
     anchors=make_anchors();narration=[];claims=[];scenes=[];visual=[];index={};sceneindex={}
-    baseline=json.loads((HERE/'history/r3/video.json').read_text())
+    baseline=json.loads((HERE/'history/r5/video.json').read_text())
     base_scenes={s['id']:s for s in baseline['scenes']}
     cameras=['push in','pan left','pull out','tilt down','pan right','tilt up']
     framings=['Close-up','Overhead view','Medium close-up','Medium shot']
@@ -137,22 +137,22 @@ def main():
            'youtube':{'category_id':27,'made_for_kids':False,'default_language':'zh-TW','title':TITLE,'description':'一張原稿留下來，新故事卻仍需要別人動筆。從むぎわらしんたろう另紙接續的回顧，追到2019年辻村深月與八鍬新之介處理月球資料、友情動機、台詞和小說化的工作，再讀2025、2026的版本署名。角色是虛構的，這份製作故事依當事人訪談與官方書目撰寫；匿名插圖不是歷史重建。\n\n來源（查閱2026-10-26）\n'+'\n'.join(s['title']+'\n'+s['url'] for s in sources),'tags':['哆啦A夢','品牌故事','藤子F不二雄','辻村深月','腳本','漫畫','電影改編'],'video_id':None},
            'thumbnail':{'template':'thumb','data':{'layout':'d','headline':'誰還在寫？','sub':'作者走了30年','brand':'哆啦Ａ夢','tag':'品牌故事','shot':sceneindex['h02'][0]}},'sources':sources,'assets':[],'scenes':scenes}
     dump('video.json',video);dump('narration-only.json',narration)
-    dump('claims.json',{'schema_version':1,'role':'AUTHOR_MAPPING_NOT_INDEPENDENT_VERDICT','revision':'doraemon-r4','slug':SLUG,'lines':claims,'written_visuals':visual,'anchor_file':'source-anchors-r1.json','research_original_unchanged':True,'research_original_claims_sha256':sha(HERE/'research-original.claims.json'),'independent_source_review':'PENDING','unvoiced_background':json.loads((HERE/'edits-r3.json').read_text())['retired_unvoiced_background'],'cached_source_notice':'D03 uses the retained official interview SEARCH EXTRACTION, origin HTTP503; no origin HTML200 or 1996 serial pages claimed.'})
+    dump('claims.json',{'schema_version':1,'role':'AUTHOR_MAPPING_NOT_INDEPENDENT_VERDICT','revision':'doraemon-r6','slug':SLUG,'lines':claims,'written_visuals':visual,'anchor_file':'source-anchors-r1.json','research_original_unchanged':True,'research_original_claims_sha256':sha(HERE/'research-original.claims.json'),'independent_source_review':'PENDING','unvoiced_background':json.loads((HERE/'edits-r3.json').read_text())['retired_unvoiced_background'],'cached_source_notice':'D03 uses the retained official interview SEARCH EXTRACTION, origin HTTP503; no origin HTML200 or 1996 serial pages claimed.'})
     dump('source-anchors-r1.json',{'schema_version':1,'role':'AUTHOR_ANCHORS_PENDING_INDEPENDENT_CHECK','anchors':list(anchors.values()),'research_original_claims_sha256':sha(HERE/'research-original.claims.json'),'new_raw_downloads':0,'old_raw_modified':False})
     dump('series.json',{'kind':'story','slug':'brand-stories-adapt-20261017','episode':26,'chapter':1,'title':TITLE,'logline':'保存原紙與寫出新稿是不同工作；沿接稿、2019編劇實作及2025/2026署名看同一世界如何繼續。','names':names,'characters':[],'visual_tier':'stills','compilation':False,'target_minutes':13,'image_model':'image-01','look':{'preset':'cute-mystery'}})
-    script=['# Doraemon remake｜R4作者稿','',f'新slug：{SLUG}。作者候選；所有獨立、實聲、影像與站主關卡待審。','']
+    script=['# Doraemon remake｜R6作者稿','',f'新slug：{SLUG}。作者候選；所有獨立、實聲、影像與站主關卡待審。','']
     for ch,title in CHAPTERS.items():
         script+=['## '+title,'']
         for n in narration:
             if n['chapter']==title:script += [f"**{n['id']}** {n['text']}",'']
     (HERE/'script.md').write_text('\n'.join(script)+'\n')
-    md=['# Doraemon R4逐句來源與書面配鏡','','作者建立的待審映射，沒有CONFIRMED/PASS或獨立查核效力。完整原語短引、LF定位、raw/text精確SHA及HTTP層級在source-anchors-r1.json；claims.json將它們逐句展開。','','| 旁白ID | 錨點 | 性質 |','| --- | --- | --- |']
+    md=['# Doraemon R6逐句來源與書面配鏡','','作者建立的待審映射，沒有CONFIRMED/PASS或獨立查核效力。完整原語短引、LF定位、raw/text精確SHA及HTTP層級在source-anchors-r1.json；claims.json將它們逐句展開。','','| 旁白ID | 錨點 | 性質 |','| --- | --- | --- |']
     md += [f"| {c['id']} | {', '.join(c['source_anchors']) or '無新增史實'} | {c['kind']} |" for c in claims]
     md += ['','## 來源邊界','','D03僅取得CoroCoro官方對談的搜尋工具快取，origin本輪HTTP503；不能寫成取得原HTML200，亦不是已讀1996逐頁原件。D04/D05為2017回憶書特設頁的第一人稱留言，不是同期臨終紀錄。D06–D09分清回憶出版、劇場、單行本與電子配信；沒有讀完整130頁回憶書。D29只引用官方附件介紹，沒有讀160頁縮印腳本。角色雖為fiction，本片的製作經歷按非虛構處理。沒有臨終命令、逐頁上墨/ネーム邊界、AI/欺詐代筆或單一總接班人的推斷。','','A05身份／筆名沿革只留不口播的背景錨點；原作者已由a03辨認。R3 c05–c07只交代導演工作要求與當事人實際回應，不承諾解答電影友情或補寫電影情節。','','A01–A07是本輪作者從已保全原語raw新增的精確定位，未改研究三檔，也不是新增獨立來源判定。所有意見、假設與敘事連接都按kind明列；旁白不冒充當事人未公開心理。','','## 書面配鏡','','所有scene都是合法shot模板的匿名概念插圖；空白紙、空白格、無字書與一般工具只示意工作，無品牌/產品/真人名、logo、可讀字、真人長相。不得畫出任何可識別角色、剪影、部位或招牌道具；不得將來源漫畫、照片、電影或email當製片素材。實際圖尚未生成，書面配鏡與實圖judge均待。','','## 預告共圖','','唯一前向事件預告h04的所有拆分scene，必與b08回收的所有拆分scene共用同一完整原生request。image-reuse-plan.json由Stage.imageKey純本機重算；先回收景takes1、驗收，預告前live cache命中及實檔SHA必須吻合，miss即停。兩端各自judge，裁切後選定實檔與組片引用也必須相同；目前actual_same_asset_verified=false。開場h02/h03為原紙的起始場景，不是另一個未來事件預告。']
     (HERE/'claims.md').write_text('\n'.join(md)+'\n')
     counts={'method':'native spokenUnits-compatible author count; exact native count follows in lint receipt','spoken_units_total':sum(units(n['text']) for n in narration),'spoken_units_cold_open':sum(units(n['text']) for n in narration if n['chapter']==CHAPTERS['h']),'spoken_units_voiced_cta':sum(units(r['text']) for r in ROWS if r['kind']=='cta'),'chapters':{title:sum(units(n['text']) for n in narration if n['chapter']==title) for title in CHAPTERS.values()},'lines':len(narration),'scenes':len(scenes),'shots':len(scenes),'cards':0,'loops':len(LOOPS)}
     counts['speech_body_includes_cold_open_and_voiced_cta']=counts['spoken_units_total'];counts['estimated_speech_seconds_at_4_5']=round(counts['spoken_units_total']/4.5,2)
-    dump('producer-notes.json',{'schema_version':1,'revision':'doraemon-r4','role':'AUTHOR_PRODUCTION_PLAN_NOT_ADMISSION_OR_APPROVAL','slug':SLUG,'original_slug':'story-adapt-doraemon-after-fujiko','fresh_production':True,'counts':counts,
+    dump('producer-notes.json',{'schema_version':1,'revision':'doraemon-r6','role':'AUTHOR_PRODUCTION_PLAN_NOT_ADMISSION_OR_APPROVAL','slug':SLUG,'original_slug':'story-adapt-doraemon-after-fujiko','fresh_production':True,'counts':counts,
       'runtime':{'target_minutes':13,'speech_body_seconds_required':[720,840],'body_includes':['cold open','all spoken narration','voiced CTA'],'body_excludes':['new 5-second intro after cold open','new 21-second v4 outro'],'new_bookends_seconds':26,'actual_speech_seconds':None,'actual_bookend_assets_verified':False,'capacity_risk':'About3500 units at4.5/s is a planning calculation only. No measured voice; do not lower13minutes, slow delivery, insert pauses, repeat facts or count bookends to make duration.'},
       'media':{'provider':'minimax','model':'image-01','look':{'preset':'cute-mystery'},'shot_share_by_scene_count':1,'shot_share_by_spoken_units':1,'max_consecutive_cards':0,'runtime_root':str(RUNTIME),'media_base':str(MEDIA),'media_outside_runtime_and_repository':True,'actual_generated_media':0,'actual_same_asset_verified':False},
       'delivery':{'primary_locale':'zh-TW','burn_in':True,'cc':True,'default_later_locales':['en','ja','ko','es','pt','id','vi','th'],'language_media_status':'PENDING_AFTER_CHINESE_FINAL','retain':['clean master without burned captions','original image sources','dry voices','music/effects stems','source-bound text and CC']},

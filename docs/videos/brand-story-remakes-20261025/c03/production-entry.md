@@ -13,7 +13,7 @@
 
 1. 已完成：兩筆後台企劃／劇本核准均已用官方`review-pull`匯入精確雜湊，見`backend-status.json`。其後正式TTS命令在供應商派送前以`video_budget_preproduction_hold`拒絕，exit 3、付費0；見`production-after-approval.json`。
 2. 依現行`video_budget`受審啟用流程處理**僅此新slug**的帳戶：讀回供應商帳戶、模型、區域與價格、原C03歷史結案、各operation的reserved／uncertain／settled及餘額，保留原始證據。新slug本機與API hold仍有效；現有token無管理啟用能力，media/status也未暴露C03帳戶明細。
-3. 讀 [pricing-and-entry.json](pricing-and-entry.json)：120個初始TTS請求／4194計費字元、100個插畫景／含首次每景最多3次，圖像目錄估價US$4.05；1首Lyria目錄價US$0.08，實際配樂報價待TTS時間線。語音、轉寫、Jev、重錄、未明費用仍須一起計入全片。檔案也列原生模型保守單次上界；它們不能當實際帳單或保證全片可在US$25完成。維持既有US$25停線，不能把US$200泛上限、字元額度或原集餘額當新版授權。未完成全片入場核對前不派付費請求。
+3. 目前報價依 [唯讀實作稽核](production-quote-gap-audit.md) 補充：舊 [pricing-and-entry.json](pricing-and-entry.json) 原樣保留，圖像US$4.05與Lyria US$0.08屬目錄估算，非全片實際帳單。service 只逐操作檢查「已保留（含 uncertain）＋已結算＋下次 cap ≤ US$25」；所有未來 model-wide caps 相加 >25，不能單獨判定受審啟用後的合法順序流程都不能開始，也不能保證完片，沒有新增 sum-all-caps≤25 的入場 gate。仍須以選定實際 model／supplier account／region／rates 核對全片 quote，含八語 dub、ASR、Jev、允許重錄與未明費用；每個 logical shot 跨 prompt／seed／重試累計含首次最多3 take，不因新 set 重置授權額度。維持US$25及精確新帳戶／歷史帳本／受審activation條件，不借US$200、字元額度或原集餘額。尚無已選定Claude唯讀host probe安全JSON，目前仍不可支出、付費0；未完成既定入場核對前不派付費請求。
 4. 已完成：正式`mokaair-brand-package-v4-endscreen`已依PR1860下載並安裝，5秒片頭與21秒片尾的SHA／規格及完整AV decode已通過；詳見[正式品牌素材](../branding-pr1860/README.md)及[全批必要規則](../branding-pr1860/required-branding.json)。舊C03音訊、插圖仍不是從零重製的前置條件。
 
 以上請保留可審閱讀回；不移除整個C系列保護、不刪或挪用原C03帳本、不把新slug改成舊slug借放行。原C03歷史US$25結案與10/24收尾啟用的文檔，不是新帳戶的即時餘額。

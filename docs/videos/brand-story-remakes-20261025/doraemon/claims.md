@@ -1,4 +1,4 @@
-# Doraemon R4逐句來源與書面配鏡
+# Doraemon R6逐句來源與書面配鏡
 
 作者建立的待審映射，沒有CONFIRMED/PASS或獨立查核效力。完整原語短引、LF定位、raw/text精確SHA及HTTP層級在source-anchors-r1.json；claims.json將它們逐句展開。
 
@@ -54,8 +54,6 @@
 | d1b102 | D15 | question |
 | d1c011 | D15 | attributed |
 | d1c012 | D15 | attributed |
-| d1c021 | D15 | reasoning |
-| d1c022 | D15 | reasoning |
 | d1c02b1 | A06 | question |
 | d1c02b2 | A06 | question |
 | d1c02c1 | A06 | attributed |
@@ -66,8 +64,6 @@
 | d1c031 | A02 | attributed |
 | d1c032 | A02 | attributed |
 | d1c041 | A02 | opinion |
-| d1c042 | A02 | opinion |
-| d1c043 | A02 | opinion |
 | d1c051 | D16 | question |
 | d1c061 | D16 | attributed_work_requirement |
 | d1c062 | D16 | attributed_work_requirement |

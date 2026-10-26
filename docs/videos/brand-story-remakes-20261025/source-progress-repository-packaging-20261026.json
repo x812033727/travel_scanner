@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "Source progress checkpoint repository packaging only; protected local evidence left intact",
+  "local_primary_source_audio_not_published_to_git": {
+    "path": "dyson/history/r4/external-source-r4/MASTERS_SCALE.original.mp3",
+    "bytes": 34911054,
+    "sha256": "945c52ba770fb938fff7274d81b63db47466696476d53ecc5a12d0d4b60de321",
+    "reason": "Primary-source binary is retained locally with original HTTP receipt; repository checkpoint is text-only. No listening or generated story audio claimed.",
+    "file_bytes_changed": false
+  },
+  "preserved_whitespace_exception": {
+    "path": "doraemon/history/r5/script.md",
+    "sha256": "618188d5779de3b9fcbab5dc8f6ea4a3b5ca57884e133b5c828f1761f7d70810",
+    "bound_by": "doraemon/history/r5/author-freeze-r5.json",
+    "bound_by_sha256": "f489f466839aa8555f56c5c217eedb366931b4bc5b64caedb06462bd1c404ddf",
+    "git_diff_check": "new blank line at EOF at line282",
+    "reason": "Exact immutable author-script bytes preserved; no authored whitespace change in current scripts."
+  },
+  "other_new_whitespace_errors": 0,
+  "paid_provider_requests": 0
+}
