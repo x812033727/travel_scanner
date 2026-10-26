@@ -11,15 +11,14 @@
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.",
-    "performance": "像陪同事完成一份真實比價表。開場帶疑問但不誇張；來源核對講得清楚；稅與運費分句說。修訂版先收住，數量改後換名次才加重，結尾自然收束。"
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
   },
   "youtube": {
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
-    "description": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。",
+    "description": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/a2c088e49e93f1a6c0ccea8730a23da43bde74ee/docs/videos/ai-pdf-quotes-to-comparison/materials",
     "tags": [
       "AI 教學",
       "PDF 比價",
@@ -35,10 +34,11 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "**換人贏了**",
+      "headline": "**先算總價**",
       "tag": "AI 比較 PDF 報價",
-      "sub": "單價之外，還差這一欄",
-      "layout": "a"
+      "sub": "稅與運費，缺一項都不同",
+      "layout": "a",
+      "asset": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png"
     }
   },
   "sources": [
@@ -53,7 +53,13 @@
       "checked_on": "2026-10-26"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+      "source": "本次原創SVG圖解；來源 diagrams/pdf-quotes-hero.svg；十張實算A2100/B2050/C未知",
+      "license": "Original Mokaair teaching material; no external stock photo"
+    }
+  ],
   "scenes": [
     {
       "id": "opening",
@@ -68,7 +74,8 @@
         {
           "id": "6vwc",
           "text": "最低的單價，現在還不能直接排第一。",
-          "emotion": "壓低開場，句尾留一點疑問"
+          "emotion": "壓低開場，句尾留一點疑問",
+          "pause_after_ms": 900
         }
       ],
       "chapter": "最低單價，能直接下單？"
@@ -167,7 +174,8 @@
       "lines": [
         {
           "id": "kv5r",
-          "text": "如果數量翻倍，原本的答案還能用嗎？"
+          "text": "如果數量翻倍，原本的答案還能用嗎？",
+          "pause_after_ms": 1200
         }
       ]
     },
@@ -365,7 +373,8 @@
         },
         {
           "id": "scia",
-          "text": "如果只讀首頁，這張比較表一開始就少了一筆錢。"
+          "text": "如果只讀首頁，這張比較表一開始就少了一筆錢。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
@@ -636,7 +645,8 @@
         },
         {
           "id": "g3vp",
-          "text": "這裡最值得看的是乙的含稅標示，還有丙未報的運費。"
+          "text": "這裡最值得看的是乙的含稅標示，還有丙未報的運費。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
@@ -659,7 +669,7 @@
         },
         {
           "id": "at27",
-          "text": "可是那個排序，還沒有把稅和送達費用放進來。"
+          "text": "可是這個排序，還沒有把稅和送達費用放進來。"
         }
       ],
       "chapter": "含稅和運費要算到同一個終點",
@@ -700,7 +710,7 @@
       "lines": [
         {
           "id": "d8bc",
-          "text": "這個對照只是在排序原報單價，並沒有判斷能不能直接下單。",
+          "text": "這張只排了原報單價，還看不出哪一家能直接下單。",
           "emotion": "數字前稍停，清楚但不拖慢"
         },
         {
@@ -863,7 +873,7 @@
         },
         {
           "id": "ehby",
-          "text": "如果你改了需求，就重新產生結果，別把靜態數值當成會自動更新。"
+          "text": "表裡是已經算好的數字，改了需求，就要重新產生一次結果。"
         }
       ],
       "claims": [
@@ -886,7 +896,8 @@
         },
         {
           "id": "35s2",
-          "text": "如果小計已含稅，旁邊的稅額只是說明，就不能再加一次。"
+          "text": "如果小計已含稅，旁邊的稅額只是說明，就不能再加一次。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
@@ -1043,7 +1054,8 @@
         },
         {
           "id": "pdxs",
-          "text": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。"
+          "text": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
@@ -1227,7 +1239,8 @@
         },
         {
           "id": "zqts",
-          "text": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。"
+          "text": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
@@ -1245,7 +1258,7 @@
       "lines": [
         {
           "id": "q57z",
-          "text": "現在你的需求改了，同樣的明信片，要印二十張。",
+          "text": "後來你的需求改了，同樣的明信片，要印二十張。",
           "emotion": "自然銜接上一句，重點輕輕加重"
         },
         {
@@ -1533,7 +1546,8 @@
         },
         {
           "id": "nvu3",
-          "text": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。"
+          "text": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。",
+          "pause_after_ms": 1200
         }
       ],
       "claims": [
