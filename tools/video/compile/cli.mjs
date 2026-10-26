@@ -13,7 +13,8 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { commitBrandedVideo, wrapVideo } from "../assemble/branding.mjs";
 import { checkProbe, concatList, ebur128Args, parseEbur128, probeArgs, segmentArgs } from "../assemble/plan.mjs";
 import { readApprovals, sha256File } from "../core/approvals.mjs";
-import { presentationTimeline, selectBrandingForBuild, shiftBrandingCues } from "../core/branding.mjs";
+import { siteBrandingNotice } from "../branding/site.mjs";
+import { pinsDefault, presentationTimeline, readDefaultBranding, selectBrandingForBuild, shiftBrandingCues } from "../core/branding.mjs";
 import { toSrt, toVtt } from "../core/captions.mjs";
 import { chapterList, compilationHash, compilationLayout, compilationTimeline, isCompilation, mergeCaptions, totalFrames } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -121,7 +122,11 @@ export async function run(command, args, ctx) {
     return EXIT.usage;
   }
   const { episodes, bytes } = cuts;
-  const branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"] ?? false, now: ctx.now() });
+  const choice = { doc, workdir, workBase, adoptCurrent: values["adopt-branding"] ?? false, now: ctx.now() };
+  const branding = await selectBrandingForBuild(choice);
+  // As in assemble: a build taking this machine's package says when the site's worker uses another.
+  const siteNotice = pinsDefault(choice) ? await siteBrandingNotice({ doc, local: readDefaultBranding(workBase, doc), ctx }) : null;
+  if (siteNotice) ctx.stdout.write(`${siteNotice}\n`);
   const layout = compilationLayout(doc, episodes, { branding });
   const bodyFrames = totalFrames(layout);
   const total = bodyFrames + (branding ? branding.intro.frames + branding.outro.frames : 0);
@@ -275,6 +280,7 @@ export async function run(command, args, ctx) {
   ctx.stdout.write(`${final}: ${episodes.length} episodes, ${total} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS; ${encoded} of ${cards.length} cards encoded in ${seconds} s\n`);
   ctx.stdout.write(`captions: ${Object.keys(captions.locales).join(", ") || "none"}${Object.keys(captions.skipped).length ? `; skipped ${Object.entries(captions.skipped).map(([locale, missing]) => `${locale} (no current file in ${missing.join(", ")})`).join(", ")}` : ""}\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
+  if (siteNotice) ctx.stdout.write(`${siteNotice}\n`);
   if (!checks.ok) return EXIT.lint;
   ctx.stdout.write(`next: node tools/video/cli.mjs qa --slug ${doc.slug}\n`);
   return EXIT.ok;

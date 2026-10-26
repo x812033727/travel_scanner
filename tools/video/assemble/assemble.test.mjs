@@ -139,7 +139,8 @@ test("native auto-fit probes every directed clip and refuses a short action befo
   const probed = [];
   let discoveries = 0;
   let stderr = "";
-  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+  let stdout = "";
+  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write(value) { stdout += value; } }, stderr: { write(value) { stderr += value; } } };
   const tools = { ffmpeg: "fixture-encoder", ffprobe: "fixture-probe", version: "synthetic test" };
   const dependencies = {
     async locateFfmpeg(env) {
@@ -163,6 +164,8 @@ test("native auto-fit probes every directed clip and refuses a short action befo
   assert.equal(discoveries, 1);
   assert.deepEqual(probed, doc.scenes.filter((scene) => scene.template === "shot").map((scene) => `clips/${scene.id}.mp4`));
   assert.match(stderr, /bridge-action must cover its 240 frames at natural speed with no frozen tail/);
+  // A first build takes this machine's bookends, so it asks the site first; without a token it says so.
+  assert.match(stdout, /^branding: not compared with the site's worker \(no video tool token/m);
   assert.equal(existsSync(marker), false, "no clip, motion, subtitle or final encoding starts");
   assert.equal(existsSync(path.join(box.workdir, "segments")), false, "even earlier valid shots are not encoded before the last shot is checked");
 });

@@ -3,7 +3,9 @@
 // with the judge's fixes for the ones before it, the second round with the first round's. The
 // chosen sheet is the reference every keyframe of that character is generated from, which is
 // what keeps a character the same from shot to shot. Writes characters/manifest.json (the look
-// gate binds to it), one PNG per candidate under characters/<id>/, and a contact sheet.
+// gate binds to it), one PNG per candidate under characters/<id>/, and a contact sheet. A
+// character whose sheets were sent back (resetSheets, called by the worker's look prompt fix) is
+// drawn again on the next seeds, asked with what was said about the sheets it had.
 import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -15,12 +17,17 @@ import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
-import { fixClauses, fixesBefore, retakePrompt } from "./keyframes.mjs";
+import { FIX_ARROW, fixClauses, fixesBefore, retakePrompt } from "./keyframes.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { reuseSheets } from "./series-store.mjs";
 import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_LOOK_ROUNDS = 2;
+// The seeds of a character drawn again start this far on for each redraw (`redraws` in its
+// manifest entry): a prompt the fix could not change is not answered with the same pictures.
+export const SEEDS_PER_REDRAW = 1000;
+// How much of the owner's note on a sheet sent back goes into the redrawn seeds' prompt.
+const SENT_BACK_NOTE_CHARS = 300;
 export const DEFAULT_SHEET_PROMPT = "character design sheet: front view, three-quarter view and full body side by side, neutral standing pose, plain light grey background, even studio lighting, no text";
 // What the judge scores a sheet on; keys are what the manifest and the review page show.
 export const SHEET_RUBRIC = [
@@ -57,6 +64,55 @@ export function suggestedOf(candidates) {
   const passed = candidates.filter((candidate) => candidate.judge?.passed);
   if (!passed.length) return null;
   return passed.reduce((best, candidate) => (candidate.judge.overall > best.judge.overall ? candidate : best)).n;
+}
+
+/** The seed of candidate `index` of `round` for an entry drawn again `redraws` times. */
+export const sheetSeed = (entry, round, index) => (entry.redraws ?? 0) * SEEDS_PER_REDRAW + (round - 1) * 100 + index;
+
+/** What every redrawn seed of an entry is asked to correct: the fixes of the sheets sent back, oldest first. */
+const carriedFixes = (entry) => (entry.sent_back ?? []).flatMap((each) => each.fixes ?? []);
+
+/**
+ * The sheets of the characters a look prompt fix is for (`targets`: `{ id, problems }`, the
+ * owner's note from /admin/videos or the judge's problems) are drawn again by the next look run:
+ * their candidates leave the manifest, `redraws` counts the resets (the next seeds start
+ * SEEDS_PER_REDRAW further on), and what was said about the sheets they had is kept under
+ * `sent_back` — the judge's fix clauses, and an owner's note whole — which every redrawn seed is
+ * asked with. The characters the owner approved in the same round (`picks`: id → candidate n)
+ * keep the pick as `owner_pick` and `suggested`, so the review that review-push sends again
+ * (the manifest's hash changes with the redraw) suggests what the owner chose, and a hands-off
+ * series approves it on arrival instead of asking again. An episode of a series cannot change a
+ * character's appearance (the setting book's cast is taken word for word), so without this a look
+ * fix left every seed drawn and the next look drew nothing (系統說我是 BUG e001-redo1, 2026-10-25).
+ * Returns the ids reset.
+ */
+export function resetSheets(manifest, targets, { picks = {}, now = new Date() } = {}) {
+  const reset = [];
+  for (const target of targets ?? []) {
+    const entry = manifest.characters?.[target.id];
+    if (!entry) continue;
+    const said = (target.problems ?? []).map((problem) => String(problem).trim()).filter(Boolean);
+    const notes = said.filter((problem) => !problem.includes(FIX_ARROW)).map((problem) => problem.slice(0, SENT_BACK_NOTE_CHARS));
+    const fixes = [...new Set([...fixClauses(said), ...notes])];
+    manifest.characters[target.id] = {
+      name: entry.name,
+      ...(entry.prompt ? { prompt: entry.prompt } : {}),
+      candidates: [],
+      suggested: null,
+      needs_review: false,
+      redraws: (entry.redraws ?? 0) + 1,
+      sent_back: [...(entry.sent_back ?? []), { at: now.toISOString(), said, fixes }],
+    };
+    reset.push(target.id);
+  }
+  for (const [id, entry] of Object.entries(manifest.characters ?? {})) {
+    if (reset.includes(id)) continue;
+    const pick = picks[id] ?? entry.owner_pick;
+    if (!Number.isInteger(pick) || !(entry.candidates ?? []).some((candidate) => candidate.n === pick)) continue;
+    entry.owner_pick = pick;
+    entry.suggested = pick;
+  }
+  return reset;
 }
 
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.characters);
@@ -162,11 +218,15 @@ export async function run(command, args, ctx) {
     for (let round = 1; round <= MAX_LOOK_ROUNDS && !stopped; round++) {
       if (round > 1 && suggestedOf(entry.candidates) !== null) break;
       for (let index = 1; index <= count; index++) {
-        const seed = (round - 1) * 100 + index;
+        const seed = sheetSeed(entry, round, index);
         if (entry.candidates.some((candidate) => candidate.seed === seed && candidate.judge)) continue;
-        // The judge's fixes for the candidates before this one go into its prompt.
-        const fixes = fixesBefore(entry.candidates, seed);
-        if (fixes.length) ctx.stdout.write(`${character.id} seed ${seed}: asked with the corrections of the candidates before: ${fixes.join("; ")}\n`);
+        // What the sheets sent back were told (resetSheets), then the judge's fixes for the
+        // candidates before this one, go into its prompt.
+        const carried = carriedFixes(entry);
+        const before = fixesBefore(entry.candidates, seed);
+        const fixes = [...new Set([...carried, ...before])];
+        if (carried.length) ctx.stdout.write(`${character.id} seed ${seed}: asked with the corrections of the sheets sent back${before.length ? " and of the candidates before" : ""}: ${fixes.join("; ")}\n`);
+        else if (fixes.length) ctx.stdout.write(`${character.id} seed ${seed}: asked with the corrections of the candidates before: ${fixes.join("; ")}\n`);
         let picture;
         try {
           picture = await stage.image({

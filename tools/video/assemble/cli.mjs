@@ -13,7 +13,8 @@ import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mix
 import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
-import { INTRO_AT_START, introAtFrame, placeBranding, presentationTimeline, readBranding, selectBrandingForBuild } from "../core/branding.mjs";
+import { siteBrandingNotice } from "../branding/site.mjs";
+import { INTRO_AT_START, introAtFrame, pinsDefault, placeBranding, presentationTimeline, readBranding, readDefaultBranding, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -302,7 +303,12 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.missing;
   }
-  let branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"], series: project.series, introAfterCondensation: values["intro-after-condensation"] });
+  const choice = { doc, workdir, workBase, adoptCurrent: values["adopt-branding"], series: project.series, introAfterCondensation: values["intro-after-condensation"] };
+  let branding = await selectBrandingForBuild(choice);
+  // A build that takes this machine's package says before it encodes, and again at the end, when
+  // the site's worker builds with another (docs/videos/BRANDING.md §本機成片要跟正式站同一包).
+  const siteNotice = pinsDefault(choice) ? await siteBrandingNotice({ doc, local: readDefaultBranding(workBase, doc), ctx }) : null;
+  if (siteNotice) ctx.stdout.write(`${siteNotice}\n`);
   if (branding) await verifyBrandingAssets(branding, { tools });
   // An intro after the condensation plays at the second chapter's first frame (docs/videos/BRANDING.md).
   // A first build with a single chapter has no condensation to follow, so its intro stays first;
@@ -656,6 +662,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   const bedText = `${bed === null ? "" : `, music bed ${bed} LUFS`}${effects.length ? `, ${effects.length} sound effects${marginText}` : ""}`;
   ctx.stdout.write(`${branding && !checks.ok ? candidate : final}: ${presented.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
+  if (siteNotice) ctx.stdout.write(`${siteNotice}\n`);
   if (!checks.ok) return EXIT.lint;
   if (introAt > 0) ctx.stdout.write(`intro plays after the first chapter, at ${(introAt / FPS).toFixed(2)} s; captions, chapters and dubs follow it once rebuilt\n`);
   if (values["intro-after-condensation"]) ctx.stdout.write("branding.json now records intro_at after_first_chapter; any final or publish approval and upload package of the earlier cut no longer match this file: rebuild captions, dubs and the package, then send it for review again\n");

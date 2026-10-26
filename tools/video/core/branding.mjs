@@ -218,6 +218,20 @@ export async function selectBrandingForBuild({ doc, workdir, workBase, adoptCurr
   return placeBranding(readDefaultBranding(workBase, doc), defaultIntroAt(doc, series));
 }
 
+/**
+ * Whether this build takes the machine's current package (readDefaultBranding) rather than a pin:
+ * a first build, an adoption, or an intro re-placed on a cut that has no pin yet. Only such a build
+ * can differ from the site's worker, so only it is compared with the site (branding/site.mjs).
+ * The same conditions as selectBrandingForBuild, without reading or validating any package.
+ */
+export function pinsDefault({ doc, workdir, adoptCurrent = false, series = null, introAfterCondensation = false }) {
+  if (adoptCurrent) return true;
+  if (introAfterCondensation) return !readBranding(workdir);
+  if (!LONG_FORMATS.has(doc?.format) || episodeOfCompilation(doc, series)) return false;
+  if (readBranding(workdir)) return false;
+  return !(adoptionRefusal({ doc, workdir, series }) || previouslyBuilt(workdir));
+}
+
 /** The pin as written: the placement is always recorded, even the original "start". */
 export function pinRecord(branding, now = new Date()) {
   const pin = validateBranding(branding);

@@ -460,6 +460,48 @@ async def test_the_fallback_runs_under_the_same_conditions_as_the_judge_s_pick()
     assert await service.auto_look_fallback(session, UNSUGGESTED) is None
 
 
+# What the judge wrote for 江河 on 2026-10-25 (e001-redo1): it failed ``clean`` on every sheet
+# without saying what or where, so each line is the placeholder app.video_media.judge writes.
+PLACEHOLDER_CLEAN = (
+    "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing"
+    " free of faults: correct hands and fingers, no warped face, nothing floating or"
+    " duplicated?) → write the correction into the prompt"
+)
+
+
+def test_a_placeholder_clean_line_does_not_block_a_sheet() -> None:
+    sheets = {
+        "options": [
+            {
+                "key": "A",
+                "judge": {"overall": 6.2, "problems": [PLACEHOLDER_CLEAN, "style: 太寫實 → 貼圖"]},
+            },
+            {"key": "B", "judge": {"overall": 5.8, "problems": [PLACEHOLDER_CLEAN]}},
+            {"key": "C", "judge": {"overall": 6.0, "problems": [
+                "recognizable: the judge found it but did not say what or where (asked: …)"
+                " → write the correction into the prompt",
+                PLACEHOLDER_CLEAN,
+            ]}},
+        ],
+        "suggested": None,
+    }
+    assert service.look_fallback_pick(sheets, 7) == ("A", 6.2, []), "placeholders block nothing"
+    # A described fault still does, placeholder or not beside it.
+    described = {
+        **sheets,
+        "options": [
+            *sheets["options"],
+            {"key": "D", "judge": {"overall": 6.5, "problems": [
+                PLACEHOLDER_CLEAN,
+                "clean: the side-profile character is duplicated on the right → one figure only",
+            ]}},
+        ],
+    }
+    assert service.look_fallback_pick(described, 7) == (
+        "A", 6.2, ["D（clean: the side-profile character is duplicated on the right）"]
+    )
+
+
 @pytest.mark.parametrize(
     "changes",
     [

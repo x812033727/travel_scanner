@@ -2382,14 +2382,18 @@ test("an owner's drama request is planned first, its failed sheets go back to th
     }
     if (name === "check-audio") return { code: 0, out: "every line passed" };
     if (name === "look") {
-      const candidate = (passed) => [{ n: 1, seed: 1, file: "characters/x/001.png", sha256: "1".repeat(64), judge: { overall: passed ? 8 : 4, passed, problems: passed ? [] : ["wrong crown"] } }];
+      // Like media/look.mjs: an entry that has its candidates stands (with what the worker wrote
+      // on it); one whose sheets were reset is drawn on the seeds past its redraws.
+      const existing = readJson(path.join(workdir, "characters", "manifest.json"), null)?.characters ?? {};
+      const candidate = (id, passed) => {
+        const seed = (existing[id]?.redraws ?? 0) * 1000 + 1;
+        return [{ n: 1, seed, file: `characters/${id}/${String(seed).padStart(3, "0")}.png`, sha256: String(seed).padStart(64, "0"), judge: { overall: passed ? 8 : 4, passed, problems: passed ? [] : ["wrong crown"] } }];
+      };
       const failing = lookRuns++ === 0;
+      const entry = (id, name, passed) => (existing[id]?.candidates?.length ? existing[id] : { ...(existing[id] ?? {}), name, candidates: candidate(id, passed), suggested: passed ? 1 : null, needs_review: !passed });
       write("characters/manifest.json", {
         look_hash: lookHash(video),
-        characters: {
-          jingwei: { name: "精衛", candidates: candidate(true), suggested: 1, needs_review: false },
-          yandi: { name: "炎帝", candidates: candidate(!failing), suggested: failing ? null : 1, needs_review: failing },
-        },
+        characters: { jingwei: entry("jingwei", "精衛", true), yandi: entry("yandi", "炎帝", !failing) },
       });
       return failing ? { code: 1, out: "ERROR yandi: no candidate passed the judge: wrong crown\nrewrite the appearance" } : { code: 0, out: "2 characters" };
     }
@@ -2471,14 +2475,48 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   assert.deepEqual(fix.payload.fix, { kind: "look", targets: [{ id: "yandi", problems: ["wrong crown"] }], problems: ["wrong crown"], owner_note: null });
   assert.match(currentVideo().characters[1].appearance, /plain bronze crown/);
   assert.equal(state().prompt_fixes.look, 1);
+  // The failed sheets leave the manifest with what the judge said, for the next look to draw
+  // the character again on the next seeds (media/look.mjs resetSheets).
+  const afterJudge = readJson(path.join(workdir, "characters", "manifest.json"));
+  assert.deepEqual([afterJudge.characters.yandi.candidates, afterJudge.characters.yandi.redraws, afterJudge.characters.yandi.sent_back.map((each) => each.fixes)], [[], 1, [["wrong crown"]]]);
+  assert.equal(afterJudge.characters.jingwei.candidates.length, 1, "the character whose sheet passed keeps it");
   assert.match(await automation.step(), /look done/);
   assert.equal(runs.filter((run) => run.startsWith("look ")).length, 2);
   assert.equal(state().prompt_fixes.look, undefined, "a passed stage clears its fix count");
+  assert.deepEqual(readJson(path.join(workdir, "characters", "manifest.json")).characters.yandi.candidates.map((candidate) => candidate.seed), [1001], "drawn on the seeds past the reset");
 
   assert.match(await automation.step(), /character sheets sent to \/admin\/videos/);
   assert.equal(site.reviewsOf(slug).filter((review) => review.gate === "look").length, 2);
   assert.equal(await automation.step(), null, "the sheets wait for the owner");
-  for (const review of site.reviewsOf(slug).filter((each) => each.gate === "look")) Object.assign(review, { status: "approved", choice: review.subject === "jingwei" ? "A" : null, decided_at: "2026-09-26T10:20:00Z" });
+  // The owner keeps 精衛's A and sends 炎帝's sheets back with a note: the writer gets the note,
+  // 炎帝's candidates leave the manifest for the next look to draw on new seeds (every seed of
+  // the entry was drawn: without the reset the look drew nothing and the fix rounds ran out,
+  // 系統說我是 BUG e001-redo1 2026-10-25), and 精衛 keeps the owner's pick as the suggestion
+  // of the review sent again.
+  const sentBack = (review) => Object.assign(review, review.subject === "jingwei" ? { status: "approved", choice: "A", decided_at: "2026-09-26T10:15:00Z" } : { status: "rejected", note: "六張都畫了人，只要一塊空白的淡藍光板", decided_at: "2026-09-26T10:15:00Z" });
+  site.reviewsOf(slug).filter((each) => each.gate === "look").forEach(sentBack);
+  assert.match(await automation.step(), /look prompts fixed \(round 1\) for yandi; look runs again next \(the sheets of yandi are drawn again on new seeds\)/);
+  const sentBackFix = site.calls.run.at(-1);
+  assert.equal(sentBackFix.stage, "writer");
+  assert.deepEqual(sentBackFix.payload.fix, { kind: "look", targets: [{ id: "yandi", problems: ["六張都畫了人，只要一塊空白的淡藍光板"] }], problems: ["六張都畫了人，只要一塊空白的淡藍光板"], owner_note: "yandi: 六張都畫了人，只要一塊空白的淡藍光板" });
+  assert.deepEqual(state().notes.at(-1), "look sent back: yandi: 六張都畫了人，只要一塊空白的淡藍光板");
+  const reset = readJson(path.join(workdir, "characters", "manifest.json"));
+  assert.deepEqual([reset.characters.yandi.candidates, reset.characters.yandi.suggested, reset.characters.yandi.needs_review, reset.characters.yandi.redraws], [[], null, false, 2]);
+  assert.deepEqual(reset.characters.yandi.sent_back.map((each) => [each.said, each.fixes]), [[["wrong crown"], ["wrong crown"]], [["六張都畫了人，只要一塊空白的淡藍光板"], ["六張都畫了人，只要一塊空白的淡藍光板"]]]);
+  assert.ok(reset.characters.yandi.sent_back.every((each) => /^2026-09-26T/.test(each.at)));
+  assert.equal(reset.characters.jingwei.candidates.length, 1, "the approved character keeps its sheets");
+  assert.deepEqual([reset.characters.jingwei.owner_pick, reset.characters.jingwei.suggested], [1, 1]);
+  assert.match(await automation.step(), /look done/);
+  assert.equal(runs.filter((run) => run.startsWith("look ")).length, 3);
+  const redrawn = readJson(path.join(workdir, "characters", "manifest.json"));
+  assert.deepEqual(redrawn.characters.yandi.candidates.map((candidate) => candidate.seed), [2001], "drawn on the seeds past the second reset");
+  assert.equal(redrawn.characters.yandi.redraws, 2);
+  assert.match(await automation.step(), /character sheets sent to \/admin\/videos/);
+  assert.equal(site.reviewsOf(slug).filter((review) => review.gate === "look").length, 4, "both characters go up again with the new manifest");
+  assert.equal(await automation.step(), null, "the sheets wait for the owner");
+  const again = site.reviewsOf(slug).filter((each) => each.gate === "look" && each.status === "pending");
+  assert.equal(again.length, 2);
+  for (const review of again) Object.assign(review, { status: "approved", choice: review.subject === "jingwei" ? "A" : null, decided_at: "2026-09-26T10:20:00Z" });
   assert.match(await automation.step(), /the owner chose the character sheets/);
   assert.deepEqual(readJson(path.join(workdir, "characters", "choice.json")).chosen, { jingwei: 1, yandi: 1 });
   assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "look"));
