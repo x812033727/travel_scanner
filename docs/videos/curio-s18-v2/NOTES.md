@@ -60,3 +60,4 @@
 - 插圖：98 張 cute-mystery，第一輪 7 張沒過 judge（尺上有字、主體缺、3D、黑邊），改提示詞後重畫全過；整集插圖花 US$2.04。
 - `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos（容器做的片沒有 auto.json，每一關都由站主決定）。
 - 成片：配樂 175 秒循環五次（US$0.08，整集累計 US$2.12）；render 要把容器預裝的 headless shell 1243 接成 Playwright 要的 1248（`PLAYWRIGHT_BROWSERS_PATH`）。qa 10/11：links 8 個 403，全是 loc.gov／doi.org 的 Cloudflare 驗證頁（瀏覽器也是「Just a moment...」），其中 4 個 loc.gov 頁在 Wayback 有存檔、DOI 的 handle API 回 200。2026-10-25 23:20 `review-push --gate final` 已送審。
+- 2026-10-26：八語配音完成（es、ja、id、vi 共縮短 8 句塞不進時間窗的數字句），上架包（publish）與語言批次都經站主核准，S18 第二版進「可以上架」。
