@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "episode": "kimi-k31-3d-delivery",
+  "kind": "bounded_actual_same_pending_CC9_delivery_and_final13_binary_audit",
+  "at": "2026-10-26T17:45:29.462494+00:00",
+  "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+  "status": "pending",
+  "decision": null,
+  "candidate_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+  "native_CC9_producer_true_exit_code": 0,
+  "CC9_finished_at": "2026-10-26T17:27:47.639Z",
+  "native_project_lease_released": true,
+  "added_SRT_refs": [
+    {
+      "locale": "zh-TW",
+      "role": "evidence_cc_narration_zh_tw",
+      "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b",
+      "bytes": 12864
+    },
+    {
+      "locale": "en",
+      "role": "evidence_cc_narration_en",
+      "sha256": "d920b2682b59ce35d69f36387e3f156cbcd5acef86ee4302383b754553880e74",
+      "bytes": 13412
+    },
+    {
+      "locale": "ja",
+      "role": "evidence_cc_narration_ja",
+      "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7",
+      "bytes": 17616
+    },
+    {
+      "locale": "ko",
+      "role": "evidence_cc_narration_ko",
+      "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e",
+      "bytes": 16476
+    },
+    {
+      "locale": "es",
+      "role": "evidence_cc_narration_es",
+      "sha256": "883947817e809d40a1ef797b7f7c60678791e15dfe1cf9194e71fac4a9800bff",
+      "bytes": 15197
+    },
+    {
+      "locale": "pt",
+      "role": "evidence_cc_narration_pt",
+      "sha256": "8b8a3b363d5c0b1e6f72b24f8961f694bac1ed60979ad64b8b438315339bc18a",
+      "bytes": 14863
+    },
+    {
+      "locale": "id",
+      "role": "evidence_cc_narration_id",
+      "sha256": "fca7fa9ba1c86c562ea8d1462259299b3108089eef1e07941394e09781dca652",
+      "bytes": 14973
+    },
+    {
+      "locale": "vi",
+      "role": "evidence_cc_narration_vi",
+      "sha256": "223a19a5c36fb2e63cddd15b6612ddd6b36ef5d6c95fcac709ba8b371e76a760",
+      "bytes": 16435
+    },
+    {
+      "locale": "th",
+      "role": "evidence_cc_narration_th",
+      "sha256": "761d1d5fa01a536b8e545d95528dbdf2d3538a95fa039a955d852c97cdb5c509",
+      "bytes": 25671
+    }
+  ],
+  "actual_native_counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 9,
+    "file_GET": 9,
+    "review_POST": 1,
+    "denied": 0
+  },
+  "full9_binary_readback_verified": true,
+  "allold4refs_payload_falseQA_choices_history_preserved": true,
+  "later_normal_review_files_true_exit_code": 0,
+  "later_normal_review_files_fetched_at": "2026-10-26T17:34:26.507Z",
+  "later_normal_review_files_all13_actual_disk_verification_at": "2026-10-26T17:37:01.319302+00:00",
+  "later_full_binary_verified_count": 13,
+  "later_full_binary_not_fetched": [],
+  "ROOT_actual_fullbinary_proof": "root-final13-binary-readback.json",
+  "normal_review_files_manifest": "backend-final13-review-files.json",
+  "timing": "narration",
+  "caption_cues": 1364,
+  "caption_speed_warnings": 47,
+  "native_QA_overall_ok": false,
+  "native_QA_passed": 10,
+  "native_QA_total": 11,
+  "native_QA_failed_ids": [
+    "narration"
+  ],
+  "foreign_checked_M4A": 0,
+  "all_eight_ready": false,
+  "source_or_final_approval": false,
+  "approved_source_package_or_language_batch_complete": false,
+  "ASR_unknown_status": "sent",
+  "ASR_provider_result": null,
+  "replay_forbidden": true,
+  "source_R4_false_preserved": true,
+  "native_text_plain_download_filename_extension": ".txt",
+  "actual_bytes_are_original_SRT": true,
+  "deployed_UI_visibility_and_browser_filename_guaranteed": false,
+  "source_record_hashes": {
+    "CC9_completion": {
+      "bytes": 5690,
+      "sha256": "dadc5699c27bb93312d5e5d9f8912694ca0e585175354f00dca8829a4e4c8b5a"
+    },
+    "ROOT_CC9_trace": {
+      "bytes": 4815,
+      "sha256": "031e3568ed8886fcd0e882c92b7df85edde0d6d8602828de7cd2af276e390fac"
+    },
+    "ROOT_final13_fullbinary_proof": {
+      "bytes": 6802,
+      "sha256": "307abdf1e51b9fde3860bf691e77363c607d92a1166252ef484885d0e0c6b5e6"
+    },
+    "normal_review_files_manifest": {
+      "bytes": 4695,
+      "sha256": "0b87d5a8732cb6f9429416431155546ec853e341104f8d206c32af19986c8b9b"
+    }
+  },
+  "raw_private_project_runtime_auth_quota_payload_copied": false
+}

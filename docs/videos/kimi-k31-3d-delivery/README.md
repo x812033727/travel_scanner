@@ -9,12 +9,22 @@
 - [事實查核第一輪](verify-1.md)、[第二輪](verify-2.md)、[第三輪](verify-3.md)、[最終三句修整查核](verify-4.md)
 - [兩次改稿後的編輯修整](coordinator-copyedit.md)、[最後採用理由與未通過項](editorial-decision.md)、[實際歷次盲讀紀錄](receipts/source-review/index.json)
 - [八語完整文字與來源雜湊](i18n/)、[正常工具採用與讀回](receipts/production/all8-native-text-adoption.json)
-- [實際製作進度](production-progress.json)
+- [可下載原創教具與重跑步驟](resources.md)、[繁中加八語SRT／VTT字幕與限制](captions/narration-timed/README.md)
+- [實際製作進度](production-progress.json)、[成片技術收據](receipts/production/actual-native-assembly.json)、[歷次製作問題](receipts/production/media-history-index.json)
+- [後台待審成片與完整1080p讀回](receipts/production/backend-manual-candidate-main.json)、[原樣QA報告](receipts/production/native-final-QA.json)、[已讀回九語標題說明](receipts/production/backend-metadata9.json)
 
 STL不內建毫米單位；本教材由外部規格指定毫米。名義孔徑16 mm的64段多邊形，其實際最小淨空約15.980727 mm。若新增「至少16 mm」的要求，有孔教具也不符合；原檢查器沒有實作這條新增的最小淨空門檻。
 
 沒有親測Kimi帳號、模型、實際匯出或列印，沒有製造認證。完整權重是官方承諾2026-11-04前提供，不稱研究當天已取得；BenchCAD 92.7是with-tools VoxelIoU，不是列印成功率。影片參考點閱是第三方文字快照，未取得三個頻道各20萬／七日的證明，不稱已通過該選題門檻。
 
-預設繁中加en、ja、ko、es、pt、id、vi、th。原生敘事第四輪仍有兩項false，製作者的委派採用與理由獨立記錄；沒有將它改成PASS。文字稿、靜態圖片或翻譯不等於已聽校音檔、實際字幕或成片。正式v4片頭5秒置第一章後、片尾21秒置正文後，須由實際組片及時間軸驗證。後台媒體完成與否以進度檔及 authenticated readback為準。
+組片於台北2026-10-27 00:26完成。實際1080p候選成片為12分36.733秒、22,702格；正文12分10.733秒。正式v4片頭5秒已置於第一章之後（55.633秒開始），片尾21秒已置於正文之後。正常組片及程序均回傳0，技術檢查0問題；ROOT其後於2026-10-27 00:28:37 Asia/Taipei記錄七個實際接點畫面的觀看結果，並核對檔案、量測與雜湊。這些紀錄不代表全片聽校或正常最終QA通過。
+
+預設繁中加en、ja、ko、es、pt、id、vi、th，八語完整文字已採用。音檢中斷留下105/114句的主轉寫快取及一筆供應商結果未知的請求；31句差異尚未判定。台北2026-10-27 00:43的正常字幕階段已完成繁中加八語SRT／VTT，共1,364個cue；47項閱讀速度注意事項原樣保留。字幕跟隨實際繁中成片旁白時間，不是外語配音時間。八語經當前音檔聽校的M4A仍為0/8。成片、字幕或語音是否已送後台，以[進度檔](production-progress.json)的具體階段及 authenticated binary readback為準。
+
+台北2026-10-27 01:34，正常review-files已從[影片後台](https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery)下載同一筆待審成片 `b1893aaf-a60c-4d4f-a7fd-ef39a1de112e` 的全部13個附件；ROOT於01:37逐檔核對完整內容、大小及SHA-256。包含預覽、contact-sheet、縮圖、65,490,500bytes的完整1080p及九語參考SRT。九語完整標題說明也已讀回，與正常原生組成值一致。[完整下載驗證](receipts/production/root-final13-binary-readback.json)與[正常附件清單](receipts/production/backend-final13-review-files.json)保留實際證據。後台以text/plain取回SRT內容時副檔名為 `.txt`，內容與本目錄 `.srt` 檔案逐位元組相同；沒有宣稱瀏覽器一定採用特定檔名。待審紀錄仍未決定，旁白／成片核准和上架包皆未完成，這批參考字幕不代表八語配音或語言批次完成。
+
+正常QA已真正執行，結果是10/11、整體false；唯一未過項為旁白尚未核准。47項字幕速度與3項外語縮圖手機字級注意事項原樣保留，Jev policy通過不代表音檢或原生敘事通過。教具ZIP公開連結仍須於正式上架包前透過正常metadata更新與重審補入說明。
+
+原生敘事第四輪的 `no_recap`、`no_detour` 仍為false，製作者的委派採用與理由另記；沒有改成PASS。前兩次render失敗及VI小寫g縮圖裁切均保留在[製作歷史](receipts/production/media-history-index.json)。後續只把VI縮圖改為同詞大寫 `DÙNG?`，ROOT已看過實際整張圖，先前裁切已解決；114句翻譯及其他metadata沒有因此改動。後續成功不會抹去原始問題。
 
 維持no-auto-merge；不合併、不部署、不上傳YouTube。
