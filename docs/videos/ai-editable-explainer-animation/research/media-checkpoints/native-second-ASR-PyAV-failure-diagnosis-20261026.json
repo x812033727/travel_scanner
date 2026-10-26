@@ -1,0 +1,42 @@
+{
+  "observed_at_utc": "2026-10-26T14:05:24.920466+00:00",
+  "actual_failure": {
+    "unchanged_runner_exit_code": 1,
+    "signal": null,
+    "transcribe_call_attempted": true,
+    "decode_audio_entered": true,
+    "av_open_called": true,
+    "av_open_failed_at_argument_validation": true,
+    "decoded_audio_samples_produced": false,
+    "transcript_produced": false,
+    "exception": "TypeError: open() got an unexpected keyword argument 'metadata_errors'",
+    "failing_installed_PyAV_version": "19.0.2",
+    "faster_whisper_version": "1.2.1",
+    "native_runner_transcribe_attempts": 1,
+    "input_WAV_was_read_for_integrity_hash": true
+  },
+  "cause": "The installed unconstrained PyAV19 no longer accepts the metadata_errors keyword that the pinned faster-whisper1.2.1 decoder unconditionally passes. Model-load-only success did not exercise this decoder API.",
+  "minimal_supported_candidate_fix": {
+    "constraint": "av==18.0.0",
+    "official_source": "https://raw.githubusercontent.com/PyAV-Org/PyAV/v18.0.0/av/container/core.py",
+    "official_open_signature_contains": "metadata_errors=\"strict\"",
+    "official_pypi_metadata": "https://pypi.org/pypi/av/18.0.0/json",
+    "wheel_filename": "av-18.0.0-cp311-abi3-manylinux_2_28_x86_64.whl",
+    "wheel_url": "https://files.pythonhosted.org/packages/6d/b9/7708c43fed7ae28b4a1bad060b4221e3334cd827cec24f7165902a6ac1f4/av-18.0.0-cp311-abi3-manylinux_2_28_x86_64.whl",
+    "wheel_bytes": 35536910,
+    "wheel_sha256": "ae56b40b6f8b067a8ad2dac664fbfbabac7f7a55b9a7bb031eb99289252bc017",
+    "wheel_yanked": false,
+    "wheel_tag_in_actual_runtime_compatible_tags": true,
+    "faster_whisper_model_threshold_caps_or_repo_runner_change_required": false,
+    "candidate_not_installed_by_this_diagnostic": true,
+    "decode_success_not_yet_claimed": true
+  },
+  "full_trace_file": "/workspace/work/video-asr-runtime/diagnostics/one-native-TH.stderr.log",
+  "full_trace_sha256": "a7afc9372d68ab9cecd6bd18677be03d2f16f4489acfa80dbb00c1bfc5400272",
+  "single_input_outcome_file": "/workspace/work/video-asr-runtime/diagnostics/one-native-TH-diagnostic-outcome.json",
+  "single_input_outcome_sha256": "6b2b35bb66d69b488319e8dd712960e7ab999ad5ce7be44cb1c6841d03b0d3c0",
+  "root_must_decide_next_step": "Constrain only the independent runtime PyAV dependency, preserve all earlier ready/failure evidence, then run one explicitly authorized same-input verification with unchanged runner before another native project batch. Do not monkeypatch av.open or retry automatically.",
+  "project_source_flags_caps_journals_or_approvals_modified": false,
+  "paid_video_provider_calls": 0,
+  "automatic_audio_retries": 0
+}
