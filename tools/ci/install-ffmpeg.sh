@@ -15,6 +15,8 @@ set -euo pipefail
 apt_options=(-o Acquire::Retries=3 -o Acquire::http::Timeout=30)
 for attempt in 1 2 3; do
   if [ "$attempt" -gt 1 ]; then
+    # A deadline can land mid-unpack; finish what dpkg started before trying again.
+    sudo dpkg --configure -a || true
     sudo sed -i 's#http://azure\.archive\.ubuntu\.com/ubuntu#http://archive.ubuntu.com/ubuntu#g' \
       /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
   fi
