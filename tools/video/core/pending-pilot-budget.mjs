@@ -10,9 +10,13 @@
 // film may buy what finishes it (one narration line, then unpaid steps). The
 // API still refuses it until that settlement is applied, so the local client
 // sends the attributed request and lets the server answer.
+//
+// The C11 UCC remake was activated by the owner on 2026-10-26: a new film with
+// no pre-ledger history, its own US$25 account from migration 0140.
 export const EVERYDAY_STORY_PREFIX = "story-everyday-";
 export const ACTIVATED_STORY_SLUGS = Object.freeze([
   "story-everyday-moleskine-c03",
+  "story-everyday-ucc-c11-remake-20261025",
 ]);
 export const PREPRODUCTION_HOLD_SLUGS = Object.freeze([
   "story-everyday-bubble-wrap-c04",
