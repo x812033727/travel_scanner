@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "performed_by": "OpenAI Codex /root/pdf_continue_primary/pdf_threshold_evidence_audit",
+  "checked_at_utc": "2026-10-26T12:21:43.371784+00:00",
+  "archive": "/workspace/work/ai-pdf-01/lab/ai-pdf-comparison-materials.zip",
+  "archive_sha256": "ee9c5c53574a9211cecc0c1ccdb2253204786f74fa85c6c1b6fd108c03a3eafb",
+  "archive_bytes": 1078180,
+  "fresh_extraction_root": "/workspace/work/ai-pdf-01/materials-original10-correction-20261026T121555Z/fresh-archive-replay-v3/unpacked",
+  "manifest_sha256": "c782ad9d0f3bf9c1b260393124b0af40f787f56a5f7dcfc4e66d23a27feb3ffd",
+  "manifest_entries_verified": 98,
+  "archive_members": 99,
+  "crc_check_passed": true,
+  "all_manifest_names_bytes_hashes_matched": true,
+  "old_threshold_negative_requests_and_history_unchanged": true,
+  "bundled_output_moved_before_replay": "/workspace/work/ai-pdf-01/materials-original10-correction-20261026T121555Z/fresh-archive-replay-v3/bundled-comparison-original-10",
+  "command": {
+    "executed_at_utc": "2026-10-26T12:21:43.070929+00:00",
+    "cwd": "/workspace/work/ai-pdf-01/materials-original10-correction-20261026T121555Z/fresh-archive-replay-v3/unpacked/materials",
+    "argv": [
+      "python3",
+      "build_comparison.py",
+      "--analysis",
+      "../research/lab-ai-extraction.json",
+      "--extracted",
+      "../research/lab-extracted-pages.json",
+      "--request",
+      "request-original-10.json",
+      "--out",
+      "comparison-original-10"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"output\": \"comparison-original-10\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+    "stderr": "",
+    "output_directory_existed_before": false,
+    "output_directory_created": true,
+    "request": {
+      "scenario": "original",
+      "quantity": 10
+    },
+    "totals": {
+      "Aster": "2100.00",
+      "Birch": "2050.00",
+      "Cedar": null
+    },
+    "cedar_original_missing_delivery_preserved": true,
+    "cedar_not_ranked": true,
+    "winner": "Birch",
+    "checks": 17,
+    "all_checks_passed": true,
+    "selected_json_matches_bundled_result": true,
+    "actual_workbook_selected_sheet": "本次請求10張",
+    "actual_workbook_Cedar_source": "cedar.pdf",
+    "actual_workbook_Cedar_total_blank": true,
+    "selected_result_sha256": "e0535ee405ff266cd547779836679fdd91680283b8ce50123b1a48fa27a4e352",
+    "outputs": [
+      {
+        "path": "baseline-and-normalized-order.json",
+        "bytes": 601,
+        "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+      },
+      {
+        "path": "change-log.json",
+        "bytes": 573,
+        "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+      },
+      {
+        "path": "comparison.json",
+        "bytes": 4304,
+        "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+      },
+      {
+        "path": "comparison.md",
+        "bytes": 1319,
+        "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+      },
+      {
+        "path": "comparison.xlsx",
+        "bytes": 13551,
+        "sha256": "8f74ddba105719c22ea47e785b95168f0a5a6adb8d332ab8081e15937db4c5af"
+      },
+      {
+        "path": "headline-unit-sort-baseline.csv",
+        "bytes": 448,
+        "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+      },
+      {
+        "path": "original-10.csv",
+        "bytes": 531,
+        "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+      },
+      {
+        "path": "questions.txt",
+        "bytes": 504,
+        "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+      },
+      {
+        "path": "revised-10.csv",
+        "bytes": 540,
+        "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+      },
+      {
+        "path": "revised-20.csv",
+        "bytes": 540,
+        "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+      },
+      {
+        "path": "selected-comparison.csv",
+        "bytes": 531,
+        "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+      },
+      {
+        "path": "selected-comparison.json",
+        "bytes": 1582,
+        "sha256": "e0535ee405ff266cd547779836679fdd91680283b8ce50123b1a48fa27a4e352"
+      },
+      {
+        "path": "verification.json",
+        "bytes": 5317,
+        "sha256": "9d51fe4e504ee79bd2deb3d6e8d149a46c652c5981f10e93b303d823d7f2a169"
+      }
+    ]
+  },
+  "installed_versions": {
+    "openpyxl": "3.1.5",
+    "pypdf": "6.10.0",
+    "reportlab": "4.4.9"
+  },
+  "passed": true,
+  "scope": "Actual fresh ZIP extraction and complete manifest/CRC validation; actual original10 local Python recomputation from unchanged saved AI extraction. Existing12/13/21 execution history remains unaltered, not reexecuted or falsely treated as new AI. No paid request, model invocation, audio/native auto/approval/YouTube operation."
+}

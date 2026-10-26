@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-10-26T12:22:22.358Z",
+  "source_before_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "source_after_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "change": {
+    "scene": "extract-core",
+    "caption_before": "viewer-prompt.txt 第1–7行｜全文",
+    "caption_after": "viewer-prompt.txt 全文｜第5行於收到修訂版後套用",
+    "materials_commit": "e2631cfb53c2b275345001ae9df7b60135e5035a"
+  },
+  "reason": "The full original seven-line prompt is retained verbatim. Its revision-replacement rule is now explicitly conditional on receiving the revision; the materials provide an actual original10 request and replay before the revised scenarios.",
+  "all_101_spoken_line_records_exact": true,
+  "script_check_binding_exact": true,
+  "paid_speech_hash_exact": true,
+  "audio_timeline_sha256_unchanged": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+  "actual_audio_approval_preserved": {
+    "gate": "audio",
+    "file": "timeline.json",
+    "sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+    "approved_at": "2026-10-26T11:49:52.953Z",
+    "note": "approved on /admin/videos at 2026-10-26T11:49:52.344332Z; Jev 判斷每一句都唸對了，依設定自動核准"
+  },
+  "existing_executed_prompt_file_unchanged": true,
+  "source_snapshot": "/workspace/work/ai-pdf-01/source-author-edits/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84.json",
+  "final_qa_or_publication_claimed": false,
+  "next": "Native render must refresh the changed card, then reassemble the real official-v4 cut and rebuild captions before matching11QA/final review. Root may rebind provisional translations after independently checking this exact visual-only delta."
+}

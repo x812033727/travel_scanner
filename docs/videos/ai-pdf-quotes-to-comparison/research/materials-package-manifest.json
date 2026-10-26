@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "created_at_utc": "2026-10-26T11:18:42.413922+00:00",
+  "created_at_utc": "2026-10-26T12:21:42.999969+00:00",
   "files": [
     {
       "path": "START-HERE.txt",
-      "bytes": 1240,
-      "sha256": "36ae6ee324affc559cbe0e1cfa115b6fe92f06de1aa1c555b3993096e8fd107b"
+      "bytes": 1513,
+      "sha256": "26867bc1c3bc9fc7ffd3f317181fc18b4ea9001c48b563a9ba1c5ba1d31d4e50"
     },
     {
       "path": "materials/README.md",
-      "bytes": 8500,
-      "sha256": "f7973e739a94279a19f233e9642a700d7550f290f4d3dafcc276133782f07d8a"
+      "bytes": 11219,
+      "sha256": "590ad5bdc835770c1790c0bcf6ef521e6c5a0b5d87ffe6d92d83dd80ffaa8c27"
     },
     {
       "path": "materials/analysis-prompt.txt",
@@ -153,6 +153,71 @@
       "sha256": "3da7f270a580bf309c0a9e179f9f3aa9ab06ed48d6bc0cb32a0e023045c67434"
     },
     {
+      "path": "materials/comparison-original-10/baseline-and-normalized-order.json",
+      "bytes": 601,
+      "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+    },
+    {
+      "path": "materials/comparison-original-10/change-log.json",
+      "bytes": 573,
+      "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+    },
+    {
+      "path": "materials/comparison-original-10/comparison.json",
+      "bytes": 4304,
+      "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+    },
+    {
+      "path": "materials/comparison-original-10/comparison.md",
+      "bytes": 1319,
+      "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+    },
+    {
+      "path": "materials/comparison-original-10/comparison.xlsx",
+      "bytes": 13551,
+      "sha256": "5fc7e4824e57ae9092e07bae57cd0df6008c77e3fc4fdba8b8b4226373ebb8ca"
+    },
+    {
+      "path": "materials/comparison-original-10/headline-unit-sort-baseline.csv",
+      "bytes": 448,
+      "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+    },
+    {
+      "path": "materials/comparison-original-10/original-10.csv",
+      "bytes": 531,
+      "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+    },
+    {
+      "path": "materials/comparison-original-10/questions.txt",
+      "bytes": 504,
+      "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+    },
+    {
+      "path": "materials/comparison-original-10/revised-10.csv",
+      "bytes": 540,
+      "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+    },
+    {
+      "path": "materials/comparison-original-10/revised-20.csv",
+      "bytes": 540,
+      "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+    },
+    {
+      "path": "materials/comparison-original-10/selected-comparison.csv",
+      "bytes": 531,
+      "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+    },
+    {
+      "path": "materials/comparison-original-10/selected-comparison.json",
+      "bytes": 1582,
+      "sha256": "e0535ee405ff266cd547779836679fdd91680283b8ce50123b1a48fa27a4e352"
+    },
+    {
+      "path": "materials/comparison-original-10/verification.json",
+      "bytes": 5392,
+      "sha256": "19714b2b14c7d92caa89b7875dc5314c7190001c06bf29c1d7d79e5199a889c9"
+    },
+    {
       "path": "materials/comparison-output/baseline-and-normalized-order.json",
       "bytes": 601,
       "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
@@ -261,6 +326,11 @@
       "path": "materials/request-21-invalid.json",
       "bytes": 46,
       "sha256": "0f3f6f5c96284192bfc545f951e9c24f68b3867837f05ec8efa67f213fb99b4e"
+    },
+    {
+      "path": "materials/request-original-10.json",
+      "bytes": 47,
+      "sha256": "f18cabe3d679f130660744c3980d6065542e3056a31b28083b87d3433a9ed109"
     },
     {
       "path": "materials/request.json",
@@ -373,6 +443,11 @@
       "sha256": "9fbb5d66ad6691026bde0821079d31e892917a865ebbefaef2f3c96340c5a259"
     },
     {
+      "path": "research/original-scenario-execution.json",
+      "bytes": 7836,
+      "sha256": "8916765782ca12c6fedd30564cf97985b622926bc01b1715a256f03613899ad1"
+    },
+    {
       "path": "research/quantity-21-relative-execution.json",
       "bytes": 2099,
       "sha256": "67baa2c706b7a4c77992a6880e7ac9f038465760a8fe6bdc78305e4a86bb5fec"
@@ -417,5 +492,6 @@
       "bytes": 298,
       "sha256": "cba4e31777899878b40c1c63cf36c6b1b8e91b0a9bdf6e945217793376a6b80c"
     }
-  ]
+  ],
+  "scope": "Original fictional practice materials, unchanged actual saved AI extraction, explicit original10 and revised10/20 plus12/13/21 exercises. All binary materials stay outside repo. No new AI request, narration or owner approval."
 }
