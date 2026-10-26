@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "episode": "kimi-k31-3d-delivery",
-  "updated_at": "2026-10-26T21:27:26.772695+00:00",
-  "status": "backend_pending_full1080_CC9_resource_three_thumbnails_and_metadata9_kit_links_verified_audio_held",
+  "updated_at": "2026-10-26T23:51:01.629298+00:00",
+  "status": "pending_manual_final_CC9_metadata9_subject9_verified_audio_held",
   "owner": "codex-ai-tech-news",
   "branch": "codex/ai-tech-kimi-20261026",
   "backend": {
@@ -14,12 +14,12 @@
     "source_approval": false,
     "raw_stage_field": "narration approved",
     "raw_stage_interpretation": "Name of the next reported checklist stage. narration_approved.done and final_video_approved.done are both false; this text is not an approval.",
-    "last_authenticated_readback_at": "2026-10-26T21:24:19.971Z",
+    "last_authenticated_readback_at": "2026-10-26T23:47:56.290Z",
     "readback_is_historical_snapshot": true,
     "binary_media_readback_completed": true,
     "pending_candidate_submission": "actual completed native manual final review, pending undecided",
     "server_language_choices_saved": false,
-    "readback_snapshot_scope": "Actual metadata-only samepending9-description replacement; independent normal projectGET HTTP200 full9values exact, all17 refs/fullfalseQA/manualflags/summary/choices/history preserved. Prior full17 binary download proof retained, not repeated.",
+    "readback_snapshot_scope": "Actual same-pending unique primary replacement, old primary archive and eight subject JPEGs; whole-project independent GET plus normal full26 physical download verification. Entire old payload, QA false, metadata9, summary, choices and history exact.",
     "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
     "normal_manual_review": true,
     "verified_binary_refs": [
@@ -37,8 +37,8 @@
       },
       {
         "role": "thumbnail",
-        "sha256": "61cb5db4775fab26cf91774ceb9ba6c112dc4e58560200b40d371b6ec3604945",
-        "size": 54611,
+        "sha256": "c84ab3b47e1719e4741bfc8555fe402b6b0f1788f122f0b50bd68b2b3a0284bd",
+        "size": 97223,
         "content_type": "image/jpeg"
       },
       {
@@ -124,9 +124,63 @@
         "sha256": "6eb68c4e5c64d4cb74c26a86e23cf2ab77708a4b062319b39ce20e59171c9d0b",
         "size": 55482,
         "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_previous_thumbnail_subject",
+        "sha256": "61cb5db4775fab26cf91774ceb9ba6c112dc4e58560200b40d371b6ec3604945",
+        "size": 54611,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_en",
+        "sha256": "c8af0ebcc6f03682d0324924fca5a8cd3bf8defc0b580c966873e5be78d9a703",
+        "size": 94989,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_ja",
+        "sha256": "073c28d547aaf4a901a8d8eb6e287ce936038d1254e37b72ea077ec6e3df60a5",
+        "size": 99732,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_ko",
+        "sha256": "88278c7257296dcf2637efc4be3e0a3e45a14f405de1964ba7a45e163c43a428",
+        "size": 93769,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_es",
+        "sha256": "90aac42c06e362cd3586730f823d12639b55a3f215c70cfc1e55930826e49824",
+        "size": 100619,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_pt",
+        "sha256": "01eede26da8326edc8a6915f5e8768f3ab31dedc4da499182f7cecc5d2b53241",
+        "size": 102124,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_id",
+        "sha256": "782e323ffe5fe1ad99664a1ad665991c2a1e60c5da38a90fcbf39229e8d1e011",
+        "size": 96329,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_vi",
+        "sha256": "3435063fc522f4b60f43cf481bb698660234b7d34c2c7d3263df5f42a12737e0",
+        "size": 99599,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_subject_th",
+        "sha256": "9ddf7a094fe233bdceb11caacde31c981ea9229ea0481d7c27185ca6a45b2a1f",
+        "size": 99953,
+        "content_type": "image/jpeg"
       }
     ],
-    "verified_binary_ref_count": 17,
+    "verified_binary_ref_count": 26,
     "full1080_downloadable_reference_verified": true,
     "full1080_bytes": 65490500,
     "full1080_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -221,7 +275,17 @@
     "earlier_four_reference_snapshot": "receipts/production/history/backend-four-reference-snapshot.json",
     "current_metadata9_receipt": "receipts/production/metadata-adoption/current-backend-metadata9.json",
     "metadata_kit_links_formally_adopted": true,
-    "metadata9_adoption_readback_at": "2026-10-26T21:24:19.971Z"
+    "metadata9_adoption_readback_at": "2026-10-26T21:24:19.971Z",
+    "all26_readback_receipt": "receipts/production/thumbnail-subject/root-final26-binary-readback.json",
+    "all26_native_manifest": "receipts/production/thumbnail-subject/normal-final26-review-files.json",
+    "current_primary_thumbnail": {
+      "role": "thumbnail",
+      "sha256": "c84ab3b47e1719e4741bfc8555fe402b6b0f1788f122f0b50bd68b2b3a0284bd",
+      "size": 97223,
+      "content_type": "image/jpeg"
+    },
+    "old_primary_retained_role": "evidence_previous_thumbnail_subject",
+    "historical_snapshot_notice": "Existing four/13/17-ref timestamps, keys and receipts describe their dated earlier milestones. Current full binary reference count is 26; all17 older binary contents remain live-referenced."
   },
   "research": {
     "videos": 8,
@@ -236,13 +300,14 @@
     "source_review_in_progress": false,
     "native_lint_first_actual_errors": 1,
     "native_lint_first_actual_warnings": 8,
-    "current_author_source_sha256": "080ae77895d0c85e2e181f9a54972c6390938fd3d363dda982c35e51fd620cc7",
+    "current_author_source_sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10",
     "scenes": 42,
     "chapters": 6,
     "latest_native_lint": {
       "true_exit_code": 0,
       "errors": 0,
-      "warnings": 0
+      "warnings": 0,
+      "session": 28184
     },
     "fact_review": "verify-4 PASS facts/diff only:740370978db8a85022ceed77dc41affc0cb8be0a3124da85f6b659fafbcc6d62",
     "blind_readers": "R4a12yes1no; R4b11yes2no; conservativeAND11yes2no; false retained, root editorial adoption seeeditorial-decision.md",
@@ -306,6 +371,16 @@
       "only_changed_field": "youtube.description",
       "all114_narration_lines_and_speech_visual_narrative_hashes_unchanged": true,
       "receipt": "receipts/production/metadata-adoption/actual-backend-description-adoption.json"
+    },
+    "latest_thumbnail_subject_change": {
+      "source_sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10",
+      "changed_fields": [
+        "thumbnail.data.asset",
+        "thumbnail.data.sub",
+        "one new original assets[] entry"
+      ],
+      "source114_lines_unchanged": true,
+      "speech_narrative_policy_8dub_hashes_unchanged": true
     }
   },
   "original_demo": {
@@ -337,7 +412,7 @@
     "final_video": true,
     "current_foreign_M4A": 0,
     "timed_CC": 9,
-    "backend_media_delivery": 13,
+    "backend_media_delivery": 26,
     "local_final": {
       "bytes": 65490500,
       "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -356,6 +431,35 @@
       "seconds": 730.7333333333333
     },
     "native_technical_checks": {
+      "artifact": "checks.json",
+      "bytes": 36316,
+      "sha256": "ed9f87846d9eeccf3a77777f2db2c443166a266a2dda5965340157618a724005",
+      "ok": true,
+      "problems": [],
+      "encoded_segments": 0,
+      "scene_frame_PSNR_samples": 126,
+      "frames": 22702,
+      "loudness": {
+        "integrated": -14.1,
+        "truePeak": -1.9
+      },
+      "receipt": "receipts/production/thumbnail-subject/current-native-technical-checks.json"
+    },
+    "CC_snapshot_notice": "Genuine native zh-TW+8 SRT/VTT follow actual branded zh-TW master. All47 normal speed findings retained. Foreign current checked M4A0; these are not dub-timed captions.",
+    "full_film_listening_completed": false,
+    "normal_final_QA_executed": true,
+    "assembly_completed_at": "2026-10-26T16:26:01.228Z",
+    "narration_timed_CC": 9,
+    "dub_timed_CC": 0,
+    "total_caption_cues": 1364,
+    "caption_speed_warnings": 47,
+    "foreign_current_checked_M4A": 0,
+    "backend_media_delivery_unit": "26 fully downloaded and independently verified binary refs in one pending review: preview/contact/main1080p, current primary, nine narration-timed SRTs, resource text, three prior mobile thumbnails, archived old primary and eight current subject thumbnails; no foreign audio or approval.",
+    "pending_final_ref_count": 26,
+    "full1080_binary_readback": true,
+    "backend_narration_timed_CC_count_at_verified_fourref_snapshot": 0,
+    "backend_narration_timed_CC_count_at_current_13ref_snapshot": 9,
+    "initial_native_technical_checks_snapshot": {
       "bytes": 36317,
       "sha256": "a953eef3868b274a448c7d84784a2bbc623d85d5499cf2abeb79718812013823",
       "artifact": "checks.json",
@@ -368,20 +472,15 @@
         "truePeak": -1.9
       }
     },
-    "CC_snapshot_notice": "Genuine native zh-TW+8 SRT/VTT follow actual branded zh-TW master. All47 normal speed findings retained. Foreign current checked M4A0; these are not dub-timed captions.",
-    "full_film_listening_completed": false,
-    "normal_final_QA_executed": true,
-    "assembly_completed_at": "2026-10-26T16:26:01.228Z",
-    "narration_timed_CC": 9,
-    "dub_timed_CC": 0,
-    "total_caption_cues": 1364,
-    "caption_speed_warnings": 47,
-    "foreign_current_checked_M4A": 0,
-    "backend_media_delivery_unit": "13 full verified binary refs in one pending undecided review: preview/contact/thumbnail/main1080p and nine narration-reference SRTs; no foreign audio or approval.",
-    "pending_final_ref_count": 13,
-    "full1080_binary_readback": true,
-    "backend_narration_timed_CC_count_at_verified_fourref_snapshot": 0,
-    "backend_narration_timed_CC_count_at_current_13ref_snapshot": 9
+    "initial_backend13_delivery_snapshot": {
+      "backend_media_delivery": 13,
+      "backend_media_delivery_unit": "13 full verified binary refs in one pending undecided review: preview/contact/thumbnail/main1080p and nine narration-reference SRTs; no foreign audio or approval.",
+      "pending_final_ref_count": 13
+    },
+    "latest_native_assembly_completed_at": "2026-10-26T23:30:02.107Z",
+    "latest_native_assembly_encoded_segments": 0,
+    "initial_assembly_completed_at": "2026-10-26T16:26:01.228Z",
+    "current_technical_checks_not_new_whole_QA": true
   },
   "languages": {
     "en": {
@@ -593,7 +692,8 @@
     "final13_binary_readback": "receipts/production/root-final13-binary-readback.json",
     "normal_review_files13": "receipts/production/backend-final13-review-files.json",
     "earlier_progress_snapshot": "receipts/production/history/pre-media-docs-production-progress.json",
-    "backend_CC9_complete": "receipts/production/backend-CC9-complete.json"
+    "backend_CC9_complete": "receipts/production/backend-CC9-complete.json",
+    "thumbnail_subject": "receipts/production/thumbnail-subject/README.md"
   },
   "master_producer": {
     "native_pid": 304217,
@@ -742,7 +842,67 @@
       "vi": "5e698957933166e81e537f9ac6c6fb84538fc44436bd516dc9a22c3e8d2b8469",
       "th": "cdd8be53a7d5f07e46788bca589a72acd4d8e505211d697ab4a170bb93b3796d"
     },
-    "current_metadata_only_correction_hashes_are_pre_description_adoption_snapshot": true
+    "current_metadata_only_correction_hashes_are_pre_description_adoption_snapshot": true,
+    "current_metadata_adoption_hashes_are_pre_thumbnail_subject_snapshot": true,
+    "current_metadata_adoption_hashes_snapshot_notice": "Full-file hashes at the dated metadata-only adoption; that event remains unchanged. Current full i18n file hashes are in current_i18n_files_after_thumbnail_subject.",
+    "current_i18n_files_after_thumbnail_subject": [
+      {
+        "locale": "en",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/en.json",
+        "bytes": 20260,
+        "sha256": "8258044fbe74e5efa431407ff6cc4b3f8e01194ecf7bf859b65218fca95ad0bc",
+        "lines": 114
+      },
+      {
+        "locale": "ja",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ja.json",
+        "bytes": 23398,
+        "sha256": "d176994475664f44048c186888bab32a9a8dacdeb3b0ea3d362defb26672ce4e",
+        "lines": 114
+      },
+      {
+        "locale": "ko",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ko.json",
+        "bytes": 21773,
+        "sha256": "e17af1c66a044b25b643dc78b111ee41360801718889a1fead8cad72cd1516ea",
+        "lines": 114
+      },
+      {
+        "locale": "es",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/es.json",
+        "bytes": 21037,
+        "sha256": "0b3c761606593314af7236db9fe5a78b5e3ea3f7dba805d71218538481166b68",
+        "lines": 114
+      },
+      {
+        "locale": "pt",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/pt.json",
+        "bytes": 20928,
+        "sha256": "979fe6f5e8879aa9ffd6223834dc5c2d559e1f1593d5f61e78ab1752897165e9",
+        "lines": 114
+      },
+      {
+        "locale": "id",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/id.json",
+        "bytes": 20614,
+        "sha256": "bf8483544a3f14e8459a2db61337acb34bc27fec69e231f6235533ca94a742c6",
+        "lines": 114
+      },
+      {
+        "locale": "vi",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/vi.json",
+        "bytes": 23258,
+        "sha256": "54fa602002162d3ea7b079d9a549113e151247a6e2ad04f22b52eecb95a34484",
+        "lines": 114
+      },
+      {
+        "locale": "th",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/th.json",
+        "bytes": 33652,
+        "sha256": "5486ee0bef5012405f7e5f29e275906de1ef5d7ab61d45cdca65e3b2fce32f2e",
+        "lines": 114
+      }
+    ]
   },
   "render": {
     "first_native_exit": 5,
@@ -774,9 +934,20 @@
       "ROOT_full_image_viewed": true,
       "previous_clipping_finding_preserved": true,
       "current_observed_clipping": false
+    },
+    "latest_thumbnail_subject": {
+      "completed_at": "2026-10-26T23:30:02.107Z",
+      "body_states": 110,
+      "drawn": 0,
+      "reused": 110,
+      "encoded_segments": 0,
+      "current_visual_hash": "3fdafe27d58cc0fa",
+      "actual_nine_JPEG_exact_to_viewed_preview": true,
+      "main_body_bytes_unchanged": true,
+      "receipt": "receipts/production/thumbnail-subject/root-actual-native-nine-thumbnail-review.json"
     }
   },
-  "snapshot_notice": "Latest actual metadata-only adoption and independentHTTP200 readback keep samepending17, fulloldQAfalse/manualflags/history/choices. All9 descriptions include original teaching-kit URL; titles and all old facts/negations/chapters/sources exact. Earlier13/14/17binary and DRAFT records are historical snapshots. No new wholeQA/audio/source approval, checkedforeignM4A or languagepackage completion.",
+  "snapshot_notice": "Current same-pending26 full binaries, metadata9 f291 and original-subject9 images are actually delivered and independently read back. Prior13/14/17, mobile-thumbnail, metadata-adoption and DRAFT events keep their original dated values. Same final3cbd/body3784, source114/translation912 lines/audio/CC, complete wholeQAfalse47+3warnings and R4false remain. CurrentcheckedforeignM4A0/8; source/final approvals and approved package/language batch incomplete.",
   "normal_final_QA": {
     "executed": true,
     "native_return_code": 1,
@@ -1391,5 +1562,237 @@
     "helper_version_sha256": "c3850b1f8a15e45f14c636e2b4299d6af886a50c3d6d5bcf001e80114bad6402",
     "helper_profile_sha256": "15c94fd5d3757fbabc7788e7db3d01def8ba2f36d795b10a3897beb777934c92",
     "helper_intent_id": "kimi-metadata9-adopt-20261026t212335"
+  },
+  "thumbnail_subject": {
+    "kind": "actual_completed_original_subject_nine_thumbnail_delivery",
+    "recorded_at": "2026-10-26T23:51:01.629298+00:00",
+    "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "pending_status": "pending",
+    "decision": null,
+    "current_source": {
+      "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/video.json",
+      "bytes": 46668,
+      "sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10"
+    },
+    "current_i18n": [
+      {
+        "locale": "en",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/en.json",
+        "bytes": 20260,
+        "sha256": "8258044fbe74e5efa431407ff6cc4b3f8e01194ecf7bf859b65218fca95ad0bc",
+        "lines": 114
+      },
+      {
+        "locale": "ja",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ja.json",
+        "bytes": 23398,
+        "sha256": "d176994475664f44048c186888bab32a9a8dacdeb3b0ea3d362defb26672ce4e",
+        "lines": 114
+      },
+      {
+        "locale": "ko",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ko.json",
+        "bytes": 21773,
+        "sha256": "e17af1c66a044b25b643dc78b111ee41360801718889a1fead8cad72cd1516ea",
+        "lines": 114
+      },
+      {
+        "locale": "es",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/es.json",
+        "bytes": 21037,
+        "sha256": "0b3c761606593314af7236db9fe5a78b5e3ea3f7dba805d71218538481166b68",
+        "lines": 114
+      },
+      {
+        "locale": "pt",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/pt.json",
+        "bytes": 20928,
+        "sha256": "979fe6f5e8879aa9ffd6223834dc5c2d559e1f1593d5f61e78ab1752897165e9",
+        "lines": 114
+      },
+      {
+        "locale": "id",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/id.json",
+        "bytes": 20614,
+        "sha256": "bf8483544a3f14e8459a2db61337acb34bc27fec69e231f6235533ca94a742c6",
+        "lines": 114
+      },
+      {
+        "locale": "vi",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/vi.json",
+        "bytes": 23258,
+        "sha256": "54fa602002162d3ea7b079d9a549113e151247a6e2ad04f22b52eecb95a34484",
+        "lines": 114
+      },
+      {
+        "locale": "th",
+        "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/th.json",
+        "bytes": 33652,
+        "sha256": "5486ee0bef5012405f7e5f29e275906de1ef5d7ab61d45cdca65e3b2fce32f2e",
+        "lines": 114
+      }
+    ],
+    "subject_asset": {
+      "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/demo/figures/05-thumbnail-original-ring.png",
+      "bytes": 214198,
+      "sha256": "886a5bbce7851a747a0946359f03735792ca246712c576df63b0dc5125b10610"
+    },
+    "original_demo_not_Kimi_output": true,
+    "actual_original_STL_high_resolution_capture": true,
+    "all9_full_and_real320px_images_actually_viewed": true,
+    "canonical_native_PID": 336389,
+    "canonical_native_session": 93700,
+    "canonical_native_exit_code": 0,
+    "body_states_reused": 110,
+    "body_states_drawn": 0,
+    "new_encoded_segments": 0,
+    "current_visual_hash": "3fdafe27d58cc0fa",
+    "main_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "body_sha256": "37848b2b9d5bc99af9ae99ca080a629134e749035fd12fb451c32948fd23b819",
+    "current9_JPEG": [
+      {
+        "locale": "zh-TW",
+        "role": "thumbnail",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnail.jpg",
+        "bytes": 97223,
+        "sha256": "c84ab3b47e1719e4741bfc8555fe402b6b0f1788f122f0b50bd68b2b3a0284bd"
+      },
+      {
+        "locale": "en",
+        "role": "evidence_thumbnail_subject_en",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/en.jpg",
+        "bytes": 94989,
+        "sha256": "c8af0ebcc6f03682d0324924fca5a8cd3bf8defc0b580c966873e5be78d9a703"
+      },
+      {
+        "locale": "ja",
+        "role": "evidence_thumbnail_subject_ja",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/ja.jpg",
+        "bytes": 99732,
+        "sha256": "073c28d547aaf4a901a8d8eb6e287ce936038d1254e37b72ea077ec6e3df60a5"
+      },
+      {
+        "locale": "ko",
+        "role": "evidence_thumbnail_subject_ko",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/ko.jpg",
+        "bytes": 93769,
+        "sha256": "88278c7257296dcf2637efc4be3e0a3e45a14f405de1964ba7a45e163c43a428"
+      },
+      {
+        "locale": "es",
+        "role": "evidence_thumbnail_subject_es",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/es.jpg",
+        "bytes": 100619,
+        "sha256": "90aac42c06e362cd3586730f823d12639b55a3f215c70cfc1e55930826e49824"
+      },
+      {
+        "locale": "pt",
+        "role": "evidence_thumbnail_subject_pt",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/pt.jpg",
+        "bytes": 102124,
+        "sha256": "01eede26da8326edc8a6915f5e8768f3ab31dedc4da499182f7cecc5d2b53241"
+      },
+      {
+        "locale": "id",
+        "role": "evidence_thumbnail_subject_id",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/id.jpg",
+        "bytes": 96329,
+        "sha256": "782e323ffe5fe1ad99664a1ad665991c2a1e60c5da38a90fcbf39229e8d1e011"
+      },
+      {
+        "locale": "vi",
+        "role": "evidence_thumbnail_subject_vi",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/vi.jpg",
+        "bytes": 99599,
+        "sha256": "3435063fc522f4b60f43cf481bb698660234b7d34c2c7d3263df5f42a12737e0"
+      },
+      {
+        "locale": "th",
+        "role": "evidence_thumbnail_subject_th",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/thumbnails/th.jpg",
+        "bytes": 99953,
+        "sha256": "9ddf7a094fe233bdceb11caacde31c981ea9229ea0481d7c27185ca6a45b2a1f"
+      }
+    ],
+    "metadata9_content_unchanged": true,
+    "backend_actual_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 9,
+      "review_POST": 1,
+      "file_GET": 9,
+      "denied": 0
+    },
+    "backend_PID": 354531,
+    "backend_finished_at": "2026-10-26T23:47:08.496Z",
+    "normal_full_download_count": 26,
+    "normal_download_at": "2026-10-26T23:48:44.908Z",
+    "other16_old_FileRefs_fields_order_exact": true,
+    "all17_old_binary_contents_retained": true,
+    "old_primary_archive_role": "evidence_previous_thumbnail_subject",
+    "unique_primary_thumbnail": true,
+    "whole_payload_QA_metadata_summary_choices_history_preserved": true,
+    "whole_QA_ok": false,
+    "whole_QA_passed": 10,
+    "whole_QA_total": 11,
+    "historical_caption_warnings": 47,
+    "historical_thumbnail_warnings": 3,
+    "R4_no_recap_no_detour_false_preserved": true,
+    "foreign_checked_M4A": 0,
+    "global_ASR_TTS_holds_and_unknown_journal_unchanged": true,
+    "server_approval": false,
+    "approved_source_package_and_language_batch_complete": false,
+    "API_no_atomic_CAS_limitation_preserved": true,
+    "native_lease_released": true,
+    "native_lint": {
+      "session": 28184,
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "docs_videos_tests": {
+      "session": 1516,
+      "exit_code": 0,
+      "passed": 236,
+      "failed": 0
+    },
+    "receipt": "receipts/production/thumbnail-subject/README.md",
+    "no_merge_deploy_YouTube": true,
+    "first_readonly_GET502_failure": {
+      "actual_tool_session": 25713,
+      "actual_exit_code": 1,
+      "PID": 354186,
+      "counts": {
+        "auth_reads": 1,
+        "project_GET": 1,
+        "file_PUT": 0,
+        "review_POST": 0,
+        "file_GET": 0,
+        "denied": 0
+      },
+      "zero_write_and_zero_paid": true,
+      "failure_and_original_marker_preserved": true,
+      "receipt": "first-readonly-GET502-failure.json",
+      "reconciliation": "root-firstGET502-zero-write-reconciliation.json"
+    },
+    "delivery_helper_file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/backend-helper/thumbnail-subject-firstGET502-recovery.mjs",
+    "delivery_helper_sha256": "23c0ff3a43f0d302815fdbf3d502ad0a14e9da9f57d633d89b09c9f918af9c48",
+    "production_helper_attempts_combined_counts": {
+      "auth_reads": 2,
+      "project_GET": 5,
+      "file_PUT": 9,
+      "review_POST": 1,
+      "file_GET": 9,
+      "paid_calls": 0
+    }
+  },
+  "latest_thumbnail_subject_handoff": {
+    "recorded_at": "2026-10-26T23:51:01.629298+00:00",
+    "artifacts_and_download_processes_closed": true,
+    "parent_status": "blocked",
+    "foreign_checked_M4A": 0,
+    "global_reservations_unchanged": true,
+    "new_topic7_started": false,
+    "background_production_running": false
   }
 }

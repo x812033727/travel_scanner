@@ -1,0 +1,76 @@
+{
+  "kind": "ROOT_Kimi_first_readonly_GET502_zero_write_reconciliation",
+  "at": "2026-10-26T23:38:47.223450+00:00",
+  "episode": "kimi-k31-3d-delivery",
+  "actual_original_tool_session": 25713,
+  "actual_original_process_PID": 354186,
+  "actual_tool_exit_code": 1,
+  "original_failure_completion": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/backend-helper/runs/kimi-subject9-20261026t233117/completion.json",
+    "bytes": 916,
+    "sha256": "1afe2f4137d001dd91e07b0640d54a6dbbca4dd04ece09923c95c9b25bdac448"
+  },
+  "original_admission": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/backend-helper/runs/kimi-subject9-20261026t233117/admission.json",
+    "bytes": 434,
+    "sha256": "1bd3e0e435f86930fb6b20916336413ea049308b285bd3a180c795f8d18b7fb6"
+  },
+  "original_body_marker": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/backend-helper/attempts/b1893aaf-a60c-4d4f-a7fd-ef39a1de112e-fc9693d9801d22e140169aa7e01a3a34c1ecabafcb8269a512584e7f2b65b615.json",
+    "bytes": 218,
+    "sha256": "b17f582c9efbc673166f1ed6ff9d633fffd7453e57886f46af43f56c65e8f991"
+  },
+  "original_release": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/ROOT-one-backend-nine-subject-release.json",
+    "bytes": 1682,
+    "sha256": "c9a5e05ee0fd0e7f8f30519874db2cba00a5651af4e31420714474411ffc6e9e"
+  },
+  "original_profile": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/backend-helper/actual-profile.json",
+    "bytes": 4972,
+    "sha256": "365a627fdc0392ed6ff7f862434d26aa89855be50ac5c4e8c6c3606fada5f217"
+  },
+  "original_runtime_exact_files": [
+    "admission.json",
+    "completion.json"
+  ],
+  "actual_original_counts": {
+    "auth_reads": 1,
+    "project_GET": 1,
+    "file_PUT": 0,
+    "review_POST": 0,
+    "file_GET": 0,
+    "denied": 0
+  },
+  "only_failed_route": "GET /api/video/reviews/kimi-k31-3d-delivery",
+  "HTTP": 502,
+  "file_or_review_write_dispatched": false,
+  "paid_calls": 0,
+  "subsequent_readonly_tool_session": 40557,
+  "subsequent_actual_exit_code": 0,
+  "subsequent_probe": {
+    "at": "2026-10-26T23:34:02.783Z",
+    "status": 200,
+    "sha256": "3d03f923353af39d3e5cc5a8b90eb3d21af7247fd0668c635fb0324c2c80e20f",
+    "bytes": 41182,
+    "reviews": [
+      {
+        "id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+        "gate": "final",
+        "status": "pending",
+        "refs": 17
+      }
+    ],
+    "paid_calls": 0
+  },
+  "subsequent_full_project": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/GET502-recovery-current-project.private.json",
+    "bytes": 41182,
+    "sha256": "3d03f923353af39d3e5cc5a8b90eb3d21af7247fd0668c635fb0324c2c80e20f"
+  },
+  "whole_project_bytes_exact_to_original_before": true,
+  "old17_refs_retained": true,
+  "old_failure_and_marker_not_rewritten": true,
+  "unknown_ASR_and_global_holds_untouched": true,
+  "no_recovery_request_authorized_by_this_record": true
+}
