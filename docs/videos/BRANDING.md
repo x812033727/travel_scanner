@@ -114,6 +114,32 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 例外是**重做中**的成片：成片或發布核准之後，站主又核准了新的稿子、配音或分鏡（最新一筆 script／audio／storyboard 核准晚於最新一筆 final／publish 核准），舊的核准與上架包綁的是不會再存在的成片，就不再擋 `--adopt-branding`；核准紀錄不刪，已上傳／已結束的照樣拒絕（`remakingApprovedCut`，2026-10-13 五支奇聞檔案局重製片換新開場後，要換上 21 秒有配樂的新片尾）。
 合集使用 `compile --adopt-branding`，不呼叫 `assemble`。
 
+### 從正式站取得目前的素材包（`--pull`）
+
+素材不進 Git，所以沒有素材包的機器（雲端容器、新的本機）合成出來的成片沒有片頭片尾：
+2026-10-19 S01／S09／S18 三集雲端成片就是這樣，長度等於旁白。站主 2026-10-26 決定開一條唯讀
+下載，取代手動複製或 SSH：
+
+```bash
+node tools/video/cli.mjs branding --pull --dry-run      # 下載、驗證，不安裝
+node tools/video/cli.mjs branding --pull                # 安裝成這台機器的 current
+node tools/video/cli.mjs branding --pull --series sothatswhy
+```
+
+它用 `login` 存下的影片工具權杖（雲端容器要先加 `NODE_USE_ENV_PROXY=1`），向
+`GET /api/video/media/branding`（系列是 `/branding/series/sothatswhy`）問正式站工人的
+`_branding/current.json`，再用 `/branding/files/<sha256>` 依 SHA 下載片頭與片尾。下載時逐位元組
+核對 SHA，寫成一個暫時素材包後走跟 `--install` 一樣的檢查（格數、尺寸、幀率、音軌），而且檔案算出來的
+branding hash 要等於正式站的，才安裝；暫時素材包用完即刪。本機已經是同一包就什麼都不下載。
+
+API 只讀它唯讀掛載的工作卷，而且只給目前 `current.json`（全頻道或系列）點名的兩個檔；舊包、
+成片和工作卷裡其他檔案一律 404。錯誤代碼：`video_branding_not_installed`（工人還沒安裝，或 API
+沒掛工作卷）、`video_branding_disabled`（明確關掉）、`video_branding_broken`（工人的 current.json
+格式不對），這三個都要在主機上處理，工具結束碼 3；`video_branding_file_not_found` 多半是剛好換了一包，重跑即可。
+
+裝好之後照上面的規則：只影響之後第一次成片的長片；已經成片、沒有片頭片尾的未核准影片要明確
+`assemble --adopt-branding` 重做。
+
 ## 片頭位置
 
 站主 2026-10-12／10-13 決定：有旁白的長片第一章是 30–60 秒的開場濃縮（script-writing.md

@@ -186,6 +186,9 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
    背景執行最長 2 小時，到時間會被殺；整集插圖一集一個指令分開跑，不要三集串在一個指令裡。
 4. 工作目錄在 `<VIDEO_WORKDIR>/<SLUG>/`（預設在容器家目錄下；音檔、`narration.wav`、`keyframes/manifest.json`、
    `review/check.json`）；容器回收就沒了，交接寫進票，不要只寫路徑。
+5. 片頭片尾：拿到權杖後跑 `branding --pull`，把正式站工人用的素材包裝進這個容器（`docs/videos/BRANDING.md`
+   §從正式站取得目前的素材包）。容器裡本來沒有 `_branding`，不裝就合成，成片沒有片頭片尾（S01、S09、S18 的第一版）；
+   已經這樣合成的未核准集數，裝好後 `assemble --slug <SLUG> --adopt-branding` 重做。
 
 **旁白**
 

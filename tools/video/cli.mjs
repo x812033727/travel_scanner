@@ -117,8 +117,9 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    the photo into <workdir>/stock/ and its credit into video.json assets[] (docs/videos/ILLUSTRATED.md)
   clips import --slug S --shot ID --file MP4 --provider hailuo-web|kling-mcp|external [--plan P] [--credits N] [--usd N] [--note T] [--judge] [--force]
                                                    bring in a clip made outside the pipeline: checked like a bought take, booked in the ledger
-  branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
-                                                   inspect or install a fixed intro/outro package for new long videos
+  branding [--install DIR | --pull] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
+                                                   inspect or install a fixed intro/outro package for new long videos;
+                                                   --pull fetches the one the site's worker uses (docs/videos/BRANDING.md)
   assemble --slug S [--workdir D] [--adopt-branding] [--intro-after-condensation]
                                                    explicitly add current branding to an existing unapproved cut;
                                                    or move a not-uploaded narrated cut's intro after chapter 1

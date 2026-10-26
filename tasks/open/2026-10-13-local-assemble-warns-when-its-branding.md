@@ -52,3 +52,7 @@ the warning; install the current one and see it go away.
 
 - Related: 2026-10-12-play-the-channel-intro-bumper-after (bumper position), being done on
   branch claude/bumper-after-condensation.
+- 2026-10-26: the read-only endpoint the first step asks for exists
+  (2026-10-26-pull-the-site-s-current-branding): `GET /api/video/media/branding` with a video
+  tool token answers the worker's current id and hash (`brandingStatus` in
+  tools/video/media/client.mjs), and `branding --pull` installs it.

@@ -44,6 +44,11 @@ const OWNER_CODES = new Set([
   // No Pexels or Pixabay key on the site yet (docs/videos/ILLUSTRATED.md §圖庫照片).
   "video_media_stock_unavailable",
   "video_media_outcome_uncertain",
+  // The site's worker has no bookends to hand out, or its current.json is wrong: fixed on the host
+  // with `branding --install` (docs/videos/BRANDING.md), not by retrying.
+  "video_branding_not_installed",
+  "video_branding_disabled",
+  "video_branding_broken",
 ]);
 // The same request (its hash: prompt, seed, references, model) failed the server's attempts
 // (apps/api/app/video_media/jobs.py MAX_ATTEMPTS), and the server refuses it with 409 until
@@ -248,7 +253,24 @@ export async function runJob({ submit, request, ...options }) {
  * verifying the hash as it arrives, so a torn download never carries the name of a good one.
  */
 export async function downloadFile({ slug, sha256, file, maxBytes = 200 * 1024 * 1024, ...options }) {
-  const response = await call({ ...defaults(options), path: `files/${slug}/${sha256}`, init: { method: "GET", headers: { Accept: "*/*" } } });
+  return saveVerified({ ...options, route: `files/${slug}/${sha256}`, sha256, file, maxBytes });
+}
+
+/** The site worker's current bookends (docs/videos/BRANDING.md): the channel's, or a series'. */
+export async function brandingStatus({ series = null, ...options } = {}) {
+  const route = series === null ? "branding" : `branding/series/${series}`;
+  const response = await call({ ...defaults(options), path: route, init: { method: "GET" } });
+  return response.json();
+}
+
+/** One intro or outro of the site's current package, by SHA-256; a bookend is at most 30 seconds. */
+export async function downloadBrandingFile({ sha256, file, maxBytes = 100 * 1024 * 1024, ...options }) {
+  return saveVerified({ ...options, route: `branding/files/${sha256}`, sha256, file, maxBytes });
+}
+
+/** Stream a GET into `file` through a .partial, refusing bytes past `maxBytes` or another hash. */
+async function saveVerified({ route, sha256, file, maxBytes, ...options }) {
+  const response = await call({ ...defaults(options), path: route, init: { method: "GET", headers: { Accept: "*/*" } } });
   const declared = Number(response.headers.get("content-length"));
   if (Number.isFinite(declared) && declared > maxBytes) throw new MediaError(`${sha256.slice(0, 12)} is ${declared} bytes, over the ${maxBytes} limit`, { code: "too_large", who: "tool" });
   mkdirSync(path.dirname(file), { recursive: true });
