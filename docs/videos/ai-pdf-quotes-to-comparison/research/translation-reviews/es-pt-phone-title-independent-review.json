@@ -1,0 +1,87 @@
+{
+  "reviewed_at_utc": "2026-10-26T12:43:40.000885+00:00",
+  "reviewer": {
+    "agent": "/root/pdf_author_id_vi",
+    "role": "independent ES/PT reviewer",
+    "independent_of_es_pt_author": true
+  },
+  "scope": "metadata-title-only",
+  "proposal_file": "/workspace/work/ai-pdf-01/phone-title-proposals.json",
+  "exact_proposal_sha256": "f0ef39ffdb7c9c9a4ca0fc4ae3ee7781be8b4692ef7b170ef31f3204a839fec7",
+  "source_video_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+  "actual_source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "proposal_source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "source_title": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+  "locales": [
+    {
+      "locale": "es",
+      "scope": "metadata-title-only",
+      "translation_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/es.json",
+      "actual_full_translation_sha256": "65f485d543a030095635bb6dd84bc2e0071a3c4385b1ab514ba8ab879678b2fc",
+      "proposal_source_translation_sha256": "65f485d543a030095635bb6dd84bc2e0071a3c4385b1ab514ba8ab879678b2fc",
+      "before": "Compara 3 cotizaciones PDF con AI: ¿el menor precio unitario es el más barato?",
+      "proposed": "3 cotizaciones PDF con AI: ¿el menor precio unitario es el más barato?",
+      "deleted_prefix": "Compara ",
+      "codepoint_chars_before": 78,
+      "codepoint_chars_after": 70,
+      "binding_checks": {
+        "source_video_sha256_matches_proposal": true,
+        "full_translation_sha256_matches_proposal": true,
+        "current_title_matches_before": true,
+        "only_named_leading_imperative_removed": true,
+        "before_codepoint_count_matches": true,
+        "after_codepoint_count_matches": true
+      },
+      "natural": true,
+      "topic_promise_preserved": true,
+      "passed": true,
+      "reasons": [
+        "The proposed noun-phrase opening is natural for a video title in this locale; an imperative is optional.",
+        "The title still explicitly names 3 PDF quotations and AI.",
+        "The question still asks whether the lowest unit price is actually the cheapest, preserving the comparison and lesson promise.",
+        "Deleting only the leading imperative changes the presentation, not the topic, quantities, entities or question."
+      ],
+      "issues": []
+    },
+    {
+      "locale": "pt",
+      "scope": "metadata-title-only",
+      "translation_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/pt.json",
+      "actual_full_translation_sha256": "c143c0267f1cf9d806e62a314a4cd03ebe3c929358f63865add587a404a0e4b4",
+      "proposal_source_translation_sha256": "c143c0267f1cf9d806e62a314a4cd03ebe3c929358f63865add587a404a0e4b4",
+      "before": "Compare 3 cotações PDF com AI: o menor preço unitário é mesmo o mais barato?",
+      "proposed": "3 cotações PDF com AI: o menor preço unitário é mesmo o mais barato?",
+      "deleted_prefix": "Compare ",
+      "codepoint_chars_before": 76,
+      "codepoint_chars_after": 68,
+      "binding_checks": {
+        "source_video_sha256_matches_proposal": true,
+        "full_translation_sha256_matches_proposal": true,
+        "current_title_matches_before": true,
+        "only_named_leading_imperative_removed": true,
+        "before_codepoint_count_matches": true,
+        "after_codepoint_count_matches": true
+      },
+      "natural": true,
+      "topic_promise_preserved": true,
+      "passed": true,
+      "reasons": [
+        "The proposed noun-phrase opening is natural for a video title in this locale; an imperative is optional.",
+        "The title still explicitly names 3 PDF quotations and AI.",
+        "The question still asks whether the lowest unit price is actually the cheapest, preserving the comparison and lesson promise.",
+        "Deleting only the leading imperative changes the presentation, not the topic, quantities, entities or question."
+      ],
+      "issues": []
+    }
+  ],
+  "passed": true,
+  "issues": [],
+  "changes_applied": false,
+  "canonical_drafts_indexes_or_media_edited": false,
+  "producer_invoked": false,
+  "limitations": [
+    "This reviews only the two proposed title-prefix deletions against the exact current files named here. It does not re-review the full translations or authorize their future mutations.",
+    "The measured codepoint reductions are verified; no rendered phone-width or audio-fit result is claimed.",
+    "Applying titles and updating the meaning index remains a separate root action at the authorized inactive-lease boundary."
+  ]
+}

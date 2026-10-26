@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-26T12:43:57.803364+00:00",
+  "reviewer": {
+    "agent_id": "/root/pdf_author_en_ja",
+    "role": "Independent Indonesian metadata-title reviewer",
+    "independent_of_indonesian_author": true,
+    "prior_role": "Independently reviewed the Indonesian translation; did not author it."
+  },
+  "locale": "id",
+  "scope": "metadata-title-only",
+  "proposal_path": "/workspace/work/ai-pdf-01/phone-title-proposals.json",
+  "exactproposalsha": "f0ef39ffdb7c9c9a4ca0fc4ae3ee7781be8b4692ef7b170ef31f3204a839fec7",
+  "proposal_sha256": "f0ef39ffdb7c9c9a4ca0fc4ae3ee7781be8b4692ef7b170ef31f3204a839fec7",
+  "current_translation_path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/id.json",
+  "currentfulltranslationhash": "24cfd9b6efb4591ab449f6201de565f6aff9fd91fadd79782c17e7c06b7b2e7f",
+  "current_full_translation_sha256": "24cfd9b6efb4591ab449f6201de565f6aff9fd91fadd79782c17e7c06b7b2e7f",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "title_before": "Bandingkan 3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?",
+  "title_proposed": "3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?",
+  "codepoint_chars_before": 75,
+  "codepoint_chars_after": 64,
+  "change_reviewed": "Remove only the leading Bandingkan plus its following space.",
+  "checks": {
+    "proposal_matches_actual_current_full_translation_hash": true,
+    "before_matches_current_title": true,
+    "only_requested_prefix_removed": true,
+    "three_quotes_pdf_ai_and_full_price_question_preserved": true,
+    "question_mark_preserved": true
+  },
+  "passed": true,
+  "rationale": [
+    "The proposed Indonesian wording is natural as a headline: a topic phrase followed by a complete rhetorical price question does not require the opening imperative.",
+    "The unchanged text retains three PDF quotes, AI, and the entire lowest-unit-price versus cheapest question. Together these keep the comparison lesson and its promised answer clear.",
+    "Removing the invitation to compare does not change any number, product term, qualification, or price claim. Pasti Termurah remains a question, not an assertion that the lowest unit price guarantees the cheapest total."
+  ],
+  "issues": [],
+  "application_state": "Not applied. Root may apply and update the review index only at its next boundary with no active LEASE.",
+  "actions_performed": [
+    "Read the actual proposal and current Indonesian translation.",
+    "Computed and matched proposal, full-translation and source-video hashes.",
+    "Wrote this review artifact outside repository and media."
+  ],
+  "limitations": [
+    "This is editorial review of this exact title delta only; no phone-layout render or lint rerun was performed.",
+    "No canonical translation, author draft, review index, project/media file or producer state was changed.",
+    "No producer, paid call, audio-fit check, native-voice approval or final-video approval was performed."
+  ]
+}
