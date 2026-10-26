@@ -69,3 +69,9 @@
 1. 主對話跑盲評（兩位讀者）；否題回來後改稿、重產 `script.md`、重跑 lint，直到沒有任何一題兩位同否；最後一輪存進 `panel/`。
 2. 之後照 `curio-episode` skill §在雲端環境做旁白與插圖：`login` → `tts --dry-run` → `tts` → `check-audio`（特別聽「本城總右衛門」「春齋」「不及是非」「吾敵在本能寺矣」）→ 站主聽 →
    `keyframes --dry-run` 整集一次報價（106 張）→ 畫 → 分鏡 → `music` → `render` → `clips` → `assemble` → `captions` → `qa` → final → 八語。
+
+## 製作紀錄（2026-10-26）
+
+- 旁白：132 句；聽檢重配後剩 6 句低於 0.5，交站主在旁白關卡聽。
+- 插圖：105 張；第一輪 5 張沒過 judge（電影感動畫畫風、物件特寫塞進人頭、黑邊），改成「一個人做一件事」重畫全過；整集插圖花 US$2.01。
+- `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos。
