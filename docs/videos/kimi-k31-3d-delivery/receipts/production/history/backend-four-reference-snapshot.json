@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "episode": "kimi-k31-3d-delivery",
+  "kind": "public_bounded_actual_manual_candidate_and_full1080_readback_summary",
+  "prepared_at": "2026-10-26T17:29:05.707674+00:00",
+  "evidence_scope": "Completed first native pending candidate and completed full1080 supplement only. New nine-SRT backend append is a separate unverified running phase, excluded from this four-reference snapshot.",
+  "source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+  "master_sha256": "2e2cf3db4758277b805c7f7e050bf4dce9c892f76689917c9832b971b8a9b6c1",
+  "timeline_sha256": "12287e1bb53102d5ab4f8cf3082aa4f08445007343955f569f4bc09d79387fba",
+  "candidate_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+  "backend_url": "https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery",
+  "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+  "gate": "final",
+  "status": "pending",
+  "choice": null,
+  "decided_at": null,
+  "server_source_or_final_approval": false,
+  "manual_review": true,
+  "hand_pushed": true,
+  "first_normal_review_push": {
+    "native_process_true_exit_code": 0,
+    "actual_inline_QA_return_code": 1,
+    "actual_outer_review_push_return_code": 0,
+    "finished_at": "2026-10-26T17:05:48.552Z",
+    "real_native_QA_calls": 1,
+    "outbound_policy_application_requests": 1,
+    "outbound_review_POSTs": 1
+  },
+  "normal_QA": {
+    "file": "native-final-QA.json",
+    "sha256": "a85712a6897a5bdcd0e6e3acbb4f5b2d508d9347da0b5331ab5223ecbe2c08a6",
+    "bytes": 5295,
+    "actual_return_code": 1,
+    "ok": false,
+    "checks_passed": 10,
+    "checks_total": 11,
+    "failed_ids": [
+      "narration"
+    ],
+    "narration_detail": "the narration has not been approved yet",
+    "speed_warnings_preserved": 47,
+    "foreign_thumbnail_mobile_warnings_preserved": 3,
+    "all_native_items_details_and_warnings_exact": true,
+    "policy_ok": true,
+    "policy_detail": "Jev：符合立場 0.87、有示範 0.91、建議 0.01、業配 0.05，通過",
+    "native_policy_pass_is_not_audio_or_narrative_approval": true
+  },
+  "metadata9": {
+    "locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "title_description_values_exact_to_native_composition_and_backend_readback": true,
+    "public_projection": "backend-metadata9.json",
+    "YouTube_upload_or_publication": false,
+    "public_original_kit_URL_in_descriptions": false,
+    "needs_before_publish_package": "Add genuine public original-kit URL and re-review metadata through normal path; source and translations were not changed during immutable production phases."
+  },
+  "four_verified_pending_refs_after_full1080": [
+    {
+      "role": "preview",
+      "sha256": "46e0dd43c980d34a89e173d7ec89639a08089f5e461f15920e613b6b36615aae",
+      "size": 16871812,
+      "content_type": "video/mp4"
+    },
+    {
+      "role": "contact_sheet",
+      "sha256": "06864584d039e7e086dba978de2b62d22cb2f36880d9a25f57d67d1c0409953b",
+      "size": 1629357,
+      "content_type": "image/png"
+    },
+    {
+      "role": "thumbnail",
+      "sha256": "61cb5db4775fab26cf91774ceb9ba6c112dc4e58560200b40d371b6ec3604945",
+      "size": 54611,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_main_1080p",
+      "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+      "size": 65490500,
+      "content_type": "video/mp4"
+    }
+  ],
+  "three_original_refs_full_disk_readback": {
+    "normal_review_files_true_exit_code": 0,
+    "ROOT_verified_at": "2026-10-26T17:10:27.461764+00:00",
+    "files": [
+      {
+        "gate": "final",
+        "status": "pending",
+        "review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+        "role": "preview",
+        "sha256": "46e0dd43c980d34a89e173d7ec89639a08089f5e461f15920e613b6b36615aae",
+        "size": 16871812,
+        "content_type": "video/mp4",
+        "file": "final/preview.mp4"
+      },
+      {
+        "gate": "final",
+        "status": "pending",
+        "review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+        "role": "contact_sheet",
+        "sha256": "06864584d039e7e086dba978de2b62d22cb2f36880d9a25f57d67d1c0409953b",
+        "size": 1629357,
+        "content_type": "image/png",
+        "file": "final/contact_sheet.png"
+      },
+      {
+        "gate": "final",
+        "status": "pending",
+        "review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+        "role": "thumbnail",
+        "sha256": "61cb5db4775fab26cf91774ceb9ba6c112dc4e58560200b40d371b6ec3604945",
+        "size": 54611,
+        "content_type": "image/jpeg",
+        "file": "final/thumbnail.jpg"
+      }
+    ],
+    "all_three_independent_full_SHA_and_size_verified": true
+  },
+  "full1080_supplement": {
+    "native_process_true_exit_code": 0,
+    "finished_at": "2026-10-26T17:18:57.081Z",
+    "ROOT_trace_verification_at": "2026-10-26T17:20:24.520838+00:00",
+    "same_pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "role": "evidence_main_1080p",
+    "parts_uploaded": 16,
+    "full_GETs": 1,
+    "full_GET_bytes": 65490500,
+    "full_GET_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "binary_readback_verified": true,
+    "same_old_three_refs_summary_payload_falseQA_history_and_ownerchoices_exact": true,
+    "no_extra_QA_or_policy": true,
+    "normal_review_files_all13_followup_completed": false,
+    "API_atomic_CAS_available": false,
+    "deployed_UI_download_visibility_observed": false,
+    "browser_download_filename_guaranteed": false
+  },
+  "backend_CC9_followup": {
+    "status": "separate_new_runtime_unverified_at_this_snapshot",
+    "completed": false,
+    "expected_added_SRTs": 9,
+    "only_claim_after": "Actual child true completion and exact samepending13ref readback, followed by normalreview-files wholebinary verification.",
+    "not_dub_timed_or_language_batch": true,
+    "planned_role_prefix": "evidence_cc_narration_",
+    "expected_locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "local_CC9": {
+    "actual_SRT_VTT": 18,
+    "timing": "narration",
+    "cues": 1364,
+    "speed_warnings": 47,
+    "skipped": {}
+  },
+  "unfinished_audio": {
+    "primary_entries": 105,
+    "total": 114,
+    "matched": 74,
+    "unmatched_unjudged": 31,
+    "not_completed": 9,
+    "full_audio_check_pass": false,
+    "foreign_current_checked_M4A": 0,
+    "unknown_request_sha256": "dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7",
+    "unknown_journal_sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f",
+    "journal_status": "sent",
+    "provider_result": null,
+    "replay_forbidden": true
+  },
+  "native_narrative_R4": {
+    "passed": false,
+    "failed": [
+      "no_recap",
+      "no_detour"
+    ],
+    "editorial_adoption_is_separate": true
+  },
+  "all_eight_ready": false,
+  "normal_approved_source_package_or_language_batch_complete": false,
+  "actual_remote_language_choices": {
+    "locales": {},
+    "locales_decided_at": null,
+    "languages": {},
+    "local_default8_is_not_server_checkbox_save": true
+  },
+  "private_project_runtime_auth_quota_payload_copied": false,
+  "source_record_hashes": {
+    "first_native_completion": {
+      "file": "completion.json",
+      "sha256": "730fa2120a2844650f2af9e35c6f1e2253ccbf4eed2f7648777e3ef70791207a",
+      "bytes": 9560
+    },
+    "first_ROOT_metadata_verification": {
+      "file": "ROOT-first-pending-independent-verification.json",
+      "sha256": "f89f36306d0afe2bf1a07a471d88e62b3ff5e2628b8947ad819ac0017d3ad0cb",
+      "bytes": 1487
+    },
+    "first_native_review_files_index": {
+      "file": "review-files.json",
+      "sha256": "4cf2a8da42a306f78a60bd277e025d8b55b9f2cd0d271cd4365c2806f871db9f",
+      "bytes": 1137
+    },
+    "first_ROOT_full_binary_verification": {
+      "file": "ROOT-independent-binary-verification.json",
+      "sha256": "20af339d8a66d1b7e2369106815e21983f5126fa6b8552b6f52c51273d1c7385",
+      "bytes": 1377
+    },
+    "full1080_completion": {
+      "file": "completion.json",
+      "sha256": "d352d69312ed4e9a26965978b615786ca69dd7247f4c58898b9efec95e27efaa",
+      "bytes": 7644
+    },
+    "full1080_ROOT_trace_verification": {
+      "file": "ROOT-full1080-independent-trace-verification.json",
+      "sha256": "362bbfefd0bffff8033d2d2d73bb6f52f56b9c970ec7c983eb538ff2479c128f",
+      "bytes": 623
+    },
+    "after_full1080_stored_project_hash_only": {
+      "file": "after-binary-project.json",
+      "sha256": "a65cf1ba8ed90cb47f5757a2e016669f48f454dce30f31f8d0e9c5ebbf62a17a",
+      "bytes": 36230
+    },
+    "actual_native_QA_step": {
+      "file": "actual-native-QA-step.json",
+      "sha256": "8d1084b0fdf8a6b13f1c66ab80a2fb7d23873306ffeccc61709cd1d008b04bd2",
+      "bytes": 6213
+    }
+  }
+}
