@@ -17,6 +17,11 @@ for attempt in 1 2 3; do
   if [ "$attempt" -gt 1 ]; then
     # A deadline can land mid-unpack; finish what dpkg started before trying again.
     sudo dpkg --configure -a || true
+    # The runner's sources say mirror+file:/etc/apt/apt-mirrors.txt, which lists the Azure
+    # mirror first; apt only moves down that list on an error, never on a slow transfer.
+    if [ -f /etc/apt/apt-mirrors.txt ]; then
+      printf 'http://archive.ubuntu.com/ubuntu/\tpriority:1\n' | sudo tee /etc/apt/apt-mirrors.txt >/dev/null
+    fi
     sudo sed -i 's#http://azure\.archive\.ubuntu\.com/ubuntu#http://archive.ubuntu.com/ubuntu#g' \
       /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
   fi
