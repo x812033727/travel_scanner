@@ -22,7 +22,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "表格只顯示40列？用DuckDB 2.0交出完整跟進清單",
-    "description": "從同一份配送練習表，辨識輸出省略並交出完整跟進清單。\n給會用AI協助讀CSV、希望把查詢與完整結果一起交付的人。\n\n原創虛構配送資料與確定性作者程式，非真實公司／客戶／公共統計；沒有AI產品回應或獨立模型前後測。2026-10-25以同一DuckDB2.0.0二進位比較-agent與-no-agent，40列是1200筆輸入的預覽，480筆是明確條件篩選後的完整交付。顯示省略不代表查詢或儲存遺失資料。\n\n錯誤示範由作者故意少寫欄位名稱，agent stderr含啟動文字和一行合法JSON；需要按訊息行解析，不把混合stream誤認成單一JSON文件。沒有聲稱DuckDB產生壞JSON或真實第三方consumer故障。CSV／SQL／COPY／Parquet是既有能力，新特性是代理輸出模式。沒有測token、費用、模型推理、伺服器模式或既有庫升級。\n\n教材含原創輸入、完整SQL、重做腳本、完整480筆CSV／同內容Parquet、HTML報告、精確指令及逐檔SHA。原創資料／程式／報告為CC0-1.0，DuckDB為MIT；官方文字另屬其作者。",
+    "description": "從同一份配送練習表，辨識輸出省略並交出完整跟進清單。\n給會用AI協助讀CSV、希望把查詢與完整結果一起交付的人。\n\n原創虛構配送資料與確定性作者程式，非真實公司／客戶／公共統計；沒有AI產品回應或獨立模型前後測。2026-10-25以同一DuckDB2.0.0二進位比較-agent與-no-agent，40列是1200筆輸入的預覽，480筆是明確條件篩選後的完整交付。顯示省略不代表查詢或儲存遺失資料。\n\n錯誤示範由作者故意少寫欄位名稱，agent stderr含啟動文字和一行合法JSON；需要按訊息行解析，不把混合stream誤認成單一JSON文件。沒有聲稱DuckDB產生壞JSON或真實第三方consumer故障。CSV／SQL／COPY／Parquet是既有能力，新特性是代理輸出模式。沒有測token、費用、模型推理、伺服器模式或既有庫升級。\n\n教材含原創輸入、完整SQL、重做腳本、完整480筆CSV／同內容Parquet、HTML報告、精確指令及逐檔SHA。原創資料／程式／報告為CC0-1.0，DuckDB為MIT；官方文字另屬其作者。\n\n公開教材（9條實跑命令）：https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n完整fixtures ZIP：https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
     "tags": [
       "DuckDB",
       "AI資料分析",

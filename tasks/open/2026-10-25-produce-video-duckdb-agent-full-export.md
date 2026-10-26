@@ -39,7 +39,7 @@ scope:
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
-- [ ] 首commit／push／PR後GET實際公開教材URL留證；目前只保證相對教材檔案存在。
+- [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
 ## How to verify
 
@@ -59,9 +59,9 @@ Base `6354ed3ebcc82c1baefe57bcd1f8d436f183581a`與查核時`origin/main 76cc8aa1
 
 root指定當前方案為六章（outro歸第六）。2026-10-26當前ca1e原生估時總628.2秒、保守扣開場／outro583.9秒，仍是計畫，不是媒體PASS；原七章／24秒與較早637.37秒估值保留於歷史，不作目前音長驗收。
 
-本分工不commit、push、開PR、merge或deploy；後續授權前維持本地工作與正常後臺研究／pending審核紀錄。原始碰撞大JSON及配對憑證不放進公開episode資料。
+歷史source導入分工當時不commit、push、開PR、merge或deploy；後續授權前維持本地工作與正常後臺研究／pending審核紀錄。原始碰撞大JSON及配對憑證不放進公開episode資料。
 
-## 2026-10-26 source gates與paid TTS hold
+## 歷史ca1e source gates與paid TTS hold（metadata追加前）
 
 當前source SHA `ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf`、claims `cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191`、speechHash `38cf9292f6945199`。64state＋thumb native static0layout，root已實看全部64contacts／修卡／final thumb；獨立verify3的兩個fresh in-memory capture逐bytes等於frozen bitmap。111 full line objects／say／voice／SQL未改。
 
@@ -72,3 +72,11 @@ R2 reader5／6各12/13且passed=false，分別no_recap／no_detour；root明確�
 root依第四initial93/118 raws、一次resume仍settled busy，以及ForTy PT R1已知HTTP429／0新音訊，決定第五暫不啟動新paid TTS。本片目前TTS0／raw0，沒有M4A、全片QA或八語完成；不換provider／voice／全局設定，不查帳單或清journal。只完成source gates與dryrun準備。整片票仍in-progress，不done／release。
 
 正式進度、目前收據、相對教材與公開URL待驗界線見docs/videos/duckdb-agent-full-export/result.md及receipts/index.json；新文件freeze另列，不覆寫原266檔historical manifest。本docs分工不commit、push、PR或backend操作，由root後續commit。
+
+## root verify4當前metadata綁定與公開教材（2026-10-26T03:46:05.649960+00:00）
+
+Root明確委派/root/formal_docs_commit沿用本票codex-duckdb-20261025 claim完成文件／收據及同分支scoped commit／push，沒有接管paid或媒體producer。首push410633ab與PR1861 draft／no-auto-merge已建立；root於02:39公開GET CSV／ZIP 200及SHA proof已落地，原資料與9條RUN命令不變。
+
+當前40eb僅description追加兩個真實immutable URL；root獨立verify4 MD c1b7af46f33dbc6fdd3a36ca562c5531bbdfb53d4dcd2f5a25dbffabd6ac4080、JSON292e77789e9c79a4fd851daf96d574bdb953045c5ff01319c21edaca91bd7afa PASS。完整111line／64scene／claims／voice／speech38cf及生成script7aac全不變，21項為固定依賴連續性CONFIRMED，未冒稱新live全來源或fresh敘事。既有normal script pending／01:48本地採用仍綁7aac，沒有新server/UI/local核准。
+
+首次verify4 invocation用錯estimateTimeline參數、在reports寫出前失敗；修正rerun才產生真實PASS，診斷另記，沒有製造raw stderr。prepared17檔與原freeze逐bytes封存，舊68reviews不動；當前progress／新source-gates／index／validation／freeze各記範圍。paid TTS0、R2兩讀者12/13 false、八語及overall仍未完成；官方5/21 v4素材已取得但第五尚未採用。不merge／deploy／YouTube上傳。
