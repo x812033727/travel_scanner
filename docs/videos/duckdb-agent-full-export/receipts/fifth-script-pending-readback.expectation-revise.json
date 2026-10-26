@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-26T01:51:27.193Z",
+  "scope": "Root diagnostic of earlier readback assertion; original tool stderr retained in session",
+  "verdict": "REVISE_EXPECTATION",
+  "incorrect_expected_content_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+  "correct_native_gate_file": "script.md",
+  "actual_native_gate_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "reason": "Native script review and local script adoption bind generated script.md, while video.json is separately source-pinned. Root first asserted the video.json SHA and got mismatch; no remote approval or paid TTS occurred.",
+  "corrected_readback_file": "fifth-script-pending-readback.script-gate.json"
+}

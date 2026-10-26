@@ -1,0 +1,23 @@
+{
+  "name": "variant",
+  "argv": [
+    "./duckdb",
+    "-no-init",
+    "-agent",
+    ":memory:",
+    "-f",
+    "demo/variant.sql"
+  ],
+  "shell_command": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+  "cwd": "/workspace/work/ai-tech-next/fifth-draft/public-run",
+  "observed_at_utc": "2026-10-25T23:50:22.745662+00:00",
+  "exit_code": 0,
+  "stdout": {
+    "bytes": 42,
+    "sha256": "46691c468502755c2c78dc49f75dada27cb763793029f388a8e4c0160410b725"
+  },
+  "stderr": {
+    "bytes": 63,
+    "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+  }
+}

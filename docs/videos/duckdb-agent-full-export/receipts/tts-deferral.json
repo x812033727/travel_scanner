@@ -1,0 +1,60 @@
+{
+  "kind": "root_decision_defer_new_fifth_paid_TTS",
+  "scope": "Cross-episode observations justify scheduling hold only; not a fifth synthesis attempt or provider billing audit.",
+  "decision": "Root explicitly defers any new paid fifth TTS while existing Gemini speech requests are settling busy/quota responses; source gates and native dry-run preparation may continue.",
+  "fifth_paid_TTS_started": false,
+  "fifth_successful_raw_WAVs": 0,
+  "provider_or_voice_or_global_settings_changed": false,
+  "provider": "gemini",
+  "voice": "Sulafat",
+  "observed_other_episode_evidence": {
+    "fourth": {
+      "status": "provider_busy_stage_held_after_two_initial_process_attempts",
+      "raw_wavs_produced": 93,
+      "expected_raw_wavs": 118,
+      "second_attempt_new_raw_wavs": 0,
+      "process_attempts": [
+        {
+          "at": "2026-10-26T01:28:58.564Z",
+          "round": "initial",
+          "exit_code": 4,
+          "log_name": "fourth-dub-en-initial-2026-10-26T01-21-52-458Z.log",
+          "log_sha256": "6e4535988341d203bcb2f0212fa8fadd83a516d6342c452f2bf0cc9c48b2332a"
+        },
+        {
+          "at": "2026-10-26T01:38:10.628Z",
+          "round": "initial",
+          "exit_code": 4,
+          "log_name": "fourth-dub-en-initial-2026-10-26T01-37-22-261Z.log",
+          "log_sha256": "626a09181044005b07846e7f001302297f7cb64be66db347936edeb07e1e9c4b"
+        }
+      ],
+      "actual_fit_exists": false,
+      "M4A_exists": false,
+      "ASR_run": false,
+      "root_allowed_resume_consumed": true
+    },
+    "ForTy_PT_R1": {
+      "observed_at": "2026-10-26T01:44:05.573754Z",
+      "logical_original_retake_round": 1,
+      "native_command_exit": 4,
+      "actual_successful_syntheses": 0,
+      "all_http_status": 429,
+      "http200": 0,
+      "billing_claim_limit": "No provider-level receipt or bill was queried; this records the native/server settled-refusal semantics and no generated audio, not independent provider usage evidence"
+    }
+  },
+  "source_evidence_identities": {
+    "fourth-en-initial-synth-held-result.json": {
+      "bytes": 3731,
+      "sha256": "d0e79085fb713cdbad9fa0461eee7cc0e00c86969c964b175b01f97075f24d4a"
+    },
+    "forty-pt-retake1-settled-429-proof.json": {
+      "bytes": 9577,
+      "sha256": "a5c473b1bfd36c671516d0ebf8669b3ad04af9a186c8dc3c90dff5a32534ffe6"
+    }
+  },
+  "billing_limit": "The fourth initial93 generated raws are preserved and are not called zero charge. No provider bill was queried. PT0 new audio and settled429 semantics do not establish all provider billing.",
+  "no_transport_or_pairing_or_credentials_bundled": true,
+  "resume_condition": "Only root may explicitly release a bounded new paid start after global provider status is reviewed; no automatic retry loop and no fallback provider/voice."
+}

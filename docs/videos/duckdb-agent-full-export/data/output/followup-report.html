@@ -1,0 +1,45 @@
+<!doctype html><html lang="zh-TW"><meta charset="utf-8"><title>配送追蹤清單｜本地DuckDB2實跑</title><style>body{font:20px/1.6 sans-serif;color:#172d46;background:#f8faf8;max-width:1100px;margin:40px auto;padding:0 25px}h1{font-size:38px}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ccd7d9;text-align:left;padding:8px}pre{white-space:pre-wrap;font:15px/1.5 monospace;background:#e5eeee;padding:20px}a{color:#007f85}.note{border-left:5px solid #b83e2a;padding-left:15px}</style><h1>同一份配送紀錄，交出完整跟進清單</h1><p class="note">原創虛構練習資料；不是實際業務／公共統計。本次只運行DuckDB2.0 CLI，沒有呼叫AI模型或使用Claude Cowork。</p><p>輸入1,200筆：已送達960筆、在途240筆。篩出已送達且實際天數超過承諾3天的480筆。R2、R3各240筆。</p><p><a href="late-followup.csv" download>完整480筆CSV</a> · <a href="late-followup.parquet" download>同一份Parquet</a> · <a href="../sql/03-followup.sql">完整SQL</a> · <a href="../results.json">實跑紀錄</a></p><h2>這12列只是樣本</h2><p>前8列＋末4列；完整檔案有480列。畫面預覽、查詢結果及匯出檔是三個不同層次。</p><table><tr><th>parcel_id</th><th>route</th><th>promised_days</th><th>actual_days</th><th>days_late</th></tr><tr><td>P0002</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P0003</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr><tr><td>P0006</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P0007</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr><tr><td>P0011</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr><tr><td>P0014</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P0018</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P0019</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr><tr><td>P1191</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr><tr><td>P1194</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P1198</td><td>R2</td><td>3</td><td>4</td><td>1</td></tr><tr><td>P1199</td><td>R3</td><td>3</td><td>5</td><td>2</td></tr></table><h2>完整篩選規則</h2><pre>SELECT parcel_id,route,promised_days,actual_days,actual_days-promised_days AS days_late FROM parcels WHERE status=&#x27;delivered&#x27; AND actual_days&gt;promised_days ORDER BY parcel_id</pre><h2>新版agent模式的真實輸出</h2><p>同一2.0版本的-agent／-no-agent對照；不是與1.5的版本速度比。CSV／SQL／Parquet是既有能力，agent輸出形式才是本次新特性。</p><pre>| parcel_id:VARCHAR | route:VARCHAR | promised_days:INTEGER | status:VARCHAR | actual_days:INTEGER |
+|---|---|---|---|---|
+| P0001 | R1 | 3 | delivered | 3 |
+| P0002 | R2 | 3 | delivered | 4 |
+| P0003 | R3 | 3 | delivered | 5 |
+| P0004 | R4 | 3 | delivered | 2 |
+| P0005 | R1 | 3 | in_transit | NULL |
+| P0006 | R2 | 3 | delivered | 4 |
+| P0007 | R3 | 3 | delivered | 5 |
+| P0008 | R4 | 3 | delivered | 2 |
+| P0009 | R1 | 3 | delivered | 3 |
+| P0010 | R2 | 3 | in_transit | NULL |
+| P0011 | R3 | 3 | delivered | 5 |
+| P0012 | R4 | 3 | delivered | 2 |
+| P0013 | R1 | 3 | delivered | 3 |
+| P0014 | R2 | 3 | delivered | 4 |
+| P0015 | R3 | 3 | in_transit | NULL |
+| P0016 | R4 | 3 | delivered | 2 |
+| P0017 | R1 | 3 | delivered | 3 |
+| P0018 | R2 | 3 | delivered | 4 |
+| P0019 | R3 | 3 | delivered | 5 |
+| P0020 | R4 | 3 | in_transit | NULL |
+| … 1160 rows omitted … |
+| P1181 | R1 | 3 | delivered | 3 |
+| P1182 | R2 | 3 | delivered | 4 |
+| P1183 | R3 | 3 | delivered | 5 |
+| P1184 | R4 | 3 | delivered | 2 |
+| P1185 | R1 | 3 | in_transit | NULL |
+| P1186 | R2 | 3 | delivered | 4 |
+| P1187 | R3 | 3 | delivered | 5 |
+| P1188 | R4 | 3 | delivered | 2 |
+| P1189 | R1 | 3 | delivered | 3 |
+| P1190 | R2 | 3 | in_transit | NULL |
+| P1191 | R3 | 3 | delivered | 5 |
+| P1192 | R4 | 3 | delivered | 2 |
+| P1193 | R1 | 3 | delivered | 3 |
+| P1194 | R2 | 3 | delivered | 4 |
+| P1195 | R3 | 3 | in_transit | NULL |
+| P1196 | R4 | 3 | delivered | 2 |
+| P1197 | R1 | 3 | delivered | 3 |
+| P1198 | R2 | 3 | delivered | 4 |
+| P1199 | R3 | 3 | delivered | 5 |
+| P1200 | R4 | 3 | in_transit | NULL |
+first 20 and last 20 of 1200 rows (.maxbytes 0 for all), hash f4d54c52b655fb12
+</pre><p class="note">輸出較精簡不等於查詢或AI回答正確；沒有量測token、成本、時間節省或模型理解效果。</p></html>

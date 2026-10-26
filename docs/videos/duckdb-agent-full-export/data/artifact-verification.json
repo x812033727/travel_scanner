@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-10-25T22:41:16.917488+00:00",
+  "status": "PASS",
+  "source_rows": 1200,
+  "full_followup_rows": 480,
+  "independent_csv_predicate_matches_every_row": true,
+  "parquet_roundtrip_matches_every_row": true,
+  "json_error_line_valid": true,
+  "whole_stderr_is_one_json_document": false,
+  "stderr_contract": "One startup text line plus one valid JSON error object; consumer must parse the JSON line, not treat the whole mixed stream as one object. No vendor bug or real third-party consumer failure claimed.",
+  "preview_omitted_rows": 1160,
+  "preview_displayed_rows": 40,
+  "display_truncation_is_data_loss": false,
+  "order_independent_result_hash_observed": "f4d54c52b655fb12",
+  "result_hash_is_file_sha256": false,
+  "comparison": "Same2.0 binary, agent versus no-agent; not a previous-version performance benchmark."
+}

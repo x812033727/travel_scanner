@@ -1,0 +1,76 @@
+{
+  "checked_at_utc": "2026-10-26T00:21:38.671435+00:00",
+  "video_sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "prior_source_sha256": "fc5c2b2dce69763905273e049f32290f613354cc8d068532e67086dcfd2a3da2",
+  "prior_claims_sha256": "02bcb6bc2bb7b540b2d5030f37e15fc54334d3f4063c15678e662f455f484dd7",
+  "prior_R1_126_manifest_files_unchanged": true,
+  "fixed_current_artifact_files_unchanged": 98,
+  "21_claim_definitions_evidence_scope_unchanged": true,
+  "claims_5_columns_and_scene_lists_exact": true,
+  "all_code_command_cards_unchanged": true,
+  "startup_and_valid_JSON_line_contract_read_only_check": {
+    "raw_stderr_sha256": "bdda3516bfbcd80d56309bb652a77f785b0ca76d66af26ffa89ae7e4b77398e1",
+    "JSON_line_valid": true,
+    "whole_stderr_single_JSON": false,
+    "wrong_name": "actual_day",
+    "candidate_names_from_exception_message": [
+      "actual_days",
+      "parcel_id"
+    ],
+    "selected_original_column": "actual_days"
+  },
+  "readback_column_order_read_only_check": [
+    "parcel_id",
+    "route",
+    "promised_days",
+    "actual_days",
+    "days_late"
+  ],
+  "cold_open_and_chapter_openers_unchanged": true,
+  "original_R1_votes_preserved": {
+    "3": {
+      "yes_count": 12,
+      "total": 13,
+      "passed": false,
+      "original13booleans": {
+        "scene_first": true,
+        "no_spoiler": true,
+        "one_line": true,
+        "no_toc": true,
+        "chapters_link": true,
+        "open_loops": true,
+        "payoffs": true,
+        "no_recap": false,
+        "chapters_are_events": true,
+        "outro_no_next": true,
+        "opening_hooks": true,
+        "one_thread": true,
+        "no_detour": true
+      }
+    },
+    "4": {
+      "yes_count": 11,
+      "total": 13,
+      "passed": false,
+      "original13booleans": {
+        "scene_first": true,
+        "no_spoiler": true,
+        "one_line": true,
+        "no_toc": true,
+        "chapters_link": true,
+        "open_loops": true,
+        "payoffs": true,
+        "no_recap": false,
+        "chapters_are_events": true,
+        "outro_no_next": true,
+        "opening_hooks": true,
+        "one_thread": true,
+        "no_detour": false
+      }
+    }
+  },
+  "author_self_review_only": true,
+  "R2_future_panel_results_read_or_written": false,
+  "SQL_or_paid_or_backend_or_TTS_or_media_started": false
+}

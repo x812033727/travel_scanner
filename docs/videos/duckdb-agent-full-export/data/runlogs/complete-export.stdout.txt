@@ -1,0 +1,18 @@
+| column_name:VARCHAR | column_type:VARCHAR | null:VARCHAR | key:VARCHAR | default:VARCHAR | extra:VARCHAR |
+|---|---|---|---|---|---|
+| parcel_id | VARCHAR | YES | NULL | NULL | NULL |
+| route | VARCHAR | YES | NULL | NULL | NULL |
+| promised_days | INTEGER | YES | NULL | NULL | NULL |
+| status | VARCHAR | YES | NULL | NULL | NULL |
+| actual_days | INTEGER | YES | NULL | NULL | NULL |
+| status:VARCHAR | records:BIGINT |
+|---|---|
+| delivered | 960 |
+| in_transit | 240 |
+| route:VARCHAR | delivered_late:BIGINT |
+|---|---|
+| R2 | 240 |
+| R3 | 240 |
+| exported_rows:BIGINT |
+|---|
+| 480 |

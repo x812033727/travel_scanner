@@ -1,0 +1,4 @@
+agent mode: codex
+output: markdown tables; a result of up to 1000 rows and 10000 bytes is rendered whole, a larger one as its first and last rows with the count (.maxrows N, .maxbytes N; -1 / 0 = all); cells are cut at 500 chars (.maxcellwidth N); the footer has the row count and, when the whole result was read, an order-independent hash of it; errors are JSON on stderr; a query that reads over 1000000 rows gets an estimate line and progress lines on stderr
+tips: SET max_execution_time=<ms> bounds a query; DESCRIBE <query> gives the result columns without running it; SUMMARIZE <table>; .tables; duckdb_functions() has descriptions and examples
+switches: -agent / -no-agent force the mode, and so does DUCKDB_AGENT_MODE=1 / 0 in the environment (the flags win); an output mode flag (-csv, -json, ...) leaves it off; .startup_text none in ~/.duckdbrc hides the startup line

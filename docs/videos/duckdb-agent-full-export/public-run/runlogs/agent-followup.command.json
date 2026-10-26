@@ -1,0 +1,27 @@
+{
+  "name": "agent-followup",
+  "argv": [
+    "./duckdb",
+    "-no-init",
+    "-agent",
+    ":memory:",
+    "-f",
+    "demo/followup.sql"
+  ],
+  "shell_command": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+  "cwd": "/workspace/work/ai-tech-next/fifth-draft/public-run",
+  "observed_at_utc": "2026-10-25T23:50:21.630306+00:00",
+  "exit_code": 0,
+  "stdout": {
+    "bytes": 593,
+    "sha256": "c0a0db1d7b3169aaeeb35f60493f4006e231a9398b80c59545d657fa3edd4e2d"
+  },
+  "stderr": {
+    "bytes": 63,
+    "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+  },
+  "export_after_this_mode": {
+    "bytes": 7252,
+    "sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+  }
+}

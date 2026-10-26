@@ -1,0 +1,16 @@
+{
+  "label": "complete-export",
+  "argv": [
+    "./bin/duckdb",
+    "-no-init",
+    "-agent",
+    ":memory:",
+    "-c",
+    "SET autoinstall_known_extensions=false; SET autoload_known_extensions=false; SET threads=1; SET memory_limit='128MB'; CREATE TABLE parcels AS SELECT * FROM read_csv('input/parcels.csv',columns={'parcel_id':'VARCHAR','route':'VARCHAR','promised_days':'INTEGER','status':'VARCHAR','actual_days':'INTEGER'},header=true);\nDESCRIBE parcels; SELECT status,count(*) AS records FROM parcels GROUP BY status ORDER BY status; SELECT route,count(*) AS delivered_late FROM parcels WHERE status='delivered' AND actual_days>promised_days GROUP BY route ORDER BY route; COPY (SELECT parcel_id,route,promised_days,actual_days,actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'output/late-followup.csv' (HEADER,DELIMITER ','); COPY (SELECT parcel_id,route,promised_days,actual_days,actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'output/late-followup.parquet' (FORMAT PARQUET); SELECT count(*) AS exported_rows FROM read_csv('output/late-followup.csv');"
+  ],
+  "started_at_utc": "2026-10-25T22:30:19.171497+00:00",
+  "seconds": 0.442554,
+  "exit_code": 0,
+  "stdout_bytes": 593,
+  "stderr_bytes": 63
+}

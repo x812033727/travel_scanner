@@ -1,0 +1,23 @@
+{
+  "name": "readback",
+  "argv": [
+    "./duckdb",
+    "-no-init",
+    "-no-agent",
+    ":memory:",
+    "-f",
+    "demo/readback.sql"
+  ],
+  "shell_command": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+  "cwd": "/workspace/work/ai-tech-next/fifth-draft/public-run",
+  "observed_at_utc": "2026-10-25T23:50:22.248318+00:00",
+  "exit_code": 0,
+  "stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

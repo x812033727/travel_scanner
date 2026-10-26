@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "input_same_sha_as_research": true,
+  "full_csv_sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5",
+  "full_csv_rows": 480,
+  "parquet_roundtrip_byte_equal": true,
+  "equivalent_to_original_research_csv": true,
+  "replay_scope": "Readable SQL formatting, same fixed2.0 binary; author deterministic fixture and script, no independently prompted model or AI product session.",
+  "runs": [
+    {
+      "name": "human-preview",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:16.157725+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "4f5894b0a8a55dab90029f479ba94fd515fe9735d3e4f77e92f4ae2318c5623b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "agent-preview",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:16.755272+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "3354a5c6100722b32b6ef06ee1c6fecd1827d84388e59d19b6076a8a3be77ab6",
+      "stderr_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "name": "human-typo",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/typo.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:17.139247+00:00",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "77f8585405ac33a20197ce4fda47b8d1a4cec6cfc1655bfc3d0196661281fca2"
+    },
+    {
+      "name": "agent-typo",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/typo.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:17.542184+00:00",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bdda3516bfbcd80d56309bb652a77f785b0ca76d66af26ffa89ae7e4b77398e1"
+    },
+    {
+      "name": "followup",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/followup.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:17.905563+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c0a0db1d7b3169aaeeb35f60493f4006e231a9398b80c59545d657fa3edd4e2d",
+      "stderr_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "name": "human-followup",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/followup.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:18.155635+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "cff430d06191704fdc8027e3f9d592c9b6ce05c10d49891b7d7086b9aab2cb49",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "readback",
+      "argv": [
+        "../fifth-demo/bin/duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/readback.sql"
+      ],
+      "cwd": "/workspace/work/ai-tech-next/fifth-draft",
+      "observed_at_utc": "2026-10-25T23:20:18.325919+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

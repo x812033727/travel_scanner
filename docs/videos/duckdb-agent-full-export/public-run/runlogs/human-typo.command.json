@@ -1,0 +1,23 @@
+{
+  "name": "human-typo",
+  "argv": [
+    "./duckdb",
+    "-no-init",
+    "-no-agent",
+    ":memory:",
+    "-f",
+    "demo/typo.sql"
+  ],
+  "shell_command": "./duckdb -no-init -no-agent :memory: -f demo/typo.sql",
+  "cwd": "/workspace/work/ai-tech-next/fifth-draft/public-run",
+  "observed_at_utc": "2026-10-25T23:50:20.301638+00:00",
+  "exit_code": 1,
+  "stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "bytes": 193,
+    "sha256": "77f8585405ac33a20197ce4fda47b8d1a4cec6cfc1655bfc3d0196661281fca2"
+  }
+}

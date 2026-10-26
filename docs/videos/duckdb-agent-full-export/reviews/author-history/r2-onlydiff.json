@@ -1,0 +1,573 @@
+{
+  "revision": "bounded final story R2",
+  "before_source": {
+    "bytes": 59480,
+    "sha256": "fc5c2b2dce69763905273e049f32290f613354cc8d068532e67086dcfd2a3da2"
+  },
+  "after_source": {
+    "bytes": 57612,
+    "sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2"
+  },
+  "before_claims": {
+    "bytes": 10494,
+    "sha256": "02bcb6bc2bb7b540b2d5030f37e15fc54334d3f4063c15678e662f455f484dd7"
+  },
+  "after_claims": {
+    "bytes": 10294,
+    "sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191"
+  },
+  "only_source_changes": {
+    "line_edits": {
+      "5rfa": {
+        "before": {
+          "scene": "in-transit-example",
+          "id": "5rfa",
+          "text": "另一筆仍在途，還沒有完成配送的天數。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        "after": {
+          "scene": "in-transit-example",
+          "id": "5rfa",
+          "text": "把剛剛的狀態條件，套到這筆在途紀錄。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      },
+      "e77f": {
+        "before": {
+          "scene": "in-transit-example",
+          "id": "e77f",
+          "text": "照剛剛的狀態條件，它留在原表；空白不能補成零天。"
+        },
+        "after": {
+          "scene": "in-transit-example",
+          "id": "e77f",
+          "text": "它先被送達條件排除，空白也不能補成零天。"
+        }
+      },
+      "xj3j": {
+        "before": {
+          "scene": "intentional-typo",
+          "id": "xj3j",
+          "text": "這是作者安排的排錯練習，不是觀察到的AI失誤。",
+          "say": "這是作者安排的排錯練習，不是觀察到的A I失誤。",
+          "say_for": "ad1feff01bf7"
+        },
+        "after": {
+          "scene": "intentional-typo",
+          "id": "xj3j",
+          "text": "這條查詢只抽出欄位排錯，錯字是我刻意安排，不是AI失誤。",
+          "say": "這條查詢只抽出欄位排錯，錯字是我刻意安排，不是A I失誤。",
+          "say_for": "a9dc656d01b0"
+        }
+      },
+      "i2fq": {
+        "before": {
+          "scene": "stderr-contract",
+          "id": "i2fq",
+          "text": "這份輸出的第一行，是模式啟動說明文字。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        "after": {
+          "scene": "stderr-contract",
+          "id": "i2fq",
+          "text": "先略過這次啟動文字，只解析後面那行合法JSON。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住",
+          "say": "先略過這次啟動文字，只解析後面那行合法J S O N。",
+          "say_for": "1b2475ec3484"
+        }
+      },
+      "yxh7": {
+        "before": {
+          "scene": "stderr-contract",
+          "id": "yxh7",
+          "text": "後面的JSON行本身合法；解析物件前，要先辨認並取出那一行。",
+          "say": "後面的J S O N行本身合法；解析物件前，要先辨認並取出那一行。",
+          "say_for": "3797dd5893fd"
+        },
+        "after": {
+          "scene": "stderr-contract",
+          "id": "yxh7",
+          "text": "整串輸出混有文字，不能當成單一物件。"
+        }
+      },
+      "jngn": {
+        "before": {
+          "scene": "valid-json-fields",
+          "id": "jngn",
+          "text": "代理模式把同一個問題整理成JSON錯誤物件。",
+          "say": "代理模式把同一個問題整理成J S O N錯誤物件。",
+          "say_for": "f457a2415473",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        "after": {
+          "scene": "valid-json-fields",
+          "id": "jngn",
+          "text": "從物件取出錯字名稱，再從說明文字找候選欄位。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      },
+      "cjm4": {
+        "before": {
+          "scene": "valid-json-fields",
+          "id": "cjm4",
+          "text": "類別和錯字名稱有各自欄位，說明文字還列出候選名稱。"
+        },
+        "after": {
+          "scene": "valid-json-fields",
+          "id": "cjm4",
+          "text": "我把候選名稱對回原表，找到多了結尾字母的正確拼法。"
+        }
+      },
+      "7g26": {
+        "before": {
+          "scene": "repair-the-name",
+          "id": "7g26",
+          "text": "錯誤裡的候選名稱，能和原表欄位逐字對上。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        "after": {
+          "scene": "repair-the-name",
+          "id": "7g26",
+          "text": "把剛剛選出的原表欄位，寫回這份查詢。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      },
+      "2d84": {
+        "before": {
+          "scene": "repair-the-name",
+          "id": "2d84",
+          "text": "補回結尾字母後，原本的條件、選欄和排序都不必換。"
+        },
+        "after": {
+          "scene": "repair-the-name",
+          "id": "2d84",
+          "text": "再接回原本的條件、選欄與排序，準備匯出同一張單。"
+        }
+      },
+      "5qhj": {
+        "before": {
+          "scene": "copy-destination",
+          "id": "5qhj",
+          "text": "第一列有欄名，重新開啟時就能對回原來的選欄。"
+        },
+        "after": {
+          "scene": "copy-destination",
+          "id": "5qhj",
+          "text": "讀回時，把欄位順序對回剛才的選欄，確認代號和路線沒有互換。"
+        }
+      }
+    },
+    "scenes_removed": [
+      "json-stream-question",
+      "consumer-expectation"
+    ],
+    "removed_line_ids": [
+      "imsp",
+      "qdrd",
+      "ys6z"
+    ],
+    "new_scenes": [],
+    "new_line_ids": [],
+    "scene_order_before": [
+      "parcel-table-start",
+      "running-followup-task",
+      "forty-visible",
+      "missing-question",
+      "typo-question",
+      "export-question",
+      "input-is-still-there",
+      "release-time",
+      "mode-role",
+      "existing-file-tools",
+      "bounded-choice",
+      "input-columns",
+      "force-human",
+      "force-agent",
+      "find-the-omission",
+      "same-preview",
+      "human-footer",
+      "agent-omitted",
+      "same-result-different-view",
+      "define-the-followup",
+      "explicit-input-types",
+      "inspect-columns",
+      "input-status-count",
+      "apply-both-conditions",
+      "read-one-parcel",
+      "compute-days-late",
+      "in-transit-example",
+      "where-is-complete",
+      "selection-and-order",
+      "on-time-example",
+      "field-name-question",
+      "human-error",
+      "intentional-typo",
+      "valid-json-fields",
+      "json-stream-question",
+      "stderr-contract",
+      "consumer-expectation",
+      "repair-the-name",
+      "copy-limit-question",
+      "copy-csv-whole",
+      "copy-where",
+      "copy-destination",
+      "copy-parquet-whole",
+      "run-followup",
+      "read-exported-count",
+      "actual-export-count",
+      "same-version-same-answer",
+      "handoff-question",
+      "read-parquet-back",
+      "run-readback",
+      "first-delivered-late",
+      "tail-of-output",
+      "route-summary-query",
+      "route-summary-result",
+      "full-content-comparison",
+      "source-predicate-check",
+      "change-the-requirement",
+      "new-requirement-consequence",
+      "due-or-late-rule",
+      "run-variant",
+      "variant-members-question",
+      "variant-result",
+      "on-time-enters-variant",
+      "different-deliveries",
+      "handoff-pack",
+      "keep-the-rule"
+    ],
+    "scene_order_after": [
+      "parcel-table-start",
+      "running-followup-task",
+      "forty-visible",
+      "missing-question",
+      "typo-question",
+      "export-question",
+      "input-is-still-there",
+      "release-time",
+      "mode-role",
+      "existing-file-tools",
+      "bounded-choice",
+      "input-columns",
+      "force-human",
+      "force-agent",
+      "find-the-omission",
+      "same-preview",
+      "human-footer",
+      "agent-omitted",
+      "same-result-different-view",
+      "define-the-followup",
+      "explicit-input-types",
+      "inspect-columns",
+      "input-status-count",
+      "apply-both-conditions",
+      "read-one-parcel",
+      "compute-days-late",
+      "in-transit-example",
+      "where-is-complete",
+      "selection-and-order",
+      "on-time-example",
+      "field-name-question",
+      "human-error",
+      "intentional-typo",
+      "stderr-contract",
+      "valid-json-fields",
+      "repair-the-name",
+      "copy-limit-question",
+      "copy-csv-whole",
+      "copy-where",
+      "copy-destination",
+      "copy-parquet-whole",
+      "run-followup",
+      "read-exported-count",
+      "actual-export-count",
+      "same-version-same-answer",
+      "handoff-question",
+      "read-parquet-back",
+      "run-readback",
+      "first-delivered-late",
+      "tail-of-output",
+      "route-summary-query",
+      "route-summary-result",
+      "full-content-comparison",
+      "source-predicate-check",
+      "change-the-requirement",
+      "new-requirement-consequence",
+      "due-or-late-rule",
+      "run-variant",
+      "variant-members-question",
+      "variant-result",
+      "on-time-enters-variant",
+      "different-deliveries",
+      "handoff-pack",
+      "keep-the-rule"
+    ],
+    "scene_movement": "stderr-contract moves immediately before valid-json-fields; all other remaining scene relative order unchanged.",
+    "noncommand_card_changes": {
+      "stderr-contract": {
+        "before": {
+          "title": "先辨識訊息，再解析",
+          "columns": [
+            "訊息順序",
+            "本次stderr"
+          ],
+          "rows": [
+            [
+              "第一行",
+              "模式啟動說明文字"
+            ],
+            [
+              "第二行",
+              "合法JSON錯誤物件"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "先辨識訊息，再解析"
+        },
+        "after": {
+          "title": "從這次錯誤輸出找回欄位",
+          "columns": [
+            "訊息順序",
+            "本次stderr"
+          ],
+          "rows": [
+            [
+              "第一行",
+              "模式啟動說明文字"
+            ],
+            [
+              "第二行",
+              "合法JSON錯誤物件"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "先選JSON行，再定位錯字與候選"
+        }
+      }
+    },
+    "loop_removed": [
+      {
+        "setup": "ys6z",
+        "payoff": "imsp",
+        "what": "整串stderr能否當單一JSON解析"
+      }
+    ],
+    "metadata_scope_voice_sources_unchanged": {
+      "schema_version": true,
+      "slug": true,
+      "format": true,
+      "theme": true,
+      "category": true,
+      "narration_locale": true,
+      "target_minutes": true,
+      "voice": true,
+      "subtitles": true,
+      "youtube": true,
+      "thumbnail": true,
+      "sources": true,
+      "assets": true
+    },
+    "cold_open_all_six_scenes_unchanged": true,
+    "all_six_chapter_titles_and_first_lines_unchanged": true,
+    "all_code_and_command_card_data_unchanged": [
+      "force-human",
+      "force-agent",
+      "same-preview",
+      "explicit-input-types",
+      "inspect-columns",
+      "where-is-complete",
+      "selection-and-order",
+      "intentional-typo",
+      "copy-csv-whole",
+      "copy-where",
+      "copy-destination",
+      "copy-parquet-whole",
+      "run-followup",
+      "read-exported-count",
+      "read-parquet-back",
+      "run-readback",
+      "route-summary-query",
+      "due-or-late-rule",
+      "run-variant"
+    ]
+  },
+  "claims": {
+    "count_before": 21,
+    "count_after": 21,
+    "columns": [
+      "ID／等級",
+      "主張／教學內容",
+      "證據",
+      "範圍",
+      "場景"
+    ],
+    "all_five_columns_preserved": true,
+    "definitions_evidence_scope_all_unchanged": true,
+    "new_or_removed_definitions": [],
+    "scene_reference_changes": {
+      "c12": {
+        "before": "valid-json-fields, json-stream-question, stderr-contract, consumer-expectation, repair-the-name",
+        "after": "stderr-contract, valid-json-fields, repair-the-name"
+      }
+    },
+    "all_current_scene_lists_exact": true
+  },
+  "fixed_artifacts": {
+    "frozen_R1_files_verified": 126,
+    "current_fixed_files_bytes_unchanged": [
+      "demo/followup.sql",
+      "demo/input/parcels.csv",
+      "demo/output/due-or-late.csv",
+      "demo/output/late-followup.csv",
+      "demo/output/late-followup.parquet",
+      "demo/output/parquet-readback.csv",
+      "demo/preview.sql",
+      "demo/readback.sql",
+      "demo/replay-results.json",
+      "demo/setup.sql",
+      "demo/typo.sql",
+      "demo/variant-results.json",
+      "demo/variant.sql",
+      "duckdb-followup-fixtures.zip",
+      "duckdb-public-fixtures.zip",
+      "fixtures-manifest.json",
+      "package_fixtures.py",
+      "public-command-proof.json",
+      "public-run/LICENSE-ORIGINAL.txt",
+      "public-run/README.md",
+      "public-run/demo/followup.sql",
+      "public-run/demo/input/parcels.csv",
+      "public-run/demo/output/due-or-late.csv",
+      "public-run/demo/output/late-followup.csv",
+      "public-run/demo/output/late-followup.parquet",
+      "public-run/demo/output/parquet-readback.csv",
+      "public-run/demo/preview.sql",
+      "public-run/demo/readback.sql",
+      "public-run/demo/setup.sql",
+      "public-run/demo/typo.sql",
+      "public-run/demo/variant.sql",
+      "public-run/public-kit-manifest.json",
+      "public-run/public-run-results.json",
+      "public-run/runlogs/agent-followup.command.json",
+      "public-run/runlogs/agent-followup.stderr.txt",
+      "public-run/runlogs/agent-followup.stdout.txt",
+      "public-run/runlogs/agent-preview.command.json",
+      "public-run/runlogs/agent-preview.stderr.txt",
+      "public-run/runlogs/agent-preview.stdout.txt",
+      "public-run/runlogs/agent-typo.command.json",
+      "public-run/runlogs/agent-typo.stderr.txt",
+      "public-run/runlogs/agent-typo.stdout.txt",
+      "public-run/runlogs/human-followup.command.json",
+      "public-run/runlogs/human-followup.stderr.txt",
+      "public-run/runlogs/human-followup.stdout.txt",
+      "public-run/runlogs/human-preview.command.json",
+      "public-run/runlogs/human-preview.stderr.txt",
+      "public-run/runlogs/human-preview.stdout.txt",
+      "public-run/runlogs/human-typo.command.json",
+      "public-run/runlogs/human-typo.stderr.txt",
+      "public-run/runlogs/human-typo.stdout.txt",
+      "public-run/runlogs/readback.command.json",
+      "public-run/runlogs/readback.stderr.txt",
+      "public-run/runlogs/readback.stdout.txt",
+      "public-run/runlogs/variant.command.json",
+      "public-run/runlogs/variant.stderr.txt",
+      "public-run/runlogs/variant.stdout.txt",
+      "public-run/runlogs/version.command.json",
+      "public-run/runlogs/version.stderr.txt",
+      "public-run/runlogs/version.stdout.txt",
+      "run_operations.py",
+      "run_public_fixture.py",
+      "run_variant.py",
+      "runlogs/agent-preview.command.json",
+      "runlogs/agent-preview.stderr.txt",
+      "runlogs/agent-preview.stdout.txt",
+      "runlogs/agent-typo.command.json",
+      "runlogs/agent-typo.stderr.txt",
+      "runlogs/agent-typo.stdout.txt",
+      "runlogs/followup.command.json",
+      "runlogs/followup.stderr.txt",
+      "runlogs/followup.stdout.txt",
+      "runlogs/human-followup.command.json",
+      "runlogs/human-followup.stderr.txt",
+      "runlogs/human-followup.stdout.txt",
+      "runlogs/human-preview.command.json",
+      "runlogs/human-preview.stderr.txt",
+      "runlogs/human-preview.stdout.txt",
+      "runlogs/human-typo.command.json",
+      "runlogs/human-typo.stderr.txt",
+      "runlogs/human-typo.stdout.txt",
+      "runlogs/readback.command.json",
+      "runlogs/readback.stderr.txt",
+      "runlogs/readback.stdout.txt",
+      "runlogs/variant.command.json",
+      "runlogs/variant.stderr.txt",
+      "runlogs/variant.stdout.txt",
+      "sources/duckdb-agent-doc.html",
+      "sources/duckdb-agent-doc.txt",
+      "sources/duckdb-agent-news.html",
+      "sources/duckdb-agent-news.txt",
+      "sources/duckdb-migration.html",
+      "sources/duckdb-migration.txt",
+      "sources/duckdb-news.html",
+      "sources/duckdb-news.txt",
+      "sources/duckdb-release.json",
+      "sources/fact-freshness-check.json",
+      "sources/freshness-receipts.json"
+    ],
+    "current_fixed_file_count": 98,
+    "public_fixture_zip": {
+      "bytes": 26889,
+      "sha256": "74064ba70799606bf6c8fbc970109bfad26d0d8a02b73e2c5691534678b9fdf2"
+    },
+    "SQL_executed_during_R2": false,
+    "fixture_repack_during_R2": false
+  },
+  "external_assets": {
+    "added": [],
+    "modified": [],
+    "removed": [],
+    "rendered": false
+  },
+  "previous_reader_votes_preserved": {
+    "3": {
+      "yes_count": 12,
+      "total": 13,
+      "passed": false,
+      "original13booleans": {
+        "scene_first": true,
+        "no_spoiler": true,
+        "one_line": true,
+        "no_toc": true,
+        "chapters_link": true,
+        "open_loops": true,
+        "payoffs": true,
+        "no_recap": false,
+        "chapters_are_events": true,
+        "outro_no_next": true,
+        "opening_hooks": true,
+        "one_thread": true,
+        "no_detour": true
+      }
+    },
+    "4": {
+      "yes_count": 11,
+      "total": 13,
+      "passed": false,
+      "original13booleans": {
+        "scene_first": true,
+        "no_spoiler": true,
+        "one_line": true,
+        "no_toc": true,
+        "chapters_link": true,
+        "open_loops": true,
+        "payoffs": true,
+        "no_recap": false,
+        "chapters_are_events": true,
+        "outro_no_next": true,
+        "opening_hooks": true,
+        "one_thread": true,
+        "no_detour": false
+      }
+    }
+  }
+}

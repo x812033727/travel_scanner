@@ -1,0 +1,318 @@
+{
+  "copied_from": "/workspace/work/ai-tech-next/fifth-demo",
+  "original_research_snapshots": [
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-topic-research.md",
+      "destination": "planning/source-research-20261025.md",
+      "sha256": "7a27c960e9d66f0fc631861ef07974c8609158d4b82f637f5d69032daaaf946e"
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-topic-brief.md",
+      "destination": "planning/source-brief-20261025.md",
+      "sha256": "89ea3063dfb63a432d15db904b06164e9d87d184a58895f3b5b4fe0b30d9aacc"
+    }
+  ],
+  "copied_original_files": [
+    {
+      "path": "README.md",
+      "bytes": 3244,
+      "original_sha256": "2d19697f856a59650e5ec3a0adb087ea97f309dd7701764691b0d0a226f49433"
+    },
+    {
+      "path": "KIT-README.md",
+      "bytes": 2101,
+      "original_sha256": "eb0fef7775942b428c6beb050b717a547789d5c9d3311b436ffddb7e2e2f6fe0"
+    },
+    {
+      "path": "LICENSE-ORIGINAL.txt",
+      "bytes": 678,
+      "original_sha256": "6229f16efcca94bb8617491a210f9ae6d87a2cf528e399d7947e355b112ab3d6"
+    },
+    {
+      "path": "run_demo.py",
+      "bytes": 8540,
+      "original_sha256": "037e691eb2c57778e59dd98021197106fff778c0421cf04a473eaef7d3b64757"
+    },
+    {
+      "path": "verify_demo.py",
+      "bytes": 2532,
+      "original_sha256": "0b226d704a8c025a849d5b2aef4bdb9643c33707d42c66ee14073ec1b1166213"
+    },
+    {
+      "path": "results.json",
+      "bytes": 7870,
+      "original_sha256": "b9bab527fd3c21312ee477ac8c3bb7ef354bc2c4fd89504cad7cd42f956db61f"
+    },
+    {
+      "path": "artifact-verification.json",
+      "bytes": 851,
+      "original_sha256": "267b807b019df736a42ace2115e42c24a7e4b4b1f4d027e3d9d1c9bcdff5b242"
+    },
+    {
+      "path": "input/fixture-description.json",
+      "bytes": 541,
+      "original_sha256": "ed584dbaeaa22f2704eb2923b01bdd0838376327590c7bb7d8832bc5ea94985a"
+    },
+    {
+      "path": "input/parcels.csv",
+      "bytes": 28850,
+      "original_sha256": "02d8fdef3bb5014189e139b8ad2f3a87f210bf68d0974da3158bbdf78b5b4ac4"
+    },
+    {
+      "path": "sql/01-preview.sql",
+      "bytes": 360,
+      "original_sha256": "8b297dc7281aac9b9f59c47fafb458fed5679369c31c97ca416763fb300510cf"
+    },
+    {
+      "path": "sql/02-intentional-typo.sql",
+      "bytes": 449,
+      "original_sha256": "9c5daee4e08fc5868dc993ef4887e2d29540a913a24c226a761c3b3a3df8b8b0"
+    },
+    {
+      "path": "sql/03-followup.sql",
+      "bytes": 1101,
+      "original_sha256": "f0651ee58a53f412e36a0c9d9f508ea0ff02a2a7386cfb2c32763d7f5ca8fe0f"
+    },
+    {
+      "path": "output/followup-report.html",
+      "bytes": 4362,
+      "original_sha256": "69df4ac20858902a1aaf10135afbe237a9466238cc312bb541af46e80872d3e1"
+    },
+    {
+      "path": "output/late-followup.csv",
+      "bytes": 7252,
+      "original_sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+    },
+    {
+      "path": "output/late-followup.parquet",
+      "bytes": 3067,
+      "original_sha256": "a21195f2c67b1fa195007f103e6388699e825b4e7d044243c4411f33ed59ce22"
+    },
+    {
+      "path": "output/parquet-readback.csv",
+      "bytes": 7252,
+      "original_sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+    },
+    {
+      "path": "package-check.json",
+      "bytes": 792,
+      "original_sha256": "e6b25394229964d60d52feae103df7e91dc22c977a3c4288b949a680de20d581"
+    },
+    {
+      "path": "selected-package.json",
+      "bytes": 1629,
+      "original_sha256": "913870e1ceffa8600b0ce8b10ae4e49cfb1d83192a03c9be47831d4759316b75"
+    },
+    {
+      "path": "sources/duckdb-license.raw",
+      "bytes": 1072,
+      "original_sha256": "075c33400ffcb0c586dd106a029d3e733e9da3693f8fcb9cebfc651c8a2f14e3"
+    },
+    {
+      "path": "runlogs/agent-help.command.json",
+      "bytes": 281,
+      "original_sha256": "ed378f5b34f366109976b52bb403124ad67e38a1845000edb670e58bff1c62dd"
+    },
+    {
+      "path": "runlogs/agent-help.stderr.txt",
+      "bytes": 63,
+      "original_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "path": "runlogs/agent-help.stdout.txt",
+      "bytes": 879,
+      "original_sha256": "32ce88ed9936cc965c35cc3eb17a3a49c0f42f96d2e9bb9ce40cf1bb0e9a5426"
+    },
+    {
+      "path": "runlogs/cli-version.command.json",
+      "bytes": 163,
+      "original_sha256": "80015cee78e5e0a773938a6f4e35e3914e489bec827aa531bdfbdca63352c436"
+    },
+    {
+      "path": "runlogs/cli-version.stderr.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/cli-version.stdout.txt",
+      "bytes": 31,
+      "original_sha256": "1d730d9d69767729764eed09e3f390e8b80c0f2fc09bc49c006d3423b64e38fb"
+    },
+    {
+      "path": "runlogs/complete-export.command.json",
+      "bytes": 1376,
+      "original_sha256": "dfb76f31869c36389710cd75ec317bf1a11c4b066d16f60d488a6075c21de563"
+    },
+    {
+      "path": "runlogs/complete-export.stderr.txt",
+      "bytes": 63,
+      "original_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "path": "runlogs/complete-export.stdout.txt",
+      "bytes": 593,
+      "original_sha256": "c0a0db1d7b3169aaeeb35f60493f4006e231a9398b80c59545d657fa3edd4e2d"
+    },
+    {
+      "path": "runlogs/parquet-readback.command.json",
+      "bytes": 479,
+      "original_sha256": "5b27e0fe8ebffc1886f5f47ecba2aca542d46c7d4a42b48bddd4f075dba57668"
+    },
+    {
+      "path": "runlogs/parquet-readback.stderr.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/parquet-readback.stdout.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/preview-agent-reversed.command.json",
+      "bytes": 648,
+      "original_sha256": "3446a0ee509bc5450c0d2c4579620b7014e5f5587e0ac87c9181da80c1e222a5"
+    },
+    {
+      "path": "runlogs/preview-agent-reversed.stderr.txt",
+      "bytes": 63,
+      "original_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "path": "runlogs/preview-agent-reversed.stdout.txt",
+      "bytes": 1664,
+      "original_sha256": "53b7b44621421db145d9f04c701d8382ece3783d98c64ef46e4de56ff63c1a55"
+    },
+    {
+      "path": "runlogs/preview-agent.command.json",
+      "bytes": 633,
+      "original_sha256": "6e2a11e16aa04cf1d8707dc910ce27e6943963504eb06f997c781fa9f3f42c09"
+    },
+    {
+      "path": "runlogs/preview-agent.stderr.txt",
+      "bytes": 63,
+      "original_sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+    },
+    {
+      "path": "runlogs/preview-agent.stdout.txt",
+      "bytes": 1664,
+      "original_sha256": "3354a5c6100722b32b6ef06ee1c6fecd1827d84388e59d19b6076a8a3be77ab6"
+    },
+    {
+      "path": "runlogs/preview-human.command.json",
+      "bytes": 636,
+      "original_sha256": "09e73838f642bf06cdb1b8cab7ec696bc8af7b8bb93f0f3c22b0bd2248e136a3"
+    },
+    {
+      "path": "runlogs/preview-human.stderr.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/preview-human.stdout.txt",
+      "bytes": 4232,
+      "original_sha256": "4f5894b0a8a55dab90029f479ba94fd515fe9735d3e4f77e92f4ae2318c5623b"
+    },
+    {
+      "path": "runlogs/typo-agent.command.json",
+      "bytes": 638,
+      "original_sha256": "29ad4496dae7b8444182ca586f01c07647e50fd4f0501f0cce326fe403bbab03"
+    },
+    {
+      "path": "runlogs/typo-agent.stderr.txt",
+      "bytes": 318,
+      "original_sha256": "00375ca2f2cfb96c7a6a7003194fd28768081db2a84b4a953e82072bd53f5690"
+    },
+    {
+      "path": "runlogs/typo-agent.stdout.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/typo-human.command.json",
+      "bytes": 641,
+      "original_sha256": "02e4234c105a74cbd1108a82dd2af1573385058e76628ceb6a2981493d7a6966"
+    },
+    {
+      "path": "runlogs/typo-human.stderr.txt",
+      "bytes": 118,
+      "original_sha256": "5b9a1227b481ba9b9c33125868787132cba67697ef583634f69d78445b763977"
+    },
+    {
+      "path": "runlogs/typo-human.stdout.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/version.command.json",
+      "bytes": 286,
+      "original_sha256": "d8573ebff565b08bf6caee58f160e60cfbdbeb933ad20233f62babe482a901b1"
+    },
+    {
+      "path": "runlogs/version.stderr.txt",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runlogs/version.stdout.txt",
+      "bytes": 198,
+      "original_sha256": "e0187311b9fbafc1d692e4e1a590c237d9ced965ca5acd372572f4deba3001cd"
+    },
+    {
+      "path": "sources/duckdb-license.http.json",
+      "bytes": 551,
+      "original_sha256": "4b260aeba2444a67e5768805427b889dc5ba2884017cd63505236502cef92018"
+    },
+    {
+      "path": "sources/duckdb-cli-code.http.json",
+      "bytes": 583,
+      "original_sha256": "483143956d212cd6877d5266721fbbc46fb7bc60ba1ef43572f1752c623cbdec"
+    },
+    {
+      "path": "sources/duckdb-cli-package.http.json",
+      "bytes": 749,
+      "original_sha256": "b2c6c37414cdb7cf1b0c5d0ec097c65db0d5258337d5b93fb547e32a397e6aa3"
+    },
+    {
+      "path": "sources/duckdb-release.http.json",
+      "bytes": 562,
+      "original_sha256": "2dc30f62fc57e7944695a64e6ca21d11fa7306a6963e0ae0aca69726b3e50400"
+    },
+    {
+      "path": "sources/duckdb-agent-news.http.json",
+      "bytes": 520,
+      "original_sha256": "aa0b99f5cc36b767b3d19c7688986d49cc64deb0ec81ca2212d2c2d8387e9d7a"
+    },
+    {
+      "path": "sources/duckdb-agent-doc.http.json",
+      "bytes": 538,
+      "original_sha256": "d54e6dfb85fb80c13cbe3ee4de42fdf4db38f3ffae3a19764d5e43049511e5b6"
+    },
+    {
+      "path": "sources/duckdb-migration.http.json",
+      "bytes": 548,
+      "original_sha256": "9a72ffaf09b23e10e28e5168f858eadc8748f840b2e8b79976cb7707097f53ba"
+    },
+    {
+      "path": "sources/duckdb-news.http.json",
+      "bytes": 525,
+      "original_sha256": "bbaba98de7d7d50165ff2481818a63725756b9c4a666a4b493834776ae9ce2a9"
+    }
+  ],
+  "readme_adaptation_pending": false,
+  "new_DuckDB_execution": false,
+  "excluded": [
+    "bin/duckdb",
+    "sources/duckdb-cli-package.raw",
+    "all external full HTML/text/release snapshots",
+    "sources/duckdb-cli-code.raw",
+    "PDF",
+    "PNG",
+    "ZIP",
+    "old all-scratch and kit manifests",
+    "stale license-code-review.json init wording",
+    "18MB raw collision inventory"
+  ],
+  "readme_adaptation": "README and KIT adapted to actual included paths, fixed CLI prerequisites, new subset manifest and historical init-text correction.",
+  "variant": "8 exact separately recorded source/SQL/output/log files plus explicitly unexecuted portable path SQL and README"
+}

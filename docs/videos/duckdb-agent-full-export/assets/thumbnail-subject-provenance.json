@@ -1,0 +1,39 @@
+{
+  "kind": "Original deterministic vector teaching diagram",
+  "license": "CC0-1.0 original asset; no third-party image/UI/logo",
+  "fixture": "../public-run/demo/input/parcels.csv",
+  "actual_preview_evidence": "../public-run/runlogs/agent-preview.stdout.txt",
+  "facts": [
+    "40 displayed rows; omitted display does not imply data loss",
+    "Full query output can be saved asCSV/Parquet and reopened; output row counts not shown"
+  ],
+  "is_official_DuckDB_UI": false,
+  "shows_final_480_or1200_answers": false,
+  "rasterizer_argv": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-c:v",
+    "librsvg",
+    "-i",
+    "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/assets/thumbnail-subject.svg",
+    "-frames:v",
+    "1",
+    "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/assets/thumbnail-subject.png"
+  ],
+  "svg": {
+    "bytes": 2385,
+    "sha256": "9213cc69a0c11e951d7da284c0000fe775c313951a23d3e37cb9612c84d50474"
+  },
+  "png": {
+    "bytes": 80989,
+    "sha256": "9317157458b260eae8f2a98503fa39c36a33024e5bdb2cd77d422995e90cb2de"
+  },
+  "content_addressed_png": {
+    "path": "thumbnail-subject-9317157458b260ea.png",
+    "bytes": 80989,
+    "sha256": "9317157458b260eae8f2a98503fa39c36a33024e5bdb2cd77d422995e90cb2de"
+  }
+}

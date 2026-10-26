@@ -1,0 +1,23 @@
+{
+  "name": "human-preview",
+  "argv": [
+    "./duckdb",
+    "-no-init",
+    "-no-agent",
+    ":memory:",
+    "-f",
+    "demo/preview.sql"
+  ],
+  "shell_command": "./duckdb -no-init -no-agent :memory: -f demo/preview.sql",
+  "cwd": "/workspace/work/ai-tech-next/fifth-draft/public-run",
+  "observed_at_utc": "2026-10-25T23:50:19.163369+00:00",
+  "exit_code": 0,
+  "stdout": {
+    "bytes": 4232,
+    "sha256": "4f5894b0a8a55dab90029f479ba94fd515fe9735d3e4f77e92f4ae2318c5623b"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

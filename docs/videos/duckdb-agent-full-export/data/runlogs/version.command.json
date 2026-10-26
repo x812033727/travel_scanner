@@ -1,0 +1,16 @@
+{
+  "label": "version",
+  "argv": [
+    "./bin/duckdb",
+    "-no-init",
+    "-no-agent",
+    ":memory:",
+    "-c",
+    "SELECT version();"
+  ],
+  "started_at_utc": "2026-10-25T22:30:19.781684+00:00",
+  "seconds": 0.107223,
+  "exit_code": 0,
+  "stdout_bytes": 198,
+  "stderr_bytes": 0
+}

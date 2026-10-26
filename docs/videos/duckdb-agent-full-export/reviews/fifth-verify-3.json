@@ -1,0 +1,1679 @@
+{
+  "verdict": "PASS",
+  "review_id": "fifth-verify-3",
+  "checked_at_utc": "2026-10-26T01:38:06Z",
+  "scope": "Informed independent visual-only source delta plus identity and continued support of current frozen dependencies. Current21 claims are confirmed by unchanged verify2 evidence and current identity rechecks. This is not audio acceptance, a fresh narrative score, a live-source GET or whole-production readiness.",
+  "fullsourceSHA": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+  "claimsSHA": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "current_source_path": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+  "baseline_source_sha256": "7d150fc4e8a818e80560c80e4a392e93699666571c3647d4471b4222bcfb0726",
+  "baseline_archive": "/workspace/work/ai-tech-next/fifth-visual-archives/before-visual-polish-7d",
+  "adopted_only_final_freeze": true,
+  "intermediate350c_not_treated_as_current": true,
+  "conclusion": "當前ca1e僅包含三個已授權視覺資料路徑的變化；111完整line物件／voice／claims／SQL與固定數據未改。63原PNG／keys完全相同；修卡及最終縮圖已由本審者獨立fresh native in-memory capture驗明0layout且逐bytes等於frozen樣本。原創圖的same-parcel-table與條件另存語意對上實際preview／followup。此範圍內無待修問題。",
+  "unresolved_findings": [],
+  "authorized_source_delta": [
+    {
+      "operation": "remove",
+      "scene": "input-columns",
+      "path": "scenes[11].data.key",
+      "old_value": "先認出五個欄位",
+      "meaning": "只去除與title相同的optional key；title、5列、source及lines不改。"
+    },
+    {
+      "operation": "add",
+      "path": "thumbnail.data.asset",
+      "value": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+      "meaning": "原本空白subject區加入原創示意。"
+    },
+    {
+      "operation": "add",
+      "path": "assets[0]",
+      "value": {
+        "path": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+        "source": "本片原創教學示意｜虛構配送資料與本地2.0輸出｜非DuckDB官方UI",
+        "license": "CC0-1.0"
+      },
+      "meaning": "原生asset source/license credit，與實際檔案身份對應。"
+    }
+  ],
+  "exact_inverse": {
+    "inverse_serialized_SHA256": "7d150fc4e8a818e80560c80e4a392e93699666571c3647d4471b4222bcfb0726",
+    "exact_inverse_bytes_equal7d": true,
+    "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf"
+  },
+  "unchanged_source_proof": {
+    "all_other_fields_equal": true,
+    "complete_line_objects": 111,
+    "all_text_say_say_for_emotion_and_ID_fields_equal": true,
+    "full_line_objects_SHA256": "4711b7accb7c06764653d48d56f6bdc656d632652c23ae2b23ba2834110bad5b",
+    "voice_object_equal": true,
+    "voice_object": {
+      "provider": "gemini",
+      "name": "Sulafat",
+      "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+    },
+    "chapter_count": 6,
+    "scene_count": 64,
+    "claims_bytes_equal": true,
+    "claim_definitions": 21,
+    "all_five_columns_and_scene_reference_order_equal": true,
+    "all_scene_card_SQL_values_and_data_equal_except_duplicate_key": true,
+    "input_columns_five_rows": [
+      [
+        "parcel_id",
+        "包裹代號"
+      ],
+      [
+        "route",
+        "路線"
+      ],
+      [
+        "promised_days",
+        "承諾天數"
+      ],
+      [
+        "status",
+        "配送狀態"
+      ],
+      [
+        "actual_days",
+        "實際天數"
+      ]
+    ]
+  },
+  "complete_current21_claim_status": [
+    {
+      "id": "c1",
+      "status": "CONFIRMED",
+      "claim_summary": "原創1200筆虛構fixture及作者生成規則",
+      "current_basis": "沿verify2；當前原CSV、原始93檔及本例1200筆身分重核。不是真公司／個資／公共統計或AI產品回應。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c1｜RUN／作者資料",
+        "原創1200筆虛構配送fixture、作者確定性程式；非公司／個資／公共統計或獨立產品回應。",
+        "demo/input/parcels.csv; ../fifth-demo/input/fixture-description.json; run_operations.py",
+        "不冒稱來源為真業務、AI失敗或站主職業經驗。",
+        "parcel-table-start, running-followup-task, input-is-still-there, input-columns, input-status-count"
+      ]
+    },
+    {
+      "id": "c2",
+      "status": "CONFIRMED",
+      "claim_summary": "1200筆原表，顯示40，省略1160",
+      "current_basis": "沿verify2；當前raw footer、省略字串與原表／固定檔身分再核。縮圖40指preview全表顯示，不是查詢或儲存刪列。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c2｜RUN",
+        "同一2.0查詢資料仍1200筆；一般與agent皆顯示前後40列，agent明列1160省略。",
+        "runlogs/human-preview.stdout.txt; runlogs/agent-preview.stdout.txt; public-run/public-run-results.json",
+        "顯示省略不是查詢／儲存資料遺失。一般模式也已有列數提示。",
+        "forty-visible, missing-question, input-is-still-there, find-the-omission, human-footer, agent-omitted, same-result-different-view, copy-limit-question"
+      ]
+    },
+    {
+      "id": "c3",
+      "status": "CONFIRMED",
+      "claim_summary": "作者故意actual_day錯字；兩mode均報錯",
+      "current_basis": "沿verify2；typo SQL與兩mode stderr／RUN收據未變，作者故意及非AI事故的完整line物件未改。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c3｜RUN／故意錯字",
+        "作者故意actual_day錯字；兩模式均報欄位不存在，agent錯誤物件列actual_days候選。",
+        "demo/typo.sql; runlogs/human-typo.stderr.txt; runlogs/agent-typo.stderr.txt; public-run/public-run-results.json",
+        "不是觀察到的AI失誤，也不是只有agent能發現錯誤。",
+        "typo-question, field-name-question, human-error, intentional-typo, valid-json-fields, repair-the-name"
+      ]
+    },
+    {
+      "id": "c4",
+      "status": "CONFIRMED",
+      "claim_summary": "480筆完整主清單及逐列核對",
+      "current_basis": "沿verify2；當前主CSV全部5欄再次吻合從原表計算的oracle；讀回CSV／Parquet與raw依賴身分未改，未新跑Parquet decoder。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c4｜RUN",
+        "完整主清單480筆；獨立標準函式庫條件核對與Parquet讀回逐列相符。",
+        "demo/output/late-followup.csv; demo/output/parquet-readback.csv; demo/replay-results.json; ../fifth-demo/artifact-verification.json; public-run/public-run-results.json",
+        "僅支持本例交付完整性，不是任意查詢／AI正確性證書。",
+        "export-question, read-exported-count, actual-export-count, full-content-comparison, source-predicate-check"
+      ]
+    },
+    {
+      "id": "c5",
+      "status": "CONFIRMED",
+      "claim_summary": "delivered且actual>promised；在途與NULL界線",
+      "current_basis": "沿verify2；當前WHERE、INTEGER型別、CSV及圖卡值／全部SQL未改；縮圖箭頭明示按條件另存。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c5｜RUN／作者契約",
+        "主需求是status=delivered且actual_days>promised_days；在途不列為已送達延遲，空白不是零天。",
+        "demo/setup.sql; demo/followup.sql; demo/input/parcels.csv",
+        "不偷換成所有在途包裹狀態或真配送政策。",
+        "running-followup-task, input-columns, define-the-followup, explicit-input-types, inspect-columns, apply-both-conditions, where-is-complete"
+      ]
+    },
+    {
+      "id": "c6",
+      "status": "CONFIRMED",
+      "claim_summary": "agent是CLI回覆模式，非內建模型評測",
+      "current_basis": "沿verify2；官方capture原bytes／SHA及當前identity-index再核，原Markdown／JSON RUN依賴不變。不是新live GET或模型測試。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c6｜CITED＋本地呈現",
+        "agent模式調整CLI回覆：緊湊Markdown、明示省略／結果摘要和JSON錯誤；不內含AI模型。",
+        "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html; runlogs/agent-preview.stdout.txt; runlogs/agent-typo.stderr.txt",
+        "本地沒有模型推理／產品前後測；機制卡標官方、實際輸出卡標RUN。",
+        "release-time, mode-role, bounded-choice, force-human, force-agent, same-result-different-view"
+      ]
+    },
+    {
+      "id": "c7",
+      "status": "CONFIRMED",
+      "claim_summary": "完整可讀SQL、9條公開命令與固定2.0",
+      "current_basis": "沿verify2；111 full objects及全部scene data SQL未改，當前9條RUN依賴由266／253 manifest與固定98檔重核。未重跑CLI。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c7｜RUN",
+        "完整可讀SQL、-no-init、臨時資料庫與兩種模式命令；同一固定2.0 binary。",
+        "run_operations.py; demo/setup.sql; demo/preview.sql; runlogs/human-preview.command.json; runlogs/agent-preview.command.json; public-run/public-run-results.json",
+        "shell卡換行為可照寫形式，連續反斜線只作shell續行；沒有假終端輸出。",
+        "force-human, force-agent, same-preview, explicit-input-types, run-followup, run-readback, run-variant"
+      ]
+    },
+    {
+      "id": "c8",
+      "status": "CONFIRMED",
+      "claim_summary": "960已送達、240在途且實際天數空白",
+      "current_basis": "沿verify2；當前原CSV及狀態計數raw身分不變，圖卡數值未改；只屬虛構fixture分布。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c8｜RUN",
+        "本例960已送達、240在途；在途actual_days空白。",
+        "runlogs/followup.stdout.txt; demo/input/parcels.csv; public-run/public-run-results.json",
+        "虛構fixture規則，不推論真業務分布。",
+        "inspect-columns, input-status-count"
+      ]
+    },
+    {
+      "id": "c9",
+      "status": "CONFIRMED",
+      "claim_summary": "P0002、P0005、P0001同表個案與手算",
+      "current_basis": "沿verify2；當前輸入／主單／變式身分、個案圖卡完整值及旁白物件不變，沒有另造個案。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c9｜RUN資料＋實算",
+        "P0002為3天承諾／4天實際／晚1天；P0005在途空白；P0001為3／3準時。",
+        "demo/input/parcels.csv; demo/output/late-followup.csv; demo/output/due-or-late.csv; public-run/public-run-results.json",
+        "手算與輸出同一筆，不另造外部案例。",
+        "read-one-parcel, compute-days-late, in-transit-example, on-time-example, first-delivered-late, on-time-enters-variant"
+      ]
+    },
+    {
+      "id": "c10",
+      "status": "CONFIRMED",
+      "claim_summary": "交付5欄、差值、排序及完整COPY條件",
+      "current_basis": "沿verify2；當前主CSV全欄oracle相符，兩段COPY及所有顯示SQL未改；非從40列預覽複製。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c10｜RUN",
+        "主清單選parcel_id、route、兩種天數、days_late，按parcel_id升冪；COPY保留相同條件。",
+        "demo/followup.sql 第9–22行; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "不把顯示列數上限塞進匯出查詢。",
+        "where-is-complete, selection-and-order, repair-the-name, copy-csv-whole, copy-where"
+      ]
+    },
+    {
+      "id": "c11",
+      "status": "CONFIRMED",
+      "claim_summary": ">與>=是兩個明示需求",
+      "current_basis": "沿verify2；原SQL／變式SQL／目的檔及圖卡不變，current720與240個零差值點算相符；不把原480稱錯。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c11｜RUN＋條件推導",
+        "嚴格大於排除剛好準時；大於等於代表另一個包含剛好準時的需求。",
+        "demo/followup.sql; demo/variant.sql; demo/variant-results.json",
+        "變式另命名，不能把720筆都稱晚到。",
+        "on-time-example, new-requirement-consequence, different-deliveries"
+      ]
+    },
+    {
+      "id": "c12",
+      "status": "CONFIRMED",
+      "claim_summary": "單行合法JSON與mixed stderr不是單一JSON",
+      "current_basis": "沿verify2已完成的json.loads判斷；當前stderr及候選欄位依賴bytes未變，完整相關旁白物件不變。不是新consumer事故或壞JSON聲明。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c12｜RUN／輸出契約",
+        "本次stderr為startup文字＋一行合法JSON錯誤；需取JSON行解析，整stream不符合單一JSON物件預期。",
+        "runlogs/agent-typo.stderr.txt; verification.json; public-run/public-run-results.json",
+        "consumer預期不同不等於DuckDB輸出壞JSON；沒有真第三方consumer故障主張。",
+        "stderr-contract, valid-json-fields, repair-the-name"
+      ]
+    },
+    {
+      "id": "c13",
+      "status": "CONFIRMED",
+      "claim_summary": "完整480筆CSV、HEADER及讀回count",
+      "current_basis": "沿verify2；當前480全欄oracle相符，CSV／完整COPY／raw count身分不變；CSV／COPY是既有能力。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c13｜RUN",
+        "COPY匯出完整480筆CSV；HEADER保留欄名；檔案讀回count=480。",
+        "demo/followup.sql; runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "CSV／SQL／COPY是既有能力，非2.0首創。",
+        "copy-limit-question, copy-csv-whole, copy-where, copy-destination, copy-parquet-whole, run-followup, read-exported-count, actual-export-count, first-delivered-late, tail-of-output"
+      ]
+    },
+    {
+      "id": "c14",
+      "status": "CONFIRMED",
+      "claim_summary": "相同條件匯出Parquet再讀成CSV",
+      "current_basis": "沿verify2原生RUN及讀回證據；當前Parquet／readback SQL／CSV依賴均未改，未新解碼或量測格式性能。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c14｜RUN",
+        "相同選欄／條件／排序匯出Parquet，再讀成CSV逐列一致。",
+        "demo/readback.sql; demo/output/late-followup.parquet; demo/output/parquet-readback.csv; demo/replay-results.json; public-run/public-run-results.json",
+        "沒有Parquet效能／壓縮比較，亦不假稱格式是新功能。",
+        "copy-parquet-whole, handoff-question, read-parquet-back, run-readback, full-content-comparison"
+      ]
+    },
+    {
+      "id": "c15",
+      "status": "CONFIRMED",
+      "claim_summary": "同一2.0兩mode得到相同清單",
+      "current_basis": "沿verify2；原binary相關93檔及兩mode RUN／匯出身分均未改，不是跨版、模型、速度或費用比較。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c15｜RUN",
+        "同一2.0一般／agent模式，相同條件都得到480主清單；差在回覆方式。",
+        "runlogs/human-followup.stdout.txt; runlogs/followup.stdout.txt; demo/replay-results.json; public-run/public-run-results.json",
+        "不是2.0對1.5，沒有成本／速度或模型優劣基準。",
+        "bounded-choice, same-version-same-answer"
+      ]
+    },
+    {
+      "id": "c16",
+      "status": "CONFIRMED",
+      "claim_summary": "R2／R3各240、末端紀錄與正確原表分組來源",
+      "current_basis": "沿verify2修正後結論；當前主CSV路線計數再次為各240，rxjg完整物件仍為按原規則分組，未觸及其SQL或事實。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c16｜RUN",
+        "主清單路線R2、R3各240；CSV末端包含P1191、1194、1198、1199及對應值。",
+        "runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "頭尾／摘要不代替全量核對，數字只屬此fixture。",
+        "tail-of-output, route-summary-query, route-summary-result"
+      ]
+    },
+    {
+      "id": "c17",
+      "status": "CONFIRMED",
+      "claim_summary": "完整資料、SQL、原創HTML及教材產物",
+      "current_basis": "沿verify2；當前原產物依賴、原93檔及42-entry公開ZIP逐bytes身分再核；不聲稱公開下載URL或已上傳。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c17｜RUN／產物",
+        "主CSV、Parquet、完整SQL及原創HTML／教材包均已存在，可交付並追條件。",
+        "demo/output/late-followup.csv; demo/output/late-followup.parquet; demo/followup.sql; ../fifth-demo/output/followup-report.html; ../fifth-demo/output/fifth-followup-kit.zip; public-run/public-run-results.json",
+        "教材檔已存在，尚無本片公開下載URL；不捏造公開上傳或成片紀錄。",
+        "different-deliveries, handoff-pack, keep-the-rule"
+      ]
+    },
+    {
+      "id": "c19",
+      "status": "CONFIRMED",
+      "claim_summary": "10/9介紹、10/21正式2.0；匯出是既有能力",
+      "current_basis": "沿verify2官方原文／release結論；本輪只重核10/25 capture bytes／SHA及identity-index，沒有今日live GET。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c19｜CITED",
+        "agent模式10/9介紹，10/21隨2.0正式release；CSV／SQL匯出為既有能力。",
+        "https://duckdb.org/2026/10/09/agent-mode.html; https://duckdb.org/2026/10/21/announcing-duckdb-200; sources/duckdb-release.json",
+        "不是首次能讀CSV，未測全部2.0新增功能。",
+        "release-time, existing-file-tools"
+      ]
+    },
+    {
+      "id": "c20",
+      "status": "CONFIRMED",
+      "claim_summary": "新目錄、:memory:、同版兩mode的作者方法",
+      "current_basis": "沿verify2；當前完整命令、原始RUN依賴及相應旁白／voice未改；不是舊資料庫升級。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c20｜編輯選擇／作者方法",
+        "這份練習在新目錄比較同版兩模式，不變更既有資料庫。",
+        "brief.md; demo/replay-results.json; run_operations.py",
+        "不是舊資料庫升級、表格產品比較或全面採用建議。",
+        "bounded-choice"
+      ]
+    },
+    {
+      "id": "c23",
+      "status": "CONFIRMED",
+      "claim_summary": "固定fixture／SQL，未測模型、費用或跨版性能",
+      "current_basis": "沿verify2；全部方法限制、命令、voice及完整line物件未改。這次只做視覺delta及依賴核對。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c23｜方法範圍",
+        "作者固定fixture與確定性SQL；未測模型推理、token／費用、跨版效能、server或升級。",
+        "demo/replay-results.json; run_operations.py; ../fifth-demo/results.json",
+        "agent名稱不等於已運行AI模型；輸出bytes不換算成本。",
+        "bounded-choice"
+      ]
+    },
+    {
+      "id": "c24",
+      "status": "CONFIRMED",
+      "claim_summary": "另存>=變式720筆，含240準時件",
+      "current_basis": "沿verify2全欄oracle及條件結論；當前變式檔身分未變，720及240個零差值再次點算相符；仍不是720筆全晚到。",
+      "same_definition_and_five_columns_as_verify2": true,
+      "same_scene_references_as_baseline": true,
+      "carried_from_unchanged_verify2_evidence": true,
+      "current_dependency_identity_rechecked": true,
+      "five_columns": [
+        "c24｜RUN需求變式",
+        "同資料將>改>=，另存剛好準時或晚到720筆，其中240筆days_late=0；P0001入選。",
+        "demo/variant.sql; demo/variant-results.json; demo/output/due-or-late.csv; public-run/public-run-results.json",
+        "這是明示新需求，不說原480錯，也不把720都叫延遲；檔名due-or-late的精確範圍仍是已送達且actual>=promised。",
+        "change-the-requirement, new-requirement-consequence, due-or-late-rule, run-variant, variant-members-question, variant-result, on-time-enters-variant, different-deliveries"
+      ]
+    }
+  ],
+  "current_native_plan": {
+    "scope": "pure native source/schema/hash/HTML plan read only; not audio or live-source review",
+    "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "schema_errors": [],
+    "template_problems": [],
+    "SVG_security_problems": [],
+    "speech_hash_before": "38cf9292f6945199",
+    "speech_hash_current": "38cf9292f6945199",
+    "visual_hash_before": "bac87ae2e9bebf70",
+    "visual_hash_current": "9f1673219982b59d",
+    "states": [
+      {
+        "scene": "parcel-table-start",
+        "state": 0,
+        "key": "8f6398d526098dcc"
+      },
+      {
+        "scene": "running-followup-task",
+        "state": 0,
+        "key": "cf2536b860542fd9"
+      },
+      {
+        "scene": "forty-visible",
+        "state": 0,
+        "key": "5670901930fb7ec3"
+      },
+      {
+        "scene": "missing-question",
+        "state": 0,
+        "key": "1bfe0294dfc7d75f"
+      },
+      {
+        "scene": "typo-question",
+        "state": 0,
+        "key": "720394b42760a459"
+      },
+      {
+        "scene": "export-question",
+        "state": 0,
+        "key": "fb1ecd940feae733"
+      },
+      {
+        "scene": "input-is-still-there",
+        "state": 0,
+        "key": "ca9a4e260b16e6c1"
+      },
+      {
+        "scene": "release-time",
+        "state": 0,
+        "key": "30362553873ace8b"
+      },
+      {
+        "scene": "mode-role",
+        "state": 0,
+        "key": "8ed5fb9f2cd59bfc"
+      },
+      {
+        "scene": "existing-file-tools",
+        "state": 0,
+        "key": "0bc919dcaa22e273"
+      },
+      {
+        "scene": "bounded-choice",
+        "state": 0,
+        "key": "e1101db741323232"
+      },
+      {
+        "scene": "input-columns",
+        "state": 0,
+        "key": "d4480b733eaae886"
+      },
+      {
+        "scene": "force-human",
+        "state": 0,
+        "key": "d870607b35f72e4f"
+      },
+      {
+        "scene": "force-agent",
+        "state": 0,
+        "key": "e7dee05d5d9ec21a"
+      },
+      {
+        "scene": "find-the-omission",
+        "state": 0,
+        "key": "d0e69844e6c6fa1f"
+      },
+      {
+        "scene": "same-preview",
+        "state": 0,
+        "key": "80b0d5705b24dcce"
+      },
+      {
+        "scene": "human-footer",
+        "state": 0,
+        "key": "4efe1b3890c37b41"
+      },
+      {
+        "scene": "agent-omitted",
+        "state": 0,
+        "key": "789895fb93a2895c"
+      },
+      {
+        "scene": "same-result-different-view",
+        "state": 0,
+        "key": "b96c902861de70cd"
+      },
+      {
+        "scene": "define-the-followup",
+        "state": 0,
+        "key": "c7dc5d55d0d2e165"
+      },
+      {
+        "scene": "explicit-input-types",
+        "state": 0,
+        "key": "4f7234ef2cbe4a1c"
+      },
+      {
+        "scene": "inspect-columns",
+        "state": 0,
+        "key": "ab2aab313d745f1a"
+      },
+      {
+        "scene": "input-status-count",
+        "state": 0,
+        "key": "20d3a2f5dfa0a05e"
+      },
+      {
+        "scene": "apply-both-conditions",
+        "state": 0,
+        "key": "0b6fcc5e6252e0a1"
+      },
+      {
+        "scene": "read-one-parcel",
+        "state": 0,
+        "key": "14c369f48a897c48"
+      },
+      {
+        "scene": "compute-days-late",
+        "state": 0,
+        "key": "26eab2a9777dbae6"
+      },
+      {
+        "scene": "in-transit-example",
+        "state": 0,
+        "key": "794a6a6f0f3b74fd"
+      },
+      {
+        "scene": "where-is-complete",
+        "state": 0,
+        "key": "304d22a85bf3bb32"
+      },
+      {
+        "scene": "selection-and-order",
+        "state": 0,
+        "key": "1b8f4aa8e187861e"
+      },
+      {
+        "scene": "on-time-example",
+        "state": 0,
+        "key": "20aaa7d09ad4e5f0"
+      },
+      {
+        "scene": "field-name-question",
+        "state": 0,
+        "key": "df0b4e78a54c0f3b"
+      },
+      {
+        "scene": "human-error",
+        "state": 0,
+        "key": "918daf8f0f20dbd2"
+      },
+      {
+        "scene": "intentional-typo",
+        "state": 0,
+        "key": "0a1caf811792f6fd"
+      },
+      {
+        "scene": "stderr-contract",
+        "state": 0,
+        "key": "60e4ad7a3d42b93d"
+      },
+      {
+        "scene": "valid-json-fields",
+        "state": 0,
+        "key": "3b1e86c4db09f4e5"
+      },
+      {
+        "scene": "repair-the-name",
+        "state": 0,
+        "key": "8809134b4408abd0"
+      },
+      {
+        "scene": "copy-limit-question",
+        "state": 0,
+        "key": "152bbac1b0dede9e"
+      },
+      {
+        "scene": "copy-csv-whole",
+        "state": 0,
+        "key": "e51c5717023ce2ae"
+      },
+      {
+        "scene": "copy-where",
+        "state": 0,
+        "key": "d1e33f4fa5916b80"
+      },
+      {
+        "scene": "copy-destination",
+        "state": 0,
+        "key": "64ff065ed624a10e"
+      },
+      {
+        "scene": "copy-parquet-whole",
+        "state": 0,
+        "key": "74c5ccf11274203c"
+      },
+      {
+        "scene": "run-followup",
+        "state": 0,
+        "key": "5f85e5e359a452e3"
+      },
+      {
+        "scene": "read-exported-count",
+        "state": 0,
+        "key": "676d6667fbccbf2a"
+      },
+      {
+        "scene": "actual-export-count",
+        "state": 0,
+        "key": "72b2a6509eb0b60a"
+      },
+      {
+        "scene": "same-version-same-answer",
+        "state": 0,
+        "key": "3460287781dd818c"
+      },
+      {
+        "scene": "handoff-question",
+        "state": 0,
+        "key": "c1405ae241f3a6ee"
+      },
+      {
+        "scene": "read-parquet-back",
+        "state": 0,
+        "key": "62a4ce07df3693ec"
+      },
+      {
+        "scene": "run-readback",
+        "state": 0,
+        "key": "25e7b44ffb0bd83c"
+      },
+      {
+        "scene": "first-delivered-late",
+        "state": 0,
+        "key": "7dae706448cda704"
+      },
+      {
+        "scene": "tail-of-output",
+        "state": 0,
+        "key": "08f88d67519209ce"
+      },
+      {
+        "scene": "route-summary-query",
+        "state": 0,
+        "key": "cf5e1f8527676b7a"
+      },
+      {
+        "scene": "route-summary-result",
+        "state": 0,
+        "key": "9f9afff7591dacbe"
+      },
+      {
+        "scene": "full-content-comparison",
+        "state": 0,
+        "key": "d76c89c41a4e4714"
+      },
+      {
+        "scene": "source-predicate-check",
+        "state": 0,
+        "key": "071f909c53763adf"
+      },
+      {
+        "scene": "change-the-requirement",
+        "state": 0,
+        "key": "033e5fb0aaeecdc4"
+      },
+      {
+        "scene": "new-requirement-consequence",
+        "state": 0,
+        "key": "58eefd524ffc144b"
+      },
+      {
+        "scene": "due-or-late-rule",
+        "state": 0,
+        "key": "6900f8465e0c93f4"
+      },
+      {
+        "scene": "run-variant",
+        "state": 0,
+        "key": "179fe6eea2e45420"
+      },
+      {
+        "scene": "variant-members-question",
+        "state": 0,
+        "key": "7c8e575e33768225"
+      },
+      {
+        "scene": "variant-result",
+        "state": 0,
+        "key": "1718835e57074c0d"
+      },
+      {
+        "scene": "on-time-enters-variant",
+        "state": 0,
+        "key": "a9f9e0cce524f033"
+      },
+      {
+        "scene": "different-deliveries",
+        "state": 0,
+        "key": "08c1b34ae3c1b833"
+      },
+      {
+        "scene": "handoff-pack",
+        "state": 0,
+        "key": "99879431debc89ec"
+      },
+      {
+        "scene": "keep-the-rule",
+        "state": 0,
+        "key": "42dbe600a42fbed1"
+      }
+    ],
+    "all64_keys_match_actual_frozen_sample": true,
+    "thumbnail_key": "bfc0e0777fe967ff",
+    "thumbnail_key_matches_sample": true
+  },
+  "independent_fresh_static_layout_capture": {
+    "scope": "Independent fresh native static capture in memory only; no image/video/audio output files, full-render stage, paid, ASR, external-network or backend calls",
+    "PLAYWRIGHT_BROWSERS_PATH": "/workspace/work/playwright",
+    "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "captures": [
+      {
+        "scene": "input-columns",
+        "key": "d4480b733eaae886",
+        "layout_problems": [],
+        "bytes": 103572,
+        "sha256": "84e76da5e6ab103ce2ea6484e69f864eed4663f7e26860ae5176fdc3929033b4",
+        "exact_frozen_sample_bytes": true
+      },
+      {
+        "scene": "thumbnail",
+        "key": "bfc0e0777fe967ff",
+        "layout_problems": [],
+        "bytes": 129665,
+        "sha256": "9cf4fe7a61b9d8acc128a178bb91e43ab53b56b594847d9264b0f844abccff8e",
+        "exact_frozen_sample_bytes": true
+      }
+    ],
+    "new_output_files": [],
+    "source_unchanged_during_check": true
+  },
+  "native_lint": {
+    "exit_code": 0,
+    "errors": [],
+    "warnings": [],
+    "summary": {
+      "minutes": 10.47,
+      "lines": 111,
+      "spoken_units": 2282,
+      "billable_characters": 8062,
+      "chapters": [
+        "00:00 配送預覽中間少了一大段",
+        "00:31 原表還在，省略出現在回覆裡",
+        "02:44 三筆包裹，只有一筆入選",
+        "04:38 少一個字母，查詢先停了下來",
+        "07:17 檔案重開後，逐筆對回原表",
+        "08:54 準時包裹加入，清單換了需求"
+      ]
+    }
+  },
+  "static_samples": {
+    "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "sample_manifest_sha256": "17b7b1a9f6b79736f1877d4bc9b25479b050b33a4aa28bb73ed7a8bb0d872abf",
+    "actual_PNGs_rehashed": true,
+    "unchanged_original_7d_states": 63,
+    "repaired_card_changed_only": true,
+    "current64states_equal_intermediate_static": true,
+    "intermediate_used_only_for_bitmap_provenance": true,
+    "states": [
+      {
+        "scene": "parcel-table-start",
+        "state": 0,
+        "key": "8f6398d526098dcc",
+        "sha256": "5b2879921b4832853ddab66d85bbd78e87ae4bacaa5635908c5b35d25434279f",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "running-followup-task",
+        "state": 0,
+        "key": "cf2536b860542fd9",
+        "sha256": "b0e89f3a004d70ffc659c0e19cfa7441cb5bd2bcfe2b12174750ebbbbc835e0c",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "forty-visible",
+        "state": 0,
+        "key": "5670901930fb7ec3",
+        "sha256": "a75ba7154daab93a7bce248b4dd382719caecb637f3ea836cb185cd5d5acf145",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "missing-question",
+        "state": 0,
+        "key": "1bfe0294dfc7d75f",
+        "sha256": "721fa189592bf223d0e662c3ba524c7991f4cf1751f921a59316d879664749cf",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "typo-question",
+        "state": 0,
+        "key": "720394b42760a459",
+        "sha256": "a91973fd65cc84f0c4e2b9e30fb81ca3c8b5b260800783779d79913f1a7b8009",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "export-question",
+        "state": 0,
+        "key": "fb1ecd940feae733",
+        "sha256": "002714131bcf3337bd7e1bf0cde68adeb6855c0896572875566c58caf7c391f1",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "input-is-still-there",
+        "state": 0,
+        "key": "ca9a4e260b16e6c1",
+        "sha256": "4fc053884f4b0a5c6e14cf27b6543c4583e1c8a642284cd6bcde11d3c60d96c9",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "release-time",
+        "state": 0,
+        "key": "30362553873ace8b",
+        "sha256": "4884c996768f190bfc23c97150497dd21d397e65823dbe20a9e04a3afb228988",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "mode-role",
+        "state": 0,
+        "key": "8ed5fb9f2cd59bfc",
+        "sha256": "b7ca9aeda943fcd615c23e419bdb20497bd836c00ebc7b30a956fadedf1a1485",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "existing-file-tools",
+        "state": 0,
+        "key": "0bc919dcaa22e273",
+        "sha256": "aeaa251195d0a4848abf0faea1d40cc88bba4190bc2ec072e87dfe683b6611df",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "bounded-choice",
+        "state": 0,
+        "key": "e1101db741323232",
+        "sha256": "ea1bbbc98264fa614b687eb652a2c703eb0f84485090adbb406f91c7b190f84d",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "input-columns",
+        "state": 0,
+        "key": "d4480b733eaae886",
+        "sha256": "84e76da5e6ab103ce2ea6484e69f864eed4663f7e26860ae5176fdc3929033b4",
+        "same_as7d": false,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "force-human",
+        "state": 0,
+        "key": "d870607b35f72e4f",
+        "sha256": "5c4887af5363540db4e16d9a10705998961e3038b95cf3010282eb62eaa7bbe4",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "force-agent",
+        "state": 0,
+        "key": "e7dee05d5d9ec21a",
+        "sha256": "13c86b896b8b31c5455dda96020a7c051de2eed10d91564c9f2238354469fe94",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "find-the-omission",
+        "state": 0,
+        "key": "d0e69844e6c6fa1f",
+        "sha256": "87c6b784c8d6047dbd669be3fa4453caf852d53b1a71b42436485a243d215de3",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "same-preview",
+        "state": 0,
+        "key": "80b0d5705b24dcce",
+        "sha256": "931b9e590120cf0df60a324f625c52a5d1254f42c6db5a793f96692be52629a7",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "human-footer",
+        "state": 0,
+        "key": "4efe1b3890c37b41",
+        "sha256": "3deaf3236410c399951653bb17dcd83cb5dee1f80cac0f9093826ed2e97fb0bc",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "agent-omitted",
+        "state": 0,
+        "key": "789895fb93a2895c",
+        "sha256": "e9a1d9475eb45fa832ef08b33144edee9da896b79f3da5292f75cc379a340557",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "same-result-different-view",
+        "state": 0,
+        "key": "b96c902861de70cd",
+        "sha256": "06976d2c948b5a491f4b04b57773be6efb1a1e744b4ae66c2cf0053150a97b8b",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "define-the-followup",
+        "state": 0,
+        "key": "c7dc5d55d0d2e165",
+        "sha256": "ecdd1af640e6518f1b66a7c5192008ea23abfa51bab0a53512c8be574e377d0e",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "explicit-input-types",
+        "state": 0,
+        "key": "4f7234ef2cbe4a1c",
+        "sha256": "83d9d38b95d510ef713b1221d7e92ec378d7a02026b219e7be75b5a49a85452e",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "inspect-columns",
+        "state": 0,
+        "key": "ab2aab313d745f1a",
+        "sha256": "cf0e2924c0c896e426d6af8d6eb479d16fd71a54bfbcb04080e49aa255e659d2",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "input-status-count",
+        "state": 0,
+        "key": "20d3a2f5dfa0a05e",
+        "sha256": "09ef703d2a795cb8d73ef384651d7b2061a33a161066ba17b528c9a1a3456b6a",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "apply-both-conditions",
+        "state": 0,
+        "key": "0b6fcc5e6252e0a1",
+        "sha256": "3fdb93841a15ede1eba2a2d6a04d24211d3b46617d7d793582a9779a358fc51b",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "read-one-parcel",
+        "state": 0,
+        "key": "14c369f48a897c48",
+        "sha256": "d8d8144aceb0b8ec12ead6056f230f31b410421f1dc7502e172f68c5d493e110",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "compute-days-late",
+        "state": 0,
+        "key": "26eab2a9777dbae6",
+        "sha256": "eeab9ca20d0983b1844ae33d4adde1be3eebb541d48a677d7470b1fba1bbf684",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "in-transit-example",
+        "state": 0,
+        "key": "794a6a6f0f3b74fd",
+        "sha256": "41b2afc0cc7528a0e4da596e900d0ca547b2fc6587e5b3bb31ead3a949db56a7",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "where-is-complete",
+        "state": 0,
+        "key": "304d22a85bf3bb32",
+        "sha256": "0cb5a5f59f5d2e1c32d56ab482f0dc23b7f86c1ce4e3289db9b53c03183ee1dc",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "selection-and-order",
+        "state": 0,
+        "key": "1b8f4aa8e187861e",
+        "sha256": "de0bd6c327738d4bbc22c004304b6e6a031909f88a5a36df4917835c18b3dceb",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "on-time-example",
+        "state": 0,
+        "key": "20aaa7d09ad4e5f0",
+        "sha256": "e013cab8a40a4a39b624e9a812a8e967829cb78526937d232f8a763d34ad7390",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "field-name-question",
+        "state": 0,
+        "key": "df0b4e78a54c0f3b",
+        "sha256": "43080ec8bc98d9a02a6c009eed9809b5197c16f5b7bb79750e53d63c7ae2b56e",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "human-error",
+        "state": 0,
+        "key": "918daf8f0f20dbd2",
+        "sha256": "54ed53904f9dbe2f2ca2cde3052c1a3aa8d11b3537a5283e4ff948808db75327",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "intentional-typo",
+        "state": 0,
+        "key": "0a1caf811792f6fd",
+        "sha256": "a31d255590a2f2531270115f51f905a43b917e086ede3fd15c00615383512414",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "stderr-contract",
+        "state": 0,
+        "key": "60e4ad7a3d42b93d",
+        "sha256": "96b0f3178329799245c566aa34c68c30b17ac46683e2dcc62f3087ef6bc23594",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "valid-json-fields",
+        "state": 0,
+        "key": "3b1e86c4db09f4e5",
+        "sha256": "8bf1baca2e26319b1f8cc11675d74bc1c21bf66289a06afd06dafa117e7c9d94",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "repair-the-name",
+        "state": 0,
+        "key": "8809134b4408abd0",
+        "sha256": "6a4f036b8bac28975c33de1688bb5dc5e301b8ab7a48c39ac2fcd0a8a444264f",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "copy-limit-question",
+        "state": 0,
+        "key": "152bbac1b0dede9e",
+        "sha256": "2688d1ebbac7f81077ce366ec37c58efd0a9e92cc0f0111962d735b3b28fb876",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "copy-csv-whole",
+        "state": 0,
+        "key": "e51c5717023ce2ae",
+        "sha256": "c0f1cac5cd2c5ceb3b8f56fc8436e6702cbd91e7316a48bb02733fa5cf4cda2e",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "copy-where",
+        "state": 0,
+        "key": "d1e33f4fa5916b80",
+        "sha256": "cc755ff54468d38ea7456197e580aff8d2c3d2a4e164696d990e1e302f5e83e0",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "copy-destination",
+        "state": 0,
+        "key": "64ff065ed624a10e",
+        "sha256": "48039d5e6c820c128a44574965bd1648ab6ead50ba3a3465a87cefde38ec5326",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "copy-parquet-whole",
+        "state": 0,
+        "key": "74c5ccf11274203c",
+        "sha256": "4e203c338e46997544db10968a11be269e4b968cae346b7634cddc195ac14e47",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "run-followup",
+        "state": 0,
+        "key": "5f85e5e359a452e3",
+        "sha256": "d6229bab61e0c7efc27c3066bb3bee830837adfd387f0a1c576d4890dd19d0f2",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "read-exported-count",
+        "state": 0,
+        "key": "676d6667fbccbf2a",
+        "sha256": "94eafe350d0abefd31568cc9eddc32c8ff2734fffbe17063c9077b644893b945",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "actual-export-count",
+        "state": 0,
+        "key": "72b2a6509eb0b60a",
+        "sha256": "1b85cbdb46e9ca431a04f15da2de19a07d4652971e9c7be0da9f38d0b7facbcb",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "same-version-same-answer",
+        "state": 0,
+        "key": "3460287781dd818c",
+        "sha256": "a90b23bea528d70fae4800d696049322f6b3613980cd1acb2a25697af515a255",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "handoff-question",
+        "state": 0,
+        "key": "c1405ae241f3a6ee",
+        "sha256": "241fb71f8e3c46d391a192ec9c11bce2135a8aeaffe36be023454b4a1c4a799b",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "read-parquet-back",
+        "state": 0,
+        "key": "62a4ce07df3693ec",
+        "sha256": "dc0e14ebec6aec4944517e1c2fc7dd9af25b370fd7968dff0bc32478f6156c58",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "run-readback",
+        "state": 0,
+        "key": "25e7b44ffb0bd83c",
+        "sha256": "d1ab9edd5c4f578ef12c7ce942f87e749443eaed5553428034f8d45fcf7ee24c",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "first-delivered-late",
+        "state": 0,
+        "key": "7dae706448cda704",
+        "sha256": "c1052187f416a3b9568c1958d402ddf9da6c432758ab586d45b243b053f36456",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "tail-of-output",
+        "state": 0,
+        "key": "08f88d67519209ce",
+        "sha256": "ac69cc395dcb829209bf587f6e51c0ce3e2762cd93c85920c82bde345c4bb377",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "route-summary-query",
+        "state": 0,
+        "key": "cf5e1f8527676b7a",
+        "sha256": "bdc2632d5ad58a02b718f4222853f7fc2cc4da2b0cea76e7c4e5a200f80e861d",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "route-summary-result",
+        "state": 0,
+        "key": "9f9afff7591dacbe",
+        "sha256": "83285e1c0e9e1c06b93babf53d211e21185e9a7738ae93e2da87cfb47275cf02",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "full-content-comparison",
+        "state": 0,
+        "key": "d76c89c41a4e4714",
+        "sha256": "553635a75f1aa1a8640ae5de68afe99e2a668c93699a323cf491b763f15cb152",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "source-predicate-check",
+        "state": 0,
+        "key": "071f909c53763adf",
+        "sha256": "381d4a90b59da6034d94159eea3587640ae83b45f389c394f659e057bd16bbb6",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "change-the-requirement",
+        "state": 0,
+        "key": "033e5fb0aaeecdc4",
+        "sha256": "7c311e5547670f6d6f64666984b27fd9ad9e1425f7572018c2aed0aa1a94ae7c",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "new-requirement-consequence",
+        "state": 0,
+        "key": "58eefd524ffc144b",
+        "sha256": "d8631097e153a44d07b314518f46d51116ee090907fbc30b7441cdc2898bfbff",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "due-or-late-rule",
+        "state": 0,
+        "key": "6900f8465e0c93f4",
+        "sha256": "ffa50451623b7b5d7d0270b2dc4eace422e3510fff6a846a9f69ef485eac2517",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "run-variant",
+        "state": 0,
+        "key": "179fe6eea2e45420",
+        "sha256": "f53734e45ccfd287da2bd052b90feeabe8890d565992318d6ed8890aa2732783",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "variant-members-question",
+        "state": 0,
+        "key": "7c8e575e33768225",
+        "sha256": "2f489032ab38c8d9ed2c663eb6559f3b69218be8b10db910d67bd148107b3d38",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "variant-result",
+        "state": 0,
+        "key": "1718835e57074c0d",
+        "sha256": "d8dd201e628fbf39a1351f13f0669fd7598db8918a04ff7a620e8642c8b969d2",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "on-time-enters-variant",
+        "state": 0,
+        "key": "a9f9e0cce524f033",
+        "sha256": "3bfb2742044b6f0cb90f2b4d9665b93d1498e96f1c052b4c29e64967f46260ef",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "different-deliveries",
+        "state": 0,
+        "key": "08c1b34ae3c1b833",
+        "sha256": "91f806593bd72ac46562550fa07df2be4600c1e93b7dee602340d2207fc1df76",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "handoff-pack",
+        "state": 0,
+        "key": "99879431debc89ec",
+        "sha256": "c670ee267dca61cdfe9c23893777b755d9215801b9504d7c7a949abdba88ab8b",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      },
+      {
+        "scene": "keep-the-rule",
+        "state": 0,
+        "key": "42dbe600a42fbed1",
+        "sha256": "d45d700778bc0d045357baacaa617d9e09e02bb54b8a9ed3286883eba2b38173",
+        "same_as7d": true,
+        "same_as_intermediate_static": true,
+        "recorded_layout_problems": []
+      }
+    ]
+  },
+  "actual_images_viewed": [
+    "/workspace/work/ai-tech-next/fifth-render-sample-final-ca1e/input-columns-0.png",
+    "/workspace/work/ai-tech-next/fifth-render-sample-final-ca1e/thumbnail-static.jpg",
+    "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png"
+  ],
+  "visual_assessment": {
+    "input_card": "實看1920×1080修卡，標題與5個英文欄名／中文意思完整，來源可見，沒有重複key-band，未見裁切；獨立native layout=0。",
+    "thumbnail": "實看1280×720成品及1120×1000原創subject，heading為同一份配送表，箭頭為按條件另存完整結果；40列位在回覆預覽，CSV／Parquet位在完整交付區；原創示意／可重開核對清楚，未冒充官方UI。",
+    "semantics": "preview.sql查全表，40只屬該回覆顯示；followup.sql用WHERE取得同表的符合條件子集並另存完整結果。圖說的是同一份配送表與按條件另存，沒有說兩者是相同SQL或把40列當匯出全集。",
+    "no_final480_or1200_on_subject": true,
+    "no_new_story_or_fact_claim": true
+  },
+  "asset_identity_and_credit": {
+    "PNG": {
+      "path": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+      "bytes": 80989,
+      "sha256": "9317157458b260eae8f2a98503fa39c36a33024e5bdb2cd77d422995e90cb2de"
+    },
+    "SVG": {
+      "path": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/assets/thumbnail-subject.svg",
+      "bytes": 2385,
+      "sha256": "9213cc69a0c11e951d7da284c0000fe775c313951a23d3e37cb9612c84d50474"
+    },
+    "credit": {
+      "bytes": 222,
+      "sha256": "075087110c1f52b9abc8351637f0582833235c584a980022316cc3be050cc12b",
+      "object": {
+        "path": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+        "source": "本片原創教學示意｜虛構配送資料與本地2.0輸出｜非DuckDB官方UI",
+        "license": "CC0-1.0"
+      }
+    },
+    "generator_embedded_SVG_equal": true,
+    "visible_SVG_texts": [
+      "同一份配送表",
+      "回覆預覽",
+      "40列",
+      "⋯ 省略 ⋯",
+      "按條件另存完整結果",
+      "完整交付檔",
+      "CSV",
+      "Parquet",
+      "原創示意｜可重開核對"
+    ]
+  },
+  "current_fixture_semantics_recheck": {
+    "original_rows": 1200,
+    "preview_SQL_is_full_table": true,
+    "displayed_rows": 40,
+    "omitted_rows": 1160,
+    "followup_SQL_is_conditional_subset": true,
+    "complete_followup_rows": 480,
+    "main_all_columns_match_oracle": true,
+    "variant_rows": 720,
+    "variant_exactly_on_time": 240,
+    "route_counts": {
+      "R2": 240,
+      "R3": 240
+    }
+  },
+  "current_dependency_identity": {
+    "episode_manifest": {
+      "sha256": "febc17b61b32b9e2092f985714aeb739bee4aede628f9e9df38363d66badb3bb",
+      "verified_files": 266,
+      "no_unlisted_files": true
+    },
+    "baseline_archive_manifest": {
+      "sha256": "c19ce4845423d67bb9da328711518421ebdc00971ba5380b25dd9585a2ad7ab8",
+      "verified_files": 253
+    },
+    "allowed_changed_preexisting_files": [
+      "README.md",
+      "assets/source-content-audit.json",
+      "duration-plan.json",
+      "line-id-provenance.json",
+      "narration.md",
+      "native-schema.json",
+      "scene-plan.md",
+      "verification.json",
+      "video.json"
+    ],
+    "all_other_preexisting_files_byte_equal": true,
+    "original_scratch_fixed98_verified": true,
+    "fixed98_paths": [
+      "demo/followup.sql",
+      "demo/input/parcels.csv",
+      "demo/output/due-or-late.csv",
+      "demo/output/late-followup.csv",
+      "demo/output/late-followup.parquet",
+      "demo/output/parquet-readback.csv",
+      "demo/preview.sql",
+      "demo/readback.sql",
+      "demo/replay-results.json",
+      "demo/setup.sql",
+      "demo/typo.sql",
+      "demo/variant-results.json",
+      "demo/variant.sql",
+      "duckdb-followup-fixtures.zip",
+      "duckdb-public-fixtures.zip",
+      "fixtures-manifest.json",
+      "package_fixtures.py",
+      "public-command-proof.json",
+      "public-run/LICENSE-ORIGINAL.txt",
+      "public-run/README.md",
+      "public-run/demo/followup.sql",
+      "public-run/demo/input/parcels.csv",
+      "public-run/demo/output/due-or-late.csv",
+      "public-run/demo/output/late-followup.csv",
+      "public-run/demo/output/late-followup.parquet",
+      "public-run/demo/output/parquet-readback.csv",
+      "public-run/demo/preview.sql",
+      "public-run/demo/readback.sql",
+      "public-run/demo/setup.sql",
+      "public-run/demo/typo.sql",
+      "public-run/demo/variant.sql",
+      "public-run/public-kit-manifest.json",
+      "public-run/public-run-results.json",
+      "public-run/runlogs/agent-followup.command.json",
+      "public-run/runlogs/agent-followup.stderr.txt",
+      "public-run/runlogs/agent-followup.stdout.txt",
+      "public-run/runlogs/agent-preview.command.json",
+      "public-run/runlogs/agent-preview.stderr.txt",
+      "public-run/runlogs/agent-preview.stdout.txt",
+      "public-run/runlogs/agent-typo.command.json",
+      "public-run/runlogs/agent-typo.stderr.txt",
+      "public-run/runlogs/agent-typo.stdout.txt",
+      "public-run/runlogs/human-followup.command.json",
+      "public-run/runlogs/human-followup.stderr.txt",
+      "public-run/runlogs/human-followup.stdout.txt",
+      "public-run/runlogs/human-preview.command.json",
+      "public-run/runlogs/human-preview.stderr.txt",
+      "public-run/runlogs/human-preview.stdout.txt",
+      "public-run/runlogs/human-typo.command.json",
+      "public-run/runlogs/human-typo.stderr.txt",
+      "public-run/runlogs/human-typo.stdout.txt",
+      "public-run/runlogs/readback.command.json",
+      "public-run/runlogs/readback.stderr.txt",
+      "public-run/runlogs/readback.stdout.txt",
+      "public-run/runlogs/variant.command.json",
+      "public-run/runlogs/variant.stderr.txt",
+      "public-run/runlogs/variant.stdout.txt",
+      "public-run/runlogs/version.command.json",
+      "public-run/runlogs/version.stderr.txt",
+      "public-run/runlogs/version.stdout.txt",
+      "run_operations.py",
+      "run_public_fixture.py",
+      "run_variant.py",
+      "runlogs/agent-preview.command.json",
+      "runlogs/agent-preview.stderr.txt",
+      "runlogs/agent-preview.stdout.txt",
+      "runlogs/agent-typo.command.json",
+      "runlogs/agent-typo.stderr.txt",
+      "runlogs/agent-typo.stdout.txt",
+      "runlogs/followup.command.json",
+      "runlogs/followup.stderr.txt",
+      "runlogs/followup.stdout.txt",
+      "runlogs/human-followup.command.json",
+      "runlogs/human-followup.stderr.txt",
+      "runlogs/human-followup.stdout.txt",
+      "runlogs/human-preview.command.json",
+      "runlogs/human-preview.stderr.txt",
+      "runlogs/human-preview.stdout.txt",
+      "runlogs/human-typo.command.json",
+      "runlogs/human-typo.stderr.txt",
+      "runlogs/human-typo.stdout.txt",
+      "runlogs/readback.command.json",
+      "runlogs/readback.stderr.txt",
+      "runlogs/readback.stdout.txt",
+      "runlogs/variant.command.json",
+      "runlogs/variant.stderr.txt",
+      "runlogs/variant.stdout.txt",
+      "sources/duckdb-agent-doc.html",
+      "sources/duckdb-agent-doc.txt",
+      "sources/duckdb-agent-news.html",
+      "sources/duckdb-agent-news.txt",
+      "sources/duckdb-migration.html",
+      "sources/duckdb-migration.txt",
+      "sources/duckdb-news.html",
+      "sources/duckdb-news.txt",
+      "sources/duckdb-release.json",
+      "sources/fact-freshness-check.json",
+      "sources/freshness-receipts.json"
+    ],
+    "original_demo93_verified": 93,
+    "ZIP": {
+      "bytes": 26889,
+      "sha256": "74064ba70799606bf6c8fbc970109bfad26d0d8a02b73e2c5691534678b9fdf2",
+      "entries": 42,
+      "all_entry_bytes_equal": true
+    },
+    "source_identity_entries_verified": 11,
+    "full_external_source_pages_remain_in_original_scratch": true,
+    "MIT_copy_matches_original": true
+  },
+  "original_capture_retrievals": [
+    {
+      "id": "duckdb-news",
+      "actual_local_path": "/workspace/work/ai-tech-next/fifth-draft/sources/duckdb-news.html",
+      "retrieved_at_utc": "2026-10-25T23:05:58.419240+00:00",
+      "bytes": 577272,
+      "sha256": "a6b42354bea9180169fbfb0a323aaafbadf6ad6a10d39c556c1c6c58c2daa146"
+    },
+    {
+      "id": "duckdb-agent-news",
+      "actual_local_path": "/workspace/work/ai-tech-next/fifth-draft/sources/duckdb-agent-news.html",
+      "retrieved_at_utc": "2026-10-25T23:05:59.521959+00:00",
+      "bytes": 553376,
+      "sha256": "efc708e83651355784e0f8170cebc77549d1b27a3c2e37bb38d5f2fb6a26140f"
+    },
+    {
+      "id": "duckdb-agent-doc",
+      "actual_local_path": "/workspace/work/ai-tech-next/fifth-draft/sources/duckdb-agent-doc.html",
+      "retrieved_at_utc": "2026-10-25T23:06:00.630718+00:00",
+      "bytes": 358168,
+      "sha256": "091aaa73784352e1c1d03a020b8cf2eded1aefaa6e7f30216d5e240a5372eefd"
+    },
+    {
+      "id": "duckdb-migration",
+      "actual_local_path": "/workspace/work/ai-tech-next/fifth-draft/sources/duckdb-migration.html",
+      "retrieved_at_utc": "2026-10-25T23:06:01.730457+00:00",
+      "bytes": 377166,
+      "sha256": "5c86b9d1386bda0f66d612106155ec40820ecd04a99013f83979ac70b532346a"
+    },
+    {
+      "id": "duckdb-release",
+      "actual_local_path": "/workspace/work/ai-tech-next/fifth-draft/sources/duckdb-release.json",
+      "retrieved_at_utc": "2026-10-25T23:06:02.830654+00:00",
+      "bytes": 140951,
+      "sha256": "12d8a1c2490a9abdb5e5b0a36e10f137598ca9ef8b2fa04c26f93b6130bad323"
+    }
+  ],
+  "historical_verify_files_unchanged": {
+    "fifth-verify-1.json": "c75ee8c72de6cdfeacf1e8c45c6cc93993084ba2b8bbc9d4b3d312571a577642",
+    "fifth-verify-1.md": "819913f88d6fed802a5a00181aae98fb614e0a4cc6c8bac1ab18f6167e32c5c4",
+    "fifth-verify-2.json": "4e2e2db78e37f7cb7c993eee4e20d78c60ef319feddbd113112fb08bead61b70",
+    "fifth-verify-2.md": "486ebc438efdedc4cf5ebff738cf9890d3acf91e164e3490a591c34718e6c4e0"
+  },
+  "history_note": "verify1原REVISE與verify2歷史7d PASS均保持原文／SHA。Reader5/6 raw/native歷史答案仍綁定1a來源；本次不更新任何歷史boolean、native verdict或fresh score。",
+  "constraints": {
+    "only_new_written_files": [
+      "/workspace/work/ai-tech-next/fifth-verify-3.json",
+      "/workspace/work/ai-tech-next/fifth-verify-3.md"
+    ],
+    "source_claims_assets_materials_repo_not_modified": true,
+    "paid_calls": 0,
+    "external_network_calls": 0,
+    "backend_calls": 0,
+    "CLI_SQL_execution_calls": 0,
+    "audio_ASR_TTS_or_model_calls": 0,
+    "new_image_files_written": 0,
+    "full_video_render_or_assembly_calls": 0,
+    "static_capture_buffers_only": true,
+    "browser_used_existing_path": "/workspace/work/playwright",
+    "new_browser_install": false
+  },
+  "limitations": [
+    "PASS僅針對當前ca1e視覺delta及目前固定依賴的連續支持；不是主片音訊通過、fresh narrative通過或whole production-ready批准。",
+    "本次的fresh檢查是修卡與縮圖的原生靜態in-memory capture，沒有影片時間軸／動畫／配音同步驗收。",
+    "官方原文沿verify2的10/25 capture，只核當前本地bytes及identity-index，沒有新live GET。",
+    "保留原生RUN receipt的實際日期；沒有重新執行DuckDB／SQL或新解碼Parquet。",
+    "voice/say物件及speechHash未改只證明設定和目標字串連續，不代表音訊已合成或聽驗。",
+    "原native lint的10.47分鐘仍是估值；不稱已量測實際影片長度。",
+    "原公開ZIP與本地產物身分不等於已有公開下載URL或後台成片完成。"
+  ],
+  "outputs": [
+    "/workspace/work/ai-tech-next/fifth-verify-3.json",
+    "/workspace/work/ai-tech-next/fifth-verify-3.md"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "duckdb-agent-full-export",
+  "brief_sha256": "08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b",
+  "options": [
+    {
+      "key": "A",
+      "title": "先辨識省略，再交完整跟進名單",
+      "summary": "一份配送資料一路走到可驗收檔案，新聞只作入口；協調代理已依既有委派採用A。",
+      "hook": "十月二十五日，我用這份配送表執行查詢。這份練習清單，正在找需要跟進的包裹。螢幕留下前後四十列，中間出現省略標記。這份表真的只剩這些紀錄嗎？實際天數的欄位，等一下會少一個字母。清單另外存成檔案，又怎麼確認內容完整？我把查詢和交付檔一起留下，讓每筆資料能回查規則。"
+    },
+    {
+      "key": "B",
+      "title": "從交付檔倒推規則",
+      "summary": "先看原創480筆成果，再倒推完整條件、輸入、兩模式、省略、JSON錯字、COPY與讀回。",
+      "hook": "這份檔案有四百八十筆要跟進的配送紀錄，來源是一份原創練習表。我要先把交付條件寫清楚，再回查每一筆如何進來。"
+    },
+    {
+      "key": "C",
+      "title": "從合法JSON錯誤走回完整名單",
+      "summary": "從作者刻意少寫s的兩種錯誤呈現開始，再對欄位、條件、預覽和完整匯出。",
+      "hook": "同一個少寫的字母，這裡回文字，那裡回一行合法JSON；但修正仍得對回原來欄位。"
+    }
+  ],
+  "verdict": {
+    "status": "passed",
+    "pick": {
+      "choice": "A",
+      "probabilities": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "options": {
+        "A": {
+          "stance": 0.88,
+          "demo": 0.95
+        },
+        "B": {
+          "stance": 0.87,
+          "demo": 0.84
+        },
+        "C": {
+          "stance": 0.87,
+          "demo": 0.85
+        }
+      },
+      "advice": 0.02,
+      "passed": true,
+      "note": "Jev 挑了 A（1.00）：符合立場 0.88、有示範 0.95、建議 0.02，依設定自動核准"
+    }
+  },
+  "raw_response": {
+    "status": 200,
+    "content_type": "application/json",
+    "file": "/workspace/work/ai-tech-next/duckdb-production/outline-jev-raw.08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b.json",
+    "sha256": "0f4fddc33bf2bc9bd5605cc137c1a3301cd752efdb2161f75a5ada96efc45e98",
+    "observed_at": "2026-10-25T23:31:57.895Z"
+  },
+  "native_functions": [
+    "judgeOutline",
+    "outlineOptions",
+    "outlineReview",
+    "fitPayload"
+  ],
+  "observed_at": "2026-10-25T23:31:57.896Z",
+  "model_answer_modified": false,
+  "media_started": false
+}
