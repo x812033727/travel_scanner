@@ -1,0 +1,81 @@
+{
+  "pass": 2,
+  "kind": "Same-author full111 reread plus separately attributed fresh independent PT critique",
+  "at": "2026-10-26T08:20:20.614852+00:00",
+  "all111_pairs_and_fullmetadata_6chapters_reviewed": true,
+  "independent_full111_critique_sha256": "9d7192e4b6e095da9b1793547b3bce81596355d0b77046e2f8e77920a96b2179",
+  "correction_count": 8,
+  "line_corrections": 7,
+  "chapter_corrections": 1,
+  "title_description_tags_thumbnail_changed": false,
+  "corrections": [
+    {
+      "field": "lines:8ex8",
+      "before": "É uma tabela de prática com entregas fictícias, criada para este exercício e conferível registro por registro.",
+      "after": "É uma tabela de prática de entregas fictícias, criada para o exercício e que pode ser conferida registro por registro.",
+      "reason": "Replace stiff conferível with normal Brazilian Portuguese while retaining author-created fictional fixture and row-by-row checkability.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "lines:pskv",
+      "before": "Esse modo não inclui um modelo de IA; a comparação também não mede a precisão de um modelo nem o custo de uso.",
+      "after": "Esse modo não inclui um modelo de IA; aqui não medimos a taxa de acerto de um modelo nem o custo de uso.",
+      "reason": "Use plain taxa de acerto for correctness rate, avoiding technical precision-metric ambiguity; no model/cost benchmark is added.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "lines:e77f",
+      "before": "A condição de entregue já o exclui; o valor ausente também não pode virar zero dias.",
+      "after": "O filtro de entrega concluída já o exclui; o valor ausente não pode virar zero dias.",
+      "reason": "Make the delivered-condition exclusion grammatical and explicit without treating NULL as zero.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "lines:g52d",
+      "before": "A entrega mantém o identificador, a rota, os dois campos de dias e a diferença calculada.",
+      "after": "A saída mantém o identificador, a rota, os dois campos de dias e a diferença calculada.",
+      "reason": "Disambiguate the selected deliverable columns from the physical parcel delivery.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "lines:rw48",
+      "before": "A coluna foi corrigida. Será que a resposta com poucas linhas também vai encurtar o arquivo salvo?",
+      "after": "Corrigimos o nome da coluna na consulta. Será que a resposta com poucas linhas também vai encurtar o arquivo salvo?",
+      "reason": "The query field name was repaired, not the original table schema; preserve the preview-versus-file question.",
+      "origin": "independent_full111_critique_accepted"
+    },
+    {
+      "field": "lines:ag8z",
+      "before": "O corte da prévia não foi para o arquivo ao usar esse comando de exportação.",
+      "after": "O corte da prévia não passou para o arquivo com esse comando de exportação.",
+      "reason": "Use the natural transfer verb while retaining the observed scope of this export command.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "lines:dgc2",
+      "before": "Essa consulta lê o arquivo de entrega e não altera a tabela original de encomendas.",
+      "after": "Executamos essa consulta sobre o arquivo de entrega, sem alterar a tabela original de encomendas.",
+      "reason": "Retain the original line explicit execution action and delivered-file source, not just the query capability.",
+      "origin": "same_author_second_semantic_pass"
+    },
+    {
+      "field": "chapters:read-parquet-back",
+      "before": "Reabrir o arquivo e conferir cada registro na tabela original",
+      "after": "Reabrir o arquivo e comparar cada registro com a tabela original",
+      "reason": "State comparison against original data directly; preserve the chapter original-table reference.",
+      "origin": "same_author_second_semantic_pass"
+    }
+  ],
+  "critical_facts_and_negations_retained": [
+    "2026Oct25research vsOct9intro/Oct21release",
+    "40total preview/1200input/1160omitted distinct from480qualified",
+    "960delivered/240intransit;NULLnotzero",
+    "deliveredANDactual>promised;4-3=1;3-3=0excluded;R2R3each240",
+    ">=720includes240zero-late,notalllate/notearly,newpurpose",
+    "deliberateactual_daymissingfinals vsactual_days",
+    "startuptext plusonevalidJSONline,notbadJSON/AIerror/realincident",
+    "same2.0binary,existingCSVSQLCOPYParquet,noAI/token/cost/performance/server/upgradebenchmark",
+    "fictionaloriginalCC0vsDuckDBMIT,exact4106publicURLs"
+  ],
+  "actual_max_chars_or_fit_or_audio_acceptance_claimed": false
+}

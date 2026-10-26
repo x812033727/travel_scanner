@@ -1,0 +1,29 @@
+{
+  "kind": "THREE_SAME_AUTHOR_PASSES_COMPLETE_NOT_INDEPENDENT_REVIEW",
+  "author": "/root/checked_caption_assets",
+  "locale": "id",
+  "passes": [
+    {
+      "pass": 1,
+      "scope": "Full111 initialmeaningtranslation,6chapters,metadata/thumbnail",
+      "receipt": "author-pass1-draft.json"
+    },
+    {
+      "pass": 2,
+      "scope": "Full111 reread,10linecorrections+descriptionpopulationclarification",
+      "receipt": "pass2-critique.json"
+    },
+    {
+      "pass": 3,
+      "scope": "Full111perlinemeaningledger,6chapters/fullmetadata,actualnativepurebuild/merge/metadata",
+      "receipt": "author-pass3-semantic-ledger.json",
+      "native_receipt": "author-pass3-native-pure.json"
+    }
+  ],
+  "native_pure_merge_problems": 0,
+  "native_pure_merge_notes": 0,
+  "protected14_unchanged": true,
+  "no_CLI_merge_source_production_audio_or_backend_actions": true,
+  "independent_reader_review_separate_pending": true,
+  "fit_budget_claim": false
+}

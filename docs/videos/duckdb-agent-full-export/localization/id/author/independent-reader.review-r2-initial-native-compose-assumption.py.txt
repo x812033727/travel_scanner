@@ -1,0 +1,36 @@
+from pathlib import Path
+import json,hashlib,re,datetime
+D=Path('/workspace/work/ai-tech-next/fifth-id-translation');H=lambda d:hashlib.sha256(d).hexdigest()
+initial_path=D/'independent-reader.initial-full-review.json';initial_bytes=initial_path.read_bytes();initial=json.loads(initial_bytes);assert H(initial_bytes)=='00b80c89b6c0083188bc8faf468715dd50237f45caa21ca07fdf4193167fbdaa'
+a=json.loads((D/'independent-reader.initial-source-target-snapshot.json').read_bytes());mp=D/'source-target-complete-111.r2.json';mraw=mp.read_bytes();b=json.loads(mraw);assert H(mraw)=='b3594b6fe73f06d9ef0c15e719abaae1fffa26b9cf6a5845e7f1411b94ea6164' and len(mraw)==49333
+wp=D/'id.draft.reviewed.r2.todo.json';wraw=wp.read_bytes();w=json.loads(wraw);assert H(wraw)=='bd1c8eefa122a6f4583dd00135389e79f7c58eda7821b78cc8d9a686a71a8713' and len(wraw)==38716
+checks=[]
+def ck(n,c):checks.append({'name':n,'ok':bool(c)});assert c,n
+ck('same source40eb locale and111 IDs in order',a['source_sha256']==b['source_sha256']=='40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa' and a['locale']==b['locale']=='id' and len(b['source_target_pairs'])==111 and [r['id'] for r in a['source_target_pairs']]==[r['id'] for r in b['source_target_pairs']])
+expected={'6i82','xj3j','b5i9','fqr6'};deltas=[]
+for x,y in zip(a['source_target_pairs'],b['source_target_pairs']):
+ if x!=y:
+  changed={k for k in set(x)|set(y) if x.get(k)!=y.get(k)};ck('only text/characters change '+x['id'],changed=={'text','characters'});assert x['id'] in expected
+  original_review=next(r for r in initial['per111'] if r['id']==x['id']);ck('adopt exact independent suggestion '+x['id'],y['text']==original_review['revision']['suggested_full_text'])
+  deltas.append({'index':x['index'],'id':x['id'],'source':x['source'],'before':x['text'],'after':y['text'],'reader_final_verdict':'PASS','reason':'Suggested natural wording adopted exactly; original numbers, conditions, negation and intent retained.'})
+ck('exactlyfour changed IDs',len(deltas)==4 and {r['id'] for r in deltas}==expected)
+ck('other107 wholepair objects unchanged',sum(x==y for x,y in zip(a['source_target_pairs'],b['source_target_pairs']))==107)
+ck('sixchapters and fullmetadata unchanged',a['chapter_pairs']==b['chapter_pairs'] and a['metadata']==b['metadata'])
+ck('worksheet111 text/source/id/scene match reviewedR2',len(w['lines'])==111 and all((x['id'],x['scene'],x['source'],x['text'])==(y['id'],y['scene'],y['source'],y['text']) for x,y in zip(w['lines'],b['source_target_pairs'])))
+ck('worksheet title description tags thumbnail match reviewedmetadata',all(w[k]==b['metadata'][k] for k in ['title','description','tags','thumbnail']))
+ck('worksheet chapters match reviewedchapterpairs',[(x['scene'],x['source'],x['text']) for x in w['chapters']]==[(x['scene'],x['source'],x['text']) for x in b['chapter_pairs']])
+meta_path=D/'id.metadata-compose-untimed-preview.r2.json';meta_raw=meta_path.read_bytes();meta=json.loads(meta_raw);ck('nativeuntimed metadata suppliedexactSHA',H(meta_raw)=='ba1ae327126a0767cb8a9f756a9c551990b449655d208b44a41b308019a2bd3f')
+ck('nativeuntimed output noactualor estimatedtiming audioCCclaim',meta['problems']==[] and meta['actual_timeline_used'] is False and meta['estimated_timeline_used'] is False and meta['actual_CC_or_audio_claimed'] is False)
+ck('complete description2511bytes exact target, correctnativeCCtag',len(meta['description'].encode())==2511 and meta['description']==b['metadata']['description']['text'] and meta['title']==b['metadata']['title']['text']+'｜Sub Indo')
+urls=lambda s:re.findall(r'https://[^\s]+',s);ck('exacttwo URLs unaltered',len(urls(meta['description']))==2 and urls(meta['description'])==urls(b['metadata']['description']['source']))
+protected=json.loads((D/'source-before.json').read_bytes());guard=[]
+for f,ref in protected['protected_files'].items():
+ raw=Path(f).read_bytes();ck('protected14 unchanged '+f,H(raw)==ref['sha256'] and len(raw)==ref['bytes']);guard.append({'file':f,**ref,'unchanged':True})
+ck('same initialreview preserved',H(initial_path.read_bytes())==H(initial_bytes))
+finalrows=[]
+for original,current in zip(initial['per111'],b['source_target_pairs']):
+ r={'index':current['index'],'id':current['id'],'source':current['source'],'Indonesian':current['text'],'verdict':'PASS','initial_verdict':original['verdict'],'review_note':original['review_note'],'basis':'Fresh fullreader initial review plus exactunchanged107 carryforward' if current['id'] not in expected else 'Independently re-read correctedR2 sentence and exact source; initial wording issue resolved'}
+ if current['id'] in expected:r['wording_correction_resolved']=True
+ finalrows.append(r)
+proof={'kind':'FINAL_FRESH_INDEPENDENT_INDONESIAN_111_TEXT_REVIEW_WITH_BOUNDED_R2_CORRECTIONS','reviewed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'reviewer':'/root/checked_caption_assets/forty_docs_fact_audit','verdict':'PASS_TEXT_ONLY_R2_111_PAIRS_6_CHAPTERS_FULL_METADATA','initial_reader_REVISE_preserved':{'file':str(initial_path),'sha256':H(initial_bytes),'bytes':len(initial_bytes),'initial_PASS':107,'initial_REVISE':4},'final_exact_inputs':{'complete111map':{'file':str(mp),'sha256':H(mraw),'bytes':len(mraw)},'native_translation_worksheet':{'file':str(wp),'sha256':H(wraw),'bytes':len(wraw)},'native_untimed_metadata_supplied_not_rerun':{'file':str(meta_path),'sha256':H(meta_raw),'bytes':len(meta_raw),'description_bytes':2511}},'counts':{'final_PASS':111,'REVISE':0,'changed_wording_lines':4,'whole_pair_objects_unchanged':107,'chapters_unchanged':6,'fullmetadata_unchanged':True,'checks':len(checks)},'checks':checks,'four_independently_read_corrections':deltas,'per111_final':finalrows,'six_chapter_verdicts':initial['chapter_reviews'],'fullmetadata_verdicts':initial['metadata_reviews'],'critical_semantics':initial['critical_semantics'],'protected14':guard,'author_separation':{'not_Indonesian_author':True,'no_author_pass_ledgers_read':True,'initial111FULL_source_target_read':True,'r2_only_exact_four_changes_freshly_reread':True,'no_second_fresh_full111_read_claim':'107 entries are carried forward only because entirepair objects remain exactly equal.'},'scope':{'new_scratch_independent_reader_files_only':True,'repo_or_production_writes':False,'auth_API':False,'native_builder_or_otherCLI_rerun':False,'paid_TTS_ASR_Jev_QA':False,'Git':False,'actual_CC_audio_fit_timing_or_adoption':False},'limits':'Translation text readiness only. Supplied nativepure metadata output was read, not rerun. No timing, CC synchronization, M4A, speech/listening/ASR fit, backend delivery, source adoption or server approval is established by this reader.'}
+p=D/'independent-reader.FINAL.r2.json';assert not p.exists();raw=(json.dumps(proof,ensure_ascii=False,indent=2)+'\n').encode();p.write_bytes(raw);print(p.name,H(raw),len(raw),'checks',len(checks),'PASS111')

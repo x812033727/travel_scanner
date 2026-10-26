@@ -1,0 +1,190 @@
+{
+  "kind": "actual_all8_TEXT_documentation_checks",
+  "at": "2026-10-26T09:26:43.622022+00:00",
+  "actual_native_pure_check": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "--use-env-proxy",
+      "/workspace/work/ai-tech-next/check-fifth-all8-text-docs.v2.mjs"
+    ],
+    "native_lint_errors": 0,
+    "native_lint_warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/id",
+        "message": "id.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "log": "documentation-native-pure.current.log.txt",
+    "log_sha256": "1f1accc122cd7fe8d25419dcc69dda8d20ed467e0858e8a8d85a63609f1bc208"
+  },
+  "actual_native_CLI_lint": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "--use-env-proxy",
+      "tools/video/cli.mjs",
+      "lint",
+      "--slug",
+      "duckdb-agent-full-export"
+    ],
+    "errors": 0,
+    "warnings": 2,
+    "exact_warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/id",
+        "message": "id.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "log": "documentation-native-cli-lint.log.txt",
+    "log_sha256": "3f9f884c991f8a1018b06aff43273089b4f970451febcc785fd9d0a87a3bee80",
+    "estimates_scope": "CLI source narration time and generic Azure cost estimates are not actual timing, actual selected provider, fit, invoice or audio acceptance."
+  },
+  "actual_tasks_check": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "tools/tasks.mjs",
+      "check"
+    ],
+    "validated": 2183,
+    "log": "documentation-tasks-check.final-after-peer.log.txt",
+    "log_sha256": "adf901918b00fa522b659fa6629d89093b89cac0c838cdbec7a20e823bfb2ccd",
+    "run_after_final_generated_task_wording_corrections": true
+  },
+  "initial_documentation_assumptions_preserved": {
+    "preparation_filename_exit": 1,
+    "native_pure_author_entrypoint_exit": 1,
+    "native_binding_was_not_written_by_failed_initial_pure_run": true,
+    "diagnostics": [
+      "documentation-preparation-initial-filename-diagnostic.json",
+      "documentation-native-pure-initial-filename-diagnostic.json"
+    ],
+    "no_source_target_or_native_guard_changed": true
+  },
+  "exact_documentation_script_log_diagnostic_copies": [
+    {
+      "source": "/workspace/work/ai-tech-next/prepare-fifth-all8-text-docs.initial.py",
+      "destination": "localization/all8/documentation-prepare.initial.py.txt",
+      "bytes": 26579,
+      "sha256": "eb8a704797e4f4e201e5e98a0b1c8c15881923f24d5799edac051a04b67aab2f",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/prepare-fifth-all8-text-docs.v2-resume-generated-only.py",
+      "destination": "localization/all8/documentation-prepare.v2-resume.py.txt",
+      "bytes": 22100,
+      "sha256": "4d9fa5a280722bfb5abed02b78427adbb3e9483041296dcf2d83a82d1c9356fd",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/check-fifth-all8-text-docs.initial.mjs",
+      "destination": "localization/all8/documentation-native-check.initial.mjs.txt",
+      "bytes": 9397,
+      "sha256": "a893391babdbb9009b5fb29767d793c2bd048d8bf07d0825ab1ba8956169ede5",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/check-fifth-all8-text-docs.v2.mjs",
+      "destination": "localization/all8/documentation-native-check.v2.mjs.txt",
+      "bytes": 9557,
+      "sha256": "b5e8a4ea1be0abeba1ae960d99cbebb22fda4412ab19a663870a56e5ecafae3e",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/initial-preparation-filename-assumption-diagnostic.json",
+      "destination": "localization/all8/documentation-preparation-initial-filename-diagnostic.json",
+      "bytes": 1177,
+      "sha256": "31785fc5b6bd043b15f708efe7f92b4ed9f1f6007e2b9977b9112332e50b416b",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/initial-native-pure-filename-assumption-diagnostic.json",
+      "destination": "localization/all8/documentation-native-pure-initial-filename-diagnostic.json",
+      "bytes": 790,
+      "sha256": "9cdc34f503c277a76828742fe3b6aab5cc45832affc3597788742302fc4f2a29",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/native-pure-check.log",
+      "destination": "localization/all8/documentation-native-pure.initial.log.txt",
+      "bytes": 913,
+      "sha256": "e139fde54bfa00c3dd4320d1474c2e2ea5a2d4b6554d0fbef0c7af70ed6bcb0e",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/native-pure-check.v2.log",
+      "destination": "localization/all8/documentation-native-pure.current.log.txt",
+      "bytes": 704,
+      "sha256": "1f1accc122cd7fe8d25419dcc69dda8d20ed467e0858e8a8d85a63609f1bc208",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/native-cli-lint.log",
+      "destination": "localization/all8/documentation-native-cli-lint.log.txt",
+      "bytes": 780,
+      "sha256": "3f9f884c991f8a1018b06aff43273089b4f970451febcc785fd9d0a87a3bee80",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/tasks-check.log",
+      "destination": "localization/all8/documentation-tasks-check.log.txt",
+      "bytes": 27287,
+      "sha256": "9e6c5bbc101d6bd77cc8d580670fef61aa84ce3c79a3210a1462083e3c819e0e",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-all8-text-docs/workdir-before.json",
+      "destination": "localization/all8/documentation-workdir-before.json",
+      "bytes": 1393,
+      "sha256": "02d706a58836994c8cc5f9835110f7a738db53e54dc5e127a937f9e540a47832",
+      "distinct_inode": true
+    }
+  ],
+  "protected19_unchanged": true,
+  "actual_audio_CC_ASR_backend_or_paid_calls": false,
+  "stage_commit_push_performed": false,
+  "tracked_git_diff_check": {
+    "actual_exit_code": 0
+  },
+  "new_immutable_copy_whitespace_audit": {
+    "file": "documentation-whitespace-audit.json",
+    "sha256": "871a5e029d36c5f29480f8c3b048f6331806327e558d5c68cc11d4b105a48125",
+    "files_inspected": 233,
+    "findings": [
+      {
+        "path": "docs/videos/duckdb-agent-full-export/localization/th/author/README.md",
+        "actual_exit_code": 3,
+        "stdout": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/localization/th/author/README.md:8: trailing whitespace.\n+Entry point: **`th.draft.reviewed.final.todo.json`**  \n",
+        "stderr": "",
+        "is_exact_copy": true
+      }
+    ],
+    "scope": "One exact frozen TH author README retains two spaces for a Markdown hard line break. No source proof bytes or native quality gate changed."
+  },
+  "earlier_tasks_check_before_generated_peer_wording_fixes": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "tools/tasks.mjs",
+      "check"
+    ],
+    "validated": 2183,
+    "log": "documentation-tasks-check.log.txt",
+    "log_sha256": "9e6c5bbc101d6bd77cc8d580670fef61aa84ce3c79a3210a1462083e3c819e0e"
+  },
+  "independent_readonly_peer": {
+    "file": "documentation-independent-peer.final.json",
+    "sha256": "cc0f93a86b17b1a68420f9d4210b23f2f583154e6a519f170a53e564bade816e",
+    "verdict": "PASS_AFTER_TWO_GENERATED_NARRATIVE_CLARIFICATIONS",
+    "scope": "196proofcopies,protected19,old68reconstruction,last4nativeadoptions andgeneratednarratives. Index/validationlinkexistence handled by later actual validator."
+  }
+}

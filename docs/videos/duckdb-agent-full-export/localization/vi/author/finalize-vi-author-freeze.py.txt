@@ -1,0 +1,46 @@
+from pathlib import Path
+import json,hashlib,datetime
+B=Path('/workspace/work/ai-tech-next/fifth-vi-translation');R=Path('/workspace/work/travel-scanner-duckdb');E=R/'docs/videos/duckdb-agent-full-export';W=Path('/workspace/work/videos/duckdb-agent-full-export')
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def write(n,o):
+ p=B/n;assert not p.exists(),n;p.write_text(o if isinstance(o,str) else json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+source=json.loads((B/'source-before.json').read_text());assert len(source['protected_files'])==14
+for p,d in source['protected_files'].items():assert sha(p)==d['sha256'] and Path(p).stat().st_size==d['bytes'],p
+assert sha(B/'source-before.json')=='950686bbe80eede81b853ac7f88b58d98c3a549b02a7f5c16dd9538444a36ea2';assert sha(B/'LEASE.json')=='3e4cff162f0297d07afe4e8a36da5b5fa206f235e8da8264188849f8c89836cc'
+bundles=[]
+for name in ['prior_ES_bundle','prior_PT_bundle']:
+ x=source[name];base=Path(x['directory']);assert sha(base/x['freeze_file'])==x['freeze_sha256']
+ for rel,d in x['files'].items():assert sha(base/rel)==d['sha256'] and (base/rel).stat().st_size==d['bytes'],rel
+ bundles.append({'bundle':name,'files_count':len(x['files']),'freeze_file':x['freeze_file'],'freeze_sha256':x['freeze_sha256'],'all_exact':True})
+assert sha(E/'i18n/es.json')=='2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c'
+assert not (E/'i18n/vi.json').exists();assert not (W/'timeline.json').exists()
+for stage in ['v1','final']:
+ p=json.loads((B/('native-pure-validation.'+stage+'.json')).read_text());assert p['native_merge_problems']==[] and p['native_merge_notes']==[] and all(x==0 for x in p['counters'].values())
+sheet=B/'vi.draft.reviewed.todo.json';assert sha(sheet)=='b3d5ace5771bfe3ffdce4c9d93af2cdba9968c9f64f7e520bcf20ac425244e6b'
+reader=B/'independent-reader.final.json';assert sha(reader)=='2a70720d9326b4f103497a92951bba7805df0c5b6102a2d60e2af3452376e4a1'
+rr=json.loads(reader.read_text());assert rr['final_worksheet_sha256']==sha(sheet)
+proof={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'protected_files':source['protected_files'],'count':14,'all_protected_bytes_unchanged':True,'original_source_before_sha256':sha(B/'source-before.json'),'original_lease_sha256':sha(B/'LEASE.json'),'original_two_preserved_exact':True,'prior_ES_PT_bundles':bundles,'existing_ES_translation_sha256':sha(E/'i18n/es.json'),'existing_ES_translation_unchanged':True,'repo_VI_file_still_absent':True,'actual_timeline_still_absent':True,'other_root_added_locales_not_competing_vi_writer':True,'no_whole_docs_graph_or_GitHEAD_bound':True}
+write('protected-final.json',proof)
+completion={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'kind':'Complete resumed VI111 offline author handoff, not adoption','owner':'/root/vi_resume_assess','status':'complete_text_draft_frozen_for_root_review','original_interrupted_owner_files_preserved':True,'original_lease_not_cleared_or_relabelled_as_current_owner':True,'actual_author_own_full_semantic_passes':3,'actual_correction_operations':14,'distinct_corrected_fields':10,'corrected_lines':8,'corrected_chapters':1,'corrected_description_fields':1,'independent_initial_111_counts':{'PASS':107,'REVISE_WORDING':4},'independent_final_full111_and_metadata_PASS':True,'independent_final_report_sha256':sha(reader),'entry_point':'vi.draft.reviewed.todo.json','entry_point_sha256':sha(sheet),'source_target_full111_file':'source-target-complete-111.final.json','source_target_full111_sha256':sha(B/'source-target-complete-111.final.json'),'native_pure_v1_actual_exit':0,'native_pure_final_actual_exit':0,'native_problems':0,'native_notes':0,'untimed_composed_description_UTF8_bytes':json.loads((B/'native-pure-validation.final.json').read_text())['description_UTF8_bytes'],'soft_over80_advisories':42,'soft_advisories_not_fit_budget':True,'protected_final_sha256':sha(B/'protected-final.json'),'root_independent_full_review_and_actual_normal_merge_still_required':True,'actual_CC_SRT_VTT_M4A_fit_meter_ASR_backend_or_paid_TTS_performed_or_claimed':False,'repo_source_i18n_workstate_auth_API_media_Git_changes':False}
+write('AUTHOR-COMPLETION.json',completion)
+readme='''# DuckDB fifth VI — complete offline text candidate
+
+ROOT delegated a bounded resume after the prior producer ended without writing a prose draft. The original source-before.json and LEASE.json remain exact. RESUME-OWNER.json records the actual process/tree evidence; AUTHOR-COMPLETION.json records this producer completion. The old lease is historical, not cleared.
+
+Use vi.draft.reviewed.todo.json and source-target-complete-111.final.json/.md. All111 source→VI pairs, six chapter titles, full title/description/tags/thumbnail are present. Standard Hanoi Vietnamese uses bạn and narrator mình. The Markdown labels are VI, not a reused language label.
+
+Three author full semantic passes are preserved. V1 and pass2 targets remain unchanged. The fresh independent reader initially returned107 PASS and4 wording repairs plusone chapter wording repair; all were adopted. It then reread all111 final pairs and full metadata, returning PASS with no remaining issue. The three correction ledgers replay to final exactly:14 operations touching10 distinct fields (eight lines, one chapter, one description).
+
+Native PURE buildSheet→mergeSheet→untimed composeDescription ran twice with actual exit0, zero problems/notes and zero network/subprocess/auth/write attempts inside the pure region. The final description is2948 UTF-8 bytes. Forty-two lines over80 characters are readability advisories only. No actual or estimated timestamps, max_chars, fit, CC files, audio, ASR, meter, backend product or server approval are claimed. The native captions suffix in the preview is a text-field convention, not evidence that captions exist.
+
+Fixed14 source/core/lexicon/ENJA KO files and existing ES2e85 remain exact. The prior ES31+a9e3 and PT40+v24fbe author bundles are exact. ROOT may legitimately add other locale files or commit docs; this candidate does not bind the whole public docs graph or Git HEAD. Repo VI is still absent and master TTS/timeline remain absent.
+
+The initial finalizer assumed worksheet_sha256 instead of the reader's actual final_worksheet_sha256. It stopped before writing completion/freeze; the original finalizer and an explicit diagnostic are preserved. Only the local report field assertion was corrected; native guards, targets and all production inputs stayed unchanged.
+
+Keep all1200 source /40 preview /1160 omitted /960 delivered /240 transit /480 qualified /R2 andR3 each240 /720 with240 zero-late distinctions. NULL is notzero. Preserve delivered AND actual>promised, the >= changed requirement, intentional actual_day typo vs actual_days, startup text plusone validJSON line, fictional exercise, no AI/model/performance/token/cost benchmark, CC0/MIT and exact410633 public URLs. ROOT must independently review and perform the normal native adoption later. Nothing here permits ForTy PT3cc1/ES9a36 replay or any paid request.
+'''
+write('README.md',readme)
+files={str(p.relative_to(B)):{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(B.rglob('*')) if p.is_file() and p.name!='FINAL-FREEZE.json'}
+freeze={'kind':'VI_complete111_resumed_author_text_freeze_not_adoption','frozen_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'author':'/root/vi_resume_assess','locale':'vi','register':'Standard Hanoi Vietnamese with bạn and narrated mình','source_sha256':'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa','claims_sha256':'cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191','speech_hash':'38cf9292f6945199','native_script_sha256':'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b','complete_source_target_pairs':111,'chapters':6,'author_own_semantic_passes':3,'actual_correction_operations':14,'distinct_corrected_fields':10,'separate_independent_full111_and_fullmetadata_final_PASS':True,'independent_final_report_sha256':sha(reader),'entry_point':'vi.draft.reviewed.todo.json','entry_point_sha256':sha(sheet),'mapping_file':'source-target-complete-111.final.json','mapping_sha256':sha(B/'source-target-complete-111.final.json'),'native_pure_actual_exit_codes':[0,0],'native_pure_merge_problems':[],'native_pure_merge_notes':[],'untimed_description_UTF8_bytes':2948,'over80_readability_advisories':42,'advisories_not_actual_fit_or_hard_max_chars':True,'protected_final_file':'protected-final.json','protected_final_sha256':sha(B/'protected-final.json'),'original_two_files_preserved_exact':True,'prior_ES31_PT40_and_existing_ES_translation_exact':True,'root_review_or_actual_merge_complete':False,'actual_CC_SRT_VTT_M4A_fit_meter_ASR_backend_or_paid_TTS_claimed':False,'CLI_merge_auth_network_paid_ASR_media_state_approval_git_actions':0,'file_count':len(files),'files':files}
+write('FINAL-FREEZE.json',freeze)
+print(json.dumps({'file_count':len(files),'freeze_sha256':sha(B/'FINAL-FREEZE.json'),'worksheet_sha256':sha(sheet),'mapping_sha256':sha(B/'source-target-complete-111.final.json'),'reader_sha256':sha(reader),'completion_sha256':sha(B/'AUTHOR-COMPLETION.json')},ensure_ascii=False))

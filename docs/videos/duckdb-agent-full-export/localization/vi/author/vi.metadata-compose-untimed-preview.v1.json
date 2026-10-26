@@ -1,0 +1,27 @@
+{
+  "kind": "native_pure_VI_metadata_and_sources_preview_UNTIMED",
+  "title": "Chỉ hiện 40 dòng? Xuất danh sách theo dõi đầy đủ bằng DuckDB 2.0｜Vietsub",
+  "description": "Từ cùng một bảng giao hàng thực hành, nhận ra phần bị lược trên màn hình và bàn giao danh sách theo dõi đầy đủ.\nDành cho bạn dùng AI hỗ trợ đọc CSV và muốn giao cả truy vấn lẫn toàn bộ kết quả.\n\nDữ liệu giao hàng giả lập và chương trình theo quy tắc cố định đều do tác giả tạo; không phải dữ liệu công ty, khách hàng hay thống kê công khai thực tế. Không có phản hồi từ sản phẩm AI hay phép thử mô hình độc lập trước và sau. Ngày 2026-10-25, phép so dùng cùng một tệp nhị phân DuckDB 2.0.0 với -agent và -no-agent. 40 dòng là bản xem trước của 1.200 bản ghi đầu vào; 480 bản ghi là toàn bộ kết quả đáp ứng điều kiện chọn rõ ràng. Dòng bị lược trên màn hình không có nghĩa truy vấn hay dữ liệu lưu trữ bị mất.\n\nTác giả cố ý viết thiếu một chữ trong tên cột để minh họa lỗi. Ở lần chạy này, stderr của chế độ agent có chữ lúc khởi động cùng một dòng JSON hợp lệ; cần phân tích theo từng dòng thông điệp, không coi cả luồng trộn là một tài liệu JSON duy nhất. Không khẳng định DuckDB sinh JSON hỏng hay một chương trình nhận dữ liệu bên ngoài đã thật sự gặp sự cố. CSV, SQL, COPY và Parquet đã có từ trước; tính năng mới là chế độ đầu ra cho agent. Không đo token, chi phí hay thử suy luận mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.\n\nBộ thực hành gồm đầu vào tự tạo, SQL đầy đủ, tập lệnh chạy lại, CSV đủ 480 bản ghi và Parquet cùng nội dung, báo cáo HTML, lệnh chính xác và SHA của từng tệp. Dữ liệu, chương trình và báo cáo tự tạo dùng CC0-1.0; DuckDB dùng MIT. Văn bản chính thức thuộc quyền của tác giả tương ứng.\n\nTài liệu công khai (9 lệnh đã chạy thực tế): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP fixtures đầy đủ: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip\n\n📚 Nguồn tham khảo\nDuckDB2.0正式公告: https://duckdb.org/2026/10/21/announcing-duckdb-200\nDuckDB CLI agent模式: https://duckdb.org/2026/10/09/agent-mode.html\nDuckDB2.0 CLI agent模式文件: https://duckdb.org/docs/2.0/clients/cli/agent_mode.html\nDuckDB2.0遷移條件: https://duckdb.org/docs/2.0/operations_manual/migration.html\nDuckDB2.0正式release與套件: https://github.com/duckdb/duckdb/releases/tag/v2.0.0\n\n#DuckDB #phântíchdữliệuAI #AI新聞拆解",
+  "tags": [
+    "DuckDB",
+    "phân tích dữ liệu AI",
+    "chế độ agent",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "truy vấn dữ liệu",
+    "danh sách đầy đủ"
+  ],
+  "untimed_chapter_titles": {
+    "parcel-table-start": "Bản xem trước giao hàng bị lược một đoạn giữa",
+    "input-is-still-there": "Bảng gốc vẫn đủ, chỉ phản hồi lược dòng",
+    "define-the-followup": "Ba kiện hàng, chỉ một kiện được chọn",
+    "human-error": "Thiếu một chữ, truy vấn dừng lại",
+    "read-parquet-back": "Mở lại tệp và so từng bản ghi với bảng gốc",
+    "new-requirement-consequence": "Thêm kiện đúng bằng hạn, yêu cầu danh sách đổi theo"
+  },
+  "problems": [],
+  "actual_timeline_used": false,
+  "estimated_timeline_used": false,
+  "CC_or_M4A_or_dub_fit_claimed": false
+}

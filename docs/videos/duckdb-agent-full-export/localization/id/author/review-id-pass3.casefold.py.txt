@@ -1,0 +1,153 @@
+import datetime,hashlib,json,pathlib,re
+B=pathlib.Path('/workspace/work/ai-tech-next/fifth-id-translation')
+M=json.loads((B/'source-target-complete-111.json').read_text())
+T=json.loads((B/'id-targets.final.json').read_text())
+notes='''dg2i	Actual author query on this computer is dated25October2026; not a new live run by this translator.
+c7uh	Follow-up identification plus a reopenable delivered list, not a screen-only answer.
+x6vr	Forty displayed rows TOTAL from beginning and end; the omitted middle is marked.
+iaiy	Preserves the opening question rather than claiming source records disappeared.
+zni4	One letter will be absent from the actual-day column NAME, not from its stored values.
+3zp6	Separate saved-file completeness remains a question to verify later.
+a73b	Full input population stays1200; delivered output must be traced back to it.
+8ex8	Original fictional exercise records, each checkable; no real company/customer sample claim.
+ujmc	Agent introduction9October versus2.0 release21October remain separate events.
+m4b3	New mode changes compact reply layout and omission marking, not query selection or storage.
+6i9g	Markers inform the program consuming the reply; no hidden model reasoning claim.
+msj7	CSV reading, SQL writing, complete-file export are explicitly existing capabilities.
+x88h	Fresh practice directory, same version, two modes; not a cross-version benchmark.
+pskv	Mode has no bundled AI model; neither model accuracy nor usage cost is tested.
+yqnx	ParcelID, route and promised NUMBER OF DAYS; days are durations rather than calendar dates.
+xbqa	Status and actual NUMBER OF DAYS are fields required by this follow-up rule.
+yy8n	Explicit ordinary display flag, not reverting to an older engine version.
+9gdj	Temporary in-memory database and skipped personal initialization file retain command isolation.
+xd25	Only mode flag changes; exact same input and query are retained.
+c6hy	Explicit selection prevents automatic environment detection from confounding this comparison.
+jm9m	Returns to the two reply layouts and asks where each places omission indicators.
+t4hj	Same table is built and sorted by parcelID; no input change to manufacture a comparison.
+zxhz	No small-subset query condition; displayed extent can be distinguished from query population.
+h4gg	Ordinary mode already reports total and displayed row counts; feature not falsely credited only to agent.
+4cr9	Result-size versus screen-size distinction, not a storage-capacity comparison.
+uj2p	1160 rows are OMITTED FROM DISPLAY, consistent with1200 input minus40 preview.
+u5mp	Explicit negation of lost query/storage data; not-visible does not mean absent.
+jumq	Preview is only a way into reading the reply, not the ready-to-deliver filtered list.
+7npx	Selection starts from the full original table; no extrapolation from the40-row preview.
+v9hh	Conjunction is delivered AND actualdays strictly beyond promiseddays; not all delivered or all overdue statuses.
+fpcm	In-transit records remain in source and are excluded only from this requested list.
+qxv3	ID, route and status are loaded as text, preserving codes rather than numeric conversion.
+abty	Both duration fields are integers, so comparison means day counts rather than string/date ordering.
+m3tz	Description command displays names and data types, not an inferred schema redesign.
+drd5	Separate count by status describes the input records that need evaluating.
+6i82	Input splits960delivered plus240in-transit; neither equals the480 final filtered list.
+ufbq	Blank/NULL actualday count belongs to not-yet-completed delivery; no zero or corrupt-value claim.
+y43c	Question tests one delivered example against BOTH established conditions.
+jbme	Example delivered, promised3days, actual4days; no reversal of operands.
+8wey	This example exceeds its promise and therefore qualifies for follow-up.
+wg3d	4minus3 equals1day LATE; sign and unit remain intact.
+tqeh	Difference becomes a NEW result column visible to the recipient, not overwritten raw input.
+5rfa	Same delivered-status requirement applied to an in-transit record.
+e77f	Delivered predicate excludes it; NULL is not filled with0days. No physical SQL evaluation-order guarantee.
+ewsi	Prior selection rule written in filter clause, not a different hidden predicate.
+bhcv	Subtraction is in selected NEW column; original two day counts stay unchanged.
+g52d	Output retains parcelID, route, both durations and difference; no lost explanatory field.
+evdb	Ascending parcelID establishes reproducible order on reopen; not merely matching unordered row counts.
+6r94	Promised3 and actual3 are EXACTLY equal; difference0, not within-at-most3 ambiguity.
+s3h7	Strict greater-than rejects equality from the old late-only list.
+ntfj	Same full conditions plus one-letter column-name error; asks how the tool responds.
+ak3j	Missing-column report means NO query result, not an empty successful query.
+s9ca	Ordinary mode already identifies the name error; agent is not assigned unique correctness.
+jsui	The deliberately missing letter is at END of the actualday column name.
+xj3j	Author intentionally inserted typo in isolated diagnostic query, explicitly NOT an AI mistake.
+i2fq	Skip startup text from THIS run and parse the following single valid JSON line.
+yxh7	Mixed text+JSON stream cannot be treated as one JSON object; valid inner JSON is not called malformed.
+jngn	Misspelled name comes from object; suggested column name comes from MESSAGE TEXT, not invented candidate field.
+cjm4	Suggestion is checked against actual source schema; final letter restored to correct spelling.
+7g26	Correct source column name is put back into query; no input-table renaming.
+2d84	Original filter, selected columns and sorting are restored, retaining SAME requested list.
+rw48	Preview truncation versus saved-file truncation remains an explicit question, not an assumption.
+epd8	Entire query is inside COPY parentheses; COPY spelling preserved exactly.
+tdtg	Selection and order stay inside query parentheses; destination path comes afterward.
+q6db	No display-row limit is added to the source-to-export query path; no claim of secretly recovering lost rows.
+n6c9	Full qualifying result is saved, NOT a handful of rows copied from the tool reply.
+kabz	Destination path sets CSV location; literal SQL HEADER option retains field names.
+5qhj	Readback checks selected column order, specifically preventing parcelID/route swap.
+6e4u	Second copy changes only output format and destinationfilename to Parquet.
+nsc3	Same selected columns and ordering remain inside parentheses for later content comparison.
+7b9v	Complete query command writes both formats to specified destinations; no invented extra execution.
+44a2	CSV exported file itself is read back to answer truncation question.
+j328	Only data rows count as parcels; header row explicitly excluded.
+ubxv	480 records in THIS complete follow-up output, not all1200 input or40preview.
+ag8z	This export does not carry preview truncation into the file; bounded to tested command.
+6da2	Ordinary mode runs identical export and produces same CONTENT, not merely same count.
+385u	New mode changes reply; it does NOT discover extra late parcels.
+zdyx	Correct count alone is questioned; other format must preserve EACH record too.
+qgqv	Parquet readback is sorted by same parcelID to prepare comparable results.
+ineu	Save readback as CSV so two complete outputs share a row-by-row comparison representation.
+dgc2	Readback draws from delivered file, WITHOUT rewriting original source delivery table.
+xqkd	Explicit callback to4minus3 example, preserving original operands and narrative continuity.
+xad9	Full file retains route, original day counts and1day-late difference.
+6u7e	Qualifying records near original tableEND are retained, not a claim all tail records qualify.
+wznc	Head/tail samples locate examples; full comparison must inspect EVERY middle record as well.
+h579	Route grouping uses SAME original qualifying rule and serves recipient distribution view.
+jd24	Small report summary explicitly covers qualifying parcels; does NOT replace their full list or claim full1200 coverage.
+rxjg	Routes2and3 EACH have240 under original predicate, not240total or per allsource statuses.
+mavj	240+240=480 matches filtered output; complete summary claim limited to qualifying population.
+3dwp	Opening completeness question answered by full row-by-row equality of both files.
+dm84	Checks everyID, each fieldvalue AND ordering, explicitly more than counts.
+ezfg	Separate deterministic simple program re-reads allsource records and applies original predicate to expectedIDs.
+ubtk	ExpectedID list matches export, closing verification back to original data rather than comparing two copies only.
+g738	Recipient now requests EXACTLY-on-time inclusion; old VERIFIED LATE-ONLY list cannot be assumed adequate.
+ab37	Explicit NO; formerly excluded on-time parcels must now be included.
+dyhh	Preserve originalfile and save new requirement as a SEPARATE query.
+7th9	Change strictgreater-than to greater-than-or-EQUAL; equality now qualifies.
+98xj	Change destination filename too so new result DOES NOT overwrite oldlist.
+g89b	Revised query runs to a distinct saved output; no original-file replacement.
+u6gp	Question asks both number and type of ADDED records, not just larger total.
+mkfw	New total720 contains240with0dayslate; it does not say all720 are late.
+b5i9	Added240 are EXACTLY-on-time; finalname is DELIVERED ON-TIME-OR-LATE, not720late.
+fqr6	Callback to promised3actual3 previously excluded example; equality retained.
+me2p	Equality now qualifies because of changed predicate; not a repaired missing-record bug.
+ptfc	Both lists valid under respective conditions but NOT interchangeable deliverables.
+ha7h	Keep old/new filenames WITH corresponding queries so recipient chooses correct requirement.
+g7bc	Handoff package contains full data, corresponding queries and readable summary, not a lone preview.
+s9qr	Report links recipient to fullfiles and allows changed predicates to regenerate list.
+ddtv	Opening preview now linked to complete artifact traceable to explicit rule.
+wx5u	Preserves audience question about their typical data deliverable, no new factualclaim.
+v5pw	Subscription reason remains understandingAI tools through concrete produced artifacts.'''
+byid=dict(line.split('\t',1) for line in notes.splitlines());assert len(byid)==111
+assert set(byid)=={r['id'] for r in M['source_target_pairs']}
+rows=[]
+for row in M['source_target_pairs']:
+ assert row['text']==T['lines'][row['id']]
+ rows.append({'index':row['index'],'id':row['id'],'scene':row['scene'],'source':row['source'],'target':row['text'],'author_pass3_meaning_check':byid[row['id']],'verdict':'PASS_SAME_AUTHOR_SEMANTIC_REREAD','source_todo_preserved':row['source_todo_preserved'],'actual_timing_or_fit_claim':False})
+specific={
+ 'dg2i':['dua puluh lima Oktober dua ribu dua puluh enam'],
+ 'x6vr':['total empat puluh','awal dan akhir'],
+ 'a73b':['seribu dua ratus'],
+ 'ujmc':['sembilan Oktober','dua puluh satu Oktober','dua titik nol'],
+ 'uj2p':['seribu seratus enam puluh','tidak ditampilkan'],
+ 'v9hh':['hanya','sudah sampai dan','lebih lama'],
+ '6i82':['sembilan ratus enam puluh','dua ratus empat puluh'],
+ 'e77f':['tidak boleh','nol hari'],
+ 'wg3d':['Empat dikurangi tiga','satu hari'],
+ '6r94':['tiga hari','Selisihnya nol'],
+ 'ubxv':['empat ratus delapan puluh'],
+ 'jd24':['paket yang memenuhi syarat','tidak menggantikan'],
+ 'rxjg':['rute dua dan rute tiga','masing-masing','dua ratus empat puluh'],
+ 'mavj':['empat ratus delapan puluh','memenuhi syarat'],
+ 'ab37':['Tidak.'],
+ '7th9':['lebih besar atau sama dengan'],
+ 'mkfw':['tujuh ratus dua puluh','dua ratus empat puluh','nol hari'],
+ 'b5i9':['persis tepat waktu','sudah sampai yang tepat waktu atau terlambat'],
+ 'ptfc':['tidak bisa menggantikan'],
+}
+for id,phrases in specific.items():
+ for phrase in phrases:assert phrase.casefold() in T['lines'][id].casefold(),(id,phrase)
+assert '2026-10-25' in T['description'] and '1.200' in T['description'] and '480' in T['description']
+assert '-agent' in T['description'] and '-no-agent' in T['description']
+assert all(v in T['description'] for v in ['CSV','SQL','COPY','Parquet','stderr','JSON','CC0-1.0','MIT'])
+assert len(re.findall(r'https://\S+',T['description']))==2
+out={'kind':'SAME_AUTHOR_THIRD_FULL_SEMANTIC_REVIEW_NOT_INDEPENDENT_NOT_AUDIO','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'author':'/root/checked_caption_assets','pass':3,'locale':'id','source_sha256':M['source_sha256'],'mapping_sha256':hashlib.sha256((B/'source-target-complete-111.json').read_bytes()).hexdigest(),'all111_source_ID_scene_target_pairs_manually_reread':True,'line_reviews':rows,'chapter_reviews':[{'scene':r['scene'],'source':r['source'],'target':r['text'],'verdict':'PASS_SAME_AUTHOR_TEXT_ONLY','note':'Meaning and order match original six-chapter structure; no chapter time fabricated.'} for r in M['chapter_pairs']],'metadata_review':{'title':'40 visible rows are a preview question; completefollowup deliverable is explicit. Native captiontag produced only in purepreview.','description':'Full source scope, originalfictionaldata, deterministicauthorrun, noAIresponse/noindependentmodelprepost, same2.0.0binary/date/modeflags,1200previewinputvs480qualifyingdeliveredlateoutput, omission-not-dataloss, intentionallymisspelledfield, onevalidJSONlineinmixedstderr/candidateinmessagetext, oldCSVSQLCOPYParquetcapabilities, no token/cost/model/server/database-upgradebenchmark, CC0/MIT/authorship and exact2immutablepublicURLs all retained.','tags':'All8 translated or retained product/codeformat names; no new measuredperformanceclaims.','thumbnail':'Same emphasismarkers and one linebreak; no actual drawing, mobilelayout, timing or fit assertion.'},'targeted_numeric_negation_population_phrase_controls':specific,'source_code_identifiers_SQL_assets_queries_not_edited':True,'character_counts_are_descriptive_not_time_or_fit_constraints':True,'native_merge_problems':0,'native_merge_notes':0,'actual_CC_audio_ASR_fit_meter_backend_or_adoption_claims':False,'root_full_review_and_actual_adoption_required':True}
+with (B/'author-pass3-semantic-ledger.json').open('x') as f:f.write(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+summary={'kind':'THREE_SAME_AUTHOR_PASSES_COMPLETE_NOT_INDEPENDENT_REVIEW','author':'/root/checked_caption_assets','locale':'id','passes':[{'pass':1,'scope':'Full111 initialmeaningtranslation,6chapters,metadata/thumbnail','receipt':'author-pass1-draft.json'},{'pass':2,'scope':'Full111 reread,10linecorrections+descriptionpopulationclarification','receipt':'pass2-critique.json'},{'pass':3,'scope':'Full111perlinemeaningledger,6chapters/fullmetadata,actualnativepurebuild/merge/metadata','receipt':'author-pass3-semantic-ledger.json','native_receipt':'author-pass3-native-pure.json'}],'native_pure_merge_problems':0,'native_pure_merge_notes':0,'protected14_unchanged':True,'no_CLI_merge_source_production_audio_or_backend_actions':True,'independent_reader_review_separate_pending':True,'fit_budget_claim':False}
+with (B/'author-three-pass-review.json').open('x') as f:f.write(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+print('Pass3 actual complete111ledger +6chapters/fullmetadata saved; nativepure0problems0notes; nofit/adoption claim.')

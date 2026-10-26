@@ -38,7 +38,7 @@ scope:
 - [x] 正常Jev outline分析、保存raw回覆與分數／失敗原因，送正常hand-pushed pending review後做委派local adopt。
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
-- [x] EN、JA、KO與ES各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字4/8，沒有actual CC／M4A／後台交付。
+- [x] EN、JA、KO、ES、PT、ID、VI、TH各111句targets／六章／metadata／縮圖詞經作者完整審查、root獨立全量語義審查後正常i18n-merge；目前為文字8/8，沒有actual CC／M4A／後台交付。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
 - [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
@@ -117,3 +117,14 @@ Root指定/root/branding_restore沿既有claim為本輪唯一FIFTH文件編輯�
 Source40eb／claimscc38／speech38cf／script7aac／Sulafat voice／lexicon／data／ENJA KO ES與兩份敘事12/13 false固定；15保護輸入全SHA核對，不改任何targets。原生估時／字數建議不是配音fit，dry-run估計不是發票。只準備新ES index／驗證與精確freeze／path proposal，未stage／commit／push；須root獨立審查後另行授權，不開topic6或啟paid/media/auth/API。
 
 ES native lint真exit0，保留37.5／36手機標題寬度建議（0 errors、1 warning）；初次docs checker誤期望0 warnings的exit1及原腳本／log另存，不改譯文／native門檻。
+
+## 當前八語完整文字採用：8/8 TEXT，媒體0
+
+2026-10-26T09:19:55.989537+00:00。Root已逐一讀完PT／ID／TH／VI各111組source→target、六章及完整metadata。PT root在音訊前只改jd24與description（110句及source/context不動），ID／TH／VI root零target修改；正常native i18n-merge各真exit0。當前八語JSON及完整SHA見[本輪結果](../../docs/videos/duckdb-agent-full-export/result.md)與[全八語摘要](../../docs/videos/duckdb-agent-full-export/localization/all8/actual-all8-text-adoption-summary.json)。PT／ID／TH原批次當時文字7/8，稍後VI獨立completion才證明目前8/8，不倒改舊批次。
+
+- [x] 八種外語各111句／六章／title-description-tags／縮圖詞完成作者完整審查、root全量讀稿及正常native本地採用。
+- [ ] 繁中master真TTS／raw／actual timeline、八語actual CC／M4A／fit／meter／ASR及後台交付仍待做；文字8/8不等同本票DOD或媒體完成。
+
+Root指定/root/es_docs_commit為本輪唯一文件editor，沿既有owner／claim／branch。只copy196份精確作者／root／中間批次證據並核19固定功能輸入，不改source40eb／claimscc38／speech38cf／script7aac／Sulafat voice／lexicon／data或任何已採用i18n。PT原37檔／b75c／111錯標籤MD及label-only inverse proof、ID初107PASS4REVISE、TH13vs14描述header修正、VI舊source／LEASE兩檔與resume記錄及全部失敗／修訂均保留。
+
+只封存實際變動的五份doc/task與三ES描述檔；舊68=63原位＋5快照、舊Git556=551原位＋5快照，無遞迴historycopy。新的[索引](../../docs/videos/duckdb-agent-full-export/receipts/all8-text-adoption-index.json)與[驗證](../../docs/videos/duckdb-agent-full-export/receipts/all8-text-adoption-validation.json)列native lint全部實際advisories、tasks、連結與protected19。Root獨立freeze審查前不stage／commit／push；本票仍in-progress，不done／release／merge／deploy／上傳YouTube，不開topic6。原兩份敘事12/13 false、正常server pending與local採用之界線均不變。

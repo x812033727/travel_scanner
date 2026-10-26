@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-26T08:27:56.658404+00:00",
+  "kind": "AUTHOR_LEXICAL_CONTROL_CASE_ASSUMPTION_FAILURE_NOT_NATIVE_OR_TRANSLATION_FAILURE",
+  "actual_command": "python /workspace/work/ai-tech-next/fifth-id-translation/review-id-pass3.py",
+  "actual_exit": 1,
+  "actual_displayed_error": "AssertionError: ('mkfw', 'dua ratus empat puluh')",
+  "cause": "Source-target says Dua at sentence start; helper searched lowercase dua with case-sensitive matching. Numeric content was intact.",
+  "initial_script_preserved": "review-id-pass3.py",
+  "corrected_new_script": "review-id-pass3.casefold.py",
+  "before_any_ledger_write": true,
+  "translation_or_native_gate_changes_to_fit_check": false,
+  "raw_stderr_file_invented": false
+}

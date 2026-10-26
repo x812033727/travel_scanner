@@ -1,0 +1,101 @@
+{
+  "review_type": "Independent complete final semantic closure; Brazilian Portuguese",
+  "locale": "pt-BR",
+  "reviewed_native_file": "pt.draft.reviewed.todo.json",
+  "reviewed_native_sha256": "ca4361471b30dfcc8549c2ba6b8cbfcfa566a82fa0144a4d59cfeedf06218514",
+  "reviewed_complete_mapping_file": "source-target-complete-111.final.json",
+  "reviewed_complete_mapping_sha256": "5838d8c1c0cd8a676c40d9517c7f04697f3e4ea3cf316b0d491ffb00b25d2d4d",
+  "reviewed_correction_ledger_sha256": "df89425d83dfa1458e227b396e97d9739c4db55a723fe16bb2408cb4fa49b12b",
+  "prior_independent_critique_sha256": "9d7192e4b6e095da9b1793547b3bce81596355d0b77046e2f8e77920a96b2179",
+  "canonical_source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "full_read": {
+    "source_target_pairs_reread": 111,
+    "native_line_count": 111,
+    "chapters_reread": 6,
+    "metadata_reread": [
+      "title",
+      "full_description",
+      "tags",
+      "thumbnail"
+    ],
+    "correction_ledger_entries_reread": 8,
+    "affirmation": "Reread every final Chinese-to-Portuguese pair, all six chapters, full metadata and all eight correction-ledger entries. Final native contents match the complete mapping."
+  },
+  "structural_crosschecks": {
+    "all111_native_pairs_match_final_mapping": true,
+    "all111_sources_match_canonical": true,
+    "all6_native_chapters_match_final_mapping": true,
+    "all_metadata_match_final_mapping": true,
+    "actual_changes_exactly_match_8_ledger_entries": true,
+    "line_changes": 7,
+    "chapter_changes": 1,
+    "metadata_changes": 0,
+    "no_nontext_or_unlisted_changes_from_v1": true,
+    "both_public_url_strings_exact": true
+  },
+  "prior_finding": {
+    "id": "rw48",
+    "resolved": true,
+    "evidence": "Corrigimos o nome da coluna na consulta explicitly locates the name repair in the query, preserving the unchanged original table/schema distinction."
+  },
+  "correction_assessments": [
+    {
+      "id": "8ex8",
+      "semantic_regression_found": false,
+      "assessment": "Natural verb phrase preserves fictional exercise data and row-by-row checkability."
+    },
+    {
+      "id": "pskv",
+      "semantic_regression_found": false,
+      "assessment": "Taxa de acerto preserves model correctness-rate meaning and the no-model/no-cost-testing limits."
+    },
+    {
+      "id": "e77f",
+      "semantic_regression_found": false,
+      "assessment": "Entrega concluida clearly denotes the delivered-status filter; exclusion and missing-value-not-zero meanings remain."
+    },
+    {
+      "id": "g52d",
+      "semantic_regression_found": false,
+      "assessment": "Saida correctly identifies output columns rather than a physical delivery; all five column roles remain."
+    },
+    {
+      "id": "rw48",
+      "semantic_regression_found": false,
+      "assessment": "Accepted query-name clarification preserves the preview-versus-export question."
+    },
+    {
+      "id": "ag8z",
+      "semantic_regression_found": false,
+      "assessment": "Transfer wording preserves the observed absence of preview truncation in this export."
+    },
+    {
+      "id": "dgc2",
+      "semantic_regression_found": false,
+      "assessment": "Execution action, delivered-file data source and unchanged original table are preserved."
+    },
+    {
+      "id": "chapter:read-parquet-back",
+      "semantic_regression_found": false,
+      "assessment": "Explicit comparison retains the reopened file, every record and original-table reference."
+    }
+  ],
+  "critical_semantics_preserved": [
+    "2026-10-25 run date versus Oct 9 introduction and Oct 21 release",
+    "40 total displayed rows out of 1200 with 1160 omitted; separate complete 480 qualified result",
+    "960 delivered plus 240 in transit; NULL or absent value is not zero",
+    "delivered AND actual_days > promised_days; 4-3=1 included and 3-3=0 excluded",
+    "R2 and R3 each 240 under the original rule",
+    "changed >= requirement yields 720 including 240 zero-late records, with exact-on-time-or-late purpose distinct from the original late list",
+    "intentional author actual_day typo missing final s from actual_days; no AI-error attribution",
+    "startup text followed by one valid JSON line; mixed stream not one JSON object; no bad-JSON or real external consumer failure claim",
+    "same DuckDB 2.0 binary; pre-existing CSV, SQL, COPY and Parquet; no unsupported AI, token, cost or performance benchmark",
+    "fictional original data; CC0-1.0/MIT; both exact public 410633ab URLs"
+  ],
+  "new_semantic_or_register_findings": [],
+  "semantic_conclusion": "The prior rw48 issue is resolved. No semantic regressions or additional meaning/fact/register fixes found for this exact worksheet hash.",
+  "timing_or_fit_assessed": false,
+  "approval_or_adoption_or_merge_or_media_acceptance_claimed": false,
+  "scope": "Bounded semantic review only. Only this newly created PT scratch report was written. Source, repo, ES files, work-i18n, held artifacts, native CLI, Git, authentication, API, network, paid and media operations were untouched. Root remains sole final reader and merger."
+}

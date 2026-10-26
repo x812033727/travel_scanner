@@ -1,0 +1,18 @@
+node:fs:484
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/localization/vi/author/vi.draft.reviewed.final.todo.json'
+    at Object.readFileSync (node:fs:484:20)
+    at read (file:///workspace/work/ai-tech-next/check-fifth-all8-text-docs.mjs:13:29)
+    at file:///workspace/work/ai-tech-next/check-fifth-all8-text-docs.mjs:29:104
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/localization/vi/author/vi.draft.reviewed.final.todo.json'
+}
+
+Node.js v24.19.0

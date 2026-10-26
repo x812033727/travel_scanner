@@ -1,0 +1,108 @@
+{
+  "kind": "New PT final semantic-review helper reuses source-invariant structural checklist; every final PT pair was separately reread",
+  "source_helper": "/workspace/work/ai-tech-next/fifth-es-translation/review-es-final.py",
+  "source_sha256": "5860dd5c6801e2050bdcb61c1d440ea3566f8047017fbc4b26ff6cfd306a6434",
+  "new_helper": "review-pt-final.py",
+  "new_sha256": "bf42759f5beb6a789667a9599833511050eb11acb93e47afd157ea8d2b1e3c54",
+  "target_language_facts_and_expected_proofs_updated": true,
+  "original_ES_helper_or_any_ES_bundle_file_modified": false,
+  "exact_literal_replacements": [
+    [
+      "fifth-es-translation",
+      "fifth-pt-translation"
+    ],
+    [
+      "es.draft.reviewed.todo.json",
+      "pt.draft.reviewed.todo.json"
+    ],
+    [
+      "i18n/es.json",
+      "i18n/pt.json"
+    ],
+    [
+      "b4701d2b6693667399f06177286376906a2968c015e723aa4c07b5207551c3ff",
+      "ca4361471b30dfcc8549c2ba6b8cbfcfa566a82fa0144a4d59cfeedf06218514"
+    ],
+    [
+      "d72ec24111daabc56ba2afd8fb2c7bf25742f7c79de5c3079f201aaeed285c84",
+      "1da382fee94e7cc793e3b4433f909764320e2e3a4e1ddf8738185391046a8350"
+    ],
+    [
+      "25 de octubre de 2026",
+      "25 de outubro de 2026"
+    ],
+    [
+      "9 de octubre",
+      "9 de outubro"
+    ],
+    [
+      "21 de octubre",
+      "21 de outubro"
+    ],
+    [
+      "'cero'",
+      "'zero'"
+    ],
+    [
+      "actual_day en lugar de actual_days",
+      "actual_day no lugar de actual_days"
+    ],
+    [
+      "cada una",
+      "cada uma"
+    ],
+    [
+      "justo a tiempo o con retraso",
+      "no prazo exato ou com atraso"
+    ],
+    [
+      "de seguimiento",
+      "de acompanhamento"
+    ],
+    [
+      "una línea de JSON válida",
+      "uma linha de JSON válida"
+    ],
+    [
+      "'costos'",
+      "'custos'"
+    ],
+    [
+      "'locale':'es'",
+      "'locale':'pt'"
+    ],
+    [
+      "Neutral Latin-American Spanish, viewer tú; no vosotros/voseo",
+      "Brazilian Portuguese with você; no European Portuguese register shift"
+    ],
+    [
+      "ES author three semantic passes completed",
+      "PT-BR author three semantic passes completed"
+    ],
+    [
+      "'actual_corrections':15,'lines':12,'chapters':2,'title':1",
+      "'actual_corrections':8,'lines':7,'chapters':1,'title':0"
+    ],
+    [
+      "'corrections':15",
+      "'corrections':8"
+    ],
+    [
+      "The corrected wording compares total result row count with visible row count,not screen area.",
+      "The wording explicitly distinguishes total result rows from displayed rows,not screen area."
+    ],
+    [
+      "The corrected wording compares the two files contents,not two software versions.",
+      "The two files contents are compared,not two software versions."
+    ],
+    [
+      "Adds complete follow-up scope,so it does not promise export of the entire1200row population.",
+      "Preserves complete follow-up scope,so it does not promise export of the entire1200row population."
+    ],
+    [
+      "Six original scenes retained; Parquet chapter restores original-table comparison and final chapter uses exact-on-time wording.",
+      "Six original scenes retained; Parquet chapter explicitly compares against original data and final chapter keeps exact-on-time wording."
+    ]
+  ],
+  "additional_guards": "Prior ES31 fullSHA plus freeze before/after; Brazilian locale/wording and actual8correction count."
+}

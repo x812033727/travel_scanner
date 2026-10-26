@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,hashlib,datetime,shutil
+R=Path('/workspace/work/travel-scanner-duckdb');E=R/'docs/videos/duckdb-agent-full-export';A=E/'localization/all8';changes=[]
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+old='作者對照在root文字微調之前；[root delta](root/root-wording-delta.json)及當前worksheet／i18n共同定義實際targets。這些是音訊前文字修訂，沒有fit／shorten／reword或原句重錄回合重設。所有原數字、否定、日期、母體及公開教材URL保持。'
+new='Root沒有更動此語的target或metadata文字；作者final對照、[零變更root delta](root/root-wording-delta.json)、root worksheet與當前i18n逐欄一致。沒有fit／shorten／reword或原句重錄回合重設。所有原數字、否定、日期、母體及公開教材URL保持。'
+for l in ['id','vi','th']:
+ p=E/'localization'/l/'README.md';s=p.read_text();assert s.count(old)==1;before=sha(p);p.write_text(s.replace(old,new));changes.append({'file':str(p.relative_to(R)),'before_sha256':before,'after_sha256':sha(p),'reason':'Root made zero edits for ID/VI/TH; remove copied wording that implied root microedits. No author/root/i18n bytes changed.'})
+p=R/'tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md';s=p.read_text();oldstep='- [x] EN、JA、KO與ES各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字4/8，沒有actual CC／M4A／後台交付。';newstep='- [x] EN、JA、KO、ES、PT、ID、VI、TH各111句targets／六章／metadata／縮圖詞經作者完整審查、root獨立全量語義審查後正常i18n-merge；目前為文字8/8，沒有actual CC／M4A／後台交付。';assert s.count(oldstep)==1;before=sha(p);p.write_text(s.replace(oldstep,newstep));changes.append({'file':str(p.relative_to(R)),'before_sha256':before,'after_sha256':sha(p),'reason':'Current Step must show actual8/8 text. Historical ES Notes4/8 remain unchanged.'})
+out=A/'documentation-peer-wording-corrections.json';assert not out.exists();out.write_text(json.dumps({'kind':'generated_documentation_wording_corrections_from_independent_readonly_peer','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'changes':changes,'frozen_author_root_source_i18n_native_guards_or_thresholds_changed':False},ensure_ascii=False,indent=2)+'\n')
+src=Path(__file__);dst=A/'documentation-peer-wording-fix.py.txt';assert not dst.exists();shutil.copy2(src,dst);assert src.read_bytes()==dst.read_bytes() and src.stat().st_ino!=dst.stat().st_ino
+print('Four generated narrative corrections applied; historical/frozen inputs unchanged')

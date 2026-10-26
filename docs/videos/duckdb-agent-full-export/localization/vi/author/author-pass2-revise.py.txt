@@ -1,0 +1,19 @@
+from pathlib import Path
+import json,datetime
+B=Path('/workspace/work/ai-tech-next/fifth-vi-translation');t=json.loads((B/'vi-targets.v1.json').read_text());changes=[]
+updates={
+'4cr9':('Dòng này tách tổng số dòng của kết quả khỏi số dòng đang hiện trên màn hình.','Use explicit row counts rather than ambiguous size in bytes.'),
+'g52d':('Kết quả bàn giao giữ các cột mã, tuyến, hai số ngày và chênh lệch vừa tính.','Natural subject for the delivered columns; all original columns retained.'),
+'nsc3':('Phần chọn cột và thứ tự sắp xếp vẫn giữ nguyên trong ngoặc, để tiện so sánh sau đó.','Natural phrasing for unchanged select-list and ordering.'),
+'mavj':('Tổng đó bằng 480 bản ghi của tệp đầy đủ; tất cả bản ghi đạt điều kiện đều đã được tính trong phần tóm tắt.','Clarify all480 qualified rows are counted by the summary, not individually listed in it.'),
+'ezfg':('Một chương trình đơn giản khác đọc từng bản ghi gốc, áp quy tắc ban đầu và tạo danh sách mã phải được chọn.','Avoid moral-deserving connotation in the expected IDs.'),
+'ab37':('Không. Những kiện có hai số ngày bằng nhau từng bị loại giờ cũng phải được giữ lại.','Keep exact equality without ambiguous calendar phrasing.'),
+'b5i9':('Các kiện mới thêm có số ngày bằng đúng cam kết, nên tên danh sách phải là giao đúng ngày hẹn hoặc trễ.','Explicit exact equality and natural name for the two populations.'),
+}
+for id,(text,why) in updates.items():changes.append({'field':'lines.'+id,'before':t['lines'][id],'after':text,'reason':why});t['lines'][id]=text
+old='Không đo token, chi phí hay thử suy luận mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.'
+new='Không đo lượng token hay chi phí, cũng không thử khả năng suy luận của mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.'
+assert old in t['description'];d=t['description'];t['description']=d.replace(old,new);changes.append({'field':'description','before':d,'after':t['description'],'reason':'Clarify token usage rather than tokens themselves, preserving all untested limits.'})
+(B/'vi-targets.pass2.json').write_text(json.dumps(t,ensure_ascii=False,indent=2)+'\n')
+(B/'author-pass2-critique-and-corrections.json').write_text(json.dumps({'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'kind':'VI full111 author second semantic pass','all111_source_pairs_read':True,'full_metadata_six_chapters_read':True,'line_edits':len(updates),'description_edits':1,'changes':changes,'numbers_negations_conditions_and_public_URLs_preserved':True,'no_fit_timing_or_audio_claim':True},ensure_ascii=False,indent=2)+'\n')
+print('pass2',len(updates),'line edits +description')

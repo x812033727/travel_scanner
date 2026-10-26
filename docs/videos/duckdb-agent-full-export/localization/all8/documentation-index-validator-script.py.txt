@@ -1,0 +1,67 @@
+from pathlib import Path
+import json,hashlib,subprocess,datetime,re,shutil
+R=Path('/workspace/work/travel-scanner-duckdb');E=R/'docs/videos/duckdb-agent-full-export';B=Path('/workspace/work/ai-tech-next');D=B/'fifth-all8-text-docs';A=E/'localization/all8';H=E/'history/before-all8-text-adoption-docs';HEAD='a090b585a674db0f1e0f2ef12771363bfa7596eb'
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def desc(p):return {'bytes':Path(p).stat().st_size,'sha256':sha(p)}
+def write(p,o):
+ p=Path(p);assert not p.exists(),str(p);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()==HEAD
+before=read(D/'before.json');hist=read(H/'identity.json');changes=[]
+for rel,d in before['all556_Git_blobs'].items():
+ if desc(R/rel)!=d:
+  changes.append(rel);a=hist['five_mutable_files_copy2'][rel];assert desc(R/a['destination'])==d
+assert len(changes)==5 and sorted(changes)==sorted(hist['five_mutable_files_copy2'])
+for row in hist['old_ES68']['reconstruction']:assert desc(R/row['reconstruction_path'])=={'bytes':row['bytes'],'sha256':row['sha256']}
+assert len(hist['old_ES68']['reconstruction'])==68
+for d in hist['previous_external_descriptors_copy2']:assert desc(d['source'])==desc(R/d['destination'])=={'bytes':d['bytes'],'sha256':d['sha256']}
+for n,d in hist['old_indexes_preserved_in_place'].items():assert desc(E/'receipts'/n)==d
+copies=read(A/'copy-identity.json')['files'];assert len(copies)==196
+for d in copies:
+ assert desc(d['source'])==desc(R/d['destination'])=={'bytes':d['bytes'],'sha256':d['sha256']}
+ assert Path(d['source']).stat().st_ino!=(R/d['destination']).stat().st_ino
+for p,d in before['protected19'].items():assert desc(p)==d
+W=Path(before['workdir']['path'])
+for p,d in before['workdir']['files'].items():assert desc(W/p)==d
+assert not (W/'timeline.json').exists() and not list(W.rglob('*.wav')) and not list(W.rglob('*.m4a'))
+old=read(H/'production-progress.json');progress=read(E/'production-progress.json')
+for k in ['source_video_sha256','claims_sha256','speech_hash','voice_unchanged','native_script_gate','fact_checks','native_narrative','TTS','media','source_gates','public_materials','publication']:assert progress[k]==old[k]
+assert progress['localization_text']['adopted_count']==8 and progress['all_eight_foreign_media_delivery_dod_complete'] is False and progress['overall_production_completed'] is False
+binding=read(A/'documentation-native-binding.json');assert len(binding['locales'])==8 and binding['protected_input_files']==19 and binding['native_lint']['errors']==[] and len(binding['native_lint']['warnings'])==2
+checks=read(A/'documentation-checks.json');assert checks['actual_tasks_check']['actual_exit_code']==0
+# Current index extends the exact old immutable284; only new immutable files are added.
+indexfile=E/'receipts/all8-text-adoption-index.json';validationfile=E/'receipts/all8-text-adoption-validation.json';assert not indexfile.exists() and not validationfile.exists()
+oldidx=read(E/'receipts/es-text-adoption-index.json');assert len(oldidx['entries'])==284
+entries={x['path']:x for x in oldidx['entries']}
+for rel,d in entries.items():assert desc(E/rel)=={'bytes':d['bytes'],'sha256':d['sha256']}
+excluded={'README.md','result.md','production-progress.json','receipts/README.md','receipts/all8-text-adoption-index.json','receipts/all8-text-adoption-validation.json'}
+for p in E.rglob('*'):
+ if p.is_file() and str(p.relative_to(R)) not in before['all556_Git_blobs']:
+  rel=str(p.relative_to(E))
+  if rel not in excluded:entries[rel]={'path':rel,**desc(p)}
+idx={'kind':'current_all8_TEXT_adoption_immutable_evidence_index_not_media_PASS','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_video_sha256':sha(E/'video.json'),'claims_sha256':sha(E/'claims.md'),'speech_hash':'38cf9292f6945199','native_script_gate_sha256':sha(E/'script.md'),'scope':'All8localTEXT source/currenttargets/proofs and preserved histories. No actualCC/audio/ASR/backend, runtime permanent whole-doc binding, or new server approval.','entries':[entries[k] for k in sorted(entries)],'entry_count':len(entries),'excluded_from_entries':sorted(excluded)+['tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md'],'prior_ES284_index_immutable_sha256':sha(E/'receipts/es-text-adoption-index.json'),'prior284_entries_all_current_unchanged':True,'self_hash_included':False};write(indexfile,idx)
+# Local relative links are checked in all new/current changed Markdown files, including frozen author mappings.
+mds=[]
+for p in E.rglob('*.md'):
+ rel=str(p.relative_to(R))
+ if rel not in before['all556_Git_blobs'] or rel in changes:mds.append(p)
+task=R/'tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md';mds.append(task)
+def links(allow_future):
+ count=0;missing=[];deferred=[]
+ for p in mds:
+  for raw in re.findall(r'\]\(([^)]+)\)',p.read_text()):
+   raw=raw.strip().split(' "')[0]
+   if raw.startswith(('https:','http:','mailto:','#')):continue
+   target=(p.parent/raw.split('#')[0]).resolve();count+=1
+   if not target.exists():
+    if allow_future and target==validationfile.resolve():deferred.append({'file':str(p.relative_to(R)),'target':raw})
+    else:missing.append({'file':str(p.relative_to(R)),'target':raw})
+ return count,missing,deferred
+count,missing,deferred=links(True);assert not missing,missing
+w=read(A/'documentation-whitespace-audit.json');assert w['tracked_diff_check_exit_code']==0 and len(w['findings'])==1 and w['findings'][0]['path']=='docs/videos/duckdb-agent-full-export/localization/th/author/README.md'
+val={'kind':'all8_TEXT_adoption_documentation_actual_validation','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'verdict':'PASS_PREPARED_ALL8_TEXT_DOCS_ONLY_WITH_PRESERVED_NATIVE_ADVISORIES','base_HEAD':HEAD,'tracked_prior_episode_and_task_files':556,'prior_tracked_Git_bytes_unchanged':551,'only_changed_prior_tracked_paths':sorted(changes),'old_ES68_reconstructed_exactly':68,'old63_preserved_in_place':True,'only_five_mutable_and_three_descriptors_archived':True,'recursive_history_copy_performed':False,'old_indices_includingES284_preserved_exact':True,'protected_source_claims_script_all8_i18n_lexicon_native_files':19,'all_protected_bytes_unchanged':True,'remaining4_author_root_batch_safe_copies_exact':196,'copy2_distinct_inodes_all':True,'current_all8_index_entries':len(entries),'current_all8_index_sha256':sha(indexfile),'all_index_entries_SHA_and_bytes_current':True,'native_pure_binding':'../localization/all8/documentation-native-binding.json','actual_native_CLI_lint':checks['actual_native_CLI_lint'],'actual_tasks_check':checks['actual_tasks_check'],'actual_new_or_changed_Markdown_files_checked':len(mds),'actual_local_links_checked':count,'broken_local_links':[],'validation_self_links_written_then_rechecked':len(deferred),'tracked_git_diff_check_exit_code':0,'frozen_TH_author_Markdown_hardbreak_whitespace_advisory':w['findings'],'source_frozen_proof_bytes_not_changed_to_silence_whitespace':True,'initial_filename_assumptions_and_actual_exit1_logs_preserved':True,'independent_peer_generated_wording_corrections_preserved':'../localization/all8/documentation-peer-wording-corrections.json','master_workdir_original_files_unchanged':len(before['workdir']['files']),'new_network_requests':0,'text_adopted_locales':['en','ja','ko','es','pt','id','vi','th'],'text_count':8,'actual_CC_M4A_ASR_fit_meter_backend_complete':False,'master_paid_TTS':0,'master_raw_WAVs':0,'master_actual_timeline_exists':False,'source_R2_two_readers12of13_false_preserved':True,'source_targets_voice_lexicon_data_edited':False,'all_eight_media_DOD_or_overall_complete':False,'git_stage_commit_push':False,'root_independent_review_still_required':True};write(validationfile,val)
+count2,missing2,deferred2=links(False);assert count2==count and not missing2 and not deferred2
+for row in idx['entries']:assert desc(E/row['path'])=={'bytes':row['bytes'],'sha256':row['sha256']}
+for p,d in before['protected19'].items():assert desc(p)==d
+write(D/'index-validation-completion.json',{'ok':True,'index_entries':len(entries),'index_sha256':sha(indexfile),'validation_sha256':sha(validationfile),'Markdown_files':len(mds),'local_links':count,'remaining_broken_links':[],'freeze_not_written_yet':True})
+print(json.dumps({'ok':True,'index_entries':len(entries),'local_links':count,'Markdown_files':len(mds),'index_sha256':sha(indexfile),'validation_sha256':sha(validationfile)}))
