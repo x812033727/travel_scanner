@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T20:17:48Z
+claimed_at: 2026-10-26T20:46:33Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -39,6 +39,14 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Fresh qualified PT continuation after preserved service due — 2026-10-26T20:46Z
+
+- This is a fresh explicitly authorized user execution, not an automatic resume when the clock elapsed. Original PR1852 task20:37:45 and20:43:59 remained0ecde69a/latest17:03:40, over2hours; actual original20:38:32 andfree-preflight controller/LEASE/STOP checks found no live holder. Normal SDK GET20:38:33 still showed originalapprovedfinal/publish, candidate materials a1pending,retries{}, no YouTube id; no owner/browser-control tool is callable. Original source/media/unknown/skips/failedTH/bookends remain untouched.
+- Root waited for the prior finite coordinator to finish saving and explicitly return writer ownership. Clean c4e3b4266e794edafd921cdfa527d0d38a7d6028 was actually pushed, draft/no-auto/body verified; root read the real stopped PT receipt49031ee0 and post-defer audit7f45e16e. The existing defer1/due20:34:07.630Z/PT0-0-0/check_stoppedtrue are still present; zero output is not a claim about billing. No held/sent unknown or unadopted durable model journal was deleted or replayed.
+- New FREE preflight only at prefix `/workspace/work/ai-pdf-01/pt-resume-after-defer-20261026T204315Z` genuinely passed: native dryrun0,95estimatedrequests/6112chars,5,743,457remaining/Gemini configured-ready,14estimatedover retained; readiness/estimates do not prove current provider availability or audiofit.2334runtime files,9source/8true meaning chains, protectedKOES/ENJA/raw/thumbnails all byte-exact; short preflight lease released. Full preflight3512bc592903425ad1d88883db585c9940fc685a44ad678808acf46134d7f218 and released receipt7c4bd725cac2072e2966079af990838a5d75b92075abd0ae5e820745cabf27dc are source-copied. Actual journal/model receipts are empty; the native sent/unknown versus bounded settled-wait rules were independently read, without inferring the old rawHTTP code or0billing.
+- After these eligibility checks, root used ordinary taskstatus/in-progress then same-ownerclaim, no force; this source-board state means a qualified new attempt, not service cured/voice approved. Native auto.status=done, defer/due/caps/flags were not reset. The old finite-controller-stop marker4d02c409 remains immutable history. New external/source-identical `remaining-languages-resume-after-PT-defer-20261026.json` inherits every d5f273 finite-grant safeguard and authorizes first one normal PT continuation only after this commit/push and explicitGO_REACTIVATE. If service re-defers/unknown/globalblocks again, stop the queue and preserve its new real due; no timer resume orID/VI/TH workaround. Only if normal native eligibility/progress continues may PT→ID→VI→TH proceed serially with actual independent model-boundary reviews and unchanged budgets/caps/gates.
+- Root remains the sole writer until that explicit handoff; no new paid unit has started at this checkpoint. After activation coordinator `/root/pdf_ko_single_producer` again becomes solePDF source/task/Git writer at actual ended/lease-free boundaries, root quiescent. ExistingKO+ES2/8checked, EN3flags/JA1flag stopped, all8thumbs checked and primary346a/11QA remain true. Full8package/site-choice/owner/publish/new-movie protections stay in force; do not describe a future voice outcome as completed.
 
 ### Actual PT service defer; finite queue stopped safely — 2026-10-26T20:34Z
 
