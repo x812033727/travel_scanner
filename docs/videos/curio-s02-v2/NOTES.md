@@ -66,3 +66,9 @@ no_toc（承諾句只一句，沒有「接下來」「最後」）。
    最後一輪的兩份答案存進 `panel/reader-1.json`、`panel/reader-2.json`，再跑一次 `narrative --slug curio-s02-v2 --answers panel/reader-1.json` 留紀錄。
 2. 之後照 `curio-episode` skill：旁白（`tts`）→ `check-audio`（特別聽「濡須」「魚豢」「四更」「弓弩」「裴松之」「胡沖」「嘉靖」「一五二二年」「四二九年」「軍令狀」「乖僻」「巴丘」）→ 站主聽 →
    插圖整集一次報價（105 張，66 張吃第一版快取要先確認第一版有沒有畫過：第一版沒有生圖，所以全部都是新畫）→ 配樂。
+
+## 製作紀錄（2026-10-26）
+
+- 旁白：135 句；聽檢重配後剩 7 句低於 0.5，交站主在旁白關卡聽。
+- 插圖：全部一輪過 judge（中途主機 502 兩次，軌道等 5 分鐘重跑，已畫的吃快取）；整集插圖花 US$1.77。
+- `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos。
