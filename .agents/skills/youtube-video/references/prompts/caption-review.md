@@ -1,6 +1,6 @@
 # Caption reviewer prompt: one locale, a list of fixes only
 
-Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>`, `<LOCALE>`. Dispatch after the translator's `i18n-merge` lists nothing. The reviewer is never the translator. The review covers the parts the owner chose for this locale (`docs/videos/LANGUAGES.md`): the worksheet's `parts` says whether the lines, the title/description/tags/chapters, or both are wanted; when the owner also chose a dub, each line's `max_chars` in the worksheet (`<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`) is its budget. Everything below the rule is the prompt.
+Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>`, `<LOCALE>` (one of en, ja, ko, es, pt, id, vi, th). Dispatch after the translator's `i18n-merge` lists nothing. The reviewer is never the translator. The review covers the parts the owner chose for this locale (`docs/videos/LANGUAGES.md`): the worksheet's `parts` says whether the lines, the title/description/tags/chapters, or both are wanted; when the owner also chose a dub, each line's `max_chars` in the worksheet (`<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`) is its budget. Everything below the rule is the prompt.
 
 ---
 

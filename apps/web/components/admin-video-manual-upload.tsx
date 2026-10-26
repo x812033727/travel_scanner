@@ -11,6 +11,10 @@ type Draft = { title: string; description: string; video_id: string | null };
 // `files` is the upload confirmation's, with the newest approved language batch's over them: a
 // language added after the upload has its captions, description and thumbnail only there.
 type Package = { project: Project; review: Review; languages: Review | null; files: ReviewFile[]; metadata: Record<string, unknown>; metadataFailed: boolean };
+const DUB = "dub_";
+const UNCHECKED_DUB = "dub_unchecked_";
+// The dub formats the review store takes (docs/videos/DUBS.md: m4a, mp3 or wav).
+const AUDIO_EXTENSIONS: Record<string, string> = { "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/wav": "wav" };
 const strings = (value: unknown) => list(value).filter((item): item is string => typeof item === "string");
 const canonical = (locale: string) => {
   const key = locale.toLowerCase().replaceAll("_", "-");
@@ -83,6 +87,12 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   for (const file of localeThumbnails) archive.set(`thumbnail.${canonical(file.role.slice("thumbnail_".length))}.${file.content_type === "image/png" ? "png" : "jpg"}`, file);
   for (const file of captionFiles) archive.set(captionName(file), file);
   for (const file of descriptionFiles) archive.set(descriptionName(file), file);
+  // Dub tracks: dub_<locale> is a ready track, dub_unchecked_<locale> one the check gave up on.
+  const uncheckedDubs = files.filter((file) => file.role.startsWith(UNCHECKED_DUB));
+  const readyDubs = files.filter((file) => file.role.startsWith(DUB) && !file.role.startsWith(UNCHECKED_DUB));
+  const dubLocale = (file: ReviewFile) => canonical(file.role.slice((file.role.startsWith(UNCHECKED_DUB) ? UNCHECKED_DUB : DUB).length));
+  const dubName = (file: ReviewFile) => `dub.${dubLocale(file)}${file.role.startsWith(UNCHECKED_DUB) ? ".unchecked" : ""}.${AUDIO_EXTENSIONS[file.content_type] ?? "m4a"}`;
+  for (const file of [...readyDubs, ...uncheckedDubs]) archive.set(dubName(file), file);
   const metadataFile = files.find((file) => file.role === "metadata");
   if (metadataFile) archive.set("metadata.json", metadataFile);
   const archiveUrl = `/api/admin-video-package/${project.slug}?${new URLSearchParams([...archive].map(([name, file]) => ["file", `${file.sha256}:${name}`]))}`;
@@ -148,6 +158,15 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       {requestTime && <p className="text-sm">{t("requestedTime", { time: when(requestTime) })}</p>}
       <p className="text-sm leading-6 text-[var(--muted)]">{t("statusHelp")}</p>
     </section>
+    {readyDubs.length + uncheckedDubs.length > 0 && <section className={stepClass} aria-label={t("dubStep")}>
+      <h3 className="font-bold">{t("dubStep")}</h3>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dubHelp")}</p>
+      <ul className="flex flex-wrap gap-2">{readyDubs.map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadDub", { language: localeName(dubLocale(file)) })} name={dubName(file)} /></li>)}</ul>
+      {uncheckedDubs.length > 0 && <>
+        <ul className="flex flex-wrap gap-2">{uncheckedDubs.map((file) => <li key={file.role}><DownloadFile slug={project.slug} file={file} label={t("downloadUncheckedDub", { language: localeName(dubLocale(file)) })} name={dubName(file)} /></li>)}</ul>
+        <p className="text-sm leading-6 text-amber-900">{t("uncheckedDubHelp")}</p>
+      </>}
+    </section>}
     <details className="rounded-xl border border-[var(--line)] p-4">
       <summary className="cursor-pointer text-sm font-semibold">{t("backupTitle")}</summary>
       <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("backupHelp")}</p>
@@ -179,7 +198,11 @@ function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft;
         // One older than the confirmation belongs to an earlier package, whose own files are newer.
         const newestLanguages = project.reviews.find((item) => item.gate === "languages" && !item.subject && item.status === "approved");
         const languages = newestLanguages && Date.parse(newestLanguages.created_at) > Date.parse(review.created_at) ? newestLanguages : null;
-        const files = [...new Map([...review.files, ...(languages?.files ?? [])].map((file) => [file.role, file])).values()];
+        // Dub tracks wait on a card the owner approves only after uploading them in Studio, so they
+        // also come from the newest languages or dubs card not sent back, pending ones included.
+        const newestDubs = project.reviews.find((item) => (item.gate === "languages" || item.gate === "dubs") && !item.subject && (item.status === "approved" || item.status === "pending"));
+        const dubFiles = newestDubs && Date.parse(newestDubs.created_at) > Date.parse(review.created_at) ? newestDubs.files.filter((file) => file.role.startsWith(DUB)) : [];
+        const files = [...new Map([...review.files, ...(languages?.files ?? []), ...dubFiles].map((file) => [file.role, file])).values()];
         // Its metadata.json is the package's own, written again with every language translated since.
         const metadataUrl = fileUrl(slug, (languages && fileFor(languages, "metadata")) || fileFor(review, "metadata"));
         let metadata: Record<string, unknown> = {};

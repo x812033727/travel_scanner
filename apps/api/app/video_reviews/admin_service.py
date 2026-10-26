@@ -76,6 +76,7 @@ from app.video_automation.settings import (
     auto_approves_final,
     auto_approves_script,
     auto_approves_storyboard,
+    auto_look_fallback,
     auto_picks_look,
     auto_picks_outline,
     look_pick_note,
@@ -1808,6 +1809,16 @@ async def submit_review(
     ):
         auto_note = look_pick_note(payload.payload)
         review.choice = str(payload.payload.get("suggested"))
+    # When the judge suggested none (its scores for a sheet stay under the keyframe threshold),
+    # a hands-off series still gets the best sheet without a fault the keyframes would inherit
+    # (ticket 2026-10-25-judge-7-judge); the note says which sheets were passed over and why.
+    elif (
+        not owner_decides
+        and payload.gate == "look"
+        and (fallback := await auto_look_fallback(session, payload.payload, series_slug))
+        is not None
+    ):
+        review.choice, auto_note = fallback
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
     elif (
         not owner_decides

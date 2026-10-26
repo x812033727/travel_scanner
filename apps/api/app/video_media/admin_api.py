@@ -18,6 +18,7 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.config import get_settings
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.problems import AppError
@@ -38,7 +39,7 @@ from app.video_budget.service import (
     settle,
     summary,
 )
-from app.video_media import meter, stock
+from app.video_media import branding, meter, stock
 from app.video_media.catalog import find_model
 from app.video_media.jobs import (
     MediaContext,
@@ -58,6 +59,8 @@ from app.video_media.schemas import (
     MAX_PROMPT_CHARS,
     MAX_REFERENCES,
     MAX_STOCK_PER_PAGE,
+    BrandingClipOut,
+    BrandingOut,
     ChoiceView,
     ClipJobIn,
     ImageJobIn,
@@ -568,3 +571,77 @@ async def stock_fetch(payload: StockFetchIn, tool: VideoTool, session: Session) 
         raise _storage_refused(error) from error
     await _prune_sometimes(ctx)
     return fetched
+
+
+def _branding_refused(error: branding.BrandingUnavailable) -> AppError:
+    if error.reason == "disabled":
+        return AppError(
+            404, "video_branding_disabled", "正式站把這組片頭片尾關掉了：這類影片不包片頭片尾"
+        )
+    if error.reason == "broken":
+        return AppError(
+            503,
+            "video_branding_broken",
+            f"工人的片頭片尾設定讀不出來（{error}）；請在主機上跑 branding --json 檢查",
+        )
+    return AppError(
+        404,
+        "video_branding_not_installed",
+        "正式站的工人還沒有安裝片頭片尾素材包，或 API 沒有掛載它的工作區",
+    )
+
+
+def _branding_view(series: str | None) -> BrandingOut:
+    try:
+        package = branding.current_package(get_settings().video_work_dir, series)
+    except branding.BrandingUnavailable as error:
+        raise _branding_refused(error) from error
+    return BrandingOut(
+        series=package.series,
+        id=package.id,
+        hash=package.hash,
+        installed_at=package.installed_at,
+        intro=BrandingClipOut(
+            sha256=package.intro.sha256, frames=package.intro.frames, size=package.intro.size
+        ),
+        outro=BrandingClipOut(
+            sha256=package.outro.sha256, frames=package.outro.frames, size=package.outro.size
+        ),
+    )
+
+
+@media_router.get("/branding", response_model=BrandingOut)
+async def channel_branding(tool: VideoTool) -> BrandingOut:
+    """The channel intro and outro the worker builds with, for ``branding --pull``
+    (docs/videos/BRANDING.md): read from its work volume, which the API mounts read-only."""
+    _ = tool
+    return _branding_view(None)
+
+
+@media_router.get("/branding/series/{series}", response_model=BrandingOut)
+async def series_branding(series: str, tool: VideoTool) -> BrandingOut:
+    """A series' own bookends (only 原來如此 has them); 404 when it uses the channel's."""
+    _ = tool
+    return _branding_view(series)
+
+
+@media_router.get("/branding/files/{sha256}")
+async def branding_file(sha256: str, tool: VideoTool) -> FileResponse:
+    """An intro or outro a current package names, by SHA-256; nothing else on the volume."""
+    await _limit("download", tool.id, DOWNLOADS_PER_HOUR)
+    path = branding.current_file(get_settings().video_work_dir, sha256)
+    if path is None:
+        raise AppError(
+            404,
+            "video_branding_file_not_found",
+            "這個檔案不在正式站目前的片頭片尾素材包裡（可能剛換了一包，請重跑 branding --pull）",
+        )
+    return FileResponse(
+        path,
+        media_type="video/mp4",
+        headers={
+            "Cache-Control": "private, no-store",
+            "ETag": f'"{sha256}"',
+            "X-Content-Type-Options": "nosniff",
+        },
+    )

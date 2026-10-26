@@ -50,6 +50,7 @@ from app.video_automation.schemas import (
 )
 from app.video_automation.usage import usage_view
 from app.video_media.catalog import MEDIA_VENDORS, MediaKind, find_model, media_options
+from app.video_media.judge import UNDESCRIBED
 from app.video_speech.gemini import GEMINI_TTS_MODELS, PREBUILT_VOICES
 
 # The stages run through the same vendor adapters as the news writer and verifier
@@ -63,6 +64,22 @@ MODEL_CAPABILITY: dict[ApiProviderName, Capability] = {
 AUTO_APPROVED_NOTE = "Jev 判斷每一句都唸對了，依設定自動核准"
 AUTO_APPROVED_STORYBOARD_NOTE = "judge 給每一鏡的分數都達到門檻、沒有要重畫的問題，依設定自動核准"
 AUTO_PICKED_LOOK_NOTE = "judge 給 {key} {score:g}/10、沒有列出問題，依設定自動選"
+# When the judge suggested no sheet (its scores for a plain-background sheet top out around 6.3,
+# under the keyframe threshold of 7; ticket 2026-10-25-judge-7-judge), a hands-off series still
+# gets a pick: the best sheet with none of the faults that would reach the keyframes.
+AUTO_PICKED_LOOK_FALLBACK_NOTE = (
+    "judge 沒有推薦達到門檻 {min_score:g} 的設定圖；備援選法選 {key}：{score:g}/10，是沒有"
+    " no_text、clean 問題的候選裡最高分（備援門檻 {floor:g}）。略過：{skipped}"
+)
+# How far under ``judge_min_score`` the fallback pick may be.
+LOOK_FALLBACK_SLACK = 2
+# A sheet with one of these faults is never picked: text on a sheet is carried into every
+# keyframe drawn from it (subject_reference), and a duplicated figure or broken hands too.
+# Only a described fault counts: when the judge failed the criterion without saying what or
+# where, app.video_media.judge writes its ``UNDESCRIBED`` placeholder into the line, and on
+# 2026-10-25 every sheet of a character carried such a ``clean:`` line, so none was eligible.
+LOOK_BLOCKING_PROBLEMS = ("no_text:", "clean:")
+LOOK_NOTHING_SKIPPED = "沒有略過任何一張"
 
 
 def _options(entries: Any, capability: Capability | None) -> list[ModelOptionView]:
@@ -636,26 +653,111 @@ def look_pick_note(payload: dict[str, Any]) -> str:
     return AUTO_PICKED_LOOK_NOTE.format(key=key, score=score)
 
 
-async def auto_picks_look(
-    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
-) -> bool:
-    """Whether a character's sheet is picked for the owner (docs/videos/HANDS-OFF.md)."""
+def _fault(line: str) -> str:
+    """A judge problem line without its fix clause: what stands before the arrow."""
+    return line.split(" → ", 1)[0].strip()
+
+
+def look_fallback_pick(
+    payload: dict[str, Any], min_score: int
+) -> tuple[str, float, list[str]] | None:
+    """The sheet to pick when the judge suggested none (ticket 2026-10-25-judge-7-judge).
+
+    Among ``payload["options"]`` the sheets whose ``judge.problems`` list nothing starting with
+    ``no_text:`` or ``clean:`` (``LOOK_BLOCKING_PROBLEMS``) are eligible, a placeholder line
+    the judge left undescribed (``UNDESCRIBED``) not counting; the highest
+    ``judge.overall`` among them is picked when it is at least ``min_score`` less
+    ``LOOK_FALLBACK_SLACK``. Returns ``(key, score, skipped)``, where ``skipped`` says which
+    sheets were passed over and why, or None when no sheet qualifies and the owner decides.
+    """
+    options = payload.get("options")
+    if not isinstance(options, list):
+        return None
+    best: tuple[str, float] | None = None
+    skipped: list[str] = []
+    for option in options:
+        if not isinstance(option, dict):
+            continue
+        key = option.get("key")
+        if not isinstance(key, str) or not key:
+            continue
+        judge = option.get("judge")
+        overall = judge.get("overall") if isinstance(judge, dict) else None
+        if not isinstance(overall, int | float) or isinstance(overall, bool):
+            skipped.append(f"{key}（沒有分數）")
+            continue
+        problems = judge.get("problems") if isinstance(judge, dict) else None
+        blocking = [
+            _fault(line)
+            for line in (problems if isinstance(problems, list) else [])
+            if isinstance(line, str)
+            and line.startswith(LOOK_BLOCKING_PROBLEMS)
+            and UNDESCRIBED not in line
+        ]
+        if blocking:
+            skipped.append(f"{key}（{'；'.join(blocking)}）")
+            continue
+        if best is None or overall > best[1]:
+            best = (key, float(overall))
+    if best is None or best[1] < min_score - LOOK_FALLBACK_SLACK:
+        return None
+    return best[0], best[1], skipped
+
+
+def look_fallback_note(key: str, score: float, skipped: list[str], min_score: int) -> str:
+    return AUTO_PICKED_LOOK_FALLBACK_NOTE.format(
+        min_score=min_score,
+        key=key,
+        score=score,
+        floor=min_score - LOOK_FALLBACK_SLACK,
+        skipped="、".join(skipped) if skipped else LOOK_NOTHING_SKIPPED,
+    )
+
+
+async def _look_pick_threshold(session: AsyncSession, series_slug: str | None) -> int | None:
+    """``judge_min_score`` when a character's sheet may be picked for the owner, else None.
+
+    Off by default, like the storyboard: the owner looks at a first drama's sheets, unless the
+    series is hands-off; a long anime's are never picked (docs/videos/HANDS-OFF.md).
+    """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    # Off by default, like the storyboard: the owner looks at a first drama's sheets, unless
-    # the series is hands-off.
     if row is None:
-        return False
+        return None
     if row.auto_pick_look and series_slug:
         series = await session.scalar(
             select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug)
         )
         if series is not None and is_long_anime(series):
-            return False
+            return None
     if not row.auto_pick_look and await hands_off_series(session, series_slug) is None:
-        return False
-    return look_pick_passed(payload, row.judge_min_score)
+        return None
+    return int(row.judge_min_score)
+
+
+async def auto_picks_look(
+    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
+) -> bool:
+    """Whether a character's sheet is picked for the owner (docs/videos/HANDS-OFF.md): the
+    judge's suggestion stands when it clears the threshold with no problems listed."""
+    min_score = await _look_pick_threshold(session, series_slug)
+    return min_score is not None and look_pick_passed(payload, min_score)
+
+
+async def auto_look_fallback(
+    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
+) -> tuple[str, str] | None:
+    """The fallback pick ``(key, note)`` when the judge suggested no sheet that passed, under the
+    same conditions as ``auto_picks_look``; None leaves the review to the owner."""
+    min_score = await _look_pick_threshold(session, series_slug)
+    if min_score is None:
+        return None
+    found = look_fallback_pick(payload, min_score)
+    if found is None:
+        return None
+    key, score, skipped = found
+    return key, look_fallback_note(key, score, skipped, min_score)
 
 
 async def auto_approves_script(
