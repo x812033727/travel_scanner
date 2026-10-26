@@ -1,0 +1,81 @@
+{
+  "kind": "forty-forest-map four-language finish",
+  "at": "2026-10-26T14:04:57.979Z",
+  "by": "claude-opus-5-5",
+  "owner_instruction": "2026-10-26: Codex reassigned; Claude finishes ForTy. Owner accepts possibly double-charged resends of transcription requests that came back 502/504 (es f3d19f78, pt 6456b94c, id ba64bf06) and asks for one language at a time.",
+  "timeline": {
+    "file": "timeline.rebuilt.json",
+    "sha256": "b82454acaa3bb913749c7a9017ecd4da1223a887c1bdaad11059709c0e9abd5b",
+    "source": "zh-TW captions of final 564812bd (captions_zh-TW, real timing), intro after body frame 682",
+    "checks": {
+      "line_starts_off_cues": 0,
+      "total_frames": 15383,
+      "speech_hash": "c6d70ecaef91a15d",
+      "cue_texts_identical": 97,
+      "cue_starts_differing_ms": "4 continuation cues by 2-16 ms"
+    }
+  },
+  "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+  "dubs": {
+    "es": {
+      "sha256": "59889f2ccd0cc79cd4697e5459f4a12b7f452a14425ab70ae0e1edad6c7726b6",
+      "seconds": 538.805,
+      "captions_sha256": "fe688f1ea0c173a07576eee63378c308dd87b365d3aa803c5b6fe823e1a21a38",
+      "check": "es dub: 92 of 92 lines checked: 48 match the script word for word, 0 differ only by same-sound characters, filler words or a loanword's spelling, 36 judged fine by Jev, 7 cleared by a second transcript, 1 flagged (below 0.5)"
+    },
+    "pt": {
+      "sha256": "fd3d5d1206e463ff3fa74ac0fed8ba363385604daab43d49871426ffc8eb7b79",
+      "seconds": 538.805,
+      "captions_sha256": "bc30a41f12ece3914f6b25891d9bfebcd15f0c7da0146eda7317b27a42de6bc0",
+      "check": "pt dub: 92 of 92 lines checked: 41 match the script word for word, 0 differ only by same-sound characters, filler words or a loanword's spelling, 39 judged fine by Jev, 12 cleared by a second transcript, 0 flagged (below 0.5)"
+    },
+    "id": {
+      "sha256": "788ef8da28ed8123894a91c39c94083e42b3a30e8daca34868826e740497f2a3",
+      "seconds": 538.805,
+      "captions_sha256": "8fbb6643b97bc595e0a94483957811a440852ca6a370c6ca4c3ceebcb240daec",
+      "check": "id dub: 92 of 92 lines checked: 52 match the script word for word, 0 differ only by same-sound characters, filler words or a loanword's spelling, 34 judged fine by Jev, 6 cleared by a second transcript, 0 flagged (below 0.5)"
+    },
+    "th": {
+      "sha256": "18b38e303e182c4baf78c5e24236462e513ec1f807e0ecc0b6a7f123b35d0801",
+      "seconds": 538.805,
+      "captions_sha256": "e9a4ef9b7ddaaba5eab5cd2c79bded63ac75284433902b0bd25361d13f918217",
+      "check": "th dub: 92 of 92 lines checked: 59 match the script word for word, 3 differ only by same-sound characters, filler words or a loanword's spelling, 13 judged fine by Jev, 17 cleared by a second transcript, 0 flagged (below 0.5)"
+    }
+  },
+  "site": {
+    "final": {
+      "review_id": "95bd4a89-2f84-4b44-8c54-9d98e1b4676d",
+      "content_sha256": "564812bd2a172daab0782b95a8c19ab44e5ac0d567304767eeaa2f6aee46c40a",
+      "status": "approved"
+    },
+    "publish": {
+      "review_id": "101ec94f-b894-43d1-b06b-be902cf69fa8",
+      "content_sha256": "c578ecfdbe8d1bc70b573d8c15d38e0658ab224d0fc0fb8eccc94ee7f7be7d06",
+      "status": "approved"
+    },
+    "languages": {
+      "review_id": "50cb6988-2ef9-4510-90d6-e9619ed50b66",
+      "content_sha256": "2e5ea6108b3bd0114538e847bc0652f392b9c65575543c6ea7eb7bee681cafb5",
+      "status": "approved"
+    }
+  },
+  "not_done": [],
+  "thumbnails": {
+    "zh_TW_rendered_equals_delivered_sha256": "d74fcdc269e6d17c (prefix)",
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "resent": {
+      "publish": "31467486e6dd (f5ed6fdc-71c6-46cb-a1fe-30fbf5a38a33)",
+      "languages": "5c2a4b2e0f49 (0b1a970a-3efa-4ef1-b4f0-1b8e7d9a81eb)",
+      "status": "pending owner approval when recorded"
+    }
+  }
+}
