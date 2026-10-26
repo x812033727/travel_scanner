@@ -1,0 +1,152 @@
+{
+  "recorded_at": "2026-10-26T13:18:58.342316+00:00",
+  "actual_unit_exit_code": 6,
+  "native_boundary_file": "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.round-1.2026-10-26T13-15-02-577Z.json",
+  "native_boundary_sha256": "6630883c923d5808794642c5166baed338ef48ff7c9231200f93d2628ddedcf7",
+  "native_boundary": {
+    "schema_version": 1,
+    "slug": "ai-pdf-quotes-to-comparison",
+    "locale": "en",
+    "variant": "reword",
+    "round": 1,
+    "recorded_at": "2026-10-26T13:15:02.577Z",
+    "purpose": "Actual native model answer awaiting independent meaning review; not approval or retry authorization",
+    "native_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "native_result": {
+      "ids": [],
+      "problems": [
+        "hg9m: over its budget (73 characters, at most 58)",
+        "fd27: over its budget (120 characters, at most 93)",
+        "znv7: over its budget (97 characters, at most 77)",
+        "xevg: over its budget (84 characters, at most 82)"
+      ]
+    },
+    "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-reword-round-1-meaning-review-2026-10-26T13-15-02-576Z.txt",
+    "native_answer_sha256": "b1103757a32ed6b6192ecc7700f67838ec8d084d19ad4b2f0e353f4293c1de64",
+    "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc"
+  },
+  "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "native_rounds": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true
+  },
+  "actual_remaining_flags": [
+    {
+      "id": "hg9m",
+      "text": "But can blank shipping just mean free delivery?",
+      "actual_check": {
+        "scene": "opening-missing",
+        "clip": "41578cf9f6d3eb15",
+        "terms": [],
+        "heard": "But can't blank shipping just mean free delivery?",
+        "noul": 0.1,
+        "intended": "But can blank shipping just mean free delivery?",
+        "spoken_form": "But can blank shipping just mean free delivery?",
+        "match_kind": null,
+        "match": false
+      }
+    },
+    {
+      "id": "fd27",
+      "text": "Join Aster's unit price and shipping from two pages in one row, each sourced.",
+      "actual_check": {
+        "scene": "extract-aster",
+        "clip": "fb95f06aadbd081f",
+        "terms": [],
+        "heard": "Join a store's unit price and shipping from two pages in one row, each sourced.",
+        "noul": 0.04,
+        "intended": "Join Aster's unit price and shipping from two pages in one row, each sourced.",
+        "spoken_form": "Join Aster's unit price and shipping from two pages in one row, each sourced.",
+        "match_kind": null,
+        "match": false
+      }
+    },
+    {
+      "id": "znv7",
+      "text": "Birch's tax-inclusive unit price times quantity gives goods cost.",
+      "actual_check": {
+        "scene": "cost-birch-formula",
+        "clip": "1be99fc2547c48f6",
+        "terms": [],
+        "heard": "Purchase tax-inclusive unit price times quantity gives goods cost.",
+        "noul": 0.03,
+        "intended": "Birch's tax-inclusive unit price times quantity gives goods cost.",
+        "spoken_form": "Birch's tax-inclusive unit price times quantity gives goods cost.",
+        "match_kind": null,
+        "match": false
+      }
+    },
+    {
+      "id": "xevg",
+      "text": "Aster's goods cost rises with quantity; shipping stays a single charge.",
+      "actual_check": {
+        "scene": "quantity-aster",
+        "clip": "975484005d8ceac3",
+        "terms": [],
+        "heard": "As their goods cost rises with quantity, shipping stays a single charge.",
+        "noul": 0.05,
+        "intended": "Aster's goods cost rises with quantity; shipping stays a single charge.",
+        "spoken_form": "Aster's goods cost rises with quantity; shipping stays a single charge.",
+        "match_kind": null,
+        "match": false
+      }
+    }
+  ],
+  "actual_check_sha256": "c3dda55a23705ae993b15ecce8c69e96d34b10b185ac4195d27a1eb79460b141",
+  "actual_native_check_snapshot": "/workspace/work/ai-pdf-01/en-audio-observed-history/reword1-actual-ended/check.en.json",
+  "actual_raw_source_unchanged_after_reword1": true,
+  "all_four_reword_proposals_rejected_over_budget": true,
+  "protected_primary_files": {
+    "approvals.json": {
+      "before_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "current_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "unchanged": true
+    },
+    "final.mp4": {
+      "before_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "current_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "unchanged": true
+    },
+    "timeline.json": {
+      "before_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "current_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "unchanged": true
+    },
+    "narration.wav": {
+      "before_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "current_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "unchanged": true
+    },
+    "review/check.json": {
+      "before_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "current_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "unchanged": true
+    },
+    "review/check-flags.json": {
+      "before_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "current_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "unchanged": true
+    },
+    "review/qa.json": {
+      "before_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "current_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "unchanged": true
+    },
+    "languages.json": {
+      "before_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "current_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "unchanged": true
+    }
+  },
+  "lease_present": false,
+  "voice_approved": false,
+  "next": "Review the actual unused round1 answer and unchanged current source; preserve four failed audio checks and counted rounds. Only continue through a matching current independent meaning review and normal native limits. Never use a physical m4a or translation-ready status as voice approval."
+}
