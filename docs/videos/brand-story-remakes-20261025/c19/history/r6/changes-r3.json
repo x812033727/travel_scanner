@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r3",
+  "status": "AUTHOR_MINIMAL_DEDUPLICATION_PENDING_DELTA_SOURCE_AND_NATIVE3",
+  "baseline_revision": "c19-r2",
+  "baseline_core_four_sha256": {
+    "video.json": "ee3ecc0b38fa986ea69c3f8f6d29fb3ce770b5f031ba3ea8f2c903f3218ea493",
+    "script.md": "5831b821fb7a0c118a7c123ad4b8c7c05c0702aad04f2fdfd676c20ce209bbcc",
+    "narration-only.json": "bf1299053e51efdbb40f2dd5b8396f6532e72b07aa40f9879962f469d6f89586",
+    "claims.json": "728d4c243d0c07bc560814cef019ba2882ef2aba770f599375e57c29c0dce9e3"
+  },
+  "baseline_source_result": "PASS_R2_ONLY",
+  "baseline_source_receipt_sha256": "8c8d53caef6d1ba6fbd9580c20216be6f9467e30acf5ea3d4a28d54afca6c331",
+  "baseline_verify_sha256": "c8dc9131025d85841de4a02664506aec24dcaf8a4839bd4fc774bbb7167dbc2a",
+  "baseline_native_round": 2,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "single_reader_opening_hooks_disagreement_not_chased": true,
+  "opening_scenes_and_narration_unchanged": true,
+  "changed_rows": [
+    {
+      "id": "c19r1a12",
+      "before": "機器的畫面，則依各家合作銀行的規格顯示。",
+      "after": "如果你拿的是適用合作卡，機器的畫面，就按那家合作銀行的規格顯示。",
+      "reason": "Retain eligible-card condition and viewer address once, while stating partner-bank screen specifications only once.",
+      "source_review_required": true
+    }
+  ],
+  "removed_rows": [
+    {
+      "id": "c19r1a13",
+      "text": "假設你拿的是適用的合作卡，畫面便按合作銀行規格顯示，能用的服務仍要另看。",
+      "reason": "The two original round2 readers both identified this as repeating a12."
+    }
+  ],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 119,
+  "remaining_prompts_and_cameras_exactly_r2": true,
+  "source_quotes_changed": false,
+  "new_historical_claims": false,
+  "service_conditions_still_present_at": "c19r1a14 and c19r1n23–n24",
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 5,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3434,
+  "delta_from_r2_units": -22,
+  "native_actual_round_count": 2,
+  "next_native_round": 3,
+  "native2_format_correction_not_new_draw": [
+    {
+      "reader": "a",
+      "vote_count": 13,
+      "votes_unchanged": true,
+      "evidence_bytes_unchanged": true,
+      "additional_review_or_round": false
+    },
+    {
+      "reader": "b",
+      "vote_count": 13,
+      "votes_unchanged": true,
+      "evidence_bytes_unchanged": true,
+      "additional_review_or_round": false
+    }
+  ],
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

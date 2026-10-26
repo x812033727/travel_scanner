@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_QA",
-  "candidate_revision": "c19-r5",
+  "candidate_revision": "c19-r8",
   "author": "/root/c19_primary_research",
   "video_slug": "story-everyday-seven-bank-c19-remake-20261025",
   "frozen_research_sha256": {
@@ -2115,73 +2115,6 @@
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "c19r1o14",
-      "scene_id": "c19r1o14",
-      "claim": "你手上的卡若來自別家銀行，店裡就得有一條路，把那張卡接回原來的機構。",
-      "claim_class": "假設／條件",
-      "claim_kind": "hypothetical",
-      "source_ids": [
-        "S6",
-        "S2"
-      ],
-      "research_claim_ids": [
-        "R08",
-        "R10"
-      ],
-      "quote_ids": [
-        "R08-Q1",
-        "R08-Q2",
-        "R10-Q1"
-      ],
-      "source_evidence": [
-        {
-          "id": "R08-Q1",
-          "research_claim_id": "R08",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF6／印4 6月欄",
-          "original_quote": "13 日 都市銀行カードによる 当社 ATM での出金が 可能に （BANCS 接続）",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "3fa5691f5917145b9561b086652379607d5761022230cb59385da2f373f4dc60"
-        },
-        {
-          "id": "R08-Q2",
-          "research_claim_id": "R08",
-          "source_id": "S2",
-          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
-          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
-          "locator": "Overall management > 2001 > June 11–18",
-          "original_quote": "June 11 Connected to Zengin system June 13 Connected to BANCS June 18 Initiated money transfer services",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "9505432e497fdbd3ab80e3e031a695c1c45b78bbc5535d48e4aabe450157cac8"
-        },
-        {
-          "id": "R10-Q1",
-          "research_claim_id": "R10",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF8／印6 事業コンセプトと概要",
-          "original_quote": "こうした普通預金口座取引をはじめとする『金融サービス事業』と、他の金融機関と提携することでより多くのお客さまに当社 ATM をご利用いただく『ATM 事業』",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "bd5c7a1e3fdc10746aa9ecff38aed57b6775c710ecf2ff6f5bdebfdedcfbe39d"
-        }
-      ],
-      "limits": [
-        "名詞只取必要動作，不唸網路名詞清單；S6服務表把自家匯款列2001-05是概括月欄，精確開始日以此timeline/S2為準。",
-        "不能說完全沒有銀行帳戶、線上服務、員工或其他銀行業務；未採用的共同ATM運用公司構想無決策過程。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Medium shot in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, soft light from a side window.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
       "id": "c19r1o15",
       "scene_id": "c19r1o15",
       "claim": "這條路，要從實際合作開始；啟用那天，哪家銀行也跟著接進來？",
@@ -2493,7 +2426,7 @@
     {
       "id": "c19r1a05",
       "scene_id": "c19r1a05",
-      "claim": "匯款服務又到六月十八日才開始；成立銀行，並不會讓所有功能一起出現。",
+      "claim": "匯款服務又到六月十八日才開始。",
       "claim_class": "事實",
       "claim_kind": "fact",
       "source_ids": [
@@ -2536,7 +2469,7 @@
       "limits": [
         "名詞只取必要動作，不唸網路名詞清單；S6服務表把自家匯款列2001-05是概括月欄，精確開始日以此timeline/S2為準。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R6僅保留新匯款啟用日期；刪除a03已說的功能分日開放概括。",
       "visual_prompt": "Wide shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, gentle light from the left.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
@@ -2748,139 +2681,6 @@
       ],
       "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
       "visual_prompt": "Medium shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, muted window light on the object.",
-      "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
-      "independent_source_review": "PENDING_OTHER_REVIEWER",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "c19r1a10",
-      "scene_id": "c19r1a10",
-      "claim": "更麻煩的是，接通了資料，不等於客人知道，自己手裡那張卡能在這裡用。",
-      "claim_class": "編輯連接",
-      "claim_kind": "editorial_link",
-      "source_ids": [
-        "S6",
-        "S8"
-      ],
-      "research_claim_ids": [
-        "R14",
-        "R15",
-        "R19"
-      ],
-      "quote_ids": [
-        "R14-Q1",
-        "R14-Q2",
-        "R14-Q3",
-        "R15-Q1",
-        "R15-Q2",
-        "R19-Q1",
-        "R19-Q2",
-        "R14-Q4"
-      ],
-      "source_evidence": [
-        {
-          "id": "R14-Q1",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 アイワイバンク銀行との提携の特長",
-          "original_quote": "当社 ATM はすべて各提携銀行との共同出張所",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "5c564336126526a2a149d4945a5442bb38b04767cfdadf159b5a8b35627ec101"
-        },
-        {
-          "id": "R14-Q2",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 同頁caption",
-          "original_quote": "提携銀行の看板を掲出",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "56e1dc5281068ddd1f16b78c144693850f6d990a4683234cc7ec91c949cdff3a"
-        },
-        {
-          "id": "R14-Q3",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 同頁caption",
-          "original_quote": "ATM 画面・レシート表示は提携銀行ごとの仕様",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "3f9615418d540e2dc9b1e3d4594322346d4c7f0b8adcc33a7d9e8a4a68b1eebc"
-        },
-        {
-          "id": "R15-Q1",
-          "research_claim_id": "R15",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF15／印13 ATM利用促進 第1段",
-          "original_quote": "サービス内容に関するパンフレットやポスター等を掲出するとともに、ＩＹグループと連携しＡＴＭの利用促進に向けたさまざまな広告宣伝活動を行っています。",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "cc823996542e7be14814a86c7161e07a23eb95eba1abb693a32bd46e6ebccd75"
-        },
-        {
-          "id": "R15-Q2",
-          "research_claim_id": "R15",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF15／印13 照片上方正文",
-          "original_quote": "提携金融機関各社にも、利用促進用ティッシュやポスター等を作成いただき、支店にて配布、掲示していただく等ご協力をいただいております。",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "db6bf9eedb9635844ea435d4d364df01ad166fdaa3c3896e52c73fbfd5b2ab27"
-        },
-        {
-          "id": "R19-Q1",
-          "research_claim_id": "R19",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF13／印11 服務表註",
-          "original_quote": "金融機関によってご利用時間・手数料等が異なります。",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "1ee8e46387fccbe5e359f3070daf1db83e7bd7f71c93d2e2417f4c117a3e6541"
-        },
-        {
-          "id": "R19-Q2",
-          "research_claim_id": "R19",
-          "source_id": "S8",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
-          "raw_sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
-          "locator": "PDF26／印24 右欄 ATMの利用状況 首段",
-          "original_quote": "他金融機関のキャッシュカード等の取扱業務、利用可能時間、手数料等は、それぞれの提携金融機関により異なっております",
-          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
-          "quote_found_in_raw_derived_text_whitespace_normalized": true,
-          "quote_sha256": "a385870dcc6fce2ce77587b85b3d2a9e0542a26467e79675bb8960d85b541f70"
-        },
-        {
-          "id": "R14-Q4",
-          "research_claim_id": "R14",
-          "source_id": "S6",
-          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
-          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
-          "locator": "PDF14／印12 ATMの代替／効果的な活用",
-          "original_quote": "業務のアウトソーシングによる効率的な事業展開へ",
-          "quote_sha256": "3f82d8823fabe29a8a4abb1a93ea56534f22c6392978dc051f72efa405859995",
-          "scope": "Company explanation of ATM operation outsourcing; no individual negotiation or savings amount established."
-        }
-      ],
-      "limits": [
-        "規格由來源證實，不能畫未核實真實UI/商標；不保證所有後來卡種畫面完全相同；不推隱私心理。",
-        "不編某位行員遞面紙的真實個案；不設計原文沒有的宣傳文案；不可自行聲稱廣告產生某單一因果效果。",
-        "沒有為任何指定卡當下成功背書；銀行核准、正常有鈔是交易必要前提，不是原件記錄的某一筆成功。"
-      ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
-      "visual_prompt": "Medium shot inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, soft light from a side window.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
@@ -3667,7 +3467,7 @@
     {
       "id": "c19r1a20",
       "scene_id": "c19r1a20",
-      "claim": "原本走進銀行的人，也能在分行看到新入口；這些宣傳，讓新機器有人用了嗎？",
+      "claim": "那麼，公司報告裡，不同批次新設機器的使用次數，成長有什麼差別？",
       "claim_class": "旁白疑問",
       "claim_kind": "question",
       "source_ids": [
@@ -3724,7 +3524,7 @@
         "不編某位行員遞面紙的真實個案；不設計原文沒有的宣傳文案；不可自行聲稱廣告產生某單一因果效果。",
         "歸屬公司解釋，不當隨機實驗證明廣告效果；圖涵蓋入金/出金/匯款、不含餘額查詢；不從圖目測捏精確增長倍數。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R6改問公司報告記錄的不同設置批次使用次數成長；a22/a33分別給2002年2月與開業初期2001年6月機器群。沒有詢問或宣稱宣傳的獨立因果效果。",
       "visual_prompt": "Medium close-up at a plain bank branch entrance, an anonymous visitor looking at a blank poster on a simple notice board, mild overhead light.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
@@ -6335,7 +6135,7 @@
     {
       "id": "c19r1t17",
       "scene_id": "c19r1t17",
-      "claim": "收入來自合作，支出卻不只買機器；別人想把這張網當備援，出問題又由誰接手？",
+      "claim": "如果別人想把這張網當備援，出問題又由誰接手？",
       "claim_class": "旁白疑問",
       "claim_kind": "question",
       "source_ids": [
@@ -6473,7 +6273,7 @@
         "不自創每台庫存額、現金車趟數、路線或成本函數；不能把資金成本寫成相同金額損失。",
         "85294與9003的數值必須連同表格列/2010欄讀；兩數相減不是單機或公司淨利；不是2026費率；不換算每筆消費者費。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R8僅保留備援/問題由誰接手的新問句；如果明示假設，不聲稱任何銀行已形成此意圖。刪去已述合作收入/營運支出的前半句。",
       "visual_prompt": "Medium close-up inside a plain shop, an anonymous maintenance worker holding a blank checklist beside a closed unbranded terminal, mild overhead light.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",
@@ -7116,7 +6916,7 @@
     {
       "id": "c19r1n09",
       "scene_id": "c19r1n09",
-      "claim": "補鈔是維持提款的工作，卻也會占用機器；那麼，乾脆一次裝很多不就好了？",
+      "claim": "那麼，乾脆一次裝很多鈔票，不就好了？",
       "claim_class": "旁白疑問",
       "claim_kind": "question",
       "source_ids": [
@@ -7173,7 +6973,7 @@
         "無逐台分析算法/排程規則；不要推現代AI倒寫2010；來源目的不等於保證永不停機。",
         "不自創每台庫存額、現金車趟數、路線或成本函數；不能把資金成本寫成相同金額損失。"
       ],
-      "author_context": "逐句分類為研究原件支持、編輯連接、旁白疑問/反應或明示假設；不把匿名示意當真實交易。",
+      "author_context": "R6只留下增加裝鈔量的新問題；刪去n08已說裝鈔補鈔可能暫停服務的重述。",
       "visual_prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft interior light from the right.",
       "visual_scope": "Anonymous concept only; blank signs/cards/receipts and nonfunctional shapes. No logo, named likeness or usable interface.",
       "independent_source_review": "PENDING_OTHER_REVIEWER",

@@ -1,4 +1,4 @@
-# C19 R5｜零售集團把一個入口接成網
+# C19 R8｜零售集團把一個入口接成網
 
 狀態：HOLD_PENDING_INDEPENDENT_SOURCE_AND_FRESH_READERS。新slug story-everyday-seven-bank-c19-remake-20261025；video無series重綁定。來源研究由同一作者重用，後續SOURCE必須另派，沒有自核批准。
 
@@ -24,11 +24,11 @@
 
 ## 紙面容量與尚未量測
 
-全文 3257 native spokenUnits（coldopen 168，有聲CTA 59）；目標13分鐘、約3500全篇單位為規劃。以4–5 units/s純算術約651.4–814.3秒；不是TTS或成片時長。官方實聲口徑含coldopen及有聲CTA，只排另外加入的頻道bookends。actual_seconds=null、actual_duration_verified=false。沒有放慢、長停頓、純recap或重複數字補時。
+全文 3150 native spokenUnits（coldopen 168，有聲CTA 59）；目標13分鐘、約3500全篇單位為規劃。以4–5 units/s純算術約630.0–787.5秒；不是TTS或成片時長。官方實聲口徑含coldopen及有聲CTA，只排另外加入的頻道bookends。actual_seconds=null、actual_duration_verified=false。沒有放慢、長停頓、純recap或重複數字補時。
 
 ## 同圖與畫面規格
 
-英文匿名人物/場景、無品牌人名logo可讀字；不畫真實可操作UI、ATM廠牌、現金車路線或鈔票匣路由。look唯一{preset:cute-mystery}，image-01、stills；112 shot+1 native outro，正文插圖100%、無連續卡。開場h05/a18共用分行員工持中性面紙包、h06/n10共用現鈔管理者與關閉容器；same prompt+camera只是計畫，實圖尚未存在。完整原生Stage.imageKey純本地重算與正式payoff first/真cache guard/兩端judge/裁切後SHA待驗在image-reuse-plan.json。
+英文匿名人物/場景、無品牌人名logo可讀字；不畫真實可操作UI、ATM廠牌、現金車路線或鈔票匣路由。look唯一{preset:cute-mystery}，image-01、stills；110 shot+1 native outro，正文插圖100%、無連續卡。開場h05/a18共用分行員工持中性面紙包、h06/n10共用現鈔管理者與關閉容器；same prompt+camera只是計畫，實圖尚未存在。完整原生Stage.imageKey純本地重算與正式payoff first/真cache guard/兩端judge/裁切後SHA待驗在image-reuse-plan.json。
 
 ## 原件邊界
 

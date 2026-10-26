@@ -1,10 +1,10 @@
-# C19 R5 製作交接
+# C19 R8 製作交接
 
 本檔僅recipe；paid/provider/backend/Git均0。video無series欄，context的series.json僅供普通不可變字典及企劃使用。正常prepare-runtime.mjs c19初始化到/workspace/work/brand-story-20261025/c19-submission-root，media base /workspace/work/brand-story-20261025/media；只跑免費lint，不跑聲音/圖片/審圖/組片。
 
 ## 中文
 
-voice整個物件逐字採C06 Sulafat設定（沒有複製別集字典）；本集字典透過initializeStoryLexicon建立不可變snapshot。13分鐘目標，全文3257 native units，尚無實聲，不能把字量當通過。繁中燒錄+CC；5秒頻道片頭在coldopen後，21秒正式v4片尾在有聲CTA後。所有媒體尚未辨識/讀回。
+voice整個物件逐字採C06 Sulafat設定（沒有複製別集字典）；本集字典透過initializeStoryLexicon建立不可變snapshot。13分鐘目標，全文3150 native units，尚無實聲，不能把字量當通過。繁中燒錄+CC；5秒頻道片頭在coldopen後，21秒正式v4片尾在有聲CTA後。所有媒體尚未辨識/讀回。
 
 ## 兩組同圖
 

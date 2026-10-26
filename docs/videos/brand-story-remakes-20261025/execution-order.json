@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T03:38:55.360630+00:00",
+  "updated_at": "2026-10-26T05:46:57.936134+00:00",
   "user_direction": "從C03開始重製",
   "current_priority": "C03",
   "order": [
@@ -130,18 +130,56 @@
       "episode": 19,
       "original_slug": "story-everyday-seven-bank-c19",
       "preferred_revision": "story-everyday-seven-bank-c19",
-      "status": "R5_source_delta_PASS_native5_pending",
-      "research": "c19/research-original.md"
+      "status": "source_native_and_eight_language_text_PASS_media_held",
+      "research": "c19/research-original.md",
+      "remake_slug": "story-everyday-seven-bank-c19-remake-20261025",
+      "handoff": "c19/production-entry.md",
+      "current_preparation": "c19/preparation-completion-r8.json",
+      "text_preparation": "c19/i18n/preparation-status.json",
+      "backend_language_selection_applied": false,
+      "branding_required": "branding-pr1860/required-branding.json"
     },
     {
       "episode": 20,
       "original_slug": "story-everyday-zippo-c20-short-v8",
       "preferred_revision": "story-everyday-zippo-c20-short-v8",
-      "status": "R1_source_PASS_native1_HOLD_R2_author_in_progress",
-      "research": "c20/research-original.md"
+      "status": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE5_HOLD",
+      "research": "c20/research-original.md",
+      "current_source": "c20/video.json",
+      "source_review": "c20/reviews/source-r5-independent.json"
     }
   ],
-  "non_c_subjects": "Retained in the original queue; no new episode is invented for gaps in C numbering.",
+  "non_c_subjects": [
+    {
+      "id": "seiko",
+      "status": "R4_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE4_PENDING",
+      "source": "seiko/video.json",
+      "source_review": "seiko/reviews/source-r4-independent.json"
+    },
+    {
+      "id": "garmin",
+      "status": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+      "source": "garmin/video.json",
+      "source_review": "garmin/reviews/source-r2-independent.json"
+    },
+    {
+      "id": "dyson",
+      "status": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+      "source": "dyson/video.json",
+      "source_review": "dyson/reviews/source-r2-independent.json"
+    },
+    {
+      "id": "doraemon",
+      "status": "R2_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE1_PENDING",
+      "source": "doraemon/video.json",
+      "source_review": "doraemon/reviews/source-r2-independent.json"
+    },
+    {
+      "id": "rolling-suitcase",
+      "status": "R1_WRITTEN_VISUAL_HOLD_R2_PROMPT_CORRECTION_IN_PROGRESS_NO_NATIVE_READ",
+      "source": "rolling-suitcase/video.json"
+    }
+  ],
   "originals_preserved": true,
   "paid_calls": 0,
   "production_mode": "fresh_remake_from_c03",

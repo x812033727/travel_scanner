@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T03:38:55.359656+00:00",
-  "state": "eleven_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
+  "updated_at": "2026-10-26T05:46:57.936134+00:00",
+  "state": "twelve_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -9,8 +9,8 @@
     "unuploaded_rows": 19,
     "subjects": 18,
     "first_batch_subjects": 3,
-    "remaining_subjects": 7,
-    "prepared_subjects": 11
+    "remaining_subjects": 6,
+    "prepared_subjects": 12
   },
   "projects": [
     {
@@ -668,16 +668,78 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "c19",
+      "slug": "story-everyday-seven-bank-c19-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "source_receipt": "c19/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c19/verify-1.md",
+      "narrative_receipt": "c19/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "dfdbcda423a4669cc40a557914da5fa272faa6a62c7bbb5861e0e898d52a6c49",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_toc",
+            "no_recap",
+            "opening_hooks"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c19/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "82d19374c8faee808fb52f2181a04a976fe5be0721d3461fcb33e52516b453c1",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T04:40:50.216Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "c19/production-entry.md",
+      "text_translations": "c19/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 904,
+      "preflight": "c19/preflight-inputs.json",
+      "clean_master_recipe": "c19/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c19/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "c19/preparation-completion-r8.json"
     }
   ],
   "paid_requests": 0,
   "new_media_files": 0,
   "original_sources_preserved": {
-    "checked_at": "2026-10-26T02:40:39.782646+00:00",
+    "checked_at": "2026-10-26T05:46:57.936134+00:00",
     "checked_files": 53,
-    "changed_original_files": 0,
+    "changed_original_files": [],
     "status": "PASS",
-    "scope": "original source files only; not media QA"
+    "scope": "Original source files only; not media QA"
   },
   "production_hold": "production-hold.json",
   "verification": {
@@ -694,7 +756,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "git_index_json_files": 5005
+      "git_index_json_files": 5836
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -842,6 +904,17 @@
         "locales": 8,
         "actual_audio": false,
         "paid_calls": 0
+      },
+      {
+        "id": "c19",
+        "receipt": "c19/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+        "lint_errors": 0,
+        "lint_warnings": 12,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
       }
     ],
     "whitespace": {
@@ -856,8 +929,8 @@
     },
     "latest_index_validation": {
       "status": "PASS",
-      "text_files": 6175,
-      "staged_files": 270,
+      "text_files": 7154,
+      "staged_files": 1001,
       "scope": "Batch/task only; all indexed UTF8/JSON/scope/credential/binary scans pass."
     },
     "required_assembly_guard": {
@@ -876,7 +949,7 @@
     "Accepted actual illustrations including one actual identical asset per opening/payoff pair, render, measured music, formal bookends and burned zh-TW/CC.",
     "Actual full-film decode QA, current owner final review and upload package.",
     "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
-    "C19 R5 source/fresh-native5 pending; C20 R2 is being restructured after R1 source PASS/native HOLD. Non-C primary research and authorship continue; 13-minute material-capacity risks remain explicit."
+    "C20, Seiko, Garmin, Dyson and Doraemon current source/written-visual PASS; actual native results and pending panels are recorded individually in other_drafts. Rolling-suitcase R1 written-visual HOLD has one prompt action-direction correction in progress. No source PASS substitutes for narrative, owner, actual duration or media approval."
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -937,7 +1010,7 @@
   "translation_text_preparation": {
     "receipt": null,
     "locales": 8,
-    "lines": 9544,
+    "lines": 10448,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -996,10 +1069,15 @@
         "id": "c15",
         "receipt": "c15/i18n/preparation-status.json",
         "lines": 632
+      },
+      {
+        "id": "c19",
+        "receipt": "c19/i18n/preparation-status.json",
+        "lines": 904
       }
     ],
-    "prepared_projects": 11,
-    "scope": "All eleven current frozen source-verified/native-PASS projects; exact approved visual adoptions and explicit semantic source-rebind chains. Historical baselines and unreviewed active drafts excluded."
+    "prepared_projects": 12,
+    "scope": "All twelve current source-verified/native-merged-PASS projects. Untimed text only; historical baselines and unreviewed drafts excluded."
   },
   "latest_user_direction": "要加片頭加片尾，可以參考PR1860；做完繼續下一個，預設八語、不需例行確認",
   "continuation_in_progress": {
@@ -1014,13 +1092,13 @@
     "c11": "source_native_and_eight_language_text_PASS_media_held",
     "c14": "source_native_and_eight_language_text_PASS_media_held",
     "c15": "source_native_and_eight_language_text_PASS_media_held",
-    "c19": "R5_SOURCE_DELTA_PASS_FRESH_NATIVE5_PENDING",
-    "c20": "R1_SOURCE_PASS_NATIVE1_HOLD_R2_AUTHOR_RESTRUCTURING",
-    "seiko": "PRIMARY_RESEARCH_COMPLETE_R1_AUTHOR_IN_PROGRESS",
-    "garmin": "PRIMARY_RESEARCH_COMPLETE_AWAITING_AUTHOR",
-    "dyson": "PRIMARY_RESEARCH_IN_PROGRESS",
-    "rolling_suitcase": "PRIMARY_RESEARCH_IN_PROGRESS",
-    "doraemon": "PRIMARY_RESEARCH_IN_PROGRESS"
+    "c19": "source_native_and_eight_language_text_PASS_media_held",
+    "c20": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE5_HOLD",
+    "seiko": "R4_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE4_PENDING",
+    "garmin": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+    "dyson": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+    "rolling_suitcase": "R1_WRITTEN_VISUAL_HOLD_R2_PROMPT_CORRECTION_IN_PROGRESS_NO_NATIVE_READ",
+    "doraemon": "R2_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE1_PENDING"
   },
   "narration_size_planning": "narration-size-precheck.json",
   "new_media_files_scope": "Generated production story audio/images/music/film only. Two reused formal production bookends are separately recorded; public source research downloads are excluded.",
@@ -1079,30 +1157,122 @@
   },
   "other_drafts": [
     {
-      "id": "c19",
-      "checkpoint": "R5_SOURCE_DELTA_PASS_FRESH_NATIVE5_PENDING",
-      "active_work": "INDEPENDENT_NATIVE5_IN_PROGRESS",
-      "source_receipt": "c19/reviews/source-r5-independent.json",
-      "narrative_receipt": "c19/history/r4/reviews/narrative-r4.json",
-      "actual_native_panel": 4,
+      "id": "c20",
+      "state": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE5_HOLD",
+      "author_revision": 5,
+      "video_sha256": "c1c99df03c20b8fe945fcc8c29c2bf8a3392a3580067b6de62c5e560c3392cff",
+      "source_receipt": "c20/reviews/source-r5-independent.json",
+      "source_receipt_sha256": "e80677e122b7a8fa365137fc6d68eabaab5635f848853f1c8c9c6cc1951ad426",
+      "native_fact_check": "c20/verify-1.md",
+      "actual_completed_native_panels": 5,
+      "prepared_next_native_panel": null,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
       "media_qa": false,
-      "video_sha256": "66195f39be280501c6b6af9e1873fdb58894832a8392a96669c45b6ae77c4fee",
-      "historical_receipts_do_not_apply_to_r2": true,
-      "historical_receipts_do_not_apply_to_r5": false,
-      "native_fact_check": "c19/verify-1.md",
-      "previous_native_only": "c19/history/r4/reviews/narrative-r4.json"
+      "final_approval": false,
+      "target_minutes": 13,
+      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
+      "narrative_receipt": "c20/reviews/narrative-r5.json",
+      "narrative_receipt_sha256": "b92f83a1f76ee5dba8deb48aef084c313e637f85bf9c15c21520d9bbd80c88b4",
+      "native_merged": "HOLD",
+      "native_merged_failed": [
+        "no_recap"
+      ]
     },
     {
-      "id": "c20",
-      "state": "R1_SOURCE_PASS_NATIVE1_HOLD_R2_AUTHOR_IN_PROGRESS",
-      "research": "c20/research-original.md",
-      "old_files_preserved": 68,
+      "id": "seiko",
+      "state": "R4_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE4_PENDING",
+      "author_revision": 4,
+      "video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "source_receipt": "seiko/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "e29f28a7f1b607d0a7ee84ac3b9837eeba33385e70b4ec8c61dca69c99791925",
+      "native_fact_check": "seiko/verify-1.md",
+      "actual_completed_native_panels": 3,
+      "prepared_next_native_panel": 4,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
       "media_qa": false,
-      "frozen_r1": "c20/history/r1/author-freeze-r1.json",
-      "source_receipt": "c20/history/r1/reviews/source-r1-independent.json",
-      "narrative_receipt": "c20/history/r1/reviews/narrative-r1.json",
-      "actual_native_panel": 1,
-      "active_r2_not_checkpointed": true
+      "final_approval": false,
+      "target_minutes": 13,
+      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
+      "previous_native_receipt": "seiko/history/r3/reviews/narrative-r3.json"
+    },
+    {
+      "id": "garmin",
+      "state": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+      "author_revision": 2,
+      "video_sha256": "04431e072927ff0741086673c3390bb74515445a52f7e8b5c984a976d729ac6d",
+      "source_receipt": "garmin/reviews/source-r2-independent.json",
+      "source_receipt_sha256": "ac565ffb5d81410f137cca2743a0c5e26e7da810533f0df73a979218b69cd3d2",
+      "native_fact_check": "garmin/verify-1.md",
+      "actual_completed_native_panels": 1,
+      "prepared_next_native_panel": null,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "target_minutes": 13,
+      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
+      "narrative_receipt": "garmin/reviews/narrative-r1.json",
+      "narrative_receipt_sha256": "5c00d08f80cfb0fdafea5df8b6976145be1eecd9cabc06a45517322b7486b818",
+      "native_merged": "HOLD",
+      "native_merged_failed": [
+        "scene_first",
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "id": "dyson",
+      "state": "R2_SOURCE_WRITTEN_VISUAL_PASS_NATIVE1_HOLD",
+      "author_revision": 2,
+      "video_sha256": "7d4b685214e01fe35c8bc363e49e66573a62823da9b3a884f2d634eff7e6250a",
+      "source_receipt": "dyson/reviews/source-r2-independent.json",
+      "source_receipt_sha256": "c9ffcb5c17e133ba40ffb5b754fcd43e96cd16f5e04340d9ce2ca50b75626dd8",
+      "native_fact_check": "dyson/verify-1.md",
+      "actual_completed_native_panels": 1,
+      "prepared_next_native_panel": null,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "target_minutes": 13,
+      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS.",
+      "narrative_receipt": "dyson/reviews/narrative-r1.json",
+      "narrative_receipt_sha256": "64eafebb22583fc40973810c29bbd1cd24ca95badb30e8f6010184b0d65d04ed",
+      "native_merged": "HOLD",
+      "native_merged_failed": [
+        "scene_first",
+        "no_spoiler",
+        "one_line",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "id": "doraemon",
+      "state": "R2_SOURCE_WRITTEN_VISUAL_PASS_FRESH_NATIVE1_PENDING",
+      "author_revision": 2,
+      "video_sha256": "aaa7b3a656501a378f8a3630a3e3a103d826afd29d240fab53f6ab0cd7198ad7",
+      "source_receipt": "doraemon/reviews/source-r2-independent.json",
+      "source_receipt_sha256": "8ff2cb3e90dc7d7d97773f712e071c414c132b00c2898f8f252c3cc0259348ab",
+      "native_fact_check": "doraemon/verify-1.md",
+      "actual_completed_native_panels": 0,
+      "prepared_next_native_panel": 1,
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "target_minutes": 13,
+      "material_capacity_risk": "Actual native TTS body duration is unmeasured; paper estimates do not establish PASS."
     }
   ],
   "narration_capacity_research": {

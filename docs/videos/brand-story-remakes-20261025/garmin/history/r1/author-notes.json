@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "garmin-r1",
+  "status": "HOLD_PENDING_SOURCE_WRITTEN_VISUAL_FRESH_NATIVE",
+  "counts": {
+    "lines": 158,
+    "scenes": 152,
+    "shots": 151,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 7,
+    "loops": 18
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 3335,
+    "coldopen": 184,
+    "voiced_CTA": 52,
+    "target": 3500,
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_at_4_to_5_units_per_second": [
+      667,
+      833.75
+    ],
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "extra_bookends_seconds": 26,
+    "body_includes_coldopen_and_voiced_CTA": true
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "research_sha256": {
+    "research-original.md": "4ef55d45d582152d9e21077f093bacfbd1e38b3d753e62fe19224c6220837206",
+    "research-original.claims.json": "9dd303580d2de5c75082e1450e1ba7f0165fe2084263fad22091edbbeaa8ee35",
+    "original-preservation.json": "d7848567a1182efecf63c387216b60c4a1ed49d041813039d19e19ad240ea5f7"
+  },
+  "author_new_anchors": 14,
+  "engineering_repost_used": false,
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "actual_native_round_count": 0,
+  "owner_approvals_created": false,
+  "generated_story_media": 0,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "image_reuse_plan_sha256": "91374cb3528da4c2b51e111810eb3f972b9382a50bb83e10fa753e771d9f23fa",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 137 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"wrist\" is in 128 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"device\" is in 119 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[84] (gr1a03)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[93] (gr1a12)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[111] (gr1d04)",
+        "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[126] (gr1d20)",
+        "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 15.9 minutes; the target is 12-14"
+      }
+    ],
+    "receipt": "native-author-lint-r1.json",
+    "receipt_sha256": "a8883283c14f5ecb395fc63a8d78852637222bd1bd17c755ab47b0e235014556",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "canonical_runtime_script_sha256": "1275a5b2519cb9157ca13360ad566857c63c95dd8f8a4c2375803957498e9c41"
+  },
+  "frozen_at_utc": "2026-10-26T04:26:06.762877+00:00",
+  "reproducible_build_receipt": "/workspace/work/brand-story-20261025/garmin-audit/author-r1/reproducible-build-r1.json",
+  "author_caveats": [
+    "Actual source/writtenvisual/freshnative all pending. No engineering repost included.",
+    "Whole3335units is approximately3500planning, not measured13minutes. Nativeestimate15.9min is a soft risk; actualbodyunknown. Do not slow,padorclaim13minPASS.",
+    "Eightsoft include recurringcoreobjectterms andfour10–12s still estimates. No actualclipsorframeholds rendered.",
+    "No paidmodel/provider/backend/owner/Gitmutation."
+  ]
+}

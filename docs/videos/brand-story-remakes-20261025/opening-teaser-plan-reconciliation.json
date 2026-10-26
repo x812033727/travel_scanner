@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-26T02:59:23.271Z",
-  "scope": "Current 11 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
+  "checked_at": "2026-10-26T04:58:56.827Z",
+  "scope": "Current 12 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
   "frozen_prior_audit": {
     "path": "opening-teaser-image-audit.json",
     "sha256": "4ed8bdb3afb401bf6cb3c773309b729dc8e8216110b292887fa98b853162fbfd"
@@ -662,10 +662,71 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "c19",
+      "slug": "story-everyday-seven-bank-c19-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_PASS_eight_language_translation_in_progress_media_held",
+      "video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "source_receipt": "c19/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c19/verify-1.md",
+      "narrative_receipt": "c19/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "dfdbcda423a4669cc40a557914da5fa272faa6a62c7bbb5861e0e898d52a6c49",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_toc",
+            "no_recap",
+            "opening_hooks"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c19/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "82d19374c8faee808fb52f2181a04a976fe5be0721d3461fcb33e52516b453c1",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T04:40:50.216Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "c19/production-entry.md",
+      "text_translations": "c19/i18n/preparation-status.json",
+      "text_translation_preparation": "TRANSLATION_AUTHOR_IN_PROGRESS",
+      "eight_language_text_entries": 0,
+      "preflight": "c19/preflight-inputs.json",
+      "clean_master_recipe": "c19/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c19/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     }
   ],
-  "episodes": 11,
-  "event_teasers": 20,
+  "episodes": 12,
+  "event_teasers": 22,
   "current_missing_written_plans": 0,
   "actual_same_asset_verified": false,
   "paid_requests": 0
