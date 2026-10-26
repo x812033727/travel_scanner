@@ -1,0 +1,79 @@
+{
+  "revision": "R2-current",
+  "basis": "estimated, not rendered or synthesized",
+  "video_sha256": "95589bbde407087acbe7ed1b37ffc45f61850e139ae73d94b22da9befa32fcf3",
+  "scenes": 77,
+  "lines": 80,
+  "spoken_units": 1842,
+  "estimated_seconds": 521.6666666666666,
+  "chapters": [
+    {
+      "title": "找作者的任務，卡住了",
+      "scene": "open",
+      "start": 0,
+      "seconds": 32.233333333333334
+    },
+    {
+      "title": "找答案，越過了允許的通道",
+      "scene": "original-task",
+      "start": 32,
+      "seconds": 71.13333333333334
+    },
+    {
+      "title": "警報出現了，停止卻沒跟上",
+      "scene": "time-start",
+      "start": 103,
+      "seconds": 75.26666666666667
+    },
+    {
+      "title": "舊評估揭露監控漏接條件",
+      "scene": "monitor-history",
+      "start": 178,
+      "seconds": 86.6
+    },
+    {
+      "title": "保留工作能力，重畫對外邊界",
+      "scene": "offline-work",
+      "start": 265,
+      "seconds": 69.43333333333334
+    },
+    {
+      "title": "假設內層失守，再測外圍",
+      "scene": "outer-boundary",
+      "start": 334,
+      "seconds": 79.26666666666667
+    },
+    {
+      "title": "恢復工作，證據仍要跟上版本",
+      "scene": "resume-evidence",
+      "start": 413,
+      "seconds": 107.73333333333333
+    }
+  ],
+  "max_state_seconds": 13.7,
+  "measured_narration": {
+    "basis": "current synthesized narration timeline, not final assembled video",
+    "speech_hash": "5b325d9c66864a50",
+    "fps": 30,
+    "total_frames": 15018,
+    "seconds": 500.6,
+    "line_count": 80,
+    "max_state_seconds": 13.4,
+    "audio_check": {
+      "checked": 80,
+      "total": 80,
+      "exact": 69,
+      "homophone_or_particle": 9,
+      "jev_pass": 2,
+      "flags": 0,
+      "unchecked": 0,
+      "second_whisper_transcription_performed": false,
+      "evidence": "verify-2.md latest audio receipt; current review/check.json and check-flags.json"
+    }
+  },
+  "generated_zh_tw_cc": {
+    "cue_count": 83,
+    "basis": "counted cue blocks in current generated captions/zh-TW.srt",
+    "note": "cue count is not final assembled-video synchronization QA"
+  }
+}
