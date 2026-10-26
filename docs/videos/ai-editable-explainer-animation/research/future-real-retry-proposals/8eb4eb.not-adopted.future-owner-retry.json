@@ -1,0 +1,88 @@
+{
+  "artifact_kind": "NOT_ADOPTED_FUTURE_REAL_OWNER_RETRY_TEXT_FRAGMENT",
+  "status": "NOT ADOPTED — requires genuine supported owner fresh retry + independent current review",
+  "not_adopted": true,
+  "enabled": false,
+  "requires_genuine_supported_owner_fresh_retry": true,
+  "requires_independent_current_review": true,
+  "not_a_canonical_translation_or_import_payload": true,
+  "locale": "th",
+  "line_id": "8eb4eb",
+  "authored_at_utc": "2026-10-26T14:46:04.055505+00:00",
+  "author": "/root/pdf_author_ko_th",
+  "additional_wording_ideas": "/root/pdf_author_ko_th/thai_future_wording; author assistance only, not independent acceptance",
+  "source_binding": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "scene": "revise-lock-prompt",
+    "original_chinese": "再補一句，保留配色、字體和片段順序。",
+    "scene_context_read": {
+      "title": "可複製的要求",
+      "messages": [
+        {
+          "side": "right",
+          "name": "你的要求",
+          "text": "保留配色、字體和片段順序。"
+        }
+      ],
+      "key": "先限制這次修改的範圍"
+    }
+  },
+  "current_translation_binding": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+    "sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+    "current_thai_text_unchanged": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+    "current_source_hash": "8eb4ebe2e681"
+  },
+  "actual_prior_recognition_read": {
+    "primary_heard": "เพื่อว่าคงสี font และลำดับช่วงไว้",
+    "primary_noul": 0.09,
+    "second_heard": "เพิ่มว่า คงสีฟ้อน และลำดับช่วงไหว",
+    "second_noul": 0.23
+  },
+  "author_proposal": {
+    "proposed_fragment_for_future_review_only": "เพิ่มอีกประโยคว่า คงชุดสี แบบอักษร และลำดับของแต่ละช่วงไว้",
+    "meaning_to_preserve": [
+      "Add another sentence",
+      "Keep the color palette",
+      "Keep the font",
+      "Keep the order of the segments"
+    ],
+    "author_reason": "ชุดสี makes palette explicit. แบบอักษร replaces the font loanword with an ordinary Thai term. ลำดับของแต่ละช่วง retains the segment sequence rather than merely keeping the same segments.",
+    "remaining_uncertainty": "Additional words may clarify the instruction to a listener, but pronunciation and recognition of the whole line are untested."
+  },
+  "character_estimate_only": {
+    "actual_unicode_codepoints": 58,
+    "native_reword2_max_chars": 63,
+    "over_by": 0,
+    "method": "Python len(str): all Unicode code points, including every Thai vowel/tone mark, space and punctuation",
+    "not_measured_audio_fit": true
+  },
+  "native_budget_evidence": {
+    "boundary": "/workspace/work/ai-animation-01/author-review-boundaries/th.reword.round-2.2026-10-26T11-20-23-262Z.json",
+    "boundary_sha256": "aa3277287aebce2a56664d0446ad669ec7883a3bed902e79aec10de5eb4cf032",
+    "raw_native_answer": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/th-reword-round-2-author-review-2026-10-26T11-20-23-262Z.txt",
+    "raw_native_answer_sha256": "2879bc46763584425dc702ce272520b7056f2bdeb2fb19f7fecbafd057b25f00",
+    "source_of_budget": "actual rejected reword2 boundary, not an invented new cap"
+  },
+  "current_blocked_state": {
+    "actual_caps": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "voice_flag_unresolved": true,
+    "original_current_source_remains_unchanged": true,
+    "third_reword_not_authorized_or_performed": true
+  },
+  "future_use_limit": "Text preparation only. This is neither an enabled retry nor permission to reset/raise/rename/exceed the original exhausted native caps. Any genuine supported fresh owner retry must first establish its authorized current boundary and obtain independent current source review.",
+  "approvals": {
+    "independent_meaning_pass": false,
+    "audio_success_proven": false,
+    "audio_fit_approved": false,
+    "voice_approved": false,
+    "final_qa_approved": false,
+    "owner_retry_authorized_by_this_file": false
+  }
+}
