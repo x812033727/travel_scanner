@@ -4,3 +4,4 @@
 - lint 剩一個警告：估 11.2 分鐘（目標 12–14）。lint 的估計用的是舊語速；新 style 寫 4.5 字／秒，2,786 字加卡片停頓約 11–12 分鐘，等旁白量過再決定要不要補一段。
 - 主機上第一版 curio-s30 停在「成片已核准、未上架」，第二版用新 slug，不動第一版。
 - 2026-10-26 站主要求把第二版做完。原本的工作階段做到旁白在站上核准就停了，工作目錄不在這個容器；`review-files --dry-run` 只取得到 `audio/narration.m4a`，拿不回 tts 的逐句音檔與時間軸，所以重新跑 tts（旁白要站主重新核准），再畫插圖、送分鏡。大綱與稿子照站主 10-25 的指示記下核准。
+- 插圖第一輪 US$1.50，8 個鏡頭三張都沒過 judge。七個是「物件或手的特寫」（two-books、beacon-water-b、spill-b、collapse-b、same-letter、which-year 的手、gaochang-b 的特寫）：可愛畫風會把物件畫成小人頭、在手掌上長出臉。全部改成一個人物的中景、只做一個動作，玄奘統一寫成「shaven-headed pilgrim in a dusty grey robe」；wang-xiang 原本兩個人（跪著的那位）也改成只有烽火台官員一人。
