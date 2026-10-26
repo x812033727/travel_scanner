@@ -53,6 +53,6 @@ captions to get the same timeline.
 
 - Owner decision 2026-10-26: transcription requests that come back 502/504 are treated as possibly
   charged and sent again; checks run one language at a time.
-- Not done: language thumbnails (never attached by Codex; every locale keeps thumbnail.jpg).
+- Language thumbnails rendered again (zh-TW byte-identical to Codex's) and sent in a second package `31467486…` and batch `5c2a4b2e…` for approval.
 - Tooling idea, not done: `review-files` + a timeline rebuilt from captions could become a proper
   command for finishing a pipeline video whose work directory is gone.
