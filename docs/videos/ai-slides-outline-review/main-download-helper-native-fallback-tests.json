@@ -1,0 +1,139 @@
+{
+  "self_test": true,
+  "scope": "Exact existing fallback/current/full-hash/clip guard statements only; no ASR or readiness audit",
+  "cases": [
+    {
+      "name": "pt7x: native fallback line key with complete hashes/clip",
+      "accepted": true
+    },
+    {
+      "name": "pt7x: native legacy group key still supported with complete hashes/clip",
+      "accepted": true
+    },
+    {
+      "name": "pt7x: fallback line key alone cannot bypass missing full cache SHA",
+      "accepted": false,
+      "errors": [
+        "Native cache full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "pt7x: fallback line key cannot bypass wrong full cache SHA",
+      "accepted": false,
+      "errors": [
+        "Native cache full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "pt7x: fallback line key cannot bypass missing full timeline SHA",
+      "accepted": false,
+      "errors": [
+        "Timeline full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "pt7x: fallback line key cannot bypass an old clip16",
+      "accepted": false,
+      "errors": [
+        "Native currentAudioCheck has no transcript for this current WAV clip16"
+      ]
+    },
+    {
+      "name": "pt7x: complete hashes cannot bypass stale native cache key",
+      "accepted": false,
+      "errors": [
+        "Native takeCurrent is false: line/request key stale"
+      ]
+    },
+    {
+      "name": "q2hz: native fallback line key with complete hashes/clip",
+      "accepted": true
+    },
+    {
+      "name": "q2hz: native legacy group key still supported with complete hashes/clip",
+      "accepted": true
+    },
+    {
+      "name": "q2hz: fallback line key alone cannot bypass missing full cache SHA",
+      "accepted": false,
+      "errors": [
+        "Native cache full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "q2hz: fallback line key cannot bypass wrong full cache SHA",
+      "accepted": false,
+      "errors": [
+        "Native cache full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "q2hz: fallback line key cannot bypass missing full timeline SHA",
+      "accepted": false,
+      "errors": [
+        "Timeline full WAV SHA does not bind actual WAV"
+      ]
+    },
+    {
+      "name": "q2hz: fallback line key cannot bypass an old clip16",
+      "accepted": false,
+      "errors": [
+        "Native currentAudioCheck has no transcript for this current WAV clip16"
+      ]
+    },
+    {
+      "name": "q2hz: complete hashes cannot bypass stale native cache key",
+      "accepted": false,
+      "errors": [
+        "Native takeCurrent is false: line/request key stale"
+      ]
+    }
+  ],
+  "cases_passed": 14,
+  "output_prefix_checks_passed": 4,
+  "planned_requests": 103,
+  "planned_lines": 118,
+  "fallback": {
+    "request_id": "two-page-number-fields#0",
+    "bindings": [
+      {
+        "id": "pt7x",
+        "line_key": "7f7f7e994d6b34a8",
+        "request_key": "a43b14c0078ad4e0",
+        "actual_cache_key": "7f7f7e994d6b34a8",
+        "current_wav_sha256": "7dab46ca7e10894d79126fa1547365de64352a31e4f02f36948698aaf2ff9609",
+        "actual_cache_full_sha256": "7dab46ca7e10894d79126fa1547365de64352a31e4f02f36948698aaf2ff9609",
+        "native_takeCurrent": true
+      },
+      {
+        "id": "q2hz",
+        "line_key": "e6053f8d16636344",
+        "request_key": "a43b14c0078ad4e0",
+        "actual_cache_key": "e6053f8d16636344",
+        "current_wav_sha256": "33bd6973294149a2758a8d4701dc9fe6e5c23ca906a4eb4188d2ee63a5611f0f",
+        "actual_cache_full_sha256": "33bd6973294149a2758a8d4701dc9fe6e5c23ca906a4eb4188d2ee63a5611f0f",
+        "native_takeCurrent": true
+      }
+    ]
+  },
+  "native_tts_stage": {
+    "stage": "tts",
+    "at": "2026-10-25T22:27:14.234Z",
+    "requests": 103,
+    "synthesized": 103,
+    "fallbacks": [
+      "two-page-number-fields#0"
+    ],
+    "billable": 2942,
+    "voice": "Sulafat",
+    "voices": [
+      "gemini:Sulafat"
+    ]
+  },
+  "requests_are_not_http_call_count": true,
+  "original_and_current_binding_guard_sha256": "ef1ded97c05b943bf5725eb0518530d695064978e6c3ae1c2eea96ef531cb81b",
+  "writes": 0,
+  "paid_calls": 0,
+  "network_calls": 0,
+  "audit_executed": false
+}

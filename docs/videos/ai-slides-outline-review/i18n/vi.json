@@ -1,0 +1,515 @@
+{
+  "title": "Slide AI: duyệt dàn ý trước, từ PDF công khai đến 4 trang có nguồn",
+  "description": "Biến PDF công khai thành bài trình chiếu 4 trang: dàn ý cần quyết định gì trước khi tạo?\nDành cho người đi làm cần giao bài trình chiếu sửa được và truy lại nguồn được.\n\nVí dụ gốc làm cục bộ hoàn tất ngày 2026-10-25: yêu cầu của tác giả, nháp 2 trang, góp ý tập trung và các bước sửa được lưu trong cùng một lần tạo; đây không phải phản hồi của sản phẩm Notebook hay một lượt tương tác thật dừng chờ duyệt. Tin chính thức ngày 2026-10-19 chỉ làm bối cảnh quy trình; chưa đăng nhập hoặc thử sản phẩm.\n\nDữ liệu là thống kê năm 2025 trong chương kinh tế của Stanford 2026 AI Index. Số tiền theo phạm vi đầu tư Quid: tổng đầu tư doanh nghiệp đã gồm phần tư nhân, không cộng hai số; so sánh khu vực chỉ xét đầu tư AI tư nhân. 88% người trả lời tự báo cáo rằng tổ chức mình dùng AI trong ít nhất một nghiệp vụ; 70%/79% chưa đối chiếu được câu hỏi và mẫu số, chỉ để chú thích.\n\nTrong danh sách trích dẫn, trang 1 là tổng quan câu hỏi của tác giả; trang 2–4 ghi vị trí trong báo cáo gốc.\n\nPDF bàn giao gồm ảnh các trang; PPTX giữ văn bản và hình dạng gốc, đã mở lại kiểm tra cấu trúc, chưa kết xuất trực tiếp trong PowerPoint.\n\nLời nhắc đầy đủ có thể dùng lại:\nChỉ dùng PDF công khai tôi cung cấp để làm bài trình chiếu 4 trang cho đồng nghiệp. Mục tiêu khoảng 3 phút. Đưa dàn ý trước, chưa tạo các trang trình chiếu.\nMỗi trang chỉ trả lời một câu hỏi; liệt kê số liệu, năm dữ liệu và đơn vị. Ghi nhóm được khảo sát hoặc phạm vi thống kê, số trang in của báo cáo và thứ tự trang trong PDF. Tách tiền đầu tư và tỷ lệ sử dụng. Không cộng tổng với phần đã nằm trong tổng.\nNếu nguồn chưa khớp, ghi chờ xác minh, đừng chọn hộ tôi một số. Đợi tôi phản hồi toàn bộ sửa đổi trong một lượt rồi mới tạo bài 4 trang. Giao cùng tệp sửa được, PDF và danh sách trích dẫn từng trang. Số chưa xác minh chỉ để chú thích, không vẽ thành kết luận chắc chắn.\n\nPDF 4 trang / PPTX sửa được / nguồn từng trang và yêu cầu của tác giả: https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data",
+  "tags": [
+    "trình chiếu AI",
+    "Gemini Notebook",
+    "duyệt dàn ý",
+    "PDF sang slide",
+    "PPTX chỉnh sửa được",
+    "Stanford AI Index",
+    "nguồn bài trình chiếu",
+    "công cụ AI"
+  ],
+  "thumbnail": {
+    "tag": "Dàn ý slide AI",
+    "headline": "**Duyệt**\nrồi tạo",
+    "sub": "Dàn ý đến tệp sửa được"
+  },
+  "chapters": {
+    "four-page-local-output": "Từ báo cáo đến yêu cầu",
+    "local-authored-scope": "Tách số tiền và tỷ lệ dùng",
+    "reusable-full-prompt": "Đủ yêu cầu, nháp vẫn 2 trang",
+    "change-page-question": "Góp ý, giao việc cho 4 trang",
+    "citation-record-connects-pages": "Trang 2–4 về báo cáo gốc",
+    "review-position-connection": "Google: duyệt dàn ý rồi tạo"
+  },
+  "source_hashes": {
+    "chapters": {
+      "four-page-local-output": "51b700404134",
+      "local-authored-scope": "2f037e384517",
+      "reusable-full-prompt": "21247e14419c",
+      "change-page-question": "e51fbabb1e17",
+      "citation-record-connects-pages": "3ffbd57a7b4f",
+      "review-position-connection": "360e6cc6c21f"
+    },
+    "title": "b709596fa404",
+    "description": "cdd89bf774a8",
+    "tags": "724e8e4b7864",
+    "thumbnail": "487d403f652f"
+  },
+  "lines": {
+    "2622": {
+      "source_hash": "d8cc05f5bd45",
+      "text": "Dùng thứ tự trang PDF về trang gốc, rồi kiểm số hình, giá trị và đơn vị."
+    },
+    "tirg": {
+      "source_hash": "a525e97bd4be",
+      "text": "Ngày 25/10/2026, tôi mở báo cáo và viết yêu cầu làm bài trình chiếu."
+    },
+    "iihc": {
+      "source_hash": "d48a51ddb1fd",
+      "text": "Hai khoản đầu tư đặt cạnh nhau có cộng thẳng được không?"
+    },
+    "dgy5": {
+      "source_hash": "192758eb9527",
+      "text": "Chia nội dung dàn ý thế nào để mỗi trang có nhiệm vụ riêng?"
+    },
+    "dfj8": {
+      "source_hash": "14f59336a3a4",
+      "text": "Giao rồi, có sửa chữ và truy lại nguồn được không?"
+    },
+    "3vx9": {
+      "source_hash": "ebeb1c83c4ad",
+      "text": "Ngày 19/10, Gemini Notebook giới thiệu duyệt dàn ý trước khi tạo."
+    },
+    "7ya8": {
+      "source_hash": "d3273886b7af",
+      "text": "Để biết có cộng được không, tôi ghi phạm vi đầu tư vào hồ sơ nguồn trước."
+    },
+    "jyx8": {
+      "source_hash": "d9f95f2462d3",
+      "text": "Ví dụ gốc làm cục bộ này lấy ý từ thông báo Google; tôi chưa thử Notebook."
+    },
+    "sk7r": {
+      "source_hash": "b983d45cd5ee",
+      "text": "Đầu vào là chương kinh tế trong báo cáo AI Index của Stanford."
+    },
+    "45g3": {
+      "source_hash": "5913d5dd4ff9",
+      "text": "PDF công khai này có 60 trang; bài trình chiếu chỉ cần dữ liệu liên quan."
+    },
+    "fskd": {
+      "source_hash": "b22cb01cd908",
+      "text": "Tôi giao việc giúp đồng nghiệp hiểu đầu tư AI và việc tổ chức dùng AI."
+    },
+    "vvp9": {
+      "source_hash": "ea32ebdf79df",
+      "text": "Ghi người nghe và mục đích trước để biết cần giữ nội dung nào."
+    },
+    "k3s9": {
+      "source_hash": "971077fedfef",
+      "text": "Hồ sơ nguồn tách năm báo cáo và năm dữ liệu thành hai cột."
+    },
+    "immj": {
+      "source_hash": "1c42f7f91f82",
+      "text": "Báo cáo năm 2026, còn dữ liệu dùng lần này là năm 2025."
+    },
+    "p9da": {
+      "source_hash": "7c96629fb0cf",
+      "text": "Không tách, tiêu đề báo cáo mới có thể khiến người đọc tưởng dữ liệu cũ là khảo sát mới."
+    },
+    "8gv2": {
+      "source_hash": "bc1c315be28b",
+      "text": "Cùng nói về AI, nhưng số tiền đầu tư và tỷ lệ sử dụng có chung biểu đồ được không?"
+    },
+    "sxfi": {
+      "source_hash": "3dba5513987e",
+      "text": "Với số tiền, ghi khu vực, loại đầu tư và đơn vị đô la Mỹ."
+    },
+    "b4kb": {
+      "source_hash": "491281adb7b3",
+      "text": "Với tỷ lệ, ghi ai được hỏi và họ báo cáo việc sử dụng gì."
+    },
+    "rrvd": {
+      "source_hash": "1d67c66b92bb",
+      "text": "Chúng trả lời khác nhau, nên tôi ghi riêng hai loại chỉ số."
+    },
+    "ghds": {
+      "source_hash": "2ee258b8dfcf",
+      "text": "Hồ sơ nguồn còn giữ hai kiểu số trang, mỗi kiểu định vị khác nhau."
+    },
+    "pt7x": {
+      "source_hash": "3063293a5842",
+      "text": "Số trang in là số được ghi trên trang báo cáo."
+    },
+    "q2hz": {
+      "source_hash": "f4079d8b0691",
+      "text": "Thứ tự trang PDF là vị trí trong tệp, đếm từ trang đầu."
+    },
+    "5s9a": {
+      "source_hash": "c22bef5f9dc4",
+      "text": "Có cùng tệp, đồng nghiệp dùng thứ tự để về trang gốc."
+    },
+    "9c7v": {
+      "source_hash": "df2bd0f34193",
+      "text": "Trang gốc còn có số hình để tìm đúng biểu đồ trên trang đó."
+    },
+    "hpdz": {
+      "source_hash": "1506c94e198b",
+      "text": "Đưa các điều kiện này vào yêu cầu sao cho không chỉ nhận một đoạn tóm tắt?"
+    },
+    "g7uh": {
+      "source_hash": "8d9332880cfa",
+      "text": "Tôi gộp yêu cầu thành lời nhắc đầy đủ; bạn có thể sửa theo mẫu này."
+    },
+    "2ai4": {
+      "source_hash": "bc35fb6487db",
+      "text": "Chỉ dùng PDF công khai tôi cung cấp, làm 4 trang trình chiếu cho đồng nghiệp."
+    },
+    "zny3": {
+      "source_hash": "1c6b42d399cd",
+      "text": "Mục tiêu khoảng 3 phút."
+    },
+    "kh9k": {
+      "source_hash": "8dc4ac5ef8e9",
+      "text": "Đưa dàn ý trước, chưa tạo trang trình chiếu."
+    },
+    "zibg": {
+      "source_hash": "bf506d554fa0",
+      "text": "Mỗi trang chỉ trả lời một câu hỏi; liệt kê số liệu, năm dữ liệu và đơn vị."
+    },
+    "uqnr": {
+      "source_hash": "11e9cae44fbf",
+      "text": "Ghi nhóm được khảo sát hoặc phạm vi thống kê, số trang in và thứ tự trang PDF."
+    },
+    "r3y9": {
+      "source_hash": "9fd4f6ef7fd2",
+      "text": "Tách tiền đầu tư và tỷ lệ sử dụng."
+    },
+    "bd3z": {
+      "source_hash": "880f33fb3976",
+      "text": "Không cộng tổng với phần đã nằm trong tổng."
+    },
+    "y3nk": {
+      "source_hash": "1fe11e369d41",
+      "text": "Nguồn chưa khớp thì ghi chờ xác minh, đừng chọn hộ tôi một số."
+    },
+    "7g33": {
+      "source_hash": "29b4af0ab4eb",
+      "text": "Đợi tôi góp ý tất cả một lượt rồi mới tạo 4 trang."
+    },
+    "2knx": {
+      "source_hash": "48962be73c55",
+      "text": "Giao cùng tệp sửa được, PDF và danh sách nguồn từng trang."
+    },
+    "cht8": {
+      "source_hash": "022d8dda43e4",
+      "text": "Chỉ chú thích số chưa xác minh, đừng vẽ thành kết luận chắc chắn."
+    },
+    "nm8j": {
+      "source_hash": "be3b79d1219f",
+      "text": "Nếu dàn ý thiếu năm dữ liệu, bổ sung ở đâu?"
+    },
+    "9h68": {
+      "source_hash": "31540993d989",
+      "text": "Yêu cầu bổ sung ngay vào cột năm dữ liệu của trang đó."
+    },
+    "fx3e": {
+      "source_hash": "0e127639bc0e",
+      "text": "Yêu cầu đầy đủ thì dàn ý đầu tiên chắc đã dùng được chưa?"
+    },
+    "wy6f": {
+      "source_hash": "3c2fecc68920",
+      "text": "Nháp mẫu tôi viết chỉ 2 trang, chưa dàn thành slide."
+    },
+    "kwf8": {
+      "source_hash": "89d7d654529c",
+      "text": "Một trang là Tổng quan đầu tư và áp dụng AI, trang kia là Gộp thành một biểu đồ tổng quan."
+    },
+    "aces": {
+      "source_hash": "675f0f8efbb5",
+      "text": "Cả hai nhét cùng bộ số tiền, khu vực, tỷ lệ dùng và số chờ xác minh."
+    },
+    "gy4m": {
+      "source_hash": "4ab993e594db",
+      "text": "Có liệt kê nội dung, nhưng chưa giao mỗi trang một câu hỏi của người đọc."
+    },
+    "h58h": {
+      "source_hash": "d4596e33c2bc",
+      "text": "Nháp tôi tự viết và cả đợt yêu cầu sửa đều lưu trong hồ sơ ví dụ."
+    },
+    "z84y": {
+      "source_hash": "7dde88f5606d",
+      "text": "Các bước được lưu trong cùng lần tạo, không thực sự dừng chờ tôi phản hồi."
+    },
+    "yrg5": {
+      "source_hash": "1bcc0c0096d6",
+      "text": "Mỗi trang chưa có việc riêng, vậy cần sửa quyết định nào?"
+    },
+    "j4eq": {
+      "source_hash": "669bbb09ff50",
+      "text": "Đầu video hỏi chia trang ra sao; tôi thêm câu hỏi mỗi trang phải trả lời vào góp ý."
+    },
+    "kmts": {
+      "source_hash": "c40d11281804",
+      "text": "Chia trang theo yêu cầu, tách tiền đầu tư và tỷ lệ dùng thành câu hỏi riêng."
+    },
+    "vyp5": {
+      "source_hash": "b94671358dd6",
+      "text": "Không cộng đầu tư doanh nghiệp toàn cầu với đầu tư tư nhân đã nằm trong đó."
+    },
+    "jzkh": {
+      "source_hash": "f9abbb484b34",
+      "text": "Trang so các nước chỉ so vốn tư nhân, đừng gọi là tổng chi AI cả nước."
+    },
+    "nx2z": {
+      "source_hash": "88016cc8991d",
+      "text": "Trang dữ liệu giữ năm dữ liệu, đơn vị, nhóm được khảo sát hoặc phạm vi và hai kiểu số trang."
+    },
+    "b7sd": {
+      "source_hash": "cd8d2c0169f9",
+      "text": "Tỷ lệ AI tạo sinh chưa khớp: giữ chú thích hai chỗ ở nguồn."
+    },
+    "i8qv": {
+      "source_hash": "98e105f49094",
+      "text": "Cuối cùng, giao đủ thành phẩm và hồ sơ trích dẫn theo danh sách vừa nêu."
+    },
+    "8k94": {
+      "source_hash": "760af974b5da",
+      "text": "Góp ý cả đợt phải đổi chỗ nào mới được coi là sửa xong?"
+    },
+    "6frs": {
+      "source_hash": "5c70d14d1159",
+      "text": "Trang 1 tách câu hỏi thành đầu tư bao nhiêu tiền và bao nhiêu người báo dùng."
+    },
+    "esm2": {
+      "source_hash": "a78b1f92f767",
+      "text": "Số tiền gắn phạm vi đầu tư; tỷ lệ gắn người trả lời và tổ chức."
+    },
+    "x5tu": {
+      "source_hash": "61074802a302",
+      "text": "Trang 2 vẽ số tiền toàn cầu thành biểu đồ thể hiện quan hệ bao gồm."
+    },
+    "fpqu": {
+      "source_hash": "d35b50d6bb65",
+      "text": "Đầu tư AI doanh nghiệp toàn cầu là 581,69 tỷ đô la Mỹ."
+    },
+    "uyre": {
+      "source_hash": "e504c1d1bee5",
+      "text": "Trong đó, đầu tư AI tư nhân là 344,66, cùng đơn vị."
+    },
+    "8ddn": {
+      "source_hash": "1d295d4be676",
+      "text": "Đầu video hỏi có cộng được không; ở đây tổng đã gồm phần đó."
+    },
+    "rzc3": {
+      "source_hash": "3cf95628769b",
+      "text": "Cộng thêm đầu tư tư nhân là đếm lại phần đã có trong tổng."
+    },
+    "tjqp": {
+      "source_hash": "ee87ba087fd8",
+      "text": "Tôi thêm chữ Trong đó bên thanh ngắn, giữ rõ quan hệ bao gồm trên trang."
+    },
+    "zhzm": {
+      "source_hash": "32cfee0301cb",
+      "text": "Vậy có thể đổi so sánh khu vực thành tổng chi AI mỗi nước không?"
+    },
+    "qa92": {
+      "source_hash": "3b51f072d58a",
+      "text": "Trang 3 dùng phạm vi đầu tư AI tư nhân của Quid mà báo cáo tổng hợp."
+    },
+    "f6fw": {
+      "source_hash": "8329157cf444",
+      "text": "Cùng năm 2025, tính bằng tỷ đô la Mỹ, Mỹ là 285,88."
+    },
+    "hxni": {
+      "source_hash": "a1d031f4ab44",
+      "text": "Trung Quốc là 12,41, cùng phạm vi thống kê và đơn vị."
+    },
+    "frra": {
+      "source_hash": "c64f67b7ebb5",
+      "text": "Đây là cùng bộ thống kê vốn tư nhân, không phải toàn bộ chi công và tư hai nước."
+    },
+    "2bm9": {
+      "source_hash": "9531894d74b2",
+      "text": "Hai thanh biểu đồ ứng với cùng năm, đơn vị và loại đầu tư."
+    },
+    "a4ys": {
+      "source_hash": "a4a23dd00784",
+      "text": "Trang 4 chuyển sang sử dụng, không thể mang đơn vị đô la của số tiền sang."
+    },
+    "9xhq": {
+      "source_hash": "9e4f4b429f99",
+      "text": "Trong khảo sát này, 88% người trả lời cho biết"
+    },
+    "iswb": {
+      "source_hash": "0281c17ef39e",
+      "text": "tổ chức họ dùng AI trong ít nhất một nghiệp vụ."
+    },
+    "dp4j": {
+      "source_hash": "bf2ebaceca72",
+      "text": "Đây là tự khai, không thể viết thành điều tra toàn bộ công ty trên thế giới."
+    },
+    "gy6e": {
+      "source_hash": "18bab12d0245",
+      "text": "Một mục AI tạo sinh chưa rõ, có phải dừng cả bài trình chiếu không?"
+    },
+    "g84b": {
+      "source_hash": "dc6ec2ad2579",
+      "text": "Tóm tắt ghi 70%, mô tả tổ chức dùng trong ít nhất một nghiệp vụ."
+    },
+    "e9xt": {
+      "source_hash": "3031a9af3a94",
+      "text": "Chi tiết ghi 79%, mô tả người trả lời cho biết tổ chức thường xuyên dùng."
+    },
+    "cwpj": {
+      "source_hash": "3033add5b842",
+      "text": "Đều nói về 2025; câu hỏi và mẫu số có khớp không còn chờ xác minh."
+    },
+    "iek7": {
+      "source_hash": "8506062e2d1b",
+      "text": "Không coi hai số là tỷ lệ áp dụng đã xác minh, cũng không kết luận báo cáo sai."
+    },
+    "aywh": {
+      "source_hash": "f59eba903ebf",
+      "text": "Giữ chú thích cả hai chỗ, tiếp tục giao nội dung đã xác minh."
+    },
+    "8arj": {
+      "source_hash": "5a6bb12034ac",
+      "text": "Hồ sơ trích dẫn nối trang 2–4 về báo cáo gốc; trang 1 là tổng quan câu hỏi của tác giả."
+    },
+    "5ytw": {
+      "source_hash": "9d0cfaae234c",
+      "text": "Đầu video hỏi truy nguồn ra sao; nhận bài này rồi, tìm lại biểu đồ gốc thế nào?"
+    },
+    "cuw5": {
+      "source_hash": "f0e3b423b425",
+      "text": "Trang 2 của bài ứng với trang in 178, trang thứ 8 của PDF."
+    },
+    "u7s7": {
+      "source_hash": "631d89554665",
+      "text": "Số hình là 4.2.1; cả hai khoản tiền đều từ biểu đồ này."
+    },
+    "a9g4": {
+      "source_hash": "0c14aece95bb",
+      "text": "Trích cho đồng nghiệp, bạn cũng giữ số trang in của báo cáo."
+    },
+    "thhi": {
+      "source_hash": "4fa4d7588cee",
+      "text": "Trang 3 của bài ứng với trang in 182, trang thứ 12 của PDF."
+    },
+    "z3rg": {
+      "source_hash": "4b44c1ce29cb",
+      "text": "Dấu nguồn trang này nối hai khu vực về cùng biểu đồ đầu tư tư nhân."
+    },
+    "buwe": {
+      "source_hash": "65075afc9f86",
+      "text": "Trang 4 của bài ứng với trang in 193, trang thứ 23 của PDF."
+    },
+    "m5bu": {
+      "source_hash": "8d874397d032",
+      "text": "Chú thích chờ xác minh còn dẫn tới tóm tắt: trang in 173, trang thứ 3 của PDF."
+    },
+    "j47b": {
+      "source_hash": "c66bd65ea060",
+      "text": "Chênh lệch chỉ nằm ở chú thích, không thuộc 5 khẳng định số liệu đã dùng."
+    },
+    "uhev": {
+      "source_hash": "b9c71ba7f304",
+      "text": "Nhưng đồng nghiệp cần sửa chữ, giao một ảnh dàn sẵn đã đủ chưa?"
+    },
+    "mgin": {
+      "source_hash": "19210869def6",
+      "text": "Tôi tách cùng nội dung thành hai bản giao: để xem và để sửa."
+    },
+    "eeiu": {
+      "source_hash": "134c6bf2f652",
+      "text": "PDF gồm 4 ảnh trang, mở xem bố cục được nhưng không có chữ trích xuất được."
+    },
+    "hj8r": {
+      "source_hash": "77e1d1a2d638",
+      "text": "Đầu video hỏi sửa chữ được không; lần này tôi giao cả tệp PPTX sửa được."
+    },
+    "t5vz": {
+      "source_hash": "3577c16a8d83",
+      "text": "Chữ và hình dạng được lưu riêng, không nhúng ảnh toàn trang."
+    },
+    "xxcb": {
+      "source_hash": "32ee29ce450b",
+      "text": "Ví dụ, đơn vị trên trang đầu tư vẫn ở hộp văn bản gốc."
+    },
+    "aetd": {
+      "source_hash": "07b66edfa34a",
+      "text": "Đã mở lại tệp kiểm cấu trúc, chưa kết xuất trực tiếp trong PowerPoint."
+    },
+    "du2s": {
+      "source_hash": "56e181e95269",
+      "text": "Nếu trình chiếu chính thức ở đó, hãy mở kiểm phông và ngắt dòng trước."
+    },
+    "kjrf": {
+      "source_hash": "ebd3c813f84b",
+      "text": "Bài trình chiếu, tệp sửa được và nguồn từng trang giờ là gói giao kiểm chứng được."
+    },
+    "yu7f": {
+      "source_hash": "2a7d58ab9b06",
+      "text": "Vậy quy trình cục bộ này nối với tính năng mới của Google ở đâu?"
+    },
+    "3eg2": {
+      "source_hash": "c06f1fc62d6a",
+      "text": "Chỗ duyệt trong tin chính là nơi bài này quyết định nội dung từng trang."
+    },
+    "vufg": {
+      "source_hash": "5dcef91c9d9f",
+      "text": "Gemini Notebook cho chọn dạng và phong cách trước, rồi bật Review."
+    },
+    "8ikq": {
+      "source_hash": "0a57200f9fb6",
+      "text": "Làm trình chiếu thì duyệt dàn ý; làm video thì duyệt ghi chú sản xuất."
+    },
+    "w72f": {
+      "source_hash": "1a144e75ad42",
+      "text": "Viết hết góp ý một lượt rồi nhấn Proceed để tạo."
+    },
+    "8u6s": {
+      "source_hash": "a1248e5b2d27",
+      "text": "Sản phẩm vẫn cho tạo thẳng; bước duyệt không bắt buộc."
+    },
+    "p3j7": {
+      "source_hash": "e1970734575a",
+      "text": "Nhấn Proceed rồi thì không thể sửa tiếp dàn ý này."
+    },
+    "63mu": {
+      "source_hash": "3a83d8baa80c",
+      "text": "Vì thế, nên kiểm các ý như phần trong tổng và đầu tư tư nhân ngay lúc này."
+    },
+    "k3y5": {
+      "source_hash": "94203027c4cd",
+      "text": "Giờ tài khoản nào cũng thấy tùy chọn này sao?"
+    },
+    "cgtw": {
+      "source_hash": "dea898f9de1f",
+      "text": "Workspace thông báo triển khai từ 16/10 theo đợt, tối đa 15 ngày."
+    },
+    "yw8i": {
+      "source_hash": "a5e84a0ecf40",
+      "text": "Thông báo nêu nhiều loại tài khoản, nhưng trang trợ giúp ghi đồng tạo thuộc Ultra."
+    },
+    "qtzp": {
+      "source_hash": "f4cc3a0471b0",
+      "text": "Tôi chưa có kết quả dùng tài khoản để khớp khác biệt, không bảo đảm miễn phí."
+    },
+    "skdk": {
+      "source_hash": "6afaa621cd1c",
+      "text": "Khi dùng sản phẩm, kiểm gói của bạn và tùy chọn duyệt dàn ý trước."
+    },
+    "p2we": {
+      "source_hash": "a9c871c2c963",
+      "text": "Kiểm tùy chọn duyệt của tài khoản rồi, sửa người nghe và độ dài trong cùng yêu cầu."
+    },
+    "cesj": {
+      "source_hash": "b5fbc399effa",
+      "text": "Đổi đồng nghiệp nói chung thành người nghe thực tế."
+    },
+    "tkzk": {
+      "source_hash": "664f6fbee020",
+      "text": "Rồi đổi số trang và thời lượng nói theo phạm vi bạn cần giao."
+    },
+    "teri": {
+      "source_hash": "5edcdd4c154b",
+      "text": "Để dàn ý trả về kèm câu hỏi và nguồn, bạn sẽ có nội dung cụ thể để sửa."
+    },
+    "8udr": {
+      "source_hash": "f34f22ab1a92",
+      "text": "Dùng yêu cầu này, viết câu hỏi trang đầu của bạn phải trả lời."
+    },
+    "yf5s": {
+      "source_hash": "9bed9f156be2",
+      "text": "Bình luận: bạn muốn làm bài về gì?"
+    },
+    "umdp": {
+      "source_hash": "489f39b7bb17",
+      "text": "Đăng ký để hiểu công cụ AI qua thành phẩm thật."
+    }
+  }
+}

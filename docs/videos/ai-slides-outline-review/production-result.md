@@ -1,32 +1,31 @@
 # 第四片製作進度快照
 
-截至2026-10-25T23:30:48Z，原句兩輪重錄後仍標記的nm8j／h58h／j47b已作保義修詞，獨立[verify-5](verify-5.md) PASS。3個新request／67 billable chars的TTS已完成，100個高層request重用；**當前新take尚未完成ASR及嚴格音訊核驗，沒有成片QA或正式交付**。
+截至 2026-10-26T01:30:26.879Z，繁中 **1080p 本體候選已完成並附上後台下載證據**，遠端 final 仍為 pending。這份本體的當前旁白 118/118 接受、0 flags／unchecked，核心 QA 11/11 通過。官方頻道動畫片頭尾仍缺；八外語已完成本地 metadata、CC 草稿及縮圖，**實際外語音訊仍為 0/8 ready，overall_complete=false**。
 
-| 項目 | 實際狀態 |
+| 項目 | 實際狀態與證據 |
 |---|---|
-| 凍結版本 | source `296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f`；claims `2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7`；speech `a8055d3edb90bcda`。 |
-| 三句差異 | 只有3個line.text及3個claims quote；其餘115個完整line物件／全部非text欄位不變。131列全7欄、118口白／claim／scene對帳、defined＝used＝131。 |
-| 原句音檢歷史 | 初次118 checked／111 accepted／7 flags；retake1為113 accepted／5 flags；retake2於23:18:43為115 accepted／3 flags／0 unchecked。這是舊speech0f1，不是新a805已通過。 |
-| 最新TTS | 23:22:54原生stage完成3 requests、67 billable chars、100 reused、無fallback；103是118句的高層規劃request數，不是精確付費HTTP次數。 |
-| 當前TTS時間 | 18106 frames／30＝603.5333秒；outro前591.3667秒；扣冷開及outro的正文566.1333秒。這是TTS時間，不是已驗收音訊或編碼片長。 |
-| 已完成render | 舊source5c於23:16:47完成114 new states、477秒、exit0；114張圖SHA逐一等於真正看過的R2 preview。current visualHash同為1a6b602366198b99，三句text不改圖卡／transition／縮圖。 |
-| 敘事 | R2兩raw及citation修復後native各12／13、passed=false，no_recap保留；本次僅知情三句差異核對，沒有新blind／新分數。 |
-| 原生靜態檢查 | lint0 errors／2 warnings；current TTS timeline compose3129 bytes、6章、1 credit／272 bytes、problems[]。不是final package QA。 |
+| 凍結版本 | source `296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f`；claims `2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7`；speech `a8055d3edb90bcda`；lexicon `378f875ef4daf76e4aadee22bae0aa3c523dd39528ca48f69f139c2a70843b0c`。本次只更新文件與安全收據。 |
+| 當前音訊 | 正常複檢真正 exit0，118 checked／118 accepted／0 flags／0 unchecked；84 exact、15同音／語助、6 Jev、13第二轉寫。嚴格全目標核驗 ready=true／problems=[]，見[當前音檢收據](narration-listener-reword1-verification.json)。 |
+| 實際正文時間 | 18106 frames／30＝603.533333 秒；outro 前591.366667秒；扣冷開與outro的正文566.133333秒。不是用片頭尾或慢播補足八分鐘。 |
+| 實際 MP4 | 1920×1080、30fps、18106 video frames，視訊603.533333秒；AAC／容器603.605秒。52,296,204 bytes，SHA `3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea`。見[本體實測](body-candidate-verification.json)。 |
+| 核心 QA | [原始 QA](body-core-qa.json) 11/11、ok=true，綁同一 MP4 SHA；仍保留27筆字幕閱讀速度提醒。這是無官方 bookends 的本體核心 QA，不能替代完整正式製作驗收。 |
+| 後台下載 | 2026-10-26T01:05:11.570Z 完成13/13 parts上傳，server assembly驗SHA／大小；經正常驗證身分的metadata GET確認角色 `evidence_zh_tw_1080p_mp4`、同SHA及52,296,204 bytes。沒有把metadata回讀說成遠端binary重新下載／雜湊。見[真實附件收據](main-download-attachment.json)。 |
+| 遠端狀態 | final review `532d5837-0036-4695-9535-97d0c6a6044b` 仍 pending；script／audio正常送審與本機委派採用分開，沒有遠端核准或站主UI點擊宣稱。本輪已用正常唯讀GET重新核對；沒有POST。 |
+| 後台實際附件範圍 | [安全回讀](backend-current-final-safe-readback.json)列出的roles只有 `preview`、`contact_sheet`、`thumbnail`、`evidence_zh_tw_1080p_mp4`；9語title／description與當前本地native compose逐字相符。CC附件0/9、外語縮圖附件0/8，二者只本地生成，不能稱已送達。 |
+| 當前lint | 0 errors／6 warnings：25秒冷開、2025必要重現，以及EN／ES／PT／ID標題手機列表寬度。原生估時／provider字元輸出不是實測時長或計費。 |
+| 八語文字 | en／ja／ko／es／pt／id／vi／th 各118句、6章及title／description／tags／縮圖三欄完成，三組不同作者獨審後套用必要修正；可選字數精簡未整批採用。見[文字與 CC 初始快照](localization-initial-reviewed-snapshot.json)。 |
+| 九套 CC | zh-TW 加八外語的SRT／VTT已建立。八外語仍依繁中主旁白時間軸，屬待實際配音後重排的草稿；不是八條配音已音檢通過。27筆CPS提醒原樣保留於QA與快照。 |
+| 八語縮圖 | 原生已draw八張；root實看all8 contact。KO原「그다음 제작」斷詞後，正常merge／draw成「다음 제작」，root已實看修正。本文件作者只核對當前SHA與套用差異，沒有冒稱重新看過八張。見[KO獨審](thumbnail-ko-wrap-independent-review.json)及[套用核對](thumbnail-ko-wrap-application.json)。 |
+| 外語音訊 | 0/8 accepted／ready、0/8已驗證音訊交付，尚未送language batch。後續由唯一producer先做EN synth／fit／meter；ASR仍hold，進行中或fit不算ready。 |
+| 品牌與敘事 | 官方頻道動畫bookends仍missing。R2兩份raw及citation修復native各12/13、passed=false、no_recap；保留完整提示與必要算義的教學取捨，沒有重算成13/13。 |
 
-原verify-1 REVISE、verify-2 R1 PASS、verify-3欄位回歸REVISE及verify-4恢復PASS均保留原SHA；verify-5只綁當前三句與其固定依賴，不改歷史。數值／條件／作者示例／C6註記與五項採用值界線不變，沒有Notebook產品試用或UI導覽。
+原[verify-1](verify-1.md) REVISE、[verify-2](verify-2.md) R1 PASS、[verify-3](verify-3.md) 欄位回歸REVISE、[verify-4](verify-4.md) 修補PASS、[verify-5](verify-5.md) 當前三句PASS均保留原bytes與各自範圍。舊speech0f1的7→5→3旗、三句修詞／67 chars新TTS及114張原生render歷史不改寫；當前a805音檢通過由後續真實收據證明。
 
-## 尚未完成
+## 仍待完成
 
-- 必須對新a805三個take完成正常ASR，再作全目標、原生WAV／cache／裁決／實際完成證據的嚴格唯讀核驗。既有3旗與未來新結果分開，不清旗或修改轉寫。
-- strict helper僅CFG.source／speech兩值更新，其餘bytes等於原版；root已留14項self-test輸出。本次只驗差異、不執行actual audit，不宣稱current audio PASS。
-- 114張已完成圖片及靜態visualHash相同不代表encoded film或QA完成；待音訊通過後才能合成／字幕／核心QA與正常後臺交付。
-- 本producer仍缺合法官方品牌bookend package／素材；靜態outro不能當正式片頭尾已裝。追蹤ID `2026-10-25-local-first-build-without-branding` 位於第三片分支，此處不造跨分支相對連結。
-- 八語metadata／CC／實際M4A與整包交付尚未完成，all_eight_ready及overall均false。沒有YouTube公開、合併或部署。
+- 合法官方頻道動畫片頭尾與bookend guard、真正正式定版；靜態outro或null-branding核心QA不能替代。
+- 八語逐語實際fit／meter／正常音檢與全目標核驗；按各語接受音訊的時間軸重建CC，再驗可下載角色／SHA／大小及真正language batch。
+- 以另行授權的checked-only附件流程交付並核對9套CC與8張外語縮圖；目前final files沒有這些角色，metadata payload不代表字幕或縮圖檔已上傳。
+- 遠端最終核准與整體交付狀態；目前僅本體候選可供審閱，overall及all_eight_ready均false。沒有YouTube公開、合併或部署。
 
-詳[機器可讀進度](production-progress.json)、[current TTS timing](narration-current-timing-snapshot.json)、[知情敘事差異](narrative-listener-reword1-informed-review.md)及[收據索引](production-receipt-index.json)。
-
-## 23:44 UTC 後續音訊結果
-
-當前 a805 原生複檢已實際 exit0：118／118 句接受、0 flags／unchecked（84 exact、15同音／語助、6 Jev、13第二轉寫）。[嚴格唯讀核驗](narration-listener-reword1-verification.json)綁定全部118個當前WAV、完整原文、spoken form、有效原生裁決、最新TTS及完成log，ready=true／problems=[]，正文566.1333秒。這項後續結果取代上方快照中的待音檢狀態，歷次旗標及原敘事false不變。
-
-正常script／audio送審已pending，本機另依站主委派採用；詳[narration-backend-adoption.json](narration-backend-adoption.json)，不冒稱遠端批准。現正合成本體候選，仍缺官方片頭尾；未有實際MP4完成、核心QA或影片後台交付證據。八語已建立原生翻譯底稿，尚無已完成外語媒體。
+本次更新前的狀態文件已[逐bytes封存](production-history/20261026-pre-body-delivery-doc-update/archive-manifest.json)，舊「assembly running／尚待音檢」只是當時快照，不能覆蓋上述新結果。詳[機器進度](production-progress.json)、[採用與界線](production-decision.md)及[收據索引](production-receipt-index.json)。

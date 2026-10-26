@@ -1,0 +1,515 @@
+{
+  "title": "Presentaciones con AI: revisa el esquema y convierte un PDF público en 4 páginas con fuentes",
+  "description": "¿Qué debe decidir el esquema antes de convertir un PDF público en una presentación de 4 páginas?\nPara quienes necesitan entregar presentaciones que se puedan editar y cuyas fuentes se puedan consultar.\n\nEjemplo original local terminado el 2026-10-25: el encargo del autor, el borrador de dos páginas, el conjunto de cambios solicitados y la revisión se guardaron en una misma generación. No son respuestas de Notebook ni una revisión interactiva con una pausa real para esperar comentarios. La noticia oficial del 2026-10-19 sirve de contexto al proceso; no inicié sesión ni probé el producto.\n\nLos datos son estadísticas de 2025 del capítulo de economía de Stanford 2026 AI Index. Los montos siguen el alcance de inversión de Quid: el total corporativo incluye el subconjunto privado y no se suman; la comparación regional se limita a inversión privada en AI. El 88% corresponde a encuestados que declaran que su organización usa AI en al menos una función empresarial. Sigue sin resolverse si las preguntas y los denominadores del 70% y el 79% coinciden; solo se dejan como notas.\n\nEn la lista de referencias, la página 1 resume las preguntas del autor; las páginas 2 a 4 indican las ubicaciones en el informe original.\n\nEl PDF entregado contiene imágenes de las páginas; el PPTX conserva texto y formas nativos. Se volvió a abrir para revisar su estructura, pero no se renderizó de forma nativa en PowerPoint.\n\nPrompt completo reutilizable:\nUsa solo este PDF público que te proporciono y prepara una presentación de cuatro páginas para colegas. La presentación debe durar unos tres minutos. Primero entrega el esquema; todavía no generes las diapositivas.\nCada página debe responder una sola pregunta e indicar las cifras, el año de los datos y las unidades que se usarán. Indica la población encuestada o el alcance estadístico, la página impresa del informe y la posición de la página en el PDF. Separa los montos de inversión de los porcentajes de uso. No sumes el total y una parte incluida en él.\nSi hay diferencias en las fuentes que aún no se han conciliado, márcalas como pendientes de confirmar; no elijas una cifra por mí. Espera a que responda con todos los cambios de una vez y luego crea la presentación de cuatro páginas. Entrega a la vez el archivo editable, el PDF y una lista de referencias por página. Las cifras sin confirmar deben quedar solo como notas, sin graficarlas como conclusiones definitivas.\n\nPDF de cuatro páginas, PPTX editable, referencias por página y encargo del autor: https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data",
+  "tags": [
+    "presentaciones con AI",
+    "Gemini Notebook",
+    "revisar el esquema",
+    "PDF a presentación",
+    "PPTX editable",
+    "Stanford AI Index",
+    "fuentes de una presentación",
+    "herramientas de AI"
+  ],
+  "thumbnail": {
+    "tag": "Esquema con AI",
+    "headline": "**Revisa**\nluego crea",
+    "sub": "Del esquema al archivo editable"
+  },
+  "chapters": {
+    "four-page-local-output": "Mi encargo desde un informe público",
+    "local-authored-scope": "La ficha separa inversión y uso",
+    "reusable-full-prompt": "Encargo completo; mi borrador aún en 2 páginas",
+    "change-page-question": "Una revisión, 4 páginas con tarea propia",
+    "citation-record-connects-pages": "Páginas 2–4: volver al informe",
+    "review-position-connection": "Google: revisión del esquema antes de generar"
+  },
+  "source_hashes": {
+    "chapters": {
+      "four-page-local-output": "51b700404134",
+      "local-authored-scope": "2f037e384517",
+      "reusable-full-prompt": "21247e14419c",
+      "change-page-question": "e51fbabb1e17",
+      "citation-record-connects-pages": "3ffbd57a7b4f",
+      "review-position-connection": "360e6cc6c21f"
+    },
+    "title": "b709596fa404",
+    "description": "cdd89bf774a8",
+    "tags": "724e8e4b7864",
+    "thumbnail": "487d403f652f"
+  },
+  "lines": {
+    "2622": {
+      "source_hash": "d8cc05f5bd45",
+      "text": "Ubica la página en el PDF; luego coteja figura, cifras y unidades."
+    },
+    "tirg": {
+      "source_hash": "a525e97bd4be",
+      "text": "El 25 de octubre de 2026 abrí el informe y escribí el encargo."
+    },
+    "iihc": {
+      "source_hash": "d48a51ddb1fd",
+      "text": "¿Podemos sumar estas dos inversiones?"
+    },
+    "dgy5": {
+      "source_hash": "192758eb9527",
+      "text": "¿Cómo reparto el esquema para dar una tarea a cada página?"
+    },
+    "dfj8": {
+      "source_hash": "14f59336a3a4",
+      "text": "Al entregarlo, ¿se podrá editar y rastrear fuentes?"
+    },
+    "3vx9": {
+      "source_hash": "ebeb1c83c4ad",
+      "text": "El 19 de octubre, Gemini Notebook presentó la revisión previa del esquema."
+    },
+    "7ya8": {
+      "source_hash": "d3273886b7af",
+      "text": "Para decidir si sumarlas, anoto su alcance en la ficha de fuentes."
+    },
+    "jyx8": {
+      "source_hash": "d9f95f2462d3",
+      "text": "Ejemplo local original inspirado en el anuncio de Google; no probé Notebook."
+    },
+    "sk7r": {
+      "source_hash": "b983d45cd5ee",
+      "text": "Uso el capítulo económico de Stanford AI Index."
+    },
+    "45g3": {
+      "source_hash": "5913d5dd4ff9",
+      "text": "PDF público de 60 páginas: solo usamos los datos pertinentes."
+    },
+    "fskd": {
+      "source_hash": "b22cb01cd908",
+      "text": "Mi encargo: explicar a colegas inversión en AI y uso organizacional."
+    },
+    "vvp9": {
+      "source_hash": "ea32ebdf79df",
+      "text": "Defino público y uso para elegir qué conservar."
+    },
+    "k3s9": {
+      "source_hash": "971077fedfef",
+      "text": "La ficha separa los años del informe y los datos."
+    },
+    "immj": {
+      "source_hash": "1c42f7f91f82",
+      "text": "El informe es de 2026; los datos que uso son de 2025."
+    },
+    "p9da": {
+      "source_hash": "7c96629fb0cf",
+      "text": "Si no, un título nuevo puede hacer pasar datos viejos por una encuesta nueva."
+    },
+    "8gv2": {
+      "source_hash": "bc1c315be28b",
+      "text": "Ambos son de AI: ¿inversión y porcentaje de uso caben en una gráfica?"
+    },
+    "sxfi": {
+      "source_hash": "3dba5513987e",
+      "text": "Anoto región, tipo de inversión y unidad en dólares."
+    },
+    "b4kb": {
+      "source_hash": "491281adb7b3",
+      "text": "Para porcentajes, quién respondió y qué uso declaró."
+    },
+    "rrvd": {
+      "source_hash": "1d67c66b92bb",
+      "text": "Son preguntas distintas; registro ambos aparte."
+    },
+    "ghds": {
+      "source_hash": "2ee258b8dfcf",
+      "text": "La ficha conserva dos numeraciones con distinta función."
+    },
+    "pt7x": {
+      "source_hash": "3063293a5842",
+      "text": "Página impresa: número en el informe."
+    },
+    "q2hz": {
+      "source_hash": "f4079d8b0691",
+      "text": "Posición en el PDF: contando desde su primera página."
+    },
+    "5s9a": {
+      "source_hash": "c22bef5f9dc4",
+      "text": "Con el mismo archivo, mis colegas pueden volver a esa página por su posición."
+    },
+    "9c7v": {
+      "source_hash": "df2bd0f34193",
+      "text": "El número de figura ubica su gráfica en esa página."
+    },
+    "hpdz": {
+      "source_hash": "1506c94e198b",
+      "text": "¿Cómo incluyo estas condiciones y no recibo solo un resumen?"
+    },
+    "g7uh": {
+      "source_hash": "8d9332880cfa",
+      "text": "Reuní el encargo en un prompt completo; adapta su formato."
+    },
+    "2ai4": {
+      "source_hash": "bc35fb6487db",
+      "text": "Usa solo este PDF público que te doy: 4 páginas para colegas."
+    },
+    "zny3": {
+      "source_hash": "1c6b42d399cd",
+      "text": "Unos 3 minutos."
+    },
+    "kh9k": {
+      "source_hash": "8dc4ac5ef8e9",
+      "text": "Primero el esquema; aún no crees diapositivas."
+    },
+    "zibg": {
+      "source_hash": "bf506d554fa0",
+      "text": "Una pregunta por página: cifras, año de los datos y unidades."
+    },
+    "uqnr": {
+      "source_hash": "11e9cae44fbf",
+      "text": "Población encuestada o alcance estadístico; página impresa del informe y posición en PDF."
+    },
+    "r3y9": {
+      "source_hash": "9fd4f6ef7fd2",
+      "text": "Separa montos de inversión y porcentajes de uso."
+    },
+    "bd3z": {
+      "source_hash": "880f33fb3976",
+      "text": "No sumes el total y una parte incluida."
+    },
+    "y3nk": {
+      "source_hash": "1fe11e369d41",
+      "text": "Si las fuentes no se alinean, déjalo pendiente; no elijas una cifra por mí."
+    },
+    "7g33": {
+      "source_hash": "29b4af0ab4eb",
+      "text": "Tras mi respuesta con todos los cambios, crea 4 páginas."
+    },
+    "2knx": {
+      "source_hash": "48962be73c55",
+      "text": "Entrega editable, PDF y referencias por página, juntos."
+    },
+    "cht8": {
+      "source_hash": "022d8dda43e4",
+      "text": "Cifras sin confirmar: solo notas, sin graficarlas como conclusiones firmes."
+    },
+    "nm8j": {
+      "source_hash": "be3b79d1219f",
+      "text": "Si al esquema le falta el año de los datos, ¿dónde va?"
+    },
+    "9h68": {
+      "source_hash": "31540993d989",
+      "text": "Pido el año en «año de datos» de esa página."
+    },
+    "fx3e": {
+      "source_hash": "0e127639bc0e",
+      "text": "¿Un encargo completo garantiza un primer esquema útil?"
+    },
+    "wy6f": {
+      "source_hash": "3c2fecc68920",
+      "text": "Mi borrador de ejemplo: 2 páginas, aún sin maquetar como diapositivas."
+    },
+    "kwf8": {
+      "source_hash": "89d7d654529c",
+      "text": "«Panorama de inversión y adopción de AI» y «Una gráfica de conjunto»."
+    },
+    "aces": {
+      "source_hash": "675f0f8efbb5",
+      "text": "Ambas repiten montos, regiones, porcentajes de uso y cifras pendientes."
+    },
+    "gy4m": {
+      "source_hash": "4ab993e594db",
+      "text": "Lista materiales, sin asignar una pregunta del lector por página."
+    },
+    "h58h": {
+      "source_hash": "d4596e33c2bc",
+      "text": "Registré el borrador que escribí y todos los cambios pedidos."
+    },
+    "z84y": {
+      "source_hash": "7dde88f5606d",
+      "text": "Etapas guardadas en una generación, sin esperar mi respuesta."
+    },
+    "yrg5": {
+      "source_hash": "1bcc0c0096d6",
+      "text": "Sin tareas por página, ¿qué decisión hay que cambiar?"
+    },
+    "j4eq": {
+      "source_hash": "669bbb09ff50",
+      "text": "Pregunté cómo dividirlo; mis cambios fijan qué responde cada página."
+    },
+    "kmts": {
+      "source_hash": "c40d11281804",
+      "text": "Según el encargo, separa inversión y tasa de uso en preguntas distintas."
+    },
+    "vyp5": {
+      "source_hash": "b94671358dd6",
+      "text": "No sumes inversión corporativa global y su parte privada."
+    },
+    "jzkh": {
+      "source_hash": "f9abbb484b34",
+      "text": "Por país: solo financiación privada, no gasto total en AI."
+    },
+    "nx2z": {
+      "source_hash": "88016cc8991d",
+      "text": "Conserva año de los datos, unidades, población o alcance y ambas numeraciones."
+    },
+    "b7sd": {
+      "source_hash": "cd8d2c0169f9",
+      "text": "Tasas de AI generativa sin alinear: notas de dos pasajes."
+    },
+    "i8qv": {
+      "source_hash": "98e105f49094",
+      "text": "Al final, entrega todo lo acordado: archivos y referencias juntos."
+    },
+    "8k94": {
+      "source_hash": "760af974b5da",
+      "text": "¿Dónde se deben ver los cambios para darlo por corregido?"
+    },
+    "6frs": {
+      "source_hash": "5c70d14d1159",
+      "text": "La página 1 separa cuánto se invierte y cuántos declaran usar AI."
+    },
+    "esm2": {
+      "source_hash": "a78b1f92f767",
+      "text": "Montos: alcance inversor; tasas: encuestados y organizaciones."
+    },
+    "x5tu": {
+      "source_hash": "61074802a302",
+      "text": "La página 2 grafica montos globales mostrando qué incluye el total."
+    },
+    "fpqu": {
+      "source_hash": "d35b50d6bb65",
+      "text": "La inversión corporativa global en AI es de 581,69 mil millones de USD."
+    },
+    "uyre": {
+      "source_hash": "e504c1d1bee5",
+      "text": "De ese total, inversión privada en AI: 344,66, en la misma unidad."
+    },
+    "8ddn": {
+      "source_hash": "1d295d4be676",
+      "text": "Al inicio pregunté si se sumaban: aquí, el total ya incluye esa parte."
+    },
+    "rzc3": {
+      "source_hash": "3cf95628769b",
+      "text": "Sumar de nuevo lo privado duplica la parte ya incluida."
+    },
+    "tjqp": {
+      "source_hash": "ee87ba087fd8",
+      "text": "Puse «de ese total» junto a la barra corta para mostrar la inclusión."
+    },
+    "zhzm": {
+      "source_hash": "32cfee0301cb",
+      "text": "¿Esta comparación regional equivale al gasto total en AI de cada país?"
+    },
+    "qa92": {
+      "source_hash": "3b51f072d58a",
+      "text": "Página 3: alcance de inversión privada en AI de Quid, según el informe."
+    },
+    "f6fw": {
+      "source_hash": "8329157cf444",
+      "text": "También para 2025, en mil millones de USD, Estados Unidos registra 285,88."
+    },
+    "hxni": {
+      "source_hash": "a1d031f4ab44",
+      "text": "China registra 12,41, con el mismo alcance y unidad."
+    },
+    "frra": {
+      "source_hash": "c64f67b7ebb5",
+      "text": "Misma financiación privada; no todo el gasto público y privado de ambos países."
+    },
+    "2bm9": {
+      "source_hash": "9531894d74b2",
+      "text": "Las dos barras reflejan el mismo año, unidad y tipo de inversión."
+    },
+    "a4ys": {
+      "source_hash": "a4a23dd00784",
+      "text": "La página 4 pasa al uso; ya no corresponde la unidad en dólares."
+    },
+    "9xhq": {
+      "source_hash": "9e4f4b429f99",
+      "text": "En la encuesta, el 88% de los encuestados declara"
+    },
+    "iswb": {
+      "source_hash": "0281c17ef39e",
+      "text": "que su organización usa AI en al menos una función empresarial."
+    },
+    "dp4j": {
+      "source_hash": "bf2ebaceca72",
+      "text": "Autorreporte de encuestados, no censo de todas las empresas del mundo."
+    },
+    "gy6e": {
+      "source_hash": "18bab12d0245",
+      "text": "¿Una cifra de AI generativa sin resolver frena la presentación?"
+    },
+    "g84b": {
+      "source_hash": "dc6ec2ad2579",
+      "text": "Resumen: 70%, organizaciones que usan en al menos una función empresarial."
+    },
+    "e9xt": {
+      "source_hash": "3031a9af3a94",
+      "text": "Detalle: 79%, encuestados reportan uso habitual en su organización."
+    },
+    "cwpj": {
+      "source_hash": "3033add5b842",
+      "text": "Ambos son de 2025; falta confirmar si coinciden preguntas y denominadores."
+    },
+    "iek7": {
+      "source_hash": "8506062e2d1b",
+      "text": "No considero confirmadas esas tasas de adopción ni erróneo el informe."
+    },
+    "aywh": {
+      "source_hash": "f59eba903ebf",
+      "text": "Anoto ambos pasajes y entrego el resto confirmado."
+    },
+    "8arj": {
+      "source_hash": "5a6bb12034ac",
+      "text": "Referencias: páginas 2–4 al informe; la 1 resume las preguntas del autor."
+    },
+    "5ytw": {
+      "source_hash": "9d0cfaae234c",
+      "text": "Pregunté cómo rastrear fuentes: con esta presentación, ¿cómo vuelvo a la gráfica?"
+    },
+    "cuw5": {
+      "source_hash": "f0e3b423b425",
+      "text": "La página 2 remite a la página impresa 178, página 8 del PDF."
+    },
+    "u7s7": {
+      "source_hash": "631d89554665",
+      "text": "Es la figura 4.2.1; ambos montos vienen de esa gráfica."
+    },
+    "a9g4": {
+      "source_hash": "0c14aece95bb",
+      "text": "Al citar a colegas, guarda la página impresa del informe."
+    },
+    "thhi": {
+      "source_hash": "4fa4d7588cee",
+      "text": "Página 3: impresa 182, página 12 del PDF."
+    },
+    "z3rg": {
+      "source_hash": "4b44c1ce29cb",
+      "text": "La cita une la misma gráfica de inversión privada y ambas regiones."
+    },
+    "buwe": {
+      "source_hash": "65075afc9f86",
+      "text": "La página 4 remite a la impresa 193, página 23 del PDF."
+    },
+    "m5bu": {
+      "source_hash": "8d874397d032",
+      "text": "La nota pendiente también remite al resumen: página impresa 173, página 3 del PDF."
+    },
+    "j47b": {
+      "source_hash": "c66bd65ea060",
+      "text": "La diferencia: solo una nota, fuera de las 5 afirmaciones numéricas adoptadas."
+    },
+    "uhev": {
+      "source_hash": "b9c71ba7f304",
+      "text": "Si colegas van a editar texto, ¿basta una imagen maquetada?"
+    },
+    "mgin": {
+      "source_hash": "19210869def6",
+      "text": "Entrego lo mismo para ver y para editar, en dos versiones."
+    },
+    "eeiu": {
+      "source_hash": "134c6bf2f652",
+      "text": "PDF: 4 imágenes de página para ver el diseño, sin texto extraíble."
+    },
+    "hj8r": {
+      "source_hash": "77e1d1a2d638",
+      "text": "Al inicio pregunté si se podía editar: también entregué un PPTX editable."
+    },
+    "t5vz": {
+      "source_hash": "3577c16a8d83",
+      "text": "Texto y formas separados; sin imágenes de página incrustadas."
+    },
+    "xxcb": {
+      "source_hash": "32ee29ce450b",
+      "text": "La unidad de inversión: en un cuadro de texto nativo."
+    },
+    "aetd": {
+      "source_hash": "07b66edfa34a",
+      "text": "Reabrí y revisé la estructura; aún no rendericé en PowerPoint."
+    },
+    "du2s": {
+      "source_hash": "56e181e95269",
+      "text": "Para presentar allí, abre y revisa fuentes y saltos de línea."
+    },
+    "kjrf": {
+      "source_hash": "ebd3c813f84b",
+      "text": "Presentación, editable y fuentes por página: un paquete verificable."
+    },
+    "yu7f": {
+      "source_hash": "2a7d58ab9b06",
+      "text": "¿Dónde se conecta este proceso local con la nueva función de Google?"
+    },
+    "3eg2": {
+      "source_hash": "c06f1fc62d6a",
+      "text": "La revisión anunciada coincide con decidir qué va en cada página."
+    },
+    "vufg": {
+      "source_hash": "5dcef91c9d9f",
+      "text": "Gemini Notebook: eliges formato y estilo, luego abres Review."
+    },
+    "8ikq": {
+      "source_hash": "0a57200f9fb6",
+      "text": "En presentaciones, revisa el esquema; en videos, notas de producción."
+    },
+    "w72f": {
+      "source_hash": "1a144e75ad42",
+      "text": "Todos los cambios juntos; pulsa Proceed para generar."
+    },
+    "8u6s": {
+      "source_hash": "a1248e5b2d27",
+      "text": "Puedes generar directo; la revisión es opcional."
+    },
+    "p3j7": {
+      "source_hash": "e1970734575a",
+      "text": "Tras Proceed, ese esquema ya no se edita."
+    },
+    "63mu": {
+      "source_hash": "3a83d8baa80c",
+      "text": "Conviene confirmar aquí «parte del total» e «inversión privada»."
+    },
+    "k3y5": {
+      "source_hash": "94203027c4cd",
+      "text": "¿Todas las cuentas ven ya esta opción?"
+    },
+    "cgtw": {
+      "source_hash": "dea898f9de1f",
+      "text": "Workspace: despliegue gradual desde el 16 de octubre, hasta 15 días."
+    },
+    "yw8i": {
+      "source_hash": "a5e84a0ecf40",
+      "text": "Anuncio: varios tipos de cuenta; ayuda: cocreación como función Ultra."
+    },
+    "qtzp": {
+      "source_hash": "f4cc3a0471b0",
+      "text": "Sin pruebas de cuenta que lo aclaren, no garantizo acceso gratis."
+    },
+    "skdk": {
+      "source_hash": "6afaa621cd1c",
+      "text": "Antes de usarlo, verifica plan y opción de revisar el esquema."
+    },
+    "p2we": {
+      "source_hash": "a9c871c2c963",
+      "text": "Tras verificar esa opción en tu cuenta, adapta público y extensión del mismo encargo."
+    },
+    "cesj": {
+      "source_hash": "b5fbc399effa",
+      "text": "Cambia «colegas» por tu público real."
+    },
+    "tkzk": {
+      "source_hash": "664f6fbee020",
+      "text": "Ajusta páginas y tiempo de exposición a lo que debes entregar."
+    },
+    "teri": {
+      "source_hash": "5edcdd4c154b",
+      "text": "Pide preguntas y fuentes en el esquema para tener contenido que revisar."
+    },
+    "8udr": {
+      "source_hash": "f34f22ab1a92",
+      "text": "Con este encargo, escribe qué pregunta responderá tu primera página."
+    },
+    "yf5s": {
+      "source_hash": "9bed9f156be2",
+      "text": "Comenta qué quieres convertir en presentación."
+    },
+    "umdp": {
+      "source_hash": "489f39b7bb17",
+      "text": "Suscríbete: entiende herramientas de AI con resultados reales."
+    }
+  }
+}
