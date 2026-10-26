@@ -61,3 +61,8 @@
 1. 盲評兩位讀者，直到沒有任何一題兩位同否；改了旁白就重跑 `lint`、`script --slug curio-s03-v2`、再開新一輪；最後一輪存進 `panel/reader-1.json`、`panel/reader-2.json`，
    並用 `narrative --slug curio-s03-v2 --answers panel/reader-1.json` 留一次紀錄（它只看單一讀者，結束碼 1 不代表合併沒過）。
 2. 之後照 `curio-episode` skill：旁白（`tts`）→ `check-audio` → 站主聽 → 插圖整集一次報價（約 104 張）→ 配樂 → 成片。
+
+## 製作紀錄（2026-10-26）
+
+- 插圖：104 張；第一輪 6 張沒過 judge（3D 質感、多出的手、物件特寫塞進人頭、沒鞠躬），改成「一個人做一件事」重畫全過；整集插圖花 US$2.06。
+- `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos。
