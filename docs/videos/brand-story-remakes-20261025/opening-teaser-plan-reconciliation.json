@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-26T07:29:36.225Z",
-  "scope": "Current 14 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
+  "checked_at": "2026-10-26T07:41:34.157Z",
+  "scope": "Current 15 source-verified written teaser plans; immutable original audit retained. No actual generated media or image reuse acceptance.",
   "frozen_prior_audit": {
     "path": "opening-teaser-image-audit.json",
     "sha256": "4ed8bdb3afb401bf6cb3c773309b729dc8e8216110b292887fa98b853162fbfd"
@@ -841,10 +841,69 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "c20",
+      "slug": "story-everyday-zippo-c20-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+      "source_receipt": "c20/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "ac8272f4db625751536dd063d3f175e84de150e29114dcc92532d8939b3b1856",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c20/verify-1.md",
+      "narrative_receipt": "c20/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "0a9b34a6dc1c2b98c282adc4834a13326e37e9aabd17f2ea8f49d84b8c505dbc",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c20/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "2269ad026782118679cec0c0143231076e8ad0f99368cea89d20e31da3c77e6f",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T07:10:22.143Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "c20/production-entry-r8-prepared.md",
+      "text_translations": "c20/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 864,
+      "preflight": "c20/preflight-inputs.json",
+      "clean_master_recipe": "c20/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c20/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     }
   ],
-  "episodes": 14,
-  "event_teasers": 26,
+  "episodes": 15,
+  "event_teasers": 28,
   "current_missing_written_plans": 0,
   "actual_same_asset_verified": false,
   "paid_requests": 0

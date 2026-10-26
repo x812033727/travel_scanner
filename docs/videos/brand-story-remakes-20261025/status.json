@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T07:35:08.959059+00:00",
-  "state": "fourteen_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
+  "updated_at": "2026-10-26T07:47:27.927662+00:00",
+  "state": "fifteen_current_eight_language_text_PASS_formal_PR1860_branding_ready_production_admission_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -9,11 +9,11 @@
     "unuploaded_rows": 19,
     "subjects": 18,
     "first_batch_subjects": 3,
-    "remaining_subjects": 4,
-    "prepared_subjects": 14,
+    "remaining_subjects": 3,
+    "prepared_subjects": 15,
     "prepared_stage": "source_written_visual_native_merged_and_untimed_eight_language_text_PASS",
     "source_native_pass_subjects": 15,
-    "source_native_pass_scope": "14 TEXT_PASS projects plus C20 R8; does not count media completion."
+    "source_native_pass_scope": "All 15 current TEXT_PASS projects have source/written-visual/native-merged PASS; does not count media completion."
   },
   "projects": [
     {
@@ -854,6 +854,67 @@
       "final_approval": false,
       "current_preparation": "garmin/preparation-text-completion-r4.json",
       "current_text_handoff": "garmin/production-entry-text-r4.md"
+    },
+    {
+      "id": "c20",
+      "slug": "story-everyday-zippo-c20-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+      "source_receipt": "c20/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "ac8272f4db625751536dd063d3f175e84de150e29114dcc92532d8939b3b1856",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c20/verify-1.md",
+      "narrative_receipt": "c20/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "0a9b34a6dc1c2b98c282adc4834a13326e37e9aabd17f2ea8f49d84b8c505dbc",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c20/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "2269ad026782118679cec0c0143231076e8ad0f99368cea89d20e31da3c77e6f",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T07:10:22.143Z",
+      "backend_language_selection_applied": false,
+      "production_handoff": "c20/production-entry-r8-prepared.md",
+      "text_translations": "c20/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 864,
+      "preflight": "c20/preflight-inputs.json",
+      "clean_master_recipe": "c20/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c20/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "c20/preparation-text-completion-r8.json",
+      "current_text_handoff": "c20/production-entry-text-r8.md"
     }
   ],
   "paid_requests": 0,
@@ -880,7 +941,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "git_index_json_files": 6871
+      "git_index_json_files": 6920
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -1053,8 +1114,8 @@
     },
     "latest_index_validation": {
       "status": "PASS",
-      "text_files": 8374,
-      "staged_files": 202,
+      "text_files": 8426,
+      "staged_files": 60,
       "scope": "Batch/task only; all indexed UTF8/JSON/scope/credential/binary scans pass."
     },
     "required_assembly_guard": {
@@ -1080,7 +1141,7 @@
     "Actual full-film decode QA, current owner final review and upload package.",
     "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
     "C03 existing token is valid. User chose a read-only Claude host handoff; await its safe exact-old/new-slug budget JSON. Local independent probe passed, host not run; account existence remains unestablished.",
-    "C20 R8/native8 PASS has a frozen free-operator handoff and external eight-language text authoring in progress, not TEXT_PASS. Doraemon and rolling-suitcase retain published R4/source-PASS/native3-HOLD checkpoints; R5 authors are active and not checkpointed. Dyson retains frozen R3 source/native-unreviewed capacity-HOLD history; R4 author work remains active and excluded."
+    "Doraemon and rolling-suitcase retain published frozen R4/source-PASS/native3-HOLD history checkpoints; R5 authors remain active and not checkpointed. Dyson retains frozen history/r3 source/native-unreviewed capacity-HOLD and historical native1-HOLD; R4 author work remains active and excluded."
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -1136,7 +1197,8 @@
     "c15": false,
     "c19": false,
     "seiko": false,
-    "garmin": false
+    "garmin": false,
+    "c20": false
   },
   "selected_language_parts": [
     "metadata",
@@ -1144,9 +1206,9 @@
     "dub"
   ],
   "translation_text_preparation": {
-    "receipt": "text-preparation-checkpoint-14.json",
+    "receipt": "text-preparation-checkpoint-15.json",
     "locales": 8,
-    "lines": 12688,
+    "lines": 13552,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -1234,11 +1296,17 @@
         "receipt": "garmin/i18n/preparation-status.json",
         "lines": 1080,
         "chapters": 56
+      },
+      {
+        "id": "c20",
+        "receipt": "c20/i18n/preparation-status.json",
+        "lines": 864,
+        "chapters": 48
       }
     ],
-    "prepared_projects": 14,
-    "scope": "All fourteen current source-verified/native-merged-PASS projects. Untimed text only; historical baselines and unreviewed drafts excluded.",
-    "chapters": 696
+    "prepared_projects": 15,
+    "scope": "All fifteen current source-verified/native-merged-PASS projects. Untimed text only; historical baselines and unreviewed drafts excluded.",
+    "chapters": 744
   },
   "latest_user_direction": "要加片頭加片尾，可以參考PR1860；做完繼續下一個，預設八語、不需例行確認",
   "continuation_in_progress": {
@@ -1254,7 +1322,7 @@
     "c14": "source_native_and_eight_language_text_PASS_media_held",
     "c15": "source_native_and_eight_language_text_PASS_media_held",
     "c19": "source_native_and_eight_language_text_PASS_media_held",
-    "c20": "R8_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_EIGHT_LANGUAGE_TEXT_AUTHORING",
+    "c20": "source_native_and_eight_language_text_PASS_media_held",
     "seiko": "source_native_and_eight_language_text_PASS_media_held",
     "garmin": "source_native_and_eight_language_text_PASS_media_held",
     "dyson": "R3_FROZEN_SOURCE_NATIVE_UNREVIEWED_CAPACITY_HOLD_R4_AUTHOR_ACTIVE",
@@ -1295,8 +1363,8 @@
     "explicit_plan_episodes": 3,
     "explicit_plan_events": 6,
     "current_reconciliation": "opening-teaser-plan-reconciliation.json",
-    "current_source_verified_plan_projects": 14,
-    "current_written_plan_events": 26,
+    "current_source_verified_plan_projects": 15,
+    "current_written_plan_events": 28,
     "current_missing_written_plans": 0
   },
   "production_branding": {
@@ -1317,66 +1385,6 @@
     "first_must_fix_preserved": "branding-pr1860/assembly-guard-independent.json"
   },
   "other_drafts": [
-    {
-      "id": "c20",
-      "state": "R8_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_EIGHT_LANGUAGE_TEXT_AUTHORING",
-      "author_revision": 8,
-      "video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
-      "source_receipt": "c20/reviews/source-r8-independent.json",
-      "source_receipt_sha256": "ac8272f4db625751536dd063d3f175e84de150e29114dcc92532d8939b3b1856",
-      "native_fact_check": "c20/verify-1.md",
-      "actual_completed_native_panels": 8,
-      "prepared_next_native_panel": null,
-      "actual_narration_seconds": null,
-      "audio_generated": false,
-      "illustrations_generated": false,
-      "media_qa": false,
-      "final_approval": false,
-      "target_minutes": 13,
-      "actual_same_asset_verified": false,
-      "narrative_receipt": "c20/reviews/narrative-r8.json",
-      "native_merged": "PASS",
-      "native_merged_failed": [],
-      "narrative_receipt_sha256": "0a9b34a6dc1c2b98c282adc4834a13326e37e9aabd17f2ea8f49d84b8c505dbc",
-      "source_text_fact_gate": "PASS",
-      "source_written_visual_gate": "PASS",
-      "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
-      "backend_review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
-      "backend_script_status": "pending",
-      "backend_outline_review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
-      "backend_outline_status": "pending",
-      "backend_language_selection_applied": false,
-      "actual_backend_locales": {},
-      "eight_language_text_state": "AUTHORING_NOT_COLLECTED",
-      "text_translation_preparation": "NOT_TEXT_PASS",
-      "target_eight_language_text_entries": 864,
-      "translated_entries_at_operator_freeze": 0,
-      "text_pass_at_operator_freeze": false,
-      "source_operator_snapshot": "c20/operator-freeze-r8.json",
-      "source_operator_snapshot_sha256": "5cd9b836f6ec6339fe38e7dc2309d515bb12aefacd4c2ef0baf20b37bec9317f",
-      "current_handoff": "c20/production-entry-r8-prepared.md",
-      "production_handoff": "c20/production-entry-r8-prepared.md",
-      "frozen_text_config": "/workspace/work/brand-story-20261025/c20-audit/text-r8/text-current.json",
-      "frozen_text_config_sha256": "56fbf5fa0c3bbcbb9eb1340c03590a55ad4b50bb6286acf2e7dafaa695981019",
-      "current_freeze_fields_are_historical": true,
-      "narrative_readers": [
-        {
-          "passed": false,
-          "failed": [
-            "no_recap"
-          ]
-        },
-        {
-          "passed": true,
-          "failed": []
-        }
-      ],
-      "native_review_matches_current_source": true,
-      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
-      "clean_master_metadata_review_receipt": "c20/variants/clean-master/review.json",
-      "clean_master_metadata_review_receipt_sha256": "46e9e300467bc774c14d1ec5e464dbfb357a58e72bc721027eb32bd3e96a3491",
-      "actual_clean_master": false
-    },
     {
       "id": "dyson",
       "state": "R3_FROZEN_SOURCE_NATIVE_UNREVIEWED_CAPACITY_HOLD_R4_AUTHOR_ACTIVE",
@@ -1506,13 +1514,14 @@
       "frozen_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
       "frozen_checkpoint_status": "status.json",
       "frozen_source_file": "doraemon/history/r4/video.json",
-      "frozen_source_file_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "frozen_author_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "source_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "narrative_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "native_fact_check_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_source_file_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "frozen_author_checkpoint_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "source_receipt_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "narrative_receipt_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "native_fact_check_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
       "native_review_matches_checkpoint_source": true,
-      "active_author_source_reviewed": false
+      "active_author_source_reviewed": false,
+      "frozen_history_paths_published_commit": "f1cf3eae8727910162a996a28a344ca7539f7618"
     },
     {
       "id": "rolling-suitcase",
@@ -1573,13 +1582,14 @@
       "frozen_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
       "frozen_checkpoint_status": "status.json",
       "frozen_source_file": "rolling-suitcase/history/r4/video.json",
-      "frozen_source_file_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "frozen_author_checkpoint_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "source_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "narrative_receipt_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
-      "native_fact_check_commit": "328c5c77c0840ede48e16dd70833d9ad647f1078",
+      "frozen_source_file_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "frozen_author_checkpoint_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "source_receipt_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "narrative_receipt_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
+      "native_fact_check_commit": "f1cf3eae8727910162a996a28a344ca7539f7618",
       "native_review_matches_checkpoint_source": true,
-      "active_author_source_reviewed": false
+      "active_author_source_reviewed": false,
+      "frozen_history_paths_published_commit": "f1cf3eae8727910162a996a28a344ca7539f7618"
     }
   ],
   "narration_capacity_research": {
@@ -1596,5 +1606,5 @@
       "actual_duration_measured": false
     }
   },
-  "current_text_checkpoint": "text-preparation-checkpoint-14.json"
+  "current_text_checkpoint": "text-preparation-checkpoint-15.json"
 }
