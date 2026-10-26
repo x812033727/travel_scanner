@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T20:46:33Z
+claimed_at: 2026-10-26T21:40:00Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -39,6 +39,17 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Fresh qualified PT continuation from preserved defer2 — 2026-10-26T21:40:44.764640+00:00
+
+- This fresh user execution found actual old driver168427/native168429 ended, no original/PDF/Whisper producer or live LEASE/STOP. Independent original21:36–21:37 audit preserved remote task0ec/latest17:03:40 (over4hours), approved oldfinal/publish/pending materials/retries{} and unchanged failed/unknown/skipped/bookend files. Actual video-stream615.566667s and container615.605s are explicitly distinguished. Source copy `research/language-checkpoints/original-readonly-audit-20261026T2136Z.json` (SHAa74375e9) is read-only evidence, not original renewal or new approval.
+- One FREE current preflight genuinely completed21:39:32Z, exit0; released21:39:33Z. All2334runtime files and9sources exact, actual8meaning/report/native-boundary chains current, PTfff990 full101baseline unchanged, real primary346a/934608 approval+matching11QA and exact localchat8 valid, production panel still undecided. Actual dryrun95newrequests/6112estimatedchars/monthly5,743,457 with14estimatedover and existing0.13s/1.18x estimate warning retained. Configuration/readiness and estimates do not prove provider availability or real fit. Receipt9834630a/released0b7042d5 and exact dryrun17d99e91 are source-copied under `research/language-checkpoints/pt-fresh-user-defer2-20261026T2140Z-*`.
+- The distinct2138 wrapper initially failed BEFORE lease/GET/dryrun/paid: its recursive receipt scan misclassified the immutable terminal8AMwriter archive as a current journal. Failure and executed765b72 helper remain preserved. Native run-receipts find/untaken actually scan top-level current JSON; archive836fe4 is genuinely terminal/succeeded and byte-identical to its historical source audit. Corrected NEW2140 helper698861 uses that native current/archive distinction plus an explicit immutable archive guard; no unknown was removed/replayed or gate waived. Actual live speech journals/current unadopted model receipts are0. Classificationd68fcfa7 and both helpers are saved; this is no billing or unavailable-response-code inference.
+- Root used ordinary same-owner status/in-progress then claim after these real eligibility checks, without force. Native done/defer2/due21:05:02.168Z/PT0-0-0/check_stoppedtrue remain byte-exact. Old stops/history are unchanged. New `remaining-languages-resume-after-PT-defer2-20261026T2136Z.json` inherits full d5f273 safeguards and names `/root/pdf_pt_resume_2136` prospective sole coordinator; activation requires this actual commit/push plus explicit GO_PAID after driver review. No new paid unit has started at this checkpoint.
+- First ONE normal cached PT continuation; another global defer/unknown stops the finite queue with new true due and no timer or locale workaround. If actual eligibility/progress continues, PT→ID→VI→TH stays serial with every real model boundary independently reviewed before changed takes. EN3flags/JA1flag stopped and KO+ES2/8checked/eight checked thumbnails/primary11QA remain true; no full8package, original owner action, Studio/publication or new movie. After GO the coordinator alone writes source/task/Git at actual ended lease-free boundaries, root quiescent.
+
+
+- Root pre-handoff checks genuinely passed: docs-videos236/236, check:tasks2187 (existing scope/stale warnings retained), staged source/index/report bindings8/8 and cached diff. Exact external logs `pt-fresh-defer2-reactivation-docs-check-20261026T2140Z.log` / `pt-fresh-defer2-reactivation-task-check-20261026T2140Z.log`. No production-source or native-core change; prior lint0errors/2warnings remains its existing unchanged-source result.
 
 ### Qualified PT unit genuinely re-deferred; finite queue stopped at count2 — 2026-10-26T20:58Z
 
