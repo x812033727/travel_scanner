@@ -106,6 +106,10 @@ git diff --check
 - Worktree: `/workspace/travel_scanner_asr_compat`; branch
   `codex/whisper-pyav-compat-20261026`; checked base
   `origin/main` at `80cb444e2d87b7b53639bd203dfa19c6edd0ef90`.
+- Durable ticket-only handoff: draft PR
+  <https://github.com/x812033727/travel_scanner/pull/1872>, with
+  `no-auto-merge`. The task remains open and unclaimed because implementation
+  is still blocked by the other holder's scope.
 - `who-is-on-it --scope ops/video/Dockerfile` found no open PR touching the
   file. Remote branch/PR searches found no Whisper/PyAV fix. The Dockerfile on
   fresh main still contains the unbounded dependency and import/usage checks.
