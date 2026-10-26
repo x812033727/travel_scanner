@@ -8,7 +8,7 @@ budget schema after reading back its held accounts and historical operations.
 The 0138 image accepts only the additive 0139 C20 account contract, with the
 same historical holds and a matching C20 ownership record. Paid admission
 remains held in that image.
-The 0139 image accepts only the additive 0140 C08 account contract after
+The 0139 image accepts only the additive 0140 C11 remake account contract after
 checking both new account ownership records. Paid admission remains held.
 This module never stamps or downgrades a database.
 """
@@ -49,10 +49,10 @@ C20_ROLLBACK_IMAGE_HEAD = "0138_story_everyday_budget"
 C20_REVIEWED_FUTURE_REVISION = "0139_c20_zippo_pilot_budget"
 C20_PILOT_SLUG = "story-everyday-zippo-c20-short-v8"
 C20_PILOT_LIMIT_USD = Decimal("25.000000")
-C08_ROLLBACK_IMAGE_HEAD = "0139_c20_zippo_pilot_budget"
-C08_REVIEWED_FUTURE_REVISION = "0140_c08_kikkoman_pilot_budget"
-C08_PILOT_SLUG = "story-everyday-kikkoman-c08-short-v8"
-C08_PILOT_LIMIT_USD = Decimal("25.000000")
+C11_REMAKE_ROLLBACK_IMAGE_HEAD = "0139_c20_zippo_pilot_budget"
+C11_REMAKE_REVIEWED_FUTURE_REVISION = "0140_c11_ucc_remake_budget"
+C11_REMAKE_PILOT_SLUG = "story-everyday-ucc-c11-remake-20261025"
+C11_REMAKE_PILOT_LIMIT_USD = Decimal("25.000000")
 State = Literal["exact", "upgrade", "rollback-compatible"]
 
 
@@ -81,7 +81,10 @@ def classify_revisions(
         return MigrationState(current, expected, "rollback-compatible")
     if expected == C20_ROLLBACK_IMAGE_HEAD and current == C20_REVIEWED_FUTURE_REVISION:
         return MigrationState(current, expected, "rollback-compatible")
-    if expected == C08_ROLLBACK_IMAGE_HEAD and current == C08_REVIEWED_FUTURE_REVISION:
+    if (
+        expected == C11_REMAKE_ROLLBACK_IMAGE_HEAD
+        and current == C11_REMAKE_REVIEWED_FUTURE_REVISION
+    ):
         return MigrationState(current, expected, "rollback-compatible")
     if current is None or current in known_revisions:
         return MigrationState(current, expected, "upgrade")
@@ -376,14 +379,14 @@ async def _verify_c20_ownership(connection: AsyncConnection) -> None:
 
 
 async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
-    """Accept only the held C08 account added after reviewed C20 0139."""
+    """Accept only the held C11 UCC remake account added after reviewed C20 0139."""
     await _verify_reviewed_budget_schema(
         connection,
         expected_accounts={
             **PILOT_LIMITS_USD,
             **C_SERIES_PILOT_LIMITS_USD,
             C20_PILOT_SLUG: C20_PILOT_LIMIT_USD,
-            C08_PILOT_SLUG: C08_PILOT_LIMIT_USD,
+            C11_REMAKE_PILOT_SLUG: C11_REMAKE_PILOT_LIMIT_USD,
         },
         revision="0140",
     )
@@ -393,13 +396,13 @@ async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
         text("SELECT slug, account_created, account_created_at FROM video_pilot_budget_0140_owned")
     )
     owners = rows.all()
-    if len(owners) != 1 or owners[0][0] != C08_PILOT_SLUG or owners[0][1] is not True:
-        raise MigrationGuardError("reviewed 0140 C08 ownership record is invalid")
+    if len(owners) != 1 or owners[0][0] != C11_REMAKE_PILOT_SLUG or owners[0][1] is not True:
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership record is invalid")
     account = await connection.execute(
-        select(VideoPilotBudget.created_at).where(VideoPilotBudget.slug == C08_PILOT_SLUG)
+        select(VideoPilotBudget.created_at).where(VideoPilotBudget.slug == C11_REMAKE_PILOT_SLUG)
     )
     if owners[0][2] is None or owners[0][2] != account.scalar_one():
-        raise MigrationGuardError("reviewed 0140 C08 ownership timestamp changed")
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership timestamp changed")
     constraints = await connection.execute(
         text(
             "SELECT con.contype, con.convalidated, pg_get_constraintdef(con.oid) "
@@ -415,7 +418,7 @@ async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
         or primary_keys[0][1] is not True
         or _canonical_check(primary_keys[0][2]).upper() != "PRIMARYKEYSLUG"
     ):
-        raise MigrationGuardError("reviewed 0140 C08 ownership primary key changed")
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership primary key changed")
 
 
 async def read_state() -> MigrationState:
@@ -432,7 +435,7 @@ async def read_state() -> MigrationState:
                     await _verify_reviewed_0138(connection)
                 elif state.current == C20_REVIEWED_FUTURE_REVISION:
                     await _verify_reviewed_0139(connection)
-                elif state.current == C08_REVIEWED_FUTURE_REVISION:
+                elif state.current == C11_REMAKE_REVIEWED_FUTURE_REVISION:
                     await _verify_reviewed_0140(connection)
                 else:
                     raise MigrationGuardError("unreviewed rollback revision")

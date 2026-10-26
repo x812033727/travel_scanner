@@ -92,7 +92,7 @@ test("host verification permits only four reviewed budget rollback pairs", { ski
     ["0132_video_pilot_budget", "0133_story_followon_budget"],
     ["0137_video_manga_tier", "0138_story_everyday_budget"],
     ["0138_story_everyday_budget", "0139_c20_zippo_pilot_budget"],
-    ["0139_c20_zippo_pilot_budget", "0140_c08_kikkoman_pilot_budget"],
+    ["0139_c20_zippo_pilot_budget", "0140_c11_ucc_remake_budget"],
   ]) {
     assert.equal(rollbackPair(imageHead, databaseHead), true, `${imageHead} -> ${databaseHead}`);
     assert.equal(rollbackPair(databaseHead, imageHead), false, `${databaseHead} -> ${imageHead}`);
@@ -102,7 +102,7 @@ test("host verification permits only four reviewed budget rollback pairs", { ski
     ["0138_story_everyday_budget", "0139_other_budget"],
     ["0137_video_manga_tier", "0139_c20_zippo_pilot_budget"],
     ["0139_c20_zippo_pilot_budget", "0140_other_budget"],
-    ["0138_story_everyday_budget", "0140_c08_kikkoman_pilot_budget"],
+    ["0138_story_everyday_budget", "0140_c11_ucc_remake_budget"],
     ["0132_video_pilot_budget", "0134_unreviewed"],
   ]) {
     assert.equal(rollbackPair(imageHead, databaseHead), false, `${imageHead} -> ${databaseHead}`);

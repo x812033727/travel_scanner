@@ -67,6 +67,6 @@ def schema_is_current(current_revision: str | None) -> bool:
         )
         or (
             expected == "0139_c20_zippo_pilot_budget"
-            and current_revision == "0140_c08_kikkoman_pilot_budget"
+            and current_revision == "0140_c11_ucc_remake_budget"
         )
     )
