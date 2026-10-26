@@ -68,7 +68,8 @@ services:
       - video_media:/var/lib/mokaair/video-media
       # The video worker's work volume, read-only: a binge series' compilation is too big for
       # the review store, so /admin/videos downloads its 1080p cut from <slug>/upload/final.mp4
-      # here (docs/videos/BINGE.md). The API reads nothing else from it.
+      # here (docs/videos/BINGE.md), and `branding --pull` fetches the intro and outro that
+      # _branding/current.json names (docs/videos/BRANDING.md). The API reads nothing else from it.
       - video_work:/var/lib/mokaair/video-work:ro
     networks: [default, uploader_rpc]
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]

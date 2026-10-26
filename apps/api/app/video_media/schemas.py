@@ -376,3 +376,21 @@ class PruneOut(StrictModel):
     expired_jobs: int
     deleted_files: int
     freed_bytes: int
+
+
+class BrandingClipOut(StrictModel):
+    sha256: str
+    frames: int
+    size: int
+
+
+class BrandingOut(StrictModel):
+    """The bookends the worker's next first build pins (``GET /branding``, docs/videos/BRANDING.md):
+    the tool downloads both files by SHA-256 and installs them with ``branding --install``."""
+
+    series: str | None
+    id: str
+    hash: str
+    installed_at: str | None
+    intro: BrandingClipOut
+    outro: BrandingClipOut

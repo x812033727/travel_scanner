@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, episodeOfCompilation, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
+import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, episodeOfCompilation, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, pinsDefault, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
 
 const preset = (n = "a") => ({ schema_version: 1, id: `mokaair-${n}`, intro: { file: "intro.mp4", sha256: n.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } });
 const doc = { format: "slides", youtube: { video_id: null } };
@@ -346,4 +346,21 @@ test("series without a compilation, one-offs, brand stories, tutorials and expla
     assert.equal(adoptionRefusal({ doc: source, workdir, series }), null, label);
   }
   assert.equal(await selectBrandingForBuild({ ...b, doc: { format: "shorts" }, series: binge }), null, "a Short of a binge series is unbranded as every Short is");
+});
+
+test("only a build that takes this machine's package is compared with the site's worker", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  const first = { doc, workdir: b.workdir };
+  assert.equal(pinsDefault(first), true, "a first build, even with nothing installed");
+  assert.equal(pinsDefault({ doc: { format: "shorts" }, workdir: b.workdir }), false);
+  assert.equal(pinsDefault({ doc: { format: "drama" }, workdir: b.workdir, series: { compilation: true } }), false, "an episode of a compilation is never wrapped");
+  assert.equal(pinsDefault({ doc: { ...doc, youtube: { video_id: "abc" } }, workdir: b.workdir }), false, "an uploaded video keeps what it has");
+  assert.equal(pinsDefault({ ...first, introAfterCondensation: true }), true, "a re-placed intro with no pin takes the default");
+  writeFileSync(path.join(b.workdir, "checks.json"), JSON.stringify({ ok: true }));
+  assert.equal(pinsDefault(first), false, "an earlier unbranded cut stays as it was");
+  assert.equal(pinsDefault({ ...first, adoptCurrent: true }), true);
+  pinBranding(b.workdir, await selectBrandingForBuild({ ...b, doc, adoptCurrent: true }));
+  assert.equal(pinsDefault({ ...first, introAfterCondensation: true }), false, "a pin keeps its package");
+  assert.equal(pinsDefault({ doc, workdir: b.workdir }), false);
 });

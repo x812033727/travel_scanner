@@ -1,6 +1,7 @@
 // Install the owner's fixed media outside git. An installed default affects first builds only;
-// existing unapproved cuts opt in through assemble/compile --adopt-branding.
-import { constants, copyFileSync, existsSync, mkdirSync, realpathSync } from "node:fs";
+// existing unapproved cuts opt in through assemble/compile --adopt-branding. --pull fetches the
+// package the site's worker builds with, so a machine without it (a cloud container) gets the same.
+import { constants, copyFileSync, existsSync, mkdirSync, realpathSync, rmSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
@@ -9,6 +10,8 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { currentBrandingFile, readCurrentBranding, validateBranding } from "../core/branding.mjs";
 import { atomicWrite, isInside, readJson, resolveWorkBase, UsageError } from "../core/paths.mjs";
+import { clientOptions, exitFor, requireCredentials } from "../media/cli.mjs";
+import { brandingStatus, downloadBrandingFile, MediaError } from "../media/client.mjs";
 
 /** Read a selected package without trusting the descriptive/provenance fields as media proof. */
 export function packageSelection(directory) {
@@ -52,29 +55,72 @@ export async function installPackage({ directory, workBase, series = null, dryRu
   return { selection: readCurrentBranding(workBase, { series }), installed: true };
 }
 
+const SHA256 = /^[a-f0-9]{64}$/;
+
+/**
+ * Install the package the site's worker builds with (GET /api/video/media/branding): nothing when
+ * this work directory already has it, else both files fetched by SHA-256 into a scratch package
+ * and put through --install's checks. The worker's hash must come out of the files as well, or
+ * nothing is installed. The scratch package is removed either way.
+ */
+export async function pullPackage({ workBase, series = null, dryRun = false, now = new Date(), tools, exec = runTool, client }) {
+  const remote = await brandingStatus({ ...client, series });
+  // The hash names a scratch folder that is deleted, and each SHA-256 goes into a URL.
+  if (![remote?.hash, remote?.intro?.sha256, remote?.outro?.sha256].every((value) => SHA256.test(value ?? ""))) {
+    throw new MediaError("the site's branding answer has no package hash or file SHA-256", { who: "tool" });
+  }
+  const local = readCurrentBranding(workBase, { series });
+  if (local?.hash === remote.hash && existsSync(local.intro.file) && existsSync(local.outro.file)) {
+    return { remote, selection: local, installed: false, current: true };
+  }
+  const directory = path.join(workBase, `_branding-pull-${remote.hash}`);
+  rmSync(directory, { recursive: true, force: true });
+  try {
+    const assets = [];
+    for (const role of ["intro", "outro"]) {
+      const { sha256, frames } = remote[role];
+      await downloadBrandingFile({ ...client, sha256, file: path.join(directory, `${role}.mp4`) });
+      assets.push({ role, file: `${role}.mp4`, frames, sha256 });
+    }
+    atomicWrite(path.join(directory, "manifest.json"), `${JSON.stringify({ schema_version: 1, package_id: remote.id, assets }, null, 2)}\n`);
+    const hash = packageSelection(directory).hash;
+    if (hash !== remote.hash) throw new UsageError(`the site's package ${remote.id} is ${remote.hash.slice(0, 12)}, but its files hash to ${hash.slice(0, 12)}; nothing installed`);
+    return { remote, ...(await installPackage({ directory, workBase, series, dryRun, now, tools, exec })), current: false };
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+}
+
 export async function run(command, args, ctx) {
-  const values = parseArgs({ args, options: { install: { type: "string" }, series: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, json: { type: "boolean" } }, strict: true }).values;
+  const values = parseArgs({ args, options: { install: { type: "string" }, pull: { type: "boolean" }, series: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, json: { type: "boolean" } }, strict: true }).values;
   const series = values.series ?? null;
   currentBrandingFile(series);
-  if (values["dry-run"] && !values.install) throw new UsageError("branding --dry-run needs --install DIR");
+  if (values.install && values.pull) throw new UsageError("branding takes --install DIR or --pull, not both");
+  if (values["dry-run"] && !values.install && !values.pull) throw new UsageError("branding --dry-run needs --install DIR or --pull");
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   try {
     let result;
-    if (values.install) {
+    if (values.install || values.pull) {
       const tools = await (ctx.ffmpeg?.locate ?? locateFfmpeg)(ctx.env);
-      result = await installPackage({ directory: values.install, workBase, series, dryRun: values["dry-run"], now: ctx.now(), tools, exec: ctx.ffmpeg?.run ?? runTool });
+      const options = { workBase, series, dryRun: values["dry-run"], now: ctx.now(), tools, exec: ctx.ffmpeg?.run ?? runTool };
+      result = values.pull
+        ? await pullPackage({ ...options, client: clientOptions(ctx, requireCredentials(ctx)) })
+        : await installPackage({ ...options, directory: values.install });
     } else result = { selection: readCurrentBranding(workBase, { series }), installed: false };
     if (values.json) ctx.stdout.write(`${JSON.stringify({ work_base: workBase, series, ...result }, null, 2)}\n`);
     else if (!result.selection) ctx.stdout.write(`No ${series ?? "channel"} branding default is installed.\n`);
     else {
       const { selection } = result;
-      ctx.stdout.write(`${values["dry-run"] ? "Validated" : result.installed ? "Installed" : "Current"}: ${selection.id} (${selection.hash})\n`);
+      if (result.current) ctx.stdout.write("The site's worker uses the same package.\n");
+      const verb = result.current ? "Current" : values["dry-run"] ? "Validated" : result.installed ? "Installed" : "Current";
+      ctx.stdout.write(`${verb}: ${selection.id} (${selection.hash})\n`);
       ctx.stdout.write(`intro ${selection.intro.frames / 30}s, outro ${selection.outro.frames / 30}s; first ${series ? `${series} ` : ""}long-video builds adopt this package.\n`);
       if (result.installed) ctx.stdout.write("Existing cuts keep their pinned choice; rebuild a selected unapproved cut with assemble/compile --adopt-branding.\n");
     }
     return ctx.EXIT.ok;
   } catch (error) {
     if (error instanceof ToolMissing) { ctx.stderr.write(`${error.message}\n`); return ctx.EXIT.missing; }
+    if (error instanceof MediaError) { ctx.stderr.write(`branding --pull: ${error.message}\n`); return exitFor(error, ctx.EXIT); }
     throw error;
   }
 }
