@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-brand-stories-new-rules-remakes
 title: 依 1844 與 10-25 規則重製後台未完成品牌故事
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: codex-brand-remakes
@@ -35,7 +35,7 @@ scope:
 - [x] 確認 22 筆品牌故事，19 筆未有 YouTube ID 且未放棄；其中龜甲萬原版與 short-v8 是同題兩版，保留舊版避免重複製作。
 - [x] 完成先前首批 C04 泡泡紙、C05 金鳥、C09 Patagonia 的新規則劇本／書面分鏡；加上優先 C03 共四題備稿，其餘14題仍待來源／媒體核對。
 - [x] 四份精確稿 lint 均 0 errors，tts／keyframes dry-run 完成並綁輸入雜湊；music dry-run 因缺真實 timeline 正常停下。
-- [ ] 實際 TTS 後重估分鏡及配樂，補齊含歷史費用、轉寫、Jev 與重試的全片最壞預留。
+- [ ] 實際 TTS 後重估分鏡及配樂，核對逐操作最高應付預留，完成含歷史費用、轉寫、Jev 與重試範圍的可審全片quote。
 - [x] 四份新稿以新 slug 送後台；C03企劃／劇本均核准並以官方 review-pull 匯入，C04、C05 劇本核准已讀回並匯入，C09 r12 也已重新讀回核准並匯入。未重綁原 episode。
 - [ ] 取得可操作正式後台／主機的管理連線，核對並建立符合既有硬停線的 remake 預算帳戶。
 - [ ] 實際合成、逐句聽檢、插圖、render、配樂、assemble、字幕、qa、package 與後台 readback。
@@ -116,3 +116,7 @@ scope:
 - 2026-10-26 接續15集當前文字checkpoint：root已真實collect C20 R8八語864句／48章並reconcile為15 projects／28書面同圖預告，逐15份preparation收據核得13,552條未定時文字／744章，prepared15／remaining3、source/native PASS15，均非成片數。C20 source `abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e`、canonical `8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2`、actual native8 PASS（A單人no_recap保留），八語由非譯者四pair全量獨立TEXT_PASS、0 required，沒有新增recheck。另補5份作者收據／8份source-sheets／review-completion共14份exact copies；C20歷史空表README／prep兩檔SHA均吻合operator-freeze.repo_outputs_sha256後，更新current README並新增preparation-text-completion-r8及production-entry-text-r8 forward。原operator／source／brief／freeze不改。後台兩卡pending、locales={}；clean metadata SHA `46e9e300467bc774c14d1ec5e464dbfb357a58e72bc721027eb32bd3e96a3491` PASS仍非實clean片／QA／final／dub資格。
 - checkpoint13／14與各自reconciliation archive及先前29份Seiko／Garmin audit copies保持原bytes；新checkpoint15明列14原SHA `c27519e1991c4ef8a95814d8ed05e44f522934f8d3d1cd2f8a99f40ae3b7a644`、發布commit `f1cf3eae8727910162a996a28a344ca7539f7618` 及14 archive SHA `e4a07b19a19e7de450b6c4ebb13ceec0725265cca586a54c0da92bd81467603b`。Dora／行李箱僅承接已發布history/r4的source/native3 HOLD與R5_AUTHOR_ACTIVE_NOT_CHECKPOINTED；Dyson僅承接history/r3凍結source／freeze及歷史native1、R4作者活躍。只讀發布Git blobs核hash，不讀活躍未凍source作證。
 - production-hold純文件清單由11擴到15個精確ready slug；變更前exact bytes先存history/production-hold-before-fifteen-text-20261026.json，SHA `1160599af8ec17e5da9d98cd7ceefc205c4ff452c0a4edc744884b629ab2463f`。每片cap25、account_exists／history／balance／activation均未知並待主機證據，不把未知寫不存在或拿generic200當授權；policy SHA／script approval／branding快照保持原樣，未送API／updatebudget／provider。C03 token有效、Claude主機只讀安全JSON待回，故事影音與付費仍0，正式v4為5s／21s兩份重用素材且未assembly。53份原稿SHA再核全同；本輪僅metadata／count／hash／JSON讀回，root verification含6871 JSON／8374 text／202 files及原tests全結構未改。
+
+- Current17：17題全八語TEXT_PASS共15,720句／848章／31書面事件；Dyson R5的10個語意targets、四targeted rechecks與另5欄metadata-fit／三獨立rechecks均完整留證，原full／修前檔不改。全18題SOURCE／native PASS；Rolling R9/native8真merge PASS但1,939units容量HOLD、actual秒數null，八語／新後台卡／operator未準備，remaining1。新source18與text17分層收據，13–16及舊source17原bytes保留；沒有把文字數當影片數。
+- 逐操作service hard stop核已結算＋保留／不確定額＋下一操作最高應付額；它不是全片完成保證，仍需可審全片quote及真host證據，不新增sum-future-caps≤25 gate。正文自然實聲720–840秒不降標、不靠慢播／recap填長。root本輪已fresh跑docs-videos236/236 PASS（外部checkpoint17 log），task/index驗證待root後續；任務維持in-progress，影片DoD未完成，C03 token有效／Claude host JSON待回／故事媒體及付費0。
+- Current host blocker以[rev137安全摘要](../../docs/videos/brand-story-remakes-20261025/c03/connection-check-current-20261026.json)為準：cloud current/connected/running但capabilities／identities／vars／secretrefs皆0，無production-host身份；PR1849 comments再GET仍0、未收到Claude安全JSON。這不推論DB帳戶不存在，account/balance/activation仍null，token不需重貼。

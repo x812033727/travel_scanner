@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T09:21:28.189534+00:00",
-  "state": "seventeen_source_native_PASS_sixteen_current_eight_language_text_PASS_media_held",
+  "updated_at": "2026-10-26T09:53:15.906509+00:00",
+  "state": "eighteen_source_native_PASS_seventeen_current_eight_language_text_PASS_media_held",
   "reference_pr": 1844,
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "original_inventory": {
@@ -9,12 +9,12 @@
     "unuploaded_rows": 19,
     "subjects": 18,
     "first_batch_subjects": 3,
-    "remaining_subjects": 2,
-    "prepared_subjects": 16,
+    "remaining_subjects": 1,
+    "prepared_subjects": 17,
     "prepared_stage": "source_written_visual_native_merged_and_untimed_eight_language_text_PASS",
-    "source_native_pass_subjects": 17,
-    "source_native_pass_scope": "16 complete eight-language TEXT_PASS projects plus Dyson R5/native2. Published rolling history/r7/native6 HOLD remains excluded; unpublished R8 work is not counted. These are preparation counts, not films.",
-    "source_native_remaining_subjects": 1,
+    "source_native_pass_subjects": 18,
+    "source_native_pass_scope": "All18 subjects now have SOURCE/written-visual/native-merged PASS. Seventeen have complete untimed eight-language TEXT_PASS; rolling R9/native8 retains capacity HOLD and no translation/operator/backend preparation. These are not film counts.",
+    "source_native_remaining_subjects": 0,
     "source_written_visual_pass_subjects": 18
   },
   "projects": [
@@ -1482,6 +1482,73 @@
       "current_preparation": "doraemon/preparation-text-completion-r6.json",
       "current_text_handoff": "doraemon/production-entry-text-r6.md",
       "actual_backend_locales": {}
+    },
+    {
+      "id": "dyson",
+      "slug": "story-dyson-japan-first-20261021-remake-20261025",
+      "author_revision": 5,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "source_receipt": "dyson/reviews/source-r5-independent.json",
+      "source_receipt_sha256": "371d04594c90fadf7b9b90343c8a035128fcce57a5d9a185a3604e0313641a82",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "dyson/verify-1.md",
+      "narrative_receipt": "dyson/reviews/narrative-r2.json",
+      "narrative_receipt_sha256": "6a3c9d41728aa9eafe139f88c61165d5895dcd4bb3ccaabdb50fa1ec34dc4f94",
+      "actual_native_panel": 2,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "one_line",
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "dyson/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "31c6b3028c86bd68a130908ce8d08943583f34d2efa2999d09db33da3dd4f0b9",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "155605c3-1cce-4a22-ac3a-845d69b156b4",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "f0e37031-5e29-435d-be2a-7f932758545f",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T09:01:33.367Z",
+      "backend_current_readback": null,
+      "backend_current_readback_sha256": null,
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "dyson/production-entry-text-r5.md",
+      "text_translations": "dyson/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1120,
+      "preflight": "dyson/operator-preflight-r5.json",
+      "clean_master_recipe": "dyson/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "dyson/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "dyson/preparation-text-completion-r5.json",
+      "current_text_handoff": "dyson/production-entry-text-r5.md",
+      "actual_backend_locales": {}
     }
   ],
   "paid_requests": 0,
@@ -1498,7 +1565,11 @@
     "docs_videos_suite": {
       "passed": 236,
       "failed": 0,
-      "skipped": 0
+      "skipped": 0,
+      "fresh_root_rerun_for": "checkpoint17",
+      "execution_receipt": "/workspace/work/brand-story-20261025/checkpoint17-docs-videos-tests.txt",
+      "execution_receipt_sha256": "7bb275539ea1b5abde3db29081d5fecd63901140c0decaf070791a9da6cb4e88",
+      "execution_scope": "Fresh root execution during checkpoint17 work; not run by metadata subagent. Other historical native-i18n results are unchanged."
     },
     "docs_test_discovery_contracts": {
       "passed": 2,
@@ -1508,7 +1579,7 @@
     "helper_syntax": "PASS",
     "json_parse": {
       "status": "PASS",
-      "git_index_json_files": 7424
+      "git_index_json_files": 7673
     },
     "native_c03_fact_checked": true,
     "native_i18n_tests": {
@@ -1677,13 +1748,13 @@
     "latest_checkpoint_whitespace": {
       "status": "PASS",
       "other_staged_whitespace_errors": 0,
-      "historical_bound_source_exceptions": "Source17 preserved archive EOF blank remains immutable in prior commit; none newly introduced."
+      "historical_bound_source_exceptions": "Source17 exact archive EOF exception stays in prior commit; none newly introduced."
     },
     "latest_index_validation": {
       "status": "PASS",
-      "text_files": 9023,
-      "staged_files": 60,
-      "scope": "Sixteen-text checkpoint, frozen batch paths only; active Dyson/rolling work and local primary-source MP3 excluded. Indexed UTF8/JSON/scope/credential/binary scans pass."
+      "text_files": 9284,
+      "staged_files": 285,
+      "scope": "Final frozen source18/text17 checkpoint; batch and owned task only. Current Rolling R9 is frozen source/native PASS with explicit capacity HOLD. Original local primary-source MP3 excluded; all indexed UTF8/JSON/scope/credential/binary scans pass."
     },
     "required_assembly_guard": {
       "status": "PASS",
@@ -1708,7 +1779,7 @@
     "Actual full-film decode QA, current owner final review and upload package.",
     "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
     "C03 existing token is valid. User chose a read-only Claude host handoff; await its safe exact-old/new-slug budget JSON. Local independent probe passed, host not run; account existence remains unestablished.",
-    "Dyson R5/native2 is SOURCE/native PASS with external eight-language author work active and not TEXT_PASS. Published rolling history/r7 SOURCE PASS/native6 HOLD remains the checkpoint; unpublished R8 source/native7 work is excluded until genuinely merged and published."
+    "Rolling R9 SOURCE/written-visual/native8 PASS is frozen, but material capacity remains HOLD at1,939 spoken units with actual body seconds null. No new backend cards/operator/eight-language work starts; require verifiable new material or ordinary protected natural-rate TTS evidence supporting720–840s, then freeze/review any final changes before text preparation. No silence, slowdown or recap padding."
   ],
   "limitations": [
     "Written visual review is not generated-image acceptance.",
@@ -1743,7 +1814,10 @@
     "current_host_handoff": "c03/connection-and-budget-readback.md",
     "current_host_handoff_sha256": "9a2af4c8cb6e9b060884624f0c71425227e56db5ea8e4e72ac0b51e2eb46c63b",
     "current_production_handoff_sha256": "6fb7680fe078ac4c9a875631092c0b24fb47444dec516d056af457687da94c88",
-    "quote_accounting_note": "Existing dispatch requires settled plus reserved/uncertain plus the next operation maximum within the exact account limit. Sum of every future model-wide cap is not an implemented gate or a completed all-in quote."
+    "quote_accounting_note": "Existing dispatch requires settled plus reserved/uncertain plus the next operation maximum within the exact account limit. Sum of every future model-wide cap is not an implemented gate or a completed all-in quote.",
+    "current_host_access_evidence": "c03/connection-check-current-20261026.json",
+    "current_host_access_evidence_sha256": "3570bf3c0d80b51eeefc690d1fb83c1fda39fdc264ed317a76f473d320da8a1f",
+    "current_host_access_state": "Managed cloud revision137 is current/connected/running but exposes zero capabilities, identities, runtime variables and secret references; no production-host proof or Claude safe JSON. Account existence/balance/activation remain unknown; token is valid."
   },
   "language_defaults": "language-defaults.json",
   "default_additional_locales": [
@@ -1773,7 +1847,8 @@
     "seiko": true,
     "garmin": false,
     "c20": true,
-    "doraemon": false
+    "doraemon": false,
+    "dyson": false
   },
   "selected_language_parts": [
     "metadata",
@@ -1781,9 +1856,9 @@
     "dub"
   ],
   "translation_text_preparation": {
-    "receipt": "text-preparation-checkpoint-16.json",
+    "receipt": "text-preparation-checkpoint-17.json",
     "locales": 8,
-    "lines": 14600,
+    "lines": 15720,
     "independent_text_review": "TEXT_PASS",
     "actual_timed_srt": false,
     "dub_audio": false,
@@ -1883,11 +1958,17 @@
         "receipt": "doraemon/i18n/preparation-status.json",
         "lines": 1048,
         "chapters": 48
+      },
+      {
+        "id": "dyson",
+        "receipt": "dyson/i18n/preparation-status.json",
+        "lines": 1120,
+        "chapters": 56
       }
     ],
-    "prepared_projects": 16,
-    "scope": "All sixteen current source-verified/native-merged-PASS projects. Untimed text only; historical baselines, uncollected Dyson author work and unpublished rolling R8 are excluded.",
-    "chapters": 792
+    "prepared_projects": 17,
+    "scope": "All seventeen current full eight-language TEXT_PASS projects. Rolling R9 SOURCE/native8 PASS is excluded from text totals because material capacity remains HOLD and translations have not started.",
+    "chapters": 848
   },
   "latest_user_direction": "要加片頭加片尾，可以參考PR1860；做完繼續下一個，預設八語、不需例行確認",
   "continuation_in_progress": {
@@ -1906,8 +1987,8 @@
     "c20": "source_native_and_eight_language_text_PASS_media_held",
     "seiko": "source_native_and_eight_language_text_PASS_media_held",
     "garmin": "source_native_and_eight_language_text_PASS_media_held",
-    "dyson": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE2_PASS_FREE_OPERATOR_FROZEN_TEXT_AUTHORING",
-    "rolling_suitcase": "R7_FROZEN_SOURCE_WRITTEN_VISUAL_PASS_NATIVE6_HOLD_R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
+    "dyson": "source_native_and_eight_language_text_PASS_media_held",
+    "rolling_suitcase": "R9_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_CAPACITY_HOLD_TEXT_NOT_PREPARED",
     "doraemon": "source_native_and_eight_language_text_PASS_media_held"
   },
   "narration_size_planning": "narration-size-precheck.json",
@@ -1944,8 +2025,8 @@
     "explicit_plan_episodes": 3,
     "explicit_plan_events": 6,
     "current_reconciliation": "opening-teaser-plan-reconciliation.json",
-    "current_source_verified_plan_projects": 16,
-    "current_written_plan_events": 29,
+    "current_source_verified_plan_projects": 17,
+    "current_written_plan_events": 31,
     "current_missing_written_plans": 0
   },
   "production_branding": {
@@ -1967,29 +2048,31 @@
   },
   "other_drafts": [
     {
-      "id": "dyson",
-      "state": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE2_PASS_FREE_OPERATOR_FROZEN_TEXT_AUTHORING",
-      "author_revision": 5,
-      "video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
-      "frozen_source_file": "dyson/video.json",
-      "frozen_author_checkpoint": "dyson/author-freeze-r5.json",
-      "frozen_author_checkpoint_sha256": "ccb3708f69011c4a2154c02cf99b0f5c39d076f5ceafa927eeef4b0970af5b1e",
-      "source_receipt": "dyson/reviews/source-r5-independent.json",
-      "source_receipt_sha256": "371d04594c90fadf7b9b90343c8a035128fcce57a5d9a185a3604e0313641a82",
+      "id": "rolling-suitcase",
+      "state": "R9_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_CAPACITY_HOLD_TEXT_NOT_PREPARED",
+      "author_revision": 9,
+      "author_and_source_review_state": "FROZEN",
+      "video_sha256": "565f98f274c6f285b56a9d4f167e9e7503e0f0a6ed34dc744d4c643355e8751d",
+      "frozen_source_file": "rolling-suitcase/video.json",
+      "frozen_author_checkpoint": "rolling-suitcase/author-freeze-r9.json",
+      "frozen_author_checkpoint_sha256": "40abc61ca8c10d475513dce804953d916eec0427048ea287716484cb59cf89de",
+      "source_receipt": "rolling-suitcase/reviews/source-r9-independent.json",
+      "source_receipt_sha256": "13fdc30906c5c7387384af864723f66b7b15561575e96fc6e190c089fd2f8caa",
       "source_text_fact_gate": "PASS",
       "source_written_visual_gate": "PASS",
-      "native_fact_check": "dyson/verify-1.md",
-      "native_fact_check_sha256": "4707ff4bf32b9e764f1ef276d498559911cf802480b43fccf0579c4ff658bd68",
-      "narrative_receipt": "dyson/reviews/narrative-r2.json",
-      "narrative_receipt_sha256": "6a3c9d41728aa9eafe139f88c61165d5895dcd4bb3ccaabdb50fa1ec34dc4f94",
-      "actual_completed_native_panels": 2,
+      "native_fact_check": "rolling-suitcase/verify-1.md",
+      "native_fact_check_sha256": "e3561b810ce93a19bd441107980703a8d00906acbbcfba4d87bcafa7f2009bef",
+      "narrative_receipt": "rolling-suitcase/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "911b5ac400e0710c52855f5bb1afcd5ce1c6181c3f284d5a593aa00f989cf156",
+      "native_binding": "rolling-suitcase/reviews/narrative-r8-binding.json",
+      "native_binding_sha256": "790f428c033abf2ca173a512d1d7af855e31880bd564cabda357b1ec2cf9d9bc",
+      "actual_completed_native_panels": 8,
       "native_merged": "PASS",
       "native_merged_failed": [],
       "narrative_readers": [
         {
           "passed": false,
           "failed": [
-            "one_line",
             "no_recap"
           ]
         },
@@ -2000,35 +2083,31 @@
       ],
       "native_advisory": [],
       "native_review_matches_current_source": true,
+      "current_native_state": "R9_ROUND_8_ACTUAL_MERGED_PASS",
+      "previous_native7_scope": "Historical R8 HOLD only; its receipts/raw remain preserved.",
       "prepared_next_native_panel": null,
-      "current_native_state": "ROUND_2_ACTUAL_MERGED_PASS",
-      "source_lines": 140,
+      "source_lines": 85,
       "source_chapters": 7,
-      "whole_narration_spoken_units": 3316,
-      "source_operator_snapshot": "dyson/operator-freeze-r5.json",
-      "source_operator_snapshot_sha256": "4edf44d71d59185c14027d46dabdb863b031cd8b52ebff0b202b56ef345779f5",
-      "free_operator_state": "FROZEN",
-      "canonical_script_sha256": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
-      "backend_review_id": "155605c3-1cce-4a22-ac3a-845d69b156b4",
-      "backend_script_status": "pending",
-      "backend_outline_review_id": "f0e37031-5e29-435d-be2a-7f932758545f",
-      "backend_outline_status": "pending",
-      "backend_checked_at": "2026-10-26T09:01:33.367Z",
+      "source_shots": 82,
+      "source_loops": 25,
+      "whole_narration_spoken_units": 1939,
+      "capacity_state": "HOLD_MATERIAL_CAPACITY",
+      "material_capacity_risk": "Natural 720–840-second body is unmeasured. 1,939 spoken units remain a material-capacity HOLD, not TTS FAIL. No slowdown, silence or recaps are authorized to fill the gap.",
+      "text_translation_preparation": "NOT_TEXT_PASS",
+      "eight_language_text_state": "NOT_PREPARED_CAPACITY_HOLD",
+      "translation_preparation_started": false,
+      "backend_submission_state": "NO_NEW_R9_BACKEND_CARDS",
+      "backend_review_id": null,
+      "backend_outline_review_id": null,
+      "backend_script_status": "not_submitted",
+      "backend_outline_status": "not_submitted",
       "script_approval_imported": false,
       "outline_approval_imported": false,
-      "actual_backend_locales": {},
+      "actual_backend_locales": null,
       "backend_language_selection_applied": false,
-      "current_handoff": "dyson/production-entry-r5-prepared.md",
-      "production_handoff": "dyson/production-entry-r5-prepared.md",
-      "current_handoff_sha256": "ce56dfb75d83e01f1b528382b3e463b1e16e18a10f1c06cff3249643357eb8c3",
-      "text_state_at_operator_freeze": "SOURCE_WORKSHEETS_READY",
-      "text_translation_preparation": "NOT_TEXT_PASS",
-      "eight_language_text_state": "AUTHORING_IN_PROGRESS_NOT_TEXT_PASS",
-      "target_eight_language_text_entries": 1120,
-      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
-      "clean_master_metadata_review_receipt": "dyson/variants/clean-master/review.json",
-      "clean_master_metadata_review_receipt_sha256": "12234000183f80a14893039fbfec87068d037204e0c707ef94416c9e0e365493",
-      "actual_clean_master": false,
+      "free_operator_state": "NOT_PREPARED_NOT_OPERATOR_READY",
+      "source_only_handoff": "rolling-suitcase/production-entry-source-r9.md",
+      "source_only_handoff_sha256": "e95214660ba3d1af4398e92a4ee22aee23006018dfb3bfa51666f969671456be",
       "target_minutes": 13,
       "body_seconds_gate": [
         720,
@@ -2036,7 +2115,6 @@
       ],
       "body_includes_coldopen_and_voiced_CTA": true,
       "added_bookends_seconds_excluded": 26,
-      "material_capacity_risk": "Actual natural TTS duration remains unmeasured; spoken units and estimated cut times do not establish PASS or FAIL.",
       "actual_narration_seconds": null,
       "actual_final_seconds": null,
       "actual_same_asset_verified": false,
@@ -2044,78 +2122,7 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false,
-      "paid_requests": 0,
-      "current_text_work_scope": "External eight-language author work is active; 140 lines/seven chapters per locale, not independently collected TEXT_PASS. Operator SOURCE_WORKSHEETS_READY is a historical snapshot."
-    },
-    {
-      "id": "rolling-suitcase",
-      "state": "R7_FROZEN_SOURCE_WRITTEN_VISUAL_PASS_NATIVE6_HOLD_R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
-      "author_revision": 7,
-      "active_author_revision": 8,
-      "current_author_work_state": "R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
-      "active_author_source_reviewed": false,
-      "current_author_work": "R8 author work is excluded; all source/native identity below is the immutable R7 history checkpoint.",
-      "video_sha256": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
-      "frozen_source_file": "rolling-suitcase/history/r7/video.json",
-      "frozen_author_checkpoint": "rolling-suitcase/history/r7/author-freeze-r7.json",
-      "frozen_author_checkpoint_sha256": "69a79c01b9ff519cc8dfffc5a88ce27d04ecce07fc0a5e20cf715b11fd6fa8d6",
-      "history_manifest": "rolling-suitcase/history/r7/preservation-manifest.json",
-      "history_manifest_sha256": "4db34b49e1b0648b08e87f7b40b52be7a48f0fe7f88ec7c89759222126ceca9c",
-      "source_receipt": "rolling-suitcase/history/r7/reviews/source-r7-independent.json",
-      "source_receipt_sha256": "9d9ec143db310fde4ce2f949065c32524d0ca6ea00eb28f8f87c6dcf64056b04",
-      "source_text_fact_gate": "PASS",
-      "source_written_visual_gate": "PASS",
-      "native_fact_check": "rolling-suitcase/history/r7/verify-1.md",
-      "native_fact_check_sha256": "317d2a4edc60cbd6cf446a21a6c400bcde00b8a0c2af32616cb1a2fa56c5451e",
-      "narrative_receipt": "rolling-suitcase/history/r7/reviews/narrative-r6.json",
-      "narrative_receipt_sha256": "4cdeca3cc1d9615dd54d4602f96b9f4d7e8ac6ed7689456269511164eaf01779",
-      "actual_completed_native_panels": 6,
-      "native_merged": "HOLD",
-      "native_merged_failed": [
-        "no_recap"
-      ],
-      "narrative_readers": [
-        {
-          "passed": false,
-          "failed": [
-            "no_recap"
-          ]
-        },
-        {
-          "passed": false,
-          "failed": [
-            "no_recap"
-          ]
-        }
-      ],
-      "native_advisory": [],
-      "native_review_matches_checkpoint_source": true,
-      "native_review_matches_current_source": false,
-      "native_merged_scope": "Actual native6 is bound to frozen R7 and fails only required no_recap. Chapter-name advisory remains. R8 has no checkpoint verdict.",
-      "previous_native5_scope": "Historical R6 only; not used as the current R7 native verdict.",
-      "prepared_next_native_panel": null,
-      "current_native_state": "R7_ROUND_6_ACTUAL_MERGED_HOLD",
-      "source_lines": 99,
-      "source_chapters": 7,
-      "whole_narration_spoken_units": 2330,
-      "source_loops": 25,
-      "text_translation_preparation": "NOT_TEXT_PASS",
-      "eight_language_text_state": "NOT_PREPARED",
-      "target_minutes": 13,
-      "body_seconds_gate": [
-        720,
-        840
-      ],
-      "material_capacity_risk": "Natural 720–840-second body remains unmeasured; 2,330 spoken units indicate planning risk, not an actual audio failure.",
-      "actual_narration_seconds": null,
-      "actual_final_seconds": null,
-      "actual_same_asset_verified": false,
-      "audio_generated": false,
-      "illustrations_generated": false,
-      "media_qa": false,
-      "final_approval": false,
-      "paid_requests": 0,
-      "active_work_note": "R8 SOURCE PASS and fresh native7 blind reading are unpublished, not checkpointed here and excluded from the published source/native17 count. Current published source/native evidence remains history/r7/native6 HOLD."
+      "paid_requests": 0
     }
   ],
   "narration_capacity_research": {
@@ -2137,8 +2144,8 @@
       "actual_duration_measured": false
     }
   },
-  "current_text_checkpoint": "text-preparation-checkpoint-16.json",
-  "current_source_checkpoint": "source-preparation-checkpoint-20261026.json",
+  "current_text_checkpoint": "text-preparation-checkpoint-17.json",
+  "current_source_checkpoint": "source-preparation-checkpoint-18-20261026.json",
   "backend_current_status_summary": {
     "receipt": "backend-current-status-20261026.json",
     "receipt_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
@@ -2222,14 +2229,14 @@
     "new_owner_decisions_imported": 5,
     "actual_clean_media_or_dub_eligibility": false
   },
-  "current_preparation_forward": "text-preparation-checkpoint-16.json",
+  "current_preparation_forward": "text-preparation-checkpoint-17.json",
   "current_text_ready_backend_totals": {
-    "projects": 16,
+    "projects": 17,
     "outline_approved": 8,
-    "outline_pending": 8,
+    "outline_pending": 9,
     "script_approved": 9,
-    "script_pending": 7,
+    "script_pending": 8,
     "actual_all_eight_metadata_captions_dub_selected_projects": 8,
-    "scope": "The prior 15-project safe GET and five official imports remain unchanged; added Doraemon R6 uses its frozen operator pending outline/script and empty locale selection."
+    "scope": "Prior15 exact safe GET plus five official imports, and frozen Doraemon/Dyson pending cards. Rolling R9 has no new submitted cards and is excluded from these text-ready review totals."
   }
 }

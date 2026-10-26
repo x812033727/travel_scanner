@@ -1,0 +1,255 @@
+{
+  "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+  "reviewer": "dyson-r5-independent-vi-th",
+  "independent": true,
+  "review_type": "TARGETED_METADATA_FIT_RECHECK",
+  "original_full_review_sha256": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+  "prior_targeted_recheck_sha256": "dc25f308ec020203ad0a47035cc97e8900a350c5d43afaa04df15f553824ceba",
+  "role_disclosure": "本 agent 是此 pair 的原獨立校對員，未翻譯、縮寫或修稿。本次親讀 VI 新 title 及其中文題意、全部 TH 新 description（包括完整 17 URLs）及中文 source 摘要；只對這兩個變更欄位作 targeted 語意重核，沒有重新宣稱全讀 140 句。以完整 current/saved-before worksheet 與 native JSON 作遞迴比較，確認僅指定文本變動，其餘 captions、章名、metadata、來源欄位與 native source hashes 全同。未讀 author revision 自校結論或其他校對結論。原 full review、原 targeted recheck、兩輪 saved-before 均保持不變。未作實際時間軸、SRT、配音或影片 QA。",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "86010cab4441739f2bce96a8d51f2788a42d6fe2ebbcbab2d38b6881faf4fd62",
+      "translation_sha256": "9fa690ea1c3832ba843bb6272d24ecdd1981937f7f65281504b154d3897b9624",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "checked_metadata_fields": [
+        "title"
+      ],
+      "targeted_scope": "親讀新 title 與中文 source 題意；其餘文字承接原完整審讀及前次 recheck，經完整 JSON 比對未變。",
+      "current_text": "Dyson không túi: sao làm lại ở Nhật?｜Câu chuyện thương hiệu",
+      "source_text": "戴森無袋原型，為何還得跨國重做？｜品牌故事",
+      "saved_before": {
+        "worksheet_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/worksheet.todo.json",
+        "worksheet_sha256": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+        "translation_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/native.json",
+        "translation_sha256": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+        "hashes_match_prior_targeted_recheck_current_sha256": true,
+        "preserved_unchanged": true
+      },
+      "worksheet_json_difference_paths": [
+        ".title.text"
+      ],
+      "native_json_difference_paths": [
+        ".title"
+      ],
+      "changed_field_before": "Dyson: vì sao mẫu máy không túi phải làm lại ở nước ngoài?｜Câu chuyện thương hiệu",
+      "only_authorized_text_field_changed": true,
+      "all_other_json_deep_equal_saved_before": true,
+      "captions_chapters_tags_thumbnail_and_source_hashes_unchanged": true,
+      "native_text_matches_current_worksheet": true,
+      "description_url_count": 17,
+      "description_urls": [
+        "https://mastersofscale.com/tinker-your-way-to-scale/",
+        "https://fortune.com/2017/09/09/james-dyson-vacuum/",
+        "https://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/",
+        "https://www.davidsenra.com/episode/james-dyson",
+        "https://www.dyson.co.uk/james-dyson",
+        "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+        "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/05",
+        "https://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000",
+        "https://ottimo-d.com/en/about",
+        "https://api.vam.ac.uk/v2/museumobject/O146046",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/06",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner",
+        "https://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/",
+        "https://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf",
+        "https://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf"
+      ],
+      "description_urls_match_source_and_saved_before_exact_order": true,
+      "findings": [],
+      "advisory": [],
+      "semantic_result": "保留 bagless Dyson 為何要在日本重做的核心疑問及品牌故事系列名，與源題及本集日本共同開發內容相符，未引入首次市場等新主張。",
+      "title_budget": {
+        "method": "repo core/metadata.mjs titleWidth + package/metadata.mjs composeMetadata",
+        "composed_title": "Dyson không túi: sao làm lại ở Nhật?｜Câu chuyện thương hiệu｜Vietsub",
+        "full_width_units_including_series_and_caption_suffix": 34.5,
+        "maximum_full_width_units": 36,
+        "pass": true,
+        "cjk_kana_present": false
+      }
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "4641ca3a389714dc7bfb8b27474a61c93af998d3ab4d7137a39b8beb5f4cdf09",
+      "translation_sha256": "3e0dff38a7fed23c3b6bbcb4c0a9ff7957f2d5a290c2c46fb4b0c0dcd8ceaf62",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "checked_metadata_fields": [
+        "description"
+      ],
+      "targeted_scope": "親讀新 description 全文及中文 source 摘要；其餘文字承接原完整審讀及前次 recheck，經完整 JSON 比對未變。",
+      "current_text": "ต้นแบบไร้ถุงของ Dyson ทำไมต้องพัฒนาใหม่ในญี่ปุ่น ก่อนผลิตเองและหาช่องทางขายอังกฤษ?\n\nก่อนญี่ปุ่นมี Cyclon ภายใต้สิทธิ์ในอังกฤษแล้ว ปี 1983–84 และ 550 เครื่องคือความทรงจำ Dyson การผลิตอิตาลีระบุเฉพาะวัตถุในพิพิธภัณฑ์ ญี่ปุ่นไม่ใช่ตลาดแรกของโลก ภาพแก้หัวดูดปี 1985 ความทรงจำข้อตกลง Apex ปี 1986 และการขายญี่ปุ่นเป็นคนละบันทึก วันในทะเบียนพิพิธภัณฑ์ก็ไม่ใช้รวมเป็นวันเซ็นหรือขายครั้งแรก\n\nMasters of Scale ระบุว่าถอดเสียงอัตโนมัติและตรวจแก้ไม่ครบ ผู้เขียนไม่ได้ฟังเสียงแยก รายละเอียดยังรอตรวจแหล่งอิสระ เรื่องธนาคารใช้เพียงการผลักดันภายในและบ้านค้ำ ไม่รวมวันกับสกุลเงินต่างกันเป็นยอดแน่นอน ครึ่งโรงงานเช่าไม่ระบุที่หรือวัน จึงยืนยันว่าเป็น Bumpers Farm ปี 1993 ไม่ได้ สาธิตใช้ผงแห้งก่อนดูด ไม่ใช่ดูดเปียกหรือทดสอบสมรรถนะทั่วไป โฆษณาแลกยอดสั่งไม่ระบุปี ไม่อาจระบุว่าเป็นธุรกรรมเดียวกับผู้ซื้อแค็ตตาล็อกไปรษณีย์รายแรก\n\nภาพแนวคิดไม่ระบุตัวบุคคล ภาพต้นฉบับใช้วิจัย แหล่งต้นฉบับ เข้าดู 2026-10-26:\nMASTERS_SCALE\nhttps://mastersofscale.com/tinker-your-way-to-scale/\nFORTUNE_ORAL\nhttps://fortune.com/2017/09/09/james-dyson-vacuum/\nGIZMODO_YAMAMOTO\nhttps://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/\nSENRA\nhttps://www.davidsenra.com/episode/james-dyson\nDYSON_BIO\nhttps://www.dyson.co.uk/james-dyson\nDESIGN_MATTERS\nhttps://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/\nOU_1993\nhttps://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf\nDYSON_CH05_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/05\nUKIPO_TRANSPARENT_BIN\nhttps://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf\nSMG_CYCLON\nhttps://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000\nOTTIMO_ABOUT_EN\nhttps://ottimo-d.com/en/about\nVAM_RECORD\nhttps://api.vam.ac.uk/v2/museumobject/O146046\nDYSON_CH06_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/06\nSMG_GFORCE\nhttps://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner\nMPLUS_GFORCE\nhttps://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/\nPATENT_US4373228_SCAN\nhttps://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf\nPATENT_US4593429_SCAN\nhttps://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf",
+      "source_text": "一台無袋原型能試用，為什麼還得跨國重新開發，再回到自家製造與英國接貨？從工廠粉末堵布濾、家用袋孔診斷、紙板與金屬模型試作、授權與日本共同開發，走到模具融資、租用組裝空間、郵購實演與售點說明。\n\n日本之前已有英國獲授權的Cyclon產品，1983–84/550台是戴森回顧；義大利製只限館藏單件，不稱日本為全球第一市場。1985西麻布改吸頭照片、1986與Apex達成授權協議的回憶及日本發售分開，不倒推簽約日。M+1983/Silver Seiko、V&A1986/APEX、科學博物館群1985–1990/Apex是不同館藏欄位，不是同一份首售或製造合約。\n\n新材料採本人訪談原發布頁、公司傳記與Robin Roy訪談研究。Masters of Scale官方逐字稿明示自動產生且未全校正，作者未另聽音檔；相關細節仍待獨立來源審查。新銀行回憶與舊Fortune日期/幣別口徑不同，旁白只採內部爭取與房屋擔保，不拼成精確年額。租半廠的訪談沒有地點日期，不能等同1993 Bumpers Farm；乾粉示範先撒配套粉後吸除，不是濕吸證明或通用效能測試。廣告與訂單交換為另一段未定年的初期英國通路回憶，不能指定為首家郵購買手同一交易。\n\n所有圖片為匿名概念插畫，原照片只研究。原件來源（查閱2026-10-26）\nMASTERS_SCALE\nhttps://mastersofscale.com/tinker-your-way-to-scale/\nFORTUNE_ORAL\nhttps://fortune.com/2017/09/09/james-dyson-vacuum/\nGIZMODO_YAMAMOTO\nhttps://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/\nSENRA\nhttps://www.davidsenra.com/episode/james-dyson\nDYSON_BIO\nhttps://www.dyson.co.uk/james-dyson\nDESIGN_MATTERS\nhttps://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/\nOU_1993\nhttps://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf\nDYSON_CH05_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/05\nUKIPO_TRANSPARENT_BIN\nhttps://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf\nSMG_CYCLON\nhttps://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000\nOTTIMO_ABOUT_EN\nhttps://ottimo-d.com/en/about\nVAM_RECORD\nhttps://api.vam.ac.uk/v2/museumobject/O146046\nDYSON_CH06_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/06\nSMG_GFORCE\nhttps://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner\nMPLUS_GFORCE\nhttps://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/\nPATENT_US4373228_SCAN\nhttps://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf\nPATENT_US4593429_SCAN\nhttps://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf",
+      "saved_before": {
+        "worksheet_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/worksheet.todo.json",
+        "worksheet_sha256": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+        "translation_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/native.json",
+        "translation_sha256": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4",
+        "hashes_match_prior_targeted_recheck_current_sha256": true,
+        "preserved_unchanged": true
+      },
+      "worksheet_json_difference_paths": [
+        ".description.text"
+      ],
+      "native_json_difference_paths": [
+        ".description"
+      ],
+      "changed_field_before": "ต้นแบบไร้ถุงใช้ได้แล้ว ทำไมต้องพัฒนาใหม่ข้ามประเทศ ก่อนกลับมาผลิตเองและให้ร้านในอังกฤษเริ่มรับสินค้า? จากผงในโรงงานอุดกรองผ้า การวินิจฉัยรูถุงเครื่องที่บ้าน การทำโมเดลกระดาษแข็งและโลหะ การให้สิทธิ์และพัฒนาร่วมในญี่ปุ่น ไปถึงเงินทุนแม่พิมพ์ เช่าพื้นที่ประกอบ สาธิตแก่แค็ตตาล็อกไปรษณีย์ และคำอธิบายที่จุดขาย\n\nก่อนญี่ปุ่นมีผลิตภัณฑ์ Cyclon ภายใต้สิทธิ์ในอังกฤษแล้ว ปี 1983–84 และ 550 เครื่องเป็นความทรงจำของ Dyson ส่วนการผลิตในอิตาลีจำกัดเฉพาะวัตถุหนึ่งชิ้นในพิพิธภัณฑ์ ไม่เรียกญี่ปุ่นว่าตลาดแรกของโลก ภาพแก้หัวดูดปี 1985 ที่นิชิอาซาบุ ความทรงจำข้อตกลงกับ Apex ปี 1986 และการวางขายญี่ปุ่นแยกกัน ไม่คำนวณย้อนเป็นวันเซ็นสัญญา ข้อมูล 1983/Silver Seiko ของ M+, 1986/APEX ของ V&A และ 1985–1990/Apex ของ Science Museum Group เป็นช่องข้อมูลของวัตถุคนละชิ้น ไม่ใช่บันทึกขายครั้งแรกหรือสัญญาผลิตฉบับเดียวกัน\n\nข้อมูลใหม่มาจากหน้าตีพิมพ์ต้นฉบับสัมภาษณ์เจ้าตัว ชีวประวัติบริษัท และงานวิจัยสัมภาษณ์ของ Robin Roy บทถอดเสียงทางการของ Masters of Scale ระบุว่าสร้างอัตโนมัติและยังตรวจแก้ไม่ครบ ผู้เขียนยังไม่ได้ฟังเสียงแยก รายละเอียดเกี่ยวข้องยังรอการตรวจแหล่งข้อมูลอิสระ ความทรงจำธนาคารใหม่กับ Fortune เดิมใช้วันเวลาและสกุลเงินต่างกัน จึงเล่าเฉพาะการผลักดันภายในกับบ้านค้ำประกัน ไม่รวมเป็นปีและยอดเงินแน่นอน บทสัมภาษณ์เช่าครึ่งโรงงานไม่มีสถานที่หรือวันเวลา จึงถือว่าเป็น Bumpers Farm ปี 1993 ไม่ได้ การสาธิตผงแห้งโรยผงที่ใช้คู่กันก่อนดูด ไม่ใช่หลักฐานดูดเปียกหรือการทดสอบสมรรถนะทั่วไป การแลกโฆษณากับยอดสั่งเป็นความทรงจำอีกช่วงที่ไม่ระบุปีของช่องทางขายแรกในอังกฤษ ไม่อาจระบุว่าเป็นธุรกรรมเดียวกับผู้ซื้อแค็ตตาล็อกไปรษณีย์รายแรก\n\nภาพทั้งหมดเป็นภาพแนวคิดไม่ระบุตัวบุคคล ภาพถ่ายต้นฉบับใช้เพื่อวิจัยเท่านั้น แหล่งต้นฉบับ เข้าดูวันที่ 2026-10-26:\nMASTERS_SCALE\nhttps://mastersofscale.com/tinker-your-way-to-scale/\nFORTUNE_ORAL\nhttps://fortune.com/2017/09/09/james-dyson-vacuum/\nGIZMODO_YAMAMOTO\nhttps://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/\nSENRA\nhttps://www.davidsenra.com/episode/james-dyson\nDYSON_BIO\nhttps://www.dyson.co.uk/james-dyson\nDESIGN_MATTERS\nhttps://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/\nOU_1993\nhttps://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf\nDYSON_CH05_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/05\nUKIPO_TRANSPARENT_BIN\nhttps://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf\nSMG_CYCLON\nhttps://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000\nOTTIMO_ABOUT_EN\nhttps://ottimo-d.com/en/about\nVAM_RECORD\nhttps://api.vam.ac.uk/v2/museumobject/O146046\nDYSON_CH06_UK\nhttps://www.dyson.co.uk/james-dyson/invention-a-life/06\nSMG_GFORCE\nhttps://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner\nMPLUS_GFORCE\nhttps://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/\nPATENT_US4373228_SCAN\nhttps://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf\nPATENT_US4593429_SCAN\nhttps://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf",
+      "only_authorized_text_field_changed": true,
+      "all_other_json_deep_equal_saved_before": true,
+      "captions_chapters_tags_thumbnail_and_source_hashes_unchanged": true,
+      "native_text_matches_current_worksheet": true,
+      "description_url_count": 17,
+      "description_urls": [
+        "https://mastersofscale.com/tinker-your-way-to-scale/",
+        "https://fortune.com/2017/09/09/james-dyson-vacuum/",
+        "https://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/",
+        "https://www.davidsenra.com/episode/james-dyson",
+        "https://www.dyson.co.uk/james-dyson",
+        "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+        "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/05",
+        "https://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000",
+        "https://ottimo-d.com/en/about",
+        "https://api.vam.ac.uk/v2/museumobject/O146046",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/06",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner",
+        "https://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/",
+        "https://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf",
+        "https://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf"
+      ],
+      "description_urls_match_source_and_saved_before_exact_order": true,
+      "findings": [],
+      "advisory": [],
+      "semantic_checks": [
+        {
+          "topic": "日本不是全球第一市場",
+          "result": "PASS",
+          "evidence": "明列日本之前已有在英國獲授權的 Cyclon，並說日本不是全球第一市場。"
+        },
+        {
+          "topic": "年份、數量及回憶歸屬",
+          "result": "PASS",
+          "evidence": "1983–84 與 550 台歸於 Dyson 回憶；1985 改吸頭照片、1986 Apex 協議回憶及日本銷售分成不同記錄。"
+        },
+        {
+          "topic": "館藏與日期不可混同",
+          "result": "PASS",
+          "evidence": "義大利製只指館藏物件；博物館登錄日期不合併為簽約日或首次銷售日。"
+        },
+        {
+          "topic": "逐字稿不確定性",
+          "result": "PASS",
+          "evidence": "保留 Masters of Scale 自動轉錄、未全校正、作者未另聽音檔及仍待獨立來源核查。"
+        },
+        {
+          "topic": "銀行不同口徑",
+          "result": "PASS",
+          "evidence": "只採內部爭取與房屋擔保，不把不同日期與幣別拼成精確金額。"
+        },
+        {
+          "topic": "租廠地點與日期",
+          "result": "PASS",
+          "evidence": "租半廠記錄沒有地點、日期，無法確認為 1993 Bumpers Farm。"
+        },
+        {
+          "topic": "乾粉示範與效能",
+          "result": "PASS",
+          "evidence": "先用乾粉後吸除，並非濕吸或通用效能測試。"
+        },
+        {
+          "topic": "廣告與訂單交易",
+          "result": "PASS",
+          "evidence": "交易未定年，不能指定為首家郵購目錄買手的同一交易。"
+        },
+        {
+          "topic": "圖片用途與查閱日期",
+          "result": "PASS",
+          "evidence": "保留匿名概念圖、原圖僅研究、查閱日 2026-10-26。"
+        },
+        {
+          "topic": "新主張",
+          "result": "PASS",
+          "evidence": "未發現新增歷史、日期、廠址、交易或效能主張。"
+        }
+      ],
+      "description_budget": {
+        "method": "repo package/metadata.mjs composeMetadata using estimateTimeline(doc), no measured-media validation",
+        "raw_body_utf8_bytes": 3719,
+        "composed_utf8_bytes": 4498,
+        "maximum_utf8_bytes": 5000,
+        "pass": true,
+        "budget_only": true
+      }
+    }
+  ],
+  "source_binding": {
+    "source_video_matches_config": true,
+    "runtime_and_repo_source_video_unchanged_from_full_review": true,
+    "runtime_canonical_script_matches_config_and_unchanged": true,
+    "worksheet_source_and_native_source_hashes_unchanged": true,
+    "immutable_blank_translation_source_sheets_unchanged": true,
+    "original_full_review_preserved_unchanged": true,
+    "prior_targeted_recheck_preserved_unchanged": true
+  },
+  "protected_inputs": {
+    "before": {
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.todo.json": "86010cab4441739f2bce96a8d51f2788a42d6fe2ebbcbab2d38b6881faf4fd62",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.json": "9fa690ea1c3832ba843bb6272d24ecdd1981937f7f65281504b154d3897b9624",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/vi.json": "3e4ee5037045726aef6c99ed2ba22051453283af00a1f664002b746dabb41dd4",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/th.todo.json": "4641ca3a389714dc7bfb8b27474a61c93af998d3ab4d7137a39b8beb5f4cdf09",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/th.json": "3e0dff38a7fed23c3b6bbcb4c0a9ff7957f2d5a290c2c46fb4b0c0dcd8ceaf62",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/th.json": "06371f6cf8d9b6b4f1ba131d3582e1f2da11f411a0d7caaeb24d03558d0a6350",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-vi-th.json": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/worksheet-before.json": "a4bb02fba0ca499f8a357cd59d2b1a850e8b53043f6b2e402421145aad5609db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/translation-before.json": "95176dfd0b8e2d5beff58f98057ec7a189f3082426665b8242f3b7176a7c2a26",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/worksheet.todo.json": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/native.json": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/worksheet.todo.json": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/native.json": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4"
+    },
+    "after": {
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.todo.json": "86010cab4441739f2bce96a8d51f2788a42d6fe2ebbcbab2d38b6881faf4fd62",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.json": "9fa690ea1c3832ba843bb6272d24ecdd1981937f7f65281504b154d3897b9624",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/vi.json": "3e4ee5037045726aef6c99ed2ba22051453283af00a1f664002b746dabb41dd4",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/th.todo.json": "4641ca3a389714dc7bfb8b27474a61c93af998d3ab4d7137a39b8beb5f4cdf09",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/th.json": "3e0dff38a7fed23c3b6bbcb4c0a9ff7957f2d5a290c2c46fb4b0c0dcd8ceaf62",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/th.json": "06371f6cf8d9b6b4f1ba131d3582e1f2da11f411a0d7caaeb24d03558d0a6350",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-vi-th.json": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/worksheet-before.json": "a4bb02fba0ca499f8a357cd59d2b1a850e8b53043f6b2e402421145aad5609db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/translation-before.json": "95176dfd0b8e2d5beff58f98057ec7a189f3082426665b8242f3b7176a7c2a26",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/worksheet.todo.json": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/vi/native.json": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/worksheet.todo.json": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/metadata-fit-r2/before/th/native.json": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4"
+    },
+    "all_unchanged_during_this_recheck": true,
+    "note": "current VI title / TH description 相對 metadata-fit-r2 saved-before 有上述授權變更；本次 recheck 期間 current inputs、source、既有報告及 saved-before 共 22 檔均同 SHA。"
+  },
+  "remaining_required_fix_count": 0,
+  "semantic_scope": "本次針對 metadata fit 修訂，0 句 captions、0 章重讀；其餘 JSON deep equal 並承接初版與前次 recheck。TEXT_PASS 僅文字語意；description 預算以 estimated timeline 組合，沒有作實際時間軸或媒體 QA。"
+}

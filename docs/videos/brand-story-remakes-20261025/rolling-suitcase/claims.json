@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_revision": "rolling-suitcase-r4",
+  "candidate_revision": "rolling-suitcase-r9",
   "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_QA",
   "author": "/root/rolling_visual_r2_author",
   "video_slug": "story-rolling-suitcase-v2-remake-20261025",
@@ -772,22 +772,21 @@
       "limits": [],
       "visual_prompt": "Medium shot at a passenger terminal waiting area, an anonymous traveler standing beside one plain upright soft suitcase and a separate small bag, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0002",
       "author_ref": "open02",
       "scene_id": "rs0002",
-      "claim": "一份機師回憶和一份專利，留下了一只輪箱的改變。",
-      "kind": "editorial_link",
+      "claim": "艾默記得，在西雅圖機場，普拉斯從包裡拿出圖紙，給舊輪箱的製作者看。",
+      "kind": "attributed",
       "research_claim_ids": [
         "R11",
-        "R17"
+        "R13"
       ],
       "source_ids": [
-        "RNPA2016",
-        "PLATH_PATENT"
+        "RNPA2016"
       ],
       "source_evidence": [
         {
@@ -833,67 +832,6 @@
           "not_source_pass": true
         },
         {
-          "id": "R17",
-          "verdict": "VERIFIED",
-          "statement": "Plath的US4995487申請1989-08-08，核發1991-02-26；發明人Robert V.Plath，標題Wheeled suitcase and luggage support。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 48,
-              "quote": "1989-08-08",
-              "quote_sha256": "fc8ec65212a91c49e26168d5c2b6115294e75e56605f31e9c991a9e1bfc79816",
-              "paragraph_sha256": "fc8ec65212a91c49e26168d5c2b6115294e75e56605f31e9c991a9e1bfc79816",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            },
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 50,
-              "quote": "1991-02-26",
-              "quote_sha256": "e104d0df3694e257820141f735183f464fae7e2813ee5b5fc8bb8faf4f8950b5",
-              "paragraph_sha256": "e104d0df3694e257820141f735183f464fae7e2813ee5b5fc8bb8faf4f8950b5",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "申請、核發與產品上市是不同事件；專利不是1987原型照片或每型號BOM。"
-          ],
-          "usable_action_or_result": null,
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "是後年第一人稱回憶，不是飛行勤務表；文中沒有日曆年份。",
-        "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。",
-        "申請、核發與產品上市是不同事件；專利不是1987原型照片或每型號BOM。"
-      ],
-      "visual_prompt": "Close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, mild ceiling light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0003",
-      "author_ref": "open03",
-      "scene_id": "rs0003",
-      "claim": "艾默記得，普拉斯在西雅圖機場拿出圖紙，給舊輪箱的製作者看。",
-      "kind": "attributed",
-      "research_claim_ids": [
-        "R13"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
-        {
           "id": "R13",
           "verdict": "ATTRIBUTED",
           "statement": "Emmer記Plath與Moon談話時從包裡取出圖，Moon答應給夥伴Dutch看。",
@@ -937,34 +875,21 @@
         }
       ],
       "limits": [
+        "是後年第一人稱回憶，不是飛行勤務表；文中沒有日曆年份。",
+        "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。",
         "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
         "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
       ],
-      "visual_prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.",
+      "visual_prompt": "Close-up at a passenger terminal corridor, an anonymous traveler taking a blank sheet from a plain open bag, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0004",
-      "author_ref": "open04",
-      "scene_id": "rs0004",
-      "claim": "我也想問你：已經能拖了，為什麼還要另畫？",
-      "kind": "reaction_question",
-      "research_claim_ids": [],
-      "source_ids": [],
-      "source_evidence": [],
-      "limits": [],
-      "visual_prompt": "Close-up on a quiet planning desk, an anonymous hand opening a plain canvas bag beside blank loose paper, mild lamp light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0005",
       "author_ref": "open05",
       "scene_id": "rs0005",
-      "claim": "後來能收進箱裡的拉把，靠什麼留在原位？",
+      "claim": "行李箱的把手拉起來，要靠什麼留在原位？",
       "kind": "question",
       "research_claim_ids": [
         "R20"
@@ -1006,7 +931,7 @@
       ],
       "visual_prompt": "Close-up at a component explanation bench, an anonymous adult hand holding a plain short sleeve beside a metal rod and a small cylindrical guide, no assembled locking result visible, soft diffuse light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER",
       "planned_same_image": {
         "asset_plan_id": "offset-handle-parts",
@@ -1078,7 +1003,7 @@
       ],
       "visual_prompt": "Close-up at a luggage workbench, an anonymous adult hand adjusting a plain flexible strap between the top of an unmarked suitcase and a small bag, frame cropped above the floor, soft diffuse light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER",
       "planned_same_image": {
         "asset_plan_id": "adjustable-strap",
@@ -1092,7 +1017,7 @@
       "id": "rs0007",
       "author_ref": "open07",
       "scene_id": "rs0007",
-      "claim": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。",
+      "claim": "今天我想跟你看普拉斯的輪子行李箱，追查一台外架帶來的拆裝難題。",
       "kind": "editorial_link",
       "research_claim_ids": [],
       "source_ids": [],
@@ -1100,7 +1025,7 @@
       "limits": [],
       "visual_prompt": "Wide shot at a simple passenger terminal corridor, two anonymous travelers walking beside plain luggage toward a distant blank doorway, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1115,7 +1040,7 @@
       "limits": [],
       "visual_prompt": "Medium close-up at a passenger terminal waiting area, an anonymous traveler standing beside one plain upright soft suitcase and a separate small bag, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1180,7 +1105,7 @@
       ],
       "visual_prompt": "Medium shot at a workshop table, an anonymous person examining a simple tubular luggage frame with a plain canvas bag, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1271,7 +1196,7 @@
       ],
       "visual_prompt": "Close-up at a luggage inspection table, an anonymous person looking at a plain canvas bag held between two simple frame shelves, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1336,7 +1261,7 @@
       ],
       "visual_prompt": "Wide shot at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1401,72 +1326,7 @@
       ],
       "visual_prompt": "Medium close-up at a luggage workbench, an anonymous person placing a plain rectangular document bag beside a larger canvas compartment, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0013",
-      "author_ref": "old05",
-      "scene_id": "rs0013",
-      "claim": "我覺得這個起點很有意思：好用的部分，他已經在用。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R12"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
-        {
-          "id": "R12",
-          "verdict": "ATTRIBUTED",
-          "statement": "Emmer記舊Jet Eze為重鋁架配帆布袋、上下承放位置，Plath喜歡上方小拉鍊空間取鑰匙/眼鏡/皮夾，下方放portfolio。",
-          "anchors": [
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 46,
-              "printed_page_or_columns": "printed p46",
-              "quote": "Made from heavy duty aluminum",
-              "quote_sha256": "057609b6ab2fbd9694d83e903d3ae5511a459f51cf30d986cb77d7aec3192880",
-              "page_text_sha256": "b617098843471f89d925ea5a81c822001e42089f35ef9b2dbf486cc88035e830",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-046-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 46,
-              "printed_page_or_columns": "printed p46",
-              "quote": "keys, glasses and wallet",
-              "quote_sha256": "38d9de863cbbbf7b64c604ec589e9aeeb8a56a68c8f2e9e01769ee5947d11be0",
-              "page_text_sha256": "b617098843471f89d925ea5a81c822001e42089f35ef9b2dbf486cc88035e830",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-046-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "只描述Emmer所用/所見Jet Eze，不通稱全部早期行李。",
-            "他讓女兒坐箱的個人經歷不推薦重演為安全用法；30磅、半英里為個人概述，不採普遍實測。"
-          ],
-          "usable_action_or_result": "舊工具本來就有方便取物的功能，設計不是從「完全沒有輪子」開始。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只描述Emmer所用/所見Jet Eze，不通稱全部早期行李。",
-        "他讓女兒坐箱的個人經歷不推薦重演為安全用法；30磅、半英里為個人概述，不採普遍實測。"
-      ],
-      "visual_prompt": "Medium shot at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, soft overhead light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1481,7 +1341,7 @@
       "limits": [],
       "visual_prompt": "Close-up at a passenger terminal floor, an anonymous traveler standing beside a separate plain folding luggage cart and a suitcase, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1592,7 +1452,7 @@
       ],
       "visual_prompt": "Wide shot at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1657,7 +1517,7 @@
       ],
       "visual_prompt": "Medium close-up at an archive table, an anonymous reader examining an unlettered old technical page beside a simple wheeled attachment, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1722,72 +1582,7 @@
       ],
       "visual_prompt": "Wide shot at an archive demonstration shelf, a plain old wheeled frame resting beside an unlettered closed folder, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0018",
-      "author_ref": "old09",
-      "scene_id": "rs0018",
-      "claim": "所以這場故事的起點，並不是等人突然想到「輪子」兩個字。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R06"
-      ],
-      "source_ids": [
-        "PRIOR1946_PDF"
-      ],
-      "source_evidence": [
-        {
-          "id": "R06",
-          "verdict": "VERIFIED",
-          "statement": "Daniel Allcott Kelly於1943-07-26申請、1946-01-15核發US2392926手提行李附件，說明已包含箱底casters/ball bearings/slides與拉把/帶。",
-          "anchors": [
-            {
-              "source_id": "PRIOR1946_PDF",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 2,
-              "printed_page_or_columns": "printed p1",
-              "quote": "Application July 26, 1943",
-              "quote_sha256": "8ad1eaaf47aca0f5f7dde91512aeb047e57aace3aac1ad7efb5784626db7aaa6",
-              "page_text_sha256": "78e22745d05bf70d7473b299abe2e25f63891072a234b3a2200d95cf0b6d0b04",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PRIOR1946_PDF-page-002-reading.txt",
-              "raw_sha256": "cf891d210f350d256bb8a85abd239eb664b22b6505391d4b05f2b9a60b30cbbd",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PRIOR1946_PDF.pdf",
-              "url": "https://patentimages.storage.googleapis.com/10/36/fc/02999951f9defa/US2392926.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "PRIOR1946_PDF",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 2,
-              "printed_page_or_columns": "printed p1",
-              "quote": "ball bearings or wheeled casters or slides",
-              "quote_sha256": "ff10a29bd4ce23930e18449214f4761cd702fc0aeec9a5b0c9c7fd182811a7b6",
-              "page_text_sha256": "78e22745d05bf70d7473b299abe2e25f63891072a234b3a2200d95cf0b6d0b04",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PRIOR1946_PDF-page-002-reading.txt",
-              "raw_sha256": "cf891d210f350d256bb8a85abd239eb664b22b6505391d4b05f2b9a60b30cbbd",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PRIOR1946_PDF.pdf",
-              "url": "https://patentimages.storage.googleapis.com/10/36/fc/02999951f9defa/US2392926.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "證明有早於1970的公開方案；不證已有該品牌大量上市。",
-            "資料庫倒置姓名Kelly Daniel Allcott不能拿作旁白姓名正序；封面原文Daniel Allcott Kelly為準。"
-          ],
-          "usable_action_or_result": null,
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "證明有早於1970的公開方案；不證已有該品牌大量上市。",
-        "資料庫倒置姓名Kelly Daniel Allcott不能拿作旁白姓名正序；封面原文Daniel Allcott Kelly為準。"
-      ],
-      "visual_prompt": "Close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, mild ceiling light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1834,7 +1629,7 @@
       ],
       "visual_prompt": "Wide shot at a passenger waiting area, an anonymous traveler loosening a plain elastic cord from luggage on a separate cart, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1881,7 +1676,7 @@
       ],
       "visual_prompt": "Medium close-up at a generic baggage inspection table, an anonymous person placing one plain bag beside a separate empty luggage cart, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1928,7 +1723,7 @@
       ],
       "visual_prompt": "Medium shot at a passenger waiting area, an anonymous traveler retying a plain elastic cord around luggage stacked on a separate cart, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -1975,7 +1770,7 @@
       ],
       "visual_prompt": "Close-up at a plain cabin storage demonstration area, an anonymous person placing an unmarked suitcase beside a blank open storage bay, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2022,7 +1817,7 @@
       ],
       "visual_prompt": "Wide shot at a passenger terminal floor, an anonymous traveler standing beside a separate plain folding luggage cart and a suitcase, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2037,54 +1832,7 @@
       "limits": [],
       "visual_prompt": "Close-up over a simple work surface, an anonymous hand laying a loose elastic cord in a broad loop beside an empty cloth bag, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0025",
-      "author_ref": "old17",
-      "scene_id": "rs0025",
-      "claim": "你現在可以先看著那條繩：它綁得住兩件東西，也表示兩件東西還沒有成為一件。",
-      "kind": "hypothetical",
-      "research_claim_ids": [
-        "R18"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R18",
-          "verdict": "VERIFIED",
-          "statement": "Plath專利背景把外架在安檢拆裝、到登機時再拆、下機重裝以及另算一件的負擔列作問題。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 463,
-              "quote": "when passing through the security area, the entire load must be disassembled",
-              "quote_sha256": "234c581498148a36fe19e34ae7ff3665059c433e4233a40475c64260a6e0f91f",
-              "paragraph_sha256": "bde016a404f8beefc8815d2fcefd622f0346b6985f2e0dc1edc3d68293b71242",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "這是申請人的背景/問題設定，不是本輪取得FAA規章或所有機場的共同規則。"
-          ],
-          "usable_action_or_result": "可從綁帶拆裝問題接一體箱目的，不使用當代安檢形式冒充1980年代現場。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "這是申請人的背景/問題設定，不是本輪取得FAA規章或所有機場的共同規則。"
-      ],
-      "visual_prompt": "Medium shot at a passenger waiting area, an anonymous traveler loosening a plain elastic cord from luggage on a separate cart, soft window light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2099,17 +1847,18 @@
       "limits": [],
       "visual_prompt": "Close-up at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
-      "id": "rs0027",
-      "author_ref": "meet01",
-      "scene_id": "rs0027",
-      "claim": "艾默回憶，他和普拉斯同組飛行，有一次在西雅圖機場往登機門走。",
+      "id": "rs0003",
+      "author_ref": "open03",
+      "scene_id": "rs0003",
+      "claim": "還記得開場那張圖嗎？製作者穆林斯答應，把構想給夥伴達奇看。",
       "kind": "attributed",
       "research_claim_ids": [
-        "R11"
+        "R11",
+        "R13"
       ],
       "source_ids": [
         "RNPA2016"
@@ -2156,44 +1905,21 @@
           ],
           "usable_action_or_result": "由同組飛行與去登機門的途中，進入一場有具名參與者的設計接觸。",
           "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "是後年第一人稱回憶，不是飛行勤務表；文中沒有日曆年份。",
-        "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。"
-      ],
-      "visual_prompt": "Wide shot at a simple passenger terminal corridor, two anonymous travelers walking beside plain luggage toward a distant blank doorway, gentle side lighting.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0028",
-      "author_ref": "meet02",
-      "scene_id": "rs0028",
-      "claim": "地點是南衛星航廈，路上碰到製作舊輪箱的穆林斯。",
-      "kind": "attributed",
-      "research_claim_ids": [
-        "R11"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
+        },
         {
-          "id": "R11",
+          "id": "R13",
           "verdict": "ATTRIBUTED",
-          "statement": "Bill Emmer在RNPA2016的本人回憶寫他與Plath同組飛行，在SEA South Satellite去登機門途中遇到Jet Eze製作者Moon Mullins。",
+          "statement": "Emmer記Plath與Moon談話時從包裡取出圖，Moon答應給夥伴Dutch看。",
           "anchors": [
             {
               "source_id": "RNPA2016",
               "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 46,
-              "printed_page_or_columns": "printed p46, Bill Emmer",
-              "quote": "I chanced to be crewed with him once",
-              "quote_sha256": "5449fe123fd8ab6fc851ea323da67230c2b3f8585f304d8aa5d30ea3fb7f2b79",
-              "page_text_sha256": "b617098843471f89d925ea5a81c822001e42089f35ef9b2dbf486cc88035e830",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-046-reading.txt",
+              "pdf_page": 47,
+              "printed_page_or_columns": "printed p47",
+              "quote": "pulled out a drawing of what he had in mind",
+              "quote_sha256": "d086489469c0afd7723c2943e924ad4d1602b38eca7d4162e93fc4e0f268e2ae",
+              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
               "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
               "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
               "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
@@ -2202,12 +1928,12 @@
             {
               "source_id": "RNPA2016",
               "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 46,
-              "printed_page_or_columns": "printed p46, Bill Emmer",
-              "quote": "South Satellite in SEA",
-              "quote_sha256": "958d7c2ee3257c824c867f04cd9504e02d7b54aea27bfa8e80b61940aa3d186a",
-              "page_text_sha256": "b617098843471f89d925ea5a81c822001e42089f35ef9b2dbf486cc88035e830",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-046-reading.txt",
+              "pdf_page": 47,
+              "printed_page_or_columns": "printed p47",
+              "quote": "Moon promised to share the concept with Dutch",
+              "quote_sha256": "bef05bc9e5d05c61e97e82399a110cb35a06e1cf48e159c35bc11b7b11cbf7f5",
+              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
               "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
               "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
               "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
@@ -2216,20 +1942,22 @@
           ],
           "attribution_required": true,
           "limits": [
-            "是後年第一人稱回憶，不是飛行勤務表；文中沒有日曆年份。",
-            "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。"
+            "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
+            "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
           ],
-          "usable_action_or_result": "由同組飛行與去登機門的途中，進入一場有具名參與者的設計接觸。",
+          "usable_action_or_result": "取出圖→交給既有製作者評估，為第一個具體提案動作。",
           "not_source_pass": true
         }
       ],
       "limits": [
         "是後年第一人稱回憶，不是飛行勤務表；文中沒有日曆年份。",
-        "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。"
+        "不把Emmer與Plath說成共同發明人；不借隔頁Sharkey的署名。",
+        "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
+        "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
       ],
-      "visual_prompt": "Medium close-up at a passenger terminal corridor, two anonymous travelers meeting beside a plain tubular luggage frame, muted daylight.",
+      "visual_prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2320,72 +2048,7 @@
       ],
       "visual_prompt": "Medium shot at a workshop table, an anonymous person examining a simple tubular luggage frame with a plain canvas bag, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0030",
-      "author_ref": "meet05",
-      "scene_id": "rs0030",
-      "claim": "穆林斯答應，把這個構想給合作夥伴達奇看。",
-      "kind": "attributed",
-      "research_claim_ids": [
-        "R13"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
-        {
-          "id": "R13",
-          "verdict": "ATTRIBUTED",
-          "statement": "Emmer記Plath與Moon談話時從包裡取出圖，Moon答應給夥伴Dutch看。",
-          "anchors": [
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "pulled out a drawing of what he had in mind",
-              "quote_sha256": "d086489469c0afd7723c2943e924ad4d1602b38eca7d4162e93fc4e0f268e2ae",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "Moon promised to share the concept with Dutch",
-              "quote_sha256": "bef05bc9e5d05c61e97e82399a110cb35a06e1cf48e159c35bc11b7b11cbf7f5",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
-            "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
-          ],
-          "usable_action_or_result": "取出圖→交給既有製作者評估，為第一個具體提案動作。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
-        "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
-      ],
-      "visual_prompt": "Close-up at a quiet terminal corner, an anonymous traveler holding an unlettered folder toward another traveler beside plain luggage, warm desk lamp light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2400,7 +2063,7 @@
       "limits": [],
       "visual_prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2465,7 +2128,7 @@
       ],
       "visual_prompt": "Medium close-up at a passenger terminal bench, an anonymous traveler seated with a closed plain folder and unmarked luggage nearby, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2530,7 +2193,7 @@
       ],
       "visual_prompt": "Medium shot at a quiet terminal corner, an anonymous traveler holding an unlettered folder toward another traveler beside plain luggage, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2595,7 +2258,7 @@
       ],
       "visual_prompt": "Close-up at a passenger terminal bench, an anonymous traveler seated with a closed plain folder and unmarked luggage nearby, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2610,7 +2273,7 @@
       "limits": [],
       "visual_prompt": "Wide shot beside a plain terminal window, an anonymous traveler carrying a closed unlettered folder toward a distant blank doorway, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2675,7 +2338,7 @@
       ],
       "visual_prompt": "Medium close-up at a passenger terminal corridor, two anonymous travelers meeting beside a plain tubular luggage frame, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2740,72 +2403,7 @@
       ],
       "visual_prompt": "Medium shot at a modest meeting table, an anonymous person closing a blank folder beside a plain canvas bag, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0038",
-      "author_ref": "meet13",
-      "scene_id": "rs0038",
-      "claim": "這份回憶裡，讓我停下來的不是一句勵志口號，是一張圖等了兩週，停在這裡。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R14"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
-        {
-          "id": "R14",
-          "verdict": "ATTRIBUTED",
-          "statement": "Emmer記隔週再遇Moon尚未與Dutch談，再隔一週得知兩人不感興趣。",
-          "anchors": [
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "hadn’t had a chance yet to discuss it with Dutch",
-              "quote_sha256": "6f7b89b490f5e9ca8ccbe8624389e7c1b672cd91e285a3fca7e0e41f102f3d9c",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "discussed the idea but weren’t interested",
-              "quote_sha256": "cfef8b2f5a77917c4578c208a2f335c0717727603147bf0e9eaf778c087abc62",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "三次碰面與相隔週數屬作者回憶，不能加exact日曆日期或拒絕心理。",
-            "不說所有投資者拒絕，亦沒有證據兩人看過實物測試。"
-          ],
-          "usable_action_or_result": "提案先等待，再收到不採用的回覆；與百貨Macy's是不同故事。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "三次碰面與相隔週數屬作者回憶，不能加exact日曆日期或拒絕心理。",
-        "不說所有投資者拒絕，亦沒有證據兩人看過實物測試。"
-      ],
-      "visual_prompt": "Close-up at an archive reading table, an anonymous reader setting down a blank notebook beside a plain pencil, gentle side light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2820,7 +2418,7 @@
       "limits": [],
       "visual_prompt": "Medium close-up at a modest luggage workshop, an anonymous worker examining an unfinished plain suitcase on a bench, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2871,7 +2469,7 @@
       ],
       "visual_prompt": "Medium shot inside a modest workshop, an anonymous maker lifting a plain soft wheeled case from a simple workbench, warm overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2922,7 +2520,7 @@
       ],
       "visual_prompt": "Close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2981,7 +2579,7 @@
       ],
       "visual_prompt": "Wide shot at an archive reading desk, an anonymous reader lifting an unlettered technical document with simple abstract component outlines, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -2996,7 +2594,7 @@
       "limits": [],
       "visual_prompt": "Medium close-up at a luggage workbench, an anonymous designer looking at a plain upright soft suitcase with a simple handle, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3043,7 +2641,7 @@
       ],
       "visual_prompt": "Medium shot at a component explanation table, an anonymous designer examining a plain suitcase corner containing a simple inset wheel, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3094,7 +2692,7 @@
       ],
       "visual_prompt": "Close-up at a luggage component bench, an anonymous technician holding a plain bent support plate beside a small wheel and axle, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3200,7 +2798,7 @@
       ],
       "visual_prompt": "Close-up at a component table, a plain small wheel axle and retaining tab placed beside an opening in a simple metal plate, mild lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3251,61 +2849,14 @@
       ],
       "visual_prompt": "Medium close-up at a luggage workshop table, an anonymous technician examining a plain recessed wheel at the bottom corner of a soft suitcase, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0049",
-      "author_ref": "wheel05",
-      "scene_id": "rs0049",
-      "claim": "我喜歡這個改變的地方，是箱子不必先坐上一台車，才有輪子可以用。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R19"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R19",
-          "verdict": "VERIFIED",
-          "statement": "專利描述一體箱、可縮把手與兩個內嵌輪，並非輪架以彈力繩外綁的結構。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 466,
-              "quote": "two recessed roller wheels",
-              "quote_sha256": "ee1aeb7c1d549b65027968a80cd1124e98bedc30668ba6a68079927199b2f467",
-              "paragraph_sha256": "0d2efaf24c4012c00d3a9f12130fe0274536db129eb6b779513577bfbf078a60",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
-          ],
-          "usable_action_or_result": "輪、箱、把手在同件物件上，分離輪架的工序因此可被省去。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
-      ],
-      "visual_prompt": "Medium shot at a component explanation table, an anonymous designer examining a plain suitcase corner containing a simple inset wheel, soft window light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0051",
       "author_ref": "wheel07",
       "scene_id": "rs0051",
-      "claim": "不過只留下兩個輪子，它站著等你的時候，靠哪裡支撐？",
+      "claim": "不過它站著等你的時候，靠哪裡支撐？",
       "kind": "question",
       "research_claim_ids": [],
       "source_ids": [],
@@ -3313,7 +2864,7 @@
       "limits": [],
       "visual_prompt": "Wide shot at a plain terminal floor, an anonymous traveler standing beside an upright plain suitcase with two small support feet, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3374,7 +2925,7 @@
       ],
       "visual_prompt": "Medium close-up at a component demonstration table, an anonymous designer pointing toward two small support feet on the bottom of an upright plain case, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3389,7 +2940,7 @@
       "limits": [],
       "visual_prompt": "Close-up near the floor, two plain support feet touching the ground beside the recessed wheel of an upright soft case, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3450,7 +3001,7 @@
       ],
       "visual_prompt": "Close-up at a plain terminal floor, an anonymous traveler gently tilting a plain two-wheeled suitcase with a simple extended handle, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3511,7 +3062,7 @@
       ],
       "visual_prompt": "Wide shot at a broad plain corridor, an anonymous traveler pulling a simple tilted two-wheeled suitcase, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3572,68 +3123,7 @@
       ],
       "visual_prompt": "Medium close-up at a plain demonstration floor, an anonymous person holding a plain suitcase gently tilted with its small feet lifted, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0057",
-      "author_ref": "wheel13",
-      "scene_id": "rs0057",
-      "claim": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R22"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R22",
-          "verdict": "VERIFIED",
-          "statement": "專利操作示例把箱從垂直傾斜約30度，使支腳離地而由輪滾動；直立時兩個foot studs支承/平衡。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 467,
-              "quote": "approximately a 30 degree angle from vertical",
-              "quote_sha256": "eeaec967c5539d8062a3e89745b53ff69846070623860b63963bc8a0b48bde91",
-              "paragraph_sha256": "42f772ad2456369417bda088367e0bab52c82407715902f1524fbf0f220c35c1",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            },
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 424,
-              "quote": "two foot studs 21",
-              "quote_sha256": "1d41b3f10dd4f39c1d00c773ab8eb4a2cb2ee2037c6cdb552673b84077178f69",
-              "paragraph_sha256": "ec9807ed9e5271a7c52c3a32b28df58386f34b2bff0e642f235650d000c0cac8",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "約30度是專利例示，不是規定唯一角度或任何人必須如此操作。",
-            "不稱支腳是自動煞車或實測防傾倒系統。"
-          ],
-          "usable_action_or_result": "立放有支腳接地，傾拉改由輪接地；不是箱子永遠只站在兩輪上。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "約30度是專利例示，不是規定唯一角度或任何人必須如此操作。",
-        "不稱支腳是自動煞車或實測防傾倒系統。"
-      ],
-      "visual_prompt": "Medium shot at a plain terminal floor, an anonymous traveler standing beside an upright plain suitcase with two small support feet, soft window light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3648,7 +3138,7 @@
       "limits": [],
       "visual_prompt": "Close-up at a component bench, an anonymous technician holding a plain protective corner piece beside a small recessed wheel, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3699,7 +3189,7 @@
       ],
       "visual_prompt": "Medium shot at a component inspection table, an anonymous worker placing a protective corner piece beside a folded cloth panel, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3750,7 +3240,7 @@
       ],
       "visual_prompt": "Medium close-up at a neutral product explanation table, an anonymous designer examining a protective suitcase corner beside a simple low edge block, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3765,7 +3255,7 @@
       "limits": [],
       "visual_prompt": "Close-up at a luggage component table, an anonymous hand laying a plain metal handle rod beside a small unmarked sleeve, soft side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3814,7 +3304,7 @@
       ],
       "visual_prompt": "Medium shot at a luggage workshop bench, an anonymous worker pulling a plain two-rod handle upward from a soft suitcase, gentle window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3863,56 +3353,7 @@
       ],
       "visual_prompt": "Wide shot at a mechanical explanation bench, an anonymous designer examining plain metal rods beside a simple cylindrical guide disk, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0064",
-      "author_ref": "handle03",
-      "scene_id": "rs0064",
-      "claim": "你可以把目光放在這個小小的偏心位置，它才是接下來的關鍵。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R20"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R20",
-          "verdict": "VERIFIED",
-          "statement": "專利拉把伸出時，杆下端偏心導件讓杆與套筒/襯套摩擦楔緊。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 396,
-              "quote": "wedge the lower end segment of rod 18",
-              "quote_sha256": "8e4ed6ea0ee70dfba9aa8f419d1be2ee51a74b7c71204d87d9b3d9f849f97123",
-              "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-            "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-          ],
-          "usable_action_or_result": "拉起→偏心導件楔緊→把手保持伸長，能回答「為何拉時不縮回」。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-        "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-      ],
-      "visual_prompt": "Close-up at a mechanism demonstration table, an anonymous hand pointing toward an off-center plain rod connection on a simple loose guide disk, soft overhead light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3927,7 +3368,7 @@
       "limits": [],
       "visual_prompt": "Medium shot at a component explanation bench, an anonymous technician holding a plain short tube beside a small guide piece and metal rod, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -3976,7 +3417,7 @@
       ],
       "visual_prompt": "Close-up at a component explanation bench, an anonymous adult hand holding a plain short sleeve beside a metal rod and a small cylindrical guide, no assembled locking result visible, soft diffuse light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER",
       "planned_same_image": {
         "asset_plan_id": "offset-handle-parts",
@@ -4032,56 +3473,7 @@
       ],
       "visual_prompt": "Wide shot at a workbench, an anonymous designer examining a plain retractable luggage handle beside an unmarked suitcase, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0068",
-      "author_ref": "handle07",
-      "scene_id": "rs0068",
-      "claim": "我原本也會去找一個卡榫，這裡真正工作的，卻是杆子和導件之間的位置關係。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R20"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R20",
-          "verdict": "VERIFIED",
-          "statement": "專利拉把伸出時，杆下端偏心導件讓杆與套筒/襯套摩擦楔緊。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 396,
-              "quote": "wedge the lower end segment of rod 18",
-              "quote_sha256": "8e4ed6ea0ee70dfba9aa8f419d1be2ee51a74b7c71204d87d9b3d9f849f97123",
-              "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-            "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-          ],
-          "usable_action_or_result": "拉起→偏心導件楔緊→把手保持伸長，能回答「為何拉時不縮回」。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-        "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-      ],
-      "visual_prompt": "Medium close-up at a mechanical explanation bench, an anonymous designer examining plain metal rods beside a simple cylindrical guide disk, muted daylight.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4096,7 +3488,7 @@
       "limits": [],
       "visual_prompt": "Wide shot in a plain storage demonstration area, an anonymous traveler pausing beside an open blank storage bay and an upright case, gentle window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4143,7 +3535,7 @@
       ],
       "visual_prompt": "Close-up at a luggage workbench, an anonymous person pressing down on a plain extended suitcase handle, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4190,90 +3582,14 @@
       ],
       "visual_prompt": "Wide shot at a component demonstration table, an anonymous technician moving a plain metal rod downward beside a short sleeve, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0072",
-      "author_ref": "handle11",
-      "scene_id": "rs0072",
-      "claim": "拉起與壓回，是手對同一組零件做的兩個不同方向的動作。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R20",
-        "R21"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R20",
-          "verdict": "VERIFIED",
-          "statement": "專利拉把伸出時，杆下端偏心導件讓杆與套筒/襯套摩擦楔緊。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 396,
-              "quote": "wedge the lower end segment of rod 18",
-              "quote_sha256": "8e4ed6ea0ee70dfba9aa8f419d1be2ee51a74b7c71204d87d9b3d9f849f97123",
-              "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-            "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-          ],
-          "usable_action_or_result": "拉起→偏心導件楔緊→把手保持伸長，能回答「為何拉時不縮回」。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R21",
-          "verdict": "VERIFIED",
-          "statement": "專利說向下壓把手克服摩擦，使偏心導件脫離楔緊位置再縮入。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 400,
-              "quote": "sufficient to overcome the friction force",
-              "quote_sha256": "9637a8b1423d84eb9913235700f1af013b58d20a0d23c6ca6fa2c881f021d3d1",
-              "paragraph_sha256": "11b130e841e4ee9e1731ab67127b1ae4664e1227b732baf15fa7ceb19ddc6d55",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "無來源的力道數字、鎖按鈕或耐久循環不可加。"
-          ],
-          "usable_action_or_result": "向下施力→摩擦鎖解除→杆回到套筒。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-        "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。",
-        "無來源的力道數字、鎖按鈕或耐久循環不可加。"
-      ],
-      "visual_prompt": "Medium close-up at a passenger waiting area, an anonymous traveler lowering a plain suitcase handle toward the top of the case, cool reflected light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0073",
       "author_ref": "handle12",
       "scene_id": "rs0073",
-      "claim": "把手收好，輪子也藏進角落，箱子就一定放得進機艙嗎？",
+      "claim": "這只箱子，就一定放得進機艙嗎？",
       "kind": "question",
       "research_claim_ids": [],
       "source_ids": [],
@@ -4281,7 +3597,7 @@
       "limits": [],
       "visual_prompt": "Medium shot at a plain cabin storage demonstration area, an anonymous person placing an unmarked suitcase beside a blank open storage bay, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4332,7 +3648,7 @@
       ],
       "visual_prompt": "Close-up at a luggage planning desk, an anonymous designer holding a plain ruler beside an unmarked rectangular soft suitcase, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4383,7 +3699,7 @@
       ],
       "visual_prompt": "Wide shot at a plain cabin storage demonstration area, an anonymous person placing an unmarked suitcase beside a blank open storage bay, gentle side lighting.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4434,110 +3750,7 @@
       ],
       "visual_prompt": "Close-up at a travel planning table, an anonymous hand comparing a plain ruler with the side of a rectangular soft bag, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0077",
-      "author_ref": "handle16",
-      "scene_id": "rs0077",
-      "claim": "到這裡，從走路到收納，主要動作都繞著同一只箱子進行。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R19",
-        "R20",
-        "R21"
-      ],
-      "source_ids": [
-        "PLATH_PATENT"
-      ],
-      "source_evidence": [
-        {
-          "id": "R19",
-          "verdict": "VERIFIED",
-          "statement": "專利描述一體箱、可縮把手與兩個內嵌輪，並非輪架以彈力繩外綁的結構。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 466,
-              "quote": "two recessed roller wheels",
-              "quote_sha256": "ee1aeb7c1d549b65027968a80cd1124e98bedc30668ba6a68079927199b2f467",
-              "paragraph_sha256": "0d2efaf24c4012c00d3a9f12130fe0274536db129eb6b779513577bfbf078a60",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
-          ],
-          "usable_action_or_result": "輪、箱、把手在同件物件上，分離輪架的工序因此可被省去。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R20",
-          "verdict": "VERIFIED",
-          "statement": "專利拉把伸出時，杆下端偏心導件讓杆與套筒/襯套摩擦楔緊。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 396,
-              "quote": "wedge the lower end segment of rod 18",
-              "quote_sha256": "8e4ed6ea0ee70dfba9aa8f419d1be2ee51a74b7c71204d87d9b3d9f849f97123",
-              "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-            "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。"
-          ],
-          "usable_action_or_result": "拉起→偏心導件楔緊→把手保持伸長，能回答「為何拉時不縮回」。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R21",
-          "verdict": "VERIFIED",
-          "statement": "專利說向下壓把手克服摩擦，使偏心導件脫離楔緊位置再縮入。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 400,
-              "quote": "sufficient to overcome the friction force",
-              "quote_sha256": "9637a8b1423d84eb9913235700f1af013b58d20a0d23c6ca6fa2c881f021d3d1",
-              "paragraph_sha256": "11b130e841e4ee9e1731ab67127b1ae4664e1227b732baf15fa7ceb19ddc6d55",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "無來源的力道數字、鎖按鈕或耐久循環不可加。"
-          ],
-          "usable_action_or_result": "向下施力→摩擦鎖解除→杆回到套筒。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。",
-        "不是按鈕、彈簧卡榫或現代多段鎖；不能畫未記載的機構。",
-        "圖5已目視；如畫剖面必明示概念，不假裝零售產品實拆。",
-        "無來源的力道數字、鎖按鈕或耐久循環不可加。"
-      ],
-      "visual_prompt": "Medium shot at a luggage workbench, an anonymous designer looking at a plain upright soft suitcase with a simple handle, soft overhead light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4552,7 +3765,7 @@
       "limits": [],
       "visual_prompt": "Close-up at a passenger terminal waiting area, an anonymous traveler standing beside one plain upright soft suitcase and a separate small bag, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4603,7 +3816,7 @@
       ],
       "visual_prompt": "Wide shot at a luggage workbench, an anonymous person adjusting a plain strap beside a small unmarked bag, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4654,7 +3867,7 @@
       ],
       "visual_prompt": "Medium close-up at a luggage workbench, an anonymous person holding a small plain bag beside a simple strap and an upright suitcase, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4669,7 +3882,7 @@
       "limits": [],
       "visual_prompt": "Medium shot at a luggage workbench, an anonymous person adjusting a plain strap beside a small unmarked bag, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4734,7 +3947,7 @@
       ],
       "visual_prompt": "Close-up at a luggage workbench, an anonymous adult hand adjusting a plain flexible strap between the top of an unmarked suitcase and a small bag, frame cropped above the floor, soft diffuse light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER",
       "planned_same_image": {
         "asset_plan_id": "adjustable-strap",
@@ -4806,79 +4019,14 @@
       ],
       "visual_prompt": "Medium close-up at a broad plain corridor, an anonymous traveler pulling a tilted suitcase with a small plain bag attached low near its front, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0085",
-      "author_ref": "bag07",
-      "scene_id": "rs0085",
-      "claim": "我覺得這才是很日常的要求：我停下來找東西時，行李也得有辦法停下來。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R16"
-      ],
-      "source_ids": [
-        "RNPA2016"
-      ],
-      "source_evidence": [
-        {
-          "id": "R16",
-          "verdict": "ATTRIBUTED",
-          "statement": "Emmer描述帶長調好時，直立主箱旁附袋會落地；拉動時額外包使組合較平衡。",
-          "anchors": [
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "would rest on the floor",
-              "quote_sha256": "a301adabab99803588c6feb5e38e068ab11cbfbaf74691feda292338b98dd0d0",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "makes for a more balanced operation",
-              "quote_sha256": "9799b00e958d5bd194c1d02e8f4c48d8055001c04f4ce8c2b6b637cd56ac69e3",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
-            "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。"
-          ],
-          "usable_action_or_result": "調帶長改變附袋的支承位置，形成可答的動作與後果。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
-        "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。"
-      ],
-      "visual_prompt": "Medium shot in a quiet waiting area, an anonymous traveler looking into a small plain bag resting beside a stationary upright case, warm ambient light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0086",
       "author_ref": "bag08",
       "scene_id": "rs0086",
-      "claim": "這種接法，在普拉斯的專利裡，也找得到具體零件嗎？",
+      "claim": "我也想看清楚：這種接法，在普拉斯的專利裡有具體零件嗎？",
       "kind": "question",
       "research_claim_ids": [],
       "source_ids": [],
@@ -4886,7 +4034,7 @@
       "limits": [],
       "visual_prompt": "Close-up at a luggage component table, an anonymous designer holding a plain curved hook beside a simple flexible strap, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4935,7 +4083,7 @@
       ],
       "visual_prompt": "Extreme close-up on a work surface, the upturned lip of one simple curved hook beside a loop of plain strap, mild side light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -4984,14 +4132,14 @@
       ],
       "visual_prompt": "Medium close-up at a luggage workbench, an anonymous person threading a plain strap through a simple curved hook, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0089",
       "author_ref": "bag11",
       "scene_id": "rs0089",
-      "claim": "掛鉤能拆下，附包也由主箱支承；這是一個加掛的連接方案。",
+      "claim": "這個掛鉤還能拆下。",
       "kind": "fact",
       "research_claim_ids": [
         "R25"
@@ -5033,102 +4181,7 @@
       ],
       "visual_prompt": "Medium shot at a luggage workbench, an anonymous person separating a plain hook and strap from an unmarked suitcase, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0090",
-      "author_ref": "bag12",
-      "scene_id": "rs0090",
-      "claim": "艾默講的是他看到的用法，專利留下的是結構；兩邊能照見同一個需求。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R16",
-        "R25"
-      ],
-      "source_ids": [
-        "RNPA2016",
-        "PLATH_PDF"
-      ],
-      "source_evidence": [
-        {
-          "id": "R16",
-          "verdict": "ATTRIBUTED",
-          "statement": "Emmer描述帶長調好時，直立主箱旁附袋會落地；拉動時額外包使組合較平衡。",
-          "anchors": [
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "would rest on the floor",
-              "quote_sha256": "a301adabab99803588c6feb5e38e068ab11cbfbaf74691feda292338b98dd0d0",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            },
-            {
-              "source_id": "RNPA2016",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 47,
-              "printed_page_or_columns": "printed p47",
-              "quote": "makes for a more balanced operation",
-              "quote_sha256": "9799b00e958d5bd194c1d02e8f4c48d8055001c04f4ce8c2b6b637cd56ac69e3",
-              "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
-              "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
-              "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
-            "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。"
-          ],
-          "usable_action_or_result": "調帶長改變附袋的支承位置，形成可答的動作與後果。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R25",
-          "verdict": "VERIFIED",
-          "statement": "專利圖7是可拆J形掛鉤，柔性帶穿槽並以按扣接箱；權利項還有附帶物件。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PDF",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 12,
-              "printed_page_or_columns": "printed cols5–6",
-              "quote": "generally J-shaped hook member 60",
-              "quote_sha256": "96260870f0d4e9a024f4f5c230f256fdd271b99a9b9a26b21282bc1df317a2c3",
-              "page_text_sha256": "32207343761e01a44720eeb7d75968df7a5a336b97f167573253a80b92e7c9be",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF-page-012-reading.txt",
-              "raw_sha256": "3716c8b238c2d12fcd297817a94d96d81c94ef68502e208d8cd771a4042f2c16",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF.pdf",
-              "url": "https://patentimages.storage.googleapis.com/fc/1d/e7/7bc4ed21f866c0/US4995487.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "專利設計可解說，不證當年每一型附贈或與Emmer實物零件完全相同。"
-          ],
-          "usable_action_or_result": "掛鉤托另一包，按扣/帶可拆；與R16的調帶觀察作各有歸屬的互照。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
-        "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。",
-        "專利設計可解說，不證當年每一型附贈或與Emmer實物零件完全相同。"
-      ],
-      "visual_prompt": "Close-up at a luggage component table, an anonymous designer holding a plain curved hook beside a simple flexible strap, mild ceiling light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5224,7 +4277,7 @@
       ],
       "visual_prompt": "Wide shot at a modest workshop doorway, an anonymous visitor approaching a clear luggage workbench carrying an empty plain tote, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5273,7 +4326,7 @@
       ],
       "visual_prompt": "Medium shot at a modest office desk, an anonymous interviewer holding a blank notebook toward another person, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5322,63 +4375,14 @@
       ],
       "visual_prompt": "Close-up at a modest luggage workshop doorway, an anonymous visitor speaking with a worker beside a plain unfinished suitcase, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0099",
-      "author_ref": "market03",
-      "scene_id": "rs0099",
-      "claim": "我覺得這個請求很有分量：工具被帶到工作路上，旁邊的人就能看見它怎麼用。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R28"
-      ],
-      "source_ids": [
-        "GLOBAL_TRAVELER2007"
-      ],
-      "source_evidence": [
-        {
-          "id": "R28",
-          "verdict": "ATTRIBUTED",
-          "statement": "2007 Global Traveler原訪談中，時任Travelpro CEO Kim Ballis說其他機師看到Plath輪箱後請他也做一只。",
-          "anchors": [
-            {
-              "source_id": "GLOBAL_TRAVELER2007",
-              "kind": "HTML paragraph",
-              "paragraph": 89,
-              "quote": "Other pilots saw Bob with this rolling luggage and requested he make one for them.",
-              "quote_sha256": "4bc9835c2d22d4bf416af59c87d3fa8cd2c08bdac8888b6e9ffadeb4e8096a5b",
-              "paragraph_sha256": "1dc3f2ac8c46f966a097a56e79bed266beff10d3ab0cb0ab3a65c2c2c7bd680e",
-              "raw_sha256": "94e77363802dc7100d762a058f5b4022ae9ac54fbda0e962c56a8bb2b374169b",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/GLOBAL_TRAVELER2007.html",
-              "url": "https://www.globaltravelerusa.com/reinventing-the-wheel/",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "直接訪問的是CEO，不是當日訂單；不能擅說第一位使用者名字、多少只、價格或日期。",
-            "文中18 years ago與其他年份不齊，不用它反推出精確發明年。"
-          ],
-          "usable_action_or_result": "路上看見→同事提出製作請求，提供從設計走向需求的動作。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "直接訪問的是CEO，不是當日訂單；不能擅說第一位使用者名字、多少只、價格或日期。",
-        "文中18 years ago與其他年份不齊，不用它反推出精確發明年。"
-      ],
-      "visual_prompt": "Medium shot in a passenger waiting area, an anonymous observer gesturing toward the inset wheel of a plain case held by another traveler, soft reflected light.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
       "id": "rs0100",
       "author_ref": "market04",
       "scene_id": "rs0100",
-      "claim": "但你在車庫裡做得出一只，接到更多請求之後，還待得下去嗎？",
+      "claim": "我也想問：你在車庫裡做得出一只，接到更多請求之後，還待得下去嗎？",
       "kind": "question",
       "research_claim_ids": [
         "R29"
@@ -5432,7 +4436,7 @@
       ],
       "visual_prompt": "Medium close-up at a modest home workshop, an anonymous person arranging plain suitcase components on a clear workbench, muted daylight.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5493,7 +4497,7 @@
       ],
       "visual_prompt": "Medium shot at a modest unmarked warehouse interior, an anonymous worker carrying a plain suitcase toward a simple packing table, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5552,7 +4556,7 @@
       ],
       "visual_prompt": "Close-up at an archive reading desk, an anonymous reader lifting an unlettered technical document with simple abstract component outlines, warm desk lamp light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5656,7 +4660,7 @@
       ],
       "visual_prompt": "Wide shot at a quiet office desk, an anonymous worker arranging two blank document sheets beside an unmarked calendar, even ambient light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5671,7 +4675,7 @@
       "limits": [],
       "visual_prompt": "Medium close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, cool reflected light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5730,7 +4734,7 @@
       ],
       "visual_prompt": "Medium shot at an archive desk, an anonymous reader examining a plain closed technical folder beside a simple suitcase model, soft window light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5791,175 +4795,7 @@
       ],
       "visual_prompt": "Close-up at a modest luggage workshop, an anonymous worker examining an unfinished plain suitcase on a bench, mild ceiling light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0107",
-      "author_ref": "market11",
-      "scene_id": "rs0107",
-      "claim": "這個故事落在八〇年代末到九〇年代初，圖紙、產品、申請與核發，各有自己的時間。",
-      "kind": "editorial_link",
-      "research_claim_ids": [
-        "R30"
-      ],
-      "source_ids": [
-        "TRAVELPRO_HISTORY",
-        "CHINOOK2024"
-      ],
-      "source_evidence": [
-        {
-          "id": "R30",
-          "verdict": "ATTRIBUTED",
-          "statement": "Travelpro公司史與Sharkey2010文章寫1987，但2024 Chinook的Robert Plath署名近況寫1988發明垂直輪箱。",
-          "anchors": [
-            {
-              "source_id": "TRAVELPRO_HISTORY",
-              "kind": "HTML paragraph",
-              "paragraph": 231,
-              "quote": "in 1987",
-              "quote_sha256": "b87d463550d868f68136a0f2230cdd812cc77fde28e23e9ed46889327b2417a7",
-              "paragraph_sha256": "b291146a0661458a267a346322a20f98fdc35f6a514e5b016fdba00935916ae7",
-              "raw_sha256": "a74794cba45e434c546e4568cc2ce91923c8cb64bc35da4c1ef1eec344db9a7d",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/TRAVELPRO_HISTORY.html",
-              "url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
-              "http_status": 200
-            },
-            {
-              "source_id": "CHINOOK2024",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 17,
-              "printed_page_or_columns": "printed p17, Robert Plath paragraph",
-              "quote": "1988 Invented vertical rolling luggage Travelpro Rollaboard.",
-              "quote_sha256": "55355a0502343ba991790924994db6df7eeb0d031dd4cb9d37635372cce25450",
-              "page_text_sha256": "38f6f879ddc59ca138dface5a84c47f30234110a65507a55d180d3ee89f95c87",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/CHINOOK2024-page-017-reading.txt",
-              "raw_sha256": "0082a40b280f790a11f1a9ee30414d7b83eac0daf7cca3d28e1cf5eedd3ad69b",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/CHINOOK2024.pdf",
-              "url": "https://www.sl8.com/journal/may24/journal_images/Chinook_2024_5-3-24_FINAL.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": true,
-          "limits": [
-            "原PDF17已目視，不再是index-only。",
-            "衝突未解；先不在旁白選1987或1988，不用專利1989強行裁定。"
-          ],
-          "usable_action_or_result": null,
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "原PDF17已目視，不再是index-only。",
-        "衝突未解；先不在旁白選1987或1988，不用專利1989強行裁定。"
-      ],
-      "visual_prompt": "Wide shot at a quiet office desk, an anonymous worker arranging two blank document sheets beside an unmarked calendar, gentle side lighting.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
-      "independent_visual_review": "PENDING_OTHER_REVIEWER"
-    },
-    {
-      "id": "rs0108",
-      "author_ref": "market12",
-      "scene_id": "rs0108",
-      "claim": "我最想留下的，是一個拿來走路的工具，最後還得回答停下、收回、再多帶一包。",
-      "kind": "reaction",
-      "research_claim_ids": [
-        "R19",
-        "R21",
-        "R25"
-      ],
-      "source_ids": [
-        "PLATH_PATENT",
-        "PLATH_PDF"
-      ],
-      "source_evidence": [
-        {
-          "id": "R19",
-          "verdict": "VERIFIED",
-          "statement": "專利描述一體箱、可縮把手與兩個內嵌輪，並非輪架以彈力繩外綁的結構。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 466,
-              "quote": "two recessed roller wheels",
-              "quote_sha256": "ee1aeb7c1d549b65027968a80cd1124e98bedc30668ba6a68079927199b2f467",
-              "paragraph_sha256": "0d2efaf24c4012c00d3a9f12130fe0274536db129eb6b779513577bfbf078a60",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
-          ],
-          "usable_action_or_result": "輪、箱、把手在同件物件上，分離輪架的工序因此可被省去。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R21",
-          "verdict": "VERIFIED",
-          "statement": "專利說向下壓把手克服摩擦，使偏心導件脫離楔緊位置再縮入。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PATENT",
-              "kind": "HTML paragraph",
-              "paragraph": 400,
-              "quote": "sufficient to overcome the friction force",
-              "quote_sha256": "9637a8b1423d84eb9913235700f1af013b58d20a0d23c6ca6fa2c881f021d3d1",
-              "paragraph_sha256": "11b130e841e4ee9e1731ab67127b1ae4664e1227b732baf15fa7ceb19ddc6d55",
-              "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
-              "url": "https://patents.google.com/patent/US4995487A/en",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "無來源的力道數字、鎖按鈕或耐久循環不可加。"
-          ],
-          "usable_action_or_result": "向下施力→摩擦鎖解除→杆回到套筒。",
-          "not_source_pass": true
-        },
-        {
-          "id": "R25",
-          "verdict": "VERIFIED",
-          "statement": "專利圖7是可拆J形掛鉤，柔性帶穿槽並以按扣接箱；權利項還有附帶物件。",
-          "anchors": [
-            {
-              "source_id": "PLATH_PDF",
-              "kind": "PDF page, whitespace-normalized text excerpt",
-              "pdf_page": 12,
-              "printed_page_or_columns": "printed cols5–6",
-              "quote": "generally J-shaped hook member 60",
-              "quote_sha256": "96260870f0d4e9a024f4f5c230f256fdd271b99a9b9a26b21282bc1df317a2c3",
-              "page_text_sha256": "32207343761e01a44720eeb7d75968df7a5a336b97f167573253a80b92e7c9be",
-              "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF-page-012-reading.txt",
-              "raw_sha256": "3716c8b238c2d12fcd297817a94d96d81c94ef68502e208d8cd771a4042f2c16",
-              "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF.pdf",
-              "url": "https://patentimages.storage.googleapis.com/fc/1d/e7/7bc4ed21f866c0/US4995487.pdf",
-              "http_status": 200
-            }
-          ],
-          "attribution_required": false,
-          "limits": [
-            "專利設計可解說，不證當年每一型附贈或與Emmer實物零件完全相同。"
-          ],
-          "usable_action_or_result": "掛鉤托另一包，按扣/帶可拆；與R16的調帶觀察作各有歸屬的互照。",
-          "not_source_pass": true
-        }
-      ],
-      "limits": [
-        "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。",
-        "無來源的力道數字、鎖按鈕或耐久循環不可加。",
-        "專利設計可解說，不證當年每一型附贈或與Emmer實物零件完全相同。"
-      ],
-      "visual_prompt": "Medium close-up at a luggage workbench, an anonymous designer looking at a plain upright soft suitcase with a simple handle, muted daylight.",
-      "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -5974,7 +4810,7 @@
       "limits": [],
       "visual_prompt": "Medium shot at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, soft overhead light.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -6097,7 +4933,7 @@
       ],
       "visual_prompt": "Native outro typography only.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -6112,7 +4948,7 @@
       "limits": [],
       "visual_prompt": "Native outro typography only.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     },
     {
@@ -6127,7 +4963,7 @@
       "limits": [],
       "visual_prompt": "Native outro typography only.",
       "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
-      "independent_source_review": "PENDING_R4_DELTA_QA",
+      "independent_source_review": "PENDING_R9_DELTA_QA",
       "independent_visual_review": "PENDING_OTHER_REVIEWER"
     }
   ],

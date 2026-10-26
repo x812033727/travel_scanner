@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-26T09:15:52.037Z",
-  "scope": "Current 16 source-verified written teaser plans with eight-language TEXT_PASS; immutable original audit retained. No actual generated media or image reuse acceptance.",
+  "checked_at": "2026-10-26T09:39:13.664Z",
+  "scope": "Current 17 source-verified written teaser plans with eight-language TEXT_PASS; immutable original audit retained. No actual generated media or image reuse acceptance.",
   "frozen_prior_audit": {
     "path": "opening-teaser-image-audit.json",
     "sha256": "4ed8bdb3afb401bf6cb3c773309b729dc8e8216110b292887fa98b853162fbfd"
@@ -1023,10 +1023,74 @@
       "illustrations_generated": false,
       "media_qa": false,
       "final_approval": false
+    },
+    {
+      "id": "dyson",
+      "slug": "story-dyson-japan-first-20261021-remake-20261025",
+      "author_revision": 5,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "source_receipt": "dyson/reviews/source-r5-independent.json",
+      "source_receipt_sha256": "371d04594c90fadf7b9b90343c8a035128fcce57a5d9a185a3604e0313641a82",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "dyson/verify-1.md",
+      "narrative_receipt": "dyson/reviews/narrative-r2.json",
+      "narrative_receipt_sha256": "6a3c9d41728aa9eafe139f88c61165d5895dcd4bb3ccaabdb50fa1ec34dc4f94",
+      "actual_native_panel": 2,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "one_line",
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "dyson/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "31c6b3028c86bd68a130908ce8d08943583f34d2efa2999d09db33da3dd4f0b9",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "155605c3-1cce-4a22-ac3a-845d69b156b4",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "f0e37031-5e29-435d-be2a-7f932758545f",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T09:01:33.367Z",
+      "backend_current_readback": null,
+      "backend_current_readback_sha256": null,
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "dyson/production-entry-text-r5.md",
+      "text_translations": "dyson/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1120,
+      "preflight": "dyson/operator-preflight-r5.json",
+      "clean_master_recipe": "dyson/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "dyson/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false
     }
   ],
-  "episodes": 16,
-  "event_teasers": 29,
+  "episodes": 17,
+  "event_teasers": 31,
   "current_missing_written_plans": 0,
   "actual_same_asset_verified": false,
   "paid_requests": 0

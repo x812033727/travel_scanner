@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "rolling-suitcase-r4",
+  "revision": "rolling-suitcase-r9",
   "status": "WRITTEN_PLAN_PENDING_REAL_ASSETS_AND_FINAL_SHA",
   "not_video_schema_extension": true,
   "not_native_keyframes_manifest": true,
@@ -8,14 +8,14 @@
   "actual_same_asset_verified": false,
   "candidate_binding": {
     "core_four_sha256": {
-      "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
-      "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
-      "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
-      "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+      "video.json": "565f98f274c6f285b56a9d4f167e9e7503e0f0a6ed34dc744d4c643355e8751d",
+      "script.md": "ffafa208daffd5bdcbd80abafb7ce25ee38ec528e7e935a398338f9958a0e334",
+      "narration-only.json": "af2a7ffd1993ca2025db8eae0fb99085cb73e121aab8d4171153e17c341e75f5",
+      "claims.json": "6f0438375b7e5db430591a5b9ad7cbf7811c30beaa870c863dbfc39db4d582af"
     },
-    "claims_md_sha256": "52fa2eda1d17f26a115201632435ff0db5dc91bab1660a0d477b9c092bed4168",
-    "brief_sha256": "2432d9f34971405c28ae2fa3aae02b79ced4045ac063be2175b9eef62d889280",
-    "series_sha256": "57be9fd5779add888861c239718feae3aa9248776ba3e7a299e36890783f15ed"
+    "claims_md_sha256": "a1ea8b35b95448c5e73147f418ee1c1bb0abf98e1819056960d99611299f678f",
+    "brief_sha256": "61628875fdf53de44592553def290d471e22209a266258737b92a8f98fa2ed72",
+    "series_sha256": "6443e8a9738949e3c99866c0cfa235d88fce416daa6665053a6519d10b5e5ac2"
   },
   "code_readback": {
     "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
@@ -25,6 +25,9 @@
     "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
     "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
   },
+  "opening_graph_mapping_path": "opening-graph-mapping-r9.json",
+  "opening_graph_mapping_sha256": "c3bc76f32b76039f974d6c1ef7a1d9138d23fe3e8d85a2b9825fbd63c5a515d6",
+  "opening_graph_planned_same_asset": false,
   "camera_in_composed_prompt": true,
   "still_alias_available": false,
   "data_source_is_clip_only": true,
@@ -34,7 +37,7 @@
       "asset_plan_id": "offset-handle-parts",
       "teaser_scene_id": "rs0005",
       "payoff_scene_id": "rs0066",
-      "teaser_narration": "後來能收進箱裡的拉把，靠什麼留在原位？",
+      "teaser_narration": "行李箱的把手拉起來，要靠什麼留在原位？",
       "payoff_narration": "依專利說明，導件使杆子的下端楔住，杆和套筒、襯套之間產生摩擦。",
       "prompt_exact_match": true,
       "camera_exact_match": true,
@@ -149,12 +152,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
           "keyframes",
           "--slug",
           "story-rolling-suitcase-v2-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
           "--shot",
           "rs0066",
           "--takes",
@@ -175,12 +178,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
           "keyframes",
           "--slug",
           "story-rolling-suitcase-v2-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
           "--shot",
           "rs0005",
           "--takes",
@@ -192,12 +195,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
           "keyframes",
           "--slug",
           "story-rolling-suitcase-v2-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
           "--shot",
           "rs0082",
           "--takes",
@@ -218,12 +221,12 @@
         "argv": [
           "node",
           "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
           "keyframes",
           "--slug",
           "story-rolling-suitcase-v2-remake-20261025",
           "--workdir",
-          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
           "--shot",
           "rs0006",
           "--takes",

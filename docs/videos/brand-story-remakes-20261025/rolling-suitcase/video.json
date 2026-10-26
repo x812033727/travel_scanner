@@ -28,11 +28,6 @@
   },
   "loops": [
     {
-      "setup": "rs0004",
-      "payoff": "rs0029",
-      "what": "舊工具方便，但本人回憶不滿手作品質"
-    },
-    {
       "setup": "rs0005",
       "payoff": "rs0066",
       "what": "偏心導件與套筒襯套摩擦楔緊"
@@ -64,8 +59,8 @@
     },
     {
       "setup": "rs0026",
-      "payoff": "rs0030",
-      "what": "先交既有製作者與夥伴討論"
+      "payoff": "rs0003",
+      "what": "製作者答應把構想給夥伴看"
     },
     {
       "setup": "rs0031",
@@ -246,46 +241,14 @@
       "id": "rs0002",
       "template": "shot",
       "data": {
-        "prompt": "Close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, mild ceiling light.",
+        "prompt": "Close-up at a passenger terminal corridor, an anonymous traveler taking a blank sheet from a plain open bag, mild ceiling light.",
         "visual": "still",
         "camera": "pan left"
       },
       "lines": [
         {
           "id": "rs0002",
-          "text": "一份機師回憶和一份專利，留下了一只輪箱的改變。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0003",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.",
-        "visual": "still",
-        "camera": "pull out"
-      },
-      "lines": [
-        {
-          "id": "rs0003",
-          "text": "艾默記得，普拉斯在西雅圖機場拿出圖紙，給舊輪箱的製作者看。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0004",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up on a quiet planning desk, an anonymous hand opening a plain canvas bag beside blank loose paper, mild lamp light.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0004",
-          "text": "我也想問你：已經能拖了，為什麼還要另畫？",
+          "text": "艾默記得，在西雅圖機場，普拉斯從包裡拿出圖紙，給舊輪箱的製作者看。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -301,7 +264,7 @@
       "lines": [
         {
           "id": "rs0005",
-          "text": "後來能收進箱裡的拉把，靠什麼留在原位？",
+          "text": "行李箱的把手拉起來，要靠什麼留在原位？",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -333,7 +296,7 @@
       "lines": [
         {
           "id": "rs0007",
-          "text": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。",
+          "text": "今天我想跟你看普拉斯的輪子行李箱，追查一台外架帶來的拆裝難題。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -420,22 +383,6 @@
       ]
     },
     {
-      "id": "rs0013",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, soft overhead light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0013",
-          "text": "我覺得這個起點很有意思：好用的部分，他已經在用。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0014",
       "template": "shot",
       "data": {
@@ -495,22 +442,6 @@
         {
           "id": "rs0017",
           "text": "一九四六年核發的文件，已經畫到箱底的輪件和拉把。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0018",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a quiet archive desk, an anonymous reader opening an unlettered technical booklet with abstract luggage sketches, mild ceiling light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "rs0018",
-          "text": "所以這場故事的起點，並不是等人突然想到「輪子」兩個字。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -612,22 +543,6 @@
       ]
     },
     {
-      "id": "rs0025",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a passenger waiting area, an anonymous traveler loosening a plain elastic cord from luggage on a separate cart, soft window light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0025",
-          "text": "你現在可以先看著那條繩：它綁得住兩件東西，也表示兩件東西還沒有成為一件。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0026",
       "template": "shot",
       "data": {
@@ -644,37 +559,21 @@
       ]
     },
     {
-      "id": "rs0027",
+      "id": "rs0003",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a simple passenger terminal corridor, two anonymous travelers walking beside plain luggage toward a distant blank doorway, gentle side lighting.",
+        "prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.",
         "visual": "still",
         "camera": "pull out"
       },
       "lines": [
         {
-          "id": "rs0027",
-          "text": "艾默回憶，他和普拉斯同組飛行，有一次在西雅圖機場往登機門走。",
+          "id": "rs0003",
+          "text": "還記得開場那張圖嗎？製作者穆林斯答應，把構想給夥伴達奇看。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ],
       "chapter": "二｜圖紙等了兩週"
-    },
-    {
-      "id": "rs0028",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at a passenger terminal corridor, two anonymous travelers meeting beside a plain tubular luggage frame, muted daylight.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0028",
-          "text": "地點是南衛星航廈，路上碰到製作舊輪箱的穆林斯。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
     },
     {
       "id": "rs0029",
@@ -688,22 +587,6 @@
         {
           "id": "rs0029",
           "text": "那件工具叫傑特伊茲，普拉斯雖然喜歡它的方便，卻嫌它像臨時手做的。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0030",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a quiet terminal corner, an anonymous traveler holding an unlettered folder toward another traveler beside plain luggage, warm desk lamp light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "rs0030",
-          "text": "穆林斯答應，把這個構想給合作夥伴達奇看。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -816,22 +699,6 @@
         {
           "id": "rs0037",
           "text": "兩人討論過，對這個構想沒有興趣。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0038",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at an archive reading table, an anonymous reader setting down a blank notebook beside a plain pencil, gentle side light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "rs0038",
-          "text": "這份回憶裡，讓我停下來的不是一句勵志口號，是一張圖等了兩週，停在這裡。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -982,22 +849,6 @@
       ]
     },
     {
-      "id": "rs0049",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a component explanation table, an anonymous designer examining a plain suitcase corner containing a simple inset wheel, soft window light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0049",
-          "text": "我喜歡這個改變的地方，是箱子不必先坐上一台車，才有輪子可以用。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0051",
       "template": "shot",
       "data": {
@@ -1008,7 +859,7 @@
       "lines": [
         {
           "id": "rs0051",
-          "text": "不過只留下兩個輪子，它站著等你的時候，靠哪裡支撐？",
+          "text": "不過它站著等你的時候，靠哪裡支撐？",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1089,22 +940,6 @@
         {
           "id": "rs0056",
           "text": "專利以偏離垂直約三十度為例，說明這個切換動作。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0057",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a plain terminal floor, an anonymous traveler standing beside an upright plain suitcase with two small support feet, soft window light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0057",
-          "text": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1207,22 +1042,6 @@
       ]
     },
     {
-      "id": "rs0064",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a mechanism demonstration table, an anonymous hand pointing toward an off-center plain rod connection on a simple loose guide disk, soft overhead light.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0064",
-          "text": "你可以把目光放在這個小小的偏心位置，它才是接下來的關鍵。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0065",
       "template": "shot",
       "data": {
@@ -1266,22 +1085,6 @@
         {
           "id": "rs0067",
           "text": "這股摩擦把拉把留在伸出的位置，讓人握著它拖行。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0068",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at a mechanical explanation bench, an anonymous designer examining plain metal rods beside a simple cylindrical guide disk, muted daylight.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0068",
-          "text": "我原本也會去找一個卡榫，這裡真正工作的，卻是杆子和導件之間的位置關係。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1335,22 +1138,6 @@
       ]
     },
     {
-      "id": "rs0072",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at a passenger waiting area, an anonymous traveler lowering a plain suitcase handle toward the top of the case, cool reflected light.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0072",
-          "text": "拉起與壓回，是手對同一組零件做的兩個不同方向的動作。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0073",
       "template": "shot",
       "data": {
@@ -1361,7 +1148,7 @@
       "lines": [
         {
           "id": "rs0073",
-          "text": "把手收好，輪子也藏進角落，箱子就一定放得進機艙嗎？",
+          "text": "這只箱子，就一定放得進機艙嗎？",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1410,22 +1197,6 @@
         {
           "id": "rs0076",
           "text": "我會把這組數字當成這個例子的外形，搭機時還是得對照你那班飛機的限制。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0077",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a luggage workbench, an anonymous designer looking at a plain upright soft suitcase with a simple handle, soft overhead light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0077",
-          "text": "到這裡，從走路到收納，主要動作都繞著同一只箱子進行。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1528,22 +1299,6 @@
       ]
     },
     {
-      "id": "rs0085",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a quiet waiting area, an anonymous traveler looking into a small plain bag resting beside a stationary upright case, warm ambient light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "rs0085",
-          "text": "我覺得這才是很日常的要求：我停下來找東西時，行李也得有辦法停下來。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0086",
       "template": "shot",
       "data": {
@@ -1554,7 +1309,7 @@
       "lines": [
         {
           "id": "rs0086",
-          "text": "這種接法，在普拉斯的專利裡，也找得到具體零件嗎？",
+          "text": "我也想看清楚：這種接法，在普拉斯的專利裡有具體零件嗎？",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1602,23 +1357,7 @@
       "lines": [
         {
           "id": "rs0089",
-          "text": "掛鉤能拆下，附包也由主箱支承；這是一個加掛的連接方案。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0090",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a luggage component table, an anonymous designer holding a plain curved hook beside a simple flexible strap, mild ceiling light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "rs0090",
-          "text": "艾默講的是他看到的用法，專利留下的是結構；兩邊能照見同一個需求。",
+          "text": "這個掛鉤還能拆下。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1673,22 +1412,6 @@
       ]
     },
     {
-      "id": "rs0099",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a passenger waiting area, an anonymous observer gesturing toward the inset wheel of a plain case held by another traveler, soft reflected light.",
-        "visual": "still",
-        "camera": "pull out"
-      },
-      "lines": [
-        {
-          "id": "rs0099",
-          "text": "我覺得這個請求很有分量：工具被帶到工作路上，旁邊的人就能看見它怎麼用。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
       "id": "rs0100",
       "template": "shot",
       "data": {
@@ -1699,7 +1422,7 @@
       "lines": [
         {
           "id": "rs0100",
-          "text": "但你在車庫裡做得出一只，接到更多請求之後，還待得下去嗎？",
+          "text": "我也想問：你在車庫裡做得出一只，接到更多請求之後，還待得下去嗎？",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]
@@ -1796,38 +1519,6 @@
         {
           "id": "rs0106",
           "text": "公司沿革則記載，普拉斯在一九九一年退休，轉為全職經營旅行寶。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0107",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a quiet office desk, an anonymous worker arranging two blank document sheets beside an unmarked calendar, gentle side lighting.",
-        "visual": "still",
-        "camera": "pull out"
-      },
-      "lines": [
-        {
-          "id": "rs0107",
-          "text": "這個故事落在八〇年代末到九〇年代初，圖紙、產品、申請與核發，各有自己的時間。",
-          "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
-        }
-      ]
-    },
-    {
-      "id": "rs0108",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at a luggage workbench, an anonymous designer looking at a plain upright soft suitcase with a simple handle, muted daylight.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "rs0108",
-          "text": "我最想留下的，是一個拿來走路的工具，最後還得回答停下、收回、再多帶一包。",
           "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
         }
       ]

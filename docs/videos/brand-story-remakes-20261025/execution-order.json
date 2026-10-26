@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T09:21:28.189534+00:00",
+  "updated_at": "2026-10-26T09:53:15.906509+00:00",
   "user_direction": "從C03開始重製",
   "current_priority": "C03",
   "order": [
@@ -268,7 +268,7 @@
     },
     {
       "id": "dyson",
-      "status": "R5_SOURCE_WRITTEN_VISUAL_PASS_NATIVE2_PASS_FREE_OPERATOR_FROZEN_TEXT_AUTHORING",
+      "status": "source_native_and_eight_language_text_PASS_media_held",
       "source_review": "dyson/reviews/source-r5-independent.json",
       "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
       "source_checkpoint": "dyson/author-freeze-r5.json",
@@ -280,8 +280,14 @@
       "frozen_source_file": "dyson/history/r3/video.json",
       "frozen_author_checkpoint": "dyson/history/r3/author-freeze-r3.json",
       "current_native_state": "ROUND_2_ACTUAL_MERGED_PASS",
-      "text_preparation_state": "AUTHORING_IN_PROGRESS_NOT_TEXT_PASS",
-      "handoff": "dyson/production-entry-r5-prepared.md"
+      "text_preparation_state": "TEXT_PASS",
+      "handoff": "dyson/production-entry-text-r5.md",
+      "current_preparation": "dyson/preparation-text-completion-r5.json",
+      "text_preparation": "dyson/i18n/preparation-status.json",
+      "eight_language_text_entries": 1120,
+      "backend_outline_status": "pending",
+      "backend_script_status": "pending",
+      "backend_language_selection_applied": false
     },
     {
       "id": "doraemon",
@@ -304,19 +310,19 @@
     },
     {
       "id": "rolling-suitcase",
-      "status": "R7_FROZEN_SOURCE_WRITTEN_VISUAL_PASS_NATIVE6_HOLD_R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
-      "source_review": "rolling-suitcase/history/r7/reviews/source-r7-independent.json",
-      "source_video_sha256": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
-      "source_checkpoint": "rolling-suitcase/history/r7/author-freeze-r7.json",
-      "narrative_review": "rolling-suitcase/history/r7/reviews/narrative-r6.json",
-      "actual_completed_native_panels": 6,
+      "status": "R9_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_CAPACITY_HOLD_TEXT_NOT_PREPARED",
+      "source_review": "rolling-suitcase/reviews/source-r9-independent.json",
+      "source_video_sha256": "565f98f274c6f285b56a9d4f167e9e7503e0f0a6ed34dc744d4c643355e8751d",
+      "source_checkpoint": "rolling-suitcase/author-freeze-r9.json",
+      "narrative_review": "rolling-suitcase/reviews/narrative-r8.json",
+      "actual_completed_native_panels": 8,
       "prepared_next_native_panel": null,
-      "current_native_state": "R7_ROUND_6_ACTUAL_MERGED_HOLD",
-      "text_preparation_state": "NOT_TEXT_PASS",
-      "active_author_revision": 8,
-      "current_author_work_state": "R8_AUTHOR_ACTIVE_NOT_CHECKPOINTED",
-      "active_author_source_reviewed": false,
-      "active_work_note": "R8 SOURCE PASS and fresh native7 blind reading are unpublished, not checkpointed here and excluded from the published source/native17 count. Current published source/native evidence remains history/r7/native6 HOLD."
+      "current_native_state": "R9_ROUND_8_ACTUAL_MERGED_PASS",
+      "text_preparation_state": "NOT_PREPARED_CAPACITY_HOLD",
+      "handoff": "rolling-suitcase/production-entry-source-r9.md",
+      "capacity_state": "HOLD_MATERIAL_CAPACITY",
+      "operator_ready": false,
+      "backend_submission_state": "NO_NEW_R9_BACKEND_CARDS"
     }
   ],
   "originals_preserved": true,
@@ -326,6 +332,6 @@
   "old_media_retrieval_required": false,
   "language_defaults": "language-defaults.json",
   "continue_in_order_without_routine_questions": true,
-  "current_source_checkpoint": "source-preparation-checkpoint-20261026.json",
-  "current_preparation_forward": "text-preparation-checkpoint-16.json"
+  "current_source_checkpoint": "source-preparation-checkpoint-18-20261026.json",
+  "current_preparation_forward": "text-preparation-checkpoint-17.json"
 }
