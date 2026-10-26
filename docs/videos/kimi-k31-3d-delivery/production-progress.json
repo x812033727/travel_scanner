@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "episode": "kimi-k31-3d-delivery",
-  "updated_at": "2026-10-26T18:35:56.546180+00:00",
-  "status": "backend_pending_manual_candidate_full1080_CC9_resource_draft_binary_verified_audio_held",
+  "updated_at": "2026-10-26T20:02:55.027555+00:00",
+  "status": "backend_pending_manual_candidate_full1080_CC9_resource_and_three_mobile_thumbnail_binary_verified_audio_held",
   "owner": "codex-ai-tech-news",
   "branch": "codex/ai-tech-kimi-20261026",
   "backend": {
@@ -14,12 +14,12 @@
     "source_approval": false,
     "raw_stage_field": "narration approved",
     "raw_stage_interpretation": "Name of the next reported checklist stage. narration_approved.done and final_video_approved.done are both false; this text is not an approval.",
-    "last_authenticated_readback_at": "2026-10-26T18:33:14.523Z",
+    "last_authenticated_readback_at": "2026-10-26T19:54:31.029Z",
     "readback_is_historical_snapshot": true,
     "binary_media_readback_completed": true,
     "pending_candidate_submission": "actual completed native manual final review, pending undecided",
     "server_language_choices_saved": false,
-    "readback_snapshot_scope": "Actual normal review-files full14 download; all original13 and exact resource DRAFT verified, current metadata/payload/full falseQA and ownerchoices preserved.",
+    "readback_snapshot_scope": "Actual normal review-files full17 download; all previous14 and three current EN/KO/ES mobile thumbnail references independently hashed, same pending with old fullfalseQA/metadata/owner choices preserved.",
     "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
     "normal_manual_review": true,
     "verified_binary_refs": [
@@ -106,9 +106,27 @@
         "sha256": "d4e1bd340ac26e65bfaf84e448e0360138e858f1c9e7ac0cdcc651791d18ae9d",
         "size": 29203,
         "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_thumbnail_en_mobile",
+        "sha256": "f8462057a9001a4b2e4389fc149fae1df28fd77117c1f329afc4e12d51a2e94c",
+        "size": 49078,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ko_mobile",
+        "sha256": "f671b4e3f7549b28038fadbc1a0fe7ed355eada01fb6feb60d0c36d301494dc8",
+        "size": 46954,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_es_mobile",
+        "sha256": "6eb68c4e5c64d4cb74c26a86e23cf2ab77708a4b062319b39ce20e59171c9d0b",
+        "size": 55482,
+        "content_type": "image/jpeg"
       }
     ],
-    "verified_binary_ref_count": 14,
+    "verified_binary_ref_count": 17,
     "full1080_downloadable_reference_verified": true,
     "full1080_bytes": 65490500,
     "full1080_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -1112,5 +1130,101 @@
     "no_merge_deploy_or_YouTube": true,
     "receipt": "receipts/production/resource-supplement/actual-backend-resource-delivery.json",
     "description_drafts": "description-drafts/README.md"
+  },
+  "thumbnail_mobile": {
+    "schema_version": 1,
+    "episode": "kimi-k31-3d-delivery",
+    "kind": "actual_completed_three_foreign_thumbnail_mobile_evidence_delivery",
+    "recorded_at": "2026-10-26T20:02:55.027555+00:00",
+    "backend_url": "https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery",
+    "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "pending_status": "pending",
+    "decision": null,
+    "candidate_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "new_image_refs": [
+      {
+        "role": "evidence_thumbnail_en_mobile",
+        "sha256": "f8462057a9001a4b2e4389fc149fae1df28fd77117c1f329afc4e12d51a2e94c",
+        "size": 49078,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ko_mobile",
+        "sha256": "f671b4e3f7549b28038fadbc1a0fe7ed355eada01fb6feb60d0c36d301494dc8",
+        "size": 46954,
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_es_mobile",
+        "sha256": "6eb68c4e5c64d4cb74c26a86e23cf2ab77708a4b062319b39ce20e59171c9d0b",
+        "size": 55482,
+        "content_type": "image/jpeg"
+      }
+    ],
+    "actual_canonical_native_process_exit_code": 0,
+    "canonical_session": 92077,
+    "actual_backend_helper_process_exit_code": 0,
+    "helper_session": 39843,
+    "helper_PID": 332346,
+    "helper_finished_at": "2026-10-26T19:51:57.869Z",
+    "native_project_lease_released": true,
+    "actual_wire_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 3,
+      "review_POST": 1,
+      "file_GET": 3,
+      "denied": 0
+    },
+    "normal_review_files_session": 3156,
+    "normal_review_files_process_exit_code": 0,
+    "normal_review_files_fetched_at": "2026-10-26T19:54:31.029Z",
+    "normal_full_disk_binary_files_verified": 17,
+    "not_fetched": [],
+    "original14_refs_fullpayload_metadata_fullQA_false_manualflags_summary_choices_history_exact": true,
+    "only_display_i18n_changes": {
+      "en": [
+        "thumbnail.headline"
+      ],
+      "ko": [
+        "thumbnail.headline",
+        "thumbnail.sub whitespace LF only"
+      ],
+      "es": [
+        "thumbnail.headline"
+      ]
+    },
+    "all114_translation_lines_and_other_title_description_tags_chapters_sourcehashes_unchanged": true,
+    "all5_other_locale_JPEG_bytes_unchanged": true,
+    "main_source_audio_film_CC_cache_journals_and_global_holds_unchanged": true,
+    "native_phone_font_estimates_px": {
+      "en": 27,
+      "ko": 34,
+      "es": 26
+    },
+    "native_phone_target_unchanged": 24,
+    "actual_browser_font_sizes_not_claimed": true,
+    "new_separate_native_image_checks_ok": true,
+    "old_full_QA_unchanged": {
+      "ok": false,
+      "passed": 10,
+      "total": 11,
+      "caption_speed_warnings": 47,
+      "historical_thumbnail_warnings": 3
+    },
+    "new_image_checks_not_new_full_QA": true,
+    "foreign_checked_M4A": 0,
+    "original_kit_metadata_draft_still_not_adopted": true,
+    "approved_source_package_or_language_batch_complete": false,
+    "server_approval": false,
+    "API_no_atomic_CAS_limitation_preserved": true,
+    "deployed_UI_visibility_or_browser_download_filename_guaranteed": false,
+    "full_actual_disk_proof": "root-final17-binary-readback.json",
+    "normal_manifest": "normal-final17-review-files.json",
+    "independent_append_trace": "root-actual-append-trace.json",
+    "root_current_image_review": "root-canonical-thumbnail-review.json",
+    "no_paid_QA_policy_speech_projectPUT_approval_merge_deploy_YouTube": true,
+    "receipt": "receipts/production/thumbnail-mobile/actual-backend-thumbnail-delivery.json",
+    "images_and_limits": "receipts/production/thumbnail-mobile/README.md"
   }
 }
