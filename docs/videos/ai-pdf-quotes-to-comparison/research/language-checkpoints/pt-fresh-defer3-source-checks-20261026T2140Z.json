@@ -1,0 +1,39 @@
+{
+  "recorded_at_utc": "2026-10-26T21:46:40.638715+00:00",
+  "kind": "actual-completed-checks-after-third-PT-defer-source-evidence-save",
+  "production_video_or_translation_words_changed": false,
+  "native_core_changed": false,
+  "native_lint": {
+    "actual_exit": 0,
+    "errors": 0,
+    "warnings": 2,
+    "retained_warnings": [
+      "outro has2sentences",
+      "二十 saidin3lines q57z/7dp4/vnaq"
+    ]
+  },
+  "docs_videos": {
+    "actual_exit": 0,
+    "passed": 236,
+    "failed": 0,
+    "external_log": "/workspace/work/ai-pdf-01/pt-fresh-defer3-docs-check-20261026T2140Z.log",
+    "log_sha256": "4a5db6766131aeaf7d286e9130bd02dabbbad2df25c77444d0472ee16e83b96f"
+  },
+  "tasks": {
+    "actual_exit": 0,
+    "validated": 2187,
+    "existing_scope_stale_warnings_retained": true,
+    "external_log": "/workspace/work/ai-pdf-01/pt-fresh-defer3-task-check-20261026T2140Z.log",
+    "log_sha256": "b674cedf3bc011fae811ff26cb1dbb38643fad6283c9f82689144bf12d0ec996"
+  },
+  "diff_check_actual_exit": 0,
+  "PR_readback": {
+    "draft": true,
+    "state": "open",
+    "no_auto_merge_label": true,
+    "head_at_read": "dc2be914d003003477cc818c2cfad47dcdd344d2",
+    "branch": "codex/ai-pdf-comparison-20261026",
+    "base": "codex/ai-editable-animation-20261025"
+  },
+  "shared_core_all_tools_or_production_deploy_claimed": false
+}
