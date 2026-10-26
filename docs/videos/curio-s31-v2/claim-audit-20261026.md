@@ -2,7 +2,7 @@
 
 - 覆核者：`s31_source_audit`（與改稿者分開）。
 - 最終旁白 r6 讀回時間：2026-10-26 22:59:21 +08:00。
-- `video.json` SHA-256：`d40e0ac7a31a5d3cca7d2f418ff920d6a58daa6eed3f27d0c65c3779c4f160e3`。
+- 覆核時的 `video.json` 快照 SHA-256：`d40e0ac7a31a5d3cca7d2f418ff920d6a58daa6eed3f27d0c65c3779c4f160e3`。後續只延長既有配樂並修改一景插圖prompt，整檔SHA因此改變；旁白對照雜湊與下列speechHash保持不變。
 - 以現行影片字典計算的產線 `speechHash`：`8af0af8b6fb7d1e4`；本次未改字典。
 - 旁白對照雜湊：`3780efdbe3f36b8e2dc2caa28a973258c03cfd0fcd6821c7538332e692d8eda1`。算法為依場景順序列出 `{scene,id,text,say,say_for}`，對 `JSON.stringify` 的 UTF-8 位元組取 SHA-256；未定義欄位照 JSON 規則略去。此值不含插圖提示詞，可單獨綁定本次逐句讀稿。
 - 初輪已逐句覆核 235 行；r2 至 r6 已重讀每次刪減與改寫差異，並逐項核對目前 **212 行** 與 `claims.md`、`rewrite-map.json` 及 `source-review-checklist.md` 的八組問題。212 個行 ID 與實際文字全部一一對應，沒有缺行、多行或文字不符。當前範圍包括 79 行新增、36 行改寫、97 行沿用或只分行；新增段落的事實暗示、問句與旁白反應也已覆核，並非只核對列號。

@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 新稿／來源／敘事通過，站主已核准；中文旁白製作中 |
+| 1 | curio-s31 | curio-s31-v2 | 中文轉寫212句已跑完、31句做離線第二意見；插圖生成中，八語稿已完成並交叉覆核 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,20 @@
 
 ## 當前斷點
 
-S31 本機工作目錄 `~/mokaair-work/videos/curio-s31-v2/`；外部收據與執行紀錄在 `~/mokaair-work/curio-s31-v2-preflight/`。目前 `tts` 的 unified exec session 為 `84228`，log 為 `tts-production-r6.txt`。先讀時間軸、語音 journal、鎖與實際程序，再決定是否接續；session 狀態或舊 log 不能單獨代表完成。
+S31 本機工作目錄 `~/mokaair-work/videos/curio-s31-v2/`；外部收據與執行紀錄在 `~/mokaair-work/curio-s31-v2-preflight/`。`tts` 已完成：171請求、4,430計費字元、旁白28,379格／30fps＝15:45.967。212句語音片段合計12:53.440；其餘主要是工具預設句間與換景間隔，發聲語速約在4–5字／秒目標內。
+
+第一輪 `check-audio`（session `73612`）已結束：212句中148逐字一致、29同音／口語差異、4句Jev判通過、31句仍標記；沒有提前核准音訊。31句的原始WAV雜湊及順序已存 `whisper-input-r6.json`。本機session `37037`／Python pid `42156` 已在原生主機首句驗證成功後，只終止本集自有程序；停止與部分輸出收據保留，不再續等該PID。
+
+原生VPS的cached Whisper medium離線批次已完成31/31、exit0、4分42秒、stderr空白；無新模型下載／供應商請求。private `whisper-native-vps-r6-20261027T003938/verified-receipt.json` 綁31個WAV與原始輸出SHA `d402c92532b7fcac4cc7aaca7307b96b2922255ae6495691f181954d6f23e12d`。`whisper-verified-reader-r6.mjs` 只在輸入SHA相同時重播真實轉寫，給官方check-audio的second-opinion；不能對重錄後的WAV重用。離線官方比對函式診斷為11句直接吻合、5句兩轉寫錯在不同位置、15句仍需Jev／實音判讀；這份diagnostic不是音訊核准。待憑證恢復後用官方check-audio+已驗證reader，不再重跑31句ASR。
+
+`keyframes` 初次session `29556` 因讀取回應 ECONNRESET 中止；bundled Node24.19.0 的續作session `91825` 也已結束（HTTP502），log `keyframes-resume-r6.txt`。v2-add-037 seed1已下載並快取，尚未記下judge，不能重新生成；目前先對帳再續跑。產線實際保留65張舊圖判定，consort-basket三次未過，已在程序停止後改成簡單室內單人prompt；旁白及敘事綁定未變。live全量報價仍US$5.22，總圖片／評審上限US$6。
+
+已發現斷線後重評會改變修正字句、另立請求鍵的工具問題，另開 `2026-10-26-persist-keyframe-take-verdicts-before-network`，不修改別人持有的工具。原先留在jobs中的工作已只做對帳：status=ready、US$0.0035、圖片下載及雜湊核對通過；收據在 `connection-reset-r6/reconciled-job.json`。**不要清掉／重送這筆已完成工作**；待目前keyframes程序釋放鎖後，再依已保存收據對帳cache/ledger/reservation。原始記錄完整保留。再次中斷時先核對現有job與每次judge，不盲重跑。
+
+2026-10-27恢復檢查發現私有下載helper把 `readCredentials()` 回傳的 `file` 一起展開，覆蓋了下載目的地，造成圖片寫入本機憑證檔；目前已改為只傳site/token，圖片已取回至原收據所記位置並驗SHA。原權杖無可用備份，官方login配對session `71830` 等站主在管理頁允許；未恢復前不重送付費指令。這是連線帳號斷點，不是生成失敗，不能以重新生圖處理。舊orphan的US$0.0035已在帳本，不重複計費；正常Stage對帳helper已備妥，待配對後取回既有job並寫cache。502處的judge結果未記下，另保守保留US$0.05費用不確定量，仍計入US$6上限管理。
+
+外語沿用原集八語選擇（en/ja/ko/es/pt/id/vi/th），八份212行工作表已全填、獨立覆核、修正及merge，仍是待音畫實測的候選。**不要重跑i18n-sheet覆寫工作表**。en/ja修正12／7項、ko/es修正14／17項、pt/id修正10／8項、vi/th修正4／5項，八語最終delta均已由獨立覆核者讀回，private八份review均有SHA-bound文字ready決定。泰文description另縮至1292 bytes並獨立覆核通過；composed預期4935 bytes，current lint為0 errors/0 warnings。配音等中文版定案後才生成。
+
+每語212行中159行新譯／改譯、53行來源相同仍完整覆核。初始每行max_chars是保守估算，極短窗口無法兼顧完整姓名與自然語言時保留忠實稿並列例外，由實際整個分鏡窗口配音量測處理，不以刪事實換取字數。原始時間軸的zh-TW.srt已由官方captions命令產生212 cues；最終加品牌片頭後須重產偏移。配樂已由原始已付曲目離線交叉淡化6遍、4秒接縫，延長至976秒，current track `curio-s31-v2-bed.m4a` SHA-256 `a00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41`，新購費用0；收據 `music-reuse-r6.json`。
 
 本聊天的續作 heartbeat 已建立，automation id `s31`，每20分鐘依實際斷點接續；狀態不變時不發通知。七集的完整交付包均驗證完成後停用。
