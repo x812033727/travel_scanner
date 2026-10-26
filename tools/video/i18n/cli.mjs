@@ -25,7 +25,7 @@ import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths
 import { DEFAULT_LOCALES, eachLine, narrationLocale, TARGET_LOCALES, textHash } from "../core/schema.mjs";
 import { readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
-import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
+import { captionedTitle, TITLE_MAX_CHARS, titleBudget } from "../core/metadata.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes, thumbnailSource, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
@@ -44,6 +44,9 @@ const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, 
 // The thumbnail's words are optional: without them the locale keeps the zh-TW thumbnail.
 const THUMBNAIL_NOTE = " `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks.";
 const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags, the chapter names and the thumbnail's words; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags, chapter names and thumbnail words are not wanted for this locale." };
+// The channel adds the locale's captions tag after every title (core/metadata.mjs CAPTION_TAGS), so
+// a title has fewer than YouTube's 100 characters of its own.
+const TITLE_NOTE = " `title.max_chars` is the most characters the title may have: the channel adds the locale's captions tag after it (「｜CC字幕」 worded per language), and a brand story's tag, and YouTube takes 100 in all.";
 const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it.";
 const CONTEXT_NOTE = " `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.";
 
@@ -110,6 +113,20 @@ export function translationContext(video, lexicon, locale = narrationLocale(vide
   return { glossary: { terms, sources }, boundaries };
 }
 
+/**
+ * What i18n-merge says of a title that only the tags the channel adds after it push past
+ * TITLE_MAX_CHARS; the worker sends such a title alone back to the translator once
+ * (tools/video/automation/flow.mjs shortenTitle).
+ */
+export const TITLE_TAG_PROBLEM = "too long once the captions tag is added";
+
+const isStory = (doc) => doc.category === "story";
+
+/** Whether `title` in `locale` still fits TITLE_MAX_CHARS once the channel's tags are added. */
+export function titleFits(doc, title, locale) {
+  return [...captionedTitle(title, locale, { story: isStory(doc) })].length <= TITLE_MAX_CHARS;
+}
+
 /** The keys a sheet carries beside its entries (translationContext), which a model's answer need not repeat. */
 export const CONTEXT_KEYS = ["glossary", "boundaries"];
 
@@ -134,6 +151,9 @@ export function withoutContext(sheet) {
  * narrows the sheet: without "captions" it has no lines, without "metadata" no title,
  * description, tags or chapters (those fields are null and the list empty). With `context`
  * (translationContext) the sheet carries the glossary, and the boundaries when it holds lines.
+ * The title carries `max_chars`, YouTube's limit less the tags the channel adds after it
+ * (core/metadata.mjs titleBudget), and a current title that would not fit with them (one merged
+ * before the merge checked it) is marked todo like a missing one.
  */
 export function buildSheet(doc, translation, locale, budgets = null, parts = SHEET_PARTS, context = null) {
   const current = translation ?? {};
@@ -151,7 +171,7 @@ export function buildSheet(doc, translation, locale, budgets = null, parts = SHE
     return { scene: scene.id, todo: !fresh, source: scene.chapter, text: fresh ? current.chapters[scene.id] : "" };
   });
   const field = (name, empty) => {
-    const fresh = state[name] === "current";
+    const fresh = state[name] === "current" && (name !== "title" || titleFits(doc, String(current.title ?? ""), locale));
     return { todo: !fresh, source: doc.youtube[name], text: fresh ? current[name] ?? empty : empty };
   };
   const only = parts.length === 1 ? ` ${PART_NOTES[parts[0]]}` : "";
@@ -161,8 +181,8 @@ export function buildSheet(doc, translation, locale, budgets = null, parts = SHE
     locale,
     slug: doc.slug,
     parts: [...parts],
-    note: `${SHEET_NOTE}${thumbnail ? THUMBNAIL_NOTE : ""}${only}${budgets ? BUDGET_NOTE : ""}${context ? CONTEXT_NOTE : ""}`,
-    title: wantMetadata ? field("title", "") : null,
+    note: `${SHEET_NOTE}${wantMetadata ? TITLE_NOTE : ""}${thumbnail ? THUMBNAIL_NOTE : ""}${only}${budgets ? BUDGET_NOTE : ""}${context ? CONTEXT_NOTE : ""}`,
+    title: wantMetadata ? { ...field("title", ""), max_chars: titleBudget(locale, { story: isStory(doc) }) } : null,
     description: wantMetadata ? field("description", "") : null,
     tags: wantMetadata ? field("tags", []) : null,
     thumbnail,
@@ -246,7 +266,7 @@ export function mergeSheet(doc, sheet, previous) {
   const tags = Array.isArray(sheet.tags?.text) ? sheet.tags.text.map((tag) => String(tag).trim()).filter(Boolean) : [];
   const locale = sheet.locale;
   const fields = {
-    title: { value: title, empty: !title, invalid: title.length > TITLE_MAX_CHARS || /[<>]/.test(title) ? `at most ${TITLE_MAX_CHARS} characters and no angle brackets` : scriptProblem(locale, title, doc.youtube.title) },
+    title: { value: title, empty: !title, invalid: titleProblem(doc, title, locale) },
     description: { value: description, empty: !description, invalid: /[<>]/.test(description) ? "no angle brackets" : scriptProblem(locale, description, doc.youtube.description) },
     tags: { value: tags, empty: !tags.length && doc.youtube.tags.length > 0, invalid: scriptProblem(locale, tags.join(" "), "", { need: false }) },
   };
@@ -298,6 +318,21 @@ export function mergeSheet(doc, sheet, previous) {
   const translation = { ...values, chapters, source_hashes: recorded, lines };
   for (const [key, value] of Object.entries(before)) if (!Object.hasOwn(translation, key) && key !== "thumbnail") translation[key] = value;
   return { translation, problems, notes };
+}
+
+/**
+ * Why a translated title cannot go in, or null. Its length counts the tags the channel adds after
+ * it (captionedTitle), as the package does: a title YouTube would refuse is sent back now, while
+ * the translator can still shorten it, not found at the package step after the upload was
+ * confirmed.
+ */
+function titleProblem(doc, title, locale) {
+  if (/[<>]/.test(title)) return "no angle brackets";
+  if (!titleFits(doc, title, locale)) {
+    const tagged = [...captionedTitle(title, locale, { story: isStory(doc) })].length;
+    return `${TITLE_TAG_PROBLEM}: ${tagged} characters with it, YouTube takes ${TITLE_MAX_CHARS}; the title alone at most ${titleBudget(locale, { story: isStory(doc) })}`;
+  }
+  return scriptProblem(locale, title, doc.youtube.title);
 }
 
 /** The thumbnail words a sheet carries, trimmed, or null with the reason in `notes`. */

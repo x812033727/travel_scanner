@@ -11,7 +11,7 @@ import { lintProject, loadProject } from "../core/state.mjs";
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnail, sourceHashes, thumbnailGap, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { cuePieces } from "../core/captions.mjs";
-import { buildSheet, CONTEXT_KEYS, mergeSheet, scriptProblem, sheetContext, sheetTodo, translationContext, withoutContext } from "./cli.mjs";
+import { buildSheet, CONTEXT_KEYS, mergeSheet, scriptProblem, sheetContext, sheetTodo, TITLE_TAG_PROBLEM, titleFits, translationContext, withoutContext } from "./cli.mjs";
 
 function context(box) {
   const out = { stdout: "", stderr: "" };
@@ -66,7 +66,7 @@ test("a sheet marks the lines with no current translation, and merging hashes th
   };
   const sheet = buildSheet(doc, previous, "en");
   assert.deepEqual(sheet.lines.slice(0, 2).map((line) => [line.id, line.todo, line.text]), [[first.id, false, "kept"], [second.id, true, ""]]);
-  assert.deepEqual(sheet.title, { todo: false, source: doc.youtube.title, text: "Old title" });
+  assert.deepEqual(sheet.title, { todo: false, source: doc.youtube.title, text: "Old title", max_chars: 87 });
 
   const { translation, problems } = mergeSheet(doc, filled(sheet), previous);
   assert.deepEqual(problems, []);
@@ -142,6 +142,37 @@ test("a line whose zh-TW text changed after the sheet, or an empty title, is not
   assert.equal(translation.lines[line.id], undefined);
   assert.ok(problems.some((problem) => problem.startsWith(`${line.id}: the zh-TW line changed`)));
   assert.ok(problems.includes("title: not translated"));
+});
+
+// 2026-10-26: a th title of 99 characters went up as 106 with 「｜ซับไทย」 and blocked the package
+// after the upload was confirmed; the merge now measures it as the package writes it.
+test("a title is measured with the captions tag the channel adds after it: 99 Thai characters are sent back, one that reaches exactly 100 with its tag goes in", () => {
+  const doc = fixture();
+  const thai = (count) => "ก".repeat(count);
+  const sheet = filled(buildSheet(doc, null, "th"));
+  assert.equal(sheet.title.max_chars, 93, "100 less 「｜ซับไทย」");
+  assert.match(sheet.note, /`title\.max_chars` is the most characters the title may have: the channel adds the locale's captions tag after it/);
+  const merge = (title) => mergeSheet(doc, { ...sheet, title: { ...sheet.title, text: title }, lines: sheet.lines.map((line) => ({ ...line, text: `ภาษาไทย ${line.id}` })), chapters: sheet.chapters.map((chapter) => ({ ...chapter, text: `บท ${chapter.scene}` })), description: { ...sheet.description, text: "คำอธิบาย" } }, null);
+
+  const refused = merge(thai(99));
+  assert.deepEqual(refused.problems, [`title: ${TITLE_TAG_PROBLEM}: 106 characters with it, YouTube takes 100; the title alone at most 93`]);
+  assert.equal(refused.translation.title, undefined, "nothing too long goes in");
+  const exact = merge(thai(93));
+  assert.deepEqual([exact.problems, exact.translation.title], [[], thai(93)], "93 and 「｜ซับไทย」 make 100");
+  assert.deepEqual(merge(thai(97)).problems, [], "the short 「｜CC」 still fits: 97 and 3 make 100");
+  assert.equal(merge(thai(98)).problems.length, 1);
+
+  // A brand story's title carries its story tag too, so it has fewer characters of its own.
+  const story = { ...doc, category: "story" };
+  assert.equal(buildSheet(story, null, "th").title.max_chars, 77);
+  assert.equal(titleFits(story, thai(93), "th"), true, "the story tag is left off a title it would push past the limit");
+  assert.equal(titleFits(story, thai(98), "th"), false);
+
+  // A title merged before the check, too long with its tag, is marked todo again so the worker
+  // translates it before the package step.
+  const merged = { ...exact.translation, title: thai(99) };
+  assert.deepEqual([buildSheet(doc, merged, "th").title.todo, buildSheet(doc, merged, "th").title.text], [true, ""]);
+  assert.equal(buildSheet(doc, exact.translation, "th").title.todo, false);
 });
 
 test("i18n-sheet then i18n-merge leaves lint with no missing or stale translations for the locale", async () => {

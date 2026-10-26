@@ -35,7 +35,7 @@ import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERT
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
-import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -2934,6 +2934,8 @@ function fakeDub(box, slug, workdir, plan, checks) {
 
 /** The shortening pass's answer: each line cut to its budget (docs/videos/DUBS.md). */
 const shortenAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: [...line.text].slice(0, line.max_chars).join("") })) });
+/** The title pass's answer: the title cut to its budget. */
+const titleAnswer = (body) => ({ title: [...body.payload.title.text].slice(0, body.payload.title.max_chars).join("") });
 /** The rewording pass's answer: the misheard line's last character swapped for another word. */
 const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: `${[...line.text].slice(0, -1).join("")}!` })) });
 
@@ -2944,10 +2946,10 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * stops it one step before: the publish review waits on the owner, and the video is still active.
  * With `slidesRequest` the video is the owner's slides request instead of a scheduled draft.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true, slidesRequest = null } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, title = titleAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true, slidesRequest = null } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
-  const passes = { shorten, reword };
+  const passes = { shorten, reword, title };
   const answers = {
     ...answersFor(slug, { applies: "1、2", script }),
     translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: translate(body.payload.worksheet) }),
@@ -3235,6 +3237,35 @@ test("a pipeline video's es, pt, id, vi or th title and captions are translated 
     }
   }
   assert.equal(await video.step(), null, "everything chosen is made");
+});
+
+// 2026-10-26: a th title of 99 characters went up as 106 with 「｜ซับไทย」 and blocked the package.
+test("a translated title only the captions tag makes too long goes back alone to the translator once, and the shorter one is packaged with its tag", async () => {
+  const long = "ก".repeat(99);
+  const video = await finishedVideo({ translate: (sheet) => ({ ...scriptSheet(sheet), title: { ...sheet.title, text: long } }) });
+  video.choose({ th: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: th metadata translated and reviewed$/);
+  const [asked] = video.calls("translator");
+  assert.equal(asked.payload.worksheet.title.max_chars, 93, "the worksheet says how long the title may be");
+  assert.match(asked.instructions, /"max_chars" already leaves that room/);
+  const [pass] = video.calls("translator", "title");
+  assert.deepEqual([pass.payload.locale, pass.payload.title], ["th", { source: asked.payload.worksheet.title.source, text: long, chars: 99, max_chars: 93 }]);
+  assert.match(pass.instructions, /^You work on ONE/);
+  assert.match(pass.instructions, /You shorten ONE "locale" video title/);
+  assert.equal(readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "th.json")).title, "ก".repeat(93));
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(th metadata\)$/);
+  assert.equal(readJson(video.upload("metadata.json")).localizations.th.title, `${"ก".repeat(93)}｜ซับไทย`, "100 characters with the tag");
+  assert.equal(video.calls("translator").length, 1, "the metadata was not translated again");
+});
+
+test("a title pass that is still too long leaves the refusal its usual course: the translation is asked again on the next run", async () => {
+  const long = "ก".repeat(99);
+  const video = await finishedVideo({ translate: (sheet) => ({ ...scriptSheet(sheet), title: { ...sheet.title, text: long } }), title: () => ({ title: "ก".repeat(98) }) });
+  video.choose({ th: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /the th translation does not merge: .*title: too long once the captions tag is added: 106 characters with it, YouTube takes 100; the title alone at most 93/);
+  assert.equal(video.calls("translator", "title").length, 1, "asked once");
+  assert.equal(video.reviews("languages").length, 0);
 });
 
 test("a th sheet answered in English does not merge: the worker asks the translation again instead of sending Latin captions as Thai", async () => {
@@ -3684,11 +3715,15 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // 2026-10-20: es, pt, id, vi and th joined the targets (the owner); every text names each locale's
 // line length and register, the translator and the caption reviewer its script, and the header
 // says "up to nine languages"; all four changed.
+// 2026-10-26: the translator and the caption reviewer were told a title's "max_chars" already
+// leaves room for the captions tag the channel adds after it, and the title pass joined them
+// (2026-10-26-97-100-cc-100-blocked); the shortening and rewording passes kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "e78f9d64ed6298f39bc017b13f86d8127a92e59a356c43dccb5a2d14dd1108ff",
-  caption_reviewer: "a604598518f2d55bfd070de6961e9bd82bcc6d76910864e5f3a15488d02bf8ea",
+  translator: "f26d79c91c20ea6c4ddc191dc5ad6dc321f34bb21cf5ca9af8287c89fa6f503a",
+  caption_reviewer: "84b569fabc95b0a1066cc7b8350dc9882ca2d3471f7784594ec00861a6031297",
   "translator:shorten": "e1ebd8424a051e1b6beb23745d5cbaa6ec9daf49e1075f73da6e62b6976fb0a7",
   "translator:reword": "58380c45cb614385b72f95bc6eec1620f41b99d5215c009df99b03fde1347028",
+  "translator:title": "3ec56bd1c91f4592d9c1cbe8745c395e1037d19d12d1928197d0c1ae157e08d5",
 };
 const promptSha = (text) => createHash("sha256").update(text).digest("hex");
 
@@ -3701,7 +3736,7 @@ test("a zh-TW video's translator and caption reviewer prompts are the same bytes
       }
     }
   }
-  assert.deepEqual([INSTRUCTIONS.translator, INSTRUCTIONS.caption_reviewer, TRANSLATOR_SHORTEN, TRANSLATOR_REWORD].map(promptSha), Object.values(ZH_TW_PROMPT_SHA256));
+  assert.deepEqual([INSTRUCTIONS.translator, INSTRUCTIONS.caption_reviewer, TRANSLATOR_SHORTEN, TRANSLATOR_REWORD, TRANSLATOR_TITLE].map(promptSha), Object.values(ZH_TW_PROMPT_SHA256));
 
   assert.deepEqual(Object.keys(SOURCE_INSTRUCTIONS), ["en", "ja", "ko"], "every narration language but zh-TW");
   const names = { en: "English", ja: "Japanese", ko: "Korean" };

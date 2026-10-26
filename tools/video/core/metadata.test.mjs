@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, STORY_TAGS, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withStoryTag, withUtm, youtubeWarnings } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, captionedTitle, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, STORY_TAGS, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH, titleBudget, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withStoryTag, withUtm, youtubeWarnings } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -197,6 +197,21 @@ test("a brand story's title says so in its own language before the captions tag,
   const story = composeMetadata({ doc: { ...doc, category: "story" }, timeline, translations }).metadata;
   assert.equal(story.title, `${doc.youtube.title}｜品牌故事｜CC字幕`);
   assert.equal(story.localizations.en.title, "A title｜Brand Story｜CC Subtitles");
+});
+
+test("a translated title's budget is YouTube's 100 less the tags the channel adds after it, and a title of that length fits with them exactly", () => {
+  assert.deepEqual([titleBudget("th"), titleBudget("pt"), titleBudget("en"), titleBudget("zh-TW")], [93, 90, 87, 95]);
+  assert.deepEqual([titleBudget("th", { story: true }), titleBudget("pt", { story: true })], [77, 72]);
+  for (const locale of Object.keys(CAPTION_TAGS)) {
+    for (const story of [false, true]) {
+      const title = "a".repeat(titleBudget(locale, { story }));
+      const tagged = captionedTitle(title, locale, { story });
+      assert.equal([...tagged].length, TITLE_MAX_CHARS, `${locale}${story ? " story" : ""}`);
+      assert.ok(tagged.endsWith(CAPTION_TAGS[locale]), `${locale}${story ? " story" : ""} keeps its own tag`);
+    }
+  }
+  assert.equal(captionedTitle("Dolby", "en", { story: true }), "Dolby｜Brand Story｜CC Subtitles");
+  assert.equal([...captionedTitle("ก".repeat(99), "th")].length, 106, "the 2026-10-26 Thai title: even 「｜CC」 does not fit, so the full tag stays");
 });
 
 test("every title ends with its language's captions tag, added once", () => {
