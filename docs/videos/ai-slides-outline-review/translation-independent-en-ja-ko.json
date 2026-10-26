@@ -1,0 +1,5925 @@
+{
+  "review_type": "Independent translation cross-review by a reviewer who did not author EN, JA or KO; informed by the fixed source and claims, not a blind narrative test or an audio review.",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "expected_input_sha256": {
+    "en": "9b8200ef8f66d3604f7c1e5dca284a6e31643c89ea7e62ad23e332681540cf44",
+    "ja": "6279fe0bb0da8502f9672084e9ec17a0e86391fa72b5f7cf9911bc45be5f38c8",
+    "ko": "d9883f520e1e73ed2269d918e857138f70908d4f8310b12c67c2efff53995e51"
+  },
+  "verdict": "Revise the mandatory scope/artifact/method items below, then independently assess the resulting text. Remaining static-budget exceptions are open and are not proof of actual audio failure or fit readiness.",
+  "review_scope": "All 118 captions, all 6 chapters, title/description/tags, all three complete prompt cards in captions and description, and thumbnail tag/headline/sub in each locale. All 354 final caption entries were read in order against their zh-TW sources.",
+  "limitations": {
+    "actual_audio_review": false,
+    "actual_dub_fit": false,
+    "thumbnail_render_review": false,
+    "all_8_ready_claim": false,
+    "paid_calls": 0,
+    "network_or_backend_calls": 0,
+    "formal_merge_or_source_edits": false
+  },
+  "findings": [
+    {
+      "key": "en-description-draft-kind",
+      "locale": "en",
+      "id": "description:initial-draft",
+      "field": "description",
+      "mandatory": true,
+      "category": "artifact scope",
+      "old": "two-slide draft",
+      "candidate": "two-page draft",
+      "reason": "The saved initial artifact is the author's two-page outline draft, not two already arranged/rendered slides. The same translation correctly says 'not slides yet' in wy6f; the description should retain that distinction.",
+      "source_evidence": [
+        "description: 作者需求、兩頁初稿、集中修改與修訂階段在同一次生成中保存",
+        "wy6f: 我設計的初稿範例，只有兩頁，還沒有排成投影片。"
+      ],
+      "max_chars": null,
+      "old_chars": 15,
+      "candidate_chars": 14,
+      "candidate_within_static_max": null,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-description-org-actor",
+      "locale": "en",
+      "id": "description:88-percent",
+      "field": "description",
+      "mandatory": true,
+      "category": "survey actor / denominator",
+      "old": "The 88% figure is respondents' self-reported use of AI in at least one business function in their organizations.",
+      "candidate": "The 88% figure is the share of respondents who report that their organization uses AI in at least one business function.",
+      "reason": "The old nominal phrase can make respondents' personal use the measured behavior. The source measures respondents' reports about organizational use, not whether they themselves use AI. Make both the respondent denominator and the organization as user explicit.",
+      "source_evidence": [
+        "9xhq: 這份調查中，百分之八十八的受訪者回報，",
+        "iswb: 自己的組織至少有一項業務使用AI。",
+        "dp4j: 這是受訪者自述，不能寫成全球所有公司的普查結果。"
+      ],
+      "max_chars": null,
+      "old_chars": 112,
+      "candidate_chars": 120,
+      "candidate_within_static_max": null,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-5s9a-pdf-position",
+      "locale": "en",
+      "id": "5s9a",
+      "field": "line",
+      "mandatory": true,
+      "category": "method omitted",
+      "candidate": "Same PDF: colleagues return by page position.",
+      "reason": "The old 'use it' refers most naturally to the file and loses the source's actual locating method: use the internal PDF page position to jump back. The candidate retains the same file, colleagues, returning, and the page-position method.",
+      "source_evidence": [
+        "5s9a: 同事拿到同一份檔案，就能用頁序跳回原頁。",
+        "q2hz: PDF頁序，則是這個檔案從第一頁開始數的位置。"
+      ],
+      "old": "Same file: colleagues use it to find the page.",
+      "source": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+      "max_chars": 46,
+      "old_chars": 46,
+      "candidate_chars": 45,
+      "candidate_within_static_max": true,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ja-description-org-actor",
+      "locale": "ja",
+      "id": "description:88-percent",
+      "field": "description",
+      "mandatory": true,
+      "category": "survey actor / denominator",
+      "old": "88%は、回答者が所属組織で少なくとも1業務にAIを使うと自己申告した割合です。",
+      "candidate": "88%は、自分の組織が少なくとも1業務でAIを使っていると回答者が自己申告した割合です。",
+      "reason": "回答者が…AIを使う can make the respondents themselves the users. The source says respondents report that their organization uses AI. The candidate explicitly makes the organization the subject of the reported use and retains self-report, 88%, and at least one business function.",
+      "source_evidence": [
+        "iswb: 自己的組織至少有一項業務使用AI。",
+        "description: 88%為受訪者自述其組織至少一項業務使用AI"
+      ],
+      "max_chars": null,
+      "old_chars": 40,
+      "candidate_chars": 44,
+      "candidate_within_static_max": null,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ja-iswb-org-subject",
+      "locale": "ja",
+      "id": "iswb",
+      "field": "line",
+      "mandatory": true,
+      "category": "survey actor clarification",
+      "candidate": "自組織が1業務以上でAIを使うと答えています。",
+      "reason": "A one-character の→が change makes the organization explicitly the user within the reported clause. With preceding 9xhq, this remains 88% of respondents reporting organizational use, not personal use. No digit, threshold, cue boundary, or register changes.",
+      "source_evidence": [
+        "9xhq: 這份調查中，百分之八十八的受訪者回報，",
+        "iswb: 自己的組織至少有一項業務使用AI。"
+      ],
+      "old": "自組織の1業務以上でAIを使うと答えています。",
+      "source": "自己的組織至少有一項業務使用AI。",
+      "max_chars": 23,
+      "old_chars": 23,
+      "candidate_chars": 23,
+      "candidate_within_static_max": true,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-description-org-actor",
+      "locale": "ko",
+      "id": "description:88-percent",
+      "field": "description",
+      "mandatory": true,
+      "category": "survey actor / denominator",
+      "old": "88%는 응답자가 자기 조직의 최소 한 업무에서 AI를 사용한다고 자가 보고한 비율입니다.",
+      "candidate": "88%는 응답자 중 자기 조직이 최소 한 업무에서 AI를 사용한다고 자가 보고한 비율입니다.",
+      "reason": "응답자가…AI를 사용한다 leaves respondents as the user. 응답자 중 states the denominator, and 자기 조직이 makes the organization the subject inside the report. The at-least-one threshold, self-report and 88% remain intact.",
+      "source_evidence": [
+        "iswb: 自己的組織至少有一項業務使用AI。",
+        "description: 88%為受訪者自述其組織至少一項業務使用AI"
+      ],
+      "max_chars": null,
+      "old_chars": 50,
+      "candidate_chars": 51,
+      "candidate_within_static_max": null,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-iswb-org-subject",
+      "locale": "ko",
+      "id": "iswb",
+      "field": "line",
+      "mandatory": true,
+      "category": "survey actor clarification",
+      "candidate": "자기 조직이 최소 한 업무에서 AI를 쓴다는 것입니다.",
+      "reason": "의→이 makes the organization the explicit user in the clause after the 88%-respondents reporting introduction. The old wording can be heard as a respondent using AI within their organization. This changes one character and does not cut the threshold to solve the existing static overrun.",
+      "source_evidence": [
+        "9xhq: 這份調查中，百分之八十八的受訪者回報，",
+        "iswb: 自己的組織至少有一項業務使用AI。"
+      ],
+      "old": "자기 조직의 최소 한 업무에서 AI를 쓴다는 것입니다.",
+      "source": "自己的組織至少有一項業務使用AI。",
+      "max_chars": 20,
+      "old_chars": 30,
+      "candidate_chars": 30,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-jyx8-announcement",
+      "locale": "en",
+      "id": "jyx8",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional attribution clarity",
+      "candidate": "A local original inspired by Google's news; I did not try Notebook.",
+      "reason": "The original is understandable with the dated announcement in 3vx9. Naming the news here restores the precise inspiration and is shorter; it is not a new product-use claim.",
+      "old": "An original local example inspired by Google; I did not try Notebook.",
+      "source": "這份本地原創範例受Google公告啟發，沒有試用Notebook。",
+      "max_chars": 73,
+      "old_chars": 69,
+      "candidate_chars": 67,
+      "candidate_within_static_max": true,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-y3nk-sources",
+      "locale": "en",
+      "id": "y3nk",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional prompt clarity",
+      "candidate": "Sources differ? Flag to check; don't pick a figure for me.",
+      "reason": "Explicitly names the sources as the conditional antecedent rather than the bare 'Unaligned?'. Existing full-prompt context makes the original understandable; this is an optional clarification, not a confirmed factual error.",
+      "old": "Unaligned? Flag to check; don't pick a figure for me.",
+      "source": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+      "max_chars": 57,
+      "old_chars": 53,
+      "candidate_chars": 58,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-r3y9-spoken-list",
+      "locale": "en",
+      "id": "r3y9",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional natural speech",
+      "candidate": "Separate investment amounts from usage rates.",
+      "reason": "The slash and 'investment sums' are understandable caption shorthand but less natural spoken English. Full natural wording is longer than the current budget; do not claim it fits or replace amounts with an investment rate.",
+      "old": "Separate investment sums/use rates",
+      "source": "把投資金額和使用比例分開。",
+      "max_chars": 34,
+      "old_chars": 34,
+      "candidate_chars": 45,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-2knx-together",
+      "locale": "en",
+      "id": "2knx",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional full-prompt delivery clarity",
+      "candidate": "Send editable file, PDF, per-slide cites together.",
+      "reason": "The original lists all three required files; explicitly saying together mirrors 同時 and the later handoff checklist. A longer fully expanded 'citations' wording would be more formal but needs more budget.",
+      "old": "Also send editable file, PDF and per-slide cites.",
+      "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+      "max_chars": 51,
+      "old_chars": 49,
+      "candidate_chars": 50,
+      "candidate_within_static_max": true,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "en-gy6e-hold-up",
+      "locale": "en",
+      "id": "gy6e",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional natural speech / workflow clarity",
+      "candidate": "Must one unresolved generative AI item hold up the deck?",
+      "reason": "'Must the slides stop?' is understandable in context but can sound like stopping playback. 'Hold up the deck' naturally refers to the presentation work/delivery being blocked by one pending item.",
+      "old": "One generative AI item is unresolved. Must the slides stop?",
+      "source": "生成式AI有一格未解，簡報要因此卡住嗎？",
+      "max_chars": 66,
+      "old_chars": 59,
+      "candidate_chars": 56,
+      "candidate_within_static_max": true,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ja-description-audience",
+      "locale": "ja",
+      "id": "description:audience",
+      "field": "description",
+      "mandatory": false,
+      "category": "optional natural Japanese",
+      "old": "編集でき、出典もたどれる資料を渡したい一般の仕事向けです。",
+      "candidate": "仕事で、編集できて出典もたどれる資料を渡す必要がある方に向けた動画です。",
+      "reason": "一般の仕事向け is awkward and points at work rather than workers. The candidate addresses workers delivering editable, traceable material without inventing a profession or expertise level.",
+      "max_chars": null,
+      "old_chars": 29,
+      "candidate_chars": 36,
+      "candidate_within_static_max": null,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ja-2knx-together",
+      "locale": "ja",
+      "id": "2knx",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional full-prompt delivery clarity",
+      "candidate": "編集可能版、PDF、ページ別出典一覧を揃えてください。",
+      "reason": "All three outputs are already present. 揃えて explicitly keeps them together as a complete delivery, matching 同時 and the later checklist. Retain a static exception if this exceeds the unchanged budget.",
+      "old": "編集可能版、PDF、ページ別出典一覧もください。",
+      "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+      "max_chars": 26,
+      "old_chars": 24,
+      "candidate_chars": 27,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-b7sd-two-locations",
+      "locale": "ko",
+      "id": "b7sd",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional source-location clarity",
+      "candidate": "안 맞는 생성형 AI 비율은 두 곳의 출처 주석으로 남깁니다.",
+      "reason": "두 출처 can mean two reference locations and does not explicitly claim two independent studies; the surrounding citations point to one report. 두 곳의 출처 주석 makes the source's two locations clearer. Do not turn the two observations into independent corroborating studies. This longer clarification is not a static-fit solution.",
+      "old": "안 맞는 생성형 AI 비율은 두 출처 주석으로 남깁니다.",
+      "source": "未對齊的生成式AI比例，保留為兩處來源註記。",
+      "max_chars": 24,
+      "old_chars": 31,
+      "candidate_chars": 34,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-aywh-two-locations",
+      "locale": "ko",
+      "id": "aywh",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional source-location clarity / budget",
+      "candidate": "두 곳은 주석으로, 나머지 확인된 내용은 전달합니다.",
+      "reason": "Use two places, matching the two passages in the same report; preserve the other confirmed content's continued delivery. No assertion about report error or a confirmed generative-AI rate is added.",
+      "old": "두 출처는 주석으로, 나머지 확인된 내용은 전달합니다.",
+      "source": "兩處留註記，其餘確認內容繼續交付。",
+      "max_chars": 26,
+      "old_chars": 30,
+      "candidate_chars": 29,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-2knx-together",
+      "locale": "ko",
+      "id": "2knx",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional full-prompt delivery clarity",
+      "candidate": "편집 파일, PDF, 장별 인용 목록을 함께 주십시오.",
+      "reason": "All three outputs are already listed. 함께 makes the source's same delivery explicit; the result may exceed the unchanged static budget. 편집 파일 is common Korean for the editable working file in this handoff context, not a new claim of native playback testing.",
+      "old": "편집 파일, PDF, 장별 인용 목록도 주십시오.",
+      "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+      "max_chars": 22,
+      "old_chars": 27,
+      "candidate_chars": 30,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    },
+    {
+      "key": "ko-tirg-requirements",
+      "locale": "ko",
+      "id": "tirg",
+      "field": "line",
+      "mandatory": false,
+      "category": "optional natural Korean",
+      "candidate": "2026년 10월 25일 보고서를 열고 발표 요구사항을 썼습니다.",
+      "reason": "발표 요구사항 is more natural than 발표 요구 for the written presentation brief. It is slightly longer, so it is a naturalness candidate, not a budget solution.",
+      "old": "2026년 10월 25일 보고서를 열고 발표 요구를 썼습니다.",
+      "source": "二〇二六年十月二十五日，我打開報告，寫下簡報需求。",
+      "max_chars": 34,
+      "old_chars": 34,
+      "candidate_chars": 36,
+      "candidate_within_static_max": false,
+      "actual_audio_fit": "not assessed"
+    }
+  ],
+  "budget_candidates": {
+    "en": {},
+    "ja": {
+      "vufg": "Gemini Notebookで形式・スタイルを選びReviewを開きます。"
+    },
+    "ko": {
+      "p9da": "새 제목에 옛 데이터를 새 조사로 오해할 수도 있습니다.",
+      "sxfi": "금액엔 지역·투자 유형·USD 단위를 씁니다.",
+      "ghds": "출처 기록엔 쓰임이 다른 두 쪽수도 남깁니다.",
+      "pt7x": "인쇄 쪽수는 지면 번호입니다.",
+      "2ai4": "제가 준 공개 PDF만 써 동료용 4장을 만드십시오.",
+      "r3y9": "투자액과 이용률을 분리하십시오.",
+      "nm8j": "개요에 데이터 연도가 없으면 어디에 넣습니까?",
+      "9h68": "그 장의 데이터 연도 칸에 추가를 요청합니다.",
+      "wy6f": "제 초안 예시는 2쪽이며 아직 슬라이드가 아닙니다.",
+      "aces": "두 쪽에 같은 금액·지역·이용률·미확인 수치를 넣었습니다.",
+      "z84y": "한 번 실행해 저장했고 제 회신을 기다리지 않았습니다.",
+      "kmts": "요구대로 투자액과 이용률을 별개 질문으로 나눕니다.",
+      "jzkh": "국가별 민간 투자만 비교하며 AI 총지출은 아닙니다.",
+      "nx2z": "데이터 장엔 데이터 연도·단위·모집단 또는 범위와 두 쪽수를 남깁니다.",
+      "8k94": "일괄 수정의 반영은 어디서 확인합니까?",
+      "6frs": "1장은 투자액과 이용을 보고한 사람 수를 따로 묻습니다.",
+      "fpqu": "세계 기업 AI 투자: 581.69, 단위는 10억 USD입니다.",
+      "rzc3": "민간 투자를 또 더하면 포함분이 중복됩니다.",
+      "qa92": "3장은 보고서의 Quid 민간 AI 투자 범위를 따릅니다.",
+      "9xhq": "이 조사 응답자 88%의 답은,",
+      "gy6e": "생성형 AI 한 항목이 미해결이면 발표가 막힙니까?",
+      "e9xt": "본문 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다.",
+      "a9g4": "동료에게 인용할 때 인쇄 쪽수도 남깁니다.",
+      "j47b": "차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다.",
+      "eeiu": "PDF는 4장 이미지로 배치는 보이나 텍스트 추출은 안 됩니다.",
+      "t5vz": "글자·도형은 따로, 페이지 이미지는 없습니다.",
+      "xxcb": "투자 페이지 단위도 네이티브 글상자에 둡니다.",
+      "3eg2": "소식의 검토 단계는 이 자료의 장별 내용을 정하는 곳입니다.",
+      "w72f": "수정은 한 번에 쓰고 Proceed로 생성합니다.",
+      "p3j7": "Proceed 뒤 개요는 못 고칩니다",
+      "k3y5": "지금 모든 계정에 이 옵션이 있습니까?",
+      "cgtw": "Workspace는 10월 16일부터 최장 15일 순차 출시를 알렸습니다.",
+      "qtzp": "계정으로 차이를 못 확인해 무료 이용은 보장 못 합니다.",
+      "cesj": "일반 동료를 실제 청중으로 바꿉니다.",
+      "teri": "질문·출처가 담긴 개요를 받으면 구체적 내용을 수정합니다."
+    }
+  },
+  "budget_candidate_notes": {
+    "ko:p9da": "Omits the repeated report noun only: the immediately preceding line explicitly identifies the report/data years. Retains new title, old data, new-survey misreading and possibility; no actual new survey is claimed.",
+    "ko:sxfi": "USD preserves US dollars exactly. All three fields remain region, investment type and currency unit; no scaling change.",
+    "ko:ghds": "쓰임이 다른 conveys the distinct locating functions. 두 쪽수 refers to the already-explained printed and internal PDF numbering, not two different source pages.",
+    "ko:pt7x": "지면 번호 preserves printed-on-paper numbering in the same report context, distinct from internal PDF position.",
+    "ko:2ai4": "동료 is natural Korean for ordinary coworkers here, with no newly specialized audience. Only, supplied public PDF and four pages remain.",
+    "ko:r3y9": "투자액 and 이용률 are natural compact terms for investment amounts and usage rates. The imperative remains formal; do not replace separation with numerical division.",
+    "ko:9h68": "The repeated year object is recoverable from the exact data-year field name. The specific slide and request to add remain.",
+    "ko:z84y": "One execution, saved stages understood from preceding draft/feedback, no waiting for the narrator's reply. No real interactive pause or Notebook response is implied.",
+    "ko:jzkh": "The preceding country topic scopes AI total spending to those countries. 민간 투자 is the private investment/funding scope actually used by the Quid comparison, not all finance-sector spending.",
+    "ko:nx2z": "All fields, the OR between population and scope, and both page-number systems remain. Existing source context supplies that both are the two types already defined.",
+    "ko:8k94": "Asks where to verify the actual application of the batch of changes, matching the next four-page inspection; does not claim it was independently tested.",
+    "ko:fpqu": "581.69 remains in units of one billion US dollars: 10억 USD. This is the corporate total, not a unit conversion to 581.69 USD.",
+    "ko:rzc3": "포함분 is the included part; adding private investment again duplicates that already-included amount. No amount or negation is dropped.",
+    "ko:qa92": "범위 retains scope after the same report's Quid private-AI-investment category. Do not broaden to total national expenditure.",
+    "ko:9xhq": "Answers/reports are survey self-reports; keeps the survey and 88%-respondent denominator in the first cue. The mandatory iswb candidate explicitly makes the organization the user in the second cue.",
+    "ko:a9g4": "Makes the source's optional quoting step an instruction, as the surrounding how-to does. If preserving explicit can is preferred, retain the original and its static overrun.",
+    "ko:xxcb": "글상자 is a Korean term for a text box. Native remains explicit, as does the investment-page unit; not a flattened page image or PowerPoint playback claim.",
+    "ko:w72f": "One-batch written changes remain; Proceed로 is a compact reference to the same button action before generation. If explicit 눌러 is preferred, keep the original static exception.",
+    "ko:p3j7": "Formal 못 고칩니다 preserves inability to edit the same outline after Proceed. The terminal period is omitted only to meet the character budget; no word or condition is removed."
+  },
+  "unresolved_budget_policy": "Every originally over-budget entry will be enumerated with exact old text, source, actual max_chars and a candidate where one was found. If none is supplied, the current full-meaning text remains unresolved; do not shorten proper names, goal-versus-measurement, OR conditions, actor/denominator, negations, monetary units, or test/availability limits merely to fit. A candidate within max_chars is only a static text candidate, not actual dub/audio acceptance.",
+  "source_checks": [
+    {
+      "name": "report and data years",
+      "ids": [
+        "immj",
+        "cwpj"
+      ],
+      "result": "2026 report versus adopted 2025 data retained; unresolved 70/79 observations both 2025."
+    },
+    {
+      "name": "corporate total / private subset",
+      "ids": [
+        "fpqu",
+        "uyre",
+        "vyp5",
+        "8ddn",
+        "rzc3"
+      ],
+      "result": "581.69 and 344.66 in billions of US dollars / 10億米ドル / 10억 미국 달러; private included in corporate, cannot add, double count explained."
+    },
+    {
+      "name": "regional private financing",
+      "ids": [
+        "qa92",
+        "f6fw",
+        "hxni",
+        "frra",
+        "2bm9"
+      ],
+      "result": "US285.88 / China12.41, 2025, same private-AI-investment scope and currency. No total national public/private-spending claim."
+    },
+    {
+      "name": "survey scope",
+      "ids": [
+        "9xhq",
+        "iswb",
+        "dp4j"
+      ],
+      "result": "88%-respondent denominator and non-census limit retained; explicit organization-user clarifications are mandatory in JA/KO iswb and all three descriptions."
+    },
+    {
+      "name": "unresolved generative AI",
+      "ids": [
+        "g84b",
+        "e9xt",
+        "cwpj",
+        "iek7",
+        "aywh",
+        "j47b"
+      ],
+      "result": "70% summary at-least-one-function versus 79% detailed respondent-reported regular organizational use; questions/denominators unresolved. Neither adopted as a confirmed rate; no conclusion report wrong; difference excluded from five adopted numerical claims."
+    },
+    {
+      "name": "prompt-card completeness",
+      "ids": [
+        "2ai4",
+        "zny3",
+        "kh9k",
+        "zibg",
+        "uqnr",
+        "r3y9",
+        "bd3z",
+        "y3nk",
+        "7g33",
+        "2knx",
+        "cht8"
+      ],
+      "result": "Only this supplied public PDF, coworkers, 4 pages, about3min goal, outline first/no slides yet, one question per page, figures/year/units, survey population OR statistical scope, printed AND PDF numbering, metric separation, no sum, pending/no pick, whole feedback batch before four pages, all three deliveries, unconfirmed figures notes-only/no settled charts. Descriptions contain the complete prompt too; together wording suggestions are optional explicitness improvements."
+    },
+    {
+      "name": "local author / one run / no product trial",
+      "ids": [
+        "jyx8",
+        "wy6f",
+        "h58h",
+        "z84y"
+      ],
+      "result": "Original local author draft plus feedback saved in one execution; no real reply wait; no Notebook trial. EN description's two-slide draft needs two-page draft to match the unrendered artifact."
+    },
+    {
+      "name": "page1 overview and precise citations",
+      "ids": [
+        "8arj",
+        "cuw5",
+        "u7s7",
+        "2622",
+        "thhi",
+        "buwe",
+        "m5bu"
+      ],
+      "result": "Page1 author questions overview, pages2–4 mapped to original report. Mappings 178/PDF8/figure4.2.1; 182/PDF12; 193/PDF23; pending summary note173/PDF3 are correct. No fabricated precise page for page1."
+    },
+    {
+      "name": "delivery and native-testing limit",
+      "ids": [
+        "eeiu",
+        "hj8r",
+        "t5vz",
+        "xxcb",
+        "aetd",
+        "du2s",
+        "kjrf"
+      ],
+      "result": "4-page images-only PDF/no extractable text, editable native-text/shapes PPTX/no embedded page images, structural reopening only, no native PowerPoint rendering, open actual environment to check fonts/line breaks. 51 objects=40nonempty+11empty/0images are source-slide facts, absent from narration; no translation invents these as spoken measurements."
+    },
+    {
+      "name": "Google feature and availability",
+      "ids": [
+        "vufg",
+        "8ikq",
+        "w72f",
+        "8u6s",
+        "p3j7",
+        "cgtw",
+        "yw8i",
+        "qtzp",
+        "skdk",
+        "p2we"
+      ],
+      "result": "Official-background function attribution retained, Review optional, Proceed locks outline, formats/style and review objects retained. Oct16 phased rollout up to15days, multiple account types versus help Ultra, no account result resolving discrepancy/no free guarantee, own plan/option check before adapting."
+    },
+    {
+      "name": "metadata and thumbnails",
+      "ids": [],
+      "result": "All 6 chapter headings cover the same 6 story events; short EN headings omit some context but do not add false events. Titles/tags contain no invented channel name. All source URLs remain exact; all 3 thumbnail words are nonempty, same emphasis and newline, short headline. Physical thumbnail fit not tested."
+    }
+  ],
+  "created_at": "2026-10-26T00:31:34.009248+00:00",
+  "verify5_sha256": "e812c5e1603b74c2d3dc117889df3802b0320e29e01fdffcd94c95258986cac9",
+  "locales": {
+    "en": {
+      "input_sha256_unchanged": "9b8200ef8f66d3604f7c1e5dca284a6e31643c89ea7e62ad23e332681540cf44",
+      "caption_count_read": 118,
+      "chapters_count_read": 6,
+      "all_metadata_thumbnail_read": true,
+      "mandatory_findings": 3,
+      "optional_findings": 5,
+      "original_static_over_count": 1,
+      "coverage": [
+        {
+          "id": "tirg",
+          "source": "二〇二六年十月二十五日，我打開報告，寫下簡報需求。",
+          "old": "On October 25, 2026, I opened the report and wrote the presentation brief.",
+          "chars": 74,
+          "max_chars": 78,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iihc",
+          "source": "兩筆投資放在一起，能直接相加嗎？",
+          "old": "Can these two investment figures simply be added?",
+          "chars": 49,
+          "max_chars": 52,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dgy5",
+          "source": "這份大綱裡的材料，要怎麼分頁才各有任務？",
+          "old": "How should this outline's material be split so each slide has a job?",
+          "chars": 68,
+          "max_chars": 68,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dfj8",
+          "source": "交出去以後，能改字、也能追來源嗎？",
+          "old": "After handoff, can we edit the text and trace the sources?",
+          "chars": 58,
+          "max_chars": 59,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3vx9",
+          "source": "十月十九日，Gemini Notebook介紹生成前先審大綱。",
+          "old": "On October 19, Gemini Notebook introduced outline review before generation.",
+          "chars": 75,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "7ya8",
+          "source": "要決定兩筆能不能相加，我先填來源紀錄裡的投資範圍。",
+          "old": "To see if they can be added, I first record the investment scope.",
+          "chars": 65,
+          "max_chars": 75,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jyx8",
+          "source": "這份本地原創範例受Google公告啟發，沒有試用Notebook。",
+          "old": "An original local example inspired by Google; I did not try Notebook.",
+          "chars": 69,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-jyx8-announcement"
+          ]
+        },
+        {
+          "id": "sk7r",
+          "source": "輸入是Stanford AI指數報告的經濟章。",
+          "old": "Input: Stanford AI Index's economics chapter.",
+          "chars": 45,
+          "max_chars": 55,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "45g3",
+          "source": "這份公開PDF有六十頁，簡報只需要其中的相關資料。",
+          "old": "This public PDF has 60 pages; the slides need only relevant data.",
+          "chars": 65,
+          "max_chars": 78,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fskd",
+          "source": "我給它的任務，是讓一般同事讀懂AI投資和組織使用。",
+          "old": "My aim: help coworkers grasp AI investment and organizational use.",
+          "chars": 66,
+          "max_chars": 66,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vvp9",
+          "source": "先填聽眾和用途，才知道哪些內容該留下。",
+          "old": "Define audience and purpose first to decide what to keep.",
+          "chars": 57,
+          "max_chars": 60,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3s9",
+          "source": "來源紀錄裡，報告年份和資料年份分成兩欄。",
+          "old": "Source record: separate report-year and data-year fields",
+          "chars": 56,
+          "max_chars": 56,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "immj",
+          "source": "報告是二〇二六年，這次採用的資料則是二〇二五年。",
+          "old": "The report is from 2026; the data used here are from 2025.",
+          "chars": 58,
+          "max_chars": 70,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p9da",
+          "source": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。",
+          "old": "Otherwise, a new report title may make old data look like a new survey.",
+          "chars": 71,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8gv2",
+          "source": "同樣寫AI，投資金額和使用比例能共用一張圖嗎？",
+          "old": "Both are about AI, but can investment amounts and usage rates share one chart?",
+          "chars": 78,
+          "max_chars": 87,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "sxfi",
+          "source": "金額這邊要記地區、投資類型，還有美元單位。",
+          "old": "Amounts: record region, investment type and US dollar unit.",
+          "chars": 59,
+          "max_chars": 59,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "b4kb",
+          "source": "比例這邊要記誰受訪，以及他回報的是什麼使用情況。",
+          "old": "For rates, record who was surveyed and what usage they reported.",
+          "chars": 64,
+          "max_chars": 67,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rrvd",
+          "source": "它們回答不同問題，我把兩種指標拆開記。",
+          "old": "Different questions, so I record the metrics separately.",
+          "chars": 56,
+          "max_chars": 56,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "ghds",
+          "source": "來源紀錄還留了兩種頁碼，它們負責不同的定位。",
+          "old": "Source record: two page numbers locate different things.",
+          "chars": 56,
+          "max_chars": 65,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "pt7x",
+          "source": "印刷頁碼，是報告紙面上標的號碼。",
+          "old": "Printed page: the report's page label.",
+          "chars": 38,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "q2hz",
+          "source": "PDF頁序，則是這個檔案從第一頁開始數的位置。",
+          "old": "The PDF page position counts from the first page of this file.",
+          "chars": 62,
+          "max_chars": 71,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5s9a",
+          "source": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+          "old": "Same file: colleagues use it to find the page.",
+          "chars": 46,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-5s9a-pdf-position"
+          ]
+        },
+        {
+          "id": "9c7v",
+          "source": "原頁上還有圖號，能繼續對到同頁的那張圖。",
+          "old": "Its figure number identifies the chart on that source page.",
+          "chars": 59,
+          "max_chars": 61,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hpdz",
+          "source": "把這些條件放進需求，怎樣避免只收到一段摘要？",
+          "old": "How can a brief with these conditions yield more than a summary?",
+          "chars": 64,
+          "max_chars": 68,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "g7uh",
+          "source": "我把這次需求整理成完整提示，你可以照這個格式改。",
+          "old": "I made this brief into a full prompt; you can adapt its format.",
+          "chars": 63,
+          "max_chars": 65,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2ai4",
+          "source": "請只用我提供的這份公開PDF，替一般同事做四頁簡報。",
+          "old": "Use only this public PDF I give you: 4 slides for coworkers.",
+          "chars": 60,
+          "max_chars": 69,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zny3",
+          "source": "簡報目標約三分鐘。",
+          "old": "Aim for about 3 min.",
+          "chars": 20,
+          "max_chars": 21,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kh9k",
+          "source": "先給大綱，先不要生成投影片。",
+          "old": "Give the outline first; do not generate slides yet.",
+          "chars": 51,
+          "max_chars": 54,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zibg",
+          "source": "每頁只回答一個問題，列出要用的數字、資料年、單位。",
+          "old": "Answer one question per slide; list the figures, data year and units.",
+          "chars": 69,
+          "max_chars": 74,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uqnr",
+          "source": "列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。",
+          "old": "List survey population or scope, printed report pages and PDF positions.",
+          "chars": 72,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "r3y9",
+          "source": "把投資金額和使用比例分開。",
+          "old": "Separate investment sums/use rates",
+          "chars": 34,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-r3y9-spoken-list"
+          ]
+        },
+        {
+          "id": "bd3z",
+          "source": "總額與其中一部分，不要相加。",
+          "old": "Do not add a total to one of its subsets.",
+          "chars": 41,
+          "max_chars": 44,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "y3nk",
+          "source": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+          "old": "Unaligned? Flag to check; don't pick a figure for me.",
+          "chars": 53,
+          "max_chars": 57,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-y3nk-sources"
+          ]
+        },
+        {
+          "id": "7g33",
+          "source": "等我一次回覆全部修改後，再產出四頁簡報。",
+          "old": "After my full edit batch, make 4 slides.",
+          "chars": 40,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2knx",
+          "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+          "old": "Also send editable file, PDF and per-slide cites.",
+          "chars": 49,
+          "max_chars": 51,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-2knx-together"
+          ]
+        },
+        {
+          "id": "cht8",
+          "source": "未確認的數字只作註記，不畫成確定結論。",
+          "old": "Unconfirmed figures: notes only, never conclusive charts.",
+          "chars": 57,
+          "max_chars": 59,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "nm8j",
+          "source": "大綱如果漏了資料年份，要在哪裡補上？",
+          "old": "Data year missing in the outline: where do we add it?",
+          "chars": 53,
+          "max_chars": 54,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9h68",
+          "source": "就在該頁的資料年欄，直接要求補上年份。",
+          "old": "Ask for it in that slide's data-year field.",
+          "chars": 43,
+          "max_chars": 56,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fx3e",
+          "source": "有了完整需求，第一份大綱就一定合用嗎？",
+          "old": "Does a full brief ensure the first outline is usable?",
+          "chars": 53,
+          "max_chars": 55,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "wy6f",
+          "source": "我設計的初稿範例，只有兩頁，還沒有排成投影片。",
+          "old": "I designed a 2-page draft, not slides yet.",
+          "chars": 42,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kwf8",
+          "source": "一頁叫AI投資和採用概況，另一頁叫整理成一張總覽圖。",
+          "old": "Titles: “AI investment and adoption overview” and “Make one overview chart.”",
+          "chars": 76,
+          "max_chars": 84,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aces",
+          "source": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。",
+          "old": "Both cram in the same amounts, regions, usage rates and unconfirmed figures.",
+          "chars": 76,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "gy4m",
+          "source": "它列出了材料，卻沒有替每頁分配一個讀者問題。",
+          "old": "It lists material, but assigns no reader question to each slide.",
+          "chars": 64,
+          "max_chars": 64,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "h58h",
+          "source": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+          "old": "The draft I wrote and my full batch of edit requests are recorded.",
+          "chars": 66,
+          "max_chars": 69,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "z84y",
+          "source": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。",
+          "old": "All stages were saved in one local run; there was no pause for my reply.",
+          "chars": 72,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yrg5",
+          "source": "既然每頁沒有分工，要修改的到底是哪個決定？",
+          "old": "With no role for each slide, which decision needs changing?",
+          "chars": 59,
+          "max_chars": 65,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j4eq",
+          "source": "開頭問材料怎麼分頁，我把每頁要回答的問題寫進修改。",
+          "old": "On the opening split: I put each slide's question in the edits.",
+          "chars": 63,
+          "max_chars": 76,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kmts",
+          "source": "照需求分頁，把投資金額和使用比例分成不同的問題。",
+          "old": "Per the brief, separate investment amounts and usage-rate questions.",
+          "chars": 68,
+          "max_chars": 70,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vyp5",
+          "source": "全球企業投資及其中私人投資不可相加。",
+          "old": "Do not add global corporate investment to the private investment within it.",
+          "chars": 75,
+          "max_chars": 80,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jzkh",
+          "source": "國別頁只比較私人融資，別叫全國AI總支出。",
+          "old": "Compare private financing only, not national total AI spending.",
+          "chars": 63,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "nx2z",
+          "source": "資料頁保留先前的資料年、單位、母體或範圍，以及兩種頁碼。",
+          "old": "Keep the data year, units, population or scope, and both page numbers on data slides.",
+          "chars": 85,
+          "max_chars": 90,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "b7sd",
+          "source": "未對齊的生成式AI比例，保留為兩處來源註記。",
+          "old": "Keep unaligned generative AI rates as two source notes.",
+          "chars": 55,
+          "max_chars": 56,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "i8qv",
+          "source": "最後按剛才的交付清單，把成品和引用紀錄一起交齊。",
+          "old": "Finally, deliver slides and citations together, per the earlier checklist.",
+          "chars": 74,
+          "max_chars": 80,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8k94",
+          "source": "集中修改要落到哪裡，才算真的改好了？",
+          "old": "Where must the batch of edits show up in the result?",
+          "chars": 52,
+          "max_chars": 53,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "6frs",
+          "source": "第一頁把讀者的問題分成投入多少錢、多少人回報使用。",
+          "old": "Slide 1 separates how much is invested from how many people report use.",
+          "chars": 71,
+          "max_chars": 77,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "esm2",
+          "source": "金額對應投資範圍，比例對應受訪者和組織。",
+          "old": "Amounts: investment scope. Rates: respondents and organizations.",
+          "chars": 64,
+          "max_chars": 71,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "x5tu",
+          "source": "第二頁把全球金額，做成能看出包含關係的圖。",
+          "old": "Slide 2 charts global amounts so the subset relationship is visible.",
+          "chars": 68,
+          "max_chars": 68,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fpqu",
+          "source": "全球企業AI投資是五百八十一點六九，以十億美元計。",
+          "old": "Global corporate AI investment is 581.69, in billions of US dollars.",
+          "chars": 68,
+          "max_chars": 83,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uyre",
+          "source": "其中私人AI投資，按相同單位是三百四十四點六六。",
+          "old": "Private AI investment within it is 344.66 in the same unit.",
+          "chars": 59,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8ddn",
+          "source": "開頭問能不能相加，這裡的關係是總額包含其中一部分。",
+          "old": "On the opening addition question: the total already includes that subset.",
+          "chars": 73,
+          "max_chars": 86,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rzc3",
+          "source": "再加一次私人投資，就把已包含的部分重複算了。",
+          "old": "Adding private investment again would count that part twice.",
+          "chars": 60,
+          "max_chars": 62,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "tjqp",
+          "source": "所以我在短的那條旁邊加上其中，頁面留下包含關係。",
+          "old": "I label the shorter bar “of which” to preserve the subset relationship.",
+          "chars": 71,
+          "max_chars": 74,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zhzm",
+          "source": "那地區比較，能直接改叫各國AI總支出嗎？",
+          "old": "Can the regional comparison be renamed each country's total AI spending?",
+          "chars": 72,
+          "max_chars": 81,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "qa92",
+          "source": "第三頁沿用報告整理的Quid私人AI投資口徑。",
+          "old": "Slide 3 keeps the report's Quid scope for private AI investment.",
+          "chars": 64,
+          "max_chars": 70,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "f6fw",
+          "source": "同為二〇二五年，以十億美元計，美國是二百八十五點八八。",
+          "old": "Also for 2025, in billions of US dollars, the US is 285.88.",
+          "chars": 59,
+          "max_chars": 86,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hxni",
+          "source": "中國是十二點四一，統計範圍和單位相同。",
+          "old": "China is 12.41, with the same scope and unit.",
+          "chars": 45,
+          "max_chars": 65,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "frra",
+          "source": "這裡比較同一套私人融資統計，不是兩國全部公私支出。",
+          "old": "Same private financing scope; not either country's total public/private spending.",
+          "chars": 81,
+          "max_chars": 87,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2bm9",
+          "source": "圖上兩條長度，對應的是同一年、同單位、同類投資。",
+          "old": "The two bar lengths represent the same year, unit and type of investment.",
+          "chars": 73,
+          "max_chars": 76,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "a4ys",
+          "source": "第四頁換成使用情況，金額的美元單位就不能帶過來。",
+          "old": "Slide 4 switches to usage; the dollar unit cannot carry over.",
+          "chars": 61,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9xhq",
+          "source": "這份調查中，百分之八十八的受訪者回報，",
+          "old": "In this survey, 88% of respondents report",
+          "chars": 41,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iswb",
+          "source": "自己的組織至少有一項業務使用AI。",
+          "old": "their organization uses AI in at least 1 function.",
+          "chars": 50,
+          "max_chars": 45,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "dp4j",
+          "source": "這是受訪者自述，不能寫成全球所有公司的普查結果。",
+          "old": "This is self-reporting, not a census of every company worldwide.",
+          "chars": 64,
+          "max_chars": 72,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "gy6e",
+          "source": "生成式AI有一格未解，簡報要因此卡住嗎？",
+          "old": "One generative AI item is unresolved. Must the slides stop?",
+          "chars": 59,
+          "max_chars": 66,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "en-gy6e-hold-up"
+          ]
+        },
+        {
+          "id": "g84b",
+          "source": "摘要列百分之七十，描述組織在至少一項業務使用。",
+          "old": "The summary gives 70%: organizations using it in at least one function.",
+          "chars": 71,
+          "max_chars": 76,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "e9xt",
+          "source": "詳文列百分之七十九，描述受訪者回報組織經常使用。",
+          "old": "The body gives 79%: respondents reporting regular use in their organizations.",
+          "chars": 77,
+          "max_chars": 77,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cwpj",
+          "source": "都指二〇二五年，問法和分母是否一致仍待確認。",
+          "old": "Both are 2025; question and denominator alignment is unconfirmed.",
+          "chars": 65,
+          "max_chars": 70,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iek7",
+          "source": "不把這兩個值當成已確認的採用率，也不因此判定報告寫錯。",
+          "old": "Neither is a confirmed adoption rate; this also does not prove the report wrong.",
+          "chars": 80,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aywh",
+          "source": "兩處留註記，其餘確認內容繼續交付。",
+          "old": "Keep both source notes; deliver the other confirmed content.",
+          "chars": 60,
+          "max_chars": 60,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8arj",
+          "source": "引用紀錄把第二到第四頁接回原報告，第一頁則是作者問題總覽。",
+          "old": "Citations trace slides 2–4 to the report; slide 1 is the author's question overview.",
+          "chars": 84,
+          "max_chars": 95,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5ytw",
+          "source": "開頭問怎麼追來源，拿到這份簡報後，要怎樣找回原圖？",
+          "old": "Back to tracing sources: with this deck, how do you find the original chart?",
+          "chars": 76,
+          "max_chars": 88,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cuw5",
+          "source": "簡報第二頁對應印刷第一百七十八頁，PDF第八頁。",
+          "old": "Slide 2 maps to printed page 178, PDF page 8.",
+          "chars": 45,
+          "max_chars": 75,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "u7s7",
+          "source": "圖號是四點二點一，兩個金額都出自這張圖。",
+          "old": "It is figure 4.2.1; both amounts come from that chart.",
+          "chars": 54,
+          "max_chars": 100,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2622",
+          "source": "核對時先用PDF頁序到原頁，再看圖號、數值和單位。",
+          "old": "Use the PDF position first, then check the figure number, values and units.",
+          "chars": 75,
+          "max_chars": 78,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "a9g4",
+          "source": "你要引述給同事，也能把報告印刷頁碼一起留下。",
+          "old": "For colleagues, keep the printed report page when citing.",
+          "chars": 57,
+          "max_chars": 57,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "thhi",
+          "source": "簡報第三頁對應印刷第一百八十二頁，PDF第十二頁。",
+          "old": "Slide 3 maps to printed page 182, PDF page 12.",
+          "chars": 46,
+          "max_chars": 59,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "z3rg",
+          "source": "這頁的來源標記，把同一張私人投資圖和兩個地區連在一起。",
+          "old": "Its source label links both regions to the same private investment chart.",
+          "chars": 73,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "buwe",
+          "source": "簡報第四頁對應印刷第一百九十三頁，PDF第二十三頁。",
+          "old": "Slide 4 maps to printed page 193, PDF page 23.",
+          "chars": 46,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "m5bu",
+          "source": "待確認註記另連到摘要的印刷第一百七十三頁，PDF第三頁。",
+          "old": "The unresolved note also links to the summary: printed page 173, PDF page 3.",
+          "chars": 76,
+          "max_chars": 96,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j47b",
+          "source": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+          "old": "This difference is a note, excluded from five adopted numerical claims.",
+          "chars": 71,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uhev",
+          "source": "但同事要改字時，交一張排好的圖片就夠嗎？",
+          "old": "But if colleagues need to edit text, is a finished image enough?",
+          "chars": 64,
+          "max_chars": 70,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "mgin",
+          "source": "我把同一份內容，分成觀看用和修改用兩種交付。",
+          "old": "I split the same content into viewing and editing deliveries.",
+          "chars": 61,
+          "max_chars": 68,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "eeiu",
+          "source": "PDF是四張頁面圖片，能打開看版面，沒有可抽取的文字。",
+          "old": "The PDF has four page images: visible layouts, but no extractable text.",
+          "chars": 71,
+          "max_chars": 79,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hj8r",
+          "source": "開頭問能不能改字，這次也交付了PPTX可編輯檔。",
+          "old": "On the opening text-editing question, I also deliver an editable PPTX.",
+          "chars": 70,
+          "max_chars": 107,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "t5vz",
+          "source": "其中的文字和形狀分開保存，沒有嵌入頁面圖片。",
+          "old": "Text and shapes are separate; no page images are embedded.",
+          "chars": 58,
+          "max_chars": 62,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "xxcb",
+          "source": "像投資頁的單位，也留在原生文字方塊裡。",
+          "old": "The investment slide's unit stays in a native text box too.",
+          "chars": 59,
+          "max_chars": 60,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aetd",
+          "source": "檔案已重新開啟檢查結構，尚未在PowerPoint裡原生渲染。",
+          "old": "Reopened for structure checks; not natively rendered in PowerPoint.",
+          "chars": 67,
+          "max_chars": 77,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "du2s",
+          "source": "如果你要在那裡正式播放，先打開確認字型和換行。",
+          "old": "Before presenting there, open it to check fonts and line breaks.",
+          "chars": 64,
+          "max_chars": 71,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kjrf",
+          "source": "簡報、可編輯檔與逐頁來源，現在是一份能核對的交付包。",
+          "old": "The slides, editable file and per-slide sources now form a verifiable package.",
+          "chars": 78,
+          "max_chars": 84,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yu7f",
+          "source": "那這份本地流程，和Google的新功能到底接在哪裡？",
+          "old": "Where does this local workflow connect to Google's new feature?",
+          "chars": 63,
+          "max_chars": 77,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3eg2",
+          "source": "新聞裡的審稿位置，正是這份簡報決定每頁內容的地方。",
+          "old": "The news puts review where this deck's slide-by-slide content is decided.",
+          "chars": 73,
+          "max_chars": 76,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vufg",
+          "source": "Gemini Notebook可以先選形式和風格，再開啟Review。",
+          "old": "In Gemini Notebook, choose format and style, then turn on Review.",
+          "chars": 65,
+          "max_chars": 71,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8ikq",
+          "source": "做簡報時審的是大綱，做影片時則是製作筆記。",
+          "old": "For slides, review the outline; for videos, the producer notes.",
+          "chars": 63,
+          "max_chars": 69,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "w72f",
+          "source": "把修改集中一次寫完，再按Proceed進入生成。",
+          "old": "Write all edits together, then hit Proceed to generate.",
+          "chars": 55,
+          "max_chars": 58,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8u6s",
+          "source": "產品也保留直接生成的選擇，審查步驟不是強制。",
+          "old": "Direct generation is also available; review is optional.",
+          "chars": 56,
+          "max_chars": 63,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p3j7",
+          "source": "按Proceed後，就不能繼續改這份大綱。",
+          "old": "After Proceed, you cannot edit this outline.",
+          "chars": 44,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "63mu",
+          "source": "因此像其中一部分、私人投資這些內容，值得在這時確認。",
+          "old": "So this is the time to check subset wording and private investment scope.",
+          "chars": 73,
+          "max_chars": 74,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3y5",
+          "source": "這個選項，現在每個帳號都看得到嗎？",
+          "old": "Can every account see this option now?",
+          "chars": 38,
+          "max_chars": 49,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cgtw",
+          "source": "Workspace公告列十月十六日起分批推出，最長十五天。",
+          "old": "Workspace lists a phased rollout from October 16, taking up to 15 days.",
+          "chars": 71,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yw8i",
+          "source": "公告列多類帳號，說明頁卻把共同製作列為Ultra功能。",
+          "old": "News lists several account types; help calls co-creation an Ultra feature.",
+          "chars": 74,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "qtzp",
+          "source": "我沒有帳號操作結果能對齊這個差異，不能保證免費可用。",
+          "old": "I have no account test to resolve the gap; I cannot promise free use.",
+          "chars": 69,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "skdk",
+          "source": "你要用產品時，先確認自己的方案和審大綱選項。",
+          "old": "Before using it, check your plan and the outline-review option.",
+          "chars": 63,
+          "max_chars": 72,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p2we",
+          "source": "確認自己帳號的審大綱選項後，用同一份需求改寫聽眾和篇幅。",
+          "old": "Check your account's review option, then adapt this brief's audience and length.",
+          "chars": 80,
+          "max_chars": 82,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cesj",
+          "source": "把其中的一般同事，改成你的實際聽眾。",
+          "old": "Replace “coworkers” with your actual audience.",
+          "chars": 46,
+          "max_chars": 47,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "tkzk",
+          "source": "再把頁數和講述時間，改成你要交付的範圍。",
+          "old": "Then change the slide count and speaking time to your required scope.",
+          "chars": 69,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "teri",
+          "source": "讓大綱帶著問題與來源交回來，你就有具體內容可以修改。",
+          "old": "Get questions and sources in the outline: concrete content to revise.",
+          "chars": 69,
+          "max_chars": 73,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8udr",
+          "source": "沿用這份需求，寫下你第一頁要回答的問題。",
+          "old": "Using this brief, write your first slide's question.",
+          "chars": 52,
+          "max_chars": 63,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yf5s",
+          "source": "留言分享，你要把什麼做成簡報。",
+          "old": "Comment: your slide topic?",
+          "chars": 26,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "umdp",
+          "source": "訂閱，用真實成品讀懂AI工具。",
+          "old": "Subscribe to understand AI tools through real deliverables.",
+          "chars": 59,
+          "max_chars": 63,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        }
+      ],
+      "mandatory_candidate_sheet": "/workspace/work/ai-tech-next/fourth-independent-en.mandatory-candidate.json",
+      "mandatory_candidate_sha256": "377aeafc64963129f885301d81e19bcd5e8b82ca635874e8a1af4ec2da42b355",
+      "mandatory_candidate_static_over_count": 1,
+      "candidate_nontext_fields_unchanged": true,
+      "description_source_urls_preserved": true,
+      "thumbnail_all_fields_emphasis_newline_preserved": true,
+      "budget_review": {
+        "original_over_count": 1,
+        "candidate_within_max_count": 0,
+        "candidate_still_over_count": 0,
+        "no_safe_within_candidate_count": 1
+      }
+    },
+    "ja": {
+      "input_sha256_unchanged": "6279fe0bb0da8502f9672084e9ec17a0e86391fa72b5f7cf9911bc45be5f38c8",
+      "caption_count_read": 118,
+      "chapters_count_read": 6,
+      "all_metadata_thumbnail_read": true,
+      "mandatory_findings": 2,
+      "optional_findings": 2,
+      "original_static_over_count": 2,
+      "coverage": [
+        {
+          "id": "tirg",
+          "source": "二〇二六年十月二十五日，我打開報告，寫下簡報需求。",
+          "old": "2026年10月25日、報告書を開いてスライドの要件を書きました。",
+          "chars": 33,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iihc",
+          "source": "兩筆投資放在一起，能直接相加嗎？",
+          "old": "この2つの投資額は、そのまま足せるのでしょうか。",
+          "chars": 24,
+          "max_chars": 27,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dgy5",
+          "source": "這份大綱裡的材料，要怎麼分頁才各有任務？",
+          "old": "この構成の材料を、各ページに役割がある形でどう分けますか。",
+          "chars": 29,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dfj8",
+          "source": "交出去以後，能改字、也能追來源嗎？",
+          "old": "渡した後も文字を直せて、出典もたどれるのでしょうか。",
+          "chars": 26,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3vx9",
+          "source": "十月十九日，Gemini Notebook介紹生成前先審大綱。",
+          "old": "10月19日、Gemini Notebookが生成前の構成確認を紹介しました。",
+          "chars": 39,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "7ya8",
+          "source": "要決定兩筆能不能相加，我先填來源紀錄裡的投資範圍。",
+          "old": "足せるかを決めるため、まず出典記録に投資範囲を記入します。",
+          "chars": 29,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jyx8",
+          "source": "這份本地原創範例受Google公告啟發，沒有試用Notebook。",
+          "old": "Google発表がヒントの独自ローカル例で、Notebookは未使用です。",
+          "chars": 37,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "sk7r",
+          "source": "輸入是Stanford AI指數報告的經濟章。",
+          "old": "入力はStanford AI Indexの経済章です。",
+          "chars": 27,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "45g3",
+          "source": "這份公開PDF有六十頁，簡報只需要其中的相關資料。",
+          "old": "公開PDFは60ページあり、スライドに必要なのは関連データだけです。",
+          "chars": 34,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fskd",
+          "source": "我給它的任務，是讓一般同事讀懂AI投資和組織使用。",
+          "old": "一般の同僚がAI投資と組織での利用を理解することを目標にしました。",
+          "chars": 33,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vvp9",
+          "source": "先填聽眾和用途，才知道哪些內容該留下。",
+          "old": "先に対象者と用途を書くと、残す内容を選べます。",
+          "chars": 23,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3s9",
+          "source": "來源紀錄裡，報告年份和資料年份分成兩欄。",
+          "old": "出典記録では、報告年とデータ年を別の欄にします。",
+          "chars": 24,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "immj",
+          "source": "報告是二〇二六年，這次採用的資料則是二〇二五年。",
+          "old": "報告書は2026年、今回使うデータは2025年です。",
+          "chars": 26,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p9da",
+          "source": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。",
+          "old": "分けないと、新しい報告書の題名で古いデータを新調査だと誤解しかねません。",
+          "chars": 36,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8gv2",
+          "source": "同樣寫AI，投資金額和使用比例能共用一張圖嗎？",
+          "old": "同じAIでも、投資額と利用割合を同じ図にできるのでしょうか。",
+          "chars": 30,
+          "max_chars": 45,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "sxfi",
+          "source": "金額這邊要記地區、投資類型，還有美元單位。",
+          "old": "金額には地域、投資の種類、米ドルの単位を記録します。",
+          "chars": 26,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "b4kb",
+          "source": "比例這邊要記誰受訪，以及他回報的是什麼使用情況。",
+          "old": "割合には、誰への調査で何の利用を申告したかを記録します。",
+          "chars": 28,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rrvd",
+          "source": "它們回答不同問題，我把兩種指標拆開記。",
+          "old": "答える問いが違うため、2つの指標を分けて記録します。",
+          "chars": 26,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "ghds",
+          "source": "來源紀錄還留了兩種頁碼，它們負責不同的定位。",
+          "old": "出典記録には、異なる位置を示す2種類のページ番号も残します。",
+          "chars": 30,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "pt7x",
+          "source": "印刷頁碼，是報告紙面上標的號碼。",
+          "old": "印刷ページ番号は報告の紙面の番号です。",
+          "chars": 19,
+          "max_chars": 21,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "q2hz",
+          "source": "PDF頁序，則是這個檔案從第一頁開始數的位置。",
+          "old": "PDF内のページ順は、ファイルの先頭を1として数えた位置です。",
+          "chars": 31,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5s9a",
+          "source": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+          "old": "同僚も同じPDFの順番で元のページに戻れます。",
+          "chars": 23,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9c7v",
+          "source": "原頁上還有圖號，能繼續對到同頁的那張圖。",
+          "old": "元のページの図番号で、同じページの図も特定できます。",
+          "chars": 26,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hpdz",
+          "source": "把這些條件放進需求，怎樣避免只收到一段摘要？",
+          "old": "この条件を要件に入れ、単なる要約だけに終わらせないにはどうしますか。",
+          "chars": 34,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "g7uh",
+          "source": "我把這次需求整理成完整提示，你可以照這個格式改。",
+          "old": "要件を完全なプロンプトにまとめました。この形式を使って調整できます。",
+          "chars": 34,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2ai4",
+          "source": "請只用我提供的這份公開PDF，替一般同事做四頁簡報。",
+          "old": "この公開PDFだけを使い、一般の同僚向けに4枚を作ってください。",
+          "chars": 32,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zny3",
+          "source": "簡報目標約三分鐘。",
+          "old": "目標は約3分です。",
+          "chars": 9,
+          "max_chars": 11,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kh9k",
+          "source": "先給大綱，先不要生成投影片。",
+          "old": "先に構成を出し、まだスライドは生成しないでください。",
+          "chars": 26,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zibg",
+          "source": "每頁只回答一個問題，列出要用的數字、資料年、單位。",
+          "old": "1枚に1つの問いとし、数値、データ年、単位を示してください。",
+          "chars": 30,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uqnr",
+          "source": "列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。",
+          "old": "調査母集団か統計範囲、印刷ページ番号、PDF内ページ順を示してください。",
+          "chars": 36,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "r3y9",
+          "source": "把投資金額和使用比例分開。",
+          "old": "投資額と利用割合は分けてください。",
+          "chars": 17,
+          "max_chars": 17,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "bd3z",
+          "source": "總額與其中一部分，不要相加。",
+          "old": "総額とその一部は足さないでください。",
+          "chars": 18,
+          "max_chars": 23,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "y3nk",
+          "source": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+          "old": "未整合は要確認とし、数値を勝手に選ばないでください。",
+          "chars": 26,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "7g33",
+          "source": "等我一次回覆全部修改後，再產出四頁簡報。",
+          "old": "私の全修正の一括返信後、4枚を生成してください。",
+          "chars": 24,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2knx",
+          "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+          "old": "編集可能版、PDF、ページ別出典一覧もください。",
+          "chars": 24,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "ja-2knx-together"
+          ]
+        },
+        {
+          "id": "cht8",
+          "source": "未確認的數字只作註記，不畫成確定結論。",
+          "old": "未確認値は注記のみで、確定した結論として図示しないでください",
+          "chars": 30,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "nm8j",
+          "source": "大綱如果漏了資料年份，要在哪裡補上？",
+          "old": "構成にデータ年がなければ、どこに追加しますか。",
+          "chars": 23,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9h68",
+          "source": "就在該頁的資料年欄，直接要求補上年份。",
+          "old": "そのページのデータ年欄に、年の追記を求めます。",
+          "chars": 23,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fx3e",
+          "source": "有了完整需求，第一份大綱就一定合用嗎？",
+          "old": "要件が揃えば、最初の構成は必ず使えるのでしょうか。",
+          "chars": 25,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "wy6f",
+          "source": "我設計的初稿範例，只有兩頁，還沒有排成投影片。",
+          "old": "私の初稿例は2ページだけで、スライド化前です。",
+          "chars": 23,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kwf8",
+          "source": "一頁叫AI投資和採用概況，另一頁叫整理成一張總覽圖。",
+          "old": "題名は「AI投資と導入の概要」と「1枚の全体図にまとめる」です。",
+          "chars": 32,
+          "max_chars": 44,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aces",
+          "source": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。",
+          "old": "両ページに同じ金額、地域、利用割合、未確認の数値を詰めています。",
+          "chars": 32,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "gy4m",
+          "source": "它列出了材料，卻沒有替每頁分配一個讀者問題。",
+          "old": "材料は列挙しましたが、各ページが答える問いは決めていません。",
+          "chars": 30,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "h58h",
+          "source": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+          "old": "私が書いた初稿と一括の修正要求を、例の記録に残しています。",
+          "chars": 29,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "z84y",
+          "source": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。",
+          "old": "各段階は1回の作成で保存し、実際に私の返答を待って停止していません。",
+          "chars": 34,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yrg5",
+          "source": "既然每頁沒有分工，要修改的到底是哪個決定？",
+          "old": "各ページに役割がないなら、どの決定を直すべきでしょうか。",
+          "chars": 28,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j4eq",
+          "source": "開頭問材料怎麼分頁，我把每頁要回答的問題寫進修改。",
+          "old": "冒頭の分け方の問いに対し、各ページが答える問いを修正要求に書きます。",
+          "chars": 34,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kmts",
+          "source": "照需求分頁，把投資金額和使用比例分成不同的問題。",
+          "old": "要件に沿って分け、投資額と利用割合を別々の問いにしてください。",
+          "chars": 31,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vyp5",
+          "source": "全球企業投資及其中私人投資不可相加。",
+          "old": "世界の企業投資と、その中の民間投資は足せません。",
+          "chars": 24,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jzkh",
+          "source": "國別頁只比較私人融資，別叫全國AI總支出。",
+          "old": "国別ページは民間資金調達だけを比べ、国全体のAI支出と呼ばないでください。",
+          "chars": 37,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "nx2z",
+          "source": "資料頁保留先前的資料年、單位、母體或範圍，以及兩種頁碼。",
+          "old": "データページはデータ年、単位、母集団か範囲、2種類のページ番号を残してください。",
+          "chars": 40,
+          "max_chars": 46,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "b7sd",
+          "source": "未對齊的生成式AI比例，保留為兩處來源註記。",
+          "old": "未整合の生成AI割合は2か所の出典注記に残してください。",
+          "chars": 28,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "i8qv",
+          "source": "最後按剛才的交付清單，把成品和引用紀錄一起交齊。",
+          "old": "最後は先ほどの納品一覧に従い、成果物と出典記録を揃えて渡してください。",
+          "chars": 35,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8k94",
+          "source": "集中修改要落到哪裡，才算真的改好了？",
+          "old": "一括修正が本当に反映されたかは、どこで確かめますか。",
+          "chars": 26,
+          "max_chars": 27,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "6frs",
+          "source": "第一頁把讀者的問題分成投入多少錢、多少人回報使用。",
+          "old": "1枚目で、投資額と利用を申告した人数を別々の問いにします。",
+          "chars": 29,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "esm2",
+          "source": "金額對應投資範圍，比例對應受訪者和組織。",
+          "old": "金額は投資範囲、割合は回答者と組織に対応します。",
+          "chars": 24,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "x5tu",
+          "source": "第二頁把全球金額，做成能看出包含關係的圖。",
+          "old": "2枚目は世界の金額を、包含関係が分かる図にしました。",
+          "chars": 26,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fpqu",
+          "source": "全球企業AI投資是五百八十一點六九，以十億美元計。",
+          "old": "世界の企業AI投資は581.69、単位は10億米ドルです。",
+          "chars": 29,
+          "max_chars": 43,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uyre",
+          "source": "其中私人AI投資，按相同單位是三百四十四點六六。",
+          "old": "そのうち民間AI投資は、同じ単位で344.66です。",
+          "chars": 26,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8ddn",
+          "source": "開頭問能不能相加，這裡的關係是總額包含其中一部分。",
+          "old": "冒頭の足せるかという問いは、総額が一部を含む関係でした。",
+          "chars": 28,
+          "max_chars": 44,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rzc3",
+          "source": "再加一次私人投資，就把已包含的部分重複算了。",
+          "old": "民間投資をさらに足すと、含まれる部分を二重計上します。",
+          "chars": 27,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "tjqp",
+          "source": "所以我在短的那條旁邊加上其中，頁面留下包含關係。",
+          "old": "短い棒に「そのうち」と添え、包含関係を残しました。",
+          "chars": 25,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zhzm",
+          "source": "那地區比較，能直接改叫各國AI總支出嗎？",
+          "old": "地域比較を、各国のAI総支出と呼び替えてよいのでしょうか。",
+          "chars": 29,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "qa92",
+          "source": "第三頁沿用報告整理的Quid私人AI投資口徑。",
+          "old": "3枚目は報告書のQuid民間AI投資の集計範囲を引き継ぎます。",
+          "chars": 31,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "f6fw",
+          "source": "同為二〇二五年，以十億美元計，美國是二百八十五點八八。",
+          "old": "同じ2025年、10億米ドル単位で、米国は285.88です。",
+          "chars": 30,
+          "max_chars": 44,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hxni",
+          "source": "中國是十二點四一，統計範圍和單位相同。",
+          "old": "中国は12.41で、集計範囲と単位は同じです。",
+          "chars": 23,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "frra",
+          "source": "這裡比較同一套私人融資統計，不是兩國全部公私支出。",
+          "old": "同じ民間資金調達統計の比較で、両国の官民全支出ではありません。",
+          "chars": 31,
+          "max_chars": 45,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2bm9",
+          "source": "圖上兩條長度，對應的是同一年、同單位、同類投資。",
+          "old": "2本の棒は同じ年、単位、投資の種類に対応します。",
+          "chars": 24,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "a4ys",
+          "source": "第四頁換成使用情況，金額的美元單位就不能帶過來。",
+          "old": "4枚目は利用状況に替わり、米ドルの単位は引き継げません。",
+          "chars": 28,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9xhq",
+          "source": "這份調查中，百分之八十八的受訪者回報，",
+          "old": "この調査では、回答者の88%が、",
+          "chars": 16,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iswb",
+          "source": "自己的組織至少有一項業務使用AI。",
+          "old": "自組織の1業務以上でAIを使うと答えています。",
+          "chars": 23,
+          "max_chars": 23,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "ja-iswb-org-subject"
+          ]
+        },
+        {
+          "id": "dp4j",
+          "source": "這是受訪者自述，不能寫成全球所有公司的普查結果。",
+          "old": "回答者の自己申告であり、世界の全企業の全数調査ではありません。",
+          "chars": 31,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "gy6e",
+          "source": "生成式AI有一格未解，簡報要因此卡住嗎？",
+          "old": "生成AIに未解決の1項目があれば、資料全体を止めるべきでしょうか。",
+          "chars": 33,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "g84b",
+          "source": "摘要列百分之七十，描述組織在至少一項業務使用。",
+          "old": "要約は70%とし、組織が少なくとも1業務で使うと記しています。",
+          "chars": 31,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "e9xt",
+          "source": "詳文列百分之七十九，描述受訪者回報組織經常使用。",
+          "old": "本文は79%で、回答者が組織で日常的に使うと申告しています。",
+          "chars": 30,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cwpj",
+          "source": "都指二〇二五年，問法和分母是否一致仍待確認。",
+          "old": "どちらも2025年ですが、質問と分母が同じかは要確認です。",
+          "chars": 29,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iek7",
+          "source": "不把這兩個值當成已確認的採用率，也不因此判定報告寫錯。",
+          "old": "どちらも確認済み導入率とせず、報告が間違いだとも判断しません。",
+          "chars": 31,
+          "max_chars": 43,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aywh",
+          "source": "兩處留註記，其餘確認內容繼續交付。",
+          "old": "2か所は注記に残し、他の確認済み内容は納品します。",
+          "chars": 25,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8arj",
+          "source": "引用紀錄把第二到第四頁接回原報告，第一頁則是作者問題總覽。",
+          "old": "出典記録は2〜4枚目を元の報告書につなぎ、1枚目は作者の問いの概要です。",
+          "chars": 36,
+          "max_chars": 49,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5ytw",
+          "source": "開頭問怎麼追來源，拿到這份簡報後，要怎樣找回原圖？",
+          "old": "冒頭の出典の問いです。この資料から元の図をどう見つけますか。",
+          "chars": 30,
+          "max_chars": 45,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cuw5",
+          "source": "簡報第二頁對應印刷第一百七十八頁，PDF第八頁。",
+          "old": "2枚目は印刷178ページ、PDFの8ページ目に対応します。",
+          "chars": 29,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "u7s7",
+          "source": "圖號是四點二點一，兩個金額都出自這張圖。",
+          "old": "図番号は4.2.1で、2つの金額ともこの図が出典です。",
+          "chars": 27,
+          "max_chars": 52,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2622",
+          "source": "核對時先用PDF頁序到原頁，再看圖號、數值和單位。",
+          "old": "PDF内の順番で元のページに進み、図番号、数値、単位を確認します。",
+          "chars": 33,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "a9g4",
+          "source": "你要引述給同事，也能把報告印刷頁碼一起留下。",
+          "old": "同僚に引用する際は、報告書の印刷ページ番号も残せます。",
+          "chars": 27,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "thhi",
+          "source": "簡報第三頁對應印刷第一百八十二頁，PDF第十二頁。",
+          "old": "3枚目は印刷182ページ、PDFの12ページ目に対応します。",
+          "chars": 30,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "z3rg",
+          "source": "這頁的來源標記，把同一張私人投資圖和兩個地區連在一起。",
+          "old": "出典表示で、同じ民間投資の図と2地域を結び付けます。",
+          "chars": 26,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "buwe",
+          "source": "簡報第四頁對應印刷第一百九十三頁，PDF第二十三頁。",
+          "old": "4枚目は印刷193ページ、PDFの23ページ目に対応します。",
+          "chars": 30,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "m5bu",
+          "source": "待確認註記另連到摘要的印刷第一百七十三頁，PDF第三頁。",
+          "old": "要確認の注記は、要約の印刷173ページ、PDFの3ページ目にもつなぎます。",
+          "chars": 37,
+          "max_chars": 49,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j47b",
+          "source": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+          "old": "この差異は注記だけに置き、採用した5つの数値主張には含めません。",
+          "chars": 32,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "uhev",
+          "source": "但同事要改字時，交一張排好的圖片就夠嗎？",
+          "old": "同僚が文字を直したい場合、完成画像を渡すだけで十分でしょうか。",
+          "chars": 31,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "mgin",
+          "source": "我把同一份內容，分成觀看用和修改用兩種交付。",
+          "old": "同じ内容を、閲覧用と編集用の2種類に分けて渡します。",
+          "chars": 26,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "eeiu",
+          "source": "PDF是四張頁面圖片，能打開看版面，沒有可抽取的文字。",
+          "old": "PDFは4枚のページ画像で、レイアウトは見られますが文字は抽出できません。",
+          "chars": 37,
+          "max_chars": 41,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hj8r",
+          "source": "開頭問能不能改字，這次也交付了PPTX可編輯檔。",
+          "old": "冒頭の文字編集の問いに対し、編集可能なPPTXも渡しました。",
+          "chars": 30,
+          "max_chars": 55,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "t5vz",
+          "source": "其中的文字和形狀分開保存，沒有嵌入頁面圖片。",
+          "old": "文字と図形は別々に保存し、ページ画像は埋め込んでいません。",
+          "chars": 29,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "xxcb",
+          "source": "像投資頁的單位，也留在原生文字方塊裡。",
+          "old": "投資ページの単位もネイティブのテキストボックスに残します。",
+          "chars": 29,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "aetd",
+          "source": "檔案已重新開啟檢查結構，尚未在PowerPoint裡原生渲染。",
+          "old": "再度開いて構造を確認し、PowerPointのネイティブ描画はまだです。",
+          "chars": 36,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "du2s",
+          "source": "如果你要在那裡正式播放，先打開確認字型和換行。",
+          "old": "そこで正式に発表するなら、開いてフォントと改行を確認してください。",
+          "chars": 33,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kjrf",
+          "source": "簡報、可編輯檔與逐頁來源，現在是一份能核對的交付包。",
+          "old": "資料、編集可能ファイル、各ページの出典が、照合できる納品一式になりました。",
+          "chars": 37,
+          "max_chars": 43,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yu7f",
+          "source": "那這份本地流程，和Google的新功能到底接在哪裡？",
+          "old": "このローカル工程は、Googleの新機能とどこでつながるのでしょうか。",
+          "chars": 35,
+          "max_chars": 40,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3eg2",
+          "source": "新聞裡的審稿位置，正是這份簡報決定每頁內容的地方。",
+          "old": "ニュースの確認段階は、この資料で各ページの内容を決める箇所です。",
+          "chars": 32,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "vufg",
+          "source": "Gemini Notebook可以先選形式和風格，再開啟Review。",
+          "old": "Gemini Notebookで形式・スタイルを選び、Reviewをオンにします。",
+          "chars": 41,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "8ikq",
+          "source": "做簡報時審的是大綱，做影片時則是製作筆記。",
+          "old": "スライドでは構成、動画では制作ノートを確認します。",
+          "chars": 25,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "w72f",
+          "source": "把修改集中一次寫完，再按Proceed進入生成。",
+          "old": "修正を一括で書き、Proceedを押して生成に進みます。",
+          "chars": 28,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8u6s",
+          "source": "產品也保留直接生成的選擇，審查步驟不是強制。",
+          "old": "直接生成も選べるので、確認は必須ではありません。",
+          "chars": 24,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p3j7",
+          "source": "按Proceed後，就不能繼續改這份大綱。",
+          "old": "Proceedの後は、この構成を変更できません。",
+          "chars": 24,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "63mu",
+          "source": "因此像其中一部分、私人投資這些內容，值得在這時確認。",
+          "old": "そのため、部分集合や民間投資の範囲は、この段階で確認したい内容です。",
+          "chars": 34,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3y5",
+          "source": "這個選項，現在每個帳號都看得到嗎？",
+          "old": "今、全アカウントでこの選択肢が見えますか。",
+          "chars": 21,
+          "max_chars": 25,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cgtw",
+          "source": "Workspace公告列十月十六日起分批推出，最長十五天。",
+          "old": "Workspaceの発表では、10月16日から最長15日で段階的に提供します。",
+          "chars": 39,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yw8i",
+          "source": "公告列多類帳號，說明頁卻把共同製作列為Ultra功能。",
+          "old": "発表は複数のアカウント種別を示す一方、ヘルプは共同制作をUltra機能と記します。",
+          "chars": 41,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "qtzp",
+          "source": "我沒有帳號操作結果能對齊這個差異，不能保證免費可用。",
+          "old": "アカウント操作でこの差を確かめていないため、無料で使えるとは保証できません。",
+          "chars": 38,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "skdk",
+          "source": "你要用產品時，先確認自己的方案和審大綱選項。",
+          "old": "使う前に、自分のプランと構成確認の選択肢を確かめてください。",
+          "chars": 30,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p2we",
+          "source": "確認自己帳號的審大綱選項後，用同一份需求改寫聽眾和篇幅。",
+          "old": "アカウントの構成確認を確かめたら、この要件の対象者と分量を変えます。",
+          "chars": 34,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cesj",
+          "source": "把其中的一般同事，改成你的實際聽眾。",
+          "old": "「一般の同僚」を、実際の対象者に替えてください。",
+          "chars": 24,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "tkzk",
+          "source": "再把頁數和講述時間，改成你要交付的範圍。",
+          "old": "次に枚数と説明時間を、必要な納品範囲に合わせます。",
+          "chars": 25,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "teri",
+          "source": "讓大綱帶著問題與來源交回來，你就有具體內容可以修改。",
+          "old": "問いと出典を持つ構成を返してもらえば、具体的な内容を修正できます。",
+          "chars": 33,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8udr",
+          "source": "沿用這份需求，寫下你第一頁要回答的問題。",
+          "old": "この要件を使い、1枚目が答える問いを書いてください。",
+          "chars": 26,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yf5s",
+          "source": "留言分享，你要把什麼做成簡報。",
+          "old": "スライド化したい題材をコメントしてください。",
+          "chars": 22,
+          "max_chars": 15,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "umdp",
+          "source": "訂閱，用真實成品讀懂AI工具。",
+          "old": "登録して、実際の成果物からAIツールを理解しましょう。",
+          "chars": 27,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        }
+      ],
+      "mandatory_candidate_sheet": "/workspace/work/ai-tech-next/fourth-independent-ja.mandatory-candidate.json",
+      "mandatory_candidate_sha256": "8ba44b9077b8ead24bf30a1fd1c4a2e366ff185ce66980e8214c3db480ce9fc6",
+      "mandatory_candidate_static_over_count": 2,
+      "candidate_nontext_fields_unchanged": true,
+      "description_source_urls_preserved": true,
+      "thumbnail_all_fields_emphasis_newline_preserved": true,
+      "budget_review": {
+        "original_over_count": 2,
+        "candidate_within_max_count": 0,
+        "candidate_still_over_count": 1,
+        "no_safe_within_candidate_count": 1
+      }
+    },
+    "ko": {
+      "input_sha256_unchanged": "d9883f520e1e73ed2269d918e857138f70908d4f8310b12c67c2efff53995e51",
+      "caption_count_read": 118,
+      "chapters_count_read": 6,
+      "all_metadata_thumbnail_read": true,
+      "mandatory_findings": 2,
+      "optional_findings": 4,
+      "original_static_over_count": 61,
+      "coverage": [
+        {
+          "id": "tirg",
+          "source": "二〇二六年十月二十五日，我打開報告，寫下簡報需求。",
+          "old": "2026년 10월 25일 보고서를 열고 발표 요구를 썼습니다.",
+          "chars": 34,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": [
+            "ko-tirg-requirements"
+          ]
+        },
+        {
+          "id": "iihc",
+          "source": "兩筆投資放在一起，能直接相加嗎？",
+          "old": "두 투자 금액을 그대로 더해도 됩니까?",
+          "chars": 21,
+          "max_chars": 23,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dgy5",
+          "source": "這份大綱裡的材料，要怎麼分頁才各有任務？",
+          "old": "각 장이 역할을 하도록 개요 내용을 어떻게 나눕니까?",
+          "chars": 29,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "dfj8",
+          "source": "交出去以後，能改字、也能追來源嗎？",
+          "old": "전달 후에도 글자 수정과 출처 추적이 됩니까?",
+          "chars": 25,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3vx9",
+          "source": "十月十九日，Gemini Notebook介紹生成前先審大綱。",
+          "old": "10월 19일, Gemini Notebook이 생성 전 개요 검토를 소개했습니다.",
+          "chars": 45,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "7ya8",
+          "source": "要決定兩筆能不能相加，我先填來源紀錄裡的投資範圍。",
+          "old": "더할 수 있는지 보려고 출처 기록에 투자 범위부터 씁니다.",
+          "chars": 32,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jyx8",
+          "source": "這份本地原創範例受Google公告啟發，沒有試用Notebook。",
+          "old": "Google 발표에서 착안한 독창적 로컬 예시로, Notebook은 미사용입니다.",
+          "chars": 45,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "sk7r",
+          "source": "輸入是Stanford AI指數報告的經濟章。",
+          "old": "입력은 Stanford AI Index의 경제 장입니다.",
+          "chars": 31,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "45g3",
+          "source": "這份公開PDF有六十頁，簡報只需要其中的相關資料。",
+          "old": "공개 PDF는 60쪽이며 발표에는 관련 데이터만 필요합니다.",
+          "chars": 33,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fskd",
+          "source": "我給它的任務，是讓一般同事讀懂AI投資和組織使用。",
+          "old": "일반 동료가 AI 투자와 조직의 AI 이용을 이해하도록 요구했습니다.",
+          "chars": 38,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "vvp9",
+          "source": "先填聽眾和用途，才知道哪些內容該留下。",
+          "old": "대상과 용도를 먼저 써야 남길 내용을 정합니다.",
+          "chars": 26,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3s9",
+          "source": "來源紀錄裡，報告年份和資料年份分成兩欄。",
+          "old": "출처 기록의 보고서 연도와 데이터 연도는 별도 칸입니다.",
+          "chars": 31,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "immj",
+          "source": "報告是二〇二六年，這次採用的資料則是二〇二五年。",
+          "old": "보고서는 2026년, 쓴 데이터는 2025년입니다.",
+          "chars": 28,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p9da",
+          "source": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。",
+          "old": "아니면 새 보고서 제목으로 옛 데이터를 새 조사로 오해할 수 있습니다.",
+          "chars": 39,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "8gv2",
+          "source": "同樣寫AI，投資金額和使用比例能共用一張圖嗎？",
+          "old": "같은 AI라도 투자 금액과 이용 비율을 한 도표에 넣어도 됩니까?",
+          "chars": 36,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "sxfi",
+          "source": "金額這邊要記地區、投資類型，還有美元單位。",
+          "old": "금액은 지역, 투자 유형, 미국 달러 단위를 씁니다.",
+          "chars": 29,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "b4kb",
+          "source": "比例這邊要記誰受訪，以及他回報的是什麼使用情況。",
+          "old": "비율은 조사 대상과 보고한 이용 상황을 씁니다.",
+          "chars": 26,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rrvd",
+          "source": "它們回答不同問題，我把兩種指標拆開記。",
+          "old": "질문이 달라 두 지표를 따로 기록합니다.",
+          "chars": 22,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "ghds",
+          "source": "來源紀錄還留了兩種頁碼，它們負責不同的定位。",
+          "old": "출처 기록엔 다른 위치를 찾는 두 종류의 쪽수도 남깁니다.",
+          "chars": 32,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "pt7x",
+          "source": "印刷頁碼，是報告紙面上標的號碼。",
+          "old": "인쇄 쪽수는 보고서 지면의 번호입니다.",
+          "chars": 21,
+          "max_chars": 18,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "q2hz",
+          "source": "PDF頁序，則是這個檔案從第一頁開始數的位置。",
+          "old": "PDF 내 순서는 파일 첫 장부터 센 위치입니다.",
+          "chars": 27,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5s9a",
+          "source": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+          "old": "동료도 같은 파일의 순서로 원본 쪽을 찾습니다.",
+          "chars": 26,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "9c7v",
+          "source": "原頁上還有圖號，能繼續對到同頁的那張圖。",
+          "old": "원본 쪽의 그림 번호로 그 쪽의 도표를 찾습니다.",
+          "chars": 27,
+          "max_chars": 27,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hpdz",
+          "source": "把這些條件放進需求，怎樣避免只收到一段摘要？",
+          "old": "이 조건을 넣어 요약만 받는 일을 어떻게 피합니까?",
+          "chars": 28,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "g7uh",
+          "source": "我把這次需求整理成完整提示，你可以照這個格式改。",
+          "old": "전체 프롬프트로 정리했으니 이 형식을 바꿔 쓰십시오.",
+          "chars": 29,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2ai4",
+          "source": "請只用我提供的這份公開PDF，替一般同事做四頁簡報。",
+          "old": "제가 준 공개 PDF만 써 일반 동료용 4장을 만드십시오.",
+          "chars": 32,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "zny3",
+          "source": "簡報目標約三分鐘。",
+          "old": "목표는 약 3분입니다.",
+          "chars": 12,
+          "max_chars": 9,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "kh9k",
+          "source": "先給大綱，先不要生成投影片。",
+          "old": "개요부터 주고 아직 슬라이드는 생성하지 마십시오.",
+          "chars": 27,
+          "max_chars": 23,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "zibg",
+          "source": "每頁只回答一個問題，列出要用的數字、資料年、單位。",
+          "old": "장마다 한 질문에 답하고 수치, 데이터 연도, 단위를 쓰십시오.",
+          "chars": 35,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "uqnr",
+          "source": "列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。",
+          "old": "조사 모집단 또는 통계 범위, 인쇄 쪽수, PDF 내 순서를 쓰십시오.",
+          "chars": 39,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "r3y9",
+          "source": "把投資金額和使用比例分開。",
+          "old": "투자 금액과 이용 비율을 분리하십시오.",
+          "chars": 21,
+          "max_chars": 15,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "bd3z",
+          "source": "總額與其中一部分，不要相加。",
+          "old": "총액과 그 일부를 더하지 마십시오.",
+          "chars": 19,
+          "max_chars": 19,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "y3nk",
+          "source": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+          "old": "안 맞는 출처는 확인 필요로 두고 대신 수치를 고르지 마십시오.",
+          "chars": 35,
+          "max_chars": 25,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "7g33",
+          "source": "等我一次回覆全部修改後，再產出四頁簡報。",
+          "old": "제 모든 수정의 일괄 회신 후 4장을 만드십시오.",
+          "chars": 27,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "2knx",
+          "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+          "old": "편집 파일, PDF, 장별 인용 목록도 주십시오.",
+          "chars": 27,
+          "max_chars": 22,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": [
+            "ko-2knx-together"
+          ]
+        },
+        {
+          "id": "cht8",
+          "source": "未確認的數字只作註記，不畫成確定結論。",
+          "old": "미확인 수치는 주석만 달고 확정 결론으로 도표화하지 마십시오.",
+          "chars": 34,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "nm8j",
+          "source": "大綱如果漏了資料年份，要在哪裡補上？",
+          "old": "개요에 데이터 연도가 없으면 어디에 보충합니까?",
+          "chars": 26,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "9h68",
+          "source": "就在該頁的資料年欄，直接要求補上年份。",
+          "old": "그 장의 데이터 연도 칸에 연도 보충을 요청합니다.",
+          "chars": 28,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "fx3e",
+          "source": "有了完整需求，第一份大綱就一定合用嗎？",
+          "old": "요구가 완전하면 첫 개요는 늘 쓸 만합니까?",
+          "chars": 24,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "wy6f",
+          "source": "我設計的初稿範例，只有兩頁，還沒有排成投影片。",
+          "old": "제 초안 예시는 2쪽뿐이며 아직 슬라이드 배치 전입니다.",
+          "chars": 31,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "kwf8",
+          "source": "一頁叫AI投資和採用概況，另一頁叫整理成一張總覽圖。",
+          "old": "한 쪽은 ‘AI 투자와 도입 개요’, 다른 쪽은 ‘한 장의 종합 도표로 정리’입니다.",
+          "chars": 47,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "aces",
+          "source": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。",
+          "old": "두 쪽에 같은 금액, 지역, 이용 비율과 미확인 수치를 넣었습니다.",
+          "chars": 37,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "gy4m",
+          "source": "它列出了材料，卻沒有替每頁分配一個讀者問題。",
+          "old": "자료는 나열했지만 장마다 독자의 질문은 없습니다.",
+          "chars": 27,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "h58h",
+          "source": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+          "old": "제가 쓴 초안과 일괄 수정 요구를 예시 기록에 남겼습니다.",
+          "chars": 32,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "z84y",
+          "source": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。",
+          "old": "한 번의 로컬 실행에서 단계들을 저장했으며 제 회신을 기다리며 멈추지 않았습니다.",
+          "chars": 45,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "yrg5",
+          "source": "既然每頁沒有分工，要修改的到底是哪個決定？",
+          "old": "장별 역할이 없다면 어떤 결정을 고쳐야 합니까?",
+          "chars": 26,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j4eq",
+          "source": "開頭問材料怎麼分頁，我把每頁要回答的問題寫進修改。",
+          "old": "처음 물은 장 구분에 답해, 장별 질문을 수정안에 씁니다.",
+          "chars": 32,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kmts",
+          "source": "照需求分頁，把投資金額和使用比例分成不同的問題。",
+          "old": "요구대로 나누고 투자 금액과 이용 비율은 별개 질문으로 만듭니다.",
+          "chars": 36,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "vyp5",
+          "source": "全球企業投資及其中私人投資不可相加。",
+          "old": "세계 기업 투자와 그 안의 민간 투자를 더하면 안 됩니다.",
+          "chars": 32,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "jzkh",
+          "source": "國別頁只比較私人融資，別叫全國AI總支出。",
+          "old": "국가별로 민간 자금조달만 비교하며 국가 AI 총지출로 부르지 않습니다.",
+          "chars": 39,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "nx2z",
+          "source": "資料頁保留先前的資料年、單位、母體或範圍，以及兩種頁碼。",
+          "old": "데이터 장엔 기존 데이터 연도, 단위, 모집단 또는 범위와 두 종류의 쪽수를 유지합니다.",
+          "chars": 49,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "b7sd",
+          "source": "未對齊的生成式AI比例，保留為兩處來源註記。",
+          "old": "안 맞는 생성형 AI 비율은 두 출처 주석으로 남깁니다.",
+          "chars": 31,
+          "max_chars": 24,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": [
+            "ko-b7sd-two-locations"
+          ]
+        },
+        {
+          "id": "i8qv",
+          "source": "最後按剛才的交付清單，把成品和引用紀錄一起交齊。",
+          "old": "끝으로 앞서의 전달 목록대로 결과물과 인용 기록을 모두 줍니다.",
+          "chars": 35,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8k94",
+          "source": "集中修改要落到哪裡，才算真的改好了？",
+          "old": "일괄 수정은 어디에 반영돼야 제대로 고친 겁니까?",
+          "chars": 27,
+          "max_chars": 23,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "6frs",
+          "source": "第一頁把讀者的問題分成投入多少錢、多少人回報使用。",
+          "old": "1장은 투자 금액과 이용을 보고한 사람 수를 별개 질문으로 나눕니다.",
+          "chars": 38,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "esm2",
+          "source": "金額對應投資範圍，比例對應受訪者和組織。",
+          "old": "금액은 투자 범위에, 비율은 응답자와 조직에 대응합니다.",
+          "chars": 31,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "x5tu",
+          "source": "第二頁把全球金額，做成能看出包含關係的圖。",
+          "old": "2장은 세계 금액의 포함 관계를 도표로 보여 줍니다.",
+          "chars": 29,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "fpqu",
+          "source": "全球企業AI投資是五百八十一點六九，以十億美元計。",
+          "old": "세계 기업 AI 투자: 581.69, 단위는 10억 미국 달러입니다.",
+          "chars": 38,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "uyre",
+          "source": "其中私人AI投資，按相同單位是三百四十四點六六。",
+          "old": "그중 민간 AI 투자는 같은 단위로 344.66입니다.",
+          "chars": 30,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "8ddn",
+          "source": "開頭問能不能相加，這裡的關係是總額包含其中一部分。",
+          "old": "처음 물은 덧셈 문제는, 총액이 그 일부를 포함하는 관계입니다.",
+          "chars": 35,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "rzc3",
+          "source": "再加一次私人投資，就把已包含的部分重複算了。",
+          "old": "민간 투자를 다시 더하면 포함된 부분을 중복 계산합니다.",
+          "chars": 31,
+          "max_chars": 27,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "tjqp",
+          "source": "所以我在短的那條旁邊加上其中，頁面留下包含關係。",
+          "old": "짧은 막대 옆에 ‘그중’을 붙여 포함 관계를 남겼습니다.",
+          "chars": 31,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "zhzm",
+          "source": "那地區比較，能直接改叫各國AI總支出嗎？",
+          "old": "지역 비교를 각국의 AI 총지출로 바꿔 불러도 됩니까?",
+          "chars": 30,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "qa92",
+          "source": "第三頁沿用報告整理的Quid私人AI投資口徑。",
+          "old": "3장은 보고서의 Quid 민간 AI 투자 집계 범위를 따릅니다.",
+          "chars": 35,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "f6fw",
+          "source": "同為二〇二五年，以十億美元計，美國是二百八十五點八八。",
+          "old": "같은 2025년, 10억 미국 달러 단위로 미국은 285.88입니다.",
+          "chars": 38,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "hxni",
+          "source": "中國是十二點四一，統計範圍和單位相同。",
+          "old": "중국은 12.41이며 집계 범위와 단위는 같습니다.",
+          "chars": 28,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "frra",
+          "source": "這裡比較同一套私人融資統計，不是兩國全部公私支出。",
+          "old": "같은 민간 자금조달 통계이지 두 나라의 전체 민관 지출은 아닙니다.",
+          "chars": 37,
+          "max_chars": 38,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2bm9",
+          "source": "圖上兩條長度，對應的是同一年、同單位、同類投資。",
+          "old": "두 막대 길이는 같은 연도, 단위, 투자 유형을 나타냅니다.",
+          "chars": 33,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "a4ys",
+          "source": "第四頁換成使用情況，金額的美元單位就不能帶過來。",
+          "old": "4장은 이용 상황이므로 달러 단위를 가져올 수 없습니다.",
+          "chars": 31,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "9xhq",
+          "source": "這份調查中，百分之八十八的受訪者回報，",
+          "old": "이 조사에서 응답자 88%가 보고한 내용은,",
+          "chars": 24,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "iswb",
+          "source": "自己的組織至少有一項業務使用AI。",
+          "old": "자기 조직의 최소 한 업무에서 AI를 쓴다는 것입니다.",
+          "chars": 30,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": [
+            "ko-iswb-org-subject"
+          ]
+        },
+        {
+          "id": "dp4j",
+          "source": "這是受訪者自述，不能寫成全球所有公司的普查結果。",
+          "old": "응답자의 자가 보고이지 세계 모든 기업의 전수조사는 아닙니다.",
+          "chars": 34,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "gy6e",
+          "source": "生成式AI有一格未解，簡報要因此卡住嗎？",
+          "old": "생성형 AI의 한 항목이 미해결이면 발표를 멈춰야 합니까?",
+          "chars": 32,
+          "max_chars": 29,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "g84b",
+          "source": "摘要列百分之七十，描述組織在至少一項業務使用。",
+          "old": "요약의 70%는 조직이 최소 한 업무에서 쓴다는 내용입니다.",
+          "chars": 33,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "e9xt",
+          "source": "詳文列百分之七十九，描述受訪者回報組織經常使用。",
+          "old": "본문의 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다.",
+          "chars": 35,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "cwpj",
+          "source": "都指二〇二五年，問法和分母是否一致仍待確認。",
+          "old": "둘 다 2025년, 질문과 분모의 일치는 미확인입니다.",
+          "chars": 30,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "iek7",
+          "source": "不把這兩個值當成已確認的採用率，也不因此判定報告寫錯。",
+          "old": "둘 다 확인된 도입률로 쓰지 않고 보고서가 틀렸다고 단정하지도 않습니다.",
+          "chars": 40,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "aywh",
+          "source": "兩處留註記，其餘確認內容繼續交付。",
+          "old": "두 출처는 주석으로, 나머지 확인된 내용은 전달합니다.",
+          "chars": 30,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": [
+            "ko-aywh-two-locations"
+          ]
+        },
+        {
+          "id": "8arj",
+          "source": "引用紀錄把第二到第四頁接回原報告，第一頁則是作者問題總覽。",
+          "old": "인용은 2~4장을 원보고서와 연결하고 1장은 작성자의 질문 개요입니다.",
+          "chars": 39,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "5ytw",
+          "source": "開頭問怎麼追來源，拿到這份簡報後，要怎樣找回原圖？",
+          "old": "처음 물은 출처 추적입니다. 이 자료로 원본 도표를 어떻게 찾습니까?",
+          "chars": 38,
+          "max_chars": 39,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cuw5",
+          "source": "簡報第二頁對應印刷第一百七十八頁，PDF第八頁。",
+          "old": "2장: 인쇄 178쪽, PDF 8쪽입니다.",
+          "chars": 23,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "u7s7",
+          "source": "圖號是四點二點一，兩個金額都出自這張圖。",
+          "old": "그림 4.2.1이며, 두 금액은 모두 이 도표에서 나옵니다.",
+          "chars": 33,
+          "max_chars": 44,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "2622",
+          "source": "核對時先用PDF頁序到原頁，再看圖號、數值和單位。",
+          "old": "PDF 순서로 원본 쪽에 가서 그림 번호, 수치, 단위를 확인합니다.",
+          "chars": 38,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "a9g4",
+          "source": "你要引述給同事，也能把報告印刷頁碼一起留下。",
+          "old": "동료에게 인용할 때 인쇄 쪽수도 남길 수 있습니다.",
+          "chars": 28,
+          "max_chars": 25,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "thhi",
+          "source": "簡報第三頁對應印刷第一百八十二頁，PDF第十二頁。",
+          "old": "3장: 인쇄 182쪽, PDF 12쪽입니다.",
+          "chars": 24,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "z3rg",
+          "source": "這頁的來源標記，把同一張私人投資圖和兩個地區連在一起。",
+          "old": "출처 표시가 같은 민간 투자 도표와 두 지역을 연결합니다.",
+          "chars": 32,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "buwe",
+          "source": "簡報第四頁對應印刷第一百九十三頁，PDF第二十三頁。",
+          "old": "4장: 인쇄 193쪽, PDF 23쪽입니다.",
+          "chars": 24,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "m5bu",
+          "source": "待確認註記另連到摘要的印刷第一百七十三頁，PDF第三頁。",
+          "old": "확인 필요 주석은 요약의 인쇄 173쪽, PDF 3쪽에도 연결합니다.",
+          "chars": 38,
+          "max_chars": 42,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "j47b",
+          "source": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+          "old": "이 차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다.",
+          "chars": 34,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "uhev",
+          "source": "但同事要改字時，交一張排好的圖片就夠嗎？",
+          "old": "동료가 글자를 고치려면 완성된 이미지만 주면 됩니까?",
+          "chars": 29,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "mgin",
+          "source": "我把同一份內容，分成觀看用和修改用兩種交付。",
+          "old": "같은 내용을 보기용과 수정용, 두 종류로 전달합니다.",
+          "chars": 29,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "eeiu",
+          "source": "PDF是四張頁面圖片，能打開看版面，沒有可抽取的文字。",
+          "old": "PDF는 4장 이미지로, 배치는 보이지만 텍스트 추출은 안 됩니다.",
+          "chars": 37,
+          "max_chars": 35,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "hj8r",
+          "source": "開頭問能不能改字，這次也交付了PPTX可編輯檔。",
+          "old": "처음 물은 글자 수정에 답해, 편집 가능한 PPTX도 전달했습니다.",
+          "chars": 37,
+          "max_chars": 47,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "t5vz",
+          "source": "其中的文字和形狀分開保存，沒有嵌入頁面圖片。",
+          "old": "글자와 도형은 별개이며 페이지 이미지는 넣지 않았습니다.",
+          "chars": 31,
+          "max_chars": 27,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "xxcb",
+          "source": "像投資頁的單位，也留在原生文字方塊裡。",
+          "old": "투자 페이지 단위도 네이티브 텍스트 상자에 남깁니다.",
+          "chars": 29,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "aetd",
+          "source": "檔案已重新開啟檢查結構，尚未在PowerPoint裡原生渲染。",
+          "old": "다시 열어 구조를 확인했지만 PowerPoint에서 직접 렌더링하지 않았습니다.",
+          "chars": 44,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "du2s",
+          "source": "如果你要在那裡正式播放，先打開確認字型和換行。",
+          "old": "정식 발표 전 거기서 열어 글꼴과 줄바꿈을 확인합니다.",
+          "chars": 30,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "kjrf",
+          "source": "簡報、可編輯檔與逐頁來源，現在是一份能核對的交付包。",
+          "old": "발표 자료, 편집 파일, 장별 출처가 검증 가능한 전달 묶음입니다.",
+          "chars": 37,
+          "max_chars": 37,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yu7f",
+          "source": "那這份本地流程，和Google的新功能到底接在哪裡？",
+          "old": "이 로컬 흐름은 Google의 새 기능과 어디서 연결됩니까?",
+          "chars": 33,
+          "max_chars": 34,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "3eg2",
+          "source": "新聞裡的審稿位置，正是這份簡報決定每頁內容的地方。",
+          "old": "소식 속 검토 단계는 바로 이 자료의 장별 내용을 정하는 곳입니다.",
+          "chars": 37,
+          "max_chars": 33,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "vufg",
+          "source": "Gemini Notebook可以先選形式和風格，再開啟Review。",
+          "old": "Gemini Notebook의 형식·스타일을 고른 뒤 Review를 켭니다.",
+          "chars": 42,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "8ikq",
+          "source": "做簡報時審的是大綱，做影片時則是製作筆記。",
+          "old": "슬라이드는 개요를, 영상은 제작 노트를 검토합니다.",
+          "chars": 28,
+          "max_chars": 30,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "w72f",
+          "source": "把修改集中一次寫完，再按Proceed進入生成。",
+          "old": "수정을 일괄로 쓰고 Proceed를 눌러 생성합니다.",
+          "chars": 29,
+          "max_chars": 26,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "8u6s",
+          "source": "產品也保留直接生成的選擇，審查步驟不是強制。",
+          "old": "바로 생성할 수도 있으며, 검토는 필수가 아닙니다.",
+          "chars": 28,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p3j7",
+          "source": "按Proceed後，就不能繼續改這份大綱。",
+          "old": "Proceed 뒤엔 이 개요를 수정할 수 없습니다.",
+          "chars": 28,
+          "max_chars": 20,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "63mu",
+          "source": "因此像其中一部分、私人投資這些內容，值得在這時確認。",
+          "old": "따라서 포함된 일부나 민간 투자 범위는 이때 확인합니다.",
+          "chars": 31,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "k3y5",
+          "source": "這個選項，現在每個帳號都看得到嗎？",
+          "old": "지금 모든 계정에 이 선택지가 있습니까?",
+          "chars": 22,
+          "max_chars": 21,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "cgtw",
+          "source": "Workspace公告列十月十六日起分批推出，最長十五天。",
+          "old": "Workspace는 10월 16일부터 최대 15일간 순차 출시를 공지했습니다.",
+          "chars": 43,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "yw8i",
+          "source": "公告列多類帳號，說明頁卻把共同製作列為Ultra功能。",
+          "old": "공지는 여러 계정 유형을 들지만 도움말은 공동 제작을 Ultra 기능으로 적습니다.",
+          "chars": 46,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "qtzp",
+          "source": "我沒有帳號操作結果能對齊這個差異，不能保證免費可用。",
+          "old": "계정으로 이 차이를 확인하지 못해 무료 이용을 보장할 수 없습니다.",
+          "chars": 37,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "skdk",
+          "source": "你要用產品時，先確認自己的方案和審大綱選項。",
+          "old": "사용 전 자신의 요금제와 개요 검토 선택지를 확인합니다.",
+          "chars": 31,
+          "max_chars": 31,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "p2we",
+          "source": "確認自己帳號的審大綱選項後，用同一份需求改寫聽眾和篇幅。",
+          "old": "계정의 개요 검토를 확인한 뒤 이 요구의 대상과 분량을 바꿉니다.",
+          "chars": 36,
+          "max_chars": 36,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "cesj",
+          "source": "把其中的一般同事，改成你的實際聽眾。",
+          "old": "‘일반 동료’를 실제 청중으로 바꿉니다.",
+          "chars": 22,
+          "max_chars": 21,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "tkzk",
+          "source": "再把頁數和講述時間，改成你要交付的範圍。",
+          "old": "장수와 발표 시간도 필요한 전달 범위에 맞춰 바꿉니다.",
+          "chars": 30,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "teri",
+          "source": "讓大綱帶著問題與來源交回來，你就有具體內容可以修改。",
+          "old": "질문과 출처가 담긴 개요를 받으면 구체적 내용을 수정합니다.",
+          "chars": 33,
+          "max_chars": 32,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "8udr",
+          "source": "沿用這份需求，寫下你第一頁要回答的問題。",
+          "old": "이 요구로 첫 장에서 답할 질문을 적으십시오.",
+          "chars": 25,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        },
+        {
+          "id": "yf5s",
+          "source": "留言分享，你要把什麼做成簡報。",
+          "old": "발표로 만들 주제를 댓글로 남기십시오.",
+          "chars": 21,
+          "max_chars": 13,
+          "read_in_order": true,
+          "static_over": true,
+          "finding_keys": []
+        },
+        {
+          "id": "umdp",
+          "source": "訂閱，用真實成品讀懂AI工具。",
+          "old": "구독하고 실제 결과물로 AI 도구를 이해하십시오.",
+          "chars": 27,
+          "max_chars": 28,
+          "read_in_order": true,
+          "static_over": false,
+          "finding_keys": []
+        }
+      ],
+      "mandatory_candidate_sheet": "/workspace/work/ai-tech-next/fourth-independent-ko.mandatory-candidate.json",
+      "mandatory_candidate_sha256": "ae122acea04f88acd117fade4404fa84f514edfa96d190a66d44d85592083d48",
+      "mandatory_candidate_static_over_count": 61,
+      "candidate_nontext_fields_unchanged": true,
+      "description_source_urls_preserved": true,
+      "thumbnail_all_fields_emphasis_newline_preserved": true,
+      "budget_review": {
+        "original_over_count": 61,
+        "candidate_within_max_count": 28,
+        "candidate_still_over_count": 11,
+        "no_safe_within_candidate_count": 22
+      }
+    }
+  },
+  "original_static_over_entries": [
+    {
+      "locale": "en",
+      "id": "iswb",
+      "source": "自己的組織至少有一項業務使用AI。",
+      "old": "their organization uses AI in at least 1 function.",
+      "old_chars": 50,
+      "max_chars": 45,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "The full word organization, own-organization actor and at-least-one-function threshold should stay. I did not recommend org/1+ abbreviation merely to clear five static characters; actual measured audio may decide fit.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ja",
+      "id": "vufg",
+      "source": "Gemini Notebook可以先選形式和風格，再開啟Review。",
+      "old": "Gemini Notebookで形式・スタイルを選び、Reviewをオンにします。",
+      "old_chars": 41,
+      "max_chars": 36,
+      "mandatory": false,
+      "candidate": "Gemini Notebookで形式・スタイルを選びReviewを開きます。",
+      "candidate_chars": 38,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ja",
+      "id": "yf5s",
+      "source": "留言分享，你要把什麼做成簡報。",
+      "old": "スライド化したい題材をコメントしてください。",
+      "old_chars": 22,
+      "max_chars": 15,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "The existing sentence is natural polite Japanese. A 15-character fragment would lose explicit slides/intention/comment action or the polite request; no full natural polite candidate found within the cap.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "3vx9",
+      "source": "十月十九日，Gemini Notebook介紹生成前先審大綱。",
+      "old": "10월 19일, Gemini Notebook이 생성 전 개요 검토를 소개했습니다.",
+      "old_chars": 45,
+      "max_chars": 35,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "jyx8",
+      "source": "這份本地原創範例受Google公告啟發，沒有試用Notebook。",
+      "old": "Google 발표에서 착안한 독창적 로컬 예시로, Notebook은 미사용입니다.",
+      "old_chars": 45,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "sk7r",
+      "source": "輸入是Stanford AI指數報告的經濟章。",
+      "old": "입력은 Stanford AI Index의 경제 장입니다.",
+      "old_chars": 31,
+      "max_chars": 24,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "fskd",
+      "source": "我給它的任務，是讓一般同事讀懂AI投資和組織使用。",
+      "old": "일반 동료가 AI 투자와 조직의 AI 이용을 이해하도록 요구했습니다.",
+      "old_chars": 38,
+      "max_chars": 29,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "k3s9",
+      "source": "來源紀錄裡，報告年份和資料年份分成兩欄。",
+      "old": "출처 기록의 보고서 연도와 데이터 연도는 별도 칸입니다.",
+      "old_chars": 31,
+      "max_chars": 24,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "p9da",
+      "source": "否則一個新報告標題，就可能讓讀者把舊資料讀成新調查。",
+      "old": "아니면 새 보고서 제목으로 옛 데이터를 새 조사로 오해할 수 있습니다.",
+      "old_chars": 39,
+      "max_chars": 35,
+      "mandatory": false,
+      "candidate": "새 제목에 옛 데이터를 새 조사로 오해할 수도 있습니다.",
+      "candidate_chars": 31,
+      "kind": "optional static-budget candidate",
+      "reason": "Omits the repeated report noun only: the immediately preceding line explicitly identifies the report/data years. Retains new title, old data, new-survey misreading and possibility; no actual new survey is claimed.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "sxfi",
+      "source": "金額這邊要記地區、投資類型，還有美元單位。",
+      "old": "금액은 지역, 투자 유형, 미국 달러 단위를 씁니다.",
+      "old_chars": 29,
+      "max_chars": 26,
+      "mandatory": false,
+      "candidate": "금액엔 지역·투자 유형·USD 단위를 씁니다.",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "USD preserves US dollars exactly. All three fields remain region, investment type and currency unit; no scaling change.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "ghds",
+      "source": "來源紀錄還留了兩種頁碼，它們負責不同的定位。",
+      "old": "출처 기록엔 다른 위치를 찾는 두 종류의 쪽수도 남깁니다.",
+      "old_chars": 32,
+      "max_chars": 29,
+      "mandatory": false,
+      "candidate": "출처 기록엔 쓰임이 다른 두 쪽수도 남깁니다.",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "쓰임이 다른 conveys the distinct locating functions. 두 쪽수 refers to the already-explained printed and internal PDF numbering, not two different source pages.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "pt7x",
+      "source": "印刷頁碼，是報告紙面上標的號碼。",
+      "old": "인쇄 쪽수는 보고서 지면의 번호입니다.",
+      "old_chars": 21,
+      "max_chars": 18,
+      "mandatory": false,
+      "candidate": "인쇄 쪽수는 지면 번호입니다.",
+      "candidate_chars": 16,
+      "kind": "optional static-budget candidate",
+      "reason": "지면 번호 preserves printed-on-paper numbering in the same report context, distinct from internal PDF position.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "5s9a",
+      "source": "同事拿到同一份檔案，就能用頁序跳回原頁。",
+      "old": "동료도 같은 파일의 순서로 원본 쪽을 찾습니다.",
+      "old_chars": 26,
+      "max_chars": 20,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "2ai4",
+      "source": "請只用我提供的這份公開PDF，替一般同事做四頁簡報。",
+      "old": "제가 준 공개 PDF만 써 일반 동료용 4장을 만드십시오.",
+      "old_chars": 32,
+      "max_chars": 30,
+      "mandatory": false,
+      "candidate": "제가 준 공개 PDF만 써 동료용 4장을 만드십시오.",
+      "candidate_chars": 29,
+      "kind": "optional static-budget candidate",
+      "reason": "동료 is natural Korean for ordinary coworkers here, with no newly specialized audience. Only, supplied public PDF and four pages remain.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "zny3",
+      "source": "簡報目標約三分鐘。",
+      "old": "목표는 약 3분입니다.",
+      "old_chars": 12,
+      "max_chars": 9,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Do not remove goal merely to produce a shorter statement of measured duration. Around three minutes is a requirement, not an observed performance; current formal wording stays unresolved.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "kh9k",
+      "source": "先給大綱，先不要生成投影片。",
+      "old": "개요부터 주고 아직 슬라이드는 생성하지 마십시오.",
+      "old_chars": 27,
+      "max_chars": 23,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "zibg",
+      "source": "每頁只回答一個問題，列出要用的數字、資料年、單位。",
+      "old": "장마다 한 질문에 답하고 수치, 데이터 연도, 단위를 쓰십시오.",
+      "old_chars": 35,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "uqnr",
+      "source": "列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。",
+      "old": "조사 모집단 또는 통계 범위, 인쇄 쪽수, PDF 내 순서를 쓰십시오.",
+      "old_chars": 39,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "r3y9",
+      "source": "把投資金額和使用比例分開。",
+      "old": "투자 금액과 이용 비율을 분리하십시오.",
+      "old_chars": 21,
+      "max_chars": 15,
+      "mandatory": false,
+      "candidate": "투자액과 이용률을 분리하십시오.",
+      "candidate_chars": 17,
+      "kind": "optional static-budget candidate",
+      "reason": "투자액 and 이용률 are natural compact terms for investment amounts and usage rates. The imperative remains formal; do not replace separation with numerical division.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "y3nk",
+      "source": "來源若有未對齊處，列成待確認，不要替我挑一個數字。",
+      "old": "안 맞는 출처는 확인 필요로 두고 대신 수치를 고르지 마십시오.",
+      "old_chars": 35,
+      "max_chars": 25,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "7g33",
+      "source": "等我一次回覆全部修改後，再產出四頁簡報。",
+      "old": "제 모든 수정의 일괄 회신 후 4장을 만드십시오.",
+      "old_chars": 27,
+      "max_chars": 20,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "2knx",
+      "source": "同時交可編輯檔、PDF和逐頁引用清單。",
+      "old": "편집 파일, PDF, 장별 인용 목록도 주십시오.",
+      "old_chars": 27,
+      "max_chars": 22,
+      "mandatory": false,
+      "candidate": "편집 파일, PDF, 장별 인용 목록을 함께 주십시오.",
+      "candidate_chars": 30,
+      "kind": "optional clarification or naturalness candidate, not necessarily a shortening",
+      "reason": "All three outputs are already listed. 함께 makes the source's same delivery explicit; the result may exceed the unchanged static budget. 편집 파일 is common Korean for the editable working file in this handoff context, not a new claim of native playback testing.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "cht8",
+      "source": "未確認的數字只作註記，不畫成確定結論。",
+      "old": "미확인 수치는 주석만 달고 확정 결론으로 도표화하지 마십시오.",
+      "old_chars": 34,
+      "max_chars": 26,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "nm8j",
+      "source": "大綱如果漏了資料年份，要在哪裡補上？",
+      "old": "개요에 데이터 연도가 없으면 어디에 보충합니까?",
+      "old_chars": 26,
+      "max_chars": 24,
+      "mandatory": false,
+      "candidate": "개요에 데이터 연도가 없으면 어디에 넣습니까?",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "9h68",
+      "source": "就在該頁的資料年欄，直接要求補上年份。",
+      "old": "그 장의 데이터 연도 칸에 연도 보충을 요청합니다.",
+      "old_chars": 28,
+      "max_chars": 24,
+      "mandatory": false,
+      "candidate": "그 장의 데이터 연도 칸에 추가를 요청합니다.",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "The repeated year object is recoverable from the exact data-year field name. The specific slide and request to add remain.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "wy6f",
+      "source": "我設計的初稿範例，只有兩頁，還沒有排成投影片。",
+      "old": "제 초안 예시는 2쪽뿐이며 아직 슬라이드 배치 전입니다.",
+      "old_chars": 31,
+      "max_chars": 20,
+      "mandatory": false,
+      "candidate": "제 초안 예시는 2쪽이며 아직 슬라이드가 아닙니다.",
+      "candidate_chars": 28,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "kwf8",
+      "source": "一頁叫AI投資和採用概況，另一頁叫整理成一張總覽圖。",
+      "old": "한 쪽은 ‘AI 투자와 도입 개요’, 다른 쪽은 ‘한 장의 종합 도표로 정리’입니다.",
+      "old_chars": 47,
+      "max_chars": 37,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "aces",
+      "source": "兩頁都塞了同一組金額、地區、使用比例和待確認數字。",
+      "old": "두 쪽에 같은 금액, 지역, 이용 비율과 미확인 수치를 넣었습니다.",
+      "old_chars": 37,
+      "max_chars": 36,
+      "mandatory": false,
+      "candidate": "두 쪽에 같은 금액·지역·이용률·미확인 수치를 넣었습니다.",
+      "candidate_chars": 32,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "h58h",
+      "source": "我自己寫的初稿和整批修改要求，都留在範例紀錄裡。",
+      "old": "제가 쓴 초안과 일괄 수정 요구를 예시 기록에 남겼습니다.",
+      "old_chars": 32,
+      "max_chars": 30,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "z84y",
+      "source": "這些階段是一次產出時保存的，並沒有真的停下來等我回覆。",
+      "old": "한 번의 로컬 실행에서 단계들을 저장했으며 제 회신을 기다리며 멈추지 않았습니다.",
+      "old_chars": 45,
+      "max_chars": 35,
+      "mandatory": false,
+      "candidate": "한 번 실행해 저장했고 제 회신을 기다리지 않았습니다.",
+      "candidate_chars": 30,
+      "kind": "optional static-budget candidate",
+      "reason": "One execution, saved stages understood from preceding draft/feedback, no waiting for the narrator's reply. No real interactive pause or Notebook response is implied.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "kmts",
+      "source": "照需求分頁，把投資金額和使用比例分成不同的問題。",
+      "old": "요구대로 나누고 투자 금액과 이용 비율은 별개 질문으로 만듭니다.",
+      "old_chars": 36,
+      "max_chars": 31,
+      "mandatory": false,
+      "candidate": "요구대로 투자액과 이용률을 별개 질문으로 나눕니다.",
+      "candidate_chars": 28,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "jzkh",
+      "source": "國別頁只比較私人融資，別叫全國AI總支出。",
+      "old": "국가별로 민간 자금조달만 비교하며 국가 AI 총지출로 부르지 않습니다.",
+      "old_chars": 39,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": "국가별 민간 투자만 비교하며 AI 총지출은 아닙니다.",
+      "candidate_chars": 29,
+      "kind": "optional static-budget candidate",
+      "reason": "The preceding country topic scopes AI total spending to those countries. 민간 투자 is the private investment/funding scope actually used by the Quid comparison, not all finance-sector spending.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "nx2z",
+      "source": "資料頁保留先前的資料年、單位、母體或範圍，以及兩種頁碼。",
+      "old": "데이터 장엔 기존 데이터 연도, 단위, 모집단 또는 범위와 두 종류의 쪽수를 유지합니다.",
+      "old_chars": 49,
+      "max_chars": 39,
+      "mandatory": false,
+      "candidate": "데이터 장엔 데이터 연도·단위·모집단 또는 범위와 두 쪽수를 남깁니다.",
+      "candidate_chars": 39,
+      "kind": "optional static-budget candidate",
+      "reason": "All fields, the OR between population and scope, and both page-number systems remain. Existing source context supplies that both are the two types already defined.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "b7sd",
+      "source": "未對齊的生成式AI比例，保留為兩處來源註記。",
+      "old": "안 맞는 생성형 AI 비율은 두 출처 주석으로 남깁니다.",
+      "old_chars": 31,
+      "max_chars": 24,
+      "mandatory": false,
+      "candidate": "안 맞는 생성형 AI 비율은 두 곳의 출처 주석으로 남깁니다.",
+      "candidate_chars": 34,
+      "kind": "optional clarification or naturalness candidate, not necessarily a shortening",
+      "reason": "두 출처 can mean two reference locations and does not explicitly claim two independent studies; the surrounding citations point to one report. 두 곳의 출처 주석 makes the source's two locations clearer. Do not turn the two observations into independent corroborating studies. This longer clarification is not a static-fit solution.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "8k94",
+      "source": "集中修改要落到哪裡，才算真的改好了？",
+      "old": "일괄 수정은 어디에 반영돼야 제대로 고친 겁니까?",
+      "old_chars": 27,
+      "max_chars": 23,
+      "mandatory": false,
+      "candidate": "일괄 수정의 반영은 어디서 확인합니까?",
+      "candidate_chars": 21,
+      "kind": "optional static-budget candidate",
+      "reason": "Asks where to verify the actual application of the batch of changes, matching the next four-page inspection; does not claim it was independently tested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "6frs",
+      "source": "第一頁把讀者的問題分成投入多少錢、多少人回報使用。",
+      "old": "1장은 투자 금액과 이용을 보고한 사람 수를 별개 질문으로 나눕니다.",
+      "old_chars": 38,
+      "max_chars": 34,
+      "mandatory": false,
+      "candidate": "1장은 투자액과 이용을 보고한 사람 수를 따로 묻습니다.",
+      "candidate_chars": 31,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "fpqu",
+      "source": "全球企業AI投資是五百八十一點六九，以十億美元計。",
+      "old": "세계 기업 AI 투자: 581.69, 단위는 10억 미국 달러입니다.",
+      "old_chars": 38,
+      "max_chars": 37,
+      "mandatory": false,
+      "candidate": "세계 기업 AI 투자: 581.69, 단위는 10억 USD입니다.",
+      "candidate_chars": 36,
+      "kind": "optional static-budget candidate",
+      "reason": "581.69 remains in units of one billion US dollars: 10억 USD. This is the corporate total, not a unit conversion to 581.69 USD.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "rzc3",
+      "source": "再加一次私人投資，就把已包含的部分重複算了。",
+      "old": "민간 투자를 다시 더하면 포함된 부분을 중복 계산합니다.",
+      "old_chars": 31,
+      "max_chars": 27,
+      "mandatory": false,
+      "candidate": "민간 투자를 또 더하면 포함분이 중복됩니다.",
+      "candidate_chars": 24,
+      "kind": "optional static-budget candidate",
+      "reason": "포함분 is the included part; adding private investment again duplicates that already-included amount. No amount or negation is dropped.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "qa92",
+      "source": "第三頁沿用報告整理的Quid私人AI投資口徑。",
+      "old": "3장은 보고서의 Quid 민간 AI 투자 집계 범위를 따릅니다.",
+      "old_chars": 35,
+      "max_chars": 31,
+      "mandatory": false,
+      "candidate": "3장은 보고서의 Quid 민간 AI 투자 범위를 따릅니다.",
+      "candidate_chars": 32,
+      "kind": "optional static-budget candidate",
+      "reason": "범위 retains scope after the same report's Quid private-AI-investment category. Do not broaden to total national expenditure.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "9xhq",
+      "source": "這份調查中，百分之八十八的受訪者回報，",
+      "old": "이 조사에서 응답자 88%가 보고한 내용은,",
+      "old_chars": 24,
+      "max_chars": 20,
+      "mandatory": false,
+      "candidate": "이 조사 응답자 88%의 답은,",
+      "candidate_chars": 17,
+      "kind": "optional static-budget candidate",
+      "reason": "Answers/reports are survey self-reports; keeps the survey and 88%-respondent denominator in the first cue. The mandatory iswb candidate explicitly makes the organization the user in the second cue.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "iswb",
+      "source": "自己的組織至少有一項業務使用AI。",
+      "old": "자기 조직의 최소 한 업무에서 AI를 쓴다는 것입니다.",
+      "old_chars": 30,
+      "max_chars": 20,
+      "mandatory": true,
+      "candidate": "자기 조직이 최소 한 업무에서 AI를 쓴다는 것입니다.",
+      "candidate_chars": 30,
+      "kind": "mandatory semantic correction; existing budget remains open",
+      "reason": "의→이 makes the organization the explicit user in the clause after the 88%-respondents reporting introduction. The old wording can be heard as a respondent using AI within their organization. This changes one character and does not cut the threshold to solve the existing static overrun.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "dp4j",
+      "source": "這是受訪者自述，不能寫成全球所有公司的普查結果。",
+      "old": "응답자의 자가 보고이지 세계 모든 기업의 전수조사는 아닙니다.",
+      "old_chars": 34,
+      "max_chars": 31,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "unresolved; preserve explicit survey actor",
+      "reason": "Keep the respondent noun together with self-report and the worldwide all-company non-census limit. A shorter formulation omitting respondents could weaken exactly the actor distinction identified in the 88% passage, so that shortening is withdrawn.",
+      "status": "no safe natural within-budget candidate recommended; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "gy6e",
+      "source": "生成式AI有一格未解，簡報要因此卡住嗎？",
+      "old": "생성형 AI의 한 항목이 미해결이면 발표를 멈춰야 합니까?",
+      "old_chars": 32,
+      "max_chars": 29,
+      "mandatory": false,
+      "candidate": "생성형 AI 한 항목이 미해결이면 발표가 막힙니까?",
+      "candidate_chars": 28,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "e9xt",
+      "source": "詳文列百分之七十九，描述受訪者回報組織經常使用。",
+      "old": "본문의 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다.",
+      "old_chars": 35,
+      "max_chars": 34,
+      "mandatory": false,
+      "candidate": "본문 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다.",
+      "candidate_chars": 34,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "iek7",
+      "source": "不把這兩個值當成已確認的採用率，也不因此判定報告寫錯。",
+      "old": "둘 다 확인된 도입률로 쓰지 않고 보고서가 틀렸다고 단정하지도 않습니다.",
+      "old_chars": 40,
+      "max_chars": 36,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "aywh",
+      "source": "兩處留註記，其餘確認內容繼續交付。",
+      "old": "두 출처는 주석으로, 나머지 확인된 내용은 전달합니다.",
+      "old_chars": 30,
+      "max_chars": 26,
+      "mandatory": false,
+      "candidate": "두 곳은 주석으로, 나머지 확인된 내용은 전달합니다.",
+      "candidate_chars": 29,
+      "kind": "optional clarification or naturalness candidate, not necessarily a shortening",
+      "reason": "Use two places, matching the two passages in the same report; preserve the other confirmed content's continued delivery. No assertion about report error or a confirmed generative-AI rate is added.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "2622",
+      "source": "核對時先用PDF頁序到原頁，再看圖號、數值和單位。",
+      "old": "PDF 순서로 원본 쪽에 가서 그림 번호, 수치, 단위를 확인합니다.",
+      "old_chars": 38,
+      "max_chars": 34,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "a9g4",
+      "source": "你要引述給同事，也能把報告印刷頁碼一起留下。",
+      "old": "동료에게 인용할 때 인쇄 쪽수도 남길 수 있습니다.",
+      "old_chars": 28,
+      "max_chars": 25,
+      "mandatory": false,
+      "candidate": "동료에게 인용할 때 인쇄 쪽수도 남깁니다.",
+      "candidate_chars": 23,
+      "kind": "optional static-budget candidate",
+      "reason": "Makes the source's optional quoting step an instruction, as the surrounding how-to does. If preserving explicit can is preferred, retain the original and its static overrun.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "j47b",
+      "source": "這個差異只放在註記欄，不列入已採用的五項數值主張。",
+      "old": "이 차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다.",
+      "old_chars": 34,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": "차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다.",
+      "candidate_chars": 32,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "eeiu",
+      "source": "PDF是四張頁面圖片，能打開看版面，沒有可抽取的文字。",
+      "old": "PDF는 4장 이미지로, 배치는 보이지만 텍스트 추출은 안 됩니다.",
+      "old_chars": 37,
+      "max_chars": 35,
+      "mandatory": false,
+      "candidate": "PDF는 4장 이미지로 배치는 보이나 텍스트 추출은 안 됩니다.",
+      "candidate_chars": 35,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "t5vz",
+      "source": "其中的文字和形狀分開保存，沒有嵌入頁面圖片。",
+      "old": "글자와 도형은 별개이며 페이지 이미지는 넣지 않았습니다.",
+      "old_chars": 31,
+      "max_chars": 27,
+      "mandatory": false,
+      "candidate": "글자·도형은 따로, 페이지 이미지는 없습니다.",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "xxcb",
+      "source": "像投資頁的單位，也留在原生文字方塊裡。",
+      "old": "투자 페이지 단위도 네이티브 텍스트 상자에 남깁니다.",
+      "old_chars": 29,
+      "max_chars": 26,
+      "mandatory": false,
+      "candidate": "투자 페이지 단위도 네이티브 글상자에 둡니다.",
+      "candidate_chars": 25,
+      "kind": "optional static-budget candidate",
+      "reason": "글상자 is a Korean term for a text box. Native remains explicit, as does the investment-page unit; not a flattened page image or PowerPoint playback claim.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "aetd",
+      "source": "檔案已重新開啟檢查結構，尚未在PowerPoint裡原生渲染。",
+      "old": "다시 열어 구조를 확인했지만 PowerPoint에서 직접 렌더링하지 않았습니다.",
+      "old_chars": 44,
+      "max_chars": 34,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "3eg2",
+      "source": "新聞裡的審稿位置，正是這份簡報決定每頁內容的地方。",
+      "old": "소식 속 검토 단계는 바로 이 자료의 장별 내용을 정하는 곳입니다.",
+      "old_chars": 37,
+      "max_chars": 33,
+      "mandatory": false,
+      "candidate": "소식의 검토 단계는 이 자료의 장별 내용을 정하는 곳입니다.",
+      "candidate_chars": 33,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "vufg",
+      "source": "Gemini Notebook可以先選形式和風格，再開啟Review。",
+      "old": "Gemini Notebook의 형식·스타일을 고른 뒤 Review를 켭니다.",
+      "old_chars": 42,
+      "max_chars": 31,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "w72f",
+      "source": "把修改集中一次寫完，再按Proceed進入生成。",
+      "old": "수정을 일괄로 쓰고 Proceed를 눌러 생성합니다.",
+      "old_chars": 29,
+      "max_chars": 26,
+      "mandatory": false,
+      "candidate": "수정은 한 번에 쓰고 Proceed로 생성합니다.",
+      "candidate_chars": 27,
+      "kind": "optional static-budget candidate",
+      "reason": "One-batch written changes remain; Proceed로 is a compact reference to the same button action before generation. If explicit 눌러 is preferred, keep the original static exception.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "p3j7",
+      "source": "按Proceed後，就不能繼續改這份大綱。",
+      "old": "Proceed 뒤엔 이 개요를 수정할 수 없습니다.",
+      "old_chars": 28,
+      "max_chars": 20,
+      "mandatory": false,
+      "candidate": "Proceed 뒤 개요는 못 고칩니다",
+      "candidate_chars": 20,
+      "kind": "optional static-budget candidate",
+      "reason": "Formal 못 고칩니다 preserves inability to edit the same outline after Proceed. The terminal period is omitted only to meet the character budget; no word or condition is removed.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "k3y5",
+      "source": "這個選項，現在每個帳號都看得到嗎？",
+      "old": "지금 모든 계정에 이 선택지가 있습니까?",
+      "old_chars": 22,
+      "max_chars": 21,
+      "mandatory": false,
+      "candidate": "지금 모든 계정에 이 옵션이 있습니까?",
+      "candidate_chars": 21,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "cgtw",
+      "source": "Workspace公告列十月十六日起分批推出，最長十五天。",
+      "old": "Workspace는 10월 16일부터 최대 15일간 순차 출시를 공지했습니다.",
+      "old_chars": 43,
+      "max_chars": 36,
+      "mandatory": false,
+      "candidate": "Workspace는 10월 16일부터 최장 15일 순차 출시를 알렸습니다.",
+      "candidate_chars": 41,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate still over static max; unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "yw8i",
+      "source": "公告列多類帳號，說明頁卻把共同製作列為Ultra功能。",
+      "old": "공지는 여러 계정 유형을 들지만 도움말은 공동 제작을 Ultra 기능으로 적습니다.",
+      "old_chars": 46,
+      "max_chars": 36,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    },
+    {
+      "locale": "ko",
+      "id": "qtzp",
+      "source": "我沒有帳號操作結果能對齊這個差異，不能保證免費可用。",
+      "old": "계정으로 이 차이를 확인하지 못해 무료 이용을 보장할 수 없습니다.",
+      "old_chars": 37,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": "계정으로 차이를 못 확인해 무료 이용은 보장 못 합니다.",
+      "candidate_chars": 31,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "cesj",
+      "source": "把其中的一般同事，改成你的實際聽眾。",
+      "old": "‘일반 동료’를 실제 청중으로 바꿉니다.",
+      "old_chars": 22,
+      "max_chars": 21,
+      "mandatory": false,
+      "candidate": "일반 동료를 실제 청중으로 바꿉니다.",
+      "candidate_chars": 20,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "teri",
+      "source": "讓大綱帶著問題與來源交回來，你就有具體內容可以修改。",
+      "old": "질문과 출처가 담긴 개요를 받으면 구체적 내용을 수정합니다.",
+      "old_chars": 33,
+      "max_chars": 32,
+      "mandatory": false,
+      "candidate": "질문·출처가 담긴 개요를 받으면 구체적 내용을 수정합니다.",
+      "candidate_chars": 32,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "candidate within static max; actual fit untested"
+    },
+    {
+      "locale": "ko",
+      "id": "yf5s",
+      "source": "留言分享，你要把什麼做成簡報。",
+      "old": "발표로 만들 주제를 댓글로 남기십시오.",
+      "old_chars": 21,
+      "max_chars": 13,
+      "mandatory": false,
+      "candidate": null,
+      "candidate_chars": null,
+      "kind": "optional static-budget candidate",
+      "reason": "Natural optional shortening retains the source numbers, proper names, conditions and scope. It is only a text candidate; actual audio is untested.",
+      "status": "no safe natural within-budget candidate found; retain original unresolved"
+    }
+  ],
+  "native_static": {
+    "method": "Pure native mergeSheet/composeDescription/checkYoutubeFields only, against original and mandatory-only scratch candidate sheets; no formal i18n merge, no network, media or audio action.",
+    "timeline_total_frames": 18106,
+    "locales": {
+      "en": {
+        "original": {
+          "worksheet_sha256": "9b8200ef8f66d3604f7c1e5dca284a6e31643c89ea7e62ad23e332681540cf44",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 3585,
+          "youtube_problems": []
+        },
+        "mandatory_candidate": {
+          "worksheet_sha256": "377aeafc64963129f885301d81e19bcd5e8b82ca635874e8a1af4ec2da42b355",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 3592,
+          "youtube_problems": []
+        }
+      },
+      "ja": {
+        "original": {
+          "worksheet_sha256": "6279fe0bb0da8502f9672084e9ec17a0e86391fa72b5f7cf9911bc45be5f38c8",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 4036,
+          "youtube_problems": []
+        },
+        "mandatory_candidate": {
+          "worksheet_sha256": "8ba44b9077b8ead24bf30a1fd1c4a2e366ff185ce66980e8214c3db480ce9fc6",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 4048,
+          "youtube_problems": []
+        }
+      },
+      "ko": {
+        "original": {
+          "worksheet_sha256": "d9883f520e1e73ed2269d918e857138f70908d4f8310b12c67c2efff53995e51",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 4137,
+          "youtube_problems": []
+        },
+        "mandatory_candidate": {
+          "worksheet_sha256": "ae122acea04f88acd117fade4404fa84f514edfa96d190a66d44d85592083d48",
+          "merge_problems": [],
+          "merge_notes": [],
+          "line_count": 118,
+          "chapter_count": 6,
+          "description_composed_bytes": 4138,
+          "youtube_problems": []
+        }
+      }
+    }
+  },
+  "numeric_value_checks": [
+    {
+      "locale": "en",
+      "id": "3vx9",
+      "expected_values": [
+        "19"
+      ],
+      "actual_text": "On October 19, Gemini Notebook introduced outline review before generation.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "45g3",
+      "expected_values": [
+        "60"
+      ],
+      "actual_text": "This public PDF has 60 pages; the slides need only relevant data.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "immj",
+      "expected_values": [
+        "2026",
+        "2025"
+      ],
+      "actual_text": "The report is from 2026; the data used here are from 2025.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "2ai4",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "Use only this public PDF I give you: 4 slides for coworkers.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "zny3",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "Aim for about 3 min.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "7g33",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "After my full edit batch, make 4 slides.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "wy6f",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "I designed a 2-page draft, not slides yet.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "6frs",
+      "expected_values": [
+        "1"
+      ],
+      "actual_text": "Slide 1 separates how much is invested from how many people report use.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "x5tu",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "Slide 2 charts global amounts so the subset relationship is visible.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "fpqu",
+      "expected_values": [
+        "581.69"
+      ],
+      "actual_text": "Global corporate AI investment is 581.69, in billions of US dollars.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "uyre",
+      "expected_values": [
+        "344.66"
+      ],
+      "actual_text": "Private AI investment within it is 344.66 in the same unit.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "qa92",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "Slide 3 keeps the report's Quid scope for private AI investment.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "f6fw",
+      "expected_values": [
+        "2025",
+        "285.88"
+      ],
+      "actual_text": "Also for 2025, in billions of US dollars, the US is 285.88.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "hxni",
+      "expected_values": [
+        "12.41"
+      ],
+      "actual_text": "China is 12.41, with the same scope and unit.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "a4ys",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "Slide 4 switches to usage; the dollar unit cannot carry over.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "9xhq",
+      "expected_values": [
+        "88"
+      ],
+      "actual_text": "In this survey, 88% of respondents report",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "g84b",
+      "expected_values": [
+        "70"
+      ],
+      "actual_text": "The summary gives 70%: organizations using it in at least one function.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "e9xt",
+      "expected_values": [
+        "79"
+      ],
+      "actual_text": "The body gives 79%: respondents reporting regular use in their organizations.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "cwpj",
+      "expected_values": [
+        "2025"
+      ],
+      "actual_text": "Both are 2025; question and denominator alignment is unconfirmed.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "8arj",
+      "expected_values": [
+        "2",
+        "4",
+        "1"
+      ],
+      "actual_text": "Citations trace slides 2–4 to the report; slide 1 is the author's question overview.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "cuw5",
+      "expected_values": [
+        "2",
+        "178",
+        "8"
+      ],
+      "actual_text": "Slide 2 maps to printed page 178, PDF page 8.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "u7s7",
+      "expected_values": [
+        "4.2.1"
+      ],
+      "actual_text": "It is figure 4.2.1; both amounts come from that chart.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "thhi",
+      "expected_values": [
+        "3",
+        "182",
+        "12"
+      ],
+      "actual_text": "Slide 3 maps to printed page 182, PDF page 12.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "buwe",
+      "expected_values": [
+        "4",
+        "193",
+        "23"
+      ],
+      "actual_text": "Slide 4 maps to printed page 193, PDF page 23.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "m5bu",
+      "expected_values": [
+        "173",
+        "3"
+      ],
+      "actual_text": "The unresolved note also links to the summary: printed page 173, PDF page 3.",
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "id": "cgtw",
+      "expected_values": [
+        "16",
+        "15"
+      ],
+      "actual_text": "Workspace lists a phased rollout from October 16, taking up to 15 days.",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "3vx9",
+      "expected_values": [
+        "19"
+      ],
+      "actual_text": "10月19日、Gemini Notebookが生成前の構成確認を紹介しました。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "45g3",
+      "expected_values": [
+        "60"
+      ],
+      "actual_text": "公開PDFは60ページあり、スライドに必要なのは関連データだけです。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "immj",
+      "expected_values": [
+        "2026",
+        "2025"
+      ],
+      "actual_text": "報告書は2026年、今回使うデータは2025年です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "2ai4",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "この公開PDFだけを使い、一般の同僚向けに4枚を作ってください。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "zny3",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "目標は約3分です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "7g33",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "私の全修正の一括返信後、4枚を生成してください。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "wy6f",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "私の初稿例は2ページだけで、スライド化前です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "6frs",
+      "expected_values": [
+        "1"
+      ],
+      "actual_text": "1枚目で、投資額と利用を申告した人数を別々の問いにします。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "x5tu",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "2枚目は世界の金額を、包含関係が分かる図にしました。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "fpqu",
+      "expected_values": [
+        "581.69"
+      ],
+      "actual_text": "世界の企業AI投資は581.69、単位は10億米ドルです。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "uyre",
+      "expected_values": [
+        "344.66"
+      ],
+      "actual_text": "そのうち民間AI投資は、同じ単位で344.66です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "qa92",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "3枚目は報告書のQuid民間AI投資の集計範囲を引き継ぎます。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "f6fw",
+      "expected_values": [
+        "2025",
+        "285.88"
+      ],
+      "actual_text": "同じ2025年、10億米ドル単位で、米国は285.88です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "hxni",
+      "expected_values": [
+        "12.41"
+      ],
+      "actual_text": "中国は12.41で、集計範囲と単位は同じです。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "a4ys",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "4枚目は利用状況に替わり、米ドルの単位は引き継げません。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "9xhq",
+      "expected_values": [
+        "88"
+      ],
+      "actual_text": "この調査では、回答者の88%が、",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "g84b",
+      "expected_values": [
+        "70"
+      ],
+      "actual_text": "要約は70%とし、組織が少なくとも1業務で使うと記しています。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "e9xt",
+      "expected_values": [
+        "79"
+      ],
+      "actual_text": "本文は79%で、回答者が組織で日常的に使うと申告しています。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "cwpj",
+      "expected_values": [
+        "2025"
+      ],
+      "actual_text": "どちらも2025年ですが、質問と分母が同じかは要確認です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "8arj",
+      "expected_values": [
+        "2",
+        "4",
+        "1"
+      ],
+      "actual_text": "出典記録は2〜4枚目を元の報告書につなぎ、1枚目は作者の問いの概要です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "cuw5",
+      "expected_values": [
+        "2",
+        "178",
+        "8"
+      ],
+      "actual_text": "2枚目は印刷178ページ、PDFの8ページ目に対応します。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "u7s7",
+      "expected_values": [
+        "4.2.1"
+      ],
+      "actual_text": "図番号は4.2.1で、2つの金額ともこの図が出典です。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "thhi",
+      "expected_values": [
+        "3",
+        "182",
+        "12"
+      ],
+      "actual_text": "3枚目は印刷182ページ、PDFの12ページ目に対応します。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "buwe",
+      "expected_values": [
+        "4",
+        "193",
+        "23"
+      ],
+      "actual_text": "4枚目は印刷193ページ、PDFの23ページ目に対応します。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "m5bu",
+      "expected_values": [
+        "173",
+        "3"
+      ],
+      "actual_text": "要確認の注記は、要約の印刷173ページ、PDFの3ページ目にもつなぎます。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "j47b",
+      "expected_values": [
+        "5"
+      ],
+      "actual_text": "この差異は注記だけに置き、採用した5つの数値主張には含めません。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "eeiu",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "PDFは4枚のページ画像で、レイアウトは見られますが文字は抽出できません。",
+      "passed": true
+    },
+    {
+      "locale": "ja",
+      "id": "cgtw",
+      "expected_values": [
+        "16",
+        "15"
+      ],
+      "actual_text": "Workspaceの発表では、10月16日から最長15日で段階的に提供します。",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "3vx9",
+      "expected_values": [
+        "19"
+      ],
+      "actual_text": "10월 19일, Gemini Notebook이 생성 전 개요 검토를 소개했습니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "45g3",
+      "expected_values": [
+        "60"
+      ],
+      "actual_text": "공개 PDF는 60쪽이며 발표에는 관련 데이터만 필요합니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "immj",
+      "expected_values": [
+        "2026",
+        "2025"
+      ],
+      "actual_text": "보고서는 2026년, 쓴 데이터는 2025년입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "2ai4",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "제가 준 공개 PDF만 써 일반 동료용 4장을 만드십시오.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "zny3",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "목표는 약 3분입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "7g33",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "제 모든 수정의 일괄 회신 후 4장을 만드십시오.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "wy6f",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "제 초안 예시는 2쪽뿐이며 아직 슬라이드 배치 전입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "6frs",
+      "expected_values": [
+        "1"
+      ],
+      "actual_text": "1장은 투자 금액과 이용을 보고한 사람 수를 별개 질문으로 나눕니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "x5tu",
+      "expected_values": [
+        "2"
+      ],
+      "actual_text": "2장은 세계 금액의 포함 관계를 도표로 보여 줍니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "fpqu",
+      "expected_values": [
+        "581.69"
+      ],
+      "actual_text": "세계 기업 AI 투자: 581.69, 단위는 10억 미국 달러입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "uyre",
+      "expected_values": [
+        "344.66"
+      ],
+      "actual_text": "그중 민간 AI 투자는 같은 단위로 344.66입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "qa92",
+      "expected_values": [
+        "3"
+      ],
+      "actual_text": "3장은 보고서의 Quid 민간 AI 투자 집계 범위를 따릅니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "f6fw",
+      "expected_values": [
+        "2025",
+        "285.88"
+      ],
+      "actual_text": "같은 2025년, 10억 미국 달러 단위로 미국은 285.88입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "hxni",
+      "expected_values": [
+        "12.41"
+      ],
+      "actual_text": "중국은 12.41이며 집계 범위와 단위는 같습니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "a4ys",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "4장은 이용 상황이므로 달러 단위를 가져올 수 없습니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "9xhq",
+      "expected_values": [
+        "88"
+      ],
+      "actual_text": "이 조사에서 응답자 88%가 보고한 내용은,",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "g84b",
+      "expected_values": [
+        "70"
+      ],
+      "actual_text": "요약의 70%는 조직이 최소 한 업무에서 쓴다는 내용입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "e9xt",
+      "expected_values": [
+        "79"
+      ],
+      "actual_text": "본문의 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "cwpj",
+      "expected_values": [
+        "2025"
+      ],
+      "actual_text": "둘 다 2025년, 질문과 분모의 일치는 미확인입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "8arj",
+      "expected_values": [
+        "2",
+        "4",
+        "1"
+      ],
+      "actual_text": "인용은 2~4장을 원보고서와 연결하고 1장은 작성자의 질문 개요입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "cuw5",
+      "expected_values": [
+        "2",
+        "178",
+        "8"
+      ],
+      "actual_text": "2장: 인쇄 178쪽, PDF 8쪽입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "u7s7",
+      "expected_values": [
+        "4.2.1"
+      ],
+      "actual_text": "그림 4.2.1이며, 두 금액은 모두 이 도표에서 나옵니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "thhi",
+      "expected_values": [
+        "3",
+        "182",
+        "12"
+      ],
+      "actual_text": "3장: 인쇄 182쪽, PDF 12쪽입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "buwe",
+      "expected_values": [
+        "4",
+        "193",
+        "23"
+      ],
+      "actual_text": "4장: 인쇄 193쪽, PDF 23쪽입니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "m5bu",
+      "expected_values": [
+        "173",
+        "3"
+      ],
+      "actual_text": "확인 필요 주석은 요약의 인쇄 173쪽, PDF 3쪽에도 연결합니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "j47b",
+      "expected_values": [
+        "5"
+      ],
+      "actual_text": "이 차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "eeiu",
+      "expected_values": [
+        "4"
+      ],
+      "actual_text": "PDF는 4장 이미지로, 배치는 보이지만 텍스트 추출은 안 됩니다.",
+      "passed": true
+    },
+    {
+      "locale": "ko",
+      "id": "cgtw",
+      "expected_values": [
+        "16",
+        "15"
+      ],
+      "actual_text": "Workspace는 10월 16일부터 최대 15일간 순차 출시를 공지했습니다.",
+      "passed": true
+    }
+  ],
+  "numeric_check_note": "Exact Arabic values checked where the translations use digits; EN five/four checked as words for adopted numerical claims/PDF image pages. Dates, at-least-one thresholds, currency scaling, private/corporate scopes, denial clauses and all proper names additionally read manually. This is a text check, not native audio adjudication."
+}

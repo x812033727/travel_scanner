@@ -1,0 +1,515 @@
+{
+  "title": "AI 슬라이드는 개요부터 검토: 공개 PDF를 출처 있는 4장으로",
+  "description": "공개 PDF로 4장짜리 발표 자료를 만들기 전에, 개요에서 무엇을 정해야 합니까?\n수정할 수 있고 출처도 확인할 수 있는 자료를 전달해야 하는 일반 직장인을 위한 영상입니다.\n\n2026-10-25에 완성한 독창적인 로컬 예시입니다. 작성자의 요구사항, 2장짜리 초안, 일괄 수정 요구와 개정 단계를 한 번의 생성에서 저장했습니다. Notebook의 제품 응답이나 실제 상호작용 중 검토를 기다리며 멈춘 기록이 아닙니다. 2026-10-19 공식 소식은 작업 흐름의 배경이며, 제품에 로그인하거나 직접 시험하지 않았습니다.\n\n데이터는 Stanford 2026 AI Index 경제 장의 2025년 통계입니다. 금액은 Quid의 투자 집계 범위를 따릅니다. 기업 투자 총액에 민간 투자 부분집합이 포함되므로 둘을 더하지 않습니다. 지역 비교는 민간 AI 투자에 한정합니다. 88%는 응답자 중 자기 조직이 최소 한 업무에서 AI를 사용한다고 자가 보고한 비율입니다. 70%와 79%의 질문과 분모가 일치하는지는 미해결이며 주석에만 남깁니다.\n\n인용 목록에서 1장은 작성자가 정리한 질문의 개요이고, 2~4장은 원본 보고서의 위치를 표시합니다.\n\n전달하는 PDF는 페이지 이미지로 구성됩니다. PPTX에는 네이티브 텍스트와 도형을 유지했습니다. 다시 열어 구조를 확인했지만 PowerPoint에서 직접 렌더링하지는 않았습니다.\n\n재사용할 수 있는 전체 프롬프트:\n제가 제공한 이 공개 PDF만 사용해 일반 동료를 위한 4장짜리 발표 자료를 만드십시오. 목표는 약 3분입니다. 먼저 개요를 주고, 아직 슬라이드를 생성하지 마십시오.\n각 장은 하나의 질문에만 답하고, 사용할 수치, 데이터 연도, 단위를 적으십시오. 조사 모집단 또는 통계 범위, 보고서의 인쇄 페이지 번호와 PDF 내 페이지 순서도 적으십시오. 투자 금액과 이용 비율을 분리하고, 총액과 그 안의 일부를 더하지 마십시오.\n출처가 맞지 않는 부분은 확인 필요로 남기고, 대신 수치를 고르지 마십시오. 제가 모든 수정사항을 한 번에 회신할 때까지 기다린 뒤 4장을 생성하십시오. 편집 가능한 파일, PDF와 장별 인용 목록도 함께 전달하십시오. 미확인 수치는 주석에만 두고, 확정된 결론으로 도표에 그리지 마십시오.\n\n4장 PDF / 편집 가능한 PPTX / 장별 인용 및 작성자 요구사항 자료:\nhttps://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data",
+  "tags": [
+    "AI 프레젠테이션",
+    "Gemini Notebook",
+    "개요 검토",
+    "PDF 슬라이드 변환",
+    "편집 가능한 PPTX",
+    "Stanford AI Index",
+    "슬라이드 출처",
+    "AI 도구"
+  ],
+  "thumbnail": {
+    "tag": "AI 슬라이드 개요",
+    "headline": "**먼저 검토**\n다음 제작",
+    "sub": "개요에서 편집 가능한 결과물로"
+  },
+  "chapters": {
+    "four-page-local-output": "공개 보고서로 발표 요구사항 작성",
+    "local-authored-scope": "출처 기록에서 금액과 이용 비율 분리",
+    "reusable-full-prompt": "요구사항은 갖췄지만 초안은 2장",
+    "change-page-question": "일괄 수정으로 4장의 역할 확정",
+    "citation-record-connects-pages": "2~4장을 원본 보고서와 연결",
+    "review-position-connection": "Google의 생성 전 개요 검토 발표"
+  },
+  "source_hashes": {
+    "chapters": {
+      "four-page-local-output": "51b700404134",
+      "local-authored-scope": "2f037e384517",
+      "reusable-full-prompt": "21247e14419c",
+      "change-page-question": "e51fbabb1e17",
+      "citation-record-connects-pages": "3ffbd57a7b4f",
+      "review-position-connection": "360e6cc6c21f"
+    },
+    "title": "b709596fa404",
+    "description": "cdd89bf774a8",
+    "tags": "724e8e4b7864",
+    "thumbnail": "487d403f652f"
+  },
+  "lines": {
+    "2622": {
+      "source_hash": "d8cc05f5bd45",
+      "text": "PDF 순서로 원본 쪽에 가서 그림 번호, 수치, 단위를 확인합니다."
+    },
+    "tirg": {
+      "source_hash": "a525e97bd4be",
+      "text": "2026년 10월 25일 보고서를 열고 발표 요구를 썼습니다."
+    },
+    "iihc": {
+      "source_hash": "d48a51ddb1fd",
+      "text": "두 투자 금액을 그대로 더해도 됩니까?"
+    },
+    "dgy5": {
+      "source_hash": "192758eb9527",
+      "text": "각 장이 역할을 하도록 개요 내용을 어떻게 나눕니까?"
+    },
+    "dfj8": {
+      "source_hash": "14f59336a3a4",
+      "text": "전달 후에도 글자 수정과 출처 추적이 됩니까?"
+    },
+    "3vx9": {
+      "source_hash": "ebeb1c83c4ad",
+      "text": "10월 19일, Gemini Notebook이 생성 전 개요 검토를 소개했습니다."
+    },
+    "7ya8": {
+      "source_hash": "d3273886b7af",
+      "text": "더할 수 있는지 보려고 출처 기록에 투자 범위부터 씁니다."
+    },
+    "jyx8": {
+      "source_hash": "d9f95f2462d3",
+      "text": "Google 발표에서 착안한 독창적 로컬 예시로, Notebook은 미사용입니다."
+    },
+    "sk7r": {
+      "source_hash": "b983d45cd5ee",
+      "text": "입력은 Stanford AI Index의 경제 장입니다."
+    },
+    "45g3": {
+      "source_hash": "5913d5dd4ff9",
+      "text": "공개 PDF는 60쪽이며 발표에는 관련 데이터만 필요합니다."
+    },
+    "fskd": {
+      "source_hash": "b22cb01cd908",
+      "text": "일반 동료가 AI 투자와 조직의 AI 이용을 이해하도록 요구했습니다."
+    },
+    "vvp9": {
+      "source_hash": "ea32ebdf79df",
+      "text": "대상과 용도를 먼저 써야 남길 내용을 정합니다."
+    },
+    "k3s9": {
+      "source_hash": "971077fedfef",
+      "text": "출처 기록의 보고서 연도와 데이터 연도는 별도 칸입니다."
+    },
+    "immj": {
+      "source_hash": "1c42f7f91f82",
+      "text": "보고서는 2026년, 쓴 데이터는 2025년입니다."
+    },
+    "p9da": {
+      "source_hash": "7c96629fb0cf",
+      "text": "아니면 새 보고서 제목으로 옛 데이터를 새 조사로 오해할 수 있습니다."
+    },
+    "8gv2": {
+      "source_hash": "bc1c315be28b",
+      "text": "같은 AI라도 투자 금액과 이용 비율을 한 도표에 넣어도 됩니까?"
+    },
+    "sxfi": {
+      "source_hash": "3dba5513987e",
+      "text": "금액은 지역, 투자 유형, 미국 달러 단위를 씁니다."
+    },
+    "b4kb": {
+      "source_hash": "491281adb7b3",
+      "text": "비율은 조사 대상과 보고한 이용 상황을 씁니다."
+    },
+    "rrvd": {
+      "source_hash": "1d67c66b92bb",
+      "text": "질문이 달라 두 지표를 따로 기록합니다."
+    },
+    "ghds": {
+      "source_hash": "2ee258b8dfcf",
+      "text": "출처 기록엔 다른 위치를 찾는 두 종류의 쪽수도 남깁니다."
+    },
+    "pt7x": {
+      "source_hash": "3063293a5842",
+      "text": "인쇄 쪽수는 보고서 지면의 번호입니다."
+    },
+    "q2hz": {
+      "source_hash": "f4079d8b0691",
+      "text": "PDF 내 순서는 파일 첫 장부터 센 위치입니다."
+    },
+    "5s9a": {
+      "source_hash": "c22bef5f9dc4",
+      "text": "동료도 같은 파일의 순서로 원본 쪽을 찾습니다."
+    },
+    "9c7v": {
+      "source_hash": "df2bd0f34193",
+      "text": "원본 쪽의 그림 번호로 그 쪽의 도표를 찾습니다."
+    },
+    "hpdz": {
+      "source_hash": "1506c94e198b",
+      "text": "이 조건을 넣어 요약만 받는 일을 어떻게 피합니까?"
+    },
+    "g7uh": {
+      "source_hash": "8d9332880cfa",
+      "text": "전체 프롬프트로 정리했으니 이 형식을 바꿔 쓰십시오."
+    },
+    "2ai4": {
+      "source_hash": "bc35fb6487db",
+      "text": "제가 준 공개 PDF만 써 일반 동료용 4장을 만드십시오."
+    },
+    "zny3": {
+      "source_hash": "1c6b42d399cd",
+      "text": "목표는 약 3분입니다."
+    },
+    "kh9k": {
+      "source_hash": "8dc4ac5ef8e9",
+      "text": "개요부터 주고 아직 슬라이드는 생성하지 마십시오."
+    },
+    "zibg": {
+      "source_hash": "bf506d554fa0",
+      "text": "장마다 한 질문에 답하고 수치, 데이터 연도, 단위를 쓰십시오."
+    },
+    "uqnr": {
+      "source_hash": "11e9cae44fbf",
+      "text": "조사 모집단 또는 통계 범위, 인쇄 쪽수, PDF 내 순서를 쓰십시오."
+    },
+    "r3y9": {
+      "source_hash": "9fd4f6ef7fd2",
+      "text": "투자 금액과 이용 비율을 분리하십시오."
+    },
+    "bd3z": {
+      "source_hash": "880f33fb3976",
+      "text": "총액과 그 일부를 더하지 마십시오."
+    },
+    "y3nk": {
+      "source_hash": "1fe11e369d41",
+      "text": "안 맞는 출처는 확인 필요로 두고 대신 수치를 고르지 마십시오."
+    },
+    "7g33": {
+      "source_hash": "29b4af0ab4eb",
+      "text": "제 모든 수정의 일괄 회신 후 4장을 만드십시오."
+    },
+    "2knx": {
+      "source_hash": "48962be73c55",
+      "text": "편집 파일, PDF, 장별 인용 목록도 주십시오."
+    },
+    "cht8": {
+      "source_hash": "022d8dda43e4",
+      "text": "미확인 수치는 주석만 달고 확정 결론으로 도표화하지 마십시오."
+    },
+    "nm8j": {
+      "source_hash": "be3b79d1219f",
+      "text": "개요에 데이터 연도가 없으면 어디에 보충합니까?"
+    },
+    "9h68": {
+      "source_hash": "31540993d989",
+      "text": "그 장의 데이터 연도 칸에 연도 보충을 요청합니다."
+    },
+    "fx3e": {
+      "source_hash": "0e127639bc0e",
+      "text": "요구가 완전하면 첫 개요는 늘 쓸 만합니까?"
+    },
+    "wy6f": {
+      "source_hash": "3c2fecc68920",
+      "text": "제 초안 예시는 2쪽뿐이며 아직 슬라이드 배치 전입니다."
+    },
+    "kwf8": {
+      "source_hash": "89d7d654529c",
+      "text": "한 쪽은 ‘AI 투자와 도입 개요’, 다른 쪽은 ‘한 장의 종합 도표로 정리’입니다."
+    },
+    "aces": {
+      "source_hash": "675f0f8efbb5",
+      "text": "두 쪽에 같은 금액, 지역, 이용 비율과 미확인 수치를 넣었습니다."
+    },
+    "gy4m": {
+      "source_hash": "4ab993e594db",
+      "text": "자료는 나열했지만 장마다 독자의 질문은 없습니다."
+    },
+    "h58h": {
+      "source_hash": "d4596e33c2bc",
+      "text": "제가 쓴 초안과 일괄 수정 요구를 예시 기록에 남겼습니다."
+    },
+    "z84y": {
+      "source_hash": "7dde88f5606d",
+      "text": "한 번의 로컬 실행에서 단계들을 저장했으며 제 회신을 기다리며 멈추지 않았습니다."
+    },
+    "yrg5": {
+      "source_hash": "1bcc0c0096d6",
+      "text": "장별 역할이 없다면 어떤 결정을 고쳐야 합니까?"
+    },
+    "j4eq": {
+      "source_hash": "669bbb09ff50",
+      "text": "처음 물은 장 구분에 답해, 장별 질문을 수정안에 씁니다."
+    },
+    "kmts": {
+      "source_hash": "c40d11281804",
+      "text": "요구대로 나누고 투자 금액과 이용 비율은 별개 질문으로 만듭니다."
+    },
+    "vyp5": {
+      "source_hash": "b94671358dd6",
+      "text": "세계 기업 투자와 그 안의 민간 투자를 더하면 안 됩니다."
+    },
+    "jzkh": {
+      "source_hash": "f9abbb484b34",
+      "text": "국가별로 민간 자금조달만 비교하며 국가 AI 총지출로 부르지 않습니다."
+    },
+    "nx2z": {
+      "source_hash": "88016cc8991d",
+      "text": "데이터 장엔 기존 데이터 연도, 단위, 모집단 또는 범위와 두 종류의 쪽수를 유지합니다."
+    },
+    "b7sd": {
+      "source_hash": "cd8d2c0169f9",
+      "text": "안 맞는 생성형 AI 비율은 두 출처 주석으로 남깁니다."
+    },
+    "i8qv": {
+      "source_hash": "98e105f49094",
+      "text": "끝으로 앞서의 전달 목록대로 결과물과 인용 기록을 모두 줍니다."
+    },
+    "8k94": {
+      "source_hash": "760af974b5da",
+      "text": "일괄 수정은 어디에 반영돼야 제대로 고친 겁니까?"
+    },
+    "6frs": {
+      "source_hash": "5c70d14d1159",
+      "text": "1장은 투자 금액과 이용을 보고한 사람 수를 별개 질문으로 나눕니다."
+    },
+    "esm2": {
+      "source_hash": "a78b1f92f767",
+      "text": "금액은 투자 범위에, 비율은 응답자와 조직에 대응합니다."
+    },
+    "x5tu": {
+      "source_hash": "61074802a302",
+      "text": "2장은 세계 금액의 포함 관계를 도표로 보여 줍니다."
+    },
+    "fpqu": {
+      "source_hash": "d35b50d6bb65",
+      "text": "세계 기업 AI 투자: 581.69, 단위는 10억 미국 달러입니다."
+    },
+    "uyre": {
+      "source_hash": "e504c1d1bee5",
+      "text": "그중 민간 AI 투자는 같은 단위로 344.66입니다."
+    },
+    "8ddn": {
+      "source_hash": "1d295d4be676",
+      "text": "처음 물은 덧셈 문제는, 총액이 그 일부를 포함하는 관계입니다."
+    },
+    "rzc3": {
+      "source_hash": "3cf95628769b",
+      "text": "민간 투자를 다시 더하면 포함된 부분을 중복 계산합니다."
+    },
+    "tjqp": {
+      "source_hash": "ee87ba087fd8",
+      "text": "짧은 막대 옆에 ‘그중’을 붙여 포함 관계를 남겼습니다."
+    },
+    "zhzm": {
+      "source_hash": "32cfee0301cb",
+      "text": "지역 비교를 각국의 AI 총지출로 바꿔 불러도 됩니까?"
+    },
+    "qa92": {
+      "source_hash": "3b51f072d58a",
+      "text": "3장은 보고서의 Quid 민간 AI 투자 집계 범위를 따릅니다."
+    },
+    "f6fw": {
+      "source_hash": "8329157cf444",
+      "text": "같은 2025년, 10억 미국 달러 단위로 미국은 285.88입니다."
+    },
+    "hxni": {
+      "source_hash": "a1d031f4ab44",
+      "text": "중국은 12.41이며 집계 범위와 단위는 같습니다."
+    },
+    "frra": {
+      "source_hash": "c64f67b7ebb5",
+      "text": "같은 민간 자금조달 통계이지 두 나라의 전체 민관 지출은 아닙니다."
+    },
+    "2bm9": {
+      "source_hash": "9531894d74b2",
+      "text": "두 막대 길이는 같은 연도, 단위, 투자 유형을 나타냅니다."
+    },
+    "a4ys": {
+      "source_hash": "a4a23dd00784",
+      "text": "4장은 이용 상황이므로 달러 단위를 가져올 수 없습니다."
+    },
+    "9xhq": {
+      "source_hash": "9e4f4b429f99",
+      "text": "이 조사에서 응답자 88%가 보고한 내용은,"
+    },
+    "iswb": {
+      "source_hash": "0281c17ef39e",
+      "text": "자기 조직이 최소 한 업무에서 AI를 쓴다는 것입니다."
+    },
+    "dp4j": {
+      "source_hash": "bf2ebaceca72",
+      "text": "응답자의 자가 보고이지 세계 모든 기업의 전수조사는 아닙니다."
+    },
+    "gy6e": {
+      "source_hash": "18bab12d0245",
+      "text": "생성형 AI의 한 항목이 미해결이면 발표를 멈춰야 합니까?"
+    },
+    "g84b": {
+      "source_hash": "dc6ec2ad2579",
+      "text": "요약의 70%는 조직이 최소 한 업무에서 쓴다는 내용입니다."
+    },
+    "e9xt": {
+      "source_hash": "3031a9af3a94",
+      "text": "본문의 79%는 응답자가 조직의 일상적 이용을 보고한 값입니다."
+    },
+    "cwpj": {
+      "source_hash": "3033add5b842",
+      "text": "둘 다 2025년, 질문과 분모의 일치는 미확인입니다."
+    },
+    "iek7": {
+      "source_hash": "8506062e2d1b",
+      "text": "둘 다 확인된 도입률로 쓰지 않고 보고서가 틀렸다고 단정하지도 않습니다."
+    },
+    "aywh": {
+      "source_hash": "f59eba903ebf",
+      "text": "두 출처는 주석으로, 나머지 확인된 내용은 전달합니다."
+    },
+    "8arj": {
+      "source_hash": "5a6bb12034ac",
+      "text": "인용은 2~4장을 원보고서와 연결하고 1장은 작성자의 질문 개요입니다."
+    },
+    "5ytw": {
+      "source_hash": "9d0cfaae234c",
+      "text": "처음 물은 출처 추적입니다. 이 자료로 원본 도표를 어떻게 찾습니까?"
+    },
+    "cuw5": {
+      "source_hash": "f0e3b423b425",
+      "text": "2장: 인쇄 178쪽, PDF 8쪽입니다."
+    },
+    "u7s7": {
+      "source_hash": "631d89554665",
+      "text": "그림 4.2.1이며, 두 금액은 모두 이 도표에서 나옵니다."
+    },
+    "a9g4": {
+      "source_hash": "0c14aece95bb",
+      "text": "동료에게 인용할 때 인쇄 쪽수도 남길 수 있습니다."
+    },
+    "thhi": {
+      "source_hash": "4fa4d7588cee",
+      "text": "3장: 인쇄 182쪽, PDF 12쪽입니다."
+    },
+    "z3rg": {
+      "source_hash": "4b44c1ce29cb",
+      "text": "출처 표시가 같은 민간 투자 도표와 두 지역을 연결합니다."
+    },
+    "buwe": {
+      "source_hash": "65075afc9f86",
+      "text": "4장: 인쇄 193쪽, PDF 23쪽입니다."
+    },
+    "m5bu": {
+      "source_hash": "8d874397d032",
+      "text": "확인 필요 주석은 요약의 인쇄 173쪽, PDF 3쪽에도 연결합니다."
+    },
+    "j47b": {
+      "source_hash": "c66bd65ea060",
+      "text": "이 차이는 주석뿐이며 채택한 5개 수치 주장에 넣지 않습니다."
+    },
+    "uhev": {
+      "source_hash": "b9c71ba7f304",
+      "text": "동료가 글자를 고치려면 완성된 이미지만 주면 됩니까?"
+    },
+    "mgin": {
+      "source_hash": "19210869def6",
+      "text": "같은 내용을 보기용과 수정용, 두 종류로 전달합니다."
+    },
+    "eeiu": {
+      "source_hash": "134c6bf2f652",
+      "text": "PDF는 4장 이미지로, 배치는 보이지만 텍스트 추출은 안 됩니다."
+    },
+    "hj8r": {
+      "source_hash": "77e1d1a2d638",
+      "text": "처음 물은 글자 수정에 답해, 편집 가능한 PPTX도 전달했습니다."
+    },
+    "t5vz": {
+      "source_hash": "3577c16a8d83",
+      "text": "글자와 도형은 별개이며 페이지 이미지는 넣지 않았습니다."
+    },
+    "xxcb": {
+      "source_hash": "32ee29ce450b",
+      "text": "투자 페이지 단위도 네이티브 텍스트 상자에 남깁니다."
+    },
+    "aetd": {
+      "source_hash": "07b66edfa34a",
+      "text": "다시 열어 구조를 확인했지만 PowerPoint에서 직접 렌더링하지 않았습니다."
+    },
+    "du2s": {
+      "source_hash": "56e181e95269",
+      "text": "정식 발표 전 거기서 열어 글꼴과 줄바꿈을 확인합니다."
+    },
+    "kjrf": {
+      "source_hash": "ebd3c813f84b",
+      "text": "발표 자료, 편집 파일, 장별 출처가 검증 가능한 전달 묶음입니다."
+    },
+    "yu7f": {
+      "source_hash": "2a7d58ab9b06",
+      "text": "이 로컬 흐름은 Google의 새 기능과 어디서 연결됩니까?"
+    },
+    "3eg2": {
+      "source_hash": "c06f1fc62d6a",
+      "text": "소식 속 검토 단계는 바로 이 자료의 장별 내용을 정하는 곳입니다."
+    },
+    "vufg": {
+      "source_hash": "5dcef91c9d9f",
+      "text": "Gemini Notebook의 형식·스타일을 고른 뒤 Review를 켭니다."
+    },
+    "8ikq": {
+      "source_hash": "0a57200f9fb6",
+      "text": "슬라이드는 개요를, 영상은 제작 노트를 검토합니다."
+    },
+    "w72f": {
+      "source_hash": "1a144e75ad42",
+      "text": "수정을 일괄로 쓰고 Proceed를 눌러 생성합니다."
+    },
+    "8u6s": {
+      "source_hash": "a1248e5b2d27",
+      "text": "바로 생성할 수도 있으며, 검토는 필수가 아닙니다."
+    },
+    "p3j7": {
+      "source_hash": "e1970734575a",
+      "text": "Proceed 뒤엔 이 개요를 수정할 수 없습니다."
+    },
+    "63mu": {
+      "source_hash": "3a83d8baa80c",
+      "text": "따라서 포함된 일부나 민간 투자 범위는 이때 확인합니다."
+    },
+    "k3y5": {
+      "source_hash": "94203027c4cd",
+      "text": "지금 모든 계정에 이 선택지가 있습니까?"
+    },
+    "cgtw": {
+      "source_hash": "dea898f9de1f",
+      "text": "Workspace는 10월 16일부터 최대 15일간 순차 출시를 공지했습니다."
+    },
+    "yw8i": {
+      "source_hash": "a5e84a0ecf40",
+      "text": "공지는 여러 계정 유형을 들지만 도움말은 공동 제작을 Ultra 기능으로 적습니다."
+    },
+    "qtzp": {
+      "source_hash": "f4cc3a0471b0",
+      "text": "계정으로 이 차이를 확인하지 못해 무료 이용을 보장할 수 없습니다."
+    },
+    "skdk": {
+      "source_hash": "6afaa621cd1c",
+      "text": "사용 전 자신의 요금제와 개요 검토 선택지를 확인합니다."
+    },
+    "p2we": {
+      "source_hash": "a9c871c2c963",
+      "text": "계정의 개요 검토를 확인한 뒤 이 요구의 대상과 분량을 바꿉니다."
+    },
+    "cesj": {
+      "source_hash": "b5fbc399effa",
+      "text": "‘일반 동료’를 실제 청중으로 바꿉니다."
+    },
+    "tkzk": {
+      "source_hash": "664f6fbee020",
+      "text": "장수와 발표 시간도 필요한 전달 범위에 맞춰 바꿉니다."
+    },
+    "teri": {
+      "source_hash": "5edcdd4c154b",
+      "text": "질문과 출처가 담긴 개요를 받으면 구체적 내용을 수정합니다."
+    },
+    "8udr": {
+      "source_hash": "f34f22ab1a92",
+      "text": "이 요구로 첫 장에서 답할 질문을 적으십시오."
+    },
+    "yf5s": {
+      "source_hash": "9bed9f156be2",
+      "text": "발표로 만들 주제를 댓글로 남기십시오."
+    },
+    "umdp": {
+      "source_hash": "489f39b7bb17",
+      "text": "구독하고 실제 결과물로 AI 도구를 이해하십시오."
+    }
+  }
+}

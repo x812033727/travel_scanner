@@ -1,0 +1,44 @@
+{
+  "review_type": "Independent, thumbnail-headline-only Korean semantic/naturalness review; reviewer did not author this KO translation.",
+  "source_headline": "**先審**\n再做",
+  "current_headline": "**먼저 검토**\n그다음 제작",
+  "proposed_headline": "**먼저 검토**\n다음 제작",
+  "language_verdict": "Accept the proposed shortened thumbnail headline.",
+  "reason": "먼저 검토 / 다음 제작 is natural concise Korean for a two-step thumbnail: review first, then create. Paired with 먼저, 다음 works as the next-step marker rather than a new topic. Removing 그 preserves the order and the original meaning. The review action, creation action, emphasized first line and real newline stay unchanged.",
+  "register_note": "These are thumbnail noun phrases, so the normal sentence-ending formality rule for narration does not require adding a verb ending here. This verdict does not authorize changing any caption or body text.",
+  "wrap_observation": "Root reports the native render split the current second line as 그다음 제 / 작. This reviewer did not independently render or view that contact sheet.",
+  "fit_limit": "The proposed second line is one Hangul character shorter, but actual native wrap/phone readability must be confirmed by root's normal draw/QA. No render-fit or all-language-ready claim is made.",
+  "scope": "Only thumbnail.text.headline in a scratch native metadata-only worksheet. No direct merge, repository/source/backend/media/paid action.",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "current_translation_sha256": "52f61ae19aebe7e27403dfa1df865f77ad3605a8e1bcf3dc3a340657b4637c1a",
+  "worksheet_path": "/workspace/work/ai-tech-next/fourth-ko-thumbnail-wrap-fix.json",
+  "worksheet_sha256": "08b8b034f3ac21c7927cd1c83ed8c01b49488ebd4934033e4a1b00833e4e3d60",
+  "native_schema": "Native buildSheet(doc,currentTranslation,ko,null,[metadata]); lines=[]; all metadata copied from current native translation; only thumbnail.text.headline changed.",
+  "worksheet_differences": [
+    {
+      "path": "$.thumbnail.text.headline",
+      "old": "**먼저 검토**\n그다음 제작",
+      "new": "**먼저 검토**\n다음 제작"
+    }
+  ],
+  "native_merge_preview": {
+    "problems": [],
+    "notes": [],
+    "translation_differences": [
+      {
+        "path": "$.thumbnail.headline",
+        "old": "**먼저 검토**\n그다음 제작",
+        "new": "**먼저 검토**\n다음 제작"
+      }
+    ],
+    "captions_unchanged": true,
+    "body_description_unchanged": true
+  },
+  "second_line_chars": {
+    "current": 6,
+    "proposed": 5
+  },
+  "real_newline_count": 1,
+  "formal_inputs_unchanged": true,
+  "no_merge_performed": true
+}

@@ -24,9 +24,9 @@ scope:
 ## Definition of done
 
 - [x] 正式稿、完整提示、五項數字與已RUN四頁成果對齊；不同作者事實／圖卡／敘事結果照實記錄。
-- [ ] 繁中正文及成片均實測至少八分鐘，逐句音檢與成片QA完成。
+- [x] 繁中正文與本體候選均實測至少八分鐘，當前118句音檢及本體核心QA11/11完成；正式品牌片頭尾另列未完成。
 - [ ] en/ja/ko/es/pt/id/vi/th各有metadata、CC及真正音檢的可下載M4A，直接後臺交付並核對角色／SHA／大小。
-- [ ] 後臺實際核准狀態、未完成項與交接清楚，無YouTube公開／合併／部署。
+- [x] 後臺實際pending狀態、未完成項與交接清楚，無YouTube公開／合併／部署。
 
 ## Steps
 
@@ -36,7 +36,9 @@ scope:
 - [x] 正式稿及獨立事實verify-1至5；R2兩份12/13 false與教學取捨原文保留。
 - [x] 實看R2 114張樣卡；114原生render完成，fullSHA全等於已看preview，無encoded QA推論。
 - [x] 初次118句TTS及兩輪原句retake完成；僅仍flag的3句保義改詞，3新requests／67 chars TTS完成，原聲音／資料不變。
-- [ ] 新speech a805的當前take音檢、嚴格唯讀全目標核驗、正常採用、合成／CC／QA。
+- [x] 新speech a805的當前take音檢118/118、嚴格全目標核驗、正常送審／本機委派採用、本體合成／九套CC／核心QA11/11。
+- [x] 本體1080p正常後台下載附件完成：13 parts、server SHA／大小驗證、authenticated metadata角色回讀，final仍pending。
+- [x] 八語metadata及CC草稿經三組獨審必要修正，八語縮圖正常draw／root實看，KO短headline修正亦實看。
 - [ ] 合法官方片頭尾／bookend guard及真正正式定版；缺素材不能由靜態outro或null-branding QA替代。
 - [ ] 八語媒體、包裝及後臺驗證交付。
 
@@ -54,14 +56,16 @@ scope:
 
 ## Current snapshot
 
-2026-10-25T23:30:48Z。當前source296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f、claims2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7、speech a8055d3edb90bcda。原句音檢118 checked的flags為7→5→3，R2最後115 accepted／3 flags／0 unchecked；三個仍flag的nm8j／h58h／j47b才套用，其他115個line物件及所有非text欄位完全同，131列7欄／118口白／131 used-defined無回歸，verify-5真正PASS。
+2026-10-26T01:30:26.879Z。當前source296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f、claims2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7、speech a8055d3edb90bcda及lexicon378f875ef4daf76e4aadee22bae0aa3c523dd39528ca48f69f139c2a70843b0c保持不動。原三句保義修詞後真正118/118接受、0flags／unchecked，嚴格全目標核驗ready=true。
 
-23:22:54新TTS完成3 requests／67 billable chars、100高層request重用；18106 frames／30＝603.5333秒，outro前591.3667秒，扣冷開／outro正文566.1333秒。尚未完成新take ASR或嚴格audio audit，不能用舊speech0f1的三旗／接受狀態認證新音訊。
+繁中本體MP4已完成：1920×1080／30fps／18106frames，video603.533333秒、container603.605秒，52,296,204bytes，SHA3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea。扣冷開／outro正文566.133333秒。原生本體核心QA11/11、27筆CPS提醒保留，不當成完整正式品牌／八語通過。
 
-114 new states的render於23:16:47 exit0、477秒完成，逐PNG SHA對回真正看過的R2 preview；current／old visualHash均1a6b602366198b99。這是未變圖片，不是encoded成片或QA通過。原R2兩份citation修復native仍12/13、false、no_recap；本次三句是知情差異核對，沒有新blind或13/13。
+2026-10-26T01:05:11.570Z真實正常上傳13parts，server驗SHA／大小並經authenticated metadata GET回讀角色evidence_zh_tw_1080p_mp4；final review532d5837-0036-4695-9535-97d0c6a6044b仍pending，沒有遠端binary重新下載驗hash、遠端核准或language batch宣稱。
 
-官方bookends尚缺，八語metadata／CC／M4A及後臺交付仍待完成，overall false。新strict audio helper只變CFG source／speech兩值，14項既有self-test收據保留，未在此次文件核驗中執行actual audit或付費工具。未做YouTube公開、合併或部署。
+八外語metadata／118句文字／6章與九套CC已建立，CC仍是主旁白timing草稿；八張縮圖已draw且root實看，KO縮短headline正常merge／draw修正已實看。三組不同作者獨審及必要application完整保留，optional budget候選不整批套用。外語音訊0/8 ready，唯一producer僅先做EN synth／fit／meter，ASR hold；配音前後SHA與真正音訊驗收另留收據。
+
+官方動畫bookends仍missing，R2兩份12/13 false／no_recap保留，overall／all_eight_ready仍false；不稱full new rules done。沒有YouTube公開、commit／stage／合併或部署。更新前狀態文件逐bytes保存在episode production-history清單中，舊assembly-running及待音檢文字只屬歷史。
 
 見[production-result](../../docs/videos/ai-slides-outline-review/production-result.md)、[production-progress](../../docs/videos/ai-slides-outline-review/production-progress.json)、[receipt index](../../docs/videos/ai-slides-outline-review/production-receipt-index.json)及[informed narrative](../../docs/videos/ai-slides-outline-review/narrative-listener-reword1-informed-review.md)。
 
-- 23:44 UTC continuation: current speech a805 completed genuine native check exit0 118/118, 0 flags/unchecked and strict independent full-WAV/full-target native audit ready=true (b9ba45c3eeca003fc4e862eae7126e73d39d89ae6de66b22a55f4e4ce32f6d87). Normal script/audio reviews pending; local delegated adoption is separate. Body-only assembly is actually running; official bookends, final MP4 QA/delivery and eight actual language packages remain incomplete.
+正常唯讀GET另確認final payload的9語title／description與本地native compose逐字相符，files目前只有preview、contact_sheet、thumbnail、evidence_zh_tw_1080p_mp4。CC0/9、外語thumb0/8、外語dub0/8附件；本地9CC／8thumb不等於已上傳。checked-only附件由另位agent準備，這次文件更新不POST／repush。native lint0errors／6warnings，taskcheck0；不重跑已完成的236項工具測試。

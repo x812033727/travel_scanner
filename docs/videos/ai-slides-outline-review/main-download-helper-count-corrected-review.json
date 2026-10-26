@@ -1,0 +1,62 @@
+{
+  "reviewed_at": "2026-10-26T00:29:57.174146+00:00",
+  "reviewer": "news_verify",
+  "scope": "Targeted two-change count correction only; carries forward f50 prior guard/provenance review without recertifying actual film",
+  "result": "PASS",
+  "new_helper_sha256": "85a488ac0508c0964e958c9d2e832652a3dffe2f13171f98ab4dd9a53953a6d5",
+  "original_helper_sha256": "f50fbd3a7b63e4db76277eff822660dc647149b4bdf7a4ae1264bcae9f512509",
+  "original_REVISE_receipt_sha256": "a2e817ad0b87e3fc94fbe86c29ad990b26ede70d8a3add5ae51e7cfd25841ff0",
+  "original_REVISE_markdown_sha256": "edcf5fb80fa96e8ce54c08a4bd2112de3a1a6312840e72ed0226c51c7c4c5053",
+  "original_REVISE_unchanged": true,
+  "source_diff": "--- attach-slides-main-download.video-timing.mjs\n+++ attach-slides-main-download.video-timing.count-corrected.mjs\n@@ -215,5 +215,5 @@\n   const expected={role:ROLE,sha256:local.pin.final_sha256,size:local.pin.final_bytes,content_type:'video/mp4'},files=clone(final.files??[]),found=files.find(x=>x.role===ROLE);\n   if(found)same(found,expected,'Conflicting existing1080 evidence role; never replace/remove');else files.push(expected);\n-  const summary=`繁中主體候選105/105句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。`;\n+  const summary=`繁中主體候選118/118句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。`;\n   const body={gate:'final',subject:final.subject??null,content_sha256:local.pin.final_sha256,summary,payload:clone(final.payload),files};\n   same(fitPayload(body).body,body,'Native payload fitter would alter preserved data');\n@@ -256,4 +256,5 @@\n   const project={stage:'final',locales:{},languages:{},youtube_video_id:null,reviews:[final]},local={pin,qa_report:qa};const cases=[];const test=(n,f)=>{f();cases.push(n);};\n   test('missing/incomplete/wrong-source pin refused',()=>{for(const p of [null,{}, {...pin,final_bytes:0},{...pin,qa_sha256:null},{...pin,source_sha256:'f'.repeat(64)}])assert.throws(()=>validatePin(p));validatePin(pin);});\n+  test('public body summary must state exactly current118 narration lines',()=>{const summary=appendBody(final,local).body.summary;assert.ok(summary.includes('118/118句音檢通過'));assert.ok(!summary.includes('105/105'));});\n   test('append only main evidence preserving every payload field',()=>{const x=appendBody(final,local);assert.deepEqual(x.body.payload,final.payload);assert.deepEqual(x.body.files.slice(0,1),final.files);assert.equal(x.body.files.length,2);assert.equal(x.body.files[1].role,ROLE);});\n   test('summary discloses candidate and missing official bookends',()=>{const s=appendBody(final,local).body.summary;for(const required of ['繁中主體候選','正式頻道片頭片尾動畫待補','八語製作中','成片仍pending','並非完整正式定版'])assert.ok(s.includes(required));});\n",
+  "only_changes": [
+    {
+      "where": "appendBody summary",
+      "line": 217,
+      "old": "const summary=`繁中主體候選105/105句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。`;",
+      "new": "const summary=`繁中主體候選118/118句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。`;"
+    },
+    {
+      "where": "selfTest",
+      "added_exact_line": "test('public body summary must state exactly current118 narration lines',()=>{const summary=appendBody(final,local).body.summary;assert.ok(summary.includes('118/118句音檢通過'));assert.ok(!summary.includes('105/105'));});",
+      "test_uses_actual_appendBody": true,
+      "asserts_118_and_rejects_105": true
+    }
+  ],
+  "exact_reverse_of_two_changes_matches_original_bytes": true,
+  "all_runtime_guards_config_endpoints_unchanged": true,
+  "original_25_cases_exact_same_order_after_removing_new_case": true,
+  "root26_output_matches_reviewer_rerun": true,
+  "pure_test_rerun": {
+    "chunk_id": "02dfed",
+    "wall_time_seconds": 0.278851374,
+    "exit_code": 0,
+    "original_token_count": 391,
+    "output": "{\n  \"self_test\": true,\n  \"cases\": [\n    \"missing/incomplete/wrong-source pin refused\",\n    \"public body summary must state exactly current118 narration lines\",\n    \"append only main evidence preserving every payload field\",\n    \"summary discloses candidate and missing official bookends\",\n    \"existing identical role is idempotent, conflicting role refused\",\n    \"any foreign dub or unchecked/evidence role refused across remote reviews\",\n    \"ready foreign payload refused without file\",\n    \"non-ready dub payload does not invent ready status\",\n    \"concurrent choice change aborts before POST\",\n    \"any concurrent review change aborts before POST\",\n    \"approved or different newest cut refused\",\n    \"QA for another file or failed QA refused\",\n    \"normal parts and native early-complete existing blob\",\n    \"malformed duplicate missing invalid premature-complete parts refused\",\n    \"normal routes only and only pinned file upload\",\n    \"exact video frames with genuine longer AAC/container tail passes\",\n    \"one missing video frame fails\",\n    \"wrong video fps fails\",\n    \"wrong average video fps fails\",\n    \"one altered video duration tick fails\",\n    \"wrong reported video duration fails even with correct frame count\",\n    \"nonzero video start offset fails\",\n    \"container size mismatch fails\",\n    \"container padding not explained by an actual stream endpoint fails\",\n    \"nonzero container start fails\",\n    \"AAC shorter than complete video/narration fails\"\n  ],\n  \"network_calls\": 0,\n  \"paid_calls\": 0,\n  \"source_media_cache_flags_writes\": 0\n}\n"
+  },
+  "pure_old_vs_new_count_fixture": {
+    "self_test": true,
+    "old_count_guard_pass": false,
+    "new_count_guard_pass": true,
+    "old_summary": "繁中主體候選105/105句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。",
+    "new_summary": "繁中主體候選118/118句音檢通過、0 flags；此候選原生QA 11/11，1080p MP4證據下載已附。正式頻道片頭片尾動畫待補，八語製作中，成片仍pending，並非完整正式定版。本次未附外語配音、未送語言批次，未宣稱字幕版本或整體完成。",
+    "only_expected_count_changed": true,
+    "network_calls": 0,
+    "credentials_read": false,
+    "media_writes": 0
+  },
+  "actual_local_preflight_run": false,
+  "current_QA_run": false,
+  "actual_current_QA11_claimed": false,
+  "actual_media_probe_or_full_auditor_run": false,
+  "credentials_read": false,
+  "network_calls": 0,
+  "upload_or_POST": false,
+  "helper_source_media_flags_cache_edited": false,
+  "limitations": [
+    "PASS is limited to this count correction and unchanged guard scope.",
+    "Actual currentQA11 and complete root file/QA pin still must pass a future normal preflight before any execute.",
+    "No actual attachment/delivery/readiness is certified.",
+    "Originalf50REVISE,25green tests and genuine fallbackfailure outputs remain intact."
+  ]
+}

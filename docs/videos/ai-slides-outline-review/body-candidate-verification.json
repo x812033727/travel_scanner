@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-25T23:57:29.223692+00:00",
+  "scope": "Actual completed fourth body candidate only; official channel bookends missing, core QA and eight-language CC/metadata/actualM4A not certified by this proof.",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "speech_hash": "a8055d3edb90bcda",
+  "final_sha256": "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea",
+  "final_bytes": 52296204,
+  "native_assemble_exit_code": 0,
+  "native_log_sha256": "13e7e60ef3d714db8ba01e618898d25b9fa19e808fc03947bcaa47fb637c7056",
+  "native_checks_sha256": "af2ed6fffa597107518c20745e3f822bd525ac45b2010a518873191b39c4de6a",
+  "actual_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 9270272,
+        "duration": "603.533333",
+        "nb_frames": "18106"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 28973040,
+        "duration": "603.605000",
+        "nb_frames": "28292"
+      }
+    ],
+    "format": {
+      "start_time": "0.000000",
+      "duration": "603.605000",
+      "size": "52296204"
+    }
+  },
+  "branding_pin_exists": false,
+  "actual_audio_ready_receipt_sha256": "b9ba45c3eeca003fc4e862eae7126e73d39d89ae6de66b22a55f4e4ce32f6d87",
+  "core_qa_status": "not_yet_run_for_current_completed_MP4",
+  "backend_final_delivered": false
+}
