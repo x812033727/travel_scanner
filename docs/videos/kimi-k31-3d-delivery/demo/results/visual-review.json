@@ -1,0 +1,67 @@
+{
+  "kind": "author_actual_five_local_screenshot_visual_review",
+  "at": "2026-10-26T11:24:22.731337+00:00",
+  "reviewer": "demo author",
+  "method": "Actually opened each current PNG with view_image after true Chromium capture; not inferred from canvas counts.",
+  "figures": [
+    {
+      "file": "figures/00-neutral-side-intro.png",
+      "sha256": "569b6bd06455d340de64ad07c7bcea90a94ce5b51494f9ac2f63d90f6e5162ff",
+      "bytes": 152847,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "figures/01-oblique-comparison.png",
+      "sha256": "3713cf79544d1fae0a79af8ee699fc58c41852d835df550a630c833bba90d22e",
+      "bytes": 285576,
+      "width": 1920,
+      "height": 1080,
+      "view": "oblique"
+    },
+    {
+      "file": "figures/02-top-view.png",
+      "sha256": "624dc84b89548fb163d68ce35a5f1fc4e5726f939af3ff115175b54ceb063115",
+      "bytes": 286643,
+      "width": 1920,
+      "height": 1080,
+      "view": "top"
+    },
+    {
+      "file": "figures/03-horizontal-section.png",
+      "sha256": "c672c7c82da8d0d304405ba28951a784551afbc8c19b0c873b97099c0bba29eb",
+      "bytes": 241435,
+      "width": 1920,
+      "height": 1080,
+      "view": "section"
+    },
+    {
+      "file": "figures/04-side-view.png",
+      "sha256": "85d284ed7e933d22dae85a11407d3f8114f272f7413e331678b584236767f378",
+      "bytes": 214859,
+      "width": 1920,
+      "height": 1080,
+      "view": "side"
+    }
+  ],
+  "findings": {
+    "actual_ring_and_filled_meshes_visible": true,
+    "all_four_show_original_not_Kimi_output_disclosure": true,
+    "nominal16_and_assumed_mm_and_actual_min15_980727_distinguished": true,
+    "top_and_section_outlines_complete_not_clipped": true,
+    "section_spec_circle_and_mesh_boundaries_labeled_separately": true,
+    "strict_minimum16_requirement_not_passed_by_original_ring": true,
+    "no_counterfeit_Kimi_UI_or_logos": true,
+    "no_whole_video_or_print_test_claim": true
+  },
+  "root_review_still_separate": true,
+  "neutral_intro_actual_visual_review": {
+    "opened_with": "view_image",
+    "large_actual_side_meshes": true,
+    "same_neutral_color": true,
+    "only_external_nominal_dimensions_and_unit_assumption": true,
+    "clear_original_not_Kimi_label": true,
+    "visible_results_not_displayed": true,
+    "old_four_hashes_unchanged": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "actual_short_public_commands_verified",
+  "at": "2026-10-26T11:16:37.516792+00:00",
+  "rows": [
+    {
+      "argv": [
+        "python3",
+        "check.py",
+        "--stl",
+        "ring.stl",
+        "--spec",
+        "spec.json"
+      ],
+      "cwd": "demo",
+      "true_exit_code": 0,
+      "accepted_for_this_limited_spec": true,
+      "actual_input_sha256": "58efbfb030273dafb948da5c57596244f8099736401644e19149db5535c372c5",
+      "original_result_equal_except_input_filename": true,
+      "stdout_sha256": "7acd4c1f2f9ee051d7f0ac1b8972668db0849e5c67186c3a60ec7cb1d8a99a6f",
+      "stderr_bytes": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "check.py",
+        "--stl",
+        "filled.stl",
+        "--spec",
+        "spec.json"
+      ],
+      "cwd": "demo",
+      "true_exit_code": 0,
+      "accepted_for_this_limited_spec": false,
+      "actual_input_sha256": "f5f6278b84bd07b5a5e7b31980b5ce4b2fc13227758da7de694127e5de90c22a",
+      "original_result_equal_except_input_filename": true,
+      "stdout_sha256": "d1d6e50c9363369487e47225f5ec533a8f8305698f91541bb4f23e5f81af8b6d",
+      "stderr_bytes": 0
+    }
+  ],
+  "zero_exit_is_not_geometric_acceptance": true
+}

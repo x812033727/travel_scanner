@@ -1,0 +1,146 @@
+{
+  "source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+  "actual_timeline_sha256": "12287e1bb53102d5ab4f8cf3082aa4f08445007343955f569f4bc09d79387fba",
+  "normal_limit_seconds": 15,
+  "normal_result": "110 slide states, the longest 14.2 s; none over 15 s",
+  "exact_longest_hold_seconds": 14.166666666666666,
+  "state_count": 110,
+  "actual_over_15": [],
+  "actual_terminal_holds": [],
+  "terminal_scenes": 0,
+  "one_delivery": {
+    "scene": "one-delivery",
+    "template": "bullets",
+    "capacity": 4,
+    "states": [
+      {
+        "reveal": 1,
+        "start_frame": 1094,
+        "end_frame": 1242,
+        "exact_seconds": 4.933333333333334,
+        "shown_element_indices": [
+          0
+        ],
+        "newly_entering_element_indices": [
+          0
+        ]
+      },
+      {
+        "reveal": 2,
+        "start_frame": 1242,
+        "end_frame": 1397,
+        "exact_seconds": 5.166666666666667,
+        "shown_element_indices": [
+          0,
+          1
+        ],
+        "newly_entering_element_indices": [
+          1
+        ]
+      },
+      {
+        "reveal": 3,
+        "start_frame": 1397,
+        "end_frame": 1538,
+        "exact_seconds": 4.7,
+        "shown_element_indices": [
+          0,
+          1,
+          2
+        ],
+        "newly_entering_element_indices": [
+          2
+        ]
+      },
+      {
+        "reveal": 4,
+        "start_frame": 1538,
+        "end_frame": 1669,
+        "exact_seconds": 4.366666666666666,
+        "shown_element_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "newly_entering_element_indices": [
+          3
+        ]
+      }
+    ]
+  },
+  "longest": [
+    {
+      "scene": "run-ring-command",
+      "index": 0,
+      "start_frame": 11366,
+      "end_frame": 11791,
+      "seconds": 14.2
+    },
+    {
+      "scene": "run-filled-command",
+      "index": 0,
+      "start_frame": 11963,
+      "end_frame": 12354,
+      "seconds": 13
+    },
+    {
+      "scene": "tolerance-is-purpose",
+      "index": 0,
+      "start_frame": 16506,
+      "end_frame": 16875,
+      "seconds": 12.3
+    },
+    {
+      "scene": "handoff-three-files",
+      "index": 0,
+      "start_frame": 19888,
+      "end_frame": 20254,
+      "seconds": 12.2
+    },
+    {
+      "scene": "download-moment",
+      "index": 1,
+      "start_frame": 206,
+      "end_frame": 497,
+      "seconds": 9.7
+    },
+    {
+      "scene": "washer-has-job",
+      "index": 1,
+      "start_frame": 3958,
+      "end_frame": 4227,
+      "seconds": 9
+    },
+    {
+      "scene": "rays-cross-center",
+      "index": 2,
+      "start_frame": 12855,
+      "end_frame": 13121,
+      "seconds": 8.9
+    },
+    {
+      "scene": "run-package",
+      "index": 2,
+      "start_frame": 11106,
+      "end_frame": 11366,
+      "seconds": 8.7
+    }
+  ],
+  "candidate_patch_operations": 0,
+  "candidate_source_unchanged": true,
+  "same_114_line_ids_order_text_say_voice_scenes_chapters_claims_assets": true,
+  "same_114_audio_sample_counts_and_existing_hash_references": true,
+  "audio_files_independently_rehashed_or_checked": false,
+  "candidate_measured_timeline_deeply_equal_to_actual": true,
+  "total_frames_before": 21922,
+  "total_frames_after": 21922,
+  "body_seconds_before": 730.7333333333333,
+  "body_seconds_after": 730.7333333333333,
+  "speech_hash_before": "a75a68a86268df4e",
+  "speech_hash_after": "a75a68a86268df4e",
+  "visual_hash_before": "4f5ab1667ffb2c5f",
+  "visual_hash_after": "4f5ab1667ffb2c5f",
+  "candidate_normal_result": "110 slide states, the longest 14.2 s; none over 15 s",
+  "no_native_writes_cli_render_asr_auth_paid_git_or_check_interference": true
+}

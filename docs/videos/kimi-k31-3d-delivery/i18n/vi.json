@@ -1,0 +1,501 @@
+{
+  "title": "Kimi K3.1 Pro: Mô hình 3D đẹp, khi nào dùng được?",
+  "description": "Ghi/kiểm chứng: 2026-10-26 (Đài Bắc). Kimi K3.1 Pro quảng bá 3D. Tải mô hình rồi, khi nào bàn giao được?\nDành cho bạn muốn trưng bày, sửa mô hình AI hoặc giao chi tiết: so hai STL của cùng vòng đệm tự làm, từ kích thước, độ kín đến lỗ xuyên và đường kính lọt lòng nhỏ nhất.\n\nCả hai là mẫu biên tập tự làm (CC0-1.0), không phải tài nguyên Kimi; lấp lỗ là phản ví dụ cố ý, không phải lỗi Kimi. Danh nghĩa: ngoài 40 mm, lỗ 16 mm, dày 5 mm. Với 64 đoạn, đường kính lọt lòng nhỏ nhất thực khoảng 15.980727 mm: có lỗ chưa đủ đạt yêu cầu tối thiểu 16 mm. Yêu cầu mới này chưa có trong trình kiểm tra.\n\nCó trang xem cục bộ, STL gốc, thông số JSON, trình kiểm tra Python. Giải nén cùng thư mục, chạy trong demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nChưa thử tài khoản, chạy mô hình Kimi, thử xuất hay in thật. Trang hãng đã đọc nói tải tài nguyên để in, chưa nêu đuôi STL. Hẹn trọng số đầy đủ trước 2026-11-04; đợt này chưa xác minh đã nhận trọng số mới. BenchCAD 92.7 là VoxelIoU with-tools, không phải tỉ lệ in thành công.\n\nChỉ kiểm tra trục chỉ định, lấy mẫu hữu hạn, kích thước ngoài, cạnh lưới, thể tích. Chưa kiểm hết lỗ bất kỳ, tự giao cắt, thành mỏng nhất, cắt lớp, vật liệu, chịu tải hay điều kiện chế tạo. Đạt không phải chứng nhận chế tạo.",
+  "tags": [
+    "Kimi K3.1 Pro",
+    "Kimi 3D Make",
+    "mô hình 3D",
+    "STL",
+    "in 3D",
+    "bàn giao mô hình 3D",
+    "BenchCAD",
+    "tin công nghệ AI",
+    "nghiệm thu mô hình",
+    "Mokaair"
+  ],
+  "thumbnail": {
+    "tag": "Kimi K3.1 Pro",
+    "headline": "Tải về\n**Dùng được?**",
+    "sub": "Một vòng đệm, hai tệp, một yêu cầu"
+  },
+  "chapters": {
+    "download-moment": "Vòng đệm và ba điều khó hiểu",
+    "news-reaches-desk": "Mô hình mới, thiếu thông số",
+    "spec-arrives": "Viết yêu cầu cho lỗ xuyên",
+    "outer-bounds-pass": "Đúng cỡ, kín, vẫn chưa đủ",
+    "run-ring-command": "Hai tệp, cùng trình kiểm tra",
+    "new-use-new-spec": "Có lỗ, còn phải đúng mục đích"
+  },
+  "source_hashes": {
+    "chapters": {
+      "download-moment": "e51064b94360",
+      "news-reaches-desk": "a6a91f46b8b1",
+      "spec-arrives": "c6d07c8cbe01",
+      "outer-bounds-pass": "bd19e2e5a94c",
+      "run-ring-command": "6afd37a1fee0",
+      "new-use-new-spec": "16ff0f3eba91"
+    },
+    "title": "952836668e80",
+    "description": "46848a68fd88",
+    "tags": "a542d0d7b55c",
+    "thumbnail": "d21661b0f36a"
+  },
+  "lines": {
+    "2g58": {
+      "source_hash": "e5256c8698cd",
+      "text": "Ngày 26 tháng 10 năm 2026, tôi mở hai mẫu vòng đệm tự làm trên máy này."
+    },
+    "2sc4": {
+      "source_hash": "6b3e49e3002f",
+      "text": "Kimi K3.1 Pro đề cao tải 3D. Nhận tệp rồi, tôi muốn biết thế nào mới giao được."
+    },
+    "4ran": {
+      "source_hash": "6b6bcd244689",
+      "text": "Trong trình xem này, tôi chọn chiếu cạnh, chờ so kích thước ngoài với thông số."
+    },
+    "pfy0": {
+      "source_hash": "d6c1972bf2c2",
+      "text": "Nhãn kiểm tra kín chưa mở ra. Nó bảo đảm được phần nào?"
+    },
+    "5jr1": {
+      "source_hash": "7477deec8160",
+      "text": "Khi chuyển sang mặt cắt lỗ, chỗ hẹp nhất có đạt yêu cầu không?"
+    },
+    "fv1i": {
+      "source_hash": "363986dce4f4",
+      "text": "Trong cùng trình xem, tôi đặt hai tệp tự làm ở góc dễ so sánh."
+    },
+    "6yl7": {
+      "source_hash": "7c930eebed4c",
+      "text": "Đặt thông số, tệp gốc và kết quả kiểm tra cạnh nhau mới thấy khác biệt."
+    },
+    "b7uf": {
+      "source_hash": "d77b7a380bcc",
+      "text": "Bạn cũng có thể dùng cùng thông số để quyết định giữ hay trả tệp nhận được."
+    },
+    "gzek": {
+      "source_hash": "ff7586e4b01a",
+      "text": "Từ bản xem trước 3D đẹp đến chi tiết dùng được, còn thiếu bước nào?"
+    },
+    "q0p1": {
+      "source_hash": "ee0342a2d04b",
+      "text": "Tôi mở tệp thông số cạnh hai mẫu, đặt kích thước cần bàn giao cạnh dữ liệu mô hình."
+    },
+    "lqfp": {
+      "source_hash": "71bb6443e1d8",
+      "text": "Phiên bản Kimi ra mắt ngày 24 tháng 10 theo giờ Đài Bắc có 3D Make."
+    },
+    "h9gn": {
+      "source_hash": "86accf8a9884",
+      "text": "3D Make cho xem trước, chỉnh sửa trực tuyến và tải tài nguyên về."
+    },
+    "zwa9": {
+      "source_hash": "1e53ebfc088d",
+      "text": "Hãng nêu tài nguyên dùng để in 3D, chưa định thông số giao vòng đệm này."
+    },
+    "ekg8": {
+      "source_hash": "27bbc4fe7ee6",
+      "text": "Trọng số đầy đủ vẫn hẹn phát hành trước 4 tháng 11, khác tệp sản phẩm đang kiểm tra hôm nay."
+    },
+    "rw5b": {
+      "source_hash": "87acb7a3f2a8",
+      "text": "Phải rõ định dạng và mục đích của vòng đệm, không thể nghiệm thu chỉ vì có chữ tải về."
+    },
+    "0glu": {
+      "source_hash": "7383bb42dedf",
+      "text": "Hãng công bố điểm 92.7 trong một bài đánh giá tái dựng 3D."
+    },
+    "y868": {
+      "source_hash": "dbf451505279",
+      "text": "Điều kiện là dùng công cụ để tái dựng hình khối từ ảnh nhiều góc."
+    },
+    "0m8z": {
+      "source_hash": "dd57695117d3",
+      "text": "Lần này, nhóm mô hình mở được thử trên 1.000 tệp chọn ngẫu nhiên từ 17.900 tệp."
+    },
+    "uyzf": {
+      "source_hash": "3f91305a67df",
+      "text": "Chỉ số đo mức trùng khớp giữa hình tái dựng và hình mục tiêu."
+    },
+    "dzyw": {
+      "source_hash": "3f106761ae62",
+      "text": "Đó không phải tỉ lệ in 100 chi tiết rồi đếm xem bao nhiêu cái dùng được."
+    },
+    "nc22": {
+      "source_hash": "2ee956ac1a58",
+      "text": "Quay lại vòng đệm này, trước khi nghiệm thu, bạn còn thiếu yêu cầu cụ thể nào?"
+    },
+    "56w0": {
+      "source_hash": "4281a83e3340",
+      "text": "Bạn cần luồn một thanh qua giữa, đồng thời giữ bề mặt tiếp xúc ở vành ngoài."
+    },
+    "66ya": {
+      "source_hash": "e669ea11da26",
+      "text": "Chỉ nói làm giống vòng đệm thì dù đẹp, hai bên vẫn có thể chờ hai sản phẩm khác nhau."
+    },
+    "1ks6": {
+      "source_hash": "45b4c0ed3c38",
+      "text": "Khác biệt này có thể khó thấy ở bản xem trước. Viết thành thông số sẽ có căn cứ so sánh."
+    },
+    "zmyw": {
+      "source_hash": "c93f45134595",
+      "text": "Đường kính ngoài của mẫu vòng đệm là 40 mm, xác định khoảng chiếm chỗ."
+    },
+    "1gex": {
+      "source_hash": "460f9a9a3d8f",
+      "text": "16 mm là đường kính lỗ danh nghĩa khi vẽ tròn, chưa phải đường kính lọt lòng nhỏ nhất đã đo."
+    },
+    "v5m0": {
+      "source_hash": "cf481634f945",
+      "text": "Độ dày 5 mm là khoảng cách từ mặt đáy đến mặt trên."
+    },
+    "d0ap": {
+      "source_hash": "c6d0428004bd",
+      "text": "Các số này nằm trong một tệp thông số, bàn giao cùng hai tệp STL."
+    },
+    "tvz8": {
+      "source_hash": "935057a49210",
+      "text": "Đơn vị, đường kính ngoài, đường kính lỗ và chiều cao có trường riêng, sửa không phải đoán."
+    },
+    "4sem": {
+      "source_hash": "883b702e3770",
+      "text": "Bạn đổi yêu cầu của mình thì trình kiểm tra cũng phải đọc đúng yêu cầu ấy."
+    },
+    "9xjo": {
+      "source_hash": "dd54352d926b",
+      "text": "Nếu số 40 vừa rồi chỉ là tọa độ, điều gì khiến nó mang đơn vị milimét?"
+    },
+    "o3u0": {
+      "source_hash": "cc499784147c",
+      "text": "STL không có nhãn đơn vị; phải dựa vào thông số ngoài và thiết lập nhập để hiểu cùng cách."
+    },
+    "0sh9": {
+      "source_hash": "3d604fc183e1",
+      "text": "Sai đơn vị làm đổi kích thước cả chi tiết, không thể chỉ xem nó có vừa màn hình không."
+    },
+    "fu17": {
+      "source_hash": "681e4677e461",
+      "text": "Hai tệp đang mở đều là STL chứa dữ liệu tam giác thật."
+    },
+    "7gpn": {
+      "source_hash": "7bd9eb8835b8",
+      "text": "Cả hai dùng cùng hướng tọa độ và được đo theo cùng bộ thông số milimét."
+    },
+    "89zh": {
+      "source_hash": "faa9397391f4",
+      "text": "Cùng đối chiếu một yêu cầu chi tiết, nên khác biệt nhắm đúng lỗ xuyên đã chỉ định."
+    },
+    "o8jk": {
+      "source_hash": "202437132685",
+      "text": "Tôi cố ý lấp giữa một mẫu, làm phản ví dụ khi bàn giao."
+    },
+    "dag4": {
+      "source_hash": "6bbd602a3a61",
+      "text": "Không phải lỗi Kimi tạo ra. Tôi giữ hình ngoài để thử xem ta đã hỏi về lỗ chưa."
+    },
+    "palv": {
+      "source_hash": "6de2fd7596f6",
+      "text": "Kiểm soát khác biệt lấp lỗ mới có đối chứng thật cho kiểm tra kích thước ngoài."
+    },
+    "f84c": {
+      "source_hash": "a7144da00f0e",
+      "text": "Khi nhận mô hình, cách đơn giản nhất có lẽ là mở thước đo dài, rộng, cao."
+    },
+    "ipjt": {
+      "source_hash": "088d27c4283a",
+      "text": "Nếu chỉ vậy đã đủ, phản ví dụ bị lấp giữa cũng phải bị loại."
+    },
+    "0jfv": {
+      "source_hash": "ac4ff6aef353",
+      "text": "Giờ đưa cả hai mô hình cùng hình ngoài vào phép kiểm tra này."
+    },
+    "ox5o": {
+      "source_hash": "6fbcd622aec8",
+      "text": "Khung bao vừa chỉ định đo được 40, 40, 5 ở cả hai tệp."
+    },
+    "6skt": {
+      "source_hash": "5dd6b2d51ac5",
+      "text": "Khung bao chỉ ôm tọa độ ngoài cùng; có vật liệu ở giữa cũng không đổi kích thước khung."
+    },
+    "z5jf": {
+      "source_hash": "e193a3118630",
+      "text": "Vậy thước đo trả lời đúng hình ngoài, nhưng chưa trả lời về lỗ ta cần."
+    },
+    "boyv": {
+      "source_hash": "0ae2eb3df893",
+      "text": "Vậy kiểm tra lưới có kín không, liệu có đáng tin hơn?"
+    },
+    "ljeg": {
+      "source_hash": "97c4d72b2e28",
+      "text": "Phép kiểm tra xem các cạnh tam giác có nối đúng với mặt kề hay không."
+    },
+    "njr0": {
+      "source_hash": "3f58522ece93",
+      "text": "Hai tệp đều không có cạnh biên. Kết quả này vẫn chưa cho biết giao được hay không."
+    },
+    "q8wd": {
+      "source_hash": "7254d2396f8a",
+      "text": "Vòng đệm có lỗ xuyên vẫn có thể có bề mặt liền kín quanh khoảng trống ở giữa."
+    },
+    "ip0k": {
+      "source_hash": "e19fccd1f508",
+      "text": "Thành ngoài nối mặt trên, mặt trên nối thành trong lỗ, rồi qua mặt đáy nối lại."
+    },
+    "pqc3": {
+      "source_hash": "487dfedb4993",
+      "text": "Vì vậy, kín nghĩa là bề mặt vật liệu không hở mối nối, không bắt buộc lấp đặc phần giữa."
+    },
+    "h0ab": {
+      "source_hash": "2f3eba2f0f6b",
+      "text": "Mẫu có lỗ dùng 512 tam giác; phản ví dụ lấp lỗ dùng 256."
+    },
+    "ni1q": {
+      "source_hash": "bf0036038b4e",
+      "text": "Số mặt gấp đôi chỉ nói cách chia lưới lần này, không phải điểm chất lượng."
+    },
+    "s8d7": {
+      "source_hash": "451202da75cb",
+      "text": "Khung bao và độ kín chưa dò đường xuyên giữa. Giờ phải đổi vị trí kiểm tra."
+    },
+    "qhwk": {
+      "source_hash": "b0ff2e117723",
+      "text": "Lỗ yêu cầu nằm ở tâm, xuyên từ đáy lên mặt trên theo chiều dày."
+    },
+    "u98g": {
+      "source_hash": "db512fe298a2",
+      "text": "Một lỗ ở chỗ khác, hay vòng tròn vẽ trên mặt, đều không thay được đường xuyên này."
+    },
+    "rk1x": {
+      "source_hash": "3205fa814f4b",
+      "text": "Ở cả hai mẫu, đáy nằm tại 0; mặt trên nằm ở độ dày ghi trong thông số."
+    },
+    "a6o8": {
+      "source_hash": "49bf205f8e52",
+      "text": "Giải nén tài liệu vào cùng thư mục, rồi mở trang xem mô hình kèm theo bằng trình duyệt."
+    },
+    "qqjh": {
+      "source_hash": "333693d1e7a9",
+      "text": "Chuyển giữa hình chiếu trên và cạnh để xem riêng kích thước ngoài và đường xuyên giữa."
+    },
+    "wmo7": {
+      "source_hash": "5c7a312c0e0c",
+      "text": "Muốn kiểm tra tệp gốc, giữ tệp thông số bên cạnh và dùng cùng chương trình đọc tam giác."
+    },
+    "t7wu": {
+      "source_hash": "9f87381477f8",
+      "text": "Mở terminal trong thư mục tài liệu, dán toàn bộ lệnh trên màn hình."
+    },
+    "zx72": {
+      "source_hash": "8c51ab90d083",
+      "text": "Lệnh đọc mẫu có lỗ và bộ thông số bên ngoài vừa rồi."
+    },
+    "a2bm": {
+      "source_hash": "0abb1a553b20",
+      "text": "Trình kiểm tra đối chiếu tọa độ và tam giác trong tệp với cùng bộ thông số ngoài."
+    },
+    "up0s": {
+      "source_hash": "65ec82799748",
+      "text": "Dán tiếp lệnh này, đổi đầu vào sang phản ví dụ cố ý lấp lỗ."
+    },
+    "sfk4": {
+      "source_hash": "93119dc8199e",
+      "text": "Giữ nguyên chương trình và thông số, chỉ đổi mô hình được kiểm tra."
+    },
+    "cmuz": {
+      "source_hash": "1e82e94e9dd2",
+      "text": "Như vậy mới tìm được vì sao cùng kích thước mà kết quả khác nhau."
+    },
+    "x3p9": {
+      "source_hash": "f86d30a28a93",
+      "text": "Bên ngoài đều đạt, vậy tam giác có chặn phần giữa không?"
+    },
+    "5len": {
+      "source_hash": "479cb6f41788",
+      "text": "Chương trình lấy mẫu trong lỗ, tính giao điểm với tam giác dọc chiều dày."
+    },
+    "5fad": {
+      "source_hash": "d6dabac47d06",
+      "text": "Lấy mẫu hữu hạn ghi số đường bị chặn, không bảo đảm cho lỗ hình dạng bất kỳ."
+    },
+    "l8p2": {
+      "source_hash": "e6dc61221635",
+      "text": "Ở mẫu có lỗ, không đường dò nào chạm vật liệu."
+    },
+    "it4f": {
+      "source_hash": "0ce141d0dbc6",
+      "text": "Ở phản ví dụ lấp lỗ, tất cả đường dò đều bị chặn."
+    },
+    "1b0m": {
+      "source_hash": "ee207c238450",
+      "text": "Tệp đầu video cùng kích thước mà không giao được, giờ đã có lý do trả lại cụ thể."
+    },
+    "v4r0": {
+      "source_hash": "f687a7f69668",
+      "text": "Cắt mô hình ở nửa chiều cao, mẫu có lỗ để lại hai đường bao trong và ngoài."
+    },
+    "8q11": {
+      "source_hash": "130f601b6663",
+      "text": "Bên trong đường bao nhỏ là rỗng; mẫu lấp lỗ chỉ có đường bao ngoài, tâm vẫn có vật liệu."
+    },
+    "qlqs": {
+      "source_hash": "8aeebb645b6c",
+      "text": "Kiểm tra ở các độ cao khác, phần giữa rỗng hay đặc vẫn khác nhau như vậy."
+    },
+    "2g8t": {
+      "source_hash": "02ebdaf48309",
+      "text": "Thể tích vật liệu cũng xác nhận phần thừa ở giữa từ một góc nhìn khác."
+    },
+    "dra2": {
+      "source_hash": "aa7e67a2faaa",
+      "text": "Mẫu lấp lỗ có thể tích lớn hơn rõ rệt, dù khung bao vẫn giữ kích thước vừa rồi."
+    },
+    "lxiq": {
+      "source_hash": "e4f3839fe9f8",
+      "text": "Phản ví dụ bị chặn ở giữa vừa rồi cũng không đạt điều kiện thể tích trong bộ thông số."
+    },
+    "yxau": {
+      "source_hash": "f2adf91f7d7d",
+      "text": "Có khoảng trống ở giữa rồi, chỗ hẹp nhất chắc đã đạt đường kính lỗ danh nghĩa chưa?"
+    },
+    "i9h8": {
+      "source_hash": "7ceb929b1c14",
+      "text": "Mẫu dùng 64 đoạn thẳng xấp xỉ đường tròn, các đỉnh nằm đúng bán kính chỉ định."
+    },
+    "b3ef": {
+      "source_hash": "c61874db21dd",
+      "text": "Đoạn thẳng giữa hai đỉnh nằm gần tâm hơn cung tròn."
+    },
+    "pypq": {
+      "source_hash": "30f702a0cae8",
+      "text": "Đường kính đo ở chỗ hẹp nhất khoảng 15.98 mm, nhỏ hơn đường kính lỗ danh nghĩa một chút."
+    },
+    "c8u0": {
+      "source_hash": "6e708932531d",
+      "text": "Chênh chưa tới 0.02 mm, nhưng nằm đúng chỗ thanh cần đi qua."
+    },
+    "vlft": {
+      "source_hash": "fa124d1b1a03",
+      "text": "Vì vậy, phải đối chiếu lỗ xuyên cần có với chỗ hẹp nhất, không chỉ xem có lỗ hay không."
+    },
+    "zzay": {
+      "source_hash": "ae6f973846c3",
+      "text": "Nếu yêu cầu đường kính lọt lòng nhỏ nhất ít nhất bằng đường kính lỗ danh nghĩa, mẫu này phải trả lại."
+    },
+    "c8hn": {
+      "source_hash": "a5125b7ff010",
+      "text": "Vì số đo vừa rồi cho thấy chỗ hẹp nhất nhỏ hơn yêu cầu mới ấy."
+    },
+    "qqez": {
+      "source_hash": "ace04997aafb",
+      "text": "Cùng vòng đệm mà siết mục đích dùng thì không thể giữ nhãn đạt của kiểm tra hữu hạn."
+    },
+    "5m5q": {
+      "source_hash": "231a2969bad4",
+      "text": "Viết yêu cầu đường kính lọt lòng nhỏ nhất mới thêm thành câu để bên nhận đối chiếu thế nào?"
+    },
+    "33ye": {
+      "source_hash": "cae95ccdd0eb",
+      "text": "Ghi trong hướng dẫn bàn giao: đường kính lọt lòng nhỏ nhất của thành phẩm ít nhất 16 mm."
+    },
+    "edz9": {
+      "source_hash": "5f015817fad5",
+      "text": "Đây là yêu cầu viết riêng, chưa phải trường đã được triển khai trong tệp thông số gốc."
+    },
+    "f106": {
+      "source_hash": "1b822456cba9",
+      "text": "Trình kiểm tra vừa rồi chưa xét điều kiện mới này; kết quả đạt không trả lời thay được."
+    },
+    "x4k6": {
+      "source_hash": "6753920eb84e",
+      "text": "Lần này chỉ đạt các phép kiểm tra trục chỉ định, kích thước, cạnh lưới và thể tích."
+    },
+    "1cox": {
+      "source_hash": "b36327fd2aac",
+      "text": "Ngoài lỗ hình dạng bất kỳ đã nói, tự giao cắt và thành mỏng nhất mọi chỗ cũng chưa kiểm."
+    },
+    "6rli": {
+      "source_hash": "facfa20da921",
+      "text": "Cắt lớp, vật liệu, chịu tải và in thật có dùng được không vẫn là việc tiếp theo."
+    },
+    "3w3j": {
+      "source_hash": "b43310e0409c",
+      "text": "Về tải tệp từ Kimi: trình kiểm tra này chỉ đọc STL văn bản, không đọc ảnh trực tiếp."
+    },
+    "kwmv": {
+      "source_hash": "30c68da26eb2",
+      "text": "Nhận định dạng lưới khác thì cũng phải dùng công cụ đọc đúng định dạng đó."
+    },
+    "cezr": {
+      "source_hash": "642a91565718",
+      "text": "Đổi đuôi tệp thành STL không biến nội dung ban đầu thành dữ liệu tam giác."
+    },
+    "d7t1": {
+      "source_hash": "f7f807b51d7e",
+      "text": "Muốn sửa lỗ nhiều lần, ngoài tệp lưới đang có, gói bàn giao còn thiếu gì?"
+    },
+    "t3r1": {
+      "source_hash": "45676ab928d3",
+      "text": "Bản xem trước giúp nhìn tổng thể; tệp lưới cho kiểm tra bề mặt thật."
+    },
+    "rwiy": {
+      "source_hash": "9c68d5bc003f",
+      "text": "Nếu còn sửa đường kính lỗ nhiều lần, nên lấy thêm tệp nguồn giữ lại cách chỉnh sửa."
+    },
+    "ul11": {
+      "source_hash": "f80b707aa13b",
+      "text": "Lưới tam giác như STL không tự giữ lại cách bạn vẽ đường tròn ban đầu."
+    },
+    "hrlr": {
+      "source_hash": "37b45190a2a2",
+      "text": "Còn Kimi thực sự xuất được đuôi tệp nào, hiện tôi chưa trực tiếp thử."
+    },
+    "vum2": {
+      "source_hash": "4a42896ae43f",
+      "text": "Mô tả tải tài nguyên để in chưa thể xem là hướng dẫn xuất STL đã được kiểm chứng."
+    },
+    "cen6": {
+      "source_hash": "62a3c8bf0a8c",
+      "text": "Khi thử, hãy rõ quyền tài khoản và tệp thực nhận, rồi mới chọn công cụ tiếp nhận."
+    },
+    "oe9l": {
+      "source_hash": "0384e3d51956",
+      "text": "Tôi sẽ giao cùng bộ tệp mô hình, thông số cùng phiên bản và kết quả kiểm tra vừa rồi."
+    },
+    "0gjn": {
+      "source_hash": "3e4a9688c27e",
+      "text": "Tệp gốc đổi phiên bản rồi, kết quả kiểm tra này còn bàn giao kèm được không?"
+    },
+    "fxx4": {
+      "source_hash": "aa73b231996e",
+      "text": "Tệp gốc thay đổi thì kết quả cũ chỉ thuộc tệp cũ, không tự cập nhật theo tệp mới."
+    },
+    "3ro5": {
+      "source_hash": "48195b652435",
+      "text": "Nhờ vậy, bên giao nói rõ đã làm gì, bên nhận cũng có thứ để kiểm tra lại."
+    },
+    "usyf": {
+      "source_hash": "62e1f245b7ab",
+      "text": "Trả phản ví dụ lấp lỗ vừa rồi cùng kết quả kiểm tra ấy mới có căn cứ sửa cụ thể."
+    },
+    "su1a": {
+      "source_hash": "f3778dfd1c3d",
+      "text": "Mẫu có lỗ giao kèm kết quả kiểm tra hữu hạn, chưa thể bảo đảm chế tạo khi chưa kiểm."
+    },
+    "vw33": {
+      "source_hash": "68eabd430f3e",
+      "text": "Nếu bên nhận thêm yêu cầu đường kính lọt lòng nhỏ nhất, hãy kèm so sánh từ phép đo độc lập."
+    },
+    "nqza": {
+      "source_hash": "bdf61d6ed30f",
+      "text": "Vẻ đẹp khiến bạn muốn tải. Mục đích rõ ràng mới quyết định tải rồi phải kiểm tra gì."
+    },
+    "45nk": {
+      "source_hash": "513b82dd0b3b",
+      "text": "Tệp khớp thông số, kết quả truy lại được đúng tệp đó, mới nói được dùng tới đâu."
+    },
+    "70ym": {
+      "source_hash": "3d0791b9b4c7",
+      "text": "Điều vòng đệm này cần bàn giao là câu trả lời mà bên nhận có thể tự kiểm tra lại."
+    }
+  }
+}
