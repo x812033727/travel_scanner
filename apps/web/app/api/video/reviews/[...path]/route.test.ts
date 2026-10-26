@@ -10,12 +10,13 @@ const context = (...path: string[]) => ({ params: Promise.resolve({ path }) });
 describe("video review proxy for the pipeline", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  it("knows exactly the three pipeline routes", () => {
+  it("knows exactly the pipeline routes", () => {
     expect(reviewRoute(["ai-model-choice"], "PUT")?.kind).toBe("project");
     expect(reviewRoute(["ai-model-choice"], "GET")?.kind).toBe("project");
     expect(reviewRoute(["ai-model-choice", "reviews"], "POST")?.kind).toBe("review");
     expect(reviewRoute(["ai-model-choice", "files", SHA], "PUT")?.maxBytes).toBe(PART_MAX_BYTES);
-    for (const [path, method] of [[["ai-model-choice", "files", SHA], "GET"], [["..", "reviews"], "POST"], [["Upper"], "GET"], [["v", "files", "not-a-hash"], "PUT"], [["v", "reviews", "x"], "POST"]] as const) {
+    expect(reviewRoute(["ai-model-choice", "files", SHA], "GET")?.kind).toBe("download");
+    for (const [path, method] of [[["ai-model-choice", "files", "not-a-hash"], "GET"], [["ai-model-choice", "files", SHA], "POST"], [["..", "reviews"], "POST"], [["Upper"], "GET"], [["v", "files", "not-a-hash"], "PUT"], [["v", "reviews", "x"], "POST"]] as const) {
       expect(reviewRoute([...path], method)).toBeNull();
     }
   });
@@ -40,6 +41,46 @@ describe("video review proxy for the pipeline", () => {
     const response = await PUT(request, context("ai-model-choice", "files", SHA));
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ received: [0], complete: true });
+  });
+
+  it("streams an attachment back with its range, never caching it", async () => {
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      expect(url).toBe(`http://localhost:8000/api/v1/video/reviews/ai-model-choice/files/${SHA}`);
+      const headers = new Headers(init?.headers);
+      expect(headers.get("authorization")).toBe(`Bearer ${TOKEN}`);
+      expect(headers.get("range")).toBe("bytes=0-3");
+      expect(headers.has("cookie")).toBe(false);
+      return new Response(new Uint8Array([1, 2, 3, 4]), {
+        status: 206,
+        headers: { "content-type": "video/mp4", "content-range": "bytes 0-3/10", "content-length": "4", etag: `"${SHA}"`, "set-cookie": "x=1" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const request = new NextRequest(`https://mokaair.com/api/video/reviews/ai-model-choice/files/${SHA}`, {
+      headers: { Authorization: `Bearer ${TOKEN}`, Cookie: "travel_access=session", Range: "bytes=0-3" },
+    });
+    const response = await GET(request, context("ai-model-choice", "files", SHA));
+    expect(response.status).toBe(206);
+    expect(response.headers.get("content-range")).toBe("bytes 0-3/10");
+    expect(response.headers.get("etag")).toBe(`"${SHA}"`);
+    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(response.headers.get("x-content-type-options")).toBe("nosniff");
+    expect(response.headers.has("set-cookie")).toBe(false);
+    expect(new Uint8Array(await response.arrayBuffer())).toEqual(new Uint8Array([1, 2, 3, 4]));
+  });
+
+  it("drops a malformed range and passes an API refusal back as JSON", async () => {
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      expect(new Headers(init?.headers).has("range")).toBe(false);
+      return Response.json({ code: "video_review_file_not_found" }, { status: 404 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const request = new NextRequest(`https://mokaair.com/api/video/reviews/v/files/${SHA}`, {
+      headers: { Authorization: `Bearer ${TOKEN}`, Range: "bytes=0-3, 5-9" },
+    });
+    const response = await GET(request, context("v", "files", SHA));
+    expect(response.status).toBe(404);
+    expect(await response.json()).toEqual({ code: "video_review_file_not_found" });
   });
 
   it("refuses before forwarding: no token, an unknown route, a part without its query", async () => {

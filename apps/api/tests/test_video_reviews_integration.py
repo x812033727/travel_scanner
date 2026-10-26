@@ -24,7 +24,7 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoTool
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
-from app.video_reviews import dub_retry
+from app.video_reviews import dub_retry, tool_files
 from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
@@ -215,6 +215,12 @@ async def test_a_video_goes_from_report_to_decision_and_back_to_the_pipeline(
         assert path.read_bytes() == b"new cut!" and content_type == "video/mp4"
         with pytest.raises(AppError):
             await service.file_for_admin(session, store, slug, old_cut)
+        # The video tool reads back what a live review lists, never a rejected or superseded one.
+        tool_path, _ = await tool_files.file_for_tool(session, store, slug, new_cut)
+        assert tool_path.read_bytes() == b"new cut!"
+        with pytest.raises(AppError) as gone:
+            await tool_files.file_for_tool(session, store, slug, old_cut)
+        assert gone.value.code == "video_review_file_not_found"
 
         audit = await session.scalars(
             select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
