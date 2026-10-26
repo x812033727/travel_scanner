@@ -1,0 +1,81 @@
+{
+  "exported_at": "2026-10-26T01:31:41.063Z",
+  "scope": "Read-only pure native composeMetadata export for English only; no package/final/reviewpush/backend run.",
+  "native_entrypoint": "tools/video/package/metadata.mjs composeMetadata",
+  "native_global_tags": [
+    "Claude",
+    "形式驗證",
+    "程式證明",
+    "Theorem",
+    "Rocq",
+    "C程式",
+    "AI科技"
+  ],
+  "en": {
+    "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees｜CC Subtitles",
+    "description": "Why does a program with only 8 bytes of capacity accept length 255?\nFor anyone who wants to understand AI-written code proofs or asks AI to edit code: we keep reproducible records of accepting valid inputs and of whether execution ends.\n\nWe make the requirements explicit, then fix two real C examples and check their results.\n\nOn 2026-10-22, Anthropic and Theorem published joint research. The study reports 239 entry points across 123 libraries; the public release cited here contains 60 entry points across 25 libraries. The statement that no halts proof is provided applies only to that public release, not to the entire study.\n\nOur original local guard has n=0..255 and a capacity of 8 bytes, with 1 of those bytes reserved for the terminator. It only decides acceptance. A separate, independent program checks the return after counting. Methods: actual C execution, exhaustive enumeration, propositional SAT for the guard, and a finite control graph for the loop. We did not run the vendor's Rocq checker.\n\nOriginal C code, execution results, and the complete source bundle: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nThe original SVG diagrams were redrawn for this video from program results and the official workflow. They are not presented as product UI footage.\n\n📌 Chapters\n00:00 Local check accepts 255\n00:24 Record the valid lengths\n01:50 Keep 256; reject the input\n03:37 Reject-all rejects valid input\n04:40 A cycle in the return check\n06:45 Match formal proof conditions\n09:08 Record your own requirements\n\n📚 Sources\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Image credits\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #formalverification #AI新聞拆解"
+  },
+  "native_compose_result": {
+    "problems": [],
+    "metadata": {
+      "slug": "claude-formal-verification-255",
+      "default_language": "zh-TW",
+      "category_id": 28,
+      "made_for_kids": false,
+      "privacy_status": "private",
+      "title": "Claude形式驗證研究：用255看懂程式保證｜CC字幕",
+      "description": "容量只有8byte，為什麼長度255會被接受？\n給想看懂AI程式證明、會請AI改程式的你；接受合法輸入和能否結束，分別留下可重跑紀錄。\n\n把條件寫清楚，再用兩個真實C範例修正並核對結果。\n\n2026-10-22，Anthropic與Theorem公開合作研究。研究報告239個入口／123個函式庫；本片引用的公開release為60個入口／25個函式庫。僅該公開release未提供halts命題的證明，不外推整個研究。\n\n本地原創guard限定n=0..255、容量8byte、另需1byte結尾，只執行接受判斷；另一支獨立程式檢查計數後的返回。方法是實際C執行、完整列舉、guard命題SAT與loop有限控制圖，未執行供應商Rocq checker。\n\n原創C、執行結果及完整來源資料包：https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n原創SVG為本片依程式結果與官方流程重繪，沒有冒充產品操作畫面。\n\n📌 章節\n00:00 本地檢查竟接受255\n00:24 紀錄先寫下能收哪些長度\n01:50 總長留下256，檢查改判拒絕\n03:37 全部拒絕，也拒了合法輸入\n04:40 返回欄遇到一個循環\n06:45 紀錄對上正式證明的條件\n09:08 把自己的要求寫進紀錄\n\n📚 參考資料\nAnthropic：Claude形式驗證研究：https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README：https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型：https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 圖片來源\nMokaair原創概念圖1（原創；保留權利）\nMokaair原創概念圖2（原創；保留權利）\nMokaair原創概念圖3（原創；保留權利）\nMokaair原創概念圖4（原創；保留權利）\nMokaair原創概念圖5（原創；保留權利）\nMokaair原創概念圖6（原創；保留權利）\nMokaair原創專用縮圖：接受判斷（原創；保留權利）\nMokaair原創C：guard.c（原創；保留權利）\nMokaair原創C：loop.c（原創；保留權利）\nMokaair原創專用縮圖SVG（原創；保留權利）\n\n#Claude #形式驗證 #AI新聞拆解",
+      "tags": [
+        "Claude",
+        "形式驗證",
+        "程式證明",
+        "Theorem",
+        "Rocq",
+        "C程式",
+        "AI科技"
+      ],
+      "localizations": {
+        "en": {
+          "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees｜CC Subtitles",
+          "description": "Why does a program with only 8 bytes of capacity accept length 255?\nFor anyone who wants to understand AI-written code proofs or asks AI to edit code: we keep reproducible records of accepting valid inputs and of whether execution ends.\n\nWe make the requirements explicit, then fix two real C examples and check their results.\n\nOn 2026-10-22, Anthropic and Theorem published joint research. The study reports 239 entry points across 123 libraries; the public release cited here contains 60 entry points across 25 libraries. The statement that no halts proof is provided applies only to that public release, not to the entire study.\n\nOur original local guard has n=0..255 and a capacity of 8 bytes, with 1 of those bytes reserved for the terminator. It only decides acceptance. A separate, independent program checks the return after counting. Methods: actual C execution, exhaustive enumeration, propositional SAT for the guard, and a finite control graph for the loop. We did not run the vendor's Rocq checker.\n\nOriginal C code, execution results, and the complete source bundle: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nThe original SVG diagrams were redrawn for this video from program results and the official workflow. They are not presented as product UI footage.\n\n📌 Chapters\n00:00 Local check accepts 255\n00:24 Record the valid lengths\n01:50 Keep 256; reject the input\n03:37 Reject-all rejects valid input\n04:40 A cycle in the return check\n06:45 Match formal proof conditions\n09:08 Record your own requirements\n\n📚 Sources\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Image credits\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #formalverification #AI新聞拆解"
+        }
+      },
+      "chapters": [
+        {
+          "at": "00:00",
+          "title": "本地檢查竟接受255"
+        },
+        {
+          "at": "00:24",
+          "title": "紀錄先寫下能收哪些長度"
+        },
+        {
+          "at": "01:50",
+          "title": "總長留下256，檢查改判拒絕"
+        },
+        {
+          "at": "03:37",
+          "title": "全部拒絕，也拒了合法輸入"
+        },
+        {
+          "at": "04:40",
+          "title": "返回欄遇到一個循環"
+        },
+        {
+          "at": "06:45",
+          "title": "紀錄對上正式證明的條件"
+        },
+        {
+          "at": "09:08",
+          "title": "把自己的要求寫進紀錄"
+        }
+      ]
+    }
+  },
+  "input_sha256": {
+    "source": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "lexicon": "676a16faa053336894bd0461018ffdfd4582c3f68fce53571a2325c7b5faaf69",
+    "timeline": "bdd09edbbec26deb81f4d125c48401b7c063171fbb7a1df4779fc137a5f72bb2",
+    "en_i18n": "2c01a9b4bf57687a9d455bc425af7f7467239c36e0c1b6ddde164e559c8a95da"
+  }
+}

@@ -38,7 +38,7 @@ scope:
 - [x] 正常12段上傳主體候選完整1080p，server assembly驗SHA／大小並authenticated讀回evidence角色；保留pending及原payload／QA。
 - [x] 八語105句／7章、metadata、縮圖overlay／獨立文字審稿及native修正完成；歷史自審／獨審與application已封存。
 - [x] EN105／105真音檢與嚴格當前proof完成，正常4段server組SHA／大小並authenticated讀回dub_en／evidence_en_m4a；全八語DOD仍未勾。
-- [ ] 補齊合法官方品牌片頭尾與guard／採用；若時間軸或bytes改變，重新綁定成片及各語媒體依賴。
+- [ ] 將已正常取得於隔離base的官方5/21 v4_416c品牌片頭尾驗證／採用到第三片；若時間軸或bytes改變，重新綁定成片及各語媒體依賴。
 - [ ] 八語翻譯獨立審查、逐語合成與音檢、上架包及後臺檔案讀回。
 
 ## How to verify
@@ -70,10 +70,21 @@ scope:
 見[production-result](../../docs/videos/claude-formal-verification-255/production-result.md)、[production-progress](../../docs/videos/claude-formal-verification-255/production-progress.json)、[localization-review](../../docs/videos/claude-formal-verification-255/localization-review.md)與[public receipts](../../docs/videos/claude-formal-verification-255/public-receipt-index.json)。未提交YouTube公開、合併或部署。
 
 
-## Current EN incremental delivery snapshot（2026-10-26T01:05:03.510145Z）
+## Historical EN audio-only snapshot（2026-10-26T01:05:03.510145Z）
 
 英文音訊已驗收及後臺交付1／8；JA初次ASR進行中、未通過，其餘六語未完成。原生EN初檢99／105接受、6旗；兩輪原句retake為103／105、2旗與104／105、1旗，一次listener修詞後105／105、0 flags／unchecked。80 exact／21 Jev／4 second exact，cgit為Jev .89。原始付費階段、2 retake、1 listener及最初stage schema錯誤REVISE均另檔保留。
 
 EN M4A94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699、14552825 bytes、560.505秒、−14 LUFS／TP−2.0。PCM560.433333秒與AAC tail0.071667秒分列。00:47:37正常4段server組SHA／大小並authenticated角色metadata讀回dub_en／evidence_en_m4a；不是remote binary GET。final仍pending，main c8f4與歷史QA11不變，未改approval、語言選擇或提交正式language batch。
 
 原23:07快照是歷史狀態，0／8沒有被倒改成當時已完成。當前仍缺正式品牌片頭尾，其餘七語音檢／交付、actual-dub-timed CC、metadata／package及正式批次；all_eight_ready=false／overall=false。CC仍為原narration草稿，不能用主體QA11冒稱後續語言完成。見[languages-result](../../docs/videos/claude-formal-verification-255/languages-result.md)、[EN嚴格proof](../../docs/videos/claude-formal-verification-255/localization/en-audio-audit.rich-stage-pass.json)及[EN後臺摘要](../../docs/videos/claude-formal-verification-255/localization/en-delivery-verification.json)。
+
+
+## Current checked EN assets／JA R1 snapshot（2026-10-26T02:57:52.837112+00:00）
+
+Root明確委派本輪文件唯一owner為/root/forty_final_reader，沿用本票既有claim；僅文件／安全proof副本，不改source、i18n（含JA）、媒體，不commit／stage／POST。EN音訊105PASS及M4A雙roles不變；02:27:03.829Z真新增actual-dub108cue／105ID字幕、native title-description與實際觀看縮圖四檔／六roles，server SHA／大小驗證及authenticated讀回完成。原files／payload／QA／choices及final pending保留，無remote binary GET、正式language batch或server approval。見[EN資產交付摘要](../../docs/videos/claude-formal-verification-255/localization/en-caption-assets-delivery-verification.json)。
+
+- [x] EN actual-dub SRT／VTT、native標題說明、root實看縮圖經checked-assets正常交付與讀回；1／8增量範圍。
+- [ ] JA R1真105checked／91accepted／14flags／0unchecked尚未ready；全域新TTS／ASR hold、未開始R2，其餘六語未完成。
+- [ ] 第三c8f套用正式片頭尾及重新綁定待做；官方5/21 v4_416c已正常取得於隔離base，早期缺package失敗只作歷史。
+
+早期missing-thumbnail誤判與guard REVISE保留，後續superseding及137pureguards收據另列。八語全體及overall仍false，沒有把本次metadata附件等同正式language batch；[當前八語狀態](../../docs/videos/claude-formal-verification-255/languages-result.md)及[索引](../../docs/videos/claude-formal-verification-255/public-receipt-index.json)可回查。

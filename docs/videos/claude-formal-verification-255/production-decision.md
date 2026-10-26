@@ -9,7 +9,7 @@
 
 本片主題：Claude形式驗證研究，用兩個本片自寫的C程式與255邊界，完成接受／拒絕／返回條件的可重跑紀錄。官方239/123、public release60/25與本地各256輸入分列；不聲稱重現Rocq或vendor checker。
 
-正式交付為繁中主片加en、ja、ko、es、pt、id、vi、th各自標題說明、CC和真正檢查完成的可下載M4A，直接送本片後臺後讀回伺服器驗SHA的角色／大小。以下時間段保存各階段原實況；最新2026-10-26T01:05:03.510145Z快照為繁中主體候選與EN已交，英文音檢／下載交付1／8、JA初次ASR未通過。主體歷史QA11／11、正式品牌片頭尾缺件與其餘七語未完成仍分列，詳[production-result.md](production-result.md)與[languages-result.md](languages-result.md)。沒有執行YouTube上傳／公開、合併或部署。
+正式交付為繁中主片加en、ja、ko、es、pt、id、vi、th各自標題說明、CC和真正檢查完成的可下載M4A，直接送本片後臺後讀回伺服器驗SHA的角色／大小。以下時間段保存各階段原實況；最新快照為繁中主體候選及EN音訊／actual-dub字幕／native標題說明／已看縮圖已交，音訊驗收1／8；JA R1真105／91／14／0，仍未通過。主體歷史QA11／11不改；官方素材已在隔離base取得，但第三尚未套用，七語仍未完成，詳[production-result.md](production-result.md)與[languages-result.md](languages-result.md)。沒有執行YouTube上傳／公開、合併或部署。
 
 後臺：https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255
 
@@ -65,3 +65,12 @@ verify-2實際PASS，0待修、0未找到；逐句對齊、完整C與SAT查詢�
 站主既有八語授權下，EN正常合成／fit／量測、原生音檢及嚴格當前WAV核驗均完成。初次音檢6旗，兩輪原句retake後為2／1旗，僅剩cgit進入一次保義listener修詞；最後105／105、80 exact／21 Jev／4 second exact，cgit為Jev .89而非exact。原付費歷史、轉寫、兩輪重錄與第一次rich-stage錯誤REVISE均完整保留，不清旗或改舊收據。
 
 00:47:37正常4段上傳英文M4A完成server SHA／大小組裝驗證與authenticated角色metadata讀回，dub_en／evidence_en_m4a均94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699／14552825 bytes。final仍pending，原主體QA／payload欄位、approval／語言選擇保留；無remote binary GET、無language batch。這是1／8音訊交付，不是八語metadata／CC／package或官方片頭尾完成。JA在本快照仍為initial ASR進行中，不預寫PASS。見[languages-result](languages-result.md)。
+
+
+## EN字幕資產實際交付與JA R1（2026-10-26T02:57:52.837112+00:00）
+
+Root既有委派下，依當前105句EN音訊獨審、native actual-dub108cue／105ID字幕、完整metadata重建及真root圖像觀看pin，正常checked-assets工具於02:27:03.829Z真完成四檔／六roles附件；同pending final的所有舊files／payload／QA／choices保留。原M4A雙role仍94d4、sourcee6／speech8028／mainc8f固定。見[交付摘要](localization/en-caption-assets-delivery-verification.json)與[安全完整收據](localization/en-caption-assets-backend-receipt.json)。不nativefinal重送、不送正式languagebatch、不變serverapproval，沒有遠端binary下載核驗。
+
+原missing-thumbnail誤判及guard peer REVISE不覆寫；superseding825820 proof實核八個native圖，root實際view收據b9380c綁EN23ce與contact5a051。ENoverlay可讀／無裁切，內嵌原創圖繁中文字照實保留。JA原句R1真exit1、105checked／91accepted／14flags／0unchecked；R2及所有新TTS／ASR均hold，沒有為音檢改frozen繁中或清旗。
+
+官方5/21 v4_416c素材已正常取得於隔離base，這是新進度，不能再說全局無bytes；但第三c8f仍未套用正式頻道片頭尾，早期missing-package失敗仍是當時真實歷史。品牌換版須獨立採用與重新綁定，八語／wholepackage／overall仍false。

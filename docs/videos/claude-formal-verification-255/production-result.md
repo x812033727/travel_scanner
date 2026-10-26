@@ -1,6 +1,6 @@
 # 第三片製作與交付快照
 
-截至2026-10-26T01:05:03.510145Z，繁中主體候選的完整1080p與已核驗英文M4A均已送達[後臺影片頁](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)。英文音檢及下載交付為1／8，日文正在初次ASR、尚未通過；其餘六語未完成。主體核心QA歷史11／11與final pending不變，正式頻道片頭尾仍缺，整體製作未完成。
+截至2026-10-26T02:57:52.837112+00:00，繁中主體候選與EN實測M4A已交後臺；EN的actual-dub字幕、標題說明及已實際觀看縮圖亦於02:27:03.829Z完成六角色附件讀回。已通過音檢及交付為1／8。JA原句R1已真結束：105 checked／91 accepted／14 flags／0 unchecked，尚未ready，其餘六語未完成。final仍pending、八語批次未提交、overall=false。官方5/21 v4_416c素材已正常取得於隔離base，第三c8f主體候選尚未套用正式片頭尾。
 
 ## 凍結版本與實測
 
@@ -23,9 +23,9 @@
 
 驗證是伺服器上傳組裝及有身分的role metadata讀回，**不是遠端二進位下載後重算SHA**。見[公開交付摘要](main-delivery-verification.json)。原始收據完整SHA `fed7607d0871f0f5e7db6c267f756c79b7dad3ea42a0befd2a2a0dae81043430`保留；公開版本是白名單摘要，不複製原始server／project回覆。
 
-本producer沒有已安裝正式品牌bookend package／default；正式頻道片頭尾動畫及branding.json仍缺。靜態outro及QA對null branding的容許不能當成品牌完成。待合法官方素材、驗證及guard後另行處理，追蹤[品牌缺件任務](../../../tasks/open/2026-10-25-local-first-build-without-branding.md)。若換版改時間軸或bytes，所有受影響CC／M4A／package／交付讀回都要重新綁定；此快照沒有改媒體或核准。
+第三片當時合成因未安裝正式品牌package而先產主體候選。官方素材現在已由正常途徑取得於隔離base；第三c8f仍未套用，靜態outro及QA對null branding的容許不能當成品牌完成。須另行驗證／採用及重新綁定，追蹤[品牌缺件任務](../../../tasks/open/2026-10-25-local-first-build-without-branding.md)。若換版改時間軸或bytes，所有受影響CC／M4A／package／交付讀回都要重新綁定；此快照沒有改媒體或核准。
 
-## 英文增量交付（2026-10-26T01:05:03.510145Z快照）
+## 歷史英文音訊增量交付（2026-10-26T01:05:03.510145Z快照）
 
 2026-10-26T00:27:20.776Z，英文原生音檢真正105／105、0 flags／unchecked；嚴格當前音訊核驗於00:41完成，80 exact、21 native Jev、4實際第二轉寫exact。cgit是Jev .89採認，不能改稱exact。101個實測視窗皆fit、最大tempo 1.15，沒有skipped或kept take。見[當前EN嚴格proof](localization/en-audio-audit.rich-stage-pass.json)。
 
@@ -37,13 +37,19 @@
 
 這次只交英文音訊，不宣稱八語或字幕整包完成。CC仍為narration時間軸草稿，必須按actual dub timings重產／核對；官方品牌片頭尾與整體DOD仍未完成。
 
+## EN字幕／說明／縮圖已交付
+
+02:27:03.829Z，正常checked-assets流程上傳四份資產，server assembly核SHA／大小，再authenticated讀回六角色：`captions_en`、`evidence_en_cc_srt`、`evidence_en_cc_vtt`、`description_en`、`evidence_en_metadata_txt`、`thumbnail_en`。原M4A雙角色仍94d4、105／105音檢不變；主體c8f、所有舊files／payload／QA與choices保留，final仍pending。這不是遠端binary GET、server approval或正式language batch。見[交付摘要](localization/en-caption-assets-delivery-verification.json)及[完整安全收據](localization/en-caption-assets-backend-receipt.json)。
+
+EN原生字幕為actual dub timing，108 cues覆蓋105個source ID；SRT `c9511097d17f1600ef8ab366cf084ad4316080271b958de349f1e0bb3288f688`，VTT `60d2960b3072d0e8db60b096c99fa5aea50114ae39703081e34773050e5693ec`，零cue問題。Title及native composed description檔SHA `bb976ea9cb3e968da45ed74f5dd402ea7fb6b1b1a584608b5505652ed40e87ef`；實際觀看EN縮圖SHA `23ceca2fe0562b0ae9422cb583608ceea15d99c460f748ac584d1955540dad12`。八張native redraw與root contact view有據；原創圖內「容量8byte／接受」仍是繁中，沒有宣稱全部像素都翻譯。見[當前native資產proof](localization/en-cc-assets-current-proof.json)與[root視覺收據](localization/en-thumbnail-root-view.json)。
+
+早先以檔名搜尋漏判縮圖不存在的[原收據](localization/en-cc-assets-earlier-missing-thumbnail-note.json)不覆寫；825820…9496的superseding proof實查八圖、native hash與完整bytes。當時native final沒有送CC；本次六角色才是實際附件交付，不把歷史本地準備倒稱已送。
+
 ## 八語與待辦
 
-en、ja、ko、es、pt、id、vi、th各105句、7章、metadata及縮圖三欄已準備，三輪自審、獨立審稿及原生修正收據見[localization-review.md](localization-review.md)與[收據索引](public-receipt-index.json)。所有歷史review的待修／預算未解原文保留，以後續application說明已採用內容，不把文字審稿當音檢。
+- EN已交音訊及字幕／標題說明／縮圖；仍未提交正式語言批次，整包不冒稱獲准。
+- [JA R1真實capture](localization/ja-retake1-check.capture.json)為exit1、105／91／14／0；21句新WAV、84句原檔不變。u2xw先前OTHER後的一次合法ASR重試仍旗，沒有新增其TTS或手清旗。R2尚未啟動，TTS／ASR均hold。
+- 其餘六語未完成音訊；JA dub-timed CC與其他本地草稿仍未驗收／交付。ES四、PT二、ID二共8項閱讀速度advisories保留；八語文字審查與早期39項靜態超額是歷史準備資料，不等同實際fit。
+- 主體歷史QA11／11、敘事9／13 false及必要NO均保留；官方bookends待套用、全八語與overall DOD仍未完成。沒有YouTube公開、合併或部署。
 
-- 已通過嚴格音檢並送達後臺的外語為1／8（en）。JA有未驗收M4A候選、初次ASR進行中；其餘六語待完成。產生檔案與完成交付分列，全八語整包ready仍為false。
-- 九語CC目前都使用繁中narration時間軸。ES四項、PT兩項、ID兩項，共8個閱讀速度advisories照實保留；完成各語實際配音fit／音檢後，須按各語真實時間軸重產與審查。
-- 八張本地化縮圖由root於23:06實際查看contact；各語overlay及數字可讀、無裁切。原創guard內嵌圖仍含「容量8byte／接受」等繁中文字；正常native只翻tag／headline／sub，不能說所有像素內文字均已翻譯。
-- 本輪唯讀native lint為0 errors／7 warnings：短冷開、255／256必要重現，加ES／PT／VI／TH手機標題寬度advisories；沒有為消警告改i18n。
-
-待完成正式品牌片頭尾、八語實際合成／fit／音檢／獨審及逐語下載交付，再完成實際dub時間軸CC、metadata／package及正式語言批次。`overall_production_completed=false`，沒有YouTube公開、合併或部署。機器可讀結果見[production-progress.json](production-progress.json)。
+見[languages-result.md](languages-result.md)、[localization-review.md](localization-review.md)、[production-progress.json](production-progress.json)與[收據索引](public-receipt-index.json)。

@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-26T01:05:03.510145Z",
+  "observed_at": "2026-10-26T02:57:52.837112+00:00",
   "status": "in-progress",
-  "stage": "body_candidate_and_EN_checked_audio_delivered_1of8_JA_initial_ASR_running_bookends_missing",
+  "stage": "body_candidate_EN_audio_CC_metadata_thumbnail_delivered_1of8_JA_R1_14flags_held_bookends_unapplied",
   "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
   "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
   "speech_hash": "8028c7320d9cab29",
@@ -29,7 +29,7 @@
     },
     "receipt": "main-body-candidate-verification.json",
     "receipt_sha256": "97a12d3aa0f8c2c7747baf86862d621f8de3a914906bc404939386ea2a95d603",
-    "scope": "Body candidate only; official channel intro/outro animation is not installed."
+    "scope": "Frozen third body candidate; official bytes now acquired in an isolated base, but no channel intro/outro applied to this c8f main."
   },
   "narration": {
     "ready": true,
@@ -140,6 +140,61 @@
         "receipt": "localization/en-delivery-verification.json",
         "receipt_sha256": "b18399c87be9bfaef5a4017576ac10792da025787eeac41a0474dec43f72c070"
       }
+    },
+    "incremental_checked_caption_assets": {
+      "en": {
+        "delivered_at": "2026-10-26T02:27:03.829Z",
+        "roles": [
+          {
+            "role": "captions_en",
+            "sha256": "c9511097d17f1600ef8ab366cf084ad4316080271b958de349f1e0bb3288f688",
+            "size": 10224,
+            "content_type": "text/plain"
+          },
+          {
+            "role": "evidence_en_cc_srt",
+            "sha256": "c9511097d17f1600ef8ab366cf084ad4316080271b958de349f1e0bb3288f688",
+            "size": 10224,
+            "content_type": "text/plain"
+          },
+          {
+            "role": "evidence_en_cc_vtt",
+            "sha256": "60d2960b3072d0e8db60b096c99fa5aea50114ae39703081e34773050e5693ec",
+            "size": 9908,
+            "content_type": "text/plain"
+          },
+          {
+            "role": "description_en",
+            "sha256": "bb976ea9cb3e968da45ed74f5dd402ea7fb6b1b1a584608b5505652ed40e87ef",
+            "size": 2921,
+            "content_type": "text/plain"
+          },
+          {
+            "role": "evidence_en_metadata_txt",
+            "sha256": "bb976ea9cb3e968da45ed74f5dd402ea7fb6b1b1a584608b5505652ed40e87ef",
+            "size": 2921,
+            "content_type": "text/plain"
+          },
+          {
+            "role": "thumbnail_en",
+            "sha256": "23ceca2fe0562b0ae9422cb583608ceea15d99c460f748ac584d1955540dad12",
+            "size": 94361,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "server_assembly_sha_and_size_validated": true,
+        "authenticated_role_metadata_readback_verified": true,
+        "remote_binary_download_performed": false,
+        "all_old_files_preserved": true,
+        "all_original_payload_fields_preserved": true,
+        "historical_main_qa_preserved_11_of_11": true,
+        "approval_changed": false,
+        "language_choice_changed": false,
+        "standard_dubs_payload_changed": false,
+        "language_batch_submitted": false,
+        "receipt": "localization/en-caption-assets-delivery-verification.json",
+        "receipt_sha256": "8126beb4a565032236a8b0dc88e37febbb99c2a48ae5480c6fe61e8da74ea970"
+      }
     }
   },
   "branding": {
@@ -150,7 +205,10 @@
     "overall_new_branding_rules_satisfied": false,
     "followup_task": "2026-10-25-local-first-build-without-branding",
     "followup_task_status": "open",
-    "scope": "Static outro card and QA accepting null branding do not establish installed official animations; legal official assets and guard must precede any replacement."
+    "scope": "Official channel assets are now available in an isolated base. Third c8f remains the previously delivered BODY CANDIDATE without those bookends; historical missing-at-build evidence is unchanged.",
+    "official_assets_acquired_in_isolated_base": true,
+    "official_assets_acquisition_authority": "Root confirmed normal acquisition of 5/21 v4_416c bytes; third current body candidate not changed.",
+    "official_assets_applied_to_current_main": false
   },
   "localization": {
     "locales": [
@@ -177,7 +235,7 @@
     "metadata_prepared": true,
     "language_thumbnails_prepared": 8,
     "cc_prepared_locales": 9,
-    "current_cc_timing": "narration",
+    "current_cc_timing": "en and ja use native current dub timings; only en is audio-checked/delivered, other tracks remain drafts",
     "actual_foreign_m4a_produced": 2,
     "actual_foreign_audio_passed": 1,
     "actual_foreign_audio_delivered": 1,
@@ -188,13 +246,13 @@
         "translation_sha256": "2c01a9b4bf57687a9d455bc425af7f7467239c36e0c1b6ddde164e559c8a95da",
         "static_budget_excess_count": 0,
         "cc_cues": 108,
-        "cc_timing": "narration",
+        "cc_timing": "dub",
         "cc_speed_warnings": [],
         "actual_audio_produced": true,
         "audio_check_passed": true,
         "download_delivered": true,
         "preparation_translation_sha256": "4b3531c22918db3168b00fa6ffdd4b1a7282caff145664b191e6ecd881c671c9",
-        "status": "checked_audio_delivered_CC_package_pending",
+        "status": "checked_audio_actual_dub_CC_title_description_thumbnail_backend_delivered_not_formal_batch",
         "checked": 105,
         "accepted": 105,
         "flags": 0,
@@ -218,25 +276,76 @@
         "delivered_at": "2026-10-26T00:47:37.352Z",
         "audio_proof": "localization/en-audio-audit.rich-stage-pass.json",
         "audio_proof_sha256": "a80eed3e56c18f7f400f7bae25fb1fdaee8197ecad0681cebfc1b115abea763d",
-        "cc_dub_timing_ready": false,
+        "cc_dub_timing_ready": true,
         "language_package_ready": false,
         "retake_rounds": 2,
-        "listener_reword_rounds": 1
+        "listener_reword_rounds": 1,
+        "cc_backend_delivered": true,
+        "cc_source_line_ids_covered": 105,
+        "metadata_title_description_backend_delivered": true,
+        "thumbnail_backend_delivered": true,
+        "metadata_tags_chapters_prepared": true,
+        "assets_delivered_at": "2026-10-26T02:27:03.829Z",
+        "assets_backend_roles": [
+          "captions_en",
+          "evidence_en_cc_srt",
+          "evidence_en_cc_vtt",
+          "description_en",
+          "evidence_en_metadata_txt",
+          "thumbnail_en"
+        ],
+        "assets_delivery_receipt": "localization/en-caption-assets-delivery-verification.json",
+        "assets_delivery_receipt_sha256": "8126beb4a565032236a8b0dc88e37febbb99c2a48ae5480c6fe61e8da74ea970"
       },
       "ja": {
         "translation_sha256": "de739653e8ac7e02f02fd67153f22749dda84babb5dc59fa1615f1035020fc41",
         "static_budget_excess_count": 1,
         "cc_cues": 122,
-        "cc_timing": "narration",
+        "cc_timing": "dub",
         "cc_speed_warnings": [],
         "actual_audio_produced": true,
         "audio_check_passed": false,
         "download_delivered": false,
         "preparation_translation_sha256": "0e59e9d50e655e111eef66235657095c3724304e939c7d727ed5e9bc79d08032",
-        "status": "initial_ASR_running_at_snapshot_not_passed",
-        "producer_phase_at_snapshot": "ja_initial_check_running",
-        "as_of": "2026-10-26T01:05:03.510145Z",
-        "language_package_ready": false
+        "status": "original_retake1_checked_14_flags_held_not_ready",
+        "producer_phase_at_snapshot": "ja_retake1_check_exit_1_held",
+        "as_of": "2026-10-26T01:56:54.695Z",
+        "language_package_ready": false,
+        "checked": 105,
+        "accepted": 91,
+        "flags": 14,
+        "unchecked": 0,
+        "check_exit_code": 1,
+        "retake_rounds": 1,
+        "listener_reword_rounds": 0,
+        "fit_shorten_rounds": 1,
+        "cc_dub_timing_ready": false,
+        "cc_backend_delivered": false,
+        "media_sha256": "eee485c9c022e43d3c32d293b1cbea498ffd56b56301145370367ea6fb7c2c69",
+        "media_bytes": 15549897,
+        "encoded_seconds": 560.505,
+        "original_R1_new_raw": 21,
+        "original_R1_unchanged_raw": 84,
+        "R1_billable_characters": 589,
+        "check_capture": "localization/ja-retake1-check.capture.json",
+        "check_capture_sha256": "b3e5bea97d2686b28c6eef29e5f29680dc44c2f010b4f8f9443dd563f90c23c4",
+        "flag_ids": [
+          "bpnn",
+          "c8r2",
+          "qwaw",
+          "femu",
+          "mvnc",
+          "yavq",
+          "zgkb",
+          "4bqi",
+          "u2xw",
+          "kq36",
+          "wi26",
+          "3u2q",
+          "bt2j",
+          "mhjn"
+        ],
+        "u2xw": "Initial definitive OTHER/no transcript; one authorized unchanged-WAV ASR retry in R1 now has two transcriptions but remains genuinely flagged. No TTS of u2xw and no manual clearing."
       },
       "ko": {
         "translation_sha256": "80beb85d3a43ed42fd67b3d49f5d5ac115a0f877de2772134c75de72380a3c91",
@@ -318,31 +427,34 @@
     },
     "receipt": "localization-preparation-snapshot.json",
     "receipt_sha256": "7c594e6d961f8deb8392fa276552ba55c3f9f02d8dd07c1de734ccee1829ba74",
-    "scope": "EN current local audio and backend delivery verified1/8 only; JA initialASR running, six others incomplete. Text/metadata/thumbnail/narration-CC preparation is historical; actual-dub CC/packages pending.",
+    "scope": "EN105 audio plus native actual-dub108cues/105IDs, title-description and viewed thumbnail delivered. JA R1 ended105checked/91accepted/14flags/0unchecked and is held. Six other languages incomplete; no formal batch.",
     "thumbnail_visual_review": "localized-thumbnail-review.json",
     "all_embedded_pixel_text_translated": false,
     "preparation_snapshot_observed_at": "2026-10-25T23:07:06Z",
     "static_budget_counts_are_historical": true,
-    "actual_foreign_m4a_produced_scope": "EN checked delivered + JA unverified candidate under initial ASR; not two ready locales",
-    "actual_dub_timed_CC_ready": 0,
-    "cc_draft_scope": "Historical narration-timed draft; EN/JA text freshness and actual-dub alignment not certified; regenerate/review against each real track.",
+    "actual_foreign_m4a_produced_scope": "EN checked/delivered and JA R1 unaccepted candidate; only one ready audio locale.",
+    "actual_dub_timed_CC_ready": 1,
+    "cc_draft_scope": "EN actual-dub CC is rebuilt and delivered. JA dub-timed CC and zh-TW/other six narration-timed CC remain local drafts under this proof; retain all eight ES/PT/ID speed advisories.",
     "incremental_en_receipt": "localization/en-delivery-verification.json",
     "incremental_en_receipt_sha256": "b18399c87be9bfaef5a4017576ac10792da025787eeac41a0474dec43f72c070",
     "producer_snapshot": "localization/en-production-history-snapshot.json",
-    "producer_snapshot_sha256": "14b050b3994db99a8795c87b598d193273e613c82c45818b160a78c0809da34c"
+    "producer_snapshot_sha256": "14b050b3994db99a8795c87b598d193273e613c82c45818b160a78c0809da34c",
+    "actual_dub_timed_CC_delivered": 1,
+    "current_assets_receipt": "localization/en-cc-assets-current-proof.json",
+    "current_assets_receipt_sha256": "825820a878899302568b79056374388476b5c82964e3496873a9358e1d379496"
   },
   "documentation_checks": {
     "native_lint_errors": 0,
     "native_lint_warnings": 7,
-    "native_lint_warning_scope": "Short opening, necessary 255/256 recurrences, and ES/PT/VI/TH phone-title width advisories; no i18n text modified.",
-    "last_checked_at": "2026-10-26T01:12:29.184079+00:00",
+    "native_lint_warning_scope": "Short opening, necessary 255/256 recurrences, ES/PT/VI/TH phone-title width advisories preserved.",
+    "last_checked_at": "2026-10-26T02:59:39.609342+00:00",
     "task_check_exit_code": 0,
     "task_files_validated": 2185,
     "relative_links_broken": 0,
-    "proof_index_entries_verified_before_check_receipt": 46,
-    "protected_files_unchanged": 36,
-    "receipt": "documentation-checks-en-snapshot.json",
-    "receipt_sha256": "1fb804deeca620e0f2cc1c62c66bb13456b1446d3caae0877a60855b80d05915",
+    "proof_index_entries_verified_before_check_receipt": 62,
+    "protected_files_unchanged": 2007,
+    "receipt": "documentation-checks-en-assets-snapshot.json",
+    "receipt_sha256": "bfcea75f6e1b13842ba487ed9c7dfc55b11f03da3418229f0332b9329b97fba9",
     "broad_samecode_tests_not_repeated": true
   },
   "formal_main_with_bookends_complete": false,
@@ -352,12 +464,19 @@
   "git_merge_performed": false,
   "deployment_performed": false,
   "pending": [
-    "Obtain/verify/install legally usable official channel intro/outro under the branding guard; do not call the current body candidate a complete formal final.",
-    "Finish JA initial ASR and six other foreign languages, then fit/audio-check and deliver the remaining seven; independently verify current WAVs/full intended text/decisions before incremental checked-M4A delivery.",
-    "Resolve or truthfully retain full-meaning static-budget overages through real audio fitting; do not delete assumptions, negations, numbers or release scope.",
-    "Regenerate/review all CC against actual dub timing; retain speed advisories, finish metadata/package checks, and submit/read back the formal language batch.",
-    "If branding changes timing or bytes, revalidate all affected final/CC/dub/package/readback dependencies; preserve old receipts and actual pending status."
+    "Apply verified official channel bookends to this third project only under a separately pinned/validated replacement; current c8f body candidate remains unchanged.",
+    "Await root release before any new JA TTS/ASR; R1 has14 actual flags, R2 has not started. Finish remaining seven audio locales with native fit/meter/check/current proof.",
+    "Finish six not-yet-produced languages and truthfully resolve real fixed-window overflows without removing conditions, negations, numbers or release scope.",
+    "Regenerate/review each remaining CC against its actual checked dub; EN108-cue/105-ID CC/title-description/thumbnail is now delivered but no formal language batch or whole package is approved.",
+    "Any branding/timeline/main-byte replacement requires new binding of affected main/dub/CC/package and backend roles, preserving all current and historical receipts."
   ],
   "body_candidate_delivery_complete": true,
-  "previous_snapshot_observed_at": "2026-10-25T23:07:06Z"
+  "previous_snapshot_observed_at": "2026-10-26T01:05:03.510145Z",
+  "production_hold": {
+    "new_TTS": true,
+    "ASR": true,
+    "JA_R2_started": false,
+    "reason": "Root global account429 pause and explicit single-round ASR coordination; no automatic retry or R2.",
+    "documentation_writer_did_paid_or_network_or_media_edits": false
+  }
 }

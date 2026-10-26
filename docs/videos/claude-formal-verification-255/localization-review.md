@@ -1,8 +1,14 @@
 # 第三片八語文字與媒體快照
 
-截至2026-10-26T01:05:03.510145Z，英文105／105嚴格音檢通過並已正常送達後臺，已驗收音訊交付1／8；JA初次ASR仍在跑、未通過，其餘六語未完成。完整現況見[languages-result.md](languages-result.md)。下方23:07表格與39項靜態超額是原文字準備的歷史快照，沒有倒改原判定；不是目前配音fit或交付數量。
+截至2026-10-26T02:57:52.837112+00:00，EN105／105音訊已驗收交付，actual-dub108cue／105ID字幕、native標題說明與實際觀看縮圖亦真送後臺並讀回六角色。JA原句R1已105 checked／91 accepted／14 flags／0 unchecked，未ready；其餘六語未完成，all_eight_ready與overall仍false，正式language batch未提交。見[languages-result.md](languages-result.md)。
 
-[EN嚴格proof](localization/en-audio-audit.rich-stage-pass.json)、[EN交付讀回摘要](localization/en-delivery-verification.json)及[原始付費／重錄／listener階段](localization/en-production-history-snapshot.json)另存。本次未重產CC，原有narration-timed草稿不冒稱已對齊當前EN／JA譯文或實際配音時間軸。all_eight_ready與overall仍false。
+[EN音訊proof](localization/en-audio-audit.rich-stage-pass.json)、[當前CC／metadata／八圖native proof](localization/en-cc-assets-current-proof.json)、[root實際視覺收據](localization/en-thumbnail-root-view.json)及[六角色交付摘要](localization/en-caption-assets-delivery-verification.json)範圍分列。原M4A雙role不變；server SHA組裝及authenticated metadata讀回不等於遠端binary下載或核准。字幕六角色附件是新增實際交付，不把早期native final或本地CC倒稱已送。
+
+[早先漏判縮圖的原記錄](localization/en-cc-assets-earlier-missing-thumbnail-note.json)與[helper早期REVISE](localization/en-caption-assets-helper-earlier-revise.json)照存；後續superseding proof及[137項peer guard驗證](localization/en-caption-assets-helper-peer-review.json)分別修正證據，未改舊收據、當前字幕／縮圖或媒體。
+
+只有EN CC已對真配音核驗並交付；JA雖原生使用dub timing仍是未驗收草稿，其餘CC草稿及ES／PT／ID共8速度advisories保留。八張overlay可讀，原創圖內繁中「容量8byte／接受」未全像素翻譯。官方5/21 v4_416c素材已在隔離base正常取得，但第三c8f未套用，不能宣稱正式品牌成片完成。
+
+以下23:07文字準備、靜態39項預算超額、narration-timed草稿及當時0／8是原歷史快照；不倒改為現時成功。當前JA證據另見[R1 capture](localization/ja-retake1-check.capture.json)，TTS／ASR hold、不啟動R2。
 
 ## 2026-10-25T23:07:06Z 文字準備歷史快照
 
