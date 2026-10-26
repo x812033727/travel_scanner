@@ -1,13 +1,13 @@
 ---
 id: 2026-10-25-check-audio-hint-terms-for-latin
 title: check-audio: hint terms for Latin-script dubs are word fragments
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-25T23:03:52Z
 created_at: 2026-10-25T23:03:35Z
-completed_at:
+completed_at: 2026-10-26T00:10:01Z
 branch:
 depends_on: []
 scope:
