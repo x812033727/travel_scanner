@@ -36,6 +36,8 @@ aa049f3c71407d5c9728f493dad7c79c8fce2116f85be9d71746077e3ce31b21
 
 繁中加八語的[實際SRT與VTT](captions/narration-timed/README.md)另附於文件。它們跟隨本片繁中旁白與正式片頭尾時間；保留47項閱讀速度注意事項，沒有聲稱外語配音已完成或通過音檢。
 
-上述公開下載連結已完整讀回，並加入[九語說明更新稿](description-drafts/README.md)。可下載[九語完整JSON](description-drafts/metadata9-draft.json)及[可直接閱讀的完整TXT](description-drafts/resource-metadata9-draft.txt)。它們是尚未採用的更新稿；目前後台九語metadata仍維持原值，正式上架包前須經正常流程採用與重審。教具或更新稿可下載不代表外語配音、語言批次、成片核准或上架包已完成。
+上述公開下載連結已完整讀回，並加入[九語說明更新稿](description-drafts/README.md)。可下載[九語完整JSON](description-drafts/metadata9-draft.json)及[可直接閱讀的完整TXT](description-drafts/resource-metadata9-draft.txt)。它們保留初次交付時尚未採用的歷史狀態；當時後台九語metadata仍維持原值。教具或更新稿可下載不代表外語配音、語言批次、成片核准或上架包已完成。
 
-台北2026-10-27 02:35，下載連結與九語完整說明更新稿已作為單一參考附件送到[本片後台](https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery)；同一筆待審的14個附件均經正常工具完整下載與逐檔SHA核對。[實際交付收據](receipts/production/resource-supplement/actual-backend-resource-delivery.json)保留結果；九語metadata原值仍未替換，稿件仍是尚未採用的參考。
+台北2026-10-27 02:35，下載連結與九語完整說明更新稿已作為單一參考附件送到[本片後台](https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery)；同一筆待審的14個附件均經正常工具完整下載與逐檔SHA核對。[實際交付收據](receipts/production/resource-supplement/actual-backend-resource-delivery.json)保留結果；該02:35快照的九語metadata原值當時未替換，稿件當時是尚未採用的參考。
+
+台北2026-10-27 05:24，原創教具下載連結已正式加入繁中及八語的實際說明，送回同一筆待審後另以正常憑證GET讀回九語全文，HTTP200、全部值相同。原17附件與完整QAfalse／歷史／站主選擇保留，沒有上傳新媒體。[最新採用收據與當前完整九語說明](receipts/production/metadata-adoption/README.md)另存；舊JSON/TXT草稿與其NOTADOPTED旗標保留當時歷史，不改寫成新結果。音訊、成片核准、approved-source package與語言批次仍未完成。

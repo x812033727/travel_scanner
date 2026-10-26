@@ -1,6 +1,6 @@
 {
   "title": "Kimi K3.1 Pro: Mô hình 3D đẹp, khi nào dùng được?",
-  "description": "Ghi/kiểm chứng: 2026-10-26 (Đài Bắc). Kimi K3.1 Pro quảng bá 3D. Tải mô hình rồi, khi nào bàn giao được?\nDành cho bạn muốn trưng bày, sửa mô hình AI hoặc giao chi tiết: so hai STL của cùng vòng đệm tự làm, từ kích thước, độ kín đến lỗ xuyên và đường kính lọt lòng nhỏ nhất.\n\nCả hai là mẫu biên tập tự làm (CC0-1.0), không phải tài nguyên Kimi; lấp lỗ là phản ví dụ cố ý, không phải lỗi Kimi. Danh nghĩa: ngoài 40 mm, lỗ 16 mm, dày 5 mm. Với 64 đoạn, đường kính lọt lòng nhỏ nhất thực khoảng 15.980727 mm: có lỗ chưa đủ đạt yêu cầu tối thiểu 16 mm. Yêu cầu mới này chưa có trong trình kiểm tra.\n\nCó trang xem cục bộ, STL gốc, thông số JSON, trình kiểm tra Python. Giải nén cùng thư mục, chạy trong demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nChưa thử tài khoản, chạy mô hình Kimi, thử xuất hay in thật. Trang hãng đã đọc nói tải tài nguyên để in, chưa nêu đuôi STL. Hẹn trọng số đầy đủ trước 2026-11-04; đợt này chưa xác minh đã nhận trọng số mới. BenchCAD 92.7 là VoxelIoU with-tools, không phải tỉ lệ in thành công.\n\nChỉ kiểm tra trục chỉ định, lấy mẫu hữu hạn, kích thước ngoài, cạnh lưới, thể tích. Chưa kiểm hết lỗ bất kỳ, tự giao cắt, thành mỏng nhất, cắt lớp, vật liệu, chịu tải hay điều kiện chế tạo. Đạt không phải chứng nhận chế tạo.",
+  "description": "Ghi/kiểm chứng: 2026-10-26 (Đài Bắc). Kimi K3.1 Pro quảng bá 3D. Tải mô hình rồi, khi nào bàn giao được?\nDành cho bạn muốn trưng bày, sửa mô hình AI hoặc giao chi tiết: so hai STL của cùng vòng đệm tự làm, từ kích thước, độ kín đến lỗ xuyên và đường kính lọt lòng nhỏ nhất.\n\nCả hai là mẫu biên tập tự làm (CC0-1.0), không phải tài nguyên Kimi; lấp lỗ là phản ví dụ cố ý, không phải lỗi Kimi. Danh nghĩa: ngoài 40 mm, lỗ 16 mm, dày 5 mm. Với 64 đoạn, đường kính lọt lòng nhỏ nhất thực khoảng 15.980727 mm: có lỗ chưa đủ đạt yêu cầu tối thiểu 16 mm. Yêu cầu mới này chưa có trong trình kiểm tra.\n\nCó trang xem cục bộ, STL gốc, thông số JSON, trình kiểm tra Python. Giải nén cùng thư mục, chạy trong demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nChưa thử tài khoản, chạy mô hình Kimi, thử xuất hay in thật. Trang hãng đã đọc nói tải tài nguyên để in, chưa nêu đuôi STL. Hẹn trọng số đầy đủ trước 2026-11-04; đợt này chưa xác minh đã nhận trọng số mới. BenchCAD 92.7 là VoxelIoU with-tools, không phải tỉ lệ in thành công.\n\nChỉ kiểm tra trục chỉ định, lấy mẫu hữu hạn, kích thước ngoài, cạnh lưới, thể tích. Chưa kiểm hết lỗ bất kỳ, tự giao cắt, thành mỏng nhất, cắt lớp, vật liệu, chịu tải hay điều kiện chế tạo. Đạt không phải chứng nhận chế tạo.\n\nBộ học liệu tự biên soạn (CC0; không phải đầu ra của Kimi): https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
   "tags": [
     "Kimi K3.1 Pro",
     "Kimi 3D Make",
@@ -36,7 +36,7 @@
       "new-use-new-spec": "16ff0f3eba91"
     },
     "title": "952836668e80",
-    "description": "46848a68fd88",
+    "description": "343ab9aa8b2d",
     "tags": "a542d0d7b55c",
     "thumbnail": "d21661b0f36a"
   },
