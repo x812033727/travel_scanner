@@ -20,13 +20,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.auth.service import require_capability
 from app.db import get_session
-from app.infra import get_redis
+from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
-from app.video_reviews import dub_retry
+from app.video_reviews import dub_retry, tool_files
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -58,6 +58,8 @@ ContentReader = Annotated[User, Depends(require_capability("content.read"))]
 ContentManager = Annotated[User, Depends(require_capability("content.manage"))]
 
 tool_router = APIRouter(prefix="/video/reviews", tags=["video reviews (pipeline)"])
+# A tool reading its own attachments back (review-files): generous, but not unbounded.
+DOWNLOADS_PER_HOUR = 600
 admin_router = APIRouter(prefix="/admin/videos", tags=["admin video reviews"])
 
 
@@ -101,6 +103,27 @@ async def upload_part(
     except StorageRefused as error:
         raise AppError(error.status, error.code, error.detail) from error
     return PartOut(received=result.received, complete=result.complete)
+
+
+@tool_router.get("/{slug}/files/{sha256}")
+async def read_file(slug: str, sha256: str, tool: VideoTool, session: Session) -> FileResponse:
+    """A file a pending or approved review of this video lists, for ``review-files`` (byte
+    ranges, never cached); a rejected or superseded review's files stay unreadable."""
+    await enforce_named_rate_limit(
+        "video_review_download", str(tool.id), limit=DOWNLOADS_PER_HOUR, window_seconds=3600
+    )
+    path, content_type = await tool_files.file_for_tool(
+        session, await _store(session), slug, sha256
+    )
+    return FileResponse(
+        path,
+        media_type=content_type,
+        headers={
+            "Cache-Control": "private, no-store",
+            "ETag": f'"{sha256}"',
+            "X-Content-Type-Options": "nosniff",
+        },
+    )
 
 
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)

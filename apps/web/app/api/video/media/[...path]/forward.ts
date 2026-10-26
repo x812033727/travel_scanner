@@ -47,6 +47,12 @@ export function mediaRoute(path: string[], method: Method): Route | null {
     if (rest[0] === "fetch") return json(JOB_TIMEOUT_MS);
   }
   if (head === "jobs" && rest.length === 1 && UUID.test(rest[0]) && method === "GET") return json(JOB_TIMEOUT_MS);
+  // The worker's current intro and outro, read-only (docs/videos/BRANDING.md, `branding --pull`):
+  // the channel's or a series' package, then each of its two files by SHA-256.
+  if (head === "branding" && method === "GET") {
+    if (rest.length === 0 || (rest.length === 2 && rest[0] === "series" && SLUG.test(rest[1]))) return json(SHORT_TIMEOUT_MS);
+    if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1])) return { kind: "download", maxBytes: 0, timeoutMs: SHORT_TIMEOUT_MS };
+  }
   if (head === "files" && rest.length === 2 && SLUG.test(rest[0]) && SHA256.test(rest[1])) {
     if (method === "PUT") return { kind: "upload", maxBytes: PART_MAX_BYTES, timeoutMs: UPLOAD_TIMEOUT_MS };
     if (method === "GET") return { kind: "download", maxBytes: 0, timeoutMs: SHORT_TIMEOUT_MS };

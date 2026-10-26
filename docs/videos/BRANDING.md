@@ -114,6 +114,52 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 例外是**重做中**的成片：成片或發布核准之後，站主又核准了新的稿子、配音或分鏡（最新一筆 script／audio／storyboard 核准晚於最新一筆 final／publish 核准），舊的核准與上架包綁的是不會再存在的成片，就不再擋 `--adopt-branding`；核准紀錄不刪，已上傳／已結束的照樣拒絕（`remakingApprovedCut`，2026-10-13 五支奇聞檔案局重製片換新開場後，要換上 21 秒有配樂的新片尾）。
 合集使用 `compile --adopt-branding`，不呼叫 `assemble`。
 
+### 從正式站取得目前的素材包（`--pull`）
+
+素材不進 Git，所以沒有素材包的機器（雲端容器、新的本機）合成出來的成片沒有片頭片尾：
+2026-10-19 S01／S09／S18 三集雲端成片就是這樣，長度等於旁白。站主 2026-10-26 決定開一條唯讀
+下載，取代手動複製或 SSH：
+
+```bash
+node tools/video/cli.mjs branding --pull --dry-run      # 下載、驗證，不安裝
+node tools/video/cli.mjs branding --pull                # 安裝成這台機器的 current
+node tools/video/cli.mjs branding --pull --series sothatswhy
+```
+
+它用 `login` 存下的影片工具權杖（雲端容器要先加 `NODE_USE_ENV_PROXY=1`），向
+`GET /api/video/media/branding`（系列是 `/branding/series/sothatswhy`）問正式站工人的
+`_branding/current.json`，再用 `/branding/files/<sha256>` 依 SHA 下載片頭與片尾。下載時逐位元組
+核對 SHA，寫成一個暫時素材包後走跟 `--install` 一樣的檢查（格數、尺寸、幀率、音軌），而且檔案算出來的
+branding hash 要等於正式站的，才安裝；暫時素材包用完即刪。本機已經是同一包就什麼都不下載。
+
+API 只讀它唯讀掛載的工作卷，而且只給目前 `current.json`（全頻道或系列）點名的兩個檔；舊包、
+成片和工作卷裡其他檔案一律 404。錯誤代碼：`video_branding_not_installed`（工人還沒安裝，或 API
+沒掛工作卷）、`video_branding_disabled`（明確關掉）、`video_branding_broken`（工人的 current.json
+格式不對），這三個都要在主機上處理，工具結束碼 3；`video_branding_file_not_found` 多半是剛好換了一包，重跑即可。
+
+裝好之後照上面的規則：只影響之後第一次成片的長片；已經成片、沒有片頭片尾的未核准影片要明確
+`assemble --adopt-branding` 重做。
+
+### 本機成片要跟正式站同一包
+
+本機或雲端合成的長片要跟正式站工人用同一包素材：2026-10-13 五支奇聞檔案局重剪在本機合成，
+本機還停在 `mokaair-brand-package-v2-cc`（3 秒片尾、沒有配樂），正式站已經是 v4；2026-10-19 三集雲端
+成片則完全沒有片頭片尾。兩次都沒有任何提示，站主看片才發現。
+
+所以 `assemble` 與 `compile`（含 `--dry-run`）在這次會用「這台機器目前的素材包」時（第一次成片、
+`--adopt-branding`、還沒 pin 的 `--intro-after-condensation`），編碼前先問正式站工人用哪一包
+（`branding/site.mjs`，問法同 `branding --pull`：系列片先問系列，系列沒有才用全頻道），結束時再印一次：
+
+- 一樣：不印任何東西。
+- 不一樣：`WARN branding: this build pins <本機 id> (<hash>) but the site's worker uses <正式站 id> (<hash>)`，
+  本機沒裝就寫 `no bookends`。合成照做不擋（可能是刻意用舊包），要跟正式站一樣就停下來
+  `branding --pull` 再重跑（系列片是 `branding --pull --series sothatswhy`，警告裡會照寫）；已經成片的未核准影片用 `--adopt-branding` 重做。
+- 問不到（沒有權杖、連不上、10 秒沒回、正式站設定讀不出來）：印 `branding: not compared …` 或
+  `could not compare …`，照常合成，不會因此失敗。
+
+已經 pin 的影片不比對：pin 本來就是刻意固定的選擇，換 current 不會讓舊片重排（上面「安裝與採用」）。
+主機上的工人問的是自己的工作卷，一定一樣，所以主機的紀錄裡不會多出任何一行。
+
 ## 片頭位置
 
 站主 2026-10-12／10-13 決定：有旁白的長片第一章是 30–60 秒的開場濃縮（script-writing.md
@@ -296,6 +342,31 @@ hash 與 new final SHA。輸出維持 STOP；準備不付費、不自行重試�
 manifest 必須綁定 exact base publish metadata SHA、新 final、branding、speech 與實際
 檔案；字幕與章節使用新片頭偏移，舊字幕 hash、舊 final 或不同 base metadata 會拒絕。
 language POST 同樣先留 submitting receipt；未知結果禁止自動重送。
+
+### 工作檔不在了：從審核區取回附件（2026-10-26）
+
+雲端工作階段做的影片，工作目錄跟著工作階段消失；成片、字幕、說明、縮圖與配音只剩正式站
+審核區裡的附件。2026-10-26 已核准的 `ollama-phonon-local-speech-language-gap` 要補片頭片尾時
+就沒人拿得出檔案，只能請站主在自己電腦從主機唯讀複製。現在工具憑證可以自己取回：
+
+```bash
+node tools/video/cli.mjs review-files --slug S --dry-run          # 只列出會取的檔案
+node tools/video/cli.mjs review-files --slug S --out /outside/dir [--gate final]
+```
+
+| 規則 | 做法 |
+| --- | --- |
+| 取哪些 | 只取**待審或已核准**審核列出的檔案，加上一筆有效換版（待審或已核准的新成片）在 `retained_review_ids` 保留的舊成片、上架包與語言批次，後者放在 `DIR/retained/<gate>/`；其他退回、被取代的審核與審核沒列的檔案，API 一律 404 |
+| 放哪裡 | `DIR/<gate>/<role>.<副檔名>`，例如 `final/final.mp4`、`publish/captions_zh-TW.srt`；同一個 gate 與 role 只取最新那筆審核的 |
+| 怎麼驗 | 每個檔下載完核對審核列的 SHA-256 與大小，不符就刪掉並以結束碼 4 報出；已在 DIR 且相符的不重下載 |
+| 收據 | `DIR/review-files.json` 記下每個檔的 gate、狀態、審核 id、role、SHA-256 與沒取到的檔 |
+| 路由 | `GET /api/video/reviews/<slug>/files/<sha256>`（工具憑證、支援 Range、`no-store`、每小時 600 次） |
+| 不做的事 | 不改站上任何東西；取回的檔只是 `stage` 或 `import --from` 的起點，換版照上面的流程走 |
+
+換版一送出，舊的上架包與語言批次就被標成已取代；2026-10-26 Ollama 換版時語言批次的配音還沒取回，
+當時工具讀不到，因此讀檔路由改成也給換版保留的審核。換版前先取一次也無妨，但不再是必要的。
+
+已上傳的影片照樣不能用換版流程，要重新上傳新版的走新 slug（PHP2Shell 的 `-v2` 即是）。
 
 ### 已核准正文也改變的人工成片
 

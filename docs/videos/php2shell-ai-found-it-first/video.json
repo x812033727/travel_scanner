@@ -1,0 +1,1597 @@
+{
+  "schema_version": 1,
+  "slug": "php2shell-ai-found-it-first",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    8,
+    9
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像跟一個剛看到新聞、有點緊張的站長把事情講清楚：平穩、不嚇人。日期和版本號一個一個咬清楚；替觀眾問出口的疑問上揚，答案接得乾脆；汽車召回那個對照用輕的語氣；三張終端機卡像在旁邊看他打字，放慢；「其實修補早就進去了」亮起來；「我的看法是」放慢放穩；「我查不到」放輕；結尾的留言題輕輕收。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "loops": [
+    {
+      "setup": "nc3h",
+      "payoff": "9agr",
+      "what": "我又不寫 PHP，關我什麼事"
+    },
+    {
+      "setup": "vwd9",
+      "payoff": "us6i",
+      "what": "修補公開前四天就有人在試"
+    },
+    {
+      "setup": "69ry",
+      "payoff": "4649",
+      "what": "承諾的：AI 兩個月前怎麼找到它"
+    },
+    {
+      "setup": "69ry",
+      "payoff": "d2mf",
+      "what": "承諾的：修補為什麼提早一天"
+    },
+    {
+      "setup": "hsxu",
+      "payoff": "zq2u",
+      "what": "承諾的：四個安全版本號"
+    },
+    {
+      "setup": "hsxu",
+      "payoff": "ur3m",
+      "what": "承諾的：版本號看不出來的檢查"
+    },
+    {
+      "setup": "gffq",
+      "payoff": "v5ur",
+      "what": "為什麼十幾年後現在才被找到"
+    },
+    {
+      "setup": "m35m",
+      "payoff": "gx6w",
+      "what": "AI 找到洞是好事還是壞事，先放著"
+    },
+    {
+      "setup": "yqd7",
+      "payoff": "m52w",
+      "what": "修補還沒出來，網站能做什麼"
+    },
+    {
+      "setup": "42gu",
+      "payoff": "ur3m",
+      "what": "我怎麼知道我的有沒有修到"
+    },
+    {
+      "setup": "2qhy",
+      "payoff": "ur3m",
+      "what": "8.3.6 是不是中獎了"
+    }
+  ],
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "PHP2Shell：AI 先找到的洞，全球網站為什麼自己關站、你的網站怎麼查",
+    "description": "PHP 在 2026 年 10 月 21 日發了緊急安全更新，兩個漏洞合稱 PHP2Shell：洞在 PHP 本身，不用登入，一個請求就能在伺服器上執行程式；AI 在兩個月前先找到它，修補卻因為走漏提前一天，全球的政府網站、pixiv、維基媒體自己先關站。這支用一個對照（汽車召回：瑕疵在引擎不在車身）講清楚關你什麼事、四天內發生了什麼，最後在一台 Ubuntu 測試機上示範：php -v 看到 8.3.6 不等於沒修，要看套件的更動紀錄。\n寫給在台灣有自己的網站、替公司管 WordPress 或電商、或看到「全球網站下線」想知道要做什麼的人。\n\n錄製日期 2026 年 10 月 25 日。四個安全版本、「只有更新是完整解法」、發行版事先拿到修補，照 php.net 10 月 21 日的公告；2024 年稽核、走漏與提前發布的時間，照 PHP Foundation 的部落格；七成網站、用的模型與時間表，照 Wiz 的研究文；防火牆 03:02 UTC，照 Cloudflare 部落格；10 月 17 日蜜罐，照 AWS 安全部落格；台灣約 2.8 萬個對外網站、約 200 個政府機關網站與修補、WAF、暫停的順序，照 iThome 對資安署署長 10 月 22 日記者會的報導；各國下線照 BBC；日本首相與 Cloudflare 執行長的數字照 X 原貼文；日本停站的服務，照 Japan Cyber Watch。本機的三個指令與輸出是 2026-10-25 在 Ubuntu 24.04.5、PHP 8.3.6 (cli)、dpkg 1.22.6 上真的跑出來的；24.04 修好的套件版本照 ubuntu.com 的 CVE 頁。「我的看法是」「我查不到」是站主的意見。本片不示範攻擊。\n\n片中的指令：\nphp -v\ndpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli\nzcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4\n\n你的網站，PHP 是你自己管、還是主機商管？查到的版本是幾？留言告訴我。",
+    "tags": [
+      "PHP2Shell",
+      "PHP 漏洞",
+      "PHP 8.3.36",
+      "CVE-2026-109618",
+      "WordPress PHP 更新",
+      "AI 找漏洞",
+      "Patch the Planet",
+      "PHP 安全更新",
+      "網站 下線",
+      "AI 時事"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 新聞",
+      "headline": "版本號\n**會騙你**",
+      "sub": "PHP2Shell：AI 找到的洞，全球網站自己關站",
+      "capture": "advisory-page"
+    }
+  },
+  "sources": [
+    {
+      "title": "PHP: News Archive 2026 — Security advisory: update now (2026-10-21)；Informational advisory (2026-10-23)",
+      "url": "https://www.php.net/archive/2026.php",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "PHP: Supported Versions",
+      "url": "https://www.php.net/supported-versions.php",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "The PHP Foundation: Today's PHP Security Release, and How We're Strengthening PHP Security (2026-10-21)",
+      "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Wiz Blog: PHP2Shell: AI uncovers critical RCE vulnerabilities affecting 70% of the Internet (2026-10-21)",
+      "url": "https://www.wiz.io/blog/php2shell-php-rce",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Cloudflare Blog: Cloudflare deploys protections against php2shell vulnerability (2026-10-21)",
+      "url": "https://blog.cloudflare.com/php-vulnerabilities-waf-protection/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "AWS Security Blog: PHP2Shell exploitation prior to public disclosure in MadPot (2026-10-21)",
+      "url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "watchTowr: Frequently Asked Questions About PHP Remote Code Execution (PHP2Shell)",
+      "url": "https://watchtowr.com/intelligence/php-cve-2026-109618-faq/",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Ubuntu Security: CVE-2026-109618",
+      "url": "https://ubuntu.com/security/CVE-2026-109618",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Debian Security Tracker: CVE-2026-109618",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-109618",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "W3Techs: Usage statistics of PHP for websites",
+      "url": "https://w3techs.com/technologies/details/pl-php",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "NCSC (UK): Critical security issue affecting PHP (2026-10-21)",
+      "url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "資安署新聞稿：網站開發程式語言PHP釋出緊急安全更新 資安署呼籲儘速完成修補（2026-10-22）",
+      "url": "https://moda.gov.tw/ACS/press/news/press/21134",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "iThome：數發部：PHP重大漏洞影響約2.8萬個國內網站，約200個政府機關網站受影響（2026-10-22）",
+      "url": "https://www.ithome.com.tw/news/179891",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "BBC News: Websites taken down worldwide as critical PHP cyber-security update issued (2026-10-21)",
+      "url": "https://www.bbc.com/news/articles/cmly0lg3w5x2o",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "BBC News: What is PHP and why did it spark a global cyber-security scramble? (2026-10-23)",
+      "url": "https://www.bbc.com/news/articles/c3qjnwye0ep5o",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Japan Cyber Watch: php2shell: PHP Patches Two Critical Flaws as Japan Takes Websites Offline (2026-10-23)",
+      "url": "https://japancyberwatch.com/articles/php2shell-critical-php-flaws-japan-services-pause-2026",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Hacker News: Tell HN: 2x PHP RCE CVEs with CVSS 10.0 Incoming (2026-10-20 15:20 UTC)",
+      "url": "https://news.ycombinator.com/item?id=50167754",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "Greg Brockman on X: php2shell found as part of our Patch the Planet initiative (2026-10-21)",
+      "url": "https://x.com/gdb/status/2112921529650688312",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "高市早苗 on X：大至急のお願い（2026-10-21 21:55 JST）",
+      "url": "https://x.com/takaichi_sanae/status/2112890642590564386",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "PHP2Shell 是什麼？",
+      "template": "title",
+      "data": {
+        "tag": "AI 新聞",
+        "title": "AI 先找到的洞，\n全球網站**自己關站**",
+        "subtitle": "PHP2Shell · PHP 安全更新 2026-10-21 · php.net",
+        "key": "PHP2Shell：AI 找到的 PHP 漏洞"
+      },
+      "lines": [
+        {
+          "id": "9ey5",
+          "text": "10 月 21 日，PHP 發了緊急安全更新，兩個漏洞合稱 PHP2Shell。",
+          "emotion": "開場平穩，日期與 PHP2Shell 咬字清楚"
+        },
+        {
+          "id": "cdnj",
+          "text": "發布前一小時，日本首相在 X 上發了一則緊急請求。",
+          "emotion": "像在轉述新聞，「當晚」停半拍"
+        }
+      ]
+    },
+    {
+      "id": "naive",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "我用 WordPress，\n又不是我寫 PHP？",
+        "key": "我又不寫 PHP，關我什麼事？"
+      },
+      "lines": [
+        {
+          "id": "nc3h",
+          "text": "你可能會問：我的網站是 WordPress，又不是我自己寫 PHP。",
+          "emotion": "替觀眾問，帶一點不以為然"
+        },
+        {
+          "id": "z783",
+          "text": "關我什麼事？",
+          "emotion": "問句上揚，短"
+        }
+      ]
+    },
+    {
+      "id": "verbs",
+      "template": "big",
+      "data": {
+        "kicker": "這個洞在 PHP 本身",
+        "text": "不用登入，一個請求",
+        "sub": "在伺服器上執行程式、讀出記憶體裡的密碼和 token、改掉網站",
+        "icon": "lightning",
+        "key": "不用登入，一個請求就能進來"
+      },
+      "lines": [
+        {
+          "id": "h7nb",
+          "text": "有關：這個洞在 PHP 本身。",
+          "emotion": "「有關」短促"
+        },
+        {
+          "id": "3ppu",
+          "text": "不用登入，一個請求就能在你的伺服器上執行程式、讀出記憶體裡的密碼，或改掉網站。",
+          "emotion": "動詞一個一個，清楚"
+        }
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "big",
+      "data": {
+        "kicker": "正因為",
+        "text": "洞在底層",
+        "sub": "你的網站程式再乾淨也擋不住；修補公開前四天，就有人在試",
+        "icon": "warning",
+        "key": "洞在底層，程式再乾淨也擋不住"
+      },
+      "lines": [
+        {
+          "id": "vwd9",
+          "text": "正因為洞在底層，你網站的程式寫得再乾淨也擋不住。",
+          "emotion": "壓低，放慢；問句上揚"
+        },
+        {
+          "id": "vw9g",
+          "text": "那 AI 先找到了洞，全球的網站為什麼還是得自己關站？",
+          "emotion": "壓低，放慢；問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "template": "bullets",
+      "data": {
+        "title": "看完你會知道",
+        "items": [
+          {
+            "text": "AI 怎麼在兩個月前找到它",
+            "icon": "search"
+          },
+          {
+            "text": "修補為什麼提早一天",
+            "icon": "clock"
+          },
+          {
+            "text": "四個安全版本號",
+            "icon": "checklist"
+          },
+          {
+            "text": "一條 php -v 看不出來的檢查",
+            "icon": "terminal"
+          }
+        ],
+        "keys": [
+          "AI 兩個月前怎麼找到它",
+          "四個版本號、一條看不出來的檢查"
+        ]
+      },
+      "lines": [
+        {
+          "id": "69ry",
+          "text": "十分鐘後你手上會有四樣東西：AI 怎麼在兩個月前找到它，修補為什麼提早了一天；",
+          "reveal": 2,
+          "emotion": "承諾句，穩"
+        },
+        {
+          "id": "hsxu",
+          "text": "四個安全版本號，和一條光看版本號看不出來的檢查。",
+          "reveal": 2,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "seventy",
+      "chapter": "跟我有關嗎？我又不寫 PHP",
+      "template": "big",
+      "data": {
+        "kicker": "能查出伺服器語言的網站裡",
+        "numeral": "69",
+        "text": "% 用 PHP",
+        "sub": "W3Techs，2026-10-25 · WordPress、Drupal、Joomla 都在上面",
+        "key": "將近七成網站跑在 PHP 上"
+      },
+      "lines": [
+        {
+          "id": "9agr",
+          "text": "剛剛說有關，機率有多高？能查出伺服器語言的網站裡，將近七成用 PHP，WordPress、Drupal、Joomla 都是。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "engine",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "你的網站程式",
+          "icon": "file",
+          "points": [
+            "WordPress、外掛、佈景",
+            "你或工程師寫的"
+          ]
+        },
+        "right": {
+          "heading": "PHP 執行環境",
+          "icon": "gear",
+          "points": [
+            "主機上跑程式的引擎",
+            "PHP2Shell 的洞在這裡"
+          ]
+        },
+        "source": "php.net 安全公告 2026-10-21",
+        "keys": [
+          "像汽車召回：瑕疵在引擎",
+          "你的程式是車身，洞在引擎"
+        ]
+      },
+      "lines": [
+        {
+          "id": "iecr",
+          "text": "剛剛那句洞在 PHP 本身，像一次汽車召回：瑕疵不在你的烤漆或座椅，在引擎。",
+          "reveal": 1,
+          "emotion": "對照的語氣，輕"
+        },
+        {
+          "id": "x493",
+          "text": "你的網站程式是車身；PHP 是底下那顆引擎。",
+          "reveal": 1,
+          "emotion": "「引擎」加重"
+        },
+        {
+          "id": "c633",
+          "text": "連只印一行 Hello World 的網站都可能中。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "modphp",
+      "template": "big",
+      "data": {
+        "kicker": "風險最高的裝法",
+        "text": "Apache 的 mod_php",
+        "sub": "一個未登入的請求，在任何網站程式跑之前就能觸發（php.net）",
+        "key": "mod_php：程式還沒跑就先中"
+      },
+      "lines": [
+        {
+          "id": "qy4i",
+          "text": "風險最高的是 Apache 用模組方式跑 PHP 的主機。",
+          "emotion": "放慢，「還沒開始跑」停半拍"
+        },
+        {
+          "id": "byuv",
+          "text": "請求一進來，你的程式還沒開始跑，攻擊就先發生了。",
+          "emotion": "放慢，「還沒開始跑」停半拍"
+        }
+      ]
+    },
+    {
+      "id": "taiwan",
+      "template": "stats",
+      "data": {
+        "title": "台灣的初步盤點（資安署，2026-10-22）",
+        "stats": [
+          {
+            "value": "約 2.8 萬",
+            "label": "對外網站用 PHP"
+          },
+          {
+            "value": "約 200",
+            "label": "政府機關網站"
+          },
+          {
+            "value": "0",
+            "label": "到 22 日收到的被駭通報"
+          }
+        ],
+        "source": "iThome 報導資安署署長記者會，2026-10-22",
+        "keys": [
+          "台灣約 2.8 萬個對外網站用 PHP",
+          "政府機關約 200 個；沒收到被駭通報"
+        ]
+      },
+      "lines": [
+        {
+          "id": "86sc",
+          "text": "台灣呢？數發部資安署初步盤點，國內約兩萬八千個對外網站用 PHP，",
+          "emotion": "平實"
+        },
+        {
+          "id": "rsu6",
+          "text": "其中政府機關約兩百個；到署長開記者會那天為止，沒有收到被入侵的通報。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "howlong",
+      "template": "big",
+      "data": {
+        "kicker": "那",
+        "text": "這個洞在 PHP 裡\n多久了？",
+        "key": "這個洞在 PHP 裡多久了？"
+      },
+      "lines": [
+        {
+          "id": "gffq",
+          "text": "那這個洞在 PHP 裡多久了？十幾年，從 2012 年的 5.4 版就在。",
+          "emotion": "問句上揚；「十幾年」放慢"
+        },
+        {
+          "id": "2i85",
+          "text": "為什麼現在才被找到？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "audit",
+      "chapter": "AI 怎麼找到的？",
+      "template": "big",
+      "data": {
+        "kicker": "2024 年，PHP 多年來第一次外部安全稽核",
+        "text": "看到徵兆，\n卻修不動",
+        "sub": "PHP Foundation 2026-10-21：幾種修法各有代價，停了又重啟好幾個月",
+        "key": "2024 年就看到徵兆，卻修不動"
+      },
+      "lines": [
+        {
+          "id": "v5ur",
+          "text": "其實 2024 年 PHP 多年來第一次外部安全稽核時，一位核心開發者就看到這個記憶體問題的徵兆。",
+          "emotion": "「其實」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "audit-stall",
+      "template": "big",
+      "data": {
+        "kicker": "修不動",
+        "text": "幾種修法\n各有代價",
+        "sub": "小團隊要全體同意，修補停了又重啟（PHP Foundation 2026-10-21）",
+        "key": "修法卡在共識，拖了幾個月"
+      },
+      "lines": [
+        {
+          "id": "92tm",
+          "text": "但沒有人證明它能被攻擊，幾種修法各有代價。",
+          "emotion": "放慢，像講一件可惜的事"
+        },
+        {
+          "id": "rayj",
+          "text": "小團隊又要全體同意，修補停了又重啟，拖了好幾個月。",
+          "emotion": "放慢，像講一件可惜的事"
+        }
+      ]
+    },
+    {
+      "id": "structural",
+      "template": "quote",
+      "data": {
+        "kicker": "PHP Foundation 自己的話",
+        "quote": "We won't pretend otherwise: the delay was a structural failure",
+        "source": "thephp.foundation · 2026-10-21",
+        "translation": "我們不假裝不是這樣：這個延遲是一次結構性的失敗。",
+        "keys": [
+          "基金會自己寫了一句話",
+          "這是結構性的失敗"
+        ]
+      },
+      "lines": [
+        {
+          "id": "daec",
+          "text": "PHP 基金會事後自己寫了一句話：",
+          "emotion": "平，停半拍"
+        },
+        {
+          "id": "uyhr",
+          "text": "這個延遲，是一次結構性的失敗。",
+          "reveal": 1,
+          "emotion": "不加油添醋，「結構性」清楚"
+        },
+        {
+          "id": "wavj",
+          "text": "那是誰把它從抽屜裡拿出來的？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "found",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "7 月 30 日",
+            "detail": "Calif 在 OpenAI 的 Patch the Planet 下開始稽核 PHP",
+            "icon": "search"
+          },
+          {
+            "title": "8 月 11 日",
+            "detail": "Ryan Austin 用 GPT-5.6 Sol 交出能用的攻擊，根因同 2024",
+            "icon": "lightning"
+          },
+          {
+            "title": "8 月 24 日",
+            "detail": "Wiz 用 Gemini 4 Argon、GPT-5.6 Sol 回報更多路徑；原定 10/22 公開",
+            "icon": "file"
+          }
+        ],
+        "source": "thephp.foundation、wiz.io、BBC、x.com/gdb",
+        "keys": [
+          "7/30：Calif 開始用 AI 稽核",
+          "8/11：一份能用的攻擊",
+          "8/24：Wiz 再補路徑；修補原定 10/22"
+        ]
+      },
+      "lines": [
+        {
+          "id": "q9ga",
+          "text": "轉折在今年夏天。",
+          "emotion": "「轉折」停半拍"
+        },
+        {
+          "id": "rb3w",
+          "text": "7 月 30 日，資安公司 Calif 在 OpenAI 的開源修洞計畫 Patch the Planet 下，開始稽核 PHP；",
+          "emotion": "日期清楚"
+        },
+        {
+          "id": "4649",
+          "text": "8 月 11 日，研究員 Ryan Austin 用 GPT-5.6 Sol 提出一份攻擊，就是開頭說的那種：一個請求就進來。",
+          "reveal": 1,
+          "emotion": "放慢，一字一字"
+        },
+        {
+          "id": "jmju",
+          "text": "根本原因，就是 2024 年那個問題。",
+          "emotion": "短句，停一拍"
+        },
+        {
+          "id": "i6qv",
+          "text": "兩週後，Google 旗下的資安公司 Wiz 用第四代 Gemini，也就是 Argon，加上 GPT-5.6 Sol，獨立找到同一個洞，",
+          "reveal": 1,
+          "emotion": "清單段落加快"
+        }
+      ]
+    },
+    {
+      "id": "priority",
+      "template": "big",
+      "data": {
+        "kicker": "8 月起",
+        "text": "第一優先",
+        "sub": "WordPress、Drupal、Joomla 都打通；修補定在 10 月 22 日公開（PHP Foundation 2026-10-21）",
+        "key": "三個平台都打通，修它變第一優先"
+      },
+      "lines": [
+        {
+          "id": "sqad",
+          "text": "在 WordPress、Drupal、Joomla 上都打通了。",
+          "emotion": "三個名字清楚"
+        },
+        {
+          "id": "2eju",
+          "text": "從 Austin 交出攻擊那天起，修它變成基金會資安團隊的第一優先，修補定在十月二十二日公開。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "oneweek",
+      "template": "big",
+      "data": {
+        "kicker": "Wiz 的說法",
+        "text": "一個人一週，\n以前一隊人幾個月",
+        "key": "一個人一週 vs 一隊人幾個月"
+      },
+      "lines": [
+        {
+          "id": "26df",
+          "text": "Wiz 說，有了這些模型，一個研究員一週做完的事，以前要一整隊頂尖的人花幾個月。",
+          "emotion": "「一週」放慢"
+        }
+      ]
+    },
+    {
+      "id": "heartbleed",
+      "template": "quote",
+      "data": {
+        "kicker": "Wiz 把它比作 2014 年的 Heartbleed",
+        "quote": "We believe PHP2Shell could mark a similar turning point for the AI era",
+        "source": "wiz.io · 2026-10-21",
+        "translation": "我們相信 PHP2Shell 可能是 AI 時代一個同樣的轉捩點。",
+        "keys": [
+          "Wiz 把它比作 Heartbleed",
+          "AI 時代的轉捩點"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gbaz",
+          "text": "Wiz 把它跟 2014 年的 Heartbleed 漏洞相提並論：那次是加密函式庫，這次是網站語言本身。",
+          "emotion": "平穩"
+        },
+        {
+          "id": "j6sz",
+          "text": "這可能是 AI 時代一個同樣的轉捩點。",
+          "reveal": 1,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "goodbad",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會想",
+        "text": "AI 找到洞，\n是好事還是壞事？",
+        "key": "AI 找到洞，是好事還是壞事？"
+      },
+      "lines": [
+        {
+          "id": "m35m",
+          "text": "你可能會想，AI 找到洞到底是好事還是壞事？先把這題放著，看接下來四天發生了什麼。",
+          "emotion": "替觀眾問，上揚；「放著」放輕"
+        }
+      ]
+    },
+    {
+      "id": "leak",
+      "chapter": "修補為什麼提早一天？",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 20 日 15:20 UTC",
+        "text": "Hacker News 上\n一篇貼文",
+        "sub": "「兩個 CVSS 10 分的 PHP RCE 要來了」；PHP 自己評的是 9.2",
+        "key": "消息在論壇走漏了"
+      },
+      "lines": [
+        {
+          "id": "dy8w",
+          "text": "保密撐了兩個多月，到最後兩天破了。",
+          "emotion": "「破了」短促"
+        },
+        {
+          "id": "df33",
+          "text": "十月二十日下午，Hacker News 上出現一篇貼文：兩個 PHP 的遠端執行漏洞要來了。",
+          "emotion": "像唸一則貼文"
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "big",
+      "data": {
+        "kicker": "貼文寫的分數",
+        "text": "滿分 10 分？\nPHP 自評 9.2",
+        "sub": "CVSS：貼文寫 10.0；PHP 安全公告評 9.2（2026-10-21）",
+        "key": "連分數都寫錯了"
+      },
+      "lines": [
+        {
+          "id": "7t2j",
+          "text": "貼文連分數都寫錯，說是滿分 10 分；PHP 自己評的是 9.2。",
+          "emotion": "帶一點笑，「9.2」清楚"
+        }
+      ]
+    },
+    {
+      "id": "timeline",
+      "template": "table",
+      "data": {
+        "columns": [
+          "UTC 時間",
+          "發生什麼"
+        ],
+        "rows": [
+          [
+            "10/20 15:20",
+            "Hacker News 貼文外流；19:30 PHP 預告提前"
+          ],
+          [
+            "10/20 約 20:00",
+            "Calif 誤發攻擊示範影片，刪了但已流傳"
+          ],
+          [
+            "10/21 03:02",
+            "Cloudflare 對所有方案開防火牆規則"
+          ],
+          [
+            "10/21 07:41",
+            "Chainguard 提前六小時放出含修補的映像檔"
+          ],
+          [
+            "10/21 14:00",
+            "8.5.12／8.4.27／8.3.36／8.2.35 發布"
+          ]
+        ],
+        "source": "PHP Foundation、Cloudflare、watchTowr 2026-10-21",
+        "keys": [
+          "四小時後 PHP 把修補提前一天",
+          "發現者誤發示範影片",
+          "凌晨三點，防火牆先開",
+          "七點四十一分，修補被提前放出",
+          "下午兩點，四個版本準時發布"
+        ]
+      },
+      "lines": [
+        {
+          "id": "d2mf",
+          "text": "四個小時後，PHP 提前發出預告：修補提前一天。",
+          "emotion": "平穩，時間清楚"
+        },
+        {
+          "id": "p4ua",
+          "text": "改到二十一日下午兩點，世界協調時間，台灣的晚上十點。",
+          "emotion": "平穩，時間清楚"
+        },
+        {
+          "id": "hafe",
+          "text": "半小時後，發現者之一 Calif 不小心把攻擊示範影片放上網，刪了，但已經傳開。",
+          "reveal": 1,
+          "emotion": "「不小心」放輕"
+        },
+        {
+          "id": "4eea",
+          "text": "二十一日凌晨三點，Cloudflare 把防火牆規則對所有客戶開啟，免費方案也有。",
+          "reveal": 1
+        },
+        {
+          "id": "pmy2",
+          "text": "七點四十一分，容器公司 Chainguard 提前六個多小時放出含修補的映像檔。",
+          "reveal": 1,
+          "emotion": "「提前」加重"
+        },
+        {
+          "id": "q6jq",
+          "text": "攻擊者可以從裡面反推修了什麼。",
+          "emotion": "壓低"
+        },
+        {
+          "id": "ubbs",
+          "text": "說好的下午兩點一到，四個安全版本準時發布。",
+          "reveal": 1,
+          "emotion": "短句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "attempts",
+      "template": "stats",
+      "data": {
+        "title": "攻擊嘗試（Cloudflare 執行長，10/22 01:25 UTC）",
+        "stats": [
+          {
+            "value": "數千次",
+            "label": "公告前 10 小時"
+          },
+          {
+            "value": "數萬次",
+            "label": "公告後 45 分鐘"
+          },
+          {
+            "value": "數十萬次",
+            "label": "兩小時內"
+          },
+          {
+            "value": "數百萬次",
+            "label": "不到半天"
+          }
+        ],
+        "source": "Matthew Prince 在 X 上，2026-10-22 01:25 UTC；BBC 2026-10-23 引述",
+        "keys": [
+          "公告前十小時，數千次",
+          "45 分鐘數萬、兩小時數十萬、不到半天數百萬"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nxcc",
+          "text": "攻擊有多快？Cloudflare 執行長說，公告前十小時，全網就看到數千次嘗試；",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "2fht",
+          "text": "公告後 45 分鐘變數萬次，兩小時數十萬次，不到半天就上百萬次。",
+          "reveal": 3,
+          "emotion": "數字一個一個加快"
+        }
+      ]
+    },
+    {
+      "id": "honeypot",
+      "template": "big",
+      "data": {
+        "kicker": "Amazon 的蜜罐",
+        "text": "10 月 17 日\n就有人在試",
+        "sub": "比論壇走漏早三天、比修補公開早四天（AWS 安全部落格）",
+        "key": "比走漏早三天，就有人試過"
+      },
+      "lines": [
+        {
+          "id": "us6i",
+          "text": "還記得剛剛說的那四天嗎？",
+          "emotion": "「更早」停半拍，日期放慢"
+        },
+        {
+          "id": "a87y",
+          "text": "Amazon 的誘捕伺服器，也就是蜜罐，十七日就記錄到一次攻擊嘗試，比走漏還早三天。",
+          "emotion": "「更早」停半拍，日期放慢"
+        }
+      ]
+    },
+    {
+      "id": "ncsc",
+      "chapter": "網站為什麼自己關站？",
+      "template": "quote",
+      "data": {
+        "kicker": "英國國家網路安全中心",
+        "quote": "…consider taking the system offline until it can be fully mitigated",
+        "source": "ncsc.gov.uk · 2026-10-21",
+        "translation": "無法套用暫時緩解、或套用要花太久的，就該考慮先把系統下線，直到完整緩解。",
+        "keys": [
+          "英國國家網路安全中心",
+          "修補、緩解都來不及，就先下線"
+        ]
+      },
+      "lines": [
+        {
+          "id": "yqd7",
+          "text": "所以當修補還沒出來、攻擊已經在路上，網站能做什麼？",
+          "emotion": "問句，輕輕收"
+        },
+        {
+          "id": "wppc",
+          "text": "英國的國家網路安全中心寫得直接：",
+          "emotion": "平，停半拍"
+        },
+        {
+          "id": "vh8a",
+          "text": "修補、緩解都來不及，就考慮先把系統下線。",
+          "reveal": 1,
+          "emotion": "「下線」清楚"
+        },
+        {
+          "id": "bqis",
+          "text": "日本政府的網路安全主管機關也說，暫停網站是降低風險的有效做法。",
+          "emotion": "平"
+        }
+      ]
+    },
+    {
+      "id": "offline",
+      "template": "bullets",
+      "data": {
+        "title": "10 月 21 日起，自己關站的",
+        "items": [
+          {
+            "text": "日本：pixiv、niconico、BASE、Codmon",
+            "icon": "globe"
+          },
+          {
+            "text": "荷蘭：DigiD、國會、資安中心自己的網站",
+            "icon": "lock"
+          },
+          {
+            "text": "芬蘭政府全部對外服務",
+            "icon": "document"
+          },
+          {
+            "text": "英國 32 個政府網站；維基媒體部分系統",
+            "icon": "book"
+          }
+        ],
+        "source": "BBC 2026-10-21／23；Japan Cyber Watch 2026-10-23",
+        "keys": [
+          "像召回公告貼出：車先停路邊",
+          "荷蘭連資安中心自己的站都關",
+          "芬蘭政府對外服務全停",
+          "英國 32 個政府網站、維基媒體"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m52w",
+          "text": "於是修補發布前的那個晚上，像召回公告剛貼出來，車主先把車停到路邊。",
+          "emotion": "對照一句，輕"
+        },
+        {
+          "id": "kirn",
+          "text": "日本的 pixiv 和 niconico 進入維護；",
+          "emotion": "清單，清楚"
+        },
+        {
+          "id": "s8y2",
+          "text": "荷蘭連國家資安中心自己的網站都關了；",
+          "reveal": 1
+        },
+        {
+          "id": "3hp6",
+          "text": "芬蘭政府把對外服務全部暫停；",
+          "reveal": 1,
+          "emotion": "清單段落加快"
+        },
+        {
+          "id": "wnky",
+          "text": "英國 32 個政府網站和維基媒體的部分系統，也都下線。",
+          "reveal": 1,
+          "emotion": "收尾放輕"
+        }
+      ]
+    },
+    {
+      "id": "pm",
+      "template": "big",
+      "data": {
+        "kicker": "21 日晚上 9 點 55 分（日本時間），日本首相在 X 上",
+        "text": "離修補發布\n只剩一小時",
+        "sub": "高市早苗的 X 貼文 2026-10-21；BBC 2026-10-23",
+        "key": "首相發文，離修補只剩一小時"
+      },
+      "lines": [
+        {
+          "id": "vrdu",
+          "text": "還記得開頭那則貼文嗎？日本時間晚上九點五十五分，離修補發布只剩一小時，",
+          "emotion": "轉述，平穩"
+        },
+        {
+          "id": "nauj",
+          "text": "首相高市早苗在 X 上寫的是「緊急請求」：",
+          "emotion": "轉述，平穩"
+        }
+      ]
+    },
+    {
+      "id": "pm-words",
+      "template": "big",
+      "data": {
+        "kicker": "「緊急請求」的原話",
+        "text": "今晚就確認\n網站有沒有用 PHP",
+        "key": "首相：今晚就去確認"
+      },
+      "lines": [
+        {
+          "id": "56c5",
+          "text": "今晚就去確認，你的網站有沒有用 PHP。",
+          "emotion": "像唸那則貼文，放慢"
+        }
+      ]
+    },
+    {
+      "id": "tw-order",
+      "template": "big",
+      "data": {
+        "kicker": "台灣的順序（資安署）",
+        "text": "先修補；修不了先上 WAF；\n都不行才暫停",
+        "key": "台灣：先修，再防火牆，最後暫停"
+      },
+      "lines": [
+        {
+          "id": "khrf",
+          "text": "台灣沒有要求關站。資安署的順序是：先修補；",
+          "emotion": "清單段落，三拍"
+        },
+        {
+          "id": "g97x",
+          "text": "系統太舊修不了，先上網站防火牆；兩樣都做不到，才暫停對外服務。",
+          "emotion": "接著數"
+        }
+      ]
+    },
+    {
+      "id": "recall-limit",
+      "template": "big",
+      "data": {
+        "kicker": "召回跟這次差在一點",
+        "text": "召回能排時間，\n這次不行",
+        "key": "這次不能慢慢排"
+      },
+      "lines": [
+        {
+          "id": "ksrk",
+          "text": "召回跟這次只有一點不一樣：召回可以排時間，這次不行，剛剛那個數字半天就到了。",
+          "emotion": "「不一樣」放輕"
+        },
+        {
+          "id": "42gu",
+          "text": "那修補出來了，你怎麼知道你的有沒有修到？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "advisory-page",
+      "chapter": "修好了嗎？看版本就夠？",
+      "template": "screencast",
+      "data": {
+        "title": "PHP 官方公告",
+        "caption": "php.net/archive/2026.php · 2026-10-21 安全公告 · 2026-10-25 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://www.php.net/archive/2026.php"
+          },
+          {
+            "action": "wait",
+            "selector": "a[id=\"2026-10-21-5\"]"
+          },
+          {
+            "action": "capture",
+            "focus": "h2.newstitle:has(a[id=\"2026-10-21-5\"])",
+            "zoom": 1.3
+          }
+        ],
+        "key": "官方公告長這樣"
+      },
+      "lines": [
+        {
+          "id": "fx7j",
+          "text": "官方公告長這樣，連結在說明欄：標題結尾就兩個字，update now。",
+          "emotion": "像指著畫面，平"
+        }
+      ]
+    },
+    {
+      "id": "versions",
+      "template": "table",
+      "data": {
+        "title": "四個安全版本（php.net，2026-10-21）",
+        "columns": [
+          "分支",
+          "修好的版本"
+        ],
+        "rows": [
+          [
+            "PHP 8.5",
+            "8.5.12"
+          ],
+          [
+            "PHP 8.4",
+            "8.4.27"
+          ],
+          [
+            "PHP 8.3",
+            "8.3.36"
+          ],
+          [
+            "PHP 8.2",
+            "8.2.35"
+          ]
+        ],
+        "source": "php.net/archive/2026.php · 8.1 以下官方不再出版本",
+        "key": "四個安全版本號"
+      },
+      "lines": [
+        {
+          "id": "zq2u",
+          "text": "承諾的四個版本號在這張表上，一支一個：你的分支，小版本要等於或大於表上的那個數字。",
+          "reveal": 3,
+          "emotion": "數字放慢，一個一個"
+        },
+        {
+          "id": "pacb",
+          "text": "8.1 以下，官方不再出版本，要靠發行版或主機商。",
+          "emotion": "平"
+        }
+      ]
+    },
+    {
+      "id": "phpv",
+      "template": "terminal",
+      "data": {
+        "title": "我這台測試機",
+        "command": "php -v",
+        "output": [
+          "PHP 8.3.6 (cli) (built: Oct 19 2026 15:16:58) (NTS)\nCopyright (c) The PHP Group\nZend Engine v4.3.6, Copyright (c) Zend Technologies\n    with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies"
+        ],
+        "ran_on": "2026-10-25",
+        "tool_version": "PHP 8.3.6 (cli), Ubuntu 24.04.5 LTS",
+        "typing": "human",
+        "keys": [
+          "在終端機查版本",
+          "8.3.6，離 8.3.36 差 30 個版本？"
+        ]
+      },
+      "lines": [
+        {
+          "id": "53hk",
+          "text": "我拿我這台測試機試：打版本指令，回來的是 8.3.6。",
+          "emotion": "像在旁邊看他打，放慢"
+        },
+        {
+          "id": "2qhy",
+          "text": "對照剛剛那張表，8.3 這一支要到小版本 36 才算修好；",
+          "reveal": 1,
+          "emotion": "「36」放慢"
+        },
+        {
+          "id": "m5s9",
+          "text": "我這台是小版本 6，看起來差了三十個版本，應該是中獎了吧？",
+          "emotion": "「對吧」上揚，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "looks-old",
+      "template": "big",
+      "data": {
+        "kicker": "看起來",
+        "text": "太舊，\n應該沒修",
+        "sub": "但這台是 Ubuntu，PHP 從發行版的套件裝的",
+        "key": "版本號看起來沒修"
+      },
+      "lines": [
+        {
+          "id": "p9ke",
+          "text": "先別急著下結論：這台跑的是 Ubuntu，PHP 是從發行版的套件裝的。",
+          "emotion": "停一拍，再放慢"
+        },
+        {
+          "id": "c8xq",
+          "text": "問題來了：Ubuntu 裝的，到底是哪一版？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "dpkg",
+      "template": "terminal",
+      "data": {
+        "title": "再問套件管理器",
+        "command": "dpkg-query -W -f='${Package} ${Version}\\n' php8.3-cli",
+        "output": [
+          "php8.3-cli 8.3.6-0ubuntu0.24.04.13"
+        ],
+        "ran_on": "2026-10-25",
+        "tool_version": "dpkg 1.22.6, Ubuntu 24.04.5 LTS",
+        "typing": "human",
+        "keys": [
+          "不問 PHP，問 Ubuntu 的套件管理器",
+          "8.3.6 後面還跟著一串"
+        ]
+      },
+      "lines": [
+        {
+          "id": "57xv",
+          "text": "換一個問法：不問 PHP 自己，問套件管理器，它登記的是哪一版，指令我放在說明欄。",
+          "emotion": "放慢，像在旁邊看他打"
+        },
+        {
+          "id": "f5zi",
+          "text": "回來的不是光溜溜的那三個數字，後面還跟著一串發行版自己的套件編號。",
+          "reveal": 1,
+          "emotion": "「一串」放慢"
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "template": "terminal",
+      "data": {
+        "title": "套件的更動紀錄",
+        "command": "zcat /usr/share/doc/php8.3-cli/changelog.Debian.gz | head -n 4",
+        "output": [
+          "php8.3 (8.3.6-0ubuntu0.24.04.13) noble-security; urgency=medium",
+          "\n  * SECURITY UPDATE: Remote RCE via state corruption issue\n    - debian/patches/CVE-2026-109618_109619.patch: Avoid state corruption via"
+        ],
+        "ran_on": "2026-10-25",
+        "tool_version": "dpkg 1.22.6, Ubuntu 24.04.5 LTS",
+        "typing": "human",
+        "keys": [
+          "翻套件的更動紀錄，前四行",
+          "noble-security：安全更新管道",
+          "補丁的名字就是這兩個 CVE"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cffr",
+          "text": "最後一步，翻這個套件自己的更動紀錄：一個指令，只看最前面的四行就夠了，一樣放在說明欄。",
+          "emotion": "平穩，像在等它打完"
+        },
+        {
+          "id": "94he",
+          "text": "第一行，套件版本後面寫著安全更新管道；",
+          "reveal": 1,
+          "emotion": "放慢"
+        },
+        {
+          "id": "eea5",
+          "text": "第三行寫著安全更新，第四行是補丁的檔名，裡面就是 PHP2Shell 那兩個 CVE 編號，漏洞的身分證字號。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "patched",
+      "template": "big",
+      "data": {
+        "kicker": "其實",
+        "text": "修補早就進去了",
+        "sub": "Ubuntu 24.04 修好的版本就是 8.3.6-0ubuntu0.24.04.13（ubuntu.com/security/CVE-2026-109618）",
+        "icon": "checklist",
+        "key": "修補早就進去了，版本號沒變"
+      },
+      "lines": [
+        {
+          "id": "ur3m",
+          "text": "其實修補早就進去了。Ubuntu 的 CVE 頁列的修好版本，就是剛剛套件管理器印出來的那一串。",
+          "emotion": "「其實」亮起來，放慢"
+        }
+      ]
+    },
+    {
+      "id": "why-same",
+      "template": "big",
+      "data": {
+        "kicker": "為什麼版本號不變",
+        "text": "發行版事先拿到修補",
+        "sub": "php.net：Linux distributions and LTS vendors received the patches in advance",
+        "icon": "gear",
+        "key": "發行版事先拿到修補，各自打包"
+      },
+      "lines": [
+        {
+          "id": "qd3n",
+          "text": "那為什麼版本號不變？",
+          "emotion": "問句，短"
+        },
+        {
+          "id": "pmmz",
+          "text": "PHP 官方公告自己寫了：Linux 發行版和長期支援廠商事先拿到修補，各自打進舊版號的套件裡。",
+          "emotion": "解釋的語氣"
+        }
+      ]
+    },
+    {
+      "id": "recall-record",
+      "template": "big",
+      "data": {
+        "kicker": "像召回",
+        "text": "行照年份不變，\n看維修紀錄",
+        "key": "看維修紀錄，不看年份"
+      },
+      "lines": [
+        {
+          "id": "bvkf",
+          "text": "就像召回修好了引擎，行照上的年份不會改；要看的是維修紀錄。",
+          "emotion": "對照，輕"
+        }
+      ]
+    },
+    {
+      "id": "three-ways",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "自己編譯或 Windows 版",
+            "detail": "看版本號：四個安全版本以上才算",
+            "icon": "terminal"
+          },
+          {
+            "title": "Linux 套件",
+            "detail": "看套件版本與更動紀錄裡的 CVE 編號",
+            "icon": "file"
+          },
+          {
+            "title": "主機商代管",
+            "detail": "問主機商：PHP 哪一版、修補哪天進去",
+            "icon": "person"
+          }
+        ],
+        "source": "php.net 2026-10-21；本片實跑 2026-10-25",
+        "keys": [
+          "自己編譯：看版本號",
+          "Linux 套件：看更動紀錄",
+          "代管：問主機商兩件事"
+        ]
+      },
+      "lines": [
+        {
+          "id": "rvnm",
+          "text": "換成你的機器，照剛剛那樣分三種情況查。",
+          "emotion": "清單段落，清楚"
+        },
+        {
+          "id": "mm34",
+          "text": "自己編譯或用 Windows 版的，看版本號，四個安全版本以上才算；",
+          "emotion": "清單段落，清楚"
+        },
+        {
+          "id": "48dz",
+          "text": "用 Linux 套件的，看套件版本和更動紀錄裡有沒有 CVE 編號；",
+          "reveal": 1
+        },
+        {
+          "id": "w9gx",
+          "text": "交給主機商代管的，直接問主機商兩件事：PHP 哪一版、修補哪天進去；客服回「有在處理」不算答案。",
+          "reveal": 1,
+          "emotion": "「兩件事」放慢"
+        }
+      ]
+    },
+    {
+      "id": "myths",
+      "template": "bullets",
+      "data": {
+        "title": "三個常見的誤會",
+        "items": [
+          {
+            "text": "更新 WordPress ≠ 更新 PHP",
+            "icon": "warning"
+          },
+          {
+            "text": "關掉 session.upload_progress ≠ 修補",
+            "icon": "gear"
+          },
+          {
+            "text": "修好後要重啟 PHP 的工作程序",
+            "icon": "clock"
+          }
+        ],
+        "source": "php.net 安全公告 2026-10-21",
+        "keys": [
+          "更新 WordPress 不等於更新 PHP",
+          "關一個設定不等於修補",
+          "修好要重啟工作程序"
+        ]
+      },
+      "lines": [
+        {
+          "id": "emqi",
+          "text": "三個常見的誤會：更新 WordPress 不等於更新 PHP，PHP 是主機或容器映像給的；",
+          "emotion": "清單段落"
+        },
+        {
+          "id": "tgt8",
+          "text": "網路上流傳關掉一個 session 設定就安全，PHP 官方說那只擋部分路徑，不能取代更新；",
+          "reveal": 1,
+          "emotion": "「不能取代」加重"
+        },
+        {
+          "id": "anbx",
+          "text": "二十三日它又補了一則，還是建議先關那個設定，但說法沒變：緩解，不是修補。",
+          "emotion": "平，像補一句"
+        },
+        {
+          "id": "pcpg",
+          "text": "修好之後要重啟 PHP 的工作程序，舊的程序還跑著舊程式。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "oct23",
+      "template": "big",
+      "data": {
+        "kicker": "放著的那題",
+        "text": "AI 找到洞，\n好事還是壞事？",
+        "key": "回到放著的那題"
+      },
+      "lines": [
+        {
+          "id": "dv5w",
+          "text": "好，剛剛放著的那題：AI 先找到洞，是好事還是壞事？",
+          "emotion": "回呼，問句"
+        }
+      ]
+    },
+    {
+      "id": "my-call",
+      "chapter": "我的看法：AI 找到洞之後，現在先做什麼",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "找洞變快了，\n修洞還是人的速度",
+        "key": "找洞變快，修洞還是人的速度"
+      },
+      "lines": [
+        {
+          "id": "gx6w",
+          "text": "我的看法是：找洞變快了，修洞沒有，它還是要經過好幾雙手。",
+          "emotion": "放慢放穩，意見的語氣"
+        }
+      ]
+    },
+    {
+      "id": "hands",
+      "template": "big",
+      "data": {
+        "kicker": "好幾雙手",
+        "text": "選修法、打包、部署",
+        "sub": "最慢的那一步，是兩天的走漏",
+        "key": "最慢的一步是走漏"
+      },
+      "lines": [
+        {
+          "id": "pmgi",
+          "text": "維護者要挑一種修法、發行版要打包、主機業者要部署，",
+          "emotion": "數著講"
+        },
+        {
+          "id": "v48u",
+          "text": "最慢的那一步，就是剛剛那兩天的走漏。",
+          "emotion": "短句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "unsure",
+      "template": "big",
+      "data": {
+        "kicker": "我不確定的",
+        "text": "台灣那 2.8 萬個站\n修好了多少",
+        "key": "修好了多少，我查不到"
+      },
+      "lines": [
+        {
+          "id": "duf7",
+          "text": "台灣那兩萬八千個站到今天修好了多少，我查不到；資安署說會持續掌握進度。",
+          "emotion": "「我查不到」放輕，承認不確定"
+        }
+      ]
+    },
+    {
+      "id": "three-things",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "今天",
+            "detail": "查 PHP 版本或套件紀錄；代管就問主機商",
+            "icon": "terminal"
+          },
+          {
+            "title": "這週",
+            "detail": "8.1 以下的站，排時間換到 8.3 以上",
+            "icon": "arrow"
+          },
+          {
+            "title": "之後",
+            "detail": "把主機商的資安公告加進你會看的地方",
+            "icon": "globe"
+          }
+        ],
+        "source": "php.net 2026-10-21；8.2 安全支援到 2026-12-31",
+        "keys": [
+          "今天：查版本或套件紀錄",
+          "這週：8.1 以下換分支",
+          "之後：追主機商的公告"
+        ]
+      },
+      "lines": [
+        {
+          "id": "n4we",
+          "text": "現在先做三件：今天，就照剛剛那三種情況查一次，代管的就問主機商；",
+          "emotion": "行動清單，乾脆"
+        },
+        {
+          "id": "7hcv",
+          "text": "這週，8.1 以下的站排時間換到 8.3 以上，8.2 的安全支援也只到今年底；",
+          "reveal": 1
+        },
+        {
+          "id": "6k5e",
+          "text": "之後，把主機業者的資安公告加進你會看的地方。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "kicker": "開頭那個問題的答案",
+        "text": "修補是一條鏈，\n不是一個檔",
+        "key": "修補是一條鏈，不是一個檔"
+      },
+      "lines": [
+        {
+          "id": "eedd",
+          "text": "還記得開頭那個問題嗎？AI 先找到了洞，網站為什麼還是自己關站。",
+          "emotion": "回呼，平靜"
+        },
+        {
+          "id": "w9rt",
+          "text": "因為修補是一條鏈，不是一個檔；鏈還沒走完的時候，先停下來最安全。",
+          "emotion": "回答，「一條鏈」放慢"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "big",
+      "data": {
+        "kicker": "留言告訴我",
+        "text": "你的網站 PHP\n是誰在管？",
+        "key": "你的站，PHP 是誰在管？"
+      },
+      "lines": [
+        {
+          "id": "dknd",
+          "text": "你的網站，PHP 是你自己管、還是主機商管？查到的版本是幾？留言告訴我。",
+          "emotion": "問句上揚，像真的在問朋友"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "修補是一條鏈，\n不是一個檔",
+        "lines": [
+          "php -v 之後，再看套件的更動紀錄"
+        ],
+        "cta": "訂閱：每一支都給你一個看完就能做的判斷",
+        "key": "每支一個判斷"
+      },
+      "lines": [
+        {
+          "id": "c6mc",
+          "text": "訂閱頻道，每一支都給你一個看完就能做的判斷。",
+          "emotion": "輕快收"
+        }
+      ]
+    }
+  ]
+}

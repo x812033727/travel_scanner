@@ -24,7 +24,17 @@ describe("video media proxy for the pipeline", () => {
     expect(mediaRoute(["jobs", JOB], "GET")?.timeoutMs).toBe(240_000);
     expect(mediaRoute(["files", "v", SHA], "PUT")?.maxBytes).toBe(PART_MAX_BYTES);
     expect(mediaRoute(["files", "v", SHA], "GET")?.kind).toBe("download");
+    expect(mediaRoute(["branding"], "GET")).toEqual({ kind: "json", maxBytes: 256 * 1024, timeoutMs: 30_000 });
+    expect(mediaRoute(["branding", "series", "sothatswhy"], "GET")?.kind).toBe("json");
+    expect(mediaRoute(["branding", "files", SHA], "GET")?.kind).toBe("download");
     for (const [path, method] of [
+      [["branding"], "POST"],
+      [["branding", "files", SHA], "PUT"],
+      [["branding", "files", "nothash"], "GET"],
+      [["branding", "series", "Upper"], "GET"],
+      [["branding", "series"], "GET"],
+      [["branding", "other", SHA], "GET"],
+      [["branding", "files", SHA, "x"], "GET"],
       [["status"], "POST"],
       [["images"], "GET"],
       [["jobs", "not-a-uuid"], "GET"],
@@ -113,6 +123,33 @@ describe("video media proxy for the pipeline", () => {
     expect(response.headers.get("cache-control")).toBe("private, no-store");
     expect(response.headers.get("set-cookie")).toBeNull();
     expect(new Uint8Array(await response.arrayBuffer())).toEqual(bytes);
+  });
+
+  it("forwards the branding description and streams its files", async () => {
+    const bytes = new Uint8Array([0, 0, 0, 24, 0x66, 0x74, 0x79, 0x70]);
+    const seen: string[] = [];
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      seen.push(url);
+      const headers = new Headers(init?.headers);
+      expect(headers.get("authorization")).toBe(`Bearer ${TOKEN}`);
+      expect(headers.has("cookie")).toBe(false);
+      if (url.endsWith(SHA)) return new Response(bytes, { status: 200, headers: { "Content-Type": "video/mp4", "Content-Length": "8", ETag: `"${SHA}"` } });
+      return Response.json({ id: "mokaair-brand-package-v4-endscreen" });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const channel = await GET(new NextRequest("https://mokaair.com/api/video/media/branding", { headers: auth }), context("branding"));
+    const series = await GET(new NextRequest("https://mokaair.com/api/video/media/branding/series/sothatswhy", { headers: auth }), context("branding", "series", "sothatswhy"));
+    const file = await GET(new NextRequest(`https://mokaair.com/api/video/media/branding/files/${SHA}`, { headers: auth }), context("branding", "files", SHA));
+    expect(await channel.json()).toEqual({ id: "mokaair-brand-package-v4-endscreen" });
+    expect(series.status).toBe(200);
+    expect(file.headers.get("content-type")).toBe("video/mp4");
+    expect(file.headers.get("cache-control")).toBe("private, no-store");
+    expect(new Uint8Array(await file.arrayBuffer())).toEqual(bytes);
+    expect(seen).toEqual([
+      "http://localhost:8000/api/v1/video/media/branding",
+      "http://localhost:8000/api/v1/video/media/branding/series/sothatswhy",
+      `http://localhost:8000/api/v1/video/media/branding/files/${SHA}`,
+    ]);
   });
 
   it("passes a download's error answer through as JSON", async () => {
