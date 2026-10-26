@@ -1,0 +1,935 @@
+{
+  "locale": "vi",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+    "text": "Dùng AI so sánh 3 báo giá PDF: Đơn giá thấp nhất có thật sự rẻ nhất?"
+  },
+  "description": {
+    "todo": true,
+    "source": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials",
+    "text": "Không thể lấy đơn giá từ ba báo giá PDF rồi xếp hạng ngay. Với cùng một bộ báo giá bưu thiếp tự soạn, nhờ AI sắp xếp quy cách, số lượng, tình trạng đã gồm thuế hay chưa, phí giao hàng và số trang nguồn, rồi tính tổng tiền giao tận nơi có thể so sánh theo các điều kiện được ghi rõ. Sau khi nhận phiên bản sửa đổi và đổi số lượng từ 10 thành 20 tấm, kiểm tra lại kết quả.\n\nVí dụ này dùng phân tích tài liệu bằng AI Codex trong lần thực hiện này, trích xuất văn bản bằng pypdf và tính số thập phân chính xác để xuất bảng tính có thể chỉnh sửa; không khẳng định đã thử giao diện tải tệp lên của bất kỳ sản phẩm AI thương mại cụ thể nào. Nhà cung cấp, giá và thuế suất 5% đều là dữ liệu tự soạn cho bài tập, không phải nhận định thuế cho giao dịch thật.\n\nNgày dữ liệu và thực hành: 2026-10-26. PDF lần này có văn bản chọn được; quy trình trích xuất này không làm OCR ảnh quét. Các giá trị trong bảng tính thực sự do công cụ tính toán; openpyxl chỉ ghi tệp, không khẳng định công cụ này tính công thức.\n\nTài liệu gồm nhu cầu, câu lệnh cho AI, chương trình tạo PDF nguồn, văn bản trích xuất từng trang, bảng so sánh giá có thể chỉnh sửa và lịch sử phiên bản.\n\nCâu lệnh bảy dòng trên màn hình là yêu cầu nhiệm vụ dành cho người xem; định dạng các trường để máy đọc nằm trong hợp đồng JSON ở analysis-prompt.txt, và lần phân tích AI này cũng đã đọc hợp đồng đó.\n\nTài liệu tự soạn, nhu cầu và câu lệnh đầy đủ:\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "AI 教學",
+      "PDF 比價",
+      "報價比較",
+      "辦公室 AI",
+      "Mokaair"
+    ],
+    "text": [
+      "hướng dẫn AI",
+      "so sánh giá PDF",
+      "so sánh báo giá",
+      "AI văn phòng",
+      "Codex",
+      "PDF"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "tag": "AI 比較 PDF 報價",
+      "headline": "**先算總價**",
+      "sub": "稅與運費別漏算"
+    },
+    "text": {
+      "tag": "So báo giá PDF",
+      "headline": "**Tính tổng trước**",
+      "sub": "Đừng sót thuế, phí giao"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "opening",
+      "todo": true,
+      "source": "最低單價，能直接下單？",
+      "text": "Đơn giá rẻ, đặt ngay được?"
+    },
+    {
+      "scene": "need-start",
+      "todo": true,
+      "source": "把需求寫成比較基準",
+      "text": "Lập chuẩn từ nhu cầu"
+    },
+    {
+      "scene": "extract-start",
+      "todo": true,
+      "source": "讓每個欄位都找得到原文",
+      "text": "Mỗi cột đều có nguồn"
+    },
+    {
+      "scene": "cost-start",
+      "todo": true,
+      "source": "含稅和運費要算到同一個終點",
+      "text": "Tính cả thuế và phí giao"
+    },
+    {
+      "scene": "missing-start",
+      "todo": true,
+      "source": "把缺漏變成能寄出的問題",
+      "text": "Hỏi rõ những mục còn thiếu"
+    },
+    {
+      "scene": "revision-start",
+      "todo": true,
+      "source": "修訂版到手，只替換改過的條件",
+      "text": "Thay điều kiện đã sửa đổi"
+    },
+    {
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "數量翻倍，重新確認適用條件",
+      "text": "Gấp đôi lượng, kiểm điều kiện"
+    },
+    {
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "只多一張，最低價在哪裡換人？",
+      "text": "Thêm 1 tấm, ai rẻ nhất?"
+    },
+    {
+      "scene": "range21-request",
+      "todo": true,
+      "source": "超出報價範圍，先別下單",
+      "text": "Vượt phạm vi, khoan đặt hàng"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI",
+      "Codex",
+      "JSON",
+      "Mokaair",
+      "PDF"
+    ],
+    "sources": [
+      "pypdf — Extract Text from a PDF",
+      "openpyxl — Using formulae"
+    ]
+  },
+  "boundaries": {
+    "7dp4": [
+      "先把原本十張的數量設定檔，",
+      "另存成畫面上這個新檔名，再把數量改成二十。"
+    ]
+  },
+  "lines": [
+    {
+      "id": "6vwc",
+      "scene": "opening",
+      "todo": true,
+      "source": "最低的單價，現在還不能直接排第一。",
+      "text": "Đơn giá thấp nhất chưa thể đứng đầu ngay.",
+      "max_chars": 68
+    },
+    {
+      "id": "xnrg",
+      "scene": "opening-unit",
+      "todo": true,
+      "source": "因為這三份報價，寫的其實不是同一種金額。",
+      "text": "Vì các khoản tiền ghi trong 3 báo giá không cùng loại.",
+      "max_chars": 64
+    },
+    {
+      "id": "edfn",
+      "scene": "opening-result",
+      "todo": true,
+      "source": "所以我們讓 AI 做一張能編輯的表，連原文頁碼也一起留下。",
+      "text": "Ta nhờ AI làm bảng sửa được, lưu cả số trang gốc.",
+      "max_chars": 92
+    },
+    {
+      "id": "hg9m",
+      "scene": "opening-missing",
+      "todo": true,
+      "source": "但空白的運費，能不能直接當成免費？",
+      "text": "Phí giao hàng trống có coi là miễn phí được không?",
+      "max_chars": 58
+    },
+    {
+      "id": "ajsk",
+      "scene": "opening-revision",
+      "todo": true,
+      "source": "補來一張修訂單，便宜的會換人嗎？",
+      "text": "Có báo giá sửa đổi, bên rẻ nhất sẽ đổi chứ?",
+      "max_chars": 58
+    },
+    {
+      "id": "kv5r",
+      "scene": "opening-quantity",
+      "todo": true,
+      "source": "如果數量翻倍，原本的答案還能用嗎？",
+      "text": "Nếu số lượng gấp đôi, kết quả cũ còn dùng được không?",
+      "max_chars": 77
+    },
+    {
+      "id": "ddpd",
+      "scene": "need-start",
+      "todo": true,
+      "source": "你現在要印十張明信片，三家都寄來了報價。",
+      "text": "Bạn in 10 bưu thiếp, 3 bên đã gửi báo giá.",
+      "max_chars": 55
+    },
+    {
+      "id": "9ski",
+      "scene": "need-start",
+      "todo": true,
+      "source": "先把自己的需求另存一份，別讓報價替你決定要買什麼。",
+      "text": "Lưu riêng nhu cầu; đừng để báo giá quyết định bạn mua gì.",
+      "max_chars": 80
+    },
+    {
+      "id": "bv46",
+      "scene": "need-spec",
+      "todo": true,
+      "source": "像紙張、尺寸和印刷方式，都要能逐項對上。",
+      "text": "Giấy, kích thước, cách in phải khớp từng mục.",
+      "max_chars": 75
+    },
+    {
+      "id": "hssn",
+      "scene": "need-spec",
+      "todo": true,
+      "source": "只寫明信片還不夠，換一種紙就可能是另一個價格。",
+      "text": "Chỉ ghi bưu thiếp chưa đủ; đổi giấy có thể đổi giá.",
+      "max_chars": 80
+    },
+    {
+      "id": "d8h7",
+      "scene": "need-delivery",
+      "todo": true,
+      "source": "交貨地址和期限也要相同，才是在比同一件事。",
+      "text": "Cùng địa chỉ, hạn giao mới so được cùng việc.",
+      "max_chars": 61
+    },
+    {
+      "id": "jfix",
+      "scene": "need-delivery",
+      "todo": true,
+      "source": "這次要的是送達總價，單價只是其中一個欄位。",
+      "text": "Cần tổng tiền giao tận nơi; đơn giá chỉ là một cột.",
+      "max_chars": 73
+    },
+    {
+      "id": "d78a",
+      "scene": "need-labels",
+      "todo": true,
+      "source": "三份原檔先保留下來，輸出另外放一個資料夾。",
+      "text": "Giữ 3 tệp gốc, lưu đầu ra trong thư mục khác.",
+      "max_chars": 65
+    },
+    {
+      "id": "mjhz",
+      "scene": "need-labels",
+      "todo": true,
+      "source": "這樣你收到新版本，還能看出供應商到底改了什麼。",
+      "text": "Có phiên bản mới, bạn vẫn thấy bên bán đã đổi gì.",
+      "max_chars": 68
+    },
+    {
+      "id": "fvzv",
+      "scene": "need-fiction",
+      "todo": true,
+      "source": "這組供應商和交易條件，都是練習用的虛構資料。",
+      "text": "Nhà cung cấp và điều kiện đều giả định để luyện tập.",
+      "max_chars": 63
+    },
+    {
+      "id": "3742",
+      "scene": "need-fiction",
+      "todo": true,
+      "source": "畫面上的稅率是計算假設，真實交易要用自己的報價條件。",
+      "text": "Thuế suất trên màn hình là giả định; giao dịch thật dùng điều kiện báo giá của bạn.",
+      "max_chars": 84
+    },
+    {
+      "id": "3639",
+      "scene": "need-route",
+      "todo": true,
+      "source": "你可以讓 AI 幫忙整理欄位，再把算術交給計算工具。",
+      "text": "AI sắp xếp các cột, công cụ tính lo phần số học.",
+      "max_chars": 66
+    },
+    {
+      "id": "658p",
+      "scene": "need-route",
+      "todo": true,
+      "source": "把這兩件事拆開，錯了才知道該回頭看文字還是公式。",
+      "text": "Tách 2 việc, sai mới biết cần xem lại chữ hay công thức.",
+      "max_chars": 79
+    },
+    {
+      "id": "m57n",
+      "scene": "need-proof",
+      "todo": true,
+      "source": "甲的單價在第一頁，送貨條件卻放在第二頁。",
+      "text": "Đơn giá Aster ở trang 1, điều kiện giao ở trang 2.",
+      "max_chars": 72
+    },
+    {
+      "id": "scia",
+      "scene": "need-proof",
+      "todo": true,
+      "source": "如果只讀首頁，這張比較表一開始就少了一筆錢。",
+      "text": "Chỉ đọc trang đầu, bảng so sánh đã thiếu một khoản tiền.",
+      "max_chars": 90
+    },
+    {
+      "id": "nxct",
+      "scene": "extract-start",
+      "todo": true,
+      "source": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+      "text": "Ta gửi AI cả 2 trang mỗi báo giá, kèm nhu cầu.",
+      "max_chars": 79
+    },
+    {
+      "id": "7k9u",
+      "scene": "extract-start",
+      "todo": true,
+      "source": "而且要它每個欄位都附上原文，別只回一句哪家比較划算。",
+      "text": "Mỗi cột cần kèm nguyên văn, đừng chỉ trả lời bên nào lợi hơn.",
+      "max_chars": 84
+    },
+    {
+      "id": "ea2e",
+      "scene": "extract-core",
+      "todo": true,
+      "source": "缺的就保留空值，單價和運費各自的稅，也要分清楚。",
+      "text": "Mục thiếu giữ null; phân biệt thuế đơn giá và thuế phí giao hàng.",
+      "max_chars": 95
+    },
+    {
+      "id": "ke2c",
+      "scene": "extract-fields",
+      "todo": true,
+      "source": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。",
+      "text": "3 bên trình bày khác nhau; đặt cột chung để tránh so sai theo bố cục.",
+      "max_chars": 85
+    },
+    {
+      "id": "rgfp",
+      "scene": "extract-fields",
+      "todo": true,
+      "source": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。",
+      "text": "Giá gốc đã gồm thuế thì giữ nguyên, đừng vội cộng mọi số lại.",
+      "max_chars": 90
+    },
+    {
+      "id": "fd27",
+      "scene": "extract-aster",
+      "todo": true,
+      "source": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "text": "Đơn giá, phí giao Aster ở 2 trang gộp 1 dòng, mỗi mục giữ nguồn.",
+      "max_chars": 94
+    },
+    {
+      "id": "qttz",
+      "scene": "extract-aster-quote",
+      "todo": true,
+      "source": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+      "text": "Dùng câu gốc này kiểm tra bảng có sót phí giao.",
+      "max_chars": 60
+    },
+    {
+      "id": "indq",
+      "scene": "extract-aster-quote",
+      "todo": true,
+      "source": "同樣是運費，為什麼乙能填零，丙卻不行？",
+      "text": "Cùng phí giao, sao Birch được điền 0, Cedar lại không?",
+      "max_chars": 67
+    },
+    {
+      "id": "q7x8",
+      "scene": "extract-birch",
+      "todo": true,
+      "source": "乙的運費填零，是因為它的報價明寫免費送達。",
+      "text": "Birch ghi 0 vì báo giá nói rõ giao hàng miễn phí.",
+      "max_chars": 74
+    },
+    {
+      "id": "7hi8",
+      "scene": "extract-missing-quote",
+      "todo": true,
+      "source": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+      "text": "Trang 2 Cedar ghi chưa báo phí giao; đây là trạng thái khác.",
+      "max_chars": 62
+    },
+    {
+      "id": "cxxm",
+      "scene": "extract-missing-quote",
+      "todo": true,
+      "source": "AI 應該保留這個差別，不能為了把表填滿就補上零。",
+      "text": "AI phải giữ khác biệt này, đừng điền 0 chỉ để lấp đầy bảng.",
+      "max_chars": 87
+    },
+    {
+      "id": "6pwe",
+      "scene": "extract-null",
+      "todo": true,
+      "source": "後面算總價時，程式看到這個空值，就知道還不能當成完整報價。",
+      "text": "Khi tính tổng, null báo chương trình biết báo giá vẫn chưa đầy đủ.",
+      "max_chars": 97
+    },
+    {
+      "id": "eg6v",
+      "scene": "extract-review",
+      "todo": true,
+      "source": "拿到表格後，先挑會改變答案的值回到原頁核對。",
+      "text": "Có bảng rồi, kiểm tra giá trị làm đổi kết quả ở trang gốc.",
+      "max_chars": 69
+    },
+    {
+      "id": "g3vp",
+      "scene": "extract-review",
+      "todo": true,
+      "source": "逐欄對照數值和支持它的原句；對不上，就先標成待確認。",
+      "text": "Đối chiếu từng cột với câu gốc hỗ trợ; không khớp thì đánh dấu cần xác nhận.",
+      "max_chars": 117
+    },
+    {
+      "id": "35fs",
+      "scene": "cost-start",
+      "todo": true,
+      "source": "如果只是把單價從小排到大，丙看起來會最便宜。",
+      "text": "Chỉ xếp đơn giá tăng dần, Cedar có vẻ rẻ nhất.",
+      "max_chars": 71
+    },
+    {
+      "id": "at27",
+      "scene": "cost-start",
+      "todo": true,
+      "source": "可是這個排序，還沒有把稅和送達費用放進來。",
+      "text": "Nhưng thứ tự này chưa tính thuế và phí giao tận nơi.",
+      "max_chars": 69
+    },
+    {
+      "id": "d2m5",
+      "scene": "cost-unit-baseline",
+      "todo": true,
+      "source": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。",
+      "text": "Giữ thứ tự này; tính tổng giao tận nơi xong, đối chiếu thứ hạng thay đổi.",
+      "max_chars": 92
+    },
+    {
+      "id": "xwsj",
+      "scene": "cost-aster-formula",
+      "todo": true,
+      "source": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+      "text": "Hàng và phí giao Aster chưa thuế, tính thuế riêng.",
+      "max_chars": 67
+    },
+    {
+      "id": "qagq",
+      "scene": "cost-aster-formula",
+      "todo": true,
+      "source": "把這幾項合起來，才是甲這份報價的送達總價。",
+      "text": "Cộng các khoản này mới ra tổng giao tận nơi của Aster.",
+      "max_chars": 78
+    },
+    {
+      "id": "znv7",
+      "scene": "cost-birch-formula",
+      "todo": true,
+      "source": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "text": "Đơn giá Birch đã gồm thuế hàng; nhân số lượng ra tiền hàng.",
+      "max_chars": 77
+    },
+    {
+      "id": "c49q",
+      "scene": "cost-birch-formula",
+      "todo": true,
+      "source": "那丙的商品稅也算得出來，它能一起排進名次嗎？",
+      "text": "Tính được thuế hàng Cedar, có xếp hạng cùng được không?",
+      "max_chars": 68
+    },
+    {
+      "id": "bcr5",
+      "scene": "cost-initial-result",
+      "todo": true,
+      "source": "結果算到同一個終點，目前是乙比甲便宜。",
+      "text": "Cùng cơ sở tổng tiền, Birch đang rẻ hơn Aster.",
+      "max_chars": 61
+    },
+    {
+      "id": "tnrc",
+      "scene": "cost-initial-result",
+      "todo": true,
+      "source": "丙的總價仍待確認，所以不能把它排成第一名。",
+      "text": "Tổng Cedar còn cần xác nhận, nên chưa thể xếp đầu.",
+      "max_chars": 70
+    },
+    {
+      "id": "cv74",
+      "scene": "cost-rounding",
+      "todo": true,
+      "source": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+      "text": "Với số thập phân, công cụ tính theo điều kiện ghi rõ, rồi thống nhất định dạng tiền.",
+      "max_chars": 92
+    },
+    {
+      "id": "8xam",
+      "scene": "cost-rounding",
+      "todo": true,
+      "source": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+      "text": "Đừng để mô hình làm tròn đơn giá trước, rồi nhân sai số với số lượng.",
+      "max_chars": 92
+    },
+    {
+      "id": "qrv8",
+      "scene": "cost-workbook",
+      "todo": true,
+      "source": "打開試算表，把原文金額和計算金額分開核對。",
+      "text": "Mở bảng tính, kiểm riêng tiền gốc và tiền tính ra.",
+      "max_chars": 64
+    },
+    {
+      "id": "ehby",
+      "scene": "cost-workbook",
+      "todo": true,
+      "source": "但它不是會自己重算的公式，需求一改，就要重新產生一次結果。",
+      "text": "Đây không phải công thức tự tính lại; nhu cầu đổi, phải tạo lại kết quả.",
+      "max_chars": 111
+    },
+    {
+      "id": "u7i8",
+      "scene": "missing-start",
+      "todo": true,
+      "source": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+      "text": "Nhớ phí giao trống chứ? Nó quyết định Cedar có được xếp hạng.",
+      "max_chars": 89
+    },
+    {
+      "id": "e86a",
+      "scene": "missing-start",
+      "todo": true,
+      "source": "因為丙的商品比乙便宜，只要運費不夠高，名次就會翻過來。",
+      "text": "Hàng Cedar rẻ hơn Birch; phí giao đủ thấp thì thứ hạng đảo ngược.",
+      "max_chars": 97
+    },
+    {
+      "id": "j2ja",
+      "scene": "missing-known",
+      "todo": true,
+      "source": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。",
+      "text": "Bảng tách Cedar thành đã biết và chưa biết: phí giao, phí đã gồm thuế chưa và tiền thuế.",
+      "max_chars": 128
+    },
+    {
+      "id": "ehkq",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "所以問題要問得具體，請它補送到同一地址的運費和稅。",
+      "text": "Hỏi cụ thể: xin bổ sung phí giao và thuế tới cùng địa chỉ.",
+      "max_chars": 80
+    },
+    {
+      "id": "aghq",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "也要確認數量改變後費用是否相同，免得下一輪又得猜。",
+      "text": "Cũng hỏi đổi số lượng thì phí có giữ nguyên, tránh vòng sau lại đoán.",
+      "max_chars": 89
+    },
+    {
+      "id": "z8x8",
+      "scene": "missing-no-send",
+      "todo": true,
+      "source": "AI 可以幫你整理待問清單，但詢問草稿還需要你確認。",
+      "text": "AI lập danh sách cần hỏi, nhưng bạn phải duyệt dự thảo.",
+      "max_chars": 71
+    },
+    {
+      "id": "7scz",
+      "scene": "missing-no-send",
+      "todo": true,
+      "source": "別把表格裡的待確認，寫成供應商已經同意的條件。",
+      "text": "Đừng biến mục cần xác nhận thành điều kiện bên bán đã đồng ý.",
+      "max_chars": 81
+    },
+    {
+      "id": "w9yq",
+      "scene": "missing-status",
+      "todo": true,
+      "source": "你也可以讓表格多一個狀態欄位，寫清楚它卡在哪裡。",
+      "text": "Thêm cột trạng thái, ghi rõ đang vướng ở đâu.",
+      "max_chars": 66
+    },
+    {
+      "id": "pdxs",
+      "scene": "missing-status",
+      "todo": true,
+      "source": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。",
+      "text": "Báo giá thật khác quy cách, hỏi có đồng nhất được không; đừng tự bịa giá nâng cấp.",
+      "max_chars": 123
+    },
+    {
+      "id": "k75x",
+      "scene": "revision-start",
+      "todo": true,
+      "source": "丙補來了修訂版，這時候不要把它當成第四家供應商。",
+      "text": "Cedar gửi báo giá sửa đổi; đừng coi là bên thứ tư.",
+      "max_chars": 68
+    },
+    {
+      "id": "mbee",
+      "scene": "revision-start",
+      "todo": true,
+      "source": "留下舊檔作紀錄，再用新的條件替換丙這一列。",
+      "text": "Giữ tệp cũ làm hồ sơ, thay dòng Cedar bằng điều kiện mới.",
+      "max_chars": 69
+    },
+    {
+      "id": "h85p",
+      "scene": "revision-identity",
+      "todo": true,
+      "source": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。",
+      "text": "Kiểm mã phiên bản cũ ở đây, rồi đánh dấu tệp tương ứng đã bị thay thế.",
+      "max_chars": 105
+    },
+    {
+      "id": "hiqk",
+      "scene": "revision-diff",
+      "todo": true,
+      "source": "這次改的是運費和它的稅，商品單價並沒有跟著變。",
+      "text": "Lần này đổi phí giao và thuế của nó; đơn giá hàng vẫn giữ nguyên.",
+      "max_chars": 80
+    },
+    {
+      "id": "ambg",
+      "scene": "revision-total",
+      "todo": true,
+      "source": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。",
+      "text": "Giờ tính được tổng giao tận nơi của Cedar, đúng bằng Aster.",
+      "max_chars": 92
+    },
+    {
+      "id": "dyun",
+      "scene": "revision-ranking",
+      "todo": true,
+      "source": "運費補齊後，丙比乙多了五十元，還追不上。",
+      "text": "Đủ phí giao, Cedar hơn Birch 50 TWD, vẫn chưa rẻ hơn.",
+      "max_chars": 78
+    },
+    {
+      "id": "benr",
+      "scene": "revision-links",
+      "todo": true,
+      "source": "這時候還要看一眼來源這個欄位，有沒有改成對應修訂版。",
+      "text": "Xem cột nguồn đã đổi sang đúng phiên bản sửa đổi chưa.",
+      "max_chars": 72
+    },
+    {
+      "id": "zqts",
+      "scene": "revision-links",
+      "todo": true,
+      "source": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。",
+      "text": "Chỉ đổi tiền mà vẫn dẫn tệp cũ, người khác kiểm lại sẽ không tìm thấy.",
+      "max_chars": 96
+    },
+    {
+      "id": "q57z",
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "後來你的需求改了，同樣的明信片，要印二十張。",
+      "text": "Nhu cầu đổi: vẫn bưu thiếp ấy, in 20 tấm.",
+      "max_chars": 62
+    },
+    {
+      "id": "7dp4",
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "先把原本十張的數量設定檔，另存成畫面上這個新檔名，再把數量改成二十。",
+      "text": "Lưu tệp số lượng 10 thành tên mới trên màn hình, rồi đổi số lượng thành 20.",
+      "max_chars": 130
+    },
+    {
+      "id": "ubke",
+      "scene": "quantity-edit",
+      "todo": true,
+      "source": "你改的是需求數量，不是把原本的總價直接乘上兩倍。",
+      "text": "Đổi số lượng cần mua, không nhân đôi tổng cũ.",
+      "max_chars": 70
+    },
+    {
+      "id": "f5gy",
+      "scene": "quantity-edit",
+      "todo": true,
+      "source": "情境這個欄位要保留修訂版，別切回原始報價。",
+      "text": "Cột kịch bản giữ phiên bản sửa đổi, đừng về báo giá gốc.",
+      "max_chars": 71
+    },
+    {
+      "id": "3eue",
+      "scene": "quantity-prompt",
+      "todo": true,
+      "source": "數量改過之後，還要明說其他需求都不變。",
+      "text": "Đổi số lượng, nói rõ nhu cầu khác giữ nguyên.",
+      "max_chars": 56
+    },
+    {
+      "id": "sqqn",
+      "scene": "quantity-prompt",
+      "todo": true,
+      "source": "先確認報價的適用範圍，再更新金額和來源，留下變動清單。",
+      "text": "Kiểm phạm vi báo giá, rồi cập nhật tiền và nguồn, lưu danh sách thay đổi.",
+      "max_chars": 98
+    },
+    {
+      "id": "6wkf",
+      "scene": "quantity-run",
+      "todo": true,
+      "source": "存檔後，在教材的程式資料夾執行這條命令。",
+      "text": "Lưu rồi chạy lệnh ở thư mục mã tài liệu.",
+      "max_chars": 53
+    },
+    {
+      "id": "74dc",
+      "scene": "quantity-run",
+      "todo": true,
+      "source": "它會讀取新數量，另存結果，不覆蓋供應商的原始報價。",
+      "text": "Đọc số lượng mới, lưu riêng kết quả, không ghi đè báo giá gốc của bên bán.",
+      "max_chars": 83
+    },
+    {
+      "id": "326u",
+      "scene": "quantity-output",
+      "todo": true,
+      "source": "打開輸出的需求紀錄，確認它真的使用了新的數量。",
+      "text": "Mở hồ sơ nhu cầu xuất ra, kiểm đã dùng số lượng mới.",
+      "max_chars": 68
+    },
+    {
+      "id": "m5sn",
+      "scene": "quantity-output",
+      "todo": true,
+      "source": "再看供應商清單，丙應該只剩採用修訂版的那一列。",
+      "text": "Xem danh sách bên bán, Cedar chỉ còn 1 dòng dùng phiên bản sửa đổi.",
+      "max_chars": 94
+    },
+    {
+      "id": "sxtz",
+      "scene": "quantity-ranges",
+      "todo": true,
+      "source": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+      "text": "Cả 3 báo giá ghi rõ đơn giá giữ nguyên trong khoảng số lượng này.",
+      "max_chars": 81
+    },
+    {
+      "id": "rgr9",
+      "scene": "quantity-ranges",
+      "todo": true,
+      "source": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+      "text": "Điều kiện giao cũng ghi tương ứng, nên lần này tính lại được theo số lượng mới.",
+      "max_chars": 85
+    },
+    {
+      "id": "xevg",
+      "scene": "quantity-aster",
+      "todo": true,
+      "source": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+      "text": "Tiền hàng Aster tăng theo số lượng, phí giao vẫn chỉ 1 khoản.",
+      "max_chars": 83
+    },
+    {
+      "id": "m8sb",
+      "scene": "quantity-birch",
+      "todo": true,
+      "source": "乙比甲多了一百一十元，原本的先後順序反過來了。",
+      "text": "Birch hơn Aster 110 TWD; thứ tự cũ đảo ngược.",
+      "max_chars": 69
+    },
+    {
+      "id": "pruf",
+      "scene": "quantity-birch",
+      "todo": true,
+      "source": "那把丙也算進來，這個名次還會再變嗎？",
+      "text": "Tính cả Cedar, thứ hạng lại đổi chứ?",
+      "max_chars": 53
+    },
+    {
+      "id": "gy4i",
+      "scene": "quantity-cedar",
+      "todo": true,
+      "source": "再看丙，它比甲少了五十二元五角。",
+      "text": "Cedar ít hơn Aster 52.50 TWD.",
+      "max_chars": 72
+    },
+    {
+      "id": "cbe9",
+      "scene": "quantity-ranking",
+      "todo": true,
+      "source": "還記得開頭問的數量翻倍嗎？最低總價真的換人了，變成丙。",
+      "text": "Nhớ câu hỏi gấp đôi số lượng chứ? Tổng thấp nhất đã đổi sang Cedar.",
+      "max_chars": 104
+    },
+    {
+      "id": "nvu3",
+      "scene": "quantity-ranking",
+      "todo": true,
+      "source": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。",
+      "text": "Không ai đột ngột giảm giá; tỷ trọng phí giao cố định thay đổi theo số lượng.",
+      "max_chars": 124
+    },
+    {
+      "id": "fa3t",
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "那最低總價是從第幾張開始換人？",
+      "text": "Từ tấm thứ mấy bên rẻ nhất đổi?",
+      "max_chars": 51
+    },
+    {
+      "id": "63ek",
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "我們拿相鄰的兩個需求來試，不去猜所有張數都用同一個排名。",
+      "text": "Ta thử 2 nhu cầu có số lượng liền nhau, đừng đoán mọi số lượng đều cùng thứ hạng.",
+      "max_chars": 152
+    },
+    {
+      "id": "8fkp",
+      "scene": "threshold-request12",
+      "todo": true,
+      "source": "先把修訂情境另存一份，數量填十二，其他條件保持相同。",
+      "text": "Lưu riêng kịch bản sửa đổi, nhập số lượng 12, giữ nguyên điều kiện khác.",
+      "max_chars": 91
+    },
+    {
+      "id": "utm2",
+      "scene": "threshold-run12",
+      "todo": true,
+      "source": "用同一份抽取資料執行，結果另存到這一份需求的資料夾。",
+      "text": "Chạy cùng dữ liệu trích xuất, lưu riêng kết quả vào thư mục nhu cầu này.",
+      "max_chars": 100
+    },
+    {
+      "id": "bnhk",
+      "scene": "threshold-request13",
+      "todo": true,
+      "source": "再複製這份需求，只多加一張，留下另一個檔名。",
+      "text": "Sao chép nhu cầu này, thêm đúng 1 tấm, lưu tên khác.",
+      "max_chars": 78
+    },
+    {
+      "id": "7udt",
+      "scene": "threshold-run13",
+      "todo": true,
+      "source": "輸出位置也要分開，這樣兩份結果才能真的並排比較。",
+      "text": "Tách cả nơi xuất để thực sự đặt 2 kết quả cạnh nhau so sánh.",
+      "max_chars": 87
+    },
+    {
+      "id": "6nxr",
+      "scene": "threshold-results",
+      "todo": true,
+      "source": "十二張時，乙只比丙少七元五角，還沒有換人。",
+      "text": "12 tấm, Birch chỉ ít hơn Cedar 7.50 TWD; chưa đổi ngôi.",
+      "max_chars": 72
+    },
+    {
+      "id": "7jrk",
+      "scene": "threshold-results",
+      "todo": true,
+      "source": "十三張時，丙就領先十三元七角五分，這一步才跨過轉換點。",
+      "text": "13 tấm, Cedar dẫn trước 13.75 TWD; bước này mới qua điểm chuyển.",
+      "max_chars": 117
+    },
+    {
+      "id": "e5gd",
+      "scene": "threshold-margin",
+      "todo": true,
+      "source": "差額都用丙減乙，正數是丙較貴，負數就是丙較便宜。",
+      "text": "Lấy Cedar trừ Birch; dương là Cedar đắt hơn, âm là rẻ hơn.",
+      "max_chars": 82
+    },
+    {
+      "id": "petb",
+      "scene": "threshold-margin",
+      "todo": true,
+      "source": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+      "text": "Thêm 1 tấm, Cedar rút ngắn chênh lệch với Birch 21.25 TWD, nên chênh lệch qua 0.",
+      "max_chars": 129
+    },
+    {
+      "id": "vnaq",
+      "scene": "range21-request",
+      "todo": true,
+      "source": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+      "text": "20 tấm thêm 1 thành 21, còn tính được kết quả không?",
+      "max_chars": 87
+    },
+    {
+      "id": "trph",
+      "scene": "range21-request",
+      "todo": true,
+      "source": "這次先別改單價，照同一個方法重算看看。",
+      "text": "Chưa đổi đơn giá, thử tính lại theo cùng cách.",
+      "max_chars": 63
+    },
+    {
+      "id": "cegb",
+      "scene": "range21-run",
+      "todo": true,
+      "source": "只換需求檔和輸出資料夾，其他輸入都不變。",
+      "text": "Chỉ đổi tệp nhu cầu và thư mục đầu ra, đầu vào khác giữ nguyên.",
+      "max_chars": 95
+    },
+    {
+      "id": "pn4i",
+      "scene": "range21-run",
+      "todo": true,
+      "source": "程式會先拿新數量，對照各家寫明的適用範圍。",
+      "text": "Chương trình đối chiếu số lượng mới với phạm vi từng bên ghi rõ.",
+      "max_chars": 80
+    },
+    {
+      "id": "9jiq",
+      "scene": "range21-result",
+      "todo": true,
+      "source": "結果它拒絕計算，也沒有建立新的結果資料夾。",
+      "text": "Nó từ chối tính, cũng không tạo thư mục kết quả mới.",
+      "max_chars": 72
+    },
+    {
+      "id": "egmv",
+      "scene": "range21-result",
+      "todo": true,
+      "source": "因為二十一張，已經超過這三份報價寫明的範圍。",
+      "text": "Vì 21 tấm đã vượt phạm vi ghi rõ trong cả 3 báo giá.",
+      "max_chars": 100
+    },
+    {
+      "id": "92mc",
+      "scene": "range21-question",
+      "todo": true,
+      "source": "如果真的需要這個數量，就請供應商重報這一版條件。",
+      "text": "Nếu cần đúng số lượng này, nhờ bên bán báo giá lại điều kiện đó.",
+      "max_chars": 81
+    },
+    {
+      "id": "vee5",
+      "scene": "outro",
+      "todo": true,
+      "source": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。",
+      "text": "Mục báo giá nào hay mơ hồ? Bình luận nhé.",
+      "max_chars": 53
+    },
+    {
+      "id": "9jqz",
+      "scene": "outro",
+      "todo": true,
+      "source": "訂閱這個頻道，繼續把 AI 用成能交付的工作成果。",
+      "text": "Đăng ký kênh, tiếp tục dùng AI tạo kết quả công việc có thể bàn giao.",
+      "max_chars": 94
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "title": "Compare 3 PDF Quotes with AI: Is the Lowest Unit Price Really Cheapest?",
+  "description": "You cannot simply sort the unit prices in three PDF quotes. Follow one original set of postcard quotes: have AI organize specifications, quantities, tax status, shipping and source page numbers, then use the stated terms to calculate comparable delivered totals. Check the results again after receiving a revision and changing the quantity from 10 cards to 20.\n\nThis demo uses Codex AI document analysis, pypdf text extraction and exact decimal calculations to produce an editable spreadsheet. It does not claim to have tested the upload interface of any particular commercial AI product. The suppliers, prices and 5% tax rate are original practice settings, not tax advice for real transactions.\n\nData and implementation date: 2026-10-26. These PDFs have selectable text; this text extraction workflow does not perform OCR on scanned images. The spreadsheet values were actually calculated by a calculation tool. openpyxl only writes the file; no claim is made that it calculates formulas.\n\nThe materials include requirements, prompts, a source PDF generator, page-by-page extracted text, an editable quote comparison sheet and version records.\n\nThe seven-line prompt on screen gives the viewer's task requirements. The machine-readable field format is specified separately in the JSON contract in analysis-prompt.txt; this AI analysis also read that contract.\n\nOriginal materials, requirements and full prompts:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "tags": [
+    "AI tutorial",
+    "PDF quote comparison",
+    "compare quotations",
+    "office AI"
+  ],
+  "thumbnail": {
+    "tag": "AI PDF Quotes",
+    "headline": "**Total Cost First**",
+    "sub": "Include tax and shipping"
+  },
+  "chapters": {
+    "opening": "Can the lowest unit price win?",
+    "need-start": "Set comparison requirements",
+    "extract-start": "Trace fields to source text",
+    "cost-start": "Include tax and delivery",
+    "missing-start": "Ask about missing data",
+    "revision-start": "Replace only revised terms",
+    "quantity-start": "Double quantity, check terms",
+    "threshold-start": "One more card, a new winner?",
+    "range21-request": "Outside quote range? Ask first"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "6198bec8fea6",
+      "need-start": "13b3f8bc78bf",
+      "extract-start": "1e08abc4dd35",
+      "cost-start": "03cd0948a886",
+      "missing-start": "2fc8ed124d22",
+      "revision-start": "014694bfda51",
+      "quantity-start": "7b025430bfe0",
+      "threshold-start": "db18134baff1",
+      "range21-request": "2678d2a246fd"
+    },
+    "title": "ea54635dadc1",
+    "description": "82023a597713",
+    "tags": "b04ad22c133c",
+    "thumbnail": "12bdfb50a92a"
+  },
+  "lines": {
+    "3639": {
+      "source_hash": "1d15b826da4e",
+      "text": "Let AI sort fields, then let a tool do the arithmetic."
+    },
+    "3742": {
+      "source_hash": "3147dae75bbd",
+      "text": "The tax rate is assumed; for real deals, use your own quote terms."
+    },
+    "6vwc": {
+      "source_hash": "bb864b04f219",
+      "text": "The lowest unit price cannot rank first just yet."
+    },
+    "xnrg": {
+      "source_hash": "87b4ff93c8d1",
+      "text": "These three quotes state different kinds of amounts."
+    },
+    "edfn": {
+      "source_hash": "89bd8ea525c4",
+      "text": "So we ask AI for an editable table, keeping the source page numbers too."
+    },
+    "hg9m": {
+      "source_hash": "7fd501513981",
+      "text": "But can blank shipping just mean free delivery?"
+    },
+    "ajsk": {
+      "source_hash": "6a14b7251701",
+      "text": "Will a revised quote change which is cheapest?"
+    },
+    "kv5r": {
+      "source_hash": "79ba69d02368",
+      "text": "If the quantity doubles, does the old answer still hold?"
+    },
+    "ddpd": {
+      "source_hash": "7082f51acc01",
+      "text": "You need 10 postcards printed; all three quoted."
+    },
+    "9ski": {
+      "source_hash": "c138299c8363",
+      "text": "Save your requirements separately; don't let quotes pick what you buy."
+    },
+    "bv46": {
+      "source_hash": "f8a06c3ad4ae",
+      "text": "Match paper, dimensions and printing method item by item."
+    },
+    "hssn": {
+      "source_hash": "b030bf4c1692",
+      "text": "Just 'postcards' won't do; changing paper may change the price."
+    },
+    "d8h7": {
+      "source_hash": "8d1a50a65e49",
+      "text": "Match address and deadline for a fair comparison."
+    },
+    "jfix": {
+      "source_hash": "8f3e2289792e",
+      "text": "We need the delivered total; unit price is just one field."
+    },
+    "d78a": {
+      "source_hash": "4313d111425e",
+      "text": "Keep all three originals; put outputs in another folder."
+    },
+    "mjhz": {
+      "source_hash": "83df6da2d82d",
+      "text": "Then a new version lets you see what the supplier changed."
+    },
+    "fvzv": {
+      "source_hash": "ee1a7a132bf3",
+      "text": "These suppliers and terms are fictional practice data."
+    },
+    "658p": {
+      "source_hash": "526bfd3e70c6",
+      "text": "Separate them to trace errors back to the text or the formula."
+    },
+    "m57n": {
+      "source_hash": "24bcedced7ac",
+      "text": "Aster's unit price is on page 1; delivery terms are on page 2."
+    },
+    "scia": {
+      "source_hash": "edb8257f6553",
+      "text": "Read only page 1, and the comparison starts with a cost missing."
+    },
+    "nxct": {
+      "source_hash": "9221c8ab1536",
+      "text": "So we give AI both pages of each quote, with our requirements."
+    },
+    "7k9u": {
+      "source_hash": "f15e4aaa83ab",
+      "text": "Ask for source text for every field, not just which supplier is cheaper."
+    },
+    "ea2e": {
+      "source_hash": "cde3d1893878",
+      "text": "Keep missing values null; separate the taxes on unit price and shipping too."
+    },
+    "ke2c": {
+      "source_hash": "891115cfc2b9",
+      "text": "The layouts differ: set shared fields first to avoid comparing by layout."
+    },
+    "rgfp": {
+      "source_hash": "a7758d41bf25",
+      "text": "Keep tax-inclusive prices as quoted; don't rush to add all the numbers."
+    },
+    "fd27": {
+      "source_hash": "5ff09a31f891",
+      "text": "Join Aster's unit price and shipping from two pages in one row, each sourced."
+    },
+    "qttz": {
+      "source_hash": "061cae372b28",
+      "text": "Use this quote to check for missing shipping costs."
+    },
+    "indq": {
+      "source_hash": "8d66d4f444a9",
+      "text": "Why can Birch's shipping be zero, but Cedar's cannot?"
+    },
+    "q7x8": {
+      "source_hash": "5944c5607fca",
+      "text": "Birch's shipping is zero: its quote states delivery is free."
+    },
+    "7hi8": {
+      "source_hash": "d21bdcbcf4ee",
+      "text": "Cedar's page 2 has no shipping quote. It's different."
+    },
+    "cxxm": {
+      "source_hash": "b72f27b689fd",
+      "text": "AI must keep that distinction, not add zero just to fill the table."
+    },
+    "6pwe": {
+      "source_hash": "44e3cafff427",
+      "text": "When calculating totals, this null tells the program the quote is still incomplete."
+    },
+    "eg6v": {
+      "source_hash": "95babb2e9408",
+      "text": "Check values that may change the answer on the source page."
+    },
+    "g3vp": {
+      "source_hash": "1026f1ccbcbc",
+      "text": "Check each field's value against its supporting quote; if they differ, mark it unconfirmed."
+    },
+    "35fs": {
+      "source_hash": "4be5ecc81557",
+      "text": "Sort unit prices low to high, and Cedar looks cheapest."
+    },
+    "at27": {
+      "source_hash": "37ec3bd1711c",
+      "text": "But this ranking still excludes tax and delivery costs."
+    },
+    "d2m5": {
+      "source_hash": "380ec942689d",
+      "text": "Keep this ranking; after calculating delivered totals, compare what changed."
+    },
+    "xwsj": {
+      "source_hash": "a4e62373497b",
+      "text": "Aster states goods and shipping pre-tax; tax each."
+    },
+    "qagq": {
+      "source_hash": "d092574a9f30",
+      "text": "Add these items to get Aster's delivered total for this quote."
+    },
+    "znv7": {
+      "source_hash": "63a5cf7d3bbb",
+      "text": "Birch's tax-inclusive unit price times quantity gives goods cost."
+    },
+    "c49q": {
+      "source_hash": "9d6435969ddc",
+      "text": "Cedar's goods tax is calculable too. Can we also rank it?"
+    },
+    "bcr5": {
+      "source_hash": "fd897961bb71",
+      "text": "For delivered totals, Birch is cheaper than Aster."
+    },
+    "tnrc": {
+      "source_hash": "48714b501253",
+      "text": "Cedar's total is still unconfirmed, so it cannot rank first."
+    },
+    "cv74": {
+      "source_hash": "1b5d6c5ce376",
+      "text": "For decimals, let a tool apply stated terms, then standardize money formats."
+    },
+    "8xam": {
+      "source_hash": "11c95498b7af",
+      "text": "Don't let the model round unit prices first and multiply that error by quantity."
+    },
+    "qrv8": {
+      "source_hash": "f6ebe568a766",
+      "text": "Open it; check quoted and computed amounts separately."
+    },
+    "ehby": {
+      "source_hash": "b1633f805e92",
+      "text": "These are not formulas that recalculate: regenerate the results whenever requirements change."
+    },
+    "u7i8": {
+      "source_hash": "2fce9f4c3f9b",
+      "text": "Remember blank shipping? It now decides whether Cedar can be ranked."
+    },
+    "e86a": {
+      "source_hash": "8ed2c9df8dc9",
+      "text": "Cedar's goods cost less than Birch's; low enough shipping would reverse the ranking."
+    },
+    "j2ja": {
+      "source_hash": "40796c6ec734",
+      "text": "The table splits Cedar into known and unknown: shipping, its tax status and tax amount are unknown."
+    },
+    "ehkq": {
+      "source_hash": "d982a65cfa54",
+      "text": "Ask specifically for shipping and its tax to that same address."
+    },
+    "aghq": {
+      "source_hash": "70cbf7ac869a",
+      "text": "Check if costs stay the same when quantity changes, to avoid guessing again."
+    },
+    "z8x8": {
+      "source_hash": "ca7683a734a3",
+      "text": "AI can list questions, but you still need to check the draft."
+    },
+    "7scz": {
+      "source_hash": "7e2e7627740a",
+      "text": "Don't turn unconfirmed fields into terms the supplier has agreed to."
+    },
+    "w9yq": {
+      "source_hash": "4dd11571123f",
+      "text": "Add a status field to show exactly what is holding it up."
+    },
+    "pdxs": {
+      "source_hash": "075e20b2797d",
+      "text": "If real quotes differ in specification, ask if they can match; don't invent an upgrade price."
+    },
+    "k75x": {
+      "source_hash": "541c3946496d",
+      "text": "Cedar sent a revision. Don't count it as a fourth supplier."
+    },
+    "mbee": {
+      "source_hash": "1b528e2b4b7d",
+      "text": "Keep the old file; replace Cedar's row with the new terms."
+    },
+    "h85p": {
+      "source_hash": "c76fed99e194",
+      "text": "Check the old version number listed here, then mark the matching old file as superseded."
+    },
+    "hiqk": {
+      "source_hash": "89dd59ebf23d",
+      "text": "Only shipping and its tax changed; the goods unit price did not."
+    },
+    "ambg": {
+      "source_hash": "4740d823925e",
+      "text": "Now we can calculate Cedar's delivered total: exactly the same as Aster's."
+    },
+    "dyun": {
+      "source_hash": "0e8f2191d09f",
+      "text": "With shipping filled in, Cedar still costs TWD 50 more than Birch."
+    },
+    "benr": {
+      "source_hash": "c9af59c4b3b4",
+      "text": "Also check the source field points to the correct revision."
+    },
+    "zqts": {
+      "source_hash": "65b8d6b123e7",
+      "text": "New amounts linked to an old file will leave others unable to trace them back."
+    },
+    "q57z": {
+      "source_hash": "27ccf198c6a1",
+      "text": "You now need 20 of the same postcards printed."
+    },
+    "7dp4": {
+      "source_hash": "82ad1f2ea647",
+      "text": "Save the original 10-card settings file under the new name shown, then change the quantity to 20."
+    },
+    "ubke": {
+      "source_hash": "c22c4a780369",
+      "text": "Change the needed quantity; don't just double the old total."
+    },
+    "f5gy": {
+      "source_hash": "2ae0a402d113",
+      "text": "Keep the revised scenario; don't switch to the original."
+    },
+    "3eue": {
+      "source_hash": "31ec121f822e",
+      "text": "New quantity; say all other needs are unchanged."
+    },
+    "sqqn": {
+      "source_hash": "5e811dc8ed67",
+      "text": "Check the quote's scope first; then update amounts and sources, and list the changes."
+    },
+    "6wkf": {
+      "source_hash": "3f7f5ae11299",
+      "text": "Save; run this in the materials code folder."
+    },
+    "74dc": {
+      "source_hash": "fb263d432f38",
+      "text": "It reads the new count, saving results without overwriting the quotes."
+    },
+    "326u": {
+      "source_hash": "e461e11f751e",
+      "text": "Open the output request; check it used the new quantity."
+    },
+    "m5sn": {
+      "source_hash": "311b70e145a7",
+      "text": "Then check suppliers: Cedar should have only its revised row left."
+    },
+    "sxtz": {
+      "source_hash": "3ad3c0bf760f",
+      "text": "All three quotes say unit prices stay fixed in this quantity range."
+    },
+    "rgr9": {
+      "source_hash": "3da467e9ffaf",
+      "text": "Delivery terms cover it too, so we can recalculate for the new quantity."
+    },
+    "xevg": {
+      "source_hash": "477df56d08f7",
+      "text": "Aster's goods cost rises with quantity; shipping stays a single charge."
+    },
+    "m8sb": {
+      "source_hash": "9776125f547c",
+      "text": "Birch is TWD 110 above Aster; their old order is reversed."
+    },
+    "pruf": {
+      "source_hash": "67ee1a53dd66",
+      "text": "Will adding Cedar change this ranking again?"
+    },
+    "gy4i": {
+      "source_hash": "62457f085560",
+      "text": "Now Cedar costs TWD 52.50 less than Aster."
+    },
+    "cbe9": {
+      "source_hash": "e987d435ff47",
+      "text": "Remember doubling quantity? Cedar really has the lowest delivered total now."
+    },
+    "nvu3": {
+      "source_hash": "4042e2c8c96e",
+      "text": "No supplier cut its price; fixed shipping accounts for a different share at different quantities."
+    },
+    "fa3t": {
+      "source_hash": "cafddf6deba4",
+      "text": "At what quantity does the winner change?"
+    },
+    "63ek": {
+      "source_hash": "bfdb3434b13a",
+      "text": "We test two neighboring quantities, rather than assume one ranking holds for every quantity."
+    },
+    "8fkp": {
+      "source_hash": "4cbd974a0dff",
+      "text": "Save the revised scenario as a copy; set quantity to 12, all else unchanged."
+    },
+    "utm2": {
+      "source_hash": "b1d2b608c925",
+      "text": "Run with the same extracted data; save results in this request's own folder."
+    },
+    "bnhk": {
+      "source_hash": "140cf1a645ad",
+      "text": "Copy this request, add just one card and use another file name."
+    },
+    "7udt": {
+      "source_hash": "ab814eaac43c",
+      "text": "Use separate output folders too, so you can compare results side by side."
+    },
+    "6nxr": {
+      "source_hash": "73e5454db3ea",
+      "text": "At 12, Birch is just TWD 7.50 below Cedar; no change yet."
+    },
+    "7jrk": {
+      "source_hash": "4f854db5ecda",
+      "text": "At 13, Cedar leads by TWD 13.75: this step crosses the switch point."
+    },
+    "e5gd": {
+      "source_hash": "12edf2d26cf4",
+      "text": "Use Cedar minus Birch: positive means Cedar costs more, negative less."
+    },
+    "petb": {
+      "source_hash": "a22168a8912b",
+      "text": "Each extra card improves Cedar's position against Birch by TWD 21.25, so the gap crosses zero."
+    },
+    "vnaq": {
+      "source_hash": "5255b4e6db78",
+      "text": "Add one to the 20-card request, making 21: can we still get an answer?"
+    },
+    "trph": {
+      "source_hash": "8c562e47c3ed",
+      "text": "Keep unit prices for now; recalculate the same way."
+    },
+    "cegb": {
+      "source_hash": "3b7ba4d7428d",
+      "text": "Change only the request file and output folder; all other inputs stay the same."
+    },
+    "pn4i": {
+      "source_hash": "89db532be9e4",
+      "text": "First it checks the new quantity against each quote's stated range."
+    },
+    "9jiq": {
+      "source_hash": "f0851ddf761b",
+      "text": "It refuses to calculate and creates no new results folder."
+    },
+    "egmv": {
+      "source_hash": "a36ddfbd2752",
+      "text": "Because 21 cards exceeds the range stated in all three quotes."
+    },
+    "92mc": {
+      "source_hash": "d80cea105bc9",
+      "text": "If you need this quantity, ask suppliers to requote these terms."
+    },
+    "vee5": {
+      "source_hash": "0698b30c9511",
+      "text": "Which quote field is unclear most often? Comment."
+    },
+    "9jqz": {
+      "source_hash": "7b87be3cbbdc",
+      "text": "Subscribe to keep turning AI into work you can deliver."
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "locale": "ko",
+  "independent_reviewer": "/root/pdf_author_es_pt",
+  "independent_from_author": "/root/pdf_author_ko_th",
+  "exactsource_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "actualauthored_file_sha256": "c7e1a50b79f215f65d3d43626207966cc329f32b2af6deccd12ebb1f67e35213",
+  "scope": "source-meaning-and-naturalness",
+  "status": "author_revision_required",
+  "passed": false,
+  "lines_reviewed": 101,
+  "chapters_reviewed": 9,
+  "metadata_reviewed": ["title", "complete description", "all tags", "all chapter names", "thumbnail tag", "thumbnail headline", "thumbnail sub"],
+  "method": "Actually read all 101 source/translation sentence pairs, all metadata and the saved source-video.json scene data. Compared source clause order, conditions, numbers, supplier mapping, terminology and natural Korean wording. Mechanical checks supplemented this reading and did not replace it. No authored text or source was edited.",
+  "issues": [
+    {
+      "id": "KO-1",
+      "fields": ["description", "jfix", "d2m5", "qagq", "bcr5", "ambg"],
+      "kind": "meaning-clarity",
+      "severity": "medium",
+      "authored_wording": "배송 총액",
+      "problem": "The central total is the goods price plus delivery and the explicitly stated taxes. 배송 총액 can be read as the total delivery/shipping charge and is not a clear Korean label for a delivered order total. This ambiguity matters because the tutorial repeatedly contrasts unit price, freight and the full total.",
+      "suggestion": "Use a clear consistent expression such as 배송 포함 총액 or 배송비 포함 총액 in these occurrences. Preserve any tax qualification where present, and remeasure affected budgets."
+    },
+    {
+      "id": "KO-2",
+      "fields": ["sxtz"],
+      "kind": "meaning-clarity",
+      "severity": "medium",
+      "source": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+      "authored_wording": "세 견적 모두 이 수량 범위의 단가는 같다고 명시합니다.",
+      "problem": "단가는 같다고 is ambiguous between an unchanged unit price at different quantities and identical unit prices across the three suppliers. The latter contradicts the displayed 180/205/175 prices. The source means each supplier's own price stays unchanged within the quoted range.",
+      "suggestion": "Explicitly express maintenance of each quote's price, for example 세 견적 모두 이 수량 범위의 단가 유지를 명시합니다. Remeasure after author revision."
+    },
+    {
+      "id": "KO-3",
+      "fields": ["petb"],
+      "kind": "meaning-direction",
+      "severity": "medium",
+      "source": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+      "authored_wording": "1장 늘 때마다 C가 B를 21.25 TWD씩 따라잡아 차이가 0을 넘습니다.",
+      "problem": "0을 넘습니다 commonly means exceeds zero. Here C minus B falls from +7.50 to -13.75, crossing downward into a negative difference. The wording leaves the price-difference direction unclear.",
+      "suggestion": "Express that the difference passes below zero or becomes negative, while retaining 21.25 TWD and C relative to B. For example replace the ending with 차액이 음수가 됩니다 or 차액이 0 아래로 내려갑니다."
+    },
+    {
+      "id": "KO-4",
+      "fields": ["xwsj"],
+      "kind": "meaning-and-word-choice",
+      "severity": "medium",
+      "source": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+      "authored_wording": "A 상품·배송비는 세전이라 따로 과세합니다.",
+      "problem": "과세합니다 describes levying/imposing tax. The source instructs the calculation of the separately stated taxes in a fictional exercise, not an act or determination of taxation.",
+      "suggestion": "Use 세금을 따로 계산합니다 or 각각 세금을 계산합니다, retaining that both goods and shipping are quoted excluding tax. Do not remove this fact solely to meet the estimate."
+    },
+    {
+      "id": "KO-5",
+      "fields": ["qrv8"],
+      "kind": "naturalness",
+      "severity": "low",
+      "source": "打開試算表，把原文金額和計算金額分開核對。",
+      "authored_wording": "시트의 원문액과 계산액을 나눠 대조합니다.",
+      "problem": "원문액 is an unnatural compressed coinage for the amount quoted in the original document. This is a key distinction in the worksheet, so it should be spoken plainly.",
+      "suggestion": "Use 원문 금액 and 계산 금액, or a shared-noun expression such as 원문·계산 금액, while retaining separate verification."
+    }
+  ],
+  "checked_and_preserved": {
+    "all_line_sources_match_snapshot": true,
+    "all_non_text_worksheet_fields_preserved": true,
+    "supplier_mapping": "Aster(A), Birch(B), Cedar(C) is established in the description; A/B/C references consistently follow it.",
+    "numbers_and_money": "Read all numeric claims, including 10/20 quantities, 12/13/21 cases, 50, 110, 52.50, 7.5, 13.75 and 21.25 TWD. Numeric values and comparison parties are preserved; KO-3 concerns the sign-direction wording, not the numbers.",
+    "source_url_preserved_exactly": true,
+    "date_preserved": "2026-10-26",
+    "commands_paths_names": "The only translated metadata filename analysis-prompt.txt and the source URL remain exact. Spoken deictic instructions refer to the unchanged source snapshot's visible commands and files.",
+    "unknown_shipping": "The text preserves unknown shipping as missing, distinct from Birch's explicitly free shipping, and excludes Cedar's incomplete total from first place.",
+    "fictional_tax": "Description and narration preserve fictional suppliers/conditions and the 5% practice setting; KO-4 needs a calculation verb rather than a taxation verb.",
+    "static_workbook": "ehby explicitly denies automatic recalculation and requires regenerating results when requirements change. The description preserves that openpyxl writes files and is not claimed to calculate formulas.",
+    "actual_tool_scope": "Description retains Codex AI, pypdf extraction and exact decimal calculation, without claiming a tested commercial upload UI or OCR.",
+    "clause_order_7dp4": "Save the original quantity-10 settings under the displayed new name, then change quantity to 20; preserved.",
+    "revision_identity": "Cedar revised replaces its original, is not a fourth supplier, and updates source references. Preserved.",
+    "range_21": "Refusal to calculate outside the written range and no new results folder are preserved."
+  },
+  "estimated_character_budget_exceptions": [
+    {"id": "6wkf", "chars": 22, "max_chars": 20, "over_by": 2},
+    {"id": "vee5", "chars": 25, "max_chars": 20, "over_by": 5}
+  ],
+  "budget_scope_note": "These two items are character-budget estimates from the frozen authored worksheet, not measured audio fit failures. This review did not synthesize or listen to Korean audio.",
+  "next_action": "Return issues to the author for revision, then independently reread the changed text and rebind the report to the revised authored file hash. No draft changes were made by this reviewer.",
+  "limitations": "This is a review against source-video.json snapshot 79d55 only. Later visual/materials/description-URL changes require an appropriate delta check. It is not final QA, native voice approval, readiness approval, merge approval or publishing approval."
+}

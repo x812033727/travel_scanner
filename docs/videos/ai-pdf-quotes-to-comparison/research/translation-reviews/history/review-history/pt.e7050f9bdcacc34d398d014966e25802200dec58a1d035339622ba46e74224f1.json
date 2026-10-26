@@ -1,0 +1,598 @@
+{
+  "locale": "pt",
+  "scope": "source-meaning-and-naturalness",
+  "reviewer": {
+    "id": "/root/pdf_author_id_vi",
+    "role": "independent_reviewer_of_es_pt",
+    "independence": "Authored id/vi only; did not author or edit es/pt. No self-review of id/vi."
+  },
+  "source_snapshot": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/source-video.json",
+  "exactsource_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "authored_file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/pt.authored.json",
+  "actualauthored_file_sha256": "e7050f9bdcacc34d398d014966e25802200dec58a1d035339622ba46e74224f1",
+  "lines_reviewed": 101,
+  "reviewed_line_ids": [
+    "6vwc",
+    "xnrg",
+    "edfn",
+    "hg9m",
+    "ajsk",
+    "kv5r",
+    "ddpd",
+    "9ski",
+    "bv46",
+    "hssn",
+    "d8h7",
+    "jfix",
+    "d78a",
+    "mjhz",
+    "fvzv",
+    "3742",
+    "3639",
+    "658p",
+    "m57n",
+    "scia",
+    "nxct",
+    "7k9u",
+    "ea2e",
+    "ke2c",
+    "rgfp",
+    "fd27",
+    "qttz",
+    "indq",
+    "q7x8",
+    "7hi8",
+    "cxxm",
+    "6pwe",
+    "eg6v",
+    "g3vp",
+    "35fs",
+    "at27",
+    "d2m5",
+    "xwsj",
+    "qagq",
+    "znv7",
+    "c49q",
+    "bcr5",
+    "tnrc",
+    "cv74",
+    "8xam",
+    "qrv8",
+    "ehby",
+    "u7i8",
+    "e86a",
+    "j2ja",
+    "ehkq",
+    "aghq",
+    "z8x8",
+    "7scz",
+    "w9yq",
+    "pdxs",
+    "k75x",
+    "mbee",
+    "h85p",
+    "hiqk",
+    "ambg",
+    "dyun",
+    "benr",
+    "zqts",
+    "q57z",
+    "7dp4",
+    "ubke",
+    "f5gy",
+    "3eue",
+    "sqqn",
+    "6wkf",
+    "74dc",
+    "326u",
+    "m5sn",
+    "sxtz",
+    "rgr9",
+    "xevg",
+    "m8sb",
+    "pruf",
+    "gy4i",
+    "cbe9",
+    "nvu3",
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb",
+    "vnaq",
+    "trph",
+    "cegb",
+    "pn4i",
+    "9jiq",
+    "egmv",
+    "92mc",
+    "vee5",
+    "9jqz"
+  ],
+  "metadata_reviewed": [
+    "title",
+    "description",
+    "tags",
+    "thumbnail.tag",
+    "thumbnail.headline",
+    "thumbnail.sub",
+    "chapters.opening",
+    "chapters.need-start",
+    "chapters.extract-start",
+    "chapters.cost-start",
+    "chapters.missing-start",
+    "chapters.revision-start",
+    "chapters.quantity-start",
+    "chapters.threshold-start",
+    "chapters.range21-request"
+  ],
+  "passed": false,
+  "issue_count": 24,
+  "issues": [
+    {
+      "issue_id": "PT-01",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.xnrg"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xnrg",
+          "source": "因為這三份報價，寫的其實不是同一種金額。",
+          "authored": "As 3 cotações mostram valores diferentes."
+        }
+      ],
+      "problem": "Valores diferentes says only that the numbers differ. The source says the quotations show different kinds/bases of amount, specifically tax-exclusive versus tax-inclusive prices.",
+      "suggested_fix": "Explicitly distinguish price/amount bases, e.g. As 3 nao cotam na mesma base de preco, with proper accents in the draft."
+    },
+    {
+      "issue_id": "PT-02",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.ddpd"
+      ],
+      "evidence": [
+        {
+          "location": "lines.ddpd",
+          "source": "你現在要印十張明信片，三家都寄來了報價。",
+          "authored": "Imprima 10 postais; os 3 já cotaram."
+        }
+      ],
+      "problem": "Imprima 10 postais orders the viewer to print. The source sets up the scenario that the viewer wants to print ten and has already received all three quotes.",
+      "suggested_fix": "Present the need/scenario rather than an instruction to print, retaining 10 and all three supplier quotes."
+    },
+    {
+      "issue_id": "PT-03",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.hssn"
+      ],
+      "evidence": [
+        {
+          "location": "lines.hssn",
+          "source": "只寫明信片還不夠，換一種紙就可能是另一個價格。",
+          "authored": "Só postais não basta: outro papel pode mudar o preço."
+        }
+      ],
+      "problem": "So postais nao basta can mean postcards alone are insufficient. The source specifically says that merely writing postcards as the specification is insufficient.",
+      "suggested_fix": "Include dizer or escrever before postais, and retain the possible price change when changing paper."
+    },
+    {
+      "issue_id": "PT-04",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "description",
+        "lines.jfix",
+        "lines.d2m5",
+        "lines.qagq",
+        "lines.ambg"
+      ],
+      "evidence": [
+        {
+          "location": "description",
+          "source": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials",
+          "authored": "Não dá para ordenar diretamente os preços unitários de 3 cotações PDF. Com este mesmo exercício original de cotações de postais, use AI para organizar especificações, quantidade, impostos incluídos ou excluídos, frete e páginas de origem. Depois calcule totais entregues comparáveis com base nas condições explícitas. Confira de novo o resultado ao receber uma revisão e mudar a quantidade de 10 para 20 postais.\n\nA demonstração usa a análise de documentos com Codex AI realizada neste exercício, extração de texto com pypdf e cálculo decimal exato para gerar uma planilha editável. Não afirma ter testado a interface de upload de nenhum produto comercial de AI. Os fornecedores, preços e a alíquota de 5% são dados originais de prática, não uma avaliação tributária de uma transação real.\n\nData dos dados e da prática: 2026-10-26. Estes PDFs têm texto selecionável; este fluxo de extração não faz OCR de imagens digitalizadas. Os valores da planilha foram calculados por uma ferramenta de cálculo. openpyxl só grava o arquivo; não se afirma que calcule fórmulas.\n\nO material inclui requisitos, prompts, o gerador dos PDFs de origem, texto extraído por página, uma tabela comparativa editável e o histórico de versões.\n\nO prompt de 7 linhas na tela traz a tarefa para o espectador. O formato de campos legível por máquina está no contrato JSON de analysis-prompt.txt, que também foi lido nesta análise com AI.\n\nMaterial original, requisitos e prompts completos:\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials"
+        },
+        {
+          "location": "lines.jfix",
+          "source": "這次要的是送達總價，單價只是其中一個欄位。",
+          "authored": "Queremos total entregue; preço unitário é um campo"
+        },
+        {
+          "location": "lines.d2m5",
+          "source": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。",
+          "authored": "Guarde a ordem; após os totais entregues, compare as posições."
+        },
+        {
+          "location": "lines.qagq",
+          "source": "把這幾項合起來，才是甲這份報價的送達總價。",
+          "authored": "Some essas parcelas: é o total entregue de Aster."
+        },
+        {
+          "location": "lines.ambg",
+          "source": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。",
+          "authored": "Já dá para calcular o total entregue de Cedar: igual a Aster."
+        }
+      ],
+      "problem": "Total entregue / totais entregues is an unnatural calque in Brazilian Portuguese for the total cost including delivery. A total is not itself delivered.",
+      "suggested_fix": "Use total com entrega or an equally natural term consistently across the description and captions; preserve all other clauses."
+    },
+    {
+      "issue_id": "PT-05",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.d78a"
+      ],
+      "evidence": [
+        {
+          "location": "lines.d78a",
+          "source": "三份原檔先保留下來，輸出另外放一個資料夾。",
+          "authored": "Guarde os 3 originais; salve a saída à parte"
+        }
+      ],
+      "problem": "Salvar a saida a parte omits the explicit destination: another folder.",
+      "suggested_fix": "Keep the separate-folder instruction, retaining the three original files."
+    },
+    {
+      "issue_id": "PT-06",
+      "kind": "meaning-and-naturalness",
+      "severity": "major",
+      "locations": [
+        "lines.ea2e"
+      ],
+      "evidence": [
+        {
+          "location": "lines.ea2e",
+          "source": "缺的就保留空值，單價和運費各自的稅，也要分清楚。",
+          "authored": "Deixe nulo o que falta; separe imposto do preço e do frete."
+        }
+      ],
+      "problem": "Separe imposto do preco e do frete can mean separating/removing tax from the price and freight. The source asks to distinguish the tax on the unit price from the separate tax on shipping, without converting the quoted price representation.",
+      "suggested_fix": "Explicitly distinguish the goods-price tax and shipping tax; do not imply stripping tax from prices."
+    },
+    {
+      "issue_id": "PT-07",
+      "kind": "naturalness",
+      "severity": "minor",
+      "locations": [
+        "lines.7hi8"
+      ],
+      "evidence": [
+        {
+          "location": "lines.7hi8",
+          "source": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+          "authored": "Cedar não cota frete na página 2: difere."
+        }
+      ],
+      "problem": "The isolated difere is abrupt and unnatural for a spoken tutorial explaining that unquoted shipping is a different state from free shipping.",
+      "suggested_fix": "Use a natural outro estado/outro caso or isso e diferente wording while retaining page 2 and shipping not quoted."
+    },
+    {
+      "issue_id": "PT-08",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.xwsj"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xwsj",
+          "source": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+          "authored": "Aster: bens e frete sem imposto; calcule os 2."
+        }
+      ],
+      "problem": "Calcule os 2 grammatically points to bens e frete, not to the two respective taxes. The source requires calculating the taxes separately for both tax-exclusive amounts.",
+      "suggested_fix": "Name each tax separately, retaining that both goods and shipping exclude tax. Keep a budget exception rather than deleting the tax calculation instruction."
+    },
+    {
+      "issue_id": "PT-09",
+      "kind": "meaning-and-naturalness",
+      "severity": "major",
+      "locations": [
+        "lines.znv7"
+      ],
+      "evidence": [
+        {
+          "location": "lines.znv7",
+          "source": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+          "authored": "Birch: com imposto, por quantidade dá o total de bens"
+        }
+      ],
+      "problem": "Com imposto, por quantidade da o total de bens omits the unit price that is multiplied and is not natural arithmetic teaching. The included goods tax is also not explicitly tied to that unit price.",
+      "suggested_fix": "Name the unit price that already includes goods tax, multiply it by quantity, and identify the result as the goods amount."
+    },
+    {
+      "issue_id": "PT-10",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.cv74"
+      ],
+      "evidence": [
+        {
+          "location": "lines.cv74",
+          "source": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+          "authored": "Calcule decimais pelas condições; depois padronize o formato."
+        }
+      ],
+      "problem": "The calculation tool explicitly assigned to do the decimal calculation is absent.",
+      "suggested_fix": "Retain the tool calculating under the stated conditions, then standardizing the money format."
+    },
+    {
+      "issue_id": "PT-11",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.8xam"
+      ],
+      "evidence": [
+        {
+          "location": "lines.8xam",
+          "source": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+          "authored": "Não deixe AI arredondar o preço antes e multiplicar o erro."
+        }
+      ],
+      "problem": "Multiplicar o erro omits multiplication by quantity, which explains how premature unit-price rounding propagates the error.",
+      "suggested_fix": "Preserve unit price and multiplication of its rounding error by quantity."
+    },
+    {
+      "issue_id": "PT-12",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.qrv8"
+      ],
+      "evidence": [
+        {
+          "location": "lines.qrv8",
+          "source": "打開試算表，把原文金額和計算金額分開核對。",
+          "authored": "Abra a planilha; confira original e cálculo"
+        }
+      ],
+      "problem": "Confira original e calculo does not clearly identify original quoted monetary amounts and calculated monetary amounts, and omits checking them separately.",
+      "suggested_fix": "Name both sets of amounts and their separate verification in the opened spreadsheet."
+    },
+    {
+      "issue_id": "PT-13",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.u7i8"
+      ],
+      "evidence": [
+        {
+          "location": "lines.u7i8",
+          "source": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+          "authored": "Lembra do frete vazio? Decide se Cedar entra no ranking."
+        }
+      ],
+      "problem": "Frete vazio is an unnatural description of an absent freight amount and can suggest an empty load. The earlier frete em branco states the intended blank-field meaning.",
+      "suggested_fix": "Use frete em branco or campo de frete em branco."
+    },
+    {
+      "issue_id": "PT-14",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.aghq"
+      ],
+      "evidence": [
+        {
+          "location": "lines.aghq",
+          "source": "也要確認數量改變後費用是否相同，免得下一輪又得猜。",
+          "authored": "Confirme o frete se mudar a quantidade, para não adivinhar."
+        }
+      ],
+      "problem": "Confirme o frete se mudar a quantidade does not explicitly ask whether the fee stays the same when quantity changes, which is the required question.",
+      "suggested_fix": "State the equality check directly, e.g. Confirme se o frete e igual ao mudar a quantidade, with proper accents."
+    },
+    {
+      "issue_id": "PT-15",
+      "kind": "naturalness",
+      "severity": "minor",
+      "locations": [
+        "lines.mbee"
+      ],
+      "evidence": [
+        {
+          "location": "lines.mbee",
+          "source": "留下舊檔作紀錄，再用新的條件替換丙這一列。",
+          "authored": "Guarde o original; renove a linha de Cedar."
+        }
+      ],
+      "problem": "Renove a linha is not the natural spreadsheet instruction for replacing/updating that supplier row with revised terms.",
+      "suggested_fix": "Use atualize/substitua a linha and retain the old file as a record."
+    },
+    {
+      "issue_id": "PT-16",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.h85p"
+      ],
+      "evidence": [
+        {
+          "location": "lines.h85p",
+          "source": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。",
+          "authored": "Confira o código anterior e marque o arquivo correspondente substituído"
+        }
+      ],
+      "problem": "Marque o arquivo correspondente substituido lacks como and can read as marking an already-replaced file rather than marking its status as replaced.",
+      "suggested_fix": "Use marque ... como substituido after checking the old version code."
+    },
+    {
+      "issue_id": "PT-17",
+      "kind": "naturalness",
+      "severity": "minor",
+      "locations": [
+        "lines.hiqk"
+      ],
+      "evidence": [
+        {
+          "location": "lines.hiqk",
+          "source": "這次改的是運費和它的稅，商品單價並沒有跟著變。",
+          "authored": "Muda frete e seu imposto; o preço unitário não mudou."
+        }
+      ],
+      "problem": "Muda frete e seu imposto has singular verb agreement with a compound subject.",
+      "suggested_fix": "Use Mudam frete e seu imposto; preco unitario nao mudou, with proper accents."
+    },
+    {
+      "issue_id": "PT-18",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.dyun"
+      ],
+      "evidence": [
+        {
+          "location": "lines.dyun",
+          "source": "運費補齊後，丙比乙多了五十元，還追不上。",
+          "authored": "Com frete, Cedar supera Birch em 50 TWD; não ganha."
+        }
+      ],
+      "problem": "Cedar supera Birch em 50 TWD can imply Cedar outperforms Birch, while the source says it costs more and still loses.",
+      "suggested_fix": "Use custa 50 TWD mais que Birch and retain that Cedar still is not the cheaper candidate."
+    },
+    {
+      "issue_id": "PT-19",
+      "kind": "naturalness",
+      "severity": "minor",
+      "locations": [
+        "lines.6wkf"
+      ],
+      "evidence": [
+        {
+          "location": "lines.6wkf",
+          "source": "存檔後，在教材的程式資料夾執行這條命令。",
+          "authored": "Salve; rode isto em materials."
+        }
+      ],
+      "problem": "The exact directory materials is correct, but em materials omits the source indication that it is a folder. The clarification fits the slot.",
+      "suggested_fix": "Retain the literal directory name: Salve; rode na pasta materials."
+    },
+    {
+      "issue_id": "PT-20",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.sxtz"
+      ],
+      "evidence": [
+        {
+          "location": "lines.sxtz",
+          "source": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+          "authored": "Os 3 fixam o mesmo preço unitário dentro dessa faixa."
+        }
+      ],
+      "problem": "Os 3 fixam o mesmo preco unitario reads as all three suppliers having an identical unit price. In fact each keeps its own, different price unchanged over the specified range.",
+      "suggested_fix": "Use Os 3 mantem seus precos unitarios nessa faixa, with proper accents."
+    },
+    {
+      "issue_id": "PT-21",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.rgr9"
+      ],
+      "evidence": [
+        {
+          "location": "lines.rgr9",
+          "source": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+          "authored": "A entrega tem regras; dá para recalcular a quantidade."
+        }
+      ],
+      "problem": "Recalcular a quantidade says to recalculate quantity rather than recalculate amounts for the new quantity.",
+      "suggested_fix": "Say recalcular para a nova quantidade, retaining the explicit delivery terms as the reason it is allowed."
+    },
+    {
+      "issue_id": "PT-22",
+      "kind": "meaning-and-naturalness",
+      "severity": "major",
+      "locations": [
+        "lines.xevg"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xevg",
+          "source": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+          "authored": "Produto de Aster sobe com a quantidade; o frete é fixo."
+        }
+      ],
+      "problem": "Produto de Aster sobe can mean that the product/unit price rises. The source is about the aggregate goods amount increasing with quantity while the shipping amount stays fixed.",
+      "suggested_fix": "Explicitly name the aggregate goods value, its increase with quantity, and fixed freight."
+    },
+    {
+      "issue_id": "PT-23",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.m8sb"
+      ],
+      "evidence": [
+        {
+          "location": "lines.m8sb",
+          "source": "乙比甲多了一百一十元，原本的先後順序反過來了。",
+          "authored": "Birch supera Aster em 110 TWD; a ordem inverteu"
+        }
+      ],
+      "problem": "Birch supera Aster em 110 TWD can suggest Birch wins by that amount. The source says Birch costs 110 TWD more and the previous price order reverses.",
+      "suggested_fix": "Use a direct more-expensive comparison, retaining Aster, 110 TWD, and the reversal."
+    },
+    {
+      "issue_id": "PT-24",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.fa3t",
+        "chapters.threshold-start"
+      ],
+      "evidence": [
+        {
+          "location": "lines.fa3t",
+          "source": "那最低總價是從第幾張開始換人？",
+          "authored": "Com quantos muda o menor total?"
+        },
+        {
+          "location": "chapters.threshold-start",
+          "source": "只多一張，最低價在哪裡換人？",
+          "authored": "Quando muda o menor total?"
+        }
+      ],
+      "problem": "Muda o menor total asks when the numeric minimum changes, rather than when the cheapest supplier changes. The latter is the quantity threshold being demonstrated.",
+      "suggested_fix": "Ask when o mais barato changes, retaining the quantity threshold meaning."
+    }
+  ],
+  "confirmed_checks": [
+    "All 101 source/target lines were read individually against the exact source scene context.",
+    "All title, description paragraphs, tags, nine chapter names and three thumbnail fields were read.",
+    "Original worksheet fields are preserved except authored text; line sources match this exact snapshot.",
+    "Aster/Birch/Cedar mapping is consistent. Cedar revision is not counted as a fourth supplier.",
+    "Missing shipping is not silently set to zero; free Birch shipping is distinguished from unquoted Cedar shipping.",
+    "Metadata preserves fictional suppliers/prices/5% tax and does not present real tax advice.",
+    "Static workbook regeneration is retained; metadata says openpyxl writes files and does not calculate formulas.",
+    "Actual Codex document analysis and pypdf extraction remain distinct from a claimed commercial upload-interface test; no OCR claim was added.",
+    "2026-10-26 and the exact frozen materials URL are preserved; future URL changes require another check.",
+    "Money amounts 50, 110, 52.50, 7.50, 13.75 and 21.25 retain their exact TWD values; Portuguese decimal commas are localization, not currency conversion.",
+    "The literal materials folder name is correct for the source command context. Folder-noun clarity is reported above.",
+    "7dp4 keeps saving the quantity-10 file under the shown new name before changing the quantity to 20."
+  ],
+  "limitations": [
+    "Only this frozen source snapshot and these exact authored-file hashes are reviewed. This is not a final-current-source or publication approval.",
+    "Character budgets are estimates. No audio synthesis, listening, actual dub-fit or timing approval was performed.",
+    "Some suggested fixes describe required meaning rather than asserting they fit the current max_chars; preserve facts and record a budget exception where needed.",
+    "No draft/source was changed by this reviewer. The original author must revise, followed by independent re-review."
+  ],
+  "exact_source_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "actual_authored_file_sha256": "e7050f9bdcacc34d398d014966e25802200dec58a1d035339622ba46e74224f1"
+}
