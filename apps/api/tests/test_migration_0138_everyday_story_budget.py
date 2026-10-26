@@ -27,6 +27,7 @@ from app.db import engine
 from app.migration_guard import C20_PILOT_SLUG, _verify_reviewed_0138
 from app.video_budget.models import (
     ACTIVATED_STORY_SLUGS,
+    BATCH_REMAKE_SLUGS,
     C11_REMAKE_SLUG,
     C_SERIES_PILOT_LIMITS_USD,
     PILOT_LIMITS_USD,
@@ -64,6 +65,21 @@ def _prepare_0137(connection: Connection) -> None:
     migration = load_migration()
     # API shards start at the current head. Reconstruct the older 0137 account
     # inventory within this test transaction before exercising the 0138 migration.
+    remake_ownership = "video_pilot_budget_0141_owned"
+    if sa.inspect(connection).has_table(remake_ownership):
+        remake_owners = connection.execute(
+            sa.text(f"SELECT slug, account_created FROM {remake_ownership}")
+        ).all()
+        assert sorted(remake_owners) == sorted((slug, True) for slug in BATCH_REMAKE_SLUGS)
+        connection.execute(sa.text(f"DROP TABLE {remake_ownership}"))
+        connection.execute(
+            sa.delete(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.slug.in_(BATCH_REMAKE_SLUGS)
+            )
+        )
+        connection.execute(
+            sa.delete(VideoPilotBudget).where(VideoPilotBudget.slug.in_(BATCH_REMAKE_SLUGS))
+        )
     c11_ownership = "video_pilot_budget_0140_owned"
     if sa.inspect(connection).has_table(c11_ownership):
         c11_owner = connection.execute(

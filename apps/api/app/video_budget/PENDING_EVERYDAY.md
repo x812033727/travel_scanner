@@ -86,11 +86,10 @@ exactly as above.
   ceiling apart from `C_SERIES_PILOT_LIMITS_USD`, whose exact set the 0138 and 0139
   rollback readbacks still expect. The 0139 compatibility image (#1870) holds it.
 - **C14, C03, C04, C06, C05, C08 remakes**: the owner asked for them next under the same
-  terms. The 0140 image already accepts the additive 0141 contract of their six USD 25
-  accounts (`migration_guard._verify_reviewed_0141`, pinned source in
-  `tests/test_story_remakes_budget_rollback_integration.py`) and keeps them held. The
-  0141 migration and their activation come in the next release, after this one is
-  deployed.
+  terms. The 0140 image (#1875) accepts the additive 0141 contract of their six USD 25
+  accounts (`migration_guard._verify_reviewed_0141`) and keeps them held. 0141 creates the
+  accounts (`video_pilot_budget_0141_owned`) and `BATCH_REMAKE_SLUGS` activates them, in
+  the release after the 0140 image is deployed.
 
 Before the first paid call of each remake, report its narration characters, image count
 and the total to the owner, then read back `reconcile_cli` / `inspect` for its account.
